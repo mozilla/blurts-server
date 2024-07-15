@@ -7,18 +7,18 @@ import { getServerSession } from "../../../functions/server/getServerSession";
 import {
   errorIfProduction,
   internalServerError,
-  unauthErrorResponse,
+  unauthError,
 } from "../../utils/errorThrower";
-import { resetData } from "./reset";
-
-function isTestEmail(email: string | undefined) {
-  if (!email) return false;
-  const testEmailKeys = Object.keys(process.env).filter((key) =>
-    key.startsWith("E2E_TEST_ACCOUNT_EMAIL"),
-  );
-  const testEmails = testEmailKeys.map((key) => process.env[key]);
-  return testEmails.includes(email);
-}
+import {
+  getOnerepProfileId,
+  unresolveAllBreaches,
+} from "../../../../db/tables/subscribers";
+import {
+  deleteScanResultsForProfile,
+  deleteSomeScansForProfile,
+} from "../../../../db/tables/onerep_scans";
+import { logger } from "../../../functions/server/logging";
+import { isTestEmail } from "../../utils/mockUtils";
 
 export async function GET(req: NextRequest) {
   const prodError = errorIfProduction();
@@ -28,13 +28,22 @@ export async function GET(req: NextRequest) {
   const email = session?.user.email;
   const subscriberId = session?.user.subscriber?.id;
   if (!session || !email || !isTestEmail(email) || !subscriberId)
-    return unauthErrorResponse();
+    return unauthError();
 
-  const resetHibp = Boolean(req.nextUrl.searchParams.get("resetHibp"));
-  const resetOneRep = Boolean(req.nextUrl.searchParams.get("resetOneRep"));
+  const hibp = req.nextUrl.searchParams.get("hibp") === "true";
+  const onerep = req.nextUrl.searchParams.get("onerep") === "true";
 
-  const [success, msg] = await resetData(subscriberId, resetHibp, resetOneRep);
-  if (!success) return internalServerError(msg);
+  const onerepProfileId = await getOnerepProfileId(subscriberId);
+  if (!onerepProfileId)
+    return internalServerError("Unable to fetch OneRep profile ID");
+  if (onerep) {
+    await deleteScanResultsForProfile(onerepProfileId);
+    await deleteSomeScansForProfile(onerepProfileId, 1);
+  }
+  if (hibp) await unresolveAllBreaches(onerepProfileId);
+  logger.info(
+    "Mock OneRep endpoint: attempted to delete all but 1 scans, attempted to unresolve all breaches",
+  );
 
   return NextResponse.json(
     { message: "Requested reached successfully" },

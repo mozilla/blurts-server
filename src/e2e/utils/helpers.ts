@@ -170,7 +170,9 @@ export const clickOnATagCheckDomain = async (
   page: Page,
 ) => {
   if (typeof host === "string")
-    host = new RegExp(escapeRegExp(host.replace(/^(https?:\/\/)/, "")));
+    host = new RegExp(
+      escapeRegExp(host.replace(/^(https?:\/\/)/, "").replace(/:\d+$/, "")),
+    );
   if (typeof path === "string") path = new RegExp(".*" + path + ".*");
 
   const href = await aTag.getAttribute("href");
@@ -206,6 +208,9 @@ export const forceLoginAs = async (
     await route.abort();
   });
   await page.context().clearCookies();
+  await page
+    .context()
+    .addInitScript({ content: "window.localStorage.clear()" });
   await landingPage.open();
   await landingPage.goToSignIn();
   let visible = true;
@@ -219,13 +224,35 @@ export const forceLoginAs = async (
     await page.waitForURL(/^(?!.*signin).*/);
   }
   await authPage.signIn(email, password);
-  await page.waitForURL("**/user/dashboard");
-  await expect(page).toHaveURL(/.*\/user\/dashboard.*/);
+  const dashboardRegex = /.*\/user\/dashboard.*/;
+  if (dashboardRegex.test(page.url())) return;
+  await page.waitForURL(dashboardRegex);
 };
 
-export const clearTestData = async (page: Page) => {
-  const url = new URL(page.url());
-  await page.goto(url.host + "/api/mock/clearTestData");
-  await page.waitForURL(/.*\/api\/mock\/clearTestData.*/);
+export const resetTestData = async (
+  page: Page,
+  hibp: boolean,
+  onerep: boolean,
+) => {
+  const baseUrl = process.env.SERVER_URL!;
+  const param1 = `${hibp ? "hibp=true" : ""}`;
+  const param2 = `${onerep ? "onerep=true" : ""}`;
+  let delim = "";
+  if (param1 && param2) delim = "&";
+  const params = param1 + delim + param2;
+  await page.goto(baseUrl + "/e2e?" + params);
+  await page.waitForURL(/.*\/e2e*/);
+
+  const clearDataButton = page.locator("button", { hasText: "Clear Data" });
+  await expect(clearDataButton).toBeVisible();
+  await clearDataButton.click();
+
+  const selectorQuery = '//div[contains(text(), "Request was successful")]';
+
+  await page.waitForSelector(selectorQuery);
+
+  const successMessage = page.locator(selectorQuery);
+  await expect(successMessage).toBeVisible();
+
   await page.goBack();
 };

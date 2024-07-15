@@ -29,3 +29,12 @@ export const hashToEmailKeyMap = (() => {
   });
   return mapping;
 })();
+
+export function isTestEmail(email: string) {
+  if (!email) return false;
+  const testEmailKeys = Object.keys(process.env).filter((key) =>
+    key.startsWith("E2E_TEST_ACCOUNT_EMAIL"),
+  );
+  const testEmails = testEmailKeys.map((key) => process.env[key]);
+  return testEmails.includes(email);
+}

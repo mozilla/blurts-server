@@ -9,7 +9,7 @@ import {
 } from "../utils/helpers.js";
 
 test.describe.configure({ mode: "parallel" });
-test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page content`, () => {
+test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page content @smoke`, () => {
   test.beforeEach(async ({ landingPage }) => {
     await landingPage.open();
   });
@@ -211,7 +211,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page content`, (
   });
 });
 
-test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page Functionality - without existing Account`, () => {
+test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page Functionality - without existing Account @smoke`, () => {
   test.beforeEach(async ({ landingPage }) => {
     await landingPage.open();
   });
@@ -281,7 +281,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page Functionali
   });
 });
 
-test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page Functionality - with existing account`, () => {
+test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page Functionality - with existing account @smoke`, () => {
   test.beforeEach(async ({ landingPage }) => {
     await landingPage.open();
   });
@@ -309,13 +309,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page Functionali
     await authPage.enterPassword();
 
     // verify dashboard redirect
-    const successUrl =
-      process.env.E2E_TEST_BASE_URL +
-      `${
-        process.env.E2E_TEST_ENV === "local"
-          ? "/user/welcome"
-          : "/user/dashboard"
-      }`;
+    const successUrl = process.env.E2E_TEST_BASE_URL + "/user/dashboard";
     expect(page.url()).toBe(successUrl);
   });
 
@@ -336,13 +330,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page Functionali
     await authPage.enterPassword();
 
     // verify dashboard redirect
-    const successUrl =
-      process.env.E2E_TEST_BASE_URL +
-      `${
-        process.env.E2E_TEST_ENV === "local"
-          ? "/user/welcome"
-          : "/user/dashboard"
-      }`;
+    const successUrl = process.env.E2E_TEST_BASE_URL + "/user/dashboard";
     expect(page.url()).toBe(successUrl);
   });
 });

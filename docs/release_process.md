@@ -103,17 +103,20 @@ We leave the tag on [Stage][stage] for a week so that we (and especially QA)
 can check the tag on GCP infrastucture before we deploy it to production. To
 deploy the tag to production:
 
-1. File an [SRE ticket][sre-board] to deploy the tag to [Prod][prod].
+1. Run [e2e] tests against the stage
+   - Ensure the tests are successful / Resolve any issues before moving to the next step
+2. File an [SRE ticket][sre-board] to deploy the tag to [Prod][prod].
    - Include a link to the GitHub Release
+   - Include a link to successful e2e tests
    - You can assign it directly to our primary SRE for the day
-2. When SRE starts the deploy, "cloudops-jenkins" will send status messages
+3. When SRE starts the deploy, "cloudops-jenkins" will send status messages
    into the #fx-monitor-engineering channel.
-3. When you see `PROMOTE PROD COMPLETE`, do some checks on prod:
+4. When you see `PROMOTE PROD COMPLETE`, do some checks on prod:
    - Check sentry prod project for a spike in any new issues
    - Check [grafana dashboard][grafana-dashboard] for any unexpected spike in ops
    - Spot-check the site for basic functionality
    - Ping SDET to run end-to-end tests on prod
-4. Update the GitHub Release from "pre-release" to a full release and reference the production deploy SRE Jira ticket.
+5. Update the GitHub Release from "pre-release" to a full release and reference the production deploy SRE Jira ticket.
 
 ## Stage-fixes
 
@@ -292,3 +295,4 @@ long-running branches")
 [github-new-release]: https://github.com/mozilla/blurts-server/releases/new
 [prod-version]: https://monitor.firefox.com/__version__
 [grafana-dashboard]: https://earthangel-b40313e5.influxcloud.net/d/dEpkGp4Wz/fx-monitor?orgId=1&from=now-7d&to=now
+[e2e]: https://github.com/mozilla/blurts-server/actions/workflows/e2e_cron.yml

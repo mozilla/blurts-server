@@ -7,6 +7,7 @@ import { StateAbbr } from "../../../../../utils/states";
 import mockUser from "../mockData/mockUser.json";
 import mockOverwrite from "../mockData/mockOverwrite.json";
 import { computeSha1First6, hashToEmailKeyMap } from "../../../utils/mockUtils";
+import { getLatestOnerepScan } from "../../../../../db/tables/onerep_scans";
 
 export interface Broker {
   id: number;
@@ -149,16 +150,16 @@ export function MOCK_ONEREP_OBJECT_LINKS(
   };
 }
 
-export function MOCK_ONEREP_BROKERS(
+export async function MOCK_ONEREP_BROKERS(
   profileId: number,
   page: string,
   perPage: string,
   email: string,
 ) {
-  const scanId = MOCK_ONEREP_SCAN_ID(profileId);
+  let scanId = (await getLatestOnerepScan(profileId))?.onerep_scan_id;
+  if (!scanId) scanId = MOCK_ONEREP_SCAN_ID(profileId);
   const mockMeta = MOCK_ONEREP_OBJECT_META(page);
   const mockLinks = MOCK_ONEREP_OBJECT_LINKS(profileId, page, perPage);
-
   const idStart = MOCK_ONEREP_ID_START(profileId);
   const idStartDataBroker = MOCK_ONEREP_DATABROKER_ID_START(profileId);
 
@@ -203,8 +204,8 @@ export function MOCK_ONEREP_BROKERS(
 
   const responseData = {
     data: res,
-    links: mockLinks,
     meta: mockMeta,
+    links: mockLinks,
   };
 
   return responseData;

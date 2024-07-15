@@ -6,7 +6,7 @@ import { errorIfProduction } from "../../../utils/errorThrower";
 import { MOCK_ONEREP_BROKERS } from "../config/config";
 import { NextRequest, NextResponse } from "next/server";
 
-export function GET(req: NextRequest) {
+export async function GET(req: NextRequest) {
   const prodError = errorIfProduction();
   if (prodError) return prodError;
 
@@ -22,7 +22,12 @@ export function GET(req: NextRequest) {
     );
   }
 
-  return NextResponse.json(
-    MOCK_ONEREP_BROKERS(Number(profileId), page, perPage, email),
+  const res = await MOCK_ONEREP_BROKERS(
+    Number(profileId),
+    page,
+    perPage,
+    email,
   );
+
+  return NextResponse.json(res);
 }

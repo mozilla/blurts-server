@@ -29,12 +29,7 @@ function isAutomaticRemovalSurvey(
 
 const surveyData: SurveyData = {
   id: "csat_survey",
-  requiredExperiments: [
-    {
-      id: "automatic-removal-csat-survey",
-      statusAllowList: ["enabled"],
-    },
-  ],
+  requiredExperiments: [],
   variations: [
     {
       id: "initial",
