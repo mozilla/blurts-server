@@ -26,6 +26,7 @@ import Meta, {
   LandingUsScanLimit,
 } from "./LandingView.stories";
 import { deleteAllCookies } from "../../../functions/client/deleteAllCookies";
+import { defaultExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 
 jest.mock("next-auth/react", () => {
   return {
@@ -829,6 +830,200 @@ describe("When Premium is available", () => {
       expect.objectContaining({
         link_id: "navbar_breaches",
       }),
+    );
+  });
+});
+
+describe("Free scan CTA experiment", () => {
+  it("shows the CTA button with email input if the experiment disabled", () => {
+    const ComposedDashboard = composeStory(LandingUs, Meta);
+    render(
+      <ComposedDashboard
+        experimentData={{
+          ...defaultExperimentData,
+          "landing-page-free-scan-cta": {
+            ...defaultExperimentData["landing-page-free-scan-cta"],
+            enabled: false,
+          },
+        }}
+      />,
+    );
+
+    const inputField = screen.getAllByLabelText(
+      "Enter your email address to check for data breach exposures and sites selling your info.",
+    );
+    expect(inputField[0]).toBeInTheDocument();
+
+    const submitButton = screen.getAllByRole("button", {
+      name: "Get free scan",
+    });
+    expect(submitButton[0]).toBeInTheDocument();
+  });
+
+  it("shows the CTA button with email input for the variant `ctaWithEmail` if the experiment is enabled", () => {
+    const ComposedDashboard = composeStory(LandingUs, Meta);
+    render(
+      <ComposedDashboard
+        experimentData={{
+          ...defaultExperimentData,
+          "landing-page-free-scan-cta": {
+            enabled: true,
+            variant: "ctaWithEmail",
+          },
+        }}
+      />,
+    );
+
+    const inputField = screen.getAllByLabelText(
+      "Enter your email address to check for data breach exposures and sites selling your info.",
+    );
+    expect(inputField[0]).toBeInTheDocument();
+
+    const submitButton = screen.getAllByRole("button", {
+      name: "Get free scan",
+    });
+    expect(submitButton[0]).toBeInTheDocument();
+  });
+
+  it("shows the CTA button only for the variant `ctaOnly` if the experiment is enabled", () => {
+    const ComposedDashboard = composeStory(LandingUs, Meta);
+    render(
+      <ComposedDashboard
+        experimentData={{
+          ...defaultExperimentData,
+          "landing-page-free-scan-cta": {
+            enabled: true,
+            variant: "ctaOnly",
+          },
+        }}
+      />,
+    );
+
+    const inputField = screen.queryAllByTestId("signup-form-input");
+    expect(inputField.length).toBe(0);
+
+    const submitButton = screen.getAllByRole("button", {
+      name: "Get free scan",
+    });
+    expect(submitButton[0]).toBeInTheDocument();
+  });
+
+  it("shows the CTA button only with an alternative label for the variant `ctaOnlyAlternativeLabel` if the experiment is enabled", () => {
+    const ComposedDashboard = composeStory(LandingUs, Meta);
+    render(
+      <ComposedDashboard
+        experimentData={{
+          ...defaultExperimentData,
+          "landing-page-free-scan-cta": {
+            enabled: true,
+            variant: "ctaOnlyAlternativeLabel",
+          },
+        }}
+      />,
+    );
+
+    const inputField = screen.queryAllByTestId("signup-form-input");
+    expect(inputField.length).toBe(0);
+
+    const submitButton = screen.getAllByRole("button", {
+      name: "Sign in to get free scan",
+    });
+    expect(submitButton[0]).toBeInTheDocument();
+  });
+
+  it("shows the waitlist CTA when the scan limit is reached", () => {
+    const ComposedDashboard = composeStory(LandingUsScanLimit, Meta);
+    render(
+      <ComposedDashboard
+        experimentData={{
+          ...defaultExperimentData,
+          "landing-page-free-scan-cta": {
+            enabled: true,
+            variant: "ctaOnly",
+          },
+        }}
+      />,
+    );
+    const waitlistCta = screen.getAllByRole("link", {
+      name: "Join waitlist",
+    });
+    expect(waitlistCta[0]).toBeInTheDocument();
+  });
+
+  it("sends telemetry for the different experiment variants", async () => {
+    const mockedRecord = useTelemetry();
+    const user = userEvent.setup();
+    const ComposedDashboard = composeStory(LandingUs, Meta);
+    render(
+      <ComposedDashboard
+        experimentData={{
+          ...defaultExperimentData,
+          "landing-page-free-scan-cta": {
+            enabled: true,
+            variant: "ctaOnly",
+          },
+        }}
+      />,
+    );
+
+    // jsdom will complain about not being able to navigate to a different page
+    // after clicking the link; suppress that error, as it's not relevant to the
+    // test:
+    jest.spyOn(console, "error").mockImplementation(() => undefined);
+
+    const submitButton = screen.getAllByRole("button", {
+      name: "Get free scan",
+    });
+    await user.click(submitButton[0]);
+
+    expect(mockedRecord).toHaveBeenCalledWith(
+      "ctaButton",
+      "click",
+      expect.objectContaining({ button_id: "clicked_get_scan_header-ctaOnly" }),
+    );
+  });
+
+  it("passes the expected URL to the identity provider", async () => {
+    const user = userEvent.setup();
+    const ComposedDashboard = composeStory(LandingUs, Meta);
+    render(
+      <ComposedDashboard
+        experimentData={{
+          ...defaultExperimentData,
+          "landing-page-free-scan-cta": {
+            enabled: true,
+            variant: "ctaWithEmail",
+          },
+        }}
+      />,
+    );
+
+    const inputField = screen.getAllByLabelText(
+      "Enter your email address to check for data breach exposures and sites selling your info.",
+    );
+    await user.type(inputField[0], "mail@example.com");
+
+    const submitButton = screen.getAllByRole("button", {
+      name: "Get free scan",
+    });
+    await user.click(submitButton[0]);
+
+    expect(signIn).toHaveBeenCalledWith(
+      "fxa",
+      expect.any(Object),
+      expect.stringContaining(
+        [
+          "entrypoint=monitor.mozilla.org-monitor-product-page",
+          "form_type=email",
+          "service=edd29a80019d61a1",
+          "email=mail%40example.com",
+          "entrypoint_experiment=landing-page-free-scan-cta",
+          "entrypoint_variation=ctaWithEmail",
+          "utm_source=product",
+          "utm_medium=monitor",
+          "utm_campaign=get_free_scan",
+        ].join("&"),
+      ),
     );
   });
 });
