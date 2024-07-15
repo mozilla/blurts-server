@@ -149,7 +149,6 @@
     "stylelint": "^16.7.0",
     "stylelint-config-recommended-scss": "^14.1.0",
     "stylelint-scss": "^6.3.2",
-    "ts-jest": "^29.1.5",
     "tsx": "^4.16.0",
     "typescript": "^5.5.3",
     "yaml": "^2.4.5"
