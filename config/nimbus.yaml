@@ -47,3 +47,37 @@ features:
         value: { "enabled": false }
       - channel: production
         value: { "enabled": false }
+  landing-page-free-scan-cta:
+    description: Landing page free scan CTA
+    variables:
+      enabled:
+        description: If the feature is enabled
+        type: Boolean
+        default: false
+      variant:
+        description: The CTA variant to show
+        type: FreeScanCtaType
+        default: ctaWithEmail
+    defaults:
+      - channel: local
+        value: {
+          "enabled": true,
+          "variant": ctaOnly,
+        }
+      - channel: staging
+        value: {
+          "enabled": false,
+          "variant": ctaWithEmail,
+        }
+      - channel: production
+        value: {
+          "enabled": false,
+          "variant": ctaWithEmail,
+        }
+enums:
+  FreeScanCtaType:
+    description: An enum of free scan CTA types
+    variants:
+      ctaWithEmail: Show a CTA button with an optional email input
+      ctaOnly: Only show a CTA button with the label “Get free scan”
+      ctaOnlyAlternativeLabel: Only show a CTA button with the label “Sign in to get free scan”

@@ -6,12 +6,16 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { View, Props as ViewProps } from "./LandingView";
 import { getL10n } from "../../../functions/l10n/storybookAndJest";
 import { PublicShell } from "./PublicShell";
+import { defaultExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 
 const meta: Meta<typeof View> = {
   title: "Pages/Public/Landing page",
   component: (props: ViewProps) => (
     <PublicShell l10n={getL10n("en")} countryCode={props.countryCode}>
-      <View {...props} />
+      <View
+        {...props}
+        experimentData={props.experimentData ?? defaultExperimentData}
+      />
     </PublicShell>
   ),
   args: {
