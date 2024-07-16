@@ -4,7 +4,7 @@
 
 "use client";
 
-import { FormEventHandler, useId, useState } from "react";
+import { FormEventHandler, useContext, useId, useState } from "react";
 import { signIn } from "next-auth/react";
 import { useL10n } from "../../../hooks/l10n";
 import { Button } from "../../../components/client/Button";
@@ -15,6 +15,7 @@ import { WaitlistCta } from "./ScanLimit";
 import { useCookies } from "react-cookie";
 import { getAttributionSearchParams } from "./FreeScanCta";
 import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
+import { PublicEnvContext } from "../../../../contextProviders/public-env";
 
 export type Props = {
   eligibleForPremium: boolean;
@@ -35,6 +36,7 @@ export const SignUpForm = (props: Props) => {
   const [emailInput, setEmailInput] = useState("");
   const record = useTelemetry();
   const [cookies] = useCookies(["attributionsFirstTouch"]);
+  const publicEnv = useContext(PublicEnvContext);
 
   const onSubmit: FormEventHandler = (event) => {
     event.preventDefault();
@@ -45,6 +47,7 @@ export const SignUpForm = (props: Props) => {
         cookies,
         emailInput,
         experimentData: props.experimentData,
+        publicEnv,
       }),
     );
   };

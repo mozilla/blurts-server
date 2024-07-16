@@ -12,6 +12,8 @@ import { modifyAttributionsForUrlSearchParams } from "../../../functions/univers
 import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 import { useL10n } from "../../../hooks/l10n";
 import { WaitlistCta } from "./ScanLimit";
+import { PublicEnvContext } from "../../../../contextProviders/public-env";
+import { useContext } from "react";
 
 export type Props = {
   eligibleForPremium: boolean;
@@ -28,11 +30,13 @@ export type Props = {
 export function getAttributionSearchParams({
   cookies,
   emailInput,
+  publicEnv,
   experimentData,
 }: {
   cookies: {
     attributionsFirstTouch?: string;
   };
+  publicEnv: Record<string, string>;
   emailInput?: string;
   experimentData?: ExperimentData;
 }) {
@@ -41,7 +45,7 @@ export function getAttributionSearchParams({
     {
       entrypoint: "monitor.mozilla.org-monitor-product-page",
       form_type: typeof emailInput === "string" ? "email" : "button",
-      service: process.env.OAUTH_CLIENT_ID as string,
+      service: publicEnv.OAUTH_CLIENT_ID,
       ...(emailInput && { email: emailInput }),
       ...(experimentData &&
         experimentData["landing-page-free-scan-cta"].enabled && {
@@ -67,6 +71,7 @@ export const FreeScanCta = (
 ) => {
   const l10n = useL10n();
   const [cookies] = useCookies(["attributionsFirstTouch"]);
+  const publicEnv = useContext(PublicEnvContext);
   if (
     !props.experimentData["landing-page-free-scan-cta"].enabled ||
     props.experimentData["landing-page-free-scan-cta"].variant ===
@@ -104,6 +109,7 @@ export const FreeScanCta = (
             getAttributionSearchParams({
               cookies,
               experimentData: props.experimentData,
+              publicEnv,
             }),
           );
         }}
