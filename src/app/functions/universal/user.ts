@@ -43,23 +43,26 @@ export function meetsAgeRequirement(dateOfBirth: ISO8601DateString): boolean {
 }
 
 /* c8 ignore start */
-export async function checkUserHasYearlySubscription(user: Session["user"]) {
-  if (
-    !user.subscriber?.fxa_access_token ||
-    !process.env.PREMIUM_PLAN_ID_YEARLY_US
-  ) {
+export async function checkUserHasMonthlySubscription(user: Session["user"]) {
+  if (!user.subscriber?.fxa_access_token) {
     console.error("FXA token not set");
+    return false;
+  }
+
+  if (!process.env.PREMIUM_PLAN_ID_MONTHLY_US) {
+    console.error("Monthly Plan ID not set");
     return false;
   }
 
   const billingAndSubscriptionInfo = await getBillingAndSubscriptions(
     user.subscriber.fxa_access_token,
   );
+
   if (billingAndSubscriptionInfo === null) {
     return false;
   }
 
-  const yearlyPlanId: string = process.env.PREMIUM_PLAN_ID_YEARLY_US;
+  const monthlyPlanId: string = process.env.PREMIUM_PLAN_ID_MONTHLY_US;
   const subscriptions = billingAndSubscriptionInfo.subscriptions;
 
   const planIds: string[] = [];
@@ -67,6 +70,6 @@ export async function checkUserHasYearlySubscription(user: Session["user"]) {
     planIds.push(subscription.plan_id);
   });
 
-  return planIds.includes(yearlyPlanId);
+  return planIds.includes(monthlyPlanId);
 }
 /* c8 ignore stop */
