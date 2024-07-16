@@ -8,9 +8,9 @@
   */
 export function up(knex) {
   return knex.schema
-    .createTable('qa_custom_brokers', table => {
-      table.increments('onerep_scan_result_id').primary();
-      table.integer('onerep_profile_id').notNullable();
+    .createTable("qa_custom_brokers", table => {
+      table.increments("onerep_scan_result_id").primary();
+      table.integer("onerep_profile_id").notNullable();
       table.string("link").notNullable();
       table.integer("age").nullable();
       table.string("data_broker").notNullable();
@@ -22,6 +22,7 @@ export function up(knex) {
       table.string("middle_name").nullable();
       table.string("last_name").notNullable();
       table.string("status").notNullable();
+      table.boolean("manually_resolved").defaultTo(false);
       table.timestamp("created_at").defaultTo(knex.fn.now());
       table.timestamp("updated_at").defaultTo(knex.fn.now());
     });
@@ -32,7 +33,7 @@ export function up(knex) {
  * @returns { Promise<void> }
  */
 export function down(knex) {
-  return knex.schema.dropTableIfExists('qa_custom_brokers');
+  return knex.schema.dropTableIfExists("qa_custom_brokers");
 }
 
 

@@ -287,7 +287,6 @@ async function markOnerepScanResultAsResolved(
   logger.info("scan_resolved", {
     onerepScanResultId,
   });
-
   await knex("onerep_scan_results")
     .update({
       manually_resolved: true,

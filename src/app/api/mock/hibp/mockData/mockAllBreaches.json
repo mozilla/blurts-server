@@ -387,31 +387,6 @@
       "FaviconUrl": null
     },
     {
-      "Id": 294,
-      "Name": "GSMHosting",
-      "Title": "GSM Hosting",
-      "Domain": "gsmhosting.com",
-      "BreachDate": "2016-08-01T07:00:00.000Z",
-      "AddedDate": "2024-03-27T06:23:58.000Z",
-      "ModifiedDate": "2024-03-27T06:29:15.000Z",
-      "PwnCount": 2607440,
-      "Description": "In August 2016, <a href=\"https://www.hackread.com/vbulletin-forums-hacked-accounts-sold-on-dark-web/\" target=\"_blank\" rel=\"noopener\">breached data from the vBulletin forum for GSM-Hosting appeared for sale alongside dozens of other hacked services</a>. The breach impacted 2.6M users of the service and included email and IP addresses, usernames and salted MD5 password hashes.",
-      "LogoPath": "https://haveibeenpwned.com/Content/Images/PwnedLogos/GSMHosting.png",
-      "DataClasses": [
-        "email-addresses",
-        "ip-addresses",
-        "passwords",
-        "usernames"
-      ],
-      "IsVerified": true,
-      "IsFabricated": false,
-      "IsSensitive": false,
-      "IsRetired": false,
-      "IsSpamList": false,
-      "IsMalware": false,
-      "FaviconUrl": null
-    },
-    {
       "Id": 311,
       "Name": "HeroesOfNewerth",
       "Title": "Heroes of Newerth",
@@ -551,6 +526,36 @@
       "FaviconUrl": null
     },
     {
+      "Id": 695,
+      "Title": "UC",
+      "Name": "University of California",
+      "Domain": "universityofcalifornia.edu",
+      "BreachDate": "2020-12-24",
+      "AddedDate": "2021-06-20 00:44:34-07",
+      "ModifiedDate": "2021-07-03 18:03:54-07",
+      "PwnCount": 547422,
+      "Description": "In December 2020, the University of California suffered a data breach due to vulnerability in a third-party provider, Accellion. The breach exposed extensive personal data on both students and staff including 547 thousand unique email addresses, names, dates of birth, genders, social security numbers, ethnicities, and other academic related data attributes. Further analysis is available in Exploring the Impact of the UC Data Breach. The data was provided to HIBP courtesy of Cyril Gorlla.",
+      "LogoPath": "https://haveibeenpwned.com/Content/Images/PwnedLogos/UC.png",
+      "DataClasses": [
+        "dates-of-birth",
+        "education-levels",
+        "email-addresses",
+        "ethnicities",
+        "genders",
+        "job-titles",
+        "names",
+        "phone-numbers",
+        "physical-addresses",
+        "social-security-numbers"
+      ],
+      "IsVerified": true,
+      "IsFabricated": false,
+      "IsSensitive": false,
+      "IsRetired": false,
+      "IsSpamList": false,
+      "IsMalware": false
+    },
+    {
       "Id": 706,
       "Name": "VerificationsIO",
       "Title": "Verifications.io",
@@ -637,25 +642,6 @@
       "IsSpamList": false,
       "IsMalware": false,
       "FaviconUrl": null
-    },
-    {
-      "Id": 695,
-      "Name": "UC",
-      "Title": "University of California",
-      "Domain": "universityofcalifornia.edu",
-      "BreachDate": "2020-12-24",
-      "AddedDate": "2021-06-20 00:44:34-07",
-      "ModifiedDate": "2021-07-03 18:03:54-07",
-      "PwnCount": 547422,
-      "Description": "In December 2020, <a href=\"https://portswigger.net/daily-swig/uc-berkeley-confirms-data-breach-becomes-latest-victim-of-accellion-cyber-attack\" target=\"_blank\" rel=\"noopener\">the University of California suffered a data breach due to vulnerability in in a third-party provider, Accellion</a>. The breach exposed extensive personal data on both students and staff including 547 thousand unique email addresses, names, dates of birth, genders, social security numbers, ethnicities and other academic related data attributes. Further analysis is available in <a href=\"https://cgorlla.github.io/project/uc\" target=\"_blank\" rel=\"noopener\">Exploring the Impact of the UC Data Breach</a>. The data was provided to HIBP courtesy of Cyril Gorlla.",
-      "LogoPath": "https://haveibeenpwned.com/Content/Images/PwnedLogos/UC.png",
-      "DataClasses": "{dates-of-birth,education-levels,email-addresses,ethnicities,genders,job-titles,names,phone-numbers,physical-addresses,social-security-numbers}",
-      "IsVerified": true,
-      "IsFabricated": false,
-      "IsSensitive": false,
-      "IsRetired": false,
-      "IsMalware": false,
-      "FaviconUrl": false
     }
   ]
 }
