@@ -72,7 +72,11 @@ export async function checkUserHasMonthlySubscription(user: Session["user"]) {
     planIds.push(subscription.plan_id);
   });
 
-  // Ensure that user only has monthly plan subscription and not yearly
-  return planIds.includes(monthlyPlanId) && !planIds.includes(yearlyPlanId);
+  if (planIds.includes(yearlyPlanId)) {
+    console.error("User has yearly plan set");
+    return false;
+  }
+
+  return planIds.includes(monthlyPlanId);
 }
 /* c8 ignore stop */
