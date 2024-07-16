@@ -62,7 +62,9 @@ export async function checkUserHasMonthlySubscription(user: Session["user"]) {
     return false;
   }
 
-  const monthlyPlanId: string = process.env.PREMIUM_PLAN_ID_MONTHLY_US;
+  const monthlyPlanId = process.env.PREMIUM_PLAN_ID_MONTHLY_US;
+  const yearlyPlanId = process.env.PREMIUM_PLAN_ID_YEARLY_US ?? "";
+
   const subscriptions = billingAndSubscriptionInfo.subscriptions;
 
   const planIds: string[] = [];
@@ -70,6 +72,7 @@ export async function checkUserHasMonthlySubscription(user: Session["user"]) {
     planIds.push(subscription.plan_id);
   });
 
-  return planIds.includes(monthlyPlanId);
+  // Ensure that user only has monthly plan subscription and not yearly
+  return planIds.includes(monthlyPlanId) && !planIds.includes(yearlyPlanId);
 }
 /* c8 ignore stop */
