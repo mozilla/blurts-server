@@ -15,14 +15,16 @@ import {
 } from "../../../../../../../../../functions/server/getRelevantGuidedSteps";
 import { FixView } from "../../FixView";
 import { ExtendedReactLocalization } from "../../../../../../../../../functions/l10n";
-import { TelemetryButton } from "../../../../../../../../../components/client/TelemetryButton";
 import noBreachesIllustration from "../../images/high-risk-breaches-none.svg";
 import { CONST_ONEREP_DATA_BROKER_COUNT } from "../../../../../../../../../../constants";
+import { TelemetryButton } from "../../../../../../../../../components/client/TelemetryButton";
+import { TelemetryLink } from "../../../../../../../../../components/client/TelemetryLink";
 
 export type Props = {
   data: StepDeterminationData;
   subscriberEmails: string[];
   l10n: ExtendedReactLocalization;
+  howItWorksFlagEnabled: boolean;
 };
 
 export function WelcomeToPlusView(props: Props) {
@@ -79,9 +81,23 @@ export function WelcomeToPlusView(props: Props) {
                 )}
           </p>
           <p>
-            {hasRelevantScanResults
-              ? l10n.getString(
+            {hasRelevantScanResults && props.howItWorksFlagEnabled
+              ? l10n.getFragment(
                   "welcome-to-premium-data-broker-profiles-description-part-two",
+                  {
+                    elems: {
+                      how_it_works_link: (
+                        <TelemetryLink
+                          href="/how-it-works"
+                          className={styles.howItWorksLink}
+                          target="_blank"
+                          eventData={{
+                            link_id: "explanation_of_removal_time",
+                          }}
+                        />
+                      ),
+                    },
+                  },
                 )
               : l10n.getString(
                   "welcome-to-premium-data-broker-profiles-zero-state-description-part-two",

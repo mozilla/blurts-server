@@ -43,6 +43,7 @@ modal-active-number-of-exposures-part-three-all = Un vice que illos es resolvite
 modal-fixed-number-of-exposures-title = Circa tu numero de expositiones corrigite
 modal-fixed-number-of-exposures-all = Iste diagramma include le numero total de violationes de datos que ha essite corrigite pro tote le adresses email que tu actualmente survelia. Un vice que le expositiones es marcate como corrigite, illes sera addite al total ci.
 modal-cta-ok = OK
+modal-cta-got-it = OK
 open-modal-alt = Aperir fenestra de dialogo
 close-modal-alt = Clauder fenestra de dialogo
 open-tooltip-alt = Aperir suggestion
@@ -127,11 +128,11 @@ dashboard-top-banner-non-us-your-data-is-protected-description =
     }
 dashboard-top-banner-monitor-more-cta = Surveliar plus emails
 
-# About Exposure Statuses Modal
+# About Exposure Indicators Modal
 
-modal-exposure-status-title = Re le statos de exposition
 modal-exposure-status-description-all =
     Nos cerca pro expositiones in tote le violationes de datos note.
     Tu expositiones habera uno del sequente statos:
-modal-exposure-status-action-needed = <b>Action necessari</b> significa que illo es currentemente active e tu debe prender mesuras pro corriger lo.
-modal-exposure-status-fixed = <b>Remediate</b> significa que le exposition ha essite remediate e il ha nulle action a prender pro te.
+modal-exposure-indicator-title = Statos de exposition
+modal-exposure-indicator-action-needed = Un action avantiate o manual es necessari per te pro completar un action.
+modal-exposure-indicator-fixed = Le exposition ha essite remediate e il non ha alcun action a prender pro te.

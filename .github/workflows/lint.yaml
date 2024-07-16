@@ -12,11 +12,10 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '22.1.x'
+          node-version: '22.3.x'
       - run: npm ci
       - run: npm run build-glean
       - run: npm run build-nimbus
-      - run: cp .env-dist .env
       # Mirror old linter from CircleCI, verifies that linter succeeds
       - run: npm run lint
       - run: node scripts/check-node-version-alignment.js

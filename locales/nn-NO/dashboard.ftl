@@ -22,15 +22,19 @@ exposure-chart-legend-heading-nr = Antal
 # Variables:
 #   $nr (number) - Number of a particular type of exposure found for the user
 exposure-chart-legend-value-nr = { $nr }×
+exposure-chart-caption = Dette diagrammet viser kor mange gongar informasjonen din er aktivt eksponert.
 exposure-chart-returning-user-upgrade-prompt-cta = Start ei gratis skanning
 modal-cta-ok = OK
-modal-open-alt = Opne
-modal-close-alt = Lat att
+modal-cta-got-it = Eg forstår
+open-modal-alt = Opne modal
+close-modal-alt = Lat att modal
+open-tooltip-alt = Opne verktøytips
 progress-card-heres-what-we-fixed-headline-all = Du har løyst følgjande
 progress-card-manually-fixed-headline = Manuelt løyst
 dashboard-tab-label-action-needed = Handling påkravd
 dashboard-tab-label-fixed = Løyst
 dashboard-exposures-all-fixed-label = Alt løyst her!
+dashboard-exposures-area-headline = Sjå alle nettstadar der informasjonen din er eksponert
 # This is the label on a button that opens a popover menu, which shows a menu to adjust filters for the listed exposures.
 dashboard-exposures-filter = Filter
 dashboard-exposures-filter-company = Firma
@@ -53,8 +57,14 @@ dashboard-top-banner-your-data-is-protected-cta = Sjå kva som er løyst
 dashboard-top-banner-lets-keep-protecting-title = La oss halde fram med å verne dataa dine
 dashboard-top-banner-protect-your-data-cta = La oss løyse det
 dashboard-no-exposures-label = Fann ingen eksponeringar
+# Variables:
+# $exposures_resolved_num is the number of exposures the user has resolved.
+dashboard-top-banner-non-us-your-data-is-protected-description =
+    { $exposures_resolved_num ->
+        [one] Bra jobba, eksponeringa av dine data er løyst! Vi vil halde fram med overvakinga, og vi vil varsle deg om eventuelle nye eksponeringar.
+       *[other] Bra jobba, alle { $exposures_resolved_num } eksponeringar av dine data er fiksa! Vi vil halde fram med overvakinga, og vi vil varsle deg om eventuelle nye eksponeringar.
+    }
 dashboard-top-banner-monitor-more-cta = Overvak fleire e-postadresser
 
-# About Exposure Statuses Modal
+# About Exposure Indicators Modal
 
-modal-exposure-status-title = Om eksponeringsstatusar

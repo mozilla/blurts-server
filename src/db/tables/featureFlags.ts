@@ -39,20 +39,18 @@ export async function getDeletedFeatureFlags() {
 
 /** @deprecated The method type not be used */
 export type FeatureFlagName =
-  | "FreeBrokerScan"
-  | "PremiumBrokerRemoval"
-  | "FalseDoorTest"
-  | "HibpBreachNotifications"
-  | "FxaUidTelemetry"
-  | "RebrandAnnouncement"
-  | "MonitorAccountDeletion"
   | "RedesignedEmails"
   | "UpdatedEmailPreferencesOption"
   | "MonthlyActivityEmail"
-  | "CsatSurvey"
   | "CancellationFlow"
   | "ConfirmCancellation"
-  | "LastScanDateBadge";
+  | "FirstDataBrokerRemovalFixedEmail"
+  | "DiscountCouponNextThreeMonths"
+  | "LatestScanDateCsatSurvey"
+  | "AutomaticRemovalCsatSurvey"
+  | "HowItWorksPage"
+  | "AdditionalRemovalStatuses"
+  | "PetitionBannerCsatSurvey";
 
 /**
  * @param options

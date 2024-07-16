@@ -5,6 +5,7 @@
 import { Knex } from "knex";
 import { Profile } from "next-auth";
 import { Scan } from "./app/functions/server/onerep";
+import { ISO8601DateString } from "./utils/parse";
 import { StateAbbr } from "./utils/states";
 import { RemovalStatus } from "./app/functions/universal/scanResult";
 import { BreachDataTypes } from "./app/functions/universal/breach";
@@ -74,6 +75,21 @@ declare module "knex/types/tables" {
     email: string;
   }
 
+  export type BreachResolutionChecked = {
+    resolutionsChecked: Array<
+      (typeof BreachDataTypes)[keyof typeof BreachDataTypes]
+    >;
+  };
+
+  export type SubscriberBreachResolution = {
+    [key: BreachRow.id]: BreachResolutionChecked;
+  };
+
+  type BreachResolution = null | {
+    useBreachId: boolean;
+    [key: SubscriberEmail["email"]]: SubscriberBreachResolution;
+  };
+
   interface SubscriberRow {
     id: number;
     primary_sha1: string;
@@ -86,6 +102,7 @@ declare module "knex/types/tables" {
     signup_language: null | string;
     fxa_refresh_token: null | string;
     fxa_access_token: null | string;
+    fxa_session_expiry: null | Date;
     fxa_profile_json: null | Profile;
     fxa_uid: null | string;
     // TODO: Find unknown type
@@ -108,37 +125,22 @@ declare module "knex/types/tables" {
       };
       monitoredEmails: { count: number };
     };
+    monthly_email_at: ISO8601DateString;
+    monthly_email_optout: boolean;
     monthly_monitor_report_at: null | Date;
     monthly_monitor_report: boolean;
-    breach_resolution:
-      | null
-      | ({
-          useBreachId: boolean;
-        } & Record<
-          SubscriberEmail.email,
-          Record<
-            BreachRow.id,
-            {
-              resolutionsChecked: Array<
-                (typeof BreachDataTypes)[keyof typeof BreachDataTypes]
-              >;
-            }
-          >
-        >);
-    // TODO: Find unknown type
-    // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
-    db_migration_1: null | unknown;
-    // TODO: Find unknown type
-    // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
-    db_migration_2: null | unknown;
+    breach_resolution: BreachResolution;
     onerep_profile_id: null | number;
+    sign_in_count: null | number;
     email_addresses: SubscriberEmail[];
+    first_broker_removal_email_sent: boolean;
   }
   type SubscriberOptionalColumns = Extract<
     keyof SubscriberRow,
     | "fx_newsletter"
     | "fxa_access_token"
     | "fxa_refresh_token"
+    | "fxa_session_expiry"
     | "fxa_profile_json"
     | "fxa_uid"
     | "breaches_last_shown"
@@ -146,17 +148,18 @@ declare module "knex/types/tables" {
     | "breaches_resolved"
     | "waitlists_joined"
     | "breach_stats"
+    | "monthly_email_at"
+    | "monthly_email_optout"
     | "monthly_monitor_report_at"
     | "monthly_monitor_report"
     | "breach_resolution"
-    | "db_migration_1"
-    | "db_migration_2"
     | "onerep_profile_id"
     | "email_addresses"
+    | "first_broker_removal_email_sent"
   >;
   type SubscriberAutoInsertedColumns = Extract<
     keyof SubscriberRow,
-    "id" | "created_at" | "updated_at"
+    "id" | "created_at" | "updated_at" | "sign_in_count"
   >;
 
   interface EmailAddressRow {
@@ -172,6 +175,17 @@ declare module "knex/types/tables" {
   type EmailAddressAutoInsertedColumns = Extract<
     keyof EmailAddressRow,
     "id" | "created_at" | "updated_at"
+  >;
+
+  interface SubscriberCouponRow {
+    id: number;
+    subscriber_id: number;
+    coupon_code: string;
+    created_at: Date;
+  }
+  type SubscriberCouponAutoInsertedColumns = Extract<
+    keyof SubscriberCouponRow,
+    "id" | "subscriber_id" | "created_at"
   >;
 
   interface BreachRow {
@@ -242,13 +256,14 @@ declare module "knex/types/tables" {
     middle_name?: string;
     last_name: string;
     status: RemovalStatus;
+    optout_attempts?: number;
     manually_resolved: boolean;
     created_at: Date;
     updated_at: Date;
   }
   type OnerepScanResultOptionalColumns = Extract<
     keyof OnerepScanResultRow,
-    "manually_resolved" | "middle_name"
+    "manually_resolved" | "middle_name" | "optout_attempts"
   >;
   type OnerepScanResultSerializedColumns = Extract<
     keyof OnerepScanResultRow,
@@ -297,6 +312,20 @@ declare module "knex/types/tables" {
     "id" | "created_at" | "updated_at"
   >;
 
+  interface StatsRow {
+    id: number;
+    name: string;
+    current: string;
+    max: string;
+    type: string;
+    created_at: Date;
+    modified_at: Date;
+  }
+  type StatsAutoInsertedColumns = Extract<
+    keyof StatsRow,
+    "id" | "created_at" | "modified_at"
+  >;
+
   interface Tables {
     attributions: Knex.CompositeTableType<
       AttributionRow,
@@ -335,6 +364,14 @@ declare module "knex/types/tables" {
       // otherfields are optional, except updated_at:
       Partial<Omit<SubscriberRow, "id" | "created_at">> &
         Pick<SubscriberRow, "updated_at">
+    >;
+
+    subscriber_coupons: Knex.CompositeTableType<
+      SubscriberCouponRow,
+      // On updates, auto-generated columns cannot be set, and nullable columns are optional:
+      Omit<SubscriberCouponRow, SubscriberAutoInsertedColumns>,
+      // On updates, don't allow updating the ID; all other fields are optional:
+      Partial<Omit<SubscriberCouponRow, "id">>
     >;
 
     email_addresses: Knex.CompositeTableType<
@@ -407,11 +444,14 @@ declare module "knex/types/tables" {
       Partial<Omit<EmailNotificationRow, "id" | "created_at">> &
         Pick<EmailNotificationRow, "updated_at">
     >;
-  }
-  interface StatsRow {
-    name: string;
-    current: string;
-    max: string;
-    type: string;
+
+    stats: Knex.CompositeTableType<
+      StatsRow,
+      // On updates, auto-generated columns cannot be set:
+      Omit<StatsRow, StatsAutoInsertedColumns> & Partial<StatsRow>,
+      // On updates, don't allow updating the ID and created date; all other fields are optional, except modified_at:
+      Partial<Omit<StatsRow, "id" | "created_at">> &
+        Pick<StatsRow, "modified_at">
+    >;
   }
 }

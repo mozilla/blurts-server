@@ -14,9 +14,13 @@ import {
 } from "../../../../../../../functions/universal/user";
 import {
   getLatestOnerepScanResults,
+  getLatestScanForProfileByReason,
   getScansCountForProfile,
 } from "../../../../../../../../db/tables/onerep_scans";
-import { getOnerepProfileId } from "../../../../../../../../db/tables/subscribers";
+import {
+  getOnerepProfileId,
+  getSignInCount,
+} from "../../../../../../../../db/tables/subscribers";
 
 import {
   activateAndOptoutProfile,
@@ -45,9 +49,12 @@ type Props = {
   params: {
     slug: string[] | undefined;
   };
+  searchParams: {
+    nimbus_web_preview?: string;
+  };
 };
 
-export default async function DashboardPage({ params }: Props) {
+export default async function DashboardPage({ params, searchParams }: Props) {
   const session = await getServerSession();
   if (!checkSession(session) || !session?.user?.subscriber?.id) {
     return redirect("/");
@@ -110,16 +117,14 @@ export default async function DashboardPage({ params }: Props) {
   const enabledFeatureFlags = await getEnabledFeatureFlags({
     email: session.user.email,
   });
-  const userIsEligibleForPremium = isEligibleForPremium(
-    countryCode,
-    enabledFeatureFlags,
-  );
+  const userIsEligibleForPremium = isEligibleForPremium(countryCode);
 
   const experimentationId = getExperimentationId(session.user);
   const experimentData = await getExperiments({
     experimentationId: experimentationId,
     countryCode: countryCode,
     locale: getLocale(getL10n()),
+    previewMode: searchParams.nimbus_web_preview === "true",
   });
 
   const monthlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "monthly" });
@@ -131,6 +136,14 @@ export default async function DashboardPage({ params }: Props) {
   );
   const elapsedTimeInDaysSinceInitialScan =
     await getElapsedTimeInDaysSinceInitialScan(session.user);
+
+  const hasFirstMonitoringScan = profileId
+    ? typeof (await getLatestScanForProfileByReason(
+        profileId,
+        "monitoring",
+      )) !== "undefined"
+    : false;
+  const signInCount = await getSignInCount(session.user.subscriber.id);
 
   return (
     <View
@@ -151,6 +164,8 @@ export default async function DashboardPage({ params }: Props) {
       experimentationId={experimentationId}
       experimentData={experimentData}
       activeTab={activeTab}
+      hasFirstMonitoringScan={hasFirstMonitoringScan}
+      signInCount={signInCount}
     />
   );
 }

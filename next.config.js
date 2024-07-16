@@ -8,10 +8,6 @@ import { withSentryConfig } from "@sentry/nextjs";
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   productionBrowserSourceMaps: true,
-  sentry: {
-    disableServerWebpackPlugin: process.env.UPLOAD_SENTRY_SOURCEMAPS !== "true",
-    disableClientWebpackPlugin: process.env.UPLOAD_SENTRY_SOURCEMAPS !== "true",
-  },
   images: {
     remotePatterns: [
       {
@@ -183,10 +179,12 @@ const nextConfig = {
     // Without this setting, Next.js has Webpack trying and failing to load
     // uglify-js when compiling MJML email templates to HTML in `renderEmail.ts`:
     serverComponentsExternalPackages: ["mjml"],
+    // Sentry 8.x requires `instrumentation.ts` vs. it's previous custom approach.
+    instrumentationHook: true,
   },
 };
 
-const sentryWebpackPluginOptions = {
+const sentryOptions = {
   // Additional config options for the Sentry Webpack plugin. Keep in mind that
   // the following options are set automatically, and overriding them is not
   // recommended:
@@ -200,17 +198,15 @@ const sentryWebpackPluginOptions = {
 
   // For all available options, see:
   // https://github.com/getsentry/sentry-webpack-plugin#options.
-};
 
-const sentryOptions = {
   // Upload additional client files (increases upload size)
   // https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/#widen-the-upload-scope
   widenClientFileUpload: true,
   hideSourceMaps: false,
+
+  sourcemaps: {
+    disable: process.env.UPLOAD_SENTRY_SOURCEMAPS !== "true",
+  },
 };
 
-export default withSentryConfig(
-  nextConfig,
-  sentryWebpackPluginOptions,
-  sentryOptions,
-);
+export default withSentryConfig(nextConfig, sentryOptions);

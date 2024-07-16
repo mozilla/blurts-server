@@ -11,9 +11,8 @@ settings-cancel-plus-link-label = Cancel from your { -brand-mozilla-account }
 ## Cancel Plus subscription - flow with a cancellation survey
 
 settings-cancel-plus-survey-button-label = Cancel your subscription
-settings-cancel-plus-step-confirm-heading = Leaving now means data brokers may add you back
-settings-cancel-plus-step-confirm-content-pt1 = Data brokers regularly scrape the internet and search public records to find new info about you. They’ll often add you back within 3-4 months after removal.
-settings-cancel-plus-step-confirm-content-pt2 = { -brand-monitor-plus } continually watches for new profiles and removes them for you, no matter how many times you’re re-added.
+settings-cancel-plus-step-confirm-heading = Hey, before you go…
+settings-cancel-plus-step-confirm-content = Data brokers continually re-add your personal info back into their databases. Leaving now means you’ll no longer be protected.
 settings-cancel-plus-step-confirm-cta-label = Continue to cancellation
 settings-cancel-plus-step-confirm-cancel-label = Never mind, take me back
 settings-cancel-plus-step-survey-heading = We’re sorry to see you go. Will you tell us why you’re leaving?
@@ -23,6 +22,27 @@ settings-unsubscribe-dialog-confirmation-redirect-title = Directing you to your 
 settings-unsubscribe-dialog-confirmation-redirect-description-pt1 = We’ll automatically redirect you to your { -brand-mozilla-account } where you can cancel your { -brand-monitor } subscription.
 settings-unsubscribe-dialog-confirmation-redirect-description-pt2 = Please note, all of your { -brand-monitor-plus } services will be <b>permanently deleted</b> after your current billing cycle ends.
 settings-unsubscribe-dialog-cancellation-survey-form-placeholder = What could have gone better?
+# Variables:
+# $discount_percentage_num is the amount discounted in percentage per month
+# $discount_duration is the number of month(s) that users will pay the discounted price
+settings-unsubscribe-dialog-promotion-cta = {
+  $discount_duration ->
+    [one] Stay and get { $discount_percentage_num } off next month
+    *[other] Stay and get { $discount_percentage_num } off { $discount_duration } months
+}
+# Variables:
+# $discount_percentage_num is the amount discounted in percentage per month
+# $discount_duration is the number of month(s) that users will pay the discounted price
+settings-unsubscribe-dialog-promotion-description = {
+  $discount_duration ->
+    [one] { -brand-monitor-plus } will continue protecting your personal data, and a { $discount_percentage_num } discount has been applied to your next month.
+    *[other] { -brand-monitor-plus } will continue protecting your personal data, and a { $discount_percentage_num } discount has been applied to your next { $discount_duration } months.
+}
+settings-unsubscribe-dialog-promotion-cta-subtitle = Discount applied to your next month. Redeemable one time only.
+settings-unsubscribe-dialog-promotion-unsuccessful = There was a problem applying your discount. <try_again_link>Please try again.</try_again_link>
+settings-unsubscribe-dialog-promotion-complete = You’re all set!
+settings-unsubscribe-dialog-promotion-back-to-dashboard-cta = Go to my Dashboard
+settings-unsubscribe-dialog-promotion-limitations-apply = Limited time, restrictions apply
 
 ## Delete Monitor account
 

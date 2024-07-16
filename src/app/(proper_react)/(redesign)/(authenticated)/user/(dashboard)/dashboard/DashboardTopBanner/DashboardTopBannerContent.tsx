@@ -21,10 +21,10 @@ import { UpsellButton } from "../../../../../../../components/client/toolbar/Ups
 import { WaitlistDialog } from "../../../../../../../components/client/SubscriberWaitlistDialog";
 import { useTelemetry } from "../../../../../../../hooks/useTelemetry";
 import {
-  CONST_URL_SUMO_HOW_IT_WORKS,
   CONST_ONEREP_DATA_BROKER_COUNT,
   CONST_ONEREP_MAX_SCANS_THRESHOLD,
 } from "../../../../../../../../constants";
+import Link from "next/link";
 
 export interface ContentProps {
   relevantGuidedStep: StepLink;
@@ -57,6 +57,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
     monthlySubscriptionUrl,
     yearlySubscriptionUrl,
     subscriptionBillingAmount,
+    howItWorksFlagEnabled,
   } = props;
 
   const waitlistDialogState = useOverlayTriggerState({});
@@ -262,19 +263,22 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
                 </>
               )}
             </div>
-            <a
-              href={CONST_URL_SUMO_HOW_IT_WORKS}
-              target="_blank"
-              onClick={() =>
-                recordTelemetry("link", "click", {
-                  link_id: "learn_more",
-                })
-              }
-            >
-              {l10n.getString(
-                "dashboard-top-banner-monitor-protects-your-even-more-learn-more",
-              )}
-            </a>
+            {howItWorksFlagEnabled && (
+              <Link
+                data-testid="learn-more-link-to-how-it-works"
+                href="/how-it-works"
+                target="_blank"
+                onClick={() =>
+                  recordTelemetry("link", "click", {
+                    link_id: "learn_more",
+                  })
+                }
+              >
+                {l10n.getString(
+                  "dashboard-top-banner-monitor-protects-your-even-more-learn-more",
+                )}
+              </Link>
+            )}
           </>
         );
       case "UsUserNonPremiumNoExposures":

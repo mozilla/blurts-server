@@ -11,6 +11,7 @@ import AppConstants from "../../../appConstants.js";
 import {
   getSubscriberByFxaUid,
   updateFxAData,
+  incrementSignInCountForEligibleFreeUser,
 } from "../../../db/tables/subscribers.js";
 import { addSubscriber } from "../../../db/tables/emailAddresses.js";
 import { getBreaches } from "../../functions/server/getBreaches";
@@ -26,6 +27,7 @@ import { signupReportEmailPartial } from "../../../emails/emailSignupReport.js";
 import { getL10n } from "../../functions/l10n/serverComponents";
 import { OAuthConfig } from "next-auth/providers/oauth.js";
 import { SerializedSubscriber } from "../../../next-auth.js";
+import { record } from "../../functions/server/glean";
 
 const fxaProviderConfig: OAuthConfig<FxaProfile> = {
   // As per https://mozilla.slack.com/archives/C4D36CAJW/p1683642497940629?thread_ts=1683642325.465929&cid=C4D36CAJW,
@@ -181,6 +183,12 @@ export const authOptions: AuthOptions = {
             l10n,
           );
 
+          record("account", "create", {
+            string: {
+              monitorUserId: account.userId ?? "",
+            },
+          });
+
           await initEmail(process.env.SMTP_URL);
           await sendEmail(data.recipientEmail, subject, emailTemplate);
         } else {
@@ -219,8 +227,9 @@ export const authOptions: AuthOptions = {
     },
   },
   events: {
-    signIn(message) {
+    async signIn(message) {
       logger.debug("fxa-confirmed-profile-data", message.user.id);
+      await incrementSignInCountForEligibleFreeUser(message.user.id);
     },
     signOut(message) {
       logger.debug("logout", message.token.subscriber?.id ?? undefined);

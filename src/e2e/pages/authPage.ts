@@ -13,6 +13,7 @@ export class AuthPage {
   readonly continueButton: Locator;
   readonly ageInputField: Locator;
   readonly verifyCodeInputField: Locator;
+  readonly useDifferentEmailButton: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -22,6 +23,7 @@ export class AuthPage {
     this.ageInputField = page.getByLabel("How old are you?");
     this.continueButton = page.locator('[type="submit"]').first();
     this.verifyCodeInputField = page.locator("div.card input");
+    this.useDifferentEmailButton = page.locator("#use-different");
   }
 
   async continue({ waitForURL = "**/*" }) {
@@ -39,16 +41,16 @@ export class AuthPage {
     await this.continue({ waitForURL: "**/oauth/**" });
   }
 
-  async enterPassword() {
-    await this.passwordInputField.fill(
-      process.env.E2E_TEST_ACCOUNT_PASSWORD as string,
-    );
+  async enterPassword(optionalPassword?: string) {
+    const password =
+      optionalPassword || (process.env.E2E_TEST_ACCOUNT_PASSWORD as string);
+    await this.passwordInputField.fill(password);
     await this.continue({ waitForURL: "**/user/**" });
   }
 
-  async signIn(email: string) {
+  async signIn(email: string, optionalPassword?: string) {
     await this.enterEmail(email);
-    await this.enterPassword();
+    await this.enterPassword(optionalPassword);
   }
 
   async signUp(email: string, page: Page) {

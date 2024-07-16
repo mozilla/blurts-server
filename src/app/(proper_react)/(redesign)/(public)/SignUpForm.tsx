@@ -13,7 +13,8 @@ import { useTelemetry } from "../../../hooks/useTelemetry";
 import { VisuallyHidden } from "../../../components/server/VisuallyHidden";
 import { WaitlistCta } from "./ScanLimit";
 import { useCookies } from "react-cookie";
-import { modifyAttributionsForUrlSearchParams } from "../../../functions/universal/attributions";
+import { getAttributionSearchParams } from "./FreeScanCta";
+import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 
 export type Props = {
   eligibleForPremium: boolean;
@@ -24,6 +25,8 @@ export type Props = {
     field?: string;
   };
   scanLimitReached: boolean;
+  experimentData?: ExperimentData;
+  placeholder?: string;
 };
 
 export const SignUpForm = (props: Props) => {
@@ -32,33 +35,18 @@ export const SignUpForm = (props: Props) => {
   const [emailInput, setEmailInput] = useState("");
   const record = useTelemetry();
   const [cookies] = useCookies(["attributionsFirstTouch"]);
-  let attributionSearchParams = new URLSearchParams(
-    cookies.attributionsFirstTouch,
-  );
-  attributionSearchParams = modifyAttributionsForUrlSearchParams(
-    attributionSearchParams,
-    {
-      entrypoint: "monitor.mozilla.org-monitor-product-page",
-      email: emailInput,
-      form_type: "button",
-    },
-    {
-      utm_source: "product",
-      utm_medium: "monitor",
-      utm_campaign: "get_free_scan",
-    },
-  );
 
   const onSubmit: FormEventHandler = (event) => {
     event.preventDefault();
     void signIn(
       "fxa",
       { callbackUrl: props.signUpCallbackUrl },
-      attributionSearchParams.toString(),
+      getAttributionSearchParams({
+        cookies,
+        emailInput,
+        experimentData: props.experimentData,
+      }),
     );
-    record("ctaButton", "click", {
-      button_id: props.eventId.cta,
-    });
   };
 
   const labelContent = (
@@ -77,6 +65,7 @@ export const SignUpForm = (props: Props) => {
     <form className={styles.form} onSubmit={onSubmit}>
       <input
         name={emailInputId}
+        data-testid="signup-form-input"
         id={emailInputId}
         onChange={(e) => {
           setEmailInput(e.target.value);
@@ -88,11 +77,21 @@ export const SignUpForm = (props: Props) => {
         }}
         value={emailInput}
         type="email"
-        placeholder={l10n.getString(
-          "landing-all-hero-emailform-input-placeholder",
-        )}
+        placeholder={
+          props.placeholder ??
+          l10n.getString("landing-all-hero-emailform-input-placeholder")
+        }
       />
-      <Button type="submit" variant="primary" wide>
+      <Button
+        type="submit"
+        variant="primary"
+        wide
+        onPress={() => {
+          record("ctaButton", "click", {
+            button_id: props.eventId.cta,
+          });
+        }}
+      >
         {l10n.getString("landing-all-hero-emailform-submit-label")}
       </Button>
       {props.isHero ? (

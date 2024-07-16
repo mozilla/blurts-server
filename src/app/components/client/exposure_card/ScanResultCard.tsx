@@ -18,22 +18,22 @@ import {
 import { useL10n } from "../../../hooks/l10n";
 import { ExposureCardDataClassLayout } from "./ExposureCardDataClass";
 import { DataBrokerImage } from "./DataBrokerImage";
-import { CONST_URL_SUMO_MONITOR_REMOVAL } from "../../../../constants";
 import { TelemetryLink } from "../TelemetryLink";
+import { FeatureFlagName } from "../../../../db/tables/featureFlags";
 
 export type ScanResultCardProps = {
   scanResult: OnerepScanResultRow;
   locale: string;
-  isPremiumBrokerRemovalEnabled: boolean;
   resolutionCta: ReactNode;
   isPremiumUser: boolean;
   isExpanded: boolean;
   isOnManualRemovePage?: boolean;
+  enabledFeatureFlags?: FeatureFlagName[];
   onToggleExpanded: () => void;
 };
 
 export const ScanResultCard = (props: ScanResultCardProps) => {
-  const { scanResult, locale, isPremiumBrokerRemovalEnabled } = props;
+  const { scanResult, locale } = props;
   const l10n = useL10n();
   const dateFormatter = new Intl.DateTimeFormat(locale, {
     // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#datestyle
@@ -106,16 +106,7 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
       eventData={{
         link_id: `data_broker_${scanResult.id}`,
       }}
-    />
-  );
-
-  const removalInfoLink = (
-    <TelemetryLink
-      href={CONST_URL_SUMO_MONITOR_REMOVAL}
-      target="_blank"
-      eventData={{
-        link_id: "explanation_of_removal_time",
-      }}
+      showIcon
     />
   );
 
@@ -130,24 +121,24 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
   );
 
   const dataBrokerDescription = () => {
-    switch (scanResult.status) {
-      case "optout_in_progress":
-      case "waiting_for_verification":
-        return l10n.getFragment(
-          "exposure-card-description-info-for-sale-in-progress",
-          {
-            elems: {
-              data_broker_profile: dataBrokerProfileLink,
-              removal_info: removalInfoLink,
-            },
+    // Data broker cards manually resolved do not change their status to "removed";
+    // instead, we track them using the "manually_resolved" property.
+    if (scanResult.manually_resolved) {
+      return l10n.getFragment(
+        "exposure-card-description-info-for-sale-fixed-manually-fixed",
+        {
+          elems: {
+            data_broker_profile: dataBrokerProfileLink,
           },
-        );
-      case "new":
-        // Data broker cards manually resolved do not change their status to "removed";
-        // instead, we track them using the "manually_resolved" property.
-        if (scanResult.manually_resolved) {
+        },
+      );
+    }
+
+    switch (scanResult.status) {
+      case "waiting_for_verification":
+        if (props.enabledFeatureFlags?.includes("AdditionalRemovalStatuses")) {
           return l10n.getFragment(
-            "exposure-card-description-info-for-sale-fixed-manually-fixed",
+            "exposure-card-description-info-for-sale-requested-removal-dashboard",
             {
               elems: {
                 data_broker_profile: dataBrokerProfileLink,
@@ -155,25 +146,34 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
             },
           );
         }
+        return l10n.getFragment(
+          "exposure-card-description-info-for-sale-in-progress-dashboard",
+          {
+            elems: {
+              data_broker_profile: dataBrokerProfileLink,
+            },
+          },
+        );
+      case "optout_in_progress":
+        return l10n.getFragment(
+          "exposure-card-description-info-for-sale-in-progress-dashboard",
+          {
+            elems: {
+              data_broker_profile: dataBrokerProfileLink,
+            },
+          },
+        );
+      case "new":
         /* c8 ignore start */
         if (props.isOnManualRemovePage) {
-          return scanResult.manually_resolved
-            ? l10n.getFragment(
-                "exposure-card-description-info-for-sale-fixed-manually-fixed",
-                {
-                  elems: {
-                    data_broker_profile: dataBrokerProfileLink,
-                  },
-                },
-              )
-            : l10n.getFragment(
-                "exposure-card-description-info-for-sale-action-needed-manual-fix-page",
-                {
-                  elems: {
-                    data_broker_profile: dataBrokerProfileLink,
-                  },
-                },
-              );
+          return l10n.getFragment(
+            "exposure-card-description-info-for-sale-action-needed-manual-fix-page",
+            {
+              elems: {
+                data_broker_profile: dataBrokerProfileLink,
+              },
+            },
+          );
         }
         /* c8 ignore stop */
         return l10n.getFragment(
@@ -196,6 +196,20 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
         );
     }
   };
+
+  const attemptCount = scanResult.optout_attempts ?? 0;
+  const statusPillNote =
+    props.enabledFeatureFlags?.includes("AdditionalRemovalStatuses") &&
+    !scanResult.manually_resolved &&
+    scanResult.status === "waiting_for_verification" &&
+    attemptCount >= 1
+      ? l10n.getString("status-pill-requested-removal-info", {
+          attempt_count: attemptCount,
+          last_attempt_date: new Intl.DateTimeFormat(locale).format(
+            scanResult.updated_at,
+          ),
+        })
+      : "";
 
   const exposureCard = (
     <div aria-label={props.scanResult.data_broker}>
@@ -239,7 +253,11 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
               {l10n.getString("exposure-card-label-status")}
             </dt>
             <dd>
-              <StatusPill exposure={scanResult} />
+              <StatusPill
+                exposure={scanResult}
+                note={statusPillNote}
+                enabledFeatureFlags={props.enabledFeatureFlags}
+              />
             </dd>
           </dl>
           <button
@@ -277,12 +295,13 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
                 ))}
               </div>
             </div>
-            {isPremiumBrokerRemovalEnabled &&
-            // Verifying the status for automatically removed data brokers v. manually resolved are handled differently
-            props.scanResult.status === "new" &&
-            !props.scanResult.manually_resolved ? (
-              <span className={styles.fixItBtn}>{props.resolutionCta}</span>
-            ) : null}
+            {
+              // Verifying the status for automatically removed data brokers v. manually resolved are handled differently
+              props.scanResult.status === "new" &&
+              !props.scanResult.manually_resolved ? (
+                <span className={styles.fixItBtn}>{props.resolutionCta}</span>
+              ) : null
+            }
           </div>
         </div>
       </div>

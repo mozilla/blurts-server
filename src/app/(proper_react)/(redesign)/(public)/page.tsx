@@ -15,15 +15,32 @@ import { getEnabledFeatureFlags } from "../../../../db/tables/featureFlags";
 import { getL10n } from "../../../functions/l10n/serverComponents";
 import { View } from "./LandingView";
 import { CONST_DAY_MILLISECONDS } from "../../../../constants";
+import { getExperimentationId } from "../../../functions/server/getExperimentationId";
+import { getExperiments } from "../../../functions/server/getExperiments";
+import { getLocale } from "../../../functions/universal/getLocale";
 
-export default async function Page() {
+type Props = {
+  searchParams: {
+    nimbus_web_preview?: string;
+  };
+};
+
+export default async function Page({ searchParams }: Props) {
   const session = await getServerSession();
   if (typeof session?.user.subscriber?.fxa_uid === "string") {
     return redirect("/user/dashboard");
   }
   const enabledFlags = await getEnabledFeatureFlags({ ignoreAllowlist: true });
   const countryCode = getCountryCode(headers());
-  const eligibleForPremium = isEligibleForPremium(countryCode, enabledFlags);
+  const eligibleForPremium = isEligibleForPremium(countryCode);
+
+  const experimentationId = getExperimentationId(session?.user ?? null);
+  const experimentData = await getExperiments({
+    experimentationId,
+    countryCode,
+    locale: getLocale(getL10n()),
+    previewMode: searchParams.nimbus_web_preview === "true",
+  });
 
   // request the profile stats for the last 30 days
   const profileStats = await getProfilesStats(
@@ -40,6 +57,7 @@ export default async function Page() {
       countryCode={countryCode}
       scanLimitReached={scanLimitReached}
       enabledFlags={enabledFlags}
+      experimentData={experimentData}
     />
   );
 }

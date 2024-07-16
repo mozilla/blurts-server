@@ -10,6 +10,7 @@ import { StaticImageData } from "next/image";
 import { SubscriberBreach } from "../../../../utils/subscriberBreaches";
 import { ScanResultCard } from "./ScanResultCard";
 import { SubscriberBreachCard } from "./SubscriberBreachCard";
+import { FeatureFlagName } from "../../../../db/tables/featureFlags";
 
 export type Exposure = OnerepScanResultRow | SubscriberBreach;
 
@@ -22,17 +23,21 @@ export type ExposureCardProps = {
   exposureImg?: StaticImageData;
   exposureData: Exposure;
   locale: string;
-  isPremiumBrokerRemovalEnabled: boolean;
   isPremiumUser: boolean;
   isEligibleForPremium: boolean;
   resolutionCta: ReactNode;
   isExpanded: boolean;
+  enabledFeatureFlags: FeatureFlagName[];
   onToggleExpanded: () => void;
 };
 
 export const ExposureCard = ({ exposureData, ...props }: ExposureCardProps) => {
   return isScanResult(exposureData) ? (
-    <ScanResultCard {...props} scanResult={exposureData} />
+    <ScanResultCard
+      {...props}
+      scanResult={exposureData}
+      enabledFeatureFlags={props.enabledFeatureFlags}
+    />
   ) : (
     <SubscriberBreachCard {...props} subscriberBreach={exposureData} />
   );

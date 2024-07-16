@@ -5,6 +5,8 @@
 import { useState } from "react";
 import { useCookies } from "react-cookie";
 
+export const COOKIE_DISMISSAL_MAX_AGE_IN_SECONDS = 100 * 365 * 24 * 60 * 60;
+
 export type DismissOptions = {
   /** If true, the dismissal won't take effect right away, but the cookie to store the dismissal _will_ be set. */
   soft?: boolean;
@@ -47,7 +49,7 @@ export function useLocalDismissal(
       // tests.
       typeof options.duration === "number"
         ? options.duration
-        : 100 * 365 * 24 * 60 * 60;
+        : COOKIE_DISMISSAL_MAX_AGE_IN_SECONDS;
     setCookie(cookieId, Date.now().toString(), {
       maxAge: maxAgeInSeconds,
     });
@@ -86,6 +88,7 @@ function hasDismissedCookie(cookieValue?: string, duration?: number): boolean {
     // To be dismissed, the cookie has to be set, and either...
     typeof dismissalTimeStamp === "number" &&
     //   ...the dismissal should not be limited in duration, or...
+    /* c8 ignore next 3: useful for banners, we removed <RebrandAnnouncement> in MNTOR-3026*/
     (typeof duration !== "number" ||
       //   ...the dismissal was long enough ago:
       Date.now() - dismissalTimeStamp <= duration * 1000);

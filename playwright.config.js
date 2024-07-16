@@ -5,10 +5,10 @@
 import { defineConfig, devices } from '@playwright/test'
 /**
  * Read environment variables from file.
- * https://github.com/motdotla/dotenv
+ * https://www.npmjs.com/package/dotenv-flow
  */
-import * as dotenv from 'dotenv'
-dotenv.config()
+import * as dotenvFlow from 'dotenv-flow'
+dotenvFlow.config()
 /**
  * @see https://playwright.dev/docs/test-configuration
  */
@@ -51,7 +51,7 @@ export default defineConfig({
   forbidOnly: !!process.env.CI,
 
   /* Retry on CI only */
-  retries: process.env.CI ? 2 : 0,
+  retries: process.env.CI ? 1 : 0,
 
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,

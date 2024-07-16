@@ -1,7 +1,5 @@
 node_modules
 .node-version
-.env
-src/.env
 coverage
 .coveralls.yml
 .DS_Store
@@ -22,6 +20,7 @@ src/client/images/logo_cache
 **/storageState.json
 state.json
 src/e2e/specs/*-snapshots/**
+**/traces/
 
 # Storybook
 */storybook.log

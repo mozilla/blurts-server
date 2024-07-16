@@ -2,6 +2,15 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
+## Top navbar
+
+landing-all-hero-navbar-link-how-it-works = How it works
+landing-all-hero-navbar-link-pricing = Pricing
+landing-all-hero-navbar-link-faqs = FAQs
+landing-all-hero-navbar-link-all-breaches = All breaches
+
+##
+
 landing-premium-hero-lead = We scan to see if your phone number, passwords or home address have been leaked, and help you make it private again.
 
 landing-premium-hero-emailform-input-label = Enter your email address to check for data breach exposures and sites selling your info.

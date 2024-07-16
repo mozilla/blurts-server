@@ -43,6 +43,7 @@ modal-active-number-of-exposures-part-three-all = Zodra ze zijn opgelost, worden
 modal-fixed-number-of-exposures-title = Over uw aantal opgeloste lekken
 modal-fixed-number-of-exposures-all = Deze grafiek toont het totale aantal opgeloste datalekken voor alle e-mailadressen die u momenteel monitort. Zodra lekken als opgelost zijn gemarkeerd, worden ze hier aan het totaal toegevoegd.
 modal-cta-ok = OK
+modal-cta-got-it = Begrepen
 open-modal-alt = Modal openen
 close-modal-alt = Modal sluiten
 open-tooltip-alt = Tooltip openen
@@ -127,11 +128,11 @@ dashboard-top-banner-non-us-your-data-is-protected-description =
     }
 dashboard-top-banner-monitor-more-cta = Meer e-mailadressen monitoren
 
-# About Exposure Statuses Modal
+# About Exposure Indicators Modal
 
-modal-exposure-status-title = Over lekstatussen
 modal-exposure-status-description-all =
     We zoeken naar lekken in alle bekende datalekken.
     Uw lekken zullen een van de volgende statussen hebben:
-modal-exposure-status-action-needed = <b>Actie nodig</b> betekent dat het lek momenteel actief is en dat u stappen moet ondernemen om het te repareren.
-modal-exposure-status-fixed = <b>Opgelost</b> betekent dat het lek is verholpen en dat u geen actie hoeft te ondernemen.
+modal-exposure-indicator-title = Lekstatussen
+modal-exposure-indicator-action-needed = U dient een geavanceerde of handmatige actie uit te voeren om een actie te voltooien.
+modal-exposure-indicator-fixed = Het lek is verholpen en u hoeft geen actie te ondernemen.

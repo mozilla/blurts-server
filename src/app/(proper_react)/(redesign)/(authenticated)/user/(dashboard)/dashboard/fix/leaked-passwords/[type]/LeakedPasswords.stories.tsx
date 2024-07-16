@@ -64,7 +64,13 @@ const LeakedPasswordsWrapper = (props: {
   }
 
   return (
-    <Shell l10n={getL10n()} session={mockedSession} nonce="">
+    <Shell
+      l10n={getL10n()}
+      session={mockedSession}
+      nonce=""
+      countryCode="nl"
+      howItWorksFlagEnabled
+    >
       <LeakedPasswordsLayout
         subscriberEmails={[]}
         type={props.type}

@@ -19,6 +19,7 @@ import {
 } from "../utils/subscriberBreaches";
 import { Session } from "next-auth";
 import { HibpLikeDbBreach } from "../utils/hibp";
+import { SerializedSubscriber } from "../next-auth";
 
 // Setting this to a constant value produces the same result when the same methods
 // with the same version of faker are called.
@@ -51,6 +52,10 @@ export function createRandomScanResult(
   options: RandomScanResultOptions = {},
 ): OnerepScanResultRow {
   faker.seed(options.fakerSeed);
+  const optout_attempts =
+    options.status === "waiting_for_verification"
+      ? faker.number.int({ min: 1, max: 42 })
+      : undefined;
   return {
     id: faker.number.int(),
     onerep_scan_result_id: faker.number.int(),
@@ -79,6 +84,7 @@ export function createRandomScanResult(
     data_broker_id: faker.number.int(),
     created_at: options.createdDate ?? faker.date.recent({ days: 2 }),
     updated_at: faker.date.recent({ days: 1 }),
+    optout_attempts,
   };
 }
 
@@ -145,6 +151,9 @@ export function createUserWithPremiumSubscription(): Session["user"] {
       avatarDefault: true,
       subscriptions: ["monitor"],
     },
+    subscriber: {
+      id: 42,
+    } as SerializedSubscriber,
   };
 }
 
