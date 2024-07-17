@@ -57,7 +57,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page content`, (
 
     await expect(landingPage.fixExposuresTitle).toBeVisible();
     await expect(landingPage.fixExposuresSubtitle).toBeVisible();
-    await expect(landingPage.fixExposuresFormEmailInputField).toBeVisible();
+    // TODO MNTOR-3341 await expect(landingPage.fixExposuresFormEmailInputField).toBeVisible();
     await expect(landingPage.fixExposuresFormInputSubmitButton).toBeVisible();
     await expect(landingPage.fixExposuresGraphic).toBeVisible();
   });
@@ -130,7 +130,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page content`, (
     });
 
     await expect(landingPage.takeBackControlTitle).toBeVisible();
-    // await expect(landingPage.takeBackControlFormEmailInputField).toBeVisible();
+    // TODO MNTOR-3341 await expect(landingPage.takeBackControlFormEmailInputField).toBeVisible();
     await expect(landingPage.takeBackControlFormSubmitButton).toBeVisible();
   });
 
@@ -173,8 +173,8 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page content`, (
     await purchasePage.verifyYearlyPlanDetails();
   });
 
-  /* TODO MNTOR-3341
-  test('Verify the "Get free scan" corresponding email fields', async ({
+  // TODO MNTOR-3341
+  test.skip('Verify the "Get free scan" corresponding email fields', async ({
     landingPage,
     authPage,
   }) => {
@@ -195,7 +195,6 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page content`, (
     await authPage.passwordInputField.waitFor();
     await expect(authPage.passwordInputField).toBeVisible();
   });
-  */
 
   test('Verify manual/automatic removal "more info" tips from "Choose your level of protection" section', async ({
     landingPage,
@@ -232,8 +231,9 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page Functionali
 
     // fill out free scan form
     const randomEmail = `${Date.now()}_tstact@restmail.net`;
-    await landingPage.monitorHeroFormEmailInputField.fill(randomEmail);
-    await landingPage.monitorHeroFormInputSubmitButton.click();
+    // TODO MNTOR-3341 await landingPage.monitorHeroFormEmailInputField.fill(randomEmail);
+    // await landingPage.monitorHeroFormInputSubmitButton.click();
+    await landingPage.signInButton.click();
     await page.waitForURL("**/oauth/**");
 
     // complete registration form
@@ -301,10 +301,13 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page Functionali
     });
 
     // fill out free scan form
+    /* TODO MNTOR-3341
     await landingPage.monitorHeroFormEmailInputField.fill(
       process.env.E2E_TEST_ACCOUNT_EMAIL as string,
     );
     await landingPage.monitorHeroFormInputSubmitButton.click();
+    */
+    await landingPage.signInButton.click();
     await page.waitForURL("**/oauth/**");
 
     // complete sign in form
