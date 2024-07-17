@@ -25,13 +25,18 @@ dashboard-exposures-filter-date-found-last-seven-days = 7 n wussan ineggura
 dashboard-exposures-filter-date-found-last-thirty-days = 30 n wussan ineggura
 dashboard-exposures-filter-date-found-last-year = Aseggas yezrin
 dashboard-exposures-filter-status = Addad
+popover-open-filter-settings-alt = Fren imsizedgen
 dashboard-exposures-filter-show-all = Sken akk
 dashboard-exposures-filter-show-results = Sken igmaḍ
 dashboard-exposures-filter-reset = Wennez
 
 ## Top banner on the dashboard
 
+dashboard-top-banner-your-data-is-protected-title = Isefka-k ttummestnen
+dashboard-top-banner-your-data-is-protected-cta = Wali acu i iṣeggmen
 dashboard-top-banner-lets-keep-protecting-cta = Ad nkemmel
+dashboard-top-banner-protect-your-data-title = Aha ad nemmesten isefka-k
+dashboard-top-banner-protect-your-data-cta = Ṣeggem-it
 
 # About Exposure Indicators Modal
 
