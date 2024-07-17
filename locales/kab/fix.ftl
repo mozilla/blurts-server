@@ -28,6 +28,7 @@ fix-flow-celebration-security-questions-title = Isestanen n tɣellist ttwammestn
 
 # High Risk Data Breaches
 
+high-risk-breach-heading = Ha-t-a wayen ara tgeḍ
 # Variables
 # $breach_name is the name of the breach where the high risk data was found.
 # $breach_date is the date when the breach occurred.
@@ -77,7 +78,10 @@ security-recommendation-email-title = Mmesten tansa-k·m n yimayl
 
 # Leaked Passwords
 
+leaked-passwords-steps-title = Ha-t-a wayen ara tgeḍ
+leaked-passwords-mark-as-fixed = Creḍ iṣeggem
 leaked-passwords-skip = Suref akka tura
 
 # Leaked Security Questions
 
+leaked-security-questions-steps-title = Ha-t-a wayen ara tgeḍ
