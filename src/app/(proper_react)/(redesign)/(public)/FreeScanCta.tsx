@@ -41,7 +41,6 @@ export function getAttributionSearchParams({
     {
       entrypoint: "monitor.mozilla.org-monitor-product-page",
       form_type: typeof emailInput === "string" ? "email" : "button",
-      service: process.env.OAUTH_CLIENT_ID as string,
       ...(emailInput && { email: emailInput }),
       ...(experimentData &&
         experimentData["landing-page-free-scan-cta"].enabled && {
