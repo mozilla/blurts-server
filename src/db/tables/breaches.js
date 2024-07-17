@@ -88,8 +88,8 @@ async function upsertBreaches(hibpBreaches) {
 /**
  * Update logo path of a breach by name
  *
- * @param {string} name 
- * @param {string} faviconUrl
+ * @param {string} name
+ * @param {string | null} faviconUrl
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
