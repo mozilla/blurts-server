@@ -61,13 +61,12 @@ jobs:
       - name: Run Playwright tests
         if: github.actor != 'dependabot[bot]'
         run: npm run e2e:smoke
-        timeout-minutes: 30
+        timeout-minutes: 10
         env:
-          E2E_TEST_ENV: 'local'
-          E2E_TEST_BASE_URL: http://localhost:6060
+          E2E_TEST_ENV: ${{ inputs.environment != null && inputs.environment || 'local' }}
+          E2E_TEST_BASE_URL: ${{ secrets.E2E_TEST_BASE_URL }}
           E2E_TEST_ACCOUNT_EMAIL: ${{ secrets.E2E_TEST_ACCOUNT_EMAIL }}
-          E2E_TEST_ACCOUNT_EMAIL_ZERO_BROKERS: ${{ secrets.E2E_TEST_ACCOUNT_EMAIL_ZERO_BROKERS }}
-          E2E_TEST_ACCOUNT_EMAIL_ZERO_BREACHES_ZERO_BROKERS: ${{ secrets.E2E_TEST_ACCOUNT_EMAIL_ZERO_BREACHES_ZERO_BROKERS }}
+          E2E_TEST_ACCOUNT_EMAIL_ZERO_BREACHES: ${{ secrets.E2E_TEST_ACCOUNT_EMAIL_ZERO_BREACHES }}
           E2E_TEST_ACCOUNT_EMAIL_EXPOSURES_STARTED: ${{ secrets.E2E_TEST_ACCOUNT_EMAIL_EXPOSURES_STARTED }}
           E2E_TEST_ACCOUNT_PASSWORD: ${{ secrets.E2E_TEST_ACCOUNT_PASSWORD }}
           E2E_TEST_PAYPAL_LOGIN:  ${{ secrets.E2E_TEST_PAYPAL_LOGIN }}
@@ -75,13 +74,11 @@ jobs:
           ADMINS: ${{ secrets.ADMINS }}
           OAUTH_CLIENT_SECRET: ${{ secrets.OAUTH_CLIENT_SECRET }}
           ONEREP_API_KEY: ${{ secrets.ONEREP_API_KEY }}
-          ONEREP_API_BASE: 'http://localhost:6060/api/mock/onerep/'
           NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
           NEXTAUTH_URL: ${{ secrets.NEXTAUTH_URL }}
           DATABASE_URL: postgres://postgres:postgres@localhost:5432/blurts
           HIBP_KANON_API_TOKEN: ${{ secrets.HIBP_KANON_API_TOKEN }}
           HIBP_API_TOKEN: ${{ secrets.HIBP_API_TOKEN }}
-          HIBP_KANON_API_ROOT: 'http://localhost:6060/api/mock/hibp'
           # Our tests are currently set up to expect accounts to act like
           # old user accounts, so let's pretend they all are:
           BROKER_SCAN_RELEASE_DATE: "3000-12-31"

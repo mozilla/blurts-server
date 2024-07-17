@@ -170,9 +170,7 @@ export const clickOnATagCheckDomain = async (
   page: Page,
 ) => {
   if (typeof host === "string")
-    host = new RegExp(
-      escapeRegExp(host.replace(/^(https?:\/\/)/, "").replace(/:\d+$/, "")),
-    );
+    host = new RegExp(escapeRegExp(host.replace(/^(https?:\/\/)/, "")));
   if (typeof path === "string") path = new RegExp(".*" + path + ".*");
 
   const href = await aTag.getAttribute("href");
@@ -208,9 +206,6 @@ export const forceLoginAs = async (
     await route.abort();
   });
   await page.context().clearCookies();
-  await page
-    .context()
-    .addInitScript({ content: "window.localStorage.clear()" });
   await landingPage.open();
   await landingPage.goToSignIn();
   let visible = true;
@@ -224,35 +219,6 @@ export const forceLoginAs = async (
     await page.waitForURL(/^(?!.*signin).*/);
   }
   await authPage.signIn(email, password);
-  const dashboardRegex = /.*\/user\/dashboard.*/;
-  if (dashboardRegex.test(page.url())) return;
-  await page.waitForURL(dashboardRegex);
-};
-
-export const resetTestData = async (
-  page: Page,
-  hibp: boolean,
-  onerep: boolean,
-) => {
-  const baseUrl = process.env.SERVER_URL!;
-  const param1 = `${hibp ? "hibp=true" : ""}`;
-  const param2 = `${onerep ? "onerep=true" : ""}`;
-  let delim = "";
-  if (param1 && param2) delim = "&";
-  const params = param1 + delim + param2;
-  await page.goto(baseUrl + "/e2e?" + params);
-  await page.waitForURL(/.*\/e2e*/);
-
-  const clearDataButton = page.locator("button", { hasText: "Clear Data" });
-  await expect(clearDataButton).toBeVisible();
-  await clearDataButton.click();
-
-  const selectorQuery = '//div[contains(text(), "Request was successful")]';
-
-  await page.waitForSelector(selectorQuery);
-
-  const successMessage = page.locator(selectorQuery);
-  await expect(successMessage).toBeVisible();
-
-  await page.goBack();
+  await page.waitForURL("**/user/dashboard");
+  await expect(page).toHaveURL(/.*\/user\/dashboard.*/);
 };

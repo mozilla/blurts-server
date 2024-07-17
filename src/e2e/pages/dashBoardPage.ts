@@ -82,7 +82,6 @@ export class DashboardPage {
   readonly overviewCard: Locator;
   readonly overviewCardSummary: Locator;
   readonly overviewCardFindings: Locator;
-  readonly chartSvgExposuresCount: Locator;
 
   readonly upsellScreenButton: Locator;
   readonly urlRegex: RegExp;
@@ -250,8 +249,6 @@ export class DashboardPage {
     this.overviewCardFindings = page.locator(
       "[aria-label='Dashboard summary'] > div > h3",
     );
-    this.chartSvgExposuresCount =
-      this.overviewCard.locator("figure > div > svg");
 
     //regex
     this.urlRegex = /\/dashboard\/(fixed|action-needed)\/?/;

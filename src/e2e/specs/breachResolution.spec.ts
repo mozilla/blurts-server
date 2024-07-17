@@ -6,7 +6,7 @@ import { test, expect } from "../fixtures/basePage.js";
 
 // bypass login
 test.use({ storageState: "./e2e/storageState.json" });
-test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Headers @smoke`, () => {
+test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Headers`, () => {
   test("Verify that the site header is displayed correctly for signed in users", async ({
     dataBreachPage,
   }) => {
