@@ -2,6 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import { ExperimentData } from "../../../telemetry/generated/nimbus/experiments";
 import { modifyAttributionsForUrlSearchParams } from "../universal/attributions";
 
 export type SearchParamArgs = {
@@ -29,8 +30,11 @@ export function getFreeScanSearchParams({
   emailInput,
   entrypoint,
   metricsFlowData,
+  experimentData,
 }: SearchParamArgs &
-  Omit<MetricFlowParams, "entrypointExperiment" | "entrypointVariation">) {
+  Omit<MetricFlowParams, "entrypointExperiment" | "entrypointVariation"> & {
+    experimentData?: ExperimentData;
+  }) {
   const attributionSearchParams = modifyAttributionsForUrlSearchParams(
     new URLSearchParams(cookies.attributionsFirstTouch),
     {
@@ -42,6 +46,12 @@ export function getFreeScanSearchParams({
         flow_id: metricsFlowData.flowId,
         flow_begin_time: metricsFlowData.flowBeginTime.toString(),
       }),
+      ...(experimentData &&
+        experimentData["landing-page-free-scan-cta"].enabled && {
+          entrypoint_experiment: "landing-page-free-scan-cta",
+          entrypoint_variation:
+            experimentData["landing-page-free-scan-cta"].variant,
+        }),
     },
     {
       utm_source: "product",

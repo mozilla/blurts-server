@@ -44,8 +44,9 @@ export const SignUpForm = (props: Props) => {
       { callbackUrl: props.signUpCallbackUrl },
       getFreeScanSearchParams({
         cookies,
-        emailInput: "",
+        emailInput: emailInput,
         entrypoint: CONST_URL_MONITOR_LANDING_PAGE_ID,
+        experimentData: props.experimentData,
       }),
     );
   };

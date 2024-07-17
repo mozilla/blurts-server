@@ -8,12 +8,13 @@ import { signIn } from "next-auth/react";
 import { useCookies } from "react-cookie";
 import { SignUpForm, Props as SignUpFormProps } from "./SignUpForm";
 import { TelemetryButton } from "../../../components/client/TelemetryButton";
-import { modifyAttributionsForUrlSearchParams } from "../../../functions/universal/attributions";
 import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 import { useL10n } from "../../../hooks/l10n";
 import { WaitlistCta } from "./ScanLimit";
 import { useContext } from "react";
 import { AccountsMetricsFlowContext } from "../../../../contextProviders/accounts-metrics-flow";
+import { getFreeScanSearchParams } from "../../../functions/universal/getFreeScanSearchParams";
+import { CONST_URL_MONITOR_LANDING_PAGE_ID } from "../../../../constants";
 
 export type Props = {
   eligibleForPremium: boolean;
@@ -26,41 +27,6 @@ export type Props = {
   scanLimitReached: boolean;
   placeholder?: string;
 };
-
-export function getAttributionSearchParams({
-  cookies,
-  emailInput,
-  experimentData,
-}: {
-  cookies: {
-    attributionsFirstTouch?: string;
-  };
-  emailInput?: string;
-  experimentData?: ExperimentData;
-}) {
-  const attributionSearchParams = modifyAttributionsForUrlSearchParams(
-    new URLSearchParams(cookies.attributionsFirstTouch),
-    {
-      entrypoint: "monitor.mozilla.org-monitor-product-page",
-      form_type: typeof emailInput === "string" ? "email" : "button",
-      service: process.env.OAUTH_CLIENT_ID as string,
-      ...(emailInput && { email: emailInput }),
-      ...(experimentData &&
-        experimentData["landing-page-free-scan-cta"].enabled && {
-          entrypoint_experiment: "landing-page-free-scan-cta",
-          entrypoint_variation:
-            experimentData["landing-page-free-scan-cta"].variant,
-        }),
-    },
-    {
-      utm_source: "product",
-      utm_medium: "monitor",
-      utm_campaign: "get_free_scan",
-    },
-  );
-
-  return attributionSearchParams.toString();
-}
 
 export const FreeScanCta = (
   props: SignUpFormProps & {
@@ -92,7 +58,6 @@ export const FreeScanCta = (
     <WaitlistCta />
   ) : (
     <div>
-      <pre>{JSON.stringify(accountsMetricsFlowContext, null, 2)}</pre>
       <TelemetryButton
         disabled={accountsMetricsFlowContext.loading}
         variant="primary"
@@ -107,8 +72,9 @@ export const FreeScanCta = (
           void signIn(
             "fxa",
             { callbackUrl: props.signUpCallbackUrl },
-            getAttributionSearchParams({
+            getFreeScanSearchParams({
               cookies,
+              entrypoint: CONST_URL_MONITOR_LANDING_PAGE_ID,
               experimentData: props.experimentData,
             }),
           );

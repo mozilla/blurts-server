@@ -26,7 +26,7 @@ export type Props = {
   fxaSubscriptionsUrl: string;
   enableDiscountCoupon: boolean;
   experimentData?: ExperimentData;
-  isYearlySubscriber: boolean;
+  isMonthlySubscriber: boolean;
 };
 
 type DiscountData = {
@@ -180,7 +180,7 @@ export const CancelFlow = (props: Props) => {
                   </p>
                   {props.enableDiscountCoupon &&
                   !alreadyHasCouponSet &&
-                  !props.isYearlySubscriber ? (
+                  props.isMonthlySubscriber ? (
                     <>
                       <TelemetryButton
                         event={{
