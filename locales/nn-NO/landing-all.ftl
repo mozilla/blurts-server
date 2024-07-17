@@ -3,7 +3,7 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 public-nav-name = { -brand-mozilla-monitor }
-landing-all-hero-title = Finn ut kvar din informasjon er eksponert — og ta han tilbake
+landing-all-hero-title = Finn ut kvar informasjonen din er eksponert — og ta han tilbake
 landing-all-hero-lead = Vi undersøkjer datalekkasjar for å sjå om dine data har lekt og gir deg rettleiing om korleis du skal fikse det.
 landing-all-hero-emailform-input-placeholder = dittnamn@doeme.no
 landing-all-hero-emailform-input-label = Skriv inn e-postadressa di for å søkje etter datalekkasje-eksponeringar.
