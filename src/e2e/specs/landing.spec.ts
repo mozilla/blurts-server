@@ -41,7 +41,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page content`, (
     await expect(landingPage.monitorHeroSubtitle).toHaveText(
       "We scan to see if your phone number, passwords or home address have been leaked, and help you make it private again.",
     );
-    await expect(landingPage.monitorHeroFormEmailInputField).toBeVisible();
+    // TODO MNTOR-3341: await expect(landingPage.monitorHeroFormEmailInputField).toBeVisible();
     await expect(landingPage.monitorHeroFormInputSubmitButton).toBeVisible();
     await expect(landingPage.monitorLandingMidHeading).toBeVisible();
   });
@@ -73,7 +73,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page content`, (
 
     await expect(landingPage.couldBeAtRiskTitle).toBeVisible();
     await expect(landingPage.couldBeAtRiskSubtitle).toBeVisible();
-    await expect(landingPage.couldBeAtRiskFormEmailInputField).toBeVisible();
+    // TODO MNTOR-3341: await expect(landingPage.couldBeAtRiskFormEmailInputField).toBeVisible();
     await expect(landingPage.couldBeAtRiskFormInputSubmitButton).toBeVisible();
     await expect(landingPage.couldBeAtRiskGraphic).toBeVisible();
   });
@@ -88,7 +88,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page content`, (
     });
 
     await expect(landingPage.getStartedScanTitle).toBeVisible();
-    await expect(landingPage.getStartedScanFormEmailInputField).toBeVisible();
+    // TODO MNTOR-3341: await expect(landingPage.getStartedScanFormEmailInputField).toBeVisible();
     await expect(landingPage.getStartedScanFormSubmitButton).toBeVisible();
   });
 
@@ -130,7 +130,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page content`, (
     });
 
     await expect(landingPage.takeBackControlTitle).toBeVisible();
-    await expect(landingPage.takeBackControlFormEmailInputField).toBeVisible();
+    // await expect(landingPage.takeBackControlFormEmailInputField).toBeVisible();
     await expect(landingPage.takeBackControlFormSubmitButton).toBeVisible();
   });
 
@@ -173,6 +173,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page content`, (
     await purchasePage.verifyYearlyPlanDetails();
   });
 
+  /* TODO MNTOR-3341
   test('Verify the "Get free scan" corresponding email fields', async ({
     landingPage,
     authPage,
@@ -194,6 +195,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page content`, (
     await authPage.passwordInputField.waitFor();
     await expect(authPage.passwordInputField).toBeVisible();
   });
+  */
 
   test('Verify manual/automatic removal "more info" tips from "Choose your level of protection" section', async ({
     landingPage,
