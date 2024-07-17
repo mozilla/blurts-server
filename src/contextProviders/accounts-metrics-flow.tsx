@@ -21,12 +21,12 @@ interface SessionProviderProps {
 }
 
 type ContextValues = {
-  flowData: MetricFlowData | null;
+  data: MetricFlowData | null;
   loading: boolean;
 };
 
 export const AccountsMetricsFlowContext = createContext<ContextValues>({
-  flowData: null,
+  data: null,
   loading: false,
 });
 
@@ -35,8 +35,8 @@ export const AccountsMetricsFlowProvider = ({
   enabled,
   metricsFlowParams,
 }: SessionProviderProps) => {
-  const [flowData, setFlowData] = useState<ContextValues["flowData"]>(null);
-  const [loading, setLoading] = useState(enabled);
+  const [data, setData] = useState<ContextValues["data"]>(null);
+  const [loading, setLoading] = useState<boolean>(enabled);
   const searchParams = useSearchParams();
 
   useEffect(() => {
@@ -60,7 +60,7 @@ export const AccountsMetricsFlowProvider = ({
         flowData?: MetricFlowData;
       } = await response.json();
 
-      setFlowData(data.flowData ?? null);
+      setData(data.flowData ?? null);
       setLoading(false);
     }
 
@@ -70,7 +70,7 @@ export const AccountsMetricsFlowProvider = ({
   }, [enabled, metricsFlowParams, searchParams]);
 
   return (
-    <AccountsMetricsFlowContext.Provider value={{ flowData, loading }}>
+    <AccountsMetricsFlowContext.Provider value={{ data, loading }}>
       {children}
     </AccountsMetricsFlowContext.Provider>
   );

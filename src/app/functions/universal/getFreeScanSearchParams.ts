@@ -9,8 +9,8 @@ export type SearchParamArgs = {
   cookies: {
     attributionsFirstTouch?: string;
   };
+  metricsFlowData: MetricFlowData | null;
   emailInput?: string;
-  metricsFlowData?: MetricFlowData;
 };
 
 export type MetricFlowParams = {

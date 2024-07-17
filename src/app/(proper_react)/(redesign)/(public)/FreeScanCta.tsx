@@ -35,7 +35,7 @@ export const FreeScanCta = (
 ) => {
   const l10n = useL10n();
   const [cookies] = useCookies(["attributionsFirstTouch"]);
-  const accountsMetricsFlowContext = useContext(AccountsMetricsFlowContext);
+  const metricsFlowContextData = useContext(AccountsMetricsFlowContext);
 
   if (
     !props.experimentData["landing-page-free-scan-cta"].enabled ||
@@ -59,7 +59,7 @@ export const FreeScanCta = (
   ) : (
     <div>
       <TelemetryButton
-        disabled={accountsMetricsFlowContext.loading}
+        disabled={metricsFlowContextData.loading}
         variant="primary"
         event={{
           module: "ctaButton",
@@ -76,6 +76,7 @@ export const FreeScanCta = (
               cookies,
               entrypoint: CONST_URL_MONITOR_LANDING_PAGE_ID,
               experimentData: props.experimentData,
+              metricsFlowData: metricsFlowContextData.data,
             }),
           );
         }}

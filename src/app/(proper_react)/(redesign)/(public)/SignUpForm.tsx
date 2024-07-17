@@ -4,7 +4,7 @@
 
 "use client";
 
-import { FormEventHandler, useId, useState } from "react";
+import { FormEventHandler, useContext, useId, useState } from "react";
 import { signIn } from "next-auth/react";
 import { useL10n } from "../../../hooks/l10n";
 import { Button } from "../../../components/client/Button";
@@ -13,9 +13,10 @@ import { useTelemetry } from "../../../hooks/useTelemetry";
 import { VisuallyHidden } from "../../../components/server/VisuallyHidden";
 import { WaitlistCta } from "./ScanLimit";
 import { useCookies } from "react-cookie";
-import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 import { CONST_URL_MONITOR_LANDING_PAGE_ID } from "../../../../constants";
 import { getFreeScanSearchParams } from "../../../functions/universal/getFreeScanSearchParams";
+import { AccountsMetricsFlowContext } from "../../../../contextProviders/accounts-metrics-flow";
+import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 
 export type Props = {
   eligibleForPremium: boolean;
@@ -36,6 +37,7 @@ export const SignUpForm = (props: Props) => {
   const [emailInput, setEmailInput] = useState("");
   const record = useTelemetry();
   const [cookies] = useCookies(["attributionsFirstTouch"]);
+  const metricsFlowContextData = useContext(AccountsMetricsFlowContext);
 
   const onSubmit: FormEventHandler = (event) => {
     event.preventDefault();
@@ -47,6 +49,7 @@ export const SignUpForm = (props: Props) => {
         emailInput: emailInput,
         entrypoint: CONST_URL_MONITOR_LANDING_PAGE_ID,
         experimentData: props.experimentData,
+        metricsFlowData: metricsFlowContextData.data,
       }),
     );
   };
@@ -93,6 +96,7 @@ export const SignUpForm = (props: Props) => {
             button_id: props.eventId.cta,
           });
         }}
+        disabled={metricsFlowContextData.loading}
       >
         {l10n.getString("landing-all-hero-emailform-submit-label")}
       </Button>
