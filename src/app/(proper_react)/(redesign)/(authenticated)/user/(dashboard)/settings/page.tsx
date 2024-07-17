@@ -23,8 +23,8 @@ import { getExperiments } from "../../../../../../functions/server/getExperiment
 import { getLocale } from "../../../../../../functions/universal/getLocale";
 import { getCountryCode } from "../../../../../../functions/server/getCountryCode";
 import { getSubscriberById } from "../../../../../../../db/tables/subscribers";
-import { checkUserHasYearlySubscription } from "../../../../../../functions/universal/user";
 import { checkSession } from "../../../../../../functions/server/checkSession";
+import { checkUserHasMonthlySubscription } from "../../../../../../functions/universal/user";
 
 type Props = {
   searchParams: {
@@ -41,8 +41,9 @@ export default async function SettingsPage({ searchParams }: Props) {
   }
 
   const emailAddresses = await getUserEmails(session.user.subscriber.id);
-
-  const isYearlySubscriber = await checkUserHasYearlySubscription(session.user);
+  const isMonthlySubscriber = await checkUserHasMonthlySubscription(
+    session.user,
+  );
 
   const monthlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "monthly" });
   const yearlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "yearly" });
@@ -103,7 +104,7 @@ export default async function SettingsPage({ searchParams }: Props) {
       enabledFeatureFlags={enabledFeatureFlags}
       experimentData={experimentData}
       lastScanDate={lastOneRepScan?.created_at}
-      isYearlySubscriber={isYearlySubscriber}
+      isMonthlySubscriber={isMonthlySubscriber}
     />
   );
 }
