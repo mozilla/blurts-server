@@ -4,7 +4,7 @@
 
 "use client";
 
-import { FormEventHandler, useContext, useId, useState } from "react";
+import { FormEventHandler, useId, useState } from "react";
 import { signIn } from "next-auth/react";
 import { useL10n } from "../../../hooks/l10n";
 import { Button } from "../../../components/client/Button";
@@ -13,9 +13,9 @@ import { useTelemetry } from "../../../hooks/useTelemetry";
 import { VisuallyHidden } from "../../../components/server/VisuallyHidden";
 import { WaitlistCta } from "./ScanLimit";
 import { useCookies } from "react-cookie";
-import { getAttributionSearchParams } from "./FreeScanCta";
 import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
-import { PublicEnvContext } from "../../../../contextProviders/public-env";
+import { CONST_URL_MONITOR_LANDING_PAGE_ID } from "../../../../constants";
+import { getFreeScanSearchParams } from "../../../functions/universal/getFreeScanSearchParams";
 
 export type Props = {
   eligibleForPremium: boolean;
@@ -36,18 +36,16 @@ export const SignUpForm = (props: Props) => {
   const [emailInput, setEmailInput] = useState("");
   const record = useTelemetry();
   const [cookies] = useCookies(["attributionsFirstTouch"]);
-  const publicEnv = useContext(PublicEnvContext);
 
   const onSubmit: FormEventHandler = (event) => {
     event.preventDefault();
     void signIn(
       "fxa",
       { callbackUrl: props.signUpCallbackUrl },
-      getAttributionSearchParams({
+      getFreeScanSearchParams({
         cookies,
-        emailInput,
-        experimentData: props.experimentData,
-        publicEnv,
+        emailInput: "",
+        entrypoint: CONST_URL_MONITOR_LANDING_PAGE_ID,
       }),
     );
   };

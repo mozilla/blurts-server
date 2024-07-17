@@ -19,7 +19,6 @@ import StripeScript from "./components/client/StripeScript";
 
 // DO NOT ADD SECRETS: Env variables added here become public.
 const PUBLIC_ENVS = {
-  OAUTH_CLIENT_ID: process.env.OAUTH_CLIENT_ID ?? "",
   PUBLIC_APP_ENV: process.env.APP_ENV ?? "",
 } as const;
 

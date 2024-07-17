@@ -16,7 +16,8 @@ Sentry.init({
   tracesSampleRate: ["local"].includes(getEnvironment()) ? 1.0 : 0.1,
 
   // Setting this option to true will print useful information to the console while you're setting up Sentry.
-  debug: getEnvironment() !== "production",
+  // debug: getEnvironment() !== "production",
+  debug: false,
 
   replaysOnErrorSampleRate: 1.0,
 
