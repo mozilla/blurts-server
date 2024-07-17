@@ -1015,7 +1015,6 @@ describe("Free scan CTA experiment", () => {
         [
           "entrypoint=monitor.mozilla.org-monitor-product-page",
           "form_type=email",
-          "service=edd29a80019d61a1",
           "email=mail%40example.com",
           "entrypoint_experiment=landing-page-free-scan-cta",
           "entrypoint_variation=ctaWithEmail",
