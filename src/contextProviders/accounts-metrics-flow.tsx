@@ -48,12 +48,8 @@ export const AccountsMetricsFlowProvider = ({
           updatedSearchParams.set(key, value);
         }
       }
-      const queryString =
-        updatedSearchParams.size > 0
-          ? `?${updatedSearchParams.toString()}`
-          : "";
       const response = await fetch(
-        `/api/v1/accounts-metrics-flow${queryString}`,
+        `/api/v1/accounts-metrics-flow?${updatedSearchParams.toString()}`,
       );
       const data: {
         success: boolean;

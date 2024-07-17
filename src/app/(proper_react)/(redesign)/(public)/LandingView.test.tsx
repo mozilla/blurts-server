@@ -12,6 +12,7 @@ import {
   queryByText,
   render,
   screen,
+  waitFor,
   within,
 } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
@@ -36,6 +37,12 @@ jest.mock("next-auth/react", () => {
     }),
   };
 });
+jest.mock("next/navigation", () => ({
+  useSearchParams: () => ({
+    toString: jest.fn(),
+  }),
+}));
+
 jest.mock("../../../hooks/useTelemetry");
 
 beforeEach(() => {
@@ -836,6 +843,14 @@ describe("When Premium is available", () => {
 
 describe("Free scan CTA experiment", () => {
   it("shows the CTA button with email input if the experiment disabled", () => {
+    global.fetch = jest.fn().mockImplementation(() =>
+      Promise.resolve({
+        success: true,
+        json: jest.fn(() => ({
+          flowData: null,
+        })),
+      }),
+    );
     const ComposedDashboard = composeStory(LandingUs, Meta);
     render(
       <ComposedDashboard
@@ -860,7 +875,15 @@ describe("Free scan CTA experiment", () => {
     expect(submitButton[0]).toBeInTheDocument();
   });
 
-  it("shows the CTA button with email input for the variant `ctaWithEmail` if the experiment is enabled", () => {
+  it("shows the CTA button with email input for the variant `ctaWithEmail` if the experiment is enabled", async () => {
+    global.fetch = jest.fn().mockImplementation(() =>
+      Promise.resolve({
+        success: true,
+        json: jest.fn(() => ({
+          flowData: null,
+        })),
+      }),
+    );
     const ComposedDashboard = composeStory(LandingUs, Meta);
     render(
       <ComposedDashboard
@@ -874,18 +897,28 @@ describe("Free scan CTA experiment", () => {
       />,
     );
 
-    const inputField = screen.getAllByLabelText(
-      "Enter your email address to check for data breach exposures and sites selling your info.",
-    );
-    expect(inputField[0]).toBeInTheDocument();
+    await waitFor(() => {
+      const inputField = screen.getAllByLabelText(
+        "Enter your email address to check for data breach exposures and sites selling your info.",
+      );
+      expect(inputField[0]).toBeInTheDocument();
 
-    const submitButton = screen.getAllByRole("button", {
-      name: "Get free scan",
+      const submitButton = screen.getAllByRole("button", {
+        name: "Get free scan",
+      });
+      expect(submitButton[0]).toBeInTheDocument();
     });
-    expect(submitButton[0]).toBeInTheDocument();
   });
 
-  it("shows the CTA button only for the variant `ctaOnly` if the experiment is enabled", () => {
+  it("shows the CTA button only for the variant `ctaOnly` if the experiment is enabled", async () => {
+    global.fetch = jest.fn().mockImplementation(() =>
+      Promise.resolve({
+        success: true,
+        json: jest.fn(() => ({
+          flowData: null,
+        })),
+      }),
+    );
     const ComposedDashboard = composeStory(LandingUs, Meta);
     render(
       <ComposedDashboard
@@ -899,16 +932,26 @@ describe("Free scan CTA experiment", () => {
       />,
     );
 
-    const inputField = screen.queryAllByTestId("signup-form-input");
-    expect(inputField.length).toBe(0);
+    await waitFor(() => {
+      const inputField = screen.queryAllByTestId("signup-form-input");
+      expect(inputField.length).toBe(0);
 
-    const submitButton = screen.getAllByRole("button", {
-      name: "Get free scan",
+      const submitButton = screen.getAllByRole("button", {
+        name: "Get free scan",
+      });
+      expect(submitButton[0]).toBeInTheDocument();
     });
-    expect(submitButton[0]).toBeInTheDocument();
   });
 
-  it("shows the CTA button only with an alternative label for the variant `ctaOnlyAlternativeLabel` if the experiment is enabled", () => {
+  it("shows the CTA button only with an alternative label for the variant `ctaOnlyAlternativeLabel` if the experiment is enabled", async () => {
+    global.fetch = jest.fn().mockImplementation(() =>
+      Promise.resolve({
+        success: true,
+        json: jest.fn(() => ({
+          flowData: null,
+        })),
+      }),
+    );
     const ComposedDashboard = composeStory(LandingUs, Meta);
     render(
       <ComposedDashboard
@@ -922,16 +965,26 @@ describe("Free scan CTA experiment", () => {
       />,
     );
 
-    const inputField = screen.queryAllByTestId("signup-form-input");
-    expect(inputField.length).toBe(0);
+    await waitFor(() => {
+      const inputField = screen.queryAllByTestId("signup-form-input");
+      expect(inputField.length).toBe(0);
 
-    const submitButton = screen.getAllByRole("button", {
-      name: "Sign in to get free scan",
+      const submitButton = screen.getAllByRole("button", {
+        name: "Sign in to get free scan",
+      });
+      expect(submitButton[0]).toBeInTheDocument();
     });
-    expect(submitButton[0]).toBeInTheDocument();
   });
 
-  it("shows the waitlist CTA when the scan limit is reached", () => {
+  it("shows the waitlist CTA when the scan limit is reached", async () => {
+    global.fetch = jest.fn().mockImplementation(() =>
+      Promise.resolve({
+        success: true,
+        json: jest.fn(() => ({
+          flowData: null,
+        })),
+      }),
+    );
     const ComposedDashboard = composeStory(LandingUsScanLimit, Meta);
     render(
       <ComposedDashboard
@@ -944,13 +997,24 @@ describe("Free scan CTA experiment", () => {
         }}
       />,
     );
-    const waitlistCta = screen.getAllByRole("link", {
-      name: "Join waitlist",
+
+    await waitFor(() => {
+      const waitlistCta = screen.getAllByRole("link", {
+        name: "Join waitlist",
+      });
+      expect(waitlistCta[0]).toBeInTheDocument();
     });
-    expect(waitlistCta[0]).toBeInTheDocument();
   });
 
   it("sends telemetry for the different experiment variants", async () => {
+    global.fetch = jest.fn().mockImplementation(() =>
+      Promise.resolve({
+        success: true,
+        json: jest.fn(() => ({
+          flowData: null,
+        })),
+      }),
+    );
     const mockedRecord = useTelemetry();
     const user = userEvent.setup();
     const ComposedDashboard = composeStory(LandingUs, Meta);
@@ -983,7 +1047,15 @@ describe("Free scan CTA experiment", () => {
     );
   });
 
-  it("passes the expected URL to the identity provider", async () => {
+  it("passes the expected URL to the identity provider without metrics flow data", async () => {
+    global.fetch = jest.fn().mockImplementation(() =>
+      Promise.resolve({
+        success: true,
+        json: jest.fn(() => ({
+          flowData: null,
+        })),
+      }),
+    );
     const user = userEvent.setup();
     const ComposedDashboard = composeStory(LandingUs, Meta);
     render(
@@ -1025,9 +1097,75 @@ describe("Free scan CTA experiment", () => {
       ),
     );
   });
+
+  it("passes the expected URL to the identity provider with metrics flow data", async () => {
+    global.fetch = jest.fn().mockImplementation(() =>
+      Promise.resolve({
+        success: true,
+        json: jest.fn(() => ({
+          flowData: {
+            deviceId: "device_123",
+            flowId: "flow_123",
+            flowBeginTime: 42,
+          },
+        })),
+      }),
+    );
+    const user = userEvent.setup();
+    const ComposedDashboard = composeStory(LandingUs, Meta);
+    render(
+      <ComposedDashboard
+        experimentData={{
+          ...defaultExperimentData,
+          "landing-page-free-scan-cta": {
+            enabled: true,
+            variant: "ctaWithEmail",
+          },
+        }}
+      />,
+    );
+
+    const inputField = screen.getAllByLabelText(
+      "Enter your email address to check for data breach exposures and sites selling your info.",
+    );
+    await user.type(inputField[0], "mail@example.com");
+
+    const submitButton = screen.getAllByRole("button", {
+      name: "Get free scan",
+    });
+    await user.click(submitButton[0]);
+
+    expect(signIn).toHaveBeenCalledWith(
+      "fxa",
+      expect.any(Object),
+      expect.stringContaining(
+        [
+          "entrypoint=monitor.mozilla.org-monitor-product-page",
+          "form_type=email",
+          "email=mail%40example.com",
+          "device_id=device_123",
+          "flow_id=flow_123",
+          "flow_begin_time=42",
+          "entrypoint_experiment=landing-page-free-scan-cta",
+          "entrypoint_variation=ctaWithEmail",
+          "utm_source=product",
+          "utm_medium=monitor",
+          "utm_campaign=get_free_scan",
+        ].join("&"),
+      ),
+    );
+  });
 });
 
 it("does not show a confirmaton message if the user has just deleted their account", () => {
+  global.fetch = jest.fn().mockImplementation(() =>
+    Promise.resolve({
+      success: true,
+      json: jest.fn(() => ({
+        flowData: null,
+      })),
+    }),
+  );
   document.cookie = "justDeletedAccount=justDeletedAccount; max-age=0";
 
   const ComposedDashboard = composeStory(LandingNonUs, Meta);
@@ -1039,6 +1177,14 @@ it("does not show a confirmaton message if the user has just deleted their accou
 });
 
 it("shows a confirmaton message if the user has just deleted their account", () => {
+  global.fetch = jest.fn().mockImplementation(() =>
+    Promise.resolve({
+      success: true,
+      json: jest.fn(() => ({
+        flowData: null,
+      })),
+    }),
+  );
   document.cookie = "justDeletedAccount=justDeletedAccount";
 
   const ComposedDashboard = composeStory(LandingNonUs, Meta);
@@ -1054,6 +1200,14 @@ it("shows a confirmaton message if the user has just deleted their account", () 
 });
 
 it("hides the 'account deletion' confirmation message when the user dismisses it", async () => {
+  global.fetch = jest.fn().mockImplementation(() =>
+    Promise.resolve({
+      success: true,
+      json: jest.fn(() => ({
+        flowData: null,
+      })),
+    }),
+  );
   const user = userEvent.setup();
   document.cookie = "justDeletedAccount=justDeletedAccount";
 
