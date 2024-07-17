@@ -120,9 +120,7 @@ export class PurchasePage {
     const planDetails = removeUnicodeChars(
       (await this.planDetails.textContent()) as string,
     );
-    expect(planDetails).toContain(
-      `${process.env.E2E_TEST_ENV === "prod" ? "yearly" : "every 2 months"}`,
-    );
+    expect(planDetails).toContain("yearly");
   }
 
   async gotoPurchaseFromDashboard(
