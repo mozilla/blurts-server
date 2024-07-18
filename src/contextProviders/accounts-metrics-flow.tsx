@@ -7,6 +7,7 @@
 import { ReactNode, createContext, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { MetricFlowData } from "../app/functions/universal/getFreeScanSearchParams";
+import * as Sentry from "@sentry/nextjs";
 
 interface SessionProviderProps {
   children: ReactNode;
@@ -22,12 +23,10 @@ interface SessionProviderProps {
 
 type ContextValues = {
   data: MetricFlowData | null;
-  loading: boolean;
 };
 
 export const AccountsMetricsFlowContext = createContext<ContextValues>({
   data: null,
-  loading: false,
 });
 
 export const AccountsMetricsFlowProvider = ({
@@ -36,7 +35,6 @@ export const AccountsMetricsFlowProvider = ({
   metricsFlowParams,
 }: SessionProviderProps) => {
   const [data, setData] = useState<ContextValues["data"]>(null);
-  const [loading, setLoading] = useState<boolean>(enabled);
   const searchParams = useSearchParams();
 
   useEffect(() => {
@@ -51,22 +49,27 @@ export const AccountsMetricsFlowProvider = ({
       const response = await fetch(
         `/api/v1/accounts-metrics-flow?${updatedSearchParams.toString()}`,
       );
-      const data: {
-        success: boolean;
-        flowData?: MetricFlowData;
-      } = await response.json();
 
-      setData(data.flowData ?? null);
-      setLoading(false);
+      try {
+        const data: {
+          success: boolean;
+          flowData?: MetricFlowData;
+        } = await response.json();
+        setData(data.flowData ?? null);
+      } catch (error) {
+        Sentry.captureException(error);
+      }
     }
 
     if (enabled) {
       void fetchMetricsFlowData();
     }
-  }, [enabled, metricsFlowParams, searchParams]);
+    // This effect should only run once
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
-    <AccountsMetricsFlowContext.Provider value={{ data, loading }}>
+    <AccountsMetricsFlowContext.Provider value={{ data }}>
       {children}
     </AccountsMetricsFlowContext.Provider>
   );
