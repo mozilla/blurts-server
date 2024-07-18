@@ -6,7 +6,7 @@
 // `pg-connection-string` works, triggering a false positive for this lint rule:
 /* eslint-disable import/no-named-as-default-member */
 import pgConnectionStr from "pg-connection-string";
-import AppConstants from "../appConstants.js";
+import "dotenv-flow/config";
 
 /**
  * @typedef {object} KnexConfig
@@ -14,9 +14,12 @@ import AppConstants from "../appConstants.js";
  * @property {import("pg-connection-string").ConnectionOptions} connection 
  */
 
-const { DATABASE_URL, APP_ENV, NODE_ENV, PG_HOST } = AppConstants;
+const DATABASE_URL = process.env.DATABASE_URL ?? "";
+const APP_ENV = process.env.APP_ENV ?? "production";
+/** @type {string} */
+const NODE_ENV = process.env.NODE_ENV ?? "production";
 const connectionObj = pgConnectionStr.parse(DATABASE_URL);
-if (APP_ENV === "heroku") {
+if (typeof process.env.APP_ENV === "string" && process.env.APP_ENV === "heroku") {
   // @ts-ignore TODO: Check if this typing error is correct, or if the types are wrong?
   connectionObj.ssl = { rejectUnauthorized: false };
 }
@@ -40,7 +43,7 @@ let exportConfig = NODE_ENV === "tests" ? TESTS_CONFIG : RUNTIME_CONFIG
 if (APP_ENV === "cloudrun") {
   // @ts-ignore TODO: Check if this typing error is correct, or if the types are wrong?
   connectionObj.ssl = false;
-  connectionObj.host = PG_HOST
+  connectionObj.host = /** @type {string} */ (process.env.PG_HOST)
   exportConfig = {
     client: "pg",
     connection: connectionObj
