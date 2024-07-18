@@ -15,7 +15,6 @@ jobs:
           node-version: '22.4.x'
       - run: npm ci
       - run: npm run build-glean
-      - run: npm run build-nimbus
       - run: npm test
       - uses: actions/upload-artifact@v4
         if: failure()

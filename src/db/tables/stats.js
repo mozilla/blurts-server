@@ -14,7 +14,7 @@
  * @param {string} name
  * @param {string} current
  * @param {string} max
- * @returns {Promise<import('knex/types/tables').SubscriberRow | null>} updated subscriber
+ * @returns {Promise<import('knex/types/tables').StatsRow | null>} inserted stats
  */
 export async function addOnerepStats (name, current, max) {
   const res = await knex("stats").insert({ name, current, max, type: "onerep"}).returning("*");
@@ -22,7 +22,7 @@ export async function addOnerepStats (name, current, max) {
 }
 
 /**
- * @returns {object}
+ * @returns {Promise<Pick<import('knex/types/tables').StatsRow, "name" | "current" | "max"> | undefined>} stats
  */
 export async function getOnerepStats () {
   const res = await knex("stats").select("name", "current", "max").where("type", "onerep");

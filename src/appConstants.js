@@ -3,13 +3,18 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 // TODO: these vars were copy/pasted from the old app-constants.js and should be cleaned up
+import path from "path";
+import url from "url";
 
-if (typeof process.env.NEXT_RUNTIME === "undefined") {
+if (typeof process.env.NEXT_RUNTIME === "undefined" && typeof process.env.STORYBOOK === "undefined") {
   // Next.js already loads env vars by itself, and dotenv-flow will throw an
   // error if loaded in that context (about `fs` not existing), so only load
   // it if we're not running in a Next.js-context (e.g. cron jobs):
+  const __filename = url.fileURLToPath(import.meta.url);
+  const __dirname = path.dirname(__filename);
+
   const dotenvFlow = await import("dotenv-flow");
-  dotenvFlow.config();
+  dotenvFlow.config({ path: path.resolve(__dirname, "../") });
 }
 
 const requiredEnvVars = [
