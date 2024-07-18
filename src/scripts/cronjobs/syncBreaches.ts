@@ -12,13 +12,14 @@
 import { readdir } from "node:fs/promises";
 import os from "node:os";
 import Sentry from "@sentry/nextjs";
-import { req, formatDataClassesArray } from "../utils/hibp.js";
+import { req, formatDataClassesArray } from "../../utils/hibp.js";
 import {
   getAllBreaches,
   upsertBreaches,
   updateBreachFaviconUrl,
-} from "../db/tables/breaches.js";
-import { uploadToS3 } from "./s3.js";
+} from "../../db/tables/breaches.js";
+import { uploadToS3 } from "../s3.js";
+import type { Breach } from "../../app/functions/universal/breach.js";
 
 const SENTRY_SLUG = "cron-sync-breaches";
 
@@ -32,7 +33,7 @@ const checkInId = Sentry.captureCheckIn({
   status: "in_progress",
 });
 
-export async function getBreachIcons(breaches) {
+export async function getBreachIcons(breaches: Breach[]) {
   // make logofolder if it doesn't exist
   const logoFolder = os.tmpdir();
   console.log(`Logo folder: ${logoFolder}`);
@@ -82,20 +83,19 @@ export async function getBreachIcons(breaches) {
 }
 
 // Get breaches and upserts to DB
-const breachesResponse = await req("/breaches");
-const breaches = [];
+const breachesResponse: Breach[] = await req("/breaches");
+const breaches: Breach[] = [];
 const seen = new Set();
 for (const breach of breachesResponse) {
   breach.DataClasses = formatDataClassesArray(breach.DataClasses);
-  breach.LogoPath = /[^/]*$/.exec(breach.LogoPath)[0];
+  breach.LogoPath = /[^/]*$/.exec(breach.LogoPath)![0];
   breaches.push(breach);
   seen.add(breach.Name + breach.BreachDate);
 
   // sanity check: corrupt data structure
   if (!isValidBreach(breach))
     throw new Error(
-      "Breach data structure is not valid",
-      JSON.stringify(breach),
+      "Breach data structure is not valid: " + JSON.stringify(breach),
     );
 }
 
@@ -128,10 +128,10 @@ setTimeout(process.exit, 1000);
 /**
  * Null check for some required field
  *
- * @param {object} breach breach object from HIBP
+ * @param breach breach object from HIBP
  * @returns Boolean is it a valid breach
  */
-function isValidBreach(breach) {
+function isValidBreach(breach: Breach) {
   return (
     breach.Name !== undefined &&
     breach.BreachDate !== undefined &&
