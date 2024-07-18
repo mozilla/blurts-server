@@ -6,31 +6,29 @@ import { NextResponse } from "next/server";
 
 export function errorIfProduction() {
   //checks that the environment isnt production
-  return errorIfEnvCond("production", false);
+  if (process.env.APP_ENV === "production") {
+    return error403("Endpoint not available in prod environment");
+  }
+  return null;
 }
 
 export function errorIfStage() {
   //checks that the environment isnt stage
-  return errorIfEnvCond("stage", false);
+  if (process.env.APP_ENV === "stage") {
+    return error403("Endpoint not available in stage environment");
+  }
+  return null;
 }
 
 export function errorIfNotLocal() {
-  return errorIfEnvCond("local", true);
-}
-
-export function errorIfNotENv(which: string) {
-  return errorIfEnvCond(which, true);
-}
-
-export function errorIfEnvCond(which: string, isEqualToWhich: boolean) {
-  //checks that the app environment satisfies the 'isEqualToWhich' condition with 'which'
-  if (isEqualToWhich !== (process.env.APP_ENV === which)) {
-    return NextResponse.json(
-      { error: `Endpoint not available in ${which} environment` },
-      { status: 403 },
-    );
+  if (process.env.APP_ENV !== "local") {
+    return error403("Endpoint not available in non-local environment");
   }
   return null;
+}
+
+function error403(msg: string) {
+  return NextResponse.json({ error: msg }, { status: 403 });
 }
 
 export function unauthError() {
@@ -45,6 +43,6 @@ export function internalServerError(
 ) {
   return NextResponse.json(
     { error: `Internal server error: ${description}` },
-    { status: 401 },
+    { status: 500 },
   );
 }

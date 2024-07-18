@@ -4,7 +4,7 @@
 
 import { getLatestOnerepScan } from "../../../../../../../../db/tables/onerep_scans";
 import { errorIfProduction } from "../../../../../../utils/errorThrower";
-import { MOCK_ONEREP_TIME } from "../../../../config/config";
+import { mockOnerepTime } from "../../../../config/config";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(
@@ -19,24 +19,25 @@ export async function GET(
 
   const latestScan = await getLatestOnerepScan(profileId);
 
-  const responseData = latestScan
-    ? {
-        id: latestScan.id,
-        profileId: latestScan.onerep_profile_id,
-        status: latestScan.onerep_scan_status,
-        created_at: latestScan.created_at,
-        updated_at: latestScan.updated_at,
-        url: `${process.env.ONEREP_API_BASE}/profiles/${profileId}/scans/${scanId}`,
-      }
-    : {
-        id: scanId,
-        profile_id: profileId,
-        status: "finished",
-        reason: "manual",
-        created_at: MOCK_ONEREP_TIME(),
-        updated_at: MOCK_ONEREP_TIME(),
-        url: `${process.env.ONEREP_API_BASE}/profiles/${profileId}/scans/${scanId}`,
-      };
+  const responseData =
+    latestScan !== null
+      ? {
+          id: latestScan.id,
+          profileId: latestScan.onerep_profile_id,
+          status: latestScan.onerep_scan_status,
+          created_at: latestScan.created_at,
+          updated_at: latestScan.updated_at,
+          url: `${process.env.ONEREP_API_BASE}/profiles/${profileId}/scans/${scanId}`,
+        }
+      : {
+          id: scanId,
+          profile_id: profileId,
+          status: "finished",
+          reason: "manual",
+          created_at: mockOnerepTime(),
+          updated_at: mockOnerepTime(),
+          url: `${process.env.ONEREP_API_BASE}/profiles/${profileId}/scans/${scanId}`,
+        };
 
   return NextResponse.json(responseData);
 }

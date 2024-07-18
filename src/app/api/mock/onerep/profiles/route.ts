@@ -3,8 +3,8 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import {
-  MOCK_ONEREP_PROFILE_STATUS,
-  MOCK_ONEREP_TIME,
+  mockOnerepProfileStatus,
+  mockOnerepTime,
   profileIdLeftBound,
   profileIdRightBound,
 } from "../config/config.ts";
@@ -78,13 +78,13 @@ export async function POST(req: NextRequest) {
         city: addr.city,
         address_line: null,
         zip: null,
-        created_at: MOCK_ONEREP_TIME(),
-        updated_at: MOCK_ONEREP_TIME(),
+        created_at: mockOnerepTime(),
+        updated_at: mockOnerepTime(),
         url: `${process.env.ONEREP_API_BASE}/profiles/${profileId}/addresses/${profileId + index}`,
       })),
-      status: MOCK_ONEREP_PROFILE_STATUS(),
-      created_at: MOCK_ONEREP_TIME(),
-      updated_at: MOCK_ONEREP_TIME(),
+      status: mockOnerepProfileStatus(),
+      created_at: mockOnerepTime(),
+      updated_at: mockOnerepTime(),
       url: `${process.env.ONEREP_API_BASE}/profiles/${profileId}`,
     };
     return NextResponse.json(responseProfile, { status: 201 });

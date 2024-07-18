@@ -6,7 +6,7 @@ import { BinaryLike } from "crypto";
 import { getSha1 } from "../../../utils/fxa";
 import { logger } from "../../functions/server/logging";
 
-export function computeSha1First6(email: string) {
+export function emailHashPrefix(email: string) {
   return getSha1(email as BinaryLike)
     .slice(0, 6)
     .toUpperCase();
@@ -25,7 +25,7 @@ export const allE2ETestEmailKeys = (() => {
 export const hashToEmailKeyMap = (() => {
   const mapping: { [key: string]: string } = {};
   allE2ETestEmailKeys.forEach((key) => {
-    mapping[computeSha1First6(process.env[key] as string)] = key;
+    mapping[emailHashPrefix(process.env[key] as string)] = key;
   });
   return mapping;
 })();

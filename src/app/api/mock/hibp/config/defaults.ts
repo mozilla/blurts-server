@@ -11,5 +11,5 @@ export interface BreachMap {
 
 export const getBreachesForHash = (hash: string) => {
   const key = hashToEmailKeyMap[hash] || "default";
-  return (mockBreaches as BreachMap)[key];
+  return (mockBreaches as BreachMap)[key] || [];
 };

@@ -5,7 +5,7 @@
 import { BinaryLike, createHash } from "crypto";
 import { StateAbbr } from "../../../../../utils/states";
 import MockUser from "../mockData/mockUser.json";
-import { computeSha1First6, hashToEmailKeyMap } from "../../../utils/mockUtils";
+import { emailHashPrefix, hashToEmailKeyMap } from "../../../utils/mockUtils";
 import { getLatestOnerepScan } from "../../../../../db/tables/onerep_scans";
 
 export interface Broker {
@@ -66,51 +66,51 @@ function hasher(plaintext: number | string) {
   return parseInt(last4BytesHex, 16);
 }
 
-export function MOCK_ONEREP_SCAN_ID(profileId: number) {
+export function mockOnerepScanId(profileId: number) {
   return hasher(profileId);
 }
 
-export function MOCK_ONEREP_DATABROKER_ID_START(profileId: number) {
+export function mockOnerepDatabrokerIdStart(profileId: number) {
   return hasher(profileId * MAGIC_NUM_1);
 }
 
-export function MOCK_ONEREP_ID_START(profileId: number) {
+export function mockOnerepIdStart(profileId: number) {
   return hasher(profileId * MAGIC_NUM_2);
 }
 
-export function MOCK_ONEREP_TIME() {
+export function mockOnerepTime() {
   return MockUser.TIME;
 }
 
-export function MOCK_ONEREP_FIRSTNAME() {
+export function mockOnerepFirstName() {
   return MockUser.FIRSTNAME;
 }
 
-export function MOCK_ONEREP_LASTNAME() {
+export function mockOnerepLastName() {
   return MockUser.LASTNAME;
 }
 
-export function MOCK_ONEREP_BIRTHDATE() {
+export function mockOnerepBirthdate() {
   return MockUser.BIRTHDATE;
 }
 
-export function MOCK_ONEREP_EMAILS() {
+export function mockOnerepEmails() {
   return MockUser.EMAILS;
 }
 
-export function MOCK_ONEREP_PHONES() {
+export function mockOnerepPhones() {
   return MockUser.PHONES;
 }
 
-export function MOCK_ONEREP_RELATIVES() {
+export function mockOnerepRelatives() {
   return MockUser.RELATIVES;
 }
 
-export function MOCK_ONEREP_PROFILE_STATUS() {
+export function mockOnerepProfileStatus() {
   return MockUser.STATUS as "active" | "inactive";
 }
 
-export function MOCK_ONEREP_ADDRESSES() {
+export function mockOnerepAddresses() {
   type typeOfAddr = [{ city: string; state: StateAbbr }];
 
   return MockUser.ADDRESSES.map((address) => ({
@@ -119,7 +119,7 @@ export function MOCK_ONEREP_ADDRESSES() {
   })) as typeOfAddr;
 }
 
-export function MOCK_ONEREP_OBJECT_META(page: number | string = 1) {
+export function mockOnerepObjectMeta(page: number | string = 1) {
   if (typeof page === "string") page = parseInt(page);
   return {
     current_page: page,
@@ -132,7 +132,7 @@ export function MOCK_ONEREP_OBJECT_META(page: number | string = 1) {
   };
 }
 
-export function MOCK_ONEREP_OBJECT_LINKS(
+export function mockOnerepObjectLinks(
   profileId: number | string,
   page: number | string = 1,
   perPage: number | string = 100,
@@ -149,46 +149,50 @@ export function MOCK_ONEREP_OBJECT_LINKS(
   };
 }
 
-export async function MOCK_ONEREP_BROKERS(
+export async function mockOnerepBrokers(
   profileId: number,
   page: string,
   perPage: string,
   email: string,
 ) {
   let scanId = (await getLatestOnerepScan(profileId))?.onerep_scan_id;
-  if (!scanId) scanId = MOCK_ONEREP_SCAN_ID(profileId);
-  const mockMeta = MOCK_ONEREP_OBJECT_META(page);
-  const mockLinks = MOCK_ONEREP_OBJECT_LINKS(profileId, page, perPage);
-  const idStart = MOCK_ONEREP_ID_START(profileId);
-  const idStartDataBroker = MOCK_ONEREP_DATABROKER_ID_START(profileId);
+  if (!scanId) scanId = mockOnerepScanId(profileId);
+  const mockMeta = mockOnerepObjectMeta(page);
+  const mockLinks = mockOnerepObjectLinks(profileId, page, perPage);
+  const idStart = mockOnerepIdStart(profileId);
+  const idStartDataBroker = mockOnerepDatabrokerIdStart(profileId);
 
-  const emailHash = computeSha1First6(email);
+  const emailHash = emailHashPrefix(email);
   const brokersListMap = MockUser.BROKERS_LIST as BrokerMap;
   const datasetKey = hashToEmailKeyMap[emailHash] || "default";
-  const brokersList = brokersListMap[datasetKey];
+  const brokersListLookup = brokersListMap[datasetKey];
+  const brokersList =
+    brokersListLookup === undefined
+      ? brokersListMap["default"]
+      : brokersListLookup;
 
   const res = brokersList.map(
     (elem: BrokerOptionals, index: number) =>
       ({
         id: idStart - index,
         profile_id: profileId,
-        scan_id: scanId,
+        scan_id: elem["scan_id"] || scanId,
         status: elem["status"] || "new",
-        first_name: elem["first_name"] || MOCK_ONEREP_FIRSTNAME(),
+        first_name: elem["first_name"] || mockOnerepFirstName(),
         middle_name: elem["middle_name"] || null,
-        last_name: elem["last_name"] || MOCK_ONEREP_LASTNAME(),
+        last_name: elem["last_name"] || mockOnerepLastName(),
         age: elem["age"] || null,
-        addresses: elem["addresses"] || MOCK_ONEREP_ADDRESSES(),
-        phones: elem["phones"] || MOCK_ONEREP_PHONES(),
-        emails: elem["emails"] || MOCK_ONEREP_EMAILS(),
-        relatives: elem["relatives"] || MOCK_ONEREP_RELATIVES(),
+        addresses: elem["addresses"] || mockOnerepAddresses(),
+        phones: elem["phones"] || mockOnerepPhones(),
+        emails: elem["emails"] || mockOnerepEmails(),
+        relatives: elem["relatives"] || mockOnerepRelatives(),
         link:
           elem["link"] || `https://mockexample.com/link-to-databroker${index}`,
         data_broker: elem["data_broker"] || `mockexample${index}.com`,
-        data_broker_id: idStartDataBroker - index,
+        data_broker_id: elem["data_broker_id"] || idStartDataBroker - index,
         optout_attempts: elem["optout_attempts"] || 0,
-        created_at: elem["created_at"] || MOCK_ONEREP_TIME(),
-        updated_at: elem["updated_at"] || MOCK_ONEREP_TIME(),
+        created_at: elem["created_at"] || mockOnerepTime(),
+        updated_at: elem["updated_at"] || mockOnerepTime(),
       }) as Broker,
   );
 

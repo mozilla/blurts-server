@@ -49,6 +49,7 @@
         "relatives": ["John Smith", "Bob Smith", "Amy Smith"],
         "link": "https://arivify.com",
         "data_broker": "arivify.com",
+        "data_broker_id": 13,
         "created_at": "2024-01-01T00:00:00Z",
         "updated_at": "2024-01-01T00:00:00Z"
       },
@@ -83,6 +84,7 @@
         "relatives": ["John Smith", "Bob Smith", "Amy Smith"],
         "link": "https://beenverified.com",
         "data_broker": "beenverified.com",
+        "data_broker_id": 1,
         "created_at": "2024-01-01T00:00:00Z",
         "updated_at": "2024-01-01T00:00:00Z"
       },
@@ -117,6 +119,7 @@
         "relatives": ["John Smith", "Bob Smith", "Amy Smith"],
         "link": "https://instantcheckmate.com",
         "data_broker": "instantcheckmate.com",
+        "data_broker_id": 11,
         "created_at": "2024-01-01T00:00:00Z",
         "updated_at": "2024-01-01T00:00:00Z"
       },
@@ -151,6 +154,7 @@
         "relatives": ["John Smith", "Bob Smith", "Amy Smith"],
         "link": "https://open-public-records.com",
         "data_broker": "open-public-records.com",
+        "data_broker_id": 3,
         "created_at": "2024-01-01T00:00:00Z",
         "updated_at": "2024-01-01T00:00:00Z"
       },
@@ -185,6 +189,7 @@
         "relatives": ["John Smith", "Bob Smith", "Amy Smith"],
         "link": "https://peoplefinders.com",
         "data_broker": "peoplefinders.com",
+        "data_broker_id": 4,
         "created_at": "2024-01-01T00:00:00Z",
         "updated_at": "2024-01-01T00:00:00Z"
       },
@@ -219,6 +224,7 @@
         "relatives": ["John Smith", "Bob Smith", "Amy Smith"],
         "link": "https://peoplesmart.com",
         "data_broker": "peoplesmart.com",
+        "data_broker_id": 2,
         "created_at": "2024-01-01T00:00:00Z",
         "updated_at": "2024-01-01T00:00:00Z"
       },
@@ -253,6 +259,7 @@
         "relatives": ["John Smith", "Bob Smith", "Amy Smith"],
         "link": "https://privateeye.com",
         "data_broker": "privateeye.com",
+        "data_broker_id": 5,
         "created_at": "2024-01-01T00:00:00Z",
         "updated_at": "2024-01-01T00:00:00Z"
       },
@@ -287,6 +294,7 @@
         "relatives": ["John Smith", "Bob Smith", "Amy Smith"],
         "link": "https://smartbackgroundchecks.com",
         "data_broker": "smartbackgroundchecks.com",
+        "data_broker_id": 6,
         "created_at": "2024-01-01T00:00:00Z",
         "updated_at": "2024-01-01T00:00:00Z"
       },
@@ -321,6 +329,7 @@
         "relatives": ["John Smith", "Bob Smith", "Amy Smith"],
         "link": "https://truthfinder.com",
         "data_broker": "truthfinder.com",
+        "data_broker_id": 10,
         "created_at": "2024-01-01T00:00:00Z",
         "updated_at": "2024-01-01T00:00:00Z"
       },
@@ -355,6 +364,7 @@
         "relatives": ["John Smith", "Bob Smith", "Amy Smith"],
         "link": "https://ussearch.com",
         "data_broker": "ussearch.com",
+        "data_broker_id": 12,
         "created_at": "2024-01-01T00:00:00Z",
         "updated_at": "2024-01-01T00:00:00Z"
       }
@@ -393,6 +403,7 @@
         "relatives": ["John Smith", "Bob Smith", "Amy Smith"],
         "link": "https://arivify.com",
         "data_broker": "arivify.com",
+        "data_broker_id": 13,
         "created_at": "2024-01-01T00:00:00Z",
         "updated_at": "2024-01-01T00:00:00Z"
       },
@@ -427,6 +438,7 @@
         "relatives": ["John Smith", "Bob Smith", "Amy Smith"],
         "link": "https://beenverified.com",
         "data_broker": "beenverified.com",
+        "data_broker_id": 1,
         "created_at": "2024-01-01T00:00:00Z",
         "updated_at": "2024-01-01T00:00:00Z"
       },
@@ -461,6 +473,7 @@
         "relatives": ["John Smith", "Bob Smith", "Amy Smith"],
         "link": "https://instantcheckmate.com",
         "data_broker": "instantcheckmate.com",
+        "data_broker_id": 11,
         "created_at": "2024-01-01T00:00:00Z",
         "updated_at": "2024-01-01T00:00:00Z"
       },
@@ -495,6 +508,7 @@
         "relatives": ["John Smith", "Bob Smith", "Amy Smith"],
         "link": "https://open-public-records.com",
         "data_broker": "open-public-records.com",
+        "data_broker_id": 3,
         "created_at": "2024-01-01T00:00:00Z",
         "updated_at": "2024-01-01T00:00:00Z"
       },
@@ -529,6 +543,7 @@
         "relatives": ["John Smith", "Bob Smith", "Amy Smith"],
         "link": "https://peoplefinders.com",
         "data_broker": "peoplefinders.com",
+        "data_broker_id": 4,
         "created_at": "2024-01-01T00:00:00Z",
         "updated_at": "2024-01-01T00:00:00Z"
       },
@@ -563,6 +578,7 @@
         "relatives": ["John Smith", "Bob Smith", "Amy Smith"],
         "link": "https://peoplesmart.com",
         "data_broker": "peoplesmart.com",
+        "data_broker_id": 2,
         "created_at": "2024-01-01T00:00:00Z",
         "updated_at": "2024-01-01T00:00:00Z"
       },
@@ -597,6 +613,7 @@
         "relatives": ["John Smith", "Bob Smith", "Amy Smith"],
         "link": "https://privateeye.com",
         "data_broker": "privateeye.com",
+        "data_broker_id": 5,
         "created_at": "2024-01-01T00:00:00Z",
         "updated_at": "2024-01-01T00:00:00Z"
       },
@@ -631,6 +648,7 @@
         "relatives": ["John Smith", "Bob Smith", "Amy Smith"],
         "link": "https://smartbackgroundchecks.com",
         "data_broker": "smartbackgroundchecks.com",
+        "data_broker_id": 6,
         "created_at": "2024-01-01T00:00:00Z",
         "updated_at": "2024-01-01T00:00:00Z"
       },
@@ -665,6 +683,7 @@
         "relatives": ["John Smith", "Bob Smith", "Amy Smith"],
         "link": "https://truthfinder.com",
         "data_broker": "truthfinder.com",
+        "data_broker_id": 10,
         "created_at": "2024-01-01T00:00:00Z",
         "updated_at": "2024-01-01T00:00:00Z"
       },
@@ -699,6 +718,7 @@
         "relatives": ["John Smith", "Bob Smith", "Amy Smith"],
         "link": "https://ussearch.com",
         "data_broker": "ussearch.com",
+        "data_broker_id": 12,
         "created_at": "2024-01-01T00:00:00Z",
         "updated_at": "2024-01-01T00:00:00Z"
       }

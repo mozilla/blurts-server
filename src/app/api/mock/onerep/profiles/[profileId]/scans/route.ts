@@ -4,10 +4,10 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import {
-  MOCK_ONEREP_OBJECT_LINKS,
-  MOCK_ONEREP_OBJECT_META,
-  MOCK_ONEREP_SCAN_ID,
-  MOCK_ONEREP_TIME,
+  mockOnerepObjectLinks,
+  mockOnerepObjectMeta,
+  mockOnerepScanId,
+  mockOnerepTime,
 } from "../../../config/config";
 import { errorIfProduction } from "../../../../../utils/errorThrower";
 import {
@@ -15,7 +15,7 @@ import {
   getLatestOnerepScan,
 } from "../../../../../../../db/tables/onerep_scans";
 import {
-  computeSha1First6,
+  emailHashPrefix,
   hashToEmailKeyMap,
 } from "../../../../../utils/mockUtils";
 import mockUser from "../../../mockData/mockUser.json";
@@ -59,15 +59,15 @@ export async function POST(
   const latestScan = await getLatestOnerepScan(profileId);
   if (latestScan) return NextResponse.json([latestScan]);
 
-  const mockScanId = MOCK_ONEREP_SCAN_ID(profileId);
+  const mockScanId = mockOnerepScanId(profileId);
 
   const mockResponse = {
     id: mockScanId,
     profile_id: profileId,
     status: "finished",
     reason: "manual",
-    created_at: MOCK_ONEREP_TIME(),
-    updated_at: MOCK_ONEREP_TIME(),
+    created_at: mockOnerepTime(),
+    updated_at: mockOnerepTime(),
     url: `${process.env.ONEREP_API_BASE}/profiles/${profileId}/scans/${mockScanId}`,
   } as MockScan;
 
@@ -87,43 +87,45 @@ export async function GET(
     return NextResponse.json({ error: "Invalid profile ID" });
   }
 
-  const scanId = MOCK_ONEREP_SCAN_ID(profileId);
-  const links = MOCK_ONEREP_OBJECT_LINKS(profileId);
-  const meta = MOCK_ONEREP_OBJECT_META(profileId);
+  const scanId = mockOnerepScanId(profileId);
+  const links = mockOnerepObjectLinks(profileId);
+  const meta = mockOnerepObjectMeta(profileId);
 
   const email = await getEmailForProfile(profileId);
   if (!email)
     return NextResponse.json({ error: "No email for this ID is found" });
-  const emailHash = computeSha1First6(email);
+  const emailHash = emailHashPrefix(email);
   const dataKey = hashToEmailKeyMap[emailHash] || "default";
-  const data = mockScans[dataKey];
+  const dataLookup = mockScans[dataKey];
+  const data = dataLookup === undefined ? mockScans["default"] : dataLookup;
 
   const latestScan = await getLatestOnerepScan(profileId);
 
   const responseData = {
-    data: latestScan
-      ? [
-          {
-            id: latestScan.onerep_scan_id,
-            profileId: latestScan.onerep_profile_id,
-            status: latestScan.onerep_scan_status,
-            created_at: latestScan.created_at,
-            updated_at: latestScan.updated_at,
-            url: `${process.env.ONEREP_API_BASE}/profiles/${profileId}/scans/${latestScan.onerep_scan_id}`,
-          },
-        ]
-      : data.map(
-          (scan) =>
-            ({
-              id: scanId,
-              profile_id: profileId,
-              status: scan.status || "finished",
-              reason: scan.reason || "manual",
-              created_at: scan.created_at || MOCK_ONEREP_TIME(),
-              updated_at: scan.updated_at || MOCK_ONEREP_TIME(),
-              url: `${process.env.ONEREP_API_BASE}/profiles/${profileId}/scans/${scanId}`,
-            }) as MockScan,
-        ),
+    data:
+      latestScan !== null
+        ? [
+            {
+              id: latestScan.onerep_scan_id,
+              profileId: latestScan.onerep_profile_id,
+              status: latestScan.onerep_scan_status,
+              created_at: latestScan.created_at,
+              updated_at: latestScan.updated_at,
+              url: `${process.env.ONEREP_API_BASE}/profiles/${profileId}/scans/${latestScan.onerep_scan_id}`,
+            },
+          ]
+        : data.map(
+            (scan) =>
+              ({
+                id: scanId,
+                profile_id: profileId,
+                status: scan.status || "finished",
+                reason: scan.reason || "manual",
+                created_at: scan.created_at || mockOnerepTime(),
+                updated_at: scan.updated_at || mockOnerepTime(),
+                url: `${process.env.ONEREP_API_BASE}/profiles/${profileId}/scans/${scanId}`,
+              }) as MockScan,
+          ),
     links: links,
     meta: meta,
   };

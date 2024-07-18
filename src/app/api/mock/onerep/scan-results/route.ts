@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { errorIfProduction } from "../../../utils/errorThrower";
-import { MOCK_ONEREP_BROKERS } from "../config/config";
+import { mockOnerepBrokers } from "../config/config";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest) {
@@ -22,12 +22,7 @@ export async function GET(req: NextRequest) {
     );
   }
 
-  const res = await MOCK_ONEREP_BROKERS(
-    Number(profileId),
-    page,
-    perPage,
-    email,
-  );
+  const res = await mockOnerepBrokers(Number(profileId), page, perPage, email);
 
   return NextResponse.json(res);
 }

@@ -3,12 +3,12 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import {
-  MOCK_ONEREP_TIME,
-  MOCK_ONEREP_FIRSTNAME,
-  MOCK_ONEREP_LASTNAME,
-  MOCK_ONEREP_BIRTHDATE,
-  MOCK_ONEREP_ADDRESSES,
-  MOCK_ONEREP_PROFILE_STATUS,
+  mockOnerepTime,
+  mockOnerepFirstName,
+  mockOnerepLastName,
+  mockOnerepBirthdate,
+  mockOnerepAddresses,
+  mockOnerepProfileStatus,
 } from "../../config/config.ts";
 import { ShowProfileResponse } from "../../../../../functions/server/onerep.ts";
 import { NextRequest, NextResponse } from "next/server";
@@ -30,13 +30,13 @@ export function GET(
 
   const mockProfileData: ShowProfileResponse = {
     id: profileId,
-    first_name: MOCK_ONEREP_FIRSTNAME(),
-    last_name: MOCK_ONEREP_LASTNAME(),
-    birth_date: MOCK_ONEREP_BIRTHDATE(),
-    addresses: MOCK_ONEREP_ADDRESSES(),
-    status: MOCK_ONEREP_PROFILE_STATUS(),
-    created_at: MOCK_ONEREP_TIME(),
-    updated_at: MOCK_ONEREP_TIME(),
+    first_name: mockOnerepFirstName(),
+    last_name: mockOnerepLastName(),
+    birth_date: mockOnerepBirthdate(),
+    addresses: mockOnerepAddresses(),
+    status: mockOnerepProfileStatus(),
+    created_at: mockOnerepTime(),
+    updated_at: mockOnerepTime(),
     url: `${process.env.ONEREP_API_BASE}/profiles/${profileId}`,
   };
 

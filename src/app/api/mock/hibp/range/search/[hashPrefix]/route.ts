@@ -30,6 +30,5 @@ export function GET(
       websites: breachesList,
     },
   ];
-  const res = NextResponse.json(data);
-  return res;
+  return NextResponse.json(data);
 }
