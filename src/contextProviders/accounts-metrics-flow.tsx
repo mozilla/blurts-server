@@ -6,7 +6,7 @@
 
 import { ReactNode, createContext, useEffect, useState } from "react";
 import { MetricFlowData } from "../app/functions/universal/getFreeScanSearchParams";
-import * as Sentry from "@sentry/nextjs";
+import { captureException } from "@sentry/nextjs";
 
 interface SessionProviderProps {
   children: ReactNode;
@@ -40,19 +40,21 @@ export const AccountsMetricsFlowProvider = ({
 
   useEffect(() => {
     async function fetchMetricsFlowData() {
-      const searchParams = new URLSearchParams(metricsFlowParams);
-      const response = await fetch(
-        `/api/v1/accounts-metrics-flow?${searchParams.toString()}`,
-      );
-
       try {
+        const searchParams = new URLSearchParams(metricsFlowParams);
+        const response = await fetch(
+          `/api/v1/accounts-metrics-flow?${searchParams.toString()}`,
+        );
         const data: {
           success: boolean;
           flowData?: MetricFlowData;
         } = await response.json();
         setData(data.flowData ?? null);
+
+        // This catch block is only reporting an error to Sentry.
+        /* c8 ignore next 3 */
       } catch (error) {
-        Sentry.captureException(error);
+        captureException(error);
       }
     }
 
