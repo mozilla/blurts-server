@@ -74,6 +74,41 @@ async function revokeOAuthTokens(subscriber) {
 }
 
 /**
+ * @param {string} refreshToken
+ * @returns {Promise<{access_token: string, refresh_token: string, expires_in: number}>}
+ */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
+async function refreshOAuthTokens(refreshToken) {
+  const subscriptionIdUrl = `${AppConstants.OAUTH_ACCOUNT_URI}/oauth/token`
+  try {
+    const postResp = await fetch(subscriptionIdUrl, {
+      headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                  client_id: AppConstants.OAUTH_CLIENT_ID,
+                  client_secret: AppConstants.OAUTH_CLIENT_SECRET,
+                  grant_type: "refresh_token",
+                  refresh_token: refreshToken,
+                  ttl: 604800, // request 7 days ttl
+                }),
+                method: "POST",
+              
+    })
+
+    const responseTokens = await postResp.json();
+    if (!postResp.ok) throw responseTokens;
+    return responseTokens
+
+  } catch (e) {
+    if (e instanceof Error) {
+      console.error('refresh_fxa_access_token', { stack: e.stack })
+    }
+    throw e
+  }
+}
+/* c8 ignore stop */
+
+/**
  * @param {string} bearerToken
  * @returns {Promise<Array<any> | null>}
  */
@@ -88,13 +123,12 @@ async function getSubscriptions(bearerToken) {
         Authorization: `Bearer ${bearerToken}`
       }
     })
+    const resp = getResp.json()
+    if (!getResp.ok) throw resp;
 
-    if (!getResp.ok) {
-      throw new InternalServerError(`bad response: ${getResp.status}`)
-    } else {
-      console.info(`get_fxa_subscriptions: success`)
-      return await getResp.json()
-    }
+    console.info(`get_fxa_subscriptions: success`)
+    return resp;
+  
   } catch (e) {
     if (e instanceof Error) {
       console.error('get_fxa_subscriptions', { stack: e.stack })
@@ -126,7 +160,7 @@ async function getSubscriptions(bearerToken) {
  */
 
 async function getBillingAndSubscriptions(bearerToken) {
-  const subscriptionIdUrl = `${process.env.OAUTH_API_URI}/oauth/mozilla-subscriptions/customer/billing-and-subscriptions`
+  const subscriptionIdUrl = `${AppConstants.OAUTH_ACCOUNT_URI}/oauth/mozilla-subscriptions/customer/billing-and-subscriptions`
   
   try {
     const getResp = await fetch(subscriptionIdUrl, {
@@ -223,7 +257,7 @@ async function applyCoupon(bearerToken, couponCodeId) {
       })
       if (!response.ok) {
         const errMsg = await response.text()
-        console.info(`apply_coupon: failed - ${errMsg}`)
+        console.error(`apply_coupon: failed - ${errMsg}`)
         throw new Error(`apply_coupon: failed - ${errMsg}`)
       } else {
         console.info(`apply_coupon: success - ${JSON.stringify(await response.json())}`)
@@ -249,6 +283,7 @@ function getSha1(email) {
 }
 
 export {
+  refreshOAuthTokens,
   destroyOAuthToken,
   revokeOAuthTokens,
   getSha1,
