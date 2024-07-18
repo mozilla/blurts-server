@@ -38,8 +38,9 @@ export const SignUpForm = (props: Props) => {
   const record = useTelemetry();
   const { view } = props.eventId;
   const refViewTelemetry = useViewTelemetry(
+    "ctaButton",
     {
-      element_id: view,
+      button_id: view,
     },
     {
       skip: typeof view === "undefined",

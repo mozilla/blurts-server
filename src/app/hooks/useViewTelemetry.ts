@@ -7,9 +7,10 @@ import { TelemetryArgs, useTelemetry } from "./useTelemetry";
 import { GleanMetricMap } from "../../telemetry/generated/_map";
 
 export function useViewTelemetry<
-  EventModule extends "view",
+  EventModule extends keyof Pick<GleanMetricMap, "ctaButton">,
   EventName extends keyof GleanMetricMap[EventModule],
 >(
+  eventModule: EventModule,
   args: TelemetryArgs & GleanMetricMap[EventModule][EventName],
   options?: IntersectionOptions,
 ) {
@@ -24,7 +25,7 @@ export function useViewTelemetry<
       if (!inView) {
         return;
       }
-      recordTelemetry("view", "enter", telemetryArgs);
+      recordTelemetry(eventModule, "view", telemetryArgs);
     },
   });
 
