@@ -5,7 +5,6 @@
 "use client";
 
 import { ReactNode, createContext, useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
 import { MetricFlowData } from "../app/functions/universal/getFreeScanSearchParams";
 import * as Sentry from "@sentry/nextjs";
 
@@ -18,6 +17,9 @@ interface SessionProviderProps {
     entrypoint_variation: string;
     form_type: string;
     service: string;
+    utm_source: string;
+    utm_medium: string;
+    utm_campaign: string;
   };
 }
 
@@ -35,19 +37,12 @@ export const AccountsMetricsFlowProvider = ({
   metricsFlowParams,
 }: SessionProviderProps) => {
   const [data, setData] = useState<ContextValues["data"]>(null);
-  const searchParams = useSearchParams();
 
   useEffect(() => {
     async function fetchMetricsFlowData() {
-      const updatedSearchParams = new URLSearchParams(searchParams.toString());
-      for (const key in metricsFlowParams) {
-        const value = metricsFlowParams[key as keyof typeof metricsFlowParams];
-        if (value) {
-          updatedSearchParams.set(key, value);
-        }
-      }
+      const searchParams = new URLSearchParams(metricsFlowParams);
       const response = await fetch(
-        `/api/v1/accounts-metrics-flow?${updatedSearchParams.toString()}`,
+        `/api/v1/accounts-metrics-flow?${searchParams.toString()}`,
       );
 
       try {

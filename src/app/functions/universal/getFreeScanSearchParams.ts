@@ -25,6 +25,12 @@ export type MetricFlowData = {
   flowBeginTime: number;
 };
 
+export const FREE_SCAN_UTM_SEARCH_PARAMS = {
+  utm_source: "product",
+  utm_medium: "monitor",
+  utm_campaign: "get_free_scan",
+};
+
 export function getFreeScanSearchParams({
   cookies,
   emailInput,
@@ -53,11 +59,7 @@ export function getFreeScanSearchParams({
             experimentData["landing-page-free-scan-cta"].variant,
         }),
     },
-    {
-      utm_source: "product",
-      utm_medium: "monitor",
-      utm_campaign: "get_free_scan",
-    },
+    FREE_SCAN_UTM_SEARCH_PARAMS,
   );
 
   return attributionSearchParams.toString();

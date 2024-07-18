@@ -9,6 +9,7 @@ import { PublicShell } from "./PublicShell";
 import { defaultExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 import { AccountsMetricsFlowProvider } from "../../../../contextProviders/accounts-metrics-flow";
 import { CONST_URL_MONITOR_LANDING_PAGE_ID } from "../../../../constants";
+import { FREE_SCAN_UTM_SEARCH_PARAMS } from "../../../functions/universal/getFreeScanSearchParams";
 
 const meta: Meta<typeof View> = {
   title: "Pages/Public/Landing page",
@@ -28,6 +29,7 @@ const meta: Meta<typeof View> = {
               ? "email"
               : "button",
           service: process.env.OAUTH_CLIENT_ID as string,
+          ...FREE_SCAN_UTM_SEARCH_PARAMS,
         }}
       >
         <PublicShell l10n={getL10n("en")} countryCode={props.countryCode}>
