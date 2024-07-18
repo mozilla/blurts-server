@@ -126,7 +126,7 @@ async function getSubscriptions(bearerToken) {
  */
 
 async function getBillingAndSubscriptions(bearerToken) {
-  const subscriptionIdUrl = `${process.env.OAUTH_API_URI}/oauth/mozilla-subscriptions/customer/billing-and-subscriptions`
+  const subscriptionIdUrl = `${process.env.OAUTH_ACCOUNT_URI}/oauth/mozilla-subscriptions/customer/billing-and-subscriptions`
   
   try {
     const getResp = await fetch(subscriptionIdUrl, {
