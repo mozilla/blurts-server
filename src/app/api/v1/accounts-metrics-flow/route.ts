@@ -4,7 +4,9 @@
 
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { captureException } from "@sentry/node";
 import { MetricFlowData } from "../../../functions/universal/getFreeScanSearchParams";
+import { logger } from "../../../functions/server/logging";
 
 async function fetchMetricsFlowParams(searchParams: URLSearchParams) {
   const endpoint = new URL(process.env.OAUTH_METRICS_FLOW_URI as string);
@@ -37,7 +39,11 @@ export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url);
     const flowData = await fetchMetricsFlowParams(searchParams);
     return NextResponse.json({ success: true, flowData }, { status: 200 });
-  } catch (e) {
+  } catch (error) {
+    captureException(error);
+    logger.error("Could not fetch metrics flow metrics", {
+      error: JSON.stringify(error),
+    });
     return NextResponse.json({ success: false }, { status: 500 });
   }
 }
