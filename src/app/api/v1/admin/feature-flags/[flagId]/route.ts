@@ -37,6 +37,28 @@ export async function GET(
   }
 }
 
+export type UpdateFeatureFlagRequestBody =
+  | {
+      id: "isEnabled";
+      isEnabled: boolean;
+    }
+  | {
+      id: "dependencies";
+      value: string;
+    }
+  | {
+      id: "allowList";
+      value: string;
+    }
+  | {
+      id: "waitList";
+      value: string;
+    }
+  | {
+      id: "owner";
+      value: string;
+    };
+
 export async function PUT(req: NextRequest) {
   const session = await getServerSession();
   if (isAdmin(session?.user?.email || "")) {
@@ -46,7 +68,7 @@ export async function PUT(req: NextRequest) {
       if (!flagName) {
         throw new Error("No flag name provided");
       }
-      const result = await req.json();
+      const result: UpdateFeatureFlagRequestBody = await req.json();
 
       if (result.id === "isEnabled") {
         await enableFeatureFlagByName(flagName, result.isEnabled);
