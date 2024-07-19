@@ -10,11 +10,13 @@ import {
 } from "../../../utils/parse.js";
 import { StateAbbr } from "../../../utils/states.js";
 import {
+  getEmailForProfile,
   getLatestOnerepScanResults,
   getLatestScanForProfileByReason,
 } from "../../../db/tables/onerep_scans";
 import { RemovalStatus } from "../universal/scanResult.js";
 import { logger } from "./logging";
+import { isUsingMockONEREPEndpoint } from "../universal/mock.ts";
 
 export const monthlyScansQuota = parseInt(
   (process.env.MONTHLY_SCANS_QUOTA as string) ?? "0",
@@ -38,7 +40,7 @@ export type ShowProfileResponse = CreateProfileRequest & {
   status: "active" | "inactive";
   created_at: ISO8601DateString;
   updated_at: ISO8601DateString;
-  url: `https://api.onerep.com/profiles/${number}`;
+  url: `${string}/profiles/${number}`;
 };
 export type CreateScanResponse = {
   id: number;
@@ -118,6 +120,16 @@ async function onerepFetch(
   if (!onerepApiKey) {
     throw new Error("ONEREP_API_KEY env var not set");
   }
+
+  //If mock, remove the first slash so that it doesn't overwrite the path
+  if (
+    onerepApiBase.includes("/api/mock") &&
+    path.length > 1 &&
+    path[0] === "/"
+  ) {
+    path = path.substring(1);
+  }
+
   const url = new URL(path, onerepApiBase);
   const headers = new Headers(options.headers);
   headers.set("Authorization", `Bearer ${onerepApiKey}`);
@@ -321,8 +333,13 @@ export async function listScanResults(
     status: RemovalStatus;
   }> = {},
 ): Promise<ListScanResultsResponse> {
+  let mockEmail = "";
+  if (isUsingMockONEREPEndpoint()) {
+    mockEmail = (await getEmailForProfile(profileId)) || mockEmail;
+  }
   const queryParams = new URLSearchParams({
     "profile_id[]": profileId.toString(),
+    email: mockEmail,
   });
   if (options.page) {
     queryParams.set("page", options.page.toString());
