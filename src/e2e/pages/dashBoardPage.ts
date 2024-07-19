@@ -241,7 +241,9 @@ export class DashboardPage {
     this.faqsPageLink = page.getByTitle("Frequently asked questions").first();
 
     //upsell button
-    this.upsellScreenButton = page.getByText(/Let’s (keep going|fix it)/);
+    this.upsellScreenButton = page
+      .locator("a")
+      .getByText(/Let’s (keep going|fix it)/);
     this.overviewCard = page.locator("[class*='DashboardTopBanner_container']");
     this.overviewCardSummary = page.locator(
       "[aria-label='Dashboard summary'] > div > p",
