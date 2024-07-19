@@ -23,7 +23,6 @@ import { getExperiments } from "../../../../../../functions/server/getExperiment
 import { getLocale } from "../../../../../../functions/universal/getLocale";
 import { getCountryCode } from "../../../../../../functions/server/getCountryCode";
 import { getSubscriberById } from "../../../../../../../db/tables/subscribers";
-import { checkSession } from "../../../../../../functions/server/checkSession";
 import { checkUserHasMonthlySubscription } from "../../../../../../functions/universal/user";
 
 type Props = {
@@ -36,8 +35,8 @@ export default async function SettingsPage({ searchParams }: Props) {
   const session = await getServerSession();
   console.debug(searchParams);
 
-  if (!session?.user?.subscriber?.id || !checkSession(session)) {
-    return redirect("/auth/logout");
+  if (!session?.user?.subscriber?.id) {
+    return redirect("/");
   }
 
   const emailAddresses = await getUserEmails(session.user.subscriber.id);
