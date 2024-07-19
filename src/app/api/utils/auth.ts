@@ -12,13 +12,11 @@ import {
   getSubscriberByFxaUid,
   updateFxAData,
   incrementSignInCountForEligibleFreeUser,
-  getFxATokens,
-  updateFxATokens,
 } from "../../../db/tables/subscribers.js";
 import { addSubscriber } from "../../../db/tables/emailAddresses.js";
 import { getBreaches } from "../../functions/server/getBreaches";
 import { getBreachesForEmail } from "../../../utils/hibp.js";
-import { getSha1, refreshOAuthTokens } from "../../../utils/fxa.js";
+import { getSha1 } from "../../../utils/fxa.js";
 import {
   getEmailCtaDashboardHref,
   initEmail,
@@ -132,7 +130,6 @@ export const authOptions: AuthOptions = {
               existingUser,
               account.access_token,
               account.refresh_token,
-              account.expires_at ?? 0,
               JSON.stringify(profile),
             );
             // MNTOR-2599 The breach_resolution object can get pretty big,
@@ -147,7 +144,6 @@ export const authOptions: AuthOptions = {
             profile.locale,
             account.access_token,
             account.refresh_token,
-            account.expires_at,
             JSON.stringify(profile),
           );
           // The date fields of `verifiedSubscriber` get converted to an ISO 8601
@@ -213,7 +209,7 @@ export const authOptions: AuthOptions = {
       }
       return token;
     },
-    async session({ session, token }) {
+    session({ session, token }) {
       if (token.fxa) {
         session.user.fxa = {
           locale: token.fxa.locale,
@@ -226,43 +222,7 @@ export const authOptions: AuthOptions = {
       }
       if (token.subscriber) {
         session.user.subscriber = token.subscriber;
-
-        // refresh token
-        const dbFxATokens = await getFxATokens(token.subscriber.id);
-        if (
-          !dbFxATokens?.fxa_session_expiry ||
-          dbFxATokens.fxa_session_expiry.getTime() < Date.now()
-        ) {
-          // If the access token has expired, try to refresh it
-          if (!dbFxATokens?.fxa_refresh_token) {
-            logger.error("no_fxa_refresh_token", { dbFxATokens });
-            session.error = "RefreshAccessTokenError";
-            return session;
-          }
-          try {
-            const responseTokens = await refreshOAuthTokens(
-              dbFxATokens.fxa_refresh_token,
-            );
-            const updatedUser = await updateFxATokens(
-              token.subscriber,
-              responseTokens.access_token,
-              responseTokens.refresh_token,
-              Date.now() + responseTokens.expires_in * 1000,
-            );
-
-            // MNTOR-2599 The breach_resolution object can get pretty big,
-            // causing the session token cookie to balloon in size,
-            // eventually resulting in a 400 Bad Request due to headers being too large.
-            delete updatedUser.breach_resolution;
-            token.subscriber = updatedUser;
-          } catch (error) {
-            logger.error("refresh_access_token", error);
-            // The error property can be used client-side to handle the refresh token error
-            session.error = "RefreshAccessTokenError";
-          }
-        }
       }
-
       return session;
     },
   },
