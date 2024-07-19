@@ -208,12 +208,10 @@ export const forceLoginAs = async (
   await page.context().clearCookies();
   await landingPage.open();
   await landingPage.goToSignIn();
-  let visible = true;
-  try {
-    await expect(authPage.useDifferentEmailButton).toBeVisible();
-  } catch {
-    visible = false;
-  }
+  await page
+    .locator("//input[@type='password'] | //div/input[@type='email']")
+    .waitFor({ state: "visible" });
+  const visible = await authPage.useDifferentEmailButton.isVisible();
   if (visible) {
     await authPage.useDifferentEmailButton.click();
     await page.waitForURL(/^(?!.*signin).*/);

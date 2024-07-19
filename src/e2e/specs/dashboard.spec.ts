@@ -515,6 +515,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Overview Card`
     });
 
     await dashboardPage.open();
+    await page.waitForURL("**/dashboard/**");
 
     //get the number of exposures count
     const overviewCardSummary =
