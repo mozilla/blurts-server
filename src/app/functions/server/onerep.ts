@@ -475,17 +475,28 @@ export async function getProfilesStats(
   );
   if (!response.ok) {
     logger.error(
-      `Failed to fetch OneRep profile: [${response.status}] [${response.statusText}]`,
+      `Failed to fetch OneRep profile stats: [${response.status}] [${response.statusText}]`,
     );
-    throw new Error(
-      `Failed to fetch OneRep profile: [${response.status}] [${response.statusText}]`,
-    );
+    // throw new Error(
+    //   `Failed to fetch OneRep profile stats: [${response.status}] [${response.statusText}]`,
+    // );
   }
 
-  const profileStats: ProfileStats = await response.json();
+  try {
+    const profileStats: ProfileStats = await response.json();
 
-  // cache results in map, with a flush hack to keep the size low
-  if (profileStatsCache.size > 5) profileStatsCache.clear();
-  profileStatsCache.set(queryParamsString, profileStats);
-  return profileStats;
+    // cache results in map, with a flush hack to keep the size low
+    if (profileStatsCache.size > 5) profileStatsCache.clear();
+    profileStatsCache.set(queryParamsString, profileStats);
+    return profileStats;
+  } catch (e) {
+    if (e instanceof Error) {
+      logger.error("failed_fetching_stats", {
+        stack: e.stack,
+        message: e.message,
+      });
+    } else {
+      logger.error("failed_fetching_stats", { e });
+    }
+  }
 }
