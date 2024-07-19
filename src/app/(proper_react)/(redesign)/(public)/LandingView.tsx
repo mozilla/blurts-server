@@ -67,7 +67,6 @@ export const View = (props: Props) => {
                 eventId={{
                   cta: "clicked_get_scan_header",
                   field: "entered_email_address_header",
-                  view: "viewed_get_scan_header",
                 }}
                 experimentData={props.experimentData}
               />
@@ -140,7 +139,6 @@ export const View = (props: Props) => {
                 eventId={{
                   cta: "clicked_get_scan_second",
                   field: "entered_email_address_second",
-                  view: "viewed_get_scan_second",
                 }}
                 experimentData={props.experimentData}
               />
@@ -188,7 +186,6 @@ export const View = (props: Props) => {
                 eventId={{
                   cta: "clicked_get_scan_third",
                   field: "entered_email_address_third",
-                  view: "viewed_get_scan_third",
                 }}
                 experimentData={props.experimentData}
               />
@@ -209,7 +206,6 @@ export const View = (props: Props) => {
             eventId={{
               cta: "clicked_get_scan_fourth",
               field: "entered_email_address_fourth",
-              view: "viewed_get_scan_fourth",
             }}
             scanLimitReached={props.scanLimitReached}
             experimentData={props.experimentData}
@@ -254,7 +250,6 @@ export const View = (props: Props) => {
             eventId={{
               cta: "clicked_get_scan_last",
               field: "entered_email_address_last",
-              view: "viewed_get_scan_last",
             }}
             scanLimitReached={props.scanLimitReached}
             experimentData={props.experimentData}

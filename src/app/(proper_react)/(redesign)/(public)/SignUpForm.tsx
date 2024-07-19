@@ -19,15 +19,14 @@ import { ExperimentData } from "../../../../telemetry/generated/nimbus/experimen
 
 export type Props = {
   eligibleForPremium: boolean;
-  signUpCallbackUrl: string;
-  isHero?: boolean;
   eventId: {
     cta: string;
     field?: string;
-    view?: string;
   };
   scanLimitReached: boolean;
+  signUpCallbackUrl: string;
   experimentData?: ExperimentData;
+  isHero?: boolean;
   placeholder?: string;
 };
 
@@ -36,16 +35,9 @@ export const SignUpForm = (props: Props) => {
   const l10n = useL10n();
   const [emailInput, setEmailInput] = useState("");
   const record = useTelemetry();
-  const { view } = props.eventId;
-  const refViewTelemetry = useViewTelemetry(
-    "ctaButton",
-    {
-      button_id: view,
-    },
-    {
-      skip: typeof view === "undefined",
-    },
-  );
+  const refViewTelemetry = useViewTelemetry("ctaButton", {
+    button_id: props.eventId.cta,
+  });
   const [cookies] = useCookies(["attributionsFirstTouch"]);
 
   const onSubmit: FormEventHandler = (event) => {

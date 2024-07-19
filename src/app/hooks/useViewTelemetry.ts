@@ -22,6 +22,11 @@ export function useViewTelemetry<
     triggerOnce: true,
     ...options,
     onChange: (inView) => {
+      // Since this function is only triggered once when an element is entering
+      // the viewport and not again after leaving it. With the current setting
+      // the following condition is not expected to get called. Keeping the
+      // condition in place in case this changes.
+      /* c8 ignore next 3 */
       if (!inView) {
         return;
       }
