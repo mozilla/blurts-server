@@ -475,10 +475,10 @@ export async function getProfilesStats(
   );
   if (!response.ok) {
     logger.error(
-      `Failed to fetch OneRep profile: [${response.status}] [${response.statusText}]`,
+      `Failed to fetch OneRep profile stats: [${response.status}] [${response.statusText}]`,
     );
     // throw new Error(
-    //   `Failed to fetch OneRep profile: [${response.status}] [${response.statusText}]`,
+    //   `Failed to fetch OneRep profile stats: [${response.status}] [${response.statusText}]`,
     // );
   }
 
