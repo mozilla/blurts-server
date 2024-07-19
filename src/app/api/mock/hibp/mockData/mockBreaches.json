@@ -1,0 +1,33 @@
+{
+  "default": [],
+  "E2E_TEST_ACCOUNT_EMAIL_EXPOSURES_STARTED": ["UC"],
+  "E2E_TEST_ACCOUNT_EMAIL": [
+    "GSMHosting",
+    "Wattpad",
+    "AdultFriendFinder2016",
+    "Zynga",
+    "Chegg",
+    "ArmorGames",
+    "HauteLook",
+    "VerificationsIO",
+    "CashCrate",
+    "Edmodo",
+    "Evony",
+    "Dropbox",
+    "iMesh",
+    "MySpace",
+    "LinkedIn",
+    "NaughtyAmerica",
+    "HeroesOfNewerth",
+    "AndroidForums",
+    "AshleyMadison",
+    "Adobe"
+  ],
+  "E2E_TEST_ACCOUNT_EMAIL_ZERO_BROKERS": ["Adobe", "LinkedIn"],
+  "E2E_TEST_ACCOUNT_EMAIL_ZERO_BREACHES_ZERO_BROKERS": [],
+  "E2E_TEST_ACCOUNT_EMAIL_UNUSED": [
+    "000webhost",
+    "AndroidForums",
+    "AshleyMadison"
+  ]
+}
