@@ -222,3 +222,7 @@ export const forceLoginAs = async (
   await page.waitForURL("**/user/dashboard");
   await expect(page).toHaveURL(/.*\/user\/dashboard.*/);
 };
+
+export async function emailInputShouldExist(landingPage: LandingPage) {
+  return 0 < (await landingPage.emailInputPrompt.count());
+}
