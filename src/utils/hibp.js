@@ -7,6 +7,7 @@ import { getAllBreaches, upsertBreaches, knex } from '../db/tables/breaches.js'
 import { InternalServerError } from '../utils/error.js'
 import { getMessage } from '../utils/fluent.js'
 import { isUsingMockHIBPEndpoint } from '../app/functions/universal/mock.ts'
+import { formatQaBreach, getAllQaCustomBreaches } from '../db/tables/qa_customs.ts'
 const { HIBP_THROTTLE_MAX_TRIES, HIBP_THROTTLE_DELAY, HIBP_API_ROOT, HIBP_KANON_API_ROOT, HIBP_KANON_API_TOKEN } = AppConstants
 
 
@@ -294,17 +295,20 @@ async function getBreachesForEmail(sha1, allBreaches, includeSensitive = false, 
   const sha1Prefix = sha1.slice(0, 6).toUpperCase()
   const path = `/range/search/${sha1Prefix}`
 
+  const qaBreaches = (await getAllQaCustomBreaches(sha1Prefix)).map(b => formatQaBreach(b));
+  
   const response = await kAnonReq(path)
   if (!response || (response && response.length < 1)) {
     console.error("failed_kAnonReq_call: no response or empty response")
-    return []
+    return [...qaBreaches];
   }
+
   if (isUsingMockHIBPEndpoint()) {
     let mockDataBreaches = response[0];
-    return allBreaches.filter(breach => mockDataBreaches.websites.includes(breach.Name)).sort((a, b) => {
+    return [...qaBreaches, ...allBreaches.filter(breach => mockDataBreaches.websites.includes(breach.Name)).sort((a, b) => {
       // @ts-ignore TODO: Turn dates into a number
       return new Date(b.AddedDate) - new Date(a.AddedDate)
-    })
+    })]
   }
   // Parse response body, format:
   // [
@@ -331,11 +335,11 @@ async function getBreachesForEmail(sha1, allBreaches, includeSensitive = false, 
   }
 
   if (includeSensitive) {
-    return foundBreaches
+    return [...foundBreaches, ...qaBreaches]
   }
-  return foundBreaches.filter(
+  return [...qaBreaches, foundBreaches.filter(
     breach => !breach.IsSensitive
-  )
+  )]
 }
 /* c8 ignore stop */
 
