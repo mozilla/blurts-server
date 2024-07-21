@@ -5,7 +5,6 @@
 fix-flow-nav-high-risk-data-breaches = Suuren riskin tietomurrot
 fix-flow-nav-leaked-passwords = Vuotaneet salasanat
 fix-flow-nav-security-recommendations = Turvallisuussuositukset
-
 guided-resolution-flow-exit = Palaa hallintapaneeliin
 guided-resolution-flow-next-arrow = Siirry seuraavaan vaiheeseen
 guided-resolution-flow-step-navigation-label = Ohjatut vaiheet
@@ -117,6 +116,12 @@ security-recommendation-steps-cta-label = Selvä!
 # Phone security recommendation
 
 security-recommendation-phone-title = Suojaa puhelinnumerosi
+# $num_breaches is the number of breaches where the phone number was found.
+security-recommendation-phone-summary =
+    { $num_breaches ->
+        [one] Puhelinnumerosi paljastui { $num_breaches } tietovuodossa:
+       *[other] Puhelinnumerosi paljastui { $num_breaches } tietovuodossa:
+    }
 security-recommendation-phone-step-two = Älä napsauta tuntemattomien lähettäjien tekstiviesteissä olevia linkkejä. Jos viesti vaikuttaa olevan luotettavasta lähteestä, soita lähettäjälle vahvistaaksesi
 
 # Email security recommendation
@@ -143,6 +148,8 @@ security-recommendation-ip-summary =
         [one] IP-osoitteesi paljastui { $num_breaches } tietovuodon yhteydessä:
        *[other] IP-osoitteesi paljastui { $num_breaches } tietovuodon yhteydessä:
     }
+security-recommendation-ip-description = IP-osoitteesi osoittaa sijaintisi ja Internet-palveluntarjoajasi. Hakkerit voivat käyttää näitä tietoja paikantaakseen sinut tai yrittääkseen muodostaa yhteyden laitteihisi.
+security-recommendation-ip-step-one = Käytä VPN:ää (kuten <link_to_info>{ -brand-mozilla-vpn }</link_to_info>) piilottaaksesi todellisen IP-osoitteesi ja käyttääksesi Internetiä yksityisesti.
 
 # Leaked Passwords
 
