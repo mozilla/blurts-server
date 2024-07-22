@@ -4,14 +4,8 @@
 
 import { notFound, redirect } from "next/navigation";
 import { getServerSession } from "../../../../../functions/server/getServerSession";
-import {
-  getAllFeatureFlags,
-  getDeletedFeatureFlags,
-} from "../../../../../../db/tables/featureFlags";
+import { getAllFeatureFlags } from "../../../../../../db/tables/featureFlags";
 import { AddFeatureFlag } from "./components/AddFeatureFlag";
-import { DeleteFeatureFlag } from "./components/DeleteFeatureFlag";
-import { ToggleFlagEnabled } from "./components/ToggleFlagEnabled";
-import { FeatureFlagRow } from "knex/types/tables";
 import { isAdmin } from "../../../../../api/utils/auth";
 import { Toolbar } from "../../../../../components/client/toolbar/Toolbar";
 import styles from "./page.module.scss";
@@ -20,6 +14,7 @@ import {
   getPremiumSubscriptionUrl,
 } from "../../../../../functions/server/getPremiumSubscriptionInfo";
 import { defaultExperimentData } from "../../../../../../telemetry/generated/nimbus/experiments";
+import { FlagEditor } from "./components/FlagEditor";
 
 export default async function FeatureFlagPage() {
   const session = await getServerSession();
@@ -36,72 +31,10 @@ export default async function FeatureFlagPage() {
     return notFound();
   }
 
-  const ActiveFlagsTable = (featureFlags: { data: Array<FeatureFlagRow> }) => {
-    const { data } = featureFlags;
-
-    if (!data || data.length === 0) {
-      return <p>No data</p>;
-    }
-
-    return (
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Enabled</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.map((item) => (
-            <tr key={item.name}>
-              <td>{item.name}</td>
-              <td>
-                <ToggleFlagEnabled
-                  id="isEnabled"
-                  name={item.name}
-                  isEnabled={item.is_enabled}
-                />
-                {item.is_enabled}
-              </td>
-              <td>
-                <DeleteFeatureFlag name={item.name} />
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    );
-  };
-
-  const DeletedFlagsTable = (featureFlags: { data: Array<FeatureFlagRow> }) => {
-    const { data } = featureFlags;
-
-    if (!data || data.length === 0) {
-      return <p>No data</p>;
-    }
-
-    return (
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Deleted At</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.map((item) => (
-            <tr key={item.name}>
-              <td>{item.name}</td>
-              <td>{item.deleted_at?.toString()}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    );
-  };
-
-  const featureFlags = (await getAllFeatureFlags()) ?? null;
-  const deletedFeatureFlags = (await getDeletedFeatureFlags()) ?? null;
+  const featureFlags =
+    (await getAllFeatureFlags()).toSorted(
+      (flagA, flagB) => flagB.created_at.getTime() - flagA.created_at.getTime(),
+    ) ?? [];
 
   return (
     <div className={styles.wrapper}>
@@ -124,18 +57,29 @@ export default async function FeatureFlagPage() {
       </nav>
       <div className={styles.start}>
         <h1>
-          Note: Feaure flags are deprecated, use{" "}
+          Note: Feature flags are deprecated, use{" "}
           <a href="https://experimenter.info/">Experimenter</a>.
         </h1>
         <br />
         <h3>Add New Feature Flag</h3>
         <AddFeatureFlag />
         <br />
-        <h3>Active Feature Flags</h3>
-        <ActiveFlagsTable data={featureFlags} />
-        <br />
-        <h3>Deleted Feature Flags</h3>
-        <DeletedFlagsTable data={deletedFeatureFlags} />
+        <h3>Enabled Feature Flags</h3>
+        <div className={styles.flagList}>
+          {featureFlags
+            .filter((flag) => flag.is_enabled)
+            .map((flag) => (
+              <FlagEditor key={flag.name} flag={flag} />
+            ))}
+        </div>
+        <h3>Disabled Feature Flags</h3>
+        <div className={styles.flagList}>
+          {featureFlags
+            .filter((flag) => !flag.is_enabled)
+            .map((flag) => (
+              <FlagEditor key={flag.name} flag={flag} />
+            ))}
+        </div>
       </div>
     </div>
   );
