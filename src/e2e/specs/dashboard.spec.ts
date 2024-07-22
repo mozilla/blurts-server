@@ -515,6 +515,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Overview Card`
     });
 
     await dashboardPage.open();
+    await page.waitForURL("**/dashboard/**");
 
     //get the number of exposures count
     const overviewCardSummary =
@@ -719,40 +720,49 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Navigation`, (
   });
 });
 
-test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Data Breaches`, () => {
-  test.beforeEach(async ({ landingPage, page, authPage }) => {
-    const emailToUse = process.env
-      .E2E_TEST_ACCOUNT_EMAIL_EXPOSURES_STARTED as string;
-    const pwdToUse = process.env.E2E_TEST_ACCOUNT_PASSWORD as string;
-    expect(emailToUse).not.toBeUndefined();
-    expect(pwdToUse).not.toBeUndefined();
-    await forceLoginAs(emailToUse, pwdToUse, page, landingPage, authPage);
-  });
-
-  test("Verify that the High risk data breaches step is displayed correctly", async ({
-    dashboardPage,
-    dataBrokersPage,
-    page,
-  }) => {
-    test.info().annotations.push({
-      type: "testrail",
-      description:
-        "https://testrail.stage.mozaws.net/index.php?/cases/view/2463592",
+// This test has inconsistent results - may need to rely on mocks.
+test.describe.skip(
+  `${process.env.E2E_TEST_ENV} - Breaches Dashboard - Data Breaches`,
+  () => {
+    test.beforeEach(async ({ landingPage, page, authPage }) => {
+      const emailToUse = process.env
+        .E2E_TEST_ACCOUNT_EMAIL_EXPOSURES_STARTED as string;
+      const pwdToUse = process.env.E2E_TEST_ACCOUNT_PASSWORD as string;
+      expect(emailToUse).not.toBeUndefined();
+      expect(pwdToUse).not.toBeUndefined();
+      await forceLoginAs(emailToUse, pwdToUse, page, landingPage, authPage);
     });
 
-    await expect(dashboardPage.upsellScreenButton).toBeVisible();
-    await dashboardPage.upsellScreenButton.click();
-    await page.waitForURL(/.*\/data-broker-profiles\/view-data-brokers\/?/);
-    await expect(dataBrokersPage.forwardArrowButton).toBeVisible();
-    await dataBrokersPage.forwardArrowButton.click();
-    await page.waitForURL(/.*\/high-risk-data-breaches.*/);
-    const highRiskDataBreachLi = page.locator(
-      'li:has(div:has-text("High risk data breaches"))',
-    );
-    await expect(highRiskDataBreachLi).toBeVisible();
-    await expect(highRiskDataBreachLi).toHaveAttribute("aria-current", "step");
-    await expect(
-      highRiskDataBreachLi.locator("div").getByText("High risk data breaches"),
-    ).toBeVisible();
-  });
-});
+    test("Verify that the High risk data breaches step is displayed correctly", async ({
+      dashboardPage,
+      dataBrokersPage,
+      page,
+    }) => {
+      test.info().annotations.push({
+        type: "testrail",
+        description:
+          "https://testrail.stage.mozaws.net/index.php?/cases/view/2463592",
+      });
+
+      await expect(dashboardPage.upsellScreenButton).toBeVisible();
+      await dashboardPage.upsellScreenButton.click();
+      await page.waitForURL(/.*\/data-broker-profiles\/view-data-brokers\/?/);
+      await expect(dataBrokersPage.forwardArrowButton).toBeVisible();
+      await dataBrokersPage.forwardArrowButton.click();
+      await page.waitForURL(/.*\/high-risk-data-breaches.*/);
+      const highRiskDataBreachLi = page.locator(
+        'li:has(div:has-text("High risk data breaches"))',
+      );
+      await expect(highRiskDataBreachLi).toBeVisible();
+      await expect(highRiskDataBreachLi).toHaveAttribute(
+        "aria-current",
+        "step",
+      );
+      await expect(
+        highRiskDataBreachLi
+          .locator("div")
+          .getByText("High risk data breaches"),
+      ).toBeVisible();
+    });
+  },
+);

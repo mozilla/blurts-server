@@ -139,6 +139,6 @@ dashboard-top-banner-monitor-more-cta = Monitorovat více e-mailů
 # About Exposure Indicators Modal
 
 modal-exposure-status-description-all = Hledáme úniky údajů ve všech známých únicích. Vaše odhalení bude mít jeden z následujících stavů:
-modal-exposure-indicator-title = Stavy kontaktů
-modal-exposure-indicator-action-needed = K dokončení akce je vyžadována pokročilá nebo ruční akce.
-modal-exposure-indicator-fixed = Problém byl vyřešen a vy už nemusíte podnikat žádné kroky.
+modal-exposure-indicator-title = Stavy odhalení
+modal-exposure-indicator-action-needed = K dokončení akce je nutná pokročilá nebo ruční akce.
+modal-exposure-indicator-fixed = Odhalení bylo vyřešeno a vy už nemusíte podnikat žádné kroky.
