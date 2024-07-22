@@ -17,7 +17,7 @@ export function middleware(request: NextRequest) {
   // https://github.com/vercel/next.js/discussions/51039#discussioncomment-6596642
   requestHeaders.set("Content-Security-Policy", cspHeader);
   const responseHeaders = new Headers();
-  console.log("SETTING CSP RESPONSE HEADERS");
+  console.error("SETTING CSP RESPONSE HEADERS");
   responseHeaders.set("Content-Security-Policy", cspHeader);
 
   // https://docs.sentry.io/security-legal-pii/security/security-policy-reporting/#content-security-policy
@@ -31,10 +31,10 @@ export function middleware(request: NextRequest) {
     ],
     include_subdomains: true,
   };
-  console.log("SETTING REPORT-TO RESPONSE HEADERS");
+  console.error("SETTING REPORT-TO RESPONSE HEADERS");
   responseHeaders.set("Report-To", JSON.stringify(cspReportToHeader));
 
-  console.log("SENDING RESPONSE");
+  console.error("SENDING RESPONSE");
   return NextResponse.next({
     headers: responseHeaders,
     request: {
