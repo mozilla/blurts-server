@@ -4,7 +4,7 @@
 
 "use client";
 
-import { FormEventHandler, useId, useState } from "react";
+import { FormEventHandler, RefObject, useId, useState } from "react";
 import { signIn } from "next-auth/react";
 import { useL10n } from "../../../hooks/l10n";
 import { Button } from "../../../components/client/Button";
@@ -66,7 +66,11 @@ export const SignUpForm = (props: Props) => {
   return props.scanLimitReached ? (
     <WaitlistCta />
   ) : (
-    <form ref={refViewTelemetry} className={styles.form} onSubmit={onSubmit}>
+    <form
+      ref={refViewTelemetry as RefObject<HTMLFormElement>}
+      className={styles.form}
+      onSubmit={onSubmit}
+    >
       <input
         name={emailInputId}
         data-testid="signup-form-input"
