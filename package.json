@@ -99,7 +99,7 @@
     "react-stately": "^3.31.1",
     "server-only": "^0.0.1",
     "uuid": "^9.0.1",
-    "winston": "^3.13.0"
+    "winston": "^3.13.1"
   },
   "devDependencies": {
     "@faker-js/faker": "^8.4.1",
