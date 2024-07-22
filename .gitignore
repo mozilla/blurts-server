@@ -36,6 +36,7 @@ storybook-static/
 
 # testing
 /coverage
+jest-junit.xml
 
 # next.js
 /.next/

@@ -51,12 +51,12 @@ const customJestConfig = {
   coverageProvider: "v8",
 
   // A list of reporter names that Jest uses when writing coverage reports
-  // coverageReporters: [
-  //   "json",
-  //   "text",
-  //   "lcov",
-  //   "clover"
-  // ],
+  coverageReporters: [
+    // "json",
+    "text",
+    // "lcov",
+    "clover",
+  ],
 
   // An object that configures minimum threshold enforcement for coverage results
   coverageThreshold: {
@@ -133,7 +133,20 @@ const customJestConfig = {
   // projects: undefined,
 
   // Use this configuration option to add custom reporters to Jest
-  // reporters: undefined,
+  reporters: [
+    "default",
+    [
+      "jest-junit",
+      {
+        addFileAttribute: "true",
+        ancestorSeparator: " › ",
+        outputName: "jest-junit.xml",
+        suiteNameTemplate: "{filename}",
+        titleTemplate: "{title}",
+        usePathForSuiteName: true,
+      },
+    ],
+  ],
 
   // Automatically reset mock state before every test
   resetMocks: true,
