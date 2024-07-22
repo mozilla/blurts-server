@@ -4,12 +4,13 @@
 
 "use client";
 
-import { FormEventHandler, useId, useState } from "react";
+import { FormEventHandler, RefObject, useId, useState } from "react";
 import { signIn } from "next-auth/react";
 import { useL10n } from "../../../hooks/l10n";
 import { Button } from "../../../components/client/Button";
 import styles from "./SignUpForm.module.scss";
 import { useTelemetry } from "../../../hooks/useTelemetry";
+import { useViewTelemetry } from "../../../hooks/useViewTelemetry";
 import { VisuallyHidden } from "../../../components/server/VisuallyHidden";
 import { WaitlistCta } from "./ScanLimit";
 import { useCookies } from "react-cookie";
@@ -18,14 +19,14 @@ import { ExperimentData } from "../../../../telemetry/generated/nimbus/experimen
 
 export type Props = {
   eligibleForPremium: boolean;
-  signUpCallbackUrl: string;
-  isHero?: boolean;
   eventId: {
     cta: string;
     field?: string;
   };
   scanLimitReached: boolean;
+  signUpCallbackUrl: string;
   experimentData?: ExperimentData;
+  isHero?: boolean;
   placeholder?: string;
 };
 
@@ -34,6 +35,9 @@ export const SignUpForm = (props: Props) => {
   const l10n = useL10n();
   const [emailInput, setEmailInput] = useState("");
   const record = useTelemetry();
+  const refViewTelemetry = useViewTelemetry("ctaButton", {
+    button_id: props.eventId.cta,
+  });
   const [cookies] = useCookies(["attributionsFirstTouch"]);
 
   const onSubmit: FormEventHandler = (event) => {
@@ -62,7 +66,11 @@ export const SignUpForm = (props: Props) => {
   return props.scanLimitReached ? (
     <WaitlistCta />
   ) : (
-    <form className={styles.form} onSubmit={onSubmit}>
+    <form
+      ref={refViewTelemetry as RefObject<HTMLFormElement>}
+      className={styles.form}
+      onSubmit={onSubmit}
+    >
       <input
         name={emailInputId}
         data-testid="signup-form-input"

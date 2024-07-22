@@ -87,7 +87,9 @@ export type TabData = {
 
 export const View = (props: Props) => {
   const l10n = useL10n();
-  const recordTelemetry = useTelemetry(props.experimentationId);
+  const recordTelemetry = useTelemetry({
+    experimentationId: props.experimentationId,
+  });
   const countryCode = useContext(CountryCodeContext);
   const pathname = usePathname();
 

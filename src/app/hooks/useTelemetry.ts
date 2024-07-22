@@ -17,9 +17,13 @@ const TelemetryPlatforms = {
   Ga: "ga",
 } as const;
 
-export const useTelemetry = (experimentationId?: string) => {
+export type TelemetryArgs = {
+  experimentationId?: string;
+};
+
+export const useTelemetry = (args?: TelemetryArgs) => {
   const path = usePathname();
-  const recordGlean = useGlean(experimentationId);
+  const recordGlean = useGlean(args?.experimentationId);
 
   const { Glean, Ga } = TelemetryPlatforms;
   const recordTelemetry = <
