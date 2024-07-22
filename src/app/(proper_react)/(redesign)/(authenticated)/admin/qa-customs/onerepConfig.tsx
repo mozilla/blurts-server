@@ -5,18 +5,18 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import styles from "../ConfigPage.module.scss";
+import styles from "./ConfigPage.module.scss";
 
-interface QaBrokerData {
+interface QaBrokerDataCounts {
   onerep_scan_result_id?: number;
   onerep_profile_id: number;
   link: string;
   age: number | null | undefined;
   data_broker: string;
-  emails: string;
-  phones: string;
-  addresses: string;
-  relatives: string;
+  emails: number;
+  phones: number;
+  addresses: number;
+  relatives: number;
   first_name: string;
   middle_name: string | null | undefined;
   last_name: string;
@@ -30,9 +30,11 @@ interface Props {
   onerepProfileId: number;
 }
 
-const ConfigPage = (props: Props) => {
+const OnerepConfigPage = (props: Props) => {
   const profileId = props.onerepProfileId;
-  const [brokers, setBrokers] = useState<QaBrokerData[]>([]);
+  const [brokersFetchHappened, setBrokersFetchHappened] =
+    useState<boolean>(false);
+  const [brokers, setBrokers] = useState<QaBrokerDataCounts[]>([]);
   const [errors, setErrors] = useState({
     profile_id: false,
     data_broker: false,
@@ -40,15 +42,16 @@ const ConfigPage = (props: Props) => {
   });
 
   // Initialize a base broker template to reset form fields
-  const baseBroker: QaBrokerData = {
+
+  const baseBroker: QaBrokerDataCounts = {
     onerep_profile_id: -1,
     link: "",
     age: null,
     data_broker: "",
-    emails: "",
-    phones: "",
-    addresses: "",
-    relatives: "",
+    emails: 0,
+    phones: 0,
+    addresses: 0,
+    relatives: 0,
     first_name: "",
     middle_name: null,
     last_name: "",
@@ -57,13 +60,15 @@ const ConfigPage = (props: Props) => {
   };
 
   // Temporary state to hold form input for a new broker
-  const [newBroker, setNewBroker] = useState<QaBrokerData>(baseBroker);
+  const [newBroker, setNewBroker] = useState<QaBrokerDataCounts>(baseBroker);
 
   useEffect(() => {
     void fetchBrokers();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchBrokers = async () => {
+    setBrokersFetchHappened(false);
     try {
       const response = await fetch(
         `${endpointBase}?onerep_profile_id=${props.onerepProfileId}`,
@@ -73,6 +78,7 @@ const ConfigPage = (props: Props) => {
     } catch (error) {
       console.error("Error fetching brokers:", error);
     }
+    setBrokersFetchHappened(true);
   };
 
   const handleChange = (
@@ -110,7 +116,7 @@ const ConfigPage = (props: Props) => {
     if (hasError) return;
 
     newBroker.onerep_profile_id = profileId;
-
+    alert("Request made successfully");
     try {
       const response = await fetch(endpointBase, {
         method: "POST",
@@ -156,10 +162,10 @@ const ConfigPage = (props: Props) => {
   };
 
   return (
-    <main className={styles.wrapper}>
+    <main className={`${styles.wrapper} ${styles.configRight}`}>
       <header className={styles.header}>
         <div>
-          Adding custom <b>OneRep</b> brokers
+          Add custom <b>OneRep</b> brokers
         </div>
         <br />
       </header>
@@ -328,7 +334,9 @@ const ConfigPage = (props: Props) => {
           <div className={styles.listWrapper}>
             <h2 className={styles.h2}>Brokers List</h2>
             <ul className={styles.listContainer}>
-              {brokers.length !== 0 ? (
+              {!brokersFetchHappened ? (
+                <p>fetching...</p>
+              ) : brokers.length !== 0 ? (
                 brokers.map((broker) => (
                   <li
                     key={broker.onerep_profile_id}
@@ -337,8 +345,7 @@ const ConfigPage = (props: Props) => {
                     }
                     className={styles.listItem}
                   >
-                    {"{"} {broker.onerep_profile_id}, {broker.data_broker},{" "}
-                    {broker.link} {"}"}
+                    {"{"} {broker.data_broker}, {broker.link} {"}"}
                   </li>
                 ))
               ) : (
@@ -352,4 +359,4 @@ const ConfigPage = (props: Props) => {
   );
 };
 
-export default ConfigPage;
+export default OnerepConfigPage;

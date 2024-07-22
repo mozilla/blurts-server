@@ -295,7 +295,7 @@ async function getBreachesForEmail(sha1, allBreaches, includeSensitive = false, 
   const sha1Prefix = sha1.slice(0, 6).toUpperCase()
   const path = `/range/search/${sha1Prefix}`
 
-  const qaBreaches = (await getAllQaCustomBreaches(sha1Prefix)).map(b => formatQaBreach(b));
+  const qaBreaches = await getAllQaCustomBreaches(sha1Prefix);
   
   const response = await kAnonReq(path)
   if (!response || (response && response.length < 1)) {

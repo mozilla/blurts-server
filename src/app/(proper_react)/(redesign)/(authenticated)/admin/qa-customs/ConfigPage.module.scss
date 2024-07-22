@@ -206,3 +206,18 @@
 .unselected {
   background-color: white;
 }
+
+.configContainer {
+  display: flex;
+  background-color: $color-grey-05;
+}
+
+.configLeft {
+  flex: 1;
+  padding: 20px; /* Optional: add some padding */
+}
+
+.configRight {
+  flex: 1;
+  padding: 20px; /* Optional: add some padding */
+}

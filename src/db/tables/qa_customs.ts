@@ -48,7 +48,14 @@ interface QaBreachData {
   FaviconUrl?: string | null;
 }
 
-interface QaBreachResolution {}
+interface QaToggleRow {
+  email_hash: string;
+  onerep_profile_id: number;
+  show_real_breaches: boolean;
+  show_custom_breaches: boolean;
+  show_real_brokers: boolean;
+  show_custom_brokers: boolean;
+}
 
 async function getQaCustomBrokers(
   onerepProfileId: number | null,
@@ -144,7 +151,7 @@ async function getAllQaCustomBreaches(emailHashPrefix: string) {
   ).map((b) => {
     b.Id = Number(b.Id);
     b.Id = Number(b.Id);
-    return b as QaBreachData;
+    return formatQaBreach(b) as QaBreachData;
   });
   return res;
 }
@@ -162,24 +169,29 @@ async function addQaCustomBreach(breach: QaBreachData): Promise<void> {
 
 async function deleteQaCustomBreach(
   emailHashPrefix: string,
-  id: number,
+  Id: number,
 ): Promise<void> {
-  await knex("qa_custom_breaches")
-    .where({ emailHashPrefix: emailHashPrefix, Id: id })
-    .del();
+  await knex("qa_custom_breaches").where({ emailHashPrefix, Id }).del();
+}
+
+async function getQaToggleRow(emailHash: string) {
+  return (await knex("qa_custom_toggles")
+    .select("*")
+    .where("email_hash", emailHash)
+    .first()) as QaToggleRow;
 }
 
 async function setQaToggle(
   columnName: string,
   isShown: boolean,
-  emailHashPrefix: string,
+  emailHash: string,
 ): Promise<void> {
   // List of allowed columns to toggle
   const allowedColumns = [
-    "showRealBreaches",
-    "showCustomBreaches",
-    "showRealBrokers",
-    "showCustomBrokers",
+    "show_real_breaches",
+    "show_custom_breaches",
+    "show_real_brokers",
+    "show_custom_brokers",
   ];
 
   if (!allowedColumns.includes(columnName)) {
@@ -189,7 +201,7 @@ async function setQaToggle(
   // Get the current value of the specified column
   const record = await knex("qa_custom_toggles")
     .select(columnName)
-    .where({ emailHashPrefix })
+    .where("email_hash", emailHash)
     .first();
 
   if (!record) {
@@ -200,35 +212,26 @@ async function setQaToggle(
     .update({
       [columnName]: isShown,
     })
-    .where({ emailHashPrefix });
-}
-
-async function setQaBreachResolution(
-  emailHashPrefix: string,
-  breachResolution: QaBreachResolution,
-): Promise<void> {
-  await knex("qa_custom_toggles")
-    .update({
-      breach_resolution: JSON.stringify(breachResolution),
-    })
-    .where({ emailHashPrefix });
+    .where("email_hash", emailHash);
 }
 
 async function createQaTogglesRow(
-  emailHashPrefix: string,
+  emailHash: string,
   subscriberId: number,
 ): Promise<void> {
   const onerep_profile_id = await getOnerepProfileId(subscriberId);
 
-  await knex("qa_custom_toggles").insert({
-    emailHashPrefix,
-    onerep_profile_id,
-    showRealBreaches: true,
-    showCustomBreaches: false,
-    showRealBrokers: true,
-    showCustomBrokers: false,
-    breach_resolution: null,
-  });
+  await knex("qa_custom_toggles")
+    .insert({
+      email_hash: emailHash,
+      onerep_profile_id,
+      show_real_breaches: true,
+      show_custom_breaches: true,
+      show_real_brokers: true,
+      show_custom_brokers: true,
+    })
+    .onConflict("email_hash")
+    .ignore();
 }
 
 export {
@@ -241,9 +244,9 @@ export {
   getAllQaCustomBreaches,
   addQaCustomBreach,
   deleteQaCustomBreach,
+  getQaToggleRow,
   setQaToggle,
-  setQaBreachResolution,
   createQaTogglesRow,
   formatQaBreach,
 };
-export type { QaBrokerData, QaBreachData };
+export type { QaBrokerData, QaBreachData, QaToggleRow };

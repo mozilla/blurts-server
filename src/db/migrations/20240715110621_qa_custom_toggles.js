@@ -8,13 +8,12 @@
  */
 export function up(knex) {
   return knex.schema.createTable("qa_custom_toggles", function(table) {
-    table.string("emailHash").primary();
+    table.string("email_hash").primary();
     table.integer("onerep_profile_id").notNullable();
-    table.boolean("showRealBreaches").notNullable();
-    table.boolean("showCustomBreaches").notNullable();
-    table.boolean("showRealBrokers").notNullable();
-    table.boolean("showCustomBrokers").notNullable();
-    table.jsonb("breach_resolution");
+    table.boolean("show_real_breaches").notNullable();
+    table.boolean("show_custom_breaches").notNullable();
+    table.boolean("show_real_brokers").notNullable();
+    table.boolean("show_custom_brokers").notNullable();
   });
 }
 

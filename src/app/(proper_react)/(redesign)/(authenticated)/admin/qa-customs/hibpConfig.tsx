@@ -5,16 +5,16 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import styles from "../ConfigPage.module.scss";
-import { QaBreachData } from "../../../../../../../db/tables/qa_customs";
+import styles from "./ConfigPage.module.scss";
+import { QaBreachData } from "../../../../../../db/tables/qa_customs";
 
 const endpointBase = "/api/v1/admin/qa-customs/hibp";
 
 interface Props {
-  emailHashPrefix: string;
+  emailHashFull: string;
 }
 
-const ConfigPage = (props: Props) => {
+const HibpConfigPage = (props: Props) => {
   const dataClasses = [
     "email-addresses",
     "ip-addresses",
@@ -29,7 +29,7 @@ const ConfigPage = (props: Props) => {
   const [breachesFetchHappened, setBreachesFetchHappened] =
     useState<boolean>(false);
   const [breachTypesSelection, setBreachTypesSelection] = useState<boolean[]>(
-    [],
+    dataClasses.map((_) => false),
   );
 
   const currentTime = new Date().toISOString();
@@ -60,15 +60,15 @@ const ConfigPage = (props: Props) => {
   const [newBreach, setNewBreach] = useState<QaBreachData>(baseBreach);
 
   useEffect(() => {
-    setBreachTypesSelection(dataClasses.map((_) => false));
     void fetchBreaches();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchBreaches = async () => {
     setBreachesFetchHappened(false);
     try {
       const response = await fetch(
-        `${endpointBase}?emailHashPrefix=${props.emailHashPrefix}`,
+        `${endpointBase}?emailHashPrefix=${props.emailHashFull.slice(0, 6)}`,
       );
       const data = await response.json();
       setBreaches(data);
@@ -78,6 +78,15 @@ const ConfigPage = (props: Props) => {
     setBreachesFetchHappened(true);
   };
 
+  const toggleDataClassOption = (index: number) => {
+    breachTypesSelection[index] = !breachTypesSelection[index];
+    setBreachTypesSelection(breachTypesSelection);
+    const newDataClasses = dataClasses.filter(
+      (_, i) => breachTypesSelection[i],
+    );
+    setNewBreach({ ...newBreach, ["DataClasses"]: newDataClasses });
+  };
+
   const handleChange = (
     e:
       | React.ChangeEvent<HTMLInputElement>
@@ -85,15 +94,6 @@ const ConfigPage = (props: Props) => {
       | React.ChangeEvent<HTMLTextAreaElement>,
   ) => {
     switch (e.target.name) {
-      case "DataClasses": {
-        const event = e.target as HTMLSelectElement;
-        breachTypesSelection[event.selectedIndex] = true;
-        const newDataClasses = dataClasses.filter(
-          (_, i) => breachTypesSelection[i],
-        );
-        setNewBreach({ ...newBreach, [event.name]: newDataClasses });
-        break;
-      }
       case "Title": {
         setNewBreach({
           ...newBreach,
@@ -111,12 +111,14 @@ const ConfigPage = (props: Props) => {
 
   const handleAddBreach = async (event: React.FormEvent) => {
     event.preventDefault();
-    newBreach.emailHashPrefix = props.emailHashPrefix;
+    newBreach.emailHashPrefix = props.emailHashFull.slice(0, 6);
 
     if (newBreach.emailHashPrefix.length < 6) {
       console.log("Invalid email hash!");
     }
     setBreachTypesSelection(dataClasses.map((_) => false));
+    setNewBreach(baseBreach);
+    alert("Request made successfully");
 
     try {
       const response = await fetch(endpointBase, {
@@ -129,7 +131,6 @@ const ConfigPage = (props: Props) => {
 
       if (response.ok) {
         await fetchBreaches(); // Refresh the breaches list
-        setNewBreach(baseBreach); // Reset form fields
       } else {
         console.error("Error adding breach:", await response.json());
       }
@@ -138,10 +139,10 @@ const ConfigPage = (props: Props) => {
     }
   };
 
-  const handleDeleteBreach = async (id: number, emailHashPrefix: string) => {
+  const handleDeleteBreach = async (breachId: number) => {
     try {
       const response = await fetch(
-        `${endpointBase}?id=${id}&emailHashPrefix=${emailHashPrefix}`,
+        `${endpointBase}?breachId=${breachId}&emailHashFull=${props.emailHashFull}`,
         {
           method: "DELETE",
         },
@@ -158,10 +159,10 @@ const ConfigPage = (props: Props) => {
   };
 
   return (
-    <main className={styles.wrapper}>
+    <main className={`${styles.wrapper} ${styles.configLeft}`}>
       <header className={styles.header}>
         <div>
-          Adding custom <b>Breaches</b>
+          Add custom <b>Breaches</b>
         </div>
         <br />
       </header>
@@ -180,7 +181,7 @@ const ConfigPage = (props: Props) => {
                   className={`${styles.input}`}
                   type="text"
                   name="Title"
-                  placeholder="Custom Breach"
+                  placeholder="Custom-Breach"
                   value={newBreach.Title}
                   onChange={(e) => void handleChange(e)}
                 />
@@ -215,7 +216,7 @@ const ConfigPage = (props: Props) => {
                   className={styles.input}
                   type="number"
                   name="PwnCount"
-                  placeholder="7777777"
+                  placeholder="65"
                   value={newBreach.PwnCount}
                   onChange={(e) => void handleChange(e)}
                 />
@@ -246,14 +247,15 @@ const ConfigPage = (props: Props) => {
 
               <label className={styles.label}>
                 Data Classes:
-                <select
-                  name="DataClasses"
-                  onChange={(e) => void handleChange(e)}
-                  multiple
-                >
+                <select name="DataClasses" multiple>
                   {dataClasses.map((dataClass, index) => (
                     <option
                       key={dataClass}
+                      onClick={(e) =>
+                        toggleDataClassOption(
+                          (e.target as HTMLOptionElement).index,
+                        )
+                      }
                       value={dataClass}
                       className={
                         breachTypesSelection[index]
@@ -367,15 +369,11 @@ const ConfigPage = (props: Props) => {
                   <li
                     key={breach.Id}
                     onClick={() => {
-                      void handleDeleteBreach(
-                        breach.Id,
-                        breach.emailHashPrefix,
-                      );
+                      void handleDeleteBreach(breach.Id);
                     }}
                     className={styles.listItem}
                   >
-                    {"{"} {breach.emailHashPrefix}, {breach.Title},{" "}
-                    {breach.Domain} {"}"}
+                    {"{"} {breach.Title}, {breach.Domain} {"}"}
                   </li>
                 ))
               ) : (
@@ -389,4 +387,4 @@ const ConfigPage = (props: Props) => {
   );
 };
 
-export default ConfigPage;
+export default HibpConfigPage;

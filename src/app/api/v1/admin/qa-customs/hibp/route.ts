@@ -16,6 +16,11 @@ import {
 } from "../../../../../../db/tables/qa_customs";
 import { getServerSession } from "../../../../../functions/server/getServerSession";
 import { randomInt } from "crypto";
+import {
+  getSubscribersByHashes,
+  setBreachResolution,
+} from "../../../../../../db/tables/subscribers";
+import { logger } from "../../../../../functions/server/logging";
 
 function successResponse() {
   return NextResponse.json(
@@ -28,6 +33,42 @@ async function checkAdmin() {
   const session = await getServerSession();
   if (!isAdmin(session?.user?.email || "")) return unauthError();
   return null;
+}
+
+type EmailBreachData = {
+  [breachId: string]: {
+    resolutionsChecked: string[];
+  };
+};
+
+type BreachResolutionObject = {
+  useBreachId: boolean;
+} & {
+  [email: string]: EmailBreachData;
+};
+
+/*
+  this function returns an object that removes a breach based on its breachId.
+*/
+function getObjWithRemovedBreach(
+  obj: BreachResolutionObject | null,
+  breachId: string,
+): BreachResolutionObject | null {
+  if (!obj) return null;
+  const emails = Object.keys(obj);
+  let emailCount = emails.length - 1;
+
+  for (const email of emails) {
+    if (email === "useBreachId") continue;
+    if (obj[email][breachId]) delete obj[email][breachId];
+    if (!Object.keys(obj[email]).length) {
+      delete obj[email];
+      emailCount--;
+    }
+  }
+  if (emailCount === 0) return null;
+
+  return obj;
 }
 
 export async function GET(req: NextRequest) {
@@ -59,8 +100,8 @@ export async function POST(req: NextRequest) {
     );
 
   const emailHashPrefix = body.emailHashPrefix.slice(0, 6);
-  const Name = body.Name || "Custom Breach";
-  const Title = body.Title || "Custom Breach";
+  const Name = body.Name || "Custom-Breach";
+  const Title = body.Title || "Custom-Breach";
   const Domain = body.Domain || "custom-breach.com";
   const ModifiedDate = body.ModifiedDate;
   const Description =
@@ -116,42 +157,37 @@ export async function DELETE(req: NextRequest) {
   const err = await checkAdmin();
   if (err) return err;
 
-  const emailHash = req.nextUrl.searchParams.get("emailHashPrefix");
-  const id = Number(req.nextUrl.searchParams.get("id"));
+  const emailHashFull = req.nextUrl.searchParams.get("emailHashFull");
+  const breachId = Number(req.nextUrl.searchParams.get("breachId"));
 
-  if (!emailHash || !id || Number.isNaN(id)) {
+  if (!emailHashFull || !breachId || Number.isNaN(breachId)) {
     return NextResponse.json(
       { error: "Missing or invalid emailHashPrefix or id parameter" },
       { status: 400 },
     );
   }
 
+  const subscriberRows = await getSubscribersByHashes([emailHashFull]);
+  for (const row of subscriberRows) {
+    const breachResolutionBefore = row.breach_resolution;
+    const breachResolutionAfter = getObjWithRemovedBreach(
+      breachResolutionBefore,
+      String(breachId),
+    );
+    const updateRes = await setBreachResolution(row, breachResolutionAfter);
+    if (!updateRes) {
+      logger.warn(
+        "QA custom breach_resolution was not updated, 'setBreachResolution' returned undefined",
+      );
+    }
+  }
+
   try {
-    await deleteQaCustomBreach(emailHash, id);
+    const emailHashPrefix = emailHashFull.slice(0, 6);
+    await deleteQaCustomBreach(emailHashPrefix, breachId);
     return successResponse();
   } catch (error) {
     console.error("Error deleting custom breach:", error);
     return internalServerError();
   }
-}
-
-export function PUT() {
-  //Change it for breach resolution within toggles table
-  return NextResponse.json(
-    { message: "Endpoint unavailable for now" },
-    { status: 200 },
-  );
-
-  // const err = await checkAdmin();
-  //  if (err) return err;
-
-  //  const onerepScanResultId = Number(req.nextUrl.searchParams.get("onerep_scan_result_id"));
-  //  const newStatus = req.nextUrl.searchParams.get("new_status");
-
-  //  if (!onerepScanResultId || Number.isNaN(onerepScanResultId) || !newStatus) {
-  //    return new NextResponse('Missing onerep_scan_result_id or newStatus parameter', { status: 400 });
-  //  }
-
-  //  await setQaCustomBrokerStatus(onerepScanResultId, newStatus);
-  //  return successResponse();
 }

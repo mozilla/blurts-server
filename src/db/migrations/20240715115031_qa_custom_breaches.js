@@ -3,8 +3,9 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 export function up(knex) {
+  // camel case for easier insertion into table
   return knex.schema.createTable("qa_custom_breaches", table => {
-    table.string("emailHashPrefix")
+    table.string("emailHashPrefix");
     table.integer("Id").notNullable().primary();
     table.string("Name").notNullable();
     table.string("Title").notNullable();
