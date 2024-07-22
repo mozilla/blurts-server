@@ -5,6 +5,7 @@
 import { it, expect } from "@jest/globals";
 import { composeStory } from "@storybook/react";
 import {
+  act,
   getAllByRole,
   getByRole,
   getByText,
@@ -27,6 +28,7 @@ import Meta, {
 } from "./LandingView.stories";
 import { deleteAllCookies } from "../../../functions/client/deleteAllCookies";
 import { defaultExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
+import { mockIsIntersecting } from "react-intersection-observer/test-utils";
 
 jest.mock("next-auth/react", () => {
   return {
@@ -950,7 +952,7 @@ describe("Free scan CTA experiment", () => {
     expect(waitlistCta[0]).toBeInTheDocument();
   });
 
-  it("sends telemetry for the different experiment variants", async () => {
+  it("sends telemetry when clicking on one of the experiment variants", async () => {
     const mockedRecord = useTelemetry();
     const user = userEvent.setup();
     const ComposedDashboard = composeStory(LandingUs, Meta);
@@ -979,6 +981,39 @@ describe("Free scan CTA experiment", () => {
     expect(mockedRecord).toHaveBeenCalledWith(
       "ctaButton",
       "click",
+      expect.objectContaining({ button_id: "clicked_get_scan_header-ctaOnly" }),
+    );
+  });
+
+  it("sends telemetry when a free scan CTA is shown in the viewport", () => {
+    const mockedRecord = useTelemetry();
+    const ComposedDashboard = composeStory(LandingUs, Meta);
+    render(
+      <ComposedDashboard
+        experimentData={{
+          ...defaultExperimentData,
+          "landing-page-free-scan-cta": {
+            enabled: true,
+            variant: "ctaOnly",
+          },
+        }}
+      />,
+    );
+
+    // jsdom will complain about not being able to navigate to a different page
+    // after clicking the link; suppress that error, as it's not relevant to the
+    // test:
+    jest.spyOn(console, "error").mockImplementation(() => undefined);
+
+    const submitButton = screen.getAllByRole("button", {
+      name: "Get free scan",
+    });
+    act(() => {
+      mockIsIntersecting(submitButton[0], true);
+    });
+    expect(mockedRecord).toHaveBeenCalledWith(
+      "ctaButton",
+      "view",
       expect.objectContaining({ button_id: "clicked_get_scan_header-ctaOnly" }),
     );
   });

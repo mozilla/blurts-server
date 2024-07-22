@@ -96,10 +96,11 @@
     "react-aria": "^3.33.1",
     "react-cookie": "^7.1.0",
     "react-dom": "^18.2.0",
+    "react-intersection-observer": "^9.10.3",
     "react-stately": "^3.31.1",
     "server-only": "^0.0.1",
     "uuid": "^9.0.1",
-    "winston": "^3.13.0"
+    "winston": "^3.13.1"
   },
   "devDependencies": {
     "@faker-js/faker": "^8.4.1",
@@ -146,7 +147,6 @@
     "lint-staged": "^15.2.7",
     "mjml-browser": "^4.15.3",
     "prettier": "3.3.3",
-    "react-intersection-observer": "^9.10.3",
     "sass": "^1.77.6",
     "storybook": "^8.1.11",
     "stylelint": "^16.7.0",
