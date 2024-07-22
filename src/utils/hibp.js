@@ -229,31 +229,24 @@ async function loadBreachesIntoApp(app) {
 /**
  * Get addresses and language from either subscribers or email_addresses fields:
  *
- * @param {*} recipient
+ * @param {import('knex/types/tables').SubscriberRow | (import('knex/types/tables').SubscriberRow & import('knex/types/tables').EmailAddressRow)} recipient
  * @returns
  */
 // TODO: Add unit test when changing this code:
 /* c8 ignore start */
 function getAddressesAndLanguageForEmail(recipient) {
-  const {
-    all_emails_to_primary: allEmailsToPrimary,
-    email: breachedEmail,
-    primary_email: primaryEmail,
-    signup_language: signupLanguage
-  } = recipient
-
-  if (breachedEmail) {
+  if (hasEmailAddressAttached(recipient)) {
     return {
-      breachedEmail,
-      recipientEmail: allEmailsToPrimary ? primaryEmail : breachedEmail,
-      signupLanguage
+      breachedEmail: recipient.email,
+      recipientEmail: recipient.all_emails_to_primary ? recipient.primary_email : recipient.email,
+      signupLanguage: recipient.signup_language,
     }
   }
 
   return {
-    breachedEmail: primaryEmail,
-    recipientEmail: primaryEmail,
-    signupLanguage
+    breachedEmail: recipient.primary_email,
+    recipientEmail: recipient.primary_email,
+    signupLanguage: recipient.signup_language,
   }
 }
 /* c8 ignore stop */
@@ -406,6 +399,14 @@ async function deleteSubscribedHash(sha1) {
   return await kAnonReq(path, options)
 }
 /* c8 ignore stop */
+
+/**
+ * @param {import('knex/types/tables').SubscriberRow} subscriberRow
+ * @returns {subscriberRow is import('knex/types/tables').SubscriberRow & import('knex/types/tables').EmailAddressRow}
+ */
+function hasEmailAddressAttached(subscriberRow) {
+  return typeof (/** @type {import('knex/types/tables').SubscriberRow & import('knex/types/tables').EmailAddressRow} */ (subscriberRow)).email === "string";
+}
 
 export {
   req,

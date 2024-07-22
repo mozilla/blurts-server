@@ -4,40 +4,42 @@
 
 import Sentry from "@sentry/nextjs";
 import { acceptedLanguages, negotiateLanguages } from "@fluent/langneg";
-import { localStorage } from "../utils/localStorage.js";
+import { localStorage } from "../../utils/localStorage.js";
 
 import * as pubsub from "@google-cloud/pubsub";
 import * as grpc from "@grpc/grpc-js";
+import type { SubscriberClient } from "@google-cloud/pubsub/build/src/v1/subscriber_client.js";
+import type { EmailAddressRow, SubscriberRow } from "knex/types/tables";
 
 import {
   getSubscribersByHashes,
   knexSubscribers,
-} from "../db/tables/subscribers.js";
+} from "../../db/tables/subscribers.js";
 import {
   getEmailAddressesByHashes,
   knexEmailAddresses,
-} from "../db/tables/emailAddresses.js";
+} from "../../db/tables/emailAddresses.js";
 import {
   getNotifiedSubscribersForBreach,
   addEmailNotification,
   markEmailAsNotified,
-} from "../db/tables/email_notifications.js";
-import { getTemplate } from "../emails/email2022.js";
-import { breachAlertEmailPartial } from "../emails/emailBreachAlert.js";
+} from "../../db/tables/email_notifications.js";
+import { getTemplate } from "../../emails/email2022.js";
+import { breachAlertEmailPartial } from "../../emails/emailBreachAlert.js";
 import {
   initEmail,
   EmailTemplateType,
   getEmailCtaDashboardHref,
   sendEmail,
-} from "../utils/email.js";
+} from "../../utils/email.js";
 
-import { initFluentBundles, getMessage } from "../utils/fluent.js";
+import { initFluentBundles, getMessage } from "../../utils/fluent.js";
 import {
   getAddressesAndLanguageForEmail,
   getBreachByName,
   getAllBreachesFromDb,
   knexHibp,
-} from "../utils/hibp.js";
+} from "../../utils/hibp.js";
 
 const SENTRY_SLUG = "cron-breach-alerts";
 
@@ -55,7 +57,8 @@ const checkInId = Sentry.captureCheckIn({
 // Only process this many messages before exiting.
 /* c8 ignore start */
 const maxMessages = parseInt(
-  process.env.EMAIL_BREACH_ALERT_MAX_MESSAGES || 10000,
+  process.env.EMAIL_BREACH_ALERT_MAX_MESSAGES ?? "10000",
+  10,
 );
 /* c8 ignore stop */
 const projectId = process.env.GCP_PUBSUB_PROJECT_ID;
@@ -71,7 +74,28 @@ const subscriptionName = process.env.GCP_PUBSUB_SUBSCRIPTION_NAME;
  *
  * More about how account identities are anonymized: https://blog.mozilla.org/security/2018/06/25/scanning-breached-accounts-k-anonymity/
  */
-export async function poll(subClient, receivedMessages) {
+export async function poll(
+  subClient: SubscriberClient,
+  receivedMessages: Array<{
+    ackId?: string | null;
+    deliveryAttempt?: number | null;
+    message?: {
+      messageId?: string | null;
+      orderingKey?: string | undefined | null;
+      data?: string | Uint8Array | null;
+    } | null;
+  }>,
+) {
+  // These env vars are always set in tests:
+  /* c8 ignore next 8 */
+  if (!projectId) {
+    throw new Error("Environment variable [$GCP_PUBSUB_PROJECT_ID] not set.");
+  }
+  if (!subscriptionName) {
+    throw new Error(
+      "Environment variable [$GCP_PUBSUB_SUBSCRIPTION_NAME] not set.",
+    );
+  }
   const formattedSubscription = subClient.subscriptionPath(
     projectId,
     subscriptionName,
@@ -81,8 +105,12 @@ export async function poll(subClient, receivedMessages) {
 
   // Process the messages. Skip any that cannot be processed, and do not mark as acknowledged.
   for (const message of receivedMessages) {
-    console.log(`Received message: ${message.message.data}`);
-    const data = JSON.parse(message.message.data);
+    console.log(`Received message: ${message.message?.data}`);
+    const data = JSON.parse(message.message?.data as string) as {
+      breachName: string;
+      hashPrefix: string;
+      hashSuffixes: string[];
+    };
 
     if (!(data.breachName && data.hashPrefix && data.hashSuffixes)) {
       console.error(
@@ -143,7 +171,14 @@ export async function poll(subClient, receivedMessages) {
 
       subClient.acknowledge({
         subscription: formattedSubscription,
-        ackIds: [message.ackId],
+        ackIds:
+          typeof message.ackId === "string"
+            ? [message.ackId]
+            : /* c8 ignore next 4 */
+              // When porting this code to TypeScript, the undefined/null case
+              // wasn't dealt with, so presumably our messages always have an
+              // ackId:
+              message.ackId,
       });
 
       continue;
@@ -157,7 +192,9 @@ export async function poll(subClient, receivedMessages) {
 
       const subscribers = await getSubscribersByHashes(hashes);
       const emailAddresses = await getEmailAddressesByHashes(hashes);
-      const recipients = subscribers.concat(emailAddresses);
+      const recipients: Array<
+        SubscriberRow | (SubscriberRow & EmailAddressRow)
+      > = subscribers.concat(emailAddresses);
 
       console.info(EmailTemplateType.Notification, {
         breachAlertName: breachAlert.Name,
@@ -165,7 +202,7 @@ export async function poll(subClient, receivedMessages) {
       });
 
       const utmCampaignId = "breach-alert";
-      const notifiedRecipients = [];
+      const notifiedRecipients: string[] = [];
 
       for (const recipient of recipients) {
         console.info("notify", { recipient });
@@ -175,7 +212,11 @@ export async function poll(subClient, receivedMessages) {
         // Get subscriber ID from:
         // - `subscriber_id`: if `email_addresses` record
         // - `id`: if `subscribers` record
-        const subscriberId = recipient.subscriber_id ?? recipient.id;
+        /* c8 ignore next 4 */
+        // TODO: Add unit test when changing this code:
+        const subscriberId = hasEmailAddressAttached(recipient)
+          ? recipient.subscriber_id
+          : recipient.id;
         if (notifiedSubs.includes(subscriberId)) {
           console.info("Subscriber already notified, skipping: ", subscriberId);
           continue;
@@ -189,7 +230,7 @@ export async function poll(subClient, receivedMessages) {
           : [];
         /* c8 ignore stop */
 
-        const availableLanguages = process.env.SUPPORTED_LOCALES.split(",");
+        const availableLanguages = process.env.SUPPORTED_LOCALES!.split(",");
         const supportedLocales = negotiateLanguages(
           requestedLanguage,
           availableLanguages,
@@ -246,7 +287,7 @@ export async function poll(subClient, receivedMessages) {
                   breachId,
                   data.recipientEmail,
                 );
-              } catch (e) {
+              } catch (e: any) {
                 console.error("Failed to mark email as notified: ", e);
                 throw new Error(e);
               }
@@ -260,7 +301,14 @@ export async function poll(subClient, receivedMessages) {
 
       subClient.acknowledge({
         subscription: formattedSubscription,
-        ackIds: [message.ackId],
+        ackIds:
+          typeof message.ackId === "string"
+            ? [message.ackId]
+            : /* c8 ignore next 4 */
+              // When porting this code to TypeScript, the undefined/null case
+              // wasn't dealt with, so presumably our messages always have an
+              // ackId:
+              message.ackId,
       });
       /* c8 ignore start */
     } catch (error) {
@@ -281,6 +329,16 @@ async function pullMessages() {
       sslCreds: grpc.credentials.createInsecure(),
     };
   }
+  // These env vars are always set in tests:
+  /* c8 ignore next 8 */
+  if (!projectId) {
+    throw new Error("Environment variable [$GCP_PUBSUB_PROJECT_ID] not set.");
+  }
+  if (!subscriptionName) {
+    throw new Error(
+      "Environment variable [$GCP_PUBSUB_SUBSCRIPTION_NAME] not set.",
+    );
+  }
 
   const subClient = new pubsub.v1.SubscriberClient(options);
 
@@ -297,14 +355,14 @@ async function pullMessages() {
     maxMessages,
   });
 
-  return [subClient, response.receivedMessages];
+  return [subClient, response.receivedMessages] as const;
 }
 async function init() {
   await initFluentBundles();
   await initEmail();
 
   const [subClient, receivedMessages] = await pullMessages();
-  await poll(subClient, receivedMessages);
+  await poll(subClient, receivedMessages ?? []);
 }
 
 if (process.env.NODE_ENV !== "test") {
@@ -331,3 +389,9 @@ if (process.env.NODE_ENV !== "test") {
     });
 }
 /* c8 ignore stop */
+
+function hasEmailAddressAttached(
+  row: SubscriberRow | (SubscriberRow & EmailAddressRow),
+): row is SubscriberRow & EmailAddressRow {
+  return typeof (row as EmailAddressRow).subscriber_id !== "undefined";
+}
