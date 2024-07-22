@@ -3,14 +3,12 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 public-nav-name = { -brand-mozilla-monitor }
-
 landing-all-hero-title = Découvrez où vos informations personnelles ont fuité et reprenez le contrôle
 landing-all-hero-lead = Nous analysons les fuites de données pour vérifier si vos données ont été divulguées et nous vous indiquons les étapes pour y remédier.
-
 landing-all-hero-emailform-input-placeholder = votrenom@example.com
 landing-all-hero-emailform-input-label = Saisissez votre adresse e-mail pour vérifier l’existence de fuites de données.
 landing-all-hero-emailform-submit-label = Effectuer un scan gratuit
-
+landing-all-hero-emailform-submit-sign-in-label = Connectez-vous pour obtenir un scan gratuit
 # This is a label underneath a big number "14" - it's an image that demos Monitor.
 landing-all-hero-image-chart-label = détections
 
@@ -60,7 +58,5 @@ landing-all-help-protect-you-feature-one = Nous vous rechercherons dans toutes l
 landing-all-help-protect-you-feature-two = Nous vous guiderons à travers les étapes pour résoudre chaque fuite
 landing-all-help-protect-you-feature-three = Nous effectuerons une surveillance permanente et vous enverrons des alertes lors de toute nouvelle fuite de données
 landing-all-help-protect-you-cta = S’inscrire aux alertes de fuites de données
-
 landing-all-get-started = Scannez votre adresse e-mail pour commencer
 landing-all-take-back-data = Reprenez le contrôle de vos données
-

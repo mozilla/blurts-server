@@ -1,0 +1,88 @@
+@import "../../../../../../tokens";
+
+.flagWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+  background-color: $color-white;
+  padding: $spacing-lg;
+  border-radius: $border-radius-md;
+  max-width: $content-md;
+}
+
+.flagName {
+  font: $text-title-3xs;
+}
+
+.enabledControl {
+  display: flex;
+  gap: $spacing-xs;
+  font: $text-body-lg;
+}
+
+.allowListWrapper {
+  h4 {
+    font: $text-body-md;
+    font-weight: bold;
+  }
+}
+
+.allowList {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  list-style-type: none;
+}
+
+.addressListing {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  font: $text-body-lg;
+
+  :first-child {
+    flex-grow: 1;
+  }
+
+  button {
+    background-color: transparent;
+    border: none;
+    border-radius: $border-radius-xl;
+    aspect-ratio: 1;
+
+    &:hover {
+      cursor: pointer;
+      background-color: $color-blue-50;
+      color: $color-white;
+    }
+  }
+}
+
+.addressAdder {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+
+  // This rule is more specific than the button:hover in `.addressListing`,
+  // but that class doesn't apply to the same elements:
+  /* stylelint-disable no-descending-specificity */
+  button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-color: transparent;
+    color: $color-blue-50;
+    border: none;
+    border-radius: $border-radius-sm;
+    padding: $spacing-sm;
+
+    &:hover {
+      cursor: pointer;
+      background-color: $color-blue-50;
+      color: $color-white;
+    }
+  }
+  /* stylelint-enable no-descending-specificity */
+}
