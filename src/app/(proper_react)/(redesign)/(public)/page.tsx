@@ -22,7 +22,6 @@ import { getExperimentationId } from "../../../functions/server/getExperimentati
 import { getExperiments } from "../../../functions/server/getExperiments";
 import { getLocale } from "../../../functions/universal/getLocale";
 import { AccountsMetricsFlowProvider } from "../../../../contextProviders/accounts-metrics-flow";
-import { FREE_SCAN_UTM_SEARCH_PARAMS } from "../../../functions/universal/getFreeScanSearchParams";
 
 type Props = {
   searchParams: {
@@ -69,7 +68,6 @@ export default async function Page({ searchParams }: Props) {
             ? "email"
             : "button",
         service: process.env.OAUTH_CLIENT_ID as string,
-        ...FREE_SCAN_UTM_SEARCH_PARAMS,
       }}
     >
       <View

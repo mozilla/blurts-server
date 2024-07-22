@@ -28,6 +28,7 @@ import Meta, {
 } from "./LandingView.stories";
 import { deleteAllCookies } from "../../../functions/client/deleteAllCookies";
 import { defaultExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
+import { Cookies } from "react-cookie";
 
 jest.mock("next-auth/react", () => {
   return {
@@ -1085,14 +1086,14 @@ describe("Free scan CTA experiment", () => {
       expect.any(Object),
       expect.stringContaining(
         [
+          "utm_source=product",
+          "utm_medium=monitor",
+          "utm_campaign=get_free_scan",
           "entrypoint=monitor.mozilla.org-monitor-product-page",
           "form_type=email",
           "email=mail%40example.com",
           "entrypoint_experiment=landing-page-free-scan-cta",
           "entrypoint_variation=ctaWithEmail",
-          "utm_source=product",
-          "utm_medium=monitor",
-          "utm_campaign=get_free_scan",
         ].join("&"),
       ),
     );
@@ -1140,6 +1141,9 @@ describe("Free scan CTA experiment", () => {
       expect.any(Object),
       expect.stringContaining(
         [
+          "utm_source=product",
+          "utm_medium=monitor",
+          "utm_campaign=get_free_scan",
           "entrypoint=monitor.mozilla.org-monitor-product-page",
           "form_type=email",
           "email=mail%40example.com",
@@ -1148,9 +1152,71 @@ describe("Free scan CTA experiment", () => {
           "flow_begin_time=42",
           "entrypoint_experiment=landing-page-free-scan-cta",
           "entrypoint_variation=ctaWithEmail",
-          "utm_source=product",
-          "utm_medium=monitor",
-          "utm_campaign=get_free_scan",
+        ].join("&"),
+      ),
+    );
+  });
+
+  it("passes the expected URL to the identity provider with metrics flow data and “first touch” UTM parameters", async () => {
+    global.fetch = jest.fn().mockImplementation(() =>
+      Promise.resolve({
+        success: true,
+        json: jest.fn(() => ({
+          flowData: {
+            deviceId: "device_123",
+            flowId: "flow_123",
+            flowBeginTime: 42,
+          },
+        })),
+      }),
+    );
+    const cookies = new Cookies(null, { path: "/" });
+    cookies.set("attributionsFirstTouch", {
+      utm_source: "source_first_touch",
+      utm_medium: "medium_first_touch",
+      utm_campaign: "campaign_first_touch",
+    });
+
+    const user = userEvent.setup();
+    const ComposedDashboard = composeStory(LandingUs, Meta);
+    render(
+      <ComposedDashboard
+        experimentData={{
+          ...defaultExperimentData,
+          "landing-page-free-scan-cta": {
+            enabled: true,
+            variant: "ctaWithEmail",
+          },
+        }}
+      />,
+    );
+
+    const inputField = screen.getAllByLabelText(
+      "Enter your email address to check for data breach exposures and sites selling your info.",
+    );
+    await user.type(inputField[0], "mail@example.com");
+
+    const submitButton = screen.getAllByRole("button", {
+      name: "Get free scan",
+    });
+    await user.click(submitButton[0]);
+
+    expect(signIn).toHaveBeenCalledWith(
+      "fxa",
+      expect.any(Object),
+      expect.stringContaining(
+        [
+          "utm_source=source_first_touch",
+          "utm_medium=medium_first_touch",
+          "utm_campaign=campaign_first_touch",
+          "entrypoint=monitor.mozilla.org-monitor-product-page",
+          "form_type=email",
+          "email=mail%40example.com",
+          "device_id=device_123",
+          "flow_id=flow_123",
+          "flow_begin_time=42",
+          "entrypoint_experiment=landing-page-free-scan-cta",
+          "entrypoint_variation=ctaWithEmail",
         ].join("&"),
       ),
     );

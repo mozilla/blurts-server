@@ -5,8 +5,13 @@
 "use client";
 
 import { ReactNode, createContext, useEffect, useState } from "react";
-import { MetricFlowData } from "../app/functions/universal/getFreeScanSearchParams";
+import { useCookies } from "react-cookie";
+import {
+  FREE_SCAN_UTM_PARAMS,
+  MetricFlowData,
+} from "../app/functions/universal/getFreeScanSearchParams";
 import { captureException } from "@sentry/nextjs";
+import { modifyAttributionsForUrlSearchParams } from "../app/functions/universal/attributions";
 
 interface SessionProviderProps {
   children: ReactNode;
@@ -17,9 +22,6 @@ interface SessionProviderProps {
     entrypoint_variation: string;
     form_type: string;
     service: string;
-    utm_source: string;
-    utm_medium: string;
-    utm_campaign: string;
   };
 }
 
@@ -37,11 +39,18 @@ export const AccountsMetricsFlowProvider = ({
   metricsFlowParams,
 }: SessionProviderProps) => {
   const [data, setData] = useState<ContextValues["data"]>(null);
+  const [cookies] = useCookies(["attributionsFirstTouch"]);
 
   useEffect(() => {
     async function fetchMetricsFlowData() {
       try {
-        const searchParams = new URLSearchParams(metricsFlowParams);
+        const searchParams = modifyAttributionsForUrlSearchParams(
+          new URLSearchParams(
+            cookies.attributionsFirstTouch ?? FREE_SCAN_UTM_PARAMS,
+          ),
+          metricsFlowParams,
+          {},
+        );
         const response = await fetch(
           `/api/v1/accounts-metrics-flow?${searchParams.toString()}`,
         );
