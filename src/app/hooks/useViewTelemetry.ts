@@ -5,6 +5,7 @@
 import { IntersectionOptions, useInView } from "react-intersection-observer";
 import { TelemetryArgs, useTelemetry } from "./useTelemetry";
 import { GleanMetricMap } from "../../telemetry/generated/_map";
+import { RefObject } from "react";
 
 export function useViewTelemetry<
   EventModule extends keyof Pick<GleanMetricMap, "ctaButton">,
@@ -34,5 +35,5 @@ export function useViewTelemetry<
     },
   });
 
-  return ref;
+  return ref as unknown as RefObject<unknown>;
 }
