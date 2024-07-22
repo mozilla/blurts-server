@@ -69,13 +69,13 @@ export default defineConfig({
     // baseURL: 'http://localhost:6060',
 
     /* automatically take screenshot only on failures */
-    screenshot: 'only-on-failure',
+    screenshot: 'on',
 
     /* automatically record video on retry  */
-    video: 'retry-with-video',
+    video: 'on',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry'
+    trace: 'on'
   },
 
   /* Configure projects for major browsers */
