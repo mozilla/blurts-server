@@ -3,14 +3,12 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 public-nav-name = { -brand-mozilla-monitor }
-
 landing-all-hero-title = Selvitä missä yksityiset tietosi ovat paljastuneet – ja ota ne takaisin
 landing-all-hero-lead = Tarkistamme tietovuodot havaitaksemme, ovatko tietosi vuotaneet, ja annamme ohjeita vuotojen korjaamiseksi.
-
 landing-all-hero-emailform-input-placeholder = nimi@example.com
 landing-all-hero-emailform-input-label = Syötä sähköpostiosoitteesi tarkistaaksesi mahdolliset tietovuodot.
 landing-all-hero-emailform-submit-label = Hanki ilmainen tarkistus
-
+landing-all-hero-emailform-submit-sign-in-label = Kirjaudu sisään saadaksesi ilmaisen tarkistuksen
 # This is a label underneath a big number "14" - it's an image that demos Monitor.
 landing-all-hero-image-chart-label = vuotoa
 
@@ -64,7 +62,5 @@ landing-all-help-protect-you-feature-one = Etsimme sinua kaikista tunnetuista ti
 landing-all-help-protect-you-feature-two = Opastamme sinua kunkin tietovuodon ratkaisemiseksi
 landing-all-help-protect-you-feature-three = Jatkamme tarkkailua ja lähetämme sinulle ilmoituksia uusista tietovuodoista
 landing-all-help-protect-you-cta = Tilaa vuotohälytykset
-
 landing-all-get-started = Tarkista sähköpostiosoitteesi aloittaaksesi
 landing-all-take-back-data = Ota henkilökohtaiset tietosi takaisin hallintaasi
-

@@ -51,7 +51,7 @@ const getLatestScanDateCsatSurvey = (
   };
   const surveys = getRelevantSurveys({ ...filteredSurveyData, ...props });
 
-  if (!surveys || surveys?.length === 0) {
+  if (!surveys || surveys.length === 0) {
     return null;
   }
 

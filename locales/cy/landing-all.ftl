@@ -3,14 +3,12 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 public-nav-name = { -brand-mozilla-monitor }
-
 landing-all-hero-title = Canfod lle mae'ch manylion preifat yn cael eu rhyddhau — a'u cipio nôl
 landing-all-hero-lead = Rydym yn sganio tor-data i weld a yw'ch data wedi'u datgelu ac yn cynnig camau i chi i'w drwsio.
-
 landing-all-hero-emailform-input-placeholder = eichenw@example.com
 landing-all-hero-emailform-input-label = Rhowch eich cyfeiriad e-bost i wirio am ddatguddiadau tor-data.
 landing-all-hero-emailform-submit-label = Cael sgan am ddim
-
+landing-all-hero-emailform-submit-sign-in-label = Mewngofnodwch i gael sgan am ddim
 # This is a label underneath a big number "14" - it's an image that demos Monitor.
 landing-all-hero-image-chart-label = datgeliadau
 
@@ -72,7 +70,5 @@ landing-all-help-protect-you-feature-one = Byddwn yn chwilio amdanoch ym mhob ac
 landing-all-help-protect-you-feature-two = Byddwn yn eich arwain trwy'r camau i ddatrys pob tor-data
 landing-all-help-protect-you-feature-three = Byddwn yn monitro ac yn anfon rhybuddion atoch yn barhaus am unrhyw dor-data newydd
 landing-all-help-protect-you-cta = Cofrestrwch am rybuddion tor-data
-
 landing-all-get-started = Sganiwch eich e-bost i ddechrau
 landing-all-take-back-data = Ail feddiannwch eich rheolaeth o'ch data
-

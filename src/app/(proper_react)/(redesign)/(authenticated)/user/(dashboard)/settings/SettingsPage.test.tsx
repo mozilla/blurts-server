@@ -161,6 +161,38 @@ const mockedSecondaryVerifiedEmail: EmailAddressRow = {
   updated_at: new Date("1337-04-02T04:02:42.000Z"),
   verification_token: "arbitrary_token",
 };
+
+const mockedTertiaryVerifiedEmail: EmailAddressRow = {
+  id: 1337,
+  email: "tertiary_verified@example.com",
+  sha1: "arbitrary string",
+  subscriber_id: subscriberId,
+  verified: true,
+  created_at: new Date("1337-04-02T04:02:42.000Z"),
+  updated_at: new Date("1337-04-02T04:02:42.000Z"),
+  verification_token: "arbitrary_token",
+};
+const mockedQuaternaryVerifiedEmail: EmailAddressRow = {
+  id: 1337,
+  email: "quaternary_verified@example.com",
+  sha1: "arbitrary string",
+  subscriber_id: subscriberId,
+  verified: true,
+  created_at: new Date("1337-04-02T04:02:42.000Z"),
+  updated_at: new Date("1337-04-02T04:02:42.000Z"),
+  verification_token: "arbitrary_token",
+};
+const mockedQuinaryVerifiedEmail: EmailAddressRow = {
+  id: 1337,
+  email: "quinary_verified@example.com",
+  sha1: "arbitrary string",
+  subscriber_id: subscriberId,
+  verified: true,
+  created_at: new Date("1337-04-02T04:02:42.000Z"),
+  updated_at: new Date("1337-04-02T04:02:42.000Z"),
+  verification_token: "arbitrary_token",
+};
+
 const mockedSecondaryUnverifiedEmail: EmailAddressRow = {
   id: 1337,
   email: "secondary_unverified@example.com",
@@ -199,11 +231,100 @@ it("passes the axe accessibility audit", async () => {
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
-        isYearlySubscriber={false}
+        isMonthlySubscriber={true}
       />
     </TestComponentWrapper>,
   );
   expect(await axe(container)).toHaveNoViolations();
+});
+
+it("Add email address button is not shown when email limit of five reached", () => {
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+  jest.spyOn(console, "warn").mockImplementation(() => {});
+  render(
+    <TestComponentWrapper>
+      <SettingsView
+        l10n={getL10n()}
+        user={{
+          ...mockedUser,
+          subscriber: {
+            ...mockedUser.subscriber!,
+            all_emails_to_primary: true,
+          },
+        }}
+        subscriber={mockedSubscriber}
+        breachCountByEmailAddress={{
+          [mockedUser.email]: 42,
+          [mockedSecondaryVerifiedEmail.email]: 42,
+        }}
+        emailAddresses={[
+          mockedSecondaryVerifiedEmail,
+          mockedTertiaryVerifiedEmail,
+          mockedQuaternaryVerifiedEmail,
+          mockedQuinaryVerifiedEmail,
+        ]}
+        fxaSettingsUrl=""
+        fxaSubscriptionsUrl=""
+        yearlySubscriptionUrl=""
+        monthlySubscriptionUrl=""
+        subscriptionBillingAmount={mockedSubscriptionBillingAmount}
+        enabledFeatureFlags={[]}
+        experimentData={defaultExperimentData}
+        isMonthlySubscriber={true}
+      />
+    </TestComponentWrapper>,
+  );
+
+  const addEmailButton = screen.queryByRole("button", {
+    name: "Add email address",
+  });
+  expect(addEmailButton).not.toBeInTheDocument();
+});
+
+it("Add email address button is shown when fewer than five emails", () => {
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+  jest.spyOn(console, "warn").mockImplementation(() => {});
+  render(
+    <TestComponentWrapper>
+      <SettingsView
+        l10n={getL10n()}
+        user={{
+          ...mockedUser,
+          subscriber: {
+            ...mockedUser.subscriber!,
+            all_emails_to_primary: true,
+          },
+        }}
+        subscriber={mockedSubscriber}
+        breachCountByEmailAddress={{
+          [mockedUser.email]: 42,
+          [mockedSecondaryVerifiedEmail.email]: 42,
+        }}
+        emailAddresses={[
+          mockedSecondaryVerifiedEmail,
+          mockedTertiaryVerifiedEmail,
+          mockedQuaternaryVerifiedEmail,
+        ]}
+        fxaSettingsUrl=""
+        fxaSubscriptionsUrl=""
+        yearlySubscriptionUrl=""
+        monthlySubscriptionUrl=""
+        subscriptionBillingAmount={mockedSubscriptionBillingAmount}
+        enabledFeatureFlags={[]}
+        experimentData={defaultExperimentData}
+        isMonthlySubscriber={true}
+      />
+    </TestComponentWrapper>,
+  );
+
+  const addEmailButton = screen.getByRole("button", {
+    name: "Add email address",
+  });
+  expect(addEmailButton).toBeInTheDocument();
 });
 
 it("preselects 'Send all breach alerts to the primary email address' if that's the user's current preference", () => {
@@ -231,7 +352,7 @@ it("preselects 'Send all breach alerts to the primary email address' if that's t
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
-        isYearlySubscriber={false}
+        isMonthlySubscriber={true}
       />
     </TestComponentWrapper>,
   );
@@ -275,7 +396,7 @@ it("preselects 'Send breach alerts to the affected email address' if that's the 
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
-        isYearlySubscriber={false}
+        isMonthlySubscriber={true}
       />
     </TestComponentWrapper>,
   );
@@ -319,7 +440,7 @@ it("disables breach alert notification options if a user opts out of breach aler
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={["UpdatedEmailPreferencesOption"]}
         experimentData={defaultExperimentData}
-        isYearlySubscriber={false}
+        isMonthlySubscriber={true}
       />
     </TestComponentWrapper>,
   );
@@ -373,7 +494,7 @@ it("preselects primary email alert option", () => {
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={["UpdatedEmailPreferencesOption"]}
         experimentData={defaultExperimentData}
-        isYearlySubscriber={false}
+        isMonthlySubscriber={true}
       />
     </TestComponentWrapper>,
   );
@@ -413,7 +534,7 @@ it("unselects the breach alerts checkbox and sends a null value to the API", asy
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={["UpdatedEmailPreferencesOption"]}
         experimentData={defaultExperimentData}
-        isYearlySubscriber={false}
+        isMonthlySubscriber={true}
       />
     </TestComponentWrapper>,
   );
@@ -469,7 +590,7 @@ it("preselects the affected email comms option after a user decides to enable br
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={["UpdatedEmailPreferencesOption"]}
         experimentData={defaultExperimentData}
-        isYearlySubscriber={false}
+        isMonthlySubscriber={true}
       />
     </TestComponentWrapper>,
   );
@@ -516,7 +637,7 @@ it("sends a call to the API to change the email alert preferences when changing 
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={["UpdatedEmailPreferencesOption"]}
         experimentData={defaultExperimentData}
-        isYearlySubscriber={false}
+        isMonthlySubscriber={true}
       />
     </TestComponentWrapper>,
   );
@@ -576,7 +697,7 @@ it("checks that monthly monitor report is enabled", () => {
           "MonthlyActivityEmail",
         ]}
         experimentData={defaultExperimentData}
-        isYearlySubscriber={false}
+        isMonthlySubscriber={true}
       />
     </TestComponentWrapper>,
   );
@@ -623,7 +744,7 @@ it("sends an API call to disable monthly monitor reports", async () => {
           "MonthlyActivityEmail",
         ]}
         experimentData={defaultExperimentData}
-        isYearlySubscriber={false}
+        isMonthlySubscriber={true}
       />
     </TestComponentWrapper>,
   );
@@ -669,7 +790,7 @@ it("refreshes the session token after changing email alert preferences, to ensur
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
-        isYearlySubscriber={false}
+        isMonthlySubscriber={true}
       />
     </TestComponentWrapper>,
   );
@@ -705,7 +826,7 @@ it("marks unverified email addresses as such", () => {
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
-        isYearlySubscriber={false}
+        isMonthlySubscriber={true}
       />
     </TestComponentWrapper>,
   );
@@ -742,7 +863,7 @@ it("calls the API to resend a verification email if requested to", async () => {
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
-        isYearlySubscriber={false}
+        isMonthlySubscriber={true}
       />
     </TestComponentWrapper>,
   );
@@ -789,7 +910,7 @@ it("calls the 'remove' action when clicking the rubbish bin icon", async () => {
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
-        isYearlySubscriber={false}
+        isMonthlySubscriber={true}
       />
     </TestComponentWrapper>,
   );
@@ -826,7 +947,7 @@ it("hides the Plus cancellation link if the user doesn't have Plus", () => {
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
-        isYearlySubscriber={false}
+        isMonthlySubscriber={true}
       />
     </TestComponentWrapper>,
   );
@@ -862,7 +983,7 @@ it("shows the Plus cancellation link if the user has Plus", () => {
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
-        isYearlySubscriber={false}
+        isMonthlySubscriber={true}
       />
     </TestComponentWrapper>,
   );
@@ -905,7 +1026,7 @@ it("takes you through the cancellation dialog flow all the way to subplat", asyn
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={["ConfirmCancellation", "CancellationFlow"]}
         experimentData={defaultExperimentData}
-        isYearlySubscriber={false}
+        isMonthlySubscriber={true}
       />
     </TestComponentWrapper>,
   );
@@ -983,7 +1104,7 @@ it("closes the cancellation survey if the user selects nevermind, take me back",
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={["ConfirmCancellation", "CancellationFlow"]}
         experimentData={defaultExperimentData}
-        isYearlySubscriber={false}
+        isMonthlySubscriber={true}
       />
     </TestComponentWrapper>,
   );
@@ -1040,7 +1161,7 @@ it("closes the cancellation dialog", async () => {
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={["CancellationFlow"]}
         experimentData={defaultExperimentData}
-        isYearlySubscriber={false}
+        isMonthlySubscriber={true}
       />
     </TestComponentWrapper>,
   );
@@ -1090,7 +1211,7 @@ it("shows the account deletion button if the user does not have Plus", () => {
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
-        isYearlySubscriber={false}
+        isMonthlySubscriber={true}
       />
     </TestComponentWrapper>,
   );
@@ -1131,7 +1252,7 @@ it("warns about the consequences before deleting a free user's account", async (
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
-        isYearlySubscriber={false}
+        isMonthlySubscriber={true}
       />
     </TestComponentWrapper>,
   );
@@ -1174,7 +1295,7 @@ it("shows a loading state while account deletion is in progress", async () => {
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
-        isYearlySubscriber={false}
+        isMonthlySubscriber={true}
       />
     </TestComponentWrapper>,
   );
@@ -1218,7 +1339,7 @@ it("shows the account deletion button if the user has Plus", () => {
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
-        isYearlySubscriber={false}
+        isMonthlySubscriber={true}
       />
     </TestComponentWrapper>,
   );
@@ -1259,7 +1380,7 @@ it("warns about the consequences before deleting a Plus user's account", async (
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
-        isYearlySubscriber={false}
+        isMonthlySubscriber={true}
       />
     </TestComponentWrapper>,
   );
@@ -1311,7 +1432,7 @@ it.skip("calls the 'add' action when adding another email address", async () => 
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
-        isYearlySubscriber={false}
+        isMonthlySubscriber={true}
       />
     </TestComponentWrapper>,
   );
@@ -1346,7 +1467,7 @@ describe("to learn about usage", () => {
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
           enabledFeatureFlags={[]}
           experimentData={defaultExperimentData}
-          isYearlySubscriber={false}
+          isMonthlySubscriber={true}
         />
       </TestComponentWrapper>,
     );
@@ -1390,7 +1511,7 @@ describe("to learn about usage", () => {
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
           enabledFeatureFlags={[]}
           experimentData={defaultExperimentData}
-          isYearlySubscriber={false}
+          isMonthlySubscriber={true}
         />
       </TestComponentWrapper>,
     );
@@ -1434,7 +1555,7 @@ describe("to learn about usage", () => {
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
           enabledFeatureFlags={[]}
           experimentData={defaultExperimentData}
-          isYearlySubscriber={false}
+          isMonthlySubscriber={true}
         />
       </TestComponentWrapper>,
     );
@@ -1479,7 +1600,7 @@ describe("to learn about usage", () => {
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
           enabledFeatureFlags={[]}
           experimentData={defaultExperimentData}
-          isYearlySubscriber={false}
+          isMonthlySubscriber={true}
         />
       </TestComponentWrapper>,
     );
@@ -1523,7 +1644,7 @@ describe("to learn about usage", () => {
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
           enabledFeatureFlags={[]}
           experimentData={defaultExperimentData}
-          isYearlySubscriber={false}
+          isMonthlySubscriber={true}
         />
       </TestComponentWrapper>,
     );
@@ -1572,7 +1693,7 @@ describe("to learn about usage", () => {
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
           enabledFeatureFlags={[]}
           experimentData={defaultExperimentData}
-          isYearlySubscriber={false}
+          isMonthlySubscriber={true}
         />
       </TestComponentWrapper>,
     );
@@ -1617,7 +1738,7 @@ describe("to learn about usage", () => {
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
           enabledFeatureFlags={[]}
           experimentData={defaultExperimentData}
-          isYearlySubscriber={false}
+          isMonthlySubscriber={true}
         />
       </TestComponentWrapper>,
     );
@@ -1666,7 +1787,7 @@ describe("to learn about usage", () => {
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
           enabledFeatureFlags={[]}
           experimentData={defaultExperimentData}
-          isYearlySubscriber={false}
+          isMonthlySubscriber={true}
         />
       </TestComponentWrapper>,
     );
@@ -1710,7 +1831,7 @@ describe("to learn about usage", () => {
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
           enabledFeatureFlags={[]}
           experimentData={defaultExperimentData}
-          isYearlySubscriber={false}
+          isMonthlySubscriber={true}
         />
       </TestComponentWrapper>,
     );
@@ -1759,7 +1880,7 @@ describe("to learn about usage", () => {
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
           enabledFeatureFlags={[]}
           experimentData={defaultExperimentData}
-          isYearlySubscriber={false}
+          isMonthlySubscriber={true}
         />
       </TestComponentWrapper>,
     );
@@ -1820,7 +1941,7 @@ it("selects the coupon code discount cta and shows the all-set dialog step", asy
           "DiscountCouponNextThreeMonths",
         ]}
         experimentData={defaultExperimentData}
-        isYearlySubscriber={false}
+        isMonthlySubscriber={true}
       />
     </TestComponentWrapper>,
   );
@@ -1906,7 +2027,7 @@ it("shows error message if the applying the coupon code function was unsuccessfu
           "DiscountCouponNextThreeMonths",
         ]}
         experimentData={defaultExperimentData}
-        isYearlySubscriber={false}
+        isMonthlySubscriber={true}
       />
     </TestComponentWrapper>,
   );
@@ -1972,7 +2093,7 @@ it("does not show the coupon code if a user already has a coupon set", async () 
           "DiscountCouponNextThreeMonths",
         ]}
         experimentData={defaultExperimentData}
-        isYearlySubscriber={false}
+        isMonthlySubscriber={true}
       />
     </TestComponentWrapper>,
   );

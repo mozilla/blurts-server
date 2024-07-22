@@ -32,7 +32,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 22.3
+          node-version: 22.4
 
       - name: Install dependencies
         run: npm ci
@@ -63,8 +63,8 @@ jobs:
         run: npm run e2e:smoke
         timeout-minutes: 10
         env:
-          E2E_TEST_ENV: ${{ inputs.environment != null && inputs.environment || 'local' }}
-          E2E_TEST_BASE_URL: ${{ secrets.E2E_TEST_BASE_URL }}
+          E2E_TEST_ENV: local
+          E2E_TEST_BASE_URL: http://localhost:6060
           E2E_TEST_ACCOUNT_EMAIL: ${{ secrets.E2E_TEST_ACCOUNT_EMAIL }}
           E2E_TEST_ACCOUNT_EMAIL_ZERO_BREACHES: ${{ secrets.E2E_TEST_ACCOUNT_EMAIL_ZERO_BREACHES }}
           E2E_TEST_ACCOUNT_EMAIL_EXPOSURES_STARTED: ${{ secrets.E2E_TEST_ACCOUNT_EMAIL_EXPOSURES_STARTED }}
@@ -72,7 +72,8 @@ jobs:
           E2E_TEST_PAYPAL_LOGIN:  ${{ secrets.E2E_TEST_PAYPAL_LOGIN }}
           E2E_TEST_PAYPAL_PASSWORD: ${{ secrets.E2E_TEST_PAYPAL_PASSWORD }}
           ADMINS: ${{ secrets.ADMINS }}
-          OAUTH_CLIENT_SECRET: ${{ secrets.OAUTH_CLIENT_SECRET }}
+          OAUTH_CLIENT_SECRET: ${{ secrets.OAUTH_CLIENT_SECRET_LOCAL }}
+          OAUTH_ACCOUNT_URI: ${{ secrets.OAUTH_ACCOUNT_URI }}
           ONEREP_API_KEY: ${{ secrets.ONEREP_API_KEY }}
           NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
           NEXTAUTH_URL: ${{ secrets.NEXTAUTH_URL }}

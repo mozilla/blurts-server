@@ -47,8 +47,10 @@ export type FeatureFlagName =
   | "FirstDataBrokerRemovalFixedEmail"
   | "DiscountCouponNextThreeMonths"
   | "LatestScanDateCsatSurvey"
+  | "AutomaticRemovalCsatSurvey"
   | "HowItWorksPage"
-  | "AdditionalRemovalStatuses";
+  | "AdditionalRemovalStatuses"
+  | "PetitionBannerCsatSurvey";
 
 /**
  * @param options
@@ -91,7 +93,7 @@ export async function getFeatureFlagByName(name: string) {
  */
 export async function addFeatureFlag(flag: FeatureFlag) {
   logger.info("addFeatureFlag", flag);
-  const featureFlagDb: FeatureFlagRow = {
+  const featureFlagDb: Omit<FeatureFlagRow, "created_at" | "modified_at"> = {
     name: flag.name,
     is_enabled: flag.isEnabled,
     description: flag.description,

@@ -198,6 +198,7 @@ error-page-error-404-cta-button = Uɣal
 
 ## Breach overview page
 
+all-breaches-headline-2 = Akk tirewliwin ttwafent-d s { -brand-fx-monitor }
 search-breaches = Nadi tirewliwin n yisefka
 
 ## Public breach detail page

@@ -4,6 +4,7 @@
   width: 100%;
   height: 100%;
   background-color: $color-grey-05;
+  overflow: auto;
 
   .tabBar {
     height: $tab-bar-height;
@@ -37,4 +38,17 @@
     border: 1px solid;
     padding: 10px;
   }
+
+  h3 {
+    padding: 0 $spacing-2xl;
+    font: $text-title-2xs;
+  }
+}
+
+.flagList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: $spacing-lg;
+  padding: $spacing-2xl;
 }

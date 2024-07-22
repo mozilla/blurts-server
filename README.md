@@ -145,6 +145,8 @@ Monitor uses GCP PubSub for processing incoming breach data, this can be tested 
 gcloud beta emulators pubsub start --project=your-project-name
 ```
 
+(Set `your-project-name` as the value for `GCP_PUBSUB_PROJECT_ID` in your `.env.local`.)
+
 ### In a different shell, set the environment to point at the emulator and run Monitor in dev mode:
 
 ```sh
@@ -160,10 +162,13 @@ curl -d '{ "breachName": "000webhost", "hashPrefix": "test", "hashSuffixes": ["t
   http://localhost:6060/api/v1/hibp/notify
 ```
 
+This emulates HIBP notifying our API that a new breach was found. Our API will
+then add it to the (emulated) pubsub queue.
+
 ### This pubsub queue will be consumed by this cron job, which is responsible for looking up and emailing impacted users:
 
 ```sh
-node src/scripts/emailBreachAlerts.js
+npm run dev:cron:breach-alerts
 ```
 
 ### Emails

@@ -53,6 +53,7 @@ settings-delete-monitor-free-account-title = Poista { -brand-monitor } -tili
 settings-delete-monitor-free-account-description = Tämä poistaa pysyvästi { -brand-monitor } -tilisi ja poistaa kaikki ilmoitukset käytöstä.
 settings-delete-monitor-free-account-cta-label = Poista tili
 settings-delete-monitor-free-account-dialog-title = { -brand-monitor } -tilisi poistetaan pysyvästi
+settings-delete-monitor-free-account-dialog-lead-v2 = Kaikki { -brand-monitor } -tilisi tiedot poistetaan, emmekä enää seuraa uusia tietovuotoja. Tämä ei poista { -brand-mozilla-account }äsi.
 settings-delete-monitor-free-account-dialog-cta-label = Poista tili
 settings-delete-monitor-free-account-dialog-cancel-button-label = Unohdetaan tämä, palataan takaisin
 settings-delete-monitor-account-confirmation-toast-label-2 = { -brand-monitor } -tilisi on nyt poistettu.

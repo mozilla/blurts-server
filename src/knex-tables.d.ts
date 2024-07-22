@@ -47,8 +47,8 @@ declare module "knex/types/tables" {
     dependencies?: string[];
     allow_list?: string[];
     wait_list?: string[];
-    added_at?: Date;
-    modified_at?: Date;
+    created_at: Date;
+    modified_at: Date;
     expired_at?: Date;
     deleted_at?: Date;
     owner?: string;
@@ -60,8 +60,6 @@ declare module "knex/types/tables" {
     | "dependencies"
     | "allow_list"
     | "wait_list"
-    | "added_at"
-    | "modified_at"
     | "expired_at"
     | "owner"
   >;
@@ -312,6 +310,20 @@ declare module "knex/types/tables" {
     "id" | "created_at" | "updated_at"
   >;
 
+  interface StatsRow {
+    id: number;
+    name: string;
+    current: string;
+    max: string;
+    type: string;
+    created_at: Date;
+    modified_at: Date;
+  }
+  type StatsAutoInsertedColumns = Extract<
+    keyof StatsRow,
+    "id" | "created_at" | "modified_at"
+  >;
+
   interface Tables {
     attributions: Knex.CompositeTableType<
       AttributionRow,
@@ -430,11 +442,14 @@ declare module "knex/types/tables" {
       Partial<Omit<EmailNotificationRow, "id" | "created_at">> &
         Pick<EmailNotificationRow, "updated_at">
     >;
-  }
-  interface StatsRow {
-    name: string;
-    current: string;
-    max: string;
-    type: string;
+
+    stats: Knex.CompositeTableType<
+      StatsRow,
+      // On updates, auto-generated columns cannot be set:
+      Omit<StatsRow, StatsAutoInsertedColumns> & Partial<StatsRow>,
+      // On updates, don't allow updating the ID and created date; all other fields are optional, except modified_at:
+      Partial<Omit<StatsRow, "id" | "created_at">> &
+        Pick<StatsRow, "modified_at">
+    >;
   }
 }

@@ -79,6 +79,9 @@ export class LandingPage {
   readonly monitorPlusTooltipText: Locator;
   readonly closeTooltips: Locator;
 
+  // Landing-page-free-scan-cta experiment enabled
+  readonly emailInputPrompt: Locator;
+
   constructor(page: Page) {
     this.page = page;
     this.freeMonitoringTooltipTrigger = page
@@ -166,7 +169,7 @@ export class LandingPage {
       has: this.reuseEmailInputField,
     });
     this.couldBeAtRiskFormInputSubmitButton = this.couldBeAtRiskSection.filter({
-      has: this.reuseButton,
+      hasText: "Get free scan",
     });
     this.couldBeAtRiskGraphic = page.locator(
       'img[data-testid="leaked-password-example"]',
@@ -184,7 +187,7 @@ export class LandingPage {
       has: this.reuseEmailInputField,
     });
     this.getStartedScanFormSubmitButton = this.getStartedScanSection.filter({
-      has: this.reuseButton,
+      hasText: "Get free scan",
     });
 
     // choose your level of protection section
@@ -235,6 +238,11 @@ export class LandingPage {
     this.startFreeMonitoringButton = page.getByRole("button", {
       name: "Start free monitoring",
     });
+
+    // Landing-page-free-scan-cta experiment enabled
+    this.emailInputPrompt = page.locator(
+      '//label[text()="Enter your email address to check for data breach exposures and sites selling your info."]',
+    );
   }
 
   async open() {
