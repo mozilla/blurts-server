@@ -39,7 +39,10 @@ export class PurchasePage {
     this.returnToDashboardButton = page.getByLabel("Return to dashboard");
     this.goToNextStep = page.getByLabel("Go to next step");
     this.planDetails = page.locator(".plan-details-description");
-    this.paypalButton = page.getByTitle("PayPal").nth(1);
+    this.paypalButton = this.page
+      .frameLocator('//iframe[@title="PayPal"]')
+      .first()
+      .locator('div[role="link"]');
   }
 
   async fillOutStripeCardInfo() {

@@ -23,7 +23,9 @@ export class AuthPage {
     this.ageInputField = page.getByLabel("How old are you?");
     this.continueButton = page.locator('[type="submit"]').first();
     this.verifyCodeInputField = page.locator("div.card input");
-    this.useDifferentEmailButton = page.locator("#use-different");
+    this.useDifferentEmailButton = page.locator(
+      'text="Use a different account"',
+    );
   }
 
   async continue({ waitForURL = "**/*" }) {

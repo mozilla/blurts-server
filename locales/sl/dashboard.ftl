@@ -47,6 +47,7 @@ modal-active-number-of-exposures-part-three-all = Ko bodo razrešene, bodo dodan
 modal-fixed-number-of-exposures-title = O številu določenih izpostavljenosti
 modal-fixed-number-of-exposures-all = Ta grafikon vključuje skupno število odpravljenih kraj podatkov za vse e-poštne naslove, ki jih trenutno spremljate. Ko so izpostavljenosti označene kot fiksne, bodo tukaj dodane skupni vsoti.
 modal-cta-ok = V redu
+modal-cta-got-it = Razumem
 open-modal-alt = Odpri način
 close-modal-alt = Zapri modalno okno
 open-tooltip-alt = Odpri opis orodja
@@ -143,9 +144,6 @@ dashboard-top-banner-non-us-your-data-is-protected-description =
     }
 dashboard-top-banner-monitor-more-cta = Spremljaj več naslovov
 
-# About Exposure Statuses Modal
+# About Exposure Indicators Modal
 
-modal-exposure-status-title = O stanjih izpostavljenosti
 modal-exposure-status-description-all = Izpostavljenosti iščemo v vseh znanih krajah podatkov. Vaša izpostavljenost bo imela eno od naslednjih stanj:
-modal-exposure-status-action-needed = <b>Potrebno je dejanje</b> pomeni, da je trenutno aktiven in da ga morate popraviti.
-modal-exposure-status-fixed = <b>Odpravljena</b> pomeni, da je bila izpostavljenost rešena in ne morete storiti ničesar.

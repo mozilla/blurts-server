@@ -18,4 +18,4 @@
   # Default build command.
   command = "npm ci; npm run build-storybook"
 
-  environment = { NODE_VERSION = "22.3.0", NPM_VERSION = "10.8.0" }
+  environment = { NODE_VERSION = "22.4.1", NPM_VERSION = "10.8.1" }
