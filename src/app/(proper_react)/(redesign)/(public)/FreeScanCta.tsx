@@ -8,46 +8,14 @@ import { signIn } from "next-auth/react";
 import { useCookies } from "react-cookie";
 import { Props, SignUpForm } from "./SignUpForm";
 import { TelemetryButton } from "../../../components/client/TelemetryButton";
-import { modifyAttributionsForUrlSearchParams } from "../../../functions/universal/attributions";
 import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 import { useL10n } from "../../../hooks/l10n";
 import { WaitlistCta } from "./ScanLimit";
+import { useContext, RefObject } from "react";
+import { AccountsMetricsFlowContext } from "../../../../contextProviders/accounts-metrics-flow";
+import { getFreeScanSearchParams } from "../../../functions/universal/getFreeScanSearchParams";
+import { CONST_URL_MONITOR_LANDING_PAGE_ID } from "../../../../constants";
 import { useViewTelemetry } from "../../../hooks/useViewTelemetry";
-import { RefObject } from "react";
-
-export function getAttributionSearchParams({
-  cookies,
-  emailInput,
-  experimentData,
-}: {
-  cookies: {
-    attributionsFirstTouch?: string;
-  };
-  emailInput?: string;
-  experimentData?: ExperimentData;
-}) {
-  const attributionSearchParams = modifyAttributionsForUrlSearchParams(
-    new URLSearchParams(cookies.attributionsFirstTouch),
-    {
-      entrypoint: "monitor.mozilla.org-monitor-product-page",
-      form_type: typeof emailInput === "string" ? "email" : "button",
-      ...(emailInput && { email: emailInput }),
-      ...(experimentData &&
-        experimentData["landing-page-free-scan-cta"].enabled && {
-          entrypoint_experiment: "landing-page-free-scan-cta",
-          entrypoint_variation:
-            experimentData["landing-page-free-scan-cta"].variant,
-        }),
-    },
-    {
-      utm_source: "product",
-      utm_medium: "monitor",
-      utm_campaign: "get_free_scan",
-    },
-  );
-
-  return attributionSearchParams.toString();
-}
 
 export const FreeScanCta = (
   props: Props & {
@@ -56,6 +24,8 @@ export const FreeScanCta = (
 ) => {
   const l10n = useL10n();
   const [cookies] = useCookies(["attributionsFirstTouch"]);
+  const metricsFlowContext = useContext(AccountsMetricsFlowContext);
+
   const telemetryButtonId = `${props.eventId.cta}-${props.experimentData["landing-page-free-scan-cta"].variant}`;
   const refViewTelemetry = useViewTelemetry("ctaButton", {
     button_id: telemetryButtonId,
@@ -95,9 +65,11 @@ export const FreeScanCta = (
           void signIn(
             "fxa",
             { callbackUrl: props.signUpCallbackUrl },
-            getAttributionSearchParams({
+            getFreeScanSearchParams({
               cookies,
+              entrypoint: CONST_URL_MONITOR_LANDING_PAGE_ID,
               experimentData: props.experimentData,
+              metricsFlowData: metricsFlowContext.data,
             }),
           );
         }}
@@ -106,7 +78,7 @@ export const FreeScanCta = (
           props.experimentData["landing-page-free-scan-cta"].variant ===
             "ctaOnly"
             ? "landing-all-hero-emailform-submit-label"
-            : "landing-all-hero-emailform-submit-sign-in-label",
+            : "landing-all-hero-emailform-submit-sign-up-label",
         )}
       </TelemetryButton>
     </div>

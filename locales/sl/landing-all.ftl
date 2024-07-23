@@ -8,7 +8,7 @@ landing-all-hero-lead = Pregledamo kraje podatkov, da ugotovimo, ali so vaši po
 landing-all-hero-emailform-input-placeholder = ime@example.com
 landing-all-hero-emailform-input-label = Vnesite svoj e-poštni naslov za preverjanje izpostavljenosti kraji podatkov.
 landing-all-hero-emailform-submit-label = Zagotovite si brezplačen pregled
-landing-all-hero-emailform-submit-sign-in-label = Prijavite se za brezplačno skeniranje
+landing-all-hero-emailform-submit-sign-up-label = Prijavite se za brezplačno skeniranje
 # This is a label underneath a big number "14" - it's an image that demos Monitor.
 landing-all-hero-image-chart-label = izpostavljenosti
 

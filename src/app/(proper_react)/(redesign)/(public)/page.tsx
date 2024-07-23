@@ -14,10 +14,14 @@ import {
 import { getEnabledFeatureFlags } from "../../../../db/tables/featureFlags";
 import { getL10n } from "../../../functions/l10n/serverComponents";
 import { View } from "./LandingView";
-import { CONST_DAY_MILLISECONDS } from "../../../../constants";
+import {
+  CONST_DAY_MILLISECONDS,
+  CONST_URL_MONITOR_LANDING_PAGE_ID,
+} from "../../../../constants";
 import { getExperimentationId } from "../../../functions/server/getExperimentationId";
 import { getExperiments } from "../../../functions/server/getExperiments";
 import { getLocale } from "../../../functions/universal/getLocale";
+import { AccountsMetricsFlowProvider } from "../../../../contextProviders/accounts-metrics-flow";
 
 type Props = {
   searchParams: {
@@ -51,13 +55,29 @@ export default async function Page({ searchParams }: Props) {
     typeof oneRepActivations === "undefined" ||
     oneRepActivations > monthlySubscribersQuota;
   return (
-    <View
-      eligibleForPremium={eligibleForPremium}
-      l10n={getL10n()}
-      countryCode={countryCode}
-      scanLimitReached={scanLimitReached}
-      enabledFlags={enabledFlags}
-      experimentData={experimentData}
-    />
+    <AccountsMetricsFlowProvider
+      enabled={experimentData["landing-page-free-scan-cta"].enabled}
+      metricsFlowParams={{
+        entrypoint: CONST_URL_MONITOR_LANDING_PAGE_ID,
+        entrypoint_experiment: "landing-page-free-scan-cta",
+        entrypoint_variation:
+          experimentData["landing-page-free-scan-cta"].variant,
+        form_type:
+          experimentData["landing-page-free-scan-cta"].variant ===
+          "ctaWithEmail"
+            ? "email"
+            : "button",
+        service: process.env.OAUTH_CLIENT_ID as string,
+      }}
+    >
+      <View
+        eligibleForPremium={eligibleForPremium}
+        l10n={getL10n()}
+        countryCode={countryCode}
+        scanLimitReached={scanLimitReached}
+        enabledFlags={enabledFlags}
+        experimentData={experimentData}
+      />
+    </AccountsMetricsFlowProvider>
   );
 }

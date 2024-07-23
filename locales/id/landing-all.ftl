@@ -8,7 +8,7 @@ landing-all-hero-lead = Kami memindai kebocoran data untuk melihat apakah data A
 landing-all-hero-emailform-input-placeholder = namaanda@example.com
 landing-all-hero-emailform-input-label = Masukkan alamat surel Anda untuk memeriksa eksposur pelanggaran data.
 landing-all-hero-emailform-submit-label = Dapatkan pemindaian gratis
-landing-all-hero-emailform-submit-sign-in-label = Masuk untuk mendapatkan pindaian gratis
+landing-all-hero-emailform-submit-sign-up-label = Daftar untuk mendapatkan pemindaian gratis
 # This is a label underneath a big number "14" - it's an image that demos Monitor.
 landing-all-hero-image-chart-label = eksposur
 
