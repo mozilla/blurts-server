@@ -17,6 +17,7 @@ import { getOnerepProfileId } from "../../../../../../../../../../db/tables/subs
 import { getLatestOnerepScanResults } from "../../../../../../../../../../db/tables/onerep_scans";
 import { isEligibleForPremium } from "../../../../../../../../../functions/server/onerep";
 import { logger } from "../../../../../../../../../functions/server/logging";
+import { getEnabledFeatureFlags } from "../../../../../../../../../../db/tables/featureFlags";
 
 interface LeakedPasswordsProps {
   params: {
@@ -60,6 +61,10 @@ export default async function LeakedPasswords({
         latestScanData: scanData,
       }}
       isEligibleForPremium={isEligibleForPremium(countryCode)}
+      enabledFeatureFlags={await getEnabledFeatureFlags({
+        ignoreAllowlist: false,
+        email: session.user.email,
+      })}
     />
   );
 }

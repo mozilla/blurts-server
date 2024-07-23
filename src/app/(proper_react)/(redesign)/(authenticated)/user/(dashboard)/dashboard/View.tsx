@@ -93,9 +93,6 @@ export const View = (props: Props) => {
   const countryCode = useContext(CountryCodeContext);
   const pathname = usePathname();
 
-  const howItWorksFlagEnabled =
-    props.enabledFeatureFlags.includes("HowItWorksPage");
-
   const [activeTab, setActiveTab] = useState<TabType>(props.activeTab);
 
   useEffect(() => {
@@ -509,7 +506,7 @@ export const View = (props: Props) => {
           yearlySubscriptionUrl={props.yearlySubscriptionUrl}
           subscriptionBillingAmount={props.subscriptionBillingAmount}
           totalNumberOfPerformedScans={props.totalNumberOfPerformedScans}
-          howItWorksFlagEnabled={howItWorksFlagEnabled}
+          enabledFeatureFlags={props.enabledFeatureFlags}
         />
         <section className={styles.exposuresArea}>
           {activeTab === "action-needed" ? (

@@ -18,6 +18,7 @@ import { FeatureFlagName } from "../../../db/tables/featureFlags";
 type ExposuresFilterTypeExplainerProps = {
   explainerDialogState: OverlayTriggerState;
   explainerDialogProps: OverlayTriggerAria;
+  enabledFeatureFlags: FeatureFlagName[];
 };
 
 export const ExposuresFilterTypeExplainer = (
@@ -54,9 +55,24 @@ export const ExposuresFilterTypeExplainer = (
             <li>
               {l10n.getFragment("modal-exposure-type-data-broker-part-one", {
                 elems: { b: <strong /> },
-              })}
-              <br />
-              {l10n.getString("modal-exposure-type-data-broker-part-two")}
+              })}{" "}
+              {
+                /* c8 ignore next 7 */
+                // As the `SetExpectationsForUsers` feature flag is removed, the
+                // branch will be covered again:
+                props.enabledFeatureFlags.includes(
+                  "SetExpectationsForUsers",
+                ) ? (
+                  l10n.getString("modal-exposure-type-data-broker-part-two")
+                ) : (
+                  <>
+                    <br />
+                    {l10n.getString(
+                      "modal-exposure-type-data-broker-part-two-deprecated",
+                    )}
+                  </>
+                )
+              }
             </li>
           </ol>
           <Button

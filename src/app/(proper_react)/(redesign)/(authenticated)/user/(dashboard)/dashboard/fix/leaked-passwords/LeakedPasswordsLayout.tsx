@@ -29,12 +29,14 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { LeakedPasswordsDataTypes } from "../../../../../../../../functions/universal/breach";
 import { useTelemetry } from "../../../../../../../../hooks/useTelemetry";
+import { FeatureFlagName } from "../../../../../../../../../db/tables/featureFlags";
 
 export interface LeakedPasswordsLayoutProps {
   type: LeakedPasswordsTypes;
   subscriberEmails: string[];
   data: StepDeterminationData;
   isEligibleForPremium: boolean;
+  enabledFeatureFlags: FeatureFlagName[];
 }
 
 export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
@@ -191,6 +193,7 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
         title={title}
         illustration={illustration}
         isPremiumUser={hasPremium(props.data.user)}
+        enabledFeatureFlags={props.enabledFeatureFlags}
         cta={
           !isStepDone && (
             <>
