@@ -8,7 +8,7 @@ landing-all-hero-lead = Σαρώνουμε τις παραβιάσεις δεδ�
 landing-all-hero-emailform-input-placeholder = toonomasas@example.com
 landing-all-hero-emailform-input-label = Εισαγάγετε τη διεύθυνση email σας για να ελέγξετε εάν έχει εκτεθεί σε παραβιάσεις δεδομένων.
 landing-all-hero-emailform-submit-label = Δωρεάν σάρωση
-landing-all-hero-emailform-submit-sign-in-label = Συνδεθείτε για να λάβετε τη δωρεάν σάρωση
+landing-all-hero-emailform-submit-sign-up-label = Εγγραφείτε για να λάβετε δωρεάν σάρωση
 # This is a label underneath a big number "14" - it's an image that demos Monitor.
 landing-all-hero-image-chart-label = εκθέσεις
 
