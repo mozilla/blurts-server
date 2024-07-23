@@ -83,4 +83,4 @@ enums:
       ctaOnly:
         description: Only show a CTA button with the label “Get free scan”
       ctaOnlyAlternativeLabel:
-        description: Only show a CTA button with the label “Sign in to get free scan”
+        description: Only show a CTA button with the label “Sign up to get free scan”

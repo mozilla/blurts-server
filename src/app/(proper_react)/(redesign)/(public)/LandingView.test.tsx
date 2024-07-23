@@ -5,6 +5,7 @@
 import { it, expect } from "@jest/globals";
 import { composeStory } from "@storybook/react";
 import {
+  act,
   getAllByRole,
   getByRole,
   getByText,
@@ -29,6 +30,7 @@ import Meta, {
 import { deleteAllCookies } from "../../../functions/client/deleteAllCookies";
 import { defaultExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 import { Cookies } from "react-cookie";
+import { mockIsIntersecting } from "react-intersection-observer/test-utils";
 
 jest.mock("next-auth/react", () => {
   return {
@@ -971,7 +973,7 @@ describe("Free scan CTA experiment", () => {
       expect(inputField.length).toBe(0);
 
       const submitButton = screen.getAllByRole("button", {
-        name: "Sign in to get free scan",
+        name: "Sign up to get free scan",
       });
       expect(submitButton[0]).toBeInTheDocument();
     });
@@ -1007,7 +1009,7 @@ describe("Free scan CTA experiment", () => {
     });
   });
 
-  it("sends telemetry for the different experiment variants", async () => {
+  it("sends telemetry when clicking on one of the experiment variants", async () => {
     global.fetch = jest.fn().mockImplementation(() =>
       Promise.resolve({
         success: true,
@@ -1016,6 +1018,7 @@ describe("Free scan CTA experiment", () => {
         })),
       }),
     );
+
     const mockedRecord = useTelemetry();
     const user = userEvent.setup();
     const ComposedDashboard = composeStory(LandingUs, Meta);
@@ -1048,7 +1051,7 @@ describe("Free scan CTA experiment", () => {
     );
   });
 
-  it("passes the expected URL to the identity provider without metrics flow data", async () => {
+  it("sends telemetry when a free scan CTA is shown in the viewport", () => {
     global.fetch = jest.fn().mockImplementation(() =>
       Promise.resolve({
         success: true,
@@ -1057,6 +1060,39 @@ describe("Free scan CTA experiment", () => {
         })),
       }),
     );
+    const mockedRecord = useTelemetry();
+    const ComposedDashboard = composeStory(LandingUs, Meta);
+    render(
+      <ComposedDashboard
+        experimentData={{
+          ...defaultExperimentData,
+          "landing-page-free-scan-cta": {
+            enabled: true,
+            variant: "ctaOnly",
+          },
+        }}
+      />,
+    );
+
+    // jsdom will complain about not being able to navigate to a different page
+    // after clicking the link; suppress that error, as it's not relevant to the
+    // test:
+    jest.spyOn(console, "error").mockImplementation(() => undefined);
+
+    const submitButton = screen.getAllByRole("button", {
+      name: "Get free scan",
+    });
+    act(() => {
+      mockIsIntersecting(submitButton[0], true);
+    });
+    expect(mockedRecord).toHaveBeenCalledWith(
+      "ctaButton",
+      "view",
+      expect.objectContaining({ button_id: "clicked_get_scan_header-ctaOnly" }),
+    );
+  });
+
+  it("passes the expected URL to the identity provider", async () => {
     const user = userEvent.setup();
     const ComposedDashboard = composeStory(LandingUs, Meta);
     render(

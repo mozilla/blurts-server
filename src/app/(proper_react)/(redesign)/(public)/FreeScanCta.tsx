@@ -6,30 +6,19 @@
 
 import { signIn } from "next-auth/react";
 import { useCookies } from "react-cookie";
-import { SignUpForm, Props as SignUpFormProps } from "./SignUpForm";
+import { Props, SignUpForm } from "./SignUpForm";
 import { TelemetryButton } from "../../../components/client/TelemetryButton";
 import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 import { useL10n } from "../../../hooks/l10n";
 import { WaitlistCta } from "./ScanLimit";
-import { useContext } from "react";
+import { useContext, RefObject } from "react";
 import { AccountsMetricsFlowContext } from "../../../../contextProviders/accounts-metrics-flow";
 import { getFreeScanSearchParams } from "../../../functions/universal/getFreeScanSearchParams";
 import { CONST_URL_MONITOR_LANDING_PAGE_ID } from "../../../../constants";
-
-export type Props = {
-  eligibleForPremium: boolean;
-  signUpCallbackUrl: string;
-  isHero?: boolean;
-  eventId: {
-    cta: string;
-    field?: string;
-  };
-  scanLimitReached: boolean;
-  placeholder?: string;
-};
+import { useViewTelemetry } from "../../../hooks/useViewTelemetry";
 
 export const FreeScanCta = (
-  props: SignUpFormProps & {
+  props: Props & {
     experimentData: ExperimentData;
   },
 ) => {
@@ -37,6 +26,10 @@ export const FreeScanCta = (
   const [cookies] = useCookies(["attributionsFirstTouch"]);
   const metricsFlowContext = useContext(AccountsMetricsFlowContext);
 
+  const telemetryButtonId = `${props.eventId.cta}-${props.experimentData["landing-page-free-scan-cta"].variant}`;
+  const refViewTelemetry = useViewTelemetry("ctaButton", {
+    button_id: telemetryButtonId,
+  });
   if (
     !props.experimentData["landing-page-free-scan-cta"].enabled ||
     props.experimentData["landing-page-free-scan-cta"].variant ===
@@ -59,12 +52,13 @@ export const FreeScanCta = (
   ) : (
     <div>
       <TelemetryButton
+        buttonRef={refViewTelemetry as RefObject<HTMLButtonElement>}
         variant="primary"
         event={{
           module: "ctaButton",
           name: "click",
           data: {
-            button_id: `${props.eventId.cta}-${props.experimentData["landing-page-free-scan-cta"].variant}`,
+            button_id: telemetryButtonId,
           },
         }}
         onPress={() => {
@@ -84,7 +78,7 @@ export const FreeScanCta = (
           props.experimentData["landing-page-free-scan-cta"].variant ===
             "ctaOnly"
             ? "landing-all-hero-emailform-submit-label"
-            : "landing-all-hero-emailform-submit-sign-in-label",
+            : "landing-all-hero-emailform-submit-sign-up-label",
         )}
       </TelemetryButton>
     </div>

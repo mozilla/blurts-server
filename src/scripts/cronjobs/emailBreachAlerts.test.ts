@@ -4,6 +4,9 @@
 
 import { test, expect, jest } from "@jest/globals";
 
+process.env.GCP_PUBSUB_PROJECT_ID = "arbitrary-id";
+process.env.GCP_PUBSUB_SUBSCRIPTION_NAME = "arbitrary-name";
+
 jest.mock("@sentry/nextjs", () => {
   return {
     init: jest.fn(),
@@ -11,7 +14,7 @@ jest.mock("@sentry/nextjs", () => {
   };
 });
 
-jest.mock("../utils/email.js", () => {
+jest.mock("../../utils/email.js", () => {
   return {
     initEmail: jest.fn(),
     EmailTemplateType: jest.fn(),
@@ -20,7 +23,7 @@ jest.mock("../utils/email.js", () => {
   };
 });
 
-jest.mock("../utils/hibp.js", () => {
+jest.mock("../../utils/hibp.js", () => {
   return {
     getAddressesAndLanguageForEmail: jest.fn(() => {
       return {
@@ -34,19 +37,19 @@ jest.mock("../utils/hibp.js", () => {
   };
 });
 
-jest.mock("../db/tables/subscribers.js", () => {
+jest.mock("../../db/tables/subscribers.js", () => {
   return {
     getSubscribersByHashes: jest.fn(() => [""]),
   };
 });
 
-jest.mock("../db/tables/emailAddresses.js", () => {
+jest.mock("../../db/tables/emailAddresses.js", () => {
   return {
     getEmailAddressesByHashes: jest.fn(() => [""]),
   };
 });
 
-jest.mock("../db/tables/email_notifications.js", () => {
+jest.mock("../../db/tables/email_notifications.js", () => {
   return {
     getNotifiedSubscribersForBreach: jest.fn(() => [""]),
     addEmailNotification: jest.fn(),
@@ -54,7 +57,7 @@ jest.mock("../db/tables/email_notifications.js", () => {
   };
 });
 
-jest.mock("../utils/fluent.js", () => {
+jest.mock("../../utils/fluent.js", () => {
   return {
     initFluentBundles: jest.fn(),
     getMessage: jest.fn(),
@@ -62,24 +65,24 @@ jest.mock("../utils/fluent.js", () => {
   };
 });
 
-jest.mock("../emails/email2022.js", () => {
+jest.mock("../../emails/email2022.js", () => {
   return {
     getTemplate: jest.fn(),
   };
 });
 
-jest.mock("../emails/emailBreachAlert.js", () => {
+jest.mock("../../emails/emailBreachAlert.js", () => {
   return {
     breachAlertEmailPartial: jest.fn(),
   };
 });
 
-const subClient = {
+const subClient: any = {
   subscriptionPath: jest.fn(),
   acknowledge: jest.fn(),
 };
 
-function buildReceivedMessages(testBreachAlert) {
+function buildReceivedMessages(testBreachAlert: any) {
   return [
     {
       ackId: "testAckId",
@@ -101,12 +104,14 @@ beforeEach(() => {
 });
 
 test("rejects invalid messages", async () => {
-  const { poll } = await import("./emailBreachAlerts.js");
+  const { poll } = await import("./emailBreachAlerts");
 
   const consoleError = jest
     .spyOn(console, "error")
     .mockImplementation(() => {});
-  const consoleLog = jest.spyOn(console, "log").mockImplementation();
+  const consoleLog = jest
+    .spyOn(console, "log")
+    .mockImplementation(() => undefined);
 
   await poll(
     subClient,
@@ -174,14 +179,19 @@ test("rejects invalid messages", async () => {
 });
 
 test("processes valid messages", async () => {
-  const consoleLog = jest.spyOn(console, "log").mockImplementation();
+  const consoleLog = jest
+    .spyOn(console, "log")
+    .mockImplementation(() => undefined);
   // It's not clear if the calls to console.info are important enough to remain,
   // but since they were already there when adding the "no logs" rule in tests,
   // I'm respecting Chesterton's Fence and leaving them in place for now:
-  jest.spyOn(console, "info").mockImplementation();
-  const { sendEmail } = await import("../utils/email.js");
+  jest.spyOn(console, "info").mockImplementation(() => undefined);
+  const emailMod = await import("../../utils/email.js");
+  const sendEmail = emailMod.sendEmail as jest.Mock<
+    (typeof emailMod)["sendEmail"]
+  >;
 
-  const mockedUtilsHibp = jest.requireMock("../utils/hibp.js");
+  const mockedUtilsHibp: any = jest.requireMock("../../utils/hibp.js");
   mockedUtilsHibp.getBreachByName.mockReturnValue({
     IsVerified: true,
     Domain: "test1",
@@ -195,7 +205,7 @@ test("processes valid messages", async () => {
     hashSuffixes: ["test-suffix1"],
   });
 
-  const { poll } = await import("./emailBreachAlerts.js");
+  const { poll } = await import("./emailBreachAlerts");
 
   await poll(subClient, receivedMessages);
   // Fabricated but valid breach is acknowledged.
@@ -265,13 +275,15 @@ test("processes valid messages", async () => {
 });
 
 test("skipping email when subscriber id exists in email_notifications table", async () => {
-  const consoleLog = jest.spyOn(console, "log").mockImplementation();
+  const consoleLog = jest
+    .spyOn(console, "log")
+    .mockImplementation(() => undefined);
   // It's not clear if the calls to console.info are important enough to remain,
   // but since they were already there when adding the "no logs" rule in tests,
   // I'm respecting Chesterton's Fence and leaving them in place for now:
-  jest.spyOn(console, "info").mockImplementation();
-  const { sendEmail } = await import("../utils/email.js");
-  const mockedUtilsHibp = jest.requireMock("../utils/hibp.js");
+  jest.spyOn(console, "info").mockImplementation(() => undefined);
+  const { sendEmail } = await import("../../utils/email.js");
+  const mockedUtilsHibp: any = jest.requireMock("../../utils/hibp.js");
   mockedUtilsHibp.getBreachByName.mockReturnValue({
     IsVerified: true,
     Domain: "test1",
@@ -280,19 +292,19 @@ test("skipping email when subscriber id exists in email_notifications table", as
     Id: 1,
   });
 
-  jest.mock("../db/tables/subscribers.js", () => {
+  jest.mock("../../db/tables/subscribers.js", () => {
     return {
       getSubscribersByHashes: jest.fn(() => [{ id: 1 }]),
     };
   });
 
-  jest.mock("../db/tables/emailAddresses.js", () => {
+  jest.mock("../../db/tables/emailAddresses.js", () => {
     return {
       getEmailAddressesByHashes: jest.fn(() => []),
     };
   });
 
-  jest.mock("../db/tables/email_notifications.js", () => {
+  jest.mock("../../db/tables/email_notifications.js", () => {
     return {
       getNotifiedSubscribersForBreach: jest.fn(() => [1]),
       addEmailNotification: jest.fn(),
@@ -305,7 +317,7 @@ test("skipping email when subscriber id exists in email_notifications table", as
     hashSuffixes: ["test-suffix1"],
   });
 
-  const { poll } = await import("./emailBreachAlerts.js");
+  const { poll } = await import("./emailBreachAlerts");
 
   await poll(subClient, receivedMessages);
   // Verified, not fabricated, not spam list breaches are acknowledged.
@@ -318,13 +330,15 @@ test("skipping email when subscriber id exists in email_notifications table", as
 });
 
 test("throws an error when addEmailNotification fails", async () => {
-  const consoleLog = jest.spyOn(console, "log").mockImplementation();
+  const consoleLog = jest
+    .spyOn(console, "log")
+    .mockImplementation(() => undefined);
   // It's not clear if the calls to console.info are important enough to remain,
   // but since they were already there when adding the "no logs" rule in tests,
   // I'm respecting Chesterton's Fence and leaving them in place for now:
-  jest.spyOn(console, "info").mockImplementation();
-  const { sendEmail } = await import("../utils/email.js");
-  const mockedUtilsHibp = jest.requireMock("../utils/hibp.js");
+  jest.spyOn(console, "info").mockImplementation(() => undefined);
+  const { sendEmail } = await import("../../utils/email.js");
+  const mockedUtilsHibp: any = jest.requireMock("../../utils/hibp.js");
   mockedUtilsHibp.getBreachByName.mockReturnValue({
     IsVerified: true,
     Domain: "test1",
@@ -333,19 +347,19 @@ test("throws an error when addEmailNotification fails", async () => {
     Id: 1,
   });
 
-  jest.mock("../db/tables/subscribers.js", () => {
+  jest.mock("../../db/tables/subscribers.js", () => {
     return {
       getSubscribersByHashes: jest.fn(() => [{ id: 1 }]),
     };
   });
 
-  jest.mock("../db/tables/emailAddresses.js", () => {
+  jest.mock("../../db/tables/emailAddresses.js", () => {
     return {
       getEmailAddressesByHashes: jest.fn(() => [""]),
     };
   });
 
-  jest.mock("../db/tables/email_notifications.js", () => {
+  jest.mock("../../db/tables/email_notifications.js", () => {
     return {
       getNotifiedSubscribersForBreach: jest.fn(() => [2]),
       addEmailNotification: jest.fn().mockImplementationOnce(() => {
@@ -359,13 +373,13 @@ test("throws an error when addEmailNotification fails", async () => {
     hashSuffixes: ["test-suffix1"],
   });
 
-  const { poll } = await import("./emailBreachAlerts.js");
+  const { poll } = await import("./emailBreachAlerts");
 
   try {
     await poll(subClient, receivedMessages);
-  } catch (e) {
+  } catch (e: unknown) {
     expect(console.error).toBeCalled();
-    expect(e.message).toBe("add failed");
+    expect((e as Error).message).toBe("add failed");
   }
 
   expect(consoleLog).toHaveBeenCalledWith(
@@ -375,13 +389,15 @@ test("throws an error when addEmailNotification fails", async () => {
 });
 
 test("throws an error when markEmailAsNotified fails", async () => {
-  const consoleLog = jest.spyOn(console, "log").mockImplementation();
+  const consoleLog = jest
+    .spyOn(console, "log")
+    .mockImplementation(() => undefined);
   // It's not clear if the calls to console.info are important enough to remain,
   // but since they were already there when adding the "no logs" rule in tests,
   // I'm respecting Chesterton's Fence and leaving them in place for now:
-  jest.spyOn(console, "info").mockImplementation();
-  const { sendEmail } = await import("../utils/email.js");
-  const mockedUtilsHibp = jest.requireMock("../utils/hibp.js");
+  jest.spyOn(console, "info").mockImplementation(() => undefined);
+  const { sendEmail } = await import("../../utils/email.js");
+  const mockedUtilsHibp: any = jest.requireMock("../../utils/hibp.js");
   mockedUtilsHibp.getBreachByName.mockReturnValue({
     IsVerified: true,
     Domain: "test1",
@@ -390,19 +406,19 @@ test("throws an error when markEmailAsNotified fails", async () => {
     Id: 1,
   });
 
-  jest.mock("../db/tables/subscribers.js", () => {
+  jest.mock("../../db/tables/subscribers.js", () => {
     return {
       getSubscribersByHashes: jest.fn(() => [{ id: 1 }]),
     };
   });
 
-  jest.mock("../db/tables/emailAddresses.js", () => {
+  jest.mock("../../db/tables/emailAddresses.js", () => {
     return {
       getEmailAddressesByHashes: jest.fn(() => [""]),
     };
   });
 
-  jest.mock("../db/tables/email_notifications.js", () => {
+  jest.mock("../../db/tables/email_notifications.js", () => {
     return {
       getNotifiedSubscribersForBreach: jest.fn(() => [2]),
       addEmailNotification: jest.fn(),
@@ -417,13 +433,13 @@ test("throws an error when markEmailAsNotified fails", async () => {
     hashSuffixes: ["test-suffix1"],
   });
 
-  const { poll } = await import("./emailBreachAlerts.js");
+  const { poll } = await import("./emailBreachAlerts");
 
   try {
     await poll(subClient, receivedMessages);
-  } catch (e) {
+  } catch (e: unknown) {
     expect(console.error).toBeCalled();
-    expect(e.message).toBe("mark failed");
+    expect((e as Error).message).toBe("mark failed");
   }
   expect(consoleLog).toHaveBeenCalledWith(
     'Received message: {"breachName":"test1","hashPrefix":"test-prefix1","hashSuffixes":["test-suffix1"]}',
