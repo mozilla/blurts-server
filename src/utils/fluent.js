@@ -8,7 +8,7 @@ import { readFile } from 'node:fs/promises'
 import { FluentBundle, FluentResource } from '@fluent/bundle'
 import { negotiateLanguages } from '@fluent/langneg'
 import AppConstants from '../appConstants.js'
-import { localStorage } from './localStorage.js'
+import { localStorage } from './localStorage'
 import { InternalServerError } from '../utils/error.js'
 
 // This file will be removed once we've fully switched to React
