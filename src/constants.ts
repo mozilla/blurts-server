@@ -31,3 +31,5 @@ export const CONST_URL_DATA_PRIVACY_PETITION_BANNER =
 export const CONST_URL_MONITOR_GITHUB =
   "https://github.com/mozilla/blurts-server";
 export const CONST_DAY_MILLISECONDS = 24 * 60 * 60 * 1000;
+export const CONST_URL_MONITOR_LANDING_PAGE_ID =
+  "monitor.mozilla.org-monitor-product-page";
