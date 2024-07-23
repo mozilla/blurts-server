@@ -4,28 +4,37 @@
 
 "use client";
 
-import { FormEventHandler, useId, useState } from "react";
+import {
+  FormEventHandler,
+  RefObject,
+  useContext,
+  useId,
+  useState,
+} from "react";
 import { signIn } from "next-auth/react";
 import { useL10n } from "../../../hooks/l10n";
 import { Button } from "../../../components/client/Button";
 import styles from "./SignUpForm.module.scss";
 import { useTelemetry } from "../../../hooks/useTelemetry";
+import { useViewTelemetry } from "../../../hooks/useViewTelemetry";
 import { VisuallyHidden } from "../../../components/server/VisuallyHidden";
 import { WaitlistCta } from "./ScanLimit";
 import { useCookies } from "react-cookie";
-import { getAttributionSearchParams } from "./FreeScanCta";
+import { CONST_URL_MONITOR_LANDING_PAGE_ID } from "../../../../constants";
+import { getFreeScanSearchParams } from "../../../functions/universal/getFreeScanSearchParams";
+import { AccountsMetricsFlowContext } from "../../../../contextProviders/accounts-metrics-flow";
 import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 
 export type Props = {
   eligibleForPremium: boolean;
-  signUpCallbackUrl: string;
-  isHero?: boolean;
   eventId: {
     cta: string;
     field?: string;
   };
   scanLimitReached: boolean;
+  signUpCallbackUrl: string;
   experimentData?: ExperimentData;
+  isHero?: boolean;
   placeholder?: string;
 };
 
@@ -34,17 +43,23 @@ export const SignUpForm = (props: Props) => {
   const l10n = useL10n();
   const [emailInput, setEmailInput] = useState("");
   const record = useTelemetry();
+  const refViewTelemetry = useViewTelemetry("ctaButton", {
+    button_id: props.eventId.cta,
+  });
   const [cookies] = useCookies(["attributionsFirstTouch"]);
+  const metricsFlowContext = useContext(AccountsMetricsFlowContext);
 
   const onSubmit: FormEventHandler = (event) => {
     event.preventDefault();
     void signIn(
       "fxa",
       { callbackUrl: props.signUpCallbackUrl },
-      getAttributionSearchParams({
+      getFreeScanSearchParams({
         cookies,
-        emailInput,
+        emailInput: emailInput,
+        entrypoint: CONST_URL_MONITOR_LANDING_PAGE_ID,
         experimentData: props.experimentData,
+        metricsFlowData: metricsFlowContext.data,
       }),
     );
   };
@@ -62,7 +77,11 @@ export const SignUpForm = (props: Props) => {
   return props.scanLimitReached ? (
     <WaitlistCta />
   ) : (
-    <form className={styles.form} onSubmit={onSubmit}>
+    <form
+      ref={refViewTelemetry as RefObject<HTMLFormElement>}
+      className={styles.form}
+      onSubmit={onSubmit}
+    >
       <input
         name={emailInputId}
         data-testid="signup-form-input"

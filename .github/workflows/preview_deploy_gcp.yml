@@ -63,7 +63,6 @@ jobs:
           NEXTAUTH_URL= ${{ secrets.NEXTAUTH_URL }}
           NEXTAUTH_SECRET=${{ secrets.NEXTAUTH_SECRET }}
           OAUTH_ACCOUNT_URI=${{ secrets.OAUTH_ACCOUNT_URI }}
-          OAUTH_API_URI=${{ secrets.OAUTH_API_URI }}
           OAUTH_CLIENT_ID=${{ secrets.OAUTH_CLIENT_ID }}
           OAUTH_CLIENT_SECRET=${{ secrets.OAUTH_CLIENT_SECRET }}
           ONEREP_API_KEY=${{ secrets.ONEREP_API_KEY }}

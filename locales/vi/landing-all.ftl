@@ -3,14 +3,12 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 public-nav-name = { -brand-mozilla-monitor }
-
 landing-all-hero-title = Tìm hiểu xem thông tin cá nhân của bạn bị lộ ở đâu — và lấy lại thông tin đó
 landing-all-hero-lead = Chúng tôi quét các rò rỉ dữ liệu để xem dữ liệu của bạn có bị rò rỉ hay không và cung cấp cho bạn các bước để giải quyết.
-
 landing-all-hero-emailform-input-placeholder = yourname@example.com
 landing-all-hero-emailform-input-label = Nhập địa chỉ email của bạn để kiểm tra mức độ rò rỉ dữ liệu.
 landing-all-hero-emailform-submit-label = Quét miễn phí
-
+landing-all-hero-emailform-submit-sign-in-label = Đăng nhập để được quét miễn phí
 # This is a label underneath a big number "14" - it's an image that demos Monitor.
 landing-all-hero-image-chart-label = dữ liệu bị lộ
 
@@ -62,7 +60,5 @@ landing-all-help-protect-you-feature-one = Chúng tôi sẽ tìm kiếm bạn tr
 landing-all-help-protect-you-feature-two = Chúng tôi sẽ hướng dẫn bạn các bước để giải quyết từng rò rỉ
 landing-all-help-protect-you-feature-three = Chúng tôi sẽ liên tục theo dõi và gửi cho bạn thông báo về mọi rò rỉ mới
 landing-all-help-protect-you-cta = Đăng ký cảnh báo vụ rò rỉ
-
 landing-all-get-started = Quét email của bạn để bắt đầu
 landing-all-take-back-data = Lấy lại quyền kiểm soát dữ liệu của bạn
-
