@@ -238,7 +238,10 @@ export const View = (props: Props) => {
         {!props.eligibleForPremium && <HeresHowWeHelp />}
         <Plans {...props} />
 
-        <FaqSection isEligibleForPremium={props.eligibleForPremium} />
+        <FaqSection
+          isEligibleForPremium={props.eligibleForPremium}
+          enabledFeatureFlags={props.enabledFlags}
+        />
 
         <div className={styles.signUpEncouragementWrapper}>
           <p className={styles.title}>

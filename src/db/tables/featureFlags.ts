@@ -50,7 +50,9 @@ export type FeatureFlagName =
   | "AutomaticRemovalCsatSurvey"
   | "HowItWorksPage"
   | "AdditionalRemovalStatuses"
-  | "PetitionBannerCsatSurvey";
+  | "PetitionBannerCsatSurvey"
+  /** Set clear expectations about auto-removal finishing in time for *most*, not *all* data brokers: */
+  | "SetExpectationsForUsers";
 
 /**
  * @param options

@@ -19,6 +19,7 @@ import ExploringLaptopInProgress from "./assets/exploring-laptop-in-progress.svg
 import { LockIcon, QuestionMarkCircle } from "../server/Icons";
 import ModalImage from "../client/assets/modal-default-img.svg";
 import { VisuallyHidden } from "../server/VisuallyHidden";
+import { FeatureFlagName } from "../../../db/tables/featureFlags";
 
 export type Props = {
   resolvedByYou: number;
@@ -26,6 +27,7 @@ export type Props = {
   inProgress: number;
   isPremiumUser: boolean;
   isEligibleForPremium: boolean;
+  enabledFeatureFlags: FeatureFlagName[];
 };
 
 export const ProgressCard = (props: Props) => {
@@ -49,9 +51,17 @@ export const ProgressCard = (props: Props) => {
         })}
       </p>
       <p>
-        {l10n.getFragment("modal-heres-what-we-fixed-description-part-three", {
-          elems: { b: <strong /> },
-        })}
+        {l10n.getFragment(
+          /* c8 ignore next 5 */
+          // As the `SetExpectationsForUsers` feature flag is removed, the
+          // branch will be covered again:
+          props.enabledFeatureFlags.includes("SetExpectationsForUsers")
+            ? "modal-heres-what-we-fixed-description-part-three"
+            : "modal-heres-what-we-fixed-description-part-three-deprecated",
+          {
+            elems: { b: <strong /> },
+          },
+        )}
       </p>
       <div className={styles.confirmButtonWrapper}>
         <Button

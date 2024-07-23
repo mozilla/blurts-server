@@ -12,6 +12,7 @@ import styles from "./ResolutionContainer.module.scss";
 import { ProgressCard } from "../../../../../../../components/client/ProgressCard";
 import { StepDeterminationData } from "../../../../../../../functions/server/getRelevantGuidedSteps";
 import { getDashboardSummary } from "../../../../../../../functions/server/dashboard";
+import { FeatureFlagName } from "../../../../../../../../db/tables/featureFlags";
 
 type ResolutionContainerProps = {
   type: "highRisk" | "leakedPasswords" | "securityRecommendations";
@@ -23,6 +24,7 @@ type ResolutionContainerProps = {
   isEligibleForPremium: boolean;
   isStepDone: boolean;
   data: StepDeterminationData;
+  enabledFeatureFlags: FeatureFlagName[];
   label?: string;
   cta?: ReactNode;
 };
@@ -64,6 +66,7 @@ export const ResolutionContainer = (props: ResolutionContainerProps) => {
               }
               autoRemoved={resolutionSummary.dataBrokerAutoFixedDataPointsNum}
               inProgress={resolutionSummary.dataBrokerInProgressDataPointsNum}
+              enabledFeatureFlags={props.enabledFeatureFlags}
             />
           </div>
         ) : (

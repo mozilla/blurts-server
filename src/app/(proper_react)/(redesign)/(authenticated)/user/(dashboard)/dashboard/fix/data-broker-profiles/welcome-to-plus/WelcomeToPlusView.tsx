@@ -19,12 +19,13 @@ import noBreachesIllustration from "../../images/high-risk-breaches-none.svg";
 import { CONST_ONEREP_DATA_BROKER_COUNT } from "../../../../../../../../../../constants";
 import { TelemetryButton } from "../../../../../../../../../components/client/TelemetryButton";
 import { TelemetryLink } from "../../../../../../../../../components/client/TelemetryLink";
+import { FeatureFlagName } from "../../../../../../../../../../db/tables/featureFlags";
 
 export type Props = {
   data: StepDeterminationData;
   subscriberEmails: string[];
   l10n: ExtendedReactLocalization;
-  howItWorksFlagEnabled: boolean;
+  enabledFeatureFlags: FeatureFlagName[];
 };
 
 export function WelcomeToPlusView(props: Props) {
@@ -66,11 +67,19 @@ export function WelcomeToPlusView(props: Props) {
           </h3>
           <p>
             {hasRelevantScanResults
-              ? l10n.getString(
-                  "welcome-to-premium-data-broker-profiles-description-part-one",
+              ? /* c8 ignore next 14 */
+                // As the `SetExpectationsForUsers` feature flag is removed, the
+                // branch will be covered again:
+                l10n.getFragment(
+                  props.enabledFeatureFlags.includes("SetExpectationsForUsers")
+                    ? "welcome-to-premium-data-broker-profiles-description-part-one"
+                    : "welcome-to-premium-data-broker-profiles-description-part-one-deprecated",
                   {
-                    profile_total_num: scanResultsInProgressCount,
-                    exposure_reduction_percentage: dataPointReduction,
+                    vars: {
+                      profile_total_num: scanResultsInProgressCount,
+                      exposure_reduction_percentage: dataPointReduction,
+                    },
+                    elems: { b: <b /> },
                   },
                 )
               : l10n.getString(
@@ -81,8 +90,15 @@ export function WelcomeToPlusView(props: Props) {
                 )}
           </p>
           <p>
-            {hasRelevantScanResults && props.howItWorksFlagEnabled
-              ? l10n.getFragment(
+            {hasRelevantScanResults &&
+            props.enabledFeatureFlags.includes("HowItWorksPage")
+              ? /* c8 ignore next 23 */
+                // As the `SetExpectationsForUsers` feature flag is removed, the
+                // branch will be covered again:
+                !props.enabledFeatureFlags.includes(
+                  "SetExpectationsForUsers",
+                ) &&
+                l10n.getFragment(
                   "welcome-to-premium-data-broker-profiles-description-part-two",
                   {
                     elems: {
@@ -133,7 +149,10 @@ export function WelcomeToPlusView(props: Props) {
         </div>
         {hasRelevantScanResults ? (
           <div className={styles.chart}>
-            <PercentageChart exposureReduction={dataPointReduction} />
+            <PercentageChart
+              exposureReduction={dataPointReduction}
+              enabledFeatureFlags={props.enabledFeatureFlags}
+            />
           </div>
         ) : (
           <div

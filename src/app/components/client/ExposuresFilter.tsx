@@ -300,6 +300,7 @@ export const ExposuresFilter = ({
         <ExposuresFilterTypeExplainer
           explainerDialogProps={exposureTypeExplainerDialogTrigger}
           explainerDialogState={exposureTypeExplainerDialogState}
+          enabledFeatureFlags={enabledFeatureFlags}
         />
       )}
       {exposureStatusExplainerDialogState.isOpen && (
