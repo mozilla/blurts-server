@@ -8,7 +8,7 @@ landing-all-hero-lead = Vi skannar dataintrång för att se om din data har läc
 landing-all-hero-emailform-input-placeholder = dittnamn@exempel.se
 landing-all-hero-emailform-input-label = Ange din e-postadress för att söka efter exponeringar för dataintrång.
 landing-all-hero-emailform-submit-label = Få gratis skanning
-landing-all-hero-emailform-submit-sign-in-label = Logga in för att få gratis skanning
+landing-all-hero-emailform-submit-sign-up-label = Registrera dig för att få gratis skanning
 # This is a label underneath a big number "14" - it's an image that demos Monitor.
 landing-all-hero-image-chart-label = exponeringar
 

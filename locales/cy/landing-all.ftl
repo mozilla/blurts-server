@@ -8,7 +8,7 @@ landing-all-hero-lead = Rydym yn sganio tor-data i weld a yw'ch data wedi'u datg
 landing-all-hero-emailform-input-placeholder = eichenw@example.com
 landing-all-hero-emailform-input-label = Rhowch eich cyfeiriad e-bost i wirio am ddatguddiadau tor-data.
 landing-all-hero-emailform-submit-label = Cael sgan am ddim
-landing-all-hero-emailform-submit-sign-in-label = Mewngofnodwch i gael sgan am ddim
+landing-all-hero-emailform-submit-sign-up-label = Cofrestrwch i gael sgan am ddim
 # This is a label underneath a big number "14" - it's an image that demos Monitor.
 landing-all-hero-image-chart-label = datgeliadau
 
