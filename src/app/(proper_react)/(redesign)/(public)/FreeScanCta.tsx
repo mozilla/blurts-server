@@ -106,7 +106,7 @@ export const FreeScanCta = (
           props.experimentData["landing-page-free-scan-cta"].variant ===
             "ctaOnly"
             ? "landing-all-hero-emailform-submit-label"
-            : "landing-all-hero-emailform-submit-sign-in-label",
+            : "landing-all-hero-emailform-submit-sign-up-label",
         )}
       </TelemetryButton>
     </div>

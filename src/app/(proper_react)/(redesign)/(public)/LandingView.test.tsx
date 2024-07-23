@@ -928,7 +928,7 @@ describe("Free scan CTA experiment", () => {
     expect(inputField.length).toBe(0);
 
     const submitButton = screen.getAllByRole("button", {
-      name: "Sign in to get free scan",
+      name: "Sign up to get free scan",
     });
     expect(submitButton[0]).toBeInTheDocument();
   });
