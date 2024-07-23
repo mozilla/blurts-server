@@ -4,6 +4,7 @@
 
 "use client";
 
+import { RefObject } from "react";
 import { Session } from "next-auth";
 import { CloseBtn } from "../server/Icons";
 import { useL10n } from "../../hooks/l10n";
@@ -13,6 +14,7 @@ import styles from "./PetitionBanner.module.scss";
 import { CONST_URL_DATA_PRIVACY_PETITION_BANNER } from "../../../constants";
 import { TelemetryButton } from "./TelemetryButton";
 import { useTelemetry } from "../../hooks/useTelemetry";
+import { useViewTelemetry } from "../../hooks/useViewTelemetry";
 
 export const usePetitionBannerDismissal = (user: Session["user"]) =>
   useLocalDismissal(`data_privacy_petition_banner-${user.subscriber?.id}`);
@@ -23,6 +25,9 @@ export const PetitionBanner = (props: { user: Session["user"] }) => {
   const hasRenderedClientSide = useHasRenderedClientSide();
   const localDismissal = usePetitionBannerDismissal(props.user);
   const recordTelemetry = useTelemetry();
+  const refViewTelemetry = useViewTelemetry("banner", {
+    banner_id: "petition",
+  });
 
   if (!hasRenderedClientSide || localDismissal.isDismissed) {
     return null;
@@ -30,7 +35,10 @@ export const PetitionBanner = (props: { user: Session["user"] }) => {
 
   const { dismiss } = localDismissal;
   return (
-    <div className={styles.banner}>
+    <div
+      ref={refViewTelemetry as RefObject<HTMLDivElement>}
+      className={styles.banner}
+    >
       <div className={styles.content}>
         <h2>{l10n.getString("petition-banner-data-privacy-title")}</h2>
         <p>
