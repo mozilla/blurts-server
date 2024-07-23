@@ -10,6 +10,7 @@ import {
   queryByRole,
   render,
   screen,
+  waitFor,
   within,
 } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
@@ -3754,7 +3755,7 @@ describe("CSAT survey banner", () => {
     expect(answerButton).not.toBeInTheDocument();
   });
 
-  it("displays the petition CSAT survey for users in the treatment branch after they interacted with the “Data privacy petition banner”", async () => {
+  it("displays the petition CSAT survey for users in the treatment branch after they clicked “No, thank you”", async () => {
     const user = userEvent.setup();
     const ComposedDashboard = composeStory(
       DashboardUsPremiumResolvedScanNoBreaches,
@@ -3779,15 +3780,43 @@ describe("CSAT survey banner", () => {
     });
     await user.click(dismissCta);
 
-    // The petition CSAT survey is only shown on the next visit of the dashboard
-    // so that the user is not being flashed directly with a second banner after
-    // interacting with the petition banner.
-    render(<ComposedDashboardComponent />);
-
     const answerButton = screen.getByRole("button", {
       name: "Neutral",
     });
     expect(answerButton).toBeInTheDocument();
+  });
+
+  it("displays the petition CSAT survey for users in the treatment branch after they clicked “Sign petition”", async () => {
+    const user = userEvent.setup();
+    const ComposedDashboard = composeStory(
+      DashboardUsPremiumResolvedScanNoBreaches,
+      Meta,
+    );
+    const ComposedDashboardComponent = () => (
+      <ComposedDashboard
+        activeTab="fixed"
+        enabledFeatureFlags={["PetitionBannerCsatSurvey"]}
+        experimentData={{
+          ...defaultExperimentData,
+          "data-privacy-petition-banner": {
+            enabled: true,
+          },
+        }}
+      />
+    );
+    render(<ComposedDashboardComponent />);
+
+    const dismissCta = screen.getByRole("link", {
+      name: "Sign petition",
+    });
+    await user.click(dismissCta);
+
+    await waitFor(() => {
+      const answerButton = screen.getByRole("button", {
+        name: "Neutral",
+      });
+      expect(answerButton).toBeInTheDocument();
+    });
   });
 });
 

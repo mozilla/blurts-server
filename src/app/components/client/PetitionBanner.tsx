@@ -8,32 +8,31 @@ import { RefObject } from "react";
 import { Session } from "next-auth";
 import { CloseBtn } from "../server/Icons";
 import { useL10n } from "../../hooks/l10n";
-import { useLocalDismissal } from "../../hooks/useLocalDismissal";
 import { useHasRenderedClientSide } from "../../hooks/useHasRenderedClientSide";
 import styles from "./PetitionBanner.module.scss";
 import { CONST_URL_DATA_PRIVACY_PETITION_BANNER } from "../../../constants";
 import { TelemetryButton } from "./TelemetryButton";
 import { useTelemetry } from "../../hooks/useTelemetry";
 import { useViewTelemetry } from "../../hooks/useViewTelemetry";
+import { DismissalData } from "../../hooks/useLocalDismissal";
 
-export const usePetitionBannerDismissal = (user: Session["user"]) =>
-  useLocalDismissal(`data_privacy_petition_banner-${user.subscriber?.id}`);
-
-export const PetitionBanner = (props: { user: Session["user"] }) => {
+export const PetitionBanner = (props: {
+  user: Session["user"];
+  localDismissal: DismissalData;
+}) => {
   const l10n = useL10n();
 
   const hasRenderedClientSide = useHasRenderedClientSide();
-  const localDismissal = usePetitionBannerDismissal(props.user);
   const recordTelemetry = useTelemetry();
   const refViewTelemetry = useViewTelemetry("banner", {
     banner_id: "petition",
   });
 
-  if (!hasRenderedClientSide || localDismissal.isDismissed) {
+  if (!hasRenderedClientSide || props.localDismissal.isDismissed) {
     return null;
   }
 
-  const { dismiss } = localDismissal;
+  const { dismiss } = props.localDismissal;
   return (
     <div
       ref={refViewTelemetry as RefObject<HTMLDivElement>}
@@ -52,7 +51,14 @@ export const PetitionBanner = (props: { user: Session["user"] }) => {
           <TelemetryButton
             variant="primary"
             className={styles.signButton}
-            onPress={() => dismiss()}
+            onPress={() => {
+              // In order to prevent the banner from being hidden before
+              // the click on the link button is getting registered: Delay the
+              // dismissal until the next event loop execution.
+              setTimeout(() => {
+                dismiss();
+              }, 0);
+            }}
             href={CONST_URL_DATA_PRIVACY_PETITION_BANNER}
             target="_blank"
             event={{

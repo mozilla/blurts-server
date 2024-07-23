@@ -10,11 +10,13 @@ import { CsatSurveyBanner } from "./CsatSurveyBanner";
 import { TabType } from "../../../(proper_react)/(redesign)/(authenticated)/user/(dashboard)/dashboard/View";
 import { getAutomaticRemovalCsatSurvey } from "./surveys/automaticRemovalCsatSurvey";
 import { getLatestScanDateCsatSurvey } from "./surveys/latestScanDateCsatSurvey";
-import { COOKIE_DISMISSAL_MAX_AGE_IN_SECONDS } from "../../../hooks/useLocalDismissal";
+import {
+  COOKIE_DISMISSAL_MAX_AGE_IN_SECONDS,
+  DismissalData,
+} from "../../../hooks/useLocalDismissal";
 import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 import { FeatureFlagName } from "../../../../db/tables/featureFlags";
 import { getPetitionBannerCsatSurvey } from "./surveys/petitionBannerCsatSurvey";
-import { usePetitionBannerDismissal } from "../PetitionBanner";
 
 export type CsatSurveyProps = {
   activeTab: TabType;
@@ -26,10 +28,10 @@ export type CsatSurveyProps = {
   elapsedTimeInDaysSinceInitialScan: number | null;
   lastScanDate: Date | null;
   signInCount: number | null;
+  localDismissalPetitionBanner: DismissalData;
 };
 
 export const CsatSurvey = (props: CsatSurveyProps) => {
-  const localDismissalPetitionBanner = usePetitionBannerDismissal(props.user);
   const surveyOptions = {
     activeTab: props.activeTab,
     experimentData: props.experimentData,
@@ -93,7 +95,7 @@ export const CsatSurvey = (props: CsatSurveyProps) => {
   if (
     props.experimentData["data-privacy-petition-banner"].enabled &&
     isPetitionCsatBanner &&
-    !localDismissalPetitionBanner.isDismissed
+    !props.localDismissalPetitionBanner.isDismissed
   ) {
     return;
   }
