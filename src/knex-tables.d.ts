@@ -47,8 +47,8 @@ declare module "knex/types/tables" {
     dependencies?: string[];
     allow_list?: string[];
     wait_list?: string[];
-    added_at?: Date;
-    modified_at?: Date;
+    created_at: Date;
+    modified_at: Date;
     expired_at?: Date;
     deleted_at?: Date;
     owner?: string;
@@ -60,8 +60,6 @@ declare module "knex/types/tables" {
     | "dependencies"
     | "allow_list"
     | "wait_list"
-    | "added_at"
-    | "modified_at"
     | "expired_at"
     | "owner"
   >;

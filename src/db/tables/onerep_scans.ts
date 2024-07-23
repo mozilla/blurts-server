@@ -330,6 +330,52 @@ async function deleteScanResultsForProfile(
     .where("onerep_profile_id", onerepProfileId);
 }
 
+async function deleteSomeScansForProfile(
+  onerepProfileId: number,
+  leaveOutAtMost: number = 0,
+) {
+  if (leaveOutAtMost < 0) {
+    logger.info(`Attempted deleting ${leaveOutAtMost} rows, None were.`);
+    return;
+  }
+  const countResult = await knex("onerep_scans")
+    .where("onerep_profile_id", onerepProfileId)
+    .count("onerep_profile_id", { as: "total" });
+
+  const totalRows = countResult[0].total as number;
+
+  const toDelete = Math.max(totalRows - leaveOutAtMost, 0);
+
+  if (toDelete > 0) {
+    await knex("onerep_scans")
+      .where("onerep_profile_id", onerepProfileId)
+      .orderBy("onerep_scan_id", "desc")
+      .limit(toDelete)
+      .del();
+
+    logger.info(
+      `Deleted ${toDelete} rows for profileId ${onerepProfileId}, left ${Math.min(leaveOutAtMost, totalRows)} rows.`,
+    );
+  } else {
+    logger.info(
+      "No rows need to be deleted, or the conditions do not allow deletion.",
+    );
+  }
+}
+
+async function getEmailForProfile(onerepProfileId: number) {
+  const result = await knex("subscribers")
+    .select("primary_email")
+    .where("onerep_profile_id", onerepProfileId)
+    .first();
+
+  if (result) {
+    return result.primary_email;
+  } else {
+    return undefined;
+  }
+}
+
 export {
   getAllScansForProfile,
   getLatestScanForProfileByReason,
@@ -346,4 +392,6 @@ export {
   getScansCountForProfile,
   deleteScansForProfile,
   deleteScanResultsForProfile,
+  deleteSomeScansForProfile,
+  getEmailForProfile,
 };

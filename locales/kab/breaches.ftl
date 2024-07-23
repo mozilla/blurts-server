@@ -2,11 +2,7 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-## Breaches header
-
-## Breaches resolved filter
-
-## Breaches table
+breach-all-meta-social-title = Akk tirewliwin ttwafent-d s { -brand-fx-monitor }
 
 ## Links that we might refer to when prompting the user to make changes after a breach
 

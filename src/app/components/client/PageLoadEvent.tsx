@@ -25,7 +25,9 @@ export const PageLoadEvent = (props: Props) => {
   ]);
   const pathname = usePathname();
 
-  const recordTelemetry = useTelemetry(props.experimentationId);
+  const recordTelemetry = useTelemetry({
+    experimentationId: props.experimentationId,
+  });
 
   if (
     props.experimentationId.startsWith("guest") &&

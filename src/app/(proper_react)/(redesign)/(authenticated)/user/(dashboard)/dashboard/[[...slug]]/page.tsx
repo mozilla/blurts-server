@@ -57,7 +57,7 @@ type Props = {
 export default async function DashboardPage({ params, searchParams }: Props) {
   const session = await getServerSession();
   if (!checkSession(session) || !session?.user?.subscriber?.id) {
-    return redirect("/");
+    return redirect("/auth/logout");
   }
 
   const { slug } = params;

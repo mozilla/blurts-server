@@ -4,26 +4,29 @@
 
 "use client";
 
-import { FormEventHandler, useId, useState } from "react";
+import { FormEventHandler, RefObject, useId, useState } from "react";
 import { signIn } from "next-auth/react";
 import { useL10n } from "../../../hooks/l10n";
 import { Button } from "../../../components/client/Button";
 import styles from "./SignUpForm.module.scss";
 import { useTelemetry } from "../../../hooks/useTelemetry";
+import { useViewTelemetry } from "../../../hooks/useViewTelemetry";
 import { VisuallyHidden } from "../../../components/server/VisuallyHidden";
 import { WaitlistCta } from "./ScanLimit";
 import { useCookies } from "react-cookie";
-import { modifyAttributionsForUrlSearchParams } from "../../../functions/universal/attributions";
+import { getAttributionSearchParams } from "./FreeScanCta";
+import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 
 export type Props = {
   eligibleForPremium: boolean;
-  signUpCallbackUrl: string;
-  isHero?: boolean;
   eventId: {
     cta: string;
     field?: string;
   };
   scanLimitReached: boolean;
+  signUpCallbackUrl: string;
+  experimentData?: ExperimentData;
+  isHero?: boolean;
   placeholder?: string;
 };
 
@@ -32,30 +35,21 @@ export const SignUpForm = (props: Props) => {
   const l10n = useL10n();
   const [emailInput, setEmailInput] = useState("");
   const record = useTelemetry();
+  const refViewTelemetry = useViewTelemetry("ctaButton", {
+    button_id: props.eventId.cta,
+  });
   const [cookies] = useCookies(["attributionsFirstTouch"]);
-  let attributionSearchParams = new URLSearchParams(
-    cookies.attributionsFirstTouch,
-  );
-  attributionSearchParams = modifyAttributionsForUrlSearchParams(
-    attributionSearchParams,
-    {
-      entrypoint: "monitor.mozilla.org-monitor-product-page",
-      email: emailInput,
-      form_type: "button",
-    },
-    {
-      utm_source: "product",
-      utm_medium: "monitor",
-      utm_campaign: "get_free_scan",
-    },
-  );
 
   const onSubmit: FormEventHandler = (event) => {
     event.preventDefault();
     void signIn(
       "fxa",
       { callbackUrl: props.signUpCallbackUrl },
-      attributionSearchParams.toString(),
+      getAttributionSearchParams({
+        cookies,
+        emailInput,
+        experimentData: props.experimentData,
+      }),
     );
   };
 
@@ -72,7 +66,11 @@ export const SignUpForm = (props: Props) => {
   return props.scanLimitReached ? (
     <WaitlistCta />
   ) : (
-    <form className={styles.form} onSubmit={onSubmit}>
+    <form
+      ref={refViewTelemetry as RefObject<HTMLFormElement>}
+      className={styles.form}
+      onSubmit={onSubmit}
+    >
       <input
         name={emailInputId}
         data-testid="signup-form-input"
