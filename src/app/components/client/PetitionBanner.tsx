@@ -52,6 +52,7 @@ export const PetitionBanner = (props: { user: Session["user"] }) => {
           <TelemetryButton
             variant="primary"
             className={styles.signButton}
+            onPress={() => dismiss()}
             href={CONST_URL_DATA_PRIVACY_PETITION_BANNER}
             target="_blank"
             event={{
