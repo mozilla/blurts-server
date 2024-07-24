@@ -4,7 +4,7 @@ TARGET_PATH=/tmp/nimbus-cli
 NIMBUS_INSTALL_REMOTE_PATH=https://raw.githubusercontent.com/mozilla/application-services/main/install-nimbus-cli.sh
 NIMBUS_INSTALL_LOCAL_PATH=$TARGET_PATH/install.sh
 
-if [ -d $TARGET_PATH ]; then
+if [ -d "${TARGET_PATH}" ]; then
   echo "Directory for \`nimbus-cli\` already exists: $TARGET_PATH"
 else
   echo "Create directory for \`nimbus-cli\`: $TARGET_PATH"
