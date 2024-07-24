@@ -3811,6 +3811,10 @@ describe("CSAT survey banner", () => {
     });
     await user.click(dismissCta);
 
+    // The dismissal of the petition banner is being delayed so that the click
+    // on the “Sign petition” link can get registered before the banner is
+    // being hidden. As a result we’ll need to wait for the follow-up CSAT
+    // survey to appear.
     await waitFor(() => {
       const answerButton = screen.getByRole("button", {
         name: "Neutral",
