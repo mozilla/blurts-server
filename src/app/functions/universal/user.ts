@@ -34,7 +34,7 @@ export function hasSetupOnerep(
 const USER_MIN_AGE = 13;
 export function meetsAgeRequirement(dateOfBirth: ISO8601DateString): boolean {
   const dateNow = new Date();
-  const dateBirth = new Date(dateOfBirth);
+  const dateBirth = new Date(dateOfBirth as string);
   const dateDelta = new Date(dateNow.valueOf() - dateBirth.valueOf());
   const unixStartDate = new Date(0);
   const age = dateDelta.getUTCFullYear() - unixStartDate.getUTCFullYear();
