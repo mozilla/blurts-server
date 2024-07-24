@@ -9,7 +9,7 @@ import { FluentBundle, FluentResource } from '@fluent/bundle'
 import { negotiateLanguages } from '@fluent/langneg'
 import AppConstants from '../appConstants.js'
 import { localStorage } from './localStorage'
-import { InternalServerError } from '../utils/error.js'
+import { InternalServerError } from '../utils/error'
 
 // This file will be removed once we've fully switched to React
 /* c8 ignore start */
