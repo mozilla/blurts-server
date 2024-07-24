@@ -37,7 +37,6 @@ export async function getDeletedFeatureFlags() {
     .returning("*");
 }
 
-/** @deprecated The method type not be used */
 export type FeatureFlagName =
   | "RedesignedEmails"
   | "UpdatedEmailPreferencesOption"
@@ -56,7 +55,6 @@ export type FeatureFlagName =
 
 /**
  * @param options
- * @deprecated The method should not be used, use Nimbus experiment or roll-out: /src/app/functions/server/getExperiments
  */
 export async function getEnabledFeatureFlags(
   options:
