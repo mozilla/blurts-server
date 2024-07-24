@@ -8,7 +8,7 @@ landing-all-hero-lead = 我们会扫描您的数据是否曾遭外泄，并指�
 landing-all-hero-emailform-input-placeholder = yourname@example.com
 landing-all-hero-emailform-input-label = 输入邮箱地址即可检查数据外泄事件。
 landing-all-hero-emailform-submit-label = 免费扫描
-landing-all-hero-emailform-submit-sign-in-label = 登录即可免费扫描
+landing-all-hero-emailform-submit-sign-up-label = 注册即可免费扫描
 # This is a label underneath a big number "14" - it's an image that demos Monitor.
 landing-all-hero-image-chart-label = 次暴露
 

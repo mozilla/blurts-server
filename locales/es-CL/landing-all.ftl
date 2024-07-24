@@ -8,7 +8,7 @@ landing-all-hero-lead = Analizamos las filtraciones de datos para ver si tus dat
 landing-all-hero-emailform-input-placeholder = tunombre@example.com
 landing-all-hero-emailform-input-label = Ingresa tu dirección de correo electrónico para verificar si hay exposiciones a filtraciones de datos.
 landing-all-hero-emailform-submit-label = Obtén un escaneo gratuito
-landing-all-hero-emailform-submit-sign-in-label = Conéctate para obtener un escaneo gratuito
+landing-all-hero-emailform-submit-sign-up-label = Regístrate para obtener un escaneo gratuito
 # This is a label underneath a big number "14" - it's an image that demos Monitor.
 landing-all-hero-image-chart-label = exposiciones
 
