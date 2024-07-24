@@ -8,7 +8,7 @@ landing-all-hero-lead = We scannen datalekken om te zien of uw gegevens zijn gel
 landing-all-hero-emailform-input-placeholder = uwnaam@example.com
 landing-all-hero-emailform-input-label = Voer uw e-mailadres in om te controleren op datalekken.
 landing-all-hero-emailform-submit-label = Ontvang een gratis scan
-landing-all-hero-emailform-submit-sign-in-label = Meld u aan om een gratis scan te ontvangen
+landing-all-hero-emailform-submit-sign-up-label = Schrijf u in voor een gratis scan
 # This is a label underneath a big number "14" - it's an image that demos Monitor.
 landing-all-hero-image-chart-label = lekken
 

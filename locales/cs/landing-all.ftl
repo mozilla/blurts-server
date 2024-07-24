@@ -8,7 +8,7 @@ landing-all-hero-lead = Prověřujeme úniky údajů a zjišťujeme, zda nedošl
 landing-all-hero-emailform-input-placeholder = vasejmeno@example.com
 landing-all-hero-emailform-input-label = Zadejte svou e-mailovou adresu a zkontrolujte, zda nedošlo k úniku údajů.
 landing-all-hero-emailform-submit-label = Zkontrolovat
-landing-all-hero-emailform-submit-sign-in-label = Pro skenování zdarma se přihlaste
+landing-all-hero-emailform-submit-sign-up-label = Zaregistrujte se a získejte bezplatný sken
 # This is a label underneath a big number "14" - it's an image that demos Monitor.
 landing-all-hero-image-chart-label = odhalení
 

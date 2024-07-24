@@ -8,7 +8,7 @@ landing-all-hero-lead = Átvizsgáljuk az adatvédelmi incidenseket, hogy megtud
 landing-all-hero-emailform-input-placeholder = email@example.com
 landing-all-hero-emailform-input-label = Adja meg az e-mail-címét, hogy ellenőrizze az adatvédelmi incidenseket.
 landing-all-hero-emailform-submit-label = Ingyenes vizsgálat kérése
-landing-all-hero-emailform-submit-sign-in-label = Jelentkezzen be az ingyenes vizsgálathoz
+landing-all-hero-emailform-submit-sign-up-label = Regisztráljon és kapjon ingyenes vizsgálatot
 # This is a label underneath a big number "14" - it's an image that demos Monitor.
 landing-all-hero-image-chart-label = kitettség
 

@@ -8,7 +8,7 @@ landing-all-hero-lead = Мы сканируем утечки данных, чт�
 landing-all-hero-emailform-input-placeholder = вашлогин@example.com
 landing-all-hero-emailform-input-label = Введите свой адрес электронной почты, чтобы проверить наличие утечки данных.
 landing-all-hero-emailform-submit-label = Получить бесплатное сканирование
-landing-all-hero-emailform-submit-sign-in-label = Войдите, чтобы получить бесплатное сканирование
+landing-all-hero-emailform-submit-sign-up-label = Зарегистрируйтесь, чтобы получить бесплатное сканирование
 # This is a label underneath a big number "14" - it's an image that demos Monitor.
 landing-all-hero-image-chart-label = утечки
 
