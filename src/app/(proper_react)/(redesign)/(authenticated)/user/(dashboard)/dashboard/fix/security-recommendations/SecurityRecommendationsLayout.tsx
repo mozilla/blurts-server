@@ -27,12 +27,14 @@ import {
   BreachBulkResolutionRequest,
   SecurityRecommendationDataTypes,
 } from "../../../../../../../../functions/universal/breach";
+import { FeatureFlagName } from "../../../../../../../../../db/tables/featureFlags";
 
 export interface SecurityRecommendationsLayoutProps {
   type: SecurityRecommendationTypes;
   subscriberEmails: string[];
   data: StepDeterminationData;
   isEligibleForPremium: boolean;
+  enabledFeatureFlags: FeatureFlagName[];
 }
 
 export function SecurityRecommendationsLayout(
@@ -157,6 +159,7 @@ export function SecurityRecommendationsLayout(
         title={title}
         illustration={illustration}
         isPremiumUser={hasPremium(props.data.user)}
+        enabledFeatureFlags={props.enabledFeatureFlags}
         cta={
           !isStepDone && (
             <Button

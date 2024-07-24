@@ -9,6 +9,7 @@ import { DoughnutChart as Chart } from "../../../../../../../components/client/C
 import { DashboardSummary } from "../../../../../../../functions/server/dashboard";
 import { StepDeterminationData } from "../../../../../../../functions/server/getRelevantGuidedSteps";
 import { DashboardTopBannerContent } from "./DashboardTopBannerContent";
+import { FeatureFlagName } from "../../../../../../../../db/tables/featureFlags";
 
 export type DashboardTopBannerProps = {
   bannerData: DashboardSummary;
@@ -29,7 +30,7 @@ export type DashboardTopBannerProps = {
     monthly: number;
   };
   totalNumberOfPerformedScans?: number;
-  howItWorksFlagEnabled: boolean;
+  enabledFeatureFlags: FeatureFlagName[];
 };
 
 export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
@@ -50,24 +51,7 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
   return (
     <>
       <div className={styles.container}>
-        <DashboardTopBannerContent
-          bannerData={props.bannerData}
-          hasExposures={props.hasExposures}
-          hasUnresolvedBreaches={props.hasUnresolvedBreaches}
-          hasUnresolvedBrokers={props.hasUnresolvedBrokers}
-          isEligibleForFreeScan={props.isEligibleForFreeScan}
-          isEligibleForPremium={props.isEligibleForPremium}
-          isPremiumUser={props.isPremiumUser}
-          tabType={props.tabType}
-          scanInProgress={props.scanInProgress}
-          stepDeterminationData={props.stepDeterminationData}
-          onShowFixed={props.onShowFixed}
-          monthlySubscriptionUrl={props.monthlySubscriptionUrl}
-          yearlySubscriptionUrl={props.yearlySubscriptionUrl}
-          subscriptionBillingAmount={props.subscriptionBillingAmount}
-          totalNumberOfPerformedScans={props.totalNumberOfPerformedScans}
-          howItWorksFlagEnabled={props.howItWorksFlagEnabled}
-        />
+        <DashboardTopBannerContent {...props} />
         <div className={styles.chart}>
           <Chart
             scanInProgress={props.scanInProgress}

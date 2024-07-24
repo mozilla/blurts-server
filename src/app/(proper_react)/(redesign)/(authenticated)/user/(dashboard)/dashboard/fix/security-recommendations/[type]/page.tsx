@@ -16,6 +16,7 @@ import { getCountryCode } from "../../../../../../../../../functions/server/getC
 import { getOnerepProfileId } from "../../../../../../../../../../db/tables/subscribers";
 import { getLatestOnerepScanResults } from "../../../../../../../../../../db/tables/onerep_scans";
 import { isEligibleForPremium } from "../../../../../../../../../functions/server/onerep";
+import { getEnabledFeatureFlags } from "../../../../../../../../../../db/tables/featureFlags";
 
 interface SecurityRecommendationsProps {
   params: {
@@ -56,6 +57,10 @@ export default async function SecurityRecommendations({
         latestScanData: scanData,
       }}
       isEligibleForPremium={isEligibleForPremium(countryCode)}
+      enabledFeatureFlags={await getEnabledFeatureFlags({
+        ignoreAllowlist: false,
+        email: session.user.email,
+      })}
     />
   );
 }
