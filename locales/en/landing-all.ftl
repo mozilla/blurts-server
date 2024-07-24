@@ -10,7 +10,7 @@ landing-all-hero-lead = We scan data breaches to see if your data has been leake
 landing-all-hero-emailform-input-placeholder = yourname@example.com
 landing-all-hero-emailform-input-label = Enter your email address to check for data breach exposures.
 landing-all-hero-emailform-submit-label = Get free scan
-landing-all-hero-emailform-submit-sign-in-label = Sign in to get free scan
+landing-all-hero-emailform-submit-sign-up-label = Sign up to get free scan
 
 # This is a label underneath a big number "14" - it's an image that demos Monitor.
 landing-all-hero-image-chart-label = exposures

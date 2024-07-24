@@ -57,7 +57,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
     monthlySubscriptionUrl,
     yearlySubscriptionUrl,
     subscriptionBillingAmount,
-    howItWorksFlagEnabled,
+    enabledFeatureFlags,
   } = props;
 
   const waitlistDialogState = useOverlayTriggerState({});
@@ -77,6 +77,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
         }
         autoRemoved={bannerData.dataBrokerAutoFixedDataPointsNum}
         inProgress={bannerData.dataBrokerInProgressDataPointsNum}
+        enabledFeatureFlags={enabledFeatureFlags}
       />
     );
   }
@@ -263,7 +264,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
                 </>
               )}
             </div>
-            {howItWorksFlagEnabled && (
+            {enabledFeatureFlags.includes("HowItWorksPage") && (
               <Link
                 data-testid="learn-more-link-to-how-it-works"
                 href="/how-it-works"

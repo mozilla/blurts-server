@@ -6,7 +6,9 @@ import AppConstants from '../appConstants.js'
 import { getAllBreaches, upsertBreaches, knex } from '../db/tables/breaches.js'
 import { InternalServerError } from '../utils/error.js'
 import { getMessage } from '../utils/fluent.js'
+import { isUsingMockHIBPEndpoint } from '../app/functions/universal/mock.ts'
 const { HIBP_THROTTLE_MAX_TRIES, HIBP_THROTTLE_DELAY, HIBP_API_ROOT, HIBP_KANON_API_ROOT, HIBP_KANON_API_TOKEN } = AppConstants
+
 
 // TODO: fix hardcode
 const HIBP_USER_AGENT = 'monitor/1.0.0'
@@ -16,6 +18,7 @@ const RENAMED_BREACHES = ['covve']
 const RENAMED_BREACHES_MAP = {
   covve: 'db8151dd'
 }
+
 
 // TODO: Add unit test when changing this code:
 /* c8 ignore start */
@@ -104,6 +107,7 @@ async function kAnonReq(path, options = {}) {
     },
     ...options
   }
+
   const reqOptions = _addStandardOptions(options)
   try {
     return await _throttledFetch(url, reqOptions)
@@ -225,31 +229,24 @@ async function loadBreachesIntoApp(app) {
 /**
  * Get addresses and language from either subscribers or email_addresses fields:
  *
- * @param {*} recipient
+ * @param {import('knex/types/tables').SubscriberRow | (import('knex/types/tables').SubscriberRow & import('knex/types/tables').EmailAddressRow)} recipient
  * @returns
  */
 // TODO: Add unit test when changing this code:
 /* c8 ignore start */
 function getAddressesAndLanguageForEmail(recipient) {
-  const {
-    all_emails_to_primary: allEmailsToPrimary,
-    email: breachedEmail,
-    primary_email: primaryEmail,
-    signup_language: signupLanguage
-  } = recipient
-
-  if (breachedEmail) {
+  if (hasEmailAddressAttached(recipient)) {
     return {
-      breachedEmail,
-      recipientEmail: allEmailsToPrimary ? primaryEmail : breachedEmail,
-      signupLanguage
+      breachedEmail: recipient.email,
+      recipientEmail: recipient.all_emails_to_primary ? recipient.primary_email : recipient.email,
+      signupLanguage: recipient.signup_language,
     }
   }
 
   return {
-    breachedEmail: primaryEmail,
-    recipientEmail: primaryEmail,
-    signupLanguage
+    breachedEmail: recipient.primary_email,
+    recipientEmail: recipient.primary_email,
+    signupLanguage: recipient.signup_language,
   }
 }
 /* c8 ignore stop */
@@ -294,6 +291,13 @@ async function getBreachesForEmail(sha1, allBreaches, includeSensitive = false, 
   if (!response || (response && response.length < 1)) {
     console.error("failed_kAnonReq_call: no response or empty response")
     return []
+  }
+  if (isUsingMockHIBPEndpoint()) {
+    let mockDataBreaches = response[0];
+    return allBreaches.filter(breach => mockDataBreaches.websites.includes(breach.Name)).sort((a, b) => {
+      // @ts-ignore TODO: Turn dates into a number
+      return new Date(b.AddedDate) - new Date(a.AddedDate)
+    })
   }
   // Parse response body, format:
   // [
@@ -395,6 +399,14 @@ async function deleteSubscribedHash(sha1) {
   return await kAnonReq(path, options)
 }
 /* c8 ignore stop */
+
+/**
+ * @param {import('knex/types/tables').SubscriberRow} subscriberRow
+ * @returns {subscriberRow is import('knex/types/tables').SubscriberRow & import('knex/types/tables').EmailAddressRow}
+ */
+function hasEmailAddressAttached(subscriberRow) {
+  return typeof (/** @type {import('knex/types/tables').SubscriberRow & import('knex/types/tables').EmailAddressRow} */ (subscriberRow)).email === "string";
+}
 
 export {
   req,

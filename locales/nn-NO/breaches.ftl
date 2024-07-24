@@ -48,6 +48,8 @@ breach-checklist-address-body = Det er lett å finne adresser i offentlege regis
 
 ## Prompts the user for changes when there is a breach detected of date of birth
 
+breach-checklist-dob-header = Endre alle passord eller PIN-kodar som inneheld fødselsdagen din.
+breach-checklist-dob-body = Fødselsdatoar er lette å finne i offentlege register, og folk som finn dei kan enkelt gjette PIN-koden din.
 
 ## Prompts the user for changes when there is a breach detected of phone number
 
