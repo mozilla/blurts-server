@@ -215,6 +215,7 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
             enabledFeatureFlags={[
               ...(props.enabledFeatureFlags ?? []),
               "HowItWorksPage",
+              "SetExpectationsForUsers",
             ]}
             experimentData={
               props.experimentData ?? {

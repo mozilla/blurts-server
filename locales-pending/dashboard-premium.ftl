@@ -33,10 +33,12 @@ modal-heres-what-we-fixed-description-part-one = <b>Manually fixed</b> includes 
   to be fixed manually, even if you’ve subscribed to { -brand-monitor-plus }.
 modal-heres-what-we-fixed-description-part-two = <b>Auto-removed</b> includes any exposures from data broker profiles that we’ve removed for you. This is available only for
   { -brand-monitor-plus } subscribers.
-modal-heres-what-we-fixed-description-part-three = <b>In Progress</b> includes anything that we are currently
+# Deprecated (once feature flag `SetExpectationsForUsers` is enabled):
+modal-heres-what-we-fixed-description-part-three-deprecated = <b>In Progress</b> includes anything that we are currently
   working on fixing. Removals typically take 7–14 days but the most
   difficult sites could take longer. You may also start to see removals
   happening within the same day.
+modal-heres-what-we-fixed-description-part-three = <b>In Progress</b> includes anything that we are currently working on fixing.
 
 dashboard-exposures-filter-exposure-type = Exposure type
 dashboard-exposures-filter-exposure-type-info-for-sale = Your info for sale
@@ -55,8 +57,10 @@ modal-exposure-type-data-breach = <b>Data breach</b> means your information has 
   Resolving these typically requires accessing your accounts, so you’ll need to take manual steps to resolve each breach even if you’ve subscribed to { -brand-monitor-plus }.
 modal-exposure-type-data-broker-part-one = <b>Info for sale</b> means a data broker site is publicly publishing and selling your personal info.
   You’ll need to manually request removal from each site.
-modal-exposure-type-data-broker-part-two = For { -brand-monitor-plus } subscribers, we auto-remove these profiles on your behalf and make sure they don’t re-add you.
+# Deprecated (once feature flag `SetExpectationsForUsers` is enabled):
+modal-exposure-type-data-broker-part-two-deprecated = For { -brand-monitor-plus } subscribers, we auto-remove these profiles on your behalf and make sure they don’t re-add you.
   In both cases, removals typically take 7–14 days. Some can take longer, while others can happen within the hour.
+modal-exposure-type-data-broker-part-two = But if you’re a { -brand-monitor-plus } subscriber, we auto-remove the profiles for you.
 
 # About Exposure Statuses Modal
 
