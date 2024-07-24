@@ -6,7 +6,7 @@
 /* c8 ignore start */
 
 /** See https://en.wikipedia.org/wiki/ISO_8601 */
-export type ISO8601DateString = string | null;
+export type ISO8601DateString = string | undefined | null;
 /**  See https://en.wikipedia.org/wiki/E.164 */
 export type E164PhoneNumberString = `+${string}` | null;
 
@@ -33,7 +33,7 @@ export function parseE164PhoneNumber(
 // Tests are already submitted in https://github.com/mozilla/blurts-server/pull/3359:
 /* c8 ignore start */
 
-export function parseIso8601Datetime(datetime: string): Date | null {
+export function parseIso8601Datetime(datetime: ISO8601DateString): Date | null {
   if (typeof datetime !== "string") {
     return null;
   }
