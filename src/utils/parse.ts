@@ -5,7 +5,10 @@
 // Tests are already submitted in https://github.com/mozilla/blurts-server/pull/3359:
 /* c8 ignore start */
 
-type E164PhoneNumberString = string | null;
+/** See https://en.wikipedia.org/wiki/ISO_8601 */
+export type ISO8601DateString = string | null;
+/**  See https://en.wikipedia.org/wiki/E.164 */
+export type E164PhoneNumberString = `+${string}` | null;
 
 export function parseE164PhoneNumber(
   phoneNumber: string,
@@ -18,8 +21,7 @@ export function parseE164PhoneNumber(
     return null;
   }
 
-  const parsedNumber =
-    "+" + Number.parseInt(phoneNumber.substring(1), 10).toString();
+  const parsedNumber: E164PhoneNumberString = `+${Number.parseInt(phoneNumber.substring(1), 10).toString()}`;
   if (parsedNumber !== phoneNumber) {
     return null;
   }
