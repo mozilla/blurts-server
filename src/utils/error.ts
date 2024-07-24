@@ -54,7 +54,7 @@ class ForbiddenError extends Error {
 class MethodNotAllowedError extends Error {
   public statusCode: number;
 
-  constructor(message: string, ...config: ConfigType) {
+  constructor(message?: string, ...config: ConfigType) {
     super(message, ...config);
     this.name = "Method Not Allowed";
     this.statusCode = 405;
