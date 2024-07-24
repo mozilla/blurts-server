@@ -1,4 +1,4 @@
-name: Lint nimbus.yaml
+name: Lint Reference Files
 on:
   push:
   pull_request:
