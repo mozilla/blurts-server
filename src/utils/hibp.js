@@ -7,7 +7,7 @@ import { getAllBreaches, upsertBreaches, knex } from '../db/tables/breaches.js'
 import { InternalServerError } from '../utils/error.js'
 import { getMessage } from '../utils/fluent.js'
 import { isUsingMockHIBPEndpoint } from '../app/functions/universal/mock.ts'
-import { formatQaBreach, getAllQaCustomBreaches } from '../db/tables/qa_customs.ts'
+import { getAllQaCustomBreaches, getQaToggleRow } from '../db/tables/qa_customs.ts'
 const { HIBP_THROTTLE_MAX_TRIES, HIBP_THROTTLE_DELAY, HIBP_API_ROOT, HIBP_KANON_API_ROOT, HIBP_KANON_API_TOKEN } = AppConstants
 
 
@@ -288,7 +288,16 @@ async function getBreachesForEmail(sha1, allBreaches, includeSensitive = false, 
   const sha1Prefix = sha1.slice(0, 6).toUpperCase()
   const path = `/range/search/${sha1Prefix}`
 
-  const qaBreaches = await getAllQaCustomBreaches(sha1Prefix);
+  const qaToggles = await getQaToggleRow(sha1);
+  let showCustomBreaches = true
+  let showRealBreaches = true;
+  if (qaToggles) {
+    showCustomBreaches = qaToggles.show_custom_breaches;
+    showRealBreaches = qaToggles.show_real_breaches;
+  }
+
+  const qaBreaches = !showCustomBreaches? [] : await getAllQaCustomBreaches(sha1Prefix);
+  if (!showRealBreaches) return qaBreaches;
   
   const response = await kAnonReq(path)
   if (!response || (response && response.length < 1)) {

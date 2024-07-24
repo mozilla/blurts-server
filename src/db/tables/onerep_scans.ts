@@ -16,7 +16,7 @@ import {
   SubscriberRow,
 } from "knex/types/tables";
 import { RemovalStatus } from "../../app/functions/universal/scanResult.js";
-import { getQaCustomBrokers } from "./qa_customs.ts";
+import { getQaCustomBrokers, getQaToggleRow } from "./qa_customs.ts";
 
 const knex = createDbConnection();
 
@@ -151,22 +151,34 @@ async function getLatestOnerepScanResults(
   let results: OnerepScanResultRow[] = [];
 
   if (typeof scan !== "undefined") {
-    // Fetch initial results from onerep_scan_results
-    const scanResults = (await knex("onerep_scan_results")
-      .select("*")
-      .distinctOn("link")
-      .where("onerep_profile_id", onerepProfileId)
-      .innerJoin(
-        "onerep_scans",
-        "onerep_scan_results.onerep_scan_id",
-        "onerep_scans.onerep_scan_id",
-      )
-      .orderBy("link")
-      .orderBy("onerep_scan_result_id", "desc")) as OnerepScanResultRow[];
-    results = [
-      ...scanResults,
-      ...(await getQaCustomBrokers(onerepProfileId, scan?.onerep_scan_id)),
-    ];
+    const qaToggles = await getQaToggleRow(onerepProfileId);
+    let showCustomBrokers = true;
+    let showRealBrokers = true;
+
+    if (qaToggles) {
+      showCustomBrokers = qaToggles.show_custom_brokers;
+      showRealBrokers = qaToggles.show_real_brokers;
+    }
+
+    const qaBrokers = !showCustomBrokers
+      ? []
+      : await getQaCustomBrokers(onerepProfileId, scan?.onerep_scan_id);
+    if (!showRealBrokers) results = qaBrokers;
+    else {
+      // Fetch initial results from onerep_scan_results
+      const scanResults = (await knex("onerep_scan_results")
+        .select("*")
+        .distinctOn("link")
+        .where("onerep_profile_id", onerepProfileId)
+        .innerJoin(
+          "onerep_scans",
+          "onerep_scan_results.onerep_scan_id",
+          "onerep_scans.onerep_scan_id",
+        )
+        .orderBy("link")
+        .orderBy("onerep_scan_result_id", "desc")) as OnerepScanResultRow[];
+      results = [...scanResults, ...qaBrokers];
+    }
   }
 
   return {

@@ -9,9 +9,14 @@ import styles from "./ConfigPage.module.scss";
 import { QaBreachData } from "../../../../../../db/tables/qa_customs";
 
 const endpointBase = "/api/v1/admin/qa-customs/hibp";
+const endpointToggleBase = "/api/v1/admin/qa-customs";
 
 interface Props {
   emailHashFull: string;
+  showApiBreaches: boolean;
+  showQaBreaches: boolean;
+  showApiParamEnum: string;
+  showQaParamEnum: string;
 }
 
 const HibpConfigPage = (props: Props) => {
@@ -58,6 +63,12 @@ const HibpConfigPage = (props: Props) => {
 
   // Temporary state to hold form input for a new breach
   const [newBreach, setNewBreach] = useState<QaBreachData>(baseBreach);
+  const [showQaBreaches, setShowQaBreaches] = useState<boolean>(
+    props.showQaBreaches,
+  );
+  const [showApiBreaches, setShowApiBreaches] = useState<boolean>(
+    props.showApiBreaches,
+  );
 
   useEffect(() => {
     void fetchBreaches();
@@ -113,21 +124,19 @@ const HibpConfigPage = (props: Props) => {
     event.preventDefault();
     newBreach.emailHashPrefix = props.emailHashFull.slice(0, 6);
 
-    if (newBreach.emailHashPrefix.length < 6) {
-      console.log("Invalid email hash!");
-    }
     setBreachTypesSelection(dataClasses.map((_) => false));
     setNewBreach(baseBreach);
-    alert("Request made successfully");
 
     try {
-      const response = await fetch(endpointBase, {
+      const req = fetch(endpointBase, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(newBreach),
       });
+      alert("Request made successfully");
+      const response = await req;
 
       if (response.ok) {
         await fetchBreaches(); // Refresh the breaches list
@@ -141,12 +150,14 @@ const HibpConfigPage = (props: Props) => {
 
   const handleDeleteBreach = async (breachId: number) => {
     try {
-      const response = await fetch(
+      const req = fetch(
         `${endpointBase}?breachId=${breachId}&emailHashFull=${props.emailHashFull}`,
         {
           method: "DELETE",
         },
       );
+      alert("Deletion request made successfully!");
+      const response = await req;
 
       if (response.ok) {
         await fetchBreaches(); // Refresh the breaches list
@@ -158,14 +169,56 @@ const HibpConfigPage = (props: Props) => {
     }
   };
 
+  const toggleQaBreaches = () => {
+    void fetch(
+      endpointToggleBase +
+        `?columnName=${props.showQaParamEnum}&isVisible=${!showQaBreaches}`,
+      {
+        method: "PUT",
+      },
+    ).then((res) => {
+      if (res.ok) {
+        setShowQaBreaches(!showQaBreaches);
+        return;
+      }
+      alert("Something went wrong during the QA breaches toggle...");
+    });
+    alert("Request made successfully!");
+  };
+
+  const toggleApiBreaches = () => {
+    void fetch(
+      endpointToggleBase +
+        `?columnName=${props.showApiParamEnum}&isVisible=${!showApiBreaches}`,
+      {
+        method: "PUT",
+      },
+    ).then((res) => {
+      if (res.ok) {
+        setShowApiBreaches(!showApiBreaches);
+        return;
+      }
+      alert("Something went wrong during the API breaches toggle...");
+    });
+    alert("Request made successfully!");
+  };
+
   return (
     <main className={`${styles.wrapper} ${styles.configLeft}`}>
       <header className={styles.header}>
         <div>
           Add custom <b>Breaches</b>
         </div>
-        <br />
       </header>
+
+      <div className={styles.buttonContainer}>
+        <button className={styles.button} onClick={toggleQaBreaches}>
+          Toggle QA breaches, current: {showQaBreaches ? "on" : "off"}
+        </button>
+        <button className={styles.button} onClick={toggleApiBreaches}>
+          Toggle API breaches, current: {showApiBreaches ? "on" : "off"}
+        </button>
+      </div>
 
       <div className={styles.formAndListWrapper}>
         <form

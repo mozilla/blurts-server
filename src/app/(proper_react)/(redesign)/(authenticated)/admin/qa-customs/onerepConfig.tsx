@@ -25,9 +25,14 @@ interface QaBrokerDataCounts {
 }
 
 const endpointBase = "/api/v1/admin/qa-customs/onerep";
+const endpointToggleBase = "/api/v1/admin/qa-customs";
 
 interface Props {
   onerepProfileId: number;
+  showApiBrokers: boolean;
+  showQaBrokers: boolean;
+  showApiParamEnum: string;
+  showQaParamEnum: string;
 }
 
 const OnerepConfigPage = (props: Props) => {
@@ -61,6 +66,12 @@ const OnerepConfigPage = (props: Props) => {
 
   // Temporary state to hold form input for a new broker
   const [newBroker, setNewBroker] = useState<QaBrokerDataCounts>(baseBroker);
+  const [showQaBrokers, setShowQaBrokers] = useState<boolean>(
+    props.showQaBrokers,
+  );
+  const [showApiBrokers, setShowApiBrokers] = useState<boolean>(
+    props.showApiBrokers,
+  );
 
   useEffect(() => {
     void fetchBrokers();
@@ -116,9 +127,8 @@ const OnerepConfigPage = (props: Props) => {
     if (hasError) return;
 
     newBroker.onerep_profile_id = profileId;
-    alert("Request made successfully");
     try {
-      const response = await fetch(endpointBase, {
+      const req = fetch(endpointBase, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -130,6 +140,9 @@ const OnerepConfigPage = (props: Props) => {
             newBroker.manually_resolved === "false" ? false : true,
         }),
       });
+      alert("Request made successfully");
+
+      const response = await req;
 
       if (response.ok) {
         await fetchBrokers(); // Refresh the brokers list
@@ -144,12 +157,14 @@ const OnerepConfigPage = (props: Props) => {
 
   const handleDeleteBroker = async (onerep_scan_result_id: number) => {
     try {
-      const response = await fetch(
+      const req = fetch(
         `${endpointBase}?onerep_scan_result_id=${onerep_scan_result_id}`,
         {
           method: "DELETE",
         },
       );
+      alert("Deletion request made successfully!");
+      const response = await req;
 
       if (response.ok) {
         await fetchBrokers(); // Refresh the brokers list
@@ -161,14 +176,56 @@ const OnerepConfigPage = (props: Props) => {
     }
   };
 
+  const toggleQaBrokers = () => {
+    void fetch(
+      endpointToggleBase +
+        `?columnName=${props.showQaParamEnum}&isVisible=${!showQaBrokers}`,
+      {
+        method: "PUT",
+      },
+    ).then((res) => {
+      if (res.ok) {
+        setShowQaBrokers(!showQaBrokers);
+        return;
+      }
+      alert("Something went wrong during the QA brokers toggle...");
+    });
+    alert("Request made successfully!");
+  };
+
+  const toggleApiBrokers = () => {
+    void fetch(
+      endpointToggleBase +
+        `?columnName=${props.showApiParamEnum}&isVisible=${!showApiBrokers}`,
+      {
+        method: "PUT",
+      },
+    ).then((res) => {
+      if (res.ok) {
+        setShowApiBrokers(!showApiBrokers);
+        return;
+      }
+      alert("Something went wrong during the API brokers toggle...");
+    });
+    alert("Request made successfully!");
+  };
+
   return (
     <main className={`${styles.wrapper} ${styles.configRight}`}>
       <header className={styles.header}>
         <div>
           Add custom <b>OneRep</b> brokers
         </div>
-        <br />
       </header>
+
+      <div className={styles.buttonContainer}>
+        <button className={styles.button} onClick={toggleQaBrokers}>
+          Toggle QA brokers, current: {showQaBrokers ? "on" : "off"}
+        </button>
+        <button className={styles.button} onClick={toggleApiBrokers}>
+          Toggle API brokers, current: {showApiBrokers ? "on" : "off"}
+        </button>
+      </div>
 
       <div className={styles.formAndListWrapper}>
         <form

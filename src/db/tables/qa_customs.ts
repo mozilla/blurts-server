@@ -57,6 +57,13 @@ interface QaToggleRow {
   show_custom_brokers: boolean;
 }
 
+enum AllowedToggleColumns {
+  ShowRealBreaches = "show_real_breaches",
+  ShowCustomBreaches = "show_custom_breaches",
+  ShowRealBrokers = "show_real_brokers",
+  ShowCustomBrokers = "show_custom_brokers",
+}
+
 async function getQaCustomBrokers(
   onerepProfileId: number | null,
   onerepScanId: number | undefined | null,
@@ -174,11 +181,22 @@ async function deleteQaCustomBreach(
   await knex("qa_custom_breaches").where({ emailHashPrefix, Id }).del();
 }
 
-async function getQaToggleRow(emailHash: string) {
-  return (await knex("qa_custom_toggles")
-    .select("*")
-    .where("email_hash", emailHash)
-    .first()) as QaToggleRow;
+async function getQaToggleRow(emailHashOrOneRepId: string | number | null) {
+  if (emailHashOrOneRepId === null) {
+    return null;
+  }
+  if (typeof emailHashOrOneRepId === "string") {
+    return (await knex("qa_custom_toggles")
+      .select("*")
+      .where("email_hash", emailHashOrOneRepId)
+      .first()) as QaToggleRow;
+  } else if (typeof emailHashOrOneRepId === "number") {
+    return (await knex("qa_custom_toggles")
+      .select("*")
+      .where("onerep_profile_id", emailHashOrOneRepId)
+      .first()) as QaToggleRow;
+  }
+  return null;
 }
 
 async function setQaToggle(
@@ -205,7 +223,7 @@ async function setQaToggle(
     .first();
 
   if (!record) {
-    throw new Error(`No record found with given onerep_profile_id`);
+    throw new Error(`No record found with given email_hash`);
   }
 
   await knex("qa_custom_toggles")
@@ -218,20 +236,35 @@ async function setQaToggle(
 async function createQaTogglesRow(
   emailHash: string,
   subscriberId: number,
-): Promise<void> {
+): Promise<QaToggleRow> {
   const onerep_profile_id = await getOnerepProfileId(subscriberId);
+  if (onerep_profile_id === null) throw new Error("OneRep profile ID missing!");
 
-  await knex("qa_custom_toggles")
-    .insert({
-      email_hash: emailHash,
-      onerep_profile_id,
-      show_real_breaches: true,
-      show_custom_breaches: true,
-      show_real_brokers: true,
-      show_custom_brokers: true,
-    })
+  const row = {
+    email_hash: emailHash,
+    onerep_profile_id,
+    show_real_breaches: true,
+    show_custom_breaches: true,
+    show_real_brokers: true,
+    show_custom_brokers: true,
+  };
+
+  // Try to insert the row
+  const [insertedRow] = await knex("qa_custom_toggles")
+    .insert(row)
     .onConflict("email_hash")
-    .ignore();
+    .ignore()
+    .returning("*");
+
+  if (insertedRow) {
+    return insertedRow as QaToggleRow;
+  } else {
+    // If insert was ignored due to conflict, fetch the existing row based on email_hash
+    const existingRow = await knex("qa_custom_toggles")
+      .where({ email_hash: emailHash })
+      .first();
+    return existingRow as QaToggleRow;
+  }
 }
 
 export {
@@ -248,5 +281,6 @@ export {
   setQaToggle,
   createQaTogglesRow,
   formatQaBreach,
+  AllowedToggleColumns,
 };
 export type { QaBrokerData, QaBreachData, QaToggleRow };
