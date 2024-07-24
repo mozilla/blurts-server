@@ -168,6 +168,39 @@ popup:
         description: Which tier of plan the user is on [Free, Plus]
         type: string
 
+banner:
+  view:
+    type: event
+    description: |
+      A view of a banner on a webpage or dashboard view.
+    bugs:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
+    data_reviews:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
+    data_sensitivity:
+      - interaction
+    notification_emails:
+      - rhelmer@mozilla.com
+    expires: never
+    extra_keys:
+      path:
+        description: The path of the page.
+        type: string
+      user_id:
+        description: Mozilla accounts user ID.
+        type: string
+      session_id:
+        description: An ID that allows us to track “sessions” of the user experience within the product.
+        type: string
+      flow_id:
+        description: A randomly generated unique identifier for following user flows within the FxA system.
+        type: string
+      banner_id:
+        description: The ID of the banner that was shown, or some way to identify where on the page the interaction is located.
+      plan_tier:
+        description: Which tier of plan the user is on [Free, Plus]
+        type: string
+
 button:
   click:
     type: event

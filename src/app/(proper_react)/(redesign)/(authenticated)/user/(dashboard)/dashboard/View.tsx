@@ -52,6 +52,7 @@ import {
 } from "../../../../../../../constants";
 import { ExperimentData } from "../../../../../../../telemetry/generated/nimbus/experiments";
 import { PetitionBanner } from "../../../../../../components/client/PetitionBanner";
+import { useLocalDismissal } from "../../../../../../hooks/useLocalDismissal";
 
 export type TabType = "action-needed" | "fixed";
 
@@ -94,6 +95,9 @@ export const View = (props: Props) => {
   const pathname = usePathname();
 
   const [activeTab, setActiveTab] = useState<TabType>(props.activeTab);
+  const localDismissalPetitionBanner = useLocalDismissal(
+    `data_privacy_petition_banner-${props.user.subscriber?.id}`,
+  );
 
   useEffect(() => {
     const nextPathname = `/user/dashboard/${activeTab}`;
@@ -453,7 +457,10 @@ export const View = (props: Props) => {
         props.isEligibleForPremium &&
         ((activeTab === "fixed" && hasPremium(props.user)) ||
           (activeTab === "action-needed" && !hasPremium(props.user))) && (
-          <PetitionBanner user={props.user} />
+          <PetitionBanner
+            user={props.user}
+            localDismissal={localDismissalPetitionBanner}
+          />
         )}
       <CsatSurvey
         user={props.user}
@@ -469,6 +476,7 @@ export const View = (props: Props) => {
         hasFirstMonitoringScan={props.hasFirstMonitoringScan}
         lastScanDate={props.userScanData.scan?.created_at ?? null}
         signInCount={props.signInCount}
+        localDismissalPetitionBanner={localDismissalPetitionBanner}
       />
       <div className={styles.dashboardContent}>
         <DashboardTopBanner
