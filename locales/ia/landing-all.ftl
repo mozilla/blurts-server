@@ -8,7 +8,7 @@ landing-all-hero-lead = Nos scande le violationes de datos pro vider si tu datos
 landing-all-hero-emailform-input-placeholder = yourname@example.com
 landing-all-hero-emailform-input-label = Insere tu adresse email pro controlar pro exposition a violation de datos.
 landing-all-hero-emailform-submit-label = Recipe scansion gratuite
-landing-all-hero-emailform-submit-sign-in-label = Accede pro un scansion gratuite
+landing-all-hero-emailform-submit-sign-up-label = Accede pro un scansion gratuite
 # This is a label underneath a big number "14" - it's an image that demos Monitor.
 landing-all-hero-image-chart-label = expositiones
 

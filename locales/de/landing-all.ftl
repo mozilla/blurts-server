@@ -8,7 +8,7 @@ landing-all-hero-lead = Wir untersuchen Datenlecks, um zu sehen, ob Ihre Daten o
 landing-all-hero-emailform-input-placeholder = ihrname@example.com
 landing-all-hero-emailform-input-label = Geben Sie Ihre E-Mail-Adresse ein, um sie auf Datenlecks zu überprüfen.
 landing-all-hero-emailform-submit-label = Kostenloser Scan
-landing-all-hero-emailform-submit-sign-up-label = Registrieren Sie sich, um kostenlosen Scan zu erhalten
+landing-all-hero-emailform-submit-sign-up-label = Registrieren Sie sich, um einen kostenlosen Scan zu erhalten
 # This is a label underneath a big number "14" - it's an image that demos Monitor.
 landing-all-hero-image-chart-label = Offenlegungen
 
