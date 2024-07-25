@@ -25,6 +25,7 @@ export function up(knex) {
       table.boolean("manually_resolved").defaultTo(false);
       table.timestamp("created_at").defaultTo(knex.fn.now());
       table.timestamp("updated_at").defaultTo(knex.fn.now());
+      table.integer("optout_attempts");
     });
 }
 

@@ -22,6 +22,7 @@ interface QaBrokerDataCounts {
   last_name: string;
   status: string;
   manually_resolved: string;
+  optout_attempts?: number;
 }
 
 const endpointBase = "/api/v1/admin/qa-customs/onerep";
@@ -380,6 +381,18 @@ const OnerepConfigPage = (props: Props) => {
                   <option value="optout_in_progress">In Progress</option>
                   <option value="removed">Removed</option>
                 </select>
+              </label>
+
+              <label className={styles.label}>
+                Optout Attempts:
+                <input
+                  className={styles.input}
+                  type="number"
+                  name="optout_attempts"
+                  placeholder="0"
+                  value={newBroker.optout_attempts ?? ""}
+                  onChange={handleChange}
+                />
               </label>
             </div>
           </div>
