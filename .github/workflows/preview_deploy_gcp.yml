@@ -51,8 +51,8 @@ jobs:
         docker build -t ${{env.REGION}}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE }}/${{ env.SERVICE }}:${{ env.TAG }} -f './Dockerfile.cloudrun' .
         docker push ${{env.REGION}}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE }}/${{ env.SERVICE }}:${{ env.TAG }}
     
-    # - name: Add mask
-    #   run: echo "::add-mask::$ADMIN"
+    - name: Add mask
+      run: echo "::add-mask::$ADMIN"
     
     - name: Deploy to Cloud Run
       id: deploy
