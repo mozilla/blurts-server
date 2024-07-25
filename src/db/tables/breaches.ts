@@ -29,7 +29,6 @@ async function getAllBreachesCount(): Promise<number> {
   return parseInt(breachesCount.toString(), 10);
 }
 /* c8 ignore stop */
-
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
 async function upsertBreaches(
