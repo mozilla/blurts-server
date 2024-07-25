@@ -59,7 +59,7 @@ jobs:
         region: ${{ env.REGION }}
         flags: "--allow-unauthenticated --add-cloudsql-instances=${{ env.PROJECT_ID }}:${{env.REGION}}:${{ env.SERVICE }}-${{ env.TAG }}"
         # tag: ${{ env.TAG }}
-        env_vars: |
+        secrets: |
           NEXTAUTH_URL= ${{ secrets.NEXTAUTH_URL }}
           NEXTAUTH_SECRET=${{ secrets.NEXTAUTH_SECRET }}
           OAUTH_ACCOUNT_URI=${{ secrets.OAUTH_ACCOUNT_URI }}
