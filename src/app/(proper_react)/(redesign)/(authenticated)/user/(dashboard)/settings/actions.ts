@@ -15,7 +15,6 @@ import {
   deleteResolutionsWithEmail,
   getSubscriberByFxaUid,
 } from "../../../../../../../db/tables/subscribers";
-import { validateEmailAddress } from "../../../../../../../utils/emailAddress";
 import { initEmail } from "../../../../../../../utils/email";
 import { sendVerificationEmail } from "../../../../../../api/utils/email";
 import { getL10n } from "../../../../../../functions/l10n/serverComponents";
@@ -28,6 +27,7 @@ import {
   applyCurrentCouponCode,
   checkCurrentCouponCode,
 } from "../../../../../../functions/server/applyCoupon";
+import { validateEmailAddress } from "../../../../../../../utils/emailAddress";
 
 export type AddEmailFormState =
   | { success?: never }
