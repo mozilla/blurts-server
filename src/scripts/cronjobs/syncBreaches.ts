@@ -12,14 +12,13 @@
 import { readdir } from "node:fs/promises";
 import os from "node:os";
 import Sentry from "@sentry/nextjs";
-import { req, formatDataClassesArray } from "../../utils/hibp.js";
+import { fetchHibpBreaches, HibpGetBreachesResponse } from "../../utils/hibp";
 import {
   getAllBreaches,
   upsertBreaches,
   updateBreachFaviconUrl,
 } from "../../db/tables/breaches.js";
 import { uploadToS3 } from "../s3.js";
-import type { Breach } from "../../app/functions/universal/breach.js";
 
 const SENTRY_SLUG = "cron-sync-breaches";
 
@@ -33,7 +32,7 @@ const checkInId = Sentry.captureCheckIn({
   status: "in_progress",
 });
 
-export async function getBreachIcons(breaches: Breach[]) {
+export async function getBreachIcons(breaches: HibpGetBreachesResponse) {
   // make logofolder if it doesn't exist
   const logoFolder = os.tmpdir();
   console.log(`Logo folder: ${logoFolder}`);
@@ -83,30 +82,27 @@ export async function getBreachIcons(breaches: Breach[]) {
 }
 
 // Get breaches and upserts to DB
-const breachesResponse: Breach[] = await req("/breaches");
-const breaches: Breach[] = [];
+const breachesResponse = await fetchHibpBreaches();
 const seen = new Set();
-for (const breach of breachesResponse) {
-  breach.DataClasses = formatDataClassesArray(breach.DataClasses);
-  breach.LogoPath = /[^/]*$/.exec(breach.LogoPath)![0];
-  breaches.push(breach);
+breachesResponse.forEach((breach) => {
   seen.add(breach.Name + breach.BreachDate);
 
   // sanity check: corrupt data structure
-  if (!isValidBreach(breach))
+  if (!isValidBreach(breach)) {
     throw new Error(
       "Breach data structure is not valid: " + JSON.stringify(breach),
     );
-}
+  }
+});
 
-console.log("Breaches found: ", breaches.length);
+console.log("Breaches found: ", breachesResponse.length);
 console.log("Unique breaches based on Name + BreachDate", seen.size);
 
 // sanity check: no duplicate breaches with Name + BreachDate
-if (seen.size !== breaches.length) {
+if (seen.size !== breachesResponse.length) {
   throw new Error("Breaches contain duplicates. Stopping script...");
 } else {
-  await upsertBreaches(breaches);
+  await upsertBreaches(breachesResponse);
 
   // get
   const result = await getAllBreaches();
@@ -116,7 +112,7 @@ if (seen.size !== breaches.length) {
   );
 }
 
-await getBreachIcons(breaches);
+await getBreachIcons(breachesResponse);
 
 Sentry.captureCheckIn({
   checkInId,
@@ -131,7 +127,7 @@ setTimeout(process.exit, 1000);
  * @param breach breach object from HIBP
  * @returns Boolean is it a valid breach
  */
-function isValidBreach(breach: Breach) {
+function isValidBreach(breach: HibpGetBreachesResponse[number]) {
   return (
     breach.Name !== undefined &&
     breach.BreachDate !== undefined &&

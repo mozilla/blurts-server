@@ -39,7 +39,7 @@ import {
   getBreachByName,
   getAllBreachesFromDb,
   knexHibp,
-} from "../../utils/hibp.js";
+} from "../../utils/hibp";
 
 const SENTRY_SLUG = "cron-breach-alerts";
 
@@ -121,6 +121,16 @@ export async function poll(
 
     const { breachName, hashPrefix, hashSuffixes } = data;
     const breachAlert = getBreachByName(breaches, breachName);
+    // Check added to old code for type safety, but we've been assuming
+    // getBreachByName will always find a breach here without tests so far, so
+    // apparently that's been working well enough:
+    /* c8 ignore next 6 */
+    if (!breachAlert) {
+      console.error(
+        "HIBP breach notification: couldn't find the breach to notify about.",
+      );
+      continue;
+    }
 
     const {
       IsVerified,

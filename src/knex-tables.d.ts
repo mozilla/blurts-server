@@ -9,6 +9,10 @@ import { ISO8601DateString } from "./utils/parse";
 import { StateAbbr } from "./utils/states";
 import { RemovalStatus } from "./app/functions/universal/scanResult";
 import { BreachDataTypes } from "./app/functions/universal/breach";
+import type {
+  formatDataClassesArray,
+  HibpGetBreachesResponse,
+} from "./utils/hibp";
 
 // See https://knexjs.org/guide/#typescript
 declare module "knex/types/tables" {
@@ -188,25 +192,24 @@ declare module "knex/types/tables" {
 
   interface BreachRow {
     id: number;
-    name: string;
-    title: string;
-    domain: null | string;
+    name: HibpGetBreachesResponse[number]["Name"];
+    title: HibpGetBreachesResponse[number]["Title"];
+    domain: HibpGetBreachesResponse[number]["Domain"];
     breach_date: Date;
     /** Note: added_date is provided by HIBP; this is not the equivalent to created_at in other tables */
     added_date: Date;
     /** Note: modified_date is provided by HIBP; this is not the equivalent to updated_at in other tables */
     modified_date: Date;
-    pwn_count: number;
-    description: null | string;
+    pwn_count: HibpGetBreachesResponse[number]["PwnCount"];
+    description: null | HibpGetBreachesResponse[number]["Description"];
     logo_path: string;
-    // TODO: Verify if Knex can actually parse this into a `string[]`
-    data_classes: unknown;
-    is_verified: boolean;
-    is_fabricated: boolean;
-    is_sensitive: boolean;
-    is_retired: boolean;
-    is_spam_list: boolean;
-    is_malware: boolean;
+    data_classes: ReturnType<typeof formatDataClassesArray>;
+    is_verified: HibpGetBreachesResponse[number]["IsVerified"];
+    is_fabricated: HibpGetBreachesResponse[number]["IsFabricated"];
+    is_sensitive: HibpGetBreachesResponse[number]["IsSensitive"];
+    is_retired: HibpGetBreachesResponse[number]["IsRetired"];
+    is_spam_list: HibpGetBreachesResponse[number]["IsSpamList"];
+    is_malware: HibpGetBreachesResponse[number]["IsMalware"];
     favicon_url: null | string;
   }
   type BreachOptionalColumns = Extract<

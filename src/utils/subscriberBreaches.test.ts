@@ -3,16 +3,15 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { SubscriberRow } from "knex/types/tables";
-import { getBreachesForEmail } from "./hibp";
+import { getBreachesForEmail, HibpLikeDbBreach } from "./hibp";
 import { getSubBreaches } from "./subscriberBreaches";
 import { getUserEmails } from "../db/tables/emailAddresses";
-import { Breach } from "../app/functions/universal/breach";
 
 jest.mock("../db/tables/emailAddresses.js", () => ({
   getUserEmails: jest.fn(),
 }));
 
-jest.mock("./hibp.js", () => ({
+jest.mock("./hibp", () => ({
   getBreachesForEmail: jest.fn(),
 }));
 
@@ -91,15 +90,15 @@ const subscriber: SubscriberRow = {
   first_broker_removal_email_sent: false,
 };
 
-const allBreaches: Breach[] = [
+const allBreaches: HibpLikeDbBreach[] = [
   {
     Id: 627,
     Name: "Youku",
     Title: "Youku",
     Domain: "youku.com",
-    BreachDate: "2016-12-01T08:00:00.000Z",
-    AddedDate: "2017-04-15T11:02:35.000Z",
-    ModifiedDate: "2017-04-15T11:02:35.000Z",
+    BreachDate: new Date("2016-12-01T08:00:00.000Z"),
+    AddedDate: new Date("2017-04-15T11:02:35.000Z"),
+    ModifiedDate: new Date("2017-04-15T11:02:35.000Z"),
     PwnCount: 91890110,
     Description:
       'In late 2016, the online Chinese video service <a href="http://www.youku.com" target="_blank" rel="noopener">Youku</a> suffered a data breach. The incident exposed 92 million unique user accounts and corresponding MD5 password hashes. The data was contributed to Have I Been Pwned courtesy of rip@creep.im.',
@@ -111,30 +110,26 @@ const allBreaches: Breach[] = [
     IsRetired: false,
     IsSpamList: false,
     IsMalware: false,
-    recencyIndex: 1,
-    ResolutionsChecked: [],
   },
   {
     Id: 638,
     Name: "Zynga",
     Title: "Zynga",
     Domain: "zynga.com",
-    BreachDate: "2019-09-01T07:00:00.000Z",
-    AddedDate: "2019-12-19T04:54:45.000Z",
-    ModifiedDate: "2020-01-11T00:41:51.000Z",
+    BreachDate: new Date("2019-09-01T07:00:00.000Z"),
+    AddedDate: new Date("2019-12-19T04:54:45.000Z"),
+    ModifiedDate: new Date("2020-01-11T00:41:51.000Z"),
     PwnCount: 172869660,
     Description:
       'In September 2019, game developer <a href="https://www.cnet.com/news/words-with-friends-hack-reportedly-exposes-data-of-more-than-200m-players/" target="_blank" rel="noopener">Zynga (the creator of Words with Friends) suffered a data breach</a>. The incident exposed 173M unique email addresses alongside usernames and passwords stored as salted SHA-1 hashes. The data was provided to HIBP by <a href="https://dehashed.com/" target="_blank" rel="noopener">dehashed.com</a>.',
     LogoPath: "Zynga.png",
-    DataClasses: ["email-addresses", "passwords", "phone-numbers", "usernames"],
+    DataClasses: ["email-addresses", "passwords", "phone-numbers"],
     IsVerified: true,
     IsFabricated: false,
     IsSensitive: false,
     IsRetired: false,
     IsSpamList: false,
     IsMalware: false,
-    recencyIndex: 2,
-    ResolutionsChecked: [],
   },
 ];
 
@@ -157,7 +152,7 @@ const breachesWithNoneResolved = [
     Domain: "something",
     DataClasses: ["email-addresses", "passwords", "something else"],
   },
-];
+] as HibpLikeDbBreach[];
 
 const breachesWithOneResolved = [
   {
@@ -178,7 +173,7 @@ const breachesWithOneResolved = [
     Domain: "something",
     DataClasses: ["email-addresses", "passwords", "something else"],
   },
-];
+] as HibpLikeDbBreach[];
 
 const breachesWithOneResolvedSsn = [
   {
@@ -204,7 +199,7 @@ const breachesWithOneResolvedSsn = [
       "something else",
     ],
   },
-];
+] as HibpLikeDbBreach[];
 
 describe("getSubBreaches", () => {
   it("summarises which dataClasses and emails are breached for the given user", async () => {
@@ -458,9 +453,9 @@ describe("getSubBreaches", () => {
         ...breach,
         // Make sure the found breaches have ISO 8601 date strings, rather than
         // Date objects:
-        BreachDate: "2016-12-01T08:00:00.000Z",
-        AddedDate: "2017-04-15T11:02:35.000Z",
-        ModifiedDate: "2017-04-15T11:02:35.000Z",
+        BreachDate: "2016-12-01T08:00:00.000Z" as unknown as Date,
+        AddedDate: "2017-04-15T11:02:35.000Z" as unknown as Date,
+        ModifiedDate: "2017-04-15T11:02:35.000Z" as unknown as Date,
       })),
     );
 
