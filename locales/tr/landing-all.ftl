@@ -8,7 +8,7 @@ landing-all-hero-lead = Verilerinizin sızdırılıp sızdırılmadığını gö
 landing-all-hero-emailform-input-placeholder = kullanici@example.com
 landing-all-hero-emailform-input-label = Veri ihlali risklerini kontrol etmek için e-posta adresinizi yazın.
 landing-all-hero-emailform-submit-label = Ücretsiz taramayı başlat
-landing-all-hero-emailform-submit-sign-in-label = Ücretsiz tarama için giriş yapın
+landing-all-hero-emailform-submit-sign-up-label = Ücretsiz tarama için kaydolun
 # This is a label underneath a big number "14" - it's an image that demos Monitor.
 landing-all-hero-image-chart-label = veri ihlali
 
