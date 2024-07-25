@@ -9,6 +9,7 @@ env:
   REGION: us-east4
   TAG: pr-${{ github.event.pull_request.number }}
   DB_HOST: ${{ secrets.PREVIEW_DB_HOST }}
+  ADMIN: ${{ secrets.ADMINS }}
 
 jobs:
   deploy:
@@ -49,7 +50,10 @@ jobs:
       run: |-
         docker build -t ${{env.REGION}}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE }}/${{ env.SERVICE }}:${{ env.TAG }} -f './Dockerfile.cloudrun' .
         docker push ${{env.REGION}}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE }}/${{ env.SERVICE }}:${{ env.TAG }}
-        
+    
+    # - name: Add mask
+    #   run: echo "::add-mask::$ADMIN"
+    
     - name: Deploy to Cloud Run
       id: deploy
       uses: google-github-actions/deploy-cloudrun@v2
@@ -69,7 +73,7 @@ jobs:
           APP_ENV=cloudrun
           COOKIE_SECRET=secret
           PG_HOST=/cloudsql/${{ env.PROJECT_ID }}:${{env.REGION}}:${{ env.SERVICE }}-${{ env.TAG }}
-          ADMINS=${{ secrets.ADMINS }}
+          ADMINS=${{ env.ADMINS }}
           HIBP_API_TOKEN=${{ secrets.HIBP_API_TOKEN }}
           HIBP_KANON_API_TOKEN=${{ secrets.HIBP_KANON_API_TOKEN }}
           AUTH_REDIRECT_PROXY_URL=${{ secrets.AUTH_REDIRECT_PROXY_URL }}
