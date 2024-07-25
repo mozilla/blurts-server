@@ -41,7 +41,11 @@ async function getAllBreachesCount() {
  * Upsert breaches into "breaches" table
  * Skip inserting when 'name' field (unique) has a conflict
  *
+<<<<<<< HEAD
  * @param {import("../../utils/hibp").HibpGetBreachesResponse} hibpBreaches breaches array from HIBP API
+=======
+ * @param {import("../../utils/hibp.js").HibpGetBreachesResponse} hibpBreaches breaches array from HIBP API
+>>>>>>> 319434001 (Migrate utils/hibp.js to TypeScript)
  * @returns
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
