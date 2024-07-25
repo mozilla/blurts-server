@@ -23,7 +23,7 @@ jest.mock("../../utils/email.js", () => {
   };
 });
 
-jest.mock("../../utils/hibp.js", () => {
+jest.mock("../../utils/hibp", () => {
   return {
     getAddressesAndLanguageForEmail: jest.fn(() => {
       return {
@@ -191,7 +191,7 @@ test("processes valid messages", async () => {
     (typeof emailMod)["sendEmail"]
   >;
 
-  const mockedUtilsHibp: any = jest.requireMock("../../utils/hibp.js");
+  const mockedUtilsHibp: any = jest.requireMock("../../utils/hibp");
   mockedUtilsHibp.getBreachByName.mockReturnValue({
     IsVerified: true,
     Domain: "test1",
@@ -283,7 +283,7 @@ test("skipping email when subscriber id exists in email_notifications table", as
   // I'm respecting Chesterton's Fence and leaving them in place for now:
   jest.spyOn(console, "info").mockImplementation(() => undefined);
   const { sendEmail } = await import("../../utils/email.js");
-  const mockedUtilsHibp: any = jest.requireMock("../../utils/hibp.js");
+  const mockedUtilsHibp: any = jest.requireMock("../../utils/hibp");
   mockedUtilsHibp.getBreachByName.mockReturnValue({
     IsVerified: true,
     Domain: "test1",
@@ -338,7 +338,7 @@ test("throws an error when addEmailNotification fails", async () => {
   // I'm respecting Chesterton's Fence and leaving them in place for now:
   jest.spyOn(console, "info").mockImplementation(() => undefined);
   const { sendEmail } = await import("../../utils/email.js");
-  const mockedUtilsHibp: any = jest.requireMock("../../utils/hibp.js");
+  const mockedUtilsHibp: any = jest.requireMock("../../utils/hibp");
   mockedUtilsHibp.getBreachByName.mockReturnValue({
     IsVerified: true,
     Domain: "test1",
@@ -397,7 +397,7 @@ test("throws an error when markEmailAsNotified fails", async () => {
   // I'm respecting Chesterton's Fence and leaving them in place for now:
   jest.spyOn(console, "info").mockImplementation(() => undefined);
   const { sendEmail } = await import("../../utils/email.js");
-  const mockedUtilsHibp: any = jest.requireMock("../../utils/hibp.js");
+  const mockedUtilsHibp: any = jest.requireMock("../../utils/hibp");
   mockedUtilsHibp.getBreachByName.mockReturnValue({
     IsVerified: true,
     Domain: "test1",

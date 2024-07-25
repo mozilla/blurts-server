@@ -4,13 +4,13 @@
 
 import { getL10n } from "../l10n/serverComponents";
 import AppConstants from "../../../appConstants.js";
-import { Breach, BreachDataTypes } from "../universal/breach";
+import { BreachDataTypes } from "../universal/breach";
 
 /**
  * TODO: Map from google doc: https://docs.google.com/document/d/1KoItFsTYVIBInIG2YmA7wSxkKS4vti_X0A0td_yaHVM/edit#
  * Hardcoded map of breach resolution data types
  *
- * @type { Record<keyof BreachDataTypes, { priority: number, header: string, body?: string, applicableCountryCodes?: string[] }> }
+ * @type { Record<keyof typeof BreachDataTypes, { priority: number, header: string, body?: string, applicableCountryCodes?: string[] }> }
  */
 const breachResolutionDataTypes = {
   [BreachDataTypes.Passwords]: {
@@ -98,7 +98,9 @@ function appendBreachResolutionChecklist(
   const { verifiedEmails } = userBreachData;
 
   for (const { breaches } of verifiedEmails) {
-    breaches.forEach((b: Breach) => {
+    // Old untyped code, adding type defitions now isn't worth the effort:
+    /* eslint-disable @typescript-eslint/no-explicit-any */
+    breaches.forEach((b: any) => {
       const dataClasses = b.DataClasses;
       const blockList = (AppConstants.HIBP_BREACH_DOMAIN_BLOCKLIST ?? "").split(
         ",",
@@ -124,7 +126,7 @@ function appendBreachResolutionChecklist(
         transUnionLink:
           '<a href="https://www.transunion.com/credit-freeze" target="_blank">TransUnion</a>',
       };
-      (b as any).breachChecklist = getResolutionRecsPerBreach(
+      b.breachChecklist = getResolutionRecsPerBreach(
         dataClasses,
         args,
         options,
