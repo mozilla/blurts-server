@@ -72,7 +72,7 @@ async function getAllEmailsAndBreaches(
       verifiedEmails.push(
         await bundleVerifiedEmails({
           user,
-          email: email.email,
+          email: user.primary_email,
           recordId: email.id,
           recordVerified: email.verified,
           allBreaches,
@@ -146,6 +146,36 @@ async function bundleVerifiedEmails(
     return { verifiedEmails, unverifiedEmails };
   }
 
+<<<<<<< HEAD
+=======
+  // get v2 "breach_resolution" object
+  const breachResolutionV2 = user.breach_resolution
+    ? user.breach_resolution[email]
+      ? user.breach_resolution[email]
+      : {}
+    : [];
+
+  const useBreachId = user.breach_resolution?.useBreachId;
+
+  for (const breach of foundBreachesWithRecency) {
+    // if breach resolution json has `useBreachId` boolean, that means the migration has taken place
+    // we will use breach id as the key. Otherwise, we fallback to using recency index for backwards compatibility
+    if (useBreachId) {
+      breach.IsResolved = breachResolutionV2[breach.Id]?.isResolved;
+      breach.ResolutionsChecked =
+        breachResolutionV2[breach.Id]?.resolutionsChecked || [];
+    } else {
+      // TODO: remove after MNTOR-978
+      breach.IsResolved = breachResolutionV2[breach.recencyIndex]?.isResolved;
+      breach.ResolutionsChecked =
+        breachResolutionV2[breach.recencyIndex]?.resolutionsChecked || [];
+    }
+
+    // filter breach types based on the 13 types we care about
+    breach.DataClasses = filterBreachDataTypes(breach.DataClasses);
+  }
+
+>>>>>>> 0a8366fe5 (remove old typedef)
   // filter out irrelevant breaches based on HIBP
   const filteredAnnotatedFoundBreaches = getFilteredBreaches(
     foundBreachesWithRecency,
