@@ -5,17 +5,11 @@
 // TODO: Add unit test when changing this code:
 /* c8 ignore next 8 */
 
-type DateTimeFormatOptions = {
-  year: "numeric";
-  month: "long";
-  day: "numeric";
-};
-
 function formatDate(date: string, locales: string): string {
   const jsDate = new Date(date);
   /** @type {{ year: 'numeric', month: 'long', day: 'numeric' }} */
 
-  const options: DateTimeFormatOptions = {
+  const options: Intl.DateTimeFormatOptions = {
     year: "numeric",
     month: "long",
     day: "numeric",
