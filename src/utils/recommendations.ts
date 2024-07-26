@@ -10,7 +10,7 @@
 // positional parameters, removing them risks breaking things:
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 
-type PriorityDataClassArray = {
+type RecommendationsType = {
   recommendationCopy: {
     subhead: string;
     body?: string;
@@ -27,7 +27,7 @@ type PriorityDataClassArray = {
 export type PriorityDataClass = {
   weight: number;
   glyphName: string;
-  recommendations: null | PriorityDataClassArray[];
+  recommendations: null | RecommendationsType[];
 };
 
 export function getAllPriorityDataClasses(
