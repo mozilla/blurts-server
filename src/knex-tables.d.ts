@@ -109,7 +109,7 @@ declare module "knex/types/tables" {
     fxa_uid: null | string;
     // TODO: Find unknown type
     // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
-    breaches_last_shown: null | unknown;
+    breaches_last_shown: Date;
     // NOTE: this field is inherited from an older version of the product, it only applies to instant alerts
     all_emails_to_primary: boolean | null; // added  null in MNTOR-1368
     // TODO: Find unknown type

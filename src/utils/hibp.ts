@@ -195,6 +195,7 @@ export type HibpLikeDbBreach = {
   IsSpamList: BreachRow["is_spam_list"];
   IsMalware: BreachRow["is_malware"];
   FaviconUrl?: BreachRow["favicon_url"];
+  NewBreach?: boolean;
 };
 
 /**
