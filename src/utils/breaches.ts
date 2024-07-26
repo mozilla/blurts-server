@@ -12,14 +12,6 @@ import { getSha1 } from "./fxa.js";
 import { filterBreachDataTypes } from "./breachResolution.js";
 import { captureMessage } from "@sentry/node";
 import { EmailAddressRow, SubscriberRow } from "knex/types/tables";
-import { SubscriberBreach } from "./subscriberBreaches.js";
-
-/**
- * @typedef {{
- *   unverifiedEmails: import('knex/types/tables').EmailAddressRow[],
- *   verifiedEmails: BundledVerifiedEmails[],
- * }} AllEmailsAndBreaches
- */
 
 /**
  * TODO: deprecate with MNTOR-2021
@@ -34,7 +26,7 @@ import { SubscriberBreach } from "./subscriberBreaches.js";
 
 type BundledVerifiedEmails = {
   email: string;
-  breaches: import("./hibp").HibpLikeDbBreach[];
+  breaches: HibpLikeDbBreach[];
   id: number;
   primary: boolean;
   verified: boolean;
@@ -96,7 +88,7 @@ async function getAllEmailsAndBreaches(
       verifiedEmails.push(
         await bundleVerifiedEmails({
           user,
-          email: email.email,
+          email: user.primary_email,
           recordId: email.id,
           recordVerified: email.verified,
           allBreaches,
@@ -123,14 +115,6 @@ async function getAllEmailsAndBreaches(
   return { verifiedEmails, unverifiedEmails };
 }
 
-/**
- * TODO: deprecate with MNTOR-2021
- * //  *
- * //  * @param {any[]} foundBreaches
- * //
- *
- * @param foundBreaches
- */
 function addRecencyIndex(foundBreaches: HibpLikeDbBreach[]) {
   // /**
   //  * @type {any[]}
@@ -148,26 +132,18 @@ function addRecencyIndex(foundBreaches: HibpLikeDbBreach[]) {
   return annotatedBreaches.reverse();
 }
 
-/**
- * TODO: deprecate with MNTOR-2021
- *
- * @param {{ user: any; email: any; recordId: any; recordVerified: any; allBreaches: import('./hibp').HibpLikeDbBreach[]; }} options
- * @returns {Promise<BundledVerifiedEmails>}
- */
-
 type options = {
   user: userType;
-  verifiedEmail: BundledVerifiedEmails;
+  email: string;
   recordId: number;
   recordVerified: boolean;
-  allBreaches: HibpLikeDbBreach[] | SubscriberBreach[];
+  allBreaches: HibpLikeDbBreach[];
 };
 async function bundleVerifiedEmails(
   options: options,
 ): Promise<BundledVerifiedEmails> {
-  const { user, verifiedEmail, recordId, recordVerified, allBreaches } =
-    options;
-  const lowerCaseEmailSha = getSha1(verifiedEmail.email.toLowerCase());
+  const { user, email, recordId, recordVerified, allBreaches } = options;
+  const lowerCaseEmailSha = getSha1(email.toLowerCase());
 
   // find all breaches relevant to the current email
   const foundBreaches = await getBreachesForEmail(
@@ -192,8 +168,8 @@ async function bundleVerifiedEmails(
 
   // get v2 "breach_resolution" object
   const breachResolutionV2 = user.breach_resolution
-    ? user.breach_resolution[verifiedEmail.email]
-      ? user.breach_resolution[verifiedEmail.email]
+    ? user.breach_resolution[email]
+      ? user.breach_resolution[email]
       : {}
     : [];
 
@@ -223,9 +199,9 @@ async function bundleVerifiedEmails(
   );
 
   const emailEntry: BundledVerifiedEmails = {
-    email: verifiedEmail.email,
+    email: email,
     breaches: filteredAnnotatedFoundBreaches,
-    primary: verifiedEmail.email === user.primary_email,
+    primary: email === user.primary_email,
     id: recordId,
     verified: recordVerified,
   };
