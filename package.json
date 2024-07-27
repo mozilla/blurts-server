@@ -20,7 +20,7 @@
     "build": "npm run get-location-data && npm run build-glean && npm run build-nimbus && next build && npm run build-cronjobs",
     "cloudrun": "npm run db:migrate && npm start",
     "start": "next start",
-    "lint": "stylelint '**/*.scss' && prettier --check './src' && next lint --max-warnings=0 && tsc -p tsconfig.json --noEmit",
+    "lint": "stylelint '**/*.scss' && prettier --check './src' && next lint --max-warnings=0 && tsc -p tsconfig.json --noEmit && npm run validate-nimbus",
     "fix": "prettier --write './src' && next lint --fix && stylelint --fix '**/*.scss'",
     "test": "npm run build-nimbus && jest",
     "e2e": "playwright test src/e2e/",
@@ -48,7 +48,8 @@
     "build-glean-types": "node src/scripts/build/gleanTypes.js",
     "build-glean-docs": "npm run build-glean-frontend-docs && npm run build-glean-backend-docs",
     "build-glean-frontend-docs": "glean translate src/telemetry/metrics.yaml --format markdown --output docs/telemetry/frontent",
-    "build-glean-backend-docs": "glean translate src/telemetry/backend-metrics.yaml --format markdown --output docs/telemetry/backend"
+    "build-glean-backend-docs": "glean translate src/telemetry/backend-metrics.yaml --format markdown --output docs/telemetry/backend",
+    "validate-nimbus": "sh src/scripts/validate-nimbus-file.sh"
   },
   "repository": {
     "type": "git",
@@ -105,13 +106,13 @@
   "devDependencies": {
     "@faker-js/faker": "^8.4.1",
     "@playwright/test": "^1.43.1",
-    "@storybook/addon-a11y": "^8.2.5",
-    "@storybook/addon-actions": "^8.2.5",
-    "@storybook/addon-essentials": "^8.2.5",
-    "@storybook/addon-interactions": "^8.2.5",
-    "@storybook/addon-links": "^8.2.5",
+    "@storybook/addon-a11y": "^8.2.6",
+    "@storybook/addon-actions": "^8.2.6",
+    "@storybook/addon-essentials": "^8.2.6",
+    "@storybook/addon-interactions": "^8.2.6",
+    "@storybook/addon-links": "^8.2.6",
     "@storybook/blocks": "^8.0.0",
-    "@storybook/nextjs": "^8.2.5",
+    "@storybook/nextjs": "^8.2.6",
     "@storybook/react": "^8.0.0",
     "@testing-library/jest-dom": "^6.4.6",
     "@testing-library/react": "^16.0.0",
