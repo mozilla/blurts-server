@@ -8,7 +8,7 @@ landing-all-hero-lead = Wy scanne datalekken om te sjen oft jo gegevens lekt bin
 landing-all-hero-emailform-input-placeholder = jonamme@example.com
 landing-all-hero-emailform-input-label = Fier jo e-mailadres yn om te kontrolearjen op datalekken.
 landing-all-hero-emailform-submit-label = Untfang in fergeze scan
-landing-all-hero-emailform-submit-sign-in-label = Meld jo oan om in fergeze scan te ûntfangen
+landing-all-hero-emailform-submit-sign-up-label = Registrearje om in fergeze scan te ûntfangen
 # This is a label underneath a big number "14" - it's an image that demos Monitor.
 landing-all-hero-image-chart-label = lekken
 

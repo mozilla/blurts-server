@@ -37,7 +37,6 @@ export async function getDeletedFeatureFlags() {
     .returning("*");
 }
 
-/** @deprecated The method type not be used */
 export type FeatureFlagName =
   | "RedesignedEmails"
   | "UpdatedEmailPreferencesOption"
@@ -50,11 +49,12 @@ export type FeatureFlagName =
   | "AutomaticRemovalCsatSurvey"
   | "HowItWorksPage"
   | "AdditionalRemovalStatuses"
-  | "PetitionBannerCsatSurvey";
+  | "PetitionBannerCsatSurvey"
+  /** Set clear expectations about auto-removal finishing in time for *most*, not *all* data brokers: */
+  | "SetExpectationsForUsers";
 
 /**
  * @param options
- * @deprecated The method should not be used, use Nimbus experiment or roll-out: /src/app/functions/server/getExperiments
  */
 export async function getEnabledFeatureFlags(
   options:
