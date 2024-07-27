@@ -456,7 +456,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Breaches Scan,
   });
 });
 
-test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Overview Card @smoke`, () => {
+test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Overview Card`, () => {
   test.beforeEach(async ({ dashboardPage, page }) => {
     await dashboardPage.open();
 
