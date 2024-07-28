@@ -8,7 +8,7 @@ landing-all-hero-lead = Verificamos vazamentos de dados para ver se seus dados f
 landing-all-hero-emailform-input-placeholder = seunome@example.com
 landing-all-hero-emailform-input-label = Insira seu endereço de email para verificar exposição em vazamentos de dados.
 landing-all-hero-emailform-submit-label = Obtenha uma verificação gratuita
-landing-all-hero-emailform-submit-sign-in-label = Entre para obter uma análise gratuita
+landing-all-hero-emailform-submit-sign-up-label = Cadastre-se para obter uma análise gratuita
 # This is a label underneath a big number "14" - it's an image that demos Monitor.
 landing-all-hero-image-chart-label = exposições
 
