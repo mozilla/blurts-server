@@ -3,14 +3,12 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 public-nav-name = { -brand-mozilla-monitor }
-
 landing-all-hero-title = Gjeni se ku është ekspozuar informacion i juaji privat — dhe rifitojeni
 landing-all-hero-lead = Ne kontrollojmë cenime të dhënash për të parë nëse të dhënat tuaja kanë rrjedhur dhe ju japim hapa për ta zgjidhur çështjen.
-
 landing-all-hero-emailform-input-placeholder = emrijuaj@example.com
 landing-all-hero-emailform-input-label = Jepni adresën tuaj email, për të kontrolluar për ekspozime në cenime të dhënash.
 landing-all-hero-emailform-submit-label = Përfitoni kontroll falas
-
+landing-all-hero-emailform-submit-sign-up-label = Regjistrohuni, që të përfitoni kontroll falas
 # This is a label underneath a big number "14" - it's an image that demos Monitor.
 landing-all-hero-image-chart-label = ekspozime
 
@@ -62,7 +60,5 @@ landing-all-help-protect-you-feature-one = Do të kontrollojmë për ju në krej
 landing-all-help-protect-you-feature-two = Do t’ju udhëheqim nëpër hapat për të zgjidhur çdo cenim
 landing-all-help-protect-you-feature-three = Do të mbikëqyrim vazhdimisht dhe do t’ju dërgojmë sinjalizime për çfarëdo cenimi të ri
 landing-all-help-protect-you-cta = Regjistrohuni për sinjalizime rreth cenimesh
-
 landing-all-get-started = Që t’ia filloni, skanoni email-in tuaj
 landing-all-take-back-data = Rimerrni kontrollin e të dhënave tuaja
-
