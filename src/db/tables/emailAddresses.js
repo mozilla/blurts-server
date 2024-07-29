@@ -5,7 +5,7 @@
 import { v4 as uuidv4 } from 'uuid'
 import createDbConnection from "../connect.js";
 import { subscribeHash } from '../../utils/hibp'
-import { getSha1 } from '../../utils/fxa.js'
+import { getSha1 } from '../../utils/fxa'
 import { getSubscriberByEmail, updateFxAData } from './subscribers.js'
 import {
   ForbiddenError,

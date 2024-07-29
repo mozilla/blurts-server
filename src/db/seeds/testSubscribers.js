@@ -5,7 +5,7 @@
 // OBSOLETE: Delete as a part of MNTOR-3077
 'use strict'
 
-import { getSha1 } from '../../utils/fxa.js'
+import { getSha1 } from '../../utils/fxa'
 
 export const TEST_SUBSCRIBERS = {
   firefox_account: {
