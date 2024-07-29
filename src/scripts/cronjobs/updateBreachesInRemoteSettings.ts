@@ -35,10 +35,9 @@
 
 import AppConstants from "../../appConstants";
 import * as HIBP from "../../utils/hibp";
-import type { Breach } from "../../app/functions/universal/breach";
 
 type RemoteSettingsBreach = Pick<
-  Breach,
+  HIBP.HibpGetBreachesResponse[number],
   "Name" | "Domain" | "BreachDate" | "PwnCount" | "AddedDate" | "DataClasses"
 >;
 
@@ -48,7 +47,9 @@ const FX_RS_RECORDS = `${FX_RS_COLLECTION}/records`;
 const FX_RS_WRITER_USER = AppConstants.FX_REMOTE_SETTINGS_WRITER_USER;
 const FX_RS_WRITER_PASS = AppConstants.FX_REMOTE_SETTINGS_WRITER_PASS;
 
-async function whichBreachesAreNotInRemoteSettingsYet(breaches: Breach[]) {
+async function whichBreachesAreNotInRemoteSettingsYet(
+  breaches: HIBP.HibpGetBreachesResponse,
+) {
   const response = await fetch(FX_RS_RECORDS, {
     headers: {
       Authorization: `Basic ${Buffer.from(FX_RS_WRITER_USER + ":" + FX_RS_WRITER_PASS).toString("base64")}`,
@@ -56,7 +57,9 @@ async function whichBreachesAreNotInRemoteSettingsYet(breaches: Breach[]) {
   });
   const fxRSRecords = await response.json();
   const remoteSettingsBreachesSet = new Set(
-    fxRSRecords.body.data.map((b: Breach) => b.Name),
+    fxRSRecords.body.data.map(
+      (b: HIBP.HibpGetBreachesResponse[number]) => b.Name,
+    ),
   );
 
   return breaches.filter(({ Name }) => !remoteSettingsBreachesSet.has(Name));
@@ -99,8 +102,8 @@ if (
 }
 
 (async () => {
-  const allHibpBreaches = (await HIBP.req("/breaches")) as { body: Breach[] };
-  const verifiedSiteBreaches = allHibpBreaches.body.filter((breach) => {
+  const allHibpBreaches = await HIBP.fetchHibpBreaches();
+  const verifiedSiteBreaches = allHibpBreaches.filter((breach) => {
     return (
       !breach.IsRetired &&
       !breach.IsSpamList &&

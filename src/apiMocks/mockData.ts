@@ -179,8 +179,10 @@ export function createRandomHibpListing(
   ];
   return {
     AddedDate: addedDate,
-    BreachDate: breachDate.toISOString(),
-    DataClasses: faker.helpers.arrayElements(possibleDataClasses),
+    BreachDate: breachDate,
+    DataClasses: faker.helpers.arrayElements(possibleDataClasses) as Array<
+      (typeof BreachDataTypes)[keyof typeof BreachDataTypes]
+    >,
     Description: faker.lorem.sentence(),
     Domain: faker.internet.domainName(),
     Id: faker.number.int(),

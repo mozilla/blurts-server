@@ -10,7 +10,7 @@ import {
   BadRequestError,
   MethodNotAllowedError,
   UnauthorizedError
-} from '../utils/error.js'
+} from '../utils/error'
 import { getMessage, getStringLookup } from '../utils/fluent.js'
 import { updateMonthlyEmailOptout } from '../db/tables/subscribers.js'
 import SMTPTransport from 'nodemailer/lib/smtp-transport/index.js'

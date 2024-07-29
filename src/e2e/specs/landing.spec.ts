@@ -383,3 +383,12 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page Functionali
     expect(page.url()).toBe(successUrl);
   });
 });
+
+test("Verify that the 404 page shows up on non-existent pages @smoke", async ({
+  page,
+}) => {
+  await page.goto("/non-existent-page/");
+  await expect(
+    page.locator("h1").getByText("⁨404⁩ Page not found"),
+  ).toBeVisible();
+});
