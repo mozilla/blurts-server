@@ -7,7 +7,7 @@ import {
   getBreachesForEmail,
   getFilteredBreaches,
   HibpLikeDbBreach,
-} from "./hibp.js";
+} from "./hibp";
 import { getSha1 } from "./fxa.js";
 import { filterBreachDataTypes } from "./breachResolution.js";
 import { captureMessage } from "@sentry/node";
