@@ -34,7 +34,7 @@ export async function setProfileDetails(
     state_code,
     // TODO: MNTOR-2157 Validate input:
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    date_of_birth: parseIso8601Datetime(birth_date)!,
+    date_of_birth: parseIso8601Datetime(birth_date as string)!,
     // @ts-ignore knex.fn.now() results in it being set to a date,
     // even if it's not typed as a JS date object:
     created_at: knex.fn.now(),
