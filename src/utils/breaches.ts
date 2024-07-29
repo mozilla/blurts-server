@@ -149,7 +149,8 @@ async function bundleVerifiedEmails(
 <<<<<<< HEAD
 =======
   // get v2 "breach_resolution" object
-  const breachResolutionV2 = user.breach_resolution
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const breachResolutionV2: any = user.breach_resolution
     ? user.breach_resolution[email]
       ? user.breach_resolution[email]
       : {}
@@ -157,18 +158,28 @@ async function bundleVerifiedEmails(
 
   const useBreachId = user.breach_resolution?.useBreachId;
 
+  // Not entirely sure what this section of the code is doing, but it's not typed
+  // There's inconsistency with the breaches data type, namely between HibpLikeDbBreach and SubscriberBreach
   for (const breach of foundBreachesWithRecency) {
     // if breach resolution json has `useBreachId` boolean, that means the migration has taken place
     // we will use breach id as the key. Otherwise, we fallback to using recency index for backwards compatibility
     if (useBreachId) {
-      breach.IsResolved = breachResolutionV2[breach.Id]?.isResolved;
-      breach.ResolutionsChecked =
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (breach as any).IsResolved = breachResolutionV2[breach.Id]?.isResolved;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (breach as any).ResolutionsChecked =
         breachResolutionV2[breach.Id]?.resolutionsChecked || [];
     } else {
       // TODO: remove after MNTOR-978
-      breach.IsResolved = breachResolutionV2[breach.recencyIndex]?.isResolved;
-      breach.ResolutionsChecked =
-        breachResolutionV2[breach.recencyIndex]?.resolutionsChecked || [];
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (breach as any).IsResolved =
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        breachResolutionV2[(breach as any).recencyIndex]?.isResolved;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (breach as any).ResolutionsChecked =
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        breachResolutionV2[(breach as any).recencyIndex]?.resolutionsChecked ||
+        [];
     }
 
     // filter breach types based on the 13 types we care about
