@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { getLocale, getStringLookup } from '../utils/fluent.js'
-import { formatDate } from '../utils/formatDate.js'
+import { formatDate } from '../utils/formatDate'
 import { getBreachLogo } from '../utils/breachLogo.js'
 
 const breachAlertTableStyle = `

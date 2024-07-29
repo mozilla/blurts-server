@@ -13,10 +13,9 @@ import { BreachLogo } from "../../../../components/server/BreachLogo";
 import { getLocale } from "../../../../functions/universal/getLocale";
 import { useHasRenderedClientSide } from "../../../../hooks/useHasRenderedClientSide";
 import { memo, useMemo, useState, useTransition } from "react";
-import { Breach } from "../../../../functions/universal/breach";
 
 export type Props = {
-  allBreaches: Array<HibpLikeDbBreach | Breach>;
+  allBreaches: HibpLikeDbBreach[];
 };
 export const BreachIndexView = (props: Props) => {
   const l10n = useL10n();
@@ -75,7 +74,7 @@ const FilterForm = (props: { onChange: (newValue: string) => void }) => {
 };
 
 function matchesFilter(
-  breach: Breach | HibpLikeDbBreach,
+  breach: HibpLikeDbBreach,
   filterTerm: string,
   l10n: ExtendedReactLocalization,
 ): boolean {
@@ -95,7 +94,7 @@ function matchesFilter(
 // time the filter changes, like the current page, is exactly what React isn't
 // great at. memo() alleviates it somewhat, though.
 const BreachCard = memo(
-  (props: { breach: HibpLikeDbBreach | Breach; isVisible: boolean }) => {
+  (props: { breach: HibpLikeDbBreach; isVisible: boolean }) => {
     const l10n = useL10n();
     const locale = getLocale(l10n);
     // Performance profiling shows that formatting the date is pretty expensive,

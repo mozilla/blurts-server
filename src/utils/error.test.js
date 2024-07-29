@@ -11,7 +11,7 @@ import {
   ConflictError,
   TooManyRequestsError,
   InternalServerError
-} from './error.js'
+} from './error'
 
 test('BadRequestError', () => {
   const errorMessage = 'BadRequestError message'

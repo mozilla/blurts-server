@@ -6,10 +6,7 @@ import { NextResponse } from "next/server";
 import { logger } from "../../../../functions/server/logging";
 import mockAllBreaches from "../mockData/mockAllBreaches.json";
 import { errorIfProduction } from "../../../utils/errorThrower";
-import { Breach } from "../../../../functions/universal/breach";
-import { HibpLikeDbBreach } from "../../../../../utils/hibp";
-
-type BreachesListResponse = (Breach | HibpLikeDbBreach)[];
+import { HibpGetBreachesResponse } from "../../../../../utils/hibp";
 
 export function GET() {
   const prodError = errorIfProduction();
@@ -17,5 +14,5 @@ export function GET() {
 
   logger.info("Mock endpoint: /breaches");
 
-  return NextResponse.json(mockAllBreaches.data as BreachesListResponse);
+  return NextResponse.json(mockAllBreaches.data as HibpGetBreachesResponse);
 }

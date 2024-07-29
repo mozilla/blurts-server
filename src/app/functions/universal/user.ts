@@ -3,8 +3,8 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { Session } from "next-auth";
-import { ISO8601DateString } from "../../../utils/parse.js";
 import { getBillingAndSubscriptions } from "../../../utils/fxa.js";
+import { ISO8601DateString } from "../../../utils/parse";
 
 // TODO: Add unit test when changing this code:
 /* c8 ignore start */

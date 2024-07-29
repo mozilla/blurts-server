@@ -5,7 +5,7 @@
 import crypto from 'crypto'
 import { URL } from 'url'
 
-import { InternalServerError } from '../utils/error.js'
+import { InternalServerError } from '../utils/error'
 import AppConstants from '../appConstants.js'
 
 /**

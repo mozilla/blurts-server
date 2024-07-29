@@ -4,13 +4,14 @@
 
 import { getL10n } from "../l10n/serverComponents";
 import AppConstants from "../../../appConstants.js";
-import { Breach, BreachDataTypes } from "../universal/breach";
+import { BreachDataTypes } from "../universal/breach";
+import { AllEmailsAndBreaches } from "../../../utils/breaches.js";
 
 /**
  * TODO: Map from google doc: https://docs.google.com/document/d/1KoItFsTYVIBInIG2YmA7wSxkKS4vti_X0A0td_yaHVM/edit#
  * Hardcoded map of breach resolution data types
  *
- * @type { Record<keyof BreachDataTypes, { priority: number, header: string, body?: string, applicableCountryCodes?: string[] }> }
+ * @type { Record<keyof typeof BreachDataTypes, { priority: number, header: string, body?: string, applicableCountryCodes?: string[] }> }
  */
 const breachResolutionDataTypes = {
   [BreachDataTypes.Passwords]: {
@@ -91,14 +92,16 @@ const breachResolutionDataTypes = {
 // Old untyped code, adding type defitions now isn't worth the effort:
 /* eslint-disable @typescript-eslint/no-explicit-any */
 function appendBreachResolutionChecklist(
-  userBreachData: any,
+  userBreachData: AllEmailsAndBreaches,
   options: Partial<{ countryCode: string }> = {},
 ) {
   const l10n = getL10n();
   const { verifiedEmails } = userBreachData;
 
   for (const { breaches } of verifiedEmails) {
-    breaches.forEach((b: Breach) => {
+    // Old untyped code, adding type defitions now isn't worth the effort:
+    /* eslint-disable @typescript-eslint/no-explicit-any */
+    breaches.forEach((b) => {
       const dataClasses = b.DataClasses;
       const blockList = (AppConstants.HIBP_BREACH_DOMAIN_BLOCKLIST ?? "").split(
         ",",
@@ -124,6 +127,10 @@ function appendBreachResolutionChecklist(
         transUnionLink:
           '<a href="https://www.transunion.com/credit-freeze" target="_blank">TransUnion</a>',
       };
+      // `any` annotation added when converting to TypeScript and setting the type for `b`;
+      // I could've made a new type for `b`, but since it doesn't look like we're actually using
+      // the `breachChecklist` property anywhere, `any` is fine for now.
+      // (I'm not confident enough to delete the entire assignment though :P)
       (b as any).breachChecklist = getResolutionRecsPerBreach(
         dataClasses,
         args,

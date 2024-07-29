@@ -6,11 +6,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { logger } from "../../../../../../functions/server/logging";
 import { errorIfProduction } from "../../../../../utils/errorThrower";
 import { getBreachesForHash } from "../../../config/defaults";
-
-type BreachedAccountResponse = {
-  hashSuffix: string;
-  websites: string[];
-}[];
+import { BreachedAccountResponse } from "../../../../../../../utils/hibp";
 
 export function GET(
   _: NextRequest,
@@ -26,7 +22,7 @@ export function GET(
 
   const data: BreachedAccountResponse = [
     {
-      hashSuffix: "", //hibp.js ignores hashSuffix if a mock endpoint is used.
+      hashSuffix: "", //hibp.ts ignores hashSuffix if a mock endpoint is used.
       websites: breachesList,
     },
   ];
