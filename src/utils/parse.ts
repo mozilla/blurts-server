@@ -6,13 +6,13 @@
 /* c8 ignore start */
 
 /** See https://en.wikipedia.org/wiki/ISO_8601 */
-export type ISO8601DateString = string | undefined | null;
+export type ISO8601DateString = string;
 /**  See https://en.wikipedia.org/wiki/E.164 */
-export type E164PhoneNumberString = `+${string}` | null;
+export type E164PhoneNumberString = `+${string}`;
 
 export function parseE164PhoneNumber(
   phoneNumber: string,
-): E164PhoneNumberString {
+): E164PhoneNumberString | null {
   if (
     typeof phoneNumber !== "string" ||
     phoneNumber.length > 16 ||
