@@ -8,7 +8,7 @@ landing-all-hero-lead = Chúng tôi quét các rò rỉ dữ liệu để xem d�
 landing-all-hero-emailform-input-placeholder = yourname@example.com
 landing-all-hero-emailform-input-label = Nhập địa chỉ email của bạn để kiểm tra mức độ rò rỉ dữ liệu.
 landing-all-hero-emailform-submit-label = Quét miễn phí
-landing-all-hero-emailform-submit-sign-in-label = Đăng nhập để được quét miễn phí
+landing-all-hero-emailform-submit-sign-up-label = Đăng kí để được quét miễn phí
 # This is a label underneath a big number "14" - it's an image that demos Monitor.
 landing-all-hero-image-chart-label = dữ liệu bị lộ
 

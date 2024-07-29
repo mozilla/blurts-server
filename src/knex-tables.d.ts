@@ -9,6 +9,10 @@ import { ISO8601DateString } from "./utils/parse";
 import { StateAbbr } from "./utils/states";
 import { RemovalStatus } from "./app/functions/universal/scanResult";
 import { BreachDataTypes } from "./app/functions/universal/breach";
+import type {
+  formatDataClassesArray,
+  HibpGetBreachesResponse,
+} from "./utils/hibp";
 
 // See https://knexjs.org/guide/#typescript
 declare module "knex/types/tables" {
@@ -188,25 +192,24 @@ declare module "knex/types/tables" {
 
   interface BreachRow {
     id: number;
-    name: string;
-    title: string;
-    domain: null | string;
+    name: HibpGetBreachesResponse[number]["Name"];
+    title: HibpGetBreachesResponse[number]["Title"];
+    domain: HibpGetBreachesResponse[number]["Domain"];
     breach_date: Date;
     /** Note: added_date is provided by HIBP; this is not the equivalent to created_at in other tables */
     added_date: Date;
     /** Note: modified_date is provided by HIBP; this is not the equivalent to updated_at in other tables */
     modified_date: Date;
-    pwn_count: number;
-    description: null | string;
+    pwn_count: HibpGetBreachesResponse[number]["PwnCount"];
+    description: null | HibpGetBreachesResponse[number]["Description"];
     logo_path: string;
-    // TODO: Verify if Knex can actually parse this into a `string[]`
-    data_classes: unknown;
-    is_verified: boolean;
-    is_fabricated: boolean;
-    is_sensitive: boolean;
-    is_retired: boolean;
-    is_spam_list: boolean;
-    is_malware: boolean;
+    data_classes: ReturnType<typeof formatDataClassesArray>;
+    is_verified: HibpGetBreachesResponse[number]["IsVerified"];
+    is_fabricated: HibpGetBreachesResponse[number]["IsFabricated"];
+    is_sensitive: HibpGetBreachesResponse[number]["IsSensitive"];
+    is_retired: HibpGetBreachesResponse[number]["IsRetired"];
+    is_spam_list: HibpGetBreachesResponse[number]["IsSpamList"];
+    is_malware: HibpGetBreachesResponse[number]["IsMalware"];
     favicon_url: null | string;
   }
   type BreachOptionalColumns = Extract<
@@ -324,132 +327,180 @@ declare module "knex/types/tables" {
     "id" | "created_at" | "modified_at"
   >;
 
+  /**
+   * This modifies row types to indicate that dates can also be inserted as ISO
+   * 8601 strings, not just Date objects (which will be returned on SELECT queries)
+   */
+  type WritableDateColumns<Row extends object> = {
+    [FieldName in keyof Row]: Exclude<Row[FieldName], undefined> extends Date
+      ? ISO8601DateString | Date
+      : Row[FieldName];
+  };
+
   interface Tables {
     attributions: Knex.CompositeTableType<
       AttributionRow,
-      // On updates, auto-generated columns cannot be set, and nullable columns are optional:
-      Omit<
-        AttributionRow,
-        AttributionAutoInsertedColumns | AttributionOptionalColumns
-      > &
-        Partial<Pick<AttributionRow, AttributionOptionalColumns>>,
+      // On inserts, auto-generated columns cannot be set, and nullable columns are optional:
+      WritableDateColumns<
+        Omit<
+          AttributionRow,
+          AttributionAutoInsertedColumns | AttributionOptionalColumns
+        > &
+          Partial<Pick<AttributionRow, AttributionOptionalColumns>>
+      >,
       // On updates, don't allow updating the ID and created date; all other fields are optional, except updated_at:
-      Partial<Omit<AttributionRow, "id" | "created_at">> &
-        Pick<AttributionRow, "updated_at">
+      WritableDateColumns<
+        Partial<Omit<AttributionRow, "id" | "created_at">> &
+          Pick<AttributionRow, "updated_at">
+      >
     >;
 
     feature_flags: Knex.CompositeTableType<
       FeatureFlagRow,
-      // On updates, auto-generated columns cannot be set, and nullable columns are optional:
-      Omit<
-        FeatureFlagRow,
-        FeatureFlagAutoInsertedColumns | FeatureFlagOptionalColumns
-      > &
-        Partial<Pick<FeatureFlagRow, FeatureFlagOptionalColumns>>,
+      // On inserts, auto-generated columns cannot be set, and nullable columns are optional:
+      WritableDateColumns<
+        Omit<
+          FeatureFlagRow,
+          FeatureFlagAutoInsertedColumns | FeatureFlagOptionalColumns
+        > &
+          Partial<Pick<FeatureFlagRow, FeatureFlagOptionalColumns>>
+      >,
       // On updates, don't allow updating the ID and created date; all other fields are optional:
-      Partial<Omit<FeatureFlagRow, "name" | "created_at">>
+      WritableDateColumns<Partial<Omit<FeatureFlagRow, "name" | "created_at">>>
     >;
 
     subscribers: Knex.CompositeTableType<
       SubscriberRow,
       // On inserts, auto-generated columns cannot be set, and nullable columns are optional.
-      Omit<
-        SubscriberRow,
-        SubscriberAutoInsertedColumns | SubscriberOptionalColumns
-      > &
-        Partial<Pick<SubscriberRow, SubscriberOptionalColumns>>,
+      WritableDateColumns<
+        Omit<
+          SubscriberRow,
+          SubscriberAutoInsertedColumns | SubscriberOptionalColumns
+        > &
+          Partial<Pick<SubscriberRow, SubscriberOptionalColumns>>
+      >,
       // On updates, don't allow updating the ID and created date; all
-      // otherfields are optional, except updated_at:
-      Partial<Omit<SubscriberRow, "id" | "created_at">> &
-        Pick<SubscriberRow, "updated_at">
+      WritableDateColumns<
+        // otherfields are optional, except updated_at:
+        Partial<Omit<SubscriberRow, "id" | "created_at">> &
+          Pick<SubscriberRow, "updated_at">
+      >
     >;
 
     subscriber_coupons: Knex.CompositeTableType<
       SubscriberCouponRow,
-      // On updates, auto-generated columns cannot be set, and nullable columns are optional:
-      Omit<SubscriberCouponRow, SubscriberAutoInsertedColumns>,
+      // On inserts, auto-generated columns cannot be set, and nullable columns are optional:
+      WritableDateColumns<
+        Omit<SubscriberCouponRow, SubscriberAutoInsertedColumns>
+      >,
       // On updates, don't allow updating the ID; all other fields are optional:
-      Partial<Omit<SubscriberCouponRow, "id">>
+      WritableDateColumns<Partial<Omit<SubscriberCouponRow, "id">>>
     >;
 
     email_addresses: Knex.CompositeTableType<
       EmailAddressRow,
-      // On updates, auto-generated columns cannot be set, and nullable columns are optional:
-      Omit<EmailAddressRow, EmailAddressAutoInsertedColumns>,
+      // On inserts, auto-generated columns cannot be set, and nullable columns are optional:
+      WritableDateColumns<
+        Omit<EmailAddressRow, EmailAddressAutoInsertedColumns>
+      >,
       // On updates, don't allow updating the ID and created date; all other fields are optional, except updated_at:
-      Partial<Omit<EmailAddressRow, "id" | "created_at">> &
-        Pick<EmailAddressRow, "updated_at">
+      WritableDateColumns<
+        Partial<Omit<EmailAddressRow, "id" | "created_at">> &
+          Pick<EmailAddressRow, "updated_at">
+      >
     >;
 
     breaches: Knex.CompositeTableType<
       BreachRow,
-      // On updates, auto-generated columns cannot be set, and nullable columns are optional:
-      Omit<BreachRow, BreachAutoInsertedColumns | BreachOptionalColumns> &
-        Partial<Pick<BreachRow, BreachOptionalColumns>>,
+      // On inserts, auto-generated columns cannot be set, and nullable columns are optional:
+      WritableDateColumns<
+        Omit<BreachRow, BreachAutoInsertedColumns | BreachOptionalColumns> &
+          Partial<Pick<BreachRow, BreachOptionalColumns>>
+      >,
       // On updates, don't allow updating the ID; all other fields are optional:
-      Partial<Omit<BreachRow, "id">>
+      WritableDateColumns<Partial<Omit<BreachRow, "id">>>
     >;
 
     onerep_scans: Knex.CompositeTableType<
       OnerepScanRow,
-      // On updates, auto-generated columns cannot be set, and nullable columns are optional:
-      Omit<
-        OnerepScanRow,
-        OnerepScanAutoInsertedColumns | OnerepScanOptionalColumns
-      > &
-        Partial<Pick<OnerepScanRow, OnerepScanOptionalColumns>>,
+      // On inserts, auto-generated columns cannot be set, and nullable columns are optional:
+      WritableDateColumns<
+        Omit<
+          OnerepScanRow,
+          OnerepScanAutoInsertedColumns | OnerepScanOptionalColumns
+        > &
+          Partial<Pick<OnerepScanRow, OnerepScanOptionalColumns>>
+      >,
       // On updates, don't allow updating the ID and created date; all other fields are optional, except updated_at:
-      Partial<Omit<OnerepScanRow, "id" | "created_at">> &
-        Pick<OnerepScanRow, "updated_at">
+      WritableDateColumns<
+        Partial<Omit<OnerepScanRow, "id" | "created_at">> &
+          Pick<OnerepScanRow, "updated_at">
+      >
     >;
 
     onerep_scan_results: Knex.CompositeTableType<
       OnerepScanResultRow,
-      // On updates, auto-generated columns cannot be set, and nullable columns are optional:
-      Omit<
-        OnerepScanResultRow,
-        | OnerepScanResultAutoInsertedColumns
-        | OnerepScanResultOptionalColumns
-        | OnerepScanResultSerializedColumns
-      > &
-        Partial<Pick<OnerepScanResultRow, OnerepScanResultOptionalColumns>> &
-        Record<OnerepScanResultSerializedColumns, string>,
+      // On inserts, auto-generated columns cannot be set, and nullable columns are optional:
+      WritableDateColumns<
+        Omit<
+          OnerepScanResultRow,
+          | OnerepScanResultAutoInsertedColumns
+          | OnerepScanResultOptionalColumns
+          | OnerepScanResultSerializedColumns
+        > &
+          Partial<Pick<OnerepScanResultRow, OnerepScanResultOptionalColumns>> &
+          Record<OnerepScanResultSerializedColumns, string>
+      >,
       // On updates, don't allow updating the ID and created date; all other fields are optional, except updated_at:
-      Partial<Omit<OnerepScanResultRow, "id" | "created_at">> &
-        Pick<OnerepScanResultRow, "updated_at"> &
-        Record<OnerepScanResultSerializedColumns, string>
+      WritableDateColumns<
+        Partial<Omit<OnerepScanResultRow, "id" | "created_at">> &
+          Pick<OnerepScanResultRow, "updated_at"> &
+          Record<OnerepScanResultSerializedColumns, string>
+      >
     >;
 
     onerep_profiles: Knex.CompositeTableType<
       OnerepProfileRow,
-      // On updates, auto-generated columns cannot be set, and nullable columns are optional:
-      Omit<
-        OnerepProfileRow,
-        OnerepProfileAutoInsertedColumns | OnerepProfileOptionalColumns
-      > &
-        Partial<Pick<OnerepProfileRow, OnerepProfileOptionalColumns>>,
+      // On inserts, auto-generated columns cannot be set, and nullable columns are optional:
+      WritableDateColumns<
+        Omit<
+          OnerepProfileRow,
+          OnerepProfileAutoInsertedColumns | OnerepProfileOptionalColumns
+        > &
+          Partial<Pick<OnerepProfileRow, OnerepProfileOptionalColumns>>
+      >,
       // On updates, don't allow updating the ID and created date; all other fields are optional, except updated_at:
-      Partial<Omit<OnerepProfileRow, "id" | "created_at">> &
-        Pick<OnerepProfileRow, "updated_at">
+      WritableDateColumns<
+        Partial<Omit<OnerepProfileRow, "id" | "created_at">> &
+          Pick<OnerepProfileRow, "updated_at">
+      >
     >;
 
     email_notifications: Knex.CompositeTableType<
       EmailNotificationRow,
-      // On updates, auto-generated columns cannot be set:
-      Omit<EmailNotificationRow, EmailAddressAutoInsertedColumns> &
-        Partial<EmailNotificationRow>,
+      // On inserts, auto-generated columns cannot be set:
+      WritableDateColumns<
+        Omit<EmailNotificationRow, EmailAddressAutoInsertedColumns> &
+          Partial<EmailNotificationRow>
+      >,
       // On updates, don't allow updating the ID and created date; all other fields are optional, except updated_at:
-      Partial<Omit<EmailNotificationRow, "id" | "created_at">> &
-        Pick<EmailNotificationRow, "updated_at">
+      WritableDateColumns<
+        Partial<Omit<EmailNotificationRow, "id" | "created_at">> &
+          Pick<EmailNotificationRow, "updated_at">
+      >
     >;
 
     stats: Knex.CompositeTableType<
       StatsRow,
-      // On updates, auto-generated columns cannot be set:
-      Omit<StatsRow, StatsAutoInsertedColumns> & Partial<StatsRow>,
+      // On inserts, auto-generated columns cannot be set:
+      WritableDateColumns<
+        Omit<StatsRow, StatsAutoInsertedColumns> & Partial<StatsRow>
+      >,
       // On updates, don't allow updating the ID and created date; all other fields are optional, except modified_at:
-      Partial<Omit<StatsRow, "id" | "created_at">> &
-        Pick<StatsRow, "modified_at">
+      WritableDateColumns<
+        Partial<Omit<StatsRow, "id" | "created_at">> &
+          Pick<StatsRow, "modified_at">
+      >
     >;
   }
 }

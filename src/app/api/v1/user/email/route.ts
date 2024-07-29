@@ -11,10 +11,10 @@ import { addSubscriberUnverifiedEmailHash } from "../../../../../db/tables/email
 
 import { sendVerificationEmail } from "../../../utils/email";
 
-import { validateEmailAddress } from "../../../../../utils/emailAddress";
 import { getL10n } from "../../../../functions/l10n/serverComponents";
 import { initEmail } from "../../../../../utils/email";
 import { CONST_MAX_NUM_ADDRESSES } from "../../../../../constants";
+import { validateEmailAddress } from "../../../../../utils/emailAddress";
 
 interface EmailAddRequest {
   email: string;

@@ -2,6 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import { formatDataClassesArray } from "../../utils/hibp";
 import createDbConnection from "../connect.js";
 
 const knex = createDbConnection();
@@ -40,7 +41,7 @@ async function getAllBreachesCount() {
  * Upsert breaches into "breaches" table
  * Skip inserting when 'name' field (unique) has a conflict
  *
- * @param {any[]} hibpBreaches breaches array from HIBP API
+ * @param {import("../../utils/hibp").HibpGetBreachesResponse} hibpBreaches breaches array from HIBP API
  * @returns
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
@@ -60,8 +61,8 @@ async function upsertBreaches(hibpBreaches) {
           modified_date: breach.ModifiedDate,
           pwn_count: breach.PwnCount,
           description: breach.Description,
-          logo_path: breach.LogoPath,
-          data_classes: breach.DataClasses,
+          logo_path: /** @type {RegExpExecArray} */(/[^/]*$/.exec(breach.LogoPath))[0],
+          data_classes: formatDataClassesArray(breach.DataClasses),
           is_verified: breach.IsVerified,
           is_fabricated: breach.IsFabricated,
           is_sensitive: breach.IsSensitive,
