@@ -4,7 +4,7 @@
 
 import AppConstants from "../appConstants.js";
 import { getAllBreaches, knex } from "../db/tables/breaches.js";
-import { InternalServerError } from "./error.js";
+import { InternalServerError } from "./error";
 import { getMessage } from "./fluent.js";
 import { isUsingMockHIBPEndpoint } from "../app/functions/universal/mock.ts";
 import { BreachRow, EmailAddressRow, SubscriberRow } from "knex/types/tables";

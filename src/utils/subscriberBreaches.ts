@@ -10,7 +10,7 @@ import {
 import { getUserEmails } from "../db/tables/emailAddresses.js";
 import { HibpLikeDbBreach, getBreachesForEmail } from "./hibp";
 import { getSha1 } from "./fxa.js";
-import { parseIso8601Datetime } from "./parse.js";
+import { parseIso8601Datetime } from "./parse";
 import {
   BreachDataTypes,
   HibpBreachDataTypes,
