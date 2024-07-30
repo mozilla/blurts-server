@@ -4,12 +4,11 @@
 
 import AppConstants from "../appConstants.js";
 import { getAllBreaches, knex } from "../db/tables/breaches.js";
-import { InternalServerError } from "./error";
-import { getMessage } from "./fluent.js";
 import { isUsingMockHIBPEndpoint } from "../app/functions/universal/mock.ts";
 import { BreachRow, EmailAddressRow, SubscriberRow } from "knex/types/tables";
 import { ISO8601DateString } from "./parse.js";
 import { HibpBreachDataTypes } from "../app/functions/universal/breach.ts";
+import { logger } from "../app/functions/server/logging.ts";
 const {
   HIBP_THROTTLE_MAX_TRIES,
   HIBP_THROTTLE_DELAY,
@@ -54,17 +53,17 @@ async function _throttledFetch(
     switch (response.status) {
       case 404:
         // 404 can mean "no results", return undefined response
-        console.info("_throttledFetch", {
+        logger.info("_throttledFetch", {
           err: "Error 404, not going to retry. TryCount: " + tryCount,
         });
         return undefined;
       case 429:
-        console.info("_throttledFetch", {
+        logger.info("_throttledFetch", {
           err: "Error 429, tryCount: " + tryCount,
         });
         // @ts-ignore TODO: Explicitly parse into a number
         if (tryCount >= HIBP_THROTTLE_MAX_TRIES) {
-          throw new InternalServerError(getMessage("error-hibp-throttled"));
+          throw new Error("error_hibp_throttled");
         } else {
           tryCount++;
           await new Promise((resolve) =>
@@ -74,12 +73,12 @@ async function _throttledFetch(
           return await _throttledFetch(url, reqOptions, tryCount);
         }
       default:
-        console.error(await response.text());
-        throw new InternalServerError(`bad response: ${response.status}`);
+        logger.error(await response.text());
+        throw new Error(`bad response: ${response.status}`);
     }
   } catch (err) {
-    console.error("_throttledFetch", { err });
-    throw new InternalServerError(getMessage("error-hibp-connect"));
+    logger.error("_throttledFetch", { err });
+    throw new Error("error_hibp_connect");
   }
 }
 /* c8 ignore stop */
@@ -92,7 +91,7 @@ async function hibpApiFetch(path: string, options = {}) {
   try {
     return await _throttledFetch(url, reqOptions);
   } catch (ex) {
-    console.error(ex);
+    logger.error(ex);
   }
 }
 /* c8 ignore stop */
@@ -138,7 +137,7 @@ async function kAnonReq(path: string, options = {}) {
   try {
     return await _throttledFetch(url, reqOptions);
   } catch (ex) {
-    console.error(ex);
+    logger.error(ex);
   }
 }
 /* c8 ignore stop */
@@ -208,7 +207,7 @@ async function getAllBreachesFromDb(): Promise<HibpLikeDbBreach[]> {
   try {
     dbBreaches = await getAllBreaches();
   } catch (e) {
-    console.error(
+    logger.error(
       "getAllBreachesFromDb",
       "No breaches exist in the database: " + (e as string),
     );
@@ -311,7 +310,7 @@ async function getBreachesForEmail(
     | BreachedAccountResponse
     | undefined;
   if (!response || (response && response.length < 1)) {
-    console.error("failed_kAnonReq_call: no response or empty response");
+    logger.error("failed_kAnonReq_call: no response or empty response");
     return [];
   }
   if (isUsingMockHIBPEndpoint()) {
