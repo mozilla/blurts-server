@@ -5,8 +5,8 @@
 import crypto from "crypto";
 import { URL } from "url";
 
-import { InternalServerError } from "./error";
 import AppConstants from "../appConstants.js";
+import { logger } from "../app/functions/server/logging.js";
 
 /**
  * @see https://mozilla.github.io/ecosystem-platform/api#tag/Oauth/operation/postOauthDestroy
@@ -47,13 +47,12 @@ async function destroyOAuthToken(
 
   try {
     const response = await fetch(tokenUrl, tokenOptions);
-    if (!response.ok)
-      throw new InternalServerError(`bad response: ${response.status}`);
+    if (!response.ok) throw new Error(`bad response: ${response.status}`);
     await response.json();
     return;
   } catch (e) {
     if (e instanceof Error) {
-      console.error("destroyOAuthToken", { stack: e.stack });
+      logger.error("destroyOAuthToken", { stack: e.stack });
     }
     return e;
   }
@@ -143,7 +142,7 @@ async function refreshOAuthTokens(
     return responseTokens;
   } catch (e) {
     if (e instanceof Error) {
-      console.error("refresh_fxa_access_token", { stack: e.stack });
+      logger.error("refresh_fxa_access_token", { stack: e.stack });
     }
     throw e;
   }
@@ -177,11 +176,11 @@ async function getSubscriptions(
       await getResp.json();
     if (!getResp.ok) throw resp;
 
-    console.info(`get_fxa_subscriptions: success`);
+    logger.info(`get_fxa_subscriptions: success`);
     return resp;
   } catch (e) {
     if (e instanceof Error) {
-      console.error("get_fxa_subscriptions", { stack: e.stack });
+      logger.error("get_fxa_subscriptions", { stack: e.stack });
     }
     return null;
   }
@@ -222,18 +221,13 @@ async function getBillingAndSubscriptions(
         Authorization: `Bearer ${bearerToken}`,
       },
     });
-
-    if (!getResp.ok) {
-      throw new InternalServerError(
-        `bad response: [${getResp.status}] [${getResp.statusText}]`,
-      );
-    } else {
-      console.info(`get_fxa_subscriptions: success`);
-      return (await getResp.json()) as FxaGetOauthMozillaSubscribptionsCustomerBillingAndSubscriptionsResponseSuccess;
-    }
+    const respJson = getResp.json();
+    if (!getResp.ok) throw respJson;
+    logger.info(`get_fxa_subscriptions: success`);
+    return (await getResp.json()) as FxaGetOauthMozillaSubscribptionsCustomerBillingAndSubscriptionsResponseSuccess;
   } catch (e) {
     if (e instanceof Error) {
-      console.error("get_fxa_subscriptions", { stack: e.stack });
+      logger.error("get_fxa_subscriptions", { stack: e.stack });
     }
     return null;
   }
@@ -257,25 +251,23 @@ async function deleteSubscription(bearerToken: string): Promise<boolean> {
     }
     if (subscriptionId) {
       const deleteUrl = `${AppConstants.OAUTH_ACCOUNT_URI}/oauth/subscriptions/active/${subscriptionId}`;
-      const response = await fetch(deleteUrl, {
+      const delResp = await fetch(deleteUrl, {
         method: "DELETE",
         headers: {
           Accept: "application/json",
           Authorization: `Bearer ${bearerToken}`,
         },
       });
-      if (!response.ok) {
-        throw new Error(await response.text());
-      } else {
-        console.info(
-          `delete_fxa_subscription: success - ${JSON.stringify(await response.json())}`,
-        );
-      }
+      const respJson = delResp.json();
+      if (!delResp.ok) throw respJson;
+      logger.info(
+        `delete_fxa_subscription: success - ${JSON.stringify(respJson)}`,
+      );
     }
     return true;
   } catch (e) {
     if (e instanceof Error) {
-      console.error("delete_fxa_subscription", { stack: e.stack });
+      logger.error("delete_fxa_subscription", { stack: e.stack });
     }
     return false;
   }
@@ -316,17 +308,17 @@ async function applyCoupon(
       });
       if (!response.ok) {
         const errMsg = await response.text();
-        console.error(`apply_coupon: failed - ${errMsg}`);
+        logger.error(`apply_coupon: failed - ${errMsg}`);
         throw new Error(`apply_coupon: failed - ${errMsg}`);
       } else {
-        console.info(
+        logger.info(
           `apply_coupon: success - ${JSON.stringify(await response.json())}`,
         );
       }
     }
   } catch (e) {
     if (e instanceof Error) {
-      console.error("apply_coupon", { stack: e.stack });
+      logger.error("apply_coupon", { stack: e.stack });
     }
     throw e;
   }

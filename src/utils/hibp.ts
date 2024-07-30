@@ -73,8 +73,10 @@ async function _throttledFetch(
           return await _throttledFetch(url, reqOptions, tryCount);
         }
       default:
-        logger.error(await response.text());
-        throw new Error(`bad response: ${response.status}`);
+        logger.error(`hibp_throttle_default_error`, {
+          exception: await response.text(),
+        });
+        throw new Error(`hibp_throttle_default_error: ${response.status}`);
     }
   } catch (err) {
     logger.error("_throttledFetch", { err });
