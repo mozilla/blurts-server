@@ -55,9 +55,13 @@ export const PetitionBanner = (props: {
               // In order to prevent the banner from being hidden before
               // the click on the link button is getting registered: Delay the
               // dismissal until the next event loop execution.
+              // A timeout value of `0` should be enough, but unfortunately
+              // this does not seem to work on iOS — even a value lower than
+              // `100` should be plenty, but since this is now an arbitrary
+              // value let’s make extra sure.
               setTimeout(() => {
                 dismiss();
-              }, 0);
+              }, 100);
             }}
             href={CONST_URL_DATA_PRIVACY_PETITION_BANNER}
             target="_blank"
