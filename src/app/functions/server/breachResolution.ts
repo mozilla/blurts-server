@@ -99,9 +99,7 @@ function appendBreachResolutionChecklist(
   const { verifiedEmails } = userBreachData;
 
   for (const { breaches } of verifiedEmails) {
-    // Old untyped code, adding type defitions now isn't worth the effort:
-    /* eslint-disable @typescript-eslint/no-explicit-any */
-    breaches.forEach((b: any) => {
+    breaches.forEach((b) => {
       const dataClasses = b.DataClasses;
       const blockList = (AppConstants.HIBP_BREACH_DOMAIN_BLOCKLIST ?? "").split(
         ",",
@@ -127,7 +125,11 @@ function appendBreachResolutionChecklist(
         transUnionLink:
           '<a href="https://www.transunion.com/credit-freeze" target="_blank">TransUnion</a>',
       };
-      b.breachChecklist = getResolutionRecsPerBreach(
+      // `any` annotation added when converting to TypeScript and setting the type for `b`;
+      // I could've made a new type for `b`, but since it doesn't look like we're actually using
+      // the `breachChecklist` property anywhere, `any` is fine for now.
+      // (I'm not confident enough to delete the entire assignment though :P)
+      (b as any).breachChecklist = getResolutionRecsPerBreach(
         dataClasses,
         args,
         options,
