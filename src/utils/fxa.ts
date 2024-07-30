@@ -47,14 +47,15 @@ async function destroyOAuthToken(
 
   try {
     const response = await fetch(tokenUrl, tokenOptions);
-    if (!response.ok) throw new Error(`bad response: ${response.status}`);
-    await response.json();
-    return;
+    const responseJson = await response.json();
+    if (!response.ok) throw responseJson;
+    logger.info("destroy_oauth_token");
+    return true;
   } catch (e) {
     if (e instanceof Error) {
-      logger.error("destroyOAuthToken", { stack: e.stack });
+      logger.error("destroy_oauth_token", { stack: e.stack });
     }
-    return e;
+    return false;
   }
 }
 /* c8 ignore stop */
@@ -65,14 +66,23 @@ async function revokeOAuthTokens(subscriber: {
   fxa_access_token: string;
   fxa_refresh_token: string;
 }) {
-  await destroyOAuthToken({
-    token: subscriber.fxa_access_token,
-    token_type_hint: "access_token",
-  });
-  await destroyOAuthToken({
-    token: subscriber.fxa_refresh_token,
-    token_type_hint: "refresh_token",
-  });
+  try {
+    await destroyOAuthToken({
+      token: subscriber.fxa_access_token,
+      token_type_hint: "access_token",
+    });
+    await destroyOAuthToken({
+      token: subscriber.fxa_refresh_token,
+      token_type_hint: "refresh_token",
+    });
+    logger.info("revoke_oauth_token");
+  } catch (e) {
+    if (e instanceof Error) {
+      logger.error("revoke_oauth_token", {
+        stack: e.stack,
+      });
+    }
+  }
 }
 
 /**
@@ -130,15 +140,15 @@ async function refreshOAuthTokens(
     ttl: 604800, // request 7 days ttl
   };
   try {
-    const postResp = await fetch(subscriptionIdUrl, {
+    const response = await fetch(subscriptionIdUrl, {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
       method: "POST",
     });
 
     const responseTokens: FxaPostOauthTokenResponseSuccessRefreshToken =
-      await postResp.json();
-    if (!postResp.ok) throw responseTokens;
+      await response.json();
+    if (!response.ok) throw responseTokens;
     return responseTokens;
   } catch (e) {
     if (e instanceof Error) {
@@ -166,18 +176,18 @@ async function getSubscriptions(
 ): Promise<FxaGetOauthSubscribptionsActiveResponseSuccess | null> {
   const subscriptionIdUrl = `${AppConstants.OAUTH_ACCOUNT_URI}/oauth/subscriptions/active`;
   try {
-    const getResp = await fetch(subscriptionIdUrl, {
+    const response = await fetch(subscriptionIdUrl, {
       headers: {
         Accept: "application/json",
         Authorization: `Bearer ${bearerToken}`,
       },
     });
-    const resp: FxaGetOauthSubscribptionsActiveResponseSuccess =
-      await getResp.json();
-    if (!getResp.ok) throw resp;
+    const responseJson: FxaGetOauthSubscribptionsActiveResponseSuccess =
+      await response.json();
+    if (!response.ok) throw responseJson;
 
     logger.info(`get_fxa_subscriptions: success`);
-    return resp;
+    return responseJson;
   } catch (e) {
     if (e instanceof Error) {
       logger.error("get_fxa_subscriptions", { stack: e.stack });
@@ -215,19 +225,19 @@ async function getBillingAndSubscriptions(
   const subscriptionIdUrl = `${AppConstants.OAUTH_ACCOUNT_URI}/oauth/mozilla-subscriptions/customer/billing-and-subscriptions`;
 
   try {
-    const getResp = await fetch(subscriptionIdUrl, {
+    const response = await fetch(subscriptionIdUrl, {
       headers: {
         Accept: "application/json",
         Authorization: `Bearer ${bearerToken}`,
       },
     });
-    const respJson = getResp.json();
-    if (!getResp.ok) throw respJson;
-    logger.info(`get_fxa_subscriptions: success`);
-    return (await getResp.json()) as FxaGetOauthMozillaSubscribptionsCustomerBillingAndSubscriptionsResponseSuccess;
+    const responseJson = await response.json();
+    if (!response.ok) throw responseJson;
+    logger.info(`get_fxa_billing_subscriptions`);
+    return responseJson as FxaGetOauthMozillaSubscribptionsCustomerBillingAndSubscriptionsResponseSuccess;
   } catch (e) {
     if (e instanceof Error) {
-      logger.error("get_fxa_subscriptions", { stack: e.stack });
+      logger.error("get_fxa_billing_subscriptions", { stack: e.stack });
     }
     return null;
   }
@@ -251,18 +261,18 @@ async function deleteSubscription(bearerToken: string): Promise<boolean> {
     }
     if (subscriptionId) {
       const deleteUrl = `${AppConstants.OAUTH_ACCOUNT_URI}/oauth/subscriptions/active/${subscriptionId}`;
-      const delResp = await fetch(deleteUrl, {
+      const response = await fetch(deleteUrl, {
         method: "DELETE",
         headers: {
           Accept: "application/json",
           Authorization: `Bearer ${bearerToken}`,
         },
       });
-      const respJson = delResp.json();
-      if (!delResp.ok) throw respJson;
-      logger.info(
-        `delete_fxa_subscription: success - ${JSON.stringify(respJson)}`,
-      );
+      const responseJson = await response.json();
+      if (!response.ok) throw responseJson;
+      logger.info("delete_fxa_subscription", {
+        message: JSON.stringify(responseJson),
+      });
     }
     return true;
   } catch (e) {
@@ -306,15 +316,9 @@ async function applyCoupon(
           subscriptionId,
         }),
       });
-      if (!response.ok) {
-        const errMsg = await response.text();
-        logger.error(`apply_coupon: failed - ${errMsg}`);
-        throw new Error(`apply_coupon: failed - ${errMsg}`);
-      } else {
-        logger.info(
-          `apply_coupon: success - ${JSON.stringify(await response.json())}`,
-        );
-      }
+      const responseJson = await response.json();
+      if (!response.ok) throw responseJson;
+      logger.info("apply_coupon", { message: JSON.stringify(responseJson) });
     }
   } catch (e) {
     if (e instanceof Error) {
