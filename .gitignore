@@ -69,6 +69,3 @@ next-env.d.ts
 # Glean
 .venv
 /src/telemetry/generated/
-
-# certificates
-certificates
