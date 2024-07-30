@@ -270,9 +270,7 @@ async function deleteSubscription(bearerToken: string): Promise<boolean> {
       });
       const responseJson = await response.json();
       if (!response.ok) throw responseJson;
-      logger.info("delete_fxa_subscription", {
-        message: JSON.stringify(responseJson),
-      });
+      logger.info("delete_fxa_subscription");
     }
     return true;
   } catch (e) {
@@ -318,7 +316,7 @@ async function applyCoupon(
       });
       const responseJson = await response.json();
       if (!response.ok) throw responseJson;
-      logger.info("apply_coupon", { message: JSON.stringify(responseJson) });
+      logger.info("apply_coupon");
     }
   } catch (e) {
     if (e instanceof Error) {
