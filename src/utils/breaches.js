@@ -3,8 +3,8 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { getUserEmails } from '../db/tables/emailAddresses.js'
-import { getBreachesForEmail, getFilteredBreaches } from './hibp.js'
-import { getSha1 } from './fxa.js'
+import { getBreachesForEmail, getFilteredBreaches } from './hibp'
+import { getSha1 } from './fxa'
 import { filterBreachDataTypes } from './breachResolution.js'
 import { captureMessage } from "@sentry/node";
 
@@ -95,7 +95,7 @@ function addRecencyIndex(foundBreaches) {
 /**
  * @typedef {{
  *   email: string;
- *   breaches: import('./hibp.js').HibpLikeDbBreach[];
+ *   breaches: import('./hibp').HibpLikeDbBreach[];
  *   id: number;
  *   primary: boolean;
  *   verified: boolean;
@@ -106,7 +106,7 @@ function addRecencyIndex(foundBreaches) {
 /**
  * TODO: deprecate with MNTOR-2021
  *
- * @param {{ user: any; email: any; recordId: any; recordVerified: any; allBreaches: import('./hibp.js').HibpLikeDbBreach[]; }} options
+ * @param {{ user: any; email: any; recordId: any; recordVerified: any; allBreaches: import('./hibp').HibpLikeDbBreach[]; }} options
  * @returns {Promise<BundledVerifiedEmails>}
  */
 async function bundleVerifiedEmails(options) {

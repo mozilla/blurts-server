@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { expect, request, Page, Locator, test } from "@playwright/test";
-import { InternalServerError } from "../../utils/error.js";
+import { InternalServerError } from "../../utils/error";
 import { LandingPage } from "../pages/landingPage.js";
 import { AuthPage } from "../pages/authPage.js";
 

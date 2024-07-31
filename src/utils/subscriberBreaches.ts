@@ -8,11 +8,10 @@ import {
   SubscriberRow,
 } from "knex/types/tables";
 import { getUserEmails } from "../db/tables/emailAddresses.js";
-import { HibpLikeDbBreach, getBreachesForEmail } from "./hibp.js";
-import { getSha1 } from "./fxa.js";
-import { parseIso8601Datetime } from "./parse.js";
+import { HibpLikeDbBreach, getBreachesForEmail } from "./hibp";
+import { getSha1 } from "./fxa";
+import { parseIso8601Datetime } from "./parse";
 import {
-  Breach,
   BreachDataTypes,
   HibpBreachDataTypes,
   ResolutionRelevantBreachDataTypes,
@@ -27,11 +26,11 @@ export interface SubscriberBreach {
   breachDate: Date;
   dataClasses: Array<HibpBreachDataTypes[keyof HibpBreachDataTypes]>;
   resolvedDataClasses: Array<HibpBreachDataTypes[keyof HibpBreachDataTypes]>;
-  description: string;
+  description: string | null;
   domain: string;
   id: number;
   isResolved?: boolean;
-  favIconUrl: string;
+  favIconUrl: string | null;
   modifiedDate: Date;
   name: string;
   title: string;
@@ -73,7 +72,7 @@ function filterBreachDataTypes(
  */
 export async function getSubBreaches(
   subscriber: SubscriberRow,
-  allBreaches: (Breach | HibpLikeDbBreach)[],
+  allBreaches: HibpLikeDbBreach[],
   countryCode: string,
 ) {
   const uniqueBreaches: SubscriberBreachMap = {};
@@ -137,7 +136,7 @@ export async function getSubBreaches(
 
       // `allBreaches` is generally the return value of `getBreaches`, which
       // either loads breaches from the database, or fetches them from the HIBP
-      // API. In the former csae, `AddedDate`, `BreachDate` and `ModifiedDate`
+      // API. In the former case, `AddedDate`, `BreachDate` and `ModifiedDate`
       // are Date objects, but in the latter case, they are ISO 8601 date
       // strings. Thus, we normalise that to always be a Date object.
       const subscriberBreach: SubscriberBreach = {
@@ -149,7 +148,7 @@ export async function getSubBreaches(
         description: breach.Description,
         domain: breach.Domain,
         isResolved: isBreachResolved(dataClassesEffected, resolvedDataClasses),
-        favIconUrl: breach.FaviconUrl,
+        favIconUrl: breach.FaviconUrl ?? null,
         modifiedDate: normalizeDate(breach.ModifiedDate),
         name: breach.Name,
         title: breach.Title,

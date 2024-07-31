@@ -6,29 +6,6 @@ import { DataClassEffected } from "../../../utils/subscriberBreaches";
 
 // TODO: Move pure functions that operate on breaches to this file
 
-export interface Breach {
-  AddedDate: string;
-  BreachDate: string;
-  DataClasses: Array<string>;
-  Description: string;
-  Domain: string;
-  Id: number;
-  IsFabricated: boolean;
-  IsMalware: boolean;
-  IsResolved?: boolean;
-  IsRetired: boolean;
-  IsSensitive: boolean;
-  IsSpamList: boolean;
-  IsVerified: boolean;
-  LogoPath: string;
-  ModifiedDate: string;
-  Name: string;
-  PwnCount: number;
-  recencyIndex: number;
-  ResolutionsChecked: Array<string>;
-  Title: string;
-}
-
 export const BreachDataTypes = {
   Passwords: "passwords",
   Email: "email-addresses",

@@ -17,8 +17,8 @@ import {
 } from "../../../db/tables/subscribers.js";
 import { addSubscriber } from "../../../db/tables/emailAddresses.js";
 import { getBreaches } from "../../functions/server/getBreaches";
-import { getBreachesForEmail } from "../../../utils/hibp.js";
-import { getSha1, refreshOAuthTokens } from "../../../utils/fxa.js";
+import { getBreachesForEmail } from "../../../utils/hibp";
+import { getSha1, refreshOAuthTokens } from "../../../utils/fxa";
 import {
   getEmailCtaDashboardHref,
   initEmail,
