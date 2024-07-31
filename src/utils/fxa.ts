@@ -6,7 +6,7 @@ import crypto from "crypto";
 import { URL } from "url";
 
 import AppConstants from "../appConstants.js";
-import { logger } from "../app/functions/server/logging.js";
+import { logger } from "../app/functions/server/logging";
 
 /**
  * @see https://mozilla.github.io/ecosystem-platform/api#tag/Oauth/operation/postOauthDestroy
@@ -316,11 +316,11 @@ async function applyCoupon(
       });
       const responseJson = await response.json();
       if (!response.ok) throw responseJson;
-      logger.info("apply_coupon");
+      logger.info("apply_fxa_coupon");
     }
   } catch (e) {
     if (e instanceof Error) {
-      logger.error("apply_coupon", { stack: e.stack });
+      logger.error("apply_fxa_coupon", { stack: e.stack });
     }
     throw e;
   }
