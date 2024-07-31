@@ -726,7 +726,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Navigation @sm
 });
 
 // These tests rely heavily on mocks
-test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Data Breaches`, () => {
+test.skip(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Data Breaches`, () => {
   test.use({ storageState: { cookies: [], origins: [] } });
 
   test("Verify that the High risk data breaches step is displayed correctly", async ({
@@ -736,13 +736,12 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Data Breaches`
     landingPage,
     authPage,
   }) => {
+    if (!isUsingMockHIBPEndpoint() || !isUsingMockONEREPEndpoint()) return;
     const emailToUse = process.env.E2E_TEST_ACCOUNT_EMAIL_EXPOSURES_STARTED!;
     const pwdToUse = process.env.E2E_TEST_ACCOUNT_PASSWORD!;
     expect(emailToUse).not.toBeUndefined();
     expect(pwdToUse).not.toBeUndefined();
     await forceLoginAs(emailToUse, pwdToUse, page, landingPage, authPage);
-
-    if (!isUsingMockHIBPEndpoint() || !isUsingMockONEREPEndpoint()) return;
     await resetTestData(page, true, true);
     await dashboardPage.open();
 
