@@ -24,7 +24,7 @@ import { getLocale } from "../../../../../../functions/universal/getLocale";
 import { getCountryCode } from "../../../../../../functions/server/getCountryCode";
 import { getSubscriberById } from "../../../../../../../db/tables/subscribers";
 import { checkSession } from "../../../../../../functions/server/checkSession";
-import { checkUserHasMonthlySubscription } from "../../../../../../functions/universal/user";
+import { checkUserHasMonthlySubscription } from "../../../../../../functions/server/user";
 
 type Props = {
   searchParams: {

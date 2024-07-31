@@ -2,7 +2,7 @@ import createDbConnection from "../db/connect.js";
 const knex = createDbConnection();
 
 import { subscribeHash } from "../utils/hibp";
-import { getSha1 } from "../utils/fxa.js";
+import { getSha1 } from "../utils/fxa";
 
 /**
  * MNTOR-2469: One-off script to lowercase email addresses of subscribers and emails before hashing

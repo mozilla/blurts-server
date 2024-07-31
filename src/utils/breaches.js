@@ -4,7 +4,7 @@
 
 import { getUserEmails } from '../db/tables/emailAddresses.js'
 import { getBreachesForEmail, getFilteredBreaches } from './hibp'
-import { getSha1 } from './fxa.js'
+import { getSha1 } from './fxa'
 import { filterBreachDataTypes } from './breachResolution.js'
 import { captureMessage } from "@sentry/node";
 

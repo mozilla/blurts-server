@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import createDbConnection from "../connect.js";
-import { destroyOAuthToken } from '../../utils/fxa.js'
+import { destroyOAuthToken } from '../../utils/fxa'
 import AppConstants from '../../appConstants.js'
 
 const knex = createDbConnection();
