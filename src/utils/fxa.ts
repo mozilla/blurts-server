@@ -6,7 +6,6 @@ import crypto from "crypto";
 import { URL } from "url";
 
 import AppConstants from "../appConstants.js";
-import { logger } from "../app/functions/server/logging";
 
 /**
  * @see https://mozilla.github.io/ecosystem-platform/api#tag/Oauth/operation/postOauthDestroy
@@ -49,11 +48,11 @@ async function destroyOAuthToken(
     const response = await fetch(tokenUrl, tokenOptions);
     const responseJson = await response.json();
     if (!response.ok) throw responseJson;
-    logger.info("destroy_oauth_token");
+    console.info("destroy_oauth_token");
     return true;
   } catch (e) {
     if (e instanceof Error) {
-      logger.error("destroy_oauth_token", { stack: e.stack });
+      console.error("destroy_oauth_token", { stack: e.stack });
     }
     return false;
   }
@@ -75,10 +74,10 @@ async function revokeOAuthTokens(subscriber: {
       token: subscriber.fxa_refresh_token,
       token_type_hint: "refresh_token",
     });
-    logger.info("revoke_oauth_token");
+    console.info("revoke_oauth_token");
   } catch (e) {
     if (e instanceof Error) {
-      logger.error("revoke_oauth_token", {
+      console.error("revoke_oauth_token", {
         stack: e.stack,
       });
     }
@@ -152,7 +151,7 @@ async function refreshOAuthTokens(
     return responseTokens;
   } catch (e) {
     if (e instanceof Error) {
-      logger.error("refresh_fxa_access_token", { stack: e.stack });
+      console.error("refresh_fxa_access_token", { stack: e.stack });
     }
     throw e;
   }
@@ -186,11 +185,11 @@ async function getSubscriptions(
       await response.json();
     if (!response.ok) throw responseJson;
 
-    logger.info(`get_fxa_subscriptions: success`);
+    console.info(`get_fxa_subscriptions: success`);
     return responseJson;
   } catch (e) {
     if (e instanceof Error) {
-      logger.error("get_fxa_subscriptions", { stack: e.stack });
+      console.error("get_fxa_subscriptions", { stack: e.stack });
     }
     return null;
   }
@@ -233,11 +232,11 @@ async function getBillingAndSubscriptions(
     });
     const responseJson = await response.json();
     if (!response.ok) throw responseJson;
-    logger.info(`get_fxa_billing_subscriptions`);
+    console.info(`get_fxa_billing_subscriptions`);
     return responseJson as FxaGetOauthMozillaSubscribptionsCustomerBillingAndSubscriptionsResponseSuccess;
   } catch (e) {
     if (e instanceof Error) {
-      logger.error("get_fxa_billing_subscriptions", { stack: e.stack });
+      console.error("get_fxa_billing_subscriptions", { stack: e.stack });
     }
     return null;
   }
@@ -270,12 +269,12 @@ async function deleteSubscription(bearerToken: string): Promise<boolean> {
       });
       const responseJson = await response.json();
       if (!response.ok) throw responseJson;
-      logger.info("delete_fxa_subscription");
+      console.info("delete_fxa_subscription");
     }
     return true;
   } catch (e) {
     if (e instanceof Error) {
-      logger.error("delete_fxa_subscription", { stack: e.stack });
+      console.error("delete_fxa_subscription", { stack: e.stack });
     }
     return false;
   }
@@ -316,11 +315,11 @@ async function applyCoupon(
       });
       const responseJson = await response.json();
       if (!response.ok) throw responseJson;
-      logger.info("apply_fxa_coupon");
+      console.info("apply_fxa_coupon");
     }
   } catch (e) {
     if (e instanceof Error) {
-      logger.error("apply_fxa_coupon", { stack: e.stack });
+      console.error("apply_fxa_coupon", { stack: e.stack });
     }
     throw e;
   }
