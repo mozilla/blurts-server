@@ -8,7 +8,7 @@ import { isUsingMockHIBPEndpoint } from "../app/functions/universal/mock.ts";
 import { BreachRow, EmailAddressRow, SubscriberRow } from "knex/types/tables";
 import { ISO8601DateString } from "./parse.js";
 import { HibpBreachDataTypes } from "../app/functions/universal/breach.ts";
-import { logger } from "../app/functions/server/logging.ts";
+import { logger } from "../app/functions/server/logging";
 import {
   getAllQaCustomBreaches,
   getQaToggleRow,

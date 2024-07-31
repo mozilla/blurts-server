@@ -6,7 +6,7 @@ import crypto from "crypto";
 import { URL } from "url";
 
 import AppConstants from "../appConstants.js";
-import { logger } from "../app/functions/server/logging.js";
+import { logger } from "../app/functions/server/logging";
 
 /**
  * @see https://mozilla.github.io/ecosystem-platform/api#tag/Oauth/operation/postOauthDestroy
