@@ -48,7 +48,8 @@ async function _throttledFetch(
 ) {
   try {
     const response = await fetch(url, reqOptions);
-    if (response.ok) return (await response.json()) as unknown;
+    const responseJson = await response.json();
+    if (response.ok) return responseJson as unknown;
 
     switch (response.status) {
       case 404:
@@ -73,14 +74,13 @@ async function _throttledFetch(
           return await _throttledFetch(url, reqOptions, tryCount);
         }
       default:
-        logger.error(`hibp_throttle_default_error`, {
-          exception: await response.text(),
-        });
-        throw new Error(`hibp_throttle_default_error: ${response.status}`);
+        throw responseJson;
     }
-  } catch (err) {
-    logger.error("_throttledFetch", { err });
-    throw new Error("error_hibp_connect");
+  } catch (e) {
+    if (e instanceof Error) {
+      logger.error("hibp_throttle_fetch_error", { stack: e.stack });
+    }
+    throw e;
   }
 }
 /* c8 ignore stop */
