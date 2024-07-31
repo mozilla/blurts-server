@@ -10,6 +10,10 @@ import { isUsingMockHIBPEndpoint } from "../app/functions/universal/mock.ts";
 import { BreachRow, EmailAddressRow, SubscriberRow } from "knex/types/tables";
 import { ISO8601DateString } from "./parse.js";
 import { HibpBreachDataTypes } from "../app/functions/universal/breach.ts";
+import {
+  getAllQaCustomBreaches,
+  getQaToggleRow,
+} from "../db/tables/qa_customs.ts";
 const {
   HIBP_THROTTLE_MAX_TRIES,
   HIBP_THROTTLE_DELAY,
@@ -307,21 +311,37 @@ async function getBreachesForEmail(
   const sha1Prefix = sha1.slice(0, 6).toUpperCase();
   const path = `/range/search/${sha1Prefix}`;
 
+  const qaToggles = await getQaToggleRow(sha1);
+  let showCustomBreaches = true;
+  let showRealBreaches = true;
+  if (qaToggles) {
+    showCustomBreaches = qaToggles.show_custom_breaches;
+    showRealBreaches = qaToggles.show_real_breaches;
+  }
+
+  const qaBreaches = !showCustomBreaches
+    ? []
+    : await getAllQaCustomBreaches(sha1Prefix);
+  if (!showRealBreaches) return qaBreaches as HibpLikeDbBreach[];
+
   const response = (await kAnonReq(path)) as
     | BreachedAccountResponse
     | undefined;
   if (!response || (response && response.length < 1)) {
     console.error("failed_kAnonReq_call: no response or empty response");
-    return [];
+    return [...qaBreaches] as HibpLikeDbBreach[];
   }
   if (isUsingMockHIBPEndpoint()) {
     const mockDataBreaches = response[0];
-    return allBreaches
-      .filter((breach) => mockDataBreaches.websites.includes(breach.Name))
-      .sort((a, b) => {
-        // @ts-ignore TODO: Turn dates into a number
-        return new Date(b.AddedDate) - new Date(a.AddedDate);
-      });
+    return [
+      ...(qaBreaches as HibpLikeDbBreach[]),
+      ...allBreaches
+        .filter((breach) => mockDataBreaches.websites.includes(breach.Name))
+        .sort((a, b) => {
+          // @ts-ignore TODO: Turn dates into a number
+          return new Date(b.AddedDate) - new Date(a.AddedDate);
+        }),
+    ];
   }
   // Parse response body, format:
   // [
@@ -350,9 +370,12 @@ async function getBreachesForEmail(
   }
 
   if (includeSensitive) {
-    return foundBreaches;
+    return [...foundBreaches, ...(qaBreaches as HibpLikeDbBreach[])];
   }
-  return foundBreaches.filter((breach) => !breach.IsSensitive);
+  return [
+    ...(qaBreaches as HibpLikeDbBreach[]),
+    ...foundBreaches.filter((breach) => !breach.IsSensitive),
+  ];
 }
 /* c8 ignore stop */
 
