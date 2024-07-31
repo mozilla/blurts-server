@@ -60,7 +60,7 @@ async function destroyOAuthToken(
 /* c8 ignore stop */
 
 // TODO: Add unit test when changing this code:
-/* c8 ignore next 13 */
+/* c8 ignore start */
 async function revokeOAuthTokens(subscriber: {
   fxa_access_token: string;
   fxa_refresh_token: string;
@@ -83,6 +83,7 @@ async function revokeOAuthTokens(subscriber: {
     }
   }
 }
+/* c8 ignore stop */
 
 /**
  * @see https://mozilla.github.io/ecosystem-platform/api#tag/Oauth/operation/postOauthToken
