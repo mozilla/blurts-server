@@ -168,7 +168,7 @@ then add it to the (emulated) pubsub queue.
 ### This pubsub queue will be consumed by this cron job, which is responsible for looking up and emailing impacted users:
 
 ```sh
-npm run dev:cron:breach-alerts
+NODE_ENV="development" npm run dev:cron:breach-alerts
 ```
 
 ### Emails

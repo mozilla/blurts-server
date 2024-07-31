@@ -23,7 +23,11 @@ import { getCountryCode } from "../../../../../functions/server/getCountryCode";
 import { headers } from "next/headers";
 import { getLatestOnerepScanResults } from "../../../../../../db/tables/onerep_scans";
 import { FirstDataBrokerRemovalFixed } from "../../../../../../emails/templates/firstDataBrokerRemovalFixed/FirstDataBrokerRemovalFixed";
-import { createRandomScanResult } from "../../../../../../apiMocks/mockData";
+import {
+  createRandomHibpListing,
+  createRandomScanResult,
+} from "../../../../../../apiMocks/mockData";
+import { BreachAlertEmail } from "../../../../../../emails/templates/breachAlert/BreachAlertEmail";
 
 async function getAdminSubscriber(): Promise<SubscriberRow | null> {
   const session = await getServerSession();
@@ -118,6 +122,27 @@ export async function triggerMonthlyActivity(emailAddress: string) {
       subscriber={sanitizeSubscriberRow(subscriber)}
       l10n={l10n}
       data={data}
+    />,
+  );
+}
+
+export async function triggerBreachAlert(emailAddress: string) {
+  const session = await getServerSession();
+  const subscriber = await getAdminSubscriber();
+  if (!subscriber || !session?.user) {
+    return false;
+  }
+
+  const l10n = getL10n();
+
+  await send(
+    emailAddress,
+    l10n.getString("breach-alert-subject"),
+    <BreachAlertEmail
+      breach={createRandomHibpListing()}
+      breachedEmail={emailAddress}
+      utmCampaignId="breach-alert"
+      l10n={l10n}
     />,
   );
 }
