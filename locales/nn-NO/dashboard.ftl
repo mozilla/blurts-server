@@ -23,6 +23,7 @@ exposure-chart-legend-heading-nr = Antal
 #   $nr (number) - Number of a particular type of exposure found for the user
 exposure-chart-legend-value-nr = { $nr }×
 exposure-chart-caption = Dette diagrammet viser kor mange gongar informasjonen din er aktivt eksponert.
+exposure-chart-returning-user-upgrade-prompt = Heimeadresse, familiemedlemmar, med meir, er ikkje inkludert enno.
 exposure-chart-returning-user-upgrade-prompt-cta = Start ei gratis skanning
 modal-cta-ok = OK
 modal-cta-got-it = Eg forstår
