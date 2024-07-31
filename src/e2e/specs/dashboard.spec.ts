@@ -742,8 +742,9 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Data Breaches`
     expect(pwdToUse).not.toBeUndefined();
     await forceLoginAs(emailToUse, pwdToUse, page, landingPage, authPage);
 
-    if (isUsingMockHIBPEndpoint()) await resetTestData(page, true, false);
-    if (isUsingMockONEREPEndpoint()) await resetTestData(page, false, true);
+    if (!isUsingMockHIBPEndpoint() || !isUsingMockONEREPEndpoint()) return;
+    await resetTestData(page, true, true);
+    await dashboardPage.open();
 
     test.info().annotations.push({
       type: "testrail",
