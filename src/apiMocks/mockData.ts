@@ -197,12 +197,13 @@ export function createRandomHibpListing(
     Name: name,
     PwnCount: faker.number.int(),
     Title: title,
-    FaviconUrl: faker.helpers.maybe(() =>
-      faker.image.url({
-        height: faker.number.int({ min: 20, max: 36 }),
-        width: faker.number.int({ min: 20, max: 36 }),
-      }),
-    ),
+    FaviconUrl: faker.helpers.maybe(() => {
+      const dimension = faker.number.int({ min: 20, max: 36 });
+      return faker.image.url({
+        height: dimension,
+        width: dimension,
+      });
+    }),
     ...fixedData,
   };
 }
