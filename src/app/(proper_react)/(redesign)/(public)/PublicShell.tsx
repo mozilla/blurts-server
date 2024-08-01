@@ -35,11 +35,7 @@ export const PublicShell = (props: Props) => {
         </nav>
       </header>
       <div className={styles.content}>{props.children}</div>
-      <Footer
-        l10n={props.l10n}
-        countryCode={props.countryCode}
-        howItWorksFlagEnabled
-      />
+      <Footer l10n={props.l10n} countryCode={props.countryCode} />
     </div>
   );
 };

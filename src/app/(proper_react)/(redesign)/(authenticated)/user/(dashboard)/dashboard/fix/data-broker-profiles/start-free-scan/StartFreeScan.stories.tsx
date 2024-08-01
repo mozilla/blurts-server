@@ -50,13 +50,7 @@ export const StartFreeScanViewStory: Story = {
   name: "1a. Free scan",
   render: () => {
     return (
-      <Shell
-        l10n={getL10n()}
-        session={mockedSession}
-        nonce=""
-        countryCode="us"
-        howItWorksFlagEnabled
-      >
+      <Shell l10n={getL10n()} session={mockedSession} nonce="" countryCode="us">
         <StartFreeScanView
           data={{
             countryCode: "us",
