@@ -495,6 +495,37 @@ cta_button:
         type: string
 
 csat_survey:
+  view:
+    type: event
+    description: |
+      A CSAT survey entered the viewport.
+    bugs:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
+    data_reviews:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
+    data_sensitivity:
+      - interaction
+    notification_emails:
+      - rhelmer@mozilla.com
+    expires: never
+    extra_keys:
+      path:
+        description: The path of the page.
+        type: string
+      survey_id:
+        description: The ID of the survey, or some way to identify which survey entered the viewport.
+      plan_tier:
+        description: Which tier of plan the user is on [Free, Plus]
+        type: string
+      experiment_branch:
+        description: The experiment branch the user is on. [control, treatment]
+        type: string
+      last_scan_date:
+        description: The date on which the user had their last data broker scan. [YYYYMMDD]
+        type: string
+      automated_removal_period:
+        description: The time period since the first automated removal for the user. [initial, 3-months, 6-months, 12-months]
+        type: string
   click:
     type: event
     description: |
