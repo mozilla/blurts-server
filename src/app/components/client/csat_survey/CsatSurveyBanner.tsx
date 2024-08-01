@@ -110,7 +110,13 @@ export const CsatSurveyBanner = ({
           </ol>
         </>
       )}
-      <button className={styles.closeButton} onClick={() => dismiss()}>
+      <button
+        className={styles.closeButton}
+        onClick={() => {
+          dismiss();
+          recordTelemetry("csatSurvey", "dismiss", metricKeys);
+        }}
+      >
         <CloseBtn
           alt={l10n.getString("survey-csat-survey-dismiss-label")}
           width="14"
