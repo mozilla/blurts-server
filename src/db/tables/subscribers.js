@@ -420,10 +420,10 @@ async function getSubscribersWaitingForMonthlyEmail (options = {}) {
     .select()
     // Only send to users who haven't opted out of the monthly activity email...
     .where((builder) => builder.whereNull("monthly_monitor_report").orWhere("monthly_monitor_report", true))
-    // ...who haven't received the email in the last 30 days...
-    .andWhere(builder => builder.whereNull("monthly_monitor_report_at").orWhereRaw('"monthly_monitor_report_at" < NOW() - INTERVAL \'30 days\''))
-    // ...and whose account is older than 30 days.
-    .andWhereRaw('"created_at" < NOW() - INTERVAL \'30 days\'');
+    // ...who haven't received the email in the last 1 month...
+    .andWhere(builder => builder.whereNull("monthly_monitor_report_at").orWhereRaw('"monthly_monitor_report_at" < NOW() - INTERVAL \'1 month\''))
+    // ...and whose account is older than 1 month.
+    .andWhereRaw('"created_at" < NOW() - INTERVAL \'1 month\'');
 
   if (Array.isArray(flag.allow_list) && flag.allow_list.length > 0) {
     // If the feature flag has an allowlist, only send to users on that list.
@@ -559,7 +559,7 @@ async function getOnerepProfileId (subscriberId) {
 function getSubscribersWithUnresolvedBreachesQuery () {
   return knex('subscribers')
     .whereRaw('monthly_email_optout IS NOT TRUE')
-    .whereRaw("greatest(created_at, monthly_email_at) < (now() - interval '30 days')")
+    .whereRaw("greatest(created_at, monthly_email_at) < (now() - interval '1 month')")
     .whereRaw("(breach_stats #>> '{numBreaches, numUnresolved}')::int > 0")
 }
 /* c8 ignore stop */
