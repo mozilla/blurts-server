@@ -868,7 +868,7 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
 };
 
 const Table = (
-  props: TableStateProps<object> & AriaTableProps<object> & ScanLimitProp,
+  props: TableStateProps<object> & AriaTableProps & ScanLimitProp,
 ) => {
   const tableRef = useRef<HTMLTableElement>(null);
   const tableState = useTableState(props);
