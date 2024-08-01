@@ -94,11 +94,11 @@
     "nodemailer": "^6.9.14",
     "pg": "^8.12.0",
     "react": "^18.3.1",
-    "react-aria": "^3.33.1",
+    "react-aria": "^3.34.1",
     "react-cookie": "^7.1.0",
     "react-dom": "^18.3.1",
     "react-intersection-observer": "^9.10.3",
-    "react-stately": "^3.31.1",
+    "react-stately": "^3.32.1",
     "server-only": "^0.0.1",
     "uuid": "^9.0.1",
     "winston": "^3.13.1"
