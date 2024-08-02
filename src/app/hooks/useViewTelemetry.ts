@@ -8,7 +8,10 @@ import { GleanMetricMap } from "../../telemetry/generated/_map";
 import { RefObject } from "react";
 
 export function useViewTelemetry<
-  EventModule extends keyof Pick<GleanMetricMap, "ctaButton" | "banner">,
+  EventModule extends keyof Pick<
+    GleanMetricMap,
+    "ctaButton" | "banner" | "csatSurvey"
+  >,
   EventName extends keyof GleanMetricMap[EventModule],
 >(
   eventModule: EventModule,
