@@ -6,7 +6,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { AppPicker } from "./AppPicker";
 
 const meta: Meta<typeof AppPicker> = {
-  title: "Toolbar",
+  title: "Layout/Navigation/Bento App Picker",
   component: AppPicker,
 };
 

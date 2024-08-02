@@ -8,7 +8,7 @@ import { ProgressCard } from "../ProgressCard";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta: Meta<typeof ProgressCard> = {
-  title: "ProgressCard",
+  title: "Dashboard/Top Banner/Progress Infographic",
   component: ProgressCard,
 };
 export default meta;

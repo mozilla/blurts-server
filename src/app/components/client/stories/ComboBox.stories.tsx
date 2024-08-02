@@ -20,7 +20,7 @@ const items: Array<ItemObject> = [
 ];
 
 const meta: Meta<typeof ComboBox> = {
-  title: "ComboBox",
+  title: "Design Systems/Atoms/ComboBox",
   component: ComboBox,
 };
 export default meta;
