@@ -8,7 +8,7 @@ import {
   getFilteredBreaches,
   HibpLikeDbBreach,
 } from "./hibp";
-import { getSha1 } from "./fxa.js";
+import { getSha1 } from "./fxa";
 import { captureMessage } from "@sentry/node";
 import { EmailAddressRow, SubscriberRow } from "knex/types/tables";
 
