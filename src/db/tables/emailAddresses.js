@@ -201,7 +201,7 @@ async function _addEmailHash (sha1, email, signupLanguage, verified = false) {
   } catch (e) {
     // @ts-ignore Log whatever, we don't care
     console.error(e)
-    throw new Error('error_could_not_add_email')
+    throw new Error('Could not add email address to database.')
   }
 }
 /* c8 ignore stop */
