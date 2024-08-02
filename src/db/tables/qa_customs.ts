@@ -65,6 +65,10 @@ enum AllowedToggleColumns {
   ShowCustomBrokers = "show_custom_brokers",
 }
 
+function envIsProd() {
+  return process.env.APP_ENV === "production";
+}
+
 async function getQaCustomBrokers(
   onerepProfileId: number | null,
   onerepScanId: number | undefined | null,
@@ -183,7 +187,7 @@ async function deleteQaCustomBreach(
 }
 
 async function getQaToggleRow(emailHashOrOneRepId: string | number | null) {
-  if (emailHashOrOneRepId === null) {
+  if (emailHashOrOneRepId === null || envIsProd()) {
     return null;
   }
   if (typeof emailHashOrOneRepId === "string") {
