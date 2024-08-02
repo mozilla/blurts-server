@@ -52,7 +52,7 @@ export type CsatSurveyProps = {
 
 export type RelevantSurveyWithMetric = Survey & {
   localDismissalId: string;
-  metricKeys: GleanMetricMap["csatSurvey"]["click"];
+  metricKeys: GleanMetricMap["csatSurvey"]["click" | "view"];
 };
 
 export function getRelevantSurveys({

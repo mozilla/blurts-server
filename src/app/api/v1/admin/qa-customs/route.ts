@@ -6,9 +6,12 @@ import { NextRequest, NextResponse } from "next/server";
 import { getServerSession } from "../../../../functions/server/getServerSession";
 import { setQaToggle } from "../../../../../db/tables/qa_customs";
 import { isAdmin } from "../../../utils/auth";
-import { unauthError } from "../../../utils/errorThrower";
+import { errorIfProduction, unauthError } from "../../../utils/errorThrower";
 
 export async function PUT(req: NextRequest) {
+  const err = errorIfProduction();
+  if (err !== null) return err;
+
   const session = await getServerSession();
   if (!isAdmin(session?.user.email || "")) return unauthError();
 

@@ -4,7 +4,7 @@
 
 "use client";
 
-import { useState } from "react";
+import { RefObject, useState } from "react";
 import { Button } from "../Button";
 import { CloseBtn, OpenInNew } from "../../server/Icons";
 import { useL10n } from "../../../hooks/l10n";
@@ -14,6 +14,7 @@ import { useTelemetry } from "../../../hooks/useTelemetry";
 import styles from "./CsatSurveyBanner.module.scss";
 import { Survey } from "./surveys/csatSurvey";
 import { GleanMetricMap } from "../../../../telemetry/generated/_map";
+import { useViewTelemetry } from "../../../hooks/useViewTelemetry";
 
 const surveyResponses = [
   "very-dissatisfied",
@@ -44,6 +45,7 @@ export const CsatSurveyBanner = ({
   const recordTelemetry = useTelemetry();
   const hasRenderedClientSide = useHasRenderedClientSide();
   const localDismissal = useLocalDismissal(localDismissalId);
+  const refViewTelemetry = useViewTelemetry("csatSurvey", metricKeys);
 
   if (
     !hasRenderedClientSide ||
@@ -68,7 +70,10 @@ export const CsatSurveyBanner = ({
   };
 
   return (
-    <aside className={styles.wrapper}>
+    <aside
+      ref={refViewTelemetry as RefObject<HTMLElement>}
+      className={styles.wrapper}
+    >
       {typeof answer !== "undefined" && hasFollowUpSurveyOptions ? (
         <div className={styles.prompt}>
           <a
@@ -105,7 +110,13 @@ export const CsatSurveyBanner = ({
           </ol>
         </>
       )}
-      <button className={styles.closeButton} onClick={() => dismiss()}>
+      <button
+        className={styles.closeButton}
+        onClick={() => {
+          dismiss();
+          recordTelemetry("csatSurvey", "dismiss", metricKeys);
+        }}
+      >
         <CloseBtn
           alt={l10n.getString("survey-csat-survey-dismiss-label")}
           width="14"
