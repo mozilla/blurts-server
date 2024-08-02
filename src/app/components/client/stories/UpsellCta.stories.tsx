@@ -58,7 +58,7 @@ const UpsellCtaWrapper = (props: UpsellCtaWrapperProps) => {
 };
 
 const meta: Meta<typeof UpsellCtaWrapper> = {
-  title: "Upsell CTA",
+  title: "Design Systems/Atoms/Misc/Upsell CTA",
   component: UpsellCtaWrapper,
 };
 export default meta;

@@ -8,7 +8,7 @@ import { StatusPill } from "../StatusPill";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta: Meta<typeof StatusPill> = {
-  title: "Status Pill",
+  title: "Design Systems/Atoms/Pill",
   component: StatusPill,
 };
 export default meta;
