@@ -5,6 +5,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { isAdmin } from "../../../../utils/auth";
 import {
+  errorIfProduction,
   internalServerError,
   unauthError,
 } from "../../../../utils/errorThrower";
@@ -156,6 +157,9 @@ export async function POST(req: NextRequest) {
 export async function DELETE(req: NextRequest) {
   const err = await checkAdmin();
   if (err) return err;
+
+  const prodErr = errorIfProduction();
+  if (prodErr !== null) return prodErr;
 
   const emailHashFull = req.nextUrl.searchParams.get("emailHashFull");
   const breachId = Number(req.nextUrl.searchParams.get("breachId"));
