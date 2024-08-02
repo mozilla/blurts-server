@@ -11,7 +11,6 @@ import {
   ForbiddenError,
   UnauthorizedError
 } from '../../utils/error'
-import { getMessage } from '../../utils/fluent.js'
 
 const knex = createDbConnection();
 
