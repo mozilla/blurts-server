@@ -49,12 +49,11 @@ async function destroyOAuthToken(
     const responseJson = await response.json();
     if (!response.ok) throw new Error(responseJson);
     console.info("destroy_oauth_token_success");
-    return true;
   } catch (e) {
     if (e instanceof Error) {
       console.error("destroy_oauth_token", { stack: e.stack });
     }
-    return false;
+    throw e;
   }
 }
 /* c8 ignore stop */
@@ -66,17 +65,16 @@ async function revokeOAuthTokens(subscriber: {
   fxa_refresh_token: string;
 }) {
   try {
-    const accessTokenRevoked = await destroyOAuthToken({
+    await destroyOAuthToken({
       token: subscriber.fxa_access_token,
       token_type_hint: "access_token",
     });
-    const refreshTokenRevoked = await destroyOAuthToken({
+    await destroyOAuthToken({
       token: subscriber.fxa_refresh_token,
       token_type_hint: "refresh_token",
     });
-    const isBothRevoked = accessTokenRevoked && refreshTokenRevoked;
-    console.info("revoke_oauth_token", { success: isBothRevoked });
-    return isBothRevoked;
+    console.info("revoke_oauth_token_success");
+    return true;
   } catch (e) {
     if (e instanceof Error) {
       console.error("revoke_oauth_token", {
