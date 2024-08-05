@@ -241,8 +241,9 @@ GCP PubSub is used for email breach notifications from HIBP:
 - `src/app/api/v1/hibp/notify/route.ts` receives the breach notification and queues in PubSub
 - `src/scripts/cronjobs/emailBreachAlerts.ts` is run by a periodic cron job
 
-Check the server logs and ensure there are no errors. See https://github.com/mozilla/blurts-server/blob/main/README.md#incoming-webhook-requests-from-hibp-will-be-of-the-form
-for information about simulating a cron job.
+Check the server logs and ensure there are no errors. See
+[this section of the README](https://github.com/mozilla/blurts-server/blob/main/README.md#incoming-webhook-requests-from-hibp-will-be-of-the-form)
+for information about simulating a breach alert.
 
 See `./src/loadtest/hibp.js` for a K6 load testing script which will exercise this.
 
@@ -250,7 +251,8 @@ See `./src/loadtest/hibp.js` for a K6 load testing script which will exercise th
 
 GRPC is used as a communication protocol for various GCP services.
 
-Monitor uses it to facilitate the local PubSub emulator: https://github.com/mozilla/blurts-server/blob/main/README.md#pubsub
+Monitor uses it to facilitate the local PubSub emulator. See [this section of the README](https://github.com/mozilla/blurts-server/blob/main/README.md#pubsub)
+for instructions on running the Pub/Sub emulator locally.
 
 ### `winston` and `@google-cloud/logging-winston`
 
@@ -269,7 +271,11 @@ In normal operation nothing should be sent to Sentry, but you can verify that th
 
 ### `nodemailer`
 
-TODO: Describe how to verify that nodemailer updates didn't break anything.
+Nodemailer is used by `src/utils/email.js` to send all email related to Monitor. It uses AWS Simple Email Services (SES) by default,
+which is controlled by the `SMTP_URL` environment variable. Any `smtps://` URL can be used here for testing, and any email Monitor sends
+can be used for testing.
+
+Monitor provides a tool for sending test email at the endpoint `/admin/emails`.
 
 ### `adm-zip`
 
