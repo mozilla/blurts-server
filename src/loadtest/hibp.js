@@ -20,6 +20,9 @@ const url = `${__ENV.SERVER_URL}/api/v1/hibp/notify`;
 export default function () {
   let data = {
     breachName: "ApexSMS",
+    // NOTE: modify this hash range if you want to receive email to specific test account(s).
+    // This example should only email an address that is a sha1 hash for 1c48923da9f6f17165711712d11bc104087444cc.
+    // See https://www.troyhunt.com/understanding-have-i-been-pwneds-use-of-sha-1-and-k-anonymity/ for more information.
     hashPrefix: "1c4892",
     hashSuffixes: [
       "3da9f6f17165711712d11bc104087444cc",
