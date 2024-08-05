@@ -47,7 +47,6 @@ export type FeatureFlagName =
   | "DiscountCouponNextThreeMonths"
   | "LatestScanDateCsatSurvey"
   | "AutomaticRemovalCsatSurvey"
-  | "HowItWorksPage"
   | "AdditionalRemovalStatuses"
   | "PetitionBannerCsatSurvey"
   /** Set clear expectations about auto-removal finishing in time for *most*, not *all* data brokers: */

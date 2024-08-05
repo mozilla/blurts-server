@@ -12,7 +12,6 @@ import { Shell } from "../../../Shell";
 import { headers } from "next/headers";
 import { AutoSignIn } from "../../../../../components/client/AutoSignIn";
 import { getCountryCode } from "../../../../../functions/server/getCountryCode";
-import { getEnabledFeatureFlags } from "../../../../../../db/tables/featureFlags";
 
 export default async function Layout({ children }: { children: ReactNode }) {
   const l10nBundles = getL10nBundles();
@@ -20,10 +19,6 @@ export default async function Layout({ children }: { children: ReactNode }) {
   const session = await getServerSession();
   const headersList = headers();
   const countryCode = getCountryCode(headersList);
-  const enabledFeatureFlags = await getEnabledFeatureFlags({
-    ignoreAllowlist: true,
-  });
-  const howItWorksFlagEnabled = enabledFeatureFlags.includes("HowItWorksPage");
 
   if (!session) {
     return <AutoSignIn />;
@@ -37,7 +32,6 @@ export default async function Layout({ children }: { children: ReactNode }) {
       session={session}
       nonce={nonce}
       countryCode={countryCode}
-      howItWorksFlagEnabled={howItWorksFlagEnabled}
     >
       {children}
     </Shell>

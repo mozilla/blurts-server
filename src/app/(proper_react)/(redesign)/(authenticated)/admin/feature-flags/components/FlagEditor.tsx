@@ -72,7 +72,11 @@ export const FlagEditor = (props: { flag: FeatureFlagRow }) => {
           {(props.flag.allow_list?.length ?? 0) -
             unAllowlistedAddresses.length ===
             0 && newAllowlistedAddresses.length === 0 ? (
-            <>Enabled for everyone</>
+            <>
+              {props.flag.is_enabled
+                ? "Enabled for everyone"
+                : "Would be enabled for everyone"}
+            </>
           ) : (
             <>Only enable for:</>
           )}

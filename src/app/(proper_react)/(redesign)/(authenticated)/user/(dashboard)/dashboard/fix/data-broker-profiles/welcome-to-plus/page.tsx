@@ -56,7 +56,8 @@ export default async function WelcomeToPlusPage() {
   };
 
   const enabledFeatureFlags = await getEnabledFeatureFlags({
-    ignoreAllowlist: true,
+    ignoreAllowlist: false,
+    email: session.user.email,
   });
 
   // If the current user is a subscriber and their OneRep profile is not

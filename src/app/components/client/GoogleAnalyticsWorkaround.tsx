@@ -27,14 +27,16 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 "use client";
 
-import { GAParams } from "@next/third-parties/dist/types/google";
+import type { GoogleAnalytics } from "@next/third-parties/google";
 import Script, { ScriptProps } from "next/script";
-import { useEffect } from "react";
+import { ComponentProps, useEffect } from "react";
 
 // We don't send Analytics events in tests:
 /* c8 ignore start */
 
 let currDataLayerName: string | undefined = undefined;
+
+type GAParams = ComponentProps<typeof GoogleAnalytics>;
 
 /**
  * This component is based on <GoogleAnalytics> from `@next/third-parties`, but accepting a nonce
