@@ -223,9 +223,8 @@ Used in places where a random identifier is needed:
 - for email verification tokens in `src/db/tables/emailAddresses.js`
 
 1. Check that `nonce` is present in `content-security-policy` header for HTTP responses.
-2. TODO
-3. TODO
-4. Add a secondary email from the Settings screen and ensure that email verification works
+2. Check that `experimentationId` is set as a cookie in the form `guest-${uuid}`
+3. Add a secondary email from the Settings screen and ensure that email verification works
 
 ### `@aws-sdk/*`
 
