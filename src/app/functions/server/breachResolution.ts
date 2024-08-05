@@ -5,7 +5,7 @@
 import { getL10n } from "../l10n/serverComponents";
 import AppConstants from "../../../appConstants.js";
 import { BreachDataTypes } from "../universal/breach";
-import { AllEmailsAndBreaches } from "../../../utils/breaches.js";
+import { AllEmailsAndBreaches } from "../../../utils/breaches";
 
 /**
  * TODO: Map from google doc: https://docs.google.com/document/d/1KoItFsTYVIBInIG2YmA7wSxkKS4vti_X0A0td_yaHVM/edit#
@@ -99,8 +99,6 @@ function appendBreachResolutionChecklist(
   const { verifiedEmails } = userBreachData;
 
   for (const { breaches } of verifiedEmails) {
-    // Old untyped code, adding type defitions now isn't worth the effort:
-    /* eslint-disable @typescript-eslint/no-explicit-any */
     breaches.forEach((b) => {
       const dataClasses = b.DataClasses;
       const blockList = (AppConstants.HIBP_BREACH_DOMAIN_BLOCKLIST ?? "").split(
