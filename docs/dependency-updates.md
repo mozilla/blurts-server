@@ -69,8 +69,14 @@ added.
 
 ### `react-intersection-observer`
 
-We're only using a test utility from this package (see the comments in
-`/jest.setup.ts`), so if the tests pass, this upgrade was probably fine.
+We're using this to count how often certain page elements are shown to people.
+See the `useViewTelemetry` hook in `src/app/hooks/useViewTelemetry.ts`. You can
+execute `Glean.setLogPings(true)` in the console to enable showing those counts
+in the console; an example of elements that should trigger it are the "Get free
+scan" buttons on the landing page.
+
+We're also using a test utility from this package (see the comments in
+`/jest.setup.ts`), so if the tests pass as well, that part is probably fine.
 
 ### `@playwright/test` and `dotenv-flow`
 
