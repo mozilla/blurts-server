@@ -39,9 +39,7 @@ async function getAllEmailsAndBreaches(
   user: userType,
   allBreaches: HibpLikeDbBreach[],
 ): Promise<AllEmailsAndBreaches> {
-  // @ts-ignore: function will be deprecated
   const verifiedEmails: BundledVerifiedEmails[] = [];
-  // @ts-ignore: function will be deprecated
   const unverifiedEmails: EmailAddressRow[] = [];
 
   if (!user) {
@@ -49,7 +47,6 @@ async function getAllEmailsAndBreaches(
     console.error(errMsg);
     captureMessage(errMsg);
 
-    // @ts-ignore: function will be deprecated
     return { verifiedEmails, unverifiedEmails };
   }
   if (!allBreaches || allBreaches.length === 0) {
@@ -57,7 +54,7 @@ async function getAllEmailsAndBreaches(
       "getAllEmailsAndBreaches: allBreaches object cannot be empty";
     console.error(errMsg);
     captureMessage(errMsg);
-    // @ts-ignore: function will be deprecated
+
     return { verifiedEmails, unverifiedEmails };
   }
 
@@ -89,7 +86,6 @@ async function getAllEmailsAndBreaches(
 
   // get new breaches since last shown
   for (const emailEntry of verifiedEmails) {
-    // /** @type {any[]} */
     const newBreachesForEmail = emailEntry.breaches.filter(
       (breach) => breach.AddedDate >= user.breaches_last_shown,
     );
@@ -104,9 +100,6 @@ async function getAllEmailsAndBreaches(
 }
 
 function addRecencyIndex(foundBreaches: HibpLikeDbBreach[]) {
-  // /**
-  //  * @type {any[]}
-  //  */
   const annotatedBreaches: HibpLikeDbBreach[] = [];
   // slice() the array to make a copy so before reversing so we don't
   // reverse foundBreaches in-place
