@@ -100,7 +100,7 @@
     "react-intersection-observer": "^9.13.0",
     "react-stately": "^3.32.1",
     "server-only": "^0.0.1",
-    "uuid": "^9.0.1",
+    "uuid": "^10.0.0",
     "winston": "^3.13.1"
   },
   "devDependencies": {
@@ -125,7 +125,7 @@
     "@types/mjml": "^4.7.4",
     "@types/mjml-browser": "^4.15.0",
     "@types/nodemailer": "^6.4.15",
-    "@types/uuid": "^9.0.8",
+    "@types/uuid": "^10.0.0",
     "@typescript-eslint/eslint-plugin": "^7.5.0",
     "@typescript-eslint/parser": "^7.5.0",
     "adm-zip": "^0.5.12",
