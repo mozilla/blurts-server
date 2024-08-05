@@ -5,7 +5,6 @@
 import crypto from "crypto";
 import { URL } from "url";
 
-import { InternalServerError } from "./error";
 import AppConstants from "../appConstants.js";
 
 /**
@@ -47,34 +46,45 @@ async function destroyOAuthToken(
 
   try {
     const response = await fetch(tokenUrl, tokenOptions);
-    if (!response.ok)
-      throw new InternalServerError(`bad response: ${response.status}`);
-    await response.json();
-    return;
+    const responseJson = await response.json();
+    if (!response.ok) throw new Error(responseJson);
+    console.info("destroy_oauth_token_success");
   } catch (e) {
     if (e instanceof Error) {
-      console.error("destroyOAuthToken", { stack: e.stack });
+      console.error("destroy_oauth_token", { stack: e.stack });
     }
-    return e;
+    throw e;
   }
 }
 /* c8 ignore stop */
 
 // TODO: Add unit test when changing this code:
-/* c8 ignore next 13 */
+/* c8 ignore start */
 async function revokeOAuthTokens(subscriber: {
   fxa_access_token: string;
   fxa_refresh_token: string;
 }) {
-  await destroyOAuthToken({
-    token: subscriber.fxa_access_token,
-    token_type_hint: "access_token",
-  });
-  await destroyOAuthToken({
-    token: subscriber.fxa_refresh_token,
-    token_type_hint: "refresh_token",
-  });
+  try {
+    await destroyOAuthToken({
+      token: subscriber.fxa_access_token,
+      token_type_hint: "access_token",
+    });
+    await destroyOAuthToken({
+      token: subscriber.fxa_refresh_token,
+      token_type_hint: "refresh_token",
+    });
+    console.info("revoke_oauth_token_success");
+    return true;
+  } catch (e) {
+    if (e instanceof Error) {
+      console.error("revoke_oauth_token", {
+        stack: e.stack,
+      });
+    }
+    return false;
+  }
 }
+/* c8 ignore stop */
 
 /**
  * @see https://mozilla.github.io/ecosystem-platform/api#tag/Oauth/operation/postOauthToken
@@ -131,16 +141,16 @@ async function refreshOAuthTokens(
     ttl: 604800, // request 7 days ttl
   };
   try {
-    const postResp = await fetch(subscriptionIdUrl, {
+    const response = await fetch(subscriptionIdUrl, {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
       method: "POST",
     });
 
-    const responseTokens: FxaPostOauthTokenResponseSuccessRefreshToken =
-      await postResp.json();
-    if (!postResp.ok) throw responseTokens;
-    return responseTokens;
+    const responseJson = await response.json();
+    if (!response.ok) throw new Error(responseJson);
+    console.info("refresh_fxa_access_token_success");
+    return responseJson as FxaPostOauthTokenResponseSuccessRefreshToken;
   } catch (e) {
     if (e instanceof Error) {
       console.error("refresh_fxa_access_token", { stack: e.stack });
@@ -167,18 +177,16 @@ async function getSubscriptions(
 ): Promise<FxaGetOauthSubscribptionsActiveResponseSuccess | null> {
   const subscriptionIdUrl = `${AppConstants.OAUTH_ACCOUNT_URI}/oauth/subscriptions/active`;
   try {
-    const getResp = await fetch(subscriptionIdUrl, {
+    const response = await fetch(subscriptionIdUrl, {
       headers: {
         Accept: "application/json",
         Authorization: `Bearer ${bearerToken}`,
       },
     });
-    const resp: FxaGetOauthSubscribptionsActiveResponseSuccess =
-      await getResp.json();
-    if (!getResp.ok) throw resp;
-
-    console.info(`get_fxa_subscriptions: success`);
-    return resp;
+    const responseJson = await response.json();
+    if (!response.ok) throw new Error(responseJson);
+    console.info("get_fxa_subscriptions_success");
+    return responseJson as FxaGetOauthSubscribptionsActiveResponseSuccess;
   } catch (e) {
     if (e instanceof Error) {
       console.error("get_fxa_subscriptions", { stack: e.stack });
@@ -216,24 +224,19 @@ async function getBillingAndSubscriptions(
   const subscriptionIdUrl = `${AppConstants.OAUTH_ACCOUNT_URI}/oauth/mozilla-subscriptions/customer/billing-and-subscriptions`;
 
   try {
-    const getResp = await fetch(subscriptionIdUrl, {
+    const response = await fetch(subscriptionIdUrl, {
       headers: {
         Accept: "application/json",
         Authorization: `Bearer ${bearerToken}`,
       },
     });
-
-    if (!getResp.ok) {
-      throw new InternalServerError(
-        `bad response: [${getResp.status}] [${getResp.statusText}]`,
-      );
-    } else {
-      console.info(`get_fxa_subscriptions: success`);
-      return (await getResp.json()) as FxaGetOauthMozillaSubscribptionsCustomerBillingAndSubscriptionsResponseSuccess;
-    }
+    const responseJson = await response.json();
+    if (!response.ok) throw new Error(responseJson);
+    console.info("get_fxa_billing_subscriptions_success");
+    return responseJson as FxaGetOauthMozillaSubscribptionsCustomerBillingAndSubscriptionsResponseSuccess;
   } catch (e) {
     if (e instanceof Error) {
-      console.error("get_fxa_subscriptions", { stack: e.stack });
+      console.error("get_fxa_billing_subscriptions", { stack: e.stack });
     }
     return null;
   }
@@ -264,13 +267,9 @@ async function deleteSubscription(bearerToken: string): Promise<boolean> {
           Authorization: `Bearer ${bearerToken}`,
         },
       });
-      if (!response.ok) {
-        throw new Error(await response.text());
-      } else {
-        console.info(
-          `delete_fxa_subscription: success - ${JSON.stringify(await response.json())}`,
-        );
-      }
+      const responseJson = await response.json();
+      if (!response.ok) throw new Error(responseJson);
+      console.info("delete_fxa_subscription_success");
     }
     return true;
   } catch (e) {
@@ -314,19 +313,13 @@ async function applyCoupon(
           subscriptionId,
         }),
       });
-      if (!response.ok) {
-        const errMsg = await response.text();
-        console.error(`apply_coupon: failed - ${errMsg}`);
-        throw new Error(`apply_coupon: failed - ${errMsg}`);
-      } else {
-        console.info(
-          `apply_coupon: success - ${JSON.stringify(await response.json())}`,
-        );
-      }
+      const responseJson = await response.json();
+      if (!response.ok) throw new Error(responseJson);
+      console.info("apply_fxa_coupon_success");
     }
   } catch (e) {
     if (e instanceof Error) {
-      console.error("apply_coupon", { stack: e.stack });
+      console.error("apply_fxa_coupon", { stack: e.stack });
     }
     throw e;
   }

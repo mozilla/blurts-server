@@ -89,19 +89,6 @@ class TooManyRequestsError extends Error {
   }
 }
 
-class InternalServerError extends Error {
-  public statusCode: number;
-
-  constructor(message: MessageType, ...config: ConfigType) {
-    super(message, ...config);
-    this.name = "Internal Server Error";
-    this.statusCode = 500;
-    // TODO: Add unit test when changing this code:
-    /* c8 ignore next */
-    this.message = message || genericErrorMessage;
-  }
-}
-
 export {
   BadRequestError,
   UnauthorizedError,
@@ -109,5 +96,4 @@ export {
   MethodNotAllowedError,
   ConflictError,
   TooManyRequestsError,
-  InternalServerError,
 };

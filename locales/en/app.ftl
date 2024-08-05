@@ -29,7 +29,6 @@
 
 ##
 
-error-could-not-add-email = Could not add email address to database.
 error-not-subscribed = This email address is not subscribed to { -product-name }.
 error-hibp-throttled = Too many connections to { -brand-HIBP }.
 error-hibp-connect = Error connecting to { -brand-HIBP }.

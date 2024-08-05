@@ -9,10 +9,8 @@ import { getSha1 } from '../../utils/fxa'
 import { getSubscriberByEmail, updateFxAData } from './subscribers.js'
 import {
   ForbiddenError,
-  InternalServerError,
   UnauthorizedError
 } from '../../utils/error'
-import { getMessage } from '../../utils/fluent.js'
 
 const knex = createDbConnection();
 
@@ -203,7 +201,7 @@ async function _addEmailHash (sha1, email, signupLanguage, verified = false) {
   } catch (e) {
     // @ts-ignore Log whatever, we don't care
     console.error(e)
-    throw new InternalServerError(getMessage('error-could-not-add-email'))
+    throw new Error('Could not add email address to database.')
   }
 }
 /* c8 ignore stop */

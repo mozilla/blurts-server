@@ -3,7 +3,6 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import createDbConnection from "../connect.js";
-import { destroyOAuthToken } from '../../utils/fxa'
 import AppConstants from '../../appConstants.js'
 
 const knex = createDbConnection();
@@ -142,11 +141,7 @@ async function updateFxAData (subscriber, fxaAccessToken, fxaRefreshToken, sessi
       updated_at: knex.fn.now(),
     })
     .returning('*')
-  const updatedSubscriber = Array.isArray(updated) ? updated[0] : null
-  if (updatedSubscriber && subscriber.fxa_refresh_token) {
-    destroyOAuthToken({ token: subscriber.fxa_refresh_token, token_type_hint: "refresh_token" })
-  }
-  return updatedSubscriber
+  return Array.isArray(updated) ? updated[0] : null
 }
 /* c8 ignore stop */
 
