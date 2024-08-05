@@ -5,6 +5,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { isAdmin } from "../../../../utils/auth";
 import {
+  errorIfProduction,
   internalServerError,
   unauthError,
 } from "../../../../utils/errorThrower";
@@ -50,6 +51,9 @@ export async function GET(req: NextRequest) {
   const err = await checkAdmin();
   if (err) return err;
 
+  const prodErr = errorIfProduction();
+  if (prodErr !== null) return prodErr;
+
   const profileId = Number(req.nextUrl.searchParams.get("onerep_profile_id"));
 
   if (!profileId || Number.isNaN(profileId)) {
@@ -65,6 +69,9 @@ export async function GET(req: NextRequest) {
 export async function POST(req: NextRequest) {
   const err = await checkAdmin();
   if (err) return err;
+
+  const prodErr = errorIfProduction();
+  if (prodErr !== null) return prodErr;
 
   const body = await req.json();
 
@@ -113,6 +120,9 @@ export async function DELETE(req: NextRequest) {
   const err = await checkAdmin();
   if (err) return err;
 
+  const prodErr = errorIfProduction();
+  if (prodErr !== null) return prodErr;
+
   const onerepScanResultId = Number(
     req.nextUrl.searchParams.get("onerep_scan_result_id"),
   );
@@ -131,6 +141,9 @@ export async function DELETE(req: NextRequest) {
 export async function PUT(req: NextRequest) {
   const err = await checkAdmin();
   if (err) return err;
+
+  const prodErr = errorIfProduction();
+  if (prodErr !== null) return prodErr;
 
   const onerepScanResultId = Number(
     req.nextUrl.searchParams.get("onerep_scan_result_id"),

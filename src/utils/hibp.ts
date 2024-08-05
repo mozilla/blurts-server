@@ -313,7 +313,7 @@ async function getBreachesForEmail(
   const path = `/range/search/${sha1Prefix}`;
 
   const qaToggles = await getQaToggleRow(sha1);
-  let showCustomBreaches = true;
+  let showCustomBreaches = false;
   let showRealBreaches = true;
   if (qaToggles) {
     showCustomBreaches = qaToggles.show_custom_breaches;

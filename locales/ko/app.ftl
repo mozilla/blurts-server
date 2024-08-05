@@ -199,6 +199,7 @@ mozilla = { -brand-mozilla }
 terms-of-service = 이용 약관
 privacy-notice = 개인정보 보호정책
 github = { -brand-github }
+footer-nav-all-breaches = 모든 유출
 footer-external-link-faq-label = FAQ
 footer-external-link-faq-tooltip = 자주 묻는 질문
 
@@ -223,6 +224,7 @@ exposed-data = 노출된 데이터:
 ## Public breach detail page
 
 find-out-if-2 = 이번 위반에 포함되었는지 알아보세요.
+find-out-if-description = 이 유출에서 이메일 주소가 노출되었는지 빠르게 확인하고 다음 작업을 수행할 수 있도록 도와드리겠습니다.
 breach-detail-cta-signup = 유출 여부 확인하기
 
 ## Firefox Monitor -> Mozilla Monitor rebrand banner
