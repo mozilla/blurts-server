@@ -30,6 +30,9 @@ import { getL10n } from "../../functions/l10n/serverComponents";
 import { OAuthConfig } from "next-auth/providers/oauth";
 import { SerializedSubscriber } from "../../../next-auth";
 import { record } from "../../functions/server/glean";
+import { getEnabledFeatureFlags } from "../../../db/tables/featureFlags";
+import { renderEmail } from "../../../emails/renderEmail";
+import { SignupReportEmail } from "../../../emails/templates/signupReport/SignupReportEmail";
 
 const fxaProviderConfig: OAuthConfig<FxaProfile> = {
   // As per https://mozilla.slack.com/archives/C4D36CAJW/p1683642497940629?thread_ts=1683642325.465929&cid=C4D36CAJW,
@@ -193,8 +196,24 @@ export const authOptions: AuthOptions = {
             },
           });
 
+          const enabledFlags = await getEnabledFeatureFlags({
+            email: verifiedSubscriber.primary_email,
+          });
+
           await initEmail(process.env.SMTP_URL);
-          await sendEmail(data.recipientEmail, subject, emailTemplate);
+          await sendEmail(
+            data.recipientEmail,
+            subject,
+            enabledFlags.includes("RedesignedEmails")
+              ? renderEmail(
+                  <SignupReportEmail
+                    l10n={l10n}
+                    breachedEmailAddress={profile.email}
+                    breaches={unsafeBreachesForEmail}
+                  />,
+                )
+              : emailTemplate,
+          );
         } else {
           logger.warn("no_existing_user_or_email", {
             token,
