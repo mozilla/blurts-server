@@ -228,7 +228,7 @@ Used in places where a random identifier is needed:
 
 ### `@aws-sdk/*`
 
-Used for S3, by the `src/scripts/s3.js` cron job.
+Used for S3, by the `npm run cron:db-pull-breaches` cron job.
 
 This job runs periodically on stage and production to download Favicon files from DuckDuckGo and re-uploads them to Monitor's S3 bucket.
 Check in the server logs that this job completed without errors.
