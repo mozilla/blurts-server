@@ -14,7 +14,7 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable no-undef */
 
-import http from "k6/http";
+import { post } from "k6/http";
 
 const url = `${__ENV.SERVER_URL}/api/v1/hibp/notify`;
 
@@ -33,7 +33,7 @@ export default function () {
   };
 
   // Using a JSON string as body
-  let res = http.post(url, JSON.stringify(data), {
+  let res = post(url, JSON.stringify(data), {
     headers: {
       "Content-Type": "application/json",
       // eslint-disable-next-line no-undef
