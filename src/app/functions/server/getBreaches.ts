@@ -8,7 +8,7 @@ import {
   getAllBreachesFromDb,
   fetchHibpBreaches,
 } from "../../../utils/hibp";
-import { upsertBreaches } from "../../../db/tables/breaches.js";
+import { upsertBreaches } from "../../../db/tables/breaches";
 
 let breaches: Array<HibpLikeDbBreach>;
 

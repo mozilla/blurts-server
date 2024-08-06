@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import AppConstants from "../appConstants.js";
-import { getAllBreaches, knex } from "../db/tables/breaches.js";
+import { getAllBreaches, knex } from "../db/tables/breaches";
 import { isUsingMockHIBPEndpoint } from "../app/functions/universal/mock.ts";
 import { BreachRow, EmailAddressRow, SubscriberRow } from "knex/types/tables";
 import { ISO8601DateString } from "./parse.js";
