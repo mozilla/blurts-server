@@ -19,7 +19,7 @@ import {
 import {
   getEmailAddressesByHashes,
   knexEmailAddresses,
-} from "../../db/tables/emailAddresses.js";
+} from "../../db/tables/emailAddresses";
 import {
   getNotifiedSubscribersForBreach,
   addEmailNotification,

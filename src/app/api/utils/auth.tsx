@@ -15,7 +15,7 @@ import {
   getFxATokens,
   updateFxATokens,
 } from "../../../db/tables/subscribers.js";
-import { addSubscriber } from "../../../db/tables/emailAddresses.js";
+import { addSubscriber } from "../../../db/tables/emailAddresses";
 import { getBreaches } from "../../functions/server/getBreaches";
 import { getBreachesForEmail } from "../../../utils/hibp";
 import { getSha1, refreshOAuthTokens } from "../../../utils/fxa";
