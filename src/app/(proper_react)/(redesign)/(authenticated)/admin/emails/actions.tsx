@@ -28,6 +28,10 @@ import {
   createRandomScanResult,
 } from "../../../../../../apiMocks/mockData";
 import { BreachAlertEmail } from "../../../../../../emails/templates/breachAlert/BreachAlertEmail";
+import { SignupReportEmail } from "../../../../../../emails/templates/signupReport/SignupReportEmail";
+import { getBreachesForEmail } from "../../../../../../utils/hibp";
+import { getSha1 } from "../../../../../../utils/fxa";
+import { getBreaches } from "../../../../../functions/server/getBreaches";
 
 async function getAdminSubscriber(): Promise<SubscriberRow | null> {
   const session = await getServerSession();
@@ -69,6 +73,31 @@ async function send(
     emailAddress,
     "Test email: " + subject,
     renderEmail(template),
+  );
+}
+
+export async function triggerSignupReportEmail(emailAddress: string) {
+  const subscriber = await getAdminSubscriber();
+  if (!subscriber) {
+    return false;
+  }
+
+  const l10n = getL10n();
+  const breaches = await getBreachesForEmail(
+    getSha1(emailAddress),
+    await getBreaches(),
+    true,
+  );
+  await send(
+    emailAddress,
+    breaches.length > 0
+      ? l10n.getString("email-subject-found-breaches")
+      : l10n.getString("email-subject-no-breaches"),
+    <SignupReportEmail
+      l10n={l10n}
+      breaches={breaches}
+      breachedEmailAddress={emailAddress}
+    />,
   );
 }
 
