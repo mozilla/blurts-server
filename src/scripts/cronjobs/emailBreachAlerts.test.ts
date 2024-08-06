@@ -49,7 +49,7 @@ jest.mock("../../db/tables/emailAddresses.js", () => {
   };
 });
 
-jest.mock("../../db/tables/email_notifications.js", () => {
+jest.mock("../../db/tables/email_notifications", () => {
   return {
     getNotifiedSubscribersForBreach: jest.fn(() => [""]),
     addEmailNotification: jest.fn(),
@@ -374,7 +374,7 @@ test("skipping email when subscriber id exists in email_notifications table", as
     };
   });
 
-  jest.mock("../../db/tables/email_notifications.js", () => {
+  jest.mock("../../db/tables/email_notifications", () => {
     return {
       getNotifiedSubscribersForBreach: jest.fn(() => [1]),
       addEmailNotification: jest.fn(),
@@ -429,7 +429,7 @@ test("throws an error when addEmailNotification fails", async () => {
     };
   });
 
-  jest.mock("../../db/tables/email_notifications.js", () => {
+  jest.mock("../../db/tables/email_notifications", () => {
     return {
       getNotifiedSubscribersForBreach: jest.fn(() => [2]),
       addEmailNotification: jest.fn().mockImplementationOnce(() => {
@@ -488,7 +488,7 @@ test("throws an error when markEmailAsNotified fails", async () => {
     };
   });
 
-  jest.mock("../../db/tables/email_notifications.js", () => {
+  jest.mock("../../db/tables/email_notifications", () => {
     return {
       getNotifiedSubscribersForBreach: jest.fn(() => [2]),
       addEmailNotification: jest.fn(),
