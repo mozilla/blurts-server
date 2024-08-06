@@ -12,7 +12,6 @@ import {
   getSubscriberByFxaUid,
   setBreachResolution,
 } from "../../../../../db/tables/subscribers";
-import appConstants from "../../../../../appConstants";
 import { HibpBreachDataTypes } from "../../../../functions/universal/breach";
 
 export interface BreachResolutionRequest {
@@ -40,8 +39,7 @@ export async function GET(req: NextRequest) {
       return NextResponse.json({ success: false }, { status: 500 });
     }
   } else {
-    // Not Signed in, redirect to home
-    return NextResponse.redirect(appConstants.SERVER_URL, 301);
+    return NextResponse.json({ success: false }, { status: 401 });
   }
 }
 
@@ -159,7 +157,6 @@ export async function PUT(req: NextRequest) {
       return NextResponse.json({ success: false }, { status: 500 });
     }
   } else {
-    // Not Signed in, redirect to home
-    return NextResponse.redirect(appConstants.SERVER_URL);
+    return NextResponse.json({ success: false }, { status: 401 });
   }
 }

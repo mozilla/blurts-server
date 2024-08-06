@@ -108,7 +108,7 @@ export async function POST(req: NextRequest) {
     pubsub = new PubSub({ projectId });
   } catch (ex) {
     logger.error("Error connecting to PubSub:", ex);
-    return NextResponse.json({ success: false }, { status: 500 });
+    return NextResponse.json({ success: false }, { status: 429 });
   }
 
   try {
