@@ -7,6 +7,8 @@
  *
  * In particular, k6 supports JS but is not a Node package: https://k6.io/docs/get-started/installation/
  * This is why import/no-unresolved and no-undef are ignored.
+ *
+ * @see https://grafana.com/docs/k6/latest/get-started/running-k6
  */
 
 /* eslint-disable import/no-unresolved */
