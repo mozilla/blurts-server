@@ -20,12 +20,10 @@ export const Footer = ({
   l10n,
   session,
   countryCode,
-  howItWorksFlagEnabled,
 }: {
   l10n: ExtendedReactLocalization;
   session?: Session;
   countryCode: string;
-  howItWorksFlagEnabled: boolean;
 }) => {
   return (
     <footer className={styles.footer}>
@@ -47,7 +45,7 @@ export const Footer = ({
             {l10n.getString("footer-nav-all-breaches")}
           </TelemetryLink>
         </li>
-        {countryCode === "us" && !session && howItWorksFlagEnabled && (
+        {countryCode === "us" && !session && (
           <li>
             <TelemetryLink
               href="/how-it-works"

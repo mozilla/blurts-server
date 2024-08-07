@@ -28,6 +28,7 @@ export default async function DevPage() {
   };
 
   if (
+    process.env.APP_ENV === "production" ||
     !session?.user?.email ||
     !isAdmin(session.user.email) ||
     !session?.user?.subscriber?.primary_sha1 ||

@@ -5,7 +5,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 import { logger } from "../../../../functions/server/logging";
-import { verifyEmailHash } from "../../../../../db/tables/emailAddresses.js";
+import { verifyEmailHash } from "../../../../../db/tables/emailAddresses";
 export async function GET(req: NextRequest) {
   try {
     const query = req.nextUrl.searchParams;

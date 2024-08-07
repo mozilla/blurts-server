@@ -29,7 +29,6 @@ export type Props = {
   };
   fxaSettingsUrl: string;
   children: ReactNode;
-  howItWorksFlagEnabled: boolean;
 };
 
 export const MobileShell = (props: Props) => {
@@ -144,7 +143,7 @@ export const MobileShell = (props: Props) => {
                   {l10n.getString("main-nav-link-settings-label")}
                 </PageLink>
               </li>
-              {props.countryCode === "us" && props.howItWorksFlagEnabled && (
+              {props.countryCode === "us" && (
                 <li key="how-it-works">
                   <PageLink
                     href="/how-it-works"

@@ -13,7 +13,7 @@ import { getSubscriberByFxaUid } from "../../../../src/db/tables/subscribers.js"
 import {
   BundledVerifiedEmails,
   getAllEmailsAndBreaches,
-} from "../../../../src/utils/breaches.js";
+} from "../../../../src/utils/breaches";
 import { SubscriberBreach } from "../../../utils/subscriberBreaches";
 import { HibpLikeDbBreach } from "../../../utils/hibp";
 

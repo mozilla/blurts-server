@@ -2,11 +2,10 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-## Breaches header
-
-## Breaches resolved filter
-
-## Breaches table
+breach-all-meta-social-title = { -brand-fx-monitor }가 감지한 모든 유출
+# Variables:
+#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
+breach-detail-meta-social-title = { $company } 데이터 유출로 인한 영향을 받으셨나요?
 
 ## Links that we might refer to when prompting the user to make changes after a breach
 
@@ -81,7 +80,6 @@ breach-checklist-phone-header-2 = 실제 전화번호를 숨기는 { $firefoxRel
 ## Prompts the user for changes when there is a breach detected of security questions
 
 breach-checklist-sq-header-text = 보안 질문을 업데이트 하세요.
-
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 breach-checklist-sq-body-text = 대부분의 경우, 회사 웹사이트의 보안 질문을 업데이트하는 것을 추천 합니다. 하지만 <b>웹사이트가 다운되거나 악성 콘텐츠를 포함하고 있을 수 있으므로</b> <breached-company-link>사이트를 방문 를 방문</breached-company-link>할 경우 주의하시기 바랍니다. 추가 보호를 위해 보안 질문을 사용한 중요한 계정에서 이러한 보안 질문을 업데이트하고 모든 계정에 대해 고유한 비밀번호를 만드세요.
 
