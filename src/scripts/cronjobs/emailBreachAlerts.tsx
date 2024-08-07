@@ -2,6 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import React from "react";
 import Sentry from "@sentry/nextjs";
 import { acceptedLanguages, negotiateLanguages } from "@fluent/langneg";
 import { localStorage } from "../../utils/localStorage.js";
@@ -18,12 +19,12 @@ import {
 import {
   getEmailAddressesByHashes,
   knexEmailAddresses,
-} from "../../db/tables/emailAddresses.js";
+} from "../../db/tables/emailAddresses";
 import {
   getNotifiedSubscribersForBreach,
   addEmailNotification,
   markEmailAsNotified,
-} from "../../db/tables/email_notifications.js";
+} from "../../db/tables/email_notifications";
 import { getTemplate } from "../../emails/email2022.js";
 import { breachAlertEmailPartial } from "../../emails/emailBreachAlert.js";
 import {
@@ -40,6 +41,11 @@ import {
   getAllBreachesFromDb,
   knexHibp,
 } from "../../utils/hibp";
+import { getEnabledFeatureFlags } from "../../db/tables/featureFlags";
+import { renderEmail } from "../../emails/renderEmail";
+import { BreachAlertEmail } from "../../emails/templates/breachAlert/BreachAlertEmail";
+import { getEmailL10n } from "../../app/functions/l10n/cronjobs";
+import { sanitizeSubscriberRow } from "../../app/functions/server/sanitize";
 
 const SENTRY_SLUG = "cron-breach-alerts";
 
@@ -277,13 +283,26 @@ export async function poll(
                   notificationType: "incident",
                 });
 
-                const emailTemplate = getTemplate(
-                  data,
-                  breachAlertEmailPartial,
-                );
-                const subject = getMessage("breach-alert-subject");
+                const enabledFlags = await getEnabledFeatureFlags({
+                  email: recipient.primary_email,
+                });
+                const l10n = getEmailL10n(sanitizeSubscriberRow(recipient));
+                const subject = l10n.getString("breach-alert-subject");
 
-                await sendEmail(data.recipientEmail, subject, emailTemplate);
+                await sendEmail(
+                  data.recipientEmail,
+                  subject,
+                  enabledFlags.includes("RedesignedEmails")
+                    ? renderEmail(
+                        <BreachAlertEmail
+                          l10n={l10n}
+                          breach={breachAlert}
+                          breachedEmail={breachedEmail}
+                          utmCampaignId={utmCampaignId}
+                        />,
+                      )
+                    : getTemplate(data, breachAlertEmailPartial),
+                );
               } catch (e) {
                 console.error("Failed to add email notification to table: ", e);
                 setTimeout(process.exit, 1000);

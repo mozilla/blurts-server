@@ -6,50 +6,37 @@
 -product-name = Firefox Monitor
 # Firefox is a brand name and should not be translated.
 -brand-name = Firefox
-
 # Firefox Relay is a product name and should not be translated.
 -product-name-relay = Firefox Relay
 # Mozilla VPN is a product name and should not be translated.
 -product-name-vpn = Mozilla VPN
-
 # A link to legal information about mozilla products.
 legal = Juridysk
-
 # Unsubscribe link in email.
 email-unsub-link = Ofmelde
-
 # This string appears in the footer of breach report and breach alert emails.
 # { $unsubLink } is a link to the user's dashboard where they can unsubscribe from Monitor
-# and uses the text from { email-unsub-link }. { $faqLink } is a link to the 
+# and uses the text from { email-unsub-link }. { $faqLink } is a link to the
 # Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
 email-footer-blurb =
     Jo ûntfange dit e-mailberjocht omdat jo jo oanmelden hawwe foar { -product-name }-warskôgingen.
     Wolle jo dizze e-mailberjochten net mear ûntfange? { $unsubLink }. Dit is in automatisearre e-mailberjocht. Gean foar stipe nei { $faqLink }.
-
 # Button text
 verify-email-cta = E-mailadres ferifiearje
-
 # Headline of verification email
 email-link-expires = Dizze keppeling ferrint oer 24 oer
-
-## Variables:
-##   $userEmail (string) - User email address
 
 ##
 
 # Subject line of email
 email-subject-found-breaches = { -product-name } hat jo gegevens fûn yn dizze datalekken
-
 # Subject line of email
 email-subject-no-breaches = { -product-name } hat gjin bekende datalekken fûn
-
 # Subject line of email
 email-subject-verify = Ferifiearje jo e-mailadres foar { -product-name }
-
 fxm-warns-you-no-breaches =
     { -product-name } warskôget jo foar datalekken mei betrekking ta jo persoanlike gegevens.
     Oant no ta binne der gjin datalekken fûn. Wy stjoere jo in melding as jo e-mailadres werjûn wurdt yn in nij datalek.
-
 email-breach-alert-blurb =
     { -product-name } warskôget jo foar datalekken mei betrekking ta jo persoanlike gegevens.
     Wy hawwe sakrekt ynformaasje ûntfongen oer in datalek fan in oar bedriuw.
@@ -57,9 +44,9 @@ email-breach-alert-blurb =
 ## 2022 email template. HTML tags should not be translated, e.g. `<a>`
 
 # Have I Been Pwned attribution
+# Variables:
+#   $hibp-link-attr (String) - Link to Have I Been Pwned
 email-2022-hibp-attribution = Datalek oanlevere troch <a { $hibp-link-attr }>{ -brand-HIBP }</a>
-
-## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
 
 ## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
 ## Variables:
@@ -88,12 +75,13 @@ email-verify-simply-click = Klik op de ûndersteande keppeling om de ferifikaasj
 
 ## Breach report
 
-## Breach report
-## Variables:
-##   $email-address (string) - Email address
-
 email-breach-summary = Hjir is jo gearfetting fan jo datalek
+# Variables:
+#   $email-address (string) - Email address, bolded
 email-breach-detected = Sykresultaten foar jo account { $email-address } hawwe ûntdutsen dat jo e-mailadres mooglik lekt is. Wy rekommandearje oan dat jo no hannelje om dit datalek op te lossen.
+# Variables:
+#   $email-address (string) - Email address
+email-breach-detected-2 = Sykresultaten foar jo account <b>{ $email-address }</b> hawwe ûntdutsen dat jo e-mailadres mooglik lekt is. Wy rekommandearje oan dat jo no hannelje om dit datalek op te lossen.
 email-dashboard-cta = Nei it dashboerd
 
 ## Breach alert

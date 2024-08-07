@@ -10,10 +10,11 @@ import { SanitizedSubscriberRow } from "../../../app/functions/server/sanitize";
 import { getL10n } from "../../../app/functions/l10n/storybookAndJest";
 import { DashboardSummary } from "../../../app/functions/server/dashboard";
 
+type StoryProps = Props & { emulateDarkMode?: boolean };
 const meta: Meta<FC<Props>> = {
   title: "Emails/Monthly activity",
-  component: (props: Props) => (
-    <StorybookEmailRenderer>
+  component: (props: StoryProps) => (
+    <StorybookEmailRenderer emulateDarkMode={props.emulateDarkMode}>
       <MonthlyActivityEmail {...props} />
     </StorybookEmailRenderer>
   ),
@@ -23,7 +24,7 @@ const meta: Meta<FC<Props>> = {
 };
 
 export default meta;
-type Story = StoryObj<FC<Props>>;
+type Story = StoryObj<FC<StoryProps>>;
 
 export const MonthlyActivityEmailPlusWithManualStory: Story = {
   name: "A Plus user, with manually-resolved items",
@@ -64,6 +65,24 @@ export const MonthlyActivityEmailPlusWithoutManualStory: Story = {
 export const MonthlyActivityEmailFreeStory: Story = {
   name: "A free user",
   args: {
+    subscriber: {
+      signup_language: "en",
+      fxa_profile_json: {
+        subscriptions: ["not-monitor"],
+      },
+    } as SanitizedSubscriberRow,
+    data: {
+      dataBrokerManuallyResolvedDataPointsNum: 40,
+      dataBreachFixedDataPointsNum: 2,
+      dataBrokerInProgressDataPointsNum: 0,
+      dataBrokerAutoFixedDataPointsNum: 0,
+    } as DashboardSummary,
+  },
+};
+export const DarkModeStory: Story = {
+  name: "Simulating dark mode",
+  args: {
+    emulateDarkMode: true,
     subscriber: {
       signup_language: "en",
       fxa_profile_json: {

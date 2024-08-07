@@ -34,6 +34,8 @@ export const getL10nBundles: GetL10nBundles = createGetL10nBundles({
   availableLocales: readdirSync(resolve(rootDir, `./locales/`)),
   // TODO: Make this optional in `createGetL10nBundles`, which would then make
   //       it required in the newly-created function:
+  // We don't have tests for different locales.
+  /* c8 ignore next */
   getAcceptLangHeader: () => "en",
   loadLocaleFiles: (locale) => {
     const referenceStringsPath = resolve(rootDir, `./locales/${locale}/`);
@@ -72,7 +74,7 @@ function getRootDir(currentDir = dirname(fileURLToPath(import.meta.url))) {
   return getRootDir(resolve(currentDir, "../"));
 }
 
-export const getL10n: GetL10n = createGetL10n({
+const getL10n: GetL10n = createGetL10n({
   getL10nBundles: getL10nBundles,
   ReactLocalization: ReactLocalization,
   parseMarkup: parseMarkup,

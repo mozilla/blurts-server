@@ -5,8 +5,8 @@
 // TODO: Add unit test when changing this code:
 /* c8 ignore next 8 */
 
-function formatDate(date: string, locales: string): string {
-  const jsDate = new Date(date);
+function formatDate(date: string | Date, locales: string): string {
+  const jsDate = typeof date === "string" ? new Date(date) : date;
   /** @type {{ year: 'numeric', month: 'long', day: 'numeric' }} */
 
   const options: Intl.DateTimeFormatOptions = {

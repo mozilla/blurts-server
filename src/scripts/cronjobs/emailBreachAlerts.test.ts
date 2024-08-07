@@ -14,7 +14,7 @@ jest.mock("@sentry/nextjs", () => {
   };
 });
 
-jest.mock("../../utils/email.js", () => {
+jest.mock("../../utils/email", () => {
   return {
     initEmail: jest.fn(),
     EmailTemplateType: jest.fn(),
@@ -43,13 +43,13 @@ jest.mock("../../db/tables/subscribers.js", () => {
   };
 });
 
-jest.mock("../../db/tables/emailAddresses.js", () => {
+jest.mock("../../db/tables/emailAddresses", () => {
   return {
     getEmailAddressesByHashes: jest.fn(() => [""]),
   };
 });
 
-jest.mock("../../db/tables/email_notifications.js", () => {
+jest.mock("../../db/tables/email_notifications", () => {
   return {
     getNotifiedSubscribersForBreach: jest.fn(() => [""]),
     addEmailNotification: jest.fn(),
@@ -62,6 +62,31 @@ jest.mock("../../utils/fluent.js", () => {
     initFluentBundles: jest.fn(),
     getMessage: jest.fn(),
     getStringLookup: jest.fn(),
+  };
+});
+
+jest.mock("../../db/tables/featureFlags", () => {
+  return {
+    getEnabledFeatureFlags: jest.fn(() => Promise.resolve([])),
+  };
+});
+
+jest.mock("../../app/functions/l10n/parseMarkup", () => {
+  return {
+    parseMarkup: undefined,
+  };
+});
+
+jest.mock("../../app/functions/server/logging", () => {
+  class Logging {
+    info(message: string, details: object) {
+      console.info(message, details);
+    }
+  }
+
+  const logger = new Logging();
+  return {
+    logger,
   };
 });
 
@@ -274,6 +299,51 @@ test("processes valid messages", async () => {
   );
 });
 
+test("rendering the new template if the `RedesignedEmails` flag is enabled", async () => {
+  const mockedFeatureFlagModule: any = jest.requireMock(
+    "../../db/tables/featureFlags",
+  );
+  mockedFeatureFlagModule.getEnabledFeatureFlags.mockResolvedValue([
+    "RedesignedEmails",
+  ]);
+  const consoleLog = jest
+    .spyOn(console, "log")
+    .mockImplementation(() => undefined);
+  // It's not clear if the calls to console.info are important enough to remain,
+  // but since they were already there when adding the "no logs" rule in tests,
+  // I'm respecting Chesterton's Fence and leaving them in place for now:
+  jest.spyOn(console, "info").mockImplementation(() => undefined);
+  const emailMod = await import("../../utils/email.js");
+  const sendEmail = emailMod.sendEmail as jest.Mock<
+    (typeof emailMod)["sendEmail"]
+  >;
+
+  const mockedUtilsHibp: any = jest.requireMock("../../utils/hibp");
+  mockedUtilsHibp.getBreachByName.mockReturnValue({
+    IsVerified: true,
+    Domain: "test1",
+    IsFabricated: false,
+    IsSpamList: false,
+  });
+
+  const receivedMessages = buildReceivedMessages({
+    breachName: "test1",
+    hashPrefix: "test-prefix1",
+    hashSuffixes: ["test-suffix1"],
+  });
+
+  const { poll } = await import("./emailBreachAlerts");
+
+  await poll(subClient, receivedMessages);
+  expect(subClient.acknowledge).toHaveBeenCalledTimes(1);
+  expect(sendEmail).toHaveBeenCalledTimes(1);
+  const emailBody = sendEmail.mock.calls[0][2];
+  expect(emailBody).toContain("Questions about ⁨Mozilla Monitor⁩?");
+  expect(consoleLog).toHaveBeenCalledWith(
+    'Received message: {"breachName":"test1","hashPrefix":"test-prefix1","hashSuffixes":["test-suffix1"]}',
+  );
+});
+
 test("skipping email when subscriber id exists in email_notifications table", async () => {
   const consoleLog = jest
     .spyOn(console, "log")
@@ -298,13 +368,13 @@ test("skipping email when subscriber id exists in email_notifications table", as
     };
   });
 
-  jest.mock("../../db/tables/emailAddresses.js", () => {
+  jest.mock("../../db/tables/emailAddresses", () => {
     return {
       getEmailAddressesByHashes: jest.fn(() => []),
     };
   });
 
-  jest.mock("../../db/tables/email_notifications.js", () => {
+  jest.mock("../../db/tables/email_notifications", () => {
     return {
       getNotifiedSubscribersForBreach: jest.fn(() => [1]),
       addEmailNotification: jest.fn(),
@@ -353,13 +423,13 @@ test("throws an error when addEmailNotification fails", async () => {
     };
   });
 
-  jest.mock("../../db/tables/emailAddresses.js", () => {
+  jest.mock("../../db/tables/emailAddresses", () => {
     return {
       getEmailAddressesByHashes: jest.fn(() => [""]),
     };
   });
 
-  jest.mock("../../db/tables/email_notifications.js", () => {
+  jest.mock("../../db/tables/email_notifications", () => {
     return {
       getNotifiedSubscribersForBreach: jest.fn(() => [2]),
       addEmailNotification: jest.fn().mockImplementationOnce(() => {
@@ -412,13 +482,13 @@ test("throws an error when markEmailAsNotified fails", async () => {
     };
   });
 
-  jest.mock("../../db/tables/emailAddresses.js", () => {
+  jest.mock("../../db/tables/emailAddresses", () => {
     return {
       getEmailAddressesByHashes: jest.fn(() => [""]),
     };
   });
 
-  jest.mock("../../db/tables/email_notifications.js", () => {
+  jest.mock("../../db/tables/email_notifications", () => {
     return {
       getNotifiedSubscribersForBreach: jest.fn(() => [2]),
       addEmailNotification: jest.fn(),

@@ -8,7 +8,7 @@ import {
   getAllBreachesFromDb,
   fetchHibpBreaches,
 } from "../../../utils/hibp";
-import { upsertBreaches } from "../../../db/tables/breaches.js";
+import { upsertBreaches } from "../../../db/tables/breaches";
 
 let breaches: Array<HibpLikeDbBreach>;
 
@@ -17,7 +17,7 @@ export async function getBreaches(): Promise<HibpLikeDbBreach[]> {
     return breaches;
   }
   breaches = await getAllBreachesFromDb();
-  logger.debug("loaded breaches from database", {
+  logger.debug("loaded_breaches_from_database", {
     breachesLength: breaches.length,
   });
 

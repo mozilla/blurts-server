@@ -4,7 +4,7 @@
 
 import { Session } from "next-auth";
 import { getSubscriberByFxaUid } from "../../../db/tables/subscribers.js";
-import { getUserEmails } from "../../../db/tables/emailAddresses.js";
+import { getUserEmails } from "../../../db/tables/emailAddresses";
 
 /**
  * NOTE: new function to replace getUserBreaches

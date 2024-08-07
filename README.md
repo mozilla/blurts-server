@@ -22,6 +22,7 @@ the "what" and "why" of data breach alerts.
 - [Volta](https://volta.sh/) (installs the correct version of Node and npm)
 - [Postgres](https://www.postgresql.org/) | Note: On a Mac, we recommend downloading the [Postgres.app](https://postgresapp.com/) instead.
 - [Python](https://www.python.org/downloads/) | [With Homebrew](https://docs.brew.sh/Homebrew-and-Python)
+- [k6](https://grafana.com/docs/k6/latest/set-up/install-k6/) | k6 load testing tool
 
 ### Code style
 
@@ -168,7 +169,7 @@ then add it to the (emulated) pubsub queue.
 ### This pubsub queue will be consumed by this cron job, which is responsible for looking up and emailing impacted users:
 
 ```sh
-npm run dev:cron:breach-alerts
+NODE_ENV="development" npm run dev:cron:breach-alerts
 ```
 
 ### Emails
@@ -208,6 +209,20 @@ To test this part of Monitor:
 3. Restart Firefox with that profile.
 4. Go to `about:protections`
 5. Everything should be using your localhost instance of Monitor.
+
+#### Load testing
+
+k6 is used for load testing.
+
+To test the HIBP breach alerts endpoint, use:
+
+```sh
+export SERVER_URL=...
+export HIBP_NOTIFY_TOKEN=...
+k6 -u 10 src/scripts/loadtest/hibp.js # Run with 10 virtual users
+```
+
+See https://grafana.com/docs/k6/latest/get-started/running-k6/ for more information.
 
 ## Localization
 

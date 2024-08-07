@@ -34,7 +34,9 @@ export function useLocalDismissal(
   options: DismissalOptions = {},
 ): DismissalData {
   const cookieId = key + "_dismissed";
-  const [cookies, setCookie] = useCookies([cookieId]);
+  const [cookies, setCookie] = useCookies([cookieId], {
+    doNotUpdate: false,
+  });
   const cookieValue = cookies[cookieId] as string | undefined;
 
   const [isDismissed, setIsDismissed] = useState(
