@@ -333,37 +333,6 @@ const getVerificationDummyData = (recipient, l10n) => {
 /* c8 ignore stop */
 
 /**
- * Dummy data for populating the monthly unresolved breaches email
- *
- * @param {string} recipient
- * @param {import("@fluent/react").ReactLocalization} [l10n]
- * @returns {object} Monthly unresolved breaches dummy data
- */
-// TODO: Add unit test when changing this code:
-/* c8 ignore start */
-const getMonthlyDummyData = (recipient, l10n) => {
-  const getMessage = getStringLookup(l10n);
-
-  return ({
-    breachedEmail: 'breached@email.com',
-    ctaHref: `${SERVER_URL}/user/breaches`,
-    heading: getMessage('email-unresolved-heading'),
-    monitoredEmails: {
-      count: 2
-    },
-    numBreaches: {
-      count: 3,
-      numResolved: 2,
-      numUnresolved: 1
-    },
-    recipientEmail: recipient,
-    subheading: getMessage('email-unresolved-subhead'),
-    unsubscribeUrl: `${SERVER_URL}/user/unsubscribe-monthly?token=token_123`
-  })
-}
-/* c8 ignore stop */
-
-/**
  * Dummy data for populating the signup report email
  *
  * @param {string} recipient
@@ -416,7 +385,6 @@ const getSignupReportDummyData = (recipient, l10n) => {
 export {
   EmailTemplateType,
   getEmailCtaDashboardHref,
-  getMonthlyDummyData,
   getNotificationDummyData,
   getSignupReportDummyData,
   getUnsubscribeCtaHref,
