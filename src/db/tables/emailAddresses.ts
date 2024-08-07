@@ -146,20 +146,16 @@ async function verifyEmailHash(token: string) {
 /* c8 ignore start */
 async function _getSha1EntryAndDo(
   sha1: string,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  aFoundCallback: any,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  aNotFoundCallback: any,
+  aFoundCallback: (existingSubscriber: SubscriberRow) => Promise<SubscriberRow>,
+  aNotFoundCallback: () => Promise<SubscriberRow>,
 ) {
   const existingEntries = await knex("subscribers").where("primary_sha1", sha1);
 
   if (existingEntries.length && aFoundCallback) {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     return await aFoundCallback(existingEntries[0]);
   }
 
   if (!existingEntries.length && aNotFoundCallback) {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     return await aNotFoundCallback();
   }
 }
@@ -174,7 +170,7 @@ async function _addEmailHash(
   email: string,
   signupLanguage: string,
   verified: boolean = false,
-): Promise<SubscriberRow> {
+): Promise<SubscriberRow | undefined> {
   try {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     return await _getSha1EntryAndDo(
@@ -247,6 +243,11 @@ Promise<SubscriberRow | null> {
     signupLanguage,
     true,
   );
+
+  if (!emailHash) {
+    throw new Error("Email hash undefined");
+  }
+
   const verified = await _verifySubscriber(emailHash);
   const verifiedSubscriber = Array.isArray(verified) ? verified[0] : null;
   if (fxaRefreshToken || fxaProfileData) {
