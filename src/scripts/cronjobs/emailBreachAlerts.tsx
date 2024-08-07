@@ -19,12 +19,12 @@ import {
 import {
   getEmailAddressesByHashes,
   knexEmailAddresses,
-} from "../../db/tables/emailAddresses.js";
+} from "../../db/tables/emailAddresses";
 import {
   getNotifiedSubscribersForBreach,
   addEmailNotification,
   markEmailAsNotified,
-} from "../../db/tables/email_notifications.js";
+} from "../../db/tables/email_notifications";
 import { getTemplate } from "../../emails/email2022.js";
 import { breachAlertEmailPartial } from "../../emails/emailBreachAlert.js";
 import {

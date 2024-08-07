@@ -9,14 +9,33 @@ import { renderToStaticMarkup } from "react-dom/server";
 
 export type Props = {
   children: ReactNode;
+  emulateDarkMode?: boolean;
 };
 
 export const StorybookEmailRenderer = (props: Props) => {
   return (
-    <div
-      dangerouslySetInnerHTML={{
-        __html: mjml2html(renderToStaticMarkup(props.children)).html,
-      }}
-    />
+    <>
+      <style>{`
+      @media (prefers-color-scheme: dark) {
+        * {
+          background-color: #1e293b !important;
+          color: white !important;
+        }
+      }
+
+      .dark-mode-enforced * {
+        background-color: #1e293b !important;
+        color: white !important;
+      }
+  `}</style>
+      <div
+        dangerouslySetInnerHTML={{
+          __html: mjml2html(renderToStaticMarkup(props.children)).html,
+        }}
+        // This isn't used in production, so not worth writing a test for:
+        /* c8 ignore next */
+        className={props.emulateDarkMode ? "dark-mode-enforced" : ""}
+      />
+    </>
   );
 };

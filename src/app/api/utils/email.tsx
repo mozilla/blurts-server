@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { SubscriberRow } from "knex/types/tables";
-import { resetUnverifiedEmailAddress } from "../../../db/tables/emailAddresses.js";
+import { resetUnverifiedEmailAddress } from "../../../db/tables/emailAddresses";
 import { sendEmail, getVerificationUrl } from "../../../utils/email.js";
 import { getTemplate } from "../../../emails/email2022.js";
 import { verifyPartial } from "../../../emails/emailVerify.js";
