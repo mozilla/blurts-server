@@ -55,10 +55,6 @@ async function getEmailAddressRecordByEmail(email: string) {
 }
 /* c8 ignore stop */
 
-/**
- * @param {{ id: number; }} user
- * @param {string} email
- */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
 async function addSubscriberUnverifiedEmailHash(
@@ -382,9 +378,6 @@ async function getEmailAddressesByHashes(hashes: string[]) {
 }
 /* c8 ignore stop */
 
-/**
- * @param {string} uid
- */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
 async function deleteEmailAddressesByUid(uid: string) {
