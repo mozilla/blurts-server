@@ -7,7 +7,7 @@ import {
   SubscriberBreachResolution,
   SubscriberRow,
 } from "knex/types/tables";
-import { getUserEmails } from "../db/tables/emailAddresses.js";
+import { getUserEmails } from "../db/tables/emailAddresses";
 import { HibpLikeDbBreach, getBreachesForEmail } from "./hibp";
 import { getSha1 } from "./fxa";
 import { parseIso8601Datetime } from "./parse";

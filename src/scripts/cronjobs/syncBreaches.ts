@@ -17,7 +17,7 @@ import {
   getAllBreaches,
   upsertBreaches,
   updateBreachFaviconUrl,
-} from "../../db/tables/breaches.js";
+} from "../../db/tables/breaches";
 import { uploadToS3 } from "../s3.js";
 
 const SENTRY_SLUG = "cron-sync-breaches";
