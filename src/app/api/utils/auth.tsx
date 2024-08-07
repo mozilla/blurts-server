@@ -197,7 +197,7 @@ export const authOptions: AuthOptions = {
           });
 
           const enabledFlags = await getEnabledFeatureFlags({
-            email: verifiedSubscriber.primary_email,
+            email: verifiedSubscriber ? verifiedSubscriber.primary_email : "",
           });
 
           await initEmail(process.env.SMTP_URL);
