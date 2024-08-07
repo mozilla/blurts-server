@@ -250,14 +250,13 @@ Promise<SubscriberRow | null> {
   const verified = await _verifySubscriber(emailHash);
   const verifiedSubscriber = Array.isArray(verified) ? verified[0] : null;
   if (fxaRefreshToken || fxaProfileData) {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     return updateFxAData(
       verifiedSubscriber,
       fxaAccessToken,
       fxaRefreshToken,
       sessionExpiresAt,
       fxaProfileData,
-    );
+    ) as Promise<SubscriberRow | null>;
   }
   return verifiedSubscriber;
 }
