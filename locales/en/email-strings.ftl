@@ -56,25 +56,6 @@ email-breach-alert-blurb =
 #   $hibp-link-attr (String) - Link to Have I Been Pwned
 email-2022-hibp-attribution = Breach data provided by <a { $hibp-link-attr }>{ -brand-HIBP }</a>
 
-## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
-## Variables:
-##   $email-address (string) - Email address
-
-email-unresolved-heading = You have unresolved breaches
-email-unresolved-subhead = Your email has been exposed. <br>Fix it right away with { -product-name }.
-email-is-affected = Your email, { $email-address }, is affected by at least one data breach
-email-more-detail = Sign in to { -product-name } now to see more details about your breaches (including when they occurred and what data was exposed), and learn what you should do when your email’s been exposed in a data breach.
-email-breach-status = Current breach status
-# table row 1 label
-email-monitored = Total emails monitored:
-# table row 2 label
-email-breach-total = Total number of breaches:
-# table row 3 label
-email-resolved = Resolved breaches:
-# table row 4 label
-email-unresolved = Unresolved breaches:
-email-resolve-cta = Resolve breaches
-
 ## Verification email
 
 email-verify-heading = Safeguard your data, starting right now
