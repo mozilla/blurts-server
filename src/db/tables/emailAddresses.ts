@@ -58,7 +58,7 @@ async function getEmailAddressRecordByEmail(email: string) {
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
 async function addSubscriberUnverifiedEmailHash(
-  user: { id: number },
+  user: SubscriberRow,
   email: string,
 ) {
   const lowerCaseEmail = email.toLowerCase();
@@ -84,7 +84,7 @@ async function addSubscriberUnverifiedEmailHash(
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
 async function resetUnverifiedEmailAddress(
-  emailAddressId: number | string,
+  emailAddressId: EmailAddressRow["id"],
   subscriber: SubscriberRow,
   l10n: ReactLocalization,
 ) {
