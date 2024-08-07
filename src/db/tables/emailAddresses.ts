@@ -172,7 +172,6 @@ async function _addEmailHash(
   verified: boolean = false,
 ): Promise<SubscriberRow | undefined> {
   try {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     return await _getSha1EntryAndDo(
       sha1,
       async (aEntry: SubscriberRow) => {
