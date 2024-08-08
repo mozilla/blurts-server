@@ -49,7 +49,7 @@ export async function sendVerificationEmail(
         verificationUrl={verificationUrl.href}
         subscriber={sanitizedSubscriber}
         l10n={l10n}
-        utmCampaign={utmCampaign}
+        utmCampaignId={utmCampaign}
       />,
     ),
   );

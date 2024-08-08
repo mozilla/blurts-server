@@ -11,7 +11,7 @@ export type Props = {
   l10n: ExtendedReactLocalization;
   subscriber: SanitizedSubscriberRow;
   verificationUrl: string;
-  utmCampaign: string;
+  utmCampaignId: string;
 };
 
 export const VerifyEmailAddressEmail = (props: Props) => {
@@ -27,7 +27,7 @@ export const VerifyEmailAddressEmail = (props: Props) => {
         <mj-preview>{l10n.getString("email-verify-heading")}</mj-preview>
       </mj-head>
       <mj-body>
-        <EmailHeader l10n={l10n} utm_campaign={props.utmCampaign} />
+        <EmailHeader l10n={l10n} utm_campaign={props.utmCampaignId} />
         <mj-section padding="50px">
           <mj-column>
             <mj-text align="center">
@@ -41,7 +41,7 @@ export const VerifyEmailAddressEmail = (props: Props) => {
             </mj-text>
           </mj-column>
         </mj-section>
-        <EmailFooter l10n={l10n} utm_campaign={props.utmCampaign} />
+        <EmailFooter l10n={l10n} utm_campaign={props.utmCampaignId} />
       </mj-body>
     </mjml>
   );
