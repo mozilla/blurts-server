@@ -1,0 +1,129 @@
+:root {
+  --disco-ball-size: 15vw;
+  --disco-ball-position-top: 15vh;
+}
+
+.discoBallWrapper {
+  height: 100vh;
+  left: 0;
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  transition: opacity 150ms ease-in;
+  width: 100vw;
+}
+
+.discoBallWrapper.letsgo {
+  opacity: 1;
+}
+
+.discoBallString {
+  background: #0c0c0d;
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, 0);
+  height: var(--disco-ball-position-top);
+  width: calc(var(--disco-ball-size) * 0.007);
+}
+
+.discoBallString::before {
+  border-radius: 0 0 2px 2px;
+  content: "";
+  background: #0c0c0d;
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, 0);
+  height: calc(var(--disco-ball-size) * 0.03);
+  width: calc(var(--disco-ball-size) * 0.03);
+}
+
+.discoBallString::after {
+  border-radius: 2px 2px 0 0;
+  content: "";
+  background: #0c0c0d;
+  display: block;
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%, 0);
+  height: calc(var(--disco-ball-size) * 0.02);
+  width: calc(var(--disco-ball-size) * 0.02);
+}
+
+.discoBall {
+  animation: rotateDiscoBall 18s linear infinite;
+  height: var(--disco-ball-size);
+  left: 50%;
+  margin-left: calc(-1 * var(--disco-ball-size) * 0.5);
+  position: absolute;
+  top: var(--disco-ball-position-top);
+  transform-style: preserve-3d;
+  width: var(--disco-ball-size);
+}
+
+.discoBallLight {
+  background: linear-gradient(to top, #ffffe1, #e7dfff);
+  border-radius: 100%;
+  height: var(--disco-ball-size);
+  left: 50%;
+  opacity: 0.5;
+  position: absolute;
+  top: var(--disco-ball-position-top);
+  transform: translate(-50%, 0) scale(1.5);
+  width: var(--disco-ball-size);
+  filter: blur(20px);
+}
+
+.squareTile {
+  height: 6px;
+  left: calc(var(--disco-ball-size) * 0.5);
+  position: absolute;
+  top: calc(var(--disco-ball-size) * 0.5);
+  transform-style: preserve-3d;
+  transform: rotateX(90deg) rotateY(0deg) translateZ(0px);
+  width: 6px;
+}
+
+.discoBallMiddle {
+  animation: rotateDiscoBallMiddle 18s linear infinite;
+  background: linear-gradient(to bottom, #ffffe1, #e7dfff);
+  border-radius: 100%;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  filter: drop-shadow(0px -2px 2px #3d3d3d);
+}
+
+@keyframes rotateDiscoBall {
+  0% {
+    transform: rotateX(90deg) rotateZ(0deg) rotate(0deg);
+  }
+  100% {
+    transform: rotateX(90deg) rotateZ(360deg) rotate(0deg);
+  }
+}
+
+@keyframes rotateDiscoBallMiddle {
+  0% {
+    transform: rotateX(90deg) rotateY(0deg) rotate(0deg);
+  }
+  100% {
+    transform: rotateX(90deg) rotateY(-360deg) rotate(0deg);
+  }
+}
+
+@keyframes reflect {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
+}

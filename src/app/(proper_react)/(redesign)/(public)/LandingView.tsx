@@ -30,6 +30,7 @@ import { FeatureFlagName } from "../../../../db/tables/featureFlags";
 import { AccountDeletionNotification } from "./AccountDeletionNotification";
 import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 import { FreeScanCta } from "./FreeScanCta";
+import { DiscoBall } from "./DiscoBall";
 
 export type Props = {
   eligibleForPremium: boolean;
@@ -258,6 +259,7 @@ export const View = (props: Props) => {
             experimentData={props.experimentData}
           />
         </div>
+        <DiscoBall />
       </main>
     </>
   );

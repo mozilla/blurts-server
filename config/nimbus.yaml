@@ -5,6 +5,24 @@ channels:
   - staging
   - production
 features:
+  mozweek-demo:
+    description: This is a fun demo for MozWeek 2024.
+    variables:
+      enabled:
+        description: If the feature is enabled
+        type: Boolean
+        default: false
+      variant:
+        description: The demo variant to show
+        type: MozWeekDemoType
+        default: confetti
+    defaults:
+      - channel: local
+        value: { "enabled": true }
+      - channel: staging
+        value: { "enabled": false }
+      - channel: production
+        value: { "enabled": false }
   last-scan-date:
     description: Show the date of the user's last scan in the top right-hand corner
     variables:
@@ -75,6 +93,15 @@ features:
           "variant": ctaWithEmail,
         }
 enums:
+  MozWeekDemoType:
+    description: An enum of free scan CTA types
+    variants:
+      confetti:
+        description: Shows the confetti you all deserve
+      disco:
+        description: Shows the disco ball you did not now you needed
+      confettiAndDisco:
+        description: Shows you too much
   FreeScanCtaType:
     description: An enum of free scan CTA types
     variants:
