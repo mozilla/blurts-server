@@ -17,7 +17,7 @@ export type Props = {
 
 export const SignupReportEmail = (props: Props) => {
   const l10n = props.l10n;
-  const utmCampaign = "report";
+  const utmCampaign = "signup-report";
 
   return (
     <mjml>

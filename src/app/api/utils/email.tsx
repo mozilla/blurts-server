@@ -28,6 +28,7 @@ export async function sendVerificationEmail(
     throw new BadRequestError("subscriber has no verification_token");
   }
 
+  const utmCampaign = "verified-subscribers";
   const verificationUrl = new URL(
     `${process.env.SERVER_URL}/api/v1/user/verify-email`,
   );
@@ -35,7 +36,7 @@ export async function sendVerificationEmail(
     "token",
     unverifiedEmailAddressRecord.verification_token,
   );
-  verificationUrl.searchParams.set("utm_campaign", "verified-subscribers");
+  verificationUrl.searchParams.set("utm_campaign", utmCampaign);
   verificationUrl.searchParams.set("utm_content", "account-verification-email");
   verificationUrl.searchParams.set("utm_source", "fx-monitor");
   verificationUrl.searchParams.set("utm_medium", "email");
@@ -48,6 +49,7 @@ export async function sendVerificationEmail(
         verificationUrl={verificationUrl.href}
         subscriber={sanitizedSubscriber}
         l10n={l10n}
+        utmCampaign={utmCampaign}
       />,
     ),
   );
