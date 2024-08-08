@@ -35,7 +35,7 @@ import {
 } from "../../utils/hibp";
 import { renderEmail } from "../../emails/renderEmail";
 import { BreachAlertEmail } from "../../emails/templates/breachAlert/BreachAlertEmail";
-import { getEmailL10n } from "../../app/functions/l10n/cronjobs";
+import { getCronjobL10n } from "../../app/functions/l10n/cronjobs";
 import { sanitizeSubscriberRow } from "../../app/functions/server/sanitize";
 
 const SENTRY_SLUG = "cron-breach-alerts";
@@ -259,7 +259,7 @@ export async function poll(
                   notificationType: "incident",
                 });
 
-                const l10n = getEmailL10n(sanitizeSubscriberRow(recipient));
+                const l10n = getCronjobL10n(sanitizeSubscriberRow(recipient));
                 const subject = l10n.getString("breach-alert-subject");
 
                 await sendEmail(

@@ -11,7 +11,7 @@ import {
 import { initEmail, sendEmail } from "../../utils/email";
 import { renderEmail } from "../../emails/renderEmail";
 import { MonthlyActivityEmail } from "../../emails/templates/monthlyActivity/MonthlyActivityEmail";
-import { getEmailL10n } from "../../app/functions/l10n/cronjobs";
+import { getCronjobL10n } from "../../app/functions/l10n/cronjobs";
 import { sanitizeSubscriberRow } from "../../app/functions/server/sanitize";
 import { getDashboardSummary } from "../../app/functions/server/dashboard";
 import { getLatestOnerepScanResults } from "../../db/tables/onerep_scans";
@@ -52,7 +52,7 @@ async function run() {
 
 async function sendMonthlyActivityEmail(subscriber: SubscriberRow) {
   const sanitizedSubscriber = sanitizeSubscriberRow(subscriber);
-  const l10n = getEmailL10n(sanitizedSubscriber);
+  const l10n = getCronjobL10n(sanitizedSubscriber);
   const locale = getLocale(l10n);
   /**
    * Without an active user session, we don't know the user's country. This is
