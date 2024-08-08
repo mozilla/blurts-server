@@ -17,7 +17,7 @@ import { fileURLToPath } from "node:url";
  */
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const load = (path) => readFile(resolve(__dirname, "../", path), "utf-8");
+const load = (path) => readFile(resolve(__dirname, "../../../", path), "utf-8");
 
 const packageJson = JSON.parse(await load("package.json"));
 const lockFile = JSON.parse(await load("package-lock.json"));
@@ -40,7 +40,7 @@ const esbuildVersion = (await load("esbuild.cronjobs.js"))
   .split('"node')[1]
   .split('",')[0];
 
-const ghaWorkflowPaths = await readdir(resolve(__dirname, "../.github/workflows"));
+const ghaWorkflowPaths = await readdir(resolve(__dirname, "../../../.github/workflows"));
 const ghaWorkflows = await Promise.all(
   ghaWorkflowPaths.map(async (workflowFileName) =>
     [workflowFileName, await load(`.github/workflows/${workflowFileName}`)],
