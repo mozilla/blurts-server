@@ -47,6 +47,12 @@ function letsDisco() {
   }
 }
 
+function reset() {
+  const squareTiles = document.getElementsByClassName("squareTile");
+  [...squareTiles].forEach(squareTile => squareTile.remove());
+  letsDisco();
+}
+
 function randomColor(type) {
   let c;
   if (type === "bright") {
@@ -62,3 +68,5 @@ function randomNumber(min, max) {
 }
 
 letsDisco();
+
+window.addEventListener("resize", reset);
