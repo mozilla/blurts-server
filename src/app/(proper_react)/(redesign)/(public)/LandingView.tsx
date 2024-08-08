@@ -31,6 +31,7 @@ import { AccountDeletionNotification } from "./AccountDeletionNotification";
 import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 import { FreeScanCta } from "./FreeScanCta";
 import { DiscoBall } from "./DiscoBall";
+import { Confetti } from "../../../components/client/Confetti";
 
 export type Props = {
   eligibleForPremium: boolean;
@@ -259,7 +260,12 @@ export const View = (props: Props) => {
             experimentData={props.experimentData}
           />
         </div>
-        <DiscoBall />
+        {(props.experimentData["mozweek-demo"].variant === "confetti" ||
+          props.experimentData["mozweek-demo"].variant ===
+            "confettiAndDisco") && <Confetti />}
+        {(props.experimentData["mozweek-demo"].variant === "disco" ||
+          props.experimentData["mozweek-demo"].variant ===
+            "confettiAndDisco") && <DiscoBall />}
       </main>
     </>
   );
