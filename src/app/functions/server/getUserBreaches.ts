@@ -7,7 +7,6 @@ import { Session } from "next-auth";
 import { EmailAddressRow } from "knex/types/tables";
 
 import { getBreaches } from "./getBreaches";
-import { appendBreachResolutionChecklist } from "./breachResolution";
 import { BreachDataTypes } from "../universal/breach";
 import { getSubscriberByFxaUid } from "../../../../src/db/tables/subscribers.js";
 import {
@@ -34,10 +33,8 @@ export type UserBreaches = {
 //TODO: deprecate with MNTOR-2021
 export async function getUserBreaches({
   user,
-  options = {},
 }: {
   user: Session["user"];
-  options?: Parameters<typeof appendBreachResolutionChecklist>[1];
 }): Promise<UserBreaches> {
   if (!user.subscriber?.fxa_uid) {
     throw new Error("No fxa_uid found in session");
@@ -45,7 +42,6 @@ export async function getUserBreaches({
   const subscriber = await getSubscriberByFxaUid(user.subscriber.fxa_uid);
   const allBreaches = await getBreaches();
   const breachesData = await getAllEmailsAndBreaches(subscriber, allBreaches);
-  appendBreachResolutionChecklist(breachesData, options);
 
   const ssnBreaches: HibpLikeDbBreach[] = [];
   const passwordBreaches: HibpLikeDbBreach[] = [];

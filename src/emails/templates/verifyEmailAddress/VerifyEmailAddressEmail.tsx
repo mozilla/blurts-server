@@ -15,7 +15,7 @@ export type Props = {
 
 export const VerifyEmailAddressEmail = (props: Props) => {
   const l10n = props.l10n;
-  const utmCampaign = "verify-email-address";
+  const utmCampaign = "email_verify";
 
   return (
     <mjml>
@@ -24,6 +24,7 @@ export const VerifyEmailAddressEmail = (props: Props) => {
           <mj-text font-family="sans" />
           <mj-button font-family="sans" />
         </mj-attributes>
+        <mj-preview>{l10n.getString("email-verify-heading")}</mj-preview>
       </mj-head>
       <mj-body>
         <EmailHeader l10n={l10n} utm_campaign={utmCampaign} />

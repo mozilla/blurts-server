@@ -42,9 +42,6 @@ user-delete-unknown-error = Something went wrong removing an email address. Plea
 
 user-verify-token-error = Verification token is required.
 
-user-unsubscribe-token-error = Unsubscribing requires a token.
-user-unsubscribe-token-email-error = Unsubscribing requires a token and emailHash.
-
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Compromised data:
 
@@ -59,9 +56,6 @@ sign-out = Sign Out
 
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Manage { -brand-fxa }
-
-# Link title
-frequently-asked-questions = Frequently Asked Questions
 
 # Link title
 preferences = Preferences
@@ -269,4 +263,3 @@ banner-monitor-rebrand-dismiss-button-label = OK
 banner-monitor-rebrand-dismiss-button-tooltip = Dismiss
 
 loading-accessibility = Loading
-
