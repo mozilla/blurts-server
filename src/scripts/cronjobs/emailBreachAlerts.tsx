@@ -25,23 +25,14 @@ import {
   addEmailNotification,
   markEmailAsNotified,
 } from "../../db/tables/email_notifications";
-import { getTemplate } from "../../emails/email2022.js";
-import { breachAlertEmailPartial } from "../../emails/emailBreachAlert.js";
-import {
-  initEmail,
-  EmailTemplateType,
-  getEmailCtaDashboardHref,
-  sendEmail,
-} from "../../utils/email.js";
+import { initEmail, sendEmail } from "../../utils/email.js";
 
-import { initFluentBundles, getMessage } from "../../utils/fluent.js";
 import {
   getAddressesAndLanguageForEmail,
   getBreachByName,
   getAllBreachesFromDb,
   knexHibp,
 } from "../../utils/hibp";
-import { getEnabledFeatureFlags } from "../../db/tables/featureFlags";
 import { renderEmail } from "../../emails/renderEmail";
 import { BreachAlertEmail } from "../../emails/templates/breachAlert/BreachAlertEmail";
 import { getEmailL10n } from "../../app/functions/l10n/cronjobs";
@@ -212,7 +203,7 @@ export async function poll(
         SubscriberRow | (SubscriberRow & EmailAddressRow)
       > = subscribers.concat(emailAddresses);
 
-      console.info(EmailTemplateType.Notification, {
+      console.info("notification", {
         breachAlertName: breachAlert.Name,
         length: recipients.length,
       });
@@ -257,21 +248,6 @@ export async function poll(
           localStorage.getStore().set("locale", supportedLocales);
           await (async () => {
             if (!notifiedRecipients.includes(breachedEmail)) {
-              const data = {
-                breachData: breachAlert,
-                breachedEmail,
-                ctaHref: getEmailCtaDashboardHref({
-                  emailType: utmCampaignId,
-                  content: "dashboard-cta",
-                  dashboardTabType: "action-needed",
-                }),
-                heading: getMessage("email-spotted-new-breach"),
-                recipientEmail,
-                subscriberId,
-                supportedLocales,
-                utmCampaign: utmCampaignId,
-              };
-
               // try to append a new row into the email notifications table
               // if the append fails, there might be already an entry, stop the script
               try {
@@ -279,29 +255,24 @@ export async function poll(
                   breachId,
                   subscriberId,
                   notified: false,
-                  email: data.recipientEmail,
+                  email: recipientEmail,
                   notificationType: "incident",
                 });
 
-                const enabledFlags = await getEnabledFeatureFlags({
-                  email: recipient.primary_email,
-                });
                 const l10n = getEmailL10n(sanitizeSubscriberRow(recipient));
                 const subject = l10n.getString("breach-alert-subject");
 
                 await sendEmail(
-                  data.recipientEmail,
+                  recipientEmail,
                   subject,
-                  enabledFlags.includes("RedesignedEmails")
-                    ? renderEmail(
-                        <BreachAlertEmail
-                          l10n={l10n}
-                          breach={breachAlert}
-                          breachedEmail={breachedEmail}
-                          utmCampaignId={utmCampaignId}
-                        />,
-                      )
-                    : getTemplate(data, breachAlertEmailPartial),
+                  renderEmail(
+                    <BreachAlertEmail
+                      l10n={l10n}
+                      breach={breachAlert}
+                      breachedEmail={breachedEmail}
+                      utmCampaignId={utmCampaignId}
+                    />,
+                  ),
                 );
               } catch (e) {
                 console.error("Failed to add email notification to table: ", e);
@@ -314,7 +285,7 @@ export async function poll(
                 await markEmailAsNotified(
                   subscriberId,
                   breachId,
-                  data.recipientEmail,
+                  recipientEmail,
                 );
               } catch (e: any) {
                 console.error("Failed to mark email as notified: ", e);
@@ -387,7 +358,6 @@ async function pullMessages() {
   return [subClient, response.receivedMessages] as const;
 }
 async function init() {
-  await initFluentBundles();
   await initEmail();
 
   const [subClient, receivedMessages] = await pullMessages();
