@@ -3,7 +3,7 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 public-nav-name = { -brand-mozilla-monitor }
-landing-all-hero-title = Μάθετε πού εκτίθενται οι προσωπικές σας πληροφορίες και ανακτήστε τις
+landing-all-hero-title = Μάθετε πού εκτίθενται τα προσωπικά σας δεδομένα και ανακτήστε τα
 landing-all-hero-lead = Σαρώνουμε τις παραβιάσεις δεδομένων για να δούμε εάν έχουν διαρρεύσει τα δεδομένα σας και σας παρέχουμε μέτρα για τη διόρθωσή τους.
 landing-all-hero-emailform-input-placeholder = toonomasas@example.com
 landing-all-hero-emailform-input-label = Εισαγάγετε τη διεύθυνση email σας για να ελέγξετε εάν έχει εκτεθεί σε παραβιάσεις δεδομένων.
