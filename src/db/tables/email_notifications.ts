@@ -7,9 +7,6 @@ import createDbConnection from "../connect.js";
 
 const knex = createDbConnection();
 
-/**
- * @param {number} subscriberId
- */
 async function getAllEmailNotificationsForSubscriber(subscriberId: number) {
   console.info("getAllEmailNotificationsForSubscriber: ", subscriberId);
   return await knex.transaction((trx) => {
