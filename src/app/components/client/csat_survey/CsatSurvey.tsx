@@ -29,6 +29,7 @@ export type CsatSurveyProps = {
   lastScanDate: Date | null;
   signInCount: number | null;
   localDismissalPetitionBanner: DismissalData;
+  isEligibleForPremium: boolean;
 };
 
 export const CsatSurvey = (props: CsatSurveyProps) => {
@@ -57,6 +58,7 @@ export const CsatSurvey = (props: CsatSurveyProps) => {
         lastScanDate: props.lastScanDate,
       }),
     props.enabledFeatureFlags.includes("PetitionBannerCsatSurvey") &&
+      props.isEligibleForPremium &&
       getPetitionBannerCsatSurvey(surveyOptions),
   ];
 

@@ -477,6 +477,7 @@ export const View = (props: Props) => {
         lastScanDate={props.userScanData.scan?.created_at ?? null}
         signInCount={props.signInCount}
         localDismissalPetitionBanner={localDismissalPetitionBanner}
+        isEligibleForPremium={props.isEligibleForPremium}
       />
       <div className={styles.dashboardContent}>
         <DashboardTopBanner

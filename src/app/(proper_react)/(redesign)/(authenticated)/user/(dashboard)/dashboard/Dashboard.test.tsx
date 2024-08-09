@@ -3699,7 +3699,7 @@ describe("CSAT survey banner", () => {
     expect(cookies.get("last_scan_date_plus-user_dismissed")).toBeDefined();
   });
 
-  it("displays the petition CSAT survey for users in the control branch", async () => {
+  it("displays the petition CSAT survey for US users on the control branch", async () => {
     const user = userEvent.setup();
     const ComposedDashboard = composeStory(
       DashboardUsPremiumResolvedScanNoBreaches,
@@ -3731,7 +3731,28 @@ describe("CSAT survey banner", () => {
     expect(cookies.get("petition_banner_plus-user_dismissed")).toBeDefined();
   });
 
-  it("does not display the petition CSAT survey for users in the treatment branch before they interacted with the “Data privacy petition banner”", () => {
+  it("does not display the petition CSAT survey for non-US users on the control branch", () => {
+    const ComposedDashboard = composeStory(DashboardNonUsNoBreaches, Meta);
+    render(
+      <ComposedDashboard
+        activeTab="action-needed"
+        enabledFeatureFlags={["PetitionBannerCsatSurvey"]}
+        experimentData={{
+          ...defaultExperimentData,
+          "data-privacy-petition-banner": {
+            enabled: false,
+          },
+        }}
+      />,
+    );
+
+    const answerButton = screen.queryByRole("button", {
+      name: "Neutral",
+    });
+    expect(answerButton).not.toBeInTheDocument();
+  });
+
+  it("does not display the petition CSAT survey for users on the treatment branch before they interacted with the “Data privacy petition banner”", () => {
     const ComposedDashboard = composeStory(
       DashboardUsPremiumResolvedScanNoBreaches,
       Meta,
@@ -3755,7 +3776,7 @@ describe("CSAT survey banner", () => {
     expect(answerButton).not.toBeInTheDocument();
   });
 
-  it("displays the petition CSAT survey for users in the treatment branch after they clicked “No, thank you”", async () => {
+  it("displays the petition CSAT survey for users on the treatment branch after they clicked “No, thank you”", async () => {
     const user = userEvent.setup();
     const ComposedDashboard = composeStory(
       DashboardUsPremiumResolvedScanNoBreaches,
@@ -3786,7 +3807,7 @@ describe("CSAT survey banner", () => {
     expect(answerButton).toBeInTheDocument();
   });
 
-  it("displays the petition CSAT survey for users in the treatment branch after they clicked “Sign petition”", async () => {
+  it("displays the petition CSAT survey for users on the treatment branch after they clicked “Sign petition”", async () => {
     const user = userEvent.setup();
     const ComposedDashboard = composeStory(
       DashboardUsPremiumResolvedScanNoBreaches,
