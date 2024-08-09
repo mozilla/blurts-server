@@ -22,6 +22,10 @@
       @include question-mark-circle-btn;
     }
   }
+
+  &.hidden {
+    display: none;
+  }
 }
 
 .modalBodyContent {
