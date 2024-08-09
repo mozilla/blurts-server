@@ -11,13 +11,3 @@ export const redisClient = () => {
   if (!cached) cached = createRedisInstance();
   return cached;
 };
-
-// storing data
-
-// await redis.set(key, data);
-
-// // getting data (using the same key as above)
-// const value = await redis.get(data);
-
-// // we can also increment a value by <N>
-// await redis.incrby(key, 1);
