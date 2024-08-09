@@ -212,16 +212,17 @@ export type HibpLikeDbBreach = {
 /* c8 ignore start */
 async function getAllBreachesFromDb(): Promise<HibpLikeDbBreach[]> {
   let dbBreaches: BreachRow[] = [];
+  const redisBreachKey = "breaches";
+  const client = redisClient();
   try {
-    const redisKey = "breaches";
-    const client = redisClient();
     const breaches = JSON.parse(
-      (await client.get(redisKey)) || "",
+      (await client.get(redisBreachKey)) || "[]",
     ) as BreachRow[];
     if (!breaches) {
-      throw "cannot find anything for key: " + redisKey;
+      throw "cannot find breaches in Redis for key: " + redisBreachKey;
     }
     dbBreaches = breaches;
+    logger.info("get_breaches_from_redis_successful");
   } catch (e) {
     logger.warn("getAllBreachesFromDb", {
       exception: "Failed to fetch breaches in redis: " + (e as string),
@@ -231,6 +232,9 @@ async function getAllBreachesFromDb(): Promise<HibpLikeDbBreach[]> {
   if (dbBreaches.length < 1) {
     try {
       dbBreaches = await getAllBreaches();
+      await client.hset(redisBreachKey, dbBreaches);
+      logger.info("get_all_breaches_from_db_successful");
+      logger.info("set_breaches_in_redis_successful");
     } catch (e) {
       logger.error(
         "getAllBreachesFromDb",
