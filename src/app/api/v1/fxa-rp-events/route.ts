@@ -25,7 +25,6 @@ import appConstants from "../../../../appConstants";
 import { changeSubscription } from "../../../functions/server/changeSubscription";
 import { deleteAccount } from "../../../functions/server/deleteAccount";
 import { record } from "../../../functions/server/glean";
-// import { redisClient } from "../../../../db/redis/client.js";
 
 const FXA_PROFILE_CHANGE_EVENT =
   "https://schemas.accounts.firefox.com/event/profile-change";
@@ -51,13 +50,14 @@ const getJwtPubKey = async () => {
       },
     });
     const { keys } = (await response.json()) as { keys: jwkToPem.JWK[] };
-    logger.info(
-      "getJwtPubKey",
-      `fetched jwt public keys from: ${jwtKeyUri} - ${keys.length}`,
-    );
+    logger.info("get_jwt_pub_key", {
+      message: `fetched jwt public keys from: ${jwtKeyUri} - ${keys.length}`,
+    });
     return keys;
   } catch (e: unknown) {
-    logger.error("getJwtPubKey", `Could not get JWT public key: ${jwtKeyUri}`);
+    logger.error("get_jwt_pub_key", {
+      exception: `Could not get JWT public key: ${jwtKeyUri}`,
+    });
     captureMessage(
       `Could not get JWT public key: ${jwtKeyUri} - ${e as string}`,
     );
@@ -123,7 +123,7 @@ export async function POST(request: NextRequest) {
   try {
     decodedJWT = (await authenticateFxaJWT(request)) as JwtPayload;
   } catch (e) {
-    logger.error("fxa_rp_event", e);
+    logger.error("fxa_rp_event", { exception: e as string });
     captureException(e);
     return NextResponse.json({ success: false }, { status: 401 });
   }
@@ -173,7 +173,7 @@ export async function POST(request: NextRequest) {
     const e = new Error(
       `could not find subscriber with fxa user id: ${fxaUserId}`,
     );
-    logger.error("fxa_rp_event", e);
+    logger.error("fxa_rp_event", { exception: e.message });
     return NextResponse.json({ success: true, message: "OK" }, { status: 200 });
   }
 
