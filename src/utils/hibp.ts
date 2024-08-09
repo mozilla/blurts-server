@@ -13,6 +13,7 @@ import {
   getAllQaCustomBreaches,
   getQaToggleRow,
 } from "../db/tables/qa_customs.ts";
+import { redisClient } from "../db/redis/client.ts";
 const {
   HIBP_THROTTLE_MAX_TRIES,
   HIBP_THROTTLE_DELAY,
@@ -211,14 +212,36 @@ export type HibpLikeDbBreach = {
 /* c8 ignore start */
 async function getAllBreachesFromDb(): Promise<HibpLikeDbBreach[]> {
   let dbBreaches: BreachRow[] = [];
+  const redisBreachKey = "breaches";
+  const client = redisClient();
   try {
-    dbBreaches = await getAllBreaches();
+    const breaches = JSON.parse(
+      (await client.get(redisBreachKey)) || "[]",
+    ) as BreachRow[];
+    if (!breaches) {
+      throw "cannot find breaches in Redis for key: " + redisBreachKey;
+    }
+    dbBreaches = breaches;
+    logger.info("get_breaches_from_redis_successful");
   } catch (e) {
-    logger.error(
-      "getAllBreachesFromDb",
-      "No breaches exist in the database: " + (e as string),
-    );
-    return [];
+    logger.warn("getAllBreachesFromDb", {
+      exception: "Failed to fetch breaches in redis: " + (e as string),
+    });
+  }
+
+  if (dbBreaches.length < 1) {
+    try {
+      dbBreaches = await getAllBreaches();
+      await client.hset(redisBreachKey, dbBreaches);
+      logger.info("get_all_breaches_from_db_successful");
+      logger.info("set_breaches_in_redis_successful");
+    } catch (e) {
+      logger.error(
+        "getAllBreachesFromDb",
+        "No breaches exist in the database: " + (e as string),
+      );
+      return [];
+    }
   }
 
   // TODO: we can do some filtering here for the most commonly used fields

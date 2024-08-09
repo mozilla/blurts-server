@@ -50,13 +50,14 @@ const getJwtPubKey = async () => {
       },
     });
     const { keys } = (await response.json()) as { keys: jwkToPem.JWK[] };
-    logger.info(
-      "getJwtPubKey",
-      `fetched jwt public keys from: ${jwtKeyUri} - ${keys.length}`,
-    );
+    logger.info("get_jwt_pub_key", {
+      message: `fetched jwt public keys from: ${jwtKeyUri} - ${keys.length}`,
+    });
     return keys;
   } catch (e: unknown) {
-    logger.error("getJwtPubKey", `Could not get JWT public key: ${jwtKeyUri}`);
+    logger.error("get_jwt_pub_key", {
+      exception: `Could not get JWT public key: ${jwtKeyUri}`,
+    });
     captureMessage(
       `Could not get JWT public key: ${jwtKeyUri} - ${e as string}`,
     );
@@ -122,23 +123,23 @@ export async function POST(request: NextRequest) {
   try {
     decodedJWT = (await authenticateFxaJWT(request)) as JwtPayload;
   } catch (e) {
-    logger.error("fxaRpEvents", e);
+    logger.error("fxa_rp_event", { exception: e as string });
     captureException(e);
     return NextResponse.json({ success: false }, { status: 401 });
   }
 
   if (!decodedJWT?.events) {
     // capture an exception in Sentry only. Throwing error will trigger FXA retry
-    logger.error("fxaRpEvents", decodedJWT);
+    logger.error("fxa_rp_event", { decodedJWT });
     captureMessage(
-      `fxaRpEvents: decodedJWT is missing attribute "events", ${
+      `fxa_rp_event: decodedJWT is missing attribute "events", ${
         decodedJWT as unknown as string
       }`,
     );
     return NextResponse.json(
       {
         success: false,
-        message: 'fxaRpEvents: decodedJWT is missing attribute "events"',
+        message: 'fxa_rp_event: decodedJWT is missing attribute "events"',
       },
       { status: 400 },
     );
@@ -148,14 +149,14 @@ export async function POST(request: NextRequest) {
   if (!fxaUserId) {
     // capture an exception in Sentry only. Throwing error will trigger FXA retry
     captureMessage(
-      `fxaRpEvents: decodedJWT is missing attribute "sub", ${
+      `fxa_rp_event: decodedJWT is missing attribute "sub", ${
         decodedJWT as unknown as string
       }`,
     );
     return NextResponse.json(
       {
         success: false,
-        message: 'fxaRpEvents: decodedJWT is missing attribute "sub"',
+        message: 'fxa_rp_event: decodedJWT is missing attribute "sub"',
       },
       { status: 400 },
     );
@@ -172,7 +173,7 @@ export async function POST(request: NextRequest) {
     const e = new Error(
       `could not find subscriber with fxa user id: ${fxaUserId}`,
     );
-    logger.error("fxaRpEvents", e);
+    logger.error("fxa_rp_event", { exception: e.message });
     return NextResponse.json({ success: true, message: "OK" }, { status: 200 });
   }
 
