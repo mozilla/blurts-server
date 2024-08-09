@@ -217,6 +217,7 @@ function getLeakedPasswords(props: LeakedPasswordLayout) {
                         eventData={{
                           link_id: "changed_password",
                         }}
+                        showIcon
                       />
                     ),
                     b: <strong />,
