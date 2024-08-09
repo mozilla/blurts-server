@@ -13,6 +13,7 @@ import {
   getAllQaCustomBreaches,
   getQaToggleRow,
 } from "../db/tables/qa_customs.ts";
+import { redisClient } from "../db/redis/client.ts";
 const {
   HIBP_THROTTLE_MAX_TRIES,
   HIBP_THROTTLE_DELAY,
@@ -212,13 +213,31 @@ export type HibpLikeDbBreach = {
 async function getAllBreachesFromDb(): Promise<HibpLikeDbBreach[]> {
   let dbBreaches: BreachRow[] = [];
   try {
-    dbBreaches = await getAllBreaches();
+    const redisKey = "breaches";
+    const client = redisClient();
+    const breaches = JSON.parse(
+      (await client.get(redisKey)) || "",
+    ) as BreachRow[];
+    if (!breaches) {
+      throw "cannot find anything for key: " + redisKey;
+    }
+    dbBreaches = breaches;
   } catch (e) {
-    logger.error(
-      "getAllBreachesFromDb",
-      "No breaches exist in the database: " + (e as string),
-    );
-    return [];
+    logger.warn("getAllBreachesFromDb", {
+      exception: "Failed to fetch breaches in redis: " + (e as string),
+    });
+  }
+
+  if (dbBreaches.length < 1) {
+    try {
+      dbBreaches = await getAllBreaches();
+    } catch (e) {
+      logger.error(
+        "getAllBreachesFromDb",
+        "No breaches exist in the database: " + (e as string),
+      );
+      return [];
+    }
   }
 
   // TODO: we can do some filtering here for the most commonly used fields

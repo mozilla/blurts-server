@@ -117,9 +117,9 @@ async function onerepFetch(
     throw new Error("ONEREP_API_BASE env var not set");
   }
   const onerepApiKey = process.env.ONEREP_API_KEY;
-  if (!onerepApiKey) {
-    throw new Error("ONEREP_API_KEY env var not set");
-  }
+  // if (!onerepApiKey) {
+  //   throw new Error("ONEREP_API_KEY env var not set");
+  // }
 
   //If mock, remove the first slash so that it doesn't overwrite the path
   if (

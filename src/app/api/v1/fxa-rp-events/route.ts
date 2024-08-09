@@ -25,6 +25,7 @@ import appConstants from "../../../../appConstants";
 import { changeSubscription } from "../../../functions/server/changeSubscription";
 import { deleteAccount } from "../../../functions/server/deleteAccount";
 import { record } from "../../../functions/server/glean";
+// import { redisClient } from "../../../../db/redis/client.js";
 
 const FXA_PROFILE_CHANGE_EVENT =
   "https://schemas.accounts.firefox.com/event/profile-change";
@@ -122,23 +123,23 @@ export async function POST(request: NextRequest) {
   try {
     decodedJWT = (await authenticateFxaJWT(request)) as JwtPayload;
   } catch (e) {
-    logger.error("fxaRpEvents", e);
+    logger.error("fxa_rp_event", e);
     captureException(e);
     return NextResponse.json({ success: false }, { status: 401 });
   }
 
   if (!decodedJWT?.events) {
     // capture an exception in Sentry only. Throwing error will trigger FXA retry
-    logger.error("fxaRpEvents", decodedJWT);
+    logger.error("fxa_rp_event", { decodedJWT });
     captureMessage(
-      `fxaRpEvents: decodedJWT is missing attribute "events", ${
+      `fxa_rp_event: decodedJWT is missing attribute "events", ${
         decodedJWT as unknown as string
       }`,
     );
     return NextResponse.json(
       {
         success: false,
-        message: 'fxaRpEvents: decodedJWT is missing attribute "events"',
+        message: 'fxa_rp_event: decodedJWT is missing attribute "events"',
       },
       { status: 400 },
     );
@@ -148,14 +149,14 @@ export async function POST(request: NextRequest) {
   if (!fxaUserId) {
     // capture an exception in Sentry only. Throwing error will trigger FXA retry
     captureMessage(
-      `fxaRpEvents: decodedJWT is missing attribute "sub", ${
+      `fxa_rp_event: decodedJWT is missing attribute "sub", ${
         decodedJWT as unknown as string
       }`,
     );
     return NextResponse.json(
       {
         success: false,
-        message: 'fxaRpEvents: decodedJWT is missing attribute "sub"',
+        message: 'fxa_rp_event: decodedJWT is missing attribute "sub"',
       },
       { status: 400 },
     );
@@ -172,7 +173,7 @@ export async function POST(request: NextRequest) {
     const e = new Error(
       `could not find subscriber with fxa user id: ${fxaUserId}`,
     );
-    logger.error("fxaRpEvents", e);
+    logger.error("fxa_rp_event", e);
     return NextResponse.json({ success: true, message: "OK" }, { status: 200 });
   }
 
