@@ -44,25 +44,6 @@ email-breach-alert-blurb = { -product-name } vás upozorňuje na úniky dat, jej
 #   $hibp-link-attr (String) - Link to Have I Been Pwned
 email-2022-hibp-attribution = Údaje o únicích poskytl <a { $hibp-link-attr }>{ -brand-HIBP }</a>
 
-## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
-## Variables:
-##   $email-address (string) - Email address
-
-email-unresolved-heading = Máte nevyřešené úniky
-email-unresolved-subhead = Vaše e-mailová adresa se stala součástí úniku dat. <br>Ihned to napravte pomocí { -product-name(case: "gen") }.
-email-is-affected = Vaše e-mailová adresa { $email-address } je předmětem nejméně jednoho úniku dat
-email-more-detail = Přihlaste se do { -product-name(case: "gen") }, abyste se dozvěděli více podrobností o svých únicích (včetně toho, kdy k nim došlo a jaké údaje byly vyzrazeny), a zjistili, jak byste měli postupovat, když se vaše e-mailová adresa stala součástí úniku dat.
-email-breach-status = Aktuální stav případů úniků
-# table row 1 label
-email-monitored = Celkem monitorovaných e-mailů:
-# table row 2 label
-email-breach-total = Celkový počet úniků:
-# table row 3 label
-email-resolved = Vyřešeno úniků:
-# table row 4 label
-email-unresolved = Nevyřešeno úniků:
-email-resolve-cta = Vyřešit úniky
-
 ## Verification email
 
 email-verify-heading = Chraňte svá data, začněte hned teď.
