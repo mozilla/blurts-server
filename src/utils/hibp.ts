@@ -60,12 +60,12 @@ async function _throttledFetch(
       case 404:
         // 404 can mean "no results", return undefined response
         logger.info("_throttledFetch", {
-          err: "Error 404, not going to retry. TryCount: " + tryCount,
+          exception: "Error 404, not going to retry. TryCount: " + tryCount,
         });
         return undefined;
       case 429:
         logger.info("_throttledFetch", {
-          err: "Error 429, tryCount: " + tryCount,
+          exception: "Error 429, tryCount: " + tryCount,
         });
         // @ts-ignore TODO: Explicitly parse into a number
         if (tryCount >= HIBP_THROTTLE_MAX_TRIES) {
@@ -98,7 +98,7 @@ async function hibpApiFetch(path: string, options = {}) {
   try {
     return await _throttledFetch(url, reqOptions);
   } catch (ex) {
-    logger.error(ex);
+    logger.error("hibp_api_fetch", { exception: ex });
   }
 }
 /* c8 ignore stop */
@@ -144,7 +144,7 @@ async function kAnonReq(path: string, options = {}) {
   try {
     return await _throttledFetch(url, reqOptions);
   } catch (ex) {
-    logger.error(ex);
+    logger.error("k_anon_req", { exception: ex });
   }
 }
 /* c8 ignore stop */
@@ -213,17 +213,20 @@ export type HibpLikeDbBreach = {
 async function getAllBreachesFromDb(): Promise<HibpLikeDbBreach[]> {
   let dbBreaches: BreachRow[] = [];
   const redisBreachKey = "breaches";
-  const client = redisClient();
+  const rClient = redisClient();
 
   try {
     // attempts to fetch breaches from Redis first
-    const breaches = JSON.parse(
-      (await client.get(redisBreachKey)) || "[]",
-    ) as BreachRow[];
+    let redisBreaches;
+    if (rClient) {
+      redisBreaches = JSON.parse(
+        (await rClient.get(redisBreachKey)) || "[]",
+      ) as BreachRow[];
+    }
 
-    if (!breaches || breaches.length < 1) {
+    if (!redisBreaches || redisBreaches.length < 1) {
       // if Redis fails, attempt to get breaches from Postgres and set Redis
-      logger.warn("getAllBreachesFromDb", {
+      logger.warn("get_all_breaches_from_db", {
         exception: "Failed to fetch breaches in redis",
       });
 
@@ -231,10 +234,10 @@ async function getAllBreachesFromDb(): Promise<HibpLikeDbBreach[]> {
       logger.info("get_all_breaches_from_db_successful", {
         numOfBreaches: dbBreaches.length,
       });
-      await client.set(redisBreachKey, JSON.stringify(dbBreaches));
+      await rClient.set(redisBreachKey, JSON.stringify(dbBreaches));
       logger.info("set_breaches_in_redis_successful");
     } else {
-      dbBreaches = breaches;
+      dbBreaches = redisBreaches;
       logger.info("get_breaches_from_redis_successful", {
         numOfBreaches: dbBreaches.length,
       });

@@ -4,6 +4,7 @@
 
 import { Redis, RedisOptions } from "ioredis";
 import { redisConfiguration } from "./configuration";
+import { logger } from "../../app/functions/server/logging";
 
 function getRedisConfiguration(): {
   port: number;
@@ -14,6 +15,7 @@ function getRedisConfiguration(): {
 }
 
 export function createRedisInstance(config = getRedisConfiguration()) {
+  logger.debug("create_redis_instance", { config });
   try {
     const options: RedisOptions = {
       host: config.host,
@@ -23,7 +25,7 @@ export function createRedisInstance(config = getRedisConfiguration()) {
       maxRetriesPerRequest: 0,
       retryStrategy: (times: number) => {
         if (times > 3) {
-          throw new Error(`[Redis] Could not connect after ${times} attempts`);
+          throw new Error(`Redis Could not connect after ${times} attempts`);
         }
 
         return Math.min(times * 200, 1000);
@@ -41,11 +43,14 @@ export function createRedisInstance(config = getRedisConfiguration()) {
     const redis = new Redis(options);
 
     redis.on("error", (error: unknown) => {
-      console.warn("[Redis] Error connecting", error);
+      logger.error("create_redis_instance", {
+        exception: `redis on error:  ${error as string}`,
+      });
     });
 
     return redis;
   } catch (e) {
-    throw new Error(`[Redis] Could not create a Redis instance`);
+    logger.error("create_redis_instance", { exception: e });
+    throw e;
   }
 }
