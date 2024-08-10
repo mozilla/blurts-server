@@ -260,12 +260,14 @@ export const View = (props: Props) => {
             experimentData={props.experimentData}
           />
         </div>
-        {(props.experimentData["mozweek-demo"].variant === "confetti" ||
-          props.experimentData["mozweek-demo"].variant ===
-            "confettiAndDisco") && <Confetti />}
-        {(props.experimentData["mozweek-demo"].variant === "disco" ||
-          props.experimentData["mozweek-demo"].variant ===
-            "confettiAndDisco") && <DiscoBall />}
+        {props.experimentData["mozweek-demo"].enabled &&
+          (props.experimentData["mozweek-demo"].variant === "confetti" ||
+            props.experimentData["mozweek-demo"].variant ===
+              "confettiAndDisco") && <Confetti />}
+        {props.experimentData["mozweek-demo"].enabled &&
+          (props.experimentData["mozweek-demo"].variant === "disco" ||
+            props.experimentData["mozweek-demo"].variant ===
+              "confettiAndDisco") && <DiscoBall />}
       </main>
     </>
   );

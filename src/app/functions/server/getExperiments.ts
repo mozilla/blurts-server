@@ -6,6 +6,7 @@ import { captureException } from "@sentry/node";
 import { logger } from "./logging";
 import {
   ExperimentData,
+  MozWeekDemoType,
   defaultExperimentData,
   localExperimentData,
 } from "../../../telemetry/generated/nimbus/experiments";
@@ -42,7 +43,13 @@ export async function getExperiments(params: {
   }
 
   if (["local"].includes(process.env.APP_ENV ?? "local")) {
-    return localExperimentData;
+    return {
+      ...localExperimentData,
+      "mozweek-demo": {
+        enabled: true,
+        variant: params.experimentationId.split("-")[1] as MozWeekDemoType,
+      },
+    };
   }
 
   const serverUrl = process.env.NIMBUS_SIDECAR_URL;

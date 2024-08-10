@@ -4,11 +4,12 @@
 
 import "server-only";
 import { cookies } from "next/headers";
-import { UUID, randomUUID } from "crypto";
+import { UUID } from "crypto";
 import { Session } from "next-auth";
 import { v5 as uuidv5 } from "uuid";
+import { MozWeekDemoType } from "../../../telemetry/generated/nimbus/experiments";
 
-export type ExperimentationId = UUID | `guest-${UUID}`;
+export type ExperimentationId = UUID | `mozweek-${MozWeekDemoType}`;
 
 /**
  * Create a stable ID used for Monitor experimentation, derived from the subscriber ID.
@@ -35,14 +36,23 @@ export function getExperimentationId(
   } else {
     // if the user is not logged in, use a cookie with a randomly-generated Nimbus user ID.
     // TODO: could we use client ID for this? There's no supported way to get it from GleanJS.
-    const cookie = cookies().get("experimentationId");
+    const cookie = cookies().get("mozWeekExperimentationId");
     if (cookie) {
       experimentationId = cookie.value as ExperimentationId;
     } else {
       // TODO Cookies can only be set in server action or route handler
       // @see https://nextjs.org/docs/app/api-reference/functions/cookies#cookiessetname-value-options
       // This is set client-side in <PageLoadEvent>.
-      experimentationId = `guest-${randomUUID()}`;
+      const mozweekDemoOptions: MozWeekDemoType[] = [
+        "confetti",
+        "disco",
+        "confettiAndDisco",
+      ];
+      const variant =
+        mozweekDemoOptions[
+          Math.floor(Math.random() * mozweekDemoOptions.length)
+        ];
+      experimentationId = `mozweek-${variant}`;
     }
   }
   return experimentationId;

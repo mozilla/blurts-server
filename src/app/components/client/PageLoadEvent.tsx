@@ -19,7 +19,7 @@ export type Props = {
 // Empty component that records a page view on first load.
 export const PageLoadEvent = (props: Props) => {
   const [cookies, setCookie] = useCookies([
-    "experimentationId",
+    "mozWeekExperimentationId",
     "attributionsFirstTouch",
     "attributionsLastTouch",
   ]);
@@ -30,10 +30,10 @@ export const PageLoadEvent = (props: Props) => {
   });
 
   if (
-    props.experimentationId.startsWith("guest") &&
-    !cookies.experimentationId
+    props.experimentationId.startsWith("mozweek") &&
+    !cookies.mozWeekExperimentationId
   ) {
-    setCookie("experimentationId", props.experimentationId);
+    setCookie("mozWeekExperimentationId", props.experimentationId);
   }
 
   // On first load of the page, record a page view.
