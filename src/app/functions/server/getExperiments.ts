@@ -46,7 +46,7 @@ export async function getExperiments(params: {
     return {
       ...localExperimentData,
       "mozweek-demo": {
-        enabled: true,
+        enabled: localExperimentData["mozweek-demo"].enabled,
         variant: params.experimentationId.split("-")[1] as MozWeekDemoType,
       },
     };
