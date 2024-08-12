@@ -49,10 +49,43 @@ For example, the unit tests Workflow (`/.github/workflows/unittests.yaml`) uses
 the `setup-node` Action, so if that gets updated, the tests should continue to
 run, and to result in a failing check if the tests fail.
 
-## Docker
+## Docker / Node
 
-TODO: Describe how to verify that an update of the base Docker image doesn't
-break the app.
+Monitor specifies the official Node:Alpine Docker image, which bundles both the minimalistic
+Alpine Linux distribution with the latest version of Node.
+
+GitHub's Dependabot only updates `Dockerfile`, but the Node version is specified in many
+different config files. The PR that Dependabot opens will always fail the lint check because
+the script `scripts/check-node-version-alignment.js` will fail if the Node version isn't
+set consistently across all config files.
+
+1. clone the branch that Dependabot creates
+
+e.g.
+
+```sh
+git clone dependabot/docker/node-22.6-alpine
+```
+
+2. Run the Node version alignment script and fix any problems it finds
+
+```sh
+node scripts/check-node-version-alignment.js
+```
+
+3. Commit and push to branch Dependabot opened
+
+e.g.
+
+```sh
+git push origin dependabot/docker/node-22.6-alpine
+```
+
+Lint on the GitHub PR should now pass and the PR may be merged.
+
+Testing: NOTE This must be pushed to the stage environment and the full e2e test suite must pass
+before this is pushed to production. The release notes must be reviewed to determine how
+urgent the update is (e.g. security fixes) and if more thorough testing should be performed.
 
 ## npm
 
