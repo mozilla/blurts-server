@@ -7,15 +7,15 @@ import { createRedisInstance } from "./util";
 import { createRedisMockInstance } from "./util-mock";
 import type { Redis } from "ioredis";
 
-let cached: Redis;
+let singleton: Redis;
 
 export const redisClient = () => {
   if (process.env.REDIS_URL?.includes("redis.mock")) {
-    cached = createRedisMockInstance();
+    singleton = createRedisMockInstance();
     logger.info("redis_mock_client_created_success");
   } else {
-    cached = createRedisInstance();
+    singleton = createRedisInstance();
     logger.info("redis_client_created_success");
   }
-  return cached;
+  return singleton;
 };
