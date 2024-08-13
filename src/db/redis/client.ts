@@ -10,7 +10,7 @@ import type { Redis } from "ioredis";
 let cached: Redis;
 
 export const redisClient = () => {
-  if (process.env.REDIS_URL?.includes("redis-mock")) {
+  if (process.env.REDIS_URL?.includes("redis.mock")) {
     cached = createRedisMockInstance();
     logger.info("redis_mock_client_created_success");
   } else {

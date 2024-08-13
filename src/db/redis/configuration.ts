@@ -4,7 +4,7 @@
 
 const url = new URL(process.env.REDIS_URL || "");
 export const redisConfiguration = {
-  host: url.hostname || "redis-mock",
+  host: url.hostname || "redis.mock",
   password: url.password || "",
   port: Number(url.port) || 6379,
 };
