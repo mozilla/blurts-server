@@ -235,6 +235,7 @@ async function getAllBreachesFromDb(): Promise<HibpLikeDbBreach[]> {
         numOfBreaches: dbBreaches.length,
       });
       await rClient.set(redisBreachKey, JSON.stringify(dbBreaches));
+      await rClient.expire(redisBreachKey, 3600); // 1 hour expiration
       logger.info("set_breaches_in_redis_successful");
     } else {
       dbBreaches = redisBreaches;
