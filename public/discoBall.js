@@ -5,7 +5,7 @@
 // Taken and adjusted from https://codepen.io/msaetre/pen/eYwqrb
 
 function letsDisco() {
-  const radius = window.innerWidth * 0.075;
+  const radius = window.innerWidth * 0.15;
   const squareSize = radius * 0.135;
   const prec = 19.55;
   const fuzzy = 0.001;
