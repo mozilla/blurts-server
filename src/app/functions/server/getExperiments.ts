@@ -41,7 +41,8 @@ export async function getExperiments(params: {
     return overriddenExperimentData;
   }
 
-  if (["local"].includes(process.env.APP_ENV ?? "local")) {
+  const isDemo = true;
+  if (isDemo || ["local"].includes(process.env.APP_ENV ?? "local")) {
     return {
       ...localExperimentData,
       "mozweek-demo": {
