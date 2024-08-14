@@ -7,9 +7,8 @@ import { cookies } from "next/headers";
 import { UUID } from "crypto";
 import { Session } from "next-auth";
 import { v5 as uuidv5 } from "uuid";
-import { MozWeekDemoType } from "../../../telemetry/generated/nimbus/experiments";
 
-export type ExperimentationId = UUID | `mozweek-${MozWeekDemoType}`;
+export type ExperimentationId = UUID | `mozweek-${string}`;
 
 /**
  * Create a stable ID used for Monitor experimentation, derived from the subscriber ID.
@@ -43,7 +42,7 @@ export function getExperimentationId(
       // TODO Cookies can only be set in server action or route handler
       // @see https://nextjs.org/docs/app/api-reference/functions/cookies#cookiessetname-value-options
       // This is set client-side in <PageLoadEvent>.
-      const mozweekDemoOptions: MozWeekDemoType[] = [
+      const mozweekDemoOptions: string[] = [
         "confetti",
         "disco",
         "confettiAndDisco",

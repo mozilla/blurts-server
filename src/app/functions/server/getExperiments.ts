@@ -6,7 +6,6 @@ import { captureException } from "@sentry/node";
 import { logger } from "./logging";
 import {
   ExperimentData,
-  MozWeekDemoType,
   defaultExperimentData,
   localExperimentData,
 } from "../../../telemetry/generated/nimbus/experiments";
@@ -47,7 +46,8 @@ export async function getExperiments(params: {
       ...localExperimentData,
       "mozweek-demo": {
         enabled: localExperimentData["mozweek-demo"].enabled,
-        variant: params.experimentationId.split("-")[1] as MozWeekDemoType,
+        // @ts-ignore Type not exported
+        variant: params.experimentationId.split("-")[1],
       },
     };
   }
