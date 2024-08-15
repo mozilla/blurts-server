@@ -48,25 +48,6 @@ email-breach-alert-blurb =
 #   $hibp-link-attr (String) - Link to Have I Been Pwned
 email-2022-hibp-attribution = Az adatvédelmi incidensek adatait a <a { $hibp-link-attr }>{ -brand-HIBP }</a> szolgáltatta
 
-## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
-## Variables:
-##   $email-address (string) - Email address
-
-email-unresolved-heading = Meg nem oldott adatvédelmi incidensek vannak
-email-unresolved-subhead = Kikerült az Ön e-mail-címe. <br>Javítsa azonnal a { -product-name } segítségével.
-email-is-affected = Az Ön ({ $email-address }) e-mail-címét legalább egy adatvédelmi incidens érintette
-email-more-detail = Jelentkezzen be most a { -product-name } szolgáltatásba, hogy további részleteket tudjon meg az adatvédelmi incidensekről (beleértve, hogy mikor történtek és milyen adatok kerültek nyilvánosságra), és hogy megtudja, mit kell tennie, ha az e-mail-címe adatvédelmi incidens miatt került nyilvánosságra.
-email-breach-status = Az adatvédelmi incidens jelenlegi állapota
-# table row 1 label
-email-monitored = Összes megfigyelt e-mail-cím:
-# table row 2 label
-email-breach-total = Adatértések teljes száma:
-# table row 3 label
-email-resolved = Megoldott adatvédelmi incidensek:
-# table row 4 label
-email-unresolved = Meg nem oldott adatvédelmi incidensek:
-email-resolve-cta = Adatvédelmi incidensek megoldása
-
 ## Verification email
 
 email-verify-heading = Védje meg az adatait, már most
@@ -81,7 +62,7 @@ email-breach-summary = Íme az adatvédelmi incidens összefoglalója
 email-breach-detected = Az Ön { $email-address } fiókjához tartozó keresési találatok azt észlelték, hogy e-mail-címe nyilvánosságra került. Javasoljuk, hogy azonnal intézkedjen az adatvédelmi incidens megszüntetése érdekében.
 # Variables:
 #   $email-address (string) - Email address
-email-breach-detected-2 = A(z) <b>{ $email-address }</b> fiókja találatai azt észlelték, hogy az e-mail címe kikerülhetett. Javasoljuk, hogy cselekedjen most az adatvédelmi incidens megoldása érdekében.
+email-breach-detected-2 = Az Ön <b>{ $email-address }</b> fiókjához tartozó keresési találatok azt észlelték, hogy e-mail-címe nyilvánosságra került. Javasoljuk, hogy azonnal intézkedjen az adatvédelmi incidens megszüntetése érdekében.
 email-dashboard-cta = Ugrás a vezérlőpulthoz
 
 ## Breach alert

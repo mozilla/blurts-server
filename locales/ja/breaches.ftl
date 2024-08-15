@@ -2,10 +2,13 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
+breach-all-meta-title = { -brand-fx-monitor } - すべてのデータ侵害
 breach-all-meta-social-title = { -brand-fx-monitor } によって検出されたすべての侵害
 
 ## Links that we might refer to when prompting the user to make changes after a breach
 
+breach-checklist-link-firefox-relay = { -brand-relay }
+breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## Prompts the user for changes when there is a breach detected of password
 
