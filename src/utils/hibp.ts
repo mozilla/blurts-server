@@ -13,7 +13,7 @@ import {
   getAllQaCustomBreaches,
   getQaToggleRow,
 } from "../db/tables/qa_customs.ts";
-import { redisClient } from "../db/redis/client.ts";
+import { redisClient, REDIS_ALL_BREACHES_KEY } from "../db/redis/client.ts";
 const {
   HIBP_THROTTLE_MAX_TRIES,
   HIBP_THROTTLE_DELAY,
@@ -212,7 +212,6 @@ export type HibpLikeDbBreach = {
 /* c8 ignore start */
 async function getAllBreachesFromDb(): Promise<HibpLikeDbBreach[]> {
   let dbBreaches: BreachRow[] = [];
-  const redisBreachKey = "breaches";
   const rClient = redisClient();
 
   try {
@@ -220,7 +219,7 @@ async function getAllBreachesFromDb(): Promise<HibpLikeDbBreach[]> {
     let redisBreaches;
     if (rClient) {
       redisBreaches = JSON.parse(
-        (await rClient.get(redisBreachKey)) || "[]",
+        (await rClient.get(REDIS_ALL_BREACHES_KEY)) || "[]",
       ) as BreachRow[];
     }
 
@@ -234,8 +233,8 @@ async function getAllBreachesFromDb(): Promise<HibpLikeDbBreach[]> {
       logger.info("get_all_breaches_from_db_successful", {
         numOfBreaches: dbBreaches.length,
       });
-      await rClient.set(redisBreachKey, JSON.stringify(dbBreaches));
-      await rClient.expire(redisBreachKey, 3600); // 1 hour expiration
+      await rClient.set(REDIS_ALL_BREACHES_KEY, JSON.stringify(dbBreaches));
+      await rClient.expire(REDIS_ALL_BREACHES_KEY, 3600 * 12); // 12 hour expiration
       logger.info("set_breaches_in_redis_successful");
     } else {
       dbBreaches = redisBreaches;

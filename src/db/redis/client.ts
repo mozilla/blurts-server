@@ -7,8 +7,9 @@ import { createRedisInstance } from "./util";
 import { createRedisMockInstance } from "./util-mock";
 import type { Redis } from "ioredis";
 
-let singleton: Redis;
+export const REDIS_ALL_BREACHES_KEY = "breaches";
 
+let singleton: Redis;
 export const redisClient = () => {
   if (process.env.REDIS_URL?.includes("redis.mock")) {
     singleton = createRedisMockInstance();
