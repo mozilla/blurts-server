@@ -73,7 +73,7 @@ async function getAllEmailsAndBreaches(
       verifiedEmails.push(
         await bundleVerifiedEmails({
           user,
-          email: user.primary_email,
+          email: email.email,
           recordId: email.id,
           recordVerified: email.verified,
           allBreaches,
