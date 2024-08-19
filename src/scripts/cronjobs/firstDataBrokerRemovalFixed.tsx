@@ -11,7 +11,7 @@ import {
 import { initEmail, sendEmail } from "../../utils/email";
 import { renderEmail } from "../../emails/renderEmail";
 import { FirstDataBrokerRemovalFixed } from "../../emails/templates/firstDataBrokerRemovalFixed/FirstDataBrokerRemovalFixed";
-import { getEmailL10n } from "../../app/functions/l10n/cronjobs";
+import { getCronjobL10n } from "../../app/functions/l10n/cronjobs";
 import { sanitizeSubscriberRow } from "../../app/functions/server/sanitize";
 import { refreshStoredScanResults } from "../../app/functions/server/refreshStoredScanResults";
 import { getLatestOnerepScanResults } from "../../db/tables/onerep_scans";
@@ -114,7 +114,7 @@ async function sendFirstDataBrokerRemovalFixedActivityEmail(
   scanResult: OnerepScanResultRow,
 ) {
   const sanitizedSubscriber = sanitizeSubscriberRow(subscriber);
-  const l10n = getEmailL10n(sanitizedSubscriber);
+  const l10n = getCronjobL10n(sanitizedSubscriber);
 
   let subject = l10n.getString("email-first-broker-removal-fixed-subject");
 

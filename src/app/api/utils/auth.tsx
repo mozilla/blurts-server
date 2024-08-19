@@ -19,18 +19,11 @@ import { addSubscriber } from "../../../db/tables/emailAddresses";
 import { getBreaches } from "../../functions/server/getBreaches";
 import { getBreachesForEmail } from "../../../utils/hibp";
 import { getSha1, refreshOAuthTokens } from "../../../utils/fxa";
-import {
-  getEmailCtaDashboardHref,
-  initEmail,
-  sendEmail,
-} from "../../../utils/email.js";
-import { getTemplate } from "../../../emails/email2022.js";
-import { signupReportEmailPartial } from "../../../emails/emailSignupReport.js";
+import { initEmail, sendEmail } from "../../../utils/email.js";
 import { getL10n } from "../../functions/l10n/serverComponents";
 import { OAuthConfig } from "next-auth/providers/oauth";
 import { SerializedSubscriber } from "../../../next-auth";
 import { record } from "../../functions/server/glean";
-import { getEnabledFeatureFlags } from "../../../db/tables/featureFlags";
 import { renderEmail } from "../../../emails/renderEmail";
 import { SignupReportEmail } from "../../../emails/templates/signupReport/SignupReportEmail";
 
@@ -166,29 +159,12 @@ export const authOptions: AuthOptions = {
           );
 
           // Send report email
-          const utmCampaignId = "report";
-          const l10n = getL10n();
+          const l10n = getL10n(
+            verifiedSubscriber?.signup_language ?? undefined,
+          );
           const subject = unsafeBreachesForEmail?.length
             ? l10n.getString("email-subject-found-breaches")
             : l10n.getString("email-subject-no-breaches");
-
-          const data = {
-            breachedEmail: profile.email,
-            ctaHref: getEmailCtaDashboardHref({
-              emailType: utmCampaignId,
-              content: "dashboard-cta",
-            }),
-            heading: "email-breach-summary",
-            recipientEmail: profile.email,
-            subscriberId: verifiedSubscriber,
-            unsafeBreachesForEmail,
-            utmCampaign: utmCampaignId,
-          };
-          const emailTemplate = getTemplate(
-            data,
-            signupReportEmailPartial,
-            l10n,
-          );
 
           record("account", "create", {
             string: {
@@ -196,23 +172,17 @@ export const authOptions: AuthOptions = {
             },
           });
 
-          const enabledFlags = await getEnabledFeatureFlags({
-            email: verifiedSubscriber ? verifiedSubscriber.primary_email : "",
-          });
-
           await initEmail(process.env.SMTP_URL);
           await sendEmail(
-            data.recipientEmail,
+            profile.email,
             subject,
-            enabledFlags.includes("RedesignedEmails")
-              ? renderEmail(
-                  <SignupReportEmail
-                    l10n={l10n}
-                    breachedEmailAddress={profile.email}
-                    breaches={unsafeBreachesForEmail}
-                  />,
-                )
-              : emailTemplate,
+            renderEmail(
+              <SignupReportEmail
+                l10n={l10n}
+                breachedEmailAddress={profile.email}
+                breaches={unsafeBreachesForEmail}
+              />,
+            ),
           );
         } else {
           logger.warn("no_existing_user_or_email", {

@@ -29,7 +29,6 @@
 
 ##
 
-error-could-not-add-email = メールアドレスをデータベースに追加できませんでした。
 error-not-subscribed = このメールアドレスは { -product-name } に登録されていません。
 error-hibp-throttled = { -brand-HIBP } への接続数が多すぎます。
 error-hibp-connect = { -brand-HIBP } への接続でエラーが発生しました。
@@ -121,6 +120,8 @@ breach-added-label = 侵害が追加された日:
 # Section headline
 rec-section-headline = この侵害への対処方法
 rec-section-subhead = あなたの個人情報を安全に保ち、デジタル ID を保護するために、以下の手順を行うことをおすすめします。
+# Section headline
+rec-section-headline-no-pw = 個人情報を保護するためにするべきこと
 
 ##
 
@@ -136,6 +137,8 @@ rec-section-subhead = あなたの個人情報を安全に保ち、デジタル 
 
 ## Header
 
+# Deprecated
+brand-fx-monitor = { -brand-fx-monitor }
 sign-in = ログイン
 brand-mozilla-monitor = { -brand-fx-monitor }
 
@@ -163,6 +166,8 @@ user-menu-signout-tooltip = { -brand-mozilla-monitor } からログアウトす�
 ## Footer
 
 mozilla = { -brand-mozilla }
+github = { -brand-github }
+footer-nav-all-breaches = すべての侵害
 footer-external-link-faq-label = FAQ
 footer-external-link-faq-tooltip = よくある質問
 
@@ -176,12 +181,16 @@ error-page-error-404-cta-button = 戻る
 
 ## Breach overview page
 
+all-breaches-headline-2 = { -brand-fx-monitor } によって検知されたすべての侵害
+all-breaches-lead = 個人情報が漏えいしていないか確認するために、既知のデータ侵害を監視しています。2007 年以降に報告されたすべての侵害の完全なリストです。
 search-breaches = データ侵害を検索
 # the kind of user data exposed to hackers in data breach.
 exposed-data = 侵害されたデータ:
 
 ## Public breach detail page
 
+breach-detail-cta-signup = データ侵害を確認する
 
 ## Firefox Monitor -> Mozilla Monitor rebrand banner
 
+banner-monitor-rebrand-dismiss-button-label = OK
