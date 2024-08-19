@@ -328,7 +328,7 @@ try {
   if (process.argv.includes("--skip-upload")) {
     console.debug("Skipping S3 upload");
   } else {
-    const uploadToS3 = import("../s3.js");
+    const uploadToS3 = await import("../s3.js");
     await uploadToS3(`autocomplete/${LOCATIONS_DATA_FILE}`, readStream);
   }
 
