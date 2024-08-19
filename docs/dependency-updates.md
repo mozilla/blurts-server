@@ -284,5 +284,13 @@ Monitor provides a tool for sending test email at the endpoint `/admin/emails`.
 
 ### `adm-zip`
 
+This is used as part of downloading and unzipping location data for the auto-complete address feature.
+
+Normally this is run by cron and uploads to an S3 bucket, the upload step can be skipped with:
+
+```sh
+npm run create-location-data -- --skip-upload
+```
+
 TODO: Describe how to verify that uploading auto-complete locations still works
 as expected.

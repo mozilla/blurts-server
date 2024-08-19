@@ -22,7 +22,6 @@ import {
   rmSync,
   writeFileSync,
 } from "fs";
-import { uploadToS3 } from "../../utils/s3.js";
 import Sentry from "@sentry/nextjs";
 import os from "os";
 import path from "path";
@@ -325,7 +324,13 @@ try {
   writeFileSync(LOCATIONS_DATA_FILE, JSON.stringify(locationDataFinal));
 
   let readStream = fs.createReadStream(LOCATIONS_DATA_FILE);
-  await uploadToS3(`autocomplete/${LOCATIONS_DATA_FILE}`, readStream);
+
+  if (process.argv.includes("--skip-upload")) {
+    console.debug("Skipping S3 upload");
+  } else {
+    const uploadToS3 = await import("../s3.js");
+    await uploadToS3(`autocomplete/${LOCATIONS_DATA_FILE}`, readStream);
+  }
 
   if (CLEANUP_TMP_DATA_AFTER_FINISHED) {
     console.info("Cleaning up data directory");
