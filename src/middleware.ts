@@ -85,7 +85,6 @@ function generateCspData() {
     "object-src 'none'",
     "block-all-mixed-content",
     "upgrade-insecure-requests",
-    "worker-src 'self' blob:",
   ];
 
   return { nonce, cspHeader: cspHeaderParts.join(";") };
