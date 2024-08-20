@@ -17,7 +17,12 @@ export const EmailHeader = (props: Props) => {
       padding="10px 20px"
       background-color="white"
     >
-      <mj-column width="200px" vertical-align="middle">
+      <mj-column
+        width="60%"
+        padding-left="0"
+        padding-right="0"
+        vertical-align="middle"
+      >
         <mj-image
           alt={l10n.getString("public-nav-name")}
           src={`${process.env.SERVER_URL}/images/email/monitor-logo-with-bg.png`}
@@ -26,7 +31,12 @@ export const EmailHeader = (props: Props) => {
           align="left"
         />
       </mj-column>
-      <mj-column width="60%" vertical-align="middle">
+      <mj-column
+        width="40%"
+        padding-left="0"
+        padding-right="0"
+        vertical-align="middle"
+      >
         <mj-text align="right">
           <a
             href={`${process.env.SERVER_URL}/user/dashboard/fixed?utm_source=monitor-product&utm_medium=email&utm_campaign=${props.utm_campaign}&utm_content=sign-in-us`}

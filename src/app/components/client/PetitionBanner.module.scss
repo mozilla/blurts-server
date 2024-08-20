@@ -33,6 +33,21 @@
     }
   }
 
+  .signLink {
+    background-color: $color-purple-60;
+    border-radius: $border-radius-md;
+    color: $color-white;
+    font: $text-body-md;
+    font-weight: 500;
+    line-height: 1;
+    padding: $spacing-md $spacing-lg;
+    text-align: center;
+    text-decoration: none;
+    &:hover {
+      background-color: $color-purple-50;
+    }
+  }
+
   .dismissButton {
     color: $color-white;
     &:hover {
