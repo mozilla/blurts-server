@@ -8,17 +8,12 @@ import type { Preview } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { linkTo } from "@storybook/addon-links";
 import "../src/app/globals.css";
-import { SessionProvider } from "../src/contextProviders/session";
-import { L10nProvider } from "../src/contextProviders/localization";
 import { metropolis } from "../src/app/fonts/Metropolis/metropolis";
-import { ReactAriaI18nProvider } from "../src/contextProviders/react-aria";
-import { getEnL10nBundlesSync } from "../src/app/functions/server/mockL10n";
+import { TestComponentWrapper } from "../src/TestComponentWrapper";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 const AppDecorator: Preview["decorators"] = (storyFn) => {
-  const l10nBundles = getEnL10nBundlesSync();
-
   useEffect(() => {
     // We have to add these classes to the body, rather than simply wrapping the
     // storyFn in a container, because some components (most notably, the ones
@@ -29,13 +24,7 @@ const AppDecorator: Preview["decorators"] = (storyFn) => {
     document.body.classList.add(metropolis.variable);
   }, []);
 
-  return (
-    <L10nProvider bundleSources={l10nBundles}>
-      <SessionProvider session={null}>
-        <ReactAriaI18nProvider locale="en">{storyFn()}</ReactAriaI18nProvider>
-      </SessionProvider>
-    </L10nProvider>
-  );
+  return <TestComponentWrapper>{storyFn()}</TestComponentWrapper>;
 };
 
 // Arguments to the `storySort` callback, left as documentation.
@@ -74,156 +63,150 @@ const preview: Preview = {
         push(path: string, ...otherArgs: unknown[]) {
           action("nextNavigation.push")(path, ...otherArgs);
 
-          if (path === "/redesign/user/dashboard") {
+          if (path === "/") {
+            linkTo("Pages/Public/Landing page", "US visitors")();
+          }
+
+          if (path === "/breaches") {
+            linkTo("Pages/Public/Breach index")();
+          }
+
+          if (path.startsWith("/breach-details/")) {
+            linkTo("Pages/Public/Breach listing")();
+          }
+
+          if (path === "/user/dashboard") {
             linkTo(
-              "Pages/Dashboard",
+              "Pages/Logged in/Dashboard",
               "US user, without Premium, with unresolved scan results, with unresolved breaches",
             )();
           }
 
           if (
-            path ===
-            "/redesign/user/dashboard/fix/data-broker-profiles/start-free-scan"
+            path === "/user/dashboard/fix/data-broker-profiles/start-free-scan"
           ) {
-            linkTo("Pages/Guided resolution/1a. Free scan")();
+            linkTo("Pages/Logged in/Guided resolution/1a. Free scan")();
           }
 
           if (
             path ===
-            "/redesign/user/dashboard/fix/data-broker-profiles/view-data-brokers"
+            "/user/dashboard/fix/data-broker-profiles/view-data-brokers"
           ) {
             linkTo(
-              "Pages/Guided resolution/1b. Scan results",
+              "Pages/Logged in/Guided resolution/1b. Scan results",
               "With a few unresolved scan results (free)",
             )();
           }
 
           if (
-            path ===
-            "/redesign/user/dashboard/fix/data-broker-profiles/manual-remove"
-          ) {
-            linkTo("Pages/Guided resolution/1c. Manually resolve brokers")();
-          }
-
-          if (
-            path ===
-            "/redesign/user/dashboard/fix/data-broker-profiles/automatic-remove"
+            path === "/user/dashboard/fix/data-broker-profiles/manual-remove"
           ) {
             linkTo(
-              "Pages/Guided resolution/1d. Automatically resolve brokers",
+              "Pages/Logged in/Guided resolution/1c. Manually resolve brokers",
             )();
           }
 
           if (
-            path === "/redesign/user/dashboard/fix/high-risk-data-breaches/ssn"
+            path === "/user/dashboard/fix/data-broker-profiles/automatic-remove"
           ) {
             linkTo(
-              "Pages/Guided resolution/2. High-risk data breaches",
+              "Pages/Logged in/Guided resolution/1d. Automatically resolve brokers",
+            )();
+          }
+
+          if (
+            path ===
+            "/user/dashboard/fix/high-risk-data-breaches/social-security-number"
+          ) {
+            linkTo(
+              "Pages/Logged in/Guided resolution/2. High-risk data breaches",
               "2a. Social Security Number",
             )();
           }
 
           if (
-            path ===
-            "/redesign/user/dashboard/fix/high-risk-data-breaches/credit-card"
+            path === "/user/dashboard/fix/high-risk-data-breaches/credit-card"
           ) {
             linkTo(
-              "Pages/Guided resolution/2. High-risk data breaches",
+              "Pages/Logged in/Guided resolution/2. High-risk data breaches",
               "2b. Credit card",
             )();
           }
 
           if (
-            path ===
-            "/redesign/user/dashboard/fix/high-risk-data-breaches/bank-account"
+            path === "/user/dashboard/fix/high-risk-data-breaches/bank-account"
           ) {
             linkTo(
-              "Pages/Guided resolution/2. High-risk data breaches",
+              "Pages/Logged in/Guided resolution/2. High-risk data breaches",
               "2c. Bank account",
             )();
           }
 
-          if (
-            path === "/redesign/user/dashboard/fix/high-risk-data-breaches/pin"
-          ) {
+          if (path === "/user/dashboard/fix/high-risk-data-breaches/pin") {
             linkTo(
-              "Pages/Guided resolution/2. High-risk data breaches",
+              "Pages/Logged in/Guided resolution/2. High-risk data breaches",
               "2d. PIN",
             )();
           }
 
-          if (
-            path === "/redesign/user/dashboard/fix/high-risk-data-breaches/done"
-          ) {
+          if (path === "/user/dashboard/fix/high-risk-data-breaches/done") {
             linkTo(
-              "Pages/Guided resolution/2. High-risk data breaches",
+              "Pages/Logged in/Guided resolution/2. High-risk data breaches",
               "2e. Done",
             )();
           }
 
-          if (
-            path === "/redesign/user/dashboard/fix/leaked-passwords/passwords"
-          ) {
+          if (path === "/user/dashboard/fix/leaked-passwords/passwords") {
             linkTo(
-              "Pages/Guided resolution/3. Leaked passwords",
+              "Pages/Logged in/Guided resolution/3. Leaked passwords",
               "3a. Passwords",
             )();
           }
 
           if (
-            path ===
-            "/redesign/user/dashboard/fix/leaked-passwords/security-questions"
+            path === "/user/dashboard/fix/leaked-passwords/security-questions"
           ) {
             linkTo(
-              "Pages/Guided resolution/3. Leaked passwords",
+              "Pages/Logged in/Guided resolution/3. Leaked passwords",
               "3b. Security questions",
             )();
           }
 
           if (
+            path === "/user/dashboard/fix/leaked-passwords/passwords-done" ||
             path ===
-              "/redesign/user/dashboard/fix/leaked-passwords/passwords-done" ||
-            path ===
-              "/redesign/user/dashboard/fix/leaked-passwords/security-questions-done"
-          ) {
-            linkTo("Pages/Guided resolution/3. Leaked passwords", "3c. Done")();
-          }
-
-          if (
-            path ===
-            "/redesign/user/dashboard/fix/security-recommendations/phone"
+              "/user/dashboard/fix/leaked-passwords/security-questions-done"
           ) {
             linkTo(
-              "Pages/Guided resolution/4. Security recommendations",
+              "Pages/Logged in/Guided resolution/3. Leaked passwords",
+              "3c. Done",
+            )();
+          }
+
+          if (path === "/user/dashboard/fix/security-recommendations/phone") {
+            linkTo(
+              "Pages/Logged in/Guided resolution/4. Security recommendations",
               "4a. Phone number",
             )();
           }
 
-          if (
-            path ===
-            "/redesign/user/dashboard/fix/security-recommendations/email"
-          ) {
+          if (path === "/user/dashboard/fix/security-recommendations/email") {
             linkTo(
-              "Pages/Guided resolution/4. Security recommendations",
+              "Pages/Logged in/Guided resolution/4. Security recommendations",
               "4b. Email address",
             )();
           }
 
-          if (
-            path === "/redesign/user/dashboard/fix/security-recommendations/ip"
-          ) {
+          if (path === "/user/dashboard/fix/security-recommendations/ip") {
             linkTo(
-              "Pages/Guided resolution/4. Security recommendations",
+              "Pages/Logged in/Guided resolution/4. Security recommendations",
               "4c. IP address",
             )();
           }
 
-          if (
-            path ===
-            "/redesign/user/dashboard/fix/security-recommendations/done"
-          ) {
+          if (path === "/user/dashboard/fix/security-recommendations/done") {
             linkTo(
-              "Pages/Guided resolution/4. Security recommendations",
+              "Pages/Logged in/Guided resolution/4. Security recommendations",
               "4d. Done",
             )();
           }

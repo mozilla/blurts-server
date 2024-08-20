@@ -5,11 +5,19 @@
 import { setEnvVariables } from "./utils/helpers";
 import { AuthPage } from "./pages/authPage.js";
 import { LandingPage } from "./pages/landingPage.js";
-import { chromium } from "@playwright/test";
+import { FullConfig, chromium } from "@playwright/test";
 
-async function globalSetup() {
+async function globalSetup(config: FullConfig) {
   // playwright setup
-  const browser = await chromium.launch();
+  const browser = await chromium.launch({
+    // If `headless` is set for any `use` parameter in `playwright.config.js`,
+    // also use that value here:
+    headless: config.projects.reduce(
+      (prevValues: undefined | boolean, project) =>
+        prevValues ?? project.use.headless,
+      undefined,
+    ),
+  });
   const page = await browser.newPage();
 
   // generate email and set env variables

@@ -4,20 +4,16 @@
 
 import { cookies } from "next/headers";
 import { Session } from "next-auth";
+import { EmailAddressRow } from "knex/types/tables";
 
 import { getBreaches } from "./getBreaches";
-import { appendBreachResolutionChecklist } from "./breachResolution";
 import { BreachDataTypes } from "../universal/breach";
-import { getSubscriberByEmail } from "../../../../src/db/tables/subscribers.js";
+import { getSubscriberByFxaUid } from "../../../../src/db/tables/subscribers.js";
 import {
   BundledVerifiedEmails,
   getAllEmailsAndBreaches,
-} from "../../../../src/utils/breaches.js";
-import {
-  SubscriberBreach,
-  getSubBreaches,
-} from "../../../utils/subscriberBreaches";
-import { EmailRow } from "../../../db/tables/emailAddresses";
+} from "../../../../src/utils/breaches";
+import { SubscriberBreach } from "../../../utils/subscriberBreaches";
 import { HibpLikeDbBreach } from "../../../utils/hibp";
 
 //TODO: deprecate with MNTOR-2021
@@ -29,7 +25,7 @@ export type UserBreaches = {
   emailTotalCount: number;
   emailSelectIndex: number;
   breachesData: {
-    unverifiedEmails: EmailRow[];
+    unverifiedEmails: EmailAddressRow[];
     verifiedEmails: BundledVerifiedEmails[];
   };
 };
@@ -37,15 +33,15 @@ export type UserBreaches = {
 //TODO: deprecate with MNTOR-2021
 export async function getUserBreaches({
   user,
-  options = {},
 }: {
   user: Session["user"];
-  options?: Parameters<typeof appendBreachResolutionChecklist>[1];
 }): Promise<UserBreaches> {
-  const subscriber = await getSubscriberByEmail(user.email);
+  if (!user.subscriber?.fxa_uid) {
+    throw new Error("No fxa_uid found in session");
+  }
+  const subscriber = await getSubscriberByFxaUid(user.subscriber.fxa_uid);
   const allBreaches = await getBreaches();
   const breachesData = await getAllEmailsAndBreaches(subscriber, allBreaches);
-  appendBreachResolutionChecklist(breachesData, options);
 
   const ssnBreaches: HibpLikeDbBreach[] = [];
   const passwordBreaches: HibpLikeDbBreach[] = [];
@@ -86,20 +82,6 @@ export async function getUserBreaches({
     passwordBreaches,
     phoneBreaches,
   };
-}
-
-/**
- * NOTE: new function to replace getUserBreaches
- *
- * @param user
- */
-export async function getSubscriberBreaches(
-  user: Session["user"],
-): Promise<SubscriberBreach[]> {
-  const subscriber = await getSubscriberByEmail(user.email);
-  const allBreaches = await getBreaches();
-  const breachesData = await getSubBreaches(subscriber, allBreaches);
-  return breachesData;
 }
 
 export interface GuidedExperienceBreaches {

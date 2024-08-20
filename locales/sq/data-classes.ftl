@@ -1,3 +1,8 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+
 # Breach Data Classes
 
 account-balances = Llogari bankare
@@ -14,7 +19,7 @@ avatars = Avatarë
 bank-account-numbers = Numra llogarish bankare
 beauty-ratings = Vlerësime bukurie
 biometric-data = Të dhëna biometrike
-# This string is the shortened version of "Biographies", and 
+# This string is the shortened version of "Biographies", and
 # refers to biographical data about a user.
 bios = Jetëshkrime
 browser-user-agent-details = Hollësi agjenti përdoruesi të shfletuesit
@@ -25,6 +30,7 @@ career-levels = Shkallë karriere
 cellular-network-names = Emra rrjetesh celulari
 charitable-donations = Dhurime bamirësie
 chat-logs = Regjistra bisedash
+citizenship-statuses = Gjendje shtetësie
 clothing-sizes = Numra veshjesh
 credit-card-cvv = CVV karte krediti
 credit-cards = Karta krediti
@@ -35,7 +41,7 @@ customer-interactions = Ndërveprime klienti
 dates-of-birth = Data lindjesh
 deceased-date = Data vdekjesh
 deceased-statuses = Gjendje vdekjeje
-# Instructions that you can set up in online shopping services to get your orders 
+# Instructions that you can set up in online shopping services to get your orders
 # delivered (e.g. deliver to a specific neighbor, entrance location, etc.).
 delivery-instructions = Udhëzime dorëzimi
 device-information = Të dhëna pajisjeje
@@ -75,12 +81,13 @@ instant-messenger-identities = Identitete shkëmbimi mesazhesh të atypëratysh�
 ip-addresses = Adresa IP
 job-applications = Aplikime punësimi
 job-titles = Emërtesa vendi pune
-# This string refers to vehicle license plates. 
+# This string refers to vehicle license plates.
 licence-plates = Targa
 living-costs = Kosto jetese
 # This string refers to financial loans.
 loan-information = Hollësi kredie
 login-histories = Kronologji hyrjesh
+loyalty-program-details = Hollësi programi besnikërie
 mac-addresses = Adresa MAC
 marital-statuses = Gjendje martesore
 # Mnemonic phrases are a group of words used to access the content of cryptocurrency wallets.
@@ -140,6 +147,7 @@ spouses-names = Emra bashkëshortësh
 support-tickets = Kërkesa për asistencë
 survey-results = Përfundime anketimi
 taxation-records = Të dhëna tatimore
+telecommunications-carrier = Operatorë telekomunikacionesh
 time-zones = Zona kohore
 travel-habits = Zakone udhëtimesh
 user-statuses = Gjendje përdoruesi

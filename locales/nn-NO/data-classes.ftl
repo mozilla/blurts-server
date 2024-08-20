@@ -1,3 +1,8 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+
 # Breach Data Classes
 
 account-balances = Konto-saldoar
@@ -14,7 +19,7 @@ avatars = Avatarar
 bank-account-numbers = Bankkontonummer
 beauty-ratings = Venleiksvurderingar
 biometric-data = Biometriske data
-# This string is the shortened version of "Biographies", and 
+# This string is the shortened version of "Biographies", and
 # refers to biographical data about a user.
 bios = Personopplysningar
 browser-user-agent-details = Informasjon om brukaragenten til nettlesaren
@@ -25,6 +30,8 @@ career-levels = Karrierenivå
 cellular-network-names = Namn på mobilnettverk
 charitable-donations = Donasjonar til velgjerande føremål
 chat-logs = Chatteloggar
+citizenship-statuses = Status for statsborgarskap
+clothing-sizes = Storleik på klede
 credit-card-cvv = CVV-kodar for betalingskort
 credit-cards = Betalingskort
 credit-status-information = Informasjon om betalingsevne
@@ -34,7 +41,7 @@ customer-interactions = Kundesamhandling
 dates-of-birth = Fødselsdatoar
 deceased-date = Dødsdato
 deceased-statuses = Dødsannonsar
-# Instructions that you can set up in online shopping services to get your orders 
+# Instructions that you can set up in online shopping services to get your orders
 # delivered (e.g. deliver to a specific neighbor, entrance location, etc.).
 delivery-instructions = Leveringsinstruksjonar
 device-information = Einingsinformasjon
@@ -74,12 +81,13 @@ instant-messenger-identities = Identitetar på Instant messenger-tenester
 ip-addresses = IP-adresser
 job-applications = Jobbsøknadar
 job-titles = Jobbtitlar
-# This string refers to vehicle license plates. 
+# This string refers to vehicle license plates.
 licence-plates = Bilskilt
 living-costs = Levekostnadar
 # This string refers to financial loans.
 loan-information = Låneinformasjon
 login-histories = Innloggingshistorikk
+loyalty-program-details = Detaljar for lojalitetsprogram
 mac-addresses = MAC-adresser
 marital-statuses = Sivilstand
 # Mnemonic phrases are a group of words used to access the content of cryptocurrency wallets.
@@ -97,6 +105,7 @@ other-data-class = Anna
 parenting-plans = Foreldreplanar
 partial-credit-card-data = Delvis kreditkortdata
 partial-dates-of-birth = Delvise fødselsdatoar
+partial-phone-numbers = Delvise telefonnummer
 passport-numbers = Passnummer
 password-hints = Passordhint
 password-strengths = Passordstyrke
@@ -139,6 +148,7 @@ spouses-names = Namn på ektefellar
 support-tickets = Support-spørsmål
 survey-results = Undersøkingsresultat
 taxation-records = Skateopplysningar
+telecommunications-carrier = Teleoperatørar
 time-zones = Tidssoner
 travel-habits = Reisevanar
 user-statuses = Brukarstatusar
@@ -146,6 +156,7 @@ user-website-urls = Adresser til brukarnettstadar
 usernames = Brukarnamn
 utility-bills = El-rekningar
 vehicle-details = Detaljar om køyretøy
+vehicle-identification-numbers-vins = Chassisnummer (VIN)
 website-activity = Nettstadaktivitet
 work-habits = Arbeidsvanar
 years-of-birth = Fødselsår

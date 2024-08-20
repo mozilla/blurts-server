@@ -63,62 +63,20 @@ will be a new version of the Monitor web app on the [Production][prod]
 environment. To do this, we first release code to [Dev][dev] and
 [Stage][stage].
 
-## Release to Dev
+## Preview Deployment
 
-Every commit to `main` is automatically deployed to the [Dev][dev] server, as
-long as it can be done with a fast-forward push. Since the
-[Great GitHub Heroku Incident of 2022][github-heroku-incident], this is
-done from CircleCI using a [service account][service-account].
-
-To push a different branch, you need to add the Heroku app as a remote.
-NOTE: give other devs a quick heads-up in Slack before doing this:
-
-- `heroku login`
-- `heroku git:remote -a fx-breach-alerts`
-
-Then, you can push your local unmerged branch to Heroku:
-
-- `git push --force-with-lease heroku HEAD:main`
-
-Merges to main will fail to deploy until someone manually resets it to `main`:
-
-- `git push --force-with-lease heroku main`
+Every time a PR is open, a docker image is created and deployed to the
+preview deployment environment powered by GCP Cloud Run / CloudSQL.
+A brand new database is created and schema is migrated specific to that PR.
+A brand new Cloud Run service is set up and cleaned up along with the
+database at the end of the lifecycle of that PR (when closed or merged).
+A preview URL is generated and linked in the PR when the environment is
+set up and changes are ready to be reviewed.
 
 ## Release to Stage
 
-Every tag pushed to GitHub is automatically deployed to the [Stage][stage]
-server. The standard practice is to create a tag from `main` every Tuesday at
-the end of the day, and to name the tag with `YYYY-MM-DD` [CalVer][calver]
-syntax. This tag will include only the changes that have been merged to `main`.
-E.g.,
-
-1. `git tag 2022.08.02`
-2. `git push origin 2022.08.02`
-
-E.g., the following `2022.08.02` tag includes only `change-1` and `change-2`.
-
-```mermaid
-%%{init: { 'theme': 'base', 'gitGraph': {'rotateCommitLabel': true} } }%%
-    gitGraph
-       commit
-       branch change-1
-       commit
-       commit
-       checkout main
-       branch change-2
-       commit
-       checkout main
-       merge change-1
-       branch change-3
-       commit
-       commit
-       checkout main
-       merge change-2 tag: "2022.08.02"
-       checkout change-3
-       commit
-       commit
-       checkout main
-```
+Every commit to `main` is automatically deployed to the [Stage][stage] server
+via Github Actions and Jenkins.
 
 ### Create Release Notes on GitHub
 
@@ -145,17 +103,20 @@ We leave the tag on [Stage][stage] for a week so that we (and especially QA)
 can check the tag on GCP infrastucture before we deploy it to production. To
 deploy the tag to production:
 
-1. File an [SRE ticket][sre-board] to deploy the tag to [Prod][prod].
+1. Run [e2e] tests against the stage
+   - Ensure the tests are successful / Resolve any issues before moving to the next step
+3. File an [SRE ticket][sre-board] to deploy the tag to [Prod][prod].
    - Include a link to the GitHub Release
+   - Include a link to successful e2e tests
    - You can assign it directly to our primary SRE for the day
-2. When SRE starts the deploy, "cloudops-jenkins" will send status messages
+4. When SRE starts the deploy, "cloudops-jenkins" will send status messages
    into the #fx-monitor-engineering channel.
-3. When you see `PROMOTE PROD COMPLETE`, do some checks on prod:
+5. When you see `PROMOTE PROD COMPLETE`, do some checks on prod:
    - Check sentry prod project for a spike in any new issues
    - Check [grafana dashboard][grafana-dashboard] for any unexpected spike in ops
    - Spot-check the site for basic functionality
    - Ping SDET to run end-to-end tests on prod
-4. Update the GitHub Release from "pre-release" to a full release and reference the production deploy SRE Jira ticket.
+6. Update the GitHub Release from "pre-release" to a full release and reference the production deploy SRE Jira ticket.
 
 ## Stage-fixes
 
@@ -334,3 +295,4 @@ long-running branches")
 [github-new-release]: https://github.com/mozilla/blurts-server/releases/new
 [prod-version]: https://monitor.firefox.com/__version__
 [grafana-dashboard]: https://earthangel-b40313e5.influxcloud.net/d/dEpkGp4Wz/fx-monitor?orgId=1&from=now-7d&to=now
+[e2e]: https://github.com/mozilla/blurts-server/actions/workflows/e2e_cron.yml

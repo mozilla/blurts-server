@@ -3,119 +3,392 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { test, expect } from "../fixtures/basePage.js";
-import { defaultScreenshotOpts } from "../utils/helpers.js";
+import {
+  defaultScreenshotOpts,
+  emailInputShouldExist,
+  getVerificationCode,
+} from "../utils/helpers.js";
 
-test.describe(`${process.env.E2E_TEST_ENV} - Landingpage element verification`, () => {
+test.describe.configure({ mode: "parallel" });
+test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page content`, () => {
   test.beforeEach(async ({ landingPage }) => {
     await landingPage.open();
   });
 
-  test(" Verify that the site footer options work correctly ", async ({
-    landingPage,
-  }) => {
+  test("Observe page header", async ({ landingPage, page }) => {
     // link to testrail case
     test.info().annotations.push({
       type: "testrail",
       description:
-        "https://testrail.stage.mozaws.net/index.php?/cases/view/2095095",
+        "https://testrail.stage.mozaws.net/index.php?/cases/view/2463517",
     });
 
-    const links = landingPage.links();
-
-    // verify the actual hrefs in the footer matches expected
-    await expect(landingPage.mozillaFooterLogoLink).toHaveAttribute(
-      "href",
-      links.mozillaLogoUrl,
-    );
-    await expect(landingPage.allBreachesLink).toHaveAttribute(
-      "href",
-      links.allBreachesUrl,
-    );
-
-    await expect(landingPage.faqLink).toHaveAttribute("href", links.faqUrl);
-    await expect(landingPage.termsLink).toHaveAttribute("href", links.termsUrl);
-    await expect(landingPage.githubLink).toHaveAttribute(
-      "href",
-      links.githubUrl,
-    );
+    await expect(landingPage.monitorLandingHeader).toBeVisible();
+    await landingPage.signInButton.click();
+    await page.waitForURL("**/oauth/**");
+    expect(page.url()).toContain("oauth");
   });
 
-  test("Verify landingpage elements", async ({ landingPage }) => {
-    // confirm landing page elements are visible
-    await expect(landingPage.whyUseMonitorSec).toBeVisible();
-    await expect(landingPage.howItWorksSec).toBeVisible();
-    await expect(landingPage.questionsAboutSec).toBeVisible();
-    await expect(landingPage.seeIfDataBreachSec).toBeVisible();
-  });
-
-  test("Verify that the site footer is displayed correctly @ui", async ({
+  test('Observe "Find where your private info is exposed and take it back" section', async ({
     landingPage,
   }) => {
-    // clear any possible banner
-    await landingPage.maybeClearBanner();
-
-    // link to testrail case
     test.info().annotations.push({
       type: "testrail",
       description:
-        "https://testrail.stage.mozaws.net/index.php?/cases/view/2095094",
+        "https://testrail.stage.mozaws.net/index.php?/cases/view/2463517",
     });
 
-    // visually verify landingpage footer is displayed correctly
-    await expect(landingPage.landingFooter).toHaveScreenshot(
-      `${process.env.E2E_TEST_ENV}-landingFooter.png`,
+    await expect(landingPage.monitorHeroTitle).toBeVisible();
+    await expect(landingPage.monitorHeroSubtitle).toHaveText(
+      "We scan to see if your phone number, passwords or home address have been leaked, and help you make it private again.",
+    );
+    if (await emailInputShouldExist(landingPage)) {
+      await expect(landingPage.monitorHeroFormEmailInputField).toBeVisible();
+      await expect(landingPage.monitorHeroFormInputSubmitButton).toBeVisible();
+    }
+    await expect(landingPage.monitorLandingMidHeading).toBeVisible();
+  });
+
+  test('Observe "We will help you fix your exposures" section', async ({
+    landingPage,
+  }) => {
+    test.info().annotations.push({
+      type: "testrail",
+      description:
+        "https://testrail.stage.mozaws.net/index.php?/cases/view/2463517",
+    });
+
+    await expect(landingPage.fixExposuresTitle).toBeVisible();
+    await expect(landingPage.fixExposuresSubtitle).toBeVisible();
+    if (await emailInputShouldExist(landingPage)) {
+      await expect(landingPage.fixExposuresFormEmailInputField).toBeVisible();
+      await expect(landingPage.fixExposuresFormInputSubmitButton).toBeVisible();
+    }
+    await expect(landingPage.fixExposuresGraphic).toBeVisible();
+  });
+
+  test('Observe "What info could be at risk?" section', async ({
+    landingPage,
+  }) => {
+    test.info().annotations.push({
+      type: "testrail",
+      description:
+        "https://testrail.stage.mozaws.net/index.php?/cases/view/2463517",
+    });
+
+    await expect(landingPage.couldBeAtRiskTitle).toBeVisible();
+    await expect(landingPage.couldBeAtRiskSubtitle).toBeVisible();
+    if (await emailInputShouldExist(landingPage)) {
+      await expect(landingPage.couldBeAtRiskFormEmailInputField).toBeVisible();
+    }
+    await expect(landingPage.couldBeAtRiskFormInputSubmitButton).toBeVisible();
+    await expect(landingPage.couldBeAtRiskGraphic).toBeVisible();
+  });
+
+  test('Observe "Scan your email to get started" section', async ({
+    landingPage,
+  }) => {
+    test.info().annotations.push({
+      type: "testrail",
+      description:
+        "https://testrail.stage.mozaws.net/index.php?/cases/view/2463517",
+    });
+
+    await expect(landingPage.getStartedScanTitle).toBeVisible();
+    if (await emailInputShouldExist(landingPage))
+      await expect(landingPage.getStartedScanFormEmailInputField).toBeVisible();
+    await expect(landingPage.getStartedScanFormSubmitButton).toBeVisible();
+  });
+
+  test('Observe "Choose your level of protection" section', async ({
+    landingPage,
+  }) => {
+    test.info().annotations.push({
+      type: "testrail",
+      description:
+        "https://testrail.stage.mozaws.net/index.php?/cases/view/2463517",
+    });
+
+    await expect(landingPage.chooseLevelSection).toHaveScreenshot(
+      `${process.env.E2E_TEST_ENV}-chooseLevelSection.png`,
       defaultScreenshotOpts,
     );
   });
+
+  test("Observe FAQ section", async ({ landingPage }) => {
+    test.info().annotations.push({
+      type: "testrail",
+      description:
+        "https://testrail.stage.mozaws.net/index.php?/cases/view/2463517",
+    });
+
+    await expect(landingPage.faqSection).toHaveScreenshot(
+      `${process.env.E2E_TEST_ENV}-faqSection.png`,
+      defaultScreenshotOpts,
+    );
+  });
+
+  test('Observe "Take back control of your data" section', async ({
+    landingPage,
+  }) => {
+    test.info().annotations.push({
+      type: "testrail",
+      description:
+        "https://testrail.stage.mozaws.net/index.php?/cases/view/2463517",
+    });
+
+    await expect(landingPage.takeBackControlTitle).toBeVisible();
+    if (await emailInputShouldExist(landingPage)) {
+      await expect(
+        landingPage.takeBackControlFormEmailInputField,
+      ).toBeVisible();
+      await expect(landingPage.takeBackControlFormSubmitButton).toBeVisible();
+    }
+  });
+
+  test("Observe footer section", async ({ landingPage }) => {
+    test.info().annotations.push({
+      type: "testrail",
+      description:
+        "https://testrail.stage.mozaws.net/index.php?/cases/view/2463517",
+    });
+
+    await expect(landingPage.mozillaFooterLogoLink).toBeVisible();
+    await expect(landingPage.faqLink).toBeVisible();
+    await expect(landingPage.termsLink).toBeVisible();
+    await expect(landingPage.privacyLink).toBeVisible();
+    await expect(landingPage.githubLink).toBeVisible();
+  });
+
+  test("Verify the 'Get data removal' button UI and functionality for both yearly and monthly options", async ({
+    landingPage,
+    purchasePage,
+  }) => {
+    test.info().annotations.push({
+      type: "testrail",
+      description:
+        "https://testrail.stage.mozaws.net/index.php?/cases/view/2463525",
+    });
+
+    await expect(landingPage.getDataRemoval).toBeVisible();
+    await expect(landingPage.getDataRemovalMonthly).toBeVisible();
+    await expect(landingPage.getDataRemovalYearly).toBeVisible();
+
+    // Monthly
+    await landingPage.getDataRemovalMonthly.click();
+    await landingPage.getDataRemoval.click();
+    await purchasePage.verifyMonthlyPlanDetails();
+
+    // Yearly
+    await landingPage.open();
+    await landingPage.getDataRemoval.click();
+    await purchasePage.verifyYearlyPlanDetails();
+  });
+
+  test('Verify the "Get free scan" corresponding email fields', async ({
+    landingPage,
+    authPage,
+  }) => {
+    test.info().annotations.push({
+      type: "testrail",
+      description:
+        "https://testrail.stage.mozaws.net/index.php?/cases/view/2463504",
+    });
+    if (await emailInputShouldExist(landingPage)) {
+      ///free-scan-cta experiment is off
+      await landingPage.monitorHeroFormEmailInputField.fill("invalid");
+      await landingPage.monitorHeroFormInputSubmitButton.click();
+      await expect(landingPage.monitorHeroFormEmailInputField).toBeVisible();
+
+      const randomEmail = `_${Date.now()}_tstact@restmail.net`;
+      await landingPage.monitorHeroFormEmailInputField.fill(randomEmail);
+      await landingPage.monitorHeroFormInputSubmitButton.click();
+      await authPage.passwordInputField.waitFor();
+      await expect(authPage.passwordInputField).toBeVisible();
+    } else {
+      ///free-scan-cta experiment is on
+      await landingPage.monitorHeroFormInputSubmitButton.click();
+      await authPage.emailInputField.waitFor({
+        state: "visible",
+        timeout: 10000,
+      });
+      const randomEmail = `_${Date.now()}_tstact@restmail.net`;
+      await authPage.emailInputField.fill(randomEmail);
+      await authPage.continueButton.click();
+      await authPage.passwordInputField.waitFor();
+      await expect(authPage.passwordInputField).toBeVisible();
+    }
+  });
+
+  test('Verify manual/automatic removal "more info" tips from "Choose your level of protection" section', async ({
+    landingPage,
+  }) => {
+    test.info().annotations.push({
+      type: "testrail",
+      description:
+        "https://testrail.stage.mozaws.net/index.php?/cases/view/2463504",
+    });
+    await landingPage.freeMonitoringTooltipTrigger.click();
+    await expect(landingPage.freeMonitoringTooltipText).toBeVisible();
+    await landingPage.closeTooltips.click();
+    await landingPage.monitorPlusTooltipTrigger.click();
+    await expect(landingPage.monitorPlusTooltipText).toBeVisible();
+  });
 });
 
-test.describe(`${process.env.E2E_TEST_ENV} - Landingpage Functionality Verification`, () => {
+test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page Functionality - without existing Account`, () => {
   test.beforeEach(async ({ landingPage }) => {
     await landingPage.open();
   });
 
-  test("Verify landing page elements - free scan", async ({
+  test('Verify "Get free scan" buttons functionality without existing account', async ({
     landingPage,
-    scanPage,
+    page,
+    authPage,
+  }) => {
+    test.info().annotations.push({
+      type: "testrail",
+      description:
+        "https://testrail.stage.mozaws.net/index.php?/cases/view/2463502",
+    });
+
+    const randomEmail = `${Date.now()}_tstact@restmail.net`;
+    if (await emailInputShouldExist(landingPage)) {
+      await landingPage.monitorHeroFormEmailInputField.fill(randomEmail);
+      await landingPage.monitorHeroFormInputSubmitButton.click();
+      await page.waitForURL("**/oauth/**");
+    } else {
+      await landingPage.monitorHeroFormInputSubmitButton.click();
+      await authPage.emailInputField.waitFor({
+        state: "visible",
+        timeout: 10000,
+      });
+      await authPage.emailInputField.fill(randomEmail);
+      await authPage.continueButton.click();
+    }
+    // continue with the common steps
+    await authPage.passwordInputField.fill(
+      process.env.E2E_TEST_ACCOUNT_PASSWORD as string,
+    );
+    await authPage.passwordConfirmInputField.fill(
+      process.env.E2E_TEST_ACCOUNT_PASSWORD as string,
+    );
+    await authPage.ageInputField.fill("31");
+    await authPage.continueButton.click();
+    const vc = await getVerificationCode(randomEmail, page);
+    await authPage.enterVerificationCode(vc);
+    const successUrl = process.env.E2E_TEST_BASE_URL + "/user/welcome";
+    expect(page.url()).toBe(successUrl);
+  });
+
+  test('Verify the "Start free monitoring" button UI and functionality without existing account', async ({
+    landingPage,
+    page,
+    authPage,
+  }) => {
+    test.info().annotations.push(
+      {
+        type: "testrail id #1",
+        description:
+          "https://testrail.stage.mozaws.net/index.php?/cases/view/2463524",
+      },
+      {
+        type: "testrail id #2",
+        description:
+          "https://testrail.stage.mozaws.net/index.php?/cases/view/2463564",
+      },
+    );
+
+    await landingPage.startFreeMonitoringButton.click();
+
+    const randomEmail = `${Date.now()}_tstact@restmail.net`;
+    await authPage.signUp(randomEmail, page);
+
+    const successUrl = process.env.E2E_TEST_BASE_URL + "/user/welcome";
+    expect(page.url()).toBe(successUrl);
+  });
+});
+
+test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page Functionality - with existing account`, () => {
+  test.beforeEach(async ({ landingPage }) => {
+    await landingPage.open();
+  });
+
+  test('Verify "Get free scan" buttons functionality with existing account', async ({
+    landingPage,
+    page,
+    authPage,
   }) => {
     // link to testrail case
     test.info().annotations.push({
       type: "testrail",
       description:
-        "https://testrail.stage.mozaws.net/index.php?/cases/view/2255913",
+        "https://testrail.stage.mozaws.net/index.php?/cases/view/2463503",
     });
 
-    // generate email
-    const randomEmail = `${Date.now()}_auto@restmail.net`;
+    const existingEmail = process.env.E2E_TEST_ACCOUNT_EMAIL as string;
 
-    // enter email for free scan
-    const successfulScan = await landingPage.enterFreeScanEmail(randomEmail);
+    if (await emailInputShouldExist(landingPage)) {
+      // Scenario where the form is still used
+      await landingPage.monitorHeroFormEmailInputField.fill(existingEmail);
+      await landingPage.monitorHeroFormInputSubmitButton.click();
+      await page.waitForURL("**/oauth/**");
+    } else {
+      // Scenario where direct redirection happens
+      await landingPage.monitorHeroFormInputSubmitButton.click();
+      await authPage.emailInputField.waitFor({
+        state: "visible",
+        timeout: 10000,
+      });
+      await authPage.emailInputField.fill(existingEmail);
+      await authPage.continueButton.click();
+    }
 
-    // verify free scanpage items
-    // verify hero header text content
-    expect(await scanPage.heroHeader.textContent()).toContain("We found");
-    expect(await scanPage.heroHeader.textContent()).toContain(randomEmail);
+    // complete sign in form
+    await authPage.enterPassword();
 
-    // verify successful freescan url redirect
-    expect(successfulScan).toBe(true);
-
-    // verify first CTA button
-    await expect(scanPage.getAlertsAboutBreachesButton).toBeVisible();
-
-    // verify second CTA button
-    await expect(scanPage.signUpForAlerts).toBeVisible();
-
-    // verify redirect to sign in('/user/breaches')
-    expect(await scanPage.signUpForAlerts.getAttribute("href")).toBe(
-      "/user/breaches",
-    );
-    expect(
-      await scanPage.getAlertsAboutBreachesButton.getAttribute("href"),
-    ).toBe("/user/breaches");
-
-    // verify 'have i been pwned' website redirect
-    expect(await scanPage.haveIBeenPwnedLink.getAttribute("href")).toBe(
-      "https://haveibeenpwned.com/",
-    );
+    // verify dashboard redirect
+    const successUrl =
+      process.env.E2E_TEST_BASE_URL +
+      (process.env.E2E_TEST_ENV === "local"
+        ? "/user/welcome"
+        : "/user/dashboard");
+    expect(page.url()).toBe(successUrl);
   });
+
+  test('Verify the "Start free monitoring" button UI and functionality with existing account', async ({
+    landingPage,
+    page,
+    authPage,
+  }) => {
+    test.info().annotations.push({
+      type: "testrail",
+      description:
+        "https://testrail.stage.mozaws.net/index.php?/cases/view/2463524",
+    });
+
+    await landingPage.startFreeMonitoringButton.click();
+
+    await authPage.enterEmail(process.env.E2E_TEST_ACCOUNT_EMAIL as string);
+    await authPage.enterPassword();
+
+    // verify dashboard redirect
+    const successUrl =
+      process.env.E2E_TEST_BASE_URL +
+      `${
+        process.env.E2E_TEST_ENV === "local"
+          ? "/user/welcome"
+          : "/user/dashboard"
+      }`;
+    expect(page.url()).toBe(successUrl);
+  });
+});
+
+test("Verify that the 404 page shows up on non-existent pages @smoke", async ({
+  page,
+}) => {
+  await page.goto("/non-existent-page/");
+  await expect(
+    page.locator("h1").getByText("⁨404⁩ Page not found"),
+  ).toBeVisible();
 });

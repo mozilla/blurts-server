@@ -23,9 +23,9 @@ export function getReferrerUrl({
 
   switch (referrerParam) {
     case "dashboard":
-      return "/redesign/user/dashboard";
+      return "/user/dashboard";
     case "fix":
-      return "/redesign/user/dashboard/fix/data-broker-profiles/start-free-scan";
+      return "/user/dashboard/fix/data-broker-profiles/start-free-scan";
     default:
       return null;
   }

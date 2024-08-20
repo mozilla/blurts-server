@@ -1,3 +1,8 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+
 # Breach Data Classes
 
 account-balances = Số dư tài khoản
@@ -14,7 +19,7 @@ avatars = Ảnh đại diện
 bank-account-numbers = Số tài khoản ngân hàng
 beauty-ratings = Xếp hạng sắc đẹp
 biometric-data = Dữ liệu sinh trắc học
-# This string is the shortened version of "Biographies", and 
+# This string is the shortened version of "Biographies", and
 # refers to biographical data about a user.
 bios = Tiểu sử
 browser-user-agent-details = Chi tiết chuỗi nhận dạng trình duyệt
@@ -25,6 +30,7 @@ career-levels = Cấp độ nghề nghiệp
 cellular-network-names = Tên mạng di động
 charitable-donations = Quyên góp từ thiện
 chat-logs = Nhật ký trò chuyện
+citizenship-statuses = Tình trạng công dân
 clothing-sizes = Kích cỡ quần áo
 credit-card-cvv = Thẻ tín dụng CVV
 credit-cards = Thẻ tín dụng
@@ -35,7 +41,7 @@ customer-interactions = Tương tác của khách hàng
 dates-of-birth = Ngày sinh
 deceased-date = Ngày mất
 deceased-statuses = Tình trạng đã mất
-# Instructions that you can set up in online shopping services to get your orders 
+# Instructions that you can set up in online shopping services to get your orders
 # delivered (e.g. deliver to a specific neighbor, entrance location, etc.).
 delivery-instructions = Hướng dẫn giao hàng
 device-information = Thông tin thiết bị
@@ -75,12 +81,13 @@ instant-messenger-identities = Nhận dạng tin nhắn tức thời
 ip-addresses = Các địa chỉ IP
 job-applications = Đơn xin việc
 job-titles = Chức danh công việc
-# This string refers to vehicle license plates. 
+# This string refers to vehicle license plates.
 licence-plates = Biển số xe
 living-costs = Chi phí sinh hoạt
 # This string refers to financial loans.
 loan-information = Thông tin khoản vay
 login-histories = Lịch sử đăng nhập
+loyalty-program-details = Chi tiết chương trình khách hàng thân thiết
 mac-addresses = Địa chỉ MAC
 marital-statuses = Tình trạng hôn nhân
 # Mnemonic phrases are a group of words used to access the content of cryptocurrency wallets.
@@ -141,6 +148,7 @@ spouses-names = Tên vợ/chồng
 support-tickets = Vé hỗ trợ
 survey-results = Kết quả khảo sát
 taxation-records = Hồ sơ thuế
+telecommunications-carrier = Các hãng viễn thông
 time-zones = Múi giờ
 travel-habits = Thói quen du lịch
 user-statuses = Trạng thái người dùng

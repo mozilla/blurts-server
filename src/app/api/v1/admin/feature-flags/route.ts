@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { NextRequest, NextResponse } from "next/server";
-import { getServerSession } from "next-auth";
+import { getServerSession } from "../../../../functions/server/getServerSession";
 import { logger } from "../../../../functions/server/logging";
 import {
   getAllFeatureFlags,
@@ -13,13 +13,13 @@ import {
   updateAllowList,
   updateWaitList,
   FeatureFlag,
+  deleteFeatureFlagByName,
 } from "../../../../../db/tables/featureFlags";
 
-import { isAdmin, authOptions } from "../../../utils/auth";
-import appConstants from "../../../../../appConstants";
+import { isAdmin } from "../../../utils/auth";
 
 export async function GET() {
-  const session = await getServerSession(authOptions);
+  const session = await getServerSession();
   if (isAdmin(session?.user?.email || "")) {
     // Signed in
     try {
@@ -29,13 +29,12 @@ export async function GET() {
       return NextResponse.json({ success: false }, { status: 500 });
     }
   } else {
-    // Not Signed in, redirect to home
-    return NextResponse.redirect(appConstants.SERVER_URL, 301);
+    return NextResponse.json({ success: false }, { status: 401 });
   }
 }
 
 export async function POST(req: NextRequest) {
-  const session = await getServerSession(authOptions);
+  const session = await getServerSession();
   if (isAdmin(session?.user?.email || "")) {
     // Signed in
     try {
@@ -50,8 +49,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ success: false }, { status: 500 });
     }
   } else {
-    // Not Signed in, redirect to home
-    return NextResponse.redirect(appConstants.SERVER_URL, 301);
+    return NextResponse.json({ success: false }, { status: 401 });
   }
 }
 
@@ -63,7 +61,7 @@ export type FeatureFlagPutRequest = {
 };
 
 export async function PUT(req: NextRequest) {
-  const session = await getServerSession(authOptions);
+  const session = await getServerSession();
   if (isAdmin(session?.user?.email || "")) {
     // Signed in
     try {
@@ -88,7 +86,27 @@ export async function PUT(req: NextRequest) {
       return NextResponse.json({ success: false }, { status: 500 });
     }
   } else {
-    // Not Signed in, redirect to home
-    return NextResponse.redirect(appConstants.SERVER_URL, 301);
+    return NextResponse.json({ success: false }, { status: 401 });
+  }
+}
+
+export type FeatureFlagDeleteRequest = {
+  name: string;
+};
+
+export async function DELETE(req: NextRequest) {
+  const session = await getServerSession();
+  if (isAdmin(session?.user?.email || "")) {
+    // Signed in
+    try {
+      const reqBody = (await req.json()) as FeatureFlagDeleteRequest;
+      await deleteFeatureFlagByName(reqBody.name);
+
+      return NextResponse.json({ success: true, name: reqBody.name });
+    } catch (e) {
+      return NextResponse.json({ success: false }, { status: 500 });
+    }
+  } else {
+    return NextResponse.json({ success: false }, { status: 401 });
   }
 }

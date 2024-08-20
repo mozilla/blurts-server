@@ -1,6 +1,7 @@
 @import "../../tokens";
 
 .stepsWrapper {
+  @include no-focus-outline;
   margin-block-end: $layout-lg;
   display: flex;
   align-items: center;
@@ -17,6 +18,10 @@
 
   @media screen and (min-width: $screen-lg) {
     padding-inline: $layout-xl;
+  }
+
+  .steps {
+    @include no-focus-outline;
   }
 }
 

@@ -8,27 +8,30 @@ import { NextRequest, NextResponse } from "next/server";
 import { logger } from "../../../../functions/server/logging";
 import AppConstants from "../../../../../appConstants";
 import {
-  getSubscriberByEmail,
+  getSubscriberByFxaUid,
   deleteResolutionsWithEmail,
 } from "../../../../../db/tables/subscribers";
 import {
   removeOneSecondaryEmail,
   getEmailById,
-} from "../../../../../db/tables/emailAddresses.js";
-import { getL10n } from "../../../../functions/server/l10n";
+} from "../../../../../db/tables/emailAddresses";
+import { getL10n } from "../../../../functions/l10n/serverComponents";
 
 interface EmailDeleteRequest {
-  emailId: string;
+  emailId: number;
 }
 
 export async function POST(req: NextRequest) {
   const l10n = getL10n();
   const token = await getToken({ req });
 
-  if (typeof token?.email === "string") {
+  if (typeof token?.subscriber?.fxa_uid === "string") {
     try {
       const { emailId }: EmailDeleteRequest = await req.json();
-      const subscriber = await getSubscriberByEmail(token.email);
+      const subscriber = await getSubscriberByFxaUid(token.subscriber?.fxa_uid);
+      if (!subscriber) {
+        throw new Error("No subscriber found for current session.");
+      }
       const existingEmail = await getEmailById(emailId);
 
       if (existingEmail?.subscriber_id !== subscriber.id) {
@@ -41,7 +44,7 @@ export async function POST(req: NextRequest) {
         );
       }
 
-      await removeOneSecondaryEmail(emailId);
+      await removeOneSecondaryEmail(emailId, subscriber.id);
       await deleteResolutionsWithEmail(
         existingEmail.subscriber_id,
         existingEmail.email,
@@ -55,7 +58,6 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ success: false }, { status: 500 });
     }
   } else {
-    // Not Signed in, redirect to home
-    return NextResponse.redirect(AppConstants.SERVER_URL, 301);
+    return NextResponse.json({ success: false }, { status: 401 });
   }
 }

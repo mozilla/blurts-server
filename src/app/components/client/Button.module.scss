@@ -1,0 +1,140 @@
+@import "../../tokens";
+
+.button {
+  font: $text-body-md;
+  font-weight: 500;
+  border: 0;
+  padding: $spacing-md $spacing-lg;
+  border-radius: $border-radius-md;
+  cursor: pointer;
+  display: inline-block;
+  line-height: 1;
+  text-align: center;
+  text-decoration: none;
+
+  &.primary {
+    color: $color-white;
+    background-color: $color-blue-50;
+
+    &:hover {
+      background-color: $color-blue-60;
+    }
+
+    &:focus {
+      outline: $border-focus-width solid $color-blue-30;
+    }
+
+    &.destructive {
+      color: $color-white;
+      background-color: $color-red-60;
+
+      &:hover {
+        background-color: $color-red-70;
+      }
+
+      &:focus {
+        outline: $border-focus-width solid $color-red-30;
+      }
+    }
+
+    &.disabled {
+      background: $color-grey-20;
+      pointer-events: none;
+    }
+  }
+
+  &.secondary {
+    font-weight: 400;
+    color: $color-blue-50;
+    box-shadow: inset 0 0 0 2px $color-blue-50;
+    background-color: transparent;
+
+    &:hover {
+      background-color: $color-blue-50;
+      color: $color-white;
+    }
+
+    &.destructive {
+      color: $color-red-70;
+      box-shadow: inset 0 0 0 2px $color-red-70;
+
+      &:hover {
+        background-color: $color-red-70;
+        color: $color-white;
+      }
+    }
+
+    &.disabled {
+      color: $color-grey-20;
+      background: transparent;
+      box-shadow: inset 0 0 0 2px $color-grey-20;
+      pointer-events: none;
+    }
+  }
+
+  &.tertiary {
+    background: none;
+    color: $color-blue-50;
+
+    &:hover {
+      background-color: rgba($color-blue-50, 0.2);
+    }
+  }
+
+  &.link {
+    background: none;
+    color: $color-blue-50;
+    font: inherit;
+    padding: 0;
+    text-decoration: underline;
+  }
+
+  &.isLoading {
+    cursor: progress;
+    opacity: 0.4;
+  }
+
+  &.small {
+    line-height: 1.5;
+    padding: $spacing-sm $spacing-md;
+  }
+
+  &.wide {
+    padding: $spacing-md $spacing-2xl;
+  }
+}
+
+// Loading animation
+.ldsRing {
+  margin: 0 auto;
+  height: 18px;
+  width: 18px;
+}
+.ldsRing div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border: 4px solid #fff;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #fff transparent transparent transparent;
+}
+.ldsRing div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.ldsRing div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.ldsRing div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

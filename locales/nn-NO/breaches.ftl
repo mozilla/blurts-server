@@ -2,51 +2,13 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-breach-meta-title = { -brand-fx-monitor } - Oversyn
 breach-all-meta-title = { -brand-fx-monitor } - Alle datalekkasjar
 breach-all-meta-social-title = Alle datalekkasjar oppdaga av { -brand-fx-monitor }
-# Variables:
-#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
-breach-detail-meta-title = { -brand-fx-monitor } - datalekkasjar hos { $company }
+breach-all-meta-social-description = Bl gjenom heile lista over kjende datalekkasjar oppdaga av { -brand-fx-monitor } og finn ut om informasjonen har vore eksponert tidlegare.
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-social-title = Vart du påverka av datalekkasjen hos { $company } ?
-
-## Breaches header
-
-# Data classes pie chart title
-breach-chart-title = Lekne data
-# $email-select is an interactive <select> element displaying the current email address
-breach-heading-email = Datalekkasjar for { $email-select }
-# $count is the number of emails a user has added out of $total allowed
-emails-monitored =
-    { $total ->
-        [one] { $count } av { $total } e-postadresse overvaka
-       *[other] { $count } of { $total } e-postadresser overvaka
-    }
-# link to Settings page where user can add/remove emails and set message preferences
-manage-emails-link = Handsam e-postadresser
-
-## Breaches resolved filter
-
-filter-label-unresolved = Uløyste datalekkasjar
-filter-label-resolved = Løyste datalekkasjar
-
-## Breaches table
-
-column-company = VERKSEMD
-column-breached-data = Lekne data
-column-detected = OPPDAGA
-# “Resolved” is shown next to a breach if all recommended actions in response to the breach have been taken.
-column-status-badge-resolved = Løyst
-# “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
-column-status-badge-active = Aktiv
-breaches-resolve-heading = Løys denne datalekkasjen:
-breaches-none-headline = Fann ingen datalekkasjar
-breaches-none-cta-button = Legg til e-postadresse
-breaches-all-resolved-headline = Alle datalekkasjar løyste
-breaches-all-resolved-cta-blurb = Vil du overvake ei anna e-postadresse?
-breaches-all-resolved-cta-button = Legg til e-postadresse
+breach-detail-meta-social-description = Bruk { -brand-fx-monitor } for å finne ut om den personlege informasjonen din er eksponert i denne datalekkasjen, og kva du skal gjere no.
 
 ## Links that we might refer to when prompting the user to make changes after a breach
 
@@ -56,9 +18,13 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## Prompts the user for changes when there is a breach detected of password
 
+breach-checklist-pw-header-text = Oppdater passorda dine og slå på tofaktor-autentisering (2FA).
 
 ## Prompts the user for changes when there is a breach detected of email
 
+# Variables:
+#   $firefoxRelayLink (string) - a link to Firefox Relay, with { -breach-checklist-link-firefox-relay } as the label
+breach-checklist-email-header-2 = Vern e-posten din med ei e-postmaskeringsteneste som { $firefoxRelayLink }.
 
 ## Prompts the user for changes when there is a breach detected of social security number
 
@@ -77,15 +43,20 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## Prompts the user for changes when there is a breach detected of physical address
 
+breach-checklist-address-header = Endre alle passord eller PIN-kodar som inneheld ein del av adressa di.
+breach-checklist-address-body = Det er lett å finne adresser i offentlege register - og dét gjer det lett å gjette passord og PIN-kodar, som inneheld adressa di.
 
 ## Prompts the user for changes when there is a breach detected of date of birth
 
+breach-checklist-dob-header = Endre alle passord eller PIN-kodar som inneheld fødselsdagen din.
+breach-checklist-dob-body = Fødselsdatoar er lette å finne i offentlege register, og folk som finn dei kan enkelt gjette PIN-koden din.
 
 ## Prompts the user for changes when there is a breach detected of phone number
 
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
+breach-checklist-sq-header-text = Oppdater sikkerheitsspørsmåla dine.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 

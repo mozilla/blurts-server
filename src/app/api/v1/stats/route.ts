@@ -5,19 +5,15 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getScansCount } from "../../../../db/tables/onerep_scans";
 import { bearerToken } from "../../utils/auth";
-
+import {
+  monthlyScansQuota,
+  monthlySubscribersQuota,
+} from "../../../functions/server/onerep";
 export async function GET(req: NextRequest) {
   const headerToken = bearerToken(req);
   if (headerToken !== process.env.STATS_TOKEN) {
     return NextResponse.json({ success: "false" }, { status: 401 });
   }
-
-  const monthlyScanQuota = parseInt(
-    (process.env.MONTHLY_SCANS_QUOTA as string) || "0",
-  );
-  const monthlySubscriberQuota = parseInt(
-    (process.env.MONTHLY_SUBSCRIBERS_QUOTA as string) || "0",
-  );
 
   const now = new Date();
   const firstDayOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
@@ -42,11 +38,11 @@ export async function GET(req: NextRequest) {
 
   const message = {
     scans: {
-      quota: monthlyScanQuota,
+      quota: monthlyScansQuota,
       count: parseInt(manualScansCount),
     },
     subscribers: {
-      quota: monthlySubscriberQuota,
+      quota: monthlySubscribersQuota,
       count: parseInt(initialScansCount),
     },
   };

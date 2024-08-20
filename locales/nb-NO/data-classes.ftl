@@ -1,3 +1,8 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+
 # Breach Data Classes
 
 account-balances = Kontosaldoer
@@ -14,7 +19,7 @@ avatars = Avatarer
 bank-account-numbers = Bankkontonummer
 beauty-ratings = Skjønnhetsvurderinger
 biometric-data = Biometriske data
-# This string is the shortened version of "Biographies", and 
+# This string is the shortened version of "Biographies", and
 # refers to biographical data about a user.
 bios = Personopplysninger
 browser-user-agent-details = Informasjon om nettleserens brukeragent
@@ -71,7 +76,7 @@ instant-messenger-identities = Identiteter på Instant messenger-tjenester
 ip-addresses = IP-adresser
 job-applications = Jobbsøknader
 job-titles = Jobbtitler
-# This string refers to vehicle license plates. 
+# This string refers to vehicle license plates.
 licence-plates = Bilskilt
 living-costs = Levekostnader
 login-histories = Innloggingshistorikk
@@ -93,7 +98,7 @@ password-hints = Passordhint
 password-strengths = Passordstyrke
 passwords = Passord
 payment-histories = Betalingshistorikk
-payment-methods = Betalingsmetoder
+payment-methods = Betalingsmåter
 personal-descriptions = Personlige beskrivelser
 personal-health-data = Personlige helsedata
 personal-interests = Personlige interesser

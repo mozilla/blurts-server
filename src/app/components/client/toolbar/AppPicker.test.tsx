@@ -8,6 +8,7 @@ import { userEvent } from "@testing-library/user-event";
 import { composeStory } from "@storybook/react";
 import Meta, { AppPickerDefault } from "./AppPicker.stories";
 import { axe } from "jest-axe";
+jest.mock("../../../hooks/useTelemetry");
 
 it("passes the axe accessibility test suite", async () => {
   const ComposedAppPicker = composeStory(AppPickerDefault, Meta);

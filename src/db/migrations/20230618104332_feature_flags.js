@@ -17,7 +17,7 @@
       table.timestamp('deleted_at')
       table.string('owner')
     })
-    
+
 }
 
 export function down (knex) {

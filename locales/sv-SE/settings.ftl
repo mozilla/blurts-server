@@ -5,20 +5,23 @@
 
 # Settings page
 
-settings-meta-title = { -brand-fx-monitor } - Inställningar
 settings-page-title = Inställningar { -product-short-name }
 
 ## Breach alert preferences
 
-settings-alert-preferences-title = Inställningar för intrångsvarning
+settings-alert-email-preferences-title = E-postinställningar
+settings-alert-email-preferences-subtitle = Berätta vilka e-postmeddelanden du vill få.
+settings-alert-preferences-allow-breach-alerts-title = Omedelbara intrångsvarningar
+settings-alert-preferences-allow-breach-alerts-subtitle = Dessa varningar skickas omedelbart när ett dataintrång upptäcks
 settings-alert-preferences-option-one = Skicka intrångsvarningar till den drabbade e-postadressen
 settings-alert-preferences-option-two = Skicka alla intrångsvarningar till den primära e-postadressen
+settings-alert-preferences-allow-monthly-monitor-report-title = Månatlig { -brand-monitor }-rapport
+settings-alert-preferences-allow-monthly-monitor-report-subtitle = En månatlig uppdatering av nya exponeringar, vad som har fixats och vad som behöver din åtgärd.
 
 ## Monitored email addresses
 
 # Variables:
 #   $email (string) - Email address
-settings-email-label-primary = { $email } (primär)
 settings-email-list-title = Övervakade e-postadresser
 # Variables:
 #   $limit (number) - Number of email addresses included in the plan
@@ -30,46 +33,34 @@ settings-email-limit-info =
 settings-email-verification-callout = E-postverifiering krävs
 settings-resend-email-verification-link = Skicka e-postverifiering igen
 settings-add-email-button = Lägg till e-postadress
-settings-delete-email-button = Ta bort e-postadress
+settings-remove-email-button-label = Ta bort
+# Variables:
+#   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
+settings-remove-email-button-tooltip = Sluta övervaka { $emailAddress }
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
-#   $breachCount (numer) - Number of breaches
+#   $breachCount (number) - Number of breaches
 settings-email-number-of-breaches-info =
     { $breachCount ->
         [one] Förekommer i { $breachCount } känt intrång.
        *[other] Förekommer i { $breachCount } kända intrång.
     }
 
-## Cancel Premium subscription
-
-settings-cancel-premium-subscription-title = Avsluta prenumerationen på { -brand-premium }
-settings-cancel-premium-subscription-info = Ditt abonnemang kommer att återgå till ett gratiskonto efter att den aktuella faktureringsperioden är slut. Resultaten av din integritetsskyddsskanning kommer att raderas permanent och du kommer bara att ha övervakning av dataintrång för en e-postadress.
-settings-cancel-premium-subscription-link-label = Avsluta från ditt { -brand-fx-account }
-
 ## Deactivate account
 
 settings-deactivate-account-title = Inaktivera konto
-# Deprecated
-settings-deactivate-account-info = Du kan inaktivera { -product-short-name } genom att ta bort ditt { -brand-fx-account }.
 settings-deactivate-account-info-2 = Du kan inaktivera { -product-short-name } genom att ta bort ditt { -brand-mozilla-account }.
-# Deprecated
-settings-fxa-link-label = Gå till { -brand-firefox }-inställningar
 settings-fxa-link-label-3 = Gå till inställningarna för { -brand-mozilla-account }
 
-## Add email dialog
+## Delete Monitor account
 
-settings-email-dialog-title = Lägg till ytterligare en e-postadress
-settings-add-email-text = Lägg till en ny e-postadress för att se om den har varit inblandad i ett intrång.
-settings-email-input-label = E-postadress
-settings-send-email-verification-button = Skicka verifieringslänk
-
-## Unsubscribe Dialog Survey
-
-settings-unsubscribe-dialog-title = Vi beklagar att du lämnar. <br /> Vill du berätta varför?
-settings-unsubscribe-dialog-info = Din erfarenhet är viktig för oss. Vi läser varje svar och tar hänsyn till det.
-settings-unsubscribe-dialog-message-placeholder = Vad kunde ha gått bättre?
-# $faq_href is the URL for the faq page. HTML tags should not be translated, e.g. `<a>`
-settings-unsubscribe-dialog-confirmation = Observera att alla dina { -brand-monitor-premium }-tjänster kommer att <a { $faq_href }>tas bort permanent</a> efter att din nuvarande faktureringsperiod är slut.
-settings-unsubscribe-dialog-continue = Fortsätt till annullering
-settings-unsubscribe-dialog-cancel = Glöm det, ta mig tillbaka
+settings-delete-monitor-free-account-title = Ta bort { -brand-monitor }-konto
+settings-delete-monitor-free-account-description = Detta tar permanent bort ditt { -brand-monitor }-konto och stänger av alla aviseringar.
+settings-delete-monitor-free-account-cta-label = Ta bort konto
+settings-delete-monitor-free-account-dialog-title = Ditt { -brand-monitor }-konto kommer att tas bort permanent
+settings-delete-monitor-free-account-dialog-lead-v2 = All din { -brand-monitor }-kontoinformation kommer att raderas och vi kommer inte längre att övervaka nya dataintrång. Detta tar inte bort ditt { -brand-mozilla-account }.
+settings-delete-monitor-free-account-dialog-cta-label = Ta bort konto
+settings-delete-monitor-free-account-dialog-cancel-button-label = Glöm det, ta mig tillbaka
+settings-delete-monitor-account-confirmation-toast-label-2 = Ditt { -brand-monitor }-konto är nu raderat.
+settings-delete-monitor-account-confirmation-toast-dismiss-label = Ignorera

@@ -18,6 +18,7 @@
   }
 
   .header {
+    @include no-focus-outline;
     display: flex;
     flex-direction: column;
     gap: $spacing-md;

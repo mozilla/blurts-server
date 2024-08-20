@@ -11,19 +11,23 @@ import { useButton, useOverlayTrigger } from "react-aria";
 import styles from "./ProgressCard.module.scss";
 import { ModalOverlay } from "./dialog/ModalOverlay";
 import { Dialog } from "./dialog/Dialog";
-import { Button } from "../server/Button";
+import { Button } from "../client/Button";
 import { useL10n } from "../../hooks/l10n";
 import ExploringLaptopPlus from "./assets/exploring-laptop-check.svg";
 import ExploringLaptopMinus from "./assets/exploring-laptop-minus.svg";
 import ExploringLaptopInProgress from "./assets/exploring-laptop-in-progress.svg";
 import { LockIcon, QuestionMarkCircle } from "../server/Icons";
 import ModalImage from "../client/assets/modal-default-img.svg";
+import { VisuallyHidden } from "../server/VisuallyHidden";
+import { FeatureFlagName } from "../../../db/tables/featureFlags";
 
 export type Props = {
   resolvedByYou: number;
   autoRemoved: number;
   inProgress: number;
   isPremiumUser: boolean;
+  isEligibleForPremium: boolean;
+  enabledFeatureFlags: FeatureFlagName[];
 };
 
 export const ProgressCard = (props: Props) => {
@@ -47,9 +51,17 @@ export const ProgressCard = (props: Props) => {
         })}
       </p>
       <p>
-        {l10n.getFragment("modal-heres-what-we-fixed-description-part-three", {
-          elems: { b: <strong /> },
-        })}
+        {l10n.getFragment(
+          /* c8 ignore next 5 */
+          // As the `SetExpectationsForUsers` feature flag is removed, the
+          // branch will be covered again:
+          props.enabledFeatureFlags.includes("SetExpectationsForUsers")
+            ? "modal-heres-what-we-fixed-description-part-three"
+            : "modal-heres-what-we-fixed-description-part-three-deprecated",
+          {
+            elems: { b: <strong /> },
+          },
+        )}
       </p>
       <div className={styles.confirmButtonWrapper}>
         <Button
@@ -73,15 +85,29 @@ export const ProgressCard = (props: Props) => {
   return (
     <div className={styles.progressCard}>
       <div className={styles.header}>
-        {l10n.getString("progress-card-heres-what-we-fixed-headline")}
-        <button
-          aria-label={l10n.getString("modal-open-alt")}
-          ref={explainerDialogTriggerRef}
-          {...explainerDialogTriggerProps}
-          onClick={() => explainerDialogState.open()}
-        >
-          <QuestionMarkCircle alt="" width="15" height="15" />
-        </button>
+        {l10n.getString(
+          props.isPremiumUser
+            ? "progress-card-heres-what-we-fixed-headline-premium"
+            : "progress-card-heres-what-we-fixed-headline-all",
+        )}
+        {props.isEligibleForPremium && (
+          <button
+            ref={explainerDialogTriggerRef}
+            {...explainerDialogTriggerProps}
+            onClick={() => explainerDialogState.open()}
+            aria-label={l10n.getString("open-modal-alt")}
+            aria-describedby="whatWeFixedInfo"
+          >
+            <VisuallyHidden id="whatWeFixedInfo">
+              {l10n.getString(
+                props.isPremiumUser
+                  ? "progress-card-heres-what-we-fixed-headline-premium"
+                  : "progress-card-heres-what-we-fixed-headline-all",
+              )}
+            </VisuallyHidden>
+            <QuestionMarkCircle alt="" width="15" height="15" />
+          </button>
+        )}
       </div>
       <div className={styles.progressStatsWrapper}>
         {/* Manually fixed */}
@@ -94,26 +120,28 @@ export const ProgressCard = (props: Props) => {
         </div>
 
         {/* Auto-removed */}
-        <div
-          className={`${styles.progressItem} ${
-            !props.isPremiumUser && styles.greyedOut
-          }`}
-        >
-          <div className={styles.progressStat}>
-            <Image src={ExploringLaptopMinus} alt="" width="50" height="50" />
-            <span>{props.autoRemoved}</span>
+        {(props.isEligibleForPremium || props.isPremiumUser) && (
+          <div
+            className={`${styles.progressItem} ${
+              !props.isPremiumUser && styles.greyedOut
+            }`}
+          >
+            <div className={styles.progressStat}>
+              <Image src={ExploringLaptopMinus} alt="" width="50" height="50" />
+              <span>{props.autoRemoved}</span>
+            </div>
+            <p>
+              {!props.isPremiumUser && (
+                <LockIcon
+                  alt={l10n.getString("progress-card-locked-alt")}
+                  width="10"
+                  height="10"
+                />
+              )}
+              {l10n.getString("progress-card-auto-removed-headline")}
+            </p>
           </div>
-          <p>
-            {!props.isPremiumUser && (
-              <LockIcon
-                alt={l10n.getString("progress-card-locked-alt")}
-                width="10"
-                height="10"
-              />
-            )}
-            {l10n.getString("progress-card-auto-removed-headline")}
-          </p>
-        </div>
+        )}
 
         {/* In Progress */}
         {props.isPremiumUser && (

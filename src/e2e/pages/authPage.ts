@@ -13,44 +13,46 @@ export class AuthPage {
   readonly continueButton: Locator;
   readonly ageInputField: Locator;
   readonly verifyCodeInputField: Locator;
+  readonly useDifferentEmailButton: Locator;
 
   constructor(page: Page) {
     this.page = page;
     this.emailInputField = page.locator('input[name="email"]');
-    this.passwordInputField = page.locator("#password");
-    this.passwordConfirmInputField = page.locator("#vpassword");
-    this.ageInputField = page.locator("#age");
-    this.continueButton = page.locator("#submit-btn");
+    this.passwordInputField = page.locator('[type="password"]').nth(0);
+    this.passwordConfirmInputField = page.locator('[type="password"]').nth(1);
+    this.ageInputField = page.getByLabel("How old are you?");
+    this.continueButton = page.locator('[type="submit"]').first();
     this.verifyCodeInputField = page.locator("div.card input");
+    this.useDifferentEmailButton = page.locator(
+      'text="Use a different account"',
+    );
   }
 
-  async continue() {
-    await Promise.all([
-      this.page.waitForNavigation(),
-      this.continueButton.click(),
-    ]);
+  async continue({ waitForURL = "**/*" }) {
+    await this.continueButton.click();
+    await this.page.waitForURL(waitForURL);
   }
 
   async enterVerificationCode(code: string) {
     await this.verifyCodeInputField.fill(code);
-    await this.continue();
+    await this.continue({ waitForURL: "**/user/**" });
   }
 
   async enterEmail(email: string) {
     await this.emailInputField.fill(email);
-    await this.continue();
+    await this.continue({ waitForURL: "**/oauth/**" });
   }
 
-  async enterPassword() {
-    await this.passwordInputField.fill(
-      process.env.E2E_TEST_ACCOUNT_PASSWORD as string,
-    );
-    await this.continue();
+  async enterPassword(optionalPassword?: string) {
+    const password =
+      optionalPassword || (process.env.E2E_TEST_ACCOUNT_PASSWORD as string);
+    await this.passwordInputField.fill(password);
+    await this.continue({ waitForURL: "**/user/**" });
   }
 
-  async signIn(email: string) {
+  async signIn(email: string, optionalPassword?: string) {
     await this.enterEmail(email);
-    await this.enterPassword();
+    await this.enterPassword(optionalPassword);
   }
 
   async signUp(email: string, page: Page) {
@@ -62,7 +64,7 @@ export class AuthPage {
       process.env.E2E_TEST_ACCOUNT_PASSWORD as string,
     );
     await this.ageInputField.type("31");
-    await this.continue();
+    await this.continue({ waitForURL: "**/oauth/**" });
     const vc = await getVerificationCode(email, page);
     await this.enterVerificationCode(vc);
   }

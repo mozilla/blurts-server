@@ -5,13 +5,23 @@
 import { defineConfig, devices } from '@playwright/test'
 /**
  * Read environment variables from file.
- * https://github.com/motdotla/dotenv
+ * https://www.npmjs.com/package/dotenv-flow
  */
-import * as dotenv from 'dotenv'
-dotenv.config()
+import * as dotenvFlow from 'dotenv-flow'
+dotenvFlow.config()
 /**
  * @see https://playwright.dev/docs/test-configuration
  */
+
+const webServerConfig = {
+  command: 'npm run build; npm start',
+  // Building the app can take some time:
+  timeout: 600_000,
+  port: 6060
+}
+
+const shouldStartWebServer = process.env.E2E_TEST_ENV === "local"
+
 export default defineConfig({
   testDir: 'src/e2e/specs',
   /* Maximum time one test can run for. */
@@ -41,13 +51,13 @@ export default defineConfig({
   forbidOnly: !!process.env.CI,
 
   /* Retry on CI only */
-  retries: process.env.CI ? 2 : 0,
+  retries: process.env.CI ? 1 : 0,
 
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
 
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  reporter: process.env.CI ? [['github'], ['html']] : 'html',
 
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
@@ -115,12 +125,6 @@ export default defineConfig({
   /* Folder for test artifacts such as screenshots, videos, traces, etc. */
   outputDir: 'src/e2e/test-results/',
 
-  /* Run your local dev server before starting the tests */
-  webServer: {
-    command: 'npm run build; npm start',
-    port: 6060,
-    reuseExistingServer: !process.env.CI,
-    // Building the app can take some time:
-    timeout: 600_000,
-  }
+  // Run your local dev server before starting the tests -- should run only on PRs or when prompted
+  ...(shouldStartWebServer && { webServer: webServerConfig })
 })

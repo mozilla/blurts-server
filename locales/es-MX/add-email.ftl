@@ -6,7 +6,9 @@
 ### Dialog window that allows a user to add a new email address to be monitored
 
 add-email-add-another-heading = Agregar otra dirección de correo electrónico
+
 add-email-address-input-label = Dirección de correo electrónico
 add-email-send-verification-button = Enviar enlace de verificación
+
 # $email is the newly added email address. $settings-href is the URL for the Settings page. HTML tags should not be translated, e.g. `<a>`
 add-email-verify-the-link = Verifica el enlace enviado a { $email } para agregarlo a { -brand-fx-monitor }. Administra todas las direcciones de correo electrónico en <a { $settings-href }>Ajustes</a>.

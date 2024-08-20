@@ -5,20 +5,23 @@
 
 # Settings page
 
-settings-meta-title = { -brand-fx-monitor } - Configurações
 settings-page-title = Configurações do { -product-short-name }
 
 ## Breach alert preferences
 
-settings-alert-preferences-title = Preferências de alerta de vazamentos
+settings-alert-email-preferences-title = Preferências de email
+settings-alert-email-preferences-subtitle = Diga-nos quais emails você quer receber.
+settings-alert-preferences-allow-breach-alerts-title = Alertas imediatos de vazamentos
+settings-alert-preferences-allow-breach-alerts-subtitle = Esses alertas são enviados imediatamente, assim que um vazamento de dados é detectado
 settings-alert-preferences-option-one = Enviar alertas de vazamento para os endereços de email afetados
 settings-alert-preferences-option-two = Enviar todos os alertas de vazamento para o endereço de email principal
+settings-alert-preferences-allow-monthly-monitor-report-title = Relatório mensal do { -brand-monitor }
+settings-alert-preferences-allow-monthly-monitor-report-subtitle = Uma atualização mensal de novas exposições, o que foi resolvido e o que precisa da sua atenção.
 
 ## Monitored email addresses
 
 # Variables:
 #   $email (string) - Email address
-settings-email-label-primary = { $email } (principal)
 settings-email-list-title = Endereços de email monitorados
 # Variables:
 #   $limit (number) - Number of email addresses included in the plan
@@ -30,46 +33,34 @@ settings-email-limit-info =
 settings-email-verification-callout = Verificação de email é necessária
 settings-resend-email-verification-link = Enviar email de verificação novamente
 settings-add-email-button = Adicionar endereço de email
-settings-delete-email-button = Excluir endereço de email
+settings-remove-email-button-label = Remover
+# Variables:
+#   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
+settings-remove-email-button-tooltip = Parar de monitorar { $emailAddress }
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
-#   $breachCount (numer) - Number of breaches
+#   $breachCount (number) - Number of breaches
 settings-email-number-of-breaches-info =
     { $breachCount ->
         [one] Aparece em { $breachCount } vazamento conhecido.
        *[other] Aparece em { $breachCount } vazamentos conhecidos.
     }
 
-## Cancel Premium subscription
-
-settings-cancel-premium-subscription-title = Cancelar assinatura do { -brand-premium }
-settings-cancel-premium-subscription-info = Sua assinatura será revertida para uma conta gratuita após o término do ciclo de cobrança atual. Os resultados de varredura de proteção de privacidade serão excluídos permanentemente e você só terá monitoramento de vazamento de dados de 1 endereço de email.
-settings-cancel-premium-subscription-link-label = Cancelar da sua { -brand-fx-account }
-
 ## Deactivate account
 
 settings-deactivate-account-title = Desativar conta
-# Deprecated
-settings-deactivate-account-info = Você pode desativar o { -product-short-name } excluindo sua { -brand-fx-account }.
 settings-deactivate-account-info-2 = Você pode desativar o { -product-short-name } excluindo sua { -brand-mozilla-account }.
-# Deprecated
-settings-fxa-link-label = Ir para as configurações do { -brand-firefox }
 settings-fxa-link-label-3 = Ir para as configurações da { -brand-mozilla-account }
 
-## Add email dialog
+## Delete Monitor account
 
-settings-email-dialog-title = Adicionar outro endereço de email
-settings-add-email-text = Adicione outro endereço de email para ver se ele foi vítima de um vazamento.
-settings-email-input-label = Endereço de email
-settings-send-email-verification-button = Enviar link de verificação
-
-## Unsubscribe Dialog Survey
-
-settings-unsubscribe-dialog-title = Lamentamos ver você partir. <br /> Quer nos dizer o motivo?
-settings-unsubscribe-dialog-info = Sua experiência de uso é importante para nós. Lemos todas as respostas e as levamos em consideração.
-settings-unsubscribe-dialog-message-placeholder = O que poderia ter sido melhor?
-# $faq_href is the URL for the faq page. HTML tags should not be translated, e.g. `<a>`
-settings-unsubscribe-dialog-confirmation = Observe que todos os seus serviços do { -brand-monitor-premium } serão <a { $faq_href }>excluídos permanentemente</a> após o término do seu ciclo de cobrança atual.
-settings-unsubscribe-dialog-continue = Continuar o cancelamento
-settings-unsubscribe-dialog-cancel = Mudei de ideia, vamos voltar
+settings-delete-monitor-free-account-title = Excluir conta do { -brand-monitor }
+settings-delete-monitor-free-account-description = Sua conta do { -brand-monitor } será excluída permanentemente e todas as notificações serão desativadas.
+settings-delete-monitor-free-account-cta-label = Excluir conta
+settings-delete-monitor-free-account-dialog-title = Sua conta do { -brand-monitor } será excluída permanentemente
+settings-delete-monitor-free-account-dialog-lead-v2 = Todas as informações da sua conta do { -brand-monitor } serão excluídas e não iremos mais monitorar novos vazamentos de dados. Isso não exclui sua { -brand-mozilla-account }.
+settings-delete-monitor-free-account-dialog-cta-label = Excluir conta
+settings-delete-monitor-free-account-dialog-cancel-button-label = Mudei de ideia, voltar
+settings-delete-monitor-account-confirmation-toast-label-2 = Sua conta do { -brand-monitor } foi excluída.
+settings-delete-monitor-account-confirmation-toast-dismiss-label = Descartar

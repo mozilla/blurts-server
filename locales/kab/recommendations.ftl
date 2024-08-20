@@ -1,3 +1,7 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
 # Recommendation subhead
 rec-ssn-subhead = Weli aneqqis n umiḍan-ik n tbankat
 # Link title
@@ -10,10 +14,10 @@ rec-ssn =
 rec-pw-1-subhead = Beddel awal-ik uffir
 # Link title
 rec-pw-1-cta = Beddel awal uffir i wadeg-a
-rec-pw-1 =
+rec-pw-1-2 =
     Err awal-agi uffir d asuf, yemgarad ɣef wiyaḍ i tesxedmeḍ. 
     Tasetratijit igerrzen ara tḍefreḍ d asdukkel n yiwen ar sin, neɣ n waṭas iferdisen ur nemcudd ara
-    akken ad tensulfuḍ tafyirt tuffirt.
+    akken ad tensulfuḍ tafyirt tuffirt, ad ternuḍ daɣen izwilen d yizamulen.
 # Recommendation subhead
 rec-pw-2-subhead = Beddel isulayen i iseqdacen yiwen n wawal uffir
 # Link title
@@ -50,19 +54,13 @@ rec-cc =
 rec-email-mask-subhead = Seqdec agelmus n yimayl
 rec-email-cta = Ɛreḍ { -brand-relay }
 # Recommendation subhead
-rec-ip-subhead = Seqdec aqeddac ara yeffren tansa-inek n IP.
-# Link title
-rec-ip-us-cta = Ɛreḍ { -brand-fpn }
-rec-ip-us =
-    Tansa-inek n uneggaf internet (tansa IP) teskan-d adeg-inek 
-    d usaǧǧaw n umeẓli internet. Ameẓlu am { -brand-fpn } 
-    yetteffer isedrag tansa-inek IP akken ad isedreg adeg-inek.
-rec-ip-non-us =
-    Tansa-inek n uneggaf internet (tansa IP) teskan-d adeg ideg telliḍ 
-    d usaǧǧaw n umeẓli internet. Akked  uzeṭṭa uslig uhlis (VPN), tzemreḍ ad teffreḍ adeg-inek 
-    ad teffreḍ daɣen tansa-inek IP.
+rec-ip-subhead-2 = Seqdec VPN i wakken ad tɣummeḍ tansa IP
 # Recommendation subhead
 rec-moz-vpn-cta = Ɛreḍ { -brand-mozilla-vpn }
+rec-moz-vpn-update-2 =
+    Tansa-inek n uneggaf internet (tansa IP) teskan-d adeg-inek 
+    d usaǧǧaw n umeẓli internet. Ameẓlu am { -brand-mozilla-vpn } 
+    yetteffer isedrag tansa-inek IP akken ad isedreg adeg-inek.
 rec-hist-pw-subhead = Ur ssexdam ara awalen uffiren i tesxedmeḍ yakan.
 # Link title
 rec-hist-pw-cta-fx = Sken inekcumen deg { -brand-name }

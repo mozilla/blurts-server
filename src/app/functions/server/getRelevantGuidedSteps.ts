@@ -18,47 +18,47 @@ export type StepDeterminationData = {
 //       guided through the pages.
 export const stepLinks = [
   {
-    href: "/redesign/user/dashboard/fix/data-broker-profiles/start-free-scan",
+    href: "/user/dashboard/fix/data-broker-profiles/start-free-scan",
     id: "Scan",
   },
   {
-    href: "/redesign/user/dashboard/fix/high-risk-data-breaches/social-security-number",
+    href: "/user/dashboard/fix/high-risk-data-breaches/social-security-number",
     id: "HighRiskSsn",
   },
   {
-    href: "/redesign/user/dashboard/fix/high-risk-data-breaches/credit-card",
+    href: "/user/dashboard/fix/high-risk-data-breaches/credit-card",
     id: "HighRiskCreditCard",
   },
   {
-    href: "/redesign/user/dashboard/fix/high-risk-data-breaches/bank-account",
+    href: "/user/dashboard/fix/high-risk-data-breaches/bank-account",
     id: "HighRiskBankAccount",
   },
   {
-    href: "/redesign/user/dashboard/fix/high-risk-data-breaches/pin",
+    href: "/user/dashboard/fix/high-risk-data-breaches/pin",
     id: "HighRiskPin",
   },
   {
-    href: "/redesign/user/dashboard/fix/leaked-passwords/passwords",
+    href: "/user/dashboard/fix/leaked-passwords/passwords",
     id: "LeakedPasswordsPassword",
   },
   {
-    href: "/redesign/user/dashboard/fix/leaked-passwords/security-questions",
+    href: "/user/dashboard/fix/leaked-passwords/security-questions",
     id: "LeakedPasswordsSecurityQuestion",
   },
   {
-    href: "/redesign/user/dashboard/fix/security-recommendations/phone",
+    href: "/user/dashboard/fix/security-recommendations/phone",
     id: "SecurityTipsPhone",
   },
   {
-    href: "/redesign/user/dashboard/fix/security-recommendations/email",
+    href: "/user/dashboard/fix/security-recommendations/email",
     id: "SecurityTipsEmail",
   },
   {
-    href: "/redesign/user/dashboard/fix/security-recommendations/ip",
+    href: "/user/dashboard/fix/security-recommendations/ip",
     id: "SecurityTipsIp",
   },
   {
-    href: "/redesign/user/dashboard",
+    href: "/user/dashboard",
     id: "Done",
   },
 ] as const satisfies ReadonlyArray<{ href: string; id: string }>;
@@ -73,7 +73,7 @@ export function isGuidedResolutionInProgress(stepId: StepLink["id"]) {
   const inProgressStepIds = stepLinks
     .filter((step) => step.id !== "Scan" && step.id !== "Done")
     .map(({ id }) => id);
-  return inProgressStepIds.includes(stepId);
+  return (inProgressStepIds as string[]).includes(stepId);
 }
 
 export function getNextGuidedStep(
@@ -88,21 +88,22 @@ export function getNextGuidedStep(
     return stepLink.eligible && !stepLink.completed;
   });
 
+  // We don't have a way to trigger an invalid state without skipping a
+  // valid one during tests:
+  /* c8 ignore next 16 */
   if (!nextStep) {
     // In practice, there should always be a next step (at least "Done").
     // If for any reason there is not, `href` will be undefined, in which case
     // links will just not do anything.
     console.error(
       `Could not determine the relevant next guided step for the user. Skipping step: [${
-        // We don't have a way to trigger an invalid state without skipping a
-        // valid one during tests:
-        /* c8 ignore next */
         afterStep ?? "Not skipping any steps"
       }]. Is \`data.user\` defined: [${!!data.user}]. Country code: [${
         data.countryCode
       }]. Is \`data.latestScanData.scan\` defined: [${!!data.latestScanData
-        ?.scan}]. Number of scan results: [${data.latestScanData?.results
-        .length}]. Number of breaches: [${data.subscriberBreaches.length}].`,
+        ?.scan}]. Number of scan results: [${
+        data.latestScanData?.results.length
+      }]. Number of breaches: [${data.subscriberBreaches.length}].`,
     );
     return { id: "InvalidStep" } as never;
   }
@@ -179,10 +180,16 @@ export function hasCompletedStepSection(
   data: StepDeterminationData,
   section: "Scan" | "HighRisk" | "LeakedPasswords" | "SecurityTips",
 ): boolean {
+  /* c8 ignore next 5 */
+  // I believe this *is* covered by unit tests, but for some reason,
+  // since the upgrade to Node 20.10, it doesn't get marked as covered anymore:
   if (section === "Scan") {
     return hasCompletedStep(data, "Scan");
   }
   if (section === "HighRisk") {
+    /* c8 ignore next 7 */
+    // I believe this *is* covered by unit tests, but for some reason,
+    // since the upgrade to Node 20.10, it doesn't get marked as covered anymore:
     return (
       hasCompletedStep(data, "HighRiskSsn") &&
       hasCompletedStep(data, "HighRiskCreditCard") &&

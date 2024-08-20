@@ -1,3 +1,7 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
 # Recommendation subhead
 rec-ssn-subhead = Gå gjennom kredittrapportane dine
 # Link title
@@ -10,6 +14,10 @@ rec-ssn =
 rec-pw-1-subhead = Endre passordet ditt
 # Link title
 rec-pw-1-cta = Endre passord for denne nettstaden
+rec-pw-1-2 =
+    Gjer dette passordet unikt og ulikt frå alle dei andre du brukar. 
+    Ein god strategi å følgje er å kombinere to eller fleire ikkje-relaterte 
+    ord for å lage ein heil passordfrase, og inkluder nummer og symbol.
 # Recommendation subhead
 rec-pw-2-subhead = Oppdater andre innloggingar som brukar det same passordet
 # Link title
@@ -56,6 +64,10 @@ rec-email =
 rec-ip-subhead-2 = Bruk VPN dor å maskere IP-addressa di
 # Recommendation subhead
 rec-moz-vpn-cta = Prøv { -brand-mozilla-vpn }
+rec-moz-vpn-update-2 =
+    IP-adressa di (Internet Protocol Adress) identifiserer plasseringa di  
+    og internettleverandøren din. Ei teneste som { -brand-mozilla-vpn } 
+    maskerer IP-adressa di for å gøyme plasseringa di.
 rec-hist-pw-subhead = Unngå å bruke passord på nytt
 # Link title
 rec-hist-pw-cta-fx = Vis innloggingar på { -brand-name }

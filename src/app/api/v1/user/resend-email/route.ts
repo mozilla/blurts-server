@@ -6,11 +6,10 @@ import { getToken } from "next-auth/jwt";
 import { NextRequest, NextResponse } from "next/server";
 
 import { logger } from "../../../../functions/server/logging";
-import AppConstants from "../../../../../appConstants";
-import { getSubscriberByEmail } from "../../../../../db/tables/subscribers";
+import { getSubscriberByFxaUid } from "../../../../../db/tables/subscribers";
 import { getUserEmails } from "../../../../../db/tables/emailAddresses";
 import { sendVerificationEmail } from "../../../utils/email";
-import { getL10n } from "../../../../functions/server/l10n";
+import { getL10n } from "../../../../functions/l10n/serverComponents";
 import { initEmail } from "../../../../../utils/email";
 
 interface EmailResendRequest {
@@ -21,10 +20,17 @@ export async function POST(req: NextRequest) {
   const token = await getToken({ req });
   const l10n = getL10n();
 
-  if (typeof token?.email === "string") {
+  if (typeof token?.subscriber?.fxa_uid === "string") {
     try {
       const { emailId }: EmailResendRequest = await req.json();
-      const subscriber = await getSubscriberByEmail(token.email);
+      const parsedEmailId = Number.parseInt(emailId, 10);
+      if (Number.isNaN(parsedEmailId)) {
+        throw new Error("No valid email address given.");
+      }
+      const subscriber = await getSubscriberByFxaUid(token.subscriber?.fxa_uid);
+      if (!subscriber) {
+        throw new Error("No subscriber found for current session.");
+      }
       const existingEmail = await getUserEmails(subscriber.id);
 
       const filteredEmail = existingEmail.filter(
@@ -42,11 +48,7 @@ export async function POST(req: NextRequest) {
       }
 
       await initEmail();
-      await sendVerificationEmail(
-        subscriber,
-        Number.parseInt(emailId, 10),
-        l10n,
-      );
+      await sendVerificationEmail(subscriber, parsedEmailId);
 
       return NextResponse.json({
         success: true,
@@ -69,7 +71,6 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ success: false }, { status: 500 });
     }
   } else {
-    // Not Signed in, redirect to home
-    return NextResponse.redirect(AppConstants.SERVER_URL, 301);
+    return NextResponse.json({ success: false }, { status: 401 });
   }
 }

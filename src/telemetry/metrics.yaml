@@ -53,6 +53,9 @@ page:
       referrer:
         description: The referring URL, if any.
         type: string
+      plan_tier:
+        description: Which tier of plan the user is on [Free, Plus]
+        type: string
 
 dashboard:
   view:
@@ -85,7 +88,7 @@ dashboard:
         description: Either [action_needed, fixed] depending on where the user is in their dashboard.
         type: string
       legacy_user:
-        description: True for users who signed up after data broker scanning was released to the welcome flow.
+        description: True for users who signed up before data broker scanning was released to the welcome flow.
         type: boolean
       breach_count:
         description: Users who run the new free scan will be notified of breaches found during the scan.
@@ -96,6 +99,9 @@ dashboard:
       broker_count:
         description: Users who run the new free scan will be notified of breaches found during the scan.
         type: quantity
+      plan_tier:
+        description: Which tier of plan the user is on [Free, Plus]
+        type: string
 
 popup:
   view:
@@ -124,6 +130,11 @@ popup:
       flow_id:
         description: A randomly generated unique identifier for following user flows within the FxA system.
         type: string
+      popup_id:
+        description: The ID of the popup that was shown, or some way to identify where on the page the interaction is located.
+      plan_tier:
+        description: Which tier of plan the user is on [Free, Plus]
+        type: string
 
   exit:
     type: event
@@ -150,6 +161,44 @@ popup:
         type: string
       flow_id:
         description: A randomly generated unique identifier for following user flows within the FxA system.
+        type: string
+      popup_id:
+        description: The ID of the popup that was shown, or some way to identify where on the page the interaction is located.
+      plan_tier:
+        description: Which tier of plan the user is on [Free, Plus]
+        type: string
+
+banner:
+  view:
+    type: event
+    description: |
+      A view of a banner on a webpage or dashboard view.
+    bugs:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
+    data_reviews:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
+    data_sensitivity:
+      - interaction
+    notification_emails:
+      - rhelmer@mozilla.com
+    expires: never
+    extra_keys:
+      path:
+        description: The path of the page.
+        type: string
+      user_id:
+        description: Mozilla accounts user ID.
+        type: string
+      session_id:
+        description: An ID that allows us to track “sessions” of the user experience within the product.
+        type: string
+      flow_id:
+        description: A randomly generated unique identifier for following user flows within the FxA system.
+        type: string
+      banner_id:
+        description: The ID of the banner that was shown, or some way to identify where on the page the interaction is located.
+      plan_tier:
+        description: Which tier of plan the user is on [Free, Plus]
         type: string
 
 button:
@@ -181,6 +230,9 @@ button:
         type: string
       button_id:
         description: The ID of the button that was clicked on, or some way to identify where on the page the interaction is located.
+      plan_tier:
+        description: Which tier of plan the user is on [Free, Plus]
+        type: string
 
 field:
   focus:
@@ -211,6 +263,9 @@ field:
         type: string
       field_id:
         description: The ID of the field that was clicked on, or some way to identify where on the page the interaction is located.
+      plan_tier:
+        description: Which tier of plan the user is on [Free, Plus]
+        type: string
 
 link:
   click:
@@ -239,8 +294,11 @@ link:
       flow_id:
         description: A randomly generated unique identifier for following user flows within the FxA system.
         type: string
-      button_id:
-        description: The ID of the button that was clicked on, or some way to identify where on the page the interaction is located.
+      link_id:
+        description: The ID of the link that was clicked on, or some way to identify where on the page the interaction is located.
+      plan_tier:
+        description: Which tier of plan the user is on [Free, Plus]
+        type: string
 
 upgrade_intent:
   click:
@@ -271,6 +329,9 @@ upgrade_intent:
         type: string
       button_id:
         description: The ID of the button that was clicked on, or some way to identify where on the page the interaction is located.
+      plan_tier:
+        description: Which tier of plan the user is on [Free, Plus]
+        type: string
 
   success:
     type: event
@@ -297,6 +358,9 @@ upgrade_intent:
         type: string
       flow_id:
         description: A randomly generated unique identifier for following user flows within the FxA system.
+        type: string
+      plan_tier:
+        description: Which tier of plan the user is on [Free, Plus]
         type: string
 
 expand:
@@ -328,6 +392,9 @@ expand:
         type: string
       button_id:
         description: The ID of the button that was clicked on, or some way to identify where on the page the interaction is located.
+      plan_tier:
+        description: Which tier of plan the user is on [Free, Plus]
+        type: string
 
 collapse:
   click:
@@ -358,6 +425,9 @@ collapse:
         type: string
       button_id:
         description: The ID of the button that was clicked on, or some way to identify where on the page the interaction is located.
+      plan_tier:
+        description: Which tier of plan the user is on [Free, Plus]
+        type: string
 
 cta_button:
   click:
@@ -388,3 +458,136 @@ cta_button:
         type: string
       button_id:
         description: The ID of the button that was clicked on, or some way to identify where on the page the interaction is located.
+      plan_tier:
+        description: Which tier of plan the user is on [Free, Plus]
+        type: string
+
+  view:
+    type: event
+    description: |
+      A button that has a specific call-to-action entered the viewport.
+    bugs:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
+    data_reviews:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
+    data_sensitivity:
+      - interaction
+    notification_emails:
+      - rhelmer@mozilla.com
+    expires: never
+    extra_keys:
+      path:
+        description: The path of the page.
+        type: string
+      user_id:
+        description: Mozilla accounts user ID.
+        type: string
+      session_id:
+        description: An ID that allows us to track “sessions” of the user experience within the product.
+        type: string
+      flow_id:
+        description: A randomly generated unique identifier for following user flows within the FxA system.
+        type: string
+      button_id:
+        description: The ID of the button that entered the viewport, or some way to identify where on the page the interaction is located.
+      plan_tier:
+        description: Which tier of plan the user is on [Free, Plus]
+        type: string
+
+csat_survey:
+  view:
+    type: event
+    description: |
+      A CSAT survey entered the viewport.
+    bugs:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
+    data_reviews:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
+    data_sensitivity:
+      - interaction
+    notification_emails:
+      - rhelmer@mozilla.com
+    expires: never
+    extra_keys:
+      path:
+        description: The path of the page.
+        type: string
+      survey_id:
+        description: The ID of the survey, or some way to identify which survey entered the viewport.
+      plan_tier:
+        description: Which tier of plan the user is on [Free, Plus]
+        type: string
+      experiment_branch:
+        description: The experiment branch the user is on. [control, treatment]
+        type: string
+      last_scan_date:
+        description: The date on which the user had their last data broker scan. [YYYYMMDD]
+        type: string
+      automated_removal_period:
+        description: The time period since the first automated removal for the user. [initial, 3-months, 6-months, 12-months]
+        type: string
+  dismiss:
+    type: event
+    description: |
+      A CSAT survey has been dismissed by a user.
+    bugs:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
+    data_reviews:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
+    data_sensitivity:
+      - interaction
+    notification_emails:
+      - rhelmer@mozilla.com
+    expires: never
+    extra_keys:
+      path:
+        description: The path of the page.
+        type: string
+      survey_id:
+        description: The ID of the survey, or some way to identify which survey that has been dismissed by a user.
+      plan_tier:
+        description: Which tier of plan the user is on [Free, Plus]
+        type: string
+      experiment_branch:
+        description: The experiment branch the user is on. [control, treatment]
+        type: string
+      last_scan_date:
+        description: The date on which the user had their last data broker scan. [YYYYMMDD]
+        type: string
+      automated_removal_period:
+        description: The time period since the first automated removal for the user. [initial, 3-months, 6-months, 12-months]
+        type: string
+  click:
+    type: event
+    description: |
+      A click on a CSAT survey response button.
+    bugs:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
+    data_reviews:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
+    data_sensitivity:
+      - interaction
+    notification_emails:
+      - rhelmer@mozilla.com
+    expires: never
+    extra_keys:
+      path:
+        description: The path of the page.
+        type: string
+      survey_id:
+        description: The ID of the survey, or some way to identify which survey was responded to.
+      plan_tier:
+        description: Which tier of plan the user is on [Free, Plus]
+        type: string
+      response_id:
+        description: The ID of the survey response option.
+        type: string
+      experiment_branch:
+        description: The experiment branch the user is on. [control, treatment]
+        type: string
+      last_scan_date:
+        description: The date on which the user had their last data broker scan. [YYYYMMDD]
+        type: string
+      automated_removal_period:
+        description: The time period since the first automated removal for the user. [initial, 3-months, 6-months, 12-months]
+        type: string

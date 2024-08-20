@@ -2,7 +2,9 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { ReactNode, useRef } from "react";
+"use client";
+
+import { ReactNode, useEffect, useRef } from "react";
 import { AriaDialogProps, useButton, useDialog } from "react-aria";
 import styles from "./Dialog.module.scss";
 import { CloseBtn } from "../../server/Icons";
@@ -26,30 +28,38 @@ export const Dialog = ({
 }: Props) => {
   const l10n = useL10n();
   const dialogRef = useRef<HTMLDivElement>(null);
+  const dialogTitleRef = useRef<HTMLDivElement>(null);
   const { dialogProps, titleProps } = useDialog(otherProps, dialogRef);
-
   const dismissButtonRef = useRef<HTMLButtonElement>(null);
   const dismissButtonProps = useButton(
     { onPress: onDismiss },
     dismissButtonRef,
   ).buttonProps;
+
+  useEffect(() => {
+    dialogTitleRef.current?.focus();
+  }, []);
+
   const dismissButton =
     typeof onDismiss === "function" ? (
       <button
         {...dismissButtonProps}
         ref={dismissButtonRef}
         className={styles.dismissButton}
-        // TODO: Add unit test when changing this code:
-        /* c8 ignore next */
-        onClick={() => onDismiss()}
+        /* c8 ignore start */
+        onClick={() => {
+          onDismiss();
+        }}
+        /* c8 ignore stop */
       >
         <CloseBtn
-          alt={l10n.getString("modal-close-alt")}
+          alt={l10n.getString("close-modal-alt")}
           width="14"
           height="14"
         />
       </button>
-    ) : null;
+    ) : /* c8 ignore next */
+    null;
 
   return (
     <div
@@ -58,7 +68,7 @@ export const Dialog = ({
       className={`${styles.dialog} ${variant ? styles[variant] : ""}`}
     >
       {dismissButton}
-      <div className={styles.header}>
+      <div tabIndex={-1} ref={dialogTitleRef} className={styles.header}>
         {illustration && (
           <div className={styles.illustrationWrapper}>{illustration}</div>
         )}

@@ -5,42 +5,56 @@
 
 # Settings page
 
-settings-meta-title = { -brand-fx-monitor } - Innstillingar
 settings-page-title = { -product-short-name }-innstillingar
 
 ## Breach alert preferences
 
-settings-alert-preferences-title = Innstillingar for datalekkasjevarsel
+settings-alert-email-preferences-title = E-postinnstillingar
+settings-alert-email-preferences-subtitle = Fortel oss kva for e-postar du ønskjer å få.
+settings-alert-preferences-allow-breach-alerts-title = Direkte datalekkasjevarsel
+settings-alert-preferences-allow-breach-alerts-subtitle = Desse varsla vert sende med ein gong ein datalekkasje er oppdaga
 settings-alert-preferences-option-one = Send alle åtvaringar om datalekkasjar til den ramma e-postadressa
 settings-alert-preferences-option-two = Send alle åtvaringar om datalekkasjar til den primære e-postadressa
+settings-alert-preferences-allow-monthly-monitor-report-title = Månadleg { -brand-monitor }-rapport
+settings-alert-preferences-allow-monthly-monitor-report-subtitle = Ei månadleg oppdatering av nye eksponeringar, kva som er fiksa og kva som krev di merksemd.
 
 ## Monitored email addresses
 
 # Variables:
 #   $email (string) - Email address
-settings-email-label-primary = { $email } (primær)
 settings-email-list-title = Overvaka e-postadresser
+# Variables:
+#   $limit (number) - Number of email addresses included in the plan
+settings-email-limit-info =
+    { $limit ->
+        [one] Kontoen din inkluderer overvaking av opptil { $limit } e-postadresse.
+       *[other] Kontoen din inkluderer overvaking av opptil { $limit } e-postadresser.
+    }
 settings-email-verification-callout = Stadfesting av e-post påkravd
 settings-resend-email-verification-link = Send stadfestings e-posten på nytt
 settings-add-email-button = Legg til e-postadresse
-settings-delete-email-button = Slett e-postadresse
+settings-remove-email-button-label = Fjern
+# Variables:
+#   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
+settings-remove-email-button-tooltip = Slutt å overvake { $emailAddress }
+# This string is shown beneath each of the user’s email addresses to indicate
+# how many known breaches that email address was found in.
+# Variables:
+#   $breachCount (number) - Number of breaches
+settings-email-number-of-breaches-info =
+    { $breachCount ->
+        [one] Er i { $breachCount } kjend datalekkasje.
+       *[other] Er i { $breachCount } kjende datalekkasjar.
+    }
 
-## Cancel Premium subscription
+## Delete Monitor account
 
-settings-cancel-premium-subscription-title = Avslutt abonnementet på { -brand-premium }
-
-## Deactivate account
-
-settings-deactivate-account-title = Deaktiver kontoen
-settings-fxa-link-label = Gå til { -brand-firefox }-innstillingar
-
-## Add email dialog
-
-settings-email-dialog-title = Legg til ei ny e-postadresse
-settings-add-email-text = Legg til ei ny e-postadresse for å sjå om ho har vore utsett for ein datalekkasje.
-settings-email-input-label = E-postadresse
-settings-send-email-verification-button = Send stadfestingslenke
-
-## Unsubscribe Dialog Survey
-
-settings-unsubscribe-dialog-message-placeholder = Kva kunne ha gått betre?
+settings-delete-monitor-free-account-title = Slett { -brand-monitor }-kontoen
+settings-delete-monitor-free-account-description = Dette vil permanent slette { -brand-monitor }-kontoen din og slå av alle varsel.
+settings-delete-monitor-free-account-cta-label = Slett kontoen
+settings-delete-monitor-free-account-dialog-title = { -brand-monitor }-kontoen din vert permanent sletta
+settings-delete-monitor-free-account-dialog-lead-v2 = All { -brand-monitor }-kontoinformasjonen din vil bli sletta, og vi vil ikkje lenger overvake nye datalekkasjar. Dette vil ikkje slette { -brand-mozilla-account }en din.
+settings-delete-monitor-free-account-dialog-cta-label = Slett kontoen
+settings-delete-monitor-free-account-dialog-cancel-button-label = Gløym det, ta meg tillbake
+settings-delete-monitor-account-confirmation-toast-label-2 = { -brand-monitor }-kontoen din er no sletta.
+settings-delete-monitor-account-confirmation-toast-dismiss-label = Ignorer

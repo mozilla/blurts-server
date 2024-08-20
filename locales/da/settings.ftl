@@ -5,20 +5,23 @@
 
 # Settings page
 
-settings-meta-title = { -brand-fx-monitor } - Indstillinger
 settings-page-title = { -product-short-name }-instillinger
 
 ## Breach alert preferences
 
-settings-alert-preferences-title = Indstillinger for advarsler om datalæk
+settings-alert-email-preferences-title = Mailindstillinger
+settings-alert-email-preferences-subtitle = Fortæl os, hvilke mails du gerne vil modtage.
+settings-alert-preferences-allow-breach-alerts-title = Øjeblikkelige advarsler om datalæk
+settings-alert-preferences-allow-breach-alerts-subtitle = Disse advarsler sendes straks, når en datalæk er opdaget
 settings-alert-preferences-option-one = Send alle advarsler om datalæk til den berørte mailadresse
 settings-alert-preferences-option-two = Send alle advarsler om datalæk til den primære mailadresse
+settings-alert-preferences-allow-monthly-monitor-report-title = Månedlig { -brand-monitor }-rapport
+settings-alert-preferences-allow-monthly-monitor-report-subtitle = En månedlig opdatering af nye eksponeringer, hvad der er blevet løst, og hvad der kræver din opmærksomhed.
 
 ## Monitored email addresses
 
 # Variables:
 #   $email (string) - Email address
-settings-email-label-primary = { $email } (primær)
 settings-email-list-title = Overvågede mailadresser
 # Variables:
 #   $limit (number) - Number of email addresses included in the plan
@@ -30,46 +33,28 @@ settings-email-limit-info =
 settings-email-verification-callout = Bekræftelse af mailadresse påkrævet
 settings-resend-email-verification-link = Send bekræftelsesmail igen
 settings-add-email-button = Tilføj mailadresse
-settings-delete-email-button = Slet mailadresse
+settings-remove-email-button-label = Fjern
+# Variables:
+#   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
+settings-remove-email-button-tooltip = Stop med at holde øje med { $emailAddress }
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
-#   $breachCount (numer) - Number of breaches
+#   $breachCount (number) - Number of breaches
 settings-email-number-of-breaches-info =
     { $breachCount ->
         [one] Optræder i { $breachCount } kendt datalæk
        *[other] Optræder i { $breachCount } kendte datalæk
     }
 
-## Cancel Premium subscription
+## Delete Monitor account
 
-settings-cancel-premium-subscription-title = Annuller { -brand-premium }-abonnement
-settings-cancel-premium-subscription-info = Dit abonnement vender tilbage til at være en gratis konto, når den aktuelle faktureringsperiode slutter. Resultaterne af dine privatlivsscanninger slettes permanent, og kun én mailadresse overvåges for datalæk.
-settings-cancel-premium-subscription-link-label = Annuller fra din { -brand-fx-account }
-
-## Deactivate account
-
-settings-deactivate-account-title = Deaktiver konto
-# Deprecated
-settings-deactivate-account-info = Du kan deaktivere { -product-short-name } ved at slette din { -brand-fx-account }.
-settings-deactivate-account-info-2 = Du kan deaktivere { -product-short-name } ved at slette din { -brand-mozilla-account }.
-# Deprecated
-settings-fxa-link-label = Gå til { -brand-firefox }-indstillinger
-settings-fxa-link-label-3 = Gå til indstillingerne for { -brand-mozilla-account }
-
-## Add email dialog
-
-settings-email-dialog-title = Tilføj en mailadresse til
-settings-add-email-text = Tilføj en ny mailadresse for at se, om den har været involveret i en datalæk.
-settings-email-input-label = Mailadresse
-settings-send-email-verification-button = Send bekræftelseslink
-
-## Unsubscribe Dialog Survey
-
-settings-unsubscribe-dialog-title = Vi er kede af, at du forlader os. <br /> Vil du fortælle os om, hvorfor du gør det?
-settings-unsubscribe-dialog-info = Dine erfaringer er vigtige for os. Vi læser alle svar og tager dem til eftertanke.
-settings-unsubscribe-dialog-message-placeholder = Hvad kunne have været bedre?
-# $faq_href is the URL for the faq page. HTML tags should not be translated, e.g. `<a>`
-settings-unsubscribe-dialog-confirmation = Bemærk, at alle dine { -brand-monitor-premium }-tjenester bliver <a { $faq_href }>slettet permanent</a>, efter din nuværende faktureringsperiode slutter.
-settings-unsubscribe-dialog-continue = Fortsæt til annullering
-settings-unsubscribe-dialog-cancel = Jag har skiftet mening - gå tilbage
+settings-delete-monitor-free-account-title = Slet { -brand-monitor }-konto
+settings-delete-monitor-free-account-description = Dette vil permanent slette din { -brand-monitor }-konto og slå alle advarsler fra.
+settings-delete-monitor-free-account-cta-label = Slet konto
+settings-delete-monitor-free-account-dialog-title = Din { -brand-monitor }-konto vil blive slettet permanent
+settings-delete-monitor-free-account-dialog-lead-v2 = Alle dine kontooplysninger for { -brand-monitor } vil blive slettet, og vi holder ikke længere øje med nye datalæk. Denne handling sletter ikke din { -brand-mozilla-account }.
+settings-delete-monitor-free-account-dialog-cta-label = Slet konto
+settings-delete-monitor-free-account-dialog-cancel-button-label = Jag har skiftet mening - gå tilbage
+settings-delete-monitor-account-confirmation-toast-label-2 = Din { -brand-monitor }-konto er nu slettet.
+settings-delete-monitor-account-confirmation-toast-dismiss-label = Afvis

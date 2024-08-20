@@ -14,19 +14,17 @@ export const useLocationSuggestions: typeof ogUseLocationSuggestions = () => {
     items: [
       {
         id: "4553433",
-        name: "Tulsa",
-        stateCode: "OK",
-        countryCode: "USA",
+        n: "Tulsa",
+        s: "OK",
       },
       {
         id: "5318313",
-        name: "Tucson",
-        stateCode: "AZ",
-        countryCode: "USA",
+        n: "Tucson",
+        s: "AZ",
       },
     ] as RelevantLocation[],
     setFilterText: mockSetFilterText,
-    filterText: "Tu",
+    filterText: "Tulsa, OK, USA",
     isLoading: false,
     loadingState: "idle",
   };

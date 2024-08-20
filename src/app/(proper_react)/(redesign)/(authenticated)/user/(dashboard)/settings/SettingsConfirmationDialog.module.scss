@@ -1,0 +1,18 @@
+@import "../../../../../../tokens";
+
+// The attribute selector makes this more specific that <Button>'s direct styles,
+// so we can overwrite the font weight. Maybe it should just not be a <Button>…
+[type="button"].trigger {
+  font-weight: 600;
+}
+
+.contentWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-md;
+
+  .dismissLink {
+    font-weight: 600;
+  }
+}

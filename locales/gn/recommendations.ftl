@@ -1,3 +1,7 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
 # Recommendation subhead
 rec-ssn-subhead = Ehechajey ne marandu’i viruguáva
 # Link title
@@ -116,4 +120,4 @@ rec-gen-3 =
 rec-gen-4-subhead = Embohekopyahu meme software ha tembiporu’i
 rec-gen-4 =
     Ñembohekopyahu tembiporu’i, kundahára ha apopyvusu oku’éva ne pumbyry ha’evéva ojapo 
-    mba’e’okágui hekorosãva. Ko’ã ñembohekopyahu omoiporã jejavy, software ñembyaikuaa ha tekorosã apañuãi.
+    mba’e’okágui hekorosãva. Ko’ã ñembohekopyahu omoiporã jejavy, software ñembyaikuaa ha tekorosã apañuái.

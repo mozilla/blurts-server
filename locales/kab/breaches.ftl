@@ -2,24 +2,12 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-
-## Breaches header
-
-
-## Breaches resolved filter
-
-
-## Breaches table
-
-column-company = TKEBBANIT
-# “Resolved” is shown next to a breach if all recommended actions in response to the breach have been taken.
-column-status-badge-resolved = Yefra
-# “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
-column-status-badge-active = Urmid
+breach-all-meta-social-title = Akk tirewliwin ttwafent-d s { -brand-fx-monitor }
 
 ## Links that we might refer to when prompting the user to make changes after a breach
 
 breach-checklist-link-firefox-relay = { -brand-relay }
+breach-checklist-link-password-manager = Amsefrak n wawalen uffiren { -brand-firefox }
 breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## Prompts the user for changes when there is a breach detected of password

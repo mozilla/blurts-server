@@ -1,0 +1,157 @@
+@import "../../tokens";
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.header {
+  display: none;
+
+  @media screen and (max-width: $screen-xl) {
+    position: sticky;
+    background-color: $color-white;
+    box-shadow: $box-shadow-sm;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    padding: $spacing-xs $spacing-sm;
+    // Overlay `.nonHeader` so that the box-shadow of this element
+    // is not covered.
+    z-index: 1;
+
+    .headerStart {
+      flex: 0 0 20%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+
+      .menuToggleButton {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: transparent;
+        border-style: none;
+        padding: $spacing-md;
+        cursor: pointer;
+
+        svg {
+          width: auto;
+          height: 16px;
+        }
+
+        &:hover svg {
+          color: $color-blue-50;
+        }
+      }
+    }
+
+    .headerMiddle {
+      flex: 1 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .headerEnd {
+      flex: 0 0 20%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+  }
+}
+
+.nonHeader {
+  // `overflow: auto` ensures that the stickily positioned .mainMenu sticks to
+  // this element, rather than the viewport. See
+  // https://developer.mozilla.org/en-US/docs/Web/CSS/position#syntax
+  overflow: auto;
+  height: 100%;
+  // I’m not entirely sure if this is the case, but my suspicion is
+  // the following: Adding `position: relative` makes this the most top-level
+  // relative positionend element in the DOM branch it’s in. This instructs it to
+  // orient its `height: 100%` with regards to the window and not itself.
+  // Otherwise, WebKit based browsers seem to take the entire inner size of
+  // `.nonHeader` into account when calculating the height of `body` and that
+  // causes an additonal scroll on the `body` element.
+  // An alternative option would be to set `height: 100vw`. Since `vw` units
+  // can have unexpected behaviour on mobile devices this should do for now.
+  position: relative;
+
+  .mainMenuLayer {
+    display: none;
+  }
+
+  @media screen and (max-width: $screen-xl) {
+    .hasOpenMenu & .mainMenuLayer {
+      display: block;
+      position: sticky;
+      top: 0;
+      height: 0;
+      // Overlap .content
+      z-index: 1;
+
+      .mainMenu {
+        align-items: center;
+        display: flex;
+        background-color: $color-white;
+        box-shadow: $box-shadow-sm;
+        flex-direction: column;
+
+        ul {
+          list-style-type: none;
+          padding: 0;
+          width: 100%;
+        }
+
+        a,
+        a:visited {
+          display: block;
+          padding: $spacing-sm $spacing-lg;
+          color: $color-grey-40;
+          font-weight: 500;
+          border-top: 1px solid $color-grey-10;
+          text-decoration: none;
+
+          &.isActive {
+            color: $color-purple-70;
+          }
+
+          &:hover {
+            background-color: $color-purple-50;
+            color: $color-white;
+            text-decoration: underline;
+          }
+
+          // The `a` and `a:visited` violate this rule, but are safe:
+          // stylelint-disable-next-line no-descending-specificity
+          &:focus {
+            background-color: $color-blue-50;
+            color: $color-white;
+            outline: none;
+          }
+        }
+      }
+
+      .premiumCta {
+        margin: $spacing-md;
+        min-width: $screen-xs;
+
+        & > button {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .content {
+    height: 100%;
+    flex: 1 0 auto;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+  }
+}

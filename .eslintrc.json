@@ -28,6 +28,9 @@
       " This Source Code Form is subject to the terms of the Mozilla Public\n * License, v. 2.0. If a copy of the MPL was not distributed with this\n * file, You can obtain one at http://mozilla.org/MPL/2.0/. ",
       2
     ],
+    // For some reason `eqeqeq` is not in the recommended set, but we try to
+    // avoid implicit type casting, cause that's where bugs lurk:
+    "eqeqeq": "error",
     "jsdoc/tag-lines": ["error", "any", { "startLines": 1 }],
     "jsdoc/require-jsdoc": "off",
     "jsdoc/require-param-type": "off",
@@ -55,6 +58,13 @@
     "no-restricted-imports": [
       "error",
       {
+        "patterns": [
+          {
+            "group": ["**/hooks/*"],
+            "importNames": ["useGlean", "useGa"],
+            "message": "Please refrain from using this hook standalone. The preferred way to record telemetry is through `useTelemetry`."
+          }
+        ],
         "paths": [
           {
             // react-aria's <VisuallyHidden> component adds inline styles to
@@ -67,6 +77,18 @@
             "importNames": ["VisuallyHidden"],
             "message":
               "Please use the <VisuallyHidden> component from `/src/app/components/server/VisuallyHidden.tsx` instead of the one from react-aria, since the latter's (inline) styles will be stripped by our Content Security Policy."
+          },
+          {
+            "name": "next-auth",
+            "importNames": ["getServerSession"],
+            "message":
+              "Please use the `getServerSession` wrapper function from `/src/app/functions/server/getServerSession.ts` instead of the one from next-auth, since the latter's doesn't enforce passing the auth configuration object, resulting in broken sessions."
+          },
+          {
+            "name": "next-auth/next",
+            "importNames": ["getServerSession"],
+            "message":
+              "Please use the `getServerSession` wrapper function from `/src/app/functions/server/getServerSession.ts` instead of the one from next-auth, since the latter's doesn't enforce passing the auth configuration object, resulting in broken sessions."
           }
         ]
       }
@@ -103,11 +125,6 @@
       "files": [
         "src/app.js",
         "src/utils/redisMock.js",
-        "src/routes/**/*.js",
-        "src/views/**/*.js",
-        "src/middleware/**/*.js",
-        "src/controllers/**/*.js",
-        "src/app/(nextjs_migration)/**/*",
         "src/app/functions/server/breachResolution.ts"
       ],
       "rules": {
@@ -120,14 +137,8 @@
       }
     },
     {
-      // Only enable rules that depend on type checking on TS files,
-      // except for files that include a lot of copy-pasted pre-TypeScript code
-      // (i.e. the code inside `(nextjs_migration)`),
-      // to avoid a barrage of warnings for older code:
+      // Only enable rules that depend on type checking on TS files.
       "files": ["**/*.{ts,tsx}"],
-      "excludedFiles": [
-        "./src/app/(nextjs_migration)/**/*"
-      ],
       "extends": [
         "plugin:@typescript-eslint/recommended-requiring-type-checking"
       ],

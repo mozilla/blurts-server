@@ -2,8 +2,9 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { request, Page } from "@playwright/test";
-import { InternalServerError } from "../../utils/error.js";
+import { expect, request, Page, Locator, test } from "@playwright/test";
+import { LandingPage } from "../pages/landingPage.js";
+import { AuthPage } from "../pages/authPage.js";
 
 enum ENV {
   local = "local",
@@ -30,10 +31,12 @@ export const ENV_URLS = {
   local: "http://localhost:6060",
   heroku: "https://fx-breach-alerts.herokuapp.com",
   stage: "https://stage.firefoxmonitor.nonprod.cloudops.mozgcp.net",
-  prod: "https://monitor.firefox.com",
+  prod: "https://monitor.mozilla.org",
 };
 
-export const setEnvVariables = (email: string) => {
+export const setEnvVariables = (
+  email = process.env.E2E_TEST_ACCOUNT_EMAIL as string,
+) => {
   process.env["E2E_TEST_ENV"] =
     (process.env.E2E_TEST_ENV as string) ?? ENV.stage;
   process.env["E2E_TEST_ACCOUNT_EMAIL"] = email;
@@ -75,7 +78,7 @@ export const getVerificationCode = async (
   attempts = 10,
 ): Promise<string> => {
   if (attempts === 0) {
-    throw new InternalServerError("Unable to retrieve restmail data");
+    throw new Error("Unable to retrieve restmail data");
   }
 
   const context = await request.newContext();
@@ -99,6 +102,8 @@ const enterYourEmail = async (page: Page) => {
   await page
     .locator(maybeEmailInput)
     .fill(process.env.E2E_TEST_ACCOUNT_EMAIL_FREE as string);
+
+  // force is needed when another element intercepts pointer events
   await signInButton.click({ force: true });
   await page.waitForTimeout(500);
   await checkAuthState(page);
@@ -145,4 +150,94 @@ export const checkAuthState = async (page: Page) => {
         break;
     }
   }
+};
+
+/**
+ * Strings may sometimes contain invisible unicode char's that make it hard to do assertions.
+ *
+ * @param text
+ */
+export function removeUnicodeChars(text: string): string {
+  // eslint-disable-next-line no-control-regex
+  return text.replace(/[^\x00-\x7F]/g, "");
+}
+
+export const clickOnATagCheckDomain = async (
+  aTag: Locator,
+  host: string | RegExp = /.*/,
+  path: string | RegExp = /.*/,
+  page: Page,
+) => {
+  if (typeof host === "string")
+    host = new RegExp(
+      escapeRegExp(host.replace(/^(https?:\/\/)/, "").replace(/:\d+$/, "")),
+    );
+  if (typeof path === "string") path = new RegExp(".*" + path + ".*");
+
+  const href = await aTag.getAttribute("href");
+  if (href === null) return false;
+
+  await page.goto(href);
+  const currentUrl = new URL(page.url());
+  const perceivedHost = currentUrl.hostname;
+  const perceivedPath = currentUrl.pathname;
+  expect(host.test(perceivedHost)).toBeTruthy();
+  expect(path.test(perceivedPath)).toBeTruthy();
+  await page.goBack();
+};
+
+export const escapeRegExp = (str: string): string => {
+  return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+};
+
+export const forceLoginAs = async (
+  email: string,
+  password: string,
+  page: Page,
+  landingPage: LandingPage,
+  authPage: AuthPage,
+) => {
+  test.slow(
+    true,
+    "this test runs through the welcome scan flow, increasing timeout to address it",
+  );
+
+  // speed up test by ignoring non necessary requests
+  await page.route(/(analytics)/, async (route) => {
+    await route.abort();
+  });
+  await page.context().clearCookies();
+  await landingPage.open();
+  await landingPage.goToSignIn();
+  await page
+    .locator("//input[@type='password'] | //div/input[@type='email']")
+    .waitFor({ state: "visible" });
+  const visible = await authPage.useDifferentEmailButton.isVisible();
+  if (visible) {
+    await authPage.useDifferentEmailButton.click();
+    await page.waitForURL(/^(?!.*signin).*/);
+  }
+  await authPage.signIn(email, password);
+  await page.waitForURL("**/user/dashboard");
+  await expect(page).toHaveURL(/.*\/user\/dashboard.*/);
+};
+
+export async function emailInputShouldExist(landingPage: LandingPage) {
+  return 0 < (await landingPage.emailInputPrompt.count());
+}
+
+export const resetTestData = async (
+  page: Page,
+  hibp: boolean,
+  onerep: boolean,
+) => {
+  const baseUrl = process.env.SERVER_URL!;
+  const param1 = `${hibp ? "hibp=true" : ""}`;
+  const param2 = `${onerep ? "onerep=true" : ""}`;
+  let delim = "";
+  if (param1 && param2) delim = "&";
+  const params = param1 + delim + param2;
+  const completeUrl = baseUrl + "/api/mock/resetTestData?" + params;
+  const res = await page.request.get(completeUrl);
+  expect(res.ok()).toBeTruthy();
 };

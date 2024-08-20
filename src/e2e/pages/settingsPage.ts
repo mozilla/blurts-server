@@ -7,31 +7,43 @@ import { Locator, Page } from "@playwright/test";
 export class SettingsPage {
   readonly page: Page;
   readonly settingsHeader: Locator;
-  readonly prefHeader: Locator;
+  readonly emailPrefHeader: Locator;
   readonly emailHeader: Locator;
+  readonly deleteHeader: Locator;
   readonly deactivateHeader: Locator;
   readonly addEmailButton: Locator;
   readonly settingsEmailSettings: Locator;
   readonly settingsContent: Locator;
   readonly sendToAffectedEmailRadioButton: Locator;
   readonly sendToPrimaryEmailRadioButton: Locator;
+  readonly cancelMozillaAccountLink: Locator;
+  readonly goToMozillaAccountSettingsLink: Locator;
 
   constructor(page: Page) {
     this.page = page;
 
-    this.settingsHeader = page.locator(".settings-title");
-    this.prefHeader = page.getByText(/Breach alert preferences/);
+    this.settingsHeader = page.locator("h2").first();
+    this.emailPrefHeader = page.getByText(/Email preferences/);
     this.emailHeader = page.getByText(/Monitored email addresses/);
+    this.deleteHeader = page.getByText(/Delete ⁨Monitor⁩ account/);
     this.deactivateHeader = page.getByText(/Deactivate account/);
     this.addEmailButton = page.getByText(/Add email address/);
     this.settingsEmailSettings = page.locator(".settings-email-item");
     this.settingsContent = page.locator(".settings-content");
-    this.sendToAffectedEmailRadioButton = page.locator(
-      'input[data-alert-option="0"]',
-    );
-    this.sendToPrimaryEmailRadioButton = page.locator(
-      'input[data-alert-option="1"]',
-    );
+    this.sendToAffectedEmailRadioButton = page.getByRole("radio", {
+      name: "Send breach alerts to the affected email address",
+    });
+    this.sendToPrimaryEmailRadioButton = page.getByRole("radio", {
+      name: "Send all breach alerts to the primary email address",
+    });
+
+    // account management links
+    this.cancelMozillaAccountLink = page.getByRole("link", {
+      name: "Cancel from your Mozilla account Open link in a new tab",
+    });
+    this.goToMozillaAccountSettingsLink = page.getByRole("link", {
+      name: "Go to Mozilla account settings Open link in a new tab",
+    });
   }
 
   async open() {

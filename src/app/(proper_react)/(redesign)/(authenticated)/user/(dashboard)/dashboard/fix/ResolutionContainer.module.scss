@@ -1,0 +1,115 @@
+@import "../../../../../../../tokens";
+
+.container {
+  display: grid;
+  grid-gap: $layout-lg;
+  flex-direction: row;
+
+  @media screen and (min-width: $screen-xl) {
+    padding-inline: $layout-lg;
+  }
+
+  &.hasIllustration {
+    @media screen and (min-width: $screen-xl) {
+      grid-template-columns: 2fr 1fr;
+    }
+  }
+
+  .breachContentWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+
+    .label {
+      align-self: flex-start;
+      background: rgba($color-blue-50, 0.3);
+      border-radius: $border-radius-sm;
+      color: $color-blue-90;
+      display: inline-flex;
+      font: $text-body-xs;
+      font-weight: 600;
+      line-height: 1;
+      padding: $spacing-sm;
+    }
+
+    h3 {
+      font: $text-title-2xs;
+      padding: $spacing-sm 0 $spacing-xs;
+    }
+
+    .recommendations {
+      p {
+        font: $text-body-sm;
+      }
+      ol {
+        padding-top: $spacing-md;
+        list-style-position: inside;
+        padding-left: 0;
+      }
+      padding-top: $spacing-md;
+    }
+
+    .buttons {
+      padding-top: $spacing-md;
+      display: flex;
+      gap: $spacing-md;
+      align-items: center;
+    }
+
+    .breachItemsWrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: $spacing-xs;
+
+      .breachItem {
+        font: $text-body-sm;
+        font-weight: 600;
+        background: $color-grey-10;
+        padding: $spacing-xs $spacing-sm;
+        border-radius: $border-radius-md;
+
+        .date {
+          font-weight: 400;
+        }
+      }
+    }
+  }
+
+  .estimatedTime {
+    @include estimated-time;
+    padding-top: $layout-xs;
+  }
+
+  .illustrationWrapper {
+    align-items: center;
+
+    &.hideOnMobile {
+      display: none;
+
+      @media screen and (min-width: $screen-xl) {
+        display: flex;
+      }
+    }
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .doneContentWrapper {
+    display: grid;
+    gap: $layout-xs;
+    grid-template-columns: 1fr;
+
+    @media screen and (min-width: $screen-md) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .doneContent {
+      align-items: flex-start;
+      display: flex;
+      flex-direction: column;
+      gap: $spacing-md;
+    }
+  }
+}

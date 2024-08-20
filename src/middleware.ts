@@ -5,7 +5,6 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import nextConfig from "../next.config";
-import { NextConfig } from "next";
 
 // This function can be marked `async` if using `await` inside
 export function middleware(request: NextRequest) {
@@ -61,16 +60,14 @@ function generateCspData() {
       (process.env.NODE_ENV === "development"
         ? "'unsafe-eval' 'unsafe-inline'"
         : `'nonce-${nonce}'`) +
-      ` https://*.googletagmanager.com`,
+      ` https://*.googletagmanager.com https://js.stripe.com`,
     `connect-src 'self' ${
       process.env.NODE_ENV === "development" ? "webpack://*" : ""
-    } https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.ingest.sentry.io https://incoming.telemetry.mozilla.org`,
+    } https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.ingest.sentry.io https://incoming.telemetry.mozilla.org https://api.stripe.com`,
     // `withSentryConfig` in next.config.js messes up the type, but we know that
     // it's a valid NextConfig with `images.remotePatterns` set:
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    `img-src 'self' https://*.google-analytics.com https://*.googletagmanager.com https://firefoxusercontent.com https://mozillausercontent.com https://monitor.cdn.mozilla.net ${(
-      nextConfig as NextConfig
-    )
+    `img-src 'self' https://*.google-analytics.com https://*.googletagmanager.com https://firefoxusercontent.com https://mozillausercontent.com https://monitor.cdn.mozilla.net ${nextConfig
       .images!.remotePatterns!.map(
         (pattern) =>
           `${pattern.protocol ?? "https"}://${pattern.hostname.replace(
@@ -80,12 +77,11 @@ function generateCspData() {
       )
       .join(" ")}`,
     "child-src 'self'",
-    // TODO: Remove `unsafe-inline` after we're fully migrated to React
-    //       (i.e. when we no longer manually add inline <style> elements):
-    "style-src 'self' 'unsafe-inline'",
+    "style-src 'self'",
     "font-src 'self'",
     "form-action 'self'",
     "frame-ancestors 'self'",
+    "frame-src 'self' https://js.stripe.com https://mozilla.formstack.com",
     "object-src 'none'",
     "block-all-mixed-content",
     "upgrade-insecure-requests",

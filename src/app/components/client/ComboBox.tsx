@@ -4,92 +4,104 @@
 
 "use client";
 
-import { useRef } from "react";
+import { ReactElement, useEffect, useRef } from "react";
 import { useComboBox } from "react-aria";
 import { useComboBoxState, ComboBoxStateOptions } from "react-stately";
 import { ListBox } from "./ListBox";
 import { Popover } from "./Popover";
-import styles from "./ComboBox.module.scss";
+import inputFieldStyles from "./InputField.module.scss";
+import comboBoxStyles from "./ComboBox.module.scss";
+import { ErrorIcon } from "../server/Icons";
+import { useL10n } from "../../hooks/l10n";
 
 interface ComboBoxProps extends ComboBoxStateOptions<object> {
   items: Array<object>;
+  listPlaceholder?: ReactElement;
 }
 
 function ComboBox(props: ComboBoxProps) {
-  const { label, isRequired, validationState } = props;
+  const { errorMessage, isInvalid, isRequired, label, listPlaceholder } = props;
   const inputRef = useRef(null);
   const listBoxRef = useRef(null);
   const popoverRef = useRef(null);
   const state = useComboBoxState({ ...props });
-  const {
-    inputProps,
-    listBoxProps,
-    labelProps,
-    errorMessageProps,
-    validationErrors,
-  } = useComboBox(
-    {
-      ...props,
-      inputRef,
-      listBoxRef,
-      popoverRef,
-    },
-    state,
-  );
-  const isInvalid = validationState === "invalid";
+  const { inputProps, listBoxProps, labelProps, errorMessageProps } =
+    useComboBox(
+      {
+        ...props,
+        inputRef,
+        listBoxRef,
+        popoverRef,
+      },
+      state,
+    );
+  const l10n = useL10n();
+
+  useEffect(() => {
+    /* c8 ignore next 5 */
+    // This does get hit by unit tests, but for some reason, since the Node
+    // 20.10 upgrade, it (and this comment) no longer gets marked as such:
+    if (inputProps.value === "") {
+      state.close();
+    }
+  }, [inputProps.value, state]);
 
   return (
     <>
-      <div className={styles.comboBox}>
-        <label {...labelProps} className={styles.inputLabel}>
+      <div className={inputFieldStyles.comboBox}>
+        <label {...labelProps} className={inputFieldStyles.inputLabel}>
           {label}
           {isRequired ? (
             <span aria-hidden="true">*</span>
           ) : (
-            // TODO: Add unit test when changing this code:
-            /* c8 ignore next */
+            /* c8 ignore next 4 */
+            // This does get hit by unit tests, but for some reason, since the
+            // Node 20.10 upgrade, it (and this comment) no longer gets marked
+            // as such:
             ""
           )}
         </label>
         <input
           {...inputProps}
           ref={inputRef}
-          className={`${styles.inputField} ${
-            !inputProps.value ? styles.noValue : ""
-          } ${isInvalid ? styles.hasError : ""}`}
+          className={`${inputFieldStyles.inputField} ${
+            !inputProps.value
+              ? /* c8 ignore next 4 */
+                // This does get hit by unit tests, but for some reason, since
+                // the Node 20.10 upgrade, it (and this comment) no longer gets
+                // marked as such:
+                inputFieldStyles.noValue
+              : ""
+          } ${isInvalid ? /* c8 ignore next */ inputFieldStyles.hasError : ""}`}
         />
-        {isInvalid && (
-          <div {...errorMessageProps} className={styles.inputMessage}>
-            {
-              // We always pass in a string at the time of writing, so we can't
-              // hit the "else" path with tests:
-              /* c8 ignore next 3 */
-              typeof props.errorMessage === "string"
-                ? props.errorMessage
-                : validationErrors.join(" ")
-            }
+        {isInvalid && typeof errorMessage === "string" && (
+          <div {...errorMessageProps} className={inputFieldStyles.inputMessage}>
+            <ErrorIcon
+              alt={l10n.getString("onboarding-enter-details-input-error-alt")}
+            />
+            {errorMessage}
           </div>
         )}
       </div>
-      {
-        // TODO: Add unit test when changing this code:
-        /* c8 ignore next */
-        state.isOpen && props.items?.length > 0 && (
-          <Popover
-            offset={4}
-            popoverRef={popoverRef}
-            state={state}
-            triggerRef={inputRef}
-          >
+
+      {state.isOpen && (
+        <Popover
+          offset={8}
+          popoverRef={popoverRef}
+          state={state}
+          triggerRef={inputRef}
+        >
+          <div className={comboBoxStyles.popoverList}>
             <ListBox
               {...listBoxProps}
               listBoxRef={listBoxRef}
+              listPlaceholder={listPlaceholder}
               parentRef={inputRef}
               state={state}
             />
-          </Popover>
-        )
-      }
+          </div>
+        </Popover>
+      )}
     </>
   );
 }

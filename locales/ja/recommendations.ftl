@@ -1,8 +1,11 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
 # Recommendation subhead
 rec-pw-1-subhead = パスワードを変更する
 # Link title
 rec-pw-1-cta = このサイトのパスワードを変更する
-rec-pw-1 = これを他で使用するパスワードとは異なるユニークなものにしてください。2 つ以上の全く関連のない単語を組み合わせてパスフレーズを作成すると良いでしょう。
 # Recommendation subhead
 rec-pw-2-subhead = 同じパスワードを使用している他のサイトのログイン情報を更新する
 # Link title
@@ -17,10 +20,10 @@ rec-pw-4-subhead = 二要素認証 (2FA) をセットアップする
 # Link title
 rec-pw-4-cta = 二要素認証を提供するサイトを見る
 rec-pw-4 = 多くのウェブサイトは、追加のセキュリティ対策として二要素認証 (2 Factor Authentication) を提供しています。これは、ショートメッセージで受け取る一度限りのセキュリティコードなど、アカウントにログインするための別の情報を必要とします。
+# Recommendation subhead
+rec-email-mask-subhead = メールマスクを使用する
 rec-email-cta = { -brand-relay } を試す
 rec-email = 本物のメールアドレスを外部に渡すと、ハッカーやトラッカーがあなたのパスワードを見つけやすくなり、オンラインでのターゲットになるかもしれません。{ -brand-relay } のようなサービスを利用して別名のメールアドレスを使い、本物のメールアドレスの受信トレイに転送しましょう。
-# Link title
-rec-ip-us-cta = { -brand-fpn } を試す
 rec-hist-pw-subhead = パスワードの再利用を避けましょう
 # Link title
 rec-hist-pw-cta-fx = { -brand-name } のログイン情報を見る

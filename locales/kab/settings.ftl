@@ -9,15 +9,29 @@ settings-page-title = Iɣewwaren n { -product-short-name }
 
 ## Breach alert preferences
 
+settings-alert-email-preferences-title = Ismenyifen n yimayl
+settings-alert-preferences-option-one = Azen ilɣa ɣer tensa imayl yettwaɛnan.
 
 ## Monitored email addresses
 
+settings-email-verification-callout = Asenqed n yimayl ilaq
+settings-resend-email-verification-link = Ales tuzna n yimayl n usenqed
+settings-add-email-button = Rnu tansa imayl
+settings-remove-email-button-label = Kkes
+# This string is shown beneath each of the user’s email addresses to indicate
+# how many known breaches that email address was found in.
 # Variables:
-#   $email (string) - Email address
-settings-email-label-primary = { $email } (agejdan)
+#   $breachCount (number) - Number of breaches
+settings-email-number-of-breaches-info =
+    { $breachCount ->
+        [one] Yettban-d deg { $breachCount } n trewla n yisefka yettwasnen
+       *[other] Yettban-d deg { $breachCount } n terewiliwin n yisefka yettwasnen
+    }
 
-## Deactivate account
+## Delete Monitor account
 
-
-## Add email dialog
-
+settings-delete-monitor-free-account-title = Kkes amiḍan { -brand-monitor }
+settings-delete-monitor-free-account-cta-label = Kkes amiḍan
+settings-delete-monitor-free-account-dialog-cta-label = Kkes amiḍan
+settings-delete-monitor-free-account-dialog-cancel-button-label = Beddleɣ ṛṛay, uɣal ɣer deffir
+settings-delete-monitor-account-confirmation-toast-dismiss-label = Zgel

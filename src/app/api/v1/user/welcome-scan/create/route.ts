@@ -2,12 +2,11 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { getServerSession } from "next-auth";
-import { authOptions } from "../../../../utils/auth";
 import { NextRequest, NextResponse } from "next/server";
+import { headers } from "next/headers";
 
 import { logger } from "../../../../../functions/server/logging";
-
+import { getServerSession } from "../../../../../functions/server/getServerSession";
 import {
   createProfile,
   createScan,
@@ -15,8 +14,7 @@ import {
 } from "../../../../../functions/server/onerep";
 import type { CreateProfileRequest } from "../../../../../functions/server/onerep";
 import { meetsAgeRequirement } from "../../../../../functions/universal/user";
-import AppConstants from "../../../../../../appConstants";
-import { getSubscriberByEmail } from "../../../../../../db/tables/subscribers";
+import { getSubscriberByFxaUid } from "../../../../../../db/tables/subscribers";
 import {
   setOnerepProfileId,
   setOnerepScan,
@@ -25,7 +23,10 @@ import { setProfileDetails } from "../../../../../../db/tables/onerep_profiles";
 import { StateAbbr } from "../../../../../../utils/states";
 import { ISO8601DateString } from "../../../../../../utils/parse";
 import { getCountryCode } from "../../../../../functions/server/getCountryCode";
-import { headers } from "next/headers";
+import { getExperimentationId } from "../../../../../functions/server/getExperimentationId";
+import { getExperiments } from "../../../../../functions/server/getExperiments";
+import { getLocale } from "../../../../../functions/universal/getLocale";
+import { getL10n } from "../../../../../functions/l10n/serverComponents";
 
 export interface WelcomeScanBody {
   success: boolean;
@@ -37,14 +38,18 @@ export interface UserInfo {
   city: string;
   state: StateAbbr;
   dateOfBirth: ISO8601DateString;
+  middleName?: string;
+  nameSuffix?: string;
 }
 
 export async function POST(
   req: NextRequest,
 ): Promise<NextResponse<WelcomeScanBody> | NextResponse<unknown>> {
-  const session = await getServerSession(authOptions);
+  const session = await getServerSession();
+  const searchParams = req.nextUrl.searchParams;
+
   if (!session?.user?.subscriber) {
-    throw new Error("No session");
+    throw new Error("No fxa_uid found in session");
   }
 
   const eligible = await isEligibleForFreeScan(
@@ -69,21 +74,49 @@ export async function POST(
     }
   });
 
-  const { firstName, lastName, city, state, dateOfBirth } = params;
+  const {
+    firstName,
+    middleName,
+    lastName,
+    nameSuffix,
+    city,
+    state,
+    dateOfBirth,
+  } = params;
   if (!meetsAgeRequirement(dateOfBirth)) {
     throw new Error(`User does not meet the age requirement: ${dateOfBirth}`);
   }
+
+  const experimentationId = getExperimentationId(session.user);
+  const experimentData = await getExperiments({
+    experimentationId: experimentationId,
+    countryCode: getCountryCode(headers()),
+    locale: getLocale(getL10n()),
+    previewMode: searchParams.get("nimbus_web_preview") === "true",
+  });
+  const optionalInfoIsEnabled =
+    experimentData["welcome-scan-optional-info"].enabled;
+
   const profileData: CreateProfileRequest = {
     first_name: firstName,
     last_name: lastName,
     addresses: [{ city, state }],
     birth_date: dateOfBirth,
+    ...(optionalInfoIsEnabled && {
+      middle_name: middleName,
+      name_suffix: nameSuffix,
+    }),
   };
 
-  if (typeof session?.user?.email === "string") {
+  if (typeof session?.user?.subscriber.fxa_uid === "string") {
     try {
-      const subscriber = await getSubscriberByEmail(session.user.email);
+      const subscriber = await getSubscriberByFxaUid(
+        session.user.subscriber.fxa_uid,
+      );
 
+      if (!subscriber) {
+        throw new Error("No subscriber found for current session.");
+      }
       if (!subscriber.onerep_profile_id) {
         // Create OneRep profile
         const profileId = await createProfile(profileData);
@@ -94,6 +127,12 @@ export async function POST(
         const scan = await createScan(profileId);
         const scanId = scan.id;
         await setOnerepScan(profileId, scanId, scan.status, "manual");
+        // TODO MNTOR-2686 - refactor onerep.ts and centralize logging.
+        logger.info("scan_created", {
+          onerepScanId: scanId,
+          onerepScanStatus: scan.status,
+          onerepScanReason: "manual",
+        });
 
         return NextResponse.json({ success: true }, { status: 200 });
       }
@@ -104,7 +143,6 @@ export async function POST(
       return NextResponse.json({ success: false }, { status: 500 });
     }
   } else {
-    // Not Signed in, redirect to home
-    return NextResponse.redirect(AppConstants.SERVER_URL, 302);
+    return NextResponse.json({ success: false }, { status: 401 });
   }
 }

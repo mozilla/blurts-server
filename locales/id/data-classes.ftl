@@ -1,3 +1,8 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+
 # Breach Data Classes
 
 account-balances = Saldo akun
@@ -14,7 +19,7 @@ avatars = Avatar
 bank-account-numbers = Nomor rekening bank
 beauty-ratings = Penilaian kecantikan
 biometric-data = Data biometrik
-# This string is the shortened version of "Biographies", and 
+# This string is the shortened version of "Biographies", and
 # refers to biographical data about a user.
 bios = Bio
 browser-user-agent-details = Detail agen-pengguna peramban
@@ -25,6 +30,7 @@ career-levels = Tingkat karier
 cellular-network-names = Nama jaringan seluler
 charitable-donations = Donasi sosial
 chat-logs = Log obrolan
+citizenship-statuses = Status kewarganegaraan
 clothing-sizes = Ukuran pakaian
 credit-card-cvv = CVV kartu kredit
 credit-cards = Kartu kredit
@@ -35,7 +41,7 @@ customer-interactions = Interaksi pelanggan
 dates-of-birth = Tanggal lahir
 deceased-date = Tanggal meninggal
 deceased-statuses = Status meninggal
-# Instructions that you can set up in online shopping services to get your orders 
+# Instructions that you can set up in online shopping services to get your orders
 # delivered (e.g. deliver to a specific neighbor, entrance location, etc.).
 delivery-instructions = Instruksi pengiriman
 device-information = Informasi peranti
@@ -75,12 +81,13 @@ instant-messenger-identities = Identitas pesan instan
 ip-addresses = Alamat IP
 job-applications = Lamaran kerja
 job-titles = Jabatan kerja
-# This string refers to vehicle license plates. 
+# This string refers to vehicle license plates.
 licence-plates = Plat Nomor Polisi
 living-costs = Biaya hidup
 # This string refers to financial loans.
 loan-information = Informasi pinjol
 login-histories = Riwayat masuk
+loyalty-program-details = Detail program loyalitas
 mac-addresses = Alamat MAC
 marital-statuses = Status pernikahan
 # Mnemonic phrases are a group of words used to access the content of cryptocurrency wallets.
@@ -141,6 +148,7 @@ spouses-names = Nama pasangan
 support-tickets = Tiket dukungan
 survey-results = Hasil survei
 taxation-records = Catatan perpajakan
+telecommunications-carrier = Operator telekomunikasi
 time-zones = Zona waktu
 travel-habits = Kebiasaan bepergian
 user-statuses = Status pengguna

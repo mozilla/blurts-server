@@ -5,8 +5,12 @@
 "use client";
 
 import { useSession } from "next-auth/react";
+import { useInterval } from "../../hooks/useInterval";
 import { useEffect } from "react";
 
+// This component ensures that the client session is synced with the
+// server session and is not being mounted when running unit tests.
+/* c8 ignore start */
 export const SubscriptionCheck = () => {
   const { update } = useSession();
 
@@ -17,5 +21,10 @@ export const SubscriptionCheck = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // Poll for the session every minute.
+  useInterval(() => {
+    void update();
+  }, 1000 * 60);
   return <></>;
 };
+/* c8 ignore end */

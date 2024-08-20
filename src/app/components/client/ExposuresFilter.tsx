@@ -29,7 +29,8 @@ import {
   useRadioGroupState,
 } from "react-stately";
 import { useL10n } from "../../hooks/l10n";
-import { Button } from "../server/Button";
+import { useTelemetry } from "../../hooks/useTelemetry";
+import { Button } from "../client/Button";
 import NoteIcon from "./assets/note.svg";
 import CalendarIcon from "./assets/calendar.svg";
 import {
@@ -37,6 +38,8 @@ import {
   ExposuresFilterTypeExplainer,
 } from "./ExposuresFilterExplainer";
 import { Popover } from "./Popover";
+import { VisuallyHidden } from "../server/VisuallyHidden";
+import { FeatureFlagName } from "../../../db/tables/featureFlags";
 
 export type FilterState = {
   exposureType: "show-all-exposure-type" | "data-broker" | "data-breach";
@@ -44,20 +47,33 @@ export type FilterState = {
 };
 
 type ExposuresFilterProps = {
+  enabledFeatureFlags: FeatureFlagName[];
   initialFilterValues: FilterState;
   filterValues: FilterState;
   setFilterValues: React.Dispatch<React.SetStateAction<FilterState>>;
+  isEligibleForPremium: boolean;
+  isPlusSubscriber: boolean;
 };
 
 export const ExposuresFilter = ({
+  enabledFeatureFlags,
   initialFilterValues,
   filterValues,
   setFilterValues,
+  isEligibleForPremium,
+  isPlusSubscriber,
 }: ExposuresFilterProps) => {
   const l10n = useL10n();
+  const recordTelemetry = useTelemetry();
 
   // Type filter explainer dialog
-  const exposureTypeExplainerDialogState = useOverlayTriggerState({});
+  const exposureTypeExplainerDialogState = useOverlayTriggerState({
+    onOpenChange: (isOpen) => {
+      recordTelemetry("popup", isOpen ? "view" : "exit", {
+        popup_id: "exposure_type_info",
+      });
+    },
+  });
   const exposureTypeExplainerDialogTrigger = useOverlayTrigger(
     { type: "dialog" },
     exposureTypeExplainerDialogState,
@@ -69,7 +85,16 @@ export const ExposuresFilter = ({
   ).buttonProps;
 
   // Status filter explainer dialog
-  const exposureStatusExplainerDialogState = useOverlayTriggerState({});
+  const exposureStatusExplainerDialogState = useOverlayTriggerState({
+    onOpenChange: (isOpen) => {
+      /* c8 ignore next 3 */
+      // Since the Node 20.10 upgrade, it's been intermittently marking this
+      // (and this comment) as uncovered.
+      recordTelemetry("popup", isOpen ? "view" : "exit", {
+        popup_id: "exposure_status_info",
+      });
+    },
+  });
   const exposureStatusExplainerDialogTrigger = useOverlayTrigger(
     { type: "dialog" },
     exposureStatusExplainerDialogState,
@@ -128,28 +153,30 @@ export const ExposuresFilter = ({
   const ExposuresFilterContent = (
     <form onSubmit={handleSaveButtonClick}>
       <div className={styles.exposuresFilterRadioButtons}>
-        <FilterRadioGroup
-          type="exposure-type"
-          value={filterState.exposureType}
-          // TODO: Add unit test when changing this code:
-          /* c8 ignore next */
-          onChange={(value) => handleRadioChange("exposureType", value)}
-          label={l10n.getString("dashboard-exposures-filter-exposure-type")}
-        >
-          <Radio value="show-all-exposure-type">
-            {l10n.getString("dashboard-exposures-filter-show-all")}
-          </Radio>
-          <Radio value="data-broker">
-            {l10n.getString(
-              "dashboard-exposures-filter-exposure-type-info-for-sale",
-            )}
-          </Radio>
-          <Radio value="data-breach">
-            {l10n.getString(
-              "dashboard-exposures-filter-exposure-type-data-breach",
-            )}
-          </Radio>
-        </FilterRadioGroup>
+        {isEligibleForPremium && (
+          <FilterRadioGroup
+            type="exposure-type"
+            value={filterState.exposureType}
+            // TODO: Add unit test when changing this code:
+            /* c8 ignore next */
+            onChange={(value) => handleRadioChange("exposureType", value)}
+            label={l10n.getString("dashboard-exposures-filter-exposure-type")}
+          >
+            <Radio value="show-all-exposure-type">
+              {l10n.getString("dashboard-exposures-filter-show-all")}
+            </Radio>
+            <Radio value="data-broker">
+              {l10n.getString(
+                "dashboard-exposures-filter-exposure-type-info-for-sale",
+              )}
+            </Radio>
+            <Radio value="data-breach">
+              {l10n.getString(
+                "dashboard-exposures-filter-exposure-type-data-breach",
+              )}
+            </Radio>
+          </FilterRadioGroup>
+        )}
         <FilterRadioGroup
           value={filterState.dateFound}
           // TODO: Add unit test when changing this code:
@@ -201,7 +228,7 @@ export const ExposuresFilter = ({
         className={styles.dismissButton}
       >
         <CloseBtn
-          alt={l10n.getString("modal-close-alt")}
+          alt={l10n.getString("close-modal-alt")}
           width="14"
           height="14"
         />
@@ -231,20 +258,24 @@ export const ExposuresFilter = ({
           <li className={`${styles.hideOnMobile} ${styles.companyNameArea}`}>
             {l10n.getString("dashboard-exposures-filter-company")}
           </li>
-          <li className={styles.hideOnMobile}>
-            {l10n.getString("dashboard-exposures-filter-exposure-type")}
-            <button
-              {...exposureTypeExplainerTriggerProps}
-              ref={exposureTypeExplainerTriggerRef}
-              aria-label={l10n.getString("modal-open-alt")}
-            >
-              <QuestionMarkCircle
-                width="15"
-                height="15"
-                alt={l10n.getString("modal-open-alt")}
-              />
-            </button>
-          </li>
+          {isEligibleForPremium && (
+            <li className={styles.hideOnMobile}>
+              {l10n.getString("dashboard-exposures-filter-exposure-type")}
+              {isEligibleForPremium && (
+                <button
+                  {...exposureTypeExplainerTriggerProps}
+                  ref={exposureTypeExplainerTriggerRef}
+                  aria-label={l10n.getString("open-modal-alt")}
+                  aria-describedby="filterExposureTypeInfo"
+                >
+                  <VisuallyHidden id="filterExposureTypeInfo">
+                    {l10n.getString("modal-exposure-type-title")}
+                  </VisuallyHidden>
+                  <QuestionMarkCircle width="15" height="15" alt="" />
+                </button>
+              )}
+            </li>
+          )}
           <li className={styles.hideOnMobile}>
             {l10n.getString("dashboard-exposures-filter-date-found")}
           </li>
@@ -253,13 +284,13 @@ export const ExposuresFilter = ({
             <button
               {...exposureStatusExplainerTriggerProps}
               ref={exposureStatusExplainerTriggerRef}
-              aria-label={l10n.getString("modal-open-alt")}
+              aria-label={l10n.getString("open-modal-alt")}
+              aria-describedby="filterStatusInfo"
             >
-              <QuestionMarkCircle
-                width="15"
-                height="15"
-                alt={l10n.getString("modal-open-alt")}
-              />
+              <VisuallyHidden id="filterStatusInfo">
+                {l10n.getString("modal-exposure-indicator-title")}
+              </VisuallyHidden>
+              <QuestionMarkCircle width="15" height="15" alt="" />
             </button>
           </li>
         </ul>
@@ -269,12 +300,15 @@ export const ExposuresFilter = ({
         <ExposuresFilterTypeExplainer
           explainerDialogProps={exposureTypeExplainerDialogTrigger}
           explainerDialogState={exposureTypeExplainerDialogState}
+          enabledFeatureFlags={enabledFeatureFlags}
         />
       )}
       {exposureStatusExplainerDialogState.isOpen && (
         <ExposuresFilterStatusExplainer
           explainerDialogProps={exposureStatusExplainerDialogTrigger}
           explainerDialogState={exposureStatusExplainerDialogState}
+          isPlusSubscriber={isPlusSubscriber}
+          enabledFeatureFlags={enabledFeatureFlags}
         />
       )}
       {filterDialogState.isOpen && (

@@ -45,8 +45,6 @@ const customJestConfig = {
     "<rootDir>/.storybook/",
     // Old, pre-Next.js code assumed to be working:
     "<rootDir>/src/appConstants.js",
-    "<rootDir>/src/views/",
-    "<rootDir>/src/middleware/",
   ],
 
   // Indicates which provider should be used to instrument code for coverage
@@ -120,11 +118,7 @@ const customJestConfig = {
   // moduleNameMapper: {},
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
-  modulePathIgnorePatterns: [
-    "e2e/",
-    // These are remnants of our old Express.js app, which we have yet to remove:
-    "src/controllers",
-  ],
+  modulePathIgnorePatterns: ["e2e/"],
 
   // Activates notifications for test results
   // notify: false,
@@ -168,14 +162,7 @@ const customJestConfig = {
   setupFiles: ["jest-canvas-mock"],
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
-  setupFilesAfterEnv: [
-    "<rootDir>/jest.setup.ts",
-    // See https://www.benmvp.com/blog/avoiding-react-act-warning-when-accessibility-testing-next-link-jest-axe/
-    // Mocks the IntersectionObserver API, which is used by Next.js's <Link>.
-    // This prevents warnings about wrapping tests in act() for components that
-    // include <Link>s.
-    "react-intersection-observer/test-utils",
-  ],
+  setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
 
   // The number of seconds after which a test is considered as slow and reported as such in the results.
   // slowTestThreshold: 5,
@@ -199,9 +186,7 @@ const customJestConfig = {
   // ],
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
-  // testPathIgnorePatterns: [
-  //   "/node_modules/"
-  // ],
+  testPathIgnorePatterns: ["/node_modules/", "/dist/"],
 
   // The regexp pattern or array of patterns that Jest uses to detect test files
   // testRegex: [],

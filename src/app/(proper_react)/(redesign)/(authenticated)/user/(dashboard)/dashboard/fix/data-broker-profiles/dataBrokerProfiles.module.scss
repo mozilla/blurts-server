@@ -1,0 +1,217 @@
+@import "../../../../../../../../tokens";
+
+.main {
+  flex-direction: column;
+}
+
+.contentWrapper {
+  max-width: $content-md;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.buttonsWrapper {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: $spacing-md;
+
+  a {
+    display: block;
+  }
+
+  @media screen and (min-width: $screen-sm) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.upgradeToggleWrapper {
+  display: block;
+  margin-bottom: $spacing-lg;
+
+  > span {
+    display: block;
+  }
+}
+
+.removalStepsList {
+  font: $text-body-md;
+  text-align: left;
+
+  li {
+    margin-bottom: $spacing-md;
+
+    > strong {
+      display: block;
+      margin-bottom: $spacing-xs;
+      font-weight: 700;
+    }
+
+    // The subhead/bullet content is wrapped in a span to style to OL marker (1.)
+    > span {
+      font: $text-body-sm;
+      font-weight: normal;
+    }
+  }
+}
+
+.content {
+  text-align: center;
+  max-width: $content-md;
+  margin: 0 auto $spacing-2xl;
+
+  h3 {
+    font: $text-title-2xs;
+  }
+
+  h4 {
+    font: $text-title-3xs;
+  }
+
+  p,
+  h3 {
+    margin-block-end: $spacing-md;
+  }
+
+  h3 + p {
+    text-align: left;
+  }
+
+  > a {
+    color: $color-blue-60;
+    display: inline-block;
+    margin-inline-start: $spacing-sm;
+  }
+}
+
+.cityScape {
+  margin: 0 auto $spacing-2xl;
+  display: block;
+  max-width: 100%;
+}
+
+.questionTooltipWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-xs;
+  font: $text-title-3xs;
+}
+
+.questionTooltip {
+  @include question-mark-circle-btn;
+}
+
+.contentAutomaticRemove {
+  h3 {
+    @include no-focus-outline;
+    text-align: left;
+  }
+}
+
+.featuresList {
+  text-align: left;
+  max-width: $content-sm;
+  margin-bottom: $spacing-lg;
+
+  ul {
+    padding: 0;
+    li {
+      background: url("../images/icon-check-mark.svg") no-repeat left center;
+      padding: $spacing-sm 0 $spacing-sm $spacing-xl;
+      list-style: none;
+      margin: 0;
+      vertical-align: middle;
+    }
+  }
+}
+
+.upgradeToggle {
+  width: auto;
+  display: inline-flex;
+  gap: $spacing-sm;
+  background-color: $color-grey-10;
+  border-radius: $border-radius-xl;
+  padding: $spacing-sm $spacing-sm;
+  font: $text-body-sm;
+  margin-bottom: $spacing-md;
+
+  .toggleBtn {
+    cursor: pointer;
+    appearance: none;
+    background-color: transparent;
+    border: 0;
+    color: $color-grey-50;
+    padding: $spacing-xs $spacing-md;
+    font-weight: 500;
+
+    &.isActive,
+    &:hover {
+      background-color: $color-white;
+      border-radius: $border-radius-xl;
+      color: $color-informational;
+    }
+
+    &.isFocused {
+      outline: 2px solid $color-purple-70;
+      background-color: $color-purple-10;
+    }
+  }
+}
+
+.upgradeContentWrapper {
+  @media screen and (min-width: $screen-md) {
+    display: flex;
+    gap: $spacing-md;
+    justify-content: space-between;
+    // Used to stop purple box from stretching full width
+    align-items: flex-start;
+  }
+
+  .selectedPlan {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 100%;
+    background-color: $color-purple-70;
+    color: $color-white;
+    padding: $spacing-lg;
+    // Note: Confirmed with design to only round the top-right corner
+    border-top-right-radius: $border-radius-xl;
+    > strong {
+      text-align: center;
+      display: block;
+      font: $text-body-xl;
+      small {
+        display: block;
+        font: $text-body-md;
+      }
+    }
+    // Price block
+    > span {
+      margin: $spacing-xl 0;
+      font: $text-title-sm;
+      font-weight: 500;
+    }
+  }
+}
+
+.dataBrokerResolutionStats {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+  justify-content: center;
+  padding-top: $layout-sm;
+
+  @media screen and (min-width: $screen-md) {
+    flex-direction: row;
+  }
+  div {
+    @include estimated-time;
+    justify-content: center;
+  }
+}

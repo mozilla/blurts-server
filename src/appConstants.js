@@ -2,29 +2,26 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-// TODO: these vars were copy/pasted from the old app-constants.js and should be cleaned up
-import * as dotenv from 'dotenv'
-dotenv.config()
+if (typeof process.env.NEXT_RUNTIME === "undefined" && typeof process.env.STORYBOOK === "undefined") {
+  // Next.js already loads env vars by itself, and dotenv-flow will throw an
+  // error if loaded in that context (about `fs` not existing), so only load
+  // it if we're not running in a Next.js-context (e.g. cron jobs):
+  await import("dotenv-flow/config");
+}
 
+// TODO: these vars were copy/pasted from the old app-constants.js and should be cleaned up
 const requiredEnvVars = [
   'ADMINS',
   'APP_ENV',
-  'COOKIE_SECRET',
-  'CSRF_SECRET',
   'DATABASE_URL',
   'DELETE_UNVERIFIED_SUBSCRIBERS_TIMER',
   'EMAIL_FROM',
-  'FXA_ENABLED',
   'HIBP_API_ROOT',
   'HIBP_KANON_API_ROOT',
   'HIBP_KANON_API_TOKEN',
   'HIBP_NOTIFY_TOKEN',
   'HIBP_THROTTLE_DELAY',
   'HIBP_THROTTLE_MAX_TRIES',
-  'LOGOS_ORIGIN',
-  'MAX_NUM_ADDRESSES',
-  'MOZLOG_FMT',
-  'MOZLOG_LEVEL',
   'FXA_SETTINGS_URL',
   'NODE_ENV',
   'OAUTH_ACCOUNT_URI',
@@ -33,35 +30,20 @@ const requiredEnvVars = [
   'OAUTH_CLIENT_SECRET',
   'OAUTH_PROFILE_URI',
   'OAUTH_TOKEN_URI',
-  'ONEREP_API_KEY',
-  'REDIS_URL',
-  'SENTRY_DSN',
   'SERVER_URL',
   'SES_CONFIG_SET',
-  'SESSION_DURATION_HOURS',
   'SMTP_URL',
   'SUPPORTED_LOCALES'
 ]
 
 const optionalEnvVars = [
-  'CANCEL_SUBSCRIPTION_FLOW',
-  'EMAIL_TEST_RECIPIENT',
-  'FLOATING_BANNER_DELAY',
-  'FLOATING_BANNER_LINK',
-  'FLOATING_BANNER_PAGES',
-  'FLOATING_BANNER_TYPE',
   'FX_REMOTE_SETTINGS_WRITER_PASS',
   'FX_REMOTE_SETTINGS_WRITER_SERVER',
   'FX_REMOTE_SETTINGS_WRITER_USER',
-  'GA4_DEBUG_MODE',
-  'NEXT_PUBLIC_GA4_MEASUREMENT_ID',
   'HIBP_BREACH_DOMAIN_BLOCKLIST',
-  'LIVE_RELOAD',
-  'PORT',
-  'RECRUITMENT_BANNER_LINK',
-  'RECRUITMENT_BANNER_TEXT',
-  'SENTRY_DSN_LEGACY',
-  'FALSE_DOOR_TEST_LINK_PHASE_ONE'
+  'PREMIUM_PRODUCT_ID',
+  'PG_HOST',
+  'NEXTAUTH_REDIRECT_URL'
 ]
 
 /** @type {Record<string, string>} */

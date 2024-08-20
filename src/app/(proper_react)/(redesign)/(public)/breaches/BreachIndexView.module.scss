@@ -1,0 +1,118 @@
+@import "../../../../tokens";
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-lg;
+  padding: $spacing-lg;
+
+  header {
+    padding: $spacing-2xl $spacing-xl;
+    max-width: $content-lg;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+
+    h1 {
+      font: $text-title-sm;
+    }
+  }
+}
+
+.filterForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $spacing-md;
+  transition: opacity ease-in 500ms;
+
+  &[aria-hidden="true"] {
+    // We don't want to show the form before it becomes interactive, but to
+    // prevent the layout from shifting, we do render it invisibly:
+    opacity: 0;
+  }
+
+  label {
+    font: $text-body-sm;
+    @include visually-hidden;
+  }
+  input {
+    font: $text-body-lg;
+    padding: $spacing-sm;
+  }
+}
+
+.breachList {
+  width: $content-xl;
+  max-width: calc(100% - 2 * $spacing-2xl);
+  display: grid;
+  align-items: start;
+  grid-gap: $spacing-2xl;
+  grid-template-columns: repeat(auto-fit, minmax($content-xs, 1fr));
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    height: 100%;
+  }
+
+  .breachCard {
+    display: flex;
+    flex-direction: column;
+    box-shadow: $box-shadow-sm;
+    border-radius: $border-radius-md;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+
+    &:hover {
+      box-shadow: $box-shadow-md;
+    }
+
+    h2 {
+      background-color: $color-grey-05;
+      display: flex;
+      align-items: center;
+      gap: $spacing-md;
+      padding: $spacing-md $spacing-lg;
+      font: $text-title-3xs;
+    }
+
+    dl {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      gap: $spacing-md;
+      padding: $spacing-lg $spacing-md;
+      // `.breachCard h2` padding + breach logo width + `.breachCard h2` gap,
+      // to align the content to the title in the header:
+      padding-inline-start: calc($spacing-md + 32px + $spacing-md);
+
+      dt {
+        font: $text-body-sm;
+        color: $color-grey-50;
+      }
+
+      dd {
+        font-weight: 700;
+      }
+    }
+
+    .linkDescription {
+      padding: $spacing-md;
+      // `.breachCard h2` padding + breach logo width + `.breachCard h2` gap,
+      // to align the content to the title in the header:
+      padding-inline-start: calc($spacing-md + 32px + $spacing-md);
+      color: $color-blue-50;
+      font-weight: 700;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

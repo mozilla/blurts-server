@@ -9,6 +9,7 @@ import { ComboBox } from "./ComboBox";
 import { RelevantLocation } from "../../api/v1/location-autocomplete/types";
 import styles from "./LocationAutocomplete.module.scss";
 import { useLocationSuggestions } from "../../hooks/locationSuggestions";
+import { useL10n } from "../../hooks/l10n";
 
 // TODO: Add unit test when changing this code:
 /* c8 ignore next 6 */
@@ -20,8 +21,8 @@ export function getDetailsFromLocationString(locationString: string) {
 }
 
 function getLocationString(location: RelevantLocation) {
-  const { name, stateCode, countryCode } = location;
-  return `${name}, ${stateCode}, ${countryCode}`;
+  const { n: name, s: stateCode } = location;
+  return `${name}, ${stateCode}, USA`;
 }
 
 function getLocationStringByKey(
@@ -41,7 +42,8 @@ export const LocationAutocompleteInput = ({
 }: Exclude<
   ComboBoxStateOptions<object>,
   "onInputChange" | "onSelectionChange"
-> & { onChange: (_location: string) => void }) => {
+> & { onChange: (_location: string) => void; infoText: string }) => {
+  const l10n = useL10n();
   const locationSuggestions = useLocationSuggestions();
 
   const handleOnSelectionChange = (
@@ -58,13 +60,22 @@ export const LocationAutocompleteInput = ({
     <div className={styles.locationAutocomplete}>
       <ComboBox
         {...props}
-        allowsCustomValue={false}
+        allowsCustomValue={true}
         allowsEmptyCollection={true}
         items={locationSuggestions.items}
         inputValue={locationSuggestions.filterText}
         onInputChange={(value) => locationSuggestions.setFilterText(value)}
         onSelectionChange={handleOnSelectionChange}
         shouldCloseOnBlur={true}
+        listPlaceholder={
+          <div className={styles.locationItem}>
+            <strong>
+              {l10n.getString(
+                "onboarding-enter-details-placeholder-location-results",
+              )}
+            </strong>
+          </div>
+        }
       >
         {(location) => {
           const relevantLocation = location as RelevantLocation;
@@ -81,6 +92,7 @@ export const LocationAutocompleteInput = ({
           );
         }}
       </ComboBox>
+      {props.infoText && <p className={styles.infoText}>{props.infoText}</p>}
     </div>
   );
 };

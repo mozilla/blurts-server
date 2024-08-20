@@ -2,16 +2,14 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { getServerSession } from "next-auth";
-import { authOptions } from "../../../../utils/auth";
 import { NextRequest, NextResponse } from "next/server";
 
 import { logger } from "../../../../../functions/server/logging";
 
-import AppConstants from "../../../../../../appConstants";
+import { getServerSession } from "../../../../../functions/server/getServerSession";
 import {
   getOnerepProfileId,
-  getSubscriberByEmail,
+  getSubscriberByFxaUid,
 } from "../../../../../../db/tables/subscribers";
 
 import {
@@ -37,18 +35,24 @@ export interface ScanProgressBody {
 export async function GET(
   _req: NextRequest,
 ): Promise<NextResponse<ScanProgressBody> | NextResponse<unknown>> {
-  const session = await getServerSession(authOptions);
-  if (typeof session?.user?.email === "string") {
+  const session = await getServerSession();
+  if (typeof session?.user?.subscriber?.fxa_uid === "string") {
     try {
-      const subscriber = await getSubscriberByEmail(session.user.email);
-      const profileId = (await getOnerepProfileId(subscriber.id))[0][
-        "onerep_profile_id"
-      ] as number;
+      const subscriber = await getSubscriberByFxaUid(
+        session.user.subscriber?.fxa_uid,
+      );
+      if (!subscriber) {
+        throw new Error("No subscriber found for current session.");
+      }
+      const profileId = await getOnerepProfileId(subscriber.id);
 
       const latestScan = await getLatestOnerepScanResults(profileId);
       const latestScanId = latestScan.scan?.onerep_scan_id;
 
-      if (typeof latestScanId !== "undefined") {
+      if (
+        typeof latestScanId !== "undefined" &&
+        typeof profileId === "number"
+      ) {
         const scan = await getScanDetails(profileId, latestScanId);
 
         // Store scan results.
@@ -69,7 +73,6 @@ export async function GET(
       return NextResponse.json({ success: false }, { status: 500 });
     }
   } else {
-    // Not Signed in, redirect to home
-    return NextResponse.redirect(AppConstants.SERVER_URL, 302);
+    return NextResponse.json({ success: false }, { status: 401 });
   }
 }

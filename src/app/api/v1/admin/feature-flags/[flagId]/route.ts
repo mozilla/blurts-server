@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { NextRequest, NextResponse } from "next/server";
-import { getServerSession } from "next-auth";
+import { getServerSession } from "../../../../../functions/server/getServerSession";
 import { logger } from "../../../../../functions/server/logging";
 import {
   enableFeatureFlagByName,
@@ -13,14 +13,13 @@ import {
   updateOwner,
   updateWaitList,
 } from "../../../../../../db/tables/featureFlags";
-import { isAdmin, authOptions } from "../../../../utils/auth";
-import appConstants from "../../../../../../appConstants";
+import { isAdmin } from "../../../../utils/auth";
 
 export async function GET(
   req: NextRequest,
   { params }: { params: { flagId: string } },
 ) {
-  const session = await getServerSession(authOptions);
+  const session = await getServerSession();
   if (isAdmin(session?.user?.email || "")) {
     // Signed in
     const flagName = params.flagId;
@@ -32,13 +31,34 @@ export async function GET(
       return NextResponse.json({ success: false }, { status: 500 });
     }
   } else {
-    // Not Signed in, redirect to home
-    return NextResponse.redirect(appConstants.SERVER_URL, 301);
+    return NextResponse.json({ success: false }, { status: 401 });
   }
 }
 
+export type UpdateFeatureFlagRequestBody =
+  | {
+      id: "isEnabled";
+      isEnabled: boolean;
+    }
+  | {
+      id: "dependencies";
+      value: string;
+    }
+  | {
+      id: "allowList";
+      value: string;
+    }
+  | {
+      id: "waitList";
+      value: string;
+    }
+  | {
+      id: "owner";
+      value: string;
+    };
+
 export async function PUT(req: NextRequest) {
-  const session = await getServerSession(authOptions);
+  const session = await getServerSession();
   if (isAdmin(session?.user?.email || "")) {
     // Signed in
     try {
@@ -46,7 +66,7 @@ export async function PUT(req: NextRequest) {
       if (!flagName) {
         throw new Error("No flag name provided");
       }
-      const result = await req.json();
+      const result: UpdateFeatureFlagRequestBody = await req.json();
 
       if (result.id === "isEnabled") {
         await enableFeatureFlagByName(flagName, result.isEnabled);
@@ -70,7 +90,6 @@ export async function PUT(req: NextRequest) {
       return NextResponse.json({ success: false }, { status: 500 });
     }
   } else {
-    // Not Signed in, redirect to home
-    return NextResponse.redirect(appConstants.SERVER_URL, 301);
+    return NextResponse.json({ success: false }, { status: 401 });
   }
 }

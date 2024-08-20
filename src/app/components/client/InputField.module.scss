@@ -1,6 +1,7 @@
 @import "../../tokens";
 
-.input {
+.input,
+.comboBox {
   background: $color-white;
   display: flex;
   flex-direction: column;
@@ -39,6 +40,9 @@
   }
 
   .inputMessage {
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
     background: inherit;
     bottom: 0;
     color: $color-error;

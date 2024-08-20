@@ -6,29 +6,54 @@ import { getToken } from "next-auth/jwt";
 import { NextRequest, NextResponse } from "next/server";
 
 import { logger } from "../../../../functions/server/logging";
-import AppConstants from "../../../../../appConstants";
 
 import {
-  getSubscriberByEmail,
+  getSubscriberByFxaUid,
   setAllEmailsToPrimary,
+  setMonthlyMonitorReport,
 } from "../../../../../db/tables/subscribers";
 
-interface EmailUpdateCommOptionRequest {
-  communicationOption: string;
+export type EmailUpdateCommTypeOfOptions = "null" | "affected" | "primary";
+
+export interface EmailUpdateCommOptionRequest {
+  instantBreachAlerts?: EmailUpdateCommTypeOfOptions;
+  monthlyMonitorReport?: boolean;
 }
 
 export async function POST(req: NextRequest) {
   const token = await getToken({ req });
 
-  if (typeof token?.email === "string") {
+  if (typeof token?.subscriber?.fxa_uid === "string") {
     try {
-      const { communicationOption }: EmailUpdateCommOptionRequest =
-        await req.json();
-      const subscriber = await getSubscriberByEmail(token.email);
-      // 0 = Send breach alerts to the corresponding affected emails.
-      // 1 = Send all breach alerts to user's primary email address.
-      const allEmailsToPrimary = Number(communicationOption) === 1 ?? false;
-      await setAllEmailsToPrimary(subscriber, allEmailsToPrimary);
+      const {
+        instantBreachAlerts,
+        monthlyMonitorReport,
+      }: EmailUpdateCommOptionRequest = await req.json();
+      const subscriber = await getSubscriberByFxaUid(token.subscriber?.fxa_uid);
+      if (!subscriber) {
+        throw new Error("No subscriber found for current session.");
+      }
+      // "null"     = Do not send instant notifications. Newly added in MNTOR-1368
+      // "affected" = Send breach alerts to the corresponding affected emails.
+      // "primary"  = Send all breach alerts to user's primary email address.
+      let allEmailsToPrimary;
+      switch (instantBreachAlerts) {
+        case "primary":
+          allEmailsToPrimary = true;
+          break;
+        case "affected":
+          allEmailsToPrimary = false;
+          break;
+        default:
+          allEmailsToPrimary = null;
+      }
+
+      if (typeof instantBreachAlerts !== "undefined") {
+        await setAllEmailsToPrimary(subscriber, allEmailsToPrimary);
+      }
+      if (typeof monthlyMonitorReport === "boolean") {
+        await setMonthlyMonitorReport(subscriber, monthlyMonitorReport);
+      }
 
       return NextResponse.json({
         success: true,
@@ -39,7 +64,6 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ success: false }, { status: 500 });
     }
   } else {
-    // Not Signed in, redirect to home
-    return NextResponse.redirect(AppConstants.SERVER_URL, 301);
+    return NextResponse.json({ success: false }, { status: 401 });
   }
 }

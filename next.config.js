@@ -2,11 +2,12 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
- /* eslint @typescript-eslint/no-var-requires: "off" */
-import { withSentryConfig } from "@sentry/nextjs"
+/* eslint @typescript-eslint/no-var-requires: "off" */
+import { withSentryConfig } from "@sentry/nextjs";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  productionBrowserSourceMaps: true,
   images: {
     remotePatterns: [
       {
@@ -25,6 +26,10 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "monitor.firefox.com",
+      },
+      {
+        protocol: "https",
+        hostname: "monitor.mozilla.org",
       },
       {
         protocol: "https",
@@ -119,6 +124,26 @@ const nextConfig = {
   },
   async redirects() {
     return [
+      // Before we redesigned the website, the dashboard would be reachable
+      // via /user/breaches:
+      {
+        source: "/user/breaches",
+        destination: "/user/dashboard",
+        permanent: true,
+      },
+      // While we were implementing a redesign, we made it available at the
+      // /redesign subpath. In case we still have lingering links to there
+      // anywhere, this redirect should have people end up at the right place:
+      {
+        source: "/redesign/:path*",
+        destination: "/:path*",
+        permanent: true,
+      },
+      {
+        source: "/user/dashboard/fix/data-broker-profiles/welcome-to-premium",
+        destination: "/user/dashboard/fix/data-broker-profiles/welcome-to-plus",
+        permanent: true,
+      },
       // We used to have a page with security tips;
       // if folks get sent there via old lnks, redirect them to the most
       // relevant page on SuMo:
@@ -127,9 +152,17 @@ const nextConfig = {
         destination: "https://support.mozilla.org/kb/how-stay-safe-web",
         permanent: false,
       },
+      // Some subset of users still find their way to the old login
+      // link, which redirects to a now-404 endpoint. Add a redirect
+      // to the new endpoint while we are investigating.
+      {
+        source: "/oauth/confirmed",
+        destination: "/api/auth/callback/fxa",
+        permanent: false,
+      },
     ];
   },
-  webpack: (config, options) => {
+  webpack: (config, _options) => {
     config.module.rules.push({
       test: /\.ftl/,
       type: "asset/source",
@@ -142,9 +175,16 @@ const nextConfig = {
 
     return config;
   },
+  experimental: {
+    // Without this setting, Next.js has Webpack trying and failing to load
+    // uglify-js when compiling MJML email templates to HTML in `renderEmail.ts`:
+    serverComponentsExternalPackages: ["mjml"],
+    // Sentry 8.x requires `instrumentation.ts` vs. it's previous custom approach.
+    instrumentationHook: true,
+  },
 };
 
-const sentryWebpackPluginOptions = {
+const sentryOptions = {
   // Additional config options for the Sentry Webpack plugin. Keep in mind that
   // the following options are set automatically, and overriding them is not
   // recommended:
@@ -153,17 +193,20 @@ const sentryWebpackPluginOptions = {
 
   org: "mozilla",
   project: "firefox-monitor",
-
-  silent: true, // Suppresses all logs
+  silent: false, // Suppresses all logs
+  authToken: process.env.SENTRY_AUTH_TOKEN,
 
   // For all available options, see:
   // https://github.com/getsentry/sentry-webpack-plugin#options.
-};
 
-const sentryOptions = {
   // Upload additional client files (increases upload size)
   // https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/#widen-the-upload-scope
   widenClientFileUpload: true,
+  hideSourceMaps: false,
+
+  sourcemaps: {
+    disable: process.env.UPLOAD_SENTRY_SOURCEMAPS !== "true",
+  },
 };
 
-export default withSentryConfig(nextConfig, sentryWebpackPluginOptions, sentryOptions)
+export default withSentryConfig(nextConfig, sentryOptions);

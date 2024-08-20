@@ -3,23 +3,22 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { NextRequest, NextResponse } from "next/server";
-import { authOptions } from "../../../../utils/auth";
-import { getServerSession } from "next-auth";
+import { getServerSession } from "../../../../../functions/server/getServerSession";
 import { logger } from "../../../../../functions/server/logging";
-import {
-  BreachBulkResolutionRequest,
-  Subscriber,
-} from "../../../../../(nextjs_migration)/(authenticated)/user/breaches/breaches.js";
 import { getBreaches } from "../../../../../functions/server/getBreaches";
 import { getAllEmailsAndBreaches } from "../../../../../../utils/breaches";
 import {
-  getSubscriberByEmail,
+  getSubscriberByFxaUid,
   setBreachResolution,
 } from "../../../../../../db/tables/subscribers";
+import { BreachBulkResolutionRequest } from "../../../../../functions/universal/breach";
 
 export async function PUT(req: NextRequest): Promise<NextResponse> {
-  const session = await getServerSession(authOptions);
-  if (!session?.user?.subscriber || typeof session?.user?.email !== "string") {
+  const session = await getServerSession();
+  if (
+    !session?.user?.subscriber ||
+    typeof session?.user?.subscriber.fxa_uid !== "string"
+  ) {
     return new NextResponse(
       JSON.stringify({ success: false, message: "Unauthenticated" }),
       { status: 401 },
@@ -27,9 +26,12 @@ export async function PUT(req: NextRequest): Promise<NextResponse> {
   }
 
   try {
-    const subscriber: Subscriber = await getSubscriberByEmail(
-      session.user.email,
+    const subscriber = await getSubscriberByFxaUid(
+      session.user.subscriber.fxa_uid,
     );
+    if (!subscriber) {
+      throw new Error("No subscriber found for the current session.");
+    }
     const allBreaches = await getBreaches();
     const { dataType: dataTypeToResolve }: BreachBulkResolutionRequest =
       await req.json();
@@ -39,7 +41,10 @@ export async function PUT(req: NextRequest): Promise<NextResponse> {
       allBreaches,
     );
 
-    const currentBreachResolution = subscriber.breach_resolution || {}; // get this from existing breach resolution if available
+    // Typed as `any` because `subscriber` used to be typed as `any`, and making
+    // that type more specific was enough work just by itself:
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const currentBreachResolution: any = subscriber.breach_resolution || {}; // get this from existing breach resolution if available
 
     for (const verifiedEmail of verifiedEmails) {
       const currentEmail = verifiedEmail.email;
@@ -56,15 +61,11 @@ export async function PUT(req: NextRequest): Promise<NextResponse> {
             currentResolutionsChecked.push(dataTypeToResolve);
           }
 
-          const isResolved =
-            currentResolutionsChecked.length === currentBreachDataTypes.length;
-
           currentBreachResolution[currentEmail] = {
             ...(currentBreachResolution[currentEmail] || {}),
             ...{
               [breachId]: {
                 resolutionsChecked: currentResolutionsChecked,
-                isResolved,
               },
             },
           };
@@ -80,6 +81,9 @@ export async function PUT(req: NextRequest): Promise<NextResponse> {
       subscriber,
       currentBreachResolution,
     );
+    if (!updatedSubscriber) {
+      throw new Error("Could not retrieve updated subscriber data.");
+    }
 
     return NextResponse.json({
       success: true,

@@ -14,13 +14,13 @@ npm install
 npx playwright install
 ```
 
-#### Generate .env from .env-dist
+#### Generate .env.local from .env.local.example
 
 ```sh
-cp .env-dist .env
+cp .env.local.example .env.local
 ```
 
-#### Add some additional values to the .env file
+#### Add some additional values to the .env.local file
 
 `E2E_TEST_ENV=<'local' | 'dev' | 'stage'>` stage is default, for prod please use GA
 
@@ -28,9 +28,15 @@ cp .env-dist .env
 
 `E2E_TEST_ACCOUNT_PASSWORD=`
 
+`E2E_TEST_PAYPAL_LOGIN=`
+
+`E2E_TEST_PAYPAL_PASSWORD=`
+
+Reach out to @mansaj for the paypal login. The e2e test email and password should be the details of an existing account.
+
 #### Verify helpers.js to make sure correct urls are being used
 
-#### e2e runs on localhost:6060 by default, in order to run against other envs, update the `E2E_TEST_ENV` variable in the .env file
+#### e2e runs on localhost:6060 by default, in order to run against other envs, update the `E2E_TEST_ENV` variable in the .env.local file
 
 #### To debug a test run
 

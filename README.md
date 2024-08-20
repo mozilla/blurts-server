@@ -4,7 +4,7 @@
 
 Firefox Monitor notifies users when their credentials have been compromised in a data breach.
 
-This code is for the monitor.firefox.com service & website.
+This code is for the monitor.mozilla.org service & website.
 
 Breach data is powered by [haveibeenpwned.com](https://haveibeenpwned.com/).
 
@@ -21,6 +21,8 @@ the "what" and "why" of data breach alerts.
 
 - [Volta](https://volta.sh/) (installs the correct version of Node and npm)
 - [Postgres](https://www.postgresql.org/) | Note: On a Mac, we recommend downloading the [Postgres.app](https://postgresapp.com/) instead.
+- [Python](https://www.python.org/downloads/) | [With Homebrew](https://docs.brew.sh/Homebrew-and-Python)
+- [k6](https://grafana.com/docs/k6/latest/set-up/install-k6/) | k6 load testing tool
 
 ### Code style
 
@@ -41,12 +43,28 @@ We track commits that are largely style/formatting via `.git-blame-ignore-revs`.
 ],
 ```
 
-### Prerequisites
+### Database
 
-1. Create location data: Running the script manually is only needed for local development. The location data is being used in the onboarding exposures scan for autocompleting the “City and state” input.
+To create the database tables ...
+
+1. Create the `blurts` database:
 
    ```sh
-   npm run create-location-data
+   createdb blurts
+   createdb test-blurts # for tests
+   ```
+
+2. Update the `DATABASE_URL` value in your `.env.local` (see step 3 under
+   "Install") file with your local db credentials:
+
+   ```
+   DATABASE_URL="postgres://<username>:<password>@localhost:<port>/blurts"
+   ```
+
+3. Run the migrations:
+
+   ```
+   npm run db:migrate
    ```
 
 ### Install
@@ -64,10 +82,10 @@ We track commits that are largely style/formatting via `.git-blame-ignore-revs`.
    npm install
    ```
 
-3. Copy the `.env-dist` file to `.env`:
+3. Copy the `.env.local.example` file to `.env.local`:
 
    ```sh
-   cp .env-dist .env
+   cp .env.local.example .env.local
    ```
 
 4. Install fluent linter (requires Python)
@@ -86,6 +104,20 @@ We track commits that are largely style/formatting via `.git-blame-ignore-revs`.
    npm run build-glean
    ```
 
+6. Generate required Nimbus files (needs re-ran anytime Nimbus' `config/nimbus.yaml` file is updated):
+
+   ```sh
+   npm run build-nimbus
+   ```
+
+7. Create location data: Running the script manually is only needed for local development. The location data is being used in the onboarding exposures scan for autocompleting the “City and state” input.
+
+   ```sh
+   npm run create-location-data
+   ```
+
+8. Ensure that you have the right `env` variables/keys set in your `.env.local` file. You can retrieve the variables from the Firefox Monitor 1Password Vault, or through [Magic-Wormhole](https://magic-wormhole.readthedocs.io/en/latest/), by asking one of the our engineers.
+
 ### Run
 
 1. To run the server similar to production using a build phase, which includes minified and bundled assets:
@@ -96,7 +128,7 @@ We track commits that are largely style/formatting via `.git-blame-ignore-revs`.
 
    **_OR_**
 
-   Run in "dev mode", which loads unbundled client modules and uncompressed assets directly, and uses Nodemon to auto-restart the Express process when any server files change:
+   Run in "dev mode" with:
 
    ```sh
    npm run dev
@@ -114,6 +146,8 @@ Monitor uses GCP PubSub for processing incoming breach data, this can be tested 
 gcloud beta emulators pubsub start --project=your-project-name
 ```
 
+(Set `your-project-name` as the value for `GCP_PUBSUB_PROJECT_ID` in your `.env.local`.)
+
 ### In a different shell, set the environment to point at the emulator and run Monitor in dev mode:
 
 ```sh
@@ -129,44 +163,20 @@ curl -d '{ "breachName": "000webhost", "hashPrefix": "test", "hashSuffixes": ["t
   http://localhost:6060/api/v1/hibp/notify
 ```
 
+This emulates HIBP notifying our API that a new breach was found. Our API will
+then add it to the (emulated) pubsub queue.
+
 ### This pubsub queue will be consumed by this cron job, which is responsible for looking up and emailing impacted users:
 
 ```sh
-node src/scripts/emailBreachAlerts.js
+NODE_ENV="development" npm run dev:cron:breach-alerts
 ```
-
-### Database
-
-To create the database tables ...
-
-1. Create the `blurts` database:
-
-   ```sh
-   createdb blurts
-   createdb test-blurts # for tests
-   ```
-
-2. Update the `DATABASE_URL` value in your `.env` file with your local db
-   credentials:
-
-   ```
-   DATABASE_URL="postgres://<username>:<password>@localhost:<port>/blurts"
-   ```
-
-3. Run the migrations:
-
-   ```
-   npm run db:migrate
-   ```
 
 ### Emails
 
 Monitor generates multiple emails that get sent to subscribers. To preview or test-send these emails see documentation [here](docs/monitor-emails.md).
 
 ### Mozilla accounts ("FxA", formerly known as Firefox accounts)
-
-Subscribe with a Mozilla account is controlled via the `FXA_ENABLED`
-environment variable. (See `.env-dist`)
 
 The repo comes with a development FxA oauth app pre-configured in `.env`, which
 should work fine running the app on http://localhost:6060. You'll need to get
@@ -178,7 +188,7 @@ The unit test suite can be run via `npm test`.
 
 At the beginning of a test suite run, the `test-blurts` database will be populated with test tables and seed data found in `src/db/seeds/`
 
-At the end of a test suite run in CircleCI, coverage info will be sent to [Coveralls](https://coveralls.io/) to assess coverage changes and provide a neat badge. To upload coverage locally, you need a root `.coveralls.yml` which contains a token – get this from another member of the Monitor team.
+At the end of a test suite, coverage info will be sent to [Coveralls](https://coveralls.io/) to assess coverage changes and provide a neat badge. To upload coverage locally, you need a root `.coveralls.yml` which contains a token – get this from another member of the Monitor team.
 
 End-to-End tests use Playwright and can be run via `npm run e2e`. [E2E-How-To](https://github.com/mozilla/blurts-server/src/e2e) for more info.
 
@@ -200,34 +210,32 @@ To test this part of Monitor:
 4. Go to `about:protections`
 5. Everything should be using your localhost instance of Monitor.
 
+#### Load testing
+
+k6 is used for load testing.
+
+To test the HIBP breach alerts endpoint, use:
+
+```sh
+export SERVER_URL=...
+export HIBP_NOTIFY_TOKEN=...
+k6 -u 10 src/scripts/loadtest/hibp.js # Run with 10 virtual users
+```
+
+See https://grafana.com/docs/k6/latest/get-started/running-k6/ for more information.
+
 ## Localization
 
-This repository has a dedicated branch for localization called... `localization`. To add localized text, add or update the relevant `.ftl` file under `locales/en`. Be sure to reference the [localization documentation](https://mozilla-l10n.github.io/documentation/localization/dev_best_practices.html) for best practices.
+All text that is visible to the user is defined in [Fluent](https://projectfluent.org/) files inside `/locales/en/` and `/locales-pending/`. After strings get added to files in the former directory on our `main` branch, they will be made available to our volunteer localizers via Pontoon, Mozilla's localization platform. Be sure to reference the [localization documentation](https://mozilla-l10n.github.io/documentation/localization/dev_best_practices.html) for best practices. It's best to only move the strings to `/locales/en/` when they are more-or-less final and ready for localization. Your PR should be automatically tagged with a reviewer from the [Mozilla L10n team](https://wiki.mozilla.org/L10n:Mozilla_Team) to approve your request.
 
-To trigger translations, open a pull request against `localization`. Please be mindful that Mozilla localizers are volunteers, and translations come from different locales at different times – usually after a week or more. It's best to initiate a PR when your strings are more-or-less final. Your PR should be automatically tagged with a reviewer from the [Mozilla L10n team](https://wiki.mozilla.org/L10n:Mozilla_Team) to approve your request.
+You can check translation status via the [Pontoon site](https://pontoon.mozilla.org/projects/firefox-monitor-website/). After strings have been localized, [a pull request](https://github.com/mozilla/blurts-server/pulls?q=is%3Apr+label%3Al10n+) with the updated strings is automatically opened against our repository. Please be mindful that Mozilla localizers are volunteers, and translations come from different locales at different times – usually after a week or more.
 
-After your updates are merged into `localization`, you will start to see commits from Pontoon, Mozilla's localization platform. You can also check translation status via the [Pontoon site](https://pontoon.mozilla.org/projects/firefox-monitor-website/).
+To use the strings in code, you need to obtain a `ReactLocalization` instance, which selects the right version of your desired string for the user. How to do that depends on where your code runs: in tests, in a cron job, in a server component, or on the client-side. Generally, you will import a `getL10n` function from one of the modules in `/src/app/functions/l10n/`, except for [Client Components](https://nextjs.org/docs/app/building-your-application/rendering/client-components), which use [the `useL10n` hook](./src/app/hooks/l10n.ts). Look at existing code for inspiration.
 
-When enough translations have been commited, you should merge `localization` into `main`, or back into your feature branch if it's not yet merged to `main`. Note it's unlikely to have 100% of locales translated. You might discuss with stakeholders which locales are priority.
+## Preview Deployment
 
-**Important:** Do not use "Squash" or "Rebase" to merge `localization` into `main` or vice versa. Doing so creates new commit hashes and the branches will appear out of sync.
-
-_**TODO:** explore means to auto-sync `localization` with `main`_
-
-## Deploy on Heroku
-
-We use Heroku apps for dev review only – official stage and production apps are built by the Dockerfile and CircleCI config, with deploy overseen by the Site Reliability Engineering team.
-
-A merge to `main` auto-deploys that branch to Heroku. ~~We also employ Heroku's "Review Apps" to check Pull Requests. These are currently set to auto-deploy: you can find the app link in your GitHub Pull Request. Review apps auto-destroy after 2 days of inactivity.~~
-
-If you encounter issues with Heroku deploys, be sure to check your environment variables, including those required in `app-constants.js`. Review apps also share a database and you should not assume good data integrity if testing db-related features.
+We use GCP Cloudrun for dev review – official stage and production apps are built by the Dockerfile and Github Actions. Everything that is merged into `main` will deploy automatically to stage. The ADR for preview deployment can be found [here](https://github.com/mozilla/blurts-server/blob/main/docs/adr/0008-preview-deployment.md)
 
 _**TODO:** add full deploy process similar to Relay_
 
 _**TODO:** consider whether we can re-enable Heroku Review Apps_
-
-## Preserve sessions in local development
-
-Sessions by default are stored in-memory, which means that when the server restarts (e.g. because you made a code change), you will have to log in again.
-
-To avoid this hassle, you can install and run [Redis](https://redis.io/), which by default runs on `redis://localhost:6379`. Use that value for `REDIS_URL` in your `.env` file to preserve your sessions across server restarts.

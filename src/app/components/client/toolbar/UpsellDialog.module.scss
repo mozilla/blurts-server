@@ -1,0 +1,64 @@
+@import "../../../tokens";
+
+.modalContent {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+  padding: $spacing-sm;
+
+  dl {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+    padding: 0;
+
+    dt {
+      margin-bottom: $spacing-sm;
+    }
+
+    dd {
+      background: url("../../../(proper_react)/(redesign)/(authenticated)/user/(dashboard)/dashboard/fix/images/icon-check-mark.svg")
+        no-repeat left top;
+      list-style: none;
+      margin: 0;
+      padding-left: $spacing-lg;
+    }
+  }
+
+  .priceSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $spacing-sm;
+
+    .pricingInfoWrapper {
+      display: flex;
+      flex-direction: column;
+
+      .pricingInfo {
+        font-weight: 600;
+        text-align: center;
+      }
+    }
+  }
+
+  .pricingPill {
+    margin-top: $spacing-lg;
+    align-items: center;
+    border-radius: $border-radius-xl;
+    border: 2px solid $color-purple-70;
+    display: flex;
+    gap: $spacing-md;
+    padding: $spacing-sm $spacing-lg;
+
+    .pricingLabel {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  .productCta {
+    text-align: center;
+    width: 100%;
+  }
+}

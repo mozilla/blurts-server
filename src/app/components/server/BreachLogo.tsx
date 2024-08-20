@@ -15,10 +15,6 @@ import { HibpLikeDbBreach } from "../../../utils/hibp";
 
 export type Props = {
   breach: HibpLikeDbBreach;
-  // The prop `htmlTags` ensures compatibility for the work in
-  // `nextjs_migration` when rendering server components to strings. As soon as
-  // this component is not being used there anymore we can remove the prop.
-  htmlTags?: boolean;
 };
 
 // The <BreachLogo> component is currently a bit troublesome to test because it
@@ -26,10 +22,9 @@ export type Props = {
 // can add a unit test when we convert it to take SubscriberBreaches.
 /* c8 ignore start */
 export function BreachLogo(props: Props) {
-  if (typeof props.breach.FaviconUrl === "string") {
-    const ImageType = props.htmlTags ? "img" : Image;
+  if (props.breach.FaviconUrl) {
     return (
-      <ImageType
+      <Image
         src={props.breach.FaviconUrl}
         alt=""
         loading="lazy"
@@ -49,7 +44,7 @@ export function FallbackLogo(props: { name: string }) {
   const classNames = `${styles.breachLogo} ${styles[color]}`;
 
   return (
-    <span role="img" aria-hidden="true" className={classNames}>
+    <span role="presentation" aria-hidden="true" className={classNames}>
       {props.name.substring(0, 1)}
     </span>
   );

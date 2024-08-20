@@ -8,6 +8,7 @@ import { FeatureFlagRow } from "knex/types/tables";
 
 const knex = createDbConnection();
 
+/** @deprecated This type should not be used */
 export type FeatureFlag = {
   name: string;
   isEnabled: boolean;
@@ -20,21 +21,39 @@ export type FeatureFlag = {
   owner?: string;
 };
 
-async function getAllFeatureFlags() {
+/** @deprecated The method should not be used, use Nimbus experiment or roll-out: /src/app/functions/server/getExperiments */
+export async function getAllFeatureFlags() {
   return await knex("feature_flags")
     .whereNull("deleted_at")
     .orderBy("name")
     .returning("*");
 }
 
-/** Add any feature flag you want to refer to in the code here */
-export type FeatureFlagName =
-  | "FreeBrokerScan"
-  | "PremiumBrokerRemoval"
-  | "FalseDoorTest"
-  | "HibpBreachNotifications"
-  | "FxaUidTelemetry";
+/** @deprecated The method should not be used, use Nimbus experiment or roll-out: /src/app/functions/server/getExperiments */
+export async function getDeletedFeatureFlags() {
+  return await knex("feature_flags")
+    .whereNotNull("deleted_at")
+    .orderBy("name")
+    .returning("*");
+}
 
+export type FeatureFlagName =
+  | "UpdatedEmailPreferencesOption"
+  | "MonthlyActivityEmail"
+  | "CancellationFlow"
+  | "ConfirmCancellation"
+  | "FirstDataBrokerRemovalFixedEmail"
+  | "DiscountCouponNextThreeMonths"
+  | "LatestScanDateCsatSurvey"
+  | "AutomaticRemovalCsatSurvey"
+  | "AdditionalRemovalStatuses"
+  | "PetitionBannerCsatSurvey"
+  /** Set clear expectations about auto-removal finishing in time for *most*, not *all* data brokers: */
+  | "SetExpectationsForUsers";
+
+/**
+ * @param options
+ */
 export async function getEnabledFeatureFlags(
   options:
     | { ignoreAllowlist?: false; email: string }
@@ -47,26 +66,35 @@ export async function getEnabledFeatureFlags(
     .and.where("is_enabled", true);
 
   if (!options.ignoreAllowlist) {
-    query = query.and
-      .whereRaw("ARRAY_LENGTH(allow_list, 1) IS NULL")
-      .orWhereRaw("? = ANY(allow_list)", options.email);
+    query = query.andWhere(
+      (whereBuilder) =>
+        void whereBuilder
+          .whereRaw("ARRAY_LENGTH(allow_list, 1) IS NULL")
+          .orWhereRaw("? = ANY(allow_list)", options.email),
+    );
   }
 
   const enabledFlagNames = await query;
 
-  return enabledFlagNames.map((row) => row.name as FeatureFlagName);
+  return enabledFlagNames.map(
+    (row: { name: string }) => row.name as FeatureFlagName,
+  );
 }
 
-async function getFeatureFlagByName(name: string) {
+export async function getFeatureFlagByName(name: string) {
   logger.info("getFeatureFlagByName", name);
   const res = await knex("feature_flags").where("name", name);
 
   return res[0] || null;
 }
 
-async function addFeatureFlag(flag: FeatureFlag) {
+/**
+ * @param flag
+ * @deprecated The method should not be used, use Nimbus experiment or roll-out: /src/app/functions/server/getExperiments
+ */
+export async function addFeatureFlag(flag: FeatureFlag) {
   logger.info("addFeatureFlag", flag);
-  const featureFlagDb: FeatureFlagRow = {
+  const featureFlagDb: Omit<FeatureFlagRow, "created_at" | "modified_at"> = {
     name: flag.name,
     is_enabled: flag.isEnabled,
     description: flag.description,
@@ -84,12 +112,20 @@ async function addFeatureFlag(flag: FeatureFlag) {
     expired_at: flag.expiredAt,
     owner: flag.owner,
   };
-  const res = await knex("feature_flags").insert(featureFlagDb).returning("*");
+  const res = await knex("feature_flags")
+    .insert(featureFlagDb)
+    .onConflict("name")
+    .merge(["deleted_at"])
+    .returning("*");
 
   return res[0];
 }
 
-async function deleteFeatureFlagByName(name: string) {
+/**
+ * @param name
+ * @deprecated The method should not be used, use Nimbus experiment or roll-out: /src/app/functions/server/getExperiments
+ */
+export async function deleteFeatureFlagByName(name: string) {
   logger.info("deleteFeatureFlagByName", name);
   const res = await knex("feature_flags")
     .where("name", name)
@@ -102,7 +138,12 @@ async function deleteFeatureFlagByName(name: string) {
   return res[0];
 }
 
-async function updateDependencies(name: string, dependencies: string[]) {
+/**
+ * @param name
+ * @param dependencies
+ * @deprecated The method should not be used, use Nimbus experiment or roll-out: /src/app/functions/server/getExperiments
+ */
+export async function updateDependencies(name: string, dependencies: string[]) {
   logger.info("updateDependencies", { name, dependencies });
   const res = await knex("feature_flags")
     .where("name", name)
@@ -117,7 +158,12 @@ async function updateDependencies(name: string, dependencies: string[]) {
   return res[0];
 }
 
-async function updateOwner(name: string, owner: string) {
+/**
+ * @param name
+ * @param owner
+ * @deprecated The method should not be used, use Nimbus experiment or roll-out: /src/app/functions/server/getExperiments
+ */
+export async function updateOwner(name: string, owner: string) {
   logger.info("updateOwner", { name, owner });
   const res = await knex("feature_flags")
     .where("name", name)
@@ -132,7 +178,12 @@ async function updateOwner(name: string, owner: string) {
   return res[0];
 }
 
-async function updateAllowList(name: string, allowList: string[]) {
+/**
+ * @param name
+ * @param allowList
+ * @deprecated The method should not be used, use Nimbus experiment or roll-out: /src/app/functions/server/getExperiments
+ */
+export async function updateAllowList(name: string, allowList: string[]) {
   allowList = allowList.reduce((acc: string[], e: string) => {
     e = e.trim();
     if (e) acc.push(e);
@@ -152,7 +203,12 @@ async function updateAllowList(name: string, allowList: string[]) {
   return res[0];
 }
 
-async function updateWaitList(name: string, waitList: string[]) {
+/**
+ * @param name
+ * @param waitList
+ * @deprecated The method should not be used, use Nimbus experiment or roll-out: /src/app/functions/server/getExperiments
+ */
+export async function updateWaitList(name: string, waitList: string[]) {
   waitList = waitList.reduce((acc: string[], e: string) => {
     e = e.trim();
     if (e) acc.push(e);
@@ -172,7 +228,15 @@ async function updateWaitList(name: string, waitList: string[]) {
   return res[0];
 }
 
-async function enableFeatureFlagByName(name: string, isEnabled: boolean) {
+/**
+ * @param name
+ * @param isEnabled
+ * @deprecated The method should not be used, use Nimbus experiment or roll-out: /src/app/functions/server/getExperiments
+ */
+export async function enableFeatureFlagByName(
+  name: string,
+  isEnabled: boolean,
+) {
   logger.info("enableFeatureFlagByName", name);
   const res = await knex("feature_flags")
     .where("name", name)
@@ -187,7 +251,11 @@ async function enableFeatureFlagByName(name: string, isEnabled: boolean) {
   return res[0];
 }
 
-async function disableFeatureFlagByName(name: string) {
+/**
+ * @param name
+ * @deprecated The method should not be used, use Nimbus experiment or roll-out: /src/app/functions/server/getExperiments
+ */
+export async function disableFeatureFlagByName(name: string) {
   logger.info("disableFeatureFlagByName", name);
   const res = await knex("feature_flags")
     .where("name", name)
@@ -201,16 +269,3 @@ async function disableFeatureFlagByName(name: string) {
 
   return res[0];
 }
-
-export {
-  getAllFeatureFlags,
-  getFeatureFlagByName,
-  addFeatureFlag,
-  deleteFeatureFlagByName,
-  updateAllowList,
-  updateDependencies,
-  updateOwner,
-  updateWaitList,
-  enableFeatureFlagByName,
-  disableFeatureFlagByName,
-};

@@ -1,3 +1,8 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+
 # Breach Data Classes
 
 account-balances = Mba’ete rembyre
@@ -14,7 +19,7 @@ avatars = Avatars
 bank-account-numbers = Mba’ete banco pegua papapy
 beauty-ratings = Mba’eporã jeporavo
 biometric-data = Biométrico mba’ekuaarã
-# This string is the shortened version of "Biographies", and 
+# This string is the shortened version of "Biographies", and
 # refers to biographical data about a user.
 bios = Haijehegua
 browser-user-agent-details = Poruhára pytyvõha kundahára mba’emimi
@@ -25,6 +30,7 @@ career-levels = Carréra rapykuere
 cellular-network-names = Red celular réra
 charitable-donations = Jopói mba’eporãrã
 chat-logs = Chat rehegua jehaipy
+citizenship-statuses = Tavaygua rekotee
 clothing-sizes = Ao tuichakue
 credit-card-cvv = Kuatia’atã ñemurã CVV
 credit-cards = Kuatia’atã ñemurã
@@ -35,7 +41,7 @@ customer-interactions = Ñomongeta ñemuhára ndive
 dates-of-birth = Teñoiha ára
 deceased-date = Ñemanoha ára
 deceased-statuses = Ñemanoha rekotee
-# Instructions that you can set up in online shopping services to get your orders 
+# Instructions that you can set up in online shopping services to get your orders
 # delivered (e.g. deliver to a specific neighbor, entrance location, etc.).
 delivery-instructions = Delivery jejapo rape
 device-information = Mba’e’oka marandu
@@ -75,12 +81,13 @@ instant-messenger-identities = Ñe’ẽmondoha ipya’éva reraite
 ip-addresses = IP kundaharape
 job-applications = Mba’ejerure mba’aporã
 job-titles = Nerenda mba’apohápe
-# This string refers to vehicle license plates. 
+# This string refers to vehicle license plates.
 licence-plates = Ñe’ẽmboguapy
 living-costs = Tekove repy
 # This string refers to financial loans.
 loan-information = Ñemba’eporu marandu
 login-histories = Tembiapo ñepyrũ rembiasakue
+loyalty-program-details = Mba’emimi tembiaporape jeporumeme rehegua
 mac-addresses = MAC kundaharape
 marital-statuses = Emendávapa
 # Mnemonic phrases are a group of words used to access the content of cryptocurrency wallets.
@@ -141,6 +148,7 @@ spouses-names = Mendare réra
 support-tickets = Pytyvõ jerure
 survey-results = Ñeporandúgui osẽva
 taxation-records = Registro fiscal
+telecommunications-carrier = Momaranduhára ñemboguataha
 time-zones = Tendaguasu aravogua
 travel-habits = Jehokuévo ejapomeméva
 user-statuses = Poruhára rekotee

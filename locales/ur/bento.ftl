@@ -1,17 +1,14 @@
-fx-monitor = { -product-name }
-pocket = { -brand-pocket }
-fx-send = { -brand-send }
-fx-lockwise = { -brand-lockwise }
+
 
 ## If possible, keep "Firefox Browser" in English, but feel free 
 ## to translate browser if that doesn't work for your language.
 
-fx-desktop = { -brand-name } براؤزر برائے ڈیسک ٹاپ
-fx-mobile = موبائل کے لیے { -brand-name }
+## If possible, keep "Firefox Browser" in English, but feel free
+## to translate browser if that doesn't work for your language.
 
 ##
 
-# A link at the bottom of the Bento menu
-made-by-mozilla = { -brand-Mozilla } کی جانب سے بنایا گیا
-# Aria label for button that closes the Bento menu
-mobile-close-bento-button-title = مینیو بند کریں
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+

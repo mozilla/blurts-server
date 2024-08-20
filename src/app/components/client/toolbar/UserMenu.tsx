@@ -25,31 +25,45 @@ import type { ReactNode, Key } from "react";
 
 import { Popover } from "../Popover";
 import { useL10n } from "../../../hooks/l10n";
+import { useTelemetry } from "../../../hooks/useTelemetry";
 import styles from "./UserMenu.module.scss";
 import OpenInIcon from "./images/menu-icon-open-in.svg";
 import SettingsIcon from "./images/menu-icon-settings.svg";
+import ContactIcon from "./images/menu-icon-contact.svg";
 import HelpIcon from "./images/menu-icon-help.svg";
 import SignOutIcon from "./images/menu-icon-signout.svg";
+import {
+  CONST_URL_PLUS_CONTACT_SUPPORT,
+  CONST_URL_SUMO_MONITOR_SUPPORT,
+} from "../../../../constants";
+import { hasPremium } from "../../../functions/universal/user";
 
 export type UserMenuProps = {
   user: Session["user"];
+  fxaSettingsUrl: string;
 };
 
 export const UserMenu = (props: UserMenuProps) => {
   const l10n = useL10n();
+  const recordTelemetry = useTelemetry();
 
   const fxaItemRef = useRef<HTMLAnchorElement>(null);
   const settingsItemRef = useRef<HTMLAnchorElement>(null);
+  const contactItemRef = useRef<HTMLAnchorElement>(null);
   const helpItemRef = useRef<HTMLAnchorElement>(null);
   const signOutItemRef = useRef<HTMLButtonElement>(null);
 
   const itemKeys = {
     fxa: "fxa",
     settings: "settings",
+    contact: "contact",
     help: "help",
     signout: "signout",
   };
 
+  /* c8 ignore next 21 */
+  // Since the Node 20.10 upgrade, it's been intermittently marking this (and
+  // this comment) as uncovered, even though I think it's covered by tests.
   const handleOnAction = (menuItemKey: Key) => {
     switch (menuItemKey) {
       case itemKeys.fxa:
@@ -57,6 +71,9 @@ export const UserMenu = (props: UserMenuProps) => {
         break;
       case itemKeys.settings:
         settingsItemRef.current?.click();
+        break;
+      case itemKeys.contact:
+        contactItemRef.current?.click();
         break;
       case itemKeys.help:
         helpItemRef.current?.click();
@@ -76,10 +93,15 @@ export const UserMenu = (props: UserMenuProps) => {
         <b>{props.user.email}</b>
         <a
           className={styles.menuItemCta}
-          href={process.env.FXA_SETTINGS_URL}
+          href={props.fxaSettingsUrl}
           ref={fxaItemRef}
           rel="noopener noreferrer"
           target="_blank"
+          onClick={() =>
+            recordTelemetry("ctaButton", "click", {
+              button_id: "manage_account_user_menu",
+            })
+          }
         >
           {l10n.getString("user-menu-manage-fxa-label")}
           <Image src={OpenInIcon} alt="" height={24} width={24} />
@@ -91,7 +113,7 @@ export const UserMenu = (props: UserMenuProps) => {
       >
         <Link
           className={styles.menuItemCta}
-          href="/redesign/user/settings/"
+          href="/user/settings"
           ref={settingsItemRef}
           title={l10n.getString("user-menu-settings-tooltip")}
         >
@@ -99,13 +121,31 @@ export const UserMenu = (props: UserMenuProps) => {
           {l10n.getString("user-menu-settings-label")}
         </Link>
       </Item>
+      {hasPremium(props.user) && (
+        <Item
+          key={itemKeys.contact}
+          textValue={l10n.getString("user-menu-contact-label")}
+        >
+          <a
+            className={styles.menuItemCta}
+            href={CONST_URL_PLUS_CONTACT_SUPPORT}
+            ref={contactItemRef}
+            rel="noopener noreferrer"
+            target="_blank"
+            title={l10n.getString("user-menu-contact-tooltip")}
+          >
+            <Image src={ContactIcon} alt="" height={24} width={24} />
+            {l10n.getString("user-menu-contact-label")}
+          </a>
+        </Item>
+      )}
       <Item
         key={itemKeys.help}
         textValue={l10n.getString("user-menu-help-label")}
       >
         <a
           className={styles.menuItemCta}
-          href={process.env.NEXT_PUBLIC_MONITOR_SUPPORT_URL}
+          href={CONST_URL_SUMO_MONITOR_SUPPORT}
           ref={helpItemRef}
           rel="noopener noreferrer"
           target="_blank"
@@ -141,6 +181,7 @@ type MenuTriggerComponentProps = MenuTriggerProps &
 
 function MenuTrigger(props: MenuTriggerComponentProps) {
   const l10n = useL10n();
+  const recordTelemetry = useTelemetry();
 
   const state = useMenuTriggerState(props);
   const ref = useRef(null);
@@ -159,7 +200,12 @@ function MenuTrigger(props: MenuTriggerComponentProps) {
         ref={ref}
         className={styles.trigger}
         title={l10n.getString("user-menu-trigger-tooltip")}
-        onClick={() => state.open()}
+        onClick={() => {
+          state.open();
+          recordTelemetry("ctaButton", "click", {
+            button_id: "opened_user_menu",
+          });
+        }}
       >
         {props.user.fxa?.avatar && (
           <Image
@@ -212,9 +258,21 @@ type MenuItemProps = {
 function MenuItem({ item, state }: MenuItemProps) {
   const ref = useRef(null);
   const { menuItemProps } = useMenuItem({ key: item.key }, state, ref);
+  const recordTelemetry = useTelemetry();
 
   return (
-    <li {...menuItemProps} ref={ref} className={`${styles.menuItemWrapper}`}>
+    <li
+      {...menuItemProps}
+      ref={ref}
+      className={`${styles.menuItemWrapper}`}
+      onClick={() => {
+        const buttonId =
+          item.textValue.replaceAll(" ", "_").toLowerCase() + "_user_menu";
+        recordTelemetry("ctaButton", "click", {
+          button_id: buttonId,
+        });
+      }}
+    >
       {item.rendered}
     </li>
   );

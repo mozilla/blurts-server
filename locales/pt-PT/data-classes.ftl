@@ -1,3 +1,8 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+
 # Breach Data Classes
 
 account-balances = Balanços de contas
@@ -14,7 +19,7 @@ avatars = Avatares
 bank-account-numbers = Números da conta bancária
 beauty-ratings = Avaliações de beleza
 biometric-data = Dados biométricos
-# This string is the shortened version of "Biographies", and 
+# This string is the shortened version of "Biographies", and
 # refers to biographical data about a user.
 bios = Biografias
 browser-user-agent-details = Detalhes do user agent
@@ -25,6 +30,7 @@ career-levels = Níveis de carreira
 cellular-network-names = Nomes de redes celulares
 charitable-donations = Doações de caridade
 chat-logs = Registos de conversas
+citizenship-statuses = Estados de cidadania
 clothing-sizes = Tamanhos de roupas
 credit-card-cvv = CVV do cartão de crédito
 credit-cards = Cartões de crédito
@@ -35,7 +41,7 @@ customer-interactions = Interações com clientes
 dates-of-birth = Datas de nascimento
 deceased-date = Data de falecimento
 deceased-statuses = Estados de falecimento
-# Instructions that you can set up in online shopping services to get your orders 
+# Instructions that you can set up in online shopping services to get your orders
 # delivered (e.g. deliver to a specific neighbor, entrance location, etc.).
 delivery-instructions = Instruções de entrega
 device-information = Informação de dispositivo
@@ -75,12 +81,13 @@ instant-messenger-identities = Identidades de mensagens instantâneas
 ip-addresses = Endereços IP
 job-applications = Candidaturas a emprego
 job-titles = Títulos de trabalho
-# This string refers to vehicle license plates. 
+# This string refers to vehicle license plates.
 licence-plates = Matrículas
 living-costs = Custos de vida
 # This string refers to financial loans.
 loan-information = Informação de empréstimo
 login-histories = Histórias de autenticação
+loyalty-program-details = Detalhes do programa de fidelidade
 mac-addresses = Endereços MAC
 marital-statuses = Estados conjugais
 # Mnemonic phrases are a group of words used to access the content of cryptocurrency wallets.
@@ -141,6 +148,7 @@ spouses-names = Nomes dos cônjuges
 support-tickets = Bilhetes de apoio
 survey-results = Resultados de pesquisas
 taxation-records = Registos de tributação
+telecommunications-carrier = Operadores de telecomunicações
 time-zones = Fusos horários
 travel-habits = Hábitos de viagem
 user-statuses = Estados de utilizador

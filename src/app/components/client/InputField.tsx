@@ -7,13 +7,15 @@
 import { useRef } from "react";
 import { AriaTextFieldProps, useTextField } from "react-aria";
 import styles from "./InputField.module.scss";
+import { ErrorIcon } from "../server/Icons";
+import { useL10n } from "../../hooks/l10n";
 
 export const InputField = (props: AriaTextFieldProps) => {
-  const { isRequired, label, validationState, value } = props;
+  const { isRequired, label, isInvalid, value } = props;
   const inputRef = useRef(null);
   const { errorMessageProps, validationErrors, inputProps, labelProps } =
     useTextField(props, inputRef);
-  const isInvalid = validationState === "invalid";
+  const l10n = useL10n();
 
   return (
     <div className={styles.input}>
@@ -34,6 +36,9 @@ export const InputField = (props: AriaTextFieldProps) => {
       />
       {isInvalid && (
         <div {...errorMessageProps} className={styles.inputMessage}>
+          <ErrorIcon
+            alt={l10n.getString("onboarding-enter-details-input-error-alt")}
+          />
           {
             // We always pass in a string at the time of writing, so we can't
             // hit the "else" path with tests:

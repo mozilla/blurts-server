@@ -8,9 +8,11 @@ import Image from "next/image";
 import styles from "./DataBrokerProfiles.module.scss";
 import { useL10n } from "../../hooks/l10n";
 import IconChevronDown from "./assets/icon-chevron-down.svg";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { OnerepScanResultRow } from "knex/types/tables";
+import { getDataBrokerName } from "../../functions/universal/dataBrokerNames";
 import { OpenInNew } from "../server/Icons";
+import { useTelemetry } from "../../hooks/useTelemetry";
 
 export type Props = {
   data: OnerepScanResultRow[];
@@ -18,11 +20,28 @@ export type Props = {
 
 export const DataBrokerProfiles = (props: Props) => {
   const l10n = useL10n();
+  const recordTelemetry = useTelemetry();
   const [showAllProfiles, setShowAllProfiles] = useState(false);
+  const ulRef = useRef<HTMLUListElement>(null);
+  const nextHiddenDataBroker = Array.from(
+    ulRef.current?.getElementsByTagName("li") ?? [],
+  ).find(
+    (liElement) =>
+      getComputedStyle(liElement).getPropertyValue("display") === "none",
+  );
+
+  useEffect(() => {
+    if (showAllProfiles) {
+      // React doesn't know which next item is hidden because it's handled via CSS, no errors or warnings resulted from this
+      nextHiddenDataBroker?.setAttribute("tabindex", "-1");
+      nextHiddenDataBroker?.focus();
+    }
+  }, [showAllProfiles, nextHiddenDataBroker]);
 
   return (
     <div className={styles.dataBrokerProfileCardsWapper}>
       <ul
+        ref={ulRef}
         className={`${styles.dataBrokerProfileCards} ${
           showAllProfiles ? styles.showAll : ""
         }`}
@@ -37,7 +56,12 @@ export const DataBrokerProfiles = (props: Props) => {
         className={`${styles.viewProfilesToggle} ${
           showAllProfiles ? styles.active : ""
         }`}
-        onClick={() => setShowAllProfiles(!showAllProfiles)}
+        onClick={() => {
+          setShowAllProfiles(!showAllProfiles);
+          recordTelemetry("button", "click", {
+            button_id: "see_more_profiles",
+          });
+        }}
       >
         <span>
           {showAllProfiles
@@ -60,16 +84,22 @@ export type DataBrokerProfileCardProps = {
 
 export const DataBrokerProfileCard = (props: DataBrokerProfileCardProps) => {
   const l10n = useL10n();
+  const recordTelemetry = useTelemetry();
 
   return (
     <div className={styles.dataBrokerProfileCard}>
-      <div
-        data-broker={props.data.data_broker}
-        className={styles.imagePlaceholder}
-      />
-      {/* TODO: Add logic to show unique image per data broker */}
-      {/* <Image src={} alt={props.data.data_broker} /> */}
-      <a href={props.data.link} target="_blank">
+      <span className={styles.dataBrokerName}>
+        {getDataBrokerName(props.data.data_broker)}
+      </span>
+      <a
+        href={props.data.link}
+        target="_blank"
+        onClick={() => {
+          recordTelemetry("link", "click", {
+            link_id: "viewed_data_broker",
+          });
+        }}
+      >
         {l10n.getString(
           "fix-flow-data-broker-profiles-view-data-broker-profiles-view-profile",
         )}
