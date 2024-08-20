@@ -23,7 +23,15 @@ import { getCountryCode } from "../../../../../functions/server/getCountryCode";
 import { headers } from "next/headers";
 import { getLatestOnerepScanResults } from "../../../../../../db/tables/onerep_scans";
 import { FirstDataBrokerRemovalFixed } from "../../../../../../emails/templates/firstDataBrokerRemovalFixed/FirstDataBrokerRemovalFixed";
-import { createRandomScanResult } from "../../../../../../apiMocks/mockData";
+import {
+  createRandomHibpListing,
+  createRandomScanResult,
+} from "../../../../../../apiMocks/mockData";
+import { BreachAlertEmail } from "../../../../../../emails/templates/breachAlert/BreachAlertEmail";
+import { SignupReportEmail } from "../../../../../../emails/templates/signupReport/SignupReportEmail";
+import { getBreachesForEmail } from "../../../../../../utils/hibp";
+import { getSha1 } from "../../../../../../utils/fxa";
+import { getBreaches } from "../../../../../functions/server/getBreaches";
 
 async function getAdminSubscriber(): Promise<SubscriberRow | null> {
   const session = await getServerSession();
@@ -68,6 +76,31 @@ async function send(
   );
 }
 
+export async function triggerSignupReportEmail(emailAddress: string) {
+  const subscriber = await getAdminSubscriber();
+  if (!subscriber) {
+    return false;
+  }
+
+  const l10n = getL10n();
+  const breaches = await getBreachesForEmail(
+    getSha1(emailAddress),
+    await getBreaches(),
+    true,
+  );
+  await send(
+    emailAddress,
+    breaches.length > 0
+      ? l10n.getString("email-subject-found-breaches")
+      : l10n.getString("email-subject-no-breaches"),
+    <SignupReportEmail
+      l10n={l10n}
+      breaches={breaches}
+      breachedEmailAddress={emailAddress}
+    />,
+  );
+}
+
 export async function triggerVerificationEmail(emailAddress: string) {
   const subscriber = await getAdminSubscriber();
   if (!subscriber) {
@@ -82,6 +115,7 @@ export async function triggerVerificationEmail(emailAddress: string) {
       verificationUrl="https://example.com"
       subscriber={sanitizeSubscriberRow(subscriber)}
       l10n={l10n}
+      utmCampaignId="verified-subscribers"
     />,
   );
 }
@@ -118,6 +152,27 @@ export async function triggerMonthlyActivity(emailAddress: string) {
       subscriber={sanitizeSubscriberRow(subscriber)}
       l10n={l10n}
       data={data}
+    />,
+  );
+}
+
+export async function triggerBreachAlert(emailAddress: string) {
+  const session = await getServerSession();
+  const subscriber = await getAdminSubscriber();
+  if (!subscriber || !session?.user) {
+    return false;
+  }
+
+  const l10n = getL10n();
+
+  await send(
+    emailAddress,
+    l10n.getString("breach-alert-subject"),
+    <BreachAlertEmail
+      breach={createRandomHibpListing()}
+      breachedEmail={emailAddress}
+      utmCampaignId="breach-alert"
+      l10n={l10n}
     />,
   );
 }

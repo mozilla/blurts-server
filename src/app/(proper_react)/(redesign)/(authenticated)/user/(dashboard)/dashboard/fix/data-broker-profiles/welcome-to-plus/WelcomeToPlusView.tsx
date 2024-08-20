@@ -90,8 +90,7 @@ export function WelcomeToPlusView(props: Props) {
                 )}
           </p>
           <p>
-            {hasRelevantScanResults &&
-            props.enabledFeatureFlags.includes("HowItWorksPage")
+            {hasRelevantScanResults
               ? /* c8 ignore next 23 */
                 // As the `SetExpectationsForUsers` feature flag is removed, the
                 // branch will be covered again:

@@ -7,7 +7,7 @@ import { NextRequest, NextResponse } from "next/server";
 import AppConstants from "../../../../../appConstants";
 
 import { getSubscriberByFxaUid } from "../../../../../db/tables/subscribers";
-import { addSubscriberUnverifiedEmailHash } from "../../../../../db/tables/emailAddresses.js";
+import { addSubscriberUnverifiedEmailHash } from "../../../../../db/tables/emailAddresses";
 
 import { sendVerificationEmail } from "../../../utils/email";
 

@@ -10,6 +10,8 @@ import {
   isOnerepScanResultForSubscriber,
   markOnerepScanResultAsResolved,
 } from "../../../../../../../db/tables/onerep_scans";
+import { markQaCustomBrokerAsResolved } from "../../../../../../../db/tables/qa_customs";
+import { isAdmin } from "../../../../../utils/auth";
 
 export type ResolveScanResultResponse =
   | {
@@ -35,6 +37,17 @@ export async function POST(
       JSON.stringify({ success: false, message: "Invalid scan result ID" }),
       { status: 400 },
     );
+  }
+
+  // This marks a QA broker as resolved. Collisions aren't a worry because a real user is never admin.
+  if (isAdmin(session.user.subscriber.primary_email)) {
+    const rowsAffected = await markQaCustomBrokerAsResolved(scanResultId);
+    if (rowsAffected > 0) {
+      return new NextResponse<ResolveScanResultResponse>(
+        JSON.stringify({ success: true }),
+        { status: 200 },
+      );
+    }
   }
 
   const isAllowedToResolve = await isOnerepScanResultForSubscriber({

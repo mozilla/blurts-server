@@ -38,7 +38,6 @@ export async function getDeletedFeatureFlags() {
 }
 
 export type FeatureFlagName =
-  | "RedesignedEmails"
   | "UpdatedEmailPreferencesOption"
   | "MonthlyActivityEmail"
   | "CancellationFlow"
@@ -47,7 +46,6 @@ export type FeatureFlagName =
   | "DiscountCouponNextThreeMonths"
   | "LatestScanDateCsatSurvey"
   | "AutomaticRemovalCsatSurvey"
-  | "HowItWorksPage"
   | "AdditionalRemovalStatuses"
   | "PetitionBannerCsatSurvey"
   /** Set clear expectations about auto-removal finishing in time for *most*, not *all* data brokers: */
@@ -68,9 +66,12 @@ export async function getEnabledFeatureFlags(
     .and.where("is_enabled", true);
 
   if (!options.ignoreAllowlist) {
-    query = query.and
-      .whereRaw("ARRAY_LENGTH(allow_list, 1) IS NULL")
-      .orWhereRaw("? = ANY(allow_list)", options.email);
+    query = query.andWhere(
+      (whereBuilder) =>
+        void whereBuilder
+          .whereRaw("ARRAY_LENGTH(allow_list, 1) IS NULL")
+          .orWhereRaw("? = ANY(allow_list)", options.email),
+    );
   }
 
   const enabledFlagNames = await query;

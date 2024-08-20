@@ -6,50 +6,37 @@
 -product-name = Firefox Monitor
 # Firefox is a brand name and should not be translated.
 -brand-name = Firefox
-
 # Firefox Relay is a product name and should not be translated.
 -product-name-relay = Firefox Relay
 # Mozilla VPN is a product name and should not be translated.
 -product-name-vpn = Mozilla VPN
-
 # A link to legal information about mozilla products.
 legal = Legal
-
 # Unsubscribe link in email.
 email-unsub-link = Cancele a inscrição
-
 # This string appears in the footer of breach report and breach alert emails.
 # { $unsubLink } is a link to the user's dashboard where they can unsubscribe from Monitor
-# and uses the text from { email-unsub-link }. { $faqLink } is a link to the 
+# and uses the text from { email-unsub-link }. { $faqLink } is a link to the
 # Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
 email-footer-blurb =
     Você recebeu este email porque se inscreveu para receber alertas do { -product-name }.
     Não quer mais receber? { $unsubLink }. Este é um email automático. Para obter suporte, visite { $faqLink }.
-
 # Button text
 verify-email-cta = Verificar email
-
 # Headline of verification email
 email-link-expires = Este link expira em 24 horas
-
-## Variables:
-##   $userEmail (string) - User email address
 
 ##
 
 # Subject line of email
 email-subject-found-breaches = O { -product-name } encontrou informações suas nesses vazamentos
-
 # Subject line of email
 email-subject-no-breaches = O { -product-name } não encontrou nenhum vazamento conhecido
-
 # Subject line of email
 email-subject-verify = Confirme seu email no { -product-name }
-
 fxm-warns-you-no-breaches =
     O { -product-name } avisa sobre vazamentos de dados que envolvem suas informações pessoais. 
     Até agora, nenhum vazamento foi encontrado. Enviaremos a você um alerta caso seu endereço de email apareça em um novo vazamento.
-
 email-breach-alert-blurb =
     O { -product-name } avisa sobre vazamentos de dados que envolvem suas informações pessoais. 
     Acabamos de receber detalhes sobre um vazamento de dados de outra empresa.
@@ -57,9 +44,9 @@ email-breach-alert-blurb =
 ## 2022 email template. HTML tags should not be translated, e.g. `<a>`
 
 # Have I Been Pwned attribution
+# Variables:
+#   $hibp-link-attr (String) - Link to Have I Been Pwned
 email-2022-hibp-attribution = Dados de vazamentos fornecidos por <a { $hibp-link-attr }>{ -brand-HIBP }</a>
-
-## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
 
 ## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
 ## Variables:
@@ -88,12 +75,13 @@ email-verify-simply-click = Basta clicar no link abaixo para concluir a verifica
 
 ## Breach report
 
-## Breach report
-## Variables:
-##   $email-address (string) - Email address
-
 email-breach-summary = Aqui está o resumo de vazamento de dados
+# Variables:
+#   $email-address (string) - Email address, bolded
 email-breach-detected = Os resultados da pesquisa da sua conta { $email-address } detectaram que seu email pode ter sido exposto. Recomendamos você agir agora para resolver este vazamento.
+# Variables:
+#   $email-address (string) - Email address
+email-breach-detected-2 = Os resultados da pesquisa da sua conta <b>{ $email-address }</b> detectaram que seu email pode ter sido exposto. Recomendamos agir agora mesmo para resolver este vazamento.
 email-dashboard-cta = Ir para o painel
 
 ## Breach alert

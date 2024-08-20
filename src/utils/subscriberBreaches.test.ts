@@ -7,7 +7,7 @@ import { getBreachesForEmail, HibpLikeDbBreach } from "./hibp";
 import { getSubBreaches } from "./subscriberBreaches";
 import { getUserEmails } from "../db/tables/emailAddresses";
 
-jest.mock("../db/tables/emailAddresses.js", () => ({
+jest.mock("../db/tables/emailAddresses", () => ({
   getUserEmails: jest.fn(),
 }));
 

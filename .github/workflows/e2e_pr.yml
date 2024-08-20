@@ -80,7 +80,9 @@ jobs:
           DATABASE_URL: postgres://postgres:postgres@localhost:5432/blurts
           HIBP_KANON_API_TOKEN: ${{ secrets.HIBP_KANON_API_TOKEN }}
           HIBP_API_TOKEN: ${{ secrets.HIBP_API_TOKEN }}
-          # Our tests are currently set up to expect accounts to act like
+          HIBP_KANON_API_ROOT: "http://localhost:6060/api/mock/hibp"
+          ONEREP_API_BASE: "http://localhost:6060/api/mock/onerep/"
+          # MNTOR-3516: Our tests are currently set up to expect accounts to act like
           # old user accounts, so let's pretend they all are:
           BROKER_SCAN_RELEASE_DATE: "3000-12-31"
       - uses: actions/upload-artifact@v4

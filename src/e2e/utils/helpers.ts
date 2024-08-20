@@ -3,7 +3,6 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { expect, request, Page, Locator, test } from "@playwright/test";
-import { InternalServerError } from "../../utils/error";
 import { LandingPage } from "../pages/landingPage.js";
 import { AuthPage } from "../pages/authPage.js";
 
@@ -79,7 +78,7 @@ export const getVerificationCode = async (
   attempts = 10,
 ): Promise<string> => {
   if (attempts === 0) {
-    throw new InternalServerError("Unable to retrieve restmail data");
+    throw new Error("Unable to retrieve restmail data");
   }
 
   const context = await request.newContext();
@@ -170,7 +169,9 @@ export const clickOnATagCheckDomain = async (
   page: Page,
 ) => {
   if (typeof host === "string")
-    host = new RegExp(escapeRegExp(host.replace(/^(https?:\/\/)/, "")));
+    host = new RegExp(
+      escapeRegExp(host.replace(/^(https?:\/\/)/, "").replace(/:\d+$/, "")),
+    );
   if (typeof path === "string") path = new RegExp(".*" + path + ".*");
 
   const href = await aTag.getAttribute("href");
@@ -224,3 +225,19 @@ export const forceLoginAs = async (
 export async function emailInputShouldExist(landingPage: LandingPage) {
   return 0 < (await landingPage.emailInputPrompt.count());
 }
+
+export const resetTestData = async (
+  page: Page,
+  hibp: boolean,
+  onerep: boolean,
+) => {
+  const baseUrl = process.env.SERVER_URL!;
+  const param1 = `${hibp ? "hibp=true" : ""}`;
+  const param2 = `${onerep ? "onerep=true" : ""}`;
+  let delim = "";
+  if (param1 && param2) delim = "&";
+  const params = param1 + delim + param2;
+  const completeUrl = baseUrl + "/api/mock/resetTestData?" + params;
+  const res = await page.request.get(completeUrl);
+  expect(res.ok()).toBeTruthy();
+};
