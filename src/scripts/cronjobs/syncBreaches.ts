@@ -18,8 +18,8 @@ import {
   upsertBreaches,
   updateBreachFaviconUrl,
 } from "../../db/tables/breaches";
-import { uploadToS3 } from "../s3.js";
 import { redisClient, REDIS_ALL_BREACHES_KEY } from "../../db/redis/client.js";
+import { uploadToS3 } from "../../utils/s3.js";
 
 const SENTRY_SLUG = "cron-sync-breaches";
 

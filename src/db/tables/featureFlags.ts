@@ -38,7 +38,6 @@ export async function getDeletedFeatureFlags() {
 }
 
 export type FeatureFlagName =
-  | "RedesignedEmails"
   | "UpdatedEmailPreferencesOption"
   | "MonthlyActivityEmail"
   | "CancellationFlow"

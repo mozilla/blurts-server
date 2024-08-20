@@ -15,7 +15,6 @@ function getRedisConfiguration(): {
 }
 
 export function createRedisInstance(config = getRedisConfiguration()) {
-  logger.debug("create_redis_instance", { config });
   try {
     const options: RedisOptions = {
       host: config.host,
