@@ -3,7 +3,6 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { expect, request, Page, Locator, test } from "@playwright/test";
-import { InternalServerError } from "../../utils/error";
 import { LandingPage } from "../pages/landingPage.js";
 import { AuthPage } from "../pages/authPage.js";
 
@@ -79,7 +78,7 @@ export const getVerificationCode = async (
   attempts = 10,
 ): Promise<string> => {
   if (attempts === 0) {
-    throw new InternalServerError("Unable to retrieve restmail data");
+    throw new Error("Unable to retrieve restmail data");
   }
 
   const context = await request.newContext();

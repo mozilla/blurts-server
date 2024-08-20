@@ -12,7 +12,9 @@ import { CloseBtn } from "../../../components/server/Icons";
 
 export const AccountDeletionNotification = () => {
   const l10n = useL10n();
-  const [cookies, _setCookie, removeCookie] = useCookies();
+  const [cookies, _setCookie, removeCookie] = useCookies(undefined, {
+    doNotUpdate: false,
+  });
   const [isDismissed, setIsDismissed] = useState(true);
 
   useEffect(() => {

@@ -57,6 +57,10 @@ export const EmailFooter = (props: Props) => {
         <mj-column>
           <mj-text font-size="14px" font-weight="400" align="center">
             {l10n.getFragment(
+              // These lines get covered by the FirstDataBrokerRemovalFixed test,
+              // but for some reason get marked as uncovered again once the
+              // `src/scripts/cronjobs/emailBreachAlerts.test.ts` tests are run:
+              /* c8 ignore next 2 */
               props.isOneTimeEmail
                 ? "email-footer-reason-subscriber-one-time"
                 : "email-footer-reason-subscriber",

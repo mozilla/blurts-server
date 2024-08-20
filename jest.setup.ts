@@ -8,6 +8,10 @@ import "jest-axe/extend-expect";
 import { TextEncoder } from "util";
 import { setProjectAnnotations } from "@storybook/react";
 import { defaultFallbackInView } from "react-intersection-observer";
+import {
+  resetIntersectionMocking,
+  setupIntersectionMocking,
+} from "react-intersection-observer/test-utils";
 import failOnConsole from "jest-fail-on-console";
 import * as globalStorybookConfig from "./.storybook/preview";
 
@@ -29,11 +33,17 @@ failOnConsole({
 // If no `IntersectionObserver` exists, Next.js's <Link> will do a state update
 // immediately after rendering, causing warnings about wrapping tests in act().
 global.IntersectionObserver = jest.fn();
-// Then in jest.config.cjs, we add an actual mock for the IntersectionObserver
+// Then before every test, we add an actual mock for the IntersectionObserver
 // API in `setupFilesAfterEnv`. When a <Link> scrolls into view, Next.js will
 // attempt to preload the target, causing another rerender that would cause a
 // warning about wrapping tests in act(). Thus, we tell it it's not in view.
 defaultFallbackInView(false);
+beforeEach(() => {
+  setupIntersectionMocking(jest.fn);
+});
+afterEach(() => {
+  resetIntersectionMocking();
+});
 
 global.TextEncoder = TextEncoder;
 

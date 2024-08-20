@@ -3,15 +3,13 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { SubscriberRow } from "knex/types/tables";
-import { resetUnverifiedEmailAddress } from "../../../db/tables/emailAddresses.js";
-import { sendEmail, getVerificationUrl } from "../../../utils/email.js";
-import { getTemplate } from "../../../emails/email2022.js";
-import { verifyPartial } from "../../../emails/emailVerify.js";
-import { getEnabledFeatureFlags } from "../../../db/tables/featureFlags";
+import { resetUnverifiedEmailAddress } from "../../../db/tables/emailAddresses";
+import { sendEmail } from "../../../utils/email.js";
 import { renderEmail } from "../../../emails/renderEmail";
 import { VerifyEmailAddressEmail } from "../../../emails/templates/verifyEmailAddress/VerifyEmailAddressEmail";
 import { sanitizeSubscriberRow } from "../../functions/server/sanitize";
 import { getL10n } from "../../functions/l10n/serverComponents";
+import { BadRequestError } from "../../../utils/error";
 
 export async function sendVerificationEmail(
   user: SubscriberRow,
@@ -25,32 +23,34 @@ export async function sendVerificationEmail(
     l10n,
   );
   const recipientEmail = unverifiedEmailAddressRecord.email;
-  const data = {
-    recipientEmail,
-    ctaHref: getVerificationUrl(unverifiedEmailAddressRecord),
-    utmCampaign: "email_verify",
-    heading: "email-verify-heading",
-    subheading: "email-verify-subhead",
-    partial: { name: "verify" },
-  };
 
-  const enabledFlags = await getEnabledFeatureFlags({
-    email: user.primary_email,
-  });
+  if (!unverifiedEmailAddressRecord.verification_token) {
+    throw new BadRequestError("subscriber has no verification_token");
+  }
+
+  const utmCampaign = "verified-subscribers";
+  const verificationUrl = new URL(
+    `${process.env.SERVER_URL}/api/v1/user/verify-email`,
+  );
+  verificationUrl.searchParams.set(
+    "token",
+    unverifiedEmailAddressRecord.verification_token,
+  );
+  verificationUrl.searchParams.set("utm_campaign", utmCampaign);
+  verificationUrl.searchParams.set("utm_content", "account-verification-email");
+  verificationUrl.searchParams.set("utm_source", "fx-monitor");
+  verificationUrl.searchParams.set("utm_medium", "email");
 
   await sendEmail(
     recipientEmail,
     l10n.getString("email-subject-verify"),
-    enabledFlags.includes("RedesignedEmails")
-      ? renderEmail(
-          <VerifyEmailAddressEmail
-            verificationUrl={
-              getVerificationUrl(unverifiedEmailAddressRecord).href
-            }
-            subscriber={sanitizedSubscriber}
-            l10n={l10n}
-          />,
-        )
-      : getTemplate(data, verifyPartial, l10n),
+    renderEmail(
+      <VerifyEmailAddressEmail
+        verificationUrl={verificationUrl.href}
+        subscriber={sanitizedSubscriber}
+        l10n={l10n}
+        utmCampaignId={utmCampaign}
+      />,
+    ),
   );
 }
