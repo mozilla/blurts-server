@@ -17,8 +17,6 @@ jest.mock("@sentry/nextjs", () => {
 jest.mock("../../utils/email", () => {
   return {
     initEmail: jest.fn(),
-    EmailTemplateType: jest.fn(),
-    getEmailCtaDashboardHref: jest.fn(),
     sendEmail: jest.fn(),
   };
 });
@@ -57,20 +55,6 @@ jest.mock("../../db/tables/email_notifications", () => {
   };
 });
 
-jest.mock("../../utils/fluent.js", () => {
-  return {
-    initFluentBundles: jest.fn(),
-    getMessage: jest.fn(),
-    getStringLookup: jest.fn(),
-  };
-});
-
-jest.mock("../../db/tables/featureFlags", () => {
-  return {
-    getEnabledFeatureFlags: jest.fn(() => Promise.resolve([])),
-  };
-});
-
 jest.mock("../../app/functions/l10n/parseMarkup", () => {
   return {
     parseMarkup: undefined,
@@ -87,18 +71,6 @@ jest.mock("../../app/functions/server/logging", () => {
   const logger = new Logging();
   return {
     logger,
-  };
-});
-
-jest.mock("../../emails/email2022.js", () => {
-  return {
-    getTemplate: jest.fn(),
-  };
-});
-
-jest.mock("../../emails/emailBreachAlert.js", () => {
-  return {
-    breachAlertEmailPartial: jest.fn(),
   };
 });
 
@@ -299,13 +271,7 @@ test("processes valid messages", async () => {
   );
 });
 
-test("rendering the new template if the `RedesignedEmails` flag is enabled", async () => {
-  const mockedFeatureFlagModule: any = jest.requireMock(
-    "../../db/tables/featureFlags",
-  );
-  mockedFeatureFlagModule.getEnabledFeatureFlags.mockResolvedValue([
-    "RedesignedEmails",
-  ]);
+test("rendering the MJML-based template", async () => {
   const consoleLog = jest
     .spyOn(console, "log")
     .mockImplementation(() => undefined);

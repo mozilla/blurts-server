@@ -15,16 +15,6 @@
 # A link to legal information about mozilla products.
 legal = Legal
 
-# Unsubscribe link in email.
-email-unsub-link =  Unsubscribe
-
-# This string appears in the footer of breach report and breach alert emails.
-# { $unsubLink } is a link to the user's dashboard where they can unsubscribe from Monitor
-# and uses the text from { email-unsub-link }. { $faqLink } is a link to the
-# Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
-email-footer-blurb = You’re receiving this email because you signed up for { -product-name }
-  alerts. No longer want these emails? { $unsubLink }. This is an automated email. For support, visit { $faqLink }.
-
 # Button text
 verify-email-cta = Verify Email
 

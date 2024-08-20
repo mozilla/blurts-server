@@ -12,10 +12,10 @@ let singleton: Redis;
 export const redisClient = () => {
   if (process.env.REDIS_URL?.includes("redis.mock")) {
     singleton = createRedisMockInstance();
-    logger.info("redis_mock_client_created_success");
+    logger.debug("redis_mock_client_created_success");
   } else {
     singleton = createRedisInstance();
-    logger.info("redis_client_created_success");
+    logger.debug("redis_client_created_success");
   }
   return singleton;
 };

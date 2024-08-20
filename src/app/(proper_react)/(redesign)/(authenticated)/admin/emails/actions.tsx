@@ -115,6 +115,7 @@ export async function triggerVerificationEmail(emailAddress: string) {
       verificationUrl="https://example.com"
       subscriber={sanitizeSubscriberRow(subscriber)}
       l10n={l10n}
+      utmCampaignId="verified-subscribers"
     />,
   );
 }
