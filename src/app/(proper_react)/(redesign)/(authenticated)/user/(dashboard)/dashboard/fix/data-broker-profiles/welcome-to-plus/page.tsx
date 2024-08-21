@@ -56,7 +56,7 @@ export default async function WelcomeToPlusPage() {
   };
 
   const enabledFeatureFlags = await getEnabledFeatureFlags({
-    ignoreAllowlist: false,
+    isSignedOut: false,
     email: session.user.email,
   });
 

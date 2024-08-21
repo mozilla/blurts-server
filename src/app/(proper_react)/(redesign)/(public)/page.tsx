@@ -34,7 +34,7 @@ export default async function Page({ searchParams }: Props) {
   if (typeof session?.user.subscriber?.fxa_uid === "string") {
     return redirect("/user/dashboard");
   }
-  const enabledFlags = await getEnabledFeatureFlags({ ignoreAllowlist: true });
+  const enabledFlags = await getEnabledFeatureFlags({ isSignedOut: true });
   const countryCode = getCountryCode(headers());
   const eligibleForPremium = isEligibleForPremium(countryCode);
 

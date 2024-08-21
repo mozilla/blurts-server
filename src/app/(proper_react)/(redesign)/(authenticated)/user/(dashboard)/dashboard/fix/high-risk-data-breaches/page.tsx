@@ -43,7 +43,7 @@ export default async function HighRiskDataBreaches() {
         }}
         isEligibleForPremium={isEligibleForPremium(countryCode)}
         enabledFeatureFlags={await getEnabledFeatureFlags({
-          ignoreAllowlist: false,
+          isSignedOut: false,
           email: session.user.email,
         })}
       />

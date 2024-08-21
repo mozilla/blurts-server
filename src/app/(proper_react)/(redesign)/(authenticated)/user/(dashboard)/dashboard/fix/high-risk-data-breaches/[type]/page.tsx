@@ -58,7 +58,7 @@ export default async function SecurityRecommendations({
       }}
       isEligibleForPremium={isEligibleForPremium(countryCode)}
       enabledFeatureFlags={await getEnabledFeatureFlags({
-        ignoreAllowlist: false,
+        isSignedOut: false,
         email: session.user.email,
       })}
     />
