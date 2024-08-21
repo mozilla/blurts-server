@@ -8,10 +8,6 @@ import { bearerToken } from "../../../utils/auth";
 import { logger } from "../../../../functions/server/logging";
 
 import { PubSub } from "@google-cloud/pubsub";
-import {
-  getAllBreachesFromDb,
-  getBreachByName,
-} from "../../../../../utils/hibp";
 
 const projectId = process.env.GCP_PUBSUB_PROJECT_ID;
 const topicName = process.env.GCP_PUBSUB_TOPIC_NAME;
@@ -26,6 +22,7 @@ const subscriptionName = process.env.GCP_PUBSUB_SUBSCRIPTION_NAME;
 export async function POST(req: NextRequest) {
   let pubsub;
   let json;
+
   try {
     if (!projectId) {
       throw new Error("GCP_PUBSUB_PROJECT_ID env var not set");
@@ -47,74 +44,24 @@ export async function POST(req: NextRequest) {
       );
       return NextResponse.json({ success: false }, { status: 400 });
     }
-
-    const breaches = await getAllBreachesFromDb();
-
-    const { breachName, _hashPrefix, _hashSuffixes } = json;
-    const breachAlert = getBreachByName(breaches, breachName);
-
-    if (!breachAlert) {
-      logger.error("HIBP breach notification: breach not found:", json);
-      return NextResponse.json({ success: false }, { status: 400 });
-    }
-
-    const { IsVerified, Domain, IsFabricated, IsSpamList } = breachAlert;
-
-    // If any of the following conditions are not satisfied:
-    // Do not send the breach alert email! The `logId`s are being used for
-    // logging in case we decide to not send the alert.
-    const emailDeliveryConditions = [
-      {
-        logId: "isNotVerified",
-        condition: !IsVerified,
-      },
-      {
-        logId: "domainEmpty",
-        condition: Domain === "",
-      },
-      {
-        logId: "isFabricated",
-        condition: IsFabricated,
-      },
-      {
-        logId: "isSpam",
-        condition: IsSpamList,
-      },
-    ];
-
-    const unsatisfiedConditions = emailDeliveryConditions.filter(
-      (condition) => condition.condition,
-    );
-
-    if (unsatisfiedConditions.length > 0) {
-      // Get a list of the failed condition `logId`s
-      const conditionLogIds = unsatisfiedConditions
-        .map((condition) => condition.logId)
-        .join(", ");
-
-      logger.info("Breach alert email was not sent.", {
-        name: breachAlert.Name,
-        reason: `The following conditions were not satisfied: ${conditionLogIds}.`,
-      });
-
-      return NextResponse.json({ success: true }, { status: 200 });
-    }
   } catch (ex) {
-    logger.error("Error processing breach alert:", ex);
+    logger.error("error_processing_breach_alert_request:", {
+      exception: ex as string,
+    });
     return NextResponse.json({ success: false }, { status: 500 });
   }
 
   try {
     pubsub = new PubSub({ projectId });
   } catch (ex) {
-    logger.error("Error connecting to PubSub:", ex);
+    logger.error("error_connecting_to_pubsub:", { exception: ex as string });
     return NextResponse.json({ success: false }, { status: 429 });
   }
 
   try {
     const topic = pubsub.topic(topicName);
     await topic.publishMessage({ json });
-    logger.info("Successfully queued breach notification", json);
+    logger.info("queued_breach_notification_success", { json });
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (ex) {
     if (process.env.NODE_ENV === "development") {
@@ -124,10 +71,10 @@ export async function POST(req: NextRequest) {
       await pubsub.createTopic(topicName);
       await pubsub.topic(topicName).createSubscription(subscriptionName);
     } else {
-      logger.error("Topic not found:", topicName);
+      logger.error("pubsub_topic_not_found:", { topicName });
       return NextResponse.json({ success: false }, { status: 500 });
     }
-    logger.error("Error queuing HIBP breach:", topicName);
+    logger.error("error_queuing_hibp_breach:", { topicName });
     return NextResponse.json({ success: false }, { status: 500 });
   }
 }
