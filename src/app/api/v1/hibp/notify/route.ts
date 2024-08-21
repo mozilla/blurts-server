@@ -72,9 +72,9 @@ export async function POST(req: NextRequest) {
       await pubsub.topic(topicName).createSubscription(subscriptionName);
     } else {
       logger.error("pubsub_topic_not_found:", { topicName });
-      return NextResponse.json({ success: false }, { status: 500 });
+      return NextResponse.json({ success: false }, { status: 429 });
     }
     logger.error("error_queuing_hibp_breach:", { topicName });
-    return NextResponse.json({ success: false }, { status: 500 });
+    return NextResponse.json({ success: false }, { status: 429 });
   }
 }
