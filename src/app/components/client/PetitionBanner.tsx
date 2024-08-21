@@ -15,6 +15,7 @@ import { TelemetryButton } from "./TelemetryButton";
 import { useTelemetry } from "../../hooks/useTelemetry";
 import { useViewTelemetry } from "../../hooks/useViewTelemetry";
 import { DismissalData } from "../../hooks/useLocalDismissal";
+import { TelemetryLink } from "./TelemetryLink";
 
 export const PetitionBanner = (props: {
   user: Session["user"];
@@ -48,33 +49,19 @@ export const PetitionBanner = (props: {
           })}
         </p>
         <div className={styles.buttons}>
-          <TelemetryButton
-            variant="primary"
-            className={styles.signButton}
-            onPress={() => {
-              // In order to prevent the banner from being hidden before
-              // the click on the link button is getting registered: Delay the
-              // dismissal until the next event loop execution.
-              // A timeout value of `0` should be enough, but unfortunately
-              // this does not seem to work on iOS — even a value lower than
-              // `100` should be plenty, but since this is now an arbitrary
-              // value let’s make extra sure.
-              setTimeout(() => {
-                dismiss();
-              }, 100);
-            }}
+          <TelemetryLink
             href={CONST_URL_DATA_PRIVACY_PETITION_BANNER}
+            className={styles.signLink}
             target="_blank"
-            event={{
-              module: "ctaButton",
-              name: "click",
-              data: {
-                button_id: "sign_petition",
-              },
+            eventData={{
+              link_id: "sign_petition",
+            }}
+            onClick={() => {
+              dismiss();
             }}
           >
             {l10n.getString("petition-banner-data-privacy-button-sign")}
-          </TelemetryButton>
+          </TelemetryLink>
           <TelemetryButton
             variant="tertiary"
             className={styles.dismissButton}
