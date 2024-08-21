@@ -39,7 +39,15 @@ export const SignupReportEmail = (props: Props) => {
         </mj-section>
         {props.breaches.map((breach, i) => (
           <React.Fragment key={breach.Id}>
-            {i > 0 && <mj-spacer height="20px" />}
+            {i > 0 && (
+              // > mj-spacer cannot be used inside mj-body, only inside: mj-attributes, mj-column, mj-hero.
+              // And <mj-column>s "must be located under mj-section tags".
+              <mj-section padding="0">
+                <mj-column padding="0">
+                  <mj-spacer height="20px" />
+                </mj-column>
+              </mj-section>
+            )}
             <BreachCard breach={breach} l10n={l10n} />
           </React.Fragment>
         ))}

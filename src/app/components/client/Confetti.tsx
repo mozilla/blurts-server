@@ -17,7 +17,7 @@ export const Confetti = () => {
     if (canvasRef.current) {
       confetti = create(canvasRef.current, {
         resize: true,
-        useWorker: true,
+        useWorker: false,
       });
 
       // Confetti options: https://github.com/catdad/canvas-confetti#options

@@ -16,7 +16,7 @@ import {
 import type { SanitizedSubscriberRow } from "../server/sanitize";
 import { parseMarkup } from "./parseMarkup";
 
-export function getEmailL10n(
+export function getCronjobL10n(
   subscriber: SanitizedSubscriberRow,
 ): ExtendedReactLocalization {
   // We don't have a runtime language when we email people, so use their
