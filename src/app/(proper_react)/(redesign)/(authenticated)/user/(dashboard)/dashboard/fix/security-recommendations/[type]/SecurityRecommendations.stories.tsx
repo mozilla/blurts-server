@@ -53,7 +53,6 @@ const SecurityRecommendationsWrapper = (props: {
           user: mockedSession.user,
         }}
         isEligibleForPremium={true}
-        enabledFeatureFlags={["SetExpectationsForUsers"]}
       />
     </Shell>
   );

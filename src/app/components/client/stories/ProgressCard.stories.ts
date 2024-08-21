@@ -22,7 +22,6 @@ export const ProgressCardItemUsPremium: Story = {
     autoRemoved: 5,
     isPremiumUser: true,
     isEligibleForPremium: true,
-    enabledFeatureFlags: ["SetExpectationsForUsers"],
   },
 };
 
@@ -33,7 +32,6 @@ export const ProgressCardItemUsNonPremium: Story = {
     autoRemoved: 5,
     isEligibleForPremium: true,
     isPremiumUser: false,
-    enabledFeatureFlags: ["SetExpectationsForUsers"],
   },
 };
 
@@ -43,6 +41,5 @@ export const ProgressCardItemNonUs: Story = {
     resolvedByYou: 3,
     autoRemoved: 0,
     isEligibleForPremium: false,
-    enabledFeatureFlags: ["SetExpectationsForUsers"],
   },
 };
