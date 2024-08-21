@@ -18,6 +18,7 @@ import {
   upsertBreaches,
   updateBreachFaviconUrl,
 } from "../../db/tables/breaches";
+import { redisClient, REDIS_ALL_BREACHES_KEY } from "../../db/redis/client.js";
 import { uploadToS3 } from "../../utils/s3.js";
 
 const SENTRY_SLUG = "cron-sync-breaches";
@@ -110,6 +111,20 @@ if (seen.size !== breachesResponse.length) {
     "Number of breaches in the database after upsert:",
     result.length,
   );
+
+  // try to refresh Redis cache of all breaches
+  try {
+    const rClient = redisClient();
+    await rClient.set(REDIS_ALL_BREACHES_KEY, JSON.stringify(result));
+    await rClient.expire(REDIS_ALL_BREACHES_KEY, 3600 * 12); // 12 hour expiration
+  } catch (e) {
+    Sentry.captureMessage(
+      `Update Redis failed for syncBreaches.ts: ${e as string}`,
+    );
+    console.error(
+      `Update Redis failed for syncBreaches.ts: ${(e as Error).stack}`,
+    );
+  }
 }
 
 await getBreachIcons(breachesResponse);
