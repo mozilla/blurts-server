@@ -68,7 +68,7 @@ export default async function SettingsPage({ searchParams }: Props) {
   }
 
   const enabledFeatureFlags = await getEnabledFeatureFlags({
-    ignoreAllowlist: false,
+    isSignedOut: false,
     email: session.user.email,
   });
 

@@ -1,13 +1,14 @@
 @import "../../../../../../tokens";
 
 .flagWrapper {
+  flex: 1 0 $content-xs;
   display: flex;
   flex-direction: column;
-  gap: $spacing-md;
+  gap: $spacing-lg;
   background-color: $color-white;
   padding: $spacing-lg;
   border-radius: $border-radius-md;
-  max-width: $content-md;
+  max-width: $content-sm;
 }
 
 .flagName {
@@ -21,6 +22,10 @@
 }
 
 .allowListWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+
   h4 {
     font: $text-body-md;
     font-weight: bold;
@@ -31,6 +36,7 @@
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+  gap: $spacing-xs;
   padding: 0;
   list-style-type: none;
 }
@@ -39,7 +45,8 @@
   display: flex;
   align-items: center;
   gap: $spacing-xs;
-  font: $text-body-lg;
+  font: $text-body-md;
+  font-family: monospace;
 
   :first-child {
     flex-grow: 1;
@@ -53,9 +60,13 @@
 
     &:hover {
       cursor: pointer;
-      background-color: $color-blue-50;
+      background-color: $color-red-70;
       color: $color-white;
     }
+  }
+
+  &:has(button:hover) {
+    color: $color-red-70;
   }
 }
 
@@ -63,6 +74,10 @@
   display: flex;
   align-items: center;
   gap: $spacing-sm;
+
+  input[type="email"] {
+    flex-grow: 1;
+  }
 
   // This rule is more specific than the button:hover in `.addressListing`,
   // but that class doesn't apply to the same elements:
