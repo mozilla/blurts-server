@@ -48,7 +48,7 @@
 .flagList {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: $spacing-lg;
   padding: $spacing-2xl;
 }

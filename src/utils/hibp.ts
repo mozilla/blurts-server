@@ -13,6 +13,7 @@ import {
   getAllQaCustomBreaches,
   getQaToggleRow,
 } from "../db/tables/qa_customs.ts";
+import { redisClient, REDIS_ALL_BREACHES_KEY } from "../db/redis/client.ts";
 const {
   HIBP_THROTTLE_MAX_TRIES,
   HIBP_THROTTLE_DELAY,
@@ -59,12 +60,12 @@ async function _throttledFetch(
       case 404:
         // 404 can mean "no results", return undefined response
         logger.info("_throttledFetch", {
-          err: "Error 404, not going to retry. TryCount: " + tryCount,
+          exception: "Error 404, not going to retry. TryCount: " + tryCount,
         });
         return undefined;
       case 429:
         logger.info("_throttledFetch", {
-          err: "Error 429, tryCount: " + tryCount,
+          exception: "Error 429, tryCount: " + tryCount,
         });
         // @ts-ignore TODO: Explicitly parse into a number
         if (tryCount >= HIBP_THROTTLE_MAX_TRIES) {
@@ -97,7 +98,7 @@ async function hibpApiFetch(path: string, options = {}) {
   try {
     return await _throttledFetch(url, reqOptions);
   } catch (ex) {
-    logger.error(ex);
+    logger.error("hibp_api_fetch", { exception: ex });
   }
 }
 /* c8 ignore stop */
@@ -143,7 +144,7 @@ async function kAnonReq(path: string, options = {}) {
   try {
     return await _throttledFetch(url, reqOptions);
   } catch (ex) {
-    logger.error(ex);
+    logger.error("k_anon_req", { exception: ex });
   }
 }
 /* c8 ignore stop */
@@ -211,13 +212,40 @@ export type HibpLikeDbBreach = {
 /* c8 ignore start */
 async function getAllBreachesFromDb(): Promise<HibpLikeDbBreach[]> {
   let dbBreaches: BreachRow[] = [];
+  const rClient = redisClient();
+
   try {
-    dbBreaches = await getAllBreaches();
+    // attempts to fetch breaches from Redis first
+    let redisBreaches;
+    if (rClient) {
+      redisBreaches = JSON.parse(
+        (await rClient.get(REDIS_ALL_BREACHES_KEY)) || "[]",
+      ) as BreachRow[];
+    }
+
+    if (!redisBreaches || redisBreaches.length < 1) {
+      // if Redis fails, attempt to get breaches from Postgres and set Redis
+      logger.warn("get_all_breaches_from_db", {
+        exception: "Failed to fetch breaches in redis",
+      });
+
+      dbBreaches = await getAllBreaches();
+      logger.info("get_all_breaches_from_db_successful", {
+        numOfBreaches: dbBreaches.length,
+      });
+      await rClient.set(REDIS_ALL_BREACHES_KEY, JSON.stringify(dbBreaches));
+      await rClient.expire(REDIS_ALL_BREACHES_KEY, 3600 * 12); // 12 hour expiration
+      logger.info("set_breaches_in_redis_successful");
+    } else {
+      dbBreaches = redisBreaches;
+      logger.info("get_breaches_from_redis_successful", {
+        numOfBreaches: dbBreaches.length,
+      });
+    }
   } catch (e) {
-    logger.error(
-      "getAllBreachesFromDb",
-      "No breaches exist in the database: " + (e as string),
-    );
+    logger.error("get_all_breaches_from_db", {
+      exception: "No breaches exist in the database: " + (e as string),
+    });
     return [];
   }
 

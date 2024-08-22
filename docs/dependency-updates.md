@@ -217,7 +217,13 @@ Used to generate type definitions from our `nimbus.yaml` file. If
 
 ### `jsonwebtoken` and `jwk-to-pem`
 
-TODO: Describe how the `fxa-rp-events` endpoint uses these packages.
+The `fxa-rp-events` webhook endpoint uses these packages to parse [JSON Web Token (JWT)](https://en.wikipedia.org/wiki/JSON_Web_Token)
+requests and to validate cryptographic signatures (which are in [PEM format](https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail)).
+
+There currently isn't an easy way to test this locally, so dependency updates to these packages should be watched closely on stage
+to ensure that [events from FxA](https://github.com/mozilla/fxa/blob/main/packages/fxa-event-broker/README.md) are processed correctly.
+
+TODO [MNTOR-3515](https://mozilla-hub.atlassian.net/browse/MNTOR-3515): add a unit test so these can be exercised without requiring merging to stage.
 
 ### `uuid`
 
@@ -283,6 +289,14 @@ can be used for testing.
 Monitor provides a tool for sending test email at the endpoint `/admin/emails`.
 
 ### `adm-zip`
+
+This is used as part of downloading and unzipping location data for the auto-complete address feature.
+
+Normally this is run by cron and uploads to an S3 bucket, the upload step can be skipped with:
+
+```sh
+npm run create-location-data -- --skip-upload
+```
 
 TODO: Describe how to verify that uploading auto-complete locations still works
 as expected.

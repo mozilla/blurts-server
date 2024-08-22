@@ -64,7 +64,7 @@ export const AddFeatureFlag = () => {
         <thead>
           <tr>
             <th>Name</th>
-            <th>Enabled</th>
+            <th>Enable for everyone</th>
           </tr>
         </thead>
         <tbody>
