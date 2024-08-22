@@ -14,6 +14,7 @@ import { getLocale } from "../../../../../../../../functions/universal/getLocale
 import { TelemetryButton } from "../../../../../../../../components/client/TelemetryButton";
 import { HibpBreachDataTypes } from "../../../../../../../../functions/universal/breach";
 import { BreachResolutionRequest } from "../../../../../../../../api/v1/user/breaches/route";
+import { TelemetryLink } from "../../../../../../../../components/client/TelemetryLink";
 
 export const leakedPasswordTypes = [
   "passwords",
@@ -210,18 +211,13 @@ function getLeakedPasswords(props: LeakedPasswordLayout) {
                   elems: {
                     // TODO: Find a way to go to the actual breach site
                     link_to_breach_site: (
-                      <TelemetryButton
+                      <TelemetryLink
                         href={breachSite}
-                        variant="link"
-                        event={{
-                          module: "link",
-                          name: "click",
-                          data: {
-                            link_id: "changed_password",
-                            // TODO: Enable after the parameter has been added to metrics.yaml.
-                            // link_name: `changed_password_${breachName}`,
-                          },
+                        target="_blank"
+                        eventData={{
+                          link_id: "changed_password",
                         }}
+                        showIcon
                       />
                     ),
                     b: <strong />,
