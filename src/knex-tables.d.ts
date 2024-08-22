@@ -404,7 +404,7 @@ declare module "knex/types/tables" {
       SubscriberCouponRow,
       // On inserts, auto-generated columns cannot be set, and nullable columns are optional:
       WritableDateColumns<
-        Omit<SubscriberCouponRow, SubscriberCouponAutoInsertedColumns>
+        Omit<SubscriberCouponRow, SubscriberAutoInsertedColumns>
       >,
       // On updates, don't allow updating the ID; all other fields are optional:
       WritableDateColumns<Partial<Omit<SubscriberCouponRow, "id">>>
