@@ -32,7 +32,10 @@ async function migrateData() {
       }));
 
       // Bulk insert the batch
-      await knex("subscriber_email_preferences").insert(batch);
+      await knex("subscriber_email_preferences")
+        .insert(batch)
+        .onConflict("subscriber_id")
+        .ignore();
       console.log(`Inserted ${batch.length} records from offset ${offset}.`);
 
       // Increment offset to fetch the next batch
