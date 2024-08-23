@@ -10,6 +10,9 @@ import { VerifyEmailAddressEmail } from "../../../emails/templates/verifyEmailAd
 import { sanitizeSubscriberRow } from "../../functions/server/sanitize";
 import { getL10n } from "../../functions/l10n/serverComponents";
 import { BadRequestError } from "../../../utils/error";
+import { captureException } from "@sentry/node";
+import { logger } from "../../functions/server/logging.js";
+import { getSha2 } from "../../../utils/fxa.js";
 
 export async function sendVerificationEmail(
   user: SubscriberRow,
@@ -53,4 +56,47 @@ export async function sendVerificationEmail(
       />,
     ),
   );
+}
+
+export function generateUnsubscribeLink(email: string) {
+  const secret = process.env.NEXTAUTH_SECRET;
+
+  try {
+    if (!secret) {
+      throw new Error(
+        "generateUnsubscribeLink: env var NEXTAUTH_SECRET is not set",
+      );
+    }
+
+    const key = secret + email;
+    const unsubToken = getSha2(key);
+    return `{process.env.SERVER_URL}/api/v1/unsubscribe-email?email=${email}&token=${unsubToken}`;
+  } catch (e) {
+    logger.error("generate_unsubscribe_link", {
+      exception: e as string,
+    });
+    captureException(e);
+    return null;
+  }
+}
+
+export function verifyUnsubscribeToken(email: string, unsubToken: string) {
+  const secret = process.env.NEXTAUTH_SECRET;
+
+  try {
+    if (!secret) {
+      throw new Error(
+        "verifyUnsubscribeToken: env var NEXTAUTH_SECRET is not set",
+      );
+    }
+
+    const key = secret + email;
+    return unsubToken === getSha2(key);
+  } catch (e) {
+    logger.error("verify_unsubscribe_token", {
+      exception: e as string,
+    });
+    captureException(e);
+    return false;
+  }
 }
