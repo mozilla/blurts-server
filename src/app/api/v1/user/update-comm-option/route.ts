@@ -52,7 +52,7 @@ export async function POST(req: NextRequest) {
         await setAllEmailsToPrimary(subscriber, allEmailsToPrimary);
       }
       if (typeof monthlyMonitorReport === "boolean") {
-        await setMonthlyMonitorReport(subscriber, monthlyMonitorReport);
+        await setMonthlyMonitorReport(subscriber.id, monthlyMonitorReport);
       }
 
       return NextResponse.json({

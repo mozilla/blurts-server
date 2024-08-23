@@ -6,8 +6,9 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { logger } from "../../../../functions/server/logging";
 import { verifyUnsubscribeToken } from "../../../utils/email";
+import { unsubscribeMonthlyMonitorReportForEmail } from "../../../../../db/tables/subscribers";
 
-export function GET(req: NextRequest) {
+export async function GET(req: NextRequest) {
   try {
     const { searchParams } = new URL(req.url);
     const email = searchParams.get("email");
@@ -25,7 +26,7 @@ export function GET(req: NextRequest) {
 
     const tokenVerified = verifyUnsubscribeToken(email, unsubToken);
     if (tokenVerified) {
-      // TODO: db function to mark email as opt out
+      await unsubscribeMonthlyMonitorReportForEmail(email);
       logger.debug("unsubscribe_email_success");
       return NextResponse.json({ success: true }, { status: 200 });
     } else {
