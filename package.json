@@ -16,6 +16,7 @@
     "dev:cron:db-pull-breaches": "tsx --tsconfig tsconfig.cronjobs.json src/scripts/cronjobs/syncBreaches.ts",
     "dev:cron:remote-settings-pull-breaches": "tsx --tsconfig tsconfig.cronjobs.json src/scripts/cronjobs/updateBreachesInRemoteSettings.ts",
     "dev:cron:onerep-limits-alert": "tsx --tsconfig tsconfig.cronjobs.json src/scripts/cronjobs/onerepStatsAlert.ts",
+    "dev:oneoff:migrate-email-prefs": "tsx --tsconfig tsconfig.cronjobs.json src/scripts/oneoff/migrate_subscribers_email_preferences.ts",
     "dev:nimbus": "node --watch-path config/nimbus.yaml src/scripts/build/nimbusTypes.js",
     "build": "npm run get-location-data && npm run build-glean && npm run build-nimbus && next build && npm run build-cronjobs",
     "cloudrun": "npm run db:migrate && npm start",
