@@ -6,7 +6,7 @@ export async function up(knex) {
   await knex.schema
     .createTable('subscriber_email_preferences', function(table) {
       table.increments('id').primary();
-      table.integer("subscriber_id").references("subscribers.id").notNullable().onDelete('CASCADE').onUpdate('CASCADE');
+      table.integer("subscriber_id").references("subscribers.id").unique().notNullable().onDelete('CASCADE').onUpdate('CASCADE');
       table.boolean('instant_breach_alert').defaultTo(true);
       table.boolean('all_emails_to_primary').defaultTo(true);
       table.boolean('monthly_monitor_report').defaultTo(true);
