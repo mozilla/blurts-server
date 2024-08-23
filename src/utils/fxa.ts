@@ -332,18 +332,11 @@ function getSha1(email: crypto.BinaryLike) {
   return crypto.createHash("sha1").update(email).digest("hex");
 }
 
-// TODO: Add unit test when changing this code:
-/* c8 ignore next 3 */
-function getSha2(str: crypto.BinaryLike) {
-  return crypto.createHash("sha256").update(str).digest("hex");
-}
-
 export {
   refreshOAuthTokens,
   destroyOAuthToken,
   revokeOAuthTokens,
   getSha1,
-  getSha2,
   getSubscriptions,
   getBillingAndSubscriptions,
   deleteSubscription,

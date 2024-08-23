@@ -11,8 +11,7 @@ import { sanitizeSubscriberRow } from "../../functions/server/sanitize";
 import { getL10n } from "../../functions/l10n/serverComponents";
 import { BadRequestError } from "../../../utils/error";
 import { captureException } from "@sentry/node";
-import { logger } from "../../functions/server/logging.js";
-import { getSha2 } from "../../../utils/fxa.js";
+import crypto from "crypto";
 
 export async function sendVerificationEmail(
   user: SubscriberRow,
@@ -70,9 +69,9 @@ export function generateUnsubscribeLink(email: string) {
 
     const key = secret + email;
     const unsubToken = getSha2(key);
-    return `{process.env.SERVER_URL}/api/v1/unsubscribe-email?email=${email}&token=${unsubToken}`;
+    return `${process.env.SERVER_URL}/api/v1/unsubscribe-email?email=${email}&token=${unsubToken}`;
   } catch (e) {
-    logger.error("generate_unsubscribe_link", {
+    console.error("generate_unsubscribe_link", {
       exception: e as string,
     });
     captureException(e);
@@ -93,10 +92,14 @@ export function verifyUnsubscribeToken(email: string, unsubToken: string) {
     const key = secret + email;
     return unsubToken === getSha2(key);
   } catch (e) {
-    logger.error("verify_unsubscribe_token", {
+    console.error("verify_unsubscribe_token", {
       exception: e as string,
     });
     captureException(e);
     return false;
   }
+}
+
+function getSha2(str: crypto.BinaryLike) {
+  return crypto.createHash("sha256").update(str).digest("hex");
 }
