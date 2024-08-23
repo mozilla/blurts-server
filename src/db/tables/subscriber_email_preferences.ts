@@ -31,12 +31,12 @@ async function addEmailPreferenceForSubscriber(
         instant_breach_alert: preference.instant_breach_alert || true,
         all_emails_to_primary: preference.all_emails_to_primary || true,
         monthly_monitor_report: preference.monthly_monitor_report || true,
-        monthly_monitor_report_at: preference.monthly_monitor_report_at ?? "",
+        monthly_monitor_report_at: preference.monthly_monitor_report_at || null,
       })
       .returning("*");
   } catch (e) {
-    logger.error("could_not_add_subscriber_email_preference", {
-      error: e as string,
+    logger.error("error_add_subscriber_email_preference", {
+      exception: e as string,
     });
 
     throw e;
@@ -44,17 +44,53 @@ async function addEmailPreferenceForSubscriber(
   return res?.[0];
 }
 
-// async function updateEmailPreferenceForSubscriber(
-//   subscriberId: number,
-//   preference: Omit<
-//     SubscriberEmailPreferencesRow,
-//     SubscriberEmailPreferencesAutoInsertedColumns
-//   >,
-// ) {
+async function updateEmailPreferenceForSubscriber(
+  subscriberId: number,
+  preference: SubscriberEmailPreferences,
+) {
+  logger.info("update_email_preference_for_subscriber", {
+    subscriberId,
+    preference,
+  });
 
-// }
+  let res;
+  try {
+    res = await knex("subscriber_email_preferences")
+      .where("subscriber_id", subscriberId)
+      .update({ ...preference })
+      .returning(["*"]);
+  } catch (e) {
+    logger.error("error_update_subscriber_email_preference", {
+      exception: e as string,
+    });
+
+    throw e;
+  }
+  return res?.[0];
+}
+
+async function getEmailPreferenceForSubscriber(subscriberId: number) {
+  logger.info("get_email_preference_for_subscriber", {
+    subscriberId,
+  });
+
+  let res;
+  try {
+    res = await knex("subscriber_email_preferences")
+      .where("subscriber_id", subscriberId)
+      .returning(["*"]);
+  } catch (e) {
+    logger.error("error_get_subscriber_email_preference", {
+      exception: e as string,
+    });
+
+    throw e;
+  }
+  return res?.[0];
+}
 
 export {
   addEmailPreferenceForSubscriber,
-  // updateEmailPreferenceForSubscriber
+  updateEmailPreferenceForSubscriber,
+  getEmailPreferenceForSubscriber,
 };
