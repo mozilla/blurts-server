@@ -62,7 +62,7 @@ export default async function LeakedPasswords({
       }}
       isEligibleForPremium={isEligibleForPremium(countryCode)}
       enabledFeatureFlags={await getEnabledFeatureFlags({
-        ignoreAllowlist: false,
+        isSignedOut: false,
         email: session.user.email,
       })}
     />

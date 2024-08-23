@@ -56,26 +56,21 @@ export default async function FeatureFlagPage() {
         </div>
       </nav>
       <div className={styles.start}>
-        <h1>
-          Note: Feature flags are deprecated, use{" "}
-          <a href="https://experimenter.info/">Experimenter</a>.
-        </h1>
-        <br />
         <h3>Add New Feature Flag</h3>
         <AddFeatureFlag />
         <br />
-        <h3>Enabled Feature Flags</h3>
-        <div className={styles.flagList}>
-          {featureFlags
-            .filter((flag) => flag.is_enabled)
-            .map((flag) => (
-              <FlagEditor key={flag.name} flag={flag} />
-            ))}
-        </div>
         <h3>Disabled Feature Flags</h3>
         <div className={styles.flagList}>
           {featureFlags
             .filter((flag) => !flag.is_enabled)
+            .map((flag) => (
+              <FlagEditor key={flag.name} flag={flag} />
+            ))}
+        </div>
+        <h3>Enabled Feature Flags</h3>
+        <div className={styles.flagList}>
+          {featureFlags
+            .filter((flag) => flag.is_enabled)
             .map((flag) => (
               <FlagEditor key={flag.name} flag={flag} />
             ))}
