@@ -196,7 +196,7 @@ declare module "knex/types/tables" {
     instant_breach_alert: boolean;
     all_emails_to_primary: boolean;
     monthly_monitor_report: boolean;
-    monthly_monitor_report_at: Date;
+    monthly_monitor_report_at: Date | null;
   }
   type SubscriberEmailPreferencesAutoInsertedColumns = Extract<
     keyof SubscriberEmailPreferencesRow,
@@ -413,12 +413,7 @@ declare module "knex/types/tables" {
     subscriber_email_preferences: Knex.CompositeTableType<
       SubscriberEmailPreferencesRow,
       // On inserts, auto-generated columns cannot be set, and nullable columns are optional:
-      WritableDateColumns<
-        Omit<
-          SubscriberEmailPreferencesRow,
-          SubscriberEmailPreferencesAutoInsertedColumns
-        >
-      >,
+      WritableDateColumns<Omit<SubscriberEmailPreferencesRow, "id">>,
       // On updates, don't allow updating the ID; all other fields are optional:
       WritableDateColumns<Partial<Omit<SubscriberEmailPreferencesRow, "id">>>
     >;
