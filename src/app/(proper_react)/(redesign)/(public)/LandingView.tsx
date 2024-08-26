@@ -274,7 +274,7 @@ export const TopNavBar = ({ l10n }: { l10n: ExtendedReactLocalization }) => {
             link_id: "navbar_how_it_works",
           }}
         >
-          {l10n.getString("landing-all-hero-navbar-link-how-it-works")}
+          {l10n.getString("landing-premium-hero-navbar-link-how-it-works")}
         </TelemetryLink>
         <TelemetryLink
           className={styles.navbarLinks}
@@ -283,7 +283,7 @@ export const TopNavBar = ({ l10n }: { l10n: ExtendedReactLocalization }) => {
             link_id: "navbar_pricing",
           }}
         >
-          {l10n.getString("landing-all-hero-navbar-link-pricing")}
+          {l10n.getString("landing-premium-hero-navbar-link-pricing")}
         </TelemetryLink>
         <TelemetryLink
           data-testid="navbar_faqs"
@@ -293,7 +293,7 @@ export const TopNavBar = ({ l10n }: { l10n: ExtendedReactLocalization }) => {
             link_id: "navbar_faqs",
           }}
         >
-          {l10n.getString("landing-all-hero-navbar-link-faqs")}
+          {l10n.getString("landing-premium-hero-navbar-link-faqs")}
         </TelemetryLink>
         <TelemetryLink
           className={styles.navbarLinks}
@@ -302,7 +302,7 @@ export const TopNavBar = ({ l10n }: { l10n: ExtendedReactLocalization }) => {
             link_id: "navbar_breaches",
           }}
         >
-          {l10n.getString("landing-all-hero-navbar-link-all-breaches")}
+          {l10n.getString("landing-premium-hero-navbar-link-recent-breaches")}
         </TelemetryLink>
       </div>
     </div>
