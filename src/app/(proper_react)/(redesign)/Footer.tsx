@@ -42,7 +42,7 @@ export const Footer = ({
               link_id: "all_breaches_footer",
             }}
           >
-            {l10n.getString("footer-nav-all-breaches")}
+            {l10n.getString("footer-nav-recent-breaches")}
           </TelemetryLink>
         </li>
         {countryCode === "us" && !session && (

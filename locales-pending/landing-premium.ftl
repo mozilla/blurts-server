@@ -4,10 +4,10 @@
 
 ## Top navbar
 
-landing-all-hero-navbar-link-how-it-works = How it works
-landing-all-hero-navbar-link-pricing = Pricing
-landing-all-hero-navbar-link-faqs = FAQs
-landing-all-hero-navbar-link-all-breaches = All breaches
+landing-premium-hero-navbar-link-how-it-works = How it works
+landing-premium-hero-navbar-link-pricing = Pricing
+landing-premium-hero-navbar-link-faqs = FAQs
+landing-premium-hero-navbar-link-recent-breaches = Recent data breaches
 
 ##
 
