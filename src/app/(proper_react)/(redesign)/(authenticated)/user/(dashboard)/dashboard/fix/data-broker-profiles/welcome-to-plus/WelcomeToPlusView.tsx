@@ -18,14 +18,11 @@ import { ExtendedReactLocalization } from "../../../../../../../../../functions/
 import noBreachesIllustration from "../../images/high-risk-breaches-none.svg";
 import { CONST_ONEREP_DATA_BROKER_COUNT } from "../../../../../../../../../../constants";
 import { TelemetryButton } from "../../../../../../../../../components/client/TelemetryButton";
-import { TelemetryLink } from "../../../../../../../../../components/client/TelemetryLink";
-import { FeatureFlagName } from "../../../../../../../../../../db/tables/featureFlags";
 
 export type Props = {
   data: StepDeterminationData;
   subscriberEmails: string[];
   l10n: ExtendedReactLocalization;
-  enabledFeatureFlags: FeatureFlagName[];
 };
 
 export function WelcomeToPlusView(props: Props) {
@@ -67,13 +64,8 @@ export function WelcomeToPlusView(props: Props) {
           </h3>
           <p>
             {hasRelevantScanResults
-              ? /* c8 ignore next 14 */
-                // As the `SetExpectationsForUsers` feature flag is removed, the
-                // branch will be covered again:
-                l10n.getFragment(
-                  props.enabledFeatureFlags.includes("SetExpectationsForUsers")
-                    ? "welcome-to-premium-data-broker-profiles-description-part-one"
-                    : "welcome-to-premium-data-broker-profiles-description-part-one-deprecated",
+              ? l10n.getFragment(
+                  "welcome-to-premium-data-broker-profiles-description-part-one",
                   {
                     vars: {
                       profile_total_num: scanResultsInProgressCount,
@@ -89,35 +81,13 @@ export function WelcomeToPlusView(props: Props) {
                   },
                 )}
           </p>
-          <p>
-            {hasRelevantScanResults
-              ? /* c8 ignore next 23 */
-                // As the `SetExpectationsForUsers` feature flag is removed, the
-                // branch will be covered again:
-                !props.enabledFeatureFlags.includes(
-                  "SetExpectationsForUsers",
-                ) &&
-                l10n.getFragment(
-                  "welcome-to-premium-data-broker-profiles-description-part-two",
-                  {
-                    elems: {
-                      how_it_works_link: (
-                        <TelemetryLink
-                          href="/how-it-works"
-                          className={styles.howItWorksLink}
-                          target="_blank"
-                          eventData={{
-                            link_id: "explanation_of_removal_time",
-                          }}
-                        />
-                      ),
-                    },
-                  },
-                )
-              : l10n.getString(
-                  "welcome-to-premium-data-broker-profiles-zero-state-description-part-two",
-                )}
-          </p>
+          {!hasRelevantScanResults && (
+            <p>
+              {l10n.getString(
+                "welcome-to-premium-data-broker-profiles-zero-state-description-part-two",
+              )}
+            </p>
+          )}
           <p>
             {hasRelevantScanResults
               ? l10n.getString(
@@ -148,10 +118,7 @@ export function WelcomeToPlusView(props: Props) {
         </div>
         {hasRelevantScanResults ? (
           <div className={styles.chart}>
-            <PercentageChart
-              exposureReduction={dataPointReduction}
-              enabledFeatureFlags={props.enabledFeatureFlags}
-            />
+            <PercentageChart exposureReduction={dataPointReduction} />
           </div>
         ) : (
           <div
