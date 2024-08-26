@@ -50,7 +50,6 @@ export const LandingUs: Story = {
     eligibleForPremium: true,
     countryCode: "us",
     scanLimitReached: false,
-    enabledFlags: ["SetExpectationsForUsers"],
   },
 };
 
@@ -60,7 +59,6 @@ export const LandingUsScanLimit: Story = {
     eligibleForPremium: true,
     countryCode: "us",
     scanLimitReached: true,
-    enabledFlags: ["SetExpectationsForUsers"],
   },
 };
 
@@ -69,7 +67,6 @@ export const LandingNonUs: Story = {
   args: {
     eligibleForPremium: false,
     countryCode: "nz",
-    enabledFlags: ["SetExpectationsForUsers"],
   },
 };
 
@@ -78,7 +75,6 @@ export const LandingNonUsDe: Story = {
   args: {
     eligibleForPremium: false,
     countryCode: "de",
-    enabledFlags: ["SetExpectationsForUsers"],
     l10n: getL10n("de"),
   },
 };
@@ -88,7 +84,6 @@ export const LandingNonUsFr: Story = {
   args: {
     eligibleForPremium: false,
     countryCode: "fr",
-    enabledFlags: ["SetExpectationsForUsers"],
     l10n: getL10n("fr"),
   },
 };

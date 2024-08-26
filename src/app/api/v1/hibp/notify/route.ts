@@ -3,6 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { NextRequest, NextResponse } from "next/server";
+import { captureMessage } from "@sentry/node";
 
 import { bearerToken } from "../../../utils/auth";
 import { logger } from "../../../../functions/server/logging";
@@ -55,6 +56,7 @@ export async function POST(req: NextRequest) {
     pubsub = new PubSub({ projectId });
   } catch (ex) {
     logger.error("error_connecting_to_pubsub:", { exception: ex as string });
+    captureMessage(`error_connecting_to_pubsub:  ${ex as string}`);
     return NextResponse.json({ success: false }, { status: 429 });
   }
 
@@ -72,9 +74,10 @@ export async function POST(req: NextRequest) {
       await pubsub.topic(topicName).createSubscription(subscriptionName);
     } else {
       logger.error("pubsub_topic_not_found:", { topicName });
-      return NextResponse.json({ success: false }, { status: 500 });
+      captureMessage(`pubsub_topic_not_found:  ${topicName}`);
+      return NextResponse.json({ success: false }, { status: 429 });
     }
     logger.error("error_queuing_hibp_breach:", { topicName });
-    return NextResponse.json({ success: false }, { status: 500 });
+    return NextResponse.json({ success: false }, { status: 429 });
   }
 }
