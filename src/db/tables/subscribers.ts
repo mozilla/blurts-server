@@ -5,7 +5,7 @@
 import createDbConnection from "../connect.js";
 import AppConstants from "../../appConstants.js";
 import { SubscriberRow } from "knex/types/tables";
-import { logger } from "../../app/functions/server/logging.js";
+import { logger } from "../../app/functions/server/logging";
 import { SerializedSubscriber } from "../../next-auth.js";
 
 const knex = createDbConnection();

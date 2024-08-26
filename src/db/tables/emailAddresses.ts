@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from "uuid";
 import createDbConnection from "../connect.js";
 import { subscribeHash } from "../../utils/hibp";
 import { getSha1 } from "../../utils/fxa";
-import { getSubscriberByEmail, updateFxAData } from "./subscribers.js";
+import { getSubscriberByEmail, updateFxAData } from "./subscribers";
 import { ForbiddenError, UnauthorizedError } from "../../utils/error";
 import { EmailAddressRow, SubscriberRow } from "knex/types/tables";
 import { ReactLocalization } from "@fluent/react";
@@ -258,6 +258,7 @@ Promise<SubscriberRow | null> {
       fxaProfileData,
     ) as Promise<SubscriberRow | null>;
   }
+
   return verifiedSubscriber;
 }
 /* c8 ignore stop */
