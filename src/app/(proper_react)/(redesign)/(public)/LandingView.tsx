@@ -299,7 +299,7 @@ export const TopNavBar = ({ l10n }: { l10n: ExtendedReactLocalization }) => {
           className={styles.navbarLinks}
           href="/breaches"
           eventData={{
-            link_id: "navbar_breaches",
+            link_id: "navbar_recent_breaches",
           }}
         >
           {l10n.getString("landing-premium-hero-navbar-link-recent-breaches")}
