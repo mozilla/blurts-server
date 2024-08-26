@@ -703,7 +703,7 @@ it("checks that monthly monitor report is enabled", () => {
   );
 
   const monthlyMonitorReportBtn = screen.getByLabelText(
-    "Monthly ⁨Monitor⁩ report",
+    "Monthly ⁨Monitor Plus⁩ report",
     { exact: false },
   );
   expect(monthlyMonitorReportBtn).toHaveAttribute("aria-checked", "true");
@@ -749,7 +749,7 @@ it("sends an API call to disable monthly monitor reports", async () => {
     </TestComponentWrapper>,
   );
   const monthlyMonitorReportBtn = screen.getByLabelText(
-    "Monthly ⁨Monitor⁩ report",
+    "Monthly ⁨Monitor Plus⁩ report",
     { exact: false },
   );
 
