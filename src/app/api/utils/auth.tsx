@@ -14,7 +14,7 @@ import {
   incrementSignInCountForEligibleFreeUser,
   getFxATokens,
   updateFxATokens,
-} from "../../../db/tables/subscribers.js";
+} from "../../../db/tables/subscribers";
 import { addSubscriber } from "../../../db/tables/emailAddresses";
 import { getBreaches } from "../../functions/server/getBreaches";
 import { getBreachesForEmail } from "../../../utils/hibp";
