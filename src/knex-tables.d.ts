@@ -131,7 +131,7 @@ declare module "knex/types/tables" {
     monthly_email_optout: boolean;
     monthly_monitor_report_at: null | Date;
     monthly_monitor_report: boolean;
-    breach_resolution: BreachResolution;
+    breach_resolution?: BreachResolution;
     onerep_profile_id: null | number;
     sign_in_count: null | number;
     email_addresses: SubscriberEmail[];

@@ -129,7 +129,7 @@ export const authOptions: AuthOptions = {
               account.access_token,
               account.refresh_token,
               account.expires_at ?? 0,
-              JSON.stringify(profile),
+              profile,
             );
             // MNTOR-2599 The breach_resolution object can get pretty big,
             // causing the session token cookie to balloon in size,
@@ -242,8 +242,11 @@ export const authOptions: AuthOptions = {
             // MNTOR-2599 The breach_resolution object can get pretty big,
             // causing the session token cookie to balloon in size,
             // eventually resulting in a 400 Bad Request due to headers being too large.
-            delete updatedUser.breach_resolution;
-            token.subscriber = updatedUser;
+
+            if (updatedUser) {
+              delete updatedUser.breach_resolution;
+              token.subscriber = updatedUser;
+            }
           } catch (error) {
             logger.error("refresh_access_token", error);
             // The error property can be used client-side to handle the refresh token error

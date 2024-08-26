@@ -4,6 +4,7 @@
 
 import { SubscriberRow } from "knex/types/tables";
 import { updateFxAProfileData } from "../../../db/tables/subscribers";
+import { Profile } from "next-auth";
 
 const MONITOR_PREMIUM_CAPABILITY = "monitor";
 
@@ -11,7 +12,7 @@ export async function changeSubscription(
   subscriber: SubscriberRow,
   enabled: boolean,
 ) {
-  const currentFxAProfile = subscriber?.fxa_profile_json as FxaProfile;
+  const currentFxAProfile = subscriber?.fxa_profile_json as Profile;
   let subscriptions = currentFxAProfile.subscriptions ?? [];
 
   if (enabled) {
@@ -26,22 +27,5 @@ export async function changeSubscription(
   }
 
   currentFxAProfile.subscriptions = subscriptions;
-  await updateFxAProfileData(subscriber, JSON.stringify(currentFxAProfile));
+  await updateFxAProfileData(subscriber, currentFxAProfile);
 }
-
-/**
- * See https://github.com/mozilla/fxa/blob/564949dfc69f0f675ebb4e5f267282c2546a5767/packages/fxa-profile-server/lib/routes/profile.js#L63-L77
- */
-type FxaProfile = {
-  email?: string;
-  uid?: string;
-  avatar?: string;
-  avatarDefault?: boolean;
-  displayName?: string;
-  locale?: string;
-  amrValues?: string[];
-  twoFactorAuthentication?: boolean;
-  subscriptions?: string[];
-  metricsEnabled?: boolean;
-  sub?: string;
-};
