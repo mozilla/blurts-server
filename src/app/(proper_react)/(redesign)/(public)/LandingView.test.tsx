@@ -840,7 +840,7 @@ describe("When Premium is available", () => {
       "link",
       "click",
       expect.objectContaining({
-        link_id: "navbar_breaches",
+        link_id: "navbar_recent_breaches",
       }),
     );
   });
