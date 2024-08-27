@@ -4,6 +4,7 @@
 
 import createDbConnection from "../connect.js";
 import { logger } from "../../app/functions/server/logging";
+import { captureException } from "@sentry/node";
 
 const knex = createDbConnection();
 
@@ -38,9 +39,9 @@ async function addEmailPreferenceForSubscriber(
         subscriber_id: subscriberId,
         primary_email: preference.primary_email || "",
         monthly_monitor_report_free:
-          preference.monthly_monitor_report_free || true,
+          preference.monthly_monitor_report_free ?? true,
         monthly_monitor_report_free_at:
-          preference.monthly_monitor_report_free_at || null,
+          preference.monthly_monitor_report_free_at ?? null,
       })
       .onConflict("subscriber_id")
       .ignore()
@@ -121,16 +122,18 @@ async function getEmailPreferenceForSubscriber(subscriberId: number) {
   try {
     res = await knex
       .select(
+        "subscribers.primary_email",
         "subscribers.id",
-        "primary_email",
-        "all_emails_to_primary",
-        "monthly_monitor_report",
-        "monthly_monitor_report_at",
-        "first_broker_removal_email_sent",
+        "subscribers.all_emails_to_primary",
+        "subscribers.monthly_monitor_report",
+        "subscribers.monthly_monitor_report_at",
+        "subscribers.first_broker_removal_email_sent",
+        "subscriber_email_preferences.monthly_monitor_report_free",
+        "subscriber_email_preferences.monthly_monitor_report_free_at",
       )
       .from("subscribers")
       .where("subscribers.id", subscriberId)
-      .innerJoin(
+      .leftJoin(
         "subscriber_email_preferences",
         "subscribers.id",
         "subscriber_email_preferences.subscriber_id",
@@ -138,7 +141,7 @@ async function getEmailPreferenceForSubscriber(subscriberId: number) {
       .returning(["*"]);
     logger.debug("get_email_preference_for_subscriber_success");
     logger.debug(
-      `getEmailPreferenceForSubscriber innerjoin: ${JSON.stringify(res)}`,
+      `getEmailPreferenceForSubscriber left join: ${JSON.stringify(res)}`,
     );
   } catch (e) {
     logger.error("error_get_subscriber_email_preference", {
@@ -161,23 +164,26 @@ async function getEmailPreferenceForPrimaryEmail(email: string) {
     res = await knex
       .select(
         "subscribers.primary_email",
-        "id",
-        "all_emails_to_primary",
-        "monthly_monitor_report",
-        "monthly_monitor_report_at",
-        "first_broker_removal_email_sent",
+        "subscribers.id",
+        "subscribers.all_emails_to_primary",
+        "subscribers.monthly_monitor_report",
+        "subscribers.monthly_monitor_report_at",
+        "subscribers.first_broker_removal_email_sent",
+        "subscriber_email_preferences.monthly_monitor_report_free",
+        "subscriber_email_preferences.monthly_monitor_report_free_at",
       )
       .from("subscribers")
       .where("subscribers.primary_email", email)
-      .innerJoin(
+      .leftJoin(
         "subscriber_email_preferences",
         "subscribers.id",
         "subscriber_email_preferences.subscriber_id",
       )
       .returning(["*"]);
+
     logger.debug("get_email_preference_for_subscriber_success");
     logger.debug(
-      `getEmailPreferenceForSubscriber innerjoin: ${JSON.stringify(res)}`,
+      `getEmailPreferenceForSubscriber left join: ${JSON.stringify(res)}`,
     );
   } catch (e) {
     logger.error("error_get_subscriber_email_preference", {
@@ -195,19 +201,32 @@ async function unsubscribeMonthlyMonitorReportForEmail(email: string) {
   let sub;
   try {
     sub = await getEmailPreferenceForPrimaryEmail(email);
-    if (sub.id && sub.monthly_monitor_report_free !== null) {
-      await updateEmailPreferenceForSubscriber(sub.id, true, {
-        monthly_monitor_report_free: false,
-      });
-    } else if (sub.id) {
+
+    if (sub.id && sub.monthly_monitor_report_free === null) {
+      // NOTE: since the pref table is new/empty, we have to assume that majority of
+      // the subscribers do not have an record in this new table, in that case, append
       await addEmailPreferenceForSubscriber(sub.id, {
+        primary_email: sub.primary_email,
         monthly_monitor_report_free: false,
       });
+    } else if (sub.id && !sub.monthly_monitor_report_free) {
+      logger.info(
+        "unsubscribe_monthly_monitor_report_for_email_already_unsubscribed",
+      );
+    } else if (sub.id && sub.monthly_monitor_report_free) {
+      await updateEmailPreferenceForSubscriber(sub.id, true, {
+        primary_email: sub.primary_email,
+        monthly_monitor_report_free: false,
+      });
+    } else {
+      throw new Error(`cannot find subscriber with primary email: ${email}`);
     }
   } catch (e) {
     logger.error("error_unsubscribe_monthly_monitor_report_for_email", {
       exception: e,
     });
+    captureException(e);
+    throw e;
   }
 }
 /* c8 ignore stop */

@@ -69,7 +69,7 @@ export function generateUnsubscribeLink(email: string) {
 
     const key = secret + email;
     const unsubToken = getSha2(key);
-    return `${process.env.SERVER_URL}/api/v1/unsubscribe-email?email=${email}&token=${unsubToken}`;
+    return `${process.env.SERVER_URL}/api/v1/user/unsubscribe-email?email=${email}&token=${unsubToken}`;
   } catch (e) {
     console.error("generate_unsubscribe_link", {
       exception: e as string,
