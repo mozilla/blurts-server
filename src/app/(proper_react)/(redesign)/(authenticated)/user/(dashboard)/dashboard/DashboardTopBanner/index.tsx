@@ -9,7 +9,6 @@ import { DoughnutChart as Chart } from "../../../../../../../components/client/C
 import { DashboardSummary } from "../../../../../../../functions/server/dashboard";
 import { StepDeterminationData } from "../../../../../../../functions/server/getRelevantGuidedSteps";
 import { DashboardTopBannerContent } from "./DashboardTopBannerContent";
-import { FeatureFlagName } from "../../../../../../../../db/tables/featureFlags";
 
 export type DashboardTopBannerProps = {
   bannerData: DashboardSummary;
@@ -30,7 +29,6 @@ export type DashboardTopBannerProps = {
     monthly: number;
   };
   totalNumberOfPerformedScans?: number;
-  enabledFeatureFlags: FeatureFlagName[];
 };
 
 export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
