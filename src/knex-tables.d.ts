@@ -190,6 +190,14 @@ declare module "knex/types/tables" {
     "id" | "subscriber_id" | "created_at"
   >;
 
+  interface SubscriberEmailPreferencesRow {
+    id: number;
+    subscriber_id: number;
+    primary_email: string;
+    monthly_monitor_report_free: boolean;
+    monthly_monitor_report_free_at: Date | null;
+  }
+
   interface BreachRow {
     id: number;
     name: HibpGetBreachesResponse[number]["Name"];
@@ -395,6 +403,14 @@ declare module "knex/types/tables" {
       >,
       // On updates, don't allow updating the ID; all other fields are optional:
       WritableDateColumns<Partial<Omit<SubscriberCouponRow, "id">>>
+    >;
+
+    subscriber_email_preferences: Knex.CompositeTableType<
+      SubscriberEmailPreferencesRow,
+      // On inserts, auto-generated columns cannot be set, and nullable columns are optional:
+      WritableDateColumns<Omit<SubscriberEmailPreferencesRow, "id">>,
+      // On updates, don't allow updating the ID; all other fields are optional:
+      WritableDateColumns<Partial<Omit<SubscriberEmailPreferencesRow, "id">>>
     >;
 
     email_addresses: Knex.CompositeTableType<
