@@ -110,21 +110,10 @@ data-broker-profiles-exposure-reduction = Exposure reduction: { $exposure_reduct
 # Variables:
 #   $nr (number) - % of exposures reduced for the user
 exposure-reduction-chart-heading = <nr>{ $nr }</nr><percent>%</percent>
-# Deprecated (once feature flag `SetExpectationsForUsers` is enabled):
-exposure-reduction-chart-explanation-deprecated = <label_line_1>exposures will</label_line_1><label_line_2>be reduced</label_line_2>
 exposure-reduction-chart-explanation = <label_line_1>exposures may</label_line_1><label_line_2>be reduced</label_line_2>
 
 welcome-to-premium-data-broker-profiles-title-part-one = Welcome to { -brand-monitor-plus }.
 welcome-to-premium-data-broker-profiles-title-part-two = We’ll remove those profiles ASAP.
-# Deprecated (once feature flag `SetExpectationsForUsers` is enabled):
-# Variables:
-# $profile_total_num is the number of exposures came back from user data broker scans.
-# $exposure_reduction_percentage is the percent by which exposures are reduced
-welcome-to-premium-data-broker-profiles-description-part-one-deprecated =
-  { $profile_total_num ->
-    [one] We’ve already started our auto-removal process of 1 profile — which will reduce your exposures by { $exposure_reduction_percentage }%.
-    *[other] We’ve already started our auto-removal process of { $profile_total_num } profiles — which will reduce your exposures by { $exposure_reduction_percentage }%.
-  }
 # Variables:
 # $profile_total_num is the number of exposures came back from user data broker scans.
 # $exposure_reduction_percentage is the percent by which exposures are reduced
@@ -133,8 +122,6 @@ welcome-to-premium-data-broker-profiles-description-part-one =
     [one] We’ve already started our auto-removal process of 1 profile — which may <b>reduce your exposures up to { $exposure_reduction_percentage }%</b>.
     *[other] We’ve already started our auto-removal process of { $profile_total_num } profiles — which may <b>reduce your exposures up to { $exposure_reduction_percentage }%</b>.
   }
-# Deprecated
-welcome-to-premium-data-broker-profiles-description-part-two = <how_it_works_link>Removals typically take 7-14 days</how_it_works_link>, but some may happen within the hour. No matter how long it takes, we’ll keep working on it.
 # There used to be a "part two", but we removed that
 welcome-to-premium-data-broker-profiles-description-part-three = Next we’ll guide you through high risk data breaches that require manual steps.
 # Variables:

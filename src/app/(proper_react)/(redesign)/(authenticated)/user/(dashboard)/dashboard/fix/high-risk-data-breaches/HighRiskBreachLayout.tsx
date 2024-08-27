@@ -28,14 +28,12 @@ import {
 } from "../../../../../../../../functions/universal/breach";
 import { TelemetryButton } from "../../../../../../../../components/client/TelemetryButton";
 import { TelemetryLink } from "../../../../../../../../components/client/TelemetryLink";
-import { FeatureFlagName } from "../../../../../../../../../db/tables/featureFlags";
 
 export type HighRiskBreachLayoutProps = {
   type: HighRiskBreachTypes;
   subscriberEmails: string[];
   data: StepDeterminationData;
   isEligibleForPremium: boolean;
-  enabledFeatureFlags: FeatureFlagName[];
 };
 
 export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
@@ -166,7 +164,6 @@ export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
         illustration={illustration}
         isPremiumUser={hasPremium(props.data.user)}
         isEligibleForPremium={props.isEligibleForPremium}
-        enabledFeatureFlags={props.enabledFeatureFlags}
         cta={
           !isStepDone && (
             <>

@@ -17,7 +17,6 @@ import { logger } from "../../../../../../../../../functions/server/logging";
 import { getL10n } from "../../../../../../../../../functions/l10n/serverComponents";
 import { refreshStoredScanResults } from "../../../../../../../../../functions/server/refreshStoredScanResults";
 import { checkSession } from "../../../../../../../../../functions/server/checkSession";
-import { getEnabledFeatureFlags } from "../../../../../../../../../../db/tables/featureFlags";
 
 export default async function WelcomeToPlusPage() {
   const session = await getServerSession();
@@ -55,11 +54,6 @@ export default async function WelcomeToPlusPage() {
     user: session.user,
   };
 
-  const enabledFeatureFlags = await getEnabledFeatureFlags({
-    ignoreAllowlist: false,
-    email: session.user.email,
-  });
-
   // If the current user is a subscriber and their OneRep profile is not
   // activated: Most likely we were not able or failed to kick-off the
   // auto-removal process.
@@ -78,7 +72,6 @@ export default async function WelcomeToPlusPage() {
       data={data}
       subscriberEmails={subscriberEmails}
       l10n={getL10n()}
-      enabledFeatureFlags={enabledFeatureFlags}
     />
   );
 }

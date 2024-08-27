@@ -4,7 +4,7 @@
 
 "use client";
 
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { useFormState } from "react-dom";
 import { useOverlayTriggerState } from "react-stately";
 import { useOverlayTrigger } from "react-aria";
@@ -84,6 +84,7 @@ export const EmailAddressAdder = () => {
 const EmailAddressAddForm = () => {
   const l10n = useL10n();
   const recordTelemetry = useTelemetry();
+  const formRef = useRef<HTMLFormElement>(null);
   const [formState, formAction] = useFormState(onAddEmail, {});
   const [hasPressedButton, setHasPressedButton] = useState(false);
   const [email, setEmail] = useState("");
@@ -101,11 +102,7 @@ const EmailAddressAddForm = () => {
   };
 
   const isEmailValid = () => {
-    // Regex for checking email format
-    // ensuring it contains a local part, an "@" symbol,
-    // and a domain part.
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
+    return email.length > 0 && (formRef.current?.reportValidity() ?? false);
   };
 
   return !formState.success ? (
@@ -115,7 +112,11 @@ const EmailAddressAddForm = () => {
           total: CONST_MAX_NUM_ADDRESSES,
         })}
       </p>
-      <form action={formAction} className={styles.newEmailAddressForm}>
+      <form
+        action={formAction}
+        ref={formRef}
+        className={styles.newEmailAddressForm}
+      >
         <label htmlFor="newEmailAddress">
           {l10n.getString("add-email-address-input-label")}
         </label>
@@ -131,7 +132,9 @@ const EmailAddressAddForm = () => {
           className={styles.btn}
           disabled={!isEmailValid()}
           onPress={() => {
-            setHasPressedButton(true);
+            if (isEmailValid()) {
+              setHasPressedButton(true);
+            }
           }}
           isLoading={hasPressedButton}
         >

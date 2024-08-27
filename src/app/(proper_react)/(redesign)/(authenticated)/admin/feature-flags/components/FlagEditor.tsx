@@ -15,31 +15,57 @@ import type { UpdateFeatureFlagRequestBody } from "../../../../../../api/v1/admi
 import { Button } from "../../../../../../components/client/Button";
 
 export const FlagEditor = (props: { flag: FeatureFlagRow }) => {
-  const [isEnabled, setIsEnabled] = useState(props.flag.is_enabled);
-  const [newAddress, setNewAddress] = useState("");
-  const [newAllowlistedAddresses, setNewAllowListedAddresses] = useState<
-    string[]
-  >([]);
-  const [unAllowlistedAddresses, setUnAllowListedAddresses] = useState<
-    string[]
-  >([]);
   const router = useRouter();
 
-  const updateFlag = async () => {
+  const setIsEnabled = async (isEnabled: boolean) => {
     try {
-      if (isEnabled !== props.flag.is_enabled) {
-        const isEnabledResonse = await sendUpdateRequest(props.flag.name, {
-          id: "isEnabled",
-          isEnabled: isEnabled,
-        });
-        if (!isEnabledResonse.ok) {
-          throw new Error(await isEnabledResonse.text());
-        }
+      const isEnabledResonse = await sendUpdateRequest(props.flag.name, {
+        id: "isEnabled",
+        isEnabled: isEnabled,
+      });
+      if (!isEnabledResonse.ok) {
+        throw new Error(await isEnabledResonse.text());
       }
+    } catch (e) {
+      console.error(e);
+    }
+    router.refresh();
+  };
 
-      const allowList = (props.flag.allow_list ?? [])
-        .filter((address) => !unAllowlistedAddresses.includes(address))
-        .concat(newAllowlistedAddresses);
+  return (
+    <div className={styles.flagWrapper}>
+      <h2 className={styles.flagName}>{props.flag.name}</h2>
+      <div className={styles.enabledControl}>
+        {props.flag.is_enabled ? (
+          <Button
+            variant="secondary"
+            destructive
+            small
+            onPress={() => void setIsEnabled(false)}
+          >
+            Disable
+          </Button>
+        ) : (
+          <Button
+            variant="secondary"
+            onPress={() => void setIsEnabled(true)}
+            small
+          >
+            Enable for everyone
+          </Button>
+        )}
+      </div>
+      {!props.flag.is_enabled && <AllowlistEditor flag={props.flag} />}
+    </div>
+  );
+};
+
+export const AllowlistEditor = (props: { flag: FeatureFlagRow }) => {
+  const [newAddress, setNewAddress] = useState("");
+  const router = useRouter();
+
+  const updateAllowlist = async (allowList: string[]) => {
+    try {
       const allowListResponse = await sendUpdateRequest(props.flag.name, {
         id: "allowList",
         value: allowList.map((address) => address.trim()).join(","),
@@ -54,102 +80,53 @@ export const FlagEditor = (props: { flag: FeatureFlagRow }) => {
   };
 
   return (
-    <div className={styles.flagWrapper}>
-      <h2 className={styles.flagName}>{props.flag.name}</h2>
-      <div className={styles.enabledControl}>
-        <input
-          type="checkbox"
-          name={`isEnabled_${props.flag.name}`}
-          id={`isEnabled_${props.flag.name}`}
-          checked={isEnabled}
-          onChange={(e) => setIsEnabled(e.target.checked)}
-        />
-        <label htmlFor={`isEnabled_${props.flag.name}`}>Enabled</label>
-      </div>
-      <div className={styles.allowListWrapper}>
-        {" "}
-        <h4>
-          {(props.flag.allow_list?.length ?? 0) -
-            unAllowlistedAddresses.length ===
-            0 && newAllowlistedAddresses.length === 0 ? (
-            <>
-              {props.flag.is_enabled
-                ? "Enabled for everyone"
-                : "Would be enabled for everyone"}
-            </>
-          ) : (
-            <>Only enable for:</>
-          )}
-        </h4>
-        <ul className={styles.allowList}>
-          {(props.flag.allow_list ?? [])
-            .filter((address) => !unAllowlistedAddresses.includes(address))
-            .map((address) => {
-              return (
-                <li key={`existing_${address}`}>
-                  <AllowlistedAddress
-                    address={address}
-                    onRemove={() =>
-                      setUnAllowListedAddresses((prev) => [...prev, address])
-                    }
-                  />
-                </li>
-              );
-            })}
-          {newAllowlistedAddresses.map((address) => {
-            return (
-              <li key={`new_${address}`}>
-                <AllowlistedAddress
-                  address={address}
-                  onRemove={() =>
-                    setNewAllowListedAddresses((prev) =>
-                      prev.filter((a) => a !== address),
-                    )
-                  }
-                />
-              </li>
-            );
-          })}
-        </ul>
-      </div>
+    <div className={styles.allowListWrapper}>
+      <hr />
+      <h4>Allowlist</h4>
+      <ul className={styles.allowList}>
+        {(props.flag.allow_list ?? []).map((address) => {
+          return (
+            <li key={`existing_${address}`}>
+              <AllowlistedAddress
+                address={address}
+                onRemove={() =>
+                  void updateAllowlist(
+                    (props.flag.allow_list ?? []).filter(
+                      (existingAddress) => existingAddress !== address,
+                    ),
+                  )
+                }
+              />
+            </li>
+          );
+        })}
+      </ul>
       <form
         onSubmit={(e) => {
           e.preventDefault();
 
-          setNewAllowListedAddresses((prev) => [...prev, newAddress]);
-          setNewAddress("");
+          void updateAllowlist([
+            ...(props.flag.allow_list ?? []),
+            newAddress,
+          ]).then(() => {
+            setNewAddress("");
+          });
         }}
         className={styles.addressAdder}
       >
-        <label htmlFor={`newAddress_${props.flag.name}`}>
-          Add to allowlist:
-        </label>
+        <label htmlFor={`newAddress_${props.flag.name}`}>Enable for:</label>
         <input
           type="email"
           name={`newAddress_${props.flag.name}`}
           id={`newAddress_${props.flag.name}`}
           value={newAddress}
           onChange={(e) => setNewAddress(e.target.value)}
+          placeholder="e.g. email@example.com"
         />
         <button type="submit">
           <CheckIcon alt="Add" />
         </button>
       </form>
-      <Button
-        onPress={() => {
-          void updateFlag();
-        }}
-        variant="secondary"
-        disabled={
-          isEnabled === props.flag.is_enabled &&
-          newAllowlistedAddresses.length === 0 &&
-          unAllowlistedAddresses.length === 0
-        }
-        type="button"
-        small
-      >
-        Save
-      </Button>
     </div>
   );
 };
@@ -161,7 +138,11 @@ const AllowlistedAddress = (props: {
   return (
     <span className={styles.addressListing}>
       <span>{props.address}</span>
-      <button type="button" onClick={() => props.onRemove()}>
+      <button
+        type="button"
+        onClick={() => props.onRemove()}
+        title={`Remove ${props.address} from allowlist`}
+      >
         <DeleteIcon alt="Delete" />
       </button>
     </span>

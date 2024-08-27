@@ -56,23 +56,7 @@ export const ExposuresFilterTypeExplainer = (
               {l10n.getFragment("modal-exposure-type-data-broker-part-one", {
                 elems: { b: <strong /> },
               })}{" "}
-              {
-                /* c8 ignore next 7 */
-                // As the `SetExpectationsForUsers` feature flag is removed, the
-                // branch will be covered again:
-                props.enabledFeatureFlags.includes(
-                  "SetExpectationsForUsers",
-                ) ? (
-                  l10n.getString("modal-exposure-type-data-broker-part-two")
-                ) : (
-                  <>
-                    <br />
-                    {l10n.getString(
-                      "modal-exposure-type-data-broker-part-two-deprecated",
-                    )}
-                  </>
-                )
-              }
+              {l10n.getString("modal-exposure-type-data-broker-part-two")}
             </li>
           </ol>
           <Button

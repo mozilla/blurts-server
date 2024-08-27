@@ -11,7 +11,6 @@ import {
   getProfilesStats,
   monthlySubscribersQuota,
 } from "../../../functions/server/onerep";
-import { getEnabledFeatureFlags } from "../../../../db/tables/featureFlags";
 import { getL10n } from "../../../functions/l10n/serverComponents";
 import { View } from "./LandingView";
 import {
@@ -34,7 +33,6 @@ export default async function Page({ searchParams }: Props) {
   if (typeof session?.user.subscriber?.fxa_uid === "string") {
     return redirect("/user/dashboard");
   }
-  const enabledFlags = await getEnabledFeatureFlags({ ignoreAllowlist: true });
   const countryCode = getCountryCode(headers());
   const eligibleForPremium = isEligibleForPremium(countryCode);
 
@@ -75,7 +73,6 @@ export default async function Page({ searchParams }: Props) {
         l10n={getL10n()}
         countryCode={countryCode}
         scanLimitReached={scanLimitReached}
-        enabledFlags={enabledFlags}
         experimentData={experimentData}
       />
     </AccountsMetricsFlowProvider>

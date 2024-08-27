@@ -12,7 +12,6 @@ import { getOnerepProfileId } from "../../../../../../../../../db/tables/subscri
 import { getLatestOnerepScanResults } from "../../../../../../../../../db/tables/onerep_scans";
 import { getCountryCode } from "../../../../../../../../functions/server/getCountryCode";
 import { isEligibleForPremium } from "../../../../../../../../functions/server/onerep";
-import { getEnabledFeatureFlags } from "../../../../../../../../../db/tables/featureFlags";
 
 export default async function HighRiskDataBreaches() {
   const session = await getServerSession();
@@ -42,10 +41,6 @@ export default async function HighRiskDataBreaches() {
           latestScanData: scanData,
         }}
         isEligibleForPremium={isEligibleForPremium(countryCode)}
-        enabledFeatureFlags={await getEnabledFeatureFlags({
-          ignoreAllowlist: false,
-          email: session.user.email,
-        })}
       />
     </div>
   );
