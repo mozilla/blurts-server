@@ -150,8 +150,72 @@ async function getEmailPreferenceForSubscriber(subscriberId: number) {
   return res?.[0];
 }
 
+async function getEmailPreferenceForPrimaryEmail(email: string) {
+  logger.info("get_email_preference_for_primary_email", {
+    email,
+  });
+
+  let res;
+  // TODO: modify after MNTOR-3557 - pref currently lives in two tables, we have to join the tables
+  try {
+    res = await knex
+      .select(
+        "subscribers.primary_email",
+        "id",
+        "all_emails_to_primary",
+        "monthly_monitor_report",
+        "monthly_monitor_report_at",
+        "first_broker_removal_email_sent",
+      )
+      .from("subscribers")
+      .where("subscribers.primary_email", email)
+      .innerJoin(
+        "subscriber_email_preferences",
+        "subscribers.id",
+        "subscriber_email_preferences.subscriber_id",
+      )
+      .returning(["*"]);
+    logger.debug("get_email_preference_for_subscriber_success");
+    logger.debug(
+      `getEmailPreferenceForSubscriber innerjoin: ${JSON.stringify(res)}`,
+    );
+  } catch (e) {
+    logger.error("error_get_subscriber_email_preference", {
+      exception: e as string,
+    });
+
+    throw e;
+  }
+  return res?.[0];
+}
+
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
+async function unsubscribeMonthlyMonitorReportForEmail(email: string) {
+  let sub;
+  try {
+    sub = await getEmailPreferenceForPrimaryEmail(email);
+    if (sub.id && sub.monthly_monitor_report_free !== null) {
+      await updateEmailPreferenceForSubscriber(sub.id, true, {
+        monthly_monitor_report_free: false,
+      });
+    } else if (sub.id) {
+      await addEmailPreferenceForSubscriber(sub.id, {
+        monthly_monitor_report_free: false,
+      });
+    }
+  } catch (e) {
+    logger.error("error_unsubscribe_monthly_monitor_report_for_email", {
+      exception: e,
+    });
+  }
+}
+/* c8 ignore stop */
+
 export {
   addEmailPreferenceForSubscriber,
   updateEmailPreferenceForSubscriber,
   getEmailPreferenceForSubscriber,
+  getEmailPreferenceForPrimaryEmail,
+  unsubscribeMonthlyMonitorReportForEmail,
 };

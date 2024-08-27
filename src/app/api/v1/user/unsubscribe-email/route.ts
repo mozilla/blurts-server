@@ -6,7 +6,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { logger } from "../../../../functions/server/logging";
 import { verifyUnsubscribeToken } from "../../../utils/email";
-import { unsubscribeMonthlyMonitorReportForEmail } from "../../../../../db/tables/subscribers";
+import { unsubscribeMonthlyMonitorReportForEmail } from "../../../../../db/tables/subscriber_email_preferences";
 
 export async function GET(req: NextRequest) {
   try {

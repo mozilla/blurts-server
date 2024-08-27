@@ -471,40 +471,6 @@ async function updateMonthlyEmailTimestamp(email) {
 /* c8 ignore stop */
 
 /**
- * Unsubscribe user from Monthly Monitor Report 
- *
- * @param {string} email User email
- */
-// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
-/* c8 ignore start */
-async function unsubscribeMonthlyMonitorReportForEmail(email) {
-  const sub = await knex('subscribers')
-    .where({ "primary_email": email, "primary_verified": true })
-    .first()
-
-  // if we found email in "subscribers" table, opt out right away
-  // if not, attempt to look for it in "emails" table and opt out every subscriber that has that email linked as secondary
-  if (sub) {
-    await setMonthlyMonitorReport(sub.id, false)
-  } else {
-    const emailRows = await knex("email_addresses")
-      .where({ "email": email, "verified": true })
-      .returning("subscriber_id")
-
-    if (emailRows.length > 0) {
-      for (const r of emailRows) {
-        await setMonthlyMonitorReport(r.subscriber_id, false)
-      }
-    } else {
-      const errMsg = `unsubscribeMonthlyMonitorReportForEmail: Could not find email - ${email}`
-      console.error(errMsg)
-      throw new Error(errMsg)
-    }
-  }
-}
-/* c8 ignore stop */
-
-/**
  * @param {import("knex/types/tables").SubscriberRow} subscriber
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
@@ -712,6 +678,5 @@ export {
   incrementSignInCountForEligibleFreeUser,
   getSignInCount,
   unresolveAllBreaches,
-  unsubscribeMonthlyMonitorReportForEmail,
   knex as knexSubscribers
 }
