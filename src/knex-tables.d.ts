@@ -198,10 +198,6 @@ declare module "knex/types/tables" {
     monthly_monitor_report: boolean;
     monthly_monitor_report_at: Date | null;
   }
-  type SubscriberEmailPreferencesAutoInsertedColumns = Extract<
-    keyof SubscriberEmailPreferencesRow,
-    "id" | "subscriber_id"
-  >;
 
   interface BreachRow {
     id: number;
