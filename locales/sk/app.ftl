@@ -18,7 +18,6 @@
         [ins] Mozilla Monitorom
        *[nom] Mozilla Monitor
     }
--product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name =
     { $case ->
        *[nom] Monitor
@@ -37,15 +36,6 @@
         [loc] Firefoxe
         [ins] Firefoxom
     }
--brand-Mozilla =
-    { $case ->
-       *[nom] Mozilla
-        [gen] Mozilly
-        [dat] Mozille
-        [acc] Mozillu
-        [loc] Mozille
-        [ins] Mozillou
-    }
 -brand-HIBP = Have I Been Pwned
 -brand-fxa =
     { $case ->
@@ -58,188 +48,6 @@
     }
 -brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
--brand-send = Firefox Send
--brand-fpn = Firefox Private Network
-
-##
-
-error-could-not-add-email = E‑mailovú adresu sa nepodarilo pridať do databázy.
-error-not-subscribed = Táto e‑mailová adresa nie je prihlásená na odber upozornení z { -product-name(case: "gen") }.
-error-hibp-throttled = Príliš mnoho pripojení k službe { -brand-HIBP }.
-error-hibp-connect = Chyba pri pripájaní k { -brand-HIBP }.
-
-user-add-invalid-email = Neplatná e‑mailová adresa
-user-add-too-many-emails = Monitorujete maximálny počet e‑mailových adries.
-user-add-duplicate-email = Táto e‑mailová adresa už bola do { -product-name(case: "gen") } pridaná.
-user-add-verification-email-just-sent = Ďalší overovací e‑mail nie je možné odoslať takto rýchlo. Skúste to znovu neskôr.
-user-add-unknown-error = Pri pridávaní ďalšej e‑mailovej adresy sa vyskytla chyba. Skúste to znova neskôr.
-user-delete-unknown-error = Pri odstraňovaní e‑mailovej adresy sa vyskytla chyba. Skúste to znova neskôr.
-
-user-verify-token-error = Vyžaduje sa overovací token.
-
-user-unsubscribe-token-error = Pre odhlásenie je vyžadovaný token.
-user-unsubscribe-token-email-error = Pre odhlásenie je vyžadovaný token a emailHash.
-
-# compromised-data = the kind of user data exposed to hackers in data breach.
-compromised-data = Kompromitované údaje:
-
-# Breach data provided by Have I Been Pwned.
-# Variables:
-#   $hibp-link (String) - Link to Have I Been Pwned
-hibp-attribution = Údaje o únikoch poskytuje { $hibp-link }
-
-show-all = Zobraziť všetko
-
-sign-out = Odhlásiť sa
-
-# Manage Firefox Account, link to page where account holders can change their account settings.
-manage-fxa = Spravovať { -brand-fxa(case: "acc") }
-
-# Link title
-frequently-asked-questions = Často kladené otázky
-
-# Link title
-preferences = Nastavenia
-
-# Link title
-home = Domov
-
-# Link title
-security-tips = Bezpečnostné tipy
-
-# Link title
-more-about-this-breach = Ďalšie informácie o tomto úniku
-
-monitor-several-emails = Monitorujte niekoľko e‑mailových adries
-
-website-breach = Únik z webových stránok
-sensitive-breach = Únik citlivých údajov z webových stránok
-data-aggregator-breach = Únik z agregátora údajov
-
-what-data = Aké údaje boli kompromitované:
-
-sensitive-sites = Ako sa { -product-name(case: "nom") } chová v prípade webov obsahujúcich citlivé údaje?
-sensitive-sites-copy =
-    { -product-name } zverejňuje tieto účty iba v prípade, že je e‑mailová adresa overená. 
-    Znamená to, že vy ste jediná osoba, ktorá môže zistiť, či boli vaše údaje súčasťou tohto úniku 
-    (ak teda nemá do vášho počítača prístup niekto iný).
-
-delayed-reporting-headline = Prečo nahlásenie tohto úniku trvalo tak dlho?
-delayed-reporting-copy =
-    Niekedy môže trvať mesiace či roky, než sa prihlasovacie údaje vyzradené v úniku 
-    objavia na dark webe. Úniky sú pridávané do našej databázy hneď, akonáhle sú odhalené a potvrdené.
-
-fxm-warns-you =
-    { -product-name } vás upozorní, keď bola vaša e‑mailová adresa vyzradená v nejakom úniku údajov 
-    Zistite, či boli vaše informácie súčasťou úniku údajov, zistite, ako lepšie ochrániť svoje účty a 
-    dostávajte upozornenia v prípade, že sa vaša e‑mailová adresa objaví v novom úniku.
-
-what-is-data-agg = Čo je agregátor údajov?
-what-is-data-agg-blurb =
-    Agregátory údajov či sprostredkovatelia údajov zbierajú údaje z verejných 
-    záznamov alebo ich kupujú od iných spoločností. Tieto údaje zhromažďujú za účelom ich 
-    predaja rôznym spoločnostiam na marketingové účely. U obetí týchto únikov síce existuje 
-    menšia pravdepodobnosť spáchania bankového podvodu, no hackeri by mohli tieto údaje použiť na ich profilovanie.
-
-avoid-personal-info = Nepoužívajte v heslách osobné údaje
-
-## What to do after data breach tips
-
-send-verification = Poslať overovací odkaz
-
-# This string is a header on the user preferences page and
-# appears above a check-box list of user options which allow
-# the user to choose whether or not they want to receive breach
-# alerts for all of their monitored email addresses to a single
-# email address.
-breach-summary = Súhrnné informácie
-
-## Variables:
-##   $userName (String) - Username
-
-##
-
-breach-alert-subject = { -product-name(case: "nom") } našiel vašu e‑mailovú adresu v novom úniku údajov
-
-## Variables:
-##   $breachName (String) - Number of the breach
-
-# This string is displayed under a large numeral that indicates the total number
-# of data breaches that exposed a user’s password. Don’t add $passwords to
-# your localization, because it would result in the number showing twice.
-passwords-exposed =
-    { $passwords ->
-        [one] heslo uniklo súhrnne vo všetkých únikoch
-        [few] heslá unikli súhrnne vo všetkých únikoch
-       *[other] hesiel uniklo súhrnne vo všetkých únikoch
-    }
-
-# This string is displayed under a large numeral that indicates the total number
-# of data breaches that have exposed the user’s information. Don’t add $breaches to
-# your localization, because it would result in the number showing twice.
-known-data-breaches-exposed =
-    { $breaches ->
-        [one] známy únik údajov vyzradil vaše údaje
-        [few] známe úniky údajov vyzradili vaše údaje
-       *[other] známych únikov údajov vyzradilo vaše údaje
-    }
-
-what-is-a-website-breach = Čo je únik údajov z webovej stránky?
-website-breach-blurb = Únik údajov z webovej stránky sa odohrá, keď kybernetickí zločinci odcudzia, skopírujú alebo zverejnia osobné údaje z internetových účtov. Spravidla je to výsledkom činnosti hackerov, ktorí našli slabé miesto v zabezpečení webu. K úniku osobných údajov z účtov však môže dôjsť aj nedopatrením.
-
-# This is a section headline on the breach detail page that appears above
-# a short summary about the breach.
-breach-overview-title = Prehľad
-
-# This is a standardized breach overview blurb that appears on all breach detail pages.
-# $breachTitle is the name of the breached company or website.
-# $breachDate and $addedDate are calendar dates.
-breach-overview-new = Dňa { $breachDate } došlo k úniku údajov { $breachTitle }. Ihneď po odhalení a potvrdení bol dňa { $addedDate } pridaný do našej databázy.
-
-# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
-menu = Ponuka
-
-# This is part of a confirmation message that appears after a user has submitted
-# the form to add an additional email to Firefox Monitor.
-# Variables:
-#   $userEmail (String) - User email address
-verify-the-link = Pre pridanie e‑mailovej adresy { $userEmail } do { -product-name(case: "gen") }, overte odkaz zaslaný na túto adresu.
-
-## These are part of a confirmation page that appears after a user has verified
-## an additional email to Firefox Monitor.
-
-# This string is a label for the calendar date a breach is added to the database
-# and is followed by that date.
-breach-added-label = Dátum pridania:
-
-# Section headline
-rec-section-headline = Čo robiť s týmto únikom údajov
-rec-section-subhead = Pre ochranu vašich osobných údajov a vašej digitálnej identity odporúčame nasledujúce kroky.
-
-# Section headline
-rec-section-headline-no-pw = Čo robiť pre ochranu vašich osobných údajov
-rec-section-subhead-no-pw = Napriek tomu, že súčasťou úniku neboli heslá, odporúčame urobiť nasledujúce kroky pre lepšiu ochranu vašich osobných údajov.
-
-## This string contains nested markup that becomes a link later in the code.
-## Please do not modify or remove "<a>" and "</a>".
-
-##
-
-## These strings contain nested markup that is later used to style the text inside of it.
-## Please do not modify or remove "<span>" and "</span>".
-
-# A status indicator that appears in the top right corner of new breach cards
-new-breach = Nový
-
-## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
-
-## Relay and VPN educational/ad units
-
-# Monitor V2
-
-
-## The following messages are brands and should be kept entirely in English
-
 -brand-firefox =
     { $case ->
        *[nom] Firefox
@@ -295,13 +103,124 @@ new-breach = Nový
 
 ##
 
-##
+error-not-subscribed = Táto e‑mailová adresa nie je prihlásená na odber upozornení z { -product-name(case: "gen") }.
+error-hibp-throttled = Príliš mnoho pripojení k službe { -brand-HIBP }.
+error-hibp-connect = Chyba pri pripájaní k { -brand-HIBP }.
+user-add-invalid-email = Neplatná e‑mailová adresa
+user-add-too-many-emails = Monitorujete maximálny počet e‑mailových adries.
+user-add-duplicate-email = Táto e‑mailová adresa už bola do { -product-name(case: "gen") } pridaná.
+user-add-verification-email-just-sent = Ďalší overovací e‑mail nie je možné odoslať takto rýchlo. Skúste to znovu neskôr.
+user-add-unknown-error = Pri pridávaní ďalšej e‑mailovej adresy sa vyskytla chyba. Skúste to znova neskôr.
+user-delete-unknown-error = Pri odstraňovaní e‑mailovej adresy sa vyskytla chyba. Skúste to znova neskôr.
+user-verify-token-error = Vyžaduje sa overovací token.
+# compromised-data = the kind of user data exposed to hackers in data breach.
+compromised-data = Kompromitované údaje:
+# Breach data provided by Have I Been Pwned.
+# Variables:
+#   $hibp-link (String) - Link to Have I Been Pwned
+hibp-attribution = Údaje o únikoch poskytuje { $hibp-link }
+show-all = Zobraziť všetko
+sign-out = Odhlásiť sa
+# Manage Firefox Account, link to page where account holders can change their account settings.
+manage-fxa = Spravovať { -brand-fxa(case: "acc") }
+# Link title
+preferences = Nastavenia
+# Link title
+home = Domov
+# Link title
+security-tips = Bezpečnostné tipy
+# Link title
+more-about-this-breach = Ďalšie informácie o tomto úniku
+monitor-several-emails = Monitorujte niekoľko e‑mailových adries
+website-breach = Únik z webových stránok
+sensitive-breach = Únik citlivých údajov z webových stránok
+data-aggregator-breach = Únik z agregátora údajov
+what-data = Aké údaje boli kompromitované:
+sensitive-sites = Ako sa { -product-name(case: "nom") } chová v prípade webov obsahujúcich citlivé údaje?
+sensitive-sites-copy =
+    { -product-name } zverejňuje tieto účty iba v prípade, že je e‑mailová adresa overená. 
+    Znamená to, že vy ste jediná osoba, ktorá môže zistiť, či boli vaše údaje súčasťou tohto úniku 
+    (ak teda nemá do vášho počítača prístup niekto iný).
+delayed-reporting-headline = Prečo nahlásenie tohto úniku trvalo tak dlho?
+delayed-reporting-copy =
+    Niekedy môže trvať mesiace či roky, než sa prihlasovacie údaje vyzradené v úniku 
+    objavia na dark webe. Úniky sú pridávané do našej databázy hneď, akonáhle sú odhalené a potvrdené.
+fxm-warns-you =
+    { -product-name } vás upozorní, keď bola vaša e‑mailová adresa vyzradená v nejakom úniku údajov 
+    Zistite, či boli vaše informácie súčasťou úniku údajov, zistite, ako lepšie ochrániť svoje účty a 
+    dostávajte upozornenia v prípade, že sa vaša e‑mailová adresa objaví v novom úniku.
+what-is-data-agg = Čo je agregátor údajov?
+what-is-data-agg-blurb =
+    Agregátory údajov či sprostredkovatelia údajov zbierajú údaje z verejných 
+    záznamov alebo ich kupujú od iných spoločností. Tieto údaje zhromažďujú za účelom ich 
+    predaja rôznym spoločnostiam na marketingové účely. U obetí týchto únikov síce existuje 
+    menšia pravdepodobnosť spáchania bankového podvodu, no hackeri by mohli tieto údaje použiť na ich profilovanie.
+avoid-personal-info = Nepoužívajte v heslách osobné údaje
+send-verification = Poslať overovací odkaz
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single
+# email address.
+breach-summary = Súhrnné informácie
 
 ##
 
+breach-alert-subject = { -product-name(case: "nom") } našiel vašu e‑mailovú adresu v novom úniku údajov
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that exposed a user’s password. Don’t add $passwords to
+# your localization, because it would result in the number showing twice.
+passwords-exposed =
+    { $passwords ->
+        [one] heslo uniklo súhrnne vo všetkých únikoch
+        [few] heslá unikli súhrnne vo všetkých únikoch
+       *[other] hesiel uniklo súhrnne vo všetkých únikoch
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+known-data-breaches-exposed =
+    { $breaches ->
+        [one] známy únik údajov vyzradil vaše údaje
+        [few] známe úniky údajov vyzradili vaše údaje
+       *[other] známych únikov údajov vyzradilo vaše údaje
+    }
+what-is-a-website-breach = Čo je únik údajov z webovej stránky?
+website-breach-blurb = Únik údajov z webovej stránky sa odohrá, keď kybernetickí zločinci odcudzia, skopírujú alebo zverejnia osobné údaje z internetových účtov. Spravidla je to výsledkom činnosti hackerov, ktorí našli slabé miesto v zabezpečení webu. K úniku osobných údajov z účtov však môže dôjsť aj nedopatrením.
+# This is a section headline on the breach detail page that appears above
+# a short summary about the breach.
+breach-overview-title = Prehľad
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview-new = Dňa { $breachDate } došlo k úniku údajov { $breachTitle }. Ihneď po odhalení a potvrdení bol dňa { $addedDate } pridaný do našej databázy.
+# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
+menu = Ponuka
+# This is part of a confirmation message that appears after a user has submitted
+# the form to add an additional email to Firefox Monitor.
+# Variables:
+#   $userEmail (String) - User email address
+verify-the-link = Pre pridanie e‑mailovej adresy { $userEmail } do { -product-name(case: "gen") }, overte odkaz zaslaný na túto adresu.
+
+## These are part of a confirmation page that appears after a user has verified
+## an additional email to Firefox Monitor.
+
+# This string is a label for the calendar date a breach is added to the database
+# and is followed by that date.
+breach-added-label = Dátum pridania:
+# Section headline
+rec-section-headline = Čo robiť s týmto únikom údajov
+rec-section-subhead = Pre ochranu vašich osobných údajov a vašej digitálnej identity odporúčame nasledujúce kroky.
+# Section headline
+rec-section-headline-no-pw = Čo robiť pre ochranu vašich osobných údajov
+rec-section-subhead-no-pw = Napriek tomu, že súčasťou úniku neboli heslá, odporúčame urobiť nasledujúce kroky pre lepšiu ochranu vašich osobných údajov.
+
 ##
 
-## Updated error messages
+# A status indicator that appears in the top right corner of new breach cards
+new-breach = Nový
+
+##
 
 # “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
@@ -338,7 +257,6 @@ new-breach = Nový
                *[upper] Účet Mozilla
             }
     }
-
 open-in-new-tab-alt = Otvoriť odkaz na novej karte
 
 ## Search Engine Optimization
@@ -355,7 +273,6 @@ brand-mozilla-monitor = { -brand-fx-monitor }
 ## Site navigation
 
 mobile-menu-label = Hlavná ponuka
-
 main-nav-button-collapse-label = Zbaliť ponuku
 main-nav-button-collapse-tooltip = Zbaliť ponuku
 main-nav-button-expand-label = Rozbaliť ponuku
@@ -385,7 +302,9 @@ mozilla = { -brand-mozilla }
 terms-of-service = Podmienky používania služby
 privacy-notice = Vyhlásenie o ochrane osobných údajov
 github = { -brand-github }
+# Deprecated
 footer-nav-all-breaches = Všetky úniky údajov
+footer-nav-recent-breaches = Nedávne úniky údajov
 footer-external-link-faq-label = Často kladené otázky
 footer-external-link-faq-tooltip = Často kladené otázky
 
@@ -405,7 +324,6 @@ error-page-error-other-title = { $errorCode } Niečo sa pokazilo
 all-breaches-headline-2 = Všetky úniky údajov zistené pomocou { -brand-fx-monitor(case: "gen") }
 all-breaches-lead = Monitorujeme všetky známe úniky údajov, aby sme zistili, či nedošlo k ohrozeniu vašich osobných údajov. Tu je úplný zoznam všetkých únikov, ktoré boli nahlásené od roku 2007.
 search-breaches = Hľadať
-
 # the kind of user data exposed to hackers in data breach.
 exposed-data = Odhalené údaje:
 
@@ -413,16 +331,11 @@ exposed-data = Odhalené údaje:
 
 find-out-if-2 = Zistite, či ste boli súčasťou tohto úniku
 find-out-if-description = Pomôžeme vám rýchlo zistiť, či bola pri tomto úniku odhalená vaša e‑mailová adresa, a takisto vám pomôžeme pochopiť, čo robiť ďalej.
-
 breach-detail-cta-signup = Skontrolovať úniky
-
-## Floating banner
 
 ## Firefox Monitor -> Mozilla Monitor rebrand banner
 
 banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: nový názov, vzhľad a ešte viac spôsobov, ako <b>získať späť svoje súkromie</b>.
 banner-monitor-rebrand-dismiss-button-label = OK
 banner-monitor-rebrand-dismiss-button-tooltip = Zavrieť
-
 loading-accessibility = Načítava sa
-

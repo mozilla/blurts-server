@@ -4,13 +4,11 @@
 
 "use client";
 
-import { FeatureFlagName } from "../../../db/tables/featureFlags";
 import { useL10n } from "../../hooks/l10n";
 import styles from "./PercentageChart.module.scss";
 
 export type Props = {
   exposureReduction: number;
-  enabledFeatureFlags: FeatureFlagName[];
 };
 export const PercentageChart = (props: Props) => {
   const l10n = useL10n();
@@ -95,37 +93,29 @@ export const PercentageChart = (props: Props) => {
               },
             })}
           </text>
-          {l10n.getFragment(
-            /* c8 ignore next 5 */
-            // As the `SetExpectationsForUsers` feature flag is removed, the
-            // branch will be covered again:
-            props.enabledFeatureFlags.includes("SetExpectationsForUsers")
-              ? "exposure-reduction-chart-explanation"
-              : "exposure-reduction-chart-explanation-deprecated",
-            {
-              elems: {
-                label_line_1: (
-                  <text
-                    className={styles.headingLabel}
-                    fontSize={headingLabelSize}
-                    x={diameter / 2}
-                    y={diameter / 2 + headingLabelSize + headingGap / 2}
-                    textAnchor="middle"
-                  />
-                ),
-                label_line_2: (
-                  <text
-                    className={styles.headingLabel}
-                    fontSize={headingLabelSize}
-                    x={diameter / 2}
-                    y={diameter / 2 + (headingLabelSize + headingGap / 2) * 2}
-                    textAnchor="middle"
-                  />
-                ),
-              },
-              vars: { nr: props.exposureReduction },
+          {l10n.getFragment("exposure-reduction-chart-explanation", {
+            elems: {
+              label_line_1: (
+                <text
+                  className={styles.headingLabel}
+                  fontSize={headingLabelSize}
+                  x={diameter / 2}
+                  y={diameter / 2 + headingLabelSize + headingGap / 2}
+                  textAnchor="middle"
+                />
+              ),
+              label_line_2: (
+                <text
+                  className={styles.headingLabel}
+                  fontSize={headingLabelSize}
+                  x={diameter / 2}
+                  y={diameter / 2 + (headingLabelSize + headingGap / 2) * 2}
+                  textAnchor="middle"
+                />
+              ),
             },
-          )}
+            vars: { nr: props.exposureReduction },
+          })}
         </svg>
       </div>
     </figure>
