@@ -23,8 +23,15 @@ exposure-chart-legend-heading-nr = Antal
 #   $nr (number) - Number of a particular type of exposure found for the user
 exposure-chart-legend-value-nr = { $nr }×
 exposure-chart-caption = Dette diagrammet viser kor mange gongar informasjonen din er aktivt eksponert.
+# Variables:
+#   $total_fixed_exposures_num (number) - Number of fixed exposures
+#   $total_exposures_num (number) - Number of total exposures
+exposure-chart-caption-fixed = Dette diagrammet viser antalet eksponeringar som er løyste ({ $total_fixed_exposures_num } av { $total_exposures_num })
 exposure-chart-returning-user-upgrade-prompt = Heimeadresse, familiemedlemmar, med meir, er ikkje inkludert enno.
 exposure-chart-returning-user-upgrade-prompt-cta = Start ei gratis skanning
+exposure-chart-scan-in-progress-prompt = <b>Skanning i gang:</b> adresse, familiemedlemmar, og meir, er ikkje inkludert enno.
+modal-active-number-of-exposures-title = Om antal aktive eksponeringar
+modal-fixed-number-of-exposures-title = Om talet på dine løyste eksponeringar
 modal-cta-ok = OK
 modal-cta-got-it = Eg forstår
 open-modal-alt = Opne modal

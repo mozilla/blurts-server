@@ -193,15 +193,10 @@ declare module "knex/types/tables" {
   interface SubscriberEmailPreferencesRow {
     id: number;
     subscriber_id: number;
-    instant_breach_alert: boolean;
-    all_emails_to_primary: boolean;
-    monthly_monitor_report: boolean;
-    monthly_monitor_report_at: Date | null;
+    primary_email: string;
+    monthly_monitor_report_free: boolean;
+    monthly_monitor_report_free_at: Date | null;
   }
-  type SubscriberEmailPreferencesAutoInsertedColumns = Extract<
-    keyof SubscriberEmailPreferencesRow,
-    "id" | "subscriber_id"
-  >;
 
   interface BreachRow {
     id: number;

@@ -185,12 +185,12 @@ export const AlertAddressForm = (props: Props) => {
               <div>
                 <b>
                   {l10n.getString(
-                    "settings-alert-preferences-allow-monthly-monitor-report-title",
+                    "settings-alert-preferences-allow-monthly-monitor-plus-report-title",
                   )}
                 </b>
                 <p>
                   {l10n.getString(
-                    "settings-alert-preferences-allow-monthly-monitor-report-subtitle",
+                    "settings-alert-preferences-allow-monthly-monitor-plus-report-subtitle",
                   )}
                 </p>
               </div>

@@ -63,8 +63,8 @@
     "npm": "10.8.1"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.633.0",
-    "@aws-sdk/lib-storage": "^3.633.0",
+    "@aws-sdk/client-s3": "^3.637.0",
+    "@aws-sdk/lib-storage": "^3.637.0",
     "@fluent/bundle": "^0.18.0",
     "@fluent/langneg": "^0.7.0",
     "@fluent/react": "^0.15.2",
@@ -103,7 +103,7 @@
     "react-stately": "^3.32.1",
     "server-only": "^0.0.1",
     "uuid": "^10.0.0",
-    "winston": "^3.13.1"
+    "winston": "^3.14.2"
   },
   "devDependencies": {
     "@faker-js/faker": "^8.4.1",
@@ -149,14 +149,14 @@
     "jest-canvas-mock": "^2.5.2",
     "jest-environment-jsdom": "^29.7.0",
     "jest-fail-on-console": "^3.3.0",
-    "lint-staged": "^15.2.7",
+    "lint-staged": "^15.2.9",
     "mjml-browser": "^4.15.3",
     "prettier": "3.3.3",
     "sass": "^1.77.8",
     "storybook": "^8.1.11",
     "stylelint": "^16.8.2",
     "stylelint-config-recommended-scss": "^14.1.0",
-    "stylelint-scss": "^6.5.0",
+    "stylelint-scss": "^6.5.1",
     "tsx": "^4.17.0",
     "typescript": "^5.5.4",
     "yaml": "^2.5.0"
