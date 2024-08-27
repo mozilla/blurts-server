@@ -10,197 +10,12 @@
 ## unless otherwise indicated.
 
 -product-name = Mozilla Monitor
--product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name = Monitor
 -brand-name = Firefox
--brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
 -brand-fxa = Firefox-account
 -brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
--brand-send = Firefox Send
--brand-fpn = Firefox Private Network
-
-##
-
-error-could-not-add-email = Kon e-mailadres niet aan database toevoegen.
-error-not-subscribed = Dit e-mailadres is niet geabonneerd op { -product-name }.
-error-hibp-throttled = Te veel verbindingen met { -brand-HIBP }.
-error-hibp-connect = Fout bij verbinden met { -brand-HIBP }.
-
-user-add-invalid-email = Ongeldig e-mailadres
-user-add-too-many-emails = U bewaakt het maximale aantal e-mailadressen.
-user-add-duplicate-email = Dit e-mailadres is al aan { -product-name } toegevoegd.
-user-add-verification-email-just-sent = Zo snel kan een ander verificatie-e-mailbericht niet worden verzonden. Probeer het later opnieuw.
-user-add-unknown-error = Er is iets misgegaan bij het toevoegen van een ander e-mailadres. Probeer het later opnieuw.
-user-delete-unknown-error = Er is iets misgegaan bij het verwijderen van een e-mailadres. Probeer het later opnieuw.
-
-user-verify-token-error = Verificatietoken is vereist.
-
-user-unsubscribe-token-error = U hebt een token nodig om u uit te schrijven.
-user-unsubscribe-token-email-error = U hebt een token en een emailHash nodig om u uit te schrijven.
-
-# compromised-data = the kind of user data exposed to hackers in data breach.
-compromised-data = Getroffen gegevens:
-
-# Breach data provided by Have I Been Pwned.
-# Variables:
-#   $hibp-link (String) - Link to Have I Been Pwned
-hibp-attribution = Gegevens van datalekken verstrekt door { $hibp-link }
-
-show-all = Alles tonen
-
-sign-out = Afmelden
-
-# Manage Firefox Account, link to page where account holders can change their account settings.
-manage-fxa = { -brand-fxa } beheren
-
-# Link title
-frequently-asked-questions = Veelgestelde vragen
-
-# Link title
-preferences = Voorkeuren
-
-# Link title
-home = Start
-
-# Link title
-security-tips = Beveiligingstips
-
-# Link title
-more-about-this-breach = Meer over dit datalek
-
-monitor-several-emails = Bewaak verschillende e-mailadressen
-
-website-breach = Websitedatalek
-sensitive-breach = Gevoelig websitedatalek
-data-aggregator-breach = Datalek gegevensverzameling
-
-what-data = Welke gegevens zijn gecompromitteerd:
-
-sensitive-sites = Hoe behandelt { -product-name } gevoelige websites?
-sensitive-sites-copy =
-    { -product-name } onthult alleen accounts die zijn getroffen door dit
-    soort lekken na verificatie van een e-mailadres. Dit betekent dat u de
-    enige persoon bent die kan zien of uw informatie in dit lek voor komt
-    (tenzij iemand anders toegang tot uw e-mailaccount heeft).
-
-delayed-reporting-headline = Waarom duurde het zo lang voordat dit datalek werd gemeld?
-delayed-reporting-copy =
-    Het kan soms maanden of jaren duren voordat de aanmeldgegevens die in een datalek
-    voor komen op het dark web verschijnen. Datalekken worden, zodra ze zijn ontdekt en
-    geverifieerd, aan onze database toegevoegd.
-
-fxm-warns-you =
-    { -product-name } waarschuwt u als uw e-mailadres voor komt
-    in een online datalek. Kijk of uw informatie is gelekt, lees hoe
-    u uw online accounts beter kunt beschermen en ontvang een waarschuwing
-    als uw e-mailadres voor komt in een nieuw datalek.
-
-what-is-data-agg = Wat is een gegevensverzamelaar?
-what-is-data-agg-blurb =
-    Data-verzamelaars of gegevenshandelaars verzamelen informatie uit openbare
-    bronnen en kopen deze van andere bedrijven. Ze vatten deze gegevens samen om ze voor marketingdoeleinden
-    aan bedrijven te verkopen. Slachtoffers van deze lekken hebben minder kans om door financiële fraude te
-    worden getroffen, maar hackers zouden deze gegevens kunnen gebruiken om zich als hen voor te doen of hen te profileren.
-
-avoid-personal-info = Vermijd het gebruik van persoonlijke gegevens in wachtwoorden
-
-## What to do after data breach tips
-
-send-verification = Verificatiekoppeling versturen
-
-# This string is a header on the user preferences page and
-# appears above a check-box list of user options which allow
-# the user to choose whether or not they want to receive breach
-# alerts for all of their monitored email addresses to a single
-# email address.
-breach-summary = Samenvatting datalek
-
-## Variables:
-##   $userName (String) - Username
-
-##
-
-breach-alert-subject = { -product-name } heeft uw e-mailadres gevonden in een nieuw datalek.
-
-## Variables:
-##   $breachName (String) - Number of the breach
-
-# This string is displayed under a large numeral that indicates the total number
-# of data breaches that exposed a user’s password. Don’t add $passwords to
-# your localization, because it would result in the number showing twice.
-passwords-exposed =
-    { $passwords ->
-        [one] Wachtwoord gelekt in alle datalekken
-       *[other] Wachtwoorden gelekt in alle datalekken
-    }
-
-# This string is displayed under a large numeral that indicates the total number
-# of data breaches that have exposed the user’s information. Don’t add $breaches to
-# your localization, because it would result in the number showing twice.
-known-data-breaches-exposed =
-    { $breaches ->
-        [one] Een bekend datalek heeft uw gegevens gelekt
-       *[other] Bekende datalekken hebben uw gegevens gelekt
-    }
-
-what-is-a-website-breach = Wat is een websitedatalek?
-website-breach-blurb = Een datalek van een website treedt op, wanneer cybercriminelen persoonlijke gegevens uit online-accounts stelen, kopiëren of blootleggen. Dat gebeurt het meest, wanneer hackers een zwakke plek in de beveiliging van de website vinden. Het kan echter ook optreden als accountinformatie per ongeluk wordt gelekt.
-
-# This is a section headline on the breach detail page that appears above
-# a short summary about the breach.
-breach-overview-title = Overzicht
-
-# This is a standardized breach overview blurb that appears on all breach detail pages.
-# $breachTitle is the name of the breached company or website.
-# $breachDate and $addedDate are calendar dates.
-breach-overview-new = Op { $breachDate } is een lek opgetreden op { $breachTitle }. Na ontdekking en verificatie van het lek, is het op { $addedDate } toegevoegd aan onze database.
-
-# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
-menu = Menu
-
-# This is part of a confirmation message that appears after a user has submitted
-# the form to add an additional email to Firefox Monitor.
-# Variables:
-#   $userEmail (String) - User email address
-verify-the-link = Verifieer de koppeling die naar { $userEmail } is verstuurd om dit aan { -product-name } toe te voegen.
-
-## These are part of a confirmation page that appears after a user has verified
-## an additional email to Firefox Monitor.
-
-# This string is a label for the calendar date a breach is added to the database
-# and is followed by that date.
-breach-added-label = Datalek toegevoegd:
-
-# Section headline
-rec-section-headline = Wat kunt u doen voor dit datalek
-rec-section-subhead = We raden u aan de volgende stappen te nemen om uw persoonlijke gegevens veilig te houden en uw digitale identiteit te beschermen.
-
-# Section headline
-rec-section-headline-no-pw = Wat kunt u doen om uw persoonlijke gegevens te beschermen
-rec-section-subhead-no-pw = Hoewel bij dit datalek geen wachtwoorden zijn gelekt, zijn er nog steeds stappen die u kunt nemen om uw persoonlijke gegevens beter te beschermen.
-
-## This string contains nested markup that becomes a link later in the code.
-## Please do not modify or remove "<a>" and "</a>".
-
-##
-
-## These strings contain nested markup that is later used to style the text inside of it.
-## Please do not modify or remove "<span>" and "</span>".
-
-# A status indicator that appears in the top right corner of new breach cards
-new-breach = Nieuw
-
-## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
-
-## Relay and VPN educational/ad units
-
-# Monitor V2
-
-
-## The following messages are brands and should be kept entirely in English
-
 -brand-firefox = Firefox
 -brand-monitor = Monitor
 -brand-fx-monitor = Mozilla Monitor
@@ -216,18 +31,129 @@ new-breach = Nieuw
 
 ##
 
-##
+error-not-subscribed = Dit e-mailadres is niet geabonneerd op { -product-name }.
+error-hibp-throttled = Te veel verbindingen met { -brand-HIBP }.
+error-hibp-connect = Fout bij verbinden met { -brand-HIBP }.
+user-add-invalid-email = Ongeldig e-mailadres
+user-add-too-many-emails = U bewaakt het maximale aantal e-mailadressen.
+user-add-duplicate-email = Dit e-mailadres is al aan { -product-name } toegevoegd.
+user-add-verification-email-just-sent = Zo snel kan een ander verificatie-e-mailbericht niet worden verzonden. Probeer het later opnieuw.
+user-add-unknown-error = Er is iets misgegaan bij het toevoegen van een ander e-mailadres. Probeer het later opnieuw.
+user-delete-unknown-error = Er is iets misgegaan bij het verwijderen van een e-mailadres. Probeer het later opnieuw.
+user-verify-token-error = Verificatietoken is vereist.
+# compromised-data = the kind of user data exposed to hackers in data breach.
+compromised-data = Getroffen gegevens:
+# Breach data provided by Have I Been Pwned.
+# Variables:
+#   $hibp-link (String) - Link to Have I Been Pwned
+hibp-attribution = Gegevens van datalekken verstrekt door { $hibp-link }
+show-all = Alles tonen
+sign-out = Afmelden
+# Manage Firefox Account, link to page where account holders can change their account settings.
+manage-fxa = { -brand-fxa } beheren
+# Link title
+preferences = Voorkeuren
+# Link title
+home = Start
+# Link title
+security-tips = Beveiligingstips
+# Link title
+more-about-this-breach = Meer over dit datalek
+monitor-several-emails = Bewaak verschillende e-mailadressen
+website-breach = Websitedatalek
+sensitive-breach = Gevoelig websitedatalek
+data-aggregator-breach = Datalek gegevensverzameling
+what-data = Welke gegevens zijn gecompromitteerd:
+sensitive-sites = Hoe behandelt { -product-name } gevoelige websites?
+sensitive-sites-copy =
+    { -product-name } onthult alleen accounts die zijn getroffen door dit
+    soort lekken na verificatie van een e-mailadres. Dit betekent dat u de
+    enige persoon bent die kan zien of uw informatie in dit lek voor komt
+    (tenzij iemand anders toegang tot uw e-mailaccount heeft).
+delayed-reporting-headline = Waarom duurde het zo lang voordat dit datalek werd gemeld?
+delayed-reporting-copy =
+    Het kan soms maanden of jaren duren voordat de aanmeldgegevens die in een datalek
+    voor komen op het dark web verschijnen. Datalekken worden, zodra ze zijn ontdekt en
+    geverifieerd, aan onze database toegevoegd.
+fxm-warns-you =
+    { -product-name } waarschuwt u als uw e-mailadres voor komt
+    in een online datalek. Kijk of uw informatie is gelekt, lees hoe
+    u uw online accounts beter kunt beschermen en ontvang een waarschuwing
+    als uw e-mailadres voor komt in een nieuw datalek.
+what-is-data-agg = Wat is een gegevensverzamelaar?
+what-is-data-agg-blurb =
+    Data-verzamelaars of gegevenshandelaars verzamelen informatie uit openbare
+    bronnen en kopen deze van andere bedrijven. Ze vatten deze gegevens samen om ze voor marketingdoeleinden
+    aan bedrijven te verkopen. Slachtoffers van deze lekken hebben minder kans om door financiële fraude te
+    worden getroffen, maar hackers zouden deze gegevens kunnen gebruiken om zich als hen voor te doen of hen te profileren.
+avoid-personal-info = Vermijd het gebruik van persoonlijke gegevens in wachtwoorden
+send-verification = Verificatiekoppeling versturen
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single
+# email address.
+breach-summary = Samenvatting datalek
 
 ##
 
+breach-alert-subject = { -product-name } heeft uw e-mailadres gevonden in een nieuw datalek.
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that exposed a user’s password. Don’t add $passwords to
+# your localization, because it would result in the number showing twice.
+passwords-exposed =
+    { $passwords ->
+        [one] Wachtwoord gelekt in alle datalekken
+       *[other] Wachtwoorden gelekt in alle datalekken
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+known-data-breaches-exposed =
+    { $breaches ->
+        [one] Een bekend datalek heeft uw gegevens gelekt
+       *[other] Bekende datalekken hebben uw gegevens gelekt
+    }
+what-is-a-website-breach = Wat is een websitedatalek?
+website-breach-blurb = Een datalek van een website treedt op, wanneer cybercriminelen persoonlijke gegevens uit online-accounts stelen, kopiëren of blootleggen. Dat gebeurt het meest, wanneer hackers een zwakke plek in de beveiliging van de website vinden. Het kan echter ook optreden als accountinformatie per ongeluk wordt gelekt.
+# This is a section headline on the breach detail page that appears above
+# a short summary about the breach.
+breach-overview-title = Overzicht
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview-new = Op { $breachDate } is een lek opgetreden op { $breachTitle }. Na ontdekking en verificatie van het lek, is het op { $addedDate } toegevoegd aan onze database.
+# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
+menu = Menu
+# This is part of a confirmation message that appears after a user has submitted
+# the form to add an additional email to Firefox Monitor.
+# Variables:
+#   $userEmail (String) - User email address
+verify-the-link = Verifieer de koppeling die naar { $userEmail } is verstuurd om dit aan { -product-name } toe te voegen.
+
+## These are part of a confirmation page that appears after a user has verified
+## an additional email to Firefox Monitor.
+
+# This string is a label for the calendar date a breach is added to the database
+# and is followed by that date.
+breach-added-label = Datalek toegevoegd:
+# Section headline
+rec-section-headline = Wat kunt u doen voor dit datalek
+rec-section-subhead = We raden u aan de volgende stappen te nemen om uw persoonlijke gegevens veilig te houden en uw digitale identiteit te beschermen.
+# Section headline
+rec-section-headline-no-pw = Wat kunt u doen om uw persoonlijke gegevens te beschermen
+rec-section-subhead-no-pw = Hoewel bij dit datalek geen wachtwoorden zijn gelekt, zijn er nog steeds stappen die u kunt nemen om uw persoonlijke gegevens beter te beschermen.
+
 ##
 
-## Updated error messages
+# A status indicator that appears in the top right corner of new breach cards
+new-breach = Nieuw
+
+##
 
 # “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
 -brand-mozilla-account = Mozilla-account
-
 open-in-new-tab-alt = Koppeling openen in een nieuw tabblad
 
 ## Search Engine Optimization
@@ -244,7 +170,6 @@ brand-mozilla-monitor = { -brand-fx-monitor }
 ## Site navigation
 
 mobile-menu-label = Hoofdmenu
-
 main-nav-button-collapse-label = Menu samenvouwen
 main-nav-button-collapse-tooltip = Menu samenvouwen
 main-nav-button-expand-label = Menu uitvouwen
@@ -274,7 +199,9 @@ mozilla = { -brand-mozilla }
 terms-of-service = Servicevoorwaarden
 privacy-notice = Privacyverklaring
 github = { -brand-github }
+# Deprecated
 footer-nav-all-breaches = Alle datalekken
+footer-nav-recent-breaches = Recente datalekken
 footer-external-link-faq-label = FAQ’s
 footer-external-link-faq-tooltip = Veelgestelde vragen
 
@@ -294,7 +221,6 @@ error-page-error-other-title = { $errorCode } Er is iets misgegaan
 all-breaches-headline-2 = Alle door { -brand-fx-monitor } gedetecteerde datalekken
 all-breaches-lead = We volgen alle bekende datalekken om erachter te komen of uw persoonlijke gegevens in gevaar zijn gebracht. Hier is een volledige lijst van alle datalekken die sinds 2007 zijn gemeld.
 search-breaches = Datalekken zoeken
-
 # the kind of user data exposed to hackers in data breach.
 exposed-data = Gelekte gegevens:
 
@@ -302,16 +228,11 @@ exposed-data = Gelekte gegevens:
 
 find-out-if-2 = Ontdek of u getroffen bent door dit lek
 find-out-if-description = We helpen u snel te zien of uw e-mailadres is gelekt bij dit datalek en te begrijpen wat u vervolgens moet doen.
-
 breach-detail-cta-signup = Controleren op datalekken
-
-## Floating banner
 
 ## Firefox Monitor -> Mozilla Monitor rebrand banner
 
 banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: nieuwe naam, vormgeving en nog meer manieren om <b>uw privacy op te eisen</b>.
 banner-monitor-rebrand-dismiss-button-label = OK
 banner-monitor-rebrand-dismiss-button-tooltip = Sluiten
-
 loading-accessibility = Laden
-
