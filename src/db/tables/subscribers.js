@@ -14,7 +14,7 @@ const MONITOR_PREMIUM_CAPABILITY = "monitor";
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-async function getSubscribersByHashes (hashes) {
+async function getSubscribersByHashes(hashes) {
   return await knex('subscribers').whereIn('primary_sha1', hashes).andWhere('primary_verified', '=', true)
 }
 /* c8 ignore stop */
@@ -24,7 +24,7 @@ async function getSubscribersByHashes (hashes) {
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-async function getSubscriberById (id) {
+async function getSubscriberById(id) {
   const [subscriber] = await knex('subscribers').where({
     id
   })
@@ -39,7 +39,7 @@ async function getSubscriberById (id) {
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-async function getSubscriberByFxaUid (uid) {
+async function getSubscriberByFxaUid(uid) {
   const [subscriber] = await knex('subscribers').where({
     fxa_uid: uid
   })
@@ -55,7 +55,7 @@ async function getSubscriberByFxaUid (uid) {
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-async function getSubscriberByEmail (email) {
+async function getSubscriberByEmail(email) {
   const [subscriber] = await knex('subscribers').where({
     primary_email: email,
     primary_verified: true
@@ -74,7 +74,7 @@ async function getSubscriberByEmail (email) {
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-async function updatePrimaryEmail (subscriber, updatedEmail) {
+async function updatePrimaryEmail(subscriber, updatedEmail) {
   const trx = await knex.transaction()
   let subscriberTableUpdated;
   try {
@@ -126,7 +126,7 @@ async function updatePrimaryEmail (subscriber, updatedEmail) {
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-async function updateFxAData (subscriber, fxaAccessToken, fxaRefreshToken, sessionExpiresAt, fxaProfileData) {
+async function updateFxAData(subscriber, fxaAccessToken, fxaRefreshToken, sessionExpiresAt, fxaProfileData) {
   const fxaUID = JSON.parse(fxaProfileData).uid
   const updated = await knex('subscribers')
     .where('id', '=', subscriber.id)
@@ -156,7 +156,7 @@ async function updateFxAData (subscriber, fxaAccessToken, fxaRefreshToken, sessi
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-async function updateFxATokens (subscriber, fxaAccessToken, fxaRefreshToken, sessionExpiresAt) {
+async function updateFxATokens(subscriber, fxaAccessToken, fxaRefreshToken, sessionExpiresAt) {
   const updateResp = await knex('subscribers')
     .where('id', '=', subscriber.id)
     .update({
@@ -168,7 +168,7 @@ async function updateFxATokens (subscriber, fxaAccessToken, fxaRefreshToken, ses
       updated_at: knex.fn.now(),
     })
     .returning('*');
-    return (Array.isArray(updateResp) && updateResp.length > 0) ? updateResp[0] : null;
+  return (Array.isArray(updateResp) && updateResp.length > 0) ? updateResp[0] : null;
 }
 /* c8 ignore stop */
 
@@ -179,7 +179,7 @@ async function updateFxATokens (subscriber, fxaAccessToken, fxaRefreshToken, ses
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-async function getFxATokens (subscriberId) {
+async function getFxATokens(subscriberId) {
   const res = await knex('subscribers')
     .first('fxa_access_token', 'fxa_refresh_token', 'fxa_session_expiry')
     .where('id', subscriberId)
@@ -196,7 +196,7 @@ async function getFxATokens (subscriberId) {
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-async function updateFxAProfileData (subscriber, fxaProfileData) {
+async function updateFxAProfileData(subscriber, fxaProfileData) {
   await knex('subscribers').where('id', subscriber.id)
     .update({
       // @ts-ignore Our old code is inconsistent about passing in objects or serialised strings,
@@ -216,7 +216,7 @@ async function updateFxAProfileData (subscriber, fxaProfileData) {
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-async function setAllEmailsToPrimary (subscriber, allEmailsToPrimary) {
+async function setAllEmailsToPrimary(subscriber, allEmailsToPrimary) {
   const updated = await knex('subscribers')
     .where('id', subscriber.id)
     .update({
@@ -232,14 +232,14 @@ async function setAllEmailsToPrimary (subscriber, allEmailsToPrimary) {
 /* c8 ignore stop */
 
 /**
- * @param {import("knex/types/tables").SubscriberRow} subscriber
+ * @param {number} subscriberId
  * @param {boolean} monthlyMonitorReport
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-async function setMonthlyMonitorReport (subscriber, monthlyMonitorReport) {
+async function setMonthlyMonitorReport(subscriberId, monthlyMonitorReport) {
   const updated = await knex('subscribers')
-    .where('id', subscriber.id)
+    .where('id', subscriberId)
     .update({
       monthly_monitor_report: monthlyMonitorReport,
       // @ts-ignore knex.fn.now() results in it being set to a date,
@@ -261,7 +261,7 @@ async function setMonthlyMonitorReport (subscriber, monthlyMonitorReport) {
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-async function setBreachResolution (user, updatedBreachesResolution) {
+async function setBreachResolution(user, updatedBreachesResolution) {
   await knex('subscribers')
     .where('id', user.id)
     .update({
@@ -276,7 +276,7 @@ async function setBreachResolution (user, updatedBreachesResolution) {
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-async function deleteUnverifiedSubscribers () {
+async function deleteUnverifiedSubscribers() {
   // @ts-ignore DELETE_UNVERIFIED_SUBSCRIBERS_TIMER should not be undefined
   const expiredDateTime = new Date(Date.now() - DELETE_UNVERIFIED_SUBSCRIBERS_TIMER * 1000)
   const expiredTimeStamp = expiredDateTime.toISOString()
@@ -296,7 +296,7 @@ async function deleteUnverifiedSubscribers () {
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-async function deleteSubscriber (sub) {
+async function deleteSubscriber(sub) {
   console.debug('deleteSubscriber', JSON.stringify(sub))
   try {
     await knex('subscribers').returning('id').where('fxa_uid', sub.fxa_uid).del()
@@ -313,7 +313,7 @@ async function deleteSubscriber (sub) {
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-async function deleteResolutionsWithEmail (id, email) {
+async function deleteResolutionsWithEmail(id, email) {
   /** @type {any} */
   const [subscriber] = await knex('subscribers').where({
     id
@@ -346,11 +346,11 @@ async function getPotentialSubscribersWaitingForFirstDataBrokerRemovalFixedEmail
   // which currently still import from the subscribers module. Hence, we've
   // inlined this until https://mozilla-hub.atlassian.net/browse/MNTOR-3077 is fixed.
   const flag = (await knex("feature_flags")
-      .first()
-      .where("name", featureFlagName)
-      // The `.andWhereNull` alias doesn't seem to exist:
-      // https://github.com/knex/knex/issues/1881#issuecomment-275433906
-      .whereNull("deleted_at"));
+    .first()
+    .where("name", featureFlagName)
+    // The `.andWhereNull` alias doesn't seem to exist:
+    // https://github.com/knex/knex/issues/1881#issuecomment-275433906
+    .whereNull("deleted_at"));
 
   if (!flag?.is_enabled || !flag?.modified_at) {
     return [];
@@ -390,7 +390,7 @@ async function getPotentialSubscribersWaitingForFirstDataBrokerRemovalFixedEmail
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-async function getSubscribersWaitingForMonthlyEmail (options = {}) {
+async function getSubscribersWaitingForMonthlyEmail(options = {}) {
   // I'm explicitly referencing the type here, so that these lines of code will
   // show up as errors when we remove it from the flag list:
   /** @type {import("./featureFlags.js").FeatureFlagName} */
@@ -401,11 +401,11 @@ async function getSubscribersWaitingForMonthlyEmail (options = {}) {
   // which currently still import from the subscribers module. Hence, we've
   // inlined this until https://mozilla-hub.atlassian.net/browse/MNTOR-3077 is fixed.
   const flag = (await knex("feature_flags")
-      .first()
-      .where("name", featureFlagName)
-      // The `.andWhereNull` alias doesn't seem to exist:
-      // https://github.com/knex/knex/issues/1881#issuecomment-275433906
-      .whereNull("deleted_at"));
+    .first()
+    .where("name", featureFlagName)
+    // The `.andWhereNull` alias doesn't seem to exist:
+    // https://github.com/knex/knex/issues/1881#issuecomment-275433906
+    .whereNull("deleted_at"));
 
   if (!flag?.is_enabled) {
     return [];
@@ -455,7 +455,7 @@ async function getSubscribersWaitingForMonthlyEmail (options = {}) {
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-async function updateMonthlyEmailTimestamp (email) {
+async function updateMonthlyEmailTimestamp(email) {
   const res = await knex('subscribers')
     .update({
       monthly_email_at: 'now',
@@ -471,17 +471,36 @@ async function updateMonthlyEmailTimestamp (email) {
 /* c8 ignore stop */
 
 /**
- * Unsubscribe user from monthly unresolved breach emails
+ * Unsubscribe user from Monthly Monitor Report 
  *
- * @param {string} token User verification token
- * @deprecated Delete as a part of MNTOR-3077
+ * @param {string} email User email
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-async function updateMonthlyEmailOptout (token) {
-  await knex('subscribers')
-    .update('monthly_email_optout', true)
-    .where('primary_verification_token', token)
+async function unsubscribeMonthlyMonitorReportForEmail(email) {
+  const sub = await knex('subscribers')
+    .where({ "primary_email": email, "primary_verified": true })
+    .first()
+
+  // if we found email in "subscribers" table, opt out right away
+  // if not, attempt to look for it in "emails" table and opt out every subscriber that has that email linked as secondary
+  if (sub) {
+    await setMonthlyMonitorReport(sub.id, false)
+  } else {
+    const emailRows = await knex("email_addresses")
+      .where({ "email": email, "verified": true })
+      .returning("subscriber_id")
+
+    if (emailRows.length > 0) {
+      for (const r of emailRows) {
+        await setMonthlyMonitorReport(r.subscriber_id, false)
+      }
+    } else {
+      const errMsg = `unsubscribeMonthlyMonitorReportForEmail: Could not find email - ${email}`
+      console.error(errMsg)
+      throw new Error(errMsg)
+    }
+  }
 }
 /* c8 ignore stop */
 
@@ -490,7 +509,7 @@ async function updateMonthlyEmailOptout (token) {
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-async function markFirstDataBrokerRemovalFixedEmailAsJustSent (subscriber) {
+async function markFirstDataBrokerRemovalFixedEmailAsJustSent(subscriber) {
   const affectedSubscribers = await knex("subscribers")
     .update({
       first_broker_removal_email_sent: true,
@@ -513,7 +532,7 @@ async function markFirstDataBrokerRemovalFixedEmailAsJustSent (subscriber) {
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-async function markMonthlyActivityEmailAsJustSent (subscriber) {
+async function markMonthlyActivityEmailAsJustSent(subscriber) {
   const affectedSubscribers = await knex("subscribers")
     .update({
       // @ts-ignore knex.fn.now() results in it being set to a date,
@@ -538,7 +557,7 @@ async function markMonthlyActivityEmailAsJustSent (subscriber) {
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-async function getOnerepProfileId (subscriberId) {
+async function getOnerepProfileId(subscriberId) {
   const res = await knex('subscribers')
     .select('onerep_profile_id')
     .where('id', subscriberId)
@@ -551,7 +570,7 @@ async function getOnerepProfileId (subscriberId) {
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-function getSubscribersWithUnresolvedBreachesQuery () {
+function getSubscribersWithUnresolvedBreachesQuery() {
   return knex('subscribers')
     .whereRaw('monthly_email_optout IS NOT TRUE')
     .whereRaw("greatest(created_at, monthly_email_at) < (now() - interval '1 month')")
@@ -564,7 +583,7 @@ function getSubscribersWithUnresolvedBreachesQuery () {
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-async function getSubscribersWithUnresolvedBreaches (limit = 0) {
+async function getSubscribersWithUnresolvedBreaches(limit = 0) {
   let query = getSubscribersWithUnresolvedBreachesQuery()
     .select('primary_email', 'primary_verification_token', 'breach_stats', 'signup_language')
   if (limit) {
@@ -579,7 +598,7 @@ async function getSubscribersWithUnresolvedBreaches (limit = 0) {
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-async function getSubscribersWithUnresolvedBreachesCount () {
+async function getSubscribersWithUnresolvedBreachesCount() {
   const query = getSubscribersWithUnresolvedBreachesQuery()
   // @ts-ignore This will return a string
   const count = parseInt((await query.count({ count: '*' }))[0].count)
@@ -595,7 +614,7 @@ async function getSubscribersWithUnresolvedBreachesCount () {
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-async function joinEmailAddressesToSubscriber (subscriber) {
+async function joinEmailAddressesToSubscriber(subscriber) {
   if (subscriber) {
     const emailAddressRecords = await knex('email_addresses').where({
       subscriber_id: subscriber.id
@@ -614,7 +633,7 @@ async function joinEmailAddressesToSubscriber (subscriber) {
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-async function deleteOnerepProfileId (subscriberId) {
+async function deleteOnerepProfileId(subscriberId) {
   return await knex('subscribers')
     .where('id', subscriberId)
     .update({
@@ -632,7 +651,7 @@ async function deleteOnerepProfileId (subscriberId) {
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-async function incrementSignInCountForEligibleFreeUser (fxaId) {
+async function incrementSignInCountForEligibleFreeUser(fxaId) {
   return await knex('subscribers')
     .where('fxa_uid', fxaId)
     .whereNotNull('onerep_profile_id')
@@ -646,7 +665,7 @@ async function incrementSignInCountForEligibleFreeUser (fxaId) {
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-async function getSignInCount (subscriberId) {
+async function getSignInCount(subscriberId) {
   const res = await knex('subscribers')
     .select('sign_in_count')
     .where('id', subscriberId)
@@ -660,7 +679,7 @@ async function getSignInCount (subscriberId) {
  */
 async function unresolveAllBreaches(oneRepProfileId) {
   const currentDate = new Date();
-  await knex('subscribers').where('onerep_profile_id', oneRepProfileId).update({'breach_resolution': null, 'updated_at': currentDate});
+  await knex('subscribers').where('onerep_profile_id', oneRepProfileId).update({ 'breach_resolution': null, 'updated_at': currentDate });
 }
 /* c8 ignore stop */
 
@@ -684,7 +703,6 @@ export {
   getPotentialSubscribersWaitingForFirstDataBrokerRemovalFixedEmail,
   getSubscribersWaitingForMonthlyEmail,
   updateMonthlyEmailTimestamp,
-  updateMonthlyEmailOptout,
   markFirstDataBrokerRemovalFixedEmailAsJustSent,
   markMonthlyActivityEmailAsJustSent,
   deleteUnverifiedSubscribers,
@@ -694,5 +712,6 @@ export {
   incrementSignInCountForEligibleFreeUser,
   getSignInCount,
   unresolveAllBreaches,
+  unsubscribeMonthlyMonitorReportForEmail,
   knex as knexSubscribers
 }
