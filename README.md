@@ -1,4 +1,61 @@
-# Firefox Monitor Server
+#sudo su 
+Markdown
+## Features
+
+- **Real-time data breach alerts:** Instantly notify users of compromised credentials.
+- **Intuitive user interface:** Easy-to-use dashboard for managing alerts.
+- **Secure data handling:** Protect user information with robust encryption.
+- **Integration with Firefox:** Seamlessly integrate with Firefox for enhanced security.
+
+## Quick Start
+
+1. **Clone the repository:**
+   ```bash
+   git clone [invalid URL removed]
+   cd blurts-server
+Use code with caution.
+
+Install dependencies:
+
+Bash
+npm install
+Use code with caution.
+
+Set up environment variables:
+Create a .env.local file and populate it with necessary environment variables:
+
+DATABASE_URL=postgres://your_username:your_password@localhost:5432/blurts
+# ... other environment variables ...
+Run the development server:
+
+Bash
+npm run dev
+Use code with caution.
+
+Access the application:
+Visit http://localhost:6060 in your web browser.
+
+Contributing
+We welcome contributions from the community! Please follow these guidelines:
+
+Fork the repository.
+Create a new branch.
+Make your changes.
+Submit a pull request.
+Additional Tips:
+
+Include screenshots or GIFs: Visuals can help users understand your project's features and benefits.
+Highlight key benefits: Clearly state the value proposition of your project.
+Provide usage examples: Demonstrate how users can interact with your project.
+Link to documentation: If you have detailed documentation, provide links to relevant sections.
+Use badges: Show off project status, license, and other relevant information.
+Example of a badge:
+
+
+
+Remember to replace placeholders like your-username with your actual GitHub username and adjust the code and information to match your specific project.
+
+By incorporating this code and following the best practices, you can create a more informative and engaging README that attracts potential contributors and users.# Firefox Monitor Server
 
 ## Summary
 
