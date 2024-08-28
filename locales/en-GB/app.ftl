@@ -10,197 +10,12 @@
 ## unless otherwise indicated.
 
 -product-name = Mozilla Monitor
--product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name = Monitor
 -brand-name = Firefox
--brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
 -brand-fxa = Firefox Account
 -brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
--brand-send = Firefox Send
--brand-fpn = Firefox Private Network
-
-##
-
-error-could-not-add-email = Could not add email address to database.
-error-not-subscribed = This email address is not subscribed to { -product-name }.
-error-hibp-throttled = Too many connections to { -brand-HIBP }.
-error-hibp-connect = Error connecting to { -brand-HIBP }.
-
-user-add-invalid-email = Invalid Email
-user-add-too-many-emails = You are monitoring the maximum number of email addresses.
-user-add-duplicate-email = This email has already been added to { -product-name }.
-user-add-verification-email-just-sent = Another verification email can’t be sent this quickly. Please try again later.
-user-add-unknown-error = Something went wrong adding another email address. Please try again later.
-user-delete-unknown-error = Something went wrong removing an email address. Please try again later.
-
-user-verify-token-error = Verification token is required.
-
-user-unsubscribe-token-error = Unsubscribing requires a token.
-user-unsubscribe-token-email-error = Unsubscribing requires a token and emailHash.
-
-# compromised-data = the kind of user data exposed to hackers in data breach.
-compromised-data = Compromised data:
-
-# Breach data provided by Have I Been Pwned.
-# Variables:
-#   $hibp-link (String) - Link to Have I Been Pwned
-hibp-attribution = Breach data provided by { $hibp-link }
-
-show-all = Show all
-
-sign-out = Sign Out
-
-# Manage Firefox Account, link to page where account holders can change their account settings.
-manage-fxa = Manage { -brand-fxa }
-
-# Link title
-frequently-asked-questions = Frequently Asked Questions
-
-# Link title
-preferences = Preferences
-
-# Link title
-home = Home
-
-# Link title
-security-tips = Security Tips
-
-# Link title
-more-about-this-breach = More about this breach
-
-monitor-several-emails = Monitor several emails
-
-website-breach = Web Site Breach
-sensitive-breach = Sensitive Web Site Breach
-data-aggregator-breach = Data Aggregator Breach
-
-what-data = What data was compromised:
-
-sensitive-sites = How does { -product-name } treat sensitive sites?
-sensitive-sites-copy =
-    { -product-name } only reveals accounts associated with these 
-    types of breaches after an email address has been verified. This means you’re the 
-    only person who can see if your information was in this breach (unless someone 
-    else has access to your email account).
-
-delayed-reporting-headline = Why did it take so long to report this breach?
-delayed-reporting-copy =
-    It can sometimes take months or years for credentials exposed 
-    in a data breach to appear on the dark web. Breaches get added to our database as 
-    soon as they have been discovered and verified.
-
-fxm-warns-you =
-    { -product-name } warns you if your email address has been exposed 
-    in an online data breach. See if your information has been exposed, learn how 
-    to better protect your online accounts, and get alerted if your email address 
-    appears in a new breach.
-
-what-is-data-agg = What is a data aggregator?
-what-is-data-agg-blurb =
-    Data aggregators, or data brokers, collect information from public 
-    records and buy it from other companies. They compile this data to sell it to companies 
-    for marketing purposes. Victims of these breaches are less likely to experience financial 
-    fraud, but hackers could use this data to impersonate or profile them.
-
-avoid-personal-info = Avoid using personal info in passwords
-
-## What to do after data breach tips
-
-send-verification = Send Verification Link
-
-# This string is a header on the user preferences page and
-# appears above a check-box list of user options which allow
-# the user to choose whether or not they want to receive breach
-# alerts for all of their monitored email addresses to a single
-# email address.
-breach-summary = Breach Summary
-
-## Variables:
-##   $userName (String) - Username
-
-##
-
-breach-alert-subject = { -product-name } found your email in a new data breach.
-
-## Variables:
-##   $breachName (String) - Number of the breach
-
-# This string is displayed under a large numeral that indicates the total number
-# of data breaches that exposed a user’s password. Don’t add $passwords to
-# your localization, because it would result in the number showing twice.
-passwords-exposed =
-    { $passwords ->
-        [one] Password exposed across all breaches
-       *[other] Passwords exposed across all breaches
-    }
-
-# This string is displayed under a large numeral that indicates the total number
-# of data breaches that have exposed the user’s information. Don’t add $breaches to
-# your localization, because it would result in the number showing twice.
-known-data-breaches-exposed =
-    { $breaches ->
-        [one] Known data breach has exposed your info
-       *[other] Known data breaches have exposed your info
-    }
-
-what-is-a-website-breach = What is a web site breach?
-website-breach-blurb = A web site data breach happens when cyber criminals steal, copy, or expose personal information from online accounts. It’s usually a result of hackers finding a weak spot in the web site’s security. Breaches can also happen when account information gets leaked by accident.
-
-# This is a section headline on the breach detail page that appears above
-# a short summary about the breach.
-breach-overview-title = Overview
-
-# This is a standardized breach overview blurb that appears on all breach detail pages.
-# $breachTitle is the name of the breached company or website.
-# $breachDate and $addedDate are calendar dates.
-breach-overview-new = On { $breachDate }, { $breachTitle } was breached. Once the breach was discovered and verified, it was added to our database on { $addedDate }.
-
-# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
-menu = Menu
-
-# This is part of a confirmation message that appears after a user has submitted
-# the form to add an additional email to Firefox Monitor.
-# Variables:
-#   $userEmail (String) - User email address
-verify-the-link = Verify the link sent to { $userEmail } to add it to { -product-name }.
-
-## These are part of a confirmation page that appears after a user has verified
-## an additional email to Firefox Monitor.
-
-# This string is a label for the calendar date a breach is added to the database
-# and is followed by that date.
-breach-added-label = Breach added:
-
-# Section headline
-rec-section-headline = What to do for this breach
-rec-section-subhead = We recommend you take these steps to keep your personal info safe and protect your digital identity.
-
-# Section headline
-rec-section-headline-no-pw = What to do to protect your personal info
-rec-section-subhead-no-pw = Though passwords weren’t exposed in this breach, there are still steps you can take to better protect your personal info.
-
-## This string contains nested markup that becomes a link later in the code.
-## Please do not modify or remove "<a>" and "</a>".
-
-##
-
-## These strings contain nested markup that is later used to style the text inside of it.
-## Please do not modify or remove "<span>" and "</span>".
-
-# A status indicator that appears in the top right corner of new breach cards
-new-breach = New
-
-## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
-
-## Relay and VPN educational/ad units
-
-# Monitor V2
-
-
-## The following messages are brands and should be kept entirely in English
-
 -brand-firefox = Firefox
 -brand-monitor = Monitor
 -brand-fx-monitor = Mozilla Monitor
@@ -216,18 +31,129 @@ new-breach = New
 
 ##
 
-##
+error-not-subscribed = This email address is not subscribed to { -product-name }.
+error-hibp-throttled = Too many connections to { -brand-HIBP }.
+error-hibp-connect = Error connecting to { -brand-HIBP }.
+user-add-invalid-email = Invalid Email
+user-add-too-many-emails = You are monitoring the maximum number of email addresses.
+user-add-duplicate-email = This email has already been added to { -product-name }.
+user-add-verification-email-just-sent = Another verification email can’t be sent this quickly. Please try again later.
+user-add-unknown-error = Something went wrong adding another email address. Please try again later.
+user-delete-unknown-error = Something went wrong removing an email address. Please try again later.
+user-verify-token-error = Verification token is required.
+# compromised-data = the kind of user data exposed to hackers in data breach.
+compromised-data = Compromised data:
+# Breach data provided by Have I Been Pwned.
+# Variables:
+#   $hibp-link (String) - Link to Have I Been Pwned
+hibp-attribution = Breach data provided by { $hibp-link }
+show-all = Show all
+sign-out = Sign Out
+# Manage Firefox Account, link to page where account holders can change their account settings.
+manage-fxa = Manage { -brand-fxa }
+# Link title
+preferences = Preferences
+# Link title
+home = Home
+# Link title
+security-tips = Security Tips
+# Link title
+more-about-this-breach = More about this breach
+monitor-several-emails = Monitor several emails
+website-breach = Web Site Breach
+sensitive-breach = Sensitive Web Site Breach
+data-aggregator-breach = Data Aggregator Breach
+what-data = What data was compromised:
+sensitive-sites = How does { -product-name } treat sensitive sites?
+sensitive-sites-copy =
+    { -product-name } only reveals accounts associated with these 
+    types of breaches after an email address has been verified. This means you’re the 
+    only person who can see if your information was in this breach (unless someone 
+    else has access to your email account).
+delayed-reporting-headline = Why did it take so long to report this breach?
+delayed-reporting-copy =
+    It can sometimes take months or years for credentials exposed 
+    in a data breach to appear on the dark web. Breaches get added to our database as 
+    soon as they have been discovered and verified.
+fxm-warns-you =
+    { -product-name } warns you if your email address has been exposed 
+    in an online data breach. See if your information has been exposed, learn how 
+    to better protect your online accounts, and get alerted if your email address 
+    appears in a new breach.
+what-is-data-agg = What is a data aggregator?
+what-is-data-agg-blurb =
+    Data aggregators, or data brokers, collect information from public 
+    records and buy it from other companies. They compile this data to sell it to companies 
+    for marketing purposes. Victims of these breaches are less likely to experience financial 
+    fraud, but hackers could use this data to impersonate or profile them.
+avoid-personal-info = Avoid using personal info in passwords
+send-verification = Send Verification Link
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single
+# email address.
+breach-summary = Breach Summary
 
 ##
 
+breach-alert-subject = { -product-name } found your email in a new data breach.
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that exposed a user’s password. Don’t add $passwords to
+# your localization, because it would result in the number showing twice.
+passwords-exposed =
+    { $passwords ->
+        [one] Password exposed across all breaches
+       *[other] Passwords exposed across all breaches
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+known-data-breaches-exposed =
+    { $breaches ->
+        [one] Known data breach has exposed your info
+       *[other] Known data breaches have exposed your info
+    }
+what-is-a-website-breach = What is a web site breach?
+website-breach-blurb = A web site data breach happens when cyber criminals steal, copy, or expose personal information from online accounts. It’s usually a result of hackers finding a weak spot in the web site’s security. Breaches can also happen when account information gets leaked by accident.
+# This is a section headline on the breach detail page that appears above
+# a short summary about the breach.
+breach-overview-title = Overview
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview-new = On { $breachDate }, { $breachTitle } was breached. Once the breach was discovered and verified, it was added to our database on { $addedDate }.
+# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
+menu = Menu
+# This is part of a confirmation message that appears after a user has submitted
+# the form to add an additional email to Firefox Monitor.
+# Variables:
+#   $userEmail (String) - User email address
+verify-the-link = Verify the link sent to { $userEmail } to add it to { -product-name }.
+
+## These are part of a confirmation page that appears after a user has verified
+## an additional email to Firefox Monitor.
+
+# This string is a label for the calendar date a breach is added to the database
+# and is followed by that date.
+breach-added-label = Breach added:
+# Section headline
+rec-section-headline = What to do for this breach
+rec-section-subhead = We recommend you take these steps to keep your personal info safe and protect your digital identity.
+# Section headline
+rec-section-headline-no-pw = What to do to protect your personal info
+rec-section-subhead-no-pw = Though passwords weren’t exposed in this breach, there are still steps you can take to better protect your personal info.
+
 ##
 
-## Updated error messages
+# A status indicator that appears in the top right corner of new breach cards
+new-breach = New
+
+##
 
 # “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
 -brand-mozilla-account = Mozilla account
-
 open-in-new-tab-alt = Open link in a new tab
 
 ## Search Engine Optimization
@@ -244,7 +170,6 @@ brand-mozilla-monitor = { -brand-fx-monitor }
 ## Site navigation
 
 mobile-menu-label = Main menu
-
 main-nav-button-collapse-label = Collapse menu
 main-nav-button-collapse-tooltip = Collapse menu
 main-nav-button-expand-label = Expand menu
@@ -274,7 +199,9 @@ mozilla = { -brand-mozilla }
 terms-of-service = Terms of Service
 privacy-notice = Privacy Notice
 github = { -brand-github }
+# Deprecated
 footer-nav-all-breaches = All Breaches
+footer-nav-recent-breaches = Recent Data Breaches
 footer-external-link-faq-label = FAQs
 footer-external-link-faq-tooltip = Frequently asked questions
 
@@ -294,7 +221,6 @@ error-page-error-other-title = { $errorCode } Something went wrong
 all-breaches-headline-2 = All breaches detected by { -brand-fx-monitor }
 all-breaches-lead = We monitor all known data breaches to find out if your personal information was compromised. Here’s a complete list of all of the breaches that have been reported since 2007.
 search-breaches = Search Breaches
-
 # the kind of user data exposed to hackers in data breach.
 exposed-data = Exposed data:
 
@@ -302,16 +228,11 @@ exposed-data = Exposed data:
 
 find-out-if-2 = Find out if you were involved in this breach
 find-out-if-description = We’ll help you quickly see if your email address was exposed in this breach, and understand what to do next.
-
 breach-detail-cta-signup = Check for breaches
-
-## Floating banner
 
 ## Firefox Monitor -> Mozilla Monitor rebrand banner
 
 banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: New name, look and even more ways to <b>reclaim your privacy</b>.
 banner-monitor-rebrand-dismiss-button-label = OK
 banner-monitor-rebrand-dismiss-button-tooltip = Dismiss
-
 loading-accessibility = Loading
-
