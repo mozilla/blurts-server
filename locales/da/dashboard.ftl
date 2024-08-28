@@ -43,6 +43,7 @@ modal-active-number-of-exposures-part-three-all = Når de er løst, vil de blive
 modal-fixed-number-of-exposures-title = Om dit antal løste eksponeringer
 modal-fixed-number-of-exposures-all = Diagrammet inkluderer det samlede antal datalæk, der er blevet løst for alle mailadresser, du aktuelt holder øje med. Når eksponeringer er løst, bliver de føjet til det samlede antal her.
 modal-cta-ok = OK
+modal-cta-got-it = Forstået
 open-modal-alt = Åbn dialogboks
 close-modal-alt = Luk dialogboks
 open-tooltip-alt = Åbn værktøjstip
@@ -127,11 +128,9 @@ dashboard-top-banner-non-us-your-data-is-protected-description =
     }
 dashboard-top-banner-monitor-more-cta = Hold øje med flere mailadresser
 
-# About Exposure Statuses Modal
+# About Exposure Indicators Modal
 
-modal-exposure-status-title = Om status for eksponeringer
 modal-exposure-status-description-all =
     Vi leder efter eksponeringer i alle kendte datalæk.
     Dine eksponeringer vil have én af følgende statusser:
-modal-exposure-status-action-needed = <b>Handling påkrævet</b> betyder, at eksponeringen er aktiv, og du behøver at gøre noget for at løse problemet.
-modal-exposure-status-fixed = <b>Løst</b> betyder, at eksponeringen er løst, og du behøver ikke at gøre noget.
+modal-exposure-indicator-fixed = Eksponeringen er løst, og du behøver ikke at gøre noget.
