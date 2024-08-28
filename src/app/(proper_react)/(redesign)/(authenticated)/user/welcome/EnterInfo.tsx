@@ -30,6 +30,8 @@ import { CONST_URL_PRIVACY_POLICY } from "../../../../../../constants";
 
 import styles from "./EnterInfo.module.scss";
 import { TelemetryButton } from "../../../../../components/client/TelemetryButton";
+import { redirect } from "next/navigation";
+import * as Sentry from "@sentry/nextjs";
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
@@ -46,7 +48,8 @@ const createProfileAndStartScan = async (
 
   const result: WelcomeScanBody = await response.json();
   if (!result?.success) {
-    throw new Error("Could not start scan");
+    Sentry.captureException(new Error("Could not start scan"));
+    return redirect("/");
   }
 
   return result;

@@ -21,6 +21,8 @@ the "what" and "why" of data breach alerts.
 
 - [Volta](https://volta.sh/) (installs the correct version of Node and npm)
 - [Postgres](https://www.postgresql.org/) | Note: On a Mac, we recommend downloading the [Postgres.app](https://postgresapp.com/) instead.
+- [Python](https://www.python.org/downloads/) | [With Homebrew](https://docs.brew.sh/Homebrew-and-Python)
+- [k6](https://grafana.com/docs/k6/latest/set-up/install-k6/) | k6 load testing tool
 
 ### Code style
 
@@ -41,12 +43,28 @@ We track commits that are largely style/formatting via `.git-blame-ignore-revs`.
 ],
 ```
 
-### Prerequisites
+### Database
 
-1. Create location data: Running the script manually is only needed for local development. The location data is being used in the onboarding exposures scan for autocompleting the “City and state” input.
+To create the database tables ...
+
+1. Create the `blurts` database:
 
    ```sh
-   npm run create-location-data
+   createdb blurts
+   createdb test-blurts # for tests
+   ```
+
+2. Update the `DATABASE_URL` value in your `.env.local` (see step 3 under
+   "Install") file with your local db credentials:
+
+   ```
+   DATABASE_URL="postgres://<username>:<password>@localhost:<port>/blurts"
+   ```
+
+3. Run the migrations:
+
+   ```
+   npm run db:migrate
    ```
 
 ### Install
@@ -64,10 +82,10 @@ We track commits that are largely style/formatting via `.git-blame-ignore-revs`.
    npm install
    ```
 
-3. Copy the `.env-dist` file to `.env`:
+3. Copy the `.env.local.example` file to `.env.local`:
 
    ```sh
-   cp .env-dist .env
+   cp .env.local.example .env.local
    ```
 
 4. Install fluent linter (requires Python)
@@ -91,6 +109,14 @@ We track commits that are largely style/formatting via `.git-blame-ignore-revs`.
    ```sh
    npm run build-nimbus
    ```
+
+7. Create location data: Running the script manually is only needed for local development. The location data is being used in the onboarding exposures scan for autocompleting the “City and state” input.
+
+   ```sh
+   npm run create-location-data
+   ```
+
+8. Ensure that you have the right `env` variables/keys set in your `.env.local` file. You can retrieve the variables from the Firefox Monitor 1Password Vault, or through [Magic-Wormhole](https://magic-wormhole.readthedocs.io/en/latest/), by asking one of the our engineers.
 
 ### Run
 
@@ -120,6 +146,8 @@ Monitor uses GCP PubSub for processing incoming breach data, this can be tested 
 gcloud beta emulators pubsub start --project=your-project-name
 ```
 
+(Set `your-project-name` as the value for `GCP_PUBSUB_PROJECT_ID` in your `.env.local`.)
+
 ### In a different shell, set the environment to point at the emulator and run Monitor in dev mode:
 
 ```sh
@@ -135,44 +163,20 @@ curl -d '{ "breachName": "000webhost", "hashPrefix": "test", "hashSuffixes": ["t
   http://localhost:6060/api/v1/hibp/notify
 ```
 
+This emulates HIBP notifying our API that a new breach was found. Our API will
+then add it to the (emulated) pubsub queue.
+
 ### This pubsub queue will be consumed by this cron job, which is responsible for looking up and emailing impacted users:
 
 ```sh
-node src/scripts/emailBreachAlerts.js
+NODE_ENV="development" npm run dev:cron:breach-alerts
 ```
-
-### Database
-
-To create the database tables ...
-
-1. Create the `blurts` database:
-
-   ```sh
-   createdb blurts
-   createdb test-blurts # for tests
-   ```
-
-2. Update the `DATABASE_URL` value in your `.env` file with your local db
-   credentials:
-
-   ```
-   DATABASE_URL="postgres://<username>:<password>@localhost:<port>/blurts"
-   ```
-
-3. Run the migrations:
-
-   ```
-   npm run db:migrate
-   ```
 
 ### Emails
 
 Monitor generates multiple emails that get sent to subscribers. To preview or test-send these emails see documentation [here](docs/monitor-emails.md).
 
 ### Mozilla accounts ("FxA", formerly known as Firefox accounts)
-
-Subscribe with a Mozilla account is controlled via the `FXA_ENABLED`
-environment variable. (See `.env-dist`)
 
 The repo comes with a development FxA oauth app pre-configured in `.env`, which
 should work fine running the app on http://localhost:6060. You'll need to get
@@ -206,6 +210,20 @@ To test this part of Monitor:
 4. Go to `about:protections`
 5. Everything should be using your localhost instance of Monitor.
 
+#### Load testing
+
+k6 is used for load testing.
+
+To test the HIBP breach alerts endpoint, use:
+
+```sh
+export SERVER_URL=...
+export HIBP_NOTIFY_TOKEN=...
+k6 -u 10 src/scripts/loadtest/hibp.js # Run with 10 virtual users
+```
+
+See https://grafana.com/docs/k6/latest/get-started/running-k6/ for more information.
+
 ## Localization
 
 All text that is visible to the user is defined in [Fluent](https://projectfluent.org/) files inside `/locales/en/` and `/locales-pending/`. After strings get added to files in the former directory on our `main` branch, they will be made available to our volunteer localizers via Pontoon, Mozilla's localization platform. Be sure to reference the [localization documentation](https://mozilla-l10n.github.io/documentation/localization/dev_best_practices.html) for best practices. It's best to only move the strings to `/locales/en/` when they are more-or-less final and ready for localization. Your PR should be automatically tagged with a reviewer from the [Mozilla L10n team](https://wiki.mozilla.org/L10n:Mozilla_Team) to approve your request.
@@ -221,9 +239,3 @@ We use GCP Cloudrun for dev review – official stage and production apps are bu
 _**TODO:** add full deploy process similar to Relay_
 
 _**TODO:** consider whether we can re-enable Heroku Review Apps_
-
-## Preserve sessions in local development
-
-Sessions by default are stored in-memory, which means that when the server restarts (e.g. because you made a code change), you will have to log in again.
-
-To avoid this hassle, you can install and run [Redis](https://redis.io/), which by default runs on `redis://localhost:6379`. Use that value for `REDIS_URL` in your `.env` file to preserve your sessions across server restarts.

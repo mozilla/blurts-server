@@ -2,6 +2,11 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
+## Email preferences
+
+settings-alert-preferences-allow-monthly-monitor-plus-report-title = Monthly { -brand-monitor-plus } report
+settings-alert-preferences-allow-monthly-monitor-plus-report-subtitle = A monthly update of new exposures, what’s been fixed, and what needs your attention.
+
 ## Cancel Plus subscription
 
 settings-cancel-plus-title = Cancel { -brand-monitor-plus } subscription
@@ -22,6 +27,27 @@ settings-unsubscribe-dialog-confirmation-redirect-title = Directing you to your 
 settings-unsubscribe-dialog-confirmation-redirect-description-pt1 = We’ll automatically redirect you to your { -brand-mozilla-account } where you can cancel your { -brand-monitor } subscription.
 settings-unsubscribe-dialog-confirmation-redirect-description-pt2 = Please note, all of your { -brand-monitor-plus } services will be <b>permanently deleted</b> after your current billing cycle ends.
 settings-unsubscribe-dialog-cancellation-survey-form-placeholder = What could have gone better?
+# Variables:
+# $discount_percentage_num is the amount discounted in percentage per month
+# $discount_duration is the number of month(s) that users will pay the discounted price
+settings-unsubscribe-dialog-promotion-cta = {
+  $discount_duration ->
+    [one] Stay and get { $discount_percentage_num } off next month
+    *[other] Stay and get { $discount_percentage_num } off { $discount_duration } months
+}
+# Variables:
+# $discount_percentage_num is the amount discounted in percentage per month
+# $discount_duration is the number of month(s) that users will pay the discounted price
+settings-unsubscribe-dialog-promotion-description = {
+  $discount_duration ->
+    [one] { -brand-monitor-plus } will continue protecting your personal data, and a { $discount_percentage_num } discount has been applied to your next month.
+    *[other] { -brand-monitor-plus } will continue protecting your personal data, and a { $discount_percentage_num } discount has been applied to your next { $discount_duration } months.
+}
+settings-unsubscribe-dialog-promotion-cta-subtitle = Discount applied to your next month. Redeemable one time only.
+settings-unsubscribe-dialog-promotion-unsuccessful = There was a problem applying your discount. <try_again_link>Please try again.</try_again_link>
+settings-unsubscribe-dialog-promotion-complete = You’re all set!
+settings-unsubscribe-dialog-promotion-back-to-dashboard-cta = Go to my Dashboard
+settings-unsubscribe-dialog-promotion-limitations-apply = Limited time, restrictions apply
 
 ## Delete Monitor account
 

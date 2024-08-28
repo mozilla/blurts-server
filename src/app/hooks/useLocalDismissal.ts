@@ -5,6 +5,8 @@
 import { useState } from "react";
 import { useCookies } from "react-cookie";
 
+export const COOKIE_DISMISSAL_MAX_AGE_IN_SECONDS = 100 * 365 * 24 * 60 * 60;
+
 export type DismissOptions = {
   /** If true, the dismissal won't take effect right away, but the cookie to store the dismissal _will_ be set. */
   soft?: boolean;
@@ -32,7 +34,9 @@ export function useLocalDismissal(
   options: DismissalOptions = {},
 ): DismissalData {
   const cookieId = key + "_dismissed";
-  const [cookies, setCookie] = useCookies([cookieId]);
+  const [cookies, setCookie] = useCookies([cookieId], {
+    doNotUpdate: false,
+  });
   const cookieValue = cookies[cookieId] as string | undefined;
 
   const [isDismissed, setIsDismissed] = useState(
@@ -47,7 +51,7 @@ export function useLocalDismissal(
       // tests.
       typeof options.duration === "number"
         ? options.duration
-        : 100 * 365 * 24 * 60 * 60;
+        : COOKIE_DISMISSAL_MAX_AGE_IN_SECONDS;
     setCookie(cookieId, Date.now().toString(), {
       maxAge: maxAgeInSeconds,
     });

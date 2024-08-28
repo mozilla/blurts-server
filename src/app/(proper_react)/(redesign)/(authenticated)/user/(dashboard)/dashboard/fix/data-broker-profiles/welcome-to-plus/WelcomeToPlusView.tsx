@@ -15,9 +15,9 @@ import {
 } from "../../../../../../../../../functions/server/getRelevantGuidedSteps";
 import { FixView } from "../../FixView";
 import { ExtendedReactLocalization } from "../../../../../../../../../functions/l10n";
-import { TelemetryButton } from "../../../../../../../../../components/client/TelemetryButton";
 import noBreachesIllustration from "../../images/high-risk-breaches-none.svg";
 import { CONST_ONEREP_DATA_BROKER_COUNT } from "../../../../../../../../../../constants";
+import { TelemetryButton } from "../../../../../../../../../components/client/TelemetryButton";
 
 export type Props = {
   data: StepDeterminationData;
@@ -64,11 +64,14 @@ export function WelcomeToPlusView(props: Props) {
           </h3>
           <p>
             {hasRelevantScanResults
-              ? l10n.getString(
+              ? l10n.getFragment(
                   "welcome-to-premium-data-broker-profiles-description-part-one",
                   {
-                    profile_total_num: scanResultsInProgressCount,
-                    exposure_reduction_percentage: dataPointReduction,
+                    vars: {
+                      profile_total_num: scanResultsInProgressCount,
+                      exposure_reduction_percentage: dataPointReduction,
+                    },
+                    elems: { b: <b /> },
                   },
                 )
               : l10n.getString(
@@ -78,15 +81,13 @@ export function WelcomeToPlusView(props: Props) {
                   },
                 )}
           </p>
-          <p>
-            {hasRelevantScanResults
-              ? l10n.getString(
-                  "welcome-to-premium-data-broker-profiles-description-part-two",
-                )
-              : l10n.getString(
-                  "welcome-to-premium-data-broker-profiles-zero-state-description-part-two",
-                )}
-          </p>
+          {!hasRelevantScanResults && (
+            <p>
+              {l10n.getString(
+                "welcome-to-premium-data-broker-profiles-zero-state-description-part-two",
+              )}
+            </p>
+          )}
           <p>
             {hasRelevantScanResults
               ? l10n.getString(

@@ -15,6 +15,7 @@ import {
 import { userEvent } from "@testing-library/user-event";
 import { composeStory } from "@storybook/react";
 import { axe } from "jest-axe";
+import { Cookies } from "react-cookie";
 import Meta, {
   DashboardNonUsNoBreaches,
   DashboardNonUsUnresolvedBreaches,
@@ -51,6 +52,8 @@ import Meta, {
   DashboardUsPremiumManuallyResolvedScansNoBreaches,
 } from "./Dashboard.stories";
 import { useTelemetry } from "../../../../../../hooks/useTelemetry";
+import { deleteAllCookies } from "../../../../../../functions/client/deleteAllCookies";
+import { defaultExperimentData } from "../../../../../../../telemetry/generated/nimbus/experiments";
 
 jest.mock("next/navigation", () => ({
   useRouter: jest.fn(),
@@ -71,6 +74,11 @@ jest.mock(
     };
   },
 );
+
+afterEach(() => {
+  // Make the CSAT banner show up again.
+  deleteAllCookies();
+});
 
 describe("axe accessibility test suite", () => {
   it("passes the axe accessibility test suite for DashboardNonUsNoBreaches", async () => {
@@ -1173,6 +1181,17 @@ it("shows the correct dashboard banner title for non-US users, resolved breaches
   expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
+it("does not show How It Works page link to non-US users, resolved breaches", () => {
+  const ComposedDashboard = composeStory(DashboardNonUsResolvedBreaches, Meta);
+  render(<ComposedDashboard />);
+
+  const howItWorksLink = screen.queryByTestId(
+    "learn-more-link-to-how-it-works",
+  );
+
+  expect(howItWorksLink).not.toBeInTheDocument();
+});
+
 it("shows the correct dashboard banner CTA and sends telemetry for non-US users, resolved breaches", async () => {
   const ComposedDashboard = composeStory(DashboardNonUsResolvedBreaches, Meta);
   const mockedRecord = useTelemetry();
@@ -1186,10 +1205,9 @@ it("shows the correct dashboard banner CTA and sends telemetry for non-US users,
   const dashboardTopBanner = screen.getByRole("region", {
     name: "Dashboard summary",
   });
-  const dashboardTopBannerCta = queryByRole(dashboardTopBanner, "button", {
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "button", {
     name: "See what’s fixed",
   });
-  expect(dashboardTopBannerCta).toBeInTheDocument();
   await user.click(dashboardTopBannerCta);
   expect(mockedRecord).toHaveBeenCalledWith(
     "ctaButton",
@@ -1248,6 +1266,32 @@ it("shows the correct dashboard banner CTA and sends telemetry for US users, wit
   );
 });
 
+it("shows How It Works page link to US users, without Premium, no scan, no breaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanNoBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  const howItWorksLink = screen.getByTestId("learn-more-link-to-how-it-works");
+
+  expect(howItWorksLink).toHaveAttribute("href", "/how-it-works");
+});
+
+it("shows How It Works navbar link to US users, without Premium, no scan, no breaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanNoBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  const howItWorksLink = screen.queryAllByRole("link", {
+    name: "How It Works",
+  });
+
+  expect(howItWorksLink.length).toBe(2);
+});
+
 // Check dashboard banner content for story DashboardUsNoPremiumNoScanUnresolvedBreaches
 it("shows the correct dashboard banner title for US users, without Premium, no scan, unresolved breaches", () => {
   const ComposedDashboard = composeStory(
@@ -1294,6 +1338,18 @@ it("shows the correct dashboard banner CTA for US users, without Premium, no sca
       button_id: "us_non_premium_no_scan_unresolved_breaches",
     }),
   );
+});
+
+it("shows How It Works page link to US users, without Premium, no scan, unresolved breaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanUnresolvedBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  const howItWorksLink = screen.getByTestId("learn-more-link-to-how-it-works");
+
+  expect(howItWorksLink).toHaveAttribute("href", "/how-it-works");
 });
 
 // Check dashboard banner content for story DashboardUsNoPremiumNoScanResolvedBreaches
@@ -1344,6 +1400,18 @@ it("shows the correct dashboard banner CTA and sends telemetry for US users, wit
   );
 });
 
+it("shows How It Works page link to US users, without Premium, no scan, resolved breaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanResolvedBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  const howItWorksLink = screen.getByTestId("learn-more-link-to-how-it-works");
+
+  expect(howItWorksLink).toHaveAttribute("href", "/how-it-works");
+});
+
 it("shows and skips a dialog that informs US users, without Premium, when we hit the broker scan limit", async () => {
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(
@@ -1373,6 +1441,18 @@ it("shows and skips a dialog that informs US users, without Premium, when we hit
       name: "⁨Monitor⁩ is currently at capacity",
     }),
   ).not.toBeInTheDocument();
+});
+
+it("shows How It Works page link to US users, without Premium, when we hit the broker scan limit", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanNoBreachesScanLimitReached,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  const howItWorksLink = screen.getByTestId("learn-more-link-to-how-it-works");
+
+  expect(howItWorksLink).toHaveAttribute("href", "/how-it-works");
 });
 
 it("shows and closes a dialog that informs US users, without Premium, when we hit the broker scan limit", async () => {
@@ -1746,7 +1826,7 @@ it("shows the correct dashboard banner CTA and sends telemetry for US users, wit
   const dashboardTopBanner = screen.getByRole("region", {
     name: "Dashboard summary",
   });
-  const dashboardTopBannerCta = queryByRole(dashboardTopBanner, "button", {
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "button", {
     name: "Get continuous protection",
   });
   expect(dashboardTopBannerCta).toBeInTheDocument();
@@ -1842,10 +1922,9 @@ it("shows the correct dashboard banner CTA and sends telemetry for US users, wit
   const dashboardTopBanner = screen.getByRole("region", {
     name: "Dashboard summary",
   });
-  const dashboardTopBannerCta = queryByRole(dashboardTopBanner, "button", {
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "button", {
     name: "Get continuous protection",
   });
-  expect(dashboardTopBannerCta).toBeInTheDocument();
   await user.click(dashboardTopBannerCta);
   expect(mockedRecord).toHaveBeenCalledWith(
     "upgradeIntent",
@@ -1986,10 +2065,9 @@ it("shows the correct dashboard banner CTA and sends telemetry for US user, with
   const dashboardTopBanner = screen.getByRole("region", {
     name: "Dashboard summary",
   });
-  const dashboardTopBannerCta = queryByRole(dashboardTopBanner, "button", {
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "button", {
     name: "See what’s fixed",
   });
-  expect(dashboardTopBannerCta).toBeInTheDocument();
   await user.click(dashboardTopBannerCta);
   expect(mockedRecord).toHaveBeenCalledWith(
     "ctaButton",
@@ -2210,10 +2288,9 @@ it("shows the correct dashboard banner CTA for US user, with Premium, resolved s
   const dashboardTopBanner = screen.getByRole("region", {
     name: "Dashboard summary",
   });
-  const dashboardTopBannerCta = queryByRole(dashboardTopBanner, "button", {
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "button", {
     name: "See what’s fixed",
   });
-  expect(dashboardTopBannerCta).toBeInTheDocument();
   await user.click(dashboardTopBannerCta);
   expect(mockedRecord).toHaveBeenCalledWith(
     "ctaButton",
@@ -2306,10 +2383,9 @@ it("shows the correct dashboard banner CTA and sends telemetry for US user, with
   const dashboardTopBanner = screen.getByRole("region", {
     name: "Dashboard summary",
   });
-  const dashboardTopBannerCta = queryByRole(dashboardTopBanner, "button", {
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "button", {
     name: "See what’s fixed",
   });
-  expect(dashboardTopBannerCta).toBeInTheDocument();
   await user.click(dashboardTopBannerCta);
   expect(mockedRecord).toHaveBeenCalledWith(
     "ctaButton",
@@ -2691,7 +2767,9 @@ it("does not explain what 'in progress' means for users who cannot get Plus", as
   });
   await user.click(statusExplainerDialogTrigger);
   expect(
-    screen.queryByText("This is a ⁨Monitor Plus⁩ feature.", { exact: false }),
+    screen.queryByText(
+      "We’re actively working to confirm data broker removal compliance.",
+    ),
   ).not.toBeInTheDocument();
 });
 
@@ -2709,7 +2787,50 @@ it("explains what 'in progress' means for Plus users", async () => {
   });
   await user.click(statusExplainerDialogTrigger);
   expect(
-    screen.getByText("This is a ⁨Monitor Plus⁩ feature.", { exact: false }),
+    screen.getByText(
+      "We’re actively working to confirm data broker removal compliance.",
+    ),
+  ).toBeInTheDocument();
+});
+
+it("does not explain what 'requested removal' means for users who cannot get Plus", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(DashboardNonUsNoBreaches, Meta);
+  render(
+    <ComposedDashboard enabledFeatureFlags={["AdditionalRemovalStatuses"]} />,
+  );
+
+  const statusHeading = screen.getByText("Status");
+  const statusExplainerDialogTrigger = getByRole(statusHeading, "button", {
+    name: "Open modal",
+  });
+  await user.click(statusExplainerDialogTrigger);
+  expect(
+    screen.queryByText(
+      "We’ve sent an official removal request to the data broker. We’ll keep you updated if we need to re-send the request.",
+    ),
+  ).not.toBeInTheDocument();
+});
+
+it("explains what 'requested removal' means for Plus users", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumEmptyScanNoBreaches,
+    Meta,
+  );
+  render(
+    <ComposedDashboard enabledFeatureFlags={["AdditionalRemovalStatuses"]} />,
+  );
+
+  const statusHeading = screen.getByText("Status");
+  const statusExplainerDialogTrigger = getByRole(statusHeading, "button", {
+    name: "Open modal",
+  });
+  await user.click(statusExplainerDialogTrigger);
+  expect(
+    screen.getByText(
+      "We’ve sent an official removal request to the data broker. We’ll keep you updated if we need to re-send the request.",
+    ),
   ).toBeInTheDocument();
 });
 
@@ -3120,10 +3241,10 @@ it("send telemetry when users click on dashboard nav menu items", async () => {
   });
   await user.click(dashboardMenuItem[0]);
   expect(mockedRecord).toHaveBeenCalledWith(
-    "ctaButton",
+    "link",
     "click",
     expect.objectContaining({
-      button_id: "navigation_dashboard",
+      link_id: "navigation_dashboard",
     }),
   );
 });
@@ -3170,10 +3291,10 @@ it("send telemetry when users click on faq nav menu items", async () => {
   const faqMenuItem = screen.queryAllByRole("link", { name: "FAQs" });
   await user.click(faqMenuItem[0]);
   expect(mockedRecord).toHaveBeenCalledWith(
-    "ctaButton",
+    "link",
     "click",
     expect.objectContaining({
-      button_id: "navigation_faq",
+      link_id: "navigation_faq",
     }),
   );
 });
@@ -3238,7 +3359,7 @@ it("send telemetry when users click on data broker info link", async () => {
   expect(expandButtons[0]).toHaveAttribute("aria-expanded", "true");
 
   const detailsAboutYouLink = screen.queryAllByRole("link", {
-    name: "these details about you",
+    name: /these details about you/,
   });
   await user.click(detailsAboutYouLink[0]);
   expect(mockedRecord).toHaveBeenCalledWith(
@@ -3348,12 +3469,17 @@ it("send telemetry when users click on exposure chart free scan", async () => {
 });
 
 describe("CSAT survey banner", () => {
-  it("does not display the CSAT survey banner on the dashboard tab “action needed” to Plus users", () => {
+  it("does not display the “automatic removal” CSAT survey banner on the dashboard tab “action needed” to Plus users", () => {
     const ComposedDashboard = composeStory(
       DashboardUsPremiumResolvedScanNoBreaches,
       Meta,
     );
-    render(<ComposedDashboard elapsedTimeInDaysSinceInitialScan={1} />);
+    render(
+      <ComposedDashboard
+        elapsedTimeInDaysSinceInitialScan={1}
+        enabledFeatureFlags={["AutomaticRemovalCsatSurvey"]}
+      />,
+    );
 
     const answerButton = screen.queryByRole("button", {
       name: "Neutral",
@@ -3361,13 +3487,18 @@ describe("CSAT survey banner", () => {
     expect(answerButton).not.toBeInTheDocument();
   });
 
-  it("does not display the CSAT survey banner to users who do not have automatic data removal enabled", async () => {
+  it("does not display the “automatic removal” CSAT survey banner to users who do not have automatic data removal enabled", async () => {
     const user = userEvent.setup();
     const ComposedDashboard = composeStory(
       DashboardUsPremiumEmptyScanNoBreaches,
       Meta,
     );
-    render(<ComposedDashboard elapsedTimeInDaysSinceInitialScan={1} />);
+    render(
+      <ComposedDashboard
+        elapsedTimeInDaysSinceInitialScan={1}
+        enabledFeatureFlags={["AutomaticRemovalCsatSurvey"]}
+      />,
+    );
 
     const fixedTab = screen.getByText("Fixed");
     await user.click(fixedTab);
@@ -3378,13 +3509,18 @@ describe("CSAT survey banner", () => {
     expect(answerButton).not.toBeInTheDocument();
   });
 
-  it("displays the CSAT survey banner to Plus users, after more than 90 days since their initial scan", async () => {
+  it("displays the “automatic removal” CSAT survey banner to Plus users, after more than 90 days since their initial scan", async () => {
     const user = userEvent.setup();
     const ComposedDashboard = composeStory(
       DashboardUsPremiumResolvedScanNoBreaches,
       Meta,
     );
-    render(<ComposedDashboard elapsedTimeInDaysSinceInitialScan={91} />);
+    render(
+      <ComposedDashboard
+        elapsedTimeInDaysSinceInitialScan={91}
+        enabledFeatureFlags={["AutomaticRemovalCsatSurvey"]}
+      />,
+    );
 
     const fixedTab = screen.getByText("Fixed");
     await user.click(fixedTab);
@@ -3395,13 +3531,18 @@ describe("CSAT survey banner", () => {
     expect(answerButton).toBeInTheDocument();
   });
 
-  it("displays the initial CSAT survey banner only to Plus users with automatically fixed data brokers", async () => {
+  it("displays the initial “automatic removal” CSAT survey banner only to Plus users with automatically fixed data brokers", async () => {
     const user = userEvent.setup();
     const ComposedDashboard = composeStory(
       DashboardUsPremiumResolvedScanNoBreaches,
       Meta,
     );
-    render(<ComposedDashboard elapsedTimeInDaysSinceInitialScan={1} />);
+    render(
+      <ComposedDashboard
+        elapsedTimeInDaysSinceInitialScan={1}
+        enabledFeatureFlags={["AutomaticRemovalCsatSurvey"]}
+      />,
+    );
 
     const answerButtonOne = screen.queryByRole("button", {
       name: "Neutral",
@@ -3417,13 +3558,18 @@ describe("CSAT survey banner", () => {
     expect(answerButtonTwo).toBeInTheDocument();
   });
 
-  it("displays the 6-months CSAT survey banner on the dashboard tab “fixed” only", async () => {
+  it("displays the 6-months “automatic removal” CSAT survey banner on the dashboard tab “fixed” only", async () => {
     const user = userEvent.setup();
     const ComposedDashboard = composeStory(
       DashboardUsPremiumResolvedScanNoBreaches,
       Meta,
     );
-    render(<ComposedDashboard elapsedTimeInDaysSinceInitialScan={180} />);
+    render(
+      <ComposedDashboard
+        elapsedTimeInDaysSinceInitialScan={180}
+        enabledFeatureFlags={["AutomaticRemovalCsatSurvey"]}
+      />,
+    );
 
     const answerButtonOne = screen.queryByRole("button", {
       name: "Satisfied",
@@ -3439,16 +3585,19 @@ describe("CSAT survey banner", () => {
     expect(answerButtonTwo).toBeInTheDocument();
   });
 
-  it("displays the follow-up CSAT survey banner link", async () => {
+  it("displays the follow-up “automatic removal” CSAT survey banner link", async () => {
     const user = userEvent.setup();
     const ComposedDashboard = composeStory(
       DashboardUsPremiumResolvedScanNoBreaches,
       Meta,
     );
-    render(<ComposedDashboard elapsedTimeInDaysSinceInitialScan={185} />);
-
-    const fixedTab = screen.getByText("Fixed");
-    await user.click(fixedTab);
+    render(
+      <ComposedDashboard
+        activeTab="fixed"
+        elapsedTimeInDaysSinceInitialScan={185}
+        enabledFeatureFlags={["AutomaticRemovalCsatSurvey"]}
+      />,
+    );
 
     const answerButton = screen.queryByRole("button", {
       name: "Satisfied",
@@ -3460,5 +3609,426 @@ describe("CSAT survey banner", () => {
       /Your feedback is helpful to us! How can we improve ⁨Monitor⁩ for you\?/i,
     );
     expect(feedbackLink).toBeInTheDocument();
+  });
+
+  it("displays the “latest scan date” CSAT survey banner over the “automatic removal” CSAT survey if a user is targeted by both", async () => {
+    const mockedRecord = useTelemetry();
+    const user = userEvent.setup();
+    const ComposedDashboard = composeStory(
+      DashboardUsPremiumResolvedScanNoBreaches,
+      Meta,
+    );
+    render(
+      <ComposedDashboard
+        activeTab="fixed"
+        elapsedTimeInDaysSinceInitialScan={90}
+        hasFirstMonitoringScan
+        enabledFeatureFlags={["LatestScanDateCsatSurvey"]}
+      />,
+    );
+
+    const answerButton = screen.getByRole("button", {
+      name: "Very satisfied",
+    });
+    await user.click(answerButton);
+
+    expect(mockedRecord).toHaveBeenLastCalledWith(
+      "csatSurvey",
+      "click",
+      expect.objectContaining({
+        survey_id: "last_scan_date",
+        response_id: "very-satisfied",
+        experiment_branch: "treatment",
+        last_scan_date: "19980331",
+      }),
+    );
+  });
+
+  it("confirms that the “automatic removal” CSAT survey banner has been skipped in favour of the “latest scan date” CSAT survey if a user is targeted by both", () => {
+    const ComposedDashboard = composeStory(
+      DashboardUsPremiumResolvedScanNoBreaches,
+      Meta,
+    );
+    render(
+      <ComposedDashboard
+        activeTab="fixed"
+        elapsedTimeInDaysSinceInitialScan={90}
+        hasFirstMonitoringScan
+        enabledFeatureFlags={[
+          "LatestScanDateCsatSurvey",
+          "AutomaticRemovalCsatSurvey",
+        ]}
+      />,
+    );
+
+    const cookies = new Cookies(null, { path: "/" });
+    expect(cookies.get("csat_survey_3-months_dismissed")).toBeDefined();
+  });
+
+  it("confirms that the “latest scan” CSAT survey banner has been dismissed", async () => {
+    const user = userEvent.setup();
+    const ComposedDashboard = composeStory(
+      DashboardUsPremiumResolvedScanNoBreaches,
+      Meta,
+    );
+    render(
+      <ComposedDashboard
+        activeTab="fixed"
+        elapsedTimeInDaysSinceInitialScan={90}
+        hasFirstMonitoringScan
+        enabledFeatureFlags={[
+          "LatestScanDateCsatSurvey",
+          "AutomaticRemovalCsatSurvey",
+        ]}
+      />,
+    );
+
+    const dismissButton = screen.getByRole("button", {
+      name: "Dismiss",
+    });
+    await user.click(dismissButton);
+
+    const answerButton = screen.queryByRole("button", {
+      name: "Neutral",
+    });
+    expect(answerButton).not.toBeInTheDocument();
+
+    const cookies = new Cookies(null, { path: "/" });
+    expect(cookies.get("csat_survey_3-months_dismissed")).toBeDefined();
+    expect(cookies.get("last_scan_date_plus-user_dismissed")).toBeDefined();
+  });
+
+  it("displays the petition CSAT survey for US users on the control branch", async () => {
+    const user = userEvent.setup();
+    const ComposedDashboard = composeStory(
+      DashboardUsPremiumResolvedScanNoBreaches,
+      Meta,
+    );
+    render(
+      <ComposedDashboard
+        activeTab="fixed"
+        enabledFeatureFlags={["PetitionBannerCsatSurvey"]}
+        experimentData={{
+          ...defaultExperimentData,
+          "data-privacy-petition-banner": {
+            enabled: false,
+          },
+        }}
+      />,
+    );
+
+    const petitionCta = screen.queryByRole("link", {
+      name: "Sign petition",
+    });
+    expect(petitionCta).not.toBeInTheDocument();
+
+    const answerButton = screen.getByRole("button", {
+      name: "Neutral",
+    });
+    await user.click(answerButton);
+    const cookies = new Cookies(null, { path: "/" });
+    expect(cookies.get("petition_banner_plus-user_dismissed")).toBeDefined();
+  });
+
+  it("does not display the petition CSAT survey for non-US users on the control branch", () => {
+    const ComposedDashboard = composeStory(DashboardNonUsNoBreaches, Meta);
+    render(
+      <ComposedDashboard
+        activeTab="action-needed"
+        enabledFeatureFlags={["PetitionBannerCsatSurvey"]}
+        experimentData={{
+          ...defaultExperimentData,
+          "data-privacy-petition-banner": {
+            enabled: false,
+          },
+        }}
+      />,
+    );
+
+    const answerButton = screen.queryByRole("button", {
+      name: "Neutral",
+    });
+    expect(answerButton).not.toBeInTheDocument();
+  });
+
+  it("does not display the petition CSAT survey for users on the treatment branch before they interacted with the “Data privacy petition banner”", () => {
+    const ComposedDashboard = composeStory(
+      DashboardUsPremiumResolvedScanNoBreaches,
+      Meta,
+    );
+    render(
+      <ComposedDashboard
+        activeTab="fixed"
+        enabledFeatureFlags={["PetitionBannerCsatSurvey"]}
+        experimentData={{
+          ...defaultExperimentData,
+          "data-privacy-petition-banner": {
+            enabled: true,
+          },
+        }}
+      />,
+    );
+
+    const answerButton = screen.queryByRole("button", {
+      name: "Neutral",
+    });
+    expect(answerButton).not.toBeInTheDocument();
+  });
+
+  it("displays the petition CSAT survey for users on the treatment branch after they clicked “No, thank you”", async () => {
+    const user = userEvent.setup();
+    const ComposedDashboard = composeStory(
+      DashboardUsPremiumResolvedScanNoBreaches,
+      Meta,
+    );
+    const ComposedDashboardComponent = () => (
+      <ComposedDashboard
+        activeTab="fixed"
+        enabledFeatureFlags={["PetitionBannerCsatSurvey"]}
+        experimentData={{
+          ...defaultExperimentData,
+          "data-privacy-petition-banner": {
+            enabled: true,
+          },
+        }}
+      />
+    );
+    render(<ComposedDashboardComponent />);
+
+    const dismissCta = screen.getByRole("button", {
+      name: "No, thank you",
+    });
+    await user.click(dismissCta);
+
+    const answerButton = screen.getByRole("button", {
+      name: "Neutral",
+    });
+    expect(answerButton).toBeInTheDocument();
+  });
+
+  it("displays the petition CSAT survey for users on the treatment branch after they clicked “Sign petition”", async () => {
+    const user = userEvent.setup();
+    const ComposedDashboard = composeStory(
+      DashboardUsPremiumResolvedScanNoBreaches,
+      Meta,
+    );
+    const ComposedDashboardComponent = () => (
+      <ComposedDashboard
+        activeTab="fixed"
+        enabledFeatureFlags={["PetitionBannerCsatSurvey"]}
+        experimentData={{
+          ...defaultExperimentData,
+          "data-privacy-petition-banner": {
+            enabled: true,
+          },
+        }}
+      />
+    );
+    render(<ComposedDashboardComponent />);
+
+    const dismissCta = screen.getByRole("link", {
+      name: "Sign petition",
+    });
+    await user.click(dismissCta);
+
+    const answerButton = screen.getByRole("button", {
+      name: "Neutral",
+    });
+    expect(answerButton).toBeInTheDocument();
+  });
+});
+
+describe("Data privacy petition banner", () => {
+  it("displays the petition banner to free US users on the “action needed” tab", () => {
+    const ComposedDashboard = composeStory(
+      DashboardUsNoPremiumEmptyScanResolvedBreaches,
+      Meta,
+    );
+    render(
+      <ComposedDashboard
+        enabledFeatureFlags={["PetitionBannerCsatSurvey"]}
+        experimentData={{
+          ...defaultExperimentData,
+          "data-privacy-petition-banner": {
+            enabled: true,
+          },
+        }}
+      />,
+    );
+
+    const petitionCta = screen.getByRole("link", {
+      name: "Sign petition",
+    });
+    expect(petitionCta).toBeInTheDocument();
+  });
+
+  it("does not display the petition banner to free US users on the “fixed” tab", () => {
+    const ComposedDashboard = composeStory(
+      DashboardUsNoPremiumEmptyScanResolvedBreaches,
+      Meta,
+    );
+    render(
+      <ComposedDashboard
+        activeTab="fixed"
+        enabledFeatureFlags={["PetitionBannerCsatSurvey"]}
+        experimentData={{
+          ...defaultExperimentData,
+          "data-privacy-petition-banner": {
+            enabled: true,
+          },
+        }}
+      />,
+    );
+
+    const petitionCta = screen.queryByRole("link", {
+      name: "Sign petition",
+    });
+    expect(petitionCta).not.toBeInTheDocument();
+  });
+
+  it("displays the petition banner to Plus users on the “fixed” tab", () => {
+    const ComposedDashboard = composeStory(
+      DashboardUsPremiumResolvedScanNoBreaches,
+      Meta,
+    );
+    render(
+      <ComposedDashboard
+        activeTab="fixed"
+        enabledFeatureFlags={["PetitionBannerCsatSurvey"]}
+        experimentData={{
+          ...defaultExperimentData,
+          "data-privacy-petition-banner": {
+            enabled: true,
+          },
+        }}
+      />,
+    );
+
+    const petitionCta = screen.getByRole("link", {
+      name: "Sign petition",
+    });
+    expect(petitionCta).toBeInTheDocument();
+  });
+
+  it("does not display the petition banner to Plus users on the “action needed” tab", () => {
+    const ComposedDashboard = composeStory(
+      DashboardUsPremiumResolvedScanNoBreaches,
+      Meta,
+    );
+    render(
+      <ComposedDashboard
+        enabledFeatureFlags={["PetitionBannerCsatSurvey"]}
+        experimentData={{
+          ...defaultExperimentData,
+          "data-privacy-petition-banner": {
+            enabled: true,
+          },
+        }}
+      />,
+    );
+
+    const petitionCta = screen.queryByRole("link", {
+      name: "Sign petition",
+    });
+    expect(petitionCta).not.toBeInTheDocument();
+  });
+
+  it("does not display the petition banner to users who are not based in the US", () => {
+    const ComposedDashboard = composeStory(DashboardNonUsNoBreaches, Meta);
+    render(
+      <ComposedDashboard
+        enabledFeatureFlags={["PetitionBannerCsatSurvey"]}
+        experimentData={{
+          ...defaultExperimentData,
+          "data-privacy-petition-banner": {
+            enabled: true,
+          },
+        }}
+      />,
+    );
+
+    const petitionCta = screen.queryByRole("link", {
+      name: "Sign petition",
+    });
+    expect(petitionCta).not.toBeInTheDocument();
+  });
+
+  it("does not display the petition banner if the experiment is not enabled", () => {
+    const ComposedDashboard = composeStory(DashboardNonUsNoBreaches, Meta);
+    render(<ComposedDashboard />);
+
+    const petitionCta = screen.queryByRole("link", {
+      name: "Sign petition",
+    });
+    expect(petitionCta).not.toBeInTheDocument();
+  });
+
+  it("confirms that the petition banner has been dismissed by the “close” button", async () => {
+    const user = userEvent.setup();
+    const ComposedDashboard = composeStory(
+      DashboardUsPremiumResolvedScanNoBreaches,
+      Meta,
+    );
+    render(
+      <ComposedDashboard
+        activeTab="fixed"
+        enabledFeatureFlags={["PetitionBannerCsatSurvey"]}
+        experimentData={{
+          ...defaultExperimentData,
+          "data-privacy-petition-banner": {
+            enabled: true,
+          },
+        }}
+      />,
+    );
+
+    const dismissCta = screen.getByRole("button", {
+      name: "No, thank you",
+    });
+    expect(dismissCta).toBeInTheDocument();
+    await user.click(dismissCta);
+
+    expect(
+      screen.queryByRole("button", {
+        name: "No, thank you",
+      }),
+    ).not.toBeInTheDocument();
+  });
+
+  it("confirms that the petition banner has been dismissed by the “dismiss CTA” button", async () => {
+    const user = userEvent.setup();
+    const ComposedDashboard = composeStory(
+      DashboardUsPremiumResolvedScanNoBreaches,
+      Meta,
+    );
+    render(
+      <ComposedDashboard
+        activeTab="fixed"
+        enabledFeatureFlags={["PetitionBannerCsatSurvey"]}
+        experimentData={{
+          ...defaultExperimentData,
+          "data-privacy-petition-banner": {
+            enabled: true,
+          },
+        }}
+      />,
+    );
+
+    expect(
+      screen.getByRole("link", {
+        name: "Sign petition",
+      }),
+    ).toBeInTheDocument();
+
+    const dismissButton = screen.getByRole("button", {
+      name: "Dismiss",
+    });
+    await user.click(dismissButton);
+
+    expect(
+      screen.queryByRole("link", {
+        name: "Sign petition",
+      }),
+    ).not.toBeInTheDocument();
   });
 });

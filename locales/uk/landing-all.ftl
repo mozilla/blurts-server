@@ -8,6 +8,7 @@ landing-all-hero-lead = Ми перевіряємо випадки витоку 
 landing-all-hero-emailform-input-placeholder = yourname@example.com
 landing-all-hero-emailform-input-label = Введіть свою адресу електронної пошти, щоб перевірити наявність витоків даних.
 landing-all-hero-emailform-submit-label = Перевірити безплатно
+landing-all-hero-emailform-submit-sign-up-label = Зареєструйтеся, щоб отримати безплатне сканування
 # This is a label underneath a big number "14" - it's an image that demos Monitor.
 landing-all-hero-image-chart-label = розкриттів
 

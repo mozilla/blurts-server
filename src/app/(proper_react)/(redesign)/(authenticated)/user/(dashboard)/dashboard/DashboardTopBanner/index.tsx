@@ -49,23 +49,7 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
   return (
     <>
       <div className={styles.container}>
-        <DashboardTopBannerContent
-          bannerData={props.bannerData}
-          hasExposures={props.hasExposures}
-          hasUnresolvedBreaches={props.hasUnresolvedBreaches}
-          hasUnresolvedBrokers={props.hasUnresolvedBrokers}
-          isEligibleForFreeScan={props.isEligibleForFreeScan}
-          isEligibleForPremium={props.isEligibleForPremium}
-          isPremiumUser={props.isPremiumUser}
-          tabType={props.tabType}
-          scanInProgress={props.scanInProgress}
-          stepDeterminationData={props.stepDeterminationData}
-          onShowFixed={props.onShowFixed}
-          monthlySubscriptionUrl={props.monthlySubscriptionUrl}
-          yearlySubscriptionUrl={props.yearlySubscriptionUrl}
-          subscriptionBillingAmount={props.subscriptionBillingAmount}
-          totalNumberOfPerformedScans={props.totalNumberOfPerformedScans}
-        />
+        <DashboardTopBannerContent {...props} />
         <div className={styles.chart}>
           <Chart
             scanInProgress={props.scanInProgress}

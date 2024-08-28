@@ -159,19 +159,25 @@ open-in-new-tab-alt = 새 탭에서 링크 열기
 
 ## Search Engine Optimization
 
+meta-desc-2 = { -brand-fx-monitor }를 통해 데이터 유출에 연관되어 있는지 알아보세요. 다음에 수행할 작업을 안내해 드리고, 새로운 유출이 있는지 지속적으로 모니터링하겠습니다.
 
 ## Header
 
 # Deprecated
 brand-fx-monitor = { -brand-fx-monitor }
 sign-in = 로그인
+brand-mozilla-monitor = { -brand-fx-monitor }
 
 ## Site navigation
 
 mobile-menu-label = 메인 메뉴
+main-nav-button-collapse-label = 메뉴 닫기
+main-nav-button-collapse-tooltip = 메뉴 닫기
+main-nav-button-expand-label = 메뉴 펼치기
 main-nav-button-expand-tooltip = 메뉴 펼치기
 main-nav-label = 탐색
 main-nav-link-home-label = 홈
+main-nav-link-dashboard-label = 대시보드
 main-nav-link-settings-label = 설정
 main-nav-link-faq-label = FAQ
 main-nav-link-faq-tooltip = 자주 묻는 질문
@@ -180,8 +186,10 @@ main-nav-link-faq-tooltip = 자주 묻는 질문
 
 user-menu-trigger-label = 사용자 메뉴 열기
 user-menu-trigger-tooltip = 프로필
+user-menu-manage-fxa-label = { -brand-mozilla-account } 관리
 user-menu-settings-label = 설정
 user-menu-help-label = 도움말 및 지원
+user-menu-help-tooltip = { -brand-mozilla-monitor } 사용에 대한 도움 받기
 user-menu-signout-label = 로그아웃
 user-menu-signout-tooltip = { -brand-mozilla-monitor }에서 로그아웃
 
@@ -191,6 +199,7 @@ mozilla = { -brand-mozilla }
 terms-of-service = 이용 약관
 privacy-notice = 개인정보 보호정책
 github = { -brand-github }
+footer-nav-all-breaches = 모든 유출
 footer-external-link-faq-label = FAQ
 footer-external-link-faq-tooltip = 자주 묻는 질문
 
@@ -215,9 +224,11 @@ exposed-data = 노출된 데이터:
 ## Public breach detail page
 
 find-out-if-2 = 이번 위반에 포함되었는지 알아보세요.
+find-out-if-description = 이 유출에서 이메일 주소가 노출되었는지 빠르게 확인하고 다음 작업을 수행할 수 있도록 도와드리겠습니다.
 breach-detail-cta-signup = 유출 여부 확인하기
 
 ## Firefox Monitor -> Mozilla Monitor rebrand banner
 
 banner-monitor-rebrand-dismiss-button-label = 예
 banner-monitor-rebrand-dismiss-button-tooltip = 닫기
+loading-accessibility = 로딩 중

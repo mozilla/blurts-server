@@ -2,19 +2,21 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { SubscriberRow } from "knex/types/tables";
-import { getUserEmails } from "../db/tables/emailAddresses.js";
-import { HibpLikeDbBreach, getBreachesForEmail } from "./hibp.js";
-import { getSha1 } from "./fxa.js";
-import { parseIso8601Datetime } from "./parse.js";
 import {
-  Breach,
+  BreachResolutionChecked,
+  SubscriberBreachResolution,
+  SubscriberRow,
+} from "knex/types/tables";
+import { getUserEmails } from "../db/tables/emailAddresses";
+import { HibpLikeDbBreach, getBreachesForEmail } from "./hibp";
+import { getSha1 } from "./fxa";
+import { parseIso8601Datetime } from "./parse";
+import {
   BreachDataTypes,
   HibpBreachDataTypes,
   ResolutionRelevantBreachDataTypes,
   isBreachResolved,
 } from "../app/functions/universal/breach";
-import isNotNull from "../app/functions/universal/isNotNull";
 
 export type DataClassEffected = {
   [dataType: string]: number | string[];
@@ -24,11 +26,11 @@ export interface SubscriberBreach {
   breachDate: Date;
   dataClasses: Array<HibpBreachDataTypes[keyof HibpBreachDataTypes]>;
   resolvedDataClasses: Array<HibpBreachDataTypes[keyof HibpBreachDataTypes]>;
-  description: string;
+  description: string | null;
   domain: string;
   id: number;
   isResolved?: boolean;
-  favIconUrl: string;
+  favIconUrl: string | null;
   modifiedDate: Date;
   name: string;
   title: string;
@@ -70,7 +72,7 @@ function filterBreachDataTypes(
  */
 export async function getSubBreaches(
   subscriber: SubscriberRow,
-  allBreaches: (Breach | HibpLikeDbBreach)[],
+  allBreaches: HibpLikeDbBreach[],
   countryCode: string,
 ) {
   const uniqueBreaches: SubscriberBreachMap = {};
@@ -105,7 +107,8 @@ export async function getSubBreaches(
     );
 
     // breach resolution
-    const breachResolution = subscriber.breach_resolution?.[email.email] ?? {};
+    const breachResolutionForEmail =
+      subscriber.breach_resolution?.[email.email] ?? {};
 
     for (const breach of foundBreaches) {
       type ArrayOfDataClasses = Array<
@@ -113,22 +116,27 @@ export async function getSubBreaches(
       >;
       const filteredBreachDataClasses: ArrayOfDataClasses =
         filterBreachDataTypes(breach.DataClasses, countryCode);
-      const resolvedDataClasses = (breachResolution[breach.Id]
-        ?.resolutionsChecked ?? []) as ArrayOfDataClasses;
 
-      const dataClassesEffected = filteredBreachDataClasses
-        .map((c) => {
-          if (c === BreachDataTypes.Email) {
-            return { [c]: [email.email] };
-          } else {
-            return { [c]: 1 };
-          }
-        })
-        .filter(isNotNull);
+      const resolvedDataClasses =
+        breach.Id in breachResolutionForEmail
+          ? (
+              breachResolutionForEmail[
+                breach.Id as keyof SubscriberBreachResolution
+              ] as BreachResolutionChecked
+            ).resolutionsChecked
+          : [];
+
+      const dataClassesEffected = filteredBreachDataClasses.map((c) => {
+        if (c === BreachDataTypes.Email) {
+          return { [c]: [email.email] };
+        } else {
+          return { [c]: 1 };
+        }
+      });
 
       // `allBreaches` is generally the return value of `getBreaches`, which
       // either loads breaches from the database, or fetches them from the HIBP
-      // API. In the former csae, `AddedDate`, `BreachDate` and `ModifiedDate`
+      // API. In the former case, `AddedDate`, `BreachDate` and `ModifiedDate`
       // are Date objects, but in the latter case, they are ISO 8601 date
       // strings. Thus, we normalise that to always be a Date object.
       const subscriberBreach: SubscriberBreach = {
@@ -140,7 +148,7 @@ export async function getSubBreaches(
         description: breach.Description,
         domain: breach.Domain,
         isResolved: isBreachResolved(dataClassesEffected, resolvedDataClasses),
-        favIconUrl: breach.FaviconUrl,
+        favIconUrl: breach.FaviconUrl ?? null,
         modifiedDate: normalizeDate(breach.ModifiedDate),
         name: breach.Name,
         title: breach.Title,

@@ -41,7 +41,7 @@ import ScanProgressIllustration from "./images/scan-illustration.svg";
 import { CountryCodeContext } from "../../../../../../../contextProviders/country-code";
 import { FeatureFlagName } from "../../../../../../../db/tables/featureFlags";
 import { getNextGuidedStep } from "../../../../../../functions/server/getRelevantGuidedSteps";
-import { CsatSurvey } from "../../../../../../components/client/CsatSurvey";
+import { CsatSurvey } from "../../../../../../components/client/csat_survey/CsatSurvey";
 import { WaitlistDialog } from "../../../../../../components/client/SubscriberWaitlistDialog";
 import { useOverlayTriggerState } from "react-stately";
 import { useOverlayTrigger } from "react-aria";
@@ -51,6 +51,8 @@ import {
   CONST_ONEREP_MAX_SCANS_THRESHOLD,
 } from "../../../../../../../constants";
 import { ExperimentData } from "../../../../../../../telemetry/generated/nimbus/experiments";
+import { PetitionBanner } from "../../../../../../components/client/PetitionBanner";
+import { useLocalDismissal } from "../../../../../../hooks/useLocalDismissal";
 
 export type TabType = "action-needed" | "fixed";
 
@@ -72,9 +74,11 @@ export type Props = {
   scanCount: number;
   isNewUser: boolean;
   experimentationId: string;
+  hasFirstMonitoringScan: boolean;
   elapsedTimeInDaysSinceInitialScan?: number;
   totalNumberOfPerformedScans?: number;
   activeTab: TabType;
+  signInCount: number | null;
 };
 
 export type TabData = {
@@ -84,11 +88,16 @@ export type TabData = {
 
 export const View = (props: Props) => {
   const l10n = useL10n();
-  const recordTelemetry = useTelemetry(props.experimentationId);
+  const recordTelemetry = useTelemetry({
+    experimentationId: props.experimentationId,
+  });
   const countryCode = useContext(CountryCodeContext);
   const pathname = usePathname();
 
   const [activeTab, setActiveTab] = useState<TabType>(props.activeTab);
+  const localDismissalPetitionBanner = useLocalDismissal(
+    `data_privacy_petition_banner-${props.user.subscriber?.id}`,
+  );
 
   useEffect(() => {
     const nextPathname = `/user/dashboard/${activeTab}`;
@@ -164,10 +173,13 @@ export const View = (props: Props) => {
 
   const getTabSpecificExposures = (tabKey: TabType) =>
     arraySortedByDate.filter((exposure: Exposure) => {
-      const exposureStatus = getExposureStatus(exposure);
+      const exposureStatus = getExposureStatus(
+        exposure,
+        props.enabledFeatureFlags.includes("AdditionalRemovalStatuses"),
+      );
       return (
-        (tabKey === "action-needed" && exposureStatus === "needAction") ||
-        (tabKey === "fixed" && exposureStatus !== "needAction")
+        (tabKey === "action-needed" && exposureStatus === "actionNeeded") ||
+        (tabKey === "fixed" && exposureStatus !== "actionNeeded")
       );
     });
 
@@ -181,6 +193,7 @@ export const View = (props: Props) => {
     return (
       <li key={exposureCardKey} className={styles.exposureListItem}>
         <ExposureCard
+          enabledFeatureFlags={props.enabledFeatureFlags}
           exposureData={exposure}
           isExpanded={exposureCardKey === activeExposureCardKey}
           onToggleExpanded={() => {
@@ -371,7 +384,7 @@ export const View = (props: Props) => {
                 />
               ) : (
                 <Button
-                  variant="tertiary"
+                  variant="link"
                   buttonRef={waitlistTriggerRef}
                   {...overlayTrigger.triggerProps}
                 />
@@ -415,12 +428,6 @@ export const View = (props: Props) => {
     );
   };
 
-  const showCsatSurvey =
-    hasPremium(props.user) &&
-    props.enabledFeatureFlags.includes("CsatSurvey") &&
-    activeTab === "fixed" &&
-    typeof props.elapsedTimeInDaysSinceInitialScan !== "undefined";
-
   return (
     <div className={styles.wrapper}>
       <Toolbar
@@ -446,17 +453,32 @@ export const View = (props: Props) => {
           selectedKey={activeTab}
         />
       </Toolbar>
-      {showCsatSurvey &&
-        typeof props.elapsedTimeInDaysSinceInitialScan !== "undefined" && (
-          <CsatSurvey
-            elapsedTimeInDaysSinceInitialScan={
-              props.elapsedTimeInDaysSinceInitialScan
-            }
-            hasAutoFixedDataBrokers={
-              dataSummary.dataBrokerAutoFixedDataPointsNum > 0
-            }
+      {props.experimentData["data-privacy-petition-banner"].enabled &&
+        props.isEligibleForPremium &&
+        ((activeTab === "fixed" && hasPremium(props.user)) ||
+          (activeTab === "action-needed" && !hasPremium(props.user))) && (
+          <PetitionBanner
+            user={props.user}
+            localDismissal={localDismissalPetitionBanner}
           />
         )}
+      <CsatSurvey
+        user={props.user}
+        activeTab={activeTab}
+        enabledFeatureFlags={props.enabledFeatureFlags}
+        experimentData={props.experimentData}
+        elapsedTimeInDaysSinceInitialScan={
+          props.elapsedTimeInDaysSinceInitialScan ?? null
+        }
+        hasAutoFixedDataBrokers={
+          dataSummary.dataBrokerAutoFixedDataPointsNum > 0
+        }
+        hasFirstMonitoringScan={props.hasFirstMonitoringScan}
+        lastScanDate={props.userScanData.scan?.created_at ?? null}
+        signInCount={props.signInCount}
+        localDismissalPetitionBanner={localDismissalPetitionBanner}
+        isEligibleForPremium={props.isEligibleForPremium}
+      />
       <div className={styles.dashboardContent}>
         <DashboardTopBanner
           tabType={activeTab}
@@ -503,10 +525,12 @@ export const View = (props: Props) => {
         </section>
         <div className={styles.exposuresFilterWrapper}>
           <ExposuresFilter
+            enabledFeatureFlags={props.enabledFeatureFlags}
             initialFilterValues={initialFilterState}
             filterValues={filters}
             setFilterValues={setFilters}
             isEligibleForPremium={props.isEligibleForPremium}
+            isPlusSubscriber={hasPremium(props.user)}
           />
         </div>
         {noUnresolvedExposures ? (

@@ -5,6 +5,7 @@
 import { it, expect } from "@jest/globals";
 import { composeStory } from "@storybook/react";
 import {
+  act,
   getAllByRole,
   getByRole,
   getByText,
@@ -12,6 +13,7 @@ import {
   queryByText,
   render,
   screen,
+  waitFor,
   within,
 } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
@@ -26,6 +28,9 @@ import Meta, {
   LandingUsScanLimit,
 } from "./LandingView.stories";
 import { deleteAllCookies } from "../../../functions/client/deleteAllCookies";
+import { defaultExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
+import { Cookies } from "react-cookie";
+import { mockIsIntersecting } from "react-intersection-observer/test-utils";
 
 jest.mock("next-auth/react", () => {
   return {
@@ -35,6 +40,12 @@ jest.mock("next-auth/react", () => {
     }),
   };
 });
+jest.mock("next/navigation", () => ({
+  useSearchParams: () => ({
+    toString: jest.fn(),
+  }),
+}));
+
 jest.mock("../../../hooks/useTelemetry");
 
 beforeEach(() => {
@@ -89,7 +100,10 @@ describe("When Premium is not available", () => {
         user: {
           email: "arbitrary@example.com",
         },
+        expires: "2023-06-18T14:48:00.000Z",
       },
+      status: "authenticated",
+      update: () => Promise.resolve(null),
     });
 
     const ComposedDashboard = composeStory(LandingNonUs, Meta);
@@ -736,9 +750,524 @@ describe("When Premium is available", () => {
     // test:
     jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
   });
+
+  it("counts the number of clicks How it Works link in top navbar", async () => {
+    const mockedRecord = useTelemetry();
+    const ComposedDashboard = composeStory(LandingUs, Meta);
+    render(<ComposedDashboard />);
+
+    const user = userEvent.setup();
+
+    const navbarLink = screen.getByRole("link", { name: "How it works" });
+    // jsdom will complain about not being able to navigate to a different page
+    // after clicking the link; suppress that error, as it's not relevant to the
+    // test:
+    jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+    await user.click(navbarLink);
+
+    expect(mockedRecord).toHaveBeenCalledWith(
+      "link",
+      "click",
+      expect.objectContaining({
+        link_id: "navbar_how_it_works",
+      }),
+    );
+  });
+
+  it("counts the number of clicks Pricing link in top navbar", async () => {
+    const mockedRecord = useTelemetry();
+    const ComposedDashboard = composeStory(LandingUs, Meta);
+    render(<ComposedDashboard />);
+
+    const user = userEvent.setup();
+
+    const navbarLink = screen.getByRole("link", { name: "Pricing" });
+    // jsdom will complain about not being able to navigate to a different page
+    // after clicking the link; suppress that error, as it's not relevant to the
+    // test:
+    jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+    await user.click(navbarLink);
+
+    expect(mockedRecord).toHaveBeenCalledWith(
+      "link",
+      "click",
+      expect.objectContaining({
+        link_id: "navbar_pricing",
+      }),
+    );
+  });
+
+  it("counts the number of clicks FAQs link in top navbar", async () => {
+    const mockedRecord = useTelemetry();
+    const ComposedDashboard = composeStory(LandingUs, Meta);
+    render(<ComposedDashboard />);
+
+    const user = userEvent.setup();
+
+    const navbarLink = screen.getByTestId("navbar_faqs");
+    // jsdom will complain about not being able to navigate to a different page
+    // after clicking the link; suppress that error, as it's not relevant to the
+    // test:
+    jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+    await user.click(navbarLink);
+
+    expect(mockedRecord).toHaveBeenCalledWith(
+      "link",
+      "click",
+      expect.objectContaining({
+        link_id: "navbar_faqs",
+      }),
+    );
+  });
+
+  it("counts the number of clicks All breaches link in top navbar", async () => {
+    const mockedRecord = useTelemetry();
+    const ComposedDashboard = composeStory(LandingUs, Meta);
+    render(<ComposedDashboard />);
+
+    const user = userEvent.setup();
+
+    const navbarLink = screen.getByRole("link", { name: "All breaches" });
+    // jsdom will complain about not being able to navigate to a different page
+    // after clicking the link; suppress that error, as it's not relevant to the
+    // test:
+    jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+    await user.click(navbarLink);
+
+    expect(mockedRecord).toHaveBeenCalledWith(
+      "link",
+      "click",
+      expect.objectContaining({
+        link_id: "navbar_breaches",
+      }),
+    );
+  });
+});
+
+describe("Free scan CTA experiment", () => {
+  it("shows the CTA button with email input if the experiment disabled", () => {
+    global.fetch = jest.fn().mockImplementation(() =>
+      Promise.resolve({
+        success: true,
+        json: jest.fn(() => ({
+          flowData: null,
+        })),
+      }),
+    );
+    const ComposedDashboard = composeStory(LandingUs, Meta);
+    render(
+      <ComposedDashboard
+        experimentData={{
+          ...defaultExperimentData,
+          "landing-page-free-scan-cta": {
+            ...defaultExperimentData["landing-page-free-scan-cta"],
+            enabled: false,
+          },
+        }}
+      />,
+    );
+
+    const inputField = screen.getAllByLabelText(
+      "Enter your email address to check for data breach exposures and sites selling your info.",
+    );
+    expect(inputField[0]).toBeInTheDocument();
+
+    const submitButton = screen.getAllByRole("button", {
+      name: "Get free scan",
+    });
+    expect(submitButton[0]).toBeInTheDocument();
+  });
+
+  it("shows the CTA button with email input for the variant `ctaWithEmail` if the experiment is enabled", async () => {
+    global.fetch = jest.fn().mockImplementation(() =>
+      Promise.resolve({
+        success: true,
+        json: jest.fn(() => ({
+          flowData: null,
+        })),
+      }),
+    );
+    const ComposedDashboard = composeStory(LandingUs, Meta);
+    render(
+      <ComposedDashboard
+        experimentData={{
+          ...defaultExperimentData,
+          "landing-page-free-scan-cta": {
+            enabled: true,
+            variant: "ctaWithEmail",
+          },
+        }}
+      />,
+    );
+
+    await waitFor(() => {
+      const inputField = screen.getAllByLabelText(
+        "Enter your email address to check for data breach exposures and sites selling your info.",
+      );
+      expect(inputField[0]).toBeInTheDocument();
+
+      const submitButton = screen.getAllByRole("button", {
+        name: "Get free scan",
+      });
+      expect(submitButton[0]).toBeInTheDocument();
+    });
+  });
+
+  it("shows the CTA button only for the variant `ctaOnly` if the experiment is enabled", async () => {
+    global.fetch = jest.fn().mockImplementation(() =>
+      Promise.resolve({
+        success: true,
+        json: jest.fn(() => ({
+          flowData: null,
+        })),
+      }),
+    );
+    const ComposedDashboard = composeStory(LandingUs, Meta);
+    render(
+      <ComposedDashboard
+        experimentData={{
+          ...defaultExperimentData,
+          "landing-page-free-scan-cta": {
+            enabled: true,
+            variant: "ctaOnly",
+          },
+        }}
+      />,
+    );
+
+    await waitFor(() => {
+      const inputField = screen.queryAllByTestId("signup-form-input");
+      expect(inputField.length).toBe(0);
+
+      const submitButton = screen.getAllByRole("button", {
+        name: "Get free scan",
+      });
+      expect(submitButton[0]).toBeInTheDocument();
+    });
+  });
+
+  it("shows the CTA button only with an alternative label for the variant `ctaOnlyAlternativeLabel` if the experiment is enabled", async () => {
+    global.fetch = jest.fn().mockImplementation(() =>
+      Promise.resolve({
+        success: true,
+        json: jest.fn(() => ({
+          flowData: null,
+        })),
+      }),
+    );
+    const ComposedDashboard = composeStory(LandingUs, Meta);
+    render(
+      <ComposedDashboard
+        experimentData={{
+          ...defaultExperimentData,
+          "landing-page-free-scan-cta": {
+            enabled: true,
+            variant: "ctaOnlyAlternativeLabel",
+          },
+        }}
+      />,
+    );
+
+    await waitFor(() => {
+      const inputField = screen.queryAllByTestId("signup-form-input");
+      expect(inputField.length).toBe(0);
+
+      const submitButton = screen.getAllByRole("button", {
+        name: "Sign up to get free scan",
+      });
+      expect(submitButton[0]).toBeInTheDocument();
+    });
+  });
+
+  it("shows the waitlist CTA when the scan limit is reached", async () => {
+    global.fetch = jest.fn().mockImplementation(() =>
+      Promise.resolve({
+        success: true,
+        json: jest.fn(() => ({
+          flowData: null,
+        })),
+      }),
+    );
+    const ComposedDashboard = composeStory(LandingUsScanLimit, Meta);
+    render(
+      <ComposedDashboard
+        experimentData={{
+          ...defaultExperimentData,
+          "landing-page-free-scan-cta": {
+            enabled: true,
+            variant: "ctaOnly",
+          },
+        }}
+      />,
+    );
+
+    await waitFor(() => {
+      const waitlistCta = screen.getAllByRole("link", {
+        name: "Join waitlist",
+      });
+      expect(waitlistCta[0]).toBeInTheDocument();
+    });
+  });
+
+  it("sends telemetry when clicking on one of the experiment variants", async () => {
+    global.fetch = jest.fn().mockImplementation(() =>
+      Promise.resolve({
+        success: true,
+        json: jest.fn(() => ({
+          flowData: null,
+        })),
+      }),
+    );
+
+    const mockedRecord = useTelemetry();
+    const user = userEvent.setup();
+    const ComposedDashboard = composeStory(LandingUs, Meta);
+    render(
+      <ComposedDashboard
+        experimentData={{
+          ...defaultExperimentData,
+          "landing-page-free-scan-cta": {
+            enabled: true,
+            variant: "ctaOnly",
+          },
+        }}
+      />,
+    );
+
+    // jsdom will complain about not being able to navigate to a different page
+    // after clicking the link; suppress that error, as it's not relevant to the
+    // test:
+    jest.spyOn(console, "error").mockImplementation(() => undefined);
+
+    const submitButton = screen.getAllByRole("button", {
+      name: "Get free scan",
+    });
+    await user.click(submitButton[0]);
+
+    expect(mockedRecord).toHaveBeenCalledWith(
+      "ctaButton",
+      "click",
+      expect.objectContaining({ button_id: "clicked_get_scan_header-ctaOnly" }),
+    );
+  });
+
+  it("sends telemetry when a free scan CTA is shown in the viewport", () => {
+    global.fetch = jest.fn().mockImplementation(() =>
+      Promise.resolve({
+        success: true,
+        json: jest.fn(() => ({
+          flowData: null,
+        })),
+      }),
+    );
+    const mockedRecord = useTelemetry();
+    const ComposedDashboard = composeStory(LandingUs, Meta);
+    render(
+      <ComposedDashboard
+        experimentData={{
+          ...defaultExperimentData,
+          "landing-page-free-scan-cta": {
+            enabled: true,
+            variant: "ctaOnly",
+          },
+        }}
+      />,
+    );
+
+    // jsdom will complain about not being able to navigate to a different page
+    // after clicking the link; suppress that error, as it's not relevant to the
+    // test:
+    jest.spyOn(console, "error").mockImplementation(() => undefined);
+
+    const submitButton = screen.getAllByRole("button", {
+      name: "Get free scan",
+    });
+    act(() => {
+      mockIsIntersecting(submitButton[0], true);
+    });
+    expect(mockedRecord).toHaveBeenCalledWith(
+      "ctaButton",
+      "view",
+      expect.objectContaining({ button_id: "clicked_get_scan_header-ctaOnly" }),
+    );
+  });
+
+  it("passes the expected URL to the identity provider", async () => {
+    const user = userEvent.setup();
+    const ComposedDashboard = composeStory(LandingUs, Meta);
+    render(
+      <ComposedDashboard
+        experimentData={{
+          ...defaultExperimentData,
+          "landing-page-free-scan-cta": {
+            enabled: true,
+            variant: "ctaWithEmail",
+          },
+        }}
+      />,
+    );
+
+    const inputField = screen.getAllByLabelText(
+      "Enter your email address to check for data breach exposures and sites selling your info.",
+    );
+    await user.type(inputField[0], "mail@example.com");
+
+    const submitButton = screen.getAllByRole("button", {
+      name: "Get free scan",
+    });
+    await user.click(submitButton[0]);
+
+    expect(signIn).toHaveBeenCalledWith(
+      "fxa",
+      expect.any(Object),
+      expect.stringContaining(
+        [
+          "utm_source=product",
+          "utm_medium=monitor",
+          "utm_campaign=get_free_scan",
+          "entrypoint=monitor.mozilla.org-monitor-product-page",
+          "form_type=email",
+          "email=mail%40example.com",
+          "entrypoint_experiment=landing-page-free-scan-cta",
+          "entrypoint_variation=ctaWithEmail",
+        ].join("&"),
+      ),
+    );
+  });
+
+  it("passes the expected URL to the identity provider with metrics flow data", async () => {
+    global.fetch = jest.fn().mockImplementation(() =>
+      Promise.resolve({
+        success: true,
+        json: jest.fn(() => ({
+          flowData: {
+            deviceId: "device_123",
+            flowId: "flow_123",
+            flowBeginTime: 42,
+          },
+        })),
+      }),
+    );
+    const user = userEvent.setup();
+    const ComposedDashboard = composeStory(LandingUs, Meta);
+    render(
+      <ComposedDashboard
+        experimentData={{
+          ...defaultExperimentData,
+          "landing-page-free-scan-cta": {
+            enabled: true,
+            variant: "ctaWithEmail",
+          },
+        }}
+      />,
+    );
+
+    const inputField = screen.getAllByLabelText(
+      "Enter your email address to check for data breach exposures and sites selling your info.",
+    );
+    await user.type(inputField[0], "mail@example.com");
+
+    const submitButton = screen.getAllByRole("button", {
+      name: "Get free scan",
+    });
+    await user.click(submitButton[0]);
+
+    expect(signIn).toHaveBeenCalledWith(
+      "fxa",
+      expect.any(Object),
+      expect.stringContaining(
+        [
+          "utm_source=product",
+          "utm_medium=monitor",
+          "utm_campaign=get_free_scan",
+          "entrypoint=monitor.mozilla.org-monitor-product-page",
+          "form_type=email",
+          "email=mail%40example.com",
+          "device_id=device_123",
+          "flow_id=flow_123",
+          "flow_begin_time=42",
+          "entrypoint_experiment=landing-page-free-scan-cta",
+          "entrypoint_variation=ctaWithEmail",
+        ].join("&"),
+      ),
+    );
+  });
+
+  it("passes the expected URL to the identity provider with metrics flow data and “first touch” UTM parameters", async () => {
+    global.fetch = jest.fn().mockImplementation(() =>
+      Promise.resolve({
+        success: true,
+        json: jest.fn(() => ({
+          flowData: {
+            deviceId: "device_123",
+            flowId: "flow_123",
+            flowBeginTime: 42,
+          },
+        })),
+      }),
+    );
+    const cookies = new Cookies(null, { path: "/" });
+    cookies.set("attributionsFirstTouch", {
+      utm_source: "source_first_touch",
+      utm_medium: "medium_first_touch",
+      utm_campaign: "campaign_first_touch",
+    });
+
+    const user = userEvent.setup();
+    const ComposedDashboard = composeStory(LandingUs, Meta);
+    render(
+      <ComposedDashboard
+        experimentData={{
+          ...defaultExperimentData,
+          "landing-page-free-scan-cta": {
+            enabled: true,
+            variant: "ctaWithEmail",
+          },
+        }}
+      />,
+    );
+
+    const inputField = screen.getAllByLabelText(
+      "Enter your email address to check for data breach exposures and sites selling your info.",
+    );
+    await user.type(inputField[0], "mail@example.com");
+
+    const submitButton = screen.getAllByRole("button", {
+      name: "Get free scan",
+    });
+    await user.click(submitButton[0]);
+
+    expect(signIn).toHaveBeenCalledWith(
+      "fxa",
+      expect.any(Object),
+      expect.stringContaining(
+        [
+          "utm_source=source_first_touch",
+          "utm_medium=medium_first_touch",
+          "utm_campaign=campaign_first_touch",
+          "entrypoint=monitor.mozilla.org-monitor-product-page",
+          "form_type=email",
+          "email=mail%40example.com",
+          "device_id=device_123",
+          "flow_id=flow_123",
+          "flow_begin_time=42",
+          "entrypoint_experiment=landing-page-free-scan-cta",
+          "entrypoint_variation=ctaWithEmail",
+        ].join("&"),
+      ),
+    );
+  });
 });
 
 it("does not show a confirmaton message if the user has just deleted their account", () => {
+  global.fetch = jest.fn().mockImplementation(() =>
+    Promise.resolve({
+      success: true,
+      json: jest.fn(() => ({
+        flowData: null,
+      })),
+    }),
+  );
   document.cookie = "justDeletedAccount=justDeletedAccount; max-age=0";
 
   const ComposedDashboard = composeStory(LandingNonUs, Meta);
@@ -750,6 +1279,14 @@ it("does not show a confirmaton message if the user has just deleted their accou
 });
 
 it("shows a confirmaton message if the user has just deleted their account", () => {
+  global.fetch = jest.fn().mockImplementation(() =>
+    Promise.resolve({
+      success: true,
+      json: jest.fn(() => ({
+        flowData: null,
+      })),
+    }),
+  );
   document.cookie = "justDeletedAccount=justDeletedAccount";
 
   const ComposedDashboard = composeStory(LandingNonUs, Meta);
@@ -765,6 +1302,14 @@ it("shows a confirmaton message if the user has just deleted their account", () 
 });
 
 it("hides the 'account deletion' confirmation message when the user dismisses it", async () => {
+  global.fetch = jest.fn().mockImplementation(() =>
+    Promise.resolve({
+      success: true,
+      json: jest.fn(() => ({
+        flowData: null,
+      })),
+    }),
+  );
   const user = userEvent.setup();
   document.cookie = "justDeletedAccount=justDeletedAccount";
 

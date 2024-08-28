@@ -24,6 +24,7 @@ import { revokeOAuthTokens } from "../../../../utils/fxa";
 import appConstants from "../../../../appConstants";
 import { changeSubscription } from "../../../functions/server/changeSubscription";
 import { deleteAccount } from "../../../functions/server/deleteAccount";
+import { record } from "../../../functions/server/glean";
 
 const FXA_PROFILE_CHANGE_EVENT =
   "https://schemas.accounts.firefox.com/event/profile-change";
@@ -49,13 +50,14 @@ const getJwtPubKey = async () => {
       },
     });
     const { keys } = (await response.json()) as { keys: jwkToPem.JWK[] };
-    logger.info(
-      "getJwtPubKey",
-      `fetched jwt public keys from: ${jwtKeyUri} - ${keys.length}`,
-    );
+    logger.info("get_jwt_pub_key", {
+      message: `fetched jwt public keys from: ${jwtKeyUri} - ${keys.length}`,
+    });
     return keys;
   } catch (e: unknown) {
-    logger.error("getJwtPubKey", `Could not get JWT public key: ${jwtKeyUri}`);
+    logger.error("get_jwt_pub_key", {
+      exception: `Could not get JWT public key: ${jwtKeyUri}`,
+    });
     captureMessage(
       `Could not get JWT public key: ${jwtKeyUri} - ${e as string}`,
     );
@@ -117,26 +119,27 @@ interface JwtPayload {
 
 export async function POST(request: NextRequest) {
   let decodedJWT: JwtPayload;
+
   try {
     decodedJWT = (await authenticateFxaJWT(request)) as JwtPayload;
   } catch (e) {
-    logger.error("fxaRpEvents", e);
+    logger.error("fxa_rp_event", { exception: e as string });
     captureException(e);
     return NextResponse.json({ success: false }, { status: 401 });
   }
 
   if (!decodedJWT?.events) {
     // capture an exception in Sentry only. Throwing error will trigger FXA retry
-    logger.error("fxaRpEvents", decodedJWT);
+    logger.error("fxa_rp_event", { decodedJWT });
     captureMessage(
-      `fxaRpEvents: decodedJWT is missing attribute "events", ${
+      `fxa_rp_event: decodedJWT is missing attribute "events", ${
         decodedJWT as unknown as string
       }`,
     );
     return NextResponse.json(
       {
         success: false,
-        message: 'fxaRpEvents: decodedJWT is missing attribute "events"',
+        message: 'fxa_rp_event: decodedJWT is missing attribute "events"',
       },
       { status: 400 },
     );
@@ -146,14 +149,14 @@ export async function POST(request: NextRequest) {
   if (!fxaUserId) {
     // capture an exception in Sentry only. Throwing error will trigger FXA retry
     captureMessage(
-      `fxaRpEvents: decodedJWT is missing attribute "sub", ${
+      `fxa_rp_event: decodedJWT is missing attribute "sub", ${
         decodedJWT as unknown as string
       }`,
     );
     return NextResponse.json(
       {
         success: false,
-        message: 'fxaRpEvents: decodedJWT is missing attribute "sub"',
+        message: 'fxa_rp_event: decodedJWT is missing attribute "sub"',
       },
       { status: 400 },
     );
@@ -170,7 +173,7 @@ export async function POST(request: NextRequest) {
     const e = new Error(
       `could not find subscriber with fxa user id: ${fxaUserId}`,
     );
-    logger.error("fxaRpEvents", e);
+    logger.error("fxa_rp_event", { exception: e.message });
     return NextResponse.json({ success: true, message: "OK" }, { status: 200 });
   }
 
@@ -189,6 +192,12 @@ export async function POST(request: NextRequest) {
           subscriber_id: subscriber.id,
           event,
           updatedProfileFromEvent,
+        });
+
+        record("account", "profile_change", {
+          string: {
+            monitorUserId: subscriber.id.toString(),
+          },
         });
 
         // get current profiledata
@@ -225,6 +234,12 @@ export async function POST(request: NextRequest) {
           subscriber: subscriber.id,
           event,
           updateFromEvent,
+        });
+
+        record("account", "password_change", {
+          string: {
+            monitorUserId: subscriber.id.toString(),
+          },
         });
 
         const refreshToken = subscriber.fxa_refresh_token ?? "";
@@ -293,6 +308,7 @@ export async function POST(request: NextRequest) {
             Event: ${event}\n
             updateFromEvent: ${JSON.stringify(updatedSubscriptionFromEvent)}`,
               );
+
               return NextResponse.json(
                 {
                   success: true,
@@ -331,6 +347,12 @@ export async function POST(request: NextRequest) {
 
             logger.info("activated_onerep_profile", {
               subscriber_id: subscriber.id,
+            });
+
+            record("subscription", "activate", {
+              string: {
+                monitorUserId: subscriber.id.toString(),
+              },
             });
           } else if (
             !updatedSubscriptionFromEvent.isActive &&
@@ -378,6 +400,12 @@ export async function POST(request: NextRequest) {
 
             logger.info("deactivated_onerep_profile", {
               subscriber_id: subscriber.id,
+            });
+
+            record("subscription", "cancel", {
+              string: {
+                monitorUserId: subscriber.id.toString(),
+              },
             });
           }
         } catch (e) {

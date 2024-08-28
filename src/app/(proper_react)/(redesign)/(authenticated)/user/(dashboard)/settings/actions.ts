@@ -15,7 +15,6 @@ import {
   deleteResolutionsWithEmail,
   getSubscriberByFxaUid,
 } from "../../../../../../../db/tables/subscribers";
-import { validateEmailAddress } from "../../../../../../../utils/emailAddress";
 import { initEmail } from "../../../../../../../utils/email";
 import { sendVerificationEmail } from "../../../../../../api/utils/email";
 import { getL10n } from "../../../../../../functions/l10n/serverComponents";
@@ -24,6 +23,11 @@ import { CONST_MAX_NUM_ADDRESSES } from "../../../../../../../constants";
 import { SanitizedEmailAddressRow } from "../../../../../../functions/server/sanitize";
 import { deleteAccount } from "../../../../../../functions/server/deleteAccount";
 import { cookies } from "next/headers";
+import {
+  applyCurrentCouponCode,
+  checkCurrentCouponCode,
+} from "../../../../../../functions/server/applyCoupon";
+import { validateEmailAddress } from "../../../../../../../utils/emailAddress";
 
 export type AddEmailFormState =
   | { success?: never }
@@ -185,4 +189,34 @@ export async function onDeleteAccount() {
   // possibile, so instead the sign-out and redirect needs to happen on the
   // client side after this action completes.
   // See https://github.com/nextauthjs/next-auth/discussions/5334.
+}
+
+export async function onApplyCouponCode() {
+  const session = await getServerSession();
+  if (!session?.user.subscriber?.id) {
+    logger.error(`Tried to apply a coupon code without an active session.`);
+    return {
+      success: false,
+      error: "apply-coupon-code-without-active-session",
+      errorMessage: `User tried to apply a coupon code without an active session.`,
+    };
+  }
+
+  const result = await applyCurrentCouponCode(session.user.subscriber);
+  return result;
+}
+
+export async function onCheckUserHasCurrentCouponSet() {
+  const session = await getServerSession();
+  if (!session?.user.subscriber?.id) {
+    logger.error(`User does not have an active session.`);
+    return {
+      success: false,
+      error: "apply-coupon-code-without-active-session",
+      errorMessage: `User does not have an active session.`,
+    };
+  }
+
+  const result = await checkCurrentCouponCode(session.user.subscriber);
+  return result;
 }

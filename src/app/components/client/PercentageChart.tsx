@@ -7,10 +7,10 @@
 import { useL10n } from "../../hooks/l10n";
 import styles from "./PercentageChart.module.scss";
 
-export type WelcomeToPremiumProps = {
+export type Props = {
   exposureReduction: number;
 };
-export const PercentageChart = (props: WelcomeToPremiumProps) => {
+export const PercentageChart = (props: Props) => {
   const l10n = useL10n();
 
   const percentages: Array<[string, number]> = [

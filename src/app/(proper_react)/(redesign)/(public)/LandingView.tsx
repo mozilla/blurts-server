@@ -4,7 +4,6 @@
 
 import styles from "./LandingView.module.scss";
 import { HeroImageAll, HeroImagePremium } from "./HeroImage";
-import { SignUpForm } from "./SignUpForm";
 import { ExtendedReactLocalization } from "../../../functions/l10n";
 import { PlansTable } from "./PlansTable";
 import { useId } from "react";
@@ -27,15 +26,16 @@ import { TelemetryLink } from "../../../components/client/TelemetryLink";
 import { HeresHowWeHelp } from "./HeresHowWeHelp";
 import { ScanLimit } from "./ScanLimit";
 import { FaqSection } from "./Faq";
-import { FeatureFlagName } from "../../../../db/tables/featureFlags";
 import { AccountDeletionNotification } from "./AccountDeletionNotification";
+import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
+import { FreeScanCta } from "./FreeScanCta";
 
 export type Props = {
   eligibleForPremium: boolean;
   l10n: ExtendedReactLocalization;
   countryCode: string;
   scanLimitReached: boolean;
-  enabledFlags: FeatureFlagName[];
+  experimentData: ExperimentData;
 };
 
 export const View = (props: Props) => {
@@ -43,6 +43,7 @@ export const View = (props: Props) => {
     <>
       <AccountDeletionNotification />
       <main className={styles.wrapper}>
+        {props.eligibleForPremium && <TopNavBar l10n={props.l10n} />}
         <header className={styles.hero}>
           <div className={styles.heroContent}>
             <h1>{props.l10n.getString("landing-all-hero-title")}</h1>
@@ -56,7 +57,7 @@ export const View = (props: Props) => {
             {props.eligibleForPremium && props.scanLimitReached ? (
               <ScanLimit />
             ) : (
-              <SignUpForm
+              <FreeScanCta
                 scanLimitReached={props.scanLimitReached}
                 isHero
                 eligibleForPremium={props.eligibleForPremium}
@@ -65,6 +66,7 @@ export const View = (props: Props) => {
                   cta: "clicked_get_scan_header",
                   field: "entered_email_address_header",
                 }}
+                experimentData={props.experimentData}
               />
             )}
           </div>
@@ -128,7 +130,7 @@ export const View = (props: Props) => {
                       },
                     )}
               </p>
-              <SignUpForm
+              <FreeScanCta
                 scanLimitReached={props.scanLimitReached}
                 eligibleForPremium={props.eligibleForPremium}
                 signUpCallbackUrl={`${process.env.SERVER_URL}/user/dashboard`}
@@ -136,6 +138,7 @@ export const View = (props: Props) => {
                   cta: "clicked_get_scan_second",
                   field: "entered_email_address_second",
                 }}
+                experimentData={props.experimentData}
               />
             </span>
             <div className={styles.illustration}>
@@ -174,7 +177,7 @@ export const View = (props: Props) => {
                       "landing-all-value-prop-info-at-risk-description",
                     )}
               </p>
-              <SignUpForm
+              <FreeScanCta
                 scanLimitReached={props.scanLimitReached}
                 eligibleForPremium={props.eligibleForPremium}
                 signUpCallbackUrl={`${process.env.SERVER_URL}/user/dashboard`}
@@ -182,6 +185,7 @@ export const View = (props: Props) => {
                   cta: "clicked_get_scan_third",
                   field: "entered_email_address_third",
                 }}
+                experimentData={props.experimentData}
               />
             </span>
             <div className={styles.illustration}>
@@ -194,7 +198,7 @@ export const View = (props: Props) => {
           <p className={styles.title}>
             {props.l10n.getString("landing-all-get-started")}
           </p>
-          <SignUpForm
+          <FreeScanCta
             eligibleForPremium={props.eligibleForPremium}
             signUpCallbackUrl={`${process.env.SERVER_URL}/user/dashboard`}
             eventId={{
@@ -202,6 +206,7 @@ export const View = (props: Props) => {
               field: "entered_email_address_fourth",
             }}
             scanLimitReached={props.scanLimitReached}
+            experimentData={props.experimentData}
           />
         </div>
 
@@ -237,7 +242,7 @@ export const View = (props: Props) => {
           <p className={styles.title}>
             {props.l10n.getString("landing-all-take-back-data")}
           </p>
-          <SignUpForm
+          <FreeScanCta
             eligibleForPremium={props.eligibleForPremium}
             signUpCallbackUrl={`${process.env.SERVER_URL}/user/dashboard`}
             eventId={{
@@ -245,10 +250,57 @@ export const View = (props: Props) => {
               field: "entered_email_address_last",
             }}
             scanLimitReached={props.scanLimitReached}
+            experimentData={props.experimentData}
           />
         </div>
       </main>
     </>
+  );
+};
+
+export const TopNavBar = ({ l10n }: { l10n: ExtendedReactLocalization }) => {
+  return (
+    <div className={styles.navbar}>
+      <div className={styles.navbarLinksContainer}>
+        <TelemetryLink
+          className={styles.navbarLinks}
+          href="/how-it-works"
+          eventData={{
+            link_id: "navbar_how_it_works",
+          }}
+        >
+          {l10n.getString("landing-all-hero-navbar-link-how-it-works")}
+        </TelemetryLink>
+        <TelemetryLink
+          className={styles.navbarLinks}
+          href="#pricing"
+          eventData={{
+            link_id: "navbar_pricing",
+          }}
+        >
+          {l10n.getString("landing-all-hero-navbar-link-pricing")}
+        </TelemetryLink>
+        <TelemetryLink
+          data-testid="navbar_faqs"
+          className={styles.navbarLinks}
+          href="#faq"
+          eventData={{
+            link_id: "navbar_faqs",
+          }}
+        >
+          {l10n.getString("landing-all-hero-navbar-link-faqs")}
+        </TelemetryLink>
+        <TelemetryLink
+          className={styles.navbarLinks}
+          href="/breaches"
+          eventData={{
+            link_id: "navbar_breaches",
+          }}
+        >
+          {l10n.getString("landing-all-hero-navbar-link-all-breaches")}
+        </TelemetryLink>
+      </div>
+    </div>
   );
 };
 
@@ -290,7 +342,7 @@ const Plans = (props: Props) => {
   }
 
   return (
-    <div className={styles.plans}>
+    <div id="pricing" className={styles.plans}>
       <h2 id={headingId} className={styles.planName}>
         {props.l10n.getString("landing-premium-plans-heading")}
       </h2>
@@ -305,13 +357,14 @@ const Plans = (props: Props) => {
             <br />
             {props.l10n.getString("landing-premium-waitlist-section-pt-2")}
           </b>
-          <SignUpForm
+          <FreeScanCta
             eligibleForPremium={props.eligibleForPremium}
             signUpCallbackUrl={`${process.env.SERVER_URL}/user/dashboard`}
             eventId={{
               cta: "intent_to_join_waitlist_third",
             }}
             scanLimitReached={props.scanLimitReached}
+            experimentData={props.experimentData}
           />
         </div>
       )}

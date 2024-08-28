@@ -2,6 +2,15 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
+## Top navbar
+
+landing-all-hero-navbar-link-how-it-works = How it works
+landing-all-hero-navbar-link-pricing = Pricing
+landing-all-hero-navbar-link-faqs = FAQs
+landing-all-hero-navbar-link-all-breaches = All breaches
+
+##
+
 landing-premium-hero-lead = We scan to see if your phone number, passwords or home address have been leaked, and help you make it private again.
 
 landing-premium-hero-emailform-input-label = Enter your email address to check for data breach exposures and sites selling your info.
@@ -124,7 +133,7 @@ landing-premium-continuous-data-removal-qn = How does continuous data removal wo
 # Variables:
 # $data_broker_sites_total_num is the total number of data broker sites available to scan. It will always be plural.
 landing-premium-continuous-data-removal-ans = { $data_broker_sites_total_num ->
-   *[other] Every month, we use the information you provided about yourself (name, location and birthdate) to search across { $data_broker_sites_total_num } data broker sites that sell people’s private information. If we find your data on any of these sites, we initiate the request for removal. Data removal can take anywhere from a day to a month. This feature is available for { -brand-monitor-plus } users only. <learn_more_link>Learn more here.</learn_more_link>
+   *[other] Every month, we use the information you provided about yourself (name, location and birthdate) to search across { $data_broker_sites_total_num } data broker sites that sell people’s private information. If we find your data on any of these sites, we initiate the request for removal. This feature is available for { -brand-monitor-plus } users only. <learn_more_link>Learn more here.</learn_more_link>
 }
 
 # Scan Limit

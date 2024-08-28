@@ -1,0 +1,31 @@
+@import "../../../../../tokens";
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-2xl;
+  background-color: $color-grey-05;
+  height: 100%;
+  padding: $layout-lg $layout-2xl;
+
+  @media screen and (max-width: $screen-lg) {
+    padding: $spacing-lg;
+  }
+}
+
+.header {
+  font: $text-title-xs;
+  font-weight: normal;
+
+  b {
+    font-weight: bold;
+  }
+}
+
+.table {
+  border: solid thin;
+}
+
+.col {
+  border: solid thin;
+}

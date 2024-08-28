@@ -20,10 +20,17 @@ const meta: Meta<typeof ExposureCard> = {
 export default meta;
 type Story = StoryObj<typeof ExposureCard>;
 
-const ScanMockItemRemoved = createRandomScanResult({ status: "removed" });
+const ScanMockItemRemoved = createRandomScanResult({
+  status: "removed",
+  manually_resolved: false,
+});
 const ScanMockItemManualRemoved = createRandomScanResult({
   status: "new",
   manually_resolved: true,
+});
+const ScanMockItemRequestedRemoval = createRandomScanResult({
+  status: "waiting_for_verification",
+  manually_resolved: false,
 });
 const ScanMockItemNew = createRandomScanResult({
   status: "new",
@@ -31,9 +38,18 @@ const ScanMockItemNew = createRandomScanResult({
 });
 const ScanMockItemInProgress = createRandomScanResult({
   status: "optout_in_progress",
+  manually_resolved: false,
 });
 const BreachMockItemRemoved = createRandomBreach({ isResolved: true });
 const BreachMockItemNew = createRandomBreach({ isResolved: false });
+
+export const DataBrokerRequestedRemoval: Story = {
+  args: {
+    exposureImg: FamilyTreeImage,
+    exposureData: ScanMockItemRequestedRemoval,
+    enabledFeatureFlags: ["AdditionalRemovalStatuses"],
+  },
+};
 
 export const DataBrokerActionNeeded: Story = {
   args: {

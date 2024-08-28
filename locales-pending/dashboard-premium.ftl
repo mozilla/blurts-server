@@ -33,10 +33,7 @@ modal-heres-what-we-fixed-description-part-one = <b>Manually fixed</b> includes 
   to be fixed manually, even if you’ve subscribed to { -brand-monitor-plus }.
 modal-heres-what-we-fixed-description-part-two = <b>Auto-removed</b> includes any exposures from data broker profiles that we’ve removed for you. This is available only for
   { -brand-monitor-plus } subscribers.
-modal-heres-what-we-fixed-description-part-three = <b>In Progress</b> includes anything that we are currently
-  working on fixing. Removals typically take 7–14 days but the most
-  difficult sites could take longer. You may also start to see removals
-  happening within the same day.
+modal-heres-what-we-fixed-description-part-three = <b>In Progress</b> includes anything that we are currently working on fixing.
 
 dashboard-exposures-filter-exposure-type = Exposure type
 dashboard-exposures-filter-exposure-type-info-for-sale = Your info for sale
@@ -55,8 +52,7 @@ modal-exposure-type-data-breach = <b>Data breach</b> means your information has 
   Resolving these typically requires accessing your accounts, so you’ll need to take manual steps to resolve each breach even if you’ve subscribed to { -brand-monitor-plus }.
 modal-exposure-type-data-broker-part-one = <b>Info for sale</b> means a data broker site is publicly publishing and selling your personal info.
   You’ll need to manually request removal from each site.
-modal-exposure-type-data-broker-part-two = For { -brand-monitor-plus } subscribers, we auto-remove these profiles on your behalf and make sure they don’t re-add you.
-  In both cases, removals typically take 7–14 days. Some can take longer, while others can happen within the hour.
+modal-exposure-type-data-broker-part-two = But if you’re a { -brand-monitor-plus } subscriber, we auto-remove the profiles for you.
 
 # About Exposure Statuses Modal
 
@@ -66,7 +62,9 @@ modal-exposure-status-description-premium = {
   $data_broker_sites_total_num ->
     *[other] We search for exposures in all known data breaches and { $data_broker_sites_total_num } data broker sites that sell your personal info. Your exposures will have one of the following statuses:
 }
-modal-exposure-status-in-progress = <b>In progress</b> means we are actively working on fixing the exposure for you. This is a { -brand-monitor-plus } feature.
+modal-exposure-indicator-requested-removal = We’ve sent an official removal request to the data broker. We’ll keep you updated if we need to re-send the request.
+modal-exposure-indicator-in-progress = We’re actively working to confirm data broker removal compliance.
+modal-exposure-indicator-removed = We’ve successfully removed your data from the data broker site!
 
 # Variables:
 # $exposures_unresolved_num is the unresolved number of exposures the user has.
@@ -174,7 +172,7 @@ dashboard-top-banner-your-data-is-protected-cta = See what’s fixed
 dashboard-top-banner-your-data-is-protected-all-fixed-description =
   { $starting_exposure_total_num ->
     [one] Great work, { $starting_exposure_total_num } exposure of your data is fixed! Subscribe to { -brand-monitor-plus } and we’ll scan for new exposures every month. Plus, we’ll automatically remove your info from any sites that are selling it.
-    *[other] Great work, all { $starting_exposure_total_num } exposures of your data are fixed! Subscribe to { -brand-monitor-plus } and we’ll and we’ll scan for new exposures every month. Plus, we’ll automatically remove your info from any sites that are selling it.
+    *[other] Great work, all { $starting_exposure_total_num } exposures of your data are fixed! Subscribe to { -brand-monitor-plus } and we’ll scan for new exposures every month. Plus, we’ll automatically remove your info from any sites that are selling it.
   }
 
 # Variables:
@@ -186,8 +184,9 @@ dashboard-top-banner-your-data-scan-in-progress-all-fixed-description =
   }
 
 exposure-card-description-info-for-sale-action-needed-manual-fix-page = This site is selling <data_broker_profile>these details about you</data_broker_profile>. Contact the site for removal, or <upsell_link>subscribe to { -brand-monitor-plus }</upsell_link> and we’ll do it for you.
+exposure-card-description-info-for-sale-requested-removal-dashboard = We’ve started the process of removing <data_broker_profile>this profile</data_broker_profile>. Removal times vary, and this can take multiple attempts.
 exposure-card-description-info-for-sale-action-needed-dashboard = This site is publicly publishing and selling <data_broker_profile>these details about you</data_broker_profile>. Remove this profile to protect your privacy.
-exposure-card-description-info-for-sale-in-progress = We’ve started our auto-removal process of <data_broker_profile>this profile</data_broker_profile> to protect your information. <removal_info>Removals typically take 7-14 days</removal_info>.
+exposure-card-description-info-for-sale-in-progress-dashboard = As a { -brand-monitor-plus } member, we’ve removed <data_broker_profile>this profile</data_broker_profile> and are confirming the data broker’s removal compliance.
 exposure-card-description-info-for-sale-fixed = As a { -brand-monitor-plus } member, we’ve <data_broker_profile>removed this profile</data_broker_profile> for you and will continually monitor to make sure they don’t add you back.
 exposure-card-description-info-for-sale-fixed-manually-fixed =  You marked this profile as fixed. Be sure you’ve followed all instructions on <data_broker_profile>the site</data_broker_profile> to ensure they remove your personal info.
 
@@ -201,3 +200,10 @@ survey-csat-answer-satisfied = Satisfied
 survey-csat-answer-very-satisfied = Very satisfied
 survey-csat-follow-up-link-label = Your feedback is helpful to us! How can we improve { -product-short-name } for you?
 survey-csat-survey-dismiss-label = Dismiss
+
+## Petition banner US data privacy law
+
+petition-banner-data-privacy-title = Join the Movement for a U.S. Data Privacy Law
+petition-banner-data-privacy-text = Advocate for stronger data protection laws with the { -brand-mozilla-foundation } — <b>your voice can shape a safer digital future!</b>
+petition-banner-data-privacy-button-sign = Sign petition
+petition-banner-data-privacy-button-dismiss = No, thank you

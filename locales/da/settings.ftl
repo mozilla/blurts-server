@@ -47,19 +47,13 @@ settings-email-number-of-breaches-info =
        *[other] Optræder i { $breachCount } kendte datalæk
     }
 
-## Deactivate account
-
-settings-deactivate-account-title = Deaktiver konto
-settings-deactivate-account-info-2 = Du kan deaktivere { -product-short-name } ved at slette din { -brand-mozilla-account }.
-settings-fxa-link-label-3 = Gå til indstillingerne for { -brand-mozilla-account }
-
 ## Delete Monitor account
 
 settings-delete-monitor-free-account-title = Slet { -brand-monitor }-konto
 settings-delete-monitor-free-account-description = Dette vil permanent slette din { -brand-monitor }-konto og slå alle advarsler fra.
 settings-delete-monitor-free-account-cta-label = Slet konto
 settings-delete-monitor-free-account-dialog-title = Din { -brand-monitor }-konto vil blive slettet permanent
-settings-delete-monitor-free-account-dialog-lead = Alle dine kontooplysninger for { -brand-monitor } vil blive slettet, og vi holder ikke længere øje med nye datalæk. Denne handling sletter ikke din { -brand-mozilla }-konto.
+settings-delete-monitor-free-account-dialog-lead-v2 = Alle dine kontooplysninger for { -brand-monitor } vil blive slettet, og vi holder ikke længere øje med nye datalæk. Denne handling sletter ikke din { -brand-mozilla-account }.
 settings-delete-monitor-free-account-dialog-cta-label = Slet konto
 settings-delete-monitor-free-account-dialog-cancel-button-label = Jag har skiftet mening - gå tilbage
 settings-delete-monitor-account-confirmation-toast-label-2 = Din { -brand-monitor }-konto er nu slettet.

@@ -1,0 +1,103 @@
+@import "../../../../../../tokens";
+
+.flagWrapper {
+  flex: 1 0 $content-xs;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+  background-color: $color-white;
+  padding: $spacing-lg;
+  border-radius: $border-radius-md;
+  max-width: $content-sm;
+}
+
+.flagName {
+  font: $text-title-3xs;
+}
+
+.enabledControl {
+  display: flex;
+  gap: $spacing-xs;
+  font: $text-body-lg;
+}
+
+.allowListWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+
+  h4 {
+    font: $text-body-md;
+    font-weight: bold;
+  }
+}
+
+.allowList {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+  padding: 0;
+  list-style-type: none;
+}
+
+.addressListing {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  font: $text-body-md;
+  font-family: monospace;
+
+  :first-child {
+    flex-grow: 1;
+  }
+
+  button {
+    background-color: transparent;
+    border: none;
+    border-radius: $border-radius-xl;
+    aspect-ratio: 1;
+
+    &:hover {
+      cursor: pointer;
+      background-color: $color-red-70;
+      color: $color-white;
+    }
+  }
+
+  &:has(button:hover) {
+    color: $color-red-70;
+  }
+}
+
+.addressAdder {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+
+  input[type="email"] {
+    flex-grow: 1;
+  }
+
+  // This rule is more specific than the button:hover in `.addressListing`,
+  // but that class doesn't apply to the same elements:
+  /* stylelint-disable no-descending-specificity */
+  button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-color: transparent;
+    color: $color-blue-50;
+    border: none;
+    border-radius: $border-radius-sm;
+    padding: $spacing-sm;
+
+    &:hover {
+      cursor: pointer;
+      background-color: $color-blue-50;
+      color: $color-white;
+    }
+  }
+  /* stylelint-enable no-descending-specificity */
+}

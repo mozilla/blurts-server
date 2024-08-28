@@ -4,8 +4,7 @@
 
 import Image from "next/image";
 import styles from "./BreachLogo.module.scss";
-import { HibpLikeDbBreach, WithFaviconUrl } from "../../../utils/hibp";
-import { Breach } from "../../functions/universal/breach";
+import { HibpLikeDbBreach } from "../../../utils/hibp";
 
 /**
  * @param props
@@ -15,7 +14,7 @@ import { Breach } from "../../functions/universal/breach";
  */
 
 export type Props = {
-  breach: HibpLikeDbBreach | Breach;
+  breach: HibpLikeDbBreach;
 };
 
 // The <BreachLogo> component is currently a bit troublesome to test because it
@@ -23,7 +22,7 @@ export type Props = {
 // can add a unit test when we convert it to take SubscriberBreaches.
 /* c8 ignore start */
 export function BreachLogo(props: Props) {
-  if (hasFavIconUrl(props.breach)) {
+  if (props.breach.FaviconUrl) {
     return (
       <Image
         src={props.breach.FaviconUrl}
@@ -89,13 +88,4 @@ function getColorForName(name: string) {
     .reduce((sum, codePoint) => sum! + codePoint!) as number;
 
   return logoColors[charValue % logoColors.length];
-}
-
-// We don't explicitly test for favicon URLs, because we have mocked out lazy-
-// loaded images, which makes them hard to test:
-/* c8 ignore next 5 */
-function hasFavIconUrl(
-  breach: HibpLikeDbBreach | Breach,
-): breach is Required<WithFaviconUrl> & HibpLikeDbBreach {
-  return typeof (breach as HibpLikeDbBreach).FaviconUrl === "string";
 }

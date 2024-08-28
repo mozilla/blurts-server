@@ -14,7 +14,6 @@ import {
 } from "../../../../../functions/server/onerep";
 import type { CreateProfileRequest } from "../../../../../functions/server/onerep";
 import { meetsAgeRequirement } from "../../../../../functions/universal/user";
-import AppConstants from "../../../../../../appConstants";
 import { getSubscriberByFxaUid } from "../../../../../../db/tables/subscribers";
 import {
   setOnerepProfileId,
@@ -47,6 +46,8 @@ export async function POST(
   req: NextRequest,
 ): Promise<NextResponse<WelcomeScanBody> | NextResponse<unknown>> {
   const session = await getServerSession();
+  const searchParams = req.nextUrl.searchParams;
+
   if (!session?.user?.subscriber) {
     throw new Error("No fxa_uid found in session");
   }
@@ -91,6 +92,7 @@ export async function POST(
     experimentationId: experimentationId,
     countryCode: getCountryCode(headers()),
     locale: getLocale(getL10n()),
+    previewMode: searchParams.get("nimbus_web_preview") === "true",
   });
   const optionalInfoIsEnabled =
     experimentData["welcome-scan-optional-info"].enabled;
@@ -141,7 +143,6 @@ export async function POST(
       return NextResponse.json({ success: false }, { status: 500 });
     }
   } else {
-    // Not Signed in, redirect to home
-    return NextResponse.redirect(AppConstants.SERVER_URL, 302);
+    return NextResponse.json({ success: false }, { status: 401 });
   }
 }

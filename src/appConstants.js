@@ -2,25 +2,26 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-// TODO: these vars were copy/pasted from the old app-constants.js and should be cleaned up
-import * as dotenv from 'dotenv'
-dotenv.config()
+if (typeof process.env.NEXT_RUNTIME === "undefined" && typeof process.env.STORYBOOK === "undefined") {
+  // Next.js already loads env vars by itself, and dotenv-flow will throw an
+  // error if loaded in that context (about `fs` not existing), so only load
+  // it if we're not running in a Next.js-context (e.g. cron jobs):
+  await import("dotenv-flow/config");
+}
 
+// TODO: these vars were copy/pasted from the old app-constants.js and should be cleaned up
 const requiredEnvVars = [
   'ADMINS',
   'APP_ENV',
   'DATABASE_URL',
   'DELETE_UNVERIFIED_SUBSCRIBERS_TIMER',
   'EMAIL_FROM',
-  'FXA_ENABLED',
   'HIBP_API_ROOT',
   'HIBP_KANON_API_ROOT',
   'HIBP_KANON_API_TOKEN',
   'HIBP_NOTIFY_TOKEN',
   'HIBP_THROTTLE_DELAY',
   'HIBP_THROTTLE_MAX_TRIES',
-  'MOZLOG_FMT',
-  'MOZLOG_LEVEL',
   'FXA_SETTINGS_URL',
   'NODE_ENV',
   'OAUTH_ACCOUNT_URI',
@@ -36,7 +37,6 @@ const requiredEnvVars = [
 ]
 
 const optionalEnvVars = [
-  'EMAIL_TEST_RECIPIENT',
   'FX_REMOTE_SETTINGS_WRITER_PASS',
   'FX_REMOTE_SETTINGS_WRITER_SERVER',
   'FX_REMOTE_SETTINGS_WRITER_USER',

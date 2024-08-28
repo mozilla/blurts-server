@@ -10,8 +10,7 @@ import {
   MethodNotAllowedError,
   ConflictError,
   TooManyRequestsError,
-  InternalServerError
-} from './error.js'
+} from './error'
 
 test('BadRequestError', () => {
   const errorMessage = 'BadRequestError message'
@@ -53,11 +52,4 @@ test('TooManyRequestsError', () => {
   const error = new TooManyRequestsError(errorMessage)
   expect(error.message).toBe(errorMessage);
   expect(error.name).toBe("Too Many Requests");
-})
-
-test('InternalServerError', () => {
-  const errorMessage = 'InternalServerError message'
-  const error = new InternalServerError(errorMessage)
-  expect(error.message).toBe(errorMessage);
-  expect(error.name).toBe("Internal Server Error");
 })

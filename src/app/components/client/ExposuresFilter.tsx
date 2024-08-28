@@ -39,6 +39,7 @@ import {
 } from "./ExposuresFilterExplainer";
 import { Popover } from "./Popover";
 import { VisuallyHidden } from "../server/VisuallyHidden";
+import { FeatureFlagName } from "../../../db/tables/featureFlags";
 
 export type FilterState = {
   exposureType: "show-all-exposure-type" | "data-broker" | "data-breach";
@@ -46,17 +47,21 @@ export type FilterState = {
 };
 
 type ExposuresFilterProps = {
+  enabledFeatureFlags: FeatureFlagName[];
   initialFilterValues: FilterState;
   filterValues: FilterState;
   setFilterValues: React.Dispatch<React.SetStateAction<FilterState>>;
   isEligibleForPremium: boolean;
+  isPlusSubscriber: boolean;
 };
 
 export const ExposuresFilter = ({
+  enabledFeatureFlags,
   initialFilterValues,
   filterValues,
   setFilterValues,
   isEligibleForPremium,
+  isPlusSubscriber,
 }: ExposuresFilterProps) => {
   const l10n = useL10n();
   const recordTelemetry = useTelemetry();
@@ -283,7 +288,7 @@ export const ExposuresFilter = ({
               aria-describedby="filterStatusInfo"
             >
               <VisuallyHidden id="filterStatusInfo">
-                {l10n.getString("modal-exposure-status-title")}
+                {l10n.getString("modal-exposure-indicator-title")}
               </VisuallyHidden>
               <QuestionMarkCircle width="15" height="15" alt="" />
             </button>
@@ -295,13 +300,15 @@ export const ExposuresFilter = ({
         <ExposuresFilterTypeExplainer
           explainerDialogProps={exposureTypeExplainerDialogTrigger}
           explainerDialogState={exposureTypeExplainerDialogState}
+          enabledFeatureFlags={enabledFeatureFlags}
         />
       )}
       {exposureStatusExplainerDialogState.isOpen && (
         <ExposuresFilterStatusExplainer
           explainerDialogProps={exposureStatusExplainerDialogTrigger}
           explainerDialogState={exposureStatusExplainerDialogState}
-          isEligibleForPremium={isEligibleForPremium}
+          isPlusSubscriber={isPlusSubscriber}
+          enabledFeatureFlags={enabledFeatureFlags}
         />
       )}
       {filterDialogState.isOpen && (

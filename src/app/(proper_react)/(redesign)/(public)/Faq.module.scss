@@ -42,7 +42,7 @@
       align-items: center;
       font: $text-body-lg;
       cursor: pointer;
-      text-align: center;
+      text-align: start;
 
       svg {
         color: $color-blue-60;
@@ -50,7 +50,7 @@
         height: 12px;
         transform: rotate(135deg);
         transition: transform 0.3s ease-in-out;
-
+        flex-shrink: 0;
         &.expanded {
           transform: rotate(180deg);
         }

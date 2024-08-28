@@ -18,6 +18,11 @@ export function checkSession(session: Session | null) {
   } else if (!session.user.subscriber.id) {
     logger.warn("no_subscriber_id_in_session", { session });
     return false;
+  } else if (session.error === "RefreshAccessTokenError") {
+    logger.error("refresh_access_token_failed", {
+      exception: "Refreshing access token failed... require login again",
+    });
+    return false;
   } else {
     return true;
   }

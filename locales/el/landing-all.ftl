@@ -3,14 +3,12 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 public-nav-name = { -brand-mozilla-monitor }
-
-landing-all-hero-title = Μάθετε πού εκτίθενται οι προσωπικές σας πληροφορίες και ανακτήστε τις
+landing-all-hero-title = Μάθετε πού εκτίθενται τα προσωπικά σας δεδομένα και ανακτήστε τα
 landing-all-hero-lead = Σαρώνουμε τις παραβιάσεις δεδομένων για να δούμε εάν έχουν διαρρεύσει τα δεδομένα σας και σας παρέχουμε μέτρα για τη διόρθωσή τους.
-
 landing-all-hero-emailform-input-placeholder = toonomasas@example.com
 landing-all-hero-emailform-input-label = Εισαγάγετε τη διεύθυνση email σας για να ελέγξετε εάν έχει εκτεθεί σε παραβιάσεις δεδομένων.
 landing-all-hero-emailform-submit-label = Δωρεάν σάρωση
-
+landing-all-hero-emailform-submit-sign-up-label = Εγγραφείτε για δωρεάν σάρωση
 # This is a label underneath a big number "14" - it's an image that demos Monitor.
 landing-all-hero-image-chart-label = εκθέσεις
 
@@ -62,7 +60,5 @@ landing-all-help-protect-you-feature-one = Θα κάνουμε αναζήτησ�
 landing-all-help-protect-you-feature-two = Θα σας καθοδηγήσουμε στα βήματα για την επίλυση κάθε παραβίασης
 landing-all-help-protect-you-feature-three = Θα παρακολουθούμε συνεχώς και θα σας ειδοποιούμε για τυχόν νέες παραβιάσεις
 landing-all-help-protect-you-cta = Εγγραφή για ειδοποιήσεις παραβιάσεων
-
 landing-all-get-started = Σαρώστε το email σας για να ξεκινήσετε
 landing-all-take-back-data = Ανακτήστε τον έλεγχο των δεδομένων σας
-

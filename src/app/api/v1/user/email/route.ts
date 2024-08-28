@@ -7,14 +7,14 @@ import { NextRequest, NextResponse } from "next/server";
 import AppConstants from "../../../../../appConstants";
 
 import { getSubscriberByFxaUid } from "../../../../../db/tables/subscribers";
-import { addSubscriberUnverifiedEmailHash } from "../../../../../db/tables/emailAddresses.js";
+import { addSubscriberUnverifiedEmailHash } from "../../../../../db/tables/emailAddresses";
 
 import { sendVerificationEmail } from "../../../utils/email";
 
-import { validateEmailAddress } from "../../../../../utils/emailAddress";
 import { getL10n } from "../../../../functions/l10n/serverComponents";
 import { initEmail } from "../../../../../utils/email";
 import { CONST_MAX_NUM_ADDRESSES } from "../../../../../constants";
+import { validateEmailAddress } from "../../../../../utils/emailAddress";
 
 interface EmailAddRequest {
   email: string;

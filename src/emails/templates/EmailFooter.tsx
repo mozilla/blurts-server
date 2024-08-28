@@ -11,7 +11,11 @@ import {
   CONST_URL_TERMS,
 } from "../../constants";
 
-export type Props = { l10n: ExtendedReactLocalization; utm_campaign: string };
+export type Props = {
+  l10n: ExtendedReactLocalization;
+  utm_campaign: string;
+  isOneTimeEmail?: boolean;
+};
 
 export const EmailFooter = (props: Props) => {
   const l10n = props.l10n;
@@ -52,16 +56,25 @@ export const EmailFooter = (props: Props) => {
       <mj-section border-top="1px solid #dcdcdc" padding="10px 20px">
         <mj-column>
           <mj-text font-size="14px" font-weight="400" align="center">
-            {l10n.getFragment("email-footer-reason-subscriber", {
-              elems: {
-                "support-link": (
-                  <a
-                    href={CONST_URL_SUMO_MONITOR_SUPPORT}
-                    style={{ color: "#0060DF" }}
-                  />
-                ),
+            {l10n.getFragment(
+              // These lines get covered by the FirstDataBrokerRemovalFixed test,
+              // but for some reason get marked as uncovered again once the
+              // `src/scripts/cronjobs/emailBreachAlerts.test.ts` tests are run:
+              /* c8 ignore next 2 */
+              props.isOneTimeEmail
+                ? "email-footer-reason-subscriber-one-time"
+                : "email-footer-reason-subscriber",
+              {
+                elems: {
+                  "support-link": (
+                    <a
+                      href={CONST_URL_SUMO_MONITOR_SUPPORT}
+                      style={{ color: "#0060DF" }}
+                    />
+                  ),
+                },
               },
-            })}
+            )}
           </mj-text>
           <mj-text
             color="#3D3D3D"

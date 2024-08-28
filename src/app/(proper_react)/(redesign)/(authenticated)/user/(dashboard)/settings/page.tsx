@@ -23,14 +23,27 @@ import { getExperiments } from "../../../../../../functions/server/getExperiment
 import { getLocale } from "../../../../../../functions/universal/getLocale";
 import { getCountryCode } from "../../../../../../functions/server/getCountryCode";
 import { getSubscriberById } from "../../../../../../../db/tables/subscribers";
+import { checkSession } from "../../../../../../functions/server/checkSession";
+import { checkUserHasMonthlySubscription } from "../../../../../../functions/server/user";
 
-export default async function SettingsPage() {
+type Props = {
+  searchParams: {
+    nimbus_web_preview?: string;
+  };
+};
+
+export default async function SettingsPage({ searchParams }: Props) {
   const session = await getServerSession();
-  if (!session?.user?.subscriber?.id) {
-    return redirect("/");
+  console.debug(searchParams);
+
+  if (!session?.user?.subscriber?.id || !checkSession(session)) {
+    return redirect("/auth/logout");
   }
 
   const emailAddresses = await getUserEmails(session.user.subscriber.id);
+  const isMonthlySubscriber = await checkUserHasMonthlySubscription(
+    session.user,
+  );
 
   const monthlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "monthly" });
   const yearlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "yearly" });
@@ -55,17 +68,19 @@ export default async function SettingsPage() {
   }
 
   const enabledFeatureFlags = await getEnabledFeatureFlags({
-    ignoreAllowlist: false,
+    isSignedOut: false,
     email: session.user.email,
   });
 
   const headersList = headers();
   const countryCode = getCountryCode(headersList);
   const experimentationId = getExperimentationId(session.user);
+
   const experimentData = await getExperiments({
     experimentationId: experimentationId,
     countryCode: countryCode,
     locale: getLocale(getL10n()),
+    previewMode: searchParams.nimbus_web_preview === "true",
   });
 
   const lastOneRepScan = await getLatestOnerepScan(
@@ -89,6 +104,7 @@ export default async function SettingsPage() {
       enabledFeatureFlags={enabledFeatureFlags}
       experimentData={experimentData}
       lastScanDate={lastOneRepScan?.created_at}
+      isMonthlySubscriber={isMonthlySubscriber}
     />
   );
 }

@@ -10,29 +10,37 @@
 ## unless otherwise indicated.
 
 -product-name = Mozilla Monitor
--product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name = Monitor
 -brand-name = Firefox
--brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
 -brand-fxa = Firefox-konto
 -brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
--brand-send = Firefox Send
--brand-fpn = Firefox Private Network
+-brand-firefox = Firefox
+-brand-monitor = Monitor
+-brand-fx-monitor = Mozilla Monitor
+-brand-mozilla = Mozilla
+-brand-premium = Premium
+-brand-monitor-premium = Monitor Premium
+-brand-mozilla-foundation = Mozilla Foundation
+-brand-github = GitHub
+-brand-mozilla-vpn = Mozilla VPN
+-brand-relay = Firefox Relay
+-brand-mozilla-monitor = Mozilla Monitor
+-brand-monitor-plus = Monitor Plus
 
 ##
 
-error-could-not-add-email = Klarte ikkje å leggje til e-postadressa i databasen.
 error-not-subscribed = Denne e-postadressa abonnerer ikkje på { -product-name }.
 error-hibp-throttled = For mange tilkoplingar til { -brand-HIBP }.
 error-hibp-connect = Klarte ikkje å kople til { -brand-HIBP }.
 user-add-invalid-email = Ugyldig e-postadresse
 user-add-too-many-emails = Du overvakar maksimalt antal e-postadresser.
 user-add-duplicate-email = Denne e-postadressa er allereie lagt til i { -product-name }.
+user-add-verification-email-just-sent = Ein ny stadfestings e-post kan ikkje sendast etter så kort tid. Prøv igjen seinare.
+user-add-unknown-error = Noko gjekk gale når ytterlegare ei e-postadresse skulle leggjast til. Prøv igjen seinare.
+user-delete-unknown-error = Noko gjekk gale når ei e-postadresse skulle fjernast. Prøv igjen seinare.
 user-verify-token-error = Stadfestings-token er påkravd.
-user-unsubscribe-token-error = Avmelding krev eit token.
-user-unsubscribe-token-email-error = Avmelding krev eit token og eit emailHash.
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Kompromiterte data:
 # Breach data provided by Have I Been Pwned.
@@ -43,8 +51,6 @@ show-all = Vis alle
 sign-out = Logg ut
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Handter { -brand-fxa }
-# Link title
-frequently-asked-questions = Vanlege spørsmål
 # Link title
 preferences = Innstillingar
 # Link title
@@ -143,24 +149,6 @@ rec-section-subhead-no-pw = Sjølv om passord ikkje vart lekne i denne datalekka
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Ny
 
-# Monitor V2
-
-
-## The following messages are brands and should be kept entirely in English
-
--brand-firefox = Firefox
--brand-monitor = Monitor
--brand-fx-monitor = Mozilla Monitor
--brand-mozilla = Mozilla
--brand-premium = Premium
--brand-monitor-premium = Monitor Premium
--brand-mozilla-foundation = Mozilla Foundation
--brand-github = GitHub
--brand-mozilla-vpn = Mozilla VPN
--brand-relay = Firefox Relay
--brand-mozilla-monitor = Mozilla Monitor
--brand-monitor-plus = Monitor Plus
-
 ##
 
 # “account” can be localized, “Mozilla” must be treated as a brand,
@@ -170,6 +158,7 @@ open-in-new-tab-alt = Opne lenke i ei ny fane
 
 ## Search Engine Optimization
 
+meta-desc-2 = FInn ut om du har vore del av ein datalekkasje med { -brand-fx-monitor }. Vi rettleiar deg i kva du skal gjere, og overvakar heile tider nettstadar for eventuelle nye datalekkasjar.
 
 ## Header
 
@@ -210,7 +199,9 @@ mozilla = { -brand-mozilla }
 terms-of-service = Tenestevilkår
 privacy-notice = Personvernerklæring
 github = { -brand-github }
+# Deprecated
 footer-nav-all-breaches = Alle datalekkasjar
+footer-nav-recent-breaches = Nylege datalekkasjar
 footer-external-link-faq-label = Vanlege spørsmål (FAQ)
 footer-external-link-faq-tooltip = Vanlege spørsmål
 
@@ -228,16 +219,20 @@ error-page-error-other-title = { $errorCode } Noko gjekk gale
 ## Breach overview page
 
 all-breaches-headline-2 = Alle datalekkasjar oppdaga av { -brand-fx-monitor }
+all-breaches-lead = Vi overvakar heile tida kjende datalekkasjar for å finne ut om din personelege informasjon er komprommitert. Her er ei fullstendig liste over alle datalekkasjar som er rapporterte sidan 2007.
 search-breaches = Søk etter datalekkasjar
 # the kind of user data exposed to hackers in data breach.
 exposed-data = Eksponerte data:
 
 ## Public breach detail page
 
+find-out-if-2 = Finn ut om du har vore involvert i denne datalekkasjen
+find-out-if-description = Vi hjelper deg raskt med å finne ut om e-postadressa di er eksponert i denne datalekkasjen, og viser deg kva du skal gjere vidare.
 breach-detail-cta-signup = Sjå etter datalekkasjar
 
 ## Firefox Monitor -> Mozilla Monitor rebrand banner
 
+banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: Nytt namn, ny utsjånad og til og med fleire måtar å <b>ta tilbake personvernet ditt</b>.
 banner-monitor-rebrand-dismiss-button-label = OK
 banner-monitor-rebrand-dismiss-button-tooltip = Ignorer
 loading-accessibility = Lastar

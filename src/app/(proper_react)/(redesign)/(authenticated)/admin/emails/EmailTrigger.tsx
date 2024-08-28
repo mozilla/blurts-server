@@ -7,7 +7,13 @@
 import { useState } from "react";
 import Link from "next/link";
 import styles from "./EmailTrigger.module.scss";
-import { triggerMonthlyActivity, triggerVerificationEmail } from "./actions";
+import {
+  triggerBreachAlert,
+  triggerFirstDataBrokerRemovalFixed,
+  triggerMonthlyActivity,
+  triggerSignupReportEmail,
+  triggerVerificationEmail,
+} from "./actions";
 import { Button } from "../../../../../components/client/Button";
 
 export type Props = {
@@ -18,11 +24,15 @@ export const EmailTrigger = (props: Props) => {
   const [selectedEmailAddress, setSelectedEmailAddress] = useState(
     props.emailAddresses[0],
   );
-  const [isSendingVerification, setIssSendingVerification] = useState(false);
+  const [isSendingSignupReport, setIsSendingSignupReport] = useState(false);
+  const [isSendingVerification, setIsSendingVerification] = useState(false);
+  const [isSendingBreachAlert, setIsSendingBreachAlert] = useState(false);
   const [
     isSendingMonthlyActivityOverview,
-    setIssSendingMonthlyActivityOverview,
+    setIsSendingMonthlyActivityOverview,
   ] = useState(false);
+  const [firstDataBrokerRemovalFixed, setFirstDataBrokerRemovalFixed] =
+    useState(false);
 
   return (
     <main className={styles.wrapper}>
@@ -52,11 +62,23 @@ export const EmailTrigger = (props: Props) => {
       <div className={styles.triggers}>
         <Button
           variant="primary"
+          isLoading={isSendingSignupReport}
+          onPress={() => {
+            setIsSendingSignupReport(true);
+            void triggerSignupReportEmail(selectedEmailAddress).then(() => {
+              setIsSendingSignupReport(false);
+            });
+          }}
+        >
+          Signup report
+        </Button>
+        <Button
+          variant="primary"
           isLoading={isSendingVerification}
           onPress={() => {
-            setIssSendingVerification(true);
+            setIsSendingVerification(true);
             void triggerVerificationEmail(selectedEmailAddress).then(() => {
-              setIssSendingVerification(false);
+              setIsSendingVerification(false);
             });
           }}
         >
@@ -66,13 +88,39 @@ export const EmailTrigger = (props: Props) => {
           variant="primary"
           isLoading={isSendingMonthlyActivityOverview}
           onPress={() => {
-            setIssSendingMonthlyActivityOverview(true);
+            setIsSendingMonthlyActivityOverview(true);
             void triggerMonthlyActivity(selectedEmailAddress).then(() => {
-              setIssSendingMonthlyActivityOverview(false);
+              setIsSendingMonthlyActivityOverview(false);
             });
           }}
         >
           Monthly activity overview
+        </Button>
+        <Button
+          variant="primary"
+          isLoading={isSendingBreachAlert}
+          onPress={() => {
+            setIsSendingBreachAlert(true);
+            void triggerBreachAlert(selectedEmailAddress).then(() => {
+              setIsSendingBreachAlert(false);
+            });
+          }}
+        >
+          Breach alert
+        </Button>
+        <Button
+          variant="primary"
+          isLoading={firstDataBrokerRemovalFixed}
+          onPress={() => {
+            setFirstDataBrokerRemovalFixed(true);
+            void triggerFirstDataBrokerRemovalFixed(selectedEmailAddress).then(
+              () => {
+                setFirstDataBrokerRemovalFixed(false);
+              },
+            );
+          }}
+        >
+          First data broker removal fixed
         </Button>
       </div>
     </main>

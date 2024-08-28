@@ -37,35 +37,37 @@ export async function getDeletedFeatureFlags() {
     .returning("*");
 }
 
-/** @deprecated The method type not be used */
 export type FeatureFlagName =
-  | "RedesignedEmails"
   | "UpdatedEmailPreferencesOption"
   | "MonthlyActivityEmail"
-  | "CsatSurvey"
   | "CancellationFlow"
-  | "ConfirmCancellation";
+  | "ConfirmCancellation"
+  | "FirstDataBrokerRemovalFixedEmail"
+  | "DiscountCouponNextThreeMonths"
+  | "LatestScanDateCsatSurvey"
+  | "AutomaticRemovalCsatSurvey"
+  | "AdditionalRemovalStatuses"
+  | "PetitionBannerCsatSurvey";
 
 /**
  * @param options
- * @deprecated The method should not be used, use Nimbus experiment or roll-out: /src/app/functions/server/getExperiments
  */
 export async function getEnabledFeatureFlags(
-  options:
-    | { ignoreAllowlist?: false; email: string }
-    | { ignoreAllowlist: true },
+  options: { isSignedOut?: false; email: string } | { isSignedOut: true },
 ): Promise<FeatureFlagName[]> {
-  let query = knex("feature_flags")
+  const query = knex("feature_flags")
     .select("name")
     .where("deleted_at", null)
     .and.where("expired_at", null)
-    .and.where("is_enabled", true);
-
-  if (!options.ignoreAllowlist) {
-    query = query.and
-      .whereRaw("ARRAY_LENGTH(allow_list, 1) IS NULL")
-      .orWhereRaw("? = ANY(allow_list)", options.email);
-  }
+    .and.where((subQuery) => {
+      subQuery = subQuery.where("is_enabled", true);
+      if (!options.isSignedOut) {
+        // If the user is logged in, the feature flag can also be enabled
+        // for them specifically if they are in the allowlist:
+        subQuery = subQuery.or.whereRaw("? = ANY(allow_list)", options.email);
+      }
+      return void subQuery;
+    });
 
   const enabledFlagNames = await query;
 
@@ -87,7 +89,7 @@ export async function getFeatureFlagByName(name: string) {
  */
 export async function addFeatureFlag(flag: FeatureFlag) {
   logger.info("addFeatureFlag", flag);
-  const featureFlagDb: FeatureFlagRow = {
+  const featureFlagDb: Omit<FeatureFlagRow, "created_at" | "modified_at"> = {
     name: flag.name,
     is_enabled: flag.isEnabled,
     description: flag.description,

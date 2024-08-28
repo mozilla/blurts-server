@@ -5,6 +5,7 @@
 import { test, expect } from "../fixtures/basePage.js";
 import {
   defaultScreenshotOpts,
+  emailInputShouldExist,
   getVerificationCode,
 } from "../utils/helpers.js";
 
@@ -24,7 +25,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page content`, (
 
     await expect(landingPage.monitorLandingHeader).toBeVisible();
     await landingPage.signInButton.click();
-    await page.waitForURL("**/oauth/**", { timeout: 120 * 1000 });
+    await page.waitForURL("**/oauth/**");
     expect(page.url()).toContain("oauth");
   });
 
@@ -41,8 +42,10 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page content`, (
     await expect(landingPage.monitorHeroSubtitle).toHaveText(
       "We scan to see if your phone number, passwords or home address have been leaked, and help you make it private again.",
     );
-    await expect(landingPage.monitorHeroFormEmailInputField).toBeVisible();
-    await expect(landingPage.monitorHeroFormInputSubmitButton).toBeVisible();
+    if (await emailInputShouldExist(landingPage)) {
+      await expect(landingPage.monitorHeroFormEmailInputField).toBeVisible();
+      await expect(landingPage.monitorHeroFormInputSubmitButton).toBeVisible();
+    }
     await expect(landingPage.monitorLandingMidHeading).toBeVisible();
   });
 
@@ -57,8 +60,10 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page content`, (
 
     await expect(landingPage.fixExposuresTitle).toBeVisible();
     await expect(landingPage.fixExposuresSubtitle).toBeVisible();
-    await expect(landingPage.fixExposuresFormEmailInputField).toBeVisible();
-    await expect(landingPage.fixExposuresFormInputSubmitButton).toBeVisible();
+    if (await emailInputShouldExist(landingPage)) {
+      await expect(landingPage.fixExposuresFormEmailInputField).toBeVisible();
+      await expect(landingPage.fixExposuresFormInputSubmitButton).toBeVisible();
+    }
     await expect(landingPage.fixExposuresGraphic).toBeVisible();
   });
 
@@ -73,7 +78,9 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page content`, (
 
     await expect(landingPage.couldBeAtRiskTitle).toBeVisible();
     await expect(landingPage.couldBeAtRiskSubtitle).toBeVisible();
-    await expect(landingPage.couldBeAtRiskFormEmailInputField).toBeVisible();
+    if (await emailInputShouldExist(landingPage)) {
+      await expect(landingPage.couldBeAtRiskFormEmailInputField).toBeVisible();
+    }
     await expect(landingPage.couldBeAtRiskFormInputSubmitButton).toBeVisible();
     await expect(landingPage.couldBeAtRiskGraphic).toBeVisible();
   });
@@ -88,7 +95,8 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page content`, (
     });
 
     await expect(landingPage.getStartedScanTitle).toBeVisible();
-    await expect(landingPage.getStartedScanFormEmailInputField).toBeVisible();
+    if (await emailInputShouldExist(landingPage))
+      await expect(landingPage.getStartedScanFormEmailInputField).toBeVisible();
     await expect(landingPage.getStartedScanFormSubmitButton).toBeVisible();
   });
 
@@ -130,8 +138,12 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page content`, (
     });
 
     await expect(landingPage.takeBackControlTitle).toBeVisible();
-    await expect(landingPage.takeBackControlFormEmailInputField).toBeVisible();
-    await expect(landingPage.takeBackControlFormSubmitButton).toBeVisible();
+    if (await emailInputShouldExist(landingPage)) {
+      await expect(
+        landingPage.takeBackControlFormEmailInputField,
+      ).toBeVisible();
+      await expect(landingPage.takeBackControlFormSubmitButton).toBeVisible();
+    }
   });
 
   test("Observe footer section", async ({ landingPage }) => {
@@ -182,17 +194,30 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page content`, (
       description:
         "https://testrail.stage.mozaws.net/index.php?/cases/view/2463504",
     });
+    if (await emailInputShouldExist(landingPage)) {
+      ///free-scan-cta experiment is off
+      await landingPage.monitorHeroFormEmailInputField.fill("invalid");
+      await landingPage.monitorHeroFormInputSubmitButton.click();
+      await expect(landingPage.monitorHeroFormEmailInputField).toBeVisible();
 
-    await landingPage.monitorHeroFormEmailInputField.fill("invalid");
-    await landingPage.monitorHeroFormInputSubmitButton.click();
-    // Stays on same page
-    await expect(landingPage.monitorHeroFormEmailInputField).toBeVisible();
-
-    const randomEmail = `_${Date.now()}_tstact@restmail.net`;
-    await landingPage.monitorHeroFormEmailInputField.fill(randomEmail);
-    await landingPage.monitorHeroFormInputSubmitButton.click();
-    await authPage.passwordInputField.waitFor();
-    await expect(authPage.passwordInputField).toBeVisible();
+      const randomEmail = `_${Date.now()}_tstact@restmail.net`;
+      await landingPage.monitorHeroFormEmailInputField.fill(randomEmail);
+      await landingPage.monitorHeroFormInputSubmitButton.click();
+      await authPage.passwordInputField.waitFor();
+      await expect(authPage.passwordInputField).toBeVisible();
+    } else {
+      ///free-scan-cta experiment is on
+      await landingPage.monitorHeroFormInputSubmitButton.click();
+      await authPage.emailInputField.waitFor({
+        state: "visible",
+        timeout: 10000,
+      });
+      const randomEmail = `_${Date.now()}_tstact@restmail.net`;
+      await authPage.emailInputField.fill(randomEmail);
+      await authPage.continueButton.click();
+      await authPage.passwordInputField.waitFor();
+      await expect(authPage.passwordInputField).toBeVisible();
+    }
   });
 
   test('Verify manual/automatic removal "more info" tips from "Choose your level of protection" section', async ({
@@ -221,20 +246,27 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page Functionali
     page,
     authPage,
   }) => {
-    // link to testrail case
     test.info().annotations.push({
       type: "testrail",
       description:
         "https://testrail.stage.mozaws.net/index.php?/cases/view/2463502",
     });
 
-    // fill out free scan form
     const randomEmail = `${Date.now()}_tstact@restmail.net`;
-    await landingPage.monitorHeroFormEmailInputField.fill(randomEmail);
-    await landingPage.monitorHeroFormInputSubmitButton.click();
-    await page.waitForURL("**/oauth/**", { timeout: 120 * 1000 });
-
-    // complete registration form
+    if (await emailInputShouldExist(landingPage)) {
+      await landingPage.monitorHeroFormEmailInputField.fill(randomEmail);
+      await landingPage.monitorHeroFormInputSubmitButton.click();
+      await page.waitForURL("**/oauth/**");
+    } else {
+      await landingPage.monitorHeroFormInputSubmitButton.click();
+      await authPage.emailInputField.waitFor({
+        state: "visible",
+        timeout: 10000,
+      });
+      await authPage.emailInputField.fill(randomEmail);
+      await authPage.continueButton.click();
+    }
+    // continue with the common steps
     await authPage.passwordInputField.fill(
       process.env.E2E_TEST_ACCOUNT_PASSWORD as string,
     );
@@ -243,12 +275,8 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page Functionali
     );
     await authPage.ageInputField.fill("31");
     await authPage.continueButton.click();
-
-    // enter registration verification code
     const vc = await getVerificationCode(randomEmail, page);
     await authPage.enterVerificationCode(vc);
-
-    // verify dashboard redirect
     const successUrl = process.env.E2E_TEST_BASE_URL + "/user/welcome";
     expect(page.url()).toBe(successUrl);
   });
@@ -298,12 +326,23 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page Functionali
         "https://testrail.stage.mozaws.net/index.php?/cases/view/2463503",
     });
 
-    // fill out free scan form
-    await landingPage.monitorHeroFormEmailInputField.fill(
-      process.env.E2E_TEST_ACCOUNT_EMAIL as string,
-    );
-    await landingPage.monitorHeroFormInputSubmitButton.click();
-    await page.waitForURL("**/oauth/**", { timeout: 120 * 1000 });
+    const existingEmail = process.env.E2E_TEST_ACCOUNT_EMAIL as string;
+
+    if (await emailInputShouldExist(landingPage)) {
+      // Scenario where the form is still used
+      await landingPage.monitorHeroFormEmailInputField.fill(existingEmail);
+      await landingPage.monitorHeroFormInputSubmitButton.click();
+      await page.waitForURL("**/oauth/**");
+    } else {
+      // Scenario where direct redirection happens
+      await landingPage.monitorHeroFormInputSubmitButton.click();
+      await authPage.emailInputField.waitFor({
+        state: "visible",
+        timeout: 10000,
+      });
+      await authPage.emailInputField.fill(existingEmail);
+      await authPage.continueButton.click();
+    }
 
     // complete sign in form
     await authPage.enterPassword();
@@ -311,11 +350,9 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page Functionali
     // verify dashboard redirect
     const successUrl =
       process.env.E2E_TEST_BASE_URL +
-      `${
-        process.env.E2E_TEST_ENV === "local"
-          ? "/user/welcome"
-          : "/user/dashboard"
-      }`;
+      (process.env.E2E_TEST_ENV === "local"
+        ? "/user/welcome"
+        : "/user/dashboard");
     expect(page.url()).toBe(successUrl);
   });
 
@@ -345,4 +382,13 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page Functionali
       }`;
     expect(page.url()).toBe(successUrl);
   });
+});
+
+test("Verify that the 404 page shows up on non-existent pages @smoke", async ({
+  page,
+}) => {
+  await page.goto("/non-existent-page/");
+  await expect(
+    page.locator("h1").getByText("⁨404⁩ Page not found"),
+  ).toBeVisible();
 });

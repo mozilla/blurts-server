@@ -40,6 +40,7 @@ export type Props = {
   enabledFeatureFlags: FeatureFlagName[];
   experimentData: ExperimentData;
   lastScanDate?: Date;
+  isMonthlySubscriber: boolean;
 };
 
 export const SettingsView = (props: Props) => {
@@ -89,7 +90,9 @@ export const SettingsView = (props: Props) => {
               );
             })}
           </ul>
-          <EmailAddressAdder />
+          {props.emailAddresses.length < CONST_MAX_NUM_ADDRESSES - 1 && (
+            <EmailAddressAdder />
+          )}
           <hr />
           <AlertAddressForm
             user={props.user}
@@ -104,10 +107,12 @@ export const SettingsView = (props: Props) => {
                 <p>{l10n.getString("settings-cancel-plus-details")}</p>
                 {props.enabledFeatureFlags.includes("CancellationFlow") ? (
                   <CancelFlow
-                    confirmationFlagEnabled={props.enabledFeatureFlags.includes(
-                      "ConfirmCancellation",
+                    enableDiscountCoupon={props.enabledFeatureFlags.includes(
+                      "DiscountCouponNextThreeMonths",
                     )}
                     fxaSubscriptionsUrl={props.fxaSubscriptionsUrl}
+                    experimentData={props.experimentData}
+                    isMonthlySubscriber={props.isMonthlySubscriber}
                   />
                 ) : (
                   <TelemetryLink

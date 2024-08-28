@@ -69,10 +69,16 @@ added.
 
 ### `react-intersection-observer`
 
-We're only using a test utility from this package (see the comments in
-`/jest.setup.ts`), so if the tests pass, this upgrade was probably fine.
+We're using this to count how often certain page elements are shown to people.
+See the `useViewTelemetry` hook in `src/app/hooks/useViewTelemetry.ts`. You can
+execute `Glean.setLogPings(true)` in the console to enable showing those counts
+in the console; an example of elements that should trigger it are the "Get free
+scan" buttons on the landing page.
 
-### `@playwright/test` and `dotenv`
+We're also using a test utility from this package (see the comments in
+`/jest.setup.ts`), so if the tests pass as well, that part is probably fine.
+
+### `@playwright/test` and `dotenv-flow`
 
 Our Playwright tests run as two GitHub Actions Workflows: [PR e2e tests][] and
 [cron e2e tests][]: the former runs a small subset of the end-to-end tests for PRs, the latter runs a more extensive suite once a day from the `main` branch.
@@ -200,8 +206,8 @@ Used to compile cronjob scripts. You can test this by running
 ### `tsx`
 
 Used to run cronjobs locally and compile them on the fly. You can verify this by
-running `npm run dev:cronjobs`; if the cronjobs run like in `main`, it's still
-working.
+running a cronjob like `npm run dev:cron:monthly-activity`; if the cronjobs run
+like in `main`, it's still working.
 
 ### `yaml`
 
@@ -211,37 +217,86 @@ Used to generate type definitions from our `nimbus.yaml` file. If
 
 ### `jsonwebtoken` and `jwk-to-pem`
 
-TODO: Describe how the `fxa-rp-events` endpoint uses these packages.
+The `fxa-rp-events` webhook endpoint uses these packages to parse [JSON Web Token (JWT)](https://en.wikipedia.org/wiki/JSON_Web_Token)
+requests and to validate cryptographic signatures (which are in [PEM format](https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail)).
+
+There currently isn't an easy way to test this locally, so dependency updates to these packages should be watched closely on stage
+to ensure that [events from FxA](https://github.com/mozilla/fxa/blob/main/packages/fxa-event-broker/README.md) are processed correctly.
+
+TODO [MNTOR-3515](https://mozilla-hub.atlassian.net/browse/MNTOR-3515): add a unit test so these can be exercised without requiring merging to stage.
 
 ### `uuid`
 
-TODO: Describe how to verify that `uuid` updates didn't break anything.
+Used in places where a random identifier is needed:
+
+- as a `nonce` in `src/middleware.ts` for CSP
+- server-side Glean document IDs in `src/app/functions/server/glean.ts`
+- as an experimentation ID for Nimbus in `src/app/functions/server/getUserId.tsx` and `src/app/functions/server/getExperimentationId.ts`
+- for email verification tokens in `src/db/tables/emailAddresses.js`
+
+1. Check that `nonce` is present in `content-security-policy` header for HTTP responses.
+2. Check that `experimentationId` is set as a cookie in the form `guest-${uuid}`
+3. Add a secondary email from the Settings screen and ensure that email verification works
 
 ### `@aws-sdk/*`
 
-TODO: Describe how to verify that AWS SDK updates didn't break anything.
+Used for S3, by the `npm run cron:db-pull-breaches` cron job.
+
+This job runs periodically on stage and production to download Favicon files from DuckDuckGo and re-uploads them to Monitor's S3 bucket.
+Check in the server logs that this job completed without errors.
 
 ### `@google-cloud/pubsub`
 
-TODO: Describe how to verify that GCP pubsub updates didn't break anything.
+GCP PubSub is used for email breach notifications from HIBP:
+
+- `src/app/api/v1/hibp/notify/route.ts` receives the breach notification and queues in PubSub
+- `src/scripts/cronjobs/emailBreachAlerts.ts` is run by a periodic cron job
+
+Check the server logs and ensure there are no errors. See
+[this section of the README](https://github.com/mozilla/blurts-server/blob/main/README.md#incoming-webhook-requests-from-hibp-will-be-of-the-form)
+for information about simulating a breach alert.
+
+See `./src/loadtest/hibp.js` for a K6 load testing script which will exercise this.
 
 ### `@grpc/grpc-js`
 
-TODO: Describe how to verify that GRPC updates didn't break anything.
+GRPC is used as a communication protocol for various GCP services.
+
+Monitor uses it to facilitate the local PubSub emulator. See [this section of the README](https://github.com/mozilla/blurts-server/blob/main/README.md#pubsub)
+for instructions on running the Pub/Sub emulator locally.
 
 ### `winston` and `@google-cloud/logging-winston`
 
-TODO: Describe how to verify that logger updates didn't break anything.
+Winston is a logging library that provides structured logging in GCP.
+
+Look for any `logger.*` statement in `./src` and ensure that log messages are being written as [structured logs](https://cloud.google.com/logging/docs/structured-logging).
 
 ### `@sentry/*`
 
-TODO: Describe how to verify that Sentry updates didn't break anything.
+Sentry is an error reporting service that captured front-end (browser) as well as back-end (Node) error messages.
+
+In normal operation nothing should be sent to Sentry, but you can verify that the SDK is loading:
+
+1. in the browser, verify that there are no errors related to Sentry in the devtools console
+2. in the server logs, verify `instrumentationHook` is logged as enabled and there are no errors related to Sentry
 
 ### `nodemailer`
 
-TODO: Describe how to verify that nodemailer updates didn't break anything.
+Nodemailer is used by `src/utils/email.js` to send all email related to Monitor. It uses AWS Simple Email Services (SES) by default,
+which is controlled by the `SMTP_URL` environment variable. Any `smtps://` URL can be used here for testing, and any email Monitor sends
+can be used for testing.
+
+Monitor provides a tool for sending test email at the endpoint `/admin/emails`.
 
 ### `adm-zip`
+
+This is used as part of downloading and unzipping location data for the auto-complete address feature.
+
+Normally this is run by cron and uploads to an S3 bucket, the upload step can be skipped with:
+
+```sh
+npm run create-location-data -- --skip-upload
+```
 
 TODO: Describe how to verify that uploading auto-complete locations still works
 as expected.

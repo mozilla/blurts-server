@@ -19,6 +19,7 @@ import { useTelemetry } from "../../hooks/useTelemetry";
 import { usePathname } from "next/navigation";
 
 export type Props = {
+  countryCode: string;
   session: Session;
   monthlySubscriptionUrl: string;
   yearlySubscriptionUrl: string;
@@ -37,6 +38,10 @@ export const MobileShell = (props: Props) => {
   const pathName = usePathname();
   const wrapperRef = useRef<HTMLDivElement>(null);
   const isOnDashboard = pathName === "/user/dashboard";
+
+  useEffect(() => {
+    setIsExpanded(false);
+  }, [pathName]);
 
   useEffect(() => {
     // As we transition focus away from the navigation bar in deeper sections
@@ -124,11 +129,7 @@ export const MobileShell = (props: Props) => {
                 <PageLink
                   href="/user/dashboard"
                   activeClassName={styles.isActive}
-                  onClick={() => {
-                    recordTelemetry("ctaButton", "click", {
-                      button_id: "navigation_dashboard",
-                    });
-                  }}
+                  hasTelemetry={{ link_id: "navigation_dashboard" }}
                 >
                   {l10n.getString("main-nav-link-dashboard-label")}
                 </PageLink>
@@ -137,22 +138,32 @@ export const MobileShell = (props: Props) => {
                 <PageLink
                   href="/user/settings"
                   activeClassName={styles.isActive}
+                  hasTelemetry={{ link_id: "navigation_settings" }}
                 >
                   {l10n.getString("main-nav-link-settings-label")}
                 </PageLink>
               </li>
+              {props.countryCode === "us" && (
+                <li key="how-it-works">
+                  <PageLink
+                    href="/how-it-works"
+                    activeClassName={styles.isActive}
+                    target="_blank"
+                    hasTelemetry={{ link_id: "navigation_how_it_works" }}
+                  >
+                    {l10n.getString("main-nav-link-how-it-works-label")}
+                  </PageLink>
+                </li>
+              )}
               <li key="faq">
-                <a
+                <PageLink
                   href="https://support.mozilla.org/kb/firefox-monitor-faq"
                   title={l10n.getString("main-nav-link-faq-tooltip")}
-                  onClick={() => {
-                    recordTelemetry("ctaButton", "click", {
-                      button_id: "navigation_faq",
-                    });
-                  }}
+                  target="_blank"
+                  hasTelemetry={{ link_id: "navigation_faq" }}
                 >
                   {l10n.getString("main-nav-link-faq-label")}
-                </a>
+                </PageLink>
               </li>
             </ul>
             <div className={styles.premiumCta}>

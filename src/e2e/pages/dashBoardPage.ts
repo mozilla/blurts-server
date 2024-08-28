@@ -52,7 +52,11 @@ export class DashboardPage {
   readonly servicesPocket: Locator;
   readonly servicesFirefoxDesktop: Locator;
   readonly servicesFirefoxMobile: Locator;
+  readonly servicesMozilla: Locator;
+  readonly appsAndServicesMenu: Locator;
 
+  readonly profileSettings: Locator;
+  readonly profileSignOut: Locator;
   readonly profileEmail: Locator;
   readonly manageProfile: Locator;
   readonly helpAndSupport: Locator;
@@ -75,7 +79,13 @@ export class DashboardPage {
   readonly privacyNoticeFooter: Locator;
   readonly githubFooter: Locator;
 
+  readonly overviewCard: Locator;
+  readonly overviewCardSummary: Locator;
+  readonly overviewCardFindings: Locator;
+  readonly chartSvgExposuresCount: Locator;
+
   readonly upsellScreenButton: Locator;
+  readonly urlRegex: RegExp;
 
   constructor(page: Page) {
     this.page = page;
@@ -107,6 +117,7 @@ export class DashboardPage {
       .locator('//div[starts-with(@class, "ProgressCard_progressStat_")]/span')
       .first();
 
+    //footer
     this.mozillaLogoFooter = page.locator(
       '//a[starts-with(@class, "Shell_mozillaLink")]',
     );
@@ -130,6 +141,13 @@ export class DashboardPage {
     this.actionNeededTab = page.getByRole("tab", { name: "Action needed" });
     this.fixedTab = page.getByRole("tab", { name: "Fixed" });
     this.profileButton = page.getByTitle("Profile").nth(1);
+
+    this.profileSettings = page.locator(
+      'a[title*="Configure"][title*="Mozilla Monitor"]',
+    );
+    this.profileSignOut = page.locator(
+      'button[title*="Sign out of"][title*="Mozilla Monitor"]',
+    );
     this.profileEmail = page
       .locator('//li[starts-with(@class, "UserMenu_menuItemWrapper")]/b')
       .first();
@@ -141,6 +159,7 @@ export class DashboardPage {
     this.appsAndServices = page.getByRole("button", {
       name: "⁨Mozilla⁩ apps and services",
     });
+    this.appsAndServicesMenu = page.locator("div[class*='AppPicker_popup']");
     this.servicesVpn = page.getByRole("link", { name: "Mozilla VPN" });
     this.servicesRelay = page.getByRole("link", { name: "Firefox Relay" });
     this.servicesPocket = page.getByRole("link", { name: "Pocket" });
@@ -150,6 +169,7 @@ export class DashboardPage {
     this.servicesFirefoxMobile = page.getByRole("link", {
       name: "⁨Firefox⁩ for Mobile",
     });
+    this.servicesMozilla = page.locator('[data-key="mozilla"] > a');
     this.closeAppsAndServices = page.locator(
       '//div[starts-with(@class, "Popover_underlay")]',
     );
@@ -222,7 +242,21 @@ export class DashboardPage {
     this.faqsPageLink = page.getByTitle("Frequently asked questions").first();
 
     //upsell button
-    this.upsellScreenButton = page.getByText(/Let’s (keep going|fix it)/);
+    this.upsellScreenButton = page
+      .locator("a")
+      .getByText(/Let’s (keep going|fix it)/);
+    this.overviewCard = page.locator("[class*='DashboardTopBanner_container']");
+    this.overviewCardSummary = page.locator(
+      "[aria-label='Dashboard summary'] > div > p",
+    );
+    this.overviewCardFindings = page.locator(
+      "[aria-label='Dashboard summary'] > div > h3",
+    );
+    this.chartSvgExposuresCount =
+      this.overviewCard.locator("figure > div > svg");
+
+    //regex
+    this.urlRegex = /\/dashboard\/(fixed|action-needed)\/?/;
   }
 
   dashboardLinks() {

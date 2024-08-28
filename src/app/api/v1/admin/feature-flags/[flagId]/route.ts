@@ -14,7 +14,6 @@ import {
   updateWaitList,
 } from "../../../../../../db/tables/featureFlags";
 import { isAdmin } from "../../../../utils/auth";
-import appConstants from "../../../../../../appConstants";
 
 export async function GET(
   req: NextRequest,
@@ -32,10 +31,31 @@ export async function GET(
       return NextResponse.json({ success: false }, { status: 500 });
     }
   } else {
-    // Not Signed in, redirect to home
-    return NextResponse.redirect(appConstants.SERVER_URL, 301);
+    return NextResponse.json({ success: false }, { status: 401 });
   }
 }
+
+export type UpdateFeatureFlagRequestBody =
+  | {
+      id: "isEnabled";
+      isEnabled: boolean;
+    }
+  | {
+      id: "dependencies";
+      value: string;
+    }
+  | {
+      id: "allowList";
+      value: string;
+    }
+  | {
+      id: "waitList";
+      value: string;
+    }
+  | {
+      id: "owner";
+      value: string;
+    };
 
 export async function PUT(req: NextRequest) {
   const session = await getServerSession();
@@ -46,7 +66,7 @@ export async function PUT(req: NextRequest) {
       if (!flagName) {
         throw new Error("No flag name provided");
       }
-      const result = await req.json();
+      const result: UpdateFeatureFlagRequestBody = await req.json();
 
       if (result.id === "isEnabled") {
         await enableFeatureFlagByName(flagName, result.isEnabled);
@@ -70,7 +90,6 @@ export async function PUT(req: NextRequest) {
       return NextResponse.json({ success: false }, { status: 500 });
     }
   } else {
-    // Not Signed in, redirect to home
-    return NextResponse.redirect(appConstants.SERVER_URL, 301);
+    return NextResponse.json({ success: false }, { status: 401 });
   }
 }

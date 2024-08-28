@@ -5,11 +5,22 @@
 import { Locator } from "@playwright/test";
 import { test, expect } from "../fixtures/basePage.js";
 import { DashboardPage } from "../pages/dashBoardPage.js";
-import { checkAuthState, removeUnicodeChars } from "../utils/helpers.js";
+import {
+  checkAuthState,
+  removeUnicodeChars,
+  clickOnATagCheckDomain,
+  escapeRegExp,
+  forceLoginAs,
+  resetTestData,
+} from "../utils/helpers.js";
+import {
+  isUsingMockHIBPEndpoint,
+  isUsingMockONEREPEndpoint,
+} from "../../app/functions/universal/mock.js";
 
 // bypass login
 test.use({ storageState: "./e2e/storageState.json" });
-test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Headers`, () => {
+test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Headers @smoke`, () => {
   test.beforeEach(async ({ dashboardPage, page }) => {
     await dashboardPage.open();
 
@@ -127,6 +138,94 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Headers`, () =
     await dashboardPage.popupCloseButton.click();
     await expect(dashboardPage.aboutFixedExposuresPopup).toBeHidden();
   });
+
+  test("Verify that the Apps and Services header options work correctly.", async ({
+    dashboardPage,
+    page,
+  }) => {
+    // link to testrail
+    test.info().annotations.push({
+      type: "testrail",
+      description:
+        "https://testrail.stage.mozaws.net/index.php?/cases/view/2463569",
+    });
+
+    await dashboardPage.fixedTab.click();
+    expect(page.url()).toMatch(/.*dashboard\/fixed\/?/);
+    await dashboardPage.actionNeededTab.click();
+    expect(page.url()).toMatch(/.*dashboard\/action-needed\/?/);
+
+    //apps and services button check
+    const clickOnLinkAndGoBack = async (
+      aTag: Locator,
+      host: string | RegExp = /.*/,
+      path: string | RegExp = /.*/,
+    ) => {
+      await expect(dashboardPage.appsAndServices).toBeVisible();
+      await dashboardPage.appsAndServices.click();
+      await expect(dashboardPage.appsAndServicesMenu).toBeVisible();
+      await clickOnATagCheckDomain(aTag, host, path, page);
+    };
+
+    await clickOnLinkAndGoBack(
+      dashboardPage.servicesVpn,
+      "www.mozilla.org",
+      /.*\/products\/vpn\/?.*/,
+    );
+    await clickOnLinkAndGoBack(
+      dashboardPage.servicesRelay,
+      "relay.firefox.com",
+    );
+    await clickOnLinkAndGoBack(
+      dashboardPage.servicesPocket,
+      /getpocket\.com|apps\.apple\.com|app\.adjust\.com/,
+      /.*(\/pocket-and-firefox\/?).*|.*about.*|.*pocket-stay-informed.*/,
+    );
+    await clickOnLinkAndGoBack(
+      dashboardPage.servicesFirefoxDesktop,
+      "www.mozilla.org",
+      /.*\/firefox\/new\/?.*/,
+    );
+    await clickOnLinkAndGoBack(
+      dashboardPage.servicesFirefoxMobile,
+      "www.mozilla.org",
+      /.*\/browsers\/mobile\/?.*/,
+    );
+    await clickOnLinkAndGoBack(
+      dashboardPage.servicesMozilla,
+      "www.mozilla.org",
+    );
+
+    const openProfileMenuItem = async (
+      what: Locator,
+      whatUrl: string | RegExp,
+    ) => {
+      await dashboardPage.open();
+      await dashboardPage.profileButton.click();
+      await expect(what).toBeVisible();
+      if (await what.evaluate((e) => e.hasAttribute("href"))) {
+        const href = await what.getAttribute("href");
+        expect(href).not.toBeNull();
+        await page.goto(href!);
+      } else {
+        await what.click();
+      }
+      await page.waitForURL(whatUrl);
+    };
+
+    await openProfileMenuItem(
+      dashboardPage.manageProfile,
+      /.*accounts.*settings.*/,
+    );
+    await openProfileMenuItem(
+      dashboardPage.profileSettings,
+      /.*\/user\/settings.*/,
+    );
+
+    const base_url = process.env["E2E_TEST_BASE_URL"];
+    expect(base_url).toBeTruthy();
+    await openProfileMenuItem(dashboardPage.profileSignOut, base_url!);
+  });
 });
 
 // fix coming - playwright does not currently have access to the aws headers, skipping for now
@@ -162,7 +261,7 @@ test.describe.skip(
   },
 );
 
-test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Content`, () => {
+test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Content @smoke`, () => {
   test.beforeEach(async ({ dashboardPage, page }) => {
     await dashboardPage.open();
 
@@ -242,7 +341,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Content`, () =
   });
 });
 
-test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard  - Payment`, () => {
+test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Payment`, () => {
   test.beforeEach(async ({ dashboardPage, page }) => {
     await dashboardPage.open();
 
@@ -355,6 +454,18 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Breaches Scan,
     const fixedExposures = await dashboardPage.numFixed.textContent();
     expect(fixedExposures as string).toMatch(initialExposuresCount);
   });
+});
+
+test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Overview Card`, () => {
+  test.beforeEach(async ({ dashboardPage, page }) => {
+    await dashboardPage.open();
+
+    try {
+      await checkAuthState(page);
+    } catch {
+      console.log("[E2E_LOG] - No fxa auth required, proceeding...");
+    }
+  });
 
   test("Verify that the Premium upsell screen is displayed correctly - overview card", async ({
     dashboardPage,
@@ -385,14 +496,117 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Breaches Scan,
     }
 
     //testing that toggles work
-    await automaticRemovePage.planLabel0.click();
+    await automaticRemovePage.planToggle0.click();
     const price0 = await automaticRemovePage.price.textContent();
     const plan0 = await automaticRemovePage.plan.textContent();
-    await automaticRemovePage.planLabel1.click();
+    await automaticRemovePage.planToggle1.click();
     const price1 = await automaticRemovePage.price.textContent();
     const plan1 = await automaticRemovePage.plan.textContent();
     expect(price0).not.toEqual(price1);
     expect(plan0).not.toEqual(plan1);
+  });
+
+  test("Verify that the navigation of the Premium upsell screen works correctly - from overview card", async ({
+    dashboardPage,
+    automaticRemovePage,
+    dataBrokersPage,
+    page,
+  }) => {
+    // link to testrail
+    test.info().annotations.push({
+      type: "testrail",
+      description:
+        "https://testrail.stage.mozaws.net/index.php?/cases/view/2463626",
+    });
+
+    await dashboardPage.open();
+    await page.waitForURL("**/dashboard/**");
+
+    //get the number of exposures count
+    const overviewCardSummary =
+      await dashboardPage.overviewCardSummary.textContent();
+    const overviewCardFindings =
+      await dashboardPage.overviewCardFindings.textContent();
+    expect(overviewCardFindings).not.toContain("No exposures found");
+    expect(overviewCardSummary).not.toBeNull();
+    const exposuresCountMatches = overviewCardSummary!.match(/\d+/);
+    expect(exposuresCountMatches).toBeTruthy();
+    expect(exposuresCountMatches!.length).toBeGreaterThan(0);
+    const exposuresCount = parseInt(exposuresCountMatches![0]);
+
+    //check that premium upsell screen loads
+    await dashboardPage.upsellScreenButton.click();
+    await page.waitForURL(/.*\/fix\/.*\/view-data-brokers\/?/);
+    await dataBrokersPage.removeThemForMeButton.click();
+    await page.waitForURL(/.*\/fix\/.*\/automatic-remove\/?/);
+
+    //check that X returns back to /dashboard
+    await expect(automaticRemovePage.xButton).toBeVisible();
+
+    await automaticRemovePage.xButton.click();
+    await page.waitForURL(dashboardPage.urlRegex);
+
+    //forward arrow checks
+    await automaticRemovePage.open();
+    await expect(automaticRemovePage.forwardArrowButton).toBeVisible();
+
+    const breachString0 = "high-risk-data-breaches";
+    const breachString1 = "leaked-passwords";
+    const breachString2 = "security-recommendations";
+
+    const breachOrDashboard = (excludeThis: string) => {
+      const escapedExclude = escapeRegExp(excludeThis);
+      const pattern = [
+        dashboardPage.urlRegex.source,
+        breachString0,
+        breachString1,
+        breachString2,
+      ]
+        .map((s) => `.*${s}.*`)
+        .join("|");
+
+      return new RegExp(`^(?!.*${escapedExclude})(${pattern})`);
+    };
+
+    const checkBreachLink = async () => {
+      const currentUrl = page.url();
+      await automaticRemovePage.forwardArrowButton.click();
+      await page.waitForURL(breachOrDashboard(currentUrl));
+      const urlToCheck = page.url();
+      const breachStringRE = new RegExp(
+        `.*(${[breachString0, breachString1, breachString2].join("|")}).*`,
+      );
+      return breachStringRE.test(urlToCheck);
+    };
+
+    let iter = 0;
+    while (await checkBreachLink()) iter++;
+    const visitedBreachPages = iter !== 0;
+    const exposuresExist = exposuresCount !== 0;
+    expect(visitedBreachPages).toBe(exposuresExist);
+
+    //price&plan toggle checks
+    await automaticRemovePage.open();
+    const subplatRegex = /\/products\/prod_/;
+
+    const checkToggleButtonWorks = async (toggleButton: Locator) => {
+      await automaticRemovePage.open();
+      await expect(toggleButton).toBeVisible();
+      await toggleButton.click();
+      const toggleText = await toggleButton.textContent();
+      expect(toggleText).not.toBeNull();
+      await automaticRemovePage.subplatButton.click();
+      await page.waitForURL(subplatRegex);
+      return page.url();
+    };
+
+    const subplat0 = await checkToggleButtonWorks(
+      automaticRemovePage.planToggle0,
+    );
+    const subplat1 = await checkToggleButtonWorks(
+      automaticRemovePage.planToggle1,
+    );
+    expect(subplat0).not.toBe(subplat1);
   });
 });
 
@@ -417,26 +631,6 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Footer`, () =>
         "https://testrail.stage.mozaws.net/index.php?/cases/view/2463570",
     });
 
-    const clickOnATagCheckDomain = async (
-      aTag: Locator,
-      host: string,
-      path: string | RegExp = /.*/,
-    ) => {
-      if (typeof path === "string") path = new RegExp(".*" + path + ".*");
-      host = host.replace(/^(https?:\/\/)/, "");
-
-      const href = await aTag.getAttribute("href");
-      if (href === null) return false;
-
-      await page.goto(href);
-      const currentUrl = new URL(page.url());
-      const perceivedHost = currentUrl.hostname;
-      const perceivedPath = currentUrl.pathname;
-      expect(perceivedHost).toBe(host);
-      expect(path.test(perceivedPath)).toBeTruthy();
-      await page.goBack();
-    };
-
     expect(process.env["E2E_TEST_BASE_URL"]).toBeTruthy();
     const baseUrl = process.env["E2E_TEST_BASE_URL"]!;
     await dashboardPage.goToDashboard();
@@ -445,36 +639,42 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Footer`, () =>
       dashboardPage.mozillaLogoFooter,
       "www.mozilla.org",
       /^(\/en-US\/)?$/,
+      page,
     );
     await clickOnATagCheckDomain(
       dashboardPage.allBreachesFooter,
       baseUrl,
       "/breaches",
+      page,
     );
     await clickOnATagCheckDomain(
       dashboardPage.faqsFooter,
       "support.mozilla.org",
       /.*\/kb.*\/mozilla-monitor-faq.*/,
+      page,
     );
     await clickOnATagCheckDomain(
       dashboardPage.termsOfServiceFooter,
       "www.mozilla.org",
       "/about/legal/terms/subscription-services/",
+      page,
     );
     await clickOnATagCheckDomain(
       dashboardPage.privacyNoticeFooter,
       "www.mozilla.org",
       "/privacy/subscription-services/",
+      page,
     );
     await clickOnATagCheckDomain(
       dashboardPage.githubFooter,
       "github.com",
       "/mozilla/blurts-server",
+      page,
     );
   });
 });
 
-test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Navigation`, () => {
+test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Navigation @smoke`, () => {
   test.beforeEach(async ({ dashboardPage, page }) => {
     await dashboardPage.open();
 
@@ -522,5 +722,163 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Navigation`, (
     await expect(page).toHaveURL(
       /.*support\.mozilla\.org.*\/kb\/.*firefox-monitor-faq.*/,
     );
+  });
+});
+
+// These tests rely heavily on mocks
+test.skip(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Data Breaches`, () => {
+  test.use({ storageState: { cookies: [], origins: [] } });
+
+  test("Verify that the High risk data breaches step is displayed correctly", async ({
+    dashboardPage,
+    dataBrokersPage,
+    page,
+    landingPage,
+    authPage,
+  }) => {
+    if (!isUsingMockHIBPEndpoint() || !isUsingMockONEREPEndpoint()) return;
+    const emailToUse = process.env.E2E_TEST_ACCOUNT_EMAIL_EXPOSURES_STARTED!;
+    const pwdToUse = process.env.E2E_TEST_ACCOUNT_PASSWORD!;
+    expect(emailToUse).not.toBeUndefined();
+    expect(pwdToUse).not.toBeUndefined();
+    await forceLoginAs(emailToUse, pwdToUse, page, landingPage, authPage);
+    await resetTestData(page, true, true);
+    await dashboardPage.open();
+
+    test.info().annotations.push({
+      type: "testrail",
+      description:
+        "https://testrail.stage.mozaws.net/index.php?/cases/view/2463592",
+    });
+
+    await expect(dashboardPage.upsellScreenButton).toBeVisible();
+    await dashboardPage.upsellScreenButton.click();
+    await page.waitForURL(/.*\/data-broker-profiles\/view-data-brokers\/?/);
+    await expect(dataBrokersPage.forwardArrowButton).toBeVisible();
+    await dataBrokersPage.forwardArrowButton.click();
+    await page.waitForURL(/.*\/high-risk-data-breaches.*/);
+    const highRiskDataBreachLi = page.locator(
+      'li:has(div:has-text("High risk data breaches"))',
+    );
+    await expect(highRiskDataBreachLi).toBeVisible();
+    await expect(highRiskDataBreachLi).toHaveAttribute("aria-current", "step");
+    await expect(
+      highRiskDataBreachLi.locator("div").getByText("High risk data breaches"),
+    ).toBeVisible();
+  });
+
+  test("Verify that the dashboard is displayed correctly for users with no scan results and no breaches", async ({
+    dashboardPage,
+    page,
+    authPage,
+    landingPage,
+  }) => {
+    if (!isUsingMockHIBPEndpoint() || !isUsingMockONEREPEndpoint()) return;
+
+    test.info().annotations.push({
+      type: "testrail",
+      description:
+        "https://testrail.stage.mozaws.net/index.php?/cases/view/2463610",
+    });
+
+    const emailToUse =
+      process.env.E2E_TEST_ACCOUNT_EMAIL_ZERO_BREACHES_ZERO_BROKERS!;
+    const pwdToUse = process.env.E2E_TEST_ACCOUNT_PASSWORD!;
+    expect(emailToUse).not.toBeUndefined();
+    expect(pwdToUse).not.toBeUndefined();
+    await forceLoginAs(emailToUse, pwdToUse, page, landingPage, authPage);
+    await resetTestData(page, true, true);
+    await dashboardPage.open();
+
+    await expect(dashboardPage.overviewCard).toBeVisible();
+    const textArea = dashboardPage.overviewCard.locator("section");
+    await expect(textArea.getByText(/No exposures found/)).toBeVisible();
+    await expect(
+      textArea.getByText(
+        /Great news! We searched all known data breaches and .\d+. data broker sites that sell personal info and found no exposures\./,
+      ),
+    ).toBeVisible();
+    await expect(textArea.getByRole("button")).toBeVisible();
+    expect(await dashboardPage.overviewCard.locator("svg").count()).toBe(5);
+    expect(await dashboardPage.overviewCard.locator("circle").count()).toBe(4);
+    await expect(
+      dashboardPage.chartSvgExposuresCount.getByText("Exposures"),
+    ).toBeVisible();
+    await expect(
+      dashboardPage.chartSvgExposuresCount.getByText("0"),
+    ).toBeVisible();
+
+    await expect(dashboardPage.exposuresHeading).toBeVisible();
+    expect(await dashboardPage.exposuresHeading.textContent()).toBe(
+      "View all sites where your info is exposed",
+    );
+
+    const noExpFoundMsg = page
+      .locator("div > strong")
+      .getByText("No exposures found");
+    await expect(noExpFoundMsg).toBeVisible();
+  });
+
+  test("Verify that the dashboard is displayed correctly for users with no scan results and with data breaches", async ({
+    dashboardPage,
+    page,
+    authPage,
+    landingPage,
+  }) => {
+    if (!isUsingMockHIBPEndpoint() || !isUsingMockONEREPEndpoint()) return;
+
+    test.info().annotations.push({
+      type: "testrail",
+      description:
+        "https://testrail.stage.mozaws.net/index.php?/cases/view/2463611",
+    });
+
+    const emailToUse = process.env.E2E_TEST_ACCOUNT_EMAIL_ZERO_BROKERS!;
+    const pwdToUse = process.env.E2E_TEST_ACCOUNT_PASSWORD!;
+    expect(emailToUse).not.toBeUndefined();
+    expect(pwdToUse).not.toBeUndefined();
+    await forceLoginAs(emailToUse, pwdToUse, page, landingPage, authPage);
+    await resetTestData(page, true, true);
+    await dashboardPage.open();
+
+    // Assertions for the overview card
+    await expect(dashboardPage.overviewCard).toBeVisible();
+    await expect(
+      page.getByText(
+        /You still have .\d+. exposures left to fix. Keep going and protect yourself\. We.ll guide you step-by-step\./,
+      ),
+    ).toBeVisible();
+    await expect(dashboardPage.upsellScreenButton).toBeVisible();
+
+    // Chart reflecting results
+    await expect(
+      dashboardPage.chartSvgExposuresCount.getByText("Exposures"),
+    ).toBeVisible();
+    await expect(
+      dashboardPage.chartSvgExposuresCount.getByText(/\d+/),
+    ).toBeVisible();
+
+    // Text above exposures list
+    await expect(
+      page.getByText("View all sites where your info is exposed"),
+    ).toBeVisible();
+    await expect(
+      page.getByText(
+        /We found your information exposed .\d+. times over .\d+. data breaches and .0. data broker sites that are selling your personal info\./,
+      ),
+    ).toBeVisible();
+
+    // Exposures list
+    const exposureList = page.locator('[class*="exposureList"]');
+    await expect(exposureList).toBeVisible();
+    expect(await exposureList.locator("li").count()).toBeGreaterThan(0);
+
+    // Click the "Let's keep going" button and check the redirection
+    await dashboardPage.upsellScreenButton.click();
+    await page.waitForURL(/.*\/user\/dashboard\/fix.*/);
+    const dataBrokerFixed = page
+      .locator('[class*="FixNavigation"][class*="isCompleted"]')
+      .getByText("Data broker profiles");
+    await expect(dataBrokerFixed).toBeVisible();
   });
 });

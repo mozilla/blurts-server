@@ -5,7 +5,7 @@
 import { test, expect } from "../fixtures/basePage.js";
 import { checkAuthState, setEnvVariables } from "../utils/helpers.js";
 
-test.describe(`${process.env.E2E_TEST_ENV} - Breach Scan, Monitor Plus Purchase Flow Yearly`, () => {
+test.describe(`${process.env.E2E_TEST_ENV} - Breach Scan, Monitor Plus Purchase Flow`, () => {
   test.beforeEach(async ({ page, authPage, landingPage, welcomePage }) => {
     test.info().annotations.push({
       type: "testrail id",
@@ -72,7 +72,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breach Scan, Monitor Plus Purchase 
     // fill out subscription payment
     await purchasePage.authorizationCheckbox.check();
     await purchasePage.fillOutStripeCardInfo();
-    await purchasePage.payNowButton.click();
+    await purchasePage.payNowButton.click({ force: true });
     await page.getByText("Subscription confirmation").waitFor();
     // navigate to confirmation
     await purchasePage.getStartedButton.click();
@@ -80,10 +80,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breach Scan, Monitor Plus Purchase 
     await purchasePage.goToNextStep.click();
 
     // confirm successful payment
-    await dashboardPage.plusSubscription.waitFor({
-      state: "attached",
-      timeout: 5000,
-    });
+    await dashboardPage.plusSubscription.waitFor();
     await expect(dashboardPage.plusSubscription).toBeVisible();
   });
 
@@ -139,9 +136,10 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breach Scan, Monitor Plus Purchase 
     await purchasePage.subscriptionHeader.waitFor();
 
     // fill out subscription payment
+    await purchasePage.authorizationCheckbox.waitFor();
     await purchasePage.authorizationCheckbox.check();
     await purchasePage.fillOutStripeCardInfo();
-    await purchasePage.payNowButton.click();
+    await purchasePage.payNowButton.click({ force: true });
     await page.getByText("Subscription confirmation").waitFor();
     // navigate to confirmation
     await purchasePage.getStartedButton.click();
@@ -153,5 +151,51 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breach Scan, Monitor Plus Purchase 
       timeout: 5000,
     });
     await expect(dashboardPage.plusSubscription).toBeVisible();
+  });
+
+  test("Verify that the user can purchase the plus subscription with a PayPal account - yearly", async ({
+    purchasePage,
+    dashboardPage,
+    context,
+  }) => {
+    test.skip(
+      process.env.E2E_TEST_ENV === "production",
+      "payment method test not available in production",
+    );
+    // link to testrail case
+    test.info().annotations.push({
+      type: "testrail",
+      description:
+        "https://testrail.stage.mozaws.net/index.php?/cases/view/2463628",
+    });
+
+    await purchasePage.gotoPurchaseFromDashboard(dashboardPage, true);
+    // fill out subscription payment
+    await purchasePage.authorizationCheckbox.check();
+    await purchasePage.fillOutPaypalInfo(context);
+    await purchasePage.postPaymentPageCheck(dashboardPage);
+  });
+
+  test("Verify that the user can purchase the plus subscription with a PayPal account - monthly", async ({
+    purchasePage,
+    dashboardPage,
+    context,
+  }) => {
+    test.skip(
+      process.env.E2E_TEST_ENV === "production",
+      "payment method test not available in production",
+    );
+    // link to testrail case
+    test.info().annotations.push({
+      type: "testrail",
+      description:
+        "https://testrail.stage.mozaws.net/index.php?/cases/view/2463628",
+    });
+
+    await purchasePage.gotoPurchaseFromDashboard(dashboardPage, false);
+    // fill out subscription payment
+    await purchasePage.authorizationCheckbox.check();
+    await purchasePage.fillOutPaypalInfo(context);
+    await purchasePage.postPaymentPageCheck(dashboardPage);
   });
 });

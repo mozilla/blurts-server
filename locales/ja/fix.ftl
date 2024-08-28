@@ -27,6 +27,7 @@ fix-flow-celebration-leaked-passwords-title = これであなたのパスワー�
 # High Risk Data Breaches
 
 high-risk-breach-heading = やるべきこと
+high-risk-breach-mark-as-fixed = 修正済みとしてマーク
 
 # Credit Card Breaches
 
@@ -67,6 +68,7 @@ security-recommendation-phone-title = 電話番号を保護しましょう
 
 # Leaked Passwords
 
+leaked-passwords-mark-as-fixed = 修正済みとしてマーク
 
 # Leaked Security Questions
 
