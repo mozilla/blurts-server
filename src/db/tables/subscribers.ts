@@ -5,7 +5,6 @@
 import createDbConnection from "../connect.js";
 import AppConstants from "../../appConstants.js";
 import { SubscriberRow } from "knex/types/tables";
-import { logger } from "../../app/functions/server/logging";
 import { SerializedSubscriber } from "../../next-auth.js";
 
 const knex = createDbConnection();
@@ -122,10 +121,6 @@ async function updateFxAData(
   fxaProfileData: any,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
 ): Promise<any> {
-  if (!subscriber) {
-    return logger.error("Subscriber ID not available");
-  }
-
   const fxaUID = JSON.parse(fxaProfileData).uid;
   const updated = await knex("subscribers")
     .where("id", "=", subscriber.id)
@@ -148,17 +143,13 @@ async function updateFxAData(
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
 async function updateFxATokens(
-  subscriber: SubscriberRow | SerializedSubscriber | null,
+  subscriber: SubscriberRow | SerializedSubscriber,
   fxaAccessToken: string | null,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   fxaRefreshToken: string | null,
   sessionExpiresAt: number,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
 ): Promise<any> {
-  if (!subscriber) {
-    return logger.error("Subscriber ID not available");
-  }
-
   const updateResp = await knex("subscribers")
     .where("id", "=", subscriber.id)
     .update({
