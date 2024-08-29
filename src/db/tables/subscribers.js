@@ -649,6 +649,20 @@ async function unresolveAllBreaches(oneRepProfileId) {
 }
 /* c8 ignore stop */
 
+/* c8 ignore start */
+/**
+ * @param {number} subscriberId
+ */
+async function isSubscriberPlus(subscriberId) {
+  const res = await knex('subscribers')
+    .select('fxa_profile_json')
+    .where('id', subscriberId)
+    .first();
+
+  return (res && res.fxa_profile_json?.subscriptions?.includes(MONITOR_PREMIUM_CAPABILITY))
+}
+/* c8 ignore stop */
+
 export {
   getOnerepProfileId,
   getSubscribersByHashes,
@@ -678,5 +692,6 @@ export {
   incrementSignInCountForEligibleFreeUser,
   getSignInCount,
   unresolveAllBreaches,
+  isSubscriberPlus,
   knex as knexSubscribers
 }
