@@ -249,7 +249,7 @@ Promise<SubscriberRow | null> {
 
   const verified = await _verifySubscriber(emailHash);
   const verifiedSubscriber = Array.isArray(verified) ? verified[0] : null;
-  if (fxaRefreshToken || fxaProfileData) {
+  if ((fxaRefreshToken || fxaProfileData) && verifiedSubscriber) {
     return updateFxAData(
       verifiedSubscriber,
       fxaAccessToken,

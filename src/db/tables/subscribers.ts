@@ -114,7 +114,7 @@ async function updatePrimaryEmail(
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
 async function updateFxAData(
-  subscriber: SubscriberRow | SerializedSubscriber | null,
+  subscriber: SubscriberRow | SerializedSubscriber,
   fxaAccessToken: string | null,
   fxaRefreshToken: string | null,
   sessionExpiresAt: number,
