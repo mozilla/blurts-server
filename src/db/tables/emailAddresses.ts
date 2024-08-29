@@ -256,7 +256,7 @@ Promise<SubscriberRow | null> {
       fxaRefreshToken,
       sessionExpiresAt,
       fxaProfileData,
-    ) as Promise<SubscriberRow | null>;
+    ) as Promise<SubscriberRow>;
   }
 
   return verifiedSubscriber;

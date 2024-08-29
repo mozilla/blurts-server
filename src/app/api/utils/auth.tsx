@@ -243,10 +243,8 @@ export const authOptions: AuthOptions = {
             // causing the session token cookie to balloon in size,
             // eventually resulting in a 400 Bad Request due to headers being too large.
 
-            if (updatedUser) {
-              delete updatedUser.breach_resolution;
-              token.subscriber = updatedUser;
-            }
+            delete updatedUser.breach_resolution;
+            token.subscriber = updatedUser;
           } catch (error) {
             logger.error("refresh_access_token", error);
             // The error property can be used client-side to handle the refresh token error
