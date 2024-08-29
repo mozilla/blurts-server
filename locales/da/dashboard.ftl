@@ -133,4 +133,5 @@ dashboard-top-banner-monitor-more-cta = Hold øje med flere mailadresser
 modal-exposure-status-description-all =
     Vi leder efter eksponeringer i alle kendte datalæk.
     Dine eksponeringer vil have én af følgende statusser:
+modal-exposure-indicator-title = Status for eksponeringer
 modal-exposure-indicator-fixed = Eksponeringen er løst, og du behøver ikke at gøre noget.
