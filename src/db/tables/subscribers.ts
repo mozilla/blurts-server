@@ -388,6 +388,7 @@ async function getSubscribersWaitingForMonthlyEmail(
   let query = knex("subscribers")
     .select()
     // Only send to users who haven't opted out of the monthly activity email...
+    // It looks like Knex's `.where` type definition doesn't accept Promise-returning
     // eslint-disable-next-line @typescript-eslint/no-misused-promises
     .where((builder) =>
       builder
@@ -395,6 +396,7 @@ async function getSubscribersWaitingForMonthlyEmail(
         .orWhere("monthly_monitor_report", true),
     )
     // ...who haven't received the email in the last 1 month...
+    // It looks like Knex's `.where` type definition doesn't accept Promise-returning
     // eslint-disable-next-line @typescript-eslint/no-misused-promises
     .andWhere((builder) =>
       builder
