@@ -10,13 +10,24 @@ const knex = createDbConnection();
 
 // NOTE: The "subscriber_email_preferences" table only has attributes for free reports
 // TODO: modify the CRUD utils after MNTOR-3557
-interface SubscriberFreeEmailPreferences {
+interface SubscriberFreeEmailPreferencesInput {
   primary_email?: string;
+  unsubscribe_token?: string;
   monthly_monitor_report_free?: boolean;
   monthly_monitor_report_free_at?: Date;
 }
 
-interface SubscriberPlusEmailPreferences {
+interface SubscriberPlusEmailPreferencesInput {
+  monthly_monitor_report?: boolean;
+  monthly_monitor_report_at?: Date;
+}
+
+interface SubscriberEmailPreferencesOutput {
+  id?: number;
+  primary_email?: string;
+  unsubscribe_token?: string;
+  monthly_monitor_report_free?: boolean;
+  monthly_monitor_report_free_at?: Date;
   monthly_monitor_report?: boolean;
   monthly_monitor_report_at?: Date;
 }
@@ -25,7 +36,7 @@ interface SubscriberPlusEmailPreferences {
 // this function only adds email prefs for free reports
 async function addEmailPreferenceForSubscriber(
   subscriberId: number,
-  preference: SubscriberFreeEmailPreferences,
+  preference: SubscriberFreeEmailPreferencesInput,
 ) {
   logger.info("add_email_preference_for_subscriber", {
     subscriberId,
@@ -38,13 +49,14 @@ async function addEmailPreferenceForSubscriber(
       .insert({
         subscriber_id: subscriberId,
         primary_email: preference.primary_email || "",
+        unsubscribe_token: preference.unsubscribe_token || "",
         monthly_monitor_report_free:
           preference.monthly_monitor_report_free ?? true,
         monthly_monitor_report_free_at:
           preference.monthly_monitor_report_free_at ?? null,
       })
       .onConflict("subscriber_id")
-      .ignore()
+      .merge()
       .returning("*");
     logger.debug("add_email_preference_for_subscriber_success");
   } catch (e) {
@@ -60,7 +72,9 @@ async function addEmailPreferenceForSubscriber(
 async function updateEmailPreferenceForSubscriber(
   subscriberId: number,
   isFree: boolean,
-  preference: SubscriberFreeEmailPreferences | SubscriberPlusEmailPreferences,
+  preference:
+    | SubscriberFreeEmailPreferencesInput
+    | SubscriberPlusEmailPreferencesInput,
 ) {
   logger.info("update_email_preference_for_subscriber", {
     subscriberId,
@@ -73,7 +87,7 @@ async function updateEmailPreferenceForSubscriber(
     if (isFree) {
       res = await knex("subscriber_email_preferences")
         .where("subscriber_id", subscriberId)
-        .update({ ...(preference as SubscriberFreeEmailPreferences) })
+        .update({ ...(preference as SubscriberFreeEmailPreferencesInput) })
         .onConflict("subscriber_id")
         .merge()
         .returning(["*"]);
@@ -88,7 +102,7 @@ async function updateEmailPreferenceForSubscriber(
       res = await knex("subscribers")
         .where("id", subscriberId)
         .update({
-          ...(preference as SubscriberPlusEmailPreferences),
+          ...(preference as SubscriberPlusEmailPreferencesInput),
           // @ts-ignore knex.fn.now() results in it being set to a date,
           // even if it's not typed as a JS date object:
           updated_at: knex.fn.now(),
@@ -130,6 +144,7 @@ async function getEmailPreferenceForSubscriber(subscriberId: number) {
         "subscribers.first_broker_removal_email_sent",
         "subscriber_email_preferences.monthly_monitor_report_free",
         "subscriber_email_preferences.monthly_monitor_report_free_at",
+        "subscriber_email_preferences.unsubscribe_token",
       )
       .from("subscribers")
       .where("subscribers.id", subscriberId)
@@ -171,6 +186,7 @@ async function getEmailPreferenceForPrimaryEmail(email: string) {
         "subscribers.first_broker_removal_email_sent",
         "subscriber_email_preferences.monthly_monitor_report_free",
         "subscriber_email_preferences.monthly_monitor_report_free_at",
+        "subscriber_email_preferences.unsubscribe_token",
       )
       .from("subscribers")
       .where("subscribers.primary_email", email)
@@ -192,7 +208,7 @@ async function getEmailPreferenceForPrimaryEmail(email: string) {
 
     throw e;
   }
-  return res?.[0];
+  return res?.[0] as SubscriberEmailPreferencesOutput;
 }
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
@@ -202,14 +218,7 @@ async function unsubscribeMonthlyMonitorReportForEmail(email: string) {
   try {
     sub = await getEmailPreferenceForPrimaryEmail(email);
 
-    if (sub.id && sub.monthly_monitor_report_free === null) {
-      // NOTE: since the pref table is new/empty, we have to assume that majority of
-      // the subscribers do not have an record in this new table, in that case, append
-      await addEmailPreferenceForSubscriber(sub.id, {
-        primary_email: sub.primary_email,
-        monthly_monitor_report_free: false,
-      });
-    } else if (sub.id && !sub.monthly_monitor_report_free) {
+    if (sub.id && !sub.monthly_monitor_report_free) {
       logger.info(
         "unsubscribe_monthly_monitor_report_for_email_already_unsubscribed",
       );

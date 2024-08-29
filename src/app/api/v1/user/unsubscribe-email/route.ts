@@ -24,7 +24,7 @@ export async function GET(req: NextRequest) {
       );
     }
 
-    const tokenVerified = verifyUnsubscribeToken(email, unsubToken);
+    const tokenVerified = await verifyUnsubscribeToken(email, unsubToken);
     if (tokenVerified) {
       await unsubscribeMonthlyMonitorReportForEmail(email);
       logger.debug("unsubscribe_email_success");

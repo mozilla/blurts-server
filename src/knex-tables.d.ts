@@ -194,6 +194,7 @@ declare module "knex/types/tables" {
     id: number;
     subscriber_id: number;
     primary_email: string;
+    unsubscribe_token: string;
     monthly_monitor_report_free: boolean;
     monthly_monitor_report_free_at: Date | null;
   }

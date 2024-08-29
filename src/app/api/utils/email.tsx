@@ -12,6 +12,11 @@ import { getL10n } from "../../functions/l10n/serverComponents";
 import { BadRequestError } from "../../../utils/error";
 import { captureException } from "@sentry/node";
 import crypto from "crypto";
+import {
+  addEmailPreferenceForSubscriber,
+  getEmailPreferenceForPrimaryEmail,
+} from "../../../db/tables/subscriber_email_preferences";
+import { SerializedSubscriber } from "../../../next-auth.js";
 
 export async function sendVerificationEmail(
   user: SubscriberRow,
@@ -57,19 +62,16 @@ export async function sendVerificationEmail(
   );
 }
 
-export function generateUnsubscribeLink(email: string) {
-  const secret = process.env.NEXTAUTH_SECRET;
-
+export async function generateUnsubscribeLinkForSubscriber(
+  subscriber: SerializedSubscriber,
+) {
   try {
-    if (!secret) {
-      throw new Error(
-        "generateUnsubscribeLink: env var NEXTAUTH_SECRET is not set",
-      );
-    }
-
-    const key = secret + email;
-    const unsubToken = getSha2(key);
-    return `${process.env.SERVER_URL}/api/v1/user/unsubscribe-email?email=${email}&token=${unsubToken}`;
+    const unsubToken = randomString();
+    const sub = await addEmailPreferenceForSubscriber(subscriber.id, {
+      primary_email: subscriber.primary_email,
+      unsubscribe_token: unsubToken,
+    });
+    return `${process.env.SERVER_URL}/api/v1/user/unsubscribe-email?email=${sub.primary_email}&token=${sub.unsubscribe_token}`;
   } catch (e) {
     console.error("generate_unsubscribe_link", {
       exception: e as string,
@@ -79,18 +81,16 @@ export function generateUnsubscribeLink(email: string) {
   }
 }
 
-export function verifyUnsubscribeToken(email: string, unsubToken: string) {
-  const secret = process.env.NEXTAUTH_SECRET;
-
+export async function verifyUnsubscribeToken(
+  email: string,
+  unsubToken: string,
+) {
   try {
-    if (!secret) {
-      throw new Error(
-        "verifyUnsubscribeToken: env var NEXTAUTH_SECRET is not set",
-      );
+    const preference = await getEmailPreferenceForPrimaryEmail(email);
+    if (!preference) {
+      return false;
     }
-
-    const key = secret + email;
-    return unsubToken === getSha2(key);
+    return unsubToken === preference.unsubscribe_token;
   } catch (e) {
     console.error("verify_unsubscribe_token", {
       exception: e as string,
@@ -100,6 +100,6 @@ export function verifyUnsubscribeToken(email: string, unsubToken: string) {
   }
 }
 
-function getSha2(str: crypto.BinaryLike) {
-  return crypto.createHash("sha256").update(str).digest("hex");
+function randomString(length: number = 64) {
+  return crypto.randomBytes(length).toString("hex");
 }
