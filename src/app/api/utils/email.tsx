@@ -87,7 +87,7 @@ export async function verifyUnsubscribeToken(
 ) {
   try {
     const preference = await getEmailPreferenceForPrimaryEmail(email);
-    if (!preference) {
+    if (!preference || !preference.unsubscribe_token) {
       return false;
     }
     return unsubToken === preference.unsubscribe_token;
