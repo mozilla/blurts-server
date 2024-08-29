@@ -257,7 +257,7 @@ async function setBreachResolution(
 async function deleteUnverifiedSubscribers() {
   // @ts-ignore DELETE_UNVERIFIED_SUBSCRIBERS_TIMER should not be undefined
   const expiredDateTime = new Date(
-    Date.now() - DELETE_UNVERIFIED_SUBSCRIBERS_TIMER * 1000,
+    Date.now() - Number(DELETE_UNVERIFIED_SUBSCRIBERS_TIMER) * 1000,
   );
   const expiredTimeStamp = expiredDateTime.toISOString();
   const numDeleted = await knex("subscribers")
