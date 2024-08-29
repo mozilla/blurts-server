@@ -129,7 +129,7 @@ export const authOptions: AuthOptions = {
               account.access_token,
               account.refresh_token,
               account.expires_at ?? 0,
-              profile,
+              JSON.stringify(profile),
             );
             // MNTOR-2599 The breach_resolution object can get pretty big,
             // causing the session token cookie to balloon in size,
