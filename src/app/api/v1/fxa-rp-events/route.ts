@@ -13,6 +13,7 @@ import {
   updateFxAProfileData,
   updatePrimaryEmail,
   getOnerepProfileId,
+  setMonthlyMonitorReport,
 } from "../../../../db/tables/subscribers.js";
 import {
   activateProfile,
@@ -294,6 +295,9 @@ export async function POST(request: NextRequest) {
             // This is done before trying to activate the OneRep subscription, in case there are
             // any problems with activation.
             await changeSubscription(subscriber, true);
+
+            // Set monthly monitor report value back to true
+            await setMonthlyMonitorReport(subscriber.id, true);
 
             // MNTOR-2103: if one rep profile id doesn't exist in the db, fail immediately
             if (!oneRepProfileId) {
