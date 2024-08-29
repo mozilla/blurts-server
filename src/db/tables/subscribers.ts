@@ -186,8 +186,6 @@ async function updateFxAProfileData(
   fxaProfileData: SubscriberRow["fxa_profile_json"],
 ) {
   await knex("subscribers").where("id", subscriber.id).update({
-    // @ts-ignore Our old code is inconsistent about passing in objects or serialised strings,
-    //            which confuses the typings:
     fxa_profile_json: fxaProfileData,
     // @ts-ignore knex.fn.now() results in it being set to a date,
     // even if it's not typed as a JS date object:
