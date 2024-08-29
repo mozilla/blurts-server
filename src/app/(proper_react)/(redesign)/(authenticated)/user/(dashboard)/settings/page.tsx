@@ -25,7 +25,8 @@ import { getCountryCode } from "../../../../../../functions/server/getCountryCod
 import { getSubscriberById } from "../../../../../../../db/tables/subscribers";
 import { checkSession } from "../../../../../../functions/server/checkSession";
 import { checkUserHasMonthlySubscription } from "../../../../../../functions/server/user";
-
+import { generateUnsubscribeLinkForSubscriber } from "../../../../../../api/utils/email";
+import { getEmailPreferenceForPrimaryEmail } from "../../../../../../../db/tables/subscriber_email_preferences";
 type Props = {
   searchParams: {
     nimbus_web_preview?: string;
@@ -35,6 +36,13 @@ type Props = {
 export default async function SettingsPage({ searchParams }: Props) {
   const session = await getServerSession();
   console.debug(searchParams);
+
+  if (session?.user?.subscriber) {
+    const unsubLink = await generateUnsubscribeLinkForSubscriber(
+      session.user.subscriber,
+    );
+    console.info({ unsubLink });
+  }
 
   if (!session?.user?.subscriber?.id || !checkSession(session)) {
     return redirect("/auth/logout");
@@ -97,6 +105,7 @@ export default async function SettingsPage({ searchParams }: Props) {
       l10n={getL10n()}
       user={session.user}
       subscriber={userData}
+      // emailPreference={emailPreference}
       emailAddresses={emailAddresses}
       breachCountByEmailAddress={breachCountByEmailAddress}
       fxaSettingsUrl={fxaSettingsUrl}
