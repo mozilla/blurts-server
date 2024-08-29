@@ -35,7 +35,7 @@ async function getSubscriberById(id: SubscriberRow["id"]) {
 /* c8 ignore start */
 async function getSubscriberByFxaUid(
   uid: SubscriberRow["fxa_uid"],
-): Promise<SubscriberRow | null> {
+): Promise<SubscriberRow> {
   const [subscriber] = await knex("subscribers").where({
     fxa_uid: uid,
   });
@@ -49,7 +49,7 @@ async function getSubscriberByFxaUid(
 // * @deprecated Use [[getSubscriberByFxAUid]] instead, as email identifiers are unstable (e.g. we've had issues with case-sensitivity).
 async function getSubscriberByEmail(
   email: SubscriberRow["primary_email"],
-): Promise<SubscriberRow | null> {
+): Promise<SubscriberRow> {
   const [subscriber] = await knex("subscribers").where({
     primary_email: email,
     primary_verified: true,
