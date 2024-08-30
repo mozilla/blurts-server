@@ -37,6 +37,7 @@ interface SubscriberEmailPreferencesOutput {
 async function addEmailPreferenceForSubscriber(
   subscriberId: number,
   preference: SubscriberFreeEmailPreferencesInput,
+  fieldsToOverwrite: (keyof SubscriberFreeEmailPreferencesInput)[],
 ) {
   logger.info("add_email_preference_for_subscriber", {
     subscriberId,
@@ -56,7 +57,7 @@ async function addEmailPreferenceForSubscriber(
           preference.monthly_monitor_report_free_at ?? null,
       })
       .onConflict("subscriber_id")
-      .merge()
+      .merge(fieldsToOverwrite)
       .returning("*");
     logger.debug("add_email_preference_for_subscriber_success");
   } catch (e) {
@@ -85,14 +86,13 @@ async function updateEmailPreferenceForSubscriber(
   let res;
   try {
     if (isFree) {
-      res = await knex("subscriber_email_preferences")
-        .where("subscriber_id", subscriberId)
-        .update({ ...(preference as SubscriberFreeEmailPreferencesInput) })
-        .onConflict("subscriber_id")
-        .merge()
-        .returning(["*"]);
+      res = await addEmailPreferenceForSubscriber(
+        subscriberId,
+        preference as SubscriberFreeEmailPreferencesInput,
+        ["monthly_monitor_report_free"],
+      );
 
-      if (res.length !== 1) {
+      if (!res) {
         throw new Error(
           `Update subscriber ${subscriberId} failed, response: ${JSON.stringify(res)}`,
         );
@@ -107,9 +107,9 @@ async function updateEmailPreferenceForSubscriber(
           // even if it's not typed as a JS date object:
           updated_at: knex.fn.now(),
         })
-        .returning("*");
+        .first();
 
-      if (res.length !== 1) {
+      if (!res) {
         throw new Error(
           `Update subscriber ${subscriberId} failed, response: ${JSON.stringify(res)}`,
         );
@@ -123,7 +123,7 @@ async function updateEmailPreferenceForSubscriber(
 
     throw e;
   }
-  return res?.[0];
+  return res;
 }
 
 async function getEmailPreferenceForSubscriber(subscriberId: number) {
