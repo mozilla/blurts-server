@@ -11,7 +11,6 @@ const knex = createDbConnection();
 // NOTE: The "subscriber_email_preferences" table only has attributes for free reports
 // TODO: modify the CRUD utils after MNTOR-3557
 interface SubscriberFreeEmailPreferencesInput {
-  primary_email?: string;
   unsubscribe_token?: string;
   monthly_monitor_report_free?: boolean;
   monthly_monitor_report_free_at?: Date;
@@ -49,7 +48,6 @@ async function addEmailPreferenceForSubscriber(
     res = await knex("subscriber_email_preferences")
       .insert({
         subscriber_id: subscriberId,
-        primary_email: preference.primary_email || "",
         unsubscribe_token: preference.unsubscribe_token || "",
         monthly_monitor_report_free:
           preference.monthly_monitor_report_free ?? true,
@@ -224,7 +222,6 @@ async function unsubscribeMonthlyMonitorReportForEmail(email: string) {
       );
     } else if (sub.id && sub.monthly_monitor_report_free) {
       await updateEmailPreferenceForSubscriber(sub.id, true, {
-        primary_email: sub.primary_email,
         monthly_monitor_report_free: false,
       });
     } else {

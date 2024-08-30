@@ -70,12 +70,11 @@ export async function generateUnsubscribeLinkForSubscriber(
     const sub = await addEmailPreferenceForSubscriber(
       subscriber.id,
       {
-        primary_email: subscriber.primary_email,
         unsubscribe_token: unsubToken,
       },
-      ["primary_email", "unsubscribe_token"],
+      ["unsubscribe_token"],
     );
-    return `${process.env.SERVER_URL}/api/v1/user/unsubscribe-email?email=${sub.primary_email}&token=${sub.unsubscribe_token}`;
+    return `${process.env.SERVER_URL}/api/v1/user/unsubscribe-email?email=${subscriber.primary_email}&token=${sub.unsubscribe_token}`;
   } catch (e) {
     console.error("generate_unsubscribe_link", {
       exception: e as string,
