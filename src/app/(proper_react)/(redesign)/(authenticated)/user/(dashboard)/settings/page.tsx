@@ -105,7 +105,7 @@ export default async function SettingsPage({ searchParams }: Props) {
       l10n={getL10n()}
       user={session.user}
       subscriber={userData}
-      // emailPreference={emailPreference}
+      data={settingsData}
       emailAddresses={emailAddresses}
       breachCountByEmailAddress={breachCountByEmailAddress}
       fxaSettingsUrl={fxaSettingsUrl}

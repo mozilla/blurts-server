@@ -2,11 +2,6 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-## Email preferences
-
-settings-alert-preferences-allow-monthly-monitor-plus-report-title = Monthly { -brand-monitor-plus } report
-settings-alert-preferences-allow-monthly-monitor-plus-report-subtitle = A monthly update of new exposures, what’s been fixed, and what needs your attention.
-
 ## Cancel Plus subscription
 
 settings-cancel-plus-title = Cancel { -brand-monitor-plus } subscription
