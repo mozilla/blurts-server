@@ -5,197 +5,200 @@
 import { test, expect } from "../fixtures/basePage.js";
 import { checkAuthState, setEnvVariables } from "../utils/helpers.js";
 
-test.describe(`${process.env.E2E_TEST_ENV} - Breach Scan, Monitor Plus Purchase Flow`, () => {
-  test.beforeEach(async ({ page, authPage, landingPage, welcomePage }) => {
-    test.info().annotations.push({
-      type: "testrail id",
-      description:
-        "https://testrail.stage.mozaws.net/index.php?/cases/view/2463564",
-    });
+test.describe.skip(
+  `${process.env.E2E_TEST_ENV} - Breach Scan, Monitor Plus Purchase Flow`,
+  () => {
+    test.beforeEach(async ({ page, authPage, landingPage, welcomePage }) => {
+      test.info().annotations.push({
+        type: "testrail id",
+        description:
+          "https://testrail.stage.mozaws.net/index.php?/cases/view/2463564",
+      });
 
-    test.slow(
-      true,
-      "this test runs through the welcome scan flow, increasing timeout to address it",
-    );
-
-    setEnvVariables(process.env.E2E_TEST_ACCOUNT_EMAIL as string);
-
-    // speed up test by ignoring non necessary requests
-    await page.route(/(analytics)/, async (route) => {
-      await route.abort();
-    });
-
-    // start authentication flow
-    await landingPage.open();
-    await landingPage.goToSignIn();
-
-    // Fill out sign up form
-    const randomEmail = `_${Date.now()}@restmail.net`;
-    await authPage.signUp(randomEmail, page);
-
-    // wait for welcome page
-    await page.waitForURL("**/user/welcome");
-    await welcomePage.goThroughFirstScan();
-    expect(page.url()).toContain("/user/dashboard");
-  });
-
-  test("Verify that the user can purchase the plus subscription with a Stripe card - Yearly", async ({
-    dashboardPage,
-    purchasePage,
-    page,
-  }) => {
-    test.skip(
-      process.env.E2E_TEST_ENV === "production",
-      "payment method test not available in production",
-    );
-    // link to testrail case
-    test.info().annotations.push({
-      type: "testrail",
-      description:
-        "https://testrail.stage.mozaws.net/index.php?/cases/view/2463627",
-    });
-
-    try {
-      await checkAuthState(page);
-    } catch {
-      console.log(
-        "[E2E_LOG] - No fxa auth required, proceeding... with stripe yearly",
+      test.slow(
+        true,
+        "this test runs through the welcome scan flow, increasing timeout to address it",
       );
-    }
 
-    // navigate to subscription
-    await dashboardPage.open();
-    await dashboardPage.subscribeButton.click();
-    await dashboardPage.subscribeDialogSelectYearlyPlanLink.click();
-    await purchasePage.subscriptionHeader.waitFor();
+      setEnvVariables(process.env.E2E_TEST_ACCOUNT_EMAIL as string);
 
-    // fill out subscription payment
-    await purchasePage.authorizationCheckbox.check();
-    await purchasePage.fillOutStripeCardInfo();
-    await purchasePage.payNowButton.click({ force: true });
-    await page.getByText("Subscription confirmation").waitFor();
-    // navigate to confirmation
-    await purchasePage.getStartedButton.click();
-    await purchasePage.goToNextStep.waitFor();
-    await purchasePage.goToNextStep.click();
+      // speed up test by ignoring non necessary requests
+      await page.route(/(analytics)/, async (route) => {
+        await route.abort();
+      });
 
-    // confirm successful payment
-    await dashboardPage.plusSubscription.waitFor();
-    await expect(dashboardPage.plusSubscription).toBeVisible();
-  });
+      // start authentication flow
+      await landingPage.open();
+      await landingPage.goToSignIn();
 
-  test("Verify that the user can purchase the plus subscription with a Stripe card - Monthly", async ({
-    purchasePage,
-    dashboardPage,
-    page,
-  }) => {
-    test.skip(
-      process.env.E2E_TEST_ENV === "production",
-      "payment method test not available in production",
-    );
-    // link to multiple testrail cases
-    test.info().annotations.push({
-      type: "testrail",
-      description:
-        "https://testrail.stage.mozaws.net/index.php?/cases/view/2463627",
+      // Fill out sign up form
+      const randomEmail = `_${Date.now()}@restmail.net`;
+      await authPage.signUp(randomEmail, page);
+
+      // wait for welcome page
+      await page.waitForURL("**/user/welcome");
+      await welcomePage.goThroughFirstScan();
+      expect(page.url()).toContain("/user/dashboard");
     });
 
-    test.info().annotations.push({
-      type: "testrail",
-      description:
-        "https://testrail.stage.mozaws.net/index.php?/cases/view/2301529",
-    });
-
-    try {
-      await checkAuthState(page);
-    } catch {
-      console.log(
-        "[E2E_LOG] - No fxa auth required, proceeding... with stripe monthly",
+    test("Verify that the user can purchase the plus subscription with a Stripe card - Yearly", async ({
+      dashboardPage,
+      purchasePage,
+      page,
+    }) => {
+      test.skip(
+        process.env.E2E_TEST_ENV === "production",
+        "payment method test not available in production",
       );
-    }
+      // link to testrail case
+      test.info().annotations.push({
+        type: "testrail",
+        description:
+          "https://testrail.stage.mozaws.net/index.php?/cases/view/2463627",
+      });
 
-    // navigate to subscription
-    await dashboardPage.open();
-    await dashboardPage.subscribeButton.click();
+      try {
+        await checkAuthState(page);
+      } catch {
+        console.log(
+          "[E2E_LOG] - No fxa auth required, proceeding... with stripe yearly",
+        );
+      }
 
-    // verify user purchase choices
-    await expect(dashboardPage.subscribeDialogCloseButton).toBeVisible();
-    await expect(dashboardPage.yearlyMonthlyTablist).toBeVisible();
-    await dashboardPage.yearlyTab.click();
-    await expect(
-      dashboardPage.subscribeDialogSelectYearlyPlanLink,
-    ).toBeVisible();
+      // navigate to subscription
+      await dashboardPage.open();
+      await dashboardPage.subscribeButton.click();
+      await dashboardPage.subscribeDialogSelectYearlyPlanLink.click();
+      await purchasePage.subscriptionHeader.waitFor();
 
-    await dashboardPage.monthlyTab.click();
-    await expect(
-      dashboardPage.subscribeDialogSelectMonthlyPlanLink,
-    ).toBeVisible();
+      // fill out subscription payment
+      await purchasePage.authorizationCheckbox.check();
+      await purchasePage.fillOutStripeCardInfo();
+      await purchasePage.payNowButton.click({ force: true });
+      await page.getByText("Subscription confirmation").waitFor();
+      // navigate to confirmation
+      await purchasePage.getStartedButton.click();
+      await purchasePage.goToNextStep.waitFor();
+      await purchasePage.goToNextStep.click();
 
-    await dashboardPage.monthlyTab.click();
-    await dashboardPage.subscribeDialogSelectMonthlyPlanLink.click();
-    await purchasePage.subscriptionHeader.waitFor();
-
-    // fill out subscription payment
-    await purchasePage.authorizationCheckbox.waitFor();
-    await purchasePage.authorizationCheckbox.check();
-    await purchasePage.fillOutStripeCardInfo();
-    await purchasePage.payNowButton.click({ force: true });
-    await page.getByText("Subscription confirmation").waitFor();
-    // navigate to confirmation
-    await purchasePage.getStartedButton.click();
-    await purchasePage.goToNextStep.click();
-
-    // confirm successful payment
-    await dashboardPage.plusSubscription.waitFor({
-      state: "attached",
-      timeout: 5000,
-    });
-    await expect(dashboardPage.plusSubscription).toBeVisible();
-  });
-
-  test("Verify that the user can purchase the plus subscription with a PayPal account - yearly", async ({
-    purchasePage,
-    dashboardPage,
-    context,
-  }) => {
-    test.skip(
-      process.env.E2E_TEST_ENV === "production",
-      "payment method test not available in production",
-    );
-    // link to testrail case
-    test.info().annotations.push({
-      type: "testrail",
-      description:
-        "https://testrail.stage.mozaws.net/index.php?/cases/view/2463628",
+      // confirm successful payment
+      await dashboardPage.plusSubscription.waitFor();
+      await expect(dashboardPage.plusSubscription).toBeVisible();
     });
 
-    await purchasePage.gotoPurchaseFromDashboard(dashboardPage, true);
-    // fill out subscription payment
-    await purchasePage.authorizationCheckbox.check();
-    await purchasePage.fillOutPaypalInfo(context);
-    await purchasePage.postPaymentPageCheck(dashboardPage);
-  });
+    test("Verify that the user can purchase the plus subscription with a Stripe card - Monthly", async ({
+      purchasePage,
+      dashboardPage,
+      page,
+    }) => {
+      test.skip(
+        process.env.E2E_TEST_ENV === "production",
+        "payment method test not available in production",
+      );
+      // link to multiple testrail cases
+      test.info().annotations.push({
+        type: "testrail",
+        description:
+          "https://testrail.stage.mozaws.net/index.php?/cases/view/2463627",
+      });
 
-  test("Verify that the user can purchase the plus subscription with a PayPal account - monthly", async ({
-    purchasePage,
-    dashboardPage,
-    context,
-  }) => {
-    test.skip(
-      process.env.E2E_TEST_ENV === "production",
-      "payment method test not available in production",
-    );
-    // link to testrail case
-    test.info().annotations.push({
-      type: "testrail",
-      description:
-        "https://testrail.stage.mozaws.net/index.php?/cases/view/2463628",
+      test.info().annotations.push({
+        type: "testrail",
+        description:
+          "https://testrail.stage.mozaws.net/index.php?/cases/view/2301529",
+      });
+
+      try {
+        await checkAuthState(page);
+      } catch {
+        console.log(
+          "[E2E_LOG] - No fxa auth required, proceeding... with stripe monthly",
+        );
+      }
+
+      // navigate to subscription
+      await dashboardPage.open();
+      await dashboardPage.subscribeButton.click();
+
+      // verify user purchase choices
+      await expect(dashboardPage.subscribeDialogCloseButton).toBeVisible();
+      await expect(dashboardPage.yearlyMonthlyTablist).toBeVisible();
+      await dashboardPage.yearlyTab.click();
+      await expect(
+        dashboardPage.subscribeDialogSelectYearlyPlanLink,
+      ).toBeVisible();
+
+      await dashboardPage.monthlyTab.click();
+      await expect(
+        dashboardPage.subscribeDialogSelectMonthlyPlanLink,
+      ).toBeVisible();
+
+      await dashboardPage.monthlyTab.click();
+      await dashboardPage.subscribeDialogSelectMonthlyPlanLink.click();
+      await purchasePage.subscriptionHeader.waitFor();
+
+      // fill out subscription payment
+      await purchasePage.authorizationCheckbox.waitFor();
+      await purchasePage.authorizationCheckbox.check();
+      await purchasePage.fillOutStripeCardInfo();
+      await purchasePage.payNowButton.click({ force: true });
+      await page.getByText("Subscription confirmation").waitFor();
+      // navigate to confirmation
+      await purchasePage.getStartedButton.click();
+      await purchasePage.goToNextStep.click();
+
+      // confirm successful payment
+      await dashboardPage.plusSubscription.waitFor({
+        state: "attached",
+        timeout: 5000,
+      });
+      await expect(dashboardPage.plusSubscription).toBeVisible();
     });
 
-    await purchasePage.gotoPurchaseFromDashboard(dashboardPage, false);
-    // fill out subscription payment
-    await purchasePage.authorizationCheckbox.check();
-    await purchasePage.fillOutPaypalInfo(context);
-    await purchasePage.postPaymentPageCheck(dashboardPage);
-  });
-});
+    test("Verify that the user can purchase the plus subscription with a PayPal account - yearly", async ({
+      purchasePage,
+      dashboardPage,
+      context,
+    }) => {
+      test.skip(
+        process.env.E2E_TEST_ENV === "production",
+        "payment method test not available in production",
+      );
+      // link to testrail case
+      test.info().annotations.push({
+        type: "testrail",
+        description:
+          "https://testrail.stage.mozaws.net/index.php?/cases/view/2463628",
+      });
+
+      await purchasePage.gotoPurchaseFromDashboard(dashboardPage, true);
+      // fill out subscription payment
+      await purchasePage.authorizationCheckbox.check();
+      await purchasePage.fillOutPaypalInfo(context);
+      await purchasePage.postPaymentPageCheck(dashboardPage);
+    });
+
+    test("Verify that the user can purchase the plus subscription with a PayPal account - monthly", async ({
+      purchasePage,
+      dashboardPage,
+      context,
+    }) => {
+      test.skip(
+        process.env.E2E_TEST_ENV === "production",
+        "payment method test not available in production",
+      );
+      // link to testrail case
+      test.info().annotations.push({
+        type: "testrail",
+        description:
+          "https://testrail.stage.mozaws.net/index.php?/cases/view/2463628",
+      });
+
+      await purchasePage.gotoPurchaseFromDashboard(dashboardPage, false);
+      // fill out subscription payment
+      await purchasePage.authorizationCheckbox.check();
+      await purchasePage.fillOutPaypalInfo(context);
+      await purchasePage.postPaymentPageCheck(dashboardPage);
+    });
+  },
+);

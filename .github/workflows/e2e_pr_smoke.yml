@@ -1,4 +1,4 @@
-name: Monitor e2e Smoke Tests
+name: Monitor E2E Smoke Test Suite
 on:
   push:
     branches: [ main ]
