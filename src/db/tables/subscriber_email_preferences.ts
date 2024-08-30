@@ -22,7 +22,7 @@ interface SubscriberPlusEmailPreferencesInput {
   monthly_monitor_report_at?: Date;
 }
 
-interface SubscriberEmailPreferencesOutput {
+export interface SubscriberEmailPreferencesOutput {
   id?: number;
   primary_email?: string;
   unsubscribe_token?: string;
