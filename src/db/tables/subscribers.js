@@ -365,7 +365,7 @@ async function getPotentialSubscribersWaitingForFirstDataBrokerRemovalFixedEmail
     )
     // ...with an OneRep account...
     .whereNotNull("onerep_profile_id")
-    // ...who haven’t received the email...
+    // ...who haven't received the email...
     .andWhere("first_broker_removal_email_sent", false)
     // ...and signed up after the feature flag `FirstDataBrokerRemovalFixedEmail`
     // has been enabled last.
@@ -659,7 +659,7 @@ async function isSubscriberPlus(subscriberId) {
     .where('id', subscriberId)
     .first();
 
-  return (res && res.fxa_profile_json?.subscriptions?.includes(MONITOR_PREMIUM_CAPABILITY))
+  return !!(res && res.fxa_profile_json?.subscriptions?.includes(MONITOR_PREMIUM_CAPABILITY));
 }
 /* c8 ignore stop */
 
