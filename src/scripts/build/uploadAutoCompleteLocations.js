@@ -71,7 +71,7 @@ function writeFromRemoteFile({ url, writeStream }) {
   return new Promise((resolve, reject) => {
     https.get(url, (res) => {
       res.on("end", () => {
-        resolve(res);
+        writeStream.close(() => resolve(res));
       });
       res.on("error", (error) => {
         reject(error);
