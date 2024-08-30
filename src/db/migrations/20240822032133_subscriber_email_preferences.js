@@ -7,8 +7,7 @@ export async function up(knex) {
     .createTable('subscriber_email_preferences', function(table) {
       table.increments('id').primary();
       table.integer("subscriber_id").references("subscribers.id").unique().notNullable().onDelete('CASCADE').onUpdate('CASCADE');
-      table.string('primary_email').notNullable();
-      table.string('unsubscribe_token').notNullable();
+      table.string('unsubscribe_token');
       table.boolean('monthly_monitor_report_free').defaultTo(true);
       table.timestamp('monthly_monitor_report_free_at');
     })
