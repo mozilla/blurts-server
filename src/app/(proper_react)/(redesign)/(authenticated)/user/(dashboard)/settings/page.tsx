@@ -96,20 +96,20 @@ export default async function SettingsPage({ searchParams }: Props) {
   );
 
   const userData = await getSubscriberById(session.user.subscriber.id);
-  const emailPreference = await getEmailPreferenceForPrimaryEmail(
+  const settingsData = await getEmailPreferenceForPrimaryEmail(
     session.user.email,
   );
   console.log(
     "Returned from getEmailPreferenceForPrimaryEmail (joining two tables)",
   );
-  console.log({ emailPreference });
+  console.log({ settingsData });
 
   return (
     <SettingsView
       l10n={getL10n()}
       user={session.user}
       subscriber={userData}
-      // emailPreference={emailPreference}
+      data={settingsData}
       emailAddresses={emailAddresses}
       breachCountByEmailAddress={breachCountByEmailAddress}
       fxaSettingsUrl={fxaSettingsUrl}
