@@ -13,6 +13,7 @@ import { getSubscriberBreaches } from "../../../../../../../functions/server/get
 import { getOnerepProfileId } from "../../../../../../../../db/tables/subscribers";
 import { getLatestOnerepScanResults } from "../../../../../../../../db/tables/onerep_scans";
 import { getServerSession } from "../../../../../../../functions/server/getServerSession";
+import { refreshStoredScanResults } from "../../../../../../../functions/server/refreshStoredScanResults";
 
 export default async function FixPage() {
   const session = await getServerSession();
@@ -26,6 +27,9 @@ export default async function FixPage() {
     countryCode,
   });
   const profileId = await getOnerepProfileId(session.user.subscriber.id);
+  if (typeof profileId === "number") {
+    await refreshStoredScanResults(profileId);
+  }
   const scanData = await getLatestOnerepScanResults(profileId);
   const stepDeterminationData: StepDeterminationData = {
     countryCode: countryCode,

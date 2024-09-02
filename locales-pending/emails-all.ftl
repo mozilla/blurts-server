@@ -4,15 +4,7 @@
 
 # Strings in this file are not yet final, and thus should not be localised yet.
 
-email-header-logo-alt = { -brand-mozilla-monitor }
-email-header-button-sign-in = Sign in
-
-email-footer-support-heading = Questions about { -brand-mozilla-monitor }?
-email-footer-support-content = Visit our <support-link>Support Center</support-link> for help
-email-footer-reason-subscriber = You’re receiving this automated email as a subscriber of { -brand-mozilla-monitor }. If you received it in error, no action is required. For more information, please visit <support-link>{ -brand-mozilla } Support</support-link>.
 email-footer-reason-subscriber-one-time = You’ve received this one-time automated email because you are subscribed to { -brand-monitor-plus }. You won’t receive any further emails like this. For more information, please visit <support-link>{ -brand-mozilla } Support</support-link>.
-email-footer-source-hibp = Breach data provided by <hibp-link>{ -brand-HIBP }</hibp-link>
-email-footer-logo-mozilla-alt = { -brand-mozilla }
 
 ## Monthly overview email
 
@@ -68,3 +60,19 @@ email-first-broker-removal-fixed-content-one = We’re excited to share that we 
 exposure-card-description-info-for-sale-fixed = As a { -brand-monitor-plus } member, we’ve <data_broker_profile>removed this profile</data_broker_profile> for you and will continually monitor to make sure they don’t add you back.
 email-first-broker-removal-fixed-content-two = We’ll keep working on any remaining data broker exposures to help protect your privacy. You can sign in to your dashboard any time to see your progress.
 email-first-broker-removal-fixed-cta-label = View dashboard
+
+## Redesigned breach alert email
+
+email-breach-alert-plus-scan-banner-heading = { -brand-monitor } now protects you even more
+email-breach-alert-plus-scan-banner-content = We can find your personal info on data broker sites that sell it for a profit.
+email-breach-alert-plus-scan-banner-cta-label = Get first scan free
+email-breach-alert-plus-upgrade-banner-heading = Upgrade for extra protection
+email-breach-alert-plus-upgrade-banner-content = { -brand-monitor-plus } can find and remove your phone number, home address, and other personal info from online databases.
+email-breach-alert-plus-upgrade-banner-cta-label = Get { -brand-monitor-plus }
+email-breach-alert-plus-scan-results-heading = Current exposures
+# <stat> is shown on a single line in a large font
+# Variables:
+#   $data_point_count (number) - The number of data points that were exposed
+email-breach-alert-plus-scan-results-data-points-label = <stat>{ $data_point_count }</stat> Data exposures
+email-breach-alert-plus-scan-results-cta-label = Take action to resolve these exposures
+email-breach-alert-plus-scan-results-trailer = We’ll guide you step-by-step through the process

@@ -32,6 +32,8 @@ import { SignupReportEmail } from "../../../../../../emails/templates/signupRepo
 import { getBreachesForEmail } from "../../../../../../utils/hibp";
 import { getSha1 } from "../../../../../../utils/fxa";
 import { getBreaches } from "../../../../../functions/server/getBreaches";
+import { getSignupLocaleCountry } from "../../../../../../emails/functions/getSignupLocaleCountry";
+import { refreshStoredScanResults } from "../../../../../functions/server/refreshStoredScanResults";
 
 async function getAdminSubscriber(): Promise<SubscriberRow | null> {
   const session = await getServerSession();
@@ -132,6 +134,9 @@ export async function triggerMonthlyActivity(emailAddress: string) {
     month: "long",
   });
 
+  if (typeof subscriber.onerep_profile_id === "number") {
+    await refreshStoredScanResults(subscriber.onerep_profile_id);
+  }
   const latestScan = await getLatestOnerepScanResults(
     subscriber.onerep_profile_id,
   );
@@ -156,7 +161,10 @@ export async function triggerMonthlyActivity(emailAddress: string) {
   );
 }
 
-export async function triggerBreachAlert(emailAddress: string) {
+export async function triggerBreachAlert(
+  emailAddress: string,
+  options: Partial<{ redesign: boolean }> = {},
+) {
   const session = await getServerSession();
   const subscriber = await getAdminSubscriber();
   if (!subscriber || !session?.user) {
@@ -165,12 +173,35 @@ export async function triggerBreachAlert(emailAddress: string) {
 
   const l10n = getL10n();
 
+  const assumedCountryCode = getSignupLocaleCountry(subscriber);
+
+  if (typeof subscriber.onerep_profile_id === "number") {
+    await refreshStoredScanResults(subscriber.onerep_profile_id);
+  }
+  const scanData = await getLatestOnerepScanResults(
+    subscriber.onerep_profile_id,
+  );
+  const allSubscriberBreaches = await getSubscriberBreaches({
+    fxaUid: subscriber.fxa_uid,
+    countryCode: assumedCountryCode,
+  });
+
   await send(
     emailAddress,
-    l10n.getString("breach-alert-subject"),
+    l10n.getString(
+      options.redesign === true
+        ? "email-breach-alert-all-subject"
+        : "breach-alert-subject",
+    ),
     <BreachAlertEmail
+      subscriber={subscriber}
       breach={createRandomHibpListing()}
       breachedEmail={emailAddress}
+      allSubscriberBreaches={allSubscriberBreaches}
+      scanData={scanData}
+      enabledFeatureFlags={
+        options.redesign === true ? ["BreachEmailRedesign"] : []
+      }
       utmCampaignId="breach-alert"
       l10n={l10n}
     />,
