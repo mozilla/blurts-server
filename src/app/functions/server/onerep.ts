@@ -395,14 +395,6 @@ export async function isEligibleForFreeScan(
   return true;
 }
 
-export function isEligibleForPremium(countryCode: string) {
-  if (countryCode !== "us") {
-    return false;
-  }
-
-  return true;
-}
-
 export async function getScanDetails(
   profileId: number,
   scanId: number,

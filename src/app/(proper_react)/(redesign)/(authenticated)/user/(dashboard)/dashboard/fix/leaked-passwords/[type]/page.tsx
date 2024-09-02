@@ -15,7 +15,7 @@ import { getSubscriberEmails } from "../../../../../../../../../functions/server
 import { getCountryCode } from "../../../../../../../../../functions/server/getCountryCode";
 import { getOnerepProfileId } from "../../../../../../../../../../db/tables/subscribers";
 import { getLatestOnerepScanResults } from "../../../../../../../../../../db/tables/onerep_scans";
-import { isEligibleForPremium } from "../../../../../../../../../functions/server/onerep";
+import { isEligibleForPremium } from "../../../../../../../../../functions/universal/premium";
 import { logger } from "../../../../../../../../../functions/server/logging";
 
 interface LeakedPasswordsProps {
