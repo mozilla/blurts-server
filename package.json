@@ -115,7 +115,7 @@
     "@storybook/blocks": "^8.0.0",
     "@storybook/nextjs": "^8.2.9",
     "@storybook/react": "^8.0.0",
-    "@testing-library/jest-dom": "^6.4.6",
+    "@testing-library/jest-dom": "^6.5.0",
     "@testing-library/react": "^16.0.1",
     "@testing-library/user-event": "^14.5.2",
     "@types/adm-zip": "^0.5.5",
