@@ -26,7 +26,6 @@ import { TelemetryLink } from "../../../components/client/TelemetryLink";
 import { HeresHowWeHelp } from "./HeresHowWeHelp";
 import { ScanLimit } from "./ScanLimit";
 import { FaqSection } from "./Faq";
-import { FeatureFlagName } from "../../../../db/tables/featureFlags";
 import { AccountDeletionNotification } from "./AccountDeletionNotification";
 import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 import { FreeScanCta } from "./FreeScanCta";
@@ -36,7 +35,6 @@ export type Props = {
   l10n: ExtendedReactLocalization;
   countryCode: string;
   scanLimitReached: boolean;
-  enabledFlags: FeatureFlagName[];
   experimentData: ExperimentData;
 };
 
@@ -238,10 +236,7 @@ export const View = (props: Props) => {
         {!props.eligibleForPremium && <HeresHowWeHelp />}
         <Plans {...props} />
 
-        <FaqSection
-          isEligibleForPremium={props.eligibleForPremium}
-          enabledFeatureFlags={props.enabledFlags}
-        />
+        <FaqSection isEligibleForPremium={props.eligibleForPremium} />
 
         <div className={styles.signUpEncouragementWrapper}>
           <p className={styles.title}>

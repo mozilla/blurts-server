@@ -5,7 +5,11 @@
   flex-direction: column;
   align-items: center;
   gap: $spacing-lg;
-  padding: $spacing-lg;
+  padding: $spacing-xs;
+
+  @media (min-width: $screen-md) {
+    padding: $spacing-lg;
+  }
 
   header {
     padding: $spacing-2xl $spacing-xl;
@@ -51,10 +55,13 @@
   display: grid;
   align-items: start;
   grid-gap: $spacing-2xl;
-  grid-template-columns: repeat(auto-fit, minmax($content-xs, 1fr));
   list-style-type: none;
   margin: 0;
   padding: 0;
+
+  @media (min-width: $screen-md) {
+    grid-template-columns: repeat(auto-fit, minmax($content-xs, 1fr));
+  }
 
   li {
     height: 100%;
@@ -88,9 +95,12 @@
       flex-direction: column;
       gap: $spacing-md;
       padding: $spacing-lg $spacing-md;
-      // `.breachCard h2` padding + breach logo width + `.breachCard h2` gap,
-      // to align the content to the title in the header:
-      padding-inline-start: calc($spacing-md + 32px + $spacing-md);
+
+      @media (min-width: $screen-sm) {
+        // `.breachCard h2` padding + breach logo width + `.breachCard h2` gap,
+        // to align the content to the title in the header:
+        padding-inline-start: calc($spacing-md + 32px + $spacing-md);
+      }
 
       dt {
         font: $text-body-sm;
@@ -104,11 +114,14 @@
 
     .linkDescription {
       padding: $spacing-md;
-      // `.breachCard h2` padding + breach logo width + `.breachCard h2` gap,
-      // to align the content to the title in the header:
-      padding-inline-start: calc($spacing-md + 32px + $spacing-md);
       color: $color-blue-50;
       font-weight: 700;
+
+      @media (min-width: $screen-sm) {
+        // `.breachCard h2` padding + breach logo width + `.breachCard h2` gap,
+        // to align the content to the title in the header:
+        padding-inline-start: calc($spacing-md + 32px + $spacing-md);
+      }
 
       &:hover {
         text-decoration: underline;

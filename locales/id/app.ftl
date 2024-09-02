@@ -10,195 +10,12 @@
 ## unless otherwise indicated.
 
 -product-name = Mozilla Monitor
--product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name = Monitor
 -brand-name = Firefox
--brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
 -brand-fxa = Firefox Account
 -brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
--brand-send = Firefox Send
--brand-fpn = Firefox Private Network
-
-##
-
-error-could-not-add-email = Tidak dapat menambahkan alamat surel ke basis data.
-error-not-subscribed = Alamat surel ini tidak berlangganan { -product-name }.
-error-hibp-throttled = Terlalu banyak koneksi ke { -brand-HIBP }.
-error-hibp-connect = Gagal tersambung dengan { -brand-HIBP }.
-
-user-add-invalid-email = Surel Tidak Valid
-user-add-too-many-emails = Anda memantau alamat email dengan jumlah maksimum.
-user-add-duplicate-email = Surel ini telah ditambahkan ke { -product-name }.
-user-add-verification-email-just-sent = Surel verifikasi lainnya tidak dapat dikirim secepat ini. Silakan coba lagi nanti.
-user-add-unknown-error = Terjadi kesalahan saat menambahkan alamat surel lainnya. Silakan coba lagi nanti.
-user-delete-unknown-error = Terjadi kesalahan saat menghapus alamat surel. Silakan coba lagi nanti.
-
-user-verify-token-error = Token verifikasi diperlukan.
-
-user-unsubscribe-token-error = Token untuk berhenti berlangganan diperlukan.
-user-unsubscribe-token-email-error = Token dan emailHash untuk berhenti berlangganan diperlukan.
-
-# compromised-data = the kind of user data exposed to hackers in data breach.
-compromised-data = Data yang telah diketahui orang lain:
-
-# Breach data provided by Have I Been Pwned.
-# Variables:
-#   $hibp-link (String) - Link to Have I Been Pwned
-hibp-attribution = Data kebocoran disediakan oleh { $hibp-link }
-
-show-all = Tampilkan Semua
-
-sign-out = Keluar
-
-# Manage Firefox Account, link to page where account holders can change their account settings.
-manage-fxa = Kelola { -brand-fxa }
-
-# Link title
-frequently-asked-questions = Pertanyaan yang Sering Diajukan (FAQ)
-
-# Link title
-preferences = Pengaturan
-
-# Link title
-home = Beranda
-
-# Link title
-security-tips = Tips Keamanan
-
-# Link title
-more-about-this-breach = Lebih lanjut tentang pembobolan ini
-
-monitor-several-emails = Pantau beberapa surel
-
-website-breach = Pembobolan Situs Web
-sensitive-breach = Pembobolan Situs Web Sensitif
-data-aggregator-breach = Pembobolan Agregator Data
-
-what-data = Data apa saja yang terkompromi:
-
-sensitive-sites = Bagaimana { -product-name } memperlakukan situs sensitif?
-sensitive-sites-copy =
-    { -product-name } hanya memunculkan akun yang diasosiasikan dengan
-    macam-macam kebocoran setelah sebuah alamat surel diverifikasi. Ini berarti Anda adalah
-    satu-satu orang yang dapat melihat jika informasi Anda termasuk di dalam kebocoran ini
-    (kecuali seseorang telah mengakses ke akun surel Anda).
-
-delayed-reporting-headline = Mengapa butuh waktu lama untuk melaporkan pembobolan ini?
-delayed-reporting-copy =
-    Terkadang butuh waktu berbulan-bulan atau bertahun-tahun untuk identitas terungkap
-    dalam kebocoran data untuk muncul di web gelap. Pembobolan ditambahkan ke basis data kami
-    segera setelah ditemukan dan diverifikasi.
-
-fxm-warns-you =
-    { -product-name } memperingatkan Anda jika alamat surel Anda telah terungkap
-    dalam kebocoran data daring. Lihat apakah informasi Anda telah terungkap, pelajari cara
-    untuk melindungi akun daring Anda lebih baik, dan dapatkan pemberitahuan jika alamat surel Anda
-    muncul dalam pembobolan baru.
-
-what-is-data-agg = Apa itu agregator data?
-what-is-data-agg-blurb =
-    Pengumpul data, atau pialang data, mengumpulkan informasi dari rekaman
-    publik dan membelinya dari perusahaan lain. Mereka mengkompilasi data ini untuk menjualnya kepada perusahaan
-    untuk tujuan pemasaran. Korban pembobolan ini kecil kemungkinannya mengalami penipuan
-    finansial, tetapi peretas dapat menggunakan data ini untuk menyamar atau membuat profil mereka.
-
-avoid-personal-info = Hindari penggunaan informasi pribadi dalam kata sandi
-
-## What to do after data breach tips
-
-send-verification = Kirim Tautan Verifikasi
-
-# This string is a header on the user preferences page and
-# appears above a check-box list of user options which allow
-# the user to choose whether or not they want to receive breach
-# alerts for all of their monitored email addresses to a single
-# email address.
-breach-summary = Ringkasan Pembobolan
-
-## Variables:
-##   $userName (String) - Username
-
-##
-
-breach-alert-subject = { -product-name } menemukan surel Anda dalam kebocoran data terkini.
-
-## Variables:
-##   $breachName (String) - Number of the breach
-
-# This string is displayed under a large numeral that indicates the total number
-# of data breaches that exposed a user’s password. Don’t add $passwords to
-# your localization, because it would result in the number showing twice.
-passwords-exposed =
-    { $passwords ->
-       *[other] Kata sandi terungkap di semua pembobolan
-    }
-
-# This string is displayed under a large numeral that indicates the total number
-# of data breaches that have exposed the user’s information. Don’t add $breaches to
-# your localization, because it would result in the number showing twice.
-known-data-breaches-exposed =
-    { $breaches ->
-       *[other] Pelanggaran data yang dikenal telah mengekspos informasi Anda
-    }
-
-what-is-a-website-breach = Apa itu pembobolan situs web?
-website-breach-blurb = Kebocoran data situs web terjadi ketika penjahat siber mencuri, menyalin, atau mengungkap informasi pribadi dari akun daring. Biasanya ini merupakan hasil peretas yang menemukan titik lemah dalam keamanan situs web. Pembobolan juga dapat terjadi ketika informasi akun bocor secara tidak sengaja.
-
-# This is a section headline on the breach detail page that appears above
-# a short summary about the breach.
-breach-overview-title = Ringkasan
-
-# This is a standardized breach overview blurb that appears on all breach detail pages.
-# $breachTitle is the name of the breached company or website.
-# $breachDate and $addedDate are calendar dates.
-breach-overview-new = Pada { $breachDate }, { $breachTitle } mengalami pembobolan. Setelah pembobolan ditemukan dan diverifikasi, maka informasi ini ditambahkan ke basis data kami pada { $addedDate }.
-
-# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
-menu = Menu
-
-# This is part of a confirmation message that appears after a user has submitted
-# the form to add an additional email to Firefox Monitor.
-# Variables:
-#   $userEmail (String) - User email address
-verify-the-link = Verifikasi tautan terkirim ke { $userEmail } untuk menambahkannya ke { -product-name }.
-
-## These are part of a confirmation page that appears after a user has verified
-## an additional email to Firefox Monitor.
-
-# This string is a label for the calendar date a breach is added to the database
-# and is followed by that date.
-breach-added-label = Pembobolan ditambahkan pada:
-
-# Section headline
-rec-section-headline = Apa yang harus dilakukan untuk pelanggaran ini
-rec-section-subhead = Kami menyarankan Anda mengambil langkah-langkah ini untuk menjaga informasi pribadi Anda aman dan melindungi identitas digital Anda.
-
-# Section headline
-rec-section-headline-no-pw = Apa yang harus dilakukan untuk melindungi informasi pribadi Anda
-rec-section-subhead-no-pw = Meskipun kata sandi tidak terbongkar dalam pelanggaran ini, masih ada langkah-langkah yang dapat Anda ambil untuk melindungi informasi pribadi Anda dengan lebih baik.
-
-## This string contains nested markup that becomes a link later in the code.
-## Please do not modify or remove "<a>" and "</a>".
-
-##
-
-## These strings contain nested markup that is later used to style the text inside of it.
-## Please do not modify or remove "<span>" and "</span>".
-
-# A status indicator that appears in the top right corner of new breach cards
-new-breach = Baru
-
-## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
-
-## Relay and VPN educational/ad units
-
-# Monitor V2
-
-
-## The following messages are brands and should be kept entirely in English
-
 -brand-firefox = Firefox
 -brand-monitor = Monitor
 -brand-fx-monitor = Mozilla Monitor
@@ -214,18 +31,127 @@ new-breach = Baru
 
 ##
 
-##
+error-not-subscribed = Alamat surel ini tidak berlangganan { -product-name }.
+error-hibp-throttled = Terlalu banyak koneksi ke { -brand-HIBP }.
+error-hibp-connect = Gagal tersambung dengan { -brand-HIBP }.
+user-add-invalid-email = Surel Tidak Valid
+user-add-too-many-emails = Anda memantau alamat email dengan jumlah maksimum.
+user-add-duplicate-email = Surel ini telah ditambahkan ke { -product-name }.
+user-add-verification-email-just-sent = Surel verifikasi lainnya tidak dapat dikirim secepat ini. Silakan coba lagi nanti.
+user-add-unknown-error = Terjadi kesalahan saat menambahkan alamat surel lainnya. Silakan coba lagi nanti.
+user-delete-unknown-error = Terjadi kesalahan saat menghapus alamat surel. Silakan coba lagi nanti.
+user-verify-token-error = Token verifikasi diperlukan.
+# compromised-data = the kind of user data exposed to hackers in data breach.
+compromised-data = Data yang telah diketahui orang lain:
+# Breach data provided by Have I Been Pwned.
+# Variables:
+#   $hibp-link (String) - Link to Have I Been Pwned
+hibp-attribution = Data kebocoran disediakan oleh { $hibp-link }
+show-all = Tampilkan Semua
+sign-out = Keluar
+# Manage Firefox Account, link to page where account holders can change their account settings.
+manage-fxa = Kelola { -brand-fxa }
+# Link title
+preferences = Pengaturan
+# Link title
+home = Beranda
+# Link title
+security-tips = Tips Keamanan
+# Link title
+more-about-this-breach = Lebih lanjut tentang pembobolan ini
+monitor-several-emails = Pantau beberapa surel
+website-breach = Pembobolan Situs Web
+sensitive-breach = Pembobolan Situs Web Sensitif
+data-aggregator-breach = Pembobolan Agregator Data
+what-data = Data apa saja yang terkompromi:
+sensitive-sites = Bagaimana { -product-name } memperlakukan situs sensitif?
+sensitive-sites-copy =
+    { -product-name } hanya memunculkan akun yang diasosiasikan dengan
+    macam-macam kebocoran setelah sebuah alamat surel diverifikasi. Ini berarti Anda adalah
+    satu-satu orang yang dapat melihat jika informasi Anda termasuk di dalam kebocoran ini
+    (kecuali seseorang telah mengakses ke akun surel Anda).
+delayed-reporting-headline = Mengapa butuh waktu lama untuk melaporkan pembobolan ini?
+delayed-reporting-copy =
+    Terkadang butuh waktu berbulan-bulan atau bertahun-tahun untuk identitas terungkap
+    dalam kebocoran data untuk muncul di web gelap. Pembobolan ditambahkan ke basis data kami
+    segera setelah ditemukan dan diverifikasi.
+fxm-warns-you =
+    { -product-name } memperingatkan Anda jika alamat surel Anda telah terungkap
+    dalam kebocoran data daring. Lihat apakah informasi Anda telah terungkap, pelajari cara
+    untuk melindungi akun daring Anda lebih baik, dan dapatkan pemberitahuan jika alamat surel Anda
+    muncul dalam pembobolan baru.
+what-is-data-agg = Apa itu agregator data?
+what-is-data-agg-blurb =
+    Pengumpul data, atau pialang data, mengumpulkan informasi dari rekaman
+    publik dan membelinya dari perusahaan lain. Mereka mengkompilasi data ini untuk menjualnya kepada perusahaan
+    untuk tujuan pemasaran. Korban pembobolan ini kecil kemungkinannya mengalami penipuan
+    finansial, tetapi peretas dapat menggunakan data ini untuk menyamar atau membuat profil mereka.
+avoid-personal-info = Hindari penggunaan informasi pribadi dalam kata sandi
+send-verification = Kirim Tautan Verifikasi
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single
+# email address.
+breach-summary = Ringkasan Pembobolan
 
 ##
 
+breach-alert-subject = { -product-name } menemukan surel Anda dalam kebocoran data terkini.
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that exposed a user’s password. Don’t add $passwords to
+# your localization, because it would result in the number showing twice.
+passwords-exposed =
+    { $passwords ->
+       *[other] Kata sandi terungkap di semua pembobolan
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+known-data-breaches-exposed =
+    { $breaches ->
+       *[other] Pelanggaran data yang dikenal telah mengekspos informasi Anda
+    }
+what-is-a-website-breach = Apa itu pembobolan situs web?
+website-breach-blurb = Kebocoran data situs web terjadi ketika penjahat siber mencuri, menyalin, atau mengungkap informasi pribadi dari akun daring. Biasanya ini merupakan hasil peretas yang menemukan titik lemah dalam keamanan situs web. Pembobolan juga dapat terjadi ketika informasi akun bocor secara tidak sengaja.
+# This is a section headline on the breach detail page that appears above
+# a short summary about the breach.
+breach-overview-title = Ringkasan
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview-new = Pada { $breachDate }, { $breachTitle } mengalami pembobolan. Setelah pembobolan ditemukan dan diverifikasi, maka informasi ini ditambahkan ke basis data kami pada { $addedDate }.
+# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
+menu = Menu
+# This is part of a confirmation message that appears after a user has submitted
+# the form to add an additional email to Firefox Monitor.
+# Variables:
+#   $userEmail (String) - User email address
+verify-the-link = Verifikasi tautan terkirim ke { $userEmail } untuk menambahkannya ke { -product-name }.
+
+## These are part of a confirmation page that appears after a user has verified
+## an additional email to Firefox Monitor.
+
+# This string is a label for the calendar date a breach is added to the database
+# and is followed by that date.
+breach-added-label = Pembobolan ditambahkan pada:
+# Section headline
+rec-section-headline = Apa yang harus dilakukan untuk pelanggaran ini
+rec-section-subhead = Kami menyarankan Anda mengambil langkah-langkah ini untuk menjaga informasi pribadi Anda aman dan melindungi identitas digital Anda.
+# Section headline
+rec-section-headline-no-pw = Apa yang harus dilakukan untuk melindungi informasi pribadi Anda
+rec-section-subhead-no-pw = Meskipun kata sandi tidak terbongkar dalam pelanggaran ini, masih ada langkah-langkah yang dapat Anda ambil untuk melindungi informasi pribadi Anda dengan lebih baik.
+
 ##
 
-## Updated error messages
+# A status indicator that appears in the top right corner of new breach cards
+new-breach = Baru
+
+##
 
 # “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
 -brand-mozilla-account = Akun Mozilla
-
 open-in-new-tab-alt = Buka tautan di tab baru
 
 ## Search Engine Optimization
@@ -242,7 +168,6 @@ brand-mozilla-monitor = { -brand-fx-monitor }
 ## Site navigation
 
 mobile-menu-label = Menu utama
-
 main-nav-button-collapse-label = Ciutkan menu
 main-nav-button-collapse-tooltip = Ciutkan menu
 main-nav-button-expand-label = Bentangkan menu
@@ -272,7 +197,9 @@ mozilla = { -brand-mozilla }
 terms-of-service = Ketentuan Layanan
 privacy-notice = Kebijakan Privasi
 github = { -brand-github }
+# Deprecated
 footer-nav-all-breaches = Semua Pembobolan
+footer-nav-recent-breaches = Pembobolan Data Terbaru
 footer-external-link-faq-label = T&amp;J
 footer-external-link-faq-tooltip = Tanya-Jawab
 
@@ -292,7 +219,6 @@ error-page-error-other-title = { $errorCode } Ada yang tidak beres
 all-breaches-headline-2 = Semua pembobolan yang terdeteksi oleh { -brand-fx-monitor }
 all-breaches-lead = Kami memantau semua pembobolan data yang diketahui untuk mengetahui apakah informasi pribadi Anda telah disusupi. Berikut daftar lengkap semua pembobolan yang telah dilaporkan sejak 2007.
 search-breaches = Cari Pembobolan
-
 # the kind of user data exposed to hackers in data breach.
 exposed-data = Data terungkap:
 
@@ -300,16 +226,11 @@ exposed-data = Data terungkap:
 
 find-out-if-2 = Cari tahu apakah Anda terlibat dalam pembobolan ini
 find-out-if-description = Kami akan membantu untuk dengan cepat melihat apakah alamat surel Anda terungkap dalam pembobolan ini, dan memahami apa yang harus dilakukan selanjutnya.
-
 breach-detail-cta-signup = Periksa pembobolan data
-
-## Floating banner
 
 ## Firefox Monitor -> Mozilla Monitor rebrand banner
 
 banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: Nama baru, tampilan, dan lebih banyak cara untuk <b>mendapatkan kembali privasi Anda</b>.
 banner-monitor-rebrand-dismiss-button-label = Oke
 banner-monitor-rebrand-dismiss-button-tooltip = Tutup
-
 loading-accessibility = Memuat
-

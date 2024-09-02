@@ -10,194 +10,12 @@
 ## unless otherwise indicated.
 
 -product-name = Mozilla Monitor
--product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name = Monitor
 -brand-name = Firefox
--brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
 -brand-fxa = Conta Firefox
 -brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
--brand-send = Firefox Send
--brand-fpn = Firefox Private Network
-
-##
-
-error-could-not-add-email = Não foi possível adicionar endereço de email ao banco de dados.
-error-not-subscribed = Este endereço de email não está cadastrado no { -product-name }
-error-hibp-throttled = Conexões em excesso para o { -brand-HIBP }
-error-hibp-connect = Falha ao conectar com o { -brand-HIBP }.
-
-user-add-invalid-email = Endereço de email inválido
-user-add-too-many-emails = Você está monitorando o número máximo de endereços de email.
-user-add-duplicate-email = Este email já foi adicionado ao { -product-name }.
-user-add-verification-email-just-sent = Outro email de verificação não pode ser enviado tão rapidamente. Tente novamente mais tarde.
-user-add-unknown-error = Algo deu errado ao adicionar outro endereço de email. Tente novamente mais tarde.
-user-delete-unknown-error = Algo deu errado ao remover um endereço de email. Tente novamente mais tarde.
-
-user-verify-token-error = Token de verificação é necessário.
-
-user-unsubscribe-token-error = É necessário um token para cancelar a inscrição.
-user-unsubscribe-token-email-error = Para cancelar a inscrição são necessários um token e um hash de email.
-
-# compromised-data = the kind of user data exposed to hackers in data breach.
-compromised-data = Dados comprometidos:
-
-# Breach data provided by Have I Been Pwned.
-# Variables:
-#   $hibp-link (String) - Link to Have I Been Pwned
-hibp-attribution = Dados de vazamentos fornecidos por { $hibp-link }
-
-show-all = Mostrar tudo
-
-sign-out = Sair
-
-# Manage Firefox Account, link to page where account holders can change their account settings.
-manage-fxa = Gerenciar { -brand-fxa }
-
-# Link title
-frequently-asked-questions = Perguntas frequentes
-
-# Link title
-preferences = Preferências
-
-# Link title
-home = Início
-
-# Link title
-security-tips = Dicas de segurança
-
-# Link title
-more-about-this-breach = Mais informações sobre este vazamento
-
-monitor-several-emails = Monitore vários emails
-
-website-breach = Vazamento de site
-sensitive-breach = Vazamento de site sensível
-data-aggregator-breach = Vazamento de agregador de dados
-
-what-data = Que dados foram comprometidos:
-
-sensitive-sites = Com o { -product-name } trata sites sensíveis?
-sensitive-sites-copy =
-    O { -product-name } só revela contas associadas a esses 
-    tipos de vazamento após um endereço de email ter sido validado. Significa que você é 
-    a única pessoa que pode ver se suas informações apareceram em um vazamento (a menos que
-    mais alguém tenha acesso à sua conta de email).
-
-delayed-reporting-headline = Por que demorou tanto para relatar este vazamento?
-delayed-reporting-copy = Às vezes demora meses ou anos para que credenciais expostas em um vazamento de dados apareça na dark web. Vazamentos são adicionados ao nosso banco de dados assim que são descobertos e confirmados.
-
-fxm-warns-you =
-    O { -product-name } avisa se seu endereço de email foi exposto em um
-    vazamento de dados online. Veja se suas informações foram expostas,
-    aprenda como proteger melhor suas contas online e receba alertas
-    caso seu endereço de email apareça em um novo vazamento.
-
-what-is-data-agg = O que é um agregador de dados?
-what-is-data-agg-blurb =
-    Agregadores de dados, ou negociadores de dados, coletam informações de registros públicos e 
-    também compram de outras empresas. Eles reúnem esses dados para vender para empresas com 
-    propósito de marketing. As vítimas desses vazamentos têm menor probabilidade de sofrer fraudes 
-    financeiras, mas hackers podem usar esses dados para se fazer passar por elas ou traçar seu perfil.
-
-avoid-personal-info = Evite usar informações pessoais em senhas
-
-## What to do after data breach tips
-
-send-verification = Enviar link de verificação
-
-# This string is a header on the user preferences page and
-# appears above a check-box list of user options which allow
-# the user to choose whether or not they want to receive breach
-# alerts for all of their monitored email addresses to a single
-# email address.
-breach-summary = Resumo de vazamentos
-
-## Variables:
-##   $userName (String) - Username
-
-##
-
-breach-alert-subject = O { -product-name } encontrou seu email em um novo vazamento de dados.
-
-## Variables:
-##   $breachName (String) - Number of the breach
-
-# This string is displayed under a large numeral that indicates the total number
-# of data breaches that exposed a user’s password. Don’t add $passwords to
-# your localization, because it would result in the number showing twice.
-passwords-exposed =
-    { $passwords ->
-        [one] Senha exposta em todos os vazamentos
-       *[other] Senhas expostas em todos os vazamentos
-    }
-
-# This string is displayed under a large numeral that indicates the total number
-# of data breaches that have exposed the user’s information. Don’t add $breaches to
-# your localization, because it would result in the number showing twice.
-known-data-breaches-exposed =
-    { $breaches ->
-        [one] Vazamento conhecido de dados expôs suas informações
-       *[other] Vazamentos conhecidos de dados expuseram suas informações
-    }
-
-what-is-a-website-breach = O que é um vazamento de site?
-website-breach-blurb = Um vazamento de dados de site acontece quando criminosos cibernéticos roubam, copiam ou expõem informações pessoais de contas online. Geralmente é resultado de hackers procurando um ponto fraco na segurança do site. Vazamentos também podem acontecer quando informações de contas são vazados por acidente.
-
-# This is a section headline on the breach detail page that appears above
-# a short summary about the breach.
-breach-overview-title = Visão geral
-
-# This is a standardized breach overview blurb that appears on all breach detail pages.
-# $breachTitle is the name of the breached company or website.
-# $breachDate and $addedDate are calendar dates.
-breach-overview-new = Em { $breachDate }, { $breachTitle } foi vazado. Uma vez que o vazamento foi descoberto e confirmado, ele foi adicionado à nossa base de dados em { $addedDate }.
-
-# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
-menu = Menu
-
-# This is part of a confirmation message that appears after a user has submitted
-# the form to add an additional email to Firefox Monitor.
-# Variables:
-#   $userEmail (String) - User email address
-verify-the-link = Clique no link de confirmação enviado para { $userEmail } para adicionar ao { -product-name }.
-
-## These are part of a confirmation page that appears after a user has verified
-## an additional email to Firefox Monitor.
-
-# This string is a label for the calendar date a breach is added to the database
-# and is followed by that date.
-breach-added-label = Informações sobre o vazamento adicionadas em:
-
-# Section headline
-rec-section-headline = O que fazer a respeito deste vazamento
-rec-section-subhead = Recomendamos que você siga estas etapas para manter suas informações pessoais seguras e proteger sua identidade digital.
-
-# Section headline
-rec-section-headline-no-pw = O que fazer para proteger suas informações pessoais
-rec-section-subhead-no-pw = Apesar de não ter sido expostas senhas neste vazamento, ainda existem etapas que você pode seguir para proteger melhor suas informações pessoais.
-
-## This string contains nested markup that becomes a link later in the code.
-## Please do not modify or remove "<a>" and "</a>".
-
-##
-
-## These strings contain nested markup that is later used to style the text inside of it.
-## Please do not modify or remove "<span>" and "</span>".
-
-# A status indicator that appears in the top right corner of new breach cards
-new-breach = Novo
-
-## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
-
-## Relay and VPN educational/ad units
-
-# Monitor V2
-
-
-## The following messages are brands and should be kept entirely in English
-
 -brand-firefox = Firefox
 -brand-monitor = Monitor
 -brand-fx-monitor = Mozilla Monitor
@@ -213,18 +31,126 @@ new-breach = Novo
 
 ##
 
-##
+error-not-subscribed = Este endereço de email não está cadastrado no { -product-name }
+error-hibp-throttled = Conexões em excesso para o { -brand-HIBP }
+error-hibp-connect = Falha ao conectar com o { -brand-HIBP }.
+user-add-invalid-email = Endereço de email inválido
+user-add-too-many-emails = Você está monitorando o número máximo de endereços de email.
+user-add-duplicate-email = Este email já foi adicionado ao { -product-name }.
+user-add-verification-email-just-sent = Outro email de verificação não pode ser enviado tão rapidamente. Tente novamente mais tarde.
+user-add-unknown-error = Algo deu errado ao adicionar outro endereço de email. Tente novamente mais tarde.
+user-delete-unknown-error = Algo deu errado ao remover um endereço de email. Tente novamente mais tarde.
+user-verify-token-error = Token de verificação é necessário.
+# compromised-data = the kind of user data exposed to hackers in data breach.
+compromised-data = Dados comprometidos:
+# Breach data provided by Have I Been Pwned.
+# Variables:
+#   $hibp-link (String) - Link to Have I Been Pwned
+hibp-attribution = Dados de vazamentos fornecidos por { $hibp-link }
+show-all = Mostrar tudo
+sign-out = Sair
+# Manage Firefox Account, link to page where account holders can change their account settings.
+manage-fxa = Gerenciar { -brand-fxa }
+# Link title
+preferences = Preferências
+# Link title
+home = Início
+# Link title
+security-tips = Dicas de segurança
+# Link title
+more-about-this-breach = Mais informações sobre este vazamento
+monitor-several-emails = Monitore vários emails
+website-breach = Vazamento de site
+sensitive-breach = Vazamento de site sensível
+data-aggregator-breach = Vazamento de agregador de dados
+what-data = Que dados foram comprometidos:
+sensitive-sites = Com o { -product-name } trata sites sensíveis?
+sensitive-sites-copy =
+    O { -product-name } só revela contas associadas a esses 
+    tipos de vazamento após um endereço de email ter sido validado. Significa que você é 
+    a única pessoa que pode ver se suas informações apareceram em um vazamento (a menos que
+    mais alguém tenha acesso à sua conta de email).
+delayed-reporting-headline = Por que demorou tanto para relatar este vazamento?
+delayed-reporting-copy = Às vezes demora meses ou anos para que credenciais expostas em um vazamento de dados apareça na dark web. Vazamentos são adicionados ao nosso banco de dados assim que são descobertos e confirmados.
+fxm-warns-you =
+    O { -product-name } avisa se seu endereço de email foi exposto em um
+    vazamento de dados online. Veja se suas informações foram expostas,
+    aprenda como proteger melhor suas contas online e receba alertas
+    caso seu endereço de email apareça em um novo vazamento.
+what-is-data-agg = O que é um agregador de dados?
+what-is-data-agg-blurb =
+    Agregadores de dados, ou negociadores de dados, coletam informações de registros públicos e 
+    também compram de outras empresas. Eles reúnem esses dados para vender para empresas com 
+    propósito de marketing. As vítimas desses vazamentos têm menor probabilidade de sofrer fraudes 
+    financeiras, mas hackers podem usar esses dados para se fazer passar por elas ou traçar seu perfil.
+avoid-personal-info = Evite usar informações pessoais em senhas
+send-verification = Enviar link de verificação
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single
+# email address.
+breach-summary = Resumo de vazamentos
 
 ##
 
+breach-alert-subject = O { -product-name } encontrou seu email em um novo vazamento de dados.
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that exposed a user’s password. Don’t add $passwords to
+# your localization, because it would result in the number showing twice.
+passwords-exposed =
+    { $passwords ->
+        [one] Senha exposta em todos os vazamentos
+       *[other] Senhas expostas em todos os vazamentos
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+known-data-breaches-exposed =
+    { $breaches ->
+        [one] Vazamento conhecido de dados expôs suas informações
+       *[other] Vazamentos conhecidos de dados expuseram suas informações
+    }
+what-is-a-website-breach = O que é um vazamento de site?
+website-breach-blurb = Um vazamento de dados de site acontece quando criminosos cibernéticos roubam, copiam ou expõem informações pessoais de contas online. Geralmente é resultado de hackers procurando um ponto fraco na segurança do site. Vazamentos também podem acontecer quando informações de contas são vazados por acidente.
+# This is a section headline on the breach detail page that appears above
+# a short summary about the breach.
+breach-overview-title = Visão geral
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview-new = Em { $breachDate }, { $breachTitle } foi vazado. Uma vez que o vazamento foi descoberto e confirmado, ele foi adicionado à nossa base de dados em { $addedDate }.
+# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
+menu = Menu
+# This is part of a confirmation message that appears after a user has submitted
+# the form to add an additional email to Firefox Monitor.
+# Variables:
+#   $userEmail (String) - User email address
+verify-the-link = Clique no link de confirmação enviado para { $userEmail } para adicionar ao { -product-name }.
+
+## These are part of a confirmation page that appears after a user has verified
+## an additional email to Firefox Monitor.
+
+# This string is a label for the calendar date a breach is added to the database
+# and is followed by that date.
+breach-added-label = Informações sobre o vazamento adicionadas em:
+# Section headline
+rec-section-headline = O que fazer a respeito deste vazamento
+rec-section-subhead = Recomendamos que você siga estas etapas para manter suas informações pessoais seguras e proteger sua identidade digital.
+# Section headline
+rec-section-headline-no-pw = O que fazer para proteger suas informações pessoais
+rec-section-subhead-no-pw = Apesar de não ter sido expostas senhas neste vazamento, ainda existem etapas que você pode seguir para proteger melhor suas informações pessoais.
+
 ##
 
-## Updated error messages
+# A status indicator that appears in the top right corner of new breach cards
+new-breach = Novo
+
+##
 
 # “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
 -brand-mozilla-account = Conta Mozilla
-
 open-in-new-tab-alt = Abrir link em nova aba
 
 ## Search Engine Optimization
@@ -241,7 +167,6 @@ brand-mozilla-monitor = { -brand-fx-monitor }
 ## Site navigation
 
 mobile-menu-label = Menu principal
-
 main-nav-button-collapse-label = Recolher menu
 main-nav-button-collapse-tooltip = Recolher menu
 main-nav-button-expand-label = Expandir menu
@@ -271,7 +196,9 @@ mozilla = { -brand-mozilla }
 terms-of-service = Termos do serviço
 privacy-notice = Aviso de privacidade
 github = { -brand-github }
+# Deprecated
 footer-nav-all-breaches = Todos os vazamentos
+footer-nav-recent-breaches = Vazamentos recentes de dados
 footer-external-link-faq-label = Dúvidas frequentes
 footer-external-link-faq-tooltip = Dúvidas frequentes
 
@@ -291,7 +218,6 @@ error-page-error-other-title = { $errorCode } Houve algum erro
 all-breaches-headline-2 = Todos os vazamentos detectados pelo { -brand-fx-monitor }
 all-breaches-lead = Monitoramos todos os vazamentos de dados conhecidos para descobrir se suas informações pessoais foram comprometidas. Veja uma lista completa de todos os vazamentos relatados desde 2007.
 search-breaches = Pesquisar vazamentos
-
 # the kind of user data exposed to hackers in data breach.
 exposed-data = Dados expostos:
 
@@ -299,16 +225,11 @@ exposed-data = Dados expostos:
 
 find-out-if-2 = Descubra se você foi vítima deste vazamento
 find-out-if-description = Ajudaremos você a ver rapidamente se seu endereço de email foi exposto neste vazamento e saber o que fazer a seguir.
-
 breach-detail-cta-signup = Verificar se há vazamentos
-
-## Floating banner
 
 ## Firefox Monitor -> Mozilla Monitor rebrand banner
 
 banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: Novo nome, aparência e ainda mais formas de <b>recuperar sua privacidade</b>.
 banner-monitor-rebrand-dismiss-button-label = OK
 banner-monitor-rebrand-dismiss-button-tooltip = Descartar
-
 loading-accessibility = Carregando
-
