@@ -1,4 +1,4 @@
-name: Monitor E2E Full Test Suite
+name: Monitor E2E Test Suite (full)
 on: push
 jobs:
   e2e-tests:

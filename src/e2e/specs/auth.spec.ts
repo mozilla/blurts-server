@@ -4,74 +4,68 @@
 
 import { test, expect } from "../fixtures/basePage.js";
 
-test.describe.skip(
-  `${process.env.E2E_TEST_ENV} - Authentication flow verification @smoke`,
-  () => {
-    test.beforeEach(async ({ landingPage }) => {
-      await landingPage.open();
+test.describe(`${process.env.E2E_TEST_ENV} - Authentication flow verification @smoke`, () => {
+  test.beforeEach(async ({ landingPage }) => {
+    await landingPage.open();
+  });
+
+  test("Verify sign up with new user", async ({
+    page,
+    authPage,
+    landingPage,
+  }, testInfo) => {
+    // speed up test by ignore non necessary requests
+    await page.route(/(analytics)/, async (route) => {
+      await route.abort();
     });
 
-    test("Verify sign up with new user", async ({
-      page,
-      authPage,
-      landingPage,
-    }, testInfo) => {
-      // speed up test by ignore non necessary requests
-      await page.route(/(analytics)/, async (route) => {
-        await route.abort();
-      });
+    // start authentication flow
+    await landingPage.goToSignIn();
 
-      // start authentication flow
-      await landingPage.goToSignIn();
+    // Fill out sign up form
+    const randomEmail = `${Date.now()}_tstact@restmail.net`;
+    await authPage.signUp(randomEmail, page);
 
-      // Fill out sign up form
-      const randomEmail = `${Date.now()}_tstact@restmail.net`;
-      await authPage.signUp(randomEmail, page);
+    // assert successful login
+    const successUrl = "/user/welcome";
+    expect(page.url()).toBe(`${process.env.E2E_TEST_BASE_URL}${successUrl}`);
 
-      // assert successful login
-      const successUrl =
-        process.env.E2E_TEST_ENV === "local"
-          ? "/user/dashboard"
-          : "/user/welcome";
-      expect(page.url()).toBe(`${process.env.E2E_TEST_BASE_URL}${successUrl}`);
+    await testInfo.attach(
+      `${process.env.E2E_TEST_ENV}-signup-monitor-dashboard.png`,
+      {
+        body: await page.screenshot(),
+        contentType: "image/png",
+      },
+    );
+  });
 
-      await testInfo.attach(
-        `${process.env.E2E_TEST_ENV}-signup-monitor-dashboard.png`,
-        {
-          body: await page.screenshot(),
-          contentType: "image/png",
-        },
-      );
+  test("Verify sign in with existing user", async ({
+    page,
+    authPage,
+    landingPage,
+    dashboardPage,
+  }, testInfo) => {
+    // speed up test by ignore non necessary requests
+    await page.route(/(analytics)/, async (route) => {
+      await route.abort();
     });
 
-    test("Verify sign in with existing user", async ({
-      page,
-      authPage,
-      landingPage,
-      dashboardPage,
-    }, testInfo) => {
-      // speed up test by ignore non necessary requests
-      await page.route(/(analytics)/, async (route) => {
-        await route.abort();
-      });
+    // start authentication flow
+    await landingPage.goToSignIn();
 
-      // start authentication flow
-      await landingPage.goToSignIn();
+    // sign in
+    await authPage.signIn(process.env.E2E_TEST_ACCOUNT_EMAIL as string);
 
-      // sign in
-      await authPage.signIn(process.env.E2E_TEST_ACCOUNT_EMAIL as string);
+    // assert successful login
+    await expect(dashboardPage.fixedTab).toBeVisible();
+    await expect(dashboardPage.actionNeededTab).toBeVisible();
 
-      // assert successful login
-      await expect(dashboardPage.fixedTab).toBeVisible();
-      await expect(dashboardPage.actionNeededTab).toBeVisible();
-
-      await testInfo.attach(
-        `${process.env.E2E_TEST_ENV}-signin-monitor-dashboard.png`,
-        {
-          body: await page.screenshot(),
-          contentType: "image/png",
-        },
-      );
-    });
-  },
-);
+    await testInfo.attach(
+      `${process.env.E2E_TEST_ENV}-signin-monitor-dashboard.png`,
+      {
+        body: await page.screenshot(),
+        contentType: "image/png",
+      },
+    );
+  });
+});

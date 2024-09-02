@@ -1,6 +1,7 @@
 name: Build Docker image check
 on:
   pull_request:
+    types: [closed]
 jobs:
   docker_build:
     name: Build Docker image

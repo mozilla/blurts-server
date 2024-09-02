@@ -6,7 +6,7 @@ import { test, expect } from "../fixtures/basePage.js";
 
 // bypass login
 test.use({ storageState: "./e2e/storageState.json" });
-test.describe.skip(`${process.env.E2E_TEST_ENV} Settings Page`, () => {
+test.describe(`${process.env.E2E_TEST_ENV} Settings Page`, () => {
   test("Verify settings page loads", async ({ settingsPage }) => {
     // should go directly to data breach page
     await settingsPage.open();

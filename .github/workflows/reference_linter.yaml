@@ -1,8 +1,7 @@
 name: Lint Reference Files
 on:
-  push:
   pull_request:
-  workflow_dispatch:
+    types: [closed]
 jobs:
   l10n-lint:
     runs-on: ubuntu-latest
