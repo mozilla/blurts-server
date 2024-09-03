@@ -2,9 +2,10 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import type { Profile } from "next-auth";
+import type { EmailAddressRow, SubscriberRow } from "knex/types/tables";
 import createDbConnection from "../connect.js";
 import AppConstants from "../../appConstants.js";
-import { SubscriberRow } from "knex/types/tables";
 import { SerializedSubscriber } from "../../next-auth.js";
 
 const knex = createDbConnection();
@@ -22,10 +23,15 @@ async function getSubscribersByHashes(hashes: string[]) {
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-async function getSubscriberById(id: SubscriberRow["id"]) {
+async function getSubscriberById(
+  id: SubscriberRow["id"],
+): Promise<undefined | (SubscriberRow & WithEmailAddresses)> {
   const [subscriber] = await knex("subscribers").where({
     id,
   });
+  if (!subscriber) {
+    return;
+  }
   const subscriberAndEmails = await joinEmailAddressesToSubscriber(subscriber);
   return subscriberAndEmails;
 }
@@ -35,10 +41,13 @@ async function getSubscriberById(id: SubscriberRow["id"]) {
 /* c8 ignore start */
 async function getSubscriberByFxaUid(
   uid: SubscriberRow["fxa_uid"],
-): Promise<SubscriberRow> {
+): Promise<undefined | (SubscriberRow & WithEmailAddresses)> {
   const [subscriber] = await knex("subscribers").where({
     fxa_uid: uid,
   });
+  if (!subscriber) {
+    return;
+  }
   const subscriberAndEmails = await joinEmailAddressesToSubscriber(subscriber);
   return subscriberAndEmails;
 }
@@ -46,14 +55,20 @@ async function getSubscriberByFxaUid(
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-// * @deprecated Use [[getSubscriberByFxAUid]] instead, as email identifiers are unstable (e.g. we've had issues with case-sensitivity).
+/**
+ * @param email The primary email of the subscriber you're looking up
+ * @deprecated Use [[getSubscriberByFxAUid]] instead, as email identifiers are unstable (e.g. we've had issues with case-sensitivity).
+ */
 async function getSubscriberByEmail(
   email: SubscriberRow["primary_email"],
-): Promise<SubscriberRow> {
+): Promise<undefined | (SubscriberRow & WithEmailAddresses)> {
   const [subscriber] = await knex("subscribers").where({
     primary_email: email,
     primary_verified: true,
   });
+  if (!subscriber) {
+    return;
+  }
   const subscriberAndEmails = await joinEmailAddressesToSubscriber(subscriber);
   return subscriberAndEmails;
 }
@@ -126,11 +141,9 @@ async function updateFxAData(
   fxaAccessToken: string | null,
   fxaRefreshToken: string | null,
   sessionExpiresAt: number,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  fxaProfileData: any,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-): Promise<any> {
-  const fxaUID = JSON.parse(fxaProfileData).uid;
+  fxaProfileData?: Profile,
+): Promise<SubscriberRow | undefined | null> {
+  const fxaUID = fxaProfileData?.uid;
   const updated = await knex("subscribers")
     .where("id", "=", subscriber.id)
     .update({
@@ -162,11 +175,9 @@ async function updateFxAData(
 async function updateFxATokens(
   subscriber: SubscriberRow | SerializedSubscriber,
   fxaAccessToken: string | null,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   fxaRefreshToken: string | null,
   sessionExpiresAt: number,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-): Promise<any> {
+): Promise<SubscriberRow | undefined | null> {
   const updateResp = await knex("subscribers")
     .where("id", "=", subscriber.id)
     .update({
@@ -272,7 +283,7 @@ async function setBreachResolution(
     // even if it's not typed as a JS date object:
     updated_at: knex.fn.now(),
   });
-  return getSubscriberByEmail(user.primary_email);
+  return (await getSubscriberByEmail(user.primary_email)) ?? null;
 }
 /* c8 ignore stop */
 
@@ -605,21 +616,25 @@ async function getSubscribersWithUnresolvedBreachesCount() {
   const count = parseInt((await query.count({ count: "*" }))[0].count);
   return count;
 }
+type WithEmailAddresses = SubscriberRow & {
+  email_addresses: EmailAddressRow[];
+};
+
 /* c8 ignore stop */
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-async function joinEmailAddressesToSubscriber(subscriber: SubscriberRow) {
-  if (subscriber) {
-    const emailAddressRecords = await knex("email_addresses").where({
-      subscriber_id: subscriber.id,
-    });
-    subscriber.email_addresses = emailAddressRecords.map((emailAddress) => ({
-      id: emailAddress.id,
-      email: emailAddress.email,
-    }));
-  }
-  return subscriber;
+async function joinEmailAddressesToSubscriber(
+  subscriber: SubscriberRow,
+): Promise<SubscriberRow & WithEmailAddresses> {
+  const emailAddressRecords = await knex("email_addresses").where({
+    subscriber_id: subscriber.id,
+  });
+  subscriber.email_addresses = emailAddressRecords.map((emailAddress) => ({
+    id: emailAddress.id,
+    email: emailAddress.email,
+  }));
+  return subscriber as SubscriberRow & WithEmailAddresses;
 }
 /* c8 ignore stop */
 
