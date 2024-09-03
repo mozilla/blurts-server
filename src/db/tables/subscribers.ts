@@ -470,7 +470,9 @@ async function getSubscribersWaitingForMonthlyEmail(
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-async function updateMonthlyEmailTimestamp(email: string) {
+async function updateMonthlyEmailTimestamp(
+  email: SubscriberRow["primary_email"],
+) {
   const res = await knex("subscribers")
     .update({
       monthly_email_at: "now",
