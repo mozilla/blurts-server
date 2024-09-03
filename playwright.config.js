@@ -56,8 +56,8 @@ export default defineConfig({
   /* Retry on CI only */
   retries: process.env.CI ? 1 : 0,
 
-  /* Use all of the available wokers in CI and use default locally. */
-  workers: process.env.CI ? "100%" : undefined,
+  /* Use more of the available wokers in CI and use default locally. */
+  workers: process.env.CI ? "75%" : undefined,
 
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: process.env.CI ? [['github'], ['html']] : 'html',
