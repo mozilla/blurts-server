@@ -3,6 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { v4 as uuidv4 } from "uuid";
+import type { Profile } from "next-auth";
 import createDbConnection from "../connect.js";
 import { subscribeHash } from "../../utils/hibp";
 import { getSha1 } from "../../utils/fxa";
@@ -231,7 +232,7 @@ async function addSubscriber(
   fxaAccessToken: string | null = null, // from Firefox Account Oauth
   fxaRefreshToken: string | null = null, // from Firefox Account Oauth
   sessionExpiresAt: number = 0, // from Firefox Account Oauth
-  fxaProfileData: string | null = null,
+  fxaProfileData?: Profile,
 ): // from Firefox Account
 Promise<SubscriberRow | null> {
   // subscriber knex object added to DB
