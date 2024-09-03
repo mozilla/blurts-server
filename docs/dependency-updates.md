@@ -56,7 +56,7 @@ Alpine Linux distribution with the latest version of Node.
 
 GitHub's Dependabot only updates `Dockerfile`, but the Node version is specified in many
 different config files. The PR that Dependabot opens will always fail the lint check because
-the script `scripts/check-node-version-alignment.js` will fail if the Node version isn't
+the script `./src/scripts/build/checkNodeVersionAlignment.js` will fail if the Node version isn't
 set consistently across all config files.
 
 1. clone the branch that Dependabot creates
@@ -70,7 +70,7 @@ git clone dependabot/docker/node-22.6-alpine
 2. Run the Node version alignment script and fix any problems it finds
 
 ```sh
-node scripts/check-node-version-alignment.js
+node ./src/scripts/build/checkNodeVersionAlignment.js
 ```
 
 3. Commit and push to branch Dependabot opened
