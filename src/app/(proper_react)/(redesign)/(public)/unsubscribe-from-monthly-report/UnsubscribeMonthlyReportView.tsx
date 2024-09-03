@@ -11,8 +11,9 @@ import UnsubscriptionImage from "./images/confirm-unsubscribe.svg";
 import Image from "next/image";
 import { useL10n } from "../../../../hooks/l10n";
 
-export const UnsubscribeMonthlyReportView = () => {
+export const UnsubscribeMonthlyReportView = ({ token }: { token: string }) => {
   const [unsubscribeSuccess, setUnsubscribeSuccess] = useState(false);
+
   const l10n = useL10n();
   const copy = {
     confirmation: {
@@ -29,6 +30,20 @@ export const UnsubscribeMonthlyReportView = () => {
     ? copy.success
     : copy.confirmation;
 
+  const handleUnsubscription = async () => {
+    try {
+      const response = await fetch(`/api/unsubscribe?token=${token}`, {
+        method: "GET",
+      });
+
+      if (response.ok) {
+        setUnsubscribeSuccess(true);
+      }
+    } catch (e) {
+      console.error("Error during unsubscription:", e);
+    }
+  };
+
   return (
     <main className={styles.unSubscribeMonthlyReportContainer}>
       <Image src={UnsubscriptionImage} alt="" />
@@ -37,8 +52,8 @@ export const UnsubscribeMonthlyReportView = () => {
       <Button
         className={styles.cta}
         variant="primary"
-        //TODO: Add func call here
-        onPress={() => setUnsubscribeSuccess(!unsubscribeSuccess)}
+        // eslint-disable-next-line @typescript-eslint/no-misused-promises
+        onPress={handleUnsubscription}
       >
         {l10n.getString("unsubscribe-cta")}
       </Button>

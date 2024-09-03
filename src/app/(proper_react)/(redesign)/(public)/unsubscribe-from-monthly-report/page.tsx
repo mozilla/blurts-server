@@ -4,6 +4,15 @@
 
 import { UnsubscribeMonthlyReportView } from "./UnsubscribeMonthlyReportView";
 
-export default function Page() {
-  return <UnsubscribeMonthlyReportView />;
+export default function Page({
+  searchParams,
+}: {
+  searchParams: { token?: string };
+}) {
+  const token = searchParams.token ?? "";
+  if (!token) {
+    console.error("Unsubscription token not provided");
+  }
+
+  return <UnsubscribeMonthlyReportView token={token} />;
 }
