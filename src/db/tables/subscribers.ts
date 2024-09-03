@@ -109,7 +109,16 @@ async function updatePrimaryEmail(
 }
 /* c8 ignore stop */
 
-//  Update fxa_refresh_token and fxa_profile_json for subscriber
+/**
+ * Update fxa_refresh_token and fxa_profile_json for subscriber
+ *
+ * @param subscriber knex object in DB
+ * @param fxaAccessToken from Firefox Account Oauth
+ * @param fxaRefreshToken from Firefox Account Oauth
+ * @param sessionExpiresAt from Firefox Account Oauth
+ * @param fxaProfileData from Firefox Account
+ * @returns updated subscriber knex object in DB
+ */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
 async function updateFxAData(
@@ -139,7 +148,15 @@ async function updateFxAData(
 }
 /* c8 ignore stop */
 
-// Update fxa tokens for subscriber
+/**
+ * Update fxa tokens for subscriber
+ *
+ * @param subscriber knex object in DB
+ * @param fxaAccessToken from Firefox Account Oauth
+ * @param fxaRefreshToken from Firefox Account Oauth
+ * @param sessionExpiresAt from Firefox Account Oauth
+ * @returns updated subscriber knex object in DB
+ */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
 async function updateFxATokens(
@@ -167,7 +184,10 @@ async function updateFxATokens(
 }
 
 /* c8 ignore stop */
-// Get fxa tokens and expiry for subscriber
+
+/**
+ * Get fxa tokens and expiry for subscriber
+ */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
 async function getFxATokens(subscriberId: SubscriberRow["id"]) {
@@ -178,7 +198,9 @@ async function getFxATokens(subscriberId: SubscriberRow["id"]) {
 }
 /* c8 ignore stop */
 
-// Update fxa_profile_json for subscriber
+/**
+ * Update fxa_profile_json for subscriber
+ */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
 async function updateFxAProfileData(
@@ -235,7 +257,9 @@ async function setMonthlyMonitorReport(
 }
 /* c8 ignore stop */
 
-// Set "breach_resolution" column with the latest breach resolution object.
+/**
+ * Set "breach_resolution" column with the latest breach resolution object.
+ */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
 async function setBreachResolution(
@@ -270,9 +294,10 @@ async function deleteUnverifiedSubscribers() {
 }
 /* c8 ignore stop */
 
-// Delete subscriber when a FxA user id is provided
-// Also deletes all the additional email addresses associated with the account
-
+/**
+ * Delete subscriber when a FxA user id is provided
+ * Also deletes all the additional email addresses associated with the account
+ */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
 async function deleteSubscriber(sub: SubscriberRow | SerializedSubscriber) {
@@ -437,6 +462,10 @@ async function getSubscribersWaitingForMonthlyEmail(
 }
 /* c8 ignore stop */
 
+/**
+ * @param email
+ * @deprecated Only used by the `send-email-to-unresolved-breach-subscribers.js`, which it looks like might not be sent anymore? Delete as a part of MNTOR-3077?
+ */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
 async function updateMonthlyEmailTimestamp(email: string) {
@@ -454,7 +483,12 @@ async function updateMonthlyEmailTimestamp(email: string) {
 }
 /* c8 ignore stop */
 
-// Unsubscribe user from monthly unresolved breach emails
+/**
+ * Unsubscribe user from monthly unresolved breach emails
+ *
+ * @param token User verification token
+ * @deprecated Delete as a part of MNTOR-3077
+ */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
 async function updateMonthlyEmailOptout(token: string) {
@@ -486,8 +520,8 @@ async function markFirstDataBrokerRemovalFixedEmailAsJustSent(
     );
   }
 }
-/* c8 ignore stop */
 
+/* c8 ignore stop */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
 async function markMonthlyActivityEmailAsJustSent(subscriber: SubscriberRow) {
@@ -522,6 +556,9 @@ async function getOnerepProfileId(subscriberId: SubscriberRow["id"]) {
 }
 /* c8 ignore stop */
 
+/**
+ * @deprecated OBSOLETE: Delete as a part of MNTOR-3077
+ */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
 function getSubscribersWithUnresolvedBreachesQuery() {
