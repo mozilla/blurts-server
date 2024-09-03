@@ -242,7 +242,6 @@ export const authOptions: AuthOptions = {
             // MNTOR-2599 The breach_resolution object can get pretty big,
             // causing the session token cookie to balloon in size,
             // eventually resulting in a 400 Bad Request due to headers being too large.
-
             delete updatedUser.breach_resolution;
             token.subscriber = updatedUser;
           } catch (error) {
