@@ -414,6 +414,7 @@ async function getSubscribersWaitingForMonthlyEmail(
     .select()
     // Only send to users who haven't opted out of the monthly activity email...
     // It looks like Knex's `.where` type definition doesn't accept Promise-returning
+    // functions, even though the code does; hence the `eslint-disable`)
     // eslint-disable-next-line @typescript-eslint/no-misused-promises
     .where((builder) =>
       builder
@@ -422,6 +423,7 @@ async function getSubscribersWaitingForMonthlyEmail(
     )
     // ...who haven't received the email in the last 1 month...
     // It looks like Knex's `.where` type definition doesn't accept Promise-returning
+    // functions, even though the code does; hence the `eslint-disable`)
     // eslint-disable-next-line @typescript-eslint/no-misused-promises
     .andWhere((builder) =>
       builder
