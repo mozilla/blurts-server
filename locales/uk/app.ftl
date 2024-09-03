@@ -63,7 +63,6 @@
 
 ##
 
-error-could-not-add-email = Не вдалося додати адресу електронної пошти до бази даних.
 error-not-subscribed = Ця адреса електронної пошти не підписана на { -product-name }.
 error-hibp-throttled = Надто багато з'єднань з { -brand-HIBP }.
 error-hibp-connect = Помилка з'єднання з { -brand-HIBP }.
@@ -74,8 +73,6 @@ user-add-verification-email-just-sent = Наразі не можна повто�
 user-add-unknown-error = Під час додавання іншої адреси електронної пошти сталася помилка. Повторіть спробу пізніше.
 user-delete-unknown-error = Під час вилучення електронної адреси сталася помилка. Повторіть спробу пізніше.
 user-verify-token-error = Необхідний токен підтвердження.
-user-unsubscribe-token-error = Для скасування підписки необхідний токен.
-user-unsubscribe-token-email-error = Для скасування підписки необхідний токен і emailHash.
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Скомпрометовані дані:
 # Breach data provided by Have I Been Pwned.
@@ -86,8 +83,6 @@ show-all = Показати все
 sign-out = Вийти
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Керувати { -brand-fxa(case: "abl") }
-# Link title
-frequently-asked-questions = Часті запитання
 # Link title
 preferences = Налаштування
 # Link title
@@ -270,7 +265,9 @@ mozilla = { -brand-mozilla }
 terms-of-service = Умови надання послуг
 privacy-notice = Положення про приватність
 github = { -brand-github }
+# Deprecated
 footer-nav-all-breaches = Усі витоки
+footer-nav-recent-breaches = Нещодавні витоки даних
 footer-external-link-faq-label = Поширені запитання
 footer-external-link-faq-tooltip = Поширені запитання
 
