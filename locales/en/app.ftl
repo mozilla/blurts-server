@@ -225,8 +225,6 @@ mozilla = { -brand-mozilla }
 terms-of-service = Terms of Service
 privacy-notice = Privacy Notice
 github = { -brand-github }
-# Deprecated
-footer-nav-all-breaches = All Breaches
 footer-nav-recent-breaches = Recent Data Breaches
 footer-external-link-faq-label = FAQs
 footer-external-link-faq-tooltip = Frequently asked questions

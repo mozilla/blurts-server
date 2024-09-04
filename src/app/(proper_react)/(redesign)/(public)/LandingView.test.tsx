@@ -820,14 +820,16 @@ describe("When Premium is available", () => {
     );
   });
 
-  it("counts the number of clicks All breaches link in top navbar", async () => {
+  it("counts the number of clicks on the Recent data breaches link in top navbar", async () => {
     const mockedRecord = useTelemetry();
     const ComposedDashboard = composeStory(LandingUs, Meta);
     render(<ComposedDashboard />);
 
     const user = userEvent.setup();
 
-    const navbarLink = screen.getByRole("link", { name: "All breaches" });
+    const navbarLink = screen.getByRole("link", {
+      name: "Recent data breaches",
+    });
     // jsdom will complain about not being able to navigate to a different page
     // after clicking the link; suppress that error, as it's not relevant to the
     // test:
@@ -838,7 +840,7 @@ describe("When Premium is available", () => {
       "link",
       "click",
       expect.objectContaining({
-        link_id: "navbar_breaches",
+        link_id: "navbar_recent_breaches",
       }),
     );
   });
