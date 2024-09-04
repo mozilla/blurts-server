@@ -28,6 +28,8 @@ export class WelcomePage {
   readonly modalConfirmButton: Locator;
   readonly modalEditButton: Locator;
 
+  readonly findExposuresTitle: Locator;
+
   constructor(page: Page) {
     this.page = page;
 
@@ -67,9 +69,11 @@ export class WelcomePage {
     this.isThisCorrectModal = page.getByLabel("Is this correct?");
     this.modalConfirmButton = page.getByRole("button", { name: "Confirm" });
     this.modalEditButton = page.getByRole("button", { name: "Edit" });
+
+    this.findExposuresTitle = page.getByText("Scanning for exposures…");
   }
 
-  async goThroughFirstScan() {
+  async goThroughFirstScan(options: { skipLoader: boolean }) {
     // confirm get started step elements
     expect(await this.getStartedStep.count()).toEqual(3);
     await expect(this.page.getByText("Get started")).toBeVisible();
@@ -88,6 +92,15 @@ export class WelcomePage {
     await this.findExposuresButton.click();
 
     await this.modalConfirmButton.click();
+    await this.findExposuresTitle.waitFor();
+
+    // reloading page skips the loader and routes directly to the dashboard
+    if (options.skipLoader) {
+      // wait for scan to be finished before reloading the page
+      await this.page.waitForTimeout(10000);
+      await this.page.reload();
+    }
+
     // Waiting for scan to complete
     const dashboardPage = new DashboardPage(this.page);
     await dashboardPage.actionNeededTab.waitFor();

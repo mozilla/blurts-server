@@ -1,8 +1,7 @@
 name: Deploy Preview
 
-on:
+on: 
   pull_request:
-    types: [closed]
 
 env:
   PROJECT_ID: ${{ secrets.GCP_PROJECT }}

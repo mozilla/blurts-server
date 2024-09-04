@@ -51,7 +51,7 @@ export default defineConfig({
   forbidOnly: !!process.env.CI,
 
   /* Limit the number of failures */
-  maxFailures: process.env.CI ? 1 : undefined,
+  maxFailures: 1,
 
   /* Retry on CI only */
   retries: process.env.CI ? 1 : 0,
@@ -68,8 +68,7 @@ export default defineConfig({
     actionTimeout: 0,
 
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: process.env.E2E_TEST_BASE_URL ?? 'https://stage.firefoxmonitor.nonprod.cloudops.mozgcp.net',
-    // baseURL: 'http://localhost:6060',
+    baseURL: process.env.E2E_TEST_BASE_URL,
 
     /* automatically take screenshot only on failures */
     screenshot: 'only-on-failure',

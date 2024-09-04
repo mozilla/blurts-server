@@ -2,6 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import { isPrePlusDate } from "../../app/functions/universal/isPrePlusDate.js";
 import { test, expect } from "../fixtures/basePage.js";
 
 test.describe(`${process.env.E2E_TEST_ENV} - Authentication flow verification @smoke`, () => {
@@ -14,7 +15,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Authentication flow verification @s
     authPage,
     landingPage,
   }, testInfo) => {
-    // speed up test by ignore non necessary requests
+    // speed up test by ignoring non-necessary requests
     await page.route(/(analytics)/, async (route) => {
       await route.abort();
     });
@@ -23,12 +24,20 @@ test.describe(`${process.env.E2E_TEST_ENV} - Authentication flow verification @s
     await landingPage.goToSignIn();
 
     // Fill out sign up form
-    const randomEmail = `${Date.now()}_tstact@restmail.net`;
+    const currentTimestamp = Date.now();
+    const randomEmail = `${currentTimestamp}_tstact@restmail.net`;
     await authPage.signUp(randomEmail, page);
 
     // assert successful login
-    const successUrl = `${process.env.E2E_TEST_BASE_URL}/user/welcome`;
-    expect(page.url()).toBe(successUrl);
+    const successUrlSlugs = isPrePlusDate(
+      process.env.BROKER_SCAN_RELEASE_DATE ?? "",
+      new Date(currentTimestamp).toUTCString(),
+    )
+      ? "/user/dashboard"
+      : "/user/welcome";
+    expect(page.url()).toBe(
+      `${process.env.E2E_TEST_BASE_URL}${successUrlSlugs}`,
+    );
 
     await testInfo.attach(
       `${process.env.E2E_TEST_ENV}-signup-monitor-dashboard.png`,

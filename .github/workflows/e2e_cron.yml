@@ -48,7 +48,7 @@ jobs:
         run: npm run e2e
         timeout-minutes: 40
         env:
-          E2E_TEST_ENV: ${{ inputs.environment != null && inputs.environment || 'local' }}
+          E2E_TEST_ENV: ${{ inputs.environment != null && inputs.environment || 'stage' }}
           E2E_TEST_BASE_URL: ${{ secrets.E2E_TEST_BASE_URL }}
           E2E_TEST_ACCOUNT_EMAIL: ${{ secrets.E2E_TEST_ACCOUNT_EMAIL }}
           E2E_TEST_ACCOUNT_PASSWORD: ${{ secrets.E2E_TEST_ACCOUNT_PASSWORD }}
@@ -76,9 +76,10 @@ jobs:
           name: test-results
           path: src/e2e/test-results/
           retention-days: 30
+          
       - name: Send GitHub Action trigger data to Slack workflow
         id: slack
-        uses: slackapi/slack-github-action@v1.27.0
+        uses: slackapi/slack-github-action@v1.26.0
         if: failure() && github.ref == 'refs/heads/main'
         with:
           # For posting a message using Block Kit
@@ -89,7 +90,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "*Link to job:* *<https://github.com/mozilla/blurts-server/actions/runs/${{ github.run_id }}|Monitor E2E tests>*"
+                    "text": "*Link to job:* *<https://github.com/mozilla/blurts-server/actions/runs/${{ github.run_id }}|Monitor e2e tests>*"
                   }
                 },
                 {
@@ -126,3 +127,4 @@ jobs:
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_GHA_FAILURES_WEBHOOK }}
           SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
+          

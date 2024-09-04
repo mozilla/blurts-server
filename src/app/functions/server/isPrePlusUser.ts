@@ -4,7 +4,7 @@
 
 import "server-only";
 import { Session } from "next-auth";
-import { parseIso8601Datetime } from "../../../utils/parse";
+import { isPrePlusDate } from "../universal/isPrePlusDate";
 
 /**
  * Determine whether the user's account predates Monitor Plus
@@ -20,22 +20,8 @@ export function isPrePlusUser(user: Session["user"]): boolean {
     return false;
   }
 
-  const brokerScanReleaseDateParts = (
-    process.env.BROKER_SCAN_RELEASE_DATE ?? ""
-  ).split("-");
-  if (brokerScanReleaseDateParts[0] === "") {
-    brokerScanReleaseDateParts[0] = "2023";
-  }
-  const brokerScanReleaseDate = new Date(
-    Date.UTC(
-      Number.parseInt(brokerScanReleaseDateParts[0], 10),
-      Number.parseInt(brokerScanReleaseDateParts[1] ?? "12", 10) - 1,
-      Number.parseInt(brokerScanReleaseDateParts[2] ?? "05", 10),
-    ),
-  );
-
-  return (
-    (parseIso8601Datetime(user.subscriber.created_at)?.getTime() ?? 0) <
-    brokerScanReleaseDate.getTime()
+  return isPrePlusDate(
+    process.env.BROKER_SCAN_RELEASE_DATE ?? "",
+    user.subscriber.created_at,
   );
 }

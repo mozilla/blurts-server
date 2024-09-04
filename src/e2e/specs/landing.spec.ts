@@ -14,7 +14,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page content`, (
     await landingPage.open();
   });
 
-  test.skip("Observe page header", async ({ landingPage, page }) => {
+  test("Observe page header", async ({ landingPage, page }) => {
     // link to testrail case
     test.info().annotations.push({
       type: "testrail",
@@ -28,7 +28,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page content`, (
     expect(page.url()).toContain("oauth");
   });
 
-  test.skip('Observe "Find where your private info is exposed and take it back" section', async ({
+  test('Observe "Find where your private info is exposed and take it back" section', async ({
     landingPage,
   }) => {
     test.info().annotations.push({
@@ -48,7 +48,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page content`, (
     await expect(landingPage.monitorLandingMidHeading).toBeVisible();
   });
 
-  test.skip('Observe "We will help you fix your exposures" section', async ({
+  test('Observe "We will help you fix your exposures" section', async ({
     landingPage,
   }) => {
     test.info().annotations.push({
@@ -66,7 +66,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page content`, (
     await expect(landingPage.fixExposuresGraphic).toBeVisible();
   });
 
-  test.skip('Observe "What info could be at risk?" section', async ({
+  test('Observe "What info could be at risk?" section', async ({
     landingPage,
   }) => {
     test.info().annotations.push({
@@ -84,7 +84,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page content`, (
     await expect(landingPage.couldBeAtRiskGraphic).toBeVisible();
   });
 
-  test.skip('Observe "Scan your email to get started" section', async ({
+  test('Observe "Scan your email to get started" section', async ({
     landingPage,
   }) => {
     test.info().annotations.push({
@@ -99,7 +99,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page content`, (
     await expect(landingPage.getStartedScanFormSubmitButton).toBeVisible();
   });
 
-  test.skip('Observe "Choose your level of protection" section', async ({
+  test('Observe "Choose your level of protection" section', async ({
     landingPage,
   }) => {
     test.info().annotations.push({
@@ -114,7 +114,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page content`, (
     );
   });
 
-  test.skip("Observe FAQ section", async ({ landingPage }) => {
+  test("Observe FAQ section", async ({ landingPage }) => {
     test.info().annotations.push({
       type: "testrail",
       description:
@@ -127,7 +127,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page content`, (
     );
   });
 
-  test.skip('Observe "Take back control of your data" section', async ({
+  test('Observe "Take back control of your data" section', async ({
     landingPage,
   }) => {
     test.info().annotations.push({
@@ -145,7 +145,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page content`, (
     }
   });
 
-  test.skip("Observe footer section", async ({ landingPage }) => {
+  test("Observe footer section", async ({ landingPage }) => {
     test.info().annotations.push({
       type: "testrail",
       description:
@@ -184,7 +184,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page content`, (
     await purchasePage.verifyYearlyPlanDetails();
   });
 
-  test.skip('Verify the "Get free scan" corresponding email fields', async ({
+  test('Verify the "Get free scan" corresponding email fields', async ({
     landingPage,
     authPage,
   }) => {
@@ -219,7 +219,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page content`, (
     }
   });
 
-  test.skip('Verify manual/automatic removal "more info" tips from "Choose your level of protection" section', async ({
+  test('Verify manual/automatic removal "more info" tips from "Choose your level of protection" section', async ({
     landingPage,
   }) => {
     test.info().annotations.push({
@@ -235,146 +235,140 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page content`, (
   });
 });
 
-test.describe.skip(
-  `${process.env.E2E_TEST_ENV} - Verify the Landing Page Functionality - without existing Account`,
-  () => {
-    test.beforeEach(async ({ landingPage }) => {
-      await landingPage.open();
+test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page Functionality - without existing Account`, () => {
+  test.beforeEach(async ({ landingPage }) => {
+    await landingPage.open();
+  });
+
+  test('Verify "Get free scan" buttons functionality without existing account', async ({
+    landingPage,
+    page,
+    authPage,
+  }) => {
+    test.info().annotations.push({
+      type: "testrail",
+      description:
+        "https://testrail.stage.mozaws.net/index.php?/cases/view/2463502",
     });
 
-    test('Verify "Get free scan" buttons functionality without existing account', async ({
-      landingPage,
-      page,
-      authPage,
-    }) => {
-      test.info().annotations.push({
-        type: "testrail",
-        description:
-          "https://testrail.stage.mozaws.net/index.php?/cases/view/2463502",
+    const randomEmail = `${Date.now()}_tstact@restmail.net`;
+    if (await emailInputShouldExist(landingPage)) {
+      await landingPage.monitorHeroFormEmailInputField.fill(randomEmail);
+      await landingPage.monitorHeroFormInputSubmitButton.click();
+      await page.waitForURL("**/oauth/**");
+    } else {
+      await landingPage.monitorHeroFormInputSubmitButton.click();
+      await authPage.emailInputField.waitFor({
+        state: "visible",
+        timeout: 10000,
       });
-
-      const randomEmail = `${Date.now()}_tstact@restmail.net`;
-      if (await emailInputShouldExist(landingPage)) {
-        await landingPage.monitorHeroFormEmailInputField.fill(randomEmail);
-        await landingPage.monitorHeroFormInputSubmitButton.click();
-        await page.waitForURL("**/oauth/**");
-      } else {
-        await landingPage.monitorHeroFormInputSubmitButton.click();
-        await authPage.emailInputField.waitFor({
-          state: "visible",
-          timeout: 10000,
-        });
-        await authPage.emailInputField.fill(randomEmail);
-        await authPage.continueButton.click();
-      }
-      // continue with the common steps
-      await authPage.passwordInputField.fill(
-        process.env.E2E_TEST_ACCOUNT_PASSWORD as string,
-      );
-      await authPage.passwordConfirmInputField.fill(
-        process.env.E2E_TEST_ACCOUNT_PASSWORD as string,
-      );
-      await authPage.ageInputField.fill("31");
+      await authPage.emailInputField.fill(randomEmail);
       await authPage.continueButton.click();
-      const vc = await getVerificationCode(randomEmail, page);
-      await authPage.enterVerificationCode(vc);
-      const successUrl = `${process.env.E2E_TEST_BASE_URL}/user/welcome`;
-      expect(page.url()).toBe(successUrl);
-    });
+    }
+    // continue with the common steps
+    await authPage.passwordInputField.fill(
+      process.env.E2E_TEST_ACCOUNT_PASSWORD as string,
+    );
+    await authPage.passwordConfirmInputField.fill(
+      process.env.E2E_TEST_ACCOUNT_PASSWORD as string,
+    );
+    await authPage.ageInputField.fill("31");
+    await authPage.continueButton.click();
+    const vc = await getVerificationCode(randomEmail, page);
+    await authPage.enterVerificationCode(vc);
+    const successUrl = `${process.env.E2E_TEST_BASE_URL}/user/welcome`;
+    expect(page.url()).toBe(successUrl);
+  });
 
-    test('Verify the "Start free monitoring" button UI and functionality without existing account', async ({
-      landingPage,
-      page,
-      authPage,
-    }) => {
-      test.info().annotations.push(
-        {
-          type: "testrail id #1",
-          description:
-            "https://testrail.stage.mozaws.net/index.php?/cases/view/2463524",
-        },
-        {
-          type: "testrail id #2",
-          description:
-            "https://testrail.stage.mozaws.net/index.php?/cases/view/2463564",
-        },
-      );
-
-      await landingPage.startFreeMonitoringButton.click();
-
-      const randomEmail = `${Date.now()}_tstact@restmail.net`;
-      await authPage.signUp(randomEmail, page);
-
-      const successUrl = `${process.env.E2E_TEST_BASE_URL}/user/welcome`;
-      expect(page.url()).toBe(successUrl);
-    });
-  },
-);
-
-test.describe.skip(
-  `${process.env.E2E_TEST_ENV} - Verify the Landing Page Functionality - with existing account`,
-  () => {
-    test.beforeEach(async ({ landingPage }) => {
-      await landingPage.open();
-    });
-
-    test('Verify "Get free scan" buttons functionality with existing account', async ({
-      landingPage,
-      page,
-      authPage,
-    }) => {
-      // link to testrail case
-      test.info().annotations.push({
-        type: "testrail",
-        description:
-          "https://testrail.stage.mozaws.net/index.php?/cases/view/2463503",
-      });
-
-      const existingEmail = process.env.E2E_TEST_ACCOUNT_EMAIL as string;
-
-      if (await emailInputShouldExist(landingPage)) {
-        // Scenario where the form is still used
-        await landingPage.monitorHeroFormEmailInputField.fill(existingEmail);
-        await landingPage.monitorHeroFormInputSubmitButton.click();
-        await page.waitForURL("**/oauth/**");
-      } else {
-        // Scenario where direct redirection happens
-        await landingPage.monitorHeroFormInputSubmitButton.click();
-        await authPage.emailInputField.waitFor({
-          state: "visible",
-          timeout: 10000,
-        });
-        await authPage.emailInputField.fill(existingEmail);
-        await authPage.continueButton.click();
-      }
-
-      // complete sign in form
-      await authPage.enterPassword();
-
-      // verify dashboard redirect
-      const successUrl = `${process.env.E2E_TEST_BASE_URL}/user/dashboard`;
-      expect(page.url()).toBe(successUrl);
-    });
-
-    test('Verify the "Start free monitoring" button UI and functionality with existing account', async ({
-      landingPage,
-      page,
-      authPage,
-    }) => {
-      test.info().annotations.push({
-        type: "testrail",
+  test('Verify the "Start free monitoring" button UI and functionality without existing account', async ({
+    landingPage,
+    page,
+    authPage,
+  }) => {
+    test.info().annotations.push(
+      {
+        type: "testrail id #1",
         description:
           "https://testrail.stage.mozaws.net/index.php?/cases/view/2463524",
-      });
+      },
+      {
+        type: "testrail id #2",
+        description:
+          "https://testrail.stage.mozaws.net/index.php?/cases/view/2463564",
+      },
+    );
 
-      await landingPage.startFreeMonitoringButton.click();
+    await landingPage.startFreeMonitoringButton.click();
 
-      await authPage.enterEmail(process.env.E2E_TEST_ACCOUNT_EMAIL as string);
-      await authPage.enterPassword();
+    const randomEmail = `${Date.now()}_tstact@restmail.net`;
+    await authPage.signUp(randomEmail, page);
 
-      // verify dashboard redirect
-      const successUrl = `${process.env.E2E_TEST_BASE_URL}/user/dashboard`;
-      expect(page.url()).toBe(successUrl);
+    const successUrl = `${process.env.E2E_TEST_BASE_URL}/user/welcome`;
+    expect(page.url()).toBe(successUrl);
+  });
+});
+
+test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page Functionality - with existing account`, () => {
+  test.beforeEach(async ({ landingPage }) => {
+    await landingPage.open();
+  });
+
+  test('Verify "Get free scan" buttons functionality with existing account', async ({
+    landingPage,
+    page,
+    authPage,
+  }) => {
+    // link to testrail case
+    test.info().annotations.push({
+      type: "testrail",
+      description:
+        "https://testrail.stage.mozaws.net/index.php?/cases/view/2463503",
     });
-  },
-);
+
+    const existingEmail = process.env.E2E_TEST_ACCOUNT_EMAIL as string;
+
+    if (await emailInputShouldExist(landingPage)) {
+      // Scenario where the form is still used
+      await landingPage.monitorHeroFormEmailInputField.fill(existingEmail);
+      await landingPage.monitorHeroFormInputSubmitButton.click();
+      await page.waitForURL("**/oauth/**");
+    } else {
+      // Scenario where direct redirection happens
+      await landingPage.monitorHeroFormInputSubmitButton.click();
+      await authPage.emailInputField.waitFor({
+        state: "visible",
+        timeout: 10000,
+      });
+      await authPage.emailInputField.fill(existingEmail);
+      await authPage.continueButton.click();
+    }
+
+    // complete sign in form
+    await authPage.enterPassword();
+
+    // verify dashboard redirect
+    const successUrl = `${process.env.E2E_TEST_BASE_URL}/user/dashboard`;
+    expect(page.url()).toBe(successUrl);
+  });
+
+  test('Verify the "Start free monitoring" button UI and functionality with existing account', async ({
+    landingPage,
+    page,
+    authPage,
+  }) => {
+    test.info().annotations.push({
+      type: "testrail",
+      description:
+        "https://testrail.stage.mozaws.net/index.php?/cases/view/2463524",
+    });
+
+    await landingPage.startFreeMonitoringButton.click();
+
+    await authPage.enterEmail(process.env.E2E_TEST_ACCOUNT_EMAIL as string);
+    await authPage.enterPassword();
+
+    // verify dashboard redirect
+    const successUrl = `${process.env.E2E_TEST_BASE_URL}/user/dashboard`;
+    expect(page.url()).toBe(successUrl);
+  });
+});

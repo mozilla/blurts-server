@@ -42,7 +42,6 @@ jobs:
           PLAYWRIGHT_VERSION=$(npx playwright --version | sed 's/Version //')
           echo "Playwright Version: $PLAYWRIGHT_VERSION"
           echo "PLAYWRIGHT_VERSION=$PLAYWRIGHT_VERSION" >> $GITHUB_ENV
-
       - name: Cache Playwright Browsers for Playwright's Version
         id: cache-playwright-browsers
         uses: actions/cache@v4
@@ -65,7 +64,7 @@ jobs:
           E2E_TEST_ACCOUNT_EMAIL_ZERO_BREACHES: ${{ secrets.E2E_TEST_ACCOUNT_EMAIL_ZERO_BREACHES }}
           E2E_TEST_ACCOUNT_EMAIL_EXPOSURES_STARTED: ${{ secrets.E2E_TEST_ACCOUNT_EMAIL_EXPOSURES_STARTED }}
           E2E_TEST_ACCOUNT_PASSWORD: ${{ secrets.E2E_TEST_ACCOUNT_PASSWORD }}
-          E2E_TEST_PAYPAL_LOGIN:  ${{ secrets.E2E_TEST_PAYPAL_LOGIN }}
+          E2E_TEST_PAYPAL_LOGIN: ${{ secrets.E2E_TEST_PAYPAL_LOGIN }}
           E2E_TEST_PAYPAL_PASSWORD: ${{ secrets.E2E_TEST_PAYPAL_PASSWORD }}
           ADMINS: ${{ secrets.ADMINS }}
           OAUTH_CLIENT_SECRET: ${{ secrets.OAUTH_CLIENT_SECRET_LOCAL }}
@@ -78,9 +77,6 @@ jobs:
           HIBP_API_TOKEN: ${{ secrets.HIBP_API_TOKEN }}
           HIBP_KANON_API_ROOT: "http://localhost:6060/api/mock/hibp"
           ONEREP_API_BASE: "http://localhost:6060/api/mock/onerep/"
-          # MNTOR-3516: Our tests are currently set up to expect accounts to act like
-          # old user accounts, so let's pretend they all are:
-          BROKER_SCAN_RELEASE_DATE: "3000-12-31"
           REDIS_URL: "redis://redis.mock"
       - uses: actions/upload-artifact@v4
         if: always()
