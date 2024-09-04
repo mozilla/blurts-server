@@ -7,11 +7,12 @@ import type { NextRequest } from "next/server";
 import { logger } from "../../../../functions/server/logging";
 import { unsubscribeMonthlyMonitorReportForUnsubscribeToken } from "../../../../../db/tables/subscriber_email_preferences";
 
-export async function POST(req: NextRequest) {
+export async function GET(req: NextRequest) {
   try {
-    const { token } = await req.json();
+    const { searchParams } = new URL(req.url);
+    const unsubToken = searchParams.get("token");
 
-    if (!token) {
+    if (!unsubToken) {
       return NextResponse.json(
         {
           success: false,
@@ -21,7 +22,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    await unsubscribeMonthlyMonitorReportForUnsubscribeToken(token);
+    await unsubscribeMonthlyMonitorReportForUnsubscribeToken(unsubToken);
     logger.debug("unsubscribe_email_success");
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (e) {
