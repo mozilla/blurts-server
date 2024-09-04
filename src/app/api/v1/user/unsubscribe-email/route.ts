@@ -5,40 +5,26 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { logger } from "../../../../functions/server/logging";
-import { verifyUnsubscribeToken } from "../../../utils/email";
-import { unsubscribeMonthlyMonitorReportForEmail } from "../../../../../db/tables/subscriber_email_preferences";
+import { unsubscribeMonthlyMonitorReportForUnsubscribeToken } from "../../../../../db/tables/subscriber_email_preferences";
 
 export async function GET(req: NextRequest) {
   try {
     const { searchParams } = new URL(req.url);
-    const email = searchParams.get("email");
     const unsubToken = searchParams.get("token");
 
-    if (!email || !unsubToken) {
+    if (!unsubToken) {
       return NextResponse.json(
         {
           success: false,
-          message: "email and token are required url parameters.",
+          message: "token is a required url parameter.",
         },
         { status: 400 },
       );
     }
 
-    const tokenVerified = await verifyUnsubscribeToken(email, unsubToken);
-    if (tokenVerified) {
-      await unsubscribeMonthlyMonitorReportForEmail(email);
-      logger.debug("unsubscribe_email_success");
-      return NextResponse.json({ success: true }, { status: 200 });
-    } else {
-      logger.warn("unsubscribe_email_unauthorized_token", {
-        email,
-        unsubToken,
-      });
-      return NextResponse.json(
-        { success: false, message: "Unauthorized unsubscribe token" },
-        { status: 401 },
-      );
-    }
+    await unsubscribeMonthlyMonitorReportForUnsubscribeToken(unsubToken);
+    logger.debug("unsubscribe_email_success");
+    return NextResponse.json({ success: true }, { status: 200 });
   } catch (e) {
     logger.error("unsubscribe_email", {
       exception: e as string,
