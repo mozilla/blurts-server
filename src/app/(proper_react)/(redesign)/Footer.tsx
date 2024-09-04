@@ -39,10 +39,10 @@ export const Footer = ({
           <TelemetryLink
             href="/breaches"
             eventData={{
-              link_id: "all_breaches_footer",
+              link_id: "recent_breaches_footer",
             }}
           >
-            {l10n.getString("footer-nav-all-breaches")}
+            {l10n.getString("footer-nav-recent-breaches")}
           </TelemetryLink>
         </li>
         {countryCode === "us" && !session && (
