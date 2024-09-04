@@ -1,9 +1,5 @@
 name: Monitor E2E Test Suite (smoke)
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+on: push
 jobs:
   e2e-tests:
     timeout-minutes: 60
