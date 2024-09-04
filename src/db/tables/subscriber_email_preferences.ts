@@ -174,31 +174,20 @@ async function getEmailPreferenceForUnsubscribeToken(unsubscribeToken: string) {
   let res;
   // TODO: modify after MNTOR-3557 - pref currently lives in two tables, we have to join the tables
   try {
-    res = await knex
+    res = await knex("subscriber_email_preferences")
       .select(
-        "subscribers.primary_email",
-        "subscribers.id",
-        "subscribers.all_emails_to_primary",
-        "subscribers.monthly_monitor_report",
-        "subscribers.monthly_monitor_report_at",
-        "subscribers.first_broker_removal_email_sent",
-        "subscriber_email_preferences.monthly_monitor_report_free",
-        "subscriber_email_preferences.monthly_monitor_report_free_at",
-        "subscriber_email_preferences.unsubscribe_token",
+        "subscriber_id AS id",
+        "monthly_monitor_report_free",
+        "monthly_monitor_report_free_at",
+        "unsubscribe_token",
       )
-      .from("subscribers")
-      .leftJoin(
-        "subscriber_email_preferences",
-        "subscribers.id",
-        "subscriber_email_preferences.subscriber_id",
-      )
-      .where("subscriber_email_preferences.unsubscribe_token", unsubscribeToken)
+      .where("unsubscribe_token", unsubscribeToken)
       .returning(["*"]);
 
-    logger.debug("get_email_preference_for_subscriber_success");
-    logger.debug(
-      `getEmailPreferenceForSubscriber left join: ${JSON.stringify(res)}`,
+    logger.info(
+      `get_email_preference_for_unsubscriber_token: ${JSON.stringify(res)}`,
     );
+    logger.debug("get_email_preference_for_unsubscriber_token_success");
   } catch (e) {
     logger.error("error_get_subscriber_email_preference", {
       exception: e as string,
