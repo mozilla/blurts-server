@@ -12,10 +12,7 @@ import { getL10n } from "../../functions/l10n/serverComponents";
 import { BadRequestError } from "../../../utils/error";
 import { captureException } from "@sentry/node";
 import crypto from "crypto";
-import {
-  addEmailPreferenceForSubscriber,
-  getEmailPreferenceForPrimaryEmail,
-} from "../../../db/tables/subscriber_email_preferences";
+import { addEmailPreferenceForSubscriber } from "../../../db/tables/subscriber_email_preferences";
 import { SerializedSubscriber } from "../../../next-auth.js";
 
 export async function sendVerificationEmail(
@@ -81,25 +78,6 @@ export async function generateUnsubscribeLinkForSubscriber(
     });
     captureException(e);
     return null;
-  }
-}
-
-export async function verifyUnsubscribeToken(
-  email: string,
-  unsubToken: string,
-) {
-  try {
-    const preference = await getEmailPreferenceForPrimaryEmail(email);
-    if (!preference || !preference.unsubscribe_token) {
-      return false;
-    }
-    return unsubToken === preference.unsubscribe_token;
-  } catch (e) {
-    console.error("verify_unsubscribe_token", {
-      exception: e as string,
-    });
-    captureException(e);
-    return false;
   }
 }
 

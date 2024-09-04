@@ -166,9 +166,9 @@ async function getEmailPreferenceForSubscriber(subscriberId: number) {
   return res?.[0];
 }
 
-async function getEmailPreferenceForPrimaryEmail(email: string) {
-  logger.info("get_email_preference_for_primary_email", {
-    email,
+async function getEmailPreferenceForUnsubscribeToken(unsubscribeToken: string) {
+  logger.info("get_email_preference_for_unsubscribe_token", {
+    token: unsubscribeToken,
   });
 
   let res;
@@ -187,12 +187,12 @@ async function getEmailPreferenceForPrimaryEmail(email: string) {
         "subscriber_email_preferences.unsubscribe_token",
       )
       .from("subscribers")
-      .where("subscribers.primary_email", email)
       .leftJoin(
         "subscriber_email_preferences",
         "subscribers.id",
         "subscriber_email_preferences.subscriber_id",
       )
+      .where("subscriber_email_preferences.unsubscribe_token", unsubscribeToken)
       .returning(["*"]);
 
     logger.debug("get_email_preference_for_subscriber_success");
@@ -211,26 +211,33 @@ async function getEmailPreferenceForPrimaryEmail(email: string) {
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-async function unsubscribeMonthlyMonitorReportForEmail(email: string) {
+async function unsubscribeMonthlyMonitorReportForUnsubscribeToken(
+  unsubscribeToken: string,
+) {
   let sub;
   try {
-    sub = await getEmailPreferenceForPrimaryEmail(email);
+    sub = await getEmailPreferenceForUnsubscribeToken(unsubscribeToken);
 
     if (sub.id && !sub.monthly_monitor_report_free) {
       logger.info(
-        "unsubscribe_monthly_monitor_report_for_email_already_unsubscribed",
+        "unsubscribe_monthly_monitor_report_for_unsubscribe_token_already_unsubscribed",
       );
     } else if (sub.id && sub.monthly_monitor_report_free) {
       await updateEmailPreferenceForSubscriber(sub.id, true, {
         monthly_monitor_report_free: false,
       });
     } else {
-      throw new Error(`cannot find subscriber with primary email: ${email}`);
+      throw new Error(
+        `cannot find subscriber with unsubscribe token: ${unsubscribeToken}`,
+      );
     }
   } catch (e) {
-    logger.error("error_unsubscribe_monthly_monitor_report_for_email", {
-      exception: e,
-    });
+    logger.error(
+      "error_unsubscribe_monthly_monitor_report_for_unsubscribe_token",
+      {
+        exception: e,
+      },
+    );
     captureException(e);
     throw e;
   }
@@ -241,6 +248,6 @@ export {
   addEmailPreferenceForSubscriber,
   updateEmailPreferenceForSubscriber,
   getEmailPreferenceForSubscriber,
-  getEmailPreferenceForPrimaryEmail,
-  unsubscribeMonthlyMonitorReportForEmail,
+  getEmailPreferenceForUnsubscribeToken,
+  unsubscribeMonthlyMonitorReportForUnsubscribeToken,
 };
