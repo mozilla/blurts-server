@@ -214,7 +214,7 @@ const mockedSubscriberEmailPreferences: SubscriberEmailPreferencesOutput = {
   unsubscribe_token: "495398jfjvjfdj",
   monthly_monitor_report_free: true,
   monthly_monitor_report_free_at: new Date("1337-04-02T04:02:42.000Z"),
-  monthly_monitor_report: false,
+  monthly_monitor_report: true,
   monthly_monitor_report_at: new Date("1337-04-02T04:02:42.000Z"),
 };
 
@@ -724,7 +724,7 @@ it("checks that monthly monitor report is enabled", () => {
   );
 
   const monthlyMonitorReportBtn = screen.getByLabelText(
-    "Monthly ⁨Monitor⁨ report",
+    "Monthly ⁨Monitor⁩ report",
     { exact: false },
   );
   expect(monthlyMonitorReportBtn).toHaveAttribute("aria-checked", "true");
@@ -771,7 +771,7 @@ it("sends an API call to disable monthly monitor reports", async () => {
     </TestComponentWrapper>,
   );
   const monthlyMonitorReportBtn = screen.getByLabelText(
-    "Monthly ⁨Monitor⁨ report",
+    "Monthly ⁨Monitor⁩ report",
     { exact: false },
   );
 
