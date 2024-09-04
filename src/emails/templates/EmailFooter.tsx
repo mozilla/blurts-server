@@ -142,7 +142,6 @@ export const RedesignedBreachEmailFooter = (props: Props) => {
       background-position-y="bottom"
       background-position-x="center"
       background-repeat="no-repeat"
-      background-color="#fbfbfb"
       full-width="full-width"
       padding="50px 32px"
     >
