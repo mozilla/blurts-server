@@ -11,9 +11,10 @@ email-header-button-sign-in = Sign in
 
 email-footer-support-heading = Questions about { -brand-mozilla-monitor }?
 email-footer-support-content = Visit our <support-link>Support Center</support-link> for help
-email-footer-reason-subscriber = You’re receiving this automated email as a subscriber of { -brand-mozilla-monitor }. If you received it in error, no action is required. For more information, please visit <support-link>{ -brand-mozilla } Support</support-link>.
+email-footer-trigger-transactional = You’re receiving this email as a subscriber of { -brand-mozilla-monitor }.
 email-footer-source-hibp = Breach data provided by <hibp-link>{ -brand-HIBP }</hibp-link>
 email-footer-logo-mozilla-alt = { -brand-mozilla }
+email-footer-meta-privacy-notice = Privacy
 
 # Firefox Relay is a product name and should not be translated.
 -product-name-relay = Firefox Relay

@@ -197,33 +197,15 @@ export const RedesignedBreachEmailFooter = (props: Props) => {
             San Francisco, CA 94105
           </mj-text>
           <mj-text
+            color="#0C0C0D"
             font-size="14px"
             line-height="21px"
             font-weight="400"
             align="center"
           >
-            {l10n.getFragment(
-              props.isOneTimeEmail
-                ? /* c8 ignore next 4 */
-                  // It's not clear yet if this footer will be re-used in other emails,
-                  // so I'm leaving in the one-time message just in case, to ease the
-                  // transition from the old footer if need be:
-                  "email-footer-reason-subscriber-one-time"
-                : "email-footer-reason-subscriber",
-              {
-                elems: {
-                  "support-link": (
-                    <a
-                      href={CONST_URL_SUMO_MONITOR_SUPPORT}
-                      style={{ color: "#0060DF" }}
-                    />
-                  ),
-                },
-              },
-            )}
+            {l10n.getString("email-footer-trigger-transactional")}
           </mj-text>
           <mj-text
-            color="#3D3D3D"
             font-size="14px"
             line-height="21px"
             font-weight="400"
@@ -234,25 +216,24 @@ export const RedesignedBreachEmailFooter = (props: Props) => {
                 "hibp-link": (
                   <a
                     href="https://haveibeenpwned.com"
-                    style={{ color: "#592ACB", fontWeight: 600 }}
+                    style={{ color: "#0060DF", fontWeight: 400 }}
                   />
                 ),
               },
             })}
           </mj-text>
           <mj-text
-            color="#0C0C0D"
             font-size="14px"
             line-height="21px"
-            font-weight="600"
+            font-weight="400"
             align="center"
           >
-            <a href={CONST_URL_TERMS} style={{ color: "black" }}>
+            <a href={CONST_URL_TERMS} style={{ color: "#0060DF" }}>
               {l10n.getString("terms-of-service")}
             </a>
-            &nbsp;•&nbsp;
-            <a href={CONST_URL_PRIVACY_POLICY} style={{ color: "black" }}>
-              {l10n.getString("privacy-notice")}
+            &emsp;
+            <a href={CONST_URL_PRIVACY_POLICY} style={{ color: "#0060DF" }}>
+              {l10n.getString("email-footer-meta-privacy-notice")}
             </a>
           </mj-text>
         </mj-column>
