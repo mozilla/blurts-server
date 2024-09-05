@@ -100,6 +100,10 @@ export default async function SettingsPage({ searchParams }: Props) {
     return redirect("/");
   }
 
+  const settingsData = await getEmailPreferenceForPrimaryEmail(
+    session.user.email,
+  );
+
   return (
     <SettingsView
       l10n={getL10n()}
