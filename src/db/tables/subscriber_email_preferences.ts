@@ -184,14 +184,17 @@ async function getEmailPreferenceForUnsubscribeToken(unsubscribeToken: string) {
       .where("unsubscribe_token", unsubscribeToken)
       .returning(["*"]);
 
-    logger.info(
+    logger.debug(
       `get_email_preference_for_unsubscriber_token: ${JSON.stringify(res)}`,
     );
     logger.debug("get_email_preference_for_unsubscriber_token_success");
   } catch (e) {
-    logger.error("error_get_subscriber_email_preference", {
-      exception: e as string,
-    });
+    logger.error(
+      "error_get_subscriber_email_preference_for_unsubscribe_token",
+      {
+        exception: e as string,
+      },
+    );
 
     throw e;
   }
@@ -262,12 +265,12 @@ async function getEmailPreferenceForPrimaryEmail(email: string) {
       )
       .returning(["*"]);
 
-    logger.debug("get_email_preference_for_subscriber_success");
+    logger.debug("get_email_preference_for_primary_email_success");
     logger.debug(
-      `getEmailPreferenceForSubscriber left join: ${JSON.stringify(res)}`,
+      `getEmailPreferenceForPrimaryEmail left join: ${JSON.stringify(res)}`,
     );
   } catch (e) {
-    logger.error("error_get_subscriber_email_preference", {
+    logger.error("error_get_subscriber_email_preference_for_primary_email", {
       exception: e as string,
     });
 
