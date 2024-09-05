@@ -10,196 +10,12 @@
 ## unless otherwise indicated.
 
 -product-name = Mozilla Monitor
--product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name = Monitor
 -brand-name = Firefox
--brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
 -brand-fxa = Cyfrif Firefox
 -brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
--brand-send = Firefox Send
--brand-fpn = Rhwydwaith Preifat Firefox
-
-##
-
-error-could-not-add-email = Methu ychwanegu cyfeiriad e-bost i gronfa ddata.
-error-not-subscribed = Nid yw'r cyfeiriad e-bost hwn wedi'i danysgrifio i { -product-name }.
-error-hibp-throttled = Gormod o gysylltiadau i { -brand-HIBP }.
-error-hibp-connect = Gwall wrth gysylltu i { -brand-HIBP }.
-
-user-add-invalid-email = E-bost Annilys
-user-add-too-many-emails = Rydych yn monitro'r nifer mwyaf o gyfeiriadau e-byst.
-user-add-duplicate-email = Mae'r e-bost hwn eisoes wedi'i ychwanegu at { -product-name }.
-user-add-verification-email-just-sent = Nid oes modd anfon yr e-bost dilysu arall hwn mor fuan. Ceisiwch eto yn nes ymlaen.
-user-add-unknown-error = Aeth rhywbeth o'i le wrth ychwanegu cyfeiriad e-bost arall. Ceisiwch eto yn nes ymlaen.
-user-delete-unknown-error = Aeth rhywbeth o'i le wrth ddileu cyfeiriad e-bost. Ceisiwch eto yn nes ymlaen.
-
-user-verify-token-error = Mae angen tocyn dilysu.
-
-user-unsubscribe-token-error = Mae tanysgrifio angen tocyn.
-user-unsubscribe-token-email-error = Mae tanysgrifio angen tocyn a hashe-bost.
-
-# compromised-data = the kind of user data exposed to hackers in data breach.
-compromised-data = Data wedi ei gyfaddawdu:
-
-# Breach data provided by Have I Been Pwned.
-# Variables:
-#   $hibp-link (String) - Link to Have I Been Pwned
-hibp-attribution = Mae data tor-data wedi ei ddarparu gan { $hibp-link }
-
-show-all = Dangos y cyfan
-
-sign-out = Allgofnodi
-
-# Manage Firefox Account, link to page where account holders can change their account settings.
-manage-fxa = Rheoli { -brand-fxa }
-
-# Link title
-frequently-asked-questions = Cwestiynau Cyffredin
-
-# Link title
-preferences = Dewisiadau
-
-# Link title
-home = Cartref
-
-# Link title
-security-tips = Awgrymiadau Diogelwch
-
-# Link title
-more-about-this-breach = Rhagor am y tor-data hwn
-
-monitor-several-emails = Monitro sawl cyfrif e-bost
-
-website-breach = Tor-data Gwefan
-sensitive-breach = Tor-data Gwefan Sensitif
-data-aggregator-breach = Tor-data Casglwr Data
-
-what-data = Pa ddata a gyfaddawdwyd:
-
-sensitive-sites = Sut mae { -product-name } yn trin gwefannau sensitif?
-sensitive-sites-copy = Dim ond ar ôl gwirio cyfeiriad e-bost y mae { -product-name } yn datgelu cyfrifon sy'n gysylltiedig â'r mathau yma o dor-data. Mae hyn yn golygu mai chi yw'r unig berson a all weld a oedd eich manylion yn y tor-data hwn (oni bai bod gan rywun arall fynediad arall i'ch cyfrif e-bost.)
-
-delayed-reporting-headline = Pam y cymerodd gymaint o amser i adrodd ar y tor-data hwn?
-delayed-reporting-copy =
-    Weithiau gall gymryd rhai misoedd neu flynyddoedd i fanylion gafodd eu datgelu mewn tor-data i ymddangos ar y we dywyll. Caiff tori-data eu hychwanegu at ein cronfa ddata 
-    cyn gynted ag y byddant yn cael eu darganfod a'u dilysu.
-
-fxm-warns-you =
-    Mae { -product-name } yn eich rhybuddio os yw eich cyfeiriad e-bost wedi'i ddatgelu
-    mewn tor-data ar-lein. Edrychwch a yw eich manylion wedi cael eu datgelu, dysgwch sut
-    i ddiogelu eich cyfrifon ar-lein yn well, a chael gwybod os yw eich cyfeiriad e-bost
-    yn ymddangos mewn tor-data newydd.
-
-what-is-data-agg = Beth yw gasglwr data?
-what-is-data-agg-blurb = Mae casglwyr data, neu froceriaid data, yn casglu gwybodaeth o gofnodion cyhoeddus ac y ei brynu gan gwmnïau eraill. Maen nhw'n crynhoi'r data hwn i'w werthu i gwmnïau at ddibenion marchnata. Mae dioddefwyr yr achosion hyn o tor-data yn llai tebygol o brofi twyll ariannol, ond gall hacwyr ddefnyddio'r data hwn i'w dynwared neu'u proffilio.
-
-avoid-personal-info = Peidiwch â defnyddio gwybodaeth bersonol mewn cyfrineiriau
-
-## What to do after data breach tips
-
-send-verification = Anfon Dolen Dilysu
-
-# This string is a header on the user preferences page and
-# appears above a check-box list of user options which allow
-# the user to choose whether or not they want to receive breach
-# alerts for all of their monitored email addresses to a single
-# email address.
-breach-summary = Crynodeb o'r Tor-data
-
-## Variables:
-##   $userName (String) - Username
-
-##
-
-breach-alert-subject = Mae { -product-name } wedi canfod eich e-bost mewn tor-data newydd.
-
-## Variables:
-##   $breachName (String) - Number of the breach
-
-# This string is displayed under a large numeral that indicates the total number
-# of data breaches that exposed a user’s password. Don’t add $passwords to
-# your localization, because it would result in the number showing twice.
-passwords-exposed =
-    { $passwords ->
-        [zero] Cyfrineiriau wedi'u hamlygu
-        [one] Cyfrinair wedi'i amlygu ym mhob tor-data
-        [two] Gyfrinair wedi'u hamlygu ym mhob tor-data
-        [few] Cyfrinair wedi'u hamlygu ym mhob tor-data
-        [many] Chyfrinair wedi'u hamlygu ym mhob tor-data
-       *[other] Cyfrinair wedi'u hamlygu ym mhob tor-data
-    }
-
-# This string is displayed under a large numeral that indicates the total number
-# of data breaches that have exposed the user’s information. Don’t add $breaches to
-# your localization, because it would result in the number showing twice.
-known-data-breaches-exposed =
-    { $breaches ->
-        [zero] Tor-data hysbys wedi datgelu eich manylion
-        [one] Tor-data hysbys wedi datgelu eich manylion
-        [two] Tor-data hysbys wedi datgelu eich manylion
-        [few] Tor-data hysbys wedi datgelu eich manylion
-        [many] Tor-data hysbys wedi datgelu eich manylion
-       *[other] Tor-data hysbys wedi datgelu eich manylion
-    }
-
-what-is-a-website-breach = Beth yw tor-data gwefan?
-website-breach-blurb = Mae tor-data gwefan yn digwydd pan fydd troseddwyr seibr yn dwyn, copïo neu ddatgelu manylion personol o gyfrifon ar-lein. Mae fel arfer yn ganlyniad i hacwyr yn dod o hyd i fan gwan ym maes diogelwch y wefan. Gall achosion o dor-data ddigwydd hefyd pan fydd manylion cyfrifon yn cael eu datgelu'n ddamweiniol.
-
-# This is a section headline on the breach detail page that appears above
-# a short summary about the breach.
-breach-overview-title = Trosolwg
-
-# This is a standardized breach overview blurb that appears on all breach detail pages.
-# $breachTitle is the name of the breached company or website.
-# $breachDate and $addedDate are calendar dates.
-breach-overview-new = Ar { $breachDate }, profodd { $breachTitle } dor-data. Unwaith y cafodd y tor-data ei ddarganfod a'i ddilysu, cafodd ei ychwanegu at ein cronfa ddata ar { $addedDate }.
-
-# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
-menu = Dewislen
-
-# This is part of a confirmation message that appears after a user has submitted
-# the form to add an additional email to Firefox Monitor.
-# Variables:
-#   $userEmail (String) - User email address
-verify-the-link = Gwiriwch y ddolen a anfonwyd at { $userEmail } i'w hychwanegu at { -product-name }.
-
-## These are part of a confirmation page that appears after a user has verified
-## an additional email to Firefox Monitor.
-
-# This string is a label for the calendar date a breach is added to the database
-# and is followed by that date.
-breach-added-label = Ychwanegwyd y tor-data:
-
-# Section headline
-rec-section-headline = Beth i'w wneud am y tor-data hwn
-rec-section-subhead = Rydym yn argymell eich bod yn cymryd y camau hyn i gadw'ch manylion personol yn ddiogel ac amddiffyn eich hunaniaeth ddigidol.
-
-# Section headline
-rec-section-headline-no-pw = Beth i'w wneud i ddiogelu eich manylion personol
-rec-section-subhead-no-pw = Er nad oedd cyfrineiriau wedi'u hamlygu yn y tor-data hwn, mae yna gamau y gallwch eu cymryd o hyd i ddiogelu eich manylion personol yn well.
-
-## This string contains nested markup that becomes a link later in the code.
-## Please do not modify or remove "<a>" and "</a>".
-
-##
-
-## These strings contain nested markup that is later used to style the text inside of it.
-## Please do not modify or remove "<span>" and "</span>".
-
-# A status indicator that appears in the top right corner of new breach cards
-new-breach = Newydd
-
-## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
-
-## Relay and VPN educational/ad units
-
-# Monitor V2
-
-
-## The following messages are brands and should be kept entirely in English
-
 -brand-firefox = Firefox
 -brand-monitor = Monitor
 -brand-fx-monitor = Mozilla Monitor
@@ -215,18 +31,128 @@ new-breach = Newydd
 
 ##
 
-##
+error-not-subscribed = Nid yw'r cyfeiriad e-bost hwn wedi'i danysgrifio i { -product-name }.
+error-hibp-throttled = Gormod o gysylltiadau i { -brand-HIBP }.
+error-hibp-connect = Gwall wrth gysylltu i { -brand-HIBP }.
+user-add-invalid-email = E-bost Annilys
+user-add-too-many-emails = Rydych yn monitro'r nifer mwyaf o gyfeiriadau e-byst.
+user-add-duplicate-email = Mae'r e-bost hwn eisoes wedi'i ychwanegu at { -product-name }.
+user-add-verification-email-just-sent = Nid oes modd anfon yr e-bost dilysu arall hwn mor fuan. Ceisiwch eto yn nes ymlaen.
+user-add-unknown-error = Aeth rhywbeth o'i le wrth ychwanegu cyfeiriad e-bost arall. Ceisiwch eto yn nes ymlaen.
+user-delete-unknown-error = Aeth rhywbeth o'i le wrth ddileu cyfeiriad e-bost. Ceisiwch eto yn nes ymlaen.
+user-verify-token-error = Mae angen tocyn dilysu.
+# compromised-data = the kind of user data exposed to hackers in data breach.
+compromised-data = Data wedi ei gyfaddawdu:
+# Breach data provided by Have I Been Pwned.
+# Variables:
+#   $hibp-link (String) - Link to Have I Been Pwned
+hibp-attribution = Mae data tor-data wedi ei ddarparu gan { $hibp-link }
+show-all = Dangos y cyfan
+sign-out = Allgofnodi
+# Manage Firefox Account, link to page where account holders can change their account settings.
+manage-fxa = Rheoli { -brand-fxa }
+# Link title
+preferences = Dewisiadau
+# Link title
+home = Cartref
+# Link title
+security-tips = Awgrymiadau Diogelwch
+# Link title
+more-about-this-breach = Rhagor am y tor-data hwn
+monitor-several-emails = Monitro sawl cyfrif e-bost
+website-breach = Tor-data Gwefan
+sensitive-breach = Tor-data Gwefan Sensitif
+data-aggregator-breach = Tor-data Casglwr Data
+what-data = Pa ddata a gyfaddawdwyd:
+sensitive-sites = Sut mae { -product-name } yn trin gwefannau sensitif?
+sensitive-sites-copy = Dim ond ar ôl gwirio cyfeiriad e-bost y mae { -product-name } yn datgelu cyfrifon sy'n gysylltiedig â'r mathau yma o dor-data. Mae hyn yn golygu mai chi yw'r unig berson a all weld a oedd eich manylion yn y tor-data hwn (oni bai bod gan rywun arall fynediad arall i'ch cyfrif e-bost.)
+delayed-reporting-headline = Pam y cymerodd gymaint o amser i adrodd ar y tor-data hwn?
+delayed-reporting-copy =
+    Weithiau gall gymryd rhai misoedd neu flynyddoedd i fanylion gafodd eu datgelu mewn tor-data i ymddangos ar y we dywyll. Caiff tori-data eu hychwanegu at ein cronfa ddata 
+    cyn gynted ag y byddant yn cael eu darganfod a'u dilysu.
+fxm-warns-you =
+    Mae { -product-name } yn eich rhybuddio os yw eich cyfeiriad e-bost wedi'i ddatgelu
+    mewn tor-data ar-lein. Edrychwch a yw eich manylion wedi cael eu datgelu, dysgwch sut
+    i ddiogelu eich cyfrifon ar-lein yn well, a chael gwybod os yw eich cyfeiriad e-bost
+    yn ymddangos mewn tor-data newydd.
+what-is-data-agg = Beth yw gasglwr data?
+what-is-data-agg-blurb = Mae casglwyr data, neu froceriaid data, yn casglu gwybodaeth o gofnodion cyhoeddus ac y ei brynu gan gwmnïau eraill. Maen nhw'n crynhoi'r data hwn i'w werthu i gwmnïau at ddibenion marchnata. Mae dioddefwyr yr achosion hyn o tor-data yn llai tebygol o brofi twyll ariannol, ond gall hacwyr ddefnyddio'r data hwn i'w dynwared neu'u proffilio.
+avoid-personal-info = Peidiwch â defnyddio gwybodaeth bersonol mewn cyfrineiriau
+send-verification = Anfon Dolen Dilysu
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single
+# email address.
+breach-summary = Crynodeb o'r Tor-data
 
 ##
 
+breach-alert-subject = Mae { -product-name } wedi canfod eich e-bost mewn tor-data newydd.
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that exposed a user’s password. Don’t add $passwords to
+# your localization, because it would result in the number showing twice.
+passwords-exposed =
+    { $passwords ->
+        [zero] Cyfrineiriau wedi'u hamlygu
+        [one] Cyfrinair wedi'i amlygu ym mhob tor-data
+        [two] Gyfrinair wedi'u hamlygu ym mhob tor-data
+        [few] Cyfrinair wedi'u hamlygu ym mhob tor-data
+        [many] Chyfrinair wedi'u hamlygu ym mhob tor-data
+       *[other] Cyfrinair wedi'u hamlygu ym mhob tor-data
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+known-data-breaches-exposed =
+    { $breaches ->
+        [zero] Tor-data hysbys wedi datgelu eich manylion
+        [one] Tor-data hysbys wedi datgelu eich manylion
+        [two] Tor-data hysbys wedi datgelu eich manylion
+        [few] Tor-data hysbys wedi datgelu eich manylion
+        [many] Tor-data hysbys wedi datgelu eich manylion
+       *[other] Tor-data hysbys wedi datgelu eich manylion
+    }
+what-is-a-website-breach = Beth yw tor-data gwefan?
+website-breach-blurb = Mae tor-data gwefan yn digwydd pan fydd troseddwyr seibr yn dwyn, copïo neu ddatgelu manylion personol o gyfrifon ar-lein. Mae fel arfer yn ganlyniad i hacwyr yn dod o hyd i fan gwan ym maes diogelwch y wefan. Gall achosion o dor-data ddigwydd hefyd pan fydd manylion cyfrifon yn cael eu datgelu'n ddamweiniol.
+# This is a section headline on the breach detail page that appears above
+# a short summary about the breach.
+breach-overview-title = Trosolwg
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview-new = Ar { $breachDate }, profodd { $breachTitle } dor-data. Unwaith y cafodd y tor-data ei ddarganfod a'i ddilysu, cafodd ei ychwanegu at ein cronfa ddata ar { $addedDate }.
+# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
+menu = Dewislen
+# This is part of a confirmation message that appears after a user has submitted
+# the form to add an additional email to Firefox Monitor.
+# Variables:
+#   $userEmail (String) - User email address
+verify-the-link = Gwiriwch y ddolen a anfonwyd at { $userEmail } i'w hychwanegu at { -product-name }.
+
+## These are part of a confirmation page that appears after a user has verified
+## an additional email to Firefox Monitor.
+
+# This string is a label for the calendar date a breach is added to the database
+# and is followed by that date.
+breach-added-label = Ychwanegwyd y tor-data:
+# Section headline
+rec-section-headline = Beth i'w wneud am y tor-data hwn
+rec-section-subhead = Rydym yn argymell eich bod yn cymryd y camau hyn i gadw'ch manylion personol yn ddiogel ac amddiffyn eich hunaniaeth ddigidol.
+# Section headline
+rec-section-headline-no-pw = Beth i'w wneud i ddiogelu eich manylion personol
+rec-section-subhead-no-pw = Er nad oedd cyfrineiriau wedi'u hamlygu yn y tor-data hwn, mae yna gamau y gallwch eu cymryd o hyd i ddiogelu eich manylion personol yn well.
+
 ##
 
-## Updated error messages
+# A status indicator that appears in the top right corner of new breach cards
+new-breach = Newydd
+
+##
 
 # “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
 -brand-mozilla-account = Cyfrif Mozilla
-
 open-in-new-tab-alt = Agorwch y ddolen mewn tab newydd
 
 ## Search Engine Optimization
@@ -243,7 +169,6 @@ brand-mozilla-monitor = { -brand-fx-monitor }
 ## Site navigation
 
 mobile-menu-label = Prif ddewislen
-
 main-nav-button-collapse-label = Cau'r ddewislen
 main-nav-button-collapse-tooltip = Cau'r ddewislen
 main-nav-button-expand-label = Ehangu'r ddewislen
@@ -273,7 +198,9 @@ mozilla = { -brand-mozilla }
 terms-of-service = Amodau Gwasanaeth
 privacy-notice = Hysbysiad Preifatrwydd
 github = { -brand-github }
+# Deprecated
 footer-nav-all-breaches = Pob Tor-data
+footer-nav-recent-breaches = Tor-data Diweddar
 footer-external-link-faq-label = Cwestiynau Cyffredin
 footer-external-link-faq-tooltip = Cwestiynau cyffredin
 
@@ -293,7 +220,6 @@ error-page-error-other-title = { $errorCode } Aeth rhywbeth o'i le
 all-breaches-headline-2 = Pob tor-data wedi'i ganfod gan { -brand-fx-monitor }
 all-breaches-lead = Rydym yn monitro'r holl achosion hysbys o dor-data i ganfod a gafodd eich manylion personol eu peryglu. Dyma restr lawn o’r holl dor-data sydd wedi’u hadrodd ers 2007.
 search-breaches = Chwilio am Dor-data
-
 # the kind of user data exposed to hackers in data breach.
 exposed-data = Data datgeledig:
 
@@ -301,16 +227,11 @@ exposed-data = Data datgeledig:
 
 find-out-if-2 = Darganfyddwch a oeddech yn gysylltiedig â'r tor-data hwn
 find-out-if-description = Byddwn yn eich helpu i weld yn gyflym a oedd eich cyfeiriad e-bost wedi'i ddatgelu drwy'r tor-data hwn, a gwybod beth i'w wneud nesaf.
-
 breach-detail-cta-signup = Gwiriwch am dor-data
-
-## Floating banner
 
 ## Firefox Monitor -> Mozilla Monitor rebrand banner
 
 banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: Enw, golwg newydd a rhagor o ffyrdd i <b>adennill eich preifatrwydd</b>.
 banner-monitor-rebrand-dismiss-button-label = Iawn
 banner-monitor-rebrand-dismiss-button-tooltip = Cau
-
 loading-accessibility = Yn llwytho
-

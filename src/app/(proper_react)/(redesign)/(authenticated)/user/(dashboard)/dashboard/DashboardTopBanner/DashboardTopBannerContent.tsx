@@ -57,7 +57,6 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
     monthlySubscriptionUrl,
     yearlySubscriptionUrl,
     subscriptionBillingAmount,
-    enabledFeatureFlags,
   } = props;
 
   const waitlistDialogState = useOverlayTriggerState({});
@@ -77,7 +76,6 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
         }
         autoRemoved={bannerData.dataBrokerAutoFixedDataPointsNum}
         inProgress={bannerData.dataBrokerInProgressDataPointsNum}
-        enabledFeatureFlags={enabledFeatureFlags}
       />
     );
   }

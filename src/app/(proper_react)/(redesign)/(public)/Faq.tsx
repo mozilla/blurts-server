@@ -15,7 +15,6 @@ import {
   CONST_ONEREP_DATA_BROKER_COUNT,
   CONST_URL_SUMO_MONITOR_PLUS,
 } from "../../../../constants";
-import { FeatureFlagName } from "../../../../db/tables/featureFlags";
 
 export type FaqItemProps = {
   question: string;
@@ -66,10 +65,8 @@ const FaqItem = (props: FaqItemProps) => {
 
 export const FaqSection = ({
   isEligibleForPremium,
-  enabledFeatureFlags,
 }: {
   isEligibleForPremium: boolean;
-  enabledFeatureFlags: FeatureFlagName[];
 }) => {
   const l10n = useL10n();
   const recordTelemetry = useTelemetry();
@@ -126,12 +123,7 @@ export const FaqSection = ({
               "landing-premium-continuous-data-removal-qn",
             )}
             answer={l10n.getFragment(
-              /* c8 ignore next 5 */
-              // As the `SetExpectationsForUsers` feature flag is removed, the
-              // branch will be covered again:
-              enabledFeatureFlags.includes("SetExpectationsForUsers")
-                ? "landing-premium-continuous-data-removal-ans"
-                : "landing-premium-continuous-data-removal-ans-deprecated",
+              "landing-premium-continuous-data-removal-ans",
               {
                 vars: {
                   data_broker_sites_total_num: CONST_ONEREP_DATA_BROKER_COUNT,

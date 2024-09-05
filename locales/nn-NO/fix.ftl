@@ -4,8 +4,10 @@
 
 fix-flow-nav-high-risk-data-breaches = Datalekkasje med høg risiko
 fix-flow-nav-leaked-passwords = Lekne passord
+fix-flow-nav-security-recommendations = Tryggingstilrådingar
 guided-resolution-flow-exit = Tilbake til oversyn
 guided-resolution-flow-next-arrow = Gå til neste steg
+guided-resolution-flow-step-navigation-label = Guida steg
 
 # Celebration screens
 
@@ -16,12 +18,18 @@ fix-flow-celebration-next-dashboard-label = Gå til ditt oversyn
 
 ## High-risk flow
 
+fix-flow-celebration-high-risk-description-next-security-questions = La oss no fikse dei eksponerte tryggingsspørsmåla dine.
 
 ## Leaked passwords and security questions flow
 
+fix-flow-celebration-security-questions-title = Tryggingsspørsmåla dine er verna!
+fix-flow-celebration-leaked-passwords-description-next-security-questions = La oss no gå gjennom og oppdatere dei eksponerte tryggingsspørsmåla dine.
+fix-flow-celebration-leaked-passwords-description-next-security-recommendations = Deretter vil vi gi deg personlege tryggingstilrådingar basert på kva data som er eksponerte.
 
 ## Security recommendations flow
 
+fix-flow-celebration-security-recommendations-title = Du har fullført alle tilrådingane dine!
+fix-flow-celebration-security-recommendations-description-next-dashboard = Bra gjort! Du har nådd slutten av stega dine. Du kan sjå alle handlingselement og spore framgangen din på dashbordet.
 
 # High Risk Data Breaches
 
@@ -40,6 +48,7 @@ high-risk-breach-bank-account-step-two = Endre kontonummeret ditt.
 
 # Social Security Number Breaches
 
+high-risk-breach-social-security-title = Personnummeret ditt vart avslørt
 
 # Social Security Number Modal
 
@@ -50,6 +59,7 @@ ssn-modal-ok = OK
 
 # No high risk breaches found
 
+high-risk-breach-none-sub-description-ssn = Personnummer
 high-risk-breach-none-sub-description-bank-account = Bankkontoinformasjon
 high-risk-breach-none-sub-description-cc-number = Nummer på betalingskort
 high-risk-breach-none-sub-description-pin = PIN-kodar
@@ -57,6 +67,7 @@ high-risk-breach-none-continue = Hald fram
 
 # Security recommendations
 
+security-recommendation-steps-label = Tryggingstilrådingar
 security-recommendation-steps-title = Her er våre råd:
 security-recommendation-steps-cta-label = Skjønar!
 
@@ -67,6 +78,7 @@ security-recommendation-phone-title = Vern telefonnummeret ditt
 # Email security recommendation
 
 security-recommendation-email-title = Vern e-postadressa di
+security-recommendation-email-step-three = Merk mistenkjelege e-postar som spam og blokker avsendaren
 
 # IP security recommendation
 
@@ -80,4 +92,5 @@ leaked-passwords-skip = Hopp over no
 
 # Leaked Security Questions
 
+leaked-security-questions-title = Tryggingsspørsmåla dine vart avslørte
 leaked-security-questions-steps-title = Dette er det du skal gjere

@@ -122,7 +122,7 @@ export class DashboardPage {
       '//a[starts-with(@class, "Shell_mozillaLink")]',
     );
     this.allBreachesFooter = page.locator("footer a", {
-      hasText: "All Breaches",
+      hasText: "Recent data breaches",
     });
     this.faqsFooter = page.locator("footer a", { hasText: "FAQs" });
     this.termsOfServiceFooter = page.locator("footer a", {

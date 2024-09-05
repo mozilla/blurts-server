@@ -26,7 +26,6 @@ import { TelemetryLink } from "../../../components/client/TelemetryLink";
 import { HeresHowWeHelp } from "./HeresHowWeHelp";
 import { ScanLimit } from "./ScanLimit";
 import { FaqSection } from "./Faq";
-import { FeatureFlagName } from "../../../../db/tables/featureFlags";
 import { AccountDeletionNotification } from "./AccountDeletionNotification";
 import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 import { FreeScanCta } from "./FreeScanCta";
@@ -36,7 +35,6 @@ export type Props = {
   l10n: ExtendedReactLocalization;
   countryCode: string;
   scanLimitReached: boolean;
-  enabledFlags: FeatureFlagName[];
   experimentData: ExperimentData;
 };
 
@@ -238,10 +236,7 @@ export const View = (props: Props) => {
         {!props.eligibleForPremium && <HeresHowWeHelp />}
         <Plans {...props} />
 
-        <FaqSection
-          isEligibleForPremium={props.eligibleForPremium}
-          enabledFeatureFlags={props.enabledFlags}
-        />
+        <FaqSection isEligibleForPremium={props.eligibleForPremium} />
 
         <div className={styles.signUpEncouragementWrapper}>
           <p className={styles.title}>
@@ -274,7 +269,7 @@ export const TopNavBar = ({ l10n }: { l10n: ExtendedReactLocalization }) => {
             link_id: "navbar_how_it_works",
           }}
         >
-          {l10n.getString("landing-all-hero-navbar-link-how-it-works")}
+          {l10n.getString("landing-premium-hero-navbar-link-how-it-works")}
         </TelemetryLink>
         <TelemetryLink
           className={styles.navbarLinks}
@@ -283,7 +278,7 @@ export const TopNavBar = ({ l10n }: { l10n: ExtendedReactLocalization }) => {
             link_id: "navbar_pricing",
           }}
         >
-          {l10n.getString("landing-all-hero-navbar-link-pricing")}
+          {l10n.getString("landing-premium-hero-navbar-link-pricing")}
         </TelemetryLink>
         <TelemetryLink
           data-testid="navbar_faqs"
@@ -293,16 +288,16 @@ export const TopNavBar = ({ l10n }: { l10n: ExtendedReactLocalization }) => {
             link_id: "navbar_faqs",
           }}
         >
-          {l10n.getString("landing-all-hero-navbar-link-faqs")}
+          {l10n.getString("landing-premium-hero-navbar-link-faqs")}
         </TelemetryLink>
         <TelemetryLink
           className={styles.navbarLinks}
           href="/breaches"
           eventData={{
-            link_id: "navbar_breaches",
+            link_id: "navbar_recent_breaches",
           }}
         >
-          {l10n.getString("landing-all-hero-navbar-link-all-breaches")}
+          {l10n.getString("landing-premium-hero-navbar-link-recent-breaches")}
         </TelemetryLink>
       </div>
     </div>
