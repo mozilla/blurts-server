@@ -33,6 +33,9 @@ interface SubscriberEmailPreferencesOutput {
 
 // TODO: modify after MNTOR-3557 - pref currently lives in two tables
 // this function only adds email prefs for free reports
+// NOTE: this function is essentially an upsert where a preference object is provided and the fields to overwrite are passed in
+// The third parameter is an array of the fields to overwrite, this is passed in to make sure only select fields are overwritten due to upsert
+// see generateUnsubscribeLinkForSubscriber and updateEmailPreferenceForSubscriber for example of different uses of this function
 async function addEmailPreferenceForSubscriber(
   subscriberId: number,
   preference: SubscriberFreeEmailPreferencesInput,
