@@ -1,0 +1,24 @@
+@import "../../../../tokens";
+
+.unSubscribeMonthlyReportContainer {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-lg $spacing-sm;
+  gap: $spacing-lg;
+  text-align: center;
+
+  @media screen and (min-width: $screen-md) {
+    max-width: $content-lg;
+  }
+
+  h1 {
+    font: $text-title-md;
+  }
+
+  .cta {
+    max-width: $content-xs;
+  }
+}

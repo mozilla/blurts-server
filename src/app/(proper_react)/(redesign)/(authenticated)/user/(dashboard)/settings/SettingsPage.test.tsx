@@ -57,6 +57,7 @@ jest.mock("next/navigation", () => ({
 import { SettingsView } from "./View";
 import { sanitizeEmailRow } from "../../../../../../functions/server/sanitize";
 import { defaultExperimentData } from "../../../../../../../telemetry/generated/nimbus/experiments";
+import { SubscriberEmailPreferencesOutput } from "../../../../../../../db/tables/subscriber_email_preferences";
 
 const subscriberId = 7;
 const mockedSerializedSubscriber: SerializedSubscriber = {
@@ -207,11 +208,21 @@ const mockedSubscriptionBillingAmount = {
   yearly: 13.37,
   monthly: 42.42,
 };
+const mockedSubscriberEmailPreferences: SubscriberEmailPreferencesOutput = {
+  id: 1337,
+  primary_email: "primary@example.com",
+  unsubscribe_token: "495398jfjvjfdj",
+  monthly_monitor_report_free: true,
+  monthly_monitor_report_free_at: new Date("1337-04-02T04:02:42.000Z"),
+  monthly_monitor_report: true,
+  monthly_monitor_report_at: new Date("1337-04-02T04:02:42.000Z"),
+};
 
 it("passes the axe accessibility audit", async () => {
   const { container } = render(
     <TestComponentWrapper>
       <SettingsView
+        data={mockedSubscriberEmailPreferences}
         l10n={getL10n()}
         user={mockedUser}
         breachCountByEmailAddress={{
@@ -273,6 +284,7 @@ it("Add email address button is not shown when email limit of five reached", () 
         enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
         isMonthlySubscriber={true}
+        data={mockedSubscriberEmailPreferences}
       />
     </TestComponentWrapper>,
   );
@@ -317,6 +329,7 @@ it("Add email address button is shown when fewer than five emails", () => {
         enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
         isMonthlySubscriber={true}
+        data={mockedSubscriberEmailPreferences}
       />
     </TestComponentWrapper>,
   );
@@ -353,6 +366,7 @@ it("preselects 'Send all breach alerts to the primary email address' if that's t
         enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
         isMonthlySubscriber={true}
+        data={mockedSubscriberEmailPreferences}
       />
     </TestComponentWrapper>,
   );
@@ -397,6 +411,7 @@ it("preselects 'Send breach alerts to the affected email address' if that's the 
         enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
         isMonthlySubscriber={true}
+        data={mockedSubscriberEmailPreferences}
       />
     </TestComponentWrapper>,
   );
@@ -441,6 +456,7 @@ it("disables breach alert notification options if a user opts out of breach aler
         enabledFeatureFlags={["UpdatedEmailPreferencesOption"]}
         experimentData={defaultExperimentData}
         isMonthlySubscriber={true}
+        data={mockedSubscriberEmailPreferences}
       />
     </TestComponentWrapper>,
   );
@@ -495,6 +511,7 @@ it("preselects primary email alert option", () => {
         enabledFeatureFlags={["UpdatedEmailPreferencesOption"]}
         experimentData={defaultExperimentData}
         isMonthlySubscriber={true}
+        data={mockedSubscriberEmailPreferences}
       />
     </TestComponentWrapper>,
   );
@@ -535,6 +552,7 @@ it("unselects the breach alerts checkbox and sends a null value to the API", asy
         enabledFeatureFlags={["UpdatedEmailPreferencesOption"]}
         experimentData={defaultExperimentData}
         isMonthlySubscriber={true}
+        data={mockedSubscriberEmailPreferences}
       />
     </TestComponentWrapper>,
   );
@@ -591,6 +609,7 @@ it("preselects the affected email comms option after a user decides to enable br
         enabledFeatureFlags={["UpdatedEmailPreferencesOption"]}
         experimentData={defaultExperimentData}
         isMonthlySubscriber={true}
+        data={mockedSubscriberEmailPreferences}
       />
     </TestComponentWrapper>,
   );
@@ -638,6 +657,7 @@ it("sends a call to the API to change the email alert preferences when changing 
         enabledFeatureFlags={["UpdatedEmailPreferencesOption"]}
         experimentData={defaultExperimentData}
         isMonthlySubscriber={true}
+        data={mockedSubscriberEmailPreferences}
       />
     </TestComponentWrapper>,
   );
@@ -698,12 +718,13 @@ it("checks that monthly monitor report is enabled", () => {
         ]}
         experimentData={defaultExperimentData}
         isMonthlySubscriber={true}
+        data={mockedSubscriberEmailPreferences}
       />
     </TestComponentWrapper>,
   );
 
   const monthlyMonitorReportBtn = screen.getByLabelText(
-    "Monthly ⁨Monitor Plus⁩ report",
+    "Monthly ⁨Monitor⁩ report",
     { exact: false },
   );
   expect(monthlyMonitorReportBtn).toHaveAttribute("aria-checked", "true");
@@ -745,11 +766,12 @@ it("sends an API call to disable monthly monitor reports", async () => {
         ]}
         experimentData={defaultExperimentData}
         isMonthlySubscriber={true}
+        data={mockedSubscriberEmailPreferences}
       />
     </TestComponentWrapper>,
   );
   const monthlyMonitorReportBtn = screen.getByLabelText(
-    "Monthly ⁨Monitor Plus⁩ report",
+    "Monthly ⁨Monitor⁩ report",
     { exact: false },
   );
 
@@ -791,6 +813,7 @@ it("refreshes the session token after changing email alert preferences, to ensur
         enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
         isMonthlySubscriber={true}
+        data={mockedSubscriberEmailPreferences}
       />
     </TestComponentWrapper>,
   );
@@ -827,6 +850,7 @@ it("marks unverified email addresses as such", () => {
         enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
         isMonthlySubscriber={true}
+        data={mockedSubscriberEmailPreferences}
       />
     </TestComponentWrapper>,
   );
@@ -864,6 +888,7 @@ it("calls the API to resend a verification email if requested to", async () => {
         enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
         isMonthlySubscriber={true}
+        data={mockedSubscriberEmailPreferences}
       />
     </TestComponentWrapper>,
   );
@@ -911,6 +936,7 @@ it("calls the 'remove' action when clicking the rubbish bin icon", async () => {
         enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
         isMonthlySubscriber={true}
+        data={mockedSubscriberEmailPreferences}
       />
     </TestComponentWrapper>,
   );
@@ -948,6 +974,7 @@ it("hides the Plus cancellation link if the user doesn't have Plus", () => {
         enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
         isMonthlySubscriber={true}
+        data={mockedSubscriberEmailPreferences}
       />
     </TestComponentWrapper>,
   );
@@ -984,6 +1011,7 @@ it("shows the Plus cancellation link if the user has Plus", () => {
         enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
         isMonthlySubscriber={true}
+        data={mockedSubscriberEmailPreferences}
       />
     </TestComponentWrapper>,
   );
@@ -1027,6 +1055,7 @@ it("takes you through the cancellation dialog flow all the way to subplat", asyn
         enabledFeatureFlags={["ConfirmCancellation", "CancellationFlow"]}
         experimentData={defaultExperimentData}
         isMonthlySubscriber={true}
+        data={mockedSubscriberEmailPreferences}
       />
     </TestComponentWrapper>,
   );
@@ -1105,6 +1134,7 @@ it("closes the cancellation survey if the user selects nevermind, take me back",
         enabledFeatureFlags={["ConfirmCancellation", "CancellationFlow"]}
         experimentData={defaultExperimentData}
         isMonthlySubscriber={true}
+        data={mockedSubscriberEmailPreferences}
       />
     </TestComponentWrapper>,
   );
@@ -1162,6 +1192,7 @@ it("closes the cancellation dialog", async () => {
         enabledFeatureFlags={["CancellationFlow"]}
         experimentData={defaultExperimentData}
         isMonthlySubscriber={true}
+        data={mockedSubscriberEmailPreferences}
       />
     </TestComponentWrapper>,
   );
@@ -1212,6 +1243,7 @@ it("shows the account deletion button if the user does not have Plus", () => {
         enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
         isMonthlySubscriber={true}
+        data={mockedSubscriberEmailPreferences}
       />
     </TestComponentWrapper>,
   );
@@ -1253,6 +1285,7 @@ it("warns about the consequences before deleting a free user's account", async (
         enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
         isMonthlySubscriber={true}
+        data={mockedSubscriberEmailPreferences}
       />
     </TestComponentWrapper>,
   );
@@ -1296,6 +1329,7 @@ it("shows a loading state while account deletion is in progress", async () => {
         enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
         isMonthlySubscriber={true}
+        data={mockedSubscriberEmailPreferences}
       />
     </TestComponentWrapper>,
   );
@@ -1340,6 +1374,7 @@ it("shows the account deletion button if the user has Plus", () => {
         enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
         isMonthlySubscriber={true}
+        data={mockedSubscriberEmailPreferences}
       />
     </TestComponentWrapper>,
   );
@@ -1381,6 +1416,7 @@ it("warns about the consequences before deleting a Plus user's account", async (
         enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
         isMonthlySubscriber={true}
+        data={mockedSubscriberEmailPreferences}
       />
     </TestComponentWrapper>,
   );
@@ -1433,6 +1469,7 @@ it.skip("calls the 'add' action when adding another email address", async () => 
         enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
         isMonthlySubscriber={true}
+        data={mockedSubscriberEmailPreferences}
       />
     </TestComponentWrapper>,
   );
@@ -1468,6 +1505,7 @@ describe("to learn about usage", () => {
           enabledFeatureFlags={[]}
           experimentData={defaultExperimentData}
           isMonthlySubscriber={true}
+          data={mockedSubscriberEmailPreferences}
         />
       </TestComponentWrapper>,
     );
@@ -1512,6 +1550,7 @@ describe("to learn about usage", () => {
           enabledFeatureFlags={[]}
           experimentData={defaultExperimentData}
           isMonthlySubscriber={true}
+          data={mockedSubscriberEmailPreferences}
         />
       </TestComponentWrapper>,
     );
@@ -1556,6 +1595,7 @@ describe("to learn about usage", () => {
           enabledFeatureFlags={[]}
           experimentData={defaultExperimentData}
           isMonthlySubscriber={true}
+          data={mockedSubscriberEmailPreferences}
         />
       </TestComponentWrapper>,
     );
@@ -1601,6 +1641,7 @@ describe("to learn about usage", () => {
           enabledFeatureFlags={[]}
           experimentData={defaultExperimentData}
           isMonthlySubscriber={true}
+          data={mockedSubscriberEmailPreferences}
         />
       </TestComponentWrapper>,
     );
@@ -1645,6 +1686,7 @@ describe("to learn about usage", () => {
           enabledFeatureFlags={[]}
           experimentData={defaultExperimentData}
           isMonthlySubscriber={true}
+          data={mockedSubscriberEmailPreferences}
         />
       </TestComponentWrapper>,
     );
@@ -1694,6 +1736,7 @@ describe("to learn about usage", () => {
           enabledFeatureFlags={[]}
           experimentData={defaultExperimentData}
           isMonthlySubscriber={true}
+          data={mockedSubscriberEmailPreferences}
         />
       </TestComponentWrapper>,
     );
@@ -1739,6 +1782,7 @@ describe("to learn about usage", () => {
           enabledFeatureFlags={[]}
           experimentData={defaultExperimentData}
           isMonthlySubscriber={true}
+          data={mockedSubscriberEmailPreferences}
         />
       </TestComponentWrapper>,
     );
@@ -1788,6 +1832,7 @@ describe("to learn about usage", () => {
           enabledFeatureFlags={[]}
           experimentData={defaultExperimentData}
           isMonthlySubscriber={true}
+          data={mockedSubscriberEmailPreferences}
         />
       </TestComponentWrapper>,
     );
@@ -1832,6 +1877,7 @@ describe("to learn about usage", () => {
           enabledFeatureFlags={[]}
           experimentData={defaultExperimentData}
           isMonthlySubscriber={true}
+          data={mockedSubscriberEmailPreferences}
         />
       </TestComponentWrapper>,
     );
@@ -1881,6 +1927,7 @@ describe("to learn about usage", () => {
           enabledFeatureFlags={[]}
           experimentData={defaultExperimentData}
           isMonthlySubscriber={true}
+          data={mockedSubscriberEmailPreferences}
         />
       </TestComponentWrapper>,
     );
@@ -1942,6 +1989,7 @@ it("selects the coupon code discount cta and shows the all-set dialog step", asy
         ]}
         experimentData={defaultExperimentData}
         isMonthlySubscriber={true}
+        data={mockedSubscriberEmailPreferences}
       />
     </TestComponentWrapper>,
   );
@@ -2028,6 +2076,7 @@ it("shows error message if the applying the coupon code function was unsuccessfu
         ]}
         experimentData={defaultExperimentData}
         isMonthlySubscriber={true}
+        data={mockedSubscriberEmailPreferences}
       />
     </TestComponentWrapper>,
   );
@@ -2094,6 +2143,7 @@ it("does not show the coupon code if a user already has a coupon set", async () 
         ]}
         experimentData={defaultExperimentData}
         isMonthlySubscriber={true}
+        data={mockedSubscriberEmailPreferences}
       />
     </TestComponentWrapper>,
   );
