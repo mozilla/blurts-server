@@ -10,8 +10,9 @@ import { logger } from "../../../../functions/server/logging";
 import {
   getSubscriberByFxaUid,
   setAllEmailsToPrimary,
-  setMonthlyMonitorReport,
+  isSubscriberPlus,
 } from "../../../../../db/tables/subscribers";
+import { updateEmailPreferenceForSubscriber } from "../../../../../db/tables/subscriber_email_preferences";
 
 export type EmailUpdateCommTypeOfOptions = "null" | "affected" | "primary";
 
@@ -52,7 +53,15 @@ export async function POST(req: NextRequest) {
         await setAllEmailsToPrimary(subscriber, allEmailsToPrimary);
       }
       if (typeof monthlyMonitorReport === "boolean") {
-        await setMonthlyMonitorReport(subscriber, monthlyMonitorReport);
+        const isFree = !(await isSubscriberPlus(subscriber.id));
+        const preference = isFree
+          ? { monthly_monitor_report_free: monthlyMonitorReport }
+          : { monthly_monitor_report: monthlyMonitorReport };
+        await updateEmailPreferenceForSubscriber(
+          subscriber.id,
+          isFree,
+          preference,
+        );
       }
 
       return NextResponse.json({

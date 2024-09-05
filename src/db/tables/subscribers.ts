@@ -378,7 +378,7 @@ async function getPotentialSubscribersWaitingForFirstDataBrokerRemovalFixedEmail
     )
     // ...with an OneRep account...
     .whereNotNull("onerep_profile_id")
-    // ...who haven’t received the email...
+    // ...who haven't received the email...
     .andWhere("first_broker_removal_email_sent", false)
     // ...and signed up after the feature flag `FirstDataBrokerRemovalFixedEmail`
     // has been enabled last.
@@ -495,21 +495,6 @@ async function updateMonthlyEmailTimestamp(
     .returning("monthly_email_at");
 
   return res;
-}
-/* c8 ignore stop */
-
-/**
- * Unsubscribe user from monthly unresolved breach emails
- *
- * @param token User verification token
- * @deprecated Delete as a part of MNTOR-3077
- */
-// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
-/* c8 ignore start */
-async function updateMonthlyEmailOptout(token: string) {
-  await knex("subscribers")
-    .update("monthly_email_optout", true)
-    .where("primary_verification_token", token);
 }
 /* c8 ignore stop */
 
@@ -686,6 +671,20 @@ async function unresolveAllBreaches(
 }
 /* c8 ignore stop */
 
+/* c8 ignore start */
+async function isSubscriberPlus(subscriberId: SubscriberRow["id"]) {
+  const res = await knex("subscribers")
+    .select("fxa_profile_json")
+    .where("id", subscriberId)
+    .first();
+
+  return !!(
+    res &&
+    res.fxa_profile_json?.subscriptions?.includes(MONITOR_PREMIUM_CAPABILITY)
+  );
+}
+/* c8 ignore stop */
+
 export {
   getOnerepProfileId,
   getSubscribersByHashes,
@@ -706,7 +705,6 @@ export {
   getPotentialSubscribersWaitingForFirstDataBrokerRemovalFixedEmail,
   getSubscribersWaitingForMonthlyEmail,
   updateMonthlyEmailTimestamp,
-  updateMonthlyEmailOptout,
   markFirstDataBrokerRemovalFixedEmailAsJustSent,
   markMonthlyActivityEmailAsJustSent,
   deleteUnverifiedSubscribers,
@@ -716,5 +714,6 @@ export {
   incrementSignInCountForEligibleFreeUser,
   getSignInCount,
   unresolveAllBreaches,
+  isSubscriberPlus,
   knex as knexSubscribers,
 };
