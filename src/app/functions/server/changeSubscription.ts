@@ -4,7 +4,6 @@
 
 import { SubscriberRow } from "knex/types/tables";
 import { updateFxAProfileData } from "../../../db/tables/subscribers";
-import { Profile } from "next-auth";
 
 const MONITOR_PREMIUM_CAPABILITY = "monitor";
 
@@ -12,8 +11,8 @@ export async function changeSubscription(
   subscriber: SubscriberRow,
   enabled: boolean,
 ) {
-  const currentFxAProfile = subscriber?.fxa_profile_json as Profile;
-  let subscriptions = currentFxAProfile.subscriptions ?? [];
+  const currentFxAProfile = subscriber.fxa_profile_json;
+  let subscriptions = currentFxAProfile?.subscriptions ?? [];
 
   if (enabled) {
     if (!subscriptions?.includes(MONITOR_PREMIUM_CAPABILITY)) {
@@ -21,11 +20,13 @@ export async function changeSubscription(
     }
   } else {
     subscriptions =
-      currentFxAProfile.subscriptions?.filter(
+      currentFxAProfile?.subscriptions?.filter(
         (sub: string) => sub !== MONITOR_PREMIUM_CAPABILITY,
       ) ?? [];
   }
 
-  currentFxAProfile.subscriptions = subscriptions;
+  if (currentFxAProfile) {
+    currentFxAProfile.subscriptions = subscriptions;
+  }
   await updateFxAProfileData(subscriber, currentFxAProfile);
 }
