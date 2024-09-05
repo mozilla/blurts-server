@@ -4,7 +4,7 @@
 
 import "dotenv-flow/config";
 import Sentry from "@sentry/nextjs";
-import { addOnerepStats, knexStats } from "../../db/tables/stats.js";
+import { addOnerepStats, knexStats } from "../../db/tables/stats";
 
 const SENTRY_SLUG = "cron-onerep-stats-alerts";
 

@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import type { Session } from "next-auth";
-import { getOnerepProfileId } from "../../../db/tables/subscribers.js";
+import { getOnerepProfileId } from "../../../db/tables/subscribers";
 import {
   E164PhoneNumberString,
   ISO8601DateString,

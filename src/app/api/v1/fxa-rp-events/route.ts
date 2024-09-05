@@ -14,7 +14,7 @@ import {
   updatePrimaryEmail,
   getOnerepProfileId,
   setMonthlyMonitorReport,
-} from "../../../../db/tables/subscribers.js";
+} from "../../../../db/tables/subscribers";
 import {
   activateProfile,
   deactivateProfile,

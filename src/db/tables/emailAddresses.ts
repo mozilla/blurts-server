@@ -3,10 +3,11 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { v4 as uuidv4 } from "uuid";
+import type { Profile } from "next-auth";
 import createDbConnection from "../connect.js";
 import { subscribeHash } from "../../utils/hibp";
 import { getSha1 } from "../../utils/fxa";
-import { getSubscriberByEmail, updateFxAData } from "./subscribers.js";
+import { getSubscriberByEmail, updateFxAData } from "./subscribers";
 import { ForbiddenError, UnauthorizedError } from "../../utils/error";
 import { EmailAddressRow, SubscriberRow } from "knex/types/tables";
 import { ReactLocalization } from "@fluent/react";
@@ -231,7 +232,7 @@ async function addSubscriber(
   fxaAccessToken: string | null = null, // from Firefox Account Oauth
   fxaRefreshToken: string | null = null, // from Firefox Account Oauth
   sessionExpiresAt: number = 0, // from Firefox Account Oauth
-  fxaProfileData: string | null = null,
+  fxaProfileData?: Profile,
 ): // from Firefox Account
 Promise<SubscriberRow | null> {
   // subscriber knex object added to DB
@@ -249,15 +250,16 @@ Promise<SubscriberRow | null> {
 
   const verified = await _verifySubscriber(emailHash);
   const verifiedSubscriber = Array.isArray(verified) ? verified[0] : null;
-  if (fxaRefreshToken || fxaProfileData) {
+  if ((fxaRefreshToken || fxaProfileData) && verifiedSubscriber) {
     return updateFxAData(
       verifiedSubscriber,
       fxaAccessToken,
       fxaRefreshToken,
       sessionExpiresAt,
       fxaProfileData,
-    ) as Promise<SubscriberRow | null>;
+    ) as Promise<SubscriberRow>;
   }
+
   return verifiedSubscriber;
 }
 /* c8 ignore stop */
