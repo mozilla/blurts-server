@@ -297,7 +297,7 @@ export async function POST(request: NextRequest) {
             await changeSubscription(subscriber, true);
 
             // Set monthly monitor report value back to true
-            await setMonthlyMonitorReport(subscriber.id, true);
+            await setMonthlyMonitorReport(subscriber, true);
 
             // MNTOR-2103: if one rep profile id doesn't exist in the db, fail immediately
             if (!oneRepProfileId) {
