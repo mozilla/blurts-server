@@ -88,6 +88,9 @@ export default async function SettingsPage({ searchParams }: Props) {
   );
 
   const userData = await getSubscriberById(session.user.subscriber.id);
+  if (!userData) {
+    return redirect("/");
+  }
 
   return (
     <SettingsView

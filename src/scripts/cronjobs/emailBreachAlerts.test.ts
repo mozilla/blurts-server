@@ -35,7 +35,7 @@ jest.mock("../../utils/hibp", () => {
   };
 });
 
-jest.mock("../../db/tables/subscribers.js", () => {
+jest.mock("../../db/tables/subscribers", () => {
   return {
     getSubscribersByHashes: jest.fn(() => [""]),
   };
@@ -328,7 +328,7 @@ test("skipping email when subscriber id exists in email_notifications table", as
     Id: 1,
   });
 
-  jest.mock("../../db/tables/subscribers.js", () => {
+  jest.mock("../../db/tables/subscribers", () => {
     return {
       getSubscribersByHashes: jest.fn(() => [{ id: 1 }]),
     };
@@ -383,7 +383,7 @@ test("throws an error when addEmailNotification fails", async () => {
     Id: 1,
   });
 
-  jest.mock("../../db/tables/subscribers.js", () => {
+  jest.mock("../../db/tables/subscribers", () => {
     return {
       getSubscribersByHashes: jest.fn(() => [{ id: 1 }]),
     };
@@ -442,7 +442,7 @@ test("throws an error when markEmailAsNotified fails", async () => {
     Id: 1,
   });
 
-  jest.mock("../../db/tables/subscribers.js", () => {
+  jest.mock("../../db/tables/subscribers", () => {
     return {
       getSubscribersByHashes: jest.fn(() => [{ id: 1 }]),
     };
