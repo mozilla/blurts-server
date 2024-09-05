@@ -14,7 +14,7 @@ import {
   incrementSignInCountForEligibleFreeUser,
   getFxATokens,
   updateFxATokens,
-} from "../../../db/tables/subscribers.js";
+} from "../../../db/tables/subscribers";
 import { addSubscriber } from "../../../db/tables/emailAddresses";
 import { getBreaches } from "../../functions/server/getBreaches";
 import { getBreachesForEmail } from "../../../utils/hibp";
@@ -129,13 +129,15 @@ export const authOptions: AuthOptions = {
               account.access_token,
               account.refresh_token,
               account.expires_at ?? 0,
-              JSON.stringify(profile),
+              profile,
             );
             // MNTOR-2599 The breach_resolution object can get pretty big,
             // causing the session token cookie to balloon in size,
             // eventually resulting in a 400 Bad Request due to headers being too large.
-            delete updatedUser.breach_resolution;
-            token.subscriber = updatedUser;
+            delete (updatedUser as Partial<SubscriberRow>).breach_resolution;
+            // Next-Auth implicitly converts `updatedUser` to a SerializedSubscriber,
+            // hence the type assertion:
+            token.subscriber = updatedUser as unknown as SerializedSubscriber;
           }
         } else if (!existingUser && profile.email) {
           const verifiedSubscriber = await addSubscriber(
@@ -144,7 +146,7 @@ export const authOptions: AuthOptions = {
             account.access_token,
             account.refresh_token,
             account.expires_at,
-            JSON.stringify(profile),
+            profile,
           );
           // The date fields of `verifiedSubscriber` get converted to an ISO 8601
           // date string when serialised in the token, hence the type assertion:
@@ -242,8 +244,10 @@ export const authOptions: AuthOptions = {
             // MNTOR-2599 The breach_resolution object can get pretty big,
             // causing the session token cookie to balloon in size,
             // eventually resulting in a 400 Bad Request due to headers being too large.
-            delete updatedUser.breach_resolution;
-            token.subscriber = updatedUser;
+            delete (updatedUser as Partial<SubscriberRow>).breach_resolution;
+            // Next-Auth implicitly converts `updatedUser` to a SerializedSubscriber,
+            // hence the type assertion:
+            token.subscriber = updatedUser as unknown as SerializedSubscriber;
           } catch (error) {
             logger.error("refresh_access_token", error);
             // The error property can be used client-side to handle the refresh token error
