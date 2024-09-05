@@ -15,7 +15,7 @@ import type { EmailAddressRow, SubscriberRow } from "knex/types/tables";
 import {
   getSubscribersByHashes,
   knexSubscribers,
-} from "../../db/tables/subscribers.js";
+} from "../../db/tables/subscribers";
 import {
   getEmailAddressesByHashes,
   knexEmailAddresses,
