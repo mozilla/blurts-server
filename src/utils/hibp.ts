@@ -451,29 +451,6 @@ async function subscribeHash(sha1: string) {
 }
 /* c8 ignore stop */
 
-/**
- * A range subscription can be deleted with the following request:
- * DELETE /range/[hash prefix]
- *
- * There is one possible response code that can be returned:
- * HTTP 200: Range subscription successfully deleted
- *
- * @param {string} sha1 sha1 of the email being subscribed
- * @returns 200 response codes
- */
-// TODO: Add unit test when changing this code:
-/* c8 ignore start */
-async function deleteSubscribedHash(sha1: string) {
-  const sha1Prefix = sha1.slice(0, 6).toUpperCase();
-  const path = `/range/${sha1Prefix}`;
-  const options = {
-    Method: "DELETE",
-  };
-
-  return await kAnonReq(path, options);
-}
-/* c8 ignore stop */
-
 function hasEmailAddressAttached(
   subscriberRow: SubscriberRow,
 ): subscriberRow is SubscriberRow & EmailAddressRow {
@@ -483,7 +460,6 @@ function hasEmailAddressAttached(
 }
 
 export {
-  kAnonReq,
   formatDataClassesArray,
   getAddressesAndLanguageForEmail,
   getBreachesForEmail,
@@ -491,6 +467,5 @@ export {
   getAllBreachesFromDb,
   getFilteredBreaches,
   subscribeHash,
-  deleteSubscribedHash,
   knex as knexHibp,
 };
