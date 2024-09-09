@@ -27,16 +27,9 @@ export type Props = {
   breachedEmail: string;
   utmCampaignId: string;
   subscriber: SubscriberRow;
-  scanData: LatestOnerepScanData;
-  allSubscriberBreaches: SubscriberBreach[];
-  enabledFeatureFlags: FeatureFlagName[];
 };
 
 export const BreachAlertEmail = (props: Props) => {
-  if (props.enabledFeatureFlags.includes("BreachEmailRedesign")) {
-    return <RedesignedBreachAlertEmail {...props} />;
-  }
-
   const l10n = props.l10n;
 
   return (
@@ -76,11 +69,28 @@ export const BreachAlertEmail = (props: Props) => {
   );
 };
 
+export type RedesignedBreachAlertEmailProps = {
+  l10n: ExtendedReactLocalization;
+  breach: HibpLikeDbBreach;
+  breachedEmail: string;
+  utmCampaignId: string;
+  subscriber: SubscriberRow;
+  scanData: LatestOnerepScanData;
+  allSubscriberBreaches: SubscriberBreach[];
+  enabledFeatureFlags: FeatureFlagName[];
+};
+
 // These components are fully covered by the BreachAlertEmail test,
 // but for some reason get marked as uncovered again once the
 // `src/scripts/cronjobs/emailBreachAlerts.test.ts` tests are run:
 /* c8 ignore start */
-const RedesignedBreachAlertEmail = (props: Props) => {
+export const RedesignedBreachAlertEmail = (
+  props: RedesignedBreachAlertEmailProps,
+) => {
+  if (!props.enabledFeatureFlags.includes("BreachEmailRedesign")) {
+    return <BreachAlertEmail {...props} />;
+  }
+
   const l10n = props.l10n;
   const locale = getLocale(props.l10n);
   const listFormatter = new Intl.ListFormat(locale);
@@ -315,7 +325,9 @@ const Banner = (props: {
   );
 };
 
-const DataPointCount = (props: Props & { utmContentSuffix: string }) => {
+const DataPointCount = (
+  props: RedesignedBreachAlertEmailProps & { utmContentSuffix: string },
+) => {
   if (props.scanData.scan === null) {
     return null;
   }

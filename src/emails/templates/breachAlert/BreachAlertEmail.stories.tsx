@@ -5,7 +5,10 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { FC } from "react";
 import type { SubscriberRow, OnerepScanRow } from "knex/types/tables";
-import { Props, BreachAlertEmail } from "./BreachAlertEmail";
+import {
+  RedesignedBreachAlertEmailProps,
+  RedesignedBreachAlertEmail,
+} from "./BreachAlertEmail";
 import { StorybookEmailRenderer } from "../../StorybookEmailRenderer";
 import { getL10n } from "../../../app/functions/l10n/storybookAndJest";
 import {
@@ -14,11 +17,11 @@ import {
   createRandomScanResult,
 } from "../../../apiMocks/mockData";
 
-const meta: Meta<FC<Props>> = {
+const meta: Meta<FC<RedesignedBreachAlertEmailProps>> = {
   title: "Emails/Breach alert",
-  component: (props: Props) => (
+  component: (props: RedesignedBreachAlertEmailProps) => (
     <StorybookEmailRenderer>
-      <BreachAlertEmail {...props} />
+      <RedesignedBreachAlertEmail {...props} />
     </StorybookEmailRenderer>
   ),
   args: {
@@ -39,7 +42,7 @@ const meta: Meta<FC<Props>> = {
 };
 
 export default meta;
-type Story = StoryObj<FC<Props>>;
+type Story = StoryObj<FC<RedesignedBreachAlertEmailProps>>;
 
 export const BreachAlertEmailStory: Story = {
   name: "Breach alert",

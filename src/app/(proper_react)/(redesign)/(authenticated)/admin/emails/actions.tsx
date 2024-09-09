@@ -27,7 +27,10 @@ import {
   createRandomHibpListing,
   createRandomScanResult,
 } from "../../../../../../apiMocks/mockData";
-import { BreachAlertEmail } from "../../../../../../emails/templates/breachAlert/BreachAlertEmail";
+import {
+  BreachAlertEmail,
+  RedesignedBreachAlertEmail,
+} from "../../../../../../emails/templates/breachAlert/BreachAlertEmail";
 import { SignupReportEmail } from "../../../../../../emails/templates/signupReport/SignupReportEmail";
 import { getBreachesForEmail } from "../../../../../../utils/hibp";
 import { getSha1 } from "../../../../../../utils/fxa";
@@ -186,26 +189,32 @@ export async function triggerBreachAlert(
     countryCode: assumedCountryCode,
   });
 
-  await send(
-    emailAddress,
-    l10n.getString(
-      options.redesign === true
-        ? "email-breach-alert-all-subject"
-        : "breach-alert-subject",
-    ),
-    <BreachAlertEmail
-      subscriber={subscriber}
-      breach={createRandomHibpListing()}
-      breachedEmail={emailAddress}
-      allSubscriberBreaches={allSubscriberBreaches}
-      scanData={scanData}
-      enabledFeatureFlags={
-        options.redesign === true ? ["BreachEmailRedesign"] : []
-      }
-      utmCampaignId="breach-alert"
-      l10n={l10n}
-    />,
-  );
+  options.redesign === true
+    ? await send(
+        emailAddress,
+        l10n.getString("email-breach-alert-all-subject"),
+        <RedesignedBreachAlertEmail
+          subscriber={subscriber}
+          breach={createRandomHibpListing()}
+          breachedEmail={emailAddress}
+          allSubscriberBreaches={allSubscriberBreaches}
+          scanData={scanData}
+          enabledFeatureFlags={["BreachEmailRedesign"]}
+          utmCampaignId="breach-alert"
+          l10n={l10n}
+        />,
+      )
+    : await send(
+        emailAddress,
+        l10n.getString("breach-alert-subject"),
+        <BreachAlertEmail
+          subscriber={subscriber}
+          breach={createRandomHibpListing()}
+          breachedEmail={emailAddress}
+          utmCampaignId="breach-alert"
+          l10n={l10n}
+        />,
+      );
 }
 
 export async function triggerFirstDataBrokerRemovalFixed(emailAddress: string) {
