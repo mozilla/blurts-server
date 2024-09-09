@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Firefox Monitor",
   "engines": {
-    "node": "22.7.x",
-    "npm": "10.8.x"
+    "node": "20.9.x",
+    "npm": "10.1.x"
   },
   "type": "module",
   "scripts": {
@@ -58,8 +58,8 @@
   "homepage": "https://github.com/mozilla/blurts-server",
   "license": "MPL-2.0",
   "volta": {
-    "node": "22.7.0",
-    "npm": "10.8.1"
+    "node": "20.9.0",
+    "npm": "10.1.0"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.637.0",

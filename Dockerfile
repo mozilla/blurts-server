@@ -1,4 +1,4 @@
-FROM node:lts-alpine
+FROM node:20.9-alpine
 
 RUN addgroup -g 10001 app && \
     adduser -D -G app -h /app -u 10001 app
