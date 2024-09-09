@@ -53,27 +53,6 @@ async function getSubscriberByFxaUid(
 }
 /* c8 ignore stop */
 
-// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
-/* c8 ignore start */
-/**
- * @param email The primary email of the subscriber you're looking up
- * @deprecated Use [[getSubscriberByFxAUid]] instead, as email identifiers are unstable (e.g. we've had issues with case-sensitivity).
- */
-async function getSubscriberByEmail(
-  email: SubscriberRow["primary_email"],
-): Promise<undefined | (SubscriberRow & WithEmailAddresses)> {
-  const [subscriber] = await knex("subscribers").where({
-    primary_email: email,
-    primary_verified: true,
-  });
-  if (!subscriber) {
-    return;
-  }
-  const subscriberAndEmails = await joinEmailAddressesToSubscriber(subscriber);
-  return subscriberAndEmails;
-}
-/* c8 ignore stop */
-
 /**
  * Update primary email for subscriber
  */
@@ -276,14 +255,14 @@ async function setMonthlyMonitorReport(
 async function setBreachResolution(
   user: SubscriberRow,
   updatedBreachesResolution: SubscriberRow["breach_resolution"],
-): Promise<SubscriberRow | null> {
+): Promise<(SubscriberRow & WithEmailAddresses) | null> {
   await knex("subscribers").where("id", user.id).update({
     breach_resolution: updatedBreachesResolution,
     // @ts-ignore knex.fn.now() results in it being set to a date,
     // even if it's not typed as a JS date object:
     updated_at: knex.fn.now(),
   });
-  return (await getSubscriberByEmail(user.primary_email)) ?? null;
+  return (await getSubscriberByFxaUid(user.fxa_uid)) ?? null;
 }
 /* c8 ignore stop */
 
@@ -475,29 +454,6 @@ async function getSubscribersWaitingForMonthlyEmail(
 }
 /* c8 ignore stop */
 
-/**
- * @param email
- * @deprecated Only used by the `send-email-to-unresolved-breach-subscribers.js`, which it looks like might not be sent anymore? Delete as a part of MNTOR-3077?
- */
-// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
-/* c8 ignore start */
-async function updateMonthlyEmailTimestamp(
-  email: SubscriberRow["primary_email"],
-) {
-  const res = await knex("subscribers")
-    .update({
-      monthly_email_at: "now",
-      // @ts-ignore knex.fn.now() results in it being set to a date,
-      // even if it's not typed as a JS date object:
-      updated_at: knex.fn.now(),
-    })
-    .where("primary_email", email)
-    .returning("monthly_email_at");
-
-  return res;
-}
-/* c8 ignore stop */
-
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
 async function markFirstDataBrokerRemovalFixedEmailAsJustSent(
@@ -556,59 +512,12 @@ async function getOnerepProfileId(subscriberId: SubscriberRow["id"]) {
 }
 /* c8 ignore stop */
 
-/**
- * @deprecated OBSOLETE: Delete as a part of MNTOR-3077
- */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-function getSubscribersWithUnresolvedBreachesQuery() {
-  return knex("subscribers")
-    .whereRaw("monthly_email_optout IS NOT TRUE")
-    .whereRaw(
-      "greatest(created_at, monthly_email_at) < (now() - interval '1 month')",
-    )
-    .whereRaw("(breach_stats #>> '{numBreaches, numUnresolved}')::int > 0");
-}
-/* c8 ignore stop */
 
-/**
- * @deprecated OBSOLETE: Delete as a part of MNTOR-3077
- */
-// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
-/* c8 ignore start */
-async function getSubscribersWithUnresolvedBreaches(limit = 0) {
-  let query = getSubscribersWithUnresolvedBreachesQuery().select(
-    "primary_email",
-    "primary_verification_token",
-    "breach_stats",
-    "signup_language",
-  );
-  if (limit) {
-    query = query.limit(limit).orderBy("created_at");
-  }
-  return await query;
-}
-/* c8 ignore stop */
-
-/**
- * @deprecated OBSOLETE: Delete as a part of MNTOR-3077
- */
-// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
-/* c8 ignore start */
-async function getSubscribersWithUnresolvedBreachesCount() {
-  const query = getSubscribersWithUnresolvedBreachesQuery();
-  // @ts-ignore This will return a string
-  const count = parseInt((await query.count({ count: "*" }))[0].count);
-  return count;
-}
 type WithEmailAddresses = SubscriberRow & {
   email_addresses: EmailAddressRow[];
 };
-
-/* c8 ignore stop */
-
-// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
-/* c8 ignore start */
 async function joinEmailAddressesToSubscriber(
   subscriber: SubscriberRow,
 ): Promise<SubscriberRow & WithEmailAddresses> {
@@ -690,10 +599,6 @@ export {
   getSubscribersByHashes,
   getSubscriberById,
   getSubscriberByFxaUid,
-  getSubscriberByEmail,
-  getSubscribersWithUnresolvedBreachesQuery,
-  getSubscribersWithUnresolvedBreaches,
-  getSubscribersWithUnresolvedBreachesCount,
   updatePrimaryEmail,
   updateFxAData,
   updateFxATokens,
@@ -704,7 +609,6 @@ export {
   setBreachResolution,
   getPotentialSubscribersWaitingForFirstDataBrokerRemovalFixedEmail,
   getSubscribersWaitingForMonthlyEmail,
-  updateMonthlyEmailTimestamp,
   markFirstDataBrokerRemovalFixedEmailAsJustSent,
   markMonthlyActivityEmailAsJustSent,
   deleteUnverifiedSubscribers,
