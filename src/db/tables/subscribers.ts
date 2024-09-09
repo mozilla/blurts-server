@@ -7,6 +7,7 @@ import type { EmailAddressRow, SubscriberRow } from "knex/types/tables";
 import createDbConnection from "../connect.js";
 import AppConstants from "../../appConstants.js";
 import { SerializedSubscriber } from "../../next-auth.js";
+import { getFeatureFlagData } from "./featureFlags";
 
 const knex = createDbConnection();
 const { DELETE_UNVERIFIED_SUBSCRIBERS_TIMER } = AppConstants;
@@ -328,22 +329,7 @@ async function deleteResolutionsWithEmail(id: number, email: string) {
 async function getPotentialSubscribersWaitingForFirstDataBrokerRemovalFixedEmail(): Promise<
   SubscriberRow[]
 > {
-  // I'm explicitly referencing the type here, so that these lines of code will
-  // show up as errors when we remove it from the flag list:
-  /** @type {import("./featureFlags.js").FeatureFlagName} */
-  const featureFlagName = "FirstDataBrokerRemovalFixedEmail";
-  // Interactions with the `feature_flags` table would generally go in the
-  // `src/db/tables/featureFlags` module. However, since that module is already
-  // written in TypeScript, it can't be loaded in pre-TypeScript cron jobs,
-  // which currently still import from the subscribers module. Hence, we've
-  // inlined this until https://mozilla-hub.atlassian.net/browse/MNTOR-3077 is fixed.
-  const flag = await knex("feature_flags")
-    .first()
-    .where("name", featureFlagName)
-    // The `.andWhereNull` alias doesn't seem to exist:
-    // https://github.com/knex/knex/issues/1881#issuecomment-275433906
-    .whereNull("deleted_at");
-
+  const flag = await getFeatureFlagData("FirstDataBrokerRemovalFixedEmail");
   if (!flag?.is_enabled || !flag?.modified_at) {
     return [];
   }
@@ -381,20 +367,7 @@ async function getPotentialSubscribersWaitingForFirstDataBrokerRemovalFixedEmail
 async function getSubscribersWaitingForMonthlyEmail(
   options: Partial<{ plusOnly: boolean; limit: number }> = {},
 ): Promise<SubscriberRow[]> {
-  // I'm explicitly referencing the type here, so that these lines of code will
-  // show up as errors when we remove it from the flag list:
-  const featureFlagName = "MonthlyActivityEmail";
-  // Interactions with the `feature_flags` table would generally go in the
-  // `src/db/tables/featureFlags` module. However, since that module is already
-  // written in TypeScript, it can't be loaded in pre-TypeScript cron jobs,
-  // which currently still import from the subscribers module. Hence, we've
-  // inlined this until https://mozilla-hub.atlassian.net/browse/MNTOR-3077 is fixed.
-  const flag = await knex("feature_flags")
-    .first()
-    .where("name", featureFlagName)
-    // The `.andWhereNull` alias doesn't seem to exist:
-    // https://github.com/knex/knex/issues/1881#issuecomment-275433906
-    .whereNull("deleted_at");
+  const flag = await getFeatureFlagData("MonthlyActivityEmail");
 
   if (!flag?.is_enabled) {
     return [];

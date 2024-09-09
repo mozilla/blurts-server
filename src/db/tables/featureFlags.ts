@@ -78,6 +78,29 @@ export async function getEnabledFeatureFlags(
   );
 }
 
+/**
+ * It is recommended to use `getEnabledFeatureFlags` if you want to know what
+ * features to show for a single person. This function is for use cases where
+ * you need to potentially use the allowlist in a different query (specifically
+ * `getSubscribersWaitingForMonthlyEmail` and
+ * `getPotentialSubscribersWaitingForFirstDataBrokerRemovalFixedEmail`, at the
+ * time of writing).
+ *
+ * @param featureFlagName
+ */
+export async function getFeatureFlagData(
+  featureFlagName: FeatureFlagName,
+): Promise<FeatureFlagRow | null> {
+  return (
+    (await knex("feature_flags")
+      .first()
+      .where("name", featureFlagName)
+      // The `.andWhereNull` alias doesn't seem to exist:
+      // https://github.com/knex/knex/issues/1881#issuecomment-275433906
+      .whereNull("deleted_at")) ?? null
+  );
+}
+
 export async function getFeatureFlagByName(name: string) {
   logger.info("getFeatureFlagByName", name);
   const res = await knex("feature_flags").where("name", name);
