@@ -29,7 +29,7 @@ features:
       variant:
         description: The optional fields to show
         type: OptionalBrokerScanInfoFields
-        default: middleName
+        default: none
     defaults:
       - channel: local
         value: {

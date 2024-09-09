@@ -32,6 +32,7 @@ import styles from "./EnterInfo.module.scss";
 import { TelemetryButton } from "../../../../../components/client/TelemetryButton";
 import { redirect } from "next/navigation";
 import * as Sentry from "@sentry/nextjs";
+import { ExperimentData } from "../../../../../../telemetry/generated/nimbus/experiments";
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
@@ -62,7 +63,7 @@ export type Props = {
   user: Session["user"];
   skipInitialStep: boolean;
   previousRoute: string | null;
-  optionalInfoIsEnabled: boolean;
+  experimentData: ExperimentData;
 };
 
 export const EnterInfo = ({
@@ -70,7 +71,7 @@ export const EnterInfo = ({
   onGoBack,
   skipInitialStep,
   previousRoute,
-  optionalInfoIsEnabled,
+  experimentData,
 }: Props) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -193,7 +194,19 @@ export const EnterInfo = ({
       isRequired: true,
       onChange: setLocation,
     },
-  ].filter((userDetail) => userDetail.isRequired || optionalInfoIsEnabled);
+  ].filter((userDetail) => {
+    const optionalInfoExperimentData =
+      experimentData["welcome-scan-optional-info"];
+    const showOptionalInfo =
+      optionalInfoExperimentData.enabled &&
+      ((userDetail.key === "middle_name" &&
+        (optionalInfoExperimentData.variant === "middleName" ||
+          optionalInfoExperimentData.variant === "suffixAndMiddleName")) ||
+        (userDetail.key === "name_suffix" &&
+          (optionalInfoExperimentData.variant === "suffix" ||
+            optionalInfoExperimentData.variant === "suffixAndMiddleName")));
+    return userDetail.isRequired || showOptionalInfo;
+  });
 
   const getInvalidFields = () =>
     userDetailsData.filter(({ isValid }) => !isValid).map(({ key }) => key);

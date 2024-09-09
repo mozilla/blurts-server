@@ -26,6 +26,7 @@ export const Onboarding: Story = {
         ...defaultExperimentData,
         "welcome-scan-optional-info": {
           enabled: true,
+          variant: "suffixAndMiddleName",
         },
       }}
     />
