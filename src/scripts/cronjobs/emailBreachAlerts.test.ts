@@ -183,7 +183,7 @@ test("processes valid messages", async () => {
   // but since they were already there when adding the "no logs" rule in tests,
   // I'm respecting Chesterton's Fence and leaving them in place for now:
   jest.spyOn(console, "info").mockImplementation(() => undefined);
-  const emailMod = await import("../../utils/email.js");
+  const emailMod = await import("../../utils/email");
   const sendEmail = emailMod.sendEmail as jest.Mock<
     (typeof emailMod)["sendEmail"]
   >;
@@ -279,7 +279,7 @@ test("rendering the MJML-based template", async () => {
   // but since they were already there when adding the "no logs" rule in tests,
   // I'm respecting Chesterton's Fence and leaving them in place for now:
   jest.spyOn(console, "info").mockImplementation(() => undefined);
-  const emailMod = await import("../../utils/email.js");
+  const emailMod = await import("../../utils/email");
   const sendEmail = emailMod.sendEmail as jest.Mock<
     (typeof emailMod)["sendEmail"]
   >;
@@ -318,7 +318,7 @@ test("skipping email when subscriber id exists in email_notifications table", as
   // but since they were already there when adding the "no logs" rule in tests,
   // I'm respecting Chesterton's Fence and leaving them in place for now:
   jest.spyOn(console, "info").mockImplementation(() => undefined);
-  const { sendEmail } = await import("../../utils/email.js");
+  const { sendEmail } = await import("../../utils/email");
   const mockedUtilsHibp: any = jest.requireMock("../../utils/hibp");
   mockedUtilsHibp.getBreachByName.mockReturnValue({
     IsVerified: true,
@@ -373,7 +373,7 @@ test("throws an error when addEmailNotification fails", async () => {
   // but since they were already there when adding the "no logs" rule in tests,
   // I'm respecting Chesterton's Fence and leaving them in place for now:
   jest.spyOn(console, "info").mockImplementation(() => undefined);
-  const { sendEmail } = await import("../../utils/email.js");
+  const { sendEmail } = await import("../../utils/email");
   const mockedUtilsHibp: any = jest.requireMock("../../utils/hibp");
   mockedUtilsHibp.getBreachByName.mockReturnValue({
     IsVerified: true,
@@ -432,7 +432,7 @@ test("throws an error when markEmailAsNotified fails", async () => {
   // but since they were already there when adding the "no logs" rule in tests,
   // I'm respecting Chesterton's Fence and leaving them in place for now:
   jest.spyOn(console, "info").mockImplementation(() => undefined);
-  const { sendEmail } = await import("../../utils/email.js");
+  const { sendEmail } = await import("../../utils/email");
   const mockedUtilsHibp: any = jest.requireMock("../../utils/hibp");
   mockedUtilsHibp.getBreachByName.mockReturnValue({
     IsVerified: true,
