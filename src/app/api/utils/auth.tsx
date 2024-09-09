@@ -19,7 +19,7 @@ import { addSubscriber } from "../../../db/tables/emailAddresses";
 import { getBreaches } from "../../functions/server/getBreaches";
 import { getBreachesForEmail } from "../../../utils/hibp";
 import { getSha1, refreshOAuthTokens } from "../../../utils/fxa";
-import { initEmail, sendEmail } from "../../../utils/email.js";
+import { initEmail, sendEmail } from "../../../utils/email";
 import { getL10n } from "../../functions/l10n/serverComponents";
 import { OAuthConfig } from "next-auth/providers/oauth";
 import { SerializedSubscriber } from "../../../next-auth";

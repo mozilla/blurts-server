@@ -4,7 +4,7 @@
 
 import { SubscriberRow } from "knex/types/tables";
 import { resetUnverifiedEmailAddress } from "../../../db/tables/emailAddresses";
-import { sendEmail } from "../../../utils/email.js";
+import { sendEmail } from "../../../utils/email";
 import { renderEmail } from "../../../emails/renderEmail";
 import { VerifyEmailAddressEmail } from "../../../emails/templates/verifyEmailAddress/VerifyEmailAddressEmail";
 import { sanitizeSubscriberRow } from "../../functions/server/sanitize";
