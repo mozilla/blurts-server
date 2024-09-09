@@ -9,9 +9,13 @@ import path from "path";
 import AppConstants from "../appConstants";
 import packageJson from "../../package.json";
 
+export type VersionData = {
+  commit: string;
+  version: string;
+  source: string;
+};
 
 const versionJsonPath = path.join(__dirname, "../../version.json");
-
 
 // If the version.json file already exists (e.g., created by circle + docker),
 // don't need to generate it
@@ -24,19 +28,19 @@ if (!fs.existsSync(versionJsonPath)) {
 
   fs.writeFileSync(
     versionJsonPath,
-    JSON.stringify(versionJson, null, 2) + "\n"
+    JSON.stringify(versionJson, null, 2) + "\n",
   );
 }
 
-export function vers() {
+export function vers(): VersionData {
   if (AppConstants.APP_ENV === "heroku") {
     /* eslint-disable no-process-env */
     return {
-      commit: process.env.HEROKU_SLUG_COMMIT,
-      version: process.env.HEROKU_SLUG_COMMIT,
+      commit: process.env.HEROKU_SLUG_COMMIT!,
+      version: process.env.HEROKU_SLUG_COMMIT!,
       source: packageJson.homepage,
     };
     /* eslint-enable no-process-env */
   }
-  return JSON.parse(fs.readFileSync(versionJsonPath, "utf8"));
+  return JSON.parse(fs.readFileSync(versionJsonPath, "utf8")) as VersionData;
 }
