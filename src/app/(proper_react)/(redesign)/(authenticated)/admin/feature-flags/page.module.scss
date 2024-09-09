@@ -33,6 +33,11 @@
       }
     }
   }
+
+  .main {
+    padding: $spacing-lg 0;
+  }
+
   th,
   td {
     border: 1px solid;
@@ -46,8 +51,8 @@
 }
 
 .flagList {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax($content-xs, 1fr));
   justify-content: flex-start;
   gap: $spacing-lg;
   padding: $spacing-2xl;
