@@ -7,17 +7,6 @@ import createDbConnection from "../connect.js";
 
 const knex = createDbConnection();
 
-async function getAllEmailNotificationsForSubscriber(subscriberId: number) {
-  console.info("getAllEmailNotificationsForSubscriber: ", subscriberId);
-  return await knex.transaction((trx) => {
-    return trx("email_notifications")
-      .forUpdate()
-      .select()
-      .where("subscriber_id", subscriberId)
-      .orderBy("id");
-  });
-}
-
 async function getNotifiedSubscribersForBreach(
   breachId: BreachRow["id"],
 ): Promise<number[]> {
@@ -86,7 +75,6 @@ async function markEmailAsNotified(
 }
 
 export {
-  getAllEmailNotificationsForSubscriber,
   getNotifiedSubscribersForBreach,
   addEmailNotification,
   markEmailAsNotified,

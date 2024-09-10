@@ -37,17 +37,19 @@ export async function getDeletedFeatureFlags() {
     .returning("*");
 }
 
-export type FeatureFlagName =
-  | "UpdatedEmailPreferencesOption"
-  | "MonthlyActivityEmail"
-  | "CancellationFlow"
-  | "ConfirmCancellation"
-  | "FirstDataBrokerRemovalFixedEmail"
-  | "DiscountCouponNextThreeMonths"
-  | "LatestScanDateCsatSurvey"
-  | "AutomaticRemovalCsatSurvey"
-  | "AdditionalRemovalStatuses"
-  | "PetitionBannerCsatSurvey";
+export const featureFlagNames = [
+  "UpdatedEmailPreferencesOption",
+  "MonthlyActivityEmail",
+  "CancellationFlow",
+  "ConfirmCancellation",
+  "FirstDataBrokerRemovalFixedEmail",
+  "DiscountCouponNextThreeMonths",
+  "LatestScanDateCsatSurvey",
+  "AutomaticRemovalCsatSurvey",
+  "AdditionalRemovalStatuses",
+  "PetitionBannerCsatSurvey",
+] as const;
+export type FeatureFlagName = (typeof featureFlagNames)[number];
 
 /**
  * @param options
@@ -76,6 +78,29 @@ export async function getEnabledFeatureFlags(
   );
 }
 
+/**
+ * It is recommended to use `getEnabledFeatureFlags` if you want to know what
+ * features to show for a single person. This function is for use cases where
+ * you need to potentially use the allowlist in a different query (specifically
+ * `getSubscribersWaitingForMonthlyEmail` and
+ * `getPotentialSubscribersWaitingForFirstDataBrokerRemovalFixedEmail`, at the
+ * time of writing).
+ *
+ * @param featureFlagName
+ */
+export async function getFeatureFlagData(
+  featureFlagName: FeatureFlagName,
+): Promise<FeatureFlagRow | null> {
+  return (
+    (await knex("feature_flags")
+      .first()
+      .where("name", featureFlagName)
+      // The `.andWhereNull` alias doesn't seem to exist:
+      // https://github.com/knex/knex/issues/1881#issuecomment-275433906
+      .whereNull("deleted_at")) ?? null
+  );
+}
+
 export async function getFeatureFlagByName(name: string) {
   logger.info("getFeatureFlagByName", name);
   const res = await knex("feature_flags").where("name", name);
@@ -87,24 +112,22 @@ export async function getFeatureFlagByName(name: string) {
  * @param flag
  * @deprecated The method should not be used, use Nimbus experiment or roll-out: /src/app/functions/server/getExperiments
  */
-export async function addFeatureFlag(flag: FeatureFlag) {
+export async function addFeatureFlag(
+  flag: Omit<FeatureFlagRow, "created_at" | "modified_at">,
+) {
   logger.info("addFeatureFlag", flag);
   const featureFlagDb: Omit<FeatureFlagRow, "created_at" | "modified_at"> = {
     name: flag.name,
-    is_enabled: flag.isEnabled,
+    is_enabled: flag.is_enabled,
     description: flag.description,
     dependencies: flag.dependencies,
-    allow_list: flag.allowList?.reduce((acc: string[], e: string) => {
-      e = e.trim();
-      if (e) acc.push(e);
-      return acc;
-    }, []),
-    wait_list: flag.waitList?.reduce((acc: string[], e: string) => {
-      e = e.trim();
-      if (e) acc.push(e);
-      return acc;
-    }, []),
-    expired_at: flag.expiredAt,
+    allow_list: flag.allow_list
+      ?.map((email: string) => email.trim())
+      .filter((email: string) => email.length > 0),
+    wait_list: flag.wait_list
+      ?.map((email: string) => email.trim())
+      .filter((email: string) => email.length > 0),
+    expired_at: flag.expired_at,
     owner: flag.owner,
   };
   const res = await knex("feature_flags")

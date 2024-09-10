@@ -12,7 +12,6 @@ import {
   disableFeatureFlagByName,
   updateAllowList,
   updateWaitList,
-  FeatureFlag,
   deleteFeatureFlagByName,
 } from "../../../../../db/tables/featureFlags";
 
@@ -33,16 +32,37 @@ export async function GET() {
   }
 }
 
+export type CreateFeatureFlagRequestBody = {
+  name: string;
+  isEnabled: boolean;
+  description?: string;
+  dependencies?: string[];
+  allowList?: string[];
+  waitList?: string[];
+  expiredAt?: Date;
+  deletedAt?: Date;
+  owner?: string;
+};
+
 export async function POST(req: NextRequest) {
   const session = await getServerSession();
   if (isAdmin(session?.user?.email || "")) {
     // Signed in
     try {
-      const newFlag = (await req.json()) as FeatureFlag;
+      const newFlag = (await req.json()) as CreateFeatureFlagRequestBody;
       if (!newFlag || !newFlag.name) {
         throw new Error("No flag or flag name provided");
       }
-      const resp = await addFeatureFlag(newFlag);
+      const resp = await addFeatureFlag({
+        name: newFlag.name,
+        is_enabled: newFlag.isEnabled,
+        description: newFlag.description,
+        dependencies: newFlag.dependencies,
+        allow_list: newFlag.allowList,
+        wait_list: newFlag.waitList,
+        expired_at: newFlag.expiredAt,
+        owner: newFlag.owner,
+      });
       return NextResponse.json(resp);
     } catch (e) {
       logger.error(e);
