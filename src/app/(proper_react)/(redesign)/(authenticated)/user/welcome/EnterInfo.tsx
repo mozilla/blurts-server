@@ -195,17 +195,28 @@ export const EnterInfo = ({
       onChange: setLocation,
     },
   ].filter((userDetail) => {
+    if (userDetail.isRequired) {
+      return true;
+    }
+
     const optionalInfoExperimentData =
       experimentData["welcome-scan-optional-info"];
-    const showOptionalInfo =
-      optionalInfoExperimentData.enabled &&
-      ((userDetail.key === "middle_name" &&
-        (optionalInfoExperimentData.variant === "middleName" ||
-          optionalInfoExperimentData.variant === "suffixAndMiddleName")) ||
-        (userDetail.key === "name_suffix" &&
-          (optionalInfoExperimentData.variant === "suffix" ||
-            optionalInfoExperimentData.variant === "suffixAndMiddleName")));
-    return userDetail.isRequired || showOptionalInfo;
+    if (optionalInfoExperimentData.enabled) {
+      if (userDetail.key === "middle_name") {
+        return (
+          optionalInfoExperimentData.variant === "middleName" ||
+          optionalInfoExperimentData.variant === "suffixAndMiddleName"
+        );
+      }
+      if (userDetail.key === "name_suffix") {
+        return (
+          optionalInfoExperimentData.variant === "suffix" ||
+          optionalInfoExperimentData.variant === "suffixAndMiddleName"
+        );
+      }
+    }
+
+    return false;
   });
 
   const getInvalidFields = () =>
