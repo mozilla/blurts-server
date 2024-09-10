@@ -62,8 +62,8 @@
     "npm": "10.1.0"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.637.0",
-    "@aws-sdk/lib-storage": "^3.637.0",
+    "@aws-sdk/client-s3": "^3.645.0",
+    "@aws-sdk/lib-storage": "^3.645.0",
     "@fluent/bundle": "^0.18.0",
     "@fluent/langneg": "^0.7.0",
     "@fluent/react": "^0.15.2",
@@ -73,7 +73,7 @@
     "@leeoniya/ufuzzy": "^1.0.14",
     "@mozilla/glean": "^5.0.2",
     "@next/third-parties": "^14.2.9",
-    "@sentry/nextjs": "^8.28.0",
+    "@sentry/nextjs": "^8.30.0",
     "@sentry/node": "^8.0.0",
     "@sentry/utils": "^8.0.0",
     "@stripe/stripe-js": "^4.1.0",
