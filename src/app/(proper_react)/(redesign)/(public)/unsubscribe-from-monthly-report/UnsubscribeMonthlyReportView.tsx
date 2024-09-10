@@ -32,7 +32,7 @@ export const UnsubscribeMonthlyReportView = ({ token }: { token: string }) => {
     : copy.confirmation;
 
   const handleUnsubscription = async () => {
-    const response = await fetch(`/api/unsubscribe?token=${token}`, {
+    const response = await fetch(`/api/unsubscribe-email?token=${token}`, {
       method: "GET",
     });
 
