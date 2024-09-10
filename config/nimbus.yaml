@@ -20,19 +20,32 @@ features:
       - channel: production
         value: { "enabled": false }
   welcome-scan-optional-info:
-    description: Show additional optional inputs to provide middle name and name suffix for broker scan
+    description: Show additional optional input fields for the data broker scan
     variables:
       enabled:
         description: If the feature is enabled
         type: Boolean
         default: false
+      variant:
+        description: The optional fields to show
+        type: OptionalBrokerScanInfoFields
+        default: none
     defaults:
       - channel: local
-        value: { "enabled": true }
+        value: {
+          "enabled": true,
+          "variant": middleName,
+        }
       - channel: staging
-        value: { "enabled": false }
+        value: {
+          "enabled": false,
+          "variant": none,
+        }
       - channel: production
-        value: { "enabled": false }
+        value: {
+          "enabled": false,
+          "variant": none,
+        }
   data-privacy-petition-banner:
     description: Show the data privacy petition banner to US users
     variables:
@@ -75,6 +88,17 @@ features:
           "variant": ctaWithEmail,
         }
 enums:
+  OptionalBrokerScanInfoFields:
+    description: An enum of optional broker scan info fields
+    variants:
+      suffix:
+        description: Only show the optional suffix field
+      middleName:
+        description: Only show the optional middle name field
+      suffixAndMiddleName:
+        description: Show the optional suffix and middle name fields
+      none:
+        description: Do not show any optional fields
   FreeScanCtaType:
     description: An enum of free scan CTA types
     variants:
