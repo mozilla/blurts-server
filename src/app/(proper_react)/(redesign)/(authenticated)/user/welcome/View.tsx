@@ -46,8 +46,6 @@ export const View = ({
   const [currentStep, setCurrentStep] = useState<StepId>(stepId);
   const router = useRouter();
   const recordTelemetry = useTelemetry();
-  const optionalInfoIsEnabled =
-    experimentData["welcome-scan-optional-info"].enabled;
 
   useEffect(() => {
     let pageName = "welcome";
@@ -89,7 +87,7 @@ export const View = ({
             setCurrentStep("getStarted");
           }
         }}
-        optionalInfoIsEnabled={optionalInfoIsEnabled}
+        experimentData={experimentData}
       />
     ) : (
       <GetStarted
