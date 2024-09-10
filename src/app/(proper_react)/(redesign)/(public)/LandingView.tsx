@@ -6,7 +6,7 @@ import styles from "./LandingView.module.scss";
 import { HeroImageAll, HeroImagePremium } from "./HeroImage";
 import { ExtendedReactLocalization } from "../../../functions/l10n";
 import { PlansTable } from "./PlansTable";
-import { useId } from "react";
+import { useId, useState } from "react";
 import {
   getSubscriptionBillingAmount,
   getPremiumSubscriptionUrl,
@@ -29,6 +29,7 @@ import { FaqSection } from "./Faq";
 import { AccountDeletionNotification } from "./AccountDeletionNotification";
 import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 import { FreeScanCta } from "./FreeScanCta";
+import IconChevronDown from "../../../components/client/assets/icon-chevron-down.svg";
 
 export type Props = {
   eligibleForPremium: boolean;
@@ -259,48 +260,64 @@ export const View = (props: Props) => {
 };
 
 export const TopNavBar = ({ l10n }: { l10n: ExtendedReactLocalization }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+
   return (
-    <div className={styles.navbar}>
-      <div className={styles.navbarLinksContainer}>
-        <TelemetryLink
-          className={styles.navbarLinks}
-          href="/how-it-works"
-          eventData={{
-            link_id: "navbar_how_it_works",
-          }}
-        >
-          {l10n.getString("landing-premium-hero-navbar-link-how-it-works")}
-        </TelemetryLink>
-        <TelemetryLink
-          className={styles.navbarLinks}
-          href="#pricing"
-          eventData={{
-            link_id: "navbar_pricing",
-          }}
-        >
-          {l10n.getString("landing-premium-hero-navbar-link-pricing")}
-        </TelemetryLink>
-        <TelemetryLink
-          data-testid="navbar_faqs"
-          className={styles.navbarLinks}
-          href="#faq"
-          eventData={{
-            link_id: "navbar_faqs",
-          }}
-        >
-          {l10n.getString("landing-premium-hero-navbar-link-faqs")}
-        </TelemetryLink>
-        <TelemetryLink
-          className={styles.navbarLinks}
-          href="/breaches"
-          eventData={{
-            link_id: "navbar_recent_breaches",
-          }}
-        >
-          {l10n.getString("landing-premium-hero-navbar-link-recent-breaches")}
-        </TelemetryLink>
+    <>
+      <button
+        className={`${styles.navbarMobileToggle} ${isExpanded ? styles.expanded : ""}`}
+        onClick={() => setIsExpanded(!isExpanded)}
+        title={l10n.getString(
+          isExpanded
+            ? "landing-premium-hero-navbar-collapse-label"
+            : "landing-premium-hero-navbar-expand-label",
+        )}
+      >
+        {l10n.getString("landing-premium-hero-navbar-menu-label")}
+        <Image alt="" src={IconChevronDown} />
+      </button>
+      <div className={`${styles.navbar} ${isExpanded ? styles.expanded : ""}`}>
+        <div className={styles.navbarLinksContainer}>
+          <TelemetryLink
+            className={styles.navbarLinks}
+            href="/how-it-works"
+            eventData={{
+              link_id: "navbar_how_it_works",
+            }}
+          >
+            {l10n.getString("landing-premium-hero-navbar-link-how-it-works")}
+          </TelemetryLink>
+          <TelemetryLink
+            className={styles.navbarLinks}
+            href="#pricing"
+            eventData={{
+              link_id: "navbar_pricing",
+            }}
+          >
+            {l10n.getString("landing-premium-hero-navbar-link-pricing")}
+          </TelemetryLink>
+          <TelemetryLink
+            data-testid="navbar_faqs"
+            className={styles.navbarLinks}
+            href="#faq"
+            eventData={{
+              link_id: "navbar_faqs",
+            }}
+          >
+            {l10n.getString("landing-premium-hero-navbar-link-faqs")}
+          </TelemetryLink>
+          <TelemetryLink
+            className={styles.navbarLinks}
+            href="/breaches"
+            eventData={{
+              link_id: "navbar_recent_breaches",
+            }}
+          >
+            {l10n.getString("landing-premium-hero-navbar-link-recent-breaches")}
+          </TelemetryLink>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

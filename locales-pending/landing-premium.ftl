@@ -4,6 +4,9 @@
 
 ## Top navbar
 
+landing-premium-hero-navbar-menu-label = { -product-name }
+landing-premium-hero-navbar-collapse-label = Collapse menu
+landing-premium-hero-navbar-expand-label = Expand menu
 landing-premium-hero-navbar-link-how-it-works = How it works
 landing-premium-hero-navbar-link-pricing = Pricing
 landing-premium-hero-navbar-link-faqs = FAQs

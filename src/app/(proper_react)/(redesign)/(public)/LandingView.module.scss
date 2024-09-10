@@ -5,13 +5,40 @@
   flex-direction: column;
   height: 100%;
 }
+
+.navbarMobileToggle {
+  align-items: center;
+  background: $color-grey-05;
+  border-radius: 0;
+  border: 0;
+  cursor: pointer;
+  display: flex;
+  font-weight: 700;
+  justify-content: space-between;
+  outline: none;
+  padding: $spacing-md $layout-xs;
+
+  &.expanded img {
+    transform: rotate(-180deg);
+  }
+
+  @media screen and (min-width: $screen-sm) {
+    display: none;
+  }
+}
+
 .navbar {
   font: $text-body-xl;
-  padding: $layout-xs;
-  display: flex;
+  padding: 0 $layout-xs $layout-xs;
+  display: none;
   flex-direction: row;
   justify-content: flex-start;
   background-color: $color-grey-05;
+
+  &.expanded {
+    display: flex;
+  }
+
   .navbarLinksContainer {
     display: flex;
     flex-direction: column;
@@ -21,7 +48,9 @@
     }
   }
   @media screen and (min-width: $screen-sm) {
+    display: flex;
     justify-content: flex-end;
+    padding: $layout-xs;
     .navbarLinksContainer {
       flex-direction: row;
       justify-content: flex-end;
