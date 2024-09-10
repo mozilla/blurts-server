@@ -215,8 +215,6 @@ export const EnterInfo = ({
         );
       }
     }
-
-    return false;
   });
 
   const getInvalidFields = () =>
