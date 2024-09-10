@@ -10,6 +10,7 @@ import styles from "./UnsubscribeMonthlyReport.module.scss";
 import UnsubscriptionImage from "./images/confirm-unsubscribe.svg";
 import Image from "next/image";
 import { useL10n } from "../../../../hooks/l10n";
+import { toast } from "react-toastify";
 
 export const UnsubscribeMonthlyReportView = ({ token }: { token: string }) => {
   const [unsubscribeSuccess, setUnsubscribeSuccess] = useState(false);
@@ -31,16 +32,14 @@ export const UnsubscribeMonthlyReportView = ({ token }: { token: string }) => {
     : copy.confirmation;
 
   const handleUnsubscription = async () => {
-    try {
-      const response = await fetch(`/api/unsubscribe?token=${token}`, {
-        method: "GET",
-      });
+    const response = await fetch(`/api/unsubscribe?token=${token}`, {
+      method: "GET",
+    });
 
-      if (response.ok) {
-        setUnsubscribeSuccess(true);
-      }
-    } catch (e) {
-      console.error("Error during unsubscription:", e);
+    if (!response.ok) {
+      toast(l10n.getString("unsubscription-failed"));
+    } else {
+      setUnsubscribeSuccess(true);
     }
   };
 
@@ -52,7 +51,7 @@ export const UnsubscribeMonthlyReportView = ({ token }: { token: string }) => {
       <Button
         className={styles.cta}
         variant="primary"
-        onPress={void handleUnsubscription}
+        onPress={() => void handleUnsubscription()}
       >
         {l10n.getString("unsubscribe-cta")}
       </Button>

@@ -10,6 +10,8 @@ import MonitorLogo from "../../images/monitor-logo.svg";
 import { ExtendedReactLocalization } from "../../../functions/l10n";
 import { SignInButton } from "../../../components/client/SignInButton";
 import { Footer } from "../Footer";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export type Props = {
   children: ReactNode;
@@ -20,6 +22,12 @@ export type Props = {
 export const PublicShell = (props: Props) => {
   return (
     <div className={styles.wrapper}>
+      <ToastContainer
+        position="top-center"
+        theme="colored"
+        autoClose={false}
+        toastClassName={styles.toastBody}
+      />
       <header>
         <nav className={styles.nav}>
           <h1>
