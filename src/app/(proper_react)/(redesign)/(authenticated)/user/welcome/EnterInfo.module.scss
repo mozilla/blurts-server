@@ -84,7 +84,7 @@
   padding: $spacing-lg 0;
 
   @media screen and (min-width: $screen-lg) {
-    // The child items in the grid are input fields. If items marked as
+    // The child items in the grid are input fields. Whether items marked as
     // “optional” are shown depends on the enabled variants in the
     // `welcome-scan-optional-info` experiment.
     // 1. First name
