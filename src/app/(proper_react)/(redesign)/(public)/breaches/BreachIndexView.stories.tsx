@@ -24,8 +24,11 @@ type Story = StoryObj<typeof BreachIndexView>;
 export const BreachIndexViewStory: Story = {
   name: "Breach index",
   args: {
-    allBreaches: faker.helpers.multiple(createRandomHibpListing, {
-      count: { min: 7, max: 200 },
-    }),
+    allBreaches: faker.helpers.multiple(
+      createRandomHibpListing as (v: unknown, index: number) => unknown,
+      {
+        count: { min: 7, max: 200 },
+      },
+    ),
   },
 };
