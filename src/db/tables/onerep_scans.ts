@@ -150,7 +150,7 @@ async function getLatestOnerepScanResults(
 
   let results: OnerepScanResultRow[] = [];
 
-  if (typeof scan !== "undefined") {
+  if (scan !== null) {
     const qaToggles = await getQaToggleRow(onerepProfileId);
     let showCustomBrokers = false;
     let showRealBrokers = true;
