@@ -52,8 +52,7 @@ export const UnsubscribeMonthlyReportView = ({ token }: { token: string }) => {
       <Button
         className={styles.cta}
         variant="primary"
-        // eslint-disable-next-line @typescript-eslint/no-misused-promises
-        onPress={handleUnsubscription}
+        onPress={void handleUnsubscription}
       >
         {l10n.getString("unsubscribe-cta")}
       </Button>
