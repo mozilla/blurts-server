@@ -94,18 +94,24 @@ export async function POST(
     locale: getLocale(getL10n()),
     previewMode: searchParams.get("nimbus_web_preview") === "true",
   });
-  const optionalInfoIsEnabled =
-    experimentData["welcome-scan-optional-info"].enabled;
+  const optionalInfoExperimentData =
+    experimentData["welcome-scan-optional-info"];
 
   const profileData: CreateProfileRequest = {
     first_name: firstName,
     last_name: lastName,
     addresses: [{ city, state }],
     birth_date: dateOfBirth,
-    ...(optionalInfoIsEnabled && {
-      middle_name: middleName,
-      name_suffix: nameSuffix,
-    }),
+    ...(optionalInfoExperimentData.enabled &&
+      (optionalInfoExperimentData.variant === "middleName" ||
+        optionalInfoExperimentData.variant === "suffixAndMiddleName") && {
+        middle_name: middleName,
+      }),
+    ...(optionalInfoExperimentData.enabled &&
+      (optionalInfoExperimentData.variant === "suffix" ||
+        optionalInfoExperimentData.variant === "suffixAndMiddleName") && {
+        name_suffix: nameSuffix,
+      }),
   };
 
   if (typeof session?.user?.subscriber.fxa_uid === "string") {
