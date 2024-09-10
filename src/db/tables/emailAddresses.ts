@@ -4,7 +4,7 @@
 
 import { v4 as uuidv4 } from "uuid";
 import type { Profile } from "next-auth";
-import createDbConnection from "../connect.js";
+import createDbConnection from "../connect";
 import { subscribeHash } from "../../utils/hibp";
 import { getSha1 } from "../../utils/fxa";
 import { updateFxAData } from "./subscribers";

@@ -7,7 +7,7 @@ import {
   formatDataClassesArray,
   HibpGetBreachesResponse,
 } from "../../utils/hibp";
-import createDbConnection from "../connect.js";
+import createDbConnection from "../connect";
 
 const knex = createDbConnection();
 
