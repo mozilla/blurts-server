@@ -7,6 +7,7 @@ import type { EmailAddressRow, SubscriberRow } from "knex/types/tables";
 import createDbConnection from "../connect.js";
 import AppConstants from "../../appConstants.js";
 import { SerializedSubscriber } from "../../next-auth.js";
+import { getFeatureFlagData } from "./featureFlags";
 
 const knex = createDbConnection();
 const { DELETE_UNVERIFIED_SUBSCRIBERS_TIMER } = AppConstants;
@@ -44,27 +45,6 @@ async function getSubscriberByFxaUid(
 ): Promise<undefined | (SubscriberRow & WithEmailAddresses)> {
   const [subscriber] = await knex("subscribers").where({
     fxa_uid: uid,
-  });
-  if (!subscriber) {
-    return;
-  }
-  const subscriberAndEmails = await joinEmailAddressesToSubscriber(subscriber);
-  return subscriberAndEmails;
-}
-/* c8 ignore stop */
-
-// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
-/* c8 ignore start */
-/**
- * @param email The primary email of the subscriber you're looking up
- * @deprecated Use [[getSubscriberByFxAUid]] instead, as email identifiers are unstable (e.g. we've had issues with case-sensitivity).
- */
-async function getSubscriberByEmail(
-  email: SubscriberRow["primary_email"],
-): Promise<undefined | (SubscriberRow & WithEmailAddresses)> {
-  const [subscriber] = await knex("subscribers").where({
-    primary_email: email,
-    primary_verified: true,
   });
   if (!subscriber) {
     return;
@@ -276,14 +256,14 @@ async function setMonthlyMonitorReport(
 async function setBreachResolution(
   user: SubscriberRow,
   updatedBreachesResolution: SubscriberRow["breach_resolution"],
-): Promise<SubscriberRow | null> {
+): Promise<(SubscriberRow & WithEmailAddresses) | null> {
   await knex("subscribers").where("id", user.id).update({
     breach_resolution: updatedBreachesResolution,
     // @ts-ignore knex.fn.now() results in it being set to a date,
     // even if it's not typed as a JS date object:
     updated_at: knex.fn.now(),
   });
-  return (await getSubscriberByEmail(user.primary_email)) ?? null;
+  return (await getSubscriberByFxaUid(user.fxa_uid)) ?? null;
 }
 /* c8 ignore stop */
 
@@ -349,22 +329,7 @@ async function deleteResolutionsWithEmail(id: number, email: string) {
 async function getPotentialSubscribersWaitingForFirstDataBrokerRemovalFixedEmail(): Promise<
   SubscriberRow[]
 > {
-  // I'm explicitly referencing the type here, so that these lines of code will
-  // show up as errors when we remove it from the flag list:
-  /** @type {import("./featureFlags.js").FeatureFlagName} */
-  const featureFlagName = "FirstDataBrokerRemovalFixedEmail";
-  // Interactions with the `feature_flags` table would generally go in the
-  // `src/db/tables/featureFlags` module. However, since that module is already
-  // written in TypeScript, it can't be loaded in pre-TypeScript cron jobs,
-  // which currently still import from the subscribers module. Hence, we've
-  // inlined this until https://mozilla-hub.atlassian.net/browse/MNTOR-3077 is fixed.
-  const flag = await knex("feature_flags")
-    .first()
-    .where("name", featureFlagName)
-    // The `.andWhereNull` alias doesn't seem to exist:
-    // https://github.com/knex/knex/issues/1881#issuecomment-275433906
-    .whereNull("deleted_at");
-
+  const flag = await getFeatureFlagData("FirstDataBrokerRemovalFixedEmail");
   if (!flag?.is_enabled || !flag?.modified_at) {
     return [];
   }
@@ -402,20 +367,7 @@ async function getPotentialSubscribersWaitingForFirstDataBrokerRemovalFixedEmail
 async function getSubscribersWaitingForMonthlyEmail(
   options: Partial<{ plusOnly: boolean; limit: number }> = {},
 ): Promise<SubscriberRow[]> {
-  // I'm explicitly referencing the type here, so that these lines of code will
-  // show up as errors when we remove it from the flag list:
-  const featureFlagName = "MonthlyActivityEmail";
-  // Interactions with the `feature_flags` table would generally go in the
-  // `src/db/tables/featureFlags` module. However, since that module is already
-  // written in TypeScript, it can't be loaded in pre-TypeScript cron jobs,
-  // which currently still import from the subscribers module. Hence, we've
-  // inlined this until https://mozilla-hub.atlassian.net/browse/MNTOR-3077 is fixed.
-  const flag = await knex("feature_flags")
-    .first()
-    .where("name", featureFlagName)
-    // The `.andWhereNull` alias doesn't seem to exist:
-    // https://github.com/knex/knex/issues/1881#issuecomment-275433906
-    .whereNull("deleted_at");
+  const flag = await getFeatureFlagData("MonthlyActivityEmail");
 
   if (!flag?.is_enabled) {
     return [];
@@ -472,29 +424,6 @@ async function getSubscribersWaitingForMonthlyEmail(
   const rows = await query;
 
   return rows;
-}
-/* c8 ignore stop */
-
-/**
- * @param email
- * @deprecated Only used by the `send-email-to-unresolved-breach-subscribers.js`, which it looks like might not be sent anymore? Delete as a part of MNTOR-3077?
- */
-// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
-/* c8 ignore start */
-async function updateMonthlyEmailTimestamp(
-  email: SubscriberRow["primary_email"],
-) {
-  const res = await knex("subscribers")
-    .update({
-      monthly_email_at: "now",
-      // @ts-ignore knex.fn.now() results in it being set to a date,
-      // even if it's not typed as a JS date object:
-      updated_at: knex.fn.now(),
-    })
-    .where("primary_email", email)
-    .returning("monthly_email_at");
-
-  return res;
 }
 /* c8 ignore stop */
 
@@ -556,59 +485,12 @@ async function getOnerepProfileId(subscriberId: SubscriberRow["id"]) {
 }
 /* c8 ignore stop */
 
-/**
- * @deprecated OBSOLETE: Delete as a part of MNTOR-3077
- */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-function getSubscribersWithUnresolvedBreachesQuery() {
-  return knex("subscribers")
-    .whereRaw("monthly_email_optout IS NOT TRUE")
-    .whereRaw(
-      "greatest(created_at, monthly_email_at) < (now() - interval '1 month')",
-    )
-    .whereRaw("(breach_stats #>> '{numBreaches, numUnresolved}')::int > 0");
-}
-/* c8 ignore stop */
 
-/**
- * @deprecated OBSOLETE: Delete as a part of MNTOR-3077
- */
-// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
-/* c8 ignore start */
-async function getSubscribersWithUnresolvedBreaches(limit = 0) {
-  let query = getSubscribersWithUnresolvedBreachesQuery().select(
-    "primary_email",
-    "primary_verification_token",
-    "breach_stats",
-    "signup_language",
-  );
-  if (limit) {
-    query = query.limit(limit).orderBy("created_at");
-  }
-  return await query;
-}
-/* c8 ignore stop */
-
-/**
- * @deprecated OBSOLETE: Delete as a part of MNTOR-3077
- */
-// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
-/* c8 ignore start */
-async function getSubscribersWithUnresolvedBreachesCount() {
-  const query = getSubscribersWithUnresolvedBreachesQuery();
-  // @ts-ignore This will return a string
-  const count = parseInt((await query.count({ count: "*" }))[0].count);
-  return count;
-}
 type WithEmailAddresses = SubscriberRow & {
   email_addresses: EmailAddressRow[];
 };
-
-/* c8 ignore stop */
-
-// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
-/* c8 ignore start */
 async function joinEmailAddressesToSubscriber(
   subscriber: SubscriberRow,
 ): Promise<SubscriberRow & WithEmailAddresses> {
@@ -690,10 +572,6 @@ export {
   getSubscribersByHashes,
   getSubscriberById,
   getSubscriberByFxaUid,
-  getSubscriberByEmail,
-  getSubscribersWithUnresolvedBreachesQuery,
-  getSubscribersWithUnresolvedBreaches,
-  getSubscribersWithUnresolvedBreachesCount,
   updatePrimaryEmail,
   updateFxAData,
   updateFxATokens,
@@ -704,7 +582,6 @@ export {
   setBreachResolution,
   getPotentialSubscribersWaitingForFirstDataBrokerRemovalFixedEmail,
   getSubscribersWaitingForMonthlyEmail,
-  updateMonthlyEmailTimestamp,
   markFirstDataBrokerRemovalFixedEmailAsJustSent,
   markMonthlyActivityEmailAsJustSent,
   deleteUnverifiedSubscribers,
