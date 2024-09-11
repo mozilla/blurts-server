@@ -85,6 +85,7 @@ export const CsatSurvey = (props: CsatSurveyProps) => {
       const cookieDismissalId = `${survey.localDismissalId}_dismissed`;
       cookies.set(cookieDismissalId, Date.now().toString(), {
         maxAge: COOKIE_DISMISSAL_MAX_AGE_IN_SECONDS,
+        path: "/",
       });
     }
   });

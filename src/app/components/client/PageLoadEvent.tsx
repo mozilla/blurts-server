@@ -33,7 +33,9 @@ export const PageLoadEvent = (props: Props) => {
     props.experimentationId.startsWith("guest") &&
     !cookies.experimentationId
   ) {
-    setCookie("experimentationId", props.experimentationId);
+    setCookie("experimentationId", props.experimentationId, {
+      path: "/",
+    });
   }
 
   // On first load of the page, record a page view.
