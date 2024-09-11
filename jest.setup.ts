@@ -47,13 +47,11 @@ afterEach(() => {
 
 global.TextEncoder = TextEncoder;
 
-// Jest doesn't like the top-level await in AppConstants, so we mock it.  In
-// time we can hopefully phase out the entire file and just use dotenv-flow
-// and process.env directly.
-jest.mock("./src/appConstants.js", () => {
+// Jest doesn't like the top-level await in envVars.ts, so we mock it.
+jest.mock("./src/envVars", () => {
   // eslint-disable-next-line @typescript-eslint/no-var-requires
   require("dotenv-flow").config();
   return {
-    ...process.env,
+    getEnvVarsOrThrow: () => process.env,
   };
 });
