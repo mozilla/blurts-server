@@ -22,7 +22,6 @@ import {
 } from "../../../functions/server/onerep";
 import { bearerToken } from "../../utils/auth";
 import { revokeOAuthTokens } from "../../../../utils/fxa";
-import appConstants from "../../../../appConstants";
 import { changeSubscription } from "../../../functions/server/changeSubscription";
 import { deleteAccount } from "../../../functions/server/deleteAccount";
 import { record } from "../../../functions/server/glean";
@@ -43,7 +42,7 @@ const MONITOR_PREMIUM_CAPABILITY = "monitor";
  * @returns {Promise<Array<jwt.JwtPayload> | undefined>} keys an array of FxA JWT keys
  */
 const getJwtPubKey = async () => {
-  const jwtKeyUri = `${appConstants.OAUTH_ACCOUNT_URI}/jwks`;
+  const jwtKeyUri = `${process.env.OAUTH_ACCOUNT_URI}/jwks`;
   try {
     const response = await fetch(jwtKeyUri, {
       headers: {

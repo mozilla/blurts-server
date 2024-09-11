@@ -5,7 +5,13 @@
 import crypto from "crypto";
 import { URL } from "url";
 
-import AppConstants from "../appConstants.js";
+import { getEnvVarsOrThrow } from "../envVars";
+const envVars = getEnvVarsOrThrow([
+  "OAUTH_CLIENT_ID",
+  "OAUTH_CLIENT_SECRET",
+  "OAUTH_TOKEN_URI",
+  "OAUTH_ACCOUNT_URI",
+]);
 
 /**
  * @see https://mozilla.github.io/ecosystem-platform/api#tag/Oauth/operation/postOauthDestroy
@@ -30,11 +36,11 @@ async function destroyOAuthToken(
 ) {
   const tokenBody: FxaPostOauthDestroyRequestBody = {
     ...tokenData,
-    client_id: AppConstants.OAUTH_CLIENT_ID,
-    client_secret: AppConstants.OAUTH_CLIENT_SECRET,
+    client_id: envVars.OAUTH_CLIENT_ID,
+    client_secret: envVars.OAUTH_CLIENT_SECRET,
   };
 
-  const fxaTokenOrigin = new URL(AppConstants.OAUTH_TOKEN_URI).origin;
+  const fxaTokenOrigin = new URL(envVars.OAUTH_TOKEN_URI).origin;
   const tokenUrl = `${fxaTokenOrigin}/v1/oauth/destroy`;
   const tokenOptions = {
     method: "POST",
@@ -132,10 +138,10 @@ type FxaPostOauthTokenResponseSuccessRefreshToken = {
 async function refreshOAuthTokens(
   refreshToken: string,
 ): Promise<FxaPostOauthTokenResponseSuccessRefreshToken> {
-  const subscriptionIdUrl = `${AppConstants.OAUTH_ACCOUNT_URI}/oauth/token`;
+  const subscriptionIdUrl = `${envVars.OAUTH_ACCOUNT_URI}/oauth/token`;
   const body: FxaPostOauthTokenRequestBody = {
-    client_id: AppConstants.OAUTH_CLIENT_ID,
-    client_secret: AppConstants.OAUTH_CLIENT_SECRET,
+    client_id: envVars.OAUTH_CLIENT_ID,
+    client_secret: envVars.OAUTH_CLIENT_SECRET,
     grant_type: "refresh_token",
     refresh_token: refreshToken,
     ttl: 604800, // request 7 days ttl
@@ -175,7 +181,7 @@ type FxaGetOauthSubscribptionsActiveResponseSuccess = Array<{
 async function getSubscriptions(
   bearerToken: string,
 ): Promise<FxaGetOauthSubscribptionsActiveResponseSuccess | null> {
-  const subscriptionIdUrl = `${AppConstants.OAUTH_ACCOUNT_URI}/oauth/subscriptions/active`;
+  const subscriptionIdUrl = `${envVars.OAUTH_ACCOUNT_URI}/oauth/subscriptions/active`;
   try {
     const response = await fetch(subscriptionIdUrl, {
       headers: {
@@ -221,7 +227,7 @@ type FxaGetOauthMozillaSubscribptionsCustomerBillingAndSubscriptionsResponseSucc
 async function getBillingAndSubscriptions(
   bearerToken: string,
 ): Promise<FxaGetOauthMozillaSubscribptionsCustomerBillingAndSubscriptionsResponseSuccess | null> {
-  const subscriptionIdUrl = `${AppConstants.OAUTH_ACCOUNT_URI}/oauth/mozilla-subscriptions/customer/billing-and-subscriptions`;
+  const subscriptionIdUrl = `${envVars.OAUTH_ACCOUNT_URI}/oauth/mozilla-subscriptions/customer/billing-and-subscriptions`;
 
   try {
     const response = await fetch(subscriptionIdUrl, {
@@ -253,13 +259,13 @@ async function deleteSubscription(bearerToken: string): Promise<boolean> {
       if (
         sub &&
         sub.productId &&
-        sub.productId === AppConstants.PREMIUM_PRODUCT_ID
+        sub.productId === process.env.PREMIUM_PRODUCT_ID
       ) {
         subscriptionId = sub.subscriptionId;
       }
     }
     if (subscriptionId) {
-      const deleteUrl = `${AppConstants.OAUTH_ACCOUNT_URI}/oauth/subscriptions/active/${subscriptionId}`;
+      const deleteUrl = `${envVars.OAUTH_ACCOUNT_URI}/oauth/subscriptions/active/${subscriptionId}`;
       const response = await fetch(deleteUrl, {
         method: "DELETE",
         headers: {
@@ -294,13 +300,13 @@ async function applyCoupon(
       if (
         sub &&
         sub.productId &&
-        sub.productId === AppConstants.PREMIUM_PRODUCT_ID
+        sub.productId === process.env.PREMIUM_PRODUCT_ID
       ) {
         subscriptionId = sub.subscriptionId;
       }
     }
     if (subscriptionId) {
-      const applyCouponUrl = `${AppConstants.OAUTH_ACCOUNT_URI}/oauth/subscriptions/coupon/apply`;
+      const applyCouponUrl = `${envVars.OAUTH_ACCOUNT_URI}/oauth/subscriptions/coupon/apply`;
       const response = await fetch(applyCouponUrl, {
         method: "PUT",
         headers: {

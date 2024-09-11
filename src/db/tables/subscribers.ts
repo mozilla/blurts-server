@@ -5,12 +5,14 @@
 import type { Profile } from "next-auth";
 import type { EmailAddressRow, SubscriberRow } from "knex/types/tables";
 import createDbConnection from "../connect";
-import AppConstants from "../../appConstants.js";
 import { SerializedSubscriber } from "../../next-auth.js";
 import { getFeatureFlagData } from "./featureFlags";
+import { getEnvVarsOrThrow } from "../../envVars";
 
 const knex = createDbConnection();
-const { DELETE_UNVERIFIED_SUBSCRIBERS_TIMER } = AppConstants;
+const { DELETE_UNVERIFIED_SUBSCRIBERS_TIMER } = getEnvVarsOrThrow([
+  "DELETE_UNVERIFIED_SUBSCRIBERS_TIMER",
+]);
 const MONITOR_PREMIUM_CAPABILITY = "monitor";
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
