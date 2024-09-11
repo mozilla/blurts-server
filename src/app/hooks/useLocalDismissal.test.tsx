@@ -74,7 +74,7 @@ describe("useLocalDismissal", () => {
     expect(mockedSetCookie).toHaveBeenCalledWith(
       "some_key_dismissed",
       expect.any(String),
-      { maxAge: COOKIE_DISMISSAL_MAX_AGE_IN_SECONDS },
+      { maxAge: COOKIE_DISMISSAL_MAX_AGE_IN_SECONDS, path: "/" },
     );
   });
 
@@ -92,7 +92,7 @@ describe("useLocalDismissal", () => {
     expect(mockedSetCookie).toHaveBeenCalledWith(
       "some_key_dismissed",
       expect.any(String),
-      { maxAge: 1337 },
+      { maxAge: 1337, path: "/" },
     );
   });
 
@@ -120,7 +120,7 @@ describe("useLocalDismissal", () => {
     expect(mockedSetCookie).toHaveBeenCalledWith(
       "some_key_dismissed",
       expect.any(String),
-      { maxAge: COOKIE_DISMISSAL_MAX_AGE_IN_SECONDS },
+      { maxAge: COOKIE_DISMISSAL_MAX_AGE_IN_SECONDS, path: "/" },
     );
   });
 
@@ -138,7 +138,7 @@ describe("useLocalDismissal", () => {
     expect(mockedSetCookie).toHaveBeenCalledWith(
       "some_key_dismissed",
       expect.any(String),
-      { maxAge: 1337 },
+      { maxAge: 1337, path: "/" },
     );
   });
 });
