@@ -37,7 +37,18 @@ export const UnsubscribeMonthlyReportView = ({ token }: { token: string }) => {
     });
 
     if (!response.ok) {
-      toast(l10n.getString("unsubscription-failed"));
+      toast(
+        l10n.getFragment("unsubscription-failed", {
+          elems: {
+            try_again_link: (
+              <Button
+                variant="link"
+                onPress={() => void handleUnsubscription()}
+              />
+            ),
+          },
+        }),
+      );
     } else {
       setUnsubscribeSuccess(true);
     }

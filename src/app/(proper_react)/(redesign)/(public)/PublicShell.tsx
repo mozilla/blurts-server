@@ -23,10 +23,10 @@ export const PublicShell = (props: Props) => {
   return (
     <div className={styles.wrapper}>
       <ToastContainer
+        toastClassName={styles.toastBody}
         position="top-center"
         theme="colored"
         autoClose={false}
-        toastClassName={styles.toastBody}
       />
       <header>
         <nav className={styles.nav}>

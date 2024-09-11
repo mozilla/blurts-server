@@ -15,4 +15,4 @@ unsubscribe-success-from-monthly-report-body = You can resubscribe or update you
 
 # Error warning
 
-unsubscription-failed = Unsubscribe failed. Try again.
+unsubscription-failed = Unsubscribe failed. <try_again_link>Try again.</try_again_link>

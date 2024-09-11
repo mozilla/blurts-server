@@ -37,7 +37,14 @@
   flex: 1 0 auto;
 }
 
+// Overwrite react-toastify default css with custom styling
+/* stylelint-disable declaration-no-important */
 .toastBody {
-  background: $color-red-60;
-  color: $color-white;
+  background: $color-red-60 !important;
+  color: $color-white !important;
+
+  button {
+    color: $color-white !important;
+    font-weight: 600 !important;
+  }
 }
