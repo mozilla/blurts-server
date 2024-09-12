@@ -55,6 +55,11 @@ export const AlertAddressForm = (props: Props) => {
     ? props.data.monthly_monitor_report
     : props.data.monthly_monitor_report_free;
 
+  // TODO: Deprecate this when monthly report for free users has been created
+  const monthlyFreeUserReportEnabled =
+    props.enabledFeatureFlags.includes("MonthlyReportFreeUser") ||
+    hasPremium(props.user);
+
   const defaultActivateAlertEmail =
     typeof breachAlertsEmailsAllowed === "boolean";
   const [activateAlertEmail, setActivateAlertEmail] = useState<boolean>(
@@ -180,25 +185,26 @@ export const AlertAddressForm = (props: Props) => {
             </AlertAddressRadio>
           </AlertAddressContext.Provider>
         )}
-        {props.enabledFeatureFlags.includes("MonthlyActivityEmail") && (
-          <ActivateEmailsCheckbox
-            isSelected={activateMonthlyMonitorReport}
-            onChange={handleMonthlyMonitorReportToggle}
-          >
-            <div>
-              <b>
-                {l10n.getString(
-                  "settings-alert-preferences-allow-monthly-monitor-report-title",
-                )}
-              </b>
-              <p>
-                {l10n.getString(
-                  "settings-alert-preferences-allow-monthly-monitor-report-subtitle",
-                )}
-              </p>
-            </div>
-          </ActivateEmailsCheckbox>
-        )}
+        {props.enabledFeatureFlags.includes("MonthlyActivityEmail") &&
+          monthlyFreeUserReportEnabled && (
+            <ActivateEmailsCheckbox
+              isSelected={activateMonthlyMonitorReport}
+              onChange={handleMonthlyMonitorReportToggle}
+            >
+              <div>
+                <b>
+                  {l10n.getString(
+                    "settings-alert-preferences-allow-monthly-monitor-report-title",
+                  )}
+                </b>
+                <p>
+                  {l10n.getString(
+                    "settings-alert-preferences-allow-monthly-monitor-report-subtitle",
+                  )}
+                </p>
+              </div>
+            </ActivateEmailsCheckbox>
+          )}
       </div>
     </div>
   );

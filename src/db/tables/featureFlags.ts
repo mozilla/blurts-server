@@ -48,6 +48,7 @@ export const featureFlagNames = [
   "AutomaticRemovalCsatSurvey",
   "AdditionalRemovalStatuses",
   "PetitionBannerCsatSurvey",
+  "MonthlyReportFreeUser"
 ] as const;
 export type FeatureFlagName = (typeof featureFlagNames)[number];
 
