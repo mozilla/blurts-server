@@ -32,25 +32,29 @@ export const UnsubscribeMonthlyReportView = ({ token }: { token: string }) => {
     : copy.confirmation;
 
   const handleUnsubscription = async () => {
-    const response = await fetch(`/api/unsubscribe-email?token=${token}`, {
-      method: "GET",
-    });
+    try {
+      const response = await fetch(`/api/unsubscribe-email?token=${token}`, {
+        method: "GET",
+      });
 
-    if (!response.ok) {
-      toast(
-        l10n.getFragment("unsubscription-failed", {
-          elems: {
-            try_again_link: (
-              <Button
-                variant="link"
-                onPress={() => void handleUnsubscription()}
-              />
-            ),
-          },
-        }),
-      );
-    } else {
-      setUnsubscribeSuccess(true);
+      if (!response.ok) {
+        toast(
+          l10n.getFragment("unsubscription-failed", {
+            elems: {
+              try_again_link: (
+                <Button
+                  variant="link"
+                  onPress={() => void handleUnsubscription()}
+                />
+              ),
+            },
+          }),
+        );
+      } else {
+        setUnsubscribeSuccess(true);
+      }
+    } catch (error) {
+      console.error("Error unsubscribing from Monthly monitor report", error);
     }
   };
 
