@@ -54,6 +54,18 @@ export const UnsubscribeMonthlyReportView = ({ token }: { token: string }) => {
         setUnsubscribeSuccess(true);
       }
     } catch (error) {
+      toast(
+        l10n.getFragment("unsubscription-failed", {
+          elems: {
+            try_again_link: (
+              <Button
+                variant="link"
+                onPress={() => void handleUnsubscription()}
+              />
+            ),
+          },
+        }),
+      );
       console.error("Error unsubscribing from Monthly monitor report", error);
     }
   };
