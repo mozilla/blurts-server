@@ -38,13 +38,13 @@ export const UnsubscribeMonthlyReportView = ({ token }: { token: string }) => {
       });
 
       if (!response.ok) {
-        toast(
+        toast.error(
           l10n.getFragment("unsubscription-failed", {
             elems: {
               try_again_link: (
-                <Button
-                  variant="link"
-                  onPress={() => void handleUnsubscription()}
+                <button
+                  className={styles.tryAgain}
+                  onClick={() => void handleUnsubscription()}
                 />
               ),
             },
@@ -54,13 +54,13 @@ export const UnsubscribeMonthlyReportView = ({ token }: { token: string }) => {
         setUnsubscribeSuccess(true);
       }
     } catch (error) {
-      toast(
+      toast.error(
         l10n.getFragment("unsubscription-failed", {
           elems: {
             try_again_link: (
-              <Button
-                variant="link"
-                onPress={() => void handleUnsubscription()}
+              <button
+                className={styles.tryAgain}
+                onClick={() => void handleUnsubscription()}
               />
             ),
           },
