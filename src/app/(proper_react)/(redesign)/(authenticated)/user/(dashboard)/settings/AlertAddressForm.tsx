@@ -193,9 +193,13 @@ export const AlertAddressForm = (props: Props) => {
             >
               <div>
                 <b>
-                  {l10n.getString(
-                    "settings-alert-preferences-allow-monthly-monitor-report-title",
-                  )}
+                  {hasPremium(props.user)
+                    ? l10n.getString(
+                        "settings-alert-preferences-allow-monthly-monitor-plus-report-title",
+                      )
+                    : l10n.getString(
+                        "settings-alert-preferences-allow-monthly-monitor-report-title",
+                      )}
                 </b>
                 <p>
                   {l10n.getString(
