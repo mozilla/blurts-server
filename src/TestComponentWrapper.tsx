@@ -8,25 +8,28 @@ import { PublicEnvProvider } from "./contextProviders/public-env";
 import { SessionProvider } from "next-auth/react";
 import { ReactAriaI18nProvider } from "./contextProviders/react-aria";
 import { getL10nBundles } from "./app/functions/l10n/storybookAndJest";
+import { CookiesProvider } from "./contextProviders/cookies";
 
 const l10nBundles = getL10nBundles();
 
 export const TestComponentWrapper = (props: { children: ReactNode }) => {
   return (
-    <L10nProvider bundleSources={l10nBundles}>
-      <PublicEnvProvider
-        publicEnvs={{
-          PUBLIC_APP_ENV:
-            /* c8 ignore next */
-            process.env.STORYBOOK === "true" ? "storybook" : "test",
-        }}
-      >
-        <SessionProvider session={null}>
-          <ReactAriaI18nProvider locale="en">
-            {props.children}
-          </ReactAriaI18nProvider>
-        </SessionProvider>
-      </PublicEnvProvider>
-    </L10nProvider>
+    <CookiesProvider defaultSetOptions={{ path: "/" }}>
+      <L10nProvider bundleSources={l10nBundles}>
+        <PublicEnvProvider
+          publicEnvs={{
+            PUBLIC_APP_ENV:
+              /* c8 ignore next */
+              process.env.STORYBOOK === "true" ? "storybook" : "test",
+          }}
+        >
+          <SessionProvider session={null}>
+            <ReactAriaI18nProvider locale="en">
+              {props.children}
+            </ReactAriaI18nProvider>
+          </SessionProvider>
+        </PublicEnvProvider>
+      </L10nProvider>
+    </CookiesProvider>
   );
 };

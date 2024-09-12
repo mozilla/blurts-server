@@ -14,6 +14,7 @@ import { getCountryCode } from "../functions/server/getCountryCode";
 import { PageLoadEvent } from "../components/client/PageLoadEvent";
 import { getExperimentationId } from "../functions/server/getExperimentationId";
 import { getEnabledFeatureFlags } from "../../db/tables/featureFlags";
+import { CookiesProvider } from "../../contextProviders/cookies";
 
 export default async function Layout({ children }: { children: ReactNode }) {
   const l10nBundles = getL10nBundles();
@@ -25,16 +26,18 @@ export default async function Layout({ children }: { children: ReactNode }) {
   });
 
   return (
-    <L10nProvider bundleSources={l10nBundles}>
-      <ReactAriaI18nProvider locale={getLocale(l10nBundles)}>
-        <CountryCodeProvider countryCode={countryCode}>
-          {children}
-          <PageLoadEvent
-            experimentationId={getExperimentationId(session?.user ?? null)}
-            enabledFlags={enabledFlags}
-          />
-        </CountryCodeProvider>
-      </ReactAriaI18nProvider>
-    </L10nProvider>
+    <CookiesProvider defaultSetOptions={{ path: "/" }}>
+      <L10nProvider bundleSources={l10nBundles}>
+        <ReactAriaI18nProvider locale={getLocale(l10nBundles)}>
+          <CountryCodeProvider countryCode={countryCode}>
+            {children}
+            <PageLoadEvent
+              experimentationId={getExperimentationId(session?.user ?? null)}
+              enabledFlags={enabledFlags}
+            />
+          </CountryCodeProvider>
+        </ReactAriaI18nProvider>
+      </L10nProvider>
+    </CookiesProvider>
   );
 }

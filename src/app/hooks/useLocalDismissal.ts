@@ -54,7 +54,6 @@ export function useLocalDismissal(
         : COOKIE_DISMISSAL_MAX_AGE_IN_SECONDS;
     setCookie(cookieId, Date.now().toString(), {
       maxAge: maxAgeInSeconds,
-      path: "/",
     });
     /* c8 ignore next 5 */
     // Since the Node 20.10 upgrade, it's been intermittently marking this (and

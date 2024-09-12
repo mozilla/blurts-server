@@ -33,9 +33,7 @@ export const PageLoadEvent = (props: Props) => {
     props.experimentationId.startsWith("guest") &&
     !cookies.experimentationId
   ) {
-    setCookie("experimentationId", props.experimentationId, {
-      path: "/",
-    });
+    setCookie("experimentationId", props.experimentationId);
   }
 
   // On first load of the page, record a page view.
@@ -52,11 +50,9 @@ export const PageLoadEvent = (props: Props) => {
     // record attributions on page load
     if (window.location.search?.length > 0) {
       if (!cookies.attributionsFirstTouch) {
-        setCookie("attributionsFirstTouch", window.location.search, {
-          path: "/",
-        });
+        setCookie("attributionsFirstTouch", window.location.search);
       }
-      setCookie("attributionsLastTouch", window.location.search, { path: "/" });
+      setCookie("attributionsLastTouch", window.location.search);
     }
   }, [setCookie, cookies.attributionsFirstTouch]);
   // This component doesn't render anything.
