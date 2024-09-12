@@ -13,10 +13,7 @@ import { useL10n } from "../../../../hooks/l10n";
 import { toast } from "react-toastify";
 
 export const UnsubscribeMonthlyReportView = ({ token }: { token: string }) => {
-  type UnsubscribeState = "subscribed" | "unsubscribed" | "loading";
-
-  const [unsubscribeSuccess, setUnsubscribeSuccess] =
-    useState<UnsubscribeState>("subscribed");
+  const [unsubscribeSuccess, setUnsubscribeSuccess] = useState(false);
 
   const l10n = useL10n();
   const copy = {
@@ -30,18 +27,17 @@ export const UnsubscribeMonthlyReportView = ({ token }: { token: string }) => {
     },
   };
 
-  const { header, body } =
-    unsubscribeSuccess === "unsubscribed" ? copy.success : copy.confirmation;
+  const { header, body } = unsubscribeSuccess
+    ? copy.success
+    : copy.confirmation;
 
   const handleUnsubscription = async () => {
-    setUnsubscribeSuccess("loading");
     try {
       const response = await fetch(`/api/unsubscribe-email?token=${token}`, {
         method: "GET",
       });
 
       if (!response.ok) {
-        setUnsubscribeSuccess("subscribed");
         toast(
           l10n.getFragment("unsubscription-failed", {
             elems: {
@@ -55,7 +51,7 @@ export const UnsubscribeMonthlyReportView = ({ token }: { token: string }) => {
           }),
         );
       } else {
-        setUnsubscribeSuccess("unsubscribed");
+        setUnsubscribeSuccess(true);
       }
     } catch (error) {
       console.error("Error unsubscribing from Monthly monitor report", error);
@@ -68,7 +64,6 @@ export const UnsubscribeMonthlyReportView = ({ token }: { token: string }) => {
       <h1>{header}</h1>
       <p>{body}</p>
       <Button
-        isLoading={unsubscribeSuccess === "loading"}
         className={styles.cta}
         variant="primary"
         onPress={() => void handleUnsubscription()}
