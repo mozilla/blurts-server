@@ -5,11 +5,11 @@
 "use client";
 
 import { useState } from "react";
-import { Button } from "../../../../components/client/Button";
+import { Button } from "../../../../../components/client/Button";
 import styles from "./UnsubscribeMonthlyReport.module.scss";
 import UnsubscriptionImage from "./images/confirm-unsubscribe.svg";
 import Image from "next/image";
-import { useL10n } from "../../../../hooks/l10n";
+import { useL10n } from "../../../../../hooks/l10n";
 import { toast } from "react-toastify";
 
 export const UnsubscribeMonthlyReportView = ({ token }: { token: string }) => {

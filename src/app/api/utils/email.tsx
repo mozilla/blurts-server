@@ -71,7 +71,7 @@ export async function generateUnsubscribeLinkForSubscriber(
       },
       ["unsubscribe_token"],
     );
-    return `${process.env.SERVER_URL}/unsubscribe-from-monthly-report?token=${sub.unsubscribe_token}`;
+    return `${process.env.SERVER_URL}/unsubscribe-email/monthly-report-free?token=${sub.unsubscribe_token}`;
   } catch (e) {
     console.error("generate_unsubscribe_link", {
       exception: e as string,
