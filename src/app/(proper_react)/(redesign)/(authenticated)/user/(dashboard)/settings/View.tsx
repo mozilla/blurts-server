@@ -22,11 +22,13 @@ import { DeleteAccountButton } from "./DeleteAccountButton";
 import { FeatureFlagName } from "../../../../../../../db/tables/featureFlags";
 import { CancelFlow } from "./CancelFlow";
 import { ExperimentData } from "../../../../../../../telemetry/generated/nimbus/experiments";
+import { SubscriberEmailPreferencesOutput } from "../../../../../../../db/tables/subscriber_email_preferences";
 
 export type Props = {
   l10n: ExtendedReactLocalization;
   user: Session["user"];
   subscriber: SubscriberRow;
+  data: SubscriberEmailPreferencesOutput;
   monthlySubscriptionUrl: string;
   yearlySubscriptionUrl: string;
   subscriptionBillingAmount: {
@@ -97,6 +99,7 @@ export const SettingsView = (props: Props) => {
           <AlertAddressForm
             user={props.user}
             subscriber={props.subscriber}
+            data={props.data}
             enabledFeatureFlags={props.enabledFeatureFlags}
           />
           {hasPremium(props.user) && (
