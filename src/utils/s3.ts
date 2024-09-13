@@ -24,11 +24,7 @@ const s3 = new S3({
   },
 });
 
-/**
- * @param {string} fileName
- * @param {Buffer} fileStream
- */
-export async function uploadToS3(fileName, fileStream) {
+export async function uploadToS3(fileName: string, fileStream: Buffer) {
   console.log("Attempt to upload to s3: ", fileName);
   const uploadParams = {
     Bucket,
@@ -41,7 +37,7 @@ export async function uploadToS3(fileName, fileStream) {
       params: uploadParams,
     }).done();
     console.log("Successfully uploaded data to " + Bucket + "/" + fileName);
-  } catch (/** @type {any} */ err) {
-    console.error(err, err.stack);
+  } catch (err) {
+    console.error(err, (err as Error).stack);
   }
 }

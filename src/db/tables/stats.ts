@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { StatsRow } from "knex/types/tables";
-import createDbConnection from "../connect.js";
+import createDbConnection from "../connect";
 const knex = createDbConnection();
 
 export { knex as knexStats };

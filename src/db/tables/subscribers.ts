@@ -4,7 +4,7 @@
 
 import type { Profile } from "next-auth";
 import type { EmailAddressRow, SubscriberRow } from "knex/types/tables";
-import createDbConnection from "../connect.js";
+import createDbConnection from "../connect";
 import AppConstants from "../../appConstants.js";
 import { SerializedSubscriber } from "../../next-auth.js";
 import { getFeatureFlagData } from "./featureFlags";

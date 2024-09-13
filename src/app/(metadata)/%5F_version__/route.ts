@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { NextRequest, NextResponse } from "next/server";
-import { vers } from "../../../utils/dockerflow.js";
+import { vers } from "../../../utils/dockerflow";
 
 // Note: this URL starts with an underscore, but Next.js interprets that as
 //       marking the file as private:
