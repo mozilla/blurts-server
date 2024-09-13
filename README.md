@@ -219,7 +219,8 @@ To test the HIBP breach alerts endpoint, use:
 ```sh
 export SERVER_URL=...
 export HIBP_NOTIFY_TOKEN=...
-k6 -u 10 src/scripts/loadtest/hibp.js # Run with 10 virtual users
+# Run with 10 virtual users for 60 seconds.
+k6 run --vus 100 --duration 60s src/scripts/loadtest/hibp.js
 ```
 
 See https://grafana.com/docs/k6/latest/get-started/running-k6/ for more information.
