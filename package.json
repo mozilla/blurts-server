@@ -106,7 +106,7 @@
     "winston": "^3.14.2"
   },
   "devDependencies": {
-    "@faker-js/faker": "^9.0.0",
+    "@faker-js/faker": "^9.0.1",
     "@playwright/test": "^1.47.1",
     "@storybook/addon-a11y": "^8.2.9",
     "@storybook/addon-actions": "^8.2.9",
