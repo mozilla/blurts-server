@@ -10,7 +10,7 @@ import { EmailHeader } from "../EmailHeader";
 import { HibpLikeDbBreach } from "../../../utils/hibp";
 import { BreachCard } from "../../components/BreachCard";
 import { FeatureFlagName } from "../../../db/tables/featureFlags";
-import { EmailHero } from "../EmailHero";
+import { EmailHero } from "../../components/EmailHero";
 import { getLocale } from "../../../app/functions/universal/getLocale";
 import { isEligibleForPremium } from "../../../app/functions/universal/premium";
 import { hasPremium } from "../../../app/functions/universal/user";
