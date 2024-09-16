@@ -11,33 +11,57 @@
  * @see https://grafana.com/docs/k6/latest/get-started/running-k6
  */
 
-/* eslint-disable import/no-unresolved */
-/* eslint-disable no-undef */
-
 import { post } from "k6/http";
+import crypto from "k6/crypto";
 
-const url = `${__ENV.SERVER_URL}/api/v1/hibp/notify`;
+// k6 exposes environment variables via the __ENV variable:
+// https://grafana.com/docs/k6/latest/using-k6/environment-variables/
+/** @type {typeof process.env} */
+const envVars = __ENV;
 
-// eslint-disable-next-line import/no-anonymous-default-export
-export default function () {
+const HIBP_NOTIFY_TOKEN = envVars.HIBP_NOTIFY_TOKEN;
+if (typeof HIBP_NOTIFY_TOKEN !== "string") {
+  throw new Error(
+    "Make sure to set the following environment variable: HIBP_NOTIFY_TOKEN",
+  );
+}
+
+const VIRTUAL_USERS =
+  typeof envVars.K6_VIRTUAL_USERS === "string"
+    ? parseInt(envVars.K6_VIRTUAL_USERS, 10)
+    : typeof envVars.K6_VUS === "string"
+      ? parseInt(envVars.K6_VUS, 10)
+      : 1000;
+const DURATION =
+  typeof envVars.K6_DURATION === "string" ? envVars.K6_DURATION : "30s";
+
+export const options = {
+  vus: VIRTUAL_USERS,
+  duration: DURATION,
+};
+
+const url = `${envVars.SERVER_URL ?? "https://stage.firefoxmonitor.nonprod.cloudops.mozgcp.net"}/api/v1/hibp/notify`;
+const mockedBreachedEmailHash =
+  typeof envVars.LOADTEST_BREACHED_EMAIL === "string"
+    ? crypto.sha1(envVars.LOADTEST_BREACHED_EMAIL, "hex")
+    : "1c48923da9f6f17165711712d11bc104087444cc";
+
+export const run = () => {
+  /** @type {import("../../app/api/v1/hibp/notify/route").PostHibpNotificationRequestBody} */
   let data = {
     breachName: "ApexSMS",
     // NOTE: modify this hash range if you want to receive email to specific test account(s).
     // This example should only email an address that is a sha1 hash for 1c48923da9f6f17165711712d11bc104087444cc.
     // See https://www.troyhunt.com/understanding-have-i-been-pwneds-use-of-sha-1-and-k-anonymity/ for more information.
-    hashPrefix: "1c4892",
-    hashSuffixes: [
-      "3da9f6f17165711712d11bc104087444cc",
-      "3da9f6fffff5711712d11bc104087444cc",
-    ],
+    hashPrefix: mockedBreachedEmailHash.substring(0, 6),
+    hashSuffixes: [mockedBreachedEmailHash.substring(6)],
   };
 
   // Using a JSON string as body
   let res = post(url, JSON.stringify(data), {
     headers: {
       "Content-Type": "application/json",
-      // eslint-disable-next-line no-undef
-      Authorization: `Bearer ${__ENV.HIBP_NOTIFY_TOKEN}`,
+      Authorization: `Bearer ${HIBP_NOTIFY_TOKEN}`,
     },
   });
 
@@ -49,4 +73,5 @@ export default function () {
   } catch (ex) {
     throw new Error(`Failed to parse result: ${res.status}, ${res.text}`);
   }
-}
+};
+export default run;

@@ -14,6 +14,12 @@ const projectId = process.env.GCP_PUBSUB_PROJECT_ID;
 const topicName = process.env.GCP_PUBSUB_TOPIC_NAME;
 const subscriptionName = process.env.GCP_PUBSUB_SUBSCRIPTION_NAME;
 
+export type PostHibpNotificationRequestBody = {
+  breachName: string;
+  hashPrefix: string;
+  hashSuffixes: string[];
+};
+
 /**
  * Whenever a breach is detected on the HIBP side, HIBP sends a request to this endpoint.
  * The payload is checked for validity, and immediately queued if it is valid.
@@ -21,8 +27,8 @@ const subscriptionName = process.env.GCP_PUBSUB_SUBSCRIPTION_NAME;
  * @param req
  */
 export async function POST(req: NextRequest) {
-  let pubsub;
-  let json;
+  let pubsub: PubSub;
+  let json: PostHibpNotificationRequestBody;
 
   try {
     if (!projectId) {
@@ -37,7 +43,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ success: false }, { status: 401 });
     }
 
-    json = await req.json();
+    json = (await req.json()) as PostHibpNotificationRequestBody;
 
     if (!(json.breachName && json.hashPrefix && json.hashSuffixes)) {
       logger.error(
