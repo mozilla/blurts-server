@@ -6,7 +6,6 @@ import { getToken } from "next-auth/jwt";
 import { NextRequest, NextResponse } from "next/server";
 
 import { logger } from "../../../../functions/server/logging";
-import AppConstants from "../../../../../appConstants";
 import {
   getSubscriberByFxaUid,
   deleteResolutionsWithEmail,
@@ -50,7 +49,7 @@ export async function POST(req: NextRequest) {
         existingEmail.email,
       );
       return NextResponse.redirect(
-        AppConstants.SERVER_URL + "/user/settings",
+        process.env.SERVER_URL + "/user/settings",
         301,
       );
     } catch (e) {

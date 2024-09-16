@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import createDbConnection from "../connect.js";
+import createDbConnection from "../connect";
 import { logger } from "../../app/functions/server/logging";
 import { FeatureFlagRow } from "knex/types/tables";
 
@@ -48,6 +48,7 @@ export const featureFlagNames = [
   "AutomaticRemovalCsatSurvey",
   "AdditionalRemovalStatuses",
   "PetitionBannerCsatSurvey",
+  "MonthlyReportFreeUser",
 ] as const;
 export type FeatureFlagName = (typeof featureFlagNames)[number];
 

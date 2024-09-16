@@ -25,7 +25,7 @@ import {
   addEmailNotification,
   markEmailAsNotified,
 } from "../../db/tables/email_notifications";
-import { initEmail, sendEmail } from "../../utils/email.js";
+import { initEmail, sendEmail } from "../../utils/email";
 
 import {
   getAddressesAndLanguageForEmail,

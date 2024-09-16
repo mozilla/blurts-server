@@ -33,7 +33,6 @@
  *
  */
 
-import AppConstants from "../../appConstants";
 import * as HIBP from "../../utils/hibp";
 
 type RemoteSettingsBreach = Pick<
@@ -41,11 +40,29 @@ type RemoteSettingsBreach = Pick<
   "Name" | "Domain" | "BreachDate" | "PwnCount" | "AddedDate" | "DataClasses"
 >;
 
+const FX_REMOTE_SETTINGS_WRITER_USER =
+  process.env.FX_REMOTE_SETTINGS_WRITER_USER;
+const FX_REMOTE_SETTINGS_WRITER_PASS =
+  process.env.FX_REMOTE_SETTINGS_WRITER_PASS;
+const FX_REMOTE_SETTINGS_WRITER_SERVER =
+  process.env.FX_REMOTE_SETTINGS_WRITER_SERVER;
+
+if (
+  !FX_REMOTE_SETTINGS_WRITER_USER ||
+  !FX_REMOTE_SETTINGS_WRITER_PASS ||
+  !FX_REMOTE_SETTINGS_WRITER_SERVER
+) {
+  console.error(
+    "updatebreaches requires FX_REMOTE_SETTINGS_WRITER_SERVER, FX_REMOTE_SETTINGS_WRITER_USER, FX_REMOTE_SETTINGS_WRITER_PASS.",
+  );
+  process.exit(1);
+}
+
 const BREACHES_COLLECTION = "fxmonitor-breaches";
-const FX_RS_COLLECTION = `${AppConstants.FX_REMOTE_SETTINGS_WRITER_SERVER}/buckets/main-workspace/collections/${BREACHES_COLLECTION}`;
+const FX_RS_COLLECTION = `${FX_REMOTE_SETTINGS_WRITER_SERVER}/buckets/main-workspace/collections/${BREACHES_COLLECTION}`;
 const FX_RS_RECORDS = `${FX_RS_COLLECTION}/records`;
-const FX_RS_WRITER_USER = AppConstants.FX_REMOTE_SETTINGS_WRITER_USER;
-const FX_RS_WRITER_PASS = AppConstants.FX_REMOTE_SETTINGS_WRITER_PASS;
+const FX_RS_WRITER_USER = FX_REMOTE_SETTINGS_WRITER_USER;
+const FX_RS_WRITER_PASS = FX_REMOTE_SETTINGS_WRITER_PASS;
 
 async function whichBreachesAreNotInRemoteSettingsYet(
   breaches: HIBP.HibpGetBreachesResponse,
@@ -88,17 +105,6 @@ async function requestReviewOnBreachesCollection() {
     },
   });
   return response.json();
-}
-
-if (
-  !AppConstants.FX_REMOTE_SETTINGS_WRITER_USER ||
-  !AppConstants.FX_REMOTE_SETTINGS_WRITER_PASS ||
-  !AppConstants.FX_REMOTE_SETTINGS_WRITER_SERVER
-) {
-  console.error(
-    "updatebreaches requires FX_REMOTE_SETTINGS_WRITER_SERVER, FX_REMOTE_SETTINGS_WRITER_USER, FX_REMOTE_SETTINGS_WRITER_PASS.",
-  );
-  process.exit(1);
 }
 
 (async () => {

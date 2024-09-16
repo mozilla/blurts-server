@@ -4,7 +4,7 @@
 
 import { SubscriberRow } from "knex/types/tables";
 import { resetUnverifiedEmailAddress } from "../../../db/tables/emailAddresses";
-import { sendEmail } from "../../../utils/email.js";
+import { sendEmail } from "../../../utils/email";
 import { renderEmail } from "../../../emails/renderEmail";
 import { VerifyEmailAddressEmail } from "../../../emails/templates/verifyEmailAddress/VerifyEmailAddressEmail";
 import { sanitizeSubscriberRow } from "../../functions/server/sanitize";
@@ -71,7 +71,7 @@ export async function generateUnsubscribeLinkForSubscriber(
       },
       ["unsubscribe_token"],
     );
-    return `${process.env.SERVER_URL}/unsubscribe-from-monthly-report?token=${sub.unsubscribe_token}`;
+    return `${process.env.SERVER_URL}/unsubscribe-email/monthly-report-free?token=${sub.unsubscribe_token}`;
   } catch (e) {
     console.error("generate_unsubscribe_link", {
       exception: e as string,
