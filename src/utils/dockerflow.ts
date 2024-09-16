@@ -6,7 +6,6 @@
 
 import fs from "fs";
 import path from "path";
-import AppConstants from "../appConstants";
 import packageJson from "../../package.json";
 
 export type VersionData = {
@@ -23,7 +22,7 @@ if (!fs.existsSync(versionJsonPath)) {
   const versionJson = {
     source: packageJson.homepage,
     version: packageJson.version,
-    NODE_ENV: AppConstants.NODE_ENV,
+    NODE_ENV: process.env.NODE_ENV,
   };
 
   fs.writeFileSync(
@@ -33,7 +32,7 @@ if (!fs.existsSync(versionJsonPath)) {
 }
 
 export function vers(): VersionData {
-  if (AppConstants.APP_ENV === "heroku") {
+  if (process.env.APP_ENV === "heroku") {
     /* eslint-disable no-process-env */
     return {
       commit: process.env.HEROKU_SLUG_COMMIT!,

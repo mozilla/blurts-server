@@ -43,8 +43,6 @@ const customJestConfig = {
     "<rootDir>/src/apiMocks/mockData.ts",
     "<rootDir>/src/(.+).stories.(ts|tsx)",
     "<rootDir>/.storybook/",
-    // Old, pre-Next.js code assumed to be working:
-    "<rootDir>/src/appConstants.js",
   ],
 
   // Indicates which provider should be used to instrument code for coverage

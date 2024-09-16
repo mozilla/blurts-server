@@ -1,0 +1,19 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+
+# Confirm Unsubscription State
+
+unsubscribe-from-monthly-report-header = Diese E-Mail abbestellen?
+unsubscribe-from-monthly-report-body = Sie erhalten nicht mehr den monatlichen { -brand-monitor }-Bericht, der jeden Monat anzeigt, wie viele neue Kontakte Sie hatten und wie viele behoben wurden.
+unsubscribe-cta = Abbestellen
+
+# Success Unsubscription State
+
+unsubscribe-success-from-monthly-report-header = Ihr Abonnement wurde jetzt aufgehoben
+unsubscribe-success-from-monthly-report-body = Sie können den Newsletter erneut abonnieren oder Ihre E-Mail-Einstellungen jederzeit in Ihren { -brand-monitor }-Einstellungen ändern.
+
+# Error warning
+
+unsubscription-failed = Abbestellen fehlgeschlagen. <try_again_link>Versuchen Sie es erneut.</try_again_link>
