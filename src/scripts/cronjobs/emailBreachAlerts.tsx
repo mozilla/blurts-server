@@ -45,6 +45,12 @@ import { getLatestOnerepScanResults } from "../../db/tables/onerep_scans";
 import { getSubscriberBreaches } from "../../app/functions/server/getSubscriberBreaches";
 import { getSignupLocaleCountry } from "../../emails/functions/getSignupLocaleCountry";
 import { refreshStoredScanResults } from "../../app/functions/server/refreshStoredScanResults";
+import { isEligibleForPremium } from "../../app/functions/universal/premium";
+import { hasPremium } from "../../app/functions/universal/user";
+import {
+  DashboardSummary,
+  getDashboardSummary,
+} from "../../app/functions/server/dashboard";
 
 const SENTRY_SLUG = "cron-breach-alerts";
 
@@ -288,13 +294,24 @@ export async function poll(
                   if (typeof recipient.onerep_profile_id === "number") {
                     await refreshStoredScanResults(recipient.onerep_profile_id);
                   }
-                  const scanData = await getLatestOnerepScanResults(
-                    recipient.onerep_profile_id,
-                  );
-                  const allSubscriberBreaches = await getSubscriberBreaches({
-                    fxaUid: recipient.fxa_uid,
-                    countryCode: assumedCountryCode,
-                  });
+
+                  let dataSummary: DashboardSummary | undefined;
+                  if (
+                    isEligibleForPremium(assumedCountryCode) &&
+                    !hasPremium(recipient)
+                  ) {
+                    const scanData = await getLatestOnerepScanResults(
+                      recipient.onerep_profile_id,
+                    );
+                    const allSubscriberBreaches = await getSubscriberBreaches({
+                      fxaUid: recipient.fxa_uid,
+                      countryCode: assumedCountryCode,
+                    });
+                    dataSummary = getDashboardSummary(
+                      scanData.results,
+                      allSubscriberBreaches,
+                    );
+                  }
 
                   const subject = l10n.getString(
                     "email-breach-alert-all-subject",
@@ -308,11 +325,10 @@ export async function poll(
                         l10n={l10n}
                         breach={breachAlert}
                         breachedEmail={breachedEmail}
-                        allSubscriberBreaches={allSubscriberBreaches}
                         utmCampaignId={utmCampaignId}
                         enabledFeatureFlags={enabledFeatureFlags}
                         subscriber={recipient}
-                        scanData={scanData}
+                        dataSummary={dataSummary}
                       />,
                     ),
                   );
