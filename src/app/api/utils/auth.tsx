@@ -81,6 +81,31 @@ export const authOptions: AuthOptions = {
   },
   providers: [fxaProviderConfig],
   callbacks: {
+    redirect({ url, baseUrl }) {
+      // Do not pass un-parseable URLs to next-auth, @see MNTOR-3029
+      // Preserve default behavior otherwise. @see https://next-auth.js.org/configuration/callbacks#redirect-callback
+
+      // Allows relative callback URLs
+      if (url.startsWith("/")) {
+        if (!URL.canParse(`${baseUrl}${url}`)) {
+          logger.warn("Cannot parse redirect url:", {
+            url: `${baseUrl}${url}`,
+          });
+          return baseUrl;
+        }
+        return `${baseUrl}${url}`;
+      }
+      // Allows callback URLs on the same origin
+      else if (new URL(url).origin === baseUrl) {
+        if (!URL.canParse(url)) {
+          logger.warn("Cannot parse redirect url:", { url });
+          return baseUrl;
+        }
+        return url;
+      }
+
+      return baseUrl;
+    },
     // Unused arguments also listed to show what's available:
     async jwt({ token, account, profile, trigger }) {
       if (trigger === "update") {
