@@ -90,3 +90,16 @@ email-breach-alert-all-data-points-title = Your exposed data:
 email-breach-alert-all-next-steps-lead = We’ll guide you step-by-step on how to resolve this data breach.
 email-breach-alert-all-next-steps-cta-label = Let’s get started
 email-breach-alert-all-next-steps-button-dashboard = Go to Dashboard
+
+# Monthly Report Free User
+
+email-monthly-report-free-subject = Your <month>{ $month_of_report }</month> monthly { -brand-mozilla-monitor } report
+email-monthly-report-free-results-heading = Current exposures
+email-monthly-report-free-breaches = Data breaches
+email-monthly-report-free-summary-heading = What’s happened in the last month
+email-monthly-report-free-summary-auto-removed = Auto-removed exposures
+email-monthly-report-free-summary-auto-removed = Manually resolved data breaches
+email-monthly-report-free-upgrade-cta = Unlock with { -brand-monitor-plus }
+email-monthly-report-free-banner-heading = { -brand-monitor } now protects you even more
+email-monthly-report-free-banner-body = We can find your personal info on data broker sites that sell it for a profit.
+email-monthly-report-free-banner-cta-scan = Get your first scan free
