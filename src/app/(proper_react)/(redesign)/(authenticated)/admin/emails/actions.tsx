@@ -37,6 +37,8 @@ import { getSha1 } from "../../../../../../utils/fxa";
 import { getBreaches } from "../../../../../functions/server/getBreaches";
 import { getSignupLocaleCountry } from "../../../../../../emails/functions/getSignupLocaleCountry";
 import { refreshStoredScanResults } from "../../../../../functions/server/refreshStoredScanResults";
+import { hasPremium } from "../../../../../functions/universal/user";
+import { isEligibleForPremium } from "../../../../../functions/universal/premium";
 
 async function getAdminSubscriber(): Promise<SubscriberRow | null> {
   const session = await getServerSession();
@@ -197,11 +199,14 @@ export async function triggerBreachAlert(
           subscriber={subscriber}
           breach={createRandomHibpListing()}
           breachedEmail={emailAddress}
-          allSubscriberBreaches={allSubscriberBreaches}
-          scanData={scanData}
           enabledFeatureFlags={["BreachEmailRedesign"]}
           utmCampaignId="breach-alert"
           l10n={l10n}
+          dataSummary={
+            isEligibleForPremium(assumedCountryCode) && hasPremium(subscriber)
+              ? getDashboardSummary(scanData.results, allSubscriberBreaches)
+              : undefined
+          }
         />,
       )
     : await send(

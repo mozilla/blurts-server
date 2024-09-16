@@ -14,11 +14,9 @@ import { EmailHero } from "../EmailHero";
 import { getLocale } from "../../../app/functions/universal/getLocale";
 import { isEligibleForPremium } from "../../../app/functions/universal/premium";
 import { hasPremium } from "../../../app/functions/universal/user";
-import type { LatestOnerepScanData } from "../../../db/tables/onerep_scans";
-import type { SubscriberBreach } from "../../../utils/subscriberBreaches";
 import { getSignupLocaleCountry } from "../../functions/getSignupLocaleCountry";
 import { getPremiumSubscriptionUrl } from "../../../app/functions/server/getPremiumSubscriptionInfo";
-import { getDashboardSummary } from "../../../app/functions/server/dashboard";
+import { DashboardSummary } from "../../../app/functions/server/dashboard";
 import { ResolutionRelevantBreachDataTypes } from "../../../app/functions/universal/breach";
 
 export type Props = {
@@ -75,8 +73,18 @@ export type RedesignedBreachAlertEmailProps = {
   breachedEmail: string;
   utmCampaignId: string;
   subscriber: SubscriberRow;
-  scanData: LatestOnerepScanData;
-  allSubscriberBreaches: SubscriberBreach[];
+  /**
+   * We need to run a bunch of queries to collect this data,
+   * so it's optional; however, make sure to pass it in for
+   * free users who are eligible for Plus (i.e. in the US),
+   * who have run a scan — those are the ones we show a
+   * <DataPointCount> for at the moment. We also use the
+   * presence of this property to determine whether free
+   * US users have run a scan. If, in the future, we assume
+   * we can do the same for Plus users, that might break, but
+   * that's a risk we'll have to take for now:
+   */
+  dataSummary?: DashboardSummary;
   enabledFeatureFlags: FeatureFlagName[];
 };
 
@@ -104,7 +112,7 @@ export const RedesignedBreachAlertEmail = (
     if (hasPremium(props.subscriber)) {
       utmCampaignId = "breach-alert-plus";
     } else {
-      if (props.scanData.scan === null) {
+      if (typeof props.dataSummary === "undefined") {
         utmCampaignId = "breach-alert-free-us-no-scan";
       } else {
         utmCampaignId = "breach-alert-free-us-scanned";
@@ -252,7 +260,7 @@ export const RedesignedBreachAlertEmail = (
         />
         {isEligibleForPremium(assumedCountryCode) &&
           !hasPremium(props.subscriber) &&
-          (props.scanData.scan === null ? (
+          (typeof props.dataSummary === "undefined" ? (
             <Banner
               heading={l10n.getString(
                 "email-breach-alert-plus-scan-banner-heading",
@@ -328,7 +336,7 @@ const Banner = (props: {
 const DataPointCount = (
   props: RedesignedBreachAlertEmailProps & { utmContentSuffix: string },
 ) => {
-  if (props.scanData.scan === null) {
+  if (typeof props.dataSummary === "undefined") {
     return null;
   }
   if (hasPremium(props.subscriber)) {
@@ -338,12 +346,8 @@ const DataPointCount = (
   }
 
   const l10n = props.l10n;
-  const dataSummary = getDashboardSummary(
-    props.scanData.results,
-    props.allSubscriberBreaches,
-  );
   const sumOfUnresolvedDataPoints =
-    dataSummary.unresolvedSanitizedDataPoints.reduce(
+    props.dataSummary.unresolvedSanitizedDataPoints.reduce(
       (total, dataPointSummary) => {
         return total + Object.values(dataPointSummary)[0];
       },
