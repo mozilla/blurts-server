@@ -27,11 +27,18 @@ import {
   createRandomHibpListing,
   createRandomScanResult,
 } from "../../../../../../apiMocks/mockData";
-import { BreachAlertEmail } from "../../../../../../emails/templates/breachAlert/BreachAlertEmail";
+import {
+  BreachAlertEmail,
+  RedesignedBreachAlertEmail,
+} from "../../../../../../emails/templates/breachAlert/BreachAlertEmail";
 import { SignupReportEmail } from "../../../../../../emails/templates/signupReport/SignupReportEmail";
 import { getBreachesForEmail } from "../../../../../../utils/hibp";
 import { getSha1 } from "../../../../../../utils/fxa";
 import { getBreaches } from "../../../../../functions/server/getBreaches";
+import { getSignupLocaleCountry } from "../../../../../../emails/functions/getSignupLocaleCountry";
+import { refreshStoredScanResults } from "../../../../../functions/server/refreshStoredScanResults";
+import { hasPremium } from "../../../../../functions/universal/user";
+import { isEligibleForPremium } from "../../../../../functions/universal/premium";
 
 async function getAdminSubscriber(): Promise<SubscriberRow | null> {
   const session = await getServerSession();
@@ -132,6 +139,9 @@ export async function triggerMonthlyActivity(emailAddress: string) {
     month: "long",
   });
 
+  if (typeof subscriber.onerep_profile_id === "number") {
+    await refreshStoredScanResults(subscriber.onerep_profile_id);
+  }
   const latestScan = await getLatestOnerepScanResults(
     subscriber.onerep_profile_id,
   );
@@ -156,7 +166,10 @@ export async function triggerMonthlyActivity(emailAddress: string) {
   );
 }
 
-export async function triggerBreachAlert(emailAddress: string) {
+export async function triggerBreachAlert(
+  emailAddress: string,
+  options: Partial<{ redesign: boolean }> = {},
+) {
   const session = await getServerSession();
   const subscriber = await getAdminSubscriber();
   if (!subscriber || !session?.user) {
@@ -165,16 +178,48 @@ export async function triggerBreachAlert(emailAddress: string) {
 
   const l10n = getL10n();
 
-  await send(
-    emailAddress,
-    l10n.getString("breach-alert-subject"),
-    <BreachAlertEmail
-      breach={createRandomHibpListing()}
-      breachedEmail={emailAddress}
-      utmCampaignId="breach-alert"
-      l10n={l10n}
-    />,
+  const assumedCountryCode = getSignupLocaleCountry(subscriber);
+
+  if (typeof subscriber.onerep_profile_id === "number") {
+    await refreshStoredScanResults(subscriber.onerep_profile_id);
+  }
+  const scanData = await getLatestOnerepScanResults(
+    subscriber.onerep_profile_id,
   );
+  const allSubscriberBreaches = await getSubscriberBreaches({
+    fxaUid: subscriber.fxa_uid,
+    countryCode: assumedCountryCode,
+  });
+
+  options.redesign === true
+    ? await send(
+        emailAddress,
+        l10n.getString("email-breach-alert-all-subject"),
+        <RedesignedBreachAlertEmail
+          subscriber={subscriber}
+          breach={createRandomHibpListing()}
+          breachedEmail={emailAddress}
+          enabledFeatureFlags={["BreachEmailRedesign"]}
+          utmCampaignId="breach-alert"
+          l10n={l10n}
+          dataSummary={
+            isEligibleForPremium(assumedCountryCode) && hasPremium(subscriber)
+              ? getDashboardSummary(scanData.results, allSubscriberBreaches)
+              : undefined
+          }
+        />,
+      )
+    : await send(
+        emailAddress,
+        l10n.getString("breach-alert-subject"),
+        <BreachAlertEmail
+          subscriber={subscriber}
+          breach={createRandomHibpListing()}
+          breachedEmail={emailAddress}
+          utmCampaignId="breach-alert"
+          l10n={l10n}
+        />,
+      );
 }
 
 export async function triggerFirstDataBrokerRemovalFixed(emailAddress: string) {

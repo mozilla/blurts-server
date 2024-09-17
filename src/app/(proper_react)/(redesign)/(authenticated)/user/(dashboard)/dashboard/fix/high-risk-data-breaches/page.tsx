@@ -11,7 +11,7 @@ import { getSubscriberBreaches } from "../../../../../../../../functions/server/
 import { getOnerepProfileId } from "../../../../../../../../../db/tables/subscribers";
 import { getLatestOnerepScanResults } from "../../../../../../../../../db/tables/onerep_scans";
 import { getCountryCode } from "../../../../../../../../functions/server/getCountryCode";
-import { isEligibleForPremium } from "../../../../../../../../functions/server/onerep";
+import { isEligibleForPremium } from "../../../../../../../../functions/universal/premium";
 
 export default async function HighRiskDataBreaches() {
   const session = await getServerSession();

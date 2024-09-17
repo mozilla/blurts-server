@@ -5,15 +5,15 @@
 
 # Confirm Unsubscription State
 
-unsubscribe-from-monthly-report-header = Leiratkozott erről az e-mailről?
-unsubscribe-from-monthly-report-body = Többé nem kapja meg a havi { -brand-monitor } jelentést, amely megmutatja, hogy hány új megjelenése volt, és hány javítva.
+unsubscribe-from-monthly-report-header = Leiratkozik erről az e-mailről?
+unsubscribe-from-monthly-report-body = Többé nem kapja meg a havi { -brand-monitor } jelentést, amely megmutatja, hogy hány új adatkikerülés történt, és mennyit javított.
 unsubscribe-cta = Leiratkozás
 
 # Success Unsubscription State
 
 unsubscribe-success-from-monthly-report-header = Most leiratkozott
-unsubscribe-success-from-monthly-report-body = Bármikor újrafizethet, vagy frissítheti az e-mail beállításait a { -brand-monitor } beállításaiban.
+unsubscribe-success-from-monthly-report-body = Bármikor újra feliratkozhat, vagy frissítheti az e-mail-beállításait a { -brand-monitor } beállításaiban.
 
 # Error warning
 
-unsubscription-failed = Leiratkozás sikertelen. <try_again_link>Próbálja újra.</try_again_link>
+unsubscription-failed = A leiratkozás sikertelen. <try_again_link>Próbálja újra.</try_again_link>

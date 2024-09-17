@@ -109,7 +109,7 @@ declare namespace React.JSX {
         "text-transform"?: CSSProperties["textTransform"];
         title?: string;
         "vertical-align"?: MjmlValueVerticalAlign;
-        width?: MjmlValuePx;
+        width?: MjmlValuePx | "100%";
       };
     "mj-column": MjmlBodyChildrenAttributes &
       MjmlAttributesBorder &
@@ -186,13 +186,21 @@ declare namespace React.JSX {
         "background-position"?: CSSProperties["backgroundPosition"];
         "background-position-x"?: CSSProperties["backgroundPositionX"];
         "background-position-y"?: CSSProperties["backgroundPositionY"];
-        "background-repeat"?: CSSProperties["backgroundRepeat"];
+        "background-repeat"?: Extract<
+          CSSProperties["backgroundRepeat"],
+          "repeat" | "no-repeat"
+        >;
         "background-size"?: CSSProperties["backgroundSize"];
         "background-url"?: string;
-        "border-radius"?: MjmlValuePx;
+        "border-radius"?:
+          | MjmlValuePx
+          | `${MjmlValuePx} ${MjmlValuePx} ${MjmlValuePx} ${MjmlValuePx}`;
         direction?: CSSProperties["direction"];
         "full-width"?: "full-width";
-        "text-align"?: CSSProperties["textAlign"];
+        "text-align"?: Extract<
+          CSSProperties["textAlign"],
+          "left" | "center" | "right"
+        >;
       };
     "mj-spacer": MjmlBodyChildrenAttributes &
       MjmlAttributesPadding & {
@@ -239,7 +247,7 @@ declare namespace React.JSX {
         "background-size"?: CSSProperties["backgroundSize"];
         "background-url"?: string;
         "border-radius"?: MjmlValuePx;
-        "full-width"?: "full-width;";
+        "full-width"?: "full-width";
         "text-align"?: MjmlValueAlign;
       };
   }

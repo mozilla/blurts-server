@@ -2,10 +2,19 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-# Firefox Monitor is a product name and should not be translated.
--product-name = Firefox Monitor
-# Firefox is a brand name and should not be translated.
--brand-name = Firefox
+## Email headers
+
+email-header-logo-alt = { -brand-mozilla-monitor }
+email-header-button-sign-in = Sign in
+
+## Email footers
+
+email-footer-support-heading = Questions about { -brand-mozilla-monitor }?
+email-footer-support-content = Visit our <support-link>Support Center</support-link> for help
+email-footer-trigger-transactional = You’re receiving this email as a subscriber of { -brand-mozilla-monitor }.
+email-footer-source-hibp = Breach data provided by <hibp-link>{ -brand-HIBP }</hibp-link>
+email-footer-logo-mozilla-alt = { -brand-mozilla }
+email-footer-meta-privacy-notice = Privacy
 
 # Firefox Relay is a product name and should not be translated.
 -product-name-relay = Firefox Relay
@@ -58,6 +67,7 @@ email-breach-summary = Here’s your data breach summary
 # Variables:
 #   $email-address (string) - Email address, bolded
 email-breach-detected = Search results for your { $email-address } account have detected that your email may have been exposed. We recommend you act now to resolve this breach.
+# Deprecated after the redesigned breach alert email is launched
 # Variables:
 #   $email-address (string) - Email address
 email-breach-detected-2 = Search results for your <b>{ $email-address }</b> account have detected that your email may have been exposed. We recommend you act now to resolve this breach.
@@ -65,4 +75,18 @@ email-dashboard-cta = Go to Dashboard
 
 ## Breach alert
 
+# Deprecated after the redesigned breach alert email is launched
 email-spotted-new-breach = We’ve spotted a new data breach
+
+## Redesigned breach alert email
+
+email-breach-alert-all-subject = New data breach detected
+email-breach-alert-all-preview = We’ll guide you through the steps to resolve it.
+email-breach-alert-all-hero-heading = You’ve been in a new data breach
+email-breach-alert-all-hero-subheading = Don’t worry, we can help you resolve this exposure
+email-breach-alert-all-lead = { -brand-mozilla-monitor } discovered the following data breach that includes your personal information:
+email-breach-alert-all-source-title = Breach source:
+email-breach-alert-all-data-points-title = Your exposed data:
+email-breach-alert-all-next-steps-lead = We’ll guide you step-by-step on how to resolve this data breach.
+email-breach-alert-all-next-steps-cta-label = Let’s get started
+email-breach-alert-all-next-steps-button-dashboard = Go to Dashboard
