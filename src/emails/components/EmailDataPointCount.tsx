@@ -4,12 +4,21 @@
 
 import React from "react";
 import { ExtendedReactLocalization } from "../../app/functions/l10n";
+import { DashboardSummary } from "../../app/functions/server/dashboard";
+import { hasPremium } from "../../app/functions/universal/user";
+import { SubscriberRow } from "knex/types/tables";
 
-export const DataPointCount = ({
-  l10n,
-}: {
+type Props = {
   l10n: ExtendedReactLocalization;
-}) => {
+  utmCampaignId: string;
+  utmContentSuffix: string;
+  dataSummary: DashboardSummary;
+  subscriber: SubscriberRow;
+};
+
+export const DataPointCount = (props: Props) => {
+  const unresolvedDataBreaches = props.dataSummary.dataBreachUnresolvedNum;
+
   return (
     <mj-wrapper padding="24px 16px">
       <mj-section
@@ -26,7 +35,9 @@ export const DataPointCount = ({
             font-weight={500}
           >
             <h3>
-              {l10n.getString("email-breach-alert-plus-scan-results-heading")}
+              {props.l10n.getString(
+                "email-breach-alert-plus-scan-results-heading",
+              )}
             </h3>
           </mj-text>
         </mj-column>
@@ -39,8 +50,10 @@ export const DataPointCount = ({
         >
           <mj-text align="center" font-size="14px" line-height="21px">
             <p>
-              {l10n.getFragment(
-                "email-breach-alert-plus-scan-results-data-points-label",
+              {props.l10n.getFragment(
+                hasPremium(props.subscriber)
+                  ? "email-breach-alert-plus-scan-results-data-points-label"
+                  : "email-monthly-report-free-scan-results-data-points-label",
                 {
                   elems: {
                     stat: (
@@ -53,42 +66,9 @@ export const DataPointCount = ({
                       />
                     ),
                   },
-                  vars: { data_point_count: 10 },
+                  vars: { data_point_count: unresolvedDataBreaches },
                 },
               )}
-            </p>
-          </mj-text>
-        </mj-column>
-      </mj-section>
-      <mj-section
-        padding="16px 52px 24px"
-        background-color="#F9F9FA"
-        border-radius="0 0 16px 16px"
-      >
-        <mj-column>
-          <mj-button
-            href={`${process.env.SERVER_URL}/user/dashboard/action-needed?utm_source=monitor-product&utm_medium=email&utm_campaign=${props.utmCampaignId}&utm_content=take-action${props.utmContentSuffix}`}
-            background-color="#0060DF"
-            border-radius="8px"
-            padding="12px 24px"
-            font-weight={600}
-            font-size="15px"
-            line-height="22px"
-            width="100%"
-          >
-            {l10n.getString("email-breach-alert-plus-scan-results-cta-label")}
-          </mj-button>
-          <mj-text
-            font-size="12px"
-            line-height="24px"
-            padding="0"
-            align="center"
-            font-weight={400}
-            font-style="italic"
-            color="#6D6D6E"
-          >
-            <p>
-              {l10n.getString("email-breach-alert-plus-scan-results-trailer")}
             </p>
           </mj-text>
         </mj-column>

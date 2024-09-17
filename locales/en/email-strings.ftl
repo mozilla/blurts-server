@@ -93,9 +93,15 @@ email-breach-alert-all-next-steps-button-dashboard = Go to Dashboard
 
 # Monthly Report Free User
 
-email-monthly-report-free-subject = Your <month>{ $month_of_report }</month> monthly { -brand-mozilla-monitor } report
+# Variables:
+#   $monthOfReport is the month for the report, e.g. July, August.
+email-monthly-report-hero-free-heading = Your { $monthOfReport } monthly { -brand-mozilla-monitor } report
+email-monthly-report-hero-free-body = A summary of what needs your attention, and what’s been resolved over the past month.
+# Variables:
+#   $data_point_count (number) - The number of data breaches that were exposed
+email-monthly-report-free-scan-results-data-points-label = <stat>{ $data_point_count }</stat> Data breaches
 email-monthly-report-free-results-heading = Current exposures
-email-monthly-report-free-breaches = Data breaches
+email-monthly-report-free-breaches = <stat>{ $data_point_count }</stat> Data breaches
 email-monthly-report-free-summary-heading = What’s happened in the last month
 email-monthly-report-free-summary-auto-removed = Auto-removed exposures
 email-monthly-report-free-summary-auto-removed = Manually resolved data breaches
