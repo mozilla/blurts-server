@@ -7,25 +7,33 @@ import { AuthOptions, Profile as FxaProfile, User } from "next-auth";
 import { SubscriberRow } from "knex/types/tables";
 import { logger } from "../../functions/server/logging";
 
-import AppConstants from "../../../appConstants.js";
 import {
   getSubscriberByFxaUid,
   updateFxAData,
   incrementSignInCountForEligibleFreeUser,
   getFxATokens,
   updateFxATokens,
-} from "../../../db/tables/subscribers.js";
+} from "../../../db/tables/subscribers";
 import { addSubscriber } from "../../../db/tables/emailAddresses";
 import { getBreaches } from "../../functions/server/getBreaches";
 import { getBreachesForEmail } from "../../../utils/hibp";
 import { getSha1, refreshOAuthTokens } from "../../../utils/fxa";
-import { initEmail, sendEmail } from "../../../utils/email.js";
+import { initEmail, sendEmail } from "../../../utils/email";
 import { getL10n } from "../../functions/l10n/serverComponents";
 import { OAuthConfig } from "next-auth/providers/oauth";
 import { SerializedSubscriber } from "../../../next-auth";
 import { record } from "../../functions/server/glean";
 import { renderEmail } from "../../../emails/renderEmail";
 import { SignupReportEmail } from "../../../emails/templates/signupReport/SignupReportEmail";
+import { getEnvVarsOrThrow } from "../../../envVars";
+
+const envVars = getEnvVarsOrThrow([
+  "OAUTH_AUTHORIZATION_URI",
+  "OAUTH_TOKEN_URI",
+  "OAUTH_CLIENT_ID",
+  "OAUTH_CLIENT_SECRET",
+  "OAUTH_PROFILE_URI",
+]);
 
 const fxaProviderConfig: OAuthConfig<FxaProfile> = {
   // As per https://mozilla.slack.com/archives/C4D36CAJW/p1683642497940629?thread_ts=1683642325.465929&cid=C4D36CAJW,
@@ -36,7 +44,7 @@ const fxaProviderConfig: OAuthConfig<FxaProfile> = {
   name: "Mozilla accounts",
   type: "oauth",
   authorization: {
-    url: AppConstants.OAUTH_AUTHORIZATION_URI,
+    url: envVars.OAUTH_AUTHORIZATION_URI,
     params: {
       scope: "profile https://identity.mozilla.com/account/subscriptions",
       access_type: "offline",
@@ -45,11 +53,11 @@ const fxaProviderConfig: OAuthConfig<FxaProfile> = {
       max_age: 0,
     },
   },
-  token: AppConstants.OAUTH_TOKEN_URI,
-  // userinfo: AppConstants.OAUTH_PROFILE_URI,
+  token: envVars.OAUTH_TOKEN_URI,
+  // userinfo: envVars.OAUTH_PROFILE_URI,
   userinfo: {
     request: async (context) => {
-      const response = await fetch(AppConstants.OAUTH_PROFILE_URI, {
+      const response = await fetch(envVars.OAUTH_PROFILE_URI, {
         headers: {
           Authorization: `Bearer ${context.tokens.access_token ?? ""}`,
         },
@@ -57,8 +65,8 @@ const fxaProviderConfig: OAuthConfig<FxaProfile> = {
       return (await response.json()) as FxaProfile;
     },
   },
-  clientId: AppConstants.OAUTH_CLIENT_ID,
-  clientSecret: AppConstants.OAUTH_CLIENT_SECRET,
+  clientId: envVars.OAUTH_CLIENT_ID,
+  clientSecret: envVars.OAUTH_CLIENT_SECRET,
   // Parse data returned by FxA's /userinfo/
   profile: (profile) => {
     return convertFxaProfile(profile);
@@ -129,13 +137,15 @@ export const authOptions: AuthOptions = {
               account.access_token,
               account.refresh_token,
               account.expires_at ?? 0,
-              JSON.stringify(profile),
+              profile,
             );
             // MNTOR-2599 The breach_resolution object can get pretty big,
             // causing the session token cookie to balloon in size,
             // eventually resulting in a 400 Bad Request due to headers being too large.
-            delete updatedUser.breach_resolution;
-            token.subscriber = updatedUser;
+            delete (updatedUser as Partial<SubscriberRow>).breach_resolution;
+            // Next-Auth implicitly converts `updatedUser` to a SerializedSubscriber,
+            // hence the type assertion:
+            token.subscriber = updatedUser as unknown as SerializedSubscriber;
           }
         } else if (!existingUser && profile.email) {
           const verifiedSubscriber = await addSubscriber(
@@ -144,7 +154,7 @@ export const authOptions: AuthOptions = {
             account.access_token,
             account.refresh_token,
             account.expires_at,
-            JSON.stringify(profile),
+            profile,
           );
           // The date fields of `verifiedSubscriber` get converted to an ISO 8601
           // date string when serialised in the token, hence the type assertion:
@@ -242,8 +252,10 @@ export const authOptions: AuthOptions = {
             // MNTOR-2599 The breach_resolution object can get pretty big,
             // causing the session token cookie to balloon in size,
             // eventually resulting in a 400 Bad Request due to headers being too large.
-            delete updatedUser.breach_resolution;
-            token.subscriber = updatedUser;
+            delete (updatedUser as Partial<SubscriberRow>).breach_resolution;
+            // Next-Auth implicitly converts `updatedUser` to a SerializedSubscriber,
+            // hence the type assertion:
+            token.subscriber = updatedUser as unknown as SerializedSubscriber;
           } catch (error) {
             logger.error("refresh_access_token", error);
             // The error property can be used client-side to handle the refresh token error
@@ -305,6 +317,6 @@ export function bearerToken(req: NextRequest) {
 }
 
 export function isAdmin(email: string) {
-  const admins = AppConstants.ADMINS?.split(",") ?? [];
+  const admins = (process.env.ADMINS ?? "").split(",") ?? [];
   return admins.includes(email);
 }

@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import type { Session } from "next-auth";
-import { getOnerepProfileId } from "../../../db/tables/subscribers.js";
+import { getOnerepProfileId } from "../../../db/tables/subscribers";
 import {
   E164PhoneNumberString,
   ISO8601DateString,
@@ -389,14 +389,6 @@ export async function isEligibleForFreeScan(
 
   if (scanResult.scan) {
     logger.warn("User has already used free scan");
-    return false;
-  }
-
-  return true;
-}
-
-export function isEligibleForPremium(countryCode: string) {
-  if (countryCode !== "us") {
     return false;
   }
 

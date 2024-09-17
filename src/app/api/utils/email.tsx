@@ -4,12 +4,16 @@
 
 import { SubscriberRow } from "knex/types/tables";
 import { resetUnverifiedEmailAddress } from "../../../db/tables/emailAddresses";
-import { sendEmail } from "../../../utils/email.js";
+import { sendEmail } from "../../../utils/email";
 import { renderEmail } from "../../../emails/renderEmail";
 import { VerifyEmailAddressEmail } from "../../../emails/templates/verifyEmailAddress/VerifyEmailAddressEmail";
 import { sanitizeSubscriberRow } from "../../functions/server/sanitize";
 import { getL10n } from "../../functions/l10n/serverComponents";
 import { BadRequestError } from "../../../utils/error";
+import { captureException } from "@sentry/node";
+import crypto from "crypto";
+import { addEmailPreferenceForSubscriber } from "../../../db/tables/subscriber_email_preferences";
+import { SerializedSubscriber } from "../../../next-auth.js";
 
 export async function sendVerificationEmail(
   user: SubscriberRow,
@@ -53,4 +57,30 @@ export async function sendVerificationEmail(
       />,
     ),
   );
+}
+
+export async function generateUnsubscribeLinkForSubscriber(
+  subscriber: SerializedSubscriber,
+) {
+  try {
+    const unsubToken = randomString();
+    const sub = await addEmailPreferenceForSubscriber(
+      subscriber.id,
+      {
+        unsubscribe_token: unsubToken,
+      },
+      ["unsubscribe_token"],
+    );
+    return `${process.env.SERVER_URL}/unsubscribe-email/monthly-report-free?token=${sub.unsubscribe_token}`;
+  } catch (e) {
+    console.error("generate_unsubscribe_link", {
+      exception: e as string,
+    });
+    captureException(e);
+    return null;
+  }
+}
+
+function randomString(length: number = 64) {
+  return crypto.randomBytes(length).toString("hex");
 }

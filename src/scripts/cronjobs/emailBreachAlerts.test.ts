@@ -35,7 +35,7 @@ jest.mock("../../utils/hibp", () => {
   };
 });
 
-jest.mock("../../db/tables/subscribers.js", () => {
+jest.mock("../../db/tables/subscribers", () => {
   return {
     getSubscribersByHashes: jest.fn(() => [""]),
   };
@@ -44,6 +44,26 @@ jest.mock("../../db/tables/subscribers.js", () => {
 jest.mock("../../db/tables/emailAddresses", () => {
   return {
     getEmailAddressesByHashes: jest.fn(() => [""]),
+  };
+});
+
+jest.mock("../../db/tables/featureFlags", () => {
+  return {
+    getEnabledFeatureFlags: jest.fn(() => Promise.resolve([])),
+  };
+});
+
+jest.mock("../../db/tables/onerep_scans", () => {
+  return {
+    getLatestOnerepScanResults: jest.fn(() =>
+      Promise.resolve({ scan: null, results: [] }),
+    ),
+  };
+});
+
+jest.mock("../../app/functions/server/getSubscriberBreaches", () => {
+  return {
+    getSubscriberBreaches: jest.fn(() => Promise.resolve([])),
   };
 });
 
@@ -71,6 +91,12 @@ jest.mock("../../app/functions/server/logging", () => {
   const logger = new Logging();
   return {
     logger,
+  };
+});
+
+jest.mock("../../app/functions/server/refreshStoredScanResults", () => {
+  return {
+    refreshStoredScanResults: jest.fn().mockReturnValue(Promise.resolve()),
   };
 });
 
@@ -183,7 +209,7 @@ test("processes valid messages", async () => {
   // but since they were already there when adding the "no logs" rule in tests,
   // I'm respecting Chesterton's Fence and leaving them in place for now:
   jest.spyOn(console, "info").mockImplementation(() => undefined);
-  const emailMod = await import("../../utils/email.js");
+  const emailMod = await import("../../utils/email");
   const sendEmail = emailMod.sendEmail as jest.Mock<
     (typeof emailMod)["sendEmail"]
   >;
@@ -279,7 +305,7 @@ test("rendering the MJML-based template", async () => {
   // but since they were already there when adding the "no logs" rule in tests,
   // I'm respecting Chesterton's Fence and leaving them in place for now:
   jest.spyOn(console, "info").mockImplementation(() => undefined);
-  const emailMod = await import("../../utils/email.js");
+  const emailMod = await import("../../utils/email");
   const sendEmail = emailMod.sendEmail as jest.Mock<
     (typeof emailMod)["sendEmail"]
   >;
@@ -310,6 +336,49 @@ test("rendering the MJML-based template", async () => {
   );
 });
 
+test("new subject line for the redesigned breach email", async () => {
+  jest.spyOn(console, "log").mockImplementation(() => undefined);
+  // It's not clear if the calls to console.info are important enough to remain,
+  // but since they were already there when adding the "no logs" rule in tests,
+  // I'm respecting Chesterton's Fence and leaving them in place for now:
+  jest.spyOn(console, "info").mockImplementation(() => undefined);
+  const emailMod = await import("../../utils/email");
+  const sendEmail = emailMod.sendEmail as jest.Mock<
+    (typeof emailMod)["sendEmail"]
+  >;
+
+  const mockedFeatureFlagsModule: any = jest.requireMock(
+    "../../db/tables/featureFlags",
+  );
+  mockedFeatureFlagsModule.getEnabledFeatureFlags.mockResolvedValueOnce([
+    "BreachEmailRedesign",
+  ]);
+  const mockedUtilsHibp: any = jest.requireMock("../../utils/hibp");
+  mockedUtilsHibp.getBreachByName.mockReturnValue({
+    IsVerified: true,
+    Domain: "test1",
+    IsFabricated: false,
+    IsSpamList: false,
+  });
+
+  const receivedMessages = buildReceivedMessages({
+    breachName: "test1",
+    hashPrefix: "test-prefix1",
+    hashSuffixes: ["test-suffix1"],
+  });
+
+  const { poll } = await import("./emailBreachAlerts");
+
+  await poll(subClient, receivedMessages);
+  expect(subClient.acknowledge).toHaveBeenCalledTimes(1);
+  expect(sendEmail).toHaveBeenCalledTimes(1);
+  expect(sendEmail).toHaveBeenCalledWith(
+    "1",
+    "New data breach detected",
+    expect.any(String),
+  );
+});
+
 test("skipping email when subscriber id exists in email_notifications table", async () => {
   const consoleLog = jest
     .spyOn(console, "log")
@@ -318,7 +387,7 @@ test("skipping email when subscriber id exists in email_notifications table", as
   // but since they were already there when adding the "no logs" rule in tests,
   // I'm respecting Chesterton's Fence and leaving them in place for now:
   jest.spyOn(console, "info").mockImplementation(() => undefined);
-  const { sendEmail } = await import("../../utils/email.js");
+  const { sendEmail } = await import("../../utils/email");
   const mockedUtilsHibp: any = jest.requireMock("../../utils/hibp");
   mockedUtilsHibp.getBreachByName.mockReturnValue({
     IsVerified: true,
@@ -328,7 +397,7 @@ test("skipping email when subscriber id exists in email_notifications table", as
     Id: 1,
   });
 
-  jest.mock("../../db/tables/subscribers.js", () => {
+  jest.mock("../../db/tables/subscribers", () => {
     return {
       getSubscribersByHashes: jest.fn(() => [{ id: 1 }]),
     };
@@ -373,7 +442,7 @@ test("throws an error when addEmailNotification fails", async () => {
   // but since they were already there when adding the "no logs" rule in tests,
   // I'm respecting Chesterton's Fence and leaving them in place for now:
   jest.spyOn(console, "info").mockImplementation(() => undefined);
-  const { sendEmail } = await import("../../utils/email.js");
+  const { sendEmail } = await import("../../utils/email");
   const mockedUtilsHibp: any = jest.requireMock("../../utils/hibp");
   mockedUtilsHibp.getBreachByName.mockReturnValue({
     IsVerified: true,
@@ -383,7 +452,7 @@ test("throws an error when addEmailNotification fails", async () => {
     Id: 1,
   });
 
-  jest.mock("../../db/tables/subscribers.js", () => {
+  jest.mock("../../db/tables/subscribers", () => {
     return {
       getSubscribersByHashes: jest.fn(() => [{ id: 1 }]),
     };
@@ -432,7 +501,7 @@ test("throws an error when markEmailAsNotified fails", async () => {
   // but since they were already there when adding the "no logs" rule in tests,
   // I'm respecting Chesterton's Fence and leaving them in place for now:
   jest.spyOn(console, "info").mockImplementation(() => undefined);
-  const { sendEmail } = await import("../../utils/email.js");
+  const { sendEmail } = await import("../../utils/email");
   const mockedUtilsHibp: any = jest.requireMock("../../utils/hibp");
   mockedUtilsHibp.getBreachByName.mockReturnValue({
     IsVerified: true,
@@ -442,7 +511,7 @@ test("throws an error when markEmailAsNotified fails", async () => {
     Id: 1,
   });
 
-  jest.mock("../../db/tables/subscribers.js", () => {
+  jest.mock("../../db/tables/subscribers", () => {
     return {
       getSubscribersByHashes: jest.fn(() => [{ id: 1 }]),
     };

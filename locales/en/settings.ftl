@@ -58,3 +58,8 @@ settings-delete-monitor-free-account-dialog-cta-label = Delete account
 settings-delete-monitor-free-account-dialog-cancel-button-label = Never mind, take me back
 settings-delete-monitor-account-confirmation-toast-label-2 = Your { -brand-monitor } account is now deleted.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Dismiss
+
+## Monthly Monitor Report
+
+settings-alert-preferences-allow-monthly-monitor-report-title = Monthly { -brand-monitor } report
+settings-alert-preferences-allow-monthly-monitor-report-subtitle = A monthly update of new exposures, what’s been fixed, and what needs your attention.

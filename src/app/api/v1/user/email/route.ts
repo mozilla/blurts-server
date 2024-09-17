@@ -4,7 +4,6 @@
 
 import { getToken } from "next-auth/jwt";
 import { NextRequest, NextResponse } from "next/server";
-import AppConstants from "../../../../../appConstants";
 
 import { getSubscriberByFxaUid } from "../../../../../db/tables/subscribers";
 import { addSubscriberUnverifiedEmailHash } from "../../../../../db/tables/emailAddresses";
@@ -108,6 +107,6 @@ export async function POST(req: NextRequest) {
     }
   } else {
     // Not Signed in, redirect to home
-    return NextResponse.redirect(AppConstants.SERVER_URL, 301);
+    return NextResponse.redirect(process.env.SERVER_URL ?? "/", 301);
   }
 }

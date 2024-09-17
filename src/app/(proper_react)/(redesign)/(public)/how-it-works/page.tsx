@@ -9,9 +9,9 @@ import { redirect } from "next/navigation";
 import { getL10n } from "../../../../functions/l10n/serverComponents";
 import {
   getProfilesStats,
-  isEligibleForPremium,
   monthlySubscribersQuota,
 } from "../../../../functions/server/onerep";
+import { isEligibleForPremium } from "../../../../functions/universal/premium";
 import { CONST_DAY_MILLISECONDS } from "../../../../../constants";
 
 export default async function Page() {

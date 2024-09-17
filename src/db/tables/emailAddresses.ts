@@ -3,10 +3,11 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { v4 as uuidv4 } from "uuid";
-import createDbConnection from "../connect.js";
+import type { Profile } from "next-auth";
+import createDbConnection from "../connect";
 import { subscribeHash } from "../../utils/hibp";
 import { getSha1 } from "../../utils/fxa";
-import { getSubscriberByEmail, updateFxAData } from "./subscribers.js";
+import { updateFxAData } from "./subscribers";
 import { ForbiddenError, UnauthorizedError } from "../../utils/error";
 import { EmailAddressRow, SubscriberRow } from "knex/types/tables";
 import { ReactLocalization } from "@fluent/react";
@@ -32,26 +33,6 @@ async function getEmailById(emailAddressId: number) {
   const res = await knex("email_addresses").where("id", "=", emailAddressId);
 
   return res[0];
-}
-/* c8 ignore stop */
-
-// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
-/* c8 ignore start */
-async function getEmailAddressRecordByEmail(email: string) {
-  const emailAddresses = await knex("email_addresses").where({
-    email,
-    verified: true,
-  });
-  if (!emailAddresses) {
-    return null;
-  }
-  if (emailAddresses.length > 1) {
-    // TODO: handle multiple emails in separate(?) subscriber accounts?
-    console.warn("getEmailAddressRecordByEmail", {
-      msg: "found the same email multiple times",
-    });
-  }
-  return emailAddresses[0];
 }
 /* c8 ignore stop */
 
@@ -231,7 +212,7 @@ async function addSubscriber(
   fxaAccessToken: string | null = null, // from Firefox Account Oauth
   fxaRefreshToken: string | null = null, // from Firefox Account Oauth
   sessionExpiresAt: number = 0, // from Firefox Account Oauth
-  fxaProfileData: string | null = null,
+  fxaProfileData?: Profile,
 ): // from Firefox Account
 Promise<SubscriberRow | null> {
   // subscriber knex object added to DB
@@ -249,15 +230,16 @@ Promise<SubscriberRow | null> {
 
   const verified = await _verifySubscriber(emailHash);
   const verifiedSubscriber = Array.isArray(verified) ? verified[0] : null;
-  if (fxaRefreshToken || fxaProfileData) {
+  if ((fxaRefreshToken || fxaProfileData) && verifiedSubscriber) {
     return updateFxAData(
       verifiedSubscriber,
       fxaAccessToken,
       fxaRefreshToken,
       sessionExpiresAt,
       fxaProfileData,
-    ) as Promise<SubscriberRow | null>;
+    ) as Promise<SubscriberRow>;
   }
+
   return verifiedSubscriber;
 }
 /* c8 ignore stop */
@@ -324,39 +306,6 @@ async function getUserEmails(userId: number): Promise<EmailAddressRow[]> {
 }
 /* c8 ignore stop */
 
-// This is used by SES callbacks to remove email addresses when recipients
-// perma-bounce or mark our emails as spam
-// Removes from either subscribers or email_addresses as necessary
-// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
-/* c8 ignore start */
-async function removeEmail(email: string) {
-  const subscriber = await getSubscriberByEmail(email);
-  if (!subscriber) {
-    const emailAddress = await getEmailAddressRecordByEmail(email);
-    if (!emailAddress) {
-      console.warn("removed-subscriber-not-found");
-      return;
-    }
-    await knex("email_addresses")
-      .where({
-        email,
-        verified: true,
-      })
-      .del();
-    return;
-  }
-  // This can fail if a subscriber has more email_addresses and marks
-  // a primary email as spam, but we should let it fail so we can see it
-  // in the logs
-  await knex("subscribers")
-    .where({
-      primary_verification_token: subscriber.primary_verification_token,
-      primary_sha1: subscriber.primary_sha1,
-    })
-    .del();
-}
-/* c8 ignore stop */
-
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
 async function removeOneSecondaryEmail(emailId: number, subscriberId: number) {
@@ -377,25 +326,14 @@ async function getEmailAddressesByHashes(hashes: string[]) {
 }
 /* c8 ignore stop */
 
-// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
-/* c8 ignore start */
-async function deleteEmailAddressesByUid(uid: string) {
-  await knex("email_addresses").where("subscriber_id", uid).del();
-}
-/* c8 ignore stop */
-
 export {
-  getEmailByToken,
   getEmailById,
-  getEmailAddressRecordByEmail,
   addSubscriberUnverifiedEmailHash,
   resetUnverifiedEmailAddress,
   verifyEmailHash,
   addSubscriber,
   getUserEmails,
-  removeEmail,
   removeOneSecondaryEmail,
   getEmailAddressesByHashes,
-  deleteEmailAddressesByUid,
   knex as knexEmailAddresses,
 };

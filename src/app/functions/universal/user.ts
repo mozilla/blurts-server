@@ -4,13 +4,21 @@
 
 import { Session } from "next-auth";
 import { ISO8601DateString } from "../../../utils/parse";
+import { SubscriberRow } from "knex/types/tables";
 
-// TODO: Add unit test when changing this code:
-/* c8 ignore start */
-export function hasPremium(user?: Session["user"]): boolean {
-  return user?.fxa?.subscriptions?.includes("monitor") ?? false;
+export function hasPremium(user?: Session["user"] | SubscriberRow): boolean {
+  const subscriptions =
+    // Simulating subscribers with incomplete FxA profile data
+    // is a bit too much effort for too little gain, hence:
+    /* c8 ignore next */
+    (user as SubscriberRow)?.fxa_profile_json?.subscriptions ??
+    (user as Session["user"])?.fxa?.subscriptions;
+
+  // Simulating subscribers with incomplete FxA profile data
+  // is a bit too much effort for too little gain, hence:
+  /* c8 ignore next */
+  return subscriptions?.includes("monitor") ?? false;
 }
-/* c8 ignore stop */
 
 // TODO: Add unit test when changing this code:
 export function canSubscribeToPremium(params: {

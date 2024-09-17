@@ -10,20 +10,27 @@
 ## unless otherwise indicated.
 
 -product-name = Mozilla Monitor
--product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name = Monitor
 -brand-name = Firefox
--brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
 -brand-fxa = Firefox Account
 -brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
--brand-send = Firefox Send
--brand-fpn = Firefox Private Network
+-brand-firefox = Firefox
+-brand-monitor = Monitor
+-brand-fx-monitor = Mozilla Monitor
+-brand-mozilla = Mozilla
+-brand-premium = Premium
+-brand-monitor-premium = Monitor Premium
+-brand-mozilla-foundation = Mozilla Foundation
+-brand-github = GitHub
+-brand-mozilla-vpn = Mozilla VPN
+-brand-relay = Firefox Relay
+-brand-mozilla-monitor = Mozilla Monitor
+-brand-monitor-plus = Monitor Plus
 
 ##
 
-error-could-not-add-email = Could not add email address to database.
 error-not-subscribed = This email address is not subscribed to { -product-name }.
 error-hibp-throttled = Too many connections to { -brand-HIBP }.
 error-hibp-connect = Error connecting to { -brand-HIBP }.
@@ -34,8 +41,6 @@ user-add-verification-email-just-sent = Another verification email can’t be se
 user-add-unknown-error = Something went wrong adding another email address. Please try again later.
 user-delete-unknown-error = Something went wrong removing an email address. Please try again later.
 user-verify-token-error = Verification token is required.
-user-unsubscribe-token-error = Unsubscribing requires a token.
-user-unsubscribe-token-email-error = Unsubscribing requires a token and emailHash.
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Compromised data:
 # Breach data provided by Have I Been Pwned.
@@ -46,8 +51,6 @@ show-all = Show all
 sign-out = Sign Out
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Manage { -brand-fxa }
-# Link title
-frequently-asked-questions = Frequently Asked Questions
 # Link title
 preferences = Preferences
 # Link title
@@ -146,24 +149,6 @@ rec-section-subhead-no-pw = Though passwords weren’t exposed in this breach, t
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = New
 
-# Monitor V2
-
-
-## The following messages are brands and should be kept entirely in English
-
--brand-firefox = Firefox
--brand-monitor = Monitor
--brand-fx-monitor = Mozilla Monitor
--brand-mozilla = Mozilla
--brand-premium = Premium
--brand-monitor-premium = Monitor Premium
--brand-mozilla-foundation = Mozilla Foundation
--brand-github = GitHub
--brand-mozilla-vpn = Mozilla VPN
--brand-relay = Firefox Relay
--brand-mozilla-monitor = Mozilla Monitor
--brand-monitor-plus = Monitor Plus
-
 ##
 
 # “account” can be localized, “Mozilla” must be treated as a brand,
@@ -214,7 +199,7 @@ mozilla = { -brand-mozilla }
 terms-of-service = Terms of Service
 privacy-notice = Privacy Notice
 github = { -brand-github }
-footer-nav-all-breaches = All Breaches
+footer-nav-recent-breaches = Recent Data Breaches
 footer-external-link-faq-label = FAQs
 footer-external-link-faq-tooltip = Frequently asked questions
 

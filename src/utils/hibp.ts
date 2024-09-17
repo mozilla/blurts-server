@@ -2,7 +2,6 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import AppConstants from "../appConstants.js";
 import { getAllBreaches, knex } from "../db/tables/breaches";
 import { isUsingMockHIBPEndpoint } from "../app/functions/universal/mock.ts";
 import { BreachRow, EmailAddressRow, SubscriberRow } from "knex/types/tables";
@@ -14,13 +13,20 @@ import {
   getQaToggleRow,
 } from "../db/tables/qa_customs.ts";
 import { redisClient, REDIS_ALL_BREACHES_KEY } from "../db/redis/client.ts";
+import { getEnvVarsOrThrow } from "../envVars.ts";
 const {
   HIBP_THROTTLE_MAX_TRIES,
   HIBP_THROTTLE_DELAY,
   HIBP_API_ROOT,
   HIBP_KANON_API_ROOT,
   HIBP_KANON_API_TOKEN,
-} = AppConstants;
+} = getEnvVarsOrThrow([
+  "HIBP_THROTTLE_MAX_TRIES",
+  "HIBP_THROTTLE_DELAY",
+  "HIBP_API_ROOT",
+  "HIBP_KANON_API_ROOT",
+  "HIBP_KANON_API_TOKEN",
+]);
 
 // TODO: fix hardcode
 const HIBP_USER_AGENT = "monitor/1.0.0";
@@ -73,8 +79,10 @@ async function _throttledFetch(
         } else {
           tryCount++;
           await new Promise((resolve) =>
-            // @ts-ignore HIBP_THROTTLE_DELAY should be defined
-            setTimeout(resolve, HIBP_THROTTLE_DELAY * tryCount),
+            setTimeout(
+              resolve,
+              Number.parseInt(HIBP_THROTTLE_DELAY, 10) * tryCount,
+            ),
           );
           return await _throttledFetch(url, reqOptions, tryCount);
         }
@@ -451,29 +459,6 @@ async function subscribeHash(sha1: string) {
 }
 /* c8 ignore stop */
 
-/**
- * A range subscription can be deleted with the following request:
- * DELETE /range/[hash prefix]
- *
- * There is one possible response code that can be returned:
- * HTTP 200: Range subscription successfully deleted
- *
- * @param {string} sha1 sha1 of the email being subscribed
- * @returns 200 response codes
- */
-// TODO: Add unit test when changing this code:
-/* c8 ignore start */
-async function deleteSubscribedHash(sha1: string) {
-  const sha1Prefix = sha1.slice(0, 6).toUpperCase();
-  const path = `/range/${sha1Prefix}`;
-  const options = {
-    Method: "DELETE",
-  };
-
-  return await kAnonReq(path, options);
-}
-/* c8 ignore stop */
-
 function hasEmailAddressAttached(
   subscriberRow: SubscriberRow,
 ): subscriberRow is SubscriberRow & EmailAddressRow {
@@ -483,7 +468,6 @@ function hasEmailAddressAttached(
 }
 
 export {
-  kAnonReq,
   formatDataClassesArray,
   getAddressesAndLanguageForEmail,
   getBreachesForEmail,
@@ -491,6 +475,5 @@ export {
   getAllBreachesFromDb,
   getFilteredBreaches,
   subscribeHash,
-  deleteSubscribedHash,
   knex as knexHibp,
 };

@@ -12,7 +12,7 @@ import { ManualRemoveView } from "./ManualRemoveView";
 import { hasPremium } from "../../../../../../../../../functions/universal/user";
 import { getCountryCode } from "../../../../../../../../../functions/server/getCountryCode";
 import { getSubscriberEmails } from "../../../../../../../../../functions/server/getSubscriberEmails";
-import { isEligibleForPremium } from "../../../../../../../../../functions/server/onerep";
+import { isEligibleForPremium } from "../../../../../../../../../functions/universal/premium";
 
 export default async function ManualRemovePage() {
   const session = await getServerSession();

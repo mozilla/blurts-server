@@ -21,7 +21,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 22.6.x
+          node-version: 20.9.x
 
       - name: Install dependencies
         run: npm ci
@@ -79,7 +79,7 @@ jobs:
           
       - name: Send GitHub Action trigger data to Slack workflow
         id: slack
-        uses: slackapi/slack-github-action@v1.26.0
+        uses: slackapi/slack-github-action@v1.27.0
         if: failure() && github.ref == 'refs/heads/main'
         with:
           # For posting a message using Block Kit

@@ -219,8 +219,17 @@ To test the HIBP breach alerts endpoint, use:
 ```sh
 export SERVER_URL=...
 export HIBP_NOTIFY_TOKEN=...
-k6 -u 10 src/scripts/loadtest/hibp.js # Run with 10 virtual users
+npm run loadtest:hbibp-webhook
 ```
+
+You can customise the number of requests to send in parallel ("virtual users") by setting the
+[`K6_VUS`](https://grafana.com/docs/k6/latest/using-k6/k6-options/reference/#vus) environment
+variable (default 1000), and for how long to send those requests by setting the
+[`K6_DURATION`](https://grafana.com/docs/k6/latest/using-k6/k6-options/reference/#duration)
+environment variable (default 30s).
+
+You can also enforce the alert being sent for a specific email address via the
+`LOADTEST_BREACHED_EMAIL` environment variable.
 
 See https://grafana.com/docs/k6/latest/get-started/running-k6/ for more information.
 

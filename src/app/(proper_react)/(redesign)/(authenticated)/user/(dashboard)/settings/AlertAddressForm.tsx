@@ -29,13 +29,15 @@ import { VisuallyHidden } from "../../../../../../components/server/VisuallyHidd
 import { useSession } from "next-auth/react";
 import { FeatureFlagName } from "../../../../../../../db/tables/featureFlags";
 import { Session } from "next-auth";
-import { hasPremium } from "../../../../../../functions/universal/user";
 import { useRouter } from "next/navigation";
 import { SubscriberRow } from "knex/types/tables";
+import { SubscriberEmailPreferencesOutput } from "../../../../../../../db/tables/subscriber_email_preferences";
+import { hasPremium } from "../../../../../../functions/universal/user";
 
 export type Props = {
   user: Session["user"];
   subscriber: SubscriberRow;
+  data: SubscriberEmailPreferencesOutput;
   enabledFeatureFlags: FeatureFlagName[];
 };
 
@@ -48,7 +50,15 @@ export const AlertAddressForm = (props: Props) => {
 
   const breachAlertsEmailsAllowed = props.subscriber.all_emails_to_primary;
 
-  const monitorReportAllowed = props.subscriber.monthly_monitor_report;
+  // Extract monthly report preference from the right column
+  const monitorReportAllowed = hasPremium(props.user)
+    ? props.data.monthly_monitor_report
+    : props.data.monthly_monitor_report_free;
+
+  // TODO: Deprecate this when monthly report for free users has been created
+  const monthlyFreeUserReportEnabled =
+    props.enabledFeatureFlags.includes("MonthlyReportFreeUser") ||
+    hasPremium(props.user);
 
   const defaultActivateAlertEmail =
     typeof breachAlertsEmailsAllowed === "boolean";
@@ -175,22 +185,25 @@ export const AlertAddressForm = (props: Props) => {
             </AlertAddressRadio>
           </AlertAddressContext.Provider>
         )}
-
         {props.enabledFeatureFlags.includes("MonthlyActivityEmail") &&
-          hasPremium(props.user) && (
+          monthlyFreeUserReportEnabled && (
             <ActivateEmailsCheckbox
               isSelected={activateMonthlyMonitorReport}
               onChange={handleMonthlyMonitorReportToggle}
             >
               <div>
                 <b>
-                  {l10n.getString(
-                    "settings-alert-preferences-allow-monthly-monitor-plus-report-title",
-                  )}
+                  {hasPremium(props.user)
+                    ? l10n.getString(
+                        "settings-alert-preferences-allow-monthly-monitor-plus-report-title",
+                      )
+                    : l10n.getString(
+                        "settings-alert-preferences-allow-monthly-monitor-report-title",
+                      )}
                 </b>
                 <p>
                   {l10n.getString(
-                    "settings-alert-preferences-allow-monthly-monitor-plus-report-subtitle",
+                    "settings-alert-preferences-allow-monthly-monitor-report-subtitle",
                   )}
                 </p>
               </div>

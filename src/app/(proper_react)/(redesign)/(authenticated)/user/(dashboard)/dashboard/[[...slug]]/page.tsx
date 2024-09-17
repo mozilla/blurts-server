@@ -26,8 +26,8 @@ import {
   activateAndOptoutProfile,
   getProfilesStats,
   isEligibleForFreeScan,
-  isEligibleForPremium,
 } from "../../../../../../../functions/server/onerep";
+import { isEligibleForPremium } from "../../../../../../../functions/universal/premium";
 import {
   getSubscriptionBillingAmount,
   getPremiumSubscriptionUrl,

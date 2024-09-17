@@ -13,7 +13,8 @@ import {
   updateFxAProfileData,
   updatePrimaryEmail,
   getOnerepProfileId,
-} from "../../../../db/tables/subscribers.js";
+  setMonthlyMonitorReport,
+} from "../../../../db/tables/subscribers";
 import {
   activateProfile,
   deactivateProfile,
@@ -21,7 +22,6 @@ import {
 } from "../../../functions/server/onerep";
 import { bearerToken } from "../../utils/auth";
 import { revokeOAuthTokens } from "../../../../utils/fxa";
-import appConstants from "../../../../appConstants";
 import { changeSubscription } from "../../../functions/server/changeSubscription";
 import { deleteAccount } from "../../../functions/server/deleteAccount";
 import { record } from "../../../functions/server/glean";
@@ -42,7 +42,7 @@ const MONITOR_PREMIUM_CAPABILITY = "monitor";
  * @returns {Promise<Array<jwt.JwtPayload> | undefined>} keys an array of FxA JWT keys
  */
 const getJwtPubKey = async () => {
-  const jwtKeyUri = `${appConstants.OAUTH_ACCOUNT_URI}/jwks`;
+  const jwtKeyUri = `${process.env.OAUTH_ACCOUNT_URI}/jwks`;
   try {
     const response = await fetch(jwtKeyUri, {
       headers: {
@@ -294,6 +294,9 @@ export async function POST(request: NextRequest) {
             // This is done before trying to activate the OneRep subscription, in case there are
             // any problems with activation.
             await changeSubscription(subscriber, true);
+
+            // Set monthly monitor report value back to true
+            await setMonthlyMonitorReport(subscriber, true);
 
             // MNTOR-2103: if one rep profile id doesn't exist in the db, fail immediately
             if (!oneRepProfileId) {
