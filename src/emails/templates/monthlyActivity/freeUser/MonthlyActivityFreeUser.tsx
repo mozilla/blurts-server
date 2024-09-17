@@ -15,6 +15,9 @@ import { EmailHero } from "../../../components/EmailHero";
 import { DataPointCount } from "../../../components/EmailDataPointCount";
 import { DashboardSummary } from "../../../../app/functions/server/dashboard";
 import { EmailBanner } from "../../../components/EmailBanner";
+import { getPremiumSubscriptionUrl } from "../../../../app/functions/server/getPremiumSubscriptionInfo";
+import { isEligibleForPremium } from "../../../../app/functions/universal/premium";
+import { getSignupLocaleCountry } from "../../../functions/getSignupLocaleCountry";
 
 export type MonthlyReportFreeUserEmailProps = {
   l10n: ExtendedReactLocalization;
@@ -31,6 +34,21 @@ export const MonthlyReportFreeUserEmail = (
   props: MonthlyReportFreeUserEmailProps,
 ) => {
   const l10n = props.l10n;
+
+  const premiumSubscriptionUrlObject = new URL(
+    getPremiumSubscriptionUrl({ type: "yearly" }),
+  );
+  const assumedCountryCode = getSignupLocaleCountry(props.subscriber);
+  const hasRunFreeScan = props.subscriber.onerep_profile_id !== null;
+
+  const bannerDataCta = {
+    label: hasRunFreeScan
+      ? l10n.getString("email-monthly-report-free-banner-cta-upgrade")
+      : l10n.getString("email-monthly-report-free-banner-cta-free-scan"),
+    link: hasRunFreeScan
+      ? premiumSubscriptionUrlObject.href
+      : `${process.env.SERVER_URL}/user/dashboard/?utm_source=monitor-product&utm_medium=email&utm_campaign=${props.utmCampaignId}&utm_content=take-action${props.utmContentSuffix}`,
+  };
 
   return (
     <mjml>
@@ -55,12 +73,15 @@ export const MonthlyReportFreeUserEmail = (
           utmContentSuffix={props.utmContentSuffix}
           dataSummary={props.dataSummary}
         />
-        <EmailBanner
-          heading={l10n.getString("email-monthly-report-free-banner-heading")}
-          content={l10n.getString("email-monthly-report-free-banner-body")}
-          ctaLabel={l10n.getString("email-monthly-report-free-banner-cta-scan")}
-          ctaTarget={`${process.env.SERVER_URL}/user/dashboard/?utm_source=monitor-product&utm_medium=email&utm_campaign=${props.utmCampaignId}&utm_content=take-action${props.utmContentSuffix}`}
-        />
+        {isEligibleForPremium(assumedCountryCode) && (
+          <EmailBanner
+            heading={l10n.getString("email-monthly-report-free-banner-heading")}
+            content={l10n.getString("email-monthly-report-free-banner-body")}
+            ctaLabel={bannerDataCta.label}
+            ctaTarget={bannerDataCta.link}
+          />
+        )}
+
         <EmailHeader l10n={l10n} utm_campaign={props.utmCampaignId} />
         <EmailFooter l10n={l10n} utm_campaign={props.utmCampaignId} />
       </mj-body>

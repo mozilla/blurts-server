@@ -73,6 +73,43 @@ export const DataPointCount = (props: Props) => {
           </mj-text>
         </mj-column>
       </mj-section>
+      <mj-section
+        padding="16px 52px 24px"
+        background-color="#F9F9FA"
+        border-radius="0 0 16px 16px"
+      >
+        <mj-column>
+          <mj-button
+            href={`${process.env.SERVER_URL}/user/dashboard/action-needed?utm_source=monitor-product&utm_medium=email&utm_campaign=${props.utmCampaignId}&utm_content=take-action${props.utmContentSuffix}`}
+            background-color="#0060DF"
+            border-radius="8px"
+            padding="12px 24px"
+            font-weight={600}
+            font-size="15px"
+            line-height="22px"
+            width="100%"
+          >
+            {props.l10n.getString(
+              "email-breach-alert-plus-scan-results-cta-label",
+            )}
+          </mj-button>
+          <mj-text
+            font-size="12px"
+            line-height="24px"
+            padding="0"
+            align="center"
+            font-weight={400}
+            font-style="italic"
+            color="#6D6D6E"
+          >
+            <p>
+              {props.l10n.getString(
+                "email-breach-alert-plus-scan-results-trailer",
+              )}
+            </p>
+          </mj-text>
+        </mj-column>
+      </mj-section>
     </mj-wrapper>
   );
 };
