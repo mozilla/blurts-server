@@ -88,7 +88,7 @@ export const authOptions: AuthOptions = {
       // Allows relative callback URLs
       if (url.startsWith("/")) {
         if (!URL.canParse(`${baseUrl}${url}`)) {
-          logger.warn("Cannot parse redirect url:", {
+          logger.warn("nextauth_relative_redirect_url_parse_error:", {
             url: `${baseUrl}${url}`,
           });
           return baseUrl;
