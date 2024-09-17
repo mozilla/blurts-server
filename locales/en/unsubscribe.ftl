@@ -12,6 +12,7 @@ unsubscribe-cta = Unsubscribe
 
 unsubscribe-success-from-monthly-report-header = You’re now unsubscribed
 unsubscribe-success-from-monthly-report-body = You can resubscribe or update your email preferences anytime from your { -brand-monitor } settings.
+unsubscribe-success-cta = Sign in to { -brand-monitor }
 
 # Error warning
 
