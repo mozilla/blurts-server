@@ -18,6 +18,7 @@ import { getLatestOnerepScanResults } from "../../db/tables/onerep_scans";
 import { getSubscriberBreaches } from "../../app/functions/server/getSubscriberBreaches";
 import { getLocale } from "../../app/functions/universal/getLocale";
 import { refreshStoredScanResults } from "../../app/functions/server/refreshStoredScanResults";
+import { getSignupLocaleCountry } from "../../emails/functions/getSignupLocaleCountry";
 
 void run();
 
@@ -60,7 +61,7 @@ async function sendMonthlyActivityEmail(subscriber: SubscriberRow) {
    * used to determine whether to count SSN breaches (which we don't have
    * recommendations for outside the US).
    */
-  const countryCodeGuess = locale.split("-")[1] ?? "us";
+  const countryCodeGuess = getSignupLocaleCountry(subscriber);
 
   // OneRep suggested not relying on webhooks, but instead to fetch the latest
   // data from their API. Thus, let's refresh the data in our DB in real-time:

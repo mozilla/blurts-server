@@ -6,7 +6,7 @@
 # Confirm Unsubscription State
 
 unsubscribe-from-monthly-report-header = Κατάργηση εγγραφής από αυτό το email;
-unsubscribe-from-monthly-report-body = Δεν θα λαμβάνετε πλέον τη μηνιαία αναφορά του { -brand-monitor }, η οποία σας ενημερώνει πόσα νέα ανοίγματα είχατε κάθε μήνα και πόσα διορθώθηκαν.
+unsubscribe-from-monthly-report-body = Δεν θα λαμβάνετε πλέον τη μηνιαία αναφορά του { -brand-monitor }, η οποία σας ενημερώνει σχετικά με το πόσες νέες εκθέσεις είχατε κάθε μήνα και το πόσες διορθώθηκαν.
 unsubscribe-cta = Κατάργηση εγγραφής
 
 # Success Unsubscription State
@@ -16,4 +16,4 @@ unsubscribe-success-from-monthly-report-body = Μπορείτε να εγγρα�
 
 # Error warning
 
-unsubscription-failed = Η κατάργηση της συνδρομής απέτυχε. <try_again_link>Προσπαθήστε ξανά.</try_again_link>
+unsubscription-failed = Η κατάργηση εγγραφής απέτυχε. <try_again_link>Δοκιμάστε ξανά.</try_again_link>

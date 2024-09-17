@@ -7,10 +7,10 @@ import { redirect } from "next/navigation";
 import { getServerSession } from "../../../functions/server/getServerSession";
 import { getCountryCode } from "../../../functions/server/getCountryCode";
 import {
-  isEligibleForPremium,
   getProfilesStats,
   monthlySubscribersQuota,
 } from "../../../functions/server/onerep";
+import { isEligibleForPremium } from "../../../functions/universal/premium";
 import { getL10n } from "../../../functions/l10n/serverComponents";
 import { View } from "./LandingView";
 import {
