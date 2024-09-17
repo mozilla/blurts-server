@@ -81,29 +81,31 @@ export const authOptions: AuthOptions = {
   },
   providers: [fxaProviderConfig],
   callbacks: {
+    // Do not pass un-parseable URLs to next-auth, @see MNTOR-3029
+    // Preserve default behavior otherwise. @see https://next-auth.js.org/configuration/callbacks#redirect-callback
     redirect({ url, baseUrl }) {
-      // Do not pass un-parseable URLs to next-auth, @see MNTOR-3029
-      // Preserve default behavior otherwise. @see https://next-auth.js.org/configuration/callbacks#redirect-callback
-
       // Allows relative callback URLs
       if (url.startsWith("/")) {
-        if (!URL.canParse(`${baseUrl}${url}`)) {
-          logger.warn("nextauth_relative_redirect_url_parse_error:", {
+        if (URL.canParse(`${baseUrl}${url}`)) {
+          return `${baseUrl}${url}`;
+        } else {
+          logger.warn("nextauth_relative_redirect_url_parse_error", {
             url: `${baseUrl}${url}`,
           });
           return baseUrl;
         }
-        return `${baseUrl}${url}`;
       }
       // Allows callback URLs on the same origin
-      else if (new URL(url).origin === baseUrl) {
-        if (!URL.canParse(url)) {
-          logger.warn("Cannot parse redirect url:", { url });
+      else {
+        if (URL.canParse(url)) {
+          if (new URL(url).origin === baseUrl) {
+            return url;
+          }
+        } else {
+          logger.warn("nextauth_absolute_redirect_url_parse_error", { url });
           return baseUrl;
         }
-        return url;
       }
-
       return baseUrl;
     },
     // Unused arguments also listed to show what's available:
