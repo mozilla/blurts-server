@@ -8,13 +8,13 @@ import { ExtendedReactLocalization } from "../../../../app/functions/l10n";
 import { EmailFooter } from "../../EmailFooter";
 import { EmailHeader } from "../../EmailHeader";
 import { HibpLikeDbBreach } from "../../../../utils/hibp";
-import { BreachCard } from "../../../components/BreachCard";
 import { FeatureFlagName } from "../../../../db/tables/featureFlags";
 import type { LatestOnerepScanData } from "../../../../db/tables/onerep_scans";
 import type { SubscriberBreach } from "../../../../utils/subscriberBreaches";
 import { EmailHero } from "../../../components/EmailHero";
 import { DataPointCount } from "../../../components/EmailDataPointCount";
 import { DashboardSummary } from "../../../../app/functions/server/dashboard";
+import { EmailBanner } from "../../../components/EmailBanner";
 
 export type MonthlyReportFreeUserEmailProps = {
   l10n: ExtendedReactLocalization;
@@ -55,21 +55,13 @@ export const MonthlyReportFreeUserEmail = (
           utmContentSuffix={props.utmContentSuffix}
           dataSummary={props.dataSummary}
         />
+        <EmailBanner
+          heading={l10n.getString("email-monthly-report-free-banner-heading")}
+          content={l10n.getString("email-monthly-report-free-banner-body")}
+          ctaLabel={l10n.getString("email-monthly-report-free-banner-cta-scan")}
+          ctaTarget={`${process.env.SERVER_URL}/user/dashboard/?utm_source=monitor-product&utm_medium=email&utm_campaign=${props.utmCampaignId}&utm_content=take-action${props.utmContentSuffix}`}
+        />
         <EmailHeader l10n={l10n} utm_campaign={props.utmCampaignId} />
-        <BreachCard breach={props.breach} l10n={l10n} />
-        <mj-section padding="20px">
-          <mj-column>
-            <mj-button
-              href={`${process.env.SERVER_URL}/user/dashboard/action-needed?utm_source=monitor-product&utm_medium=email&utm_campaign=${props.utmCampaignId}&utm_content=view-your-dashboard-us`}
-              background-color="#0060DF"
-              font-weight={600}
-              font-size="15px"
-              line-height="22px"
-            >
-              {l10n.getString("email-dashboard-cta")}
-            </mj-button>
-          </mj-column>
-        </mj-section>
         <EmailFooter l10n={l10n} utm_campaign={props.utmCampaignId} />
       </mj-body>
     </mjml>
