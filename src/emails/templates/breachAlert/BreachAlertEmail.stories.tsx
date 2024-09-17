@@ -4,31 +4,116 @@
 
 import type { Meta, StoryObj } from "@storybook/react";
 import { FC } from "react";
-import { Props, BreachAlertEmail } from "./BreachAlertEmail";
+import type { SubscriberRow } from "knex/types/tables";
+import {
+  RedesignedBreachAlertEmailProps,
+  RedesignedBreachAlertEmail,
+} from "./BreachAlertEmail";
 import { StorybookEmailRenderer } from "../../StorybookEmailRenderer";
 import { getL10n } from "../../../app/functions/l10n/storybookAndJest";
-import { createRandomHibpListing } from "../../../apiMocks/mockData";
+import {
+  createRandomBreach,
+  createRandomHibpListing,
+  createRandomScanResult,
+} from "../../../apiMocks/mockData";
+import { getDashboardSummary } from "../../../app/functions/server/dashboard";
 
-const meta: Meta<FC<Props>> = {
+const meta: Meta<FC<RedesignedBreachAlertEmailProps>> = {
   title: "Emails/Breach alert",
-  component: (props: Props) => (
+  component: (props: RedesignedBreachAlertEmailProps) => (
     <StorybookEmailRenderer>
-      <BreachAlertEmail {...props} />
+      <RedesignedBreachAlertEmail {...props} />
     </StorybookEmailRenderer>
   ),
   args: {
     l10n: getL10n("en"),
     utmCampaignId: "breach-alert",
+    enabledFeatureFlags: [],
+    subscriber: {
+      fxa_profile_json: {
+        locale: "en-US",
+        subscriptions: ["not-monitor-plus"],
+      },
+    } as SubscriberRow,
   },
 };
 
 export default meta;
-type Story = StoryObj<FC<Props>>;
+type Story = StoryObj<FC<RedesignedBreachAlertEmailProps>>;
 
 export const BreachAlertEmailStory: Story = {
   name: "Breach alert",
   args: {
     breach: createRandomHibpListing(),
     breachedEmail: "example@example.com",
+  },
+};
+
+export const RedesignedBreachAlertEmailNonUsStory: Story = {
+  name: "Breach alert/Non-US",
+  args: {
+    breach: createRandomHibpListing(),
+    breachedEmail: "example@example.com",
+    enabledFeatureFlags: ["BreachEmailRedesign"],
+    subscriber: {
+      fxa_profile_json: {
+        locale: "en-CA",
+        subscriptions: ["not-monitor-plus"],
+      },
+    } as SubscriberRow,
+  },
+};
+
+export const RedesignedBreachAlertEmailUsFreeNoScanStory: Story = {
+  name: "Breach alert/US free, no scan yet",
+  args: {
+    breach: createRandomHibpListing(),
+    breachedEmail: "example@example.com",
+    enabledFeatureFlags: ["BreachEmailRedesign"],
+  },
+};
+
+export const RedesignedBreachAlertEmailUsFreeWithScanStory: Story = {
+  name: "Breach alert/US free, scan has run",
+  args: {
+    breach: createRandomHibpListing(),
+    breachedEmail: "example@example.com",
+    enabledFeatureFlags: ["BreachEmailRedesign"],
+    dataSummary: getDashboardSummary(
+      Array.from({ length: 5 }, () => createRandomScanResult()),
+      Array.from({ length: 5 }, () => createRandomBreach()),
+    ),
+  },
+};
+
+export const RedesignedBreachAlertEmailUsPlusNoScanStory: Story = {
+  name: "Breach alert/US Plus, no scan yet",
+  args: {
+    breach: createRandomHibpListing(),
+    breachedEmail: "example@example.com",
+    subscriber: {
+      fxa_profile_json: {
+        subscriptions: ["monitor"],
+      },
+    } as SubscriberRow,
+    enabledFeatureFlags: ["BreachEmailRedesign"],
+  },
+};
+
+export const RedesignedBreachAlertEmailUsPlusWithScanStory: Story = {
+  name: "Breach alert/US Plus, scan has run",
+  args: {
+    breach: createRandomHibpListing(),
+    breachedEmail: "example@example.com",
+    subscriber: {
+      fxa_profile_json: {
+        subscriptions: ["monitor"],
+      },
+    } as SubscriberRow,
+    enabledFeatureFlags: ["BreachEmailRedesign"],
+    dataSummary: getDashboardSummary(
+      Array.from({ length: 5 }, () => createRandomScanResult()),
+      Array.from({ length: 5 }, () => createRandomBreach()),
+    ),
   },
 };

@@ -15,7 +15,7 @@ import {
 import { getCountryCode } from "../../../../../../../../../functions/server/getCountryCode";
 import { getLatestOnerepScanResults } from "../../../../../../../../../../db/tables/onerep_scans";
 import { getOnerepProfileId } from "../../../../../../../../../../db/tables/subscribers";
-import { isEligibleForPremium } from "../../../../../../../../../functions/server/onerep";
+import { isEligibleForPremium } from "../../../../../../../../../functions/universal/premium";
 
 interface SecurityRecommendationsProps {
   params: {

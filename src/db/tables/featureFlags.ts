@@ -49,6 +49,7 @@ export const featureFlagNames = [
   "AdditionalRemovalStatuses",
   "PetitionBannerCsatSurvey",
   "MonthlyReportFreeUser",
+  "BreachEmailRedesign",
 ] as const;
 export type FeatureFlagName = (typeof featureFlagNames)[number];
 
