@@ -11,6 +11,7 @@ import {
 import { StorybookEmailRenderer } from "../../../StorybookEmailRenderer";
 import { getL10n } from "../../../../app/functions/l10n/storybookAndJest";
 import { createRandomHibpListing } from "../../../../apiMocks/mockData";
+import { SubscriberRow } from "knex/types/tables";
 
 type StoryProps = MonthlyReportFreeUserEmailProps & {
   emulateDarkMode?: boolean;
@@ -30,11 +31,80 @@ const meta: Meta<FC<MonthlyReportFreeUserEmailProps>> = {
 
 export default meta;
 type Story = StoryObj<FC<StoryProps>>;
+const date = new Date();
+const month = date.getMonth() - 1;
+const monthNames = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
+const mockedDataPoints = {
+  // shared
+  emailAddresses: 10,
+  phoneNumbers: 10,
+
+  // data brokers
+  addresses: 10,
+  familyMembers: 10,
+
+  // data breaches
+  socialSecurityNumbers: 10,
+  ipAddresses: 10,
+  passwords: 10,
+  creditCardNumbers: 10,
+  pins: 10,
+  securityQuestions: 10,
+  bankAccountNumbers: 10,
+};
+
+const mockedDataSummary = {
+  dataBreachTotalNum: 10,
+  dataBreachUnresolvedNum: 500,
+  dataBreachResolvedNum: 10,
+  dataBreachTotalDataPointsNum: 10,
+  dataBreachFixedDataPointsNum: 10,
+  dataBrokerTotalNum: 10,
+  dataBrokerTotalDataPointsNum: 10,
+  dataBrokerAutoFixedNum: 10,
+  dataBrokerManuallyResolvedNum: 10,
+  dataBrokerAutoFixedDataPointsNum: 10,
+  dataBrokerInProgressNum: 10,
+  dataBrokerInProgressDataPointsNum: 10,
+  dataBrokerManuallyResolvedDataPointsNum: 10,
+  totalDataPointsNum: 10,
+  allDataPoints: mockedDataPoints,
+  unresolvedDataPoints: mockedDataPoints,
+  inProgressDataPoints: mockedDataPoints,
+  fixedDataPoints: mockedDataPoints,
+  manuallyResolvedDataBrokerDataPoints: mockedDataPoints,
+  unresolvedSanitizedDataPoints: [],
+  fixedSanitizedDataPoints: [],
+};
 
 export const MonthlyReportFreeUser: Story = {
   name: "Monthly Report Free User",
   args: {
     breach: createRandomHibpListing(),
     breachedEmail: "example@example.com",
+    utmCampaignId: "test",
+    utmContentSuffix: "test",
+    month: monthNames[month],
+    dataSummary: mockedDataSummary,
+    subscriber: {
+      fxa_profile_json: {
+        locale: "en-US",
+        subscriptions: ["not-monitor-plus"],
+      },
+    } as SubscriberRow,
   },
 };

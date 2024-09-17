@@ -13,13 +13,18 @@ import { FeatureFlagName } from "../../../../db/tables/featureFlags";
 import type { LatestOnerepScanData } from "../../../../db/tables/onerep_scans";
 import type { SubscriberBreach } from "../../../../utils/subscriberBreaches";
 import { EmailHero } from "../../../components/EmailHero";
+import { DataPointCount } from "../../../components/EmailDataPointCount";
+import { DashboardSummary } from "../../../../app/functions/server/dashboard";
 
 export type MonthlyReportFreeUserEmailProps = {
   l10n: ExtendedReactLocalization;
   breach: HibpLikeDbBreach;
   breachedEmail: string;
   utmCampaignId: string;
+  utmContentSuffix: string;
   subscriber: SubscriberRow;
+  month: string;
+  dataSummary: DashboardSummary;
 };
 
 export const MonthlyReportFreeUserEmail = (
@@ -38,20 +43,19 @@ export const MonthlyReportFreeUserEmail = (
         <EmailHero
           l10n={l10n}
           utm_campaign={"test"}
-          heading={l10n.getString("email-monthly-report-hero-free-heading")}
+          heading={l10n.getString("email-monthly-report-hero-free-heading", {
+            monthOfReport: props.month,
+          })}
           subheading={l10n.getString("email-monthly-report-hero-free-body")}
         />
+        <DataPointCount
+          subscriber={props.subscriber}
+          l10n={l10n}
+          utmCampaignId={props.utmCampaignId}
+          utmContentSuffix={props.utmContentSuffix}
+          dataSummary={props.dataSummary}
+        />
         <EmailHeader l10n={l10n} utm_campaign={props.utmCampaignId} />
-        <mj-section padding="20px">
-          <mj-column>
-            <mj-text align="center" font-size="16px" line-height="24px">
-              {l10n.getFragment("email-breach-detected-2", {
-                vars: { "email-address": props.breachedEmail },
-                elems: { b: <b /> },
-              })}
-            </mj-text>
-          </mj-column>
-        </mj-section>
         <BreachCard breach={props.breach} l10n={l10n} />
         <mj-section padding="20px">
           <mj-column>
