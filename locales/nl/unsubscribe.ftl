@@ -6,8 +6,8 @@
 # Confirm Unsubscription State
 
 unsubscribe-from-monthly-report-header = Afmelden voor dit e-mailbericht?
-unsubscribe-from-monthly-report-body = U ontvangt niet langer het maandelijkse { -brand-monitor }-rapport, dat u vertelt hoeveel nieuwe blootstellingen u elke maand hebt gehad en hoeveel vast zijn.
-unsubscribe-cta = Abonnement opzeggen
+unsubscribe-from-monthly-report-body = U ontvangt niet langer het maandelijkse { -brand-monitor }-rapport, dat u vertelt hoeveel nieuwe lekken u elke maand hebt gehad en hoeveel er zijn opgelost.
+unsubscribe-cta = Afmelden
 
 # Success Unsubscription State
 

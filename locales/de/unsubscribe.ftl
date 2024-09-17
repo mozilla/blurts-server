@@ -5,13 +5,13 @@
 
 # Confirm Unsubscription State
 
-unsubscribe-from-monthly-report-header = Diese E-Mail abbestellen?
-unsubscribe-from-monthly-report-body = Sie erhalten nicht mehr den monatlichen { -brand-monitor }-Bericht, der jeden Monat anzeigt, wie viele neue Kontakte Sie hatten und wie viele behoben wurden.
+unsubscribe-from-monthly-report-header = Diese E-Mails abbestellen?
+unsubscribe-from-monthly-report-body = Sie erhalten dann nicht mehr den monatlichen { -brand-monitor }-Bericht, der jeden Monat anzeigt, von wie vielen Datenlecks Sie betroffen waren und wie viele behoben wurden.
 unsubscribe-cta = Abbestellen
 
 # Success Unsubscription State
 
-unsubscribe-success-from-monthly-report-header = Ihr Abonnement wurde jetzt aufgehoben
+unsubscribe-success-from-monthly-report-header = Ihr Abonnement wurde entfernt
 unsubscribe-success-from-monthly-report-body = Sie können den Newsletter erneut abonnieren oder Ihre E-Mail-Einstellungen jederzeit in Ihren { -brand-monitor }-Einstellungen ändern.
 
 # Error warning
