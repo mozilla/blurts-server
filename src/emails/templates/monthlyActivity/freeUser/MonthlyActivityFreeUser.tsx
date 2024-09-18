@@ -63,7 +63,7 @@ export const MonthlyReportFreeUserEmail = (
               table {
                 border-collapse: separate;
                 border-spacing: 0;
-                padding: 10px 0px;
+                padding: 15px 0px;
               }
             }
 
@@ -72,6 +72,14 @@ export const MonthlyReportFreeUserEmail = (
               align-items: center;
               gap: 10px;
               justify-content: center;
+            }
+
+            .manually_resolved_column {
+              background-image: url(${process.env.SERVER_URL}/images/email/monthly-activity/sparkles.png);
+              background-position: center;
+              background-size: 90%;
+              background-repeat: no-repeat;
+              padding: 
             }
         `}
         </mj-style>
@@ -124,7 +132,7 @@ export const MonthlyReportFreeUserEmail = (
                   </mj-text>
                 </mj-column>
                 <mj-column
-                  css-class="stat_column"
+                  css-class="stat_column manually_resolved_column"
                   inner-border="2px solid #7542E5"
                   inner-border-radius="10px"
                   padding="8px"
