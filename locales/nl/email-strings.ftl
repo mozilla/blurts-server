@@ -2,25 +2,26 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-# Firefox Monitor is a product name and should not be translated.
--product-name = Firefox Monitor
-# Firefox is a brand name and should not be translated.
--brand-name = Firefox
+
+## Email headers
+
+email-header-logo-alt = { -brand-mozilla-monitor }
+email-header-button-sign-in = Aanmelden
+
+## Email footers
+
+email-footer-support-heading = Vragen over { -brand-mozilla-monitor }?
+email-footer-support-content = Bezoek ons <support-link>Ondersteuningscentrum</support-link> voor hulp
+email-footer-trigger-transactional = U ontvangt dit e-mailbericht als abonnee van { -brand-mozilla-monitor }.
+email-footer-source-hibp = Datalek aangeleverd door <hibp-link>{ -brand-HIBP }</hibp-link>
+email-footer-logo-mozilla-alt = { -brand-mozilla }
+email-footer-meta-privacy-notice = Privacy
 # Firefox Relay is a product name and should not be translated.
 -product-name-relay = Firefox Relay
 # Mozilla VPN is a product name and should not be translated.
 -product-name-vpn = Mozilla VPN
 # A link to legal information about mozilla products.
 legal = Juridisch
-# Unsubscribe link in email.
-email-unsub-link = Abonnement opzeggen
-# This string appears in the footer of breach report and breach alert emails.
-# { $unsubLink } is a link to the user's dashboard where they can unsubscribe from Monitor
-# and uses the text from { email-unsub-link }. { $faqLink } is a link to the
-# Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
-email-footer-blurb =
-    U ontvangt dit e-mailbericht omdat u zich hebt aangemeld voor { -product-name }-waarschuwingen.
-    Wilt u deze e-mailberichten niet meer ontvangen? { $unsubLink }. Dit is een geautomatiseerd e-mailbericht. Ga voor ondersteuning naar { $faqLink }.
 # Button text
 verify-email-cta = E-mailadres verifiëren
 # Headline of verification email
@@ -48,25 +49,6 @@ email-breach-alert-blurb =
 #   $hibp-link-attr (String) - Link to Have I Been Pwned
 email-2022-hibp-attribution = Datalek aangeleverd door <a { $hibp-link-attr }>{ -brand-HIBP }</a>
 
-## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
-## Variables:
-##   $email-address (string) - Email address
-
-email-unresolved-heading = U hebt onopgeloste datalekken
-email-unresolved-subhead = Uw e-mail is blootgesteld. <br>Los het meteen op met { -product-name }.
-email-is-affected = Uw e-mailadres, { $email-address }, is getroffen door ten minste één datalek
-email-more-detail = Meld u nu aan bij { -product-name } om meer details over uw datalekken te zien (inclusief wanneer ze hebben plaatsgevonden en welke gegevens zijn blootgesteld) en ontdek wat u moet doen wanneer uw e-mailadres is blootgesteld aan een datalek.
-email-breach-status = Huidige datalekstatus
-# table row 1 label
-email-monitored = Totaal aantal gecontroleerde e-mailberichten:
-# table row 2 label
-email-breach-total = Totaal aantal datalekken:
-# table row 3 label
-email-resolved = Opgeloste datalekken:
-# table row 4 label
-email-unresolved = Onopgeloste datalekken:
-email-resolve-cta = Datalekken oplossen
-
 ## Verification email
 
 email-verify-heading = Bescherm uw gegevens, per direct
@@ -79,6 +61,7 @@ email-breach-summary = Hier is uw samenvatting van uw datalek
 # Variables:
 #   $email-address (string) - Email address, bolded
 email-breach-detected = Zoekresultaten voor uw account { $email-address } hebben gedetecteerd dat uw e-mailadres mogelijk is gelekt. We raden u aan nu actie te ondernemen om dit datalek op te lossen.
+# Deprecated after the redesigned breach alert email is launched
 # Variables:
 #   $email-address (string) - Email address
 email-breach-detected-2 = Zoekresultaten voor uw account <b>{ $email-address }</b> hebben gedetecteerd dat uw e-mailadres mogelijk is gelekt. We raden u aan nu actie te ondernemen om dit datalek op te lossen.
@@ -86,4 +69,18 @@ email-dashboard-cta = Naar het dashboard
 
 ## Breach alert
 
+# Deprecated after the redesigned breach alert email is launched
 email-spotted-new-breach = We hebben een nieuw datalek ontdekt
+
+## Redesigned breach alert email
+
+email-breach-alert-all-subject = Nieuw datalek gedetecteerd
+email-breach-alert-all-preview = We leiden u door de stappen om dit op te lossen.
+email-breach-alert-all-hero-heading = U bent getroffen door een nieuw datalek
+email-breach-alert-all-hero-subheading = Geen zorgen, we kunnen u helpen dit lek op te lossen
+email-breach-alert-all-lead = { -brand-mozilla-monitor } heeft het volgende datalek ontdekt dat uw persoonlijke gegevens bevat:
+email-breach-alert-all-source-title = Bron van datalek:
+email-breach-alert-all-data-points-title = Uw gelekte gegevens:
+email-breach-alert-all-next-steps-lead = We helpen u stap voor stap hoe u dit datalek kunt oplossen.
+email-breach-alert-all-next-steps-cta-label = Laten we beginnen
+email-breach-alert-all-next-steps-button-dashboard = Naar het dashboard

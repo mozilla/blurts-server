@@ -2,25 +2,26 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-# Firefox Monitor is a product name and should not be translated.
--product-name = Firefox Monitor
-# Firefox is a brand name and should not be translated.
--brand-name = Firefox
+
+## Email headers
+
+email-header-logo-alt = { -brand-mozilla-monitor }
+email-header-button-sign-in = Войти
+
+## Email footers
+
+email-footer-support-heading = Есть вопросы о { -brand-mozilla-monitor }?
+email-footer-support-content = Посетите наш <support-link>Центр поддержки</support-link> для получения помощи
+email-footer-trigger-transactional = Вы получите это письмо как подписчик { -brand-mozilla-monitor }.
+email-footer-source-hibp = Данные об утечке данных предоставлены <hibp-link>{ -brand-HIBP }</hibp-link>
+email-footer-logo-mozilla-alt = { -brand-mozilla }
+email-footer-meta-privacy-notice = Приватность
 # Firefox Relay is a product name and should not be translated.
 -product-name-relay = Firefox Relay
 # Mozilla VPN is a product name and should not be translated.
 -product-name-vpn = Mozilla VPN
 # A link to legal information about mozilla products.
 legal = Юридическая информация
-# Unsubscribe link in email.
-email-unsub-link = Отписаться
-# This string appears in the footer of breach report and breach alert emails.
-# { $unsubLink } is a link to the user's dashboard where they can unsubscribe from Monitor
-# and uses the text from { email-unsub-link }. { $faqLink } is a link to the
-# Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
-email-footer-blurb =
-    Вы получили это письмо, потому что вы подписались на уведомления { -product-name }.
-    Больше не хотите получать такие письма? { $unsubLink }. Это автоматическое письмо. Для получения помощи, посетите { $faqLink }.
 # Button text
 verify-email-cta = Подтвердить адрес эл. почты
 # Headline of verification email
@@ -48,25 +49,6 @@ email-breach-alert-blurb =
 #   $hibp-link-attr (String) - Link to Have I Been Pwned
 email-2022-hibp-attribution = Данные об утечке данных предоставлены <a { $hibp-link-attr }>{ -brand-HIBP }</a>
 
-## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
-## Variables:
-##   $email-address (string) - Email address
-
-email-unresolved-heading = У вас есть неустраненные утечки
-email-unresolved-subhead = Ваша электронная почта была раскрыта. <br>Немедленно исправьте это с помощью { -product-name }.
-email-is-affected = Ваш адрес электронной почты { $email-address } затронут как минимум одной утечкой данных
-email-more-detail = Войдите в { -product-name } сейчас, чтобы увидеть более подробную информацию о ваших утечках (в том числе, когда они произошли и какие данные были раскрыты), и узнать, что вы должны сделать, когда ваша электронная почта была раскрыта в результате утечки данных.
-email-breach-status = Текущий статус утечки
-# table row 1 label
-email-monitored = Всего отслеживаемых ящиков:
-# table row 2 label
-email-breach-total = Общее число утечек:
-# table row 3 label
-email-resolved = Устранённые утечки:
-# table row 4 label
-email-unresolved = Неустранённые утечки:
-email-resolve-cta = Устранение утечек
-
 ## Verification email
 
 email-verify-heading = Защитите свои данные, начните прямо сейчас
@@ -79,6 +61,7 @@ email-breach-summary = Вот сводка ваших утечек данных
 # Variables:
 #   $email-address (string) - Email address, bolded
 email-breach-detected = Результаты поиска для вашей учётной записи { $email-address } обнаружили, что ваша электронная почта могла быть раскрыта. Мы рекомендуем вам действовать сейчас, чтобы устранить эту утечку.
+# Deprecated after the redesigned breach alert email is launched
 # Variables:
 #   $email-address (string) - Email address
 email-breach-detected-2 = Результаты поиска для вашей учётной записи <b>{ $email-address }</b> обнаружили, что ваша электронная почта могла быть раскрыта. Мы рекомендуем вам действовать сейчас для устранения этой утечки.
@@ -86,4 +69,18 @@ email-dashboard-cta = Перейти в панель управления
 
 ## Breach alert
 
+# Deprecated after the redesigned breach alert email is launched
 email-spotted-new-breach = Мы обнаружили новую утечку данных
+
+## Redesigned breach alert email
+
+email-breach-alert-all-subject = Обнаружена новая утечка данных
+email-breach-alert-all-preview = Мы проведем вас через шаги для её решения.
+email-breach-alert-all-hero-heading = Вы стали жертвой новой утечки данных
+email-breach-alert-all-hero-subheading = Не волнуйтесь, мы можем помочь вам решить эту проблему
+email-breach-alert-all-lead = { -brand-mozilla-monitor } обнаружил следующую утечку данных, включающую вашу личную информацию:
+email-breach-alert-all-source-title = Источник утечки:
+email-breach-alert-all-data-points-title = Ваши раскрытые данные:
+email-breach-alert-all-next-steps-lead = Мы шаг за шагом поможем вам устранить эту утечку данных.
+email-breach-alert-all-next-steps-cta-label = Давайте начнём
+email-breach-alert-all-next-steps-button-dashboard = Перейти на панель управления
