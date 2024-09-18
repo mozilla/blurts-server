@@ -59,12 +59,20 @@ export const MonthlyReportFreeUserEmail = (
         <mj-style>
           {/* This class rounds the edges of a table element */}
           {`
-            .stat_column 
+            .stat_column {
               table {
                 border-collapse: separate;
                 border-spacing: 0;
                 padding: 10px 0px;
               }
+            }
+
+            .upgrade_link {
+              display: flex !important;
+              align-items: center;
+              gap: 10px;
+              justify-content: center;
+            }
         `}
         </mj-style>
       </mj-head>
@@ -150,11 +158,29 @@ export const MonthlyReportFreeUserEmail = (
             <mj-wrapper padding="0">
               <mj-group>
                 <mj-column>
-                  <mj-text align="center">
-                    <i>
-                      {l10n.getString("email-monthly-report-free-upgrade-cta")}
-                    </i>
-                  </mj-text>
+                  <mj-group css-class="upgrade_link">
+                    <mj-image
+                      alt=""
+                      src={`${process.env.SERVER_URL}/images/email/icons/lock-icon.png`}
+                      width="14px"
+                      height="16px"
+                    />
+                    <mj-button
+                      href={premiumSubscriptionUrlObject.href}
+                      background-color="transparent"
+                      line-height="0"
+                      color="#0060DF"
+                      text-decoration="underline"
+                      inner-padding="0"
+                      text-align="left"
+                    >
+                      <i>
+                        {l10n.getString(
+                          "email-monthly-report-free-upgrade-cta",
+                        )}
+                      </i>
+                    </mj-button>
+                  </mj-group>
                 </mj-column>
                 <mj-column>&nbsp;</mj-column>
               </mj-group>
