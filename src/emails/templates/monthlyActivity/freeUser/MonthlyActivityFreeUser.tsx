@@ -66,6 +66,56 @@ export const MonthlyReportFreeUserEmail = (
           })}
           subheading={l10n.getString("email-monthly-report-hero-free-body")}
         />
+        <mj-section padding="24px">
+          <mj-column>
+            <mj-text align="center">
+              {l10n.getFragment(
+                "email-monthly-report-free-summary-auto-removed",
+                {
+                  elems: {
+                    stat: (
+                      <div
+                        style={{
+                          fontWeight: "bold",
+                          fontSize: "60px",
+                          lineHeight: "68px",
+                        }}
+                      />
+                    ),
+                  },
+                  vars: {
+                    // Since this goes out to free users, the auto-removed data broker count will always be 0
+                    data_point_count: 0,
+                  },
+                },
+              )}
+            </mj-text>
+          </mj-column>
+          <mj-column>
+            <mj-text align="center">
+              {l10n.getFragment(
+                "email-monthly-report-free-summary-manually-resolved",
+                {
+                  elems: {
+                    stat: (
+                      <div
+                        style={{
+                          fontWeight: "bold",
+                          fontSize: "60px",
+                          lineHeight: "68px",
+                        }}
+                      />
+                    ),
+                  },
+                  vars: {
+                    data_point_count:
+                      props.dataSummary.dataBrokerManuallyResolvedNum,
+                  },
+                },
+              )}
+            </mj-text>
+          </mj-column>
+        </mj-section>
         <DataPointCount
           subscriber={props.subscriber}
           l10n={l10n}
