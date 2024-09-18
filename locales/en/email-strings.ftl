@@ -103,8 +103,12 @@ email-monthly-report-free-scan-results-data-points-label = <stat>{ $data_point_c
 email-monthly-report-free-results-heading = Current exposures
 email-monthly-report-free-breaches = <stat>{ $data_point_count }</stat> Data breaches
 email-monthly-report-free-summary-heading = What’s happened in the last month
-email-monthly-report-free-summary-auto-removed = Auto-removed exposures
-email-monthly-report-free-summary-manually-resolved = Manually resolved data breaches
+# Variables:
+#   $data_point_count (number) - The number of data brokers that were automatically resolved
+email-monthly-report-free-summary-auto-removed = <stat>{ $data_point_count }</stat>Auto-removed exposures
+# Variables:
+#   $data_point_count (number) - The number of data brokers that were manually resolved
+email-monthly-report-free-summary-manually-resolved = <stat>{ $data_point_count }</stat> Manually resolved data breaches
 email-monthly-report-free-upgrade-cta = Unlock with { -brand-monitor-plus }
 email-monthly-report-free-banner-heading = { -brand-monitor } now protects you even more
 email-monthly-report-free-banner-body = We can find your personal info on data broker sites that sell it for a profit.
