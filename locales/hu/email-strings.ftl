@@ -2,25 +2,26 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-# Firefox Monitor is a product name and should not be translated.
--product-name = Firefox Monitor
-# Firefox is a brand name and should not be translated.
--brand-name = Firefox
+
+## Email headers
+
+email-header-logo-alt = { -brand-mozilla-monitor }
+email-header-button-sign-in = Bejelentkezés
+
+## Email footers
+
+email-footer-support-heading = Kérdése van a { -brand-mozilla-monitor }ról?
+email-footer-support-content = Segítségért keresse fel a <support-link>Támogatói központunkat</support-link>
+email-footer-trigger-transactional = Ezt az e-mailt a { -brand-mozilla-monitor } előfizetőjeként kapja.
+email-footer-source-hibp = Az adatvédelmi incidensek adatait a <hibp-link>{ -brand-HIBP }</hibp-link> szolgáltatta
+email-footer-logo-mozilla-alt = { -brand-mozilla }
+email-footer-meta-privacy-notice = Adatvédelem
 # Firefox Relay is a product name and should not be translated.
 -product-name-relay = Firefox Relay
 # Mozilla VPN is a product name and should not be translated.
 -product-name-vpn = Mozilla VPN
 # A link to legal information about mozilla products.
 legal = Jogi információk
-# Unsubscribe link in email.
-email-unsub-link = Leiratkozás
-# This string appears in the footer of breach report and breach alert emails.
-# { $unsubLink } is a link to the user's dashboard where they can unsubscribe from Monitor
-# and uses the text from { email-unsub-link }. { $faqLink } is a link to the
-# Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
-email-footer-blurb =
-    Azért kapja ezt az e-mailt, mert feliratkozott a { -product-name } figyelmeztetéseire.
-    Már nem szeretné ezeket a leveleket? { $unsubLink }. Ez egy automatikus levél. Támogatásért keresse fel a { $faqLink } oldalt.
 # Button text
 verify-email-cta = E-mail-cím megerősítése
 # Headline of verification email
@@ -60,6 +61,7 @@ email-breach-summary = Íme az adatvédelmi incidens összefoglalója
 # Variables:
 #   $email-address (string) - Email address, bolded
 email-breach-detected = Az Ön { $email-address } fiókjához tartozó keresési találatok azt észlelték, hogy e-mail-címe nyilvánosságra került. Javasoljuk, hogy azonnal intézkedjen az adatvédelmi incidens megszüntetése érdekében.
+# Deprecated after the redesigned breach alert email is launched
 # Variables:
 #   $email-address (string) - Email address
 email-breach-detected-2 = Az Ön <b>{ $email-address }</b> fiókjához tartozó keresési találatok azt észlelték, hogy e-mail-címe nyilvánosságra került. Javasoljuk, hogy azonnal intézkedjen az adatvédelmi incidens megszüntetése érdekében.
@@ -67,4 +69,18 @@ email-dashboard-cta = Ugrás a vezérlőpulthoz
 
 ## Breach alert
 
+# Deprecated after the redesigned breach alert email is launched
 email-spotted-new-breach = Új adatvédelmi incidenst észleltünk
+
+## Redesigned breach alert email
+
+email-breach-alert-all-subject = Új adatsértés észlelve
+email-breach-alert-all-preview = Végigvezetjük a megoldás lépésein.
+email-breach-alert-all-hero-heading = Új adatvédelmi incidensben volt érintett
+email-breach-alert-all-hero-subheading = Ne aggódjon, segíthetünk megoldani ezt a kitettséget
+email-breach-alert-all-lead = A { -brand-mozilla-monitor } felfedezte a következő adatvédelmi incidenst, amely az Ön személyes információit is tartalmazza:
+email-breach-alert-all-source-title = Adatvédelmi incidens forrása:
+email-breach-alert-all-data-points-title = A kikerült adatai:
+email-breach-alert-all-next-steps-lead = Lépésről lépésre végigvezeti ahhoz, hogy hogyan oldja meg ezt az adatvédelmi incidenst.
+email-breach-alert-all-next-steps-cta-label = Kezdjen neki
+email-breach-alert-all-next-steps-button-dashboard = Ugrás a vezérlőpulthoz
