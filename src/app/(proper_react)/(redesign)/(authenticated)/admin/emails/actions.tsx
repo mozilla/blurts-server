@@ -203,7 +203,7 @@ export async function triggerBreachAlert(
           utmCampaignId="breach-alert"
           l10n={l10n}
           dataSummary={
-            isEligibleForPremium(assumedCountryCode) && hasPremium(subscriber)
+            isEligibleForPremium(assumedCountryCode) && !hasPremium(subscriber)
               ? getDashboardSummary(scanData.results, allSubscriberBreaches)
               : undefined
           }

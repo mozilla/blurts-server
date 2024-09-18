@@ -2,23 +2,26 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-# Firefox Monitor is a product name and should not be translated.
--product-name = Firefox Monitor
-# Firefox is a brand name and should not be translated.
--brand-name = Firefox
+
+## Email headers
+
+email-header-logo-alt = { -brand-mozilla-monitor }
+email-header-button-sign-in = Mewngofnodi
+
+## Email footers
+
+email-footer-support-heading = Cwestiynau am { -brand-mozilla-monitor }?
+email-footer-support-content = Ewch i'n <support-link>Canolfan Gymorth</support-link> am help
+email-footer-trigger-transactional = Rydych chi'n derbyn yr e-bost hwn fel tanysgrifiwr { -brand-mozilla-monitor }.
+email-footer-source-hibp = Darparwyd manylion tor-data gan <hibp-link>{ -brand-HIBP }</hibp-link>
+email-footer-logo-mozilla-alt = { -brand-mozilla }
+email-footer-meta-privacy-notice = Preifatrwydd
 # Firefox Relay is a product name and should not be translated.
 -product-name-relay = Firefox Relay
 # Mozilla VPN is a product name and should not be translated.
 -product-name-vpn = Mozilla VPN
 # A link to legal information about mozilla products.
 legal = Cyfreithiol
-# Unsubscribe link in email.
-email-unsub-link = Dad-danysgrifio
-# This string appears in the footer of breach report and breach alert emails.
-# { $unsubLink } is a link to the user's dashboard where they can unsubscribe from Monitor
-# and uses the text from { email-unsub-link }. { $faqLink } is a link to the
-# Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
-email-footer-blurb = Rydych yn derbyn yr e-bost hwn oherwydd eich bod wedi cofrestru ar gyfer rhybuddion { -product-name }. Dim eisiau'r e-byst hyn bellach? { $unsubLink }. Mae hwn yn e-bost awtomataidd. Am gymorth, ewch i { $faqLink }.
 # Button text
 verify-email-cta = Dilysu E-bost
 # Headline of verification email
@@ -54,6 +57,7 @@ email-breach-summary = Dyma eich crynodeb tor-data
 # Variables:
 #   $email-address (string) - Email address, bolded
 email-breach-detected = Mae canlyniadau chwilio eich cyfrif { $email-address } wedi canfod y gallai eich e-bost fod wedi'i ddatgelu. Rydym yn argymell eich bod yn gweithredu nawr i ddatrys y tor-data hwn.
+# Deprecated after the redesigned breach alert email is launched
 # Variables:
 #   $email-address (string) - Email address
 email-breach-detected-2 = Mae canlyniadau chwilio eich cyfrif <b> { $email-address }</b> wedi canfod y gallai eich e-bost fod wedi'i ddatgelu. Rydym yn argymell eich bod yn gweithredu nawr i ddatrys y tor-data hwn.
@@ -61,4 +65,18 @@ email-dashboard-cta = Mynd i'r Bwrdd Gwaith
 
 ## Breach alert
 
+# Deprecated after the redesigned breach alert email is launched
 email-spotted-new-breach = Rydym wedi gweld tor-data newydd
+
+## Redesigned breach alert email
+
+email-breach-alert-all-subject = Canfuwyd toriad data newydd
+email-breach-alert-all-preview = Byddwn yn eich arwain trwy'r camau i'w datrys.
+email-breach-alert-all-hero-heading = Rydych chi wedi bod mewn toriad data newydd
+email-breach-alert-all-hero-subheading = Peidiwch â phoeni, gallwn eich helpu i ddatrys y datguddiad hwn
+email-breach-alert-all-lead = Darganfu { -brand-mozilla-monitor } y toriad data canlynol sy'n cynnwys eich gwybodaeth bersonol:
+email-breach-alert-all-source-title = Ffynhonnell y toriad:
+email-breach-alert-all-data-points-title = Eich data agored:
+email-breach-alert-all-next-steps-lead = Byddwn yn eich arwain gam wrth gam ar sut i ddatrys y toriad data hwn.
+email-breach-alert-all-next-steps-cta-label = Cychwyn arni
+email-breach-alert-all-next-steps-button-dashboard = Mynd i'r Bwrdd Gwaith
