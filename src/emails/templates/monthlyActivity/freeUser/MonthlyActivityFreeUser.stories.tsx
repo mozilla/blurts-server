@@ -92,7 +92,7 @@ const mockedDataSummary = {
 };
 
 export const MonthlyReportFreeUserNoScan: Story = {
-  name: "Monthly Report Free User",
+  name: "Monthly Report Free User No Scan",
   args: {
     breach: createRandomHibpListing(),
     breachedEmail: "example@example.com",
@@ -111,7 +111,7 @@ export const MonthlyReportFreeUserNoScan: Story = {
 };
 
 export const MonthlyReportFreeUserWithScan: Story = {
-  name: "Monthly Report Free User",
+  name: "Monthly Report Free User With Scan",
   args: {
     breach: createRandomHibpListing(),
     breachedEmail: "example@example.com",
@@ -119,6 +119,47 @@ export const MonthlyReportFreeUserWithScan: Story = {
     utmContentSuffix: "test",
     month: monthNames[month],
     dataSummary: mockedDataSummary,
+    subscriber: {
+      onerep_profile_id: 1,
+      fxa_profile_json: {
+        locale: "en-US",
+        subscriptions: ["not-monitor-plus"],
+      },
+    } as SubscriberRow,
+  },
+};
+
+export const MonthlyReportFreeUserManuallyResolvedExposures: Story = {
+  name: "Monthly Report Free User Manually Resolved Exposures",
+  args: {
+    breach: createRandomHibpListing(),
+    breachedEmail: "example@example.com",
+    utmCampaignId: "test",
+    utmContentSuffix: "test",
+    month: monthNames[month],
+    dataSummary: mockedDataSummary,
+    subscriber: {
+      onerep_profile_id: 1,
+      fxa_profile_json: {
+        locale: "en-US",
+        subscriptions: ["not-monitor-plus"],
+      },
+    } as SubscriberRow,
+  },
+};
+
+export const MonthlyReportFreeUserNoManuallyResolvedExposures: Story = {
+  name: "Monthly Report Free User Without Manually Resolved Exposures",
+  args: {
+    breach: createRandomHibpListing(),
+    breachedEmail: "example@example.com",
+    utmCampaignId: "test",
+    utmContentSuffix: "test",
+    month: monthNames[month],
+    dataSummary: {
+      ...mockedDataSummary,
+      dataBrokerManuallyResolvedNum: 0,
+    },
     subscriber: {
       onerep_profile_id: 1,
       fxa_profile_json: {

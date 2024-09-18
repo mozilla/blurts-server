@@ -50,6 +50,9 @@ export const MonthlyReportFreeUserEmail = (
       : `${process.env.SERVER_URL}/user/dashboard/?utm_source=monitor-product&utm_medium=email&utm_campaign=${props.utmCampaignId}&utm_content=take-action${props.utmContentSuffix}`,
   };
 
+  const purpleActiveColor = "#7542E5";
+  const greyInactiveColor = "#9E9E9E";
+
   return (
     <mjml>
       <mj-head>
@@ -74,12 +77,11 @@ export const MonthlyReportFreeUserEmail = (
               justify-content: center;
             }
 
-            .manually_resolved_column {
+            .manually_resolved_column_sparkles {
               background-image: url(${process.env.SERVER_URL}/images/email/monthly-activity/sparkles.png);
               background-position: center;
               background-size: 90%;
               background-repeat: no-repeat;
-              padding: 
             }
         `}
         </mj-style>
@@ -93,13 +95,13 @@ export const MonthlyReportFreeUserEmail = (
           })}
           subheading={l10n.getString("email-monthly-report-hero-free-body")}
         />
-        <mj-section padding="10px">
+        <mj-section>
           <mj-text align="center" font-size="18px">
             <h3>
               {l10n.getString("email-monthly-report-free-summary-heading")}
             </h3>
           </mj-text>
-          <mj-section full-width="full-width" padding-bottom="0">
+          <mj-section css-class="max_width" padding-bottom="0">
             <mj-wrapper padding="0">
               <mj-group>
                 <mj-column
@@ -132,12 +134,19 @@ export const MonthlyReportFreeUserEmail = (
                   </mj-text>
                 </mj-column>
                 <mj-column
-                  css-class="stat_column manually_resolved_column"
-                  inner-border="2px solid #7542E5"
+                  css-class={`stat_column ${props.dataSummary.dataBrokerManuallyResolvedNum > 0 ? `manually_resolved_column_sparkles` : ``}`}
+                  inner-border={`2px solid ${props.dataSummary.dataBrokerManuallyResolvedNum > 0 ? purpleActiveColor : greyInactiveColor}`}
                   inner-border-radius="10px"
                   padding="8px"
                 >
-                  <mj-text align="center" color="#7542E5">
+                  <mj-text
+                    align="center"
+                    color={
+                      props.dataSummary.dataBrokerManuallyResolvedNum > 0
+                        ? purpleActiveColor
+                        : greyInactiveColor
+                    }
+                  >
                     {l10n.getFragment(
                       "email-monthly-report-free-summary-manually-resolved",
                       {
