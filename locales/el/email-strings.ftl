@@ -2,25 +2,26 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-# Firefox Monitor is a product name and should not be translated.
--product-name = Firefox Monitor
-# Firefox is a brand name and should not be translated.
--brand-name = Firefox
+
+## Email headers
+
+email-header-logo-alt = { -brand-mozilla-monitor }
+email-header-button-sign-in = Σύνδεση
+
+## Email footers
+
+email-footer-support-heading = Έχετε απορίες για το { -brand-mozilla-monitor };
+email-footer-support-content = Επισκεφτείτε το <support-link>Κέντρο υποστήριξης</support-link> για βοήθεια
+email-footer-trigger-transactional = Λαμβάνετε αυτό το email ως συνδρομητής του { -brand-mozilla-monitor }.
+email-footer-source-hibp = Τα δεδομένα παραβιάσεων παρέχονται από το <hibp-link>{ -brand-HIBP }</hibp-link>
+email-footer-logo-mozilla-alt = { -brand-mozilla }
+email-footer-meta-privacy-notice = Απόρρητο
 # Firefox Relay is a product name and should not be translated.
 -product-name-relay = Firefox Relay
 # Mozilla VPN is a product name and should not be translated.
 -product-name-vpn = Mozilla VPN
 # A link to legal information about mozilla products.
 legal = Νομικά
-# Unsubscribe link in email.
-email-unsub-link = Κατάργηση εγγραφής
-# This string appears in the footer of breach report and breach alert emails.
-# { $unsubLink } is a link to the user's dashboard where they can unsubscribe from Monitor
-# and uses the text from { email-unsub-link }. { $faqLink } is a link to the
-# Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
-email-footer-blurb =
-    Λαμβάνετε αυτό το email επειδή έχετε εγγραφεί στις ειδοποιήσεις του { -product-name }.
-    Δεν θέλετε πλέον αυτά τα email; { $unsubLink }. Αυτό είναι ένα αυτοματοποιημένο email. Για υποστήριξη, επισκεφθείτε τις { $faqLink }.
 # Button text
 verify-email-cta = Επαλήθευση email
 # Headline of verification email
@@ -48,25 +49,6 @@ email-breach-alert-blurb =
 #   $hibp-link-attr (String) - Link to Have I Been Pwned
 email-2022-hibp-attribution = Τα δεδομένα παραβιάσεων παρέχονται από το <a { $hibp-link-attr }>{ -brand-HIBP }</a>
 
-## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
-## Variables:
-##   $email-address (string) - Email address
-
-email-unresolved-heading = Έχετε μη επιλυμένες παραβιάσεις
-email-unresolved-subhead = Το email σας έχει εκτεθεί. <br>Διορθώστε το αμέσως με το { -product-name }.
-email-is-affected = Το email σας, { $email-address }, επηρεάζεται από τουλάχιστον μία παραβίαση δεδομένων
-email-more-detail = Συνδεθείτε τώρα στο { -product-name } για να δείτε περισσότερες λεπτομέρειες σχετικά με τις παραβιάσεις σας (όπως την ημερομηνία που σημειώθηκαν και τα δεδομένα που διέρρευσαν) και για να μάθετε τι πρέπει να κάνετε εάν εκτεθεί το email σας σε κάποια παραβίαση δεδομένων.
-email-breach-status = Τρέχουσα κατάσταση παραβίασης
-# table row 1 label
-email-monitored = Σύνολο email υπό εποπτεία:
-# table row 2 label
-email-breach-total = Συνολικός αριθμός παραβιάσεων:
-# table row 3 label
-email-resolved = Επιλυμένες παραβιάσεις:
-# table row 4 label
-email-unresolved = Μη επιλυμένες παραβιάσεις:
-email-resolve-cta = Επίλυση παραβιάσεων
-
 ## Verification email
 
 email-verify-heading = Προστατέψτε τα δεδομένα σας, ξεκινώντας από τώρα
@@ -79,6 +61,7 @@ email-breach-summary = Ακολουθεί η σύνοψη παραβίασης �
 # Variables:
 #   $email-address (string) - Email address, bolded
 email-breach-detected = Τα αποτελέσματα αναζήτησης για το { $email-address } δείχνουν ότι το email σας μπορεί να έχει εκτεθεί. Σας συνιστούμε να ενεργήσετε τώρα για να επιλύσετε αυτήν την παραβίαση.
+# Deprecated after the redesigned breach alert email is launched
 # Variables:
 #   $email-address (string) - Email address
 email-breach-detected-2 = Τα αποτελέσματα αναζήτησης για το <b>{ $email-address }</b> δείχνουν ότι το email σας μπορεί να έχει εκτεθεί. Σας συνιστούμε να ενεργήσετε τώρα για να επιλύσετε αυτήν την παραβίαση.
@@ -86,4 +69,18 @@ email-dashboard-cta = Μετάβαση στον πίνακα ελέγχου
 
 ## Breach alert
 
+# Deprecated after the redesigned breach alert email is launched
 email-spotted-new-breach = Εντοπίσαμε μια νέα παραβίαση δεδομένων
+
+## Redesigned breach alert email
+
+email-breach-alert-all-subject = Εντοπίστηκε νέα παραβίαση δεδομένων
+email-breach-alert-all-preview = Θα σας καθοδηγήσουμε στα βήματα για την επίλυσή του.
+email-breach-alert-all-hero-heading = Έχετε βρεθεί σε νέα παραβίαση δεδομένων
+email-breach-alert-all-hero-subheading = Μην ανησυχείτε, μπορούμε να σας βοηθήσουμε να επιλύσετε αυτήν την έκθεση
+email-breach-alert-all-lead = Το { -brand-mozilla-monitor } ανακάλυψε την ακόλουθη παραβίαση δεδομένων, που περιλαμβάνει τα προσωπικά σας στοιχεία:
+email-breach-alert-all-source-title = Πηγή παραβίασης:
+email-breach-alert-all-data-points-title = Τα εκτεθειμένα δεδομένα σας:
+email-breach-alert-all-next-steps-lead = Θα σας καθοδηγήσουμε βήμα προς βήμα για την επίλυση αυτής της παραβίασης δεδομένων.
+email-breach-alert-all-next-steps-cta-label = Ας αρχίσουμε
+email-breach-alert-all-next-steps-button-dashboard = Μετάβαση στον πίνακα ελέγχου

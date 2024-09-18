@@ -2,25 +2,26 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-# Firefox Monitor is a product name and should not be translated.
--product-name = Firefox Monitor
-# Firefox is a brand name and should not be translated.
--brand-name = Firefox
+
+## Email headers
+
+email-header-logo-alt = { -brand-mozilla-monitor }
+email-header-button-sign-in = Anmelden
+
+## Email footers
+
+email-footer-support-heading = Fragen zu { -brand-mozilla-monitor }?
+email-footer-support-content = Besuchen Sie unser <support-link>Hilfe-Zentrum</support-link>, um Hilfe zu erhalten
+email-footer-trigger-transactional = Sie erhalten diese E-Mail als Abonnent von { -brand-mozilla-monitor }.
+email-footer-source-hibp = Die Informationen zu Datenlecks wurden bereitgestellt von <hibp-link>{ -brand-HIBP }</hibp-link>
+email-footer-logo-mozilla-alt = { -brand-mozilla }
+email-footer-meta-privacy-notice = Datenschutz
 # Firefox Relay is a product name and should not be translated.
 -product-name-relay = Firefox Relay
 # Mozilla VPN is a product name and should not be translated.
 -product-name-vpn = Mozilla VPN
 # A link to legal information about mozilla products.
 legal = Rechtliches
-# Unsubscribe link in email.
-email-unsub-link = Abonnement entfernen
-# This string appears in the footer of breach report and breach alert emails.
-# { $unsubLink } is a link to the user's dashboard where they can unsubscribe from Monitor
-# and uses the text from { email-unsub-link }. { $faqLink } is a link to the
-# Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
-email-footer-blurb =
-    Du erhältst diese E-Mail, weil du Warnungen von { -product-name } abonniert hast.
-    Möchtest du diese E-Mails nicht mehr erhalten? { $unsubLink }. Dies ist eine automatisierte E-Mail. Wenn du Hilfe brauchst, gehe zu { $faqLink }.
 # Button text
 verify-email-cta = E-Mail-Adresse bestätigen
 # Headline of verification email
@@ -48,25 +49,6 @@ email-breach-alert-blurb =
 #   $hibp-link-attr (String) - Link to Have I Been Pwned
 email-2022-hibp-attribution = Die Informationen zu Datenlecks wurden bereitgestellt von <a { $hibp-link-attr }>{ -brand-HIBP }</a>
 
-## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
-## Variables:
-##   $email-address (string) - Email address
-
-email-unresolved-heading = Sie haben noch nicht behobene Datenlecks
-email-unresolved-subhead = Ihre E-Mail-Adresse wurde offengelegt. <br>Beheben Sie das Problem sofort mit { -product-name }.
-email-is-affected = Ihre E-Mail-Adresse { $email-address } ist von mindestens einem Datenleck betroffen
-email-more-detail = Melden Sie sich jetzt bei { -product-name } an, um weitere Details über Ihre Datenlecks zu erfahren (auch wann diese aufgetreten sind und welche Daten offen gelegt wurden) und zu erfahren, was Sie tun sollten, wenn Ihre E-Mail-Adresse von einem Datenleck betroffen ist.
-email-breach-status = Aktueller Datenleck-Status
-# table row 1 label
-email-monitored = Überwachte E-Mail-Adressen insgesamt:
-# table row 2 label
-email-breach-total = Gesamtzahl der Datenlecks:
-# table row 3 label
-email-resolved = Behobene Datenlecks:
-# table row 4 label
-email-unresolved = Nicht behobene Datenlecks:
-email-resolve-cta = Datenlecks beheben
-
 ## Verification email
 
 email-verify-heading = Schützen Sie Ihre Daten ab sofort
@@ -79,6 +61,7 @@ email-breach-summary = Hier ist die Zusammenfassung Ihrer Datenlecks
 # Variables:
 #   $email-address (string) - Email address, bolded
 email-breach-detected = Suchergebnisse für Ihr Konto { $email-address } haben gezeigt, dass Ihre E-Mail-Adresse möglicherweise offengelegt wurde. Wir empfehlen Ihnen, jetzt zu handeln, um dieses Datenleck zu beheben.
+# Deprecated after the redesigned breach alert email is launched
 # Variables:
 #   $email-address (string) - Email address
 email-breach-detected-2 = Suchergebnisse für Ihr Konto <b>{ $email-address }</b> haben gezeigt, dass Ihre E-Mail-Adresse möglicherweise offengelegt wurde. Wir empfehlen Ihnen, jetzt zu handeln, um dieses Datenleck zu beheben.
@@ -86,4 +69,18 @@ email-dashboard-cta = Zur Übersicht
 
 ## Breach alert
 
+# Deprecated after the redesigned breach alert email is launched
 email-spotted-new-breach = Wir haben ein neues Datenleck entdeckt
+
+## Redesigned breach alert email
+
+email-breach-alert-all-subject = Neues Datenleck erkannt
+email-breach-alert-all-preview = Wir führen Sie durch die Schritte, um das Problem zu lösen.
+email-breach-alert-all-hero-heading = Du bist von einem neuen Datenleck betroffen
+email-breach-alert-all-hero-subheading = Keine Sorge, wir können Ihnen bei der Lösung dieses Problems helfen
+email-breach-alert-all-lead = { -brand-mozilla-monitor } hat den folgenden Datenleck entdeckt, der Ihre persönlichen Daten enthält:
+email-breach-alert-all-source-title = Quelle des Datenlecks:
+email-breach-alert-all-data-points-title = Deine offengelegten Daten:
+email-breach-alert-all-next-steps-lead = Wir führen Sie Schritt für Schritt bei der Behebung dieses Datenlecks an.
+email-breach-alert-all-next-steps-cta-label = Einführung
+email-breach-alert-all-next-steps-button-dashboard = Zur Übersicht
