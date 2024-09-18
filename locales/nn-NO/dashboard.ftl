@@ -32,6 +32,7 @@ exposure-chart-returning-user-upgrade-prompt-cta = Start ei gratis skanning
 exposure-chart-scan-in-progress-prompt = <b>Skanning i gang:</b> adresse, familiemedlemmar, og meir, er ikkje inkludert enno.
 modal-active-number-of-exposures-title = Om antal aktive eksponeringar
 modal-fixed-number-of-exposures-title = Om talet på dine løyste eksponeringar
+modal-fixed-number-of-exposures-all = Dette diagrammet inkluderer det samla talet datalekkasjar som er løyst for alle e-postadresser du overvaker akkurat no. Når eksponeringar er merkte som løyste, blir dei lagt til i totalen her.
 modal-cta-ok = OK
 modal-cta-got-it = Eg forstår
 open-modal-alt = Opne modal
@@ -41,7 +42,7 @@ progress-card-heres-what-we-fixed-headline-all = Du har løyst følgjande
 progress-card-manually-fixed-headline = Manuelt løyst
 dashboard-tab-label-action-needed = Handling påkravd
 dashboard-tab-label-fixed = Løyst
-dashboard-exposures-all-fixed-label = Alt løyst her!
+dashboard-exposures-all-fixed-label = Alt er løyst!
 dashboard-exposures-area-headline = Sjå alle nettstadar der informasjonen din er eksponert
 # This is the label on a button that opens a popover menu, which shows a menu to adjust filters for the listed exposures.
 dashboard-exposures-filter = Filter
