@@ -56,6 +56,17 @@ export const MonthlyReportFreeUserEmail = (
         <mj-preview>
           {l10n.getString("email-monthly-report-hero-free-heading")}
         </mj-preview>
+        <mj-style>
+          {/* This class rounds the edges of a table element */}
+          {`
+            .stat_column 
+              table {
+                border-collapse: separate;
+                border-spacing: 0;
+                padding: 10px 0;
+            }
+        `}
+        </mj-style>
       </mj-head>
       <mj-body>
         <EmailHero
@@ -66,55 +77,72 @@ export const MonthlyReportFreeUserEmail = (
           })}
           subheading={l10n.getString("email-monthly-report-hero-free-body")}
         />
-        <mj-section padding="24px">
-          <mj-column>
-            <mj-text align="center">
-              {l10n.getFragment(
-                "email-monthly-report-free-summary-auto-removed",
-                {
-                  elems: {
-                    stat: (
-                      <div
-                        style={{
-                          fontWeight: "bold",
-                          fontSize: "60px",
-                          lineHeight: "68px",
-                        }}
-                      />
-                    ),
+        <mj-section padding="10px">
+          <mj-text align="center">
+            <h2>
+              {l10n.getString("email-monthly-report-free-summary-heading")}
+            </h2>
+          </mj-text>
+          <mj-wrapper full-width="full-width">
+            <mj-column
+              css-class="stat_column"
+              inner-border="2px solid #9E9E9E"
+              inner-border-radius="10px"
+              padding="8px"
+            >
+              <mj-text align="center" color="#9E9E9E">
+                {l10n.getFragment(
+                  "email-monthly-report-free-summary-auto-removed",
+                  {
+                    elems: {
+                      stat: (
+                        <div
+                          style={{
+                            fontWeight: "bold",
+                            fontSize: "40px",
+                            paddingBottom: "4px",
+                          }}
+                        />
+                      ),
+                    },
+                    vars: {
+                      // Since this goes out to free users, the auto-removed data broker count will always be 0
+                      data_point_count: 0,
+                    },
                   },
-                  vars: {
-                    // Since this goes out to free users, the auto-removed data broker count will always be 0
-                    data_point_count: 0,
+                )}
+              </mj-text>
+            </mj-column>
+            <mj-column
+              css-class="stat_column"
+              inner-border="2px solid #7542E5"
+              inner-border-radius="10px"
+              padding="8px"
+            >
+              <mj-text align="center" color="#7542E5">
+                {l10n.getFragment(
+                  "email-monthly-report-free-summary-manually-resolved",
+                  {
+                    elems: {
+                      stat: (
+                        <div
+                          style={{
+                            fontWeight: "bold",
+                            fontSize: "40px",
+                            paddingBottom: "4px",
+                          }}
+                        />
+                      ),
+                    },
+                    vars: {
+                      data_point_count:
+                        props.dataSummary.dataBrokerManuallyResolvedNum,
+                    },
                   },
-                },
-              )}
-            </mj-text>
-          </mj-column>
-          <mj-column>
-            <mj-text align="center">
-              {l10n.getFragment(
-                "email-monthly-report-free-summary-manually-resolved",
-                {
-                  elems: {
-                    stat: (
-                      <div
-                        style={{
-                          fontWeight: "bold",
-                          fontSize: "60px",
-                          lineHeight: "68px",
-                        }}
-                      />
-                    ),
-                  },
-                  vars: {
-                    data_point_count:
-                      props.dataSummary.dataBrokerManuallyResolvedNum,
-                  },
-                },
-              )}
-            </mj-text>
-          </mj-column>
+                )}
+              </mj-text>
+            </mj-column>
+          </mj-wrapper>
         </mj-section>
         <DataPointCount
           subscriber={props.subscriber}
