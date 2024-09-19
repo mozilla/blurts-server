@@ -94,6 +94,7 @@ const mockedDataSummary = {
 export const MonthlyReportFreeUserNoScanWithExposures: Story = {
   name: "Monthly Report Free User No Scan With Exposures",
   args: {
+    unsubscribeLink: "/",
     breach: createRandomHibpListing(),
     breachedEmail: "example@example.com",
     utmCampaignId: "test",
@@ -113,6 +114,7 @@ export const MonthlyReportFreeUserNoScanWithExposures: Story = {
 export const MonthlyReportFreeUserWithScan: Story = {
   name: "Monthly Report Free User With Scan",
   args: {
+    unsubscribeLink: "/",
     breach: createRandomHibpListing(),
     breachedEmail: "example@example.com",
     utmCampaignId: "test",
@@ -132,6 +134,7 @@ export const MonthlyReportFreeUserWithScan: Story = {
 export const MonthlyReportFreeUserManuallyResolvedExposures: Story = {
   name: "Monthly Report Free User Manually Resolved Exposures",
   args: {
+    unsubscribeLink: "/",
     breach: createRandomHibpListing(),
     breachedEmail: "example@example.com",
     utmCampaignId: "test",
@@ -151,6 +154,7 @@ export const MonthlyReportFreeUserManuallyResolvedExposures: Story = {
 export const MonthlyReportFreeUserNoManuallyResolvedExposures: Story = {
   name: "Monthly Report Free User Without Manually Resolved Exposures",
   args: {
+    unsubscribeLink: "/",
     breach: createRandomHibpListing(),
     breachedEmail: "example@example.com",
     utmCampaignId: "test",
@@ -173,6 +177,7 @@ export const MonthlyReportFreeUserNoManuallyResolvedExposures: Story = {
 export const MonthlyReportFreeUserNoRemainingExpousres: Story = {
   name: "Monthly Report Free User No Remaining Exposures",
   args: {
+    unsubscribeLink: "/",
     breach: createRandomHibpListing(),
     breachedEmail: "example@example.com",
     utmCampaignId: "test",

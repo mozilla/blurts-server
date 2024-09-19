@@ -28,6 +28,7 @@ export type MonthlyReportFreeUserEmailProps = {
   subscriber: SubscriberRow;
   month: string;
   dataSummary: DashboardSummary;
+  unsubscribeLink: string;
 };
 
 export const MonthlyReportFreeUserEmail = (
@@ -240,7 +241,12 @@ export const MonthlyReportFreeUserEmail = (
         )}
 
         <EmailHeader l10n={l10n} utm_campaign={props.utmCampaignId} />
-        <EmailFooter l10n={l10n} utm_campaign={props.utmCampaignId} />
+        <EmailFooter
+          l10n={l10n}
+          utm_campaign={props.utmCampaignId}
+          subscriber={props.subscriber}
+          unsubscribeLink={props.unsubscribeLink}
+        />
       </mj-body>
     </mjml>
   );

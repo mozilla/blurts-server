@@ -117,3 +117,4 @@ email-monthly-report-free-banner-cta-upgrade = Get { -brand-monitor-plus }
 email-monthly-report-hero-free-no-breaches-heading = Great work!
 email-monthly-report-hero-free-no-breaches-body = You currently have no data breaches that need action.
 email-monthly-report-hero-free-no-breaches-cta = View your Dashboard
+email-unsubscribe-link = <link_to_unsub>Unsubscribe from this email</link_to_unsub> anytime.
