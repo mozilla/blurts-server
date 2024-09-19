@@ -12,7 +12,7 @@ email-header-button-sign-in = Войти
 
 email-footer-support-heading = Есть вопросы о { -brand-mozilla-monitor }?
 email-footer-support-content = Посетите наш <support-link>Центр поддержки</support-link> для получения помощи
-email-footer-trigger-transactional = Вы получите это письмо как подписчик { -brand-mozilla-monitor }.
+email-footer-trigger-transactional = Вы получаете эти письма как подписчик { -brand-mozilla-monitor }.
 email-footer-source-hibp = Данные об утечке данных предоставлены <hibp-link>{ -brand-HIBP }</hibp-link>
 email-footer-logo-mozilla-alt = { -brand-mozilla }
 email-footer-meta-privacy-notice = Приватность
@@ -75,7 +75,7 @@ email-spotted-new-breach = Мы обнаружили новую утечку д�
 ## Redesigned breach alert email
 
 email-breach-alert-all-subject = Обнаружена новая утечка данных
-email-breach-alert-all-preview = Мы проведем вас через шаги для её решения.
+email-breach-alert-all-preview = Мы проведём вас через шаги для её решения.
 email-breach-alert-all-hero-heading = Вы стали жертвой новой утечки данных
 email-breach-alert-all-hero-subheading = Не волнуйтесь, мы можем помочь вам решить эту проблему
 email-breach-alert-all-lead = { -brand-mozilla-monitor } обнаружил следующую утечку данных, включающую вашу личную информацию:

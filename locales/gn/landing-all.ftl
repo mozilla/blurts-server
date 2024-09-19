@@ -8,6 +8,7 @@ landing-all-hero-lead = Rohesa’ỹijo mba’ekuaarã ñembogua rohecha hag̃ua
 landing-all-hero-emailform-input-placeholder = yourname@example.com
 landing-all-hero-emailform-input-label = Ehai ne ñanduti veve ehechajey hag̃ua eimépa mba’ekuaarã ñemboguápe.
 landing-all-hero-emailform-submit-label = Emoha’ãnga reiete
+landing-all-hero-emailform-submit-sign-up-label = Eñemboheraguapy rei emoha’ãnga hag̃ua
 # This is a label underneath a big number "14" - it's an image that demos Monitor.
 landing-all-hero-image-chart-label = ejehechauka
 

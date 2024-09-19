@@ -11,7 +11,7 @@ email-header-button-sign-in = Anmelden
 ## Email footers
 
 email-footer-support-heading = Fragen zu { -brand-mozilla-monitor }?
-email-footer-support-content = Besuchen Sie unser <support-link>Hilfe-Zentrum</support-link>, um Hilfe zu erhalten
+email-footer-support-content = Besuchen Sie unser <support-link>Hilfe-Zentrum</support-link>, um Unterstützung zu erhalten
 email-footer-trigger-transactional = Sie erhalten diese E-Mail als Abonnent von { -brand-mozilla-monitor }.
 email-footer-source-hibp = Die Informationen zu Datenlecks wurden bereitgestellt von <hibp-link>{ -brand-HIBP }</hibp-link>
 email-footer-logo-mozilla-alt = { -brand-mozilla }
@@ -76,11 +76,11 @@ email-spotted-new-breach = Wir haben ein neues Datenleck entdeckt
 
 email-breach-alert-all-subject = Neues Datenleck erkannt
 email-breach-alert-all-preview = Wir führen Sie durch die Schritte, um das Problem zu lösen.
-email-breach-alert-all-hero-heading = Du bist von einem neuen Datenleck betroffen
+email-breach-alert-all-hero-heading = Sie sind von einem neuen Datenleck betroffen
 email-breach-alert-all-hero-subheading = Keine Sorge, wir können Ihnen bei der Lösung dieses Problems helfen
-email-breach-alert-all-lead = { -brand-mozilla-monitor } hat den folgenden Datenleck entdeckt, der Ihre persönlichen Daten enthält:
+email-breach-alert-all-lead = { -brand-mozilla-monitor } hat das folgenden Datenleck entdeckt, das Ihre persönlichen Daten betrifft:
 email-breach-alert-all-source-title = Quelle des Datenlecks:
-email-breach-alert-all-data-points-title = Deine offengelegten Daten:
-email-breach-alert-all-next-steps-lead = Wir führen Sie Schritt für Schritt bei der Behebung dieses Datenlecks an.
-email-breach-alert-all-next-steps-cta-label = Einführung
+email-breach-alert-all-data-points-title = Ihre offengelegten Daten:
+email-breach-alert-all-next-steps-lead = Wir führen Sie durch die Schritte zur Behebung dieses Datenlecks.
+email-breach-alert-all-next-steps-cta-label = Erste Schritte
 email-breach-alert-all-next-steps-button-dashboard = Zur Übersicht

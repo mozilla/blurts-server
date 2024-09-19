@@ -75,10 +75,10 @@ email-spotted-new-breach = Εντοπίσαμε μια νέα παραβίαση
 ## Redesigned breach alert email
 
 email-breach-alert-all-subject = Εντοπίστηκε νέα παραβίαση δεδομένων
-email-breach-alert-all-preview = Θα σας καθοδηγήσουμε στα βήματα για την επίλυσή του.
-email-breach-alert-all-hero-heading = Έχετε βρεθεί σε νέα παραβίαση δεδομένων
+email-breach-alert-all-preview = Θα σας καθοδηγήσουμε στα βήματα για την επίλυσή της.
+email-breach-alert-all-hero-heading = Έχετε εμφανιστεί σε μια νέα παραβίαση δεδομένων
 email-breach-alert-all-hero-subheading = Μην ανησυχείτε, μπορούμε να σας βοηθήσουμε να επιλύσετε αυτήν την έκθεση
-email-breach-alert-all-lead = Το { -brand-mozilla-monitor } ανακάλυψε την ακόλουθη παραβίαση δεδομένων, που περιλαμβάνει τα προσωπικά σας στοιχεία:
+email-breach-alert-all-lead = Το { -brand-mozilla-monitor } ανακάλυψε την ακόλουθη παραβίαση δεδομένων, που περιλαμβάνει προσωπικά σας στοιχεία:
 email-breach-alert-all-source-title = Πηγή παραβίασης:
 email-breach-alert-all-data-points-title = Τα εκτεθειμένα δεδομένα σας:
 email-breach-alert-all-next-steps-lead = Θα σας καθοδηγήσουμε βήμα προς βήμα για την επίλυση αυτής της παραβίασης δεδομένων.

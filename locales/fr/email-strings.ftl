@@ -12,7 +12,7 @@ email-header-button-sign-in = Connexion
 
 email-footer-support-heading = Des questions sur { -brand-mozilla-monitor } ?
 email-footer-support-content = Consultez notre <support-link>Centre d’assistance</support-link> pour obtenir de l’aide
-email-footer-trigger-transactional = Vous recevez ce message en tant qu’abonné de { -brand-mozilla-monitor }.
+email-footer-trigger-transactional = Vous recevez ce message en tant qu’abonné·e à { -brand-mozilla-monitor }.
 email-footer-source-hibp = Les informations sur les fuites de données sont fournies par <hibp-link>{ -brand-HIBP }</hibp-link>
 email-footer-logo-mozilla-alt = { -brand-mozilla }
 email-footer-meta-privacy-notice = Vie privée
@@ -75,12 +75,12 @@ email-spotted-new-breach = Nous avons détecté une nouvelle fuite de données
 ## Redesigned breach alert email
 
 email-breach-alert-all-subject = Nouvelle fuite de données détectée
-email-breach-alert-all-preview = Nous vous guiderons à travers les étapes pour le résoudre.
-email-breach-alert-all-hero-heading = Vous avez été impliqué dans une nouvelle fuite de données
+email-breach-alert-all-preview = Nous allons vous guider pas à pas pour résoudre le problème.
+email-breach-alert-all-hero-heading = Une nouvelle fuite de données vous concerne
 email-breach-alert-all-hero-subheading = Ne vous inquiétez pas, nous pouvons vous aider à résoudre ce problème
-email-breach-alert-all-lead = { -brand-mozilla-monitor } a découvert la fuite de données suivante qui comprend des informations personnelles :
+email-breach-alert-all-lead = { -brand-mozilla-monitor } a détecté la fuite de données suivante qui comprend vos informations personnelles :
 email-breach-alert-all-source-title = Source de la fuite :
-email-breach-alert-all-data-points-title = Vos données exposées :
+email-breach-alert-all-data-points-title = Vos données qui ont fuité :
 email-breach-alert-all-next-steps-lead = Nous vous guiderons pas à pas sur la façon de résoudre cette fuite de données.
 email-breach-alert-all-next-steps-cta-label = Voyons tout ça de plus près
 email-breach-alert-all-next-steps-button-dashboard = Accéder au tableau de bord
