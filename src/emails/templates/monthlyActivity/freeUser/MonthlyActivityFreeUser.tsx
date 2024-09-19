@@ -122,116 +122,118 @@ export const MonthlyReportFreeUserEmail = (
             ctaTarget={`${process.env.SERVER_URL}/user/dashboard`}
           />
         )}
-
-        <mj-section>
-          <mj-text align="center" font-size="18px">
-            <h3>
-              {l10n.getString("email-monthly-report-free-summary-heading")}
-            </h3>
-          </mj-text>
-          <mj-section css-class="max_width" padding-bottom="0">
-            <mj-wrapper padding="0">
-              <mj-group>
-                <mj-column
-                  css-class="stat_column"
-                  inner-border="2px solid #9E9E9E"
-                  inner-border-radius="10px"
-                  padding="8px"
-                >
-                  <mj-text align="center" color="#9E9E9E">
-                    {l10n.getFragment(
-                      "email-monthly-report-free-summary-auto-removed",
-                      {
-                        elems: {
-                          stat: (
-                            <div
-                              style={{
-                                fontWeight: "bold",
-                                fontSize: "50px",
-                                paddingBottom: "4px",
-                              }}
-                            />
-                          ),
-                        },
-                        vars: {
-                          // Since this goes out to free users, the auto-removed data broker count will always be 0
-                          data_point_count: 0,
-                        },
-                      },
-                    )}
-                  </mj-text>
-                </mj-column>
-                <mj-column
-                  css-class={`stat_column ${props.dataSummary.dataBrokerManuallyResolvedNum > 0 ? `manually_resolved_column_sparkles` : ``}`}
-                  inner-border={`2px solid ${props.dataSummary.dataBrokerManuallyResolvedNum > 0 ? purpleActiveColor : greyInactiveColor}`}
-                  inner-border-radius="10px"
-                  padding="8px"
-                >
-                  <mj-text
-                    align="center"
-                    color={
-                      props.dataSummary.dataBrokerManuallyResolvedNum > 0
-                        ? purpleActiveColor
-                        : greyInactiveColor
-                    }
+        {isEligibleForPremium(assumedCountryCode) && (
+          <mj-section>
+            <mj-text align="center" font-size="18px">
+              <h3>
+                {l10n.getString("email-monthly-report-free-summary-heading")}
+              </h3>
+            </mj-text>
+            <mj-section css-class="max_width" padding-bottom="0">
+              <mj-wrapper padding="0">
+                <mj-group>
+                  <mj-column
+                    css-class="stat_column"
+                    inner-border="2px solid #9E9E9E"
+                    inner-border-radius="10px"
+                    padding="8px"
                   >
-                    {l10n.getFragment(
-                      "email-monthly-report-free-summary-manually-resolved",
-                      {
-                        elems: {
-                          stat: (
-                            <div
-                              style={{
-                                fontWeight: "bold",
-                                fontSize: "50px",
-                                paddingBottom: "4px",
-                              }}
-                            />
-                          ),
+                    <mj-text align="center" color="#9E9E9E">
+                      {l10n.getFragment(
+                        "email-monthly-report-free-summary-auto-removed",
+                        {
+                          elems: {
+                            stat: (
+                              <div
+                                style={{
+                                  fontWeight: "bold",
+                                  fontSize: "50px",
+                                  paddingBottom: "4px",
+                                }}
+                              />
+                            ),
+                          },
+                          vars: {
+                            // Since this goes out to free users, the auto-removed data broker count will always be 0
+                            data_point_count: 0,
+                          },
                         },
-                        vars: {
-                          data_point_count:
-                            props.dataSummary.dataBrokerManuallyResolvedNum,
-                        },
-                      },
-                    )}
-                  </mj-text>
-                </mj-column>
-              </mj-group>
-            </mj-wrapper>
-
-            <mj-wrapper padding="0">
-              <mj-group>
-                <mj-column>
-                  <mj-group css-class="upgrade_link">
-                    <mj-image
-                      alt=""
-                      src={`${process.env.SERVER_URL}/images/email/icons/lock-icon.png`}
-                      width="14px"
-                      height="16px"
-                    />
-                    <mj-button
-                      href={premiumSubscriptionUrlObject.href}
-                      background-color="transparent"
-                      line-height="0"
-                      color="#0060DF"
-                      text-decoration="underline"
-                      inner-padding="0"
-                      text-align="left"
+                      )}
+                    </mj-text>
+                  </mj-column>
+                  <mj-column
+                    css-class={`stat_column ${props.dataSummary.dataBrokerManuallyResolvedNum > 0 ? `manually_resolved_column_sparkles` : ``}`}
+                    inner-border={`2px solid ${props.dataSummary.dataBrokerManuallyResolvedNum > 0 ? purpleActiveColor : greyInactiveColor}`}
+                    inner-border-radius="10px"
+                    padding="8px"
+                  >
+                    <mj-text
+                      align="center"
+                      color={
+                        props.dataSummary.dataBrokerManuallyResolvedNum > 0
+                          ? purpleActiveColor
+                          : greyInactiveColor
+                      }
                     >
-                      <i>
-                        {l10n.getString(
-                          "email-monthly-report-free-upgrade-cta",
-                        )}
-                      </i>
-                    </mj-button>
-                  </mj-group>
-                </mj-column>
-                <mj-column>&nbsp;</mj-column>
-              </mj-group>
-            </mj-wrapper>
+                      {l10n.getFragment(
+                        "email-monthly-report-free-summary-manually-resolved",
+                        {
+                          elems: {
+                            stat: (
+                              <div
+                                style={{
+                                  fontWeight: "bold",
+                                  fontSize: "50px",
+                                  paddingBottom: "4px",
+                                }}
+                              />
+                            ),
+                          },
+                          vars: {
+                            data_point_count:
+                              props.dataSummary.dataBrokerManuallyResolvedNum,
+                          },
+                        },
+                      )}
+                    </mj-text>
+                  </mj-column>
+                </mj-group>
+              </mj-wrapper>
+
+              <mj-wrapper padding="0">
+                <mj-group>
+                  <mj-column>
+                    <mj-group css-class="upgrade_link">
+                      <mj-image
+                        alt=""
+                        src={`${process.env.SERVER_URL}/images/email/icons/lock-icon.png`}
+                        width="14px"
+                        height="16px"
+                      />
+                      <mj-button
+                        href={premiumSubscriptionUrlObject.href}
+                        background-color="transparent"
+                        line-height="0"
+                        color="#0060DF"
+                        text-decoration="underline"
+                        inner-padding="0"
+                        text-align="left"
+                      >
+                        <i>
+                          {l10n.getString(
+                            "email-monthly-report-free-upgrade-cta",
+                          )}
+                        </i>
+                      </mj-button>
+                    </mj-group>
+                  </mj-column>
+                  <mj-column>&nbsp;</mj-column>
+                </mj-group>
+              </mj-wrapper>
+            </mj-section>
           </mj-section>
-        </mj-section>
+        )}
+
         {isEligibleForPremium(assumedCountryCode) && (
           <EmailBanner
             variant="dark"
