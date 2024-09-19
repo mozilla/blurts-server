@@ -89,6 +89,11 @@
             "importNames": ["getServerSession"],
             "message":
               "Please use the `getServerSession` wrapper function from `/src/app/functions/server/getServerSession.ts` instead of the one from next-auth, since the latter's doesn't enforce passing the auth configuration object, resulting in broken sessions."
+          },
+          {
+            "name": "server-only",
+            "message":
+              "Please import `/src/app/functions/server/notInClientComponent` instead of `server-only`, since the latter will also error in non-Next.js environments like cron jobs."
           }
         ]
       }
