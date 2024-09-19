@@ -91,8 +91,8 @@ const mockedDataSummary = {
   fixedSanitizedDataPoints: [],
 };
 
-export const MonthlyReportFreeUserNoScan: Story = {
-  name: "Monthly Report Free User No Scan",
+export const MonthlyReportFreeUserNoScanWithExposures: Story = {
+  name: "Monthly Report Free User No Scan With Exposures",
   args: {
     breach: createRandomHibpListing(),
     breachedEmail: "example@example.com",
@@ -159,6 +159,28 @@ export const MonthlyReportFreeUserNoManuallyResolvedExposures: Story = {
     dataSummary: {
       ...mockedDataSummary,
       dataBrokerManuallyResolvedNum: 0,
+    },
+    subscriber: {
+      onerep_profile_id: 1,
+      fxa_profile_json: {
+        locale: "en-US",
+        subscriptions: ["not-monitor-plus"],
+      },
+    } as SubscriberRow,
+  },
+};
+
+export const MonthlyReportFreeUserNoRemainingExpousres: Story = {
+  name: "Monthly Report Free User No Remaining Exposures",
+  args: {
+    breach: createRandomHibpListing(),
+    breachedEmail: "example@example.com",
+    utmCampaignId: "test",
+    utmContentSuffix: "test",
+    month: monthNames[month],
+    dataSummary: {
+      ...mockedDataSummary,
+      dataBreachUnresolvedNum: 0,
     },
     subscriber: {
       onerep_profile_id: 1,

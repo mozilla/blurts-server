@@ -114,3 +114,6 @@ email-monthly-report-free-banner-heading = { -brand-monitor } now protects you e
 email-monthly-report-free-banner-body = We can find your personal info on data broker sites that sell it for a profit.
 email-monthly-report-free-banner-cta-free-scan = Get first scan free
 email-monthly-report-free-banner-cta-upgrade = Get { -brand-monitor-plus }
+email-monthly-report-hero-free-no-breaches-heading = Great work!
+email-monthly-report-hero-free-no-breaches-body = You currently have no data breaches that need action.
+email-monthly-report-hero-free-no-breaches-cta = View your Dashboard

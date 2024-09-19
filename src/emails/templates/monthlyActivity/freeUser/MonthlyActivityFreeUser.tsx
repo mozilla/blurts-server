@@ -95,6 +95,31 @@ export const MonthlyReportFreeUserEmail = (
           })}
           subheading={l10n.getString("email-monthly-report-hero-free-body")}
         />
+        {/* Show the Data Point Count if there are unresolved breaches, otherwise show the congratulatory banner */}
+        {props.dataSummary.dataBreachUnresolvedNum > 0 ? (
+          <DataPointCount
+            subscriber={props.subscriber}
+            l10n={l10n}
+            utmCampaignId={props.utmCampaignId}
+            utmContentSuffix={props.utmContentSuffix}
+            dataSummary={props.dataSummary}
+          />
+        ) : (
+          <EmailBanner
+            variant="light"
+            heading={l10n.getString(
+              "email-monthly-report-hero-free-no-breaches-heading",
+            )}
+            content={l10n.getString(
+              "email-monthly-report-hero-free-no-breaches-body",
+            )}
+            ctaLabel={l10n.getString(
+              "email-monthly-report-hero-free-no-breaches-cta",
+            )}
+            ctaTarget={`${process.env.SERVER_URL}/user/dashboard`}
+          />
+        )}
+
         <mj-section>
           <mj-text align="center" font-size="18px">
             <h3>
@@ -204,15 +229,9 @@ export const MonthlyReportFreeUserEmail = (
             </mj-wrapper>
           </mj-section>
         </mj-section>
-        <DataPointCount
-          subscriber={props.subscriber}
-          l10n={l10n}
-          utmCampaignId={props.utmCampaignId}
-          utmContentSuffix={props.utmContentSuffix}
-          dataSummary={props.dataSummary}
-        />
         {isEligibleForPremium(assumedCountryCode) && (
           <EmailBanner
+            variant="dark"
             heading={l10n.getString("email-monthly-report-free-banner-heading")}
             content={l10n.getString("email-monthly-report-free-banner-body")}
             ctaLabel={bannerDataCta.label}
