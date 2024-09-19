@@ -101,7 +101,6 @@ email-monthly-report-hero-free-body = A summary of what needs your attention, an
 #   $data_point_count (number) - The number of data breaches that were exposed
 email-monthly-report-free-scan-results-data-points-label = <stat>{ $data_point_count }</stat> Data breaches
 email-monthly-report-free-results-heading = Current exposures
-email-monthly-report-free-breaches = <stat>{ $data_point_count }</stat> Data breaches
 email-monthly-report-free-summary-heading = What’s happened in the last month
 # Variables:
 #   $data_point_count (number) - The number of data brokers that were automatically resolved
