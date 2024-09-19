@@ -58,7 +58,9 @@ export const MonthlyReportFreeUserEmail = (
     <mjml>
       <mj-head>
         <mj-preview>
-          {l10n.getString("email-monthly-report-hero-free-heading")}
+          {l10n.getString("email-monthly-report-hero-free-heading", {
+            monthOfReport: props.month,
+          })}
         </mj-preview>
         <mj-style>
           {/* This class rounds the edges of a table element */}
