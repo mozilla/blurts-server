@@ -13,6 +13,7 @@ unsubscribe-cta = Abbestellen
 
 unsubscribe-success-from-monthly-report-header = Ihr Abonnement wurde entfernt
 unsubscribe-success-from-monthly-report-body = Sie können den Newsletter erneut abonnieren oder Ihre E-Mail-Einstellungen jederzeit in Ihren { -brand-monitor }-Einstellungen ändern.
+unsubscribe-success-cta = Bei { -brand-monitor } anmelden
 
 # Error warning
 

@@ -2,23 +2,23 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-# Firefox Monitor is a product name and should not be translated.
--product-name = Firefox Monitor
-# Firefox is a brand name and should not be translated.
--brand-name = Firefox
+
+## Email headers
+
+email-header-logo-alt = { -brand-mozilla-monitor }
+email-header-button-sign-in = Aperir session
+
+## Email footers
+
+email-footer-source-hibp = Violation de datos fornite per <hibp-link>{ -brand-HIBP }</hibp-link>
+email-footer-logo-mozilla-alt = { -brand-mozilla }
+email-footer-meta-privacy-notice = Confidentialitate
 # Firefox Relay is a product name and should not be translated.
 -product-name-relay = Firefox Relay
 # Mozilla VPN is a product name and should not be translated.
 -product-name-vpn = Mozilla VPN
 # A link to legal information about mozilla products.
 legal = Legal
-# Unsubscribe link in email.
-email-unsub-link = Remover le subscription
-# This string appears in the footer of breach report and breach alert emails.
-# { $unsubLink } is a link to the user's dashboard where they can unsubscribe from Monitor
-# and uses the text from { email-unsub-link }. { $faqLink } is a link to the
-# Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
-email-footer-blurb = Tu recipe iste email perque tu es inscribite al avisos de { -product-name }. Non vole tu plus iste emails? { $unsubLink }. Iste email ha essite inviate automaticamente. Pro supporto, visita { $faqLink }.
 # Button text
 verify-email-cta = Verificar le email
 # Headline of verification email
@@ -56,6 +56,7 @@ email-breach-summary = Ecce tu summario de violationes de datos
 # Variables:
 #   $email-address (string) - Email address, bolded
 email-breach-detected = Le resultatos del recerca pro tu conto { $email-address } ha disvelate que tu email forsan ha essite exponite. Nos consilia que tu ora age pro resolver iste violation.
+# Deprecated after the redesigned breach alert email is launched
 # Variables:
 #   $email-address (string) - Email address
 email-breach-detected-2 = Le resultatos del recerca pro tu conto <b> { $email-address } </b> ha disvelate que tu email forsan ha essite exponite. Nos consilia que tu ora age pro resolver iste violation.
@@ -63,4 +64,10 @@ email-dashboard-cta = Va al pannello de controlo
 
 ## Breach alert
 
+# Deprecated after the redesigned breach alert email is launched
 email-spotted-new-breach = Nos ha individuate un nove violation de datos
+
+## Redesigned breach alert email
+
+email-breach-alert-all-next-steps-cta-label = Que nos comencia
+email-breach-alert-all-next-steps-button-dashboard = Va al pannello de controlo

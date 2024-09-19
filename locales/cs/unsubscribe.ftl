@@ -13,6 +13,7 @@ unsubscribe-cta = Zrušit odběr
 
 unsubscribe-success-from-monthly-report-header = Nyní jste se odhlásili
 unsubscribe-success-from-monthly-report-body = V nastavení { -brand-monitor(case: "gen") } se můžete kdykoli znovu přihlásit nebo změnit nastavení zasílání e-mailů.
+unsubscribe-success-cta = Přihlášení k { -brand-monitor(case: "dat") }
 
 # Error warning
 

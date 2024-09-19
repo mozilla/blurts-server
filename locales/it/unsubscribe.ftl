@@ -13,6 +13,7 @@ unsubscribe-cta = Annulla iscrizione
 
 unsubscribe-success-from-monthly-report-header = L’iscrizione è stata annullata
 unsubscribe-success-from-monthly-report-body = Puoi iscriverti nuovamente o aggiornare le tue preferenze relative all’email in qualsiasi momento dalle impostazioni di { -brand-monitor }.
+unsubscribe-success-cta = Accedi a { -brand-monitor }
 
 # Error warning
 
