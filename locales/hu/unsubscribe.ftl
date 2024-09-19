@@ -13,6 +13,7 @@ unsubscribe-cta = Leiratkozás
 
 unsubscribe-success-from-monthly-report-header = Most leiratkozott
 unsubscribe-success-from-monthly-report-body = Bármikor újra feliratkozhat, vagy frissítheti az e-mail-beállításait a { -brand-monitor } beállításaiban.
+unsubscribe-success-cta = Jelentkezzen be a { -brand-monitor }ba
 
 # Error warning
 
