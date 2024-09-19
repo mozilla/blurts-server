@@ -13,6 +13,7 @@ unsubscribe-cta = 取消訂閱
 
 unsubscribe-success-from-monthly-report-header = 您已退訂成功。
 unsubscribe-success-from-monthly-report-body = 您可以隨時到 { -brand-monitor } 設定重新訂閱，或更新收信偏好。
+unsubscribe-success-cta = 登入 { -brand-monitor }
 
 # Error warning
 

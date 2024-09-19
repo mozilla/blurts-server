@@ -13,6 +13,7 @@ unsubscribe-cta = Ofmelde
 
 unsubscribe-success-from-monthly-report-header = Jo binne no ôfmelden.
 unsubscribe-success-from-monthly-report-body = Jo kinne jo op elk momint opnij ynskriuwe of bywurkje fan jo { -brand-monitor }-ynstellingen út.
+unsubscribe-success-cta = Oanmelde by { -brand-monitor }
 
 # Error warning
 

@@ -13,6 +13,7 @@ unsubscribe-cta = Berhenti berlangganan
 
 unsubscribe-success-from-monthly-report-header = Anda sekarang berhenti berlangganan
 unsubscribe-success-from-monthly-report-body = Anda dapat berlangganan kembali atau memperbarui preferensi surel Anda kapan saja dari pengaturan { -brand-monitor } Anda.
+unsubscribe-success-cta = Masuk ke { -brand-monitor }
 
 # Error warning
 

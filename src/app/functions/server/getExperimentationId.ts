@@ -2,11 +2,11 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import "server-only";
 import { cookies } from "next/headers";
 import { UUID, randomUUID } from "crypto";
 import { Session } from "next-auth";
 import { v5 as uuidv5 } from "uuid";
+import "./notInClientComponent";
 
 export type ExperimentationId = UUID | `guest-${UUID}`;
 

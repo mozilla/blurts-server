@@ -10,7 +10,7 @@ email-header-button-sign-in = Bejelentkezés
 
 ## Email footers
 
-email-footer-support-heading = Kérdése van a { -brand-mozilla-monitor }ról?
+email-footer-support-heading = Kérdése van a { -brand-mozilla-monitor }ral kapcsolatban?
 email-footer-support-content = Segítségért keresse fel a <support-link>Támogatói központunkat</support-link>
 email-footer-trigger-transactional = Ezt az e-mailt a { -brand-mozilla-monitor } előfizetőjeként kapja.
 email-footer-source-hibp = Az adatvédelmi incidensek adatait a <hibp-link>{ -brand-HIBP }</hibp-link> szolgáltatta

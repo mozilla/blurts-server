@@ -13,6 +13,7 @@ unsubscribe-cta = Κατάργηση εγγραφής
 
 unsubscribe-success-from-monthly-report-header = Έχετε πλέον καταργήσει την εγγραφή σας
 unsubscribe-success-from-monthly-report-body = Μπορείτε να εγγραφείτε ξανά ή να ενημερώσετε τις προτιμήσεις email σας ανά πάσα στιγμή από τις ρυθμίσεις του { -brand-monitor }.
+unsubscribe-success-cta = Σύνδεση στο { -brand-monitor }
 
 # Error warning
 

@@ -5,29 +5,34 @@
 "use client";
 
 import { useState } from "react";
-import { Button } from "../../../../../components/client/Button";
 import styles from "./UnsubscribeMonthlyReport.module.scss";
 import UnsubscriptionImage from "./images/confirm-unsubscribe.svg";
 import Image from "next/image";
 import { useL10n } from "../../../../../hooks/l10n";
 import { toast } from "react-toastify";
+import { TelemetryButton } from "../../../../../components/client/TelemetryButton";
+import { useTelemetry } from "../../../../../hooks/useTelemetry";
+import { signIn } from "next-auth/react";
 
 export const UnsubscribeMonthlyReportView = ({ token }: { token: string }) => {
+  const recordTelemetry = useTelemetry();
+  const l10n = useL10n();
   const [unsubscribeSuccess, setUnsubscribeSuccess] = useState(false);
 
-  const l10n = useL10n();
   const copy = {
     confirmation: {
       header: l10n.getString("unsubscribe-from-monthly-report-header"),
       body: l10n.getString("unsubscribe-from-monthly-report-body"),
+      cta: l10n.getString("unsubscribe-cta"),
     },
     success: {
       header: l10n.getString("unsubscribe-success-from-monthly-report-header"),
       body: l10n.getString("unsubscribe-success-from-monthly-report-body"),
+      cta: l10n.getString("unsubscribe-success-cta"),
     },
   };
 
-  const { header, body } = unsubscribeSuccess
+  const { header, body, cta } = unsubscribeSuccess
     ? copy.success
     : copy.confirmation;
 
@@ -44,7 +49,13 @@ export const UnsubscribeMonthlyReportView = ({ token }: { token: string }) => {
               try_again_link: (
                 <button
                   className={styles.tryAgain}
-                  onClick={() => void handleUnsubscription()}
+                  onClick={() => {
+                    recordTelemetry("button", "click", {
+                      button_id:
+                        "unsuccessful_unsubscribe_from_monthly_report_try_again",
+                    });
+                    void handleUnsubscription();
+                  }}
                 />
               ),
             },
@@ -75,13 +86,34 @@ export const UnsubscribeMonthlyReportView = ({ token }: { token: string }) => {
       <Image src={UnsubscriptionImage} alt="" />
       <h1>{header}</h1>
       <p>{body}</p>
-      <Button
+      <TelemetryButton
+        event={
+          !unsubscribeSuccess
+            ? {
+                module: "ctaButton",
+                name: "click",
+                data: {
+                  button_id: "unsubscribe_from_monthly_report",
+                },
+              }
+            : {
+                module: "ctaButton",
+                name: "click",
+                data: {
+                  button_id: "unsubscribe_from_monthly_report_sign_in",
+                },
+              }
+        }
         className={styles.cta}
         variant="primary"
-        onPress={() => void handleUnsubscription()}
+        onPress={() => {
+          !unsubscribeSuccess
+            ? void handleUnsubscription()
+            : void signIn("fxa", { callbackUrl: "/user/dashboard" });
+        }}
       >
-        {l10n.getString("unsubscribe-cta")}
-      </Button>
+        {cta}
+      </TelemetryButton>
     </main>
   );
 };
