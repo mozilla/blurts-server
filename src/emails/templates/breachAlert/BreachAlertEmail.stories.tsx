@@ -83,6 +83,9 @@ export const RedesignedBreachAlertEmailUsFreeWithScanStory: Story = {
       Array.from({ length: 5 }, () => createRandomScanResult()),
       Array.from({ length: 5 }, () => createRandomBreach()),
     ),
+    subscriber: {
+      onerep_profile_id: 1,
+    } as SubscriberRow,
   },
 };
 
@@ -92,6 +95,7 @@ export const RedesignedBreachAlertEmailUsPlusNoScanStory: Story = {
     breach: createRandomHibpListing(),
     breachedEmail: "example@example.com",
     subscriber: {
+      onerep_profile_id: null,
       fxa_profile_json: {
         subscriptions: ["monitor"],
       },
@@ -106,6 +110,7 @@ export const RedesignedBreachAlertEmailUsPlusWithScanStory: Story = {
     breach: createRandomHibpListing(),
     breachedEmail: "example@example.com",
     subscriber: {
+      onerep_profile_id: 1,
       fxa_profile_json: {
         subscriptions: ["monitor"],
       },
