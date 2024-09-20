@@ -74,7 +74,7 @@ set up and changes are ready to be reviewed.
 Every commit to `main` is automatically deployed to the [Stage][stage] server via Github Actions and Jenkins.
 
 ### PR Merges
-PRs can only be merged when it passes all the required:
+PRs can only be merged when it passes all the required checks:
 * Lint
 * Build
 * Unit Tests
