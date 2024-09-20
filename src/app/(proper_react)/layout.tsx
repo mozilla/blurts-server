@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { ReactNode } from "react";
-import { headers } from "next/headers";
+import { headers, cookies } from "next/headers";
 import { getServerSession } from "../functions/server/getServerSession";
 import { getL10nBundles } from "../functions/l10n/serverComponents";
 import { getLocale } from "../functions/universal/getLocale";
@@ -14,6 +14,7 @@ import { getCountryCode } from "../functions/server/getCountryCode";
 import { PageLoadEvent } from "../components/client/PageLoadEvent";
 import { getExperimentationId } from "../functions/server/getExperimentationId";
 import { getEnabledFeatureFlags } from "../../db/tables/featureFlags";
+import { addClientIdForSubscriber } from "../../db/tables/google_analytics_clients";
 
 export default async function Layout({ children }: { children: ReactNode }) {
   const l10nBundles = getL10nBundles();
@@ -23,6 +24,24 @@ export default async function Layout({ children }: { children: ReactNode }) {
   const enabledFlags = await getEnabledFeatureFlags({
     email: session?.user.email ?? "",
   });
+
+  const cookieStore = cookies();
+  const gaCookie = cookieStore.get("_ga");
+
+  if (gaCookie && gaCookie.value) {
+    const [gaCookieVersion, gaCookiePath, gaCookieClientId, gaCookieTimestamp] =
+      gaCookie.value.split(".");
+
+    if (session?.user.subscriber?.id) {
+      await addClientIdForSubscriber(
+        session?.user.subscriber?.id,
+        gaCookieVersion,
+        parseInt(gaCookiePath),
+        gaCookieClientId,
+        parseInt(gaCookieTimestamp),
+      );
+    }
+  }
 
   return (
     <L10nProvider bundleSources={l10nBundles}>
