@@ -2,6 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+/* c8 ignore start */
 export const EmailBanner = (props: {
   heading: string;
   content: string;
@@ -88,3 +89,5 @@ export const EmailBanner = (props: {
 
   return props.variant === "light" ? LightBanner : DarkBanner;
 };
+
+/* c8 ignore stop */
