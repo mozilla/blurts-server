@@ -32,21 +32,8 @@ const meta: Meta<FC<MonthlyReportFreeUserEmailProps>> = {
 export default meta;
 type Story = StoryObj<FC<StoryProps>>;
 const date = new Date();
-const month = date.getMonth() - 1;
-const monthNames = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
+date.setMonth(date.getMonth() - 1);
+const monthName = date.toLocaleString("default", { month: "long" });
 
 const mockedDataPoints = {
   // shared
@@ -99,7 +86,7 @@ export const MonthlyReportFreeUserNoScanWithExposures: Story = {
     breachedEmail: "example@example.com",
     utmCampaignId: "test",
     utmContentSuffix: "test",
-    month: monthNames[month],
+    month: monthName,
     dataSummary: mockedDataSummary,
     subscriber: {
       onerep_profile_id: null,
@@ -119,7 +106,7 @@ export const MonthlyReportFreeUserWithScan: Story = {
     breachedEmail: "example@example.com",
     utmCampaignId: "test",
     utmContentSuffix: "test",
-    month: monthNames[month],
+    month: monthName,
     dataSummary: mockedDataSummary,
     subscriber: {
       onerep_profile_id: 1,
@@ -139,7 +126,7 @@ export const MonthlyReportFreeUserManuallyResolvedExposures: Story = {
     breachedEmail: "example@example.com",
     utmCampaignId: "test",
     utmContentSuffix: "test",
-    month: monthNames[month],
+    month: monthName,
     dataSummary: mockedDataSummary,
     subscriber: {
       onerep_profile_id: 1,
@@ -159,7 +146,7 @@ export const MonthlyReportFreeUserNoManuallyResolvedExposures: Story = {
     breachedEmail: "example@example.com",
     utmCampaignId: "test",
     utmContentSuffix: "test",
-    month: monthNames[month],
+    month: monthName,
     dataSummary: {
       ...mockedDataSummary,
       dataBrokerManuallyResolvedNum: 0,
@@ -182,7 +169,7 @@ export const MonthlyReportFreeUserNoRemainingExposures: Story = {
     breachedEmail: "example@example.com",
     utmCampaignId: "test",
     utmContentSuffix: "test",
-    month: monthNames[month],
+    month: monthName,
     dataSummary: {
       ...mockedDataSummary,
       dataBreachUnresolvedNum: 0,
@@ -205,7 +192,7 @@ export const MonthlyReportFreeUserNonUS: Story = {
     breachedEmail: "example@example.com",
     utmCampaignId: "test",
     utmContentSuffix: "test",
-    month: monthNames[month],
+    month: monthName,
     dataSummary: {
       ...mockedDataSummary,
       dataBreachUnresolvedNum: 0,
