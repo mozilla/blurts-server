@@ -248,7 +248,6 @@ export const MonthlyReportFreeUserEmail = (
         <EmailFooter
           l10n={l10n}
           utm_campaign={props.utmCampaignId}
-          subscriber={props.subscriber}
           unsubscribeLink={props.unsubscribeLink}
         />
       </mj-body>
