@@ -75,7 +75,7 @@ export type RedesignedBreachAlertEmailProps = {
   breachedEmail: string;
   utmCampaignId: string;
   subscriber: SubscriberRow;
-  dataSummary: DashboardSummary;
+  dataSummary?: DashboardSummary;
   enabledFeatureFlags: FeatureFlagName[];
 };
 
@@ -250,14 +250,16 @@ export const RedesignedBreachAlertEmail = (
             )
           }
         </mj-section>
-        {props.subscriber.onerep_profile_id && (
-          <DataPointCount
-            {...props}
-            dataSummary={props.dataSummary}
-            utmCampaignId={utmCampaignId}
-            utmContentSuffix={utmContentSuffix}
-          />
-        )}
+        {props.subscriber.onerep_profile_id &&
+          props.dataSummary &&
+          !hasPremium(props.subscriber) && (
+            <DataPointCount
+              {...props}
+              dataSummary={props.dataSummary}
+              utmCampaignId={utmCampaignId}
+              utmContentSuffix={utmContentSuffix}
+            />
+          )}
         {isEligibleForPremium(assumedCountryCode) &&
           !hasPremium(props.subscriber) &&
           (typeof props.dataSummary === "undefined" ? (
