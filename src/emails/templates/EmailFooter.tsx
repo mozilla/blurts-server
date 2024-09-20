@@ -10,13 +10,11 @@ import {
   CONST_URL_SUMO_MONITOR_SUPPORT_CENTER,
   CONST_URL_TERMS,
 } from "../../constants";
-import { SubscriberRow } from "knex/types/tables";
 
 export type Props = {
   l10n: ExtendedReactLocalization;
   utm_campaign: string;
   isOneTimeEmail?: boolean;
-  subscriber?: SubscriberRow;
   unsubscribeLink?: string;
 };
 
@@ -79,7 +77,7 @@ export const EmailFooter = (props: Props) => {
               },
             )}
           </mj-text>
-          {props.subscriber && props.unsubscribeLink && (
+          {props.unsubscribeLink && (
             <mj-text
               font-size="14px"
               line-height="21px"
