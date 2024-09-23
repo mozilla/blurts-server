@@ -41,10 +41,10 @@ async function addClientIdForSubscriber(
 
 async function getClientIdForSubscriber(subscriberId: number) {
   const res = await knex("google_analytics_clients")
-    .select("client_id", "cookieTimestamp")
+    .select("client_id", "cookie_timestamp")
     .where("subscriber_id", subscriberId);
 
-  return res?.[0] as string;
+  return res?.[0] as Record<string, string>;
 }
 
 export { addClientIdForSubscriber, getClientIdForSubscriber };
