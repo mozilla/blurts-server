@@ -65,8 +65,7 @@ export const MonthlyReportFreeUserEmail = (
         <mj-style>
           {/* This class rounds the edges of a table element */}
           {`
-            .stat_column {
-              table {
+            .stat_column .table {
                 border-collapse: separate;
                 border-spacing: 0;
                 padding: 15px 0px;
