@@ -40,8 +40,10 @@ export async function sendPingToGA(
   // @see https://developers.google.com/analytics/devguides/collection/protocol/ga4/verify-implementation?client_type=gtag
   if (process.env.APP_ENV !== "production") {
     eventParams["debug_mode"] = "true";
-    eventParams["engagement_time_msec"] = "1";
   }
+
+  // GA will not display unless there is a non-0 amount of engagement time.
+  eventParams["engagement_time_msec"] = "1";
 
   const result = await fetch(
     // Pings can alternatively be sent to the validation server for debugging purposes.
