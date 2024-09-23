@@ -25,7 +25,7 @@ import { revokeOAuthTokens } from "../../../../utils/fxa";
 import { changeSubscription } from "../../../functions/server/changeSubscription";
 import { deleteAccount } from "../../../functions/server/deleteAccount";
 import { record } from "../../../functions/server/glean";
-import { getClientIdForSubscriber } from "../../../../db/tables/google_analytics_clients";
+import { sendPingToGA } from "../../../functions/server/googleAnalytics";
 
 const FXA_PROFILE_CHANGE_EVENT =
   "https://schemas.accounts.firefox.com/event/profile-change";
@@ -441,27 +441,4 @@ export async function POST(request: NextRequest) {
   }
 
   return NextResponse.json({ success: true, message: "OK" }, { status: 200 });
-}
-
-async function sendPingToGA(subscriberId: number, eventName: string) {
-  const measurementId = "test123"; // FIXME
-  const apiSecret = "test123"; // FIXME
-
-  const clientId = await getClientIdForSubscriber(subscriberId);
-
-  await fetch(
-    `https://www.google-analytics.com/mp/collect?measurement_id=${measurementId}&api_secret=${apiSecret}`,
-    {
-      method: "POST",
-      body: JSON.stringify({
-        client_id: clientId,
-        events: [
-          {
-            name: eventName,
-            params: {},
-          },
-        ],
-      }),
-    },
-  );
 }
