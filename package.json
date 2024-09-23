@@ -65,8 +65,8 @@
     "npm": "10.1.0"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.651.1",
-    "@aws-sdk/lib-storage": "^3.651.1",
+    "@aws-sdk/client-s3": "^3.654.0",
+    "@aws-sdk/lib-storage": "^3.654.0",
     "@fluent/bundle": "^0.18.0",
     "@fluent/langneg": "^0.7.0",
     "@fluent/react": "^0.15.2",
@@ -76,7 +76,7 @@
     "@leeoniya/ufuzzy": "^1.0.14",
     "@mozilla/glean": "^5.0.2",
     "@next/third-parties": "^14.2.11",
-    "@sentry/nextjs": "^8.30.0",
+    "@sentry/nextjs": "^8.31.0",
     "@sentry/node": "^8.0.0",
     "@sentry/utils": "^8.0.0",
     "@stripe/stripe-js": "^4.1.0",
@@ -96,7 +96,7 @@
     "next": "^14.2.11",
     "next-auth": "^4.24.7",
     "nodemailer": "^6.9.14",
-    "pg": "^8.12.0",
+    "pg": "^8.13.0",
     "react": "^18.3.1",
     "react-aria": "^3.34.3",
     "react-cookie": "^7.2.0",
@@ -110,7 +110,7 @@
   },
   "devDependencies": {
     "@faker-js/faker": "^9.0.1",
-    "@playwright/test": "^1.47.1",
+    "@playwright/test": "^1.47.2",
     "@storybook/addon-a11y": "^8.3.1",
     "@storybook/addon-actions": "^8.3.1",
     "@storybook/addon-essentials": "^8.3.1",
@@ -134,7 +134,7 @@
     "@typescript-eslint/eslint-plugin": "^7.5.0",
     "@typescript-eslint/parser": "^7.5.0",
     "adm-zip": "^0.5.16",
-    "esbuild": "0.23.1",
+    "esbuild": "0.24.0",
     "eslint": "^8.57.0",
     "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-check-file": "^2.7.1",
@@ -157,9 +157,9 @@
     "storybook": "^8.1.11",
     "stylelint": "^16.9.0",
     "stylelint-config-recommended-scss": "^14.1.0",
-    "stylelint-scss": "^6.6.0",
+    "stylelint-scss": "^6.7.0",
     "tsx": "^4.19.1",
     "typescript": "^5.6.2",
-    "yaml": "^2.5.0"
+    "yaml": "^2.5.1"
   }
 }
