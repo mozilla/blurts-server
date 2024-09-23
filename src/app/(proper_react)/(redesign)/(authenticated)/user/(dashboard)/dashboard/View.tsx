@@ -79,7 +79,7 @@ export type Props = {
   totalNumberOfPerformedScans?: number;
   activeTab: TabType;
   signInCount: number | null;
-  showUpsellBadge?: boolean;
+  showUpsellBadge: boolean;
 };
 
 export type TabData = {
