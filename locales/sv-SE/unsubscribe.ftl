@@ -13,6 +13,7 @@ unsubscribe-cta = Avsluta prenumeration
 
 unsubscribe-success-from-monthly-report-header = Du har nu avregistrerat
 unsubscribe-success-from-monthly-report-body = Du kan prenumerera igen eller uppdatera dina e-postinställningar när som helst från dina { -brand-monitor }-inställningar.
+unsubscribe-success-cta = Logga in på { -brand-monitor }
 
 # Error warning
 
