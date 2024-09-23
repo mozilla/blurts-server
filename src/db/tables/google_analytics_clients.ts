@@ -30,9 +30,7 @@ async function addClientIdForSubscriber(
       client_id: gaClientId,
       cookie_timestamp: cookieTimestamp,
     })
-    .onConflict("subscriber_id")
-    .merge()
-    .onConflict("client_id")
+    .onConflict()
     .merge()
     .returning("*");
 
