@@ -22,3 +22,14 @@ it("shows the right label if a user has not yet run a scan", () => {
 
   expect(getFirstScanFreeBtn).toBeInTheDocument();
 });
+
+it("shows the right data exposure value if a user is a free user", () => {
+  const ComposedEmail = composeStory(
+    MonthlyReportFreeUserNoScanWithExposures,
+    Meta,
+  );
+  render(<ComposedEmail />);
+
+  // For free users, the data point count should be "Data breaches" instead
+  expect(screen.queryByText("Data exposures")).not.toBeInTheDocument();
+});

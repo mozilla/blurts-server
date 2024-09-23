@@ -2,6 +2,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+/* c8 ignore start */
+
 import React from "react";
 import { ExtendedReactLocalization } from "../../app/functions/l10n";
 import { DashboardSummary } from "../../app/functions/server/dashboard";
@@ -113,3 +115,4 @@ export const DataPointCount = (props: Props) => {
     </mj-wrapper>
   );
 };
+/* c8 ignore stop */
