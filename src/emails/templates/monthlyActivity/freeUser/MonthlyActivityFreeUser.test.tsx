@@ -7,9 +7,10 @@ import { composeStory } from "@storybook/react";
 import { render, screen } from "@testing-library/react";
 import Meta, {
   MonthlyReportFreeUserNoScanWithExposures,
+  MonthlyReportFreeUserWithScan,
 } from "./MonthlyActivityFreeUser.stories";
 
-it("shows the right label if a user has not yet run a scan", () => {
+it("shows the right cta label if a user has not yet run a scan", () => {
   const ComposedEmail = composeStory(
     MonthlyReportFreeUserNoScanWithExposures,
     Meta,
@@ -18,6 +19,17 @@ it("shows the right label if a user has not yet run a scan", () => {
 
   const getFirstScanFreeBtn = screen.getByRole("link", {
     name: "Get first scan free",
+  });
+
+  expect(getFirstScanFreeBtn).toBeInTheDocument();
+});
+
+it("shows the right cta label if a user has run a scan", () => {
+  const ComposedEmail = composeStory(MonthlyReportFreeUserWithScan, Meta);
+  render(<ComposedEmail />);
+
+  const getFirstScanFreeBtn = screen.getByRole("link", {
+    name: "Get ⁨Monitor Plus⁩",
   });
 
   expect(getFirstScanFreeBtn).toBeInTheDocument();
@@ -32,4 +44,19 @@ it("shows the right data exposure value if a user is a free user", () => {
 
   // For free users, the data point count should be "Data breaches" instead
   expect(screen.queryByText("Data exposures")).not.toBeInTheDocument();
+});
+
+it("shows the inactive state if there are 0 manually resolved data brokers", () => {
+  const ComposedEmail = composeStory(
+    MonthlyReportFreeUserNoScanWithExposures,
+    Meta,
+  );
+  render(<ComposedEmail />);
+
+  const manuallyResolvedDataBreaches = screen.getByText(
+    "Manually resolved data breaches",
+  );
+
+  // For free users, the data point count should be "Data breaches" instead
+  expect(manuallyResolvedDataBreaches).toHaveStyle("color: #9E9E9E");
 });

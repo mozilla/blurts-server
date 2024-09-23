@@ -54,6 +54,22 @@ export const MonthlyReportFreeUserEmail = (
   const purpleActiveColor = "#7542E5";
   const greyInactiveColor = "#9E9E9E";
 
+  const resolvedBoxData = {
+    dataPointCountLabel: hasRunFreeScan
+      ? "email-monthly-report-free-summary-manually-resolved-exposures"
+      : "email-monthly-report-free-summary-resolved-breaches",
+    dataPointValue: hasRunFreeScan
+      ? props.dataSummary.dataBreachResolvedNum +
+        props.dataSummary.dataBrokerManuallyResolvedNum
+      : props.dataSummary.dataBreachResolvedNum,
+    activeState:
+      (hasRunFreeScan &&
+        props.dataSummary.dataBreachResolvedNum +
+          props.dataSummary.dataBrokerManuallyResolvedNum >
+          0) ||
+      (!hasRunFreeScan && props.dataSummary.dataBreachResolvedNum > 0),
+  };
+
   return (
     <mjml>
       <mj-head>
@@ -152,47 +168,43 @@ export const MonthlyReportFreeUserEmail = (
                             ),
                           },
                           vars: {
-                            // Since this goes out to free users, the auto-removed data broker count will always be 0
-                            data_point_count: 0,
+                            data_point_count:
+                              props.dataSummary.dataBrokerAutoFixedNum,
                           },
                         },
                       )}
                     </mj-text>
                   </mj-column>
                   <mj-column
-                    css-class={`stat_column ${props.dataSummary.dataBrokerManuallyResolvedNum > 0 ? `manually_resolved_column_sparkles` : ``}`}
-                    inner-border={`2px solid ${props.dataSummary.dataBrokerManuallyResolvedNum > 0 ? purpleActiveColor : greyInactiveColor}`}
+                    css-class={`stat_column ${resolvedBoxData.activeState ? `manually_resolved_column_sparkles` : ``}`}
+                    inner-border={`2px solid ${resolvedBoxData.activeState ? purpleActiveColor : greyInactiveColor}`}
                     inner-border-radius="10px"
                     padding="8px"
                   >
                     <mj-text
                       align="center"
                       color={
-                        props.dataSummary.dataBrokerManuallyResolvedNum > 0
+                        resolvedBoxData.activeState
                           ? purpleActiveColor
                           : greyInactiveColor
                       }
                     >
-                      {l10n.getFragment(
-                        "email-monthly-report-free-summary-manually-resolved",
-                        {
-                          elems: {
-                            stat: (
-                              <div
-                                style={{
-                                  fontWeight: "bold",
-                                  fontSize: "50px",
-                                  paddingBottom: "4px",
-                                }}
-                              />
-                            ),
-                          },
-                          vars: {
-                            data_point_count:
-                              props.dataSummary.dataBrokerManuallyResolvedNum,
-                          },
+                      {l10n.getFragment(resolvedBoxData.dataPointCountLabel, {
+                        elems: {
+                          stat: (
+                            <div
+                              style={{
+                                fontWeight: "bold",
+                                fontSize: "50px",
+                                paddingBottom: "4px",
+                              }}
+                            />
+                          ),
                         },
-                      )}
+                        vars: {
+                          data_point_count: resolvedBoxData.dataPointValue,
+                        },
+                      })}
                     </mj-text>
                   </mj-column>
                 </mj-group>

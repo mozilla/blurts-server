@@ -20,6 +20,9 @@ type Props = {
 
 export const DataPointCount = (props: Props) => {
   const unresolvedDataBreaches = props.dataSummary.dataBreachUnresolvedNum;
+  const unresolvedDataBreachesAndBrokers =
+    props.dataSummary.dataBreachUnresolvedNum +
+    props.dataSummary.dataBrokerManuallyResolvedNum;
 
   return (
     <mj-wrapper padding="24px 16px">
@@ -53,9 +56,10 @@ export const DataPointCount = (props: Props) => {
           <mj-text align="center" font-size="14px" line-height="21px">
             <p>
               {props.l10n.getFragment(
-                hasPremium(props.subscriber)
+                hasPremium(props.subscriber) ||
+                  props.subscriber.onerep_profile_id
                   ? "email-breach-alert-plus-scan-results-data-points-label"
-                  : "email-monthly-report-free-scan-results-data-points-label",
+                  : "email-monthly-report-no-scan-results-data-points-label",
                 {
                   elems: {
                     stat: (
@@ -68,7 +72,11 @@ export const DataPointCount = (props: Props) => {
                       />
                     ),
                   },
-                  vars: { data_point_count: unresolvedDataBreaches },
+                  vars: {
+                    data_point_count: props.subscriber.onerep_profile_id
+                      ? unresolvedDataBreachesAndBrokers
+                      : unresolvedDataBreaches,
+                  },
                 },
               )}
             </p>
