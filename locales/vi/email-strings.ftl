@@ -2,25 +2,26 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-# Firefox Monitor is a product name and should not be translated.
--product-name = Firefox Monitor
-# Firefox is a brand name and should not be translated.
--brand-name = Firefox
+
+## Email headers
+
+email-header-logo-alt = { -brand-mozilla-monitor }
+email-header-button-sign-in = Đăng nhập
+
+## Email footers
+
+email-footer-support-heading = Có câu hỏi về { -brand-mozilla-monitor }?
+email-footer-support-content = Truy cập <support-link>trung tâm trợ giúp</support-link> của chúng tôi để được hỗ trợ
+email-footer-trigger-transactional = Bạn nhận được email này với tư cách là đăng ký của { -brand-mozilla-monitor }.
+email-footer-source-hibp = Rò rỉ dữ liệu được cung cấp bởi <hibp-link>{ -brand-HIBP }</hibp-link>
+email-footer-logo-mozilla-alt = { -brand-mozilla }
+email-footer-meta-privacy-notice = Riêng tư
 # Firefox Relay is a product name and should not be translated.
 -product-name-relay = Firefox Relay
 # Mozilla VPN is a product name and should not be translated.
 -product-name-vpn = Mozilla VPN
 # A link to legal information about mozilla products.
 legal = Thông tin pháp lý
-# Unsubscribe link in email.
-email-unsub-link = Hủy đăng ký
-# This string appears in the footer of breach report and breach alert emails.
-# { $unsubLink } is a link to the user's dashboard where they can unsubscribe from Monitor
-# and uses the text from { email-unsub-link }. { $faqLink } is a link to the
-# Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
-email-footer-blurb =
-    Bạn nhận được email này vì bạn đã đăng ký thông báo { -product-name }.
-    Không còn muốn những email này? { $unsubLink }. Đây là một email tự động. Để được hỗ trợ, hãy truy cập { $faqLink }.
 # Button text
 verify-email-cta = Xác minh email
 # Headline of verification email
@@ -60,6 +61,7 @@ email-breach-summary = Đây là tóm tắt về rò rỉ dữ liệu của bạ
 # Variables:
 #   $email-address (string) - Email address, bolded
 email-breach-detected = Kết quả tìm kiếm cho tài khoản { $email-address } của bạn đã phát hiện ra rằng email của bạn có thể đã bị lộ. Chúng tôi khuyên bạn nên hành động ngay bây giờ để giải quyết rò rỉ này.
+# Deprecated after the redesigned breach alert email is launched
 # Variables:
 #   $email-address (string) - Email address
 email-breach-detected-2 = Kết quả tìm kiếm cho tài khoản <b>{ $email-address }</b> của bạn đã phát hiện ra rằng email của bạn có thể đã bị lộ. Chúng tôi khuyên bạn nên hành động ngay bây giờ để giải quyết rò rỉ này.
@@ -67,4 +69,18 @@ email-dashboard-cta = Đi đến bảng điều khiển
 
 ## Breach alert
 
+# Deprecated after the redesigned breach alert email is launched
 email-spotted-new-breach = Chúng tôi đã phát hiện một lỗ hổng dữ liệu mới
+
+## Redesigned breach alert email
+
+email-breach-alert-all-subject = Đã phát hiện rò rỉ dữ liệu mới
+email-breach-alert-all-preview = Chúng tôi sẽ hướng dẫn bạn các bước để giải quyết vấn đề này.
+email-breach-alert-all-hero-heading = Bạn vừa nằm trong một vụ rò rỉ dữ liệu mới
+email-breach-alert-all-hero-subheading = Đừng lo lắng, chúng tôi có thể giúp bạn giải quyết vấn đề này
+email-breach-alert-all-lead = { -brand-mozilla-monitor } đã phát hiện rò rỉ dữ liệu sau bao gồm thông tin cá nhân của bạn:
+email-breach-alert-all-source-title = Nguồn rò rỉ:
+email-breach-alert-all-data-points-title = Dữ liệu bị lộ của bạn:
+email-breach-alert-all-next-steps-lead = Chúng tôi sẽ hướng dẫn bạn từng bước về cách giải quyết rò rỉ dữ liệu này.
+email-breach-alert-all-next-steps-cta-label = Hãy bắt đầu
+email-breach-alert-all-next-steps-button-dashboard = Đi đến bảng điều khiển
