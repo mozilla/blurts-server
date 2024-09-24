@@ -16,6 +16,7 @@ import { CONST_GA4_MEASUREMENT_ID } from "../constants";
 import { headers } from "next/headers";
 import { GoogleAnalyticsWorkaround } from "./components/client/GoogleAnalyticsWorkaround";
 import StripeScript from "./components/client/StripeScript";
+import { PromptNoneAuth } from "./components/client/toolbar/PromptNoneAuth";
 
 // DO NOT ADD SECRETS: Env variables added here become public.
 const PUBLIC_ENVS = {
@@ -58,6 +59,10 @@ export default async function RootLayout({
   const nonce = headers().get("x-nonce") ?? "";
   const currentLocale = getLocale(getL10nBundles());
   const session = await getServerSession();
+
+  if (!session) {
+    return <PromptNoneAuth />;
+  }
 
   return (
     <html lang={currentLocale}>
