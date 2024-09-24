@@ -2,23 +2,25 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-# Firefox Monitor is a product name and should not be translated.
--product-name = Firefox Monitor
-# Firefox is a brand name and should not be translated.
--brand-name = Firefox
+
+## Email headers
+
+email-header-logo-alt = { -brand-mozilla-monitor }
+
+## Email footers
+
+email-footer-support-heading = { -brand-mozilla-monitor } hakkında sorularınız mı var?
+email-footer-support-content = Yardım için <support-link>Destek Merkezimizi</support-link> ziyaret edin
+email-footer-trigger-transactional = Bu e-postayı { -brand-mozilla-monitor } abonesi olduğunuz için aldınız.
+email-footer-source-hibp = İhlal verileri <hibp-link>{ -brand-HIBP }</hibp-link> tarafından sağlanmaktadır
+email-footer-logo-mozilla-alt = { -brand-mozilla }
+email-footer-meta-privacy-notice = Gizlilik
 # Firefox Relay is a product name and should not be translated.
 -product-name-relay = Firefox Relay
 # Mozilla VPN is a product name and should not be translated.
 -product-name-vpn = Mozilla VPN
 # A link to legal information about mozilla products.
 legal = Hukuki Bilgiler
-# Unsubscribe link in email.
-email-unsub-link = Abonelikten çık
-# This string appears in the footer of breach report and breach alert emails.
-# { $unsubLink } is a link to the user's dashboard where they can unsubscribe from Monitor
-# and uses the text from { email-unsub-link }. { $faqLink } is a link to the
-# Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
-email-footer-blurb = Bu e-postayı { -product-name } uyarılarına kaydolduğunuz için alıyorsunuz. Artık bu e-postaları istemiyor musunuz? { $unsubLink }. Bu otomatik bir e-postadır. Destek için { $faqLink } sayfasını ziyaret edebilirsiniz.
 # Button text
 verify-email-cta = E-postayı doğrula
 # Headline of verification email
@@ -42,25 +44,6 @@ email-breach-alert-blurb = { -product-name } sizi kişisel bilgilerinizin dahil 
 #   $hibp-link-attr (String) - Link to Have I Been Pwned
 email-2022-hibp-attribution = İhlal verileri <a { $hibp-link-attr }>{ -brand-HIBP }</a> tarafından sağlanmaktadır
 
-## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
-## Variables:
-##   $email-address (string) - Email address
-
-email-unresolved-heading = Çözümlenmemiş ihlalleriniz var
-email-unresolved-subhead = E-postanız açığa çıktı. <br>{ -product-name } ile hemen düzeltin.
-email-is-affected = { $email-address } adresiniz en az bir veri ihlalinden etkileniyor
-email-more-detail = İhlallerinizle ilgili daha fazla ayrıntı (ne zaman meydana geldiği ve hangi verilerin ifşa edildiği dahil) görmek için hemen { -product-name }’de oturum açın ve e-postanız bir veri ihlaline maruz kaldığında ne yapmanız gerektiğini öğrenin.
-email-breach-status = İhlal durumu
-# table row 1 label
-email-monitored = İzlenen toplam e-posta sayısı:
-# table row 2 label
-email-breach-total = Toplam ihlal sayısı:
-# table row 3 label
-email-resolved = Çözülen ihlaller:
-# table row 4 label
-email-unresolved = Çözülmemiş ihlaller:
-email-resolve-cta = İhlalleri çöz
-
 ## Verification email
 
 email-verify-heading = Verilerinizi korumaya hemen şimdi başlayın
@@ -73,6 +56,7 @@ email-breach-summary = İşte veri ihlali özetiniz
 # Variables:
 #   $email-address (string) - Email address, bolded
 email-breach-detected = { $email-address } hesabınızın arama sonuçları, e-postanızın açığa çıkmış olabileceğini tespit etti. Bu ihlali çözmek için hemen harekete geçmenizi öneririz.
+# Deprecated after the redesigned breach alert email is launched
 # Variables:
 #   $email-address (string) - Email address
 email-breach-detected-2 = <b>{ $email-address }</b> hesabınızın arama sonuçları, e-postanızın açığa çıkmış olabileceğini tespit etti. Bu ihlali çözmek için hemen harekete geçmenizi öneririz.
@@ -80,4 +64,12 @@ email-dashboard-cta = Panoya git
 
 ## Breach alert
 
+# Deprecated after the redesigned breach alert email is launched
 email-spotted-new-breach = Yeni bir veri ihlali tespit ettik
+
+## Redesigned breach alert email
+
+email-breach-alert-all-source-title = İhlal kaynağı:
+email-breach-alert-all-data-points-title = Ele geçirilen verileriniz:
+email-breach-alert-all-next-steps-lead = Bu veri ihlalini nasıl çözeceğinizi adım adım anlatacağız.
+email-breach-alert-all-next-steps-cta-label = Başlayalım

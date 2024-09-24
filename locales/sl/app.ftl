@@ -10,7 +10,6 @@
 ## unless otherwise indicated.
 
 -product-name = Mozilla Monitor
--product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name = Monitor
 -brand-name =
     { $sklon ->
@@ -18,15 +17,6 @@
         [dajalnik] Firefoxu
         [orodnik] Firefoxom
        *[imenovalnik] Firefox
-    }
--brand-Mozilla =
-    { $sklon ->
-        [rodilnik] Mozille
-        [dajalnik] Mozilli
-        [tozilnik] Mozillo
-        [mestnik] Mozilli
-        [orodnik] Mozillo
-       *[imenovalnik] Mozilla
     }
 -brand-HIBP = Have I Been Pwned
 -brand-fxa =
@@ -38,193 +28,6 @@
     }
 -brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
--brand-send = Firefox Send
--brand-fpn = Firefox Private Network
-
-##
-
-error-could-not-add-email = E-poštnega naslova ni bilo mogoče dodati v bazo podatkov.
-error-not-subscribed = Ta e-poštni naslov ni naročen na { -product-name }.
-error-hibp-throttled = Preveč povezav na { -brand-HIBP }.
-error-hibp-connect = Napaka pri povezovanju na { -brand-HIBP }.
-
-user-add-invalid-email = Neveljavna e-pošta
-user-add-too-many-emails = Spremljate največje dovoljeno število e-poštnih naslovov.
-user-add-duplicate-email = Ta e-poštni naslov je že bil dodan v { -product-name }.
-user-add-verification-email-just-sent = Drugega potrditvenega sporočila ni mogoče poslati tako hitro. Poskusite znova pozneje.
-user-add-unknown-error = Pri dodajanju drugega e-poštnega naslova je prišlo do napake. Poskusite znova pozneje.
-user-delete-unknown-error = Pri odstranjevanju e-poštnega naslova je prišlo do napake. Poskusite znova pozneje.
-
-user-verify-token-error = Zahtevan je potrditveni žeton.
-
-user-unsubscribe-token-error = Za odjavo potrebujete žeton.
-user-unsubscribe-token-email-error = Za odjavo potrebujete žeton in emailHash.
-
-# compromised-data = the kind of user data exposed to hackers in data breach.
-compromised-data = Ogroženi podatki:
-
-# Breach data provided by Have I Been Pwned.
-# Variables:
-#   $hibp-link (String) - Link to Have I Been Pwned
-hibp-attribution = Podatke o krajah podatkov omogoča { $hibp-link }
-
-show-all = Prikaži vse
-
-sign-out = Odjava
-
-# Manage Firefox Account, link to page where account holders can change their account settings.
-manage-fxa = Upravljaj { -brand-fxa }
-
-# Link title
-frequently-asked-questions = Pogosto zastavljena vprašanja
-
-# Link title
-preferences = Nastavitve
-
-# Link title
-home = Domov
-
-# Link title
-security-tips = Varnostni nasveti
-
-# Link title
-more-about-this-breach = Več o tej kraji podatkov
-
-monitor-several-emails = Spremljajte več e-poštnih naslovov
-
-website-breach = Kraja podatkov spletne strani
-sensitive-breach = Kraja podatkov občutljivih spletnih strani
-data-aggregator-breach = Kraja podatkov zbiralnika podatkov
-
-what-data = Kateri podatki so bili ogroženi:
-
-sensitive-sites = Kako { -product-name } obravnava občutljiva spletna mesta?
-sensitive-sites-copy =
-    { -product-name } razkriva račune, povezane s temi 
-    vrstami kraj, samo po potrditvi e-poštnega naslova. To pomeni, da samo vi 
-    vidite, ali so bili vaši podatki del te kraje podatkov (razen, če ima kdo drug 
-    dostop do vašega e-poštnega računa).
-
-delayed-reporting-headline = Zakaj je trajalo toliko časa, da je bila kraja podatkov prijavljena?
-delayed-reporting-copy =
-    Včasih traja mesece ali leta, da pride do izpostavitve prijavnih podatkov 
-    v primeru kraje podatkov. Kraje podatkov se dodajo v našo bazo 
-    takoj ko so odkrite in preverjene.
-
-fxm-warns-you =
-    { -product-name } vas opozori, če je bil vaš e-poštni naslov izpostavljen
-    v spletni kraji podatkov. Preverite, ali so bili vaši podatki izpostavljeni, 
-    spoznajte kako bolje zaščititi svoje spletne račune in prejmite opozorilo,
-    če se vaš e-poštni naslov pojavi v novi kraji.
-
-what-is-data-agg = Kaj je zbiralnik podatkov?
-what-is-data-agg-blurb =
-    Zbiralniki podatkov ali posredniki podatkov, zbirajo podatke iz javno 
-    dostopnih virov in kupujejo od drugih podjetij. Zbrane podatke prodajajo podjetjem 
-    za namene oglaševanja. Za žrtve teh kraj podatkov je malo verjetno, da bi doživele finančno 
-    goljufijo, vendar lahko hekerji te podatke uporabijo za lažno predstavljanje ali ustvarjanje njihovega profila.
-
-avoid-personal-info = Izogibajte se uporabi osebnih podatkov v geslih
-
-## What to do after data breach tips
-
-send-verification = Pošlji potrditveno povezavo
-
-# This string is a header on the user preferences page and
-# appears above a check-box list of user options which allow
-# the user to choose whether or not they want to receive breach
-# alerts for all of their monitored email addresses to a single
-# email address.
-breach-summary = Povzetek kraj podatkov
-
-## Variables:
-##   $userName (String) - Username
-
-##
-
-breach-alert-subject = { -product-name } je našel vaš e-poštni naslov v novi kraji podatkov.
-
-## Variables:
-##   $breachName (String) - Number of the breach
-
-# This string is displayed under a large numeral that indicates the total number
-# of data breaches that exposed a user’s password. Don’t add $passwords to
-# your localization, because it would result in the number showing twice.
-passwords-exposed =
-    { $passwords ->
-        [one] geslo je bilo izpostavljeno v vseh krajah
-        [two] gesli sta bili izpostavljeni v vseh krajah
-        [few] gesla so bila izpostavljena v vseh krajah
-       *[other] gesel je bilo izpostavljenih v vseh krajah
-    }
-
-# This string is displayed under a large numeral that indicates the total number
-# of data breaches that have exposed the user’s information. Don’t add $breaches to
-# your localization, because it would result in the number showing twice.
-known-data-breaches-exposed =
-    { $breaches ->
-        [one] znana kraja podatkov je izpostavila vaše podatke
-        [two] znani kraji podatkov sta izpostavili vaše podatke
-        [few] znane kraje podatkov so izpostavile vaše podatke
-       *[other] znanih kraj podatkov je izpostavilo vaše podatke
-    }
-
-what-is-a-website-breach = Kaj je kraja podatkov spletne strani?
-website-breach-blurb = Do kraje podatkov spletne strani pride, ko spletni napadalci ukradejo, kopirajo ali razkrijejo osebne podatke spletnih računov. Običajno je rezultat tega, da hekerji odkrijejo šibko točko varnosti spletne strani. Kraje se lahko zgodijo tudi, če se podatki o računu na spletu pojavijo po naključju.
-
-# This is a section headline on the breach detail page that appears above
-# a short summary about the breach.
-breach-overview-title = Pregled
-
-# This is a standardized breach overview blurb that appears on all breach detail pages.
-# $breachTitle is the name of the breached company or website.
-# $breachDate and $addedDate are calendar dates.
-breach-overview-new = Dne { $breachDate } je prišlo do kraje podatkov { $breachTitle }. Ko je bila kraja odkrita in preverjena, smo jo dne { $addedDate } dodali v našo bazo podatkov.
-
-# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
-menu = Meni
-
-# This is part of a confirmation message that appears after a user has submitted
-# the form to add an additional email to Firefox Monitor.
-# Variables:
-#   $userEmail (String) - User email address
-verify-the-link = Potrdite povezavo poslano na { $userEmail }, da e-poštni naslov dodate v { -product-name }.
-
-## These are part of a confirmation page that appears after a user has verified
-## an additional email to Firefox Monitor.
-
-# This string is a label for the calendar date a breach is added to the database
-# and is followed by that date.
-breach-added-label = Kraja dodana:
-
-# Section headline
-rec-section-headline = Kaj storiti za to krajo podatkov
-rec-section-subhead = Priporočamo vam naslednje ukrepe, da ohranite varnost svojih osebnih podatkov in zaščitite svojo digitalno identiteto.
-
-# Section headline
-rec-section-headline-no-pw = Kaj storiti, da zaščitite svoje osebne podatke
-rec-section-subhead-no-pw = Čeprav gesla v tej kraji podatkov niso bila izpostavljena, lahko še vedno ukrepate, da bolje zaščitite svoje osebne podatke.
-
-## This string contains nested markup that becomes a link later in the code.
-## Please do not modify or remove "<a>" and "</a>".
-
-##
-
-## These strings contain nested markup that is later used to style the text inside of it.
-## Please do not modify or remove "<span>" and "</span>".
-
-# A status indicator that appears in the top right corner of new breach cards
-new-breach = Novo
-
-## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
-
-## Relay and VPN educational/ad units
-
-# Monitor V2
-
-
-## The following messages are brands and should be kept entirely in English
-
 -brand-firefox =
     { $sklon ->
        *[imenovalnik] Firefox
@@ -280,13 +83,129 @@ new-breach = Novo
 
 ##
 
-##
+error-not-subscribed = Ta e-poštni naslov ni naročen na { -product-name }.
+error-hibp-throttled = Preveč povezav na { -brand-HIBP }.
+error-hibp-connect = Napaka pri povezovanju na { -brand-HIBP }.
+user-add-invalid-email = Neveljavna e-pošta
+user-add-too-many-emails = Spremljate največje dovoljeno število e-poštnih naslovov.
+user-add-duplicate-email = Ta e-poštni naslov je že bil dodan v { -product-name }.
+user-add-verification-email-just-sent = Drugega potrditvenega sporočila ni mogoče poslati tako hitro. Poskusite znova pozneje.
+user-add-unknown-error = Pri dodajanju drugega e-poštnega naslova je prišlo do napake. Poskusite znova pozneje.
+user-delete-unknown-error = Pri odstranjevanju e-poštnega naslova je prišlo do napake. Poskusite znova pozneje.
+user-verify-token-error = Zahtevan je potrditveni žeton.
+# compromised-data = the kind of user data exposed to hackers in data breach.
+compromised-data = Ogroženi podatki:
+# Breach data provided by Have I Been Pwned.
+# Variables:
+#   $hibp-link (String) - Link to Have I Been Pwned
+hibp-attribution = Podatke o krajah podatkov omogoča { $hibp-link }
+show-all = Prikaži vse
+sign-out = Odjava
+# Manage Firefox Account, link to page where account holders can change their account settings.
+manage-fxa = Upravljaj { -brand-fxa }
+# Link title
+preferences = Nastavitve
+# Link title
+home = Domov
+# Link title
+security-tips = Varnostni nasveti
+# Link title
+more-about-this-breach = Več o tej kraji podatkov
+monitor-several-emails = Spremljajte več e-poštnih naslovov
+website-breach = Kraja podatkov spletne strani
+sensitive-breach = Kraja podatkov občutljivih spletnih strani
+data-aggregator-breach = Kraja podatkov zbiralnika podatkov
+what-data = Kateri podatki so bili ogroženi:
+sensitive-sites = Kako { -product-name } obravnava občutljiva spletna mesta?
+sensitive-sites-copy =
+    { -product-name } razkriva račune, povezane s temi 
+    vrstami kraj, samo po potrditvi e-poštnega naslova. To pomeni, da samo vi 
+    vidite, ali so bili vaši podatki del te kraje podatkov (razen, če ima kdo drug 
+    dostop do vašega e-poštnega računa).
+delayed-reporting-headline = Zakaj je trajalo toliko časa, da je bila kraja podatkov prijavljena?
+delayed-reporting-copy =
+    Včasih traja mesece ali leta, da pride do izpostavitve prijavnih podatkov 
+    v primeru kraje podatkov. Kraje podatkov se dodajo v našo bazo 
+    takoj ko so odkrite in preverjene.
+fxm-warns-you =
+    { -product-name } vas opozori, če je bil vaš e-poštni naslov izpostavljen
+    v spletni kraji podatkov. Preverite, ali so bili vaši podatki izpostavljeni, 
+    spoznajte kako bolje zaščititi svoje spletne račune in prejmite opozorilo,
+    če se vaš e-poštni naslov pojavi v novi kraji.
+what-is-data-agg = Kaj je zbiralnik podatkov?
+what-is-data-agg-blurb =
+    Zbiralniki podatkov ali posredniki podatkov, zbirajo podatke iz javno 
+    dostopnih virov in kupujejo od drugih podjetij. Zbrane podatke prodajajo podjetjem 
+    za namene oglaševanja. Za žrtve teh kraj podatkov je malo verjetno, da bi doživele finančno 
+    goljufijo, vendar lahko hekerji te podatke uporabijo za lažno predstavljanje ali ustvarjanje njihovega profila.
+avoid-personal-info = Izogibajte se uporabi osebnih podatkov v geslih
+send-verification = Pošlji potrditveno povezavo
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single
+# email address.
+breach-summary = Povzetek kraj podatkov
 
 ##
 
+breach-alert-subject = { -product-name } je našel vaš e-poštni naslov v novi kraji podatkov.
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that exposed a user’s password. Don’t add $passwords to
+# your localization, because it would result in the number showing twice.
+passwords-exposed =
+    { $passwords ->
+        [one] geslo je bilo izpostavljeno v vseh krajah
+        [two] gesli sta bili izpostavljeni v vseh krajah
+        [few] gesla so bila izpostavljena v vseh krajah
+       *[other] gesel je bilo izpostavljenih v vseh krajah
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+known-data-breaches-exposed =
+    { $breaches ->
+        [one] znana kraja podatkov je izpostavila vaše podatke
+        [two] znani kraji podatkov sta izpostavili vaše podatke
+        [few] znane kraje podatkov so izpostavile vaše podatke
+       *[other] znanih kraj podatkov je izpostavilo vaše podatke
+    }
+what-is-a-website-breach = Kaj je kraja podatkov spletne strani?
+website-breach-blurb = Do kraje podatkov spletne strani pride, ko spletni napadalci ukradejo, kopirajo ali razkrijejo osebne podatke spletnih računov. Običajno je rezultat tega, da hekerji odkrijejo šibko točko varnosti spletne strani. Kraje se lahko zgodijo tudi, če se podatki o računu na spletu pojavijo po naključju.
+# This is a section headline on the breach detail page that appears above
+# a short summary about the breach.
+breach-overview-title = Pregled
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview-new = Dne { $breachDate } je prišlo do kraje podatkov { $breachTitle }. Ko je bila kraja odkrita in preverjena, smo jo dne { $addedDate } dodali v našo bazo podatkov.
+# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
+menu = Meni
+# This is part of a confirmation message that appears after a user has submitted
+# the form to add an additional email to Firefox Monitor.
+# Variables:
+#   $userEmail (String) - User email address
+verify-the-link = Potrdite povezavo poslano na { $userEmail }, da e-poštni naslov dodate v { -product-name }.
+
+## These are part of a confirmation page that appears after a user has verified
+## an additional email to Firefox Monitor.
+
+# This string is a label for the calendar date a breach is added to the database
+# and is followed by that date.
+breach-added-label = Kraja dodana:
+# Section headline
+rec-section-headline = Kaj storiti za to krajo podatkov
+rec-section-subhead = Priporočamo vam naslednje ukrepe, da ohranite varnost svojih osebnih podatkov in zaščitite svojo digitalno identiteto.
+# Section headline
+rec-section-headline-no-pw = Kaj storiti, da zaščitite svoje osebne podatke
+rec-section-subhead-no-pw = Čeprav gesla v tej kraji podatkov niso bila izpostavljena, lahko še vedno ukrepate, da bolje zaščitite svoje osebne podatke.
+
 ##
 
-## Updated error messages
+# A status indicator that appears in the top right corner of new breach cards
+new-breach = Novo
+
+##
 
 # “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
@@ -299,7 +218,6 @@ new-breach = Novo
         [orodnik] Računom Mozilla
        *[imenovalnik] Račun Mozilla
     }
-
 open-in-new-tab-alt = Odpri povezavo v novem zavihku
 
 ## Search Engine Optimization
@@ -316,7 +234,6 @@ brand-mozilla-monitor = { -brand-fx-monitor }
 ## Site navigation
 
 mobile-menu-label = Glavni meni
-
 main-nav-button-collapse-label = Strni meni
 main-nav-button-collapse-tooltip = Strni meni
 main-nav-button-expand-label = Razširi meni
@@ -346,7 +263,7 @@ mozilla = { -brand-mozilla }
 terms-of-service = Pogoji uporabe
 privacy-notice = Obvestilo o zasebnosti
 github = { -brand-github }
-footer-nav-all-breaches = Vse kraje podatkov
+footer-nav-recent-breaches = Nedavne kraje podatkov
 footer-external-link-faq-label = Pogosta vprašanja
 footer-external-link-faq-tooltip = Pogosto zastavljena vprašanja
 
@@ -366,7 +283,6 @@ error-page-error-other-title = { $errorCode } Prišlo je do napake
 all-breaches-headline-2 = Vse kraje, ki jih je odkril { -brand-fx-monitor }
 all-breaches-lead = Spremljamo vse znane kraje podatkov, da ugotovimo, ali so bili vaši osebni podatki ogroženi. Tukaj je celoten seznam vseh kraj, prijavljenih od leta 2007 naprej.
 search-breaches = Iskanje kraj podatkov
-
 # the kind of user data exposed to hackers in data breach.
 exposed-data = Izpostavljeni podatki:
 
@@ -374,16 +290,11 @@ exposed-data = Izpostavljeni podatki:
 
 find-out-if-2 = Ugotovite, ali ste bili vpleteni v to krajo
 find-out-if-description = Pomagali vam bomo hitro ugotoviti, ali je bil vaš e-poštni naslov izpostavljen v tej kraji, in razumeti, kaj morate storiti.
-
 breach-detail-cta-signup = Preverite kraje podatkov
-
-## Floating banner
 
 ## Firefox Monitor -> Mozilla Monitor rebrand banner
 
 banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: Novo ime, nova podoba in novi načini za <b>povrnitev zasebnosti</b>.
 banner-monitor-rebrand-dismiss-button-label = V redu
 banner-monitor-rebrand-dismiss-button-tooltip = Skrij
-
 loading-accessibility = Nalaganje
-
