@@ -10,6 +10,10 @@ email-header-button-sign-in = Conectarse
 
 ## Email footers
 
+email-footer-support-heading = ¿Tienes preguntas acerca de { -brand-mozilla-monitor }?
+email-footer-support-content = Visita nuestro <support-link>Centro de soporte</support-link> para obtener ayuda
+email-footer-trigger-transactional = Estás recibiendo este correo electrónico como suscriptor de { -brand-mozilla-monitor }.
+email-footer-source-hibp = Datos de filtración provistos por <hibp-link>{ -brand-HIBP }</hibp-link>
 email-footer-logo-mozilla-alt = { -brand-mozilla }
 email-footer-meta-privacy-notice = Privacidad
 # Firefox Relay is a product name and should not be translated.
@@ -70,5 +74,13 @@ email-spotted-new-breach = Hemos detectado una nueva filtración de datos
 
 ## Redesigned breach alert email
 
+email-breach-alert-all-subject = Nueva filtración de datos detectada
+email-breach-alert-all-preview = Te guiaremos a través de los pasos para resolverlo.
+email-breach-alert-all-hero-heading = Has estado presente en una nueva filtración de datos.
+email-breach-alert-all-hero-subheading = No te preocupes, podemos ayudarte a resolver esta exposición.
+email-breach-alert-all-lead = { -brand-mozilla-monitor } descubrió la siguiente filtración de datos que incluye tu información personal:
 email-breach-alert-all-source-title = Fuente de la filtración:
 email-breach-alert-all-data-points-title = Tus datos expuestos:
+email-breach-alert-all-next-steps-lead = Te guiaremos paso a paso sobre cómo resolver esta filtración de datos.
+email-breach-alert-all-next-steps-cta-label = Empecemos
+email-breach-alert-all-next-steps-button-dashboard = Ir al panel de control
