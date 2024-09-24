@@ -230,3 +230,50 @@ export const MonthlyReportFreeUserNonUS: Story = {
     } as SubscriberRow,
   },
 };
+
+export const MonthlyReportFreeUserNoScanNoExposuresRemaining: Story = {
+  name: "Monthly Report Free User No Scan No Exposures Left",
+  args: {
+    unsubscribeLink: "/",
+    breach: createRandomHibpListing(),
+    breachedEmail: "example@example.com",
+    utmCampaignId: "test",
+    utmContentSuffix: "test",
+    month: monthName,
+    dataSummary: {
+      ...mockedDataSummary,
+      dataBreachUnresolvedNum: 0,
+    },
+    subscriber: {
+      onerep_profile_id: null,
+      fxa_profile_json: {
+        locale: "en-US",
+        subscriptions: ["not-monitor-plus"],
+      },
+    } as SubscriberRow,
+  },
+};
+
+export const MonthlyReportFreeUserWithScanNoExposuresRemaining: Story = {
+  name: "Monthly Report Free User With Scan No Exposures Left",
+  args: {
+    unsubscribeLink: "/",
+    breach: createRandomHibpListing(),
+    breachedEmail: "example@example.com",
+    utmCampaignId: "test",
+    utmContentSuffix: "test",
+    month: monthName,
+    dataSummary: {
+      ...mockedDataSummary,
+      dataBreachUnresolvedNum: 0,
+      dataBrokerInProgressNum: 0,
+    },
+    subscriber: {
+      onerep_profile_id: 1,
+      fxa_profile_json: {
+        locale: "en-US",
+        subscriptions: ["not-monitor-plus"],
+      },
+    } as SubscriberRow,
+  },
+};
