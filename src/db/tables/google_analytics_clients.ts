@@ -3,7 +3,6 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import createDbConnection from "../connect";
-import { logger } from "../../app/functions/server/logging";
 
 const knex = createDbConnection();
 
@@ -14,14 +13,6 @@ async function addClientIdForSubscriber(
   gaClientId: string,
   cookieTimestamp: number,
 ): Promise<string> {
-  logger.info("addClientIdForSubscriber", {
-    subscriberId,
-    cookieVersion,
-    cookiePath,
-    gaClientId,
-    cookieTimestamp,
-  });
-
   const res = await knex("google_analytics_clients")
     .insert({
       subscriber_id: subscriberId,
