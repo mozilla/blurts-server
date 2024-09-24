@@ -6,8 +6,10 @@ import { it } from "@jest/globals";
 import { composeStory } from "@storybook/react";
 import { render, screen } from "@testing-library/react";
 import Meta, {
+  MonthlyReportFreeUserNoScanNoExposuresRemaining,
   MonthlyReportFreeUserNoScanWithExposures,
   MonthlyReportFreeUserWithScan,
+  MonthlyReportFreeUserWithScanNoExposuresRemaining,
 } from "./MonthlyActivityFreeUser.stories";
 
 it("shows the right cta label if a user has not yet run a scan", () => {
@@ -59,4 +61,28 @@ it("shows the inactive state if there are 0 manually resolved data brokers", () 
 
   // For free users, the data point count should be "Data breaches" instead
   expect(manuallyResolvedDataBreaches).toHaveStyle("color: #9E9E9E");
+});
+
+it("shows the congratulatory banner if no exposures remaining before scan", () => {
+  const ComposedEmail = composeStory(
+    MonthlyReportFreeUserNoScanNoExposuresRemaining,
+    Meta,
+  );
+  render(<ComposedEmail />);
+
+  const greatNewsHeader = screen.getByText("Great news!");
+
+  expect(greatNewsHeader).toBeInTheDocument();
+});
+
+it("shows the congratulatory banner if no exposures remaining after scan", () => {
+  const ComposedEmail = composeStory(
+    MonthlyReportFreeUserWithScanNoExposuresRemaining,
+    Meta,
+  );
+  render(<ComposedEmail />);
+
+  const greatNewsHeader = screen.getByText("Great news!");
+
+  expect(greatNewsHeader).toBeInTheDocument();
 });

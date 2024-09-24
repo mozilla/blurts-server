@@ -70,6 +70,15 @@ export const MonthlyReportFreeUserEmail = (
       (!hasRunFreeScan && props.dataSummary.dataBreachResolvedNum > 0),
   };
 
+  const showCongratulatoryBanner = {
+    postScan:
+      hasRunFreeScan &&
+      props.dataSummary.dataBreachUnresolvedNum +
+        props.dataSummary.dataBrokerInProgressNum ===
+        0,
+    preScan: !hasRunFreeScan && props.dataSummary.dataBreachUnresolvedNum === 0,
+  };
+
   return (
     <mjml>
       <mj-head>
@@ -113,7 +122,9 @@ export const MonthlyReportFreeUserEmail = (
           subheading={l10n.getString("email-monthly-report-hero-free-body")}
         />
         {/* Show the Data Point Count if there are unresolved breaches, otherwise show the congratulatory banner */}
-        {props.dataSummary.dataBreachUnresolvedNum > 0 ? (
+        {!(
+          showCongratulatoryBanner.postScan || showCongratulatoryBanner.preScan
+        ) ? (
           <DataPointCount
             subscriber={props.subscriber}
             l10n={l10n}
