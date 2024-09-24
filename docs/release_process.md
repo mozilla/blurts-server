@@ -2,7 +2,7 @@
 
 ## Environments
 
-- [Production][prod] - Run manually by ENGR team (unless we need Env Var changes)
+- [Production][prod] - Run manually by ENGR team (unless we need Env Var or other infrastructure changes)
 - [Stage][stage] - Run automatically on PR merges
 - Locals: Run by ENGRs on their own devices. (See [README][readme] and other [`docs/`][docs].)
 
