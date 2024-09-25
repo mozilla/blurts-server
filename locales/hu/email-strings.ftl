@@ -12,7 +12,7 @@ email-header-button-sign-in = Bejelentkezés
 
 email-footer-support-heading = Kérdése van a { -brand-mozilla-monitor }ral kapcsolatban?
 email-footer-support-content = Segítségért keresse fel a <support-link>Támogatói központunkat</support-link>
-email-footer-trigger-transactional = Ezt az e-mailt a { -brand-mozilla-monitor } előfizetőjeként kapja.
+email-footer-trigger-transactional = Ezt az e-mailt a { -brand-mozilla-monitor } feliratkozójaként kapja.
 email-footer-source-hibp = Az adatvédelmi incidensek adatait a <hibp-link>{ -brand-HIBP }</hibp-link> szolgáltatta
 email-footer-logo-mozilla-alt = { -brand-mozilla }
 email-footer-meta-privacy-notice = Adatvédelem
@@ -74,13 +74,13 @@ email-spotted-new-breach = Új adatvédelmi incidenst észleltünk
 
 ## Redesigned breach alert email
 
-email-breach-alert-all-subject = Új adatsértés észlelve
-email-breach-alert-all-preview = Végigvezetjük a megoldás lépésein.
-email-breach-alert-all-hero-heading = Új adatvédelmi incidensben volt érintett
-email-breach-alert-all-hero-subheading = Ne aggódjon, segíthetünk megoldani ezt a kitettséget
+email-breach-alert-all-subject = Új adatvédelmi incidens észlelve
+email-breach-alert-all-preview = Végigvezetjük a megoldási lépéseken.
+email-breach-alert-all-hero-heading = Egy adatvédelmi incidensben volt érintett
+email-breach-alert-all-hero-subheading = Ne aggódjon, segíthetünk megoldani ezt az adatkikerülést
 email-breach-alert-all-lead = A { -brand-mozilla-monitor } felfedezte a következő adatvédelmi incidenst, amely az Ön személyes információit is tartalmazza:
 email-breach-alert-all-source-title = Adatvédelmi incidens forrása:
 email-breach-alert-all-data-points-title = A kikerült adatai:
-email-breach-alert-all-next-steps-lead = Lépésről lépésre végigvezeti ahhoz, hogy hogyan oldja meg ezt az adatvédelmi incidenst.
-email-breach-alert-all-next-steps-cta-label = Kezdjen neki
+email-breach-alert-all-next-steps-lead = Lépésről lépésre végigvezetjük az adatvédelmi incidens megoldásán.
+email-breach-alert-all-next-steps-cta-label = Kezdjünk hozzá
 email-breach-alert-all-next-steps-button-dashboard = Ugrás a vezérlőpulthoz
