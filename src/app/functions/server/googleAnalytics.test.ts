@@ -3,18 +3,18 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { it, expect, jest } from "@jest/globals";
-import { sendPingToGA } from "./googleAnalytics";
 import { CONST_GA4_MEASUREMENT_ID } from "../../../constants";
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { getClientIdForSubscriber } from "../../../db/tables/google_analytics_clients";
 
 jest.mock("../../../db/tables/google_analytics_clients", () => {
   return {
-    getClientIdForSubscriber: jest.fn(),
+    getClientIdForSubscriber: jest.fn(() =>
+      Promise.resolve({ client_id: "testClientId1", cookie_timestamp: "1234" }),
+    ),
   };
 });
 
-jest.mock("../../../functions/server/logging.ts", () => {
+jest.mock("./logging", () => {
   class Logging {
     info(message: string, details: object) {
       console.info(message, details);
@@ -28,13 +28,12 @@ jest.mock("../../../functions/server/logging.ts", () => {
 });
 
 it("sends event name and parameters to GA", async () => {
-  global.fetch = jest.fn().mockResolvedValue({ ok: true });
+  const { logger } = await import("./logging");
+  jest.spyOn(logger, "info");
 
-  // @disable typescript-eslint/no-unused-vars
-  (getClientIdForSubscriber as jest.Mock) = jest.fn().mockResolvedValueOnce({
-    client_id: "testClientId1",
-    cookie_timestamp: "1234",
-  });
+  const { sendPingToGA } = await import("./googleAnalytics");
+
+  global.fetch = jest.fn().mockResolvedValue({ ok: true });
 
   await sendPingToGA(0, "testEvent", { testParam1: "testValue1" });
 
