@@ -286,6 +286,10 @@ export async function POST(request: NextRequest) {
             oneRepProfileId,
           });
 
+          const enabledFeatureFlags = await getEnabledFeatureFlags({
+            isSignedOut: true,
+          });
+
           if (
             updatedSubscriptionFromEvent.isActive &&
             updatedSubscriptionFromEvent.capabilities.includes(
@@ -299,14 +303,6 @@ export async function POST(request: NextRequest) {
 
             // Set monthly monitor report value back to true
             await setMonthlyMonitorReport(subscriber, true);
-
-            const enabledFeatureFlags = await getEnabledFeatureFlags({
-              isSignedOut: true,
-            });
-            if (enabledFeatureFlags.includes("GA4PurchaseEvents")) {
-              // Send a purchase event ping to GA.
-              await sendPingToGA(subscriber.id, "purchase");
-            }
 
             // MNTOR-2103: if one rep profile id doesn't exist in the db, fail immediately
             if (!oneRepProfileId) {
@@ -367,6 +363,10 @@ export async function POST(request: NextRequest) {
                 monitorUserId: subscriber.id.toString(),
               },
             });
+
+            if (enabledFeatureFlags.includes("GA4SubscriptionEvents")) {
+              await sendPingToGA(subscriber.id, "subscribe");
+            }
           } else if (
             !updatedSubscriptionFromEvent.isActive &&
             updatedSubscriptionFromEvent.capabilities.includes(
@@ -420,6 +420,10 @@ export async function POST(request: NextRequest) {
                 monitorUserId: subscriber.id.toString(),
               },
             });
+
+            if (enabledFeatureFlags.includes("GA4SubscriptionEvents")) {
+              await sendPingToGA(subscriber.id, "unsubscribe");
+            }
           }
         } catch (e) {
           captureMessage(
