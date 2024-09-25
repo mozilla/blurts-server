@@ -19,6 +19,7 @@ export async function sendPingToGA(
   eventName: string,
   eventParams: Record<string, string> = {},
 ): Promise<void> {
+  /** c8 ignore start: checking for required env vars */
   const apiSecret = process.env.GA4_API_SECRET;
   if (!apiSecret) {
     throw new Error(
@@ -27,7 +28,6 @@ export async function sendPingToGA(
   }
 
   const gaClientInfo = await getClientIdForSubscriber(subscriberId);
-  /** c8 ignore start: checking for required env vars */
   if (!gaClientInfo) {
     throw new Error(`No stored GA cookie for subscriber ${subscriberId}`);
   }
