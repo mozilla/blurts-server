@@ -6,6 +6,7 @@
 ## Email headers
 
 email-header-logo-alt = { -brand-mozilla-monitor }
+email-header-button-sign-in = Giriş yap
 
 ## Email footers
 
@@ -69,7 +70,13 @@ email-spotted-new-breach = Yeni bir veri ihlali tespit ettik
 
 ## Redesigned breach alert email
 
+email-breach-alert-all-subject = Yeni bir veri ihlali tespit ettik
+email-breach-alert-all-preview = Sorunu çözmeniz için gereken adımlarda size rehberlik edeceğiz.
+email-breach-alert-all-hero-heading = Yeni bir veri ihlalinde yer alıyorsunuz
+email-breach-alert-all-hero-subheading = Endişelenmeyin, bu ihlali çözmenize yardımcı olabiliriz
+email-breach-alert-all-lead = { -brand-mozilla-monitor }, kişisel bilgilerinizi de içeren aşağıdaki veri ihlallerini tespit etti:
 email-breach-alert-all-source-title = İhlal kaynağı:
 email-breach-alert-all-data-points-title = Ele geçirilen verileriniz:
 email-breach-alert-all-next-steps-lead = Bu veri ihlalini nasıl çözeceğinizi adım adım anlatacağız.
 email-breach-alert-all-next-steps-cta-label = Başlayalım
+email-breach-alert-all-next-steps-button-dashboard = Kontrol paneline git
