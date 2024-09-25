@@ -57,7 +57,7 @@ export const DataPointCount = (props: Props) => {
             <p>
               {props.l10n.getFragment(
                 hasPremium(props.subscriber) ||
-                  props.subscriber.onerep_profile_id
+                  typeof props.subscriber.onerep_profile_id === "number"
                   ? "email-breach-alert-plus-scan-results-data-points-label"
                   : "email-monthly-report-no-scan-results-data-points-label",
                 {
