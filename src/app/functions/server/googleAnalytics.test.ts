@@ -96,3 +96,68 @@ it("sends event name and parameters to GA and receives error response", async ()
     text: "failed",
   });
 });
+
+it("throws exception when no client_id is stored", async () => {
+  jest.mock("../../../db/tables/google_analytics_clients", () => {
+    return {
+      getClientIdForSubscriber: jest.fn(() => ""),
+    };
+  });
+
+  const { sendPingToGA } = await import("./googleAnalytics");
+  await expect(
+    sendPingToGA(0, "testEvent", { testParam1: "testValue1" }),
+  ).rejects.toEqual(Error("No stored GA cookie for subscriber 0"));
+});
+
+it("throws exception client_id is not present", async () => {
+  jest.mock("../../../db/tables/google_analytics_clients", () => {
+    return {
+      getClientIdForSubscriber: jest.fn(() =>
+        Promise.resolve({
+          cookie_timestamp: "1234",
+        }),
+      ),
+    };
+  });
+  const { sendPingToGA } = await import("./googleAnalytics");
+  await expect(
+    sendPingToGA(0, "testEvent", { testParam1: "testValue1" }),
+  ).rejects.toEqual(
+    Error(
+      "No GA client_id found for subscriber 0, cannot send backend events to Google Analytics",
+    ),
+  );
+});
+
+it("throws exception cookie_timestamp is not present", async () => {
+  jest.mock("../../../db/tables/google_analytics_clients", () => {
+    return {
+      getClientIdForSubscriber: jest.fn(() =>
+        Promise.resolve({
+          client_id: "testClientId1",
+        }),
+      ),
+    };
+  });
+  const { sendPingToGA } = await import("./googleAnalytics");
+  await expect(
+    sendPingToGA(0, "testEvent", { testParam1: "testValue1" }),
+  ).rejects.toEqual(
+    Error(
+      "No GA client_id found for subscriber 0, cannot send backend events to Google Analytics",
+    ),
+  );
+});
+
+it("throws exception when required env vars are not set", async () => {
+  delete process.env.GA4_API_SECRET;
+  const { sendPingToGA } = await import("./googleAnalytics");
+  await expect(
+    sendPingToGA(0, "testEvent", { testParam1: "testValue1" }),
+  ).rejects.toEqual(
+    Error(
+      "No GA4 API secret is defined, cannot send backend events Google Analytics",
+    ),
+  );
+});
