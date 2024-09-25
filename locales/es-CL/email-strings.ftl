@@ -2,23 +2,26 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-# Firefox Monitor is a product name and should not be translated.
--product-name = Firefox Monitor
-# Firefox is a brand name and should not be translated.
--brand-name = Firefox
+
+## Email headers
+
+email-header-logo-alt = { -brand-mozilla-monitor }
+email-header-button-sign-in = Conectarse
+
+## Email footers
+
+email-footer-support-heading = ¿Tienes preguntas acerca de { -brand-mozilla-monitor }?
+email-footer-support-content = Visita nuestro <support-link>Centro de soporte</support-link> para obtener ayuda
+email-footer-trigger-transactional = Estás recibiendo este correo electrónico como suscriptor de { -brand-mozilla-monitor }.
+email-footer-source-hibp = Datos de filtración provistos por <hibp-link>{ -brand-HIBP }</hibp-link>
+email-footer-logo-mozilla-alt = { -brand-mozilla }
+email-footer-meta-privacy-notice = Privacidad
 # Firefox Relay is a product name and should not be translated.
 -product-name-relay = Firefox Relay
 # Mozilla VPN is a product name and should not be translated.
 -product-name-vpn = Mozilla VPN
 # A link to legal information about mozilla products.
 legal = Legal
-# Unsubscribe link in email.
-email-unsub-link = Desuscribirse
-# This string appears in the footer of breach report and breach alert emails.
-# { $unsubLink } is a link to the user's dashboard where they can unsubscribe from Monitor
-# and uses the text from { email-unsub-link }. { $faqLink } is a link to the
-# Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
-email-footer-blurb = Estás recibiendo este correo por que te registraste para recibir alertas de { -product-name }. ¿No quieres seguir recibiendo estos correos? { $unsubLink }. Este es un correo automático. Para ayuda, visita { $faqLink }.
 # Button text
 verify-email-cta = Verificar correo
 # Headline of verification email
@@ -46,25 +49,6 @@ email-breach-alert-blurb =
 #   $hibp-link-attr (String) - Link to Have I Been Pwned
 email-2022-hibp-attribution = Datos de filtración provistos por <a { $hibp-link-attr }>{ -brand-HIBP }</a>
 
-## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
-## Variables:
-##   $email-address (string) - Email address
-
-email-unresolved-heading = Tienes filtraciones sin resolver
-email-unresolved-subhead = Tu correo electrónico ha sido expuesto. <br>Arréglalo ya mismo con { -product-name }.
-email-is-affected = Tu correo electrónico, { $email-address }, se vio afectado por al menos una filtración de datos
-email-more-detail = Conéctate a { -product-name } ahora para ver más detalles sobre tus filtraciones (incluido cuándo ocurrieron y qué datos se expusieron) y aprende qué se debe hacer cuando tu correo electrónico se ha visto expuesto en una filtración de datos.
-email-breach-status = Estado actual de filtraciones
-# table row 1 label
-email-monitored = Total de correos monitoreados:
-# table row 2 label
-email-breach-total = Número total de filtraciones:
-# table row 3 label
-email-resolved = Filtraciones resueltas:
-# table row 4 label
-email-unresolved = Filtraciones sin resolver:
-email-resolve-cta = Resolver filtraciones
-
 ## Verification email
 
 email-verify-heading = Protege tus datos, empieza ya
@@ -77,6 +61,7 @@ email-breach-summary = Aquí está el resumen de tu filtración de datos
 # Variables:
 #   $email-address (string) - Email address, bolded
 email-breach-detected = Los resultados de búsqueda de tu cuenta { $email-address } han detectado que tu correo electrónico podría haber sido expuesto. Te recomendamos que actúes ahora para resolver este problema.
+# Deprecated after the redesigned breach alert email is launched
 # Variables:
 #   $email-address (string) - Email address
 email-breach-detected-2 = Los resultados de búsqueda de tu cuenta <b>{ $email-address }</b> han detectado que tu correo electrónico podría haber sido expuesto. Te recomendamos que actúes ahora para resolver este problema.
@@ -84,4 +69,18 @@ email-dashboard-cta = Ir al panel de control
 
 ## Breach alert
 
+# Deprecated after the redesigned breach alert email is launched
 email-spotted-new-breach = Hemos detectado una nueva filtración de datos
+
+## Redesigned breach alert email
+
+email-breach-alert-all-subject = Nueva filtración de datos detectada
+email-breach-alert-all-preview = Te guiaremos a través de los pasos para resolverlo.
+email-breach-alert-all-hero-heading = Has estado presente en una nueva filtración de datos.
+email-breach-alert-all-hero-subheading = No te preocupes, podemos ayudarte a resolver esta exposición.
+email-breach-alert-all-lead = { -brand-mozilla-monitor } descubrió la siguiente filtración de datos que incluye tu información personal:
+email-breach-alert-all-source-title = Fuente de la filtración:
+email-breach-alert-all-data-points-title = Tus datos expuestos:
+email-breach-alert-all-next-steps-lead = Te guiaremos paso a paso sobre cómo resolver esta filtración de datos.
+email-breach-alert-all-next-steps-cta-label = Empecemos
+email-breach-alert-all-next-steps-button-dashboard = Ir al panel de control

@@ -2,25 +2,26 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-# Firefox Monitor is a product name and should not be translated.
--product-name = Firefox Monitor
-# Firefox is a brand name and should not be translated.
--brand-name = Firefox
+
+## Email headers
+
+email-header-logo-alt = { -brand-mozilla-monitor }
+email-header-button-sign-in = Prihlásiť sa
+
+## Email footers
+
+email-footer-support-heading = Máte otázky týkajúce sa { -brand-mozilla-monitor(case: "gen") }?
+email-footer-support-content = Ak potrebujete pomoc, navštívte naše <support-link>Centrum podpory</support-link>
+email-footer-trigger-transactional = Tento e‑mail ste dostali ako odberateľ služby { -brand-mozilla-monitor }.
+email-footer-source-hibp = Údaje o úniku poskytuje <hibp-link>{ -brand-HIBP }</hibp-link>
+email-footer-logo-mozilla-alt = { -brand-mozilla }
+email-footer-meta-privacy-notice = Súkromie
 # Firefox Relay is a product name and should not be translated.
 -product-name-relay = Firefox Relay
 # Mozilla VPN is a product name and should not be translated.
 -product-name-vpn = Mozilla VPN
 # A link to legal information about mozilla products.
 legal = Právne informácie
-# Unsubscribe link in email.
-email-unsub-link = Odhláste sa
-# This string appears in the footer of breach report and breach alert emails.
-# { $unsubLink } is a link to the user's dashboard where they can unsubscribe from Monitor
-# and uses the text from { email-unsub-link }. { $faqLink } is a link to the
-# Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
-email-footer-blurb =
-    Tento e‑mail ste dostali, pretože ste sa prihlásili na odber upozornení zo služby { -product-name }.
-    Neželáte si už dostávať podobné e‑maili? { $unsubLink }. Toto je automaticky generovaná správa. Podporu nájdete na { $faqLink }.
 # Button text
 verify-email-cta = Overiť e‑mailovú adresu
 # Headline of verification email
@@ -60,6 +61,7 @@ email-breach-summary = Tu je sumár únikov údajov
 # Variables:
 #   $email-address (string) - Email address, bolded
 email-breach-detected = Výsledky vyhľadávania pre váš účet { $email-address } zistili, že váš e‑mail mohol byť odhalený. Odporúčame vám, aby ste okamžite začali daný únik riešiť.
+# Deprecated after the redesigned breach alert email is launched
 # Variables:
 #   $email-address (string) - Email address
 email-breach-detected-2 = Výsledky vyhľadávania pre váš účet <b>{ $email-address }</b> zistili, že váš e‑mail mohol byť súčasťou úniku. Odporúčame vám, aby ste okamžite začali daný únik riešiť.
@@ -67,4 +69,18 @@ email-dashboard-cta = Prejsť na nástenku
 
 ## Breach alert
 
+# Deprecated after the redesigned breach alert email is launched
 email-spotted-new-breach = Zistili sme nový únik údajov
+
+## Redesigned breach alert email
+
+email-breach-alert-all-subject = Bol zistený nový únik údajov
+email-breach-alert-all-preview = Prevedieme vás krokmi, ako to vyriešiť.
+email-breach-alert-all-hero-heading = Vaše údaje sú súčasťou nového úniku údajov
+email-breach-alert-all-hero-subheading = Nebojte sa, môžeme vám pomôcť tento únik vyriešiť
+email-breach-alert-all-lead = { -brand-mozilla-monitor } zistil nasledujúci únik údajov, ktorý zahŕňa vaše osobné údaje:
+email-breach-alert-all-source-title = Zdroj úniku:
+email-breach-alert-all-data-points-title = Vaše uniknuté údaje:
+email-breach-alert-all-next-steps-lead = Prevedieme vás krok za krokom, ako vyriešiť tento únik údajov.
+email-breach-alert-all-next-steps-cta-label = Začíname
+email-breach-alert-all-next-steps-button-dashboard = Prejsť na nástenku

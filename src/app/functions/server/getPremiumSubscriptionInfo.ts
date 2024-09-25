@@ -6,12 +6,7 @@
 // server-side, because they're set by the server environment (but in
 // Storybook this is fine to run; the URLs don't need to work there):
 if (!process.env.STORYBOOK) {
-  // server-only doesn't have type definitions because it doesn't do anything;
-  // TS wouldn't complain for regular imports, but with dynamic imports (which
-  // we need for the Storybook conditional), it expects it to do something.
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  import("server-only");
+  import("./notInClientComponent");
 }
 
 type SubscriptionPeriod = "monthly" | "yearly";

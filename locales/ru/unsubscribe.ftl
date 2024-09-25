@@ -13,6 +13,7 @@ unsubscribe-cta = Отписаться
 
 unsubscribe-success-from-monthly-report-header = Вы отписались
 unsubscribe-success-from-monthly-report-body = Вы можете повторно подписаться или обновить свои настройки электронной почты в любой момент в настройках { -brand-monitor }.
+unsubscribe-success-cta = Войти в { -brand-monitor }
 
 # Error warning
 

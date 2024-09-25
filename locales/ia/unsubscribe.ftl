@@ -13,6 +13,7 @@ unsubscribe-cta = Remover le subscription
 
 unsubscribe-success-from-monthly-report-header = Tu abonamento ha essite annullate
 unsubscribe-success-from-monthly-report-body = Tu pote resubscriber te o actualisar tu preferentias de email quandocunque ab tu parametros de { -brand-monitor }.
+unsubscribe-success-cta = Accede a { -brand-monitor }
 
 # Error warning
 

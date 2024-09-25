@@ -13,6 +13,7 @@ unsubscribe-cta = Se désinscrire
 
 unsubscribe-success-from-monthly-report-header = Vous avez été désinscrit·e.
 unsubscribe-success-from-monthly-report-body = Vous pouvez vous réabonner ou mettre à jour vos préférences de communication à tout moment depuis les paramètres de { -brand-monitor }.
+unsubscribe-success-cta = Se connecter à { -brand-monitor }
 
 # Error warning
 

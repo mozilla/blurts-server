@@ -10,197 +10,12 @@
 ## unless otherwise indicated.
 
 -product-name = Mozilla Monitor
--product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name = Monitor
 -brand-name = Firefox
--brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
 -brand-fxa = Conta Firefox
 -brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
--brand-send = Firefox Send
--brand-fpn = Firefox Private Network
-
-##
-
-error-could-not-add-email = Não foi possível adicionar o endereço de email à base de dados.
-error-not-subscribed = Este endereço de email não está subscrito no { -product-name }.
-error-hibp-throttled = Demasiadas ligações para { -brand-HIBP }.
-error-hibp-connect = Erro ao ligar a { -brand-HIBP }.
-
-user-add-invalid-email = Email inválido
-user-add-too-many-emails = Está a monitorizar o número máximo de endereços de email.
-user-add-duplicate-email = Este e-mail já foi adicionado ao { -product-name }.
-user-add-verification-email-just-sent = Não é possível enviar outro e-mail de verificação num intervalo de tempo tão curto. Por favor, tente novamente mais tarde.
-user-add-unknown-error = Algo correu mal ao adicionar outro endereço de e-mail. Por favor, tente novamente mais tarde.
-user-delete-unknown-error = Ocorreu algo de errado ao remover um endereço de e-mail. Por favor, tente novamente mais tarde.
-
-user-verify-token-error = É necessário um código de verificação.
-
-user-unsubscribe-token-error = Cancelar a subscrição requer um token.
-user-unsubscribe-token-email-error = Cancelar a subscrição requer um token e emailHash.
-
-# compromised-data = the kind of user data exposed to hackers in data breach.
-compromised-data = Dados comprometidos:
-
-# Breach data provided by Have I Been Pwned.
-# Variables:
-#   $hibp-link (String) - Link to Have I Been Pwned
-hibp-attribution = Dados de brechas fornecidos por { $hibp-link }
-
-show-all = Mostrar todas
-
-sign-out = Terminar sessão
-
-# Manage Firefox Account, link to page where account holders can change their account settings.
-manage-fxa = Gerir { -brand-fxa }
-
-# Link title
-frequently-asked-questions = Perguntas frequentes
-
-# Link title
-preferences = Preferências
-
-# Link title
-home = Início
-
-# Link title
-security-tips = Dicas de segurança
-
-# Link title
-more-about-this-breach = Mais acerca desta brecha
-
-monitor-several-emails = Monitorize vários emails
-
-website-breach = Brecha de website
-sensitive-breach = Brechas de websites sensíveis
-data-aggregator-breach = Brecha agregadora de dados
-
-what-data = Que dados foram comprometidos:
-
-sensitive-sites = Como é que o { -product-name } trata sites sensíveis?
-sensitive-sites-copy =
-    { -product-name } só revela as contas associadas com a estes 
-    tipos de violações de dados depois de um endereço de e-mail ter sido confirmado. Isto significa que 
-    você é a única pessoa que pode ver se a sua informação estava numa violação de dados (a menos que 
-    alguém tenha acesso à sua conta de e-mail).
-
-delayed-reporting-headline = Porque demorou tanto tempo até esta violação de dados ser reportada?
-delayed-reporting-copy =
-    Pode demorar meses ou até mesmo anos para as credenciais expostas 
-    numa violação de dados aparecerem na dark web. As violações de dados são adicionadas à nossa base de dados 
-    assim que são descobertas e validadas.
-
-fxm-warns-you =
-    O { -product-name } indica se o seu endereço de e-mail foi exposto 
-    numa violação de dados na Internet. Confirme se a sua informação foi exposta, aprenda a 
-    proteger melhor as suas contas na Internet e receba alertas caso o seu endereço de e-mail 
-    apareça numa nova violação de dados.
-
-what-is-data-agg = O que é um agregador de dados?
-what-is-data-agg-blurb =
-    Agregadores ou agentes de dados, recolhem informações de registos 
-    públicos e adquirem dados de outras empresas. Trabalham estes dados para os venderem a outras empresas 
-    para fins de marketing. As vítimas destas violações de dados têm uma probabilidade mais baixa de fraude financeira 
-    mas os piratas informáticos podem utilizar estes dados para se fazerem passar por estas pessoas ou para criarem perfis.
-
-avoid-personal-info = Evite utilizar informação pessoal nas palavras-passe
-
-## What to do after data breach tips
-
-send-verification = Enviar ligação de verificação
-
-# This string is a header on the user preferences page and
-# appears above a check-box list of user options which allow
-# the user to choose whether or not they want to receive breach
-# alerts for all of their monitored email addresses to a single
-# email address.
-breach-summary = Resumo da violação de dados
-
-## Variables:
-##   $userName (String) - Username
-
-##
-
-breach-alert-subject = O { -product-name } encontrou o seu e-mail numa nova violação de dados.
-
-## Variables:
-##   $breachName (String) - Number of the breach
-
-# This string is displayed under a large numeral that indicates the total number
-# of data breaches that exposed a user’s password. Don’t add $passwords to
-# your localization, because it would result in the number showing twice.
-passwords-exposed =
-    { $passwords ->
-        [one] Palavra-passe exposta em todas as brechas
-       *[other] Palavras-passe expostas em todas as brechas
-    }
-
-# This string is displayed under a large numeral that indicates the total number
-# of data breaches that have exposed the user’s information. Don’t add $breaches to
-# your localization, because it would result in the number showing twice.
-known-data-breaches-exposed =
-    { $breaches ->
-        [one] Brecha de dados conhecida expôs a sua informação
-       *[other] Brechas de dados conhecidas expuseram a sua informação
-    }
-
-what-is-a-website-breach = O que é uma violação de dados do site?
-website-breach-blurb = Uma violação de dados de um site ocorre quando os cibercriminosos roubam, copiam ou expõem a informação pessoal de contas na Internet. Geralmente, é a consequência dos piratas informáticos encontrarem um ponto fraco na segurança do site. As violações de dados também podem acontecer quando a informação sobre contas é divulgada de forma acidental.
-
-# This is a section headline on the breach detail page that appears above
-# a short summary about the breach.
-breach-overview-title = Sinopse
-
-# This is a standardized breach overview blurb that appears on all breach detail pages.
-# $breachTitle is the name of the breached company or website.
-# $breachDate and $addedDate are calendar dates.
-breach-overview-new = A { $breachDate }, { $breachTitle } foi comprometido. Assim que a violação de dados foi descoberta e confirmada, foi adicionada à nossa base de dados a { $addedDate }.
-
-# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
-menu = Menu
-
-# This is part of a confirmation message that appears after a user has submitted
-# the form to add an additional email to Firefox Monitor.
-# Variables:
-#   $userEmail (String) - User email address
-verify-the-link = Verifique a ligação enviada para { $userEmail } para adicioná-la ao { -product-name }.
-
-## These are part of a confirmation page that appears after a user has verified
-## an additional email to Firefox Monitor.
-
-# This string is a label for the calendar date a breach is added to the database
-# and is followed by that date.
-breach-added-label = Brecha adicionada:
-
-# Section headline
-rec-section-headline = O que fazer para esta violação de dados
-rec-section-subhead = Recomendamos que siga estes passos para manter os seus dados pessoais seguros e proteger a sua identidade digital.
-
-# Section headline
-rec-section-headline-no-pw = O que fazer para proteger os seus dados pessoais
-rec-section-subhead-no-pw = Embora as palavras-passe não tenham sido expostas nesta violação de dados, ainda existem passos que pode executar para proteger melhor os seus dados pessoais.
-
-## This string contains nested markup that becomes a link later in the code.
-## Please do not modify or remove "<a>" and "</a>".
-
-##
-
-## These strings contain nested markup that is later used to style the text inside of it.
-## Please do not modify or remove "<span>" and "</span>".
-
-# A status indicator that appears in the top right corner of new breach cards
-new-breach = Nova
-
-## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
-
-## Relay and VPN educational/ad units
-
-# Monitor V2
-
-
-## The following messages are brands and should be kept entirely in English
-
 -brand-firefox = Firefox
 -brand-monitor = Monitor
 -brand-fx-monitor = Mozilla Monitor
@@ -216,18 +31,129 @@ new-breach = Nova
 
 ##
 
-##
+error-not-subscribed = Este endereço de email não está subscrito no { -product-name }.
+error-hibp-throttled = Demasiadas ligações para { -brand-HIBP }.
+error-hibp-connect = Erro ao ligar a { -brand-HIBP }.
+user-add-invalid-email = Email inválido
+user-add-too-many-emails = Está a monitorizar o número máximo de endereços de email.
+user-add-duplicate-email = Este e-mail já foi adicionado ao { -product-name }.
+user-add-verification-email-just-sent = Não é possível enviar outro e-mail de verificação num intervalo de tempo tão curto. Por favor, tente novamente mais tarde.
+user-add-unknown-error = Algo correu mal ao adicionar outro endereço de e-mail. Por favor, tente novamente mais tarde.
+user-delete-unknown-error = Ocorreu algo de errado ao remover um endereço de e-mail. Por favor, tente novamente mais tarde.
+user-verify-token-error = É necessário um código de verificação.
+# compromised-data = the kind of user data exposed to hackers in data breach.
+compromised-data = Dados comprometidos:
+# Breach data provided by Have I Been Pwned.
+# Variables:
+#   $hibp-link (String) - Link to Have I Been Pwned
+hibp-attribution = Dados de brechas fornecidos por { $hibp-link }
+show-all = Mostrar todas
+sign-out = Terminar sessão
+# Manage Firefox Account, link to page where account holders can change their account settings.
+manage-fxa = Gerir { -brand-fxa }
+# Link title
+preferences = Preferências
+# Link title
+home = Início
+# Link title
+security-tips = Dicas de segurança
+# Link title
+more-about-this-breach = Mais acerca desta brecha
+monitor-several-emails = Monitorize vários emails
+website-breach = Brecha de website
+sensitive-breach = Brechas de websites sensíveis
+data-aggregator-breach = Brecha agregadora de dados
+what-data = Que dados foram comprometidos:
+sensitive-sites = Como é que o { -product-name } trata sites sensíveis?
+sensitive-sites-copy =
+    { -product-name } só revela as contas associadas com a estes 
+    tipos de violações de dados depois de um endereço de e-mail ter sido confirmado. Isto significa que 
+    você é a única pessoa que pode ver se a sua informação estava numa violação de dados (a menos que 
+    alguém tenha acesso à sua conta de e-mail).
+delayed-reporting-headline = Porque demorou tanto tempo até esta violação de dados ser reportada?
+delayed-reporting-copy =
+    Pode demorar meses ou até mesmo anos para as credenciais expostas 
+    numa violação de dados aparecerem na dark web. As violações de dados são adicionadas à nossa base de dados 
+    assim que são descobertas e validadas.
+fxm-warns-you =
+    O { -product-name } indica se o seu endereço de e-mail foi exposto 
+    numa violação de dados na Internet. Confirme se a sua informação foi exposta, aprenda a 
+    proteger melhor as suas contas na Internet e receba alertas caso o seu endereço de e-mail 
+    apareça numa nova violação de dados.
+what-is-data-agg = O que é um agregador de dados?
+what-is-data-agg-blurb =
+    Agregadores ou agentes de dados, recolhem informações de registos 
+    públicos e adquirem dados de outras empresas. Trabalham estes dados para os venderem a outras empresas 
+    para fins de marketing. As vítimas destas violações de dados têm uma probabilidade mais baixa de fraude financeira 
+    mas os piratas informáticos podem utilizar estes dados para se fazerem passar por estas pessoas ou para criarem perfis.
+avoid-personal-info = Evite utilizar informação pessoal nas palavras-passe
+send-verification = Enviar ligação de verificação
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single
+# email address.
+breach-summary = Resumo da violação de dados
 
 ##
 
+breach-alert-subject = O { -product-name } encontrou o seu e-mail numa nova violação de dados.
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that exposed a user’s password. Don’t add $passwords to
+# your localization, because it would result in the number showing twice.
+passwords-exposed =
+    { $passwords ->
+        [one] Palavra-passe exposta em todas as brechas
+       *[other] Palavras-passe expostas em todas as brechas
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+known-data-breaches-exposed =
+    { $breaches ->
+        [one] Brecha de dados conhecida expôs a sua informação
+       *[other] Brechas de dados conhecidas expuseram a sua informação
+    }
+what-is-a-website-breach = O que é uma violação de dados do site?
+website-breach-blurb = Uma violação de dados de um site ocorre quando os cibercriminosos roubam, copiam ou expõem a informação pessoal de contas na Internet. Geralmente, é a consequência dos piratas informáticos encontrarem um ponto fraco na segurança do site. As violações de dados também podem acontecer quando a informação sobre contas é divulgada de forma acidental.
+# This is a section headline on the breach detail page that appears above
+# a short summary about the breach.
+breach-overview-title = Sinopse
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview-new = A { $breachDate }, { $breachTitle } foi comprometido. Assim que a violação de dados foi descoberta e confirmada, foi adicionada à nossa base de dados a { $addedDate }.
+# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
+menu = Menu
+# This is part of a confirmation message that appears after a user has submitted
+# the form to add an additional email to Firefox Monitor.
+# Variables:
+#   $userEmail (String) - User email address
+verify-the-link = Verifique a ligação enviada para { $userEmail } para adicioná-la ao { -product-name }.
+
+## These are part of a confirmation page that appears after a user has verified
+## an additional email to Firefox Monitor.
+
+# This string is a label for the calendar date a breach is added to the database
+# and is followed by that date.
+breach-added-label = Brecha adicionada:
+# Section headline
+rec-section-headline = O que fazer para esta violação de dados
+rec-section-subhead = Recomendamos que siga estes passos para manter os seus dados pessoais seguros e proteger a sua identidade digital.
+# Section headline
+rec-section-headline-no-pw = O que fazer para proteger os seus dados pessoais
+rec-section-subhead-no-pw = Embora as palavras-passe não tenham sido expostas nesta violação de dados, ainda existem passos que pode executar para proteger melhor os seus dados pessoais.
+
 ##
 
-## Updated error messages
+# A status indicator that appears in the top right corner of new breach cards
+new-breach = Nova
+
+##
 
 # “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
 -brand-mozilla-account = Conta Mozilla
-
 open-in-new-tab-alt = Abrir ligação num novo separador
 
 ## Search Engine Optimization
@@ -244,7 +170,6 @@ brand-mozilla-monitor = { -brand-fx-monitor }
 ## Site navigation
 
 mobile-menu-label = Menu principal
-
 main-nav-button-collapse-label = Colapsar menu
 main-nav-button-collapse-tooltip = Colapsar menu
 main-nav-button-expand-label = Expandir menu
@@ -274,7 +199,7 @@ mozilla = { -brand-mozilla }
 terms-of-service = Termos do serviço
 privacy-notice = Informação de privacidade
 github = { -brand-github }
-footer-nav-all-breaches = Todas as falhas de segurança
+footer-nav-recent-breaches = Violações de Dados Recentes
 footer-external-link-faq-label = Perguntas frequentes
 footer-external-link-faq-tooltip = Perguntas frequentes
 
@@ -294,7 +219,6 @@ error-page-error-other-title = { $errorCode } Ocorreu algo de errado
 all-breaches-headline-2 = Todas as falhas de segurança detetadas por { -brand-fx-monitor }
 all-breaches-lead = Monitorizamos todas as violações de dados conhecidas para descobrir se a sua informação pessoal foi comprometida. Aqui está uma lista completa de todas as violações de dados que foram reportadas desde 2007.
 search-breaches = Procurar por violações de dados
-
 # the kind of user data exposed to hackers in data breach.
 exposed-data = Dados expostos:
 
@@ -302,16 +226,11 @@ exposed-data = Dados expostos:
 
 find-out-if-2 = Saiba se esteve envolvido nesta falha de segurança
 find-out-if-description = Iremos ajudar a perceber muito rapidamente se o seu endereço de e-mail foi exposto nesta violação de dados e a compreender o que fazer a seguir.
-
 breach-detail-cta-signup = Pesquisar por falhas de segurança
-
-## Floating banner
 
 ## Firefox Monitor -> Mozilla Monitor rebrand banner
 
 banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: Um novo nome, visual e ainda mais formas de <b>recuperar a sua privacidade</b>.
 banner-monitor-rebrand-dismiss-button-label = Ok
 banner-monitor-rebrand-dismiss-button-tooltip = Dispensar
-
 loading-accessibility = A carregar
-
