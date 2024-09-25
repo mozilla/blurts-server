@@ -73,9 +73,10 @@ export const DataPointCount = (props: Props) => {
                     ),
                   },
                   vars: {
-                    data_point_count: props.subscriber.onerep_profile_id
-                      ? unresolvedDataBreachesAndBrokers
-                      : unresolvedDataBreaches,
+                    data_point_count:
+                      typeof props.subscriber.onerep_profile_id === "number"
+                        ? unresolvedDataBreachesAndBrokers
+                        : unresolvedDataBreaches,
                   },
                 },
               )}
