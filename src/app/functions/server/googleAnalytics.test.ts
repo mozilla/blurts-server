@@ -14,6 +14,19 @@ jest.mock("../../../db/tables/google_analytics_clients", () => {
   };
 });
 
+jest.mock("../../../functions/server/logging.ts", () => {
+  class Logging {
+    info(message: string, details: object) {
+      console.info(message, details);
+    }
+  }
+
+  const logger = new Logging();
+  return {
+    logger,
+  };
+});
+
 it("sends event name and parameters to GA", async () => {
   global.fetch = jest.fn().mockResolvedValue({ ok: true });
 
