@@ -26,8 +26,12 @@ export async function sendPingToGA(
     );
   }
 
-  const { client_id, cookie_timestamp } =
-    await getClientIdForSubscriber(subscriberId);
+  const gaClientInfo = await getClientIdForSubscriber(subscriberId);
+  if (!gaClientInfo) {
+    throw new Error(`No stored GA cookie for subscriber ${subscriberId}`);
+  }
+
+  const { client_id, cookie_timestamp } = gaClientInfo;
   const clientId = `${client_id}.${cookie_timestamp}`;
 
   if (!clientId) {
@@ -64,6 +68,11 @@ export async function sendPingToGA(
   );
 
   if (!result.ok) {
+    console.error("Could not send backend ping to GA", {
+      status: result.status,
+      text: await result.text(),
+    });
+
     logger.error("Could not send backend ping to GA", {
       status: result.status,
       text: await result.text(),
