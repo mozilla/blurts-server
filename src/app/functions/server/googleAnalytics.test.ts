@@ -27,14 +27,15 @@ jest.mock("./logging", () => {
   };
 });
 
-it("sends event name and parameters to GA", async () => {
-  const { logger } = await import("./logging");
-  jest.spyOn(logger, "info");
-
-  const { sendPingToGA } = await import("./googleAnalytics");
-
+beforeEach(async () => {
   global.fetch = jest.fn().mockResolvedValue({ ok: true });
 
+  const { logger } = await import("./logging");
+  jest.spyOn(logger, "info");
+});
+
+it("sends event name and parameters to GA", async () => {
+  const { sendPingToGA } = await import("./googleAnalytics");
   await sendPingToGA(0, "testEvent", { testParam1: "testValue1" });
 
   expect(global.fetch).toHaveBeenCalledWith(
