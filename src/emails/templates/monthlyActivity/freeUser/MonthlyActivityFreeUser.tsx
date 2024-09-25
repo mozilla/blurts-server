@@ -40,7 +40,7 @@ export const MonthlyReportFreeUserEmail = (
     getPremiumSubscriptionUrl({ type: "yearly" }),
   );
   const assumedCountryCode = getSignupLocaleCountry(props.subscriber);
-  const hasRunFreeScan = props.subscriber.onerep_profile_id !== null;
+  const hasRunFreeScan = typeof props.subscriber.onerep_profile_id === "number";
 
   const bannerDataCta = {
     label: hasRunFreeScan

@@ -90,6 +90,7 @@ export const RedesignedBreachAlertEmail = (
     return <BreachAlertEmail {...props} />;
   }
 
+  const hasRunFreeScan = typeof props.subscriber.onerep_profile_id === "number";
   const l10n = props.l10n;
   const locale = getLocale(props.l10n);
   const listFormatter = new Intl.ListFormat(locale);
@@ -244,7 +245,7 @@ export const RedesignedBreachAlertEmail = (
             )
           }
         </mj-section>
-        {props.subscriber.onerep_profile_id &&
+        {hasRunFreeScan &&
           props.dataSummary &&
           !hasPremium(props.subscriber) && (
             <DataPointCount
