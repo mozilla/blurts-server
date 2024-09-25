@@ -50,6 +50,7 @@ export const featureFlagNames = [
   "PetitionBannerCsatSurvey",
   "MonthlyReportFreeUser",
   "BreachEmailRedesign",
+  "GA4PurchaseEvents",
 ] as const;
 export type FeatureFlagName = (typeof featureFlagNames)[number];
 

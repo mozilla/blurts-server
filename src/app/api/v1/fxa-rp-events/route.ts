@@ -26,6 +26,7 @@ import { changeSubscription } from "../../../functions/server/changeSubscription
 import { deleteAccount } from "../../../functions/server/deleteAccount";
 import { record } from "../../../functions/server/glean";
 import { sendPingToGA } from "../../../functions/server/googleAnalytics";
+import { getEnabledFeatureFlags } from "../../../../db/tables/featureFlags";
 
 const FXA_PROFILE_CHANGE_EVENT =
   "https://schemas.accounts.firefox.com/event/profile-change";
@@ -299,8 +300,13 @@ export async function POST(request: NextRequest) {
             // Set monthly monitor report value back to true
             await setMonthlyMonitorReport(subscriber, true);
 
-            // Send a purchase event ping to GA.
-            await sendPingToGA(subscriber.id, "purchase");
+            const enabledFeatureFlags = await getEnabledFeatureFlags({
+              isSignedOut: true,
+            });
+            if (enabledFeatureFlags.includes("GA4PurchaseEvents")) {
+              // Send a purchase event ping to GA.
+              await sendPingToGA(subscriber.id, "purchase");
+            }
 
             // MNTOR-2103: if one rep profile id doesn't exist in the db, fail immediately
             if (!oneRepProfileId) {
