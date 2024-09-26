@@ -31,9 +31,9 @@ export const MonthlyReportFreeUserEmail = (
 ) => {
   const l10n = props.l10n;
 
-  const premiumSubscriptionUrlObject = new URL(
-    getPremiumSubscriptionUrl({ type: "yearly" }),
-  );
+  const premiumSubscriptionUrlObject = getPremiumSubscriptionUrl({
+    type: "yearly",
+  });
   const assumedCountryCode = getSignupLocaleCountry(props.subscriber);
   const hasRunFreeScan = typeof props.subscriber.onerep_profile_id === "number";
 
@@ -42,7 +42,7 @@ export const MonthlyReportFreeUserEmail = (
       ? l10n.getString("email-monthly-report-free-banner-cta-upgrade")
       : l10n.getString("email-monthly-report-free-banner-cta-free-scan"),
     link: hasRunFreeScan
-      ? premiumSubscriptionUrlObject.href
+      ? premiumSubscriptionUrlObject
       : `${process.env.SERVER_URL}/user/dashboard/?utm_source=monitor-product&utm_medium=email&utm_campaign=${props.utmCampaignId}&utm_content=take-action${props.utmContentSuffix}`,
   };
 
