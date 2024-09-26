@@ -71,9 +71,12 @@ email-breach-alert-plus-upgrade-banner-heading = Upgrade for extra protection
 email-breach-alert-plus-upgrade-banner-content = { -brand-monitor-plus } can find and remove your phone number, home address, and other personal info from online databases.
 email-breach-alert-plus-upgrade-banner-cta-label = Get { -brand-monitor-plus }
 email-breach-alert-plus-scan-results-heading = Current exposures
-# <stat> is shown on a single line in a large font
 # Variables:
 #   $data_point_count (number) - The number of data exposures that were exposed
-email-breach-alert-plus-scan-results-data-points-label = <stat>{ $data_point_count }</stat> Data exposures
+email-breach-alert-plus-scan-results-data-points-label =
+   {$data_point_count ->
+        [one] Data exposure
+       *[other] Data exposures
+    }
 email-breach-alert-plus-scan-results-cta-label = Take action to resolve these exposures
 email-breach-alert-plus-scan-results-trailer = We’ll guide you step-by-step through the process
