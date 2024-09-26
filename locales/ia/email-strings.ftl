@@ -10,6 +10,9 @@ email-header-button-sign-in = Aperir session
 
 ## Email footers
 
+email-footer-support-heading = Questiones re { -brand-mozilla-monitor }?
+email-footer-support-content = Visita nostre <support-link>Centro de supporto</support-link> pro adjuta
+email-footer-trigger-transactional = Tu recipe iste email como abonato de { -brand-mozilla-monitor }.
 email-footer-source-hibp = Violation de datos fornite per <hibp-link>{ -brand-HIBP }</hibp-link>
 email-footer-logo-mozilla-alt = { -brand-mozilla }
 email-footer-meta-privacy-notice = Confidentialitate
@@ -69,5 +72,13 @@ email-spotted-new-breach = Nos ha individuate un nove violation de datos
 
 ## Redesigned breach alert email
 
+email-breach-alert-all-subject = Nove violation de datos disvelate
+email-breach-alert-all-preview = Nos te guidara passo a passo pro resolver lo.
+email-breach-alert-all-hero-heading = Te concerne un nove violation de datos
+email-breach-alert-all-hero-subheading = Non te preoccupa, nos pote adjutar te a resolver iste exposition
+email-breach-alert-all-lead = { -brand-mozilla-monitor } discoperiva le sequente violation de datos que include tu informationes personal:
+email-breach-alert-all-source-title = Fonte del violation:
+email-breach-alert-all-data-points-title = Tu datos exponite:
+email-breach-alert-all-next-steps-lead = Nos te guidara passo a passo re como resolver iste violation de datos.
 email-breach-alert-all-next-steps-cta-label = Que nos comencia
 email-breach-alert-all-next-steps-button-dashboard = Va al pannello de controlo

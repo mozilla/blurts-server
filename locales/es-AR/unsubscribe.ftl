@@ -13,6 +13,7 @@ unsubscribe-cta = Cancelar suscripción
 
 unsubscribe-success-from-monthly-report-header = Ahora no estás suscripto
 unsubscribe-success-from-monthly-report-body = Podés volver a suscribite o actualizar tus preferencias de correo electrónico desde la configuración de { -brand-monitor }.
+unsubscribe-success-cta = Iniciar sesión en { -brand-monitor }
 
 # Error warning
 
