@@ -17,7 +17,6 @@ import { getSignupLocaleCountry } from "../../../functions/getSignupLocaleCountr
 export type MonthlyReportFreeUserEmailProps = {
   l10n: ExtendedReactLocalization;
   utmCampaignId: string;
-  utmContentSuffix: string;
   subscriber: SubscriberRow;
   dataSummary: DashboardSummary;
   unsubscribeLink: string;
@@ -28,10 +27,13 @@ export const MonthlyReportFreeUserEmail = (
 ) => {
   const l10n = props.l10n;
 
+  const assumedCountryCode = getSignupLocaleCountry(props.subscriber);
+  const utmContentSuffix = isEligibleForPremium(assumedCountryCode)
+    ? "-us"
+    : "-global";
   const premiumSubscriptionUrlObject = getPremiumSubscriptionUrl({
     type: "yearly",
   });
-  const assumedCountryCode = getSignupLocaleCountry(props.subscriber);
   const hasRunFreeScan = typeof props.subscriber.onerep_profile_id === "number";
 
   const bannerDataCta = {
@@ -40,7 +42,7 @@ export const MonthlyReportFreeUserEmail = (
       : l10n.getString("email-monthly-report-free-banner-cta-free-scan"),
     link: hasRunFreeScan
       ? premiumSubscriptionUrlObject
-      : `${process.env.SERVER_URL}/user/dashboard/?utm_source=monitor-product&utm_medium=email&utm_campaign=${props.utmCampaignId}&utm_content=take-action${props.utmContentSuffix}`,
+      : `${process.env.SERVER_URL}/user/dashboard/?utm_source=monitor-product&utm_medium=email&utm_campaign=${props.utmCampaignId}&utm_content=take-action${utmContentSuffix}`,
   };
 
   const purpleActiveColor = "#7542E5";
@@ -123,7 +125,7 @@ export const MonthlyReportFreeUserEmail = (
             subscriber={props.subscriber}
             l10n={l10n}
             utmCampaignId={props.utmCampaignId}
-            utmContentSuffix={props.utmContentSuffix}
+            utmContentSuffix={utmContentSuffix}
             dataSummary={props.dataSummary}
           />
         ) : (
