@@ -21,10 +21,12 @@ export const PromptNoneAuth = (): ReactNode => {
     if (isPromptNoneAuthAttempt) {
       void signIn(
         "fxa",
-        { callbackUrl: "/user/dashboard?dialog=subscriptions" },
+        { callbackUrl: "/user/dashboard" },
         { prompt: "none" },
       );
     }
+    // This effect should only run once
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return null;
