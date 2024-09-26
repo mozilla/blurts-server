@@ -383,6 +383,9 @@ it("closes the premium upsell dialog of the Premium upsell badge after it opened
 
   const closeButtonIcon1 = screen.getByLabelText("Close modal");
   await user.click(closeButtonIcon1.parentElement as HTMLElement);
+  expect(
+    screen.queryByText("Turn on automatic data removal with ⁨Monitor Plus⁩"),
+  ).not.toBeInTheDocument();
 });
 
 it("opens and closes the premium upsell dialog via the Premium upsell button", async () => {
