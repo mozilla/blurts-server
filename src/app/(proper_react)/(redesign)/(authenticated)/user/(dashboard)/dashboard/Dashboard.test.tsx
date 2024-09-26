@@ -58,6 +58,9 @@ import { defaultExperimentData } from "../../../../../../../telemetry/generated/
 jest.mock("next/navigation", () => ({
   useRouter: jest.fn(),
   usePathname: jest.fn(),
+  useSearchParams: () => ({
+    get: jest.fn(),
+  }),
 }));
 jest.mock("../../../../../../hooks/useTelemetry");
 
