@@ -56,7 +56,7 @@ export const MonthlyReportFreeUserEmail = (
   );
   premiumSubscriptionUrlObject.searchParams.set(
     "utm_campaign",
-    upgradeCtaTelemetry.utmMedium,
+    upgradeCtaTelemetry.utmCampaign,
   );
   premiumSubscriptionUrlObject.searchParams.set(
     "utm_content",
