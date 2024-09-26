@@ -22,7 +22,7 @@ export const DataPointCount = (props: Props) => {
   const unresolvedDataBreaches = props.dataSummary.dataBreachUnresolvedNum;
   const unresolvedDataBreachesAndBrokers =
     props.dataSummary.dataBreachUnresolvedNum +
-    props.dataSummary.dataBrokerManuallyResolvedNum;
+    props.dataSummary.dataBrokerInProgressNum;
   const hasRunFreeScan = typeof props.subscriber.onerep_profile_id === "number";
 
   return (
