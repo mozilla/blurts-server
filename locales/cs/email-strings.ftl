@@ -72,13 +72,13 @@ email-spotted-new-breach = Zjistili jsme nový únik dat
 
 ## Redesigned breach alert email
 
-email-breach-alert-all-subject = Zjištěn nový únik dat
+email-breach-alert-all-subject = Zjištěn nový únik údajů
 email-breach-alert-all-preview = Provedeme vás kroky k jeho vyřešení.
 email-breach-alert-all-hero-heading = máte za sebou nový únik dat
 email-breach-alert-all-hero-subheading = Nemusíte se obávat, můžeme vám pomoci tento problém vyřešit
 email-breach-alert-all-lead = { -brand-mozilla-monitor } zjistil následující únik dat, který obsahuje vaše osobní údaje:
 email-breach-alert-all-source-title = Zdroj úniku:
-email-breach-alert-all-data-points-title = Vaše zveřejněná data:
-email-breach-alert-all-next-steps-lead = Provedeme vás krok za krokem, jak tento únik dat vyřešit.
+email-breach-alert-all-data-points-title = Vaše uniklé údaje:
+email-breach-alert-all-next-steps-lead = Provedeme vás krok za krokem, jak tento únik údajů vyřešit.
 email-breach-alert-all-next-steps-cta-label = Začínáme!
 email-breach-alert-all-next-steps-button-dashboard = Přejít na nástěnku

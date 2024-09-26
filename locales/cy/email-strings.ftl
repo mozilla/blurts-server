@@ -11,7 +11,7 @@ email-header-button-sign-in = Mewngofnodi
 ## Email footers
 
 email-footer-support-heading = Cwestiynau am { -brand-mozilla-monitor }?
-email-footer-support-content = Ewch i'n <support-link>Canolfan Gymorth</support-link> am help
+email-footer-support-content = Ewch i'n <support-link>Canolfan Gymorth</support-link> am gymorth
 email-footer-trigger-transactional = Rydych chi'n derbyn yr e-bost hwn fel tanysgrifiwr { -brand-mozilla-monitor }.
 email-footer-source-hibp = Darparwyd manylion tor-data gan <hibp-link>{ -brand-HIBP }</hibp-link>
 email-footer-logo-mozilla-alt = { -brand-mozilla }
@@ -70,13 +70,13 @@ email-spotted-new-breach = Rydym wedi gweld tor-data newydd
 
 ## Redesigned breach alert email
 
-email-breach-alert-all-subject = Canfuwyd toriad data newydd
+email-breach-alert-all-subject = Wedi canfod tor-data newydd
 email-breach-alert-all-preview = Byddwn yn eich arwain trwy'r camau i'w datrys.
-email-breach-alert-all-hero-heading = Rydych chi wedi bod mewn toriad data newydd
+email-breach-alert-all-hero-heading = Rydych chi wedi bod yn rhan o dor-data newydd
 email-breach-alert-all-hero-subheading = Peidiwch â phoeni, gallwn eich helpu i ddatrys y datguddiad hwn
-email-breach-alert-all-lead = Darganfu { -brand-mozilla-monitor } y toriad data canlynol sy'n cynnwys eich gwybodaeth bersonol:
+email-breach-alert-all-lead = Mae { -brand-mozilla-monitor } wedi darganfod y tor-data canlynol sy'n cynnwys eich manylion personol:
 email-breach-alert-all-source-title = Ffynhonnell y toriad:
-email-breach-alert-all-data-points-title = Eich data agored:
-email-breach-alert-all-next-steps-lead = Byddwn yn eich arwain gam wrth gam ar sut i ddatrys y toriad data hwn.
+email-breach-alert-all-data-points-title = Eich data datgelwyd:
+email-breach-alert-all-next-steps-lead = Byddwn yn eich arwain gam wrth gam ar sut i ddatrys y tor-data hwn.
 email-breach-alert-all-next-steps-cta-label = Cychwyn arni
 email-breach-alert-all-next-steps-button-dashboard = Mynd i'r Bwrdd Gwaith

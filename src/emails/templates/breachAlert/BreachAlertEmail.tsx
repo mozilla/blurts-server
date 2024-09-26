@@ -175,13 +175,19 @@ export const RedesignedBreachAlertEmail = (
               <dl>
                 <div>
                   <dt>
-                    {l10n.getString("email-breach-alert-all-source-title")}
+                    <b>
+                      {l10n.getString("email-breach-alert-all-source-title")}
+                    </b>
                   </dt>
                   <dd>{props.breach.Title}</dd>
                 </div>
                 <div>
                   <dt>
-                    {l10n.getString("email-breach-alert-all-data-points-title")}
+                    <b>
+                      {l10n.getString(
+                        "email-breach-alert-all-data-points-title",
+                      )}
+                    </b>
                   </dt>
                   <dd>
                     {listFormatter.format(

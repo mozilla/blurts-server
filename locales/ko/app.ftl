@@ -31,7 +31,6 @@
 
 ##
 
-error-could-not-add-email = 데이터베이스에 이메일 주소를 추가 할 수 없습니다.
 error-not-subscribed = 이 이메일 주소는 { -product-name }에 가입되어 있지 않습니다.
 error-hibp-throttled = { -brand-HIBP }에 대한 연결이 너무 많습니다.
 error-hibp-connect = { -brand-HIBP }에 연결하는 동안 오류가 발생했습니다.
@@ -42,8 +41,6 @@ user-add-verification-email-just-sent = 이렇게 빨리 또 다른 확인 이�
 user-add-unknown-error = 다른 이메일 주소를 추가하는 중에 문제가 발생했습니다. 나중에 다시 시도 해주십시오.
 user-delete-unknown-error = 이메일 주소를 삭제하는 중 오류가 발생했습니다. 나중에 다시 시도해 주세요.
 user-verify-token-error = 확인 토큰이 필요합니다.
-user-unsubscribe-token-error = 구독을 취소하려면 토큰이 필요합니다.
-user-unsubscribe-token-email-error = 구독을 취소하려면 토큰과 emailHash가 필요합니다.
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = 유출 데이터 :
 # Breach data provided by Have I Been Pwned.
@@ -54,8 +51,6 @@ show-all = 모두 보기
 sign-out = 로그아웃
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = { -brand-fxa } 관리
-# Link title
-frequently-asked-questions = 자주 묻는 질문
 # Link title
 preferences = 환경 설정
 # Link title
@@ -188,6 +183,7 @@ user-menu-trigger-label = 사용자 메뉴 열기
 user-menu-trigger-tooltip = 프로필
 user-menu-manage-fxa-label = { -brand-mozilla-account } 관리
 user-menu-settings-label = 설정
+user-menu-settings-tooltip = { -brand-mozilla-monitor } 설정
 user-menu-help-label = 도움말 및 지원
 user-menu-help-tooltip = { -brand-mozilla-monitor } 사용에 대한 도움 받기
 user-menu-signout-label = 로그아웃
@@ -199,7 +195,7 @@ mozilla = { -brand-mozilla }
 terms-of-service = 이용 약관
 privacy-notice = 개인정보 보호정책
 github = { -brand-github }
-footer-nav-all-breaches = 모든 유출
+footer-nav-recent-breaches = 최근 데이터 침해
 footer-external-link-faq-label = FAQ
 footer-external-link-faq-tooltip = 자주 묻는 질문
 
@@ -217,6 +213,7 @@ error-page-error-other-title = { $errorCode } 문제가 발생했습니다.
 ## Breach overview page
 
 all-breaches-headline-2 = { -brand-fx-monitor }가 감지한 모든 위반
+all-breaches-lead = 저희는 사용자의 개인 정보가 유출되었는지 확인하기 위해 알려진 데이터 침해를 모두 모니터링합니다. 2007년 이후 보고된 모든 침해의 전체 목록은 다음과 같습니다.
 search-breaches = 유출 내역 검색하기
 # the kind of user data exposed to hackers in data breach.
 exposed-data = 노출된 데이터:

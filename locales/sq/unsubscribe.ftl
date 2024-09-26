@@ -13,6 +13,7 @@ unsubscribe-cta = Shpajtomëni
 
 unsubscribe-success-from-monthly-report-header = Tani jeni i shpajtuar
 unsubscribe-success-from-monthly-report-body = Mund të ripajtoheni, ose të përditësoni parapëlqimet tuaja për email-e, në çfarëdo kohe, që nga rregullimet tuaja për { -brand-monitor }.
+unsubscribe-success-cta = Bëni hyrjen në { -brand-monitor }
 
 # Error warning
 
