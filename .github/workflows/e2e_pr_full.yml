@@ -5,7 +5,7 @@ on:
   pull_request:
     branches: [ main ]
 jobs:
-  e2e-tests:
+  e2e-tests-full:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     # Service containers to run with `container-job`
