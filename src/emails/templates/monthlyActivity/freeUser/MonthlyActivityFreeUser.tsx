@@ -6,7 +6,6 @@ import React from "react";
 import type { SubscriberRow } from "knex/types/tables";
 import { ExtendedReactLocalization } from "../../../../app/functions/l10n";
 import { EmailFooter } from "../../EmailFooter";
-import { HibpLikeDbBreach } from "../../../../utils/hibp";
 import { FeatureFlagName } from "../../../../db/tables/featureFlags";
 import type { LatestOnerepScanData } from "../../../../db/tables/onerep_scans";
 import type { SubscriberBreach } from "../../../../utils/subscriberBreaches";
@@ -20,8 +19,6 @@ import { getSignupLocaleCountry } from "../../../functions/getSignupLocaleCountr
 
 export type MonthlyReportFreeUserEmailProps = {
   l10n: ExtendedReactLocalization;
-  breach: HibpLikeDbBreach;
-  breachedEmail: string;
   utmCampaignId: string;
   utmContentSuffix: string;
   subscriber: SubscriberRow;
@@ -276,8 +273,6 @@ export const MonthlyReportFreeUserEmail = (
 
 export type MonthlyReportFreeUserProps = {
   l10n: ExtendedReactLocalization;
-  breach: HibpLikeDbBreach;
-  breachedEmail: string;
   utmCampaignId: string;
   subscriber: SubscriberRow;
   scanData: LatestOnerepScanData;
