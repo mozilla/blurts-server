@@ -95,36 +95,38 @@ email-breach-alert-all-next-steps-button-dashboard = Go to Dashboard
 
 email-monthly-report-hero-free-heading = Your monthly { -brand-mozilla-monitor } report
 email-monthly-report-hero-free-body = A summary of what needs your attention, and what’s been resolved over the past month.
-# Variables:
-#   $data_point_count (number) - The number of data breaches that were exposed
+
+## This string is displayed under a large numeral that indicates the total
+## number of data breaches that have exposed the user’s information.
+## Don’t add $data_point_count to your localization, because it would
+## result in the number showing twice.
+## Variables:
+##   $data_point_count (number) - The number of data breaches that were exposed
 email-monthly-report-no-scan-results-data-points-label =
-    {$data_point_count ->
+    { $data_point_count ->
         [one] Data breach
        *[other] Data breaches
     }
-email-monthly-report-free-results-heading = Current exposures
-email-monthly-report-free-summary-heading = What’s happened in the last month
-# Variables:
-#   $data_point_count (number) - The number of data brokers that were automatically resolved
 email-monthly-report-free-summary-auto-removed =
-  {$data_point_count ->
+  { $data_point_count ->
         [one] Auto-removed exposure
        *[other] Auto-removed exposures
     }
-# Variables:
-#   $data_point_count (number) - The number of data brokers that were manually resolved
 email-monthly-report-free-summary-resolved-breaches =
-  {$data_point_count ->
+  { $data_point_count ->
         [one] Manually resolved breach
        *[other] Manually resolved breaches
     }
-# Variables:
-#   $data_point_count (number) - The number of data brokers that were automatically resolved
 email-monthly-report-free-summary-manually-resolved-exposures =
-  {$data_point_count ->
+  { $data_point_count ->
         [one] Manually resolved exposure
        *[other] Manually resolved exposures
     }
+
+##
+
+email-monthly-report-free-results-heading = Current exposures
+email-monthly-report-free-summary-heading = What’s happened in the last month
 email-monthly-report-free-upgrade-cta = Unlock with { -brand-monitor-plus }
 email-monthly-report-free-banner-heading = { -brand-monitor } now protects you even more
 email-monthly-report-free-banner-body = We can find your personal info on data broker sites that sell it for a profit.
