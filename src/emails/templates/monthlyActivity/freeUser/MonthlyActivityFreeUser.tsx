@@ -6,7 +6,6 @@ import React from "react";
 import type { SubscriberRow } from "knex/types/tables";
 import { ExtendedReactLocalization } from "../../../../app/functions/l10n";
 import { EmailFooter } from "../../EmailFooter";
-import { EmailHeader } from "../../EmailHeader";
 import { HibpLikeDbBreach } from "../../../../utils/hibp";
 import { FeatureFlagName } from "../../../../db/tables/featureFlags";
 import type { LatestOnerepScanData } from "../../../../db/tables/onerep_scans";
@@ -259,8 +258,6 @@ export const MonthlyReportFreeUserEmail = (
             ctaTarget={bannerDataCta.link}
           />
         )}
-
-        <EmailHeader l10n={l10n} utm_campaign={props.utmCampaignId} />
         <EmailFooter
           l10n={l10n}
           utm_campaign={props.utmCampaignId}
