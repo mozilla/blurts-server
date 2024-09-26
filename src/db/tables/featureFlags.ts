@@ -50,6 +50,7 @@ export const featureFlagNames = [
   "PetitionBannerCsatSurvey",
   "MonthlyReportFreeUser",
   "BreachEmailRedesign",
+  "PromptNoneAuthFlow",
 ] as const;
 export type FeatureFlagName = (typeof featureFlagNames)[number];
 
