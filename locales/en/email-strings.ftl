@@ -100,6 +100,7 @@ email-monthly-report-hero-free-body = A summary of what needs your attention, an
 ## number of data breaches that have exposed the user’s information.
 ## Don’t add $data_point_count to your localization, because it would
 ## result in the number showing twice.
+##
 ## Variables:
 ##   $data_point_count (number) - The number of data breaches that were exposed
 email-monthly-report-no-scan-results-data-points-label =
