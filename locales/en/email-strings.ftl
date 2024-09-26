@@ -114,8 +114,8 @@ email-monthly-report-free-summary-auto-removed =
     }
 email-monthly-report-free-summary-resolved-breaches =
   { $data_point_count ->
-        [one] Manually resolved breach
-       *[other] Manually resolved breaches
+        [one] Manually resolved data breach
+       *[other] Manually resolved data breaches
     }
 email-monthly-report-free-summary-manually-resolved-exposures =
   { $data_point_count ->
