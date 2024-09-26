@@ -25,24 +25,51 @@ export type MonthlyReportFreeUserEmailProps = {
 export const MonthlyReportFreeUserEmail = (
   props: MonthlyReportFreeUserEmailProps,
 ) => {
-  const l10n = props.l10n;
-
-  const assumedCountryCode = getSignupLocaleCountry(props.subscriber);
-  const utmContentSuffix = isEligibleForPremium(assumedCountryCode)
-    ? "-us"
-    : "-global";
-  const premiumSubscriptionUrlObject = getPremiumSubscriptionUrl({
-    type: "yearly",
-  });
   const hasRunFreeScan = typeof props.subscriber.onerep_profile_id === "number";
+  const upgradeCtaTelemetry = {
+    utmSource: "monitor-product",
+    utmCampaign: hasRunFreeScan
+      ? "monthly-report-free-us-scanned"
+      : "monthly-report-free-us-no-scan",
+    utmMedium: "product-email",
+    utmContent: hasRunFreeScan
+      ? "unlock-with-monitor-plus-us"
+      : "get-first-scan-free-us",
+  };
+
+  const l10n = props.l10n;
+  const assumedCountryCode = getSignupLocaleCountry(props.subscriber);
+
+  const premiumSubscriptionUrlObject = new URL(
+    getPremiumSubscriptionUrl({
+      type: "yearly",
+    }),
+  );
+
+  premiumSubscriptionUrlObject.searchParams.set(
+    "utm_source",
+    upgradeCtaTelemetry.utmSource,
+  );
+  premiumSubscriptionUrlObject.searchParams.set(
+    "utm_medium",
+    upgradeCtaTelemetry.utmMedium,
+  );
+  premiumSubscriptionUrlObject.searchParams.set(
+    "utm_campaign",
+    upgradeCtaTelemetry.utmMedium,
+  );
+  premiumSubscriptionUrlObject.searchParams.set(
+    "utm_content",
+    "unlock-with-monitor-plus-us",
+  );
 
   const bannerDataCta = {
     label: hasRunFreeScan
       ? l10n.getString("email-monthly-report-free-banner-cta-upgrade")
       : l10n.getString("email-monthly-report-free-banner-cta-free-scan"),
     link: hasRunFreeScan
-      ? premiumSubscriptionUrlObject
-      : `${process.env.SERVER_URL}/user/dashboard/?utm_source=monitor-product&utm_medium=email&utm_campaign=${props.utmCampaignId}&utm_content=take-action${utmContentSuffix}`,
+      ? premiumSubscriptionUrlObject.href
+      : `${process.env.SERVER_URL}/user/dashboard/?utm_source=${upgradeCtaTelemetry.utmSource}&utm_medium=${upgradeCtaTelemetry.utmMedium}&utm_campaign=${upgradeCtaTelemetry.utmCampaign}&utm_content=${upgradeCtaTelemetry.utmContent}`,
   };
 
   const purpleActiveColor = "#7542E5";
@@ -124,9 +151,10 @@ export const MonthlyReportFreeUserEmail = (
           <DataPointCount
             subscriber={props.subscriber}
             l10n={l10n}
-            utmCampaignId={props.utmCampaignId}
-            utmContentSuffix={utmContentSuffix}
             dataSummary={props.dataSummary}
+            utmCampaignId={upgradeCtaTelemetry.utmCampaign}
+            utmMedium={upgradeCtaTelemetry.utmMedium}
+            utmSource={upgradeCtaTelemetry.utmSource}
           />
         ) : (
           <EmailBanner
@@ -222,7 +250,7 @@ export const MonthlyReportFreeUserEmail = (
                         height="16px"
                       />
                       <mj-button
-                        href={premiumSubscriptionUrlObject}
+                        href={premiumSubscriptionUrlObject.href}
                         background-color="transparent"
                         line-height="0"
                         color="#0060DF"

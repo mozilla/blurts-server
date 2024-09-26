@@ -13,10 +13,11 @@ import { isEligibleForPremium } from "../../app/functions/universal/premium";
 
 type Props = {
   l10n: ExtendedReactLocalization;
-  utmCampaignId: string;
-  utmContentSuffix: string;
   dataSummary: DashboardSummary;
   subscriber: SubscriberRow;
+  utmCampaignId: string;
+  utmSource: string;
+  utmMedium: string;
 };
 
 export const DataPointCount = (props: Props) => {
@@ -26,7 +27,9 @@ export const DataPointCount = (props: Props) => {
     props.dataSummary.dataBreachUnresolvedNum +
     props.dataSummary.dataBrokerInProgressNum;
   const hasRunFreeScan = typeof props.subscriber.onerep_profile_id === "number";
-
+  const utmContentSuffix = isEligibleForPremium(assumedCountryCode)
+    ? "-us"
+    : "-global";
   return (
     <mj-wrapper padding="24px 16px">
       <mj-section
@@ -95,7 +98,7 @@ export const DataPointCount = (props: Props) => {
       >
         <mj-column>
           <mj-button
-            href={`${process.env.SERVER_URL}/user/dashboard/action-needed?utm_source=monitor-product&utm_medium=email&utm_campaign=${props.utmCampaignId}&utm_content=take-action${props.utmContentSuffix}`}
+            href={`${process.env.SERVER_URL}/user/dashboard/action-needed?utm_source=monitor-product&utm_medium=email&utm_campaign=${props.utmCampaignId}&utm_content=take-action${utmContentSuffix}`}
             background-color="#0060DF"
             border-radius="8px"
             padding="12px 24px"

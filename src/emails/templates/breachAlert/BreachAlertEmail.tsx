@@ -265,7 +265,8 @@ export const RedesignedBreachAlertEmail = (
               {...props}
               dataSummary={props.dataSummary}
               utmCampaignId={utmCampaignId}
-              utmContentSuffix={utmContentSuffix}
+              utmMedium="email"
+              utmSource="monitor-product"
             />
           )}
         {isEligibleForPremium(assumedCountryCode) &&
