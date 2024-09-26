@@ -13,10 +13,6 @@ import { getL10n } from "../../../../app/functions/l10n/storybookAndJest";
 import { createRandomHibpListing } from "../../../../apiMocks/mockData";
 import { SubscriberRow } from "knex/types/tables";
 
-type StoryProps = MonthlyReportFreeUserEmailProps & {
-  emulateDarkMode?: boolean;
-};
-
 const meta: Meta<FC<MonthlyReportFreeUserEmailProps>> = {
   title: "Emails/Monthly activity/Free User",
   component: (props: MonthlyReportFreeUserEmailProps) => (
@@ -30,7 +26,7 @@ const meta: Meta<FC<MonthlyReportFreeUserEmailProps>> = {
 };
 
 export default meta;
-type Story = StoryObj<FC<StoryProps>>;
+type Story = StoryObj<MonthlyReportFreeUserEmailProps>;
 
 const mockedDataPoints = {
   // shared
@@ -155,7 +151,7 @@ export const MonthlyReportFreeUserResolvedBreachesWithoutScan: Story = {
 };
 
 export const MonthlyReportFreeUserWithScanNoManuallyResolvedExposures: Story = {
-  name: "Monthly Report Free User With Scan Without Manually Resolved Exposures",
+  name: "Monthly Report Free User With Scan Without Manually Resolved Data Brokers, just Breaches",
   args: {
     unsubscribeLink: "/",
     breach: createRandomHibpListing(),
@@ -188,6 +184,7 @@ export const MonthlyReportFreeUserNoRemainingExposures: Story = {
     dataSummary: {
       ...mockedDataSummary,
       dataBreachUnresolvedNum: 0,
+      dataBrokerInProgressNum: 0,
     },
     subscriber: {
       onerep_profile_id: 1,
