@@ -54,7 +54,7 @@ const mockedDataSummary = {
   dataBreachFixedDataPointsNum: 10,
   dataBrokerTotalNum: 10,
   dataBrokerTotalDataPointsNum: 10,
-  dataBrokerAutoFixedNum: 10,
+  dataBrokerAutoFixedNum: 15,
   dataBrokerManuallyResolvedNum: 10,
   dataBrokerAutoFixedDataPointsNum: 10,
   dataBrokerInProgressNum: 10,
@@ -74,12 +74,12 @@ export const MonthlyReportFreeUserNoScanWithExposures: Story = {
   name: "Monthly Report Free User No Scan With Exposures No Resolved",
   args: {
     unsubscribeLink: "/",
-
     utmCampaignId: "test",
     utmContentSuffix: "test",
     dataSummary: {
       ...mockedDataSummary,
       dataBreachResolvedNum: 0,
+      dataBrokerManuallyResolvedNum: 0,
     },
     subscriber: {
       onerep_profile_id: null,

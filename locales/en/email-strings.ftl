@@ -99,20 +99,32 @@ email-monthly-report-hero-free-body = A summary of what needs your attention, an
 #   $data_point_count (number) - The number of data breaches that were exposed
 email-monthly-report-no-scan-results-data-points-label =
     {$data_point_count ->
-        [one] <stat>{ $data_point_count }</stat> Data breach
-       *[other] <stat>{ $data_point_count }</stat> Data breaches
+        [one] Data breach
+       *[other] Data breaches
     }
 email-monthly-report-free-results-heading = Current exposures
 email-monthly-report-free-summary-heading = What’s happened in the last month
 # Variables:
 #   $data_point_count (number) - The number of data brokers that were automatically resolved
-email-monthly-report-free-summary-auto-removed = <stat>{ $data_point_count }</stat> Auto-removed exposures
+email-monthly-report-free-summary-auto-removed =
+  {$data_point_count ->
+        [one] Auto-removed exposure
+       *[other] Auto-removed exposures
+    }
 # Variables:
 #   $data_point_count (number) - The number of data brokers that were manually resolved
-email-monthly-report-free-summary-resolved-breaches = <stat>{ $data_point_count }</stat> Manually resolved data breaches
+email-monthly-report-free-summary-resolved-breaches =
+  {$data_point_count ->
+        [one] Manually resolved breach
+       *[other] Manually resolved breaches
+    }
 # Variables:
 #   $data_point_count (number) - The number of data brokers that were automatically resolved
-email-monthly-report-free-summary-manually-resolved-exposures = <stat>{ $data_point_count }</stat> Manually resolved exposures
+email-monthly-report-free-summary-manually-resolved-exposures =
+  {$data_point_count ->
+        [one] Manually resolved exposure
+       *[other] Manually resolved exposures
+    }
 email-monthly-report-free-upgrade-cta = Unlock with { -brand-monitor-plus }
 email-monthly-report-free-banner-heading = { -brand-monitor } now protects you even more
 email-monthly-report-free-banner-body = We can find your personal info on data broker sites that sell it for a profit.

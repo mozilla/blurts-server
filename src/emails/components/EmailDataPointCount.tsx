@@ -7,8 +7,9 @@
 import React from "react";
 import { ExtendedReactLocalization } from "../../app/functions/l10n";
 import { DashboardSummary } from "../../app/functions/server/dashboard";
-import { hasPremium } from "../../app/functions/universal/user";
 import { SubscriberRow } from "knex/types/tables";
+import { getSignupLocaleCountry } from "../functions/getSignupLocaleCountry";
+import { isEligibleForPremium } from "../../app/functions/universal/premium";
 
 type Props = {
   l10n: ExtendedReactLocalization;
@@ -19,6 +20,7 @@ type Props = {
 };
 
 export const DataPointCount = (props: Props) => {
+  const assumedCountryCode = getSignupLocaleCountry(props.subscriber);
   const unresolvedDataBreaches = props.dataSummary.dataBreachUnresolvedNum;
   const unresolvedDataBreachesAndBrokers =
     props.dataSummary.dataBreachUnresolvedNum +
@@ -54,29 +56,32 @@ export const DataPointCount = (props: Props) => {
           border-radius="16px"
           padding="16px 24px"
         >
-          <mj-text align="center" font-size="14px" line-height="21px">
+          <mj-text
+            padding="0"
+            align="center"
+            font-weight="bold"
+            font-size="60px"
+            line-height="68px"
+          >
+            {hasRunFreeScan
+              ? unresolvedDataBreachesAndBrokers
+              : unresolvedDataBreaches}
+          </mj-text>
+          <mj-text
+            align="center"
+            font-size="14px"
+            line-height="21px"
+            padding="0"
+          >
             <p>
-              {props.l10n.getFragment(
-                hasPremium(props.subscriber) || hasRunFreeScan
+              {props.l10n.getString(
+                isEligibleForPremium(assumedCountryCode) && hasRunFreeScan
                   ? "email-breach-alert-plus-scan-results-data-points-label"
                   : "email-monthly-report-no-scan-results-data-points-label",
                 {
-                  elems: {
-                    stat: (
-                      <div
-                        style={{
-                          fontWeight: "bold",
-                          fontSize: "60px",
-                          lineHeight: "68px",
-                        }}
-                      />
-                    ),
-                  },
-                  vars: {
-                    data_point_count: hasRunFreeScan
-                      ? unresolvedDataBreachesAndBrokers
-                      : unresolvedDataBreaches,
-                  },
+                  data_point_count: hasRunFreeScan
+                    ? unresolvedDataBreachesAndBrokers
+                    : unresolvedDataBreaches,
                 },
               )}
             </p>

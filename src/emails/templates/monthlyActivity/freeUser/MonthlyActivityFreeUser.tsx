@@ -157,25 +157,20 @@ export const MonthlyReportFreeUserEmail = (
                     inner-border-radius="10px"
                     padding="8px"
                   >
+                    <mj-text
+                      align="center"
+                      font-weight="bold"
+                      font-size="50px"
+                      color="#9E9E9E"
+                    >
+                      {props.dataSummary.dataBrokerAutoFixedNum}
+                    </mj-text>
                     <mj-text align="center" color="#9E9E9E">
-                      {l10n.getFragment(
+                      {l10n.getString(
                         "email-monthly-report-free-summary-auto-removed",
                         {
-                          elems: {
-                            stat: (
-                              <div
-                                style={{
-                                  fontWeight: "bold",
-                                  fontSize: "50px",
-                                  paddingBottom: "4px",
-                                }}
-                              />
-                            ),
-                          },
-                          vars: {
-                            data_point_count:
-                              props.dataSummary.dataBrokerAutoFixedNum,
-                          },
+                          data_point_count:
+                            props.dataSummary.dataBrokerAutoFixedNum,
                         },
                       )}
                     </mj-text>
@@ -188,27 +183,26 @@ export const MonthlyReportFreeUserEmail = (
                   >
                     <mj-text
                       align="center"
+                      font-weight="bold"
+                      font-size="50px"
                       color={
                         resolvedBoxData.activeState
                           ? purpleActiveColor
                           : greyInactiveColor
                       }
                     >
-                      {l10n.getFragment(resolvedBoxData.dataPointCountLabel, {
-                        elems: {
-                          stat: (
-                            <div
-                              style={{
-                                fontWeight: "bold",
-                                fontSize: "50px",
-                                paddingBottom: "4px",
-                              }}
-                            />
-                          ),
-                        },
-                        vars: {
-                          data_point_count: resolvedBoxData.dataPointValue,
-                        },
+                      {resolvedBoxData.dataPointValue}
+                    </mj-text>
+                    <mj-text
+                      align="center"
+                      color={
+                        resolvedBoxData.activeState
+                          ? purpleActiveColor
+                          : greyInactiveColor
+                      }
+                    >
+                      {l10n.getString(resolvedBoxData.dataPointCountLabel, {
+                        data_point_count: resolvedBoxData.dataPointValue,
                       })}
                     </mj-text>
                   </mj-column>
