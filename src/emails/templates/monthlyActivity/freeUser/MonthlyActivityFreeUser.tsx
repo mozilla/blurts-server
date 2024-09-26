@@ -245,7 +245,7 @@ export const MonthlyReportFreeUserEmail = (
                       </mj-button>
                     </mj-group>
                   </mj-column>
-                  <mj-column>&nbsp;</mj-column>
+                  <mj-column width="50%"> </mj-column>
                 </mj-group>
               </mj-wrapper>
             </mj-section>

@@ -10,7 +10,6 @@ import {
 } from "./MonthlyActivityFreeUser";
 import { StorybookEmailRenderer } from "../../../StorybookEmailRenderer";
 import { getL10n } from "../../../../app/functions/l10n/storybookAndJest";
-import { createRandomHibpListing } from "../../../../apiMocks/mockData";
 import { SubscriberRow } from "knex/types/tables";
 
 const meta: Meta<FC<MonthlyReportFreeUserEmailProps>> = {
@@ -75,8 +74,7 @@ export const MonthlyReportFreeUserNoScanWithExposures: Story = {
   name: "Monthly Report Free User No Scan With Exposures No Resolved",
   args: {
     unsubscribeLink: "/",
-    breach: createRandomHibpListing(),
-    breachedEmail: "example@example.com",
+
     utmCampaignId: "test",
     utmContentSuffix: "test",
     dataSummary: {
@@ -97,8 +95,7 @@ export const MonthlyReportFreeUserWithScan: Story = {
   name: "Monthly Report Free User With Scan",
   args: {
     unsubscribeLink: "/",
-    breach: createRandomHibpListing(),
-    breachedEmail: "example@example.com",
+
     utmCampaignId: "test",
     utmContentSuffix: "test",
     dataSummary: mockedDataSummary,
@@ -116,8 +113,7 @@ export const MonthlyReportFreeUserResolvedBreachesWithScan: Story = {
   name: "Monthly Report Free User With Scan and Resolved Breaches",
   args: {
     unsubscribeLink: "/",
-    breach: createRandomHibpListing(),
-    breachedEmail: "example@example.com",
+
     utmCampaignId: "test",
     utmContentSuffix: "test",
     dataSummary: mockedDataSummary,
@@ -135,8 +131,6 @@ export const MonthlyReportFreeUserResolvedBreachesWithoutScan: Story = {
   name: "Monthly Report Free User With Scan and Resolved Breaches",
   args: {
     unsubscribeLink: "/",
-    breach: createRandomHibpListing(),
-    breachedEmail: "example@example.com",
     utmCampaignId: "test",
     utmContentSuffix: "test",
     dataSummary: mockedDataSummary,
@@ -154,8 +148,7 @@ export const MonthlyReportFreeUserWithScanNoManuallyResolvedExposures: Story = {
   name: "Monthly Report Free User With Scan Without Manually Resolved Data Brokers, just Breaches",
   args: {
     unsubscribeLink: "/",
-    breach: createRandomHibpListing(),
-    breachedEmail: "example@example.com",
+
     utmCampaignId: "test",
     utmContentSuffix: "test",
     dataSummary: {
@@ -177,8 +170,7 @@ export const MonthlyReportFreeUserNoRemainingExposures: Story = {
   name: "Monthly Report Free User With Scan No Remaining Exposures",
   args: {
     unsubscribeLink: "/",
-    breach: createRandomHibpListing(),
-    breachedEmail: "example@example.com",
+
     utmCampaignId: "test",
     utmContentSuffix: "test",
     dataSummary: {
@@ -200,8 +192,7 @@ export const MonthlyReportFreeUserNonUS: Story = {
   name: "Monthly Report Free User Non-US",
   args: {
     unsubscribeLink: "/",
-    breach: createRandomHibpListing(),
-    breachedEmail: "example@example.com",
+
     utmCampaignId: "test",
     utmContentSuffix: "test",
     dataSummary: {
@@ -222,8 +213,7 @@ export const MonthlyReportFreeUserNoScanNoExposuresRemaining: Story = {
   name: "Monthly Report Free User No Scan No Exposures Left",
   args: {
     unsubscribeLink: "/",
-    breach: createRandomHibpListing(),
-    breachedEmail: "example@example.com",
+
     utmCampaignId: "test",
     utmContentSuffix: "test",
     dataSummary: {
@@ -244,8 +234,7 @@ export const MonthlyReportFreeUserWithScanNoExposuresRemaining: Story = {
   name: "Monthly Report Free User With Scan No Exposures Left",
   args: {
     unsubscribeLink: "/",
-    breach: createRandomHibpListing(),
-    breachedEmail: "example@example.com",
+
     utmCampaignId: "test",
     utmContentSuffix: "test",
     dataSummary: {
