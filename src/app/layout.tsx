@@ -16,7 +16,7 @@ import { CONST_GA4_MEASUREMENT_ID } from "../constants";
 import { headers } from "next/headers";
 import { GoogleAnalyticsWorkaround } from "./components/client/GoogleAnalyticsWorkaround";
 import StripeScript from "./components/client/StripeScript";
-import { PromptNoneAuth } from "./components/client/toolbar/PromptNoneAuth";
+import { PromptNoneAuth } from "./components/client/PromptNoneAuth";
 
 // DO NOT ADD SECRETS: Env variables added here become public.
 const PUBLIC_ENVS = {

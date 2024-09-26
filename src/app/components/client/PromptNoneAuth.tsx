@@ -7,8 +7,8 @@
 import { ReactNode, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { signIn } from "next-auth/react";
-import { containsExpectedSearchParams } from "../../../functions/universal/attributions";
-import { CONST_MOZILLA_ACCOUNTS_SETTINGS_PROMO_SEARCH_PARAMS } from "../../../../constants";
+import { containsExpectedSearchParams } from "../../functions/universal/attributions";
+import { CONST_MOZILLA_ACCOUNTS_SETTINGS_PROMO_SEARCH_PARAMS } from "../../../constants";
 
 export const PromptNoneAuth = (): ReactNode => {
   const searchParams = useSearchParams();
