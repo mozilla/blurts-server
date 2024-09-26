@@ -6,9 +6,6 @@ import React from "react";
 import type { SubscriberRow } from "knex/types/tables";
 import { ExtendedReactLocalization } from "../../../../app/functions/l10n";
 import { EmailFooter } from "../../EmailFooter";
-import { FeatureFlagName } from "../../../../db/tables/featureFlags";
-import type { LatestOnerepScanData } from "../../../../db/tables/onerep_scans";
-import type { SubscriberBreach } from "../../../../utils/subscriberBreaches";
 import { EmailHero } from "../../../components/EmailHero";
 import { DataPointCount } from "../../../components/EmailDataPointCount";
 import { DashboardSummary } from "../../../../app/functions/server/dashboard";
@@ -229,7 +226,7 @@ export const MonthlyReportFreeUserEmail = (
                         height="16px"
                       />
                       <mj-button
-                        href={premiumSubscriptionUrlObject.href}
+                        href={premiumSubscriptionUrlObject}
                         background-color="transparent"
                         line-height="0"
                         color="#0060DF"
@@ -269,15 +266,6 @@ export const MonthlyReportFreeUserEmail = (
       </mj-body>
     </mjml>
   );
-};
-
-export type MonthlyReportFreeUserProps = {
-  l10n: ExtendedReactLocalization;
-  utmCampaignId: string;
-  subscriber: SubscriberRow;
-  scanData: LatestOnerepScanData;
-  allSubscriberBreaches: SubscriberBreach[];
-  enabledFeatureFlags: FeatureFlagName[];
 };
 
 /* c8 ignore stop */
