@@ -114,7 +114,7 @@ export const MonthlyReportFreeUserEmail = (
       <mj-body>
         <EmailHero
           l10n={l10n}
-          utm_campaign={"test"}
+          utm_campaign={props.utmCampaignId}
           heading={l10n.getString("email-monthly-report-hero-free-heading")}
           subheading={l10n.getString("email-monthly-report-hero-free-body")}
         />
