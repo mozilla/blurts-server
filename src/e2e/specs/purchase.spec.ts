@@ -6,6 +6,11 @@ import { test, expect } from "../fixtures/basePage.js";
 import { checkAuthState, setEnvVariables } from "../utils/helpers.js";
 
 test.describe(`${process.env.E2E_TEST_ENV} - Breach Scan, Monitor Plus Purchase Flow`, () => {
+  test.skip(
+    process.env.E2E_TEST_ENV !== "stage",
+    "Skip: Testing payment methods is only available on stage",
+  );
+
   test.beforeEach(async ({ page, authPage, landingPage, welcomePage }) => {
     test.info().annotations.push({
       type: "testrail id",
@@ -35,7 +40,8 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breach Scan, Monitor Plus Purchase 
 
     // wait for welcome page
     await page.waitForURL("**/user/welcome");
-    await welcomePage.goThroughFirstScan();
+    await welcomePage.goThroughFirstScan({ skipLoader: true });
+
     expect(page.url()).toContain("/user/dashboard");
   });
 
@@ -44,10 +50,6 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breach Scan, Monitor Plus Purchase 
     purchasePage,
     page,
   }) => {
-    test.skip(
-      process.env.E2E_TEST_ENV === "production",
-      "payment method test not available in production",
-    );
     // link to testrail case
     test.info().annotations.push({
       type: "testrail",
@@ -89,10 +91,6 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breach Scan, Monitor Plus Purchase 
     dashboardPage,
     page,
   }) => {
-    test.skip(
-      process.env.E2E_TEST_ENV === "production",
-      "payment method test not available in production",
-    );
     // link to multiple testrail cases
     test.info().annotations.push({
       type: "testrail",
@@ -158,10 +156,6 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breach Scan, Monitor Plus Purchase 
     dashboardPage,
     context,
   }) => {
-    test.skip(
-      process.env.E2E_TEST_ENV === "production",
-      "payment method test not available in production",
-    );
     // link to testrail case
     test.info().annotations.push({
       type: "testrail",
@@ -181,10 +175,6 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breach Scan, Monitor Plus Purchase 
     dashboardPage,
     context,
   }) => {
-    test.skip(
-      process.env.E2E_TEST_ENV === "production",
-      "payment method test not available in production",
-    );
     // link to testrail case
     test.info().annotations.push({
       type: "testrail",

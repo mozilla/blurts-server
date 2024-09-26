@@ -21,13 +21,22 @@ import {
 // bypass login
 test.use({ storageState: "./e2e/storageState.json" });
 test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Headers @smoke`, () => {
-  test.beforeEach(async ({ dashboardPage, page }) => {
+  test.beforeEach(async ({ dashboardPage, welcomePage, page }) => {
     await dashboardPage.open();
 
     try {
       await checkAuthState(page);
     } catch {
       console.log("[E2E_LOG] - No fxa auth required, proceeding...");
+    }
+
+    // if we landed on the welcome flow a new user who is eligible for premium
+    // and needs to go through their first scan
+    const isWelcomeFlow =
+      page.url() === `${process.env.E2E_TEST_BASE_URL}/user/welcome`;
+    if (isWelcomeFlow) {
+      expect(page.url()).toContain("/user/welcome");
+      await welcomePage.goThroughFirstScan({ skipLoader: true });
     }
   });
 
@@ -151,9 +160,9 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Headers @smoke
     });
 
     await dashboardPage.fixedTab.click();
-    expect(page.url()).toMatch(/.*dashboard\/fixed\/?/);
+    expect(page.url()).toMatch(/.*dashboard\/fixed.*/);
     await dashboardPage.actionNeededTab.click();
-    expect(page.url()).toMatch(/.*dashboard\/action-needed\/?/);
+    expect(page.url()).toMatch(/.*dashboard\/action-needed.*/);
 
     //apps and services button check
     const clickOnLinkAndGoBack = async (
@@ -399,7 +408,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Breaches Scan,
     await authPage.signUp(randomEmail, page);
 
     await page.waitForURL("**/user/welcome");
-    await welcomePage.goThroughFirstScan();
+    await welcomePage.goThroughFirstScan({ skipLoader: true });
     expect(page.url()).toContain("/user/dashboard");
   });
 
@@ -483,9 +492,9 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Overview Card`
     await dashboardPage.goToDashboard();
     await expect(dashboardPage.upsellScreenButton).toBeVisible();
     await dashboardPage.upsellScreenButton.click();
-    await page.waitForURL(/.*\/fix\/.*\/view-data-brokers\/?/);
+    await page.waitForURL(/.*\/fix\/.*\/view-data-brokers.*/);
     await dataBrokersPage.removeThemForMeButton.click();
-    await page.waitForURL(/.*\/fix\/.*\/automatic-remove\/?/);
+    await page.waitForURL(/.*\/fix\/.*\/automatic-remove.*/);
 
     //checking the bullet points
     await expect(automaticRemovePage.ulElement).toBeVisible();
@@ -536,9 +545,9 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Overview Card`
 
     //check that premium upsell screen loads
     await dashboardPage.upsellScreenButton.click();
-    await page.waitForURL(/.*\/fix\/.*\/view-data-brokers\/?/);
+    await page.waitForURL(/.*\/fix\/.*\/view-data-brokers.*/);
     await dataBrokersPage.removeThemForMeButton.click();
-    await page.waitForURL(/.*\/fix\/.*\/automatic-remove\/?/);
+    await page.waitForURL(/.*\/fix\/.*\/automatic-remove.*/);
 
     //check that X returns back to /dashboard
     await expect(automaticRemovePage.xButton).toBeVisible();
@@ -753,7 +762,7 @@ test.skip(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Data Breaches`, ()
 
     await expect(dashboardPage.upsellScreenButton).toBeVisible();
     await dashboardPage.upsellScreenButton.click();
-    await page.waitForURL(/.*\/data-broker-profiles\/view-data-brokers\/?/);
+    await page.waitForURL(/.*\/data-broker-profiles\/view-data-brokers.*/);
     await expect(dataBrokersPage.forwardArrowButton).toBeVisible();
     await dataBrokersPage.forwardArrowButton.click();
     await page.waitForURL(/.*\/high-risk-data-breaches.*/);

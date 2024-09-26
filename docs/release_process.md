@@ -74,37 +74,45 @@ set up and changes are ready to be reviewed.
 Every commit to `main` is automatically deployed to the [Stage][stage] server via Github Actions and Jenkins.
 
 ### PR Merges
+
 PRs can only be merged once they pass all the required checks:
-* Lint
-* Build
-* Unit Tests
-* E2E Tests
-* Deploy Previews
+
+- Lint
+- Build
+- Unit Tests
+- E2E Tests
+- Deploy Previews
 
 A PR also needs at least one approval from an ENGR team member to be merged into `main`.
 
 Once a PR is successfully merged:
+
 1. ensure that the merge commit in `main` branch passes all checks and a docker image is successfully deployed.
 2. Jenkins will kick off the deployment of the latest built docker image to stage environment
 3. A webhook will send status messages into the `#fx-monitor-engineering` channel.
-   * Watch for messages: `FX MONITOR STAGE STARTED` and `FX MONITOR STAGE COMPLETE`
+   - Watch for messages: `FX MONITOR STAGE STARTED` and `FX MONITOR STAGE COMPLETE`
 
 ## Release to Production
+
 Before releasing to production, we need to assess the current state of our work on stage. We need to cross-reference what's already on stage and what's been greenlit by QA. To do this, we need to find the difference between what was released last time in production and what we currently have on stage.
 
 ### Check the diff in Release Notes and notify the team
+
 [make a release on GitHub][github-new-release] in order to check the difference.
+
 1. Choose the tag you want for your release. Use today's date (e.g., `2024.09.01`)
 2. Type the same tag name for the release title (e.g., `2024.09.01`)
 3. Click the "Generate release notes" button!
-4. *DO NOT* press "Publish release" yet
+4. _DO NOT_ press "Publish release" yet
 5. Copy and Paste the release notes in the engineering slack channel so the team is aware
 6. Go through the PRs, cross-reference the tickets in the PRs with the [Jira][jira] board to see if QA has approved the tickets. If anything is unclear, make sure to tag the author of the PR.
 7. If anything has not been properly tested, make a note, and again, double check with the person
 8. If everything looks good, proceed to release, otherwise refer to the section `Stage-fixes` below.
 
 ### Update Production Environment Variables
+
 In the cases where we need to update or add new environment variables, we need to get help from SRE:
+
 1. File an [SRE ticket][sre-board] for the env var change.
    - In the title, make sure to mention "Production"
    - Make sure to include the value and the correct variable name
@@ -112,6 +120,7 @@ In the cases where we need to update or add new environment variables, we need t
 2. When appropriate, wait for SRE to make the changes before proceeding with the production release.
 
 ### 1-click Production Release
+
 After you push the tag to GitHub, you should also
 [make a release on GitHub][github-new-release] for the tag.
 
@@ -119,55 +128,58 @@ After you push the tag to GitHub, you should also
 2. Go to the `main` branch and make sure all the checks succeeded
 3. Go to [DockerHub][dockerhub] to ensure that a tag with today's date is present.
 4. Run [E2E cron][e2e] against stage (with the latest update)
-    * if there are errors, make sure the cause is understood
-    * fix the e2e errors or change the tests when appropriate before proceeding
-6. Check the stage Sentry and GCP error logs
-7. Run [1-Click Deploy Github Action][1-click deploy]
-   * Click on `Run workflow`
-   * `Branch:main` is selected
-   * `prod` is selected for environment
-   * Input the tag created earlier (today's date, e.g., `2024.09.01`)
-   * Click on `Run workflow` when ready
-8. A webhook will send status messages into the `#fx-monitor-engineering` channel.
-    * Watch for messages: `pushing to production started` and `successfully deployed to production`
-9. After successful deploy, conduct some basic sanity check:
-    * Check sentry prod project for a spike in any new issues
-    * Check [grafana dashboard][grafana-dashboard] for any unexpected spike in ops
-    * Spot-check the site for basic functionality
+   - if there are errors, make sure the cause is understood
+   - fix the e2e errors or change the tests when appropriate before proceeding
+5. Check the stage Sentry and GCP error logs
+6. Run [1-Click Deploy Github Action][1-click deploy]
+   - Click on `Run workflow`
+   - `Branch:main` is selected
+   - `prod` is selected for environment
+   - Input the tag created earlier (today's date, e.g., `2024.09.01`)
+   - Click on `Run workflow` when ready
+7. A webhook will send status messages into the `#fx-monitor-engineering` channel.
+   - Watch for messages: `pushing to production started` and `successfully deployed to production`
+8. After successful deploy, conduct some basic sanity check:
+   - Check sentry prod project for a spike in any new issues
+   - Check [grafana dashboard][grafana-dashboard] for any unexpected spike in ops
+   - Spot-check the site for basic functionality
 
 ### Update Jira
 
 On our [Jira][jira] board, review the tickets listed under "Merged to main." If those were included in the release you just created, drag those tickets to either the "Promoted to Prod" or "Done" column. This will notify QA that they can verify the behavior on Prod if necessary.
 
 If you're unsure whether a ticket was included in the release, ask the assigned person to move it if needed.
+
 ## Stage-fixes
 
-Ideally, every change can ride the regular weekly release "trains". But sometimes, not everything in `main` can go out. Since we've adopted feature flags, these scenarios are becoming rarer. However, we still cannot guarantee that they never happen. 
+Ideally, every change can ride the regular weekly release "trains". But sometimes, not everything in `main` can go out. Since we've adopted feature flags, these scenarios are becoming rarer. However, we still cannot guarantee that they never happen.
 
 Wherever feature flags aren't applicable, there are generally two scenarios we need to consider:
+
 1. If the diff in changes is minimal (eg. can be traced back to a PR or two), the easiest way is to revert
 2. If the diff is not minimal, or a significant portion of the tickets haven't been QA'd:
-   * we can choose to delay the release (ask the team for consensus)
-   * we can create a separate release branch
+   - we can choose to delay the release (ask the team for consensus)
+   - we can create a separate release branch
 
 ### Revert
+
 1. Revert the PR(s)
 2. Create a Github [Release][github-new-release]
 3. Revert the revert after production deployment is successful
-   * After the revert of revert is successfully merged into `main`, stage should be automatically put back to the state before Production release
+   - After the revert of revert is successfully merged into `main`, stage should be automatically put back to the state before Production release
 
 ### Separate release branch
+
 1. Create a branch on top of `main`
 2. Work on taking out the features that should not be included (not feature-flagged)
 3. Create a Github [Release][github-new-release]
-   * In the release, make sure to pick your branch (`main` is default)
-   * Generate the release note, double check and make sure that it makes sense
+   - In the release, make sure to pick your branch (`main` is default)
+   - Generate the release note, double check and make sure that it makes sense
 4. Proceed with the production release
 
-   
 ## Future
 
-After adding 1-click production deploy capability and broadly adopting [feature flags][feature-flags], we are looking into ways to increase our production release frequency. The main challenge here is to coordiate our QA effort with our latest stage CICD deployments. 
+After adding 1-click production deploy capability and broadly adopting [feature flags][feature-flags], we are looking into ways to increase our production release frequency. The main challenge here is to coordiate our QA effort with our latest stage CICD deployments.
 
 We are starting to look into creating daily GitHub pre-releases via GHA, and once QA'd, having these deployed automatically or manually by base load engineers.
 
