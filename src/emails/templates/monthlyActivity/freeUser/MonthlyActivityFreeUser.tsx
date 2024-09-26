@@ -56,10 +56,15 @@ export const MonthlyReportFreeUserEmail = (
     dataPointCountLabel: hasRunFreeScan
       ? "email-monthly-report-free-summary-manually-resolved-exposures"
       : "email-monthly-report-free-summary-resolved-breaches",
+    // Show a sum of resolved data breach & broker exposures if a scan has been run
+    // Otherwise, only show resolved data breaches
     dataPointValue: hasRunFreeScan
       ? props.dataSummary.dataBreachResolvedNum +
         props.dataSummary.dataBrokerManuallyResolvedNum
       : props.dataSummary.dataBreachResolvedNum,
+    // The resolved box would be active if
+    // a user has run a free scan and there are remaining exposures (data breaches & brokers)
+    // or if a user hasn't run a free scan but there are remaining unresolved breaches
     activeState:
       (hasRunFreeScan &&
         props.dataSummary.dataBreachResolvedNum +
@@ -68,6 +73,7 @@ export const MonthlyReportFreeUserEmail = (
       (!hasRunFreeScan && props.dataSummary.dataBreachResolvedNum > 0),
   };
 
+  // Show the congratulatory banner if a user does not have any remaining exposures left to resolve
   const showCongratulatoryBanner = {
     postScan:
       hasRunFreeScan &&
@@ -115,7 +121,7 @@ export const MonthlyReportFreeUserEmail = (
           heading={l10n.getString("email-monthly-report-hero-free-heading")}
           subheading={l10n.getString("email-monthly-report-hero-free-body")}
         />
-        {/* Show the Data Point Count if there are unresolved breaches, otherwise show the congratulatory banner */}
+        {/* Show the Data Point Count if there are unresolved exposures, otherwise show the congratulatory banner */}
         {!(
           showCongratulatoryBanner.postScan || showCongratulatoryBanner.preScan
         ) ? (
