@@ -51,6 +51,7 @@ type Props = {
   };
   searchParams: {
     nimbus_web_preview?: string;
+    dialog?: "subscriptions";
   };
 };
 
@@ -166,6 +167,7 @@ export default async function DashboardPage({ params, searchParams }: Props) {
       activeTab={activeTab}
       hasFirstMonitoringScan={hasFirstMonitoringScan}
       signInCount={signInCount}
+      autoOpenUpsellDialog={searchParams.dialog === "subscriptions"}
     />
   );
 }
