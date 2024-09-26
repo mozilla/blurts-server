@@ -110,6 +110,8 @@ email-monthly-report-free-summary-auto-removed = <stat>{ $data_point_count }</st
 # Variables:
 #   $data_point_count (number) - The number of data brokers that were manually resolved
 email-monthly-report-free-summary-resolved-breaches = <stat>{ $data_point_count }</stat> Manually resolved data breaches
+# Variables:
+#   $data_point_count (number) - The number of data brokers that were automatically resolved
 email-monthly-report-free-summary-manually-resolved-exposures = <stat>{ $data_point_count }</stat> Manually resolved exposures
 email-monthly-report-free-upgrade-cta = Unlock with { -brand-monitor-plus }
 email-monthly-report-free-banner-heading = { -brand-monitor } now protects you even more
