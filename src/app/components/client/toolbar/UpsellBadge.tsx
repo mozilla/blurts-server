@@ -5,7 +5,7 @@
 "use client";
 
 import { useContext, useRef } from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import Image from "next/image";
 import { useOverlayTrigger, useToggleButton } from "react-aria";
 import { useOverlayTriggerState, useToggleState } from "react-stately";
@@ -88,9 +88,28 @@ function UpsellToggleButton(props: UpsellToggleButtonProps) {
     ...props,
     isSelected: props.hasPremium,
   });
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
 
   const dialogState = useOverlayTriggerState({
     defaultOpen: props.autoOpenUpsellDialog,
+    onOpenChange(isOpen) {
+      // Remove `dialog` from URLSearchParams on closing the upsell dialog
+      // after it has been opened by linking to it.
+      if (
+        !isOpen &&
+        props.autoOpenUpsellDialog &&
+        searchParams.get("dialog") === "subscriptions"
+      ) {
+        const nextSearchParams = new URLSearchParams(searchParams.toString());
+        nextSearchParams.delete("dialog");
+        const updatedPathname = `${pathname}?${nextSearchParams.toString()}`;
+        // Directly interacting with the history API is recommended by Next.js to
+        // avoid re-rendering on the server:
+        // See https://github.com/vercel/next.js/discussions/48110#discussioncomment-7563979.
+        window.history.replaceState(null, "", updatedPathname);
+      }
+    },
   });
   const { triggerProps, overlayProps } = useOverlayTrigger(
     { type: "dialog" },
