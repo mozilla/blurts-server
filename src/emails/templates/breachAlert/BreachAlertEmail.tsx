@@ -75,6 +75,13 @@ export type RedesignedBreachAlertEmailProps = {
   breachedEmail: string;
   utmCampaignId: string;
   subscriber: SubscriberRow;
+  /**
+   * We need to run a bunch of queries to collect this data,
+   * so it's optional; however, make sure to pass it in for
+   * free users who are eligible for Plus (i.e. in the US),
+   * who have run a scan — those are the ones we show a
+   * <DataPointCount> for at the moment.
+   */
   dataSummary?: DashboardSummary;
   enabledFeatureFlags: FeatureFlagName[];
 };
