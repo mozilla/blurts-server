@@ -79,7 +79,7 @@ export type Props = {
   totalNumberOfPerformedScans?: number;
   activeTab: TabType;
   signInCount: number | null;
-  showUpsellBadge: boolean;
+  autoOpenUpsellDialog: boolean;
 };
 
 export type TabData = {
@@ -439,7 +439,7 @@ export const View = (props: Props) => {
         fxaSettingsUrl={props.fxaSettingsUrl}
         lastScanDate={props.userScanData.scan?.created_at ?? null}
         experimentData={props.experimentData}
-        showUpsellBadge={props.showUpsellBadge}
+        autoOpenUpsellDialog={props.autoOpenUpsellDialog}
       >
         <TabList
           tabs={tabsData}

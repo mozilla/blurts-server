@@ -24,7 +24,7 @@ export type Props = {
   lastScanDate: Date | null;
   experimentData: ExperimentData;
   children?: ReactNode;
-  showUpsellBadge?: boolean;
+  autoOpenUpsellDialog?: boolean;
 };
 
 export const Toolbar = (props: Props) => {
@@ -38,7 +38,7 @@ export const Toolbar = (props: Props) => {
           subscriptionBillingAmount={props.subscriptionBillingAmount}
           lastScanDate={props.lastScanDate}
           experimentData={props.experimentData}
-          isDefaultOpen={props.showUpsellBadge}
+          autoOpenUpsellDialog={props.autoOpenUpsellDialog}
         />
         <AppPicker />
         {props.user && (

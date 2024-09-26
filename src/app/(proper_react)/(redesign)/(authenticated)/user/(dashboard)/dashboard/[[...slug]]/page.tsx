@@ -167,7 +167,7 @@ export default async function DashboardPage({ params, searchParams }: Props) {
       activeTab={activeTab}
       hasFirstMonitoringScan={hasFirstMonitoringScan}
       signInCount={signInCount}
-      showUpsellBadge={searchParams.dialog === "subscriptions"}
+      autoOpenUpsellDialog={searchParams.dialog === "subscriptions"}
     />
   );
 }

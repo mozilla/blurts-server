@@ -55,7 +55,7 @@ type DashboardWrapperProps = (
   experimentData?: ExperimentData;
   hasFirstMonitoringScan?: boolean;
   signInCount?: number;
-  showUpsellBadge?: boolean;
+  autoOpenUpsellDialog?: boolean;
 };
 const DashboardWrapper = (props: DashboardWrapperProps) => {
   const mockedResolvedBreach: SubscriberBreach = createRandomBreach({
@@ -224,7 +224,7 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
             activeTab={props.activeTab ?? "action-needed"}
             hasFirstMonitoringScan={props.hasFirstMonitoringScan ?? false}
             signInCount={props.signInCount ?? null}
-            showUpsellBadge={props.showUpsellBadge ?? false}
+            autoOpenUpsellDialog={props.autoOpenUpsellDialog ?? false}
           />
         </Shell>
       </CountryCodeProvider>

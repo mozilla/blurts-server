@@ -359,7 +359,7 @@ it("shows the premium upsell dialog of the Premium upsell badge open by default)
     DashboardUsNoPremiumNoScanNoBreaches,
     Meta,
   );
-  render(<ComposedDashboard showUpsellBadge />);
+  render(<ComposedDashboard autoOpenUpsellDialog />);
 
   expect(
     screen.getByText("Turn on automatic data removal with ⁨Monitor Plus⁩"),

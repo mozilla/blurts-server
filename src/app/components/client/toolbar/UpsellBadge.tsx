@@ -90,7 +90,7 @@ function UpsellToggleButton(props: UpsellToggleButtonProps) {
   });
 
   const dialogState = useOverlayTriggerState({
-    defaultOpen: props.isDefaultOpen,
+    defaultOpen: props.autoOpenUpsellDialog,
   });
   const { triggerProps, overlayProps } = useOverlayTrigger(
     { type: "dialog" },
@@ -155,7 +155,7 @@ export type UpsellBadgeProps = UpsellButtonProps & {
    * they're actually passed everywhere.
    */
   experimentData?: ExperimentData;
-  isDefaultOpen?: boolean;
+  autoOpenUpsellDialog?: boolean;
 };
 export function UpsellBadge(props: UpsellBadgeProps) {
   const countryCode = useContext(CountryCodeContext);
@@ -174,7 +174,7 @@ export function UpsellBadge(props: UpsellBadgeProps) {
     return (
       <UpsellToggleButton
         {...props}
-        isDefaultOpen={props.isDefaultOpen}
+        autoOpenUpsellDialog={props.autoOpenUpsellDialog}
         hasPremium={userHasPremium}
       />
     );
