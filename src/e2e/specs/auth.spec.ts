@@ -2,7 +2,6 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { isPrePlusDate } from "../../app/functions/universal/isPrePlusDate.js";
 import { test, expect } from "../fixtures/basePage.js";
 
 test.describe(`${process.env.E2E_TEST_ENV} - Authentication flow verification @smoke`, () => {
@@ -29,15 +28,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Authentication flow verification @s
     await authPage.signUp(randomEmail, page);
 
     // assert successful login
-    const successUrlSlugs = isPrePlusDate(
-      process.env.BROKER_SCAN_RELEASE_DATE ?? "",
-      new Date(currentTimestamp).toUTCString(),
-    )
-      ? "/user/dashboard"
-      : "/user/welcome";
-    expect(page.url()).toBe(
-      `${process.env.E2E_TEST_BASE_URL}${successUrlSlugs}`,
-    );
+    expect(page.url()).toBe(`${process.env.E2E_TEST_BASE_URL}/user/welcome`);
 
     await testInfo.attach(
       `${process.env.E2E_TEST_ENV}-signup-monitor-dashboard.png`,
