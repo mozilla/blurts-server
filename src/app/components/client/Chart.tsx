@@ -23,6 +23,8 @@ import {
   CONST_ONEREP_MAX_SCANS_THRESHOLD,
 } from "../../../constants";
 import { VisuallyHidden } from "../server/VisuallyHidden";
+import { useEffect, useState } from "react";
+import { Loader } from "./Loader";
 
 export type Props = {
   data: Array<[string, number]>;
@@ -77,7 +79,6 @@ export const DoughnutChart = (props: Props) => {
     const percentOffset = percentages
       .slice(0, index)
       .reduce((offset, [_label, num]) => offset + num, 0);
-
     const sliceLength = circumference * (1 - percent) + sliceBorderWidth;
 
     return (
@@ -198,10 +199,30 @@ export const DoughnutChart = (props: Props) => {
   };
 
   const promptContent = getPromptContent();
+  const [centerValueLoaded, setCenterValueLoaded] = useState(false);
+
+  const nrText = document.querySelector(`.${styles.headingNr}`);
+  const labelText = document.querySelector(`.${styles.headingLabel}`);
+
+  // Ignoring this, otherwise tests will complain:
+  // > Warning: A suspended resource finished loading inside a test, but the
+  // > event was not wrapped in act(...).
+  // > When testing, code that resolves suspended data should be wrapped into
+  // > act(...)
+  /* c8 ignore start */
+  useEffect(() => {
+    if (nrText && labelText) {
+      setCenterValueLoaded(true);
+    }
+  }, [props.data, nrText, labelText]);
+  /* c8 ignore stop */
 
   return (
     <>
-      <figure className={styles.chartContainer}>
+      {!centerValueLoaded && <Loader />}
+      <figure
+        className={`${styles.chartContainer} ${!centerValueLoaded && styles.hidden}`}
+      >
         <div className={styles.chartAndLegendWrapper}>
           <svg
             // https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/img_role#svg_and_roleimg
