@@ -26,7 +26,6 @@ export type MonthlyReportFreeUserEmailProps = {
   utmCampaignId: string;
   utmContentSuffix: string;
   subscriber: SubscriberRow;
-  month: string;
   dataSummary: DashboardSummary;
   unsubscribeLink: string;
 };
@@ -83,9 +82,7 @@ export const MonthlyReportFreeUserEmail = (
     <mjml>
       <mj-head>
         <mj-preview>
-          {l10n.getString("email-monthly-report-hero-free-heading", {
-            monthOfReport: props.month,
-          })}
+          {l10n.getString("email-monthly-report-hero-free-heading")}
         </mj-preview>
         <mj-style>
           {/* This class rounds the edges of a table element */}
@@ -116,9 +113,7 @@ export const MonthlyReportFreeUserEmail = (
         <EmailHero
           l10n={l10n}
           utm_campaign={"test"}
-          heading={l10n.getString("email-monthly-report-hero-free-heading", {
-            monthOfReport: props.month,
-          })}
+          heading={l10n.getString("email-monthly-report-hero-free-heading")}
           subheading={l10n.getString("email-monthly-report-hero-free-body")}
         />
         {/* Show the Data Point Count if there are unresolved breaches, otherwise show the congratulatory banner */}

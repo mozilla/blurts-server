@@ -31,9 +31,6 @@ const meta: Meta<FC<MonthlyReportFreeUserEmailProps>> = {
 
 export default meta;
 type Story = StoryObj<FC<StoryProps>>;
-const date = new Date();
-date.setMonth(date.getMonth() - 1);
-const monthName = date.toLocaleString("default", { month: "long" });
 
 const mockedDataPoints = {
   // shared
@@ -86,7 +83,6 @@ export const MonthlyReportFreeUserNoScanWithExposures: Story = {
     breachedEmail: "example@example.com",
     utmCampaignId: "test",
     utmContentSuffix: "test",
-    month: monthName,
     dataSummary: {
       ...mockedDataSummary,
       dataBreachResolvedNum: 0,
@@ -109,7 +105,6 @@ export const MonthlyReportFreeUserWithScan: Story = {
     breachedEmail: "example@example.com",
     utmCampaignId: "test",
     utmContentSuffix: "test",
-    month: monthName,
     dataSummary: mockedDataSummary,
     subscriber: {
       onerep_profile_id: 1,
@@ -129,7 +124,6 @@ export const MonthlyReportFreeUserResolvedBreachesWithScan: Story = {
     breachedEmail: "example@example.com",
     utmCampaignId: "test",
     utmContentSuffix: "test",
-    month: monthName,
     dataSummary: mockedDataSummary,
     subscriber: {
       onerep_profile_id: 1,
@@ -149,7 +143,6 @@ export const MonthlyReportFreeUserResolvedBreachesWithoutScan: Story = {
     breachedEmail: "example@example.com",
     utmCampaignId: "test",
     utmContentSuffix: "test",
-    month: monthName,
     dataSummary: mockedDataSummary,
     subscriber: {
       onerep_profile_id: null,
@@ -169,7 +162,6 @@ export const MonthlyReportFreeUserWithScanNoManuallyResolvedExposures: Story = {
     breachedEmail: "example@example.com",
     utmCampaignId: "test",
     utmContentSuffix: "test",
-    month: monthName,
     dataSummary: {
       ...mockedDataSummary,
       dataBreachResolvedNum: 5,
@@ -193,7 +185,6 @@ export const MonthlyReportFreeUserNoRemainingExposures: Story = {
     breachedEmail: "example@example.com",
     utmCampaignId: "test",
     utmContentSuffix: "test",
-    month: monthName,
     dataSummary: {
       ...mockedDataSummary,
       dataBreachUnresolvedNum: 0,
@@ -216,7 +207,6 @@ export const MonthlyReportFreeUserNonUS: Story = {
     breachedEmail: "example@example.com",
     utmCampaignId: "test",
     utmContentSuffix: "test",
-    month: monthName,
     dataSummary: {
       ...mockedDataSummary,
       dataBreachUnresolvedNum: 0,
@@ -239,7 +229,6 @@ export const MonthlyReportFreeUserNoScanNoExposuresRemaining: Story = {
     breachedEmail: "example@example.com",
     utmCampaignId: "test",
     utmContentSuffix: "test",
-    month: monthName,
     dataSummary: {
       ...mockedDataSummary,
       dataBreachUnresolvedNum: 0,
@@ -262,7 +251,6 @@ export const MonthlyReportFreeUserWithScanNoExposuresRemaining: Story = {
     breachedEmail: "example@example.com",
     utmCampaignId: "test",
     utmContentSuffix: "test",
-    month: monthName,
     dataSummary: {
       ...mockedDataSummary,
       dataBreachUnresolvedNum: 0,
