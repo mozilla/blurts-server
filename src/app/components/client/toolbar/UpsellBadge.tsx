@@ -96,11 +96,7 @@ function UpsellToggleButton(props: UpsellToggleButtonProps) {
     onOpenChange(isOpen) {
       // Remove `dialog` from URLSearchParams on closing the upsell dialog
       // after it has been opened by linking to it.
-      if (
-        !isOpen &&
-        props.autoOpenUpsellDialog &&
-        searchParams.get("dialog") === "subscriptions"
-      ) {
+      if (!isOpen && props.autoOpenUpsellDialog) {
         const nextSearchParams = new URLSearchParams(searchParams.toString());
         nextSearchParams.delete("dialog");
         const updatedPathname = `${pathname}?${nextSearchParams.toString()}`;

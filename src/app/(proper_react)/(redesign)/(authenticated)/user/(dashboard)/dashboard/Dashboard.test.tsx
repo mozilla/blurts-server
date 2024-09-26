@@ -369,6 +369,22 @@ it("shows the premium upsell dialog of the Premium upsell badge open by default)
   ).toBeInTheDocument();
 });
 
+it("closes the premium upsell dialog of the Premium upsell badge after it opened by default)", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanNoBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard autoOpenUpsellDialog />);
+
+  expect(
+    screen.getByText("Turn on automatic data removal with ⁨Monitor Plus⁩"),
+  ).toBeInTheDocument();
+
+  const closeButtonIcon1 = screen.getByLabelText("Close modal");
+  await user.click(closeButtonIcon1.parentElement as HTMLElement);
+});
+
 it("opens and closes the premium upsell dialog via the Premium upsell button", async () => {
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(
