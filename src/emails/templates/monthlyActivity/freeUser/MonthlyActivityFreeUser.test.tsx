@@ -48,7 +48,7 @@ it("shows the right data exposure value if a user is a free user", () => {
   expect(screen.queryByText("Data exposures")).not.toBeInTheDocument();
 });
 
-it("shows the inactive state if there are 0 manually resolved data brokers", () => {
+it("shows the inactive state if there are 0 manually resolved data breaches", () => {
   const ComposedEmail = composeStory(
     MonthlyReportFreeUserNoScanWithExposures,
     Meta,
@@ -57,10 +57,25 @@ it("shows the inactive state if there are 0 manually resolved data brokers", () 
 
   const manuallyResolvedDataBreaches = screen.getByText(
     "Manually resolved data breaches",
+    { exact: false },
   );
 
-  // For free users, the data point count should be "Data breaches" instead
   expect(manuallyResolvedDataBreaches).toHaveStyle("color: #9E9E9E");
+});
+
+it("says exposures instead of breaches once a user has run a scan", () => {
+  const ComposedEmail = composeStory(MonthlyReportFreeUserWithScan, Meta);
+  render(<ComposedEmail />);
+
+  const manuallyResolvedDataBreaches = screen.getByText(
+    "Manually resolved exposures",
+    { exact: false },
+  );
+
+  const dataExposures = screen.getByText("Data exposures", { exact: false });
+
+  expect(manuallyResolvedDataBreaches).toBeInTheDocument();
+  expect(dataExposures).toBeInTheDocument();
 });
 
 it("shows the congratulatory banner if no exposures remaining before scan", () => {
