@@ -95,9 +95,7 @@ export const MonthlyReportFreeUserWithScan: Story = {
   name: "Monthly Report Free User With Scan",
   args: {
     unsubscribeLink: "/",
-
     utmCampaignId: "test",
-    utmContentSuffix: "test",
     dataSummary: mockedDataSummary,
     subscriber: {
       onerep_profile_id: 1,
@@ -113,9 +111,7 @@ export const MonthlyReportFreeUserResolvedBreachesWithScan: Story = {
   name: "Monthly Report Free User With Scan and Resolved Breaches",
   args: {
     unsubscribeLink: "/",
-
     utmCampaignId: "test",
-    utmContentSuffix: "test",
     dataSummary: mockedDataSummary,
     subscriber: {
       onerep_profile_id: 1,
@@ -132,7 +128,6 @@ export const MonthlyReportFreeUserResolvedBreachesWithoutScan: Story = {
   args: {
     unsubscribeLink: "/",
     utmCampaignId: "test",
-    utmContentSuffix: "test",
     dataSummary: mockedDataSummary,
     subscriber: {
       onerep_profile_id: null,
@@ -148,9 +143,7 @@ export const MonthlyReportFreeUserWithScanNoManuallyResolvedExposures: Story = {
   name: "Monthly Report Free User With Scan Without Manually Resolved Data Brokers, just Breaches",
   args: {
     unsubscribeLink: "/",
-
     utmCampaignId: "test",
-    utmContentSuffix: "test",
     dataSummary: {
       ...mockedDataSummary,
       dataBreachResolvedNum: 5,
@@ -170,9 +163,7 @@ export const MonthlyReportFreeUserNoRemainingExposures: Story = {
   name: "Monthly Report Free User With Scan No Remaining Exposures",
   args: {
     unsubscribeLink: "/",
-
     utmCampaignId: "test",
-    utmContentSuffix: "test",
     dataSummary: {
       ...mockedDataSummary,
       dataBreachUnresolvedNum: 0,
@@ -192,9 +183,7 @@ export const MonthlyReportFreeUserNonUS: Story = {
   name: "Monthly Report Free User Non-US",
   args: {
     unsubscribeLink: "/",
-
     utmCampaignId: "test",
-    utmContentSuffix: "test",
     dataSummary: {
       ...mockedDataSummary,
       dataBreachUnresolvedNum: 0,
@@ -213,9 +202,7 @@ export const MonthlyReportFreeUserNoScanNoExposuresRemaining: Story = {
   name: "Monthly Report Free User No Scan No Exposures Left",
   args: {
     unsubscribeLink: "/",
-
     utmCampaignId: "test",
-    utmContentSuffix: "test",
     dataSummary: {
       ...mockedDataSummary,
       dataBreachUnresolvedNum: 0,
@@ -234,9 +221,7 @@ export const MonthlyReportFreeUserWithScanNoExposuresRemaining: Story = {
   name: "Monthly Report Free User With Scan No Exposures Left",
   args: {
     unsubscribeLink: "/",
-
     utmCampaignId: "test",
-    utmContentSuffix: "test",
     dataSummary: {
       ...mockedDataSummary,
       dataBreachUnresolvedNum: 0,
