@@ -26,6 +26,7 @@ async function globalSetup(config: FullConfig) {
   // commenting out as this its not needed for now
   // // go to sign up page
   await page.goto(process.env.E2E_TEST_BASE_URL as string);
+  await page.waitForLoadState("domcontentloaded");
   const landingPage = new LandingPage(page);
   await landingPage.goToSignIn();
 
