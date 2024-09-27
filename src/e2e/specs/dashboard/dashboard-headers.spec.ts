@@ -205,7 +205,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Headers @smoke
       if (await what.evaluate((e) => e.hasAttribute("href"))) {
         const href = await what.getAttribute("href");
         expect(href).not.toBeNull();
-        await page.goto(href);
+        await page.goto(href as string);
       } else {
         await what.click();
       }
