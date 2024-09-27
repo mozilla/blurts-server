@@ -63,7 +63,7 @@ export class AuthPage {
     await this.passwordConfirmInputField.fill(
       process.env.E2E_TEST_ACCOUNT_PASSWORD as string,
     );
-    await this.ageInputField.type("31");
+    await this.ageInputField.fill("31");
     await this.continue({ waitForURL: "**/oauth/**" });
     const vc = await getVerificationCode(email, page);
     await this.enterVerificationCode(vc);
