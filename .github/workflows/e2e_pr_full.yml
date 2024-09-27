@@ -59,7 +59,7 @@ jobs:
 
       - name: Run Playwright tests
         if: github.actor != 'dependabot[bot]'
-        run: npm run e2e -- --grep-invert "@smoke" --update-snapshots
+        run: npm run e2e -- --update-snapshots
         timeout-minutes: 20
         env:
           E2E_TEST_ENV: local
