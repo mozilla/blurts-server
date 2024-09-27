@@ -3,10 +3,30 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { test, expect } from "../fixtures/basePage.js";
+import { checkAuthState } from "../utils/helpers.js";
 
 // bypass login
 test.use({ storageState: "./e2e/storageState.json" });
 test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Headers`, () => {
+  test.beforeEach(async ({ dashboardPage, welcomePage, page }) => {
+    await dashboardPage.open();
+
+    try {
+      await checkAuthState(page);
+    } catch {
+      console.log("[E2E_LOG] - No fxa auth required, proceeding...");
+    }
+
+    // if we landed on the welcome flow a new user who is eligible for premium
+    // and needs to go through their first scan
+    const isWelcomeFlow =
+      page.url() === `${process.env.E2E_TEST_BASE_URL}/user/welcome`;
+    if (isWelcomeFlow) {
+      expect(page.url()).toContain("/user/welcome");
+      await welcomePage.goThroughFirstScan({ skipLoader: true });
+    }
+  });
+
   test("Verify that the site header is displayed correctly for signed in users", async ({
     dataBreachPage,
   }) => {
@@ -88,9 +108,6 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Headers`, () =
       description:
         "https://testrail.stage.mozaws.net/index.php?/cases/view/2095103",
     });
-
-    // open dashboard page
-    await dashboardPage.open();
 
     // get expected links
     const links = dashboardPage.dashboardLinks();

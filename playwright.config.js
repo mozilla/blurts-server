@@ -50,11 +50,14 @@ export default defineConfig({
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
 
+  /* Limit the number of failures */
+  maxFailures: 1,
+
   /* Retry on CI only */
   retries: process.env.CI ? 1 : 0,
 
-  /* Opt out of parallel tests on CI. */
-  workers: process.env.CI ? 1 : undefined,
+  /* Use a custom percentage of available wokers in CI and use default locally. */
+  workers: process.env.CI ? "75%" : undefined,
 
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: process.env.CI ? [['github'], ['html']] : 'html',
@@ -65,8 +68,7 @@ export default defineConfig({
     actionTimeout: 0,
 
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: process.env.E2E_TEST_BASE_URL ?? 'https://stage.firefoxmonitor.nonprod.cloudops.mozgcp.net',
-    // baseURL: 'http://localhost:6060',
+    baseURL: process.env.E2E_TEST_BASE_URL,
 
     /* automatically take screenshot only on failures */
     screenshot: 'only-on-failure',

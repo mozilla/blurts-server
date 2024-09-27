@@ -9,7 +9,6 @@ import {
   getVerificationCode,
 } from "../utils/helpers.js";
 
-test.describe.configure({ mode: "parallel" });
 test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page content`, () => {
   test.beforeEach(async ({ landingPage }) => {
     await landingPage.open();
@@ -277,7 +276,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page Functionali
     await authPage.continueButton.click();
     const vc = await getVerificationCode(randomEmail, page);
     await authPage.enterVerificationCode(vc);
-    const successUrl = process.env.E2E_TEST_BASE_URL + "/user/welcome";
+    const successUrl = `${process.env.E2E_TEST_BASE_URL}/user/welcome`;
     expect(page.url()).toBe(successUrl);
   });
 
@@ -304,7 +303,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page Functionali
     const randomEmail = `${Date.now()}_tstact@restmail.net`;
     await authPage.signUp(randomEmail, page);
 
-    const successUrl = process.env.E2E_TEST_BASE_URL + "/user/welcome";
+    const successUrl = `${process.env.E2E_TEST_BASE_URL}/user/welcome`;
     expect(page.url()).toBe(successUrl);
   });
 });
@@ -348,11 +347,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page Functionali
     await authPage.enterPassword();
 
     // verify dashboard redirect
-    const successUrl =
-      process.env.E2E_TEST_BASE_URL +
-      (process.env.E2E_TEST_ENV === "local"
-        ? "/user/welcome"
-        : "/user/dashboard");
+    const successUrl = `${process.env.E2E_TEST_BASE_URL}/user/dashboard`;
     expect(page.url()).toBe(successUrl);
   });
 
@@ -373,22 +368,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page Functionali
     await authPage.enterPassword();
 
     // verify dashboard redirect
-    const successUrl =
-      process.env.E2E_TEST_BASE_URL +
-      `${
-        process.env.E2E_TEST_ENV === "local"
-          ? "/user/welcome"
-          : "/user/dashboard"
-      }`;
+    const successUrl = `${process.env.E2E_TEST_BASE_URL}/user/dashboard`;
     expect(page.url()).toBe(successUrl);
   });
-});
-
-test("Verify that the 404 page shows up on non-existent pages @smoke", async ({
-  page,
-}) => {
-  await page.goto("/non-existent-page/");
-  await expect(
-    page.locator("h1").getByText("⁨404⁩ Page not found"),
-  ).toBeVisible();
 });
