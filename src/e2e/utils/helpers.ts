@@ -76,23 +76,31 @@ export const getVerificationCode = async (
   testEmail: string,
   page: Page,
   attempts = 10,
-): Promise<string> => {
+): Promise<string | undefined> => {
   if (attempts === 0) {
     throw new Error("Unable to retrieve restmail data");
   }
 
-  const context = await request.newContext();
-  const res = await context.get(`http://restmail.net/mail/${testEmail}`, {
-    failOnStatusCode: false,
-  });
-  const resJson = await res.json();
-  if (resJson.length) {
+  try {
+    const context = await request.newContext();
+    const restmailUrl = `http://restmail.net/mail/${testEmail}`;
+    const res = await context.get(restmailUrl, {
+      failOnStatusCode: false,
+    });
+    const resJson = await res.json();
+
+    if (resJson.length === 0) {
+      throw new Error("Data is not available on restmail, yet");
+    }
+
     const verificationCode = resJson[0].headers["x-verify-short-code"];
     return verificationCode as string;
-  }
+  } catch (error) {
+    console.error("Error fetching verification code from restmail", error);
 
-  await page.waitForTimeout(1000);
-  return getVerificationCode(testEmail, page, attempts - 1);
+    await page.waitForTimeout(1500);
+    return getVerificationCode(testEmail, page, attempts - 1);
+  }
 };
 
 const enterYourEmail = async (page: Page) => {

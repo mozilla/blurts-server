@@ -47,8 +47,11 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page Functionali
     );
     await authPage.ageInputField.fill("31");
     await authPage.continueButton.click();
-    const vc = await getVerificationCode(randomEmail, page);
-    await authPage.enterVerificationCode(vc);
+
+    const verificationCode = await getVerificationCode(randomEmail, page);
+    expect(verificationCode).toBeDefined();
+    await authPage.enterVerificationCode(verificationCode as string);
+
     const successUrl = `${process.env.E2E_TEST_BASE_URL}/user/welcome`;
     expect(page.url()).toBe(successUrl);
   });
