@@ -28,13 +28,13 @@ jest.mock("./logging", () => {
 });
 
 beforeEach(async () => {
-  global.fetch = jest.fn().mockResolvedValue({ ok: true });
-
   const { logger } = await import("./logging");
   jest.spyOn(console, "error").mockImplementation(() => {});
 });
 
 it("sends event name and parameters to GA", async () => {
+  global.fetch = jest.fn().mockReturnValueOnce({ ok: true });
+
   const { sendPingToGA } = await import("./googleAnalytics");
   await sendPingToGA(0, "testEvent", { testParam1: "testValue1" });
 
@@ -60,10 +60,10 @@ it("sends event name and parameters to GA", async () => {
 });
 
 it("sends event name and parameters to GA and receives error response", async () => {
-  global.fetch = jest.fn().mockResolvedValue({
+  global.fetch = jest.fn().mockReturnValueOnce({
     ok: false,
     status: "500",
-    text: jest.fn().mockResolvedValue("failed"),
+    text: jest.fn().mockReturnValueOnce("failed"),
   });
 
   const loggingSpy = jest.spyOn(console, "error");
