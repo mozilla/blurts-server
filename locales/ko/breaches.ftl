@@ -19,6 +19,10 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 ## Prompts the user for changes when there is a breach detected of password
 
 breach-checklist-pw-header-text = 비밀번호를 업데이트하고 2단계 인증(2FA)을 활성화하세요.
+# The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
+# Variables:
+#   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
+breach-checklist-pw-body-text = 대부분의 경우 기업 웹사이트에서 비밀번호를 변경할 것을 추천합니다. 그러나 <b>웹사이트가 다운되거나 악성 콘텐츠를 포함하고 있을 수 있으므로</b> <breached-company-link>사이트를 방문</breached-company-link>할 경우 주의하시기 바랍니다. 추가 보호를 위해 계정마다 반드시 고유한 비밀번호를 사용하여 유출된 비밀번호로 다른 계정에 접근할 수 없도록 하십시오. { $passwordManagerLink }에서 모든 비밀번호를 안전하게 관리하기 위한 도움을 받을 수 있습니다.
 
 ## Prompts the user for changes when there is a breach detected of email
 
