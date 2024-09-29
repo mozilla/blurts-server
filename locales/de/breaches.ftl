@@ -5,28 +5,20 @@
 breach-all-meta-title = { -brand-fx-monitor } – Alle Datenlecks
 breach-all-meta-social-title = Alle von { -brand-fx-monitor } erkannten Datenlecks
 breach-all-meta-social-description = Durchsuchen Sie die vollständige Liste der bekannten und von { -brand-fx-monitor } erkannten Datenlecks und finden Sie heraus, ob Ihre Daten offengelegt wurden.
-
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-social-title = Waren Sie vom Datenleck bei { $company } betroffen?
 breach-detail-meta-social-description = Verwenden Sie { -brand-fx-monitor }, um herauszufinden, ob Ihre persönlichen Daten bei diesem Datenleck offengelegt wurden, und verstehen Sie, was als nächstes zu tun ist.
 
-## Breaches header
-
-## Breaches resolved filter
-
-## Breaches table
-
 ## Links that we might refer to when prompting the user to make changes after a breach
 
 breach-checklist-link-firefox-relay = { -brand-relay }
-breach-checklist-link-password-manager = { -brand-firefox }-Passwort-Manager
+breach-checklist-link-password-manager = { -brand-firefox }-Passwortverwaltung
 breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## Prompts the user for changes when there is a breach detected of password
 
 breach-checklist-pw-header-text = Aktualisieren Sie Ihre Passwörter und aktivieren Sie die Zwei-Faktor-Authentifizierung (2FA).
-
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
@@ -95,7 +87,6 @@ breach-checklist-phone-header-2 = Schützen Sie Ihre Telefonnummer mit einem Mas
 ## Prompts the user for changes when there is a breach detected of security questions
 
 breach-checklist-sq-header-text = Aktualisieren Sie Ihre Sicherheitsfragen.
-
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 breach-checklist-sq-body-text = In den meisten Fällen empfehlen wir Ihnen, Ihre Sicherheitsfragen über die Website des Unternehmens zu aktualisieren. Aber <b>die Website könnte nicht erreichbar sein oder böswillige Inhalte enthalten</b>, also seien Sie vorsichtig, wenn Sie <breached-company-link>die Website besuchen</breached-company-link>. Schützen Sie sich außerdem, indem Sie diese Sicherheitsfragen auf allen Konten aktualisieren, wo sie genutzt werden und erstellen Sie eindeutige Passwörter für alle Konten.
 
@@ -104,7 +95,7 @@ breach-checklist-sq-body-text = In den meisten Fällen empfehlen wir Ihnen, Ihre
 breach-checklist-hp-header = Erstellen Sie einzigartige, starke Passwörter für alle Konten, in denen Sie Passwörter wiederverwendet haben.
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
-breach-checklist-hp-body-2 = Ein Passwort-Manager wie der { $passwordManagerLink } (der kostenlos und in den { -brand-firefox }-Browser integriert ist) kann Ihnen dabei helfen, alle Ihre Passwörter im Auge zu behalten und sicher von allen Geräten darauf zuzugreifen.
+breach-checklist-hp-body-2 = Eine Passwortverwaltung wie der { $passwordManagerLink } (der kostenlos und in den { -brand-firefox }-Browser integriert ist) kann Ihnen dabei helfen, alle Ihre Passwörter im Auge zu behalten und sicher von allen Geräten darauf zuzugreifen.
 
 ## Prompts the user for changes when there is a breach detected of other types
 
