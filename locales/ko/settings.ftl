@@ -10,12 +10,11 @@ settings-page-title = { -product-short-name } 설정
 ## Breach alert preferences
 
 settings-alert-email-preferences-title = 이메일 설정
+settings-alert-email-preferences-subtitle = 받고 싶은 이메일을 알려주세요.
 settings-alert-preferences-allow-breach-alerts-title = 즉각적인 유출 경고
 settings-alert-preferences-allow-breach-alerts-subtitle = 데이터 유출이 감지되면 이러한 알림이 즉시 전송됩니다.
 settings-alert-preferences-option-one = 유출 알림을 해당 이메일 주소로 보냅니다.
 settings-alert-preferences-option-two = 모든 유출 알림을 기본 이메일 주소로 보냅니다.
-settings-alert-preferences-allow-monthly-monitor-report-title = 월간 { -brand-monitor } 보고서
-settings-alert-preferences-allow-monthly-monitor-report-subtitle = 새로운 유출, 고쳐진 사항, 주의가 필요한 사항에 대한 월별 업데이트입니다.
 
 ## Monitored email addresses
 
@@ -49,3 +48,8 @@ settings-delete-monitor-free-account-dialog-cta-label = 계정 삭제
 settings-delete-monitor-free-account-dialog-cancel-button-label = 삭제 취소하고 뒤로 가기
 settings-delete-monitor-account-confirmation-toast-label-2 = { -brand-monitor } 계정이 이제 삭제되었습니다.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = 닫기
+
+## Monthly Monitor Report
+
+settings-alert-preferences-allow-monthly-monitor-report-title = 월간 { -brand-monitor } 보고서
+settings-alert-preferences-allow-monthly-monitor-report-subtitle = 새로운 유출, 고쳐진 사항, 주의가 필요한 사항에 대한 월별 업데이트입니다.
