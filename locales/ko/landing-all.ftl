@@ -44,6 +44,7 @@ landing-all-social-proof-title = 전 세계 { $num_users }백만 명의 사람�
 # Variables
 # $num_countries is the number of countries available.
 landing-all-social-proof-description = 2018년부터 저희는 { $num_countries }개국 사람들의 데이터가 유출되었을 때 데이터를 보호하도록 도왔습니다.
+landing-all-social-proof-press = 보도 자료에서
 
 # Here's How We Help
 
