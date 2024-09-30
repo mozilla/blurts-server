@@ -120,7 +120,7 @@ it("throws exception when no client_id is stored", async () => {
   const { sendPingToGA } = await import("./googleAnalytics");
   await expect(
     sendPingToGA(0, "testEvent", { testParam1: "testValue1" }),
-  ).rejects.toEqual(Error("No stored GA cookie for subscriber 0"));
+  ).rejects.toEqual(Error("No stored GA cookie for subscriber [0]"));
 });
 
 it("throws exception client_id is not present", async () => {
@@ -138,7 +138,7 @@ it("throws exception client_id is not present", async () => {
     sendPingToGA(0, "testEvent", { testParam1: "testValue1" }),
   ).rejects.toEqual(
     Error(
-      "No GA client_id found for subscriber 0, cannot send backend events to Google Analytics",
+      "No GA client_id found for subscriber [0], cannot send backend events to Google Analytics",
     ),
   );
 });
@@ -158,7 +158,7 @@ it("throws exception cookie_timestamp is not present", async () => {
     sendPingToGA(0, "testEvent", { testParam1: "testValue1" }),
   ).rejects.toEqual(
     Error(
-      "No GA client_id found for subscriber 0, cannot send backend events to Google Analytics",
+      "No GA client_id found for subscriber [0], cannot send backend events to Google Analytics",
     ),
   );
 });

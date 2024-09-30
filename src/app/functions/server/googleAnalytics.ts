@@ -28,18 +28,18 @@ export async function sendPingToGA(
 
   const gaClientInfo = await getClientIdForSubscriber(subscriberId);
   if (!gaClientInfo) {
-    throw new Error(`No stored GA cookie for subscriber ${subscriberId}`);
+    throw new Error(`No stored GA cookie for subscriber [${subscriberId}]`);
   }
 
   const { client_id, cookie_timestamp } = gaClientInfo;
 
   if (!client_id || !cookie_timestamp) {
     throw new Error(
-      `No GA client_id found for subscriber ${subscriberId}, cannot send backend events to Google Analytics`,
+      `No GA client_id found for subscriber [${subscriberId}], cannot send backend events to Google Analytics`,
     );
   }
 
-  const clientId = `${client_id}.${cookie_timestamp}`;
+  const clientId = `${client_id}.${cookie_timestamp.toString()}`;
 
   // Do not show these pings in the production environment by default. These will show up in the DebugView dashboard.
   // @see https://developers.google.com/analytics/devguides/collection/protocol/ga4/verify-implementation?client_type=gtag
