@@ -109,7 +109,7 @@
         "ignoreMiddleExtensions": true
       }
     ],
-    "check-tag-names": ["error", { "definedTags": ["jest-environment "] }]
+    "jsdoc/check-tag-names": ["error", { "definedTags": ["jest-environment "] }]
   },
   "overrides": [
     {
