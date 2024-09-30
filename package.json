@@ -124,7 +124,7 @@
     "@types/adm-zip": "^0.5.5",
     "@types/canvas-confetti": "^1.6.4",
     "@types/jest-axe": "^3.5.9",
-    "@types/jsonwebtoken": "^9.0.6",
+    "@types/jsonwebtoken": "^9.0.7",
     "@types/jwk-to-pem": "^2.0.3",
     "@types/k6": "^0.53.1",
     "@types/mjml": "^4.7.4",
