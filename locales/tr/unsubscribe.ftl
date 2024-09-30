@@ -6,6 +6,7 @@
 # Confirm Unsubscription State
 
 unsubscribe-from-monthly-report-header = Bu e-posta aboneliğinden çıkılsın mı?
+unsubscribe-from-monthly-report-body = Her ay kaç yeni veri ihlaline karıştığınızı ve kaçının düzeltildiğini gösteren aylık { -brand-monitor } raporunu artık almayacaksınız.
 unsubscribe-cta = Abonelikten çık
 
 # Success Unsubscription State
