@@ -23,11 +23,8 @@ export type UserType = "free-user" | "plus-user";
 
 export type SurveyLinks = Record<SurveyResponse, string>;
 
-type RequiredExperimentStatus = "enabled" | "disabled";
-
 type RequiredExperiment = {
   id: keyof ExperimentData;
-  statusAllowList: RequiredExperimentStatus[];
 };
 
 export type SurveyData = {
@@ -66,11 +63,9 @@ export function getRelevantSurveys({
   // experiments and would trigger the early return.
   /* c8 ignore start */
   if (
-    !requiredExperiments.every((experiment) => {
-      return experiment.statusAllowList.includes(
-        experimentData[experiment.id].enabled ? "enabled" : "disabled",
-      );
-    })
+    !requiredExperiments.every(
+      (experiment) => experimentData[experiment.id].enabled,
+    )
   ) {
     return null;
   }

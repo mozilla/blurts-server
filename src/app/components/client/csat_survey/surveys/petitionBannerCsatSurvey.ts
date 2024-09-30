@@ -14,7 +14,6 @@ const surveyData: SurveyData = {
   requiredExperiments: [
     {
       id: "data-privacy-petition-banner",
-      statusAllowList: ["enabled", "disabled"],
     },
   ],
   variations: [
