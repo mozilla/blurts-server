@@ -26,6 +26,7 @@ export default async function Layout({ children }: { children: ReactNode }) {
   });
 
   const cookieStore = cookies();
+  // This expects the default Google Analytics cookie documented here: https://support.google.com/analytics/answer/11397207?hl=en
   const gaCookie = cookieStore.get("_ga");
 
   if (gaCookie && gaCookie.value) {
