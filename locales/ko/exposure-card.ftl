@@ -2,6 +2,7 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
+chevron-alt = 유출 세부 정보
 exposure-card-exposure-type = 유출 유형
 exposure-card-date-found = 유출 날짜
 
@@ -21,6 +22,11 @@ exposure-card-credit-card = 신용카드
 exposure-card-password = 비밀번호
 exposure-card-ip-address = IP 주소
 exposure-card-other = 기타
+# Variables:
+# $data_breach_company is the company associated with the data breach.
+# $data_breach_date is the date of the data breach.
+exposure-card-description-data-breach-action-needed = 정보가 { $data_breach_date }에 발생한 <data_breach_link>{ $data_breach_company } 데이터 유출로 인해 </data_breach_link>에 노출되었습니다. 해결을 위한 단계를 안내해 드리겠습니다.
+exposure-card-description-data-breach-fixed = <data_breach_link>이 유출</data_breach_link>을 해결하기 위한 조치를 취했습니다. 데이터 유출을 지속적으로 모니터링하고 새로운 유출이 일어날 경우 알려드리겠습니다.
 exposure-card-your-exposed-info = 노출된 정보:
 exposure-card-exposure-type-data-breach = 데이터 유출
 exposure-card-cta = 모든 유출 해결

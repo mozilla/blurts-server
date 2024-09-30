@@ -76,7 +76,7 @@ jobs:
           name: test-results
           path: src/e2e/test-results/
           retention-days: 30
-          
+
       - name: Send GitHub Action trigger data to Slack workflow
         id: slack
         uses: slackapi/slack-github-action@v1.27.0
