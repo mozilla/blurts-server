@@ -520,3 +520,12 @@ declare module "knex/types/tables" {
     >;
   }
 }
+
+interface GoogleAnalyticsClientsRow {
+  id: number;
+  subscriber_id: number;
+  cookie_version: string;
+  cookie_path: string;
+  client_id: string;
+  cookie_timestamp: Date;
+}

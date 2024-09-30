@@ -2,6 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import { GoogleAnalyticsClientsRow } from "../../knex-tables";
 import createDbConnection from "../connect";
 
 const knex = createDbConnection();
@@ -30,12 +31,15 @@ async function addClientIdForSubscriber(
   return res?.[0] as string;
 }
 
-async function getClientIdForSubscriber(subscriberId: number) {
-  const res = await knex("google_analytics_clients")
+async function getClientIdForSubscriber(
+  subscriberId: number,
+): Promise<GoogleAnalyticsClientsRow> {
+  return (await knex("google_analytics_clients")
     .select("client_id", "cookie_timestamp")
-    .where("subscriber_id", subscriberId);
-
-  return res?.[0] as Record<string, string>;
+    .where(
+      "subscriber_id",
+      subscriberId,
+    )) as unknown as GoogleAnalyticsClientsRow;
 }
 
 export { addClientIdForSubscriber, getClientIdForSubscriber };

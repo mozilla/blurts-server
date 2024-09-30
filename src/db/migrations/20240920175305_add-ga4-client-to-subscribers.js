@@ -13,7 +13,7 @@ export async function up(knex) {
     table.string("cookie_version");
     table.integer("cookie_path");
     table.string("client_id").unique();
-    table.integer("cookie_timestamp");
+    table.timestamp("cookie_timestamp");
   })
 }
 
