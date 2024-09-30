@@ -12,9 +12,9 @@ async function addClientIdForSubscriber(
   cookieVersion: string,
   cookiePath: number,
   gaClientId: string,
-  cookieTimestamp: number,
-): Promise<string> {
-  const res = await knex("google_analytics_clients")
+  cookieTimestamp: Date,
+): Promise<void> {
+  await knex("google_analytics_clients")
     .insert({
       subscriber_id: subscriberId,
       cookie_version: cookieVersion,
@@ -25,10 +25,7 @@ async function addClientIdForSubscriber(
     .onConflict("subscriber_id")
     .merge()
     .onConflict("client_id")
-    .merge()
-    .returning("*");
-
-  return res?.[0] as string;
+    .merge();
 }
 
 async function getClientIdForSubscriber(

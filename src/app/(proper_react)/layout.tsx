@@ -15,6 +15,7 @@ import { PageLoadEvent } from "../components/client/PageLoadEvent";
 import { getExperimentationId } from "../functions/server/getExperimentationId";
 import { getEnabledFeatureFlags } from "../../db/tables/featureFlags";
 import { addClientIdForSubscriber } from "../../db/tables/google_analytics_clients";
+import { logger } from "../functions/server/logging";
 
 export default async function Layout({ children }: { children: ReactNode }) {
   const l10nBundles = getL10nBundles();
@@ -32,15 +33,29 @@ export default async function Layout({ children }: { children: ReactNode }) {
   if (gaCookie && gaCookie.value) {
     const [gaCookieVersion, gaCookiePath, gaCookieClientId, gaCookieTimestamp] =
       gaCookie.value.split(".");
-
     if (session?.user.subscriber?.id) {
-      await addClientIdForSubscriber(
-        session?.user.subscriber?.id,
-        gaCookieVersion,
-        parseInt(gaCookiePath),
-        gaCookieClientId,
-        parseInt(gaCookieTimestamp),
-      );
+      try {
+        const parsedCookieTimestamp = new Date(
+          parseInt(gaCookieTimestamp) * 1000,
+        );
+        await addClientIdForSubscriber(
+          session?.user.subscriber?.id,
+          gaCookieVersion,
+          parseInt(gaCookiePath),
+          gaCookieClientId,
+          parsedCookieTimestamp,
+        );
+      } catch (ex) {
+        if (ex instanceof Error) {
+          logger.error("Could not parse _ga cookie from header", {
+            message: ex.message,
+          });
+        } else {
+          logger.error("Could not parse _ga cookie from header", {
+            message: JSON.stringify(ex),
+          });
+        }
+      }
     }
   }
 
