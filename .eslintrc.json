@@ -108,8 +108,7 @@
       {
         "ignoreMiddleExtensions": true
       }
-    ],
-    "jsdoc/check-tag-names": ["error", { "definedTags": ["jest-environment", "server-only"] }]
+    ]
   },
   "overrides": [
     {

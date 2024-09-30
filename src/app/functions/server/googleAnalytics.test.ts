@@ -5,10 +5,6 @@
 import { it, expect, jest } from "@jest/globals";
 import { CONST_GA4_MEASUREMENT_ID } from "../../../constants";
 
-/**
- * @jest-environment node
- */
-
 jest.mock("../../../db/tables/google_analytics_clients", () => {
   return {
     getClientIdForSubscriber: jest.fn(() =>
@@ -38,14 +34,11 @@ beforeEach(() => {
 });
 
 it("sends event name and parameters to GA", async () => {
-  jest.spyOn(global, "fetch").mockImplementation(
-    jest.fn(() => {
-      return Promise.resolve({
-        json: () => Promise.resolve(),
-        ok: true,
-      } as Response);
-    }),
-  );
+  global.fetch = jest.fn<typeof global.fetch>().mockResolvedValue({
+    ok: true,
+    status: 200,
+    json: () => Promise.resolve(),
+  } as Response);
 
   const { sendPingToGA } = await import("./googleAnalytics");
   await sendPingToGA(0, "testEvent", { testParam1: "testValue1" });
@@ -72,15 +65,11 @@ it("sends event name and parameters to GA", async () => {
 });
 
 it("sends event name and parameters to GA and receives error response", async () => {
-  jest.spyOn(global, "fetch").mockImplementation(
-    jest.fn(() => {
-      return Promise.resolve({
-        status: "500",
-        text: () => Promise.resolve("failed"),
-        ok: false,
-      } as unknown as Response);
-    }),
-  );
+  global.fetch = jest.fn<typeof global.fetch>().mockResolvedValue({
+    ok: false,
+    status: 500,
+    text: () => Promise.resolve("failed"),
+  } as Response);
 
   const loggingSpy = jest.spyOn(console, "error");
 
@@ -108,7 +97,7 @@ it("sends event name and parameters to GA and receives error response", async ()
   );
 
   expect(loggingSpy).toHaveBeenCalledWith("Could not send backend ping to GA", {
-    status: "500",
+    status: 500,
     text: "failed",
   });
 });
