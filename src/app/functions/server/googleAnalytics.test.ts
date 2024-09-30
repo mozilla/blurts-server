@@ -4,7 +4,10 @@
 
 import { it, expect, jest } from "@jest/globals";
 import { CONST_GA4_MEASUREMENT_ID } from "../../../constants";
-/* eslint-disable @typescript-eslint/no-unused-vars */
+
+/**
+ * @jest-environment node
+ */
 
 jest.mock("../../../db/tables/google_analytics_clients", () => {
   return {
@@ -27,8 +30,7 @@ jest.mock("./logging", () => {
   };
 });
 
-beforeEach(async () => {
-  const { logger } = await import("./logging");
+beforeEach(() => {
   jest.spyOn(console, "error").mockImplementation(() => {});
 });
 
