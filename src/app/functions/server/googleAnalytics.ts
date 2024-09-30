@@ -39,7 +39,7 @@ export async function sendPingToGA(
     );
   }
 
-  const clientId = `${client_id}.${cookie_timestamp.toUTCString()}`;
+  const clientId = `${client_id}.${Math.floor(cookie_timestamp.getTime() / 1000)}`;
 
   // Do not show these pings in the production environment by default. These will show up in the DebugView dashboard.
   // @see https://developers.google.com/analytics/devguides/collection/protocol/ga4/verify-implementation?client_type=gtag

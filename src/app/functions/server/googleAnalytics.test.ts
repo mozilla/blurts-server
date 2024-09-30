@@ -12,7 +12,10 @@ import { CONST_GA4_MEASUREMENT_ID } from "../../../constants";
 jest.mock("../../../db/tables/google_analytics_clients", () => {
   return {
     getClientIdForSubscriber: jest.fn(() =>
-      Promise.resolve({ client_id: "testClientId1", cookie_timestamp: "1234" }),
+      Promise.resolve({
+        client_id: "testClientId1",
+        cookie_timestamp: new Date(1234),
+      }),
     ),
   };
 });
@@ -51,7 +54,7 @@ it("sends event name and parameters to GA", async () => {
     `https://www.google-analytics.com/mp/collect?measurement_id=${CONST_GA4_MEASUREMENT_ID}&api_secret=${process.env.GA4_API_SECRET}`,
     {
       body: JSON.stringify({
-        client_id: "testClientId1.1234",
+        client_id: "testClientId1.1",
         events: [
           {
             name: "testEvent",
@@ -88,7 +91,7 @@ it("sends event name and parameters to GA and receives error response", async ()
     `https://www.google-analytics.com/mp/collect?measurement_id=${CONST_GA4_MEASUREMENT_ID}&api_secret=${process.env.GA4_API_SECRET}`,
     {
       body: JSON.stringify({
-        client_id: "testClientId1.1234",
+        client_id: "testClientId1.1",
         events: [
           {
             name: "testEvent",
@@ -128,7 +131,7 @@ it("throws exception client_id is not present", async () => {
     return {
       getClientIdForSubscriber: jest.fn(() =>
         Promise.resolve({
-          cookie_timestamp: "1234",
+          cookie_timestamp: new Date(1234),
         }),
       ),
     };
