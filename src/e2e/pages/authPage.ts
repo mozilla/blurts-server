@@ -3,6 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { Locator, Page } from "@playwright/test";
+import { expect } from "../fixtures/basePage.js";
 import { getVerificationCode } from "../utils/helpers.js";
 
 export class AuthPage {
@@ -63,9 +64,11 @@ export class AuthPage {
     await this.passwordConfirmInputField.fill(
       process.env.E2E_TEST_ACCOUNT_PASSWORD as string,
     );
-    await this.ageInputField.type("31");
+    await this.ageInputField.fill("31");
     await this.continue({ waitForURL: "**/oauth/**" });
-    const vc = await getVerificationCode(email, page);
-    await this.enterVerificationCode(vc);
+
+    const verificationCode = await getVerificationCode(email, page);
+    expect(verificationCode).toBeDefined();
+    await this.enterVerificationCode(verificationCode as string);
   }
 }
