@@ -34,7 +34,7 @@ export async function sendPingToGA(
   const { client_id, cookie_timestamp } = gaClientInfo;
 
   if (!client_id || !cookie_timestamp) {
-    logger.warn("no_ga4_client_id", { subscriberId });
+    logger.warn("missing_ga4_client_id", { subscriberId });
     return;
   }
 
