@@ -226,6 +226,7 @@ breach-detail-cta-signup = 유출 여부 확인하기
 
 ## Firefox Monitor -> Mozilla Monitor rebrand banner
 
+banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: <b>개인 정보를 보호</b>하기 위한 새로운 이름과 모양, 더 많은 방법이 있습니다.
 banner-monitor-rebrand-dismiss-button-label = 예
 banner-monitor-rebrand-dismiss-button-tooltip = 닫기
 loading-accessibility = 로딩 중

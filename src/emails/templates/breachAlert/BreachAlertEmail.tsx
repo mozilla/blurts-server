@@ -51,7 +51,7 @@ export const BreachAlertEmail = (props: Props) => {
         <mj-section padding="20px">
           <mj-column>
             <mj-button
-              href={`${process.env.SERVER_URL}/user/dashboard/action-needed?utm_source=monitor-product&utm_medium=email&utm_campaign=${props.utmCampaignId}&utm_content=view-your-dashboard-us`}
+              href={`${process.env.SERVER_URL}/user/dashboard/action-needed?utm_source=monitor-product&utm_medium=product-email&utm_campaign=${props.utmCampaignId}&utm_content=view-your-dashboard-us`}
               background-color="#0060DF"
               font-weight={600}
               font-size="15px"
@@ -217,7 +217,7 @@ export const RedesignedBreachAlertEmail = (
         <mj-section padding="12px 0 24px 52px" text-align="left">
           <mj-column padding="0" padding-left="24px" width="250px">
             <mj-button
-              href={`${process.env.SERVER_URL}/user/dashboard/action-needed/?utm_source=monitor-product&utm_medium=email&utm_campaign=${utmCampaignId}&utm_content=lets-get-started${utmContentSuffix}`}
+              href={`${process.env.SERVER_URL}/user/dashboard/action-needed/?utm_source=monitor-product&utm_medium=product-email&utm_campaign=${utmCampaignId}&utm_content=lets-get-started${utmContentSuffix}`}
               background-color="#0060DF"
               border="2px solid #0060DF"
               font-weight={600}
@@ -239,7 +239,7 @@ export const RedesignedBreachAlertEmail = (
               hasPremium(props.subscriber)) && (
               <mj-column padding="0" padding-left="24px" width="250px">
                 <mj-button
-                  href={`${process.env.SERVER_URL}/user/dashboard/?utm_source=monitor-product&utm_medium=email&utm_campaign=${utmCampaignId}&utm_content=dashboard${utmContentSuffix}`}
+                  href={`${process.env.SERVER_URL}/user/dashboard/?utm_source=monitor-product&utm_medium=product-email&utm_campaign=${utmCampaignId}&utm_content=dashboard${utmContentSuffix}`}
                   background-color="white"
                   border="2px solid #0060DF"
                   color="#0060DF"
@@ -277,7 +277,7 @@ export const RedesignedBreachAlertEmail = (
               ctaLabel={l10n.getString(
                 "email-breach-alert-plus-scan-banner-cta-label",
               )}
-              ctaTarget={`${process.env.SERVER_URL}/user/dashboard/?utm_source=monitor-product&utm_medium=email&utm_campaign=${utmCampaignId}&utm_content=take-action${utmContentSuffix}`}
+              ctaTarget={`${process.env.SERVER_URL}/user/dashboard/?utm_source=monitor-product&utm_medium=product-email&utm_campaign=${utmCampaignId}&utm_content=take-action${utmContentSuffix}`}
             />
           ) : (
             <Banner
@@ -417,7 +417,7 @@ const DataPointCount = (
       >
         <mj-column>
           <mj-button
-            href={`${process.env.SERVER_URL}/user/dashboard/action-needed?utm_source=monitor-product&utm_medium=email&utm_campaign=${props.utmCampaignId}&utm_content=take-action${props.utmContentSuffix}`}
+            href={`${process.env.SERVER_URL}/user/dashboard/action-needed?utm_source=monitor-product&utm_medium=product-email&utm_campaign=${props.utmCampaignId}&utm_content=take-action${props.utmContentSuffix}`}
             background-color="#0060DF"
             border-radius="8px"
             padding="12px 24px"

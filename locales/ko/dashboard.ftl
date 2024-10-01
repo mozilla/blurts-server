@@ -35,6 +35,7 @@ modal-active-number-of-exposures-part-three-all = 문제가 해결되면 해결 
 modal-fixed-number-of-exposures-title = 해결된 노출 수
 modal-fixed-number-of-exposures-all = 이 차트에는 현재 모니터링하고 있는 모든 이메일 주소에 대해 해결된 총 데이터 유출 수가 포함되어 있습니다. 유출이 해결된 것으로 표시되면 여기에서 총 합계에 추가됩니다.
 modal-cta-ok = 확인
+modal-cta-got-it = 확인
 open-modal-alt = 모달 열기
 close-modal-alt = 모달 닫기
 open-tooltip-alt = 툴팁 열기
@@ -42,6 +43,7 @@ progress-card-heres-what-we-fixed-headline-all = 해결한 내용은 다음과 �
 progress-card-manually-fixed-headline = 수동으로 해결
 dashboard-tab-label-action-needed = 조치 필요
 dashboard-tab-label-fixed = 해결됨
+dashboard-exposures-all-fixed-label = 모두 해결되었습니다!
 dashboard-exposures-area-headline = 정보가 노출된 모든 사이트 보기
 # Note: this line precedes dashboard-exposures-area-description-all-line2.
 # Variables:
@@ -55,6 +57,7 @@ dashboard-fixed-area-headline-all = 해결된 유출 모두 보기
 # This is the label on a button that opens a popover menu, which shows a menu to adjust filters for the listed exposures.
 dashboard-exposures-filter = 필터
 dashboard-exposures-filter-company = 회사
+dashboard-exposures-filter-date-found = 발견된 날짜
 dashboard-exposures-filter-date-found-last-seven-days = 최근 7일
 dashboard-exposures-filter-date-found-last-thirty-days = 최근 30일
 dashboard-exposures-filter-date-found-last-year = 작년

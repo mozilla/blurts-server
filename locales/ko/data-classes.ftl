@@ -30,6 +30,7 @@ career-levels = 경력 수준
 cellular-network-names = 셀룰러 네트워크 이름
 charitable-donations = 기부 내역
 chat-logs = 대화 내용
+citizenship-statuses = 시민권 상태
 clothing-sizes = 의류 사이즈
 credit-card-cvv = 신용카드 CVV
 credit-cards = 신용카드
