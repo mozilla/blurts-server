@@ -146,6 +146,29 @@ it("logs a warning if cookie_timestamp is not present", async () => {
   });
 });
 
+it("logs a warning if cookie_timestamp cannot be parsed", async () => {
+  jest.mock("../../../db/tables/google_analytics_clients", () => {
+    return {
+      getClientIdForSubscriber: jest.fn(() =>
+        Promise.resolve({
+          client_id: "testClientId1",
+          cookie_timestamp: "invalid",
+        }),
+      ),
+    };
+  });
+  const loggingSpy = jest.spyOn(console, "warn");
+
+  const { sendPingToGA } = await import("./googleAnalytics");
+  await sendPingToGA(0, "testEvent", { testParam1: "testValue1" });
+
+  expect(loggingSpy).toHaveBeenCalledWith("could_not_parse_ga4_cookie", {
+    message: "cookie_timestamp.getTime is not a function",
+    stack: expect.anything(),
+    subscriberId: 0,
+  });
+});
+
 it("throws exception when required env vars are not set", async () => {
   delete process.env.GA4_API_SECRET;
   const { sendPingToGA } = await import("./googleAnalytics");
