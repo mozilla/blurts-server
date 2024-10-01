@@ -106,8 +106,6 @@ export const AlertAddressForm = (props: Props) => {
     const newValue = !activateMonthlyMonitorReport;
     setActivateMonthlyMonitorReport(newValue);
     recordTelemetry("button", "click", {
-      // There is already a unit test written to check if the right telemetry event fires when a user opts out
-      /* c8 ignore next */
       button_id: newValue ? "monthly_report_opt_in" : "monthly_report_opt_out",
     });
     const body: EmailUpdateCommOptionRequest = {

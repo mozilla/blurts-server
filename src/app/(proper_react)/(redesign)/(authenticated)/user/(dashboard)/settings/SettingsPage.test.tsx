@@ -902,6 +902,15 @@ it("calls the right telemetry event if a user opts out of monthly report", async
       button_id: "monthly_report_opt_out",
     }),
   );
+
+  await user.click(monthlyMonitorReportBtn);
+  expect(mockedRecordTelemetry).toHaveBeenCalledWith(
+    "button",
+    "click",
+    expect.objectContaining({
+      button_id: "monthly_report_opt_in",
+    }),
+  );
 });
 
 it("refreshes the session token after changing email alert preferences, to ensure the latest pref is available in it", async () => {
