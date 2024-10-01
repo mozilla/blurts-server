@@ -26,12 +26,8 @@ export async function sendPingToGA(
     );
   }
 
-  const gaClientInfo = await getClientIdForSubscriber(subscriberId);
-  if (!gaClientInfo) {
-    throw new Error(`No stored GA cookie for subscriber [${subscriberId}]`);
-  }
-
-  const { client_id, cookie_timestamp } = gaClientInfo;
+  const { client_id, cookie_timestamp } =
+    await getClientIdForSubscriber(subscriberId);
 
   if (!client_id || !cookie_timestamp) {
     logger.warn("missing_ga4_client_id", { subscriberId });
