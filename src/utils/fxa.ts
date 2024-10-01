@@ -58,7 +58,10 @@ async function destroyOAuthToken(
     logger.info("destroy_oauth_token_success");
   } catch (e) {
     if (e instanceof Error) {
-      logger.error("destroy_oauth_token", { stack: e.stack });
+      logger.error("destroy_oauth_token", {
+        stack: e.stack,
+        message: e.message,
+      });
     }
     throw e;
   }
@@ -86,6 +89,7 @@ async function revokeOAuthTokens(subscriber: {
     if (e instanceof Error) {
       logger.error("revoke_oauth_token", {
         stack: e.stack,
+        message: e.message,
       });
     }
     return false;
@@ -160,7 +164,10 @@ async function refreshOAuthTokens(
     return responseJson as FxaPostOauthTokenResponseSuccessRefreshToken;
   } catch (e) {
     if (e instanceof Error) {
-      logger.error("refresh_fxa_access_token", { stack: e.stack });
+      logger.error("refresh_fxa_access_token", {
+        stack: e.stack,
+        message: e.message,
+      });
     }
     throw e;
   }
@@ -196,7 +203,10 @@ async function getSubscriptions(
     return responseJson as FxaGetOauthSubscribptionsActiveResponseSuccess;
   } catch (e) {
     if (e instanceof Error) {
-      logger.error("get_fxa_subscriptions", { stack: e.stack });
+      logger.error("get_fxa_subscriptions", {
+        stack: e.stack,
+        message: e.message,
+      });
     }
     return null;
   }
@@ -243,7 +253,10 @@ async function getBillingAndSubscriptions(
     return responseJson as FxaGetOauthMozillaSubscribptionsCustomerBillingAndSubscriptionsResponseSuccess;
   } catch (e) {
     if (e instanceof Error) {
-      logger.error("get_fxa_billing_subscriptions", { stack: e.stack });
+      logger.error("get_fxa_billing_subscriptions", {
+        stack: e.stack,
+        message: e.message,
+      });
     }
     return null;
   }
@@ -281,7 +294,10 @@ async function deleteSubscription(bearerToken: string): Promise<boolean> {
     return true;
   } catch (e) {
     if (e instanceof Error) {
-      logger.error("delete_fxa_subscription", { stack: e.stack });
+      logger.error("delete_fxa_subscription", {
+        stack: e.stack,
+        message: e.message,
+      });
     }
     return false;
   }
@@ -326,7 +342,7 @@ async function applyCoupon(
     }
   } catch (e) {
     if (e instanceof Error) {
-      logger.error("apply_fxa_coupon", { stack: e.stack });
+      logger.error("apply_fxa_coupon", { stack: e.stack, message: e.message });
     }
     throw e;
   }
