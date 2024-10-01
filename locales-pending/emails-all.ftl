@@ -71,9 +71,60 @@ email-breach-alert-plus-upgrade-banner-heading = Upgrade for extra protection
 email-breach-alert-plus-upgrade-banner-content = { -brand-monitor-plus } can find and remove your phone number, home address, and other personal info from online databases.
 email-breach-alert-plus-upgrade-banner-cta-label = Get { -brand-monitor-plus }
 email-breach-alert-plus-scan-results-heading = Current exposures
-# <stat> is shown on a single line in a large font
 # Variables:
-#   $data_point_count (number) - The number of data points that were exposed
-email-breach-alert-plus-scan-results-data-points-label = <stat>{ $data_point_count }</stat> Data exposures
+#   $data_point_count (number) - The number of data exposures that were exposed
+email-breach-alert-plus-scan-results-data-points-label =
+   {$data_point_count ->
+        [one] Data exposure
+       *[other] Data exposures
+    }
 email-breach-alert-plus-scan-results-cta-label = Take action to resolve these exposures
 email-breach-alert-plus-scan-results-trailer = We’ll guide you step-by-step through the process
+
+# Monthly Report Free User
+
+email-monthly-report-hero-free-heading = Your monthly { -brand-mozilla-monitor } report
+email-monthly-report-hero-free-body = A summary of what needs your attention, and what’s been resolved over the past month.
+
+## This string is displayed under a large numeral that indicates the total
+## number of data breaches that have exposed the user’s information.
+## Don’t add $data_point_count to your localization, because it would
+## result in the number showing twice.
+##
+## Variables:
+##   $data_point_count (number) - The number of data breaches that were exposed
+
+email-monthly-report-no-scan-results-data-points-label =
+    { $data_point_count ->
+        [one] Data breach
+       *[other] Data breaches
+    }
+email-monthly-report-free-summary-auto-removed =
+  { $data_point_count ->
+        [one] Auto-removed exposure
+       *[other] Auto-removed exposures
+    }
+email-monthly-report-free-summary-resolved-breaches =
+  { $data_point_count ->
+        [one] Manually resolved data breach
+       *[other] Manually resolved data breaches
+    }
+email-monthly-report-free-summary-manually-resolved-exposures =
+  { $data_point_count ->
+        [one] Manually resolved exposure
+       *[other] Manually resolved exposures
+    }
+
+##
+
+email-monthly-report-free-results-heading = Current exposures
+email-monthly-report-free-summary-heading = What’s happened in the last month
+email-monthly-report-free-upgrade-cta = Unlock with { -brand-monitor-plus }
+email-monthly-report-free-banner-heading = { -brand-monitor } now protects you even more
+email-monthly-report-free-banner-body = We can find your personal info on data broker sites that sell it for a profit.
+email-monthly-report-free-banner-cta-free-scan = Get first scan free
+email-monthly-report-free-banner-cta-upgrade = Get { -brand-monitor-plus }
+email-monthly-report-hero-free-no-breaches-heading = Great news!
+email-monthly-report-hero-free-no-breaches-body = You currently have no data breaches that need action.
+email-monthly-report-hero-free-no-breaches-cta = View your Dashboard
+email-unsubscribe-link = <link_to_unsub>Unsubscribe from this email</link_to_unsub> anytime.
