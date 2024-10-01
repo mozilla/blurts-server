@@ -93,6 +93,7 @@ email-monthly-report-hero-free-body = A summary of what needs your attention, an
 ##
 ## Variables:
 ##   $data_point_count (number) - The number of data breaches that were exposed
+
 email-monthly-report-no-scan-results-data-points-label =
     { $data_point_count ->
         [one] Data breach
@@ -113,6 +114,7 @@ email-monthly-report-free-summary-manually-resolved-exposures =
         [one] Manually resolved exposure
        *[other] Manually resolved exposures
     }
+
 ##
 
 email-monthly-report-free-results-heading = Current exposures
