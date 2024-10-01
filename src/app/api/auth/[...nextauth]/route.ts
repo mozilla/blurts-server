@@ -5,8 +5,10 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { NextResponse } from "next/server";
 import NextAuth from "next-auth";
+import { ResponseInternal } from "next-auth/core";
 import { authOptions } from "../../utils/auth";
 
+// There is currently no support for handling OAuth provider callback errors:
 // https://github.com/nextauthjs/next-auth/discussions/8209
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (
@@ -18,8 +20,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     return NextResponse.redirect(`${process.env.SERVER_URL}/user/dashboard`);
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-  return await NextAuth(req, res, authOptions);
+  return (await NextAuth(req, res, authOptions)) as Promise<
+    ResponseInternal<Body>
+  >;
 };
 
 export { handler as GET, handler as POST };
