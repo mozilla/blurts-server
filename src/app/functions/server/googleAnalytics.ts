@@ -34,12 +34,21 @@ export async function sendPingToGA(
   const { client_id, cookie_timestamp } = gaClientInfo;
 
   if (!client_id || !cookie_timestamp) {
-    throw new Error(
-      `No GA client_id found for subscriber [${subscriberId}], cannot send backend events to Google Analytics`,
-    );
+    logger.warn("no_ga4_client_id", { subscriberId });
+    return;
   }
 
-  const clientId = `${client_id}.${Math.floor(cookie_timestamp.getTime() / 1000)}`;
+  let clientId;
+  try {
+    clientId = `${client_id}.${Math.floor(cookie_timestamp.getTime() / 1000)}`;
+  } catch (e) {
+    logger.warn("could_not_parse_ga4_cookie", {
+      subscriberId,
+      message: (e as Error).message,
+      stack: (e as Error).stack,
+    });
+    return;
+  }
 
   // Do not show these pings in the production environment by default. These will show up in the DebugView dashboard.
   // @see https://developers.google.com/analytics/devguides/collection/protocol/ga4/verify-implementation?client_type=gtag
