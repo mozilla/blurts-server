@@ -119,6 +119,26 @@ export const MonthlyReportFreeUserResolvedBreachesWithScan: Story = {
   },
 };
 
+export const MonthlyReportFreeUserResolvedBreachesWithScanWithUnresolvedBreachesAndBroker: Story =
+  {
+    name: "Monthly Report Free User With Scan and Unresolved Breaches and Brokers",
+    args: {
+      unsubscribeLink: "/",
+      dataSummary: {
+        ...mockedDataSummary,
+        dataBreachUnresolvedNum: 12,
+        dataBrokerInProgressNum: 11,
+      },
+      subscriber: {
+        onerep_profile_id: 1,
+        fxa_profile_json: {
+          locale: "en-US",
+          subscriptions: ["not-monitor-plus"],
+        },
+      } as SubscriberRow,
+    },
+  };
+
 export const MonthlyReportFreeUserResolvedBreachesWithoutScan: Story = {
   name: "Monthly Report Free User With Scan and Resolved Breaches",
   args: {
@@ -166,24 +186,6 @@ export const MonthlyReportFreeUserNoRemainingExposures: Story = {
       onerep_profile_id: 1,
       fxa_profile_json: {
         locale: "en-US",
-        subscriptions: ["not-monitor-plus"],
-      },
-    } as SubscriberRow,
-  },
-};
-
-export const MonthlyReportFreeUserNonUS: Story = {
-  name: "Monthly Report Free User Non-US",
-  args: {
-    unsubscribeLink: "/",
-    dataSummary: {
-      ...mockedDataSummary,
-      dataBreachUnresolvedNum: 0,
-    },
-    subscriber: {
-      onerep_profile_id: 1,
-      fxa_profile_json: {
-        locale: "en-CA",
         subscriptions: ["not-monitor-plus"],
       },
     } as SubscriberRow,

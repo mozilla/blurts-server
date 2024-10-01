@@ -23,9 +23,15 @@ type Props = {
 export const DataPointCount = (props: Props) => {
   const assumedCountryCode = getSignupLocaleCountry(props.subscriber);
   const unresolvedDataBreaches = props.dataSummary.dataBreachUnresolvedNum;
-  const unresolvedDataBreachesAndBrokers =
-    props.dataSummary.dataBreachUnresolvedNum +
-    props.dataSummary.dataBrokerInProgressNum;
+
+  const sumOfUnresolvedDataPoints =
+    props.dataSummary.unresolvedSanitizedDataPoints.reduce(
+      (total, dataPointSummary) => {
+        return total + Object.values(dataPointSummary)[0];
+      },
+      0,
+    );
+
   const hasRunFreeScan = typeof props.subscriber.onerep_profile_id === "number";
   const utmContentSuffix = isEligibleForPremium(assumedCountryCode)
     ? "-us"
@@ -67,7 +73,7 @@ export const DataPointCount = (props: Props) => {
             line-height="68px"
           >
             {hasRunFreeScan
-              ? unresolvedDataBreachesAndBrokers
+              ? sumOfUnresolvedDataPoints
               : unresolvedDataBreaches}
           </mj-text>
           <mj-text
@@ -83,7 +89,7 @@ export const DataPointCount = (props: Props) => {
                   : "email-monthly-report-no-scan-results-data-points-label",
                 {
                   data_point_count: hasRunFreeScan
-                    ? unresolvedDataBreachesAndBrokers
+                    ? sumOfUnresolvedDataPoints
                     : unresolvedDataBreaches,
                 },
               )}
