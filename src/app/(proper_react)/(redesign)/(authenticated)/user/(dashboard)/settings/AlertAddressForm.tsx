@@ -33,6 +33,7 @@ import { useRouter } from "next/navigation";
 import { SubscriberRow } from "knex/types/tables";
 import { SubscriberEmailPreferencesOutput } from "../../../../../../../db/tables/subscriber_email_preferences";
 import { hasPremium } from "../../../../../../functions/universal/user";
+import { useTelemetry } from "../../../../../../hooks/useTelemetry";
 
 export type Props = {
   user: Session["user"];
@@ -99,9 +100,14 @@ export const AlertAddressForm = (props: Props) => {
     },
   });
 
+  const recordTelemetry = useTelemetry();
+
   const handleMonthlyMonitorReportToggle = () => {
     const newValue = !activateMonthlyMonitorReport;
     setActivateMonthlyMonitorReport(newValue);
+    recordTelemetry("button", "click", {
+      button_id: newValue ? "monthly_report_opt_in" : "monthly_report_opt_out",
+    });
     const body: EmailUpdateCommOptionRequest = {
       monthlyMonitorReport: newValue,
     };
