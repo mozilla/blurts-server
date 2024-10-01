@@ -64,7 +64,7 @@ export default async function Layout({ children }: { children: ReactNode }) {
     <L10nProvider bundleSources={l10nBundles}>
       <ReactAriaI18nProvider locale={getLocale(l10nBundles)}>
         <CountryCodeProvider countryCode={countryCode}>
-          {enabledFlags.includes("PromptNoneAuthFlow") && !session && (
+          {!enabledFlags.includes("PromptNoneAuthFlow") && !session && (
             <PromptNoneAuth />
           )}
           {children}
