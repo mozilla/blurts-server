@@ -25,6 +25,8 @@ import { revokeOAuthTokens } from "../../../../utils/fxa";
 import { changeSubscription } from "../../../functions/server/changeSubscription";
 import { deleteAccount } from "../../../functions/server/deleteAccount";
 import { record } from "../../../functions/server/glean";
+import { sendPingToGA } from "../../../functions/server/googleAnalytics";
+import { getEnabledFeatureFlags } from "../../../../db/tables/featureFlags";
 
 const FXA_PROFILE_CHANGE_EVENT =
   "https://schemas.accounts.firefox.com/event/profile-change";
@@ -284,6 +286,10 @@ export async function POST(request: NextRequest) {
             oneRepProfileId,
           });
 
+          const enabledFeatureFlags = await getEnabledFeatureFlags({
+            isSignedOut: true,
+          });
+
           if (
             updatedSubscriptionFromEvent.isActive &&
             updatedSubscriptionFromEvent.capabilities.includes(
@@ -357,6 +363,10 @@ export async function POST(request: NextRequest) {
                 monitorUserId: subscriber.id.toString(),
               },
             });
+
+            if (enabledFeatureFlags.includes("GA4SubscriptionEvents")) {
+              await sendPingToGA(subscriber.id, "subscribe");
+            }
           } else if (
             !updatedSubscriptionFromEvent.isActive &&
             updatedSubscriptionFromEvent.capabilities.includes(
@@ -410,6 +420,10 @@ export async function POST(request: NextRequest) {
                 monitorUserId: subscriber.id.toString(),
               },
             });
+
+            if (enabledFeatureFlags.includes("GA4SubscriptionEvents")) {
+              await sendPingToGA(subscriber.id, "unsubscribe");
+            }
           }
         } catch (e) {
           captureMessage(
