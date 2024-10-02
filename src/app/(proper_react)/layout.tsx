@@ -45,16 +45,10 @@ export default async function Layout({ children }: { children: ReactNode }) {
           gaCookieClientId,
           parsedCookieTimestamp,
         );
-      } catch (ex) {
-        if (ex instanceof Error) {
-          logger.error("Could not parse _ga cookie from header", {
-            message: ex.message,
-          });
-        } else {
-          logger.error("Could not parse _ga cookie from header", {
-            message: JSON.stringify(ex),
-          });
-        }
+      } catch (e) {
+        logger.error("could_not_parse_ga_cookie_from_header", {
+          message: (e as Error).message,
+        });
       }
     }
   }
