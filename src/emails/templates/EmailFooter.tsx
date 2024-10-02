@@ -15,6 +15,7 @@ export type Props = {
   l10n: ExtendedReactLocalization;
   utm_campaign: string;
   isOneTimeEmail?: boolean;
+  unsubscribeLink?: string;
 };
 
 export const EmailFooter = (props: Props) => {
@@ -76,6 +77,25 @@ export const EmailFooter = (props: Props) => {
               },
             )}
           </mj-text>
+          {props.unsubscribeLink && (
+            <mj-text
+              font-size="14px"
+              line-height="21px"
+              font-weight="400"
+              align="center"
+            >
+              {l10n.getFragment("email-unsubscribe-link", {
+                elems: {
+                  link_to_unsub: (
+                    <a
+                      href={props.unsubscribeLink}
+                      style={{ color: "#0060DF" }}
+                    />
+                  ),
+                },
+              })}
+            </mj-text>
+          )}
           <mj-text
             color="#3D3D3D"
             font-size="14px"

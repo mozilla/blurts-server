@@ -10,7 +10,7 @@ import { EmailHeader } from "../EmailHeader";
 import { HibpLikeDbBreach } from "../../../utils/hibp";
 import { BreachCard } from "../../components/BreachCard";
 import { FeatureFlagName } from "../../../db/tables/featureFlags";
-import { EmailHero } from "../EmailHero";
+import { EmailHero } from "../../components/EmailHero";
 import { getLocale } from "../../../app/functions/universal/getLocale";
 import { isEligibleForPremium } from "../../../app/functions/universal/premium";
 import { hasPremium } from "../../../app/functions/universal/user";
@@ -18,6 +18,8 @@ import { getSignupLocaleCountry } from "../../functions/getSignupLocaleCountry";
 import { getPremiumSubscriptionUrl } from "../../../app/functions/server/getPremiumSubscriptionInfo";
 import { DashboardSummary } from "../../../app/functions/server/dashboard";
 import { ResolutionRelevantBreachDataTypes } from "../../../app/functions/universal/breach";
+import { EmailBanner } from "../../components/EmailBanner";
+import { DataPointCount } from "../../components/EmailDataPointCount";
 
 export type Props = {
   l10n: ExtendedReactLocalization;
@@ -78,11 +80,7 @@ export type RedesignedBreachAlertEmailProps = {
    * so it's optional; however, make sure to pass it in for
    * free users who are eligible for Plus (i.e. in the US),
    * who have run a scan — those are the ones we show a
-   * <DataPointCount> for at the moment. We also use the
-   * presence of this property to determine whether free
-   * US users have run a scan. If, in the future, we assume
-   * we can do the same for Plus users, that might break, but
-   * that's a risk we'll have to take for now:
+   * <DataPointCount> for at the moment.
    */
   dataSummary?: DashboardSummary;
   enabledFeatureFlags: FeatureFlagName[];
@@ -99,6 +97,7 @@ export const RedesignedBreachAlertEmail = (
     return <BreachAlertEmail {...props} />;
   }
 
+  const hasRunFreeScan = typeof props.subscriber.onerep_profile_id === "number";
   const l10n = props.l10n;
   const locale = getLocale(props.l10n);
   const listFormatter = new Intl.ListFormat(locale);
@@ -259,15 +258,22 @@ export const RedesignedBreachAlertEmail = (
             )
           }
         </mj-section>
-        <DataPointCount
-          {...props}
-          utmCampaignId={utmCampaignId}
-          utmContentSuffix={utmContentSuffix}
-        />
+        {hasRunFreeScan &&
+          props.dataSummary &&
+          !hasPremium(props.subscriber) && (
+            <DataPointCount
+              {...props}
+              dataSummary={props.dataSummary}
+              utmCampaignId={utmCampaignId}
+              utmMedium="email"
+              utmSource="monitor-product"
+            />
+          )}
         {isEligibleForPremium(assumedCountryCode) &&
           !hasPremium(props.subscriber) &&
           (typeof props.dataSummary === "undefined" ? (
-            <Banner
+            <EmailBanner
+              variant="dark"
               heading={l10n.getString(
                 "email-breach-alert-plus-scan-banner-heading",
               )}
@@ -280,7 +286,8 @@ export const RedesignedBreachAlertEmail = (
               ctaTarget={`${process.env.SERVER_URL}/user/dashboard/?utm_source=monitor-product&utm_medium=product-email&utm_campaign=${utmCampaignId}&utm_content=take-action${utmContentSuffix}`}
             />
           ) : (
-            <Banner
+            <EmailBanner
+              variant="dark"
               heading={l10n.getString(
                 "email-breach-alert-plus-upgrade-banner-heading",
               )}
@@ -299,151 +306,4 @@ export const RedesignedBreachAlertEmail = (
   );
 };
 
-const Banner = (props: {
-  heading: string;
-  content: string;
-  ctaLabel: string;
-  ctaTarget: string;
-}) => {
-  return (
-    <mj-wrapper padding="24px 16px">
-      <mj-section padding="24px" background-color="#7542E5" border-radius="8px">
-        <mj-column vertical-align="middle" padding="0">
-          <mj-text
-            font-size="16px"
-            line-height="24px"
-            padding="0"
-            color="white"
-          >
-            <h3>{props.heading}</h3>
-            <p>{props.content}</p>
-          </mj-text>
-        </mj-column>
-        <mj-column vertical-align="middle" padding="0" width="230px">
-          <mj-button
-            href={props.ctaTarget}
-            background-color="transparent"
-            font-weight={600}
-            font-size="15px"
-            line-height="22px"
-            border-radius="8px"
-            border="2px solid white"
-            color="white"
-            padding="0"
-          >
-            {props.ctaLabel}
-          </mj-button>
-        </mj-column>
-      </mj-section>
-    </mj-wrapper>
-  );
-};
-
-const DataPointCount = (
-  props: RedesignedBreachAlertEmailProps & { utmContentSuffix: string },
-) => {
-  if (typeof props.dataSummary === "undefined") {
-    return null;
-  }
-  if (hasPremium(props.subscriber)) {
-    // Plus subscribers don't need to take action on scans,
-    // so don't show the callout there:
-    return null;
-  }
-
-  const l10n = props.l10n;
-  const sumOfUnresolvedDataPoints =
-    props.dataSummary.unresolvedSanitizedDataPoints.reduce(
-      (total, dataPointSummary) => {
-        return total + Object.values(dataPointSummary)[0];
-      },
-      0,
-    );
-
-  return (
-    <mj-wrapper padding="24px 16px">
-      <mj-section
-        padding="24px 52px 16px"
-        background-color="#F9F9FA"
-        border-radius="16px 16px 0 0"
-      >
-        <mj-column>
-          <mj-text
-            font-size="24px"
-            line-height="24px"
-            padding="0"
-            align="center"
-            font-weight={500}
-          >
-            <h3>
-              {l10n.getString("email-breach-alert-plus-scan-results-heading")}
-            </h3>
-          </mj-text>
-        </mj-column>
-      </mj-section>
-      <mj-section padding="24px 52px" background-color="#F9F9FA">
-        <mj-column
-          background-color="#E7DFFF"
-          border-radius="16px"
-          padding="16px 24px"
-        >
-          <mj-text align="center" font-size="14px" line-height="21px">
-            <p>
-              {l10n.getFragment(
-                "email-breach-alert-plus-scan-results-data-points-label",
-                {
-                  elems: {
-                    stat: (
-                      <div
-                        style={{
-                          fontWeight: "bold",
-                          fontSize: "60px",
-                          lineHeight: "68px",
-                        }}
-                      />
-                    ),
-                  },
-                  vars: { data_point_count: sumOfUnresolvedDataPoints },
-                },
-              )}
-            </p>
-          </mj-text>
-        </mj-column>
-      </mj-section>
-      <mj-section
-        padding="16px 52px 24px"
-        background-color="#F9F9FA"
-        border-radius="0 0 16px 16px"
-      >
-        <mj-column>
-          <mj-button
-            href={`${process.env.SERVER_URL}/user/dashboard/action-needed?utm_source=monitor-product&utm_medium=product-email&utm_campaign=${props.utmCampaignId}&utm_content=take-action${props.utmContentSuffix}`}
-            background-color="#0060DF"
-            border-radius="8px"
-            padding="12px 24px"
-            font-weight={600}
-            font-size="15px"
-            line-height="22px"
-            width="100%"
-          >
-            {l10n.getString("email-breach-alert-plus-scan-results-cta-label")}
-          </mj-button>
-          <mj-text
-            font-size="12px"
-            line-height="24px"
-            padding="0"
-            align="center"
-            font-weight={400}
-            font-style="italic"
-            color="#6D6D6E"
-          >
-            <p>
-              {l10n.getString("email-breach-alert-plus-scan-results-trailer")}
-            </p>
-          </mj-text>
-        </mj-column>
-      </mj-section>
-    </mj-wrapper>
-  );
-};
 /* c8 ignore stop */
