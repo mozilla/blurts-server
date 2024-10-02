@@ -4,6 +4,7 @@
 
 import crypto from "crypto";
 import { URL } from "url";
+import { logger } from "../app/functions/server/logging";
 
 import { getEnvVarsOrThrow } from "../envVars";
 const envVars = getEnvVarsOrThrow([
@@ -54,10 +55,13 @@ async function destroyOAuthToken(
     const response = await fetch(tokenUrl, tokenOptions);
     const responseJson = await response.json();
     if (!response.ok) throw new Error(responseJson);
-    console.info("destroy_oauth_token_success");
+    logger.info("destroy_oauth_token_success");
   } catch (e) {
     if (e instanceof Error) {
-      console.error("destroy_oauth_token", { stack: e.stack });
+      logger.error("destroy_oauth_token", {
+        stack: e.stack,
+        message: e.message,
+      });
     }
     throw e;
   }
@@ -79,12 +83,13 @@ async function revokeOAuthTokens(subscriber: {
       token: subscriber.fxa_refresh_token,
       token_type_hint: "refresh_token",
     });
-    console.info("revoke_oauth_token_success");
+    logger.info("revoke_oauth_token_success");
     return true;
   } catch (e) {
     if (e instanceof Error) {
-      console.error("revoke_oauth_token", {
+      logger.error("revoke_oauth_token", {
         stack: e.stack,
+        message: e.message,
       });
     }
     return false;
@@ -155,11 +160,14 @@ async function refreshOAuthTokens(
 
     const responseJson = await response.json();
     if (!response.ok) throw new Error(responseJson);
-    console.info("refresh_fxa_access_token_success");
+    logger.info("refresh_fxa_access_token_success");
     return responseJson as FxaPostOauthTokenResponseSuccessRefreshToken;
   } catch (e) {
     if (e instanceof Error) {
-      console.error("refresh_fxa_access_token", { stack: e.stack });
+      logger.error("refresh_fxa_access_token", {
+        stack: e.stack,
+        message: e.message,
+      });
     }
     throw e;
   }
@@ -191,11 +199,14 @@ async function getSubscriptions(
     });
     const responseJson = await response.json();
     if (!response.ok) throw new Error(responseJson);
-    console.info("get_fxa_subscriptions_success");
+    logger.info("get_fxa_subscriptions_success");
     return responseJson as FxaGetOauthSubscribptionsActiveResponseSuccess;
   } catch (e) {
     if (e instanceof Error) {
-      console.error("get_fxa_subscriptions", { stack: e.stack });
+      logger.error("get_fxa_subscriptions", {
+        stack: e.stack,
+        message: e.message,
+      });
     }
     return null;
   }
@@ -238,11 +249,14 @@ async function getBillingAndSubscriptions(
     });
     const responseJson = await response.json();
     if (!response.ok) throw new Error(responseJson);
-    console.info("get_fxa_billing_subscriptions_success");
+    logger.info("get_fxa_billing_subscriptions_success");
     return responseJson as FxaGetOauthMozillaSubscribptionsCustomerBillingAndSubscriptionsResponseSuccess;
   } catch (e) {
     if (e instanceof Error) {
-      console.error("get_fxa_billing_subscriptions", { stack: e.stack });
+      logger.error("get_fxa_billing_subscriptions", {
+        stack: e.stack,
+        message: e.message,
+      });
     }
     return null;
   }
@@ -275,12 +289,15 @@ async function deleteSubscription(bearerToken: string): Promise<boolean> {
       });
       const responseJson = await response.json();
       if (!response.ok) throw new Error(responseJson);
-      console.info("delete_fxa_subscription_success");
+      logger.info("delete_fxa_subscription_success");
     }
     return true;
   } catch (e) {
     if (e instanceof Error) {
-      console.error("delete_fxa_subscription", { stack: e.stack });
+      logger.error("delete_fxa_subscription", {
+        stack: e.stack,
+        message: e.message,
+      });
     }
     return false;
   }
@@ -321,11 +338,11 @@ async function applyCoupon(
       });
       const responseJson = await response.json();
       if (!response.ok) throw new Error(responseJson);
-      console.info("apply_fxa_coupon_success");
+      logger.info("apply_fxa_coupon_success");
     }
   } catch (e) {
     if (e instanceof Error) {
-      console.error("apply_fxa_coupon", { stack: e.stack });
+      logger.error("apply_fxa_coupon", { stack: e.stack, message: e.message });
     }
     throw e;
   }

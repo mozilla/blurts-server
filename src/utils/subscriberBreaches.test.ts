@@ -15,6 +15,19 @@ jest.mock("./hibp", () => ({
   getBreachesForEmail: jest.fn(),
 }));
 
+jest.mock("../app/functions/server/logging", () => {
+  class Logging {
+    info(message: string, details: object) {
+      console.info(message, details);
+    }
+  }
+
+  const logger = new Logging();
+  return {
+    logger,
+  };
+});
+
 const subscriber: SubscriberRow = {
   updated_at: new Date(),
   fx_newsletter: true,
