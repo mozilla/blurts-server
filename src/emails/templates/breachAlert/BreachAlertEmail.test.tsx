@@ -177,4 +177,25 @@ describe("The redesigned breach alert email", () => {
     });
     expect(getPlusButton).not.toBeInTheDocument();
   });
+
+  it("uses `product-email` as the utm_medium everywhere", () => {
+    const ComposedEmail = composeStory(
+      RedesignedBreachAlertEmailUsFreeWithScanStory,
+      Meta,
+    );
+    render(<ComposedEmail />);
+
+    const links = screen.getAllByRole("link");
+    const linkHrefs = links
+      .map((link) => link.getAttribute("href"))
+      .filter((attr) => attr !== null);
+    const utmMediums = linkHrefs
+      .map((linkHref) => new URL(linkHref).searchParams.get("utm_medium"))
+      .filter((param) => param !== null);
+
+    expect(utmMediums.length).toBeGreaterThan(0);
+    expect(utmMediums).toStrictEqual(
+      Array(utmMediums.length).fill("product-email"),
+    );
+  });
 });

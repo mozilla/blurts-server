@@ -122,7 +122,7 @@ export const RedesignedBreachAlertEmail = (
   const premiumSubscriptionUrlObject = new URL(
     getPremiumSubscriptionUrl({ type: "yearly" }),
   );
-  premiumSubscriptionUrlObject.searchParams.set("utm_medium", "email");
+  premiumSubscriptionUrlObject.searchParams.set("utm_medium", "product-email");
   premiumSubscriptionUrlObject.searchParams.set(
     "utm_source",
     "monitor-product",

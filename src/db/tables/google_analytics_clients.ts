@@ -31,12 +31,11 @@ async function addClientIdForSubscriber(
 async function getClientIdForSubscriber(
   subscriberId: number,
 ): Promise<GoogleAnalyticsClientsRow> {
-  return (await knex("google_analytics_clients")
+  const res = await knex("google_analytics_clients")
     .select("client_id", "cookie_timestamp")
-    .where(
-      "subscriber_id",
-      subscriberId,
-    )) as unknown as GoogleAnalyticsClientsRow;
+    .where("subscriber_id", subscriberId);
+
+  return res[0] as GoogleAnalyticsClientsRow;
 }
 
 export { addClientIdForSubscriber, getClientIdForSubscriber };

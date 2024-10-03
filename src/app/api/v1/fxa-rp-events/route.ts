@@ -433,7 +433,8 @@ export async function POST(request: NextRequest) {
           );
           logger.error("failed_activating_subscription", {
             subscriber_id: subscriber.id,
-            exception: e,
+            message: (e as Error).message,
+            stack: (e as Error).stack,
           });
           return NextResponse.json(
             { success: false, message: "failed_activating_subscription" },
