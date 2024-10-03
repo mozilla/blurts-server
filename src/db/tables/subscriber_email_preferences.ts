@@ -62,16 +62,10 @@ async function addEmailPreferenceForSubscriber(
       .returning("*");
     logger.debug("add_email_preference_for_subscriber_success");
   } catch (e) {
-    if (e instanceof Error) {
-      logger.error("error_add_subscriber_email_preference", {
-        message: e.message,
-        stack_trace: e.stack,
-      });
-    } else {
-      logger.error("error_add_subscriber_email_preference", {
-        error: String(e),
-      });
-    }
+    logger.error("error_add_subscriber_email_preference", {
+      message: (e as Error).message,
+      stack_trace: (e as Error).stack,
+    });
 
     throw e;
   }
