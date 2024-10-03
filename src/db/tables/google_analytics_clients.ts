@@ -23,8 +23,6 @@ async function addClientIdForSubscriber(
       cookie_timestamp: cookieTimestamp,
     })
     .onConflict("subscriber_id")
-    .merge()
-    .onConflict("client_id")
     .merge();
 }
 
