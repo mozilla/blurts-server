@@ -151,7 +151,7 @@ export const EmailFooter = (props: Props) => {
 export const RedesignedBreachEmailFooter = (props: Props) => {
   const l10n = props.l10n;
   const supportLinkUrlObject = new URL(CONST_URL_SUMO_MONITOR_SUPPORT_CENTER);
-  supportLinkUrlObject.searchParams.set("utm_medium", "email");
+  supportLinkUrlObject.searchParams.set("utm_medium", "product-email");
   supportLinkUrlObject.searchParams.set("utm_source", "monitor-product");
   supportLinkUrlObject.searchParams.set("utm_campaign", props.utm_campaign);
   supportLinkUrlObject.searchParams.set("utm_content", "support-center");
@@ -201,7 +201,7 @@ export const RedesignedBreachEmailFooter = (props: Props) => {
           <mj-image
             alt={l10n.getString("email-footer-logo-mozilla-alt")}
             src={`${process.env.SERVER_URL}/images/email/mozilla-logo-bw.png`}
-            href={`https://www.mozilla.org/?utm_source=monitor-product&utm_medium=email&utm_campaign=${props.utm_campaign}&utm_content=header-logo`}
+            href={`https://www.mozilla.org/?utm_source=monitor-product&utm_medium=product-email&utm_campaign=${props.utm_campaign}&utm_content=header-logo`}
             width="150px"
             align="center"
           />
