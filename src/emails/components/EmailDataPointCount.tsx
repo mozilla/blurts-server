@@ -104,7 +104,7 @@ export const DataPointCount = (props: Props) => {
       >
         <mj-column>
           <mj-button
-            href={`${process.env.SERVER_URL}/user/dashboard/action-needed?utm_source=monitor-product&utm_medium=email&utm_campaign=${props.utmCampaignId}&utm_content=take-action${utmContentSuffix}`}
+            href={`${process.env.SERVER_URL}/user/dashboard/action-needed?utm_source=monitor-product&utm_medium=product-email&utm_campaign=${props.utmCampaignId}&utm_content=take-action${utmContentSuffix}`}
             background-color="#0060DF"
             border-radius="8px"
             padding="12px 24px"
