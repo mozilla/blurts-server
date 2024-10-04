@@ -26,9 +26,14 @@ export async function sendPingToGA(
     );
   }
 
-  const { client_id, cookie_timestamp } =
-    await getClientIdForSubscriber(subscriberId);
+  const row = await getClientIdForSubscriber(subscriberId);
 
+  if (!row) {
+    logger.warn("no_stored_ga4_cookie_for_subscriber", { subscriberId });
+    return;
+  }
+
+  const { client_id, cookie_timestamp } = row;
   if (!client_id || !cookie_timestamp) {
     logger.warn("missing_ga4_client_id", { subscriberId });
     return;
@@ -38,10 +43,10 @@ export async function sendPingToGA(
   try {
     clientId = `${client_id}.${Math.floor(cookie_timestamp.getTime() / 1000)}`;
   } catch (e) {
-    logger.warn("could_not_parse_ga4_cookie", {
+    logger.warn("could_not_parse_ga4_cookie_from_db", {
       subscriberId,
       message: (e as Error).message,
-      stack: (e as Error).stack,
+      stack_trace: (e as Error).stack,
     });
     return;
   }

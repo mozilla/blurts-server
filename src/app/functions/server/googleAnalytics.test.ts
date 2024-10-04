@@ -35,6 +35,7 @@ jest.mock("./logging", () => {
 beforeEach(() => {
   jest.spyOn(console, "error").mockImplementation(() => {});
   jest.spyOn(console, "warn").mockImplementation(() => {});
+  process.env.GA4_API_SECRET = "unsafe-fake-key-for-dev";
 });
 
 it("sends event name and parameters to GA", async () => {
@@ -126,6 +127,25 @@ it("logs a warning when client_id is not stored in DB", async () => {
   });
 });
 
+it("logs a warning if GoogleAnalyticsClientsRow is empty", async () => {
+  jest.mock("../../../db/tables/google_analytics_clients", () => {
+    return {
+      getClientIdForSubscriber: jest.fn(() => Promise.resolve()),
+    };
+  });
+  const loggingSpy = jest.spyOn(console, "warn");
+
+  const { sendPingToGA } = await import("./googleAnalytics");
+  await sendPingToGA(0, "testEvent", { testParam1: "testValue1" });
+
+  expect(loggingSpy).toHaveBeenCalledWith(
+    "no_stored_ga4_cookie_for_subscriber",
+    {
+      subscriberId: 0,
+    },
+  );
+});
+
 it("logs a warning if cookie_timestamp is not present", async () => {
   jest.mock("../../../db/tables/google_analytics_clients", () => {
     return {
@@ -162,11 +182,14 @@ it("logs a warning if cookie_timestamp cannot be parsed", async () => {
   const { sendPingToGA } = await import("./googleAnalytics");
   await sendPingToGA(0, "testEvent", { testParam1: "testValue1" });
 
-  expect(loggingSpy).toHaveBeenCalledWith("could_not_parse_ga4_cookie", {
-    message: "cookie_timestamp.getTime is not a function",
-    stack: expect.anything(),
-    subscriberId: 0,
-  });
+  expect(loggingSpy).toHaveBeenCalledWith(
+    "could_not_parse_ga4_cookie_from_db",
+    {
+      message: "cookie_timestamp.getTime is not a function",
+      stack_trace: expect.anything(),
+      subscriberId: 0,
+    },
+  );
 });
 
 it("throws exception when required env vars are not set", async () => {

@@ -35,19 +35,32 @@ export default async function Layout({ children }: { children: ReactNode }) {
       gaCookie.value.split(".");
     if (session?.user.subscriber?.id) {
       try {
-        const parsedCookieTimestamp = new Date(
-          parseInt(gaCookieTimestamp) * 1000,
-        );
-        await addClientIdForSubscriber(
-          session?.user.subscriber?.id,
-          gaCookieVersion,
-          parseInt(gaCookiePath),
-          gaCookieClientId,
-          parsedCookieTimestamp,
-        );
+        let parsedCookieTimestamp;
+        try {
+          parsedCookieTimestamp = new Date(parseInt(gaCookieTimestamp) * 1000);
+        } catch (e) {
+          logger.error("could_not_parse_ga_cookie_from_header", {
+            subscriberId: session.user.subscriber.id,
+            message: (e as Error).message,
+            stack_track: (e as Error).stack,
+          });
+        }
+        if (parsedCookieTimestamp) {
+          await addClientIdForSubscriber(
+            session?.user.subscriber?.id,
+            gaCookieVersion,
+            parseInt(gaCookiePath),
+            gaCookieClientId,
+            parsedCookieTimestamp,
+          );
+        } else {
+          logger.info("no_ga_cookie_found_in_header");
+        }
       } catch (e) {
-        logger.error("could_not_parse_ga_cookie_from_header", {
+        logger.error("could_not_add_ga_cookie_to_database", {
+          subscriberId: session.user.subscriber.id,
           message: (e as Error).message,
+          stack_track: (e as Error).stack,
         });
       }
     }
