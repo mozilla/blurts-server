@@ -15,8 +15,6 @@ settings-alert-preferences-allow-breach-alerts-title = Takojšnja opozorila o kr
 settings-alert-preferences-allow-breach-alerts-subtitle = Ta opozorila se pošljejo takoj, ko se zazna kraja podatkov
 settings-alert-preferences-option-one = Pošlji opozorila na ogrožen e-poštni naslov
 settings-alert-preferences-option-two = Pošlji vsa opozorila o krajah podatkov na glavni e-poštni naslov
-settings-alert-preferences-allow-monthly-monitor-report-title = Mesečno poročilo { -brand-monitor }a
-settings-alert-preferences-allow-monthly-monitor-report-subtitle = Mesečna posodobitev novih izpostavljenosti, kaj je bilo popravljeno in kaj zahteva vašo pozornost.
 
 ## Monitored email addresses
 
@@ -51,20 +49,19 @@ settings-email-number-of-breaches-info =
        *[other] Pojavil se je v { $breachCount } znanih krajah.
     }
 
-## Deactivate account
-
-settings-deactivate-account-title = Deaktiviraj račun
-settings-deactivate-account-info-2 = { -product-short-name } lahko izključite tako, da izbrišete svoj { -brand-mozilla-account }.
-settings-fxa-link-label-3 = Pojdite v Nastavitve { -brand-mozilla-account(sklon: "rodilnik") }
-
 ## Delete Monitor account
 
-settings-delete-monitor-free-account-title = Izbriši { -brand-monitor } račun
+settings-delete-monitor-free-account-title = Izbriši račun { -brand-monitor }
 settings-delete-monitor-free-account-description = S tem boste trajno izbrisali svoj račun { -brand-monitor } in izklopili vsa obvestila.
 settings-delete-monitor-free-account-cta-label = Izbriši račun
 settings-delete-monitor-free-account-dialog-title = Vaš račun { -brand-monitor } bo trajno izbrisan
 settings-delete-monitor-free-account-dialog-lead-v2 = Vsi podatki o vašem računu za { -brand-monitor } bodo izbrisani in vaših podatkov ne bomo več iskali v krajah. S tem ne boste izbrisali svojega { -brand-mozilla-account(sklon: "rodilnik") }.
 settings-delete-monitor-free-account-dialog-cta-label = Izbriši račun
-settings-delete-monitor-free-account-dialog-cancel-button-label = Premislil sem si, vzemite me nazaj
+settings-delete-monitor-free-account-dialog-cancel-button-label = Premislil/-a sem si, vzemite me nazaj
 settings-delete-monitor-account-confirmation-toast-label-2 = Vaš račun za { -brand-monitor } je zdaj izbrisan.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Opusti
+
+## Monthly Monitor Report
+
+settings-alert-preferences-allow-monthly-monitor-report-title = Mesečno poročilo { -brand-monitor }a
+settings-alert-preferences-allow-monthly-monitor-report-subtitle = Mesečna posodobitev novih izpostavljenosti, kaj je bilo popravljeno in kaj zahteva vašo pozornost.
