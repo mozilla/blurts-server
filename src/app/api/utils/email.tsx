@@ -73,7 +73,10 @@ export async function unsubscribeLinkForSubscriber(
     if (getRes.unsubscribe_token) {
       // if record has been created and the token exists, return the token
       return `${process.env.SERVER_URL}/unsubscribe-email/monthly-report-free?token=${getRes.unsubscribe_token}`;
-    } else if (!getRes.monthly_monitor_report_free_at) {
+    } else if (
+      !getRes.monthly_monitor_report_free_at &&
+      !getRes.unsubscribe_token
+    ) {
       // if record in the new table has not been created via UI
       sub = await addUnsubscribeTokenForSubscriber(
         subscriber.id,

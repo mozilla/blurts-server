@@ -117,22 +117,24 @@ async function updateEmailPreferenceForSubscriber(
   try {
     if (isFree) {
       const getRes = await getEmailPreferenceForSubscriber(subscriberId);
-      if (!getRes.unsubscribe_token) {
-        // if new row has not been created via generate unsubscribe token
+      if (!getRes.unsubscribe_token && !getRes.monthly_monitor_report_free_at) {
+        // if new row has not been created before
         res = await addEmailPreferenceForSubscriber(
           subscriberId,
           preference as SubscriberFreeEmailPreferencesInput,
         );
       } else {
-        res = await knex("subscriber_email_preferences")
-          .where("subscriber_id", subscriberId)
-          .update({
-            ...(preference as SubscriberFreeEmailPreferencesInput),
-            // @ts-ignore knex.fn.now() results in it being set to a date,
-            // even if it's not typed as a JS date object:
-            monthly_monitor_report_free_at: knex.fn.now(),
-          })
-          .first();
+        res = (
+          (await knex("subscriber_email_preferences")
+            .where("subscriber_id", subscriberId)
+            .update({
+              ...(preference as SubscriberFreeEmailPreferencesInput),
+              // @ts-ignore knex.fn.now() results in it being set to a date,
+              // even if it's not typed as a JS date object:
+              monthly_monitor_report_free_at: knex.fn.now(),
+            })
+            .returning("*")) as SubscriberEmailPreferencesOutput[]
+        )?.[0];
       }
       if (!res) {
         throw new Error(
@@ -141,15 +143,17 @@ async function updateEmailPreferenceForSubscriber(
       }
     } else {
       // TODO: modify after MNTOR-3557 - pref currently lives in two tables
-      res = await knex("subscribers")
-        .where("id", subscriberId)
-        .update({
-          ...(preference as SubscriberPlusEmailPreferencesInput),
-          // @ts-ignore knex.fn.now() results in it being set to a date,
-          // even if it's not typed as a JS date object:
-          updated_at: knex.fn.now(),
-        })
-        .first();
+      res = (
+        (await knex("subscribers")
+          .where("id", subscriberId)
+          .update({
+            ...(preference as SubscriberPlusEmailPreferencesInput),
+            // @ts-ignore knex.fn.now() results in it being set to a date,
+            // even if it's not typed as a JS date object:
+            updated_at: knex.fn.now(),
+          })
+          .returning("*")) as SubscriberEmailPreferencesOutput[]
+      )?.[0];
 
       if (!res) {
         throw new Error(
@@ -166,7 +170,7 @@ async function updateEmailPreferenceForSubscriber(
 
     throw e;
   }
-  return res as SubscriberEmailPreferencesOutput;
+  return res;
 }
 
 async function getEmailPreferenceForSubscriber(subscriberId: number) {
