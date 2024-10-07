@@ -369,12 +369,6 @@ async function getPotentialSubscribersWaitingForFirstDataBrokerRemovalFixedEmail
 async function getPlusSubscribersWaitingForMonthlyEmail(
   options: Partial<{ limit: number }> = {},
 ): Promise<SubscriberRow[]> {
-  const flag = await getFeatureFlagData("MonthlyActivityEmail");
-
-  if (!flag?.is_enabled) {
-    return [];
-  }
-
   let query = knex("subscribers")
     .select()
     // Only send to users who haven't opted out of the monthly activity email...
@@ -408,13 +402,6 @@ async function getPlusSubscribersWaitingForMonthlyEmail(
       `(fxa_profile_json->'subscriptions')::jsonb \\? ?`,
       MONITOR_PREMIUM_CAPABILITY,
     );
-
-  if (Array.isArray(flag.allow_list) && flag.allow_list.length > 0) {
-    // If the feature flag has an allowlist, only send to users on that list.
-    // The `.andWhereIn` alias doesn't exist:
-    // https://github.com/knex/knex/issues/1881#issuecomment-275433906
-    query = query.whereIn("primary_email", flag.allow_list);
-  }
 
   if (typeof options.limit === "number") {
     query = query.limit(options.limit);
