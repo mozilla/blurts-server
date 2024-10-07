@@ -4,7 +4,7 @@
 
 import type { Meta, StoryObj } from "@storybook/react";
 import { FC } from "react";
-import { Props, MonthlyActivityEmail } from "./MonthlyActivityPlusEmail";
+import { Props, MonthlyActivityPlusEmail } from "./MonthlyActivityPlusEmail";
 import { StorybookEmailRenderer } from "../../StorybookEmailRenderer";
 import { SanitizedSubscriberRow } from "../../../app/functions/server/sanitize";
 import { getL10n } from "../../../app/functions/l10n/storybookAndJest";
@@ -15,7 +15,7 @@ const meta: Meta<FC<Props>> = {
   title: "Emails/Monthly activity",
   component: (props: StoryProps) => (
     <StorybookEmailRenderer emulateDarkMode={props.emulateDarkMode}>
-      <MonthlyActivityEmail {...props} />
+      <MonthlyActivityPlusEmail {...props} />
     </StorybookEmailRenderer>
   ),
   args: {

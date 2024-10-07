@@ -14,7 +14,7 @@ import { isEligibleForPremium } from "../../../app/functions/universal/premium";
 import { getSignupLocaleCountry } from "../../functions/getSignupLocaleCountry";
 import { HeaderStyles, MetaTags } from "../HeaderStyles";
 
-export type MonthlyReportFreeUserEmailProps = {
+export type MonthlyActivityFreeEmailProps = {
   l10n: ExtendedReactLocalization;
   utmCampaignId: string;
   subscriber: SubscriberRow;
@@ -22,8 +22,8 @@ export type MonthlyReportFreeUserEmailProps = {
   unsubscribeLink: string;
 };
 
-export const MonthlyReportFreeUserEmail = (
-  props: MonthlyReportFreeUserEmailProps,
+export const MonthlyActivityFreeEmail = (
+  props: MonthlyActivityFreeEmailProps,
 ) => {
   const hasRunFreeScan = typeof props.subscriber.onerep_profile_id === "number";
   const upgradeCtaTelemetry = {

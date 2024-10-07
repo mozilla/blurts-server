@@ -5,18 +5,18 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { FC } from "react";
 import {
-  MonthlyReportFreeUserEmail,
-  MonthlyReportFreeUserEmailProps,
+  MonthlyActivityFreeEmail,
+  MonthlyActivityFreeEmailProps,
 } from "./MonthlyActivityFreeEmail";
 import { StorybookEmailRenderer } from "../../StorybookEmailRenderer";
 import { getL10n } from "../../../app/functions/l10n/storybookAndJest";
 import { SubscriberRow } from "knex/types/tables";
 
-const meta: Meta<FC<MonthlyReportFreeUserEmailProps>> = {
+const meta: Meta<FC<MonthlyActivityFreeEmailProps>> = {
   title: "Emails/Monthly activity/Free User",
-  component: (props: MonthlyReportFreeUserEmailProps) => (
+  component: (props: MonthlyActivityFreeEmailProps) => (
     <StorybookEmailRenderer>
-      <MonthlyReportFreeUserEmail {...props} />
+      <MonthlyActivityFreeEmail {...props} />
     </StorybookEmailRenderer>
   ),
   args: {
@@ -25,7 +25,7 @@ const meta: Meta<FC<MonthlyReportFreeUserEmailProps>> = {
 };
 
 export default meta;
-type Story = StoryObj<MonthlyReportFreeUserEmailProps>;
+type Story = StoryObj<MonthlyActivityFreeEmailProps>;
 
 const mockedDataPoints = {
   // shared
