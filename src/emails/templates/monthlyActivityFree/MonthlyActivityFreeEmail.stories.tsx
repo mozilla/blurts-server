@@ -7,9 +7,9 @@ import { FC } from "react";
 import {
   MonthlyReportFreeUserEmail,
   MonthlyReportFreeUserEmailProps,
-} from "./MonthlyActivityFreeUser";
-import { StorybookEmailRenderer } from "../../../StorybookEmailRenderer";
-import { getL10n } from "../../../../app/functions/l10n/storybookAndJest";
+} from "./MonthlyActivityFreeEmail";
+import { StorybookEmailRenderer } from "../../StorybookEmailRenderer";
+import { getL10n } from "../../../app/functions/l10n/storybookAndJest";
 import { SubscriberRow } from "knex/types/tables";
 
 const meta: Meta<FC<MonthlyReportFreeUserEmailProps>> = {

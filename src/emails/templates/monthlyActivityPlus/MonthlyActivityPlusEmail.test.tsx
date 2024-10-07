@@ -8,7 +8,7 @@ import { render, screen } from "@testing-library/react";
 import Meta, {
   MonthlyActivityEmailFreeStory,
   MonthlyActivityEmailPlusWithoutManualStory,
-} from "./MonthlyActivityEmail.stories";
+} from "./MonthlyActivityPlusEmail.stories";
 
 it("has an upgrade banner for free users", () => {
   const ComposedEmail = composeStory(MonthlyActivityEmailFreeStory, Meta);
