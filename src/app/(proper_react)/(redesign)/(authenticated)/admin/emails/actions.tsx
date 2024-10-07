@@ -16,7 +16,7 @@ import { ReactNode } from "react";
 import { SubscriberRow } from "knex/types/tables";
 import { getUserEmails } from "../../../../../../db/tables/emailAddresses";
 import { getLocale } from "../../../../../functions/universal/getLocale";
-import { MonthlyActivityEmail } from "../../../../../../emails/templates/monthlyActivity/MonthlyActivityEmail";
+import { MonthlyActivityPlusEmail } from "../../../../../../emails/templates/monthlyActivityPlus/MonthlyActivityPlusEmail";
 import { getDashboardSummary } from "../../../../../functions/server/dashboard";
 import { getSubscriberBreaches } from "../../../../../functions/server/getSubscriberBreaches";
 import { getCountryCode } from "../../../../../functions/server/getCountryCode";
@@ -158,7 +158,7 @@ export async function triggerMonthlyActivity(emailAddress: string) {
     l10n.getString("email-monthly-plus-auto-subject", {
       month: dateFormatter.format(new Date(Date.now())),
     }),
-    <MonthlyActivityEmail
+    <MonthlyActivityPlusEmail
       subscriber={sanitizeSubscriberRow(subscriber)}
       l10n={l10n}
       data={data}

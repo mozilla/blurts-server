@@ -15,7 +15,7 @@ export type Props = {
   data: DashboardSummary;
 };
 
-export const MonthlyActivityEmail = (props: Props) => {
+export const MonthlyActivityPlusEmail = (props: Props) => {
   if (props.subscriber.fxa_profile_json?.subscriptions?.includes("monitor")) {
     return <MonthlyActivityPlusWithAutoRemovalsOnlyEmail {...props} />;
   }

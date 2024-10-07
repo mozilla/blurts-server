@@ -9,7 +9,7 @@ import {
 } from "../../db/tables/subscribers";
 import { initEmail, sendEmail } from "../../utils/email";
 import { renderEmail } from "../../emails/renderEmail";
-import { MonthlyActivityEmail } from "../../emails/templates/monthlyActivityPlus/MonthlyActivityPlusEmail";
+import { MonthlyActivityPlusEmail } from "../../emails/templates/monthlyActivityPlus/MonthlyActivityPlusEmail";
 import { getCronjobL10n } from "../../app/functions/l10n/cronjobs";
 import { sanitizeSubscriberRow } from "../../app/functions/server/sanitize";
 import { getDashboardSummary } from "../../app/functions/server/dashboard";
@@ -99,7 +99,7 @@ async function sendMonthlyActivityEmail(subscriber: SubscriberRow) {
     sanitizedSubscriber.primary_email,
     subject,
     renderEmail(
-      <MonthlyActivityEmail
+      <MonthlyActivityPlusEmail
         subscriber={sanitizedSubscriber}
         data={data}
         l10n={l10n}
