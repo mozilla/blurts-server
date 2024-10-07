@@ -3,16 +3,16 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import type { SubscriberRow } from "knex/types/tables";
-import { ExtendedReactLocalization } from "../../../../app/functions/l10n";
-import { EmailFooter } from "../../EmailFooter";
-import { EmailHero } from "../../../components/EmailHero";
-import { DataPointCount } from "../../../components/EmailDataPointCount";
-import { DashboardSummary } from "../../../../app/functions/server/dashboard";
-import { EmailBanner } from "../../../components/EmailBanner";
-import { getPremiumSubscriptionUrl } from "../../../../app/functions/server/getPremiumSubscriptionInfo";
-import { isEligibleForPremium } from "../../../../app/functions/universal/premium";
-import { getSignupLocaleCountry } from "../../../functions/getSignupLocaleCountry";
-import { HeaderStyles, MetaTags } from "../../HeaderStyles";
+import { ExtendedReactLocalization } from "../../../app/functions/l10n";
+import { EmailFooter } from "../EmailFooter";
+import { EmailHero } from "../../components/EmailHero";
+import { DataPointCount } from "../../components/EmailDataPointCount";
+import { DashboardSummary } from "../../../app/functions/server/dashboard";
+import { EmailBanner } from "../../components/EmailBanner";
+import { getPremiumSubscriptionUrl } from "../../../app/functions/server/getPremiumSubscriptionInfo";
+import { isEligibleForPremium } from "../../../app/functions/universal/premium";
+import { getSignupLocaleCountry } from "../../functions/getSignupLocaleCountry";
+import { HeaderStyles, MetaTags } from "../HeaderStyles";
 
 export type MonthlyReportFreeUserEmailProps = {
   l10n: ExtendedReactLocalization;

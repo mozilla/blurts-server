@@ -4,7 +4,7 @@
 
 import type { Meta, StoryObj } from "@storybook/react";
 import { FC } from "react";
-import { Props, MonthlyActivityEmail } from "./MonthlyActivityEmail";
+import { Props, MonthlyActivityEmail } from "./MonthlyActivityPlusEmail";
 import { StorybookEmailRenderer } from "../../StorybookEmailRenderer";
 import { SanitizedSubscriberRow } from "../../../app/functions/server/sanitize";
 import { getL10n } from "../../../app/functions/l10n/storybookAndJest";
