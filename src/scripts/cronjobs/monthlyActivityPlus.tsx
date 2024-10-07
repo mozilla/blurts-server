@@ -4,7 +4,7 @@
 
 import { SubscriberRow } from "knex/types/tables";
 import {
-  getSubscribersWaitingForMonthlyEmail,
+  getPlusSubscribersWaitingForMonthlyEmail,
   markMonthlyActivityEmailAsJustSent,
 } from "../../db/tables/subscribers";
 import { initEmail, sendEmail } from "../../utils/email";
@@ -31,12 +31,8 @@ async function run() {
       `Could not send monthly activity emails, because the env var MONTHLY_ACTIVITY_EMAIL_BATCH_SIZE has a non-numeric value: [${process.env.MONTHLY_ACTIVITY_EMAIL_BATCH_SIZE}].`,
     );
   }
-  const subscribersToEmail = await getSubscribersWaitingForMonthlyEmail({
+  const subscribersToEmail = await getPlusSubscribersWaitingForMonthlyEmail({
     limit: batchSize,
-    // We're currently only sending this email to Plus subscribers. Down the
-    // road, we might also send it to a limited number of free users, but we
-    // still have to come up with the criteria to determine which:
-    plusOnly: true,
   });
   await initEmail();
 
