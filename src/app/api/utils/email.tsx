@@ -77,7 +77,7 @@ export async function unsubscribeLinkForSubscriber(
       !getRes.monthly_monitor_report_free_at &&
       !getRes.unsubscribe_token
     ) {
-      // if record in the new table has not been created via UI
+      // if record in the new table has not been created
       sub = await addUnsubscribeTokenForSubscriber(
         subscriber.id,
         newUnsubToken,

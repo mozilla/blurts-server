@@ -33,8 +33,6 @@ export interface SubscriberEmailPreferencesOutput {
 
 // TODO: modify after MNTOR-3557 - pref currently lives in two tables
 // this function only adds email prefs for free reports
-// NOTE: this function is essentially an upsert where a preference object is provided and the fields to overwrite are passed in
-// see generateUnsubscribeLinkForSubscriber and updateEmailPreferenceForSubscriber for example of different uses of this function
 async function addEmailPreferenceForSubscriber(
   subscriberId: number,
   preference: SubscriberFreeEmailPreferencesInput,
@@ -70,6 +68,8 @@ async function addEmailPreferenceForSubscriber(
   return res?.[0];
 }
 
+// TODO: modify after MNTOR-3557 - pref currently lives in two tables
+// this function only adds unsubscribe token for free reports
 async function addUnsubscribeTokenForSubscriber(
   subscriberId: number,
   token: string,
