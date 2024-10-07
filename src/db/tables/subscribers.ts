@@ -366,8 +366,8 @@ async function getPotentialSubscribersWaitingForFirstDataBrokerRemovalFixedEmail
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-async function getSubscribersWaitingForMonthlyEmail(
-  options: Partial<{ plusOnly: boolean; limit: number }> = {},
+async function getPlusSubscribersWaitingForMonthlyEmail(
+  options: Partial<{ limit: number }> = {},
 ): Promise<SubscriberRow[]> {
   const flag = await getFeatureFlagData("MonthlyActivityEmail");
 
@@ -397,26 +397,23 @@ async function getSubscribersWaitingForMonthlyEmail(
           "\"monthly_monitor_report_at\" < NOW() - INTERVAL '1 month'",
         ),
     )
-    // ...and whose account is older than 1 month.
-    .andWhereRaw("\"created_at\" < NOW() - INTERVAL '1 month'");
+    // ...whose account is older than 1 month...
+    .andWhereRaw("\"created_at\" < NOW() - INTERVAL '1 month'")
+    // ...and who have a Plus subscription.
+    // Note: This will only match people of whom the Monitor database knows that
+    //       they have a Plus subscription. SubPlat is the source of truth, but
+    //       our database is updated via a webhook and whenever the user logs
+    //       in. Locally, you might want to set this via `/admin/dev/`.
+    .andWhereRaw(
+      `(fxa_profile_json->'subscriptions')::jsonb \\? ?`,
+      MONITOR_PREMIUM_CAPABILITY,
+    );
 
   if (Array.isArray(flag.allow_list) && flag.allow_list.length > 0) {
     // If the feature flag has an allowlist, only send to users on that list.
     // The `.andWhereIn` alias doesn't exist:
     // https://github.com/knex/knex/issues/1881#issuecomment-275433906
     query = query.whereIn("primary_email", flag.allow_list);
-  }
-
-  if (options.plusOnly) {
-    // And optionally, only send it to users who have a Plus subscription.
-    // Note: This will only match people of whom the Monitor database knows that
-    //       they have a Plus subscription. SubPlat is the source of truth, but
-    //       our database is updated via a webhook and whenever the user logs
-    //       in. Locally, you might want to set this via `/admin/dev/`.
-    query = query.andWhereRaw(
-      `(fxa_profile_json->'subscriptions')::jsonb \\? ?`,
-      MONITOR_PREMIUM_CAPABILITY,
-    );
   }
 
   if (typeof options.limit === "number") {
@@ -583,7 +580,7 @@ export {
   setMonthlyMonitorReport,
   setBreachResolution,
   getPotentialSubscribersWaitingForFirstDataBrokerRemovalFixedEmail,
-  getSubscribersWaitingForMonthlyEmail,
+  getPlusSubscribersWaitingForMonthlyEmail,
   markFirstDataBrokerRemovalFixedEmailAsJustSent,
   markMonthlyActivityEmailAsJustSent,
   deleteUnverifiedSubscribers,
