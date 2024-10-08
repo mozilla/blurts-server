@@ -29,7 +29,7 @@ export const FirstDataBrokerRemovalFixed = (props: Props) => {
             data_broker_name: props.data.dataBrokerName,
           })}
         </mj-preview>
-        {HeaderStyles()}
+        <HeaderStyles />
       </mj-head>
       <mj-body>
         <EmailHeader l10n={l10n} utm_campaign={utmCampaign} />

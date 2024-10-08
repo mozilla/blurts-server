@@ -37,7 +37,7 @@ export const BreachAlertEmail = (props: Props) => {
     <mjml>
       <mj-head>
         <mj-preview>{l10n.getString("email-spotted-new-breach")}</mj-preview>
-        {HeaderStyles()}
+        <HeaderStyles />
       </mj-head>
       <mj-body>
         <EmailHeader l10n={l10n} utm_campaign={props.utmCampaignId} />
@@ -141,7 +141,7 @@ export const RedesignedBreachAlertEmail = (
         <mj-preview>
           {l10n.getString("email-breach-alert-all-preview")}
         </mj-preview>
-        {HeaderStyles()}
+        <HeaderStyles />
         <mj-style>
           {`
             dt {
