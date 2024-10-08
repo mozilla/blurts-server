@@ -63,7 +63,8 @@ async function addEmailPreferenceForSubscriber(
     logger.debug("add_email_preference_for_subscriber_success");
   } catch (e) {
     logger.error("error_add_subscriber_email_preference", {
-      exception: e as string,
+      message: (e as Error).message,
+      stack_trace: (e as Error).stack,
     });
 
     throw e;
@@ -119,7 +120,8 @@ async function updateEmailPreferenceForSubscriber(
     logger.debug("update_email_preference_for_subscriber_success");
   } catch (e) {
     logger.error("error_update_subscriber_email_preference", {
-      exception: e as string,
+      message: (e as Error).message,
+      stack_trace: (e as Error).stack,
     });
 
     throw e;
@@ -161,7 +163,8 @@ async function getEmailPreferenceForSubscriber(subscriberId: number) {
     );
   } catch (e) {
     logger.error("error_get_subscriber_email_preference", {
-      exception: e as string,
+      message: (e as Error).message,
+      stack_trace: (e as Error).stack,
     });
 
     throw e;
@@ -195,7 +198,8 @@ async function getEmailPreferenceForUnsubscribeToken(unsubscribeToken: string) {
     logger.error(
       "error_get_subscriber_email_preference_for_unsubscribe_token",
       {
-        exception: e as string,
+        message: (e as Error).message,
+        stack_trace: (e as Error).stack,
       },
     );
 
@@ -230,7 +234,8 @@ async function unsubscribeMonthlyMonitorReportForUnsubscribeToken(
     logger.error(
       "error_unsubscribe_monthly_monitor_report_for_unsubscribe_token",
       {
-        exception: e,
+        message: (e as Error).message,
+        stack_trace: (e as Error).stack,
       },
     );
     captureException(e);
@@ -274,7 +279,8 @@ async function getEmailPreferenceForPrimaryEmail(email: string) {
     );
   } catch (e) {
     logger.error("error_get_subscriber_email_preference_for_primary_email", {
-      exception: e as string,
+      message: (e as Error).message,
+      stack_trace: (e as Error).stack,
     });
 
     throw e;

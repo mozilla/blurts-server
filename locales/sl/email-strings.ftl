@@ -11,8 +11,8 @@ email-header-button-sign-in = Prijava
 ## Email footers
 
 email-footer-support-heading = Vprašanja o { -brand-mozilla-monitor(sklon: "mestnik") }?
-email-footer-support-content = Za pomoč obiščite naš <support-link>center za podporo</support-link>
-email-footer-trigger-transactional = To e-poštno sporočilo ste prejeli kot naročnik { -brand-mozilla-monitor }.
+email-footer-support-content = Za pomoč obiščite naše <support-link>središče za podporo</support-link>
+email-footer-trigger-transactional = To e-poštno sporočilo ste prejeli kot naročnik na { -brand-mozilla-monitor(sklon: "tožilnik") }.
 email-footer-source-hibp = Podatke o krajah podatkov posredoval <hibp-link>{ -brand-HIBP }</hibp-link>
 email-footer-logo-mozilla-alt = { -brand-mozilla }
 email-footer-meta-privacy-notice = Zasebnost

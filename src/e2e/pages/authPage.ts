@@ -91,7 +91,7 @@ export class AuthPage {
 
     // enter password
     await this.passwordInputField.fill(password);
-    await this.continue({ waitForURL: "**/dashboard" });
+    await this.continue({ waitForURL: process.env.FXA_SETTINGS_URL });
   }
 
   async initSilentAuth() {
