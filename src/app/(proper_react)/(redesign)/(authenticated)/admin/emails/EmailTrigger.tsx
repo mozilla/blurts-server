@@ -142,7 +142,6 @@ export const EmailTrigger = (props: Props) => {
         </Button>
         <Button
           variant="primary"
-          isLoading={firstDataBrokerRemovalFixed}
           onPress={() => {
             if (typeof props.unsubscribeLink === "string") {
               window.open(props.unsubscribeLink, "_blank");
