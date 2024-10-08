@@ -5,12 +5,14 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { NextResponse } from "next/server";
 import NextAuth from "next-auth";
-import { ResponseInternal } from "next-auth/core";
 import { authOptions } from "../../utils/auth";
 
 // There is currently no support for handling OAuth provider callback errors:
 // https://github.com/nextauthjs/next-auth/discussions/8209
-const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+const handler = async (
+  req: Request & NextApiRequest,
+  res: Request & NextApiResponse,
+) => {
   if (
     req.method === "GET" &&
     req.url?.startsWith(
@@ -20,9 +22,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     return NextResponse.redirect(`${process.env.SERVER_URL}/user/dashboard`);
   }
 
-  return (await NextAuth(req, res, authOptions)) as Promise<
-    ResponseInternal<Body>
-  >;
+  return NextAuth(req, res, authOptions) as Promise<Response>;
 };
 
 export { handler as GET, handler as POST };

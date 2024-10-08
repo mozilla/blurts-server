@@ -83,12 +83,20 @@ export class AuthPage {
       await this.useDifferentEmailButton.click();
       await this.page.waitForURL(/^(?!.*signin).*/);
     }
-    await this.signIn(email, password);
+
+    // enter email
+    await this.emailInputField.fill(email);
+    await this.continueButton.click();
+    await this.page.waitForURL(/^(?!.*signin).*/);
+
+    // enter password
+    await this.passwordInputField.fill(password);
+    await this.continue({ waitForURL: "**/dashboard" });
   }
 
   async initSilentAuth() {
     await this.page.goto(
-      `${process.env.E2E_TEST_BASE_URL as string}/?nimbus_web_preview=true&utm_source=moz-account&utm_campaign=settings-promo&utm_content=monitor-free`,
+      `${process.env.E2E_TEST_BASE_URL as string}/?utm_source=moz-account&utm_campaign=settings-promo&utm_content=monitor-free`,
     );
     // FxA can take a while to load on stage:
     await this.page.waitForURL("**/oauth/**");

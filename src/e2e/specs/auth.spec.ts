@@ -104,7 +104,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Authentication flow verification @s
   test("Verify failed silent authentication with existing user", async ({
     page,
     authPage,
-    landingPage,
+    dashboardPage,
   }, testInfo) => {
     // speed up test by ignoring non-necessary requests
     await page.route(/(analytics)/, async (route) => {
@@ -114,8 +114,12 @@ test.describe(`${process.env.E2E_TEST_ENV} - Authentication flow verification @s
     // start authentication flow
     await authPage.initSilentAuth();
 
-    // assert failed login
-    await expect(landingPage.monitorHeroTitle).toBeVisible();
+    // sign in
+    await authPage.signIn(process.env.E2E_TEST_ACCOUNT_EMAIL as string);
+
+    // assert successful login
+    await expect(dashboardPage.fixedTab).toBeVisible();
+    await expect(dashboardPage.actionNeededTab).toBeVisible();
 
     await testInfo.attach(
       `${process.env.E2E_TEST_ENV}-silent-authentication-monitor-dashboard.png`,
