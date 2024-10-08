@@ -23,12 +23,12 @@ void run();
 
 async function run() {
   const batchSize = Number.parseInt(
-    process.env.MONTHLY_ACTIVITY_EMAIL_BATCH_SIZE ?? "10",
+    process.env.MONTHLY_ACTIVITY_PLUS_EMAIL_BATCH_SIZE ?? "10",
     10,
   );
   if (Number.isNaN(batchSize)) {
     throw new Error(
-      `Could not send monthly activity emails, because the env var MONTHLY_ACTIVITY_EMAIL_BATCH_SIZE has a non-numeric value: [${process.env.MONTHLY_ACTIVITY_EMAIL_BATCH_SIZE}].`,
+      `Could not send monthly activity emails, because the env var MONTHLY_ACTIVITY_PLUS_EMAIL_BATCH_SIZE has a non-numeric value: [${process.env.MONTHLY_ACTIVITY_EMAIL_BATCH_SIZE}].`,
     );
   }
   const subscribersToEmail = await getPlusSubscribersWaitingForMonthlyEmail({
@@ -42,7 +42,7 @@ async function run() {
     }),
   );
   console.log(
-    `[${new Date(Date.now()).toISOString()}] Sent [${subscribersToEmail.length}] monthly activity emails.`,
+    `[${new Date(Date.now()).toISOString()}] Sent [${subscribersToEmail.length}] monthly activity emails to Plus users.`,
   );
 }
 
