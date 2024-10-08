@@ -2,7 +2,6 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import type { SubscriberRow } from "knex/types/tables";
 import { ExtendedReactLocalization } from "../../../app/functions/l10n";
 import { EmailFooter } from "../EmailFooter";
 import { EmailHero } from "../../components/EmailHero";
@@ -13,11 +12,11 @@ import { getPremiumSubscriptionUrl } from "../../../app/functions/server/getPrem
 import { isEligibleForPremium } from "../../../app/functions/universal/premium";
 import { getSignupLocaleCountry } from "../../functions/getSignupLocaleCountry";
 import { HeaderStyles, MetaTags } from "../HeaderStyles";
+import { SanitizedSubscriberRow } from "../../../app/functions/server/sanitize";
 
 export type MonthlyActivityFreeEmailProps = {
   l10n: ExtendedReactLocalization;
-  utmCampaignId: string;
-  subscriber: SubscriberRow;
+  subscriber: SanitizedSubscriberRow;
   dataSummary: DashboardSummary;
   unsubscribeLink: string;
 };
@@ -142,7 +141,7 @@ export const MonthlyActivityFreeEmail = (
       <mj-body>
         <EmailHero
           l10n={l10n}
-          utm_campaign={props.utmCampaignId}
+          utm_campaign={upgradeCtaTelemetry.utmCampaign}
           heading={l10n.getString("email-monthly-report-hero-free-heading")}
           subheading={l10n.getString("email-monthly-report-hero-free-body")}
         />
@@ -286,7 +285,7 @@ export const MonthlyActivityFreeEmail = (
         )}
         <EmailFooter
           l10n={l10n}
-          utm_campaign={props.utmCampaignId}
+          utm_campaign={upgradeCtaTelemetry.utmCampaign}
           unsubscribeLink={props.unsubscribeLink}
         />
       </mj-body>
