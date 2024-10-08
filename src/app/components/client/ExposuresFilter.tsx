@@ -279,6 +279,7 @@ export const ExposuresFilter = ({
           <li className={styles.hideOnMobile}>
             {l10n.getString("dashboard-exposures-filter-date-found")}
           </li>
+          <li className={styles.hideOnMobile}>Removal time</li>
           <li className={styles.hideOnMobile}>
             {l10n.getString("dashboard-exposures-filter-status")}
             <button

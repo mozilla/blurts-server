@@ -191,9 +191,13 @@ export const View = (props: Props) => {
       ? "scan-" + exposure.onerep_scan_result_id
       : "breach-" + exposure.id;
 
+    const removalTimeData =
+      isScanResult(exposure) &&
+      props.removalTimeData.find((d) => d.domain === exposure.data_broker);
     return (
       <li key={exposureCardKey} className={styles.exposureListItem}>
         <ExposureCard
+          removalTime={removalTimeData?.maxRemovalTime}
           enabledFeatureFlags={props.enabledFeatureFlags}
           exposureData={exposure}
           isExpanded={exposureCardKey === activeExposureCardKey}

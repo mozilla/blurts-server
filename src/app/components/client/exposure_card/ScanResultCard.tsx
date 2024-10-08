@@ -249,6 +249,10 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
             <dd className={styles.hideOnMobile}>
               {dateFormatter.format(scanResult.created_at)}
             </dd>
+            <dt className={styles.visuallyHidden}>Removal times</dt>
+            <dd>
+              {props.removalTime ? `${props.removalTime} days` : "Unknown"}
+            </dd>
             <dt className={styles.visuallyHidden}>
               {l10n.getString("exposure-card-label-status")}
             </dt>
