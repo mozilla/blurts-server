@@ -15,7 +15,6 @@ import { sanitizeSubscriberRow } from "../../app/functions/server/sanitize";
 import { getDashboardSummary } from "../../app/functions/server/dashboard";
 import { getLatestOnerepScanResults } from "../../db/tables/onerep_scans";
 import { getSubscriberBreaches } from "../../app/functions/server/getSubscriberBreaches";
-import { getLocale } from "../../app/functions/universal/getLocale";
 import { refreshStoredScanResults } from "../../app/functions/server/refreshStoredScanResults";
 import { getSignupLocaleCountry } from "../../emails/functions/getSignupLocaleCountry";
 
@@ -49,7 +48,6 @@ async function run() {
 async function sendMonthlyActivityEmail(subscriber: SubscriberRow) {
   const sanitizedSubscriber = sanitizeSubscriberRow(subscriber);
   const l10n = getCronjobL10n(sanitizedSubscriber);
-  const locale = getLocale(l10n);
   /**
    * Without an active user session, we don't know the user's country. This is
    * our best guess based on their locale. At the time of writing, it's only
@@ -73,19 +71,7 @@ async function sendMonthlyActivityEmail(subscriber: SubscriberRow) {
   });
   const data = getDashboardSummary(latestScan.results, subscriberBreaches);
 
-  const dateFormatter = new Intl.DateTimeFormat(locale, {
-    month: "long",
-  });
-  const currentMonth = dateFormatter.format(new Date(Date.now()));
-
-  let subject = l10n.getString("email-monthly-free-subject", {
-    month: currentMonth,
-  });
-  if (subscriber.fxa_profile_json?.subscriptions?.includes("monitor")) {
-    subject = l10n.getString("email-monthly-plus-auto-subject", {
-      month: currentMonth,
-    });
-  }
+  const subject = l10n.getString("email-monthly-plus-auto-subject");
 
   // Update the last-sent date *first*, so that if something goes wrong, we
   // don't keep resending the email a brazillion times.
