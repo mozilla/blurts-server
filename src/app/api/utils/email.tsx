@@ -16,7 +16,6 @@ import {
   getEmailPreferenceForSubscriber,
   updateEmailPreferenceForSubscriber,
 } from "../../../db/tables/subscriber_email_preferences";
-import { SerializedSubscriber } from "../../../next-auth.js";
 
 export async function sendVerificationEmail(
   user: SubscriberRow,
@@ -63,7 +62,7 @@ export async function sendVerificationEmail(
 }
 
 export async function unsubscribeLinkForSubscriber(
-  subscriber: SerializedSubscriber,
+  subscriber: SubscriberRow,
 ) {
   try {
     const newUnsubToken = randomToken();
