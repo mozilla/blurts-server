@@ -5,7 +5,6 @@
 import createDbConnection from "../connect";
 import { logger } from "../../app/functions/server/logging";
 import { captureException } from "@sentry/node";
-import { randomToken } from "../../utils/email";
 
 const knex = createDbConnection();
 
@@ -48,7 +47,7 @@ async function addEmailPreferenceForSubscriber(
     res = await knex("subscriber_email_preferences")
       .insert({
         subscriber_id: subscriberId,
-        unsubscribe_token: preference.unsubscribe_token || randomToken(),
+        unsubscribe_token: preference.unsubscribe_token ?? null,
         monthly_monitor_report_free:
           preference.monthly_monitor_report_free ?? true,
         // @ts-ignore knex.fn.now() results in it being set to a date,
