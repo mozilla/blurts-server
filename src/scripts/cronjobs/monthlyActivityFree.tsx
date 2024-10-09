@@ -81,7 +81,8 @@ async function sendMonthlyActivityEmail(subscriber: SubscriberRow) {
   const data = getDashboardSummary(latestScan.results, subscriberBreaches);
 
   const subject = l10n.getString("email-monthly-free-subject");
-  const unsubscribeLink = await getUnsubscribeLink(subscriber);
+  const unsubscribeLink =
+    await getMonthlyActivityFreeUnsubscribeLink(subscriber);
 
   if (unsubscribeLink === null) {
     throw new Error(
@@ -109,7 +110,9 @@ async function sendMonthlyActivityEmail(subscriber: SubscriberRow) {
   );
 }
 
-export async function getUnsubscribeLink(subscriber: SubscriberRow) {
+export async function getMonthlyActivityFreeUnsubscribeLink(
+  subscriber: SubscriberRow,
+) {
   try {
     const newUnsubToken = randomBytes(64).toString("hex");
     let sub;
