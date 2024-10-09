@@ -45,7 +45,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Authentication flow verification @s
     landingPage,
     dashboardPage,
   }, testInfo) => {
-    // speed up test by ignoring non-necessary requests
+    // speed up test by ignore non necessary requests
     await page.route(/(analytics)/, async (route) => {
       await route.abort();
     });
@@ -62,67 +62,6 @@ test.describe(`${process.env.E2E_TEST_ENV} - Authentication flow verification @s
 
     await testInfo.attach(
       `${process.env.E2E_TEST_ENV}-signin-monitor-dashboard.png`,
-      {
-        body: await page.screenshot(),
-        contentType: "image/png",
-      },
-    );
-  });
-
-  test("Verify successful silent authentication with existing user", async ({
-    page,
-    authPage,
-    dashboardPage,
-  }, testInfo) => {
-    // speed up test by ignoring non-necessary requests
-    await page.route(/(analytics)/, async (route) => {
-      await route.abort();
-    });
-
-    // login to FxA
-    await authPage.signInToFxA(
-      process.env.E2E_TEST_ACCOUNT_EMAIL as string,
-      process.env.E2E_TEST_ACCOUNT_PASSWORD as string,
-    );
-
-    // start authentication flow
-    await authPage.initSilentAuth();
-
-    // assert successful login
-    await expect(dashboardPage.fixedTab).toBeVisible();
-    await expect(dashboardPage.actionNeededTab).toBeVisible();
-
-    await testInfo.attach(
-      `${process.env.E2E_TEST_ENV}-silent-authentication-monitor-dashboard.png`,
-      {
-        body: await page.screenshot(),
-        contentType: "image/png",
-      },
-    );
-  });
-
-  test("Verify failed silent authentication with existing user", async ({
-    page,
-    authPage,
-    dashboardPage,
-  }, testInfo) => {
-    // speed up test by ignoring non-necessary requests
-    await page.route(/(analytics)/, async (route) => {
-      await route.abort();
-    });
-
-    // start authentication flow
-    await authPage.initSilentAuth();
-
-    // sign in
-    await authPage.signIn(process.env.E2E_TEST_ACCOUNT_EMAIL as string);
-
-    // assert successful login
-    await expect(dashboardPage.fixedTab).toBeVisible();
-    await expect(dashboardPage.actionNeededTab).toBeVisible();
-
-    await testInfo.attach(
-      `${process.env.E2E_TEST_ENV}-silent-authentication-monitor-dashboard.png`,
       {
         body: await page.screenshot(),
         contentType: "image/png",

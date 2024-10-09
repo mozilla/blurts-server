@@ -71,34 +71,4 @@ export class AuthPage {
     expect(verificationCode).toBeDefined();
     await this.enterVerificationCode(verificationCode as string);
   }
-
-  async signInToFxA(email: string, password: string) {
-    await this.page.goto(process.env.FXA_SETTINGS_URL as string);
-    await this.page.context().clearCookies();
-    await this.page
-      .locator("//input[@type='password'] | //div/input[@type='email']")
-      .waitFor({ state: "visible" });
-    const visible = await this.useDifferentEmailButton.isVisible();
-    if (visible) {
-      await this.useDifferentEmailButton.click();
-      await this.page.waitForURL(/^(?!.*signin).*/);
-    }
-
-    // enter email
-    await this.emailInputField.fill(email);
-    await this.continueButton.click();
-    await this.page.waitForURL(/^(?!.*signin).*/);
-
-    // enter password
-    await this.passwordInputField.fill(password);
-    await this.continue({ waitForURL: process.env.FXA_SETTINGS_URL });
-  }
-
-  async initSilentAuth() {
-    await this.page.goto(
-      `${process.env.E2E_TEST_BASE_URL as string}/?utm_source=moz-account&utm_campaign=settings-promo&utm_content=monitor-free`,
-    );
-    // FxA can take a while to load on stage:
-    await this.page.waitForURL("**/oauth/**");
-  }
 }
