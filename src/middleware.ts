@@ -13,7 +13,7 @@ export function middleware(request: NextRequest) {
   const requestHeaders = new Headers(request.headers);
   requestHeaders.set("x-nonce", nonce);
 
-  if (typeof process.env.E2E_TEST_ENV !== "undefined") {
+  if (process.env.E2E_TEST_ENV === "local") {
     const forcedFeatureFlags =
       request.nextUrl.searchParams.get("feature_flags");
     requestHeaders.set("x-forced-feature-flags", forcedFeatureFlags ?? "");
