@@ -10,10 +10,10 @@ import {
 } from "./MonthlyActivityFreeEmail";
 import { StorybookEmailRenderer } from "../../StorybookEmailRenderer";
 import { getL10n } from "../../../app/functions/l10n/storybookAndJest";
-import { SubscriberRow } from "knex/types/tables";
+import { SanitizedSubscriberRow } from "../../../app/functions/server/sanitize";
 
 const meta: Meta<FC<MonthlyActivityFreeEmailProps>> = {
-  title: "Emails/Monthly activity/Free User",
+  title: "Emails/Monthly activity (free user)",
   component: (props: MonthlyActivityFreeEmailProps) => (
     <StorybookEmailRenderer>
       <MonthlyActivityFreeEmail {...props} />
@@ -71,7 +71,7 @@ const mockedDataSummary = {
 };
 
 export const MonthlyReportFreeUserNoScanWithExposures: Story = {
-  name: "Monthly Report Free User No Scan With Exposures No Resolved",
+  name: "No Scan With Exposures No Resolved",
   args: {
     unsubscribeLink: "/",
     dataSummary: {
@@ -85,12 +85,12 @@ export const MonthlyReportFreeUserNoScanWithExposures: Story = {
         locale: "en-US",
         subscriptions: ["not-monitor-plus"],
       },
-    } as SubscriberRow,
+    } as SanitizedSubscriberRow,
   },
 };
 
 export const MonthlyReportFreeUserWithScan: Story = {
-  name: "Monthly Report Free User With Scan",
+  name: "With Scan",
   args: {
     unsubscribeLink: "/",
     dataSummary: mockedDataSummary,
@@ -100,12 +100,12 @@ export const MonthlyReportFreeUserWithScan: Story = {
         locale: "en-US",
         subscriptions: ["not-monitor-plus"],
       },
-    } as SubscriberRow,
+    } as SanitizedSubscriberRow,
   },
 };
 
 export const MonthlyReportFreeUserResolvedBreachesWithScan: Story = {
-  name: "Monthly Report Free User With Scan and Resolved Breaches",
+  name: "With Scan and Resolved Breaches",
   args: {
     unsubscribeLink: "/",
     dataSummary: mockedDataSummary,
@@ -115,13 +115,13 @@ export const MonthlyReportFreeUserResolvedBreachesWithScan: Story = {
         locale: "en-US",
         subscriptions: ["not-monitor-plus"],
       },
-    } as SubscriberRow,
+    } as SanitizedSubscriberRow,
   },
 };
 
 export const MonthlyReportFreeUserResolvedBreachesWithScanWithUnresolvedBreachesAndBroker: Story =
   {
-    name: "Monthly Report Free User With Scan and Unresolved Breaches and Brokers",
+    name: "With Scan and Unresolved Breaches and Brokers",
     args: {
       unsubscribeLink: "/",
       dataSummary: {
@@ -135,12 +135,12 @@ export const MonthlyReportFreeUserResolvedBreachesWithScanWithUnresolvedBreaches
           locale: "en-US",
           subscriptions: ["not-monitor-plus"],
         },
-      } as SubscriberRow,
+      } as SanitizedSubscriberRow,
     },
   };
 
 export const MonthlyReportFreeUserResolvedBreachesWithoutScan: Story = {
-  name: "Monthly Report Free User With Scan and Resolved Breaches",
+  name: "With Scan and Resolved Breaches",
   args: {
     unsubscribeLink: "/",
     dataSummary: mockedDataSummary,
@@ -150,12 +150,12 @@ export const MonthlyReportFreeUserResolvedBreachesWithoutScan: Story = {
         locale: "en-US",
         subscriptions: ["not-monitor-plus"],
       },
-    } as SubscriberRow,
+    } as SanitizedSubscriberRow,
   },
 };
 
 export const MonthlyReportFreeUserWithScanNoManuallyResolvedExposures: Story = {
-  name: "Monthly Report Free User With Scan Without Manually Resolved Data Brokers, just Breaches",
+  name: "With Scan Without Manually Resolved Data Brokers, just Breaches",
   args: {
     unsubscribeLink: "/",
     dataSummary: {
@@ -169,12 +169,12 @@ export const MonthlyReportFreeUserWithScanNoManuallyResolvedExposures: Story = {
         locale: "en-US",
         subscriptions: ["not-monitor-plus"],
       },
-    } as SubscriberRow,
+    } as SanitizedSubscriberRow,
   },
 };
 
 export const MonthlyReportFreeUserNoRemainingExposures: Story = {
-  name: "Monthly Report Free User With Scan No Remaining Exposures",
+  name: "With Scan No Remaining Exposures",
   args: {
     unsubscribeLink: "/",
     dataSummary: {
@@ -188,12 +188,12 @@ export const MonthlyReportFreeUserNoRemainingExposures: Story = {
         locale: "en-US",
         subscriptions: ["not-monitor-plus"],
       },
-    } as SubscriberRow,
+    } as SanitizedSubscriberRow,
   },
 };
 
 export const MonthlyReportFreeUserNoScanNoExposuresRemaining: Story = {
-  name: "Monthly Report Free User No Scan No Exposures Left",
+  name: "No Scan No Exposures Left",
   args: {
     unsubscribeLink: "/",
     dataSummary: {
@@ -206,12 +206,12 @@ export const MonthlyReportFreeUserNoScanNoExposuresRemaining: Story = {
         locale: "en-US",
         subscriptions: ["not-monitor-plus"],
       },
-    } as SubscriberRow,
+    } as SanitizedSubscriberRow,
   },
 };
 
 export const MonthlyReportFreeUserWithScanNoExposuresRemaining: Story = {
-  name: "Monthly Report Free User With Scan No Exposures Left",
+  name: "With Scan No Exposures Left",
   args: {
     unsubscribeLink: "/",
     dataSummary: {
@@ -225,6 +225,6 @@ export const MonthlyReportFreeUserWithScanNoExposuresRemaining: Story = {
         locale: "en-US",
         subscriptions: ["not-monitor-plus"],
       },
-    } as SubscriberRow,
+    } as SanitizedSubscriberRow,
   },
 };
