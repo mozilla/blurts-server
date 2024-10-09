@@ -8,6 +8,7 @@ import createDbConnection from "../connect";
 import { SerializedSubscriber } from "../../next-auth.js";
 import { getFeatureFlagData } from "./featureFlags";
 import { getEnvVarsOrThrow } from "../../envVars";
+import { parseIso8601Datetime } from "../../utils/parse";
 
 const knex = createDbConnection();
 const { DELETE_UNVERIFIED_SUBSCRIBERS_TIMER } = getEnvVarsOrThrow([
@@ -415,6 +416,92 @@ async function getPlusSubscribersWaitingForMonthlyEmail(
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
+async function getFreeSubscribersWaitingForMonthlyEmail(): Promise<
+  SubscriberRow[]
+> {
+  const flag = await getFeatureFlagData("MonthlyReportFreeUser");
+  const accountCutOffDate = parseIso8601Datetime(
+    process.env.MONTHLY_ACTIVITY_FREE_EMAIL_ACCOUNT_CUTOFF_DATE ??
+      "2022-01-01T00:00:00.000Z",
+  );
+
+  if (!flag?.is_enabled) {
+    return [];
+  }
+
+  let query = knex("subscribers")
+    .select<SubscriberRow[]>("subscribers.*")
+    .leftJoin(
+      "subscriber_email_preferences",
+      "subscribers.id",
+      "subscriber_email_preferences.subscriber_id",
+    )
+    // Only send to users who haven't opted out of the monthly activity email...
+    // (Note that the `monthly_monitor_report` column is re-used for both the Plus
+    // user activity email, and the free user activity email.)
+    // It looks like Knex's `.where` type definition doesn't accept Promise-returning
+    // functions, even though the code does; hence the `eslint-disable`)
+    // eslint-disable-next-line @typescript-eslint/no-misused-promises
+    .where((builder) =>
+      builder
+        .whereNull("monthly_monitor_report_free")
+        .orWhere("monthly_monitor_report_free", true),
+    )
+    // ...who haven't received the email in the last 1 month...
+    // It looks like Knex's `.where` type definition doesn't accept Promise-returning
+    // functions, even though the code does; hence the `eslint-disable`)
+    // eslint-disable-next-line @typescript-eslint/no-misused-promises
+    .andWhere((builder) =>
+      builder
+        .whereNull("monthly_monitor_report_free_at")
+        .orWhereRaw(
+          "\"monthly_monitor_report_free_at\" < NOW() - INTERVAL '1 month'",
+        ),
+    )
+    // ...whose account is older than 1 month...
+    .andWhereRaw("subscribers.\"created_at\" < NOW() - INTERVAL '1 month'")
+    // ...but is no older than three years...
+    .andWhere("subscribers.created_at", ">=", accountCutOffDate)
+    // ...and who do not have a Plus subscription.
+    // Note: This will only match people of whom the Monitor database knows that
+    //       they have a Plus subscription. SubPlat is the source of truth, but
+    //       our database is updated via a webhook and whenever the user logs
+    //       in. Locally, you might want to set this via `/admin/dev/`.
+    // It looks like Knex's `.where` type definition doesn't accept Promise-returning
+    // functions, even though the code does; hence the `eslint-disable`)
+    // eslint-disable-next-line @typescript-eslint/no-misused-promises
+    .andWhere((builder) =>
+      builder
+        .whereRaw(
+          `NOT (subscribers.fxa_profile_json)::jsonb \\? 'subscriptions'`,
+        )
+        .orWhereRaw(
+          `NOT (subscribers.fxa_profile_json->'subscriptions')::jsonb \\? ?`,
+          MONITOR_PREMIUM_CAPABILITY,
+        ),
+    );
+
+  if (Array.isArray(flag.allow_list) && flag.allow_list.length > 0) {
+    // If the feature flag has an allowlist, only send to users on that list.
+    // The `.andWhereIn` alias doesn't exist:
+    // https://github.com/knex/knex/issues/1881#issuecomment-275433906
+    query = query.whereIn("subscribers.primary_email", flag.allow_list);
+  }
+  // One thing to note as being absent from this query: a LIMIT clause.
+  // The reason for this is that we want to filter out people who had
+  // a language other than `en-US` set when signing up, but to do so,
+  // we need to parse the `accept-language` field, which we can only
+  // do after we have the query results. Thus, if we were to limit
+  // the result of this query, we would at some point end up filtering
+  // every returned row, and then never moving on to the rows after that.
+  const rows = await query;
+
+  return rows;
+}
+/* c8 ignore stop */
+
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function markFirstDataBrokerRemovalFixedEmailAsJustSent(
   subscriber: SubscriberRow,
 ) {
@@ -439,7 +526,9 @@ async function markFirstDataBrokerRemovalFixedEmailAsJustSent(
 /* c8 ignore stop */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-async function markMonthlyActivityEmailAsJustSent(subscriber: SubscriberRow) {
+async function markMonthlyActivityPlusEmailAsJustSent(
+  subscriber: SubscriberRow,
+) {
   const affectedSubscribers = await knex("subscribers")
     .update({
       // @ts-ignore knex.fn.now() results in it being set to a date,
@@ -567,9 +656,10 @@ export {
   setMonthlyMonitorReport,
   setBreachResolution,
   getPotentialSubscribersWaitingForFirstDataBrokerRemovalFixedEmail,
+  getFreeSubscribersWaitingForMonthlyEmail,
   getPlusSubscribersWaitingForMonthlyEmail,
   markFirstDataBrokerRemovalFixedEmailAsJustSent,
-  markMonthlyActivityEmailAsJustSent,
+  markMonthlyActivityPlusEmailAsJustSent,
   deleteUnverifiedSubscribers,
   deleteSubscriber,
   deleteResolutionsWithEmail,
