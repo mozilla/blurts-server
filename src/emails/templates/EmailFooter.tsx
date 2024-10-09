@@ -164,6 +164,7 @@ export const RedesignedBreachEmailFooter = (props: Props) => {
       background-repeat="no-repeat"
       full-width="full-width"
       padding="50px 32px"
+      css-class="footer_hide_background"
     >
       <mj-section>
         <mj-column>
