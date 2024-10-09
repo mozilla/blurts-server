@@ -45,8 +45,8 @@ jobs:
 
       - name: Run Playwright tests - ${{ inputs.environment != null && inputs.environment || 'stage' }}
         if: github.actor != 'dependabot[bot]'
-        run: npm run e2e
-        timeout-minutes: 20
+        run: npm run e2e -- --fully-parallel=false --workers=1
+        timeout-minutes: 40
         env:
           E2E_TEST_ENV: ${{ inputs.environment != null && inputs.environment || 'stage' }}
           E2E_TEST_BASE_URL: ${{ secrets.E2E_TEST_BASE_URL }}
