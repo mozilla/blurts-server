@@ -80,8 +80,8 @@ export async function getEnabledFeatureFlags(
     (row: { name: string }) => row.name as FeatureFlagName,
   );
 
-  // Enable feature flags for local E2E tests via URL query params
-  if (process.env.E2E_TEST_ENV === "local") {
+  // Force feature flags for E2E tests via URL query params
+  if (typeof process.env.E2E_TEST_ENV !== "undefined") {
     const forcedFeatureFlags = headers().get("x-forced-feature-flags");
     if (forcedFeatureFlags) {
       const forcedFeatureFlagsFiltered = forcedFeatureFlags
