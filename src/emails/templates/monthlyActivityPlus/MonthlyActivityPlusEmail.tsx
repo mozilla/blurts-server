@@ -16,11 +16,6 @@ export type Props = {
 };
 
 export const MonthlyActivityPlusEmail = (props: Props) => {
-  if (!props.subscriber.fxa_profile_json?.subscriptions?.includes("monitor")) {
-    throw new Error(
-      `monthly_activity_plus_email_template: Generating for user without Plus subscription. Known subscriptions: [${JSON.stringify(props.subscriber.fxa_profile_json?.subscriptions)}]`,
-    );
-  }
   const l10n = props.l10n;
   const utmCampaign = "monthly-report-plus";
 
