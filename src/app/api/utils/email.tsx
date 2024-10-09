@@ -4,14 +4,13 @@
 
 import { SubscriberRow } from "knex/types/tables";
 import { resetUnverifiedEmailAddress } from "../../../db/tables/emailAddresses";
-import { sendEmail } from "../../../utils/email";
+import { sendEmail, randomToken } from "../../../utils/email";
 import { renderEmail } from "../../../emails/renderEmail";
 import { VerifyEmailAddressEmail } from "../../../emails/templates/verifyEmailAddress/VerifyEmailAddressEmail";
 import { sanitizeSubscriberRow } from "../../functions/server/sanitize";
 import { getL10n } from "../../functions/l10n/serverComponents";
 import { BadRequestError } from "../../../utils/error";
 import { captureException } from "@sentry/node";
-import crypto from "crypto";
 import {
   addUnsubscribeTokenForSubscriber,
   getEmailPreferenceForSubscriber,
@@ -67,7 +66,7 @@ export async function unsubscribeLinkForSubscriber(
   subscriber: SerializedSubscriber,
 ) {
   try {
-    const newUnsubToken = randomString();
+    const newUnsubToken = randomToken();
     let sub;
     const getRes = await getEmailPreferenceForSubscriber(subscriber.id);
     if (getRes.unsubscribe_token) {
@@ -97,8 +96,4 @@ export async function unsubscribeLinkForSubscriber(
     captureException(e);
     return null;
   }
-}
-
-function randomString(length: number = 64) {
-  return crypto.randomBytes(length).toString("hex");
 }
