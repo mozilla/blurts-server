@@ -4,16 +4,17 @@
 
 /* c8 ignore start */
 
+import { SubscriberRow } from "knex/types/tables";
 import { ExtendedReactLocalization } from "../../app/functions/l10n";
 import { DashboardSummary } from "../../app/functions/server/dashboard";
-import { SubscriberRow } from "knex/types/tables";
 import { getSignupLocaleCountry } from "../functions/getSignupLocaleCountry";
 import { isEligibleForPremium } from "../../app/functions/universal/premium";
+import { SanitizedSubscriberRow } from "../../app/functions/server/sanitize";
 
 type Props = {
   l10n: ExtendedReactLocalization;
   dataSummary: DashboardSummary;
-  subscriber: SubscriberRow;
+  subscriber: SanitizedSubscriberRow | SubscriberRow;
   utmCampaignId: string;
   utmSource: string;
   utmMedium: string;

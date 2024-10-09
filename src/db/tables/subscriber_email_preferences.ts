@@ -261,11 +261,14 @@ async function unsubscribeMonthlyMonitorReportForUnsubscribeToken(
   try {
     sub = await getEmailPreferenceForUnsubscribeToken(unsubscribeToken);
 
-    if (sub.id && !sub.monthly_monitor_report_free) {
+    if (
+      typeof sub.id === "number" &&
+      sub.monthly_monitor_report_free === false
+    ) {
       logger.info(
         "unsubscribe_monthly_monitor_report_for_unsubscribe_token_already_unsubscribed",
       );
-    } else if (sub.id && sub.monthly_monitor_report_free) {
+    } else if (typeof sub.id === "number") {
       await updateEmailPreferenceForSubscriber(sub.id, true, {
         monthly_monitor_report_free: false,
       });

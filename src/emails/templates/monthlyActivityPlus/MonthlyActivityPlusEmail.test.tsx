@@ -6,17 +6,8 @@ import { it, expect } from "@jest/globals";
 import { composeStory } from "@storybook/react";
 import { render, screen } from "@testing-library/react";
 import Meta, {
-  MonthlyActivityEmailFreeStory,
   MonthlyActivityEmailPlusWithoutManualStory,
-} from "./MonthlyActivityEmail.stories";
-
-it("has an upgrade banner for free users", () => {
-  const ComposedEmail = composeStory(MonthlyActivityEmailFreeStory, Meta);
-  render(<ComposedEmail />);
-
-  const banner = screen.getByText("Upgrade for extra protection");
-  expect(banner).toBeInTheDocument();
-});
+} from "./MonthlyActivityPlusEmail.stories";
 
 it("emphasises that things have happened while someone was subscribed to Plus and didn't do anything themselves", () => {
   const ComposedEmail = composeStory(

@@ -4,8 +4,11 @@
 
 import { acceptedLanguages } from "@fluent/langneg";
 import type { SubscriberRow } from "knex/types/tables";
+import { SanitizedSubscriberRow } from "../../app/functions/server/sanitize";
 
-export function getSignupLocaleCountry(subscriber: SubscriberRow) {
+export function getSignupLocaleCountry(
+  subscriber: SubscriberRow | SanitizedSubscriberRow,
+) {
   const signupAcceptLanguages = acceptedLanguages(
     // This line is covered by the getSignupLocaleCountry test,
     // but for some reason gets marked as uncovered again once the

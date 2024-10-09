@@ -10,7 +10,7 @@ import Meta, {
   MonthlyReportFreeUserNoScanWithExposures,
   MonthlyReportFreeUserWithScan,
   MonthlyReportFreeUserWithScanNoExposuresRemaining,
-} from "./MonthlyActivityFreeUser.stories";
+} from "./MonthlyActivityFreeEmail.stories";
 
 it("shows the right cta label if a user has not yet run a scan", () => {
   const ComposedEmail = composeStory(
