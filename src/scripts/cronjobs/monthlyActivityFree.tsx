@@ -96,18 +96,24 @@ async function sendMonthlyActivityEmail(subscriber: SubscriberRow) {
     monthly_monitor_report_free_at: new Date(Date.now()),
   });
 
-  await sendEmail(
-    sanitizedSubscriber.primary_email,
-    subject,
-    renderEmail(
-      <MonthlyActivityFreeEmail
-        subscriber={sanitizedSubscriber}
-        dataSummary={data}
-        l10n={l10n}
-        unsubscribeLink={unsubscribeLink}
-      />,
-    ),
-  );
+  try {
+    await sendEmail(
+      sanitizedSubscriber.primary_email,
+      subject,
+      renderEmail(
+        <MonthlyActivityFreeEmail
+          subscriber={sanitizedSubscriber}
+          dataSummary={data}
+          l10n={l10n}
+          unsubscribeLink={unsubscribeLink}
+        />,
+      ),
+    );
+  } catch (e) {
+    logger.error("send_monthly_activity_email_free", {
+      exception: e,
+    });
+  }
 }
 
 export async function getMonthlyActivityFreeUnsubscribeLink(
