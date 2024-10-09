@@ -4,6 +4,8 @@
 
 import React from "react";
 import { SubscriberRow } from "knex/types/tables";
+import { captureException } from "@sentry/node";
+import { randomBytes } from "crypto";
 import { getFreeSubscribersWaitingForMonthlyEmail } from "../../db/tables/subscribers";
 import { initEmail, sendEmail } from "../../utils/email";
 import { renderEmail } from "../../emails/renderEmail";
@@ -15,8 +17,12 @@ import { getLatestOnerepScanResults } from "../../db/tables/onerep_scans";
 import { getSubscriberBreaches } from "../../app/functions/server/getSubscriberBreaches";
 import { refreshStoredScanResults } from "../../app/functions/server/refreshStoredScanResults";
 import { getSignupLocaleCountry } from "../../emails/functions/getSignupLocaleCountry";
-import { updateEmailPreferenceForSubscriber } from "../../db/tables/subscriber_email_preferences";
-import { unsubscribeLinkForSubscriber } from "../../app/api/utils/email";
+import {
+  addUnsubscribeTokenForSubscriber,
+  getEmailPreferenceForSubscriber,
+  updateEmailPreferenceForSubscriber,
+} from "../../db/tables/subscriber_email_preferences";
+import { logger } from "../../app/functions/server/logging";
 
 void run();
 
@@ -75,7 +81,7 @@ async function sendMonthlyActivityEmail(subscriber: SubscriberRow) {
   const data = getDashboardSummary(latestScan.results, subscriberBreaches);
 
   const subject = l10n.getString("email-monthly-free-subject");
-  const unsubscribeLink = await unsubscribeLinkForSubscriber(subscriber);
+  const unsubscribeLink = await getUnsubscribeLink(subscriber);
 
   if (unsubscribeLink === null) {
     throw new Error(
@@ -101,4 +107,38 @@ async function sendMonthlyActivityEmail(subscriber: SubscriberRow) {
       />,
     ),
   );
+}
+
+export async function getUnsubscribeLink(subscriber: SubscriberRow) {
+  try {
+    const newUnsubToken = randomBytes(64).toString("hex");
+    let sub;
+    const getRes = await getEmailPreferenceForSubscriber(subscriber.id);
+    if (getRes.unsubscribe_token) {
+      // if record has been created and the token exists, return the token
+      return `${process.env.SERVER_URL}/unsubscribe-email/monthly-report-free?token=${getRes.unsubscribe_token}`;
+    } else if (
+      !getRes.monthly_monitor_report_free_at &&
+      !getRes.unsubscribe_token
+    ) {
+      // if record in the new table has not been created
+      sub = await addUnsubscribeTokenForSubscriber(
+        subscriber.id,
+        newUnsubToken,
+      );
+    } else {
+      // if record already exists, but token doesn't exist, add the token
+      sub = await updateEmailPreferenceForSubscriber(subscriber.id, true, {
+        unsubscribe_token: newUnsubToken,
+      });
+    }
+
+    return `${process.env.SERVER_URL}/unsubscribe-email/monthly-report-free?token=${sub.unsubscribe_token}`;
+  } catch (e) {
+    logger.error("generate_unsubscribe_link", {
+      exception: e,
+    });
+    captureException(e);
+    return null;
+  }
 }
