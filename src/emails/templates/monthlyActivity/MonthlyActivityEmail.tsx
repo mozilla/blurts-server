@@ -2,13 +2,12 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import React from "react";
 import { DashboardSummary } from "../../../app/functions/server/dashboard";
 import { SanitizedSubscriberRow } from "../../../app/functions/server/sanitize";
 import { ExtendedReactLocalization } from "../../../app/functions/l10n";
 import { EmailFooter } from "../EmailFooter";
 import { EmailHeader } from "../EmailHeader";
-import { HeaderStyles } from "../HeaderStyles";
+import { HeaderStyles, MetaTags } from "../HeaderStyles";
 
 export type Props = {
   subscriber: SanitizedSubscriberRow;
@@ -34,6 +33,7 @@ const MonthlyActivityPlusWithAutoRemovalsOnlyEmail = (props: Props) => {
         <mj-preview>
           {l10n.getString("email-monthly-plus-auto-preview")}
         </mj-preview>
+        <MetaTags />
         <HeaderStyles />
       </mj-head>
       <mj-body>
