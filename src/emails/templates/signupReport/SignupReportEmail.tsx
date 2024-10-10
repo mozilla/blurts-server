@@ -8,7 +8,7 @@ import { EmailFooter } from "../EmailFooter";
 import { EmailHeader } from "../EmailHeader";
 import { HibpLikeDbBreach } from "../../../utils/hibp";
 import { BreachCard } from "../../components/BreachCard";
-import { HeaderStyles } from "../HeaderStyles";
+import { HeaderStyles, MetaTags } from "../HeaderStyles";
 
 export type Props = {
   l10n: ExtendedReactLocalization;
@@ -24,6 +24,7 @@ export const SignupReportEmail = (props: Props) => {
     <mjml>
       <mj-head>
         <mj-preview>{l10n.getString("email-breach-summary")}</mj-preview>
+        <MetaTags />
         <HeaderStyles />
       </mj-head>
       <mj-body>
