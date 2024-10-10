@@ -3,6 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { createTransport, Transporter } from "nodemailer";
+import crypto from "crypto";
 
 import { SentMessageInfo } from "nodemailer/lib/smtp-transport/index.js";
 import { getEnvVarsOrThrow } from "../envVars";
@@ -84,4 +85,8 @@ async function sendEmail(
   }
 }
 
-export { initEmail, sendEmail };
+function randomToken(length: number = 64) {
+  return crypto.randomBytes(length).toString("hex");
+}
+
+export { initEmail, sendEmail, randomToken };
