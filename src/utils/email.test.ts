@@ -4,6 +4,7 @@
 
 import { test, expect, jest } from "@jest/globals";
 import type { createTransport, Transporter } from "nodemailer";
+import { randomToken } from "./email";
 
 jest.mock("nodemailer", () => {
   return {
@@ -134,4 +135,9 @@ test("EmailUtils.init with empty host uses jsonTransport. logs messages", async 
     await sendEmail("test@example.com", "subject", "<html>test</html>"),
   ).toBe(sendMailInfo);
   expect(mockedConsoleInfo).toHaveBeenCalledWith("sent_email", sendMailInfo);
+});
+
+test("randomToken returns a random token of 2xlength (because of hex)", () => {
+  const token = randomToken(32);
+  expect(token).toHaveLength(64);
 });

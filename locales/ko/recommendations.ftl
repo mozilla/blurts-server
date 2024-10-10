@@ -14,6 +14,10 @@ rec-ssn =
 rec-pw-1-subhead = 비밀번호 변경
 # Link title
 rec-pw-1-cta = 이 사이트의 비일번호 변경
+rec-pw-1-2 =
+    원래 사용하던 암호와 완전히 다르게 설정하세요.
+    둘 이상의 관계없는 단어를 합치고 숫자와 기호를 추가하여
+    만드는 것도 좋은 방법 중 하나입니다.
 # Recommendation subhead
 rec-pw-2-subhead = 동일한 비밀번호를 사용하여 다른 로그인 업데이트
 # Link title
@@ -55,6 +59,10 @@ rec-email = 실제 이메일 주소를 제공하는 것은 해커나 추적기�
 rec-ip-subhead-2 = VPN을 사용하여 IP 주소를 가리세요
 # Recommendation subhead
 rec-moz-vpn-cta = { -brand-mozilla-vpn } 사용해보기
+rec-moz-vpn-update-2 =
+    인터넷 프로토콜 주소(IP 주소)는 사용자의 위치와
+    인터넷 서비스 제공 업체를 정확히 파악합니다. { -brand-mozilla-vpn } 같은
+    서비스는 IP 주소를 마스킹하여 사용자의 위치를 숨깁니다.
 rec-hist-pw-subhead = 비밀번호 재사용 방지
 # Link title
 rec-hist-pw-cta-fx = { -brand-name }에서 로그인 보기
@@ -63,14 +71,31 @@ rec-hist-pw =
     비밀번호가 유출된 경우 그 로그인 하나만 업데이트하면 됩니다.
 # Recommendation subhead
 rec-sec-qa-subhead = 보안 질문에 대한 고유한 답변 만들기
+rec-sec-qa =
+    많은 웹사이트에서 동일한 질문을 합니다. 하나의 답변이 노출되면
+    정보가 공개됩니다. 임의의 답변을 길게 만들어 안전한 곳에 저장하세요.
 # Recommendation subhead
 rec-phone-num-subhead = 전화 번호 공유 안하기
+rec-phone-num =
+    새로운 계정이나 서비스에 가입할 때 되도록 전화번호를
+    제공하지 마세요. 필수 사항이 아니라면 전화번호를 입력하지 마세요.
 # Recommendation subhead
 rec-dob-subhead = PIN에 개인 정보를 사용하지 않기
+rec-dob =
+    생년월일은 공개 기록에서 쉽게 찾을 수 있으므로
+    비밀번호와 PIN에 사용하지 않아야 합니다. 사용자의
+    생일을 아는 사람 또한 사용자의 PIN을 쉽게 추측할 수 있습니다.
 # Recommendation subhead
 rec-pins-subhead = PIN 보안 강화
+rec-pins =
+    강력한 PIN은 생년월일이나 주소 등의 개인 정보를 포함하지 않습니다.
+    사용자만 아는 숫자여야 하며 쉽게 추측할 수 있어서는 안 됩니다.
 # Recommendation subhead
 rec-address-subhead = 비밀번호에 주소 사용하지 않기
+rec-address =
+    주소 또는 어렸을 때 살았던 거리 이름은 비밀번호로서
+    강력하지 않습니다. 이러한 정보는 공개 기록에서 쉽게
+    찾을 수 있어 비밀번호를 쉽게 추측할 수 있습니다.
 # Recommendation subhead
 rec-gen-1-subhead = 모든 계정에 고유하고 강력한 비밀번호 사용
 # Link title
