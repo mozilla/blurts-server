@@ -8,7 +8,7 @@ import { DoughnutChart } from "../Chart";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta: Meta<typeof DoughnutChart> = {
-  title: "Charts",
+  title: "Dashboard/TopBanner/Charts",
   component: DoughnutChart,
 };
 export default meta;

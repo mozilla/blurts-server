@@ -21,7 +21,7 @@ const ProgressBarDemo = (props: ProgressBarProps) => {
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta: Meta<typeof ProgressBarEl> = {
-  title: "Progress bar",
+  title: "Welcome Scan/ProgressBar",
   component: ProgressBarDemo,
 };
 export default meta;
