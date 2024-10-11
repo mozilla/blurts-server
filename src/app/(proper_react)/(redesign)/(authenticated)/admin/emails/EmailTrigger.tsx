@@ -15,9 +15,11 @@ import {
   triggerVerificationEmail,
 } from "./actions";
 import { Button } from "../../../../../components/client/Button";
+import { toast } from "react-toastify";
 
 export type Props = {
   emailAddresses: string[];
+  unsubscribeLink: string | null;
 };
 
 export const EmailTrigger = (props: Props) => {
@@ -137,6 +139,18 @@ export const EmailTrigger = (props: Props) => {
           }}
         >
           First data broker removal fixed
+        </Button>
+        <Button
+          variant="primary"
+          onPress={() => {
+            if (typeof props.unsubscribeLink === "string") {
+              window.open(props.unsubscribeLink, "_blank");
+            } else {
+              toast.error("No unsubscription link found");
+            }
+          }}
+        >
+          Unsubscription flow
         </Button>
       </div>
     </main>
