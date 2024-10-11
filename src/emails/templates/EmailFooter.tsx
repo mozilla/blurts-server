@@ -156,15 +156,7 @@ export const RedesignedBreachEmailFooter = (props: Props) => {
   supportLinkUrlObject.searchParams.set("utm_content", "support-center");
 
   return (
-    <mj-wrapper
-      background-url={`${process.env.SERVER_URL}/images/email/footer-bg-shapes.png`}
-      background-position-y="bottom"
-      background-position-x="center"
-      background-repeat="no-repeat"
-      full-width="full-width"
-      padding="50px 32px"
-      css-class="footer_hide_background"
-    >
+    <mj-wrapper css-class="footer_hide_background">
       <mj-section>
         <mj-column>
           <mj-image
