@@ -12,6 +12,7 @@ import { EmailBanner } from "../../../components/EmailBanner";
 import { getPremiumSubscriptionUrl } from "../../../../app/functions/server/getPremiumSubscriptionInfo";
 import { isEligibleForPremium } from "../../../../app/functions/universal/premium";
 import { getSignupLocaleCountry } from "../../../functions/getSignupLocaleCountry";
+import { HeaderStyles, MetaTags } from "../../HeaderStyles";
 
 export type MonthlyReportFreeUserEmailProps = {
   l10n: ExtendedReactLocalization;
@@ -111,6 +112,8 @@ export const MonthlyReportFreeUserEmail = (
         <mj-preview>
           {l10n.getString("email-monthly-report-hero-free-heading")}
         </mj-preview>
+        <MetaTags />
+        <HeaderStyles />
         <mj-style>
           {/* This class rounds the edges of a table element */}
           {`

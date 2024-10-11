@@ -6,6 +6,7 @@ import { SanitizedSubscriberRow } from "../../../app/functions/server/sanitize";
 import { ExtendedReactLocalization } from "../../../app/functions/l10n";
 import { EmailFooter } from "../EmailFooter";
 import { EmailHeader } from "../EmailHeader";
+import { HeaderStyles, MetaTags } from "../HeaderStyles";
 
 export type Props = {
   l10n: ExtendedReactLocalization;
@@ -25,6 +26,8 @@ export const VerifyEmailAddressEmail = (props: Props) => {
           <mj-button font-family="sans" />
         </mj-attributes>
         <mj-preview>{l10n.getString("email-verify-heading")}</mj-preview>
+        <MetaTags />
+        <HeaderStyles />
       </mj-head>
       <mj-body>
         <EmailHeader l10n={l10n} utm_campaign={props.utmCampaignId} />
