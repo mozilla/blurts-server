@@ -45,7 +45,7 @@ jobs:
 
       - name: Run Playwright tests - ${{ inputs.environment != null && inputs.environment || 'stage' }}
         if: github.actor != 'dependabot[bot]'
-        run: npm run e2e -- --workers=1
+        run: npm run e2e -- --workers=1 --update-snapshots
         timeout-minutes: 40
         env:
           E2E_TEST_ENV: ${{ inputs.environment != null && inputs.environment || 'stage' }}
@@ -127,4 +127,3 @@ jobs:
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_GHA_FAILURES_WEBHOOK }}
           SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
-          
