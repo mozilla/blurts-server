@@ -185,9 +185,7 @@ export const clickOnATagCheckDomain = async (
   const href = await aTag.getAttribute("href");
   if (href === null) return false;
 
-  await page.goto(href, {
-    waitUntil: "commit",
-  });
+  await page.goto(href);
   const currentUrl = new URL(page.url());
   const perceivedHost = currentUrl.hostname;
   const perceivedPath = currentUrl.pathname;

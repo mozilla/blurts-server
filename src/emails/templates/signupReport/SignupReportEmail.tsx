@@ -2,12 +2,13 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import React from "react";
+import { Fragment } from "react";
 import { ExtendedReactLocalization } from "../../../app/functions/l10n";
 import { EmailFooter } from "../EmailFooter";
 import { EmailHeader } from "../EmailHeader";
 import { HibpLikeDbBreach } from "../../../utils/hibp";
 import { BreachCard } from "../../components/BreachCard";
+import { HeaderStyles, MetaTags } from "../HeaderStyles";
 
 export type Props = {
   l10n: ExtendedReactLocalization;
@@ -23,6 +24,8 @@ export const SignupReportEmail = (props: Props) => {
     <mjml>
       <mj-head>
         <mj-preview>{l10n.getString("email-breach-summary")}</mj-preview>
+        <MetaTags />
+        <HeaderStyles />
       </mj-head>
       <mj-body>
         <EmailHeader l10n={l10n} utm_campaign={utmCampaign} />
@@ -38,7 +41,7 @@ export const SignupReportEmail = (props: Props) => {
           </mj-column>
         </mj-section>
         {props.breaches.map((breach, i) => (
-          <React.Fragment key={breach.Id}>
+          <Fragment key={breach.Id}>
             {i > 0 && (
               // > mj-spacer cannot be used inside mj-body, only inside: mj-attributes, mj-column, mj-hero.
               // And <mj-column>s "must be located under mj-section tags".
@@ -49,7 +52,7 @@ export const SignupReportEmail = (props: Props) => {
               </mj-section>
             )}
             <BreachCard breach={breach} l10n={l10n} />
-          </React.Fragment>
+          </Fragment>
         ))}
         <mj-section padding="20px">
           <mj-column>

@@ -14,6 +14,7 @@ import { getCountryCode } from "../functions/server/getCountryCode";
 import { PageLoadEvent } from "../components/client/PageLoadEvent";
 import { getExperimentationId } from "../functions/server/getExperimentationId";
 import { getEnabledFeatureFlags } from "../../db/tables/featureFlags";
+import { PromptNoneAuth } from "../components/client/PromptNoneAuth";
 import { addClientIdForSubscriber } from "../../db/tables/google_analytics_clients";
 import { logger } from "../functions/server/logging";
 
@@ -57,6 +58,9 @@ export default async function Layout({ children }: { children: ReactNode }) {
     <L10nProvider bundleSources={l10nBundles}>
       <ReactAriaI18nProvider locale={getLocale(l10nBundles)}>
         <CountryCodeProvider countryCode={countryCode}>
+          {enabledFlags.includes("PromptNoneAuthFlow") && !session && (
+            <PromptNoneAuth />
+          )}
           {children}
           <PageLoadEvent
             experimentationId={getExperimentationId(session?.user ?? null)}

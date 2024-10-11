@@ -135,12 +135,56 @@ security-recommendation-email-title = 이메일 주소를 보호하세요.
 # $num_breaches is the number of breaches where the email address was found.
 security-recommendation-email-summary = 사용자의 이메일 주소가 { $num_breaches }개의 데이터 유출에서 노출되었습니다.
 security-recommendation-email-description = 안타깝게도 해결할 수는 없지만 사용자를 보호하기 위해 취할 수 있는 조치가 있습니다.
+security-recommendation-email-step-one = 알 수 없는 사람이 보낸 이메일에 포함된 링크를 클릭하지 마세요. 신뢰할 수 있는 출처인 것 같다면 직접 통화하여 확인하세요.
+security-recommendation-email-step-two = <link_to_info>피싱 사기</link_to_info>를 조심하세요.
+security-recommendation-email-step-three = 수상한 이메일은 스팸으로 표시하여 보낸 사람을 차단하세요.
+security-recommendation-email-step-four = <link_to_info>{ -brand-relay } 이메일 마스크</link_to_info>를 사용하여 지금부터 이메일을 보호하세요.
 
 # IP security recommendation
 
+security-recommendation-ip-title = VPN을 사용하여 개인 정보를 더 안전하게 보호하세요.
+# $num_breaches is the number of breaches where the IP address was found.
+security-recommendation-ip-summary = 사용자의 IP 주소가 { $num_breaches }개의 데이터 유출에서 노출되었습니다.
+security-recommendation-ip-description = IP 주소는 사용자의 위치와 인터넷 서비스 제공업체를 정확히 파악합니다. 해커가 그 정보를 이용하여 사용자의 위치를 찾거나 사용자의 기기에 연결을 시도할 수 있습니다.
+security-recommendation-ip-step-one = <link_to_info>{ -brand-mozilla-vpn }</link_to_info> 등의 VPN을 사용하여 실제 IP 주소를 숨기고 인터넷을 비공개로 사용하세요.
 
 # Leaked Passwords
 
+# Variables
+# $breach_name is the name of the breach where the leaked password was found.
+leaked-passwords-title = { $breach_name } 비밀번호가 노출되었습니다.
+# Variables
+# $breach_date is the date when the breach occurred.
+leaked-passwords-summary = { $breach_date } 발생한 데이터 유출에 포함되었습니다.
+leaked-passwords-description = 사기꾼은 사용자의 계정에 접근할 수 있으며 동일한 비밀번호를 사용했는지 확인하기 위해 다른 계정에서 사용을 시도할 가능성이 있습니다. 동일한 비밀번호를 사용한 모든 곳에서 비밀번호를 변경하고 자신을 보호하세요.
+leaked-passwords-steps-title = 해야 할 일은 다음과 같습니다.
+leaked-passwords-steps-subtitle = 이를 위해서는 계정에 접근해야 하므로 수동으로 수정해야 합니다.
+# Variables
+# $breach_name is the name of the breach where the leaked password was found.
+# $emails_affected are the emails associated with the breach.
+leaked-passwords-step-one = <link_to_breach_site>{ $breach_name }</link_to_breach_site>에서 <b>{ $emails_affected }</b>의 비밀번호를 변경하세요.
+leaked-passwords-step-two = 사용한 모든 곳에서 변경하세요.
+leaked-passwords-mark-as-fixed = 수정됨으로 표시
+leaked-passwords-skip = 지금은 건너뛰기
+# Variables
+# $estimated_time is the amount of time it would take for a user to manually resolve a leaked password breach. It will always be a number greater than 1.
+# "Est." is shortform for "Estimated".
+# "mins" is shortform for "minutes".
+leaked-passwords-estimated-time = 예상 소요 시간: 사이트당 { $estimated_time }분
 
 # Leaked Security Questions
 
+leaked-security-questions-title = 보안 질문이 노출되었습니다.
+# Variables
+# $breach_name is the name of the breach where the leaked security questions were found.
+# $breach_date is the date when the breach occurred.
+# An example of this string is Twitter on 13/09/18.
+leaked-security-questions-summary = { $breach_date }에 { $breach_name }에서 발생한 데이터 유출에 포함되었습니다.
+leaked-security-questions-description = 사기꾼은 보안 질문을 이용해 사용자의 계정 및 동일한 보안 질문을 사용한 다른 사이트에 접근할 수 있습니다. 지금 업데이트하여 계정을 보호하세요.
+leaked-security-questions-steps-title = 해야 할 일은 다음과 같습니다.
+leaked-security-questions-steps-subtitle = 이를 위해서는 계정에 접근해야 하므로 수동으로 수정해야 합니다.
+# Variables
+# $breach_name is the name of the breach where the security questions were found.
+# $email_affected is the email associated with the breach.
+leaked-security-questions-step-one = <link_to_breach_site>{ $breach_name }</link_to_breach_site>에서 <b>{ $email_affected }</b>의 보안 질문을 업데이트하세요.
+leaked-security-questions-step-two = 동일한 보안 질문을 사용한 다른 사이트에서 질문을 업데이트하세요. 계정마다 다른 보안 질문을 사용해야 합니다.
