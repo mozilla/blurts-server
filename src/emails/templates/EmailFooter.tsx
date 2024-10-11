@@ -2,7 +2,6 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import React from "react";
 import { ExtendedReactLocalization } from "../../app/functions/l10n";
 import {
   CONST_URL_PRIVACY_POLICY,
@@ -164,6 +163,7 @@ export const RedesignedBreachEmailFooter = (props: Props) => {
       background-repeat="no-repeat"
       full-width="full-width"
       padding="50px 32px"
+      css-class="footer_hide_background"
     >
       <mj-section>
         <mj-column>
