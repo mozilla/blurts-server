@@ -4,7 +4,6 @@
 
 /* c8 ignore start */
 
-import React from "react";
 import { ExtendedReactLocalization } from "../../app/functions/l10n";
 import { DashboardSummary } from "../../app/functions/server/dashboard";
 import { SubscriberRow } from "knex/types/tables";
