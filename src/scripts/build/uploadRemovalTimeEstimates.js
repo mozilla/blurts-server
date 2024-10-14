@@ -2,17 +2,6 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-/**
- * The data that is being downloaded in this script is provided by
- * GeoNames (https://www.geonames.org/). We are using the data to compile a set
- * of US cities and states that match the needs of this project. Their work is
- * licensed under a Creative Commons Attribution 4.0 License:
- * https://creativecommons.org/licenses/by/4.0/.
- *
- * All database dumps and table definitions can be found here:
- * https://download.geonames.org/export/dump/.
- */
-
 import {
   existsSync,
   mkdirSync,
@@ -24,8 +13,8 @@ import os from "os";
 import path from "path";
 import fs from "fs";
 
-const REMOVAL_DATA_SOURCE_FILE_PATH = "path_to_data_broker_removal_times.csv";
-const REMOVAL_DATA_DESTINATION_FILE_PATH = "removalTimeEstimatesData.json";
+const SOURCE_CSV_FILE_PATH = process.argv[2] || "path_to_data_broker_removal_times.csv";
+const DESTINATION_FILE_NAME = "removalTimeEstimatesData.json";
 const SENTRY_SLUG = "create-removal-time-estimates";
 
 Sentry.init({
@@ -50,17 +39,17 @@ try {
     mkdirSync(tmpDirPath);
   }
 
-  const data = fs.readFileSync(REMOVAL_DATA_SOURCE_FILE_PATH).toString();
+  const data = fs.readFileSync(SOURCE_CSV_FILE_PATH).toString();
   const rows = data.split("\n");
   const removalDataParsed = rows.reduce((removalData, row) => {
     const [d, t] = row.trim().split(",");
-    if (t !== "N/A") {
-      removalData.push({ d, t });
+    if (d && t && t !== "N/A") {
+      removalData.push({ d, t: Math.ceil(t) });
     }
     return removalData;
   }, []);
 
-  console.info(`Writing data to file: ${REMOVAL_DATA_DESTINATION_FILE_PATH}`);
+  console.info(`Writing data to file: ${DESTINATION_FILE_NAME}`);
   const removalDataFinal = {
     name: "fx-monitor-removal-time-estimates-data",
     description: "The data in this file are the average data broker removal time estimates for Monitor.",
@@ -71,14 +60,14 @@ try {
     },
     data: removalDataParsed,
   };
-  writeFileSync(REMOVAL_DATA_DESTINATION_FILE_PATH, JSON.stringify(removalDataFinal));
+  writeFileSync(DESTINATION_FILE_NAME, JSON.stringify(removalDataFinal));
 
-  const readStream = fs.createReadStream(REMOVAL_DATA_DESTINATION_FILE_PATH);
+  const readStream = fs.createReadStream(DESTINATION_FILE_NAME);
   if (process.argv.includes("--skip-upload")) {
     console.debug("Skipping S3 upload");
   } else {
-    const uploadToS3 = await import("../s3.js");
-    await uploadToS3(`removal-time/${REMOVAL_DATA_DESTINATION_FILE_PATH}`, readStream);
+    const { uploadToS3 } = await import("../s3.js");
+    await uploadToS3(`removal-time/${DESTINATION_FILE_NAME}`, readStream);
   }
 
   rmSync(tmpDirPath, {
