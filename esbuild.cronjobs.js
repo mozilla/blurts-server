@@ -23,5 +23,4 @@ build({
   sourcemap: true,
   target: "node20.9",
   packages: "external",
-  jsx: "automatic",
 });
