@@ -42,7 +42,6 @@ import { getElapsedTimeInDaysSinceInitialScan } from "../../../../../../../funct
 import { getExperiments } from "../../../../../../../functions/server/getExperiments";
 import { getLocale } from "../../../../../../../functions/universal/getLocale";
 import { getL10n } from "../../../../../../../functions/l10n/serverComponents";
-import removalTimeData from "/Users/flozia/mozilla/broker-max-removal-time.js";
 
 const dashboardTabSlugs = ["action-needed", "fixed"];
 
@@ -149,7 +148,7 @@ export default async function DashboardPage({ params, searchParams }: Props) {
 
   return (
     <View
-      removalTimeData={removalTimeData}
+      removalTimeData={null}
       user={session.user}
       isEligibleForPremium={userIsEligibleForPremium}
       isEligibleForFreeScan={userIsEligibleForFreeScan}
