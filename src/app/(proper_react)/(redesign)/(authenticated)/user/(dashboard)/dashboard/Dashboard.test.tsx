@@ -3610,6 +3610,40 @@ describe("CSAT survey banner", () => {
     });
     expect(answerButton).toBeInTheDocument();
   });
+
+  it("does not display any CSAT survey alongside the Petition banner", () => {
+    const ComposedDashboard = composeStory(
+      DashboardUsPremiumResolvedScanNoBreaches,
+      Meta,
+    );
+    render(
+      <ComposedDashboard
+        activeTab="fixed"
+        elapsedTimeInDaysSinceInitialScan={90}
+        hasFirstMonitoringScan
+        enabledFeatureFlags={[
+          "LatestScanDateCsatSurvey",
+          "AutomaticRemovalCsatSurvey",
+        ]}
+        experimentData={{
+          ...defaultExperimentData,
+          "data-privacy-petition-banner": {
+            enabled: true,
+          },
+        }}
+      />,
+    );
+
+    const petitionCta = screen.queryByRole("link", {
+      name: "Sign petition",
+    });
+    expect(petitionCta).toBeInTheDocument();
+
+    const answerButton = screen.queryByRole("button", {
+      name: "Neutral",
+    });
+    expect(answerButton).not.toBeInTheDocument();
+  });
 });
 
 describe("Data privacy petition banner", () => {
