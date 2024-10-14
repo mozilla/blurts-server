@@ -29,6 +29,7 @@ export type ScanResultCardProps = {
   isExpanded: boolean;
   isOnManualRemovePage?: boolean;
   enabledFeatureFlags?: FeatureFlagName[];
+  removalTime?: number;
   onToggleExpanded: () => void;
 };
 
@@ -249,9 +250,22 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
             <dd className={styles.hideOnMobile}>
               {dateFormatter.format(scanResult.created_at)}
             </dd>
-            <dt className={styles.visuallyHidden}>Removal times</dt>
+            <dt className={styles.visuallyHidden}>
+              {l10n.getString(
+                "dashboard-exposures-filter-exposure-removal-time-title",
+              )}
+            </dt>
             <dd>
-              {props.removalTime ? `${props.removalTime} days` : "Unknown"}
+              {props.removalTime
+                ? l10n.getString(
+                    "dashboard-exposures-filter-exposure-removal-time-label",
+                    {
+                      numberOfDays: props.removalTime,
+                    },
+                  )
+                : l10n.getString(
+                    "dashboard-exposures-filter-exposure-removal-time-label-unknown",
+                  )}
             </dd>
             <dt className={styles.visuallyHidden}>
               {l10n.getString("exposure-card-label-status")}

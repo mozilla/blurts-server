@@ -208,6 +208,16 @@ export const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
               {dateFormatter.format(subscriberBreach.addedDate)}
             </dd>
             <dt className={styles.visuallyHidden}>
+              {l10n.getString(
+                "dashboard-exposures-filter-exposure-removal-time-title",
+              )}
+            </dt>
+            <dd>
+              {l10n.getString(
+                "dashboard-exposures-filter-exposure-removal-time-label-na",
+              )}
+            </dd>
+            <dt className={styles.visuallyHidden}>
               {l10n.getString("exposure-card-label-status")}
             </dt>
             <dd>

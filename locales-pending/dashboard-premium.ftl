@@ -38,7 +38,16 @@ modal-heres-what-we-fixed-description-part-three = <b>In Progress</b> includes a
 dashboard-exposures-filter-exposure-type = Exposure type
 dashboard-exposures-filter-exposure-type-info-for-sale = Your info for sale
 dashboard-exposures-filter-exposure-type-data-breach = Data breach
-dashboard-exposures-filter-exposure-removal-time = Removal time
+dashboard-exposures-filter-exposure-removal-time-title = Removal time
+# Variables:
+#   $numberOfDays (number) - Number of days it takes to remove the exposure
+dashboard-exposures-filter-exposure-removal-time-label =
+  { $numberOfDays ->
+    [one] { $numberOfDays } day
+    *[other] { $numberOfDays } days
+  }
+dashboard-exposures-filter-exposure-removal-time-label-unknown = Unknown
+dashboard-exposures-filter-exposure-removal-time-label-na = N/A
 
 # About Exposure Types Modal
 

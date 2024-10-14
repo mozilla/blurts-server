@@ -80,6 +80,7 @@ export type Props = {
   activeTab: TabType;
   signInCount: number | null;
   autoOpenUpsellDialog: boolean;
+  removalTimeData: unknown;
 };
 
 export type TabData = {

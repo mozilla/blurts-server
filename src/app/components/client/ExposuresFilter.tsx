@@ -300,7 +300,9 @@ export const ExposuresFilter = ({
             {l10n.getString("dashboard-exposures-filter-date-found")}
           </li>
           <li className={styles.hideOnMobile}>
-            {l10n.getString("dashboard-exposures-filter-exposure-removal-time")}
+            {l10n.getString(
+              "dashboard-exposures-filter-exposure-removal-time-title",
+            )}
             <button
               {...exposureRemovalTimeExplainerTriggerProps}
               ref={exposureRemovalTimeExplainerTriggerRef}
