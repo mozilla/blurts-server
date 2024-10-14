@@ -113,7 +113,7 @@ export const RedesignedBreachAlertEmail = (
     if (hasPremium(props.subscriber)) {
       utmCampaignId = "breach-alert-plus";
     } else {
-      if (typeof props.dataSummary === "undefined") {
+      if (!hasRunFreeScan) {
         utmCampaignId = "breach-alert-free-us-no-scan";
       } else {
         utmCampaignId = "breach-alert-free-us-scanned";
@@ -274,7 +274,7 @@ export const RedesignedBreachAlertEmail = (
           )}
         {isEligibleForPremium(assumedCountryCode) &&
           !hasPremium(props.subscriber) &&
-          (typeof props.dataSummary === "undefined" ? (
+          (!hasRunFreeScan ? (
             <EmailBanner
               variant="dark"
               heading={l10n.getString(

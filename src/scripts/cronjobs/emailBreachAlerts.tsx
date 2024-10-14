@@ -279,7 +279,8 @@ export async function poll(
               let dataSummary: DashboardSummary | undefined;
               if (
                 isEligibleForPremium(assumedCountryCode) &&
-                !hasPremium(recipient)
+                !hasPremium(recipient) &&
+                typeof recipient.onerep_profile_id === "number"
               ) {
                 const scanData = await getLatestOnerepScanResults(
                   recipient.onerep_profile_id,
