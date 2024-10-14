@@ -5,7 +5,7 @@
 import { ExtendedReactLocalization } from "../../../app/functions/l10n";
 import { EmailFooter } from "../EmailFooter";
 import { EmailHeader } from "../EmailHeader";
-import { HeaderStyles } from "../HeaderStyles";
+import { HeaderStyles, MetaTags } from "../HeaderStyles";
 
 export type Props = {
   l10n: ExtendedReactLocalization;
@@ -28,6 +28,7 @@ export const FirstDataBrokerRemovalFixed = (props: Props) => {
             data_broker_name: props.data.dataBrokerName,
           })}
         </mj-preview>
+        <MetaTags />
         <HeaderStyles />
       </mj-head>
       <mj-body>

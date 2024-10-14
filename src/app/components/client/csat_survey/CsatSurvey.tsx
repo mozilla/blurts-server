@@ -89,14 +89,11 @@ export const CsatSurvey = (props: CsatSurveyProps) => {
     }
   });
 
-  const isPetitionCsatBanner =
-    currentSurvey.localDismissalId.includes("petition_banner");
   // Only show the petition CSAT banner for users that are part of
   // the `data-privacy-petition-banner` experiment if the petition has
   // already been interacted with.
   if (
     props.experimentData["data-privacy-petition-banner"].enabled &&
-    isPetitionCsatBanner &&
     !props.localDismissalPetitionBanner.isDismissed
   ) {
     return;

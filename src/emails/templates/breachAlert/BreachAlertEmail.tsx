@@ -19,7 +19,7 @@ import { DashboardSummary } from "../../../app/functions/server/dashboard";
 import { ResolutionRelevantBreachDataTypes } from "../../../app/functions/universal/breach";
 import { EmailBanner } from "../../components/EmailBanner";
 import { DataPointCount } from "../../components/EmailDataPointCount";
-import { HeaderStyles } from "../HeaderStyles";
+import { HeaderStyles, MetaTags } from "../HeaderStyles";
 
 export type Props = {
   l10n: ExtendedReactLocalization;
@@ -36,6 +36,7 @@ export const BreachAlertEmail = (props: Props) => {
     <mjml>
       <mj-head>
         <mj-preview>{l10n.getString("email-spotted-new-breach")}</mj-preview>
+        <MetaTags />
         <HeaderStyles />
       </mj-head>
       <mj-body>
