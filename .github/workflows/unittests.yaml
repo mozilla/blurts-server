@@ -29,7 +29,6 @@ jobs:
       - run: npm test -- --coverageThreshold='{"global":{"branches":80,"functions":80,"lines":80,"statements":80}}'
         if: github.event_name == 'schedule'
       - uses: actions/upload-artifact@v4
-        if: failure()
         with:
           name: coverage-report
           path: coverage/
