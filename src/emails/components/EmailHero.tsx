@@ -2,7 +2,6 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import React from "react";
 import { ExtendedReactLocalization } from "../../app/functions/l10n";
 
 export type Props = {
@@ -30,35 +29,37 @@ export const EmailHero = (props: Props) => {
         background-position-x={0}
         border-radius="16px 16px 0 0"
       >
-        <mj-column
-          width="60%"
-          padding-left="0"
-          padding-right="0"
-          vertical-align="middle"
-        >
-          <mj-image
-            alt={l10n.getString("public-nav-name")}
-            src={`${process.env.SERVER_URL}/images/email/monitor-logo-transparent.png`}
-            href={`${process.env.SERVER_URL}/user/dashboard/fixed?utm_source=monitor-product&utm_medium=product-email&utm_campaign=${props.utm_campaign}&utm_content=header-logo${utmContentSuffix}`}
-            width="200px"
-            align="left"
-          />
-        </mj-column>
-        <mj-column
-          width="40%"
-          padding-left="0"
-          padding-right="0"
-          vertical-align="middle"
-        >
-          <mj-text align="right">
-            <a
-              href={`${process.env.SERVER_URL}/user/dashboard/fixed?utm_source=monitor-product&utm_medium=product-email&utm_campaign=${props.utm_campaign}&utm_content=sign-in${utmContentSuffix}`}
-              style={{ color: "#0060DF" }}
-            >
-              {l10n.getString("email-header-button-sign-in")}
-            </a>
-          </mj-text>
-        </mj-column>
+        <mj-group>
+          <mj-column
+            width="70%"
+            padding-left="0"
+            padding-right="0"
+            vertical-align="middle"
+          >
+            <mj-image
+              alt={l10n.getString("public-nav-name")}
+              src={`${process.env.SERVER_URL}/images/email/monitor-logo-transparent.png`}
+              href={`${process.env.SERVER_URL}/user/dashboard/fixed?utm_source=monitor-product&utm_medium=product-email&utm_campaign=${props.utm_campaign}&utm_content=header-logo${utmContentSuffix}`}
+              align="left"
+              width="200px"
+            />
+          </mj-column>
+          <mj-column
+            width="30%"
+            padding-left="0"
+            padding-right="0"
+            vertical-align="middle"
+          >
+            <mj-text align="right">
+              <a
+                href={`${process.env.SERVER_URL}/user/dashboard/fixed?utm_source=monitor-product&utm_medium=product-email&utm_campaign=${props.utm_campaign}&utm_content=sign-in${utmContentSuffix}`}
+                style={{ color: "#0060DF" }}
+              >
+                {l10n.getString("email-header-button-sign-in")}
+              </a>
+            </mj-text>
+          </mj-column>
+        </mj-group>
       </mj-section>
       <mj-section
         padding="20px 32px"
