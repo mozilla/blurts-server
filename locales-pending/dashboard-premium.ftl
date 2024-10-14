@@ -39,13 +39,12 @@ dashboard-exposures-filter-exposure-type = Exposure type
 dashboard-exposures-filter-exposure-type-info-for-sale = Your info for sale
 dashboard-exposures-filter-exposure-type-data-breach = Data breach
 dashboard-exposures-filter-exposure-removal-time-title = Removal time
-# Variables:
-#   $numberOfDays (number) - Number of days it takes to remove the exposure
-dashboard-exposures-filter-exposure-removal-time-label =
-  { $numberOfDays ->
-    [one] { $numberOfDays } day
-    *[other] { $numberOfDays } days
-  }
+dashboard-exposures-filter-exposure-removal-time-label-7 = Up to 7 days
+dashboard-exposures-filter-exposure-removal-time-label-13 = 8–13 days
+dashboard-exposures-filter-exposure-removal-time-label-60 = 14–60 days
+dashboard-exposures-filter-exposure-removal-time-label-90 = 61–90 days
+dashboard-exposures-filter-exposure-removal-time-label-180 = 91-180 days
+dashboard-exposures-filter-exposure-removal-time-label-other = 181+ days
 dashboard-exposures-filter-exposure-removal-time-label-unknown = Unknown
 dashboard-exposures-filter-exposure-removal-time-label-na = N/A
 

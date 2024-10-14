@@ -53,6 +53,7 @@ import {
 import { ExperimentData } from "../../../../../../../telemetry/generated/nimbus/experiments";
 import { PetitionBanner } from "../../../../../../components/client/PetitionBanner";
 import { useLocalDismissal } from "../../../../../../hooks/useLocalDismissal";
+import { RemovalTimeEstimate } from "./[[...slug]]/page";
 
 export type TabType = "action-needed" | "fixed";
 
@@ -80,7 +81,7 @@ export type Props = {
   activeTab: TabType;
   signInCount: number | null;
   autoOpenUpsellDialog: boolean;
-  removalTimeData: unknown;
+  removalTimeEstimates: RemovalTimeEstimate[];
 };
 
 export type TabData = {
@@ -192,13 +193,13 @@ export const View = (props: Props) => {
       ? "scan-" + exposure.onerep_scan_result_id
       : "breach-" + exposure.id;
 
-    const removalTimeData =
-      isScanResult(exposure) &&
-      props.removalTimeData.find((d) => d.domain === exposure.data_broker);
+    const removalTimeEstimate = isScanResult(exposure)
+      ? props.removalTimeEstimates.find(({ d }) => d === exposure.data_broker)
+      : undefined;
     return (
       <li key={exposureCardKey} className={styles.exposureListItem}>
         <ExposureCard
-          removalTime={removalTimeData?.maxRemovalTime}
+          removalTimeEstimate={removalTimeEstimate?.t}
           enabledFeatureFlags={props.enabledFeatureFlags}
           exposureData={exposure}
           isExpanded={exposureCardKey === activeExposureCardKey}

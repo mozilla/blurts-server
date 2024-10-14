@@ -28,6 +28,7 @@ export type ExposureCardProps = {
   resolutionCta: ReactNode;
   isExpanded: boolean;
   enabledFeatureFlags: FeatureFlagName[];
+  removalTimeEstimate?: number;
   onToggleExpanded: () => void;
 };
 

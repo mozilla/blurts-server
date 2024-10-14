@@ -29,7 +29,7 @@ export type ScanResultCardProps = {
   isExpanded: boolean;
   isOnManualRemovePage?: boolean;
   enabledFeatureFlags?: FeatureFlagName[];
-  removalTime?: number;
+  removalTimeEstimate?: number;
   onToggleExpanded: () => void;
 };
 
@@ -212,6 +212,20 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
         })
       : "";
 
+  let removalEstimateTimeLabel = l10n.getString(
+    "dashboard-exposures-filter-exposure-removal-time-label-unknown",
+  );
+  if (typeof props.removalTimeEstimate !== "undefined") {
+    const removalTimeEstimateRangeMarkers = [180, 90, 60, 13, 7];
+    const removalTimeLabelId =
+      removalTimeEstimateRangeMarkers.findLast(
+        (rangeMarker) => (props.removalTimeEstimate as number) <= rangeMarker,
+      ) ?? "other";
+    removalEstimateTimeLabel = l10n.getString(
+      `dashboard-exposures-filter-exposure-removal-time-label-${removalTimeLabelId}`,
+    );
+  }
+
   const exposureCard = (
     <div aria-label={props.scanResult.data_broker}>
       <div className={styles.exposureCard}>
@@ -255,18 +269,7 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
                 "dashboard-exposures-filter-exposure-removal-time-title",
               )}
             </dt>
-            <dd>
-              {props.removalTime
-                ? l10n.getString(
-                    "dashboard-exposures-filter-exposure-removal-time-label",
-                    {
-                      numberOfDays: props.removalTime,
-                    },
-                  )
-                : l10n.getString(
-                    "dashboard-exposures-filter-exposure-removal-time-label-unknown",
-                  )}
-            </dd>
+            <dd>{removalEstimateTimeLabel}</dd>
             <dt className={styles.visuallyHidden}>
               {l10n.getString("exposure-card-label-status")}
             </dt>
