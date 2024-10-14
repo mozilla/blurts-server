@@ -71,6 +71,41 @@ export const ExposuresFilterTypeExplainer = (
   );
 };
 
+type ExposuresFilterRemovalTimeExplainerProps = {
+  explainerDialogState: OverlayTriggerState;
+  explainerDialogProps: OverlayTriggerAria;
+};
+
+export const ExposuresFilterRemovalTimeExplainer = (
+  props: ExposuresFilterRemovalTimeExplainerProps,
+) => {
+  const l10n = useL10n();
+
+  return (
+    <ModalOverlay
+      state={props.explainerDialogState}
+      {...props.explainerDialogProps.overlayProps}
+      isDismissable
+    >
+      <Dialog
+        title={l10n.getString("modal-exposure-removal-time-title")}
+        onDismiss={() => props.explainerDialogState.close()}
+      >
+        <div className={styles.modalBodyContent}>
+          <p>{l10n.getString("modal-exposure-removal-time-text")}</p>
+          <br />
+          <Button
+            variant="primary"
+            onPress={() => props.explainerDialogState.close()}
+          >
+            {l10n.getString("modal-exposure-removal-time-button-label")}
+          </Button>
+        </div>
+      </Dialog>
+    </ModalOverlay>
+  );
+};
+
 type ExposuresFilterStatusExplainerProps = {
   enabledFeatureFlags: FeatureFlagName[];
   explainerDialogState: OverlayTriggerState;
