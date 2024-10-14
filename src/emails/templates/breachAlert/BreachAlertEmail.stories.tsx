@@ -70,6 +70,10 @@ export const RedesignedBreachAlertEmailUsFreeNoScanStory: Story = {
     breach: createRandomHibpListing(),
     breachedEmail: "example@example.com",
     enabledFeatureFlags: ["BreachEmailRedesign"],
+    dataSummary: getDashboardSummary(
+      [],
+      Array.from({ length: 5 }, () => createRandomBreach()),
+    ),
   },
 };
 
