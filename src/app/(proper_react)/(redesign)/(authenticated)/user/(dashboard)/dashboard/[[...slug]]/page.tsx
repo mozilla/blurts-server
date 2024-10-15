@@ -42,7 +42,6 @@ import { getElapsedTimeInDaysSinceInitialScan } from "../../../../../../../funct
 import { getExperiments } from "../../../../../../../functions/server/getExperiments";
 import { getLocale } from "../../../../../../../functions/universal/getLocale";
 import { getL10n } from "../../../../../../../functions/l10n/serverComponents";
-import removalTimeEstimatesJSON from "../../../../../../../../../removalTimeEstimatesData.json";
 
 export type RemovalTimeEstimate = { d: string; t: number };
 
@@ -56,8 +55,6 @@ type Props = {
   };
 };
 
-const removalTimeEstimatesData: RemovalTimeEstimate[] =
-  removalTimeEstimatesJSON.data;
 const dashboardTabSlugs = ["action-needed", "fixed"];
 
 export default async function DashboardPage({ params, searchParams }: Props) {
@@ -153,7 +150,7 @@ export default async function DashboardPage({ params, searchParams }: Props) {
 
   return (
     <View
-      removalTimeEstimates={removalTimeEstimatesData}
+      removalTimeEstimates={[]}
       user={session.user}
       isEligibleForPremium={userIsEligibleForPremium}
       isEligibleForFreeScan={userIsEligibleForFreeScan}
