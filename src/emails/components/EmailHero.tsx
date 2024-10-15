@@ -21,7 +21,12 @@ export const EmailHero = (props: Props) => {
 
   return (
     <mj-wrapper padding="24px 16px">
-      <mj-section css-class="hero_background">
+      <mj-section
+        padding="10px 12px"
+        background-color="#e4d2ff"
+        border-radius="16px 16px 0 0"
+        css-class="hero_background"
+      >
         <mj-group>
           <mj-column
             width="70%"
