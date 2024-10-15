@@ -15,8 +15,8 @@ export const MetaTags = () => {
 export const HeaderStyles = () => {
   const hideBgImageOnDarkMode = `
       :root {
-      color-scheme: light dark;
-      supported-color-schemes: light dark;
+        color-scheme: light dark;
+        supported-color-schemes: light dark;
       }
 
       @media (prefers-color-scheme: light) {
@@ -24,18 +24,14 @@ export const HeaderStyles = () => {
           background-image: url(${process.env.SERVER_URL}/images/email/footer-bg-shapes.png);
           background-position: center bottom;
           background-repeat: no-repeat;
-          width: 100%;
-          padding: 50px 32px;
         }
       }
 
        @media (prefers-color-scheme: light) {
         .hero_background {
           background-image: url(${process.env.SERVER_URL}/images/email/hero-bg-gradient.png);
-          background-color: #e4d2ff;
           background-repeat: repeat;
           background-position-x: 0;
-          border-radius: 16px 16px 0 0;
         }
       }
 

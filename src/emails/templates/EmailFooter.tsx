@@ -156,7 +156,11 @@ export const RedesignedBreachEmailFooter = (props: Props) => {
   supportLinkUrlObject.searchParams.set("utm_content", "support-center");
 
   return (
-    <mj-wrapper css-class="footer_hide_background">
+    <mj-wrapper
+      full-width="full-width"
+      padding="50px 32px"
+      css-class="footer_hide_background"
+    >
       <mj-section>
         <mj-column>
           <mj-image
