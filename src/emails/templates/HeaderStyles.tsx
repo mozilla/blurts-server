@@ -15,16 +15,32 @@ export const MetaTags = () => {
 export const HeaderStyles = () => {
   const hideBgImageOnDarkMode = `
       :root {
-      color-scheme: light dark;
-      supported-color-schemes: light dark;
+        color-scheme: light dark;
+        supported-color-schemes: light dark;
       }
 
-       @media (prefers-color-scheme: dark) {
-          .footer_hide_background {
-            background-image: none !important;
-            background: none !important;
-          }
+      @media (prefers-color-scheme: light) {
+        .footer_background {
+          background-image: url(${process.env.SERVER_URL}/images/email/footer-bg-shapes.png);
+          background-position: center bottom;
+          background-repeat: no-repeat;
         }
+      }
+
+       @media (prefers-color-scheme: light) {
+        .hero_background {
+          background-image: url(${process.env.SERVER_URL}/images/email/hero-bg-gradient.png);
+          background-repeat: repeat;
+          background-position-x: 0;
+        }
+      }
+
+      @media (prefers-color-scheme: dark) {
+        .hero_background {
+          background: none !important;
+        }
+      }
     `;
+
   return <mj-style>{hideBgImageOnDarkMode}</mj-style>;
 };
