@@ -4,7 +4,7 @@
 
 import type { Meta, StoryObj } from "@storybook/react";
 import { FC } from "react";
-import { Props, MonthlyActivityEmail } from "./MonthlyActivityEmail";
+import { Props, MonthlyActivityPlusEmail } from "./MonthlyActivityPlusEmail";
 import { StorybookEmailRenderer } from "../../StorybookEmailRenderer";
 import { SanitizedSubscriberRow } from "../../../app/functions/server/sanitize";
 import { getL10n } from "../../../app/functions/l10n/storybookAndJest";
@@ -12,10 +12,10 @@ import { DashboardSummary } from "../../../app/functions/server/dashboard";
 
 type StoryProps = Props & { emulateDarkMode?: boolean };
 const meta: Meta<FC<Props>> = {
-  title: "Emails/Monthly activity",
+  title: "Emails/Monthly activity (Plus user)",
   component: (props: StoryProps) => (
     <StorybookEmailRenderer emulateDarkMode={props.emulateDarkMode}>
-      <MonthlyActivityEmail {...props} />
+      <MonthlyActivityPlusEmail {...props} />
     </StorybookEmailRenderer>
   ),
   args: {
@@ -27,7 +27,7 @@ export default meta;
 type Story = StoryObj<FC<StoryProps>>;
 
 export const MonthlyActivityEmailPlusWithManualStory: Story = {
-  name: "A Plus user, with manually-resolved items",
+  name: "With manually-resolved items",
   args: {
     subscriber: {
       signup_language: "en",
@@ -45,7 +45,7 @@ export const MonthlyActivityEmailPlusWithManualStory: Story = {
 };
 
 export const MonthlyActivityEmailPlusWithoutManualStory: Story = {
-  name: "A Plus user, with only auto-resolved items",
+  name: "With only auto-resolved items",
   args: {
     subscriber: {
       signup_language: "en",
@@ -58,24 +58,6 @@ export const MonthlyActivityEmailPlusWithoutManualStory: Story = {
       dataBreachFixedDataPointsNum: 0,
       dataBrokerInProgressDataPointsNum: 13,
       dataBrokerAutoFixedDataPointsNum: 37,
-    } as DashboardSummary,
-  },
-};
-
-export const MonthlyActivityEmailFreeStory: Story = {
-  name: "A free user",
-  args: {
-    subscriber: {
-      signup_language: "en",
-      fxa_profile_json: {
-        subscriptions: ["not-monitor"],
-      },
-    } as SanitizedSubscriberRow,
-    data: {
-      dataBrokerManuallyResolvedDataPointsNum: 40,
-      dataBreachFixedDataPointsNum: 2,
-      dataBrokerInProgressDataPointsNum: 0,
-      dataBrokerAutoFixedDataPointsNum: 0,
     } as DashboardSummary,
   },
 };

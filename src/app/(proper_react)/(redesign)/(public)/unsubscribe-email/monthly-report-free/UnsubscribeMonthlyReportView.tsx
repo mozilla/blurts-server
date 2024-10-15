@@ -38,9 +38,12 @@ export const UnsubscribeMonthlyReportView = ({ token }: { token: string }) => {
 
   const handleUnsubscription = async () => {
     try {
-      const response = await fetch(`/api/unsubscribe-email?token=${token}`, {
-        method: "GET",
-      });
+      const response = await fetch(
+        `/api/v1/user/unsubscribe-email?token=${token}`,
+        {
+          method: "GET",
+        },
+      );
 
       if (!response.ok) {
         toast.error(

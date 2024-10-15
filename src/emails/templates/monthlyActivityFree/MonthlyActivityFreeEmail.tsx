@@ -2,28 +2,27 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import type { SubscriberRow } from "knex/types/tables";
-import { ExtendedReactLocalization } from "../../../../app/functions/l10n";
-import { EmailFooter } from "../../EmailFooter";
-import { EmailHero } from "../../../components/EmailHero";
-import { DataPointCount } from "../../../components/EmailDataPointCount";
-import { DashboardSummary } from "../../../../app/functions/server/dashboard";
-import { EmailBanner } from "../../../components/EmailBanner";
-import { getPremiumSubscriptionUrl } from "../../../../app/functions/server/getPremiumSubscriptionInfo";
-import { isEligibleForPremium } from "../../../../app/functions/universal/premium";
-import { getSignupLocaleCountry } from "../../../functions/getSignupLocaleCountry";
-import { HeaderStyles, MetaTags } from "../../HeaderStyles";
+import type { ExtendedReactLocalization } from "../../../app/functions/l10n";
+import { EmailFooter } from "../EmailFooter";
+import { EmailHero } from "../../components/EmailHero";
+import { DataPointCount } from "../../components/EmailDataPointCount";
+import { DashboardSummary } from "../../../app/functions/server/dashboard";
+import { EmailBanner } from "../../components/EmailBanner";
+import { getPremiumSubscriptionUrl } from "../../../app/functions/server/getPremiumSubscriptionInfo";
+import { isEligibleForPremium } from "../../../app/functions/universal/premium";
+import { getSignupLocaleCountry } from "../../functions/getSignupLocaleCountry";
+import { HeaderStyles, MetaTags } from "../HeaderStyles";
+import { SanitizedSubscriberRow } from "../../../app/functions/server/sanitize";
 
-export type MonthlyReportFreeUserEmailProps = {
+export type MonthlyActivityFreeEmailProps = {
   l10n: ExtendedReactLocalization;
-  utmCampaignId: string;
-  subscriber: SubscriberRow;
+  subscriber: SanitizedSubscriberRow;
   dataSummary: DashboardSummary;
   unsubscribeLink: string;
 };
 
-export const MonthlyReportFreeUserEmail = (
-  props: MonthlyReportFreeUserEmailProps,
+export const MonthlyActivityFreeEmail = (
+  props: MonthlyActivityFreeEmailProps,
 ) => {
   const hasRunFreeScan = typeof props.subscriber.onerep_profile_id === "number";
   const upgradeCtaTelemetry = {
@@ -142,7 +141,7 @@ export const MonthlyReportFreeUserEmail = (
       <mj-body>
         <EmailHero
           l10n={l10n}
-          utm_campaign={props.utmCampaignId}
+          utm_campaign={upgradeCtaTelemetry.utmCampaign}
           heading={l10n.getString("email-monthly-report-hero-free-heading")}
           subheading={l10n.getString("email-monthly-report-hero-free-body")}
         />
@@ -174,105 +173,109 @@ export const MonthlyReportFreeUserEmail = (
           />
         )}
         {isEligibleForPremium(assumedCountryCode) && (
-          <mj-section>
-            <mj-text align="center" font-size="18px">
-              <h3>
-                {l10n.getString("email-monthly-report-free-summary-heading")}
-              </h3>
-            </mj-text>
-            <mj-section css-class="max_width" padding-bottom="0">
-              <mj-wrapper padding="0">
-                <mj-group>
-                  <mj-column
-                    css-class="stat_column"
-                    inner-border="2px solid #9E9E9E"
-                    inner-border-radius="10px"
-                    padding="8px"
+          <>
+            <mj-section padding-bottom="0">
+              <mj-column>
+                <mj-text align="center" font-size="18px">
+                  <h3>
+                    {l10n.getString(
+                      "email-monthly-report-free-summary-heading",
+                    )}
+                  </h3>
+                </mj-text>
+              </mj-column>
+            </mj-section>
+            <mj-section padding-bottom="0">
+              <mj-group width="100%">
+                <mj-column
+                  css-class="stat_column"
+                  inner-border="2px solid #9E9E9E"
+                  inner-border-radius="10px"
+                  padding="8px"
+                >
+                  <mj-text
+                    align="center"
+                    font-weight="bold"
+                    font-size="50px"
+                    color="#9E9E9E"
                   >
-                    <mj-text
-                      align="center"
-                      font-weight="bold"
-                      font-size="50px"
-                      color="#9E9E9E"
-                    >
-                      {props.dataSummary.dataBrokerAutoFixedNum}
-                    </mj-text>
-                    <mj-text align="center" color="#9E9E9E">
-                      {l10n.getString(
-                        "email-monthly-report-free-summary-auto-removed",
-                        {
-                          data_point_count:
-                            props.dataSummary.dataBrokerAutoFixedNum,
-                        },
-                      )}
-                    </mj-text>
-                  </mj-column>
-                  <mj-column
-                    css-class={`stat_column ${resolvedBoxData.activeState ? `manually_resolved_column_sparkles` : ``}`}
-                    inner-border={`2px solid ${resolvedBoxData.activeState ? purpleActiveColor : greyInactiveColor}`}
-                    inner-border-radius="10px"
-                    padding="8px"
+                    {props.dataSummary.dataBrokerAutoFixedNum}
+                  </mj-text>
+                  <mj-text align="center" color="#9E9E9E">
+                    {l10n.getString(
+                      "email-monthly-report-free-summary-auto-removed",
+                      {
+                        data_point_count:
+                          props.dataSummary.dataBrokerAutoFixedNum,
+                      },
+                    )}
+                  </mj-text>
+                </mj-column>
+                <mj-column
+                  css-class={`stat_column ${resolvedBoxData.activeState ? `manually_resolved_column_sparkles` : ``}`}
+                  inner-border={`2px solid ${resolvedBoxData.activeState ? purpleActiveColor : greyInactiveColor}`}
+                  inner-border-radius="10px"
+                  padding="8px"
+                >
+                  <mj-text
+                    align="center"
+                    font-weight="bold"
+                    font-size="50px"
+                    color={
+                      resolvedBoxData.activeState
+                        ? purpleActiveColor
+                        : greyInactiveColor
+                    }
                   >
-                    <mj-text
-                      align="center"
-                      font-weight="bold"
-                      font-size="50px"
-                      color={
-                        resolvedBoxData.activeState
-                          ? purpleActiveColor
-                          : greyInactiveColor
-                      }
-                    >
-                      {resolvedBoxData.dataPointValue}
-                    </mj-text>
-                    <mj-text
-                      align="center"
-                      color={
-                        resolvedBoxData.activeState
-                          ? purpleActiveColor
-                          : greyInactiveColor
-                      }
-                    >
-                      {l10n.getString(resolvedBoxData.dataPointCountLabel, {
-                        data_point_count: resolvedBoxData.dataPointValue,
-                      })}
-                    </mj-text>
-                  </mj-column>
-                </mj-group>
-              </mj-wrapper>
+                    {resolvedBoxData.dataPointValue}
+                  </mj-text>
+                  <mj-text
+                    align="center"
+                    color={
+                      resolvedBoxData.activeState
+                        ? purpleActiveColor
+                        : greyInactiveColor
+                    }
+                  >
+                    {l10n.getString(resolvedBoxData.dataPointCountLabel, {
+                      data_point_count: resolvedBoxData.dataPointValue,
+                    })}
+                  </mj-text>
+                </mj-column>
+              </mj-group>
 
-              <mj-wrapper padding="0">
-                <mj-group>
-                  <mj-column>
-                    <mj-group css-class="upgrade_link">
-                      <mj-image
+              <mj-group width="100%">
+                <mj-column>
+                  <mj-button
+                    href={premiumSubscriptionUrlObject.href}
+                    background-color="transparent"
+                    line-height="0"
+                    color="#0060DF"
+                    text-decoration="underline"
+                    inner-padding="0"
+                    text-align="left"
+                  >
+                    <span className="upgrade_link">
+                      {/* This isn't Next.js, so no need to use Next.js's <Image>: */}
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
                         alt=""
                         src={`${process.env.SERVER_URL}/images/email/icons/lock-icon.png`}
                         width="14px"
                         height="16px"
                       />
-                      <mj-button
-                        href={premiumSubscriptionUrlObject.href}
-                        background-color="transparent"
-                        line-height="0"
-                        color="#0060DF"
-                        text-decoration="underline"
-                        inner-padding="0"
-                        text-align="left"
-                      >
-                        <i>
-                          {l10n.getString(
-                            "email-monthly-report-free-upgrade-cta",
-                          )}
-                        </i>
-                      </mj-button>
-                    </mj-group>
-                  </mj-column>
-                  <mj-column width="50%"> </mj-column>
-                </mj-group>
-              </mj-wrapper>
+                      <i>
+                        {l10n.getString(
+                          "email-monthly-report-free-upgrade-cta",
+                        )}
+                      </i>
+                    </span>
+                  </mj-button>
+                </mj-column>
+                <mj-column width="50%"> </mj-column>
+              </mj-group>
             </mj-section>
-          </mj-section>
+          </>
         )}
 
         {isEligibleForPremium(assumedCountryCode) && (
@@ -286,7 +289,7 @@ export const MonthlyReportFreeUserEmail = (
         )}
         <EmailFooter
           l10n={l10n}
-          utm_campaign={props.utmCampaignId}
+          utm_campaign={upgradeCtaTelemetry.utmCampaign}
           unsubscribeLink={props.unsubscribeLink}
         />
       </mj-body>
