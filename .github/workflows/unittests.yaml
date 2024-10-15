@@ -1,6 +1,9 @@
 name: Unit Tests
 
-on: [push]
+on:
+  push:
+  schedule:
+    - cron: '0 8 * * *'
 
 jobs:
   unit-tests:
@@ -15,9 +18,17 @@ jobs:
           node-version: '20.9.x'
       - run: npm ci
       - run: npm run build-glean
+      # Run the regular tests on push
       - run: npm test
+        if: github.event_name != 'schedule'
+      # But measure coverage without ignore markers in the nighly job
+      - name: Remove `c8 ignore` markers to output full unit test coverage if on the `report-coverage` branch
+        run: find src/ -type f -name "*.js" -or -name "*.ts" -or -name "*.jsx" -or -name "*.tsx" -exec sed --in-place --expression='s/c8 ignore/c8 TEMPORARILY DO NOT ignore/g' {} \;
+        if: github.event_name == 'schedule'
+      # (and set an arbitrary coverage threshold for that "true" coverage):
+      - run: npm test -- --coverageThreshold='{"global":{"branches":80,"functions":80,"lines":80,"statements":80}}'
+        if: github.event_name == 'schedule'
       - uses: actions/upload-artifact@v4
-        if: failure()
         with:
           name: coverage-report
           path: coverage/

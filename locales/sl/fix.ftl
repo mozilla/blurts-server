@@ -86,7 +86,7 @@ high-risk-breach-bank-account-title = Vaš bančni račun je bil razkrit
 high-risk-breach-bank-account-description = Če ukrepate čim prej, si lahko zagotovite večjo pravno zaščito, ki vam bo pomagala povrniti morebitne izgube.
 high-risk-breach-bank-account-step-one = Takoj obvestite svojo banko, da je bila številka vašega računa ogrožena.
 high-risk-breach-bank-account-step-two = Spremenite številko računa.
-high-risk-breach-bank-account-step-three = Preverite svoje račune za nepooblaščene bremenitve.
+high-risk-breach-bank-account-step-three = Preverite, ali so se vam na računu pojavile nepooblaščene bremenitve.
 
 # Social Security Number Breaches
 

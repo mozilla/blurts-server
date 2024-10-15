@@ -43,3 +43,12 @@ export function modifyAttributionsForUrlSearchParams(
 
   return searchParams;
 }
+
+export const containsExpectedSearchParams = (
+  expectedSearchParams: Record<string, string>,
+  searchParams: URLSearchParams,
+) =>
+  Object.keys(expectedSearchParams).every(
+    (searchParamKey) =>
+      searchParams.get(searchParamKey) === expectedSearchParams[searchParamKey],
+  );
