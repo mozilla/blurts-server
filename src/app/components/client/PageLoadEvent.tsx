@@ -7,34 +7,18 @@
 import { useEffect } from "react";
 import { useCookies } from "react-cookie";
 import { usePathname } from "next/navigation";
-import { FeatureFlagName } from "../../../db/tables/featureFlags";
 import { useTelemetry } from "../../hooks/useTelemetry";
 import { GleanMetricMap } from "../../../telemetry/generated/_map";
 
-export type Props = {
-  experimentationId: string;
-  enabledFlags: FeatureFlagName[];
-};
-
 // Empty component that records a page view on first load.
-export const PageLoadEvent = (props: Props) => {
+export const PageLoadEvent = () => {
   const [cookies, setCookie] = useCookies([
-    "experimentationId",
     "attributionsFirstTouch",
     "attributionsLastTouch",
   ]);
   const pathname = usePathname();
 
-  const recordTelemetry = useTelemetry({
-    experimentationId: props.experimentationId,
-  });
-
-  if (
-    props.experimentationId.startsWith("guest") &&
-    !cookies.experimentationId
-  ) {
-    setCookie("experimentationId", props.experimentationId);
-  }
+  const recordTelemetry = useTelemetry();
 
   // On first load of the page, record a page view.
   useEffect(() => {
