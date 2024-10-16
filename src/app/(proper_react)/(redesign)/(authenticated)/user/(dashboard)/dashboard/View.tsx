@@ -53,9 +53,14 @@ import {
 import { ExperimentData } from "../../../../../../../telemetry/generated/nimbus/experiments";
 import { PetitionBanner } from "../../../../../../components/client/PetitionBanner";
 import { useLocalDismissal } from "../../../../../../hooks/useLocalDismissal";
-import { RemovalTimeEstimate } from "./[[...slug]]/page";
+import { ScanResult } from "../../../../../../functions/server/onerep";
 
 export type TabType = "action-needed" | "fixed";
+
+export type RemovalTimeEstimate = {
+  d: ScanResult["data_broker"];
+  t: number;
+};
 
 export type Props = {
   enabledFeatureFlags: FeatureFlagName[];
