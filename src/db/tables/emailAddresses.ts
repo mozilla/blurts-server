@@ -11,6 +11,7 @@ import { updateFxAData } from "./subscribers";
 import { ForbiddenError, UnauthorizedError } from "../../utils/error";
 import { EmailAddressRow, SubscriberRow } from "knex/types/tables";
 import { ReactLocalization } from "@fluent/react";
+import { CONST_MAX_NUM_ADDRESSES } from "../../constants";
 
 const knex = createDbConnection();
 
@@ -43,22 +44,32 @@ async function addSubscriberUnverifiedEmailHash(
   email: string,
 ) {
   const lowerCaseEmail = email.toLowerCase();
-  const res = await knex.transaction((trx) => {
-    return trx("email_addresses")
+
+  const res = await knex.transaction(async (trx) => {
+    await trx.raw("SET TRANSACTION ISOLATION LEVEL SERIALIZABLE");
+    return await trx("email_addresses")
       .forUpdate()
-      .select({
-        subscriber_id: user.id,
-      })
-      .insert({
-        subscriber_id: user.id,
-        email: lowerCaseEmail,
-        sha1: getSha1(lowerCaseEmail),
-        verification_token: uuidv4(),
-        verified: false,
-      })
-      .returning("*");
+      .select()
+      .where("subscriber_id", user.id)
+      .then(async (rows) => {
+        if (rows.length < CONST_MAX_NUM_ADDRESSES - 1)
+          return trx("email_addresses")
+            .insert({
+              subscriber_id: user.id,
+              email: lowerCaseEmail,
+              sha1: getSha1(lowerCaseEmail),
+              verification_token: uuidv4(),
+              verified: false,
+            })
+            .returning("*");
+      });
   });
-  return res[0];
+
+  if (res) {
+    return res[0];
+  } else {
+    throw new Error("Could not add email address");
+  }
 }
 /* c8 ignore stop */
 
