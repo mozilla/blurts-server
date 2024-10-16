@@ -42,8 +42,9 @@ import { getElapsedTimeInDaysSinceInitialScan } from "../../../../../../../funct
 import { getExperiments } from "../../../../../../../functions/server/getExperiments";
 import { getLocale } from "../../../../../../../functions/universal/getLocale";
 import { getL10n } from "../../../../../../../functions/l10n/serverComponents";
+import { getDataBrokerRemovalTimeEstimates } from "../../../../../../../functions/server/getDataBrokerRemovalTimeEstimates";
 
-export type RemovalTimeEstimate = { d: string; t: number };
+const dashboardTabSlugs = ["action-needed", "fixed"];
 
 type Props = {
   params: {
@@ -54,8 +55,6 @@ type Props = {
     dialog?: "subscriptions";
   };
 };
-
-const dashboardTabSlugs = ["action-needed", "fixed"];
 
 export default async function DashboardPage({ params, searchParams }: Props) {
   const session = await getServerSession();
@@ -150,7 +149,6 @@ export default async function DashboardPage({ params, searchParams }: Props) {
 
   return (
     <View
-      removalTimeEstimates={[]}
       user={session.user}
       isEligibleForPremium={userIsEligibleForPremium}
       isEligibleForFreeScan={userIsEligibleForFreeScan}
@@ -171,6 +169,7 @@ export default async function DashboardPage({ params, searchParams }: Props) {
       hasFirstMonitoringScan={hasFirstMonitoringScan}
       signInCount={signInCount}
       autoOpenUpsellDialog={searchParams.dialog === "subscriptions"}
+      removalTimeEstimates={getDataBrokerRemovalTimeEstimates(latestScan)}
     />
   );
 }
