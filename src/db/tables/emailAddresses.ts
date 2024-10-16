@@ -68,7 +68,7 @@ async function addSubscriberUnverifiedEmailHash(
   if (res) {
     return res[0];
   } else {
-    return false;
+    throw new Error("Could not add email address");
   }
 }
 /* c8 ignore stop */
