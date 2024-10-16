@@ -6,7 +6,6 @@
 
 import { useEffect } from "react";
 import Glean from "@mozilla/glean/web";
-import { useCookies } from "react-cookie";
 
 export type Props = {
   experimentationId: string;
@@ -14,17 +13,6 @@ export type Props = {
 };
 
 export const GleanScript = (props: Props) => {
-  const [cookies, setCookie] = useCookies(["experimentationId"]);
-
-  useEffect(() => {
-    if (
-      props.experimentationId.startsWith("guest") &&
-      !cookies.experimentationId
-    ) {
-      setCookie("experimentationId", props.experimentationId);
-    }
-  }, [cookies.experimentationId, props.experimentationId, setCookie]);
-
   // Initialize Glean only on the first render
   useEffect(() => {
     // Enable upload only if the user has not opted out of tracking.
