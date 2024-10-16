@@ -193,7 +193,7 @@ declare module "knex/types/tables" {
   interface SubscriberEmailPreferencesRow {
     id: number;
     subscriber_id: number;
-    unsubscribe_token: string;
+    unsubscribe_token: string | null;
     monthly_monitor_report_free: boolean | null;
     monthly_monitor_report_free_at: Date | null;
   }
