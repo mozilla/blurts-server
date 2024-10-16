@@ -207,12 +207,12 @@ export const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
             <dd className={styles.hideOnMobile}>
               {dateFormatter.format(subscriberBreach.addedDate)}
             </dd>
-            <dt className={styles.visuallyHidden}>
+            <dt className={`${styles.hideOnMobile} ${styles.visuallyHidden}`}>
               {l10n.getString(
                 "dashboard-exposures-filter-exposure-removal-time-title",
               )}
             </dt>
-            <dd>
+            <dd className={styles.hideOnMobile}>
               {l10n.getString(
                 "dashboard-exposures-filter-exposure-removal-time-label-na",
               )}

@@ -264,12 +264,12 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
             <dd className={styles.hideOnMobile}>
               {dateFormatter.format(scanResult.created_at)}
             </dd>
-            <dt className={styles.visuallyHidden}>
+            <dt className={`${styles.hideOnMobile} ${styles.visuallyHidden}`}>
               {l10n.getString(
                 "dashboard-exposures-filter-exposure-removal-time-title",
               )}
             </dt>
-            <dd>{removalEstimateTimeLabel}</dd>
+            <dd className={styles.hideOnMobile}>{removalEstimateTimeLabel}</dd>
             <dt className={styles.visuallyHidden}>
               {l10n.getString("exposure-card-label-status")}
             </dt>
