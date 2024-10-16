@@ -39,7 +39,7 @@ import { refreshStoredScanResults } from "../../../../../functions/server/refres
 import { hasPremium } from "../../../../../functions/universal/user";
 import { isEligibleForPremium } from "../../../../../functions/universal/premium";
 import { MonthlyActivityFreeEmail } from "../../../../../../emails/templates/monthlyActivityFree/MonthlyActivityFreeEmail";
-import { getMonthlyActivityFreeUnsubscribeLink } from "../../../../../../scripts/cronjobs/monthlyActivityFree";
+import { getMonthlyActivityFreeUnsubscribeLink } from "../../../../../../app/functions/cronjobs/unsubscribeLinks";
 
 async function getAdminSubscriber(): Promise<SubscriberRow | null> {
   const session = await getServerSession();
