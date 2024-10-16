@@ -3,22 +3,54 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import type { Meta, StoryObj } from "@storybook/react";
-import { ExposureCard } from "./ExposureCard";
+import { Exposure, ExposureCard } from "./ExposureCard";
 import FamilyTreeImage from "../assets/familytree.png";
 import TwitterImage from "../assets/twitter-icon.png";
 import {
   createRandomBreach,
   createRandomScanResult,
 } from "../../../../apiMocks/mockData";
+import { StaticImageData } from "next/image";
+import { ReactNode } from "react";
+import { FeatureFlagName } from "../../../../db/tables/featureFlags";
 
-// More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
-const meta: Meta<typeof ExposureCard> = {
+type ExposureCardWrapperProps = {
+  exposureData: Exposure;
+  exposureImg?: StaticImageData;
+  locale?: string;
+  isPremiumUser?: boolean;
+  isEligibleForPremium?: boolean;
+  resolutionCta?: ReactNode;
+  isExpanded?: boolean;
+  enabledFeatureFlags?: FeatureFlagName[];
+  removalTimeEstimate?: number;
+  onToggleExpanded?: () => void;
+};
+
+const ExposureCardWrapper = (props: ExposureCardWrapperProps) => {
+  return (
+    <ExposureCard
+      exposureImg={props.exposureImg}
+      exposureData={props.exposureData}
+      locale={props.locale ?? "en"}
+      isPremiumUser={props.isPremiumUser ?? false}
+      isEligibleForPremium={props.isEligibleForPremium ?? false}
+      resolutionCta={props.resolutionCta ?? null}
+      isExpanded={props.isExpanded ?? true}
+      enabledFeatureFlags={props.enabledFeatureFlags ?? []}
+      removalTimeEstimate={props.removalTimeEstimate}
+      onToggleExpanded={props.onToggleExpanded ?? (() => {})}
+    />
+  );
+};
+
+const meta: Meta<typeof ExposureCardWrapper> = {
   title: "ExposureCard",
-  component: ExposureCard,
+  component: ExposureCardWrapper,
   tags: ["autodocs"],
 };
 export default meta;
-type Story = StoryObj<typeof ExposureCard>;
+type Story = StoryObj<typeof ExposureCardWrapper>;
 
 const ScanMockItemRemoved = createRandomScanResult({
   status: "removed",
