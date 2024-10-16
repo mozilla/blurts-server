@@ -11,6 +11,8 @@ email-header-button-sign-in = Log ind
 ## Email footers
 
 email-footer-support-heading = Har du spørgsmål om { -brand-mozilla-monitor }?
+email-footer-support-content = Besøg vores <support-link>supportcenter</support-link> for at få hjælp
+email-footer-trigger-transactional = Du modtager denne mail, fordi du abonnerer på { -brand-mozilla-monitor }.
 email-footer-source-hibp = Information om datalæk stammer fra <hibp-link>{ -brand-HIBP }</hibp-link>
 email-footer-logo-mozilla-alt = { -brand-mozilla }
 email-footer-meta-privacy-notice = Privatliv
@@ -73,6 +75,9 @@ email-spotted-new-breach = Vi har opdaget en ny datalæk
 ## Redesigned breach alert email
 
 email-breach-alert-all-subject = Ny datalæk opdaget
+email-breach-alert-all-preview = Vi guider dig gennem løsningen trin for trin.
+email-breach-alert-all-hero-heading = Du er blevet ramt af en nyt datalæk
+email-breach-alert-all-hero-subheading = Bare rolig, vi kan hjælpe dig med at løse problemet
 email-breach-alert-all-lead = { -brand-mozilla-monitor } opdagede følgende datalæk, der inkluderer dine personlige oplysninger:
 email-breach-alert-all-data-points-title = Dine eksponerede data:
 email-breach-alert-all-next-steps-cta-label = Lad os komme i gang
