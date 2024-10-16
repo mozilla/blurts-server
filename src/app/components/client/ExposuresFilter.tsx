@@ -299,22 +299,24 @@ export const ExposuresFilter = ({
           <li className={styles.hideOnMobile}>
             {l10n.getString("dashboard-exposures-filter-date-found")}
           </li>
-          <li className={styles.hideOnMobile}>
-            {l10n.getString(
-              "dashboard-exposures-filter-exposure-removal-time-title",
-            )}
-            <button
-              {...exposureRemovalTimeExplainerTriggerProps}
-              ref={exposureRemovalTimeExplainerTriggerRef}
-              aria-label={l10n.getString("open-modal-alt")}
-              aria-describedby="filterRemovalTime"
-            >
-              <VisuallyHidden id="filterRemovalTime">
-                {l10n.getString("modal-exposure-removal-time-title")}
-              </VisuallyHidden>
-              <QuestionMarkCircle width="15" height="15" alt="" />
-            </button>
-          </li>
+          {enabledFeatureFlags.includes("DataBrokerRemovalTimeEstimates") && (
+            <li className={styles.hideOnMobile}>
+              {l10n.getString(
+                "dashboard-exposures-filter-exposure-removal-time-title",
+              )}
+              <button
+                {...exposureRemovalTimeExplainerTriggerProps}
+                ref={exposureRemovalTimeExplainerTriggerRef}
+                aria-label={l10n.getString("open-modal-alt")}
+                aria-describedby="filterRemovalTime"
+              >
+                <VisuallyHidden id="filterRemovalTime">
+                  {l10n.getString("modal-exposure-removal-time-title")}
+                </VisuallyHidden>
+                <QuestionMarkCircle width="15" height="15" alt="" />
+              </button>
+            </li>
+          )}
           <li className={styles.hideOnMobile}>
             {l10n.getString("dashboard-exposures-filter-status")}
             <button

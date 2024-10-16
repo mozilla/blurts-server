@@ -25,6 +25,7 @@ import {
 import { FallbackLogo } from "../../server/BreachLogo";
 import { ExposureCardDataClassLayout } from "./ExposureCardDataClass";
 import { useTelemetry } from "../../../hooks/useTelemetry";
+import { FeatureFlagName } from "../../../../db/tables/featureFlags";
 
 export type SubscriberBreachCardProps = {
   exposureImg?: StaticImageData;
@@ -33,6 +34,7 @@ export type SubscriberBreachCardProps = {
   resolutionCta: ReactNode;
   isEligibleForPremium: boolean;
   isExpanded: boolean;
+  enabledFeatureFlags: FeatureFlagName[];
   onToggleExpanded: () => void;
 };
 
@@ -207,16 +209,24 @@ export const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
             <dd className={styles.hideOnMobile}>
               {dateFormatter.format(subscriberBreach.addedDate)}
             </dd>
-            <dt className={`${styles.hideOnMobile} ${styles.visuallyHidden}`}>
-              {l10n.getString(
-                "dashboard-exposures-filter-exposure-removal-time-title",
-              )}
-            </dt>
-            <dd className={styles.hideOnMobile}>
-              {l10n.getString(
-                "dashboard-exposures-filter-exposure-removal-time-label-na",
-              )}
-            </dd>
+            {props.enabledFeatureFlags.includes(
+              "DataBrokerRemovalTimeEstimates",
+            ) && (
+              <>
+                <dt
+                  className={`${styles.hideOnMobile} ${styles.visuallyHidden}`}
+                >
+                  {l10n.getString(
+                    "dashboard-exposures-filter-exposure-removal-time-title",
+                  )}
+                </dt>
+                <dd className={styles.hideOnMobile}>
+                  {l10n.getString(
+                    "dashboard-exposures-filter-exposure-removal-time-label-na",
+                  )}
+                </dd>
+              </>
+            )}
             <dt className={styles.visuallyHidden}>
               {l10n.getString("exposure-card-label-status")}
             </dt>

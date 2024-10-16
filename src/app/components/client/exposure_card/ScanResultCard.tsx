@@ -264,12 +264,22 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
             <dd className={styles.hideOnMobile}>
               {dateFormatter.format(scanResult.created_at)}
             </dd>
-            <dt className={`${styles.hideOnMobile} ${styles.visuallyHidden}`}>
-              {l10n.getString(
-                "dashboard-exposures-filter-exposure-removal-time-title",
-              )}
-            </dt>
-            <dd className={styles.hideOnMobile}>{removalEstimateTimeLabel}</dd>
+            {props.enabledFeatureFlags?.includes(
+              "DataBrokerRemovalTimeEstimates",
+            ) && (
+              <>
+                <dt
+                  className={`${styles.hideOnMobile} ${styles.visuallyHidden}`}
+                >
+                  {l10n.getString(
+                    "dashboard-exposures-filter-exposure-removal-time-title",
+                  )}
+                </dt>
+                <dd className={styles.hideOnMobile}>
+                  {removalEstimateTimeLabel}
+                </dd>
+              </>
+            )}
             <dt className={styles.visuallyHidden}>
               {l10n.getString("exposure-card-label-status")}
             </dt>

@@ -52,6 +52,7 @@ export const featureFlagNames = [
   "BreachEmailRedesign",
   "PromptNoneAuthFlow",
   "GA4SubscriptionEvents",
+  "DataBrokerRemovalTimeEstimates",
 ] as const;
 export type FeatureFlagName = (typeof featureFlagNames)[number];
 

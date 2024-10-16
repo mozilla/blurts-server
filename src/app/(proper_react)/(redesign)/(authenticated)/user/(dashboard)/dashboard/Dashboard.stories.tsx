@@ -225,6 +225,7 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
             hasFirstMonitoringScan={props.hasFirstMonitoringScan ?? false}
             signInCount={props.signInCount ?? null}
             autoOpenUpsellDialog={props.autoOpenUpsellDialog ?? false}
+            removalTimeEstimates={[]}
           />
         </Shell>
       </CountryCodeProvider>
