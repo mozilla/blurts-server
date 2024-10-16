@@ -10,7 +10,8 @@ import styles from "./EmailTrigger.module.scss";
 import {
   triggerBreachAlert,
   triggerFirstDataBrokerRemovalFixed,
-  triggerMonthlyActivity,
+  triggerMonthlyActivityFree,
+  triggerMonthlyActivityPlus,
   triggerSignupReportEmail,
   triggerVerificationEmail,
 } from "./actions";
@@ -30,8 +31,12 @@ export const EmailTrigger = (props: Props) => {
   const [isSendingRedesignedBreachAlert, setIsSendingRedesignedBreachAlert] =
     useState(false);
   const [
-    isSendingMonthlyActivityOverview,
-    setIsSendingMonthlyActivityOverview,
+    isSendingMonthlyActivityFreeOverview,
+    setIsSendingMonthlyActivityFreeOverview,
+  ] = useState(false);
+  const [
+    isSendingMonthlyActivityPlusOverview,
+    setIsSendingMonthlyActivityPlusOverview,
   ] = useState(false);
   const [firstDataBrokerRemovalFixed, setFirstDataBrokerRemovalFixed] =
     useState(false);
@@ -88,15 +93,27 @@ export const EmailTrigger = (props: Props) => {
         </Button>
         <Button
           variant="primary"
-          isLoading={isSendingMonthlyActivityOverview}
+          isLoading={isSendingMonthlyActivityFreeOverview}
           onPress={() => {
-            setIsSendingMonthlyActivityOverview(true);
-            void triggerMonthlyActivity(selectedEmailAddress).then(() => {
-              setIsSendingMonthlyActivityOverview(false);
+            setIsSendingMonthlyActivityFreeOverview(true);
+            void triggerMonthlyActivityFree(selectedEmailAddress).then(() => {
+              setIsSendingMonthlyActivityFreeOverview(false);
             });
           }}
         >
-          Monthly activity overview
+          Monthly activity overview (free)
+        </Button>
+        <Button
+          variant="primary"
+          isLoading={isSendingMonthlyActivityPlusOverview}
+          onPress={() => {
+            setIsSendingMonthlyActivityPlusOverview(true);
+            void triggerMonthlyActivityPlus(selectedEmailAddress).then(() => {
+              setIsSendingMonthlyActivityPlusOverview(false);
+            });
+          }}
+        >
+          Monthly activity overview (Plus)
         </Button>
         <Button
           variant="primary"
