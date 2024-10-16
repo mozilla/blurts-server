@@ -204,8 +204,9 @@ export const View = (props: Props) => {
     return (
       <li key={exposureCardKey} className={styles.exposureListItem}>
         <ExposureCard
-          removalTimeEstimate={removalTimeEstimate?.t}
+          experimentData={props.experimentData}
           enabledFeatureFlags={props.enabledFeatureFlags}
+          removalTimeEstimate={removalTimeEstimate?.t}
           exposureData={exposure}
           isExpanded={exposureCardKey === activeExposureCardKey}
           onToggleExpanded={() => {
@@ -538,6 +539,7 @@ export const View = (props: Props) => {
         </section>
         <div className={styles.exposuresFilterWrapper}>
           <ExposuresFilter
+            experimentData={props.experimentData}
             enabledFeatureFlags={props.enabledFeatureFlags}
             initialFilterValues={initialFilterState}
             filterValues={filters}

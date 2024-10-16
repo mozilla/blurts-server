@@ -13,6 +13,10 @@ import {
 import { StaticImageData } from "next/image";
 import { ReactNode } from "react";
 import { FeatureFlagName } from "../../../../db/tables/featureFlags";
+import {
+  defaultExperimentData,
+  ExperimentData,
+} from "../../../../telemetry/generated/nimbus/experiments";
 
 type ExposureCardWrapperProps = {
   exposureData: Exposure;
@@ -23,6 +27,7 @@ type ExposureCardWrapperProps = {
   resolutionCta?: ReactNode;
   isExpanded?: boolean;
   enabledFeatureFlags?: FeatureFlagName[];
+  experimentData?: ExperimentData;
   removalTimeEstimate?: number;
   onToggleExpanded?: () => void;
 };
@@ -38,6 +43,14 @@ const ExposureCardWrapper = (props: ExposureCardWrapperProps) => {
       resolutionCta={props.resolutionCta ?? null}
       isExpanded={props.isExpanded ?? true}
       enabledFeatureFlags={props.enabledFeatureFlags ?? []}
+      experimentData={
+        props.experimentData ?? {
+          ...defaultExperimentData,
+          "data-broker-removal-time-estimates": {
+            enabled: true,
+          },
+        }
+      }
       removalTimeEstimate={props.removalTimeEstimate}
       onToggleExpanded={props.onToggleExpanded ?? (() => {})}
     />

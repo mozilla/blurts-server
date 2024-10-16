@@ -10,6 +10,7 @@ import { axe } from "jest-axe";
 import Meta, {
   ExposuresFilterDefault,
 } from "./stories/ExposuresFilter.stories";
+import { defaultExperimentData } from "../../../telemetry/generated/nimbus/experiments";
 
 jest.mock("next/navigation", () => ({
   useRouter: jest.fn(),
@@ -50,6 +51,12 @@ it("shows and hides the removal time clicking the “Got it” button", async ()
   render(
     <ExposuresFilter
       enabledFeatureFlags={["DataBrokerRemovalTimeEstimates"]}
+      experimentData={{
+        ...defaultExperimentData,
+        "data-broker-removal-time-estimates": {
+          enabled: true,
+        },
+      }}
     />,
   );
 
@@ -74,6 +81,12 @@ it("shows and hides the removal time by clicking the close button", async () => 
   render(
     <ExposuresFilter
       enabledFeatureFlags={["DataBrokerRemovalTimeEstimates"]}
+      experimentData={{
+        ...defaultExperimentData,
+        "data-broker-removal-time-estimates": {
+          enabled: true,
+        },
+      }}
     />,
   );
 

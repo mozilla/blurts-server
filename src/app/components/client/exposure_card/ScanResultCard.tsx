@@ -20,6 +20,7 @@ import { ExposureCardDataClassLayout } from "./ExposureCardDataClass";
 import { DataBrokerImage } from "./DataBrokerImage";
 import { TelemetryLink } from "../TelemetryLink";
 import { FeatureFlagName } from "../../../../db/tables/featureFlags";
+import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 
 export type ScanResultCardProps = {
   scanResult: OnerepScanResultRow;
@@ -29,6 +30,7 @@ export type ScanResultCardProps = {
   isExpanded: boolean;
   isOnManualRemovePage?: boolean;
   enabledFeatureFlags?: FeatureFlagName[];
+  experimentData?: ExperimentData;
   removalTimeEstimate?: number;
   onToggleExpanded: () => void;
 };
@@ -266,20 +268,22 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
             </dd>
             {props.enabledFeatureFlags?.includes(
               "DataBrokerRemovalTimeEstimates",
-            ) && (
-              <>
-                <dt
-                  className={`${styles.hideOnMobile} ${styles.visuallyHidden}`}
-                >
-                  {l10n.getString(
-                    "dashboard-exposures-filter-exposure-removal-time-title",
-                  )}
-                </dt>
-                <dd className={styles.hideOnMobile}>
-                  {removalEstimateTimeLabel}
-                </dd>
-              </>
-            )}
+            ) &&
+              props.experimentData?.["data-broker-removal-time-estimates"]
+                .enabled && (
+                <>
+                  <dt
+                    className={`${styles.hideOnMobile} ${styles.visuallyHidden}`}
+                  >
+                    {l10n.getString(
+                      "dashboard-exposures-filter-exposure-removal-time-title",
+                    )}
+                  </dt>
+                  <dd className={styles.hideOnMobile}>
+                    {removalEstimateTimeLabel}
+                  </dd>
+                </>
+              )}
             <dt className={styles.visuallyHidden}>
               {l10n.getString("exposure-card-label-status")}
             </dt>
