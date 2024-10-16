@@ -39,9 +39,9 @@ export function getExperimentationId(
     if (cookie) {
       experimentationId = cookie.value as ExperimentationId;
     } else {
-      // TODO Cookies can only be set in server action or route handler
+      // Cookies can only be set in server action or route handler
       // @see https://nextjs.org/docs/app/api-reference/functions/cookies#cookiessetname-value-options
-      // This is set client-side in <PageLoadEvent>.
+      // We set it client-side in <GleanScript>.
       experimentationId = `guest-${randomUUID()}`;
     }
   }

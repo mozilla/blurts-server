@@ -8,7 +8,6 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { getL10n, getL10nBundles } from "./functions/l10n/serverComponents";
 import { getLocale } from "./functions/universal/getLocale";
-import { PublicEnvProvider } from "../contextProviders/public-env";
 import { SessionProvider } from "../contextProviders/session";
 import { getServerSession } from "./functions/server/getServerSession";
 import { metropolis } from "./fonts/Metropolis/metropolis";
@@ -16,11 +15,8 @@ import { CONST_GA4_MEASUREMENT_ID } from "../constants";
 import { headers } from "next/headers";
 import { GoogleAnalyticsWorkaround } from "./components/client/GoogleAnalyticsWorkaround";
 import StripeScript from "./components/client/StripeScript";
-
-// DO NOT ADD SECRETS: Env variables added here become public.
-const PUBLIC_ENVS = {
-  PUBLIC_APP_ENV: process.env.APP_ENV ?? "",
-} as const;
+import { GleanScript } from "./components/client/GleanScript";
+import { getExperimentationId } from "./functions/server/getExperimentationId";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -68,11 +64,13 @@ export default async function RootLayout({
         data-ga4-measurement-id={CONST_GA4_MEASUREMENT_ID}
         data-node-env={process.env.NODE_ENV}
       >
-        <PublicEnvProvider publicEnvs={PUBLIC_ENVS}>
-          <SessionProvider session={session}>{children}</SessionProvider>
-        </PublicEnvProvider>
+        <SessionProvider session={session}>{children}</SessionProvider>
       </body>
       <StripeScript />
+      <GleanScript
+        channel={process.env.APP_ENV ?? ""}
+        experimentationId={getExperimentationId(session?.user ?? null)}
+      />
       {headers().get("DNT") !== "1" && (
         <GoogleAnalyticsWorkaround
           gaId={CONST_GA4_MEASUREMENT_ID}
