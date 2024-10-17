@@ -267,7 +267,7 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
               {dateFormatter.format(scanResult.created_at)}
             </dd>
             {props.enabledFeatureFlags?.includes(
-              "DataBrokerRemovalTimeEstimatesLabel",
+              "DataBrokerRemovalTimeEstimateLabel",
             ) &&
               props.experimentData?.["data-broker-removal-time-estimates"]
                 .enabled && (

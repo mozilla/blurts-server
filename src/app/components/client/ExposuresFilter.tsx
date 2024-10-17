@@ -302,9 +302,7 @@ export const ExposuresFilter = ({
           <li className={styles.hideOnMobile}>
             {l10n.getString("dashboard-exposures-filter-date-found")}
           </li>
-          {enabledFeatureFlags.includes(
-            "DataBrokerRemovalTimeEstimatesLabel",
-          ) &&
+          {enabledFeatureFlags.includes("DataBrokerRemovalTimeEstimateLabel") &&
             experimentData["data-broker-removal-time-estimates"].enabled && (
               <li className={styles.hideOnMobile}>
                 {l10n.getString(

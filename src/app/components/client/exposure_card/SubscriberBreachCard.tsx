@@ -212,7 +212,7 @@ export const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
               {dateFormatter.format(subscriberBreach.addedDate)}
             </dd>
             {props.enabledFeatureFlags.includes(
-              "DataBrokerRemovalTimeEstimatesLabel",
+              "DataBrokerRemovalTimeEstimateLabel",
             ) &&
               props.experimentData["data-broker-removal-time-estimates"]
                 .enabled && (

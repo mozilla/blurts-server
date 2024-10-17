@@ -50,7 +50,7 @@ it("shows and hides the removal time clicking the “Got it” button", async ()
   const ExposuresFilter = composeStory(ExposuresFilterDefault, Meta);
   render(
     <ExposuresFilter
-      enabledFeatureFlags={["DataBrokerRemovalTimeEstimatesLabel"]}
+      enabledFeatureFlags={["DataBrokerRemovalTimeEstimateLabel"]}
       experimentData={{
         ...defaultExperimentData,
         "data-broker-removal-time-estimates": {
@@ -80,7 +80,7 @@ it("shows and hides the removal time by clicking the close button", async () => 
   const ExposuresFilter = composeStory(ExposuresFilterDefault, Meta);
   render(
     <ExposuresFilter
-      enabledFeatureFlags={["DataBrokerRemovalTimeEstimatesLabel"]}
+      enabledFeatureFlags={["DataBrokerRemovalTimeEstimateLabel"]}
       experimentData={{
         ...defaultExperimentData,
         "data-broker-removal-time-estimates": {

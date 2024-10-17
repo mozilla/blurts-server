@@ -61,7 +61,7 @@ export const CsatSurvey = (props: CsatSurveyProps) => {
     props.enabledFeatureFlags.includes("PetitionBannerCsatSurvey") &&
       props.isEligibleForPremium &&
       getPetitionBannerCsatSurvey(surveyOptions),
-    props.enabledFeatureFlags.includes("DataBrokerRemovalTimeEstimatesCsat") &&
+    props.enabledFeatureFlags.includes("DataBrokerRemovalTimeEstimateCsat") &&
       getRemovalTimeEstimatesCsatSurvey(surveyOptions),
   ];
 
