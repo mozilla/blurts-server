@@ -113,7 +113,7 @@ dashboard-exposures-all-fixed-free-scan = {
 # About Removal Time Indicators Modal
 
 modal-exposure-removal-time-title = A note about removal times
-modal-exposure-removal-time-text = Monitor provides estimated time frames for how long data brokers usually take to remove your profile after we request it. We may periodically update these estimates for accuracy.
+modal-exposure-removal-time-text = { -product-short-name } provides estimated time frames for how long data brokers usually take to remove your profile after we request it. We may periodically update these estimates for accuracy.
 modal-exposure-removal-time-button-label = Got it
 
 ## False door test
