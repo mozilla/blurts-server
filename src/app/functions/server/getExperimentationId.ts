@@ -2,11 +2,12 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { cookies } from "next/headers";
-import { UUID, randomUUID } from "crypto";
+import { headers } from "next/headers";
+import { UUID } from "crypto";
 import { Session } from "next-auth";
 import { v5 as uuidv5 } from "uuid";
 import "./notInClientComponent";
+import { logger } from "./logging";
 
 export type ExperimentationId = UUID | `guest-${UUID}`;
 
@@ -32,18 +33,20 @@ export function getExperimentationId(
       );
     }
     experimentationId = uuidv5(accountId.toString(), namespace) as UUID;
+    return experimentationId;
   } else {
-    // if the user is not logged in, use a cookie with a randomly-generated Nimbus user ID.
+    // If the user is not logged in, use a cookie with a randomly-generated Nimbus user ID.
+    // (This header is set in middleware.ts, which reads it from a cookie, and creates the
+    // cookie if it doesn't exist yet.)
     // TODO: could we use client ID for this? There's no supported way to get it from GleanJS.
-    const cookie = cookies().get("experimentationId");
-    if (cookie) {
-      experimentationId = cookie.value as ExperimentationId;
-    } else {
-      // TODO Cookies can only be set in server action or route handler
-      // @see https://nextjs.org/docs/app/api-reference/functions/cookies#cookiessetname-value-options
-      // This is set client-side in <PageLoadEvent>.
-      experimentationId = `guest-${randomUUID()}`;
+    const experimentationId = headers().get("x-experimentation-id");
+    if (!experimentationId) {
+      logger.error(
+        "get_experimentation_id_no_x-experimentation-id_header",
+        headers().keys(),
+      );
+      return "guest-no-experimentation-id-set-by-monitor-middleware";
     }
+    return experimentationId as ExperimentationId;
   }
-  return experimentationId;
 }

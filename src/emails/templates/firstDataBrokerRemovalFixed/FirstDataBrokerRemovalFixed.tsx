@@ -2,11 +2,10 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import React from "react";
 import { ExtendedReactLocalization } from "../../../app/functions/l10n";
 import { EmailFooter } from "../EmailFooter";
 import { EmailHeader } from "../EmailHeader";
-import { HeaderStyles } from "../HeaderStyles";
+import { HeaderStyles, MetaTags } from "../HeaderStyles";
 
 export type Props = {
   l10n: ExtendedReactLocalization;
@@ -29,6 +28,7 @@ export const FirstDataBrokerRemovalFixed = (props: Props) => {
             data_broker_name: props.data.dataBrokerName,
           })}
         </mj-preview>
+        <MetaTags />
         <HeaderStyles />
       </mj-head>
       <mj-body>

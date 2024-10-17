@@ -73,7 +73,6 @@ export type Props = {
   fxaSettingsUrl: string;
   scanCount: number;
   isNewUser: boolean;
-  experimentationId: string;
   hasFirstMonitoringScan: boolean;
   elapsedTimeInDaysSinceInitialScan?: number;
   totalNumberOfPerformedScans?: number;
@@ -89,9 +88,7 @@ export type TabData = {
 
 export const View = (props: Props) => {
   const l10n = useL10n();
-  const recordTelemetry = useTelemetry({
-    experimentationId: props.experimentationId,
-  });
+  const recordTelemetry = useTelemetry();
   const countryCode = useContext(CountryCodeContext);
   const pathname = usePathname();
 

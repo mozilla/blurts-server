@@ -162,7 +162,6 @@ export default async function DashboardPage({ params, searchParams }: Props) {
       totalNumberOfPerformedScans={profileStats?.total}
       isNewUser={isNewUser}
       elapsedTimeInDaysSinceInitialScan={elapsedTimeInDaysSinceInitialScan}
-      experimentationId={experimentationId}
       experimentData={experimentData}
       activeTab={activeTab}
       hasFirstMonitoringScan={hasFirstMonitoringScan}

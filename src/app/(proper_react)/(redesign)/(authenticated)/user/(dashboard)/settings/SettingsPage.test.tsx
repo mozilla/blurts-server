@@ -731,7 +731,6 @@ it("checks that monthly monitor report is available to free users", () => {
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[
           "UpdatedEmailPreferencesOption",
-          "MonthlyActivityEmail",
           "MonthlyReportFreeUser",
         ]}
         experimentData={defaultExperimentData}
@@ -775,10 +774,7 @@ it("checks that monthly monitor report is enabled", () => {
         yearlySubscriptionUrl=""
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-        enabledFeatureFlags={[
-          "UpdatedEmailPreferencesOption",
-          "MonthlyActivityEmail",
-        ]}
+        enabledFeatureFlags={["UpdatedEmailPreferencesOption"]}
         experimentData={defaultExperimentData}
         isMonthlySubscriber={true}
         data={mockedPlusSubscriberEmailPreferences}
@@ -823,10 +819,7 @@ it("sends an API call to disable monthly monitor reports", async () => {
         yearlySubscriptionUrl=""
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-        enabledFeatureFlags={[
-          "UpdatedEmailPreferencesOption",
-          "MonthlyActivityEmail",
-        ]}
+        enabledFeatureFlags={["UpdatedEmailPreferencesOption"]}
         experimentData={defaultExperimentData}
         isMonthlySubscriber={true}
         data={mockedPlusSubscriberEmailPreferences}
@@ -878,10 +871,7 @@ it("calls the right telemetry event if a user opts out of monthly report", async
         yearlySubscriptionUrl=""
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-        enabledFeatureFlags={[
-          "UpdatedEmailPreferencesOption",
-          "MonthlyActivityEmail",
-        ]}
+        enabledFeatureFlags={["UpdatedEmailPreferencesOption"]}
         experimentData={defaultExperimentData}
         isMonthlySubscriber={true}
         data={mockedPlusSubscriberEmailPreferences}

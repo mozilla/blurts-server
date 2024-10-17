@@ -2,7 +2,6 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import React from "react";
 import type { SubscriberRow } from "knex/types/tables";
 import { ExtendedReactLocalization } from "../../../app/functions/l10n";
 import { EmailFooter, RedesignedBreachEmailFooter } from "../EmailFooter";
@@ -20,7 +19,7 @@ import { DashboardSummary } from "../../../app/functions/server/dashboard";
 import { ResolutionRelevantBreachDataTypes } from "../../../app/functions/universal/breach";
 import { EmailBanner } from "../../components/EmailBanner";
 import { DataPointCount } from "../../components/EmailDataPointCount";
-import { HeaderStyles } from "../HeaderStyles";
+import { HeaderStyles, MetaTags } from "../HeaderStyles";
 
 export type Props = {
   l10n: ExtendedReactLocalization;
@@ -37,6 +36,7 @@ export const BreachAlertEmail = (props: Props) => {
     <mjml>
       <mj-head>
         <mj-preview>{l10n.getString("email-spotted-new-breach")}</mj-preview>
+        <MetaTags />
         <HeaderStyles />
       </mj-head>
       <mj-body>

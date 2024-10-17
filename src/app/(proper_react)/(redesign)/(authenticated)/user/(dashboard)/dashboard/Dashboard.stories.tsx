@@ -208,7 +208,6 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
               monthly: 42.42,
             }}
             isNewUser={true}
-            experimentationId="arbitrary-experimentation-id"
             elapsedTimeInDaysSinceInitialScan={
               props.elapsedTimeInDaysSinceInitialScan
             }

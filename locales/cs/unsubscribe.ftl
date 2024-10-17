@@ -6,14 +6,14 @@
 # Confirm Unsubscription State
 
 unsubscribe-from-monthly-report-header = Přestat odebírat tento e-mail?
-unsubscribe-from-monthly-report-body = Od { -brand-monitor(case: "gen") } už nebudete dostávat měsíční report, který vám řekne, kolik nových odhalení jste měsíčně zaznamenali a kolik už jste opravili.
+unsubscribe-from-monthly-report-body = Od { -brand-monitor(case: "gen") } už nebudete dostávat měsíční hlášení, které vám říká, kolik nových úniků se vás týká a kolik už jste vyřešili.
 unsubscribe-cta = Zrušit odběr
 
 # Success Unsubscription State
 
 unsubscribe-success-from-monthly-report-header = Nyní jste se odhlásili
 unsubscribe-success-from-monthly-report-body = V nastavení { -brand-monitor(case: "gen") } se můžete kdykoli znovu přihlásit nebo změnit nastavení zasílání e-mailů.
-unsubscribe-success-cta = Přihlášení k { -brand-monitor(case: "dat") }
+unsubscribe-success-cta = Přihlásit se do { -brand-monitor(case: "gen") }
 
 # Error warning
 
