@@ -15,8 +15,7 @@ import { getSubscriberByFxaUid } from "../../../../../../db/tables/subscribers";
 import { ReactNode } from "react";
 import { SubscriberRow } from "knex/types/tables";
 import { getUserEmails } from "../../../../../../db/tables/emailAddresses";
-import { getLocale } from "../../../../../functions/universal/getLocale";
-import { MonthlyActivityEmail } from "../../../../../../emails/templates/monthlyActivity/MonthlyActivityEmail";
+import { MonthlyActivityPlusEmail } from "../../../../../../emails/templates/monthlyActivityPlus/MonthlyActivityPlusEmail";
 import { getDashboardSummary } from "../../../../../functions/server/dashboard";
 import { getSubscriberBreaches } from "../../../../../functions/server/getSubscriberBreaches";
 import { getCountryCode } from "../../../../../functions/server/getCountryCode";
@@ -39,6 +38,8 @@ import { getSignupLocaleCountry } from "../../../../../../emails/functions/getSi
 import { refreshStoredScanResults } from "../../../../../functions/server/refreshStoredScanResults";
 import { hasPremium } from "../../../../../functions/universal/user";
 import { isEligibleForPremium } from "../../../../../functions/universal/premium";
+import { MonthlyActivityFreeEmail } from "../../../../../../emails/templates/monthlyActivityFree/MonthlyActivityFreeEmail";
+import { getMonthlyActivityFreeUnsubscribeLink } from "../../../../../../app/functions/cronjobs/unsubscribeLinks";
 
 async function getAdminSubscriber(): Promise<SubscriberRow | null> {
   const session = await getServerSession();
@@ -127,7 +128,7 @@ export async function triggerVerificationEmail(emailAddress: string) {
   );
 }
 
-export async function triggerMonthlyActivity(emailAddress: string) {
+export async function triggerMonthlyActivityFree(emailAddress: string) {
   const session = await getServerSession();
   const subscriber = await getAdminSubscriber();
   if (!subscriber || !session?.user) {
@@ -135,9 +136,44 @@ export async function triggerMonthlyActivity(emailAddress: string) {
   }
 
   const l10n = getL10n();
-  const dateFormatter = new Intl.DateTimeFormat(getLocale(l10n), {
-    month: "long",
-  });
+
+  if (typeof subscriber.onerep_profile_id === "number") {
+    await refreshStoredScanResults(subscriber.onerep_profile_id);
+  }
+  const latestScan = await getLatestOnerepScanResults(
+    subscriber.onerep_profile_id,
+  );
+  const data = getDashboardSummary(
+    latestScan.results,
+    await getSubscriberBreaches({
+      fxaUid: session.user.subscriber?.fxa_uid,
+      countryCode: getCountryCode(headers()),
+    }),
+  );
+
+  const unsubscribeLink =
+    await getMonthlyActivityFreeUnsubscribeLink(subscriber);
+
+  await send(
+    emailAddress,
+    l10n.getString("email-monthly-free-subject"),
+    <MonthlyActivityFreeEmail
+      subscriber={sanitizeSubscriberRow(subscriber)}
+      l10n={l10n}
+      dataSummary={data}
+      unsubscribeLink={unsubscribeLink as string}
+    />,
+  );
+}
+
+export async function triggerMonthlyActivityPlus(emailAddress: string) {
+  const session = await getServerSession();
+  const subscriber = await getAdminSubscriber();
+  if (!subscriber || !session?.user) {
+    return false;
+  }
+
+  const l10n = getL10n();
 
   if (typeof subscriber.onerep_profile_id === "number") {
     await refreshStoredScanResults(subscriber.onerep_profile_id);
@@ -155,10 +191,8 @@ export async function triggerMonthlyActivity(emailAddress: string) {
 
   await send(
     emailAddress,
-    l10n.getString("email-monthly-plus-auto-subject", {
-      month: dateFormatter.format(new Date(Date.now())),
-    }),
-    <MonthlyActivityEmail
+    l10n.getString("email-monthly-plus-auto-subject"),
+    <MonthlyActivityPlusEmail
       subscriber={sanitizeSubscriberRow(subscriber)}
       l10n={l10n}
       data={data}

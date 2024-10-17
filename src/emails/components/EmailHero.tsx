@@ -21,14 +21,7 @@ export const EmailHero = (props: Props) => {
 
   return (
     <mj-wrapper padding="24px 16px">
-      <mj-section
-        padding="10px 12px"
-        background-color="#e4d2ff"
-        background-url={`${process.env.SERVER_URL}/images/email/hero-bg-gradient.png`}
-        background-repeat="repeat"
-        background-position-x={0}
-        border-radius="16px 16px 0 0"
-      >
+      <mj-section padding="10px 12px" css-class="hero_background">
         <mj-group>
           <mj-column
             width="70%"

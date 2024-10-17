@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { IntersectionOptions, useInView } from "react-intersection-observer";
-import { TelemetryArgs, useTelemetry } from "./useTelemetry";
+import { useTelemetry } from "./useTelemetry";
 import { GleanMetricMap } from "../../telemetry/generated/_map";
 import { RefObject } from "react";
 
@@ -12,16 +12,14 @@ export function useViewTelemetry<
     GleanMetricMap,
     "ctaButton" | "banner" | "csatSurvey"
   >,
-  EventName extends keyof GleanMetricMap[EventModule],
 >(
   eventModule: EventModule,
-  args: TelemetryArgs & GleanMetricMap[EventModule][EventName],
+  args: GleanMetricMap[EventModule]["view"],
   options?: IntersectionOptions,
 ) {
-  const { experimentationId, ...telemetryArgs } = args;
-  const recordTelemetry = useTelemetry({ experimentationId });
+  const recordTelemetry = useTelemetry();
   const { ref } = useInView({
-    skip: Object.keys(telemetryArgs).length === 0,
+    skip: Object.keys(args).length === 0,
     threshold: 1,
     triggerOnce: true,
     ...options,
@@ -34,7 +32,7 @@ export function useViewTelemetry<
       if (!inView) {
         return;
       }
-      recordTelemetry(eventModule, "view", telemetryArgs);
+      recordTelemetry(eventModule, "view", args);
     },
   });
 

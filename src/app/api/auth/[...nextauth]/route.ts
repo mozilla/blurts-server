@@ -19,7 +19,7 @@ const handler = async (
       `${process.env.SERVER_URL}/api/auth/callback/fxa?error=`,
     )
   ) {
-    return NextResponse.redirect(`${process.env.SERVER_URL}/user/dashboard`);
+    return NextResponse.redirect(process.env.SERVER_URL as string);
   }
 
   return NextAuth(req, res, authOptions) as Promise<Response>;

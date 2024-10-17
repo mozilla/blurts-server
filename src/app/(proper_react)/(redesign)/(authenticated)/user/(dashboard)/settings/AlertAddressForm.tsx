@@ -57,7 +57,7 @@ export const AlertAddressForm = (props: Props) => {
     : props.data.monthly_monitor_report_free;
 
   // TODO: Deprecate this when monthly report for free users has been created
-  const monthlyFreeUserReportEnabled =
+  const canToggleFreeOrPlusMonthlyReport =
     props.enabledFeatureFlags.includes("MonthlyReportFreeUser") ||
     hasPremium(props.user);
 
@@ -191,30 +191,29 @@ export const AlertAddressForm = (props: Props) => {
             </AlertAddressRadio>
           </AlertAddressContext.Provider>
         )}
-        {props.enabledFeatureFlags.includes("MonthlyActivityEmail") &&
-          monthlyFreeUserReportEnabled && (
-            <ActivateEmailsCheckbox
-              isSelected={activateMonthlyMonitorReport}
-              onChange={handleMonthlyMonitorReportToggle}
-            >
-              <div>
-                <b>
-                  {hasPremium(props.user)
-                    ? l10n.getString(
-                        "settings-alert-preferences-allow-monthly-monitor-plus-report-title",
-                      )
-                    : l10n.getString(
-                        "settings-alert-preferences-allow-monthly-monitor-report-title",
-                      )}
-                </b>
-                <p>
-                  {l10n.getString(
-                    "settings-alert-preferences-allow-monthly-monitor-report-subtitle",
-                  )}
-                </p>
-              </div>
-            </ActivateEmailsCheckbox>
-          )}
+        {canToggleFreeOrPlusMonthlyReport && (
+          <ActivateEmailsCheckbox
+            isSelected={activateMonthlyMonitorReport}
+            onChange={handleMonthlyMonitorReportToggle}
+          >
+            <div>
+              <b>
+                {hasPremium(props.user)
+                  ? l10n.getString(
+                      "settings-alert-preferences-allow-monthly-monitor-plus-report-title",
+                    )
+                  : l10n.getString(
+                      "settings-alert-preferences-allow-monthly-monitor-report-title",
+                    )}
+              </b>
+              <p>
+                {l10n.getString(
+                  "settings-alert-preferences-allow-monthly-monitor-report-subtitle",
+                )}
+              </p>
+            </div>
+          </ActivateEmailsCheckbox>
+        )}
       </div>
     </div>
   );
