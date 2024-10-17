@@ -21,7 +21,7 @@ export const PromptNoneAuth = (): ReactNode => {
     if (isPromptNoneAuthAttempt) {
       void signIn(
         "fxa",
-        { callbackUrl: "/user/dashboard" },
+        { callbackUrl: "/user/dashboard/action-needed?dialog=subscriptions" },
         { prompt: "none" },
       );
     }
