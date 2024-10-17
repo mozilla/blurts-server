@@ -29,8 +29,9 @@ jobs:
           https://api.github.com/repos/${{ github.repository }}/releases \
           -d '{
             "tag_name": "$(date +%Y%m%d)",
-            "target_commitish": "${{ env.COMMIT_SHA }}",
-            "name": "Pre-release $(date +%Y-%m-%d)",
+            "target_commitish": "main",
+            "name": "$(date +%Y-%m-%d)",
             "body": "Daily pre-release for $(date +%Y-%m-%d).",
-            "prerelease": true
+            "prerelease": true,
+            "generate_release_notes": true
           }'
