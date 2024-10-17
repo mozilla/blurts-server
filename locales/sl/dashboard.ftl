@@ -20,7 +20,7 @@ exposure-chart-heading =
 #   $nr (number) - Number of fixed exposures found for the user
 exposure-chart-heading-fixed = <nr>{ $nr }</nr> <label>Popravljeno</label>
 exposure-chart-legend-heading-type = izpostavljenost
-exposure-chart-legend-heading-nr = Števila
+exposure-chart-legend-heading-nr = Število
 # Variables:
 #   $nr (number) - Number of a particular type of exposure found for the user
 exposure-chart-legend-value-nr = { $nr }×
@@ -29,7 +29,7 @@ exposure-chart-caption = Ta grafikon prikazuje, kolikokrat so vaši podatki akti
 #   $total_fixed_exposures_num (number) - Number of fixed exposures
 #   $total_exposures_num (number) - Number of total exposures
 exposure-chart-caption-fixed = Ta grafikon prikazuje skupne izpostavljenosti, ki so fiksne ({ $total_fixed_exposures_num } od { $total_exposures_num })
-exposure-chart-returning-user-upgrade-prompt = Domači naslov, družinski člani in drugo še niso vključeni.
+exposure-chart-returning-user-upgrade-prompt = Domači naslov, družinski člani in drugo še ni vključeno.
 exposure-chart-returning-user-upgrade-prompt-cta = Začnite brezplačen pregled
 exposure-chart-scan-in-progress-prompt = <b>Iskanje v teku:</b> naslov, družinski člani in drugo še niso vključeni.
 modal-active-number-of-exposures-title = O številu aktivnih izpostavljenosti

@@ -19,12 +19,31 @@ export function middleware(request: NextRequest) {
   const responseHeaders = new Headers();
   responseHeaders.set("Content-Security-Policy", cspHeader);
 
-  return NextResponse.next({
-    headers: responseHeaders,
+  // If the user is not logged in, `getExperimentationId` uses the value we
+  // set here to determine which experiments to show the user. We read it from
+  // the `experimentationId` cookie, and initialise that cookie if it's unset.
+  // (The reason we do this in middleware, is to ensure that every call to
+  // `getExperimentationId` results in the same ID.)
+  const existingExperimentationId = request.cookies.get("experimentationId");
+  const experimentationId =
+    existingExperimentationId?.value ?? `guest-${crypto.randomUUID()}`;
+  requestHeaders.set("x-experimentation-id", experimentationId);
+
+  const response = NextResponse.next({
     request: {
       headers: requestHeaders,
     },
   });
+
+  if (!existingExperimentationId) {
+    response.cookies.set({
+      name: "experimentationId",
+      value: experimentationId,
+      path: "/",
+    });
+  }
+
+  return response;
 }
 
 // See https://nextjs.org/docs/app/building-your-application/configuring/content-security-policy#adding-a-nonce-with-middleware

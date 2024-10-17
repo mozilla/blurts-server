@@ -12,8 +12,8 @@ import { ReactAriaI18nProvider } from "../../contextProviders/react-aria";
 import { CountryCodeProvider } from "../../contextProviders/country-code";
 import { getCountryCode } from "../functions/server/getCountryCode";
 import { PageLoadEvent } from "../components/client/PageLoadEvent";
-import { getExperimentationId } from "../functions/server/getExperimentationId";
 import { getEnabledFeatureFlags } from "../../db/tables/featureFlags";
+import { PromptNoneAuth } from "../components/client/PromptNoneAuth";
 import { addClientIdForSubscriber } from "../../db/tables/google_analytics_clients";
 import { logger } from "../functions/server/logging";
 
@@ -22,9 +22,13 @@ export default async function Layout({ children }: { children: ReactNode }) {
   const headersList = headers();
   const countryCode = getCountryCode(headersList);
   const session = await getServerSession();
-  const enabledFlags = await getEnabledFeatureFlags({
-    email: session?.user.email ?? "",
-  });
+  const enabledFlags = await getEnabledFeatureFlags(
+    session === null
+      ? { isSignedOut: true }
+      : {
+          email: session.user.email,
+        },
+  );
 
   const cookieStore = cookies();
   // This expects the default Google Analytics cookie documented here: https://support.google.com/analytics/answer/11397207?hl=en
@@ -57,11 +61,11 @@ export default async function Layout({ children }: { children: ReactNode }) {
     <L10nProvider bundleSources={l10nBundles}>
       <ReactAriaI18nProvider locale={getLocale(l10nBundles)}>
         <CountryCodeProvider countryCode={countryCode}>
+          {enabledFlags.includes("PromptNoneAuthFlow") && !session && (
+            <PromptNoneAuth />
+          )}
           {children}
-          <PageLoadEvent
-            experimentationId={getExperimentationId(session?.user ?? null)}
-            enabledFlags={enabledFlags}
-          />
+          <PageLoadEvent />
         </CountryCodeProvider>
       </ReactAriaI18nProvider>
     </L10nProvider>

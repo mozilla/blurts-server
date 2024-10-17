@@ -39,7 +39,6 @@ export async function getDeletedFeatureFlags() {
 
 export const featureFlagNames = [
   "UpdatedEmailPreferencesOption",
-  "MonthlyActivityEmail",
   "CancellationFlow",
   "ConfirmCancellation",
   "FirstDataBrokerRemovalFixedEmail",
@@ -50,6 +49,7 @@ export const featureFlagNames = [
   "PetitionBannerCsatSurvey",
   "MonthlyReportFreeUser",
   "BreachEmailRedesign",
+  "PromptNoneAuthFlow",
   "GA4SubscriptionEvents",
 ] as const;
 export type FeatureFlagName = (typeof featureFlagNames)[number];
