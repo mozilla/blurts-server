@@ -2,7 +2,6 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import React from "react";
 import Sentry from "@sentry/nextjs";
 
 import * as pubsub from "@google-cloud/pubsub";
@@ -280,7 +279,8 @@ export async function poll(
               let dataSummary: DashboardSummary | undefined;
               if (
                 isEligibleForPremium(assumedCountryCode) &&
-                !hasPremium(recipient)
+                !hasPremium(recipient) &&
+                typeof recipient.onerep_profile_id === "number"
               ) {
                 const scanData = await getLatestOnerepScanResults(
                   recipient.onerep_profile_id,

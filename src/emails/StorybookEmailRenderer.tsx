@@ -12,7 +12,11 @@ export type Props = {
   emulateDarkMode?: boolean;
 };
 
+// This isn't used in production, so not worth writing a test for:
+/* c8 ignore start */
 export const StorybookEmailRenderer = (props: Props) => {
+  const rawMjml = renderToStaticMarkup(props.children);
+  const renderResult = mjml2html(rawMjml);
   return (
     <>
       <style>{`
@@ -30,12 +34,19 @@ export const StorybookEmailRenderer = (props: Props) => {
   `}</style>
       <div
         dangerouslySetInnerHTML={{
-          __html: mjml2html(renderToStaticMarkup(props.children)).html,
+          __html:
+            renderResult.errors.length > 0
+              ? `
+                <h1>MJML rendering errors:</h1>
+                <ul style="font-family: monospace;">${renderResult.errors.map((error) => `<li>${error.message}</li>`).join("\n")}</ul>
+                <hr/>
+                ${renderResult.html}
+                `
+              : renderResult.html,
         }}
-        // This isn't used in production, so not worth writing a test for:
-        /* c8 ignore next */
         className={props.emulateDarkMode ? "dark-mode-enforced" : ""}
       />
     </>
   );
 };
+/* c8 ignore stop */

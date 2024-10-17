@@ -1,8 +1,9 @@
 {
   "extends": "./tsconfig.json",
-  "include": ["src/scripts/cronjobs/**/*.ts", "src/scripts/cronjobs/**/*.tsx"],
+  "include": ["src/scripts/cronjobs/**/*.ts", "src/scripts/cronjobs/**/*.tsx", "src/emails/**/*.ts",  "src/emails/**/*.tsx"],
   "outDir": "dist/scripts/cronjobs/",
   "compilerOptions": {
+    "jsx": "react-jsx",
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "target": "ES2020",

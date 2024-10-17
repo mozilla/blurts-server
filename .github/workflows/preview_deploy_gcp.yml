@@ -82,7 +82,7 @@ jobs:
           DATABASE_URL= postgres://postgres:postgres@localhost:5432/blurts 
 
     - name: Comment on Pull Request
-      uses: thollander/actions-comment-pull-request@v2
+      uses: thollander/actions-comment-pull-request@v3
       with:
           GITHUB_TOKEN: ${{ github.token }}
           message: |
