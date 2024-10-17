@@ -20,7 +20,9 @@ jobs:
       run: echo "COMMIT_SHA=$(git rev-parse HEAD)" >> $GITHUB_ENV
 
     - name: Get current date
-      run: echo "CURRENT_DATE=$(date +%Y%m%d)" >> $GITHUB_ENV
+      run: |
+        echo "CURRENT_DATE=$(date +%Y%m%d)" >> $GITHUB_ENV
+        echo "tag_name: $(date +%Y%m%d)"
 
     - name: Create Pre-release
       env:
