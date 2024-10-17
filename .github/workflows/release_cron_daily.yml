@@ -21,8 +21,8 @@ jobs:
 
     - name: Get current date
       run: |
-        echo "CURRENT_DATE=$(date +%Y%m%d)" >> $GITHUB_ENV
-        echo "tag_name: $(date +%Y%m%d)"
+        echo "CURRENT_DATE=$(date +%Y.%m.%d)" >> $GITHUB_ENV
+        echo "tag_name: $(date +%Y.%m.%d)"
 
     - name: Create Pre-release
       env:
