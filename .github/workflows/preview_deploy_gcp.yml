@@ -88,5 +88,5 @@ jobs:
           message: |
             Preview URL :rocket: : ${{ steps.deploy.outputs.url }}
           comment_tag: preview_url
-          create_if_not_exists: true
+          create-if-not-exists: true
           
