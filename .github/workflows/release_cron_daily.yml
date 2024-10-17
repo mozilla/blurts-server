@@ -19,6 +19,11 @@ jobs:
       id: get_latest_commit
       run: echo "COMMIT_SHA=$(git rev-parse HEAD)" >> $GITHUB_ENV
 
+    - name: Get current date
+      run: |
+        echo "CURRENT_DATE=$(date +%Y%m%d)" >> $GITHUB_ENV
+        echo "tag_name: $(date +%Y%m%d)"
+
     - name: Create Pre-release
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -28,9 +33,10 @@ jobs:
           -H "Accept: application/vnd.github.v3+json" \
           https://api.github.com/repos/${{ github.repository }}/releases \
           -d '{
-            "tag_name": "$(date +%Y%m%d)",
-            "target_commitish": "${{ env.COMMIT_SHA }}",
-            "name": "Pre-release $(date +%Y-%m-%d)",
-            "body": "Daily pre-release for $(date +%Y-%m-%d).",
-            "prerelease": true
+            "tag_name": "${{ env.CURRENT_DATE }}",
+            "target_commitish": "main",
+            "name": "${{ env.CURRENT_DATE }}",
+            "body": "Daily pre-release for ${{ env.CURRENT_DATE }}.",
+            "prerelease": true,
+            "generate_release_notes": true
           }'
