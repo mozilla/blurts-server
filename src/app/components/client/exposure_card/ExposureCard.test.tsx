@@ -173,7 +173,7 @@ describe("DataBreachCard", () => {
       const ComposedExposureCard = composeStory(DataBrokerActionNeeded, Meta);
       render(
         <ComposedExposureCard
-          enabledFeatureFlags={["DataBrokerRemovalTimeEstimates"]}
+          enabledFeatureFlags={["DataBrokerRemovalTimeEstimatesLabel"]}
           removalTimeEstimate={removalTime}
         />,
       );
@@ -189,7 +189,7 @@ describe("DataBreachCard", () => {
     const ComposedExposureCard = composeStory(DataBrokerActionNeeded, Meta);
     render(
       <ComposedExposureCard
-        enabledFeatureFlags={["DataBrokerRemovalTimeEstimates"]}
+        enabledFeatureFlags={["DataBrokerRemovalTimeEstimatesLabel"]}
       />,
     );
 
@@ -203,7 +203,7 @@ describe("DataBreachCard", () => {
     const ComposedExposureCard = composeStory(DataBreachActionNeeded, Meta);
     render(
       <ComposedExposureCard
-        enabledFeatureFlags={["DataBrokerRemovalTimeEstimates"]}
+        enabledFeatureFlags={["DataBrokerRemovalTimeEstimatesLabel"]}
       />,
     );
 
