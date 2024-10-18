@@ -53,8 +53,14 @@ import {
 import { ExperimentData } from "../../../../../../../telemetry/generated/nimbus/experiments";
 import { PetitionBanner } from "../../../../../../components/client/PetitionBanner";
 import { useLocalDismissal } from "../../../../../../hooks/useLocalDismissal";
+import { ScanResult } from "../../../../../../functions/server/onerep";
 
 export type TabType = "action-needed" | "fixed";
+
+export type RemovalTimeEstimate = {
+  d: ScanResult["data_broker"];
+  t: number;
+};
 
 export type Props = {
   enabledFeatureFlags: FeatureFlagName[];
@@ -79,6 +85,7 @@ export type Props = {
   activeTab: TabType;
   signInCount: number | null;
   autoOpenUpsellDialog: boolean;
+  removalTimeEstimates: RemovalTimeEstimate[];
 };
 
 export type TabData = {
@@ -188,10 +195,15 @@ export const View = (props: Props) => {
       ? "scan-" + exposure.onerep_scan_result_id
       : "breach-" + exposure.id;
 
+    const removalTimeEstimate = isScanResult(exposure)
+      ? props.removalTimeEstimates.find(({ d }) => d === exposure.data_broker)
+      : undefined;
     return (
       <li key={exposureCardKey} className={styles.exposureListItem}>
         <ExposureCard
+          experimentData={props.experimentData}
           enabledFeatureFlags={props.enabledFeatureFlags}
+          removalTimeEstimate={removalTimeEstimate?.t}
           exposureData={exposure}
           isExpanded={exposureCardKey === activeExposureCardKey}
           onToggleExpanded={() => {
@@ -524,6 +536,7 @@ export const View = (props: Props) => {
         </section>
         <div className={styles.exposuresFilterWrapper}>
           <ExposuresFilter
+            experimentData={props.experimentData}
             enabledFeatureFlags={props.enabledFeatureFlags}
             initialFilterValues={initialFilterState}
             filterValues={filters}

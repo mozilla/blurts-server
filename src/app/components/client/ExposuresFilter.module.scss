@@ -56,6 +56,10 @@
           display: flex;
         }
       }
+
+      &:last-of-type {
+        min-width: 145px; // match the StatusPill width
+      }
     }
 
     .filterBtn {

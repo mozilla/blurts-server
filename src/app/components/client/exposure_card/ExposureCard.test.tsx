@@ -145,4 +145,71 @@ describe("DataBreachCard", () => {
     const companyLogoTitle = screen.getByText("Exposure type");
     expect(companyLogoTitle).toBeInTheDocument();
   });
+
+  it("does not show the estimated removal time if the feature flag `DataBrokerRemovalTimeEstimates` is disabled", () => {
+    const ComposedExposureCard = composeStory(DataBrokerActionNeeded, Meta);
+    render(<ComposedExposureCard />);
+
+    const removalTimeTitle = screen.queryByText("Removal time");
+    expect(removalTimeTitle).not.toBeInTheDocument();
+  });
+
+  it.each([
+    {
+      removalTime: 6,
+      label: "Up to 7 days",
+    },
+    {
+      removalTime: 70,
+      label: "61–90 days",
+    },
+    {
+      removalTime: 181,
+      label: "181+ days",
+    },
+  ])(
+    "shows a label with the estimated removal time if available: %s",
+    ({ removalTime, label }) => {
+      const ComposedExposureCard = composeStory(DataBrokerActionNeeded, Meta);
+      render(
+        <ComposedExposureCard
+          enabledFeatureFlags={["DataBrokerRemovalTimeEstimateLabel"]}
+          removalTimeEstimate={removalTime}
+        />,
+      );
+
+      const removalTimeTitle = screen.getByText("Removal time");
+      expect(removalTimeTitle).toBeInTheDocument();
+      const removalTimeLabel = screen.getByText(label);
+      expect(removalTimeLabel).toBeInTheDocument();
+    },
+  );
+
+  it("shows a label displaying “unknown” if the removal time is not available", () => {
+    const ComposedExposureCard = composeStory(DataBrokerActionNeeded, Meta);
+    render(
+      <ComposedExposureCard
+        enabledFeatureFlags={["DataBrokerRemovalTimeEstimateLabel"]}
+      />,
+    );
+
+    const removalTimeTitle = screen.getByText("Removal time");
+    expect(removalTimeTitle).toBeInTheDocument();
+    const removalTimeLabel = screen.getByText("Unknown");
+    expect(removalTimeLabel).toBeInTheDocument();
+  });
+
+  it("shows a label displaying “N/A” on data breach cards", () => {
+    const ComposedExposureCard = composeStory(DataBreachActionNeeded, Meta);
+    render(
+      <ComposedExposureCard
+        enabledFeatureFlags={["DataBrokerRemovalTimeEstimateLabel"]}
+      />,
+    );
+
+    const removalTimeTitle = screen.getByText("Removal time");
+    expect(removalTimeTitle).toBeInTheDocument();
+    const removalTimeLabel = screen.getByText("N/A");
+    expect(removalTimeLabel).toBeInTheDocument();
+  });
 });

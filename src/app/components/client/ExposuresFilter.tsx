@@ -35,11 +35,13 @@ import NoteIcon from "./assets/note.svg";
 import CalendarIcon from "./assets/calendar.svg";
 import {
   ExposuresFilterStatusExplainer,
+  ExposuresFilterRemovalTimeExplainer,
   ExposuresFilterTypeExplainer,
 } from "./ExposuresFilterExplainer";
 import { Popover } from "./Popover";
 import { VisuallyHidden } from "../server/VisuallyHidden";
 import { FeatureFlagName } from "../../../db/tables/featureFlags";
+import { ExperimentData } from "../../../telemetry/generated/nimbus/experiments";
 
 export type FilterState = {
   exposureType: "show-all-exposure-type" | "data-broker" | "data-breach";
@@ -48,6 +50,7 @@ export type FilterState = {
 
 type ExposuresFilterProps = {
   enabledFeatureFlags: FeatureFlagName[];
+  experimentData: ExperimentData;
   initialFilterValues: FilterState;
   filterValues: FilterState;
   setFilterValues: React.Dispatch<React.SetStateAction<FilterState>>;
@@ -57,6 +60,7 @@ type ExposuresFilterProps = {
 
 export const ExposuresFilter = ({
   enabledFeatureFlags,
+  experimentData,
   initialFilterValues,
   filterValues,
   setFilterValues,
@@ -82,6 +86,25 @@ export const ExposuresFilter = ({
   const exposureTypeExplainerTriggerProps = useButton(
     exposureTypeExplainerDialogTrigger.triggerProps,
     exposureTypeExplainerTriggerRef,
+  ).buttonProps;
+
+  // Removal time explainer dialog
+  const exposureRemovalTimeExplainerDialogState = useOverlayTriggerState({
+    onOpenChange: (isOpen) => {
+      recordTelemetry("popup", isOpen ? "view" : "exit", {
+        popup_id: "exposure_removal_time_info",
+      });
+    },
+  });
+  const exposureRemovalTimeExplainerDialogTrigger = useOverlayTrigger(
+    { type: "dialog" },
+    exposureRemovalTimeExplainerDialogState,
+  );
+  const exposureRemovalTimeExplainerTriggerRef =
+    useRef<HTMLButtonElement>(null);
+  const exposureRemovalTimeExplainerTriggerProps = useButton(
+    exposureRemovalTimeExplainerDialogTrigger.triggerProps,
+    exposureRemovalTimeExplainerTriggerRef,
   ).buttonProps;
 
   // Status filter explainer dialog
@@ -279,6 +302,25 @@ export const ExposuresFilter = ({
           <li className={styles.hideOnMobile}>
             {l10n.getString("dashboard-exposures-filter-date-found")}
           </li>
+          {enabledFeatureFlags.includes("DataBrokerRemovalTimeEstimateLabel") &&
+            experimentData["data-broker-removal-time-estimates"].enabled && (
+              <li className={styles.hideOnMobile}>
+                {l10n.getString(
+                  "dashboard-exposures-filter-exposure-removal-time-title",
+                )}
+                <button
+                  {...exposureRemovalTimeExplainerTriggerProps}
+                  ref={exposureRemovalTimeExplainerTriggerRef}
+                  aria-label={l10n.getString("open-modal-alt")}
+                  aria-describedby="filterRemovalTime"
+                >
+                  <VisuallyHidden id="filterRemovalTime">
+                    {l10n.getString("modal-exposure-removal-time-title")}
+                  </VisuallyHidden>
+                  <QuestionMarkCircle width="15" height="15" alt="" />
+                </button>
+              </li>
+            )}
           <li className={styles.hideOnMobile}>
             {l10n.getString("dashboard-exposures-filter-status")}
             <button
@@ -301,6 +343,12 @@ export const ExposuresFilter = ({
           explainerDialogProps={exposureTypeExplainerDialogTrigger}
           explainerDialogState={exposureTypeExplainerDialogState}
           enabledFeatureFlags={enabledFeatureFlags}
+        />
+      )}
+      {exposureRemovalTimeExplainerDialogState.isOpen && (
+        <ExposuresFilterRemovalTimeExplainer
+          explainerDialogProps={exposureRemovalTimeExplainerDialogTrigger}
+          explainerDialogState={exposureRemovalTimeExplainerDialogState}
         />
       )}
       {exposureStatusExplainerDialogState.isOpen && (
