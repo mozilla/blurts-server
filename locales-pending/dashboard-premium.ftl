@@ -46,6 +46,7 @@ dashboard-exposures-filter-exposure-removal-time-label-90 = 61–90 days
 dashboard-exposures-filter-exposure-removal-time-label-180 = 91-180 days
 dashboard-exposures-filter-exposure-removal-time-label-other = 181+ days
 dashboard-exposures-filter-exposure-removal-time-label-unknown = Unknown
+# “Not applicable” – abbreviated because there’s not much room for this string.
 dashboard-exposures-filter-exposure-removal-time-label-na = N/A
 
 # About Exposure Types Modal
