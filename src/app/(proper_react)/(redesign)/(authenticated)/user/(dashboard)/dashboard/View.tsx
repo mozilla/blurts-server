@@ -53,14 +53,9 @@ import {
 import { ExperimentData } from "../../../../../../../telemetry/generated/nimbus/experiments";
 import { PetitionBanner } from "../../../../../../components/client/PetitionBanner";
 import { useLocalDismissal } from "../../../../../../hooks/useLocalDismissal";
-import { ScanResult } from "../../../../../../functions/server/onerep";
+import { DataBrokerRemovalTime } from "../../../../../../functions/server/getDataBrokerRemovalTimeEstimates";
 
 export type TabType = "action-needed" | "fixed";
-
-export type RemovalTimeEstimate = {
-  d: ScanResult["data_broker"];
-  t: number;
-};
 
 export type Props = {
   enabledFeatureFlags: FeatureFlagName[];
@@ -85,7 +80,7 @@ export type Props = {
   activeTab: TabType;
   signInCount: number | null;
   autoOpenUpsellDialog: boolean;
-  removalTimeEstimates: RemovalTimeEstimate[];
+  removalTimeEstimates: DataBrokerRemovalTime[];
 };
 
 export type TabData = {

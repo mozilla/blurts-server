@@ -5,7 +5,11 @@
 import { OnerepScanResultRow } from "knex/types/tables";
 import { LatestOnerepScanData } from "../../../db/tables/onerep_scans";
 
-interface DataBrokerRemovalTime {
+/**
+ * @property {OnerepScanResultRow["data_broker"]} d - Data broker domain.
+ * @property {number} t - Estimated data broker removal time in days.
+ */
+export interface DataBrokerRemovalTime {
   d: OnerepScanResultRow["data_broker"];
   t: number;
 }
