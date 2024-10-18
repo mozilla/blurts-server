@@ -45,7 +45,7 @@ it("shows and hides the exposure type explainer", async () => {
   expect(explainerDialog).not.toBeInTheDocument();
 });
 
-it("shows and hides the removal time clicking the “Got it” button", async () => {
+it("shows and hides the removal time explainer dialog by clicking the “Got it” button", async () => {
   const user = userEvent.setup();
   const ExposuresFilter = composeStory(ExposuresFilterDefault, Meta);
   render(
@@ -75,7 +75,7 @@ it("shows and hides the removal time clicking the “Got it” button", async ()
   expect(explainerDialog).not.toBeInTheDocument();
 });
 
-it("shows and hides the removal time by clicking the close button", async () => {
+it("shows and hides the removal time explainer dialog by clicking the close button", async () => {
   const user = userEvent.setup();
   const ExposuresFilter = composeStory(ExposuresFilterDefault, Meta);
   render(
