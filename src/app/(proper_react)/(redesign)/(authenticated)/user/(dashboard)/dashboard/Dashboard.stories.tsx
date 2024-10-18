@@ -184,10 +184,12 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
     user: user,
   };
 
-  const mockedRemovalTimeEstimates = scanData.results.map((scan) => ({
-    d: scan.data_broker,
-    t: faker.number.float({ min: 0, max: 200 }),
-  }));
+  const mockedRemovalTimeEstimates = scanData.results
+    .map((scan) => ({
+      d: scan.data_broker,
+      t: faker.number.float({ min: 0, max: 200 }),
+    }))
+    .filter(() => Math.random() < 0.1);
 
   return (
     <SessionProvider session={mockedSession}>
