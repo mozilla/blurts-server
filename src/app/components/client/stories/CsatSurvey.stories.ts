@@ -9,7 +9,7 @@ import { createUserWithPremiumSubscription } from "../../../../apiMocks/mockData
 import { defaultExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 
 const meta: Meta<typeof CsatSurvey> = {
-  title: "CsatSurvey",
+  title: "Misc/CsatSurvey",
   component: CsatSurvey,
 };
 export default meta;
