@@ -44,6 +44,7 @@ dashboard-tab-label-action-needed = Handling påkravd
 dashboard-tab-label-fixed = Løyst
 dashboard-exposures-all-fixed-label = Alt er løyst!
 dashboard-exposures-area-headline = Sjå alle nettstadar der informasjonen din er eksponert
+dashboard-fixed-area-headline-all = Vis alle eksponeringar som er løyste
 # This is the label on a button that opens a popover menu, which shows a menu to adjust filters for the listed exposures.
 dashboard-exposures-filter = Filter
 dashboard-exposures-filter-company = Firma
