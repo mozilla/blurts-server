@@ -9,7 +9,7 @@ import styles from "./UnsubscribeMonthlyReport.module.scss";
 import UnsubscriptionImage from "./images/confirm-unsubscribe.svg";
 import Image from "next/image";
 import { useL10n } from "../../../../../hooks/l10n";
-import { toast } from "react-toastify";
+import { toast, ToastOptions } from "react-toastify";
 import { TelemetryButton } from "../../../../../components/client/TelemetryButton";
 import { useTelemetry } from "../../../../../hooks/useTelemetry";
 import { signIn } from "next-auth/react";
@@ -18,6 +18,9 @@ export const UnsubscribeMonthlyReportView = ({ token }: { token: string }) => {
   const recordTelemetry = useTelemetry();
   const l10n = useL10n();
   const [unsubscribeSuccess, setUnsubscribeSuccess] = useState(false);
+  const toastOptions: ToastOptions = {
+    autoClose: 15000,
+  };
 
   const copy = {
     confirmation: {
@@ -63,6 +66,7 @@ export const UnsubscribeMonthlyReportView = ({ token }: { token: string }) => {
               ),
             },
           }),
+          toastOptions,
         );
       } else {
         setUnsubscribeSuccess(true);
@@ -79,6 +83,7 @@ export const UnsubscribeMonthlyReportView = ({ token }: { token: string }) => {
             ),
           },
         }),
+        toastOptions,
       );
       console.error("Error unsubscribing from Monthly monitor report", error);
     }
