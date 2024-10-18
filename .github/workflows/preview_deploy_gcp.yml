@@ -82,11 +82,11 @@ jobs:
           DATABASE_URL= postgres://postgres:postgres@localhost:5432/blurts 
 
     - name: Comment on Pull Request
-      uses: thollander/actions-comment-pull-request@v2
+      uses: thollander/actions-comment-pull-request@v3
       with:
           GITHUB_TOKEN: ${{ github.token }}
           message: |
             Preview URL :rocket: : ${{ steps.deploy.outputs.url }}
           comment_tag: preview_url
-          create_if_not_exists: true
+          create-if-not-exists: true
           
