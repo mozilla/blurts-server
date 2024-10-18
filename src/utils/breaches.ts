@@ -54,7 +54,6 @@ async function getAllEmailsAndBreaches(
       "getAllEmailsAndBreaches: allBreaches object cannot be empty";
     console.error(errMsg);
     captureMessage(errMsg);
-
     return { verifiedEmails, unverifiedEmails };
   }
 
@@ -73,7 +72,7 @@ async function getAllEmailsAndBreaches(
       verifiedEmails.push(
         await bundleVerifiedEmails({
           user,
-          email: email.email,
+          email: user.primary_email,
           recordId: email.id,
           recordVerified: email.verified,
           allBreaches,

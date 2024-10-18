@@ -7,7 +7,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { ExposuresFilter, FilterState } from "../ExposuresFilter";
 
 const meta: Meta<typeof ExposuresFilter> = {
-  title: "ExposuresFilter",
+  title: "Dashboard/Exposures/FilterBar",
   component: ExposuresFilter,
 };
 export default meta;

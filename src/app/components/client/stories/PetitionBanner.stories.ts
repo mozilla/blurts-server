@@ -7,7 +7,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { PetitionBanner } from "../PetitionBanner";
 
 const meta: Meta<typeof PetitionBanner> = {
-  title: "PetitionBanner",
+  title: "Misc/PetitionBanner",
   component: PetitionBanner,
 };
 export default meta;
