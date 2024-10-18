@@ -20,6 +20,7 @@ import { ExposureCardDataClassLayout } from "./ExposureCardDataClass";
 import { DataBrokerImage } from "./DataBrokerImage";
 import { TelemetryLink } from "../TelemetryLink";
 import { FeatureFlagName } from "../../../../db/tables/featureFlags";
+import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 
 export type ScanResultCardProps = {
   scanResult: OnerepScanResultRow;
@@ -29,6 +30,8 @@ export type ScanResultCardProps = {
   isExpanded: boolean;
   isOnManualRemovePage?: boolean;
   enabledFeatureFlags?: FeatureFlagName[];
+  experimentData?: ExperimentData;
+  removalTimeEstimate?: number;
   onToggleExpanded: () => void;
 };
 
@@ -211,6 +214,20 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
         })
       : "";
 
+  let removalEstimateTimeLabel = l10n.getString(
+    "dashboard-exposures-filter-exposure-removal-time-label-unknown",
+  );
+  if (typeof props.removalTimeEstimate !== "undefined") {
+    const removalTimeEstimateRangeMarkers = [180, 90, 60, 13, 7];
+    const removalTimeLabelId =
+      removalTimeEstimateRangeMarkers.findLast(
+        (rangeMarker) => (props.removalTimeEstimate as number) <= rangeMarker,
+      ) ?? "other";
+    removalEstimateTimeLabel = l10n.getString(
+      `dashboard-exposures-filter-exposure-removal-time-label-${removalTimeLabelId}`,
+    );
+  }
+
   const exposureCard = (
     <div aria-label={props.scanResult.data_broker}>
       <div className={styles.exposureCard}>
@@ -249,6 +266,24 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
             <dd className={styles.hideOnMobile}>
               {dateFormatter.format(scanResult.created_at)}
             </dd>
+            {props.enabledFeatureFlags?.includes(
+              "DataBrokerRemovalTimeEstimateLabel",
+            ) &&
+              props.experimentData?.["data-broker-removal-time-estimates"]
+                .enabled && (
+                <>
+                  <dt
+                    className={`${styles.hideOnMobile} ${styles.visuallyHidden}`}
+                  >
+                    {l10n.getString(
+                      "dashboard-exposures-filter-exposure-removal-time-title",
+                    )}
+                  </dt>
+                  <dd className={styles.hideOnMobile}>
+                    {removalEstimateTimeLabel}
+                  </dd>
+                </>
+              )}
             <dt className={styles.visuallyHidden}>
               {l10n.getString("exposure-card-label-status")}
             </dt>

@@ -31,7 +31,11 @@ type RequiredExperiment = {
 };
 
 export type SurveyData = {
-  id: "csat_survey" | "last_scan_date" | "petition_banner";
+  id:
+    | "csat_survey"
+    | "last_scan_date"
+    | "petition_banner"
+    | "removal_time_estimates_banner";
   requiredExperiments: RequiredExperiment[];
   variations: Survey[];
 };

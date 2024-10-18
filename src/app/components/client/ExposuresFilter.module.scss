@@ -9,10 +9,6 @@
   padding: $spacing-sm $spacing-md;
   border-bottom: 1px solid $color-grey-20;
 
-  @media screen and (min-width: $screen-lg) {
-    gap: $layout-md;
-  }
-
   .rightSpace {
     // Spacing to accomodate the gap where the chevron of the same dimension falls within the alignment
     width: 20px;
@@ -30,7 +26,7 @@
     display: flex;
     align-items: center;
     padding-left: 0;
-    gap: $layout-md;
+    gap: $layout-sm;
     width: 100%;
     justify-content: space-between;
 
@@ -38,6 +34,10 @@
       display: flex;
       align-items: center;
       gap: $spacing-xs;
+
+      button svg {
+        min-width: 15px;
+      }
 
       &.hideOnMobile {
         display: none;
@@ -55,6 +55,10 @@
         &.hideOnMobile {
           display: flex;
         }
+      }
+
+      &:last-of-type {
+        min-width: 145px; // match the StatusPill width
       }
     }
 
