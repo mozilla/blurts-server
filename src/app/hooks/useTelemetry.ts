@@ -5,6 +5,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import { useCallback } from "react";
 // Imports for the `useGlean` and `useGa` hooks are restricted.
 /* eslint-disable-next-line no-restricted-imports */
 import { useGlean } from "./useGlean";
@@ -22,31 +23,34 @@ export const useTelemetry = () => {
   const recordGlean = useGlean();
 
   const { Glean, Ga } = TelemetryPlatforms;
-  const recordTelemetry = <
-    EventModule extends keyof GleanMetricMap,
-    EventName extends keyof GleanMetricMap[EventModule],
-  >(
-    eventModule: EventModule,
-    event: EventName,
-    data: GleanMetricMap[EventModule][EventName],
-    platforms: Array<
-      (typeof TelemetryPlatforms)[keyof typeof TelemetryPlatforms]
-    > = [Glean, Ga],
-  ) => {
-    if (platforms.includes(Glean)) {
-      void recordGlean(eventModule, event, {
-        path: path,
-        ...data,
-      });
-    }
-    if (platforms.includes(Ga)) {
-      sendGAEvent("event", convertCamelToSnakeCase(eventModule), {
-        ...data,
-        action: event,
-        page_location: path,
-      });
-    }
-  };
+  const recordTelemetry = useCallback(
+    <
+      EventModule extends keyof GleanMetricMap,
+      EventName extends keyof GleanMetricMap[EventModule],
+    >(
+      eventModule: EventModule,
+      event: EventName,
+      data: GleanMetricMap[EventModule][EventName],
+      platforms: Array<
+        (typeof TelemetryPlatforms)[keyof typeof TelemetryPlatforms]
+      > = [Glean, Ga],
+    ) => {
+      if (platforms.includes(Glean)) {
+        void recordGlean(eventModule, event, {
+          path: path,
+          ...data,
+        });
+      }
+      if (platforms.includes(Ga)) {
+        sendGAEvent("event", convertCamelToSnakeCase(eventModule), {
+          ...data,
+          action: event,
+          page_location: path,
+        });
+      }
+    },
+    [Ga, Glean, path, recordGlean],
+  );
 
   return recordTelemetry;
 };
