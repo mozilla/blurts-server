@@ -38,6 +38,16 @@ modal-heres-what-we-fixed-description-part-three = <b>In Progress</b> includes a
 dashboard-exposures-filter-exposure-type = Exposure type
 dashboard-exposures-filter-exposure-type-info-for-sale = Your info for sale
 dashboard-exposures-filter-exposure-type-data-breach = Data breach
+dashboard-exposures-filter-exposure-removal-time-title = Removal time
+dashboard-exposures-filter-exposure-removal-time-label-7 = Up to 7 days
+dashboard-exposures-filter-exposure-removal-time-label-13 = 8–13 days
+dashboard-exposures-filter-exposure-removal-time-label-60 = 14–60 days
+dashboard-exposures-filter-exposure-removal-time-label-90 = 61–90 days
+dashboard-exposures-filter-exposure-removal-time-label-180 = 91-180 days
+dashboard-exposures-filter-exposure-removal-time-label-other = 181+ days
+dashboard-exposures-filter-exposure-removal-time-label-unknown = Unknown
+# “Not applicable” – abbreviated because there’s not much room for this string.
+dashboard-exposures-filter-exposure-removal-time-label-na = N/A
 
 # About Exposure Types Modal
 
@@ -100,6 +110,12 @@ dashboard-exposures-all-fixed-free-scan = {
       [one] Next <a>start your free scan</a> of { $data_broker_total_num } site that may be selling your personal info.
      *[other] Next <a>start your free scan</a> of { $data_broker_total_num } sites that may be selling your personal info.
   }
+
+# About Removal Time Indicators Modal
+
+modal-exposure-removal-time-title = A note about removal times
+modal-exposure-removal-time-text = { -product-short-name } provides estimated time frames for how long data brokers usually take to remove your profile after we request it. We may periodically update these estimates for accuracy.
+modal-exposure-removal-time-button-label = Got it
 
 ## False door test
 
