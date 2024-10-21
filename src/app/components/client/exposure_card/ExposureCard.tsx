@@ -11,6 +11,7 @@ import { SubscriberBreach } from "../../../../utils/subscriberBreaches";
 import { ScanResultCard } from "./ScanResultCard";
 import { SubscriberBreachCard } from "./SubscriberBreachCard";
 import { FeatureFlagName } from "../../../../db/tables/featureFlags";
+import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 
 export type Exposure = OnerepScanResultRow | SubscriberBreach;
 
@@ -28,16 +29,14 @@ export type ExposureCardProps = {
   resolutionCta: ReactNode;
   isExpanded: boolean;
   enabledFeatureFlags: FeatureFlagName[];
+  experimentData: ExperimentData;
+  removalTimeEstimate?: number;
   onToggleExpanded: () => void;
 };
 
 export const ExposureCard = ({ exposureData, ...props }: ExposureCardProps) => {
   return isScanResult(exposureData) ? (
-    <ScanResultCard
-      {...props}
-      scanResult={exposureData}
-      enabledFeatureFlags={props.enabledFeatureFlags}
-    />
+    <ScanResultCard {...props} scanResult={exposureData} />
   ) : (
     <SubscriberBreachCard {...props} subscriberBreach={exposureData} />
   );
