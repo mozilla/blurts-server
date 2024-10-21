@@ -29,6 +29,7 @@ export type CsatSurveyProps = {
   elapsedTimeInDaysSinceInitialScan: number | null;
   lastScanDate: Date | null;
   signInCount: number | null;
+  shouldShowPetitionBanner: boolean;
   localDismissalPetitionBanner: DismissalData;
   isEligibleForPremium: boolean;
 };
@@ -96,7 +97,7 @@ export const CsatSurvey = (props: CsatSurveyProps) => {
   // the `data-privacy-petition-banner` experiment if the petition has
   // already been interacted with.
   if (
-    props.experimentData["data-privacy-petition-banner"].enabled &&
+    props.shouldShowPetitionBanner &&
     !props.localDismissalPetitionBanner.isDismissed
   ) {
     return;

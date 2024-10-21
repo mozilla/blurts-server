@@ -433,6 +433,12 @@ export const View = (props: Props) => {
     );
   };
 
+  const shouldShowPetitionBanner =
+    props.experimentData["data-privacy-petition-banner"].enabled &&
+    props.isEligibleForPremium &&
+    ((activeTab === "fixed" && hasPremium(props.user)) ||
+      (activeTab === "action-needed" && !hasPremium(props.user)));
+
   return (
     <div className={styles.wrapper}>
       <Toolbar
@@ -459,15 +465,12 @@ export const View = (props: Props) => {
           selectedKey={activeTab}
         />
       </Toolbar>
-      {props.experimentData["data-privacy-petition-banner"].enabled &&
-        props.isEligibleForPremium &&
-        ((activeTab === "fixed" && hasPremium(props.user)) ||
-          (activeTab === "action-needed" && !hasPremium(props.user))) && (
-          <PetitionBanner
-            user={props.user}
-            localDismissal={localDismissalPetitionBanner}
-          />
-        )}
+      {shouldShowPetitionBanner && (
+        <PetitionBanner
+          user={props.user}
+          localDismissal={localDismissalPetitionBanner}
+        />
+      )}
       <CsatSurvey
         user={props.user}
         activeTab={activeTab}
@@ -483,6 +486,7 @@ export const View = (props: Props) => {
         lastScanDate={props.userScanData.scan?.created_at ?? null}
         signInCount={props.signInCount}
         localDismissalPetitionBanner={localDismissalPetitionBanner}
+        shouldShowPetitionBanner={shouldShowPetitionBanner}
         isEligibleForPremium={props.isEligibleForPremium}
       />
       <div className={styles.dashboardContent}>
