@@ -242,7 +242,7 @@ error-page-error-other-title = { $errorCode } Something went wrong
 
 ## Breach overview page
 
-all-breaches-headline-2 = All breaches detected by { -brand-fx-monitor }
+all-breaches-headline-3 = Data Breach Database
 all-breaches-lead = We monitor all known data breaches to find out if your personal information was compromised. Here’s a complete list of all of the breaches that have been reported since 2007.
 search-breaches = Search Breaches
 
