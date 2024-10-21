@@ -180,13 +180,11 @@ probably successful.
 ### `react-cookie`
 
 Used to set and read various cookies. Perhaps the easiest way to verify this is
-to ensure the `RebrandAnnouncement` flag is enabled, and then open the landing
-page in a private browsing window. You should see a banner at the bottom saying
+to set a `justDeletedAccount` cookie (with a value of `justDeletedAccount`) in a
+Private Browsing window, and then open the landing page. You should see a
+notification at the top saying
 
-> Mozilla Monitor: New name, look and even more ways to reclaim your privacy.
-
-If you dismiss that banner, refresh the page, and it doesn't re-appear,
-everything is still working as expected.
+> Your ⁨Monitor⁩ account is now deleted.
 
 ### `@mozilla/glean` and `@next/third-parties`
 
