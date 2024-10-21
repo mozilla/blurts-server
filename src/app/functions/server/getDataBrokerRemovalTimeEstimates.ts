@@ -28,6 +28,7 @@ export function getDataBrokerRemovalTimeEstimates(
   } catch (error) {
     logger.error("could_not_parse_data_broker_removal_estimates_data", {
       message: (error as Error).message,
+      stack_trace: (error as Error).stack,
     });
     return [];
   }
