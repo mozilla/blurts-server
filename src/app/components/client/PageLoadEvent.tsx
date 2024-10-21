@@ -7,6 +7,7 @@
 import { useEffect } from "react";
 import { useCookies } from "react-cookie";
 import { usePathname } from "next/navigation";
+import GleanMetrics from "@mozilla/glean/metrics";
 import { useTelemetry } from "../../hooks/useTelemetry";
 import { GleanMetricMap } from "../../../telemetry/generated/_map";
 
@@ -28,6 +29,10 @@ export const PageLoadEvent = () => {
     };
 
     recordTelemetry("page", "view", pageViewParams);
+    // Also record Glean's native page load events. They have less metadata,
+    // but can be used for auto-generated reports.
+    // See https://mozilla.github.io/glean.js/automatic_instrumentation/page_load_events/#page-load-event-api
+    GleanMetrics.pageLoad({ url: document.location.href });
   }, [recordTelemetry, pathname]);
 
   useEffect(() => {
