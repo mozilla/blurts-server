@@ -425,7 +425,10 @@ async function getFreeSubscribersWaitingForMonthlyEmail(): Promise<
       "2022-01-01T00:00:00.000Z",
   );
 
-  if (!flag?.is_enabled) {
+  if (
+    !flag?.is_enabled &&
+    !(Array.isArray(flag?.allow_list) && flag.allow_list.length > 0)
+  ) {
     return [];
   }
 
