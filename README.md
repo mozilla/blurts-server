@@ -1,5 +1,7 @@
 # Firefox Monitor Server
 
+[![Monitor Cron e2e Tests](https://github.com/mozilla/blurts-server/actions/workflows/e2e_cron.yml/badge.svg)](https://github.com/mozilla/blurts-server/actions/workflows/e2e_cron.yml)
+
 ## Summary
 
 Firefox Monitor notifies users when their credentials have been compromised in a data breach.

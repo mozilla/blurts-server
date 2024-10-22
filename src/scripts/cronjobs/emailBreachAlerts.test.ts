@@ -37,7 +37,7 @@ jest.mock("../../utils/hibp", () => {
 
 jest.mock("../../db/tables/subscribers", () => {
   return {
-    getSubscribersByHashes: jest.fn(() => [""]),
+    getSubscribersByHashes: jest.fn(() => [{ onerep_profile_id: 42 }]),
   };
 });
 

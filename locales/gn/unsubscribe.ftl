@@ -11,6 +11,7 @@ unsubscribe-cta = Eheja ñemboheraguapy
 # Success Unsubscription State
 
 unsubscribe-success-from-monthly-report-header = Nereñemboheraguapýi gueteri
+unsubscribe-success-cta = Ejuaju { -brand-monitor } ndive
 
 # Error warning
 

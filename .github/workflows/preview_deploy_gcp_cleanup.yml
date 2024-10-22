@@ -40,7 +40,7 @@ jobs:
       run: gcloud run services delete blurts-server-${{ env.TAG }} --region ${{ env.REGION }} --platform managed --quiet
 
     - name: Comment on Pull Request
-      uses: thollander/actions-comment-pull-request@v2
+      uses: thollander/actions-comment-pull-request@v3
       with:
           GITHUB_TOKEN: ${{ github.token }}
           message: Cleanup completed - database 'blurts-server-${{ env.TAG }}' destroyed, cloud run service 'blurts-server-${{ env.TAG }}' destroyed
