@@ -18,3 +18,5 @@ jobs:
       # Verify that the build (incl. type-checking) succeeds
       # Upload sourcemaps to Sentry
       - run: npm run build
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
