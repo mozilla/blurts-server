@@ -99,6 +99,6 @@ export class AuthPage {
       `${process.env.E2E_TEST_BASE_URL as string}/?feature_flags=PromptNoneAuthFlow&utm_source=moz-account&utm_campaign=settings-promo&utm_content=monitor-free`,
     );
     // FxA can take a while to load on stage:
-    await this.page.waitForURL("**/oauth/**");
+    await this.page.waitForURL("**/authorization?**");
   }
 }

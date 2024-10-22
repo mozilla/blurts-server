@@ -72,7 +72,6 @@ test.describe(`${process.env.E2E_TEST_ENV} - Authentication flow verification @s
   test("Verify successful silent authentication with existing user", async ({
     page,
     authPage,
-    dashboardPage,
   }, testInfo) => {
     // speed up test by ignoring non-necessary requests
     await page.route(/(analytics)/, async (route) => {
@@ -89,8 +88,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Authentication flow verification @s
     await authPage.initSilentAuth();
 
     // assert successful login
-    await expect(dashboardPage.fixedTab).toBeVisible();
-    await expect(dashboardPage.actionNeededTab).toBeVisible();
+    await page.waitForURL("**/user/dashboard/**");
 
     await testInfo.attach(
       `${process.env.E2E_TEST_ENV}-silent-authentication-monitor-dashboard.png`,
@@ -104,7 +102,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Authentication flow verification @s
   test("Verify failed silent authentication with existing user", async ({
     page,
     authPage,
-    dashboardPage,
+    landingPage,
   }, testInfo) => {
     // speed up test by ignoring non-necessary requests
     await page.route(/(analytics)/, async (route) => {
@@ -114,12 +112,8 @@ test.describe(`${process.env.E2E_TEST_ENV} - Authentication flow verification @s
     // start authentication flow
     await authPage.initSilentAuth();
 
-    // sign in
-    await authPage.signIn(process.env.E2E_TEST_ACCOUNT_EMAIL as string);
-
-    // assert successful login
-    await expect(dashboardPage.fixedTab).toBeVisible();
-    await expect(dashboardPage.actionNeededTab).toBeVisible();
+    // assert failed login
+    await expect(landingPage.monitorLandingHeader).toBeVisible();
 
     await testInfo.attach(
       `${process.env.E2E_TEST_ENV}-silent-authentication-monitor-dashboard.png`,
