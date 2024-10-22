@@ -9,6 +9,7 @@ import { SerializedSubscriber } from "../../next-auth.js";
 import { getFeatureFlagData } from "./featureFlags";
 import { getEnvVarsOrThrow } from "../../envVars";
 import { parseIso8601Datetime } from "../../utils/parse";
+import { logger } from "../../app/functions/server/logging";
 
 const knex = createDbConnection();
 const { DELETE_UNVERIFIED_SUBSCRIBERS_TIMER } = getEnvVarsOrThrow([
@@ -429,6 +430,9 @@ async function getFreeSubscribersWaitingForMonthlyEmail(): Promise<
     !flag?.is_enabled &&
     !(Array.isArray(flag?.allow_list) && flag.allow_list.length > 0)
   ) {
+    logger.info("monthly_free_report_disabled", {
+      flag: flag,
+    });
     return [];
   }
 
