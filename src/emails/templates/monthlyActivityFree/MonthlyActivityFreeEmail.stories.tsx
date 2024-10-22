@@ -11,6 +11,7 @@ import {
 import { StorybookEmailRenderer } from "../../StorybookEmailRenderer";
 import { getL10n } from "../../../app/functions/l10n/storybookAndJest";
 import { SanitizedSubscriberRow } from "../../../app/functions/server/sanitize";
+import { dataClassKeyMap } from "../../../app/functions/server/dashboard";
 
 const meta: Meta<FC<MonthlyActivityFreeEmailProps>> = {
   title: "Emails/Monthly activity (free user)",
@@ -29,38 +30,38 @@ type Story = StoryObj<MonthlyActivityFreeEmailProps>;
 
 const mockedDataPoints = {
   // shared
-  emailAddresses: 10,
-  phoneNumbers: 10,
+  emailAddresses: 0,
+  phoneNumbers: 0,
 
   // data brokers
-  addresses: 10,
-  familyMembers: 10,
+  addresses: 0,
+  familyMembers: 0,
 
   // data breaches
-  socialSecurityNumbers: 10,
-  ipAddresses: 10,
-  passwords: 10,
-  creditCardNumbers: 10,
-  pins: 10,
-  securityQuestions: 10,
-  bankAccountNumbers: 10,
+  socialSecurityNumbers: 0,
+  ipAddresses: 0,
+  passwords: 0,
+  creditCardNumbers: 0,
+  pins: 0,
+  securityQuestions: 0,
+  bankAccountNumbers: 0,
 };
 
 const mockedDataSummary = {
-  dataBreachTotalNum: 10,
-  dataBreachUnresolvedNum: 500,
-  dataBreachResolvedNum: 10,
-  dataBreachTotalDataPointsNum: 10,
-  dataBreachFixedDataPointsNum: 10,
-  dataBrokerTotalNum: 10,
-  dataBrokerTotalDataPointsNum: 10,
-  dataBrokerAutoFixedNum: 15,
-  dataBrokerManuallyResolvedNum: 10,
-  dataBrokerAutoFixedDataPointsNum: 10,
-  dataBrokerInProgressNum: 10,
-  dataBrokerInProgressDataPointsNum: 10,
-  dataBrokerManuallyResolvedDataPointsNum: 10,
-  totalDataPointsNum: 10,
+  dataBreachTotalNum: 0,
+  dataBreachUnresolvedNum: 0,
+  dataBreachResolvedNum: 0,
+  dataBreachTotalDataPointsNum: 0,
+  dataBreachFixedDataPointsNum: 0,
+  dataBrokerTotalNum: 0,
+  dataBrokerTotalDataPointsNum: 0,
+  dataBrokerAutoFixedNum: 0,
+  dataBrokerManuallyResolvedNum: 0,
+  dataBrokerAutoFixedDataPointsNum: 0,
+  dataBrokerInProgressNum: 0,
+  dataBrokerInProgressDataPointsNum: 0,
+  dataBrokerManuallyResolvedDataPointsNum: 0,
+  totalDataPointsNum: 0,
   allDataPoints: mockedDataPoints,
   unresolvedDataPoints: mockedDataPoints,
   inProgressDataPoints: mockedDataPoints,
@@ -70,14 +71,13 @@ const mockedDataSummary = {
   fixedSanitizedDataPoints: [],
 };
 
-export const MonthlyReportFreeUserNoScanWithExposures: Story = {
-  name: "No Scan With Exposures No Resolved",
+export const MonthlyReportFreeUserNoScanWithBreachesNothingResolved: Story = {
+  name: "No Scan With Data Breaches, Nothing Resolved",
   args: {
     unsubscribeLink: "/",
     dataSummary: {
       ...mockedDataSummary,
-      dataBreachResolvedNum: 0,
-      dataBrokerManuallyResolvedNum: 0,
+      dataBreachUnresolvedNum: 10,
     },
     subscriber: {
       onerep_profile_id: null,
@@ -89,13 +89,17 @@ export const MonthlyReportFreeUserNoScanWithExposures: Story = {
   },
 };
 
-export const MonthlyReportFreeUserWithScan: Story = {
-  name: "With Scan",
+export const MonthlyReportFreeUserNoScanWithBreachesResolved: Story = {
+  name: "No Scan With Data Breaches, Breaches Resolved",
   args: {
     unsubscribeLink: "/",
-    dataSummary: mockedDataSummary,
+    dataSummary: {
+      ...mockedDataSummary,
+      dataBreachUnresolvedNum: 10,
+      dataBreachResolvedNum: 5,
+    },
     subscriber: {
-      onerep_profile_id: 1,
+      onerep_profile_id: null,
       fxa_profile_json: {
         locale: "en-US",
         subscriptions: ["not-monitor-plus"],
@@ -104,30 +108,19 @@ export const MonthlyReportFreeUserWithScan: Story = {
   },
 };
 
-export const MonthlyReportFreeUserResolvedBreachesWithScan: Story = {
-  name: "With Scan and Resolved Breaches",
-  args: {
-    unsubscribeLink: "/",
-    dataSummary: mockedDataSummary,
-    subscriber: {
-      onerep_profile_id: 1,
-      fxa_profile_json: {
-        locale: "en-US",
-        subscriptions: ["not-monitor-plus"],
-      },
-    } as SanitizedSubscriberRow,
-  },
-};
-
-export const MonthlyReportFreeUserResolvedBreachesWithScanWithUnresolvedBreachesAndBroker: Story =
+// With scan, only check from unresolvedSanitizedDataPoints
+export const MonthlyReportFreeUserWithScanWithExposuresNothingResolved: Story =
   {
-    name: "With Scan and Unresolved Breaches and Brokers",
+    name: "With Scan With Data Breaches and Brokers, Nothing Resolved",
     args: {
       unsubscribeLink: "/",
       dataSummary: {
         ...mockedDataSummary,
-        dataBreachUnresolvedNum: 12,
-        dataBrokerInProgressNum: 11,
+        unresolvedSanitizedDataPoints: [
+          { [dataClassKeyMap.passwords]: 10 },
+          { [dataClassKeyMap.familyMembers]: 10 },
+          { [dataClassKeyMap.phoneNumbers]: 5 },
+        ],
       },
       subscriber: {
         onerep_profile_id: 1,
@@ -139,29 +132,22 @@ export const MonthlyReportFreeUserResolvedBreachesWithScanWithUnresolvedBreaches
     },
   };
 
-export const MonthlyReportFreeUserResolvedBreachesWithoutScan: Story = {
-  name: "With Scan and Resolved Breaches",
-  args: {
-    unsubscribeLink: "/",
-    dataSummary: mockedDataSummary,
-    subscriber: {
-      onerep_profile_id: null,
-      fxa_profile_json: {
-        locale: "en-US",
-        subscriptions: ["not-monitor-plus"],
-      },
-    } as SanitizedSubscriberRow,
-  },
-};
-
-export const MonthlyReportFreeUserWithScanNoManuallyResolvedExposures: Story = {
-  name: "With Scan Without Manually Resolved Data Brokers, just Breaches",
+export const MonthlyReportFreeUserWithScanWithExposuresResolved: Story = {
+  name: "With Scan With Data Breaches and Data Brokers and Resolved Exposures",
   args: {
     unsubscribeLink: "/",
     dataSummary: {
       ...mockedDataSummary,
-      dataBreachResolvedNum: 5,
-      dataBrokerManuallyResolvedNum: 0,
+      unresolvedSanitizedDataPoints: [
+        { [dataClassKeyMap.passwords]: 10 },
+        { [dataClassKeyMap.familyMembers]: 10 },
+        { [dataClassKeyMap.phoneNumbers]: 5 },
+      ],
+      fixedSanitizedDataPoints: [
+        { [dataClassKeyMap.passwords]: 10 },
+        { [dataClassKeyMap.familyMembers]: 10 },
+        { [dataClassKeyMap.phoneNumbers]: 5 },
+      ],
     },
     subscriber: {
       onerep_profile_id: 1,
@@ -173,14 +159,13 @@ export const MonthlyReportFreeUserWithScanNoManuallyResolvedExposures: Story = {
   },
 };
 
-export const MonthlyReportFreeUserNoRemainingExposures: Story = {
+export const MonthlyReportFreeUserWithScanNoRemainingExposures: Story = {
   name: "With Scan No Remaining Exposures",
   args: {
     unsubscribeLink: "/",
     dataSummary: {
       ...mockedDataSummary,
-      dataBreachUnresolvedNum: 0,
-      dataBrokerInProgressNum: 0,
+      unresolvedSanitizedDataPoints: [],
     },
     subscriber: {
       onerep_profile_id: 1,
@@ -192,35 +177,16 @@ export const MonthlyReportFreeUserNoRemainingExposures: Story = {
   },
 };
 
-export const MonthlyReportFreeUserNoScanNoExposuresRemaining: Story = {
-  name: "No Scan No Exposures Left",
+export const MonthlyReportFreeUserWithoutScanNoExposures: Story = {
+  name: "No Scan No Remaining Exposures",
   args: {
     unsubscribeLink: "/",
     dataSummary: {
       ...mockedDataSummary,
-      dataBreachUnresolvedNum: 0,
+      dataBreachResolvedNum: 0,
     },
     subscriber: {
       onerep_profile_id: null,
-      fxa_profile_json: {
-        locale: "en-US",
-        subscriptions: ["not-monitor-plus"],
-      },
-    } as SanitizedSubscriberRow,
-  },
-};
-
-export const MonthlyReportFreeUserWithScanNoExposuresRemaining: Story = {
-  name: "With Scan No Exposures Left",
-  args: {
-    unsubscribeLink: "/",
-    dataSummary: {
-      ...mockedDataSummary,
-      dataBreachUnresolvedNum: 0,
-      dataBrokerInProgressNum: 0,
-    },
-    subscriber: {
-      onerep_profile_id: 1,
       fxa_profile_json: {
         locale: "en-US",
         subscriptions: ["not-monitor-plus"],
