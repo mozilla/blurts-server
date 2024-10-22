@@ -12,6 +12,25 @@ jest.mock("nodemailer", () => {
   };
 });
 
+jest.mock("../app/functions/server/logging", () => {
+  class Logging {
+    info(message: string, details: object) {
+      console.info(message, details);
+    }
+    warn(message: string, details: object) {
+      console.warn(message, details);
+    }
+    error(message: string, details: object) {
+      console.error(message, details);
+    }
+  }
+
+  const logger = new Logging();
+  return {
+    logger,
+  };
+});
+
 test("EmailUtils.sendEmail before .init() fails", async () => {
   expect.assertions(1);
 
