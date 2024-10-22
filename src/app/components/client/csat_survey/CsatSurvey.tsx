@@ -17,6 +17,7 @@ import {
 import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 import { FeatureFlagName } from "../../../../db/tables/featureFlags";
 import { getPetitionBannerCsatSurvey } from "./surveys/petitionBannerCsatSurvey";
+import { getRemovalTimeEstimatesCsatSurvey } from "./surveys/removalTimeEstimates";
 
 export type CsatSurveyProps = {
   activeTab: TabType;
@@ -28,6 +29,7 @@ export type CsatSurveyProps = {
   elapsedTimeInDaysSinceInitialScan: number | null;
   lastScanDate: Date | null;
   signInCount: number | null;
+  shouldShowPetitionBanner: boolean;
   localDismissalPetitionBanner: DismissalData;
   isEligibleForPremium: boolean;
 };
@@ -60,6 +62,8 @@ export const CsatSurvey = (props: CsatSurveyProps) => {
     props.enabledFeatureFlags.includes("PetitionBannerCsatSurvey") &&
       props.isEligibleForPremium &&
       getPetitionBannerCsatSurvey(surveyOptions),
+    props.enabledFeatureFlags.includes("DataBrokerRemovalTimeEstimateCsat") &&
+      getRemovalTimeEstimatesCsatSurvey(surveyOptions),
   ];
 
   // Filters out previously dismissed surveys to make sure `currentSurvey` will
@@ -93,7 +97,7 @@ export const CsatSurvey = (props: CsatSurveyProps) => {
   // the `data-privacy-petition-banner` experiment if the petition has
   // already been interacted with.
   if (
-    props.experimentData["data-privacy-petition-banner"].enabled &&
+    props.shouldShowPetitionBanner &&
     !props.localDismissalPetitionBanner.isDismissed
   ) {
     return;
