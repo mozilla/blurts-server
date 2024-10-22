@@ -14,10 +14,6 @@
     padding: calc($spacing-md * 1.25) $spacing-md;
     gap: $layout-xs;
 
-    @media screen and (min-width: $screen-lg) {
-      gap: $layout-md;
-    }
-
     .chevron {
       flex-shrink: 0;
       background-color: transparent;
@@ -57,7 +53,7 @@
     }
 
     @media screen and (min-width: $screen-lg) {
-      gap: $layout-md;
+      gap: $layout-sm;
     }
 
     .dataBrokerLogo {

@@ -10,12 +10,21 @@ import {
   createRandomBreach,
   createRandomScanResult,
 } from "../../../../apiMocks/mockData";
+import { defaultExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 
-// More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta: Meta<typeof ExposureCard> = {
   title: "ExposureCard",
   component: ExposureCard,
   tags: ["autodocs"],
+  args: {
+    enabledFeatureFlags: [],
+    experimentData: {
+      ...defaultExperimentData,
+      "data-broker-removal-time-estimates": {
+        enabled: true,
+      },
+    },
+  },
 };
 export default meta;
 type Story = StoryObj<typeof ExposureCard>;

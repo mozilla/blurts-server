@@ -5,6 +5,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { OnerepScanResultRow, OnerepScanRow } from "knex/types/tables";
+import { faker } from "@faker-js/faker";
 import { View as DashboardEl, TabType } from "./View";
 import { Shell } from "../../../../Shell";
 import { getL10n } from "../../../../../../functions/l10n/storybookAndJest";
@@ -183,6 +184,13 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
     user: user,
   };
 
+  const mockedRemovalTimeEstimates = scanData.results
+    .map((scan) => ({
+      d: scan.data_broker,
+      t: faker.number.float({ min: 0, max: 200 }),
+    }))
+    .filter(() => Math.random() < 0.1);
+
   return (
     <SessionProvider session={mockedSession}>
       <CountryCodeProvider countryCode={props.countryCode}>
@@ -224,6 +232,7 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
             hasFirstMonitoringScan={props.hasFirstMonitoringScan ?? false}
             signInCount={props.signInCount ?? null}
             autoOpenUpsellDialog={props.autoOpenUpsellDialog ?? false}
+            removalTimeEstimates={mockedRemovalTimeEstimates}
           />
         </Shell>
       </CountryCodeProvider>
