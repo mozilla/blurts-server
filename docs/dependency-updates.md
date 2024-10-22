@@ -306,7 +306,15 @@ for instructions on running the Pub/Sub emulator locally.
 
 Winston is a logging library that provides structured logging in GCP.
 
-Look for any `logger.*` statement in `./src` and ensure that log messages are being written as [structured logs](https://cloud.google.com/logging/docs/structured-logging).
+Look for any `logger.*` statement in `./src` and ensure that log messages are
+being written as [structured
+logs](https://cloud.google.com/logging/docs/structured-logging).
+
+For example, if you are logged in with a non-Plus user, then visit
+http://localhost:6060/user/dashboard/fix/data-broker-profiles/welcome-to-plus,
+you should see the following in the server-side logs:
+
+    {"level":"error","message":"user_not_subscribed","page":"welcome-to-premium"}
 
 ### `@sentry/*`
 
