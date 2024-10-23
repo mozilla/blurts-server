@@ -74,7 +74,6 @@ export const MonthlyActivityFreeEmail = (
   const purpleActiveColor = "#7542E5";
   const greyInactiveColor = "#9E9E9E";
 
-  /* c8 ignore start */
   const resolvedBoxData = {
     dataPointCountLabel: hasRunFreeScan
       ? "email-monthly-report-free-summary-manually-resolved-exposures"
@@ -82,31 +81,28 @@ export const MonthlyActivityFreeEmail = (
     // Show a sum of resolved data breach & broker exposures if a scan has been run
     // Otherwise, only show resolved data breaches
     dataPointValue: hasRunFreeScan
-      ? props.dataSummary.fixedSanitizedDataPoints.reduce(
-          (total, dataPointSummary) => {
-            return total + Object.values(dataPointSummary)[0];
-          },
-          0,
-        )
+      ? props.dataSummary.dataBreachResolvedNum +
+        props.dataSummary.dataBrokerManuallyResolvedNum
       : props.dataSummary.dataBreachResolvedNum,
     // The resolved box would be active if
-    // a user has run a free scan and they have resolved data breaches, and or brokers (count number of resolved data points)
-    // if a user hasn't run a free scan but they have resolved data breaches (count number of resolved breach cards)
+    // a user has run a free scan and there are remaining exposures (data breaches & brokers)
+    // or if a user hasn't run a free scan but there are remaining unresolved breaches
     activeState:
       (hasRunFreeScan &&
-        props.dataSummary.fixedSanitizedDataPoints.length > 0) ||
+        props.dataSummary.dataBreachResolvedNum +
+          props.dataSummary.dataBrokerManuallyResolvedNum >
+          0) ||
       (!hasRunFreeScan && props.dataSummary.dataBreachResolvedNum > 0),
   };
-  /* c8 ignore stop */
 
   // Show the congratulatory banner if a user does not have any remaining exposures left to resolve
-  // Before a scan, we count the number of breach cards as the total exposure amount.
-  // After a scan, we count the number of cumalative data points for both breaches and data broker exposures.
   const showCongratulatoryBanner = {
-    preScan: !hasRunFreeScan && props.dataSummary.dataBreachUnresolvedNum === 0,
     postScan:
       hasRunFreeScan &&
-      props.dataSummary.unresolvedSanitizedDataPoints.length === 0,
+      props.dataSummary.dataBreachUnresolvedNum +
+        props.dataSummary.dataBrokerInProgressNum ===
+        0,
+    preScan: !hasRunFreeScan && props.dataSummary.dataBreachUnresolvedNum === 0,
   };
 
   return (

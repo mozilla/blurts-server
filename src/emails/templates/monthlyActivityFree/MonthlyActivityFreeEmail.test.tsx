@@ -6,16 +6,15 @@ import { it } from "@jest/globals";
 import { composeStory } from "@storybook/react";
 import { render, screen } from "@testing-library/react";
 import Meta, {
-  MonthlyReportFreeUserNoScanWithBreachesNothingResolved,
-  MonthlyReportFreeUserWithoutScanNoExposures,
-  MonthlyReportFreeUserWithScanNoRemainingExposures,
-  MonthlyReportFreeUserWithScanWithExposuresNothingResolved,
-  MonthlyReportFreeUserWithScanWithExposuresResolved,
+  MonthlyReportFreeUserNoScanNoExposuresRemaining,
+  MonthlyReportFreeUserNoScanWithExposures,
+  MonthlyReportFreeUserWithScan,
+  MonthlyReportFreeUserWithScanNoExposuresRemaining,
 } from "./MonthlyActivityFreeEmail.stories";
 
 it("shows the right cta label if a user has not yet run a scan", () => {
   const ComposedEmail = composeStory(
-    MonthlyReportFreeUserNoScanWithBreachesNothingResolved,
+    MonthlyReportFreeUserNoScanWithExposures,
     Meta,
   );
   render(<ComposedEmail />);
@@ -28,10 +27,7 @@ it("shows the right cta label if a user has not yet run a scan", () => {
 });
 
 it("shows the right cta label if a user has run a scan", () => {
-  const ComposedEmail = composeStory(
-    MonthlyReportFreeUserWithScanWithExposuresNothingResolved,
-    Meta,
-  );
+  const ComposedEmail = composeStory(MonthlyReportFreeUserWithScan, Meta);
   render(<ComposedEmail />);
 
   const getFirstScanFreeBtn = screen.getByRole("link", {
@@ -41,9 +37,20 @@ it("shows the right cta label if a user has run a scan", () => {
   expect(getFirstScanFreeBtn).toBeInTheDocument();
 });
 
+it("shows the right data exposure value if a user is a free user", () => {
+  const ComposedEmail = composeStory(
+    MonthlyReportFreeUserNoScanWithExposures,
+    Meta,
+  );
+  render(<ComposedEmail />);
+
+  // For free users, the data point count should be "Data breaches" instead
+  expect(screen.queryByText("Data exposures")).not.toBeInTheDocument();
+});
+
 it("shows the inactive state if there are 0 manually resolved data breaches", () => {
   const ComposedEmail = composeStory(
-    MonthlyReportFreeUserNoScanWithBreachesNothingResolved,
+    MonthlyReportFreeUserNoScanWithExposures,
     Meta,
   );
   render(<ComposedEmail />);
@@ -56,42 +63,24 @@ it("shows the inactive state if there are 0 manually resolved data breaches", ()
   expect(manuallyResolvedDataBreaches).toHaveStyle("color: #9E9E9E");
 });
 
-it("shows the active state if there are manually resolved data breaches", () => {
-  const ComposedEmail = composeStory(
-    MonthlyReportFreeUserWithScanWithExposuresResolved,
-    Meta,
-  );
-  render(<ComposedEmail />);
-
-  const manuallyResolvedExposures = screen.getByText(
-    "Manually resolved exposures",
-    { exact: false },
-  );
-
-  expect(manuallyResolvedExposures).toHaveStyle("color: #7542E5");
-});
-
 it("says exposures instead of breaches once a user has run a scan", () => {
-  const ComposedEmail = composeStory(
-    MonthlyReportFreeUserWithScanWithExposuresNothingResolved,
-    Meta,
-  );
+  const ComposedEmail = composeStory(MonthlyReportFreeUserWithScan, Meta);
   render(<ComposedEmail />);
 
-  const manuallyResolvedExposures = screen.getByText(
+  const manuallyResolvedDataBreaches = screen.getByText(
     "Manually resolved exposures",
     { exact: false },
   );
 
   const dataExposures = screen.getByText("Data exposures", { exact: false });
 
-  expect(manuallyResolvedExposures).toBeInTheDocument();
+  expect(manuallyResolvedDataBreaches).toBeInTheDocument();
   expect(dataExposures).toBeInTheDocument();
 });
 
 it("shows the congratulatory banner if no exposures remaining before scan", () => {
   const ComposedEmail = composeStory(
-    MonthlyReportFreeUserWithoutScanNoExposures,
+    MonthlyReportFreeUserNoScanNoExposuresRemaining,
     Meta,
   );
   render(<ComposedEmail />);
@@ -103,7 +92,7 @@ it("shows the congratulatory banner if no exposures remaining before scan", () =
 
 it("shows the congratulatory banner if no exposures remaining after scan", () => {
   const ComposedEmail = composeStory(
-    MonthlyReportFreeUserWithScanNoRemainingExposures,
+    MonthlyReportFreeUserWithScanNoExposuresRemaining,
     Meta,
   );
   render(<ComposedEmail />);
