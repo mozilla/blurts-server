@@ -74,7 +74,6 @@ export const MonthlyActivityFreeEmail = (
   const purpleActiveColor = "#7542E5";
   const greyInactiveColor = "#9E9E9E";
 
-  /* c8 ignore start */
   const resolvedBoxData = {
     dataPointCountLabel: hasRunFreeScan
       ? "email-monthly-report-free-summary-manually-resolved-exposures"
@@ -97,7 +96,6 @@ export const MonthlyActivityFreeEmail = (
         props.dataSummary.fixedSanitizedDataPoints.length > 0) ||
       (!hasRunFreeScan && props.dataSummary.dataBreachResolvedNum > 0),
   };
-  /* c8 ignore stop */
 
   // Show the congratulatory banner if a user does not have any remaining exposures left to resolve
   // Before a scan, we count the number of breach cards as the total exposure amount.
