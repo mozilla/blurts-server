@@ -10,6 +10,7 @@ import { axe } from "jest-axe";
 import Meta, {
   ExposuresFilterDefault,
 } from "./stories/ExposuresFilter.stories";
+import { defaultExperimentData } from "../../../telemetry/generated/nimbus/experiments";
 
 jest.mock("next/navigation", () => ({
   useRouter: jest.fn(),
@@ -39,6 +40,66 @@ it("shows and hides the exposure type explainer", async () => {
   expect(explainerDialog).toBeInTheDocument();
   const explainerCloseButton = within(explainerDialog).getByRole("button", {
     name: "OK",
+  });
+  await user.click(explainerCloseButton);
+  expect(explainerDialog).not.toBeInTheDocument();
+});
+
+it("shows and hides the removal time explainer dialog by clicking the “Got it” button", async () => {
+  const user = userEvent.setup();
+  const ExposuresFilter = composeStory(ExposuresFilterDefault, Meta);
+  render(
+    <ExposuresFilter
+      enabledFeatureFlags={["DataBrokerRemovalTimeEstimateLabel"]}
+      experimentData={{
+        ...defaultExperimentData,
+        "data-broker-removal-time-estimates": {
+          enabled: true,
+        },
+      }}
+    />,
+  );
+
+  const exposureTypeHeader = screen.getByText("Removal time");
+  const explainerTrigger = within(exposureTypeHeader).getByRole("button", {
+    name: "Open modal",
+  });
+  await user.click(explainerTrigger);
+
+  const explainerDialog = screen.getByRole("dialog");
+  expect(explainerDialog).toBeInTheDocument();
+  const explainerCloseButton = within(explainerDialog).getByRole("button", {
+    name: "Got it",
+  });
+  await user.click(explainerCloseButton);
+  expect(explainerDialog).not.toBeInTheDocument();
+});
+
+it("shows and hides the removal time explainer dialog by clicking the close button", async () => {
+  const user = userEvent.setup();
+  const ExposuresFilter = composeStory(ExposuresFilterDefault, Meta);
+  render(
+    <ExposuresFilter
+      enabledFeatureFlags={["DataBrokerRemovalTimeEstimateLabel"]}
+      experimentData={{
+        ...defaultExperimentData,
+        "data-broker-removal-time-estimates": {
+          enabled: true,
+        },
+      }}
+    />,
+  );
+
+  const exposureTypeHeader = screen.getByText("Removal time");
+  const explainerTrigger = within(exposureTypeHeader).getByRole("button", {
+    name: "Open modal",
+  });
+  await user.click(explainerTrigger);
+
+  const explainerDialog = screen.getByRole("dialog");
+  expect(explainerDialog).toBeInTheDocument();
+  const explainerCloseButton = screen.getByRole("button", {
+    name: "Close modal",
   });
   await user.click(explainerCloseButton);
   expect(explainerDialog).not.toBeInTheDocument();
