@@ -251,7 +251,6 @@ export const MonthlyActivityFreeEmail = (
                   <mj-button
                     href={premiumSubscriptionUrlObject.href}
                     background-color="transparent"
-                    line-height="0"
                     color="#0060DF"
                     text-decoration="underline"
                     inner-padding="0"
