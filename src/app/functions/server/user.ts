@@ -4,10 +4,16 @@
 
 import { Session } from "next-auth";
 import { getBillingAndSubscriptions } from "../../../utils/fxa";
+import { getSubscriberByFxaUid } from "../../../db/tables/subscribers";
 
 /* c8 ignore start */
 export async function checkUserHasMonthlySubscription(user: Session["user"]) {
-  if (!user.subscriber?.fxa_access_token) {
+  if (!user.subscriber?.fxa_uid) {
+    console.error("FXA UID not set");
+    return false;
+  }
+  const subscriber = await getSubscriberByFxaUid(user.subscriber.fxa_uid);
+  if (!subscriber || !subscriber.fxa_access_token) {
     console.error("FXA token not set");
     return false;
   }
@@ -18,7 +24,7 @@ export async function checkUserHasMonthlySubscription(user: Session["user"]) {
   }
 
   const billingAndSubscriptionInfo = await getBillingAndSubscriptions(
-    user.subscriber.fxa_access_token,
+    subscriber.fxa_access_token,
   );
 
   if (billingAndSubscriptionInfo === null) {
