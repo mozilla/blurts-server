@@ -7,6 +7,9 @@ breach-all-meta-social-description = Browse the complete list of known breaches 
 
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
+breach-detail-meta-page-title = { $company } Data Breach - { -brand-fx-monitor }
+# Variables:
+#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-social-title = Were you affected by the { $company } Data Breach?
 breach-detail-meta-social-description = Use { -brand-fx-monitor } to find out if your personal information was exposed in this breach, and understand what to do next.
 
