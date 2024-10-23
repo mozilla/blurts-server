@@ -4,7 +4,7 @@
 
 import type { SubscriberRow } from "knex/types/tables";
 import { ExtendedReactLocalization } from "../../../app/functions/l10n";
-import { EmailFooter, RedesignedBreachEmailFooter } from "../EmailFooter";
+import { EmailFooter, RedesignedEmailFooter } from "../EmailFooter";
 import { EmailHeader } from "../EmailHeader";
 import { HibpLikeDbBreach } from "../../../utils/hibp";
 import { BreachCard } from "../../components/BreachCard";
@@ -304,7 +304,7 @@ export const RedesignedBreachAlertEmail = (
               ctaTarget={premiumSubscriptionUrlObject.href}
             />
           ))}
-        <RedesignedBreachEmailFooter l10n={l10n} utm_campaign={utmCampaignId} />
+        <RedesignedEmailFooter l10n={l10n} utm_campaign={utmCampaignId} />
       </mj-body>
     </mjml>
   );

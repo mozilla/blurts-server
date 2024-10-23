@@ -128,7 +128,7 @@ export const EmailFooter = (props: Props) => {
   );
 };
 
-export const RedesignedBreachEmailFooter = (props: Props) => {
+export const RedesignedEmailFooter = (props: Props) => {
   const l10n = props.l10n;
   const supportLinkUrlObject = new URL(CONST_URL_SUMO_MONITOR_SUPPORT_CENTER);
   supportLinkUrlObject.searchParams.set("utm_medium", "product-email");
