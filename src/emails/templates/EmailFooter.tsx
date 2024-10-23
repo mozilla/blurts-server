@@ -76,25 +76,6 @@ export const EmailFooter = (props: Props) => {
               },
             )}
           </mj-text>
-          {props.unsubscribeLink && (
-            <mj-text
-              font-size="14px"
-              line-height="21px"
-              font-weight="400"
-              align="center"
-            >
-              {l10n.getFragment("email-unsubscribe-link", {
-                elems: {
-                  link_to_unsub: (
-                    <a
-                      href={props.unsubscribeLink}
-                      style={{ color: "#0060DF" }}
-                    />
-                  ),
-                },
-              })}
-            </mj-text>
-          )}
           <mj-text
             color="#3D3D3D"
             font-size="14px"
@@ -159,7 +140,7 @@ export const RedesignedBreachEmailFooter = (props: Props) => {
     <mj-wrapper
       full-width="full-width"
       padding="50px 32px"
-      css-class="footer_hide_background"
+      css-class="footer_background"
     >
       <mj-section>
         <mj-column>
@@ -221,6 +202,25 @@ export const RedesignedBreachEmailFooter = (props: Props) => {
           >
             {l10n.getString("email-footer-trigger-transactional")}
           </mj-text>
+          {props.unsubscribeLink && (
+            <mj-text
+              font-size="14px"
+              line-height="21px"
+              font-weight="400"
+              align="center"
+            >
+              {l10n.getFragment("email-unsubscribe-link", {
+                elems: {
+                  link_to_unsub: (
+                    <a
+                      href={props.unsubscribeLink}
+                      style={{ color: "#0060DF" }}
+                    />
+                  ),
+                },
+              })}
+            </mj-text>
+          )}
           <mj-text
             font-size="14px"
             line-height="21px"

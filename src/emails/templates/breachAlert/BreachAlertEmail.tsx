@@ -141,6 +141,7 @@ export const RedesignedBreachAlertEmail = (
         <mj-preview>
           {l10n.getString("email-breach-alert-all-preview")}
         </mj-preview>
+        <MetaTags />
         <HeaderStyles />
         <mj-style>
           {`
