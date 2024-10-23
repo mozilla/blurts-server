@@ -12,12 +12,12 @@ export function generateMetadata() {
     title: l10n.getString("breach-all-meta-page-title"),
     twitter: {
       card: "summary_large_image",
-      title: l10n.getString("all-breaches-headline-3"),
+      title: l10n.getString("breach-all-meta-social-title"),
       description: l10n.getString("breach-all-meta-social-description"),
       images: ["/images/og-image.webp"],
     },
     openGraph: {
-      title: l10n.getString("all-breaches-headline-3"),
+      title: l10n.getString("breach-all-meta-social-title"),
       description: l10n.getString("breach-all-meta-social-description"),
       siteName: l10n.getString("brand-fx-monitor"),
       type: "website",
