@@ -5,6 +5,7 @@
 import { test, expect, jest } from "@jest/globals";
 import type { createTransport, Transporter } from "nodemailer";
 import { randomToken } from "./email";
+import type * as loggerModule from "../app/functions/server/logging";
 
 jest.mock("nodemailer", () => {
   return {
@@ -13,21 +14,12 @@ jest.mock("nodemailer", () => {
 });
 
 jest.mock("../app/functions/server/logging", () => {
-  class Logging {
-    info(message: string, details: object) {
-      console.info(message, details);
-    }
-    warn(message: string, details: object) {
-      console.warn(message, details);
-    }
-    error(message: string, details: object) {
-      console.error(message, details);
-    }
-  }
-
-  const logger = new Logging();
   return {
-    logger,
+    logger: {
+      info: jest.fn(),
+      warn: jest.fn(),
+      error: jest.fn(),
+    },
   };
 });
 
@@ -44,9 +36,9 @@ test("EmailUtils.sendEmail before .init() fails", async () => {
 });
 
 test("EmailUtils.init with empty host uses jsonTransport", async () => {
-  const mockedConsoleInfo = jest
-    .spyOn(console, "info")
-    .mockImplementation(() => undefined);
+  const mockedLoggerModule = jest.requireMock<typeof loggerModule>(
+    "../app/functions/server/logging",
+  );
   const mockedNodemailer: {
     createTransport: jest.MockedFunction<typeof createTransport>;
   } = jest.requireMock("nodemailer");
@@ -56,7 +48,7 @@ test("EmailUtils.init with empty host uses jsonTransport", async () => {
   expect(mockedNodemailer.createTransport).toHaveBeenCalledWith({
     jsonTransport: true,
   });
-  expect(mockedConsoleInfo).toHaveBeenCalledWith("smtpUrl-empty", {
+  expect(mockedLoggerModule.logger.info).toHaveBeenCalledWith("smtpUrl-empty", {
     message: "EmailUtils will log a JSON response instead of sending emails.",
   });
 });
@@ -84,9 +76,9 @@ test("EmailUtils.sendEmail with recipient, subject, template, context calls gTra
   const mockedNodemailer: {
     createTransport: jest.MockedFunction<typeof createTransport>;
   } = jest.requireMock("nodemailer");
-  const mockedConsoleInfo = jest
-    .spyOn(console, "info")
-    .mockImplementation(() => undefined);
+  const mockedLoggerModule = jest.requireMock<typeof loggerModule>(
+    "../app/functions/server/logging",
+  );
   const { initEmail, sendEmail } = await import("./email");
 
   const testSmtpUrl = "smtps://test:test@test:1";
@@ -105,13 +97,16 @@ test("EmailUtils.sendEmail with recipient, subject, template, context calls gTra
   expect(
     await sendEmail("test@example.com", "subject", "<html>test</html>"),
   ).toBe(sendMailInfo);
-  expect(mockedConsoleInfo).toHaveBeenCalledWith("sent_email", sendMailInfo);
+  expect(mockedLoggerModule.logger.info).toHaveBeenCalledWith(
+    "sent_email",
+    sendMailInfo,
+  );
 });
 
 test("EmailUtils.sendEmail rejects with error", async () => {
-  const mockedConsoleError = jest
-    .spyOn(console, "error")
-    .mockImplementation(() => undefined);
+  const mockedLoggerModule = jest.requireMock<typeof loggerModule>(
+    "../app/functions/server/logging",
+  );
   const mockedNodemailer: {
     createTransport: jest.MockedFunction<typeof createTransport>;
   } = jest.requireMock("nodemailer");
@@ -128,16 +123,16 @@ test("EmailUtils.sendEmail rejects with error", async () => {
   await expect(() =>
     sendEmail("test@example.com", "subject", "<html>test</html>"),
   ).rejects.toThrow("error");
-  expect(mockedConsoleError).toHaveBeenCalled();
+  expect(mockedLoggerModule.logger.error).toHaveBeenCalled();
 });
 
 test("EmailUtils.init with empty host uses jsonTransport. logs messages", async () => {
   const mockedNodemailer: {
     createTransport: jest.MockedFunction<typeof createTransport>;
   } = jest.requireMock("nodemailer");
-  const mockedConsoleInfo = jest
-    .spyOn(console, "info")
-    .mockImplementation(() => undefined);
+  const mockedLoggerModule = jest.requireMock<typeof loggerModule>(
+    "../app/functions/server/logging",
+  );
   const { initEmail, sendEmail } = await import("./email");
 
   const sendMailInfo = { messageId: "test id", response: "test response" };
@@ -153,7 +148,10 @@ test("EmailUtils.init with empty host uses jsonTransport. logs messages", async 
   expect(
     await sendEmail("test@example.com", "subject", "<html>test</html>"),
   ).toBe(sendMailInfo);
-  expect(mockedConsoleInfo).toHaveBeenCalledWith("sent_email", sendMailInfo);
+  expect(mockedLoggerModule.logger.info).toHaveBeenCalledWith(
+    "sent_email",
+    sendMailInfo,
+  );
 });
 
 test("randomToken returns a random token of 2xlength (because of hex)", () => {
