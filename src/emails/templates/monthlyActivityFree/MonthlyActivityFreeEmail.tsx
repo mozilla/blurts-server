@@ -25,14 +25,14 @@ export const MonthlyActivityFreeEmail = (
   props: MonthlyActivityFreeEmailProps,
 ) => {
   const hasRunFreeScan = typeof props.subscriber.onerep_profile_id === "number";
-  const upgradeCtaTelemetry = {
+  const scanOrUpgradeCtaUtm = {
     utmSource: "monitor-product",
     utmCampaign: hasRunFreeScan
       ? "monthly-report-free-us-scanned"
       : "monthly-report-free-us-no-scan",
     utmMedium: "product-email",
     utmContent: hasRunFreeScan
-      ? "unlock-with-monitor-plus-us"
+      ? "get-monitor-plus-us"
       : "get-first-scan-free-us",
   };
 
@@ -47,28 +47,28 @@ export const MonthlyActivityFreeEmail = (
 
   premiumSubscriptionUrlObject.searchParams.set(
     "utm_source",
-    upgradeCtaTelemetry.utmSource,
+    scanOrUpgradeCtaUtm.utmSource,
   );
   premiumSubscriptionUrlObject.searchParams.set(
     "utm_medium",
-    upgradeCtaTelemetry.utmMedium,
+    scanOrUpgradeCtaUtm.utmMedium,
   );
   premiumSubscriptionUrlObject.searchParams.set(
     "utm_campaign",
-    upgradeCtaTelemetry.utmCampaign,
+    scanOrUpgradeCtaUtm.utmCampaign,
   );
   premiumSubscriptionUrlObject.searchParams.set(
     "utm_content",
-    "unlock-with-monitor-plus-us",
+    scanOrUpgradeCtaUtm.utmContent,
   );
 
-  const bannerDataCta = {
+  const scanOrUpgradeBannerDataCta = {
     label: hasRunFreeScan
       ? l10n.getString("email-monthly-report-free-banner-cta-upgrade")
       : l10n.getString("email-monthly-report-free-banner-cta-free-scan"),
     link: hasRunFreeScan
       ? premiumSubscriptionUrlObject.href
-      : `${process.env.SERVER_URL}/user/dashboard/?utm_source=${upgradeCtaTelemetry.utmSource}&utm_medium=${upgradeCtaTelemetry.utmMedium}&utm_campaign=${upgradeCtaTelemetry.utmCampaign}&utm_content=${upgradeCtaTelemetry.utmContent}`,
+      : `${process.env.SERVER_URL}/user/dashboard/?utm_source=${scanOrUpgradeCtaUtm.utmSource}&utm_medium=${scanOrUpgradeCtaUtm.utmMedium}&utm_campaign=${scanOrUpgradeCtaUtm.utmCampaign}&utm_content=${scanOrUpgradeCtaUtm.utmContent}`,
   };
 
   const purpleActiveColor = "#7542E5";
@@ -145,7 +145,7 @@ export const MonthlyActivityFreeEmail = (
       <mj-body>
         <EmailHero
           l10n={l10n}
-          utm_campaign={upgradeCtaTelemetry.utmCampaign}
+          utm_campaign={scanOrUpgradeCtaUtm.utmCampaign}
           heading={l10n.getString("email-monthly-report-hero-free-heading")}
           subheading={l10n.getString("email-monthly-report-hero-free-body")}
         />
@@ -157,9 +157,9 @@ export const MonthlyActivityFreeEmail = (
             subscriber={props.subscriber}
             l10n={l10n}
             dataSummary={props.dataSummary}
-            utmCampaignId={upgradeCtaTelemetry.utmCampaign}
-            utmMedium={upgradeCtaTelemetry.utmMedium}
-            utmSource={upgradeCtaTelemetry.utmSource}
+            utmCampaignId={scanOrUpgradeCtaUtm.utmCampaign}
+            utmMedium={scanOrUpgradeCtaUtm.utmMedium}
+            utmSource={scanOrUpgradeCtaUtm.utmSource}
           />
         ) : (
           <EmailBanner
@@ -173,7 +173,7 @@ export const MonthlyActivityFreeEmail = (
             ctaLabel={l10n.getString(
               "email-monthly-report-hero-free-no-breaches-cta",
             )}
-            ctaTarget={`${process.env.SERVER_URL}/user/dashboard`}
+            ctaTarget={`${process.env.SERVER_URL}/user/dashboard/?utm_source=${scanOrUpgradeCtaUtm.utmSource}&utm_medium=${scanOrUpgradeCtaUtm.utmMedium}&utm_campaign=${scanOrUpgradeCtaUtm.utmCampaign}&utm_content=view-your-dashboard-us`}
           />
         )}
         {isEligibleForPremium(assumedCountryCode) && (
@@ -287,13 +287,13 @@ export const MonthlyActivityFreeEmail = (
             variant="dark"
             heading={l10n.getString("email-monthly-report-free-banner-heading")}
             content={l10n.getString("email-monthly-report-free-banner-body")}
-            ctaLabel={bannerDataCta.label}
-            ctaTarget={bannerDataCta.link}
+            ctaLabel={scanOrUpgradeBannerDataCta.label}
+            ctaTarget={scanOrUpgradeBannerDataCta.link}
           />
         )}
         <EmailFooter
           l10n={l10n}
-          utm_campaign={upgradeCtaTelemetry.utmCampaign}
+          utm_campaign={scanOrUpgradeCtaUtm.utmCampaign}
           unsubscribeLink={props.unsubscribeLink}
         />
       </mj-body>
