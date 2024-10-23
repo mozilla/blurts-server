@@ -59,10 +59,10 @@ export const MonthlyActivityFreeEmail = (
   );
   premiumSubscriptionUrlObject.searchParams.set(
     "utm_content",
-    "unlock-with-monitor-plus-us",
+    "get-monitor-plus-us",
   );
 
-  const bannerDataCta = {
+  const scanOrUpgradeBannerCta = {
     label: hasRunFreeScan
       ? l10n.getString("email-monthly-report-free-banner-cta-upgrade")
       : l10n.getString("email-monthly-report-free-banner-cta-free-scan"),
@@ -171,7 +171,7 @@ export const MonthlyActivityFreeEmail = (
             ctaLabel={l10n.getString(
               "email-monthly-report-hero-free-no-breaches-cta",
             )}
-            ctaTarget={`${process.env.SERVER_URL}/user/dashboard`}
+            ctaTarget={`${process.env.SERVER_URL}/user/dashboard/?utm_source=monitor-product&utm_medium=product-email&utm_campaign=monthly-report-free-us-scanned&utm_content=view-your-dashboard-us`}
           />
         )}
         {isEligibleForPremium(assumedCountryCode) && (
@@ -284,8 +284,8 @@ export const MonthlyActivityFreeEmail = (
             variant="dark"
             heading={l10n.getString("email-monthly-report-free-banner-heading")}
             content={l10n.getString("email-monthly-report-free-banner-body")}
-            ctaLabel={bannerDataCta.label}
-            ctaTarget={bannerDataCta.link}
+            ctaLabel={scanOrUpgradeBannerCta.label}
+            ctaTarget={scanOrUpgradeBannerCta.link}
           />
         )}
         <EmailFooter
