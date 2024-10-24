@@ -49,8 +49,15 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
+    - name: Extract metadata (tags, labels) for Docker
+      id: meta
+      uses: docker/metadata-action@v5
+      with:
+        images: mozilla/blurts-server
+        tags: type=sha,format=short,prefix=
+
     - name: Tag Docker image with release tag
-      run: docker tag ${{ env.CURRENT_DATE }} mozilla/blurts-server:${{ env.CURRENT_DATE }}
+      run: docker tag ${{ steps.meta.outputs.tags }} mozilla/blurts-server:${{ env.CURRENT_DATE }}
 
     - name: Push Docker image with release tag
       run: docker push mozilla/blurts-server:${{ env.CURRENT_DATE }}
