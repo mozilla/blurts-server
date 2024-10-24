@@ -32,7 +32,6 @@ export const HeaderStyles = () => {
           background-image: url(${process.env.SERVER_URL}/images/email/hero-bg-gradient.png);
           background-repeat: repeat;
           background-color: #e4d2ff;
-          border-radius: 16px 16px 0 0;
           background-position-x: 0;
         }
       }

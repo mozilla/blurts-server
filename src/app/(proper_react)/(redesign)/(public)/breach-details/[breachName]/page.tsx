@@ -20,7 +20,9 @@ export async function generateMetadata(props: {
   }
 
   return {
-    title: `${l10n.getString("brand-mozilla-monitor")} - ${breach.Title}`,
+    title: l10n.getString("breach-detail-meta-page-title", {
+      company: breach.Title,
+    }),
     twitter: {
       card: "summary_large_image",
       title: l10n.getString("breach-detail-meta-social-title", {
