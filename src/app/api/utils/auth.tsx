@@ -4,7 +4,6 @@
 
 import { NextRequest } from "next/server";
 import { AuthOptions, Profile as FxaProfile, User } from "next-auth";
-import { SubscriberRow } from "knex/types/tables";
 import { logger } from "../../functions/server/logging";
 
 import {
@@ -26,6 +25,7 @@ import { record } from "../../functions/server/glean";
 import { renderEmail } from "../../../emails/renderEmail";
 import { SignupReportEmail } from "../../../emails/templates/signupReport/SignupReportEmail";
 import { getEnvVarsOrThrow } from "../../../envVars";
+import { sanitizeSubscriberRow } from "../../functions/server/sanitize";
 
 const envVars = getEnvVarsOrThrow([
   "OAUTH_AUTHORIZATION_URI",
@@ -117,14 +117,11 @@ export const authOptions: AuthOptions = {
         );
 
         if (subscriberFromDb) {
-          profile = subscriberFromDb.fxa_profile_json as FxaProfile;
+          const sanitizedSubscriber = sanitizeSubscriberRow(subscriberFromDb);
+          profile = sanitizedSubscriber.fxa_profile_json as FxaProfile;
 
-          // MNTOR-2599 The breach_resolution object can get pretty big,
-          // causing the session token cookie to balloon in size,
-          // eventually resulting in a 400 Bad Request due to headers being too large.
-          delete (subscriberFromDb as Partial<SubscriberRow>).breach_resolution;
           token.subscriber =
-            subscriberFromDb as unknown as SerializedSubscriber;
+            sanitizedSubscriber as unknown as SerializedSubscriber;
         }
       }
       if (profile) {
@@ -153,11 +150,9 @@ export const authOptions: AuthOptions = {
         const existingUser = await getSubscriberByFxaUid(profile.uid);
 
         if (existingUser) {
-          // MNTOR-2599 The breach_resolution object can get pretty big,
-          // causing the session token cookie to balloon in size,
-          // eventually resulting in a 400 Bad Request due to headers being too large.
-          delete (existingUser as Partial<SubscriberRow>).breach_resolution;
-          token.subscriber = existingUser as unknown as SerializedSubscriber;
+          const sanitizedSubscriber = sanitizeSubscriberRow(existingUser);
+          token.subscriber =
+            sanitizedSubscriber as unknown as SerializedSubscriber;
           if (account.access_token && account.refresh_token) {
             const updatedUser = await updateFxAData(
               existingUser,
@@ -166,13 +161,13 @@ export const authOptions: AuthOptions = {
               account.expires_at ?? 0,
               profile,
             );
-            // MNTOR-2599 The breach_resolution object can get pretty big,
-            // causing the session token cookie to balloon in size,
-            // eventually resulting in a 400 Bad Request due to headers being too large.
-            delete (updatedUser as Partial<SubscriberRow>).breach_resolution;
-            // Next-Auth implicitly converts `updatedUser` to a SerializedSubscriber,
-            // hence the type assertion:
-            token.subscriber = updatedUser as unknown as SerializedSubscriber;
+            if (updatedUser) {
+              const sanitizedUpdatedUser = sanitizeSubscriberRow(updatedUser);
+              // Next-Auth implicitly converts `updatedUser` to a SerializedSubscriber,
+              // hence the type assertion:
+              token.subscriber =
+                sanitizedUpdatedUser as unknown as SerializedSubscriber;
+            }
           }
         } else if (!existingUser && profile.email) {
           const verifiedSubscriber = await addSubscriber(
@@ -183,10 +178,14 @@ export const authOptions: AuthOptions = {
             account.expires_at,
             profile,
           );
-          // The date fields of `verifiedSubscriber` get converted to an ISO 8601
-          // date string when serialised in the token, hence the type assertion:
-          token.subscriber =
-            verifiedSubscriber as unknown as SerializedSubscriber;
+          if (verifiedSubscriber) {
+            const sanitizedSubscriber =
+              sanitizeSubscriberRow(verifiedSubscriber);
+            // The date fields of `verifiedSubscriber` get converted to an ISO 8601
+            // date string when serialised in the token, hence the type assertion:
+            token.subscriber =
+              sanitizedSubscriber as unknown as SerializedSubscriber;
+          }
 
           const allBreaches = await getBreaches();
           const unsafeBreachesForEmail = await getBreachesForEmail(
@@ -276,13 +275,13 @@ export const authOptions: AuthOptions = {
               Date.now() + responseTokens.expires_in * 1000,
             );
 
-            // MNTOR-2599 The breach_resolution object can get pretty big,
-            // causing the session token cookie to balloon in size,
-            // eventually resulting in a 400 Bad Request due to headers being too large.
-            delete (updatedUser as Partial<SubscriberRow>).breach_resolution;
-            // Next-Auth implicitly converts `updatedUser` to a SerializedSubscriber,
-            // hence the type assertion:
-            token.subscriber = updatedUser as unknown as SerializedSubscriber;
+            if (updatedUser) {
+              const sanitizedUpdatedUser = sanitizeSubscriberRow(updatedUser);
+              // Next-Auth implicitly converts `updatedUser` to a SerializedSubscriber,
+              // hence the type assertion:
+              token.subscriber =
+                sanitizedUpdatedUser as unknown as SerializedSubscriber;
+            }
           } catch (error) {
             logger.error("refresh_access_token", error);
             // The error property can be used client-side to handle the refresh token error

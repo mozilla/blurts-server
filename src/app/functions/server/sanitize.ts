@@ -48,6 +48,7 @@ export type SanitizedSubscriberRow = SanitizationMarker &
     | "id"
     | "primary_email"
     | "primary_verified"
+    | "primary_sha1"
     | "created_at"
     | "updated_at"
     | "fx_newsletter"
@@ -77,6 +78,7 @@ export function sanitizeSubscriberRow(
     id: subscriber.id,
     primary_email: subscriber.primary_email,
     primary_verified: subscriber.primary_verified,
+    primary_sha1: subscriber.primary_sha1,
     created_at: subscriber.created_at,
     updated_at: subscriber.updated_at,
     fx_newsletter: subscriber.fx_newsletter,

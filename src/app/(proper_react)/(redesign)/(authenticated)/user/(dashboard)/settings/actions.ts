@@ -176,7 +176,20 @@ export async function onDeleteAccount() {
     };
   }
 
-  await deleteAccount(session.user.subscriber);
+  const subscriber = await getSubscriberByFxaUid(
+    session.user.subscriber.fxa_uid,
+  );
+  if (!subscriber) {
+    logger.error(
+      `Tried to delete an account with a session that could not be linked to a subscriber.`,
+    );
+    return {
+      success: false,
+      error: "delete-account-with-invalid-session",
+      errorMessage: `User tried to delete their account, but we could not find it.`,
+    };
+  }
+  await deleteAccount(subscriber);
 
   // Tell the front page to display an "account deleted" notification:
   cookies().set("justDeletedAccount", "justDeletedAccount", {
@@ -202,7 +215,20 @@ export async function onApplyCouponCode() {
     };
   }
 
-  const result = await applyCurrentCouponCode(session.user.subscriber);
+  const subscriber = await getSubscriberByFxaUid(
+    session.user.subscriber.fxa_uid,
+  );
+  if (!subscriber) {
+    logger.error(
+      `Tried to apply a coupon code with a session that could not be linked to a subscriber.`,
+    );
+    return {
+      success: false,
+      error: "apply-coupon-code-with-invalid-session",
+      errorMessage: `User tried to apply a coupon code, but we could not find their account.`,
+    };
+  }
+  const result = await applyCurrentCouponCode(subscriber);
   return result;
 }
 
