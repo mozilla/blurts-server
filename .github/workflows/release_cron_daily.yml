@@ -43,6 +43,10 @@ jobs:
             "generate_release_notes": true
           }'
 
+    # We cannot rely on the release_retag.yaml workflow because of the 
+    # auth scope of the default github token. It's a good security practice
+    # to prevent a github action being triggered by another.
+    # So we will deliberately push to dockerhub below
     - name: Log in to Docker Hub
       uses: docker/login-action@v3
       with:
