@@ -9,7 +9,7 @@ import { BreachIndexView } from "./BreachIndexView";
 export function generateMetadata() {
   const l10n = getL10n();
   return {
-    title: l10n.getString("breach-all-meta-title"),
+    title: l10n.getString("breach-all-meta-page-title"),
     twitter: {
       card: "summary_large_image",
       title: l10n.getString("breach-all-meta-social-title"),
