@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import type { ExtendedReactLocalization } from "../../../app/functions/l10n";
-import { EmailFooter } from "../EmailFooter";
+import { RedesignedEmailFooter } from "../EmailFooter";
 import { EmailHero } from "../../components/EmailHero";
 import { DataPointCount } from "../../components/EmailDataPointCount";
 import { DashboardSummary } from "../../../app/functions/server/dashboard";
@@ -285,7 +285,7 @@ export const MonthlyActivityFreeEmail = (
             ctaTarget={scanOrUpgradeBannerDataCta.link}
           />
         )}
-        <EmailFooter
+        <RedesignedEmailFooter
           l10n={l10n}
           utm_campaign={scanOrUpgradeCtaUtm.utmCampaign}
           unsubscribeLink={props.unsubscribeLink}
