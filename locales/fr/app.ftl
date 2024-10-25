@@ -192,8 +192,6 @@ mozilla = { -brand-mozilla }
 terms-of-service = Conditions d’utilisation
 privacy-notice = Politique de confidentialité
 github = { -brand-github }
-# Deprecated
-footer-nav-all-breaches = Toutes les fuites de données
 footer-nav-recent-breaches = Fuites de données récentes
 footer-external-link-faq-label = FAQ
 footer-external-link-faq-tooltip = Questions fréquentes
@@ -211,7 +209,7 @@ error-page-error-other-title = { $errorCode } - Une erreur s’est produite
 
 ## Breach overview page
 
-all-breaches-headline-2 = Toutes les fuites de données détectées par { -brand-fx-monitor }
+all-breaches-headline-3 = Base de données des fuites de données
 all-breaches-lead = Nous surveillons toutes les fuites de données connues pour savoir si vos informations personnelles ont été compromises. Voici une liste complète de toutes les fuites de données qui ont été signalées depuis 2007.
 search-breaches = Rechercher des fuites de données
 # the kind of user data exposed to hackers in data breach.

@@ -198,8 +198,6 @@ mozilla = { -brand-mozilla }
 terms-of-service = Условия использования
 privacy-notice = Уведомление о конфиденциальности
 github = { -brand-github }
-# Deprecated
-footer-nav-all-breaches = Все утечки
 footer-nav-recent-breaches = Недавние утечки данных
 footer-external-link-faq-label = ЧЗВ
 footer-external-link-faq-tooltip = Часто задаваемые вопросы
@@ -217,7 +215,7 @@ error-page-error-other-title = { $errorCode } Что-то пошло не так
 
 ## Breach overview page
 
-all-breaches-headline-2 = Все утечки, обнаруженные { -brand-fx-monitor }
+all-breaches-headline-3 = База данных утечек данных
 all-breaches-lead = Мы отслеживаем все известные утечки данных, чтобы выяснить, была ли скомпрометирована ваша персональная информация. Вот полный список всех утечек, о которых сообщалось с 2007 года.
 search-breaches = Поиск утечек
 # the kind of user data exposed to hackers in data breach.

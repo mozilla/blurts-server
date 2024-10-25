@@ -2,20 +2,16 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-breach-all-meta-title = { -brand-fx-monitor } - Semua Pembobolan Data
+breach-all-meta-page-title = Basis Data Pembobolan Data — { -brand-fx-monitor }
 breach-all-meta-social-title = Semua Pembobolan Terdeteksi oleh { -brand-fx-monitor }
 breach-all-meta-social-description = Jelajahi daftar lengkap pembobolan yang diketahui yang terdeteksi oleh { -brand-fx-monitor }, lalu cari tahu apakah informasi Anda terungkap.
-
+# Variables:
+#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
+breach-detail-meta-page-title = Pembobolan Data { $company } – { -brand-fx-monitor }
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-social-title = Apakah Anda terpengaruh oleh Pembobolan Data { $company }?
 breach-detail-meta-social-description = Gunakan { -brand-fx-monitor } untuk mengetahui apakah informasi pribadi Anda terungkap dalam pembobolan ini, dan memahami apa yang harus dilakukan selanjutnya.
-
-## Breaches header
-
-## Breaches resolved filter
-
-## Breaches table
 
 ## Links that we might refer to when prompting the user to make changes after a breach
 
@@ -26,7 +22,6 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 ## Prompts the user for changes when there is a breach detected of password
 
 breach-checklist-pw-header-text = Perbarui kata sandi Anda dan aktifkan autentikasi dua faktor (2FA).
-
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
@@ -95,7 +90,6 @@ breach-checklist-phone-header-2 = Lindungi nomor telepon Anda dengan layanan pen
 ## Prompts the user for changes when there is a breach detected of security questions
 
 breach-checklist-sq-header-text = Perbarui pertanyaan keamanan Anda.
-
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 breach-checklist-sq-body-text = Dalam kebanyakan kasus, kami menyarankan Anda memperbarui pertanyaan keamanan Anda di situs web perusahaan. Tetapi <b>situs web mereka mungkin sedang tidak aktif atau mengandung konten berbahaya</b>, jadi berhati-hatilah jika Anda <breached-company-link>mengunjungi situs</breached-company-link>. Untuk perlindungan tambahan, perbarui pertanyaan keamanan ini pada akun penting mana pun yang Anda gunakan, dan buat kata sandi unik untuk semua akun.
 
