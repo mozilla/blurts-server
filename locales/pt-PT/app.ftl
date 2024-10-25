@@ -216,7 +216,7 @@ error-page-error-other-title = { $errorCode } Ocorreu algo de errado
 
 ## Breach overview page
 
-all-breaches-headline-2 = Todas as falhas de segurança detetadas por { -brand-fx-monitor }
+all-breaches-headline-3 = Base de dados de violações de dados
 all-breaches-lead = Monitorizamos todas as violações de dados conhecidas para descobrir se a sua informação pessoal foi comprometida. Aqui está uma lista completa de todas as violações de dados que foram reportadas desde 2007.
 search-breaches = Procurar por violações de dados
 # the kind of user data exposed to hackers in data breach.

@@ -199,8 +199,6 @@ mozilla = { -brand-mozilla }
 terms-of-service = Användarvillkor
 privacy-notice = Sekretessmeddelande
 github = { -brand-github }
-# Deprecated
-footer-nav-all-breaches = Alla intrång
 footer-nav-recent-breaches = Senaste dataintrång
 footer-external-link-faq-label = Vanliga frågor
 footer-external-link-faq-tooltip = Vanliga frågor
@@ -218,7 +216,7 @@ error-page-error-other-title = { $errorCode } Något gick fel
 
 ## Breach overview page
 
-all-breaches-headline-2 = Alla intrång som upptäckts av { -brand-fx-monitor }
+all-breaches-headline-3 = Databas för dataintrång
 all-breaches-lead = Vi övervakar alla kända dataintrång för att ta reda på om din personliga information har äventyrats. Här är en komplett lista över alla överträdelser som har rapporterats sedan 2007.
 search-breaches = Sök intrång
 # the kind of user data exposed to hackers in data breach.
