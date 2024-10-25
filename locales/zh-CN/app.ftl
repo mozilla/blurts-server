@@ -182,8 +182,6 @@ mozilla = { -brand-mozilla }
 terms-of-service = 服务条款
 privacy-notice = 隐私声明
 github = { -brand-github }
-# Deprecated
-footer-nav-all-breaches = 所有数据外泄事件
 footer-nav-recent-breaches = 近期数据外泄事件
 footer-external-link-faq-label = 常见问题
 footer-external-link-faq-tooltip = 常见问题
@@ -201,7 +199,7 @@ error-page-error-other-title = 出现问题 - { $errorCode }
 
 ## Breach overview page
 
-all-breaches-headline-2 = { -brand-fx-monitor } 检测到的所有数据外泄事件
+all-breaches-headline-3 = 数据外泄事件数据库
 all-breaches-lead = 我们会监控所有已知的数据外泄事件，并检查是否牵涉到您的个人信息。这是自 2007 年以来所有被报告的数据外泄事件的清单。
 search-breaches = 搜索数据外泄事件
 # the kind of user data exposed to hackers in data breach.
