@@ -7,7 +7,7 @@ breach-all-meta-social-title = { -brand-fx-monitor } 偵測到的所有資料外
 breach-all-meta-social-description = 瀏覽 { -brand-fx-monitor } 偵測到的資料外洩事件清單，然後看看您的資訊是否已遭外洩。
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
-breach-detail-meta-page-title = { $company } 資料外洩事件 – { -brand-fx-monitor }
+breach-detail-meta-page-title = { $company } 資料外洩事件 — { -brand-fx-monitor }
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-social-title = 您受到 { $company } 資料外洩事件的影響嗎？

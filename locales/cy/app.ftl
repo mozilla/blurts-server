@@ -215,7 +215,7 @@ error-page-error-other-title = { $errorCode } Aeth rhywbeth o'i le
 
 ## Breach overview page
 
-all-breaches-headline-3 = Cronfa Ddata Torri Data
+all-breaches-headline-3 = Cronfa Ddata Tor-data
 all-breaches-lead = Rydym yn monitro'r holl achosion hysbys o dor-data i ganfod a gafodd eich manylion personol eu peryglu. Dyma restr lawn o’r holl dor-data sydd wedi’u hadrodd ers 2007.
 search-breaches = Chwilio am Dor-data
 # the kind of user data exposed to hackers in data breach.
