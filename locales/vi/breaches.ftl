@@ -2,20 +2,16 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-breach-all-meta-title = { -brand-fx-monitor } - Tất cả vụ rò rỉ dữ liệu
+breach-all-meta-page-title = Cơ sở dữ liệu về rò rỉ dữ liệu — { -brand-fx-monitor }
 breach-all-meta-social-title = Tất cả vụ rò rỉ dữ liệu được phát hiện bởi { -brand-fx-monitor }
 breach-all-meta-social-description = Duyệt qua danh sách đầy đủ các rò rỉ đã biết do { -brand-fx-monitor } phát hiện, sau đó tìm hiểu xem thông tin của bạn có bị lộ hay không.
-
+# Variables:
+#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
+breach-detail-meta-page-title = Dữ liệu bị rò rỉ từ { $company } – { -brand-fx-monitor }
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-social-title = Bạn có bị ảnh hưởng bởi rò rỉ dữ liệu từ { $company } không?
 breach-detail-meta-social-description = Sử dụng { -brand-fx-monitor } để tìm hiểu xem thông tin cá nhân của bạn có bị lộ trong lần rò rỉ này hay không và biết phải làm gì tiếp theo.
-
-## Breaches header
-
-## Breaches resolved filter
-
-## Breaches table
 
 ## Links that we might refer to when prompting the user to make changes after a breach
 
@@ -26,7 +22,6 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 ## Prompts the user for changes when there is a breach detected of password
 
 breach-checklist-pw-header-text = Cập nhật mật khẩu của bạn và bật xác thực hai yếu tố (2FA).
-
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
@@ -95,7 +90,6 @@ breach-checklist-phone-header-2 = Bảo vệ số điện thoại của bạn b�
 ## Prompts the user for changes when there is a breach detected of security questions
 
 breach-checklist-sq-header-text = Cập nhật các câu hỏi bảo mật của bạn.
-
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 breach-checklist-sq-body-text = Trong hầu hết các trường hợp, chúng tôi khuyên bạn nên cập nhật các câu hỏi bảo mật của mình trên trang web của công ty. Nhưng <b>trang web của họ có thể ngừng hoạt động hoặc chứa nội dung độc hại</b>, vì vậy hãy thận trọng nếu bạn <breached-company-link>truy cập trang web</breached-company-link>. Để tăng cường bảo vệ, hãy cập nhật các câu hỏi bảo mật này trên bất kỳ tài khoản quan trọng nào mà bạn đã sử dụng chúng và tạo các mật khẩu duy nhất cho tất cả các tài khoản.
 

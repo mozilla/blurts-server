@@ -212,7 +212,7 @@ error-page-error-other-title = { $errorCode } 문제가 발생했습니다.
 
 ## Breach overview page
 
-all-breaches-headline-2 = { -brand-fx-monitor }가 감지한 모든 위반
+all-breaches-headline-3 = 데이터 유출 데이터베이스
 all-breaches-lead = 저희는 사용자의 개인 정보가 유출되었는지 확인하기 위해 알려진 데이터 침해를 모두 모니터링합니다. 2007년 이후 보고된 모든 침해의 전체 목록은 다음과 같습니다.
 search-breaches = 유출 내역 검색하기
 # the kind of user data exposed to hackers in data breach.

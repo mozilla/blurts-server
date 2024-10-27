@@ -216,7 +216,7 @@ error-page-error-other-title = { $errorCode } Hiba történt
 
 ## Breach overview page
 
-all-breaches-headline-3 = Adatsértések adatbázisa
+all-breaches-headline-3 = Adatvédelmi incidensek adatbázisa
 all-breaches-lead = Minden ismert adatvédelmi incidenst monitorozunk, hogy megtudjuk, hogy kikerültek-e személyes adatai. Itt van a 2007 óta jelentett adatvédelmi incidensek teljes listája.
 search-breaches = Adatvédelmi incidensek keresése
 # the kind of user data exposed to hackers in data breach.

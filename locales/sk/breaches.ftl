@@ -2,20 +2,16 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-breach-all-meta-title = { -brand-fx-monitor } - všetky úniky údajov
+breach-all-meta-page-title = Databáza únikov údajov — { -brand-fx-monitor }
 breach-all-meta-social-title = Všetky úniky údajov zistené službou { -brand-fx-monitor }
 breach-all-meta-social-description = Prezrite si úplný zoznam známych únikov údajov zistených službou { -brand-fx-monitor } a potom zistite, či boli vaše informácie odhalené.
-
+# Variables:
+#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
+breach-detail-meta-page-title = Úniky údajov v spoločnosti { $company } – { -brand-fx-monitor }
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-social-title = Dotýka sa vás únik údajov spoločnosti { $company }?
 breach-detail-meta-social-description = Pomocou služby { -brand-fx-monitor } zistíte, či boli pri tomto úniku odhalené vaše osobné údaje, a dozviete sa, čo robiť ďalej.
-
-## Breaches header
-
-## Breaches resolved filter
-
-## Breaches table
 
 ## Links that we might refer to when prompting the user to make changes after a breach
 
@@ -26,7 +22,6 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 ## Prompts the user for changes when there is a breach detected of password
 
 breach-checklist-pw-header-text = Aktualizujte svoje heslá a povoľte dvojfaktorové overenie (2FA).
-
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
@@ -95,7 +90,6 @@ breach-checklist-phone-header-2 = Chráňte svoje telefónne číslo pomocou mas
 ## Prompts the user for changes when there is a breach detected of security questions
 
 breach-checklist-sq-header-text = Aktualizujte svoje bezpečnostné otázky.
-
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 breach-checklist-sq-body-text = Vo väčšine prípadov vám odporúčame aktualizovať bezpečnostné otázky na webovej stránke spoločnosti. Ale <b>ich webová stránka môže byť nefunkčná alebo môže obsahovať škodlivý obsah</b>, preto buďte pri <breached-company-link>návšteve stránky</breached-company-link> opatrní. Ak chcete zvýšiť ochranu, aktualizujte tieto bezpečnostné otázky na všetkých dôležitých účtoch, kde ste ich používali, a vytvorte jedinečné heslá pre všetky účty.
 
