@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 // data is inteferred from the SanitizedDataPoints type, but we ran into inference issues directly importing it
-export function calculateSanitizedDataPoints(
+export function sumSanitizedDataPoints(
   data: Array<Record<string, number>>,
 ): number {
   return data.reduce((accumulatedValue, currentDataPoint) => {

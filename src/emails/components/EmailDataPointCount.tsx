@@ -10,7 +10,7 @@ import { DashboardSummary } from "../../app/functions/server/dashboard";
 import { getSignupLocaleCountry } from "../functions/getSignupLocaleCountry";
 import { isEligibleForPremium } from "../../app/functions/universal/premium";
 import { SanitizedSubscriberRow } from "../../app/functions/server/sanitize";
-import { calculateSanitizedDataPoints } from "../functions/reduceSanitizedDataPoints";
+import { sumSanitizedDataPoints } from "../functions/reduceSanitizedDataPoints";
 
 type Props = {
   l10n: ExtendedReactLocalization;
@@ -66,7 +66,7 @@ export const DataPointCount = (props: Props) => {
             line-height="68px"
           >
             {hasRunFreeScan
-              ? calculateSanitizedDataPoints(
+              ? sumSanitizedDataPoints(
                   props.dataSummary.unresolvedSanitizedDataPoints,
                 )
               : unresolvedDataBreaches}
@@ -84,7 +84,7 @@ export const DataPointCount = (props: Props) => {
                   : "email-monthly-report-no-scan-results-data-points-label",
                 {
                   data_point_count: hasRunFreeScan
-                    ? calculateSanitizedDataPoints(
+                    ? sumSanitizedDataPoints(
                         props.dataSummary.unresolvedSanitizedDataPoints,
                       )
                     : unresolvedDataBreaches,
