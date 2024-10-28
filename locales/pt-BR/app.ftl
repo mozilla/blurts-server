@@ -196,8 +196,6 @@ mozilla = { -brand-mozilla }
 terms-of-service = Termos do serviço
 privacy-notice = Aviso de privacidade
 github = { -brand-github }
-# Deprecated
-footer-nav-all-breaches = Todos os vazamentos
 footer-nav-recent-breaches = Vazamentos recentes de dados
 footer-external-link-faq-label = Dúvidas frequentes
 footer-external-link-faq-tooltip = Dúvidas frequentes
@@ -215,7 +213,7 @@ error-page-error-other-title = { $errorCode } Houve algum erro
 
 ## Breach overview page
 
-all-breaches-headline-2 = Todos os vazamentos detectados pelo { -brand-fx-monitor }
+all-breaches-headline-3 = Base de dados de vazamentos de dados
 all-breaches-lead = Monitoramos todos os vazamentos de dados conhecidos para descobrir se suas informações pessoais foram comprometidas. Veja uma lista completa de todos os vazamentos relatados desde 2007.
 search-breaches = Pesquisar vazamentos
 # the kind of user data exposed to hackers in data breach.

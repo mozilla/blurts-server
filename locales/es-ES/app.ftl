@@ -211,7 +211,7 @@ error-page-error-other-title = { $errorCode } Se ha producido un error
 
 ## Breach overview page
 
-all-breaches-headline-2 = Todas las filtraciones detectadas por { -brand-fx-monitor }
+all-breaches-headline-3 = Base de datos de filtraciones de datos
 all-breaches-lead = Supervisamos todas las filtraciones de datos conocidas para averiguar si tu información personal se vio comprometida. Aquí hay una lista completa de todas las filtraciones que se han notificado desde 2007.
 search-breaches = Buscar filtraciones
 # the kind of user data exposed to hackers in data breach.
