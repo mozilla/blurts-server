@@ -22,7 +22,7 @@ export const EmailHero = (props: Props) => {
   return (
     <mj-wrapper padding="24px 16px">
       <mj-section
-        padding="10px 12px"
+        padding="10px 6px"
         css-class="hero_background"
         border-radius="16px 16px 0 0"
       >
@@ -39,6 +39,15 @@ export const EmailHero = (props: Props) => {
               href={`${process.env.SERVER_URL}/user/dashboard/fixed?utm_source=monitor-product&utm_medium=product-email&utm_campaign=${props.utm_campaign}&utm_content=header-logo${utmContentSuffix}`}
               align="left"
               width="200px"
+              css-class="monitor_logo_light_mode"
+            />
+            <mj-image
+              alt={l10n.getString("public-nav-name")}
+              src={`${process.env.SERVER_URL}/images/email/monitor-logo-transparent-dark-mode.png`}
+              href={`${process.env.SERVER_URL}/user/dashboard/fixed?utm_source=monitor-product&utm_medium=product-email&utm_campaign=${props.utm_campaign}&utm_content=header-logo${utmContentSuffix}`}
+              align="left"
+              width="200px"
+              css-class="monitor_logo_dark_mode"
             />
           </mj-column>
           <mj-column
