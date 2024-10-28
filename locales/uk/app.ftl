@@ -265,8 +265,6 @@ mozilla = { -brand-mozilla }
 terms-of-service = Умови надання послуг
 privacy-notice = Положення про приватність
 github = { -brand-github }
-# Deprecated
-footer-nav-all-breaches = Усі витоки
 footer-nav-recent-breaches = Нещодавні витоки даних
 footer-external-link-faq-label = Поширені запитання
 footer-external-link-faq-tooltip = Поширені запитання
@@ -284,7 +282,7 @@ error-page-error-other-title = { $errorCode } Щось пішло не так
 
 ## Breach overview page
 
-all-breaches-headline-2 = Усі витоки, виявлені { -brand-fx-monitor }
+all-breaches-headline-3 = База даних витоків
 all-breaches-lead = Ми відстежуємо всі відомі витоки даних, щоб з’ясувати, чи була скомпрометована ваша особиста інформація. Ось повний список усіх витоків, про які було повідомлено з 2007 року.
 search-breaches = Пошук витоків
 # the kind of user data exposed to hackers in data breach.
