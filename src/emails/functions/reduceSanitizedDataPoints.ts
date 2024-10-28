@@ -8,11 +8,8 @@ import { SanitizedDataPoints } from "../../app/functions/server/dashboard";
 export function calculateSanitizedDataPoints(
   data: SanitizedDataPoints,
 ): number {
-  return data.reduce(
-    (accumulatedValue: number, currentDataPoint: Record<string, number>) => {
-      const dataPointValue = Object.values(currentDataPoint)[0] as number;
-      return accumulatedValue + dataPointValue;
-    },
-    0,
-  );
+  return data.reduce((accumulatedValue, currentDataPoint) => {
+    const dataPointValue = Object.values(currentDataPoint)[0] as number;
+    return accumulatedValue + dataPointValue;
+  }, 0);
 }
