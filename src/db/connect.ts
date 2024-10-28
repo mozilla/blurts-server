@@ -5,6 +5,7 @@
 import knex from "knex";
 import knexConfig from "./knexfile.js";
 
+let connection: knex.Knex;
 export default function createDbConnection(): knex.Knex {
   /* c8 ignore start */
   if (process.env.NODE_ENV === "development") {
@@ -15,9 +16,11 @@ export default function createDbConnection(): knex.Knex {
       );
     }
 
-    return (global as unknown as Record<string, knex.Knex>)[client];
+    connection ??= (global as unknown as Record<string, knex.Knex>)[client];
+    return connection;
   }
   /* c8 ignore stop */
 
-  return knex(knexConfig as knex.Knex.Config);
+  connection ??= knex(knexConfig as knex.Knex.Config);
+  return connection;
 }

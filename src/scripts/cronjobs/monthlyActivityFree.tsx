@@ -4,21 +4,23 @@
 
 import { SubscriberRow } from "knex/types/tables";
 import { getFreeSubscribersWaitingForMonthlyEmail } from "../../db/tables/subscribers";
+import { getLatestOnerepScanResults } from "../../db/tables/onerep_scans";
+import { updateEmailPreferenceForSubscriber } from "../../db/tables/subscriber_email_preferences";
 import { initEmail, sendEmail, closeEmailPool } from "../../utils/email";
 import { renderEmail } from "../../emails/renderEmail";
 import { MonthlyActivityFreeEmail } from "../../emails/templates/monthlyActivityFree/MonthlyActivityFreeEmail";
 import { getCronjobL10n } from "../../app/functions/l10n/cronjobs";
 import { sanitizeSubscriberRow } from "../../app/functions/server/sanitize";
 import { getDashboardSummary } from "../../app/functions/server/dashboard";
-import { getLatestOnerepScanResults } from "../../db/tables/onerep_scans";
 import { getSubscriberBreaches } from "../../app/functions/server/getSubscriberBreaches";
 import { refreshStoredScanResults } from "../../app/functions/server/refreshStoredScanResults";
 import { getSignupLocaleCountry } from "../../emails/functions/getSignupLocaleCountry";
-import { updateEmailPreferenceForSubscriber } from "../../db/tables/subscriber_email_preferences";
+import createDbConnection from "../../db/connect";
 import { logger } from "../../app/functions/server/logging";
 import { getMonthlyActivityFreeUnsubscribeLink } from "../../app/functions/cronjobs/unsubscribeLinks";
 
-void run();
+await run();
+await createDbConnection().destroy();
 
 async function run() {
   const batchSize = Number.parseInt(
