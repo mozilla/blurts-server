@@ -19,27 +19,31 @@ export const HeaderStyles = () => {
         supported-color-schemes: light dark;
       }
 
-      @media (prefers-color-scheme: light) {
-        .footer_background {
-          background-image: url(${process.env.SERVER_URL}/images/email/footer-bg-shapes.png);
-          background-position: center bottom;
-          background-repeat: no-repeat;
-        }
+      .footer_background {
+        background-image: url(${process.env.SERVER_URL}/images/email/footer-bg-shapes.png);
+        background-position: center bottom;
+        background-repeat: no-repeat;
+        color: #000000;
+      }
 
-         .hero_background {
-          background-image: url(${process.env.SERVER_URL}/images/email/hero-bg-gradient.png);
-          background-repeat: repeat;
-          background-color: #e4d2ff;
-          background-position-x: 0;
-        }
+      .hero_background {
+        background-image: url(${process.env.SERVER_URL}/images/email/hero-bg-gradient.png);
+        background-repeat: repeat;
+        background-color: #e4d2ff;
+        background-position-x: 0;
+        color: #ffffff;
       }
 
       @media (prefers-color-scheme: dark) {
         .hero_background {
-          background: none !important;
+          background: none;
         }
 
-        * {
+        .footer_background {
+          background: none;
+        }
+
+        p {
           background: #1e1e1e !important;
           color: #ffffff !important;
         }
