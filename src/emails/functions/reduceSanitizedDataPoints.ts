@@ -2,14 +2,12 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-/* eslint-disable */
-import { SanitizedDataPoints } from "../../app/functions/server/dashboard";
-
+// data is inteferred from the SanitizedDataPoints type, but we ran into inference issues directly importing it
 export function calculateSanitizedDataPoints(
-  data: SanitizedDataPoints,
+  data: Array<Record<string, number>>,
 ): number {
   return data.reduce((accumulatedValue, currentDataPoint) => {
-    const dataPointValue = Object.values(currentDataPoint)[0] as number;
+    const dataPointValue = Object.values(currentDataPoint)[0];
     return accumulatedValue + dataPointValue;
   }, 0);
 }
