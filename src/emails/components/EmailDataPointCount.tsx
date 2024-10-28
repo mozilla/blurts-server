@@ -10,6 +10,7 @@ import { DashboardSummary } from "../../app/functions/server/dashboard";
 import { getSignupLocaleCountry } from "../functions/getSignupLocaleCountry";
 import { isEligibleForPremium } from "../../app/functions/universal/premium";
 import { SanitizedSubscriberRow } from "../../app/functions/server/sanitize";
+import { calculateSanitizedDataPoints } from "../functions/reduceSanitizedDataPoints";
 
 type Props = {
   l10n: ExtendedReactLocalization;
@@ -23,14 +24,6 @@ type Props = {
 export const DataPointCount = (props: Props) => {
   const assumedCountryCode = getSignupLocaleCountry(props.subscriber);
   const unresolvedDataBreaches = props.dataSummary.dataBreachUnresolvedNum;
-
-  const sumOfUnresolvedDataPoints =
-    props.dataSummary.unresolvedSanitizedDataPoints.reduce(
-      (total, dataPointSummary) => {
-        return total + Object.values(dataPointSummary)[0];
-      },
-      0,
-    );
 
   const hasRunFreeScan = typeof props.subscriber.onerep_profile_id === "number";
   const utmContentSuffix = isEligibleForPremium(assumedCountryCode)
@@ -73,7 +66,9 @@ export const DataPointCount = (props: Props) => {
             line-height="68px"
           >
             {hasRunFreeScan
-              ? sumOfUnresolvedDataPoints
+              ? calculateSanitizedDataPoints(
+                  props.dataSummary.unresolvedSanitizedDataPoints,
+                )
               : unresolvedDataBreaches}
           </mj-text>
           <mj-text
@@ -89,7 +84,9 @@ export const DataPointCount = (props: Props) => {
                   : "email-monthly-report-no-scan-results-data-points-label",
                 {
                   data_point_count: hasRunFreeScan
-                    ? sumOfUnresolvedDataPoints
+                    ? calculateSanitizedDataPoints(
+                        props.dataSummary.unresolvedSanitizedDataPoints,
+                      )
                     : unresolvedDataBreaches,
                 },
               )}
