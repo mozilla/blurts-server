@@ -39,15 +39,6 @@ export const EmailHero = (props: Props) => {
               href={`${process.env.SERVER_URL}/user/dashboard/fixed?utm_source=monitor-product&utm_medium=product-email&utm_campaign=${props.utm_campaign}&utm_content=header-logo${utmContentSuffix}`}
               align="left"
               width="200px"
-              css-class="monitor_logo_light_mode"
-            />
-            <mj-image
-              alt={l10n.getString("public-nav-name")}
-              src={`${process.env.SERVER_URL}/images/email/monitor-logo-transparent-dark-mode.png`}
-              href={`${process.env.SERVER_URL}/user/dashboard/fixed?utm_source=monitor-product&utm_medium=product-email&utm_campaign=${props.utm_campaign}&utm_content=header-logo${utmContentSuffix}`}
-              align="left"
-              width="200px"
-              css-class="monitor_logo_dark_mode"
             />
           </mj-column>
           <mj-column

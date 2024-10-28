@@ -32,10 +32,6 @@ export const HeaderStyles = () => {
           background-color: #e4d2ff;
           background-position-x: 0;
         }
-
-          .monitor_logo_dark_mode {
-            display: none;
-          }
       }
 
       @media (prefers-color-scheme: dark) {
@@ -43,15 +39,8 @@ export const HeaderStyles = () => {
           background: none !important;
         }
 
-        .monitor_logo_light_mode {
-          display: none;
-        }
-
-        .monitor_logo_dark_mode {
-          display: inline;
-        }
-
         * {
+          background: #1e1e1e !important;
           color: #ffffff !important;
         }
       }
