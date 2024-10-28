@@ -25,10 +25,8 @@ export const HeaderStyles = () => {
           background-position: center bottom;
           background-repeat: no-repeat;
         }
-      }
 
-       @media (prefers-color-scheme: light) {
-        .hero_background {
+         .hero_background {
           background-image: url(${process.env.SERVER_URL}/images/email/hero-bg-gradient.png);
           background-repeat: repeat;
           background-color: #e4d2ff;
@@ -39,6 +37,10 @@ export const HeaderStyles = () => {
       @media (prefers-color-scheme: dark) {
         .hero_background {
           background: none !important;
+        }
+
+        * {
+          color: #ffffff !important;
         }
       }
     `;
