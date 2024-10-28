@@ -8,12 +8,13 @@ import { v4 as uuidv4 } from "uuid";
 
 const GLEAN_EVENT_MOZLOG_TYPE = "glean-server-event";
 
-const loggingWinston = new LoggingWinston({
-  labels: {
-    name: GLEAN_EVENT_MOZLOG_TYPE,
-    version: "0.1.0",
-  },
-});
+const getLoggingWinston = () =>
+  new LoggingWinston({
+    labels: {
+      name: GLEAN_EVENT_MOZLOG_TYPE,
+      version: "0.1.0",
+    },
+  });
 
 export function record(
   category: string,
@@ -26,7 +27,7 @@ export function record(
     // In GCP environments, use cloud logging instead of stdout.
     // FIXME https://mozilla-hub.atlassian.net/browse/MNTOR-2401 - enable for stage and production
     transports: ["gcpdev"].includes(process.env.APP_ENV ?? "local")
-      ? [loggingWinston]
+      ? [getLoggingWinston()]
       : [new transports.Console()],
   });
 
