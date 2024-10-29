@@ -209,7 +209,7 @@ error-page-error-other-title = { $errorCode } Oĩ osẽvaíva
 
 ## Breach overview page
 
-all-breaches-headline-2 = Opaite ñembogua ohecháva { -brand-fx-monitor }
+all-breaches-headline-3 = Mba’ekuaarã rupa ñembogua rehegua
 all-breaches-lead = Rohechapaite umi mba’ekuaarã ñembogua roikuaa hag̃ua ne maranduetépa oñembyaikuaára’e. Ko’ápe oĩ peteĩ tysýi opaite ñembogua oñemomaranduva’ekue rehegua ary 2007 guive.
 search-breaches = Ñembyai jeheka
 # the kind of user data exposed to hackers in data breach.

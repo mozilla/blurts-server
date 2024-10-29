@@ -250,7 +250,7 @@ error-page-error-other-title = { $errorCode }: Κάτι πήγε στραβά
 
 ## Breach overview page
 
-all-breaches-headline-3 = Βάση δεδομένων παραβίασης δεδομένων
+all-breaches-headline-3 = Βάση δεδομένων παραβιάσεων
 all-breaches-lead = Παρακολουθούμε όλες τις γνωστές παραβιάσεις δεδομένων για να διαπιστώσουμε εάν τα προσωπικά σας στοιχεία παραβιάστηκαν. Ακολουθεί μια πλήρης λίστα με όλες τις παραβιάσεις που έχουν αναφερθεί από το 2007.
 search-breaches = Αναζήτηση παραβιάσεων
 # the kind of user data exposed to hackers in data breach.
