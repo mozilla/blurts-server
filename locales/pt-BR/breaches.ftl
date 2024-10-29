@@ -2,20 +2,16 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-breach-all-meta-title = { -brand-fx-monitor } - Todos os vazamentos de dados
+breach-all-meta-page-title = Base de dados de vazamentos de dados — { -brand-fx-monitor }
 breach-all-meta-social-title = Todos os vazamentos detectados pelo { -brand-fx-monitor }
 breach-all-meta-social-description = Navegue pela lista completa de vazamentos conhecidas detectados pelo { -brand-fx-monitor } e descubra se suas informações foram expostas.
-
+# Variables:
+#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
+breach-detail-meta-page-title = Vazamento de dados de { $company } – { -brand-fx-monitor }
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-social-title = Você foi afetado pelo vazamento de dados de { $company }?
 breach-detail-meta-social-description = Use o { -brand-fx-monitor } para descobrir se suas informações pessoais foram expostas neste vazamento e entender o que fazer a seguir.
-
-## Breaches header
-
-## Breaches resolved filter
-
-## Breaches table
 
 ## Links that we might refer to when prompting the user to make changes after a breach
 
@@ -26,7 +22,6 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 ## Prompts the user for changes when there is a breach detected of password
 
 breach-checklist-pw-header-text = Atualize suas senhas e ative a autenticação em duas etapas.
-
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
@@ -95,7 +90,6 @@ breach-checklist-phone-header-2 = Proteja seu número de celular com um serviço
 ## Prompts the user for changes when there is a breach detected of security questions
 
 breach-checklist-sq-header-text = Atualize suas perguntas de segurança.
-
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 breach-checklist-sq-body-text = Na maioria dos casos, recomendamos que altere suas perguntas de segurança no site da empresa. Mas <b>o site pode estar fora do ar ou conter conteúdo malicioso</b>, portanto tenha cuidado se você <breached-company-link>visitar o site</breached-company-link>. Para proteção adicional, altere essas perguntas de segurança em todas as contas importantes em que as usou e crie uma senha exclusiva em cada conta.
 

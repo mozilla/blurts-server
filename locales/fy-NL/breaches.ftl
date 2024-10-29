@@ -2,20 +2,16 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-breach-all-meta-title = { -brand-fx-monitor } – Alle datalekken
+breach-all-meta-page-title = Database mei datalekken – { -brand-fx-monitor }
 breach-all-meta-social-title = Alle troch { -brand-fx-monitor } detektearre datalekken
 breach-all-meta-social-description = Blêdzje troch de folsleine list mei bekende datalekken ûntdutsen troch { -brand-fx-monitor }, fyn dan út oft jo ynformaasje bleatsteld is.
-
+# Variables:
+#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
+breach-detail-meta-page-title = { $company }-datalek – { -brand-fx-monitor }
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-social-title = Binne jo troffen troch it datalek fan { $company }?
 breach-detail-meta-social-description = Brûk { -brand-fx-monitor } om der efter te kommen oft jo persoanlike gegevens by dit datalek lekt binne en om te begripen wat jo dernei dwaan moatte.
-
-## Breaches header
-
-## Breaches resolved filter
-
-## Breaches table
 
 ## Links that we might refer to when prompting the user to make changes after a breach
 
@@ -26,7 +22,6 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 ## Prompts the user for changes when there is a breach detected of password
 
 breach-checklist-pw-header-text = Wurkje jo wachtwurden by en skeakelje twa-staps-autentikaasje (2FA) yn.
-
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
@@ -95,7 +90,6 @@ breach-checklist-phone-header-2 = Beskermje jo telefoannûmer mei in maskearstsj
 ## Prompts the user for changes when there is a breach detected of security questions
 
 breach-checklist-sq-header-text = Wurkje jo befeiligingsfragen by.
-
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 breach-checklist-sq-body-text = Yn de measte gefallen riede wy jo oan jo befeiligingsfragen te wizigjen op de website fan it bedriuw. Mar <b>harren website kin offline wêze of skeadlike ynhâld befetsje</b>, dus wês foarsichtich as jo <breached-company-link>de website besykje</breached-company-link>. Wurkje foar ekstra beskerming dizze befeiligingsfragen by foar alle wichtige accounts wêrop jo se brûkt hawwe en meitsje unike wachtwurden oan foar al jo accounts.
 

@@ -2,7 +2,7 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-breach-all-meta-page-title = Βάση δεδομένων παραβίασης δεδομένων — { -brand-fx-monitor }
+breach-all-meta-page-title = Βάση δεδομένων παραβιάσεων — { -brand-fx-monitor }
 breach-all-meta-social-title = Όλες οι παραβιάσεις που εντοπίστηκαν από το { -brand-fx-monitor }
 breach-all-meta-social-description = Περιηγηθείτε στην πλήρη λίστα των γνωστών παραβιάσεων που εντοπίστηκαν από το { -brand-fx-monitor } και μάθετε εάν αποκαλύφθηκαν οι πληροφορίες σας.
 # Variables:
