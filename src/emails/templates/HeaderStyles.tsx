@@ -24,13 +24,14 @@ export const HeaderStyles = () => {
         background-position: center bottom;
         background-repeat: no-repeat;
         color: #000000;
+        background: #fffff;
       }
 
       .hero_background {
         background-image: url(${process.env.SERVER_URL}/images/email/hero-bg-gradient.png);
         background-repeat: repeat;
-        background-color: #e4d2ff;
         background-position-x: 0;
+        background-color: #e4d2ff;
         color: #ffffff;
       }
 
