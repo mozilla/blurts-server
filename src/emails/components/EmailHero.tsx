@@ -14,8 +14,6 @@ export type Props = {
 
 export const EmailHero = (props: Props) => {
   const l10n = props.l10n;
-  // Currently <EmailHero> is only used in the redesigned breach alert email,
-  // which sets a utmContentSuffix:
   /* c8 ignore next */
   const utmContentSuffix = props.utmContentSuffix ?? "";
 
