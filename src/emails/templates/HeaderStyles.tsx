@@ -44,7 +44,7 @@ export const HeaderStyles = () => {
           background: none;
         }
 
-        p {
+        * {
           background: #1e1e1e !important;
           color: #ffffff !important;
         }
