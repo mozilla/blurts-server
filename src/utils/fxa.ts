@@ -389,7 +389,7 @@ async function getAttachedClients(
       },
     });
     const responseJson = await response.json();
-    if (!response.ok) throw new Error(responseJson);
+    if (!response.ok) throw new Error(JSON.stringify(responseJson));
     logger.info("get_fxa_attached_clients_success");
     return responseJson as FxaGetAccountAttachedClients[];
   } catch (e) {
