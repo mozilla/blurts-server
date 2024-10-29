@@ -6,8 +6,8 @@
 export const MetaTags = () => {
   return (
     <mj-raw>
-      <meta name="color-scheme" content="light dark" />
-      <meta name="supported-color-schemes" content="light dark" />
+      <meta name="color-scheme" content="light only" />
+      <meta name="supported-color-schemes" content="light only" />
     </mj-raw>
   );
 };
@@ -15,8 +15,8 @@ export const MetaTags = () => {
 export const HeaderStyles = () => {
   const hideBgImageOnDarkMode = `
       :root {
-        color-scheme: light dark;
-        supported-color-schemes: light dark;
+        color-scheme: light only;
+        supported-color-schemes: light only;
       }
 
       .footer_background {
@@ -33,21 +33,6 @@ export const HeaderStyles = () => {
         background-position-x: 0;
         background-color: #e4d2ff;
         color: #ffffff;
-      }
-
-      @media (prefers-color-scheme: dark) {
-        .hero_background {
-          background: none;
-        }
-
-        .footer_background {
-          background: none;
-        }
-
-        * {
-          background: #1e1e1e !important;
-          color: #ffffff !important;
-        }
       }
     `;
 
