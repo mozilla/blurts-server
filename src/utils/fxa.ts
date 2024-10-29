@@ -349,6 +349,61 @@ async function applyCoupon(
 }
 /* c8 ignore stop */
 
+/**
+ * @see https://mozilla.github.io/ecosystem-platform/api#tag/Devices-and-Sessions/operation/getAccountAttached_clients
+ */
+export type FxaGetAccountAttachedClients = {
+  clientId: string;
+  deviceId: number;
+  sessionTokenId: string;
+  refreshTokenId: string;
+  isCurrentSession: boolean;
+  deviceType: string;
+  name: string;
+  createdTime: string;
+  lastAccessTime: string;
+  scope: string[];
+  userAgent: string;
+  createdTimeFormatted?: string;
+  approximateLastAccessTime?: number;
+  location?: {
+    city: string;
+    country: string;
+    state: string;
+    stateCode: string;
+  };
+  os?: string;
+};
+
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
+async function getAttachedClients(
+  bearerToken: string,
+): Promise<FxaGetAccountAttachedClients[]> {
+  const endpointUrl = `${envVars.OAUTH_ACCOUNT_URI}/account/attached_clients`;
+  try {
+    const response = await fetch(endpointUrl, {
+      headers: {
+        Accept: "application/json",
+        Authorization: `Bearer ${bearerToken}`,
+      },
+    });
+    const responseJson = await response.json();
+    if (!response.ok) throw new Error(responseJson);
+    logger.info("get_fxa_attached_clients_success");
+    return responseJson as FxaGetAccountAttachedClients[];
+  } catch (e) {
+    if (e instanceof Error) {
+      logger.error("get_fxa_attached_clients", {
+        stack: e.stack,
+        message: e.message,
+      });
+    }
+    throw e;
+  }
+}
+/* c8 ignore stop */
+
 // TODO: Add unit test when changing this code:
 /* c8 ignore next 3 */
 function getSha1(email: crypto.BinaryLike) {
@@ -364,4 +419,5 @@ export {
   getBillingAndSubscriptions,
   deleteSubscription,
   applyCoupon,
+  getAttachedClients,
 };
