@@ -22,7 +22,7 @@ export const EmailHero = (props: Props) => {
   return (
     <mj-wrapper padding="24px 16px">
       <mj-section
-        padding="10px 6px"
+        padding="10px 12px"
         css-class="hero_background"
         border-radius="16px 16px 0 0"
       >
