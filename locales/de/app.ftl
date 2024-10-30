@@ -184,8 +184,6 @@ mozilla = { -brand-mozilla }
 terms-of-service = Nutzungsbedingungen
 privacy-notice = Datenschutzhinweis
 github = { -brand-github }
-# Deprecated
-footer-nav-all-breaches = Alle Datenlecks
 footer-nav-recent-breaches = Neueste Datenlecks
 footer-external-link-faq-label = Häufig gestellte Fragen
 footer-external-link-faq-tooltip = Häufig gestellte Fragen
@@ -203,7 +201,7 @@ error-page-error-other-title = { $errorCode } Ein Fehler ist aufgetreten
 
 ## Breach overview page
 
-all-breaches-headline-2 = Alle von { -brand-fx-monitor } erkannten Datenlecks
+all-breaches-headline-3 = Datenbank für Datenlecks
 all-breaches-lead = Wir überwachen alle bekannten Datenlecks, um herauszufinden, ob Ihre persönlichen Daten kompromittiert wurden. Hier ist eine vollständige Liste aller Lecks, die seit 2007 gemeldet wurden.
 search-breaches = Datenlecks suchen
 # the kind of user data exposed to hackers in data breach.

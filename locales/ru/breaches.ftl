@@ -2,20 +2,16 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-breach-all-meta-title = { -brand-fx-monitor } - Все утечки данных
+breach-all-meta-page-title = База данных утечек данных — { -brand-fx-monitor }
 breach-all-meta-social-title = Все утечки, обнаруженные { -brand-fx-monitor }
 breach-all-meta-social-description = Просмотрите полный список известных утечек, обнаруженных { -brand-fx-monitor }, а затем узнайте, была ли раскрыта ваша информация.
-
+# Variables:
+#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
+breach-detail-meta-page-title = Утечка данных { $company } — { -brand-fx-monitor }
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-social-title = Были ли вы затронуты утечкой данных { $company }?
 breach-detail-meta-social-description = Используйте { -brand-fx-monitor }, чтобы узнать, была ли ваша личная информация раскрыта в результате этой утечки, и понять, что делать дальше.
-
-## Breaches header
-
-## Breaches resolved filter
-
-## Breaches table
 
 ## Links that we might refer to when prompting the user to make changes after a breach
 
@@ -26,7 +22,6 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 ## Prompts the user for changes when there is a breach detected of password
 
 breach-checklist-pw-header-text = Обновите свои пароли и включите двухфакторную аутентификацию (2FA).
-
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
@@ -95,7 +90,6 @@ breach-checklist-phone-header-2 = Защитите свой номер теле�
 ## Prompts the user for changes when there is a breach detected of security questions
 
 breach-checklist-sq-header-text = Обновите контрольные вопросы.
-
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 breach-checklist-sq-body-text = В большинстве случаев мы рекомендуем обновить контрольные вопросы на веб-сайте компании. Но <b>веб-сайт может быть недоступен или содержать вредоносный контент</b>, поэтому будьте осторожны <breached-company-link>при его посещении</breached-company-link>. Для дополнительной защиты обновите эти контрольные вопросы во всех важных учётных записях там, где вы их использовали, и создайте уникальные пароли для всех учётных записей.
 

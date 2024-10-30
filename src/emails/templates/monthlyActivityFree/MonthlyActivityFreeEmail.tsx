@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import type { ExtendedReactLocalization } from "../../../app/functions/l10n";
-import { EmailFooter } from "../EmailFooter";
+import { RedesignedEmailFooter } from "../EmailFooter";
 import { EmailHero } from "../../components/EmailHero";
 import { DataPointCount } from "../../components/EmailDataPointCount";
 import { DashboardSummary } from "../../../app/functions/server/dashboard";
@@ -13,6 +13,7 @@ import { isEligibleForPremium } from "../../../app/functions/universal/premium";
 import { getSignupLocaleCountry } from "../../functions/getSignupLocaleCountry";
 import { HeaderStyles, MetaTags } from "../HeaderStyles";
 import { SanitizedSubscriberRow } from "../../../app/functions/server/sanitize";
+import { sumSanitizedDataPoints } from "../../functions/reduceSanitizedDataPoints";
 
 export type MonthlyActivityFreeEmailProps = {
   l10n: ExtendedReactLocalization;
@@ -78,19 +79,15 @@ export const MonthlyActivityFreeEmail = (
     // Show a sum of resolved data breach & broker exposures if a scan has been run
     // Otherwise, only show resolved data breaches
     dataPointValue: hasRunFreeScan
-      ? props.dataSummary.fixedSanitizedDataPoints.reduce(
-          (total, dataPointSummary) => {
-            return total + Object.values(dataPointSummary)[0];
-          },
-          0,
-        )
+      ? sumSanitizedDataPoints(props.dataSummary.fixedSanitizedDataPoints)
       : props.dataSummary.dataBreachResolvedNum,
     // The resolved box would be active if
     // a user has run a free scan and they have resolved data breaches, and or brokers (count number of resolved data points)
     // if a user hasn't run a free scan but they have resolved data breaches (count number of resolved breach cards)
     activeState:
       (hasRunFreeScan &&
-        props.dataSummary.fixedSanitizedDataPoints.length > 0) ||
+        sumSanitizedDataPoints(props.dataSummary.fixedSanitizedDataPoints) >
+          0) ||
       (!hasRunFreeScan && props.dataSummary.dataBreachResolvedNum > 0),
   };
 
@@ -101,7 +98,9 @@ export const MonthlyActivityFreeEmail = (
     preScan: !hasRunFreeScan && props.dataSummary.dataBreachUnresolvedNum === 0,
     postScan:
       hasRunFreeScan &&
-      props.dataSummary.unresolvedSanitizedDataPoints.length === 0,
+      sumSanitizedDataPoints(
+        props.dataSummary.unresolvedSanitizedDataPoints,
+      ) === 0,
   };
 
   return (
@@ -285,7 +284,7 @@ export const MonthlyActivityFreeEmail = (
             ctaTarget={scanOrUpgradeBannerDataCta.link}
           />
         )}
-        <EmailFooter
+        <RedesignedEmailFooter
           l10n={l10n}
           utm_campaign={scanOrUpgradeCtaUtm.utmCampaign}
           unsubscribeLink={props.unsubscribeLink}

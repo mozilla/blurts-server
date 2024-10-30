@@ -25,7 +25,7 @@ export const BreachIndexView = (props: Props) => {
   return (
     <main className={styles.wrapper}>
       <header>
-        <h1>{l10n.getString("all-breaches-headline-2")}</h1>
+        <h1>{l10n.getString("all-breaches-headline-3")}</h1>
         <p>{l10n.getString("all-breaches-lead")}</p>
         <FilterForm
           onChange={(term: string) => {

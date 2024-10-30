@@ -280,7 +280,7 @@ error-page-error-other-title = { $errorCode } Prišlo je do napake
 
 ## Breach overview page
 
-all-breaches-headline-2 = Vse kraje, ki jih je odkril { -brand-fx-monitor }
+all-breaches-headline-3 = Podatkovna zbirka o krajah podatkov
 all-breaches-lead = Spremljamo vse znane kraje podatkov, da ugotovimo, ali so bili vaši osebni podatki ogroženi. Tukaj je celoten seznam vseh kraj, prijavljenih od leta 2007 naprej.
 search-breaches = Iskanje kraj podatkov
 # the kind of user data exposed to hackers in data breach.

@@ -2,20 +2,16 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-breach-all-meta-title = { -brand-fx-monitor } – Minden adatvédelmi incidens
+breach-all-meta-page-title = Adatvédelmi incidensek adatbázisa – { -brand-fx-monitor }
 breach-all-meta-social-title = Az összes, a { -brand-fx-monitor } által észlelt adatvédelmi incidens
 breach-all-meta-social-description = Böngéssze a { -brand-fx-monitor } által észlelt ismert adatvédelmi incidensek teljes listáját, és tudja meg, hogy kikerültek-e az információi.
-
+# Variables:
+#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
+breach-detail-meta-page-title = { $company } adatvédelmi incidens – { -brand-fx-monitor }
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-social-title = Érintette a(z) { $company } adatvédelmi incidense?
 breach-detail-meta-social-description = Használja a { -brand-fx-monitor }t, hogy megtudja, hogy kikerültek-e a személyes információi ebben az adatvédelmi incidensben, és hogy megtudja, mit kell tennie.
-
-## Breaches header
-
-## Breaches resolved filter
-
-## Breaches table
 
 ## Links that we might refer to when prompting the user to make changes after a breach
 
@@ -26,7 +22,6 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }-nel
 ## Prompts the user for changes when there is a breach detected of password
 
 breach-checklist-pw-header-text = Frissítse jelszavait és engedélyezze a kétfaktoros hitelesítést (2FA).
-
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
@@ -95,7 +90,6 @@ breach-checklist-phone-header-2 = Védje telefonszámát egy olyan maszkoló szo
 ## Prompts the user for changes when there is a breach detected of security questions
 
 breach-checklist-sq-header-text = Frissítse a biztonsági kérdéseit.
-
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 breach-checklist-sq-body-text = A legtöbb esetben azt javasoljuk, hogy frissítse a biztonsági kérdéseket a cég weboldalán. De <b>a weboldaluk lehet, hogy nem működik vagy rosszindulatú tartalmat tartalmaz</b>, ezért legyen óvatos, ha <breached-company-link>felkeresi a webhelyet</breached-company-link>. A nagyobb védelem érdekében frissítse ezeket a biztonsági kérdéseket minden olyan fontos fiókban, ahol használta őket, és hozzon létre egyedi jelszavakat az összes fiókhoz.
 

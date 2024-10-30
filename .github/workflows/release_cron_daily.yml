@@ -30,13 +30,41 @@ jobs:
       run: |
         curl -X POST \
           -H "Authorization: token $GITHUB_TOKEN" \
-          -H "Accept: application/vnd.github.v3+json" \
-          https://api.github.com/repos/${{ github.repository }}/releases \
+          -H "Accept: application/vnd.github+json" \
+          -H "X-GitHub-Api-Version: 2022-11-28" \
+            https://api.github.com/repos/${{ github.repository }}/releases \
           -d '{
             "tag_name": "${{ env.CURRENT_DATE }}",
             "target_commitish": "main",
             "name": "${{ env.CURRENT_DATE }}",
             "body": "Daily pre-release for ${{ env.CURRENT_DATE }}.",
             "prerelease": true,
+            "draft": false,
             "generate_release_notes": true
           }'
+
+    # We cannot rely on the release_retag.yaml workflow because of the 
+    # auth scope of the default github token. It's a good security practice
+    # to prevent a github action being triggered by another.
+    # So we will deliberately push to dockerhub below
+    - name: Log in to Docker Hub
+      uses: docker/login-action@v3
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Extract metadata (tags, labels) for Docker
+      id: meta
+      uses: docker/metadata-action@v5
+      with:
+        images: mozilla/blurts-server
+        tags: type=sha,format=short,prefix=
+
+    - name: Pull Docker image with commit tag
+      run: docker pull ${{ steps.meta.outputs.tags }}
+
+    - name: Tag Docker image with release tag
+      run: docker tag ${{ steps.meta.outputs.tags }} mozilla/blurts-server:${{ env.CURRENT_DATE }}
+
+    - name: Push Docker image with release tag
+      run: docker push mozilla/blurts-server:${{ env.CURRENT_DATE }}

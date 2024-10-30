@@ -199,8 +199,6 @@ mozilla = { -brand-mozilla }
 terms-of-service = Szolgáltatás feltételei
 privacy-notice = Adatvédelmi nyilatkozat
 github = { -brand-github }
-# Deprecated
-footer-nav-all-breaches = Összes adatvédelmi incidens
 footer-nav-recent-breaches = Legutóbbi adatvédelmi incidensek
 footer-external-link-faq-label = GYIK
 footer-external-link-faq-tooltip = Gyakran ismételt kérdések
@@ -218,7 +216,7 @@ error-page-error-other-title = { $errorCode } Hiba történt
 
 ## Breach overview page
 
-all-breaches-headline-2 = Az összes { -brand-fx-monitor } által észlelt adatvédelmi incidens
+all-breaches-headline-3 = Adatvédelmi incidensek adatbázisa
 all-breaches-lead = Minden ismert adatvédelmi incidenst monitorozunk, hogy megtudjuk, hogy kikerültek-e személyes adatai. Itt van a 2007 óta jelentett adatvédelmi incidensek teljes listája.
 search-breaches = Adatvédelmi incidensek keresése
 # the kind of user data exposed to hackers in data breach.

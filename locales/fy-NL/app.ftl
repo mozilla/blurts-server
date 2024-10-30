@@ -199,8 +199,6 @@ mozilla = { -brand-mozilla }
 terms-of-service = Tsjinstbetingsten
 privacy-notice = Privacyferklearring
 github = { -brand-github }
-# Deprecated
-footer-nav-all-breaches = Alle datalekken
 footer-nav-recent-breaches = Resinte datalekken
 footer-external-link-faq-label = FAQ’s
 footer-external-link-faq-tooltip = Faak stelde fragen
@@ -218,7 +216,7 @@ error-page-error-other-title = { $errorCode } Der is wat misgien
 
 ## Breach overview page
 
-all-breaches-headline-2 = Alle troch { -brand-fx-monitor } detektearre datalekken
+all-breaches-headline-3 = Database mei datalekken
 all-breaches-lead = Wy folgje alle bekende datalekken om derefter te kommen oft jo persoanlike gegevens yn gefaar brocht binne. Hjir is in folsleine list fan alle datalekken dy’t sûnt 2007 meld binne.
 search-breaches = Datalekken sykje
 # the kind of user data exposed to hackers in data breach.

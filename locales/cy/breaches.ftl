@@ -2,20 +2,16 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-breach-all-meta-title = { -brand-fx-monitor } - Pob Tor-data
+breach-all-meta-page-title = Cronfa Ddata Tor-data — { -brand-fx-monitor }
 breach-all-meta-social-title = Pob Tor-data Wedi ei Ganfod gan { -brand-fx-monitor }
 breach-all-meta-social-description = Porwch y rhestr lawn o dor-data hysbys a ganfuwyd gan { -brand-fx-monitor }, yna gweld a ddatgelwyd eich manylion chi.
-
+# Variables:
+#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
+breach-detail-meta-page-title = Tor-data { $company } - { -brand-fx-monitor }
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-social-title = A oedd y Tor-data { $company } wedi effeithio arnoch chi?
 breach-detail-meta-social-description = Defnyddiwch { -brand-fx-monitor } i ddarganfod a gafodd eich manylion personol chi eu datgelu yn y tor-data hwn, a chael gwybod beth i'w wneud nesaf.
-
-## Breaches header
-
-## Breaches resolved filter
-
-## Breaches table
 
 ## Links that we might refer to when prompting the user to make changes after a breach
 
@@ -26,7 +22,6 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 ## Prompts the user for changes when there is a breach detected of password
 
 breach-checklist-pw-header-text = Diweddarwch eich cyfrineiriau a galluogi dilysu dau ffactor (2FA).
-
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
@@ -95,7 +90,6 @@ breach-checklist-phone-header-2 = Diogelwch eich rhif ffôn gyda gwasanaeth cudd
 ## Prompts the user for changes when there is a breach detected of security questions
 
 breach-checklist-sq-header-text = Diweddarwch eich cwestiynau diogelwch.
-
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 breach-checklist-sq-body-text = Yn y rhan fwyaf o achosion, byddem yn argymell eich bod yn diweddaru eich cwestiynau diogelwch ar wefan y cwmni. Ond <b>efallai bod eu gwefan wedi torri neu'n cynnwys cynnwys maleisus</b>, felly byddwch yn ofalus os byddwch <breached-company-link>yn ymweld â'r wefan</breached-company-link>. I gael diogelwch ychwanegol, diweddarwch y cwestiynau diogelwch hyn ar unrhyw gyfrifon pwysig lle rydych chi wedi'u defnyddio, a chreu cyfrineiriau unigryw ar gyfer pob cyfrif.
 

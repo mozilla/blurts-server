@@ -199,7 +199,7 @@ error-page-error-other-title = { $errorCode } 有些東西不對勁！
 
 ## Breach overview page
 
-all-breaches-headline-2 = { -brand-fx-monitor } 偵測到的所有資料外洩事件
+all-breaches-headline-3 = 資料外洩事件資料庫
 all-breaches-lead = 我們會監控所有已知的資料外洩事件，檢查您的個人資訊是否已遭外流。以下是自 2007 年起，所有通報過的資料外洩事件的完整清單。
 search-breaches = 搜尋資料外洩事件
 # the kind of user data exposed to hackers in data breach.

@@ -233,8 +233,6 @@ mozilla = { -brand-mozilla }
 terms-of-service = Όροι υπηρεσίας
 privacy-notice = Σημείωση απορρήτου
 github = { -brand-github }
-# Deprecated
-footer-nav-all-breaches = Όλες οι παραβιάσεις
 footer-nav-recent-breaches = Πρόσφατες παραβιάσεις δεδομένων
 footer-external-link-faq-label = Συχνές ερωτήσεις
 footer-external-link-faq-tooltip = Συχνές ερωτήσεις
@@ -252,7 +250,7 @@ error-page-error-other-title = { $errorCode }: Κάτι πήγε στραβά
 
 ## Breach overview page
 
-all-breaches-headline-2 = Όλες οι παραβιάσεις που εντοπίστηκαν από το { -brand-fx-monitor }
+all-breaches-headline-3 = Βάση δεδομένων παραβιάσεων
 all-breaches-lead = Παρακολουθούμε όλες τις γνωστές παραβιάσεις δεδομένων για να διαπιστώσουμε εάν τα προσωπικά σας στοιχεία παραβιάστηκαν. Ακολουθεί μια πλήρης λίστα με όλες τις παραβιάσεις που έχουν αναφερθεί από το 2007.
 search-breaches = Αναζήτηση παραβιάσεων
 # the kind of user data exposed to hackers in data breach.

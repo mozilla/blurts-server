@@ -184,8 +184,6 @@ mozilla = { -brand-mozilla }
 terms-of-service = Terminos de servicio
 privacy-notice = Aviso de confidentialitate
 github = { -brand-github }
-# Deprecated
-footer-nav-all-breaches = Tote le violationes
 footer-nav-recent-breaches = Recente violationes de datos
 footer-external-link-faq-label = Folios a questiones
 footer-external-link-faq-tooltip = Folio a questiones
@@ -203,7 +201,7 @@ error-page-error-other-title = Alco errate eveniva { $errorCode }
 
 ## Breach overview page
 
-all-breaches-headline-2 = Tote le violationes disvelate per { -brand-fx-monitor }
+all-breaches-headline-3 = Base de datos de violation del datos
 all-breaches-lead = Nos survelia tote le note violationes de datos pro discoperir si tu informationes personal era compromittite. Ecce un lista complete de tote le violationes que ha essite signalate desde 2007.
 search-breaches = Cercar violationes
 # the kind of user data exposed to hackers in data breach.
