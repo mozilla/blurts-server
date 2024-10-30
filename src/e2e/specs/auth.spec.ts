@@ -9,7 +9,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Authentication flow verification @s
     await landingPage.open();
   });
 
-  test.skip("Verify sign up with new user", async ({
+  test("Verify sign up with new user", async ({
     page,
     authPage,
     landingPage,
@@ -39,7 +39,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Authentication flow verification @s
     );
   });
 
-  test.skip("Verify sign in with existing user", async ({
+  test("Verify sign in with existing user", async ({
     page,
     authPage,
     landingPage,
@@ -99,7 +99,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Authentication flow verification @s
     );
   });
 
-  test.skip("Verify failed silent authentication with existing user", async ({
+  test("Verify failed silent authentication with existing user", async ({
     page,
     authPage,
     landingPage,
