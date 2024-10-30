@@ -120,7 +120,7 @@ export const RedesignedEmailFooter = (props: Props) => {
     <mj-wrapper
       full-width="full-width"
       padding="50px 32px"
-      css-class="footer_background"
+      background-color="#F9F9FA"
     >
       <mj-section>
         <mj-column>
