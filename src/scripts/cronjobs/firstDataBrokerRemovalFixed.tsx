@@ -7,7 +7,7 @@ import {
   getPotentialSubscribersWaitingForFirstDataBrokerRemovalFixedEmail,
   markFirstDataBrokerRemovalFixedEmailAsJustSent,
 } from "../../db/tables/subscribers";
-import { initEmail, sendEmail } from "../../utils/email";
+import { initEmail, sendEmail, closeEmailPool } from "../../utils/email";
 import { renderEmail } from "../../emails/renderEmail";
 import { FirstDataBrokerRemovalFixed } from "../../emails/templates/firstDataBrokerRemovalFixed/FirstDataBrokerRemovalFixed";
 import { getCronjobL10n } from "../../app/functions/l10n/cronjobs";
@@ -103,6 +103,9 @@ async function run() {
       );
     }),
   );
+
+  closeEmailPool();
+
   console.log(
     `[${new Date(Date.now()).toISOString()}] Sent [${subscribersToEmailWithData.length}] first data broker removal fixed emails.`,
   );

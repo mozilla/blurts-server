@@ -4,7 +4,7 @@
 
 import { SubscriberRow } from "knex/types/tables";
 import { getFreeSubscribersWaitingForMonthlyEmail } from "../../db/tables/subscribers";
-import { initEmail, sendEmail } from "../../utils/email";
+import { initEmail, sendEmail, closeEmailPool } from "../../utils/email";
 import { renderEmail } from "../../emails/renderEmail";
 import { MonthlyActivityFreeEmail } from "../../emails/templates/monthlyActivityFree/MonthlyActivityFreeEmail";
 import { getCronjobL10n } from "../../app/functions/l10n/cronjobs";
@@ -43,6 +43,8 @@ async function run() {
       sendMonthlyActivityEmail(subscriber),
     ),
   );
+
+  closeEmailPool();
   console.log(
     `[${new Date(Date.now()).toISOString()}] Sent [${subscribersToEmail.length}] monthly activity emails to free users.`,
   );

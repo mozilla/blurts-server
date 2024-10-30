@@ -5,12 +5,15 @@
 import { createLogger, transports } from "winston";
 import { LoggingWinston } from "@google-cloud/logging-winston";
 
-const loggingWinston = new LoggingWinston({
-  labels: {
-    name: "monitor-stats",
-    version: "0.1.0",
-  },
-});
+// Explicitly not run in tests (and other non-gcpdev environments)
+/* c8 ignore next 7 */
+const getLoggingWinston = () =>
+  new LoggingWinston({
+    labels: {
+      name: "monitor-stats",
+      version: "0.1.0",
+    },
+  });
 
 export const logger = createLogger({
   level: "info",
@@ -18,6 +21,6 @@ export const logger = createLogger({
   // FIXME https://mozilla-hub.atlassian.net/browse/MNTOR-2401 - enable for stage and production
   /* c8 ignore next 3 - cannot test this outside of GCP currently */
   transports: ["gcpdev"].includes(process.env.APP_ENV ?? "local")
-    ? [loggingWinston]
+    ? [getLoggingWinston()]
     : [new transports.Console()],
 });
