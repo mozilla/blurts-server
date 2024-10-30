@@ -7,7 +7,7 @@ import {
   getPlusSubscribersWaitingForMonthlyEmail,
   markMonthlyActivityPlusEmailAsJustSent,
 } from "../../db/tables/subscribers";
-import { initEmail, sendEmail } from "../../utils/email";
+import { initEmail, sendEmail, closeEmailPool } from "../../utils/email";
 import { renderEmail } from "../../emails/renderEmail";
 import { MonthlyActivityPlusEmail } from "../../emails/templates/monthlyActivityPlus/MonthlyActivityPlusEmail";
 import { getCronjobL10n } from "../../app/functions/l10n/cronjobs";
@@ -40,6 +40,8 @@ async function run() {
       return sendMonthlyActivityEmail(subscriber);
     }),
   );
+
+  closeEmailPool();
   console.log(
     `[${new Date(Date.now()).toISOString()}] Sent [${subscribersToEmail.length}] monthly activity emails to Plus users.`,
   );

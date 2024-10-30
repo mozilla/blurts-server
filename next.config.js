@@ -205,7 +205,7 @@ const sentryOptions = {
   hideSourceMaps: false,
 
   sourcemaps: {
-    disable: process.env.UPLOAD_SENTRY_SOURCEMAPS !== "true",
+    disable: process.env.UPLOAD_SENTRY_SOURCEMAPS === "false",
   },
 };
 
