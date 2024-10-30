@@ -266,9 +266,10 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
             <dd className={styles.hideOnMobile}>
               {dateFormatter.format(scanResult.created_at)}
             </dd>
-            {props.enabledFeatureFlags?.includes(
-              "DataBrokerRemovalTimeEstimateLabel",
-            ) &&
+            {props.isPremiumUser &&
+              props.enabledFeatureFlags?.includes(
+                "DataBrokerRemovalTimeEstimateLabel",
+              ) &&
               props.experimentData?.["data-broker-removal-time-estimates"]
                 .enabled && (
                 <>
