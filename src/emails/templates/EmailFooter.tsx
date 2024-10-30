@@ -131,12 +131,7 @@ export const RedesignedEmailFooter = (props: Props) => {
             height="36px"
             align="center"
           />
-          <mj-text
-            color="#000000"
-            font-size="22px"
-            font-weight="700"
-            align="center"
-          >
+          <mj-text font-size="22px" font-weight="700" align="center">
             {l10n.getString("email-footer-support-heading")}
           </mj-text>
           <mj-text font-size="16px" font-weight="400" align="center">
