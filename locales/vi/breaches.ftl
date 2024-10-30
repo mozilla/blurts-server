@@ -31,7 +31,7 @@ breach-checklist-pw-body-text = Trong hầu hết các trường hợp, chúng t
 
 # Variables:
 #   $firefoxRelayLink (string) - a link to Firefox Relay, with { -breach-checklist-link-firefox-relay } as the label
-breach-checklist-email-header-2 = Bảo vệ email của bạn bằng dịch vụ tạo mặt nạ email như { $firefoxRelayLink }.
+breach-checklist-email-header-2 = Bảo vệ email của bạn bằng dịch vụ tạo email ẩn danh như { $firefoxRelayLink }.
 breach-checklist-email-body = Điều này có thể ẩn địa chỉ email thực của bạn trong khi chuyển tiếp email đến hộp thư đến thực của bạn.
 
 ## Prompts the user for changes when there is a breach detected of social security number

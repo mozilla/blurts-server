@@ -34,6 +34,7 @@ export type SubscriberBreachCardProps = {
   locale: string;
   resolutionCta: ReactNode;
   isEligibleForPremium: boolean;
+  isPremiumUser: boolean;
   isExpanded: boolean;
   enabledFeatureFlags: FeatureFlagName[];
   experimentData: ExperimentData;
@@ -211,9 +212,10 @@ export const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
             <dd className={styles.hideOnMobile}>
               {dateFormatter.format(subscriberBreach.addedDate)}
             </dd>
-            {props.enabledFeatureFlags.includes(
-              "DataBrokerRemovalTimeEstimateLabel",
-            ) &&
+            {props.isPremiumUser &&
+              props.enabledFeatureFlags.includes(
+                "DataBrokerRemovalTimeEstimateLabel",
+              ) &&
               props.experimentData["data-broker-removal-time-estimates"]
                 .enabled && (
                 <>

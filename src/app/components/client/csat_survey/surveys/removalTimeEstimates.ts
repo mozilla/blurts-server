@@ -19,11 +19,6 @@ const surveyData: SurveyData = {
   ],
   variations: [
     {
-      id: "free-user",
-      showForUser: ["free-user"],
-      showOnTab: ["fixed"],
-    },
-    {
       id: "plus-user",
       showForUser: ["plus-user"],
       showOnTab: ["fixed"],

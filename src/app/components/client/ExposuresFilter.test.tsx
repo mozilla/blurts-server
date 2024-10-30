@@ -45,11 +45,12 @@ it("shows and hides the exposure type explainer", async () => {
   expect(explainerDialog).not.toBeInTheDocument();
 });
 
-it("shows and hides the removal time explainer dialog by clicking the “Got it” button", async () => {
+it("shows and hides the removal time explainer dialog by clicking the “Got it” button to Plus subscribers", async () => {
   const user = userEvent.setup();
   const ExposuresFilter = composeStory(ExposuresFilterDefault, Meta);
   render(
     <ExposuresFilter
+      isPlusSubscriber
       enabledFeatureFlags={["DataBrokerRemovalTimeEstimateLabel"]}
       experimentData={{
         ...defaultExperimentData,
@@ -75,11 +76,12 @@ it("shows and hides the removal time explainer dialog by clicking the “Got it�
   expect(explainerDialog).not.toBeInTheDocument();
 });
 
-it("shows and hides the removal time explainer dialog by clicking the close button", async () => {
+it("shows and hides the removal time explainer dialog by clicking the close button to Plus subscribers", async () => {
   const user = userEvent.setup();
   const ExposuresFilter = composeStory(ExposuresFilterDefault, Meta);
   render(
     <ExposuresFilter
+      isPlusSubscriber
       enabledFeatureFlags={["DataBrokerRemovalTimeEstimateLabel"]}
       experimentData={{
         ...defaultExperimentData,
