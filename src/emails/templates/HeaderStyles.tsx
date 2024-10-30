@@ -13,20 +13,12 @@ export const MetaTags = () => {
 };
 
 export const HeaderStyles = () => {
-  const hideBgImageOnDarkMode = `
+  const enforceLightMode = `
       :root {
         color-scheme: light only;
         supported-color-schemes: light only;
       }
-
-      .footer_background {
-        background: #F9F9FA;
-      }
-
-      .hero_background {
-        background: #E7DFFF;
-      }
     `;
 
-  return <mj-style>{hideBgImageOnDarkMode}</mj-style>;
+  return <mj-style>{enforceLightMode}</mj-style>;
 };
