@@ -113,7 +113,10 @@ test.describe(`${process.env.E2E_TEST_ENV} - Authentication flow verification @s
     await authPage.initSilentAuth();
 
     // assert failed login
-    await expect(landingPage.monitorLandingHeader).toBeVisible();
+    await expect(landingPage.monitorLandingHeader).toBeVisible({
+      // The header can take a while to show in Playwright.
+      timeout: 5000,
+    });
 
     await testInfo.attach(
       `${process.env.E2E_TEST_ENV}-silent-authentication-monitor-dashboard.png`,
