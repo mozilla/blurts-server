@@ -90,24 +90,30 @@ Once a PR is successfully merged:
 1. ensure that the merge commit in `main` branch passes all checks and a docker image is successfully deployed.
 2. Jenkins will kick off the deployment of the latest built docker image to stage environment
 3. A webhook will send status messages into the `#fx-monitor-engineering` channel.
-   - Watch for messages: `FX MONITOR STAGE STARTED` and `FX MONITOR STAGE COMPLETE`
+   - Watch for messages: `pushing to staging started` and `successfully deployed to staging`
 
 ## Release to Production
 
-Before releasing to production, we need to assess the current state of our work on stage. We need to cross-reference what's already on stage and what's been greenlit by QA. To do this, we need to find the difference between what was released last time in production and what we currently have on stage.
+### Daily pre-releases
 
-### Check the diff in Release Notes and notify the team
+Github pre-releases are generated daily via a (daily-pre-release)[daily-pre-release] GHA workflow.
+The pre-release will include all the PRs that got merged into main (stage) that day.
+The cron job will only execute Monday to Friday.
+As a base load engineer, you can get into a habit of checking pre-releases every morning to see what's been pushed and what's been checked by the QAs. Once everything is checked off in a pre-release, we can proceed to deploying that pre-release to production and mark it as the latest
 
-[make a release on GitHub][github-new-release] in order to check the difference.
+### Deploy to Production
 
-1. Choose the tag you want for your release. Use today's date (e.g., `2024.09.01`)
-2. Type the same tag name for the release title (e.g., `2024.09.01`)
-3. Click the "Generate release notes" button!
-4. _DO NOT_ press "Publish release" yet
-5. Copy and Paste the release notes in the engineering slack channel so the team is aware
-6. Go through the PRs, cross-reference the tickets in the PRs with the [Jira][jira] board to see if QA has approved the tickets. If anything is unclear, make sure to tag the author of the PR.
-7. If anything has not been properly tested, make a note, and again, double check with the person
-8. If everything looks good, proceed to release, otherwise refer to the section `Stage-fixes` below.
+Before deploying to production, we need to assess the current state of our work on stage. We need to cross-reference what's already on stage and what's been greenlit by QA. To do this, we need to find the difference between what was released last time in production and what we currently have on stage.
+
+### Mark pre-release as latest, check the diff in Release Notes, and notify the team
+
+1. Find the pre-release/tag you want to use for the deploy (e.g., `2024.09.01`)
+2. Edit the release
+3. Check the checkbox `Set as the latest release`
+4. Copy and Paste the release notes in the engineering slack channel so the team is aware
+5. Go through the PRs, cross-reference the tickets in the PRs with the [Jira][jira] board to see if QA has approved the tickets. If anything is unclear, make sure to tag the author of the PR.
+6. If anything has not been properly tested, make a note, and again, double check with the person
+7. If everything looks good, proceed to release, otherwise refer to the section `Stage-fixes` below.
 
 ### Update Production Environment Variables
 
@@ -181,8 +187,6 @@ Wherever feature flags aren't applicable, there are generally two scenarios we n
 
 After adding 1-click production deploy capability and broadly adopting [feature flags][feature-flags], we are looking into ways to increase our production release frequency. The main challenge here is to coordiate our QA effort with our latest stage CICD deployments.
 
-We are starting to look into creating daily GitHub pre-releases via GHA, and once QA'd, having these deployed automatically or manually by base load engineers.
-
 [prod]: https://monitor.firefox.com/
 [stage]: https://stage.firefoxmonitor.nonprod.cloudops.mozgcp.net/
 [readme]: https://github.com/mozilla/blurts-server/blob/main/README.md
@@ -195,3 +199,4 @@ We are starting to look into creating daily GitHub pre-releases via GHA, and onc
 [jira]: https://mozilla-hub.atlassian.net/jira/software/c/projects/MNTOR/boards/447
 [dockerhub]: https://hub.docker.com/r/mozilla/blurts-server/tags
 [1-click deploy]: https://github.com/mozilla/blurts-server/actions/workflows/production_deploy.yml
+[daily-pre-release]: https://github.com/mozilla/blurts-server/actions/workflows/release_cron_daily.yml
