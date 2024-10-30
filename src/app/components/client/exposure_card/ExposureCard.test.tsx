@@ -148,7 +148,19 @@ describe("DataBreachCard", () => {
 
   it("does not show the estimated removal time if the feature flag `DataBrokerRemovalTimeEstimates` is disabled", () => {
     const ComposedExposureCard = composeStory(DataBrokerActionNeeded, Meta);
-    render(<ComposedExposureCard />);
+    render(<ComposedExposureCard isPremiumUser />);
+
+    const removalTimeTitle = screen.queryByText("Removal time");
+    expect(removalTimeTitle).not.toBeInTheDocument();
+  });
+
+  it("does not show the estimated removal time for free users", () => {
+    const ComposedExposureCard = composeStory(DataBrokerActionNeeded, Meta);
+    render(
+      <ComposedExposureCard
+        enabledFeatureFlags={["DataBrokerRemovalTimeEstimateLabel"]}
+      />,
+    );
 
     const removalTimeTitle = screen.queryByText("Removal time");
     expect(removalTimeTitle).not.toBeInTheDocument();
@@ -168,11 +180,12 @@ describe("DataBreachCard", () => {
       label: "181+ days",
     },
   ])(
-    "shows a label with the estimated removal time if available: %s",
+    "shows a label with the estimated removal time if available to Plus subscribers: %s",
     ({ removalTime, label }) => {
       const ComposedExposureCard = composeStory(DataBrokerActionNeeded, Meta);
       render(
         <ComposedExposureCard
+          isPremiumUser
           enabledFeatureFlags={["DataBrokerRemovalTimeEstimateLabel"]}
           removalTimeEstimate={removalTime}
         />,
@@ -185,10 +198,11 @@ describe("DataBreachCard", () => {
     },
   );
 
-  it("shows a label displaying “unknown” if the removal time is not available", () => {
+  it("shows a label displaying “unknown” if the removal time is not available to Plus subscribers", () => {
     const ComposedExposureCard = composeStory(DataBrokerActionNeeded, Meta);
     render(
       <ComposedExposureCard
+        isPremiumUser
         enabledFeatureFlags={["DataBrokerRemovalTimeEstimateLabel"]}
       />,
     );
@@ -199,10 +213,11 @@ describe("DataBreachCard", () => {
     expect(removalTimeLabel).toBeInTheDocument();
   });
 
-  it("shows a label displaying “N/A” on data breach cards", () => {
+  it("shows a label displaying “N/A” on data breach cards to Plus subscribers", () => {
     const ComposedExposureCard = composeStory(DataBreachActionNeeded, Meta);
     render(
       <ComposedExposureCard
+        isPremiumUser
         enabledFeatureFlags={["DataBrokerRemovalTimeEstimateLabel"]}
       />,
     );
