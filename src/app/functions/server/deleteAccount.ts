@@ -9,13 +9,10 @@ import {
   getOnerepProfileId,
 } from "../../../db/tables/subscribers";
 import { deactivateProfile } from "./onerep";
-import { SerializedSubscriber } from "../../../next-auth";
 import { deleteSubscription } from "../../../utils/fxa";
 import { record } from "./glean";
 
-export async function deleteAccount(
-  subscriber: SubscriberRow | SerializedSubscriber,
-) {
+export async function deleteAccount(subscriber: SubscriberRow) {
   logger.info("fxa_delete_user", {
     subscriber: subscriber.id,
   });

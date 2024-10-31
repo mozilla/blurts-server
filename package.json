@@ -94,7 +94,7 @@
     "knex": "^3.1.0",
     "mjml": "^4.15.3",
     "next": "^14.2.15",
-    "next-auth": "^4.24.7",
+    "next-auth": "^4.24.10",
     "nodemailer": "^6.9.15",
     "pg": "^8.13.0",
     "react": "^18.3.1",
@@ -105,11 +105,11 @@
     "react-stately": "^3.33.0",
     "react-toastify": "^10.0.6",
     "server-only": "^0.0.1",
-    "uuid": "^10.0.0",
+    "uuid": "^11.0.1",
     "winston": "^3.15.0"
   },
   "devDependencies": {
-    "@faker-js/faker": "^9.0.3",
+    "@faker-js/faker": "^9.1.0",
     "@playwright/test": "^1.48.1",
     "@storybook/addon-a11y": "^8.3.6",
     "@storybook/addon-actions": "^8.3.6",
@@ -130,7 +130,6 @@
     "@types/mjml": "^4.7.4",
     "@types/mjml-browser": "^4.15.0",
     "@types/nodemailer": "^6.4.16",
-    "@types/uuid": "^10.0.0",
     "@typescript-eslint/eslint-plugin": "^7.5.0",
     "@typescript-eslint/parser": "^7.5.0",
     "adm-zip": "^0.5.16",
@@ -158,7 +157,7 @@
     "stylelint": "^16.10.0",
     "stylelint-config-recommended-scss": "^14.1.0",
     "stylelint-scss": "^6.8.1",
-    "tsx": "^4.19.1",
+    "tsx": "^4.19.2",
     "typescript": "^5.6.3",
     "yaml": "^2.6.0"
   }

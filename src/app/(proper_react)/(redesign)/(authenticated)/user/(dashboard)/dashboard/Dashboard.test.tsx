@@ -3645,7 +3645,7 @@ describe("CSAT survey banner", () => {
     expect(answerButton).not.toBeInTheDocument();
   });
 
-  it("displays the removal time estimates CSAT survey on the “fixed” tab for users on the treatment branch", () => {
+  it("displays the removal time estimates CSAT survey on the “fixed” tab to Plus users on the treatment branch", () => {
     const ComposedDashboard = composeStory(
       DashboardUsPremiumResolvedScanNoBreaches,
       Meta,
@@ -3669,7 +3669,7 @@ describe("CSAT survey banner", () => {
     expect(answerButton).toBeInTheDocument();
   });
 
-  it("displays the removal time estimates CSAT survey on the “fixed” tab for users on the control branch", () => {
+  it("displays the removal time estimates CSAT survey on the “fixed” tab to Plus users on the control branch", () => {
     const ComposedDashboard = composeStory(
       DashboardUsPremiumResolvedScanNoBreaches,
       Meta,
@@ -3693,7 +3693,7 @@ describe("CSAT survey banner", () => {
     expect(answerButton).toBeInTheDocument();
   });
 
-  it("does not display the removal time estimates CSAT survey on the ”action needed” tab for users on the treatment branch", () => {
+  it("does not display the removal time estimates CSAT survey on the “action needed” tab to Plus users on the treatment branch", () => {
     const ComposedDashboard = composeStory(
       DashboardUsPremiumResolvedScanNoBreaches,
       Meta,
@@ -3705,7 +3705,31 @@ describe("CSAT survey banner", () => {
         experimentData={{
           ...defaultExperimentData,
           "data-broker-removal-time-estimates": {
-            enabled: false,
+            enabled: true,
+          },
+        }}
+      />,
+    );
+
+    const answerButton = screen.queryByRole("button", {
+      name: "Neutral",
+    });
+    expect(answerButton).not.toBeInTheDocument();
+  });
+
+  it("does not display the removal time estimates CSAT survey on the “fixed” tab to free users on the treatment branch", () => {
+    const ComposedDashboard = composeStory(
+      DashboardUsNoPremiumUnresolvedScanNoBreaches,
+      Meta,
+    );
+    render(
+      <ComposedDashboard
+        activeTab="fixed"
+        enabledFeatureFlags={["DataBrokerRemovalTimeEstimateCsat"]}
+        experimentData={{
+          ...defaultExperimentData,
+          "data-broker-removal-time-estimates": {
+            enabled: true,
           },
         }}
       />,
