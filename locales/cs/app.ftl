@@ -345,8 +345,6 @@ mozilla = { -brand-mozilla }
 terms-of-service = Podmínky služby
 privacy-notice = Zásady ochrany osobních údajů
 github = { -brand-github }
-# Deprecated
-footer-nav-all-breaches = Všechny úniky
 footer-nav-recent-breaches = Nedávné úniky dat
 footer-external-link-faq-label = FAQ
 footer-external-link-faq-tooltip = Často kladené otázky
@@ -364,7 +362,7 @@ error-page-error-other-title = Něco se pokazilo. Chyba: { $errorCode }
 
 ## Breach overview page
 
-all-breaches-headline-2 = Všechny úniky zjištěné pomocí { -brand-fx-monitor(case: "gen") }
+all-breaches-headline-3 = Databáze úniků dat
 all-breaches-lead = Monitorujeme všechny známé úniky údajů, abysme zjistili, zda nedošlo k ohrožení vašich osobních údajů. Zde je úplný seznam všech úniků, které byly nahlášeny od roku 2007.
 search-breaches = Prohledat úniky dat
 # the kind of user data exposed to hackers in data breach.

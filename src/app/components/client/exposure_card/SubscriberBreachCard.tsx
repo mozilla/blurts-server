@@ -25,6 +25,8 @@ import {
 import { FallbackLogo } from "../../server/BreachLogo";
 import { ExposureCardDataClassLayout } from "./ExposureCardDataClass";
 import { useTelemetry } from "../../../hooks/useTelemetry";
+import { FeatureFlagName } from "../../../../db/tables/featureFlags";
+import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 
 export type SubscriberBreachCardProps = {
   exposureImg?: StaticImageData;
@@ -32,7 +34,10 @@ export type SubscriberBreachCardProps = {
   locale: string;
   resolutionCta: ReactNode;
   isEligibleForPremium: boolean;
+  isPremiumUser: boolean;
   isExpanded: boolean;
+  enabledFeatureFlags: FeatureFlagName[];
+  experimentData: ExperimentData;
   onToggleExpanded: () => void;
 };
 
@@ -207,6 +212,27 @@ export const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
             <dd className={styles.hideOnMobile}>
               {dateFormatter.format(subscriberBreach.addedDate)}
             </dd>
+            {props.isPremiumUser &&
+              props.enabledFeatureFlags.includes(
+                "DataBrokerRemovalTimeEstimateLabel",
+              ) &&
+              props.experimentData["data-broker-removal-time-estimates"]
+                .enabled && (
+                <>
+                  <dt
+                    className={`${styles.hideOnMobile} ${styles.visuallyHidden}`}
+                  >
+                    {l10n.getString(
+                      "dashboard-exposures-filter-exposure-removal-time-title",
+                    )}
+                  </dt>
+                  <dd className={styles.hideOnMobile}>
+                    {l10n.getString(
+                      "dashboard-exposures-filter-exposure-removal-time-label-na",
+                    )}
+                  </dd>
+                </>
+              )}
             <dt className={styles.visuallyHidden}>
               {l10n.getString("exposure-card-label-status")}
             </dt>

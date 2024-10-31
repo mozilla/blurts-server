@@ -192,8 +192,6 @@ mozilla = { -brand-mozilla }
 terms-of-service = Condizioni di utilizzo del servizio
 privacy-notice = Informativa sulla privacy
 github = { -brand-github }
-# Deprecated
-footer-nav-all-breaches = Tutte le violazioni
 footer-nav-recent-breaches = Violazioni di dati recenti
 footer-external-link-faq-label = FAQ
 footer-external-link-faq-tooltip = Domande più frequenti
@@ -211,7 +209,7 @@ error-page-error-other-title = { $errorCode } Si è verificato un errore
 
 ## Breach overview page
 
-all-breaches-headline-2 = Tutte le violazioni rilevate da { -brand-fx-monitor }
+all-breaches-headline-3 = Database delle violazioni di dati
 all-breaches-lead = Monitoriamo tutte le violazioni di dati conosciute per scoprire se le tue informazioni personali sono state compromesse. Ecco un elenco completo di tutte le violazioni segnalate dal 2007.
 search-breaches = Cerca nelle violazioni
 # the kind of user data exposed to hackers in data breach.

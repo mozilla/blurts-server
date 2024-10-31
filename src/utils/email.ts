@@ -7,6 +7,7 @@ import crypto from "crypto";
 
 import { SentMessageInfo } from "nodemailer/lib/smtp-transport/index.js";
 import { getEnvVarsOrThrow } from "../envVars";
+import { logger } from "../app/functions/server/logging";
 
 // The SMTP transport object. This is initialized to a nodemailer transport
 // object while reading SMTP credentials, or to a dummy function in debug mode.
@@ -14,10 +15,10 @@ let gTransporter: Transporter<SentMessageInfo>;
 
 const envVars = getEnvVarsOrThrow(["SMTP_URL", "EMAIL_FROM", "SES_CONFIG_SET"]);
 
-async function initEmail(smtpUrl = envVars.SMTP_URL) {
+export async function initEmail(smtpUrl = envVars.SMTP_URL) {
   // Allow a debug mode that will log JSON instead of sending emails.
   if (!smtpUrl) {
-    console.info("smtpUrl-empty", {
+    logger.info("smtpUrl-empty", {
       message: "EmailUtils will log a JSON response instead of sending emails.",
     });
     gTransporter = createTransport({ jsonTransport: true });
@@ -29,6 +30,17 @@ async function initEmail(smtpUrl = envVars.SMTP_URL) {
   return gTransporterVerification;
 }
 
+/** See https://nodemailer.com/smtp/pooled/ */
+export function closeEmailPool() {
+  if (!gTransporter) {
+    throw new Error("`closeEmailPool` called before `initEmail`");
+    /* c8 ignore next 5 */
+  }
+  // Not covered by tests because it involves a lot of mocks to basically check
+  // that we called this function. See test-coverage.md#mock-heavy
+  gTransporter.close();
+}
+
 /**
  * Send Email
  *
@@ -36,7 +48,7 @@ async function initEmail(smtpUrl = envVars.SMTP_URL) {
  * @param subject
  * @param html
  */
-async function sendEmail(
+export async function sendEmail(
   recipient: string,
   subject: string,
   html: string,
@@ -62,31 +74,29 @@ async function sendEmail(
     /* c8 ignore next 5 */
     if (gTransporter.transporter.name === "JSONTransport") {
       // @ts-ignore Added typing later, but it disagrees with actual use:
-      console.info("JSONTransport", { message: info.message.toString() });
+      logger.info("JSONTransport", { message: info.message.toString() });
       return info;
     }
 
-    console.info("sent_email", {
+    logger.info("sent_email", {
       messageId: info.messageId,
       response: info.response,
     });
     return info;
   } catch (e) {
     if (e instanceof Error) {
-      console.error("error_sending_email", {
+      logger.error("error_sending_email", {
         message: e.message,
         stack: e.stack,
       });
       /* c8 ignore next 3 */
     } else {
-      console.error("error_sending_email", { message: JSON.stringify(e) });
+      logger.error("error_sending_email", { message: JSON.stringify(e) });
     }
     throw e;
   }
 }
 
-function randomToken(length: number = 64) {
+export function randomToken(length: number = 64) {
   return crypto.randomBytes(length).toString("hex");
 }
-
-export { initEmail, sendEmail, randomToken };

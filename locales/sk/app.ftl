@@ -302,8 +302,6 @@ mozilla = { -brand-mozilla }
 terms-of-service = Podmienky používania služby
 privacy-notice = Vyhlásenie o ochrane osobných údajov
 github = { -brand-github }
-# Deprecated
-footer-nav-all-breaches = Všetky úniky údajov
 footer-nav-recent-breaches = Nedávne úniky údajov
 footer-external-link-faq-label = Často kladené otázky
 footer-external-link-faq-tooltip = Často kladené otázky
@@ -321,7 +319,7 @@ error-page-error-other-title = { $errorCode } Niečo sa pokazilo
 
 ## Breach overview page
 
-all-breaches-headline-2 = Všetky úniky údajov zistené pomocou { -brand-fx-monitor(case: "gen") }
+all-breaches-headline-3 = Databáza únikov údajov
 all-breaches-lead = Monitorujeme všetky známe úniky údajov, aby sme zistili, či nedošlo k ohrozeniu vašich osobných údajov. Tu je úplný zoznam všetkých únikov, ktoré boli nahlásené od roku 2007.
 search-breaches = Hľadať
 # the kind of user data exposed to hackers in data breach.

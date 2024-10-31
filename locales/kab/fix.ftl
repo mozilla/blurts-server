@@ -34,6 +34,7 @@ high-risk-breach-heading = Ha-t-a wayen ara tgeḍ
 # $breach_date is the date when the breach occurred.
 # An example of this string is Twitter on 13/09/18.
 high-risk-breach-name-and-date = { $breach_name } <breach_date>ɣef { $breach_date }</breach_date>
+high-risk-breach-mark-as-fixed = Creḍ iṣeggem
 high-risk-breach-skip = Suref akka tura
 
 # Credit Card Breaches

@@ -180,13 +180,11 @@ probably successful.
 ### `react-cookie`
 
 Used to set and read various cookies. Perhaps the easiest way to verify this is
-to ensure the `RebrandAnnouncement` flag is enabled, and then open the landing
-page in a private browsing window. You should see a banner at the bottom saying
+to set a `justDeletedAccount` cookie (with a value of `justDeletedAccount`) in a
+Private Browsing window, and then open the landing page. You should see a
+notification at the top saying
 
-> Mozilla Monitor: New name, look and even more ways to reclaim your privacy.
-
-If you dismiss that banner, refresh the page, and it doesn't re-appear,
-everything is still working as expected.
+> Your ⁨Monitor⁩ account is now deleted.
 
 ### `@mozilla/glean` and `@next/third-parties`
 
@@ -206,6 +204,12 @@ address during the free data broker scan, so if that works, the update was fine.
 This is used for the small confetti animation when completing the guided
 resolution flow. This can be seen in action in Storybook, in the story
 `Logged in / Guided resolution / 4. Security recommendations / 4d. Done`.
+
+### `react-toastify`
+
+Used to display toast notifications, e.g. the error message when you try to
+unsubscribe via the following page, which uses an invalid unsubscription
+token: http://localhost:6060/unsubscribe-email/monthly-report-free?token=wrong
 
 ### `husky` and `lint-staged`
 
@@ -239,7 +243,7 @@ Used to compile cronjob scripts. You can test this by running
 ### `tsx`
 
 Used to run cronjobs locally and compile them on the fly. You can verify this by
-running a cronjob like `npm run dev:cron:monthly-activity`; if the cronjobs run
+running a cronjob like `npm run dev:cron:monthly-activity-plus`; if the cronjobs run
 like in `main`, it's still working.
 
 ### `yaml`
@@ -302,7 +306,15 @@ for instructions on running the Pub/Sub emulator locally.
 
 Winston is a logging library that provides structured logging in GCP.
 
-Look for any `logger.*` statement in `./src` and ensure that log messages are being written as [structured logs](https://cloud.google.com/logging/docs/structured-logging).
+Look for any `logger.*` statement in `./src` and ensure that log messages are
+being written as [structured
+logs](https://cloud.google.com/logging/docs/structured-logging).
+
+For example, if you are logged in with a non-Plus user, then visit
+http://localhost:6060/user/dashboard/fix/data-broker-profiles/welcome-to-plus,
+you should see the following in the server-side logs:
+
+    {"level":"error","message":"user_not_subscribed","page":"welcome-to-premium"}
 
 ### `@sentry/*`
 

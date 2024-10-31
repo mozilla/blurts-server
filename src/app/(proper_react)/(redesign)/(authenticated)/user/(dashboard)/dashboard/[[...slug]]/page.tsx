@@ -42,6 +42,7 @@ import { getElapsedTimeInDaysSinceInitialScan } from "../../../../../../../funct
 import { getExperiments } from "../../../../../../../functions/server/getExperiments";
 import { getLocale } from "../../../../../../../functions/universal/getLocale";
 import { getL10n } from "../../../../../../../functions/l10n/serverComponents";
+import { getDataBrokerRemovalTimeEstimates } from "../../../../../../../functions/server/getDataBrokerRemovalTimeEstimates";
 
 const dashboardTabSlugs = ["action-needed", "fixed"];
 
@@ -167,6 +168,7 @@ export default async function DashboardPage({ params, searchParams }: Props) {
       hasFirstMonitoringScan={hasFirstMonitoringScan}
       signInCount={signInCount}
       autoOpenUpsellDialog={searchParams.dialog === "subscriptions"}
+      removalTimeEstimates={getDataBrokerRemovalTimeEstimates(latestScan)}
     />
   );
 }

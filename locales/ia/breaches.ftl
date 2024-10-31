@@ -2,20 +2,16 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-breach-all-meta-title = { -brand-fx-monitor } - Tote le violation datos
+breach-all-meta-page-title = Base de datos de violation del datos, { -brand-fx-monitor }
 breach-all-meta-social-title = Tote le violationes disvelate per { -brand-fx-monitor }
 breach-all-meta-social-description = Navigar per le lista complete de violationes note disvelate per { -brand-fx-monitor }, pois discoperi si tu informationes era exponite.
-
+# Variables:
+#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
+breach-detail-meta-page-title = { $company } Violation de datos – { -brand-fx-monitor }
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-social-title = Era tu afficite per le violation de datos de { $company }?
 breach-detail-meta-social-description = Usa { -brand-fx-monitor } pro discoperir si tu informationes personal era exponite in iste violation, e comprender que facer postea.
-
-## Breaches header
-
-## Breaches resolved filter
-
-## Breaches table
 
 ## Links that we might refer to when prompting the user to make changes after a breach
 
@@ -26,7 +22,6 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 ## Prompts the user for changes when there is a breach detected of password
 
 breach-checklist-pw-header-text = Actualisa tu contrasignos e activa le authentication a duo factores (2FA).
-
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
@@ -95,7 +90,6 @@ breach-checklist-phone-header-2 = Protege tu numero de telephono con un servicio
 ## Prompts the user for changes when there is a breach detected of security questions
 
 breach-checklist-sq-header-text = Actualisa tu demandas de securitate.
-
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 breach-checklist-sq-body-text = In le major parte del casos, nos consilia que tu actualisa tu demandas de securitate sur le sito web del compania. Ma <b>lor sito web pote esser inactive o haber contento maligne</b>, assi usa attention si tu <breached-company-link>visita le sito</breached-company-link>. Pro ulterior protection, actualisa iste demandas de securitate sur ulle contos importante ubi tu los ha usate, e crea contrasignos unic pro totes contos.
 

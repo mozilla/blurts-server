@@ -188,8 +188,6 @@ mozilla = { -brand-mozilla }
 terms-of-service = Términos del servicio
 privacy-notice = Nota de privacidad
 github = { -brand-github }
-# Deprecated
-footer-nav-all-breaches = Todas las filtraciones
 footer-nav-recent-breaches = Filtraciones de datos recientes
 footer-external-link-faq-label = Preguntas frecuentes
 footer-external-link-faq-tooltip = Preguntas frecuentes
@@ -207,7 +205,7 @@ error-page-error-other-title = { $errorCode } Algo salió mal
 
 ## Breach overview page
 
-all-breaches-headline-2 = Todas las filtraciones detectadas por { -brand-fx-monitor }
+all-breaches-headline-3 = Base de datos de filtraciones
 all-breaches-lead = Monitoreamos todas las filtraciones de datos para encontrar si tu información personal se vio comprometida. Acá hay una lista completa de todas las filtraciones que se informaron desde 2007.
 search-breaches = Buscar filtraciones
 # the kind of user data exposed to hackers in data breach.

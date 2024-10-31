@@ -31,12 +31,7 @@ export const EmailFooter = (props: Props) => {
             height="36px"
             align="center"
           />
-          <mj-text
-            color="#321C64"
-            font-size="22px"
-            font-weight="700"
-            align="center"
-          >
+          <mj-text font-size="22px" font-weight="700" align="center">
             {l10n.getString("email-footer-support-heading")}
           </mj-text>
           <mj-text font-size="16px" font-weight="400" align="center">
@@ -76,31 +71,7 @@ export const EmailFooter = (props: Props) => {
               },
             )}
           </mj-text>
-          {props.unsubscribeLink && (
-            <mj-text
-              font-size="14px"
-              line-height="21px"
-              font-weight="400"
-              align="center"
-            >
-              {l10n.getFragment("email-unsubscribe-link", {
-                elems: {
-                  link_to_unsub: (
-                    <a
-                      href={props.unsubscribeLink}
-                      style={{ color: "#0060DF" }}
-                    />
-                  ),
-                },
-              })}
-            </mj-text>
-          )}
-          <mj-text
-            color="#3D3D3D"
-            font-size="14px"
-            font-weight="400"
-            align="center"
-          >
+          <mj-text font-size="14px" font-weight="400" align="center">
             {l10n.getFragment("email-footer-source-hibp", {
               elems: {
                 "hibp-link": (
@@ -119,20 +90,10 @@ export const EmailFooter = (props: Props) => {
             width="150px"
             align="center"
           />
-          <mj-text
-            color="#0C0C0D"
-            font-size="14px"
-            font-weight="400"
-            align="center"
-          >
+          <mj-text font-size="14px" font-weight="400" align="center">
             149 New Montgomery St, 4th Floor, San Francisco, CA 94105
           </mj-text>
-          <mj-text
-            color="#0C0C0D"
-            font-size="14px"
-            font-weight="600"
-            align="center"
-          >
+          <mj-text font-size="14px" font-weight="600" align="center">
             <a href={CONST_URL_TERMS} style={{ color: "black" }}>
               {l10n.getString("terms-of-service")}
             </a>
@@ -147,7 +108,7 @@ export const EmailFooter = (props: Props) => {
   );
 };
 
-export const RedesignedBreachEmailFooter = (props: Props) => {
+export const RedesignedEmailFooter = (props: Props) => {
   const l10n = props.l10n;
   const supportLinkUrlObject = new URL(CONST_URL_SUMO_MONITOR_SUPPORT_CENTER);
   supportLinkUrlObject.searchParams.set("utm_medium", "product-email");
@@ -159,7 +120,7 @@ export const RedesignedBreachEmailFooter = (props: Props) => {
     <mj-wrapper
       full-width="full-width"
       padding="50px 32px"
-      css-class="footer_hide_background"
+      background-color="#F9F9FA"
     >
       <mj-section>
         <mj-column>
@@ -170,12 +131,7 @@ export const RedesignedBreachEmailFooter = (props: Props) => {
             height="36px"
             align="center"
           />
-          <mj-text
-            color="#321C64"
-            font-size="22px"
-            font-weight="700"
-            align="center"
-          >
+          <mj-text font-size="22px" font-weight="700" align="center">
             {l10n.getString("email-footer-support-heading")}
           </mj-text>
           <mj-text font-size="16px" font-weight="400" align="center">
@@ -202,7 +158,6 @@ export const RedesignedBreachEmailFooter = (props: Props) => {
             align="center"
           />
           <mj-text
-            color="#0C0C0D"
             font-size="14px"
             line-height="21px"
             font-weight="400"
@@ -213,7 +168,6 @@ export const RedesignedBreachEmailFooter = (props: Props) => {
             San Francisco, CA 94105
           </mj-text>
           <mj-text
-            color="#0C0C0D"
             font-size="14px"
             line-height="21px"
             font-weight="400"
@@ -221,6 +175,25 @@ export const RedesignedBreachEmailFooter = (props: Props) => {
           >
             {l10n.getString("email-footer-trigger-transactional")}
           </mj-text>
+          {props.unsubscribeLink && (
+            <mj-text
+              font-size="14px"
+              line-height="21px"
+              font-weight="400"
+              align="center"
+            >
+              {l10n.getFragment("email-unsubscribe-link", {
+                elems: {
+                  link_to_unsub: (
+                    <a
+                      href={props.unsubscribeLink}
+                      style={{ color: "#0060DF" }}
+                    />
+                  ),
+                },
+              })}
+            </mj-text>
+          )}
           <mj-text
             font-size="14px"
             line-height="21px"

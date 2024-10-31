@@ -197,8 +197,6 @@ mozilla = { -brand-mozilla }
 terms-of-service = Ketentuan Layanan
 privacy-notice = Kebijakan Privasi
 github = { -brand-github }
-# Deprecated
-footer-nav-all-breaches = Semua Pembobolan
 footer-nav-recent-breaches = Pembobolan Data Terbaru
 footer-external-link-faq-label = T&amp;J
 footer-external-link-faq-tooltip = Tanya-Jawab
@@ -216,7 +214,7 @@ error-page-error-other-title = { $errorCode } Ada yang tidak beres
 
 ## Breach overview page
 
-all-breaches-headline-2 = Semua pembobolan yang terdeteksi oleh { -brand-fx-monitor }
+all-breaches-headline-3 = Basis Data Pembobolan Data
 all-breaches-lead = Kami memantau semua pembobolan data yang diketahui untuk mengetahui apakah informasi pribadi Anda telah disusupi. Berikut daftar lengkap semua pembobolan yang telah dilaporkan sejak 2007.
 search-breaches = Cari Pembobolan
 # the kind of user data exposed to hackers in data breach.

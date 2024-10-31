@@ -197,8 +197,6 @@ mozilla = { -brand-mozilla }
 terms-of-service = Điều khoản dịch vụ
 privacy-notice = Thông báo về quyền riêng tư
 github = { -brand-github }
-# Deprecated
-footer-nav-all-breaches = Tất cả vụ rò rỉ
 footer-nav-recent-breaches = Rò rỉ dữ liệu gần đây
 footer-external-link-faq-label = Câu hỏi thường gặp
 footer-external-link-faq-tooltip = Câu hỏi thường gặp
@@ -216,7 +214,7 @@ error-page-error-other-title = { $errorCode } Có gì đó không ổn
 
 ## Breach overview page
 
-all-breaches-headline-2 = Tất cả các vụ rò rỉ được phát hiện bởi { -brand-fx-monitor }
+all-breaches-headline-3 = Cơ sở dữ liệu về rò rỉ dữ liệu
 all-breaches-lead = Chúng tôi theo dõi tất cả các rò rỉ dữ liệu đã biết để tìm hiểu xem thông tin cá nhân của bạn có bị xâm phạm hay không. Dưới đây là danh sách đầy đủ tất cả các rò rỉ đã được báo cáo từ năm 2007.
 search-breaches = Tìm kiếm rò rỉ dữ liệu
 # the kind of user data exposed to hackers in data breach.

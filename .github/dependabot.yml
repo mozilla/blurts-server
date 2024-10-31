@@ -70,5 +70,9 @@ updates:
       interval: "weekly"
     ignore:
           - dependency-name: "node"
-            # Ignore latest version of Node, since we prefer LTS. This will need to be updated over time:
-            versions: ["22.x"]
+            # Node 22 will become an LTS version on 2024-10-29; see
+            # https://nodejs.org/en/next-data/release-data
+            # Hence, we'll want to adopt 22.x releases after the last one
+            # before that date.
+            # Odd-numbered versions are unstable releases, so skip those too.
+            versions: ["<=22.10.0", "23.x", "25.x", "27.x", "29.x"]
