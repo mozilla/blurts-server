@@ -98,9 +98,9 @@ features:
       - channel: local
         value: { "enabled": true }
       - channel: staging
-        value: { "enabled": false }
+        value: { "enabled": true }
       - channel: production
-        value: { "enabled": false }
+        value: { "enabled": true }
 enums:
   OptionalBrokerScanInfoFields:
     description: An enum of optional broker scan info fields
