@@ -24,7 +24,7 @@ export async function getAttachedClientsAction() {
 
   try {
     const attachedClients = await getAttachedClients(
-      session?.user.subscriber?.fxa_access_token ?? "",
+      process.env.FXA_SESSION_TOKEN ?? "",
     );
     return attachedClients;
   } catch (error) {

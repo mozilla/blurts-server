@@ -5,6 +5,7 @@
 import crypto from "crypto";
 import { URL } from "url";
 import { logger } from "../app/functions/server/logging";
+import { getHawkAuthHeader } from "../app/functions/server/getHawkAuthHeader";
 
 import { getEnvVarsOrThrow } from "../envVars";
 const envVars = getEnvVarsOrThrow([
@@ -378,14 +379,22 @@ export type FxaGetAccountAttachedClients = {
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
 async function getAttachedClients(
-  bearerToken: string,
+  sessionToken: string,
 ): Promise<FxaGetAccountAttachedClients[]> {
-  const endpointUrl = `${envVars.OAUTH_ACCOUNT_URI}/account/attached_clients`;
   try {
+    const requestOptions = {
+      method: "GET",
+      url: envVars.OAUTH_ACCOUNT_URI,
+    };
+    const endpointUrl = `${requestOptions.url}/account/attached_clients`;
+    const hawkAuthHeader = await getHawkAuthHeader({
+      sessionToken,
+      requestOptions,
+    });
     const response = await fetch(endpointUrl, {
       headers: {
-        Accept: "application/json",
-        Authorization: `Bearer ${bearerToken}`,
+        Authorization: hawkAuthHeader.header,
+        "Content-Type": "application/json",
       },
     });
     const responseJson = await response.json();
