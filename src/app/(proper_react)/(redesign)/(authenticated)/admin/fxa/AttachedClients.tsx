@@ -5,7 +5,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { getAttachedClientsAction } from "./actions";
+import {
+  getAttachedClientsAction,
+  deleteAttachedClientAction,
+} from "./actions";
 import { FxaGetAccountAttachedClients } from "../../../../../../utils/fxa";
 
 export const AttachedClients = () => {
@@ -21,8 +24,43 @@ export const AttachedClients = () => {
       });
   }, []);
 
+  const deleteAllAttachedClients = async (
+    data: FxaGetAccountAttachedClients[],
+  ) => {
+    for (const d of data) {
+      if (!d.isCurrentSession) {
+        await deleteAttachedClientAction(d);
+      }
+    }
+  };
+
   return data ? (
-    <pre>{JSON.stringify(data, null, 2)}</pre>
+    <>
+      <div>Attached clients ({data.length})</div>
+      <button
+        onClick={() => {
+          void deleteAllAttachedClients(data);
+        }}
+      >
+        Sign out all
+      </button>
+      <ul>
+        {data.map((d, index) => (
+          <li key={`attached-client-${index}`}>
+            <div>
+              {d.name} – {d.lastAccessTimeFormatted}
+            </div>
+            <button
+              onClick={() => {
+                void deleteAttachedClientAction(d);
+              }}
+            >
+              Sign out
+            </button>
+          </li>
+        ))}
+      </ul>
+    </>
   ) : (
     "No data available"
   );

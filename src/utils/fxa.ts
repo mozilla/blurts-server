@@ -354,26 +354,28 @@ async function applyCoupon(
  * @see https://mozilla.github.io/ecosystem-platform/api#tag/Devices-and-Sessions/operation/getAccountAttached_clients
  */
 export type FxaGetAccountAttachedClients = {
-  clientId: string;
-  deviceId: number;
-  sessionTokenId: string;
-  refreshTokenId: string;
-  isCurrentSession: boolean;
-  deviceType: string;
-  name: string;
-  createdTime: string;
-  lastAccessTime: string;
-  scope: string[];
-  userAgent: string;
-  createdTimeFormatted?: string;
   approximateLastAccessTime?: number;
+  approximateLastAccessTimeFormatted?: string;
+  clientId?: string;
+  createdTime: number;
+  createdTimeFormatted?: string;
+  deviceId?: string;
+  deviceType?: string;
+  isCurrentSession: boolean;
+  lastAccessTime: number;
+  lastAccessTimeFormatted: string;
   location?: {
     city: string;
     country: string;
     state: string;
     stateCode: string;
   };
+  name: string;
   os?: string;
+  refreshTokenId?: string;
+  scope?: string[];
+  sessionTokenId?: string;
+  userAgent: string;
 };
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
@@ -399,11 +401,57 @@ async function getAttachedClients(
     });
     const responseJson = await response.json();
     if (!response.ok) throw new Error(JSON.stringify(responseJson));
-    logger.info("get_fxa_attached_clients_success");
+    logger.info("fxa_get_attached_clients_success");
     return responseJson as FxaGetAccountAttachedClients[];
   } catch (e) {
     if (e instanceof Error) {
-      logger.error("get_fxa_attached_clients", {
+      logger.error("fxa_get_attached_clients_error", {
+        stack: e.stack,
+        message: e.message,
+      });
+    }
+    throw e;
+  }
+}
+/* c8 ignore stop */
+
+export type FxaDeleteAttachedClientData = {
+  clientId?: FxaGetAccountAttachedClients["clientId"];
+  deviceId?: FxaGetAccountAttachedClients["deviceId"];
+  refreshTokenId?: FxaGetAccountAttachedClients["refreshTokenId"];
+  sessionTokenId?: FxaGetAccountAttachedClients["sessionTokenId"];
+};
+
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
+async function deleteAttachedClient(
+  sessionToken: string,
+  attachedClientData: FxaDeleteAttachedClientData,
+): Promise<void> {
+  try {
+    const requestOptions = {
+      method: "POST",
+      url: envVars.OAUTH_ACCOUNT_URI,
+    };
+    const endpointUrl = `${requestOptions.url}/account/attached_client/destroy`;
+    const hawkAuthHeader = await getHawkAuthHeader({
+      sessionToken,
+      requestOptions,
+    });
+    const response = await fetch(endpointUrl, {
+      method: requestOptions.method,
+      headers: {
+        Authorization: hawkAuthHeader.header,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(attachedClientData),
+    });
+    const responseJson = await response.json();
+    if (!response.ok) throw new Error(JSON.stringify(responseJson));
+    logger.info("fxa_delete_attached_client_success");
+  } catch (e) {
+    if (e instanceof Error) {
+      logger.error("fxa_delete_attached_client_error", {
         stack: e.stack,
         message: e.message,
       });
@@ -429,4 +477,5 @@ export {
   deleteSubscription,
   applyCoupon,
   getAttachedClients,
+  deleteAttachedClient,
 };

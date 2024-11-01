@@ -5,7 +5,11 @@
 "use server";
 
 import { notFound } from "next/navigation";
-import { getAttachedClients } from "../../../../../../utils/fxa";
+import {
+  getAttachedClients,
+  deleteAttachedClient,
+  FxaDeleteAttachedClientData,
+} from "../../../../../../utils/fxa";
 import { getServerSession } from "../../../../../functions/server/getServerSession";
 import { isAdmin } from "../../../../../api/utils/auth";
 import { logger } from "@sentry/utils";
@@ -13,7 +17,6 @@ import { captureException } from "@sentry/node";
 
 export async function getAttachedClientsAction() {
   const session = await getServerSession();
-
   if (
     !session?.user?.email ||
     !isAdmin(session.user.email) ||
@@ -30,6 +33,32 @@ export async function getAttachedClientsAction() {
   } catch (error) {
     captureException(error);
     logger.error("Could not get attached clients", {
+      error: JSON.stringify(error),
+    });
+  }
+}
+
+export async function deleteAttachedClientAction(
+  attachedClientData: FxaDeleteAttachedClientData,
+) {
+  const session = await getServerSession();
+  if (
+    !session?.user?.email ||
+    !isAdmin(session.user.email) ||
+    process.env.APP_ENV === "production"
+  ) {
+    return notFound();
+  }
+
+  try {
+    const attachedClients = await deleteAttachedClient(
+      process.env.FXA_SESSION_TOKEN ?? "",
+      attachedClientData,
+    );
+    return attachedClients;
+  } catch (error) {
+    captureException(error);
+    logger.error("Deleting attached client failed", {
       error: JSON.stringify(error),
     });
   }
