@@ -190,8 +190,6 @@ mozilla = { -brand-mozilla }
 terms-of-service = Kullanım Koşulları
 privacy-notice = Gizlilik Bildirimi
 github = { -brand-github }
-# Deprecated
-footer-nav-all-breaches = Tüm İhlaller
 footer-nav-recent-breaches = En Son Veri İhlalleri
 footer-external-link-faq-label = SSS
 footer-external-link-faq-tooltip = Sıkça sorulan sorular
@@ -209,7 +207,7 @@ error-page-error-other-title = { $errorCode } Bir hata oluştu
 
 ## Breach overview page
 
-all-breaches-headline-2 = { -brand-fx-monitor } tarafından tespit edilen tüm ihlaller
+all-breaches-headline-3 = Veri İhlali Veri Tabanı
 all-breaches-lead = Kişisel bilgilerinizin ele geçirilip geçirilmediğini öğrenmek için bilinen tüm veri ihlallerini izliyoruz. İşte 2007’den beri bildirilen tüm ihlallerin tam listesi.
 search-breaches = İhlallerde ara
 # the kind of user data exposed to hackers in data breach.
