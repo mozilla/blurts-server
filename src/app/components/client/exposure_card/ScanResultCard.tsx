@@ -317,8 +317,15 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
             props.isExpanded ? styles.isOpen : ""
           }`}
         >
-          <div>
+          <div className={styles.exposureDetailsTopDescription}>
             <p>{dataBrokerDescription()}</p>
+            {
+              // Verifying the status for automatically removed data brokers v. manually resolved are handled differently
+              props.scanResult.status === "new" &&
+              !props.scanResult.manually_resolved ? (
+                <span className={styles.fixItBtn}>{props.resolutionCta}</span>
+              ) : null
+            }
           </div>
           <div className={styles.exposureDetailsContent}>
             <div className={styles.exposedInfoContainer}>
@@ -334,13 +341,6 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
                   </div>
                 </div>
               </div>
-              {
-                // Verifying the status for automatically removed data brokers v. manually resolved are handled differently
-                props.scanResult.status === "new" &&
-                !props.scanResult.manually_resolved ? (
-                  <span className={styles.fixItBtn}>{props.resolutionCta}</span>
-                ) : null
-              }
             </div>
           </div>
         </div>
