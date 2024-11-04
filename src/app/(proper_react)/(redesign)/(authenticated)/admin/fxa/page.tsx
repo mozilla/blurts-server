@@ -13,7 +13,8 @@ export default async function DevPage() {
   if (
     !session?.user?.email ||
     !isAdmin(session.user.email) ||
-    process.env.APP_ENV === "productions"
+    process.env.APP_ENV === "production" ||
+    !process.env.FXA_USER_SESSION_TOKEN
   ) {
     return notFound();
   }

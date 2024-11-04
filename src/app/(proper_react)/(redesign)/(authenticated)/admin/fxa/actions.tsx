@@ -37,7 +37,7 @@ export async function getAttachedClientsAction() {
 
   try {
     const attachedClients = await getAttachedClients(
-      process.env.FXA_SESSION_TOKEN ?? "",
+      process.env.FXA_USER_SESSION_TOKEN ?? "",
     );
     return attachedClients;
   } catch (error) {
@@ -62,7 +62,7 @@ export async function deleteAttachedClientAction(
 
   try {
     const attachedClients = await deleteAttachedClient(
-      process.env.FXA_SESSION_TOKEN ?? "",
+      process.env.FXA_USER_SESSION_TOKEN ?? "",
       attachedClientData,
     );
     return attachedClients;
