@@ -320,24 +320,28 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
           <div>
             <p>{dataBrokerDescription()}</p>
           </div>
-          <div className={styles.exposedInfoContainer}>
-            <div className={styles.exposedInfoWrapper}>
-              <p className={styles.exposedInfoTitle}>
-                {l10n.getString("exposure-card-your-exposed-info")}
-              </p>
-              <div className={styles.dataClassesList}>
-                {exposureCategoriesArray.map((item) => (
-                  <React.Fragment key={item.key}>{item}</React.Fragment>
-                ))}
+          <div className={styles.exposureDetailsContent}>
+            <div className={styles.exposedInfoContainer}>
+              <div className={styles.exposuredInfoSection}>
+                <p className={styles.exposedInfoTitle}>
+                  {l10n.getString("exposure-card-found-the-following-data")}
+                </p>
+                <div className={styles.exposedInfoWrapper}>
+                  <div className={styles.dataClassesList}>
+                    {exposureCategoriesArray.map((item) => (
+                      <React.Fragment key={item.key}>{item}</React.Fragment>
+                    ))}
+                  </div>
+                </div>
               </div>
+              {
+                // Verifying the status for automatically removed data brokers v. manually resolved are handled differently
+                props.scanResult.status === "new" &&
+                !props.scanResult.manually_resolved ? (
+                  <span className={styles.fixItBtn}>{props.resolutionCta}</span>
+                ) : null
+              }
             </div>
-            {
-              // Verifying the status for automatically removed data brokers v. manually resolved are handled differently
-              props.scanResult.status === "new" &&
-              !props.scanResult.manually_resolved ? (
-                <span className={styles.fixItBtn}>{props.resolutionCta}</span>
-              ) : null
-            }
           </div>
         </div>
       </div>
