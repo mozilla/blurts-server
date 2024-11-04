@@ -197,6 +197,15 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
             },
           },
         );
+      case "removal_under_maintenance":
+        return l10n.getFragment(
+          "exposure-card-description-info-for-sale-manual-removal-needed",
+          {
+            elems: {
+              b: <b />,
+            },
+          },
+        );
     }
   };
 
@@ -321,7 +330,8 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
             <p>{dataBrokerDescription()}</p>
             {
               // Verifying the status for automatically removed data brokers v. manually resolved are handled differently
-              props.scanResult.status === "new" &&
+              (props.scanResult.status === "new" ||
+                props.scanResult.status === "removal_under_maintenance") &&
               !props.scanResult.manually_resolved ? (
                 <span className={styles.fixItBtn}>{props.resolutionCta}</span>
               ) : null

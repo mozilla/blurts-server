@@ -50,6 +50,10 @@ const ScanMockItemInProgress = createRandomScanResult({
   status: "optout_in_progress",
   manually_resolved: false,
 });
+const ScanMockItemRemovalUnderMaintenance = createRandomScanResult({
+  status: "removal_under_maintenance",
+  manually_resolved: false,
+});
 const BreachMockItemRemoved = createRandomBreach({
   isResolved: true,
   dataClassesEffected: [
@@ -101,6 +105,13 @@ export const DataBreachActionNeeded: Story = {
   args: {
     exposureImg: TwitterImage,
     exposureData: BreachMockItemNew,
+  },
+};
+
+export const DataBrokerRemovalUnderMaintenance: Story = {
+  args: {
+    exposureImg: FamilyTreeImage,
+    exposureData: ScanMockItemRemovalUnderMaintenance,
   },
 };
 
