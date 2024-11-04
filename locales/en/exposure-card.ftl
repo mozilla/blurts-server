@@ -29,6 +29,7 @@ exposure-card-other = Other
 exposure-card-description-data-breach-action-needed = Your information was exposed in the <data_breach_link>{ $data_breach_company } data breach on { $data_breach_date }.</data_breach_link> We’ll walk you through the steps to fix it.
 exposure-card-description-data-breach-fixed = You’ve taken the steps needed to fix <data_breach_link>this breach</data_breach_link>. We’ll continually monitor for data breaches and alert you of any new exposures.
 exposure-card-your-exposed-info = Your exposed info:
+exposure-card-found-the-following-data = { -brand-monitor } found the following exposed data:
 exposure-card-exposure-type-data-broker = Info for sale
 exposure-card-exposure-type-data-breach = Data breach
 exposure-card-cta = Fix all exposures

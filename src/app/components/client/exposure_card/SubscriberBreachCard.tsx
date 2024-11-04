@@ -268,25 +268,28 @@ export const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
           <div>
             <p>{dataBreachDescription()}</p>
           </div>
-
-          <div className={styles.exposedInfoContainer}>
-            <div className={styles.exposedInfoWrapper}>
-              <p className={styles.exposedInfoTitle}>
-                {l10n.getString("exposure-card-your-exposed-info")}
-              </p>
-              <div className={styles.dataClassesList}>
-                {exposureCategoriesArray.map((item) => (
-                  <React.Fragment key={item.key}>{item}</React.Fragment>
-                ))}
+          <div className={styles.exposureDetailsContent}>
+            <div className={styles.exposedInfoContainer}>
+              <div className={styles.exposuredInfoSection}>
+                <p className={styles.exposedInfoTitle}>
+                  {l10n.getString("exposure-card-found-the-following-data")}
+                </p>
+                <div className={styles.exposedInfoWrapper}>
+                  <div className={styles.dataClassesList}>
+                    {exposureCategoriesArray.map((item) => (
+                      <React.Fragment key={item.key}>{item}</React.Fragment>
+                    ))}
+                  </div>
+                </div>
               </div>
+              {
+                // TODO: Add unit test when changing this code:
+                /* c8 ignore next */
+                !props.subscriberBreach.isResolved ? (
+                  <span className={styles.fixItBtn}>{props.resolutionCta}</span>
+                ) : null
+              }
             </div>
-            {
-              // TODO: Add unit test when changing this code:
-              /* c8 ignore next */
-              !props.subscriberBreach.isResolved ? (
-                <span className={styles.fixItBtn}>{props.resolutionCta}</span>
-              ) : null
-            }
           </div>
         </div>
       </div>

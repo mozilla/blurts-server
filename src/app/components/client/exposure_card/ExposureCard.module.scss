@@ -120,9 +120,16 @@
   .exposureDetailsSection {
     margin: 0;
     overflow: hidden;
-    padding: 0 $layout-lg;
+    padding: 0 $layout-md;
     height: 0;
     display: none;
+
+    .exposureDetailsContent {
+      margin-top: $layout-xs;
+      background: $color-grey-05;
+      padding: $spacing-md $spacing-lg;
+      border-radius: $border-radius-md;
+    }
 
     .openInNewTab {
       color: $color-blue-50;
@@ -146,13 +153,17 @@
     }
 
     .exposedInfoContainer {
-      padding-top: $spacing-md;
       display: flex;
       flex-direction: column;
       gap: $layout-xs;
 
+      .exposuredInfoSection {
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-md;
+      }
+
       .exposedInfoWrapper {
-        font: $text-body-xs;
         display: flex;
         flex-direction: column;
         gap: $spacing-md;
@@ -217,6 +228,7 @@
             display: flex;
             align-items: center;
             gap: $spacing-xs;
+            font-weight: 500;
 
             .exposureTypeIcon {
               color: $color-purple-60;
