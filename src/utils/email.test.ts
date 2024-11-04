@@ -154,6 +154,16 @@ test("EmailUtils.init with empty host uses jsonTransport. logs messages", async 
   );
 });
 
+test("EmailUtils.closeEmailPool before .init() fails", async () => {
+  expect.assertions(1);
+
+  const { closeEmailPool } = await import("./email");
+
+  const expectedError = "`closeEmailPool` called before `initEmail`";
+
+  expect(() => closeEmailPool()).toThrow(expectedError);
+});
+
 test("randomToken returns a random token of 2xlength (because of hex)", () => {
   const token = randomToken(32);
   expect(token).toHaveLength(64);

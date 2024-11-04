@@ -13,26 +13,12 @@ export const MetaTags = () => {
 };
 
 export const HeaderStyles = () => {
-  const hideBgImageOnDarkMode = `
+  const enforceLightMode = `
       :root {
         color-scheme: light only;
         supported-color-schemes: light only;
       }
-
-      .footer_background {
-        background-image: url(${process.env.SERVER_URL}/images/email/footer-bg-shapes.png);
-        background-position: center bottom;
-        background-repeat: no-repeat;
-        color: #000000 !important;
-      }
-
-      .hero_background {
-        background-image: url(${process.env.SERVER_URL}/images/email/hero-bg-gradient.png);
-        background-repeat: repeat;
-        background-position-x: 0;
-        color: #000000 !important;
-      }
     `;
 
-  return <mj-style>{hideBgImageOnDarkMode}</mj-style>;
+  return <mj-style>{enforceLightMode}</mj-style>;
 };

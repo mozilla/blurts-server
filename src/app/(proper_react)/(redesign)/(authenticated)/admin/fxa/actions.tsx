@@ -14,14 +14,24 @@ import { getServerSession } from "../../../../../functions/server/getServerSessi
 import { isAdmin } from "../../../../../api/utils/auth";
 import { logger } from "@sentry/utils";
 import { captureException } from "@sentry/node";
+import { getSubscriberByFxaUid } from "../../../../../../db/tables/subscribers";
 
 export async function getAttachedClientsAction() {
   const session = await getServerSession();
   if (
     !session?.user?.email ||
     !isAdmin(session.user.email) ||
-    process.env.APP_ENV === "production"
+    process.env.APP_ENV === "production" ||
+    typeof session?.user?.subscriber?.fxa_uid !== "string"
   ) {
+    return notFound();
+  }
+
+  const subscriber = await getSubscriberByFxaUid(
+    session.user.subscriber.fxa_uid,
+  );
+  if (!subscriber) {
+    logger.error("admin_fxa_no_subscriber_found");
     return notFound();
   }
 

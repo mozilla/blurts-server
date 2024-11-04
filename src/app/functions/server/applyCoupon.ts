@@ -11,9 +11,7 @@ import {
 } from "../../../db/tables/subscriber_coupons";
 import { applyCoupon } from "../../../utils/fxa";
 
-export async function applyCurrentCouponCode(
-  subscriber: SubscriberRow | SerializedSubscriber,
-) {
+export async function applyCurrentCouponCode(subscriber: SubscriberRow) {
   logger.info("fxa_apply_coupon_code", {
     subscriber: subscriber.id,
   });
