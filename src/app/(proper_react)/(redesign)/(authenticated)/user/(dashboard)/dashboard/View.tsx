@@ -234,7 +234,7 @@ export const View = (props: Props) => {
                 }).href
               }
             >
-              {l10n.getString("exposure-card-cta")}
+              {l10n.getString("exposure-card-resolve-exposures-cta")}
             </Button>
           }
         />
