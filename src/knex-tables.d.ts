@@ -519,7 +519,7 @@ declare module "knex/types/tables" {
       >
     >;
 
-    data_brokers: Knex.CompositeTableType<
+    onerep_data_brokers: Knex.CompositeTableType<
       DataBrokerRow,
       // On inserts, auto-generated columns cannot be set
       WritableDateColumns<Omit<DataBrokerRow, DataBrokerAutoInsertedColumns>>,

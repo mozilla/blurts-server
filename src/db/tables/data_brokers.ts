@@ -4,28 +4,20 @@
 
 import createDbConnection from "../connect";
 import { logger } from "../../app/functions/server/logging";
+import { DataBrokerRow } from "../../knex-tables";
 
 const knex = createDbConnection();
-
-interface DataBroker {
-  id: number;
-  data_broker: string;
-  status: string;
-  url: string;
-  created_at: Date;
-  updated_at: Date;
-}
 
 async function addDataBroker(
   dataBroker: string,
   status: string,
   url: string,
-): Promise<DataBroker | undefined> {
+): Promise<DataBrokerRow | undefined> {
   logger.info("addDataBroker", { dataBroker, status, url });
 
   let res;
   try {
-    res = await knex("data_brokers")
+    res = await knex("onerep_data_brokers")
       .insert({
         data_broker: dataBroker,
         status,
@@ -39,4 +31,4 @@ async function addDataBroker(
   return res?.[0];
 }
 
-export { getDataBroker, addDataBroker };
+export { addDataBroker };

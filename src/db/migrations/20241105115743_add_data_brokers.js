@@ -4,7 +4,7 @@
 
 export async function up(knex) {
   return knex.schema
-    .createTable("data_brokers", table => {
+    .createTable("onerep_data_brokers", table => {
       table.increments('id').primary()
       table.string("data_broker").notNullable()
       table.string("status").notNullable()
@@ -15,5 +15,5 @@ export async function up(knex) {
 
 export async function down(knex) {
   return knex.schema
-    .dropTable("data_brokers")
+    .dropTable("onerep_data_brokers")
 } 
