@@ -12,7 +12,6 @@ import { getLatestOnerepScanResults } from "../../../../../../../../../../db/tab
 import { getOnerepProfileId } from "../../../../../../../../../../db/tables/subscribers";
 import { getSubscriberBreaches } from "../../../../../../../../../functions/server/getSubscriberBreaches";
 import { getSubscriberEmails } from "../../../../../../../../../functions/server/getSubscriberEmails";
-import { getL10n } from "../../../../../../../../../functions/l10n/serverComponents";
 
 export default async function RemovalUnderMaintenance() {
   const session = await getServerSession();
@@ -35,11 +34,17 @@ export default async function RemovalUnderMaintenance() {
   };
   const subscriberEmails = await getSubscriberEmails(session.user);
 
+  if (data.latestScanData === null) {
+    redirect("/user/dashboard");
+  }
+
+  const scanData = data.latestScanData.results;
+
   return (
     <RemovalUnderMaintenanceView
-      data={data}
+      stepDeterminationData={data}
+      data={scanData}
       subscriberEmails={subscriberEmails}
-      l10n={getL10n()}
     />
   );
 }
