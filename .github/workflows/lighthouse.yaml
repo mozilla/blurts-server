@@ -1,0 +1,23 @@
+name: Run Lighthouse CI
+on:
+  workflow_run:
+      workflows: ['Build']
+      types: [completed]
+      branches: [main]
+jobs:
+  lhci:
+    name: Lighthouse CI
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js 20.9.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.9.x
+      - name: npm install
+        run: |
+          npm install
+      - name: run Lighthouse CI
+        run: |
+          npm install -g @lhci/cli@0.3.x
+          npm run lhci -- --uploadTarget=temporary-public-storage || echo "Running lhci failed"
