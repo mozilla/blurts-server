@@ -37,8 +37,8 @@ export const RemovalUnderMaintenanceView = (props: Props) => {
         scanResult={testScanItem[0]}
         locale={"en"}
         resolutionCta={undefined}
-        isPremiumUser={false}
-        isExpanded={false}
+        isPremiumUser={true}
+        isExpanded={true}
         onToggleExpanded={() => console.log("toggle")}
       />
     </FixView>

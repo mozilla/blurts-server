@@ -30,7 +30,9 @@ exposure-card-description-data-breach-action-needed = Your information was expos
 exposure-card-description-data-breach-fixed = You’ve taken the steps needed to fix <data_breach_link>this breach</data_breach_link>. We’ll continually monitor for data breaches and alert you of any new exposures.
 exposure-card-your-exposed-info = Your exposed info:
 exposure-card-found-the-following-data = { -brand-monitor } found the following exposed data:
+# Deprecated
 exposure-card-exposure-type-data-broker = Info for sale
+exposure-card-exposure-type-data-broker-2 = Data broker
 exposure-card-exposure-type-data-breach = Data breach
 # Deprecated
 exposure-card-cta = Fix all exposures

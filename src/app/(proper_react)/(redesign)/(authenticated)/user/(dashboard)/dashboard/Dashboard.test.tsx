@@ -2782,7 +2782,7 @@ it("allows Plus users to filter by info for sale", async () => {
     }).length,
   ).toBeGreaterThan(0);
   expect(
-    screen.queryAllByText("Info for sale", {
+    screen.queryAllByText("Data broker", {
       selector: "dd",
     }).length,
   ).toBeGreaterThan(0);
@@ -2793,7 +2793,7 @@ it("allows Plus users to filter by info for sale", async () => {
   await user.click(filterMenuButton);
 
   const filterDialog = screen.getByRole("dialog");
-  const exposureTypeInput = getByLabelText(filterDialog, "Your info for sale");
+  const exposureTypeInput = getByLabelText(filterDialog, "Data broker");
   await user.click(exposureTypeInput);
 
   const showResultsButton = getByRole(filterDialog, "button", {
@@ -2807,7 +2807,7 @@ it("allows Plus users to filter by info for sale", async () => {
     }).length,
   ).toBe(0);
   expect(
-    screen.queryAllByText("Info for sale", {
+    screen.queryAllByText("Data broker", {
       selector: "dd",
     }).length,
   ).toBeGreaterThan(0);
@@ -2827,7 +2827,7 @@ it("allows Plus users to filter by data breach", async () => {
     }).length,
   ).toBeGreaterThan(0);
   expect(
-    screen.queryAllByText("Info for sale", {
+    screen.queryAllByText("Data broker", {
       selector: "dd",
     }).length,
   ).toBeGreaterThan(0);
@@ -2852,7 +2852,7 @@ it("allows Plus users to filter by data breach", async () => {
     }).length,
   ).toBeGreaterThan(0);
   expect(
-    screen.queryAllByText("Info for sale", {
+    screen.queryAllByText("Data broker", {
       selector: "dd",
     }).length,
   ).toBe(0);

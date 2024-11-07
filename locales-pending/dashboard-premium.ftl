@@ -36,7 +36,7 @@ modal-heres-what-we-fixed-description-part-two = <b>Auto-removed</b> includes an
 modal-heres-what-we-fixed-description-part-three = <b>In Progress</b> includes anything that we are currently working on fixing.
 
 dashboard-exposures-filter-exposure-type = Exposure type
-dashboard-exposures-filter-exposure-type-info-for-sale = Your info for sale
+dashboard-exposures-filter-exposure-type-info-for-sale = Data broker
 dashboard-exposures-filter-exposure-type-data-breach = Data breach
 dashboard-exposures-filter-exposure-removal-time-title = Removal time
 dashboard-exposures-filter-exposure-removal-time-label-7 = Up to 7 days
@@ -60,7 +60,7 @@ modal-exposure-type-description = {
 }
 modal-exposure-type-data-breach = <b>Data breach</b> means your information has been compromised in a breach and could be in the wrong hands.
   Resolving these typically requires accessing your accounts, so you’ll need to take manual steps to resolve each breach even if you’ve subscribed to { -brand-monitor-plus }.
-modal-exposure-type-data-broker-part-one = <b>Info for sale</b> means a data broker site is publicly publishing and selling your personal info.
+modal-exposure-type-data-broker-part-one = <b>Data broker</b> means a data broker site is publicly publishing and selling your personal info.
   You’ll need to manually request removal from each site.
 modal-exposure-type-data-broker-part-two = But if you’re a { -brand-monitor-plus } subscriber, we auto-remove the profiles for you.
 

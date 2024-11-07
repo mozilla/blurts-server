@@ -122,7 +122,6 @@ export const ExposureCardDataClassLayout = (
   return (
     <div className={styles.detailsFoundItem}>
       <div className={styles.label}>
-        <span className={styles.exposureTypeIcon}>{props.icon}</span>
         <span>{dataClassHeader}</span>
       </div>
       <div className={styles.dataClassListDetailsWrapper}>
