@@ -14,6 +14,7 @@ import { getSignupLocaleCountry } from "../../functions/getSignupLocaleCountry";
 import { HeaderStyles, MetaTags } from "../HeaderStyles";
 import { SanitizedSubscriberRow } from "../../../app/functions/server/sanitize";
 import { sumSanitizedDataPoints } from "../../functions/reduceSanitizedDataPoints";
+import { modifyAttributionsForUrl } from "../../../app/functions/universal/attributions";
 
 export type MonthlyActivityFreeEmailProps = {
   l10n: ExtendedReactLocalization;
@@ -48,26 +49,26 @@ export const MonthlyActivityFreeEmail = (
   const l10n = props.l10n;
   const assumedCountryCode = getSignupLocaleCountry(props.subscriber);
 
-  const createUrlWithUtm = (baseUrl: string, utmParams: UtmParams) => {
-    const url = new URL(baseUrl);
-    url.searchParams.set("utm_source", utmParams.utmSource);
-    url.searchParams.set("utm_medium", utmParams.utmMedium);
-    url.searchParams.set("utm_campaign", utmParams.utmCampaign);
-    url.searchParams.set("utm_content", utmParams.utmContent);
-    return url;
+  const replaceValues = {
+    utm_source: scanOrUpgradeCtaUtm.utmSource,
+    utm_medium: scanOrUpgradeCtaUtm.utmMedium,
+    utm_campaign: scanOrUpgradeCtaUtm.utmCampaign,
+    utm_content: scanOrUpgradeCtaUtm.utmContent,
   };
 
-  const premiumSubscriptionUrlObject = createUrlWithUtm(
+  const premiumSubscriptionUrlObject = modifyAttributionsForUrl(
     getPremiumSubscriptionUrl({ type: "yearly" }),
-    scanOrUpgradeCtaUtm,
+    replaceValues,
+    {},
   );
 
-  const unlockWithMonitorPlusCta = createUrlWithUtm(
+  const unlockWithMonitorPlusCta = modifyAttributionsForUrl(
     getPremiumSubscriptionUrl({ type: "yearly" }),
     {
-      ...scanOrUpgradeCtaUtm,
-      utmContent: "unlock-with-monitor-plus",
+      ...replaceValues,
+      utm_content: "unlock-with-monitor-plus",
     },
+    {},
   );
 
   const scanOrUpgradeBannerDataCta = {
@@ -75,7 +76,7 @@ export const MonthlyActivityFreeEmail = (
       ? l10n.getString("email-monthly-report-free-banner-cta-upgrade")
       : l10n.getString("email-monthly-report-free-banner-cta-free-scan"),
     link: hasRunFreeScan
-      ? premiumSubscriptionUrlObject.href
+      ? premiumSubscriptionUrlObject
       : `${process.env.SERVER_URL}/user/dashboard/?utm_source=${scanOrUpgradeCtaUtm.utmSource}&utm_medium=${scanOrUpgradeCtaUtm.utmMedium}&utm_campaign=${scanOrUpgradeCtaUtm.utmCampaign}&utm_content=${scanOrUpgradeCtaUtm.utmContent}`,
   };
   const purpleActiveColor = "#7542E5";
@@ -254,7 +255,7 @@ export const MonthlyActivityFreeEmail = (
               <mj-group width="100%">
                 <mj-column>
                   <mj-button
-                    href={unlockWithMonitorPlusCta.href}
+                    href={unlockWithMonitorPlusCta}
                     background-color="transparent"
                     color="#0060DF"
                     text-decoration="underline"
