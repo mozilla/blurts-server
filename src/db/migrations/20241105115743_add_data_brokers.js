@@ -6,7 +6,7 @@ export async function up(knex) {
   return knex.schema
     .createTable("onerep_data_brokers", table => {
       table.increments('id').primary()
-      table.string("data_broker").notNullable()
+      table.string("data_broker").notNullable().unique()
       table.string("status").notNullable()
       table.string("url").notNullable()
       table.timestamp("created_at").defaultTo(knex.fn.now())
