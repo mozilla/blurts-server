@@ -2,20 +2,16 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-breach-all-meta-title = { -brand-fx-monitor } - Opaite mba’ekuaarã ñembogua
+breach-all-meta-page-title = Mba’ekuaarã rupa ñembogua rehegua — { -brand-fx-monitor }
 breach-all-meta-social-title = Opaite ñembogua ohecháva { -brand-fx-monitor }
 breach-all-meta-social-description = Ehapykueho { -brand-fx-monitor } ñemboguakuaa rysýi ojehechakuaáva, upéi ehecha ne marandúpa oñemboguakuaápara’e.
-
+# Variables:
+#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
+breach-detail-meta-page-title = Mba’ekuaarã rupa ñembogua { $company } – { -brand-fx-monitor } rehegua
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-social-title = ¿Ne myangekói { $company } mba’ekuaarã ñembogua?
 breach-detail-meta-social-description = Eiporu { -brand-fx-monitor } eikuaa hag̃ua ne maranduetépa oñemboguakuaára’e ha péicha rupi eikuaa mba’etépa ejapóta.
-
-## Breaches header
-
-## Breaches resolved filter
-
-## Breaches table
 
 ## Links that we might refer to when prompting the user to make changes after a breach
 
@@ -26,7 +22,6 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 ## Prompts the user for changes when there is a breach detected of password
 
 breach-checklist-pw-header-text = Embohekopyahu ñe’ẽñemi ha embojuruja mokõi papapyñemi (2FA).
-
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
@@ -95,7 +90,6 @@ breach-checklist-phone-header-2 = Emo’ã ne pumbyry papapy mba’eporu rovamo�
 ## Prompts the user for changes when there is a breach detected of security questions
 
 breach-checklist-sq-header-text = Embopyahu porandu tekorosãgua.
-
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 breach-checklist-sq-body-text = Hetavejey, ro’e ndéve embohekopyahu hag̃ua porandu tekorosãgua mba’apohaguasu ñanduti rendápe. Hákatu <b>iñanduti renda hekopytakuaa térã oreko tetepy ivaikuaáva</b>, upévare ema’ẽke <breached-company-link>rendápe jeike</breached-company-link>. Eñemo’ãve hag̃ua, embohekopyahu ko’ã porandu tekorosãgua oimeraẽva mba’ete eiporuvéva peteĩva hendápe, ha emoheñói ñe’ẽñemi oiko ha iñambuéva peteĩteĩva ñe’ẽñemíme.
 

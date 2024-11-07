@@ -1,9 +1,9 @@
 name: Run Lighthouse CI
 on:
-  workflow_run:
-      workflows: ['Build']
-      types: [completed]
-      branches: [main]
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 jobs:
   lhci:
     name: Lighthouse CI
@@ -17,7 +17,10 @@ jobs:
       - name: npm install
         run: |
           npm install
+      - name: npm run build
+        run: |
+          npm run build
       - name: run Lighthouse CI
         run: |
-          npm install -g @lhci/cli@0.3.x
-          npm run lhci -- --uploadTarget=temporary-public-storage || echo "Running lhci failed"
+          npm install -g @lhci/cli@0.14.x
+          npm run lighthouse -- --upload.target=temporary-public-storage

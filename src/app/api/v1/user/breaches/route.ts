@@ -20,29 +20,6 @@ export interface BreachResolutionRequest {
   resolutionsChecked: Array<HibpBreachDataTypes[keyof HibpBreachDataTypes]>;
 }
 
-// Get breaches data
-export async function GET(req: NextRequest) {
-  const token = await getToken({ req });
-  if (typeof token?.subscriber?.fxa_uid === "string") {
-    // Signed in
-    try {
-      const subscriber = await getSubscriberByFxaUid(token.subscriber?.fxa_uid);
-      const allBreaches = await getBreaches();
-      const breaches = await getAllEmailsAndBreaches(subscriber, allBreaches);
-      const successResponse = {
-        success: true,
-        breaches,
-      };
-      return NextResponse.json(successResponse);
-    } catch (e) {
-      logger.error(e);
-      return NextResponse.json({ success: false }, { status: 500 });
-    }
-  } else {
-    return NextResponse.json({ success: false }, { status: 401 });
-  }
-}
-
 export async function PUT(req: NextRequest) {
   const token = await getToken({ req });
   if (typeof token?.subscriber?.fxa_uid === "string") {

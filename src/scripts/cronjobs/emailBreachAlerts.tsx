@@ -22,7 +22,7 @@ import {
   addEmailNotification,
   markEmailAsNotified,
 } from "../../db/tables/email_notifications";
-import { initEmail, sendEmail } from "../../utils/email";
+import { initEmail, sendEmail, closeEmailPool } from "../../utils/email";
 
 import {
   getAddressesAndLanguageForEmail,
@@ -427,6 +427,7 @@ if (process.env.NODE_ENV !== "test") {
       await knexSubscribers.destroy();
       await knexEmailAddresses.destroy();
       await knexHibp.destroy();
+      closeEmailPool();
       Sentry.captureCheckIn({
         checkInId,
         monitorSlug: SENTRY_SLUG,

@@ -8,7 +8,7 @@ landing-all-hero-lead = Tarkistamme tietovuodot havaitaksemme, ovatko tietosi vu
 landing-all-hero-emailform-input-placeholder = nimi@example.com
 landing-all-hero-emailform-input-label = Syötä sähköpostiosoitteesi tarkistaaksesi mahdolliset tietovuodot.
 landing-all-hero-emailform-submit-label = Hanki ilmainen tarkistus
-landing-all-hero-emailform-submit-sign-in-label = Kirjaudu sisään saadaksesi ilmaisen tarkistuksen
+landing-all-hero-emailform-submit-sign-up-label = Rekisteröidy saadaksesi ilmaisen skannauksen
 # This is a label underneath a big number "14" - it's an image that demos Monitor.
 landing-all-hero-image-chart-label = vuotoa
 

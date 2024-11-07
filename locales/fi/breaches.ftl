@@ -2,20 +2,16 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-breach-all-meta-title = { -brand-fx-monitor } - Kaikki tietovuodot
+breach-all-meta-page-title = Tietovuotojen tietokanta — { -brand-fx-monitor }
 breach-all-meta-social-title = Kaikki { -brand-fx-monitor }in havaitsemat tietovuodot
 breach-all-meta-social-description = Selaa täydellistä luetteloa { -brand-fx-monitor }in havaitsemista tietovuodoista, ja selvitä sitten, paljastuivatko tietosi.
-
+# Variables:
+#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
+breach-detail-meta-page-title = Organisaation { $company } tietovuoto – { -brand-fx-monitor }
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-social-title = Vaikuttiko yritykseen { $company } kohdistunut tietovuoto sinuun?
 breach-detail-meta-social-description = Käytä { -brand-fx-monitor }ia selvittääksesi, paljastuiko henkilökohtaisia tietojasi tämän tietovuodon yhteydessä, ja ymmärrä, mitä tehdä seuraavaksi.
-
-## Breaches header
-
-## Breaches resolved filter
-
-## Breaches table
 
 ## Links that we might refer to when prompting the user to make changes after a breach
 
@@ -26,7 +22,6 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 ## Prompts the user for changes when there is a breach detected of password
 
 breach-checklist-pw-header-text = Päivitä salasanasi ja ota käyttöön kaksivaiheinen todennus (2FA).
-
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
@@ -95,7 +90,6 @@ breach-checklist-phone-header-2 = Suojaa puhelinnumerosi maskipalvelulla, kuten 
 ## Prompts the user for changes when there is a breach detected of security questions
 
 breach-checklist-sq-header-text = Päivitä turvallisuuskysymyksesi.
-
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 breach-checklist-sq-body-text = Useimmissa tapauksissa suosittelemme, että päivität turvakysymyksesi yrityksen verkkosivustolla. Mutta <b>yrityksen verkkosivusto saattaa olla poissa käytöstä tai sisältää haitallista sisältöä</b>, joten ole varovainen, jos <breached-company-link>vierailet sivustolla</breached-company-link>. Saat lisää suojaa päivittämällä nämä turvakysymykset kaikilla tileillä, joilla olet käyttänyt samoja turvallisuuskysymyksiä, ja luomalla yksilölliset salasanat kaikille tileille.
 
