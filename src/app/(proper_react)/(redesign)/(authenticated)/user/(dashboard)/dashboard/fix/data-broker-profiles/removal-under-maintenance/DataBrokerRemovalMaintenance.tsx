@@ -1,0 +1,310 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+"use client";
+
+import { OnerepScanResultRow } from "knex/types/tables";
+import { FeatureFlagName } from "../../../../../../../../../../db/tables/featureFlags";
+import { ExperimentData } from "../../../../../../../../../../telemetry/generated/nimbus/experiments";
+import { useL10n } from "../../../../../../../../../hooks/l10n";
+import { ExposureCardDataClassLayout } from "../../../../../../../../../components/client/exposure_card/ExposureCardDataClass";
+import { TelemetryLink } from "../../../../../../../../../components/client/TelemetryLink";
+import styles from "./DataBrokerRemovalMaintenance.module.scss";
+import React, { ReactNode } from "react";
+
+export type ScanResultCardProps = {
+  scanResult: OnerepScanResultRow;
+  locale: string;
+  resolutionCta: ReactNode;
+  isPremiumUser: boolean;
+  isExpanded: boolean;
+  isOnManualRemovePage?: boolean;
+  enabledFeatureFlags?: FeatureFlagName[];
+  experimentData?: ExperimentData;
+  removalTimeEstimate?: number;
+  onToggleExpanded: () => void;
+};
+
+export const ScanResultCard = (props: ScanResultCardProps) => {
+  const { scanResult, locale } = props;
+  const l10n = useL10n();
+  const dateFormatter = new Intl.DateTimeFormat(locale, {
+    // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#datestyle
+    dateStyle: "medium",
+  });
+  const exposureCategoriesArray: React.ReactElement[] = [];
+
+  // Scan Result Categories
+  if (scanResult.relatives.length > 0) {
+    exposureCategoriesArray.push(
+      <ExposureCardDataClassLayout
+        exposure={scanResult}
+        key="relatives"
+        dataBrokerDataType="relatives"
+        label={l10n.getString("exposure-card-family-members")}
+        count={scanResult.relatives.length}
+        isPremiumUser={props.isPremiumUser}
+      />,
+    );
+  }
+  if (scanResult.phones.length > 0) {
+    exposureCategoriesArray.push(
+      <ExposureCardDataClassLayout
+        exposure={scanResult}
+        key="phones"
+        dataBrokerDataType="phones"
+        label={l10n.getString("exposure-card-phone-number")}
+        count={scanResult.phones.length}
+        isPremiumUser={props.isPremiumUser}
+      />,
+    );
+  }
+  if (scanResult.emails.length > 0) {
+    exposureCategoriesArray.push(
+      <ExposureCardDataClassLayout
+        exposure={scanResult}
+        key="emails"
+        dataBrokerDataType="emails"
+        label={l10n.getString("exposure-card-email")}
+        count={scanResult.emails.length}
+        isPremiumUser={props.isPremiumUser}
+      />,
+    );
+  }
+  if (scanResult.addresses.length > 0) {
+    exposureCategoriesArray.push(
+      <ExposureCardDataClassLayout
+        exposure={scanResult}
+        key="addresses"
+        dataBrokerDataType="addresses"
+        label={l10n.getString("exposure-card-address")}
+        count={scanResult.addresses.length}
+        isPremiumUser={props.isPremiumUser}
+      />,
+    );
+  }
+  const COMPANY_NAME_MAX_CHARACTER_COUNT = 20;
+  const isCompanyNameTooLong =
+    scanResult.data_broker.length > COMPANY_NAME_MAX_CHARACTER_COUNT;
+
+  const dataBrokerProfileLink = (
+    <TelemetryLink
+      href={scanResult.link}
+      target="_blank"
+      eventData={{
+        link_id: `data_broker_${scanResult.id}`,
+      }}
+      showIcon
+    />
+  );
+
+  const upsellLink = (
+    <TelemetryLink
+      upsell
+      eventData={{
+        link_id: "clicked_upsell",
+      }}
+      href="/user/dashboard/fix/data-broker-profiles/automatic-remove"
+    />
+  );
+
+  const dataBrokerDescription = () => {
+    // Data broker cards manually resolved do not change their status to "removed";
+    // instead, we track them using the "manually_resolved" property.
+    if (scanResult.manually_resolved) {
+      return l10n.getFragment(
+        "exposure-card-description-info-for-sale-fixed-manually-fixed",
+        {
+          elems: {
+            data_broker_profile: dataBrokerProfileLink,
+          },
+        },
+      );
+    }
+
+    switch (scanResult.status) {
+      case "waiting_for_verification":
+        if (props.enabledFeatureFlags?.includes("AdditionalRemovalStatuses")) {
+          return l10n.getFragment(
+            "exposure-card-description-info-for-sale-requested-removal-dashboard",
+            {
+              elems: {
+                data_broker_profile: dataBrokerProfileLink,
+              },
+            },
+          );
+        }
+        return l10n.getFragment(
+          "exposure-card-description-info-for-sale-in-progress-dashboard",
+          {
+            elems: {
+              data_broker_profile: dataBrokerProfileLink,
+            },
+          },
+        );
+      case "optout_in_progress":
+        return l10n.getFragment(
+          "exposure-card-description-info-for-sale-in-progress-dashboard",
+          {
+            elems: {
+              data_broker_profile: dataBrokerProfileLink,
+            },
+          },
+        );
+      case "new":
+        /* c8 ignore start */
+        if (props.isOnManualRemovePage) {
+          return l10n.getFragment(
+            "exposure-card-description-info-for-sale-action-needed-manual-fix-page",
+            {
+              elems: {
+                data_broker_profile: dataBrokerProfileLink,
+              },
+            },
+          );
+        }
+        /* c8 ignore stop */
+        return l10n.getFragment(
+          "exposure-card-description-info-for-sale-action-needed-dashboard",
+          {
+            elems: {
+              data_broker_profile: dataBrokerProfileLink,
+              upsell_link: upsellLink,
+            },
+          },
+        );
+      case "removed":
+        return l10n.getFragment(
+          "exposure-card-description-info-for-sale-fixed",
+          {
+            elems: {
+              data_broker_profile: dataBrokerProfileLink,
+            },
+          },
+        );
+      case "removal_under_maintenance":
+        return l10n.getFragment(
+          "exposure-card-description-info-for-sale-manual-removal-needed",
+          {
+            elems: {
+              b: <b />,
+            },
+          },
+        );
+    }
+  };
+
+  let removalEstimateTimeLabel = l10n.getString(
+    "dashboard-exposures-filter-exposure-removal-time-label-unknown",
+  );
+  if (typeof props.removalTimeEstimate !== "undefined") {
+    const removalTimeEstimateRangeMarkers = [180, 90, 60, 13, 7];
+    const removalTimeLabelId =
+      removalTimeEstimateRangeMarkers.findLast(
+        (rangeMarker) => (props.removalTimeEstimate as number) <= rangeMarker,
+      ) ?? "other";
+    removalEstimateTimeLabel = l10n.getString(
+      `dashboard-exposures-filter-exposure-removal-time-label-${removalTimeLabelId}`,
+    );
+  }
+
+  const exposureCard = (
+    <div aria-label={props.scanResult.data_broker}>
+      <div className={styles.exposureCard}>
+        <div className={styles.exposureHeader}>
+          <dl className={styles.exposureHeaderList}>
+            <dt className={`${styles.hideOnMobile} ${styles.visuallyHidden}`}>
+              {l10n.getString("exposure-card-label-company-logo")}
+            </dt>
+            <dd
+              className={`${styles.hideOnMobile} ${styles.exposureImageWrapper}`}
+            ></dd>
+            <dt className={styles.visuallyHidden}>
+              {l10n.getString("exposure-card-label-company")}
+            </dt>
+            <dd>
+              <span
+                className={`${styles.exposureCompanyTitle} ${
+                  styles.companyNameArea
+                }
+                ${isCompanyNameTooLong ? styles.makeFontSmaller : ""}`}
+              >
+                {scanResult.data_broker}
+              </span>
+            </dd>
+            <dt className={`${styles.hideOnMobile} ${styles.visuallyHidden}`}>
+              {l10n.getString("exposure-card-exposure-type")}
+            </dt>
+            <dd className={styles.hideOnMobile}>
+              {l10n.getString("exposure-card-exposure-type-data-broker")}
+            </dd>
+            <dt className={`${styles.hideOnMobile} ${styles.visuallyHidden}`}>
+              {l10n.getString("exposure-card-date-found")}
+            </dt>
+            <dd className={styles.hideOnMobile}>
+              {dateFormatter.format(scanResult.created_at)}
+            </dd>
+            {props.isPremiumUser &&
+              props.enabledFeatureFlags?.includes(
+                "DataBrokerRemovalTimeEstimateLabel",
+              ) &&
+              props.experimentData?.["data-broker-removal-time-estimates"]
+                .enabled && (
+                <>
+                  <dt
+                    className={`${styles.hideOnMobile} ${styles.visuallyHidden}`}
+                  >
+                    {l10n.getString(
+                      "dashboard-exposures-filter-exposure-removal-time-title",
+                    )}
+                  </dt>
+                  <dd className={styles.hideOnMobile}>
+                    {removalEstimateTimeLabel}
+                  </dd>
+                </>
+              )}
+            <dt className={styles.visuallyHidden}>
+              {l10n.getString("exposure-card-label-status")}
+            </dt>
+          </dl>
+        </div>
+        <div
+          className={`${styles.exposureDetailsSection} ${
+            props.isExpanded ? styles.isOpen : ""
+          }`}
+        >
+          <div className={styles.exposureDetailsTopDescription}>
+            <p>{dataBrokerDescription()}</p>
+            {
+              // Verifying the status for automatically removed data brokers v. manually resolved are handled differently
+              (props.scanResult.status === "new" ||
+                props.scanResult.status === "removal_under_maintenance") &&
+              !props.scanResult.manually_resolved ? (
+                <span className={styles.fixItBtn}>{props.resolutionCta}</span>
+              ) : null
+            }
+          </div>
+          <div className={styles.exposureDetailsContent}>
+            <div className={styles.exposedInfoContainer}>
+              <div className={styles.exposuredInfoSection}>
+                <p className={styles.exposedInfoTitle}>
+                  {l10n.getString("exposure-card-found-the-following-data")}
+                </p>
+                <div className={styles.exposedInfoWrapper}>
+                  <div className={styles.dataClassesList}>
+                    {exposureCategoriesArray.map((item) => (
+                      <React.Fragment key={item.key}>{item}</React.Fragment>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
+  return exposureCard;
+};

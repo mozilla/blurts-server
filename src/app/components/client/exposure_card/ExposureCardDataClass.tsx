@@ -56,7 +56,6 @@ const PremiumDataClassDetails = (props: PremiumDataClassDetailsProps) => {
 
 type ExposureCardDataClassLayoutProps = {
   exposure: Exposure;
-  icon: ReactElement;
   label: string;
   count: number;
   isPremiumUser?: boolean;
