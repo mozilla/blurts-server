@@ -8,13 +8,7 @@ import React, { ReactNode, useId } from "react";
 import { OnerepScanResultRow } from "knex/types/tables";
 import styles from "./ExposureCard.module.scss";
 import { StatusPill } from "../../server/StatusPill";
-import {
-  ChevronDown,
-  EmailIcon,
-  LocationPinIcon,
-  MultipleUsersIcon,
-  PhoneIcon,
-} from "../../server/Icons";
+import { ChevronDown } from "../../server/Icons";
 import { useL10n } from "../../../hooks/l10n";
 import { ExposureCardDataClassLayout } from "./ExposureCardDataClass";
 import { DataBrokerImage } from "./DataBrokerImage";
@@ -52,7 +46,6 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
         exposure={scanResult}
         key="relatives"
         dataBrokerDataType="relatives"
-        icon={<MultipleUsersIcon alt="" width="13" height="13" />}
         label={l10n.getString("exposure-card-family-members")}
         count={scanResult.relatives.length}
         isPremiumUser={props.isPremiumUser}
@@ -65,7 +58,6 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
         exposure={scanResult}
         key="phones"
         dataBrokerDataType="phones"
-        icon={<PhoneIcon alt="" width="13" height="13" />}
         label={l10n.getString("exposure-card-phone-number")}
         count={scanResult.phones.length}
         isPremiumUser={props.isPremiumUser}
@@ -78,7 +70,6 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
         exposure={scanResult}
         key="emails"
         dataBrokerDataType="emails"
-        icon={<EmailIcon alt="" width="13" height="13" />}
         label={l10n.getString("exposure-card-email")}
         count={scanResult.emails.length}
         isPremiumUser={props.isPremiumUser}
@@ -91,7 +82,6 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
         exposure={scanResult}
         key="addresses"
         dataBrokerDataType="addresses"
-        icon={<LocationPinIcon alt="" width="13" height="13" />}
         label={l10n.getString("exposure-card-address")}
         count={scanResult.addresses.length}
         isPremiumUser={props.isPremiumUser}

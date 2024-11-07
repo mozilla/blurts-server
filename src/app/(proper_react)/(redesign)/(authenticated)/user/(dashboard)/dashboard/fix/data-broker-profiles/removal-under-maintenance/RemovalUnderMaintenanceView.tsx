@@ -5,12 +5,12 @@
 "use client";
 
 import { OnerepScanResultRow } from "knex/types/tables";
-import { ScanResultCard } from "../../../../../../../../../components/client/exposure_card/ScanResultCard";
 import {
   StepDeterminationData,
   getNextGuidedStep,
 } from "../../../../../../../../../functions/server/getRelevantGuidedSteps";
 import { FixView } from "../../FixView";
+import { DataBrokerRemovalMaintenance } from "./DataBrokerRemovalMaintenance";
 
 export type Props = {
   data: OnerepScanResultRow[];
@@ -33,7 +33,7 @@ export const RemovalUnderMaintenanceView = (props: Props) => {
       data={props.stepDeterminationData}
     >
       <div>Test</div>
-      <ScanResultCard
+      <DataBrokerRemovalMaintenance
         scanResult={testScanItem[0]}
         locale={"en"}
         resolutionCta={undefined}

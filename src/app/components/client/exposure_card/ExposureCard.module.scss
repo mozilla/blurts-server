@@ -220,59 +220,6 @@
           gap: $spacing-lg;
         }
       }
-
-      .dataClassesList {
-        justify-content: space-between;
-        margin-left: 0;
-        padding-left: 0;
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-row-gap: $spacing-sm;
-
-        @media screen and (min-width: $screen-md) {
-          grid-template-columns: 1fr 1fr 1fr;
-          gap: $spacing-sm;
-        }
-
-        @media screen and (min-width: $screen-lg) {
-          display: flex;
-          flex-direction: row;
-          align-items: flex-start;
-          gap: $layout-xs;
-          flex-wrap: wrap;
-          justify-content: flex-start;
-        }
-
-        .detailsFoundItem {
-          .label {
-            display: flex;
-            align-items: center;
-            gap: $spacing-xs;
-            font-weight: 700;
-
-            .exposureTypeIcon {
-              color: $color-purple-60;
-            }
-          }
-
-          .dataClassListDetailsWrapper {
-            padding-inline-start: var(--exposureDetailsIconWidth);
-
-            .dataClassListDetails {
-              list-style: none;
-              margin: 0;
-              padding: $spacing-sm 0 0 0;
-              gap: $spacing-xs;
-              display: flex;
-              flex-direction: column;
-
-              li {
-                list-style-type: none;
-              }
-            }
-          }
-        }
-      }
     }
   }
 }

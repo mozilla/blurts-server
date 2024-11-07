@@ -6,123 +6,10 @@
   border: 2px solid rgba($color-purple-70, 0.2);
   border-radius: $border-radius-md;
 
-  .exposureHeader {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: calc($spacing-md * 1.25) $spacing-md;
-    gap: $layout-xs;
-
-    .chevron {
-      flex-shrink: 0;
-      background-color: transparent;
-      border-style: none;
-      padding: 0;
-      cursor: pointer;
-      color: rgba($color-purple-70, 0.7);
-      width: 15px; // size of the chevron on mobile
-      height: 20px; // height of down chevron
-
-      @media screen and (min-width: $screen-md) {
-        width: 20px; // size of the chevron on larger devices
-      }
-
-      .isOpen {
-        transition: transform 0.2s ease-out;
-        rotate: (180deg);
-      }
-    }
-  }
-
-  dl.exposureHeaderList {
-    display: flex;
-    align-items: center;
-    padding-left: 0;
-    margin: 0;
-    width: 100%;
-    justify-content: space-between;
-    height: 30px; // fixed height to standardize image/icon heights
-
-    .hideOnMobile {
-      display: none;
-
-      @media screen and (min-width: $screen-lg) {
-        display: block;
-      }
-    }
-
-    @media screen and (min-width: $screen-lg) {
-      gap: $layout-sm;
-    }
-
-    .dataBrokerLogo {
-      object-fit: contain;
-    }
-
-    .fallbackLogo {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 35px;
-      height: 35px;
-      border-radius: 50px;
-      color: black;
-      font: $text-title-3xs;
-    }
-
-    dd {
-      display: flex;
-      align-items: center;
-
-      .exposureCompanyTitle {
-        font: $text-body-sm;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        white-space: nowrap;
-
-        @media screen and (max-width: $screen-sm) {
-          &.makeFontSmaller {
-            font: $text-body-2xs;
-          }
-        }
-      }
-
-      .exposureImageWrapper {
-        .exposureImage {
-          height: 100%;
-        }
-      }
-
-      @media screen and (min-width: $screen-lg) {
-        &.exposureImageWrapper {
-          flex: 0.2 0 $width-first-column-filter-bar;
-        }
-      }
-
-      @media screen and (min-width: $screen-xl) {
-        flex: 1 1 0%;
-
-        &.hideOnMobile {
-          display: flex;
-        }
-      }
-    }
-  }
-
-  .exposureBreachLink {
-    align-items: center;
-    color: $color-blue-50;
-    display: inline-flex;
-    gap: 0.25em;
-  }
-
   .exposureDetailsSection {
     margin: 0;
     overflow: hidden;
     padding: 0 $layout-md;
-    height: 0;
-    display: none;
 
     .exposureDetailsTopDescription {
       display: flex;
@@ -146,8 +33,6 @@
 
     .exposureDetailsContent {
       margin-top: $layout-xs;
-      background: $color-grey-05;
-      padding: $spacing-md $spacing-lg;
       border-radius: $border-radius-md;
     }
 
@@ -157,18 +42,6 @@
       svg {
         display: inline;
         margin: 0 $spacing-xs;
-      }
-    }
-
-    &.isOpen {
-      border-top: 2px solid rgba($color-purple-70, 0.2);
-      overflow: auto;
-      height: auto;
-      display: block;
-      padding: $spacing-lg;
-
-      @media screen and (min-width: $screen-lg) {
-        padding: $spacing-xl $layout-xl;
       }
     }
 
@@ -241,36 +114,6 @@
           gap: $layout-xs;
           flex-wrap: wrap;
           justify-content: flex-start;
-        }
-
-        .detailsFoundItem {
-          .label {
-            display: flex;
-            align-items: center;
-            gap: $spacing-xs;
-            font-weight: 700;
-
-            .exposureTypeIcon {
-              color: $color-purple-60;
-            }
-          }
-
-          .dataClassListDetailsWrapper {
-            padding-inline-start: var(--exposureDetailsIconWidth);
-
-            .dataClassListDetails {
-              list-style: none;
-              margin: 0;
-              padding: $spacing-sm 0 0 0;
-              gap: $spacing-xs;
-              display: flex;
-              flex-direction: column;
-
-              li {
-                list-style-type: none;
-              }
-            }
-          }
         }
       }
     }
