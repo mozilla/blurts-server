@@ -14,6 +14,7 @@ import { getSignupLocaleCountry } from "../../functions/getSignupLocaleCountry";
 import { HeaderStyles, MetaTags } from "../HeaderStyles";
 import { SanitizedSubscriberRow } from "../../../app/functions/server/sanitize";
 import { sumSanitizedDataPoints } from "../../functions/reduceSanitizedDataPoints";
+import { modifyAttributionsForUrl } from "../../../app/functions/universal/attributions";
 
 export type MonthlyActivityFreeEmailProps = {
   l10n: ExtendedReactLocalization;
@@ -22,11 +23,19 @@ export type MonthlyActivityFreeEmailProps = {
   unsubscribeLink: string;
 };
 
+type UtmParams = {
+  utmSource: string;
+  utmCampaign: string;
+  utmMedium: string;
+  utmContent: string;
+};
+
 export const MonthlyActivityFreeEmail = (
   props: MonthlyActivityFreeEmailProps,
 ) => {
   const hasRunFreeScan = typeof props.subscriber.onerep_profile_id === "number";
-  const scanOrUpgradeCtaUtm = {
+
+  const scanOrUpgradeCtaUtm: UtmParams = {
     utmSource: "monitor-product",
     utmCampaign: hasRunFreeScan
       ? "monthly-report-free-us-scanned"
@@ -40,33 +49,34 @@ export const MonthlyActivityFreeEmail = (
   const l10n = props.l10n;
   const assumedCountryCode = getSignupLocaleCountry(props.subscriber);
 
-  const premiumSubscriptionUrlObject = new URL(
-    getPremiumSubscriptionUrl({
-      type: "yearly",
-    }),
+  const replaceValues = {
+    utm_source: scanOrUpgradeCtaUtm.utmSource,
+    utm_medium: scanOrUpgradeCtaUtm.utmMedium,
+    utm_campaign: scanOrUpgradeCtaUtm.utmCampaign,
+    utm_content: scanOrUpgradeCtaUtm.utmContent,
+  };
+
+  const premiumSubscriptionUrlObject = modifyAttributionsForUrl(
+    getPremiumSubscriptionUrl({ type: "yearly" }),
+    replaceValues,
+    {},
   );
-  premiumSubscriptionUrlObject.searchParams.set(
-    "utm_source",
-    scanOrUpgradeCtaUtm.utmSource,
+
+  const unlockWithMonitorPlusCta = modifyAttributionsForUrl(
+    getPremiumSubscriptionUrl({ type: "yearly" }),
+    {
+      ...replaceValues,
+      utm_content: "unlock-with-monitor-plus",
+    },
+    {},
   );
-  premiumSubscriptionUrlObject.searchParams.set(
-    "utm_medium",
-    scanOrUpgradeCtaUtm.utmMedium,
-  );
-  premiumSubscriptionUrlObject.searchParams.set(
-    "utm_campaign",
-    scanOrUpgradeCtaUtm.utmCampaign,
-  );
-  premiumSubscriptionUrlObject.searchParams.set(
-    "utm_content",
-    scanOrUpgradeCtaUtm.utmContent,
-  );
+
   const scanOrUpgradeBannerDataCta = {
     label: hasRunFreeScan
       ? l10n.getString("email-monthly-report-free-banner-cta-upgrade")
       : l10n.getString("email-monthly-report-free-banner-cta-free-scan"),
     link: hasRunFreeScan
-      ? premiumSubscriptionUrlObject.href
+      ? premiumSubscriptionUrlObject
       : `${process.env.SERVER_URL}/user/dashboard/?utm_source=${scanOrUpgradeCtaUtm.utmSource}&utm_medium=${scanOrUpgradeCtaUtm.utmMedium}&utm_campaign=${scanOrUpgradeCtaUtm.utmCampaign}&utm_content=${scanOrUpgradeCtaUtm.utmContent}`,
   };
   const purpleActiveColor = "#7542E5";
@@ -245,7 +255,7 @@ export const MonthlyActivityFreeEmail = (
               <mj-group width="100%">
                 <mj-column>
                   <mj-button
-                    href={premiumSubscriptionUrlObject.href}
+                    href={unlockWithMonitorPlusCta}
                     background-color="transparent"
                     color="#0060DF"
                     text-decoration="underline"
