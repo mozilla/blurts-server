@@ -24,6 +24,7 @@ async function upsertDataBrokers(
           data_broker: dataBroker,
           status,
           url,
+          updated_at: knex.fn.now(),
         })),
       )
       .onConflict("data_broker")
