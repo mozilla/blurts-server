@@ -10,7 +10,7 @@ const knex = createDbConnection();
 
 async function upsertDataBrokers(
   databrokers: Array<{
-    dataBroker: string;
+    data_broker: string;
     status: string;
     url: string;
   }>,
@@ -20,8 +20,8 @@ async function upsertDataBrokers(
   try {
     const res = await knex("onerep_data_brokers")
       .insert(
-        databrokers.map(({ dataBroker, status, url }) => ({
-          data_broker: dataBroker,
+        databrokers.map(({ data_broker, status, url }) => ({
+          data_broker,
           status,
           url,
           updated_at: knex.fn.now(),
