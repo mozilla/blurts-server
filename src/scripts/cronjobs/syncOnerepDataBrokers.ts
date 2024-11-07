@@ -6,7 +6,7 @@
  * Fetches the list of data brokers and their statuses from OneRep, sync database with the latest data brokers list
  *
  * Usage:
- * node src/scripts/syncOnerepDataBrokers.ts
+ * node src/scripts/syncOnerepDataBrokers.js
  */
 
 import Sentry from "@sentry/nextjs";
@@ -35,12 +35,7 @@ const dataBrokersResponse = await getAllDataBrokers();
 console.log("Data brokers found: ", dataBrokersResponse.length);
 
 const insertedBrokers = await upsertDataBrokers(dataBrokersResponse);
-
-// get
-// const result = await getAllBreaches();
-// console.log("Number of breaches in the database after upsert:", result.length);
-
-// try to refresh Redis cache of all breaches
+// try to refresh Redis cache of all data brokers
 try {
   const rClient = redisClient();
   await rClient.set(
