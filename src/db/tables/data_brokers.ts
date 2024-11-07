@@ -8,27 +8,34 @@ import { DataBrokerRow } from "../../knex-tables";
 
 const knex = createDbConnection();
 
-async function addDataBroker(
-  dataBroker: string,
-  status: string,
-  url: string,
-): Promise<DataBrokerRow | undefined> {
-  logger.info("addDataBroker", { dataBroker, status, url });
+async function upsertDataBrokers(
+  databrokers: Array<{
+    dataBroker: string;
+    status: string;
+    url: string;
+  }>,
+): Promise<DataBrokerRow[]> {
+  logger.info("upsert_data_brokers", { count: databrokers.length });
 
-  let res;
   try {
-    res = await knex("onerep_data_brokers")
-      .insert({
-        data_broker: dataBroker,
-        status,
-        url,
-      })
+    const res = await knex("onerep_data_brokers")
+      .insert(
+        databrokers.map(({ dataBroker, status, url }) => ({
+          data_broker: dataBroker,
+          status,
+          url,
+        })),
+      )
+      .onConflict("data_broker")
+      .merge(["status", "url"])
       .returning("*");
+
+    logger.info("upsert_data_brokers_success", { count: res.length });
+    return res;
   } catch (e) {
-    logger.error("could_not_add_data_broker", { error: JSON.stringify(e) });
+    logger.error("upsert_data_brokers_error", { error: JSON.stringify(e) });
     throw e;
   }
-  return res?.[0];
 }
 
-export { addDataBroker };
+export { upsertDataBrokers };
