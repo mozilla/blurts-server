@@ -6,8 +6,7 @@
   background-color: $color-white;
   border: 2px solid rgba($color-purple-70, 0.2);
   border-radius: $border-radius-lg;
-  padding: $layout-md;
-  gap: $spacing-lg;
+  padding: $layout-sm $layout-sm $layout-xs $layout-sm;
 
   .dataClassesList {
     justify-content: space-between;
@@ -32,7 +31,15 @@
   }
 
   .buttonsWrapper {
+    margin-top: $spacing-lg;
+    border-top: 2px solid $color-grey-10;
+    padding-top: $spacing-lg;
     display: flex;
     gap: $spacing-sm;
+  }
+
+  .estimatedTime {
+    @include estimated-time;
+    padding-top: $spacing-sm;
   }
 }

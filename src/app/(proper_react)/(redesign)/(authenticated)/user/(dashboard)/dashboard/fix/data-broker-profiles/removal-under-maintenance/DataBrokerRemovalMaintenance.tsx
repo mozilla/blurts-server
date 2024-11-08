@@ -12,6 +12,7 @@ import { ExposureCardDataClassLayout } from "../../../../../../../../../componen
 import styles from "./DataBrokerRemovalMaintenance.module.scss";
 import React, { ReactNode } from "react";
 import { TelemetryButton } from "../../../../../../../../../components/client/TelemetryButton";
+import { ClockIcon } from "../../../../../../../../../components/server/Icons";
 
 export type ScanResultCardProps = {
   scanResult: OnerepScanResultRow;
@@ -123,6 +124,12 @@ export const DataBrokerRemovalMaintenance = (props: ScanResultCardProps) => {
             "data-broker-removal-maintenance-cta-mark-as-resolved",
           )}
         </TelemetryButton>
+      </div>
+      <div className={styles.estimatedTime}>
+        <ClockIcon width="15" height="15" alt="" />
+        {l10n.getString("data-broker-removal-maintenance-estimated-time", {
+          range: "5 - 10",
+        })}
       </div>
     </div>
   );
