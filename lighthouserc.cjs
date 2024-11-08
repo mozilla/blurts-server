@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-const pages = ["/"];
+const pages = ["/", "/breaches"];
 
 const collectBaseUrl =
   process.env.LIGHTHOUSE_COLLECT_URL ?? "http://localhost:3000";
@@ -13,7 +13,7 @@ const lighthouseConfig = {
     collect: {
       startServerCommand: isLocalhost && "npm run start",
       url: pages.map((pathname) => `${collectBaseUrl}${pathname}`),
-      numberOfRuns: 1,
+      numberOfRuns: 3,
     },
     upload: {
       target: "filesystem",
