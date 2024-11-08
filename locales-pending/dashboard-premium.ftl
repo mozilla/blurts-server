@@ -207,6 +207,12 @@ exposure-card-description-info-for-sale-fixed = As a { -brand-monitor-plus } mem
 exposure-card-description-info-for-sale-fixed-manually-fixed =  You marked this profile as fixed. Be sure you’ve followed all instructions on <data_broker_profile>the site</data_broker_profile> to ensure they remove your personal info.
 exposure-card-description-info-for-sale-manual-removal-needed = We’ve asked this data broker to remove your profile but they haven’t done it. To start the process sooner, we can guide you step-by-step to manually remove your profile and resolve any exposures. Select <b>Resolve exposures</b> to get started.
 
+## Manual Removal Data Broker
+
+# Variables:
+# $data_broker_name is the name of the data broker under removal maintenance
+data-broker-removal-maintenance-header = Monitor found this profile on <link_to_data_broker>{ $data_broker_name }</link_to_data_broker>.
+
 ## CSAT survey banner for subscribers
 
 survey-csat-question = How satisfied are you with your { -brand-mozilla-monitor } experience?
