@@ -11,6 +11,7 @@ import { useL10n } from "../../../../../../../../../hooks/l10n";
 import { ExposureCardDataClassLayout } from "../../../../../../../../../components/client/exposure_card/ExposureCardDataClass";
 import styles from "./DataBrokerRemovalMaintenance.module.scss";
 import React, { ReactNode } from "react";
+import { TelemetryLink } from "../../../../../../../../../components/client/TelemetryLink";
 
 export type ScanResultCardProps = {
   scanResult: OnerepScanResultRow;
@@ -82,22 +83,33 @@ export const DataBrokerRemovalMaintenance = (props: ScanResultCardProps) => {
   }
 
   const exposureCard = (
-    <div aria-label={props.scanResult.data_broker}>
+    <div
+      className={styles.exposureCardWrapper}
+      aria-label={props.scanResult.data_broker}
+    >
+      <p className={styles.header}>
+        {l10n.getFragment("data-broker-removal-maintenance-header", {
+          elems: {
+            link_to_data_broker: (
+              <TelemetryLink
+                href={props.scanResult.link}
+                target="_blank"
+                eventData={{
+                  link_id: `go_to_${props.scanResult.data_broker}_link`,
+                }}
+              />
+            ),
+          },
+          vars: {
+            data_broker_name: props.scanResult.data_broker,
+          },
+        })}
+      </p>
       <div className={styles.exposureCard}>
-        <div className={styles.exposureDetailsSection}>
-          <div className={styles.exposureDetailsContent}>
-            <div className={styles.exposedInfoContainer}>
-              <div className={styles.exposuredInfoSection}>
-                <div className={styles.exposedInfoWrapper}>
-                  <div className={styles.dataClassesList}>
-                    {exposureCategoriesArray.map((item) => (
-                      <React.Fragment key={item.key}>{item}</React.Fragment>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div className={styles.dataClassesList}>
+          {exposureCategoriesArray.map((item) => (
+            <React.Fragment key={item.key}>{item}</React.Fragment>
+          ))}
         </div>
       </div>
     </div>

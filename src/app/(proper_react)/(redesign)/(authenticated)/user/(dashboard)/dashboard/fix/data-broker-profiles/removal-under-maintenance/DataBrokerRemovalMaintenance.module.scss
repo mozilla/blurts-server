@@ -1,129 +1,38 @@
 @import "../../../../../../../../../tokens";
 
-.exposureCard {
-  font: $text-body-sm;
-  background-color: $color-white;
-  border: 2px solid rgba($color-purple-70, 0.2);
-  border-radius: $border-radius-md;
+.exposureCardWrapper {
+  .header {
+    font: $text-body-lg;
+    font-weight: 600;
+  }
 
-  .exposureDetailsSection {
-    margin: 0;
-    overflow: hidden;
-    padding: 0 $layout-md;
+  .exposureCard {
+    font: $text-body-sm;
+    background-color: $color-white;
+    border: 2px solid rgba($color-purple-70, 0.2);
+    border-radius: $border-radius-lg;
 
-    .exposureDetailsTopDescription {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: $layout-xs;
-
-      @media screen and (min-width: $screen-sm) {
-        flex-direction: row;
-        justify-content: space-between;
-      }
+    .dataClassesList {
+      padding: $spacing-lg;
+      justify-content: space-between;
+      margin-left: 0;
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-row-gap: $spacing-sm;
 
       @media screen and (min-width: $screen-md) {
-        gap: $layout-xl;
-      }
-
-      span {
-        flex: 0 0 auto;
-      }
-    }
-
-    .exposureDetailsContent {
-      margin-top: $layout-xs;
-      border-radius: $border-radius-md;
-    }
-
-    .openInNewTab {
-      color: $color-blue-50;
-
-      svg {
-        display: inline;
-        margin: 0 $spacing-xs;
-      }
-    }
-
-    .exposedInfoContainer {
-      display: flex;
-      flex-direction: column;
-      gap: $layout-xs;
-
-      .exposuredInfoSection {
-        display: flex;
-        flex-direction: column;
-        gap: $spacing-md;
-      }
-
-      .exposedInfoWrapper {
-        display: flex;
-        flex-direction: column;
-        gap: $spacing-md;
-
-        @media screen and (min-width: $screen-lg) {
-          flex: 1 1 0;
-
-          .fixItBtn {
-            flex-shrink: 0;
-          }
-        }
-
-        .exposedInfoTitle {
-          align-self: start;
-
-          @media screen and (min-width: $screen-lg) {
-            flex: 0 0 90px; // fix width of categories title
-          }
-
-          @media screen and (min-width: $screen-xl) {
-            flex: 0 0 150px;
-          }
-        }
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: $spacing-sm;
       }
 
       @media screen and (min-width: $screen-lg) {
+        display: flex;
         flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        gap: $layout-md;
-
-        .exposedInfoWrapper {
-          flex-direction: row;
-          gap: $spacing-lg;
-        }
-      }
-
-      .dataClassesList {
-        justify-content: space-between;
-        margin-left: 0;
-        padding-left: 0;
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-row-gap: $spacing-sm;
-
-        @media screen and (min-width: $screen-md) {
-          grid-template-columns: 1fr 1fr 1fr;
-          gap: $spacing-sm;
-        }
-
-        @media screen and (min-width: $screen-lg) {
-          display: flex;
-          flex-direction: row;
-          align-items: flex-start;
-          gap: $layout-xs;
-          flex-wrap: wrap;
-          justify-content: flex-start;
-        }
+        align-items: flex-start;
+        gap: $layout-xs;
+        flex-wrap: wrap;
+        justify-content: flex-start;
       }
     }
   }
-}
-
-.visuallyHidden {
-  @include visually-hidden;
-}
-
-.companyNameArea {
-  @include company-name-area;
 }
