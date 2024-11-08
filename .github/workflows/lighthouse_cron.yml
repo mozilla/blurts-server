@@ -14,13 +14,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20.9.x
-      - name: npm install
-        run: |
-          npm install
-      - name: npm run build
-        run: |
-          npm run build
-      - name: run Lighthouse CI
+      - name: Run Lighthouse CI
         run: |
           npm install -g @lhci/cli@0.14.x
-          npm run lighthouse -- --upload.target=temporary-public-storage
+          npm run lighthouse
+        env:
+          LIGHTHOUSE_COLLECT_URL: "https://stage.firefoxmonitor.nonprod.cloudops.mozgcp.net"
