@@ -11,7 +11,7 @@ import { useL10n } from "../../../../../../../../../hooks/l10n";
 import { ExposureCardDataClassLayout } from "../../../../../../../../../components/client/exposure_card/ExposureCardDataClass";
 import styles from "./DataBrokerRemovalMaintenance.module.scss";
 import React, { ReactNode } from "react";
-import { TelemetryLink } from "../../../../../../../../../components/client/TelemetryLink";
+import { TelemetryButton } from "../../../../../../../../../components/client/TelemetryButton";
 
 export type ScanResultCardProps = {
   scanResult: OnerepScanResultRow;
@@ -84,33 +84,45 @@ export const DataBrokerRemovalMaintenance = (props: ScanResultCardProps) => {
 
   const exposureCard = (
     <div
-      className={styles.exposureCardWrapper}
+      className={styles.exposureCard}
       aria-label={props.scanResult.data_broker}
     >
-      <p className={styles.header}>
-        {l10n.getFragment("data-broker-removal-maintenance-header", {
-          elems: {
-            link_to_data_broker: (
-              <TelemetryLink
-                href={props.scanResult.link}
-                target="_blank"
-                eventData={{
-                  link_id: `go_to_${props.scanResult.data_broker}_link`,
-                }}
-              />
-            ),
-          },
-          vars: {
-            data_broker_name: props.scanResult.data_broker,
-          },
-        })}
-      </p>
-      <div className={styles.exposureCard}>
-        <div className={styles.dataClassesList}>
-          {exposureCategoriesArray.map((item) => (
-            <React.Fragment key={item.key}>{item}</React.Fragment>
-          ))}
-        </div>
+      <div className={styles.dataClassesList}>
+        {exposureCategoriesArray.map((item) => (
+          <React.Fragment key={item.key}>{item}</React.Fragment>
+        ))}
+      </div>
+      <div className={styles.buttonsWrapper}>
+        <TelemetryButton
+          variant="primary"
+          href={props.scanResult.link}
+          event={{
+            module: "ctaButton",
+            name: "click",
+            data: {
+              button_id: `go_to_${props.scanResult.data_broker}_link_to_get_started`,
+            },
+          }}
+        >
+          {l10n.getString(
+            "data-broker-removal-maintenance-cta-go-to-data-broker",
+          )}
+        </TelemetryButton>
+        <TelemetryButton
+          variant="secondary"
+          href={props.scanResult.link}
+          event={{
+            module: "ctaButton",
+            name: "click",
+            data: {
+              button_id: `data_broker_removal_mark_as_resolved`,
+            },
+          }}
+        >
+          {l10n.getString(
+            "data-broker-removal-maintenance-cta-mark-as-resolved",
+          )}
+        </TelemetryButton>
       </div>
     </div>
   );

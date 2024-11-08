@@ -1,0 +1,35 @@
+@import "../../../../../../../../../tokens";
+
+.exposureCardWrapper {
+  margin-top: $spacing-md;
+
+  .removalContentSection {
+    margin-top: $layout-md;
+
+    dt {
+      font: $text-body-lg;
+      font-weight: 600;
+    }
+
+    dd {
+      padding-top: $spacing-sm;
+    }
+
+    ul {
+      padding-top: $spacing-sm;
+
+      li {
+        margin-bottom: $spacing-xs;
+      }
+    }
+
+    button {
+      margin-top: $spacing-lg;
+    }
+  }
+}
+
+.header {
+  font: $text-body-lg;
+  font-weight: 700;
+}

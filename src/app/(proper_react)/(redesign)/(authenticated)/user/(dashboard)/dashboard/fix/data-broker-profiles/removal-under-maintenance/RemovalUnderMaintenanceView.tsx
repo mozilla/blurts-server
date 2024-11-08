@@ -11,6 +11,11 @@ import {
 } from "../../../../../../../../../functions/server/getRelevantGuidedSteps";
 import { FixView } from "../../FixView";
 import { DataBrokerRemovalMaintenance } from "./DataBrokerRemovalMaintenance";
+import styles from "./RemovalUnderMaintenance.module.scss";
+import { useL10n } from "../../../../../../../../../hooks/l10n";
+import { TelemetryLink } from "../../../../../../../../../components/client/TelemetryLink";
+import { TelemetryButton } from "../../../../../../../../../components/client/TelemetryButton";
+import { CONST_URL_SUMO_MANUAL_REMOVAL } from "../../../../../../../../../../constants";
 
 export type Props = {
   data: OnerepScanResultRow[];
@@ -21,10 +26,10 @@ export type Props = {
 export const RemovalUnderMaintenanceView = (props: Props) => {
   if (props.data === null) {
     console.error("No scan data");
-    return;
   }
-
+  const l10n = useL10n();
   const testScanItem = props.data;
+  const firstScan = testScanItem[0];
   return (
     <FixView
       subscriberEmails={props.subscriberEmails}
@@ -32,15 +37,97 @@ export const RemovalUnderMaintenanceView = (props: Props) => {
       currentSection="data-broker-profiles"
       data={props.stepDeterminationData}
     >
-      <div>Test</div>
-      <DataBrokerRemovalMaintenance
-        scanResult={testScanItem[0]}
-        locale={"en"}
-        resolutionCta={undefined}
-        isPremiumUser={true}
-        isExpanded={true}
-        onToggleExpanded={() => console.log("toggle")}
-      />
+      <p className={styles.header}>
+        {l10n.getFragment("data-broker-removal-maintenance-header", {
+          elems: {
+            link_to_data_broker: (
+              <TelemetryLink
+                href={firstScan.link}
+                target="_blank"
+                eventData={{
+                  link_id: `go_to_${firstScan.data_broker}_link`,
+                }}
+              />
+            ),
+          },
+          vars: {
+            data_broker_name: firstScan.data_broker,
+          },
+        })}
+      </p>
+      <div className={styles.exposureCardWrapper}>
+        <DataBrokerRemovalMaintenance
+          scanResult={testScanItem[0]}
+          locale={"en"}
+          resolutionCta={undefined}
+          isPremiumUser={true}
+          isExpanded={true}
+          onToggleExpanded={() => console.log("toggle")}
+        />
+
+        <div className={styles.removalContentSection}>
+          <dt>
+            {l10n.getString(
+              "data-broker-removal-maintenance-steps-to-remove-header",
+            )}
+          </dt>
+          <dd>
+            <ul>
+              <li>
+                {l10n.getString(
+                  "data-broker-removal-maintenance-steps-to-remove-header-step-one",
+                )}
+              </li>
+              <li>
+                {l10n.getString(
+                  "data-broker-removal-maintenance-steps-to-remove-header-step-two",
+                )}
+              </li>
+            </ul>
+          </dd>
+          {/* TO DO: Add step to remove link here */}
+          <TelemetryButton
+            variant="link"
+            event={{
+              module: "button",
+              name: "click",
+              data: {
+                button_id: "view_removal_instructions",
+              },
+            }}
+          >
+            {l10n.getString(
+              "data-broker-removal-maintenance-steps-to-remove-view-more-link",
+            )}
+          </TelemetryButton>
+        </div>
+
+        <div className={styles.removalContentSection}>
+          <dt>
+            {l10n.getString(
+              "data-broker-removal-maintenance-steps-to-remove-header",
+            )}
+          </dt>
+          <dd>
+            {l10n.getFragment(
+              "data-broker-removal-maintenance-rationale-answer",
+              {
+                elems: {
+                  learn_about_data_exposure_link: (
+                    <TelemetryLink
+                      href={CONST_URL_SUMO_MANUAL_REMOVAL}
+                      target="_blank"
+                      eventData={{
+                        link_id: "learn_more_about_data_broker_removal",
+                      }}
+                    />
+                  ),
+                },
+              },
+            )}
+          </dd>
+        </div>
+      </div>
     </FixView>
   );
 };

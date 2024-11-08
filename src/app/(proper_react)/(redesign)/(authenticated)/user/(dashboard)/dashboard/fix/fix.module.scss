@@ -14,6 +14,8 @@
   }
 
   .fixWrapper {
+    box-shadow: $box-shadow-xs;
+    border-radius: $border-radius-md;
     max-width: $content-xl;
     width: 100%;
     padding: $layout-xs;

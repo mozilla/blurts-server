@@ -212,6 +212,14 @@ exposure-card-description-info-for-sale-manual-removal-needed = We’ve asked th
 # Variables:
 # $data_broker_name is the name of the data broker under removal maintenance
 data-broker-removal-maintenance-header = Monitor found this profile on <link_to_data_broker>{ $data_broker_name }</link_to_data_broker>.
+data-broker-removal-maintenance-cta-go-to-data-broker = Go to data broker site to get started
+data-broker-removal-maintenance-cta-mark-as-resolved = Mark exposure resolved
+data-broker-removal-maintenance-steps-to-remove-header = How to remove your profile from data broker websites
+data-broker-removal-maintenance-steps-to-remove-header-step-one = Visit this data broker website then locate their removal instructions. These may be purposely difficult to find, so check in the footer, terms page, privacy page, or “do not sell” page for removal instructions.
+data-broker-removal-maintenance-steps-to-remove-header-step-two = When you’ve determined your profile was successfully removed, you can mark the exposure as resolved by toggling on the switch within this exposure data card in your dashboard.
+data-broker-removal-maintenance-steps-to-remove-view-more-link = View removal instructions
+data-broker-removal-maintenance-rationale-header = Why do I need to manually remove this profile?
+data-broker-removal-maintenance-rationale-answer = Monitor works hard to auto-remove your profiles from data broker sites. But some are more difficult than others or are non-compliant, which requires manual removal from the profile owner. <learn_about_data_exposure_link>Learn about data exposures</learn_about_data_exposure_link>
 
 ## CSAT survey banner for subscribers
 

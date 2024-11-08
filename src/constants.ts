@@ -20,6 +20,8 @@ export const CONST_URL_SUMO_MONITOR_PLUS =
   "https://support.mozilla.org/kb/how-does-monitor-plus-work";
 export const CONST_URL_SUMO_MONITOR_REMOVAL =
   "https://support.mozilla.org/kb/how-does-monitor-plus-work#w_we-automatically-remove-your-information";
+export const CONST_URL_SUMO_MANUAL_REMOVAL =
+  "https://support.mozilla.org/kb/general-questions-about-privacy-protection-scans#w_how-do-i-manually-remove-my-personal-information-from-data-broker-sites";
 export const CONST_URL_WAITLIST =
   "https://www.mozilla.org/products/monitor/waitlist-scan/";
 export const CONST_URL_TERMS =
