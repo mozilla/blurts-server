@@ -9,6 +9,7 @@ import { logger } from "../../app/functions/server/logging";
 import lighthouseResults from "../../../.lighthouseci/manifest.json";
 
 const SENTRY_SLUG = "cron-report-lighthouse-results";
+const AUDITS_TO_INCLUDE = ["first-contentful-paint", "interactive"];
 
 Sentry.init({
   dsn: process.env.SENTRY_DSN,
@@ -21,7 +22,6 @@ const checkInId = Sentry.captureCheckIn({
 });
 
 async function run() {
-  logger.info("Run report Lighthouse results");
   if (
     !lighthouseResults ||
     (lighthouseResults && lighthouseResults.length === 0)
@@ -31,10 +31,20 @@ async function run() {
   // Get the median run results.
   // For more info on the structure of `manifest.json` see:
   // https://github.com/GoogleChrome/lighthouse-ci/blob/main/docs/configuration.md#outputdir
-  const medianResults = lighthouseResults.filter(
-    (result) => result.isRepresentativeRun === true,
+  const lighthouseReport = await Promise.all(
+    lighthouseResults
+      .filter((result) => result.isRepresentativeRun === true)
+      .map(async (medianResult) => {
+        const { jsonPath, url, summary } = medianResult;
+        const fullReport = await import(jsonPath);
+        const audits = AUDITS_TO_INCLUDE.map(
+          (auditId) => fullReport.audits[auditId],
+        );
+        return { url, summary, audits };
+      }),
   );
-  console.log("Result", medianResults);
+
+  console.info("lighthouse", lighthouseReport);
 }
 
 void run()
