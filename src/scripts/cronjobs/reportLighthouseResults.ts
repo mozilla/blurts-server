@@ -2,12 +2,9 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import { readFile } from "node:fs/promises";
 import Sentry from "@sentry/nextjs";
 import { logger } from "../../app/functions/server/logging";
-// The location autocomplete data will be created during the build step.
-// @ts-ignore-next-line
-// eslint-disable-next-line import/no-unresolved
-import lighthouseResults from "../../../.lighthouseci/manifest.json";
 
 const SENTRY_SLUG = "cron-report-lighthouse-results";
 const AUDITS_TO_INCLUDE = [
@@ -16,7 +13,7 @@ const AUDITS_TO_INCLUDE = [
   "speed-index",
   "total-blocking-time",
   "max-potential-fid",
-  "layout-shifts",
+  "cumulative-layout-shift",
   "server-response-time",
   "interactive",
 ];
@@ -31,11 +28,30 @@ const checkInId = Sentry.captureCheckIn({
   status: "in_progress",
 });
 
+type LighthouseResult = {
+  url: string;
+  isRepresentativeRun: boolean;
+  htmlPath: string;
+  jsonPath: string;
+  summary: {
+    performance: number;
+    accessibility: number;
+    "best-practices": number;
+    seo: number;
+  };
+};
+
 async function run() {
-  if (
-    !lighthouseResults ||
-    (lighthouseResults && lighthouseResults.length === 0)
-  ) {
+  // The Lighthouse report that will be created by running LHCI.
+  const lighthouseResults: LighthouseResult[] =
+    JSON.parse(
+      await readFile(
+        new URL("../../../.lighthouseci/manifest.json", import.meta.url),
+        { encoding: "utf8" },
+      ),
+    ) ?? [];
+
+  if (lighthouseResults.length === 0) {
     throw new Error("No available Lighthouse reports");
   }
   // Get the median run results.
