@@ -136,9 +136,12 @@ export function isEligibleForStep(
   data: StepDeterminationData,
   stepId: StepLink["id"],
 ): boolean {
-  // Only premium users can see the manual data broker removal flow
+  // Only premium users can see the manual data broker removal flow, once they have run a scan
   if (stepId === "DataBrokerManualRemoval") {
-    return hasPremium(data.user);
+    return (
+      hasPremium(data.user) &&
+      typeof data.user.subscriber?.onerep_profile_id === "number"
+    );
   }
 
   if (stepId === "Scan") {
@@ -195,6 +198,8 @@ export function hasCompletedStepSection(
     | "SecurityTips"
     | "DataBrokerManualRemoval",
 ): boolean {
+  // TODO: Add business logic here
+  /* c8 ignore next 3 */
   if (section === "DataBrokerManualRemoval") {
     return hasCompletedStep(data, "DataBrokerManualRemoval");
   }

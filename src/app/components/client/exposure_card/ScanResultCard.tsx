@@ -257,7 +257,7 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
               {l10n.getString("exposure-card-exposure-type")}
             </dt>
             <dd className={styles.hideOnMobile}>
-              {l10n.getString("exposure-card-exposure-type-data-broker")}
+              {l10n.getString("exposure-card-exposure-type-data-broker-2")}
             </dd>
             <dt className={`${styles.hideOnMobile} ${styles.visuallyHidden}`}>
               {l10n.getString("exposure-card-date-found")}

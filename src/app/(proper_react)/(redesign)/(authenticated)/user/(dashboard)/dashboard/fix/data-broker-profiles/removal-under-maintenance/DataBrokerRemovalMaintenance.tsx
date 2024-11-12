@@ -86,6 +86,7 @@ export const DataBrokerRemovalMaintenance = (
         ))}
       </div>
       <div className={styles.buttonsWrapper}>
+        {/* TODO: Add functionality to these buttons */}
         <TelemetryButton
           variant="primary"
           href={props.scanResult.link}
