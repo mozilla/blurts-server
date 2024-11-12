@@ -36,7 +36,7 @@ modal-heres-what-we-fixed-description-part-two = <b>Auto-removed</b> includes an
 modal-heres-what-we-fixed-description-part-three = <b>In Progress</b> includes anything that we are currently working on fixing.
 
 dashboard-exposures-filter-exposure-type = Exposure type
-dashboard-exposures-filter-exposure-type-info-for-sale = Data broker
+dashboard-exposures-filter-exposure-type-info-for-sale = Info for sale
 dashboard-exposures-filter-exposure-type-data-breach = Data breach
 dashboard-exposures-filter-exposure-removal-time-title = Removal time
 dashboard-exposures-filter-exposure-removal-time-label-7 = Up to 7 days

@@ -32,7 +32,6 @@ exposure-card-your-exposed-info = Your exposed info:
 exposure-card-found-the-following-data = { -brand-monitor } found the following exposed data:
 # Deprecated
 exposure-card-exposure-type-data-broker = Info for sale
-exposure-card-exposure-type-data-broker-2 = Data broker
 exposure-card-exposure-type-data-breach = Data breach
 # Deprecated
 exposure-card-cta = Fix all exposures
