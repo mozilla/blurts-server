@@ -152,7 +152,7 @@
     "lint-staged": "^15.2.10",
     "mjml-browser": "^4.15.3",
     "prettier": "3.3.3",
-    "sass": "^1.80.4",
+    "sass": "^1.80.6",
     "storybook": "^8.1.11",
     "stylelint": "^16.10.0",
     "stylelint-config-recommended-scss": "^14.1.0",
