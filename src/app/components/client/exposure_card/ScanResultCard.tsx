@@ -227,6 +227,13 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
     );
   }
 
+  const resolveExposuresCta = // Verifying the status for automatically removed data brokers v. manually resolved are handled differently
+    (props.scanResult.status === "new" ||
+      props.scanResult.status === "removal_under_maintenance") &&
+    !props.scanResult.manually_resolved ? (
+      <span className={styles.fixItBtn}>{props.resolutionCta}</span>
+    ) : null;
+
   const exposureCard = (
     <div aria-label={props.scanResult.data_broker}>
       <div className={styles.exposureCard}>
@@ -318,14 +325,9 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
         >
           <div className={styles.exposureDetailsTopDescription}>
             <p>{dataBrokerDescription()}</p>
-            {
-              // Verifying the status for automatically removed data brokers v. manually resolved are handled differently
-              (props.scanResult.status === "new" ||
-                props.scanResult.status === "removal_under_maintenance") &&
-              !props.scanResult.manually_resolved ? (
-                <span className={styles.fixItBtn}>{props.resolutionCta}</span>
-              ) : null
-            }
+            <span className={styles.resolveExposuresCtaDesktop}>
+              {resolveExposuresCta}
+            </span>
           </div>
           <div className={styles.exposureDetailsContent}>
             <p className={styles.exposedInfoTitle}>
@@ -337,6 +339,9 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
               ))}
             </div>
           </div>
+          <span className={styles.resolveExposuresCtaMobile}>
+            {resolveExposuresCta}
+          </span>
         </div>
       </div>
     </div>

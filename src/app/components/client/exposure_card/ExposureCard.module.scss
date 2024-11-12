@@ -189,3 +189,20 @@
 .companyNameArea {
   @include company-name-area;
 }
+
+.resolveExposuresCtaDesktop {
+  display: none;
+  @media screen and (min-width: $screen-md) {
+    display: block;
+  }
+}
+
+.resolveExposuresCtaMobile {
+  display: flex;
+  justify-content: center;
+  margin-top: $spacing-lg;
+
+  @media screen and (min-width: $screen-md) {
+    display: none;
+  }
+}
