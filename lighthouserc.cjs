@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-const pages = ["/", "/breaches"];
+const pages = ["/", "/breaches", "/breach-details/InternetArchive"];
 
 const collectBaseUrl =
   process.env.LIGHTHOUSE_COLLECT_URL ?? "http://localhost:3000";

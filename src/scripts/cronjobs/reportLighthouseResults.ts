@@ -5,11 +5,21 @@
 import Sentry from "@sentry/nextjs";
 import { logger } from "../../app/functions/server/logging";
 // The location autocomplete data will be created during the build step.
+// @ts-ignore-next-line
 // eslint-disable-next-line import/no-unresolved
 import lighthouseResults from "../../../.lighthouseci/manifest.json";
 
 const SENTRY_SLUG = "cron-report-lighthouse-results";
-const AUDITS_TO_INCLUDE = ["first-contentful-paint", "interactive"];
+const AUDITS_TO_INCLUDE = [
+  "first-contentful-paint",
+  "largest-contentful-paint",
+  "speed-index",
+  "total-blocking-time",
+  "max-potential-fid",
+  "layout-shifts",
+  "server-response-time",
+  "interactive",
+];
 
 Sentry.init({
   dsn: process.env.SENTRY_DSN,
@@ -37,9 +47,11 @@ async function run() {
       .map(async (medianResult) => {
         const { jsonPath, url, summary } = medianResult;
         const fullReport = await import(jsonPath);
-        const audits = AUDITS_TO_INCLUDE.map(
-          (auditId) => fullReport.audits[auditId],
-        );
+        const audits = AUDITS_TO_INCLUDE.map((auditId) => {
+          const { id, score, numericValue } = fullReport.audits[auditId];
+          return { id, score, numericValue };
+        });
+
         return { url, summary, audits };
       }),
   );

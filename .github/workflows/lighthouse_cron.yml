@@ -27,4 +27,4 @@ jobs:
           npm install -g @lhci/cli@0.14.x
           npm run lighthouse
         env:
-          LIGHTHOUSE_COLLECT_URL: "https://stage.firefoxmonitor.nonprod.cloudops.mozgcp.net"
+          LIGHTHOUSE_COLLECT_URL: ${{ secrets.LIGHTHOUSE_COLLECT_URL }}
