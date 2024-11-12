@@ -60,7 +60,7 @@ modal-exposure-type-description = {
 }
 modal-exposure-type-data-breach = <b>Data breach</b> means your information has been compromised in a breach and could be in the wrong hands.
   Resolving these typically requires accessing your accounts, so you’ll need to take manual steps to resolve each breach even if you’ve subscribed to { -brand-monitor-plus }.
-modal-exposure-type-data-broker-part-one = <b>Data broker</b> means a data broker site is publicly publishing and selling your personal info.
+modal-exposure-type-data-broker-part-one = <b>Your info for sale</b> means a data broker site is publicly publishing and selling your personal info.
   You’ll need to manually request removal from each site.
 modal-exposure-type-data-broker-part-two = But if you’re a { -brand-monitor-plus } subscriber, we auto-remove the profiles for you.
 
