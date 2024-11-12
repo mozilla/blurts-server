@@ -1,13 +1,15 @@
 @import "../../../../../../../../../tokens";
 
-.exposureCardWrapper {
-  margin-top: $spacing-md;
-  padding-bottom: $spacing-lg;
-}
+.dataBrokerInformationWrapper {
+  .exposureCardWrapper {
+    margin-top: $spacing-md;
+    padding-bottom: $spacing-lg;
+  }
 
-.header {
-  font: $text-body-lg;
-  font-weight: 700;
+  .header {
+    font: $text-body-lg;
+    font-weight: 700;
+  }
 }
 
 .removalGuideInstructionsWrapper {
@@ -17,12 +19,12 @@
     font: $text-body-xl;
     font-weight: 700;
   }
-}
 
-.buttonWrapper {
-  display: flex;
-  justify-content: center;
-  padding-top: $spacing-lg;
+  .buttonWrapper {
+    display: flex;
+    justify-content: center;
+    padding-top: $spacing-lg;
+  }
 }
 
 .removalContentSection {
@@ -42,7 +44,7 @@
     padding-top: $spacing-sm;
   }
 
-  ul {
+  ol {
     padding-top: $spacing-sm;
 
     li {
