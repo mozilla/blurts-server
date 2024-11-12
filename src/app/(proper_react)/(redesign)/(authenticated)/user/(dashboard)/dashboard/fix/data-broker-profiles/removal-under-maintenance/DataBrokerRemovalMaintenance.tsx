@@ -5,8 +5,6 @@
 "use client";
 
 import { OnerepScanResultRow } from "knex/types/tables";
-import { FeatureFlagName } from "../../../../../../../../../../db/tables/featureFlags";
-import { ExperimentData } from "../../../../../../../../../../telemetry/generated/nimbus/experiments";
 import { useL10n } from "../../../../../../../../../hooks/l10n";
 import { ExposureCardDataClassLayout } from "../../../../../../../../../components/client/exposure_card/ExposureCardDataClass";
 import styles from "./DataBrokerRemovalMaintenance.module.scss";
@@ -20,11 +18,6 @@ export type ScanResultCardProps = {
   resolutionCta: ReactNode;
   isPremiumUser: boolean;
   isExpanded: boolean;
-  isOnManualRemovePage?: boolean;
-  enabledFeatureFlags?: FeatureFlagName[];
-  experimentData?: ExperimentData;
-  removalTimeEstimate?: number;
-  onToggleExpanded: () => void;
 };
 
 export const DataBrokerRemovalMaintenance = (props: ScanResultCardProps) => {

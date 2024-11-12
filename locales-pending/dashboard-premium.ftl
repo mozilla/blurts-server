@@ -211,15 +211,41 @@ exposure-card-description-info-for-sale-manual-removal-needed = We’ve asked th
 
 # Variables:
 # $data_broker_name is the name of the data broker under removal maintenance
-data-broker-removal-maintenance-header = Monitor found this profile on <link_to_data_broker>{ $data_broker_name }</link_to_data_broker>.
+data-broker-removal-maintenance-header = { -brand-monitor } found this profile on <link_to_data_broker>{ $data_broker_name }</link_to_data_broker>.
 data-broker-removal-maintenance-cta-go-to-data-broker = Go to data broker site to get started
 data-broker-removal-maintenance-cta-mark-as-resolved = Mark exposure resolved
+# Est. is short for "estimated"
+# Variables:
+# $range is the range of minutes it would take to complete the removal. E.g. 3-5 minutes.
+data-broker-removal-maintenance-estimated-time = Est. time to complete: { $range } minutes
 data-broker-removal-maintenance-steps-to-remove-header = How to remove your profile from data broker websites
 data-broker-removal-maintenance-steps-to-remove-header-step-one = Visit this data broker website then locate their removal instructions. These may be purposely difficult to find, so check in the footer, terms page, privacy page, or “do not sell” page for removal instructions.
 data-broker-removal-maintenance-steps-to-remove-header-step-two = When you’ve determined your profile was successfully removed, you can mark the exposure as resolved by toggling on the switch within this exposure data card in your dashboard.
 data-broker-removal-maintenance-steps-to-remove-view-more-link = View removal instructions
 data-broker-removal-maintenance-rationale-header = Why do I need to manually remove this profile?
-data-broker-removal-maintenance-rationale-answer = Monitor works hard to auto-remove your profiles from data broker sites. But some are more difficult than others or are non-compliant, which requires manual removal from the profile owner. <learn_about_data_exposure_link>Learn about data exposures</learn_about_data_exposure_link>
+data-broker-removal-maintenance-rationale-answer = { -brand-monitor } works hard to auto-remove your profiles from data broker sites. But some are more difficult than others or are non-compliant, which requires manual removal from the profile owner. <learn_about_data_exposure_link>Learn about data exposures</learn_about_data_exposure_link>
+
+## Manual Removal Guide
+
+data-broker-removal-guide-header = Removal guide for data broker websites
+data-broker-removal-guide-top-section-para-1 = { -brand-mozilla-monitor } works hard to automatically remove your personal information from data brokers sites. However, some data brokers are more difficult and may ignore removal requests from third parties.
+data-broker-removal-guide-top-section-para-2 = We’re sorry we couldn’t remove this profile for you. Data brokers benefit from sharing personal information, so they often change their removal instructions to prevent companies like us from protecting your information. We are constantly evaluating our auto-removal processes to counter this behavior. But in the meantime, here’s what you need to do to manually remove your information.
+data-broker-removal-guide-step-1-header = Step 1: Go to the data broker site and find their opt out instructions
+data-broker-removal-guide-step-1-body = Visit the data broker website and locate the instructions they provide for requesting removal of your profile. Because data brokers often make money by selling your information, they may intentionally make it hard to find these instructions. Here are a few tips to find removal instructions:
+data-broker-removal-guide-step-1-list-item-1 = They may be called data suppression, delete my data, do not show my data, or opt out instructions.
+data-broker-removal-guide-step-1-list-item-2 = Start by checking the footer of the website.
+data-broker-removal-guide-step-1-list-item-3 = You can also check the Privacy section of their website.
+data-broker-removal-guide-step-1-list-item-4 = You can also check the site FAQs.
+data-broker-removal-guide-step-2-header = Step 2: Follow the instructions
+data-broker-removal-guide-step-2-body-para-1 = Each data broker’s removal process is different, and they usually require you to submit personal details such as your name, email address, or physical address. Sometimes it’s as easy as submitting your email address. But some may require you to mail a physical letter. Be sure to follow the directions fully to ensure removal. Each removal should take only a few minutes.
+data-broker-removal-guide-step-2-body-para-2 = If you have many exposures needing manual removal, try to do them in batches, and keep going until they’re all removed.
+data-broker-removal-guide-step-3-header = Step 3:  Verify removal
+data-broker-removal-guide-step-3-body-para-1 = Once you’ve verified your profile has been removed from the data broker site, you can use Monitor to track this status. After removal, simply go to the exposure card in your dashboard and you’ll see that it’s been marked as “Removed”. Because data brokers usually add profiles back to their databases, you can toggle the “Removed” status on or off in cases where you’ve been added back.
+data-broker-removal-guide-step-3-body-para-2 = Data brokers can take 2 weeks to remove your information, and sometimes even longer.
+data-broker-removal-guide-step-4-header = Step 4: Watch for re-exposures
+data-broker-removal-guide-step-4-body = Please note that this process does not remove your information from public records, which means your information could be added back to data brokers that you’ve been removed from. As a Monitor Plus subscriber, we’ll continually watch for new exposures from this data broker.
+data-broker-removal-guide-button-back-to-exposures = Back to exposures
+
 
 ## CSAT survey banner for subscribers
 
