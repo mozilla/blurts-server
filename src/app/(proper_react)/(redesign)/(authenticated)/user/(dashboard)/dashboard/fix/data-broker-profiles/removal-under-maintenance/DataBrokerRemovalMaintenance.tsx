@@ -8,19 +8,18 @@ import { OnerepScanResultRow } from "knex/types/tables";
 import { useL10n } from "../../../../../../../../../hooks/l10n";
 import { ExposureCardDataClassLayout } from "../../../../../../../../../components/client/exposure_card/ExposureCardDataClass";
 import styles from "./DataBrokerRemovalMaintenance.module.scss";
-import React, { ReactNode } from "react";
+import React from "react";
 import { TelemetryButton } from "../../../../../../../../../components/client/TelemetryButton";
 import { ClockIcon } from "../../../../../../../../../components/server/Icons";
 
-export type ScanResultCardProps = {
+export type DataBrokerRemovalMaintenanceProps = {
   scanResult: OnerepScanResultRow;
-  locale: string;
-  resolutionCta: ReactNode;
   isPremiumUser: boolean;
-  isExpanded: boolean;
 };
 
-export const DataBrokerRemovalMaintenance = (props: ScanResultCardProps) => {
+export const DataBrokerRemovalMaintenance = (
+  props: DataBrokerRemovalMaintenanceProps,
+) => {
   const { scanResult } = props;
   const l10n = useL10n();
 

@@ -328,19 +328,13 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
             }
           </div>
           <div className={styles.exposureDetailsContent}>
-            <div className={styles.exposedInfoContainer}>
-              <div className={styles.exposuredInfoSection}>
-                <p className={styles.exposedInfoTitle}>
-                  {l10n.getString("exposure-card-found-the-following-data")}
-                </p>
-                <div className={styles.exposedInfoWrapper}>
-                  <div className={styles.dataClassesList}>
-                    {exposureCategoriesArray.map((item) => (
-                      <React.Fragment key={item.key}>{item}</React.Fragment>
-                    ))}
-                  </div>
-                </div>
-              </div>
+            <p className={styles.exposedInfoTitle}>
+              {l10n.getString("exposure-card-found-the-following-data")}
+            </p>
+            <div className={styles.exposedDataTypes}>
+              {exposureCategoriesArray.map((item) => (
+                <React.Fragment key={item.key}>{item}</React.Fragment>
+              ))}
             </div>
           </div>
         </div>

@@ -9,14 +9,7 @@ import Link from "next/link";
 import styles from "./ExposureCard.module.scss";
 import { StatusPill } from "../../server/StatusPill";
 import Image, { StaticImageData } from "next/image";
-import {
-  ChevronDown,
-  EmailIcon,
-  OpenInNew,
-  PasswordIcon,
-  PhoneIcon,
-  QuestionMarkCircle,
-} from "../../server/Icons";
+import { ChevronDown, OpenInNew } from "../../server/Icons";
 import { useL10n } from "../../../hooks/l10n";
 import {
   DataClassEffected,
@@ -62,7 +55,6 @@ export const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
           exposure={subscriberBreach}
           key={dataClass}
           dataBreachDataType={dataClass}
-          icon={<EmailIcon alt="" width="13" height="13" />}
           label={l10n.getString("exposure-card-email")}
           count={emailLength}
         />,
@@ -73,7 +65,6 @@ export const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
           exposure={subscriberBreach}
           key={dataClass}
           dataBreachDataType={dataClass}
-          icon={<PasswordIcon alt="" width="13" height="13" />}
           label={l10n.getString("exposure-card-password")}
           count={emailLength}
         />,
@@ -84,7 +75,6 @@ export const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
           exposure={subscriberBreach}
           key={dataClass}
           dataBreachDataType={dataClass}
-          icon={<PhoneIcon alt="" width="13" height="13" />}
           label={l10n.getString("exposure-card-phone-number")}
           count={emailLength}
         />,
@@ -95,7 +85,6 @@ export const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
           exposure={subscriberBreach}
           key={dataClass}
           dataBreachDataType={dataClass}
-          icon={<QuestionMarkCircle alt="" width="13" height="13" />}
           label={l10n.getString("exposure-card-ip-address")}
           count={emailLength}
         />,
@@ -109,7 +98,6 @@ export const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
         <ExposureCardDataClassLayout
           exposure={subscriberBreach}
           key={dataClass}
-          icon={<QuestionMarkCircle alt="" width="13" height="13" />} // default icon for categories without a unique one
           label={l10n.getString(dataClass)} // categories are localized in data-classes.ftl
           count={emailLength}
         />,
@@ -265,30 +253,20 @@ export const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
             props.isExpanded ? styles.isOpen : ""
           }`}
         >
-          <div>
+          <div className={styles.exposureDetailsTopDescription}>
             <p>{dataBreachDescription()}</p>
+            {!props.subscriberBreach.isResolved ? (
+              <span className={styles.fixItBtn}>{props.resolutionCta}</span>
+            ) : null}
           </div>
           <div className={styles.exposureDetailsContent}>
-            <div className={styles.exposedInfoContainer}>
-              <div className={styles.exposuredInfoSection}>
-                <p className={styles.exposedInfoTitle}>
-                  {l10n.getString("exposure-card-found-the-following-data")}
-                </p>
-                <div className={styles.exposedInfoWrapper}>
-                  <div className={styles.dataClassesList}>
-                    {exposureCategoriesArray.map((item) => (
-                      <React.Fragment key={item.key}>{item}</React.Fragment>
-                    ))}
-                  </div>
-                </div>
-              </div>
-              {
-                // TODO: Add unit test when changing this code:
-                /* c8 ignore next */
-                !props.subscriberBreach.isResolved ? (
-                  <span className={styles.fixItBtn}>{props.resolutionCta}</span>
-                ) : null
-              }
+            <p className={styles.exposedInfoTitle}>
+              {l10n.getString("exposure-card-found-the-following-data")}
+            </p>
+            <div className={styles.exposedDataTypes}>
+              {exposureCategoriesArray.map((item) => (
+                <React.Fragment key={item.key}>{item}</React.Fragment>
+              ))}
             </div>
           </div>
         </div>

@@ -57,10 +57,7 @@ export const RemovalUnderMaintenanceView = (props: Props) => {
       <div className={styles.exposureCardWrapper}>
         <DataBrokerRemovalMaintenance
           scanResult={testScanItem[0]}
-          locale={"en"}
-          resolutionCta={undefined}
           isPremiumUser={true}
-          isExpanded={true}
         />
 
         <div className={styles.removalContentSection}>
