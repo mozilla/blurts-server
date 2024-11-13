@@ -13,9 +13,12 @@
 }
 
 .removalGuideInstructionsWrapper {
-  padding-top: $spacing-lg;
-
+  .backArrow {
+    all: unset;
+    cursor: pointer;
+  }
   .headerRemovalGuide {
+    padding-top: $spacing-lg;
     font: $text-body-xl;
     font-weight: 700;
   }

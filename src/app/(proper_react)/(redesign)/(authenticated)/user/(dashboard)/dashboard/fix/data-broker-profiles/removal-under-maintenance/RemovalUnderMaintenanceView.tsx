@@ -17,6 +17,7 @@ import { TelemetryLink } from "../../../../../../../../../components/client/Tele
 import { TelemetryButton } from "../../../../../../../../../components/client/TelemetryButton";
 import { CONST_URL_SUMO_MANUAL_REMOVAL } from "../../../../../../../../../../constants";
 import { useState } from "react";
+import { BackArrow } from "../../../../../../../../../components/server/Icons";
 
 export type Props = {
   data: OnerepScanResultRow[];
@@ -128,6 +129,14 @@ export const RemovalUnderMaintenanceView = (props: Props) => {
 
   const removalGuideInstructions = (
     <div className={styles.removalGuideInstructionsWrapper}>
+      <button
+        onClick={() => {
+          setDetailedRemovalGuide(!detailedRemovalGuide);
+        }}
+        className={styles.backArrow}
+      >
+        <BackArrow width="20" height="20" alt="" />
+      </button>
       <p className={styles.headerRemovalGuide}>
         {l10n.getString("data-broker-removal-guide-header")}
       </p>
@@ -213,6 +222,7 @@ export const RemovalUnderMaintenanceView = (props: Props) => {
       data={props.stepDeterminationData}
       hideProgressIndicator={detailedRemovalGuide}
       hideNavClose={detailedRemovalGuide}
+      hideNextNavigationRightArrow={detailedRemovalGuide}
     >
       {!detailedRemovalGuide ? dataBrokerInformation : removalGuideInstructions}
     </FixView>
