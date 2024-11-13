@@ -211,7 +211,7 @@ exposure-card-description-info-for-sale-manual-removal-needed = We’ve asked th
 
 # Variables:
 # $data_broker_name is the name of the data broker under removal maintenance
-data-broker-removal-maintenance-header = { -brand-monitor } found this profile on <link_to_data_broker>{ $data_broker_name }</link_to_data_broker>.
+data-broker-removal-maintenance-header = { -brand-monitor } found this profile on <link_to_data_broker>{ $data_broker_name }</link_to_data_broker>
 data-broker-removal-maintenance-cta-go-to-data-broker = Go to data broker site to get started
 data-broker-removal-maintenance-cta-mark-as-resolved = Mark exposure resolved
 # Est. is short for "estimated"
@@ -239,7 +239,7 @@ data-broker-removal-guide-step-1-list-item-4 = You can also check the site FAQs.
 data-broker-removal-guide-step-2-header = Step 2: Follow the instructions
 data-broker-removal-guide-step-2-body-para-1 = Each data broker’s removal process is different, and they usually require you to submit personal details such as your name, email address, or physical address. Sometimes it’s as easy as submitting your email address. But some may require you to mail a physical letter. Be sure to follow the directions fully to ensure removal. Each removal should take only a few minutes.
 data-broker-removal-guide-step-2-body-para-2 = If you have many exposures needing manual removal, try to do them in batches, and keep going until they’re all removed.
-data-broker-removal-guide-step-3-header = Step 3:  Verify removal
+data-broker-removal-guide-step-3-header = Step 3: Verify removal
 data-broker-removal-guide-step-3-body-para-1 = Once you’ve verified your profile has been removed from the data broker site, you can use { -brand-monitor } to track this status. After removal, simply go to the exposure card in your dashboard and you’ll see that it’s been marked as “Removed”. Because data brokers usually add profiles back to their databases, you can toggle the “Removed” status on or off in cases where you’ve been added back.
 data-broker-removal-guide-step-3-body-para-2 = Data brokers can take 2 weeks to remove your information, and sometimes even longer.
 data-broker-removal-guide-step-4-header = Step 4: Watch for re-exposures
