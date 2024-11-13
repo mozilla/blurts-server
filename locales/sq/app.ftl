@@ -184,8 +184,6 @@ mozilla = { -brand-mozilla }
 terms-of-service = Kushtet e Shërbimit
 privacy-notice = Shënim Mbi Privatësinë
 github = { -brand-github }
-# Deprecated
-footer-nav-all-breaches = Krejt Cenimet
 footer-nav-recent-breaches = Cenime të Dhënash Së Fundi
 footer-external-link-faq-label = PBR
 footer-external-link-faq-tooltip = Pyetje të bëra rëndom
@@ -203,7 +201,7 @@ error-page-error-other-title = { $errorCode } Diç shkoi ters
 
 ## Breach overview page
 
-all-breaches-headline-2 = Krejt cenimet të pikasura nga { -brand-fx-monitor }
+all-breaches-headline-3 = Bazë të Dhënash Cenimesh të Dhënash
 all-breaches-lead = Mbikëqyrim krejt cenimet e ditura të të dhënave, për të parë nëse hollësitë tuaja personale qenë komprometuar. Ja një listë e plotë e krejt cenimeve që janë njoftuar që nga 2007-a.
 search-breaches = Kërkoni Te Shkeljet
 # the kind of user data exposed to hackers in data breach.
