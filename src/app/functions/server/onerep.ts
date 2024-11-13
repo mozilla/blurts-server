@@ -430,6 +430,7 @@ export async function getAllDataBrokers() {
       Array<{
         id: number;
         data_broker: string;
+        url: string;
         status:
           | "active"
           | "scan_under_maintenance"
