@@ -246,7 +246,6 @@ data-broker-removal-guide-step-4-header = Step 4: Watch for re-exposures
 data-broker-removal-guide-step-4-body = Please note that this process does not remove your information from public records, which means your information could be added back to data brokers that you’ve been removed from. As a { -brand-monitor-plus } subscriber, we’ll continually watch for new exposures from this data broker.
 data-broker-removal-guide-button-back-to-exposures = Back to exposures
 
-
 ## CSAT survey banner for subscribers
 
 survey-csat-question = How satisfied are you with your { -brand-mozilla-monitor } experience?
