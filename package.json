@@ -34,6 +34,7 @@
     "cron:breach-alerts": "node dist/scripts/cronjobs/emailBreachAlerts.js",
     "cron:db-delete-unverified-subscribers": "node dist/scripts/cronjobs/deleteUnverifiedSubscribers.js",
     "cron:db-pull-breaches": "node dist/scripts/cronjobs/syncBreaches.js",
+    "cron:db-pull-data-brokers": "node dist/scripts/cronjobs/syncOnerepDataBrokers.js",
     "cron:remote-settings-pull-breaches": "node dist/scripts/cronjobs/updateBreachesInRemoteSettings.js",
     "cron:onerep-limits-alert": "node dist/scripts/cronjobs/onerepStatsAlert.js",
     "db:migrate": "node -r dotenv-flow/config node_modules/knex/bin/cli.js migrate:latest --knexfile src/db/knexfile.js",
