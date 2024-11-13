@@ -7,14 +7,14 @@ on:
       environment:
         description: 'Environment to run LHCI against'
         required: false
-        default: 'stage'
+        default: 'prod'
         type: choice
         options:
           - stage
           - prod
 jobs:
   lhci:
-    name: Lighthouse CI  - ${{ inputs.environment != null && inputs.environment || 'stage' }}
+    name: Lighthouse CI  - ${{ inputs.environment != null && inputs.environment || 'prod' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -28,3 +28,5 @@ jobs:
           npm run lighthouse
         env:
           LIGHTHOUSE_COLLECT_URL: ${{ secrets.LIGHTHOUSE_COLLECT_URL }}
+      - name: Report results
+        run: npm run cron:report-lighthouse-results

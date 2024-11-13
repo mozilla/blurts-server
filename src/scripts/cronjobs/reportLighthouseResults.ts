@@ -62,7 +62,11 @@ async function run() {
       .filter((result) => result.isRepresentativeRun === true)
       .map(async (medianResult) => {
         const { jsonPath, url, summary } = medianResult;
-        const fullReport = await import(jsonPath);
+        const fullReport = JSON.parse(
+          await readFile(new URL(jsonPath, import.meta.url), {
+            encoding: "utf8",
+          }),
+        );
         const audits = AUDITS_TO_INCLUDE.map((auditId) => {
           const { id, score, numericValue } = fullReport.audits[auditId];
           return { id, score, numericValue };
@@ -72,7 +76,7 @@ async function run() {
       }),
   );
 
-  console.info("lighthouse", lighthouseReport);
+  logger.info("lighthouse", lighthouseReport);
 }
 
 void run()
