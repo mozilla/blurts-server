@@ -429,7 +429,7 @@ export async function getAllDataBrokers() {
     const data: OneRepResponse<
       Array<{
         id: number;
-        data_broker: string;
+        dataBroker: string;
         url: string;
         status:
           | "active"
