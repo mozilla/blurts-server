@@ -30,6 +30,7 @@ export type FixViewProps = {
     | "leaked-passwords"
     | "security-recommendations";
   hideProgressIndicator?: boolean;
+  hideNavClose?: boolean;
   showConfetti?: boolean;
 };
 
@@ -90,7 +91,7 @@ export const FixView = (props: FixViewProps) => {
             )}
           />
         )}
-        {navigationClose()}
+        {!props.hideNavClose && navigationClose()}
         <section className={styles.fixSection}>
           <div className={styles.viewWrapper}>{props.children}</div>
           <Link

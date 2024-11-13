@@ -212,6 +212,7 @@ export const RemovalUnderMaintenanceView = (props: Props) => {
       currentSection="data-broker-profiles"
       data={props.stepDeterminationData}
       hideProgressIndicator={detailedRemovalGuide}
+      hideNavClose={detailedRemovalGuide}
     >
       {!detailedRemovalGuide ? dataBrokerInformation : removalGuideInstructions}
     </FixView>
