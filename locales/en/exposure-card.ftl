@@ -32,8 +32,6 @@ exposure-card-your-exposed-info = Your exposed info:
 exposure-card-found-the-following-data = { -brand-monitor } found the following exposed data:
 exposure-card-exposure-type-data-broker = Info for sale
 exposure-card-exposure-type-data-breach = Data breach
-# Deprecated
-exposure-card-cta = Fix all exposures
 exposure-card-resolve-exposures-cta = Resolve exposures
 exposure-card-label-company-logo = Company logo
 exposure-card-label-company = Company
