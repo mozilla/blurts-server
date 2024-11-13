@@ -67,8 +67,8 @@
     "npm": "10.1.0"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.685.0",
-    "@aws-sdk/lib-storage": "^3.685.0",
+    "@aws-sdk/client-s3": "^3.689.0",
+    "@aws-sdk/lib-storage": "^3.689.0",
     "@fluent/bundle": "^0.18.0",
     "@fluent/langneg": "^0.7.0",
     "@fluent/react": "^0.15.2",
@@ -98,7 +98,7 @@
     "next": "^14.2.15",
     "next-auth": "^4.24.10",
     "nodemailer": "^6.9.16",
-    "pg": "^8.13.0",
+    "pg": "^8.13.1",
     "react": "^18.3.1",
     "react-aria": "^3.35.1",
     "react-cookie": "^7.2.1",
@@ -123,7 +123,7 @@
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.0.1",
     "@testing-library/user-event": "^14.5.2",
-    "@types/adm-zip": "^0.5.5",
+    "@types/adm-zip": "^0.5.6",
     "@types/canvas-confetti": "^1.6.4",
     "@types/jest-axe": "^3.5.9",
     "@types/jsonwebtoken": "^9.0.7",
