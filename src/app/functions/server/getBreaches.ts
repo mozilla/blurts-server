@@ -17,7 +17,9 @@ export async function getBreaches(): Promise<HibpLikeDbBreach[]> {
     return breaches;
   }
   breaches = await getAllBreachesFromDb();
-  logger.debug(`loaded breaches from database: ${breaches.length}`);
+  logger.debug("loaded breaches from database", {
+    breachesLength: breaches.length,
+  });
 
   // if "breaches" table does not return results, fall back to HIBP request
   if (breaches?.length < 1) {
