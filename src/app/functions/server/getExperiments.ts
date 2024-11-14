@@ -35,13 +35,13 @@ export async function getExperiments(params: {
   if (!process.env.NIMBUS_SIDECAR_URL) {
     throw new Error("env var NIMBUS_SIDECAR_URL not set");
   }
-  const serverUrl = new URL(process.env.NIMBUS_SIDECAR_URL);
+  const serverUrl = new URL(`${process.env.NIMBUS_SIDECAR_URL}/v1/features`);
 
   try {
     if (params.previewMode === true) {
       serverUrl.searchParams.set("nimbus_preview", "true");
     }
-    serverUrl.pathname = "/v1/features";
+
     const response = await fetch(serverUrl, {
       headers: {
         "Content-Type": "application/json",
