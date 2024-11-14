@@ -3,10 +3,8 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { readFile } from "node:fs/promises";
-import Sentry from "@sentry/nextjs";
 import { logger } from "../../app/functions/server/logging";
 
-const SENTRY_SLUG = "cron-report-lighthouse-results";
 const AUDITS_TO_INCLUDE = [
   "first-contentful-paint",
   "largest-contentful-paint",
@@ -17,16 +15,6 @@ const AUDITS_TO_INCLUDE = [
   "server-response-time",
   "interactive",
 ];
-
-Sentry.init({
-  dsn: process.env.SENTRY_DSN,
-  tracesSampleRate: 1.0,
-});
-
-const checkInId = Sentry.captureCheckIn({
-  monitorSlug: SENTRY_SLUG,
-  status: "in_progress",
-});
 
 type LighthouseResult = {
   url: string;
@@ -76,21 +64,15 @@ async function run() {
       }),
   );
 
-  logger.info("lighthouse", lighthouseReport);
+  logger.info("lighthouse_report", lighthouseReport);
 }
 
-void run()
-  .then(async (_) => {
-    Sentry.captureCheckIn({
-      checkInId,
-      monitorSlug: SENTRY_SLUG,
-      status: "ok",
-    });
-  })
-  .catch((error) => {
-    logger.error(error);
-    Sentry.captureException(error);
-  })
-  .finally(() => {
-    setTimeout(process.exit, 1000);
+try {
+  run();
+} catch (error) {
+  logger.error("lighthouse_report", {
+    exception: error,
   });
+} finally {
+  setTimeout(process.exit, 1000);
+}
