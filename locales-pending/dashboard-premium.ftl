@@ -217,7 +217,11 @@ data-broker-removal-maintenance-cta-mark-as-resolved = Mark exposure resolved
 # Est. is short for "estimated"
 # Variables:
 # $range is the range of minutes it would take to complete the removal. E.g. 3-5 minutes.
-data-broker-removal-maintenance-estimated-time = Est. time to complete: { $range } minutes
+data-broker-removal-maintenance-estimated-time =
+    { $range ->
+        [one] Est. time to complete: { $range } minute
+       *[other] Est. time to complete: { $range } minutes
+    }
 data-broker-removal-maintenance-steps-to-remove-header = How to remove your profile from data broker websites
 data-broker-removal-maintenance-steps-to-remove-header-step-one = Visit this data broker website then locate their removal instructions. These may be purposely difficult to find, so check in the footer, terms page, privacy page, or “do not sell” page for removal instructions.
 data-broker-removal-maintenance-steps-to-remove-header-step-two = When you’ve determined your profile was successfully removed, you can mark the exposure as resolved by toggling on the switch within this exposure data card in your dashboard.
