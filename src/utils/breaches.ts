@@ -54,6 +54,7 @@ async function getAllEmailsAndBreaches(
       "getAllEmailsAndBreaches: allBreaches object cannot be empty";
     console.error(errMsg);
     captureMessage(errMsg);
+
     return { verifiedEmails, unverifiedEmails };
   }
 
