@@ -21,6 +21,7 @@ src/client/images/logo_cache
 state.json
 src/e2e/specs/*-snapshots/**
 **/traces/
+playwright-report.json
 
 # Storybook
 */storybook.log

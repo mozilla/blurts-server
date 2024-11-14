@@ -18,9 +18,14 @@ const webServerConfig = {
   // Building the app can take some time:
   timeout: 600_000,
   port: 6060
-}
+};
 
-const shouldStartWebServer = process.env.E2E_TEST_ENV === "local"
+const shouldStartWebServer = process.env.E2E_TEST_ENV === "local";
+
+const defaultReporters = [
+  ['html'],
+  ['json', { outputFile: 'playwright-report.json' }]
+];
 
 export default defineConfig({
   testDir: 'src/e2e/specs',
@@ -57,7 +62,9 @@ export default defineConfig({
   workers: process.env.CI ? "75%" : undefined,
 
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: process.env.CI ? [['github'], ['html']] : 'html',
+  reporter: process.env.CI
+    ? [...defaultReporters, ['github']]
+    : defaultReporters,
 
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
@@ -126,4 +133,4 @@ export default defineConfig({
 
   // Run your local dev server before starting the tests -- should run only on PRs or when prompted
   ...(shouldStartWebServer && { webServer: webServerConfig })
-})
+});
