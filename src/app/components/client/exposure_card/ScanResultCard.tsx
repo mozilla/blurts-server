@@ -8,13 +8,7 @@ import React, { ReactNode, useId } from "react";
 import { OnerepScanResultRow } from "knex/types/tables";
 import styles from "./ExposureCard.module.scss";
 import { StatusPill } from "../../server/StatusPill";
-import {
-  ChevronDown,
-  EmailIcon,
-  LocationPinIcon,
-  MultipleUsersIcon,
-  PhoneIcon,
-} from "../../server/Icons";
+import { ChevronDown } from "../../server/Icons";
 import { useL10n } from "../../../hooks/l10n";
 import { ExposureCardDataClassLayout } from "./ExposureCardDataClass";
 import { DataBrokerImage } from "./DataBrokerImage";
@@ -52,7 +46,6 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
         exposure={scanResult}
         key="relatives"
         dataBrokerDataType="relatives"
-        icon={<MultipleUsersIcon alt="" width="13" height="13" />}
         label={l10n.getString("exposure-card-family-members")}
         count={scanResult.relatives.length}
         isPremiumUser={props.isPremiumUser}
@@ -65,7 +58,6 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
         exposure={scanResult}
         key="phones"
         dataBrokerDataType="phones"
-        icon={<PhoneIcon alt="" width="13" height="13" />}
         label={l10n.getString("exposure-card-phone-number")}
         count={scanResult.phones.length}
         isPremiumUser={props.isPremiumUser}
@@ -78,7 +70,6 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
         exposure={scanResult}
         key="emails"
         dataBrokerDataType="emails"
-        icon={<EmailIcon alt="" width="13" height="13" />}
         label={l10n.getString("exposure-card-email")}
         count={scanResult.emails.length}
         isPremiumUser={props.isPremiumUser}
@@ -91,7 +82,6 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
         exposure={scanResult}
         key="addresses"
         dataBrokerDataType="addresses"
-        icon={<LocationPinIcon alt="" width="13" height="13" />}
         label={l10n.getString("exposure-card-address")}
         count={scanResult.addresses.length}
         isPremiumUser={props.isPremiumUser}
@@ -197,6 +187,15 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
             },
           },
         );
+      case "removal_under_maintenance":
+        return l10n.getFragment(
+          "exposure-card-description-info-for-sale-manual-removal-needed",
+          {
+            elems: {
+              b: <b />,
+            },
+          },
+        );
     }
   };
 
@@ -227,6 +226,13 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
       `dashboard-exposures-filter-exposure-removal-time-label-${removalTimeLabelId}`,
     );
   }
+
+  const resolveExposuresCta = // Verifying the status for automatically removed data brokers v. manually resolved are handled differently
+    (props.scanResult.status === "new" ||
+      props.scanResult.status === "removal_under_maintenance") &&
+    !props.scanResult.manually_resolved ? (
+      <span className={styles.fixItBtn}>{props.resolutionCta}</span>
+    ) : null;
 
   const exposureCard = (
     <div aria-label={props.scanResult.data_broker}>
@@ -317,28 +323,25 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
             props.isExpanded ? styles.isOpen : ""
           }`}
         >
-          <div>
+          <div className={styles.exposureDetailsTopDescription}>
             <p>{dataBrokerDescription()}</p>
+            <span className={styles.resolveExposuresCtaDesktop}>
+              {resolveExposuresCta}
+            </span>
           </div>
-          <div className={styles.exposedInfoContainer}>
-            <div className={styles.exposedInfoWrapper}>
-              <p className={styles.exposedInfoTitle}>
-                {l10n.getString("exposure-card-your-exposed-info")}
-              </p>
-              <div className={styles.dataClassesList}>
-                {exposureCategoriesArray.map((item) => (
-                  <React.Fragment key={item.key}>{item}</React.Fragment>
-                ))}
-              </div>
+          <div className={styles.exposureDetailsContent}>
+            <p className={styles.exposedInfoTitle}>
+              {l10n.getString("exposure-card-found-the-following-data")}
+            </p>
+            <div className={styles.exposedDataTypes}>
+              {exposureCategoriesArray.map((item) => (
+                <React.Fragment key={item.key}>{item}</React.Fragment>
+              ))}
             </div>
-            {
-              // Verifying the status for automatically removed data brokers v. manually resolved are handled differently
-              props.scanResult.status === "new" &&
-              !props.scanResult.manually_resolved ? (
-                <span className={styles.fixItBtn}>{props.resolutionCta}</span>
-              ) : null
-            }
           </div>
+          <span className={styles.resolveExposuresCtaMobile}>
+            {resolveExposuresCta}
+          </span>
         </div>
       </div>
     </div>

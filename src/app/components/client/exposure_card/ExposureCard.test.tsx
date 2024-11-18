@@ -13,6 +13,7 @@ import Meta, {
   DataBrokerActionNeeded,
   DataBrokerInProgress,
   DataBrokerManualRemoved,
+  DataBrokerRemovalUnderMaintenance,
   DataBrokerRemoved,
   DataBrokerRequestedRemoval,
 } from "./ExposureCard.stories";
@@ -79,6 +80,21 @@ describe("ScanResultCard", () => {
     render(<ComposedProgressCard />);
     const innerDescription = screen.getByText(
       "As a ⁨Monitor Plus⁩ member, we’ve removed",
+      { exact: false },
+    );
+
+    expect(innerDescription).toBeInTheDocument();
+  });
+
+  // Data broker removal under maintenance
+  it("shows the right description for a scan result card where removal is under maintenance", () => {
+    const ComposedProgressCard = composeStory(
+      DataBrokerRemovalUnderMaintenance,
+      Meta,
+    );
+    render(<ComposedProgressCard />);
+    const innerDescription = screen.getByText(
+      "We’ve asked this data broker to remove your profile but they haven’t done it.",
       { exact: false },
     );
 

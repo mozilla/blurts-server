@@ -11,6 +11,7 @@ import {
   createRandomScanResult,
 } from "../../../../apiMocks/mockData";
 import { defaultExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
+import { BreachDataTypes } from "../../../functions/universal/breach";
 
 const meta: Meta<typeof ExposureCard> = {
   title: "ExposureCard",
@@ -49,7 +50,19 @@ const ScanMockItemInProgress = createRandomScanResult({
   status: "optout_in_progress",
   manually_resolved: false,
 });
-const BreachMockItemRemoved = createRandomBreach({ isResolved: true });
+const ScanMockItemRemovalUnderMaintenance = createRandomScanResult({
+  status: "removal_under_maintenance",
+  manually_resolved: false,
+});
+const BreachMockItemRemoved = createRandomBreach({
+  isResolved: true,
+  dataClassesEffected: [
+    {
+      [BreachDataTypes.Email]: 2,
+      [BreachDataTypes.Passwords]: 4,
+    },
+  ],
+});
 const BreachMockItemNew = createRandomBreach({ isResolved: false });
 
 export const DataBrokerRequestedRemoval: Story = {
@@ -92,6 +105,13 @@ export const DataBreachActionNeeded: Story = {
   args: {
     exposureImg: TwitterImage,
     exposureData: BreachMockItemNew,
+  },
+};
+
+export const DataBrokerRemovalUnderMaintenance: Story = {
+  args: {
+    exposureImg: FamilyTreeImage,
+    exposureData: ScanMockItemRemovalUnderMaintenance,
   },
 };
 

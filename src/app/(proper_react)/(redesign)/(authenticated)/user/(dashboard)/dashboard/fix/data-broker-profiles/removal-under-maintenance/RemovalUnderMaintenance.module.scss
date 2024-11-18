@@ -1,0 +1,61 @@
+@import "../../../../../../../../../tokens";
+
+.dataBrokerInformationWrapper {
+  .exposureCardWrapper {
+    margin-top: $spacing-md;
+    padding-bottom: $spacing-lg;
+  }
+
+  .header {
+    font: $text-body-lg;
+    font-weight: 700;
+  }
+}
+
+.removalGuideInstructionsWrapper {
+  .backArrow {
+    all: unset;
+    cursor: pointer;
+  }
+  .headerRemovalGuide {
+    padding-top: $spacing-lg;
+    font: $text-body-xl;
+    font-weight: 700;
+  }
+
+  .buttonWrapper {
+    display: flex;
+    justify-content: center;
+    padding-top: $spacing-lg;
+  }
+}
+
+.removalContentSection {
+  margin-top: $layout-md;
+
+  dt {
+    font: $text-body-lg;
+    font-weight: 600;
+
+    &.removalGuideInstructions {
+      font: $text-body-md;
+      font-weight: 700;
+    }
+  }
+
+  dd {
+    padding-top: $spacing-sm;
+  }
+
+  ol {
+    padding-top: $spacing-sm;
+
+    li {
+      margin-bottom: $spacing-xs;
+    }
+  }
+
+  button {
+    margin-top: $spacing-lg;
+  }
+}
