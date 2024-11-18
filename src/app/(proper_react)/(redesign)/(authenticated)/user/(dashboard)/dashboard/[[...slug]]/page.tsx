@@ -51,7 +51,7 @@ type Props = {
     slug: string[] | undefined;
   };
   searchParams: {
-    nimbus_web_preview?: string;
+    nimbus_preview?: string;
     dialog?: "subscriptions";
   };
 };
@@ -126,7 +126,7 @@ export default async function DashboardPage({ params, searchParams }: Props) {
     experimentationId: experimentationId,
     countryCode: countryCode,
     locale: getLocale(getL10n()),
-    previewMode: searchParams.nimbus_web_preview === "true",
+    previewMode: searchParams.nimbus_preview === "true",
   });
 
   const monthlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "monthly" });
