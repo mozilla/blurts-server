@@ -397,6 +397,31 @@ async function getEmailForProfile(onerepProfileId: number) {
   }
 }
 
+async function getScanResultsWithBrokerUnderMaintenance(
+  onerepProfileId: number,
+) {
+  const scanResults = await knex("onerep_scan_results")
+    .innerJoin(
+      "onerep_data_brokers",
+      "onerep_scan_results.data_broker",
+      "=",
+      "onerep_data_brokers.data_broker",
+    )
+    .where("onerep_scan_results.onerep_profile_id", onerepProfileId) // profile Id match
+    .where("onerep_data_brokers.status", "removal_under_maintenance") // data broker needs to be under maintenance
+    .andWhereRaw(
+      "\"onerep_scan_results.updated_at\" < NOW() - INTERVAL '200 day'",
+    ) // scan result needs to be 200 days or younger
+    .andWhere("onerep_scan_results.manually_resolved", "false") // not already manually removed
+    .andWhereNot("onerep_scan_results.status", "removed") // not auto removed
+    .orderBy("onerep_scan_result_id");
+
+  console.log("\n\n scan results broker maintenance:");
+  console.log({ scanResults });
+
+  return scanResults;
+}
+
 export {
   getAllScansForProfile,
   getLatestScanForProfileByReason,
@@ -415,4 +440,5 @@ export {
   deleteScanResultsForProfile,
   deleteSomeScansForProfile,
   getEmailForProfile,
+  getScanResultsWithBrokerUnderMaintenance,
 };
