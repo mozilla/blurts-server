@@ -25,7 +25,7 @@ type Props = {
   };
   searchParams: {
     referrer?: string;
-    nimbus_web_preview?: string;
+    nimbus_preview?: string;
   };
 };
 
@@ -67,7 +67,7 @@ export default async function Onboarding({ params, searchParams }: Props) {
     experimentationId,
     countryCode,
     locale: getLocale(getL10n()),
-    previewMode: searchParams.nimbus_web_preview === "true",
+    previewMode: searchParams.nimbus_preview === "true",
   });
 
   return (
