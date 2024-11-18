@@ -24,7 +24,7 @@ import { AccountsMetricsFlowProvider } from "../../../../contextProviders/accoun
 
 type Props = {
   searchParams: {
-    nimbus_web_preview?: string;
+    nimbus_preview?: string;
   };
 };
 
@@ -41,7 +41,7 @@ export default async function Page({ searchParams }: Props) {
     experimentationId,
     countryCode,
     locale: getLocale(getL10n()),
-    previewMode: searchParams.nimbus_web_preview === "true",
+    previewMode: searchParams.nimbus_preview === "true",
   });
 
   // request the profile stats for the last 30 days
