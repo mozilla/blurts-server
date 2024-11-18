@@ -28,7 +28,7 @@ import { checkUserHasMonthlySubscription } from "../../../../../../functions/ser
 import { getEmailPreferenceForPrimaryEmail } from "../../../../../../../db/tables/subscriber_email_preferences";
 type Props = {
   searchParams: {
-    nimbus_web_preview?: string;
+    nimbus_preview?: string;
   };
 };
 
@@ -79,7 +79,7 @@ export default async function SettingsPage({ searchParams }: Props) {
     experimentationId: experimentationId,
     countryCode: countryCode,
     locale: getLocale(getL10n()),
-    previewMode: searchParams.nimbus_web_preview === "true",
+    previewMode: searchParams.nimbus_preview === "true",
   });
 
   const lastOneRepScan = await getLatestOnerepScan(
