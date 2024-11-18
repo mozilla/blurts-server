@@ -16,7 +16,32 @@ async function run() {
     ),
   );
 
-  const playwrightReportParsed = playwrightReport;
+  const { stats, suites } = playwrightReport;
+  const playwrightReportParsed = {
+    stats,
+    suites: suites.map((suite) => {
+      const { title, file, suites: subsuites } = suite;
+
+      const subsuitesParsed = subsuites?.map((subsuite) => {
+        const { title, file, specs } = subsuite;
+        const specsParsed = specs.map((spec) => {
+          const { id, title, ok } = spec;
+          return { id, title, ok };
+        });
+        return {
+          title,
+          file,
+          specs: specsParsed,
+        };
+      });
+
+      return {
+        title,
+        file,
+        subsuites: subsuitesParsed,
+      };
+    }),
+  };
 
   logger.info("playwright_report", playwrightReportParsed);
 }
