@@ -1,0 +1,32 @@
+name: Lighthouse Report Cron
+on:
+  schedule:
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to run LHCI against'
+        required: false
+        default: 'prod'
+        type: choice
+        options:
+          - stage
+          - prod
+jobs:
+  lhci:
+    name: Lighthouse Report  - ${{ inputs.environment != null && inputs.environment || 'prod' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js 20.9.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.9.x
+      - name: Run Lighthouse CI
+        run: |
+          npm install -g @lhci/cli@0.14.x
+          npm run lighthouse
+        env:
+          LIGHTHOUSE_COLLECT_URL: ${{ secrets.LIGHTHOUSE_COLLECT_URL }}
+      - name: Report results
+        run: npm run cron:report-lighthouse-results
