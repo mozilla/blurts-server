@@ -8,7 +8,10 @@ import { RemovalUnderMaintenanceView } from "./RemovalUnderMaintenanceView";
 import { StepDeterminationData } from "../../../../../../../../../functions/server/getRelevantGuidedSteps";
 import { getCountryCode } from "../../../../../../../../../functions/server/getCountryCode";
 import { headers } from "next/headers";
-import { getLatestOnerepScanResults } from "../../../../../../../../../../db/tables/onerep_scans";
+import {
+  getLatestOnerepScanResults,
+  getScanResultsWithBrokerUnderMaintenance,
+} from "../../../../../../../../../../db/tables/onerep_scans";
 import { getOnerepProfileId } from "../../../../../../../../../../db/tables/subscribers";
 import { getSubscriberBreaches } from "../../../../../../../../../functions/server/getSubscriberBreaches";
 import { getSubscriberEmails } from "../../../../../../../../../functions/server/getSubscriberEmails";
@@ -22,6 +25,8 @@ export default async function RemovalUnderMaintenance() {
   const countryCode = getCountryCode(headers());
   const profileId = await getOnerepProfileId(session.user.subscriber.id);
   const latestScan = await getLatestOnerepScanResults(profileId);
+  // TODO: remove after testing
+  await getScanResultsWithBrokerUnderMaintenance(profileId);
 
   const data: StepDeterminationData = {
     countryCode,

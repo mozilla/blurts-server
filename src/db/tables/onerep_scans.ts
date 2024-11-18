@@ -17,12 +17,13 @@ import {
 } from "knex/types/tables";
 import { RemovalStatus } from "../../app/functions/universal/scanResult.js";
 import { getQaCustomBrokers, getQaToggleRow } from "./qa_customs.ts";
+import { DataBrokerRow } from "../../knex-tables";
 
 const knex = createDbConnection();
 
 export interface LatestOnerepScanData {
   scan: OnerepScanRow | null;
-  results: OnerepScanResultRow[];
+  results: OnerepScanResultRow[] | (OnerepScanResultRow & DataBrokerRow)[];
 }
 
 async function getAllScansForProfile(
@@ -398,28 +399,39 @@ async function getEmailForProfile(onerepProfileId: number) {
 }
 
 async function getScanResultsWithBrokerUnderMaintenance(
-  onerepProfileId: number,
+  onerepProfileId: number | null,
 ) {
-  const scanResults = await knex("onerep_scan_results")
-    .innerJoin(
-      "onerep_data_brokers",
-      "onerep_scan_results.data_broker",
-      "=",
-      "onerep_data_brokers.data_broker",
+  if (onerepProfileId === null) {
+    return null;
+  }
+
+  let scanResults = await knex("onerep_scan_results as sr")
+    .select(
+      "sr.*",
+      "s.*",
+      "sr.status as scan_result_status", // rename to avoid collision
+      "db.status as broker_status", // rename to avoid collision
     )
-    .where("onerep_scan_results.onerep_profile_id", onerepProfileId) // profile Id match
-    .where("onerep_data_brokers.status", "removal_under_maintenance") // data broker needs to be under maintenance
-    .andWhereRaw(
-      "\"onerep_scan_results.updated_at\" < NOW() - INTERVAL '200 day'",
-    ) // scan result needs to be 200 days or younger
-    .andWhere("onerep_scan_results.manually_resolved", "false") // not already manually removed
-    .andWhereNot("onerep_scan_results.status", "removed") // not auto removed
-    .orderBy("onerep_scan_result_id");
+    .innerJoin("onerep_scans as s", "sr.onerep_scan_id", "s.onerep_scan_id")
+    .where("s.onerep_profile_id", onerepProfileId)
+    .andWhere("sr.manually_resolved", "false")
+    .andWhereNot("sr.status", "removed")
+    .join("onerep_data_brokers as db", "sr.data_broker", "db.data_broker")
+    .orderBy("sr.onerep_scan_result_id");
 
   console.log("\n\n scan results broker maintenance:");
-  console.log({ scanResults });
+  console.log(scanResults.length);
 
-  return scanResults;
+  scanResults = scanResults.filter(
+    (result) =>
+      result.broker_status === "removal_under_maintenance" ||
+      new Date().getTime() - new Date(result.updated_at).getTime() >
+        200 * 24 * 60 * 60 * 1000,
+  );
+  console.log({ scanResults });
+  console.log(scanResults.length);
+
+  return { results: scanResults } as LatestOnerepScanData;
 }
 
 export {
