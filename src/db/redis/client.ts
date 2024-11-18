@@ -8,6 +8,7 @@ import { createRedisMockInstance } from "./util-mock";
 import type { Redis } from "ioredis";
 
 export const REDIS_ALL_BREACHES_KEY = "breaches";
+export const REDIS_ALL_DATA_BROKERS_KEY = "dataBrokers";
 
 let singleton: Redis;
 export const redisClient = () => {
