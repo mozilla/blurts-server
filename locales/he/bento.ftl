@@ -9,3 +9,5 @@ toolbar-app-picker-product-pocket = { -brand-pocket }
 toolbar-app-picker-product-fx-desktop = ‏{ -brand-firefox } למחשבים שולחניים
 toolbar-app-picker-product-fx-mobile = ‏{ -brand-firefox } לנייד
 toolbar-app-picker-by-mozilla = נוצר על־ידי { -brand-mozilla }
+# Bento headline
+fx-makes-tech = ‏{ -brand-name } הוא טכנולוגיה שנלחמת עבור הפרטיות שלך ברשת.
