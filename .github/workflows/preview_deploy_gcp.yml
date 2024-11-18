@@ -84,9 +84,9 @@ jobs:
     - name: Comment on Pull Request
       uses: thollander/actions-comment-pull-request@v3
       with:
-          GITHUB_TOKEN: ${{ github.token }}
+          github-token: ${{ github.token }}
           message: |
             Preview URL :rocket: : ${{ steps.deploy.outputs.url }}
-          comment_tag: preview_url
+          comment-tag: preview_url
           create-if-not-exists: true
           
