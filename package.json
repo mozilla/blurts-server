@@ -84,7 +84,7 @@
     "@sentry/nextjs": "^8.37.1",
     "@sentry/node": "^8.0.0",
     "@sentry/utils": "^8.0.0",
-    "@stripe/stripe-js": "^4.9.0",
+    "@stripe/stripe-js": "^5.0.0",
     "@types/jsdom": "^21.1.7",
     "@types/node": "^22.8.7",
     "@types/react": "^18.3.12",
