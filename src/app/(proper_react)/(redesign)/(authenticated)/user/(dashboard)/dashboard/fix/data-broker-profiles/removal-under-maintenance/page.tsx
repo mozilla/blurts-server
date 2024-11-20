@@ -8,7 +8,10 @@ import { RemovalUnderMaintenanceView } from "./RemovalUnderMaintenanceView";
 import { StepDeterminationData } from "../../../../../../../../../functions/server/getRelevantGuidedSteps";
 import { getCountryCode } from "../../../../../../../../../functions/server/getCountryCode";
 import { headers } from "next/headers";
-import { getLatestOnerepScanResults } from "../../../../../../../../../../db/tables/onerep_scans";
+import {
+  getLatestOnerepScanResults,
+  // getScanResultsWithBrokerUnderMaintenance,
+} from "../../../../../../../../../../db/tables/onerep_scans";
 import { getOnerepProfileId } from "../../../../../../../../../../db/tables/subscribers";
 import { getSubscriberBreaches } from "../../../../../../../../../functions/server/getSubscriberBreaches";
 import { getSubscriberEmails } from "../../../../../../../../../functions/server/getSubscriberEmails";
