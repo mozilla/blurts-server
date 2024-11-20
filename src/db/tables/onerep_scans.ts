@@ -419,8 +419,6 @@ async function getScanResultsWithBrokerUnderMaintenance(
     .join("onerep_data_brokers as db", "sr.data_broker", "db.data_broker")
     .orderBy("sr.onerep_scan_result_id");
 
-  console.log("\n\n scan results broker maintenance:");
-  console.log(scanResults.length);
 
   scanResults = scanResults.filter(
     (result) =>
