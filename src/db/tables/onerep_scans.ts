@@ -428,8 +428,6 @@ async function getScanResultsWithBrokerUnderMaintenance(
       new Date().getTime() - new Date(result.updated_at).getTime() >
         200 * 24 * 60 * 60 * 1000,
   );
-  console.log({ scanResults });
-  console.log(scanResults.length);
 
   return { results: scanResults } as LatestOnerepScanData;
 }
