@@ -25,8 +25,6 @@ export default async function RemovalUnderMaintenance() {
   const countryCode = getCountryCode(headers());
   const profileId = await getOnerepProfileId(session.user.subscriber.id);
   const latestScan = await getLatestOnerepScanResults(profileId);
-  // TODO: remove after testing
-  await getScanResultsWithBrokerUnderMaintenance(profileId);
 
   const data: StepDeterminationData = {
     countryCode,
