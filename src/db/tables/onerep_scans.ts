@@ -419,7 +419,6 @@ async function getScanResultsWithBrokerUnderMaintenance(
     .join("onerep_data_brokers as db", "sr.data_broker", "db.data_broker")
     .orderBy("sr.onerep_scan_result_id");
 
-
   scanResults = scanResults.filter(
     (result) =>
       result.broker_status === "removal_under_maintenance" ||
