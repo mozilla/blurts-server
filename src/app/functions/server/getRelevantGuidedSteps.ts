@@ -203,7 +203,6 @@ export function hasCompletedStepSection(
   if (section === "DataBrokerManualRemoval") {
     return hasCompletedStep(data, "DataBrokerManualRemoval");
   }
-
   /* c8 ignore next 5 */
   // I believe this *is* covered by unit tests, but for some reason,
   // since the upgrade to Node 20.10, it doesn't get marked as covered anymore:
@@ -245,8 +244,15 @@ export function hasCompletedStep(
   data: StepDeterminationData,
   stepId: StepLink["id"],
 ): boolean {
-  // TODO:
-  // if (stepId === "DataBrokerManualRemoval") { add business logic here }
+  if (stepId === "DataBrokerManualRemoval") {
+    const hasResolvedAllScanResults =
+      data.latestScanData?.results
+        ?.filter(
+          (scanResult) => scanResult.status === "removal_under_maintenance",
+        )
+        .every((scanResult) => scanResult.manually_resolved) ?? false;
+    return hasResolvedAllScanResults;
+  }
 
   if (stepId === "Scan") {
     const hasRunScan =

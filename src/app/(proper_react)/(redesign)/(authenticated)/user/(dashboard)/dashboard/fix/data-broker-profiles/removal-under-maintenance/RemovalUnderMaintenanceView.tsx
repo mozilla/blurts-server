@@ -4,7 +4,6 @@
 
 "use client";
 
-import { OnerepScanResultRow } from "knex/types/tables";
 import {
   StepDeterminationData,
   getNextGuidedStep,
@@ -18,23 +17,60 @@ import { TelemetryButton } from "../../../../../../../../../components/client/Te
 import { CONST_URL_SUMO_MANUAL_REMOVAL } from "../../../../../../../../../../constants";
 import { useState } from "react";
 import { BackArrow } from "../../../../../../../../../components/server/Icons";
+import { LatestOnerepScanData } from "../../../../../../../../../../db/tables/onerep_scans";
+import { hasPremium } from "../../../../../../../../../functions/universal/user";
 
 export type Props = {
-  data: OnerepScanResultRow[];
+  data: LatestOnerepScanData;
   stepDeterminationData: StepDeterminationData;
   subscriberEmails: string[];
 };
 
 export const RemovalUnderMaintenanceView = (props: Props) => {
-  if (props.data === null) {
-    console.error("No scan data");
-  }
   const l10n = useL10n();
-  const testScanItem = props.data;
-  const firstScan = testScanItem[0];
-
   const [detailedRemovalGuide, setDetailedRemovalGuide] = useState(false);
+  const [firstScanResultNotResolved, setFirstScanResultNotResolved] = useState(
+    props.data.results[0],
+  );
+  const nextGuidedStep = getNextGuidedStep(
+    props.stepDeterminationData,
+    "DataBrokerManualRemoval",
+  );
 
+  async function handleManualRemovalChange() {
+    const response = await fetch(
+      `/api/v1/user/scan-result/${firstScanResultNotResolved.onerep_scan_result_id}/resolution`,
+      {
+        method: "POST",
+        credentials: "same-origin",
+      },
+    );
+
+    if (!response.ok) {
+      console.error(
+        "Could not update next data broker with removal under maintenance status.",
+      );
+      return;
+    }
+
+    // Mannualy move to next step in response works
+    firstScanResultNotResolved.manually_resolved = true;
+
+    // Find the next unresolved scan result
+    const nextScanResultNotResolved = props.data.results.find(
+      (scanResult) => !scanResult.manually_resolved,
+    );
+
+    // Update the state to the next unresolved scan result
+    if (nextScanResultNotResolved) {
+      setFirstScanResultNotResolved(nextScanResultNotResolved);
+    }
+
+    // Move to the next step
+    else {
+      window.location.href = nextGuidedStep.href;
+    }
+  }
   const dataBrokerInformation = (
     <div className={styles.dataBrokerInformationWrapper}>
       <p className={styles.header}>
@@ -42,25 +78,30 @@ export const RemovalUnderMaintenanceView = (props: Props) => {
           elems: {
             link_to_data_broker: (
               <TelemetryLink
-                href={firstScan.link}
+                href={firstScanResultNotResolved.link}
                 target="_blank"
                 eventData={{
-                  link_id: `go_to_${firstScan.data_broker}_link`,
+                  link_id: `go_to_${firstScanResultNotResolved.data_broker}_link`,
                 }}
               />
             ),
           },
           vars: {
-            data_broker_name: firstScan.data_broker,
+            data_broker_name: firstScanResultNotResolved.data_broker,
           },
         })}
       </p>
       <div className={styles.exposureCardWrapper}>
         <DataBrokerRemovalMaintenance
-          scanResult={testScanItem[0]}
-          isPremiumUser={true}
+          scanResult={firstScanResultNotResolved}
+          isPremiumUser={hasPremium(props.stepDeterminationData.user)}
+          // eslint-disable-next-line @typescript-eslint/no-misused-promises
+          onMarkAsResolved={() => {
+            handleManualRemovalChange().catch((error) => {
+              console.error("Error during manual removal change:", error);
+            });
+          }}
         />
-
         <div className={styles.removalContentSection}>
           <dt>
             {l10n.getString(
@@ -217,7 +258,7 @@ export const RemovalUnderMaintenanceView = (props: Props) => {
   return (
     <FixView
       subscriberEmails={props.subscriberEmails}
-      nextStep={getNextGuidedStep(props.stepDeterminationData, "Scan")}
+      nextStep={nextGuidedStep}
       currentSection="data-broker-profiles"
       data={props.stepDeterminationData}
       hideProgressIndicator={detailedRemovalGuide}
