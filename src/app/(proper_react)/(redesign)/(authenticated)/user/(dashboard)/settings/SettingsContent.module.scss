@@ -1,0 +1,33 @@
+@import "../../../../../../tokens";
+
+.main {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: $spacing-lg;
+  padding: $spacing-2xl;
+}
+
+.title {
+  flex: 0 0 $content-xs;
+  display: flex;
+  flex-direction: column;
+  gap: $layout-xs;
+
+  h2 {
+    font: $text-title-xs;
+  }
+}
+
+.content {
+  align-items: flex-start;
+  background-color: $color-white;
+  border-radius: $border-radius-md;
+  box-shadow: $box-shadow-xs;
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 0;
+  gap: $spacing-lg;
+  overflow: hidden;
+  padding: $spacing-lg;
+}

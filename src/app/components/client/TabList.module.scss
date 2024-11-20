@@ -3,6 +3,10 @@
 .tabs {
   display: flex;
   gap: $spacing-sm;
+
+  &[aria-orientation="vertical"] {
+    flex-direction: column;
+  }
 }
 
 .tab {
@@ -24,4 +28,8 @@
       background: $color-purple-70;
     }
   }
+}
+
+.container {
+  display: flex;
 }

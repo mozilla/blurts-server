@@ -52,7 +52,7 @@ function Tabs(props: TabsProps) {
   const { collection, selectedItem } = state;
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} data-test="test">
       <div {...tabListProps} ref={ref} className={styles.tabs}>
         {[...collection].map((item) => (
           <Tab key={item.key} item={item} state={state} />
