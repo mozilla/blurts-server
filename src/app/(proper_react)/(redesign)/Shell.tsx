@@ -68,15 +68,6 @@ export const Shell = (props: Props) => {
                   {l10n.getString("main-nav-link-dashboard-label")}
                 </PageLink>
               </li>
-              <li key="settings">
-                <PageLink
-                  href="/user/settings"
-                  activeClassName={styles.isActive}
-                  hasTelemetry={{ link_id: "navigation_settings" }}
-                >
-                  {l10n.getString("main-nav-link-settings-label")}
-                </PageLink>
-              </li>
               {props.countryCode === "us" && (
                 <li key="how-it-works">
                   <PageLink
@@ -97,6 +88,15 @@ export const Shell = (props: Props) => {
                   hasTelemetry={{ link_id: "navigation_faq" }}
                 >
                   {l10n.getString("main-nav-link-faq-label")}
+                </PageLink>
+              </li>
+              <li key="settings">
+                <PageLink
+                  href="/user/settings"
+                  activeClassName={styles.isActive}
+                  hasTelemetry={{ link_id: "navigation_settings" }}
+                >
+                  {l10n.getString("main-nav-link-settings-label")}
                 </PageLink>
               </li>
             </ul>

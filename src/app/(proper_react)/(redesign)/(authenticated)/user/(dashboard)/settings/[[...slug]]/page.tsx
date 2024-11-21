@@ -26,12 +26,7 @@ import { getSubscriberById } from "../../../../../../../../db/tables/subscribers
 import { checkSession } from "../../../../../../../functions/server/checkSession";
 import { checkUserHasMonthlySubscription } from "../../../../../../../functions/server/user";
 import { getEmailPreferenceForPrimaryEmail } from "../../../../../../../../db/tables/subscriber_email_preferences";
-
-export const settingsTabSlugs = [
-  "edit-info",
-  "notifications",
-  "manage-account",
-];
+import { CONST_SETTINGS_TAB_SLUGS } from "../../../../../../../../constants";
 
 type Props = {
   params: {
@@ -50,12 +45,12 @@ export default async function SettingsPage({ params, searchParams }: Props) {
   }
 
   const { slug } = params;
-  const defaultTab = settingsTabSlugs[0];
-  const activeTab = slug?.[0] ?? defaultTab;
+  const defaultTab = CONST_SETTINGS_TAB_SLUGS[0];
+  const activeTab = (slug?.[0] ?? defaultTab) as TabType;
   // Only allow the tab slugs. Otherwise: Redirect to the default settings route.
   if (
     typeof slug !== "undefined" &&
-    (!settingsTabSlugs.includes(activeTab) || slug.length >= 2)
+    (!CONST_SETTINGS_TAB_SLUGS.includes(activeTab) || slug.length >= 2)
   ) {
     return redirect(`/user/settings/${defaultTab}`);
   }
@@ -133,7 +128,7 @@ export default async function SettingsPage({ params, searchParams }: Props) {
       experimentData={experimentData}
       lastScanDate={lastOneRepScan?.created_at}
       isMonthlySubscriber={isMonthlySubscriber}
-      activeTab={activeTab as TabType}
+      activeTab={activeTab}
     />
   );
 }

@@ -20,7 +20,9 @@ export const PageLink = (props: Props) => {
   const pathName = usePathname();
   // TODO: Add unit test when changing this code:
   /* c8 ignore next */
-  const activeClassSuffix = pathName === otherProps.href ? activeClassName : "";
+  const activeClassSuffix = pathName.startsWith(otherProps.href as string)
+    ? activeClassName
+    : "";
 
   const className = `${otherProps.className ?? ""} ${
     // TODO: Add unit test when changing this code:

@@ -13,7 +13,10 @@ import { OpenInNew } from "../../../../../../components/server/Icons";
 import { EmailListing } from "./EmailListing";
 import { EmailAddressAdder } from "./EmailAddressAdder";
 import { AlertAddressForm } from "./AlertAddressForm";
-import { CONST_MAX_NUM_ADDRESSES } from "../../../../../../../constants";
+import {
+  CONST_MAX_NUM_ADDRESSES,
+  CONST_SETTINGS_TAB_SLUGS,
+} from "../../../../../../../constants";
 import { TelemetryLink } from "../../../../../../components/client/TelemetryLink";
 import { hasPremium } from "../../../../../../functions/universal/user";
 import { sanitizeEmailRow } from "../../../../../../functions/server/sanitize";
@@ -25,7 +28,7 @@ import { ExperimentData } from "../../../../../../../telemetry/generated/nimbus/
 import { SubscriberEmailPreferencesOutput } from "../../../../../../../db/tables/subscriber_email_preferences";
 import { SettingsContent } from "./SettingsContent";
 
-export type TabType = "edit-info" | "notifications" | "manage-account";
+export type TabType = (typeof CONST_SETTINGS_TAB_SLUGS)[number];
 
 export type Props = {
   l10n: ExtendedReactLocalization;
