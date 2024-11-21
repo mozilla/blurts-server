@@ -18,6 +18,7 @@ import { PageLink } from "./PageLink";
 import { useTelemetry } from "../../hooks/useTelemetry";
 import { usePathname } from "next/navigation";
 import { CONST_SETTINGS_TAB_SLUGS } from "../../../constants";
+import { FeatureFlagName } from "../../../db/tables/featureFlags";
 
 export type Props = {
   countryCode: string;
@@ -30,6 +31,7 @@ export type Props = {
   };
   fxaSettingsUrl: string;
   children: ReactNode;
+  enabledFeatureFlags: FeatureFlagName[];
 };
 
 export const MobileShell = (props: Props) => {
@@ -165,23 +167,25 @@ export const MobileShell = (props: Props) => {
                 >
                   {l10n.getString("main-nav-link-settings-label")}
                 </PageLink>
-                <ul className={styles.subMenu}>
-                  {CONST_SETTINGS_TAB_SLUGS.map((submenuKey) => {
-                    return (
-                      <li key={submenuKey}>
-                        <PageLink
-                          href={`/user/settings/${submenuKey}`}
-                          activeClassName={styles.isActive}
-                          hasTelemetry={{
-                            link_id: `navigation_settings_${submenuKey}`,
-                          }}
-                        >
-                          {l10n.getString(`settings-tab-label-${submenuKey}`)}
-                        </PageLink>
-                      </li>
-                    );
-                  })}
-                </ul>
+                {props.enabledFeatureFlags.includes("SettingsPageRedesign") && (
+                  <ul className={styles.subMenu}>
+                    {CONST_SETTINGS_TAB_SLUGS.map((submenuKey) => {
+                      return (
+                        <li key={submenuKey}>
+                          <PageLink
+                            href={`/user/settings/${submenuKey}`}
+                            activeClassName={styles.isActive}
+                            hasTelemetry={{
+                              link_id: `navigation_settings_${submenuKey}`,
+                            }}
+                          >
+                            {l10n.getString(`settings-tab-label-${submenuKey}`)}
+                          </PageLink>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                )}
               </li>
             </ul>
             <div className={styles.premiumCta}>

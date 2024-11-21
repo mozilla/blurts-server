@@ -17,6 +17,7 @@ import {
 } from "../../functions/server/getPremiumSubscriptionInfo";
 import { SubscriptionCheck } from "../../components/client/SubscriptionCheck";
 import { Footer } from "./Footer";
+import { FeatureFlagName } from "../../../db/tables/featureFlags";
 
 export type Props = {
   l10n: ExtendedReactLocalization;
@@ -24,6 +25,7 @@ export type Props = {
   children: ReactNode;
   nonce: string;
   countryCode: string;
+  enabledFeatureFlags: FeatureFlagName[];
 };
 
 export const Shell = (props: Props) => {
@@ -44,6 +46,7 @@ export const Shell = (props: Props) => {
         yearlySubscriptionUrl={yearlySubscriptionUrl}
         fxaSettingsUrl={process.env.FXA_SETTINGS_URL!}
         subscriptionBillingAmount={getSubscriptionBillingAmount()}
+        enabledFeatureFlags={props.enabledFeatureFlags}
       >
         <div className={styles.wrapper}>
           <nav
