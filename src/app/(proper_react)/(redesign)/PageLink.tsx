@@ -18,9 +18,7 @@ export type Props = ComponentProps<typeof Link> & {
 export const PageLink = (props: Props) => {
   const { activeClassName, hasTelemetry, ...otherProps } = props;
   const pathName = usePathname();
-  // TODO: Add unit test when changing this code:
-  /* c8 ignore next */
-  const activeClassSuffix = pathName.startsWith(otherProps.href as string)
+  const activeClassSuffix = pathName?.startsWith(otherProps.href as string)
     ? activeClassName
     : "";
 

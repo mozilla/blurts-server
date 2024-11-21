@@ -49,6 +49,7 @@ jest.mock("./actions", () => {
 const mockedRouterRefresh = jest.fn();
 
 jest.mock("next/navigation", () => ({
+  usePathname: () => "/user/settings",
   useRouter: () => ({
     refresh: mockedRouterRefresh,
   }),
@@ -58,6 +59,9 @@ import { SettingsView } from "./View";
 import { sanitizeEmailRow } from "../../../../../../functions/server/sanitize";
 import { defaultExperimentData } from "../../../../../../../telemetry/generated/nimbus/experiments";
 import { SubscriberEmailPreferencesOutput } from "../../../../../../../db/tables/subscriber_email_preferences";
+import { Shell } from "../../../../Shell";
+import { ReactNode } from "react";
+import { FeatureFlagName } from "../../../../../../../db/tables/featureFlags";
 
 const subscriberId = 7;
 const mockedSerializedSubscriber: SerializedSubscriber = {
@@ -241,9 +245,31 @@ const mockedFreeSubscriberEmailPreferences: SubscriberEmailPreferencesOutput = {
   monthly_monitor_report_at: new Date("1337-04-02T04:02:42.000Z"),
 };
 
+const mockedSession = {
+  expires: new Date().toISOString(),
+  user: mockedUser,
+};
+
+const SettingsWrapper = (props: {
+  children: ReactNode;
+  enabledFeatureFlags: FeatureFlagName[];
+}) => (
+  <TestComponentWrapper>
+    <Shell
+      l10n={getL10n()}
+      session={mockedSession}
+      nonce=""
+      countryCode="en"
+      enabledFeatureFlags={props.enabledFeatureFlags ?? []}
+    >
+      {props.children}
+    </Shell>
+  </TestComponentWrapper>
+);
+
 it("passes the axe accessibility audit", async () => {
   const { container } = render(
-    <TestComponentWrapper>
+    <SettingsWrapper enabledFeatureFlags={[]}>
       <SettingsView
         activeTab="edit-info"
         data={mockedPlusSubscriberEmailPreferences}
@@ -268,7 +294,7 @@ it("passes the axe accessibility audit", async () => {
         experimentData={defaultExperimentData}
         isMonthlySubscriber={true}
       />
-    </TestComponentWrapper>,
+    </SettingsWrapper>,
   );
   expect(await axe(container)).toHaveNoViolations();
 });
@@ -279,7 +305,7 @@ it("Add email address button is not shown when email limit of five reached", () 
   // test:
   jest.spyOn(console, "warn").mockImplementation(() => {});
   render(
-    <TestComponentWrapper>
+    <SettingsWrapper enabledFeatureFlags={[]}>
       <SettingsView
         activeTab="edit-info"
         l10n={getL10n()}
@@ -311,7 +337,7 @@ it("Add email address button is not shown when email limit of five reached", () 
         isMonthlySubscriber={true}
         data={mockedPlusSubscriberEmailPreferences}
       />
-    </TestComponentWrapper>,
+    </SettingsWrapper>,
   );
 
   const addEmailButton = screen.queryByRole("button", {
@@ -326,7 +352,7 @@ it("Add email address button is shown when fewer than five emails", () => {
   // test:
   jest.spyOn(console, "warn").mockImplementation(() => {});
   render(
-    <TestComponentWrapper>
+    <SettingsWrapper enabledFeatureFlags={[]}>
       <SettingsView
         activeTab="edit-info"
         l10n={getL10n()}
@@ -357,7 +383,7 @@ it("Add email address button is shown when fewer than five emails", () => {
         isMonthlySubscriber={true}
         data={mockedPlusSubscriberEmailPreferences}
       />
-    </TestComponentWrapper>,
+    </SettingsWrapper>,
   );
 
   const addEmailButton = screen.getByRole("button", {
@@ -368,7 +394,7 @@ it("Add email address button is shown when fewer than five emails", () => {
 
 it("preselects 'Send all breach alerts to the primary email address' if that's the user's current preference", () => {
   render(
-    <TestComponentWrapper>
+    <SettingsWrapper enabledFeatureFlags={[]}>
       <SettingsView
         activeTab="edit-info"
         l10n={getL10n()}
@@ -395,7 +421,7 @@ it("preselects 'Send all breach alerts to the primary email address' if that's t
         isMonthlySubscriber={true}
         data={mockedPlusSubscriberEmailPreferences}
       />
-    </TestComponentWrapper>,
+    </SettingsWrapper>,
   );
 
   const affectedRadioButton = screen.getByLabelText(
@@ -411,7 +437,7 @@ it("preselects 'Send all breach alerts to the primary email address' if that's t
 
 it("preselects 'Send breach alerts to the affected email address' if that's the user's current preference", () => {
   render(
-    <TestComponentWrapper>
+    <SettingsWrapper enabledFeatureFlags={[]}>
       <SettingsView
         activeTab="edit-info"
         l10n={getL10n()}
@@ -441,7 +467,7 @@ it("preselects 'Send breach alerts to the affected email address' if that's the 
         isMonthlySubscriber={true}
         data={mockedPlusSubscriberEmailPreferences}
       />
-    </TestComponentWrapper>,
+    </SettingsWrapper>,
   );
 
   const affectedRadioButton = screen.getByLabelText(
@@ -460,7 +486,7 @@ it("disables breach alert notification options if a user opts out of breach aler
   const user = userEvent.setup();
 
   render(
-    <TestComponentWrapper>
+    <SettingsWrapper enabledFeatureFlags={[]}>
       <SettingsView
         activeTab="edit-info"
         l10n={getL10n()}
@@ -487,7 +513,7 @@ it("disables breach alert notification options if a user opts out of breach aler
         isMonthlySubscriber={true}
         data={mockedPlusSubscriberEmailPreferences}
       />
-    </TestComponentWrapper>,
+    </SettingsWrapper>,
   );
   const activateBreachAlertsCheckbox = screen.getByLabelText(
     "Instant breach alerts",
@@ -516,7 +542,7 @@ it("disables breach alert notification options if a user opts out of breach aler
 
 it("preselects primary email alert option", () => {
   render(
-    <TestComponentWrapper>
+    <SettingsWrapper enabledFeatureFlags={[]}>
       <SettingsView
         activeTab="edit-info"
         l10n={getL10n()}
@@ -543,7 +569,7 @@ it("preselects primary email alert option", () => {
         isMonthlySubscriber={true}
         data={mockedPlusSubscriberEmailPreferences}
       />
-    </TestComponentWrapper>,
+    </SettingsWrapper>,
   );
 
   const primaryRadioButton = screen.getByLabelText(
@@ -558,7 +584,7 @@ it("unselects the breach alerts checkbox and sends a null value to the API", asy
   const user = userEvent.setup();
 
   render(
-    <TestComponentWrapper>
+    <SettingsWrapper enabledFeatureFlags={[]}>
       <SettingsView
         activeTab="edit-info"
         l10n={getL10n()}
@@ -585,7 +611,7 @@ it("unselects the breach alerts checkbox and sends a null value to the API", asy
         isMonthlySubscriber={true}
         data={mockedPlusSubscriberEmailPreferences}
       />
-    </TestComponentWrapper>,
+    </SettingsWrapper>,
   );
 
   const primaryRadioButton = screen.getByLabelText(
@@ -613,7 +639,7 @@ it("preselects the affected email comms option after a user decides to enable br
   const user = userEvent.setup();
 
   render(
-    <TestComponentWrapper>
+    <SettingsWrapper enabledFeatureFlags={[]}>
       <SettingsView
         activeTab="edit-info"
         l10n={getL10n()}
@@ -643,7 +669,7 @@ it("preselects the affected email comms option after a user decides to enable br
         isMonthlySubscriber={true}
         data={mockedPlusSubscriberEmailPreferences}
       />
-    </TestComponentWrapper>,
+    </SettingsWrapper>,
   );
 
   const activateBreachAlertsCheckbox = screen.getByLabelText(
@@ -665,7 +691,7 @@ it("sends a call to the API to change the email alert preferences when changing 
 
   const user = userEvent.setup();
   render(
-    <TestComponentWrapper>
+    <SettingsWrapper enabledFeatureFlags={[]}>
       <SettingsView
         activeTab="edit-info"
         l10n={getL10n()}
@@ -692,7 +718,7 @@ it("sends a call to the API to change the email alert preferences when changing 
         isMonthlySubscriber={true}
         data={mockedPlusSubscriberEmailPreferences}
       />
-    </TestComponentWrapper>,
+    </SettingsWrapper>,
   );
 
   const affectedRadioButton = screen.getByLabelText(
@@ -720,7 +746,7 @@ it("sends a call to the API to change the email alert preferences when changing 
 
 it("checks that monthly monitor report is available to free users", () => {
   render(
-    <TestComponentWrapper>
+    <SettingsWrapper enabledFeatureFlags={[]}>
       <SettingsView
         activeTab="edit-info"
         l10n={getL10n()}
@@ -748,7 +774,7 @@ it("checks that monthly monitor report is available to free users", () => {
         isMonthlySubscriber={false}
         data={mockedFreeSubscriberEmailPreferences}
       />
-    </TestComponentWrapper>,
+    </SettingsWrapper>,
   );
 
   const monthlyMonitorReportBtn = screen.getByLabelText(
@@ -760,7 +786,7 @@ it("checks that monthly monitor report is available to free users", () => {
 
 it("checks that monthly monitor report is enabled", () => {
   render(
-    <TestComponentWrapper>
+    <SettingsWrapper enabledFeatureFlags={[]}>
       <SettingsView
         activeTab="edit-info"
         l10n={getL10n()}
@@ -791,7 +817,7 @@ it("checks that monthly monitor report is enabled", () => {
         isMonthlySubscriber={true}
         data={mockedPlusSubscriberEmailPreferences}
       />
-    </TestComponentWrapper>,
+    </SettingsWrapper>,
   );
 
   const monthlyMonitorReportBtn = screen.getByLabelText(
@@ -805,7 +831,7 @@ it("sends an API call to disable monthly monitor reports", async () => {
   global.fetch = jest.fn().mockResolvedValue({ ok: true });
   const user = userEvent.setup();
   render(
-    <TestComponentWrapper>
+    <SettingsWrapper enabledFeatureFlags={[]}>
       <SettingsView
         activeTab="edit-info"
         l10n={getL10n()}
@@ -837,7 +863,7 @@ it("sends an API call to disable monthly monitor reports", async () => {
         isMonthlySubscriber={true}
         data={mockedPlusSubscriberEmailPreferences}
       />
-    </TestComponentWrapper>,
+    </SettingsWrapper>,
   );
   const monthlyMonitorReportBtn = screen.getByLabelText(
     "Monthly ⁨Monitor Plus⁩ report",
@@ -858,7 +884,7 @@ it("calls the right telemetry event if a user opts out of monthly report", async
   global.fetch = jest.fn().mockResolvedValue({ ok: true });
   const user = userEvent.setup();
   render(
-    <TestComponentWrapper>
+    <SettingsWrapper enabledFeatureFlags={[]}>
       <SettingsView
         activeTab="edit-info"
         l10n={getL10n()}
@@ -890,7 +916,7 @@ it("calls the right telemetry event if a user opts out of monthly report", async
         isMonthlySubscriber={true}
         data={mockedPlusSubscriberEmailPreferences}
       />
-    </TestComponentWrapper>,
+    </SettingsWrapper>,
   );
   const monthlyMonitorReportBtn = screen.getByLabelText(
     "Monthly ⁨Monitor Plus⁩ report",
@@ -921,7 +947,7 @@ it("refreshes the session token after changing email alert preferences, to ensur
   global.fetch = jest.fn().mockResolvedValueOnce({ ok: true });
   const user = userEvent.setup();
   render(
-    <TestComponentWrapper>
+    <SettingsWrapper enabledFeatureFlags={[]}>
       <SettingsView
         activeTab="edit-info"
         l10n={getL10n()}
@@ -948,7 +974,7 @@ it("refreshes the session token after changing email alert preferences, to ensur
         isMonthlySubscriber={true}
         data={mockedPlusSubscriberEmailPreferences}
       />
-    </TestComponentWrapper>,
+    </SettingsWrapper>,
   );
 
   const affectedRadioButton = screen.getByLabelText(
@@ -961,7 +987,7 @@ it("refreshes the session token after changing email alert preferences, to ensur
 
 it("marks unverified email addresses as such", () => {
   render(
-    <TestComponentWrapper>
+    <SettingsWrapper enabledFeatureFlags={[]}>
       <SettingsView
         activeTab="edit-info"
         l10n={getL10n()}
@@ -986,7 +1012,7 @@ it("marks unverified email addresses as such", () => {
         isMonthlySubscriber={true}
         data={mockedPlusSubscriberEmailPreferences}
       />
-    </TestComponentWrapper>,
+    </SettingsWrapper>,
   );
 
   const verificationNotification = screen.getAllByText(
@@ -1000,7 +1026,7 @@ it("calls the API to resend a verification email if requested to", async () => {
   const user = userEvent.setup();
   global.fetch = jest.fn().mockResolvedValue({ ok: true });
   render(
-    <TestComponentWrapper>
+    <SettingsWrapper enabledFeatureFlags={[]}>
       <SettingsView
         activeTab="edit-info"
         l10n={getL10n()}
@@ -1025,7 +1051,7 @@ it("calls the API to resend a verification email if requested to", async () => {
         isMonthlySubscriber={true}
         data={mockedPlusSubscriberEmailPreferences}
       />
-    </TestComponentWrapper>,
+    </SettingsWrapper>,
   );
 
   const resendButton = screen.getByRole("button", {
@@ -1049,7 +1075,7 @@ it("calls the API to resend a verification email if requested to", async () => {
 it("calls the 'remove' action when clicking the rubbish bin icon", async () => {
   const user = userEvent.setup();
   render(
-    <TestComponentWrapper>
+    <SettingsWrapper enabledFeatureFlags={[]}>
       <SettingsView
         activeTab="edit-info"
         l10n={getL10n()}
@@ -1074,7 +1100,7 @@ it("calls the 'remove' action when clicking the rubbish bin icon", async () => {
         isMonthlySubscriber={true}
         data={mockedPlusSubscriberEmailPreferences}
       />
-    </TestComponentWrapper>,
+    </SettingsWrapper>,
   );
 
   const removeButtons = screen.getAllByRole("button", { name: "Remove" });
@@ -1087,7 +1113,7 @@ it("calls the 'remove' action when clicking the rubbish bin icon", async () => {
 
 it("hides the Plus cancellation link if the user doesn't have Plus", () => {
   render(
-    <TestComponentWrapper>
+    <SettingsWrapper enabledFeatureFlags={[]}>
       <SettingsView
         activeTab="edit-info"
         l10n={getL10n()}
@@ -1113,7 +1139,7 @@ it("hides the Plus cancellation link if the user doesn't have Plus", () => {
         isMonthlySubscriber={true}
         data={mockedPlusSubscriberEmailPreferences}
       />
-    </TestComponentWrapper>,
+    </SettingsWrapper>,
   );
 
   const cancellationHeading = screen.queryByRole("heading", {
@@ -1125,7 +1151,7 @@ it("hides the Plus cancellation link if the user doesn't have Plus", () => {
 
 it("shows the Plus cancellation link if the user has Plus", () => {
   render(
-    <TestComponentWrapper>
+    <SettingsWrapper enabledFeatureFlags={[]}>
       <SettingsView
         activeTab="edit-info"
         l10n={getL10n()}
@@ -1151,7 +1177,7 @@ it("shows the Plus cancellation link if the user has Plus", () => {
         isMonthlySubscriber={true}
         data={mockedPlusSubscriberEmailPreferences}
       />
-    </TestComponentWrapper>,
+    </SettingsWrapper>,
   );
 
   const cancellationHeading = screen.getByRole("heading", {
@@ -1170,7 +1196,7 @@ it("takes you through the cancellation dialog flow all the way to subplat", asyn
   (onApplyCouponCode as jest.Mock).mockResolvedValueOnce({ success: true });
 
   render(
-    <TestComponentWrapper>
+    <SettingsWrapper enabledFeatureFlags={[]}>
       <SettingsView
         activeTab="edit-info"
         l10n={getL10n()}
@@ -1196,7 +1222,7 @@ it("takes you through the cancellation dialog flow all the way to subplat", asyn
         isMonthlySubscriber={true}
         data={mockedPlusSubscriberEmailPreferences}
       />
-    </TestComponentWrapper>,
+    </SettingsWrapper>,
   );
 
   const cancellationButton = screen.getByRole("button", {
@@ -1250,7 +1276,7 @@ it("closes the cancellation survey if the user selects nevermind, take me back",
   });
 
   render(
-    <TestComponentWrapper>
+    <SettingsWrapper enabledFeatureFlags={[]}>
       <SettingsView
         activeTab="edit-info"
         l10n={getL10n()}
@@ -1276,7 +1302,7 @@ it("closes the cancellation survey if the user selects nevermind, take me back",
         isMonthlySubscriber={true}
         data={mockedPlusSubscriberEmailPreferences}
       />
-    </TestComponentWrapper>,
+    </SettingsWrapper>,
   );
 
   const cancellationButton = screen.getByRole("button", {
@@ -1309,7 +1335,7 @@ it("closes the cancellation dialog", async () => {
   });
 
   render(
-    <TestComponentWrapper>
+    <SettingsWrapper enabledFeatureFlags={[]}>
       <SettingsView
         activeTab="edit-info"
         l10n={getL10n()}
@@ -1335,7 +1361,7 @@ it("closes the cancellation dialog", async () => {
         isMonthlySubscriber={true}
         data={mockedPlusSubscriberEmailPreferences}
       />
-    </TestComponentWrapper>,
+    </SettingsWrapper>,
   );
 
   const cancellationButton = screen.getByRole("button", {
@@ -1361,7 +1387,7 @@ it("closes the cancellation dialog", async () => {
 
 it("shows the account deletion button if the user does not have Plus", () => {
   render(
-    <TestComponentWrapper>
+    <SettingsWrapper enabledFeatureFlags={[]}>
       <SettingsView
         activeTab="edit-info"
         l10n={getL10n()}
@@ -1387,7 +1413,7 @@ it("shows the account deletion button if the user does not have Plus", () => {
         isMonthlySubscriber={true}
         data={mockedPlusSubscriberEmailPreferences}
       />
-    </TestComponentWrapper>,
+    </SettingsWrapper>,
   );
 
   const accountDeletionHeading = screen.getByRole("heading", {
@@ -1404,7 +1430,7 @@ it("shows the account deletion button if the user does not have Plus", () => {
 it("warns about the consequences before deleting a free user's account", async () => {
   const user = userEvent.setup();
   render(
-    <TestComponentWrapper>
+    <SettingsWrapper enabledFeatureFlags={[]}>
       <SettingsView
         activeTab="edit-info"
         l10n={getL10n()}
@@ -1430,7 +1456,7 @@ it("warns about the consequences before deleting a free user's account", async (
         isMonthlySubscriber={true}
         data={mockedPlusSubscriberEmailPreferences}
       />
-    </TestComponentWrapper>,
+    </SettingsWrapper>,
   );
 
   const deleteAccountButton = screen.getByRole("button", {
@@ -1449,7 +1475,7 @@ it("warns about the consequences before deleting a free user's account", async (
 it("shows a loading state while account deletion is in progress", async () => {
   const user = userEvent.setup();
   render(
-    <TestComponentWrapper>
+    <SettingsWrapper enabledFeatureFlags={[]}>
       <SettingsView
         activeTab="edit-info"
         l10n={getL10n()}
@@ -1475,7 +1501,7 @@ it("shows a loading state while account deletion is in progress", async () => {
         isMonthlySubscriber={true}
         data={mockedPlusSubscriberEmailPreferences}
       />
-    </TestComponentWrapper>,
+    </SettingsWrapper>,
   );
 
   const deleteAccountButton = screen.getByRole("button", {
@@ -1495,7 +1521,7 @@ it("shows a loading state while account deletion is in progress", async () => {
 
 it("shows the account deletion button if the user has Plus", () => {
   render(
-    <TestComponentWrapper>
+    <SettingsWrapper enabledFeatureFlags={[]}>
       <SettingsView
         activeTab="edit-info"
         l10n={getL10n()}
@@ -1521,7 +1547,7 @@ it("shows the account deletion button if the user has Plus", () => {
         isMonthlySubscriber={true}
         data={mockedPlusSubscriberEmailPreferences}
       />
-    </TestComponentWrapper>,
+    </SettingsWrapper>,
   );
 
   const accountDeletionHeading = screen.getByRole("heading", {
@@ -1538,7 +1564,7 @@ it("shows the account deletion button if the user has Plus", () => {
 it("warns about the consequences before deleting a Plus user's account", async () => {
   const user = userEvent.setup();
   render(
-    <TestComponentWrapper>
+    <SettingsWrapper enabledFeatureFlags={[]}>
       <SettingsView
         activeTab="edit-info"
         l10n={getL10n()}
@@ -1564,7 +1590,7 @@ it("warns about the consequences before deleting a Plus user's account", async (
         isMonthlySubscriber={true}
         data={mockedPlusSubscriberEmailPreferences}
       />
-    </TestComponentWrapper>,
+    </SettingsWrapper>,
   );
 
   const deleteAccountButton = screen.getByRole("button", {
@@ -1593,7 +1619,7 @@ it("warns about the consequences before deleting a Plus user's account", async (
 it.skip("calls the 'add' action when adding another email address", async () => {
   const user = userEvent.setup();
   render(
-    <TestComponentWrapper>
+    <SettingsWrapper enabledFeatureFlags={[]}>
       <SettingsView
         activeTab="edit-info"
         l10n={getL10n()}
@@ -1618,7 +1644,7 @@ it.skip("calls the 'add' action when adding another email address", async () => 
         isMonthlySubscriber={true}
         data={mockedPlusSubscriberEmailPreferences}
       />
-    </TestComponentWrapper>,
+    </SettingsWrapper>,
   );
 
   const addButton = screen.getByRole("button", { name: "Add email address" });
@@ -1634,7 +1660,7 @@ describe("to learn about usage", () => {
   it("counts how often people delete an email address", async () => {
     const user = userEvent.setup();
     render(
-      <TestComponentWrapper>
+      <SettingsWrapper enabledFeatureFlags={[]}>
         <SettingsView
           activeTab="edit-info"
           l10n={getL10n()}
@@ -1655,7 +1681,7 @@ describe("to learn about usage", () => {
           isMonthlySubscriber={true}
           data={mockedPlusSubscriberEmailPreferences}
         />
-      </TestComponentWrapper>,
+      </SettingsWrapper>,
     );
 
     const deleteEmailButton = screen.getByRole("button", {
@@ -1681,7 +1707,7 @@ describe("to learn about usage", () => {
   it.skip("counts how often people click the 'Add email address' button", async () => {
     const user = userEvent.setup();
     render(
-      <TestComponentWrapper>
+      <SettingsWrapper enabledFeatureFlags={[]}>
         <SettingsView
           activeTab="edit-info"
           l10n={getL10n()}
@@ -1701,7 +1727,7 @@ describe("to learn about usage", () => {
           isMonthlySubscriber={true}
           data={mockedPlusSubscriberEmailPreferences}
         />
-      </TestComponentWrapper>,
+      </SettingsWrapper>,
     );
 
     const addEmailButton = screen.getByRole("button", {
@@ -1727,7 +1753,7 @@ describe("to learn about usage", () => {
   it.skip("counts how often people close the 'Add email address' dialog", async () => {
     const user = userEvent.setup();
     render(
-      <TestComponentWrapper>
+      <SettingsWrapper enabledFeatureFlags={[]}>
         <SettingsView
           activeTab="edit-info"
           l10n={getL10n()}
@@ -1747,7 +1773,7 @@ describe("to learn about usage", () => {
           isMonthlySubscriber={true}
           data={mockedPlusSubscriberEmailPreferences}
         />
-      </TestComponentWrapper>,
+      </SettingsWrapper>,
     );
 
     const addEmailButton = screen.getByRole("button", {
@@ -1768,7 +1794,7 @@ describe("to learn about usage", () => {
   it("counts how often free users click the 'Delete account' button", async () => {
     const user = userEvent.setup();
     render(
-      <TestComponentWrapper>
+      <SettingsWrapper enabledFeatureFlags={[]}>
         <SettingsView
           activeTab="edit-info"
           l10n={getL10n()}
@@ -1794,7 +1820,7 @@ describe("to learn about usage", () => {
           isMonthlySubscriber={true}
           data={mockedPlusSubscriberEmailPreferences}
         />
-      </TestComponentWrapper>,
+      </SettingsWrapper>,
     );
 
     const deleteAccountButton = screen.getByRole("button", {
@@ -1814,7 +1840,7 @@ describe("to learn about usage", () => {
   it("counts how often free users close the 'Delete account' dialog", async () => {
     const user = userEvent.setup();
     render(
-      <TestComponentWrapper>
+      <SettingsWrapper enabledFeatureFlags={[]}>
         <SettingsView
           activeTab="edit-info"
           l10n={getL10n()}
@@ -1840,7 +1866,7 @@ describe("to learn about usage", () => {
           isMonthlySubscriber={true}
           data={mockedPlusSubscriberEmailPreferences}
         />
-      </TestComponentWrapper>,
+      </SettingsWrapper>,
     );
 
     const deleteAccountButton = screen.getByRole("button", {
@@ -1865,7 +1891,7 @@ describe("to learn about usage", () => {
   it("counts how often free users close the 'Delete account' dialog via the keyboard", async () => {
     const user = userEvent.setup();
     render(
-      <TestComponentWrapper>
+      <SettingsWrapper enabledFeatureFlags={[]}>
         <SettingsView
           activeTab="edit-info"
           l10n={getL10n()}
@@ -1891,7 +1917,7 @@ describe("to learn about usage", () => {
           isMonthlySubscriber={true}
           data={mockedPlusSubscriberEmailPreferences}
         />
-      </TestComponentWrapper>,
+      </SettingsWrapper>,
     );
 
     const deleteAccountButton = screen.getByRole("button", {
@@ -1912,7 +1938,7 @@ describe("to learn about usage", () => {
   it("counts how often free users close the 'Delete account' dialog via the button in the corner", async () => {
     const user = userEvent.setup();
     render(
-      <TestComponentWrapper>
+      <SettingsWrapper enabledFeatureFlags={[]}>
         <SettingsView
           activeTab="edit-info"
           l10n={getL10n()}
@@ -1938,7 +1964,7 @@ describe("to learn about usage", () => {
           isMonthlySubscriber={true}
           data={mockedPlusSubscriberEmailPreferences}
         />
-      </TestComponentWrapper>,
+      </SettingsWrapper>,
     );
 
     const deleteAccountButton = screen.getByRole("button", {
@@ -1963,7 +1989,7 @@ describe("to learn about usage", () => {
   it("counts how often Plus users click the 'Delete account' button", async () => {
     const user = userEvent.setup();
     render(
-      <TestComponentWrapper>
+      <SettingsWrapper enabledFeatureFlags={[]}>
         <SettingsView
           activeTab="edit-info"
           l10n={getL10n()}
@@ -1989,7 +2015,7 @@ describe("to learn about usage", () => {
           isMonthlySubscriber={true}
           data={mockedPlusSubscriberEmailPreferences}
         />
-      </TestComponentWrapper>,
+      </SettingsWrapper>,
     );
 
     const deleteAccountButton = screen.getByRole("button", {
@@ -2009,7 +2035,7 @@ describe("to learn about usage", () => {
   it("counts how often Plus users close the 'Delete account' dialog", async () => {
     const user = userEvent.setup();
     render(
-      <TestComponentWrapper>
+      <SettingsWrapper enabledFeatureFlags={[]}>
         <SettingsView
           activeTab="edit-info"
           l10n={getL10n()}
@@ -2035,7 +2061,7 @@ describe("to learn about usage", () => {
           isMonthlySubscriber={true}
           data={mockedPlusSubscriberEmailPreferences}
         />
-      </TestComponentWrapper>,
+      </SettingsWrapper>,
     );
 
     const deleteAccountButton = screen.getByRole("button", {
@@ -2060,7 +2086,7 @@ describe("to learn about usage", () => {
   it("counts how often users delete their account", async () => {
     const user = userEvent.setup();
     render(
-      <TestComponentWrapper>
+      <SettingsWrapper enabledFeatureFlags={[]}>
         <SettingsView
           activeTab="edit-info"
           l10n={getL10n()}
@@ -2086,7 +2112,7 @@ describe("to learn about usage", () => {
           isMonthlySubscriber={true}
           data={mockedPlusSubscriberEmailPreferences}
         />
-      </TestComponentWrapper>,
+      </SettingsWrapper>,
     );
 
     const deleteAccountButton = screen.getByRole("button", {
@@ -2119,7 +2145,7 @@ it("selects the coupon code discount cta and shows the all-set dialog step", asy
   (onApplyCouponCode as jest.Mock).mockResolvedValueOnce({ success: true });
 
   render(
-    <TestComponentWrapper>
+    <SettingsWrapper enabledFeatureFlags={[]}>
       <SettingsView
         activeTab="edit-info"
         l10n={getL10n()}
@@ -2149,7 +2175,7 @@ it("selects the coupon code discount cta and shows the all-set dialog step", asy
         isMonthlySubscriber={true}
         data={mockedPlusSubscriberEmailPreferences}
       />
-    </TestComponentWrapper>,
+    </SettingsWrapper>,
   );
 
   const cancellationButton = screen.getByRole("button", {
@@ -2207,7 +2233,7 @@ it("shows error message if the applying the coupon code function was unsuccessfu
   (onApplyCouponCode as jest.Mock).mockResolvedValueOnce({ success: false });
 
   render(
-    <TestComponentWrapper>
+    <SettingsWrapper enabledFeatureFlags={[]}>
       <SettingsView
         activeTab="edit-info"
         l10n={getL10n()}
@@ -2237,7 +2263,7 @@ it("shows error message if the applying the coupon code function was unsuccessfu
         isMonthlySubscriber={true}
         data={mockedPlusSubscriberEmailPreferences}
       />
-    </TestComponentWrapper>,
+    </SettingsWrapper>,
   );
 
   const cancellationButton = screen.getByRole("button", {
@@ -2275,7 +2301,7 @@ it("does not show the coupon code if a user already has a coupon set", async () 
   });
 
   render(
-    <TestComponentWrapper>
+    <SettingsWrapper enabledFeatureFlags={[]}>
       <SettingsView
         activeTab="edit-info"
         l10n={getL10n()}
@@ -2305,7 +2331,7 @@ it("does not show the coupon code if a user already has a coupon set", async () 
         isMonthlySubscriber={true}
         data={mockedPlusSubscriberEmailPreferences}
       />
-    </TestComponentWrapper>,
+    </SettingsWrapper>,
   );
   const cancellationButton = screen.getByRole("button", {
     name: "Cancel your subscription",
@@ -2315,4 +2341,166 @@ it("does not show the coupon code if a user already has a coupon set", async () 
     name: "Never mind, take me back",
   });
   expect(takeMeBackButton).toBeInTheDocument();
+});
+
+describe("Settings page redesign", () => {
+  it("shows the old layout", () => {
+    render(
+      <SettingsWrapper enabledFeatureFlags={[]}>
+        <SettingsView
+          activeTab="edit-info"
+          l10n={getL10n()}
+          user={{
+            ...mockedUser,
+            subscriber: {
+              ...mockedUser.subscriber!,
+              all_emails_to_primary: true,
+            },
+          }}
+          subscriber={mockedSubscriber}
+          breachCountByEmailAddress={{
+            [mockedUser.email]: 42,
+            [mockedSecondaryVerifiedEmail.email]: 42,
+          }}
+          emailAddresses={[mockedSecondaryVerifiedEmail]}
+          fxaSettingsUrl=""
+          fxaSubscriptionsUrl=""
+          yearlySubscriptionUrl=""
+          monthlySubscriptionUrl=""
+          subscriptionBillingAmount={mockedSubscriptionBillingAmount}
+          enabledFeatureFlags={[]}
+          experimentData={defaultExperimentData}
+          isMonthlySubscriber={true}
+          data={mockedPlusSubscriberEmailPreferences}
+        />
+      </SettingsWrapper>,
+    );
+
+    const tabListItem = screen.queryByRole("tab", {
+      name: "Edit your info",
+    });
+    expect(tabListItem).not.toBeInTheDocument();
+  });
+
+  it("shows the new layout", () => {
+    render(
+      <SettingsWrapper enabledFeatureFlags={["SettingsPageRedesign"]}>
+        <SettingsView
+          activeTab="edit-info"
+          l10n={getL10n()}
+          user={{
+            ...mockedUser,
+            subscriber: {
+              ...mockedUser.subscriber!,
+              all_emails_to_primary: true,
+            },
+          }}
+          subscriber={mockedSubscriber}
+          breachCountByEmailAddress={{
+            [mockedUser.email]: 42,
+            [mockedSecondaryVerifiedEmail.email]: 42,
+          }}
+          emailAddresses={[mockedSecondaryVerifiedEmail]}
+          fxaSettingsUrl=""
+          fxaSubscriptionsUrl=""
+          yearlySubscriptionUrl=""
+          monthlySubscriptionUrl=""
+          subscriptionBillingAmount={mockedSubscriptionBillingAmount}
+          enabledFeatureFlags={["SettingsPageRedesign"]}
+          experimentData={defaultExperimentData}
+          isMonthlySubscriber={true}
+          data={mockedPlusSubscriberEmailPreferences}
+        />
+      </SettingsWrapper>,
+    );
+
+    const tabListItem = screen.getByRole("tab", {
+      name: "Edit your info",
+    });
+    expect(tabListItem).toBeInTheDocument();
+  });
+
+  it("shows the “Manage account” as active tab", () => {
+    render(
+      <SettingsWrapper enabledFeatureFlags={["SettingsPageRedesign"]}>
+        <SettingsView
+          activeTab="manage-account"
+          l10n={getL10n()}
+          user={{
+            ...mockedUser,
+            subscriber: {
+              ...mockedUser.subscriber!,
+              all_emails_to_primary: true,
+            },
+          }}
+          subscriber={mockedSubscriber}
+          breachCountByEmailAddress={{
+            [mockedUser.email]: 42,
+            [mockedSecondaryVerifiedEmail.email]: 42,
+          }}
+          emailAddresses={[mockedSecondaryVerifiedEmail]}
+          fxaSettingsUrl=""
+          fxaSubscriptionsUrl=""
+          yearlySubscriptionUrl=""
+          monthlySubscriptionUrl=""
+          subscriptionBillingAmount={mockedSubscriptionBillingAmount}
+          enabledFeatureFlags={["SettingsPageRedesign"]}
+          experimentData={defaultExperimentData}
+          isMonthlySubscriber={true}
+          data={mockedPlusSubscriberEmailPreferences}
+        />
+      </SettingsWrapper>,
+    );
+
+    const tabListItem = screen.getByRole("tab", {
+      name: "Manage account",
+    });
+    expect(tabListItem.getAttribute("aria-selected")).toBe("true");
+  });
+
+  it("changes the active tab", async () => {
+    const user = userEvent.setup();
+    render(
+      <SettingsWrapper enabledFeatureFlags={["SettingsPageRedesign"]}>
+        <SettingsView
+          activeTab="edit-info"
+          l10n={getL10n()}
+          user={{
+            ...mockedUser,
+            subscriber: {
+              ...mockedUser.subscriber!,
+              all_emails_to_primary: true,
+            },
+          }}
+          subscriber={mockedSubscriber}
+          breachCountByEmailAddress={{
+            [mockedUser.email]: 42,
+            [mockedSecondaryVerifiedEmail.email]: 42,
+          }}
+          emailAddresses={[mockedSecondaryVerifiedEmail]}
+          fxaSettingsUrl=""
+          fxaSubscriptionsUrl=""
+          yearlySubscriptionUrl=""
+          monthlySubscriptionUrl=""
+          subscriptionBillingAmount={mockedSubscriptionBillingAmount}
+          enabledFeatureFlags={["SettingsPageRedesign"]}
+          experimentData={defaultExperimentData}
+          isMonthlySubscriber={true}
+          data={mockedPlusSubscriberEmailPreferences}
+        />
+      </SettingsWrapper>,
+    );
+
+    const tabListItemInitial = screen.getByRole("tab", {
+      name: "Edit your info",
+    });
+    expect(tabListItemInitial.getAttribute("aria-selected")).toBe("true");
+
+    const tabListItemNext = screen.getByRole("tab", {
+      name: "Set notifications",
+    });
+    await user.click(tabListItemNext);
+    expect(tabListItemInitial.getAttribute("aria-selected")).toBe("false");
+    expect(tabListItemNext.getAttribute("aria-selected")).toBe("true");
+  });
 });

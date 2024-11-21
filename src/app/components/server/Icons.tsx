@@ -231,27 +231,27 @@ export const EmailOutlineIcon = ({
       <title>{alt}</title>
       <path
         d="M16 5H18C19.7 5 21 6.3 21 8V16C21 17.7 19.7 19 18 19H6C4.3 19 3 17.7 3 16V8C3 6.3 4.3 5 6 5H8H16Z"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M20.8996 7.19995L14.2996 13L11.9996 15L9.69961 13L3.09961 7.19995"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M9.70039 13L3.90039 18.2"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M20.0998 18.2L14.2998 13"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
@@ -276,32 +276,32 @@ export const MailboxOutlineIcon = ({
     >
       <title>{alt}</title>
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M11 10V17H3V10C3 7.8 4.8 6 7 6C9.2 6 11 7.8 11 10Z"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M21 10V17H3V10C3 7.8 4.8 6 7 6H17C19.2 6 21 7.8 21 10Z"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M16 17L16 21"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M19 3H18C16.8954 3 16 3.89543 16 5V11"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
@@ -327,21 +327,21 @@ export const ContactsOutlineIcon = ({
       <title>{alt}</title>
       <path
         d="M3 17V7C3 4.8 4.8 3 7 3H17C19.2 3 21 4.8 21 7V17C21 19.2 19.2 21 17 21H7C4.8 21 3 19.2 3 17Z"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M12 11.7C13.3 11.7 14.3 10.7 14.3 9.4C14.3 8.1 13.3 7 12 7C10.7 7 9.69995 8 9.69995 9.3C9.69995 10.6 10.7 11.7 12 11.7Z"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M6.6001 21V20.2C6.6001 18.7 7.2001 17.3 8.2001 16.3C9.2001 15.3 10.5001 14.7 12.1001 14.7C15.1001 14.7 17.5001 17.1 17.5001 20.1V21"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
