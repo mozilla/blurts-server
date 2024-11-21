@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 function SettingsPanelNotifications() {
-  return <div>Notifications</div>;
+  return <div>Set notifications content</div>;
 }
 
 export { SettingsPanelNotifications };

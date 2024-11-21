@@ -25,6 +25,8 @@ import { ExperimentData } from "../../../../../../../telemetry/generated/nimbus/
 import { SubscriberEmailPreferencesOutput } from "../../../../../../../db/tables/subscriber_email_preferences";
 import { SettingsContent } from "./SettingsContent";
 
+export type TabType = "edit-info" | "notifications" | "manage-account";
+
 export type Props = {
   l10n: ExtendedReactLocalization;
   user: Session["user"];
@@ -44,6 +46,7 @@ export type Props = {
   experimentData: ExperimentData;
   lastScanDate?: Date;
   isMonthlySubscriber: boolean;
+  activeTab: TabType;
 };
 
 export const SettingsView = (props: Props) => {
@@ -60,7 +63,7 @@ export const SettingsView = (props: Props) => {
         experimentData={props.experimentData}
       />
       {props.enabledFeatureFlags.includes("SettingsPageRedesign") ? (
-        <SettingsContent />
+        <SettingsContent activeTab={props.activeTab} />
       ) : (
         <main className={styles.main}>
           <header className={styles.title}>

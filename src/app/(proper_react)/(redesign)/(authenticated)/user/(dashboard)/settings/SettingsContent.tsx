@@ -4,21 +4,32 @@
 
 "use client";
 
-import { useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { useL10n } from "../../../../../../hooks/l10n";
-import { TabType } from "../dashboard/View";
 import { TabList } from "../../../../../../components/client/TabList";
 import styles from "./SettingsContent.module.scss";
 import { SettingsPanel } from "./panels";
+import { TabType } from "./View";
 import {
   EmailOutlineIcon,
   MailboxOutlineIcon,
   ContactsOutlineIcon,
 } from "../../../../../../components/server/Icons";
 
-function SettingsContent() {
+type SettingContentProps = {
+  activeTab: TabType;
+};
+
+type TabData = {
+  name: ReactNode;
+  key: TabType;
+};
+
+function SettingsContent(props: SettingContentProps) {
   const l10n = useL10n();
-  const tabsData = [
+  const pathname = usePathname();
+  const tabsData: TabData[] = [
     {
       name: (
         <>
@@ -35,7 +46,7 @@ function SettingsContent() {
           {l10n.getString("settings-tab-label-notifications")}
         </>
       ),
-      key: "label-notification",
+      key: "notifications",
     },
     {
       name: (
@@ -47,9 +58,17 @@ function SettingsContent() {
       key: "manage-account",
     },
   ];
-  const [activeTab, setActiveTab] = useState<(typeof tabsData)[number]["key"]>(
-    tabsData[0].key,
-  );
+  const [activeTab, setActiveTab] = useState<TabType>(props.activeTab);
+
+  useEffect(() => {
+    const nextPathname = `/user/settings/${activeTab}`;
+    if (pathname !== nextPathname) {
+      // Directly interacting with the history API is recommended by Next.js to
+      // avoid re-rendering on the server:
+      // See https://github.com/vercel/next.js/discussions/48110#discussioncomment-7563979.
+      window.history.replaceState(null, "", nextPathname);
+    }
+  }, [pathname, activeTab]);
 
   return (
     <main className={styles.main}>

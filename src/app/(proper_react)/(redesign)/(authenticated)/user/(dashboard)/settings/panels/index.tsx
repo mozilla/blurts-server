@@ -11,7 +11,7 @@ function Panel(props: { type: string }) {
   switch (props.type) {
     case "edit-info":
       return <SettingsPanelEditInfo />;
-    case "label-notification":
+    case "notifications":
       return <SettingsPanelNotifications />;
     case "manage-account":
       return <SettingsPanelManageAccount />;

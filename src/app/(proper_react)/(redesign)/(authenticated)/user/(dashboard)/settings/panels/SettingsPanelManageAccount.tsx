@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 function SettingsPanelManageAccount() {
-  return <div>Manage account</div>;
+  return <div>Manage account content</div>;
 }
 
 export { SettingsPanelManageAccount };

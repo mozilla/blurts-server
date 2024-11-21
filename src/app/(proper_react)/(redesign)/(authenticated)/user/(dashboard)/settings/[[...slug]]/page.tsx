@@ -4,39 +4,60 @@
 
 import { redirect } from "next/navigation";
 import { headers } from "next/headers";
-import { getServerSession } from "../../../../../../functions/server/getServerSession";
-import { SettingsView } from "./View";
+import { getServerSession } from "../../../../../../../functions/server/getServerSession";
+import { SettingsView, TabType } from "../View";
 import {
   getSubscriptionBillingAmount,
   getPremiumSubscriptionUrl,
-} from "../../../../../../functions/server/getPremiumSubscriptionInfo";
-import { getL10n } from "../../../../../../functions/l10n/serverComponents";
-import { getUserEmails } from "../../../../../../../db/tables/emailAddresses";
-import { getBreaches } from "../../../../../../functions/server/getBreaches";
-import { getBreachesForEmail } from "../../../../../../../utils/hibp";
-import { getSha1 } from "../../../../../../../utils/fxa";
-import { getAttributionsFromCookiesOrDb } from "../../../../../../functions/server/attributions";
-import { getEnabledFeatureFlags } from "../../../../../../../db/tables/featureFlags";
-import { getLatestOnerepScan } from "../../../../../../../db/tables/onerep_scans";
-import { getExperimentationId } from "../../../../../../functions/server/getExperimentationId";
-import { getExperiments } from "../../../../../../functions/server/getExperiments";
-import { getLocale } from "../../../../../../functions/universal/getLocale";
-import { getCountryCode } from "../../../../../../functions/server/getCountryCode";
-import { getSubscriberById } from "../../../../../../../db/tables/subscribers";
-import { checkSession } from "../../../../../../functions/server/checkSession";
-import { checkUserHasMonthlySubscription } from "../../../../../../functions/server/user";
-import { getEmailPreferenceForPrimaryEmail } from "../../../../../../../db/tables/subscriber_email_preferences";
+} from "../../../../../../../functions/server/getPremiumSubscriptionInfo";
+import { getL10n } from "../../../../../../../functions/l10n/serverComponents";
+import { getUserEmails } from "../../../../../../../../db/tables/emailAddresses";
+import { getBreaches } from "../../../../../../../functions/server/getBreaches";
+import { getBreachesForEmail } from "../../../../../../../../utils/hibp";
+import { getSha1 } from "../../../../../../../../utils/fxa";
+import { getAttributionsFromCookiesOrDb } from "../../../../../../../functions/server/attributions";
+import { getEnabledFeatureFlags } from "../../../../../../../../db/tables/featureFlags";
+import { getLatestOnerepScan } from "../../../../../../../../db/tables/onerep_scans";
+import { getExperimentationId } from "../../../../../../../functions/server/getExperimentationId";
+import { getExperiments } from "../../../../../../../functions/server/getExperiments";
+import { getLocale } from "../../../../../../../functions/universal/getLocale";
+import { getCountryCode } from "../../../../../../../functions/server/getCountryCode";
+import { getSubscriberById } from "../../../../../../../../db/tables/subscribers";
+import { checkSession } from "../../../../../../../functions/server/checkSession";
+import { checkUserHasMonthlySubscription } from "../../../../../../../functions/server/user";
+import { getEmailPreferenceForPrimaryEmail } from "../../../../../../../../db/tables/subscriber_email_preferences";
+
+export const settingsTabSlugs = [
+  "edit-info",
+  "notifications",
+  "manage-account",
+];
+
 type Props = {
+  params: {
+    slug: string[] | undefined;
+  };
   searchParams: {
     nimbus_preview?: string;
   };
 };
 
-export default async function SettingsPage({ searchParams }: Props) {
+export default async function SettingsPage({ params, searchParams }: Props) {
   const session = await getServerSession();
 
   if (!session?.user?.subscriber?.id || !checkSession(session)) {
     return redirect("/auth/logout");
+  }
+
+  const { slug } = params;
+  const defaultTab = settingsTabSlugs[0];
+  const activeTab = slug?.[0] ?? defaultTab;
+  // Only allow the tab slugs. Otherwise: Redirect to the default settings route.
+  if (
+    typeof slug !== "undefined" &&
+    (!settingsTabSlugs.includes(activeTab) || slug.length >= 2)
+  ) {
+    return redirect(`/user/settings/${defaultTab}`);
   }
 
   const emailAddresses = await getUserEmails(session.user.subscriber.id);
@@ -112,6 +133,7 @@ export default async function SettingsPage({ searchParams }: Props) {
       experimentData={experimentData}
       lastScanDate={lastOneRepScan?.created_at}
       isMonthlySubscriber={isMonthlySubscriber}
+      activeTab={activeTab as TabType}
     />
   );
 }
