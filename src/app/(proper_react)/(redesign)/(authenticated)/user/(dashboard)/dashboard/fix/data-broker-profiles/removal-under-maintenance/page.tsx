@@ -4,7 +4,6 @@
 
 import { redirect } from "next/navigation";
 import { getServerSession } from "../../../../../../../../../functions/server/getServerSession";
-import { RemovalUnderMaintenanceView } from "./RemovalUnderMaintenanceView";
 import {
   getNextGuidedStep,
   StepDeterminationData,
@@ -13,11 +12,13 @@ import { getCountryCode } from "../../../../../../../../../functions/server/getC
 import { headers } from "next/headers";
 import {
   getLatestOnerepScanResults,
+  getScanResultsWithBrokerUnderMaintenance,
   // getScanResultsWithBrokerUnderMaintenance,
 } from "../../../../../../../../../../db/tables/onerep_scans";
 import { getOnerepProfileId } from "../../../../../../../../../../db/tables/subscribers";
 import { getSubscriberBreaches } from "../../../../../../../../../functions/server/getSubscriberBreaches";
 import { getSubscriberEmails } from "../../../../../../../../../functions/server/getSubscriberEmails";
+import { RemovalUnderMaintenanceView } from "./RemovalUnderMaintenanceView";
 
 export default async function RemovalUnderMaintenance() {
   const session = await getServerSession();
