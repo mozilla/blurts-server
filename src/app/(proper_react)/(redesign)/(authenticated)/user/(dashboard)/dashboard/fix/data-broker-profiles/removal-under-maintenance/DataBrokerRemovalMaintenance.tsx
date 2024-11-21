@@ -15,6 +15,7 @@ import { ClockIcon } from "../../../../../../../../../components/server/Icons";
 export type DataBrokerRemovalMaintenanceProps = {
   scanResult: OnerepScanResultRow;
   isPremiumUser: boolean;
+  onMarkAsResolved?: () => void;
 };
 
 export const DataBrokerRemovalMaintenance = (
@@ -86,7 +87,6 @@ export const DataBrokerRemovalMaintenance = (
         ))}
       </div>
       <div className={styles.buttonsWrapper}>
-        {/* TODO: Add functionality to these buttons */}
         <TelemetryButton
           variant="primary"
           href={props.scanResult.link}
@@ -104,7 +104,7 @@ export const DataBrokerRemovalMaintenance = (
         </TelemetryButton>
         <TelemetryButton
           variant="secondary"
-          href={props.scanResult.link}
+          onPress={props.onMarkAsResolved}
           event={{
             module: "ctaButton",
             name: "click",
