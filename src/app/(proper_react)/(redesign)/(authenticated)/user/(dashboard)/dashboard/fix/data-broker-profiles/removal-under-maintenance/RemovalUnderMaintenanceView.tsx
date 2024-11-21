@@ -18,7 +18,6 @@ import { CONST_URL_SUMO_MANUAL_REMOVAL } from "../../../../../../../../../../con
 import { useState } from "react";
 import { BackArrow } from "../../../../../../../../../components/server/Icons";
 import { LatestOnerepScanData } from "../../../../../../../../../../db/tables/onerep_scans";
-import { hasPremium } from "../../../../../../../../../functions/universal/user";
 
 export type Props = {
   data: LatestOnerepScanData;
@@ -94,7 +93,6 @@ export const RemovalUnderMaintenanceView = (props: Props) => {
       <div className={styles.exposureCardWrapper}>
         <DataBrokerRemovalMaintenance
           scanResult={firstScanResultNotResolved}
-          isPremiumUser={hasPremium(props.stepDeterminationData.user)}
           // eslint-disable-next-line @typescript-eslint/no-misused-promises
           onMarkAsResolved={() => {
             handleManualRemovalChange().catch((error) => {

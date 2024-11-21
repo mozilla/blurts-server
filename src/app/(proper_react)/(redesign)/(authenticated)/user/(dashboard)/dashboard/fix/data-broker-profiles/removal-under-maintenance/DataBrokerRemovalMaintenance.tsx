@@ -14,7 +14,6 @@ import { ClockIcon } from "../../../../../../../../../components/server/Icons";
 
 export type DataBrokerRemovalMaintenanceProps = {
   scanResult: OnerepScanResultRow;
-  isPremiumUser: boolean;
   onMarkAsResolved?: () => void;
 };
 
@@ -35,7 +34,7 @@ export const DataBrokerRemovalMaintenance = (
         dataBrokerDataType="relatives"
         label={l10n.getString("exposure-card-family-members")}
         count={scanResult.relatives.length}
-        isPremiumUser={props.isPremiumUser}
+        isPremiumUser={true}
       />,
     );
   }
@@ -47,7 +46,7 @@ export const DataBrokerRemovalMaintenance = (
         dataBrokerDataType="phones"
         label={l10n.getString("exposure-card-phone-number")}
         count={scanResult.phones.length}
-        isPremiumUser={props.isPremiumUser}
+        isPremiumUser={true}
       />,
     );
   }
@@ -59,7 +58,7 @@ export const DataBrokerRemovalMaintenance = (
         dataBrokerDataType="emails"
         label={l10n.getString("exposure-card-email")}
         count={scanResult.emails.length}
-        isPremiumUser={props.isPremiumUser}
+        isPremiumUser={true}
       />,
     );
   }
@@ -71,7 +70,7 @@ export const DataBrokerRemovalMaintenance = (
         dataBrokerDataType="addresses"
         label={l10n.getString("exposure-card-address")}
         count={scanResult.addresses.length}
-        isPremiumUser={props.isPremiumUser}
+        isPremiumUser={true}
       />,
     );
   }
