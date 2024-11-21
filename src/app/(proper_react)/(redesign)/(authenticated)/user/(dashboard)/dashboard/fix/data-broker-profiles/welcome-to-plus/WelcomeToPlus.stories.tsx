@@ -58,7 +58,13 @@ const mockedSession = {
 
 const WelcomeToPlusViewWrapper = (props: { brokerScanCount: number }) => {
   return (
-    <Shell l10n={l10n} session={mockedSession} nonce="" countryCode="us">
+    <Shell
+      l10n={l10n}
+      session={mockedSession}
+      nonce=""
+      countryCode="us"
+      enabledFeatureFlags={[]}
+    >
       <WelcomeToPlusView
         data={{
           countryCode: "us",

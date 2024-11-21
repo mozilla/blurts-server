@@ -245,6 +245,7 @@ it("passes the axe accessibility audit", async () => {
   const { container } = render(
     <TestComponentWrapper>
       <SettingsView
+        activeTab="edit-info"
         data={mockedPlusSubscriberEmailPreferences}
         l10n={getL10n()}
         user={mockedUser}
@@ -280,6 +281,7 @@ it("Add email address button is not shown when email limit of five reached", () 
   render(
     <TestComponentWrapper>
       <SettingsView
+        activeTab="edit-info"
         l10n={getL10n()}
         user={{
           ...mockedUser,
@@ -326,6 +328,7 @@ it("Add email address button is shown when fewer than five emails", () => {
   render(
     <TestComponentWrapper>
       <SettingsView
+        activeTab="edit-info"
         l10n={getL10n()}
         user={{
           ...mockedUser,
@@ -367,6 +370,7 @@ it("preselects 'Send all breach alerts to the primary email address' if that's t
   render(
     <TestComponentWrapper>
       <SettingsView
+        activeTab="edit-info"
         l10n={getL10n()}
         user={{
           ...mockedUser,
@@ -409,6 +413,7 @@ it("preselects 'Send breach alerts to the affected email address' if that's the 
   render(
     <TestComponentWrapper>
       <SettingsView
+        activeTab="edit-info"
         l10n={getL10n()}
         user={{
           ...mockedUser,
@@ -457,6 +462,7 @@ it("disables breach alert notification options if a user opts out of breach aler
   render(
     <TestComponentWrapper>
       <SettingsView
+        activeTab="edit-info"
         l10n={getL10n()}
         user={{
           ...mockedUser,
@@ -512,6 +518,7 @@ it("preselects primary email alert option", () => {
   render(
     <TestComponentWrapper>
       <SettingsView
+        activeTab="edit-info"
         l10n={getL10n()}
         user={{
           ...mockedUser,
@@ -553,6 +560,7 @@ it("unselects the breach alerts checkbox and sends a null value to the API", asy
   render(
     <TestComponentWrapper>
       <SettingsView
+        activeTab="edit-info"
         l10n={getL10n()}
         user={{
           ...mockedUser,
@@ -607,6 +615,7 @@ it("preselects the affected email comms option after a user decides to enable br
   render(
     <TestComponentWrapper>
       <SettingsView
+        activeTab="edit-info"
         l10n={getL10n()}
         user={{
           ...mockedUser,
@@ -658,6 +667,7 @@ it("sends a call to the API to change the email alert preferences when changing 
   render(
     <TestComponentWrapper>
       <SettingsView
+        activeTab="edit-info"
         l10n={getL10n()}
         user={{
           ...mockedUser,
@@ -712,6 +722,7 @@ it("checks that monthly monitor report is available to free users", () => {
   render(
     <TestComponentWrapper>
       <SettingsView
+        activeTab="edit-info"
         l10n={getL10n()}
         user={{
           ...mockedFreeUser,
@@ -751,6 +762,7 @@ it("checks that monthly monitor report is enabled", () => {
   render(
     <TestComponentWrapper>
       <SettingsView
+        activeTab="edit-info"
         l10n={getL10n()}
         user={{
           ...mockedUser,
@@ -795,6 +807,7 @@ it("sends an API call to disable monthly monitor reports", async () => {
   render(
     <TestComponentWrapper>
       <SettingsView
+        activeTab="edit-info"
         l10n={getL10n()}
         user={{
           ...mockedUser,
@@ -847,6 +860,7 @@ it("calls the right telemetry event if a user opts out of monthly report", async
   render(
     <TestComponentWrapper>
       <SettingsView
+        activeTab="edit-info"
         l10n={getL10n()}
         user={{
           ...mockedUser,
@@ -909,6 +923,7 @@ it("refreshes the session token after changing email alert preferences, to ensur
   render(
     <TestComponentWrapper>
       <SettingsView
+        activeTab="edit-info"
         l10n={getL10n()}
         user={{
           ...mockedUser,
@@ -948,6 +963,7 @@ it("marks unverified email addresses as such", () => {
   render(
     <TestComponentWrapper>
       <SettingsView
+        activeTab="edit-info"
         l10n={getL10n()}
         user={mockedUser}
         subscriber={mockedSubscriber}
@@ -986,6 +1002,7 @@ it("calls the API to resend a verification email if requested to", async () => {
   render(
     <TestComponentWrapper>
       <SettingsView
+        activeTab="edit-info"
         l10n={getL10n()}
         user={mockedUser}
         subscriber={mockedSubscriber}
@@ -1034,6 +1051,7 @@ it("calls the 'remove' action when clicking the rubbish bin icon", async () => {
   render(
     <TestComponentWrapper>
       <SettingsView
+        activeTab="edit-info"
         l10n={getL10n()}
         user={mockedUser}
         subscriber={mockedSubscriber}
@@ -1071,6 +1089,7 @@ it("hides the Plus cancellation link if the user doesn't have Plus", () => {
   render(
     <TestComponentWrapper>
       <SettingsView
+        activeTab="edit-info"
         l10n={getL10n()}
         user={{
           ...mockedUser,
@@ -1108,6 +1127,7 @@ it("shows the Plus cancellation link if the user has Plus", () => {
   render(
     <TestComponentWrapper>
       <SettingsView
+        activeTab="edit-info"
         l10n={getL10n()}
         user={{
           ...mockedUser,
@@ -1152,6 +1172,7 @@ it("takes you through the cancellation dialog flow all the way to subplat", asyn
   render(
     <TestComponentWrapper>
       <SettingsView
+        activeTab="edit-info"
         l10n={getL10n()}
         user={{
           ...mockedUser,
@@ -1231,6 +1252,7 @@ it("closes the cancellation survey if the user selects nevermind, take me back",
   render(
     <TestComponentWrapper>
       <SettingsView
+        activeTab="edit-info"
         l10n={getL10n()}
         user={{
           ...mockedUser,
@@ -1289,6 +1311,7 @@ it("closes the cancellation dialog", async () => {
   render(
     <TestComponentWrapper>
       <SettingsView
+        activeTab="edit-info"
         l10n={getL10n()}
         user={{
           ...mockedUser,
@@ -1340,6 +1363,7 @@ it("shows the account deletion button if the user does not have Plus", () => {
   render(
     <TestComponentWrapper>
       <SettingsView
+        activeTab="edit-info"
         l10n={getL10n()}
         user={{
           ...mockedUser,
@@ -1382,6 +1406,7 @@ it("warns about the consequences before deleting a free user's account", async (
   render(
     <TestComponentWrapper>
       <SettingsView
+        activeTab="edit-info"
         l10n={getL10n()}
         user={{
           ...mockedUser,
@@ -1426,6 +1451,7 @@ it("shows a loading state while account deletion is in progress", async () => {
   render(
     <TestComponentWrapper>
       <SettingsView
+        activeTab="edit-info"
         l10n={getL10n()}
         user={{
           ...mockedUser,
@@ -1471,6 +1497,7 @@ it("shows the account deletion button if the user has Plus", () => {
   render(
     <TestComponentWrapper>
       <SettingsView
+        activeTab="edit-info"
         l10n={getL10n()}
         user={{
           ...mockedUser,
@@ -1513,6 +1540,7 @@ it("warns about the consequences before deleting a Plus user's account", async (
   render(
     <TestComponentWrapper>
       <SettingsView
+        activeTab="edit-info"
         l10n={getL10n()}
         user={{
           ...mockedUser,
@@ -1567,6 +1595,7 @@ it.skip("calls the 'add' action when adding another email address", async () => 
   render(
     <TestComponentWrapper>
       <SettingsView
+        activeTab="edit-info"
         l10n={getL10n()}
         user={mockedUser}
         subscriber={mockedSubscriber}
@@ -1607,6 +1636,7 @@ describe("to learn about usage", () => {
     render(
       <TestComponentWrapper>
         <SettingsView
+          activeTab="edit-info"
           l10n={getL10n()}
           user={mockedUser}
           subscriber={mockedSubscriber}
@@ -1653,6 +1683,7 @@ describe("to learn about usage", () => {
     render(
       <TestComponentWrapper>
         <SettingsView
+          activeTab="edit-info"
           l10n={getL10n()}
           user={mockedUser}
           subscriber={mockedSubscriber}
@@ -1698,6 +1729,7 @@ describe("to learn about usage", () => {
     render(
       <TestComponentWrapper>
         <SettingsView
+          activeTab="edit-info"
           l10n={getL10n()}
           user={mockedUser}
           subscriber={mockedSubscriber}
@@ -1738,6 +1770,7 @@ describe("to learn about usage", () => {
     render(
       <TestComponentWrapper>
         <SettingsView
+          activeTab="edit-info"
           l10n={getL10n()}
           user={{
             ...mockedUser,
@@ -1783,6 +1816,7 @@ describe("to learn about usage", () => {
     render(
       <TestComponentWrapper>
         <SettingsView
+          activeTab="edit-info"
           l10n={getL10n()}
           user={{
             ...mockedUser,
@@ -1833,6 +1867,7 @@ describe("to learn about usage", () => {
     render(
       <TestComponentWrapper>
         <SettingsView
+          activeTab="edit-info"
           l10n={getL10n()}
           user={{
             ...mockedUser,
@@ -1879,6 +1914,7 @@ describe("to learn about usage", () => {
     render(
       <TestComponentWrapper>
         <SettingsView
+          activeTab="edit-info"
           l10n={getL10n()}
           user={{
             ...mockedUser,
@@ -1929,6 +1965,7 @@ describe("to learn about usage", () => {
     render(
       <TestComponentWrapper>
         <SettingsView
+          activeTab="edit-info"
           l10n={getL10n()}
           user={{
             ...mockedUser,
@@ -1974,6 +2011,7 @@ describe("to learn about usage", () => {
     render(
       <TestComponentWrapper>
         <SettingsView
+          activeTab="edit-info"
           l10n={getL10n()}
           user={{
             ...mockedUser,
@@ -2024,6 +2062,7 @@ describe("to learn about usage", () => {
     render(
       <TestComponentWrapper>
         <SettingsView
+          activeTab="edit-info"
           l10n={getL10n()}
           user={{
             ...mockedUser,
@@ -2082,6 +2121,7 @@ it("selects the coupon code discount cta and shows the all-set dialog step", asy
   render(
     <TestComponentWrapper>
       <SettingsView
+        activeTab="edit-info"
         l10n={getL10n()}
         user={{
           ...mockedUser,
@@ -2169,6 +2209,7 @@ it("shows error message if the applying the coupon code function was unsuccessfu
   render(
     <TestComponentWrapper>
       <SettingsView
+        activeTab="edit-info"
         l10n={getL10n()}
         user={{
           ...mockedUser,
@@ -2236,6 +2277,7 @@ it("does not show the coupon code if a user already has a coupon set", async () 
   render(
     <TestComponentWrapper>
       <SettingsView
+        activeTab="edit-info"
         l10n={getL10n()}
         user={{
           ...mockedUser,
