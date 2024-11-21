@@ -1,5 +1,9 @@
 @import "../../tokens";
 
+.container {
+  display: flex;
+}
+
 .tabs {
   display: flex;
   gap: $spacing-sm;
@@ -11,6 +15,8 @@
 
 .tab {
   cursor: pointer;
+  display: flex;
+  gap: $spacing-xs;
   padding: $spacing-sm;
   position: relative;
 
@@ -18,8 +24,8 @@
     bottom: 0;
     content: "";
     height: $border-focus-width;
-    left: 0;
     position: absolute;
+    right: 0;
     width: 100%;
   }
 
@@ -30,6 +36,22 @@
   }
 }
 
-.container {
-  display: flex;
+.secondary {
+  .tabs {
+    align-items: flex-start;
+    gap: $spacing-sm;
+  }
+
+  .tab {
+    color: $color-grey-40;
+    padding: $spacing-xs 0;
+
+    &[aria-selected="true"] {
+      color: $color-purple-50;
+      &::after {
+        background: $color-purple-50;
+        height: 2px;
+      }
+    }
+  }
 }

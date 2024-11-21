@@ -17,6 +17,10 @@
   h2 {
     font: $text-title-xs;
   }
+
+  & [role="tab"]::after {
+    width: calc(100% - 24px - $spacing-xs);
+  }
 }
 
 .content {

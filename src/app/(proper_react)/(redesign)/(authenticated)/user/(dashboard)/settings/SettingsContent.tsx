@@ -10,20 +10,40 @@ import { TabType } from "../dashboard/View";
 import { TabList } from "../../../../../../components/client/TabList";
 import styles from "./SettingsContent.module.scss";
 import { SettingsPanel } from "./panels";
+import {
+  EmailOutlineIcon,
+  MailboxOutlineIcon,
+  ContactsOutlineIcon,
+} from "../../../../../../components/server/Icons";
 
 function SettingsContent() {
   const l10n = useL10n();
   const tabsData = [
     {
-      name: l10n.getString("settings-tab-label-edit-info"),
+      name: (
+        <>
+          <EmailOutlineIcon alt="" width={24} height={24} />
+          {l10n.getString("settings-tab-label-edit-info")}
+        </>
+      ),
       key: "edit-info",
     },
     {
-      name: l10n.getString("settings-tab-label-notifications"),
+      name: (
+        <>
+          <MailboxOutlineIcon alt="" width={24} height={24} />
+          {l10n.getString("settings-tab-label-notifications")}
+        </>
+      ),
       key: "label-notification",
     },
     {
-      name: l10n.getString("settings-tab-label-manage-account"),
+      name: (
+        <>
+          <ContactsOutlineIcon alt="" width={24} height={24} />
+          {l10n.getString("settings-tab-label-manage-account")}
+        </>
+      ),
       key: "manage-account",
     },
   ];
@@ -42,6 +62,7 @@ function SettingsContent() {
           onSelectionChange={(selectedKey) => {
             setActiveTab(selectedKey as TabType);
           }}
+          variant="secondary"
         />
       </header>
       <div className={styles.content}>
