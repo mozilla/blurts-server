@@ -31,6 +31,8 @@ ARG SENTRY_RELEASE
 ENV SENTRY_RELEASE=$SENTRY_RELEASE
 
 RUN --mount=type=secret,id=SENTRY_AUTH_TOKEN,env=SENTRY_AUTH_TOKEN \
-    GLEAN_PYTHON=python GLEAN_PIP=pip npm run build
+    GLEAN_PYTHON=python \
+    GLEAN_PIP=pip \
+    npm run build
 
 CMD ["npm", "start"]
