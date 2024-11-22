@@ -45,7 +45,7 @@ jobs:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
         run: |
           docker build --tag blurts-server \
-            --build-arg SENTRY_RELEASE="rhelmer-test" \ # FIXME
+            --build-arg SENTRY_RELEASE="rhelmer-test" \
             --secret id=SENTRY_AUTH_TOKEN \
             .
 
