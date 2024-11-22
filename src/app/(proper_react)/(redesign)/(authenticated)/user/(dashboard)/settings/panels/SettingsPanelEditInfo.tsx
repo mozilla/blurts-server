@@ -2,15 +2,24 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import { useState } from "react";
 import { SubscriberRow } from "knex/types/tables";
 import { CONST_MAX_NUM_ADDRESSES } from "../../../../../../../../constants";
 import { SubscriberEmailPreferencesOutput } from "../../../../../../../../db/tables/subscriber_email_preferences";
 import { useL10n } from "../../../../../../../hooks/l10n";
 import { EmailAddressAdder } from "../EmailAddressAdder";
-import { EmailListing } from "../EmailListing";
 import { FeatureFlagName } from "../../../../../../../../db/tables/featureFlags";
 import { Session } from "next-auth";
 import { SanitizedEmailAddressRow } from "../../../../../../../functions/server/sanitize";
+import { InputField } from "../../../../../../../components/client/InputField";
+import {
+  CheckIcon,
+  DeleteIcon,
+} from "../../../../../../../components/server/Icons";
+import { useTelemetry } from "../../../../../../../hooks/useTelemetry";
+import { Button } from "../../../../../../../components/client/Button";
+import styles from "./SettingsPanelEditInfo.module.scss";
+import { onRemoveEmail } from "../actions";
 
 export type SettingsPanelEditInfoProps = {
   breachCountByEmailAddress: Record<string, number>;
@@ -21,10 +30,81 @@ export type SettingsPanelEditInfoProps = {
   user: Session["user"];
 };
 
+function MonitoredEmail(props: {
+  emailAddress: SanitizedEmailAddressRow;
+  breachCount: number;
+}) {
+  const l10n = useL10n();
+  const recordTelemetry = useTelemetry();
+  const [isVerificationEmailResent, setIsVerificationEmailResent] =
+    useState(false);
+  const isInvalid = !props.emailAddress.verified;
+
+  return (
+    <>
+      <InputField
+        type="email"
+        value={props.emailAddress.email}
+        isDisabled
+        iconButton={
+          <Button
+            onPress={() => {
+              recordTelemetry("button", "click", {
+                button_id: "removed_email_address",
+              });
+              void onRemoveEmail(props.emailAddress);
+            }}
+            variant="icon"
+            small
+          >
+            <DeleteIcon
+              alt={l10n.getString("settings-remove-email-button-label")}
+            />
+          </Button>
+        }
+        isInvalid={isInvalid}
+        errorMessage={l10n.getString("settings-email-verification-callout")}
+        description={l10n.getString("settings-email-number-of-breaches-info", {
+          breachCount: props.breachCount,
+        })}
+      />
+      {!props.emailAddress.verified && (
+        <Button
+          className={styles.resendButton}
+          variant="link"
+          small
+          isDisabled={isVerificationEmailResent}
+          onPress={() => {
+            void fetch("/api/v1/user/resend-email", {
+              headers: {
+                "Content-Type": "application/json",
+                Accept: "text/html", // set to request localized HTML email
+              },
+              mode: "same-origin",
+              method: "POST",
+              body: JSON.stringify({ emailId: props.emailAddress.id }),
+            }).then((response) => {
+              if (response.ok) {
+                setIsVerificationEmailResent(true);
+              }
+            });
+          }}
+        >
+          {isVerificationEmailResent && (
+            <CheckIcon alt="" width={14} height={14} />
+          )}
+          {l10n.getString("settings-resend-email-verification-link")}
+        </Button>
+      )}
+    </>
+  );
+}
+
 function SettingsPanelEditInfo(props: SettingsPanelEditInfoProps) {
   const l10n = useL10n();
   const hasMaxEmailAddresses =
     props.emailAddresses.length < CONST_MAX_NUM_ADDRESSES - 1;
+
   return (
     <>
       <div>
@@ -35,25 +115,28 @@ function SettingsPanelEditInfo(props: SettingsPanelEditInfoProps) {
           })}
         </p>
       </div>
-      <ul>
+      <ul className={`noList ${styles.emailList}`}>
         <li key="primary">
-          <EmailListing
-            email={props.user.email}
-            breachCount={props.breachCountByEmailAddress[props.user.email]}
+          <InputField
+            type="email"
+            value={props.user.email}
+            isDisabled
+            description={l10n.getString(
+              "settings-email-number-of-breaches-info",
+              {
+                breachCount: props.breachCountByEmailAddress[props.user.email],
+              },
+            )}
           />
         </li>
-        {props.emailAddresses.map((emailAddress) => {
-          return (
-            <li key={emailAddress.email}>
-              <EmailListing
-                email={emailAddress}
-                breachCount={
-                  props.breachCountByEmailAddress[emailAddress.email]
-                }
-              />
-            </li>
-          );
-        })}
+        {props.emailAddresses.map((emailAddress) => (
+          <li key={emailAddress.email}>
+            <MonitoredEmail
+              emailAddress={emailAddress}
+              breachCount={props.breachCountByEmailAddress[emailAddress.email]}
+            />
+          </li>
+        ))}
       </ul>
       {hasMaxEmailAddresses && <EmailAddressAdder />}
     </>

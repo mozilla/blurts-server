@@ -1,3 +1,14 @@
+@import "../../../../../../../tokens";
+
 .panel {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: $layout-sm;
   width: 100%;
+
+  h3 {
+    font: $text-body-xl;
+    font-weight: 600;
+  }
 }

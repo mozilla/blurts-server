@@ -89,6 +89,16 @@
     text-decoration: underline;
   }
 
+  &.icon {
+    background: none;
+    color: $color-grey-50;
+    padding: $spacing-md;
+
+    &:hover {
+      background-color: $color-grey-05;
+    }
+  }
+
   &.isLoading {
     cursor: progress;
     opacity: 0.4;
@@ -97,6 +107,14 @@
   &.small {
     line-height: 1.5;
     padding: $spacing-sm $spacing-md;
+
+    &.link {
+      font: $text-body-sm;
+    }
+
+    &.icon {
+      padding: $spacing-sm;
+    }
   }
 
   &.wide {
