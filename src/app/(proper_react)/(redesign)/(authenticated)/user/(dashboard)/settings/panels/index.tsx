@@ -6,11 +6,12 @@ import { SettingsPanelEditInfo } from "./SettingsPanelEditInfo";
 import { SettingsPanelNotifications } from "./SettingsPanelNotifications";
 import { SettingsPanelManageAccount } from "./SettingsPanelManageAccount";
 import styles from "./Panel.module.scss";
+import { SettingContentProps } from "../SettingsContent";
 
-function Panel(props: { type: string }) {
-  switch (props.type) {
+function Panel(props: SettingContentProps) {
+  switch (props.activeTab) {
     case "edit-info":
-      return <SettingsPanelEditInfo />;
+      return <SettingsPanelEditInfo {...props} />;
     case "notifications":
       return <SettingsPanelNotifications />;
     case "manage-account":
@@ -18,10 +19,10 @@ function Panel(props: { type: string }) {
   }
 }
 
-function SettingsPanel(props: { type: string }) {
+function SettingsPanel(props: SettingContentProps) {
   return (
     <div className={styles.panel}>
-      <Panel type={props.type} />
+      <Panel {...props} />
     </div>
   );
 }

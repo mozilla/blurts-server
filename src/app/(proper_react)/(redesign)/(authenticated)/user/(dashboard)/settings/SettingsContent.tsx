@@ -10,6 +10,7 @@ import { useL10n } from "../../../../../../hooks/l10n";
 import { TabList } from "../../../../../../components/client/TabList";
 import styles from "./SettingsContent.module.scss";
 import { SettingsPanel } from "./panels";
+import { SettingsPanelEditInfoProps } from "./panels/SettingsPanelEditInfo";
 import { TabType } from "./View";
 import {
   EmailOutlineIcon,
@@ -17,7 +18,7 @@ import {
   ContactsOutlineIcon,
 } from "../../../../../../components/server/Icons";
 
-type SettingContentProps = {
+export type SettingContentProps = SettingsPanelEditInfoProps & {
   activeTab: TabType;
 };
 
@@ -85,7 +86,15 @@ function SettingsContent(props: SettingContentProps) {
         />
       </header>
       <div className={styles.content}>
-        <SettingsPanel type={activeTab} />
+        <SettingsPanel
+          activeTab={activeTab}
+          breachCountByEmailAddress={props.breachCountByEmailAddress}
+          data={props.data}
+          emailAddresses={props.emailAddresses}
+          enabledFeatureFlags={props.enabledFeatureFlags}
+          subscriber={props.subscriber}
+          user={props.user}
+        />
       </div>
     </main>
   );

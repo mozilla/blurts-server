@@ -66,7 +66,15 @@ export const SettingsView = (props: Props) => {
         experimentData={props.experimentData}
       />
       {props.enabledFeatureFlags.includes("SettingsPageRedesign") ? (
-        <SettingsContent activeTab={props.activeTab} />
+        <SettingsContent
+          activeTab={props.activeTab}
+          breachCountByEmailAddress={props.breachCountByEmailAddress}
+          data={props.data}
+          emailAddresses={props.emailAddresses.map(sanitizeEmailRow)}
+          enabledFeatureFlags={props.enabledFeatureFlags}
+          subscriber={props.subscriber}
+          user={props.user}
+        />
       ) : (
         <main className={styles.main}>
           <header className={styles.title}>
