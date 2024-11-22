@@ -2,7 +2,7 @@ name: Build Docker image and publish
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, MNTOR-2934/sentry-sourcemap-docker-secret ] # FIXME remove after testing
 jobs:
   push_to_registry:
     name: Push Docker image to Docker Hub
@@ -39,11 +39,12 @@ jobs:
             --build-arg SENTRY_RELEASE="$GITHUB_REF_NAME" \
             .
 
-      - name: Deploy to Dockerhub
-        env:
-          DOCKERHUB_REPO: ${{ env.DOCKERHUB_REPO }}
-        run: |
-          # deploy main
-          docker tag blurts-server ${{ steps.meta.outputs.tags }}
-          docker push ${{ steps.meta.outputs.tags }}
+# FIXME temporarily disable push while testing
+#      - name: Deploy to Dockerhub
+#        env:
+#          DOCKERHUB_REPO: ${{ env.DOCKERHUB_REPO }}
+#        run: |
+#          # deploy main
+#          docker tag blurts-server ${{ steps.meta.outputs.tags }}
+#          docker push ${{ steps.meta.outputs.tags }}
 
