@@ -1,5 +1,4 @@
 FROM node:20.9-alpine
-RUN --mount=type=secret,id=sentry_auth_token,env=SENTRY_AUTH_TOKEN
 
 RUN addgroup -g 10001 app && \
     adduser -D -G app -h /app -u 10001 app
@@ -28,9 +27,10 @@ ENV NEXT_PUBLIC_GA4_DEBUG_MODE=false
 ARG S3_BUCKET
 ENV S3_BUCKET=$S3_BUCKET
 
-RUN GLEAN_PYTHON=python GLEAN_PIP=pip npm run build
-
 ARG SENTRY_RELEASE
 ENV SENTRY_RELEASE=$SENTRY_RELEASE
+
+RUN --mount=type=secret,id=SENTRY_AUTH_TOKEN,env=SENTRY_AUTH_TOKEN \
+    GLEAN_PYTHON=python GLEAN_PIP=pip npm run build
 
 CMD ["npm", "start"]

@@ -37,6 +37,7 @@ jobs:
         run: |
           docker build --tag blurts-server \
             --build-arg SENTRY_RELEASE="$GITHUB_REF_NAME" \
+            --secret id=SENTRY_AUTH_TOKEN \
             .
 
 # FIXME temporarily disable push while testing
