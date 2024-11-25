@@ -103,3 +103,15 @@
     margin-top: $spacing-lg;
   }
 }
+
+.fadeTransition {
+  transition: opacity 0.5s ease-in-out;
+}
+
+.fadeOut {
+  opacity: 0;
+}
+
+.fadeIn {
+  opacity: 1;
+}

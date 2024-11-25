@@ -37,6 +37,7 @@ export const RemovalUnderMaintenanceView = (props: Props) => {
     props.data.results[0],
   );
   const [isLoadingNextDataBroker, setIsLoadingNextDataBroker] = useState(false);
+  const [fadeState, setFadeState] = useState<"fadeIn" | "fadeOut" | "">("");
 
   const nextGuidedStep = getNextGuidedStep(
     props.stepDeterminationData,
@@ -49,6 +50,7 @@ export const RemovalUnderMaintenanceView = (props: Props) => {
 
   const updateDataBrokerWithTimeout = () => {
     setIsLoadingNextDataBroker(true);
+    setFadeState("fadeOut");
 
     setTimeout(() => {
       setIsLoadingNextDataBroker(false);
@@ -64,6 +66,8 @@ export const RemovalUnderMaintenanceView = (props: Props) => {
       if (!nextUnresolved) {
         window.location.href = nextGuidedStep.href;
       }
+
+      setFadeState("fadeIn"); // trigger the fade-in for the next scan result
     }, 2000);
   };
 
@@ -152,11 +156,14 @@ export const RemovalUnderMaintenanceView = (props: Props) => {
       className={styles.exposureCard}
       aria-label={firstScanResultNotResolved.data_broker}
     >
-      <div className={styles.dataClassesList}>
-        {exposureCategoriesArray.map((item) => (
-          <React.Fragment key={item.key}>{item}</React.Fragment>
-        ))}
+      <div className={`${styles.fadeTransition} ${styles[fadeState]}`}>
+        <div className={styles.dataClassesList}>
+          {exposureCategoriesArray.map((item) => (
+            <React.Fragment key={item.key}>{item}</React.Fragment>
+          ))}
+        </div>
       </div>
+
       <div className={styles.buttonsWrapper}>
         <TelemetryButton
           variant="primary"
