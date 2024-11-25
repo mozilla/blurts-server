@@ -43,7 +43,7 @@ export default async function RemovalUnderMaintenance() {
     (await getScanResultsWithBrokerUnderMaintenance(profileId)) ?? null;
   const getNextStep = getNextGuidedStep(data, "DataBrokerManualRemoval");
 
-  if (scansWithRemovalUnderMaintenance === null) {
+  if (!scansWithRemovalUnderMaintenance) {
     redirect(getNextStep.href);
   }
 
