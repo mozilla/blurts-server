@@ -4,6 +4,50 @@
   .exposureCardWrapper {
     margin-top: $spacing-md;
     padding-bottom: $spacing-lg;
+
+    .exposureCard {
+      display: flex;
+      flex-direction: column;
+      background-color: $color-white;
+      border: 2px solid rgba($color-purple-70, 0.2);
+      border-radius: $border-radius-lg;
+      padding: $layout-sm $layout-sm $layout-xs $layout-sm;
+
+      .dataClassesList {
+        justify-content: space-between;
+        margin-left: 0;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-row-gap: $spacing-sm;
+
+        @media screen and (min-width: $screen-md) {
+          grid-template-columns: 1fr 1fr 1fr;
+          gap: $spacing-sm;
+        }
+
+        @media screen and (min-width: $screen-lg) {
+          display: flex;
+          flex-direction: row;
+          align-items: flex-start;
+          gap: $layout-xs;
+          flex-wrap: wrap;
+          justify-content: flex-start;
+        }
+      }
+
+      .buttonsWrapper {
+        margin-top: $spacing-lg;
+        border-top: 2px solid $color-grey-10;
+        padding-top: $spacing-lg;
+        display: flex;
+        gap: $spacing-sm;
+      }
+
+      .estimatedTime {
+        @include estimated-time;
+        padding-top: $spacing-sm;
+      }
+    }
   }
 
   .header {

@@ -9,15 +9,20 @@ import {
   getNextGuidedStep,
 } from "../../../../../../../../../functions/server/getRelevantGuidedSteps";
 import { FixView } from "../../FixView";
-import { DataBrokerRemovalMaintenance } from "./DataBrokerRemovalMaintenance";
 import styles from "./RemovalUnderMaintenance.module.scss";
 import { useL10n } from "../../../../../../../../../hooks/l10n";
 import { TelemetryLink } from "../../../../../../../../../components/client/TelemetryLink";
 import { TelemetryButton } from "../../../../../../../../../components/client/TelemetryButton";
 import { CONST_URL_SUMO_MANUAL_REMOVAL } from "../../../../../../../../../../constants";
-import { useState } from "react";
-import { BackArrow } from "../../../../../../../../../components/server/Icons";
+import React, { useEffect, useState } from "react";
+import {
+  BackArrow,
+  ClockIcon,
+} from "../../../../../../../../../components/server/Icons";
 import { LatestOnerepScanData } from "../../../../../../../../../../db/tables/onerep_scans";
+import { ExposureCardDataClassLayout } from "../../../../../../../../../components/client/exposure_card/ExposureCardDataClass";
+import confetti from "canvas-confetti";
+import { OnerepScanResultRow } from "knex/types/tables";
 
 export type Props = {
   data: LatestOnerepScanData;
@@ -31,10 +36,36 @@ export const RemovalUnderMaintenanceView = (props: Props) => {
   const [firstScanResultNotResolved, setFirstScanResultNotResolved] = useState(
     props.data.results[0],
   );
+  const [isLoadingNextDataBroker, setIsLoadingNextDataBroker] = useState(false);
+
   const nextGuidedStep = getNextGuidedStep(
     props.stepDeterminationData,
     "DataBrokerManualRemoval",
   );
+
+  const [nextScanResultNotResolved, setNextScanResultNotResolved] = useState<
+    OnerepScanResultRow | undefined
+  >();
+
+  const updateDataBrokerWithTimeout = () => {
+    setIsLoadingNextDataBroker(true);
+
+    setTimeout(() => {
+      setIsLoadingNextDataBroker(false);
+      void confetti();
+
+      // Trigger the next unresolved scan result after the timeout
+      const nextUnresolved = props.data.results.find(
+        (scanResult) => !scanResult.manually_resolved,
+      );
+      setNextScanResultNotResolved(nextUnresolved);
+
+      // Redirect if no unresolved scan result remains
+      if (!nextUnresolved) {
+        window.location.href = nextGuidedStep.href;
+      }
+    }, 2000);
+  };
 
   async function handleManualRemovalChange() {
     const response = await fetch(
@@ -52,24 +83,123 @@ export const RemovalUnderMaintenanceView = (props: Props) => {
       return;
     }
 
-    // Mannualy move to next step in response works
+    // Mark the current scan result as manually resolved
     firstScanResultNotResolved.manually_resolved = true;
 
-    // Find the next unresolved scan result
-    const nextScanResultNotResolved = props.data.results.find(
-      (scanResult) => !scanResult.manually_resolved,
-    );
+    // Trigger the timeout update
+    updateDataBrokerWithTimeout();
+  }
 
-    // Update the state to the next unresolved scan result
+  // Effect to update the current unresolved scan result when `nextScanResultNotResolved` changes
+  useEffect(() => {
     if (nextScanResultNotResolved) {
       setFirstScanResultNotResolved(nextScanResultNotResolved);
     }
+  }, [nextScanResultNotResolved]);
 
-    // Move to the next step
-    else {
-      window.location.href = nextGuidedStep.href;
-    }
+  const exposureCategoriesArray: React.ReactElement[] = [];
+  if (firstScanResultNotResolved.relatives.length > 0) {
+    exposureCategoriesArray.push(
+      <ExposureCardDataClassLayout
+        exposure={firstScanResultNotResolved}
+        key="relatives"
+        dataBrokerDataType="relatives"
+        label={l10n.getString("exposure-card-family-members")}
+        count={firstScanResultNotResolved.relatives.length}
+        isPremiumUser={true}
+      />,
+    );
   }
+  if (firstScanResultNotResolved.phones.length > 0) {
+    exposureCategoriesArray.push(
+      <ExposureCardDataClassLayout
+        exposure={firstScanResultNotResolved}
+        key="phones"
+        dataBrokerDataType="phones"
+        label={l10n.getString("exposure-card-phone-number")}
+        count={firstScanResultNotResolved.phones.length}
+        isPremiumUser={true}
+      />,
+    );
+  }
+  if (firstScanResultNotResolved.emails.length > 0) {
+    exposureCategoriesArray.push(
+      <ExposureCardDataClassLayout
+        exposure={firstScanResultNotResolved}
+        key="emails"
+        dataBrokerDataType="emails"
+        label={l10n.getString("exposure-card-email")}
+        count={firstScanResultNotResolved.emails.length}
+        isPremiumUser={true}
+      />,
+    );
+  }
+  if (firstScanResultNotResolved.addresses.length > 0) {
+    exposureCategoriesArray.push(
+      <ExposureCardDataClassLayout
+        exposure={firstScanResultNotResolved}
+        key="addresses"
+        dataBrokerDataType="addresses"
+        label={l10n.getString("exposure-card-address")}
+        count={firstScanResultNotResolved.addresses.length}
+        isPremiumUser={true}
+      />,
+    );
+  }
+
+  const dataBrokerCard = (
+    <div
+      className={styles.exposureCard}
+      aria-label={firstScanResultNotResolved.data_broker}
+    >
+      <div className={styles.dataClassesList}>
+        {exposureCategoriesArray.map((item) => (
+          <React.Fragment key={item.key}>{item}</React.Fragment>
+        ))}
+      </div>
+      <div className={styles.buttonsWrapper}>
+        <TelemetryButton
+          variant="primary"
+          href={firstScanResultNotResolved.link}
+          event={{
+            module: "ctaButton",
+            name: "click",
+            data: {
+              button_id: `go_to_${firstScanResultNotResolved.data_broker}_link_to_get_started`,
+            },
+          }}
+        >
+          {l10n.getString(
+            "data-broker-removal-maintenance-cta-go-to-data-broker",
+          )}
+        </TelemetryButton>
+        <TelemetryButton
+          variant="secondary"
+          isLoading={isLoadingNextDataBroker}
+          // eslint-disable-next-line @typescript-eslint/no-misused-promises
+          onPress={() => handleManualRemovalChange()}
+          event={{
+            module: "ctaButton",
+            name: "click",
+            data: {
+              button_id: `data_broker_removal_mark_as_resolved`,
+            },
+          }}
+        >
+          {l10n.getString(
+            "data-broker-removal-maintenance-cta-mark-as-resolved",
+          )}
+        </TelemetryButton>
+      </div>
+      <div className={styles.estimatedTime}>
+        <ClockIcon width="15" height="15" alt="" />
+        {l10n.getString("data-broker-removal-maintenance-estimated-time", {
+          range: "5 - 10",
+        })}
+      </div>
+    </div>
+  );
+
   const dataBrokerInformation = (
     <div className={styles.dataBrokerInformationWrapper}>
       <p className={styles.header}>
@@ -91,15 +221,7 @@ export const RemovalUnderMaintenanceView = (props: Props) => {
         })}
       </p>
       <div className={styles.exposureCardWrapper}>
-        <DataBrokerRemovalMaintenance
-          scanResult={firstScanResultNotResolved}
-          // eslint-disable-next-line @typescript-eslint/no-misused-promises
-          onMarkAsResolved={() => {
-            handleManualRemovalChange().catch((error) => {
-              console.error("Error during manual removal change:", error);
-            });
-          }}
-        />
+        {dataBrokerCard}
         <div className={styles.removalContentSection}>
           <dt>
             {l10n.getString(
