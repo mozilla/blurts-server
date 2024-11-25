@@ -8,7 +8,6 @@ import { CONST_MAX_NUM_ADDRESSES } from "../../../../../../../../constants";
 import { SubscriberEmailPreferencesOutput } from "../../../../../../../../db/tables/subscriber_email_preferences";
 import { useL10n } from "../../../../../../../hooks/l10n";
 import { EmailAddressAdder } from "../EmailAddressAdder";
-import { FeatureFlagName } from "../../../../../../../../db/tables/featureFlags";
 import { Session } from "next-auth";
 import { SanitizedEmailAddressRow } from "../../../../../../../functions/server/sanitize";
 import { InputField } from "../../../../../../../components/client/InputField";
@@ -25,7 +24,6 @@ export type SettingsPanelEditInfoProps = {
   breachCountByEmailAddress: Record<string, number>;
   data: SubscriberEmailPreferencesOutput;
   emailAddresses: SanitizedEmailAddressRow[];
-  enabledFeatureFlags: FeatureFlagName[];
   subscriber: SubscriberRow;
   user: Session["user"];
 };

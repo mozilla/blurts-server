@@ -7,6 +7,10 @@
   gap: $layout-sm;
   width: 100%;
 
+  hr {
+    width: 100%;
+  }
+
   h3 {
     font: $text-body-xl;
     font-weight: 600;

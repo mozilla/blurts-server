@@ -71,7 +71,6 @@ export const SettingsView = (props: Props) => {
           breachCountByEmailAddress={props.breachCountByEmailAddress}
           data={props.data}
           emailAddresses={props.emailAddresses.map(sanitizeEmailRow)}
-          enabledFeatureFlags={props.enabledFeatureFlags}
           experimentData={props.experimentData}
           fxaSubscriptionsUrl={props.fxaSubscriptionsUrl}
           isMonthlySubscriber={props.isMonthlySubscriber}

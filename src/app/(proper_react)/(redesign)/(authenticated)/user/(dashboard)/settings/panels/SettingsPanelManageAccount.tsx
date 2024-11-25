@@ -27,6 +27,10 @@ function SettingsPanelManageAccount(props: SettingsPanelManageAccountProps) {
   const l10n = useL10n();
   return (
     <>
+      <div>
+        <h3>{l10n.getString("settings-tab-label-manage-account")}</h3>
+        <p>{l10n.getString("settings-tab-subtitle-manage-account")}</p>
+      </div>
       {hasPremium(props.user) && (
         <div>
           <h3>{l10n.getString("settings-cancel-plus-title")}</h3>
