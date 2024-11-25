@@ -214,6 +214,7 @@ export const RemovalUnderMaintenanceView = (props: Props) => {
           elems: {
             link_to_data_broker: (
               <TelemetryLink
+                className={styles[fadeState]}
                 href={firstScanResultNotResolved.link}
                 target="_blank"
                 eventData={{
