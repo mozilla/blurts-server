@@ -116,6 +116,7 @@ export const DataBrokerRemovalUnderMaintenance: Story = {
   args: {
     exposureImg: FamilyTreeImage,
     exposureData: ScanMockItemRemovalUnderMaintenance,
+    isPremiumUser: true,
   },
 };
 
@@ -123,6 +124,7 @@ export const DataBrokerRemovalUnderMaintenanceFixed: Story = {
   args: {
     exposureImg: FamilyTreeImage,
     exposureData: ScanMockItemRemovalUnderMaintenanceFixed,
+    isPremiumUser: true,
   },
 };
 
