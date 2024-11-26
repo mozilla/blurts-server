@@ -51,21 +51,20 @@ export const RemovalUnderMaintenanceView = (props: Props) => {
   const updateDataBrokerWithTimeout = () => {
     setIsLoadingNextDataBroker(true);
     setFadeState("fadeOut");
+    // Trigger the next unresolved scan result after the timeout
+    const nextUnresolved = props.data.results.find(
+      (scanResult) => !scanResult.manually_resolved,
+    );
+
+    // Redirect if no unresolved scan result remains
+    if (!nextUnresolved) {
+      window.location.href = nextGuidedStep.href;
+    }
 
     setTimeout(() => {
+      setNextScanResultNotResolved(nextUnresolved);
       setIsLoadingNextDataBroker(false);
       void confetti();
-
-      // Trigger the next unresolved scan result after the timeout
-      const nextUnresolved = props.data.results.find(
-        (scanResult) => !scanResult.manually_resolved,
-      );
-      setNextScanResultNotResolved(nextUnresolved);
-
-      // Redirect if no unresolved scan result remains
-      if (!nextUnresolved) {
-        window.location.href = nextGuidedStep.href;
-      }
 
       setFadeState("fadeIn"); // trigger the fade-in for the next scan result
     }, 2000);
