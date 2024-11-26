@@ -19,14 +19,14 @@ import { getOnerepProfileId } from "../../../../../../../../../../db/tables/subs
 import { getSubscriberBreaches } from "../../../../../../../../../functions/server/getSubscriberBreaches";
 import { getSubscriberEmails } from "../../../../../../../../../functions/server/getSubscriberEmails";
 import { RemovalUnderMaintenanceView } from "./RemovalUnderMaintenanceView";
+import { hasPremium } from "../../../../../../../../../functions/universal/user";
 
 export default async function RemovalUnderMaintenance() {
   const session = await getServerSession();
-
-  if (!session?.user?.subscriber?.id) {
+  const countryCode = getCountryCode(headers());
+  if (!session?.user?.subscriber?.id || !hasPremium(session.user)) {
     redirect("/user/dashboard");
   }
-  const countryCode = getCountryCode(headers());
   const profileId = await getOnerepProfileId(session.user.subscriber.id);
   const latestScan = await getLatestOnerepScanResults(profileId);
   const data: StepDeterminationData = {
@@ -38,14 +38,18 @@ export default async function RemovalUnderMaintenance() {
       countryCode,
     }),
   };
-  const subscriberEmails = await getSubscriberEmails(session.user);
   const scansWithRemovalUnderMaintenance =
     (await getScanResultsWithBrokerUnderMaintenance(profileId)) ?? null;
   const getNextStep = getNextGuidedStep(data, "DataBrokerManualRemoval");
 
-  if (!scansWithRemovalUnderMaintenance) {
+  if (
+    scansWithRemovalUnderMaintenance?.results.length === 0 ||
+    !scansWithRemovalUnderMaintenance
+  ) {
     redirect(getNextStep.href);
   }
+
+  const subscriberEmails = await getSubscriberEmails(session.user);
 
   // Filtered scan data results
   const scansWithRemovalUnderMaintenanceData = scansWithRemovalUnderMaintenance;
