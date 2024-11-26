@@ -2793,7 +2793,7 @@ it("allows Plus users to filter by info for sale", async () => {
   await user.click(filterMenuButton);
 
   const filterDialog = screen.getByRole("dialog");
-  const exposureTypeInput = getByLabelText(filterDialog, "Info for sale");
+  const exposureTypeInput = getByLabelText(filterDialog, "Your info for sale");
   await user.click(exposureTypeInput);
 
   const showResultsButton = getByRole(filterDialog, "button", {
