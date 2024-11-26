@@ -5,6 +5,7 @@
 "use client";
 
 import React, { ReactNode, useId } from "react";
+import Image from "next/image";
 import { OnerepScanResultRow } from "knex/types/tables";
 import styles from "./ExposureCard.module.scss";
 import { StatusPill } from "../../server/StatusPill";
@@ -15,6 +16,7 @@ import { DataBrokerImage } from "./DataBrokerImage";
 import { TelemetryLink } from "../TelemetryLink";
 import { FeatureFlagName } from "../../../../db/tables/featureFlags";
 import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
+import SparkleImage from "../assets/sparkle.png";
 
 export type ScanResultCardProps = {
   scanResult: OnerepScanResultRow;
@@ -227,12 +229,32 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
     );
   }
 
-  const resolveExposuresCta = // Verifying the status for automatically removed data brokers v. manually resolved are handled differently
-    (props.scanResult.status === "new" ||
-      props.scanResult.status === "removal_under_maintenance") &&
-    !props.scanResult.manually_resolved ? (
-      <span className={styles.fixItBtn}>{props.resolutionCta}</span>
-    ) : null;
+  const resolveExposuresCta = (() => {
+    if (props.scanResult.manually_resolved) {
+      return (
+        props.scanResult.status === "removal_under_maintenance" && (
+          <div className={styles.manualResolutionPraise}>
+            <Image alt="" src={SparkleImage} width="20" height="20" />
+            <span>
+              {l10n.getFragment("exposure-card-manual-resolution-praise", {
+                elems: {
+                  b: <b />,
+                },
+              })}
+            </span>
+          </div>
+        )
+      );
+    }
+
+    switch (props.scanResult.status) {
+      case "new":
+      case "removal_under_maintenance":
+        return <span>{props.resolutionCta}</span>;
+      default:
+        return null;
+    }
+  })();
 
   const exposureCard = (
     <div aria-label={props.scanResult.data_broker}>

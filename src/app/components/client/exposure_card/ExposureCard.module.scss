@@ -206,3 +206,8 @@
     display: none;
   }
 }
+
+.manualResolutionPraise {
+  display: flex;
+  gap: $spacing-xs;
+}
