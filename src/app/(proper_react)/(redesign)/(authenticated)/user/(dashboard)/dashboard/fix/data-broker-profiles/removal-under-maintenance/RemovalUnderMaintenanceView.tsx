@@ -183,8 +183,7 @@ export const RemovalUnderMaintenanceView = (props: Props) => {
         <TelemetryButton
           variant="secondary"
           isLoading={isLoadingNextDataBroker}
-          // eslint-disable-next-line @typescript-eslint/no-misused-promises
-          onPress={() => handleManualRemovalChange()}
+          onPress={() => void handleManualRemovalChange()}
           event={{
             module: "ctaButton",
             name: "click",
