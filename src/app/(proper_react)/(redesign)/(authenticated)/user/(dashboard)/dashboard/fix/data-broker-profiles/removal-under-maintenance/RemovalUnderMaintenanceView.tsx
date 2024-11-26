@@ -70,9 +70,7 @@ export const RemovalUnderMaintenanceView = (props: Props) => {
     );
 
     if (!response.ok) {
-      toast.error(
-        "Could not update next data broker with removal under maintenance status.",
-      );
+      toast.error("Could not resolve data broker.");
       console.error(
         "Could not update next data broker with removal under maintenance status.",
       );
