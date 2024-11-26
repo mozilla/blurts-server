@@ -119,16 +119,20 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
     // Data broker cards manually resolved do not change their status to "removed";
     // instead, we track them using the "manually_resolved" property.
     if (scanResult.manually_resolved) {
-      return l10n.getFragment(
-        "exposure-card-description-info-for-sale-fixed-manually-fixed",
-        {
-          elems: {
-            data_broker_profile: dataBrokerProfileLink,
-          },
-        },
-      );
+      switch (scanResult.status) {
+        case "removal_under_maintenance":
+          return l10n.getFragment(
+            "exposure-card-description-info-for-sale-fixed-removal-under-maintenance-manually-fixed",
+            { elems: { data_broker_profile: dataBrokerProfileLink } },
+          );
+        default:
+          return l10n.getFragment(
+            "exposure-card-description-info-for-sale-fixed-manually-fixed",
+            { elems: { data_broker_profile: dataBrokerProfileLink } },
+          );
+      }
     }
-
+    // if a data broker is not manually resolved
     switch (scanResult.status) {
       case "waiting_for_verification":
         if (props.enabledFeatureFlags?.includes("AdditionalRemovalStatuses")) {
@@ -170,6 +174,7 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
             },
           );
         }
+
         /* c8 ignore stop */
         return l10n.getFragment(
           "exposure-card-description-info-for-sale-action-needed-dashboard",

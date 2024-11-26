@@ -54,6 +54,10 @@ const ScanMockItemRemovalUnderMaintenance = createRandomScanResult({
   status: "removal_under_maintenance",
   manually_resolved: false,
 });
+const ScanMockItemRemovalUnderMaintenanceFixed = createRandomScanResult({
+  status: "removal_under_maintenance",
+  manually_resolved: true,
+});
 const BreachMockItemRemoved = createRandomBreach({
   isResolved: true,
   dataClassesEffected: [
@@ -112,6 +116,13 @@ export const DataBrokerRemovalUnderMaintenance: Story = {
   args: {
     exposureImg: FamilyTreeImage,
     exposureData: ScanMockItemRemovalUnderMaintenance,
+  },
+};
+
+export const DataBrokerRemovalUnderMaintenanceFixed: Story = {
+  args: {
+    exposureImg: FamilyTreeImage,
+    exposureData: ScanMockItemRemovalUnderMaintenanceFixed,
   },
 };
 

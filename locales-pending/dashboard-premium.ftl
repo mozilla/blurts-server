@@ -205,6 +205,7 @@ exposure-card-description-info-for-sale-action-needed-dashboard = This site is p
 exposure-card-description-info-for-sale-in-progress-dashboard = As a { -brand-monitor-plus } member, we’ve removed <data_broker_profile>this profile</data_broker_profile> and are confirming the data broker’s removal compliance.
 exposure-card-description-info-for-sale-fixed = As a { -brand-monitor-plus } member, we’ve <data_broker_profile>removed this profile</data_broker_profile> for you and will continually monitor to make sure they don’t add you back.
 exposure-card-description-info-for-sale-fixed-manually-fixed =  You marked this profile as fixed. Be sure you’ve followed all instructions on <data_broker_profile>the site</data_broker_profile> to ensure they remove your personal info.
+exposure-card-description-info-for-sale-fixed-removal-under-maintenance-manually-fixed = You marked <data_broker_profile>this profile</data_broker_profile> as resolved. You could be added back in the future, so { -brand-monitor } will continue to scan data broker sites for new exposures.
 exposure-card-description-info-for-sale-manual-removal-needed = We’ve asked this data broker to remove your profile but they haven’t done it. To start the process sooner, we can guide you step-by-step to manually remove your profile and resolve any exposures. Select <b>Resolve exposures</b> to get started.
 
 ## Manual Removal Data Broker
