@@ -23,6 +23,7 @@ import { LatestOnerepScanData } from "../../../../../../../../../../db/tables/on
 import { ExposureCardDataClassLayout } from "../../../../../../../../../components/client/exposure_card/ExposureCardDataClass";
 import confetti from "canvas-confetti";
 import { OnerepScanResultRow } from "knex/types/tables";
+import { toast } from "react-toastify";
 
 export type Props = {
   data: LatestOnerepScanData;
@@ -69,6 +70,9 @@ export const RemovalUnderMaintenanceView = (props: Props) => {
     );
 
     if (!response.ok) {
+      toast.error(
+        "Could not update next data broker with removal under maintenance status.",
+      );
       console.error(
         "Could not update next data broker with removal under maintenance status.",
       );
