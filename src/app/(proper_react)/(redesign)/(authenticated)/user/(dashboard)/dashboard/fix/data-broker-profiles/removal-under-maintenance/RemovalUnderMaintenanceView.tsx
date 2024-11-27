@@ -61,36 +61,42 @@ export const RemovalUnderMaintenanceView = (props: Props) => {
   };
 
   async function handleManualRemovalChange() {
-    const response = await fetch(
-      `/api/v1/user/scan-result/${firstScanResultNotResolved.onerep_scan_result_id}/resolution`,
-      {
-        method: "POST",
-        credentials: "same-origin",
-      },
-    );
-
-    if (!response.ok) {
-      toast.error("Could not resolve data broker.");
-      console.error(
-        "Could not update next data broker with removal under maintenance status.",
+    try {
+      const response = await fetch(
+        `/api/v1/user/scan-result/${firstScanResultNotResolved.onerep_scan_result_id}/resolution`,
+        {
+          method: "POST",
+          credentials: "same-origin",
+        },
       );
-      return;
+
+      if (!response.ok) {
+        toast.error("Could not resolve data broker.");
+        console.error(
+          "Could not update next data broker with removal under maintenance status.",
+        );
+        return;
+      }
+
+      // Mark the current scan result as manually resolved
+      firstScanResultNotResolved.manually_resolved = true;
+
+      const nextUnresolved = props.data.results.find(
+        (scanResult) => !scanResult.manually_resolved,
+      );
+
+      // Redirect if no unresolved scan result remains
+      if (!nextUnresolved) {
+        window.location.href = nextGuidedStep.href;
+      } else {
+        setNextScanResultNotResolved(nextUnresolved);
+      }
+
+      // Trigger the timeout update
+      updateDataBrokerWithTimeout();
+    } catch (error) {
+      console.error("Error occurred in handleManualRemovalChange:", error);
     }
-
-    // Mark the current scan result as manually resolved
-    firstScanResultNotResolved.manually_resolved = true;
-
-    const nextUnresolved = props.data.results.find(
-      (scanResult) => !scanResult.manually_resolved,
-    );
-    // Redirect if no unresolved scan result remains
-    if (!nextUnresolved) {
-      window.location.href = nextGuidedStep.href;
-    }
-    setNextScanResultNotResolved(nextUnresolved);
-
-    // Trigger the timeout update
-    updateDataBrokerWithTimeout();
   }
 
   // Effect to update the current unresolved scan result when `nextScanResultNotResolved` changes
