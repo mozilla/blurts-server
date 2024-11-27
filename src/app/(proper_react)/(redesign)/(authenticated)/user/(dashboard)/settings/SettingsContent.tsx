@@ -68,7 +68,7 @@ function SettingsContent(props: SettingsProps) {
 
   return (
     <main className={styles.main}>
-      <header className={styles.title}>
+      <header className={styles.header}>
         <h2>{l10n.getString("settings-page-title")}</h2>
         <TabList
           selectedKey={activeTab}
