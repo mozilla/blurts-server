@@ -24,19 +24,6 @@ import {
 } from "../../../../../../../telemetry/generated/nimbus/experiments";
 import { FeatureFlagName } from "../../../../../../../db/tables/featureFlags";
 
-const brokerOptions = {
-  "no-scan": "No scan started",
-  empty: "No scan results",
-  unresolved: "With unresolved scan results",
-  resolved: "All scan results resolved",
-  "scan-in-progress": "Scan is in progress",
-  "manually-resolved": "Manually resolved",
-};
-const breachOptions = {
-  empty: "No data breaches",
-  unresolved: "With unresolved data breaches",
-  resolved: "All data breaches resolved",
-};
 type DashboardWrapperProps = (
   | {
       countryCode: "us";
