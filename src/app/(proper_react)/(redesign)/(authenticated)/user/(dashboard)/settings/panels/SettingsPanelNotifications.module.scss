@@ -3,33 +3,25 @@
 .wrapper {
   display: flex;
   flex-direction: column;
-  gap: $spacing-md;
-  width: 100%;
+  gap: $layout-xs;
 
   .radioGroup {
     display: flex;
     flex-direction: column;
-    gap: $spacing-md;
-
-    .radioButton {
-      stroke: $color-black;
-    }
+    gap: $layout-xs;
+    justify-content: space-between;
+    width: 100%;
 
     label {
+      align-items: center;
       display: flex;
-      gap: $spacing-xs;
+      gap: $layout-md;
+      justify-content: space-between;
 
       div {
         display: flex;
         flex-direction: column;
-
-        b {
-          font-weight: 600;
-        }
-
-        p {
-          color: $color-grey-40;
-        }
+        gap: $spacing-xs;
       }
 
       svg {
@@ -37,12 +29,16 @@
       }
     }
 
-    .focusRing {
-      stroke: $color-blue-50;
+    .radioInputs {
+      display: flex;
+      flex-direction: column;
+      font: $text-body-sm;
+      gap: $spacing-sm;
     }
+  }
 
-    .selectedFill {
-      fill: $color-black;
-    }
+  .switchInput {
+    display: flex;
+    justify-content: space-between;
   }
 }

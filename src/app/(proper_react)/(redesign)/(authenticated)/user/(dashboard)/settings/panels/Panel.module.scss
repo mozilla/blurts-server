@@ -4,15 +4,32 @@
   align-items: flex-start;
   display: flex;
   flex-direction: column;
-  gap: $layout-sm;
+  gap: $layout-xs;
   width: 100%;
 
   hr {
+    border-style: none;
+    border-top: 1px solid $color-grey-30;
     width: 100%;
   }
 
   h3 {
     font: $text-body-xl;
     font-weight: 600;
+  }
+
+  section {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    font-weight: 600;
+    gap: $spacing-xs;
+    width: 100%;
+
+    p {
+      color: $color-grey-40;
+      font-weight: 400;
+      padding-right: $layout-xl;
+    }
   }
 }

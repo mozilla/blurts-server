@@ -9,28 +9,19 @@ import { useL10n } from "../../../../../../../hooks/l10n";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { hasPremium } from "../../../../../../../functions/universal/user";
-import { createContext, useContext, useRef, useState } from "react";
-import {
-  RadioGroupState,
-  useRadioGroupState,
-  useToggleState,
-} from "react-stately";
+import { createContext, useState } from "react";
+import { RadioGroupState, useRadioGroupState } from "react-stately";
 import {
   EmailUpdateCommOptionRequest,
   EmailUpdateCommTypeOfOptions,
 } from "../../../../../../../api/v1/user/update-comm-option/route";
 import { useTelemetry } from "../../../../../../../hooks/useTelemetry";
-import {
-  AriaRadioProps,
-  AriaSwitchProps,
-  useFocusRing,
-  useRadio,
-  useRadioGroup,
-  useSwitch,
-} from "react-aria";
+import { useRadioGroup } from "react-aria";
 import { VisuallyHidden } from "../../../../../../../components/server/VisuallyHidden";
 import { Button } from "../../../../../../../components/client/Button";
 import styles from "./SettingsPanelNotifications.module.scss";
+import { SwitchInput } from "../../../../../../../components/client/SwitchInput";
+import { RadioInput } from "../../../../../../../components/client/RadioInput";
 
 export type SettingsPanelNotificationsProps = {
   data: SubscriberEmailPreferencesOutput;
@@ -143,6 +134,7 @@ export const NotificationsSettings = (props: NotificationSettingsProps) => {
       </VisuallyHidden>
       <div className={styles.radioGroup}>
         <SwitchInput
+          className={styles.switchInput}
           isSelected={activateAlertEmail}
           onChange={handleActivateToggle}
         >
@@ -161,14 +153,14 @@ export const NotificationsSettings = (props: NotificationSettingsProps) => {
         </SwitchInput>
         <AlertAddressContext.Provider value={state}>
           {activateAlertEmail && (
-            <>
-              <RadioInput value="affected">
-                {l10n.getString("settings-alert-preferences-option-one")}
+            <span className={styles.radioInputs}>
+              <RadioInput value="affected" radioContext={AlertAddressContext}>
+                <b>{l10n.getString("settings-alert-preferences-option-one")}</b>
               </RadioInput>
-              <RadioInput value="primary">
-                {l10n.getString("settings-alert-preferences-option-two")}
+              <RadioInput value="primary" radioContext={AlertAddressContext}>
+                <b>{l10n.getString("settings-alert-preferences-option-two")}</b>
               </RadioInput>
-            </>
+            </span>
           )}
         </AlertAddressContext.Provider>
         <hr />
@@ -176,6 +168,7 @@ export const NotificationsSettings = (props: NotificationSettingsProps) => {
           (true && (
             <>
               <SwitchInput
+                className={styles.switchInput}
                 isSelected={activateMonthlyMonitorReport ?? false}
                 onChange={handleMonthlyMonitorReportToggle}
               >
@@ -199,112 +192,7 @@ export const NotificationsSettings = (props: NotificationSettingsProps) => {
             </>
           ))}
       </div>
-      <hr />
-
-      <div>
-        <b>{l10n.getString("settings-tab-notifications-marketing-title")}</b>
-        <p>{l10n.getString("settings-tab-notifications-marketing-text")}</p>
-        <Button variant="link" href="/">
-          {l10n.getString("settings-tab-notifications-marketing-link-label")}
-        </Button>
-      </div>
     </div>
-  );
-};
-
-function SwitchInput(props: AriaSwitchProps) {
-  const state = useToggleState(props);
-  const ref = useRef(null);
-  const { inputProps } = useSwitch(props, state, ref);
-  const { isFocusVisible, focusProps } = useFocusRing();
-
-  return (
-    <label className={styles.switchInputLabel}>
-      <VisuallyHidden>
-        <input {...inputProps} {...focusProps} ref={ref} />
-      </VisuallyHidden>
-      {props.children}
-      <svg width={48} height={30} aria-hidden="true">
-        <rect
-          x={4}
-          y={4}
-          width={40}
-          height={20}
-          rx={10}
-          fill={state.isSelected ? "#3FE1B0" : "gray"}
-        />
-        <circle cx={state.isSelected ? 34 : 14} cy={14} r={7} fill="white" />
-        {isFocusVisible && (
-          <rect
-            x={1}
-            y={1}
-            width={46}
-            height={26}
-            rx={13}
-            fill="none"
-            stroke="#0060df"
-            strokeWidth={2}
-          />
-        )}
-      </svg>
-    </label>
-  );
-}
-
-const RadioInput = (
-  props: AriaRadioProps & { value: EmailUpdateCommTypeOfOptions },
-) => {
-  const { children } = props;
-  const state = useContext(AlertAddressContext);
-  const inputRef = useRef<HTMLInputElement>(null);
-  const { inputProps, isSelected } = useRadio(props, state!, inputRef);
-  const { isFocusVisible, focusProps } = useFocusRing();
-  const strokeWidth = 2;
-
-  return (
-    <label>
-      <VisuallyHidden>
-        <input
-          type="checkbox"
-          {...inputProps}
-          {...focusProps}
-          ref={inputRef}
-          aria-checked={isSelected}
-        />
-      </VisuallyHidden>
-      {children}
-      <svg width={24} height={24} aria-hidden="true">
-        <circle
-          cx={12}
-          cy={12}
-          r={8 - strokeWidth / 2}
-          fill="none"
-          className={`${styles.radioButton} ${
-            !isSelected ? styles.isSelected : styles.isUnselected
-          }`}
-          strokeWidth={strokeWidth}
-        />
-        {isSelected && (
-          <circle
-            cx={12}
-            cy={12}
-            r={4}
-            className={styles.selectedFill}
-            strokeWidth={2}
-          />
-        )}
-        {isFocusVisible && (
-          <circle
-            cx={12}
-            cy={12}
-            r={11}
-            fill="none"
-            className={styles.focusRing}
-            strokeWidth={2}
-          />
-        )}
-      </svg>
-    </label>
   );
 };
 
@@ -322,6 +210,14 @@ function SettingsPanelNotifications(props: SettingsPanelNotificationsProps) {
         subscriber={props.subscriber}
         data={props.data}
       />
+      <hr />
+      <section>
+        <b>{l10n.getString("settings-tab-notifications-marketing-title")}</b>
+        <p>{l10n.getString("settings-tab-notifications-marketing-text")}</p>
+        <Button className={styles.link} variant="link" href="/">
+          {l10n.getString("settings-tab-notifications-marketing-link-label")}
+        </Button>
+      </section>
     </>
   );
 }
