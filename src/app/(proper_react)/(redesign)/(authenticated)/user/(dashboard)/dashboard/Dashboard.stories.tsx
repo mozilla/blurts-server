@@ -37,7 +37,7 @@ export const breachOptions = {
   unresolved: "With unresolved data breaches",
   resolved: "All data breaches resolved",
 };
-type DashboardWrapperProps = (
+export type DashboardWrapperProps = (
   | {
       countryCode: "us";
       brokers: keyof typeof brokerOptions;

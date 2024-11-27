@@ -6,7 +6,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 import { OnerepScanResultRow, OnerepScanRow } from "knex/types/tables";
 import { faker } from "@faker-js/faker";
-import { View as DashboardEl, TabType } from "./View";
+import { View as DashboardEl } from "./View";
 import { Shell } from "../../../../Shell";
 import { getL10n } from "../../../../../../functions/l10n/storybookAndJest";
 import {
@@ -18,46 +18,13 @@ import { SubscriberBreach } from "../../../../../../../utils/subscriberBreaches"
 import { LatestOnerepScanData } from "../../../../../../../db/tables/onerep_scans";
 import { CountryCodeProvider } from "../../../../../../../contextProviders/country-code";
 import { SessionProvider } from "../../../../../../../contextProviders/session";
+import { defaultExperimentData } from "../../../../../../../telemetry/generated/nimbus/experiments";
 import {
-  ExperimentData,
-  defaultExperimentData,
-} from "../../../../../../../telemetry/generated/nimbus/experiments";
-import { FeatureFlagName } from "../../../../../../../db/tables/featureFlags";
+  breachOptions,
+  brokerOptions,
+  DashboardWrapperProps,
+} from "./Dashboard.stories";
 
-const brokerOptions = {
-  "no-scan": "No scan started",
-  empty: "No scan results",
-  unresolved: "With unresolved scan results",
-  resolved: "All scan results resolved",
-  "scan-in-progress": "Scan is in progress",
-  "manually-resolved": "Manually resolved",
-};
-const breachOptions = {
-  empty: "No data breaches",
-  unresolved: "With unresolved data breaches",
-  resolved: "All data breaches resolved",
-};
-type DashboardWrapperProps = (
-  | {
-      countryCode: "us";
-      brokers: keyof typeof brokerOptions;
-      premium: boolean;
-    }
-  | {
-      countryCode: "nl";
-    }
-) & {
-  brokers: keyof typeof brokerOptions;
-  breaches: keyof typeof breachOptions;
-  elapsedTimeInDaysSinceInitialScan?: number;
-  totalNumberOfPerformedScans?: number;
-  activeTab?: TabType;
-  enabledFeatureFlags?: FeatureFlagName[];
-  experimentData?: ExperimentData;
-  hasFirstMonitoringScan?: boolean;
-  signInCount?: number;
-  autoOpenUpsellDialog?: boolean;
-};
 const DashboardWrapper = (props: DashboardWrapperProps) => {
   const mockedResolvedBreach: SubscriberBreach = createRandomBreach({
     dataClasses: [
