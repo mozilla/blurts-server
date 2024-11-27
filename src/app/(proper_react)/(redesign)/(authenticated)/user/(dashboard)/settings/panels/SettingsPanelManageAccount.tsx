@@ -70,9 +70,9 @@ function SettingsPanelManageAccount(props: SettingsPanelManageAccountProps) {
       <section>
         {hasPremium(props.user) ? (
           <>
-            <h3>
+            <h4>
               {l10n.getString("settings-delete-monitor-plus-account-title")}
-            </h3>
+            </h4>
             <p>
               {l10n.getString(
                 "settings-delete-monitor-plus-account-description-2",
@@ -112,9 +112,9 @@ function SettingsPanelManageAccount(props: SettingsPanelManageAccountProps) {
           </>
         ) : (
           <>
-            <h3>
+            <h4>
               {l10n.getString("settings-delete-monitor-free-account-title")}
-            </h3>
+            </h4>
             <p>
               {l10n.getString(
                 "settings-delete-monitor-free-account-description",

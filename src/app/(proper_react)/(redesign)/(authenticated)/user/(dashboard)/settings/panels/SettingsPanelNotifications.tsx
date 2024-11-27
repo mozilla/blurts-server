@@ -139,11 +139,11 @@ export const NotificationsSettings = (props: NotificationSettingsProps) => {
           onChange={handleActivateToggle}
         >
           <div>
-            <b>
+            <h4>
               {l10n.getString(
                 "settings-alert-preferences-allow-breach-alerts-title",
               )}
-            </b>
+            </h4>
             <p>
               {l10n.getString(
                 "settings-alert-preferences-allow-breach-alerts-subtitle",
@@ -172,7 +172,7 @@ export const NotificationsSettings = (props: NotificationSettingsProps) => {
               onChange={handleMonthlyMonitorReportToggle}
             >
               <div>
-                <b>
+                <h4>
                   {hasPremium(props.user)
                     ? l10n.getString(
                         "settings-alert-preferences-allow-monthly-monitor-plus-report-title",
@@ -180,7 +180,7 @@ export const NotificationsSettings = (props: NotificationSettingsProps) => {
                     : l10n.getString(
                         "settings-alert-preferences-allow-monthly-monitor-report-title",
                       )}
-                </b>
+                </h4>
                 <p>
                   {l10n.getString(
                     "settings-alert-preferences-allow-monthly-monitor-report-subtitle",
@@ -211,7 +211,7 @@ function SettingsPanelNotifications(props: SettingsPanelNotificationsProps) {
       />
       <hr />
       <section>
-        <b>{l10n.getString("settings-tab-notifications-marketing-title")}</b>
+        <h4>{l10n.getString("settings-tab-notifications-marketing-title")}</h4>
         <p>{l10n.getString("settings-tab-notifications-marketing-text")}</p>
         <Button className={styles.link} variant="link" href="/">
           {l10n.getString("settings-tab-notifications-marketing-link-label")}

@@ -5,10 +5,15 @@
   flex-direction: column;
   flex-wrap: wrap;
   gap: $spacing-lg;
-  padding: $spacing-2xl;
+  padding: $layout-2xs;
 
   @media screen and (min-width: $screen-lg) {
     flex-direction: row;
+    padding: $layout-lg;
+  }
+
+  @media screen and (min-width: $screen-sm) {
+    padding: $layout-sm;
   }
 }
 

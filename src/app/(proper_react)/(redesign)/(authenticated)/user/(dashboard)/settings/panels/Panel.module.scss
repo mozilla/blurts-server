@@ -26,6 +26,11 @@
     gap: $spacing-xs;
     width: 100%;
 
+    h4 {
+      font: $text-body-lg;
+      font-weight: 600;
+    }
+
     p {
       color: $color-grey-40;
       font-weight: 400;
