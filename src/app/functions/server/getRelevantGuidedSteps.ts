@@ -198,7 +198,6 @@ export function hasCompletedStepSection(
     | "SecurityTips"
     | "DataBrokerManualRemoval",
 ): boolean {
-  // TODO: Add business logic here
   /* c8 ignore next 3 */
   if (section === "DataBrokerManualRemoval") {
     return hasCompletedStep(data, "DataBrokerManualRemoval");

@@ -18,6 +18,7 @@ import {
 import { RemovalStatus } from "../../app/functions/universal/scanResult.js";
 import { getQaCustomBrokers, getQaToggleRow } from "./qa_customs.ts";
 import { DataBrokerRow } from "../../knex-tables";
+import { CONST_DAY_MILLISECONDS } from "../../constants.ts";
 
 const knex = createDbConnection();
 
@@ -423,7 +424,7 @@ async function getScanResultsWithBrokerUnderMaintenance(
     (result) =>
       result.broker_status === "removal_under_maintenance" ||
       new Date().getTime() - new Date(result.updated_at).getTime() >
-        200 * 24 * 60 * 60 * 1000,
+        CONST_DAY_MILLISECONDS * 200,
   );
 
   return { results: scanResults } as LatestOnerepScanData;

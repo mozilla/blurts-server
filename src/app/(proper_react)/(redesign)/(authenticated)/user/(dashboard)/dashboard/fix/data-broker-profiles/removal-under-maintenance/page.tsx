@@ -13,7 +13,6 @@ import { headers } from "next/headers";
 import {
   getLatestOnerepScanResults,
   getScanResultsWithBrokerUnderMaintenance,
-  // getScanResultsWithBrokerUnderMaintenance,
 } from "../../../../../../../../../../db/tables/onerep_scans";
 import { getOnerepProfileId } from "../../../../../../../../../../db/tables/subscribers";
 import { getSubscriberBreaches } from "../../../../../../../../../functions/server/getSubscriberBreaches";
@@ -51,13 +50,10 @@ export default async function RemovalUnderMaintenance() {
 
   const subscriberEmails = await getSubscriberEmails(session.user);
 
-  // Filtered scan data results
-  const scansWithRemovalUnderMaintenanceData = scansWithRemovalUnderMaintenance;
-
   return (
     <RemovalUnderMaintenanceView
       stepDeterminationData={data}
-      data={scansWithRemovalUnderMaintenanceData}
+      data={scansWithRemovalUnderMaintenance}
       subscriberEmails={subscriberEmails}
     />
   );
