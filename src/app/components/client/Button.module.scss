@@ -83,7 +83,7 @@
 
   &.link {
     background: none;
-    color: $color-purple-70;
+    color: $color-purple-50;
     font: inherit;
     padding: 0;
     text-decoration: underline;
@@ -107,10 +107,6 @@
   &.small {
     line-height: 1.5;
     padding: $spacing-sm $spacing-md;
-
-    &.link {
-      font: $text-body-sm;
-    }
 
     &.icon {
       padding: $spacing-sm;

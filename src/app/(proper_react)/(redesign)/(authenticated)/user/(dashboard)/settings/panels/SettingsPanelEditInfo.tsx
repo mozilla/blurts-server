@@ -67,32 +67,33 @@ function MonitoredEmail(props: {
         })}
       />
       {!props.emailAddress.verified && (
-        <Button
-          className={styles.resendButton}
-          variant="link"
-          small
-          isDisabled={isVerificationEmailResent}
-          onPress={() => {
-            void fetch("/api/v1/user/resend-email", {
-              headers: {
-                "Content-Type": "application/json",
-                Accept: "text/html", // set to request localized HTML email
-              },
-              mode: "same-origin",
-              method: "POST",
-              body: JSON.stringify({ emailId: props.emailAddress.id }),
-            }).then((response) => {
-              if (response.ok) {
-                setIsVerificationEmailResent(true);
-              }
-            });
-          }}
-        >
-          {isVerificationEmailResent && (
-            <CheckIcon alt="" width={14} height={14} />
-          )}
-          {l10n.getString("settings-resend-email-verification-link")}
-        </Button>
+        <div className={styles.resendButtonWrapper}>
+          <Button
+            variant="link"
+            className={styles.resendButton}
+            isDisabled={isVerificationEmailResent}
+            onPress={() => {
+              void fetch("/api/v1/user/resend-email", {
+                headers: {
+                  "Content-Type": "application/json",
+                  Accept: "text/html", // set to request localized HTML email
+                },
+                mode: "same-origin",
+                method: "POST",
+                body: JSON.stringify({ emailId: props.emailAddress.id }),
+              }).then((response) => {
+                if (response.ok) {
+                  setIsVerificationEmailResent(true);
+                }
+              });
+            }}
+          >
+            {l10n.getString("settings-resend-email-verification-link")}
+            {!isVerificationEmailResent && (
+              <CheckIcon alt="" width={14} height={14} />
+            )}
+          </Button>
+        </div>
       )}
     </>
   );
@@ -136,7 +137,9 @@ function SettingsPanelEditInfo(props: SettingsPanelEditInfoProps) {
           </li>
         ))}
       </ul>
-      {hasMaxEmailAddresses && <EmailAddressAdder />}
+      <span className={styles.addEmailButton}>
+        {hasMaxEmailAddresses && <EmailAddressAdder />}
+      </span>
     </>
   );
 }

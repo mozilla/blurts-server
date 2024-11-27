@@ -7,9 +7,19 @@
   width: 100%;
 }
 
-.resendButton {
-  align-items: center;
-  display: flex;
-  gap: $spacing-xs;
-  margin-top: $spacing-sm;
+.resendButtonWrapper {
+  font: $text-body-sm;
+  padding: $spacing-sm $spacing-md;
+
+  .resendButton {
+    align-items: center;
+    display: flex;
+    font-weight: 500;
+    gap: $spacing-xs;
+    margin-top: $spacing-sm;
+  }
+}
+
+.addEmailButton {
+  align-self: flex-end;
 }
