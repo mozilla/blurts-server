@@ -126,7 +126,7 @@ export const NotificationsSettings = (props: NotificationSettingsProps) => {
   );
 
   return (
-    <div {...radioGroupProps} className={styles.wrapper}>
+    <section {...radioGroupProps} className={styles.wrapper}>
       <VisuallyHidden>
         <h3 {...labelProps}>
           {l10n.getString("settings-alert-email-preferences-title")}
@@ -163,36 +163,35 @@ export const NotificationsSettings = (props: NotificationSettingsProps) => {
             </span>
           )}
         </AlertAddressContext.Provider>
-        <hr />
-        {hasPremium(props.user) ||
-          (true && (
-            <>
-              <SwitchInput
-                className={styles.switchInput}
-                isSelected={activateMonthlyMonitorReport ?? false}
-                onChange={handleMonthlyMonitorReportToggle}
-              >
-                <div>
-                  <b>
-                    {hasPremium(props.user)
-                      ? l10n.getString(
-                          "settings-alert-preferences-allow-monthly-monitor-plus-report-title",
-                        )
-                      : l10n.getString(
-                          "settings-alert-preferences-allow-monthly-monitor-report-title",
-                        )}
-                  </b>
-                  <p>
-                    {l10n.getString(
-                      "settings-alert-preferences-allow-monthly-monitor-report-subtitle",
-                    )}
-                  </p>
-                </div>
-              </SwitchInput>
-            </>
-          ))}
+        {hasPremium(props.user) && (
+          <>
+            <hr />
+            <SwitchInput
+              className={styles.switchInput}
+              isSelected={activateMonthlyMonitorReport ?? false}
+              onChange={handleMonthlyMonitorReportToggle}
+            >
+              <div>
+                <b>
+                  {hasPremium(props.user)
+                    ? l10n.getString(
+                        "settings-alert-preferences-allow-monthly-monitor-plus-report-title",
+                      )
+                    : l10n.getString(
+                        "settings-alert-preferences-allow-monthly-monitor-report-title",
+                      )}
+                </b>
+                <p>
+                  {l10n.getString(
+                    "settings-alert-preferences-allow-monthly-monitor-report-subtitle",
+                  )}
+                </p>
+              </div>
+            </SwitchInput>
+          </>
+        )}
       </div>
-    </div>
+    </section>
   );
 };
 

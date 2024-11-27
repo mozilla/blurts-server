@@ -32,38 +32,42 @@ function SettingsPanelManageAccount(props: SettingsPanelManageAccountProps) {
         <p>{l10n.getString("settings-tab-subtitle-manage-account")}</p>
       </div>
       {hasPremium(props.user) && (
-        <div>
-          <h3>{l10n.getString("settings-cancel-plus-title")}</h3>
-          <p>{l10n.getString("settings-cancel-plus-details")}</p>
-          {props.enabledFeatureFlags.includes("CancellationFlow") ? (
-            <CancelFlow
-              enableDiscountCoupon={props.enabledFeatureFlags.includes(
-                "DiscountCouponNextThreeMonths",
-              )}
-              fxaSubscriptionsUrl={props.fxaSubscriptionsUrl}
-              experimentData={props.experimentData}
-              isMonthlySubscriber={props.isMonthlySubscriber}
-            />
-          ) : (
-            <TelemetryLink
-              href={props.fxaSubscriptionsUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              eventData={{
-                link_id: "cancel_plus",
-              }}
-            >
-              {l10n.getString("settings-cancel-plus-link-label")}
-              <OpenInNew
-                alt={l10n.getString("open-in-new-tab-alt")}
-                width="13"
-                height="13"
+        <>
+          <hr />
+          <section>
+            <h3>{l10n.getString("settings-cancel-plus-title")}</h3>
+            <p>{l10n.getString("settings-cancel-plus-details")}</p>
+            {props.enabledFeatureFlags.includes("CancellationFlow") ? (
+              <CancelFlow
+                enableDiscountCoupon={props.enabledFeatureFlags.includes(
+                  "DiscountCouponNextThreeMonths",
+                )}
+                fxaSubscriptionsUrl={props.fxaSubscriptionsUrl}
+                experimentData={props.experimentData}
+                isMonthlySubscriber={props.isMonthlySubscriber}
               />
-            </TelemetryLink>
-          )}
-        </div>
+            ) : (
+              <TelemetryLink
+                href={props.fxaSubscriptionsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                eventData={{
+                  link_id: "cancel_plus",
+                }}
+              >
+                {l10n.getString("settings-cancel-plus-link-label")}
+                <OpenInNew
+                  alt={l10n.getString("open-in-new-tab-alt")}
+                  width="13"
+                  height="13"
+                />
+              </TelemetryLink>
+            )}
+          </section>
+        </>
       )}
-      <div>
+      <hr />
+      <section>
         {hasPremium(props.user) ? (
           <>
             <h3>
@@ -144,7 +148,7 @@ function SettingsPanelManageAccount(props: SettingsPanelManageAccountProps) {
             </SettingsConfirmationDialog>
           </>
         )}
-      </div>
+      </section>
     </>
   );
 }
