@@ -28,30 +28,21 @@ export async function getExperiments(params: {
   countryCode: string;
   previewMode: boolean;
 }): Promise<ExperimentData> {
-  // TODO MNTOR-3380 - until Cirrus implements preview mode, set all Nimbus features to `true` for QA purposes.
-  if (params.previewMode === true) {
-    // Clone the `localExperimentData` object so we don't modify the exported data structure.
-    const overriddenExperimentData = Object.fromEntries(
-      Object.entries(localExperimentData).map(
-        ([experimentId, experimentConfig]) => {
-          return [experimentId, { ...experimentConfig, enabled: true }];
-        },
-      ),
-    ) as ExperimentData;
-    return overriddenExperimentData;
-  }
-
   if (["local"].includes(process.env.APP_ENV ?? "local")) {
     return localExperimentData;
   }
 
-  const serverUrl = process.env.NIMBUS_SIDECAR_URL;
-  if (!serverUrl) {
+  if (!process.env.NIMBUS_SIDECAR_URL) {
     throw new Error("env var NIMBUS_SIDECAR_URL not set");
   }
+  const serverUrl = new URL(`${process.env.NIMBUS_SIDECAR_URL}/v1/features`);
 
   try {
-    const response = await fetch(`${serverUrl}/v1/features`, {
+    if (params.previewMode === true) {
+      serverUrl.searchParams.set("nimbus_preview", "true");
+    }
+
+    const response = await fetch(serverUrl, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -70,7 +61,7 @@ export async function getExperiments(params: {
 
     return (experimentData as ExperimentData) ?? defaultExperimentData;
   } catch (ex) {
-    logger.error(`Could not connect to Cirrus on ${serverUrl}`, ex);
+    logger.error("Could not connect to Cirrus", { serverUrl, ex });
     captureException(ex);
     return defaultExperimentData;
   }

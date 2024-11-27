@@ -92,7 +92,7 @@ export async function POST(
     experimentationId: experimentationId,
     countryCode: getCountryCode(headers()),
     locale: getLocale(getL10n()),
-    previewMode: searchParams.get("nimbus_web_preview") === "true",
+    previewMode: searchParams.get("nimbus_preview") === "true",
   });
   const optionalInfoExperimentData =
     experimentData["welcome-scan-optional-info"];
