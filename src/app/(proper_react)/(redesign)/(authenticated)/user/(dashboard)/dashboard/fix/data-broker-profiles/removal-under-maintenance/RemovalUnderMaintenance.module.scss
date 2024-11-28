@@ -19,6 +19,12 @@
         display: grid;
         grid-template-columns: 1fr;
         grid-row-gap: $spacing-sm;
+        transition: opacity 0.35s ease-in-out;
+        opacity: 1;
+
+        &.fadeOut {
+          opacity: 0;
+        }
 
         @media screen and (min-width: $screen-md) {
           grid-template-columns: 1fr 1fr 1fr;
@@ -53,6 +59,12 @@
   .header {
     font: $text-body-lg;
     font-weight: 700;
+    transition: opacity 0.35s ease-in-out;
+    opacity: 1;
+
+    &.fadeOut {
+      opacity: 0;
+    }
   }
 }
 
@@ -102,16 +114,4 @@
   button {
     margin-top: $spacing-lg;
   }
-}
-
-.fadeTransition {
-  transition: opacity 0.5s ease-in-out;
-}
-
-.fadeOut {
-  opacity: 0;
-}
-
-.fadeIn {
-  opacity: 1;
 }

@@ -14,7 +14,7 @@ import { useL10n } from "../../../../../../../../../hooks/l10n";
 import { TelemetryLink } from "../../../../../../../../../components/client/TelemetryLink";
 import { TelemetryButton } from "../../../../../../../../../components/client/TelemetryButton";
 import { CONST_URL_SUMO_MANUAL_REMOVAL } from "../../../../../../../../../../constants";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   BackArrow,
   ClockIcon,
@@ -22,8 +22,9 @@ import {
 import { LatestOnerepScanData } from "../../../../../../../../../../db/tables/onerep_scans";
 import { ExposureCardDataClassLayout } from "../../../../../../../../../components/client/exposure_card/ExposureCardDataClass";
 import confetti from "canvas-confetti";
-import { OnerepScanResultRow } from "knex/types/tables";
 import { toast } from "react-toastify";
+import fetchWithDelay from "../../../../../../../../../../utils/fetchWithDelay";
+import { useRouter } from "next/navigation";
 
 export type Props = {
   data: LatestOnerepScanData;
@@ -33,40 +34,27 @@ export type Props = {
 
 export const RemovalUnderMaintenanceView = (props: Props) => {
   const l10n = useL10n();
+  const router = useRouter();
   const [detailedRemovalGuide, setDetailedRemovalGuide] = useState(false);
   const [firstScanResultNotResolved, setFirstScanResultNotResolved] = useState(
     props.data.results[0],
   );
   const [isLoadingNextDataBroker, setIsLoadingNextDataBroker] = useState(false);
-  const [fadeState, setFadeState] = useState<"fadeIn" | "fadeOut" | "">("");
 
   const nextGuidedStep = getNextGuidedStep(
     props.stepDeterminationData,
     "DataBrokerManualRemoval",
   );
 
-  const [nextScanResultNotResolved, setNextScanResultNotResolved] = useState<
-    OnerepScanResultRow | undefined
-  >();
-
-  const updateDataBrokerWithTimeout = () => {
-    setIsLoadingNextDataBroker(true);
-    setFadeState("fadeOut");
-
-    setTimeout(() => {
-      setIsLoadingNextDataBroker(false);
-      void confetti();
-      setFadeState("fadeIn"); // trigger the fade-in for the next scan result
-    }, 2000);
-  };
-
   async function handleManualRemovalChange() {
+    setIsLoadingNextDataBroker(true);
     try {
-      const response = await fetch(
+      const response = await fetchWithDelay(
         `/api/v1/user/scan-result/${firstScanResultNotResolved.onerep_scan_result_id}/resolution`,
         {
           method: "POST",
           credentials: "same-origin",
+          delay: 750,
         },
       );
 
@@ -77,34 +65,28 @@ export const RemovalUnderMaintenanceView = (props: Props) => {
         );
         return;
       }
+      void confetti();
 
       // Mark the current scan result as manually resolved
-      firstScanResultNotResolved.manually_resolved = true;
-
-      const nextUnresolved = props.data.results.find(
-        (scanResult) => !scanResult.manually_resolved,
+      const currentResultIndex = props.data.results.findIndex(
+        (result) =>
+          result.onerep_scan_result_id ===
+          firstScanResultNotResolved.onerep_scan_result_id,
       );
 
-      // Redirect if no unresolved scan result remains
-      if (!nextUnresolved) {
-        window.location.href = nextGuidedStep.href;
+      if (currentResultIndex < props.data.results.length - 1) {
+        const nextUnresolvedResult = props.data.results[currentResultIndex + 1];
+        setFirstScanResultNotResolved(nextUnresolvedResult);
       } else {
-        setNextScanResultNotResolved(nextUnresolved);
+        // Redirect if no unresolved scan result remains
+        router.push(nextGuidedStep.href);
       }
-
-      // Trigger the timeout update
-      updateDataBrokerWithTimeout();
     } catch (error) {
       console.error("Error occurred in handleManualRemovalChange:", error);
+    } finally {
+      setIsLoadingNextDataBroker(false);
     }
   }
-
-  // Effect to update the current unresolved scan result when `nextScanResultNotResolved` changes
-  useEffect(() => {
-    if (nextScanResultNotResolved) {
-      setFirstScanResultNotResolved(nextScanResultNotResolved);
-    }
-  }, [nextScanResultNotResolved]);
 
   const exposureCategoriesArray: React.ReactElement[] = [];
   if (firstScanResultNotResolved.relatives.length > 0) {
@@ -161,12 +143,12 @@ export const RemovalUnderMaintenanceView = (props: Props) => {
       className={styles.exposureCard}
       aria-label={firstScanResultNotResolved.data_broker}
     >
-      <div className={`${styles.fadeTransition} ${styles[fadeState]}`}>
-        <div className={styles.dataClassesList}>
-          {exposureCategoriesArray.map((item) => (
-            <React.Fragment key={item.key}>{item}</React.Fragment>
-          ))}
-        </div>
+      <div
+        className={`${styles.dataClassesList} ${isLoadingNextDataBroker ? styles.fadeOut : ""}`}
+      >
+        {exposureCategoriesArray.map((item) => (
+          <React.Fragment key={item.key}>{item}</React.Fragment>
+        ))}
       </div>
 
       <div className={styles.buttonsWrapper}>
@@ -213,12 +195,13 @@ export const RemovalUnderMaintenanceView = (props: Props) => {
 
   const dataBrokerInformation = (
     <div className={styles.dataBrokerInformationWrapper}>
-      <p className={styles.header}>
+      <p
+        className={`${styles.header} ${isLoadingNextDataBroker ? styles.fadeOut : ""}`}
+      >
         {l10n.getFragment("data-broker-removal-maintenance-header", {
           elems: {
             link_to_data_broker: (
               <TelemetryLink
-                className={styles[fadeState]}
                 href={firstScanResultNotResolved.link}
                 target="_blank"
                 eventData={{

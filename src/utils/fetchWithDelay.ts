@@ -27,7 +27,7 @@ async function fetchWithDelay(
 ): Promise<Response> {
   const { signal, delay, ...options } = init;
   const controller = new AbortController();
-  const fetchSignal = signal || controller.signal;
+  const fetchSignal = signal ?? controller.signal;
 
   try {
     const [response, _] = await Promise.all([
