@@ -30,13 +30,23 @@ jobs:
         run: |
           echo "{\"commit\":\"$GITHUB_SHA\",\"version\":\"$GITHUB_REF\",\"source\":\"https://github.com/$GITHUB_REPOSITORY\",\"build\":\"$GITHUB_RUN_ID\"}" > version.json
 
+      - name: Check Docker Version
+        run: docker --version
+      - name: Install Latest Docker
+        run: |
+          curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+          sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu  $(lsb_release -cs)  stable"
+          sudo apt-get update
+          sudo apt-get install docker-ce
+
       - name: Build Docker image
         env:
           UPLOAD_SENTRY_SOURCEMAPS: true
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
         run: |
           docker build --tag blurts-server \
-            --build-arg SENTRY_RELEASE="$GITHUB_REF_NAME" \
+            --build-arg SENTRY_RELEASE="$SENTRY_RELEASE" \
+            --secret id=SENTRY_AUTH_TOKEN \
             .
 
       - name: Deploy to Dockerhub
