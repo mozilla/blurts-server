@@ -41,8 +41,9 @@ function MonitoredEmail(props: {
   return (
     <>
       <InputField
+        aria-label={props.emailAddress.email}
         type="email"
-        value={props.emailAddress.email}
+        defaultValue={props.emailAddress.email}
         isDisabled
         iconButton={
           <Button
@@ -117,8 +118,9 @@ function SettingsPanelEditInfo(props: SettingsPanelEditInfoProps) {
       <ul className={`noList ${styles.emailList}`}>
         <li key="primary">
           <InputField
+            aria-label={props.user.email}
             type="email"
-            value={props.user.email}
+            defaultValue={props.user.email}
             isDisabled
             description={l10n.getString(
               "settings-email-number-of-breaches-info",

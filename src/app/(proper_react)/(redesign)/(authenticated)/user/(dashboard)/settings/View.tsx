@@ -49,7 +49,7 @@ export type Props = {
   experimentData: ExperimentData;
   lastScanDate?: Date;
   isMonthlySubscriber: boolean;
-  activeTab: TabType;
+  activeTab?: TabType;
 };
 
 export const SettingsView = (props: Props) => {

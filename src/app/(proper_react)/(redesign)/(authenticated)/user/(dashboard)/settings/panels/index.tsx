@@ -20,7 +20,7 @@ import { TabType } from "../View";
 export type SettingsProps = SettingsPanelEditInfoProps &
   SettingsPanelNotificationsProps &
   SettingsPanelManageAccountProps & {
-    activeTab: TabType;
+    activeTab?: TabType;
   };
 
 function Panel(props: SettingsProps) {
@@ -31,6 +31,8 @@ function Panel(props: SettingsProps) {
       return <SettingsPanelNotifications {...props} />;
     case "manage-account":
       return <SettingsPanelManageAccount {...props} />;
+    default:
+      return <SettingsPanelEditInfo {...props} />;
   }
 }
 

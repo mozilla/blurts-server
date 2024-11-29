@@ -54,7 +54,9 @@ function SettingsContent(props: SettingsProps) {
       key: "manage-account",
     },
   ];
-  const [activeTab, setActiveTab] = useState<TabType>(props.activeTab);
+  const [activeTab, setActiveTab] = useState<TabType>(
+    props.activeTab ?? tabsData[0].key,
+  );
 
   useEffect(() => {
     const nextPathname = `/user/settings/${activeTab}`;

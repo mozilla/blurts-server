@@ -162,34 +162,30 @@ export const NotificationsSettings = (props: NotificationSettingsProps) => {
               </RadioInput>
             </span>
           )}
+          <hr />
         </AlertAddressContext.Provider>
-        {hasPremium(props.user) && (
-          <>
-            <hr />
-            <SwitchInput
-              className={styles.switchInput}
-              isSelected={activateMonthlyMonitorReport ?? false}
-              onChange={handleMonthlyMonitorReportToggle}
-            >
-              <div>
-                <h4>
-                  {hasPremium(props.user)
-                    ? l10n.getString(
-                        "settings-alert-preferences-allow-monthly-monitor-plus-report-title",
-                      )
-                    : l10n.getString(
-                        "settings-alert-preferences-allow-monthly-monitor-report-title",
-                      )}
-                </h4>
-                <p>
-                  {l10n.getString(
-                    "settings-alert-preferences-allow-monthly-monitor-report-subtitle",
+        <SwitchInput
+          className={styles.switchInput}
+          isSelected={activateMonthlyMonitorReport}
+          onChange={handleMonthlyMonitorReportToggle}
+        >
+          <div>
+            <h4>
+              {hasPremium(props.user)
+                ? l10n.getString(
+                    "settings-alert-preferences-allow-monthly-monitor-plus-report-title",
+                  )
+                : l10n.getString(
+                    "settings-alert-preferences-allow-monthly-monitor-report-title",
                   )}
-                </p>
-              </div>
-            </SwitchInput>
-          </>
-        )}
+            </h4>
+            <p>
+              {l10n.getString(
+                "settings-alert-preferences-allow-monthly-monitor-report-subtitle",
+              )}
+            </p>
+          </div>
+        </SwitchInput>
       </div>
     </section>
   );
