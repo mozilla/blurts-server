@@ -60,6 +60,8 @@ function SettingsContent(props: SettingContentProps) {
   ];
   const [activeTab, setActiveTab] = useState<TabType>(props.activeTab);
 
+  // Update the URL pathname when navigating through the panels
+  // without causing the page to reload.
   useEffect(() => {
     const nextPathname = `/user/settings/${activeTab}`;
     if (pathname !== nextPathname) {
