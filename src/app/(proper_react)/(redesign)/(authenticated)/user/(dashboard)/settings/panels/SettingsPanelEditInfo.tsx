@@ -115,6 +115,7 @@ function SettingsPanelEditInfo(props: SettingsPanelEditInfoProps) {
           })}
         </p>
       </div>
+      <hr />
       <ul className={`noList ${styles.emailList}`}>
         <li key="primary">
           <InputField

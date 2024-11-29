@@ -16,6 +16,11 @@
   h3 {
     font: $text-body-xl;
     font-weight: 600;
+
+    & + p {
+      color: $color-grey-40;
+      font: $text-body-md;
+    }
   }
 
   section {
