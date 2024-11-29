@@ -14,7 +14,7 @@ import { defaultExperimentData } from "../../../../telemetry/generated/nimbus/ex
 import { BreachDataTypes } from "../../../functions/universal/breach";
 
 const meta: Meta<typeof ExposureCard> = {
-  title: "ExposureCard",
+  title: "Dashboard/Exposures/Exposure Card",
   component: ExposureCard,
   tags: ["autodocs"],
   args: {
