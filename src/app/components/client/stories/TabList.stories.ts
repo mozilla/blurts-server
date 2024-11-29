@@ -7,7 +7,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { TabList } from "../TabList";
 
 const meta: Meta<typeof TabList> = {
-  title: "TabList",
+  title: "Design Systems/Molecules/TabList",
   component: TabList,
 };
 export default meta;

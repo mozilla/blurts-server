@@ -13,7 +13,7 @@ import {
 import { defaultExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 
 const meta: Meta<typeof ExposureCard> = {
-  title: "ExposureCard",
+  title: "Dashboard/Exposures/Exposure Card",
   component: ExposureCard,
   tags: ["autodocs"],
   args: {

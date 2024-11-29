@@ -8,7 +8,6 @@ import { BreachIndexView, Props as ViewProps } from "./BreachIndexView";
 import { getL10n } from "../../../../functions/l10n/storybookAndJest";
 import { PublicShell } from "../PublicShell";
 import { createRandomHibpListing } from "../../../../../apiMocks/mockData";
-import { HibpLikeDbBreach } from "../../../../../utils/hibp";
 
 const meta: Meta<typeof BreachIndexView> = {
   title: "Pages/Public/Breach index",
@@ -25,11 +24,8 @@ type Story = StoryObj<typeof BreachIndexView>;
 export const BreachIndexViewStory: Story = {
   name: "Breach index",
   args: {
-    allBreaches: faker.helpers.multiple(
-      createRandomHibpListing as (v: unknown, index: number) => unknown,
-      {
-        count: { min: 7, max: 200 },
-      },
-    ) as unknown as HibpLikeDbBreach[],
+    allBreaches: faker.helpers.multiple(() => createRandomHibpListing(), {
+      count: { min: 7, max: 200 },
+    }),
   },
 };
