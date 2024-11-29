@@ -171,9 +171,9 @@ $border-focus-width: 3px;
 
 // Drop shadow
 $box-shadow-xs:
-  0 4px 6px 1px rgba(29, 17, 51, 0.04),
-  0 1px 8px 1px rgba(9, 32, 77, 0.12),
-  0 3px 5px -1px rgba(29, 17, 51, 0.12);
+  0 4px 6px rgba(29, 17, 51, 0.02),
+  0 2px 8px rgba(9, 32, 77, 0.08),
+  0 3px 5px -2px rgba(29, 17, 51, 0.08);
 $box-shadow-sm:
   0 8px 12px 1px rgba(29, 17, 51, 0.04),
   0 3px 16px 2px rgba(9, 32, 77, 0.12),
