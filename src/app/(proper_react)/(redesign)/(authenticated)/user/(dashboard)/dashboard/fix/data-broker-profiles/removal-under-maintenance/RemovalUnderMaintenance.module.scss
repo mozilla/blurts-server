@@ -1,0 +1,117 @@
+@import "../../../../../../../../../tokens";
+
+.dataBrokerInformationWrapper {
+  .exposureCardWrapper {
+    margin-top: $spacing-md;
+    padding-bottom: $spacing-lg;
+
+    .exposureCard {
+      display: flex;
+      flex-direction: column;
+      background-color: $color-white;
+      border: 2px solid rgba($color-purple-70, 0.2);
+      border-radius: $border-radius-lg;
+      padding: $layout-sm $layout-sm $layout-xs $layout-sm;
+
+      .dataClassesList {
+        justify-content: space-between;
+        margin-left: 0;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-row-gap: $spacing-sm;
+        transition: opacity 0.35s ease-in-out;
+        opacity: 1;
+
+        &.fadeOut {
+          opacity: 0;
+        }
+
+        @media screen and (min-width: $screen-md) {
+          grid-template-columns: 1fr 1fr 1fr;
+          gap: $spacing-sm;
+        }
+
+        @media screen and (min-width: $screen-lg) {
+          display: flex;
+          flex-direction: row;
+          align-items: flex-start;
+          gap: $layout-xs;
+          flex-wrap: wrap;
+          justify-content: flex-start;
+        }
+      }
+
+      .buttonsWrapper {
+        margin-top: $spacing-lg;
+        border-top: 2px solid $color-grey-10;
+        padding-top: $spacing-lg;
+        display: flex;
+        gap: $spacing-sm;
+      }
+
+      .estimatedTime {
+        @include estimated-time;
+        padding-top: $spacing-sm;
+      }
+    }
+  }
+
+  .header {
+    font: $text-body-lg;
+    font-weight: 700;
+    transition: opacity 0.35s ease-in-out;
+    opacity: 1;
+
+    &.fadeOut {
+      opacity: 0;
+    }
+  }
+}
+
+.removalGuideInstructionsWrapper {
+  .backArrow {
+    all: unset;
+    cursor: pointer;
+  }
+  .headerRemovalGuide {
+    padding-top: $spacing-lg;
+    font: $text-body-xl;
+    font-weight: 700;
+  }
+
+  .buttonWrapper {
+    display: flex;
+    justify-content: center;
+    padding-top: $spacing-lg;
+  }
+}
+
+.removalContentSection {
+  margin-top: $layout-md;
+
+  dt {
+    font: $text-body-lg;
+    font-weight: 600;
+
+    &.removalGuideInstructions {
+      font: $text-body-md;
+      font-weight: 700;
+    }
+  }
+
+  dd {
+    padding-top: $spacing-sm;
+  }
+
+  ol {
+    padding-top: $spacing-sm;
+
+    li {
+      margin-bottom: $spacing-xs;
+    }
+  }
+
+  button {
+    margin-top: $spacing-lg;
+  }
+}

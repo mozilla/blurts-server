@@ -6,7 +6,7 @@
 
 import { ReactElement } from "react";
 import { OnerepScanResultRow } from "knex/types/tables";
-import styles from "./ExposureCard.module.scss";
+import styles from "./ExposureCardDataClass.module.scss";
 import { useL10n } from "../../../hooks/l10n";
 import { Exposure, isScanResult } from "./ExposureCard";
 import { HibpBreachDataTypes } from "../../../functions/universal/breach";
@@ -56,7 +56,6 @@ const PremiumDataClassDetails = (props: PremiumDataClassDetailsProps) => {
 
 type ExposureCardDataClassLayoutProps = {
   exposure: Exposure;
-  icon: ReactElement;
   label: string;
   count: number;
   isPremiumUser?: boolean;
@@ -122,7 +121,6 @@ export const ExposureCardDataClassLayout = (
   return (
     <div className={styles.detailsFoundItem}>
       <div className={styles.label}>
-        <span className={styles.exposureTypeIcon}>{props.icon}</span>
         <span>{dataClassHeader}</span>
       </div>
       <div className={styles.dataClassListDetailsWrapper}>

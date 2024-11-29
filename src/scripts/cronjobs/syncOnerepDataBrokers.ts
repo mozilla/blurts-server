@@ -11,7 +11,7 @@
 
 import Sentry from "@sentry/nextjs";
 import { getAllDataBrokers } from "../../app/functions/server/onerep";
-import { upsertDataBrokers } from "../../db/tables/data_brokers.js";
+import { upsertDataBrokers } from "../../db/tables/onerep_data_brokers.js";
 import {
   redisClient,
   REDIS_ALL_DATA_BROKERS_KEY,

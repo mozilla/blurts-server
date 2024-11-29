@@ -30,6 +30,8 @@ export type FixViewProps = {
     | "leaked-passwords"
     | "security-recommendations";
   hideProgressIndicator?: boolean;
+  hideNavClose?: boolean;
+  hideNextNavigationRightArrow?: boolean;
   showConfetti?: boolean;
 };
 
@@ -90,21 +92,23 @@ export const FixView = (props: FixViewProps) => {
             )}
           />
         )}
-        {navigationClose()}
+        {!props.hideNavClose && navigationClose()}
         <section className={styles.fixSection}>
           <div className={styles.viewWrapper}>{props.children}</div>
-          <Link
-            className={`${styles.navArrow} ${styles.navArrowNext}`}
-            href={props.nextStep.href}
-            aria-label={l10n.getString("guided-resolution-flow-next-arrow")}
-            onClick={() => {
-              recordTelemetry("button", "click", {
-                button_id: "next_arrow",
-              });
-            }}
-          >
-            <Image alt="" src={ImageArrowRight} />
-          </Link>
+          {!props.hideNextNavigationRightArrow && (
+            <Link
+              className={`${styles.navArrow} ${styles.navArrowNext}`}
+              href={props.nextStep.href}
+              aria-label={l10n.getString("guided-resolution-flow-next-arrow")}
+              onClick={() => {
+                recordTelemetry("button", "click", {
+                  button_id: "next_arrow",
+                });
+              }}
+            >
+              <Image alt="" src={ImageArrowRight} />
+            </Link>
+          )}
         </section>
       </div>
     </div>

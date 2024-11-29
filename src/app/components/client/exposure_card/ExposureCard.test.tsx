@@ -13,6 +13,8 @@ import Meta, {
   DataBrokerActionNeeded,
   DataBrokerInProgress,
   DataBrokerManualRemoved,
+  DataBrokerRemovalUnderMaintenance,
+  DataBrokerRemovalUnderMaintenanceFixed,
   DataBrokerRemoved,
   DataBrokerRequestedRemoval,
 } from "./ExposureCard.stories";
@@ -73,12 +75,57 @@ describe("ScanResultCard", () => {
     expect(innerDescription).toBeInTheDocument();
   });
 
+  // Data broker removal under maintenance
+  it("shows the right description for a scan result card with removal under maintenance status", () => {
+    const ComposedProgressCard = composeStory(
+      DataBrokerRemovalUnderMaintenance,
+      Meta,
+    );
+    render(<ComposedProgressCard />);
+    const innerDescription = screen.getByText(
+      "We’ve asked this data broker to remove your profile but they haven’t done it.",
+      { exact: false },
+    );
+
+    expect(innerDescription).toBeInTheDocument();
+  });
+
+  // Data broker removal under maintenance resolved
+  it("shows the right description for a scan result card with removal under maintenance status that's been resolved", () => {
+    const ComposedProgressCard = composeStory(
+      DataBrokerRemovalUnderMaintenanceFixed,
+      Meta,
+    );
+    render(<ComposedProgressCard />);
+    const innerDescription = screen.getByText(
+      "You could be added back in the future, so ⁨Monitor⁩ will continue to scan data broker sites for new exposures.",
+      { exact: false },
+    );
+
+    expect(innerDescription).toBeInTheDocument();
+  });
+
   // Data broker removal in progress
   it("shows the right description for a scan result card where removal is in progress", () => {
     const ComposedProgressCard = composeStory(DataBrokerInProgress, Meta);
     render(<ComposedProgressCard />);
     const innerDescription = screen.getByText(
       "As a ⁨Monitor Plus⁩ member, we’ve removed",
+      { exact: false },
+    );
+
+    expect(innerDescription).toBeInTheDocument();
+  });
+
+  // Data broker removal under maintenance
+  it("shows the right description for a scan result card where removal is under maintenance", () => {
+    const ComposedProgressCard = composeStory(
+      DataBrokerRemovalUnderMaintenance,
+      Meta,
+    );
+    render(<ComposedProgressCard />);
+    const innerDescription = screen.getByText(
+      "We’ve asked this data broker to remove your profile but they haven’t done it.",
       { exact: false },
     );
 

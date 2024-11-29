@@ -11,8 +11,10 @@ import { useButton } from "react-aria";
 import { useL10n } from "../../hooks/l10n";
 import { VisuallyHidden } from "../server/VisuallyHidden";
 
+type ButtonVariants = "primary" | "secondary" | "tertiary" | "link";
+
 export interface Props {
-  variant: "primary" | "secondary" | "tertiary" | "link";
+  variant: ButtonVariants;
   children?: ReactNode;
   className?: string;
   destructive?: boolean;
@@ -97,7 +99,7 @@ export const Button = (props: ButtonProps) => {
     >
       {
         /* c8 ignore next */
-        isLoading ? <Loader /> : children
+        isLoading ? <Loader variant={props.variant} /> : children
       }
     </button>
   );
@@ -105,16 +107,16 @@ export const Button = (props: ButtonProps) => {
 
 /* This animation was adapted from https://loading.io/css/ */
 /* c8 ignore start */
-export const Loader = () => {
+export const Loader = ({ variant }: { variant?: ButtonVariants }) => {
   const l10n = useL10n();
 
   return (
-    <div className={styles.ldsRing}>
+    <div className={`${styles.ldsRing} ${variant ? styles[variant] : ""}`}>
       <VisuallyHidden>{l10n.getString("loading-accessibility")}</VisuallyHidden>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
+      <div className={variant ? styles[variant] : ""}></div>
+      <div className={variant ? styles[variant] : ""}></div>
+      <div className={variant ? styles[variant] : ""}></div>
+      <div className={variant ? styles[variant] : ""}></div>
     </div>
   );
 };

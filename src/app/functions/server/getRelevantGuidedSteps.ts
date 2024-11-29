@@ -6,6 +6,7 @@ import { Session } from "next-auth";
 import { LatestOnerepScanData } from "../../../db/tables/onerep_scans";
 import { SubscriberBreach } from "../../../utils/subscriberBreaches";
 import { BreachDataTypes, HighRiskDataTypes } from "../universal/breach";
+import { hasPremium } from "../universal/user";
 
 export type StepDeterminationData = {
   user: Session["user"];
@@ -17,6 +18,10 @@ export type StepDeterminationData = {
 // Note: the order is important; it determines in which order the user will be
 //       guided through the pages.
 export const stepLinks = [
+  {
+    href: "/user/dashboard/fix/data-broker-profiles/removal-under-maintenance",
+    id: "DataBrokerManualRemoval",
+  },
   {
     href: "/user/dashboard/fix/data-broker-profiles/start-free-scan",
     id: "Scan",
@@ -131,6 +136,14 @@ export function isEligibleForStep(
   data: StepDeterminationData,
   stepId: StepLink["id"],
 ): boolean {
+  // Only premium users can see the manual data broker removal flow, once they have run a scan
+  if (stepId === "DataBrokerManualRemoval") {
+    return (
+      hasPremium(data.user) &&
+      typeof data.user.subscriber?.onerep_profile_id === "number"
+    );
+  }
+
   if (stepId === "Scan") {
     return data.countryCode === "us";
   }
@@ -178,8 +191,17 @@ export function isEligibleForStep(
 
 export function hasCompletedStepSection(
   data: StepDeterminationData,
-  section: "Scan" | "HighRisk" | "LeakedPasswords" | "SecurityTips",
+  section:
+    | "Scan"
+    | "HighRisk"
+    | "LeakedPasswords"
+    | "SecurityTips"
+    | "DataBrokerManualRemoval",
 ): boolean {
+  /* c8 ignore next 3 */
+  if (section === "DataBrokerManualRemoval") {
+    return hasCompletedStep(data, "DataBrokerManualRemoval");
+  }
   /* c8 ignore next 5 */
   // I believe this *is* covered by unit tests, but for some reason,
   // since the upgrade to Node 20.10, it doesn't get marked as covered anymore:
@@ -221,6 +243,16 @@ export function hasCompletedStep(
   data: StepDeterminationData,
   stepId: StepLink["id"],
 ): boolean {
+  if (stepId === "DataBrokerManualRemoval") {
+    const hasResolvedAllScanResults =
+      data.latestScanData?.results
+        ?.filter(
+          (scanResult) => scanResult.status === "removal_under_maintenance",
+        )
+        .every((scanResult) => scanResult.manually_resolved) ?? false;
+    return hasResolvedAllScanResults;
+  }
+
   if (stepId === "Scan") {
     const hasRunScan =
       typeof data.latestScanData?.scan === "object" &&

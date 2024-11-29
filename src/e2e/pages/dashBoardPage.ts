@@ -93,7 +93,7 @@ export class DashboardPage {
       '//button[starts-with(@class, "ExposureCard_chevron")]',
     );
     this.fixExposureButton = page.getByRole("link", {
-      name: "Fix all exposures",
+      name: "Resolve exposures",
     });
     this.removeExposuresManually = page.getByRole("link", {
       name: "I’ll remove them manually",
