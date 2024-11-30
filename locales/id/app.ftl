@@ -176,7 +176,7 @@ main-nav-label = Navigasi
 main-nav-link-home-label = Beranda
 main-nav-link-dashboard-label = Dasbor
 main-nav-link-settings-label = Pengaturan
-main-nav-link-faq-label = T&amp;J
+main-nav-link-faq-label = T&J
 main-nav-link-faq-tooltip = Tanya-Jawab
 
 ## User menu
@@ -198,7 +198,7 @@ terms-of-service = Ketentuan Layanan
 privacy-notice = Kebijakan Privasi
 github = { -brand-github }
 footer-nav-recent-breaches = Pembobolan Data Terbaru
-footer-external-link-faq-label = T&amp;J
+footer-external-link-faq-label = T&J
 footer-external-link-faq-tooltip = Tanya-Jawab
 
 ## Error page

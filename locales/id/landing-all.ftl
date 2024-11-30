@@ -27,7 +27,7 @@ landing-all-quote = <data_breaches>Kebocoran data</data_breaches> terjadi setiap
 
 landing-all-faq-title = Tanya-Jawab
 # FAQ is an acronym for Frequently Asked Questions
-landing-all-faq-see-all = Lihat semua FAQ
+landing-all-faq-see-all = Lihat semua Tanya Jawab
 landing-all-data-breach-definition-qn = Apa sebenarnya pembobolan data?
 landing-all-data-breach-definition-ans = Pelanggaran data terjadi ketika informasi pribadi atau pribadi terekspos, dicuri, atau disalin tanpa izin. Insiden keamanan ini dapat terjadi akibat serangan siber pada situs web, aplikasi, atau basis data apa pun tempat informasi pribadi seseorang berada. Pelanggaran data juga dapat terjadi secara tidak sengaja, seperti jika kredensial masuk seseorang diposting secara publik.
 landing-all-data-breach-next-steps-qn = Saya baru tahu saya termasuk korban pembobolan data. Apa yang harus saya lakukan selanjutnya?
