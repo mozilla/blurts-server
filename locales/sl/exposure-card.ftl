@@ -28,9 +28,10 @@ exposure-card-other = Drugo
 exposure-card-description-data-breach-action-needed = Vaši podatki so bili { $data_breach_date } razkriti v <data_breach_link>podatkovni kraji podjetja { $data_breach_company }.</data_breach_link> Vodili vas bomo skozi korake za odpravo težave.
 exposure-card-description-data-breach-fixed = Izvedli ste korake, potrebne za odpravo <data_breach_link>te kraje</data_breach_link>. Nenehno bomo spremljali kraje podatkov in vas ob morebitnih novih izpostavljenostih tudi obvestili.
 exposure-card-your-exposed-info = Vaši izpostavljeni podatki:
+exposure-card-found-the-following-data = { -brand-monitor } je našel naslednje izpostavljene podatke:
 exposure-card-exposure-type-data-broker = Podatki naprodaj
 exposure-card-exposure-type-data-breach = Kraja podatkov
-exposure-card-cta = Popravi vse izpostavljenosti
+exposure-card-resolve-exposures-cta = Razrešite osvetlitve
 exposure-card-label-company-logo = Logotip podjetja
 exposure-card-label-company = Podjetje
 # Status of the exposure card, could be In Progress, Fixed or Action Needed
@@ -39,3 +40,4 @@ exposure-card-label-status = Stanje
 # $category_label is the data breach exposure type that was leaked. Eg. Email, IP Address.
 # $count is the number of times that the data type was leaked.
 exposure-card-label-and-count = { $category_label }: { $count }
+exposure-card-manual-resolution-praise = <b>Odlično!</b> Izpostavljenost ste razrešili.

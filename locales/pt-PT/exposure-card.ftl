@@ -28,9 +28,10 @@ exposure-card-other = Outro
 exposure-card-description-data-breach-action-needed = A sua informação foi exposta na <data_breach_link>{ $data_breach_company } violação de dados em { $data_breach_date }.</data_breach_link> Nós iremos orientá-lo através dos passos para a corrigir.
 exposure-card-description-data-breach-fixed = Tomou as medidas necessárias para corrigir <data_breach_link>esta violação de dados</data_breach_link>. Nós iremos monitorizar continuamente para as violações de dados e alertá-lo sobre quaisquer novas exposições.
 exposure-card-your-exposed-info = A sua informação exposta:
+exposure-card-found-the-following-data = O { -brand-monitor } encontrou os seguintes dados expostos:
 exposure-card-exposure-type-data-broker = Informação à venda
 exposure-card-exposure-type-data-breach = Violação de dados
-exposure-card-cta = Corrigir todas as exposições
+exposure-card-resolve-exposures-cta = Resolver exposição
 exposure-card-label-company-logo = Logótipo da empresa
 exposure-card-label-company = Empresa
 # Status of the exposure card, could be In Progress, Fixed or Action Needed
@@ -39,3 +40,4 @@ exposure-card-label-status = Estado
 # $category_label is the data breach exposure type that was leaked. Eg. Email, IP Address.
 # $count is the number of times that the data type was leaked.
 exposure-card-label-and-count = { $category_label }: { $count }
+exposure-card-manual-resolution-praise = <b>Bom trabalho!</b> Resolveu esta exposição.
