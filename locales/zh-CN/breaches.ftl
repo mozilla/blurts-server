@@ -10,7 +10,7 @@ breach-all-meta-social-description = 浏览 { -brand-fx-monitor } 检测到的�
 breach-detail-meta-page-title = ”{ $company }“数据外泄事件 - { -brand-fx-monitor }
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
-breach-detail-meta-social-title = 您是否受到 { $company } 数据泄露事件的影响？
+breach-detail-meta-social-title = 您是否受到 { $company } 数据外泄事件的影响？
 breach-detail-meta-social-description = 使用 { -brand-fx-monitor } 查明您的个人信息是否在此外泄事件中泄露，并了解下一步该怎么做。
 
 ## Links that we might refer to when prompting the user to make changes after a breach

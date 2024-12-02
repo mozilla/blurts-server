@@ -3,7 +3,6 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 chevron-alt = Kikerülés részletei
-
 exposure-card-exposure-type = Kitettség típusa
 exposure-card-date-found = Az incidens dátuma
 
@@ -29,9 +28,10 @@ exposure-card-other = Egyéb
 exposure-card-description-data-breach-action-needed = Az Ön adatai kikerültek a(z) <data_breach_link>{ $data_breach_company } adatvédelmi incidensében, ekkor: { $data_breach_date }.</data_breach_link> Végigvezetjük a javítási lépéseken.
 exposure-card-description-data-breach-fixed = Megtette a szükséges lépéseket <data_breach_link>ezen adatvédelmi incidens</data_breach_link> kijavításához. Folyamatosan figyeljük az adatvédelmi incidenseket, és értesítjük minden új adatkikerülésről.
 exposure-card-your-exposed-info = Érintett információk:
+exposure-card-found-the-following-data = A { -brand-monitor } a következő kitett adatokat találta:
 exposure-card-exposure-type-data-broker = Eladó információk
 exposure-card-exposure-type-data-breach = Adatvédelmi incidens
-exposure-card-cta = Javítsa az összes kitettséget
+exposure-card-resolve-exposures-cta = Kitettségek feloldása
 exposure-card-label-company-logo = Céglogó
 exposure-card-label-company = Cég
 # Status of the exposure card, could be In Progress, Fixed or Action Needed
@@ -40,3 +40,4 @@ exposure-card-label-status = Állapot
 # $category_label is the data breach exposure type that was leaked. Eg. Email, IP Address.
 # $count is the number of times that the data type was leaked.
 exposure-card-label-and-count = { $category_label }: { $count }
+exposure-card-manual-resolution-praise = <b>Szép munka!</b> Megoldotta ezt a kitételt.
