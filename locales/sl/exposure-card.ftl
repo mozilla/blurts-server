@@ -4,7 +4,7 @@
 
 chevron-alt = Podrobnosti o izpostavitvi
 exposure-card-exposure-type = vrsta izpostavljenosti
-exposure-card-date-found = Datum izpostavljenosti
+exposure-card-date-found = Datum izpostavitve
 
 # Status Pill
 

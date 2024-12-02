@@ -83,7 +83,7 @@ high-risk-breach-credit-card-step-three = Preverite svoje račune za nepooblaš�
 # Bank Account Breaches
 
 high-risk-breach-bank-account-title = Vaš bančni račun je bil razkrit
-high-risk-breach-bank-account-description = Če ukrepate čim prej, si lahko zagotovite večjo pravno zaščito, ki vam bo pomagala povrniti morebitne izgube.
+high-risk-breach-bank-account-description = S čimprejšnjim ukrepanjem si lahko zagotovite večjo pravno zaščito, ki vam bo pomagala povrniti morebitne izgube.
 high-risk-breach-bank-account-step-one = Takoj obvestite svojo banko, da je bila številka vašega računa ogrožena.
 high-risk-breach-bank-account-step-two = Spremenite številko računa.
 high-risk-breach-bank-account-step-three = Preverite, ali so se vam na računu pojavile nepooblaščene bremenitve.
@@ -107,11 +107,11 @@ ssn-modal-ok = V redu
 
 # PIN Breaches
 
-high-risk-breach-pin-title = Vaša PIN je bila razkrita
-high-risk-breach-pin-description = Če ukrepate čim prej, si lahko zagotovite večjo pravno zaščito, ki vam bo pomagala povrniti morebitne izgube.
-high-risk-breach-pin-step-one = Takoj obvestite svojo banko, da je bila vaša PIN-koda ogrožena.
-high-risk-breach-pin-step-two = Spremenite kodo PIN povsod, kjer ste uporabljali isto.
-high-risk-breach-pin-step-three = Preverite svoje račune za nepooblaščene bremenitve.
+high-risk-breach-pin-title = Vaša koda PIN je bila razkrita
+high-risk-breach-pin-description = S čimprejšnjim ukrepanjem si lahko zagotovite večjo pravno zaščito, ki vam bo pomagala povrniti morebitne izgube.
+high-risk-breach-pin-step-one = Takoj obvestite svojo banko, da je bila vaša koda PIN razkrita.
+high-risk-breach-pin-step-two = Povsod, kjer ste uporabljali isto kodo PIN, jo spremenite.
+high-risk-breach-pin-step-three = Preverite, ali so se vam na računu pojavile nepooblaščene bremenitve.
 
 # No high risk breaches found
 
@@ -217,7 +217,7 @@ leaked-security-questions-title = Vaša varnostna vprašanja so bila razkrita
 # An example of this string is Twitter on 13/09/18.
 leaked-security-questions-summary = Pojavili so se v kraji podatkov o { $breach_name } dne { $breach_date }.
 leaked-security-questions-description = Prevaranti jih lahko izkoristijo za dostop do vaših računov in vseh drugih strani, kjer ste uporabili ista varnostna vprašanja. Posodobite jih zdaj in zaščitite svoje račune.
-leaked-security-questions-steps-title = Tukaj je opisano, kaj morate storiti
+leaked-security-questions-steps-title = Kaj storiti
 leaked-security-questions-steps-subtitle = To zahteva dostop do vašega računa, zato ga boste morali popraviti ročno.
 # Variables
 # $breach_name is the name of the breach where the security questions were found.
