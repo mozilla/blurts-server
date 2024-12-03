@@ -80,11 +80,10 @@ export async function POST(
 }
 
 export async function PUT(
-  params: { onerepScanResultId: string },
-  body: { resolved: boolean },
+  req: NextRequest,
 ): Promise<NextResponse<ResolveScanResultResponse>> {
-  const scanResultId = Number.parseInt(params.onerepScanResultId, 10);
-  const { resolved } = body;
+  // const scanResultId = Number.parseInt(params.onerepScanResultId, 10);
+  // const { resolved } = body;
   const session = await getServerSession();
 
   if (!session?.user?.subscriber) {
@@ -93,6 +92,8 @@ export async function PUT(
       { status: 401 },
     );
   }
+
+  const { resolved, scanResultId } = await req.json();
 
   if (typeof scanResultId !== "number" || Number.isNaN(scanResultId)) {
     return new NextResponse<ResolveScanResultResponse>(
