@@ -411,29 +411,52 @@ async function getScanResultsWithBrokerUnderMaintenance(
   if (onerepProfileId === null) {
     return null;
   }
+  const qaToggles = await getQaToggleRow(onerepProfileId);
+  let showCustomBrokers = false;
+  let showRealBrokers = true;
 
-  let scanResults = await knex("onerep_scan_results as sr")
-    .select(
-      "sr.*",
-      "s.*",
-      "sr.status as scan_result_status", // rename to avoid collision
-      "db.status as broker_status", // rename to avoid collision
-    )
-    .innerJoin("onerep_scans as s", "sr.onerep_scan_id", "s.onerep_scan_id")
-    .where("s.onerep_profile_id", onerepProfileId)
-    .andWhere("sr.manually_resolved", "false")
-    .andWhereNot("sr.status", "removed")
-    .join("onerep_data_brokers as db", "sr.data_broker", "db.data_broker")
-    .orderBy("sr.onerep_scan_result_id");
+  if (qaToggles) {
+    showCustomBrokers = qaToggles.show_custom_brokers;
+    showRealBrokers = qaToggles.show_real_brokers;
+  }
+  const scan = await getLatestOnerepScan(onerepProfileId);
 
-  scanResults = scanResults.filter(
-    (result) =>
-      result.broker_status === "removal_under_maintenance" ||
-      new Date().getTime() - new Date(result.updated_at).getTime() >
-        CONST_DAY_MILLISECONDS * 200,
-  );
+  let results: OnerepScanResultRow[] = [];
 
-  return { results: scanResults } as LatestOnerepScanData;
+  if (showRealBrokers) {
+    let scanResults = await knex("onerep_scan_results as sr")
+      .select(
+        "sr.*",
+        "s.*",
+        "sr.status as scan_result_status", // rename to avoid collision
+        "db.status as broker_status", // rename to avoid collision
+      )
+      .innerJoin("onerep_scans as s", "sr.onerep_scan_id", "s.onerep_scan_id")
+      .where("s.onerep_profile_id", onerepProfileId)
+      .andWhere("sr.manually_resolved", "false")
+      .andWhereNot("sr.status", "removed")
+      .join("onerep_data_brokers as db", "sr.data_broker", "db.data_broker")
+      .orderBy("sr.onerep_scan_result_id");
+
+    scanResults = scanResults.filter(
+      (result) =>
+        result.broker_status === "removal_under_maintenance" ||
+        new Date().getTime() - new Date(result.updated_at).getTime() >
+          CONST_DAY_MILLISECONDS * 200,
+    );
+
+    results = scanResults;
+  }
+  // Fetch custom brokers if allowed
+  if (showCustomBrokers) {
+    const qaBrokers = await getQaCustomBrokers(
+      onerepProfileId,
+      scan?.onerep_scan_id,
+    );
+    results = [...results, ...qaBrokers];
+  }
+
+  return { results } as LatestOnerepScanData;
 }
 
 export {
