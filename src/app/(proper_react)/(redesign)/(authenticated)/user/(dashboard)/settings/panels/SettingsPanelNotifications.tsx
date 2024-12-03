@@ -11,10 +11,7 @@ import { useRouter } from "next/navigation";
 import { hasPremium } from "../../../../../../../functions/universal/user";
 import { createContext, useState } from "react";
 import { RadioGroupState, useRadioGroupState } from "react-stately";
-import {
-  EmailUpdateCommOptionRequest,
-  EmailUpdateCommTypeOfOptions,
-} from "../../../../../../../api/v1/user/update-comm-option/route";
+import { EmailUpdateCommOptionRequest } from "../../../../../../../api/v1/user/update-comm-option/route";
 import { useTelemetry } from "../../../../../../../hooks/useTelemetry";
 import { useRadioGroup } from "react-aria";
 import { VisuallyHidden } from "../../../../../../../components/server/VisuallyHidden";
@@ -34,6 +31,15 @@ export type NotificationSettingsProps = {
   subscriber: SubscriberRow;
   data: SubscriberEmailPreferencesOutput;
 };
+
+const EmailCommOption = {
+  Primary: "primary",
+  Affected: "affected",
+  None: "null",
+} as const;
+
+type EmailUpdateCommTypeOfOptions =
+  (typeof EmailCommOption)[keyof typeof EmailCommOption];
 
 const AlertAddressContext = createContext<RadioGroupState | null>(null);
 
@@ -58,14 +64,14 @@ export const NotificationsSettings = (props: NotificationSettingsProps) => {
   const [activateMonthlyMonitorReport, setActivateMonthlyMonitorReport] =
     useState(monitorReportAllowed);
 
-  const commsValue = () => {
+  const commsValue = (): EmailUpdateCommTypeOfOptions => {
     switch (breachAlertsEmailsAllowed) {
       case true:
-        return "primary";
+        return EmailCommOption.Primary;
       case false:
-        return "affected";
+        return EmailCommOption.Affected;
       case null:
-        return "null";
+        return EmailCommOption.None;
     }
   };
 
