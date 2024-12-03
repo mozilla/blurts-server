@@ -10,11 +10,11 @@ landing-all-hero-emailform-input-label = Geben Sie Ihre E-Mail-Adresse ein, um s
 landing-all-hero-emailform-submit-label = Kostenloser Scan
 landing-all-hero-emailform-submit-sign-up-label = Registrieren Sie sich, um einen kostenlosen Scan zu erhalten
 # This is a label underneath a big number "14" - it's an image that demos Monitor.
-landing-all-hero-image-chart-label = Offenlegungen
+landing-all-hero-image-chart-label = Datenlecks
 
 # Value Proposition
 
-landing-all-value-prop-fix-exposures = Wir helfen Ihnen, Ihre Offenlegungen zu beheben
+landing-all-value-prop-fix-exposures = Wir helfen Ihnen, Ihre Datenlecks zu beheben
 landing-all-value-prop-fix-exposures-description = Unsere Mission ist es, die Kontrolle über Ihre persönlichen Daten wieder in Ihre Hände zu legen. Wir helfen Ihnen, Datenlecks zu beheben und Ihre Daten privat zu halten – und <privacy_link>respektieren deine Privatsphäre</privacy_link>.
 landing-all-value-prop-info-at-risk = Welche Daten könnten in Gefahr sein?
 landing-all-value-prop-info-at-risk-description = Datenlecks sind leider Teil unseres digitalen Lebens. Ihre Passwörter, Kontaktdaten, Finanzdaten und anderen persönlichen Daten können offengelegt werden, was Sie der Gefahr eines Identitätsdiebstahls aussetzt.
@@ -31,7 +31,7 @@ landing-all-faq-see-all = Alle häufig gestellten Fragen anzeigen
 landing-all-data-breach-definition-qn = Was genau ist ein Datenleck?
 landing-all-data-breach-definition-ans = Ein Datenleck tritt auf, wenn persönliche oder private Informationen ohne Erlaubnis offengelegt, gestohlen oder kopiert werden. Diese Sicherheitsvorfälle können das Ergebnis von Cyberangriffen auf Websites, Apps oder andere Datenbanken sein, in denen sich personenbezogene Daten von Personen befinden. Ein Datenleck kann auch versehentlich passieren, zum Beispiel wenn die Anmeldedaten einer Person öffentlich gepostet werden.
 landing-all-data-breach-next-steps-qn = Ich habe gerade erfahren, dass ich von einem Datenleck betroffen bin. Was muss ich jetzt tun?
-landing-all-data-breach-next-steps-ans = Besuchen Sie { -brand-mozilla-monitor }, um zu erfahren, was nach einem Datenleck zu tun ist, und um eine Schritt-für-Schritt-Anleitung zu erhalten, um die Offenlegung Ihrer persönlichen Daten zu beheben. Hacker verlassen sich darauf, dass Menschen Passwörter wiederverwenden, daher ist es wichtig, starke, eindeutige Passwörter für alle Ihre Konten zu erstellen. Bewahren Sie Ihre Passwörter an einem sicheren Ort auf, auf den nur Sie Zugriff haben. Dies kann der gleiche Ort sein, an dem Sie wichtige Dokumente speichern, oder eine Passwortverwaltung.
+landing-all-data-breach-next-steps-ans = Besuchen Sie { -brand-mozilla-monitor }, um zu erfahren, was nach einem Datenleck zu tun ist, und um eine Schritt-für-Schritt-Anleitung zu erhalten, um das Leck Ihrer persönlichen Daten zu beheben. Hacker verlassen sich darauf, dass Menschen Passwörter wiederverwenden, daher ist es wichtig, starke, eindeutige Passwörter für alle Ihre Konten zu erstellen. Bewahren Sie Ihre Passwörter an einem sicheren Ort auf, auf den nur Sie Zugriff haben. Dies kann der gleiche Ort sein, an dem Sie wichtige Dokumente speichern, oder eine Passwortverwaltung.
 landing-all-data-breach-info-qn = Welche Informationen werden bei Datenlecks offengelegt?
 landing-all-data-breach-info-ans = Nicht alle Datenlecks legen dieselben Informationen offen. Es hängt davon ab, worauf Hacker zugreifen können. Viele Datenlecks legen E-Mail-Adressen und Passwörter offen. Andere geben sensiblere Informationen wie Kreditkartennummern, PIN-Nummern und Sozialversicherungsnummern preis.
 landing-all-close-faq-alt = Schließen

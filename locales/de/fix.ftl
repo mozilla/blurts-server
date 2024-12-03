@@ -5,7 +5,6 @@
 fix-flow-nav-high-risk-data-breaches = Datenlecks mit hohem Risiko
 fix-flow-nav-leaked-passwords = Offengelegte Passwörter
 fix-flow-nav-security-recommendations = Sicherheitsempfehlungen
-
 guided-resolution-flow-exit = Zurück zur Übersicht
 guided-resolution-flow-next-arrow = Zum nächsten Schritt gehen
 guided-resolution-flow-step-navigation-label = Schritt-für-Schritt-Anleitung
@@ -21,7 +20,7 @@ fix-flow-celebration-next-dashboard-label = Besuchen Sie Ihre Übersicht
 
 ## High-risk flow
 
-fix-flow-celebration-high-risk-title = Sie haben Ihre Hochrisiko-Offenlegungen behoben!
+fix-flow-celebration-high-risk-title = Sie haben Ihre Hochrisiko-Datenlecks behoben!
 fix-flow-celebration-high-risk-description-in-progress = Das hier fühlt sich vielleicht nach viel Arbeit an, aber es ist wichtig, um Sie selbst zu schützen. Weiter so.
 fix-flow-celebration-high-risk-description-done = Das hier fühlt sich vielleicht nach viel Arbeit an, aber es ist wichtig, um Sie selbst zu schützen.
 fix-flow-celebration-high-risk-description-next-passwords = Beheben wir jetzt Ihre offengelegten Passwörter.
