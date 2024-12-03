@@ -268,6 +268,15 @@ async function createQaTogglesRow(
     const existingRow = await knex("qa_custom_toggles")
       .where({ email_hash: emailHash })
       .first();
+
+    // If an account was deleted and recreated, it has another
+    // `onerep_profile_id`. Let’s make sure to update it!
+    if (existingRow && existingRow.onerep_profile_id !== onerep_profile_id) {
+      await knex("qa_custom_toggles").where({ email_hash: emailHash }).update({
+        onerep_profile_id,
+      });
+    }
+
     return existingRow as QaToggleRow;
   }
 }
