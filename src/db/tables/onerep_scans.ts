@@ -14,17 +14,17 @@ import {
   OnerepScanResultRow,
   OnerepScanRow,
   SubscriberRow,
+  OnerepScanResultDataBrokerRow,
 } from "knex/types/tables";
 import { RemovalStatus } from "../../app/functions/universal/scanResult.js";
 import { getQaCustomBrokers, getQaToggleRow } from "./qa_customs.ts";
-import { DataBrokerRow } from "../../knex-tables";
 import { CONST_DAY_MILLISECONDS } from "../../constants.ts";
 
 const knex = createDbConnection();
 
 export interface LatestOnerepScanData {
   scan: OnerepScanRow | null;
-  results: OnerepScanResultRow[] | (OnerepScanResultRow & DataBrokerRow)[];
+  results: OnerepScanResultRow[] | OnerepScanResultDataBrokerRow[];
 }
 
 async function getAllScansForProfile(
