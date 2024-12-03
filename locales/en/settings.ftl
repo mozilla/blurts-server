@@ -69,3 +69,9 @@ settings-alert-preferences-allow-monthly-monitor-report-subtitle = A monthly upd
 settings-tab-label-edit-info = Edit your info
 settings-tab-label-notifications = Set notifications
 settings-tab-label-manage-account = Manage account
+
+settings-tab-subtitle-manage-account = Manage your { -product-name } account.
+
+settings-tab-notifications-marketing-title = Marketing communications
+settings-tab-notifications-marketing-text = Periodic updates about { -brand-monitor }, { -brand-mozilla }, and our other security products.
+settings-tab-notifications-marketing-link-label = Go to { -brand-mozilla } email settings

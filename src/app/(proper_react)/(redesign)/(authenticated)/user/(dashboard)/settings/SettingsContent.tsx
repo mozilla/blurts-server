@@ -9,7 +9,7 @@ import { usePathname } from "next/navigation";
 import { useL10n } from "../../../../../../hooks/l10n";
 import { TabList } from "../../../../../../components/client/TabList";
 import styles from "./SettingsContent.module.scss";
-import { SettingsPanel } from "./panels";
+import { SettingsPanel, SettingsProps } from "./panels";
 import { TabType } from "./View";
 import {
   EmailOutlineIcon,
@@ -17,16 +17,12 @@ import {
   ContactsOutlineIcon,
 } from "../../../../../../components/server/Icons";
 
-type SettingContentProps = {
-  activeTab: TabType;
-};
-
 type TabData = {
   name: ReactNode;
   key: TabType;
 };
 
-function SettingsContent(props: SettingContentProps) {
+function SettingsContent(props: SettingsProps) {
   const l10n = useL10n();
   const pathname = usePathname();
   const tabsData: TabData[] = [
@@ -58,7 +54,9 @@ function SettingsContent(props: SettingContentProps) {
       key: "manage-account",
     },
   ];
-  const [activeTab, setActiveTab] = useState<TabType>(props.activeTab);
+  const [activeTab, setActiveTab] = useState<TabType>(
+    props.activeTab ?? tabsData[0].key,
+  );
 
   // Update the URL pathname when navigating through the panels
   // without causing the page to reload.
@@ -74,7 +72,7 @@ function SettingsContent(props: SettingContentProps) {
 
   return (
     <main className={styles.main}>
-      <header className={styles.title}>
+      <header className={styles.header}>
         <h2>{l10n.getString("settings-page-title")}</h2>
         <TabList
           selectedKey={activeTab}
@@ -87,7 +85,18 @@ function SettingsContent(props: SettingContentProps) {
         />
       </header>
       <div className={styles.content}>
-        <SettingsPanel type={activeTab} />
+        <SettingsPanel
+          activeTab={activeTab}
+          breachCountByEmailAddress={props.breachCountByEmailAddress}
+          data={props.data}
+          emailAddresses={props.emailAddresses}
+          enabledFeatureFlags={props.enabledFeatureFlags}
+          experimentData={props.experimentData}
+          fxaSubscriptionsUrl={props.fxaSubscriptionsUrl}
+          isMonthlySubscriber={props.isMonthlySubscriber}
+          subscriber={props.subscriber}
+          user={props.user}
+        />
       </div>
     </main>
   );

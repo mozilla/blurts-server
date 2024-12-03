@@ -1,0 +1,18 @@
+@import "../../tokens";
+
+.radioButton {
+  stroke: $color-purple-50;
+
+  svg {
+    fill: $color-purple-50;
+    stroke: none;
+  }
+
+  &.isSelected {
+    stroke: $color-grey-20;
+  }
+
+  .focusRing {
+    stroke: $color-blue-50;
+  }
+}

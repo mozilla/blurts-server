@@ -1,0 +1,25 @@
+@import "../../../../../../../tokens";
+
+.emailList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+  width: 100%;
+}
+
+.resendButtonWrapper {
+  font: $text-body-sm;
+  padding: $spacing-sm $spacing-md;
+
+  .resendButton {
+    align-items: center;
+    display: flex;
+    font-weight: 500;
+    gap: $spacing-xs;
+    margin-top: $spacing-sm;
+  }
+}
+
+.addEmailButton {
+  align-self: flex-end;
+}

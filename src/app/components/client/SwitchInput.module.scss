@@ -1,0 +1,20 @@
+@import "../../tokens";
+
+.switchInput {
+  svg {
+    fill: $color-grey-40;
+    stroke: none;
+
+    circle {
+      fill: $color-white;
+    }
+  }
+
+  &.isSelected svg {
+    fill: $color-green-50;
+  }
+
+  .focusRing {
+    stroke: $color-blue-50;
+  }
+}

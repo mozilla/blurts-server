@@ -2,14 +2,22 @@
 
 .main {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
   gap: $spacing-lg;
-  padding: $spacing-2xl;
+  padding: $layout-2xs;
+
+  @media screen and (min-width: $screen-lg) {
+    flex-direction: row;
+    padding: $layout-lg;
+  }
+
+  @media screen and (min-width: $screen-sm) {
+    padding: $layout-sm;
+  }
 }
 
-.title {
-  flex: 0 0 $content-xs;
+.header {
   display: flex;
   flex-direction: column;
   gap: $layout-xs;
@@ -20,6 +28,10 @@
 
   & [role="tab"]::after {
     width: calc(100% - 24px - $spacing-xs);
+  }
+
+  @media screen and (min-width: $screen-lg) {
+    flex: 0 0 $content-xs;
   }
 }
 
