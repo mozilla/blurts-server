@@ -28,10 +28,11 @@
 }
 
 .formAndListWrapper {
-  margin-top: 40px;
+  gap: $spacing-md;
+  margin-top: $spacing-lg;
   display: grid;
   grid-template-rows: 1fr;
-  grid-template-columns: 3fr 2fr;
+  grid-template-columns: 1fr 1fr;
   justify-content: center;
 }
 
@@ -55,15 +56,14 @@
   justify-content: center;
 }
 
-.listButtonsWrapper {
-  display: grid;
-  grid-template-rows: auto 100px;
-  justify-content: center;
-}
-
 .listContainer {
-  max-height: 330px;
-  overflow-y: auto;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
 }
 
 .searchBox {
@@ -87,26 +87,9 @@
   justify-content: center;
 }
 
-.listWrapper {
-  height: min-content;
-  display: grid;
-  grid-template-rows: 50px auto;
-  justify-content: center;
-  align-items: flex-start;
-}
-
 .hibpSelectedBoxWrapper {
   width: 100%;
   grid-template-columns: 100%;
-  .listContainer {
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-top: 8px;
-    height: 300px;
-  }
-  p {
-    margin-left: 10px;
-  }
 }
 
 .button {
@@ -179,10 +162,14 @@
   }
 }
 
+.listItem {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
 .listItem:hover {
   background-color: #f0f0f0; /* Light grey background on hover */
-  cursor: pointer; /* Change cursor to indicate clickable item */
-  text-decoration: line-through;
 }
 
 .allBreachesItem:hover {
