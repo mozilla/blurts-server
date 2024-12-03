@@ -10,7 +10,7 @@ settings-page-title = Nastavitve { -product-short-name(sklon: "rodilnik") }
 ## Breach alert preferences
 
 settings-alert-email-preferences-title = Nastavitve e-pošte
-settings-alert-email-preferences-subtitle = Sporočite nam, katero e-pošto želite prejemati.
+settings-alert-email-preferences-subtitle = Povejte nam, katera sporočila želite prejemati.
 settings-alert-preferences-allow-breach-alerts-title = Takojšnja opozorila o krajah
 settings-alert-preferences-allow-breach-alerts-subtitle = Ta opozorila se pošljejo takoj, ko se zazna kraja podatkov
 settings-alert-preferences-option-one = Pošlji opozorila na ogrožen e-poštni naslov

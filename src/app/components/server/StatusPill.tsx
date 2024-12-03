@@ -98,6 +98,8 @@ export const getExposureStatus = (
           : "inProgress";
       case "optout_in_progress":
         return "inProgress";
+      case "removal_under_maintenance":
+        return "actionNeeded";
       case "new":
       default:
         return "actionNeeded";

@@ -200,8 +200,6 @@ mozilla = { -brand-mozilla }
 terms-of-service = Tjenestevilkår
 privacy-notice = Privatlivserklæring
 github = { -brand-github }
-# Deprecated
-footer-nav-all-breaches = Alle datalæk
 footer-nav-recent-breaches = Seneste datalæk
 footer-external-link-faq-label = Ofte stillede spørgsmål
 footer-external-link-faq-tooltip = Ofte stillede spørgsmål
@@ -219,7 +217,7 @@ error-page-error-other-title = { $errorCode } Noget gik galt
 
 ## Breach overview page
 
-all-breaches-headline-2 = Alle datalæk opdaget af { -brand-fx-monitor }
+all-breaches-headline-3 = Database med datalæk
 all-breaches-lead = Vi holder øje med alle kendte datalæk for at finde ud af, om dine personlige oplysninger er blevet kompromitteret. Her er en komplet liste over alle rapporterede datalæk siden 2007.
 search-breaches = Søg efter datalæk
 # the kind of user data exposed to hackers in data breach.

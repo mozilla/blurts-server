@@ -17,12 +17,14 @@ import {
 } from "knex/types/tables";
 import { RemovalStatus } from "../../app/functions/universal/scanResult.js";
 import { getQaCustomBrokers, getQaToggleRow } from "./qa_customs.ts";
+import { DataBrokerRow } from "../../knex-tables";
+import { CONST_DAY_MILLISECONDS } from "../../constants.ts";
 
 const knex = createDbConnection();
 
 export interface LatestOnerepScanData {
   scan: OnerepScanRow | null;
-  results: OnerepScanResultRow[];
+  results: OnerepScanResultRow[] | (OnerepScanResultRow & DataBrokerRow)[];
 }
 
 async function getAllScansForProfile(
@@ -397,6 +399,37 @@ async function getEmailForProfile(onerepProfileId: number) {
   }
 }
 
+async function getScanResultsWithBrokerUnderMaintenance(
+  onerepProfileId: number | null,
+) {
+  if (onerepProfileId === null) {
+    return null;
+  }
+
+  let scanResults = await knex("onerep_scan_results as sr")
+    .select(
+      "sr.*",
+      "s.*",
+      "sr.status as scan_result_status", // rename to avoid collision
+      "db.status as broker_status", // rename to avoid collision
+    )
+    .innerJoin("onerep_scans as s", "sr.onerep_scan_id", "s.onerep_scan_id")
+    .where("s.onerep_profile_id", onerepProfileId)
+    .andWhere("sr.manually_resolved", "false")
+    .andWhereNot("sr.status", "removed")
+    .join("onerep_data_brokers as db", "sr.data_broker", "db.data_broker")
+    .orderBy("sr.onerep_scan_result_id");
+
+  scanResults = scanResults.filter(
+    (result) =>
+      result.broker_status === "removal_under_maintenance" ||
+      new Date().getTime() - new Date(result.updated_at).getTime() >
+        CONST_DAY_MILLISECONDS * 200,
+  );
+
+  return { results: scanResults } as LatestOnerepScanData;
+}
+
 export {
   getAllScansForProfile,
   getLatestScanForProfileByReason,
@@ -415,4 +448,5 @@ export {
   deleteScanResultsForProfile,
   deleteSomeScansForProfile,
   getEmailForProfile,
+  getScanResultsWithBrokerUnderMaintenance,
 };
