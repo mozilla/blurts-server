@@ -1,0 +1,44 @@
+@import "../../../../../../../tokens";
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: $layout-xs;
+
+  .radioGroup {
+    display: flex;
+    flex-direction: column;
+    gap: $layout-xs;
+    justify-content: space-between;
+    width: 100%;
+
+    label {
+      align-items: center;
+      display: flex;
+      gap: $layout-md;
+      justify-content: space-between;
+
+      div {
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-xs;
+      }
+
+      svg {
+        flex: 0 0 auto;
+      }
+    }
+
+    .radioInputs {
+      display: flex;
+      flex-direction: column;
+      font: $text-body-sm;
+      gap: $spacing-sm;
+    }
+  }
+
+  .switchInput {
+    display: flex;
+    justify-content: space-between;
+  }
+}

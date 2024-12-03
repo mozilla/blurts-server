@@ -11,7 +11,7 @@ import { useButton } from "react-aria";
 import { useL10n } from "../../hooks/l10n";
 import { VisuallyHidden } from "../server/VisuallyHidden";
 
-type ButtonVariants = "primary" | "secondary" | "tertiary" | "link";
+type ButtonVariants = "primary" | "secondary" | "tertiary" | "link" | "icon";
 
 export interface Props {
   variant: ButtonVariants;

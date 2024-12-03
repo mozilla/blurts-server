@@ -40,3 +40,8 @@ export const CONST_MOZILLA_ACCOUNTS_SETTINGS_PROMO_SEARCH_PARAMS = {
   utm_campaign: "settings-promo",
   utm_content: "monitor-free",
 } as const;
+export const CONST_SETTINGS_TAB_SLUGS = [
+  "edit-info",
+  "notifications",
+  "manage-account",
+] as const;

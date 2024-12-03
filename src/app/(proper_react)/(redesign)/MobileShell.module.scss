@@ -134,6 +134,32 @@
             outline: none;
           }
         }
+
+        .subMenu {
+          padding-left: $layout-xs;
+
+          // The `a` and `a:visited` violate this rule, but are safe:
+          // stylelint-disable-next-line no-descending-specificity
+          a,
+          a:visited {
+            border-top: none;
+
+            &.isActive {
+              color: $color-purple-40;
+              text-decoration: underline;
+
+              &:hover {
+                color: $color-purple-70;
+              }
+            }
+
+            &:hover {
+              color: $color-grey-40;
+              background: none;
+              text-decoration: underline;
+            }
+          }
+        }
       }
 
       .premiumCta {
