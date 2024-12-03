@@ -38,10 +38,10 @@ modal-active-number-of-exposures-part-one-all =
         [one] Dieses Diagramm zeigt, wie oft wir die einzelnen Datentypen gefunden haben, und zwar über alle Datenlecks für die E-Mail-Adresse { $limit }, die Sie gerade beobachten.
        *[other] Diese Tabelle zeigt, wie oft wir jeden Datentyp offengelegt haben, über alle Datenlecks für bis zu { $limit } E-Mail-Adressen, die Sie derzeit beobachten.
     }
-modal-active-number-of-exposures-part-two = Wenn Sie beispielsweise 10 Offenlegungen Ihrer Telefonnummer haben, kann dies bedeuten, dass eine Telefonnummer auf 10 verschiedenen Websites offengelegt wurde, oder es könnte bedeuten, dass 2 verschiedene Telefonnummern auf 5 verschiedenen Websites offengelegt wurden.
-modal-active-number-of-exposures-part-three-all = Sobald sie behoben wurden, werden sie zur Gesamtzahl der behobenen Offenlegungen auf der Seite „Behoben“ hinzugefügt.
-modal-fixed-number-of-exposures-title = Über die Anzahl der behobenen Offenlegungen
-modal-fixed-number-of-exposures-all = Diese Tabelle enthält die Gesamtzahl der Datenlecks, die für alle E-Mail-Adressen behoben wurden, die Sie derzeit überwachen. Sobald Offenlegungen als behoben markiert werden, werden sie hier zur Gesamtsumme hinzugefügt.
+modal-active-number-of-exposures-part-two = Wenn Sie beispielsweise 10 Datenlecks Ihrer Telefonnummer haben, kann dies bedeuten, dass eine Telefonnummer auf 10 verschiedenen Websites offengelegt wurde, oder es könnte bedeuten, dass 2 verschiedene Telefonnummern auf 5 verschiedenen Websites offengelegt wurden.
+modal-active-number-of-exposures-part-three-all = Sobald sie behoben wurden, werden sie zur Gesamtzahl der behobenen Datenlecks auf der Seite „Behoben“ hinzugefügt.
+modal-fixed-number-of-exposures-title = Über die Anzahl der behobenen Datenlecks
+modal-fixed-number-of-exposures-all = Diese Tabelle enthält die Gesamtzahl der Datenlecks, die für alle E-Mail-Adressen behoben wurden, die Sie derzeit überwachen. Sobald Datenlecks als behoben markiert werden, werden sie hier zur Gesamtsumme hinzugefügt.
 modal-cta-ok = OK
 modal-cta-got-it = Verstanden
 open-modal-alt = Modal öffnen
@@ -58,8 +58,8 @@ dashboard-exposures-area-headline = Alle Websites anzeigen, auf denen Ihre Daten
 #   $exposures_unresolved_num (number) - the unresolved number of exposures the user has.
 dashboard-exposures-area-description-all-line1 =
     { $exposures_unresolved_num ->
-        [one] Wir haben { $exposures_unresolved_num } Offenlegung Ihrer Daten gefunden.
-       *[other] Wir haben { $exposures_unresolved_num } Offenlegungen Ihrer Daten gefunden.
+        [one] Wir haben { $exposures_unresolved_num } Leck Ihrer Daten gefunden.
+       *[other] Wir haben { $exposures_unresolved_num } Lecks Ihrer Daten gefunden.
     }
 # Note: this line follows dashboard-exposures-area-description-all-line1.
 # Variables:
@@ -69,7 +69,7 @@ dashboard-exposures-area-description-all-line2 =
         [one] Sie ist von { $data_breach_unresolved_num } Datenlecks betroffen.
        *[other] Sie ist bei { $data_breach_unresolved_num } Datenlecks aufgetreten.
     }
-dashboard-fixed-area-headline-all = Alle behobenen Offenlegungen anzeigen
+dashboard-fixed-area-headline-all = Alle behobenen Datenlecks anzeigen
 # This is the label on a button that opens a popover menu, which shows a menu to adjust filters for the listed exposures.
 dashboard-exposures-filter = Filter
 dashboard-exposures-filter-company = Firma
@@ -94,8 +94,8 @@ dashboard-top-banner-lets-keep-protecting-title = Schützen wir Ihre Daten weite
 # $exposures_unresolved_num is the remaining number of exposures the user has to resolve.
 dashboard-top-banner-lets-keep-protecting-description =
     { $exposures_unresolved_num ->
-        [one] Sie haben noch { $exposures_unresolved_num } eine Offenlegung, das Sie beheben müssen. Machen Sie weiter und schützen Sie sich. Wir führen Sie Schritt für Schritt.
-       *[other] Sie haben noch { $exposures_unresolved_num } Offenlegungen, die Sie beheben müssen. Machen Sie weiter und schützen Sie sich. Wir führen Sie Schritt für Schritt.
+        [one] Sie haben noch { $exposures_unresolved_num } ein Leck, das Sie beheben müssen. Machen Sie weiter und schützen Sie sich. Wir führen Sie Schritt für Schritt.
+       *[other] Sie haben noch { $exposures_unresolved_num } Lecks, die Sie beheben müssen. Machen Sie weiter und schützen Sie sich. Wir führen Sie Schritt für Schritt.
     }
 dashboard-top-banner-lets-keep-protecting-cta = Machen wir weiter
 dashboard-top-banner-protect-your-data-title = Schützen wir Ihre Daten
@@ -105,8 +105,8 @@ dashboard-top-banner-protect-your-data-cta = Lösen wir das Problem
 #   $exposures_unresolved_num (number) - the total number of exposures the user has.
 dashboard-top-banner-non-us-protect-your-data-description-line1 =
     { $exposures_unresolved_num ->
-        [one] Wir haben { $exposures_unresolved_num } Offenlegung Ihrer Daten gefunden.
-       *[other] Wir haben { $exposures_unresolved_num } Offenlegungen Ihrer Daten gefunden.
+        [one] Wir haben { $exposures_unresolved_num } Leck Ihrer Daten gefunden.
+       *[other] Wir haben { $exposures_unresolved_num } Lecks Ihrer Daten gefunden.
     }
 # Note: this line is preceded by `dashboard-top-banner-non-us-protect-your-data-description-line1`.
 # Variables:
@@ -116,21 +116,21 @@ dashboard-top-banner-non-us-protect-your-data-description-line2 =
         [one] Sie ist von { $data_breach_unresolved_num } Datenleck betroffen. Wir zeigen Ihnen Schritt für Schritt, wie Sie das Problem beheben können.
        *[other] Sie ist von { $data_breach_unresolved_num } Datenlecks betroffen. Wir zeigen Ihnen Schritt für Schritt, wie Sie das Problem beheben können.
     }
-dashboard-top-banner-no-exposures-found-title = Keine Offenlegungen gefunden
+dashboard-top-banner-no-exposures-found-title = Keine Datenlecks gefunden
 dashboard-top-banner-non-us-no-exposures-found-description = Tolle Nachrichten! Wir haben alle bekannten Datenlecks durchsucht, aber keine Offenlegungen gefunden. Wir überwachen Ihre E-Mail-Adresse weiter und benachrichtigen Sie, wenn ein neues Datenleck auftritt.
-dashboard-no-exposures-label = Keine Offenlegungen gefunden
+dashboard-no-exposures-label = Keine Datenlecks gefunden
 # Variables:
 # $exposures_resolved_num is the number of exposures the user has resolved.
 dashboard-top-banner-non-us-your-data-is-protected-description =
     { $exposures_resolved_num ->
-        [one] Guten Tag, die Offenlegung Ihrer Daten wurde behoben! Wir überwachen dies weiter und warnen Sie bei jeder neuen Offenlegung.
-       *[other] Gut so, alle { $exposures_resolved_num } Offenlegungen Ihrer Daten wurden behoben! Wir überwachen dies weiter und warnen Sie bei jeder neuen Offenlegung.
+        [one] Guten Tag, das Leck Ihrer Daten wurde behoben! Wir überwachen dies weiter und warnen Sie bei jeder neuen Offenlegung.
+       *[other] Gut so, alle { $exposures_resolved_num } Lecks Ihrer Daten wurden behoben! Wir überwachen dies weiter und warnen Sie bei jedem neuen Datenleck.
     }
 dashboard-top-banner-monitor-more-cta = Weitere E-Mail-Adressen überwachen
 
 # About Exposure Indicators Modal
 
-modal-exposure-status-description-all = Wir suchen in allen bekannten Datenlecks nach Offenlegungen. Ihre Offenlegungen haben einen der folgenden Status:
-modal-exposure-indicator-title = Status der Offenlegung
+modal-exposure-status-description-all = Wir suchen in allen bekannten Datenlecks nach Lecks Ihrer Daten. Ihre Datenlecks haben einen der folgenden Status:
+modal-exposure-indicator-title = Status der Datenlecks
 modal-exposure-indicator-action-needed = Sie benötigen eine fortgeschrittene oder manuelle Aktion, um eine Aktion abzuschließen.
-modal-exposure-indicator-fixed = Die Offenlegung wurde behoben und Sie müssen derzeit nichts tun.
+modal-exposure-indicator-fixed = Das Datenleck wurde behoben und Sie müssen derzeit nichts tun.
