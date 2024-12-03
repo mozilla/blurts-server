@@ -453,7 +453,11 @@ async function getScanResultsWithBrokerUnderMaintenance(
       onerepProfileId,
       scan?.onerep_scan_id,
     );
-    results = [...results, ...qaBrokers];
+    const filteredCustomBrokers = qaBrokers.filter(
+      (broker) => broker.manually_resolved === false,
+    );
+
+    results = [...results, ...filteredCustomBrokers];
   }
 
   return { results } as LatestOnerepScanData;
