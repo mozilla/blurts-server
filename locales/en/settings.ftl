@@ -63,3 +63,15 @@ settings-delete-monitor-account-confirmation-toast-dismiss-label = Dismiss
 
 settings-alert-preferences-allow-monthly-monitor-report-title = Monthly { -brand-monitor } report
 settings-alert-preferences-allow-monthly-monitor-report-subtitle = A monthly update of new exposures, what’s been fixed, and what needs your attention.
+
+## Settings page redesign
+
+settings-tab-label-edit-info = Edit your info
+settings-tab-label-notifications = Set notifications
+settings-tab-label-manage-account = Manage account
+
+settings-tab-subtitle-manage-account = Manage your { -product-name } account.
+
+settings-tab-notifications-marketing-title = Marketing communications
+settings-tab-notifications-marketing-text = Periodic updates about { -brand-monitor }, { -brand-mozilla }, and our other security products.
+settings-tab-notifications-marketing-link-label = Go to { -brand-mozilla } email settings

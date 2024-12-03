@@ -32,6 +32,11 @@
       border: 1px solid $color-informational-active;
       outline: $border-focus-width solid $color-informational-focus;
     }
+
+    &:disabled {
+      background: none;
+      border: 1px solid $color-grey-10;
+    }
   }
 
   .inputLabel {
@@ -39,13 +44,25 @@
     margin-bottom: $spacing-sm;
   }
 
+  .buttonIcon {
+    position: absolute;
+    right: $spacing-xs;
+    top: 50%;
+    transform: translateY(-50%);
+
+    &:hover button {
+      color: $color-error;
+    }
+  }
+
   .inputMessage {
     display: flex;
     align-items: center;
+    color: $color-grey-40;
     gap: $spacing-xs;
     background: inherit;
+    border-radius: $border-radius-sm;
     bottom: 0;
-    color: $color-error;
     font: $text-body-xs;
     left: 0;
     margin: 0 $spacing-sm;
@@ -54,5 +71,9 @@
     // the negative y-offset is 50% of the line-height plus a bit extra for
     // visual balance in relation to the input border endings left and right
     transform: translateY(calc(100% - 0.85em));
+  }
+
+  &:has([aria-invalid="true"]) .inputMessage {
+    color: $color-error;
   }
 }

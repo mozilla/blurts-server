@@ -53,6 +53,7 @@ export const featureFlagNames = [
   "GA4SubscriptionEvents",
   "DataBrokerRemovalTimeEstimateLabel",
   "DataBrokerRemovalTimeEstimateCsat",
+  "SettingsPageRedesign",
 ] as const;
 export type FeatureFlagName = (typeof featureFlagNames)[number];
 
