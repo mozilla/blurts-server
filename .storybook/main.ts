@@ -5,6 +5,7 @@
 import type { StorybookConfig } from "@storybook/nextjs";
 const config: StorybookConfig = {
   stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
+
   addons: [
     "@storybook/addon-a11y",
     "@storybook/addon-actions",
@@ -12,13 +13,14 @@ const config: StorybookConfig = {
     "@storybook/addon-essentials",
     "@storybook/addon-interactions",
   ],
+
   framework: {
     name: "@storybook/nextjs",
     options: {},
   },
-  docs: {
-    autodocs: "tag",
-  },
+
+  docs: {},
+
   staticDirs: [
     // See https://github.com/storybookjs/storybook/tree/4f0c895bc53116272ef598f19e8d869213be49a9/code/frameworks/nextjs#nextfontlocal
     {
@@ -26,6 +28,7 @@ const config: StorybookConfig = {
       to: "src/app/fonts",
     },
   ],
+
   async webpackFinal(config) {
     config.module ??= {};
     config.module.rules ??= [];
@@ -35,6 +38,10 @@ const config: StorybookConfig = {
     });
 
     return config;
+  },
+
+  typescript: {
+    reactDocgen: "react-docgen-typescript",
   },
 };
 export default config;
