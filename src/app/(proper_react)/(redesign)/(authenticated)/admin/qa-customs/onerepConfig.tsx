@@ -403,29 +403,35 @@ const OnerepConfigPage = (props: Props) => {
             Add Broker to List
           </button>
         </form>
-        <div className={styles.listButtonsWrapper}>
-          <div className={styles.listWrapper}>
-            <h2 className={styles.h2}>Brokers List</h2>
-            <ul className={styles.listContainer}>
-              {!brokersFetchHappened ? (
-                <p>fetching...</p>
-              ) : brokers.length !== 0 ? (
-                brokers.map((broker) => (
-                  <li
-                    key={broker.onerep_profile_id}
+        <div>
+          <h2 className={styles.h2}>Brokers List</h2>
+          <ul className={styles.listContainer}>
+            {!brokersFetchHappened ? (
+              <p>fetching...</p>
+            ) : brokers.length !== 0 ? (
+              brokers.map((broker) => (
+                <li key={broker.onerep_profile_id} className={styles.listItem}>
+                  <details>
+                    <summary>
+                      {broker.data_broker}
+                      <br />
+                      <small>{broker.link}</small>
+                    </summary>
+                    <pre>{JSON.stringify(broker, null, 2)}</pre>
+                  </details>
+                  <button
                     onClick={() =>
                       void handleDeleteBroker(broker.onerep_scan_result_id!)
                     }
-                    className={styles.listItem}
                   >
-                    {"{"} {broker.data_broker}, {broker.link} {"}"}
-                  </li>
-                ))
-              ) : (
-                <p>empty...</p>
-              )}
-            </ul>
-          </div>
+                    Delete
+                  </button>
+                </li>
+              ))
+            ) : (
+              <p>empty...</p>
+            )}
+          </ul>
         </div>
       </div>
     </main>
