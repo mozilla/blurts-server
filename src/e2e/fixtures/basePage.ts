@@ -26,6 +26,9 @@ const test = base.extend<{
   dataBrokersPage: DataBrokersPage;
   automaticRemovePage: AutomaticRemovePage;
 }>({
+  // The `use` function is no React hook and not linted correctly.
+  // For more info see issue: https://github.com/facebook/react/issues/31237
+  /* eslint-disable react-hooks/rules-of-hooks */
   authPage: async ({ page }, use) => {
     await use(new AuthPage(page));
   },
@@ -56,6 +59,7 @@ const test = base.extend<{
   automaticRemovePage: async ({ page }, use) => {
     await use(new AutomaticRemovePage(page));
   },
+  /* eslint-enable react-hooks/rules-of-hooks */
 });
 
 export { test, expect };
