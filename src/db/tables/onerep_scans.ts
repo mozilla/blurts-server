@@ -165,8 +165,14 @@ async function getLatestOnerepScanResults(
     const qaBrokers = !showCustomBrokers
       ? []
       : await getQaCustomBrokers(onerepProfileId, scan?.onerep_scan_id);
-    if (!showRealBrokers) results = qaBrokers;
-    else {
+    if (!showRealBrokers) {
+      logger.info("get_latest_results_custom_brokers", {
+        onerepProfileId,
+        onerepScanId: scan?.onerep_scan_id,
+        qaBrokers,
+      });
+      results = qaBrokers;
+    } else {
       // Fetch initial results from onerep_scan_results
       const scanResults = (await knex("onerep_scan_results")
         .select("*")

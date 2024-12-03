@@ -90,9 +90,9 @@ async function getQaCustomBrokers(
     .where("onerep_profile_id", onerepProfileId);
 
   if (brokerResults.length > 0) {
-    /* 
-      Since these are fake records, their corresponding scanId will be some 
-      existing id, and broker_id will match onerep_scan_result_id for uniqueness 
+    /*
+      Since these are fake records, their corresponding scanId will be some
+      existing id, and broker_id will match onerep_scan_result_id for uniqueness
     */
     brokerResults.forEach((brokerResult) => {
       brokerResult.onerep_scan_id = onerepScanId;

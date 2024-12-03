@@ -419,14 +419,18 @@ const HibpConfigPage = (props: Props) => {
                 <p>fetching...</p>
               ) : breaches.length !== 0 ? (
                 breaches.map((breach) => (
-                  <li
-                    key={breach.Id}
-                    onClick={() => {
-                      void handleDeleteBreach(breach.Id);
-                    }}
-                    className={styles.listItem}
-                  >
-                    {"{"} {breach.Title}, {breach.Domain} {"}"}
+                  <li key={breach.Id} className={styles.listItem}>
+                    <details>
+                      <summary>
+                        {breach.Title}
+                        <br />
+                        <small>{breach.Domain}</small>
+                      </summary>
+                      <pre>{JSON.stringify(breach, null, 2)}</pre>
+                    </details>
+                    <button onClick={() => void handleDeleteBreach(breach.Id)}>
+                      Delete
+                    </button>
                   </li>
                 ))
               ) : (
