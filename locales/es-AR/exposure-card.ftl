@@ -31,7 +31,7 @@ exposure-card-your-exposed-info = Tu información expuesta:
 exposure-card-found-the-following-data = { -brand-monitor } encontró los siguientes datos expuestos:
 exposure-card-exposure-type-data-broker = Información a la venta
 exposure-card-exposure-type-data-breach = Filtración de datos
-exposure-card-resolve-exposures-cta = Resolver exposiciones
+exposure-card-resolve-exposures-cta = Resolver violaciones
 exposure-card-label-company-logo = Logo de la empresa
 exposure-card-label-company = Compañía
 # Status of the exposure card, could be In Progress, Fixed or Action Needed
@@ -40,4 +40,4 @@ exposure-card-label-status = Estado
 # $category_label is the data breach exposure type that was leaked. Eg. Email, IP Address.
 # $count is the number of times that the data type was leaked.
 exposure-card-label-and-count = { $category_label }: { $count }
-exposure-card-manual-resolution-praise = <b> ¡Excelente trabajo! </b> Resolvió este inconveniente.
+exposure-card-manual-resolution-praise = <b>¡Excelente trabajo!</b>Resolviste esta violación.
