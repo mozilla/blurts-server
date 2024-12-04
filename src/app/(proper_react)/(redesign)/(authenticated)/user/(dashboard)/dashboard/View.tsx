@@ -62,7 +62,10 @@ export type Props = {
   experimentData: ExperimentData;
   user: Session["user"];
   userBreaches: SubscriberBreach[];
-  userScanData: LatestOnerepScanData;
+  userScanData: {
+    scans: LatestOnerepScanData;
+    dataBrokersRemovalUnderMaintenance: LatestOnerepScanData;
+  };
   isEligibleForFreeScan: boolean;
   isEligibleForPremium: boolean;
   monthlySubscriptionUrl: string;
@@ -109,23 +112,25 @@ export const View = (props: Props) => {
     }
   }, [pathname, activeTab]);
 
-  const adjustedScanResults = props.userScanData.results.map((scanResult) => {
-    if (scanResult.status === "new" && hasPremium(props.user)) {
-      // Even if the user has Plus, OneRep won't automatically start removing
-      // found exposures; it first sends a request to our webhook, and then the
-      // webhook sends an opt-out request to OneRep. Meanwhile, however, we're
-      // just waiting for the systems to do their thing, and there's no action
-      // for the user to take; hence, we also mark the exposures as being in
-      // progress:
-      return {
-        ...scanResult,
-        status: "optout_in_progress",
-      } as OnerepScanResultRow;
-    }
-    return scanResult;
-  });
+  const adjustedScanResults = props.userScanData.scans.results.map(
+    (scanResult) => {
+      if (scanResult.status === "new" && hasPremium(props.user)) {
+        // Even if the user has Plus, OneRep won't automatically start removing
+        // found exposures; it first sends a request to our webhook, and then the
+        // webhook sends an opt-out request to OneRep. Meanwhile, however, we're
+        // just waiting for the systems to do their thing, and there's no action
+        // for the user to take; hence, we also mark the exposures as being in
+        // progress:
+        return {
+          ...scanResult,
+          status: "optout_in_progress",
+        } as OnerepScanResultRow;
+      }
+      return scanResult;
+    },
+  );
   const adjustedScanData: LatestOnerepScanData = {
-    scan: props.userScanData.scan,
+    scan: props.userScanData.scans.scan,
     results: adjustedScanResults,
   };
 
@@ -173,10 +178,23 @@ export const View = (props: Props) => {
 
   const getTabSpecificExposures = (tabKey: TabType) =>
     arraySortedByDate.filter((exposure: Exposure) => {
+      const checkDataBrokerIsRemovalUnderMaintenance =
+        props.userScanData.dataBrokersRemovalUnderMaintenance || [];
+
+      // Set scan result to action needed if the data broker is under maintenance
+      const isDataBrokerUnderMaintenance =
+        isScanResult(exposure) &&
+        checkDataBrokerIsRemovalUnderMaintenance.results.find(
+          (broker: OnerepScanResultRow) =>
+            broker.data_broker === exposure.data_broker,
+        ) !== undefined;
+
       const exposureStatus = getExposureStatus(
         exposure,
         props.enabledFeatureFlags.includes("AdditionalRemovalStatuses"),
+        isDataBrokerUnderMaintenance,
       );
+
       return (
         (tabKey === "action-needed" && exposureStatus === "actionNeeded") ||
         (tabKey === "fixed" && exposureStatus !== "actionNeeded")
@@ -447,7 +465,7 @@ export const View = (props: Props) => {
         yearlySubscriptionUrl={props.yearlySubscriptionUrl}
         subscriptionBillingAmount={props.subscriptionBillingAmount}
         fxaSettingsUrl={props.fxaSettingsUrl}
-        lastScanDate={props.userScanData.scan?.created_at ?? null}
+        lastScanDate={props.userScanData.scans.scan?.created_at ?? null}
         experimentData={props.experimentData}
         autoOpenUpsellDialog={props.autoOpenUpsellDialog}
       >
@@ -483,7 +501,7 @@ export const View = (props: Props) => {
           dataSummary.dataBrokerAutoFixedDataPointsNum > 0
         }
         hasFirstMonitoringScan={props.hasFirstMonitoringScan}
-        lastScanDate={props.userScanData.scan?.created_at ?? null}
+        lastScanDate={props.userScanData.scans.scan?.created_at ?? null}
         signInCount={props.signInCount}
         localDismissalPetitionBanner={localDismissalPetitionBanner}
         shouldShowPetitionBanner={shouldShowPetitionBanner}

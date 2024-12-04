@@ -83,10 +83,17 @@ const getStatusLabel = ({
 export const getExposureStatus = (
   exposure: Exposure,
   additionalRemovalStatusesEnabled: boolean,
+  isRemovalUnderMaintenance?: boolean,
 ): StatusPillType => {
   if (isScanResult(exposure)) {
+    // If manually resolved, return fixed
     if (exposure.manually_resolved) {
       return "fixed";
+    }
+
+    // If isRemovalUnderMaintenance is true, return actionNeeded, overriding the switch case
+    if (isRemovalUnderMaintenance) {
+      return "actionNeeded";
     }
 
     switch (exposure.status) {
