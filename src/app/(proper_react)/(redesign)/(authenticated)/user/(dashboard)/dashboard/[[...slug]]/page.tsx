@@ -151,8 +151,6 @@ export default async function DashboardPage({ params, searchParams }: Props) {
     : false;
   const signInCount = await getSignInCount(session.user.subscriber.id);
 
-  console.log("latest scans", latestScan.results);
-
   return (
     <View
       user={session.user}

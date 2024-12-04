@@ -35,6 +35,7 @@ export type Props = {
   user: Session["user"];
   countryCode: string;
   subscriberEmails: string[];
+  dataBrokersRemovalUnderMaintenance: LatestOnerepScanData;
 };
 
 export function ManualRemoveView(props: Props) {
@@ -155,6 +156,9 @@ export function ManualRemoveView(props: Props) {
                       setActiveExposureCardKey(index);
                     }
                   }}
+                  dataBrokersRemovalUnderMaintenance={
+                    props.dataBrokersRemovalUnderMaintenance
+                  }
                 />
               );
             })}
