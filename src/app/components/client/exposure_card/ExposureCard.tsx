@@ -12,6 +12,8 @@ import { ScanResultCard } from "./ScanResultCard";
 import { SubscriberBreachCard } from "./SubscriberBreachCard";
 import { FeatureFlagName } from "../../../../db/tables/featureFlags";
 import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
+import { LatestOnerepScanData } from "../../../../db/tables/onerep_scans";
+import { isDataBrokerUnderMaintenance } from "../../../(proper_react)/(redesign)/(authenticated)/user/(dashboard)/dashboard/View";
 
 export type Exposure = OnerepScanResultRow | SubscriberBreach;
 
@@ -32,11 +34,23 @@ export type ExposureCardProps = {
   experimentData: ExperimentData;
   removalTimeEstimate?: number;
   onToggleExpanded: () => void;
+  dataBrokersRemovalUnderMaintenance: LatestOnerepScanData;
 };
 
 export const ExposureCard = ({ exposureData, ...props }: ExposureCardProps) => {
+  const dataBrokerUnderMaintenance =
+    isScanResult(exposureData) &&
+    isDataBrokerUnderMaintenance(
+      exposureData,
+      props.dataBrokersRemovalUnderMaintenance.results,
+    );
+
   return isScanResult(exposureData) ? (
-    <ScanResultCard {...props} scanResult={exposureData} />
+    <ScanResultCard
+      {...props}
+      scanResult={exposureData}
+      dataBrokersRemovalUnderMaintenance={dataBrokerUnderMaintenance || false}
+    />
   ) : (
     <SubscriberBreachCard {...props} subscriberBreach={exposureData} />
   );

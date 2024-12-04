@@ -12,6 +12,7 @@ import { useState } from "react";
 import { getLocale } from "../../../../../../../../../functions/universal/getLocale";
 import { useTelemetry } from "../../../../../../../../../hooks/useTelemetry";
 import { ScanResultCard } from "../../../../../../../../../components/client/exposure_card/ScanResultCard";
+import { LatestOnerepScanData } from "../../../../../../../../../../db/tables/onerep_scans";
 
 export type Props = {
   scanResult: OnerepScanResultRow;
@@ -19,6 +20,7 @@ export type Props = {
   isEligibleForPremium: boolean;
   isExpanded: boolean;
   setExpanded: () => void;
+  dataBrokersRemovalUnderMaintenance: LatestOnerepScanData;
 };
 
 export const RemovalCard = (props: Props) => {
@@ -76,6 +78,9 @@ export const RemovalCard = (props: Props) => {
       }
       isExpanded={props.isExpanded}
       onToggleExpanded={props.setExpanded}
+      dataBrokersRemovalUnderMaintenance={
+        props.dataBrokersRemovalUnderMaintenance
+      }
     />
   );
 };

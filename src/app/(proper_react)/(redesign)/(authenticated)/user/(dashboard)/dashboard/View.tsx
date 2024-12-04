@@ -176,23 +176,26 @@ export const View = (props: Props) => {
     return timestampB - timestampA;
   });
 
+  const checkDataBrokerIsRemovalUnderMaintenance =
+    props.userScanData.dataBrokersRemovalUnderMaintenance || [];
+
   const getTabSpecificExposures = (tabKey: TabType) =>
     arraySortedByDate.filter((exposure: Exposure) => {
-      const checkDataBrokerIsRemovalUnderMaintenance =
-        props.userScanData.dataBrokersRemovalUnderMaintenance || [];
-
       // Set scan result to action needed if the data broker is under maintenance
-      const isDataBrokerUnderMaintenance =
-        isScanResult(exposure) &&
-        checkDataBrokerIsRemovalUnderMaintenance.results.find(
-          (broker: OnerepScanResultRow) =>
-            broker.data_broker === exposure.data_broker,
-        ) !== undefined;
+      // const isDataBrokerUnderMaintenance =
+      //   isScanResult(exposure) &&
+      //   checkDataBrokerIsRemovalUnderMaintenance.results.find(
+      //     (broker: OnerepScanResultRow) =>
+      //       broker.onerep_scan_result_id === exposure.onerep_scan_result_id,
+      //   ) !== undefined;
 
       const exposureStatus = getExposureStatus(
         exposure,
         props.enabledFeatureFlags.includes("AdditionalRemovalStatuses"),
-        isDataBrokerUnderMaintenance,
+        isDataBrokerUnderMaintenance(
+          exposure,
+          checkDataBrokerIsRemovalUnderMaintenance.results,
+        ),
       );
 
       return (
@@ -254,6 +257,9 @@ export const View = (props: Props) => {
             >
               {l10n.getString("exposure-card-resolve-exposures-cta")}
             </Button>
+          }
+          dataBrokersRemovalUnderMaintenance={
+            checkDataBrokerIsRemovalUnderMaintenance
           }
         />
       </li>
@@ -573,3 +579,16 @@ export const View = (props: Props) => {
     </div>
   );
 };
+
+export function isDataBrokerUnderMaintenance(
+  exposure: Exposure | OnerepScanResultRow,
+  checkDataBrokerResults: OnerepScanResultRow[],
+): boolean {
+  return (
+    isScanResult(exposure) &&
+    checkDataBrokerResults.some(
+      (broker: OnerepScanResultRow) =>
+        broker.onerep_scan_result_id === exposure.onerep_scan_result_id,
+    )
+  );
+}

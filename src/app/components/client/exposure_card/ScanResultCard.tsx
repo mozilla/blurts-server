@@ -29,6 +29,7 @@ export type ScanResultCardProps = {
   experimentData?: ExperimentData;
   removalTimeEstimate?: number;
   onToggleExpanded: () => void;
+  dataBrokersRemovalUnderMaintenance: boolean;
 };
 
 export const ScanResultCard = (props: ScanResultCardProps) => {
@@ -40,7 +41,6 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
   });
   const exposureCategoriesArray: React.ReactElement[] = [];
   const cardId = useId();
-
   // Scan Result Categories
   if (scanResult.relatives.length > 0) {
     exposureCategoriesArray.push(
@@ -118,6 +118,16 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
   const dataBrokerDescription = () => {
     // Data broker cards manually resolved do not change their status to "removed";
     // instead, we track them using the "manually_resolved" property.
+    if (props.dataBrokersRemovalUnderMaintenance) {
+      return l10n.getFragment(
+        "exposure-card-description-info-for-sale-manual-removal-needed",
+        {
+          elems: {
+            b: <b />,
+          },
+        },
+      );
+    }
     if (scanResult.manually_resolved) {
       switch (scanResult.status) {
         case "removal_under_maintenance":
@@ -323,6 +333,9 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
             </dt>
             <dd>
               <StatusPill
+                isRemovalUnderMaintenance={
+                  props.dataBrokersRemovalUnderMaintenance
+                }
                 exposure={scanResult}
                 note={statusPillNote}
                 enabledFeatureFlags={props.enabledFeatureFlags}

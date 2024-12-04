@@ -24,74 +24,74 @@ export const StatusPillTypeMap: Record<string, StatusPillType> = {
   Fixed: "fixed",
 };
 
-type DirectTypeProps = { type: StatusPillType };
-type ExposureProps = { exposure: Exposure };
-export type Props = (DirectTypeProps | ExposureProps) & {
+export type Props = {
   enabledFeatureFlags?: FeatureFlagName[];
   note?: string;
+  exposure: Exposure;
+  isRemovalUnderMaintenance: boolean;
 };
 
 // This component just renders HTML without business logic:
 /* c8 ignore start */
 export const StatusPill = (props: Props) => {
   const l10n = useL10n();
-  const pillType = hasDirectType(props)
-    ? props.type
-    : getExposureStatus(
-        props.exposure,
-        props.enabledFeatureFlags?.includes("AdditionalRemovalStatuses") ??
-          false,
-      );
+  const pillType = getExposureStatus(
+    props.exposure,
+    props.enabledFeatureFlags?.includes("AdditionalRemovalStatuses") ?? false,
+    props.isRemovalUnderMaintenance ?? false,
+  );
+
+  const statusLabel = getStatusLabel({
+    pillType,
+    l10n,
+    isDataBrokerUnderMaintenance: props.isRemovalUnderMaintenance,
+  });
 
   return (
     <div className={styles.pillWrapper}>
-      <div className={`${styles.pill} ${styles[pillType]}`}>
-        {getStatusLabel({ pillType, l10n })}
-      </div>
+      <div className={`${styles.pill} ${styles[pillType]}`}>{statusLabel}</div>
       {props.note}
     </div>
   );
 };
 
-function hasDirectType(props: Props): props is DirectTypeProps {
-  return typeof (props as DirectTypeProps).type === "string";
-}
 /* c8 ignore stop */
 
-const getStatusLabel = ({
-  pillType,
-  l10n,
-}: {
+type StatusLabelProps = {
   pillType: string;
   l10n: ExtendedReactLocalization;
-}): string => {
-  switch (pillType) {
+  isDataBrokerUnderMaintenance: boolean;
+};
+
+const getStatusLabel = (props: StatusLabelProps): string => {
+  if (props.isDataBrokerUnderMaintenance) {
+    return props.l10n.getString("status-pill-action-needed");
+  }
+  switch (props.pillType) {
     case StatusPillTypeMap.RequestedRemoval:
-      return l10n.getString("status-pill-requested-removal");
+      return props.l10n.getString("status-pill-requested-removal");
     case StatusPillTypeMap.InProgress:
-      return l10n.getString("status-pill-progress");
+      return props.l10n.getString("status-pill-progress");
     case StatusPillTypeMap.Removed:
-      return l10n.getString("status-pill-removed");
+      return props.l10n.getString("status-pill-removed");
     case StatusPillTypeMap.Fixed:
-      return l10n.getString("status-pill-fixed");
+      return props.l10n.getString("status-pill-fixed");
     case StatusPillTypeMap.ActionNeeded:
     default:
-      return l10n.getString("status-pill-action-needed");
+      return props.l10n.getString("status-pill-action-needed");
   }
 };
 
 export const getExposureStatus = (
   exposure: Exposure,
   additionalRemovalStatusesEnabled: boolean,
-  isRemovalUnderMaintenance?: boolean,
+  isRemovalUnderMaintenance: boolean,
 ): StatusPillType => {
   if (isScanResult(exposure)) {
-    // If manually resolved, return fixed
     if (exposure.manually_resolved) {
       return "fixed";
     }
 
-    // If isRemovalUnderMaintenance is true, return actionNeeded, overriding the switch case
     if (isRemovalUnderMaintenance) {
       return "actionNeeded";
     }
