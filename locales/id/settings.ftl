@@ -15,8 +15,6 @@ settings-alert-preferences-allow-breach-alerts-title = Peringatan pembobolan ins
 settings-alert-preferences-allow-breach-alerts-subtitle = Peringatan ini dikirim segera setelah pembobolan data terdeteksi
 settings-alert-preferences-option-one = Kirim peringatan kebocoran ke alamat surel terkait
 settings-alert-preferences-option-two = Kirim semua peringatan pembobolan ke alamat surel utama
-settings-alert-preferences-allow-monthly-monitor-report-title = Laporan bulanan { -brand-monitor }
-settings-alert-preferences-allow-monthly-monitor-report-subtitle = Pembaruan bulanan untuk eksposur baru, apa yang telah diperbaiki, dan apa yang perlu Anda perhatikan.
 
 ## Monitored email addresses
 
@@ -45,12 +43,6 @@ settings-email-number-of-breaches-info =
        *[other] Muncul dalam { $breachCount } pembobolan yang diketahui.
     }
 
-## Deactivate account
-
-settings-deactivate-account-title = Nonaktifkan akun
-settings-deactivate-account-info-2 = Anda dapat menonaktifkan { -product-short-name } dengan menghapus { -brand-mozilla-account } Anda.
-settings-fxa-link-label-3 = Buka pengaturan { -brand-mozilla-account }
-
 ## Delete Monitor account
 
 settings-delete-monitor-free-account-title = Hapus akun { -brand-monitor }
@@ -62,3 +54,18 @@ settings-delete-monitor-free-account-dialog-cta-label = Hapus akun
 settings-delete-monitor-free-account-dialog-cancel-button-label = Sudahlah, bawa aku kembali
 settings-delete-monitor-account-confirmation-toast-label-2 = Akun { -brand-monitor } Anda sekarang telah dihapus.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Tutup
+
+## Monthly Monitor Report
+
+settings-alert-preferences-allow-monthly-monitor-report-title = Laporan bulanan { -brand-monitor }
+settings-alert-preferences-allow-monthly-monitor-report-subtitle = Pembaruan bulanan untuk eksposur baru, apa yang telah diperbaiki, dan apa yang perlu Anda perhatikan.
+
+## Settings page redesign
+
+settings-tab-label-edit-info = Edit info Anda
+settings-tab-label-notifications = Setel notifikasi
+settings-tab-label-manage-account = Kelola akun
+settings-tab-subtitle-manage-account = Kelola akun { -product-name } Anda.
+settings-tab-notifications-marketing-title = Komunikasi pemasaran
+settings-tab-notifications-marketing-text = Pembaruan berkala tentang { -brand-monitor }, { -brand-mozilla }, dan produk keamanan kami lainnya.
+settings-tab-notifications-marketing-link-label = Buka pengaturan surel { -brand-mozilla }
