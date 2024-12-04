@@ -41,6 +41,7 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
   });
   const exposureCategoriesArray: React.ReactElement[] = [];
   const cardId = useId();
+
   // Scan Result Categories
   if (scanResult.relatives.length > 0) {
     exposureCategoriesArray.push(
@@ -247,24 +248,25 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
   const resolveExposuresCta = (() => {
     if (props.scanResult.manually_resolved) {
       return (
-        props.scanResult.status === "removal_under_maintenance" && (
-          <div className={styles.manualResolutionPraise}>
-            <Image alt="" src={SparkleImage} width="20" height="20" />
-            <span>
-              {l10n.getFragment("exposure-card-manual-resolution-praise", {
-                elems: {
-                  b: <b />,
-                },
-              })}
-            </span>
-          </div>
-        )
+        <div className={styles.manualResolutionPraise}>
+          <Image alt="" src={SparkleImage} width="20" height="20" />
+          <span>
+            {l10n.getFragment("exposure-card-manual-resolution-praise", {
+              elems: {
+                b: <b />,
+              },
+            })}
+          </span>
+        </div>
       );
+    }
+
+    if (props.dataBrokersRemovalUnderMaintenance) {
+      return <span>{props.resolutionCta}</span>;
     }
 
     switch (props.scanResult.status) {
       case "new":
-      case "removal_under_maintenance":
         return <span>{props.resolutionCta}</span>;
       default:
         return null;
