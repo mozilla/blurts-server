@@ -38,9 +38,9 @@ export type ExposureCardProps = {
 };
 
 export const ExposureCard = ({ exposureData, ...props }: ExposureCardProps) => {
-  /* c8 ignore next */
   const dataBrokersResultsRemovalUnderMaintenance =
-    props.dataBrokersRemovalUnderMaintenance?.results || [];
+    /* c8 ignore next */
+    props.dataBrokersRemovalUnderMaintenance?.results ?? [];
 
   const dataBrokerUnderMaintenance =
     isScanResult(exposureData) &&

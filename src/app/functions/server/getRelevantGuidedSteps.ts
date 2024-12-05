@@ -138,8 +138,8 @@ export function isEligibleForStep(
 ): boolean {
   // Only premium users can see the manual data broker removal flow, once they have run a scan
   if (stepId === "DataBrokerManualRemoval") {
-    /* c8 ignore next */
     const dataBrokersRequireManualRemoval =
+      /* c8 ignore next */
       data.dataBrokersRemovalUnderMaintenance?.results ?? [];
     return dataBrokersRequireManualRemoval.length > 0;
   }
@@ -244,8 +244,8 @@ export function hasCompletedStep(
   stepId: StepLink["id"],
 ): boolean {
   if (stepId === "DataBrokerManualRemoval") {
-    /* c8 ignore next */
     const dataBrokersRequireManualRemoval =
+      /* c8 ignore next */
       data.dataBrokersRemovalUnderMaintenance?.results ?? [];
     return dataBrokersRequireManualRemoval.length === 0;
   }

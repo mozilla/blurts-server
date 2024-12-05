@@ -59,9 +59,10 @@ export function ManualRemoveView(props: Props) {
   };
 
   const stepAfterSkip = getNextGuidedStep(data, "Scan");
-  /* c8 ignore next */
+
   const dataBrokersResultsRemovalUnderMaintenance =
-    props.dataBrokersRemovalUnderMaintenance || [];
+    /* c8 ignore next */
+    props.dataBrokersRemovalUnderMaintenance ?? [];
 
   return (
     <FixView

@@ -176,9 +176,9 @@ export const View = (props: Props) => {
     return timestampB - timestampA;
   });
 
-  /* c8 ignore next */
   const dataBrokersResultsRemovalUnderMaintenance =
-    props.userScanData.dataBrokersRemovalUnderMaintenance || [];
+    /* c8 ignore next */
+    props.userScanData.dataBrokersRemovalUnderMaintenance ?? [];
 
   const getTabSpecificExposures = (tabKey: TabType) =>
     arraySortedByDate.filter((exposure: Exposure) => {
