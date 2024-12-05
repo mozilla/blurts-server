@@ -578,11 +578,11 @@ export const View = (props: Props) => {
 
 export function isDataBrokerUnderMaintenance(
   exposure: Exposure | OnerepScanResultRow,
-  checkDataBrokerResults: OnerepScanResultRow[],
+  dataBrokersRemovalUnderMaintenance: OnerepScanResultRow[],
 ): boolean {
   return (
     isScanResult(exposure) &&
-    checkDataBrokerResults.some(
+    dataBrokersRemovalUnderMaintenance.some(
       (broker: OnerepScanResultRow) =>
         broker.onerep_scan_result_id === exposure.onerep_scan_result_id,
     )
