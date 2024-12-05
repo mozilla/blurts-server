@@ -45,7 +45,7 @@ jobs:
           UPLOAD_SENTRY_SOURCEMAPS: true
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
           SENTRY_RELEASE: ${{ github.ref_name }}
-          NEXT_PUBLIC_SENTRY_DSN: ${{ github.env.NEXT_PUBLIC_SENTRY_DSN }}
+          NEXT_PUBLIC_SENTRY_DSN: ${{ secrets.NEXT_PUBLIC_SENTRY_DSN }}
         run: |
           docker build --tag blurts-server \
             --build-arg SENTRY_RELEASE="$SENTRY_RELEASE" \
