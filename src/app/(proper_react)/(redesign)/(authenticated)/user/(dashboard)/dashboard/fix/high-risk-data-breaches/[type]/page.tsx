@@ -13,7 +13,10 @@ import {
   highRiskBreachTypes,
 } from "../highRiskBreachData";
 import { getCountryCode } from "../../../../../../../../../functions/server/getCountryCode";
-import { getLatestOnerepScanResults } from "../../../../../../../../../../db/tables/onerep_scans";
+import {
+  getLatestOnerepScanResults,
+  getScanResultsWithBrokerUnderMaintenance,
+} from "../../../../../../../../../../db/tables/onerep_scans";
 import { getOnerepProfileId } from "../../../../../../../../../../db/tables/subscribers";
 import { isEligibleForPremium } from "../../../../../../../../../functions/universal/premium";
 
@@ -44,6 +47,8 @@ export default async function SecurityRecommendations({
 
   const profileId = await getOnerepProfileId(session.user.subscriber.id);
   const scanData = await getLatestOnerepScanResults(profileId);
+  const dataBrokersWithRemovalUnderMaintenance =
+    await getScanResultsWithBrokerUnderMaintenance(profileId);
 
   return (
     <HighRiskBreachLayout
@@ -54,6 +59,8 @@ export default async function SecurityRecommendations({
         subscriberBreaches: breaches,
         user: session.user,
         latestScanData: scanData,
+        dataBrokersRemovalUnderMaintenance:
+          dataBrokersWithRemovalUnderMaintenance,
       }}
       isEligibleForPremium={isEligibleForPremium(countryCode)}
     />
