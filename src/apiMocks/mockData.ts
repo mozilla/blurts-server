@@ -48,6 +48,7 @@ export type RandomScanResultOptions = Partial<{
   status: RemovalStatus;
   manually_resolved: boolean;
   broker_status: DataBrokerRemovalStatus;
+  onerep_scan_result_id: number;
 }>;
 
 export function createRandomScanResult(
