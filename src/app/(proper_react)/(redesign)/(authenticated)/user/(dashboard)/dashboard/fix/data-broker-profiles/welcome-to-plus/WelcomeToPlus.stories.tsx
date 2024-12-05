@@ -55,6 +55,7 @@ const mockedSession = {
   expires: new Date().toISOString(),
   user: user,
 };
+const dataBrokerData: LatestOnerepScanData = { scan: null, results: [] };
 
 const WelcomeToPlusViewWrapper = (props: { brokerScanCount: number }) => {
   return (
@@ -74,6 +75,7 @@ const WelcomeToPlusViewWrapper = (props: { brokerScanCount: number }) => {
               : null,
           subscriberBreaches: mockedBreaches,
           user: mockedSession.user,
+          dataBrokersRemovalUnderMaintenance: dataBrokerData,
         }}
         l10n={l10n}
         subscriberEmails={[]}

@@ -9,7 +9,10 @@ import { HighRiskBreachLayout } from "./HighRiskBreachLayout";
 import { getSubscriberEmails } from "../../../../../../../../functions/server/getSubscriberEmails";
 import { getSubscriberBreaches } from "../../../../../../../../functions/server/getSubscriberBreaches";
 import { getOnerepProfileId } from "../../../../../../../../../db/tables/subscribers";
-import { getLatestOnerepScanResults } from "../../../../../../../../../db/tables/onerep_scans";
+import {
+  getLatestOnerepScanResults,
+  getScanResultsWithBrokerUnderMaintenance,
+} from "../../../../../../../../../db/tables/onerep_scans";
 import { getCountryCode } from "../../../../../../../../functions/server/getCountryCode";
 import { isEligibleForPremium } from "../../../../../../../../functions/universal/premium";
 
@@ -27,6 +30,8 @@ export default async function HighRiskDataBreaches() {
   const subscriberEmails = await getSubscriberEmails(session.user);
   const profileId = await getOnerepProfileId(session.user.subscriber.id);
   const scanData = await getLatestOnerepScanResults(profileId);
+  const dataBrokersWithRemovalUnderMaintenance =
+    await getScanResultsWithBrokerUnderMaintenance(profileId);
 
   return (
     <div>
@@ -39,6 +44,8 @@ export default async function HighRiskDataBreaches() {
           subscriberBreaches: breaches,
           user: session.user,
           latestScanData: scanData,
+          dataBrokersRemovalUnderMaintenance:
+            dataBrokersWithRemovalUnderMaintenance,
         }}
         isEligibleForPremium={isEligibleForPremium(countryCode)}
       />

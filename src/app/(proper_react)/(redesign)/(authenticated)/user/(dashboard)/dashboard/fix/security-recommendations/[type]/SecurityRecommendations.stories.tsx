@@ -15,6 +15,7 @@ import {
   securityRecommendationTypes,
 } from "../securityRecommendationsData";
 import { BreachDataTypes } from "../../../../../../../../../functions/universal/breach";
+import { LatestOnerepScanData } from "../../../../../../../../../../db/tables/onerep_scans";
 
 const mockedBreaches = [...Array(5)].map(() => createRandomBreach());
 // Ensure all security recommendation data breaches are present in at least one breach:
@@ -37,6 +38,7 @@ const mockedSession = {
   expires: new Date().toISOString(),
   user: user,
 };
+const dataBrokerData: LatestOnerepScanData = { scan: null, results: [] };
 
 const SecurityRecommendationsWrapper = (props: {
   type: SecurityRecommendationTypes;
@@ -57,6 +59,7 @@ const SecurityRecommendationsWrapper = (props: {
           latestScanData: { results: [], scan: null },
           subscriberBreaches: mockedBreaches,
           user: mockedSession.user,
+          dataBrokersRemovalUnderMaintenance: dataBrokerData,
         }}
         isEligibleForPremium={true}
       />
