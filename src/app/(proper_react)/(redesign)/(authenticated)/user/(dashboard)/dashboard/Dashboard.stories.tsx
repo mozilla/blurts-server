@@ -165,7 +165,6 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
       }
       if (props.brokers === "resolved") {
         scanData.results = mockedAllResolvedScanResults;
-        // dataBrokerData.results = mockedDataBrokerWithRemovalUnderMaintenanceUnresolved;
       }
       if (props.brokers === "unresolved") {
         scanData.results = mockedUnresolvedScanResults;
