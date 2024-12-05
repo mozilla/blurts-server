@@ -82,6 +82,8 @@ jobs:
         uses: slackapi/slack-github-action@v2.0.0
         if: failure() && github.ref == 'refs/heads/main'
         with:
+          webhook: ${{ secrets.SLACK_GHA_FAILURES_WEBHOOK }}
+          webhook-type: webhook-trigger
           # For posting a message using Block Kit
           payload: |
             {
@@ -124,6 +126,3 @@ jobs:
                 }
               ]
             }
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_GHA_FAILURES_WEBHOOK }}
-          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
