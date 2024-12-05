@@ -56,5 +56,3 @@ jobs:
           # deploy main
           docker tag blurts-server ${{ steps.meta.outputs.tags }}
           docker push ${{ steps.meta.outputs.tags }}
-
-        
