@@ -12,7 +12,6 @@ import { useState } from "react";
 import { getLocale } from "../../../../../../../../../functions/universal/getLocale";
 import { useTelemetry } from "../../../../../../../../../hooks/useTelemetry";
 import { ScanResultCard } from "../../../../../../../../../components/client/exposure_card/ScanResultCard";
-import { LatestOnerepScanData } from "../../../../../../../../../../db/tables/onerep_scans";
 
 export type Props = {
   scanResult: OnerepScanResultRow;
@@ -20,7 +19,7 @@ export type Props = {
   isEligibleForPremium: boolean;
   isExpanded: boolean;
   setExpanded: () => void;
-  dataBrokersRemovalUnderMaintenance: LatestOnerepScanData;
+  dataBrokersRemovalUnderMaintenance: boolean;
 };
 
 export const RemovalCard = (props: Props) => {
@@ -70,9 +69,7 @@ export const RemovalCard = (props: Props) => {
               });
             }}
           >
-            {l10n.getString(
-              "fix-flow-data-broker-profiles-manual-remove-button-mark-fixed",
-            )}
+            {l10n.getString("exposure-card-resolve-exposures-cta")}
           </Button>
         ) : null
       }

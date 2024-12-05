@@ -3,7 +3,10 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { faker } from "@faker-js/faker";
-import { OnerepScanResultRow } from "knex/types/tables";
+import {
+  OnerepScanResultDataBrokerRow,
+  OnerepScanResultRow,
+} from "knex/types/tables";
 import {
   RemovalStatus,
   RemovalStatusMap,
@@ -20,6 +23,10 @@ import {
 import { Session } from "next-auth";
 import { HibpLikeDbBreach } from "../utils/hibp";
 import { SerializedSubscriber } from "../next-auth";
+import {
+  DataBrokerRemovalStatus,
+  DataBrokerRemovalStatusMap,
+} from "../app/functions/universal/dataBroker";
 
 // Setting this to a constant value produces the same result when the same methods
 // with the same version of faker are called.
@@ -40,17 +47,12 @@ export type RandomScanResultOptions = Partial<{
   fakerSeed: number;
   status: RemovalStatus;
   manually_resolved: boolean;
+  broker_status: DataBrokerRemovalStatus;
 }>;
 
-/**
- * Generates scan result with randomly-generated mock data.
- *
- * @param options
- * @returns A single scan result.
- */
 export function createRandomScanResult(
   options: RandomScanResultOptions = {},
-): OnerepScanResultRow {
+): OnerepScanResultRow | OnerepScanResultDataBrokerRow {
   faker.seed(options.fakerSeed);
   const optout_attempts =
     options.status === "waiting_for_verification"
@@ -85,6 +87,9 @@ export function createRandomScanResult(
     created_at: options.createdDate ?? faker.date.recent({ days: 2 }),
     updated_at: faker.date.recent({ days: 1 }),
     optout_attempts,
+    broker_status: faker.helpers.arrayElement(
+      Object.values(DataBrokerRemovalStatusMap),
+    ) as DataBrokerRemovalStatus,
   };
 }
 

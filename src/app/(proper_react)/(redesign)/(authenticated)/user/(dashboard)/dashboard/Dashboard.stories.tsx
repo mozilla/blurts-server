@@ -151,6 +151,8 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
   ];
 
   const scanData: LatestOnerepScanData = { scan: null, results: [] };
+  const dataBrokerData: LatestOnerepScanData = { scan: null, results: [] };
+
   let scanCount = 0;
 
   if (props.countryCode === "us") {
@@ -163,6 +165,7 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
       }
       if (props.brokers === "resolved") {
         scanData.results = mockedAllResolvedScanResults;
+        // dataBrokerData.results = mockedDataBrokerWithRemovalUnderMaintenanceUnresolved;
       }
       if (props.brokers === "unresolved") {
         scanData.results = mockedUnresolvedScanResults;
@@ -204,7 +207,10 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
           <DashboardEl
             user={user}
             userBreaches={breaches}
-            userScanData={scanData}
+            userScanData={{
+              scans: scanData,
+              dataBrokersRemovalUnderMaintenance: dataBrokerData,
+            }}
             isEligibleForPremium={props.countryCode === "us"}
             isEligibleForFreeScan={props.countryCode === "us" && !scanData.scan}
             monthlySubscriptionUrl=""
