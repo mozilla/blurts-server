@@ -15,8 +15,6 @@ settings-alert-preferences-allow-breach-alerts-title = 外泄事件即时警报
 settings-alert-preferences-allow-breach-alerts-subtitle = 检测到数据外泄事件发生后会立即发送此类警报。
 settings-alert-preferences-option-one = 向受影响的邮箱地址发送数据外泄警报
 settings-alert-preferences-option-two = 向主邮箱地址发送所有数据外泄警报
-settings-alert-preferences-allow-monthly-monitor-report-title = { -brand-monitor } 月报
-settings-alert-preferences-allow-monthly-monitor-report-subtitle = 每月情况汇总，包括新发生的暴露、已处理的问题、需关注的事项。
 
 ## Monitored email addresses
 
@@ -39,12 +37,6 @@ settings-remove-email-button-tooltip = 停止监控 { $emailAddress }
 #   $breachCount (number) - Number of breaches
 settings-email-number-of-breaches-info = 出现在 { $breachCount } 次已知的外泄事件中。
 
-## Deactivate account
-
-settings-deactivate-account-title = 停用账户
-settings-deactivate-account-info-2 = 您可以通过删除 { -brand-mozilla-account }来停用 { -product-short-name }。
-settings-fxa-link-label-3 = 前往 { -brand-mozilla-account }设置
-
 ## Delete Monitor account
 
 settings-delete-monitor-free-account-title = 删除 { -brand-monitor } 账户
@@ -56,3 +48,18 @@ settings-delete-monitor-free-account-dialog-cta-label = 删除账户
 settings-delete-monitor-free-account-dialog-cancel-button-label = 我再想想
 settings-delete-monitor-account-confirmation-toast-label-2 = 您的 { -brand-monitor } 账户已被删除。
 settings-delete-monitor-account-confirmation-toast-dismiss-label = 知道了
+
+## Monthly Monitor Report
+
+settings-alert-preferences-allow-monthly-monitor-report-title = { -brand-monitor } 月报
+settings-alert-preferences-allow-monthly-monitor-report-subtitle = 每月情况汇总，包括新发生的暴露、已处理的问题、需关注的事项。
+
+## Settings page redesign
+
+settings-tab-label-edit-info = 编辑您的信息
+settings-tab-label-notifications = 设置通知
+settings-tab-label-manage-account = 管理账户
+settings-tab-subtitle-manage-account = 管理您的 { -product-name } 账户。
+settings-tab-notifications-marketing-title = 营销通信
+settings-tab-notifications-marketing-text = 定期接收有关 { -brand-monitor }、{ -brand-mozilla }，以及我们其他安全产品的最新消息。
+settings-tab-notifications-marketing-link-label = 前往 { -brand-mozilla } 邮件设置
