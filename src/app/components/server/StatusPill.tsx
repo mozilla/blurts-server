@@ -49,11 +49,15 @@ export const StatusPill = (props: Props) => {
         )
       : "";
 
-  const statusLabel = getStatusLabel({
-    pillType,
-    l10n,
-    isDataBrokerUnderMaintenance: props.isRemovalUnderMaintenance ?? undefined,
-  });
+  const statusLabel =
+    props.exposure &&
+    getStatusLabel({
+      exposure: props.exposure,
+      pillType,
+      l10n,
+      isDataBrokerUnderMaintenance:
+        props.isRemovalUnderMaintenance ?? undefined,
+    });
 
   return (
     <div className={styles.pillWrapper}>
@@ -65,12 +69,20 @@ export const StatusPill = (props: Props) => {
 /* c8 ignore stop */
 
 type StatusLabelProps = {
+  exposure: Exposure;
   pillType: string;
   l10n: ExtendedReactLocalization;
   isDataBrokerUnderMaintenance?: boolean;
 };
 
 const getStatusLabel = (props: StatusLabelProps): string => {
+  const manuallyRemoved =
+    props.exposure &&
+    isScanResult(props.exposure) &&
+    props.exposure.manually_resolved;
+  if (manuallyRemoved) {
+    return props.l10n.getString("status-pill-removed");
+  }
   if (props.isDataBrokerUnderMaintenance) {
     return props.l10n.getString("status-pill-action-needed");
   }
@@ -112,8 +124,6 @@ export const getExposureStatus = (
           : "inProgress";
       case "optout_in_progress":
         return "inProgress";
-      case "removal_under_maintenance":
-        return "actionNeeded";
       case "new":
       default:
         return "actionNeeded";
