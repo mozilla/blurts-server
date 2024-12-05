@@ -152,7 +152,6 @@ export const DataBrokerRemovalUnderMaintenanceFixed: Story = {
   },
 };
 
-console.log(ScanMockItemRemovalUnderMaintenanceFixed);
 export const DataBreachFixed: Story = {
   args: {
     exposureImg: TwitterImage,
