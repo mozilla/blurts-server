@@ -28,9 +28,10 @@ exposure-card-other = Diğer
 exposure-card-description-data-breach-action-needed = Bilgileriniz <data_breach_link>{ $data_breach_date } tarihli { $data_breach_company } veri ihlalinde</data_breach_link> ele geçirilmiş. İhlali çözmeniz için size rehberlik edeceğiz.
 exposure-card-description-data-breach-fixed = <data_breach_link>Bu ihlali</data_breach_link> düzeltmek için gereken adımları attınız. Veri ihlallerini sürekli olarak izleyeceğiz ve yeni ihlaller konusunda sizi uyaracağız.
 exposure-card-your-exposed-info = Ele geçirilen bilgileriniz:
+exposure-card-found-the-following-data = { -brand-monitor } aşağıdaki ele geçirilmiş verileri buldu:
 exposure-card-exposure-type-data-broker = Satılık bilgiler
 exposure-card-exposure-type-data-breach = Veri ihlali
-exposure-card-cta = Tüm ihlalleri düzelt
+exposure-card-resolve-exposures-cta = İhlalleri çözün
 exposure-card-label-company-logo = Şirket logosu
 exposure-card-label-company = Şirket
 # Status of the exposure card, could be In Progress, Fixed or Action Needed
@@ -39,3 +40,4 @@ exposure-card-label-status = Durum
 # $category_label is the data breach exposure type that was leaked. Eg. Email, IP Address.
 # $count is the number of times that the data type was leaked.
 exposure-card-label-and-count = { $category_label }: { $count }
+exposure-card-manual-resolution-praise = <b>Tebrikler!</b> Bu ihlali çözdünüz.
