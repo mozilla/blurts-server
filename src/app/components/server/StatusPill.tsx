@@ -25,42 +25,49 @@ export const StatusPillTypeMap: Record<string, StatusPillType> = {
 };
 
 export type Props = {
+  directType?: StatusPillType;
   enabledFeatureFlags?: FeatureFlagName[];
   note?: string;
-  exposure: Exposure;
-  isRemovalUnderMaintenance: boolean;
+  exposure?: Exposure;
+  isRemovalUnderMaintenance?: boolean;
 };
 
 // This component just renders HTML without business logic:
 /* c8 ignore start */
 export const StatusPill = (props: Props) => {
   const l10n = useL10n();
-  const pillType = getExposureStatus(
-    props.exposure,
-    props.enabledFeatureFlags?.includes("AdditionalRemovalStatuses") ?? false,
-    props.isRemovalUnderMaintenance ?? false,
-  );
+
+  // Determine pill type and status label based on props
+  const pillType = props.directType
+    ? props.directType
+    : props.exposure
+      ? getExposureStatus(
+          props.exposure,
+          props.enabledFeatureFlags?.includes("AdditionalRemovalStatuses") ??
+            false,
+          props.isRemovalUnderMaintenance || false,
+        )
+      : "";
 
   const statusLabel = getStatusLabel({
     pillType,
     l10n,
-    isDataBrokerUnderMaintenance: props.isRemovalUnderMaintenance,
+    isDataBrokerUnderMaintenance: props.isRemovalUnderMaintenance ?? undefined,
   });
 
   return (
     <div className={styles.pillWrapper}>
       <div className={`${styles.pill} ${styles[pillType]}`}>{statusLabel}</div>
-      {props.note}
+      {props.note && <div className={styles.note}>{props.note}</div>}
     </div>
   );
 };
-
 /* c8 ignore stop */
 
 type StatusLabelProps = {
   pillType: string;
   l10n: ExtendedReactLocalization;
-  isDataBrokerUnderMaintenance: boolean;
+  isDataBrokerUnderMaintenance?: boolean;
 };
 
 const getStatusLabel = (props: StatusLabelProps): string => {

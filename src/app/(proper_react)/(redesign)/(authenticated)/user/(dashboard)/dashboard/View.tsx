@@ -176,25 +176,17 @@ export const View = (props: Props) => {
     return timestampB - timestampA;
   });
 
-  const checkDataBrokerIsRemovalUnderMaintenance =
+  const dataBrokersResultsRemovalUnderMaintenance =
     props.userScanData.dataBrokersRemovalUnderMaintenance || [];
 
   const getTabSpecificExposures = (tabKey: TabType) =>
     arraySortedByDate.filter((exposure: Exposure) => {
-      // Set scan result to action needed if the data broker is under maintenance
-      // const isDataBrokerUnderMaintenance =
-      //   isScanResult(exposure) &&
-      //   checkDataBrokerIsRemovalUnderMaintenance.results.find(
-      //     (broker: OnerepScanResultRow) =>
-      //       broker.onerep_scan_result_id === exposure.onerep_scan_result_id,
-      //   ) !== undefined;
-
       const exposureStatus = getExposureStatus(
         exposure,
         props.enabledFeatureFlags.includes("AdditionalRemovalStatuses"),
         isDataBrokerUnderMaintenance(
           exposure,
-          checkDataBrokerIsRemovalUnderMaintenance.results,
+          dataBrokersResultsRemovalUnderMaintenance.results,
         ),
       );
 
@@ -252,6 +244,8 @@ export const View = (props: Props) => {
                   countryCode,
                   latestScanData: adjustedScanData,
                   subscriberBreaches: props.userBreaches,
+                  dataBrokersRemovalUnderMaintenance:
+                    dataBrokersResultsRemovalUnderMaintenance,
                 }).href
               }
             >
@@ -259,7 +253,7 @@ export const View = (props: Props) => {
             </Button>
           }
           dataBrokersRemovalUnderMaintenance={
-            checkDataBrokerIsRemovalUnderMaintenance
+            dataBrokersResultsRemovalUnderMaintenance
           }
         />
       </li>
@@ -535,6 +529,8 @@ export const View = (props: Props) => {
             latestScanData: adjustedScanData,
             subscriberBreaches: props.userBreaches,
             user: props.user,
+            dataBrokersRemovalUnderMaintenance:
+              dataBrokersResultsRemovalUnderMaintenance,
           }}
           onShowFixed={() => {
             setActiveTab("fixed");

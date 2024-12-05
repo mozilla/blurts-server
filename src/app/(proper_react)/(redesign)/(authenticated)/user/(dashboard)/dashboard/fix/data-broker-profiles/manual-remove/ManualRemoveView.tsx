@@ -26,6 +26,7 @@ import {
 import { FixView } from "../../FixView";
 import { TelemetryLink } from "../../../../../../../../../components/client/TelemetryLink";
 import { TelemetryButton } from "../../../../../../../../../components/client/TelemetryButton";
+import { isDataBrokerUnderMaintenance } from "../../../View";
 
 export type Props = {
   scanData: LatestOnerepScanData;
@@ -53,9 +54,13 @@ export function ManualRemoveView(props: Props) {
     latestScanData: props.scanData,
     subscriberBreaches: props.breaches,
     user: props.user,
+    dataBrokersRemovalUnderMaintenance:
+      props.dataBrokersRemovalUnderMaintenance,
   };
 
   const stepAfterSkip = getNextGuidedStep(data, "Scan");
+  const dataBrokersResultsRemovalUnderMaintenance =
+    props.dataBrokersRemovalUnderMaintenance || [];
 
   return (
     <FixView
@@ -156,9 +161,10 @@ export function ManualRemoveView(props: Props) {
                       setActiveExposureCardKey(index);
                     }
                   }}
-                  dataBrokersRemovalUnderMaintenance={
-                    props.dataBrokersRemovalUnderMaintenance
-                  }
+                  dataBrokersRemovalUnderMaintenance={isDataBrokerUnderMaintenance(
+                    scanResult,
+                    dataBrokersResultsRemovalUnderMaintenance.results,
+                  )}
                 />
               );
             })}

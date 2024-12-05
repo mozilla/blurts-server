@@ -115,7 +115,6 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
       href="/user/dashboard/fix/data-broker-profiles/automatic-remove"
     />
   );
-
   const dataBrokerDescription = () => {
     // Data broker cards manually resolved do not change their status to "removed";
     // instead, we track them using the "manually_resolved" property.
