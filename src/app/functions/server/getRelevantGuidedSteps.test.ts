@@ -25,6 +25,10 @@ describe("getNextGuidedStep", () => {
         user: {
           email: "arbitrary@example.com",
         },
+        dataBrokersRemovalUnderMaintenance: {
+          scan: null,
+          results: [],
+        },
       },
       // This is the step that we should end up at, so by skipping it, we end up
       // in the invalid state we intend to test:
@@ -46,6 +50,10 @@ describe("getNextGuidedStep", () => {
           subscriberBreaches: [],
           user: {
             email: "arbitrary@example.com",
+          },
+          dataBrokersRemovalUnderMaintenance: {
+            scan: null,
+            results: [],
           },
         }),
       ).toStrictEqual({
@@ -69,6 +77,10 @@ describe("getNextGuidedStep", () => {
           ],
           user: {
             email: "arbitrary@example.com",
+          },
+          dataBrokersRemovalUnderMaintenance: {
+            scan: null,
+            results: [],
           },
         }),
       ).toStrictEqual({
@@ -98,6 +110,10 @@ describe("getNextGuidedStep", () => {
           user: {
             email: "arbitrary@example.com",
           },
+          dataBrokersRemovalUnderMaintenance: {
+            scan: null,
+            results: [],
+          },
         }),
       ).toStrictEqual({
         href: "/user/dashboard/fix/high-risk-data-breaches/credit-card",
@@ -126,6 +142,10 @@ describe("getNextGuidedStep", () => {
           user: {
             email: "arbitrary@example.com",
           },
+          dataBrokersRemovalUnderMaintenance: {
+            scan: null,
+            results: [],
+          },
         }),
       ).toStrictEqual({
         href: "/user/dashboard/fix/high-risk-data-breaches/credit-card",
@@ -148,6 +168,10 @@ describe("getNextGuidedStep", () => {
           ],
           user: {
             email: "arbitrary@example.com",
+          },
+          dataBrokersRemovalUnderMaintenance: {
+            scan: null,
+            results: [],
           },
         }),
       ).toStrictEqual({
@@ -176,6 +200,10 @@ describe("getNextGuidedStep", () => {
           user: {
             email: "arbitrary@example.com",
           },
+          dataBrokersRemovalUnderMaintenance: {
+            scan: null,
+            results: [],
+          },
         }),
       ).toStrictEqual({
         href: "/user/dashboard/fix/high-risk-data-breaches/bank-account",
@@ -203,6 +231,10 @@ describe("getNextGuidedStep", () => {
           user: {
             email: "arbitrary@example.com",
           },
+          dataBrokersRemovalUnderMaintenance: {
+            scan: null,
+            results: [],
+          },
         }),
       ).toStrictEqual({
         href: "/user/dashboard/fix/high-risk-data-breaches/bank-account",
@@ -226,6 +258,10 @@ describe("getNextGuidedStep", () => {
           user: {
             email: "arbitrary@example.com",
           },
+          dataBrokersRemovalUnderMaintenance: {
+            scan: null,
+            results: [],
+          },
         }),
       ).toStrictEqual({
         href: "/user/dashboard/fix/high-risk-data-breaches/pin",
@@ -248,6 +284,10 @@ describe("getNextGuidedStep", () => {
           ],
           user: {
             email: "arbitrary@example.com",
+          },
+          dataBrokersRemovalUnderMaintenance: {
+            scan: null,
+            results: [],
           },
         }),
       ).toStrictEqual({
@@ -274,6 +314,10 @@ describe("getNextGuidedStep", () => {
           user: {
             email: "arbitrary@example.com",
           },
+          dataBrokersRemovalUnderMaintenance: {
+            scan: null,
+            results: [],
+          },
         }),
       ).toStrictEqual({
         href: "/user/dashboard/fix/leaked-passwords/security-questions",
@@ -296,6 +340,10 @@ describe("getNextGuidedStep", () => {
           ],
           user: {
             email: "arbitrary@example.com",
+          },
+          dataBrokersRemovalUnderMaintenance: {
+            scan: null,
+            results: [],
           },
         }),
       ).toStrictEqual({
@@ -320,6 +368,10 @@ describe("getNextGuidedStep", () => {
           user: {
             email: "arbitrary@example.com",
           },
+          dataBrokersRemovalUnderMaintenance: {
+            scan: null,
+            results: [],
+          },
         }),
       ).toStrictEqual({
         href: "/user/dashboard/fix/security-recommendations/email",
@@ -342,6 +394,10 @@ describe("getNextGuidedStep", () => {
           ],
           user: {
             email: "arbitrary@example.com",
+          },
+          dataBrokersRemovalUnderMaintenance: {
+            scan: null,
+            results: [],
           },
         }),
       ).toStrictEqual({
@@ -376,6 +432,10 @@ describe("getNextGuidedStep", () => {
           user: {
             email: "arbitrary@example.com",
           },
+          dataBrokersRemovalUnderMaintenance: {
+            scan: null,
+            results: [],
+          },
         }),
       ).toStrictEqual({
         href: "/user/dashboard",
@@ -396,6 +456,10 @@ describe("getNextGuidedStep", () => {
           subscriberBreaches: [],
           user: {
             email: "arbitrary@example.com",
+          },
+          dataBrokersRemovalUnderMaintenance: {
+            scan: null,
+            results: [],
           },
         }),
       ).toStrictEqual({
@@ -426,6 +490,10 @@ describe("getNextGuidedStep", () => {
           user: {
             email: "arbitrary@example.com",
           },
+          dataBrokersRemovalUnderMaintenance: {
+            scan: null,
+            results: [],
+          },
         }),
       ).toStrictEqual({
         href: "/user/dashboard/fix/data-broker-profiles/start-free-scan",
@@ -454,6 +522,10 @@ describe("getNextGuidedStep", () => {
           subscriberBreaches: [],
           user: {
             email: "arbitrary@example.com",
+          },
+          dataBrokersRemovalUnderMaintenance: {
+            scan: null,
+            results: [],
           },
         }),
       ).toStrictEqual({
@@ -484,6 +556,10 @@ describe("getNextGuidedStep", () => {
           user: {
             email: "arbitrary@example.com",
           },
+          dataBrokersRemovalUnderMaintenance: {
+            scan: null,
+            results: [],
+          },
         }).id,
       ).toBe("Done");
     });
@@ -507,6 +583,10 @@ describe("getNextGuidedStep", () => {
           subscriberBreaches: [],
           user: {
             email: "arbitrary@example.com",
+          },
+          dataBrokersRemovalUnderMaintenance: {
+            scan: null,
+            results: [],
           },
         }).id,
       ).toBe("Done");
@@ -532,6 +612,10 @@ describe("getNextGuidedStep", () => {
           user: {
             email: "arbitrary@example.com",
           },
+          dataBrokersRemovalUnderMaintenance: {
+            scan: null,
+            results: [],
+          },
         }).id,
       ).toBe("Done");
     });
@@ -556,6 +640,10 @@ describe("getNextGuidedStep", () => {
           user: {
             email: "arbitrary@example.com",
           },
+          dataBrokersRemovalUnderMaintenance: {
+            scan: null,
+            results: [],
+          },
         }).id,
       ).toBe("Done");
     });
@@ -573,6 +661,10 @@ describe("getNextGuidedStep", () => {
           ],
           user: {
             email: "arbitrary@example.com",
+          },
+          dataBrokersRemovalUnderMaintenance: {
+            scan: null,
+            results: [],
           },
         }),
       ).toStrictEqual({
@@ -602,6 +694,10 @@ describe("getNextGuidedStep", () => {
           user: {
             email: "arbitrary@example.com",
           },
+          dataBrokersRemovalUnderMaintenance: {
+            scan: null,
+            results: [],
+          },
         }),
       ).toStrictEqual({
         href: "/user/dashboard/fix/high-risk-data-breaches/credit-card",
@@ -630,6 +726,10 @@ describe("getNextGuidedStep", () => {
           user: {
             email: "arbitrary@example.com",
           },
+          dataBrokersRemovalUnderMaintenance: {
+            scan: null,
+            results: [],
+          },
         }),
       ).toStrictEqual({
         href: "/user/dashboard/fix/high-risk-data-breaches/credit-card",
@@ -652,6 +752,10 @@ describe("getNextGuidedStep", () => {
           ],
           user: {
             email: "arbitrary@example.com",
+          },
+          dataBrokersRemovalUnderMaintenance: {
+            scan: null,
+            results: [],
           },
         }),
       ).toStrictEqual({
@@ -680,6 +784,10 @@ describe("getNextGuidedStep", () => {
           user: {
             email: "arbitrary@example.com",
           },
+          dataBrokersRemovalUnderMaintenance: {
+            scan: null,
+            results: [],
+          },
         }),
       ).toStrictEqual({
         href: "/user/dashboard/fix/high-risk-data-breaches/bank-account",
@@ -707,6 +815,10 @@ describe("getNextGuidedStep", () => {
           user: {
             email: "arbitrary@example.com",
           },
+          dataBrokersRemovalUnderMaintenance: {
+            scan: null,
+            results: [],
+          },
         }),
       ).toStrictEqual({
         href: "/user/dashboard/fix/high-risk-data-breaches/bank-account",
@@ -730,6 +842,10 @@ describe("getNextGuidedStep", () => {
           user: {
             email: "arbitrary@example.com",
           },
+          dataBrokersRemovalUnderMaintenance: {
+            scan: null,
+            results: [],
+          },
         }),
       ).toStrictEqual({
         href: "/user/dashboard/fix/high-risk-data-breaches/pin",
@@ -752,6 +868,10 @@ describe("getNextGuidedStep", () => {
           ],
           user: {
             email: "arbitrary@example.com",
+          },
+          dataBrokersRemovalUnderMaintenance: {
+            scan: null,
+            results: [],
           },
         }),
       ).toStrictEqual({
@@ -778,6 +898,10 @@ describe("getNextGuidedStep", () => {
           user: {
             email: "arbitrary@example.com",
           },
+          dataBrokersRemovalUnderMaintenance: {
+            scan: null,
+            results: [],
+          },
         }),
       ).toStrictEqual({
         href: "/user/dashboard/fix/leaked-passwords/security-questions",
@@ -800,6 +924,10 @@ describe("getNextGuidedStep", () => {
           ],
           user: {
             email: "arbitrary@example.com",
+          },
+          dataBrokersRemovalUnderMaintenance: {
+            scan: null,
+            results: [],
           },
         }),
       ).toStrictEqual({
@@ -824,6 +952,10 @@ describe("getNextGuidedStep", () => {
           user: {
             email: "arbitrary@example.com",
           },
+          dataBrokersRemovalUnderMaintenance: {
+            scan: null,
+            results: [],
+          },
         }),
       ).toStrictEqual({
         href: "/user/dashboard/fix/security-recommendations/email",
@@ -846,6 +978,10 @@ describe("getNextGuidedStep", () => {
           ],
           user: {
             email: "arbitrary@example.com",
+          },
+          dataBrokersRemovalUnderMaintenance: {
+            scan: null,
+            results: [],
           },
         }),
       ).toStrictEqual({
