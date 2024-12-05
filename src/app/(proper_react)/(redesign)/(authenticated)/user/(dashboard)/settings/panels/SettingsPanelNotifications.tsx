@@ -19,6 +19,7 @@ import { Button } from "../../../../../../../components/client/Button";
 import styles from "./SettingsPanelNotifications.module.scss";
 import { SwitchInput } from "../../../../../../../components/client/SwitchInput";
 import { RadioInput } from "../../../../../../../components/client/RadioInput";
+import { CONST_URL_MOZILLA_BASKET } from "../../../../../../../../constants";
 
 export type SettingsPanelNotificationsProps = {
   data: SubscriberEmailPreferencesOutput;
@@ -215,7 +216,12 @@ function SettingsPanelNotifications(props: SettingsPanelNotificationsProps) {
       <section>
         <h4>{l10n.getString("settings-tab-notifications-marketing-title")}</h4>
         <p>{l10n.getString("settings-tab-notifications-marketing-text")}</p>
-        <Button className={styles.link} variant="link" href="/">
+        <Button
+          className={styles.link}
+          variant="link"
+          href={`${CONST_URL_MOZILLA_BASKET}/fxa/?email=${props.subscriber.primary_email}`}
+          target="_blank"
+        >
           {l10n.getString("settings-tab-notifications-marketing-link-label")}
         </Button>
       </section>
