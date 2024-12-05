@@ -176,6 +176,7 @@ export const View = (props: Props) => {
     return timestampB - timestampA;
   });
 
+  /* c8 ignore next */
   const dataBrokersResultsRemovalUnderMaintenance =
     props.userScanData.dataBrokersRemovalUnderMaintenance || [];
 

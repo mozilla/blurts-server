@@ -47,7 +47,6 @@ const mockedScanData: LatestOnerepScanData = {
 const mockedBreaches = [...Array(5)].map(() => createRandomBreach());
 
 export const RemovalUnderMaintenanceViewStory: Story = {
-  name: "1d. Manually resolve brokers",
   render: () => {
     return (
       <Shell
