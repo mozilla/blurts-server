@@ -2,8 +2,7 @@ name: Build Docker image and publish
 
 on:
   push:
-    # FIXME temporarily run this job on test branch
-    branches: [ main, use-github-env-for-public-sentry-dsn ]
+    branches: [ main ]
 jobs:
   push_to_registry:
     name: Push Docker image to Docker Hub
@@ -53,11 +52,10 @@ jobs:
             --secret id=SENTRY_AUTH_TOKEN \
             .
 
-      # FIXME do not deploy to Dockerhub while testing
-      #- name: Deploy to Dockerhub
-      #  env:
-      #    DOCKERHUB_REPO: ${{ env.DOCKERHUB_REPO }}
-      #  run: |
-      #    # deploy main
-      #    docker tag blurts-server ${{ steps.meta.outputs.tags }}
-      #    docker push ${{ steps.meta.outputs.tags }}
+      - name: Deploy to Dockerhub
+        env:
+          DOCKERHUB_REPO: ${{ env.DOCKERHUB_REPO }}
+        run: |
+          # deploy main
+          docker tag blurts-server ${{ steps.meta.outputs.tags }}
+          docker push ${{ steps.meta.outputs.tags }}
