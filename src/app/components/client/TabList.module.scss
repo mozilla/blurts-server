@@ -59,7 +59,7 @@
 
   .tab {
     color: $color-grey-40;
-    padding: $spacing-xs 0;
+    padding: $spacing-xs $spacing-xs $spacing-xs 0;
 
     &[aria-selected="true"] {
       color: $color-purple-50;
