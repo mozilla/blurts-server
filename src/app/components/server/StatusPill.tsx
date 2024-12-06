@@ -24,52 +24,57 @@ export const StatusPillTypeMap: Record<string, StatusPillType> = {
   Fixed: "fixed",
 };
 
-export type Props = {
-  directType?: StatusPillType;
+type DirectTypeProps = { type: StatusPillType };
+type ExposureProps = { exposure: Exposure };
+
+/* c8 ignore start */
+// This component just renders HTML without business logic:
+export type Props = (DirectTypeProps | ExposureProps) & {
   enabledFeatureFlags?: FeatureFlagName[];
   note?: string;
-  exposure?: Exposure;
-  isRemovalUnderMaintenance?: boolean;
+  isRemovalUnderMaintenance?: boolean; // Optional for ExposureProps
 };
 
 // This component just renders HTML without business logic:
-/* c8 ignore start */
 export const StatusPill = (props: Props) => {
   const l10n = useL10n();
 
-  // Determine pill type and status label based on props
-  const pillType = props.directType
-    ? props.directType
-    : props.exposure
-      ? getExposureStatus(
-          props.exposure,
-          props.enabledFeatureFlags?.includes("AdditionalRemovalStatuses") ??
-            false,
-          props.isRemovalUnderMaintenance || false,
-        )
-      : "";
-
-  const statusLabel =
-    props.exposure &&
-    getStatusLabel({
-      exposure: props.exposure,
-      pillType,
-      l10n,
-      isDataBrokerUnderMaintenance:
-        props.isRemovalUnderMaintenance ?? undefined,
-    });
+  const pillType = hasDirectType(props)
+    ? props.type
+    : getExposureStatus(
+        props.exposure,
+        props.enabledFeatureFlags?.includes("AdditionalRemovalStatuses") ??
+          false,
+        props.isRemovalUnderMaintenance || false, // Pass maintenance flag
+      );
 
   return (
     <div className={styles.pillWrapper}>
-      <div className={`${styles.pill} ${styles[pillType]}`}>{statusLabel}</div>
-      {props.note && <div className={styles.note}>{props.note}</div>}
+      <div className={`${styles.pill} ${styles[pillType]}`}>
+        {!hasDirectType(props)
+          ? getStatusLabel({
+              exposure: props.exposure,
+              pillType,
+              l10n,
+              isDataBrokerUnderMaintenance: props.isRemovalUnderMaintenance,
+            })
+          : getStatusLabel({
+              pillType,
+              l10n,
+            })}
+      </div>
+      {props.note}
     </div>
   );
 };
+
+function hasDirectType(props: Props): props is DirectTypeProps {
+  return typeof (props as DirectTypeProps).type === "string";
+}
 /* c8 ignore stop */
 
 type StatusLabelProps = {
-  exposure: Exposure;
+  exposure?: Exposure;
   pillType: string;
   l10n: ExtendedReactLocalization;
   isDataBrokerUnderMaintenance?: boolean;
