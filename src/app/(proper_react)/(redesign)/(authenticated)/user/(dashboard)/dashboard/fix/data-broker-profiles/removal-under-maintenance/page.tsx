@@ -28,6 +28,9 @@ export default async function RemovalUnderMaintenance() {
   }
   const profileId = await getOnerepProfileId(session.user.subscriber.id);
   const latestScan = await getLatestOnerepScanResults(profileId);
+  const scansWithRemovalUnderMaintenance =
+    (await getScanResultsWithBrokerUnderMaintenance(profileId)) ?? null;
+
   const data: StepDeterminationData = {
     countryCode,
     user: session.user,
@@ -36,9 +39,9 @@ export default async function RemovalUnderMaintenance() {
       fxaUid: session.user.subscriber.fxa_uid,
       countryCode,
     }),
+    dataBrokersRemovalUnderMaintenance: scansWithRemovalUnderMaintenance,
   };
-  const scansWithRemovalUnderMaintenance =
-    (await getScanResultsWithBrokerUnderMaintenance(profileId)) ?? null;
+
   const getNextStep = getNextGuidedStep(data, "DataBrokerManualRemoval");
 
   if (

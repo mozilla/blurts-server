@@ -60,6 +60,7 @@ const ViewWrapper = (props: ViewWrapperProps) => {
   );
 
   const scanData: LatestOnerepScanData = { scan: null, results: [] };
+  const dataBrokerData: LatestOnerepScanData = { scan: null, results: [] };
 
   if (props.brokers !== "no-scan") {
     scanData.scan =
@@ -107,6 +108,7 @@ const ViewWrapper = (props: ViewWrapperProps) => {
           countryCode: "us",
           subscriberBreaches: [],
           user: mockedSession.user,
+          dataBrokersRemovalUnderMaintenance: dataBrokerData,
         }}
         l10n={l10n}
         subscriberEmails={[]}

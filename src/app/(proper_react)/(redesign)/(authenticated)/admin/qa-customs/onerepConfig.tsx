@@ -380,9 +380,6 @@ const OnerepConfigPage = (props: Props) => {
                   <option value="new">New</option>
                   <option value="optout_in_progress">In Progress</option>
                   <option value="removed">Removed</option>
-                  <option value="removal_under_maintenance">
-                    Removal under maintenance
-                  </option>
                 </select>
               </label>
 

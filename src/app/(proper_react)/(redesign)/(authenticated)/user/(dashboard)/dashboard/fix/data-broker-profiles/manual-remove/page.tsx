@@ -5,7 +5,10 @@
 import { redirect } from "next/navigation";
 import { headers } from "next/headers";
 import { getServerSession } from "../../../../../../../../../functions/server/getServerSession";
-import { getLatestOnerepScanResults } from "../../../../../../../../../../db/tables/onerep_scans";
+import {
+  getLatestOnerepScanResults,
+  getScanResultsWithBrokerUnderMaintenance,
+} from "../../../../../../../../../../db/tables/onerep_scans";
 import { getOnerepProfileId } from "../../../../../../../../../../db/tables/subscribers";
 import { getSubscriberBreaches } from "../../../../../../../../../functions/server/getSubscriberBreaches";
 import { ManualRemoveView } from "./ManualRemoveView";
@@ -29,7 +32,10 @@ export default async function ManualRemovePage() {
     countryCode,
   });
   const subscriberEmails = await getSubscriberEmails(session.user);
+  const dataBrokersWithRemovalUnderMaintenance =
+    await getScanResultsWithBrokerUnderMaintenance(profileId);
 
+  console.log(dataBrokersWithRemovalUnderMaintenance);
   return (
     <ManualRemoveView
       breaches={subBreaches}
@@ -39,6 +45,9 @@ export default async function ManualRemovePage() {
       user={session.user}
       countryCode={countryCode}
       subscriberEmails={subscriberEmails}
+      dataBrokersRemovalUnderMaintenance={
+        dataBrokersWithRemovalUnderMaintenance
+      }
     />
   );
 }

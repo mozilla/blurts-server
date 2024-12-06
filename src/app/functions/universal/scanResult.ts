@@ -4,17 +4,14 @@
 
 // TODO: Move pure functions that operate on scan results to this file
 
-// TODO: removal_under_maintenance does not belong here
 export type RemovalStatus =
   | "new"
   | "optout_in_progress"
   | "waiting_for_verification"
-  | "removed"
-  | "removal_under_maintenance";
+  | "removed";
 export const RemovalStatusMap = {
   New: "new",
   OptOutInProgress: "optout_in_progress",
   WaitingForVerification: "waiting_for_verification",
   Removed: "removed",
-  RemovalUnderMaintenance: "removal_under_maintenance",
 };

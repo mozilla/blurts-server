@@ -407,9 +407,9 @@ async function getEmailForProfile(onerepProfileId: number) {
 
 async function getScanResultsWithBrokerUnderMaintenance(
   onerepProfileId: number | null,
-) {
+): Promise<LatestOnerepScanData> {
   if (onerepProfileId === null) {
-    return null;
+    return { results: [], scan: null };
   }
 
   let scanResults = await knex("onerep_scan_results as sr")

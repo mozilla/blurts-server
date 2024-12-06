@@ -45,6 +45,7 @@ const meta: Meta<typeof StartFreeScanView> = {
 };
 export default meta;
 type Story = StoryObj<typeof StartFreeScanView>;
+const dataBrokerData: LatestOnerepScanData = { scan: null, results: [] };
 
 export const StartFreeScanViewStory: Story = {
   name: "1a. Free scan",
@@ -63,6 +64,7 @@ export const StartFreeScanViewStory: Story = {
             latestScanData: mockedScanData,
             subscriberBreaches: mockedBreaches,
             user: mockedSession.user,
+            dataBrokersRemovalUnderMaintenance: dataBrokerData,
           }}
           subscriberEmails={[]}
         />
