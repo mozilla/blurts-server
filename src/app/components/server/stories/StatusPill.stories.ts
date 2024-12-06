@@ -16,24 +16,24 @@ type Story = StoryObj<typeof StatusPill>;
 
 export const ActionNeeded: Story = {
   args: {
-    directType: "actionNeeded",
+    type: "actionNeeded",
   },
 };
 
 export const InProgress: Story = {
   args: {
-    directType: "inProgress",
+    type: "inProgress",
   },
 };
 
 export const Removed: Story = {
   args: {
-    directType: "removed",
+    type: "removed",
   },
 };
 
 export const Fixed: Story = {
   args: {
-    directType: "fixed",
+    type: "fixed",
   },
 };
