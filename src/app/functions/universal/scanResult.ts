@@ -4,6 +4,7 @@
 
 // TODO: Move pure functions that operate on scan results to this file
 
+// TODO: removal_under_maintenance does not belong here
 export type RemovalStatus =
   | "new"
   | "optout_in_progress"
