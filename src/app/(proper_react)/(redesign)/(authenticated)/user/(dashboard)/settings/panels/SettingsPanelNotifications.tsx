@@ -15,7 +15,7 @@ import { EmailUpdateCommOptionRequest } from "../../../../../../../api/v1/user/u
 import { useTelemetry } from "../../../../../../../hooks/useTelemetry";
 import { useRadioGroup } from "react-aria";
 import { VisuallyHidden } from "../../../../../../../components/server/VisuallyHidden";
-import { Button } from "../../../../../../../components/client/Button";
+import { TelemetryButton } from "../../../../../../../components/client/TelemetryButton";
 import styles from "./SettingsPanelNotifications.module.scss";
 import { SwitchInput } from "../../../../../../../components/client/SwitchInput";
 import { RadioInput } from "../../../../../../../components/client/RadioInput";
@@ -216,14 +216,21 @@ function SettingsPanelNotifications(props: SettingsPanelNotificationsProps) {
       <section>
         <h4>{l10n.getString("settings-tab-notifications-marketing-title")}</h4>
         <p>{l10n.getString("settings-tab-notifications-marketing-text")}</p>
-        <Button
+        <TelemetryButton
           className={styles.link}
           variant="link"
           href={`${CONST_URL_MOZILLA_BASKET}/fxa/?email=${props.subscriber.primary_email}`}
           target="_blank"
+          event={{
+            module: "link",
+            name: "click",
+            data: {
+              link_id: "clicked_marketing_email_settings",
+            },
+          }}
         >
           {l10n.getString("settings-tab-notifications-marketing-link-label")}
-        </Button>
+        </TelemetryButton>
       </section>
     </>
   );
