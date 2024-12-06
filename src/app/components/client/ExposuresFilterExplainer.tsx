@@ -138,30 +138,28 @@ export const ExposuresFilterStatusExplainer = (
                   "AdditionalRemovalStatuses",
                 ) && (
                   <li className={styles.statusListItem}>
-                    <StatusPill
-                      directType={StatusPillTypeMap.RequestedRemoval}
-                    />
+                    <StatusPill type={StatusPillTypeMap.RequestedRemoval} />
                     {l10n.getString(
                       "modal-exposure-indicator-requested-removal",
                     )}
                   </li>
                 )}
                 <li className={styles.statusListItem}>
-                  <StatusPill directType={StatusPillTypeMap.InProgress} />
+                  <StatusPill type={StatusPillTypeMap.InProgress} />
                   {l10n.getString("modal-exposure-indicator-in-progress")}
                 </li>
                 <li className={styles.statusListItem}>
-                  <StatusPill directType={StatusPillTypeMap.Removed} />
+                  <StatusPill type={StatusPillTypeMap.Removed} />
                   {l10n.getString("modal-exposure-indicator-removed")}
                 </li>
               </>
             )}
             <li className={styles.statusListItem}>
-              <StatusPill directType={StatusPillTypeMap.Fixed} />
+              <StatusPill type={StatusPillTypeMap.Fixed} />
               {l10n.getString("modal-exposure-indicator-fixed")}
             </li>
             <li className={styles.statusListItem}>
-              <StatusPill directType={StatusPillTypeMap.ActionNeeded} />
+              <StatusPill type={StatusPillTypeMap.ActionNeeded} />
               {l10n.getString("modal-exposure-indicator-action-needed")}
             </li>
           </ul>
