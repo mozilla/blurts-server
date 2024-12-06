@@ -28,6 +28,7 @@ export const CONST_URL_TERMS =
   "https://www.mozilla.org/about/legal/terms/subscription-services/";
 export const CONST_URL_PRIVACY_POLICY =
   "https://www.mozilla.org/privacy/subscription-services/";
+export const CONST_URL_MOZILLA_BASKET = "https://basket.mozilla.org";
 export const CONST_URL_DATA_PRIVACY_PETITION_BANNER =
   "https://foundation.mozilla.org/campaigns/demand-privacy-for-all-support-a-us-data-privacy-law-v1/?utm_source=monitor&utm_medium=in-product&utm_campaign=24-pfa";
 export const CONST_URL_MONITOR_GITHUB =
