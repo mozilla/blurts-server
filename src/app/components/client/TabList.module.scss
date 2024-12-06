@@ -15,6 +15,7 @@
 
 .tab {
   cursor: pointer;
+  border-radius: $border-radius-sm;
   display: flex;
   gap: $spacing-xs;
   padding: $spacing-sm;
@@ -29,9 +30,23 @@
     width: 100%;
   }
 
-  &[aria-selected="true"] {
+  &:hover,
+  &:focus {
+    outline: 2px solid $color-blue-50;
     &::after {
-      background: $color-purple-70;
+      background: none;
+    }
+  }
+
+  &[aria-selected="true"] {
+    color: $color-purple-70;
+
+    // Only show the tab underline when the item
+    // is selected and not hovered or focussed.
+    &:not(:hover, :focus) {
+      &::after {
+        background: $color-purple-70;
+      }
     }
   }
 }
@@ -48,9 +63,14 @@
 
     &[aria-selected="true"] {
       color: $color-purple-50;
-      &::after {
-        background: $color-purple-50;
-        height: 2px;
+
+      // Only show the tab underline when the item
+      // is selected and not hovered or focussed.
+      &:not(:hover, :focus) {
+        &::after {
+          background: $color-purple-50;
+          height: 2px;
+        }
       }
     }
   }
