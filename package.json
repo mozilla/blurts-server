@@ -156,7 +156,7 @@
     "jest-fail-on-console": "^3.3.1",
     "lint-staged": "^15.2.10",
     "mjml-browser": "^4.15.3",
-    "prettier": "3.3.3",
+    "prettier": "3.4.2",
     "sass": "^1.81.0",
     "storybook": "^8.4.6",
     "stylelint": "^16.11.0",
