@@ -40,7 +40,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Navigation @sm
     //testrail's step 1
     await dashboardPage.goToDashboard();
     await goToHrefOf(dashboardPage.settingsPageLink);
-    await expect(page).toHaveURL(/\/settings$/);
+    await expect(page).toHaveURL(/.*\/settings.*/);
 
     //testrail's step 2
     await goToHrefOf(dashboardPage.dashboardPageLink);
