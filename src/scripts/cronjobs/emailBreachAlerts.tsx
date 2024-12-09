@@ -38,7 +38,7 @@ import {
 import { getCronjobL10n } from "../../app/functions/l10n/cronjobs";
 import { sanitizeSubscriberRow } from "../../app/functions/server/sanitize";
 import { getEnabledFeatureFlags } from "../../db/tables/featureFlags";
-import { getScanResultsWithBroker } from "../../db/tables/onerep_scans";
+import { getLatestOnerepScanResults } from "../../db/tables/onerep_scans";
 import { getSubscriberBreaches } from "../../app/functions/server/getSubscriberBreaches";
 import { getSignupLocaleCountry } from "../../emails/functions/getSignupLocaleCountry";
 import { refreshStoredScanResults } from "../../app/functions/server/refreshStoredScanResults";
@@ -282,7 +282,7 @@ export async function poll(
                 !hasPremium(recipient) &&
                 typeof recipient.onerep_profile_id === "number"
               ) {
-                const scanData = await getScanResultsWithBroker(
+                const scanData = await getLatestOnerepScanResults(
                   recipient.onerep_profile_id,
                 );
                 const allSubscriberBreaches = await getSubscriberBreaches({
