@@ -4,7 +4,7 @@
 
 import { SubscriberRow } from "knex/types/tables";
 import { getFreeSubscribersWaitingForMonthlyEmail } from "../../db/tables/subscribers";
-import { getLatestOnerepScanResults } from "../../db/tables/onerep_scans";
+import { getScanResultsWithBroker } from "../../db/tables/onerep_scans";
 import { updateEmailPreferenceForSubscriber } from "../../db/tables/subscriber_email_preferences";
 import { initEmail, sendEmail, closeEmailPool } from "../../utils/email";
 import { renderEmail } from "../../emails/renderEmail";
@@ -69,7 +69,7 @@ async function sendMonthlyActivityEmail(subscriber: SubscriberRow) {
     await refreshStoredScanResults(subscriber.onerep_profile_id);
   }
 
-  const latestScan = await getLatestOnerepScanResults(
+  const latestScan = await getScanResultsWithBroker(
     subscriber.onerep_profile_id,
   );
   const subscriberBreaches = await getSubscriberBreaches({

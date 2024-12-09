@@ -15,7 +15,6 @@ import {
   leakedPasswordTypes,
 } from "../leakedPasswordsData";
 import { BreachDataTypes } from "../../../../../../../../../functions/universal/breach";
-import { LatestOnerepScanData } from "../../../../../../../../../../db/tables/onerep_scans";
 
 const user = createUserWithPremiumSubscription();
 
@@ -63,7 +62,6 @@ const LeakedPasswordsWrapper = (props: {
       }),
     );
   }
-  const dataBrokerData: LatestOnerepScanData = { scan: null, results: [] };
 
   return (
     <Shell
@@ -81,7 +79,6 @@ const LeakedPasswordsWrapper = (props: {
           latestScanData: { results: [], scan: null },
           subscriberBreaches: mockedBreaches,
           user: mockedSession.user,
-          dataBrokersRemovalUnderMaintenance: dataBrokerData,
         }}
         isEligibleForPremium={true}
       />

@@ -37,7 +37,6 @@ const mockedScan: OnerepScanRow = {
   onerep_scan_status: "finished",
 };
 
-const dataBrokerData: LatestOnerepScanData = { scan: null, results: [] };
 const mockedScanData: LatestOnerepScanData = {
   scan: mockedScan,
   results: [...Array(5)].map(() =>
@@ -63,7 +62,6 @@ export const RemovalUnderMaintenanceViewStory: Story = {
             latestScanData: { results: [], scan: null },
             subscriberBreaches: mockedBreaches,
             user: mockedSession.user,
-            dataBrokersRemovalUnderMaintenance: dataBrokerData,
           }}
           subscriberEmails={[]}
         />

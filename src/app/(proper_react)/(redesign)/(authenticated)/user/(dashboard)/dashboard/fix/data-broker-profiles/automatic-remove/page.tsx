@@ -8,10 +8,7 @@ import { getServerSession } from "../../../../../../../../../functions/server/ge
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { getOnerepProfileId } from "../../../../../../../../../../db/tables/subscribers";
-import {
-  getLatestOnerepScanResults,
-  getScanResultsWithBrokerUnderMaintenance,
-} from "../../../../../../../../../../db/tables/onerep_scans";
+import { getScanResultsWithBroker } from "../../../../../../../../../../db/tables/onerep_scans";
 import { getSubscriberBreaches } from "../../../../../../../../../functions/server/getSubscriberBreaches";
 import { getSubscriberEmails } from "../../../../../../../../../functions/server/getSubscriberEmails";
 import { getCountryCode } from "../../../../../../../../../functions/server/getCountryCode";
@@ -41,21 +38,18 @@ export default async function AutomaticRemovePage() {
 
   const countryCode = getCountryCode(headers());
   const profileId = await getOnerepProfileId(session.user.subscriber.id);
-  const scanData = await getLatestOnerepScanResults(profileId);
+  const scanData = await getScanResultsWithBroker(profileId);
   const subBreaches = await getSubscriberBreaches({
     fxaUid: session.user.subscriber.fxa_uid,
     countryCode,
   });
   const subscriberEmails = await getSubscriberEmails(session.user);
-  const dataBrokersWithRemovalUnderMaintenance =
-    await getScanResultsWithBrokerUnderMaintenance(profileId);
 
   const data: StepDeterminationData = {
     countryCode,
     latestScanData: scanData,
     subscriberBreaches: subBreaches,
     user: session.user,
-    dataBrokersRemovalUnderMaintenance: dataBrokersWithRemovalUnderMaintenance,
   };
 
   return (

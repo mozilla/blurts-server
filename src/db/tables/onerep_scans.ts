@@ -17,14 +17,13 @@ import {
   OnerepScanResultDataBrokerRow,
 } from "knex/types/tables";
 import { RemovalStatus } from "../../app/functions/universal/scanResult.js";
-import { getQaCustomBrokers, getQaToggleRow } from "./qa_customs.ts";
 import { CONST_DAY_MILLISECONDS } from "../../constants.ts";
 
 const knex = createDbConnection();
 
 export interface LatestOnerepScanData {
   scan: OnerepScanRow | null;
-  results: OnerepScanResultRow[] | OnerepScanResultDataBrokerRow[];
+  results: OnerepScanResultDataBrokerRow[];
 }
 
 async function getAllScansForProfile(
@@ -145,55 +144,56 @@ async function getLatestOnerepScan(
 /*
 Note: please, don't write the results of this function back to the database!
 */
-async function getLatestOnerepScanResults(
-  onerepProfileId: number | null,
-): Promise<LatestOnerepScanData> {
-  const scan = await getLatestOnerepScan(onerepProfileId);
+// Deprecated
+// async function getLatestOnerepScanResults(
+//   onerepProfileId: number | null,
+// ): Promise<LatestOnerepScanData> {
+//   const scan = await getLatestOnerepScan(onerepProfileId);
 
-  let results: OnerepScanResultRow[] = [];
+//   let results: OnerepScanResultRow[] = [];
 
-  if (scan !== null) {
-    const qaToggles = await getQaToggleRow(onerepProfileId);
-    let showCustomBrokers = false;
-    let showRealBrokers = true;
+//   if (scan !== null) {
+//     const qaToggles = await getQaToggleRow(onerepProfileId);
+//     let showCustomBrokers = false;
+//     let showRealBrokers = true;
 
-    if (qaToggles) {
-      showCustomBrokers = qaToggles.show_custom_brokers;
-      showRealBrokers = qaToggles.show_real_brokers;
-    }
+//     if (qaToggles) {
+//       showCustomBrokers = qaToggles.show_custom_brokers;
+//       showRealBrokers = qaToggles.show_real_brokers;
+//     }
 
-    const qaBrokers = !showCustomBrokers
-      ? []
-      : await getQaCustomBrokers(onerepProfileId, scan?.onerep_scan_id);
-    if (!showRealBrokers) {
-      logger.info("get_latest_results_custom_brokers", {
-        onerepProfileId,
-        onerepScanId: scan?.onerep_scan_id,
-        qaBrokers,
-      });
-      results = qaBrokers;
-    } else {
-      // Fetch initial results from onerep_scan_results
-      const scanResults = (await knex("onerep_scan_results")
-        .select("*")
-        .distinctOn("link")
-        .where("onerep_profile_id", onerepProfileId)
-        .innerJoin(
-          "onerep_scans",
-          "onerep_scan_results.onerep_scan_id",
-          "onerep_scans.onerep_scan_id",
-        )
-        .orderBy("link")
-        .orderBy("onerep_scan_result_id", "desc")) as OnerepScanResultRow[];
-      results = [...scanResults, ...qaBrokers];
-    }
-  }
+//     const qaBrokers = !showCustomBrokers
+//       ? []
+//       : await getQaCustomBrokers(onerepProfileId, scan?.onerep_scan_id);
+//     if (!showRealBrokers) {
+//       logger.info("get_latest_results_custom_brokers", {
+//         onerepProfileId,
+//         onerepScanId: scan?.onerep_scan_id,
+//         qaBrokers,
+//       });
+//       results = qaBrokers;
+//     } else {
+//       // Fetch initial results from onerep_scan_results
+//       const scanResults = (await knex("onerep_scan_results")
+//         .select("*")
+//         .distinctOn("link")
+//         .where("onerep_profile_id", onerepProfileId)
+//         .innerJoin(
+//           "onerep_scans",
+//           "onerep_scan_results.onerep_scan_id",
+//           "onerep_scans.onerep_scan_id",
+//         )
+//         .orderBy("link")
+//         .orderBy("onerep_scan_result_id", "desc")) as OnerepScanResultRow[];
+//       results = [...scanResults, ...qaBrokers];
+//     }
+//   }
 
-  return {
-    scan: scan ?? null,
-    results,
-  };
-}
+//   return {
+//     scan: scan ?? null,
+//     results,
+//   };
+// }
 
 async function setOnerepProfileId(
   subscriber: SubscriberRow,
@@ -438,9 +438,14 @@ async function getScanResultsWithBrokerUnderMaintenance(
   return { results: scanResults } as LatestOnerepScanData;
 }
 
-async function getScanResultsWithBroker(onerepProfileId: number | null) {
+async function getScanResultsWithBroker(
+  onerepProfileId: number | null,
+): Promise<LatestOnerepScanData> {
   if (onerepProfileId === null) {
-    return null;
+    return {
+      scan: null,
+      results: [],
+    };
   }
 
   const scan = await getLatestOnerepScan(onerepProfileId);
@@ -455,10 +460,8 @@ async function getScanResultsWithBroker(onerepProfileId: number | null) {
       "db.status as broker_status", // rename to avoid collision
     )
     .innerJoin("onerep_scans as s", "sr.onerep_scan_id", "s.onerep_scan_id")
-    .where("s.onerep_profile_id", onerepProfileId)
-    .andWhere("sr.manually_resolved", "false")
-    .andWhereNot("sr.status", "removed")
     .join("onerep_data_brokers as db", "sr.data_broker", "db.data_broker")
+    .where("s.onerep_profile_id", onerepProfileId)
     .orderBy("sr.onerep_scan_result_id");
 
   return { scan: scan ?? null, results: scanResults } as LatestOnerepScanData;
@@ -470,7 +473,7 @@ export {
   getScanResults,
   getLatestOnerepScan,
   getAllScanResults,
-  getLatestOnerepScanResults,
+  // getLatestOnerepScanResults,
   setOnerepProfileId,
   setOnerepScan,
   addOnerepScanResults,
