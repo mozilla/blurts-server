@@ -412,7 +412,9 @@ async function getScanResultsWithBrokerUnderMaintenance(
     return { results: [], scan: null };
   }
 
-  let scanResults = await knex("onerep_scan_results as sr")
+  let scanResults: OnerepScanResultDataBrokerRow[] = await knex(
+    "onerep_scan_results as sr",
+  )
     .select(
       "sr.*",
       "s.*",
@@ -436,6 +438,32 @@ async function getScanResultsWithBrokerUnderMaintenance(
   return { results: scanResults } as LatestOnerepScanData;
 }
 
+async function getScanResultsWithBroker(onerepProfileId: number | null) {
+  if (onerepProfileId === null) {
+    return null;
+  }
+
+  const scan = await getLatestOnerepScan(onerepProfileId);
+
+  const scanResults: OnerepScanResultDataBrokerRow[] = await knex(
+    "onerep_scan_results as sr",
+  )
+    .select(
+      "sr.*",
+      "s.*",
+      "sr.status as scan_result_status", // rename to avoid collision
+      "db.status as broker_status", // rename to avoid collision
+    )
+    .innerJoin("onerep_scans as s", "sr.onerep_scan_id", "s.onerep_scan_id")
+    .where("s.onerep_profile_id", onerepProfileId)
+    .andWhere("sr.manually_resolved", "false")
+    .andWhereNot("sr.status", "removed")
+    .join("onerep_data_brokers as db", "sr.data_broker", "db.data_broker")
+    .orderBy("sr.onerep_scan_result_id");
+
+  return { scan: scan ?? null, results: scanResults } as LatestOnerepScanData;
+}
+
 export {
   getAllScansForProfile,
   getLatestScanForProfileByReason,
@@ -455,4 +483,5 @@ export {
   deleteSomeScansForProfile,
   getEmailForProfile,
   getScanResultsWithBrokerUnderMaintenance,
+  getScanResultsWithBroker,
 };
