@@ -419,6 +419,7 @@ describe("getNextGuidedStep", () => {
               createRandomScanResult({
                 status: "new",
                 manually_resolved: false,
+                broker_status: "active",
               }),
             ],
           },

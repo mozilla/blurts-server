@@ -55,6 +55,7 @@ const ScanMockItemRemovalUnderMaintenance = createRandomScanResult({
   manually_resolved: false,
   broker_status: "removal_under_maintenance",
 });
+
 const ScanMockItemRemovalUnderMaintenanceFixed = createRandomScanResult({
   status: "optout_in_progress",
   manually_resolved: true,

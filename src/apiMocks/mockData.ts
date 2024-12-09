@@ -20,10 +20,7 @@ import {
 import { Session } from "next-auth";
 import { HibpLikeDbBreach } from "../utils/hibp";
 import { SerializedSubscriber } from "../next-auth";
-import {
-  DataBrokerRemovalStatus,
-  DataBrokerRemovalStatusMap,
-} from "../app/functions/universal/dataBroker";
+import { DataBrokerRemovalStatus } from "../app/functions/universal/dataBroker";
 
 // Setting this to a constant value produces the same result when the same methods
 // with the same version of faker are called.
@@ -84,11 +81,7 @@ export function createRandomScanResult(
     created_at: options.createdDate ?? faker.date.recent({ days: 2 }),
     updated_at: faker.date.recent({ days: 1 }),
     optout_attempts,
-    broker_status:
-      options.broker_status ??
-      (faker.helpers.arrayElement(
-        Object.values(DataBrokerRemovalStatusMap),
-      ) as DataBrokerRemovalStatus),
+    broker_status: options.broker_status ?? "active",
     scan_result_status: faker.helpers.arrayElement(
       Object.values(RemovalStatusMap),
     ) as RemovalStatus,
