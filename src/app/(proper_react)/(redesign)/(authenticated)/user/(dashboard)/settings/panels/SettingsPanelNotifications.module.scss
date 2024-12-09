@@ -15,8 +15,12 @@
     label {
       align-items: center;
       display: flex;
-      gap: $layout-md;
+      gap: $layout-xs;
       justify-content: space-between;
+
+      @media screen and (min-width: $content-md) {
+        gap: $layout-md;
+      }
 
       div {
         display: flex;
