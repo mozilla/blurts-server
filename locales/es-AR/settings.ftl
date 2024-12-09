@@ -66,7 +66,7 @@ settings-alert-preferences-allow-monthly-monitor-report-subtitle = Una actualiza
 
 ## Settings page redesign
 
-settings-tab-label-edit-info = Edita tu información
+settings-tab-label-edit-info = Editar tu información
 settings-tab-label-notifications = Establecer notificaciones
 settings-tab-label-manage-account = Administrar cuenta
 settings-tab-subtitle-manage-account = Administrar tu cuenta de { -product-name }.
