@@ -8,7 +8,10 @@ import { getServerSession } from "../../../../../../../../../functions/server/ge
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { getOnerepProfileId } from "../../../../../../../../../../db/tables/subscribers";
-import { getLatestOnerepScanResults } from "../../../../../../../../../../db/tables/onerep_scans";
+import {
+  getLatestOnerepScanResults,
+  getScanResultsWithBrokerUnderMaintenance,
+} from "../../../../../../../../../../db/tables/onerep_scans";
 import { getSubscriberBreaches } from "../../../../../../../../../functions/server/getSubscriberBreaches";
 import { getSubscriberEmails } from "../../../../../../../../../functions/server/getSubscriberEmails";
 import { getCountryCode } from "../../../../../../../../../functions/server/getCountryCode";
@@ -44,12 +47,15 @@ export default async function AutomaticRemovePage() {
     countryCode,
   });
   const subscriberEmails = await getSubscriberEmails(session.user);
+  const dataBrokersWithRemovalUnderMaintenance =
+    await getScanResultsWithBrokerUnderMaintenance(profileId);
 
   const data: StepDeterminationData = {
     countryCode,
     latestScanData: scanData,
     subscriberBreaches: subBreaches,
     user: session.user,
+    dataBrokersRemovalUnderMaintenance: dataBrokersWithRemovalUnderMaintenance,
   };
 
   return (

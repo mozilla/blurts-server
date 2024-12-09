@@ -4,7 +4,6 @@
 
 import type { Meta, StoryObj } from "@storybook/react";
 import { OnerepScanRow } from "knex/types/tables";
-import { ManualRemoveView } from "./ManualRemoveView";
 import {
   createRandomBreach,
   createRandomScanResult,
@@ -13,8 +12,21 @@ import {
 import { Shell } from "../../../../../../../Shell";
 import { getL10n } from "../../../../../../../../../functions/l10n/storybookAndJest";
 import { LatestOnerepScanData } from "../../../../../../../../../../db/tables/onerep_scans";
-import { hasPremium } from "../../../../../../../../../functions/universal/user";
+import { RemovalUnderMaintenanceView } from "./RemovalUnderMaintenanceView";
 
+const meta: Meta<typeof RemovalUnderMaintenanceView> = {
+  title: "Pages/Logged in/Guided resolution/1d. Removal Under Maintenance",
+  component: RemovalUnderMaintenanceView,
+};
+export default meta;
+type Story = StoryObj<typeof RemovalUnderMaintenanceView>;
+
+const user = createUserWithPremiumSubscription();
+
+const mockedSession = {
+  expires: new Date().toISOString(),
+  user: user,
+};
 const mockedScan: OnerepScanRow = {
   created_at: new Date(1998, 2, 31),
   updated_at: new Date(1998, 2, 31),
@@ -34,22 +46,7 @@ const mockedScanData: LatestOnerepScanData = {
 };
 const mockedBreaches = [...Array(5)].map(() => createRandomBreach());
 
-const user = createUserWithPremiumSubscription();
-
-const mockedSession = {
-  expires: new Date().toISOString(),
-  user: user,
-};
-
-const meta: Meta<typeof ManualRemoveView> = {
-  title: "Pages/Logged in/Guided resolution/1c. Manually resolve brokers",
-  component: ManualRemoveView,
-};
-export default meta;
-type Story = StoryObj<typeof ManualRemoveView>;
-
-export const ManualRemoveViewStory: Story = {
-  name: "1c. Manually resolve brokers",
+export const RemovalUnderMaintenanceViewStory: Story = {
   render: () => {
     return (
       <Shell
@@ -59,15 +56,16 @@ export const ManualRemoveViewStory: Story = {
         countryCode="us"
         enabledFeatureFlags={[]}
       >
-        <ManualRemoveView
-          scanData={mockedScanData}
-          breaches={mockedBreaches}
-          countryCode="us"
-          user={mockedSession.user}
+        <RemovalUnderMaintenanceView
+          data={mockedScanData}
+          stepDeterminationData={{
+            countryCode: "us",
+            latestScanData: { results: [], scan: null },
+            subscriberBreaches: mockedBreaches,
+            user: mockedSession.user,
+            dataBrokersRemovalUnderMaintenance: dataBrokerData,
+          }}
           subscriberEmails={[]}
-          isPremiumUser={hasPremium(user)}
-          isEligibleForPremium={true}
-          dataBrokersRemovalUnderMaintenance={dataBrokerData}
         />
       </Shell>
     );

@@ -40,14 +40,15 @@ const mockedSession = {
 };
 
 const meta: Meta<typeof AutomaticRemoveView> = {
-  title: "Pages/Logged in/Guided resolution/1d. Automatically resolve brokers",
+  title: "Pages/Logged in/Guided resolution/1e. Automatically resolve brokers",
   component: AutomaticRemoveView,
 };
 export default meta;
 type Story = StoryObj<typeof AutomaticRemoveView>;
+const dataBrokerData: LatestOnerepScanData = { scan: null, results: [] };
 
 export const AutomaticRemoveViewStory: Story = {
-  name: "1d. Automatically resolve brokers",
+  name: "1e. Automatically resolve brokers",
   render: () => {
     return (
       <Shell
@@ -63,6 +64,7 @@ export const AutomaticRemoveViewStory: Story = {
             latestScanData: mockedScanData,
             subscriberBreaches: mockedBreaches,
             user: mockedSession.user,
+            dataBrokersRemovalUnderMaintenance: dataBrokerData,
           }}
           subscriberEmails={[]}
           nextStep={{

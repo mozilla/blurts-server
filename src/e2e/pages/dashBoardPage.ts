@@ -101,7 +101,7 @@ export class DashboardPage {
     this.reviewAndRemoveProfiles = page.getByText(
       "Review & remove your profiles",
     );
-    this.markAsFixed = page.getByRole("button", { name: "Mark as fixed" });
+    this.markAsFixed = page.getByRole("button", { name: "Resolve exposures" });
     this.skipExposureRemoval = page.getByRole("link", { name: "Skip for now" });
     this.continuousProtectionButton = page.getByRole("button", {
       name: "Get continuous protection",

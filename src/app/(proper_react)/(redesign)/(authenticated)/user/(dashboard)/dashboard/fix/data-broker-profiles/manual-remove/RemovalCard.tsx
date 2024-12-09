@@ -19,6 +19,7 @@ export type Props = {
   isEligibleForPremium: boolean;
   isExpanded: boolean;
   setExpanded: () => void;
+  dataBrokersRemovalUnderMaintenance: boolean;
 };
 
 export const RemovalCard = (props: Props) => {
@@ -68,14 +69,15 @@ export const RemovalCard = (props: Props) => {
               });
             }}
           >
-            {l10n.getString(
-              "fix-flow-data-broker-profiles-manual-remove-button-mark-fixed",
-            )}
+            {l10n.getString("exposure-card-resolve-exposures-cta")}
           </Button>
         ) : null
       }
       isExpanded={props.isExpanded}
       onToggleExpanded={props.setExpanded}
+      dataBrokersRemovalUnderMaintenance={
+        props.dataBrokersRemovalUnderMaintenance
+      }
     />
   );
 };
