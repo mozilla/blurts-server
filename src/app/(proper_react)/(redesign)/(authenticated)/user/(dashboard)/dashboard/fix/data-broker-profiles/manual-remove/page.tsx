@@ -5,10 +5,7 @@
 import { redirect } from "next/navigation";
 import { headers } from "next/headers";
 import { getServerSession } from "../../../../../../../../../functions/server/getServerSession";
-import {
-  getLatestOnerepScanResults,
-  getScanResultsWithBrokerUnderMaintenance,
-} from "../../../../../../../../../../db/tables/onerep_scans";
+import { getScanResultsWithBroker } from "../../../../../../../../../../db/tables/onerep_scans";
 import { getOnerepProfileId } from "../../../../../../../../../../db/tables/subscribers";
 import { getSubscriberBreaches } from "../../../../../../../../../functions/server/getSubscriberBreaches";
 import { ManualRemoveView } from "./ManualRemoveView";
@@ -26,16 +23,13 @@ export default async function ManualRemovePage() {
 
   const countryCode = getCountryCode(headers());
   const profileId = await getOnerepProfileId(session.user.subscriber.id);
-  const scanData = await getLatestOnerepScanResults(profileId);
+  const scanData = await getScanResultsWithBroker(profileId);
   const subBreaches = await getSubscriberBreaches({
     fxaUid: session.user.subscriber.fxa_uid,
     countryCode,
   });
   const subscriberEmails = await getSubscriberEmails(session.user);
-  const dataBrokersWithRemovalUnderMaintenance =
-    await getScanResultsWithBrokerUnderMaintenance(profileId);
 
-  console.log(dataBrokersWithRemovalUnderMaintenance);
   return (
     <ManualRemoveView
       breaches={subBreaches}
@@ -45,9 +39,6 @@ export default async function ManualRemovePage() {
       user={session.user}
       countryCode={countryCode}
       subscriberEmails={subscriberEmails}
-      dataBrokersRemovalUnderMaintenance={
-        dataBrokersWithRemovalUnderMaintenance
-      }
     />
   );
 }

@@ -14,10 +14,7 @@ import {
 import { getSubscriberEmails } from "../../../../../../../../../functions/server/getSubscriberEmails";
 import { getCountryCode } from "../../../../../../../../../functions/server/getCountryCode";
 import { getOnerepProfileId } from "../../../../../../../../../../db/tables/subscribers";
-import {
-  getLatestOnerepScanResults,
-  getScanResultsWithBrokerUnderMaintenance,
-} from "../../../../../../../../../../db/tables/onerep_scans";
+import { getScanResultsWithBroker } from "../../../../../../../../../../db/tables/onerep_scans";
 import { isEligibleForPremium } from "../../../../../../../../../functions/universal/premium";
 import { logger } from "../../../../../../../../../functions/server/logging";
 
@@ -50,9 +47,7 @@ export default async function LeakedPasswords({
   }
 
   const profileId = await getOnerepProfileId(session.user.subscriber.id);
-  const scanData = await getLatestOnerepScanResults(profileId);
-  const dataBrokersWithRemovalUnderMaintenance =
-    await getScanResultsWithBrokerUnderMaintenance(profileId);
+  const scanData = await getScanResultsWithBroker(profileId);
 
   return (
     <LeakedPasswordsLayout
@@ -63,8 +58,6 @@ export default async function LeakedPasswords({
         subscriberBreaches: breaches,
         user: session.user,
         latestScanData: scanData,
-        dataBrokersRemovalUnderMaintenance:
-          dataBrokersWithRemovalUnderMaintenance,
       }}
       isEligibleForPremium={isEligibleForPremium(countryCode)}
     />

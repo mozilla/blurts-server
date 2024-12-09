@@ -2,10 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import {
-  getLatestOnerepScanResults,
-  getScanResultsWithBrokerUnderMaintenance,
-} from "../../../../../../../../../../db/tables/onerep_scans";
+import { getScanResultsWithBroker } from "../../../../../../../../../../db/tables/onerep_scans";
 import { headers } from "next/headers";
 import { getServerSession } from "../../../../../../../../../functions/server/getServerSession";
 import { getOnerepProfileId } from "../../../../../../../../../../db/tables/subscribers";
@@ -42,22 +39,19 @@ export default async function WelcomeToPlusPage() {
     redirect("/user/welcome");
   }
 
-  const scanData = await getLatestOnerepScanResults(profileId);
+  const scanData = await getScanResultsWithBroker(profileId);
   const countryCode = getCountryCode(headers());
   const subBreaches = await getSubscriberBreaches({
     fxaUid: session.user.subscriber.fxa_uid,
     countryCode,
   });
   const subscriberEmails = await getSubscriberEmails(session.user);
-  const dataBrokersWithRemovalUnderMaintenance =
-    await getScanResultsWithBrokerUnderMaintenance(profileId);
 
   const data: StepDeterminationData = {
     countryCode,
     latestScanData: scanData,
     subscriberBreaches: subBreaches,
     user: session.user,
-    dataBrokersRemovalUnderMaintenance: dataBrokersWithRemovalUnderMaintenance,
   };
 
   // If the current user is a subscriber and their OneRep profile is not

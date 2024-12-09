@@ -3,7 +3,10 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import type { Meta, StoryObj } from "@storybook/react";
-import { OnerepScanResultRow, OnerepScanRow } from "knex/types/tables";
+import {
+  OnerepScanResultDataBrokerRow,
+  OnerepScanRow,
+} from "knex/types/tables";
 import { ViewDataBrokersView } from "./View";
 import {
   createRandomScanResult,
@@ -41,26 +44,25 @@ const ViewWrapper = (props: ViewWrapperProps) => {
     onerep_scan_status: "in_progress",
   };
 
-  const mockedResolvedScanResults: OnerepScanResultRow[] = [
+  const mockedResolvedScanResults: OnerepScanResultDataBrokerRow[] = [
     createRandomScanResult({ status: "removed" }),
     createRandomScanResult({ status: "waiting_for_verification" }),
     createRandomScanResult({ status: "optout_in_progress" }),
   ];
 
-  const mockedFewUnresolvedScanResults: OnerepScanResultRow[] = [
+  const mockedFewUnresolvedScanResults: OnerepScanResultDataBrokerRow[] = [
     ...mockedResolvedScanResults,
     createRandomScanResult({ status: "new", manually_resolved: false }),
     createRandomScanResult({ status: "new", manually_resolved: true }),
   ];
 
-  const mockedManyUnresolvedScanResults: OnerepScanResultRow[] = [
+  const mockedManyUnresolvedScanResults: OnerepScanResultDataBrokerRow[] = [
     ...Array(42),
   ].map(() =>
     createRandomScanResult({ status: "new", manually_resolved: false }),
   );
 
   const scanData: LatestOnerepScanData = { scan: null, results: [] };
-  const dataBrokerData: LatestOnerepScanData = { scan: null, results: [] };
 
   if (props.brokers !== "no-scan") {
     scanData.scan =
@@ -108,7 +110,6 @@ const ViewWrapper = (props: ViewWrapperProps) => {
           countryCode: "us",
           subscriberBreaches: [],
           user: mockedSession.user,
-          dataBrokersRemovalUnderMaintenance: dataBrokerData,
         }}
         l10n={l10n}
         subscriberEmails={[]}

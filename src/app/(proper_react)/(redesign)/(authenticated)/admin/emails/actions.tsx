@@ -20,7 +20,6 @@ import { getDashboardSummary } from "../../../../../functions/server/dashboard";
 import { getSubscriberBreaches } from "../../../../../functions/server/getSubscriberBreaches";
 import { getCountryCode } from "../../../../../functions/server/getCountryCode";
 import { headers } from "next/headers";
-import { getLatestOnerepScanResults } from "../../../../../../db/tables/onerep_scans";
 import { FirstDataBrokerRemovalFixed } from "../../../../../../emails/templates/firstDataBrokerRemovalFixed/FirstDataBrokerRemovalFixed";
 import {
   createRandomHibpListing,
@@ -40,6 +39,7 @@ import { hasPremium } from "../../../../../functions/universal/user";
 import { isEligibleForPremium } from "../../../../../functions/universal/premium";
 import { MonthlyActivityFreeEmail } from "../../../../../../emails/templates/monthlyActivityFree/MonthlyActivityFreeEmail";
 import { getMonthlyActivityFreeUnsubscribeLink } from "../../../../../../app/functions/cronjobs/unsubscribeLinks";
+import { getScanResultsWithBroker } from "../../../../../../db/tables/onerep_scans";
 
 async function getAdminSubscriber(): Promise<SubscriberRow | null> {
   const session = await getServerSession();
@@ -140,7 +140,7 @@ export async function triggerMonthlyActivityFree(emailAddress: string) {
   if (typeof subscriber.onerep_profile_id === "number") {
     await refreshStoredScanResults(subscriber.onerep_profile_id);
   }
-  const latestScan = await getLatestOnerepScanResults(
+  const latestScan = await getScanResultsWithBroker(
     subscriber.onerep_profile_id,
   );
   const data = getDashboardSummary(
@@ -178,7 +178,7 @@ export async function triggerMonthlyActivityPlus(emailAddress: string) {
   if (typeof subscriber.onerep_profile_id === "number") {
     await refreshStoredScanResults(subscriber.onerep_profile_id);
   }
-  const latestScan = await getLatestOnerepScanResults(
+  const latestScan = await getScanResultsWithBroker(
     subscriber.onerep_profile_id,
   );
   const data = getDashboardSummary(
@@ -217,9 +217,7 @@ export async function triggerBreachAlert(
   if (typeof subscriber.onerep_profile_id === "number") {
     await refreshStoredScanResults(subscriber.onerep_profile_id);
   }
-  const scanData = await getLatestOnerepScanResults(
-    subscriber.onerep_profile_id,
-  );
+  const scanData = await getScanResultsWithBroker(subscriber.onerep_profile_id);
   const allSubscriberBreaches = await getSubscriberBreaches({
     fxaUid: subscriber.fxa_uid,
     countryCode: assumedCountryCode,

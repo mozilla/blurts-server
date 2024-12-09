@@ -45,7 +45,6 @@ const meta: Meta<typeof AutomaticRemoveView> = {
 };
 export default meta;
 type Story = StoryObj<typeof AutomaticRemoveView>;
-const dataBrokerData: LatestOnerepScanData = { scan: null, results: [] };
 
 export const AutomaticRemoveViewStory: Story = {
   name: "1e. Automatically resolve brokers",
@@ -64,7 +63,6 @@ export const AutomaticRemoveViewStory: Story = {
             latestScanData: mockedScanData,
             subscriberBreaches: mockedBreaches,
             user: mockedSession.user,
-            dataBrokersRemovalUnderMaintenance: dataBrokerData,
           }}
           subscriberEmails={[]}
           nextStep={{

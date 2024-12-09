@@ -17,7 +17,6 @@ import {
 import { BreachDataTypes } from "../../../../../../../../../functions/universal/breach";
 import { StepDeterminationData } from "../../../../../../../../../functions/server/getRelevantGuidedSteps";
 import { OnerepScanRow } from "knex/types/tables";
-import { LatestOnerepScanData } from "../../../../../../../../../../db/tables/onerep_scans";
 
 const user = createUserWithPremiumSubscription();
 
@@ -80,8 +79,6 @@ const HighRiskBreachWrapper = (props: {
     onerep_scan_status: "finished",
   };
 
-  const dataBrokerData: LatestOnerepScanData = { scan: null, results: [] };
-
   const data: StepDeterminationData =
     props.scanStatus === "empty"
       ? {
@@ -89,7 +86,6 @@ const HighRiskBreachWrapper = (props: {
           latestScanData: { results: [], scan: mockedScan },
           subscriberBreaches: mockedBreaches,
           user: mockedSession.user,
-          dataBrokersRemovalUnderMaintenance: dataBrokerData,
         }
       : props.scanStatus === "not_started"
         ? {
@@ -97,14 +93,12 @@ const HighRiskBreachWrapper = (props: {
             latestScanData: { results: [], scan: null },
             subscriberBreaches: mockedBreaches,
             user: mockedSession.user,
-            dataBrokersRemovalUnderMaintenance: dataBrokerData,
           }
         : {
             countryCode: "nl",
             latestScanData: null,
             subscriberBreaches: mockedBreaches,
             user: mockedSession.user,
-            dataBrokersRemovalUnderMaintenance: dataBrokerData,
           };
 
   return (

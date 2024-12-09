@@ -6,7 +6,7 @@
 
 import React, { ReactNode, useId } from "react";
 import Image from "next/image";
-import { OnerepScanResultRow } from "knex/types/tables";
+import { OnerepScanResultDataBrokerRow } from "knex/types/tables";
 import styles from "./ExposureCard.module.scss";
 import { StatusPill } from "../../server/StatusPill";
 import { ChevronDown } from "../../server/Icons";
@@ -19,7 +19,7 @@ import { ExperimentData } from "../../../../telemetry/generated/nimbus/experimen
 import SparkleImage from "../assets/sparkle.png";
 
 export type ScanResultCardProps = {
-  scanResult: OnerepScanResultRow;
+  scanResult: OnerepScanResultDataBrokerRow;
   locale: string;
   resolutionCta: ReactNode;
   isPremiumUser: boolean;
@@ -29,7 +29,6 @@ export type ScanResultCardProps = {
   experimentData?: ExperimentData;
   removalTimeEstimate?: number;
   onToggleExpanded: () => void;
-  dataBrokersRemovalUnderMaintenance: boolean;
 };
 
 export const ScanResultCard = (props: ScanResultCardProps) => {
@@ -119,7 +118,7 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
   const dataBrokerDescription = () => {
     // Data broker cards manually resolved do not change their status to "removed";
     // instead, we track them using the "manually_resolved" property.
-    if (props.dataBrokersRemovalUnderMaintenance) {
+    if (scanResult.broker_status === "removal_under_maintenance") {
       if (scanResult.manually_resolved) {
         return l10n.getFragment(
           "exposure-card-description-info-for-sale-fixed-removal-under-maintenance-manually-fixed",
@@ -250,7 +249,7 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
       );
     }
 
-    if (props.dataBrokersRemovalUnderMaintenance) {
+    if (props.scanResult.broker_status === "removal_under_maintenance") {
       return <span>{props.resolutionCta}</span>;
     }
 
@@ -325,7 +324,7 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
             <dd>
               <StatusPill
                 isRemovalUnderMaintenance={
-                  props.dataBrokersRemovalUnderMaintenance
+                  scanResult.broker_status === "removal_under_maintenance"
                 }
                 exposure={scanResult}
                 note={statusPillNote}

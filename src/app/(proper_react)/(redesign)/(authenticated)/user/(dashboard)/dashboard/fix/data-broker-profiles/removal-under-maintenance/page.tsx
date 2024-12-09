@@ -11,7 +11,7 @@ import {
 import { getCountryCode } from "../../../../../../../../../functions/server/getCountryCode";
 import { headers } from "next/headers";
 import {
-  getLatestOnerepScanResults,
+  getScanResultsWithBroker,
   getScanResultsWithBrokerUnderMaintenance,
 } from "../../../../../../../../../../db/tables/onerep_scans";
 import { getOnerepProfileId } from "../../../../../../../../../../db/tables/subscribers";
@@ -27,7 +27,7 @@ export default async function RemovalUnderMaintenance() {
     redirect("/user/dashboard");
   }
   const profileId = await getOnerepProfileId(session.user.subscriber.id);
-  const latestScan = await getLatestOnerepScanResults(profileId);
+  const latestScan = await getScanResultsWithBroker(profileId);
   const scansWithRemovalUnderMaintenance =
     (await getScanResultsWithBrokerUnderMaintenance(profileId)) ?? null;
 
@@ -39,7 +39,6 @@ export default async function RemovalUnderMaintenance() {
       fxaUid: session.user.subscriber.fxa_uid,
       countryCode,
     }),
-    dataBrokersRemovalUnderMaintenance: scansWithRemovalUnderMaintenance,
   };
 
   const getNextStep = getNextGuidedStep(data, "DataBrokerManualRemoval");

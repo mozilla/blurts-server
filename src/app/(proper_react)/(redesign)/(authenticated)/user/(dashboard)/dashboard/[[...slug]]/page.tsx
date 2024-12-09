@@ -13,9 +13,8 @@ import {
   hasPremium,
 } from "../../../../../../../functions/universal/user";
 import {
-  getLatestOnerepScanResults,
   getLatestScanForProfileByReason,
-  getScanResultsWithBrokerUnderMaintenance,
+  getScanResultsWithBroker,
   getScansCountForProfile,
 } from "../../../../../../../../db/tables/onerep_scans";
 import {
@@ -103,9 +102,7 @@ export default async function DashboardPage({ params, searchParams }: Props) {
     return redirect("/user/welcome");
   }
 
-  const latestScan = await getLatestOnerepScanResults(profileId);
-  const dataBrokersWithRemovalUnderMaintenance =
-    await getScanResultsWithBrokerUnderMaintenance(profileId);
+  const latestScan = await getScanResultsWithBroker(profileId);
 
   const scanCount =
     typeof profileId === "number"
@@ -156,11 +153,7 @@ export default async function DashboardPage({ params, searchParams }: Props) {
       user={session.user}
       isEligibleForPremium={userIsEligibleForPremium}
       isEligibleForFreeScan={userIsEligibleForFreeScan}
-      userScanData={{
-        scans: latestScan,
-        dataBrokersRemovalUnderMaintenance:
-          dataBrokersWithRemovalUnderMaintenance,
-      }}
+      userScanData={latestScan}
       userBreaches={subBreaches}
       enabledFeatureFlags={enabledFeatureFlags}
       monthlySubscriptionUrl={`${monthlySubscriptionUrl}&${additionalSubplatParams.toString()}`}

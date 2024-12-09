@@ -11,8 +11,8 @@ import {
 import { StateAbbr } from "../../../utils/states.js";
 import {
   getEmailForProfile,
-  getLatestOnerepScanResults,
   getLatestScanForProfileByReason,
+  getScanResultsWithBroker,
 } from "../../../db/tables/onerep_scans";
 import { RemovalStatus } from "../universal/scanResult.js";
 import { logger } from "./logging";
@@ -385,7 +385,7 @@ export async function isEligibleForFreeScan(
   }
 
   const profileId = await getOnerepProfileId(user.subscriber.id);
-  const scanResult = await getLatestOnerepScanResults(profileId);
+  const scanResult = await getScanResultsWithBroker(profileId);
 
   if (scanResult.scan) {
     logger.warn("User has already used free scan");

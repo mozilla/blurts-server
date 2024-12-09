@@ -12,7 +12,6 @@ export type StepDeterminationData = {
   countryCode: string;
   latestScanData: LatestOnerepScanData | null;
   subscriberBreaches: SubscriberBreach[];
-  dataBrokersRemovalUnderMaintenance: LatestOnerepScanData;
 };
 
 // Note: the order is important; it determines in which order the user will be
@@ -140,8 +139,11 @@ export function isEligibleForStep(
   if (stepId === "DataBrokerManualRemoval") {
     const dataBrokersRequireManualRemoval =
       /* c8 ignore next */
-      data.dataBrokersRemovalUnderMaintenance?.results ?? [];
-    return dataBrokersRequireManualRemoval.length > 0;
+      data.latestScanData?.results?.some((result) => {
+        return result.broker_status === "removal_under_maintenance";
+      }) ?? false;
+
+    return dataBrokersRequireManualRemoval;
   }
 
   if (stepId === "Scan") {
@@ -244,10 +246,13 @@ export function hasCompletedStep(
   stepId: StepLink["id"],
 ): boolean {
   if (stepId === "DataBrokerManualRemoval") {
-    const dataBrokersRequireManualRemoval =
-      /* c8 ignore next */
-      data.dataBrokersRemovalUnderMaintenance?.results ?? [];
-    return dataBrokersRequireManualRemoval.length === 0;
+    return (
+      data.latestScanData?.results.every(
+        (result) =>
+          result.broker_status === "removal_under_maintenance" &&
+          result.manually_resolved,
+      ) ?? false
+    );
   }
 
   if (stepId === "Scan") {

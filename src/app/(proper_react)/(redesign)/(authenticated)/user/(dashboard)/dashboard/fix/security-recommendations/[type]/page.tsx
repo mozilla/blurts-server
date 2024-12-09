@@ -14,10 +14,7 @@ import { getSubscriberBreaches } from "../../../../../../../../../functions/serv
 import { getSubscriberEmails } from "../../../../../../../../../functions/server/getSubscriberEmails";
 import { getCountryCode } from "../../../../../../../../../functions/server/getCountryCode";
 import { getOnerepProfileId } from "../../../../../../../../../../db/tables/subscribers";
-import {
-  getLatestOnerepScanResults,
-  getScanResultsWithBrokerUnderMaintenance,
-} from "../../../../../../../../../../db/tables/onerep_scans";
+import { getScanResultsWithBroker } from "../../../../../../../../../../db/tables/onerep_scans";
 import { isEligibleForPremium } from "../../../../../../../../../functions/universal/premium";
 
 interface SecurityRecommendationsProps {
@@ -46,9 +43,7 @@ export default async function SecurityRecommendations({
   }
 
   const profileId = await getOnerepProfileId(session.user.subscriber.id);
-  const scanData = await getLatestOnerepScanResults(profileId);
-  const dataBrokersWithRemovalUnderMaintenance =
-    await getScanResultsWithBrokerUnderMaintenance(profileId);
+  const scanData = await getScanResultsWithBroker(profileId);
 
   return (
     <SecurityRecommendationsLayout
@@ -59,8 +54,6 @@ export default async function SecurityRecommendations({
         subscriberBreaches: breaches,
         user: session.user,
         latestScanData: scanData,
-        dataBrokersRemovalUnderMaintenance:
-          dataBrokersWithRemovalUnderMaintenance,
       }}
       isEligibleForPremium={isEligibleForPremium(countryCode)}
     />

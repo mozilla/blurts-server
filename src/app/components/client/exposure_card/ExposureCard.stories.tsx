@@ -12,7 +12,6 @@ import {
 } from "../../../../apiMocks/mockData";
 import { defaultExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 import { BreachDataTypes } from "../../../functions/universal/breach";
-import { LatestOnerepScanData } from "../../../../db/tables/onerep_scans";
 
 const meta: Meta<typeof ExposureCard> = {
   title: "Dashboard/Exposures/Exposure Card",
@@ -54,24 +53,14 @@ const ScanMockItemInProgress = createRandomScanResult({
 const ScanMockItemRemovalUnderMaintenance = createRandomScanResult({
   status: "optout_in_progress",
   manually_resolved: false,
-  onerep_scan_result_id: 10,
-});
-const DataBrokerMockItemRemovalUnderMaintenance = createRandomScanResult({
   broker_status: "removal_under_maintenance",
-  manually_resolved: false,
-  onerep_scan_result_id: 10,
 });
+
 const ScanMockItemRemovalUnderMaintenanceFixed = createRandomScanResult({
   status: "optout_in_progress",
   manually_resolved: true,
-  onerep_scan_result_id: 10,
-});
-const DataBrokerMockItemRemovalUnderMaintenanceFixed = createRandomScanResult({
   broker_status: "removal_under_maintenance",
-  manually_resolved: true,
-  onerep_scan_result_id: 10,
 });
-
 const BreachMockItemRemoved = createRandomBreach({
   isResolved: true,
   dataClassesEffected: [
@@ -82,14 +71,6 @@ const BreachMockItemRemoved = createRandomBreach({
   ],
 });
 const BreachMockItemNew = createRandomBreach({ isResolved: false });
-
-const dataBrokerData: LatestOnerepScanData = {
-  scan: null,
-  results: [
-    DataBrokerMockItemRemovalUnderMaintenance,
-    DataBrokerMockItemRemovalUnderMaintenanceFixed,
-  ],
-};
 
 export const DataBrokerRequestedRemoval: Story = {
   args: {
@@ -139,7 +120,6 @@ export const DataBrokerRemovalUnderMaintenance: Story = {
     exposureImg: FamilyTreeImage,
     exposureData: ScanMockItemRemovalUnderMaintenance,
     isPremiumUser: true,
-    dataBrokersRemovalUnderMaintenance: dataBrokerData,
   },
 };
 
@@ -148,7 +128,6 @@ export const DataBrokerRemovalUnderMaintenanceFixed: Story = {
     exposureImg: FamilyTreeImage,
     exposureData: ScanMockItemRemovalUnderMaintenanceFixed,
     isPremiumUser: true,
-    dataBrokersRemovalUnderMaintenance: dataBrokerData,
   },
 };
 

@@ -5,20 +5,23 @@
 "use client";
 
 import React, { ReactNode } from "react";
-import { OnerepScanResultRow } from "knex/types/tables";
+import {
+  OnerepScanResultDataBrokerRow,
+  OnerepScanResultRow,
+} from "knex/types/tables";
 import { StaticImageData } from "next/image";
 import { SubscriberBreach } from "../../../../utils/subscriberBreaches";
 import { ScanResultCard } from "./ScanResultCard";
 import { SubscriberBreachCard } from "./SubscriberBreachCard";
 import { FeatureFlagName } from "../../../../db/tables/featureFlags";
 import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
-import { LatestOnerepScanData } from "../../../../db/tables/onerep_scans";
-import { isDataBrokerUnderMaintenance } from "../../../(proper_react)/(redesign)/(authenticated)/user/(dashboard)/dashboard/View";
 
-export type Exposure = OnerepScanResultRow | SubscriberBreach;
+export type Exposure = OnerepScanResultDataBrokerRow | SubscriberBreach;
 
 // Typeguard function
-export function isScanResult(obj: Exposure): obj is OnerepScanResultRow {
+export function isScanResult(
+  obj: Exposure,
+): obj is OnerepScanResultDataBrokerRow {
   return (obj as OnerepScanResultRow).data_broker !== undefined; // only ScanResult has an instance of data_broker
 }
 
@@ -34,27 +37,11 @@ export type ExposureCardProps = {
   experimentData: ExperimentData;
   removalTimeEstimate?: number;
   onToggleExpanded: () => void;
-  dataBrokersRemovalUnderMaintenance: LatestOnerepScanData;
 };
 
 export const ExposureCard = ({ exposureData, ...props }: ExposureCardProps) => {
-  const dataBrokersResultsRemovalUnderMaintenance =
-    /* c8 ignore next */
-    props.dataBrokersRemovalUnderMaintenance?.results ?? [];
-
-  const dataBrokerUnderMaintenance =
-    isScanResult(exposureData) &&
-    isDataBrokerUnderMaintenance(
-      exposureData,
-      dataBrokersResultsRemovalUnderMaintenance,
-    );
-
   return isScanResult(exposureData) ? (
-    <ScanResultCard
-      {...props}
-      scanResult={exposureData}
-      dataBrokersRemovalUnderMaintenance={dataBrokerUnderMaintenance || false}
-    />
+    <ScanResultCard {...props} scanResult={exposureData} />
   ) : (
     <SubscriberBreachCard {...props} subscriberBreach={exposureData} />
   );
