@@ -262,7 +262,7 @@ export class LandingPage {
   }
 
   async goToSignIn() {
-    await this.signInButton.click({ timeout: 500 });
+    await this.page.waitForTimeout(500); // sign in button may not be loaded at this point.
     await this.signInButton.click();
     // FxA can take a while to load on stage:
     await this.page.waitForURL("**/oauth/**", { timeout: 60_000 });
