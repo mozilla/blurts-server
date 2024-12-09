@@ -144,7 +144,6 @@ async function getLatestOnerepScan(
 /*
 Note: please, don't write the results of this function back to the database!
 */
-// Deprecated
 // async function getLatestOnerepScanResults(
 //   onerepProfileId: number | null,
 // ): Promise<LatestOnerepScanData> {
@@ -445,14 +444,13 @@ async function getScanResultsWithBroker(
     return {
       scan: null,
       results: [],
-    };
+    } as LatestOnerepScanData;
   }
 
   const scan = await getLatestOnerepScan(onerepProfileId);
+  let scanResults: OnerepScanResultDataBrokerRow[] = [];
 
-  const scanResults: OnerepScanResultDataBrokerRow[] = await knex(
-    "onerep_scan_results as sr",
-  )
+  scanResults = await knex("onerep_scan_results as sr")
     .select(
       "sr.*",
       "s.*",
@@ -460,8 +458,8 @@ async function getScanResultsWithBroker(
       "db.status as broker_status", // rename to avoid collision
     )
     .innerJoin("onerep_scans as s", "sr.onerep_scan_id", "s.onerep_scan_id")
-    .join("onerep_data_brokers as db", "sr.data_broker", "db.data_broker")
     .where("s.onerep_profile_id", onerepProfileId)
+    .join("onerep_data_brokers as db", "sr.data_broker", "db.data_broker")
     .orderBy("sr.onerep_scan_result_id");
 
   return { scan: scan ?? null, results: scanResults } as LatestOnerepScanData;
