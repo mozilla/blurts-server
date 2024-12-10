@@ -18,12 +18,19 @@ import {
 } from "knex/types/tables";
 import { RemovalStatus } from "../../app/functions/universal/scanResult.js";
 import { CONST_DAY_MILLISECONDS } from "../../constants.ts";
+import { getQaCustomBrokers, getQaToggleRow } from "./qa_customs.ts";
 
 const knex = createDbConnection();
 
 export interface LatestOnerepScanData {
   scan: OnerepScanRow | null;
   results: OnerepScanResultDataBrokerRow[];
+}
+
+/** @deprecated This has been replaced by the LatestOnerepScanData type which only recognizes OnerepScanResultDataBrokerRow as the result type */
+export interface LatestOnerepScanDataOld {
+  scan: OnerepScanRow | null;
+  results: OnerepScanResultRow[];
 }
 
 async function getAllScansForProfile(
@@ -144,55 +151,59 @@ async function getLatestOnerepScan(
 /*
 Note: please, don't write the results of this function back to the database!
 */
-// async function getLatestOnerepScanResults(
-//   onerepProfileId: number | null,
-// ): Promise<LatestOnerepScanData> {
-//   const scan = await getLatestOnerepScan(onerepProfileId);
+/**
+ * @param onerepProfileId
+ * @deprecated This has been replaced by getScanResultsWithBroker
+ */
+async function getLatestOnerepScanResults(
+  onerepProfileId: number | null,
+): Promise<LatestOnerepScanDataOld> {
+  const scan = await getLatestOnerepScan(onerepProfileId);
 
-//   let results: OnerepScanResultRow[] = [];
+  let results: OnerepScanResultRow[] = [];
 
-//   if (scan !== null) {
-//     const qaToggles = await getQaToggleRow(onerepProfileId);
-//     let showCustomBrokers = false;
-//     let showRealBrokers = true;
+  if (scan !== null) {
+    const qaToggles = await getQaToggleRow(onerepProfileId);
+    let showCustomBrokers = false;
+    let showRealBrokers = true;
 
-//     if (qaToggles) {
-//       showCustomBrokers = qaToggles.show_custom_brokers;
-//       showRealBrokers = qaToggles.show_real_brokers;
-//     }
+    if (qaToggles) {
+      showCustomBrokers = qaToggles.show_custom_brokers;
+      showRealBrokers = qaToggles.show_real_brokers;
+    }
 
-//     const qaBrokers = !showCustomBrokers
-//       ? []
-//       : await getQaCustomBrokers(onerepProfileId, scan?.onerep_scan_id);
-//     if (!showRealBrokers) {
-//       logger.info("get_latest_results_custom_brokers", {
-//         onerepProfileId,
-//         onerepScanId: scan?.onerep_scan_id,
-//         qaBrokers,
-//       });
-//       results = qaBrokers;
-//     } else {
-//       // Fetch initial results from onerep_scan_results
-//       const scanResults = (await knex("onerep_scan_results")
-//         .select("*")
-//         .distinctOn("link")
-//         .where("onerep_profile_id", onerepProfileId)
-//         .innerJoin(
-//           "onerep_scans",
-//           "onerep_scan_results.onerep_scan_id",
-//           "onerep_scans.onerep_scan_id",
-//         )
-//         .orderBy("link")
-//         .orderBy("onerep_scan_result_id", "desc")) as OnerepScanResultRow[];
-//       results = [...scanResults, ...qaBrokers];
-//     }
-//   }
+    const qaBrokers = !showCustomBrokers
+      ? []
+      : await getQaCustomBrokers(onerepProfileId, scan?.onerep_scan_id);
+    if (!showRealBrokers) {
+      logger.info("get_latest_results_custom_brokers", {
+        onerepProfileId,
+        onerepScanId: scan?.onerep_scan_id,
+        qaBrokers,
+      });
+      results = qaBrokers;
+    } else {
+      // Fetch initial results from onerep_scan_results
+      const scanResults = (await knex("onerep_scan_results")
+        .select("*")
+        .distinctOn("link")
+        .where("onerep_profile_id", onerepProfileId)
+        .innerJoin(
+          "onerep_scans",
+          "onerep_scan_results.onerep_scan_id",
+          "onerep_scans.onerep_scan_id",
+        )
+        .orderBy("link")
+        .orderBy("onerep_scan_result_id", "desc")) as OnerepScanResultRow[];
+      results = [...scanResults, ...qaBrokers];
+    }
+  }
 
-//   return {
-//     scan: scan ?? null,
-//     results,
-//   };
-// }
+  return {
+    scan: scan ?? null,
+    results,
+  };
+}
 
 async function setOnerepProfileId(
   subscriber: SubscriberRow,
@@ -471,7 +482,6 @@ export {
   getScanResults,
   getLatestOnerepScan,
   getAllScanResults,
-  // getLatestOnerepScanResults,
   setOnerepProfileId,
   setOnerepScan,
   addOnerepScanResults,
@@ -485,4 +495,6 @@ export {
   getEmailForProfile,
   getScanResultsWithBrokerUnderMaintenance,
   getScanResultsWithBroker,
+  /** @deprecated This has been replaced by getScanResultsWithBroker */
+  getLatestOnerepScanResults,
 };

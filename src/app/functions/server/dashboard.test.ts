@@ -13,6 +13,7 @@ import {
 } from "./dashboard";
 import { SubscriberBreach } from "../../../utils/subscriberBreaches";
 import { RemovalStatus, RemovalStatusMap } from "../universal/scanResult";
+import { faker } from "@faker-js/faker";
 
 const unresolvedBreaches: SubscriberBreach[] = [
   {
@@ -148,7 +149,7 @@ const unresolvedScannedResults: OnerepScanResultDataBrokerRow[] = [
     manually_resolved: false,
     broker_status: "active",
     scan_result_status: "optout_in_progress",
-    url: "teststring.url",
+    url: faker.internet.url(),
   },
 ];
 const inProgressScannedResults: OnerepScanResultDataBrokerRow[] = [
@@ -195,7 +196,7 @@ const inProgressScannedResults: OnerepScanResultDataBrokerRow[] = [
     manually_resolved: false,
     broker_status: "active",
     scan_result_status: "optout_in_progress",
-    url: "teststring.url",
+    url: faker.internet.url(),
   },
 ];
 const manuallyResolvedScannedResults: OnerepScanResultDataBrokerRow[] = [
@@ -242,7 +243,7 @@ const manuallyResolvedScannedResults: OnerepScanResultDataBrokerRow[] = [
     manually_resolved: true,
     broker_status: "active",
     scan_result_status: "optout_in_progress",
-    url: "teststring.url",
+    url: faker.internet.url(),
   },
 ];
 const allResolvedScannedResults: OnerepScanResultDataBrokerRow[] = [
@@ -289,7 +290,7 @@ const allResolvedScannedResults: OnerepScanResultDataBrokerRow[] = [
     manually_resolved: false,
     broker_status: "active",
     scan_result_status: "optout_in_progress",
-    url: "teststring.url",
+    url: faker.internet.url(),
   },
   {
     id: 2,
@@ -334,7 +335,7 @@ const allResolvedScannedResults: OnerepScanResultDataBrokerRow[] = [
     manually_resolved: false,
     broker_status: "active",
     scan_result_status: "optout_in_progress",
-    url: "teststring.url",
+    url: faker.internet.url(),
   },
   {
     id: 3,
@@ -379,7 +380,7 @@ const allResolvedScannedResults: OnerepScanResultDataBrokerRow[] = [
     manually_resolved: false,
     broker_status: "active",
     scan_result_status: "optout_in_progress",
-    url: "teststring.url",
+    url: faker.internet.url(),
   },
 ];
 const allResolvedBreaches: SubscriberBreach[] = [
@@ -888,7 +889,7 @@ describe("getDashboardSummary", () => {
         updated_at: new Date(),
         broker_status: "active",
         scan_result_status: "optout_in_progress",
-        url: "teststring.url",
+        url: faker.internet.url(),
       };
     }
 
