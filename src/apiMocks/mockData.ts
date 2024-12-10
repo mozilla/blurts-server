@@ -44,6 +44,12 @@ export type RandomScanResultOptions = Partial<{
   broker_status: DataBrokerRemovalStatus;
 }>;
 
+/**
+ * Generates scan result with randomly-generated mock data.
+ *
+ * @param options
+ * @returns A single scan result.
+ */
 export function createRandomScanResult(
   options: RandomScanResultOptions = {},
 ): OnerepScanResultDataBrokerRow {
