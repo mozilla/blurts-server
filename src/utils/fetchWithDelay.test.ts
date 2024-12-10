@@ -19,15 +19,11 @@ describe("fetchWithDelay", () => {
   });
 
   it("throws an error", async () => {
-    global.fetch = jest.fn().mockRejectedValueOnce("fetch failed");
-    try {
-      expect(
-        await fetchWithDelay(`${faker.internet.url()}/api/test`, {
-          delay: 750,
-        }),
-      ).toThrow("fetch failed");
-    } catch (_) {
-      // Don’t do anything.
-    }
+    global.fetch = jest.fn().mockRejectedValueOnce(new Error("fetch failed"));
+    await expect(async () => {
+      await fetchWithDelay(`${faker.internet.url()}/api/test`, {
+        delay: 750,
+      });
+    }).rejects.toThrow("fetch failed");
   });
 });
