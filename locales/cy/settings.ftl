@@ -72,10 +72,10 @@ settings-alert-preferences-allow-monthly-monitor-report-subtitle = Diweddariad m
 
 ## Settings page redesign
 
-settings-tab-label-edit-info = Golygu eich gwybodaeth
+settings-tab-label-edit-info = Golygu eich manylion
 settings-tab-label-notifications = Gosod hysbysiadau
 settings-tab-label-manage-account = Rheoli cyfrif
 settings-tab-subtitle-manage-account = Rheoli eich cyfrif { -product-name }.
 settings-tab-notifications-marketing-title = Cyfathrebu marchnata
-settings-tab-notifications-marketing-text = Diweddariadau cyfnodol am { -brand-monitor }, { -brand-mozilla }, a'n cynhyrchion diogelwch eraill.
+settings-tab-notifications-marketing-text = Diweddariadau o bryd i'w gilydd am { -brand-monitor }, { -brand-mozilla }, a'n cynnyrch diogelwch eraill.
 settings-tab-notifications-marketing-link-label = Ewch i osodiadau e-bost { -brand-mozilla }
