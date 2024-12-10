@@ -18,6 +18,7 @@ import { getCronjobL10n } from "../../app/functions/l10n/cronjobs";
 import { sanitizeSubscriberRow } from "../../app/functions/server/sanitize";
 import { refreshStoredScanResults } from "../../app/functions/server/refreshStoredScanResults";
 import { getScanResultsWithBroker } from "../../db/tables/onerep_scans";
+import { hasPremium } from "../../app/functions/universal/user";
 
 type SubscriberFirstRemovedScanResult = {
   subscriber: SubscriberRow;
@@ -60,6 +61,7 @@ async function run() {
           }
           const latestScan = await getScanResultsWithBroker(
             subscriber.onerep_profile_id,
+            hasPremium(subscriber),
           );
 
           let firstRemovedScanResult = null;

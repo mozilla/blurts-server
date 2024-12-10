@@ -17,6 +17,7 @@ import { getScanResultsWithBroker } from "../../db/tables/onerep_scans";
 import { getSubscriberBreaches } from "../../app/functions/server/getSubscriberBreaches";
 import { refreshStoredScanResults } from "../../app/functions/server/refreshStoredScanResults";
 import { getSignupLocaleCountry } from "../../emails/functions/getSignupLocaleCountry";
+import { hasPremium } from "../../app/functions/universal/user";
 
 void run();
 
@@ -66,6 +67,7 @@ async function sendMonthlyActivityEmail(subscriber: SubscriberRow) {
 
   const latestScan = await getScanResultsWithBroker(
     subscriber.onerep_profile_id,
+    hasPremium(subscriber),
   );
   const subscriberBreaches = await getSubscriberBreaches({
     fxaUid: subscriber.fxa_uid,

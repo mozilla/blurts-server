@@ -13,6 +13,7 @@ import { getCountryCode } from "../../../../../../../../../functions/server/getC
 import { getSubscriberBreaches } from "../../../../../../../../../functions/server/getSubscriberBreaches";
 import { getSubscriberEmails } from "../../../../../../../../../functions/server/getSubscriberEmails";
 import { getL10n } from "../../../../../../../../../functions/l10n/serverComponents";
+import { hasPremium } from "../../../../../../../../../functions/universal/user";
 
 export default async function ViewDataBrokers() {
   const session = await getServerSession();
@@ -23,7 +24,10 @@ export default async function ViewDataBrokers() {
 
   const countryCode = getCountryCode(headers());
   const profileId = await getOnerepProfileId(session.user.subscriber.id);
-  const latestScan = await getScanResultsWithBroker(profileId);
+  const latestScan = await getScanResultsWithBroker(
+    profileId,
+    hasPremium(session.user),
+  );
 
   const data: StepDeterminationData = {
     countryCode,

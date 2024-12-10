@@ -16,6 +16,7 @@ import { getCountryCode } from "../../../../../../../../../functions/server/getC
 import { getOnerepProfileId } from "../../../../../../../../../../db/tables/subscribers";
 import { getScanResultsWithBroker } from "../../../../../../../../../../db/tables/onerep_scans";
 import { isEligibleForPremium } from "../../../../../../../../../functions/universal/premium";
+import { hasPremium } from "../../../../../../../../../functions/universal/user";
 
 interface SecurityRecommendationsProps {
   params: {
@@ -43,7 +44,10 @@ export default async function SecurityRecommendations({
   }
 
   const profileId = await getOnerepProfileId(session.user.subscriber.id);
-  const scanData = await getScanResultsWithBroker(profileId);
+  const scanData = await getScanResultsWithBroker(
+    profileId,
+    hasPremium(session.user),
+  );
 
   return (
     <SecurityRecommendationsLayout

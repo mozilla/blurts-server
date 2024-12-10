@@ -17,6 +17,7 @@ import {
 import { RemovalStatus } from "../universal/scanResult.js";
 import { logger } from "./logging";
 import { isUsingMockONEREPEndpoint } from "../universal/mock.ts";
+import { hasPremium } from "../universal/user.ts";
 
 export const monthlyScansQuota = parseInt(
   (process.env.MONTHLY_SCANS_QUOTA as string) ?? "0",
@@ -385,7 +386,10 @@ export async function isEligibleForFreeScan(
   }
 
   const profileId = await getOnerepProfileId(user.subscriber.id);
-  const scanResult = await getScanResultsWithBroker(profileId);
+  const scanResult = await getScanResultsWithBroker(
+    profileId,
+    hasPremium(user),
+  );
 
   if (scanResult.scan) {
     logger.warn("User has already used free scan");

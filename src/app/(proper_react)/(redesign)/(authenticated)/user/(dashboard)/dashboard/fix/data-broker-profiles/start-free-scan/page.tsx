@@ -12,6 +12,7 @@ import { StepDeterminationData } from "../../../../../../../../../functions/serv
 import { getSubscriberBreaches } from "../../../../../../../../../functions/server/getSubscriberBreaches";
 import { getSubscriberEmails } from "../../../../../../../../../functions/server/getSubscriberEmails";
 import { StartFreeScanView } from "./StartFreeScanView";
+import { hasPremium } from "../../../../../../../../../functions/universal/user";
 
 export default async function StartFreeScanPage() {
   const countryCode = getCountryCode(headers());
@@ -28,7 +29,10 @@ export default async function StartFreeScanPage() {
 
   const latestScanData =
     typeof onerepProfileId === "number"
-      ? await getScanResultsWithBroker(onerepProfileId)
+      ? await getScanResultsWithBroker(
+          onerepProfileId,
+          hasPremium(session.user),
+        )
       : undefined;
   if (latestScanData?.scan) {
     // If the user already has done a scan, let them view their results:

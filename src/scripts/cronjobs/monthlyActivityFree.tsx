@@ -18,6 +18,7 @@ import { getSignupLocaleCountry } from "../../emails/functions/getSignupLocaleCo
 import createDbConnection from "../../db/connect";
 import { logger } from "../../app/functions/server/logging";
 import { getMonthlyActivityFreeUnsubscribeLink } from "../../app/functions/cronjobs/unsubscribeLinks";
+import { hasPremium } from "../../app/functions/universal/user";
 
 await run();
 await createDbConnection().destroy();
@@ -71,6 +72,7 @@ async function sendMonthlyActivityEmail(subscriber: SubscriberRow) {
 
   const latestScan = await getScanResultsWithBroker(
     subscriber.onerep_profile_id,
+    hasPremium(subscriber),
   );
   const subscriberBreaches = await getSubscriberBreaches({
     fxaUid: subscriber.fxa_uid,

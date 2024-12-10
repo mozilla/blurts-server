@@ -142,6 +142,7 @@ export async function triggerMonthlyActivityFree(emailAddress: string) {
   }
   const latestScan = await getScanResultsWithBroker(
     subscriber.onerep_profile_id,
+    hasPremium(session.user),
   );
   const data = getDashboardSummary(
     latestScan.results,
@@ -180,6 +181,7 @@ export async function triggerMonthlyActivityPlus(emailAddress: string) {
   }
   const latestScan = await getScanResultsWithBroker(
     subscriber.onerep_profile_id,
+    hasPremium(session.user),
   );
   const data = getDashboardSummary(
     latestScan.results,
@@ -217,7 +219,10 @@ export async function triggerBreachAlert(
   if (typeof subscriber.onerep_profile_id === "number") {
     await refreshStoredScanResults(subscriber.onerep_profile_id);
   }
-  const scanData = await getScanResultsWithBroker(subscriber.onerep_profile_id);
+  const scanData = await getScanResultsWithBroker(
+    subscriber.onerep_profile_id,
+    hasPremium(session.user),
+  );
   const allSubscriberBreaches = await getSubscriberBreaches({
     fxaUid: subscriber.fxa_uid,
     countryCode: assumedCountryCode,

@@ -14,6 +14,7 @@ import { getOnerepProfileId } from "../../../../../../../../db/tables/subscriber
 import { getScanResultsWithBroker } from "../../../../../../../../db/tables/onerep_scans";
 import { getServerSession } from "../../../../../../../functions/server/getServerSession";
 import { refreshStoredScanResults } from "../../../../../../../functions/server/refreshStoredScanResults";
+import { hasPremium } from "../../../../../../../functions/universal/user";
 
 export default async function FixPage() {
   const session = await getServerSession();
@@ -31,7 +32,10 @@ export default async function FixPage() {
     await refreshStoredScanResults(profileId);
   }
 
-  const scanData = await getScanResultsWithBroker(profileId);
+  const scanData = await getScanResultsWithBroker(
+    profileId,
+    hasPremium(session.user),
+  );
   const stepDeterminationData: StepDeterminationData = {
     countryCode: countryCode,
     user: session.user,

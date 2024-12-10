@@ -27,7 +27,10 @@ export default async function RemovalUnderMaintenance() {
     redirect("/user/dashboard");
   }
   const profileId = await getOnerepProfileId(session.user.subscriber.id);
-  const latestScan = await getScanResultsWithBroker(profileId);
+  const latestScan = await getScanResultsWithBroker(
+    profileId,
+    hasPremium(session.user),
+  );
   const scansWithRemovalUnderMaintenance =
     (await getScanResultsWithBrokerUnderMaintenance(profileId)) ?? null;
 

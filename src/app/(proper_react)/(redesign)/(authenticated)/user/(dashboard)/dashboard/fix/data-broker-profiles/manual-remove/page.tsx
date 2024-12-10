@@ -23,7 +23,10 @@ export default async function ManualRemovePage() {
 
   const countryCode = getCountryCode(headers());
   const profileId = await getOnerepProfileId(session.user.subscriber.id);
-  const scanData = await getScanResultsWithBroker(profileId);
+  const scanData = await getScanResultsWithBroker(
+    profileId,
+    hasPremium(session.user),
+  );
   const subBreaches = await getSubscriberBreaches({
     fxaUid: session.user.subscriber.fxa_uid,
     countryCode,

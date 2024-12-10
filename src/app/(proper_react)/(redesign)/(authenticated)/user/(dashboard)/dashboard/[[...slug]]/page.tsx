@@ -102,7 +102,10 @@ export default async function DashboardPage({ params, searchParams }: Props) {
     return redirect("/user/welcome");
   }
 
-  const latestScan = await getScanResultsWithBroker(profileId);
+  const latestScan = await getScanResultsWithBroker(
+    profileId,
+    hasPremium(session.user),
+  );
 
   const scanCount =
     typeof profileId === "number"

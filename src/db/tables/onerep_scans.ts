@@ -450,6 +450,7 @@ async function getScanResultsWithBrokerUnderMaintenance(
 
 async function getScanResultsWithBroker(
   onerepProfileId: number | null,
+  hasPremium: boolean | null,
 ): Promise<LatestOnerepScanData> {
   if (onerepProfileId === null) {
     return {
@@ -459,19 +460,23 @@ async function getScanResultsWithBroker(
   }
 
   const scan = await getLatestOnerepScan(onerepProfileId);
-  let scanResults: OnerepScanResultDataBrokerRow[] = [];
+  let scanResults: OnerepScanResultDataBrokerRow[] | OnerepScanResultRow[] = [];
 
-  scanResults = await knex("onerep_scan_results as sr")
-    .select(
-      "sr.*",
-      "s.*",
-      "sr.status as scan_result_status", // rename to avoid collision
-      "db.status as broker_status", // rename to avoid collision
-    )
-    .innerJoin("onerep_scans as s", "sr.onerep_scan_id", "s.onerep_scan_id")
-    .where("s.onerep_profile_id", onerepProfileId)
-    .join("onerep_data_brokers as db", "sr.data_broker", "db.data_broker")
-    .orderBy("sr.onerep_scan_result_id");
+  if (hasPremium) {
+    scanResults = await knex("onerep_scan_results as sr")
+      .select(
+        "sr.*",
+        "s.*",
+        "sr.status as scan_result_status", // rename to avoid collision
+        "db.status as broker_status", // rename to avoid collision
+      )
+      .innerJoin("onerep_scans as s", "sr.onerep_scan_id", "s.onerep_scan_id")
+      .where("s.onerep_profile_id", onerepProfileId)
+      .join("onerep_data_brokers as db", "sr.data_broker", "db.data_broker")
+      .orderBy("sr.onerep_scan_result_id");
+  } else {
+    scanResults = (await getLatestOnerepScanResults(onerepProfileId)).results;
+  }
 
   return { scan: scan ?? null, results: scanResults } as LatestOnerepScanData;
 }

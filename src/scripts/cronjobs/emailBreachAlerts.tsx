@@ -284,6 +284,7 @@ export async function poll(
               ) {
                 const scanData = await getScanResultsWithBroker(
                   recipient.onerep_profile_id,
+                  hasPremium(recipient),
                 );
                 const allSubscriberBreaches = await getSubscriberBreaches({
                   fxaUid: recipient.fxa_uid,
