@@ -338,7 +338,9 @@ export const getUserDashboardState = (
      * - Scan: Unresolved
      */
     isMatchingContent(contentProps, {
-      isRelevantGuidedStep: relevantGuidedStep.id === "Scan",
+      isRelevantGuidedStep:
+        relevantGuidedStep.id === "Scan" ||
+        relevantGuidedStep.id === "DataBrokerManualRemoval",
       hasExposures: true,
       hasUnresolvedBreaches: false,
       hasUnresolvedBrokers: true,
