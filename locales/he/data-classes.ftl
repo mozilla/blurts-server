@@ -2,7 +2,8 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-## Breach Data Classes
+
+# Breach Data Classes
 
 account-balances = יתרות בחשבון
 address-book-contacts = פרטי אנשי קשר
@@ -16,7 +17,7 @@ avatars = אווטארים
 bank-account-numbers = מספרי חשבון בנק
 beauty-ratings = דירוגי יופי
 biometric-data = נתונים ביומטריים
-# This string is the shortened version of "Biographies", and 
+# This string is the shortened version of "Biographies", and
 # refers to biographical data about a user.
 bios = פרטים ביוגרפיים
 browser-user-agent-details = פרטי סוכן משתמש בדפדפן
