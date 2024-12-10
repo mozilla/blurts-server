@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { OnerepScanResultRow } from "knex/types/tables";
+import { OnerepScanResultDataBrokerRow } from "knex/types/tables";
 import { BreachDataTypes } from "../universal/breach";
 import { RemovalStatusMap } from "../universal/scanResult";
 import { SubscriberBreach } from "../../../utils/subscriberBreaches";
@@ -93,7 +93,7 @@ export const dataClassKeyMap: Record<keyof DataPoints, string> = {
 };
 
 export function getDashboardSummary(
-  scannedResults: OnerepScanResultRow[],
+  scannedResults: OnerepScanResultDataBrokerRow[],
   subscriberBreaches: SubscriberBreach[],
 ): DashboardSummary {
   const summary: DashboardSummary = {

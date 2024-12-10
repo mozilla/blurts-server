@@ -5,7 +5,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { OnerepScanResultRow } from "knex/types/tables";
+import { OnerepScanResultDataBrokerRow } from "knex/types/tables";
 import { Button } from "../../../../../../../../../components/client/Button";
 import { useL10n } from "../../../../../../../../../hooks/l10n";
 import { useState } from "react";
@@ -14,12 +14,11 @@ import { useTelemetry } from "../../../../../../../../../hooks/useTelemetry";
 import { ScanResultCard } from "../../../../../../../../../components/client/exposure_card/ScanResultCard";
 
 export type Props = {
-  scanResult: OnerepScanResultRow;
+  scanResult: OnerepScanResultDataBrokerRow;
   isPremiumUser: boolean;
   isEligibleForPremium: boolean;
   isExpanded: boolean;
   setExpanded: () => void;
-  dataBrokersRemovalUnderMaintenance: boolean;
 };
 
 export const RemovalCard = (props: Props) => {
@@ -75,9 +74,6 @@ export const RemovalCard = (props: Props) => {
       }
       isExpanded={props.isExpanded}
       onToggleExpanded={props.setExpanded}
-      dataBrokersRemovalUnderMaintenance={
-        props.dataBrokersRemovalUnderMaintenance
-      }
     />
   );
 };

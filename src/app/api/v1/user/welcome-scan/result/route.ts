@@ -13,7 +13,7 @@ import {
   getSubscriberByFxaUid,
 } from "../../../../../../db/tables/subscribers";
 
-import { getLatestOnerepScanResults } from "../../../../../../db/tables/onerep_scans";
+import { getScanResultsWithBroker } from "../../../../../../db/tables/onerep_scans";
 
 export type WelcomeScanResultResponse =
   | {
@@ -34,7 +34,7 @@ export async function GET() {
       }
       const profileId = await getOnerepProfileId(subscriber.id);
 
-      const scanResults = await getLatestOnerepScanResults(profileId);
+      const scanResults = await getScanResultsWithBroker(profileId);
       return NextResponse.json(
         { success: true, scan_results: scanResults },
         { status: 200 },

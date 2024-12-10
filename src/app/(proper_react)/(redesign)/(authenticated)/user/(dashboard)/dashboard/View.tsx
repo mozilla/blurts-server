@@ -8,7 +8,10 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { Session } from "next-auth";
-import { OnerepScanResultRow } from "knex/types/tables";
+import {
+  OnerepScanResultDataBrokerRow,
+  OnerepScanResultRow,
+} from "knex/types/tables";
 import styles from "./View.module.scss";
 import { Toolbar } from "../../../../../../components/client/toolbar/Toolbar";
 import { DashboardTopBanner } from "./DashboardTopBanner";
@@ -62,10 +65,7 @@ export type Props = {
   experimentData: ExperimentData;
   user: Session["user"];
   userBreaches: SubscriberBreach[];
-  userScanData: {
-    scans: LatestOnerepScanData;
-    dataBrokersRemovalUnderMaintenance: LatestOnerepScanData;
-  };
+  userScanData: LatestOnerepScanData;
   isEligibleForFreeScan: boolean;
   isEligibleForPremium: boolean;
   monthlySubscriptionUrl: string;
@@ -112,25 +112,23 @@ export const View = (props: Props) => {
     }
   }, [pathname, activeTab]);
 
-  const adjustedScanResults = props.userScanData.scans.results.map(
-    (scanResult) => {
-      if (scanResult.status === "new" && hasPremium(props.user)) {
-        // Even if the user has Plus, OneRep won't automatically start removing
-        // found exposures; it first sends a request to our webhook, and then the
-        // webhook sends an opt-out request to OneRep. Meanwhile, however, we're
-        // just waiting for the systems to do their thing, and there's no action
-        // for the user to take; hence, we also mark the exposures as being in
-        // progress:
-        return {
-          ...scanResult,
-          status: "optout_in_progress",
-        } as OnerepScanResultRow;
-      }
-      return scanResult;
-    },
-  );
+  const adjustedScanResults = props.userScanData.results.map((scanResult) => {
+    if (scanResult.status === "new" && hasPremium(props.user)) {
+      // Even if the user has Plus, OneRep won't automatically start removing
+      // found exposures; it first sends a request to our webhook, and then the
+      // webhook sends an opt-out request to OneRep. Meanwhile, however, we're
+      // just waiting for the systems to do their thing, and there's no action
+      // for the user to take; hence, we also mark the exposures as being in
+      // progress:
+      return {
+        ...scanResult,
+        status: "optout_in_progress",
+      } as OnerepScanResultDataBrokerRow;
+    }
+    return scanResult;
+  });
   const adjustedScanData: LatestOnerepScanData = {
-    scan: props.userScanData.scans.scan,
+    scan: props.userScanData.scan,
     results: adjustedScanResults,
   };
 
@@ -176,19 +174,12 @@ export const View = (props: Props) => {
     return timestampB - timestampA;
   });
 
-  const dataBrokersResultsRemovalUnderMaintenance =
-    /* c8 ignore next */
-    props.userScanData.dataBrokersRemovalUnderMaintenance ?? [];
-
   const getTabSpecificExposures = (tabKey: TabType) =>
     arraySortedByDate.filter((exposure: Exposure) => {
       const exposureStatus = getExposureStatus(
         exposure,
         props.enabledFeatureFlags.includes("AdditionalRemovalStatuses"),
-        isDataBrokerUnderMaintenance(
-          exposure,
-          dataBrokersResultsRemovalUnderMaintenance.results,
-        ),
+        isDataBrokerUnderMaintenance(exposure),
       );
 
       return (
@@ -245,16 +236,11 @@ export const View = (props: Props) => {
                   countryCode,
                   latestScanData: adjustedScanData,
                   subscriberBreaches: props.userBreaches,
-                  dataBrokersRemovalUnderMaintenance:
-                    dataBrokersResultsRemovalUnderMaintenance,
                 }).href
               }
             >
               {l10n.getString("exposure-card-resolve-exposures-cta")}
             </Button>
-          }
-          dataBrokersRemovalUnderMaintenance={
-            dataBrokersResultsRemovalUnderMaintenance
           }
         />
       </li>
@@ -466,7 +452,7 @@ export const View = (props: Props) => {
         yearlySubscriptionUrl={props.yearlySubscriptionUrl}
         subscriptionBillingAmount={props.subscriptionBillingAmount}
         fxaSettingsUrl={props.fxaSettingsUrl}
-        lastScanDate={props.userScanData.scans.scan?.created_at ?? null}
+        lastScanDate={props.userScanData.scan?.created_at ?? null}
         experimentData={props.experimentData}
         autoOpenUpsellDialog={props.autoOpenUpsellDialog}
       >
@@ -502,7 +488,7 @@ export const View = (props: Props) => {
           dataSummary.dataBrokerAutoFixedDataPointsNum > 0
         }
         hasFirstMonitoringScan={props.hasFirstMonitoringScan}
-        lastScanDate={props.userScanData.scans.scan?.created_at ?? null}
+        lastScanDate={props.userScanData.scan?.created_at ?? null}
         signInCount={props.signInCount}
         localDismissalPetitionBanner={localDismissalPetitionBanner}
         shouldShowPetitionBanner={shouldShowPetitionBanner}
@@ -530,8 +516,6 @@ export const View = (props: Props) => {
             latestScanData: adjustedScanData,
             subscriberBreaches: props.userBreaches,
             user: props.user,
-            dataBrokersRemovalUnderMaintenance:
-              dataBrokersResultsRemovalUnderMaintenance,
           }}
           onShowFixed={() => {
             setActiveTab("fixed");
@@ -578,14 +562,10 @@ export const View = (props: Props) => {
 };
 
 export function isDataBrokerUnderMaintenance(
-  exposure: Exposure | OnerepScanResultRow,
-  dataBrokersRemovalUnderMaintenance: OnerepScanResultRow[],
+  exposure: Exposure | OnerepScanResultDataBrokerRow,
 ): boolean {
   return (
     isScanResult(exposure) &&
-    dataBrokersRemovalUnderMaintenance.some(
-      (broker: OnerepScanResultRow) =>
-        broker.onerep_scan_result_id === exposure.onerep_scan_result_id,
-    )
+    exposure.broker_status === "removal_under_maintenance"
   );
 }

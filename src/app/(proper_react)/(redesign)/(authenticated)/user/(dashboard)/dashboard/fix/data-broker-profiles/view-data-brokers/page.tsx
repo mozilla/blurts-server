@@ -5,10 +5,7 @@
 import { redirect } from "next/navigation";
 import { headers } from "next/headers";
 import { getServerSession } from "../../../../../../../../../functions/server/getServerSession";
-import {
-  getLatestOnerepScanResults,
-  getScanResultsWithBrokerUnderMaintenance,
-} from "../../../../../../../../../../db/tables/onerep_scans";
+import { getScanResultsWithBroker } from "../../../../../../../../../../db/tables/onerep_scans";
 import { getOnerepProfileId } from "../../../../../../../../../../db/tables/subscribers";
 import { ViewDataBrokersView } from "./View";
 import { StepDeterminationData } from "../../../../../../../../../functions/server/getRelevantGuidedSteps";
@@ -26,9 +23,7 @@ export default async function ViewDataBrokers() {
 
   const countryCode = getCountryCode(headers());
   const profileId = await getOnerepProfileId(session.user.subscriber.id);
-  const latestScan = await getLatestOnerepScanResults(profileId);
-  const dataBrokersWithRemovalUnderMaintenance =
-    await getScanResultsWithBrokerUnderMaintenance(profileId);
+  const latestScan = await getScanResultsWithBroker(profileId);
 
   const data: StepDeterminationData = {
     countryCode,
@@ -38,7 +33,6 @@ export default async function ViewDataBrokers() {
       fxaUid: session.user.subscriber.fxa_uid,
       countryCode,
     }),
-    dataBrokersRemovalUnderMaintenance: dataBrokersWithRemovalUnderMaintenance,
   };
   const subscriberEmails = await getSubscriberEmails(session.user);
 

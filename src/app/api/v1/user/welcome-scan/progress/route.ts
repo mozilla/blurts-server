@@ -13,8 +13,8 @@ import {
 } from "../../../../../../db/tables/subscribers";
 
 import {
-  getLatestOnerepScanResults,
   addOnerepScanResults,
+  getScanResultsWithBroker,
 } from "../../../../../../db/tables/onerep_scans";
 import {
   ListScanResultsResponse,
@@ -46,7 +46,7 @@ export async function GET(
       }
       const profileId = await getOnerepProfileId(subscriber.id);
 
-      const latestScan = await getLatestOnerepScanResults(profileId);
+      const latestScan = await getScanResultsWithBroker(profileId);
       const latestScanId = latestScan.scan?.onerep_scan_id;
 
       if (

@@ -11,10 +11,7 @@ import {
 import { getCountryCode } from "../../../../../../../functions/server/getCountryCode";
 import { getSubscriberBreaches } from "../../../../../../../functions/server/getSubscriberBreaches";
 import { getOnerepProfileId } from "../../../../../../../../db/tables/subscribers";
-import {
-  getLatestOnerepScanResults,
-  getScanResultsWithBrokerUnderMaintenance,
-} from "../../../../../../../../db/tables/onerep_scans";
+import { getScanResultsWithBroker } from "../../../../../../../../db/tables/onerep_scans";
 import { getServerSession } from "../../../../../../../functions/server/getServerSession";
 import { refreshStoredScanResults } from "../../../../../../../functions/server/refreshStoredScanResults";
 
@@ -33,16 +30,13 @@ export default async function FixPage() {
   if (typeof profileId === "number") {
     await refreshStoredScanResults(profileId);
   }
-  const dataBrokersWithRemovalUnderMaintenance =
-    await getScanResultsWithBrokerUnderMaintenance(profileId);
 
-  const scanData = await getLatestOnerepScanResults(profileId);
+  const scanData = await getScanResultsWithBroker(profileId);
   const stepDeterminationData: StepDeterminationData = {
     countryCode: countryCode,
     user: session.user,
     subscriberBreaches: breaches,
     latestScanData: scanData,
-    dataBrokersRemovalUnderMaintenance: dataBrokersWithRemovalUnderMaintenance,
   };
 
   const nextStep = getNextGuidedStep(stepDeterminationData);

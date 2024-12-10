@@ -3,10 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { headers } from "next/headers";
-import {
-  getLatestOnerepScanResults,
-  getScanResultsWithBrokerUnderMaintenance,
-} from "../../../../../../../../../../db/tables/onerep_scans";
+import { getScanResultsWithBroker } from "../../../../../../../../../../db/tables/onerep_scans";
 import { redirect } from "next/navigation";
 import { getServerSession } from "../../../../../../../../../functions/server/getServerSession";
 import { getOnerepProfileId } from "../../../../../../../../../../db/tables/subscribers";
@@ -31,7 +28,7 @@ export default async function StartFreeScanPage() {
 
   const latestScanData =
     typeof onerepProfileId === "number"
-      ? await getLatestOnerepScanResults(onerepProfileId)
+      ? await getScanResultsWithBroker(onerepProfileId)
       : undefined;
   if (latestScanData?.scan) {
     // If the user already has done a scan, let them view their results:
@@ -39,8 +36,6 @@ export default async function StartFreeScanPage() {
       "/user/dashboard/fix/data-broker-profiles/view-data-brokers",
     );
   }
-  const dataBrokersWithRemovalUnderMaintenance =
-    await getScanResultsWithBrokerUnderMaintenance(onerepProfileId);
 
   const data: StepDeterminationData = {
     countryCode,
@@ -50,7 +45,6 @@ export default async function StartFreeScanPage() {
       fxaUid: session.user.subscriber.fxa_uid,
       countryCode,
     }),
-    dataBrokersRemovalUnderMaintenance: dataBrokersWithRemovalUnderMaintenance,
   };
   const subscriberEmails = await getSubscriberEmails(session.user);
 
