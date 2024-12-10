@@ -27,8 +27,6 @@ export const StatusPillTypeMap: Record<string, StatusPillType> = {
 type DirectTypeProps = { type: StatusPillType };
 type ExposureProps = { exposure: Exposure };
 
-/* c8 ignore start */
-// This component just renders HTML without business logic:
 export type Props = (DirectTypeProps | ExposureProps) & {
   enabledFeatureFlags?: FeatureFlagName[];
   note?: string;
@@ -71,7 +69,6 @@ export const StatusPill = (props: Props) => {
 function hasDirectType(props: Props): props is DirectTypeProps {
   return typeof (props as DirectTypeProps).type === "string";
 }
-/* c8 ignore stop */
 
 type StatusLabelProps = {
   exposure?: Exposure;

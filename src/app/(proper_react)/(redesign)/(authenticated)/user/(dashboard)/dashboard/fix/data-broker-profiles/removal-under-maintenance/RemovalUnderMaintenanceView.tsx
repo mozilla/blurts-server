@@ -46,6 +46,7 @@ export const RemovalUnderMaintenanceView = (props: Props) => {
     "DataBrokerManualRemoval",
   );
 
+  // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
   /* c8 ignore start */
   async function handleManualRemovalChange() {
     setIsLoadingNextDataBroker(true);
@@ -140,19 +141,13 @@ export const RemovalUnderMaintenanceView = (props: Props) => {
     );
   }
 
-  {
-    /* TODO: Add tests here */
-  }
-  {
-    /* c8 ignore start */
-  }
   const dataBrokerCard = (
     <div
       className={styles.exposureCard}
       aria-label={firstScanResultNotResolved.data_broker}
     >
       <div
-        className={`${styles.dataClassesList} 
+        className={`${styles.dataClassesList}
         ${isLoadingNextDataBroker ? styles.fadeOut : ""}
       `}
       >
@@ -192,7 +187,6 @@ export const RemovalUnderMaintenanceView = (props: Props) => {
             "data-broker-removal-maintenance-cta-mark-as-resolved",
           )}
         </TelemetryButton>
-        {/* c8 ignore end */}
       </div>
       <div className={styles.estimatedTime}>
         <ClockIcon width="15" height="15" alt="" />
@@ -305,7 +299,13 @@ export const RemovalUnderMaintenanceView = (props: Props) => {
         }}
         className={styles.backArrow}
       >
-        <BackArrow width="20" height="20" alt="" />
+        <BackArrow
+          width="20"
+          height="20"
+          alt={l10n.getString(
+            "data-broker-removal-guide-button-back-to-exposures",
+          )}
+        />
       </button>
       <p className={styles.headerRemovalGuide}>
         {l10n.getString("data-broker-removal-guide-header")}

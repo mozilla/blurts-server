@@ -138,7 +138,6 @@ export function isEligibleForStep(
   // Only premium users can see the manual data broker removal flow, once they have run a scan
   if (stepId === "DataBrokerManualRemoval") {
     const dataBrokersRequireManualRemoval =
-      /* c8 ignore next */
       data.latestScanData?.results?.some((result) => {
         return result.broker_status === "removal_under_maintenance";
       }) ?? false;
