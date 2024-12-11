@@ -40,11 +40,16 @@ async function run() {
     .slice(0, batchSize);
   await initEmail();
 
-  await Promise.allSettled(
-    subscribersToEmail.map((subscriber) =>
-      sendMonthlyActivityEmail(subscriber),
-    ),
-  );
+  for (const subscriber of subscribersToEmail) {
+    try {
+      await sendMonthlyActivityEmail(subscriber);
+    } catch (error) {
+      logger.error("send_monthly_activity_email_error_free", {
+        subscriber_id: subscriber.id,
+        error,
+      });
+    }
+  }
 
   closeEmailPool();
   console.log(
