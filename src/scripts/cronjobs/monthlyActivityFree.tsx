@@ -32,6 +32,8 @@ async function run() {
       `Could not send monthly activity emails, because the env var MONTHLY_ACTIVITY_FREE_EMAIL_BATCH_SIZE has a non-numeric value: [${process.env.MONTHLY_ACTIVITY_EMAIL_BATCH_SIZE}].`,
     );
   }
+
+  logger.info(`Getting free subscribers with batch size: ${batchSize}`);
   const subscribersToEmail = (await getFreeSubscribersWaitingForMonthlyEmail())
     .filter((subscriber) => {
       const assumedCountryCode = getSignupLocaleCountry(subscriber);
@@ -43,9 +45,12 @@ async function run() {
   for (const subscriber of subscribersToEmail) {
     try {
       await sendMonthlyActivityEmail(subscriber);
+      logger.info("send_monthly_activity_email_free_success", {
+        subscriberId: subscriber.id,
+      });
     } catch (error) {
-      logger.error("send_monthly_activity_email_error_free", {
-        subscriber_id: subscriber.id,
+      logger.error("send_monthly_activity_email_free_error", {
+        subscriberId: subscriber.id,
         error,
       });
     }
