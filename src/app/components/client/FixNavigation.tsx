@@ -82,7 +82,9 @@ export const Steps = (props: {
       {label} {count > 0 && `(${count})`}
     </div>
   );
-
+  const dataBrokerStepCompleted =
+    hasCompletedStepSection(props.data, "Scan") &&
+    hasCompletedStepSection(props.data, "DataBrokerManualRemoval");
   return (
     <ul className={styles.steps}>
       {isEligibleForStep(props.data, "Scan") && (
@@ -96,11 +98,7 @@ export const Steps = (props: {
           }
           className={`${styles.navigationItem} ${
             props.currentSection === "data-broker-profiles" ? styles.active : ""
-          } ${
-            hasCompletedStepSection(props.data, "Scan")
-              ? styles.isCompleted
-              : ""
-          }`}
+          } ${dataBrokerStepCompleted ? styles.isCompleted : ""}`}
         >
           <div className={styles.stepIcon}>
             <StepImage data={props.data} section="Scan" />
