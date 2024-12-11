@@ -30,7 +30,7 @@
     "e2e:debug": "playwright test src/e2e/ --ui",
     "e2e:smoke": "playwright test src/e2e/ --grep @smoke",
     "cron:first-data-broker-removal-fixed": "node dist/scripts/cronjobs/firstDataBrokerRemovalFixed.js",
-    "cron:monthly-activity-free": "NODE_OPTIONS=--max-old-space-size=4096 node dist/scripts/cronjobs/monthlyActivityFree.js",
+    "cron:monthly-activity-free": "node dist/scripts/cronjobs/monthlyActivityFree.js",
     "cron:monthly-activity-plus": "node dist/scripts/cronjobs/monthlyActivityPlus.js",
     "cron:breach-alerts": "node dist/scripts/cronjobs/emailBreachAlerts.js",
     "cron:db-delete-unverified-subscribers": "node dist/scripts/cronjobs/deleteUnverifiedSubscribers.js",
