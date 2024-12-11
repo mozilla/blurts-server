@@ -515,6 +515,7 @@ describe("getExposureReduction", () => {
       dataBreachUnresolvedNum: 0,
       dataBreachResolvedNum: 0,
       dataBrokerManuallyResolvedNum: 0,
+      dataBrokerRemovalUnderMaintenance: 0,
     };
 
     const exposureReduction = getDataPointReduction(testSummary);
@@ -561,6 +562,7 @@ describe("getExposureReduction", () => {
       dataBreachUnresolvedNum: 0,
       dataBreachResolvedNum: 0,
       dataBrokerManuallyResolvedNum: 0,
+      dataBrokerRemovalUnderMaintenance: 0,
     };
 
     const exposureReduction = getDataPointReduction(testSummary);
@@ -1115,6 +1117,7 @@ describe("getDashboardSummary", () => {
             dataBrokerManuallyResolvedDataPointsNum:
               dataBrokerManuallyResolvedDataPointsNum,
             totalDataPointsNum: totalDataPointsNum,
+            dataBrokerRemovalUnderMaintenance: 0,
             // TODO: Figure out what these should be and, when we do, replace
             //       `toMatchObject` by `toStrictEqual`:
             // unresolvedSanitizedDataPoints: [],
@@ -1284,6 +1287,7 @@ describe("getDashboardSummary", () => {
         inProgressDataPoints: emptyDataPoints,
         fixedDataPoints: emptyDataPoints,
         manuallyResolvedDataBrokerDataPoints: emptyDataPoints,
+        dataBrokerRemovalUnderMaintenance: 0,
       };
     }
 
