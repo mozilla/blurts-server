@@ -5,7 +5,7 @@
 import { redirect } from "next/navigation";
 import { headers } from "next/headers";
 import { getServerSession } from "../../../../../../../../../functions/server/getServerSession";
-import { getLatestOnerepScanResults } from "../../../../../../../../../../db/tables/onerep_scans";
+import { getScanResultsWithBroker } from "../../../../../../../../../../db/tables/onerep_scans";
 import { getOnerepProfileId } from "../../../../../../../../../../db/tables/subscribers";
 import { ViewDataBrokersView } from "./View";
 import { StepDeterminationData } from "../../../../../../../../../functions/server/getRelevantGuidedSteps";
@@ -13,6 +13,7 @@ import { getCountryCode } from "../../../../../../../../../functions/server/getC
 import { getSubscriberBreaches } from "../../../../../../../../../functions/server/getSubscriberBreaches";
 import { getSubscriberEmails } from "../../../../../../../../../functions/server/getSubscriberEmails";
 import { getL10n } from "../../../../../../../../../functions/l10n/serverComponents";
+import { hasPremium } from "../../../../../../../../../functions/universal/user";
 
 export default async function ViewDataBrokers() {
   const session = await getServerSession();
@@ -23,7 +24,11 @@ export default async function ViewDataBrokers() {
 
   const countryCode = getCountryCode(headers());
   const profileId = await getOnerepProfileId(session.user.subscriber.id);
-  const latestScan = await getLatestOnerepScanResults(profileId);
+  const latestScan = await getScanResultsWithBroker(
+    profileId,
+    hasPremium(session.user),
+  );
+
   const data: StepDeterminationData = {
     countryCode,
     user: session.user,

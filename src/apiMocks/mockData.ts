@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { faker } from "@faker-js/faker";
-import { OnerepScanResultRow } from "knex/types/tables";
+import { OnerepScanResultDataBrokerRow } from "knex/types/tables";
 import {
   RemovalStatus,
   RemovalStatusMap,
@@ -20,6 +20,7 @@ import {
 import { Session } from "next-auth";
 import { HibpLikeDbBreach } from "../utils/hibp";
 import { SerializedSubscriber } from "../next-auth";
+import { DataBrokerRemovalStatus } from "../app/functions/universal/dataBroker";
 
 // Setting this to a constant value produces the same result when the same methods
 // with the same version of faker are called.
@@ -40,6 +41,7 @@ export type RandomScanResultOptions = Partial<{
   fakerSeed: number;
   status: RemovalStatus;
   manually_resolved: boolean;
+  broker_status: DataBrokerRemovalStatus;
 }>;
 
 /**
@@ -50,7 +52,7 @@ export type RandomScanResultOptions = Partial<{
  */
 export function createRandomScanResult(
   options: RandomScanResultOptions = {},
-): OnerepScanResultRow {
+): OnerepScanResultDataBrokerRow {
   faker.seed(options.fakerSeed);
   const optout_attempts =
     options.status === "waiting_for_verification"
@@ -85,6 +87,11 @@ export function createRandomScanResult(
     created_at: options.createdDate ?? faker.date.recent({ days: 2 }),
     updated_at: faker.date.recent({ days: 1 }),
     optout_attempts,
+    broker_status: options.broker_status ?? "active",
+    scan_result_status: faker.helpers.arrayElement(
+      Object.values(RemovalStatusMap),
+    ) as RemovalStatus,
+    url: faker.internet.url(),
   };
 }
 

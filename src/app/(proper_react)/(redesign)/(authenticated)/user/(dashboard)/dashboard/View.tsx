@@ -8,7 +8,10 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { Session } from "next-auth";
-import { OnerepScanResultRow } from "knex/types/tables";
+import {
+  OnerepScanResultDataBrokerRow,
+  OnerepScanResultRow,
+} from "knex/types/tables";
 import styles from "./View.module.scss";
 import { Toolbar } from "../../../../../../components/client/toolbar/Toolbar";
 import { DashboardTopBanner } from "./DashboardTopBanner";
@@ -120,7 +123,7 @@ export const View = (props: Props) => {
       return {
         ...scanResult,
         status: "optout_in_progress",
-      } as OnerepScanResultRow;
+      } as OnerepScanResultDataBrokerRow;
     }
     return scanResult;
   });
@@ -176,7 +179,9 @@ export const View = (props: Props) => {
       const exposureStatus = getExposureStatus(
         exposure,
         props.enabledFeatureFlags.includes("AdditionalRemovalStatuses"),
+        isDataBrokerUnderMaintenance(exposure),
       );
+
       return (
         (tabKey === "action-needed" && exposureStatus === "actionNeeded") ||
         (tabKey === "fixed" && exposureStatus !== "actionNeeded")
@@ -555,3 +560,12 @@ export const View = (props: Props) => {
     </div>
   );
 };
+
+export function isDataBrokerUnderMaintenance(
+  exposure: Exposure | OnerepScanResultDataBrokerRow,
+): boolean {
+  return (
+    isScanResult(exposure) &&
+    exposure.broker_status === "removal_under_maintenance"
+  );
+}

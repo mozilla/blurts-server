@@ -6,7 +6,6 @@ import { Session } from "next-auth";
 import { LatestOnerepScanData } from "../../../db/tables/onerep_scans";
 import { SubscriberBreach } from "../../../utils/subscriberBreaches";
 import { BreachDataTypes, HighRiskDataTypes } from "../universal/breach";
-import { hasPremium } from "../universal/user";
 
 export type StepDeterminationData = {
   user: Session["user"];
@@ -138,10 +137,12 @@ export function isEligibleForStep(
 ): boolean {
   // Only premium users can see the manual data broker removal flow, once they have run a scan
   if (stepId === "DataBrokerManualRemoval") {
-    return (
-      hasPremium(data.user) &&
-      typeof data.user.subscriber?.onerep_profile_id === "number"
-    );
+    const dataBrokersRequireManualRemoval =
+      data.latestScanData?.results?.some((result) => {
+        return result.broker_status === "removal_under_maintenance";
+      }) ?? false;
+
+    return dataBrokersRequireManualRemoval;
   }
 
   if (stepId === "Scan") {
@@ -244,13 +245,13 @@ export function hasCompletedStep(
   stepId: StepLink["id"],
 ): boolean {
   if (stepId === "DataBrokerManualRemoval") {
-    const hasResolvedAllScanResults =
-      data.latestScanData?.results
-        ?.filter(
-          (scanResult) => scanResult.status === "removal_under_maintenance",
-        )
-        .every((scanResult) => scanResult.manually_resolved) ?? false;
-    return hasResolvedAllScanResults;
+    return (
+      data.latestScanData?.results.every(
+        (result) =>
+          result.broker_status === "removal_under_maintenance" &&
+          result.manually_resolved,
+      ) ?? false
+    );
   }
 
   if (stepId === "Scan") {

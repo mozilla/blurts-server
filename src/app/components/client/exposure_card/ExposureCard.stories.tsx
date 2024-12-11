@@ -51,12 +51,15 @@ const ScanMockItemInProgress = createRandomScanResult({
   manually_resolved: false,
 });
 const ScanMockItemRemovalUnderMaintenance = createRandomScanResult({
-  status: "removal_under_maintenance",
+  status: "optout_in_progress",
   manually_resolved: false,
+  broker_status: "removal_under_maintenance",
 });
+
 const ScanMockItemRemovalUnderMaintenanceFixed = createRandomScanResult({
-  status: "removal_under_maintenance",
+  status: "optout_in_progress",
   manually_resolved: true,
+  broker_status: "removal_under_maintenance",
 });
 const BreachMockItemRemoved = createRandomBreach({
   isResolved: true,
