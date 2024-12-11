@@ -225,16 +225,6 @@ export const getUserDashboardState = (
       isEligibleForPremium: true,
       isPremiumUser: false,
       scanInProgress: false,
-    }) ||
-    isMatchingContent(contentProps, {
-      isRelevantGuidedStep: relevantGuidedStep.id === "Scan",
-      hasExposures: true,
-      hasUnresolvedBreaches: true,
-      hasUnresolvedBrokers: true,
-      isEligibleForFreeScan: false,
-      isEligibleForPremium: false,
-      isPremiumUser: true,
-      scanInProgress: false,
     })
   ) {
     return "UsUserNonPremiumWithScanUnresolvedExposures";
@@ -326,6 +316,24 @@ export const getUserDashboardState = (
       hasExposures: true,
       hasUnresolvedBreaches: true,
       hasUnresolvedBrokers: false,
+      isEligibleForFreeScan: false,
+      isEligibleForPremium: false,
+      isPremiumUser: true,
+      scanInProgress: false,
+    }) ||
+    /**
+     * - US user
+     * - Premium
+     * - Unresolved breaches
+     * - Scan: Unresolved
+     */
+    isMatchingContent(contentProps, {
+      isRelevantGuidedStep:
+        relevantGuidedStep.id === "Scan" ||
+        relevantGuidedStep.id === "DataBrokerManualRemoval",
+      hasExposures: true,
+      hasUnresolvedBreaches: true,
+      hasUnresolvedBrokers: true,
       isEligibleForFreeScan: false,
       isEligibleForPremium: false,
       isPremiumUser: true,
