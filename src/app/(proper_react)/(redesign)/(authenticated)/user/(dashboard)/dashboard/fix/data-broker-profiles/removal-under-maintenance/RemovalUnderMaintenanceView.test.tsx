@@ -135,10 +135,10 @@ it("clicks the right arrow button to show the next step", async () => {
     Meta,
   );
   render(<RemovalUnderMaintenanceView />);
-  const resolveButton = screen.getByRole("button", {
+  const rightArrowBtn = screen.getByRole("button", {
     name: "Go to next result",
   });
-  await user.click(resolveButton);
+  await user.click(rightArrowBtn);
   expect(mockedRecordTelemetry).toHaveBeenCalledWith(
     "button",
     "click",
