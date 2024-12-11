@@ -334,6 +334,24 @@ export const getUserDashboardState = (
     /**
      * - US user
      * - Premium
+     * - Unresolved breaches
+     * - Scan: Unresolved
+     */
+    isMatchingContent(contentProps, {
+      isRelevantGuidedStep:
+        relevantGuidedStep.id === "Scan" ||
+        relevantGuidedStep.id === "DataBrokerManualRemoval",
+      hasExposures: true,
+      hasUnresolvedBreaches: true,
+      hasUnresolvedBrokers: true,
+      isEligibleForFreeScan: false,
+      isEligibleForPremium: false,
+      isPremiumUser: true,
+      scanInProgress: false,
+    }) ||
+    /**
+     * - US user
+     * - Premium
      * - No breaches
      * - Scan: Unresolved
      */
