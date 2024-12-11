@@ -225,16 +225,6 @@ export const getUserDashboardState = (
       isEligibleForPremium: true,
       isPremiumUser: false,
       scanInProgress: false,
-    }) ||
-    isMatchingContent(contentProps, {
-      isRelevantGuidedStep: relevantGuidedStep.id === "Scan",
-      hasExposures: true,
-      hasUnresolvedBreaches: true,
-      hasUnresolvedBrokers: true,
-      isEligibleForFreeScan: false,
-      isEligibleForPremium: false,
-      isPremiumUser: true,
-      scanInProgress: false,
     })
   ) {
     return "UsUserNonPremiumWithScanUnresolvedExposures";
