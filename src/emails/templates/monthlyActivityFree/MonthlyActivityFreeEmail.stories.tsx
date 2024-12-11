@@ -69,6 +69,7 @@ const mockedDataSummary = {
   manuallyResolvedDataBrokerDataPoints: mockedDataPoints,
   unresolvedSanitizedDataPoints: [],
   fixedSanitizedDataPoints: [],
+  dataBrokerRemovalUnderMaintenance: 0,
 };
 
 export const MonthlyReportFreeUserNoScanWithBreachesNothingResolved: Story = {

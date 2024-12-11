@@ -13,10 +13,11 @@ import { MonthlyActivityPlusEmail } from "../../emails/templates/monthlyActivity
 import { getCronjobL10n } from "../../app/functions/l10n/cronjobs";
 import { sanitizeSubscriberRow } from "../../app/functions/server/sanitize";
 import { getDashboardSummary } from "../../app/functions/server/dashboard";
-import { getLatestOnerepScanResults } from "../../db/tables/onerep_scans";
+import { getScanResultsWithBroker } from "../../db/tables/onerep_scans";
 import { getSubscriberBreaches } from "../../app/functions/server/getSubscriberBreaches";
 import { refreshStoredScanResults } from "../../app/functions/server/refreshStoredScanResults";
 import { getSignupLocaleCountry } from "../../emails/functions/getSignupLocaleCountry";
+import { hasPremium } from "../../app/functions/universal/user";
 
 void run();
 
@@ -64,8 +65,9 @@ async function sendMonthlyActivityEmail(subscriber: SubscriberRow) {
     await refreshStoredScanResults(subscriber.onerep_profile_id);
   }
 
-  const latestScan = await getLatestOnerepScanResults(
+  const latestScan = await getScanResultsWithBroker(
     subscriber.onerep_profile_id,
+    hasPremium(subscriber),
   );
   const subscriberBreaches = await getSubscriberBreaches({
     fxaUid: subscriber.fxa_uid,

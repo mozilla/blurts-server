@@ -13,8 +13,8 @@ import {
   hasPremium,
 } from "../../../../../../../functions/universal/user";
 import {
-  getLatestOnerepScanResults,
   getLatestScanForProfileByReason,
+  getScanResultsWithBroker,
   getScansCountForProfile,
 } from "../../../../../../../../db/tables/onerep_scans";
 import {
@@ -102,7 +102,11 @@ export default async function DashboardPage({ params, searchParams }: Props) {
     return redirect("/user/welcome");
   }
 
-  const latestScan = await getLatestOnerepScanResults(profileId);
+  const latestScan = await getScanResultsWithBroker(
+    profileId,
+    hasPremium(session.user),
+  );
+
   const scanCount =
     typeof profileId === "number"
       ? await getScansCountForProfile(profileId)

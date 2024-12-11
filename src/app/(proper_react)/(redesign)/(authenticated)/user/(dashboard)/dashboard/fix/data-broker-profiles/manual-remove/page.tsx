@@ -5,7 +5,7 @@
 import { redirect } from "next/navigation";
 import { headers } from "next/headers";
 import { getServerSession } from "../../../../../../../../../functions/server/getServerSession";
-import { getLatestOnerepScanResults } from "../../../../../../../../../../db/tables/onerep_scans";
+import { getScanResultsWithBroker } from "../../../../../../../../../../db/tables/onerep_scans";
 import { getOnerepProfileId } from "../../../../../../../../../../db/tables/subscribers";
 import { getSubscriberBreaches } from "../../../../../../../../../functions/server/getSubscriberBreaches";
 import { ManualRemoveView } from "./ManualRemoveView";
@@ -23,7 +23,10 @@ export default async function ManualRemovePage() {
 
   const countryCode = getCountryCode(headers());
   const profileId = await getOnerepProfileId(session.user.subscriber.id);
-  const scanData = await getLatestOnerepScanResults(profileId);
+  const scanData = await getScanResultsWithBroker(
+    profileId,
+    hasPremium(session.user),
+  );
   const subBreaches = await getSubscriberBreaches({
     fxaUid: session.user.subscriber.fxa_uid,
     countryCode,
