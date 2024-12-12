@@ -4,7 +4,6 @@
 
 import type { Meta, StoryObj } from "@storybook/react";
 import { OnerepScanRow } from "knex/types/tables";
-import { AutomaticRemoveView } from "./AutomaticRemoveView";
 import {
   createRandomBreach,
   createRandomScanResult,
@@ -13,7 +12,21 @@ import {
 import { Shell } from "../../../../../../../Shell";
 import { getL10n } from "../../../../../../../../../functions/l10n/storybookAndJest";
 import { LatestOnerepScanData } from "../../../../../../../../../../db/tables/onerep_scans";
+import { RemovalUnderMaintenanceView } from "./RemovalUnderMaintenanceView";
 
+const meta: Meta<typeof RemovalUnderMaintenanceView> = {
+  title: "Pages/Logged in/Guided resolution/1d. Removal Under Maintenance",
+  component: RemovalUnderMaintenanceView,
+};
+export default meta;
+type Story = StoryObj<typeof RemovalUnderMaintenanceView>;
+
+const user = createUserWithPremiumSubscription();
+
+const mockedSession = {
+  expires: new Date().toISOString(),
+  user: user,
+};
 const mockedScan: OnerepScanRow = {
   created_at: new Date(1998, 2, 31),
   updated_at: new Date(1998, 2, 31),
@@ -32,22 +45,7 @@ const mockedScanData: LatestOnerepScanData = {
 };
 const mockedBreaches = [...Array(5)].map(() => createRandomBreach());
 
-const user = createUserWithPremiumSubscription();
-
-const mockedSession = {
-  expires: new Date().toISOString(),
-  user: user,
-};
-
-const meta: Meta<typeof AutomaticRemoveView> = {
-  title: "Pages/Logged in/Guided resolution/1e. Automatically resolve brokers",
-  component: AutomaticRemoveView,
-};
-export default meta;
-type Story = StoryObj<typeof AutomaticRemoveView>;
-
-export const AutomaticRemoveViewStory: Story = {
-  name: "1e. Automatically resolve brokers",
+export const RemovalUnderMaintenanceViewStory: Story = {
   render: () => {
     return (
       <Shell
@@ -57,25 +55,15 @@ export const AutomaticRemoveViewStory: Story = {
         countryCode="us"
         enabledFeatureFlags={[]}
       >
-        <AutomaticRemoveView
-          data={{
+        <RemovalUnderMaintenanceView
+          data={mockedScanData}
+          stepDeterminationData={{
             countryCode: "us",
-            latestScanData: mockedScanData,
+            latestScanData: { results: [], scan: null },
             subscriberBreaches: mockedBreaches,
             user: mockedSession.user,
           }}
           subscriberEmails={[]}
-          nextStep={{
-            id: "HighRiskSsn",
-            href: "/user/dashboard/fix/high-risk-data-breaches/social-security-number",
-          }}
-          currentSection="data-broker-profiles"
-          monthlySubscriptionUrl="https://example.com/subscribe/monthly"
-          yearlySubscriptionUrl="https://example.com/subscribe/yearly"
-          subscriptionBillingAmount={{
-            yearly: 13.37,
-            monthly: 42.42,
-          }}
         />
       </Shell>
     );

@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { headers } from "next/headers";
-import { getLatestOnerepScanResults } from "../../../../../../../../../../db/tables/onerep_scans";
+import { getScanResultsWithBroker } from "../../../../../../../../../../db/tables/onerep_scans";
 import { redirect } from "next/navigation";
 import { getServerSession } from "../../../../../../../../../functions/server/getServerSession";
 import { getOnerepProfileId } from "../../../../../../../../../../db/tables/subscribers";
@@ -12,6 +12,7 @@ import { StepDeterminationData } from "../../../../../../../../../functions/serv
 import { getSubscriberBreaches } from "../../../../../../../../../functions/server/getSubscriberBreaches";
 import { getSubscriberEmails } from "../../../../../../../../../functions/server/getSubscriberEmails";
 import { StartFreeScanView } from "./StartFreeScanView";
+import { hasPremium } from "../../../../../../../../../functions/universal/user";
 
 export default async function StartFreeScanPage() {
   const countryCode = getCountryCode(headers());
@@ -28,7 +29,10 @@ export default async function StartFreeScanPage() {
 
   const latestScanData =
     typeof onerepProfileId === "number"
-      ? await getLatestOnerepScanResults(onerepProfileId)
+      ? await getScanResultsWithBroker(
+          onerepProfileId,
+          hasPremium(session.user),
+        )
       : undefined;
   if (latestScanData?.scan) {
     // If the user already has done a scan, let them view their results:

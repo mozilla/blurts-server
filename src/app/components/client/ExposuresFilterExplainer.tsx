@@ -12,7 +12,7 @@ import { ModalOverlay } from "./dialog/ModalOverlay";
 import { Dialog } from "./dialog/Dialog";
 import { Button } from "../client/Button";
 import { CONST_ONEREP_DATA_BROKER_COUNT } from "../../../constants";
-import { StatusPill } from "../server/StatusPill";
+import { StatusPill, StatusPillTypeMap } from "../server/StatusPill";
 import { FeatureFlagName } from "../../../db/tables/featureFlags";
 
 type ExposuresFilterTypeExplainerProps = {
@@ -138,28 +138,28 @@ export const ExposuresFilterStatusExplainer = (
                   "AdditionalRemovalStatuses",
                 ) && (
                   <li className={styles.statusListItem}>
-                    <StatusPill type="requestedRemoval" />
+                    <StatusPill type={StatusPillTypeMap.RequestedRemoval} />
                     {l10n.getString(
                       "modal-exposure-indicator-requested-removal",
                     )}
                   </li>
                 )}
                 <li className={styles.statusListItem}>
-                  <StatusPill type="inProgress" />
+                  <StatusPill type={StatusPillTypeMap.InProgress} />
                   {l10n.getString("modal-exposure-indicator-in-progress")}
                 </li>
                 <li className={styles.statusListItem}>
-                  <StatusPill type="removed" />
+                  <StatusPill type={StatusPillTypeMap.Removed} />
                   {l10n.getString("modal-exposure-indicator-removed")}
                 </li>
               </>
             )}
             <li className={styles.statusListItem}>
-              <StatusPill type="fixed" />
+              <StatusPill type={StatusPillTypeMap.Fixed} />
               {l10n.getString("modal-exposure-indicator-fixed")}
             </li>
             <li className={styles.statusListItem}>
-              <StatusPill type="actionNeeded" />
+              <StatusPill type={StatusPillTypeMap.ActionNeeded} />
               {l10n.getString("modal-exposure-indicator-action-needed")}
             </li>
           </ul>

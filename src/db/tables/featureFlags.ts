@@ -5,6 +5,7 @@
 import createDbConnection from "../connect";
 import { logger } from "../../app/functions/server/logging";
 import { FeatureFlagRow } from "knex/types/tables";
+import { headers } from "next/headers";
 
 const knex = createDbConnection();
 
@@ -77,11 +78,26 @@ export async function getEnabledFeatureFlags(
       return void subQuery;
     });
 
-  const enabledFlagNames = await query;
-
-  return enabledFlagNames.map(
+  const enabledFlagNames = (await query).map(
     (row: { name: string }) => row.name as FeatureFlagName,
   );
+
+  // Force feature flags for E2E tests via URL query params
+  if (process.env.E2E_TEST_ENV === "local") {
+    const forcedFeatureFlags = headers().get("x-forced-feature-flags");
+    if (forcedFeatureFlags) {
+      const forcedFeatureFlagsFiltered = forcedFeatureFlags
+        .split(",")
+        .filter((forcedFeatureFlag) =>
+          featureFlagNames.includes(forcedFeatureFlag as FeatureFlagName),
+        );
+      return [
+        ...new Set([...enabledFlagNames, ...forcedFeatureFlagsFiltered]),
+      ] as FeatureFlagName[];
+    }
+  }
+
+  return enabledFlagNames;
 }
 
 /**

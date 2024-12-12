@@ -9,9 +9,10 @@ import { HighRiskBreachLayout } from "./HighRiskBreachLayout";
 import { getSubscriberEmails } from "../../../../../../../../functions/server/getSubscriberEmails";
 import { getSubscriberBreaches } from "../../../../../../../../functions/server/getSubscriberBreaches";
 import { getOnerepProfileId } from "../../../../../../../../../db/tables/subscribers";
-import { getLatestOnerepScanResults } from "../../../../../../../../../db/tables/onerep_scans";
+import { getScanResultsWithBroker } from "../../../../../../../../../db/tables/onerep_scans";
 import { getCountryCode } from "../../../../../../../../functions/server/getCountryCode";
 import { isEligibleForPremium } from "../../../../../../../../functions/universal/premium";
+import { hasPremium } from "../../../../../../../../functions/universal/user";
 
 export default async function HighRiskDataBreaches() {
   const session = await getServerSession();
@@ -26,7 +27,10 @@ export default async function HighRiskDataBreaches() {
   });
   const subscriberEmails = await getSubscriberEmails(session.user);
   const profileId = await getOnerepProfileId(session.user.subscriber.id);
-  const scanData = await getLatestOnerepScanResults(profileId);
+  const scanData = await getScanResultsWithBroker(
+    profileId,
+    hasPremium(session.user),
+  );
 
   return (
     <div>

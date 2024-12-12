@@ -4,7 +4,7 @@
 
 import { SubscriberRow } from "knex/types/tables";
 import { getFreeSubscribersWaitingForMonthlyEmail } from "../../db/tables/subscribers";
-import { getLatestOnerepScanResults } from "../../db/tables/onerep_scans";
+import { getScanResultsWithBroker } from "../../db/tables/onerep_scans";
 import { updateEmailPreferenceForSubscriber } from "../../db/tables/subscriber_email_preferences";
 import { initEmail, sendEmail, closeEmailPool } from "../../utils/email";
 import { renderEmail } from "../../emails/renderEmail";
@@ -18,6 +18,7 @@ import { getSignupLocaleCountry } from "../../emails/functions/getSignupLocaleCo
 import createDbConnection from "../../db/connect";
 import { logger } from "../../app/functions/server/logging";
 import { getMonthlyActivityFreeUnsubscribeLink } from "../../app/functions/cronjobs/unsubscribeLinks";
+import { hasPremium } from "../../app/functions/universal/user";
 
 await run();
 await createDbConnection().destroy();
@@ -32,6 +33,8 @@ async function run() {
       `Could not send monthly activity emails, because the env var MONTHLY_ACTIVITY_FREE_EMAIL_BATCH_SIZE has a non-numeric value: [${process.env.MONTHLY_ACTIVITY_EMAIL_BATCH_SIZE}].`,
     );
   }
+
+  logger.info(`Getting free subscribers with batch size: ${batchSize}`);
   const subscribersToEmail = (await getFreeSubscribersWaitingForMonthlyEmail())
     .filter((subscriber) => {
       const assumedCountryCode = getSignupLocaleCountry(subscriber);
@@ -40,11 +43,19 @@ async function run() {
     .slice(0, batchSize);
   await initEmail();
 
-  await Promise.allSettled(
-    subscribersToEmail.map((subscriber) =>
-      sendMonthlyActivityEmail(subscriber),
-    ),
-  );
+  for (const subscriber of subscribersToEmail) {
+    try {
+      await sendMonthlyActivityEmail(subscriber);
+      logger.info("send_monthly_activity_email_free_success", {
+        subscriberId: subscriber.id,
+      });
+    } catch (error) {
+      logger.error("send_monthly_activity_email_free_error", {
+        subscriberId: subscriber.id,
+        error,
+      });
+    }
+  }
 
   closeEmailPool();
   console.log(
@@ -69,8 +80,9 @@ async function sendMonthlyActivityEmail(subscriber: SubscriberRow) {
     await refreshStoredScanResults(subscriber.onerep_profile_id);
   }
 
-  const latestScan = await getLatestOnerepScanResults(
+  const latestScan = await getScanResultsWithBroker(
     subscriber.onerep_profile_id,
+    hasPremium(subscriber),
   );
   const subscriberBreaches = await getSubscriberBreaches({
     fxaUid: subscriber.fxa_uid,
