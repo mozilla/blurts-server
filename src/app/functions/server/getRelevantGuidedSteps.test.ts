@@ -419,6 +419,7 @@ describe("getNextGuidedStep", () => {
               createRandomScanResult({
                 status: "new",
                 manually_resolved: false,
+                broker_status: "active",
               }),
             ],
           },
@@ -558,6 +559,36 @@ describe("getNextGuidedStep", () => {
           },
         }).id,
       ).toBe("Done");
+    });
+
+    it("links to the removal under maintenance step if a user has scan resutls with a data broker that has a removal under maintenance status", () => {
+      expect(
+        getNextGuidedStep({
+          countryCode: "us",
+          latestScanData: {
+            scan: {
+              ...completedScan.scan!,
+              onerep_scan_status: "finished",
+            },
+            results: [
+              createRandomScanResult({
+                status: "optout_in_progress",
+                manually_resolved: false,
+                broker_status: "removal_under_maintenance",
+              }),
+            ],
+          },
+          subscriberBreaches: [],
+          user: {
+            email: "arbitrary@example.com",
+          },
+        }),
+      ).toStrictEqual({
+        href: "/user/dashboard/fix/data-broker-profiles/removal-under-maintenance",
+        id: "DataBrokerManualRemoval",
+        completed: false,
+        eligible: true,
+      });
     });
 
     it("links to the Credit Card step if the user's credit card has been breached", () => {

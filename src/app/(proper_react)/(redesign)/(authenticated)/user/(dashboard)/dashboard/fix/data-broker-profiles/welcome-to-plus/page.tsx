@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { getLatestOnerepScanResults } from "../../../../../../../../../../db/tables/onerep_scans";
+import { getScanResultsWithBroker } from "../../../../../../../../../../db/tables/onerep_scans";
 import { headers } from "next/headers";
 import { getServerSession } from "../../../../../../../../../functions/server/getServerSession";
 import { getOnerepProfileId } from "../../../../../../../../../../db/tables/subscribers";
@@ -17,6 +17,7 @@ import { logger } from "../../../../../../../../../functions/server/logging";
 import { getL10n } from "../../../../../../../../../functions/l10n/serverComponents";
 import { refreshStoredScanResults } from "../../../../../../../../../functions/server/refreshStoredScanResults";
 import { checkSession } from "../../../../../../../../../functions/server/checkSession";
+import { hasPremium } from "../../../../../../../../../functions/universal/user";
 
 export default async function WelcomeToPlusPage() {
   const session = await getServerSession();
@@ -39,7 +40,10 @@ export default async function WelcomeToPlusPage() {
     redirect("/user/welcome");
   }
 
-  const scanData = await getLatestOnerepScanResults(profileId);
+  const scanData = await getScanResultsWithBroker(
+    profileId,
+    hasPremium(session.user),
+  );
   const countryCode = getCountryCode(headers());
   const subBreaches = await getSubscriberBreaches({
     fxaUid: session.user.subscriber.fxa_uid,

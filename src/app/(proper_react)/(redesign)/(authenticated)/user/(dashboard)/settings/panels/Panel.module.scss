@@ -39,7 +39,10 @@
     p {
       color: $color-grey-40;
       font-weight: 400;
-      padding-right: $layout-xl;
+
+      @media screen and (min-width: $content-md) {
+        padding-right: $layout-xl;
+      }
     }
   }
 }

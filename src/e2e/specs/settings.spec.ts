@@ -10,12 +10,10 @@ test.describe(`${process.env.E2E_TEST_ENV} Settings Page`, () => {
   test("Verify settings page loads", async ({ settingsPage }) => {
     // should go directly to data breach page
     await settingsPage.open();
-    await expect(settingsPage.emailPrefHeader).toBeVisible();
-    await expect(settingsPage.emailHeader).toBeVisible();
-    (await settingsPage.deleteHeader.isVisible())
-      ? await expect(settingsPage.deleteHeader).toBeVisible()
-      : await expect(settingsPage.deactivateHeader).toBeVisible();
+
+    await expect(settingsPage.settingsHeader).toBeVisible();
     await expect(settingsPage.addEmailButton).toBeVisible();
+    await expect(settingsPage.emailHeader).toBeVisible();
   });
 
   test("Verify that a user can select between the Breach alert preferences", async ({
@@ -29,6 +27,7 @@ test.describe(`${process.env.E2E_TEST_ENV} Settings Page`, () => {
 
     // go to monitor settings page
     await settingsPage.open();
+    await settingsPage.tabNotifications.click();
 
     await expect(async () => {
       // select "send breach alerts to the affected email address" option

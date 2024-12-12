@@ -8,7 +8,7 @@ import { getServerSession } from "../../../../../../../../../functions/server/ge
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { getOnerepProfileId } from "../../../../../../../../../../db/tables/subscribers";
-import { getLatestOnerepScanResults } from "../../../../../../../../../../db/tables/onerep_scans";
+import { getScanResultsWithBroker } from "../../../../../../../../../../db/tables/onerep_scans";
 import { getSubscriberBreaches } from "../../../../../../../../../functions/server/getSubscriberBreaches";
 import { getSubscriberEmails } from "../../../../../../../../../functions/server/getSubscriberEmails";
 import { getCountryCode } from "../../../../../../../../../functions/server/getCountryCode";
@@ -21,6 +21,7 @@ import {
   getPremiumSubscriptionUrl,
 } from "../../../../../../../../../functions/server/getPremiumSubscriptionInfo";
 import { getAttributionsFromCookiesOrDb } from "../../../../../../../../../functions/server/attributions";
+import { hasPremium } from "../../../../../../../../../functions/universal/user";
 
 const monthlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "monthly" });
 const yearlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "yearly" });
@@ -38,7 +39,10 @@ export default async function AutomaticRemovePage() {
 
   const countryCode = getCountryCode(headers());
   const profileId = await getOnerepProfileId(session.user.subscriber.id);
-  const scanData = await getLatestOnerepScanResults(profileId);
+  const scanData = await getScanResultsWithBroker(
+    profileId,
+    hasPremium(session.user),
+  );
   const subBreaches = await getSubscriberBreaches({
     fxaUid: session.user.subscriber.fxa_uid,
     countryCode,

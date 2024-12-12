@@ -5,7 +5,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { OnerepScanResultRow } from "knex/types/tables";
+import { OnerepScanResultDataBrokerRow } from "knex/types/tables";
 import { Button } from "../../../../../../../../../components/client/Button";
 import { useL10n } from "../../../../../../../../../hooks/l10n";
 import { useState } from "react";
@@ -14,7 +14,7 @@ import { useTelemetry } from "../../../../../../../../../hooks/useTelemetry";
 import { ScanResultCard } from "../../../../../../../../../components/client/exposure_card/ScanResultCard";
 
 export type Props = {
-  scanResult: OnerepScanResultRow;
+  scanResult: OnerepScanResultDataBrokerRow;
   isPremiumUser: boolean;
   isEligibleForPremium: boolean;
   isExpanded: boolean;
@@ -68,9 +68,7 @@ export const RemovalCard = (props: Props) => {
               });
             }}
           >
-            {l10n.getString(
-              "fix-flow-data-broker-profiles-manual-remove-button-mark-fixed",
-            )}
+            {l10n.getString("exposure-card-resolve-exposures-cta")}
           </Button>
         ) : null
       }
