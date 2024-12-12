@@ -246,9 +246,9 @@ export function hasCompletedStep(
 ): boolean {
   if (stepId === "DataBrokerManualRemoval") {
     return (
-      data.latestScanData?.results.every(
+      data.latestScanData?.results?.every(
         (result) =>
-          result.broker_status === "removal_under_maintenance" &&
+          result.broker_status !== "removal_under_maintenance" ||
           result.manually_resolved,
       ) ?? false
     );

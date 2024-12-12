@@ -8,6 +8,7 @@ fix-flow-nav-security-recommendations = Security recommendations
 
 guided-resolution-flow-exit = Return to dashboard
 guided-resolution-flow-next-arrow = Go to next step
+guided-resolution-flow-next-arrow-sub-step = Go to next result
 guided-resolution-flow-step-navigation-label = Guided steps
 
 # Celebration screens

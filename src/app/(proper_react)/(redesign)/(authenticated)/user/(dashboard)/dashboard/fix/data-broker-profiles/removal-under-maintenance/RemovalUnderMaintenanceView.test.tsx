@@ -10,10 +10,8 @@ import { axe } from "jest-axe";
 import Meta, {
   RemovalUnderMaintenanceViewStory,
 } from "./RemovalUnderMaintenanceView.stories";
-
 const mockedRouterPush = jest.fn();
 
-jest.mock("../../../../../../../../../hooks/useTelemetry");
 jest.mock("next/navigation", () => ({
   useRouter: () => ({
     push: mockedRouterPush,
@@ -23,6 +21,13 @@ jest.mock("next/navigation", () => ({
     get: jest.fn(),
   }),
 }));
+const mockedRecordTelemetry = jest.fn();
+
+jest.mock("../../../../../../../../../hooks/useTelemetry", () => {
+  return {
+    useTelemetry: () => mockedRecordTelemetry,
+  };
+});
 
 describe("Removal under  maintenance", () => {
   it("passes the axe accessibility test suite", async () => {
@@ -121,4 +126,24 @@ describe("Removal under  maintenance", () => {
     await user.click(resolveButton);
     expect(resolveButton).toHaveTextContent("Loading");
   });
+});
+
+it("clicks the right arrow button to show the next step", async () => {
+  const user = userEvent.setup();
+  const RemovalUnderMaintenanceView = composeStory(
+    RemovalUnderMaintenanceViewStory,
+    Meta,
+  );
+  render(<RemovalUnderMaintenanceView />);
+  const rightArrowBtn = screen.getByRole("button", {
+    name: "Go to next result",
+  });
+  await user.click(rightArrowBtn);
+  expect(mockedRecordTelemetry).toHaveBeenCalledWith(
+    "button",
+    "click",
+    expect.objectContaining({
+      button_id: "go_to_next_result",
+    }),
+  );
 });
