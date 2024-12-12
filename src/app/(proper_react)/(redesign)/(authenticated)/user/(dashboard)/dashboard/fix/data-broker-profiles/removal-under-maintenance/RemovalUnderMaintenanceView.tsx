@@ -63,6 +63,7 @@ export const RemovalUnderMaintenanceView = (props: Props) => {
     } else {
       // Redirect if no unresolved scan result remains
       router.push(nextGuidedStep.href);
+      router.refresh();
     }
   }
 
