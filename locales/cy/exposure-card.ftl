@@ -31,7 +31,7 @@ exposure-card-your-exposed-info = Eich manylion sydd wedu eu datgelu:
 exposure-card-found-the-following-data = Daeth { -brand-monitor } o hyd i'r data sydd yn yr amlwg canlynol:
 exposure-card-exposure-type-data-broker = Manylion ar werth
 exposure-card-exposure-type-data-breach = Tor-data
-exposure-card-resolve-exposures-cta = Datrys materion yn yr amlwg
+exposure-card-resolve-exposures-cta = Datrys materion amlygu
 exposure-card-label-company-logo = Logo cwmni
 exposure-card-label-company = Cwmni
 # Status of the exposure card, could be In Progress, Fixed or Action Needed
