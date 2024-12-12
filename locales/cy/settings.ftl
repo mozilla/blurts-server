@@ -77,5 +77,5 @@ settings-tab-label-notifications = Gosod hysbysiadau
 settings-tab-label-manage-account = Rheoli cyfrif
 settings-tab-subtitle-manage-account = Rheoli eich cyfrif { -product-name }.
 settings-tab-notifications-marketing-title = Cyfathrebu marchnata
-settings-tab-notifications-marketing-text = Diweddariadau o bryd i'w gilydd am { -brand-monitor }, { -brand-mozilla }, a'n cynnyrch diogelwch eraill.
+settings-tab-notifications-marketing-text = Newyddion o bryd i'w gilydd am { -brand-monitor }, { -brand-mozilla }, a'n cynnyrch diogelwch eraill.
 settings-tab-notifications-marketing-link-label = Ewch i osodiadau e-bost { -brand-mozilla }

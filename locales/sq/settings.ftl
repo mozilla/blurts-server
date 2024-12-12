@@ -15,8 +15,6 @@ settings-alert-preferences-allow-breach-alerts-title = Sinjalizime të menjëher
 settings-alert-preferences-allow-breach-alerts-subtitle = Këto sinjalizime dërgohen menjëherë, sapo të jetë pikasur një cenim të dhënash
 settings-alert-preferences-option-one = Dërgo sinjalizime shkeljesh te adresa email e prekur
 settings-alert-preferences-option-two = Dërgoji krejt sinjalizimet mbi cenime te adresa parësore email
-settings-alert-preferences-allow-monthly-monitor-report-title = Raport mujor { -brand-monitor }
-settings-alert-preferences-allow-monthly-monitor-report-subtitle = Një përditësim mujor rreth ekspozimesh të reja, ç’është ndrequr dhe ç’lyp vëmendjen tuaj.
 
 ## Monitored email addresses
 
@@ -47,12 +45,6 @@ settings-email-number-of-breaches-info =
        *[other] Shfaqet në { $breachCount } cenime të ditura.
     }
 
-## Deactivate account
-
-settings-deactivate-account-title = Çaktivizoje llogarinë
-settings-deactivate-account-info-2 = { -product-short-name } mund ta çaktivizoni duke fshirë { -brand-mozilla-account } tuaj.
-settings-fxa-link-label-3 = Kaloni te rregullime { -brand-mozilla-account }
-
 ## Delete Monitor account
 
 settings-delete-monitor-free-account-title = Fshije llogarinë { -brand-monitor }
@@ -64,3 +56,18 @@ settings-delete-monitor-free-account-dialog-cta-label = Fshije llogarinë
 settings-delete-monitor-free-account-dialog-cancel-button-label = S’prish punë, kthemëni
 settings-delete-monitor-account-confirmation-toast-label-2 = Llogaria juaj { -brand-monitor } tani është fshirë.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Hidhe tej
+
+## Monthly Monitor Report
+
+settings-alert-preferences-allow-monthly-monitor-report-title = Raport mujor { -brand-monitor }
+settings-alert-preferences-allow-monthly-monitor-report-subtitle = Një përditësim mujor rreth ekspozimesh të reja, ç’është ndrequr dhe ç’lyp vëmendjen tuaj.
+
+## Settings page redesign
+
+settings-tab-label-edit-info = Përpunoni hollësitë tuaja
+settings-tab-label-notifications = Ujdisni njoftime
+settings-tab-label-manage-account = Administroni llogarinë
+settings-tab-subtitle-manage-account = Administroni llogarinë tuaj { -product-name }.
+settings-tab-notifications-marketing-title = Komunikime marketingu
+settings-tab-notifications-marketing-text = Përditësime periodike rreth { -brand-monitor }, { -brand-mozilla }-s dhe të tjera produktesh tona për sigurinë.
+settings-tab-notifications-marketing-link-label = Kaloni te rregullime { -brand-mozilla } email-i
