@@ -12,6 +12,7 @@ export function middleware(request: NextRequest) {
 
   const requestHeaders = new Headers(request.headers);
   requestHeaders.set("x-nonce", nonce);
+
   // Add the CSP to the request headers - that will make Next.js detect it and
   // add it to the inline `<script>` tags that it injects itself, as per
   // https://github.com/vercel/next.js/discussions/51039#discussioncomment-6596642
