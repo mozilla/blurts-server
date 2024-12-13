@@ -38,13 +38,20 @@ export const InputField = (
           }
         </label>
       )}
-      <input
-        {...inputProps}
-        ref={inputRef}
-        className={`${styles.inputField} ${!value ? styles.noValue : ""} ${
-          isInvalid ? styles.hasError : ""
-        }`}
-      />
+      <span className={styles.inputFieldWrapper}>
+        <input
+          {...inputProps}
+          ref={inputRef}
+          className={`${styles.inputField} ${!value ? styles.noValue : ""} ${
+            isInvalid ? styles.hasError : ""
+          }`}
+        />
+        {inputProps.placeholder && (
+          <span aria-hidden className={styles.placeholder}>
+            {inputProps.placeholder}
+          </span>
+        )}
+      </span>
       {props.iconButton && (
         <div className={styles.buttonIcon}>{props.iconButton}</div>
       )}

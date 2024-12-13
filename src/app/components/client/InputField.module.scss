@@ -7,14 +7,46 @@
   flex-direction: column;
   position: relative;
 
+  .inputFieldWrapper {
+    position: relative;
+  }
+
+  .placeholder {
+    background: $color-white;
+    border-radius: $border-radius-sm;
+    color: $color-grey-40;
+    display: inline-block;
+    left: calc($spacing-sm + $spacing-xs);
+    line-height: 1em;
+    padding: 0 calc($spacing-xs * 0.5);
+    pointer-events: none;
+    position: absolute;
+    top: 50%;
+    transform-origin: top left;
+    transform: translateY(-50%) scale(1);
+    transition: transform 0.2s ease-in-out;
+    user-select: none;
+  }
+
+  &:focus-within,
+  &:not(:has(:placeholder-shown)) {
+    .placeholder {
+      transform: translateY(-205%) scale(0.875);
+    }
+  }
+
   .inputField {
     border: 1px solid $color-grey-30;
     border-radius: $border-radius-sm;
     color: $color-black;
     // Add a bit more vertical space: The next spacing step is too much.
     padding: calc($spacing-sm * 1.5) $spacing-md;
+    width: 100%;
 
-    &::placeholder,
+    &::placeholder {
+      @include visually-hidden;
+    }
+
     &.noValue {
       color: $color-grey-40;
     }
