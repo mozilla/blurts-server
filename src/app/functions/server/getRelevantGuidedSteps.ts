@@ -136,7 +136,7 @@ export function isEligibleForStep(
   stepId: StepLink["id"],
 ): boolean {
   // Only premium users can see the manual data broker removal flow, once they have run a scan
-  // TODO: Waiting for criteria for data brokers under maintenace to be determined
+  // TODO: MNTOR-3880 Waiting for criteria for data brokers under maintenace to be determined
   // if (stepId === "DataBrokerManualRemoval") {
   //   const dataBrokersRequireManualRemoval =
   //     data.latestScanData?.results?.some((result) => {
@@ -245,7 +245,7 @@ export function hasCompletedStep(
   data: StepDeterminationData,
   stepId: StepLink["id"],
 ): boolean {
-  // TODO: Waiting for criteria for data brokers under maintenace to be determined
+  // TODO: MNTOR-3880 Waiting for criteria for data brokers under maintenace to be determined
   // if (stepId === "DataBrokerManualRemoval") {
   //   return (
   //     data.latestScanData?.results?.every(

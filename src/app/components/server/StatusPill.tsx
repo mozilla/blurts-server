@@ -30,7 +30,7 @@ type ExposureProps = { exposure: Exposure };
 export type Props = (DirectTypeProps | ExposureProps) & {
   enabledFeatureFlags?: FeatureFlagName[];
   note?: string;
-  // TODO: Waiting for criteria for data brokers under maintenace to be determined
+  // TODO: MNTOR-3880 Waiting for criteria for data brokers under maintenace to be determined
   // isRemovalUnderMaintenance?: boolean;
 };
 
@@ -77,7 +77,7 @@ type StatusLabelProps = {
   exposure?: Exposure;
   pillType: string;
   l10n: ExtendedReactLocalization;
-  // TODO: Waiting for criteria for data brokers under maintenace to be determined
+  // TODO: MNTOR-3880 Waiting for criteria for data brokers under maintenace to be determined
   // isDataBrokerUnderMaintenance?: boolean;
 };
 
@@ -89,7 +89,7 @@ const getStatusLabel = (props: StatusLabelProps): string => {
   if (manuallyRemoved) {
     return props.l10n.getString("status-pill-removed");
   }
-  // TODO: Waiting for criteria for data brokers under maintenace to be determined
+  // TODO: MNTOR-3880 Waiting for criteria for data brokers under maintenace to be determined
   // if (props.isDataBrokerUnderMaintenance) {
   //   return props.l10n.getString("status-pill-action-needed");
   // }
@@ -111,7 +111,7 @@ const getStatusLabel = (props: StatusLabelProps): string => {
 export const getExposureStatus = (
   exposure: Exposure,
   additionalRemovalStatusesEnabled: boolean,
-  // TODO: Waiting for criteria for data brokers under maintenace to be determined
+  // TODO: MNTOR-3880 Waiting for criteria for data brokers under maintenace to be determined
   // isRemovalUnderMaintenance: boolean,
 ): StatusPillType => {
   if (isScanResult(exposure)) {

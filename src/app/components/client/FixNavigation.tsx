@@ -83,7 +83,7 @@ export const Steps = (props: {
     </div>
   );
   const dataBrokerStepCompleted = hasCompletedStepSection(props.data, "Scan");
-  // TODO: Waiting for criteria for data brokers under maintenace to be determined
+  // TODO: MNTOR-3880 Waiting for criteria for data brokers under maintenace to be determined
   // && hasCompletedStepSection(props.data, "DataBrokerManualRemoval");
 
   return (
