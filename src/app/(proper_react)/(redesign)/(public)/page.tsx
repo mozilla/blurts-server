@@ -73,7 +73,9 @@ export default async function Page({ searchParams }: Props) {
         service: process.env.OAUTH_CLIENT_ID as string,
       }}
     >
-      {enabledFeatureFlags.includes("LandingPageRedesign") ? (
+      {enabledFeatureFlags.includes("LandingPageRedesign") &&
+      experimentData["landing-page-redesign"].enabled &&
+      experimentData["landing-page-redesign"].variant === "redesign" ? (
         <LandingViewRedesign
           eligibleForPremium={eligibleForPremium}
           l10n={getL10n()}
