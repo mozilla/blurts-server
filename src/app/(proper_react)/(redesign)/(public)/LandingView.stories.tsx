@@ -30,7 +30,11 @@ const meta: Meta<typeof View> = {
           service: process.env.OAUTH_CLIENT_ID as string,
         }}
       >
-        <PublicShell l10n={getL10n("en")} countryCode={props.countryCode}>
+        <PublicShell
+          l10n={getL10n("en")}
+          countryCode={props.countryCode}
+          enabledFeatureFlags={[]}
+        >
           <View {...props} experimentData={experimentData} />
         </PublicShell>
       </AccountsMetricsFlowProvider>

@@ -26,7 +26,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: $spacing-md;
+  padding: $spacing-lg $layout-xl;
   background-color: $color-white;
   gap: $spacing-lg;
 
@@ -44,11 +44,29 @@
     flex-shrink: 0;
   }
 
-  @media screen and (min-width: $screen-md) {
-    padding: $spacing-lg $layout-xl;
+  @media screen and (max-width: $screen-xl) {
+    display: none;
   }
 }
 
 .content {
   flex: 1 0 auto;
+}
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  font-weight: 600;
+  justify-content: flex-start;
+
+  .navbarLinksContainer {
+    display: flex;
+    gap: $spacing-md;
+  }
+
+  .navbarLinks {
+    color: $color-black;
+    padding: $spacing-sm;
+    text-decoration: none;
+  }
 }

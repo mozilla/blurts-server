@@ -4,6 +4,7 @@
 
 import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 import { ExtendedReactLocalization } from "../../../functions/l10n";
+import styles from "./LandingViewRedesign.module.scss";
 
 export type Props = {
   countryCode: string;
@@ -14,5 +15,11 @@ export type Props = {
 };
 
 export const View = (props: Props) => {
-  return <h1>{props.l10n.getString("landing-all-hero-title")}</h1>;
+  return (
+    <main className={styles.wrapper}>
+      <header>
+        <h1>{props.l10n.getString("landing-all-hero-title")}</h1>
+      </header>
+    </main>
+  );
 };

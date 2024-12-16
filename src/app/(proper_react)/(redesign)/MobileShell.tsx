@@ -19,10 +19,12 @@ import { useTelemetry } from "../../hooks/useTelemetry";
 import { usePathname } from "next/navigation";
 import { CONST_SETTINGS_TAB_SLUGS } from "../../../constants";
 import { FeatureFlagName } from "../../../db/tables/featureFlags";
+import { SignInButton } from "../../components/client/SignInButton";
+import { TelemetryLink } from "../../components/client/TelemetryLink";
 
 export type Props = {
   countryCode: string;
-  session: Session;
+  session: Session | null;
   monthlySubscriptionUrl: string;
   yearlySubscriptionUrl: string;
   subscriptionBillingAmount: {
@@ -50,7 +52,6 @@ export const MobileShell = (props: Props) => {
     // As we transition focus away from the navigation bar in deeper sections
     // of the experience, it's best to ensure its focus on the dashboard page,
     // where users first encounter it and when they return to it
-    /* c8 ignore next 3 */
     if (isOnDashboard) {
       wrapperRef.current?.focus();
     }
@@ -59,45 +60,13 @@ export const MobileShell = (props: Props) => {
   return (
     <div
       ref={wrapperRef}
-      /* c8 ignore next */
       tabIndex={isOnDashboard ? -1 : undefined}
       className={`${styles.wrapper} ${
-        // TODO: Add unit test when changing this code:
-        /* c8 ignore next */
         isExpanded ? styles.hasOpenMenu : styles.hasClosedMenu
       }`}
     >
       <header className={styles.header}>
         <div className={styles.headerStart}>
-          <button
-            // TODO: Add unit test when changing this code:
-            /* c8 ignore next */
-            onClick={() => setIsExpanded(!isExpanded)}
-            className={styles.menuToggleButton}
-            title={l10n.getString(
-              // TODO: Add unit test when changing this code:
-              /* c8 ignore next 2 */
-              isExpanded
-                ? "main-nav-button-collapse-tooltip"
-                : "main-nav-button-expand-tooltip",
-            )}
-          >
-            {
-              // TODO: Add unit test when changing this code:
-              /* c8 ignore next 5 */
-              isExpanded ? (
-                <CloseBigIcon
-                  alt={l10n.getString("main-nav-button-collapse-label")}
-                />
-              ) : (
-                <ListIcon
-                  alt={l10n.getString("main-nav-button-expand-label")}
-                />
-              )
-            }
-          </button>
-        </div>
-        <div className={styles.headerMiddle}>
           <Link
             href="/user/dashboard"
             className={styles.homeLink}
@@ -115,10 +84,31 @@ export const MobileShell = (props: Props) => {
           </Link>
         </div>
         <div className={styles.headerEnd}>
-          <UserMenu
-            user={props.session?.user}
-            fxaSettingsUrl={props.fxaSettingsUrl}
-          />
+          {props.session ? (
+            <UserMenu
+              user={props.session?.user}
+              fxaSettingsUrl={props.fxaSettingsUrl}
+            />
+          ) : (
+            <SignInButton variant="secondary" small />
+          )}
+          <button
+            onClick={() => setIsExpanded(!isExpanded)}
+            className={styles.menuToggleButton}
+            title={l10n.getString(
+              isExpanded
+                ? "main-nav-button-collapse-tooltip"
+                : "main-nav-button-expand-tooltip",
+            )}
+          >
+            {isExpanded ? (
+              <CloseBigIcon
+                alt={l10n.getString("main-nav-button-collapse-label")}
+              />
+            ) : (
+              <ListIcon alt={l10n.getString("main-nav-button-expand-label")} />
+            )}
+          </button>
         </div>
       </header>
       <div className={styles.nonHeader}>
@@ -127,76 +117,124 @@ export const MobileShell = (props: Props) => {
           aria-label={l10n.getString("mobile-menu-label")}
         >
           <div className={styles.mainMenu}>
-            <ul>
-              <li key="home">
-                <PageLink
-                  href="/user/dashboard"
-                  activeClassName={styles.isActive}
-                  hasTelemetry={{ link_id: "navigation_dashboard" }}
+            {props.session ? (
+              <>
+                <ul>
+                  <li key="home">
+                    <PageLink
+                      href="/user/dashboard"
+                      activeClassName={styles.isActive}
+                      hasTelemetry={{ link_id: "navigation_dashboard" }}
+                    >
+                      {l10n.getString("main-nav-link-dashboard-label")}
+                    </PageLink>
+                  </li>
+                  {props.countryCode === "us" && (
+                    <li key="how-it-works">
+                      <PageLink
+                        href="/how-it-works"
+                        activeClassName={styles.isActive}
+                        target="_blank"
+                        hasTelemetry={{ link_id: "navigation_how_it_works" }}
+                      >
+                        {l10n.getString("main-nav-link-how-it-works-label")}
+                      </PageLink>
+                    </li>
+                  )}
+                  <li key="faq">
+                    <PageLink
+                      href="https://support.mozilla.org/kb/firefox-monitor-faq"
+                      title={l10n.getString("main-nav-link-faq-tooltip")}
+                      target="_blank"
+                      hasTelemetry={{ link_id: "navigation_faq" }}
+                    >
+                      {l10n.getString("main-nav-link-faq-label")}
+                    </PageLink>
+                  </li>
+                  <li key="settings">
+                    <PageLink
+                      href="/user/settings"
+                      activeClassName={styles.isActive}
+                      hasTelemetry={{ link_id: "navigation_settings" }}
+                    >
+                      {l10n.getString("main-nav-link-settings-label")}
+                    </PageLink>
+                    {props.enabledFeatureFlags.includes(
+                      "SettingsPageRedesign",
+                    ) && (
+                      <ul className={styles.subMenu}>
+                        {CONST_SETTINGS_TAB_SLUGS.map((submenuKey) => {
+                          return (
+                            <li key={submenuKey}>
+                              <PageLink
+                                href={`/user/settings/${submenuKey}`}
+                                activeClassName={styles.isActive}
+                                hasTelemetry={{
+                                  link_id: `navigation_settings_${submenuKey}`,
+                                }}
+                              >
+                                {l10n.getString(
+                                  `settings-tab-label-${submenuKey}`,
+                                )}
+                              </PageLink>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    )}
+                  </li>
+                </ul>
+                <div className={styles.premiumCta}>
+                  <UpsellBadge
+                    monthlySubscriptionUrl={props.monthlySubscriptionUrl}
+                    yearlySubscriptionUrl={props.yearlySubscriptionUrl}
+                    subscriptionBillingAmount={props.subscriptionBillingAmount}
+                    // The last scan date is too noisy on mobile, so don't show it there:
+                    lastScanDate={null}
+                  />
+                </div>
+              </>
+            ) : (
+              <ul>
+                <TelemetryLink
+                  href="/how-it-works"
+                  eventData={{
+                    link_id: "navbar_how_it_works",
+                  }}
                 >
-                  {l10n.getString("main-nav-link-dashboard-label")}
-                </PageLink>
-              </li>
-              {props.countryCode === "us" && (
-                <li key="how-it-works">
-                  <PageLink
-                    href="/how-it-works"
-                    activeClassName={styles.isActive}
-                    target="_blank"
-                    hasTelemetry={{ link_id: "navigation_how_it_works" }}
-                  >
-                    {l10n.getString("main-nav-link-how-it-works-label")}
-                  </PageLink>
-                </li>
-              )}
-              <li key="faq">
-                <PageLink
-                  href="https://support.mozilla.org/kb/firefox-monitor-faq"
-                  title={l10n.getString("main-nav-link-faq-tooltip")}
-                  target="_blank"
-                  hasTelemetry={{ link_id: "navigation_faq" }}
+                  {l10n.getString(
+                    "landing-premium-hero-navbar-link-how-it-works",
+                  )}
+                </TelemetryLink>
+                <TelemetryLink
+                  href="#pricing"
+                  eventData={{
+                    link_id: "navbar_pricing",
+                  }}
                 >
-                  {l10n.getString("main-nav-link-faq-label")}
-                </PageLink>
-              </li>
-              <li key="settings">
-                <PageLink
-                  href="/user/settings"
-                  activeClassName={styles.isActive}
-                  hasTelemetry={{ link_id: "navigation_settings" }}
+                  {l10n.getString("landing-premium-hero-navbar-link-pricing")}
+                </TelemetryLink>
+                <TelemetryLink
+                  data-testid="navbar_faqs"
+                  href="#faq"
+                  eventData={{
+                    link_id: "navbar_faqs",
+                  }}
                 >
-                  {l10n.getString("main-nav-link-settings-label")}
-                </PageLink>
-                {props.enabledFeatureFlags.includes("SettingsPageRedesign") && (
-                  <ul className={styles.subMenu}>
-                    {CONST_SETTINGS_TAB_SLUGS.map((submenuKey) => {
-                      return (
-                        <li key={submenuKey}>
-                          <PageLink
-                            href={`/user/settings/${submenuKey}`}
-                            activeClassName={styles.isActive}
-                            hasTelemetry={{
-                              link_id: `navigation_settings_${submenuKey}`,
-                            }}
-                          >
-                            {l10n.getString(`settings-tab-label-${submenuKey}`)}
-                          </PageLink>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                )}
-              </li>
-            </ul>
-            <div className={styles.premiumCta}>
-              <UpsellBadge
-                monthlySubscriptionUrl={props.monthlySubscriptionUrl}
-                yearlySubscriptionUrl={props.yearlySubscriptionUrl}
-                subscriptionBillingAmount={props.subscriptionBillingAmount}
-                // The last scan date is too noisy on mobile, so don't show it there:
-                lastScanDate={null}
-              />
-            </div>
+                  {l10n.getString("landing-premium-hero-navbar-link-faqs")}
+                </TelemetryLink>
+                <TelemetryLink
+                  href="/breaches"
+                  eventData={{
+                    link_id: "navbar_recent_breaches",
+                  }}
+                >
+                  {l10n.getString(
+                    "landing-premium-hero-navbar-link-recent-breaches",
+                  )}
+                </TelemetryLink>
+              </ul>
+            )}
           </div>
         </nav>
         <div className={styles.content}>{props.children}</div>

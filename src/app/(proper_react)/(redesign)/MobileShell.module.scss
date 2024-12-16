@@ -12,10 +12,10 @@
   @media screen and (max-width: $screen-xl) {
     position: sticky;
     background-color: $color-white;
-    box-shadow: $box-shadow-sm;
     width: 100%;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: $spacing-sm;
     padding: $spacing-xs $spacing-sm;
     // Overlay `.nonHeader` so that the box-shadow of this element
@@ -23,43 +23,36 @@
     z-index: 1;
 
     .headerStart {
-      flex: 0 0 20%;
       display: flex;
       align-items: center;
       justify-content: flex-start;
-
-      .menuToggleButton {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: transparent;
-        border-style: none;
-        padding: $spacing-md;
-        cursor: pointer;
-
-        svg {
-          width: auto;
-          height: 16px;
-        }
-
-        &:hover svg {
-          color: $color-blue-50;
-        }
-      }
-    }
-
-    .headerMiddle {
-      flex: 1 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
 
     .headerEnd {
-      flex: 0 0 20%;
+      align-self: flex-end;
       display: flex;
       align-items: center;
+      gap: $spacing-sm;
       justify-content: flex-end;
+    }
+
+    .menuToggleButton {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: transparent;
+      border-style: none;
+      padding: $spacing-md;
+      cursor: pointer;
+
+      svg {
+        width: auto;
+        height: 16px;
+      }
+
+      &:hover svg {
+        color: $color-blue-50;
+      }
     }
   }
 }

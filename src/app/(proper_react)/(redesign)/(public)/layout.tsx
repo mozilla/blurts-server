@@ -12,7 +12,11 @@ export default function Layout(props: { children: ReactNode }) {
   const headersList = headers();
   const countryCode = getCountryCode(headersList);
   return (
-    <PublicShell l10n={getL10n()} countryCode={countryCode}>
+    <PublicShell
+      l10n={getL10n()}
+      countryCode={countryCode}
+      enabledFeatureFlags={[]}
+    >
       {props.children}
     </PublicShell>
   );
