@@ -11,7 +11,11 @@ import { Session } from "next-auth";
 import styles from "./MobileShell.module.scss";
 import monitorLogo from "../images/monitor-logo.webp";
 import { UpsellBadge } from "../../components/client/toolbar/UpsellBadge";
-import { CloseBigIcon, ListIcon } from "../../components/server/Icons";
+import {
+  CaretRight,
+  CloseBigIcon,
+  ListIcon,
+} from "../../components/server/Icons";
 import { UserMenu } from "../../components/client/toolbar/UserMenu";
 import { useL10n } from "../../hooks/l10n";
 import { PageLink } from "./PageLink";
@@ -20,7 +24,7 @@ import { usePathname } from "next/navigation";
 import { CONST_SETTINGS_TAB_SLUGS } from "../../../constants";
 import { FeatureFlagName } from "../../../db/tables/featureFlags";
 import { SignInButton } from "../../components/client/SignInButton";
-import { TelemetryLink } from "../../components/client/TelemetryLink";
+import { TopNavBar } from "./(public)/TopNavBar";
 
 export type Props = {
   countryCode: string;
@@ -126,7 +130,10 @@ export const MobileShell = (props: Props) => {
                       activeClassName={styles.isActive}
                       hasTelemetry={{ link_id: "navigation_dashboard" }}
                     >
-                      {l10n.getString("main-nav-link-dashboard-label")}
+                      <>
+                        <CaretRight alt="" />
+                        {l10n.getString("main-nav-link-dashboard-label")}
+                      </>
                     </PageLink>
                   </li>
                   {props.countryCode === "us" && (
@@ -137,7 +144,10 @@ export const MobileShell = (props: Props) => {
                         target="_blank"
                         hasTelemetry={{ link_id: "navigation_how_it_works" }}
                       >
-                        {l10n.getString("main-nav-link-how-it-works-label")}
+                        <>
+                          <CaretRight alt="" />
+                          {l10n.getString("main-nav-link-how-it-works-label")}
+                        </>
                       </PageLink>
                     </li>
                   )}
@@ -148,7 +158,10 @@ export const MobileShell = (props: Props) => {
                       target="_blank"
                       hasTelemetry={{ link_id: "navigation_faq" }}
                     >
-                      {l10n.getString("main-nav-link-faq-label")}
+                      <>
+                        <CaretRight alt="" />
+                        {l10n.getString("main-nav-link-faq-label")}
+                      </>
                     </PageLink>
                   </li>
                   <li key="settings">
@@ -157,7 +170,10 @@ export const MobileShell = (props: Props) => {
                       activeClassName={styles.isActive}
                       hasTelemetry={{ link_id: "navigation_settings" }}
                     >
-                      {l10n.getString("main-nav-link-settings-label")}
+                      <>
+                        <CaretRight alt="" />
+                        {l10n.getString("main-nav-link-settings-label")}
+                      </>
                     </PageLink>
                     {props.enabledFeatureFlags.includes(
                       "SettingsPageRedesign",
@@ -173,9 +189,12 @@ export const MobileShell = (props: Props) => {
                                   link_id: `navigation_settings_${submenuKey}`,
                                 }}
                               >
-                                {l10n.getString(
-                                  `settings-tab-label-${submenuKey}`,
-                                )}
+                                <>
+                                  <CaretRight alt="" />
+                                  {l10n.getString(
+                                    `settings-tab-label-${submenuKey}`,
+                                  )}
+                                </>
                               </PageLink>
                             </li>
                           );
@@ -195,45 +214,7 @@ export const MobileShell = (props: Props) => {
                 </div>
               </>
             ) : (
-              <ul>
-                <TelemetryLink
-                  href="/how-it-works"
-                  eventData={{
-                    link_id: "navbar_how_it_works",
-                  }}
-                >
-                  {l10n.getString(
-                    "landing-premium-hero-navbar-link-how-it-works",
-                  )}
-                </TelemetryLink>
-                <TelemetryLink
-                  href="#pricing"
-                  eventData={{
-                    link_id: "navbar_pricing",
-                  }}
-                >
-                  {l10n.getString("landing-premium-hero-navbar-link-pricing")}
-                </TelemetryLink>
-                <TelemetryLink
-                  data-testid="navbar_faqs"
-                  href="#faq"
-                  eventData={{
-                    link_id: "navbar_faqs",
-                  }}
-                >
-                  {l10n.getString("landing-premium-hero-navbar-link-faqs")}
-                </TelemetryLink>
-                <TelemetryLink
-                  href="/breaches"
-                  eventData={{
-                    link_id: "navbar_recent_breaches",
-                  }}
-                >
-                  {l10n.getString(
-                    "landing-premium-hero-navbar-link-recent-breaches",
-                  )}
-                </TelemetryLink>
-              </ul>
+              <TopNavBar styles={styles} showCaret />
             )}
           </div>
         </nav>

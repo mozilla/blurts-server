@@ -5,12 +5,14 @@
 "use client";
 
 import { TelemetryLink } from "../../../components/client/TelemetryLink";
+import { CaretRight } from "../../../components/server/Icons";
 import { useL10n } from "../../../hooks/l10n";
 
 export const TopNavBar = (props: {
   styles: {
     readonly [key: string]: string;
   };
+  showCaret?: boolean;
 }) => {
   const l10n = useL10n();
   return (
@@ -23,7 +25,10 @@ export const TopNavBar = (props: {
             link_id: "navbar_how_it_works",
           }}
         >
-          {l10n.getString("landing-premium-hero-navbar-link-how-it-works")}
+          <>
+            {props.showCaret && <CaretRight alt="" />}
+            {l10n.getString("landing-premium-hero-navbar-link-how-it-works")}
+          </>
         </TelemetryLink>
         <TelemetryLink
           className={props.styles.navbarLinks}
@@ -32,7 +37,10 @@ export const TopNavBar = (props: {
             link_id: "navbar_pricing",
           }}
         >
-          {l10n.getString("landing-premium-hero-navbar-link-pricing")}
+          <>
+            {props.showCaret && <CaretRight alt="" />}
+            {l10n.getString("landing-premium-hero-navbar-link-pricing")}
+          </>
         </TelemetryLink>
         <TelemetryLink
           data-testid="navbar_faqs"
@@ -42,7 +50,10 @@ export const TopNavBar = (props: {
             link_id: "navbar_faqs",
           }}
         >
-          {l10n.getString("landing-premium-hero-navbar-link-faqs")}
+          <>
+            {props.showCaret && <CaretRight alt="" />}
+            {l10n.getString("landing-premium-hero-navbar-link-faqs")}
+          </>
         </TelemetryLink>
         <TelemetryLink
           className={props.styles.navbarLinks}
@@ -51,7 +62,10 @@ export const TopNavBar = (props: {
             link_id: "navbar_recent_breaches",
           }}
         >
-          {l10n.getString("landing-premium-hero-navbar-link-recent-breaches")}
+          <>
+            {props.showCaret && <CaretRight alt="" />}
+            {l10n.getString("landing-premium-hero-navbar-link-recent-breaches")}
+          </>
         </TelemetryLink>
       </div>
     </div>

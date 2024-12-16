@@ -26,6 +26,7 @@
       display: flex;
       align-items: center;
       justify-content: flex-start;
+      padding-left: $spacing-md;
     }
 
     .headerEnd {
@@ -51,7 +52,7 @@
       }
 
       &:hover svg {
-        color: $color-blue-50;
+        color: $color-purple-70;
       }
     }
   }
@@ -78,6 +79,10 @@
     display: none;
   }
 
+  .navbar {
+    width: 100%;
+  }
+
   @media screen and (max-width: $screen-xl) {
     .hasOpenMenu & .mainMenuLayer {
       display: block;
@@ -95,61 +100,52 @@
         flex-direction: column;
 
         ul {
+          border-bottom: 1px solid $color-grey-10;
           list-style-type: none;
           padding: 0;
           width: 100%;
-        }
 
-        a,
-        a:visited {
-          display: block;
-          padding: $spacing-sm $spacing-lg;
-          color: $color-grey-40;
-          font-weight: 500;
-          border-top: 1px solid $color-grey-10;
-          text-decoration: none;
-
-          &.isActive {
-            color: $color-purple-70;
-          }
-
-          &:hover {
-            background-color: $color-purple-50;
-            color: $color-white;
-            text-decoration: underline;
-          }
-
-          // The `a` and `a:visited` violate this rule, but are safe:
-          // stylelint-disable-next-line no-descending-specificity
-          &:focus {
-            background-color: $color-blue-50;
-            color: $color-white;
-            outline: none;
-          }
-        }
-
-        .subMenu {
-          padding-left: $layout-xs;
-
-          // The `a` and `a:visited` violate this rule, but are safe:
-          // stylelint-disable-next-line no-descending-specificity
-          a,
-          a:visited {
-            border-top: none;
+          a {
+            align-items: center;
+            display: flex;
+            padding: $spacing-md $spacing-xl;
+            gap: $spacing-sm;
+            color: $color-black;
+            font-weight: 700;
+            border-top: 1px solid $color-grey-10;
+            text-decoration: none;
 
             &.isActive {
-              color: $color-purple-40;
+              color: $color-purple-70;
               text-decoration: underline;
-
-              &:hover {
-                color: $color-purple-70;
-              }
             }
 
             &:hover {
-              color: $color-grey-40;
-              background: none;
+              background-color: $color-grey-10;
+              color: $color-purple-70;
+            }
+
+            // The `a` and `a:visited` violate this rule, but are safe:
+            // stylelint-disable-next-line no-descending-specificity
+            &:focus {
+              background-color: $color-grey-10;
+              outline: none;
               text-decoration: underline;
+            }
+
+            & > svg {
+              fill: $color-purple-70;
+            }
+          }
+
+          &.subMenu {
+            border-bottom: none;
+            border-top: 1px solid $color-grey-10;
+            font: $text-body-md;
+
+            a {
+              padding: $spacing-md $spacing-2xl;
+              border-top: none;
             }
           }
         }
