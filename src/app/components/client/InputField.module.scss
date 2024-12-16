@@ -11,10 +11,10 @@
     position: relative;
   }
 
-  .placeholder {
+  .floatingLabel {
     background: $color-white;
     border-radius: $border-radius-sm;
-    color: $color-grey-40;
+    color: $color-black;
     display: inline-block;
     left: calc($spacing-sm + $spacing-xs);
     line-height: 1em;
@@ -30,7 +30,7 @@
 
   &:focus-within,
   &:not(:has(:placeholder-shown)) {
-    .placeholder {
+    .floatingLabel {
       transform: translateY(-205%) scale(0.875);
     }
   }

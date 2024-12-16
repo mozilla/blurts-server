@@ -13,6 +13,7 @@ import { useL10n } from "../../hooks/l10n";
 export const InputField = (
   props: AriaTextFieldProps & {
     iconButton?: ReactNode;
+    hasFloatingLabel?: boolean;
   },
 ) => {
   const { isRequired, label, isInvalid, value, description } = props;
@@ -29,29 +30,23 @@ export const InputField = (
   return (
     <div className={styles.input}>
       {label && (
-        <label {...labelProps} className={styles.inputLabel}>
-          {label}
-          {
-            // TODO: Add unit test when changing this code:
-            /* c8 ignore next */
-            isRequired ? <span aria-hidden="true">*</span> : ""
+        <label
+          {...labelProps}
+          className={
+            props.hasFloatingLabel ? styles.floatingLabel : styles.inputLabel
           }
+        >
+          {label}
+          {isRequired ? <span aria-hidden="true">*</span> : ""}
         </label>
       )}
-      <span className={styles.inputFieldWrapper}>
-        <input
-          {...inputProps}
-          ref={inputRef}
-          className={`${styles.inputField} ${!value ? styles.noValue : ""} ${
-            isInvalid ? styles.hasError : ""
-          }`}
-        />
-        {inputProps.placeholder && (
-          <span aria-hidden className={styles.placeholder}>
-            {inputProps.placeholder}
-          </span>
-        )}
-      </span>
+      <input
+        {...inputProps}
+        ref={inputRef}
+        className={`${styles.inputField} ${!value ? styles.noValue : ""} ${
+          isInvalid ? styles.hasError : ""
+        }`}
+      />
       {props.iconButton && (
         <div className={styles.buttonIcon}>{props.iconButton}</div>
       )}
