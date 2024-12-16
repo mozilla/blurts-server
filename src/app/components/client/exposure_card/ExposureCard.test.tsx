@@ -78,6 +78,7 @@ describe("ScanResultCard", () => {
 
   // TODO: Waiting for criteria for data brokers under maintenace to be determined
   // Data broker removal under maintenance
+  // eslint-disable-next-line jest/no-commented-out-tests
   // it("shows the right description for a scan result card with removal under maintenance status", () => {
   //   const ComposedProgressCard = composeStory(
   //     DataBrokerRemovalUnderMaintenance,
@@ -94,6 +95,7 @@ describe("ScanResultCard", () => {
 
   // TODO: Waiting for criteria for data brokers under maintenace to be determined
   // Data broker removal under maintenance resolved
+  // eslint-disable-next-line jest/no-commented-out-tests
   // it("shows the right description for a scan result card with removal under maintenance status that's been resolved", () => {
   //   const ComposedProgressCard = composeStory(
   //     DataBrokerRemovalUnderMaintenanceFixed,
@@ -122,6 +124,7 @@ describe("ScanResultCard", () => {
 
   // TODO: Waiting for criteria for data brokers under maintenace to be determined
   // Data broker removal under maintenance
+  // eslint-disable-next-line jest/no-commented-out-tests
   // it("shows the right description for a scan result card where removal is under maintenance", () => {
   //   const ComposedProgressCard = composeStory(
   //     DataBrokerRemovalUnderMaintenance,

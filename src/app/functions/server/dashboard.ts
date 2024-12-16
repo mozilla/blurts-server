@@ -204,12 +204,12 @@ export function getDashboardSummary(
           r.status === RemovalStatusMap.WaitingForVerification) &&
         !isManuallyResolved;
 
-      // TODO: Waiting for criteria for data brokers under maintenace to be determined
+      // TODO: Waiting for criteria for data brokers under maintenance to be determined
       // const isRemovalUnderMaintenance =
       //   r.broker_status === DataBrokerRemovalStatusMap.RemovalUnderMaintenance;
 
       if (isInProgress) {
-        // TODO: Waiting for criteria for data brokers under maintenace to be determined
+        // TODO: Waiting for criteria for data brokers under maintenance to be determined
         // if (!isRemovalUnderMaintenance) {
         summary.dataBrokerInProgressNum++;
         // }
@@ -234,7 +234,7 @@ export function getDashboardSummary(
       summary.allDataPoints.familyMembers += r.relatives.length;
 
       if (isInProgress) {
-        // TODO: Waiting for criteria for data brokers under maintenace to be determined
+        // TODO: Waiting for criteria for data brokers under maintenance to be determined
         // if (!isRemovalUnderMaintenance) {
         summary.inProgressDataPoints.emailAddresses += r.emails.length;
         summary.inProgressDataPoints.phoneNumbers += r.phones.length;

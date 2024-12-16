@@ -44,7 +44,7 @@ export const StatusPill = (props: Props) => {
         props.exposure,
         props.enabledFeatureFlags?.includes("AdditionalRemovalStatuses") ??
           false,
-        // TODO: Waiting for criteria for data brokers under maintenace to be determined
+        // TODO: Waiting for criteria for data brokers under maintenance to be determined
         // props.isRemovalUnderMaintenance || false,
       );
 
@@ -56,7 +56,7 @@ export const StatusPill = (props: Props) => {
               exposure: props.exposure,
               pillType,
               l10n,
-              // TODO: Waiting for criteria for data brokers under maintenace to be determined
+              // TODO: Waiting for criteria for data brokers under maintenance to be determined
               // isDataBrokerUnderMaintenance: props.isRemovalUnderMaintenance,
             })
           : getStatusLabel({
@@ -119,6 +119,7 @@ export const getExposureStatus = (
       return "fixed";
     }
 
+    // TODO: Waiting for criteria for data brokers under maintenance to be determined
     // if (isRemovalUnderMaintenance) {
     //   return "actionNeeded";
     // }

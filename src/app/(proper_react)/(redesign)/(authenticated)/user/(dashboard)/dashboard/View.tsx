@@ -179,7 +179,7 @@ export const View = (props: Props) => {
       const exposureStatus = getExposureStatus(
         exposure,
         props.enabledFeatureFlags.includes("AdditionalRemovalStatuses"),
-        // TODO: Waiting for criteria for data brokers under maintenace to be determined
+        // TODO: Waiting for criteria for data brokers under maintenance to be determined
         // isDataBrokerUnderMaintenance(exposure),
       );
 

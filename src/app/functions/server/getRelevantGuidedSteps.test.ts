@@ -562,6 +562,7 @@ describe("getNextGuidedStep", () => {
     });
 
     // TODO: Waiting for criteria for data brokers under maintenace to be determined
+    // eslint-disable-next-line jest/no-commented-out-tests
     // it("links to the removal under maintenance step if a user has scan resutls with a data broker that has a removal under maintenance status", () => {
     //   expect(
     //     getNextGuidedStep({
