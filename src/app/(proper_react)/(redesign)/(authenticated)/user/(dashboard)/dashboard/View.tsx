@@ -179,7 +179,8 @@ export const View = (props: Props) => {
       const exposureStatus = getExposureStatus(
         exposure,
         props.enabledFeatureFlags.includes("AdditionalRemovalStatuses"),
-        isDataBrokerUnderMaintenance(exposure),
+        // TODO: Waiting for criteria for data brokers under maintenance to be determined
+        // isDataBrokerUnderMaintenance(exposure),
       );
 
       return (
@@ -561,11 +562,12 @@ export const View = (props: Props) => {
   );
 };
 
-export function isDataBrokerUnderMaintenance(
-  exposure: Exposure | OnerepScanResultDataBrokerRow,
-): boolean {
-  return (
-    isScanResult(exposure) &&
-    exposure.broker_status === "removal_under_maintenance"
-  );
-}
+// TODO: Waiting for criteria for data brokers under maintenace to be determined
+// export function isDataBrokerUnderMaintenance(
+//   exposure: Exposure | OnerepScanResultDataBrokerRow,
+// ): boolean {
+//   return (
+//     isScanResult(exposure) &&
+//     exposure.broker_status === "removal_under_maintenance"
+//   );
+// }

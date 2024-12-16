@@ -6,7 +6,6 @@ import { OnerepScanResultDataBrokerRow } from "knex/types/tables";
 import { BreachDataTypes } from "../universal/breach";
 import { RemovalStatusMap } from "../universal/scanResult";
 import { SubscriberBreach } from "../../../utils/subscriberBreaches";
-import { DataBrokerRemovalStatusMap } from "../universal/dataBroker";
 
 export type DataPoints = {
   // shared
@@ -204,12 +203,16 @@ export function getDashboardSummary(
         (r.status === RemovalStatusMap.OptOutInProgress ||
           r.status === RemovalStatusMap.WaitingForVerification) &&
         !isManuallyResolved;
-      const isRemovalUnderMaintenance =
-        r.broker_status === DataBrokerRemovalStatusMap.RemovalUnderMaintenance;
+
+      // TODO: Waiting for criteria for data brokers under maintenance to be determined
+      // const isRemovalUnderMaintenance =
+      //   r.broker_status === DataBrokerRemovalStatusMap.RemovalUnderMaintenance;
+
       if (isInProgress) {
-        if (!isRemovalUnderMaintenance) {
-          summary.dataBrokerInProgressNum++;
-        }
+        // TODO: Waiting for criteria for data brokers under maintenance to be determined
+        // if (!isRemovalUnderMaintenance) {
+        summary.dataBrokerInProgressNum++;
+        // }
       } else if (isAutoFixed) {
         summary.dataBrokerAutoFixedNum++;
       } else if (isManuallyResolved) {
@@ -231,13 +234,14 @@ export function getDashboardSummary(
       summary.allDataPoints.familyMembers += r.relatives.length;
 
       if (isInProgress) {
-        if (!isRemovalUnderMaintenance) {
-          summary.inProgressDataPoints.emailAddresses += r.emails.length;
-          summary.inProgressDataPoints.phoneNumbers += r.phones.length;
-          summary.inProgressDataPoints.addresses += r.addresses.length;
-          summary.inProgressDataPoints.familyMembers += r.relatives.length;
-          summary.dataBrokerInProgressDataPointsNum += dataPointsIncrement;
-        }
+        // TODO: Waiting for criteria for data brokers under maintenance to be determined
+        // if (!isRemovalUnderMaintenance) {
+        summary.inProgressDataPoints.emailAddresses += r.emails.length;
+        summary.inProgressDataPoints.phoneNumbers += r.phones.length;
+        summary.inProgressDataPoints.addresses += r.addresses.length;
+        summary.inProgressDataPoints.familyMembers += r.relatives.length;
+        summary.dataBrokerInProgressDataPointsNum += dataPointsIncrement;
+        // }
       }
 
       // for fixed data points: email, phones, addresses, relatives, full name (1)

@@ -82,9 +82,10 @@ export const Steps = (props: {
       {label} {count > 0 && `(${count})`}
     </div>
   );
-  const dataBrokerStepCompleted =
-    hasCompletedStepSection(props.data, "Scan") &&
-    hasCompletedStepSection(props.data, "DataBrokerManualRemoval");
+  const dataBrokerStepCompleted = hasCompletedStepSection(props.data, "Scan");
+  // TODO: MNTOR-3880 Waiting for criteria for data brokers under maintenace to be determined
+  // && hasCompletedStepSection(props.data, "DataBrokerManualRemoval");
+
   return (
     <ul className={styles.steps}>
       {isEligibleForStep(props.data, "Scan") && (
