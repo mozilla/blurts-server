@@ -55,6 +55,7 @@ export const featureFlagNames = [
   "DataBrokerRemovalTimeEstimateLabel",
   "DataBrokerRemovalTimeEstimateCsat",
   "SettingsPageRedesign",
+  "EnableRemovalUnderMaintenanceStep",
 ] as const;
 export type FeatureFlagName = (typeof featureFlagNames)[number];
 
