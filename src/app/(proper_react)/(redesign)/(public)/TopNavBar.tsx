@@ -17,57 +17,67 @@ export const TopNavBar = (props: {
   const l10n = useL10n();
   return (
     <div className={props.styles.navbar}>
-      <div className={props.styles.navbarLinksContainer}>
-        <TelemetryLink
-          className={props.styles.navbarLinks}
-          href="/how-it-works"
-          eventData={{
-            link_id: "navbar_how_it_works",
-          }}
-        >
-          <>
-            {props.showCaret && <CaretRight alt="" />}
-            {l10n.getString("landing-premium-hero-navbar-link-how-it-works")}
-          </>
-        </TelemetryLink>
-        <TelemetryLink
-          className={props.styles.navbarLinks}
-          href="#pricing"
-          eventData={{
-            link_id: "navbar_pricing",
-          }}
-        >
-          <>
-            {props.showCaret && <CaretRight alt="" />}
-            {l10n.getString("landing-premium-hero-navbar-link-pricing")}
-          </>
-        </TelemetryLink>
-        <TelemetryLink
-          data-testid="navbar_faqs"
-          className={props.styles.navbarLinks}
-          href="#faq"
-          eventData={{
-            link_id: "navbar_faqs",
-          }}
-        >
-          <>
-            {props.showCaret && <CaretRight alt="" />}
-            {l10n.getString("landing-premium-hero-navbar-link-faqs")}
-          </>
-        </TelemetryLink>
-        <TelemetryLink
-          className={props.styles.navbarLinks}
-          href="/breaches"
-          eventData={{
-            link_id: "navbar_recent_breaches",
-          }}
-        >
-          <>
-            {props.showCaret && <CaretRight alt="" />}
-            {l10n.getString("landing-premium-hero-navbar-link-recent-breaches")}
-          </>
-        </TelemetryLink>
-      </div>
+      <ul className={`${props.styles.navbarLinksContainer} noList`}>
+        <li>
+          <TelemetryLink
+            className={props.styles.navbarLinks}
+            href="/how-it-works"
+            eventData={{
+              link_id: "navbar_how_it_works",
+            }}
+          >
+            <>
+              {props.showCaret && <CaretRight alt="" />}
+              {l10n.getString("landing-premium-hero-navbar-link-how-it-works")}
+            </>
+          </TelemetryLink>
+        </li>
+        <li>
+          <TelemetryLink
+            className={props.styles.navbarLinks}
+            href="#pricing"
+            eventData={{
+              link_id: "navbar_pricing",
+            }}
+          >
+            <>
+              {props.showCaret && <CaretRight alt="" />}
+              {l10n.getString("landing-premium-hero-navbar-link-pricing")}
+            </>
+          </TelemetryLink>
+        </li>
+        <li>
+          <TelemetryLink
+            data-testid="navbar_faqs"
+            className={props.styles.navbarLinks}
+            href="#faq"
+            eventData={{
+              link_id: "navbar_faqs",
+            }}
+          >
+            <>
+              {props.showCaret && <CaretRight alt="" />}
+              {l10n.getString("landing-premium-hero-navbar-link-faqs")}
+            </>
+          </TelemetryLink>
+        </li>
+        <li>
+          <TelemetryLink
+            className={props.styles.navbarLinks}
+            href="/breaches"
+            eventData={{
+              link_id: "navbar_recent_breaches",
+            }}
+          >
+            <>
+              {props.showCaret && <CaretRight alt="" />}
+              {l10n.getString(
+                "landing-premium-hero-navbar-link-recent-breaches",
+              )}
+            </>
+          </TelemetryLink>
+        </li>
+      </ul>
     </div>
   );
 };

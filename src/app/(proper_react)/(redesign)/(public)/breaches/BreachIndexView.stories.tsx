@@ -8,11 +8,23 @@ import { BreachIndexView, Props as ViewProps } from "./BreachIndexView";
 import { getL10n } from "../../../../functions/l10n/storybookAndJest";
 import { PublicShell } from "../PublicShell";
 import { createRandomHibpListing } from "../../../../../apiMocks/mockData";
+import { defaultExperimentData } from "../../../../../telemetry/generated/nimbus/experiments";
 
 const meta: Meta<typeof BreachIndexView> = {
   title: "Pages/Public/Breach index",
   component: (props: ViewProps) => (
-    <PublicShell l10n={getL10n("en")} countryCode="us" enabledFeatureFlags={[]}>
+    <PublicShell
+      l10n={getL10n("en")}
+      countryCode="us"
+      enabledFeatureFlags={[]}
+      experimentData={{
+        ...defaultExperimentData,
+        "landing-page-redesign": {
+          enabled: false,
+          variant: "default",
+        },
+      }}
+    >
       <BreachIndexView {...props} />
     </PublicShell>
   ),

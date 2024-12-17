@@ -19,25 +19,42 @@ import {
 } from "../../../functions/server/getPremiumSubscriptionInfo";
 import { FeatureFlagName } from "../../../../db/tables/featureFlags";
 import { TopNavBar } from "./TopNavBar";
+import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 
 export type Props = {
   children: ReactNode;
   l10n: ExtendedReactLocalization;
   countryCode: string;
   enabledFeatureFlags: FeatureFlagName[];
+  experimentData: ExperimentData;
+};
+
+const PublicMobileShell = (props: Props) => {
+  if (
+    !(
+      props.enabledFeatureFlags.includes("LandingPageRedesign") &&
+      props.experimentData["landing-page-redesign"].enabled &&
+      props.experimentData["landing-page-redesign"].variant === "redesign"
+    )
+  ) {
+    return props.children;
+  }
+
+  return (
+    <MobileShell
+      {...props}
+      session={null}
+      monthlySubscriptionUrl={getPremiumSubscriptionUrl({ type: "monthly" })}
+      yearlySubscriptionUrl={getPremiumSubscriptionUrl({ type: "yearly" })}
+      subscriptionBillingAmount={getSubscriptionBillingAmount()}
+      fxaSettingsUrl={process.env.FXA_SETTINGS_URL!}
+    />
+  );
 };
 
 export const PublicShell = (props: Props) => {
   return (
-    <MobileShell
-      countryCode={props.countryCode}
-      session={null}
-      monthlySubscriptionUrl={getPremiumSubscriptionUrl({ type: "monthly" })}
-      yearlySubscriptionUrl={getPremiumSubscriptionUrl({ type: "yearly" })}
-      fxaSettingsUrl={process.env.FXA_SETTINGS_URL!}
-      subscriptionBillingAmount={getSubscriptionBillingAmount()}
-      enabledFeatureFlags={props.enabledFeatureFlags}
-    >
+    <PublicMobileShell {...props}>
       <div className={styles.wrapper}>
         <ToastContainer
           toastClassName={styles.toastBody}
@@ -56,13 +73,16 @@ export const PublicShell = (props: Props) => {
                 />
               </Link>
             </h1>
-            <TopNavBar styles={styles} />
+            {props.enabledFeatureFlags.includes("LandingPageRedesign") &&
+              props.experimentData["landing-page-redesign"].enabled &&
+              props.experimentData["landing-page-redesign"].variant ===
+                "redesign" && <TopNavBar styles={styles} />}
             <SignInButton variant="secondary" />
           </nav>
         </header>
         <div className={styles.content}>{props.children}</div>
         <Footer l10n={props.l10n} countryCode={props.countryCode} />
       </div>
-    </MobileShell>
+    </PublicMobileShell>
   );
 };

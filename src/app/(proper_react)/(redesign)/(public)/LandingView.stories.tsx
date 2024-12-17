@@ -32,8 +32,15 @@ const meta: Meta<typeof View> = {
       >
         <PublicShell
           l10n={getL10n("en")}
-          countryCode={props.countryCode}
+          countryCode="us"
           enabledFeatureFlags={[]}
+          experimentData={{
+            ...defaultExperimentData,
+            "landing-page-redesign": {
+              enabled: false,
+              variant: "default",
+            },
+          }}
         >
           <View {...props} experimentData={experimentData} />
         </PublicShell>

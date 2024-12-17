@@ -23,7 +23,6 @@ import { getExperiments } from "../../../functions/server/getExperiments";
 import { getLocale } from "../../../functions/universal/getLocale";
 import { AccountsMetricsFlowProvider } from "../../../../contextProviders/accounts-metrics-flow";
 import { getEnabledFeatureFlags } from "../../../../db/tables/featureFlags";
-import { AccountDeletionNotification } from "./AccountDeletionNotification";
 
 type Props = {
   searchParams: {
@@ -74,7 +73,6 @@ export default async function Page({ searchParams }: Props) {
         service: process.env.OAUTH_CLIENT_ID as string,
       }}
     >
-      <AccountDeletionNotification />
       {enabledFeatureFlags.includes("LandingPageRedesign") &&
       experimentData["landing-page-redesign"].enabled &&
       experimentData["landing-page-redesign"].variant === "redesign" ? (

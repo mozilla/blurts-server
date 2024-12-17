@@ -7,15 +7,27 @@ import { PublicShell } from "./PublicShell";
 import { getL10n } from "../../../functions/l10n/serverComponents";
 import { headers } from "next/headers";
 import { getCountryCode } from "../../../functions/server/getCountryCode";
+import { getLocale } from "../../../functions/universal/getLocale";
+import { getExperiments } from "../../../functions/server/getExperiments";
+import { getExperimentationId } from "../../../functions/server/getExperimentationId";
 
-export default function Layout(props: { children: ReactNode }) {
+export default async function Layout(props: { children: ReactNode }) {
   const headersList = headers();
   const countryCode = getCountryCode(headersList);
+  const experimentationId = getExperimentationId(null);
+  const experimentData = await getExperiments({
+    experimentationId,
+    countryCode,
+    locale: getLocale(getL10n()),
+    previewMode: false,
+  });
+
   return (
     <PublicShell
       l10n={getL10n()}
       countryCode={countryCode}
       enabledFeatureFlags={[]}
+      experimentData={experimentData}
     >
       {props.children}
     </PublicShell>

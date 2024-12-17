@@ -4,6 +4,7 @@
 
 import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 import { ExtendedReactLocalization } from "../../../functions/l10n";
+import { AccountDeletionNotification } from "./AccountDeletionNotification";
 import styles from "./LandingViewRedesign.module.scss";
 
 export type Props = {
@@ -16,10 +17,13 @@ export type Props = {
 
 export const View = (props: Props) => {
   return (
-    <main className={styles.wrapper}>
-      <header>
-        <h1>{props.l10n.getString("landing-all-hero-title")}</h1>
-      </header>
-    </main>
+    <>
+      <AccountDeletionNotification />
+      <main className={styles.wrapper}>
+        <header>
+          <h1>{props.l10n.getString("landing-all-hero-title")}</h1>
+        </header>
+      </main>
+    </>
   );
 };
