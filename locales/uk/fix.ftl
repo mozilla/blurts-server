@@ -7,6 +7,7 @@ fix-flow-nav-leaked-passwords = Викриті паролі
 fix-flow-nav-security-recommendations = Рекомендації щодо безпеки
 guided-resolution-flow-exit = Повернутися до панелі керування
 guided-resolution-flow-next-arrow = Наступний крок
+guided-resolution-flow-next-arrow-sub-step = Перейти до наступного результату
 guided-resolution-flow-step-navigation-label = Настанови
 
 # Celebration screens
