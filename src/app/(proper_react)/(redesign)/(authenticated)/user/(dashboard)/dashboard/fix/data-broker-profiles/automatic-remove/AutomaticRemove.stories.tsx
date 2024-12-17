@@ -76,6 +76,7 @@ export const AutomaticRemoveViewStory: Story = {
             yearly: 13.37,
             monthly: 42.42,
           }}
+          enabledFeatureFlags={[]}
         />
       </Shell>
     );

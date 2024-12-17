@@ -32,6 +32,7 @@ import {
   useRadioGroup,
 } from "react-aria";
 import { VisuallyHidden } from "../../../../../../../../../components/server/VisuallyHidden";
+import { FeatureFlagName } from "../../../../../../../../../../db/tables/featureFlags";
 
 export type Props = Omit<ComponentProps<typeof FixView>, "children"> & {
   monthlySubscriptionUrl: string;
@@ -40,6 +41,7 @@ export type Props = Omit<ComponentProps<typeof FixView>, "children"> & {
     yearly: number;
     monthly: number;
   };
+  enabledFeatureFlags: FeatureFlagName[];
 };
 
 const RadioContext = createContext<RadioGroupState | null>(null);
