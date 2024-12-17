@@ -62,24 +62,22 @@ export const PublicShell = (props: Props) => {
           theme="colored"
           autoClose={false}
         />
-        <header>
-          <nav className={styles.nav}>
-            <h1>
-              <Link href="/">
-                <Image
-                  className={styles.logo}
-                  src={MonitorLogo}
-                  alt={props.l10n.getString("public-nav-name")}
-                />
-              </Link>
-            </h1>
-            {props.enabledFeatureFlags.includes("LandingPageRedesign") &&
-              props.experimentData["landing-page-redesign"].enabled &&
-              props.experimentData["landing-page-redesign"].variant ===
-                "redesign" && <TopNavBar styles={styles} />}
-            <SignInButton variant="secondary" />
-          </nav>
-        </header>
+        <nav className={styles.nav}>
+          <h1>
+            <Link href="/">
+              <Image
+                className={styles.logo}
+                src={MonitorLogo}
+                alt={props.l10n.getString("public-nav-name")}
+              />
+            </Link>
+          </h1>
+          {props.enabledFeatureFlags.includes("LandingPageRedesign") &&
+            props.experimentData["landing-page-redesign"].enabled &&
+            props.experimentData["landing-page-redesign"].variant ===
+              "redesign" && <TopNavBar styles={styles} />}
+          <SignInButton variant="secondary" />
+        </nav>
         <div className={styles.content}>{props.children}</div>
         <Footer l10n={props.l10n} countryCode={props.countryCode} />
       </div>

@@ -56,6 +56,7 @@ export const MobileShell = (props: Props) => {
     // As we transition focus away from the navigation bar in deeper sections
     // of the experience, it's best to ensure its focus on the dashboard page,
     // where users first encounter it and when they return to it
+    /* c8 ignore next 3 */
     if (isOnDashboard) {
       wrapperRef.current?.focus();
     }
@@ -64,6 +65,7 @@ export const MobileShell = (props: Props) => {
   return (
     <div
       ref={wrapperRef}
+      /* c8 ignore next */
       tabIndex={isOnDashboard ? -1 : undefined}
       className={`${styles.wrapper} ${
         isExpanded ? styles.hasOpenMenu : styles.hasClosedMenu

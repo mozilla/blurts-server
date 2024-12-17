@@ -20,9 +20,7 @@ export const View = (props: Props) => {
     <>
       <AccountDeletionNotification />
       <main className={styles.wrapper}>
-        <header>
-          <h1>{props.l10n.getString("landing-all-hero-title")}</h1>
-        </header>
+        <h1>{props.l10n.getString("landing-all-hero-title")}</h1>
       </main>
     </>
   );
