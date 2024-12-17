@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import type { Meta, StoryObj } from "@storybook/react";
-import { View, Props as ViewProps } from "./LandingView";
+import { View, Props as ViewProps } from "./LandingViewRedesign";
 import { getL10n } from "../../../functions/l10n/storybookAndJest";
 import { PublicShell } from "./PublicShell";
 import { defaultExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
@@ -11,34 +11,29 @@ import { AccountsMetricsFlowProvider } from "../../../../contextProviders/accoun
 import { CONST_URL_MONITOR_LANDING_PAGE_ID } from "../../../../constants";
 
 const meta: Meta<typeof View> = {
-  title: "Pages/Public/Landing page/Default",
+  title: "Pages/Public/Landing page/Redesign",
   component: (props: ViewProps) => {
     const experimentData = props.experimentData ?? defaultExperimentData;
     return (
       <AccountsMetricsFlowProvider
-        enabled={experimentData["landing-page-free-scan-cta"].enabled}
+        enabled={experimentData["landing-page-redesign"].enabled}
         metricsFlowParams={{
           entrypoint: CONST_URL_MONITOR_LANDING_PAGE_ID,
-          entrypoint_experiment: "landing-page-free-scan-cta",
-          entrypoint_variation:
-            experimentData["landing-page-free-scan-cta"].variant,
-          form_type:
-            experimentData["landing-page-free-scan-cta"].variant ===
-            "ctaWithEmail"
-              ? "email"
-              : "button",
+          entrypoint_experiment: "landing-page-redesign",
+          entrypoint_variation: experimentData["landing-page-redesign"].variant,
+          form_type: "email",
           service: process.env.OAUTH_CLIENT_ID as string,
         }}
       >
         <PublicShell
           l10n={getL10n("en")}
           countryCode="us"
-          enabledFeatureFlags={[]}
+          enabledFeatureFlags={["LandingPageRedesign"]}
           experimentData={{
             ...defaultExperimentData,
             "landing-page-redesign": {
-              enabled: false,
-              variant: "default",
+              enabled: true,
+              variant: "redesign",
             },
           }}
         >
@@ -55,7 +50,7 @@ const meta: Meta<typeof View> = {
 export default meta;
 type Story = StoryObj<typeof View>;
 
-export const LandingUs: Story = {
+export const LandingRedesignUs: Story = {
   name: "US visitors",
   args: {
     eligibleForPremium: true,
@@ -64,7 +59,7 @@ export const LandingUs: Story = {
   },
 };
 
-export const LandingUsScanLimit: Story = {
+export const LandingRedesignUsScanLimit: Story = {
   name: "US visitors - Scan limit reached",
   args: {
     eligibleForPremium: true,
@@ -73,7 +68,7 @@ export const LandingUsScanLimit: Story = {
   },
 };
 
-export const LandingNonUs: Story = {
+export const LandingRedesignNonUs: Story = {
   name: "Non-US visitors",
   args: {
     eligibleForPremium: false,
@@ -81,7 +76,7 @@ export const LandingNonUs: Story = {
   },
 };
 
-export const LandingNonUsDe: Story = {
+export const LandingRedesignNonUsDe: Story = {
   name: "German",
   args: {
     eligibleForPremium: false,
@@ -90,7 +85,7 @@ export const LandingNonUsDe: Story = {
   },
 };
 
-export const LandingNonUsFr: Story = {
+export const LandingRedesignNonUsFr: Story = {
   name: "French",
   args: {
     eligibleForPremium: false,
