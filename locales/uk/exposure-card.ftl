@@ -28,9 +28,10 @@ exposure-card-other = Інше
 exposure-card-description-data-breach-action-needed = { $data_breach_date } було розкрито вашу інформацію під час <data_breach_link>витоку даних { $data_breach_company }.</data_breach_link> Ми розповімо вам, як це виправити.
 exposure-card-description-data-breach-fixed = Ви вжили заходів, необхідних для усунення <data_breach_link>цього витоку</data_breach_link>. Ми постійно відстежуватимемо витоки даних і сповіщатимемо вас про будь-які нові розкриття.
 exposure-card-your-exposed-info = Ваша розкрита інформація:
+exposure-card-found-the-following-data = { -brand-monitor } знайшов такі розкриті дані:
 exposure-card-exposure-type-data-broker = Продаж інформації
 exposure-card-exposure-type-data-breach = Витік даних
-exposure-card-cta = Усунути всі розкриття
+exposure-card-resolve-exposures-cta = Усунути витоки даних
 exposure-card-label-company-logo = Логотип компанії
 exposure-card-label-company = Компанія
 # Status of the exposure card, could be In Progress, Fixed or Action Needed
@@ -39,3 +40,4 @@ exposure-card-label-status = Стан
 # $category_label is the data breach exposure type that was leaked. Eg. Email, IP Address.
 # $count is the number of times that the data type was leaked.
 exposure-card-label-and-count = { $category_label }: { $count }
+exposure-card-manual-resolution-praise = <b>Чудова робота!</b> Ви усунули цю проблему.

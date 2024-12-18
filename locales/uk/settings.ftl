@@ -15,8 +15,6 @@ settings-alert-preferences-allow-breach-alerts-title = Миттєві спові
 settings-alert-preferences-allow-breach-alerts-subtitle = Ці сповіщення надсилаються одразу після виявлення витоку даних
 settings-alert-preferences-option-one = Надсилати сповіщення про витоки даних на відповідні адреси електронної пошти
 settings-alert-preferences-option-two = Надсилати попередження про всі витоки на основну адресу електронної пошти
-settings-alert-preferences-allow-monthly-monitor-report-title = Щомісячний звіт { -brand-monitor }
-settings-alert-preferences-allow-monthly-monitor-report-subtitle = Щомісячне оновлення про витоки даних, виправлені проблеми, а також інформацію про необхідні дії.
 
 ## Monitored email addresses
 
@@ -51,12 +49,6 @@ settings-email-number-of-breaches-info =
        *[other] З'являється в { $breachCount } відомих витоках даних.
     }
 
-## Deactivate account
-
-settings-deactivate-account-title = Деактивувати обліковий запис
-settings-deactivate-account-info-2 = Ви можете деактивувати { -product-short-name }, видаливши свій { -brand-mozilla-account }.
-settings-fxa-link-label-3 = Перейти до налаштувань { -brand-mozilla-account(case: "gen") }
-
 ## Delete Monitor account
 
 settings-delete-monitor-free-account-title = Видалити обліковий запис { -brand-monitor }
@@ -68,3 +60,18 @@ settings-delete-monitor-free-account-dialog-cta-label = Видалити обл�
 settings-delete-monitor-free-account-dialog-cancel-button-label = Не зважайте, повернутися
 settings-delete-monitor-account-confirmation-toast-label-2 = Ваш обліковий запис { -brand-monitor } видалено.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Відхилити
+
+## Monthly Monitor Report
+
+settings-alert-preferences-allow-monthly-monitor-report-title = Щомісячний звіт { -brand-monitor }
+settings-alert-preferences-allow-monthly-monitor-report-subtitle = Щомісячне оновлення про витоки даних, виправлені проблеми, а також інформацію про необхідні дії.
+
+## Settings page redesign
+
+settings-tab-label-edit-info = Редагувати свої дані
+settings-tab-label-notifications = Налаштувати сповіщення
+settings-tab-label-manage-account = Керувати обліковим записом
+settings-tab-subtitle-manage-account = Керуйте своїм обліковим записом { -product-name }.
+settings-tab-notifications-marketing-title = Маркетингові комунікації
+settings-tab-notifications-marketing-text = Періодичні оновлення про { -brand-monitor }, { -brand-mozilla } та інші наші продукти безпеки.
+settings-tab-notifications-marketing-link-label = Перейти до налаштувань е-пошти { -brand-mozilla }

@@ -31,7 +31,7 @@ exposure-card-your-exposed-info = Vaše odhalené informace:
 exposure-card-found-the-following-data = Aplikace { -brand-monitor } zjistila následující data o odhalení osoby:
 exposure-card-exposure-type-data-broker = Informace k prodeji
 exposure-card-exposure-type-data-breach = Únik údajů
-exposure-card-resolve-exposures-cta = Vyřešte vystavení
+exposure-card-resolve-exposures-cta = Vyřešit úniky
 exposure-card-label-company-logo = Logo společnosti
 exposure-card-label-company = Společnost
 # Status of the exposure card, could be In Progress, Fixed or Action Needed
