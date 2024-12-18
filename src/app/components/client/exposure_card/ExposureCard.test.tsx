@@ -19,6 +19,8 @@ import Meta, {
   DataBrokerRemovalUnderMaintenanceFixed,
   DataBrokerRemovalUnderMaintenanceAutomaticallyRemoved,
 } from "./ExposureCard.stories";
+import { isDataBrokerUnderMaintenance } from "../../../(proper_react)/(redesign)/(authenticated)/user/(dashboard)/dashboard/View";
+import { createRandomScanResult } from "../../../../apiMocks/mockData";
 
 jest.mock("../../../hooks/useTelemetry");
 
@@ -290,4 +292,26 @@ describe("DataBreachCard", () => {
     const removalTimeLabel = screen.getByText("N/A");
     expect(removalTimeLabel).toBeInTheDocument();
   });
+});
+
+it("returns false for brokers not under maintenance", () => {
+  const result = isDataBrokerUnderMaintenance(
+    createRandomScanResult({
+      broker_status: "active",
+      status: "optout_in_progress",
+    }),
+  );
+
+  expect(result).toBe(false);
+});
+
+it("returns false for brokers under maintenance that are removed", () => {
+  const result = isDataBrokerUnderMaintenance(
+    createRandomScanResult({
+      broker_status: "removal_under_maintenance",
+      status: "removed",
+    }),
+  );
+
+  expect(result).toBe(false);
 });

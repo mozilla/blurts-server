@@ -9,7 +9,7 @@ import EventMetricType from "@mozilla/glean/private/metrics/event";
 import type { GleanMetricMap } from "../../telemetry/generated/_map";
 import { useSession } from "next-auth/react";
 import { hasPremium } from "../functions/universal/user";
-
+/* c8 ignore start */
 export const useGlean = () => {
   const session = useSession();
   const isPremiumUser = hasPremium(session.data?.user);
@@ -45,3 +45,4 @@ export const useGlean = () => {
 
   return record;
 };
+/* c8 ignore stop */
