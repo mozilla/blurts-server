@@ -515,6 +515,7 @@ async function getFreeSubscribersWaitingForMonthlyEmail(
   }
 
   const wrappedQuery = knex
+    // @ts-ignore TODO update our knex types
     .from({ base_query: query }) // Use the existing query as a subquery
     .select("*")
     .whereIn("country_code", countryCodes)
