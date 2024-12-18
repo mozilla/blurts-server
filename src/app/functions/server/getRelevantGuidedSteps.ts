@@ -145,12 +145,15 @@ export function isEligibleForStep(
 ): boolean {
   // Only premium users can see the manual data broker removal flow, once they have run a scan
   if (
+    // TODO: MNTOR-3886 - Remove EnableRemovalUnderMaintenanceStep feature flag
     enabledFeatureFlags?.includes("EnableRemovalUnderMaintenanceStep") &&
     stepId === "DataBrokerManualRemoval"
   ) {
     const dataBrokersRequireManualRemoval =
       data.latestScanData?.results?.some((result) => {
-        return isDataBrokerUnderMaintenance(result);
+        return (
+          isDataBrokerUnderMaintenance(result) && !result.manually_resolved
+        );
       }) ?? false;
 
     return dataBrokersRequireManualRemoval;
@@ -211,8 +214,9 @@ export function hasCompletedStepSection(
     | "DataBrokerManualRemoval",
   enabledFeatureFlags?: FeatureFlagName[],
 ): boolean {
-  /* c8 ignore next 6 */
+  /* c8 ignore next 7 */
   if (
+    // TODO: MNTOR-3886 - Remove EnableRemovalUnderMaintenanceStep feature flag
     enabledFeatureFlags?.includes("EnableRemovalUnderMaintenanceStep") &&
     section === "DataBrokerManualRemoval"
   ) {
@@ -260,16 +264,15 @@ export function hasCompletedStep(
   stepId: StepLink["id"],
   enabledFeatureFlags?: FeatureFlagName[],
 ): boolean {
-  // TODO: MNTOR-3886 - Remove EnableRemovalUnderMaintenanceStep feature flag
   if (
+    // TODO: MNTOR-3886 - Remove EnableRemovalUnderMaintenanceStep feature flag
     enabledFeatureFlags?.includes("EnableRemovalUnderMaintenanceStep") &&
     stepId === "DataBrokerManualRemoval"
   ) {
     return (
       data.latestScanData?.results?.every(
         (result) =>
-          result.broker_status !== "removal_under_maintenance" ||
-          result.manually_resolved,
+          !isDataBrokerUnderMaintenance(result) || result.manually_resolved,
       ) ?? false
     );
   }
