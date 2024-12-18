@@ -89,6 +89,7 @@ export const Steps = (props: {
   const dataBrokerStepCompleted =
     hasCompletedStepSection(props.data, "Scan") &&
     // TODO: MNTOR-3886 - Remove EnableRemovalUnderMaintenanceStep feature flag
+    /* c8 ignore next */
     (!props.enabledFeatureFlags.includes("EnableRemovalUnderMaintenanceStep") ||
       hasCompletedStepSection(props.data, "DataBrokerManualRemoval"));
 
