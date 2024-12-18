@@ -19,12 +19,13 @@ import createDbConnection from "../../db/connect";
 import { logger } from "../../app/functions/server/logging";
 import { getMonthlyActivityFreeUnsubscribeLink } from "../../app/functions/cronjobs/unsubscribeLinks";
 import { hasPremium } from "../../app/functions/universal/user";
+import { MONTHLY_ACTIVITY_FREE_EMAIL_BATCH_SIZE } from "../../constants";
 
 await run();
 await createDbConnection().destroy();
 
 async function run() {
-  const batchSize = 5;
+  const batchSize = MONTHLY_ACTIVITY_FREE_EMAIL_BATCH_SIZE;
 
   logger.info(`Getting free subscribers with batch size: ${batchSize}`);
   const subscribersToEmail = (await getFreeSubscribersWaitingForMonthlyEmail())
