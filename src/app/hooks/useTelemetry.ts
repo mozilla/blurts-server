@@ -18,7 +18,6 @@ const TelemetryPlatforms = {
   Ga: "ga",
 } as const;
 
-/* c8 ignore start */
 export const useTelemetry = () => {
   const path = usePathname();
   const recordGlean = useGlean();
@@ -55,4 +54,3 @@ export const useTelemetry = () => {
 
   return recordTelemetry;
 };
-/* c8 ignore stop */
