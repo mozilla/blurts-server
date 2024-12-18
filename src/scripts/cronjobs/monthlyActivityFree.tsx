@@ -28,12 +28,10 @@ async function run() {
   const batchSize = MONTHLY_ACTIVITY_FREE_EMAIL_BATCH_SIZE;
 
   logger.info(`Getting free subscribers with batch size: ${batchSize}`);
-  const subscribersToEmail = (await getFreeSubscribersWaitingForMonthlyEmail())
-    .filter((subscriber) => {
-      const assumedCountryCode = getSignupLocaleCountry(subscriber);
-      return assumedCountryCode === "us";
-    })
-    .slice(0, batchSize);
+  const subscribersToEmail = await getFreeSubscribersWaitingForMonthlyEmail(
+    batchSize,
+    ["US"],
+  );
   await initEmail();
 
   for (const subscriber of subscribersToEmail) {
