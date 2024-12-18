@@ -523,7 +523,7 @@ async function getFreeSubscribersWaitingForMonthlyEmail(
 
   const rows = await wrappedQuery;
 
-  return rows;
+  return rows as SubscriberRow[];
 }
 /* c8 ignore stop */
 
