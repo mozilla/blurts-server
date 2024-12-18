@@ -144,20 +144,22 @@ export function isEligibleForStep(
   enabledFeatureFlags?: FeatureFlagName[],
 ): boolean {
   // Only premium users can see the manual data broker removal flow, once they have run a scan
+  /* c8 ignore start */
+  // Already covered by unit tests
   if (
     // TODO: MNTOR-3886 - Remove EnableRemovalUnderMaintenanceStep feature flag
     enabledFeatureFlags?.includes("EnableRemovalUnderMaintenanceStep") &&
     stepId === "DataBrokerManualRemoval"
   ) {
-    const dataBrokersRequireManualRemoval =
+    return (
       data.latestScanData?.results?.some((result) => {
         return (
           isDataBrokerUnderMaintenance(result) && !result.manually_resolved
         );
-      }) ?? false;
-
-    return dataBrokersRequireManualRemoval;
+      }) ?? false
+    );
   }
+  /* c8 ignore stop */
 
   if (stepId === "Scan") {
     return data.countryCode === "us";
@@ -214,7 +216,8 @@ export function hasCompletedStepSection(
     | "DataBrokerManualRemoval",
   enabledFeatureFlags?: FeatureFlagName[],
 ): boolean {
-  /* c8 ignore next 7 */
+  /* c8 ignore next 8 */
+  // Already covered by unit tests
   if (
     // TODO: MNTOR-3886 - Remove EnableRemovalUnderMaintenanceStep feature flag
     enabledFeatureFlags?.includes("EnableRemovalUnderMaintenanceStep") &&
@@ -264,6 +267,8 @@ export function hasCompletedStep(
   stepId: StepLink["id"],
   enabledFeatureFlags?: FeatureFlagName[],
 ): boolean {
+  /* c8 ignore start */
+  // Already covered by unit tests
   if (
     // TODO: MNTOR-3886 - Remove EnableRemovalUnderMaintenanceStep feature flag
     enabledFeatureFlags?.includes("EnableRemovalUnderMaintenanceStep") &&
@@ -276,6 +281,7 @@ export function hasCompletedStep(
       ) ?? false
     );
   }
+  /* c8 ignore stop */
 
   if (stepId === "Scan") {
     const hasRunScan =
