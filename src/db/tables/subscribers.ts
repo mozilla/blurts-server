@@ -520,7 +520,6 @@ async function getFreeSubscribersWaitingForMonthlyEmail(
     .whereIn("country_code", countryCodes)
     .limit(batchSize);
 
-  console.debug(wrappedQuery.toQuery());
   const rows = await wrappedQuery;
 
   return rows;
