@@ -119,6 +119,7 @@ export const getExposureStatus = (
     const additionalRemovalStatusesEnabled = enabledFeatureFlags.includes(
       "AdditionalRemovalStatuses",
     );
+    // TODO: MNTOR-3886 - Remove EnableRemovalUnderMaintenanceStep feature flag
     const manualRemovalEnabled = enabledFeatureFlags.includes(
       "EnableRemovalUnderMaintenanceStep",
     );
