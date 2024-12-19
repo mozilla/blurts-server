@@ -35,7 +35,7 @@ export async function getExperiments(params: {
   if (!process.env.NIMBUS_SIDECAR_URL) {
     throw new Error("env var NIMBUS_SIDECAR_URL not set");
   }
-  const serverUrl = new URL(`${process.env.NIMBUS_SIDECAR_URL}/v1/features`);
+  const serverUrl = new URL(`${process.env.NIMBUS_SIDECAR_URL}/v2/features`);
 
   try {
     if (params.previewMode === true) {
