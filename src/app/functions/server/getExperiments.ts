@@ -59,7 +59,6 @@ export async function getExperiments(params: {
 
     const experimentData = await response.json();
 
-    console.debug("experimentData:", experimentData);
     return (
       (experimentData as ExperimentData["Features"]) ??
       defaultExperimentData["Features"]
