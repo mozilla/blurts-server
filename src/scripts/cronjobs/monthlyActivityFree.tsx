@@ -19,13 +19,21 @@ import createDbConnection from "../../db/connect";
 import { logger } from "../../app/functions/server/logging";
 import { getMonthlyActivityFreeUnsubscribeLink } from "../../app/functions/cronjobs/unsubscribeLinks";
 import { hasPremium } from "../../app/functions/universal/user";
-import { MONTHLY_ACTIVITY_FREE_EMAIL_BATCH_SIZE } from "../../constants";
 
 await run();
 await createDbConnection().destroy();
 
 async function run() {
-  const batchSize = MONTHLY_ACTIVITY_FREE_EMAIL_BATCH_SIZE;
+  let batchSize = Number.parseInt(
+    process.env.MONTHLY_ACTIVITY_FREE_EMAIL_BATCH_SIZE ?? "10",
+    10,
+  );
+  if (Number.isNaN(batchSize)) {
+    batchSize = 10;
+    logger.warn(
+      `Could not send monthly activity emails, because the env var MONTHLY_ACTIVITY_FREE_EMAIL_BATCH_SIZE has a non-numeric value: [${process.env.MONTHLY_ACTIVITY_FREE_EMAIL_BATCH_SIZE}].`,
+    );
+  }
 
   logger.info(`Getting free subscribers with batch size: ${batchSize}`);
   const subscribersToEmail = (await getFreeSubscribersWaitingForMonthlyEmail())
