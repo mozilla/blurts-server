@@ -178,9 +178,8 @@ export const View = (props: Props) => {
     arraySortedByDate.filter((exposure: Exposure) => {
       const exposureStatus = getExposureStatus(
         exposure,
-        props.enabledFeatureFlags.includes("AdditionalRemovalStatuses"),
-        // TODO: Waiting for criteria for data brokers under maintenance to be determined
-        // isDataBrokerUnderMaintenance(exposure),
+        isDataBrokerUnderMaintenance(exposure),
+        props.enabledFeatureFlags,
       );
 
       return (
@@ -232,12 +231,15 @@ export const View = (props: Props) => {
               variant="primary"
               wide
               href={
-                getNextGuidedStep({
-                  user: props.user,
-                  countryCode,
-                  latestScanData: adjustedScanData,
-                  subscriberBreaches: props.userBreaches,
-                }).href
+                getNextGuidedStep(
+                  {
+                    user: props.user,
+                    countryCode,
+                    latestScanData: adjustedScanData,
+                    subscriberBreaches: props.userBreaches,
+                  },
+                  props.enabledFeatureFlags,
+                ).href
               }
             >
               {l10n.getString("exposure-card-resolve-exposures-cta")}
@@ -531,6 +533,7 @@ export const View = (props: Props) => {
           yearlySubscriptionUrl={props.yearlySubscriptionUrl}
           subscriptionBillingAmount={props.subscriptionBillingAmount}
           totalNumberOfPerformedScans={props.totalNumberOfPerformedScans}
+          enabledFeatureFlags={props.enabledFeatureFlags}
         />
         <section className={styles.exposuresArea}>
           {activeTab === "action-needed" ? (
@@ -562,12 +565,12 @@ export const View = (props: Props) => {
   );
 };
 
-// TODO: Waiting for criteria for data brokers under maintenace to be determined
-// export function isDataBrokerUnderMaintenance(
-//   exposure: Exposure | OnerepScanResultDataBrokerRow,
-// ): boolean {
-//   return (
-//     isScanResult(exposure) &&
-//     exposure.broker_status === "removal_under_maintenance"
-//   );
-// }
+export function isDataBrokerUnderMaintenance(
+  exposure: Exposure | OnerepScanResultDataBrokerRow,
+): boolean {
+  return (
+    isScanResult(exposure) &&
+    exposure.broker_status === "removal_under_maintenance" &&
+    exposure.status !== "removed"
+  );
+}

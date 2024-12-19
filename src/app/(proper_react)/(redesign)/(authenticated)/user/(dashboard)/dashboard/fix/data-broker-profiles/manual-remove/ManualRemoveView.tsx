@@ -26,6 +26,7 @@ import {
 import { FixView } from "../../FixView";
 import { TelemetryLink } from "../../../../../../../../../components/client/TelemetryLink";
 import { TelemetryButton } from "../../../../../../../../../components/client/TelemetryButton";
+import { FeatureFlagName } from "../../../../../../../../../../db/tables/featureFlags";
 
 export type Props = {
   scanData: LatestOnerepScanData;
@@ -35,6 +36,7 @@ export type Props = {
   user: Session["user"];
   countryCode: string;
   subscriberEmails: string[];
+  enabledFeatureFlags: FeatureFlagName[];
 };
 
 export function ManualRemoveView(props: Props) {
@@ -54,7 +56,11 @@ export function ManualRemoveView(props: Props) {
     user: props.user,
   };
 
-  const stepAfterSkip = getNextGuidedStep(data, "Scan");
+  const stepAfterSkip = getNextGuidedStep(
+    data,
+    props.enabledFeatureFlags,
+    "Scan",
+  );
 
   return (
     <FixView
@@ -62,6 +68,7 @@ export function ManualRemoveView(props: Props) {
       subscriberEmails={props.subscriberEmails}
       nextStep={stepAfterSkip}
       currentSection="data-broker-profiles"
+      enabledFeatureFlags={props.enabledFeatureFlags}
     >
       <div className={styles.main}>
         <div className={styles.content}>

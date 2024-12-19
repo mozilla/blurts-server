@@ -17,6 +17,7 @@ import { getScanResultsWithBroker } from "../../../../../../../../../../db/table
 import { getOnerepProfileId } from "../../../../../../../../../../db/tables/subscribers";
 import { isEligibleForPremium } from "../../../../../../../../../functions/universal/premium";
 import { hasPremium } from "../../../../../../../../../functions/universal/user";
+import { getEnabledFeatureFlags } from "../../../../../../../../../../db/tables/featureFlags";
 
 interface SecurityRecommendationsProps {
   params: {
@@ -31,6 +32,9 @@ export default async function SecurityRecommendations({
   if (!session?.user?.subscriber?.id) {
     return redirect("/");
   }
+  const enabledFeatureFlags = await getEnabledFeatureFlags({
+    email: session.user.email,
+  });
   const countryCode = getCountryCode(headers());
   const breaches = await getSubscriberBreaches({
     fxaUid: session.user.subscriber.fxa_uid,
@@ -60,6 +64,7 @@ export default async function SecurityRecommendations({
         latestScanData: scanData,
       }}
       isEligibleForPremium={isEligibleForPremium(countryCode)}
+      enabledFeatureFlags={enabledFeatureFlags}
     />
   );
 }

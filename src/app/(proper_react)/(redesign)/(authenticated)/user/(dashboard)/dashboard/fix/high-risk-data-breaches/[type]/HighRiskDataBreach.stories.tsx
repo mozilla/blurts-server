@@ -114,6 +114,7 @@ const HighRiskBreachWrapper = (props: {
         type={props.type}
         data={data}
         isEligibleForPremium={true}
+        enabledFeatureFlags={[]}
       />
     </Shell>
   );

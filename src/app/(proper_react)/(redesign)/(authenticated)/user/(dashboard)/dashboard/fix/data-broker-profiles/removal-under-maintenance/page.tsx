@@ -20,14 +20,13 @@ import { getSubscriberEmails } from "../../../../../../../../../functions/server
 import { RemovalUnderMaintenanceView } from "./RemovalUnderMaintenanceView";
 import { hasPremium } from "../../../../../../../../../functions/universal/user";
 import { getEnabledFeatureFlags } from "../../../../../../../../../../db/tables/featureFlags";
-import { AutoSignIn } from "../../../../../../../../../components/client/AutoSignIn";
 
 export default async function RemovalUnderMaintenance() {
   const session = await getServerSession();
   const countryCode = getCountryCode(headers());
 
-  if (!session) {
-    return <AutoSignIn />;
+  if (!session?.user?.subscriber?.id) {
+    return redirect("/");
   }
 
   const enabledFeatureFlags = await getEnabledFeatureFlags({
@@ -35,7 +34,6 @@ export default async function RemovalUnderMaintenance() {
   });
 
   if (
-    !session?.user?.subscriber?.id ||
     !hasPremium(session.user) ||
     !enabledFeatureFlags.includes("EnableRemovalUnderMaintenanceStep")
   ) {
@@ -60,7 +58,11 @@ export default async function RemovalUnderMaintenance() {
     }),
   };
 
-  const getNextStep = getNextGuidedStep(data, "DataBrokerManualRemoval");
+  const getNextStep = getNextGuidedStep(
+    data,
+    enabledFeatureFlags,
+    "DataBrokerManualRemoval",
+  );
 
   if (
     scansWithRemovalUnderMaintenance?.results.length === 0 ||
@@ -76,6 +78,7 @@ export default async function RemovalUnderMaintenance() {
       stepDeterminationData={data}
       data={scansWithRemovalUnderMaintenance}
       subscriberEmails={subscriberEmails}
+      enabledFeatureFlags={enabledFeatureFlags}
     />
   );
 }
