@@ -23,7 +23,7 @@ export const Onboarding: Story = {
       breachesTotalCount={678}
       previousRoute={props.previousRoute}
       experimentData={{
-        ...defaultExperimentData,
+        ...defaultExperimentData["Features"],
         "welcome-scan-optional-info": {
           enabled: true,
           variant: "suffixAndMiddleName",
