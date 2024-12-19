@@ -69,9 +69,9 @@ export async function getExperiments(params: {
 
     let experimentData;
     if (flags.includes("CirrusV2")) {
-      experimentData = json;
-    } else {
       experimentData = json["Features"];
+    } else {
+      experimentData = json;
     }
 
     return (
