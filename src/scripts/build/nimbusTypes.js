@@ -4,6 +4,7 @@
 
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { parse } from "yaml";
+import * as prettier from "prettier";
 
 run();
 
@@ -68,7 +69,10 @@ async function run() {
     "\n" +
     getLocalOverrides(nimbusConfig);
   await mkdir("src/telemetry/generated/nimbus/", { recursive: true });
-  await writeFile("src/telemetry/generated/nimbus/experiments.ts", typedef);
+  await writeFile(
+    "src/telemetry/generated/nimbus/experiments.ts",
+    await prettier.format(typedef, { parser: "typescript" }),
+  );
 }
 
 /**
