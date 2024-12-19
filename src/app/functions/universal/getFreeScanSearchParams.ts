@@ -39,7 +39,7 @@ export function getFreeScanSearchParams({
   experimentData,
 }: SearchParamArgs &
   Omit<MetricFlowParams, "entrypointExperiment" | "entrypointVariation"> & {
-    experimentData?: ExperimentData;
+    experimentData?: ExperimentData["Features"];
   }) {
   const attributionSearchParams = modifyAttributionsForUrlSearchParams(
     new URLSearchParams(cookies.attributionsFirstTouch ?? FREE_SCAN_UTM_PARAMS),
