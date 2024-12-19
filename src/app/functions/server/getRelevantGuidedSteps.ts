@@ -136,14 +136,15 @@ export function isEligibleForStep(
   stepId: StepLink["id"],
 ): boolean {
   // Only premium users can see the manual data broker removal flow, once they have run a scan
-  if (stepId === "DataBrokerManualRemoval") {
-    const dataBrokersRequireManualRemoval =
-      data.latestScanData?.results?.some((result) => {
-        return result.broker_status === "removal_under_maintenance";
-      }) ?? false;
+  // TODO: MNTOR-3880 Waiting for criteria for data brokers under maintenace to be determined
+  // if (stepId === "DataBrokerManualRemoval") {
+  //   const dataBrokersRequireManualRemoval =
+  //     data.latestScanData?.results?.some((result) => {
+  //       return result.broker_status === "removal_under_maintenance";
+  //     }) ?? false;
 
-    return dataBrokersRequireManualRemoval;
-  }
+  //   return dataBrokersRequireManualRemoval;
+  // }
 
   if (stepId === "Scan") {
     return data.countryCode === "us";
@@ -244,15 +245,16 @@ export function hasCompletedStep(
   data: StepDeterminationData,
   stepId: StepLink["id"],
 ): boolean {
-  if (stepId === "DataBrokerManualRemoval") {
-    return (
-      data.latestScanData?.results?.every(
-        (result) =>
-          result.broker_status !== "removal_under_maintenance" ||
-          result.manually_resolved,
-      ) ?? false
-    );
-  }
+  // TODO: MNTOR-3880 Waiting for criteria for data brokers under maintenace to be determined
+  // if (stepId === "DataBrokerManualRemoval") {
+  //   return (
+  //     data.latestScanData?.results?.every(
+  //       (result) =>
+  //         result.broker_status !== "removal_under_maintenance" ||
+  //         result.manually_resolved,
+  //     ) ?? false
+  //   );
+  // }
 
   if (stepId === "Scan") {
     const hasRunScan =
