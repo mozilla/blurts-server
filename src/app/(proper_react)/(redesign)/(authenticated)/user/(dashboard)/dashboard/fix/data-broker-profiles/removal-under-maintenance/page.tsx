@@ -19,13 +19,29 @@ import { getSubscriberBreaches } from "../../../../../../../../../functions/serv
 import { getSubscriberEmails } from "../../../../../../../../../functions/server/getSubscriberEmails";
 import { RemovalUnderMaintenanceView } from "./RemovalUnderMaintenanceView";
 import { hasPremium } from "../../../../../../../../../functions/universal/user";
+import { getEnabledFeatureFlags } from "../../../../../../../../../../db/tables/featureFlags";
+import { AutoSignIn } from "../../../../../../../../../components/client/AutoSignIn";
 
 export default async function RemovalUnderMaintenance() {
   const session = await getServerSession();
   const countryCode = getCountryCode(headers());
-  if (!session?.user?.subscriber?.id || !hasPremium(session.user)) {
+
+  if (!session) {
+    return <AutoSignIn />;
+  }
+
+  const enabledFeatureFlags = await getEnabledFeatureFlags({
+    email: session.user.email,
+  });
+
+  if (
+    !session?.user?.subscriber?.id ||
+    !hasPremium(session.user) ||
+    !enabledFeatureFlags.includes("EnableRemovalUnderMaintenanceStep")
+  ) {
     redirect("/user/dashboard");
   }
+
   const profileId = await getOnerepProfileId(session.user.subscriber.id);
   const latestScan = await getScanResultsWithBroker(
     profileId,

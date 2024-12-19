@@ -46,3 +46,5 @@ export const CONST_SETTINGS_TAB_SLUGS = [
   "notifications",
   "manage-account",
 ] as const;
+
+export const MONTHLY_ACTIVITY_FREE_EMAIL_BATCH_SIZE = 5;

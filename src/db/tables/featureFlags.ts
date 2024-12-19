@@ -5,7 +5,6 @@
 import createDbConnection from "../connect";
 import { logger } from "../../app/functions/server/logging";
 import { FeatureFlagRow } from "knex/types/tables";
-import { headers } from "next/headers";
 
 const knex = createDbConnection();
 
@@ -56,6 +55,7 @@ export const featureFlagNames = [
   "DataBrokerRemovalTimeEstimateCsat",
   "SettingsPageRedesign",
   "LandingPageRedesign",
+  "EnableRemovalUnderMaintenanceStep",
 ] as const;
 export type FeatureFlagName = (typeof featureFlagNames)[number];
 
@@ -85,6 +85,7 @@ export async function getEnabledFeatureFlags(
 
   // Force feature flags for E2E tests via URL query params
   if (process.env.E2E_TEST_ENV === "local") {
+    const { headers } = await import("next/headers");
     const forcedFeatureFlags = headers().get("x-forced-feature-flags");
     if (forcedFeatureFlags) {
       const forcedFeatureFlagsFiltered = forcedFeatureFlags
