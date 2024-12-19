@@ -29,32 +29,40 @@ export type Props = {
   experimentData: ExperimentData;
 };
 
-const PublicMobileShell = (props: Props) => {
-  if (
-    !(
-      props.enabledFeatureFlags.includes("LandingPageRedesign") &&
-      props.experimentData["landing-page-redesign"].enabled &&
-      props.experimentData["landing-page-redesign"].variant === "redesign"
-    )
-  ) {
-    return props.children;
+const PublicMobileShell = (
+  props: Props & {
+    hasLandingPageRedesign: boolean;
+  },
+) => {
+  if (props.hasLandingPageRedesign) {
+    return (
+      <MobileShell
+        countryCode={props.countryCode}
+        enabledFeatureFlags={props.enabledFeatureFlags}
+        fxaSettingsUrl={process.env.FXA_SETTINGS_URL!}
+        monthlySubscriptionUrl={getPremiumSubscriptionUrl({ type: "monthly" })}
+        session={null}
+        subscriptionBillingAmount={getSubscriptionBillingAmount()}
+        yearlySubscriptionUrl={getPremiumSubscriptionUrl({ type: "yearly" })}
+      >
+        {props.children}
+      </MobileShell>
+    );
   }
 
-  return (
-    <MobileShell
-      {...props}
-      session={null}
-      monthlySubscriptionUrl={getPremiumSubscriptionUrl({ type: "monthly" })}
-      yearlySubscriptionUrl={getPremiumSubscriptionUrl({ type: "yearly" })}
-      subscriptionBillingAmount={getSubscriptionBillingAmount()}
-      fxaSettingsUrl={process.env.FXA_SETTINGS_URL!}
-    />
-  );
+  return props.children;
 };
 
 export const PublicShell = (props: Props) => {
+  const hasLandingPageRedesign =
+    props.enabledFeatureFlags.includes("LandingPageRedesign") &&
+    props.experimentData["landing-page-redesign"].enabled &&
+    props.experimentData["landing-page-redesign"].variant === "redesign";
   return (
-    <PublicMobileShell {...props}>
+    <PublicMobileShell
+      {...props}
+      hasLandingPageRedesign={hasLandingPageRedesign}
+    >
       <div className={styles.wrapper}>
         <ToastContainer
           toastClassName={styles.toastBody}
@@ -62,7 +70,9 @@ export const PublicShell = (props: Props) => {
           theme="colored"
           autoClose={false}
         />
-        <nav className={styles.nav}>
+        <nav
+          className={`${styles.nav} ${hasLandingPageRedesign ? styles.navDesktop : ""}`}
+        >
           <h1>
             <Link href="/">
               <Image
@@ -72,10 +82,7 @@ export const PublicShell = (props: Props) => {
               />
             </Link>
           </h1>
-          {props.enabledFeatureFlags.includes("LandingPageRedesign") &&
-            props.experimentData["landing-page-redesign"].enabled &&
-            props.experimentData["landing-page-redesign"].variant ===
-              "redesign" && <TopNavBar styles={styles} />}
+          {hasLandingPageRedesign && <TopNavBar styles={styles} />}
           <SignInButton variant="secondary" />
         </nav>
         <div className={styles.content}>{props.children}</div>

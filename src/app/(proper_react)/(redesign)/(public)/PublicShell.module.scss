@@ -44,8 +44,10 @@
     flex-shrink: 0;
   }
 
-  @media screen and (max-width: $screen-xl) {
-    display: none;
+  &.navDesktop {
+    @media screen and (max-width: $screen-xl) {
+      display: none;
+    }
   }
 }
 

@@ -115,8 +115,8 @@ features:
     defaults:
       - channel: local
         value: {
-          "enabled": false,
-          "variant": default,
+          "enabled": true,
+          "variant": redesign,
         }
       - channel: staging
         value: {

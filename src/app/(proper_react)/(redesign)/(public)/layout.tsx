@@ -10,10 +10,14 @@ import { getCountryCode } from "../../../functions/server/getCountryCode";
 import { getLocale } from "../../../functions/universal/getLocale";
 import { getExperiments } from "../../../functions/server/getExperiments";
 import { getExperimentationId } from "../../../functions/server/getExperimentationId";
+import { getEnabledFeatureFlags } from "../../../../db/tables/featureFlags";
 
 export default async function Layout(props: { children: ReactNode }) {
   const headersList = headers();
   const countryCode = getCountryCode(headersList);
+  const enabledFeatureFlags = await getEnabledFeatureFlags({
+    isSignedOut: true,
+  });
   const experimentationId = getExperimentationId(null);
   const experimentData = await getExperiments({
     experimentationId,
@@ -26,7 +30,7 @@ export default async function Layout(props: { children: ReactNode }) {
     <PublicShell
       l10n={getL10n()}
       countryCode={countryCode}
-      enabledFeatureFlags={[]}
+      enabledFeatureFlags={enabledFeatureFlags}
       experimentData={experimentData}
     >
       {props.children}
