@@ -12,23 +12,56 @@ import { SignInButton } from "../../../components/client/SignInButton";
 import { Footer } from "../Footer";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { MobileShell } from "../MobileShell";
+import {
+  getPremiumSubscriptionUrl,
+  getSubscriptionBillingAmount,
+} from "../../../functions/server/getPremiumSubscriptionInfo";
+import { FeatureFlagName } from "../../../../db/tables/featureFlags";
+import { TopNavBar } from "./TopNavBar";
+import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 
 export type Props = {
   children: ReactNode;
   l10n: ExtendedReactLocalization;
   countryCode: string;
+  enabledFeatureFlags: FeatureFlagName[];
+  experimentData: ExperimentData;
+};
+
+const PublicMobileShell = (props: Props) => {
+  if (
+    !(
+      props.enabledFeatureFlags.includes("LandingPageRedesign") &&
+      props.experimentData["landing-page-redesign"].enabled &&
+      props.experimentData["landing-page-redesign"].variant === "redesign"
+    )
+  ) {
+    return props.children;
+  }
+
+  return (
+    <MobileShell
+      {...props}
+      session={null}
+      monthlySubscriptionUrl={getPremiumSubscriptionUrl({ type: "monthly" })}
+      yearlySubscriptionUrl={getPremiumSubscriptionUrl({ type: "yearly" })}
+      subscriptionBillingAmount={getSubscriptionBillingAmount()}
+      fxaSettingsUrl={process.env.FXA_SETTINGS_URL!}
+    />
+  );
 };
 
 export const PublicShell = (props: Props) => {
   return (
-    <div className={styles.wrapper}>
-      <ToastContainer
-        toastClassName={styles.toastBody}
-        position="top-center"
-        theme="colored"
-        autoClose={false}
-      />
-      <header>
+    <PublicMobileShell {...props}>
+      <div className={styles.wrapper}>
+        <ToastContainer
+          toastClassName={styles.toastBody}
+          position="top-center"
+          theme="colored"
+          autoClose={false}
+        />
         <nav className={styles.nav}>
           <h1>
             <Link href="/">
@@ -39,11 +72,15 @@ export const PublicShell = (props: Props) => {
               />
             </Link>
           </h1>
-          <SignInButton />
+          {props.enabledFeatureFlags.includes("LandingPageRedesign") &&
+            props.experimentData["landing-page-redesign"].enabled &&
+            props.experimentData["landing-page-redesign"].variant ===
+              "redesign" && <TopNavBar styles={styles} />}
+          <SignInButton variant="secondary" />
         </nav>
-      </header>
-      <div className={styles.content}>{props.children}</div>
-      <Footer l10n={props.l10n} countryCode={props.countryCode} />
-    </div>
+        <div className={styles.content}>{props.children}</div>
+        <Footer l10n={props.l10n} countryCode={props.countryCode} />
+      </div>
+    </PublicMobileShell>
   );
 };
