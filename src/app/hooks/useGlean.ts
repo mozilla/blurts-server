@@ -36,8 +36,6 @@ export const useGlean = () => {
       // Record the `plan_tier` key on all events.
       // `plan_tier` is set on every metric, but it's too much work for TypeScript
       // to infer that — hence the type assertion.
-      //
-      // TODO can we fix this? It looks like these are only for button->click which is misleading.
       (data as GleanMetricMap["button"]["click"]).plan_tier = isPremiumUser
         ? "Plus"
         : "Free";
@@ -45,8 +43,6 @@ export const useGlean = () => {
       // Record the `nimbus_*` keys on all events.
       // `nimbus_*` is set on every metric, but it's too much work for TypeScript
       // to infer that — hence the type assertion.
-      //
-      // TODO can we fix this? It looks like these are only for button->click which is misleading.
       console.debug({ event, experimentData });
       if (experimentData) {
         (data as GleanMetricMap["button"]["click"]).nimbus_user_id =
