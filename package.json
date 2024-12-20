@@ -70,8 +70,8 @@
     "npm": "10.1.0"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.705.0",
-    "@aws-sdk/lib-storage": "^3.705.0",
+    "@aws-sdk/client-s3": "^3.716.0",
+    "@aws-sdk/lib-storage": "^3.716.0",
     "@fluent/bundle": "^0.18.0",
     "@fluent/langneg": "^0.7.0",
     "@fluent/react": "^0.15.2",
@@ -86,7 +86,7 @@
     "@sentry/utils": "^8.42.0",
     "@stripe/stripe-js": "^5.2.0",
     "@types/jsdom": "^21.1.7",
-    "@types/node": "^22.9.0",
+    "@types/node": "^22.10.2",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "canvas-confetti": "^1.9.3",
@@ -99,7 +99,7 @@
     "knex": "^3.1.0",
     "mjml": "^4.15.3",
     "next": "^14.2.15",
-    "next-auth": "^4.24.10",
+    "next-auth": "^4.24.11",
     "nodemailer": "^6.9.16",
     "pg": "^8.13.1",
     "react": "^18.3.1",

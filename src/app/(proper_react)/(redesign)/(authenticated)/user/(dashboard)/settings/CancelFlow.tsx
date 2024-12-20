@@ -25,7 +25,7 @@ import { OpenInNew } from "../../../../../../components/server/Icons";
 export type Props = {
   fxaSubscriptionsUrl: string;
   enableDiscountCoupon: boolean;
-  experimentData?: ExperimentData;
+  experimentData?: ExperimentData["Features"];
   isMonthlySubscriber: boolean;
 };
 

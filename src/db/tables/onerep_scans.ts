@@ -437,6 +437,7 @@ async function getScanResultsWithBrokerUnderMaintenance(
     .andWhere("sr.manually_resolved", "false")
     .andWhereNot("sr.status", "removed")
     .join("onerep_data_brokers as db", "sr.data_broker", "db.data_broker")
+    .orderBy("link")
     .orderBy("sr.onerep_scan_result_id");
 
   scanResults = scanResults.filter(
@@ -475,6 +476,7 @@ async function getScanResultsWithBroker(
       .innerJoin("onerep_scans as s", "sr.onerep_scan_id", "s.onerep_scan_id")
       .where("s.onerep_profile_id", onerepProfileId)
       .join("onerep_data_brokers as db", "sr.data_broker", "db.data_broker")
+      .orderBy("link")
       .orderBy("sr.onerep_scan_result_id");
   } else {
     scanResults = (await getLatestOnerepScanResults(onerepProfileId)).results;
