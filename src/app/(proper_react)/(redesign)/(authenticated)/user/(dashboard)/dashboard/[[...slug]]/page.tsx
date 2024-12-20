@@ -43,6 +43,7 @@ import { getExperiments } from "../../../../../../../functions/server/getExperim
 import { getLocale } from "../../../../../../../functions/universal/getLocale";
 import { getL10n } from "../../../../../../../functions/l10n/serverComponents";
 import { getDataBrokerRemovalTimeEstimates } from "../../../../../../../functions/server/getDataBrokerRemovalTimeEstimates";
+import { ExperimentsProvider } from "../../../../../../../../contextProviders/experiments";
 
 const dashboardTabSlugs = ["action-needed", "fixed"];
 
@@ -152,27 +153,29 @@ export default async function DashboardPage({ params, searchParams }: Props) {
   const signInCount = await getSignInCount(session.user.subscriber.id);
 
   return (
-    <View
-      user={session.user}
-      isEligibleForPremium={userIsEligibleForPremium}
-      isEligibleForFreeScan={userIsEligibleForFreeScan}
-      userScanData={latestScan}
-      userBreaches={subBreaches}
-      enabledFeatureFlags={enabledFeatureFlags}
-      monthlySubscriptionUrl={`${monthlySubscriptionUrl}&${additionalSubplatParams.toString()}`}
-      yearlySubscriptionUrl={`${yearlySubscriptionUrl}&${additionalSubplatParams.toString()}`}
-      subscriptionBillingAmount={getSubscriptionBillingAmount()}
-      fxaSettingsUrl={fxaSettingsUrl}
-      scanCount={scanCount}
-      totalNumberOfPerformedScans={profileStats?.total}
-      isNewUser={isNewUser}
-      elapsedTimeInDaysSinceInitialScan={elapsedTimeInDaysSinceInitialScan}
-      experimentData={experimentData}
-      activeTab={activeTab}
-      hasFirstMonitoringScan={hasFirstMonitoringScan}
-      signInCount={signInCount}
-      autoOpenUpsellDialog={searchParams.dialog === "subscriptions"}
-      removalTimeEstimates={getDataBrokerRemovalTimeEstimates(latestScan)}
-    />
+    <ExperimentsProvider experimentData={experimentData}>
+      <View
+        user={session.user}
+        isEligibleForPremium={userIsEligibleForPremium}
+        isEligibleForFreeScan={userIsEligibleForFreeScan}
+        userScanData={latestScan}
+        userBreaches={subBreaches}
+        enabledFeatureFlags={enabledFeatureFlags}
+        monthlySubscriptionUrl={`${monthlySubscriptionUrl}&${additionalSubplatParams.toString()}`}
+        yearlySubscriptionUrl={`${yearlySubscriptionUrl}&${additionalSubplatParams.toString()}`}
+        subscriptionBillingAmount={getSubscriptionBillingAmount()}
+        fxaSettingsUrl={fxaSettingsUrl}
+        scanCount={scanCount}
+        totalNumberOfPerformedScans={profileStats?.total}
+        isNewUser={isNewUser}
+        elapsedTimeInDaysSinceInitialScan={elapsedTimeInDaysSinceInitialScan}
+        experimentData={experimentData["Features"]}
+        activeTab={activeTab}
+        hasFirstMonitoringScan={hasFirstMonitoringScan}
+        signInCount={signInCount}
+        autoOpenUpsellDialog={searchParams.dialog === "subscriptions"}
+        removalTimeEstimates={getDataBrokerRemovalTimeEstimates(latestScan)}
+      />
+    </ExperimentsProvider>
   );
 }
