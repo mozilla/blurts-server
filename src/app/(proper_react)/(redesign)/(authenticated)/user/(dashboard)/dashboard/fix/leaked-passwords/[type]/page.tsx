@@ -18,6 +18,7 @@ import { getScanResultsWithBroker } from "../../../../../../../../../../db/table
 import { isEligibleForPremium } from "../../../../../../../../../functions/universal/premium";
 import { logger } from "../../../../../../../../../functions/server/logging";
 import { hasPremium } from "../../../../../../../../../functions/universal/user";
+import { getEnabledFeatureFlags } from "../../../../../../../../../../db/tables/featureFlags";
 
 interface LeakedPasswordsProps {
   params: {
@@ -35,6 +36,9 @@ export default async function LeakedPasswords({
     });
     return redirect("/");
   }
+  const enabledFeatureFlags = await getEnabledFeatureFlags({
+    email: session.user.email,
+  });
   const countryCode = getCountryCode(headers());
   const breaches = await getSubscriberBreaches({
     fxaUid: session.user.subscriber.fxa_uid,
@@ -64,6 +68,7 @@ export default async function LeakedPasswords({
         latestScanData: scanData,
       }}
       isEligibleForPremium={isEligibleForPremium(countryCode)}
+      enabledFeatureFlags={enabledFeatureFlags}
     />
   );
 }
