@@ -116,8 +116,9 @@
             }
 
             &:hover {
-              background-color: $color-grey-10;
-              color: $color-purple-70;
+              background-color: $color-purple-50;
+              color: $color-white;
+              text-decoration: underline;
             }
 
             // The `a` and `a:visited` violate this rule, but are safe:
