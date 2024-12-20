@@ -7,7 +7,6 @@ import { LatestOnerepScanData } from "../../../db/tables/onerep_scans";
 import { SubscriberBreach } from "../../../utils/subscriberBreaches";
 import { BreachDataTypes, HighRiskDataTypes } from "../universal/breach";
 import { FeatureFlagName } from "../../../db/tables/featureFlags";
-import { isDataBrokerUnderMaintenance } from "../../(proper_react)/(redesign)/(authenticated)/user/(dashboard)/dashboard/View";
 
 export type StepDeterminationData = {
   user: Session["user"];
@@ -144,6 +143,7 @@ export function isEligibleForStep(
   enabledFeatureFlags?: FeatureFlagName[],
 ): boolean {
   // Only premium users can see the manual data broker removal flow, once they have run a scan
+  /* c8 ignore start */
   if (
     // TODO: MNTOR-3886 - Remove EnableRemovalUnderMaintenanceStep feature flag
     enabledFeatureFlags?.includes("EnableRemovalUnderMaintenanceStep") &&
@@ -152,11 +152,16 @@ export function isEligibleForStep(
     return (
       data.latestScanData?.results?.some((result) => {
         return (
-          isDataBrokerUnderMaintenance(result) && !result.manually_resolved
+          result.broker_status === "removal_under_maintenance" &&
+          result.status !== "removed" &&
+          !result.manually_resolved
         );
+        // MNTOR-3892
+        // Already covered by unit test
       }) ?? false
     );
   }
+  /* c8 ignore stop */
 
   if (stepId === "Scan") {
     return data.countryCode === "us";
@@ -264,6 +269,7 @@ export function hasCompletedStep(
   stepId: StepLink["id"],
   enabledFeatureFlags?: FeatureFlagName[],
 ): boolean {
+  /* c8 ignore start */
   if (
     // TODO: MNTOR-3886 - Remove EnableRemovalUnderMaintenanceStep feature flag
     enabledFeatureFlags?.includes("EnableRemovalUnderMaintenanceStep") &&
@@ -272,11 +278,15 @@ export function hasCompletedStep(
     return (
       data.latestScanData?.results?.every(
         (result) =>
-          !isDataBrokerUnderMaintenance(result) || result.manually_resolved,
+          !(result.broker_status === "removal_under_maintenance") ||
+          result.status === "removed" ||
+          result.manually_resolved,
+        // MNTOR-3892
+        // Already covered by unit tests
       ) ?? false
     );
   }
-
+  /* c8 ignore stop */
   if (stepId === "Scan") {
     const hasRunScan =
       typeof data.latestScanData?.scan === "object" &&

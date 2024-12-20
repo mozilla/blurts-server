@@ -682,6 +682,34 @@ describe("getNextGuidedStep", () => {
       ).toBe(false);
     });
 
+    it("returns true when data brokers that are removal under maintenance are automatically resolved", () => {
+      expect(
+        hasCompletedStep(
+          {
+            countryCode: "us",
+            latestScanData: {
+              scan: {
+                ...completedScan.scan!,
+                onerep_scan_status: "finished",
+              },
+              results: [
+                createRandomScanResult({
+                  manually_resolved: false,
+                  status: "removed",
+                  broker_status: "removal_under_maintenance",
+                }),
+              ],
+            },
+            subscriberBreaches: [],
+            user: { email: "arbitrary@example.com" },
+          },
+          "DataBrokerManualRemoval",
+          // TODO: MNTOR-3886 - Remove EnableRemovalUnderMaintenanceStep feature flag
+          ["EnableRemovalUnderMaintenanceStep"],
+        ),
+      ).toBe(true);
+    });
+
     // TODO: MNTOR-3886 - Remove EnableRemovalUnderMaintenanceStep feature flag
     it("returns false when data brokers that are removal under maintenance are resolved, but the flag is off", () => {
       expect(
@@ -752,6 +780,34 @@ describe("getNextGuidedStep", () => {
                 createRandomScanResult({
                   manually_resolved: true,
                   status: "optout_in_progress",
+                  broker_status: "removal_under_maintenance",
+                }),
+              ],
+            },
+            subscriberBreaches: [],
+            user: { email: "arbitrary@example.com" },
+          },
+          "DataBrokerManualRemoval",
+          // TODO: MNTOR-3886 - Remove EnableRemovalUnderMaintenanceStep feature flag
+          ["EnableRemovalUnderMaintenanceStep"],
+        ),
+      ).toBe(false);
+    });
+
+    it("is not eligible for step if the data brokers under maintenance is already automatically resolved", () => {
+      expect(
+        isEligibleForStep(
+          {
+            countryCode: "us",
+            latestScanData: {
+              scan: {
+                ...completedScan.scan!,
+                onerep_scan_status: "finished",
+              },
+              results: [
+                createRandomScanResult({
+                  manually_resolved: false,
+                  status: "removed",
                   broker_status: "removal_under_maintenance",
                 }),
               ],
