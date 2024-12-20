@@ -5,6 +5,28 @@
   flex-direction: column;
   height: 100%;
 }
+
+.waitlistSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-lg;
+  padding: $layout-md $spacing-md;
+
+  .waitlistTitle {
+    text-align: center;
+    font: $text-title-2xs;
+    font-weight: 600;
+    line-height: 1.4;
+    font-family: var(--font-inter);
+    color: $color-purple-70;
+  }
+
+  a {
+    align-self: center;
+  }
+}
+
 .navbar {
   font: $text-body-xl;
   padding: $layout-xs;
@@ -12,28 +34,28 @@
   flex-direction: row;
   justify-content: flex-start;
   background-color: $color-grey-05;
-  .navbarLinksContainer {
+  ul {
     display: flex;
     flex-direction: column;
-    .navbarLinks {
+    a {
       text-decoration: none;
       color: $color-grey-50;
     }
   }
   @media screen and (min-width: $screen-sm) {
     justify-content: flex-end;
-    .navbarLinksContainer {
+    ul {
       flex-direction: row;
       justify-content: flex-end;
-      .navbarLinks {
+      a {
         margin-left: $spacing-lg;
       }
     }
   }
   @media screen and (min-width: $screen-md) {
     padding: $layout-xs $layout-xl;
-    .navbarLinksContainer {
-      .navbarLinks {
+    ul {
+      a {
         margin-left: $spacing-xl;
       }
     }
@@ -393,27 +415,6 @@
   }
 
   .waitlistCta {
-    align-self: center;
-  }
-}
-
-.waitlistSection {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: $spacing-lg;
-  padding: $layout-md $spacing-md;
-
-  .waitlistTitle {
-    text-align: center;
-    font: $text-title-2xs;
-    font-weight: 600;
-    line-height: 1.4;
-    font-family: var(--font-inter);
-    color: $color-purple-70;
-  }
-
-  a {
     align-self: center;
   }
 }

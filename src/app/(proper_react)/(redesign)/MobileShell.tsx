@@ -197,7 +197,7 @@ export const MobileShell = (props: Props) => {
                 </div>
               </>
             ) : (
-              <TopNavBar styles={styles} />
+              <TopNavBar />
             )}
           </div>
         </nav>

@@ -44,7 +44,11 @@ export const View = (props: Props) => {
     <>
       <AccountDeletionNotification />
       <main className={styles.wrapper}>
-        {props.eligibleForPremium && <TopNavBar styles={styles} />}
+        {props.eligibleForPremium && (
+          <div className={styles.navbar}>
+            <TopNavBar />
+          </div>
+        )}
         <header className={styles.hero}>
           <div className={styles.heroContent}>
             <h1>{props.l10n.getString("landing-all-hero-title")}</h1>

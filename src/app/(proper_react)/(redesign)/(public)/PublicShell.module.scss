@@ -45,6 +45,22 @@
   }
 
   &.navDesktop {
+    ul {
+      display: flex;
+
+      a {
+        color: $color-black;
+        text-decoration: none;
+        font-weight: 600;
+        padding: $spacing-sm $spacing-md;
+
+        &:hover {
+          color: $color-purple-70;
+          text-decoration: underline;
+        }
+      }
+    }
+
     @media screen and (max-width: $screen-xl) {
       display: none;
     }
@@ -53,22 +69,4 @@
 
 .content {
   flex: 1 0 auto;
-}
-
-.navbar {
-  display: flex;
-  flex-direction: row;
-  font-weight: 600;
-  justify-content: flex-start;
-
-  .navbarLinksContainer {
-    display: flex;
-    gap: $spacing-md;
-  }
-
-  .navbarLinks {
-    color: $color-black;
-    padding: $spacing-sm;
-    text-decoration: none;
-  }
 }

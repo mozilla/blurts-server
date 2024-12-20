@@ -82,7 +82,7 @@ export const PublicShell = (props: Props) => {
               />
             </Link>
           </h1>
-          {hasLandingPageRedesign && <TopNavBar styles={styles} />}
+          {hasLandingPageRedesign && <TopNavBar />}
           <SignInButton variant="secondary" />
         </nav>
         <div className={styles.content}>{props.children}</div>
