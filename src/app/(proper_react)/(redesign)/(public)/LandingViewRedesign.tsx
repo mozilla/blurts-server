@@ -10,7 +10,7 @@ import styles from "./LandingViewRedesign.module.scss";
 export type Props = {
   countryCode: string;
   eligibleForPremium: boolean;
-  experimentData: ExperimentData;
+  experimentData: ExperimentData["Features"];
   l10n: ExtendedReactLocalization;
   scanLimitReached: boolean;
 };
