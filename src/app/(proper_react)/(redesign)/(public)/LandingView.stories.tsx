@@ -36,7 +36,7 @@ const meta: Meta<typeof View> = {
           countryCode={props.countryCode}
           enabledFeatureFlags={[]}
           experimentData={{
-            ...defaultExperimentData,
+            ...defaultExperimentData["Features"],
             "landing-page-redesign": {
               enabled: false,
               variant: "default",

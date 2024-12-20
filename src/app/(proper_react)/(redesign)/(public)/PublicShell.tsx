@@ -26,7 +26,7 @@ export type Props = {
   l10n: ExtendedReactLocalization;
   countryCode: string;
   enabledFeatureFlags: FeatureFlagName[];
-  experimentData: ExperimentData;
+  experimentData: ExperimentData["Features"];
 };
 
 const PublicMobileShell = (

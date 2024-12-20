@@ -17,7 +17,7 @@ const meta: Meta<typeof BreachDetailsView> = {
       countryCode="us"
       enabledFeatureFlags={[]}
       experimentData={{
-        ...defaultExperimentData,
+        ...defaultExperimentData["Features"],
         "landing-page-redesign": {
           enabled: false,
           variant: "default",

@@ -16,7 +16,7 @@ const meta: Meta<typeof HowItWorksView> = {
       countryCode="us"
       enabledFeatureFlags={[]}
       experimentData={{
-        ...defaultExperimentData,
+        ...defaultExperimentData["Features"],
         "landing-page-redesign": {
           enabled: false,
           variant: "default",

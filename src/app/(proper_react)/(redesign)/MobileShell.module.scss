@@ -108,7 +108,7 @@
           a {
             align-items: center;
             display: flex;
-            padding: $spacing-sm $spacing-lg;
+            padding: calc($spacing-sm * 1.5) $spacing-lg;
             gap: $spacing-sm;
             color: $color-black;
             border-top: 1px solid $color-grey-10;
@@ -142,7 +142,7 @@
 
             a {
               font-weight: 400;
-              padding: $spacing-sm $spacing-2xl;
+              padding: calc($spacing-sm * 1.5) $spacing-2xl;
               border-top: none;
             }
           }

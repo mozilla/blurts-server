@@ -16,11 +16,12 @@ const meta: Meta<typeof View> = {
     const experimentData = props.experimentData ?? defaultExperimentData;
     return (
       <AccountsMetricsFlowProvider
-        enabled={experimentData["landing-page-redesign"].enabled}
+        enabled={experimentData["Features"]["landing-page-redesign"].enabled}
         metricsFlowParams={{
           entrypoint: CONST_URL_MONITOR_LANDING_PAGE_ID,
           entrypoint_experiment: "landing-page-redesign",
-          entrypoint_variation: experimentData["landing-page-redesign"].variant,
+          entrypoint_variation:
+            experimentData["Features"]["landing-page-redesign"].variant,
           form_type: "email",
           service: process.env.OAUTH_CLIENT_ID as string,
         }}
@@ -30,7 +31,7 @@ const meta: Meta<typeof View> = {
           countryCode={props.countryCode}
           enabledFeatureFlags={["LandingPageRedesign"]}
           experimentData={{
-            ...defaultExperimentData,
+            ...defaultExperimentData["Features"],
             "landing-page-redesign": {
               enabled: true,
               variant: "redesign",
