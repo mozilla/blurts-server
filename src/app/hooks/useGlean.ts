@@ -9,9 +9,11 @@ import EventMetricType from "@mozilla/glean/private/metrics/event";
 import type { GleanMetricMap } from "../../telemetry/generated/_map";
 import { useSession } from "next-auth/react";
 import { hasPremium } from "../functions/universal/user";
+import { useExperiments } from "../../contextProviders/experiments";
 
 export const useGlean = () => {
   const session = useSession();
+  const experimentData = useExperiments();
   const isPremiumUser = hasPremium(session.data?.user);
 
   const record = useCallback(
@@ -33,9 +35,34 @@ export const useGlean = () => {
       // Record the `plan_tier` key on all events.
       // `plan_tier` is set on every metric, but it's too much work for TypeScript
       // to infer that — hence the type assertion.
+      //
+      // TODO can we fix this? It looks like these are only for button->click which is misleading.
       (data as GleanMetricMap["button"]["click"]).plan_tier = isPremiumUser
         ? "Plus"
         : "Free";
+
+      // Record the `nimbus_*` keys on all events.
+      // `nimbus_*` is set on every metric, but it's too much work for TypeScript
+      // to infer that — hence the type assertion.
+      //
+      // TODO can we fix this? It looks like these are only for button->click which is misleading.
+      console.debug({ experimentData });
+      if (experimentData) {
+        (data as GleanMetricMap["button"]["click"]).nimbus_user_id =
+          experimentData["Enrollments"]["nimbus_user_id"];
+        (data as GleanMetricMap["button"]["click"]).nimbus_app_id =
+          experimentData["Enrollments"]["app_id"];
+        (data as GleanMetricMap["button"]["click"]).nimbus_experiment =
+          experimentData["Enrollments"]["experiment"];
+        (data as GleanMetricMap["button"]["click"]).nimbus_branch =
+          experimentData["Enrollments"]["branch"];
+        (data as GleanMetricMap["button"]["click"]).nimbus_experiment_type =
+          experimentData["Enrollments"]["experiment_type"];
+        (data as GleanMetricMap["button"]["click"]).nimbus_is_preview =
+          experimentData["Enrollments"]["is_preview"].toString();
+      } else {
+        console.warn("No experiment data available for Glean");
+      }
 
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       mod[event].record(data as any);
