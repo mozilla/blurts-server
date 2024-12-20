@@ -16,7 +16,6 @@ import { getExperimentationId } from "../../../../../../functions/server/getExpe
 import { getExperiments } from "../../../../../../functions/server/getExperiments";
 import { getLocale } from "../../../../../../functions/universal/getLocale";
 import { getL10n } from "../../../../../../functions/l10n/serverComponents";
-import { ExperimentsProvider } from "../../../../../../../contextProviders/experiments";
 
 const FreeScanSlug = "free-scan";
 
@@ -72,15 +71,13 @@ export default async function Onboarding({ params, searchParams }: Props) {
   });
 
   return (
-    <ExperimentsProvider experimentData={experimentData}>
-      <View
-        user={session.user}
-        dataBrokerCount={CONST_ONEREP_DATA_BROKER_COUNT}
-        breachesTotalCount={allBreachesCount}
-        stepId={firstSlug === FreeScanSlug ? "enterInfo" : "getStarted"}
-        previousRoute={previousRoute}
-        experimentData={experimentData["Features"]}
-      />
-    </ExperimentsProvider>
+    <View
+      user={session.user}
+      dataBrokerCount={CONST_ONEREP_DATA_BROKER_COUNT}
+      breachesTotalCount={allBreachesCount}
+      stepId={firstSlug === FreeScanSlug ? "enterInfo" : "getStarted"}
+      previousRoute={previousRoute}
+      experimentData={experimentData}
+    />
   );
 }

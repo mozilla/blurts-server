@@ -28,6 +28,7 @@ export const useGlean = () => {
       const mod = (await import(
         `../../telemetry/generated/${eventModule}`
       )) as Record<keyof GleanMetricMap[EventModule], EventMetricType>;
+      console.debug("Glean useCallback");
       // Instead of the specific type definitions we generated in the npm script
       // `build-glean-types`, Glean takes a non-specific "ExtraArgs" type as
       // parameter to `record`.
@@ -46,7 +47,7 @@ export const useGlean = () => {
       // to infer that — hence the type assertion.
       //
       // TODO can we fix this? It looks like these are only for button->click which is misleading.
-      console.debug({ experimentData });
+      console.debug({ event, experimentData });
       if (experimentData) {
         (data as GleanMetricMap["button"]["click"]).nimbus_user_id =
           experimentData["Enrollments"]["nimbus_user_id"];
@@ -67,7 +68,7 @@ export const useGlean = () => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       mod[event].record(data as any);
     },
-    [isPremiumUser],
+    [isPremiumUser, experimentData],
   );
 
   return record;

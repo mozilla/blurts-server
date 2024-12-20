@@ -27,7 +27,6 @@ import { checkSession } from "../../../../../../../functions/server/checkSession
 import { checkUserHasMonthlySubscription } from "../../../../../../../functions/server/user";
 import { getEmailPreferenceForPrimaryEmail } from "../../../../../../../../db/tables/subscriber_email_preferences";
 import { CONST_SETTINGS_TAB_SLUGS } from "../../../../../../../../constants";
-import { ExperimentsProvider } from "../../../../../../../../contextProviders/experiments";
 
 type Props = {
   params: {
@@ -113,25 +112,23 @@ export default async function SettingsPage({ params, searchParams }: Props) {
   );
 
   return (
-    <ExperimentsProvider experimentData={experimentData}>
-      <SettingsView
-        l10n={getL10n()}
-        user={session.user}
-        subscriber={userData}
-        data={settingsData}
-        emailAddresses={emailAddresses}
-        breachCountByEmailAddress={breachCountByEmailAddress}
-        fxaSettingsUrl={fxaSettingsUrl}
-        fxaSubscriptionsUrl={fxaSubscriptionsUrl}
-        monthlySubscriptionUrl={`${monthlySubscriptionUrl}&${additionalSubplatParams.toString()}`}
-        yearlySubscriptionUrl={`${yearlySubscriptionUrl}&${additionalSubplatParams.toString()}`}
-        subscriptionBillingAmount={getSubscriptionBillingAmount()}
-        enabledFeatureFlags={enabledFeatureFlags}
-        experimentData={experimentData["Features"]}
-        lastScanDate={lastOneRepScan?.created_at}
-        isMonthlySubscriber={isMonthlySubscriber}
-        activeTab={activeTab}
-      />
-    </ExperimentsProvider>
+    <SettingsView
+      l10n={getL10n()}
+      user={session.user}
+      subscriber={userData}
+      data={settingsData}
+      emailAddresses={emailAddresses}
+      breachCountByEmailAddress={breachCountByEmailAddress}
+      fxaSettingsUrl={fxaSettingsUrl}
+      fxaSubscriptionsUrl={fxaSubscriptionsUrl}
+      monthlySubscriptionUrl={`${monthlySubscriptionUrl}&${additionalSubplatParams.toString()}`}
+      yearlySubscriptionUrl={`${yearlySubscriptionUrl}&${additionalSubplatParams.toString()}`}
+      subscriptionBillingAmount={getSubscriptionBillingAmount()}
+      enabledFeatureFlags={enabledFeatureFlags}
+      experimentData={experimentData}
+      lastScanDate={lastOneRepScan?.created_at}
+      isMonthlySubscriber={isMonthlySubscriber}
+      activeTab={activeTab}
+    />
   );
 }

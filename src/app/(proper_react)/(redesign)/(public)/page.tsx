@@ -21,7 +21,6 @@ import { getExperimentationId } from "../../../functions/server/getExperimentati
 import { getExperiments } from "../../../functions/server/getExperiments";
 import { getLocale } from "../../../functions/universal/getLocale";
 import { AccountsMetricsFlowProvider } from "../../../../contextProviders/accounts-metrics-flow";
-import { ExperimentsProvider } from "../../../../contextProviders/experiments";
 
 type Props = {
   searchParams: {
@@ -54,32 +53,28 @@ export default async function Page({ searchParams }: Props) {
     typeof oneRepActivations === "undefined" ||
     oneRepActivations > monthlySubscribersQuota;
   return (
-    <ExperimentsProvider experimentData={experimentData}>
-      <AccountsMetricsFlowProvider
-        enabled={
-          experimentData["Features"]["landing-page-free-scan-cta"].enabled
-        }
-        metricsFlowParams={{
-          entrypoint: CONST_URL_MONITOR_LANDING_PAGE_ID,
-          entrypoint_experiment: "landing-page-free-scan-cta",
-          entrypoint_variation:
-            experimentData["Features"]["landing-page-free-scan-cta"].variant,
-          form_type:
-            experimentData["Features"]["landing-page-free-scan-cta"].variant ===
-            "ctaWithEmail"
-              ? "email"
-              : "button",
-          service: process.env.OAUTH_CLIENT_ID as string,
-        }}
-      >
-        <View
-          eligibleForPremium={eligibleForPremium}
-          l10n={getL10n()}
-          countryCode={countryCode}
-          scanLimitReached={scanLimitReached}
-          experimentData={experimentData["Features"]}
-        />
-      </AccountsMetricsFlowProvider>
-    </ExperimentsProvider>
+    <AccountsMetricsFlowProvider
+      enabled={experimentData["landing-page-free-scan-cta"].enabled}
+      metricsFlowParams={{
+        entrypoint: CONST_URL_MONITOR_LANDING_PAGE_ID,
+        entrypoint_experiment: "landing-page-free-scan-cta",
+        entrypoint_variation:
+          experimentData["landing-page-free-scan-cta"].variant,
+        form_type:
+          experimentData["landing-page-free-scan-cta"].variant ===
+          "ctaWithEmail"
+            ? "email"
+            : "button",
+        service: process.env.OAUTH_CLIENT_ID as string,
+      }}
+    >
+      <View
+        eligibleForPremium={eligibleForPremium}
+        l10n={getL10n()}
+        countryCode={countryCode}
+        scanLimitReached={scanLimitReached}
+        experimentData={experimentData}
+      />
+    </AccountsMetricsFlowProvider>
   );
 }
