@@ -19,6 +19,7 @@ import {
 } from "../../../../../../../functions/server/getRelevantGuidedSteps";
 import { useTelemetry } from "../../../../../../../hooks/useTelemetry";
 import { TelemetryButton } from "../../../../../../../components/client/TelemetryButton";
+import { FeatureFlagName } from "../../../../../../../../db/tables/featureFlags";
 
 export type FixViewProps = {
   children: ReactNode;
@@ -34,6 +35,7 @@ export type FixViewProps = {
   hideNavClose?: boolean;
   hideNextNavigationRightArrow?: boolean;
   showConfetti?: boolean;
+  enabledFeatureFlags: FeatureFlagName[];
 };
 
 export const FixView = (props: FixViewProps) => {
@@ -91,6 +93,7 @@ export const FixView = (props: FixViewProps) => {
             label={l10n.getString(
               "guided-resolution-flow-step-navigation-label",
             )}
+            enabledFeatureFlags={props.enabledFeatureFlags}
           />
         )}
         {!props.hideNavClose && navigationClose()}

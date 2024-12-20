@@ -18,6 +18,7 @@ import { getL10n } from "../../../../../../../../../functions/l10n/serverCompone
 import { refreshStoredScanResults } from "../../../../../../../../../functions/server/refreshStoredScanResults";
 import { checkSession } from "../../../../../../../../../functions/server/checkSession";
 import { hasPremium } from "../../../../../../../../../functions/universal/user";
+import { getEnabledFeatureFlags } from "../../../../../../../../../../db/tables/featureFlags";
 
 export default async function WelcomeToPlusPage() {
   const session = await getServerSession();
@@ -33,6 +34,10 @@ export default async function WelcomeToPlusPage() {
       page: "welcome-to-premium",
     });
   }
+
+  const enabledFeatureFlags = await getEnabledFeatureFlags({
+    email: session.user.email,
+  });
 
   const profileId = await getOnerepProfileId(session.user.subscriber.id);
   if (profileId === null) {
@@ -76,6 +81,7 @@ export default async function WelcomeToPlusPage() {
       data={data}
       subscriberEmails={subscriberEmails}
       l10n={getL10n()}
+      enabledFeatureFlags={enabledFeatureFlags}
     />
   );
 }

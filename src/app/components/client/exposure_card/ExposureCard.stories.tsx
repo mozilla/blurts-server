@@ -51,19 +51,26 @@ const ScanMockItemInProgress = createRandomScanResult({
   manually_resolved: false,
 });
 
-// TODO: Waiting for criteria for data brokers under maintenace to be determined
-// const ScanMockItemRemovalUnderMaintenance = createRandomScanResult({
-//   status: "optout_in_progress",
-//   manually_resolved: false,
-//   broker_status: "removal_under_maintenance",
-// });
+const ScanMockItemRemovalUnderMaintenance = createRandomScanResult({
+  status: "optout_in_progress",
+  manually_resolved: false,
+  broker_status: "removal_under_maintenance",
+});
 
-// TODO: Waiting for criteria for data brokers under maintenace to be determined
-// const ScanMockItemRemovalUnderMaintenanceFixed = createRandomScanResult({
-//   status: "optout_in_progress",
-//   manually_resolved: true,
-//   broker_status: "removal_under_maintenance",
-// });
+const ScanMockItemRemovalUnderMaintenanceManuallyFixed = createRandomScanResult(
+  {
+    status: "optout_in_progress",
+    manually_resolved: true,
+    broker_status: "removal_under_maintenance",
+  },
+);
+
+const ScanMockItemRemovalUnderMaintenanceAutomaticallyRemoved =
+  createRandomScanResult({
+    status: "removed",
+    manually_resolved: false,
+    broker_status: "removal_under_maintenance",
+  });
 
 const BreachMockItemRemoved = createRandomBreach({
   isResolved: true,
@@ -119,23 +126,32 @@ export const DataBreachActionNeeded: Story = {
   },
 };
 
-// TODO: Waiting for criteria for data brokers under maintenace to be determined
-// export const DataBrokerRemovalUnderMaintenance: Story = {
-//   args: {
-//     exposureImg: FamilyTreeImage,
-//     exposureData: ScanMockItemRemovalUnderMaintenance,
-//     isPremiumUser: true,
-//   },
-// };
+export const DataBrokerRemovalUnderMaintenance: Story = {
+  args: {
+    exposureImg: FamilyTreeImage,
+    exposureData: ScanMockItemRemovalUnderMaintenance,
+    isPremiumUser: true,
+    enabledFeatureFlags: ["EnableRemovalUnderMaintenanceStep"],
+  },
+};
 
-// TODO: Waiting for criteria for data brokers under maintenace to be determined
-// export const DataBrokerRemovalUnderMaintenanceFixed: Story = {
-//   args: {
-//     exposureImg: FamilyTreeImage,
-//     exposureData: ScanMockItemRemovalUnderMaintenanceFixed,
-//     isPremiumUser: true,
-//   },
-// };
+export const DataBrokerRemovalUnderMaintenanceFixed: Story = {
+  args: {
+    exposureImg: FamilyTreeImage,
+    exposureData: ScanMockItemRemovalUnderMaintenanceManuallyFixed,
+    isPremiumUser: true,
+    enabledFeatureFlags: ["EnableRemovalUnderMaintenanceStep"],
+  },
+};
+
+export const DataBrokerRemovalUnderMaintenanceAutomaticallyRemoved: Story = {
+  args: {
+    exposureImg: FamilyTreeImage,
+    exposureData: ScanMockItemRemovalUnderMaintenanceAutomaticallyRemoved,
+    isPremiumUser: true,
+    enabledFeatureFlags: ["EnableRemovalUnderMaintenanceStep"],
+  },
+};
 
 export const DataBreachFixed: Story = {
   args: {

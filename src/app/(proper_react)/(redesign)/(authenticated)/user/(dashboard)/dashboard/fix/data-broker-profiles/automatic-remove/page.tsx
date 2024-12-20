@@ -22,6 +22,7 @@ import {
 } from "../../../../../../../../../functions/server/getPremiumSubscriptionInfo";
 import { getAttributionsFromCookiesOrDb } from "../../../../../../../../../functions/server/attributions";
 import { hasPremium } from "../../../../../../../../../functions/universal/user";
+import { getEnabledFeatureFlags } from "../../../../../../../../../../db/tables/featureFlags";
 
 const monthlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "monthly" });
 const yearlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "yearly" });
@@ -36,6 +37,10 @@ export default async function AutomaticRemovePage() {
   const additionalSubplatParams = await getAttributionsFromCookiesOrDb(
     session.user.subscriber.id,
   );
+
+  const enabledFeatureFlags = await getEnabledFeatureFlags({
+    email: session.user.email,
+  });
 
   const countryCode = getCountryCode(headers());
   const profileId = await getOnerepProfileId(session.user.subscriber.id);
@@ -60,11 +65,12 @@ export default async function AutomaticRemovePage() {
     <AutomaticRemoveView
       data={data}
       subscriberEmails={subscriberEmails}
-      nextStep={getNextGuidedStep(data, "Scan")}
+      nextStep={getNextGuidedStep(data, enabledFeatureFlags, "Scan")}
       currentSection="data-broker-profiles"
       monthlySubscriptionUrl={`${monthlySubscriptionUrl}&${additionalSubplatParams.toString()}`}
       yearlySubscriptionUrl={`${yearlySubscriptionUrl}&${additionalSubplatParams.toString()}`}
       subscriptionBillingAmount={getSubscriptionBillingAmount()}
+      enabledFeatureFlags={enabledFeatureFlags}
     />
   );
 }

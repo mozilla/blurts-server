@@ -64,6 +64,7 @@ export const RemovalUnderMaintenanceViewStory: Story = {
             user: mockedSession.user,
           }}
           subscriberEmails={[]}
+          enabledFeatureFlags={[]}
         />
       </Shell>
     );

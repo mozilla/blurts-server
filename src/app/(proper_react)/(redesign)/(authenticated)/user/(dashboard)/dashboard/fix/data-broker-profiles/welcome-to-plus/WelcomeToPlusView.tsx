@@ -18,11 +18,13 @@ import { ExtendedReactLocalization } from "../../../../../../../../../functions/
 import noBreachesIllustration from "../../images/high-risk-breaches-none.svg";
 import { CONST_ONEREP_DATA_BROKER_COUNT } from "../../../../../../../../../../constants";
 import { TelemetryButton } from "../../../../../../../../../components/client/TelemetryButton";
+import { FeatureFlagName } from "../../../../../../../../../../db/tables/featureFlags";
 
 export type Props = {
   data: StepDeterminationData;
   subscriberEmails: string[];
   l10n: ExtendedReactLocalization;
+  enabledFeatureFlags: FeatureFlagName[];
 };
 
 export function WelcomeToPlusView(props: Props) {
@@ -44,8 +46,13 @@ export function WelcomeToPlusView(props: Props) {
     <FixView
       data={props.data}
       subscriberEmails={props.subscriberEmails}
-      nextStep={getNextGuidedStep(props.data, "Scan")}
+      nextStep={getNextGuidedStep(
+        props.data,
+        props.enabledFeatureFlags,
+        "Scan",
+      )}
       currentSection="data-broker-profiles"
+      enabledFeatureFlags={props.enabledFeatureFlags}
     >
       <div className={styles.contentWrapper}>
         <div className={styles.content}>
@@ -100,7 +107,10 @@ export function WelcomeToPlusView(props: Props) {
           <div className={styles.buttonsWrapper}>
             <TelemetryButton
               variant="primary"
-              href={getNextGuidedStep(props.data, "Scan").href}
+              href={
+                getNextGuidedStep(props.data, props.enabledFeatureFlags, "Scan")
+                  .href
+              }
               wide
               event={{
                 module: "ctaButton",

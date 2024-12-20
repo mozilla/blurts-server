@@ -19,10 +19,12 @@ import {
 } from "../../../../../../../../../../constants";
 import { TelemetryButton } from "../../../../../../../../../components/client/TelemetryButton";
 import { TelemetryLink } from "../../../../../../../../../components/client/TelemetryLink";
+import { FeatureFlagName } from "../../../../../../../../../../db/tables/featureFlags";
 
 export type Props = {
   data: StepDeterminationData;
   subscriberEmails: string[];
+  enabledFeatureFlags: FeatureFlagName[];
 };
 
 export function StartFreeScanView(props: Props) {
@@ -32,8 +34,13 @@ export function StartFreeScanView(props: Props) {
     <FixView
       data={props.data}
       subscriberEmails={props.subscriberEmails}
-      nextStep={getNextGuidedStep(props.data, "Scan")}
+      nextStep={getNextGuidedStep(
+        props.data,
+        props.enabledFeatureFlags,
+        "Scan",
+      )}
       currentSection="data-broker-profiles"
+      enabledFeatureFlags={props.enabledFeatureFlags}
     >
       <div className={styles.contentWrapper}>
         <Image className={styles.cityScape} src={ImageCityScape} alt="" />
@@ -86,7 +93,10 @@ export function StartFreeScanView(props: Props) {
           </TelemetryButton>
           <TelemetryButton
             variant="secondary"
-            href={getNextGuidedStep(props.data, "Scan").href}
+            href={
+              getNextGuidedStep(props.data, props.enabledFeatureFlags, "Scan")
+                .href
+            }
             event={{
               module: "button",
               name: "click",

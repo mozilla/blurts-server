@@ -17,6 +17,7 @@ import { TelemetryLink } from "../TelemetryLink";
 import { FeatureFlagName } from "../../../../db/tables/featureFlags";
 import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 import SparkleImage from "../assets/sparkle.png";
+import { isDataBrokerUnderMaintenance } from "../../../(proper_react)/(redesign)/(authenticated)/user/(dashboard)/dashboard/View";
 
 export type ScanResultCardProps = {
   scanResult: OnerepScanResultDataBrokerRow;
@@ -119,23 +120,28 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
     // Data broker cards manually resolved do not change their status to "removed";
     // instead, we track them using the "manually_resolved" property.
 
-    // TODO: MNTOR-3880 Waiting for criteria for data brokers under maintenace to be determined
-    // if (scanResult.broker_status === "removal_under_maintenance") {
-    //   if (scanResult.manually_resolved) {
-    //     return l10n.getFragment(
-    //       "exposure-card-description-info-for-sale-fixed-removal-under-maintenance-manually-fixed",
-    //       { elems: { data_broker_profile: dataBrokerProfileLink } },
-    //     );
-    //   }
-    //   return l10n.getFragment(
-    //     "exposure-card-description-info-for-sale-manual-removal-needed",
-    //     {
-    //       elems: {
-    //         b: <b />,
-    //       },
-    //     },
-    //   );
-    // }
+    if (
+      // TODO: MNTOR-3886 - Remove EnableRemovalUnderMaintenanceStep feature flag
+      props.enabledFeatureFlags?.includes(
+        "EnableRemovalUnderMaintenanceStep",
+      ) &&
+      isDataBrokerUnderMaintenance(props.scanResult)
+    ) {
+      if (scanResult.manually_resolved) {
+        return l10n.getFragment(
+          "exposure-card-description-info-for-sale-fixed-removal-under-maintenance-manually-fixed",
+          { elems: { data_broker_profile: dataBrokerProfileLink } },
+        );
+      }
+      return l10n.getFragment(
+        "exposure-card-description-info-for-sale-manual-removal-needed",
+        {
+          elems: {
+            b: <b />,
+          },
+        },
+      );
+    }
 
     if (scanResult.manually_resolved) {
       return l10n.getFragment(
@@ -252,10 +258,15 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
       );
     }
 
-    // TODO: MNTOR-3880 Waiting for criteria for data brokers under maintenace to be determined
-    // if (props.scanResult.broker_status === "removal_under_maintenance") {
-    //   return <span>{props.resolutionCta}</span>;
-    // }
+    if (
+      // TODO: MNTOR-3886 - Remove EnableRemovalUnderMaintenanceStep feature flag
+      props.enabledFeatureFlags?.includes(
+        "EnableRemovalUnderMaintenanceStep",
+      ) &&
+      isDataBrokerUnderMaintenance(props.scanResult)
+    ) {
+      return <span>{props.resolutionCta}</span>;
+    }
 
     switch (props.scanResult.status) {
       case "new":
@@ -327,10 +338,9 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
             </dt>
             <dd>
               <StatusPill
-                // isRemovalUnderMaintenance={
-                //   // TODO: MNTOR-3880 Waiting for criteria for data brokers under maintenace to be determined
-                //   // scanResult.broker_status === "removal_under_maintenance"
-                // }
+                isRemovalUnderMaintenance={isDataBrokerUnderMaintenance(
+                  props.scanResult,
+                )}
                 exposure={scanResult}
                 note={statusPillNote}
                 enabledFeatureFlags={props.enabledFeatureFlags}
