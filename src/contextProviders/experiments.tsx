@@ -18,10 +18,6 @@ export const ExperimentsProvider = ({
   children,
   experimentData,
 }: ExperimentsProviderProps) => {
-  console.debug("ExperimentsProvider:", {
-    children,
-    experimentData: JSON.stringify(experimentData),
-  });
   return (
     <ExperimentsContext.Provider value={experimentData}>
       {children}

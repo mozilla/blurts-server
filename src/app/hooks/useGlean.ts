@@ -28,7 +28,6 @@ export const useGlean = () => {
       const mod = (await import(
         `../../telemetry/generated/${eventModule}`
       )) as Record<keyof GleanMetricMap[EventModule], EventMetricType>;
-      console.debug("Glean useCallback");
       // Instead of the specific type definitions we generated in the npm script
       // `build-glean-types`, Glean takes a non-specific "ExtraArgs" type as
       // parameter to `record`.
@@ -43,7 +42,6 @@ export const useGlean = () => {
       // Record the `nimbus_*` keys on all events.
       // `nimbus_*` is set on every metric, but it's too much work for TypeScript
       // to infer that — hence the type assertion.
-      console.debug({ event, experimentData });
       if (experimentData) {
         (data as GleanMetricMap["button"]["click"]).nimbus_user_id =
           experimentData["Enrollments"]["nimbus_user_id"];
