@@ -54,6 +54,7 @@ export const featureFlagNames = [
   "DataBrokerRemovalTimeEstimateLabel",
   "DataBrokerRemovalTimeEstimateCsat",
   "SettingsPageRedesign",
+  "LandingPageRedesign",
   "EnableRemovalUnderMaintenanceStep",
   "CirrusV2",
 ] as const;
