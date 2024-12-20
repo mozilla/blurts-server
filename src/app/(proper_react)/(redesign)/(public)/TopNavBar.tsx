@@ -5,14 +5,12 @@
 "use client";
 
 import { TelemetryLink } from "../../../components/client/TelemetryLink";
-import { CaretRight } from "../../../components/server/Icons";
 import { useL10n } from "../../../hooks/l10n";
 
 export const TopNavBar = (props: {
   styles: {
     readonly [key: string]: string;
   };
-  showCaret?: boolean;
 }) => {
   const l10n = useL10n();
   return (
@@ -26,10 +24,7 @@ export const TopNavBar = (props: {
               link_id: "navbar_how_it_works",
             }}
           >
-            <>
-              {props.showCaret && <CaretRight alt="" />}
-              {l10n.getString("landing-premium-hero-navbar-link-how-it-works")}
-            </>
+            {l10n.getString("landing-premium-hero-navbar-link-how-it-works")}
           </TelemetryLink>
         </li>
         <li>
@@ -40,10 +35,7 @@ export const TopNavBar = (props: {
               link_id: "navbar_pricing",
             }}
           >
-            <>
-              {props.showCaret && <CaretRight alt="" />}
-              {l10n.getString("landing-premium-hero-navbar-link-pricing")}
-            </>
+            {l10n.getString("landing-premium-hero-navbar-link-pricing")}
           </TelemetryLink>
         </li>
         <li>
@@ -55,10 +47,7 @@ export const TopNavBar = (props: {
               link_id: "navbar_faqs",
             }}
           >
-            <>
-              {props.showCaret && <CaretRight alt="" />}
-              {l10n.getString("landing-premium-hero-navbar-link-faqs")}
-            </>
+            {l10n.getString("landing-premium-hero-navbar-link-faqs")}
           </TelemetryLink>
         </li>
         <li>
@@ -69,12 +58,7 @@ export const TopNavBar = (props: {
               link_id: "navbar_recent_breaches",
             }}
           >
-            <>
-              {props.showCaret && <CaretRight alt="" />}
-              {l10n.getString(
-                "landing-premium-hero-navbar-link-recent-breaches",
-              )}
-            </>
+            {l10n.getString("landing-premium-hero-navbar-link-recent-breaches")}
           </TelemetryLink>
         </li>
       </ul>

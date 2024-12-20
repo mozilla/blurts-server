@@ -11,11 +11,7 @@ import { Session } from "next-auth";
 import styles from "./MobileShell.module.scss";
 import monitorLogo from "../images/monitor-logo.webp";
 import { UpsellBadge } from "../../components/client/toolbar/UpsellBadge";
-import {
-  CaretRight,
-  CloseBigIcon,
-  ListIcon,
-} from "../../components/server/Icons";
+import { CloseBigIcon, ListIcon } from "../../components/server/Icons";
 import { UserMenu } from "../../components/client/toolbar/UserMenu";
 import { useL10n } from "../../hooks/l10n";
 import { PageLink } from "./PageLink";
@@ -132,10 +128,7 @@ export const MobileShell = (props: Props) => {
                       activeClassName={styles.isActive}
                       hasTelemetry={{ link_id: "navigation_dashboard" }}
                     >
-                      <>
-                        <CaretRight alt="" />
-                        {l10n.getString("main-nav-link-dashboard-label")}
-                      </>
+                      {l10n.getString("main-nav-link-dashboard-label")}
                     </PageLink>
                   </li>
                   {props.countryCode === "us" && (
@@ -146,10 +139,7 @@ export const MobileShell = (props: Props) => {
                         target="_blank"
                         hasTelemetry={{ link_id: "navigation_how_it_works" }}
                       >
-                        <>
-                          <CaretRight alt="" />
-                          {l10n.getString("main-nav-link-how-it-works-label")}
-                        </>
+                        {l10n.getString("main-nav-link-how-it-works-label")}
                       </PageLink>
                     </li>
                   )}
@@ -160,10 +150,7 @@ export const MobileShell = (props: Props) => {
                       target="_blank"
                       hasTelemetry={{ link_id: "navigation_faq" }}
                     >
-                      <>
-                        <CaretRight alt="" />
-                        {l10n.getString("main-nav-link-faq-label")}
-                      </>
+                      {l10n.getString("main-nav-link-faq-label")}
                     </PageLink>
                   </li>
                   <li key="settings">
@@ -172,10 +159,7 @@ export const MobileShell = (props: Props) => {
                       activeClassName={styles.isActive}
                       hasTelemetry={{ link_id: "navigation_settings" }}
                     >
-                      <>
-                        <CaretRight alt="" />
-                        {l10n.getString("main-nav-link-settings-label")}
-                      </>
+                      {l10n.getString("main-nav-link-settings-label")}
                     </PageLink>
                     {props.enabledFeatureFlags.includes(
                       "SettingsPageRedesign",
@@ -191,12 +175,9 @@ export const MobileShell = (props: Props) => {
                                   link_id: `navigation_settings_${submenuKey}`,
                                 }}
                               >
-                                <>
-                                  <CaretRight alt="" />
-                                  {l10n.getString(
-                                    `settings-tab-label-${submenuKey}`,
-                                  )}
-                                </>
+                                {l10n.getString(
+                                  `settings-tab-label-${submenuKey}`,
+                                )}
                               </PageLink>
                             </li>
                           );
@@ -216,7 +197,7 @@ export const MobileShell = (props: Props) => {
                 </div>
               </>
             ) : (
-              <TopNavBar styles={styles} showCaret />
+              <TopNavBar styles={styles} />
             )}
           </div>
         </nav>

@@ -90,7 +90,7 @@
       top: 0;
       height: 0;
       // Overlap .content
-      z-index: 1;
+      z-index: 2;
 
       .mainMenu {
         align-items: center;
@@ -108,10 +108,9 @@
           a {
             align-items: center;
             display: flex;
-            padding: $spacing-md $spacing-xl;
+            padding: $spacing-sm $spacing-lg;
             gap: $spacing-sm;
             color: $color-black;
-            font-weight: 700;
             border-top: 1px solid $color-grey-10;
             text-decoration: none;
 
@@ -142,7 +141,8 @@
             border-bottom: none;
 
             a {
-              padding: $spacing-md $spacing-2xl;
+              font-weight: 400;
+              padding: $spacing-sm $spacing-2xl;
               border-top: none;
             }
           }
