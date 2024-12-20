@@ -53,7 +53,7 @@ it("shows and hides the removal time explainer dialog by clicking the â€œGot itâ
       isPlusSubscriber
       enabledFeatureFlags={["DataBrokerRemovalTimeEstimateLabel"]}
       experimentData={{
-        ...defaultExperimentData,
+        ...defaultExperimentData["Features"],
         "data-broker-removal-time-estimates": {
           enabled: true,
         },
@@ -84,7 +84,7 @@ it("shows and hides the removal time explainer dialog by clicking the close butt
       isPlusSubscriber
       enabledFeatureFlags={["DataBrokerRemovalTimeEstimateLabel"]}
       experimentData={{
-        ...defaultExperimentData,
+        ...defaultExperimentData["Features"],
         "data-broker-removal-time-estimates": {
           enabled: true,
         },

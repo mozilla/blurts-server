@@ -56,6 +56,7 @@ export const featureFlagNames = [
   "SettingsPageRedesign",
   "LandingPageRedesign",
   "EnableRemovalUnderMaintenanceStep",
+  "CirrusV2",
 ] as const;
 export type FeatureFlagName = (typeof featureFlagNames)[number];
 
