@@ -48,6 +48,25 @@ export const RemovalUnderMaintenanceView = (props: Props) => {
 
   // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
   /* c8 ignore start */
+
+  function moveToNextAvailableStep() {
+    const currentResultIndex = props.data.results.findIndex(
+      (result) =>
+        result.onerep_scan_result_id ===
+        firstScanResultNotResolved.onerep_scan_result_id,
+    );
+
+    if (currentResultIndex < props.data.results.length - 1) {
+      // Move to the next unresolved result
+      const nextUnresolvedResult = props.data.results[currentResultIndex + 1];
+      setFirstScanResultNotResolved(nextUnresolvedResult);
+    } else {
+      // Redirect if no unresolved scan result remains
+      router.push(nextGuidedStep.href);
+      router.refresh();
+    }
+  }
+
   async function handleManualRemovalChange() {
     setIsLoadingNextDataBroker(true);
     try {
@@ -70,19 +89,7 @@ export const RemovalUnderMaintenanceView = (props: Props) => {
       void confetti();
 
       // Mark the current scan result as manually resolved
-      const currentResultIndex = props.data.results.findIndex(
-        (result) =>
-          result.onerep_scan_result_id ===
-          firstScanResultNotResolved.onerep_scan_result_id,
-      );
-
-      if (currentResultIndex < props.data.results.length - 1) {
-        const nextUnresolvedResult = props.data.results[currentResultIndex + 1];
-        setFirstScanResultNotResolved(nextUnresolvedResult);
-      } else {
-        // Redirect if no unresolved scan result remains
-        router.push(nextGuidedStep.href);
-      }
+      moveToNextAvailableStep();
     } catch (error) {
       console.error("Error occurred in handleManualRemovalChange:", error);
     } finally {
@@ -398,7 +405,7 @@ export const RemovalUnderMaintenanceView = (props: Props) => {
   return (
     <FixView
       subscriberEmails={props.subscriberEmails}
-      nextStep={nextGuidedStep}
+      nextStep={() => moveToNextAvailableStep()}
       currentSection="data-broker-profiles"
       data={props.stepDeterminationData}
       hideProgressIndicator={detailedRemovalGuide}

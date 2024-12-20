@@ -57,7 +57,10 @@ export async function POST(
     getCountryCode(headers()),
   );
   if (!eligible) {
-    throw new Error("User is not eligible for feature");
+    logger.warn("scan_created_warn", {
+      message: "User is not eligible for feature",
+    });
+    return NextResponse.json({ success: false }, { status: 422 });
   }
 
   const params: UserInfo = await req.json();

@@ -13,7 +13,8 @@ import { CONST_URL_MONITOR_LANDING_PAGE_ID } from "../../../../constants";
 const meta: Meta<typeof View> = {
   title: "Pages/Public/Landing page",
   component: (props: ViewProps) => {
-    const experimentData = props.experimentData ?? defaultExperimentData;
+    const experimentData =
+      props.experimentData ?? defaultExperimentData["Features"];
     return (
       <AccountsMetricsFlowProvider
         enabled={experimentData["landing-page-free-scan-cta"].enabled}

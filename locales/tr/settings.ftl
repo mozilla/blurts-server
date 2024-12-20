@@ -64,4 +64,10 @@ settings-alert-preferences-allow-monthly-monitor-report-subtitle = Yeni riskler,
 
 ## Settings page redesign
 
+settings-tab-label-edit-info = Bilgilerinizi düzenleyin
+settings-tab-label-notifications = Bildirimleri ayarla
+settings-tab-label-manage-account = Hesabı yönet
+settings-tab-subtitle-manage-account = { -product-name } hesabınızı yönetin.
 settings-tab-notifications-marketing-title = Pazarlama iletişimi
+settings-tab-notifications-marketing-text = { -brand-monitor }, { -brand-mozilla } ve diğer güvenlik ürünlerimizle ilgili düzenli haberler.
+settings-tab-notifications-marketing-link-label = { -brand-mozilla } e-posta ayarlarına git

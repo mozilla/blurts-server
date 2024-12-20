@@ -33,7 +33,7 @@ export type Props = {
   };
   scanLimitReached: boolean;
   signUpCallbackUrl: string;
-  experimentData?: ExperimentData;
+  experimentData?: ExperimentData["Features"];
   isHero?: boolean;
   placeholder?: string;
 };

@@ -24,23 +24,22 @@ await run();
 await createDbConnection().destroy();
 
 async function run() {
-  const batchSize = Number.parseInt(
+  let batchSize = Number.parseInt(
     process.env.MONTHLY_ACTIVITY_FREE_EMAIL_BATCH_SIZE ?? "10",
     10,
   );
   if (Number.isNaN(batchSize)) {
-    throw new Error(
-      `Could not send monthly activity emails, because the env var MONTHLY_ACTIVITY_FREE_EMAIL_BATCH_SIZE has a non-numeric value: [${process.env.MONTHLY_ACTIVITY_EMAIL_BATCH_SIZE}].`,
+    batchSize = 10;
+    logger.warn(
+      `Could not send monthly activity emails, because the env var MONTHLY_ACTIVITY_FREE_EMAIL_BATCH_SIZE has a non-numeric value: [${process.env.MONTHLY_ACTIVITY_FREE_EMAIL_BATCH_SIZE}].`,
     );
   }
 
   logger.info(`Getting free subscribers with batch size: ${batchSize}`);
-  const subscribersToEmail = (await getFreeSubscribersWaitingForMonthlyEmail())
-    .filter((subscriber) => {
-      const assumedCountryCode = getSignupLocaleCountry(subscriber);
-      return assumedCountryCode === "us";
-    })
-    .slice(0, batchSize);
+  const subscribersToEmail = await getFreeSubscribersWaitingForMonthlyEmail(
+    batchSize,
+    ["US"],
+  );
   await initEmail();
 
   for (const subscriber of subscribersToEmail) {

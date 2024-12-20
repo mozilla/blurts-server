@@ -7,6 +7,7 @@ fix-flow-nav-leaked-passwords = 泄露的密码
 fix-flow-nav-security-recommendations = 安全建议
 guided-resolution-flow-exit = 返回面板
 guided-resolution-flow-next-arrow = 转到下一步
+guided-resolution-flow-next-arrow-sub-step = 前往下一个结果
 guided-resolution-flow-step-navigation-label = 向导步骤
 
 # Celebration screens

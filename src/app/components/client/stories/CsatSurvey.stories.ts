@@ -24,7 +24,7 @@ export const CsatSurveyAutomaticRemoval: Story = {
       "LatestScanDateCsatSurvey",
       "AutomaticRemovalCsatSurvey",
     ],
-    experimentData: defaultExperimentData,
+    experimentData: defaultExperimentData["Features"],
     hasAutoFixedDataBrokers: true,
     elapsedTimeInDaysSinceInitialScan: 0,
   },
@@ -40,7 +40,7 @@ export const CsatSurveyLatestScanDate: Story = {
     lastScanDate: new Date(Date.UTC(2024, 6, 31)),
     enabledFeatureFlags: ["LatestScanDateCsatSurvey"],
     experimentData: {
-      ...defaultExperimentData,
+      ...defaultExperimentData["Features"],
       "last-scan-date": {
         enabled: true,
       },

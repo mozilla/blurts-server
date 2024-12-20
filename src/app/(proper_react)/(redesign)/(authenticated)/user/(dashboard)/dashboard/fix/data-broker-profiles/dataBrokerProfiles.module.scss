@@ -197,6 +197,18 @@
       font: $text-title-sm;
       font-weight: 500;
     }
+
+    // Invert color for the plan selection CTA to increase visibility
+    // against the purple background.
+    & > a {
+      color: $color-white;
+      box-shadow: inset 0 0 0 2px $color-white;
+
+      &:hover {
+        background-color: $color-white;
+        color: $color-purple-70;
+      }
+    }
   }
 }
 

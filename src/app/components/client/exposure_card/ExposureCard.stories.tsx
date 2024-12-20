@@ -20,7 +20,7 @@ const meta: Meta<typeof ExposureCard> = {
   args: {
     enabledFeatureFlags: [],
     experimentData: {
-      ...defaultExperimentData,
+      ...defaultExperimentData["Features"],
       "data-broker-removal-time-estimates": {
         enabled: true,
       },
@@ -50,17 +50,21 @@ const ScanMockItemInProgress = createRandomScanResult({
   status: "optout_in_progress",
   manually_resolved: false,
 });
-const ScanMockItemRemovalUnderMaintenance = createRandomScanResult({
-  status: "optout_in_progress",
-  manually_resolved: false,
-  broker_status: "removal_under_maintenance",
-});
 
-const ScanMockItemRemovalUnderMaintenanceFixed = createRandomScanResult({
-  status: "optout_in_progress",
-  manually_resolved: true,
-  broker_status: "removal_under_maintenance",
-});
+// TODO: Waiting for criteria for data brokers under maintenace to be determined
+// const ScanMockItemRemovalUnderMaintenance = createRandomScanResult({
+//   status: "optout_in_progress",
+//   manually_resolved: false,
+//   broker_status: "removal_under_maintenance",
+// });
+
+// TODO: Waiting for criteria for data brokers under maintenace to be determined
+// const ScanMockItemRemovalUnderMaintenanceFixed = createRandomScanResult({
+//   status: "optout_in_progress",
+//   manually_resolved: true,
+//   broker_status: "removal_under_maintenance",
+// });
+
 const BreachMockItemRemoved = createRandomBreach({
   isResolved: true,
   dataClassesEffected: [
@@ -115,21 +119,23 @@ export const DataBreachActionNeeded: Story = {
   },
 };
 
-export const DataBrokerRemovalUnderMaintenance: Story = {
-  args: {
-    exposureImg: FamilyTreeImage,
-    exposureData: ScanMockItemRemovalUnderMaintenance,
-    isPremiumUser: true,
-  },
-};
+// TODO: Waiting for criteria for data brokers under maintenace to be determined
+// export const DataBrokerRemovalUnderMaintenance: Story = {
+//   args: {
+//     exposureImg: FamilyTreeImage,
+//     exposureData: ScanMockItemRemovalUnderMaintenance,
+//     isPremiumUser: true,
+//   },
+// };
 
-export const DataBrokerRemovalUnderMaintenanceFixed: Story = {
-  args: {
-    exposureImg: FamilyTreeImage,
-    exposureData: ScanMockItemRemovalUnderMaintenanceFixed,
-    isPremiumUser: true,
-  },
-};
+// TODO: Waiting for criteria for data brokers under maintenace to be determined
+// export const DataBrokerRemovalUnderMaintenanceFixed: Story = {
+//   args: {
+//     exposureImg: FamilyTreeImage,
+//     exposureData: ScanMockItemRemovalUnderMaintenanceFixed,
+//     isPremiumUser: true,
+//   },
+// };
 
 export const DataBreachFixed: Story = {
   args: {

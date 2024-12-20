@@ -82,6 +82,9 @@ export const Steps = (props: {
       {label} {count > 0 && `(${count})`}
     </div>
   );
+  const dataBrokerStepCompleted = hasCompletedStepSection(props.data, "Scan");
+  // TODO: MNTOR-3880 Waiting for criteria for data brokers under maintenace to be determined
+  // && hasCompletedStepSection(props.data, "DataBrokerManualRemoval");
 
   return (
     <ul className={styles.steps}>
@@ -96,11 +99,7 @@ export const Steps = (props: {
           }
           className={`${styles.navigationItem} ${
             props.currentSection === "data-broker-profiles" ? styles.active : ""
-          } ${
-            hasCompletedStepSection(props.data, "Scan")
-              ? styles.isCompleted
-              : ""
-          }`}
+          } ${dataBrokerStepCompleted ? styles.isCompleted : ""}`}
         >
           <div className={styles.stepIcon}>
             <StepImage data={props.data} section="Scan" />
