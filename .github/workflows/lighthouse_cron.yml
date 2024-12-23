@@ -28,5 +28,9 @@ jobs:
           npm run lighthouse
         env:
           LIGHTHOUSE_COLLECT_URL: ${{ secrets.LIGHTHOUSE_COLLECT_URL }}
+      - name: Build cronjobs
+        run: |
+          npm ci
+          npm run build-cronjobs
       - name: Report results
         run: npm run cron:report-lighthouse-results
