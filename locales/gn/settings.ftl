@@ -70,4 +70,5 @@ settings-tab-label-notifications = Emboheko momarandu
 settings-tab-label-manage-account = Eñangareko mba’etére
 settings-tab-subtitle-manage-account = Eñangareko ne mba’etére { -product-name }.
 settings-tab-notifications-marketing-title = Marketing ñemomarandu
+settings-tab-notifications-marketing-text = Ñembohekopyahu meme { -brand-monitor } rehegua, { -brand-mozilla } ha ambue ore apopy tekorosãrã.
 settings-tab-notifications-marketing-link-label = Eho { -brand-mozilla } ñanduti veve moĩporãha ñembohekópe
