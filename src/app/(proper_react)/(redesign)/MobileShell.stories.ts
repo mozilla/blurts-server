@@ -3,10 +3,10 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { Session } from "next-auth";
-import { SerializedSubscriber } from "../../../../next-auth";
+import { SerializedSubscriber } from "../../../next-auth";
 
 import type { Meta, StoryObj } from "@storybook/react";
-import { MobileShell } from "../MobileShell";
+import { MobileShell } from "./MobileShell";
 
 function createUser(): Session["user"] {
   return {
@@ -37,9 +37,17 @@ const meta: Meta<typeof MobileShell> = {
 export default meta;
 type Story = StoryObj<typeof MobileShell>;
 
-export const MobileShellStory: Story = {
+export const MobileShellPublic: Story = {
+  args: {
+    countryCode: "us",
+    session: null,
+  },
+};
+
+export const MobileShellAuthenticated: Story = {
   args: {
     countryCode: "us",
     session: mockedSession,
+    enabledFeatureFlags: [],
   },
 };
