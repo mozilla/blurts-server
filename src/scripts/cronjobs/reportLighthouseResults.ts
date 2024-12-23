@@ -64,6 +64,13 @@ async function run() {
       }),
   );
 
+  const transformedData = lighthouseReport.map((item) => {
+    return {
+      url: item.url,
+      ...item.summary,
+    };
+  });
+  console.table(transformedData);
   logger.info("lighthouse_report", lighthouseReport);
 }
 
