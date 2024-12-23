@@ -13,6 +13,7 @@ import { getSubscriberBreaches } from "../../../../../../../../../functions/serv
 import { getSubscriberEmails } from "../../../../../../../../../functions/server/getSubscriberEmails";
 import { StartFreeScanView } from "./StartFreeScanView";
 import { hasPremium } from "../../../../../../../../../functions/universal/user";
+import { getEnabledFeatureFlags } from "../../../../../../../../../../db/tables/featureFlags";
 
 export default async function StartFreeScanPage() {
   const countryCode = getCountryCode(headers());
@@ -24,6 +25,10 @@ export default async function StartFreeScanPage() {
   if (!session?.user?.subscriber?.id) {
     return redirect("/");
   }
+
+  const enabledFeatureFlags = await getEnabledFeatureFlags({
+    email: session.user.email,
+  });
 
   const onerepProfileId = await getOnerepProfileId(session.user.subscriber.id);
 
@@ -52,5 +57,11 @@ export default async function StartFreeScanPage() {
   };
   const subscriberEmails = await getSubscriberEmails(session.user);
 
-  return <StartFreeScanView data={data} subscriberEmails={subscriberEmails} />;
+  return (
+    <StartFreeScanView
+      data={data}
+      subscriberEmails={subscriberEmails}
+      enabledFeatureFlags={enabledFeatureFlags}
+    />
+  );
 }

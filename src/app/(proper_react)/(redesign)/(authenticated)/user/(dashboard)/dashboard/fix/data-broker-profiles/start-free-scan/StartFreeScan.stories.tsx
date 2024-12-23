@@ -65,6 +65,7 @@ export const StartFreeScanViewStory: Story = {
             user: mockedSession.user,
           }}
           subscriberEmails={[]}
+          enabledFeatureFlags={[]}
         />
       </Shell>
     );

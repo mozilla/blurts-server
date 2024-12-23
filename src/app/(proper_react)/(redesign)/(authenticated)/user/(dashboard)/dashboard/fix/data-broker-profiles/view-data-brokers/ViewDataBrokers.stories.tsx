@@ -113,6 +113,7 @@ const ViewWrapper = (props: ViewWrapperProps) => {
         }}
         l10n={l10n}
         subscriberEmails={[]}
+        enabledFeatureFlags={[]}
       />
     </Shell>
   );

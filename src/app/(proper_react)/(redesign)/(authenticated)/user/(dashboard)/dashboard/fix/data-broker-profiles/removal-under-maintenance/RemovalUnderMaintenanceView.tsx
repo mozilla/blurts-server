@@ -25,11 +25,13 @@ import confetti from "canvas-confetti";
 import { toast } from "react-toastify";
 import fetchWithDelay from "../../../../../../../../../../utils/fetchWithDelay";
 import { useRouter } from "next/navigation";
+import { FeatureFlagName } from "../../../../../../../../../../db/tables/featureFlags";
 
 export type Props = {
   data: LatestOnerepScanData;
   stepDeterminationData: StepDeterminationData;
   subscriberEmails: string[];
+  enabledFeatureFlags: FeatureFlagName[];
 };
 
 export const RemovalUnderMaintenanceView = (props: Props) => {
@@ -43,6 +45,7 @@ export const RemovalUnderMaintenanceView = (props: Props) => {
 
   const nextGuidedStep = getNextGuidedStep(
     props.stepDeterminationData,
+    props.enabledFeatureFlags,
     "DataBrokerManualRemoval",
   );
 
@@ -411,6 +414,7 @@ export const RemovalUnderMaintenanceView = (props: Props) => {
       hideProgressIndicator={detailedRemovalGuide}
       hideNavClose={detailedRemovalGuide}
       hideNextNavigationRightArrow={detailedRemovalGuide}
+      enabledFeatureFlags={props.enabledFeatureFlags}
     >
       {!detailedRemovalGuide ? dataBrokerInformation : removalGuideInstructions}
     </FixView>

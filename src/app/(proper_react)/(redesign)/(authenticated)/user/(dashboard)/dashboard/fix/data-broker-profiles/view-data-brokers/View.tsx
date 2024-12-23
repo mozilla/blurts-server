@@ -12,11 +12,13 @@ import {
 } from "../../../../../../../../../functions/server/getRelevantGuidedSteps";
 import { ExtendedReactLocalization } from "../../../../../../../../../functions/l10n";
 import { TelemetryButton } from "../../../../../../../../../components/client/TelemetryButton";
+import { FeatureFlagName } from "../../../../../../../../../../db/tables/featureFlags";
 
 export type Props = {
   data: StepDeterminationData;
   subscriberEmails: string[];
   l10n: ExtendedReactLocalization;
+  enabledFeatureFlags: FeatureFlagName[];
 };
 
 export const ViewDataBrokersView = (props: Props) => {
@@ -29,8 +31,13 @@ export const ViewDataBrokersView = (props: Props) => {
     <FixView
       data={props.data}
       subscriberEmails={props.subscriberEmails}
-      nextStep={getNextGuidedStep(props.data, "Scan")}
+      nextStep={getNextGuidedStep(
+        props.data,
+        props.enabledFeatureFlags,
+        "Scan",
+      )}
       currentSection="data-broker-profiles"
+      enabledFeatureFlags={props.enabledFeatureFlags}
     >
       <div>
         <div className={styles.content}>

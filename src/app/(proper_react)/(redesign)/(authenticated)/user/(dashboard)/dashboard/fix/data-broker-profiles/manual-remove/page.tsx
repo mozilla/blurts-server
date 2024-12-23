@@ -13,6 +13,7 @@ import { hasPremium } from "../../../../../../../../../functions/universal/user"
 import { getCountryCode } from "../../../../../../../../../functions/server/getCountryCode";
 import { getSubscriberEmails } from "../../../../../../../../../functions/server/getSubscriberEmails";
 import { isEligibleForPremium } from "../../../../../../../../../functions/universal/premium";
+import { getEnabledFeatureFlags } from "../../../../../../../../../../db/tables/featureFlags";
 
 export default async function ManualRemovePage() {
   const session = await getServerSession();
@@ -20,6 +21,10 @@ export default async function ManualRemovePage() {
   if (!session?.user?.subscriber?.id) {
     redirect("/user/dashboard");
   }
+
+  const enabledFeatureFlags = await getEnabledFeatureFlags({
+    email: session.user.email,
+  });
 
   const countryCode = getCountryCode(headers());
   const profileId = await getOnerepProfileId(session.user.subscriber.id);
@@ -42,6 +47,7 @@ export default async function ManualRemovePage() {
       user={session.user}
       countryCode={countryCode}
       subscriberEmails={subscriberEmails}
+      enabledFeatureFlags={enabledFeatureFlags}
     />
   );
 }
