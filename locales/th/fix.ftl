@@ -2,7 +2,7 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-fix-flow-nav-high-risk-data-breaches = ข้อมูลรั่วไหลที่มีความเสี่ยงสูง
+fix-flow-nav-high-risk-data-breaches = การละเมิดข้อมูลที่มีความเสี่ยงสูง
 fix-flow-nav-leaked-passwords = รหัสผ่านที่รั่วไหล
 fix-flow-nav-security-recommendations = คำแนะนำด้านความปลอดภัย
 guided-resolution-flow-exit = กลับไปยังแดชบอร์ด
@@ -51,7 +51,7 @@ ssn-modal-ok = ตกลง
 
 # No high risk breaches found
 
-high-risk-breach-none-sub-description-part-one = ข้อมูลรั่วไหลที่มีความเสี่ยงสูงประกอบด้วย:
+high-risk-breach-none-sub-description-part-one = การละเมิดข้อมูลที่มีความเสี่ยงสูงประกอบด้วย:
 high-risk-breach-none-sub-description-ssn = หมายเลขประกันสังคม
 high-risk-breach-none-sub-description-bank-account = ข้อมูลบัญชีธนาคาร
 high-risk-breach-none-sub-description-cc-number = หมายเลขบัตรเครดิต
