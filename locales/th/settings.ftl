@@ -11,8 +11,8 @@ settings-page-title = การตั้งค่า { -product-short-name }
 
 settings-alert-email-preferences-title = การกำหนดลักษณะอีเมล
 settings-alert-email-preferences-subtitle = บอกเราว่าคุณต้องการรับอีเมลใดบ้าง
-settings-alert-preferences-option-one = ส่งการแจ้งเตือนการรั่วไหลไปยังที่อยู่อีเมลที่ได้รับผลกระทบ
-settings-alert-preferences-option-two = ส่งการแจ้งเตือนการรั่วไหลทั้งหมดไปยังที่อยู่อีเมลหลัก
+settings-alert-preferences-option-one = ส่งการแจ้งเตือนการละเมิดไปยังที่อยู่อีเมลที่ได้รับผลกระทบ
+settings-alert-preferences-option-two = ส่งการแจ้งเตือนการละเมิดทั้งหมดไปยังที่อยู่อีเมลหลัก
 
 ## Monitored email addresses
 
@@ -33,10 +33,13 @@ settings-remove-email-button-tooltip = หยุดตรวจสอบ { $emai
 # how many known breaches that email address was found in.
 # Variables:
 #   $breachCount (number) - Number of breaches
-settings-email-number-of-breaches-info = ปรากฏใน { $breachCount } การรั่วไหลที่ทราบ
+settings-email-number-of-breaches-info = ปรากฏในการละเมิดที่ทราบ { $breachCount } แห่ง
 
 ## Delete Monitor account
 
 
 ## Monthly Monitor Report
+
+
+## Settings page redesign
 
