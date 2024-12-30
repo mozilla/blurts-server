@@ -92,7 +92,7 @@
     "canvas-confetti": "^1.9.3",
     "dotenv-flow": "^4.1.0",
     "eslint-config-next": "^14.2.15",
-    "ioredis": "^5.4.1",
+    "ioredis": "^5.4.2",
     "jsdom": "^25.0.1",
     "jsonwebtoken": "^9.0.2",
     "jwk-to-pem": "^2.0.6",
