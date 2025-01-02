@@ -45,7 +45,7 @@ dashboard-exposures-area-description-all-line1 = เราพบการเป�
 # Note: this line follows dashboard-exposures-area-description-all-line1.
 # Variables:
 #   $data_breach_unresolved_num (number) - the unresolved number of data breaches the user has.
-dashboard-exposures-area-description-all-line2 = มันปรากฏอยู่ในการละเมิดข้อมูล { $data_breach_unresolved_num } แห่ง
+dashboard-exposures-area-description-all-line2 = มันปรากฏอยู่ในการละเมิดข้อมูล { $data_breach_unresolved_num } ครั้ง
 dashboard-fixed-area-headline-all = ดูการเปิดเผยทั้งหมดที่ได้รับการแก้ไขแล้ว
 # This is the label on a button that opens a popover menu, which shows a menu to adjust filters for the listed exposures.
 dashboard-exposures-filter = ตัวกรอง
@@ -80,7 +80,7 @@ dashboard-top-banner-non-us-protect-your-data-description-line1 = เราพ�
 # Note: this line is preceded by `dashboard-top-banner-non-us-protect-your-data-description-line1`.
 # Variables:
 #   $data_breach_unresolved_num (number) - the total number of data breaches the user has.
-dashboard-top-banner-non-us-protect-your-data-description-line2 = พบการปรากฏในการละเมิดข้อมูล { $data_breach_unresolved_num } แห่ง เราจะแนะนำวิธีการแก้ไขให้คุณทีละขั้นตอน
+dashboard-top-banner-non-us-protect-your-data-description-line2 = พบการปรากฏในการละเมิดข้อมูล { $data_breach_unresolved_num } ครั้ง เราจะแนะนำวิธีการแก้ไขให้คุณทีละขั้นตอน
 dashboard-top-banner-no-exposures-found-title = ไม่พบการเปิดเผย
 dashboard-top-banner-non-us-no-exposures-found-description = ยินดีด้วย! เราค้นหาการละเมิดข้อมูลที่ทราบทั้งหมดและไม่พบการเปิดเผยใด เราจะคอยเฝ้าดูที่อยู่อีเมลของคุณและจะเตือนคุณหากมีการละเมิดเกิดขึ้น
 dashboard-no-exposures-label = ไม่พบการเปิดเผย
