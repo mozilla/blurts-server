@@ -6,7 +6,7 @@
 # Confirm Unsubscription State
 
 unsubscribe-from-monthly-report-header = ต้องการเลิกบอกรับอีเมลนี้หรือไม่?
-unsubscribe-from-monthly-report-body = คุณจะไม่ได้รับรายงานรายเดือนจาก { -brand-monitor } อีกต่อไป ซึ่งบอกให้คุณทราบว่าข้อมูลของคุณถูกเปิดเผยใหม่กี่แห่งในแต่ละเดือน และมีกี่แห่งที่ได้รับการแก้ไขแล้ว
+unsubscribe-from-monthly-report-body = คุณจะไม่ได้รับรายงานรายเดือนจาก { -brand-monitor } อีกต่อไป ซึ่งบอกให้คุณทราบว่าข้อมูลของคุณถูกเปิดเผยใหม่กี่ครั้งในแต่ละเดือน และมีกี่ครั้งที่ได้รับการแก้ไขแล้ว
 unsubscribe-cta = เลิกบอกรับ
 
 # Success Unsubscription State
