@@ -16,6 +16,9 @@ jobs:
   lhci:
     name: Lighthouse Report  - ${{ inputs.environment != null && inputs.environment || 'prod' }}
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
     steps:
       - uses: actions/checkout@v4
       - name: Use Node.js 20.9.x
@@ -32,5 +35,12 @@ jobs:
         run: |
           npm ci
           npm run build-cronjobs
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.GC_LIGHTHOUSE_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GC_LIGHTHOUSE_SERVICE_ACCOUNT }}
+          env:
+            BQ_LIGHTHOUSE_DATASET: ${{ secrets.BQ_LIGHTHOUSE_DATASET }}
       - name: Report results
         run: npm run cron:report-lighthouse-results

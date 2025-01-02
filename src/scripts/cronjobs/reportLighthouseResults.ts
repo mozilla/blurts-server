@@ -3,6 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { readFile } from "node:fs/promises";
+import { BigQuery } from "@google-cloud/bigquery";
 import { logger } from "../../app/functions/server/logging";
 
 const AUDITS_TO_INCLUDE = [
@@ -28,6 +29,17 @@ type LighthouseResult = {
     seo: number;
   };
 };
+
+async function getLighthouseResults() {
+  try {
+    const bigQueryClient = new BigQuery();
+    const query = `SELECT * FROM ${process.env.BQ_LIGHTHOUSE_DATASET}`;
+    const [rows] = await bigQueryClient.query({ query });
+    return rows;
+  } catch (error) {
+    console.error("Error querying Lighthouse results", error);
+  }
+}
 
 async function run() {
   // The Lighthouse report that will be created by running LHCI.
@@ -72,6 +84,9 @@ async function run() {
   });
   console.table(transformedData);
   logger.info("lighthouse_report", lighthouseReport);
+
+  const results = getLighthouseResults();
+  console.info("BigQuery dataset", results);
 }
 
 try {
