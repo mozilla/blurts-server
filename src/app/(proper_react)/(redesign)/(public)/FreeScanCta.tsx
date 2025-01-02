@@ -43,6 +43,8 @@ export const FreeScanCta = (
         signUpCallbackUrl={props.signUpCallbackUrl}
         eventId={props.eventId}
         experimentData={props.experimentData}
+        placeholder={props.placeholder}
+        buttonLabel={props.buttonLabel}
       />
     );
   }

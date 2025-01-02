@@ -36,6 +36,7 @@ export type Props = {
   experimentData?: ExperimentData["Features"];
   isHero?: boolean;
   placeholder?: string;
+  buttonLabel?: string;
 };
 
 export const SignUpForm = (props: Props) => {
@@ -111,7 +112,8 @@ export const SignUpForm = (props: Props) => {
           });
         }}
       >
-        {l10n.getString("landing-all-hero-emailform-submit-label")}
+        {props.buttonLabel ??
+          l10n.getString("landing-all-hero-emailform-submit-label")}
       </Button>
       {props.isHero ? (
         labelContent
