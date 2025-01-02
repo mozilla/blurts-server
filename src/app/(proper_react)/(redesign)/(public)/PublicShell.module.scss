@@ -26,7 +26,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: $spacing-md;
+  padding: $spacing-lg $layout-xl;
   background-color: $color-white;
   gap: $spacing-lg;
 
@@ -44,8 +44,26 @@
     flex-shrink: 0;
   }
 
-  @media screen and (min-width: $screen-md) {
-    padding: $spacing-lg $layout-xl;
+  &.navDesktop {
+    ul {
+      display: flex;
+
+      a {
+        color: $color-black;
+        text-decoration: none;
+        font-weight: 600;
+        padding: $spacing-sm $spacing-md;
+
+        &:hover {
+          background-color: $color-purple-70;
+          text-decoration: underline;
+        }
+      }
+    }
+
+    @media screen and (max-width: $screen-xl) {
+      display: none;
+    }
   }
 }
 
