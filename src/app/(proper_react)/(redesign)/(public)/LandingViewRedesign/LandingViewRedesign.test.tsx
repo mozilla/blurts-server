@@ -8,12 +8,12 @@ import { render, screen, within } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
 import { axe } from "jest-axe";
 import { signIn, useSession } from "next-auth/react";
-import { useTelemetry } from "../../../hooks/useTelemetry";
 import Meta, {
   LandingRedesignNonUs,
   LandingRedesignUs,
 } from "./LandingViewRedesign.stories";
-import { deleteAllCookies } from "../../../functions/client/deleteAllCookies";
+import { useTelemetry } from "../../../../hooks/useTelemetry";
+import { deleteAllCookies } from "../../../../functions/client/deleteAllCookies";
 
 jest.mock("next-auth/react", () => {
   return {

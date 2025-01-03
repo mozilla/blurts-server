@@ -1,19 +1,4 @@
-@import "../../../tokens";
-
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  padding: 0 $layout-2xs;
-
-  @media screen and (min-width: $screen-sm) {
-    padding: 0 $layout-sm;
-  }
-
-  @media screen and (min-width: $screen-lg) {
-    padding: 0 $layout-md;
-  }
-}
+@import "../../../../../tokens";
 
 .hero {
   background: linear-gradient(270deg, #9948fc 6.7%, #4b179f 67.9%);
