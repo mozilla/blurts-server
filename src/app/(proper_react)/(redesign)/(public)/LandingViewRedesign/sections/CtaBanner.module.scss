@@ -1,0 +1,20 @@
+@import "../../../../../tokens";
+
+.banner {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+  max-width: $content-lg;
+  text-align: center;
+
+  &Header {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+  }
+
+  strong {
+    color: $color-purple-70;
+  }
+}

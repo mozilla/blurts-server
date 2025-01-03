@@ -13,4 +13,10 @@
   @media screen and (min-width: $screen-lg) {
     padding: 0 $layout-md;
   }
+
+  section {
+    display: flex;
+    justify-content: center;
+    padding: $layout-sm;
+  }
 }

@@ -22,3 +22,9 @@ landing-redesign-premium-hero-list-item-title-two = Saves you up to 50 hours ann
 landing-redesign-premium-hero-list-item-description-two = { -product-short-name } simplifies the time-consuming task of removing your information from websites that sell or share it.
 landing-redesign-premium-hero-list-item-title-three = Over 10 million users trust { -product-short-name }
 landing-redesign-premium-hero-list-item-description-three = Join the { -product-short-name } community and start taking back control of your personal privacy online.
+
+### Banner CTA
+
+landing-redesign-premium-banner-cta-header = There’s a $240 billion industry of data brokers selling your private information for profit. <strong>It’s time to take back your privacy.</strong>
+landing-redesign-premium-banner-cta-subheader = Create a free account to see if your personal data has been exposed by data brokers and data breaches.
+landing-redesign-premium-banner-cta-button-label = Start your free account

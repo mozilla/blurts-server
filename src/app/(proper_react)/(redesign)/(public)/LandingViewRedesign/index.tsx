@@ -6,7 +6,8 @@ import { ExperimentData } from "../../../../../telemetry/generated/nimbus/experi
 import { ExtendedReactLocalization } from "../../../../functions/l10n";
 import { AccountDeletionNotification } from "../AccountDeletionNotification";
 import styles from "./LandingViewRedesign.module.scss";
-import { HeroSection } from "./sections/HeroSection";
+import { Hero } from "./sections/Hero";
+import { CtaBanner } from "./sections/CtaBanner";
 
 export type LandingPageProps = {
   countryCode: string;
@@ -21,7 +22,8 @@ export const View = (props: LandingPageProps) => {
     <>
       <AccountDeletionNotification />
       <main className={styles.wrapper}>
-        <HeroSection {...props} />
+        <Hero {...props} />
+        <CtaBanner {...props} />
       </main>
     </>
   );

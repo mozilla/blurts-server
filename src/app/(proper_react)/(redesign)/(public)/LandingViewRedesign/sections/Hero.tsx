@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { LandingPageProps } from "../index";
+import { LandingPageProps } from "..";
 import { FreeScanCta } from "../../FreeScanCta";
 import { ScanLimit } from "../../ScanLimit";
 import {
@@ -10,9 +10,9 @@ import {
   HeartIconBig,
   ShieldIconBig,
 } from "../../../../../components/server/Icons";
-import styles from "./HeroSection.module.scss";
+import styles from "./Hero.module.scss";
 
-export const HeroSection = (props: LandingPageProps) => {
+export const Hero = (props: LandingPageProps) => {
   return (
     <header className={styles.hero}>
       <div className={styles.heroContent}>
@@ -114,8 +114,8 @@ export const HeroSection = (props: LandingPageProps) => {
             y2="585.017"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#702DCE" />
-            <stop offset="1" stop-color="#4B14A6" />
+            <stop stopColor="#702DCE" />
+            <stop offset="1" stopColor="#4B14A6" />
           </linearGradient>
         </defs>
       </svg>
