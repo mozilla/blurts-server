@@ -16,7 +16,7 @@ export const CtaBanner = (props: LandingPageProps) => {
             {props.l10n.getFragment(
               "landing-redesign-premium-banner-cta-header",
               {
-                elems: { strong: <strong /> },
+                elems: { b: <strong /> },
               },
             )}
           </h2>

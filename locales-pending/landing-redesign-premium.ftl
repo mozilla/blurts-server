@@ -27,7 +27,7 @@ landing-redesign-premium-hero-list-item-description-three = Join the { -brand-mo
 
 ### Banner CTA
 
-landing-redesign-premium-banner-cta-header = There’s a $240 billion industry of data brokers selling your private information for profit. <strong>It’s time to take back your privacy.</strong>
+landing-redesign-premium-banner-cta-header = There’s a $240 billion industry of data brokers selling your private information for profit. <b>It’s time to take back your privacy.</b>
 landing-redesign-premium-banner-cta-subheader = Create a free account to see if your personal data has been exposed by data brokers and data breaches.
 landing-redesign-premium-banner-cta-button-label = Start your free account
 
@@ -49,3 +49,8 @@ landing-redesign-premium-info-block-three-description = With { -brand-monitor },
 
 landing-redesign-premium-logo-block-title = Trusted by 10 million people worldwide
 landing-redesign-premium-logo-block-description = Since 2018, we’ve helped people in 237 countries protect their data when it has been exposed.
+
+### Banner CTA with input
+
+landing-redesign-premium-cta-input-banner-header = <b>Take back control</b> of your data
+landing-redesign-premium-cta-input-banner-subheader = Enter your email address to create a free account and see where your personal data is exposed online.

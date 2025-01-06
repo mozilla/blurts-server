@@ -10,6 +10,7 @@ import { Hero } from "./sections/Hero";
 import { CtaBanner } from "./sections/CtaBanner";
 import { InfoBlock } from "./sections/InfoBlock";
 import { LogoBlock } from "./sections/LogoBlock";
+import { CtaInputBanner } from "./sections/CtaInputBanner";
 
 export type LandingPageProps = {
   countryCode: string;
@@ -28,6 +29,7 @@ export const View = (props: LandingPageProps) => {
         <CtaBanner {...props} />
         <InfoBlock l10n={props.l10n} />
         <LogoBlock l10n={props.l10n} />
+        <CtaInputBanner {...props} />
       </main>
     </>
   );

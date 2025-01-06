@@ -4,6 +4,7 @@
 
 import Image from "next/image";
 import { ExtendedReactLocalization } from "../../../../../functions/l10n";
+import slashdotLogo from "../images/companies/slashdot.svg";
 import cnetLogo from "../images/companies/cnet.svg";
 import engadgetLogo from "../images/companies/engadget.svg";
 import forbesLogo from "../images/companies/forbes.svg";
@@ -23,6 +24,10 @@ type LogoData = {
 
 export const LogoBlock = ({ l10n }: { l10n: ExtendedReactLocalization }) => {
   const logos: LogoData[] = [
+    {
+      title: "Slashdot",
+      imageSrc: slashdotLogo,
+    },
     {
       title: "Fortune",
       imageSrc: fortuneLogo,
