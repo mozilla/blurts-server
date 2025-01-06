@@ -12,9 +12,14 @@
     display: flex;
     flex-direction: column;
     gap: $spacing-sm;
+
+    strong {
+      color: $color-purple-70;
+    }
   }
 
-  strong {
-    color: $color-purple-70;
+  .ctaButton {
+    display: flex;
+    gap: $spacing-sm;
   }
 }

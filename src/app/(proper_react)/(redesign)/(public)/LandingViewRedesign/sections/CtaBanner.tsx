@@ -4,6 +4,7 @@
 
 import { LandingPageProps } from "..";
 import { TelemetryButton } from "../../../../../components/client/TelemetryButton";
+import { ArrowIcon } from "../../../../../components/server/Icons";
 import styles from "./CtaBanner.module.scss";
 
 export const CtaBanner = (props: LandingPageProps) => {
@@ -26,6 +27,7 @@ export const CtaBanner = (props: LandingPageProps) => {
           </p>
         </div>
         <TelemetryButton
+          className={styles.ctaButton}
           variant="primary"
           // TODO: Add href and telementry
           href="/"
@@ -42,6 +44,7 @@ export const CtaBanner = (props: LandingPageProps) => {
           {props.l10n.getString(
             "landing-redesign-premium-banner-cta-button-label",
           )}
+          <ArrowIcon alt="" />
         </TelemetryButton>
       </div>
     </section>
