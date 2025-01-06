@@ -25,7 +25,7 @@ export const View = (props: LandingPageProps) => {
       <main className={styles.wrapper}>
         <Hero {...props} />
         <CtaBanner {...props} />
-        <InfoBlock {...props} />
+        <InfoBlock l10n={props.l10n} />
       </main>
     </>
   );
