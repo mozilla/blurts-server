@@ -16,8 +16,13 @@
   }
 
   section {
+    align-items: center;
+    border-radius: $border-radius-xl;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    gap: $layout-sm;
+    width: 100%;
   }
 
   h1 {

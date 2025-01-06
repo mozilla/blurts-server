@@ -9,6 +9,7 @@ import styles from "./LandingViewRedesign.module.scss";
 import { Hero } from "./sections/Hero";
 import { CtaBanner } from "./sections/CtaBanner";
 import { InfoBlock } from "./sections/InfoBlock";
+import { LogoBlock } from "./sections/LogoBlock";
 
 export type LandingPageProps = {
   countryCode: string;
@@ -26,6 +27,7 @@ export const View = (props: LandingPageProps) => {
         <Hero {...props} />
         <CtaBanner {...props} />
         <InfoBlock l10n={props.l10n} />
+        <LogoBlock l10n={props.l10n} />
       </main>
     </>
   );

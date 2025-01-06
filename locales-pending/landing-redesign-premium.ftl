@@ -44,3 +44,8 @@ landing-redesign-premium-info-block-two-description = { -brand-monitor-plus } au
 landing-redesign-premium-info-block-three-label = Stay informed
 landing-redesign-premium-info-block-three-title = Act fast with timely notifications
 landing-redesign-premium-info-block-three-description = With { -brand-monitor }, you will be notified when your data is found in data breaches or data brokers, allowing you to take action such as securing accounts, updating passwords, or requesting data removal, reducing the risk of privacy threats.
+
+### Logo block
+
+landing-redesign-premium-logo-block-title = Trusted by 10 million people worldwide
+landing-redesign-premium-logo-block-description = Since 2018, we’ve helped people in 237 countries protect their data when it has been exposed.

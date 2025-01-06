@@ -16,15 +16,15 @@ type InfoRowData = {
   label: string;
   title: string;
   description: string;
-  image: string;
+  imageSrc: string;
 };
 
 const InfoRow = ({ key, data }: { key: string; data: InfoRowData }) => {
-  const { label, title, description, image } = data;
+  const { label, title, description, imageSrc } = data;
   return (
     <div key={key} className={styles.infoRow}>
       <div className={styles.infoImageWrapper}>
-        <Image src={image} alt="" />
+        <Image src={imageSrc} alt="" />
       </div>
       <div className={styles.infoText}>
         <span className={styles.infoLabel}>{label}</span>
@@ -43,7 +43,7 @@ export const InfoBlock = ({ l10n }: { l10n: ExtendedReactLocalization }) => {
       description: l10n.getString(
         "landing-redesign-premium-info-block-one-description",
       ),
-      image: PhoneMockup,
+      imageSrc: PhoneMockup,
     },
     {
       label: l10n.getString("landing-redesign-premium-info-block-two-label"),
@@ -51,7 +51,7 @@ export const InfoBlock = ({ l10n }: { l10n: ExtendedReactLocalization }) => {
       description: l10n.getString(
         "landing-redesign-premium-info-block-two-description",
       ),
-      image: LaptopMockup,
+      imageSrc: LaptopMockup,
     },
     {
       label: l10n.getString("landing-redesign-premium-info-block-three-label"),
@@ -59,7 +59,7 @@ export const InfoBlock = ({ l10n }: { l10n: ExtendedReactLocalization }) => {
       description: l10n.getString(
         "landing-redesign-premium-info-block-three-description",
       ),
-      image: TabletMockup,
+      imageSrc: TabletMockup,
     },
   ];
 
