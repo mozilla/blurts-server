@@ -3,6 +3,7 @@
 .wrapper {
   display: flex;
   flex-direction: column;
+  gap: $layout-md;
   height: 100%;
   padding: 0 $layout-2xs;
 
@@ -17,6 +18,22 @@
   section {
     display: flex;
     justify-content: center;
-    padding: $layout-sm;
+  }
+
+  h1 {
+    font: $text-title-sm;
+  }
+
+  h2,
+  h3 {
+    font: $text-title-xs;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-inter);
+    font-weight: 400;
+    line-height: 1.25em;
   }
 }

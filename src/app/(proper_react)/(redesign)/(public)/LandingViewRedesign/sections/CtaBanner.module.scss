@@ -6,12 +6,17 @@
   flex-direction: column;
   gap: $spacing-lg;
   max-width: $content-lg;
+  padding: 0 $layout-sm;
   text-align: center;
 
   &Header {
     display: flex;
     flex-direction: column;
     gap: $spacing-sm;
+
+    h2 {
+      font-weight: 600;
+    }
 
     strong {
       color: $color-purple-70;

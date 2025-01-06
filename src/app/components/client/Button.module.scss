@@ -1,13 +1,15 @@
 @import "../../tokens";
 
 .button {
+  align-items: center;
   font: $text-body-md;
   font-weight: 600;
   border: 0;
   padding: $spacing-md $spacing-lg;
   border-radius: $border-radius-md;
   cursor: pointer;
-  display: inline-block;
+  display: inline-flex;
+  gap: $spacing-sm;
   line-height: 1;
   text-align: center;
   text-decoration: none;

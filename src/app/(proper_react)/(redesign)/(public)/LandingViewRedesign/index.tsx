@@ -8,6 +8,7 @@ import { AccountDeletionNotification } from "../AccountDeletionNotification";
 import styles from "./LandingViewRedesign.module.scss";
 import { Hero } from "./sections/Hero";
 import { CtaBanner } from "./sections/CtaBanner";
+import { InfoBlock } from "./sections/InfoBlock";
 
 export type LandingPageProps = {
   countryCode: string;
@@ -24,6 +25,7 @@ export const View = (props: LandingPageProps) => {
       <main className={styles.wrapper}>
         <Hero {...props} />
         <CtaBanner {...props} />
+        <InfoBlock {...props} />
       </main>
     </>
   );
