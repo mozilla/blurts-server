@@ -93,6 +93,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
     scanInProgress,
     onShowFixed,
   };
+  console.log("dashboardtopbannercontent", contentProps.relevantGuidedStep);
   const userDashboardState = getUserDashboardState(contentProps);
 
   function getDashboardBannerContent({

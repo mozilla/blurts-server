@@ -34,6 +34,8 @@ export const brokerOptions = {
   resolved: "All scan results resolved",
   "scan-in-progress": "Scan is in progress",
   "manually-resolved": "Manually resolved",
+  "removal-under-maintenance":
+    "Scans have removal under maintenance broker status",
 };
 export const breachOptions = {
   empty: "No data breaches",

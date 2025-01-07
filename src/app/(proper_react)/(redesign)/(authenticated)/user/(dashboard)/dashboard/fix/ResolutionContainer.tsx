@@ -40,6 +40,7 @@ export const ResolutionContainer = (props: ResolutionContainerProps) => {
   const resolutionSummary = getDashboardSummary(
     props.data.latestScanData?.results ?? [],
     props.data.subscriberBreaches,
+    [],
   );
 
   return (

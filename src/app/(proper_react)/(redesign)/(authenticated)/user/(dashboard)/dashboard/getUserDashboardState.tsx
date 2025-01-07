@@ -62,6 +62,9 @@ export const getUserDashboardState = (
 ): UserDashboardState => {
   const { relevantGuidedStep } = contentProps;
 
+  // investigating why this is returning the wrong step id
+  console.log(relevantGuidedStep.id);
+
   if (
     /**
      * - Non-eligible Premium user

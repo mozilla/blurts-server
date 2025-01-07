@@ -73,6 +73,7 @@ export const RedesignedBreachAlertEmailUsFreeNoScanStory: Story = {
     dataSummary: getDashboardSummary(
       [],
       Array.from({ length: 5 }, () => createRandomBreach()),
+      [],
     ),
   },
 };
@@ -86,6 +87,7 @@ export const RedesignedBreachAlertEmailUsFreeWithScanStory: Story = {
     dataSummary: getDashboardSummary(
       Array.from({ length: 5 }, () => createRandomScanResult()),
       Array.from({ length: 5 }, () => createRandomBreach()),
+      [],
     ),
     subscriber: {
       onerep_profile_id: 1,
@@ -123,6 +125,7 @@ export const RedesignedBreachAlertEmailUsPlusWithScanStory: Story = {
     dataSummary: getDashboardSummary(
       Array.from({ length: 5 }, () => createRandomScanResult()),
       Array.from({ length: 5 }, () => createRandomBreach()),
+      [],
     ),
   },
 };

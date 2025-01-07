@@ -198,6 +198,7 @@ export const View = (props: Props) => {
     const removalTimeEstimate = isScanResult(exposure)
       ? props.removalTimeEstimates.find(({ d }) => d === exposure.data_broker)
       : undefined;
+
     return (
       <li key={exposureCardKey} className={styles.exposureListItem}>
         <ExposureCard

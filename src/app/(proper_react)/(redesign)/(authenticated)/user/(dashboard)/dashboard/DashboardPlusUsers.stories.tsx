@@ -121,6 +121,7 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
     }),
     createRandomScanResult({ status: "removed", manually_resolved: true }),
   ];
+
   let scanCount = 0;
 
   if (props.countryCode === "us") {
@@ -413,6 +414,18 @@ export const DashboardUsPremiumScanInProgressResolvedBreaches: Story = {
     brokers: "scan-in-progress",
   },
 };
+
+export const DashboardUsPremiumScanInProgressWithRemovalUnderMaintenanceStatus: Story =
+  {
+    name: "US user, with Premium, scan in progress, with scans in removal under maintenance status",
+    args: {
+      countryCode: "us",
+      premium: true,
+      breaches: "resolved",
+      brokers: "removal-under-maintenance",
+      enabledFeatureFlags: ["EnableRemovalUnderMaintenanceStep"],
+    },
+  };
 
 export const DashboardInvalidPremiumUserNoScanResolvedBreaches: Story = {
   name: "Invalid state: US user, with Premium, with no scan, with resolved breaches",
