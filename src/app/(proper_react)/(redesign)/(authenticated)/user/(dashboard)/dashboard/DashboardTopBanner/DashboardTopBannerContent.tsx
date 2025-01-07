@@ -95,6 +95,8 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
   };
   console.log("dashboardtopbannercontent", contentProps.relevantGuidedStep);
   const userDashboardState = getUserDashboardState(contentProps);
+  // investigating why this is returning the wrong step id
+  console.log(userDashboardState);
 
   function getDashboardBannerContent({
     userDashboardState,

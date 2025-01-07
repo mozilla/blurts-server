@@ -63,6 +63,7 @@ export const getUserDashboardState = (
   const { relevantGuidedStep } = contentProps;
 
   // investigating why this is returning the wrong step id
+
   console.log(relevantGuidedStep.id);
 
   if (
