@@ -150,6 +150,7 @@ export async function triggerMonthlyActivityFree(emailAddress: string) {
       fxaUid: session.user.subscriber?.fxa_uid,
       countryCode: getCountryCode(headers()),
     }),
+    [],
   );
 
   const unsubscribeLink =
@@ -189,6 +190,7 @@ export async function triggerMonthlyActivityPlus(emailAddress: string) {
       fxaUid: session.user.subscriber?.fxa_uid,
       countryCode: getCountryCode(headers()),
     }),
+    [],
   );
 
   await send(
@@ -241,7 +243,7 @@ export async function triggerBreachAlert(
           l10n={l10n}
           dataSummary={
             isEligibleForPremium(assumedCountryCode) && !hasPremium(subscriber)
-              ? getDashboardSummary(scanData.results, allSubscriberBreaches)
+              ? getDashboardSummary(scanData.results, allSubscriberBreaches, [])
               : undefined
           }
         />,

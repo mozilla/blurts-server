@@ -605,7 +605,7 @@ describe("getDashboardSummary", () => {
   };
 
   it("gets breaches only summary", () => {
-    const summary = getDashboardSummary([], unresolvedBreaches);
+    const summary = getDashboardSummary([], unresolvedBreaches, []);
     noNegativeCounts(summary);
     expect(summary.dataBreachTotalNum).toBe(3);
     expect(summary.dataBreachFixedDataPointsNum).toBe(0);
@@ -619,7 +619,7 @@ describe("getDashboardSummary", () => {
   });
 
   it("gets breaches only all fixed summary", () => {
-    const summary = getDashboardSummary([], allResolvedBreaches);
+    const summary = getDashboardSummary([], allResolvedBreaches, []);
     noNegativeCounts(summary);
     expect(summary.dataBreachTotalNum).toBe(3);
     expect(summary.dataBrokerTotalNum).toBe(0);
@@ -636,7 +636,7 @@ describe("getDashboardSummary", () => {
   });
 
   it("gets scanned results only summary", () => {
-    const summary = getDashboardSummary(unresolvedScannedResults, []);
+    const summary = getDashboardSummary(unresolvedScannedResults, [], []);
     noNegativeCounts(summary);
     expect(summary.dataBreachTotalNum).toBe(0);
     expect(summary.dataBreachTotalDataPointsNum).toBe(0);
@@ -661,7 +661,7 @@ describe("getDashboardSummary", () => {
   });
 
   it("gets scanned results only all fixed summary", () => {
-    const summary = getDashboardSummary(allResolvedScannedResults, []);
+    const summary = getDashboardSummary(allResolvedScannedResults, [], []);
     noNegativeCounts(summary);
     expect(summary.dataBreachTotalNum).toBe(0);
     expect(summary.dataBreachTotalDataPointsNum).toBe(0);
@@ -679,6 +679,7 @@ describe("getDashboardSummary", () => {
   it("gets scanned results in-progress and fixed summary", () => {
     const summary = getDashboardSummary(
       [...allResolvedScannedResults, ...inProgressScannedResults],
+      [],
       [],
     );
     noNegativeCounts(summary);
@@ -702,7 +703,7 @@ describe("getDashboardSummary", () => {
   });
 
   it("gets scanned results manually removed summary", () => {
-    const summary = getDashboardSummary(manuallyResolvedScannedResults, []);
+    const summary = getDashboardSummary(manuallyResolvedScannedResults, [], []);
     noNegativeCounts(summary);
     expect(summary.dataBreachTotalNum).toBe(0);
     expect(summary.dataBreachTotalDataPointsNum).toBe(0);
@@ -720,6 +721,7 @@ describe("getDashboardSummary", () => {
     const summary = getDashboardSummary(
       unresolvedScannedResults,
       unresolvedBreaches,
+      [],
     );
     noNegativeCounts(summary);
     expect(summary.dataBreachTotalNum).toBe(3);
@@ -738,6 +740,7 @@ describe("getDashboardSummary", () => {
     const summary = getDashboardSummary(
       allResolvedScannedResults,
       allResolvedBreaches,
+      [],
     );
     noNegativeCounts(summary);
     expect(summary.dataBreachTotalNum).toBe(3);
@@ -759,7 +762,7 @@ describe("getDashboardSummary", () => {
       ...unresolvedScannedResults,
       ...manuallyResolvedScannedResults,
     ];
-    const summary = getDashboardSummary(combinedScannedResults, []);
+    const summary = getDashboardSummary(combinedScannedResults, [], []);
     noNegativeCounts(summary);
     expect(summary.dataBrokerTotalNum).toBe(2);
     expect(summary.dataBrokerTotalDataPointsNum).toBe(24);
@@ -790,7 +793,7 @@ describe("getDashboardSummary", () => {
         "other-data-class": 0,
       },
     ];
-    const summary = getDashboardSummary(combinedScannedResults, []);
+    const summary = getDashboardSummary(combinedScannedResults, [], []);
     noNegativeCounts(summary);
     expect(summary.fixedSanitizedDataPoints).toEqual(
       expectedSanitizedExposures,
@@ -802,7 +805,7 @@ describe("getDashboardSummary", () => {
       ...unresolvedScannedResults,
       ...manuallyResolvedScannedResults,
     ];
-    const summary = getDashboardSummary(combinedScannedResults, []);
+    const summary = getDashboardSummary(combinedScannedResults, [], []);
     noNegativeCounts(summary);
     const getSanitizedDataPoint = (
       dataPoint: (typeof dataClassKeyMap)[keyof typeof dataClassKeyMap],
@@ -1215,7 +1218,7 @@ describe("getDashboardSummary", () => {
           ...getBreachesForCounts(expectedSummary.fixedDataPoints, "resolved"),
         ];
 
-        const resultingSummary = getDashboardSummary(scanResults, breaches);
+        const resultingSummary = getDashboardSummary(scanResults, breaches, []);
 
         // This function is included in tests below:
         // eslint-disable-next-line jest/no-standalone-expect
@@ -1295,7 +1298,7 @@ describe("getDashboardSummary", () => {
       const scanResult = getScanResult("manually-resolved", "familyMembers", 1);
       const emptySummary = getEmptyDashboardSummary();
 
-      expect(getDashboardSummary([scanResult], [])).toMatchObject({
+      expect(getDashboardSummary([scanResult], [], [])).toMatchObject({
         ...emptySummary,
         allDataPoints: {
           ...emptySummary.allDataPoints,
