@@ -5,14 +5,14 @@
   flex-direction: column;
   gap: $layout-md;
   height: 100%;
-  padding: 0 $layout-2xs;
+  padding: 0 $layout-2xs $layout-sm;
 
   @media screen and (min-width: $screen-sm) {
-    padding: 0 $layout-sm;
+    padding: 0 $layout-sm $layout-sm;
   }
 
   @media screen and (min-width: $screen-lg) {
-    padding: 0 $layout-md;
+    padding: 0 $layout-md $layout-sm;
   }
 
   section {

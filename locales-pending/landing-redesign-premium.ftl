@@ -50,6 +50,18 @@ landing-redesign-premium-info-block-three-description = With { -brand-monitor },
 landing-redesign-premium-logo-block-title = Trusted by 10 million people worldwide
 landing-redesign-premium-logo-block-description = Since 2018, we’ve helped people in 237 countries protect their data when it has been exposed.
 
+### Pricing plans
+
+landing-redesign-pricing-plans-section-title = Choose your level of protection
+landing-redesign-pricing-plans-section-description = Your privacy is our priority, so data breach monitoring is always free. For more robust protection, { -brand-monitor-plus } includes continuous automatic removal of your personal information.
+
+### FAQ (Frequently Asked Questions)
+
+landing-redesign-faq-section-title = Question and answer
+landing-redesign-faq-expand-button-alt = Open
+landing-redesign-faq-close-button-alt = Close
+landing-redesign-faq-sumo-link-label = Read all FAQs
+
 ### Banner CTA with input
 
 landing-redesign-premium-cta-input-banner-header = <b>Take back control</b> of your data

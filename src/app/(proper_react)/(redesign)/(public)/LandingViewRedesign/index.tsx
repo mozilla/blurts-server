@@ -10,7 +10,9 @@ import { Hero } from "./sections/Hero";
 import { CtaBanner } from "./sections/CtaBanner";
 import { InfoBlock } from "./sections/InfoBlock";
 import { LogoBlock } from "./sections/LogoBlock";
+import { Faq } from "./sections/Faq";
 import { CtaInputBanner } from "./sections/CtaInputBanner";
+import { PricingPlans } from "./sections/PricingPlans";
 
 export type LandingPageProps = {
   countryCode: string;
@@ -28,7 +30,9 @@ export const View = (props: LandingPageProps) => {
         <Hero {...props} />
         <CtaBanner {...props} />
         <InfoBlock l10n={props.l10n} />
+        <PricingPlans {...props} />
         <LogoBlock l10n={props.l10n} />
+        <Faq />
         <CtaInputBanner {...props} />
       </main>
     </>
