@@ -101,7 +101,7 @@ features:
         value: { "enabled": true }
       - channel: production
         value: { "enabled": true }
-  landing-page-redesign-plus-users-experiment:
+  landing-page-redesign-plus-eligible-experiment:
     description: Landing page redesign
     variables:
       enabled:
