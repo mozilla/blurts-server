@@ -36,7 +36,7 @@ export const PetitionBanner = (props: {
   const { dismiss } = props.localDismissal;
   return (
     <div
-      ref={refViewTelemetry as RefObject<HTMLDivElement>}
+      ref={refViewTelemetry as RefObject<HTMLDivElement | null>}
       className={styles.banner}
     >
       <div className={styles.content}>

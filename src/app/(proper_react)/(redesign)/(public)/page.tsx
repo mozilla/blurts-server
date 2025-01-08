@@ -11,7 +11,10 @@ import {
   monthlySubscribersQuota,
 } from "../../../functions/server/onerep";
 import { isEligibleForPremium } from "../../../functions/universal/premium";
-import { getL10n } from "../../../functions/l10n/serverComponents";
+import {
+  getAcceptLangHeaderInServerComponents,
+  getL10n,
+} from "../../../functions/l10n/serverComponents";
 import { View } from "./LandingView";
 import {
   CONST_DAY_MILLISECONDS,
@@ -23,24 +26,26 @@ import { getLocale } from "../../../functions/universal/getLocale";
 import { AccountsMetricsFlowProvider } from "../../../../contextProviders/accounts-metrics-flow";
 
 type Props = {
-  searchParams: {
+  searchParams: Promise<{
     nimbus_preview?: string;
-  };
+  }>;
 };
 
-export default async function Page({ searchParams }: Props) {
+export default async function Page(props: Props) {
+  const searchParams = await props.searchParams;
   const session = await getServerSession();
   if (typeof session?.user.subscriber?.fxa_uid === "string") {
     return redirect("/user/dashboard");
   }
-  const countryCode = getCountryCode(headers());
+  const l10n = getL10n(await getAcceptLangHeaderInServerComponents());
+  const countryCode = getCountryCode(await headers());
   const eligibleForPremium = isEligibleForPremium(countryCode);
 
-  const experimentationId = getExperimentationId(session?.user ?? null);
+  const experimentationId = await getExperimentationId(session?.user ?? null);
   const experimentData = await getExperiments({
     experimentationId,
     countryCode,
-    locale: getLocale(getL10n()),
+    locale: getLocale(l10n),
     previewMode: searchParams.nimbus_preview === "true",
   });
 
@@ -70,7 +75,7 @@ export default async function Page({ searchParams }: Props) {
     >
       <View
         eligibleForPremium={eligibleForPremium}
-        l10n={getL10n()}
+        l10n={l10n}
         countryCode={countryCode}
         scanLimitReached={scanLimitReached}
         experimentData={experimentData["Features"]}

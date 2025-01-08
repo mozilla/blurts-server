@@ -5,6 +5,7 @@
 import { ReactNode } from "react";
 import { getServerSession } from "../../../../../functions/server/getServerSession";
 import {
+  getAcceptLangHeaderInServerComponents,
   getL10n,
   getL10nBundles,
 } from "../../../../../functions/l10n/serverComponents";
@@ -15,17 +16,19 @@ import { getCountryCode } from "../../../../../functions/server/getCountryCode";
 import { getEnabledFeatureFlags } from "../../../../../../db/tables/featureFlags";
 
 export default async function Layout({ children }: { children: ReactNode }) {
-  const l10nBundles = getL10nBundles();
+  const l10nBundles = getL10nBundles(
+    await getAcceptLangHeaderInServerComponents(),
+  );
   const l10n = getL10n(l10nBundles);
   const session = await getServerSession();
-  const headersList = headers();
+  const headersList = await headers();
   const countryCode = getCountryCode(headersList);
 
   if (!session) {
     return <AutoSignIn />;
   }
 
-  const nonce = headers().get("x-nonce") ?? "";
+  const nonce = (await headers()).get("x-nonce") ?? "";
   const enabledFeatureFlags = await getEnabledFeatureFlags({
     email: session.user.email,
   });

@@ -20,14 +20,15 @@ import { hasPremium } from "../../../../../../../../../functions/universal/user"
 import { getEnabledFeatureFlags } from "../../../../../../../../../../db/tables/featureFlags";
 
 interface SecurityRecommendationsProps {
-  params: {
+  params: Promise<{
     type: HighRiskBreachTypes;
-  };
+  }>;
 }
 
-export default async function SecurityRecommendations({
-  params,
-}: SecurityRecommendationsProps) {
+export default async function SecurityRecommendations(
+  props: SecurityRecommendationsProps,
+) {
+  const params = await props.params;
   const session = await getServerSession();
   if (!session?.user?.subscriber?.id) {
     return redirect("/");
@@ -35,7 +36,7 @@ export default async function SecurityRecommendations({
   const enabledFeatureFlags = await getEnabledFeatureFlags({
     email: session.user.email,
   });
-  const countryCode = getCountryCode(headers());
+  const countryCode = getCountryCode(await headers());
   const breaches = await getSubscriberBreaches({
     fxaUid: session.user.subscriber.fxa_uid,
     countryCode,

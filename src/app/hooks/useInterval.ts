@@ -9,7 +9,8 @@ import { MutableRefObject, useEffect, useRef } from "react";
 // @see https://overreacted.io/making-setinterval-declarative-with-react-hooks/
 /* c8 ignore start */
 export function useInterval(callback: () => void, delay: number) {
-  const savedCallback: MutableRefObject<(() => void) | undefined> = useRef();
+  const savedCallback: MutableRefObject<(() => void) | undefined> =
+    useRef(undefined);
 
   // Remember the latest callback.
   useEffect(() => {

@@ -71,7 +71,7 @@ export const CsatSurveyBanner = ({
 
   return (
     <aside
-      ref={refViewTelemetry as RefObject<HTMLElement>}
+      ref={refViewTelemetry as RefObject<HTMLElement | null>}
       className={styles.wrapper}
     >
       {typeof answer !== "undefined" && hasFollowUpSurveyOptions ? (

@@ -5,16 +5,23 @@
 import "../app/functions/server/notInClientComponent";
 import mjml2html from "mjml";
 import { ReactNode } from "react";
-// The `.node` works around the following error:
-//
-//    Error:
-//     × You're importing a component that imports react-dom/server. To fix it, render or return the content directly as a Server Component instead for perf and security.
-//     │ Learn more: https://nextjs.org/docs/getting-started/react-essentials
-//
-// See https://github.com/vercel/next.js/issues/43810#issuecomment-1687002502
-import { renderToStaticMarkup } from "react-dom/server.node";
 
-export function renderEmail(emailTemplate: ReactNode): string {
+export async function renderEmail(emailTemplate: ReactNode): Promise<string> {
+  // Importing react-dom/server dynamically here is a workaround for the following error:
+  //
+  //    Error: react-dom/server is not supported in React Server Components.
+  //
+  // It's a bit of a pain though, as it's the only reason this needs to be an
+  // async function.
+  // https://github.com/vercel/next.js/issues/43810#issuecomment-2437931415
+  //
+  // Also, react-dom/server.edge is apparently needed instead of react-dom/server
+  // to avoid this error:
+  //
+  //     Uncaught ReferenceError: MessageChannel is not defined
+  //
+  // See https://github.com/facebook/react/issues/31827#issuecomment-2563094822
+  const { renderToStaticMarkup } = await import("react-dom/server.edge");
   return mjml2html(renderToStaticMarkup(emailTemplate), {
     validationLevel: "strict",
     beautify: false,

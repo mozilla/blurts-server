@@ -4,6 +4,6 @@
 
 // This is needed because `renderEmail.ts` needs to import from server.node
 // directly — see the comment in that file.
-declare module "react-dom/server.node" {
+declare module "react-dom/server.edge" {
   export * from "react-dom/server";
 }

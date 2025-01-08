@@ -133,7 +133,7 @@ async function sendFirstDataBrokerRemovalFixedActivityEmail(
   await sendEmail(
     sanitizedSubscriber.primary_email,
     subject,
-    renderEmail(
+    await renderEmail(
       <FirstDataBrokerRemovalFixed
         data={{
           dataBrokerName: scanResult.data_broker,

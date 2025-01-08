@@ -12,7 +12,10 @@ import { StepDeterminationData } from "../../../../../../../../../functions/serv
 import { getCountryCode } from "../../../../../../../../../functions/server/getCountryCode";
 import { getSubscriberBreaches } from "../../../../../../../../../functions/server/getSubscriberBreaches";
 import { getSubscriberEmails } from "../../../../../../../../../functions/server/getSubscriberEmails";
-import { getL10n } from "../../../../../../../../../functions/l10n/serverComponents";
+import {
+  getAcceptLangHeaderInServerComponents,
+  getL10n,
+} from "../../../../../../../../../functions/l10n/serverComponents";
 import { hasPremium } from "../../../../../../../../../functions/universal/user";
 import { getEnabledFeatureFlags } from "../../../../../../../../../../db/tables/featureFlags";
 
@@ -23,7 +26,7 @@ export default async function ViewDataBrokers() {
     redirect("/user/dashboard");
   }
 
-  const countryCode = getCountryCode(headers());
+  const countryCode = getCountryCode(await headers());
   const profileId = await getOnerepProfileId(session.user.subscriber.id);
   const latestScan = await getScanResultsWithBroker(
     profileId,
@@ -49,7 +52,7 @@ export default async function ViewDataBrokers() {
     <ViewDataBrokersView
       data={data}
       subscriberEmails={subscriberEmails}
-      l10n={getL10n()}
+      l10n={getL10n(await getAcceptLangHeaderInServerComponents())}
       enabledFeatureFlags={enabledFeatureFlags}
     />
   );

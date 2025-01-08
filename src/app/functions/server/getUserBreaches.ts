@@ -66,7 +66,7 @@ export async function getUserBreaches({
   const emailTotalCount =
     emailVerifiedCount + (breachesData.unverifiedEmails?.length ?? 0);
 
-  const nextCookies = cookies();
+  const nextCookies = await cookies();
   const emailSelectedCookie = nextCookies.get("monitor.selected-email-index");
   const emailSelectIndex =
     typeof emailSelectedCookie !== "undefined"

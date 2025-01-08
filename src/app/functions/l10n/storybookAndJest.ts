@@ -6,7 +6,7 @@ import { MarkupParser, ReactLocalization } from "@fluent/react";
 import type { readdirSync, readFileSync } from "node:fs";
 import type { resolve } from "node:path";
 import { createGetL10n, createGetL10nBundles } from ".";
-import type { GetL10n, GetL10nBundles } from ".";
+import type { GetL10nBundles } from "./index";
 
 // Code in this file is only used in tests and Storybook, not in production:
 /* c8 ignore start */
@@ -142,7 +142,7 @@ const parseMarkup: MarkupParser = (str) => {
   ];
 };
 
-export const getL10n: GetL10n = createGetL10n({
+export const getL10n = createGetL10n({
   getL10nBundles: getL10nBundles,
   ReactLocalization: ReactLocalization,
   parseMarkup:
