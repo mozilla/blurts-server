@@ -31,7 +31,7 @@ export default async function Layout(props: { children: ReactNode }) {
       l10n={getL10n()}
       countryCode={countryCode}
       enabledFeatureFlags={enabledFeatureFlags}
-      experimentData={experimentData}
+      experimentData={experimentData["Features"]}
     >
       {props.children}
     </PublicShell>
