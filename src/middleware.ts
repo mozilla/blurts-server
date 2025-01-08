@@ -29,6 +29,14 @@ export function middleware(request: NextRequest) {
     existingExperimentationId?.value ?? `guest-${crypto.randomUUID()}`;
   requestHeaders.set("x-experimentation-id", experimentationId);
 
+  // Check for Nimbus preview mode. Note that this requires a full page reload
+  // to activate: https://nextjs.org/docs/app/api-reference/file-conventions/layout#caveats
+  const nimbusPreviewMode = request.nextUrl.searchParams.get("nimbus_preview");
+  requestHeaders.set(
+    "x-nimbus-preview-mode",
+    nimbusPreviewMode === "true" ? "true" : "false",
+  );
+
   const response = NextResponse.next({
     request: {
       headers: requestHeaders,
