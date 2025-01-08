@@ -38,26 +38,26 @@ const InfoRow = ({ key, data }: { key: string; data: InfoRowData }) => {
 export const InfoBlock = ({ l10n }: { l10n: ExtendedReactLocalization }) => {
   const infoRowData: InfoRowData[] = [
     {
-      label: l10n.getString("landing-redesign-premium-info-block-one-label"),
-      title: l10n.getString("landing-redesign-premium-info-block-one-title"),
+      label: l10n.getString("landing-redesign-info-block-one-label"),
+      title: l10n.getString("landing-redesign-info-block-one-title"),
       description: l10n.getString(
-        "landing-redesign-premium-info-block-one-description",
+        "landing-redesign-info-block-one-description",
       ),
       imageSrc: PhoneMockup,
     },
     {
-      label: l10n.getString("landing-redesign-premium-info-block-two-label"),
-      title: l10n.getString("landing-redesign-premium-info-block-two-title"),
+      label: l10n.getString("landing-redesign-info-block-two-label"),
+      title: l10n.getString("landing-redesign-info-block-two-title"),
       description: l10n.getString(
-        "landing-redesign-premium-info-block-two-description",
+        "landing-redesign-info-block-two-description",
       ),
       imageSrc: LaptopMockup,
     },
     {
-      label: l10n.getString("landing-redesign-premium-info-block-three-label"),
-      title: l10n.getString("landing-redesign-premium-info-block-three-title"),
+      label: l10n.getString("landing-redesign-info-block-three-label"),
+      title: l10n.getString("landing-redesign-info-block-three-title"),
       description: l10n.getString(
-        "landing-redesign-premium-info-block-three-description",
+        "landing-redesign-info-block-three-description",
       ),
       imageSrc: TabletMockup,
     },
@@ -86,7 +86,7 @@ export const InfoBlock = ({ l10n }: { l10n: ExtendedReactLocalization }) => {
             },
           }}
         >
-          {l10n.getString("landing-redesign-premium-banner-cta-button-label")}
+          {l10n.getString("landing-redesign-banner-cta-button-label")}
           <ArrowIcon alt="" />
         </TelemetryButton>
       </div>

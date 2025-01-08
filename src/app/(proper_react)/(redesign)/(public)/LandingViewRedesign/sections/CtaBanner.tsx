@@ -13,18 +13,11 @@ export const CtaBanner = (props: LandingPageProps) => {
       <div className={styles.banner}>
         <div className={styles.bannerHeader}>
           <h2>
-            {props.l10n.getFragment(
-              "landing-redesign-premium-banner-cta-header",
-              {
-                elems: { b: <strong /> },
-              },
-            )}
+            {props.l10n.getFragment("landing-redesign-banner-cta-header", {
+              elems: { b: <strong /> },
+            })}
           </h2>
-          <p>
-            {props.l10n.getString(
-              "landing-redesign-premium-banner-cta-subheader",
-            )}
-          </p>
+          <p>{props.l10n.getString("landing-redesign-banner-cta-subheader")}</p>
         </div>
         <TelemetryButton
           className={styles.ctaButton}
@@ -41,9 +34,7 @@ export const CtaBanner = (props: LandingPageProps) => {
             },
           }}
         >
-          {props.l10n.getString(
-            "landing-redesign-premium-banner-cta-button-label",
-          )}
+          {props.l10n.getString("landing-redesign-banner-cta-button-label")}
           <ArrowIcon alt="" />
         </TelemetryButton>
       </div>

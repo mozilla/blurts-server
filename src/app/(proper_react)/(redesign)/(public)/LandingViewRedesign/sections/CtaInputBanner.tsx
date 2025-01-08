@@ -15,7 +15,7 @@ export const CtaInputBanner = (props: LandingPageProps) => {
           <div className={styles.bannerHeader}>
             <h2>
               {props.l10n.getFragment(
-                "landing-redesign-premium-cta-input-banner-header",
+                "landing-redesign-cta-input-banner-header",
                 {
                   elems: { b: <strong /> },
                 },
@@ -23,7 +23,7 @@ export const CtaInputBanner = (props: LandingPageProps) => {
             </h2>
             <p>
               {props.l10n.getString(
-                "landing-redesign-premium-cta-input-banner-subheader",
+                "landing-redesign-cta-input-banner-subheader",
               )}
             </p>
           </div>
@@ -40,10 +40,10 @@ export const CtaInputBanner = (props: LandingPageProps) => {
               }}
               experimentData={props.experimentData}
               placeholder={props.l10n.getString(
-                "landing-redesign-premium-hero-cta-placeholder",
+                "landing-redesign-hero-cta-placeholder",
               )}
               buttonLabel={props.l10n.getString(
-                "landing-redesign-premium-hero-cta-button-label",
+                "landing-redesign-hero-cta-button-label",
               )}
               hasFloatingLabel
             />

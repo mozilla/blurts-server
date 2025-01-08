@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { useId } from "react";
-import { PricingPlansTable } from "./PricingPlansTable";
+import { PricingPlanList } from "./PricingPlanList";
 import type { LandingPageProps } from "..";
 import styles from "./PricingPlans.module.scss";
 import {
@@ -29,7 +29,7 @@ export const PricingPlans = (props: LandingPageProps) => {
             )}
           </p>
         </div>
-        <PricingPlansTable
+        <PricingPlanList
           aria-labelledby={headingId}
           premiumSubscriptionUrl={{
             monthly: getPremiumSubscriptionUrl({ type: "monthly" }),

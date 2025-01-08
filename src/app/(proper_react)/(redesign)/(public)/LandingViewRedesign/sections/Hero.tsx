@@ -18,11 +18,11 @@ export const Hero = (props: LandingPageProps) => {
       <div className={styles.heroContent}>
         <div className={styles.heroTitle}>
           <h1>
-            {props.l10n.getFragment("landing-redesign-premium-hero-title", {
+            {props.l10n.getFragment("landing-redesign-hero-title", {
               elems: { b: <b /> },
             })}
           </h1>
-          <p>{props.l10n.getString("landing-redesign-premium-hero-lead")}</p>
+          <p>{props.l10n.getString("landing-redesign-hero-lead")}</p>
         </div>
         <div className={styles.heroCta}>
           {props.eligibleForPremium && props.scanLimitReached ? (
@@ -38,10 +38,10 @@ export const Hero = (props: LandingPageProps) => {
               }}
               experimentData={props.experimentData}
               placeholder={props.l10n.getString(
-                "landing-redesign-premium-hero-cta-placeholder",
+                "landing-redesign-hero-cta-placeholder",
               )}
               buttonLabel={props.l10n.getString(
-                "landing-redesign-premium-hero-cta-button-label",
+                "landing-redesign-hero-cta-button-label",
               )}
               hasFloatingLabel
             />
@@ -53,12 +53,12 @@ export const Hero = (props: LandingPageProps) => {
               <ShieldIconBig alt="" />
               <dt>
                 {props.l10n.getString(
-                  "landing-redesign-premium-hero-list-item-title-one",
+                  "landing-redesign-hero-list-item-title-one",
                 )}
               </dt>
               <dd>
                 {props.l10n.getString(
-                  "landing-redesign-premium-hero-list-item-description-one",
+                  "landing-redesign-hero-list-item-description-one",
                 )}
               </dd>
             </span>
@@ -66,12 +66,12 @@ export const Hero = (props: LandingPageProps) => {
               <ClockIconBig alt="" />
               <dt>
                 {props.l10n.getString(
-                  "landing-redesign-premium-hero-list-item-title-two",
+                  "landing-redesign-hero-list-item-title-two",
                 )}
               </dt>
               <dd>
                 {props.l10n.getString(
-                  "landing-redesign-premium-hero-list-item-description-two",
+                  "landing-redesign-hero-list-item-description-two",
                 )}
               </dd>
             </span>
@@ -79,12 +79,12 @@ export const Hero = (props: LandingPageProps) => {
               <HeartIconBig alt="" />
               <dt>
                 {props.l10n.getString(
-                  "landing-redesign-premium-hero-list-item-title-three",
+                  "landing-redesign-hero-list-item-title-three",
                 )}
               </dt>
               <dd>
                 {props.l10n.getString(
-                  "landing-redesign-premium-hero-list-item-description-three",
+                  "landing-redesign-hero-list-item-description-three",
                 )}
               </dd>
             </span>

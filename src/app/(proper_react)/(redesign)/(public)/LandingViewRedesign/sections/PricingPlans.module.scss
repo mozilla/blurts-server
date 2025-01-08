@@ -6,16 +6,19 @@
   }
 }
 
-.content,
-.header {
+.header,
+.content {
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: $layout-sm;
   max-width: $content-lg;
 }
 
 .header {
-  gap: $spacing-sm;
+  gap: $layout-xs;
   text-align: center;
+}
+
+.content {
+  gap: $layout-lg;
 }
