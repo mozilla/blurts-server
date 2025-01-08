@@ -38,7 +38,7 @@ rec-bank-acc =
     收费。如有发现不明之处，请通知您的银行
 # Recommendation subhead
 rec-cc-subhead = 监控您的信用卡对账单
-rec-cc = 查探您的信用卡是否受到了奇怪的收费。如有发生，请考虑向卡签发机构申请新号码的信用卡。
+rec-cc = 检查您的信用卡是否存在陌生扣款。如有发生，请考虑向信用卡发卡机构申请新卡号卡片。
 # Recommendation subhead
 rec-email-mask-subhead = 使用马甲邮箱
 rec-email-cta = 试用 { -brand-relay }

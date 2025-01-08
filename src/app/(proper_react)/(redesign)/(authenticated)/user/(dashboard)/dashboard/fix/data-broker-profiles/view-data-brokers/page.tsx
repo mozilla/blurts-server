@@ -14,6 +14,7 @@ import { getSubscriberBreaches } from "../../../../../../../../../functions/serv
 import { getSubscriberEmails } from "../../../../../../../../../functions/server/getSubscriberEmails";
 import { getL10n } from "../../../../../../../../../functions/l10n/serverComponents";
 import { hasPremium } from "../../../../../../../../../functions/universal/user";
+import { getEnabledFeatureFlags } from "../../../../../../../../../../db/tables/featureFlags";
 
 export default async function ViewDataBrokers() {
   const session = await getServerSession();
@@ -28,6 +29,10 @@ export default async function ViewDataBrokers() {
     profileId,
     hasPremium(session.user),
   );
+
+  const enabledFeatureFlags = await getEnabledFeatureFlags({
+    email: session.user.email,
+  });
 
   const data: StepDeterminationData = {
     countryCode,
@@ -45,6 +50,7 @@ export default async function ViewDataBrokers() {
       data={data}
       subscriberEmails={subscriberEmails}
       l10n={getL10n()}
+      enabledFeatureFlags={enabledFeatureFlags}
     />
   );
 }

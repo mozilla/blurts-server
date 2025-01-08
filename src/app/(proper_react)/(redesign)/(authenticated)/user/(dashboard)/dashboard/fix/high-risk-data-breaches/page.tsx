@@ -13,12 +13,17 @@ import { getScanResultsWithBroker } from "../../../../../../../../../db/tables/o
 import { getCountryCode } from "../../../../../../../../functions/server/getCountryCode";
 import { isEligibleForPremium } from "../../../../../../../../functions/universal/premium";
 import { hasPremium } from "../../../../../../../../functions/universal/user";
+import { getEnabledFeatureFlags } from "../../../../../../../../../db/tables/featureFlags";
 
 export default async function HighRiskDataBreaches() {
   const session = await getServerSession();
   if (!session?.user?.subscriber?.id) {
     return redirect("/");
   }
+
+  const enabledFeatureFlags = await getEnabledFeatureFlags({
+    email: session.user.email,
+  });
 
   const countryCode = getCountryCode(headers());
   const breaches = await getSubscriberBreaches({
@@ -45,6 +50,7 @@ export default async function HighRiskDataBreaches() {
           latestScanData: scanData,
         }}
         isEligibleForPremium={isEligibleForPremium(countryCode)}
+        enabledFeatureFlags={enabledFeatureFlags}
       />
     </div>
   );

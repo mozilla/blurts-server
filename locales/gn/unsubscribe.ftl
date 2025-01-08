@@ -11,6 +11,7 @@ unsubscribe-cta = Eheja ñemboheraguapy
 # Success Unsubscription State
 
 unsubscribe-success-from-monthly-report-header = Nereñemboheraguapýi gueteri
+unsubscribe-success-from-monthly-report-body = Eñemboheraguapy térã embohekopyahujey erohoryvéva ñanduti veve ejapose vove { -brand-monitor } ñemoĩporãha guive.
 unsubscribe-success-cta = Ejuaju { -brand-monitor } ndive
 
 # Error warning
