@@ -1,8 +1,8 @@
-@import "../../tokens";
+@use "../../tokens";
 
 .link {
   align-items: center;
-  color: $color-blue-50;
+  color: tokens.$color-blue-50;
   display: inline-flex;
   gap: 0.25em;
 }

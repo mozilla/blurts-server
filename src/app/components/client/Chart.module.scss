@@ -1,12 +1,12 @@
-@import "../../tokens";
+@use "../../tokens";
 
 .chartContainer {
   text-align: center;
   display: flex;
-  gap: $spacing-md;
+  gap: tokens.$spacing-md;
   flex-direction: column;
 
-  @media screen and (min-width: $screen-lg) {
+  @media screen and (min-width: tokens.$screen-lg) {
     align-items: flex-end;
   }
 
@@ -14,12 +14,12 @@
     text-align: center;
     display: flex;
     align-items: center;
-    gap: $spacing-xs;
-    font: $text-body-xs;
+    gap: tokens.$spacing-xs;
+    font: tokens.$text-body-xs;
     font-style: italic;
 
     button {
-      @include question-mark-circle-btn;
+      @include tokens.question-mark-circle-btn;
     }
   }
 }
@@ -27,29 +27,29 @@
 .modalBodyContent {
   display: flex;
   flex-direction: column;
-  gap: $spacing-sm;
+  gap: tokens.$spacing-sm;
 
   .confirmButtonWrapper {
     align-self: center;
     display: flex;
     flex-direction: column;
-    min-width: $content-xs;
-    padding-block-start: $spacing-md;
+    min-width: tokens.$content-xs;
+    padding-block-start: tokens.$spacing-md;
   }
 }
 
 .gutter {
-  stroke: $color-white;
+  stroke: tokens.$color-white;
 }
 
 .chartAndLegendWrapper {
   display: flex;
   flex-direction: column;
-  gap: $spacing-md;
+  gap: tokens.$spacing-md;
 
-  @media screen and (min-width: $screen-lg) {
+  @media screen and (min-width: tokens.$screen-lg) {
     flex-direction: row;
-    gap: $spacing-xl;
+    gap: tokens.$spacing-xl;
   }
 
   .chart {
@@ -77,16 +77,16 @@
     align-self: center;
     flex-direction: column;
     display: flex;
-    gap: $spacing-sm;
+    gap: tokens.$spacing-sm;
 
     .prompt {
-      font: $text-body-xs;
+      font: tokens.$text-body-xs;
       display: flex;
       text-align: start;
       flex-direction: column;
-      gap: $spacing-xs;
-      border: 1px solid $color-purple-70;
-      padding: $spacing-sm;
+      gap: tokens.$spacing-xs;
+      border: 1px solid tokens.$color-purple-70;
+      padding: tokens.$spacing-sm;
       align-items: flex-start;
     }
 
@@ -107,12 +107,12 @@
 
     tbody tr {
       text-align: start;
-      color: $color-grey-40;
-      font: $text-body-xs;
+      color: tokens.$color-grey-40;
+      font: tokens.$text-body-xs;
 
       td {
-        padding-block: $spacing-xs;
-        padding-inline: $spacing-xs;
+        padding-block: tokens.$spacing-xs;
+        padding-inline: tokens.$spacing-xs;
       }
 
       svg {
@@ -126,123 +126,123 @@
 /* stylelint-disable no-descending-specificity */
 // We start at 2, because element 1 is .gutter
 .slice:nth-child(2) {
-  stroke: $color-purple-90;
+  stroke: tokens.$color-purple-90;
 }
 .legend tbody tr:nth-child(1) {
   .chartAndLegendWrapper:has(.slice:nth-child(2):hover) & {
-    color: $color-purple-90;
+    color: tokens.$color-purple-90;
   }
 
   rect {
-    fill: $color-purple-90;
+    fill: tokens.$color-purple-90;
   }
 }
 .slice:nth-child(3) {
-  stroke: $color-purple-70;
+  stroke: tokens.$color-purple-70;
 }
 .legend tbody tr:nth-child(2) {
   .chartAndLegendWrapper:has(.slice:nth-child(3):hover) & {
-    color: $color-purple-70;
+    color: tokens.$color-purple-70;
   }
 
   rect {
-    fill: $color-purple-70;
+    fill: tokens.$color-purple-70;
   }
 }
 .slice:nth-child(4) {
-  stroke: $color-purple-50;
+  stroke: tokens.$color-purple-50;
 }
 .legend tbody tr:nth-child(3) {
   .chartAndLegendWrapper:has(.slice:nth-child(4):hover) & {
-    color: $color-purple-50;
+    color: tokens.$color-purple-50;
   }
 
   rect {
-    fill: $color-purple-50;
+    fill: tokens.$color-purple-50;
   }
 }
 .slice:nth-child(5) {
-  stroke: $color-purple-30;
+  stroke: tokens.$color-purple-30;
 }
 .legend tbody tr:nth-child(4) {
   .chartAndLegendWrapper:has(.slice:nth-child(5):hover) & {
-    color: $color-purple-30;
+    color: tokens.$color-purple-30;
   }
 
   rect {
-    fill: $color-purple-30;
+    fill: tokens.$color-purple-30;
   }
 }
 .slice:nth-child(6) {
-  stroke: $color-purple-10;
+  stroke: tokens.$color-purple-10;
 }
 .legend tbody tr:nth-child(5) {
   .chartAndLegendWrapper:has(.slice:nth-child(6):hover) & {
-    color: $color-purple-10;
+    color: tokens.$color-purple-10;
   }
 
   rect {
-    fill: $color-purple-10;
+    fill: tokens.$color-purple-10;
   }
 }
 .slice:nth-child(7) {
-  stroke: $color-purple-80;
+  stroke: tokens.$color-purple-80;
 }
 .legend tbody tr:nth-child(6) {
   .chartAndLegendWrapper:has(.slice:nth-child(7):hover) & {
-    color: $color-purple-80;
+    color: tokens.$color-purple-80;
   }
 
   rect {
-    fill: $color-purple-80;
+    fill: tokens.$color-purple-80;
   }
 }
 .slice:nth-child(8) {
-  stroke: $color-purple-60;
+  stroke: tokens.$color-purple-60;
 }
 .legend tbody tr:nth-child(7) {
   .chartAndLegendWrapper:has(.slice:nth-child(8):hover) & {
-    color: $color-purple-60;
+    color: tokens.$color-purple-60;
   }
 
   rect {
-    fill: $color-purple-60;
+    fill: tokens.$color-purple-60;
   }
 }
 .slice:nth-child(9) {
-  stroke: $color-purple-40;
+  stroke: tokens.$color-purple-40;
 }
 .legend tbody tr:nth-child(8) {
   .chartAndLegendWrapper:has(.slice:nth-child(9):hover) & {
-    color: $color-purple-40;
+    color: tokens.$color-purple-40;
   }
 
   rect {
-    fill: $color-purple-40;
+    fill: tokens.$color-purple-40;
   }
 }
 .slice:nth-child(10) {
-  stroke: $color-purple-20;
+  stroke: tokens.$color-purple-20;
 }
 .legend tbody tr:nth-child(9) {
   .chartAndLegendWrapper:has(.slice:nth-child(10):hover) & {
-    color: $color-purple-20;
+    color: tokens.$color-purple-20;
   }
 
   rect {
-    fill: $color-purple-20;
+    fill: tokens.$color-purple-20;
   }
 }
 .slice:nth-child(11) {
-  stroke: $color-violet-90;
+  stroke: tokens.$color-violet-90;
 }
 .legend tbody tr:nth-child(10) {
   .chartAndLegendWrapper:has(.slice:nth-child(11):hover) & {
-    color: $color-violet-90;
+    color: tokens.$color-violet-90;
   }
 
   rect {
-    fill: $color-violet-90;
+    fill: tokens.$color-violet-90;
   }
 }
 /* stylelint-enable no-descending-specificity */
