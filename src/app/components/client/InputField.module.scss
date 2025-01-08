@@ -3,6 +3,7 @@
 .input,
 .comboBox {
   background: $color-white;
+  border-radius: $border-radius-md;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -16,6 +17,7 @@
     border-radius: $border-radius-sm;
     color: $color-black;
     display: inline-block;
+    font-weight: 400;
     // Add a bit more space: The next spacing step is too much.
     left: calc($spacing-sm * 1.5);
     line-height: 1em;
@@ -31,7 +33,7 @@
 
   .inputField {
     border: 1px solid $color-grey-30;
-    border-radius: $border-radius-sm;
+    border-radius: $border-radius-md;
     color: $color-black;
     // Add a bit more space: The next spacing step is too much.
     padding: calc($spacing-sm * 1.5);

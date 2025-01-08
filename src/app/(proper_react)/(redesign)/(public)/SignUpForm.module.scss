@@ -5,6 +5,10 @@
   flex-wrap: wrap;
   gap: $spacing-lg;
 
+  div:first-child {
+    flex: 1;
+  }
+
   input {
     flex: 1 0 auto;
     border-radius: $border-radius-md;

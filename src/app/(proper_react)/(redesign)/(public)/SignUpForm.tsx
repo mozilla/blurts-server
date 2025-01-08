@@ -24,6 +24,7 @@ import { CONST_URL_MONITOR_LANDING_PAGE_ID } from "../../../../constants";
 import { getFreeScanSearchParams } from "../../../functions/universal/getFreeScanSearchParams";
 import { AccountsMetricsFlowContext } from "../../../../contextProviders/accounts-metrics-flow";
 import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
+import { InputField } from "../../../components/client/InputField";
 
 export type Props = {
   eligibleForPremium: boolean;
@@ -37,6 +38,7 @@ export type Props = {
   isHero?: boolean;
   placeholder?: string;
   buttonLabel?: string;
+  hasFloatingLabel?: boolean;
 };
 
 export const SignUpForm = (props: Props) => {
@@ -83,24 +85,28 @@ export const SignUpForm = (props: Props) => {
       className={styles.form}
       onSubmit={onSubmit}
     >
-      <input
+      <InputField
+        type="email"
         name={emailInputId}
         data-testid="signup-form-input"
         id={emailInputId}
-        onChange={(e) => {
-          setEmailInput(e.target.value);
+        onChange={(value) => {
+          setEmailInput(value);
         }}
+        placeholder={
+          props.placeholder ??
+          l10n.getString("landing-all-hero-emailform-input-placeholder")
+        }
+        label={
+          props.placeholder ??
+          l10n.getString("landing-all-hero-emailform-input-placeholder")
+        }
         onFocus={() => {
           record("field", "focus", {
             field_id: props.eventId.field,
           });
         }}
-        value={emailInput}
-        type="email"
-        placeholder={
-          props.placeholder ??
-          l10n.getString("landing-all-hero-emailform-input-placeholder")
-        }
+        hasFloatingLabel={props.hasFloatingLabel}
       />
       <Button
         type="submit"
