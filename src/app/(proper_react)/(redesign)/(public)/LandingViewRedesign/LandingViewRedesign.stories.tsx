@@ -3,16 +3,16 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import type { Meta, StoryObj } from "@storybook/react";
-import { View, Props as ViewProps } from "./LandingViewRedesign";
-import { getL10n } from "../../../functions/l10n/storybookAndJest";
-import { PublicShell } from "./PublicShell";
-import { defaultExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
-import { AccountsMetricsFlowProvider } from "../../../../contextProviders/accounts-metrics-flow";
-import { CONST_URL_MONITOR_LANDING_PAGE_ID } from "../../../../constants";
+import { View, LandingPageProps } from "../LandingViewRedesign";
+import { PublicShell } from "../PublicShell";
+import { getL10n } from "../../../../functions/l10n/storybookAndJest";
+import { defaultExperimentData } from "../../../../../telemetry/generated/nimbus/experiments";
+import { AccountsMetricsFlowProvider } from "../../../../../contextProviders/accounts-metrics-flow";
+import { CONST_URL_MONITOR_LANDING_PAGE_ID } from "../../../../../constants";
 
 const meta: Meta<typeof View> = {
   title: "Pages/Public/Landing page/Redesign",
-  component: (props: ViewProps) => {
+  component: (props: LandingPageProps) => {
     const experimentData =
       props.experimentData ?? defaultExperimentData["Features"];
     return (

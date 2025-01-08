@@ -56,8 +56,10 @@ const PublicMobileShell = (
 export const PublicShell = (props: Props) => {
   const hasLandingPageRedesign =
     props.enabledFeatureFlags.includes("LandingPageRedesign") &&
-    props.experimentData["landing-page-redesign"].enabled &&
-    props.experimentData["landing-page-redesign"].variant === "redesign";
+    props.experimentData["landing-page-redesign-plus-eligible-experiment"]
+      .enabled &&
+    props.experimentData["landing-page-redesign-plus-eligible-experiment"]
+      .variant === "redesign";
   return (
     <PublicMobileShell
       {...props}
