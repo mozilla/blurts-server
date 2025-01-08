@@ -5,7 +5,7 @@
 import type { headers as headersGetter } from "next/headers";
 
 export function getCountryCode(
-  headers: ReturnType<typeof headersGetter>,
+  headers: Awaited<ReturnType<typeof headersGetter>>,
 ): string {
   // GCP can detect the user's country from their IP addresses, and pass it to
   // us through this header:

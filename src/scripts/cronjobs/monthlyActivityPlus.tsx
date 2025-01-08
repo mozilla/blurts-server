@@ -92,7 +92,7 @@ async function sendMonthlyActivityEmail(subscriber: SubscriberRow) {
   await sendEmail(
     sanitizedSubscriber.primary_email,
     subject,
-    renderEmail(
+    await renderEmail(
       <MonthlyActivityPlusEmail
         subscriber={sanitizedSubscriber}
         data={data}

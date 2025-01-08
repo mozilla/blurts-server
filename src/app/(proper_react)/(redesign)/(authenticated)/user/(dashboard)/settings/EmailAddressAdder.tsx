@@ -4,8 +4,13 @@
 
 "use client";
 
-import { ChangeEvent, useEffect, useRef, useState } from "react";
-import { useFormState } from "react-dom";
+import {
+  ChangeEvent,
+  useEffect,
+  useRef,
+  useState,
+  useActionState,
+} from "react";
 import { useOverlayTriggerState } from "react-stately";
 import { useOverlayTrigger } from "react-aria";
 import Image from "next/image";
@@ -85,17 +90,17 @@ const EmailAddressAddForm = () => {
   const l10n = useL10n();
   const recordTelemetry = useTelemetry();
   const formRef = useRef<HTMLFormElement>(null);
-  const [formState, formAction] = useFormState(onAddEmail, {});
+  const [onAddEmailState, onAddEmailAction] = useActionState(onAddEmail, {});
   const [hasPressedButton, setHasPressedButton] = useState(false);
   const [email, setEmail] = useState("");
 
   useEffect(() => {
-    if (typeof formState.success !== "undefined") {
+    if (typeof onAddEmailState.success !== "undefined") {
       recordTelemetry("ctaButton", "click", {
         button_id: "add_email_verification",
       });
     }
-  }, [formState, recordTelemetry]);
+  }, [onAddEmailState, recordTelemetry]);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
@@ -105,7 +110,7 @@ const EmailAddressAddForm = () => {
     return email.length > 0 && (formRef.current?.reportValidity() ?? false);
   };
 
-  return !formState.success ? (
+  return !onAddEmailState.success ? (
     <>
       <p>
         {l10n.getString("add-email-your-account-includes", {
@@ -113,7 +118,7 @@ const EmailAddressAddForm = () => {
         })}
       </p>
       <form
-        action={formAction}
+        action={onAddEmailAction}
         ref={formRef}
         className={styles.newEmailAddressForm}
       >
@@ -145,7 +150,7 @@ const EmailAddressAddForm = () => {
   ) : (
     <p className={styles.description}>
       {l10n.getFragment("add-email-verify-the-link-2", {
-        vars: { email: formState.submittedAddress },
+        vars: { email: onAddEmailState.submittedAddress },
         elems: { b: <b /> },
       })}
     </p>

@@ -45,11 +45,14 @@ export type GetUserStateResponseBody = {
  * @param root0
  * @param root0.params
  * @param root0.params.fxaUid
+ * @param props
+ * @param props.params
  */
 export async function GET(
   req: NextRequest,
-  { params }: { params: { fxaUid: string } },
+  props: { params: Promise<{ fxaUid: string }> },
 ) {
+  const params = await props.params;
   const session = await getServerSession();
   if (isAdmin(session?.user?.email || "")) {
     // Signed in as admin
@@ -120,11 +123,14 @@ export type PutUserStateRequestBody = {
  * @param root0
  * @param root0.params
  * @param root0.params.fxaUid
+ * @param props
+ * @param props.params
  */
 export async function PUT(
   req: NextRequest,
-  { params }: { params: { fxaUid: string } },
+  props: { params: Promise<{ fxaUid: string }> },
 ) {
+  const params = await props.params;
   const session = await getServerSession();
   if (isAdmin(session?.user?.email || "")) {
     // Signed in as admin

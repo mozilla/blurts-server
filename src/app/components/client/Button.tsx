@@ -23,7 +23,7 @@ export interface Props {
   isLoading?: boolean;
   small?: boolean;
   wide?: boolean;
-  buttonRef?: RefObject<HTMLButtonElement | HTMLAnchorElement>;
+  buttonRef?: RefObject<HTMLButtonElement | HTMLAnchorElement | null>;
 }
 
 export type ButtonProps = Props & Parameters<typeof useButton>[0]; // AriaButtonOptions
@@ -78,7 +78,7 @@ export const Button = (props: ButtonProps) => {
     <Link
       aria-live={ariaLiveValue}
       {...buttonProps}
-      ref={buttonRef as RefObject<HTMLAnchorElement>}
+      ref={buttonRef as RefObject<HTMLAnchorElement | null>}
       href={href}
       target={target}
       className={classes}
@@ -94,7 +94,7 @@ export const Button = (props: ButtonProps) => {
     <button
       aria-live={ariaLiveValue}
       {...buttonProps}
-      ref={buttonRef as RefObject<HTMLButtonElement>}
+      ref={buttonRef as RefObject<HTMLButtonElement | null>}
       className={classes}
     >
       {
