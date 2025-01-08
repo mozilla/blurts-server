@@ -1,19 +1,19 @@
-@import "../../../tokens";
+@use "../../../tokens";
 
 .modalContent {
   display: flex;
   flex-direction: column;
-  gap: $spacing-lg;
-  padding: $spacing-sm;
+  gap: tokens.$spacing-lg;
+  padding: tokens.$spacing-sm;
 
   dl {
     display: flex;
     flex-direction: column;
-    gap: $spacing-sm;
+    gap: tokens.$spacing-sm;
     padding: 0;
 
     dt {
-      margin-bottom: $spacing-sm;
+      margin-bottom: tokens.$spacing-sm;
     }
 
     dd {
@@ -21,7 +21,7 @@
         no-repeat left top;
       list-style: none;
       margin: 0;
-      padding-left: $spacing-lg;
+      padding-left: tokens.$spacing-lg;
     }
   }
 
@@ -29,7 +29,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: $spacing-sm;
+    gap: tokens.$spacing-sm;
 
     .pricingInfoWrapper {
       display: flex;
@@ -43,13 +43,13 @@
   }
 
   .pricingPill {
-    margin-top: $spacing-lg;
+    margin-top: tokens.$spacing-lg;
     align-items: center;
-    border-radius: $border-radius-xl;
-    border: 2px solid $color-purple-70;
+    border-radius: tokens.$border-radius-xl;
+    border: 2px solid tokens.$color-purple-70;
     display: flex;
-    gap: $spacing-md;
-    padding: $spacing-sm $spacing-lg;
+    gap: tokens.$spacing-md;
+    padding: tokens.$spacing-sm tokens.$spacing-lg;
 
     .pricingLabel {
       display: flex;

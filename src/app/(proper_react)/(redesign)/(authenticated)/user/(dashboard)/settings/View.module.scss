@@ -1,23 +1,23 @@
-@import "../../../../../../tokens";
+@use "../../../../../../tokens";
 
 .wrapper {
   width: 100%;
   height: 100%;
-  background-color: $color-grey-05;
+  background-color: tokens.$color-grey-05;
 }
 
 .wrapper .main {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: $spacing-2xl;
-  padding: $spacing-2xl;
+  gap: tokens.$spacing-2xl;
+  padding: tokens.$spacing-2xl;
 
   .title {
-    flex: 0 0 $content-xs;
+    flex: 0 0 tokens.$content-xs;
 
     h2 {
-      font: $text-title-xs;
+      font: tokens.$text-title-xs;
     }
   }
 
@@ -26,20 +26,20 @@
     display: flex;
     align-items: flex-start;
     flex-direction: column;
-    gap: $spacing-lg;
+    gap: tokens.$spacing-lg;
 
     h3 {
-      font: $text-title-3xs;
+      font: tokens.$text-title-3xs;
     }
 
     .description {
-      color: $color-grey-40;
+      color: tokens.$color-grey-40;
     }
 
     hr {
       align-self: stretch;
       border-style: none;
-      border-top: 1px solid $color-grey-10;
+      border-top: 1px solid tokens.$color-grey-10;
     }
   }
 }
@@ -51,7 +51,7 @@
   align-self: stretch;
   display: flex;
   flex-direction: column;
-  gap: $spacing-lg;
+  gap: tokens.$spacing-lg;
 }
 
 .cancelSection,
@@ -59,17 +59,17 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: $spacing-sm;
+  gap: tokens.$spacing-sm;
 
   a {
     display: flex;
     align-items: center;
-    gap: $spacing-xs;
-    color: $color-blue-50;
+    gap: tokens.$spacing-xs;
+    color: tokens.$color-blue-50;
     font-weight: 600;
 
     &:hover {
-      color: $color-blue-70;
+      color: tokens.$color-blue-70;
     }
   }
 }
@@ -77,6 +77,6 @@
 .dialogLead {
   display: flex;
   flex-direction: column;
-  gap: $spacing-lg;
+  gap: tokens.$spacing-lg;
   text-align: center;
 }

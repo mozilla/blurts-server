@@ -1,68 +1,72 @@
-@import "../../tokens";
+@use "../../tokens";
 
 .banner {
-  background: linear-gradient(90deg, $color-purple-90 50%, $color-purple-60);
+  background: linear-gradient(
+    90deg,
+    tokens.$color-purple-90 50%,
+    tokens.$color-purple-60
+  );
   display: flex;
   justify-content: center;
-  padding: $layout-xs $layout-sm;
+  padding: tokens.$layout-xs tokens.$layout-sm;
   position: relative;
 }
 
 .content {
   h2 {
-    font: $text-title-xs;
+    font: tokens.$text-title-xs;
     font-weight: 500;
   }
 
   display: flex;
   flex-direction: column;
-  gap: $spacing-xs;
-  color: $color-white;
-  max-width: $content-lg;
+  gap: tokens.$spacing-xs;
+  color: tokens.$color-white;
+  max-width: tokens.$content-lg;
 }
 
 .buttons {
   display: flex;
-  gap: $spacing-xs;
-  margin-top: $spacing-md;
+  gap: tokens.$spacing-xs;
+  margin-top: tokens.$spacing-md;
 
   .signButton {
-    background-color: $color-purple-60;
+    background-color: tokens.$color-purple-60;
     &:hover {
-      background-color: $color-purple-50;
+      background-color: tokens.$color-purple-50;
     }
   }
 
   .signLink {
-    background-color: $color-purple-60;
-    border-radius: $border-radius-md;
-    color: $color-white;
-    font: $text-body-md;
+    background-color: tokens.$color-purple-60;
+    border-radius: tokens.$border-radius-md;
+    color: tokens.$color-white;
+    font: tokens.$text-body-md;
     font-weight: 500;
     line-height: 1;
-    padding: $spacing-md $spacing-lg;
+    padding: tokens.$spacing-md tokens.$spacing-lg;
     text-align: center;
     text-decoration: none;
     &:hover {
-      background-color: $color-purple-50;
+      background-color: tokens.$color-purple-50;
     }
   }
 
   .dismissButton {
-    color: $color-white;
+    color: tokens.$color-white;
     &:hover {
-      background-color: rgba($color-purple-50, 0.2);
+      background-color: rgba(tokens.$color-purple-50, 0.2);
     }
   }
 }
 
 .closeButton {
   background-color: transparent;
-  border-radius: $border-radius-sm;
+  border-radius: tokens.$border-radius-sm;
   border-style: none;
-  color: $color-white;
+  color: tokens.$color-white;
   cursor: pointer;
-  padding: $spacing-md;
+  padding: tokens.$spacing-md;
   position: absolute;
   right: 0;
   top: 0;

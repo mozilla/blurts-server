@@ -1,31 +1,31 @@
-@import "../../../../../../../tokens";
+@use "../../../../../../../tokens";
 
 .wrapper {
   display: flex;
   flex-direction: column;
-  gap: $layout-xs;
+  gap: tokens.$layout-xs;
 
   .radioGroup {
     display: flex;
     flex-direction: column;
-    gap: $layout-xs;
+    gap: tokens.$layout-xs;
     justify-content: space-between;
     width: 100%;
 
     label {
       align-items: center;
       display: flex;
-      gap: $layout-xs;
+      gap: tokens.$layout-xs;
       justify-content: space-between;
 
-      @media screen and (min-width: $content-md) {
-        gap: $layout-md;
+      @media screen and (min-width: tokens.$content-md) {
+        gap: tokens.$layout-md;
       }
 
       div {
         display: flex;
         flex-direction: column;
-        gap: $spacing-xs;
+        gap: tokens.$spacing-xs;
       }
 
       svg {
@@ -36,8 +36,8 @@
     .radioInputs {
       display: flex;
       flex-direction: column;
-      font: $text-body-sm;
-      gap: $spacing-sm;
+      font: tokens.$text-body-sm;
+      gap: tokens.$spacing-sm;
     }
   }
 

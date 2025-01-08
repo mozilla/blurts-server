@@ -1,8 +1,8 @@
-@import "../../tokens";
+@use "../../tokens";
 
 .input,
 .comboBox {
-  background: $color-white;
+  background: tokens.$color-white;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -12,14 +12,14 @@
   }
 
   .floatingLabel {
-    background: $color-white;
-    border-radius: $border-radius-sm;
-    color: $color-black;
+    background: tokens.$color-white;
+    border-radius: tokens.$border-radius-sm;
+    color: tokens.$color-black;
     display: inline-block;
     // Add a bit more space: The next spacing step is too much.
-    left: calc($spacing-sm * 1.5);
+    left: calc(tokens.$spacing-sm * 1.5);
     line-height: 1em;
-    padding: 0 calc($spacing-xs * 0.5);
+    padding: 0 calc(tokens.$spacing-xs * 0.5);
     pointer-events: none;
     position: absolute;
     top: 50%;
@@ -30,51 +30,53 @@
   }
 
   .inputField {
-    border: 1px solid $color-grey-30;
-    border-radius: $border-radius-sm;
-    color: $color-black;
+    border: 1px solid tokens.$color-grey-30;
+    border-radius: tokens.$border-radius-sm;
+    color: tokens.$color-black;
     // Add a bit more space: The next spacing step is too much.
-    padding: calc($spacing-sm * 1.5);
+    padding: calc(tokens.$spacing-sm * 1.5);
     width: 100%;
 
     &.noValue {
-      color: $color-grey-40;
+      color: tokens.$color-grey-40;
     }
 
     &.hasError {
-      border-color: $color-error;
+      border-color: tokens.$color-error;
 
       &:focus {
-        border: 1px solid $color-error;
-        outline: $border-focus-width solid $color-error-focus;
+        border: 1px solid tokens.$color-error;
+        outline: tokens.$border-focus-width solid tokens.$color-error-focus;
       }
     }
 
     &:focus {
-      border: 1px solid $color-informational-active;
-      outline: $border-focus-width solid $color-informational-focus;
+      border: 1px solid tokens.$color-informational-active;
+      outline: tokens.$border-focus-width solid
+        tokens.$color-informational-focus;
     }
 
     &:disabled {
       background: none;
-      border: 1px solid $color-grey-10;
+      border: 1px solid tokens.$color-grey-10;
     }
   }
 
   &:has(.floatingLabel) {
     ::placeholder {
-      @include visually-hidden;
+      @include tokens.visually-hidden;
     }
     .inputField {
       // Move the value string off-center.
-      padding: calc($spacing-md * 1.25) calc($spacing-sm * 1.5) $spacing-xs;
+      padding: calc(tokens.$spacing-md * 1.25) calc(tokens.$spacing-sm * 1.5)
+        tokens.$spacing-xs;
     }
   }
 
   &:focus-within,
   &:not(:has(:placeholder-shown)) {
     .floatingLabel {
-      color: $color-grey-40;
+      color: tokens.$color-grey-40;
       // Make the floating label visually align with the input value.
       transform: translate(-0.05em, -115%) scale(0.75);
     }
@@ -82,32 +84,32 @@
 
   .inputLabel {
     font-weight: 600;
-    margin-bottom: $spacing-sm;
+    margin-bottom: tokens.$spacing-sm;
   }
 
   .buttonIcon {
     position: absolute;
-    right: $spacing-xs;
+    right: tokens.$spacing-xs;
     top: 50%;
     transform: translateY(-50%);
 
     &:hover button {
-      color: $color-error;
+      color: tokens.$color-error;
     }
   }
 
   .inputMessage {
     display: flex;
     align-items: center;
-    color: $color-grey-40;
-    gap: $spacing-xs;
+    color: tokens.$color-grey-40;
+    gap: tokens.$spacing-xs;
     background: inherit;
-    border-radius: $border-radius-sm;
+    border-radius: tokens.$border-radius-sm;
     bottom: 0;
-    font: $text-body-xs;
+    font: tokens.$text-body-xs;
     left: 0;
-    margin: 0 $spacing-sm;
-    padding: 0 $spacing-sm;
+    margin: 0 tokens.$spacing-sm;
+    padding: 0 tokens.$spacing-sm;
     position: absolute;
     // the negative y-offset is 50% of the line-height plus a bit extra for
     // visual balance in relation to the input border endings left and right
@@ -115,6 +117,6 @@
   }
 
   &:has([aria-invalid="true"]) .inputMessage {
-    color: $color-error;
+    color: tokens.$color-error;
   }
 }
