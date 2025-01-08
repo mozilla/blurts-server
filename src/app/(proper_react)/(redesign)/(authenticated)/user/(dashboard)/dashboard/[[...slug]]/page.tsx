@@ -41,22 +41,27 @@ import { getExperimentationId } from "../../../../../../../functions/server/getE
 import { getElapsedTimeInDaysSinceInitialScan } from "../../../../../../../functions/server/getElapsedTimeInDaysSinceInitialScan";
 import { getExperiments } from "../../../../../../../functions/server/getExperiments";
 import { getLocale } from "../../../../../../../functions/universal/getLocale";
-import { getL10n } from "../../../../../../../functions/l10n/serverComponents";
+import {
+  getAcceptLangHeaderInServerComponents,
+  getL10n,
+} from "../../../../../../../functions/l10n/serverComponents";
 import { getDataBrokerRemovalTimeEstimates } from "../../../../../../../functions/server/getDataBrokerRemovalTimeEstimates";
 
 const dashboardTabSlugs = ["action-needed", "fixed"];
 
 type Props = {
-  params: {
+  params: Promise<{
     slug: string[] | undefined;
-  };
-  searchParams: {
+  }>;
+  searchParams: Promise<{
     nimbus_preview?: string;
     dialog?: "subscriptions";
-  };
+  }>;
 };
 
-export default async function DashboardPage({ params, searchParams }: Props) {
+export default async function DashboardPage(props: Props) {
+  const searchParams = await props.searchParams;
+  const params = await props.params;
   const session = await getServerSession();
   if (!checkSession(session) || !session?.user?.subscriber?.id) {
     return redirect("/auth/logout");
@@ -74,7 +79,7 @@ export default async function DashboardPage({ params, searchParams }: Props) {
     return redirect(`/user/dashboard/${defaultTab}`);
   }
 
-  const headersList = headers();
+  const headersList = await headers();
   const countryCode = getCountryCode(headersList);
 
   const profileId = await getOnerepProfileId(session.user.subscriber.id);
@@ -125,11 +130,11 @@ export default async function DashboardPage({ params, searchParams }: Props) {
   });
   const userIsEligibleForPremium = isEligibleForPremium(countryCode);
 
-  const experimentationId = getExperimentationId(session.user);
+  const experimentationId = await getExperimentationId(session.user);
   const experimentData = await getExperiments({
     experimentationId: experimentationId,
     countryCode: countryCode,
-    locale: getLocale(getL10n()),
+    locale: getLocale(getL10n(await getAcceptLangHeaderInServerComponents())),
     previewMode: searchParams.nimbus_preview === "true",
   });
 

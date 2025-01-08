@@ -6,7 +6,11 @@ import { ReactNode } from "react";
 import { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { getL10n, getL10nBundles } from "./functions/l10n/serverComponents";
+import {
+  getAcceptLangHeaderInServerComponents,
+  getL10n,
+  getL10nBundles,
+} from "./functions/l10n/serverComponents";
 import { getLocale } from "./functions/universal/getLocale";
 import { SessionProvider } from "../contextProviders/session";
 import { getServerSession } from "./functions/server/getServerSession";
@@ -24,8 +28,8 @@ import * as Sentry from "@sentry/nextjs";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
-export function generateMetadata(): Metadata {
-  const l10n = getL10n();
+export async function generateMetadata(): Promise<Metadata> {
+  const l10n = getL10n(await getAcceptLangHeaderInServerComponents());
   return {
     title: l10n.getString("brand-mozilla-monitor"),
     description: l10n.getString("meta-desc-2"),
@@ -55,16 +59,18 @@ export default async function RootLayout({
 }: {
   children: ReactNode;
 }) {
-  const nonce = headers().get("x-nonce") ?? "";
-  const currentLocale = getLocale(getL10nBundles());
+  const nonce = (await headers()).get("x-nonce") ?? "";
+  const currentLocale = getLocale(
+    getL10nBundles(await getAcceptLangHeaderInServerComponents()),
+  );
   const session = await getServerSession();
-  const headersList = headers();
+  const headersList = await headers();
   const countryCode = getCountryCode(headersList);
 
   // Check for Nimbus preview mode. Note that this requires a full page reload
   // to activate: https://nextjs.org/docs/app/api-reference/file-conventions/layout#caveats
-  const nimbusPreviewMode = headers().get("x-nimbus-preview-mode");
-  const experimentationId = getExperimentationId(session?.user ?? null);
+  const nimbusPreviewMode = (await headers()).get("x-nimbus-preview-mode");
+  const experimentationId = await getExperimentationId(session?.user ?? null);
   const experimentData = await getExperiments({
     experimentationId: experimentationId,
     countryCode: countryCode,
@@ -100,7 +106,7 @@ export default async function RootLayout({
         channel={process.env.APP_ENV ?? ""}
         experimentationId={experimentationId}
       />
-      {headers().get("DNT") !== "1" && (
+      {(await headers()).get("DNT") !== "1" && (
         <GoogleAnalyticsWorkaround
           gaId={CONST_GA4_MEASUREMENT_ID}
           nonce={nonce}
