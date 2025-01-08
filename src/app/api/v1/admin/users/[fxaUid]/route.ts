@@ -42,9 +42,6 @@ export type GetUserStateResponseBody = {
  * This requires admin privileges, and doesn't return any PII directly, just user state and IDs.
  *
  * @param req
- * @param root0
- * @param root0.params
- * @param root0.params.fxaUid
  * @param props
  * @param props.params
  */
@@ -120,9 +117,6 @@ export type PutUserStateRequestBody = {
  * state (such as the badge) depends on the FxA `subscriptions` claim in the JWT.
  *
  * @param req
- * @param root0
- * @param root0.params
- * @param root0.params.fxaUid
  * @param props
  * @param props.params
  */
