@@ -168,16 +168,13 @@ const nextConfig = {
       type: "asset/source",
     });
 
-    config.externals ??= {};
-    config.externals.push({
-      knex: "commonjs knex",
-    });
-
     return config;
   },
-  // Without this setting, Next.js has Webpack trying and failing to load
+  // Without adding MJML here, Next.js has Webpack trying and failing to load
   // uglify-js when compiling MJML email templates to HTML in `renderEmail.ts`:
-  serverExternalPackages: ["mjml"],
+  // commonjs and knex are needed to avoid errors about not being able to load
+  // better-sqlite3, for some reason.
+  serverExternalPackages: ["mjml", "commonjs", "knex"],
 };
 
 const sentryOptions = {
