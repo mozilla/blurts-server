@@ -125,7 +125,7 @@ export default async function SettingsPage({ params, searchParams }: Props) {
       yearlySubscriptionUrl={`${yearlySubscriptionUrl}&${additionalSubplatParams.toString()}`}
       subscriptionBillingAmount={getSubscriptionBillingAmount()}
       enabledFeatureFlags={enabledFeatureFlags}
-      experimentData={experimentData}
+      experimentData={experimentData["Features"]}
       lastScanDate={lastOneRepScan?.created_at}
       isMonthlySubscriber={isMonthlySubscriber}
       activeTab={activeTab}
