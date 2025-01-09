@@ -15,6 +15,7 @@
   .floatingLabel {
     background: $color-white;
     border-radius: $border-radius-sm;
+    backface-visibility: hidden;
     color: $color-black;
     display: inline-block;
     font-weight: 400;
@@ -27,7 +28,9 @@
     top: 50%;
     transform-origin: top left;
     transform: translate(-0.05em, -50%) scale(1);
-    transition: transform 0.2s ease-in-out;
+    transition:
+      transform 0.1s ease-in-out,
+      color 0.1s ease-in-out;
     user-select: none;
   }
 
