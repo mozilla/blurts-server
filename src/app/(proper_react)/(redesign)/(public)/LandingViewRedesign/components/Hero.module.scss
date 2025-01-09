@@ -1,0 +1,141 @@
+@import "../../../../../tokens";
+
+.hero {
+  background: linear-gradient(270deg, #9948fc 6.7%, #4b179f 67.9%);
+  border-radius: $border-radius-xl;
+  overflow: hidden;
+  position: relative;
+}
+
+.heroContent {
+  align-items: center;
+  color: $color-white;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  gap: $layout-md;
+  padding: $layout-xs;
+  z-index: 1;
+
+  @media screen and (min-width: $screen-sm) {
+    padding: $layout-sm;
+  }
+}
+
+.heroBackground {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-height: 100%;
+  min-width: 100%;
+  z-index: 0;
+}
+
+.heroTitle {
+  align-items: center;
+  display: flex;
+  gap: $spacing-md;
+  flex-direction: column;
+  max-width: $content-md;
+  text-align: center;
+
+  @media screen and (min-width: $screen-md) {
+    padding: 0 $layout-md;
+  }
+
+  p {
+    font: $text-body-lg;
+  }
+}
+
+.heroCta {
+  width: 100%;
+
+  @media screen and (min-width: $screen-md) {
+    max-width: $content-md;
+    padding: 0 $layout-md;
+    & > form button {
+      flex: 0 0 auto;
+    }
+  }
+
+  // Override the background color in oder to increase
+  // the contrast against the background.
+  form > button {
+    /* stylelint-disable-next-line declaration-no-important */
+    background-color: $color-purple-90 !important;
+    &:hover {
+      /* stylelint-disable-next-line declaration-no-important */
+      background-color: $color-purple-80 !important;
+    }
+  }
+}
+
+.heroBanner {
+  background: rgba($color-white, 0.05);
+  border-radius: $border-radius-xl;
+  display: flex;
+  justify-content: center;
+  padding: $spacing-md;
+  width: 100%;
+
+  @media screen and (min-width: $screen-md) {
+    padding: $spacing-xl;
+  }
+
+  &Content {
+    display: flex;
+    gap: $spacing-lg;
+    flex-direction: column;
+    max-width: $content-xl;
+
+    @media screen and (min-width: $screen-md) {
+      flex-direction: row;
+    }
+
+    @media screen and (min-width: $screen-md) {
+      gap: $spacing-xl;
+    }
+  }
+
+  &Item {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+    position: relative;
+    padding-left: $layout-md;
+
+    dt {
+      font: $text-body-lg;
+
+      @media screen and (min-width: $screen-sm) {
+        font: $text-body-xl;
+      }
+    }
+
+    @media screen and (max-width: calc($screen-lg - 1px)) {
+      padding-left: calc($layout-sm + $spacing-sm);
+
+      dd {
+        @include visually-hidden;
+      }
+    }
+
+    svg {
+      fill: $color-purple-30;
+      padding: $spacing-xs;
+      position: absolute;
+      left: 0;
+      top: 0;
+      transform: translateY(-10%);
+      height: 32px;
+      width: 32px;
+
+      @media screen and (min-width: $screen-lg) {
+        height: 40px;
+        width: 40px;
+      }
+    }
+  }
+}

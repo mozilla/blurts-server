@@ -6,13 +6,13 @@ import { ExperimentData } from "../../../../../telemetry/generated/nimbus/experi
 import { ExtendedReactLocalization } from "../../../../functions/l10n";
 import { AccountDeletionNotification } from "../AccountDeletionNotification";
 import styles from "./LandingViewRedesign.module.scss";
-import { Hero } from "./sections/Hero";
-import { CtaBanner } from "./sections/CtaBanner";
-import { InfoBlock } from "./sections/InfoBlock";
-import { LogoBlock } from "./sections/LogoBlock";
-import { Faq } from "./sections/Faq";
-import { CtaInputBanner } from "./sections/CtaInputBanner";
-import { PricingPlans } from "./sections/PricingPlans";
+import { Hero } from "./components/Hero";
+import { CtaBanner } from "./components/CtaBanner";
+import { InfoBlock } from "./components/InfoBlock";
+import { LogoBlock } from "./components/LogoBlock";
+import { Faq } from "./components/Faq";
+import { CtaInputBanner } from "./components/CtaInputBanner";
+import { PricingPlans } from "./components/PricingPlans";
 
 export type LandingPageProps = {
   countryCode: string;

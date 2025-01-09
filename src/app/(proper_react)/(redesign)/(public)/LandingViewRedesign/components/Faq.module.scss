@@ -1,0 +1,93 @@
+@import "../../../../../tokens";
+
+.section {
+  h2 {
+    font-weight: 700;
+  }
+}
+
+.content {
+  align-items: center;
+  border-radius: $border-radius-lg;
+  box-shadow: inset 0 0 0 4px $color-grey-10;
+  display: flex;
+  flex-direction: column;
+  gap: $layout-xs;
+  max-width: $content-lg;
+  padding: $layout-xs;
+  width: 100%;
+
+  @media screen and (min-width: $screen-sm) {
+    gap: $layout-sm;
+    padding: $layout-sm;
+  }
+
+  @media screen and (min-width: $screen-md) {
+    gap: $layout-md;
+    padding: $layout-md;
+  }
+}
+
+.faqList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+  width: 100%;
+
+  .faqItem {
+    border-radius: $border-radius-lg;
+    box-shadow: inset 0 0 0 2px $color-grey-10;
+
+    &:focus-within {
+      box-shadow: inset 0 0 0 2px $color-purple-70;
+    }
+  }
+
+  .faqQuestion {
+    align-items: center;
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    font: $text-body-lg;
+    font-weight: 600;
+    gap: $layout-xs;
+    justify-content: space-between;
+    margin: 0;
+    padding: $spacing-md;
+    text-align: start;
+    width: 100%;
+
+    @media screen and (min-width: $screen-md) {
+      gap: $layout-md;
+      padding: $spacing-lg;
+    }
+
+    svg {
+      color: $color-black;
+      flex: 1 0 16px;
+      max-width: 16px;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .faqAnswer {
+    display: none;
+    height: 0;
+    padding: 0 $layout-xs $spacing-md $spacing-md;
+
+    @media screen and (min-width: $screen-md) {
+      padding: 0 $layout-lg $spacing-lg $spacing-lg;
+    }
+
+    &.expanded {
+      display: block;
+      height: auto;
+    }
+  }
+}

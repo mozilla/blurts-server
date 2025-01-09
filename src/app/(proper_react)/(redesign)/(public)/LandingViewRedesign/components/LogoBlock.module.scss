@@ -1,0 +1,36 @@
+@import "../../../../../tokens";
+
+.section {
+  background-color: $color-grey-05;
+  padding: $layout-sm;
+
+  h2 {
+    font-weight: 700;
+  }
+}
+
+.content,
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: $layout-sm;
+  max-width: $content-lg;
+}
+
+.header {
+  align-items: center;
+  gap: $spacing-sm;
+  text-align: center;
+}
+
+.logosWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-md;
+  justify-content: center;
+
+  .logo {
+    align-items: center;
+    display: flex;
+  }
+}
