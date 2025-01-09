@@ -1,4 +1,4 @@
-@import "../../tokens";
+@use "../../tokens";
 
 .wrapper {
   display: flex;
@@ -9,15 +9,15 @@
 .header {
   display: none;
 
-  @media screen and (max-width: $screen-xl) {
+  @media screen and (max-width: tokens.$screen-xl) {
     position: sticky;
-    background-color: $color-white;
+    background-color: tokens.$color-white;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: $spacing-sm;
-    padding: $spacing-xs $spacing-sm;
+    gap: tokens.$spacing-sm;
+    padding: tokens.$spacing-xs tokens.$spacing-sm;
     // Overlay `.nonHeader` so that the box-shadow of this element
     // is not covered.
     z-index: 1;
@@ -26,14 +26,14 @@
       display: flex;
       align-items: center;
       justify-content: flex-start;
-      padding-left: $spacing-md;
+      padding-left: tokens.$spacing-md;
     }
 
     .headerEnd {
       align-self: flex-end;
       display: flex;
       align-items: center;
-      gap: $spacing-sm;
+      gap: tokens.$spacing-sm;
       justify-content: flex-end;
     }
 
@@ -43,7 +43,7 @@
       justify-content: center;
       background-color: transparent;
       border-style: none;
-      padding: $spacing-md;
+      padding: tokens.$spacing-md;
       cursor: pointer;
 
       svg {
@@ -52,7 +52,7 @@
       }
 
       &:hover svg {
-        color: $color-purple-70;
+        color: tokens.$color-purple-70;
       }
     }
   }
@@ -79,7 +79,7 @@
     display: none;
   }
 
-  @media screen and (max-width: $screen-xl) {
+  @media screen and (max-width: tokens.$screen-xl) {
     .hasOpenMenu & .mainMenuLayer {
       display: block;
       position: sticky;
@@ -91,8 +91,8 @@
       .mainMenu {
         align-items: center;
         display: flex;
-        background-color: $color-white;
-        box-shadow: $box-shadow-sm;
+        background-color: tokens.$color-white;
+        box-shadow: tokens.$box-shadow-sm;
         flex-direction: column;
 
         ul {
@@ -104,33 +104,33 @@
           a {
             align-items: center;
             display: flex;
-            padding: calc($spacing-sm * 1.5) $spacing-lg;
-            gap: $spacing-sm;
-            color: $color-black;
-            border-top: 1px solid $color-grey-10;
+            padding: calc(tokens.$spacing-sm * 1.5) tokens.$spacing-lg;
+            gap: tokens.$spacing-sm;
+            color: tokens.$color-black;
+            border-top: 1px solid tokens.$color-grey-10;
             text-decoration: none;
 
             &.isActive {
-              color: $color-purple-70;
+              color: tokens.$color-purple-70;
               text-decoration: underline;
             }
 
             &:hover {
-              background-color: $color-purple-50;
-              color: $color-white;
+              background-color: tokens.$color-purple-50;
+              color: tokens.$color-white;
               text-decoration: underline;
             }
 
             // The `a` and `a:visited` violate this rule, but are safe:
             // stylelint-disable-next-line no-descending-specificity
             &:focus {
-              background-color: $color-grey-10;
+              background-color: tokens.$color-grey-10;
               outline: none;
               text-decoration: underline;
             }
 
             & > svg {
-              fill: $color-purple-70;
+              fill: tokens.$color-purple-70;
             }
           }
 
@@ -139,7 +139,7 @@
 
             a {
               font-weight: 400;
-              padding: calc($spacing-sm * 1.5) $spacing-2xl;
+              padding: calc(tokens.$spacing-sm * 1.5) tokens.$spacing-2xl;
               border-top: none;
             }
           }
@@ -147,8 +147,8 @@
       }
 
       .premiumCta {
-        margin: $spacing-md;
-        min-width: $screen-xs;
+        margin: tokens.$spacing-md;
+        min-width: tokens.$screen-xs;
 
         & > button {
           width: 100%;

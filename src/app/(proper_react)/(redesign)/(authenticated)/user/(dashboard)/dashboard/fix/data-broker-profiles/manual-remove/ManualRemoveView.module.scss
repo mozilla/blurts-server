@@ -1,23 +1,23 @@
-@import "../../../../../../../../../tokens";
+@use "../../../../../../../../../tokens";
 
 .main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: $spacing-lg;
+  gap: tokens.$spacing-lg;
 }
 
 .buttonsWrapper {
   display: flex;
   flex-direction: column;
   text-align: center;
-  gap: $spacing-md;
+  gap: tokens.$spacing-md;
 
   a {
     display: block;
   }
 
-  @media screen and (min-width: $screen-sm) {
+  @media screen and (min-width: tokens.$screen-sm) {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -26,66 +26,66 @@
 }
 
 .removalStepsList {
-  font: $text-body-md;
+  font: tokens.$text-body-md;
   text-align: left;
 
   li {
-    margin-bottom: $spacing-md;
+    margin-bottom: tokens.$spacing-md;
 
     > strong {
       display: block;
-      margin-bottom: $spacing-xs;
+      margin-bottom: tokens.$spacing-xs;
       font-weight: 700;
     }
 
     // The subhead/bullet content is wrapped in a span to style to OL marker (1.)
     > span {
-      font: $text-body-sm;
+      font: tokens.$text-body-sm;
       font-weight: normal;
     }
   }
 }
 
 .content {
-  max-width: $content-md;
+  max-width: tokens.$content-md;
 
   h3 {
-    font: $text-title-2xs;
+    font: tokens.$text-title-2xs;
     text-align: center;
   }
 
   h4 {
-    font: $text-title-3xs;
+    font: tokens.$text-title-3xs;
   }
 
   p,
   h3 {
-    margin-block-end: $spacing-md;
+    margin-block-end: tokens.$spacing-md;
   }
 
   > a {
-    color: $color-blue-60;
+    color: tokens.$color-blue-60;
     display: inline-block;
-    margin-inline-start: $spacing-sm;
+    margin-inline-start: tokens.$spacing-sm;
   }
 }
 
 .exposureListing {
   display: flex;
   flex-direction: column;
-  gap: $spacing-lg;
+  gap: tokens.$spacing-lg;
 
   h3 {
-    font: $text-title-2xs;
+    font: tokens.$text-title-2xs;
   }
 
   .exposureList {
     display: flex;
     flex-direction: column;
-    gap: $spacing-md;
+    gap: tokens.$spacing-md;
 
-    @media screen and (min-width: $screen-md) {
-      padding-inline: $spacing-lg;
+    @media screen and (min-width: tokens.$screen-md) {
+      padding-inline: tokens.$spacing-lg;
     }
   }
 }
@@ -94,22 +94,22 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: $spacing-xs;
-  font: $text-title-3xs;
+  gap: tokens.$spacing-xs;
+  font: tokens.$text-title-3xs;
 }
 
 .dataBrokerResolutionStats {
   display: flex;
   flex-direction: column;
-  gap: $spacing-md;
+  gap: tokens.$spacing-md;
   justify-content: center;
-  padding-top: $layout-sm;
+  padding-top: tokens.$layout-sm;
 
-  @media screen and (min-width: $screen-md) {
+  @media screen and (min-width: tokens.$screen-md) {
     flex-direction: row;
   }
   div {
-    @include estimated-time;
+    @include tokens.estimated-time;
     justify-content: center;
   }
 }
