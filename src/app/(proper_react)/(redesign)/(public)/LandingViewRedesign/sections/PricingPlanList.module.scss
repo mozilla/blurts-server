@@ -76,8 +76,12 @@
 
       strong {
         color: $color-purple-70;
+        display: flex;
+        flex-direction: column-reverse;
         font: $text-title-sm;
-        font-weight: 600;
+        font-weight: 500;
+        gap: $spacing-sm;
+        text-align: center;
       }
 
       button,
@@ -95,9 +99,7 @@
   }
 
   .pricingCardSavings {
-    display: flex;
-    gap: $spacing-md;
-    font-weight: 600;
-    text-align: center;
+    color: $color-black;
+    font: $text-body-md;
   }
 }

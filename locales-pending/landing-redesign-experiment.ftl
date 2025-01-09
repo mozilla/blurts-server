@@ -59,14 +59,14 @@ landing-redesign-pricing-plans-card-plus-cta-label = Get { -brand-monitor-plus }
 # $data_broker_sites_total_num is the total number of data broker sites available to scan. It will always be more than 1.
 landing-redesign-pricing-plans-card-plus-feature-item-one = {
   $data_broker_sites_total_num ->
-    *[other] Monthly scans of { $data_broker_sites_total_num }+ data brokers that may be selling your personal info
+    *[other] <b>Monthly scans</b> of { $data_broker_sites_total_num }+ data brokers that may be selling your personal info
 }
-landing-redesign-pricing-plans-card-plus-feature-item-two = Automatic removal of personal info from data broker sites
-landing-redesign-pricing-plans-card-plus-feature-item-three = Continuous monitoring for data broker exposures and data breaches
-landing-redesign-pricing-plans-card-plus-feature-item-four = Receive data broker and data breach exposure alerts
+landing-redesign-pricing-plans-card-plus-feature-item-two = <b>Automatic removal</b> of personal info from data broker sites
+landing-redesign-pricing-plans-card-plus-feature-item-three = Continuous monitoring for <b>data broker exposures and data breaches</b>
+landing-redesign-pricing-plans-card-plus-feature-item-four = Receive <b>data broker and data breach exposure alerts</b>
 # Variables:
 # $discountPercentage is the percentage you can save subscribing to an annual/yearly plan
-landing-redesign-pricing-plans-card-plus-feature-item-five = Save { $discountPercentage }% with a yearly { -brand-monitor-plus } subscription
+landing-redesign-pricing-plans-card-plus-feature-item-five = <b>Save { $discountPercentage }%</b> with a yearly { -brand-monitor-plus } subscription
 # There is not much room in the UI for this string:
 # Abbreviating “month” with “mo”.
 # Variables:
@@ -88,12 +88,12 @@ landing-redesign-pricing-plans-card-free-cta-label = Get { -brand-monitor } (Fre
 # $data_broker_sites_total_num is the total number of data broker sites available to scan. It will always be more than 1.
 landing-redesign-pricing-plans-card-free-feature-item-one = {
   $data_broker_sites_total_num ->
-    *[other] One-time scan of { $data_broker_sites_total_num }+ data brokers that may be selling your personal info
+    *[other] <b>One-time scan</b> of { $data_broker_sites_total_num }+ data brokers that may be selling your personal info
 }
-landing-redesign-pricing-plans-card-free-feature-item-two = Guided manual removal of personal info from data broker sites
-landing-redesign-pricing-plans-card-free-feature-item-three = Continuous monitoring for data breach exposures
-landing-redesign-pricing-plans-card-free-feature-item-four = Receive data breach exposure alerts
-landing-redesign-pricing-plans-card-free-feature-item-five = Upgrade to { -brand-monitor-plus } anytime for automated protection
+landing-redesign-pricing-plans-card-free-feature-item-two = <b>Guided manual removal</b> of personal info from data broker sites
+landing-redesign-pricing-plans-card-free-feature-item-three = Continuous monitoring <b>for data breach exposures</b>
+landing-redesign-pricing-plans-card-free-feature-item-four = Receive <b>data breach exposure alerts</b>
+landing-redesign-pricing-plans-card-free-feature-item-five = <b>Upgrade to { -brand-monitor-plus } anytime</b> for automated protection
 
 ### Logo block
 

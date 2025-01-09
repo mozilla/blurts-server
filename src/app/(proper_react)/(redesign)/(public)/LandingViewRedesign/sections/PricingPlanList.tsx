@@ -44,7 +44,7 @@ type PricingPlanData = {
   type: "free" | "plus";
   title: string;
   subtitle: string;
-  features: string[];
+  features: ReactNode[];
   cta: ReactNode;
   label?: string;
 };
@@ -100,24 +100,41 @@ export const PricingPlanList = (props: Props & ScanLimitProp) => {
         "landing-redesign-pricing-plans-card-plus-subtitle",
       ),
       features: [
-        l10n.getString(
+        l10n.getFragment(
           "landing-redesign-pricing-plans-card-plus-feature-item-one",
           {
-            data_broker_sites_total_num: CONST_ONEREP_DATA_BROKER_COUNT,
+            vars: {
+              data_broker_sites_total_num: CONST_ONEREP_DATA_BROKER_COUNT,
+            },
+            elems: { b: <b /> },
           },
         ),
-        l10n.getString(
+        l10n.getFragment(
           "landing-redesign-pricing-plans-card-plus-feature-item-two",
+          {
+            elems: { b: <b /> },
+          },
         ),
-        l10n.getString(
+        l10n.getFragment(
           "landing-redesign-pricing-plans-card-plus-feature-item-three",
+          {
+            elems: { b: <b /> },
+          },
         ),
-        l10n.getString(
+        l10n.getFragment(
           "landing-redesign-pricing-plans-card-plus-feature-item-four",
+          {
+            elems: { b: <b /> },
+          },
         ),
-        l10n.getString(
+        l10n.getFragment(
           "landing-redesign-pricing-plans-card-plus-feature-item-five",
-          { discountPercentage: yearlyDiscountPercentage },
+          {
+            vars: {
+              discountPercentage: yearlyDiscountPercentage,
+            },
+            elems: { b: <b /> },
+          },
         ),
       ],
       cta: (
@@ -152,19 +169,19 @@ export const PricingPlanList = (props: Props & ScanLimitProp) => {
                       ),
                     },
                   )}
+              {billingPeriod === "yearly" && (
+                <span className={styles.pricingCardSavings}>
+                  {l10n.getString(
+                    "landing-redesign-pricing-plans-card-plus-cta-yearly-sum",
+                    {
+                      yearlyPrice: priceFormatter.format(
+                        12 * monthlyPriceAnnualBilling,
+                      ),
+                    },
+                  )}
+                </span>
+              )}
             </strong>
-            {billingPeriod === "yearly" && (
-              <span className={styles.pricingCardSavings}>
-                {l10n.getString(
-                  "landing-redesign-pricing-plans-card-plus-cta-yearly-sum",
-                  {
-                    yearlyPrice: priceFormatter.format(
-                      12 * monthlyPriceAnnualBilling,
-                    ),
-                  },
-                )}
-              </span>
-            )}
           </p>
           <TelemetryButton
             aria-describedby="pricingPlansMonthlyOrYearly pricingPlansReassurancePlus"
@@ -196,23 +213,38 @@ export const PricingPlanList = (props: Props & ScanLimitProp) => {
         "landing-redesign-pricing-plans-card-free-subtitle",
       ),
       features: [
-        l10n.getString(
+        l10n.getFragment(
           "landing-redesign-pricing-plans-card-free-feature-item-one",
           {
-            data_broker_sites_total_num: CONST_ONEREP_DATA_BROKER_COUNT,
+            vars: {
+              data_broker_sites_total_num: CONST_ONEREP_DATA_BROKER_COUNT,
+            },
+            elems: { b: <b /> },
           },
         ),
-        l10n.getString(
+        l10n.getFragment(
           "landing-redesign-pricing-plans-card-free-feature-item-two",
+          {
+            elems: { b: <b /> },
+          },
         ),
-        l10n.getString(
+        l10n.getFragment(
           "landing-redesign-pricing-plans-card-free-feature-item-three",
+          {
+            elems: { b: <b /> },
+          },
         ),
-        l10n.getString(
+        l10n.getFragment(
           "landing-redesign-pricing-plans-card-free-feature-item-four",
+          {
+            elems: { b: <b /> },
+          },
         ),
-        l10n.getString(
+        l10n.getFragment(
           "landing-redesign-pricing-plans-card-free-feature-item-five",
+          {
+            elems: { b: <b /> },
+          },
         ),
       ],
       cta: (
@@ -263,7 +295,7 @@ export const PricingPlanList = (props: Props & ScanLimitProp) => {
               {features.map((feature, featureIndex) => (
                 <dd key={`${type}-feature-${featureIndex}`}>
                   <CheckIcon alt="Included" />
-                  {feature}
+                  <span>{feature}</span>
                 </dd>
               ))}
               <dd className={styles.pricingCardCta}>{cta}</dd>
