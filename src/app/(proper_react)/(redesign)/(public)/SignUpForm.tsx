@@ -78,7 +78,7 @@ export const SignUpForm = (props: Props) => {
     <WaitlistCta />
   ) : (
     <form
-      ref={refViewTelemetry as RefObject<HTMLFormElement>}
+      ref={refViewTelemetry as RefObject<HTMLFormElement | null>}
       className={styles.form}
       onSubmit={onSubmit}
     >

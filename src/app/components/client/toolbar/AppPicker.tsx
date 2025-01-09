@@ -93,7 +93,7 @@ export const AppPicker = () => {
   const products = getProducts(referringHost, l10n);
   const linkRefs: Record<
     keyof typeof products,
-    RefObject<HTMLAnchorElement>
+    RefObject<HTMLAnchorElement | null>
   > = {
     relay: useRef<HTMLAnchorElement>(null),
     pocket: useRef<HTMLAnchorElement>(null),

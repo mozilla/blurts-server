@@ -8,10 +8,11 @@ import { errorIfProduction } from "../../../../../utils/errorThrower";
 import { getBreachesForHash } from "../../../config/defaults";
 import { BreachedAccountResponse } from "../../../../../../../utils/hibp";
 
-export function GET(
+export async function GET(
   _: NextRequest,
-  { params }: { params: { hashPrefix: string } },
+  props: { params: Promise<{ hashPrefix: string }> },
 ) {
+  const params = await props.params;
   const prodError = errorIfProduction();
   if (prodError) return prodError;
 

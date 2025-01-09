@@ -168,20 +168,13 @@ const nextConfig = {
       type: "asset/source",
     });
 
-    config.externals ??= {};
-    config.externals.push({
-      knex: "commonjs knex",
-    });
-
     return config;
   },
-  experimental: {
-    // Without this setting, Next.js has Webpack trying and failing to load
-    // uglify-js when compiling MJML email templates to HTML in `renderEmail.ts`:
-    serverComponentsExternalPackages: ["mjml"],
-    // Sentry 8.x requires `instrumentation.ts` vs. it's previous custom approach.
-    instrumentationHook: true,
-  },
+  // Without adding MJML here, Next.js has Webpack trying and failing to load
+  // uglify-js when compiling MJML email templates to HTML in `renderEmail.ts`:
+  // commonjs and knex are needed to avoid errors about not being able to load
+  // better-sqlite3, for some reason.
+  serverExternalPackages: ["mjml", "commonjs", "knex"],
 };
 
 const sentryOptions = {

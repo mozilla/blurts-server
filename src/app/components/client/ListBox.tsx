@@ -44,8 +44,8 @@ function Option({ item, state }: OptionProps) {
 
 export interface ListBoxProps extends AriaListBoxOptions<unknown> {
   state: ListState<object>;
-  listBoxRef: RefObject<HTMLUListElement>;
-  parentRef?: RefObject<HTMLInputElement>;
+  listBoxRef: RefObject<HTMLUListElement | null>;
+  parentRef?: RefObject<HTMLInputElement | null>;
   listPlaceholder?: ReactElement;
 }
 

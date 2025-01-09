@@ -23,7 +23,7 @@ import { getEnabledFeatureFlags } from "../../../../../../../../../../db/tables/
 
 export default async function RemovalUnderMaintenance() {
   const session = await getServerSession();
-  const countryCode = getCountryCode(headers());
+  const countryCode = getCountryCode(await headers());
 
   if (!session?.user?.subscriber?.id) {
     return redirect("/");

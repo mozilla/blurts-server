@@ -16,7 +16,7 @@ import { hasPremium } from "../../../../../../../../../functions/universal/user"
 import { getEnabledFeatureFlags } from "../../../../../../../../../../db/tables/featureFlags";
 
 export default async function StartFreeScanPage() {
-  const countryCode = getCountryCode(headers());
+  const countryCode = getCountryCode(await headers());
   if (countryCode !== "us") {
     redirect("/user/dashboard");
   }
