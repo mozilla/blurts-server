@@ -26,11 +26,20 @@
 .logosWrapper {
   display: flex;
   flex-wrap: wrap;
-  gap: $spacing-md;
+  gap: $spacing-xs;
   justify-content: center;
+  padding: 0;
+
+  @media screen and (min-width: $screen-lg) {
+    padding: 0 $layout-sm;
+  }
 
   .logo {
     align-items: center;
     display: flex;
+
+    img {
+      padding: $spacing-xs 0;
+    }
   }
 }

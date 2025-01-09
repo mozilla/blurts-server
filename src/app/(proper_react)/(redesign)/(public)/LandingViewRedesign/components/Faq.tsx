@@ -148,7 +148,9 @@ export const Faq = () => {
   return (
     <section className={styles.section}>
       <div className={styles.content}>
-        <h2>{l10n.getString("landing-redesign-faq-section-title")}</h2>
+        <h2>
+          <b>{l10n.getString("landing-redesign-faq-section-title")}</b>
+        </h2>
         <dl id="faq" className={styles.faqList}>
           {faqItems.map(
             ({ question, answer, isExpanded, id, onExpandAnswer }) => (

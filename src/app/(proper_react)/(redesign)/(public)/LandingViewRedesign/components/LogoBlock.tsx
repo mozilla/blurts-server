@@ -22,59 +22,61 @@ type LogoData = {
   imageSrc: string;
 };
 
-export const LogoBlock = ({ l10n }: { l10n: ExtendedReactLocalization }) => {
-  const logos: LogoData[] = [
-    {
-      title: "Slashdot",
-      imageSrc: slashdotLogo,
-    },
-    {
-      title: "Fortune",
-      imageSrc: fortuneLogo,
-    },
-    {
-      title: "CNET",
-      imageSrc: cnetLogo,
-    },
-    {
-      title: "Mashable",
-      imageSrc: mashableLogo,
-    },
-    {
-      title: "PCWorld",
-      imageSrc: pcworldLogo,
-    },
-    {
-      title: "The Verge",
-      imageSrc: vergeLogo,
-    },
-    {
-      title: "PC Magazine",
-      imageSrc: pcmagazineLogo,
-    },
-    {
-      title: "Engadget",
-      imageSrc: engadgetLogo,
-    },
-    {
-      title: "Tech Crunch",
-      imageSrc: techcrunchLogo,
-    },
-    {
-      title: "TechRadar",
-      imageSrc: techradarLogo,
-    },
-    {
-      title: "Forbes",
-      imageSrc: forbesLogo,
-    },
-  ];
+const logos: LogoData[] = [
+  {
+    title: "Slashdot",
+    imageSrc: slashdotLogo,
+  },
+  {
+    title: "Fortune",
+    imageSrc: fortuneLogo,
+  },
+  {
+    title: "CNET",
+    imageSrc: cnetLogo,
+  },
+  {
+    title: "Mashable",
+    imageSrc: mashableLogo,
+  },
+  {
+    title: "PCWorld",
+    imageSrc: pcworldLogo,
+  },
+  {
+    title: "The Verge",
+    imageSrc: vergeLogo,
+  },
+  {
+    title: "PC Magazine",
+    imageSrc: pcmagazineLogo,
+  },
+  {
+    title: "Engadget",
+    imageSrc: engadgetLogo,
+  },
+  {
+    title: "Tech Crunch",
+    imageSrc: techcrunchLogo,
+  },
+  {
+    title: "TechRadar",
+    imageSrc: techradarLogo,
+  },
+  {
+    title: "Forbes",
+    imageSrc: forbesLogo,
+  },
+] as const;
 
+export const LogoBlock = ({ l10n }: { l10n: ExtendedReactLocalization }) => {
   return (
     <section className={styles.section}>
       <div className={styles.content}>
         <div className={styles.header}>
-          <h2>{l10n.getString("landing-redesign-logo-block-title")}</h2>
+          <h2>
+            <b>{l10n.getString("landing-redesign-logo-block-title")}</b>
+          </h2>
           <p>{l10n.getString("landing-redesign-logo-block-description")}</p>
         </div>
         <div className={styles.logosWrapper}>

@@ -289,7 +289,9 @@ export const PricingPlanList = (props: Props & ScanLimitProp) => {
                 {label && (
                   <span className={styles.pricingCardLabel}>{label}</span>
                 )}
-                <h4>{title}</h4>
+                <h4>
+                  <b>{title}</b>
+                </h4>
                 <p>{subtitle}</p>
               </dt>
               {features.map((feature, featureIndex) => (

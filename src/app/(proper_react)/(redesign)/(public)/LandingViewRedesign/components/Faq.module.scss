@@ -12,18 +12,18 @@
   box-shadow: inset 0 0 0 4px $color-grey-10;
   display: flex;
   flex-direction: column;
-  gap: $layout-xs;
+  gap: $spacing-md;
   max-width: $content-lg;
   padding: $layout-xs;
   width: 100%;
 
   @media screen and (min-width: $screen-sm) {
-    gap: $layout-sm;
+    gap: $spacing-lg;
     padding: $layout-sm;
   }
 
   @media screen and (min-width: $screen-md) {
-    gap: $layout-md;
+    gap: $spacing-xl;
     padding: $layout-md;
   }
 }
@@ -40,6 +40,7 @@
 
     &:focus-within {
       box-shadow: inset 0 0 0 2px $color-purple-70;
+      outline: $border-focus-width solid $color-purple-40;
     }
   }
 
