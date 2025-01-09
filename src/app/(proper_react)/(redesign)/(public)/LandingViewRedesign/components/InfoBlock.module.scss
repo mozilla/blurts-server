@@ -1,22 +1,22 @@
-@import "../../../../../tokens";
+@use "../../../../../tokens";
 
 .infoBlock {
   align-items: center;
-  background-color: $color-grey-05;
-  border-radius: $border-radius-xl;
+  background-color: tokens.$color-grey-05;
+  border-radius: tokens.$border-radius-xl;
   display: flex;
   flex-direction: column;
-  gap: $layout-sm;
-  padding: $layout-sm;
+  gap: tokens.$layout-sm;
+  padding: tokens.$layout-sm;
   width: 100%;
 }
 
 .infoHero {
   display: block;
-  max-width: $content-sm;
+  max-width: tokens.$content-sm;
   width: 100%;
 
-  @media screen and (min-width: $screen-md) {
+  @media screen and (min-width: tokens.$screen-md) {
     display: none;
   }
 }
@@ -27,11 +27,11 @@
   overflow: hidden;
   position: relative;
 
-  @media screen and (min-width: $screen-md) {
+  @media screen and (min-width: tokens.$screen-md) {
     display: block;
   }
 
-  @media screen and (min-width: $screen-lg) {
+  @media screen and (min-width: tokens.$screen-lg) {
     flex: 1 1 10%;
   }
 
@@ -50,12 +50,12 @@
 
 .infoRow {
   display: flex;
-  gap: $layout-xs;
-  max-width: $content-lg;
+  gap: tokens.$layout-xs;
+  max-width: tokens.$content-lg;
   width: 100%;
 
   &:nth-child(odd) {
-    @media screen and (min-width: $screen-md) {
+    @media screen and (min-width: tokens.$screen-md) {
       flex-direction: row-reverse;
     }
 
@@ -66,7 +66,7 @@
         padding: 0;
       }
 
-      @media screen and (min-width: $screen-lg) {
+      @media screen and (min-width: tokens.$screen-lg) {
         flex: 1 1 20%;
       }
     }
@@ -78,15 +78,15 @@
   display: flex;
   flex-direction: column;
   flex: 2;
-  gap: $spacing-md;
+  gap: tokens.$spacing-md;
 
-  @media screen and (min-width: $screen-md) {
-    padding: $layout-sm 0;
+  @media screen and (min-width: tokens.$screen-md) {
+    padding: tokens.$layout-sm 0;
   }
 }
 
 .infoLabel {
-  background-color: $color-grey-10;
-  border-radius: $border-radius-lg;
-  padding: $spacing-xs calc($spacing-md + $spacing-xs);
+  background-color: tokens.$color-grey-10;
+  border-radius: tokens.$border-radius-lg;
+  padding: tokens.$spacing-xs calc(tokens.$spacing-md + tokens.$spacing-xs);
 }

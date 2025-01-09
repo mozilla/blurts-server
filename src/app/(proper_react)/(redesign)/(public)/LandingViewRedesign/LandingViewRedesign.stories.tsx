@@ -33,6 +33,7 @@ const meta: Meta<typeof View> = {
         }}
       >
         <PublicShell
+          countryCode={props.countryCode}
           l10n={getL10n("en")}
           enabledFeatureFlags={["LandingPageRedesign"]}
           experimentData={{

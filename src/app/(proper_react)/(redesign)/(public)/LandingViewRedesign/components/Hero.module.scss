@@ -1,24 +1,24 @@
-@import "../../../../../tokens";
+@use "../../../../../tokens";
 
 .hero {
   background: linear-gradient(270deg, #9948fc 6.7%, #4b179f 67.9%);
-  border-radius: $border-radius-xl;
+  border-radius: tokens.$border-radius-xl;
   overflow: hidden;
   position: relative;
 }
 
 .heroContent {
   align-items: center;
-  color: $color-white;
+  color: tokens.$color-white;
   display: flex;
   flex-direction: column;
   position: relative;
-  gap: $layout-md;
-  padding: $layout-xs;
+  gap: tokens.$layout-md;
+  padding: tokens.$layout-xs;
   z-index: 1;
 
-  @media screen and (min-width: $screen-sm) {
-    padding: $layout-sm;
+  @media screen and (min-width: tokens.$screen-sm) {
+    padding: tokens.$layout-sm;
   }
 }
 
@@ -35,26 +35,26 @@
 .heroTitle {
   align-items: center;
   display: flex;
-  gap: $spacing-md;
+  gap: tokens.$spacing-md;
   flex-direction: column;
-  max-width: $content-md;
+  max-width: tokens.$content-md;
   text-align: center;
 
-  @media screen and (min-width: $screen-md) {
-    padding: 0 $layout-md;
+  @media screen and (min-width: tokens.$screen-md) {
+    padding: 0 tokens.$layout-md;
   }
 
   p {
-    font: $text-body-lg;
+    font: tokens.$text-body-lg;
   }
 }
 
 .heroCta {
   width: 100%;
 
-  @media screen and (min-width: $screen-md) {
-    max-width: $content-md;
-    padding: 0 $layout-md;
+  @media screen and (min-width: tokens.$screen-md) {
+    max-width: tokens.$content-md;
+    padding: 0 tokens.$layout-md;
     & > form button {
       flex: 0 0 auto;
     }
@@ -64,67 +64,67 @@
   // the contrast against the background.
   form > button {
     /* stylelint-disable-next-line declaration-no-important */
-    background-color: $color-purple-90 !important;
+    background-color: tokens.$color-purple-90 !important;
     &:hover {
       /* stylelint-disable-next-line declaration-no-important */
-      background-color: $color-purple-80 !important;
+      background-color: tokens.$color-purple-80 !important;
     }
   }
 }
 
 .heroBanner {
-  background: rgba($color-white, 0.05);
-  border-radius: $border-radius-xl;
+  background: rgba(tokens.$color-white, 0.05);
+  border-radius: tokens.$border-radius-xl;
   display: flex;
   justify-content: center;
-  padding: $spacing-md;
+  padding: tokens.$spacing-md;
   width: 100%;
 
-  @media screen and (min-width: $screen-md) {
-    padding: $spacing-xl;
+  @media screen and (min-width: tokens.$screen-md) {
+    padding: tokens.$spacing-xl;
   }
 
   &Content {
     display: flex;
-    gap: $spacing-lg;
+    gap: tokens.$spacing-lg;
     flex-direction: column;
-    max-width: $content-xl;
+    max-width: tokens.$content-xl;
 
-    @media screen and (min-width: $screen-md) {
+    @media screen and (min-width: tokens.$screen-md) {
       flex-direction: row;
     }
 
-    @media screen and (min-width: $screen-md) {
-      gap: $spacing-xl;
+    @media screen and (min-width: tokens.$screen-md) {
+      gap: tokens.$spacing-xl;
     }
   }
 
   &Item {
     display: flex;
     flex-direction: column;
-    gap: $spacing-md;
+    gap: tokens.$spacing-md;
     position: relative;
-    padding-left: $layout-md;
+    padding-left: tokens.$layout-md;
 
     dt {
-      font: $text-body-lg;
+      font: tokens.$text-body-lg;
 
-      @media screen and (min-width: $screen-sm) {
-        font: $text-body-xl;
+      @media screen and (min-width: tokens.$screen-sm) {
+        font: tokens.$text-body-xl;
       }
     }
 
-    @media screen and (max-width: calc($screen-lg - 1px)) {
-      padding-left: calc($layout-sm + $spacing-sm);
+    @media screen and (max-width: calc(tokens.$screen-lg - 1px)) {
+      padding-left: calc(tokens.$layout-sm + tokens.$spacing-sm);
 
       dd {
-        @include visually-hidden;
+        @include tokens.visually-hidden;
       }
     }
 
     svg {
-      fill: $color-purple-30;
-      padding: $spacing-xs;
+      fill: tokens.$color-purple-30;
+      padding: tokens.$spacing-xs;
       position: absolute;
       left: 0;
       top: 0;
@@ -132,7 +132,7 @@
       height: 32px;
       width: 32px;
 
-      @media screen and (min-width: $screen-lg) {
+      @media screen and (min-width: tokens.$screen-lg) {
         height: 40px;
         width: 40px;
       }

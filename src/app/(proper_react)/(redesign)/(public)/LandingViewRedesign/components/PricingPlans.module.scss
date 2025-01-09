@@ -1,4 +1,4 @@
-@import "../../../../../tokens";
+@use "../../../../../tokens";
 
 .section {
   h2 {
@@ -11,14 +11,14 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  max-width: $content-lg;
+  max-width: tokens.$content-lg;
 }
 
 .header {
-  gap: $layout-xs;
+  gap: tokens.$layout-xs;
   text-align: center;
 }
 
 .content {
-  gap: $layout-lg;
+  gap: tokens.$layout-lg;
 }

@@ -1,21 +1,21 @@
-@import "../../../../../tokens";
+@use "../../../../../tokens";
 
 .banner {
-  background-color: $color-grey-05;
-  border-radius: $border-radius-xl;
+  background-color: tokens.$color-grey-05;
+  border-radius: tokens.$border-radius-xl;
   display: flex;
   justify-content: center;
-  padding: $layout-sm;
+  padding: tokens.$layout-sm;
   width: 100%;
 
   &Content {
     display: flex;
     flex-direction: column;
-    gap: $layout-sm;
-    max-width: $content-lg;
+    gap: tokens.$layout-sm;
+    max-width: tokens.$content-lg;
 
     & > form {
-      max-width: $content-md;
+      max-width: tokens.$content-md;
 
       button {
         flex: 0 0 auto;
@@ -27,14 +27,14 @@
     align-items: flex-start;
     flex-direction: column;
     display: flex;
-    gap: $spacing-sm;
+    gap: tokens.$spacing-sm;
 
     h2 {
       font-weight: 700;
     }
 
     strong {
-      color: $color-purple-70;
+      color: tokens.$color-purple-70;
     }
   }
 }

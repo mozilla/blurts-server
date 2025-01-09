@@ -1,4 +1,4 @@
-@import "../../../../../tokens";
+@use "../../../../../tokens";
 
 .section {
   h2 {
@@ -8,39 +8,39 @@
 
 .content {
   align-items: center;
-  border-radius: $border-radius-lg;
-  box-shadow: inset 0 0 0 4px $color-grey-10;
+  border-radius: tokens.$border-radius-lg;
+  box-shadow: inset 0 0 0 4px tokens.$color-grey-10;
   display: flex;
   flex-direction: column;
-  gap: $spacing-md;
-  max-width: $content-lg;
-  padding: $layout-xs;
+  gap: tokens.$spacing-md;
+  max-width: tokens.$content-lg;
+  padding: tokens.$layout-xs;
   width: 100%;
 
-  @media screen and (min-width: $screen-sm) {
-    gap: $spacing-lg;
-    padding: $layout-sm;
+  @media screen and (min-width: tokens.$screen-sm) {
+    gap: tokens.$spacing-lg;
+    padding: tokens.$layout-sm;
   }
 
-  @media screen and (min-width: $screen-md) {
-    gap: $spacing-xl;
-    padding: $layout-md;
+  @media screen and (min-width: tokens.$screen-md) {
+    gap: tokens.$spacing-xl;
+    padding: tokens.$layout-md;
   }
 }
 
 .faqList {
   display: flex;
   flex-direction: column;
-  gap: $spacing-md;
+  gap: tokens.$spacing-md;
   width: 100%;
 
   .faqItem {
-    border-radius: $border-radius-lg;
-    box-shadow: inset 0 0 0 2px $color-grey-10;
+    border-radius: tokens.$border-radius-lg;
+    box-shadow: inset 0 0 0 2px tokens.$color-grey-10;
 
     &:focus-within {
-      box-shadow: inset 0 0 0 2px $color-purple-70;
-      outline: $border-focus-width solid $color-purple-40;
+      box-shadow: inset 0 0 0 2px tokens.$color-purple-70;
+      outline: tokens.$border-focus-width solid tokens.$color-purple-40;
     }
   }
 
@@ -52,22 +52,22 @@
     cursor: pointer;
     display: flex;
     flex-direction: row;
-    font: $text-body-lg;
+    font: tokens.$text-body-lg;
     font-weight: 600;
-    gap: $layout-xs;
+    gap: tokens.$layout-xs;
     justify-content: space-between;
     margin: 0;
-    padding: $spacing-md;
+    padding: tokens.$spacing-md;
     text-align: start;
     width: 100%;
 
-    @media screen and (min-width: $screen-md) {
-      gap: $layout-md;
-      padding: $spacing-lg;
+    @media screen and (min-width: tokens.$screen-md) {
+      gap: tokens.$layout-md;
+      padding: tokens.$spacing-lg;
     }
 
     svg {
-      color: $color-black;
+      color: tokens.$color-black;
       flex: 1 0 16px;
       max-width: 16px;
     }
@@ -80,10 +80,10 @@
   .faqAnswer {
     display: none;
     height: 0;
-    padding: 0 $layout-xs $spacing-md $spacing-md;
+    padding: 0 tokens.$layout-xs tokens.$spacing-md tokens.$spacing-md;
 
-    @media screen and (min-width: $screen-md) {
-      padding: 0 $layout-lg $spacing-lg $spacing-lg;
+    @media screen and (min-width: tokens.$screen-md) {
+      padding: 0 tokens.$layout-lg tokens.$spacing-lg tokens.$spacing-lg;
     }
 
     &.expanded {

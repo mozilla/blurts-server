@@ -1,8 +1,8 @@
-@import "../../../../../tokens";
+@use "../../../../../tokens";
 
 .section {
-  background-color: $color-grey-05;
-  padding: $layout-sm;
+  background-color: tokens.$color-grey-05;
+  padding: tokens.$layout-sm;
 
   h2 {
     font-weight: 700;
@@ -13,25 +13,25 @@
 .header {
   display: flex;
   flex-direction: column;
-  gap: $layout-sm;
-  max-width: $content-lg;
+  gap: tokens.$layout-sm;
+  max-width: tokens.$content-lg;
 }
 
 .header {
   align-items: center;
-  gap: $spacing-sm;
+  gap: tokens.$spacing-sm;
   text-align: center;
 }
 
 .logosWrapper {
   display: flex;
   flex-wrap: wrap;
-  gap: $spacing-xs;
+  gap: tokens.$spacing-xs;
   justify-content: center;
   padding: 0;
 
-  @media screen and (min-width: $screen-lg) {
-    padding: 0 $layout-sm;
+  @media screen and (min-width: tokens.$screen-lg) {
+    padding: 0 tokens.$layout-sm;
   }
 
   .logo {
@@ -39,7 +39,7 @@
     display: flex;
 
     img {
-      padding: $spacing-xs 0;
+      padding: tokens.$spacing-xs 0;
     }
   }
 }

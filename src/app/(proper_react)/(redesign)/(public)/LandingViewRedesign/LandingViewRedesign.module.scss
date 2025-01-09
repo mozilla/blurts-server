@@ -1,38 +1,38 @@
-@import "../../../../tokens";
+@use "../../../../tokens";
 
 .wrapper {
   display: flex;
   flex-direction: column;
-  gap: $layout-md;
+  gap: tokens.$layout-md;
   height: 100%;
-  padding: 0 $layout-2xs $layout-sm;
+  padding: 0 tokens.$layout-2xs tokens.$layout-sm;
 
-  @media screen and (min-width: $screen-sm) {
-    padding: 0 $layout-sm $layout-sm;
+  @media screen and (min-width: tokens.$screen-sm) {
+    padding: 0 tokens.$layout-sm tokens.$layout-sm;
   }
 
-  @media screen and (min-width: $screen-lg) {
-    padding: 0 $layout-md $layout-sm;
+  @media screen and (min-width: tokens.$screen-lg) {
+    padding: 0 tokens.$layout-md tokens.$layout-sm;
   }
 
   section {
     align-items: center;
-    border-radius: $border-radius-xl;
+    border-radius: tokens.$border-radius-xl;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: $layout-sm;
+    gap: tokens.$layout-sm;
     width: 100%;
   }
 
   h1 {
-    font: $text-title-sm;
+    font: tokens.$text-title-sm;
   }
 
   h2,
   h3,
   h4 {
-    font: $text-title-xs;
+    font: tokens.$text-title-xs;
   }
 
   h1,

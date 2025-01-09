@@ -30,7 +30,7 @@ jest.mock("next/navigation", () => ({
   usePathname: jest.fn(),
 }));
 
-jest.mock("../../../hooks/useTelemetry");
+jest.mock("../../../../hooks/useTelemetry");
 
 beforeEach(() => {
   // For reasons that are unclear to me, the mock implementation defind in the

@@ -15,7 +15,7 @@
 
   .option {
     border-radius: tokens.$border-radius-xl;
-    padding: tokens.$spacing-sm calc($spacing-md * 1.5);
+    padding: tokens.$spacing-sm calc(tokens.$spacing-md * 1.5);
     line-height: 1.25em;
     font-weight: 500;
     color: tokens.$color-grey-50;
