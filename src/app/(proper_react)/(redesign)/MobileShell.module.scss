@@ -96,7 +96,7 @@
         flex-direction: column;
 
         ul {
-          border-bottom: 1px solid $color-grey-10;
+          border-bottom: 1px solid tokens.$color-grey-10;
           list-style-type: none;
           padding: 0;
           width: 100%;
