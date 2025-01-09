@@ -2,6 +2,7 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
+
 # Breach Data Classes
 
 account-balances = Saldos de cuentas
@@ -18,7 +19,7 @@ avatars = Avatares
 bank-account-numbers = Números de cuentas de banco
 beauty-ratings = Puntajes de belleza
 biometric-data = Datos biométricos
-# This string is the shortened version of "Biographies", and 
+# This string is the shortened version of "Biographies", and
 # refers to biographical data about a user.
 bios = Bios
 browser-user-agent-details = Detalles del agente de usuario del navegador
@@ -29,6 +30,8 @@ career-levels = Niveles de profesión
 cellular-network-names = Nombres de redes celulares
 charitable-donations = Donaciones para caridad
 chat-logs = Registros de chat
+citizenship-statuses = Estados de ciudadanía
+clothing-sizes = Tallas de ropa
 credit-card-cvv = CVV de tarjetas de crédito
 credit-cards = Tarjetas de crédito
 credit-status-information = Información del estado de crédito
@@ -38,7 +41,7 @@ customer-interactions = Interaciones del cliente
 dates-of-birth = Fechas de nacimiento
 deceased-date = Fecha de fallecimiento
 deceased-statuses = Estado de fallecimiento
-# Instructions that you can set up in online shopping services to get your orders 
+# Instructions that you can set up in online shopping services to get your orders
 # delivered (e.g. deliver to a specific neighbor, entrance location, etc.).
 delivery-instructions = Instrucciones de entrega
 device-information = Información del dispositivo
@@ -78,12 +81,13 @@ instant-messenger-identities = Identidades de mensajería instantánea
 ip-addresses = Direcciones IP
 job-applications = Solicitudes de empleo
 job-titles = Puestos de trabajo
-# This string refers to vehicle license plates. 
+# This string refers to vehicle license plates.
 licence-plates = Matrículas
 living-costs = Costes de vida
 # This string refers to financial loans.
 loan-information = Información del préstamos
 login-histories = Historiales de inicio de sesión
+loyalty-program-details = Detalles del programa de lealtad
 mac-addresses = Direcciones MAC
 marital-statuses = Estados civiles
 # Mnemonic phrases are a group of words used to access the content of cryptocurrency wallets.
@@ -144,6 +148,7 @@ spouses-names = Nombres de los cónyuges
 support-tickets = Peticiones de apoyo
 survey-results = Resultados de encuestas
 taxation-records = Registros tributarios
+telecommunications-carrier = Operadores de telecomunicaciones
 time-zones = Zonas horarias
 travel-habits = Hábitos de viaje
 user-statuses = Estados de usuario
