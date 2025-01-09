@@ -14,8 +14,10 @@ import { useExperiments } from "../../contextProviders/experiments";
 export const useGlean = () => {
   const session = useSession();
   const experimentData = useExperiments();
+  // Telemetry recording is mocked in our unit tests, therefore we
+  // do not have test coverage for this method.
+  /* c8 ignore start */
   const isPremiumUser = hasPremium(session.data?.user);
-
   const record = useCallback(
     async <
       EventModule extends keyof GleanMetricMap,
@@ -64,6 +66,7 @@ export const useGlean = () => {
     },
     [isPremiumUser, experimentData],
   );
+  /* c8 ignore end */
 
   return record;
 };
