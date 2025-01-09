@@ -19,7 +19,7 @@ const meta: Meta<typeof BreachIndexView> = {
       enabledFeatureFlags={[]}
       experimentData={{
         ...defaultExperimentData["Features"],
-        "landing-page-redesign": {
+        "landing-page-redesign-plus-eligible-experiment": {
           enabled: false,
           variant: "default",
         },

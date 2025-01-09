@@ -17,7 +17,7 @@ const meta: Meta<typeof HowItWorksView> = {
       enabledFeatureFlags={[]}
       experimentData={{
         ...defaultExperimentData["Features"],
-        "landing-page-redesign": {
+        "landing-page-redesign-plus-eligible-experiment": {
           enabled: false,
           variant: "default",
         },

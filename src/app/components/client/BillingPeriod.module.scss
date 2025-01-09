@@ -1,37 +1,37 @@
-@import "../../tokens";
+@use "../../tokens";
 
 .toggleContainer {
-  background-color: $color-grey-05;
-  border-radius: $border-radius-xl;
-  border: 2px solid $color-purple-70;
-  padding: $spacing-xs;
+  background-color: tokens.$color-grey-05;
+  border-radius: tokens.$border-radius-xl;
+  border: 2px solid tokens.$color-purple-70;
+  padding: tokens.$spacing-xs;
   display: flex;
   align-items: center;
-  gap: $spacing-xs;
+  gap: tokens.$spacing-xs;
 
   &:focus-within {
-    outline: $border-focus-width solid $color-purple-10;
+    outline: tokens.$border-focus-width solid tokens.$color-purple-10;
   }
 
   .option {
-    border-radius: $border-radius-xl;
-    padding: $spacing-sm calc($spacing-md * 1.5);
+    border-radius: tokens.$border-radius-xl;
+    padding: tokens.$spacing-sm calc($spacing-md * 1.5);
     line-height: 1.25em;
     font-weight: 500;
-    color: $color-grey-50;
+    color: tokens.$color-grey-50;
     cursor: pointer;
 
     &.isFocused {
-      background-color: $color-purple-10;
+      background-color: tokens.$color-purple-10;
     }
 
     &:hover {
-      background-color: $color-purple-20;
+      background-color: tokens.$color-purple-20;
     }
 
     &.isSelected {
-      background-color: $color-purple-40;
-      color: $color-white;
+      background-color: tokens.$color-purple-40;
+      color: tokens.$color-white;
       font-weight: 600;
     }
   }

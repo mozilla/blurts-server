@@ -74,9 +74,12 @@ export default async function Page({ searchParams }: Props) {
       }}
     >
       {enabledFeatureFlags.includes("LandingPageRedesign") &&
-      experimentData["Features"]["landing-page-redesign"].enabled &&
-      experimentData["Features"]["landing-page-redesign"].variant ===
-        "redesign" ? (
+      experimentData["Features"][
+        "landing-page-redesign-plus-eligible-experiment"
+      ].enabled &&
+      experimentData["Features"][
+        "landing-page-redesign-plus-eligible-experiment"
+      ].variant === "redesign" ? (
         <LandingViewRedesign
           eligibleForPremium={eligibleForPremium}
           l10n={getL10n()}
