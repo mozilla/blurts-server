@@ -90,6 +90,7 @@ export const SignUpForm = (props: Props) => {
         name={emailInputId}
         data-testid="signup-form-input"
         id={emailInputId}
+        value={emailInput}
         onChange={(value) => {
           setEmailInput(value);
         }}
