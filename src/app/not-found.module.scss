@@ -1,4 +1,4 @@
-@import "./tokens";
+@use "tokens";
 
 .wrapper {
   background-image: url("./(proper_react)/images/error-bg.svg");
@@ -25,6 +25,6 @@
   font: var(--h3-font);
   font-weight: bold;
   font-size: 10rem;
-  color: $color-purple-60;
-  text-shadow: 0.75rem 0 0 $color-purple-20;
+  color: tokens.$color-purple-60;
+  text-shadow: 0.75rem 0 0 tokens.$color-purple-20;
 }

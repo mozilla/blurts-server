@@ -1,22 +1,22 @@
-@import "../../../../../../../tokens";
+@use "../../../../../../../tokens";
 
 .emailList {
   display: flex;
   flex-direction: column;
-  gap: $spacing-lg;
+  gap: tokens.$spacing-lg;
   width: 100%;
 }
 
 .resendButtonWrapper {
-  font: $text-body-sm;
-  padding: $spacing-sm $spacing-md;
+  font: tokens.$text-body-sm;
+  padding: tokens.$spacing-sm tokens.$spacing-md;
 
   .resendButton {
     align-items: center;
     display: flex;
     font-weight: 500;
-    gap: $spacing-xs;
-    margin-top: $spacing-sm;
+    gap: tokens.$spacing-xs;
+    margin-top: tokens.$spacing-sm;
   }
 }
 
