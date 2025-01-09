@@ -7,11 +7,23 @@ import { BreachDetailsView, Props as ViewProps } from "./BreachDetailView";
 import { getL10n } from "../../../../../functions/l10n/storybookAndJest";
 import { PublicShell } from "../../PublicShell";
 import { createRandomHibpListing } from "../../../../../../apiMocks/mockData";
+import { defaultExperimentData } from "../../../../../../telemetry/generated/nimbus/experiments";
 
 const meta: Meta<typeof BreachDetailsView> = {
   title: "Pages/Public/Breach listing",
   component: (props: ViewProps) => (
-    <PublicShell l10n={getL10n("en")} countryCode="us">
+    <PublicShell
+      l10n={getL10n("en")}
+      countryCode="us"
+      enabledFeatureFlags={[]}
+      experimentData={{
+        ...defaultExperimentData["Features"],
+        "landing-page-redesign-plus-eligible-experiment": {
+          enabled: false,
+          variant: "default",
+        },
+      }}
+    >
       <BreachDetailsView {...props} />
     </PublicShell>
   ),
