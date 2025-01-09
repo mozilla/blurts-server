@@ -1,39 +1,39 @@
-@import "../../../../../../tokens";
+@use "../../../../../../tokens";
 
 .wrapper {
   display: flex;
   flex-direction: column;
-  gap: $spacing-md;
+  gap: tokens.$spacing-md;
 
   .sectionTitle {
     h3 {
-      font: $text-title-3xs;
+      font: tokens.$text-title-3xs;
     }
 
     p {
-      color: $color-grey-40;
+      color: tokens.$color-grey-40;
     }
   }
 
   .radioGroup {
     display: flex;
     flex-direction: column;
-    gap: $spacing-md;
+    gap: tokens.$spacing-md;
 
     .emailAlertsOptions {
-      padding-inline-start: $spacing-lg;
+      padding-inline-start: tokens.$spacing-lg;
       display: flex;
       flex-direction: column;
-      gap: $spacing-sm;
+      gap: tokens.$spacing-sm;
     }
 
     .radioButton {
-      stroke: $color-black;
+      stroke: tokens.$color-black;
     }
 
     label {
       display: flex;
-      gap: $spacing-xs;
+      gap: tokens.$spacing-xs;
       div {
         display: flex;
         flex-direction: column;
@@ -43,7 +43,7 @@
         }
 
         p {
-          color: $color-grey-40;
+          color: tokens.$color-grey-40;
         }
       }
 
@@ -53,11 +53,11 @@
     }
 
     .focusRing {
-      stroke: $color-blue-50;
+      stroke: tokens.$color-blue-50;
     }
 
     .selectedFill {
-      fill: $color-black;
+      fill: tokens.$color-black;
     }
   }
 }
