@@ -15,6 +15,7 @@ import { getScanResultsWithBroker } from "../../../../../../../../db/tables/oner
 import { getServerSession } from "../../../../../../../functions/server/getServerSession";
 import { refreshStoredScanResults } from "../../../../../../../functions/server/refreshStoredScanResults";
 import { hasPremium } from "../../../../../../../functions/universal/user";
+import { getEnabledFeatureFlags } from "../../../../../../../../db/tables/featureFlags";
 
 export default async function FixPage() {
   const session = await getServerSession();
@@ -31,6 +32,9 @@ export default async function FixPage() {
   if (typeof profileId === "number") {
     await refreshStoredScanResults(profileId);
   }
+  const enabledFeatureFlags = await getEnabledFeatureFlags({
+    email: session.user.email,
+  });
 
   const scanData = await getScanResultsWithBroker(
     profileId,
@@ -43,6 +47,9 @@ export default async function FixPage() {
     latestScanData: scanData,
   };
 
-  const nextStep = getNextGuidedStep(stepDeterminationData);
+  const nextStep = getNextGuidedStep(
+    stepDeterminationData,
+    enabledFeatureFlags,
+  );
   redirect(nextStep.href);
 }

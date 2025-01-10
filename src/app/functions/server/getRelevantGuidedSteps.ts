@@ -83,7 +83,7 @@ export function isGuidedResolutionInProgress(stepId: StepLink["id"]) {
 
 export function getNextGuidedStep(
   data: StepDeterminationData,
-  enabledFeatureFlags?: FeatureFlagName[],
+  enabledFeatureFlags: FeatureFlagName[],
   afterStep?: StepLink["id"],
 ): StepLink {
   // Resisting the urge to add a state machine... ^.^
