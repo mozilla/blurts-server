@@ -30,15 +30,13 @@
   }
 
   h2,
-  h3,
-  h4 {
+  h3 {
     font: tokens.$text-title-xs;
   }
 
   h1,
   h2,
-  h3,
-  h4 {
+  h3 {
     font-family: var(--font-inter);
     font-weight: 400;
     line-height: 1.25em;

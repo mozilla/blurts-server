@@ -4,20 +4,13 @@
 
 "use client";
 
-import {
-  FormEventHandler,
-  RefObject,
-  useContext,
-  useId,
-  useState,
-} from "react";
+import { FormEventHandler, RefObject, useContext, useState } from "react";
 import { signIn } from "next-auth/react";
 import { useL10n } from "../../../hooks/l10n";
 import { Button } from "../../../components/client/Button";
 import styles from "./SignUpForm.module.scss";
 import { useTelemetry } from "../../../hooks/useTelemetry";
 import { useViewTelemetry } from "../../../hooks/useViewTelemetry";
-import { VisuallyHidden } from "../../../components/server/VisuallyHidden";
 import { WaitlistCta } from "./ScanLimit";
 import { useCookies } from "react-cookie";
 import { CONST_URL_MONITOR_LANDING_PAGE_ID } from "../../../../constants";
@@ -34,6 +27,7 @@ export type Props = {
   };
   scanLimitReached: boolean;
   signUpCallbackUrl: string;
+  label?: string;
   experimentData?: ExperimentData["Features"];
   isHero?: boolean;
   placeholder?: string;
@@ -42,7 +36,6 @@ export type Props = {
 };
 
 export const SignUpForm = (props: Props) => {
-  const emailInputId = useId();
   const l10n = useL10n();
   const [emailInput, setEmailInput] = useState("");
   const record = useTelemetry();
@@ -67,15 +60,13 @@ export const SignUpForm = (props: Props) => {
     );
   };
 
-  const labelContent = (
-    <label htmlFor={emailInputId}>
-      {l10n.getString(
-        props.eligibleForPremium
-          ? "landing-premium-hero-emailform-input-label"
-          : "landing-all-hero-emailform-input-label",
-      )}
-    </label>
-  );
+  const label =
+    props.label ??
+    l10n.getString(
+      props.eligibleForPremium
+        ? "landing-premium-hero-emailform-input-label"
+        : "landing-all-hero-emailform-input-label",
+    );
 
   return props.scanLimitReached ? (
     <WaitlistCta />
@@ -87,9 +78,7 @@ export const SignUpForm = (props: Props) => {
     >
       <InputField
         type="email"
-        name={emailInputId}
         data-testid="signup-form-input"
-        id={emailInputId}
         value={emailInput}
         onChange={(value) => {
           setEmailInput(value);
@@ -98,10 +87,7 @@ export const SignUpForm = (props: Props) => {
           props.placeholder ??
           l10n.getString("landing-all-hero-emailform-input-placeholder")
         }
-        label={
-          props.placeholder ??
-          l10n.getString("landing-all-hero-emailform-input-placeholder")
-        }
+        label={label}
         onFocus={() => {
           record("field", "focus", {
             field_id: props.eventId.field,
@@ -122,11 +108,6 @@ export const SignUpForm = (props: Props) => {
         {props.buttonLabel ??
           l10n.getString("landing-all-hero-emailform-submit-label")}
       </Button>
-      {props.isHero ? (
-        labelContent
-      ) : (
-        <VisuallyHidden>{labelContent}</VisuallyHidden>
-      )}
     </form>
   );
 };

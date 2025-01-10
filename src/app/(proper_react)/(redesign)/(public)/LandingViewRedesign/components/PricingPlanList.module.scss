@@ -47,7 +47,9 @@
     padding: tokens.$spacing-xs tokens.$spacing-xs tokens.$spacing-lg;
     text-align: center;
 
-    h4 {
+    b {
+      font: tokens.$text-title-xs;
+      font-family: var(--font-inter);
       font-weight: 700;
       padding: tokens.$spacing-xs 0;
     }

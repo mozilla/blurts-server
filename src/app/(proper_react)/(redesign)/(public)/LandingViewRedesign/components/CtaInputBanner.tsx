@@ -41,8 +41,8 @@ export const CtaInputBanner = (props: LandingPageProps) => {
                 field: "entered_email_address_header",
               }}
               experimentData={props.experimentData}
-              placeholder={props.l10n.getString(
-                "landing-redesign-hero-cta-placeholder",
+              label={props.l10n.getString(
+                "landing-redesign-hero-cta-input-label",
               )}
               buttonLabel={props.l10n.getString(
                 "landing-redesign-hero-cta-button-label",

@@ -84,10 +84,11 @@
     padding: tokens.$spacing-xl;
   }
 
-  &Content {
+  &List {
     display: flex;
     gap: tokens.$spacing-lg;
     flex-direction: column;
+    padding: 0;
     max-width: tokens.$content-xl;
 
     @media screen and (min-width: tokens.$screen-md) {
@@ -106,7 +107,7 @@
     position: relative;
     padding-left: tokens.$layout-md;
 
-    dt {
+    strong {
       font: tokens.$text-body-lg;
 
       @media screen and (min-width: tokens.$screen-sm) {
@@ -117,7 +118,7 @@
     @media screen and (max-width: calc(tokens.$screen-lg - 1px)) {
       padding-left: calc(tokens.$layout-sm + tokens.$spacing-sm);
 
-      dd {
+      span {
         @include tokens.visually-hidden;
       }
     }

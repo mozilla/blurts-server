@@ -42,7 +42,7 @@ const FaqItem = (props: FaqItemProps) => {
   const { focusProps } = useFocusRing();
 
   return (
-    <span className={styles.faqItem}>
+    <>
       <dt>
         <button
           {...buttonProps}
@@ -69,7 +69,7 @@ const FaqItem = (props: FaqItemProps) => {
       >
         {props.answer}
       </dd>
-    </span>
+    </>
   );
 };
 

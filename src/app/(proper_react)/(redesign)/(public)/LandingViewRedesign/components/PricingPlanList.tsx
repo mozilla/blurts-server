@@ -281,17 +281,15 @@ export const PricingPlanList = (props: Props & ScanLimitProp) => {
       <VisuallyHidden>
         <h3>{l10n.getString("landing-redesign-pricing-plans-cards-title")}</h3>
       </VisuallyHidden>
-      <dl className={styles.pricingPlans}>
+      <span className={styles.pricingPlans}>
         {pricingPlanData.map(
           ({ type, label, title, subtitle, features, cta }) => (
-            <span key={type} className={styles.pricingCard}>
+            <dl key={type} className={styles.pricingCard}>
               <dt className={styles.pricingCardHeader}>
+                <b>{title}</b>
                 {label && (
                   <span className={styles.pricingCardLabel}>{label}</span>
                 )}
-                <h4>
-                  <b>{title}</b>
-                </h4>
                 <p>{subtitle}</p>
               </dt>
               {features.map((feature, featureIndex) => (
@@ -301,10 +299,10 @@ export const PricingPlanList = (props: Props & ScanLimitProp) => {
                 </dd>
               ))}
               <dd className={styles.pricingCardCta}>{cta}</dd>
-            </span>
+            </dl>
           ),
         )}
-      </dl>
+      </span>
     </>
   );
 };

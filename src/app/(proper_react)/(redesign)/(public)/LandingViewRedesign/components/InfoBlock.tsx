@@ -19,10 +19,10 @@ type InfoRowData = {
   imageSrc: string;
 };
 
-const InfoRow = ({ key, data }: { key: string; data: InfoRowData }) => {
+const InfoRow = ({ data }: { data: InfoRowData }) => {
   const { label, title, description, imageSrc } = data;
   return (
-    <div key={key} className={styles.infoRow}>
+    <div className={styles.infoRow}>
       <div className={styles.infoImageWrapper}>
         <Image src={imageSrc} alt="" />
       </div>

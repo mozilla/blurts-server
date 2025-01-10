@@ -45,6 +45,7 @@ export const FreeScanCta = (
         eventId={props.eventId}
         experimentData={props.experimentData}
         placeholder={props.placeholder}
+        label={props.label}
         buttonLabel={props.buttonLabel}
         hasFloatingLabel={props.hasFloatingLabel}
       />

@@ -37,8 +37,8 @@ export const Hero = (props: LandingPageProps) => {
                 field: "entered_email_address_header",
               }}
               experimentData={props.experimentData}
-              placeholder={props.l10n.getString(
-                "landing-redesign-hero-cta-placeholder",
+              label={props.l10n.getString(
+                "landing-redesign-hero-cta-input-label",
               )}
               buttonLabel={props.l10n.getString(
                 "landing-redesign-hero-cta-button-label",
@@ -48,47 +48,47 @@ export const Hero = (props: LandingPageProps) => {
           )}
         </div>
         <div className={styles.heroBanner}>
-          <dl className={styles.heroBannerContent}>
-            <span className={styles.heroBannerItem}>
+          <ul className={styles.heroBannerList}>
+            <li className={styles.heroBannerItem}>
               <ShieldIconBig alt="" />
-              <dt>
+              <strong>
                 {props.l10n.getString(
                   "landing-redesign-hero-list-item-title-one",
                 )}
-              </dt>
-              <dd>
+              </strong>
+              <span>
                 {props.l10n.getString(
                   "landing-redesign-hero-list-item-description-one",
                 )}
-              </dd>
-            </span>
-            <span className={styles.heroBannerItem}>
+              </span>
+            </li>
+            <li className={styles.heroBannerItem}>
               <ClockIconBig alt="" />
-              <dt>
+              <strong>
                 {props.l10n.getString(
                   "landing-redesign-hero-list-item-title-two",
                 )}
-              </dt>
-              <dd>
+              </strong>
+              <span>
                 {props.l10n.getString(
                   "landing-redesign-hero-list-item-description-two",
                 )}
-              </dd>
-            </span>
-            <span className={styles.heroBannerItem}>
+              </span>
+            </li>
+            <li className={styles.heroBannerItem}>
               <HeartIconBig alt="" />
-              <dt>
+              <strong>
                 {props.l10n.getString(
                   "landing-redesign-hero-list-item-title-three",
                 )}
-              </dt>
-              <dd>
+              </strong>
+              <span>
                 {props.l10n.getString(
                   "landing-redesign-hero-list-item-description-three",
                 )}
-              </dd>
-            </span>
-          </dl>
+              </span>
+            </li>
+          </ul>
         </div>
       </div>
       <svg

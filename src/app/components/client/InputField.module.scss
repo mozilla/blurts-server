@@ -2,10 +2,10 @@
 
 .input,
 .comboBox {
-  background: tokens.$color-white;
   border-radius: tokens.$border-radius-md;
   display: flex;
   flex-direction: column;
+  gap: tokens.$spacing-sm;
   position: relative;
 
   .inputFieldWrapper {
@@ -35,11 +35,12 @@
   }
 
   .inputField {
+    background: tokens.$color-white;
     border: 1px solid tokens.$color-grey-30;
     border-radius: tokens.$border-radius-md;
     color: tokens.$color-black;
     // Add a bit more space: The next spacing step is too much.
-    padding: calc(tokens.$spacing-sm * 1.5);
+    padding: tokens.$spacing-md calc(tokens.$spacing-sm * 1.5);
     width: 100%;
 
     &.noValue {
@@ -72,8 +73,8 @@
     }
     .inputField {
       // Move the value string off-center.
-      padding: calc(tokens.$spacing-md * 1.25) calc(tokens.$spacing-sm * 1.5)
-        tokens.$spacing-xs;
+      padding: calc(tokens.$spacing-md * 1.35) calc(tokens.$spacing-sm * 1.5)
+        calc(tokens.$spacing-md * 0.65);
     }
   }
 
@@ -82,13 +83,12 @@
     .floatingLabel {
       color: tokens.$color-grey-40;
       // Make the floating label visually align with the input value.
-      transform: translate(-0.05em, -115%) scale(0.75);
+      transform: translate(-0.05em, -150%) scale(0.85);
     }
   }
 
   .inputLabel {
     font-weight: 600;
-    margin-bottom: tokens.$spacing-sm;
   }
 
   .buttonIcon {
@@ -107,7 +107,7 @@
     align-items: center;
     color: tokens.$color-grey-40;
     gap: tokens.$spacing-xs;
-    background: inherit;
+    background: tokens.$color-white;
     border-radius: tokens.$border-radius-sm;
     bottom: 0;
     font: tokens.$text-body-xs;
