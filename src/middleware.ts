@@ -5,7 +5,6 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import nextConfig from "../next.config";
-import { logger } from "./app/functions/server/logging";
 
 // This function can be marked `async` if using `await` inside
 export function middleware(request: NextRequest) {
@@ -43,15 +42,6 @@ export function middleware(request: NextRequest) {
       headers: requestHeaders,
     },
   });
-
-  if (!existingExperimentationId) {
-    response.cookies.set({
-      name: "experimentationId",
-      value: experimentationId,
-      path: "/",
-    });
-    logger.info("Set experimentation ID cookie", { experimentationId });
-  }
 
   return response;
 }
