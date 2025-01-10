@@ -28,6 +28,12 @@ export function getExperimentationId(
     // If the user is logged in, use the Subscriber ID.
     const namespace = process.env.NIMBUS_UUID_NAMESPACE;
     if (!namespace) {
+      logger.error(
+        "NIMBUS_UUID_NAMESPACE environment variable is missing. Cannot generate experimentationId.",
+        {
+          accountId,
+        },
+      );
       throw new Error(
         "NIMBUS_UUID_NAMESPACE not set, cannot create experimentationId",
       );
@@ -47,6 +53,9 @@ export function getExperimentationId(
       );
       return "guest-no-experimentation-id-set-by-monitor-middleware";
     }
+    logger.info("Using experimentationId from header for guest user", {
+      experimentationId,
+    });
     return experimentationId as ExperimentationId;
   }
 }
