@@ -12,10 +12,10 @@
   @media screen and (max-width: tokens.$screen-xl) {
     position: sticky;
     background-color: tokens.$color-white;
-    box-shadow: tokens.$box-shadow-sm;
     width: 100%;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: tokens.$spacing-sm;
     padding: tokens.$spacing-xs tokens.$spacing-sm;
     // Overlay `.nonHeader` so that the box-shadow of this element
@@ -23,43 +23,37 @@
     z-index: 1;
 
     .headerStart {
-      flex: 0 0 20%;
       display: flex;
       align-items: center;
       justify-content: flex-start;
-
-      .menuToggleButton {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: transparent;
-        border-style: none;
-        padding: tokens.$spacing-md;
-        cursor: pointer;
-
-        svg {
-          width: auto;
-          height: 16px;
-        }
-
-        &:hover svg {
-          color: tokens.$color-blue-50;
-        }
-      }
-    }
-
-    .headerMiddle {
-      flex: 1 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      padding-left: tokens.$spacing-md;
     }
 
     .headerEnd {
-      flex: 0 0 20%;
+      align-self: flex-end;
       display: flex;
       align-items: center;
+      gap: tokens.$spacing-sm;
       justify-content: flex-end;
+    }
+
+    .menuToggleButton {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: transparent;
+      border-style: none;
+      padding: tokens.$spacing-md;
+      cursor: pointer;
+
+      svg {
+        width: auto;
+        height: 16px;
+      }
+
+      &:hover svg {
+        color: tokens.$color-purple-70;
+      }
     }
   }
 }
@@ -92,7 +86,7 @@
       top: 0;
       height: 0;
       // Overlap .content
-      z-index: 1;
+      z-index: 2;
 
       .mainMenu {
         align-items: center;
@@ -102,61 +96,51 @@
         flex-direction: column;
 
         ul {
+          border-bottom: 1px solid tokens.$color-grey-10;
           list-style-type: none;
           padding: 0;
           width: 100%;
-        }
 
-        a,
-        a:visited {
-          display: block;
-          padding: tokens.$spacing-sm tokens.$spacing-lg;
-          color: tokens.$color-grey-40;
-          font-weight: 500;
-          border-top: 1px solid tokens.$color-grey-10;
-          text-decoration: none;
-
-          &.isActive {
-            color: tokens.$color-purple-70;
-          }
-
-          &:hover {
-            background-color: tokens.$color-purple-50;
-            color: tokens.$color-white;
-            text-decoration: underline;
-          }
-
-          // The `a` and `a:visited` violate this rule, but are safe:
-          // stylelint-disable-next-line no-descending-specificity
-          &:focus {
-            background-color: tokens.$color-blue-50;
-            color: tokens.$color-white;
-            outline: none;
-          }
-        }
-
-        .subMenu {
-          padding-left: tokens.$layout-xs;
-
-          // The `a` and `a:visited` violate this rule, but are safe:
-          // stylelint-disable-next-line no-descending-specificity
-          a,
-          a:visited {
-            border-top: none;
+          a {
+            align-items: center;
+            display: flex;
+            padding: calc(tokens.$spacing-sm * 1.5) tokens.$spacing-lg;
+            gap: tokens.$spacing-sm;
+            color: tokens.$color-black;
+            border-top: 1px solid tokens.$color-grey-10;
+            text-decoration: none;
 
             &.isActive {
-              color: tokens.$color-purple-40;
+              color: tokens.$color-purple-70;
               text-decoration: underline;
-
-              &:hover {
-                color: tokens.$color-purple-70;
-              }
             }
 
             &:hover {
-              color: tokens.$color-grey-40;
-              background: none;
+              background-color: tokens.$color-purple-50;
+              color: tokens.$color-white;
               text-decoration: underline;
+            }
+
+            // The `a` and `a:visited` violate this rule, but are safe:
+            // stylelint-disable-next-line no-descending-specificity
+            &:focus {
+              background-color: tokens.$color-grey-10;
+              outline: none;
+              text-decoration: underline;
+            }
+
+            & > svg {
+              fill: tokens.$color-purple-70;
+            }
+          }
+
+          &.subMenu {
+            border-bottom: none;
+
+            a {
+              font-weight: 400;
+              padding: calc(tokens.$spacing-sm * 1.5) tokens.$spacing-2xl;
+              border-top: none;
             }
           }
         }

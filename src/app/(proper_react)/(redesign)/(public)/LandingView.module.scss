@@ -5,6 +5,28 @@
   flex-direction: column;
   height: 100%;
 }
+
+.waitlistSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: tokens.$spacing-lg;
+  padding: tokens.$layout-md tokens.$spacing-md;
+
+  .waitlistTitle {
+    text-align: center;
+    font: tokens.$text-title-2xs;
+    font-weight: 600;
+    line-height: 1.4;
+    font-family: var(--font-inter);
+    color: tokens.$color-purple-70;
+  }
+
+  a {
+    align-self: center;
+  }
+}
+
 .navbar {
   font: tokens.$text-body-xl;
   padding: tokens.$layout-xs;
@@ -12,28 +34,28 @@
   flex-direction: row;
   justify-content: flex-start;
   background-color: tokens.$color-grey-05;
-  .navbarLinksContainer {
+  ul {
     display: flex;
     flex-direction: column;
-    .navbarLinks {
+    a {
       text-decoration: none;
       color: tokens.$color-grey-50;
     }
   }
   @media screen and (min-width: tokens.$screen-sm) {
     justify-content: flex-end;
-    .navbarLinksContainer {
+    ul {
       flex-direction: row;
       justify-content: flex-end;
-      .navbarLinks {
+      a {
         margin-left: tokens.$spacing-lg;
       }
     }
   }
   @media screen and (min-width: tokens.$screen-md) {
     padding: tokens.$layout-xs tokens.$layout-xl;
-    .navbarLinksContainer {
-      .navbarLinks {
+    ul {
+      a {
         margin-left: tokens.$spacing-xl;
       }
     }
@@ -393,27 +415,6 @@
   }
 
   .waitlistCta {
-    align-self: center;
-  }
-}
-
-.waitlistSection {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: tokens.$spacing-lg;
-  padding: tokens.$layout-md tokens.$spacing-md;
-
-  .waitlistTitle {
-    text-align: center;
-    font: tokens.$text-title-2xs;
-    font-weight: 600;
-    line-height: 1.4;
-    font-family: var(--font-inter);
-    color: tokens.$color-purple-70;
-  }
-
-  a {
     align-self: center;
   }
 }
