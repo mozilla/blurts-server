@@ -7,6 +7,7 @@ fix-flow-nav-leaked-passwords = 유출된 비밀번호
 fix-flow-nav-security-recommendations = 보안 관련 권장 사항
 guided-resolution-flow-exit = 대시보드로 돌아가기
 guided-resolution-flow-next-arrow = 다음 단계로 넘어가기
+guided-resolution-flow-next-arrow-sub-step = 다음 결과로 가기
 guided-resolution-flow-step-navigation-label = 단계별 안내
 
 # Celebration screens
