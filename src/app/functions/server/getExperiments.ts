@@ -53,7 +53,6 @@ export async function getExperiments(params: {
     logger.info("Sending request to Cirrus", {
       serverUrl: serverUrl.toString(),
       previewMode: params.previewMode,
-      client_id: params.experimentationId,
     });
 
     const response = await fetch(serverUrl, {
