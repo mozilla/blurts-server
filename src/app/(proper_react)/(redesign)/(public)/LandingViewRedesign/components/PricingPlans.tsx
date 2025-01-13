@@ -37,6 +37,8 @@ export const PricingPlans = (props: LandingPageProps) => {
           }}
           subscriptionBillingAmount={getSubscriptionBillingAmount()}
           scanLimitReached={props.scanLimitReached}
+          experimentData={props.experimentData}
+          eligibleForPremium={props.eligibleForPremium}
         />
       </div>
     </section>

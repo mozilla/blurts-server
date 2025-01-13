@@ -4,7 +4,13 @@
 
 "use client";
 
-import { FormEventHandler, RefObject, useContext, useState } from "react";
+import {
+  FormEventHandler,
+  ReactNode,
+  RefObject,
+  useContext,
+  useState,
+} from "react";
 import { signIn } from "next-auth/react";
 import { useL10n } from "../../../hooks/l10n";
 import { Button } from "../../../components/client/Button";
@@ -31,7 +37,7 @@ export type Props = {
   experimentData?: ExperimentData["Features"];
   isHero?: boolean;
   placeholder?: string;
-  buttonLabel?: string;
+  ctaLabel?: string | ReactNode;
   hasFloatingLabel?: boolean;
 };
 
@@ -105,7 +111,7 @@ export const SignUpForm = (props: Props) => {
           });
         }}
       >
-        {props.buttonLabel ??
+        {props.ctaLabel ??
           l10n.getString("landing-all-hero-emailform-submit-label")}
       </Button>
     </form>

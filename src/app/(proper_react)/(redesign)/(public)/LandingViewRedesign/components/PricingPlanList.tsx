@@ -5,7 +5,6 @@
 "use client";
 
 import { ReactNode, useRef, useState } from "react";
-import { signIn } from "next-auth/react";
 import { useCookies } from "react-cookie";
 import { useL10n } from "../../../../../hooks/l10n";
 import { useTelemetry } from "../../../../../hooks/useTelemetry";
@@ -23,6 +22,9 @@ import {
 } from "../../../../../../constants";
 import styles from "./PricingPlanList.module.scss";
 import { CheckIcon } from "../../../../../components/server/Icons";
+import { ScanLimit } from "../../ScanLimit";
+import { FreeScanCta } from "../../FreeScanCta";
+import { ExperimentData } from "../../../../../../telemetry/generated/nimbus/experiments";
 
 export type Props = {
   "aria-labelledby": string;
@@ -37,7 +39,9 @@ export type Props = {
 };
 
 type ScanLimitProp = {
+  experimentData: ExperimentData["Features"];
   scanLimitReached: boolean;
+  eligibleForPremium: boolean;
 };
 
 type PricingPlanData = {
@@ -252,25 +256,24 @@ export const PricingPlanList = (props: Props & ScanLimitProp) => {
           <p>
             <strong>{roundedPriceFormatter.format(0)}</strong>
           </p>
-          <TelemetryButton
-            aria-describedby="pricingPlansBillingFree pricingPlansReassuranceFree"
-            disabled={props.scanLimitReached}
-            variant="secondary"
-            event={{
-              module: "ctaButton",
-              name: "click",
-              data: {
-                button_id: "clicked_free_pricing_grid",
-              },
-            }}
-            onPress={() => {
-              void signIn("fxa");
-            }}
-          >
-            {l10n.getString(
-              "landing-redesign-pricing-plans-card-free-cta-label",
-            )}
-          </TelemetryButton>
+          {props.scanLimitReached ? (
+            <ScanLimit />
+          ) : (
+            <FreeScanCta
+              aria-describedby="pricingPlansBillingFree pricingPlansReassuranceFree"
+              scanLimitReached={props.scanLimitReached}
+              eligibleForPremium={props.eligibleForPremium}
+              signUpCallbackUrl={`${process.env.SERVER_URL}/user/dashboard`}
+              eventId={{
+                cta: "clicked_free_pricing_card",
+              }}
+              experimentData={props.experimentData}
+              ctaLabel={l10n.getString(
+                "landing-redesign-pricing-plans-card-free-cta-label",
+              )}
+              showCtaOnly
+            />
+          )}
         </>
       ),
     },

@@ -16,9 +16,9 @@ import { PricingPlans } from "./components/PricingPlans";
 
 export type LandingPageProps = {
   countryCode: string;
-  eligibleForPremium: boolean;
   experimentData: ExperimentData["Features"];
   l10n: ExtendedReactLocalization;
+  eligibleForPremium: boolean;
   scanLimitReached: boolean;
 };
 
@@ -29,7 +29,7 @@ export const View = (props: LandingPageProps) => {
       <main className={styles.wrapper}>
         <Hero {...props} />
         <CtaBanner {...props} />
-        <InfoBlock l10n={props.l10n} />
+        <InfoBlock {...props} />
         <PricingPlans {...props} />
         <LogoBlock l10n={props.l10n} />
         <Faq />

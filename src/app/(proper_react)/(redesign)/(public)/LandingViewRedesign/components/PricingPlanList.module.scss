@@ -63,6 +63,8 @@
     padding: calc(tokens.$spacing-sm * 1.5) tokens.$spacing-sm;
 
     &.pricingCardCta {
+      align-items: normal;
+      border: none;
       display: flex;
       flex-direction: column;
       gap: tokens.$spacing-lg;

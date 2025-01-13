@@ -9,8 +9,8 @@ import { userEvent } from "@testing-library/user-event";
 import { axe } from "jest-axe";
 import { signIn, useSession } from "next-auth/react";
 import Meta, {
-  LandingRedesignNonUs,
   LandingRedesignUs,
+  LandingRedesignUsScanLimit,
 } from "./LandingViewRedesign.stories";
 import { useTelemetry } from "../../../../hooks/useTelemetry";
 import { deleteAllCookies } from "../../../../functions/client/deleteAllCookies";
@@ -43,9 +43,9 @@ beforeEach(() => {
   deleteAllCookies();
 });
 
-describe("When Premium is not available", () => {
+describe("Default landing page", () => {
   it("passes the axe accessibility test suite", async () => {
-    const ComposedLanding = composeStory(LandingRedesignNonUs, Meta);
+    const ComposedLanding = composeStory(LandingRedesignUs, Meta);
     const { container } = render(<ComposedLanding />);
     expect(await axe(container)).toHaveNoViolations();
   });
@@ -66,7 +66,7 @@ describe("When Premium is not available", () => {
       update: () => Promise.resolve(null),
     });
 
-    const ComposedLanding = composeStory(LandingRedesignNonUs, Meta);
+    const ComposedLanding = composeStory(LandingRedesignUs, Meta);
     render(<ComposedLanding />);
 
     const signInButton = screen.queryByRole("button", {
@@ -77,7 +77,7 @@ describe("When Premium is not available", () => {
   });
 
   it("shows a 'Sign In' button in the header if the user is not signed in", async () => {
-    const ComposedLanding = composeStory(LandingRedesignNonUs, Meta);
+    const ComposedLanding = composeStory(LandingRedesignUs, Meta);
     render(<ComposedLanding />);
 
     const user = userEvent.setup();
@@ -92,7 +92,7 @@ describe("When Premium is not available", () => {
 
   it("counts the number of clicks on the sign-in button at the top", async () => {
     const mockedRecord = useTelemetry();
-    const ComposedLanding = composeStory(LandingRedesignNonUs, Meta);
+    const ComposedLanding = composeStory(LandingRedesignUs, Meta);
     render(<ComposedLanding />);
 
     const user = userEvent.setup();
@@ -111,14 +111,6 @@ describe("When Premium is not available", () => {
         button_id: "sign_in",
       }),
     );
-  });
-});
-
-describe("When Premium is available", () => {
-  it("passes the axe accessibility test suite", async () => {
-    const ComposedLanding = composeStory(LandingRedesignUs, Meta);
-    const { container } = render(<ComposedLanding />);
-    expect(await axe(container)).toHaveNoViolations();
   });
 
   it.each([
@@ -166,6 +158,14 @@ describe("When Premium is available", () => {
   });
 });
 
+describe("Scan limit reached", () => {
+  it("passes the axe accessibility test suite", async () => {
+    const ComposedLanding = composeStory(LandingRedesignUsScanLimit, Meta);
+    const { container } = render(<ComposedLanding />);
+    expect(await axe(container)).toHaveNoViolations();
+  });
+});
+
 describe("Account deletion confirmation", () => {
   it("does not show a confirmaton message if the user has just deleted their account", () => {
     global.fetch = jest.fn().mockImplementation(() =>
@@ -178,7 +178,7 @@ describe("Account deletion confirmation", () => {
     );
     document.cookie = "justDeletedAccount=justDeletedAccount; max-age=0";
 
-    const ComposedLanding = composeStory(LandingRedesignNonUs, Meta);
+    const ComposedLanding = composeStory(LandingRedesignUs, Meta);
     render(<ComposedLanding />);
 
     const alert = screen.queryByRole("alert");
@@ -197,7 +197,7 @@ describe("Account deletion confirmation", () => {
     );
     document.cookie = "justDeletedAccount=justDeletedAccount";
 
-    const ComposedLanding = composeStory(LandingRedesignNonUs, Meta);
+    const ComposedLanding = composeStory(LandingRedesignUs, Meta);
     render(<ComposedLanding />);
 
     const alert = screen.getByRole("alert");
@@ -221,7 +221,7 @@ describe("Account deletion confirmation", () => {
     const user = userEvent.setup();
     document.cookie = "justDeletedAccount=justDeletedAccount";
 
-    const ComposedLanding = composeStory(LandingRedesignNonUs, Meta);
+    const ComposedLanding = composeStory(LandingRedesignUs, Meta);
     render(<ComposedLanding />);
 
     const alert = screen.getByRole("alert");

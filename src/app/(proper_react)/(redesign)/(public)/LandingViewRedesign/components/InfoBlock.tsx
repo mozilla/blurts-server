@@ -3,14 +3,15 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import Image from "next/image";
-import { TelemetryButton } from "../../../../../components/client/TelemetryButton";
 import { ArrowIcon } from "../../../../../components/server/Icons";
 import styles from "./InfoBlock.module.scss";
 import PhoneMockup from "../images/phone-mockup.svg";
 import LaptopMockup from "../images/laptop-mockup.svg";
 import TabletMockup from "../images/tablet-mockup.svg";
 import PhoneLaptopMockupMobile from "../images/phone-laptop-mockup-mobile.svg";
-import { ExtendedReactLocalization } from "../../../../../functions/l10n";
+import { ScanLimit } from "../../ScanLimit";
+import { FreeScanCta } from "../../FreeScanCta";
+import { LandingPageProps } from "..";
 
 type InfoRowData = {
   label: string;
@@ -35,28 +36,28 @@ const InfoRow = ({ data }: { data: InfoRowData }) => {
   );
 };
 
-export const InfoBlock = ({ l10n }: { l10n: ExtendedReactLocalization }) => {
+export const InfoBlock = (props: LandingPageProps) => {
   const infoRowData: InfoRowData[] = [
     {
-      label: l10n.getString("landing-redesign-info-block-one-label"),
-      title: l10n.getString("landing-redesign-info-block-one-title"),
-      description: l10n.getString(
+      label: props.l10n.getString("landing-redesign-info-block-one-label"),
+      title: props.l10n.getString("landing-redesign-info-block-one-title"),
+      description: props.l10n.getString(
         "landing-redesign-info-block-one-description",
       ),
       imageSrc: PhoneMockup,
     },
     {
-      label: l10n.getString("landing-redesign-info-block-two-label"),
-      title: l10n.getString("landing-redesign-info-block-two-title"),
-      description: l10n.getString(
+      label: props.l10n.getString("landing-redesign-info-block-two-label"),
+      title: props.l10n.getString("landing-redesign-info-block-two-title"),
+      description: props.l10n.getString(
         "landing-redesign-info-block-two-description",
       ),
       imageSrc: LaptopMockup,
     },
     {
-      label: l10n.getString("landing-redesign-info-block-three-label"),
-      title: l10n.getString("landing-redesign-info-block-three-title"),
-      description: l10n.getString(
+      label: props.l10n.getString("landing-redesign-info-block-three-label"),
+      title: props.l10n.getString("landing-redesign-info-block-three-title"),
+      description: props.l10n.getString(
         "landing-redesign-info-block-three-description",
       ),
       imageSrc: TabletMockup,
@@ -72,23 +73,29 @@ export const InfoBlock = ({ l10n }: { l10n: ExtendedReactLocalization }) => {
         {infoRowData.map((info, infoIndex) => (
           <InfoRow key={`info-${infoIndex}`} data={info} />
         ))}
-        <TelemetryButton
-          variant="primary"
-          // TODO: Add href and telementry
-          href="/"
-          target="_blank"
-          rel="noopener noreferrer"
-          event={{
-            module: "link",
-            name: "click",
-            data: {
-              link_id: "",
-            },
-          }}
-        >
-          {l10n.getString("landing-redesign-banner-cta-button-label")}
-          <ArrowIcon alt="" />
-        </TelemetryButton>
+        {props.eligibleForPremium && props.scanLimitReached ? (
+          <ScanLimit />
+        ) : (
+          <FreeScanCta
+            scanLimitReached={props.scanLimitReached}
+            eligibleForPremium={props.eligibleForPremium}
+            signUpCallbackUrl={`${process.env.SERVER_URL}/user/dashboard`}
+            eventId={{
+              cta: "clicked_get_scan_info_banner",
+            }}
+            experimentData={props.experimentData}
+            ctaLabel={
+              <>
+                {props.l10n.getString(
+                  "landing-redesign-banner-cta-button-label",
+                )}
+                <ArrowIcon alt="" />
+              </>
+            }
+            hasFloatingLabel
+            showCtaOnly
+          />
+        )}
       </div>
     </section>
   );

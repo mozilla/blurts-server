@@ -13,8 +13,13 @@ import { CONST_URL_MONITOR_LANDING_PAGE_ID } from "../../../../../constants";
 const meta: Meta<typeof View> = {
   title: "Pages/Public/Landing page/Redesign",
   component: (props: LandingPageProps) => {
-    const experimentData =
-      props.experimentData ?? defaultExperimentData["Features"];
+    const experimentData = props.experimentData ?? {
+      ...defaultExperimentData["Features"],
+      "landing-page-redesign-plus-eligible-experiment": {
+        enabled: true,
+        variant: "redesign",
+      },
+    };
     return (
       <AccountsMetricsFlowProvider
         enabled={
@@ -36,13 +41,7 @@ const meta: Meta<typeof View> = {
           countryCode={props.countryCode}
           l10n={getL10n("en")}
           enabledFeatureFlags={["LandingPageRedesign"]}
-          experimentData={{
-            ...defaultExperimentData["Features"],
-            "landing-page-redesign-plus-eligible-experiment": {
-              enabled: true,
-              variant: "redesign",
-            },
-          }}
+          experimentData={experimentData}
         >
           <View {...props} experimentData={experimentData} />
         </PublicShell>
@@ -72,31 +71,5 @@ export const LandingRedesignUsScanLimit: Story = {
     eligibleForPremium: true,
     countryCode: "us",
     scanLimitReached: true,
-  },
-};
-
-export const LandingRedesignNonUs: Story = {
-  name: "Non-US visitors",
-  args: {
-    eligibleForPremium: false,
-    countryCode: "nz",
-  },
-};
-
-export const LandingRedesignNonUsDe: Story = {
-  name: "German",
-  args: {
-    eligibleForPremium: false,
-    countryCode: "de",
-    l10n: getL10n("de"),
-  },
-};
-
-export const LandingRedesignNonUsFr: Story = {
-  name: "French",
-  args: {
-    eligibleForPremium: false,
-    countryCode: "fr",
-    l10n: getL10n("fr"),
   },
 };

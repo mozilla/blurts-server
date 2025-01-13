@@ -21,6 +21,7 @@ export const FreeScanCta = (
   props: Props & {
     experimentData: ExperimentData["Features"];
     hasFloatingLabel?: boolean;
+    showCtaOnly?: boolean;
   },
 ) => {
   const l10n = useL10n();
@@ -32,9 +33,10 @@ export const FreeScanCta = (
     button_id: telemetryButtonId,
   });
   if (
-    !props.experimentData["landing-page-free-scan-cta"].enabled ||
-    props.experimentData["landing-page-free-scan-cta"].variant ===
-      "ctaWithEmail"
+    (!props.experimentData["landing-page-free-scan-cta"].enabled ||
+      props.experimentData["landing-page-free-scan-cta"].variant ===
+        "ctaWithEmail") &&
+    !props.showCtaOnly
   ) {
     return (
       <SignUpForm
@@ -46,7 +48,7 @@ export const FreeScanCta = (
         experimentData={props.experimentData}
         placeholder={props.placeholder}
         label={props.label}
-        buttonLabel={props.buttonLabel}
+        ctaLabel={props.ctaLabel}
         hasFloatingLabel={props.hasFloatingLabel}
       />
     );
@@ -79,12 +81,13 @@ export const FreeScanCta = (
           );
         }}
       >
-        {l10n.getString(
-          props.experimentData["landing-page-free-scan-cta"].variant ===
-            "ctaOnly"
-            ? "landing-all-hero-emailform-submit-label"
-            : "landing-all-hero-emailform-submit-sign-up-label",
-        )}
+        {props.ctaLabel ??
+          l10n.getString(
+            props.experimentData["landing-page-free-scan-cta"].variant ===
+              "ctaOnly"
+              ? "landing-all-hero-emailform-submit-label"
+              : "landing-all-hero-emailform-submit-sign-up-label",
+          )}
       </TelemetryButton>
     </div>
   );

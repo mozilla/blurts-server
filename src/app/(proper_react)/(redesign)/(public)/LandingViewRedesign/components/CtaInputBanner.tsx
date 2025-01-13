@@ -41,13 +41,10 @@ export const CtaInputBanner = (props: LandingPageProps) => {
                 field: "entered_email_address_header",
               }}
               experimentData={props.experimentData}
-              label={props.l10n.getString(
-                "landing-redesign-hero-cta-input-label",
-              )}
-              buttonLabel={props.l10n.getString(
+              ctaLabel={props.l10n.getString(
                 "landing-redesign-hero-cta-button-label",
               )}
-              hasFloatingLabel
+              showCtaOnly
             />
           )}
         </div>

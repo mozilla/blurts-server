@@ -40,7 +40,7 @@ export const Hero = (props: LandingPageProps) => {
               label={props.l10n.getString(
                 "landing-redesign-hero-cta-input-label",
               )}
-              buttonLabel={props.l10n.getString(
+              ctaLabel={props.l10n.getString(
                 "landing-redesign-hero-cta-button-label",
               )}
               hasFloatingLabel

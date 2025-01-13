@@ -3,8 +3,9 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { LandingPageProps } from "..";
-import { TelemetryButton } from "../../../../../components/client/TelemetryButton";
 import { ArrowIcon } from "../../../../../components/server/Icons";
+import { FreeScanCta } from "../../FreeScanCta";
+import { ScanLimit } from "../../ScanLimit";
 import styles from "./CtaBanner.module.scss";
 
 export const CtaBanner = (props: LandingPageProps) => {
@@ -21,24 +22,28 @@ export const CtaBanner = (props: LandingPageProps) => {
           </h2>
           <p>{props.l10n.getString("landing-redesign-banner-cta-subheader")}</p>
         </div>
-        <TelemetryButton
-          className={styles.ctaButton}
-          variant="primary"
-          // TODO: Add href and telementry
-          href="/"
-          target="_blank"
-          rel="noopener noreferrer"
-          event={{
-            module: "link",
-            name: "click",
-            data: {
-              link_id: "",
-            },
-          }}
-        >
-          {props.l10n.getString("landing-redesign-banner-cta-button-label")}
-          <ArrowIcon alt="" />
-        </TelemetryButton>
+        {props.eligibleForPremium && props.scanLimitReached ? (
+          <ScanLimit />
+        ) : (
+          <FreeScanCta
+            scanLimitReached={props.scanLimitReached}
+            eligibleForPremium={props.eligibleForPremium}
+            signUpCallbackUrl={`${process.env.SERVER_URL}/user/dashboard`}
+            eventId={{
+              cta: "clicked_get_scan_cta_banner",
+            }}
+            experimentData={props.experimentData}
+            ctaLabel={
+              <>
+                {props.l10n.getString(
+                  "landing-redesign-banner-cta-button-label",
+                )}
+                <ArrowIcon alt="" />
+              </>
+            }
+            showCtaOnly
+          />
+        )}
       </div>
     </section>
   );
