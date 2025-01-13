@@ -8,8 +8,8 @@
  */
 export function up (knex) {
   return knex.schema.table("subscribers", table => {
-    table.boolean("churn_prevention_email_sent").defaultTo(false);
-    table.index("churn_prevention_email_sent");
+    table.timestamp("churn_prevention_email_sent_at");
+    table.index("churn_prevention_email_sent_at");
   });
 }
 
@@ -19,7 +19,7 @@ export function up (knex) {
  */
 export function down (knex) {
   return knex.schema.table("subscribers", table => {
-    table.dropIndex("churn_prevention_email_sent")
-    table.dropColumn("churn_prevention_email_sent");
+    table.dropIndex("churn_prevention_email_sent_at")
+    table.dropColumn("churn_prevention_email_sent_at");
   });
 }

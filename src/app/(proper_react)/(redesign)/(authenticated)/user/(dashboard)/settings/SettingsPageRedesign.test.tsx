@@ -141,7 +141,7 @@ const mockedSubscriber: SubscriberRow = {
   monthly_monitor_report: false,
   sign_in_count: null,
   first_broker_removal_email_sent: false,
-  churn_prevention_email_sent: false,
+  churn_prevention_email_sent_at: null,
 };
 
 const mockedUser: Session["user"] = {
