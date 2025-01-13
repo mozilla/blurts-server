@@ -88,5 +88,6 @@
 .infoLabel {
   background-color: tokens.$color-grey-10;
   border-radius: tokens.$border-radius-lg;
+  // Add a bit more space: The next spacing step is too much.
   padding: tokens.$spacing-xs calc(tokens.$spacing-md + tokens.$spacing-xs);
 }

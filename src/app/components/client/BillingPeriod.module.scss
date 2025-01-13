@@ -16,6 +16,7 @@
 
   .option {
     border-radius: tokens.$border-radius-xl;
+    // Add a bit more space: The next spacing step is too much.
     padding: tokens.$spacing-sm calc(tokens.$spacing-md * 1.5);
     line-height: 1.25em;
     font-weight: 500;

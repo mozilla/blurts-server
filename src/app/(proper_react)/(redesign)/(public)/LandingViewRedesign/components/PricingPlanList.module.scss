@@ -33,6 +33,7 @@
     font-weight: 700;
     left: 50%;
     letter-spacing: 0.075em;
+    // Add a bit more space: The next spacing step is too much.
     padding: calc(tokens.$spacing-sm * 1.1) calc(tokens.$spacing-sm * 1.5)
       tokens.$spacing-sm;
     line-height: 1em;
@@ -60,6 +61,7 @@
     align-items: center;
     display: flex;
     gap: tokens.$spacing-md;
+    // Add a bit more space: The next spacing step is too much.
     padding: calc(tokens.$spacing-sm * 1.5) tokens.$spacing-sm;
 
     &.pricingCardCta {

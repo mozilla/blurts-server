@@ -123,6 +123,7 @@
     }
 
     @media screen and (max-width: calc(tokens.$screen-lg - 1px)) {
+      // Add a bit more space: The next spacing step is too much.
       padding-left: calc(tokens.$layout-sm + tokens.$spacing-sm);
 
       span {
