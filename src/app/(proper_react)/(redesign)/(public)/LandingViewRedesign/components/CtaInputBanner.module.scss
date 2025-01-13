@@ -14,11 +14,20 @@
     gap: tokens.$layout-sm;
     max-width: tokens.$content-lg;
 
-    & > form {
+    form {
+      align-items: stretch;
+      display: flex;
+      flex-direction: column;
+      gap: tokens.$spacing-md;
       max-width: tokens.$content-md;
+    }
 
-      button {
-        flex: 0 0 auto;
+    @media screen and (min-width: tokens.$screen-md) {
+      form {
+        flex-direction: row;
+        button {
+          flex: 0 0 auto;
+        }
       }
     }
   }
