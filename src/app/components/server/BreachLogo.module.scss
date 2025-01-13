@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-@import "../../tokens";
+@use "../../tokens";
 
 .breachLogo {
   height: 1.75rem;
@@ -19,94 +19,94 @@ span.breachLogo {
   text-align: center;
 
   &.purple40 {
-    background-color: $color-purple-40;
+    background-color: tokens.$color-purple-40;
   }
 
   &.purple30 {
-    background-color: $color-purple-30;
+    background-color: tokens.$color-purple-30;
   }
 
   &.purple10 {
-    background-color: $color-purple-10;
+    background-color: tokens.$color-purple-10;
   }
 
   &.purple05 {
-    background-color: $color-purple-05;
+    background-color: tokens.$color-purple-05;
   }
 
   &.green50 {
-    background-color: $color-green-50;
+    background-color: tokens.$color-green-50;
   }
 
   &.green40 {
-    background-color: $color-green-40;
+    background-color: tokens.$color-green-40;
   }
 
   &.green30 {
-    background-color: $color-green-30;
+    background-color: tokens.$color-green-30;
   }
 
   &.green20 {
-    background-color: $color-green-20;
+    background-color: tokens.$color-green-20;
   }
 
   &.green10 {
-    background-color: $color-green-10;
+    background-color: tokens.$color-green-10;
   }
 
   &.violet30 {
-    background-color: $color-violet-30;
+    background-color: tokens.$color-violet-30;
   }
 
   &.violet20 {
-    background-color: $color-violet-20;
+    background-color: tokens.$color-violet-20;
   }
 
   &.violet10 {
-    background-color: $color-violet-10;
+    background-color: tokens.$color-violet-10;
   }
 
   &.blue30 {
-    background-color: $color-blue-30;
+    background-color: tokens.$color-blue-30;
   }
 
   &.blue20 {
-    background-color: $color-blue-20;
+    background-color: tokens.$color-blue-20;
   }
 
   &.blue10 {
-    background-color: $color-blue-10;
+    background-color: tokens.$color-blue-10;
   }
 
   &.red30 {
-    background-color: $color-red-30;
+    background-color: tokens.$color-red-30;
   }
 
   &.red20 {
-    background-color: $color-red-20;
+    background-color: tokens.$color-red-20;
   }
 
   &.red10 {
-    background-color: $color-red-10;
+    background-color: tokens.$color-red-10;
   }
 
   &.orange30 {
-    background-color: $color-orange-30;
+    background-color: tokens.$color-orange-30;
   }
 
   &.orange20 {
-    background-color: $color-orange-20;
+    background-color: tokens.$color-orange-20;
   }
 
   &.orange10 {
-    background-color: $color-orange-10;
+    background-color: tokens.$color-orange-10;
   }
 
   &.pink20 {
-    background-color: $color-pink-20;
+    background-color: tokens.$color-pink-20;
   }
 
   &.pink10 {
-    background-color: $color-pink-10;
+    background-color: tokens.$color-pink-10;
   }
 }

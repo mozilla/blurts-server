@@ -1,35 +1,35 @@
-@import "../../../../../tokens";
+@use "../../../../../tokens";
 
 .wrapper {
   display: flex;
   flex-direction: column;
-  gap: $spacing-2xl;
-  background-color: $color-grey-05;
+  gap: tokens.$spacing-2xl;
+  background-color: tokens.$color-grey-05;
   height: 100%;
-  padding: $layout-lg $layout-2xl;
+  padding: tokens.$layout-lg tokens.$layout-2xl;
 
-  @media screen and (max-width: $screen-lg) {
-    padding: $spacing-lg;
+  @media screen and (max-width: tokens.$screen-lg) {
+    padding: tokens.$spacing-lg;
   }
 }
 
 .addressSection {
   display: flex;
   flex-direction: column;
-  gap: $spacing-sm;
+  gap: tokens.$spacing-sm;
 
   .addressPicker {
     display: flex;
     align-items: center;
-    gap: $spacing-md;
+    gap: tokens.$spacing-md;
 
     label {
-      font: $text-body-lg;
+      font: tokens.$text-body-lg;
       font-weight: 700;
     }
 
     select {
-      padding: $spacing-sm;
+      padding: tokens.$spacing-sm;
     }
   }
 }
@@ -37,5 +37,5 @@
 .triggers {
   display: flex;
   flex-wrap: wrap;
-  gap: $spacing-lg;
+  gap: tokens.$spacing-lg;
 }

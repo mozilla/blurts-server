@@ -1,4 +1,4 @@
-@import "../../../../../tokens";
+@use "../../../../../tokens";
 
 .wrapper {
   display: flex;
@@ -6,79 +6,79 @@
   align-items: center;
 
   header {
-    padding: $layout-xl $spacing-xl;
-    max-width: $content-lg;
+    padding: tokens.$layout-xl tokens.$spacing-xl;
+    max-width: tokens.$content-lg;
     text-align: center;
     display: flex;
     flex-direction: column;
-    gap: $spacing-md;
+    gap: tokens.$spacing-md;
 
     h1 {
-      font: $text-title-sm;
+      font: tokens.$text-title-sm;
       display: flex;
       align-items: center;
-      gap: $spacing-sm;
+      gap: tokens.$spacing-sm;
     }
 
     a {
-      color: $color-blue-50;
+      color: tokens.$color-blue-50;
       font-weight: 700;
     }
   }
 
   .overview {
     width: 100%;
-    background-color: rgba($color-purple-05, 0.2);
+    background-color: rgba(tokens.$color-purple-05, 0.2);
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: $spacing-lg;
-    padding: $spacing-2xl;
+    gap: tokens.$spacing-lg;
+    padding: tokens.$spacing-2xl;
 
     h2.overviewTitle,
     .content {
-      width: $content-md;
+      width: tokens.$content-md;
       max-width: 100%;
     }
 
     h2.overviewTitle {
-      font: $text-title-sm;
+      font: tokens.$text-title-sm;
     }
 
     .content {
       display: flex;
       flex-direction: column;
-      gap: $spacing-lg;
+      gap: tokens.$spacing-lg;
 
       a[href="#delayed-reporting"] {
-        color: $color-black;
+        color: tokens.$color-black;
       }
 
       h3 {
-        font: $text-title-2xs;
+        font: tokens.$text-title-2xs;
       }
 
       .compromisedDataList ul {
         list-style-type: none;
         display: flex;
         flex-direction: column;
-        gap: $spacing-md;
+        gap: tokens.$spacing-md;
         margin: 0;
-        padding: $spacing-md;
+        padding: tokens.$spacing-md;
 
         li {
           display: flex;
-          gap: $spacing-md;
+          gap: tokens.$spacing-md;
         }
       }
 
       small {
-        color: $color-grey-50;
-        font: $text-body-sm;
+        color: tokens.$color-grey-50;
+        font: tokens.$text-body-sm;
 
         a {
           font-weight: 700;
-          color: $color-grey-50;
+          color: tokens.$color-grey-50;
 
           &:hover {
             text-decoration: none;
@@ -89,23 +89,23 @@
   }
 
   .signUp {
-    background-color: rgba($color-purple-05, 0.5);
+    background-color: rgba(tokens.$color-purple-05, 0.5);
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    gap: $spacing-lg;
-    padding: $spacing-2xl;
+    gap: tokens.$spacing-lg;
+    padding: tokens.$spacing-2xl;
 
     .content {
-      max-width: $content-sm;
+      max-width: tokens.$content-sm;
       display: flex;
       flex-direction: column;
-      gap: $spacing-md;
+      gap: tokens.$spacing-md;
 
       h2.signUpTitle {
-        font: $text-title-3xs;
+        font: tokens.$text-title-3xs;
       }
     }
   }
@@ -116,33 +116,33 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: $spacing-2xl;
-  padding: $spacing-2xl;
+  gap: tokens.$spacing-2xl;
+  padding: tokens.$spacing-2xl;
 
   h2.recommendationTitle,
   .lead,
   dl {
-    width: $content-md;
+    width: tokens.$content-md;
     max-width: 100%;
   }
 
   h2.recommendationTitle {
-    font: $text-title-xs;
+    font: tokens.$text-title-xs;
   }
 
   dl {
     display: flex;
     flex-direction: column;
-    gap: $spacing-2xl;
+    gap: tokens.$spacing-2xl;
 
     div {
       $iconWidth: 48px;
 
-      padding-inline-start: calc($iconWidth + $spacing-xl);
+      padding-inline-start: calc($iconWidth + tokens.$spacing-xl);
       position: relative;
       display: flex;
       flex-direction: column;
-      gap: $spacing-md;
+      gap: tokens.$spacing-md;
 
       img {
         position: absolute;
@@ -154,21 +154,21 @@
       }
 
       dt {
-        font: $text-title-3xs;
+        font: tokens.$text-title-3xs;
       }
 
       dd {
         display: flex;
         flex-direction: column;
-        gap: $spacing-md;
-        color: $color-grey-50;
+        gap: tokens.$spacing-md;
+        color: tokens.$color-grey-50;
 
         .cta {
           font-weight: 700;
-          color: $color-blue-50;
+          color: tokens.$color-blue-50;
 
           &:hover {
-            color: $color-blue-80;
+            color: tokens.$color-blue-80;
           }
         }
       }
@@ -177,23 +177,23 @@
 }
 
 .explainers {
-  background-color: rgba($color-purple-05, 0.2);
+  background-color: rgba(tokens.$color-purple-05, 0.2);
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: $spacing-2xl;
-  padding: $spacing-2xl;
+  gap: tokens.$spacing-2xl;
+  padding: tokens.$spacing-2xl;
 
   .explainer {
-    width: $content-md;
+    width: tokens.$content-md;
     max-width: 100%;
     display: flex;
     flex-direction: column;
-    gap: $spacing-sm;
+    gap: tokens.$spacing-sm;
   }
 
   h2.explainerTitle {
-    font: $text-title-xs;
+    font: tokens.$text-title-xs;
   }
 }

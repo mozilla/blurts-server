@@ -1,40 +1,62 @@
-@import "../../../tokens";
+@use "../../../tokens";
 
 .wrapper {
   display: flex;
   flex-direction: column;
   height: 100%;
 }
+
+.waitlistSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: tokens.$spacing-lg;
+  padding: tokens.$layout-md tokens.$spacing-md;
+
+  .waitlistTitle {
+    text-align: center;
+    font: tokens.$text-title-2xs;
+    font-weight: 600;
+    line-height: 1.4;
+    font-family: var(--font-inter);
+    color: tokens.$color-purple-70;
+  }
+
+  a {
+    align-self: center;
+  }
+}
+
 .navbar {
-  font: $text-body-xl;
-  padding: $layout-xs;
+  font: tokens.$text-body-xl;
+  padding: tokens.$layout-xs;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  background-color: $color-grey-05;
-  .navbarLinksContainer {
+  background-color: tokens.$color-grey-05;
+  ul {
     display: flex;
     flex-direction: column;
-    .navbarLinks {
+    a {
       text-decoration: none;
-      color: $color-grey-50;
+      color: tokens.$color-grey-50;
     }
   }
-  @media screen and (min-width: $screen-sm) {
+  @media screen and (min-width: tokens.$screen-sm) {
     justify-content: flex-end;
-    .navbarLinksContainer {
+    ul {
       flex-direction: row;
       justify-content: flex-end;
-      .navbarLinks {
-        margin-left: $spacing-lg;
+      a {
+        margin-left: tokens.$spacing-lg;
       }
     }
   }
-  @media screen and (min-width: $screen-md) {
-    padding: $layout-xs $layout-xl;
-    .navbarLinksContainer {
-      .navbarLinks {
-        margin-left: $spacing-xl;
+  @media screen and (min-width: tokens.$screen-md) {
+    padding: tokens.$layout-xs tokens.$layout-xl;
+    ul {
+      a {
+        margin-left: tokens.$spacing-xl;
       }
     }
   }
@@ -45,9 +67,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  gap: $spacing-lg;
-  padding-inline: $spacing-md;
-  padding-block-start: $spacing-xl;
+  gap: tokens.$spacing-lg;
+  padding-inline: tokens.$spacing-md;
+  padding-block-start: tokens.$spacing-xl;
   width: 100%;
   background-position: bottom center;
   background-size: cover;
@@ -59,26 +81,26 @@
     rgba(0, 144, 237, 0.08) 100%
   );
 
-  @media screen and (min-width: $screen-lg) {
+  @media screen and (min-width: tokens.$screen-lg) {
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
-    gap: $layout-lg;
-    padding-inline: $layout-lg;
+    gap: tokens.$layout-lg;
+    padding-inline: tokens.$layout-lg;
 
     .heroContent {
-      flex: 1 1 $content-sm;
+      flex: 1 1 tokens.$content-sm;
     }
 
     .heroImage {
-      flex: 1 1 $content-sm;
+      flex: 1 1 tokens.$content-sm;
       align-self: flex-end;
     }
   }
 
-  @media screen and (min-width: $screen-xl) {
-    gap: $layout-xl;
-    padding-inline: $layout-xl;
+  @media screen and (min-width: tokens.$screen-xl) {
+    gap: tokens.$layout-xl;
+    padding-inline: tokens.$layout-xl;
   }
 
   .heroContent {
@@ -86,17 +108,17 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-    gap: $spacing-md;
-    max-width: $screen-xl / 2;
+    gap: tokens.$spacing-md;
+    max-width: tokens.$screen-xl * 0.5;
 
     h1 {
-      font: $text-title-md;
-      color: $color-grey-60;
+      font: tokens.$text-title-md;
+      color: tokens.$color-grey-60;
     }
 
     p {
-      font: $text-body-lg;
-      color: $color-grey-50;
+      font: tokens.$text-body-lg;
+      color: tokens.$color-grey-50;
     }
   }
 
@@ -105,36 +127,36 @@
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    max-width: min($screen-xl / 2, 100%);
-    padding-inline: $spacing-md;
+    max-width: min(tokens.$screen-xl / 2, 100%);
+    padding-inline: tokens.$spacing-md;
 
     .heroImageBadge {
       position: absolute;
       top: 33%;
-      left: -1 * $layout-xs;
-      background-color: $color-green-90;
-      color: $color-white;
-      border-radius: $border-radius-md;
-      box-shadow: $box-shadow-sm;
+      left: -1 * tokens.$layout-xs;
+      background-color: tokens.$color-green-90;
+      color: tokens.$color-white;
+      border-radius: tokens.$border-radius-md;
+      box-shadow: tokens.$box-shadow-sm;
       aspect-ratio: 1 / 1;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: $spacing-sm;
+      padding: tokens.$spacing-sm;
 
-      @media screen and (max-width: $screen-xs) {
+      @media screen and (max-width: tokens.$screen-xs) {
         display: none;
       }
 
       .nr {
-        font: $text-title-md;
+        font: tokens.$text-title-md;
       }
 
       .description {
-        font: $text-body-sm;
-        width: $layout-xl;
+        font: tokens.$text-body-sm;
+        width: tokens.$layout-xl;
       }
     }
   }
@@ -144,37 +166,37 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: $spacing-lg;
-  background-color: $color-grey-05;
-  padding: $layout-lg 0;
+  gap: tokens.$spacing-lg;
+  background-color: tokens.$color-grey-05;
+  padding: tokens.$layout-lg 0;
 
   .planName,
   .lead,
   table {
-    width: $content-lg;
+    width: tokens.$content-lg;
     max-width: 100%;
   }
 
   .planName,
   .lead {
-    padding-inline: $spacing-lg;
+    padding-inline: tokens.$spacing-lg;
     text-align: center;
   }
 }
 
 .quoteWrapper {
-  padding: $layout-lg $spacing-md;
+  padding: tokens.$layout-lg tokens.$spacing-md;
   display: flex;
   justify-content: center;
 
-  @media screen and (min-width: $content-md) {
-    padding: $layout-lg;
+  @media screen and (min-width: tokens.$content-md) {
+    padding: tokens.$layout-lg;
   }
 
   .quote {
-    max-width: $content-lg;
+    max-width: tokens.$content-lg;
     text-align: center;
-    font: $text-title-3xs;
+    font: tokens.$text-title-3xs;
     line-height: 1.4;
     font-family: var(--font-inter);
     font-weight: normal;
@@ -182,7 +204,7 @@
     h2 {
       .emphasis {
         display: inline;
-        color: $color-violet-50;
+        color: tokens.$color-violet-50;
       }
     }
   }
@@ -194,52 +216,52 @@
     flex-direction: column-reverse;
     align-items: center;
     justify-content: space-between;
-    padding: $spacing-2xl $spacing-md;
-    gap: $spacing-lg;
+    padding: tokens.$spacing-2xl tokens.$spacing-md;
+    gap: tokens.$spacing-lg;
 
     &.grayBg {
-      background: $color-grey-05;
+      background: tokens.$color-grey-05;
     }
 
     .exposureTypeList {
       font-weight: 600;
-      color: $color-purple-70;
+      color: tokens.$color-purple-70;
       display: inline;
     }
 
-    @media screen and (min-width: $screen-md) {
-      padding-inline: $layout-lg;
-      padding-block: $layout-sm;
+    @media screen and (min-width: tokens.$screen-md) {
+      padding-inline: tokens.$layout-lg;
+      padding-block: tokens.$layout-sm;
       flex-direction: row;
-      gap: $spacing-xl;
+      gap: tokens.$spacing-xl;
 
       &.reverseRow {
         flex-direction: row-reverse;
       }
 
-      @media screen and (min-width: $screen-lg) {
-        padding-inline: $layout-lg;
-        gap: $layout-xl;
+      @media screen and (min-width: tokens.$screen-lg) {
+        padding-inline: tokens.$layout-lg;
+        gap: tokens.$layout-xl;
 
-        @media screen and (min-width: $screen-xl) {
-          padding-inline: $layout-xl;
+        @media screen and (min-width: tokens.$screen-xl) {
+          padding-inline: tokens.$layout-xl;
         }
       }
     }
 
     span {
-      gap: $spacing-md;
+      gap: tokens.$spacing-md;
       display: flex;
       flex-direction: column;
 
       h2 {
-        font: $text-title-xs;
+        font: tokens.$text-title-xs;
         font-family: var(--font-inter);
         font-weight: 600;
       }
 
       p {
-        font: $text-body-lg;
+        font: tokens.$text-body-lg;
       }
     }
 
@@ -251,12 +273,12 @@
       img {
         height: auto;
       }
-      @media screen and (min-width: $screen-md) {
+      @media screen and (min-width: tokens.$screen-md) {
         flex: 1;
       }
     }
 
-    @media screen and (min-width: $screen-md) {
+    @media screen and (min-width: tokens.$screen-md) {
       span,
       .illustration {
         flex: 1;
@@ -269,33 +291,33 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: $spacing-2xl $spacing-md;
-  gap: $spacing-sm;
+  padding: tokens.$spacing-2xl tokens.$spacing-md;
+  gap: tokens.$spacing-sm;
   text-align: center;
 
   .pressLogos {
-    padding-top: $layout-md;
+    padding-top: tokens.$layout-md;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: $spacing-lg;
+    gap: tokens.$spacing-lg;
     align-items: center;
     justify-content: center;
 
-    @media screen and (min-width: $content-md) {
+    @media screen and (min-width: tokens.$content-md) {
       flex-direction: row;
       flex-wrap: nowrap;
     }
 
     .label {
-      @include uppercase-only-english;
+      @include tokens.uppercase-only-english;
       flex-basis: 100%;
-      font: $text-body-sm;
-      color: $color-grey-30;
+      font: tokens.$text-body-sm;
+      color: tokens.$color-grey-30;
       font-weight: 600;
       text-align: center;
 
-      @media screen and (min-width: $content-md) {
+      @media screen and (min-width: tokens.$content-md) {
         flex-basis: auto;
       }
     }
@@ -306,62 +328,62 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: $spacing-2xl $spacing-md;
-  gap: $spacing-sm;
-  background-color: $color-grey-05;
+  padding: tokens.$spacing-2xl tokens.$spacing-md;
+  gap: tokens.$spacing-sm;
+  background-color: tokens.$color-grey-05;
   text-align: center;
 
   ul {
     list-style: none;
     padding: 0;
-    gap: $spacing-md;
-    padding-top: $layout-sm;
+    gap: tokens.$spacing-md;
+    padding-top: tokens.$layout-sm;
     display: grid;
     text-align: start;
 
     li {
       display: flex;
-      gap: $spacing-md;
+      gap: tokens.$spacing-md;
       align-items: center;
 
       svg {
         min-width: 20px; // width of check icon
-        color: $color-blue-50;
+        color: tokens.$color-blue-50;
       }
     }
   }
 
   .heresHowWeHelpCta {
-    margin-top: $layout-sm;
+    margin-top: tokens.$layout-sm;
   }
 }
 
 .scanLimitWrapper {
   display: flex;
   flex-direction: column;
-  gap: $layout-xs;
+  gap: tokens.$layout-xs;
 
   .info {
     display: flex;
     flex-direction: column;
-    gap: $spacing-md;
+    gap: tokens.$spacing-md;
 
-    @media screen and (min-width: $screen-md) {
+    @media screen and (min-width: tokens.$screen-md) {
       flex-direction: row;
     }
 
     b {
-      @include uppercase-only-english;
+      @include tokens.uppercase-only-english;
       white-space: nowrap;
       align-self: flex-start;
-      border-radius: $border-radius-sm;
-      font: $text-body-sm;
+      border-radius: tokens.$border-radius-sm;
+      font: tokens.$text-body-sm;
       font-weight: 600;
-      background: $color-purple-70;
-      color: $color-white;
-      padding: $spacing-sm $spacing-md;
+      background: tokens.$color-purple-70;
+      color: tokens.$color-white;
+      padding: tokens.$spacing-sm tokens.$spacing-md;
 
-      @media screen and (min-width: $screen-md) {
+      @media screen and (min-width: tokens.$screen-md) {
         align-self: center;
       }
     }
@@ -371,7 +393,7 @@
 .waitlistCta {
   align-self: flex-start;
 
-  @media screen and (min-width: $screen-md) {
+  @media screen and (min-width: tokens.$screen-md) {
     min-width: 200px; // width of waitlist button
   }
 }
@@ -381,39 +403,18 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: $layout-sm;
-  background-color: $color-purple-05;
-  padding: $layout-md $spacing-md;
+  gap: tokens.$layout-sm;
+  background-color: tokens.$color-purple-05;
+  padding: tokens.$layout-md tokens.$spacing-md;
   text-align: center;
 
   .title {
-    font: $text-title-2xs;
+    font: tokens.$text-title-2xs;
     font-family: var(--font-inter);
     font-weight: 500;
   }
 
   .waitlistCta {
-    align-self: center;
-  }
-}
-
-.waitlistSection {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: $spacing-lg;
-  padding: $layout-md $spacing-md;
-
-  .waitlistTitle {
-    text-align: center;
-    font: $text-title-2xs;
-    font-weight: 600;
-    line-height: 1.4;
-    font-family: var(--font-inter);
-    color: $color-purple-70;
-  }
-
-  a {
     align-self: center;
   }
 }

@@ -1,4 +1,4 @@
-@import "../../tokens";
+@use "../../tokens";
 
 .underlay {
   position: fixed;
@@ -6,11 +6,11 @@
 }
 
 .popover {
-  background: $color-white;
+  background: tokens.$color-white;
   box-shadow: none;
-  border-radius: $border-radius-sm;
+  border-radius: tokens.$border-radius-sm;
 
   &.isOpen {
-    box-shadow: $box-shadow-sm;
+    box-shadow: tokens.$box-shadow-sm;
   }
 }
