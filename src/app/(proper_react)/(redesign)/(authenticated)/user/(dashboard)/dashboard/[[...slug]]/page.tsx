@@ -114,15 +114,12 @@ export default async function DashboardPage({ params, searchParams }: Props) {
   const qaToggles = await getQaToggleRow(profileId);
   console.log({ qaToggles });
   let showCustomBrokers = false;
-  let showRealBrokers = true;
 
   if (qaToggles) {
     showCustomBrokers = qaToggles.show_custom_brokers;
-    showRealBrokers = qaToggles.show_real_brokers;
   }
 
-  const brokerData =
-    showCustomBrokers && !showRealBrokers ? mockScanResultsData : latestScan;
+  const brokerData = showCustomBrokers ? mockScanResultsData : latestScan;
 
   const scanCount =
     typeof profileId === "number"
