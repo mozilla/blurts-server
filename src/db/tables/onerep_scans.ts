@@ -18,7 +18,11 @@ import {
 } from "knex/types/tables";
 import { RemovalStatus } from "../../app/functions/universal/scanResult.js";
 import { CONST_DAY_MILLISECONDS } from "../../constants.ts";
-import { getQaCustomBrokers, getQaToggleRow } from "./qa_customs.ts";
+import {
+  getAllQaCustomBrokers,
+  getQaCustomBrokers,
+  getQaToggleRow,
+} from "./qa_customs.ts";
 
 const knex = createDbConnection();
 
@@ -448,6 +452,23 @@ async function getScanResultsWithBrokerUnderMaintenance(
   );
 
   return { results: scanResults } as LatestOnerepScanData;
+}
+
+export async function getMockedScanResults(
+  onerepProfileId: number,
+): Promise<LatestOnerepScanData> {
+  if (onerepProfileId === null) {
+    return {
+      scan: null,
+      results: [],
+    } as LatestOnerepScanData;
+  }
+
+  const scan = await getLatestOnerepScan(onerepProfileId);
+  const scanResults: OnerepScanResultDataBrokerRow[] | OnerepScanResultRow[] =
+    await getAllQaCustomBrokers(onerepProfileId);
+
+  return { scan: scan ?? null, results: scanResults } as LatestOnerepScanData;
 }
 
 async function getScanResultsWithBroker(

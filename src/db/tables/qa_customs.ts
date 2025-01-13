@@ -2,11 +2,16 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { OnerepScanResultRow } from "knex/types/tables";
+import {
+  OnerepScanResultDataBrokerRow,
+  OnerepScanResultRow,
+} from "knex/types/tables";
 import { logger } from "../../app/functions/server/logging";
 import createDbConnection from "../connect";
 import { getOnerepProfileId } from "./subscribers";
 import { HibpLikeDbBreach } from "../../utils/hibp";
+import { RemovalStatus } from "../../app/functions/universal/scanResult";
+import { DataBrokerRemovalStatus } from "../../app/functions/universal/dataBroker";
 
 const knex = createDbConnection();
 
@@ -25,6 +30,9 @@ interface QaBrokerData {
   status: string;
   manually_resolved: boolean;
   optout_attempts: number;
+  scan_result_status: RemovalStatus;
+  broker_status: DataBrokerRemovalStatus;
+  url: string;
 }
 
 interface QaBreachData {
@@ -123,10 +131,10 @@ async function addQaCustomBroker(brokerData: QaBrokerData): Promise<void> {
 
 async function getAllQaCustomBrokers(
   onerep_profile_id: number,
-): Promise<QaBrokerData[]> {
+): Promise<OnerepScanResultDataBrokerRow[] | OnerepScanResultRow[]> {
   const res = (await knex("qa_custom_brokers")
     .where("onerep_profile_id", onerep_profile_id)
-    .select("*")) as QaBrokerData[];
+    .select("*")) as OnerepScanResultDataBrokerRow[];
   return res;
 }
 
@@ -190,11 +198,13 @@ async function getQaToggleRow(emailHashOrOneRepId: string | number | null) {
   if (emailHashOrOneRepId === null || envIsProd()) {
     return null;
   }
+  // for email sha
   if (typeof emailHashOrOneRepId === "string") {
     return (await knex("qa_custom_toggles")
       .select("*")
       .where("email_hash", emailHashOrOneRepId)
       .first()) as QaToggleRow;
+    // for onerep ID
   } else if (typeof emailHashOrOneRepId === "number") {
     return (await knex("qa_custom_toggles")
       .select("*")

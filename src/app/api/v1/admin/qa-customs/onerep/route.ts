@@ -91,6 +91,9 @@ export async function POST(req: NextRequest) {
   const status = body.status || "new";
   const manually_resolved = body.manually_resolved || false;
   const optout_attempts = body.optout_attempts || null;
+  const scan_result_status = body.scan_result_status || "new";
+  const broker_status = body.broker_status || "active";
+  const url = body.url || "";
 
   const brokerData: QaBrokerData = {
     onerep_profile_id,
@@ -107,6 +110,9 @@ export async function POST(req: NextRequest) {
     status,
     manually_resolved,
     optout_attempts,
+    scan_result_status,
+    broker_status,
+    url,
   };
   try {
     await addQaCustomBroker(brokerData);

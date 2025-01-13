@@ -14,6 +14,7 @@ import {
 } from "../../../../../../../functions/universal/user";
 import {
   getLatestScanForProfileByReason,
+  getMockedScanResults,
   getScanResultsWithBroker,
   getScansCountForProfile,
 } from "../../../../../../../../db/tables/onerep_scans";
@@ -107,6 +108,25 @@ export default async function DashboardPage({ params, searchParams }: Props) {
     hasPremium(session.user),
   );
 
+  const mockScanResultsData = await getMockedScanResults(profileId ?? 100);
+
+  // const qaToggles = await getQaToggleRow(10000);
+  const showCustomBrokers = true;
+  // let showRealBrokers = true;
+
+  // if (qaToggles) {
+  //   showCustomBrokers = qaToggles.show_custom_brokers;
+  //   showRealBrokers = qaToggles.show_real_brokers;
+
+  // // if (latestScan.scan) {
+  // //   qaBrokerData = await getAllQaCustomBrokers(latestScan.scan.onerep_profile_id);
+  // // }
+  // }
+  const brokerData = showCustomBrokers ? mockScanResultsData : latestScan;
+
+  // if (!showCustomBrokers) return qaBrokers as OnerepScanResultDataBrokerRow[];
+
+  console.log(mockScanResultsData);
   const scanCount =
     typeof profileId === "number"
       ? await getScansCountForProfile(profileId)
@@ -156,7 +176,7 @@ export default async function DashboardPage({ params, searchParams }: Props) {
       user={session.user}
       isEligibleForPremium={userIsEligibleForPremium}
       isEligibleForFreeScan={userIsEligibleForFreeScan}
-      userScanData={latestScan}
+      userScanData={brokerData}
       userBreaches={subBreaches}
       enabledFeatureFlags={enabledFeatureFlags}
       monthlySubscriptionUrl={`${monthlySubscriptionUrl}&${additionalSubplatParams.toString()}`}
