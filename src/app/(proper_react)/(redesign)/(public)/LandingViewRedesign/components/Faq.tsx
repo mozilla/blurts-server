@@ -167,6 +167,7 @@ export const Faq = () => {
       <TelemetryButton
         variant="primary"
         href={CONST_URL_SUMO_MONITOR_FAQ}
+        target="_blank"
         event={{
           module: "link",
           name: "click",

@@ -36,14 +36,17 @@ export const CtaInputBanner = (props: LandingPageProps) => {
             eligibleForPremium={props.eligibleForPremium}
             signUpCallbackUrl={`${process.env.SERVER_URL}/user/dashboard`}
             eventId={{
-              cta: "clicked_get_scan_header",
-              field: "entered_email_address_header",
+              cta: "clicked_get_scan_footer",
+              field: "entered_email_address_footer",
             }}
             experimentData={props.experimentData}
+            label={props.l10n.getString(
+              "landing-redesign-hero-cta-input-label",
+            )}
             ctaLabel={props.l10n.getString(
               "landing-redesign-hero-cta-button-label",
             )}
-            showCtaOnly
+            hasFloatingLabel
           />
         )}
       </div>

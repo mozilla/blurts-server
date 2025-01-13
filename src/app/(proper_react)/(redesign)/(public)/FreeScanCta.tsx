@@ -28,7 +28,7 @@ export const FreeScanCta = (
   const [cookies] = useCookies(["attributionsFirstTouch"]);
   const metricsFlowContext = useContext(AccountsMetricsFlowContext);
 
-  const telemetryButtonId = `${props.eventId.cta}-${props.experimentData["landing-page-free-scan-cta"].variant}`;
+  const telemetryButtonId = `${props.eventId.cta}${props.experimentData["landing-page-free-scan-cta"].enabled ? `-${props.experimentData["landing-page-free-scan-cta"].variant}` : ""}`;
   const refViewTelemetry = useViewTelemetry("ctaButton", {
     button_id: telemetryButtonId,
   });

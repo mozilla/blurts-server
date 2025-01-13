@@ -287,7 +287,7 @@ export const PricingPlanList = (props: Props & ScanLimitProp) => {
       <span className={styles.pricingPlans}>
         {pricingPlanData.map(
           ({ type, label, title, subtitle, features, cta }) => (
-            <dl key={type} className={styles.pricingCard}>
+            <dl key={type} className={styles.pricingCard} aria-label={title}>
               <dt className={styles.pricingCardHeader}>
                 <b>{title}</b>
                 {label && (
