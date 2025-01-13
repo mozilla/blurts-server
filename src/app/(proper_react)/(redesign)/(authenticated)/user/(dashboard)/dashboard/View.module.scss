@@ -1,35 +1,35 @@
-@import "../../../../../../tokens";
+@use "../../../../../../tokens";
 
 .wrapper {
   width: 100%;
   height: 100%;
-  background-color: $color-grey-05;
+  background-color: tokens.$color-grey-05;
 }
 
 .dashboardContent {
-  padding-block: $spacing-2xl;
-  padding-inline: $spacing-xl;
+  padding-block: tokens.$spacing-2xl;
+  padding-inline: tokens.$spacing-xl;
   display: flex;
   flex-direction: column;
-  gap: $spacing-lg;
+  gap: tokens.$spacing-lg;
 }
 
 .exposuresArea {
   display: flex;
   flex-direction: column;
-  gap: $spacing-sm;
+  gap: tokens.$spacing-sm;
 
   .exposuresAreaHeadline {
-    font: $text-body-xl;
+    font: tokens.$text-body-xl;
     font-weight: 600;
   }
 
   .exposuresAreaDescription {
-    font: $text-body-md;
+    font: tokens.$text-body-md;
   }
 
   .exposuresFilterWrapper {
-    padding-block: $spacing-md;
+    padding-block: tokens.$spacing-md;
   }
 }
 
@@ -38,17 +38,17 @@
   padding-inline: 0;
   display: flex;
   flex-direction: column;
-  gap: $spacing-md;
+  gap: tokens.$spacing-md;
 }
 
 .zeroStateIndicator {
   display: flex;
   align-items: center;
   flex-direction: column;
-  gap: $spacing-sm;
-  padding: $spacing-md;
+  gap: tokens.$spacing-sm;
+  padding: tokens.$spacing-md;
 }
 
 .visuallyHidden {
-  @include visually-hidden;
+  @include tokens.visually-hidden;
 }

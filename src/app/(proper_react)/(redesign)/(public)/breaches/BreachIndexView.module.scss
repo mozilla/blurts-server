@@ -1,26 +1,26 @@
-@import "../../../../tokens";
+@use "../../../../tokens";
 
 .wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: $spacing-lg;
-  padding: $spacing-xs;
+  gap: tokens.$spacing-lg;
+  padding: tokens.$spacing-xs;
 
-  @media (min-width: $screen-md) {
-    padding: $spacing-lg;
+  @media (min-width: tokens.$screen-md) {
+    padding: tokens.$spacing-lg;
   }
 
   header {
-    padding: $spacing-2xl $spacing-xl;
-    max-width: $content-lg;
+    padding: tokens.$spacing-2xl tokens.$spacing-xl;
+    max-width: tokens.$content-lg;
     text-align: center;
     display: flex;
     flex-direction: column;
-    gap: $spacing-md;
+    gap: tokens.$spacing-md;
 
     h1 {
-      font: $text-title-sm;
+      font: tokens.$text-title-sm;
     }
   }
 }
@@ -29,8 +29,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: $spacing-sm;
-  padding: $spacing-md;
+  gap: tokens.$spacing-sm;
+  padding: tokens.$spacing-md;
   transition: opacity ease-in 500ms;
 
   &[aria-hidden="true"] {
@@ -40,27 +40,27 @@
   }
 
   label {
-    font: $text-body-sm;
-    @include visually-hidden;
+    font: tokens.$text-body-sm;
+    @include tokens.visually-hidden;
   }
   input {
-    font: $text-body-lg;
-    padding: $spacing-sm;
+    font: tokens.$text-body-lg;
+    padding: tokens.$spacing-sm;
   }
 }
 
 .breachList {
-  width: $content-xl;
-  max-width: calc(100% - 2 * $spacing-2xl);
+  width: tokens.$content-xl;
+  max-width: calc(100% - 2 * tokens.$spacing-2xl);
   display: grid;
   align-items: start;
-  grid-gap: $spacing-2xl;
+  grid-gap: tokens.$spacing-2xl;
   list-style-type: none;
   margin: 0;
   padding: 0;
 
-  @media (min-width: $screen-md) {
-    grid-template-columns: repeat(auto-fit, minmax($content-xs, 1fr));
+  @media (min-width: tokens.$screen-md) {
+    grid-template-columns: repeat(auto-fit, minmax(tokens.$content-xs, 1fr));
   }
 
   li {
@@ -70,41 +70,43 @@
   .breachCard {
     display: flex;
     flex-direction: column;
-    box-shadow: $box-shadow-sm;
-    border-radius: $border-radius-md;
+    box-shadow: tokens.$box-shadow-sm;
+    border-radius: tokens.$border-radius-md;
     height: 100%;
     text-decoration: none;
     color: inherit;
 
     &:hover {
-      box-shadow: $box-shadow-md;
+      box-shadow: tokens.$box-shadow-md;
     }
 
     h2 {
-      background-color: $color-grey-05;
+      background-color: tokens.$color-grey-05;
       display: flex;
       align-items: center;
-      gap: $spacing-md;
-      padding: $spacing-md $spacing-lg;
-      font: $text-title-3xs;
+      gap: tokens.$spacing-md;
+      padding: tokens.$spacing-md tokens.$spacing-lg;
+      font: tokens.$text-title-3xs;
     }
 
     dl {
       flex-grow: 1;
       display: flex;
       flex-direction: column;
-      gap: $spacing-md;
-      padding: $spacing-lg $spacing-md;
+      gap: tokens.$spacing-md;
+      padding: tokens.$spacing-lg tokens.$spacing-md;
 
-      @media (min-width: $screen-sm) {
+      @media (min-width: tokens.$screen-sm) {
         // `.breachCard h2` padding + breach logo width + `.breachCard h2` gap,
         // to align the content to the title in the header:
-        padding-inline-start: calc($spacing-md + 32px + $spacing-md);
+        padding-inline-start: calc(
+          tokens.$spacing-md + 32px + tokens.$spacing-md
+        );
       }
 
       dt {
-        font: $text-body-sm;
-        color: $color-grey-50;
+        font: tokens.$text-body-sm;
+        color: tokens.$color-grey-50;
       }
 
       dd {
@@ -113,14 +115,16 @@
     }
 
     .linkDescription {
-      padding: $spacing-md;
-      color: $color-blue-50;
+      padding: tokens.$spacing-md;
+      color: tokens.$color-blue-50;
       font-weight: 700;
 
-      @media (min-width: $screen-sm) {
+      @media (min-width: tokens.$screen-sm) {
         // `.breachCard h2` padding + breach logo width + `.breachCard h2` gap,
         // to align the content to the title in the header:
-        padding-inline-start: calc($spacing-md + 32px + $spacing-md);
+        padding-inline-start: calc(
+          tokens.$spacing-md + 32px + tokens.$spacing-md
+        );
       }
 
       &:hover {
