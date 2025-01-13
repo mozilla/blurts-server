@@ -43,6 +43,14 @@ export function middleware(request: NextRequest) {
     },
   });
 
+  if (!existingExperimentationId) {
+    response.cookies.set({
+      name: "experimentationId",
+      value: experimentationId,
+      path: "/",
+    });
+  }
+
   return response;
 }
 
