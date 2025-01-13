@@ -1,14 +1,5 @@
 @use "../../../../../tokens";
 
-.section {
-  background-color: tokens.$color-grey-05;
-  padding: tokens.$layout-sm;
-
-  h2 {
-    font-weight: 700;
-  }
-}
-
 .content,
 .header {
   display: flex;

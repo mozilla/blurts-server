@@ -65,38 +65,34 @@ export const InfoBlock = (props: LandingPageProps) => {
   ];
 
   return (
-    <section>
-      <div className={styles.infoBlock}>
-        <div className={styles.infoHero}>
-          <Image src={PhoneLaptopMockupMobile} alt="" />
-        </div>
-        {infoRowData.map((info, infoIndex) => (
-          <InfoRow key={`info-${infoIndex}`} data={info} />
-        ))}
-        {props.eligibleForPremium && props.scanLimitReached ? (
-          <ScanLimit />
-        ) : (
-          <FreeScanCta
-            scanLimitReached={props.scanLimitReached}
-            eligibleForPremium={props.eligibleForPremium}
-            signUpCallbackUrl={`${process.env.SERVER_URL}/user/dashboard`}
-            eventId={{
-              cta: "clicked_get_scan_info_banner",
-            }}
-            experimentData={props.experimentData}
-            ctaLabel={
-              <>
-                {props.l10n.getString(
-                  "landing-redesign-banner-cta-button-label",
-                )}
-                <ArrowIcon alt="" />
-              </>
-            }
-            hasFloatingLabel
-            showCtaOnly
-          />
-        )}
+    <div className={styles.infoBlock}>
+      <div className={styles.infoHero}>
+        <Image src={PhoneLaptopMockupMobile} alt="" />
       </div>
-    </section>
+      {infoRowData.map((info, infoIndex) => (
+        <InfoRow key={`info-${infoIndex}`} data={info} />
+      ))}
+      {props.eligibleForPremium && props.scanLimitReached ? (
+        <ScanLimit />
+      ) : (
+        <FreeScanCta
+          scanLimitReached={props.scanLimitReached}
+          eligibleForPremium={props.eligibleForPremium}
+          signUpCallbackUrl={`${process.env.SERVER_URL}/user/dashboard`}
+          eventId={{
+            cta: "clicked_get_scan_info_banner",
+          }}
+          experimentData={props.experimentData}
+          ctaLabel={
+            <>
+              {props.l10n.getString("landing-redesign-banner-cta-button-label")}
+              <ArrowIcon alt="" />
+            </>
+          }
+          hasFloatingLabel
+          showCtaOnly
+        />
+      )}
+    </div>
   );
 };

@@ -9,46 +9,44 @@ import styles from "./CtaInputBanner.module.scss";
 
 export const CtaInputBanner = (props: LandingPageProps) => {
   return (
-    <section>
-      <div className={styles.banner}>
-        <div className={styles.bannerContent}>
-          <div className={styles.bannerHeader}>
-            <h2>
-              <b>
-                {props.l10n.getFragment(
-                  "landing-redesign-cta-input-banner-header",
-                  {
-                    elems: { b: <strong /> },
-                  },
-                )}
-              </b>
-            </h2>
-            <p>
-              {props.l10n.getString(
-                "landing-redesign-cta-input-banner-subheader",
+    <div className={styles.banner}>
+      <div className={styles.bannerContent}>
+        <div className={styles.bannerHeader}>
+          <h2>
+            <b>
+              {props.l10n.getFragment(
+                "landing-redesign-cta-input-banner-header",
+                {
+                  elems: { b: <strong /> },
+                },
               )}
-            </p>
-          </div>
-          {props.eligibleForPremium && props.scanLimitReached ? (
-            <ScanLimit />
-          ) : (
-            <FreeScanCta
-              scanLimitReached={props.scanLimitReached}
-              eligibleForPremium={props.eligibleForPremium}
-              signUpCallbackUrl={`${process.env.SERVER_URL}/user/dashboard`}
-              eventId={{
-                cta: "clicked_get_scan_header",
-                field: "entered_email_address_header",
-              }}
-              experimentData={props.experimentData}
-              ctaLabel={props.l10n.getString(
-                "landing-redesign-hero-cta-button-label",
-              )}
-              showCtaOnly
-            />
-          )}
+            </b>
+          </h2>
+          <p>
+            {props.l10n.getString(
+              "landing-redesign-cta-input-banner-subheader",
+            )}
+          </p>
         </div>
+        {props.eligibleForPremium && props.scanLimitReached ? (
+          <ScanLimit />
+        ) : (
+          <FreeScanCta
+            scanLimitReached={props.scanLimitReached}
+            eligibleForPremium={props.eligibleForPremium}
+            signUpCallbackUrl={`${process.env.SERVER_URL}/user/dashboard`}
+            eventId={{
+              cta: "clicked_get_scan_header",
+              field: "entered_email_address_header",
+            }}
+            experimentData={props.experimentData}
+            ctaLabel={props.l10n.getString(
+              "landing-redesign-hero-cta-button-label",
+            )}
+            showCtaOnly
+          />
+        )}
       </div>
-    </section>
+    </div>
   );
 };

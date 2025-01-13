@@ -146,39 +146,37 @@ export const Faq = () => {
   };
 
   return (
-    <section className={styles.section}>
-      <div className={styles.content}>
-        <h2>
-          <b>{l10n.getString("landing-redesign-faq-section-title")}</b>
-        </h2>
-        <dl id="faq" className={styles.faqList}>
-          {faqItems.map(
-            ({ question, answer, isExpanded, id, onExpandAnswer }) => (
-              <FaqItem
-                key={id}
-                id={id}
-                question={question}
-                answer={answer}
-                isExpanded={isExpanded}
-                onExpandAnswer={onExpandAnswer}
-              />
-            ),
-          )}
-        </dl>
-        <TelemetryButton
-          variant="primary"
-          href={CONST_URL_SUMO_MONITOR_FAQ}
-          event={{
-            module: "link",
-            name: "click",
-            data: {
-              link_id: "see_all_faqs",
-            },
-          }}
-        >
-          {l10n.getString("landing-redesign-faq-sumo-link-label")}
-        </TelemetryButton>
-      </div>
-    </section>
+    <div className={styles.content}>
+      <h2>
+        <b>{l10n.getString("landing-redesign-faq-section-title")}</b>
+      </h2>
+      <dl id="faq" className={styles.faqList}>
+        {faqItems.map(
+          ({ question, answer, isExpanded, id, onExpandAnswer }) => (
+            <FaqItem
+              key={id}
+              id={id}
+              question={question}
+              answer={answer}
+              isExpanded={isExpanded}
+              onExpandAnswer={onExpandAnswer}
+            />
+          ),
+        )}
+      </dl>
+      <TelemetryButton
+        variant="primary"
+        href={CONST_URL_SUMO_MONITOR_FAQ}
+        event={{
+          module: "link",
+          name: "click",
+          data: {
+            link_id: "see_all_faqs",
+          },
+        }}
+      >
+        {l10n.getString("landing-redesign-faq-sumo-link-label")}
+      </TelemetryButton>
+    </div>
   );
 };

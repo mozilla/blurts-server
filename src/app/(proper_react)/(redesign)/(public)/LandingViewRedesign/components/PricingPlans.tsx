@@ -15,32 +15,32 @@ export const PricingPlans = (props: LandingPageProps) => {
   const headingId = useId();
 
   return (
-    <section className={styles.section}>
-      <div className={styles.content}>
-        <div className={styles.header}>
-          <h2 id={headingId}>
+    <div className={styles.content}>
+      <div className={styles.header}>
+        <h2 id={headingId}>
+          <b>
             {props.l10n.getString(
               "landing-redesign-pricing-plans-section-title",
             )}
-          </h2>
-          <p>
-            {props.l10n.getString(
-              "landing-redesign-pricing-plans-section-description",
-            )}
-          </p>
-        </div>
-        <PricingPlanList
-          aria-labelledby={headingId}
-          premiumSubscriptionUrl={{
-            monthly: getPremiumSubscriptionUrl({ type: "monthly" }),
-            yearly: getPremiumSubscriptionUrl({ type: "yearly" }),
-          }}
-          subscriptionBillingAmount={getSubscriptionBillingAmount()}
-          scanLimitReached={props.scanLimitReached}
-          experimentData={props.experimentData}
-          eligibleForPremium={props.eligibleForPremium}
-        />
+          </b>
+        </h2>
+        <p>
+          {props.l10n.getString(
+            "landing-redesign-pricing-plans-section-description",
+          )}
+        </p>
       </div>
-    </section>
+      <PricingPlanList
+        aria-labelledby={headingId}
+        premiumSubscriptionUrl={{
+          monthly: getPremiumSubscriptionUrl({ type: "monthly" }),
+          yearly: getPremiumSubscriptionUrl({ type: "yearly" }),
+        }}
+        subscriptionBillingAmount={getSubscriptionBillingAmount()}
+        scanLimitReached={props.scanLimitReached}
+        experimentData={props.experimentData}
+        eligibleForPremium={props.eligibleForPremium}
+      />
+    </div>
   );
 };

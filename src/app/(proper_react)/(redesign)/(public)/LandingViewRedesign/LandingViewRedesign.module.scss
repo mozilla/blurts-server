@@ -23,6 +23,11 @@
     justify-content: center;
     gap: tokens.$layout-sm;
     width: 100%;
+
+    &.hasBackground {
+      background-color: tokens.$color-grey-05;
+      padding: tokens.$layout-sm;
+    }
   }
 
   h1 {

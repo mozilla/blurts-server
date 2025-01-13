@@ -71,22 +71,20 @@ const logos: LogoData[] = [
 
 export const LogoBlock = ({ l10n }: { l10n: ExtendedReactLocalization }) => {
   return (
-    <section className={styles.section}>
-      <div className={styles.content}>
-        <div className={styles.header}>
-          <h2>
-            <b>{l10n.getString("landing-redesign-logo-block-title")}</b>
-          </h2>
-          <p>{l10n.getString("landing-redesign-logo-block-description")}</p>
-        </div>
-        <div className={styles.logosWrapper}>
-          {logos.map(({ title, imageSrc }, logoIndex) => (
-            <span key={`logo-${logoIndex}`} className={styles.logo}>
-              <Image src={imageSrc} alt={title} />
-            </span>
-          ))}
-        </div>
+    <div className={styles.content}>
+      <div className={styles.header}>
+        <h2>
+          <b>{l10n.getString("landing-redesign-logo-block-title")}</b>
+        </h2>
+        <p>{l10n.getString("landing-redesign-logo-block-description")}</p>
       </div>
-    </section>
+      <div className={styles.logosWrapper}>
+        {logos.map(({ title, imageSrc }, logoIndex) => (
+          <span key={`logo-${logoIndex}`} className={styles.logo}>
+            <Image src={imageSrc} alt={title} />
+          </span>
+        ))}
+      </div>
+    </div>
   );
 };

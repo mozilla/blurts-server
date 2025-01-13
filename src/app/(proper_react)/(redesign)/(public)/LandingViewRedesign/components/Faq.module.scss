@@ -1,11 +1,5 @@
 @use "../../../../../tokens";
 
-.section {
-  h2 {
-    font-weight: 700;
-  }
-}
-
 .content {
   align-items: center;
   border-radius: tokens.$border-radius-lg;

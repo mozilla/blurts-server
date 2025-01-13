@@ -28,12 +28,24 @@ export const View = (props: LandingPageProps) => {
       <AccountDeletionNotification />
       <main className={styles.wrapper}>
         <Hero {...props} />
-        <CtaBanner {...props} />
-        <InfoBlock {...props} />
-        <PricingPlans {...props} />
-        <LogoBlock l10n={props.l10n} />
-        <Faq />
-        <CtaInputBanner {...props} />
+        <section>
+          <CtaBanner {...props} />
+        </section>
+        <section className={styles.hasBackground}>
+          <InfoBlock {...props} />
+        </section>
+        <section>
+          <PricingPlans {...props} />
+        </section>
+        <section className={styles.hasBackground}>
+          <LogoBlock l10n={props.l10n} />
+        </section>
+        <section>
+          <Faq />
+        </section>
+        <section>
+          <CtaInputBanner {...props} />
+        </section>
       </main>
     </>
   );

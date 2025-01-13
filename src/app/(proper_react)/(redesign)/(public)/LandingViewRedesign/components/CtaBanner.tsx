@@ -10,41 +10,37 @@ import styles from "./CtaBanner.module.scss";
 
 export const CtaBanner = (props: LandingPageProps) => {
   return (
-    <section>
-      <div className={styles.banner}>
-        <div className={styles.bannerHeader}>
-          <h2>
-            <b>
-              {props.l10n.getFragment("landing-redesign-banner-cta-header", {
-                elems: { b: <strong /> },
-              })}
-            </b>
-          </h2>
-          <p>{props.l10n.getString("landing-redesign-banner-cta-subheader")}</p>
-        </div>
-        {props.eligibleForPremium && props.scanLimitReached ? (
-          <ScanLimit />
-        ) : (
-          <FreeScanCta
-            scanLimitReached={props.scanLimitReached}
-            eligibleForPremium={props.eligibleForPremium}
-            signUpCallbackUrl={`${process.env.SERVER_URL}/user/dashboard`}
-            eventId={{
-              cta: "clicked_get_scan_cta_banner",
-            }}
-            experimentData={props.experimentData}
-            ctaLabel={
-              <>
-                {props.l10n.getString(
-                  "landing-redesign-banner-cta-button-label",
-                )}
-                <ArrowIcon alt="" />
-              </>
-            }
-            showCtaOnly
-          />
-        )}
+    <div className={styles.banner}>
+      <div className={styles.bannerHeader}>
+        <h2>
+          <b>
+            {props.l10n.getFragment("landing-redesign-banner-cta-header", {
+              elems: { b: <strong /> },
+            })}
+          </b>
+        </h2>
+        <p>{props.l10n.getString("landing-redesign-banner-cta-subheader")}</p>
       </div>
-    </section>
+      {props.eligibleForPremium && props.scanLimitReached ? (
+        <ScanLimit />
+      ) : (
+        <FreeScanCta
+          scanLimitReached={props.scanLimitReached}
+          eligibleForPremium={props.eligibleForPremium}
+          signUpCallbackUrl={`${process.env.SERVER_URL}/user/dashboard`}
+          eventId={{
+            cta: "clicked_get_scan_cta_banner",
+          }}
+          experimentData={props.experimentData}
+          ctaLabel={
+            <>
+              {props.l10n.getString("landing-redesign-banner-cta-button-label")}
+              <ArrowIcon alt="" />
+            </>
+          }
+          showCtaOnly
+        />
+      )}
+    </div>
   );
 };
