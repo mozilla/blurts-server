@@ -59,11 +59,22 @@
 .heroCta {
   width: 100%;
 
+  form {
+    align-items: stretch;
+    display: flex;
+    flex-direction: column;
+    gap: tokens.$spacing-md;
+  }
+
   @media screen and (min-width: tokens.$screen-md) {
     max-width: tokens.$content-md;
     padding: 0 tokens.$layout-md;
-    & > form button {
-      flex: 0 0 auto;
+
+    form {
+      flex-direction: row;
+      button {
+        flex: 0 0 auto;
+      }
     }
   }
 
