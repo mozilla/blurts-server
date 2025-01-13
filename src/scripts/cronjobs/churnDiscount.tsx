@@ -19,26 +19,75 @@ import { SubscriberRow } from "knex/types/tables";
 import createDbConnection from "../../db/connect";
 import { logger } from "../../app/functions/server/logging";
 import { initEmail, sendEmail, closeEmailPool } from "../../utils/email";
+// Imports the Google Cloud client library
+import { Storage } from "@google-cloud/storage";
+import csv from "csv-parser";
 
 await run();
 await createDbConnection().destroy();
+
+interface FxaChurnSubscriber {
+  userid: string;
+  customer: string;
+  created: string;
+  nickname: string;
+  intervl: "monthly" | "yearly";
+  intervl_count: number;
+  plan_id: string;
+  product_id: string;
+  current_period_end: string;
+}
+
+async function readCSVFromBucket(
+  bucketName: string,
+  fileName: string,
+): Promise<FxaChurnSubscriber[]> {
+  const storage = new Storage();
+  const bucket = storage.bucket(bucketName);
+  const file = bucket.file(fileName);
+
+  const results: FxaChurnSubscriber[] = [];
+
+  return new Promise((resolve, reject) => {
+    file
+      .createReadStream()
+      .pipe(csv())
+      .on("data", (row) => {
+        results.push(row);
+      })
+      .on("error", reject)
+      .on("end", () => {
+        console.log(
+          `CSV file successfully processed. Num of rows: ${results.length}`,
+        );
+        resolve(results);
+      });
+  });
+}
 
 async function run() {
   let batchSize = 10;
 
   logger.info(`Getting free subscribers with batch size: ${batchSize}`);
-  const subscribersToEmail = []; // TODO: get it via FxA's new function
+
+  const bucketName = process.env.GCP_BUCKET;
+  if (!bucketName) {
+    throw `Bucket name isn't set ( process.env.GCP_BUCKET = ${process.env.GCP_BUCKET}), please set: 'GCP_BUCKET'`;
+  }
+  const fileName = "churningSubscribers.csv";
+  const subscribersToEmail = await readCSVFromBucket(bucketName, fileName);
+
   await initEmail();
 
   for (const subscriber of subscribersToEmail) {
     try {
       await sendChurnDiscountEmail(subscriber);
       logger.info("send_churn_discount_email_success", {
-        subscriberId: subscriber.id,
+        subscriberId: subscriber.userid,
       });
     } catch (error) {
       logger.error("send_churn_discount_email_error", {
-        subscriberId: subscriber.id,
+        subscriberId: subscriber.userid,
         error,
       });
     }
@@ -50,7 +99,8 @@ async function run() {
   );
 }
 
-async function sendChurnDiscountEmail(subscriber: SubscriberRow) {
+async function sendChurnDiscountEmail(subscriber: FxaChurnSubscriber) {
+  console.log(`sent email to: ${subscriber.userid}`);
   // const sanitizedSubscriber = sanitizeSubscriberRow(subscriber);
   // const l10n = getCronjobL10n(sanitizedSubscriber);
   // /**
