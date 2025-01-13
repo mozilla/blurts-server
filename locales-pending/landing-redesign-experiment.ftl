@@ -2,19 +2,21 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
+### Landing page redesign experiment
+
 ## Hero
 
-### Hero title
+# Hero title
 
 landing-redesign-hero-title = Find where your personal info is exposed <b>— and take it back</b>
 landing-redesign-hero-lead = { -brand-monitor } finds where your info has been exposed, such as your home address, phone number, or email, and helps you protect your privacy.
 
-### Hero CTA
+# Hero CTA
 
 landing-redesign-hero-cta-input-label = Enter your email address to start your free account
 landing-redesign-hero-cta-button-label = Get started
 
-### Hero content
+# Hero content
 
 landing-redesign-hero-list-item-title-one = { -brand-monitor } works for you around the clock
 landing-redesign-hero-list-item-description-one = Get data breach monitoring, account protection guidance, and automatic removal from data broker sites.
@@ -25,13 +27,13 @@ landing-redesign-hero-list-item-description-two = { -brand-monitor } simplifies 
 landing-redesign-hero-list-item-title-three = Over 10 million users trust { -brand-monitor }
 landing-redesign-hero-list-item-description-three = Join the { -brand-monitor } community and start taking back control of your personal privacy online.
 
-### Banner CTA
+# Banner CTA
 
 landing-redesign-banner-cta-header = There’s a $240 billion industry of data brokers selling your private information for profit. <b>It’s time to take back your privacy.</b>
 landing-redesign-banner-cta-subheader = Create a free account to see if your personal data has been exposed by data brokers and data breaches.
 landing-redesign-banner-cta-button-label = Start your free account
 
-### Info blocks
+# Info blocks
 
 landing-redesign-info-block-one-label = Proactive protection
 landing-redesign-info-block-one-title = Stay protected with continuous data monitoring
@@ -45,7 +47,7 @@ landing-redesign-info-block-three-label = Stay informed
 landing-redesign-info-block-three-title = Act fast with timely notifications
 landing-redesign-info-block-three-description = With { -brand-monitor }, you will be notified when your data is found in data breaches or data brokers, allowing you to take action such as securing accounts, updating passwords, or requesting data removal, reducing the risk of privacy threats.
 
-### Pricing plans
+# Pricing plans
 
 landing-redesign-pricing-plans-section-title = Choose your level of protection
 landing-redesign-pricing-plans-section-description = Your privacy is our priority, so data breach monitoring is always free. For more robust protection, { -brand-monitor-plus } includes continuous automatic removal of your personal information.
@@ -95,19 +97,19 @@ landing-redesign-pricing-plans-card-free-feature-item-three = Continuous monitor
 landing-redesign-pricing-plans-card-free-feature-item-four = Receive <b>data breach exposure alerts</b>
 landing-redesign-pricing-plans-card-free-feature-item-five = <b>Upgrade to { -brand-monitor-plus } anytime</b> for automated protection
 
-### Logo block
+# Logo block
 
 landing-redesign-logo-block-title = Trusted by 10 million people worldwide
 landing-redesign-logo-block-description = Since 2018, we’ve helped people in 237 countries protect their data when it has been exposed.
 
-### FAQ (Frequently Asked Questions)
+# FAQ (Frequently Asked Questions)
 
 landing-redesign-faq-section-title = Question and answer
 landing-redesign-faq-expand-button-alt = Open
 landing-redesign-faq-close-button-alt = Close
 landing-redesign-faq-sumo-link-label = Read all FAQs
 
-### Banner CTA with input
+# Banner CTA with input
 
 landing-redesign-cta-input-banner-header = <b>Take back control</b> of your data
 landing-redesign-cta-input-banner-subheader = Enter your email address to create a free account and see where your personal data is exposed online.
