@@ -44,6 +44,7 @@ import { getExperiments } from "../../../../../../../functions/server/getExperim
 import { getLocale } from "../../../../../../../functions/universal/getLocale";
 import { getL10n } from "../../../../../../../functions/l10n/serverComponents";
 import { getDataBrokerRemovalTimeEstimates } from "../../../../../../../functions/server/getDataBrokerRemovalTimeEstimates";
+import { getQaToggleRow } from "../../../../../../../../db/tables/qa_customs";
 
 const dashboardTabSlugs = ["action-needed", "fixed"];
 
@@ -110,23 +111,19 @@ export default async function DashboardPage({ params, searchParams }: Props) {
 
   const mockScanResultsData = await getMockedScanResults(profileId ?? 100);
 
-  // const qaToggles = await getQaToggleRow(10000);
-  const showCustomBrokers = true;
-  // let showRealBrokers = true;
+  const qaToggles = await getQaToggleRow(profileId);
+  console.log({ qaToggles });
+  let showCustomBrokers = false;
+  let showRealBrokers = true;
 
-  // if (qaToggles) {
-  //   showCustomBrokers = qaToggles.show_custom_brokers;
-  //   showRealBrokers = qaToggles.show_real_brokers;
+  if (qaToggles) {
+    showCustomBrokers = qaToggles.show_custom_brokers;
+    showRealBrokers = qaToggles.show_real_brokers;
+  }
 
-  // // if (latestScan.scan) {
-  // //   qaBrokerData = await getAllQaCustomBrokers(latestScan.scan.onerep_profile_id);
-  // // }
-  // }
-  const brokerData = showCustomBrokers ? mockScanResultsData : latestScan;
+  const brokerData =
+    showCustomBrokers && !showRealBrokers ? mockScanResultsData : latestScan;
 
-  // if (!showCustomBrokers) return qaBrokers as OnerepScanResultDataBrokerRow[];
-
-  console.log(mockScanResultsData);
   const scanCount =
     typeof profileId === "number"
       ? await getScansCountForProfile(profileId)
