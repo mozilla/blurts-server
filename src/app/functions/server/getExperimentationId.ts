@@ -30,9 +30,6 @@ export function getExperimentationId(
     if (!namespace) {
       logger.error(
         "NIMBUS_UUID_NAMESPACE environment variable is missing. Cannot generate experimentationId.",
-        {
-          accountId,
-        },
       );
       throw new Error(
         "NIMBUS_UUID_NAMESPACE not set, cannot create experimentationId",
