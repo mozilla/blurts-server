@@ -559,7 +559,9 @@ async function markChurnPreventionEmailAsJustSent(
 ) {
   const affectedSubscribers = await knex("subscribers")
     .update({
-      churn_prevention_email_sent: true,
+      // @ts-ignore knex.fn.now() results in it being set to a date,
+      // even if it's not typed as a JS date object:
+      churn_prevention_email_sent_at: knex.fn.now(),
       // @ts-ignore knex.fn.now() results in it being set to a date,
       // even if it's not typed as a JS date object:
       updated_at: knex.fn.now(),
@@ -696,11 +698,13 @@ async function isSubscriberPlus(subscriberId: SubscriberRow["id"]) {
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-async function getChurnPreventionEmailSent(subscriberId: SubscriberRow["id"]) {
+async function getChurnPreventionEmailSentAt(
+  subscriberId: SubscriberRow["id"],
+) {
   const res = await knex("subscribers")
-    .select("churn_prevention_email_sent")
+    .select("churn_prevention_email_sent_at")
     .where("id", subscriberId);
-  return res?.[0]?.["churn_prevention_email_sent"] ?? null;
+  return res?.[0]?.["churn_prevention_email_sent_at"] ?? null;
 }
 /* c8 ignore stop */
 
@@ -729,7 +733,7 @@ export {
   deleteOnerepProfileId,
   incrementSignInCountForEligibleFreeUser,
   getSignInCount,
-  getChurnPreventionEmailSent,
+  getChurnPreventionEmailSentAt,
   unresolveAllBreaches,
   isSubscriberPlus,
   knex as knexSubscribers,
