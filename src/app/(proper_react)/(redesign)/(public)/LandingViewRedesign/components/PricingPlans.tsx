@@ -17,13 +17,13 @@ export const PricingPlans = (props: LandingPageProps) => {
   return (
     <div className={styles.content}>
       <div className={styles.header}>
-        <h2 id={headingId}>
+        <h3 id={headingId}>
           <b>
             {props.l10n.getString(
               "landing-redesign-pricing-plans-section-title",
             )}
           </b>
-        </h2>
+        </h3>
         <p>
           {props.l10n.getString(
             "landing-redesign-pricing-plans-section-description",

@@ -17,11 +17,11 @@ export const Hero = (props: LandingPageProps) => {
     <header className={styles.hero}>
       <div className={styles.heroContent}>
         <div className={styles.heroTitle}>
-          <h1>
+          <h2>
             {props.l10n.getFragment("landing-redesign-hero-title", {
               elems: { b: <b /> },
             })}
-          </h1>
+          </h2>
           <p>{props.l10n.getString("landing-redesign-hero-lead")}</p>
         </div>
         <div className={styles.heroCta}>

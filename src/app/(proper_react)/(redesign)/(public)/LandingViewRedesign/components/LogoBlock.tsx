@@ -73,9 +73,9 @@ export const LogoBlock = ({ l10n }: { l10n: ExtendedReactLocalization }) => {
   return (
     <div className={styles.content}>
       <div className={styles.header}>
-        <h2>
+        <h3>
           <b>{l10n.getString("landing-redesign-logo-block-title")}</b>
-        </h2>
+        </h3>
         <p>{l10n.getString("landing-redesign-logo-block-description")}</p>
       </div>
       <div className={styles.logosWrapper}>

@@ -12,13 +12,13 @@ export const CtaBanner = (props: LandingPageProps) => {
   return (
     <div className={styles.banner}>
       <div className={styles.bannerHeader}>
-        <h2>
+        <h3>
           <b>
             {props.l10n.getFragment("landing-redesign-banner-cta-header", {
               elems: { b: <strong /> },
             })}
           </b>
-        </h2>
+        </h3>
         <p>{props.l10n.getString("landing-redesign-banner-cta-subheader")}</p>
       </div>
       {props.eligibleForPremium && props.scanLimitReached ? (

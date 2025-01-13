@@ -12,7 +12,7 @@ export const CtaInputBanner = (props: LandingPageProps) => {
     <div className={styles.banner}>
       <div className={styles.bannerContent}>
         <div className={styles.bannerHeader}>
-          <h2>
+          <h3>
             <b>
               {props.l10n.getFragment(
                 "landing-redesign-cta-input-banner-header",
@@ -21,7 +21,7 @@ export const CtaInputBanner = (props: LandingPageProps) => {
                 },
               )}
             </b>
-          </h2>
+          </h3>
           <p>
             {props.l10n.getString(
               "landing-redesign-cta-input-banner-subheader",

@@ -44,6 +44,13 @@
     padding: 0 tokens.$layout-md;
   }
 
+  h2 {
+    font: tokens.$text-title-sm;
+    font-family: var(--font-inter);
+    font-weight: 400;
+    line-height: 1.25em;
+  }
+
   p {
     font: tokens.$text-body-lg;
   }
