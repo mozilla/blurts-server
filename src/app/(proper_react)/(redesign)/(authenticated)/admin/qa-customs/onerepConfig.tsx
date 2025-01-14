@@ -6,6 +6,8 @@
 
 import React, { useState, useEffect } from "react";
 import styles from "./ConfigPage.module.scss";
+import { RemovalStatus } from "../../../../../functions/universal/scanResult";
+import { DataBrokerRemovalStatus } from "../../../../../functions/universal/dataBroker";
 
 interface QaBrokerDataCounts {
   onerep_scan_result_id?: number;
@@ -23,6 +25,9 @@ interface QaBrokerDataCounts {
   status: string;
   manually_resolved: string;
   optout_attempts?: number;
+  scan_result_status: RemovalStatus;
+  broker_status: DataBrokerRemovalStatus;
+  url: string;
 }
 
 const endpointBase = "/api/v1/admin/qa-customs/onerep";
@@ -63,6 +68,9 @@ const OnerepConfigPage = (props: Props) => {
     last_name: "",
     status: "new",
     manually_resolved: "false",
+    scan_result_status: "new",
+    broker_status: "active",
+    url: "",
   };
 
   // Temporary state to hold form input for a new broker
@@ -380,6 +388,25 @@ const OnerepConfigPage = (props: Props) => {
                   <option value="new">New</option>
                   <option value="optout_in_progress">In Progress</option>
                   <option value="removed">Removed</option>
+                </select>
+              </label>
+
+              <label>
+                Broker status:
+                <select
+                  name="status"
+                  value={newBroker.broker_status}
+                  onChange={(e) => void handleChange(e)}
+                >
+                  <option value="active">Active</option>
+                  <option value="on_hold">In Progress</option>
+                  <option value="ceased_operation">Ceased operation</option>
+                  <option value="scan_under_maintenance">
+                    Scan under maintenance
+                  </option>
+                  <option value="removal_under_maintenance">
+                    Removal under maintenance
+                  </option>
                 </select>
               </label>
 
