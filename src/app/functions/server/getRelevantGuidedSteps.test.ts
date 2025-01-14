@@ -45,14 +45,17 @@ describe("getNextGuidedStep", () => {
   describe("for non-US users", () => {
     it("links back to the dashboard if the user has no breaches", () => {
       expect(
-        getNextGuidedStep({
-          countryCode: "nl",
-          latestScanData: null,
-          subscriberBreaches: [],
-          user: {
-            email: "arbitrary@example.com",
+        getNextGuidedStep(
+          {
+            countryCode: "nl",
+            latestScanData: null,
+            subscriberBreaches: [],
+            user: {
+              email: "arbitrary@example.com",
+            },
           },
-        }),
+          [],
+        ),
       ).toStrictEqual({
         href: "/user/dashboard",
         id: "Done",
@@ -63,19 +66,22 @@ describe("getNextGuidedStep", () => {
 
     it("links to the Credit Card step if the user's credit card has been breached", () => {
       expect(
-        getNextGuidedStep({
-          countryCode: "nl",
-          latestScanData: null,
-          subscriberBreaches: [
-            createRandomBreach({
-              dataClassesEffected: [{ [BreachDataTypes.CreditCard]: 42 }],
-              isResolved: false,
-            }),
-          ],
-          user: {
-            email: "arbitrary@example.com",
+        getNextGuidedStep(
+          {
+            countryCode: "nl",
+            latestScanData: null,
+            subscriberBreaches: [
+              createRandomBreach({
+                dataClassesEffected: [{ [BreachDataTypes.CreditCard]: 42 }],
+                isResolved: false,
+              }),
+            ],
+            user: {
+              email: "arbitrary@example.com",
+            },
           },
-        }),
+          [],
+        ),
       ).toStrictEqual({
         href: "/user/dashboard/fix/high-risk-data-breaches/credit-card",
         id: "HighRiskCreditCard",
@@ -86,24 +92,27 @@ describe("getNextGuidedStep", () => {
 
     it("links to the Credit Card step if the user's credit card has been breached, even if the user's bank account was also breached", () => {
       expect(
-        getNextGuidedStep({
-          countryCode: "nl",
-          latestScanData: null,
-          subscriberBreaches: [
-            createRandomBreach({
-              dataClassesEffected: [
-                {
-                  [BreachDataTypes.CreditCard]: 42,
-                  [BreachDataTypes.BankAccount]: 1337,
-                },
-              ],
-              isResolved: false,
-            }),
-          ],
-          user: {
-            email: "arbitrary@example.com",
+        getNextGuidedStep(
+          {
+            countryCode: "nl",
+            latestScanData: null,
+            subscriberBreaches: [
+              createRandomBreach({
+                dataClassesEffected: [
+                  {
+                    [BreachDataTypes.CreditCard]: 42,
+                    [BreachDataTypes.BankAccount]: 1337,
+                  },
+                ],
+                isResolved: false,
+              }),
+            ],
+            user: {
+              email: "arbitrary@example.com",
+            },
           },
-        }),
+          [],
+        ),
       ).toStrictEqual({
         href: "/user/dashboard/fix/high-risk-data-breaches/credit-card",
         id: "HighRiskCreditCard",
@@ -114,24 +123,27 @@ describe("getNextGuidedStep", () => {
 
     it("links to the Credit Card step if the user's credit card has been breached, even if the user's Social Security Number was also breached (because we have no recommendations for non-US SSN breaches)", () => {
       expect(
-        getNextGuidedStep({
-          countryCode: "nl",
-          latestScanData: null,
-          subscriberBreaches: [
-            createRandomBreach({
-              dataClassesEffected: [
-                {
-                  [BreachDataTypes.CreditCard]: 42,
-                  [BreachDataTypes.SSN]: 1337,
-                },
-              ],
-              isResolved: false,
-            }),
-          ],
-          user: {
-            email: "arbitrary@example.com",
+        getNextGuidedStep(
+          {
+            countryCode: "nl",
+            latestScanData: null,
+            subscriberBreaches: [
+              createRandomBreach({
+                dataClassesEffected: [
+                  {
+                    [BreachDataTypes.CreditCard]: 42,
+                    [BreachDataTypes.SSN]: 1337,
+                  },
+                ],
+                isResolved: false,
+              }),
+            ],
+            user: {
+              email: "arbitrary@example.com",
+            },
           },
-        }),
+          [],
+        ),
       ).toStrictEqual({
         href: "/user/dashboard/fix/high-risk-data-breaches/credit-card",
         id: "HighRiskCreditCard",
@@ -142,19 +154,22 @@ describe("getNextGuidedStep", () => {
 
     it("links to the Bank Account step if the user's bank account has been breached", () => {
       expect(
-        getNextGuidedStep({
-          countryCode: "nl",
-          latestScanData: null,
-          subscriberBreaches: [
-            createRandomBreach({
-              dataClassesEffected: [{ [BreachDataTypes.BankAccount]: 1337 }],
-              isResolved: false,
-            }),
-          ],
-          user: {
-            email: "arbitrary@example.com",
+        getNextGuidedStep(
+          {
+            countryCode: "nl",
+            latestScanData: null,
+            subscriberBreaches: [
+              createRandomBreach({
+                dataClassesEffected: [{ [BreachDataTypes.BankAccount]: 1337 }],
+                isResolved: false,
+              }),
+            ],
+            user: {
+              email: "arbitrary@example.com",
+            },
           },
-        }),
+          [],
+        ),
       ).toStrictEqual({
         href: "/user/dashboard/fix/high-risk-data-breaches/bank-account",
         id: "HighRiskBankAccount",
@@ -165,23 +180,26 @@ describe("getNextGuidedStep", () => {
 
     it("links to the Bank Account step if the user's bank account has been breached, even if their credit card has also been breached, if the latter has already been resolved", () => {
       expect(
-        getNextGuidedStep({
-          countryCode: "nl",
-          latestScanData: null,
-          subscriberBreaches: [
-            createRandomBreach({
-              dataClassesEffected: [{ [BreachDataTypes.CreditCard]: 42 }],
-              isResolved: true,
-            }),
-            createRandomBreach({
-              dataClassesEffected: [{ [BreachDataTypes.BankAccount]: 1337 }],
-              isResolved: false,
-            }),
-          ],
-          user: {
-            email: "arbitrary@example.com",
+        getNextGuidedStep(
+          {
+            countryCode: "nl",
+            latestScanData: null,
+            subscriberBreaches: [
+              createRandomBreach({
+                dataClassesEffected: [{ [BreachDataTypes.CreditCard]: 42 }],
+                isResolved: true,
+              }),
+              createRandomBreach({
+                dataClassesEffected: [{ [BreachDataTypes.BankAccount]: 1337 }],
+                isResolved: false,
+              }),
+            ],
+            user: {
+              email: "arbitrary@example.com",
+            },
           },
-        }),
+          [],
+        ),
       ).toStrictEqual({
         href: "/user/dashboard/fix/high-risk-data-breaches/bank-account",
         id: "HighRiskBankAccount",
@@ -192,23 +210,26 @@ describe("getNextGuidedStep", () => {
 
     it("links to the Bank Account step if the user's bank account has been breached, even if their PIN has also been breached", () => {
       expect(
-        getNextGuidedStep({
-          countryCode: "nl",
-          latestScanData: null,
-          subscriberBreaches: [
-            createRandomBreach({
-              dataClassesEffected: [{ [BreachDataTypes.PIN]: 42 }],
-              isResolved: false,
-            }),
-            createRandomBreach({
-              dataClassesEffected: [{ [BreachDataTypes.BankAccount]: 1337 }],
-              isResolved: false,
-            }),
-          ],
-          user: {
-            email: "arbitrary@example.com",
+        getNextGuidedStep(
+          {
+            countryCode: "nl",
+            latestScanData: null,
+            subscriberBreaches: [
+              createRandomBreach({
+                dataClassesEffected: [{ [BreachDataTypes.PIN]: 42 }],
+                isResolved: false,
+              }),
+              createRandomBreach({
+                dataClassesEffected: [{ [BreachDataTypes.BankAccount]: 1337 }],
+                isResolved: false,
+              }),
+            ],
+            user: {
+              email: "arbitrary@example.com",
+            },
           },
-        }),
+          [],
+        ),
       ).toStrictEqual({
         href: "/user/dashboard/fix/high-risk-data-breaches/bank-account",
         id: "HighRiskBankAccount",
@@ -219,19 +240,22 @@ describe("getNextGuidedStep", () => {
 
     it("links to the PIN step if the user's PIN has been breached", () => {
       expect(
-        getNextGuidedStep({
-          countryCode: "nl",
-          latestScanData: null,
-          subscriberBreaches: [
-            createRandomBreach({
-              dataClassesEffected: [{ [BreachDataTypes.PIN]: 1337 }],
-              isResolved: false,
-            }),
-          ],
-          user: {
-            email: "arbitrary@example.com",
+        getNextGuidedStep(
+          {
+            countryCode: "nl",
+            latestScanData: null,
+            subscriberBreaches: [
+              createRandomBreach({
+                dataClassesEffected: [{ [BreachDataTypes.PIN]: 1337 }],
+                isResolved: false,
+              }),
+            ],
+            user: {
+              email: "arbitrary@example.com",
+            },
           },
-        }),
+          [],
+        ),
       ).toStrictEqual({
         href: "/user/dashboard/fix/high-risk-data-breaches/pin",
         id: "HighRiskPin",
@@ -242,19 +266,22 @@ describe("getNextGuidedStep", () => {
 
     it("links to the password step if the user's password has been breached", () => {
       expect(
-        getNextGuidedStep({
-          countryCode: "nl",
-          latestScanData: null,
-          subscriberBreaches: [
-            createRandomBreach({
-              dataClassesEffected: [{ [BreachDataTypes.Passwords]: 1337 }],
-              isResolved: false,
-            }),
-          ],
-          user: {
-            email: "arbitrary@example.com",
+        getNextGuidedStep(
+          {
+            countryCode: "nl",
+            latestScanData: null,
+            subscriberBreaches: [
+              createRandomBreach({
+                dataClassesEffected: [{ [BreachDataTypes.Passwords]: 1337 }],
+                isResolved: false,
+              }),
+            ],
+            user: {
+              email: "arbitrary@example.com",
+            },
           },
-        }),
+          [],
+        ),
       ).toStrictEqual({
         href: "/user/dashboard/fix/leaked-passwords/passwords",
         id: "LeakedPasswordsPassword",
@@ -265,21 +292,24 @@ describe("getNextGuidedStep", () => {
 
     it("links to the security questions step if the user's security questions have been breached", () => {
       expect(
-        getNextGuidedStep({
-          countryCode: "nl",
-          latestScanData: null,
-          subscriberBreaches: [
-            createRandomBreach({
-              dataClassesEffected: [
-                { [BreachDataTypes.SecurityQuestions]: 1337 },
-              ],
-              isResolved: false,
-            }),
-          ],
-          user: {
-            email: "arbitrary@example.com",
+        getNextGuidedStep(
+          {
+            countryCode: "nl",
+            latestScanData: null,
+            subscriberBreaches: [
+              createRandomBreach({
+                dataClassesEffected: [
+                  { [BreachDataTypes.SecurityQuestions]: 1337 },
+                ],
+                isResolved: false,
+              }),
+            ],
+            user: {
+              email: "arbitrary@example.com",
+            },
           },
-        }),
+          [],
+        ),
       ).toStrictEqual({
         href: "/user/dashboard/fix/leaked-passwords/security-questions",
         id: "LeakedPasswordsSecurityQuestion",
@@ -290,19 +320,22 @@ describe("getNextGuidedStep", () => {
 
     it("links to the phone number step if the user's phone number has been breached", () => {
       expect(
-        getNextGuidedStep({
-          countryCode: "nl",
-          latestScanData: null,
-          subscriberBreaches: [
-            createRandomBreach({
-              dataClassesEffected: [{ [BreachDataTypes.Phone]: 1337 }],
-              isResolved: false,
-            }),
-          ],
-          user: {
-            email: "arbitrary@example.com",
+        getNextGuidedStep(
+          {
+            countryCode: "nl",
+            latestScanData: null,
+            subscriberBreaches: [
+              createRandomBreach({
+                dataClassesEffected: [{ [BreachDataTypes.Phone]: 1337 }],
+                isResolved: false,
+              }),
+            ],
+            user: {
+              email: "arbitrary@example.com",
+            },
           },
-        }),
+          [],
+        ),
       ).toStrictEqual({
         href: "/user/dashboard/fix/security-recommendations/phone",
         id: "SecurityTipsPhone",
@@ -313,19 +346,22 @@ describe("getNextGuidedStep", () => {
 
     it("links to the email step if the user's email has been breached", () => {
       expect(
-        getNextGuidedStep({
-          countryCode: "nl",
-          latestScanData: null,
-          subscriberBreaches: [
-            createRandomBreach({
-              dataClassesEffected: [{ [BreachDataTypes.Email]: 1337 }],
-              isResolved: false,
-            }),
-          ],
-          user: {
-            email: "arbitrary@example.com",
+        getNextGuidedStep(
+          {
+            countryCode: "nl",
+            latestScanData: null,
+            subscriberBreaches: [
+              createRandomBreach({
+                dataClassesEffected: [{ [BreachDataTypes.Email]: 1337 }],
+                isResolved: false,
+              }),
+            ],
+            user: {
+              email: "arbitrary@example.com",
+            },
           },
-        }),
+          [],
+        ),
       ).toStrictEqual({
         href: "/user/dashboard/fix/security-recommendations/email",
         id: "SecurityTipsEmail",
@@ -336,19 +372,22 @@ describe("getNextGuidedStep", () => {
 
     it("links to the IP step if the user's IP has been breached", () => {
       expect(
-        getNextGuidedStep({
-          countryCode: "nl",
-          latestScanData: null,
-          subscriberBreaches: [
-            createRandomBreach({
-              dataClassesEffected: [{ [BreachDataTypes.IP]: 1337 }],
-              isResolved: false,
-            }),
-          ],
-          user: {
-            email: "arbitrary@example.com",
+        getNextGuidedStep(
+          {
+            countryCode: "nl",
+            latestScanData: null,
+            subscriberBreaches: [
+              createRandomBreach({
+                dataClassesEffected: [{ [BreachDataTypes.IP]: 1337 }],
+                isResolved: false,
+              }),
+            ],
+            user: {
+              email: "arbitrary@example.com",
+            },
           },
-        }),
+          [],
+        ),
       ).toStrictEqual({
         href: "/user/dashboard/fix/security-recommendations/ip",
         id: "SecurityTipsIp",
@@ -374,14 +413,17 @@ describe("getNextGuidedStep", () => {
 
     it("links back to the dashboard if the user has no breaches", () => {
       expect(
-        getNextGuidedStep({
-          countryCode: "us",
-          latestScanData: completedScan,
-          subscriberBreaches: [],
-          user: {
-            email: "arbitrary@example.com",
+        getNextGuidedStep(
+          {
+            countryCode: "us",
+            latestScanData: completedScan,
+            subscriberBreaches: [],
+            user: {
+              email: "arbitrary@example.com",
+            },
           },
-        }),
+          [],
+        ),
       ).toStrictEqual({
         href: "/user/dashboard",
         id: "Done",
@@ -392,17 +434,20 @@ describe("getNextGuidedStep", () => {
 
     it("links to the scan if the user has not run a scan yet", () => {
       expect(
-        getNextGuidedStep({
-          countryCode: "us",
-          latestScanData: {
-            scan: null,
-            results: [],
+        getNextGuidedStep(
+          {
+            countryCode: "us",
+            latestScanData: {
+              scan: null,
+              results: [],
+            },
+            subscriberBreaches: [],
+            user: {
+              email: "arbitrary@example.com",
+            },
           },
-          subscriberBreaches: [],
-          user: {
-            email: "arbitrary@example.com",
-          },
-        }),
+          [],
+        ),
       ).toStrictEqual({
         href: "/user/dashboard/fix/data-broker-profiles/start-free-scan",
         id: "Scan",
@@ -413,26 +458,29 @@ describe("getNextGuidedStep", () => {
 
     it("links to the scan if the user has a scan in progress and not all scan results are resolved", () => {
       expect(
-        getNextGuidedStep({
-          countryCode: "us",
-          latestScanData: {
-            scan: {
-              ...completedScan.scan!,
-              onerep_scan_status: "in_progress",
+        getNextGuidedStep(
+          {
+            countryCode: "us",
+            latestScanData: {
+              scan: {
+                ...completedScan.scan!,
+                onerep_scan_status: "in_progress",
+              },
+              results: [
+                createRandomScanResult({
+                  status: "new",
+                  manually_resolved: false,
+                  broker_status: "active",
+                }),
+              ],
             },
-            results: [
-              createRandomScanResult({
-                status: "new",
-                manually_resolved: false,
-                broker_status: "active",
-              }),
-            ],
+            subscriberBreaches: [],
+            user: {
+              email: "arbitrary@example.com",
+            },
           },
-          subscriberBreaches: [],
-          user: {
-            email: "arbitrary@example.com",
-          },
-        }),
+          [],
+        ),
       ).toStrictEqual({
         href: "/user/dashboard/fix/data-broker-profiles/start-free-scan",
         id: "Scan",
@@ -443,25 +491,28 @@ describe("getNextGuidedStep", () => {
 
     it("links to the scan if the user has a completed scan and not all scan results are resolved", () => {
       expect(
-        getNextGuidedStep({
-          countryCode: "us",
-          latestScanData: {
-            scan: {
-              ...completedScan.scan!,
-              onerep_scan_status: "finished",
+        getNextGuidedStep(
+          {
+            countryCode: "us",
+            latestScanData: {
+              scan: {
+                ...completedScan.scan!,
+                onerep_scan_status: "finished",
+              },
+              results: [
+                createRandomScanResult({
+                  status: "new",
+                  manually_resolved: false,
+                }),
+              ],
             },
-            results: [
-              createRandomScanResult({
-                status: "new",
-                manually_resolved: false,
-              }),
-            ],
+            subscriberBreaches: [],
+            user: {
+              email: "arbitrary@example.com",
+            },
           },
-          subscriberBreaches: [],
-          user: {
-            email: "arbitrary@example.com",
-          },
-        }),
+          [],
+        ),
       ).toStrictEqual({
         href: "/user/dashboard/fix/data-broker-profiles/start-free-scan",
         id: "Scan",
@@ -472,97 +523,109 @@ describe("getNextGuidedStep", () => {
 
     it("does not link to the scan if the user has a completed scan and all scan results are being opted out", () => {
       expect(
-        getNextGuidedStep({
-          countryCode: "us",
-          latestScanData: {
-            scan: {
-              ...completedScan.scan!,
-              onerep_scan_status: "finished",
+        getNextGuidedStep(
+          {
+            countryCode: "us",
+            latestScanData: {
+              scan: {
+                ...completedScan.scan!,
+                onerep_scan_status: "finished",
+              },
+              results: [
+                createRandomScanResult({
+                  status: "optout_in_progress",
+                  manually_resolved: false,
+                }),
+              ],
             },
-            results: [
-              createRandomScanResult({
-                status: "optout_in_progress",
-                manually_resolved: false,
-              }),
-            ],
+            subscriberBreaches: [],
+            user: {
+              email: "arbitrary@example.com",
+            },
           },
-          subscriberBreaches: [],
-          user: {
-            email: "arbitrary@example.com",
-          },
-        }).id,
+          [],
+        ).id,
       ).toBe("Done");
     });
 
     it("does not link to the scan if the user has a completed scan and all scan results have been removed", () => {
       expect(
-        getNextGuidedStep({
-          countryCode: "us",
-          latestScanData: {
-            scan: {
-              ...completedScan.scan!,
-              onerep_scan_status: "finished",
+        getNextGuidedStep(
+          {
+            countryCode: "us",
+            latestScanData: {
+              scan: {
+                ...completedScan.scan!,
+                onerep_scan_status: "finished",
+              },
+              results: [
+                createRandomScanResult({
+                  status: "removed",
+                  manually_resolved: false,
+                }),
+              ],
             },
-            results: [
-              createRandomScanResult({
-                status: "removed",
-                manually_resolved: false,
-              }),
-            ],
+            subscriberBreaches: [],
+            user: {
+              email: "arbitrary@example.com",
+            },
           },
-          subscriberBreaches: [],
-          user: {
-            email: "arbitrary@example.com",
-          },
-        }).id,
+          [],
+        ).id,
       ).toBe("Done");
     });
 
     it("does not link to the scan if the user has a completed scan and all scan results are waiting for verification", () => {
       expect(
-        getNextGuidedStep({
-          countryCode: "us",
-          latestScanData: {
-            scan: {
-              ...completedScan.scan!,
-              onerep_scan_status: "finished",
+        getNextGuidedStep(
+          {
+            countryCode: "us",
+            latestScanData: {
+              scan: {
+                ...completedScan.scan!,
+                onerep_scan_status: "finished",
+              },
+              results: [
+                createRandomScanResult({
+                  status: "waiting_for_verification",
+                  manually_resolved: false,
+                }),
+              ],
             },
-            results: [
-              createRandomScanResult({
-                status: "waiting_for_verification",
-                manually_resolved: false,
-              }),
-            ],
+            subscriberBreaches: [],
+            user: {
+              email: "arbitrary@example.com",
+            },
           },
-          subscriberBreaches: [],
-          user: {
-            email: "arbitrary@example.com",
-          },
-        }).id,
+          [],
+        ).id,
       ).toBe("Done");
     });
 
     it("does not link to the scan if the user has a completed scan and all scan results are manually resolved", () => {
       expect(
-        getNextGuidedStep({
-          countryCode: "us",
-          latestScanData: {
-            scan: {
-              ...completedScan.scan!,
-              onerep_scan_status: "finished",
+        getNextGuidedStep(
+          {
+            countryCode: "us",
+            latestScanData: {
+              scan: {
+                ...completedScan.scan!,
+                onerep_scan_status: "finished",
+              },
+              results: [
+                createRandomScanResult({
+                  status: "new",
+                  manually_resolved: true,
+                }),
+              ],
             },
-            results: [
-              createRandomScanResult({
-                status: "new",
-                manually_resolved: true,
-              }),
-            ],
+            subscriberBreaches: [],
+            user: {
+              email: "arbitrary@example.com",
+            },
           },
-          subscriberBreaches: [],
-          user: {
-            email: "arbitrary@example.com",
-          },
-        }).id,
+          [],
+        ).id,
       ).toBe("Done");
     });
 
@@ -603,26 +666,29 @@ describe("getNextGuidedStep", () => {
     // TODO: MNTOR-3886 - Remove EnableRemovalUnderMaintenanceStep feature flag
     it("does not link to the removal under maintenance step if the feature flag is off", () => {
       expect(
-        getNextGuidedStep({
-          countryCode: "us",
-          latestScanData: {
-            scan: {
-              ...completedScan.scan!,
-              onerep_scan_status: "finished",
+        getNextGuidedStep(
+          {
+            countryCode: "us",
+            latestScanData: {
+              scan: {
+                ...completedScan.scan!,
+                onerep_scan_status: "finished",
+              },
+              results: [
+                createRandomScanResult({
+                  status: "optout_in_progress",
+                  manually_resolved: false,
+                  broker_status: "removal_under_maintenance",
+                }),
+              ],
             },
-            results: [
-              createRandomScanResult({
-                status: "optout_in_progress",
-                manually_resolved: false,
-                broker_status: "removal_under_maintenance",
-              }),
-            ],
+            subscriberBreaches: [],
+            user: {
+              email: "arbitrary@example.com",
+            },
           },
-          subscriberBreaches: [],
-          user: {
-            email: "arbitrary@example.com",
-          },
-        }).id,
+          [],
+        ).id,
       ).toBe("Done");
     });
 
@@ -861,19 +927,22 @@ describe("getNextGuidedStep", () => {
 
     it("links to the Credit Card step if the user's credit card has been breached", () => {
       expect(
-        getNextGuidedStep({
-          countryCode: "us",
-          latestScanData: completedScan,
-          subscriberBreaches: [
-            createRandomBreach({
-              dataClassesEffected: [{ [BreachDataTypes.CreditCard]: 42 }],
-              isResolved: false,
-            }),
-          ],
-          user: {
-            email: "arbitrary@example.com",
+        getNextGuidedStep(
+          {
+            countryCode: "us",
+            latestScanData: completedScan,
+            subscriberBreaches: [
+              createRandomBreach({
+                dataClassesEffected: [{ [BreachDataTypes.CreditCard]: 42 }],
+                isResolved: false,
+              }),
+            ],
+            user: {
+              email: "arbitrary@example.com",
+            },
           },
-        }),
+          [],
+        ),
       ).toStrictEqual({
         href: "/user/dashboard/fix/high-risk-data-breaches/credit-card",
         id: "HighRiskCreditCard",
@@ -884,24 +953,27 @@ describe("getNextGuidedStep", () => {
 
     it("links to the Credit Card step if the user's credit card has been breached, even if the user's bank account was also breached", () => {
       expect(
-        getNextGuidedStep({
-          countryCode: "us",
-          latestScanData: completedScan,
-          subscriberBreaches: [
-            createRandomBreach({
-              dataClassesEffected: [
-                {
-                  [BreachDataTypes.CreditCard]: 42,
-                  [BreachDataTypes.BankAccount]: 1337,
-                },
-              ],
-              isResolved: false,
-            }),
-          ],
-          user: {
-            email: "arbitrary@example.com",
+        getNextGuidedStep(
+          {
+            countryCode: "us",
+            latestScanData: completedScan,
+            subscriberBreaches: [
+              createRandomBreach({
+                dataClassesEffected: [
+                  {
+                    [BreachDataTypes.CreditCard]: 42,
+                    [BreachDataTypes.BankAccount]: 1337,
+                  },
+                ],
+                isResolved: false,
+              }),
+            ],
+            user: {
+              email: "arbitrary@example.com",
+            },
           },
-        }),
+          [],
+        ),
       ).toStrictEqual({
         href: "/user/dashboard/fix/high-risk-data-breaches/credit-card",
         id: "HighRiskCreditCard",
@@ -912,24 +984,27 @@ describe("getNextGuidedStep", () => {
 
     it("links to the Credit Card step if the user's credit card has been breached, even if the user's Social Security Number was also breached (because we have no recommendations for non-US SSN breaches)", () => {
       expect(
-        getNextGuidedStep({
-          countryCode: "us",
-          latestScanData: completedScan,
-          subscriberBreaches: [
-            createRandomBreach({
-              dataClassesEffected: [
-                {
-                  [BreachDataTypes.CreditCard]: 42,
-                  [BreachDataTypes.SSN]: 1337,
-                },
-              ],
-              isResolved: false,
-            }),
-          ],
-          user: {
-            email: "arbitrary@example.com",
+        getNextGuidedStep(
+          {
+            countryCode: "us",
+            latestScanData: completedScan,
+            subscriberBreaches: [
+              createRandomBreach({
+                dataClassesEffected: [
+                  {
+                    [BreachDataTypes.CreditCard]: 42,
+                    [BreachDataTypes.SSN]: 1337,
+                  },
+                ],
+                isResolved: false,
+              }),
+            ],
+            user: {
+              email: "arbitrary@example.com",
+            },
           },
-        }),
+          [],
+        ),
       ).toStrictEqual({
         href: "/user/dashboard/fix/high-risk-data-breaches/credit-card",
         id: "HighRiskCreditCard",
@@ -940,19 +1015,22 @@ describe("getNextGuidedStep", () => {
 
     it("links to the Bank Account step if the user's bank account has been breached", () => {
       expect(
-        getNextGuidedStep({
-          countryCode: "us",
-          latestScanData: completedScan,
-          subscriberBreaches: [
-            createRandomBreach({
-              dataClassesEffected: [{ [BreachDataTypes.BankAccount]: 1337 }],
-              isResolved: false,
-            }),
-          ],
-          user: {
-            email: "arbitrary@example.com",
+        getNextGuidedStep(
+          {
+            countryCode: "us",
+            latestScanData: completedScan,
+            subscriberBreaches: [
+              createRandomBreach({
+                dataClassesEffected: [{ [BreachDataTypes.BankAccount]: 1337 }],
+                isResolved: false,
+              }),
+            ],
+            user: {
+              email: "arbitrary@example.com",
+            },
           },
-        }),
+          [],
+        ),
       ).toStrictEqual({
         href: "/user/dashboard/fix/high-risk-data-breaches/bank-account",
         id: "HighRiskBankAccount",
@@ -963,23 +1041,26 @@ describe("getNextGuidedStep", () => {
 
     it("links to the Bank Account step if the user's bank account has been breached, even if their credit card has also been breached, if the latter has already been resolved", () => {
       expect(
-        getNextGuidedStep({
-          countryCode: "us",
-          latestScanData: completedScan,
-          subscriberBreaches: [
-            createRandomBreach({
-              dataClassesEffected: [{ [BreachDataTypes.CreditCard]: 42 }],
-              isResolved: true,
-            }),
-            createRandomBreach({
-              dataClassesEffected: [{ [BreachDataTypes.BankAccount]: 1337 }],
-              isResolved: false,
-            }),
-          ],
-          user: {
-            email: "arbitrary@example.com",
+        getNextGuidedStep(
+          {
+            countryCode: "us",
+            latestScanData: completedScan,
+            subscriberBreaches: [
+              createRandomBreach({
+                dataClassesEffected: [{ [BreachDataTypes.CreditCard]: 42 }],
+                isResolved: true,
+              }),
+              createRandomBreach({
+                dataClassesEffected: [{ [BreachDataTypes.BankAccount]: 1337 }],
+                isResolved: false,
+              }),
+            ],
+            user: {
+              email: "arbitrary@example.com",
+            },
           },
-        }),
+          [],
+        ),
       ).toStrictEqual({
         href: "/user/dashboard/fix/high-risk-data-breaches/bank-account",
         id: "HighRiskBankAccount",
@@ -990,23 +1071,26 @@ describe("getNextGuidedStep", () => {
 
     it("links to the Bank Account step if the user's bank account has been breached, even if their PIN has also been breached", () => {
       expect(
-        getNextGuidedStep({
-          countryCode: "us",
-          latestScanData: completedScan,
-          subscriberBreaches: [
-            createRandomBreach({
-              dataClassesEffected: [{ [BreachDataTypes.PIN]: 42 }],
-              isResolved: false,
-            }),
-            createRandomBreach({
-              dataClassesEffected: [{ [BreachDataTypes.BankAccount]: 1337 }],
-              isResolved: false,
-            }),
-          ],
-          user: {
-            email: "arbitrary@example.com",
+        getNextGuidedStep(
+          {
+            countryCode: "us",
+            latestScanData: completedScan,
+            subscriberBreaches: [
+              createRandomBreach({
+                dataClassesEffected: [{ [BreachDataTypes.PIN]: 42 }],
+                isResolved: false,
+              }),
+              createRandomBreach({
+                dataClassesEffected: [{ [BreachDataTypes.BankAccount]: 1337 }],
+                isResolved: false,
+              }),
+            ],
+            user: {
+              email: "arbitrary@example.com",
+            },
           },
-        }),
+          [],
+        ),
       ).toStrictEqual({
         href: "/user/dashboard/fix/high-risk-data-breaches/bank-account",
         id: "HighRiskBankAccount",
@@ -1017,19 +1101,22 @@ describe("getNextGuidedStep", () => {
 
     it("links to the PIN step if the user's PIN has been breached", () => {
       expect(
-        getNextGuidedStep({
-          countryCode: "us",
-          latestScanData: completedScan,
-          subscriberBreaches: [
-            createRandomBreach({
-              dataClassesEffected: [{ [BreachDataTypes.PIN]: 1337 }],
-              isResolved: false,
-            }),
-          ],
-          user: {
-            email: "arbitrary@example.com",
+        getNextGuidedStep(
+          {
+            countryCode: "us",
+            latestScanData: completedScan,
+            subscriberBreaches: [
+              createRandomBreach({
+                dataClassesEffected: [{ [BreachDataTypes.PIN]: 1337 }],
+                isResolved: false,
+              }),
+            ],
+            user: {
+              email: "arbitrary@example.com",
+            },
           },
-        }),
+          [],
+        ),
       ).toStrictEqual({
         href: "/user/dashboard/fix/high-risk-data-breaches/pin",
         id: "HighRiskPin",
@@ -1040,19 +1127,22 @@ describe("getNextGuidedStep", () => {
 
     it("links to the password step if the user's password has been breached", () => {
       expect(
-        getNextGuidedStep({
-          countryCode: "us",
-          latestScanData: completedScan,
-          subscriberBreaches: [
-            createRandomBreach({
-              dataClassesEffected: [{ [BreachDataTypes.Passwords]: 1337 }],
-              isResolved: false,
-            }),
-          ],
-          user: {
-            email: "arbitrary@example.com",
+        getNextGuidedStep(
+          {
+            countryCode: "us",
+            latestScanData: completedScan,
+            subscriberBreaches: [
+              createRandomBreach({
+                dataClassesEffected: [{ [BreachDataTypes.Passwords]: 1337 }],
+                isResolved: false,
+              }),
+            ],
+            user: {
+              email: "arbitrary@example.com",
+            },
           },
-        }),
+          [],
+        ),
       ).toStrictEqual({
         href: "/user/dashboard/fix/leaked-passwords/passwords",
         id: "LeakedPasswordsPassword",
@@ -1063,21 +1153,24 @@ describe("getNextGuidedStep", () => {
 
     it("links to the security questions step if the user's security questions have been breached", () => {
       expect(
-        getNextGuidedStep({
-          countryCode: "us",
-          latestScanData: completedScan,
-          subscriberBreaches: [
-            createRandomBreach({
-              dataClassesEffected: [
-                { [BreachDataTypes.SecurityQuestions]: 1337 },
-              ],
-              isResolved: false,
-            }),
-          ],
-          user: {
-            email: "arbitrary@example.com",
+        getNextGuidedStep(
+          {
+            countryCode: "us",
+            latestScanData: completedScan,
+            subscriberBreaches: [
+              createRandomBreach({
+                dataClassesEffected: [
+                  { [BreachDataTypes.SecurityQuestions]: 1337 },
+                ],
+                isResolved: false,
+              }),
+            ],
+            user: {
+              email: "arbitrary@example.com",
+            },
           },
-        }),
+          [],
+        ),
       ).toStrictEqual({
         href: "/user/dashboard/fix/leaked-passwords/security-questions",
         id: "LeakedPasswordsSecurityQuestion",
@@ -1088,19 +1181,22 @@ describe("getNextGuidedStep", () => {
 
     it("links to the phone number step if the user's phone number has been breached", () => {
       expect(
-        getNextGuidedStep({
-          countryCode: "us",
-          latestScanData: completedScan,
-          subscriberBreaches: [
-            createRandomBreach({
-              dataClassesEffected: [{ [BreachDataTypes.Phone]: 1337 }],
-              isResolved: false,
-            }),
-          ],
-          user: {
-            email: "arbitrary@example.com",
+        getNextGuidedStep(
+          {
+            countryCode: "us",
+            latestScanData: completedScan,
+            subscriberBreaches: [
+              createRandomBreach({
+                dataClassesEffected: [{ [BreachDataTypes.Phone]: 1337 }],
+                isResolved: false,
+              }),
+            ],
+            user: {
+              email: "arbitrary@example.com",
+            },
           },
-        }),
+          [],
+        ),
       ).toStrictEqual({
         href: "/user/dashboard/fix/security-recommendations/phone",
         id: "SecurityTipsPhone",
@@ -1111,19 +1207,22 @@ describe("getNextGuidedStep", () => {
 
     it("links to the email step if the user's email has been breached", () => {
       expect(
-        getNextGuidedStep({
-          countryCode: "us",
-          latestScanData: completedScan,
-          subscriberBreaches: [
-            createRandomBreach({
-              dataClassesEffected: [{ [BreachDataTypes.Email]: 1337 }],
-              isResolved: false,
-            }),
-          ],
-          user: {
-            email: "arbitrary@example.com",
+        getNextGuidedStep(
+          {
+            countryCode: "us",
+            latestScanData: completedScan,
+            subscriberBreaches: [
+              createRandomBreach({
+                dataClassesEffected: [{ [BreachDataTypes.Email]: 1337 }],
+                isResolved: false,
+              }),
+            ],
+            user: {
+              email: "arbitrary@example.com",
+            },
           },
-        }),
+          [],
+        ),
       ).toStrictEqual({
         href: "/user/dashboard/fix/security-recommendations/email",
         id: "SecurityTipsEmail",
@@ -1134,19 +1233,22 @@ describe("getNextGuidedStep", () => {
 
     it("links to the IP step if the user's IP has been breached", () => {
       expect(
-        getNextGuidedStep({
-          countryCode: "us",
-          latestScanData: completedScan,
-          subscriberBreaches: [
-            createRandomBreach({
-              dataClassesEffected: [{ [BreachDataTypes.IP]: 1337 }],
-              isResolved: false,
-            }),
-          ],
-          user: {
-            email: "arbitrary@example.com",
+        getNextGuidedStep(
+          {
+            countryCode: "us",
+            latestScanData: completedScan,
+            subscriberBreaches: [
+              createRandomBreach({
+                dataClassesEffected: [{ [BreachDataTypes.IP]: 1337 }],
+                isResolved: false,
+              }),
+            ],
+            user: {
+              email: "arbitrary@example.com",
+            },
           },
-        }),
+          [],
+        ),
       ).toStrictEqual({
         href: "/user/dashboard/fix/security-recommendations/ip",
         id: "SecurityTipsIp",
