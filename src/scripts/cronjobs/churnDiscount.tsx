@@ -18,7 +18,7 @@ import {
 // import { getSignupLocaleCountry } from "../../emails/functions/getSignupLocaleCountry";
 // import { getMonthlyActivityFreeUnsubscribeLink } from "../../app/functions/cronjobs/unsubscribeLinks";
 // import { hasPremium } from "../../app/functions/universal/user";
-import { SubscriberRow } from "knex/types/tables";
+// import { SubscriberRow } from "knex/types/tables";
 import createDbConnection from "../../db/connect";
 import { logger } from "../../app/functions/server/logging";
 import { initEmail, sendEmail, closeEmailPool } from "../../utils/email";
