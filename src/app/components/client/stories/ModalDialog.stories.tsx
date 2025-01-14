@@ -46,14 +46,28 @@ const ModalDialog = (props: ModalDialogProps) => {
             </Dialog>
           ) : (
             <>
-              <p>
-                This is modal content; note that it&apos;s not possible to
-                interact with the content behind the modal overlay. Here&apos;s
-                a button to close the modal: &nbsp;
-              </p>
-              <Button variant="primary" onPress={() => modalState.close()}>
-                Close modal
-              </Button>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "flex-start",
+                  gap: 16,
+                }}
+              >
+                <p>
+                  This is modal content; note that it&apos;s not possible to
+                  interact with the content behind the modal overlay.
+                  Here&apos;s a button to close the modal: &nbsp;
+                </p>
+                <Button variant="primary" onPress={() => modalState.close()}>
+                  Close modal
+                </Button>
+                <p>
+                  Note that modal overlays aren&apos;t usually used on their
+                  own. This is merely an example to help clarify the boundaries
+                  between the Modal and Dialog components.
+                </p>
+              </div>
             </>
           )}
         </ModalOverlay>
