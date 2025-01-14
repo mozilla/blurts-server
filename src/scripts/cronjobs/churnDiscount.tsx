@@ -74,7 +74,7 @@ async function readCSVFromBucket(
       })
       .on("error", reject)
       .on("end", () => {
-        console.log(
+        logger.info(
           `CSV file successfully processed. Num of rows: ${results.length}`,
         );
         resolve(results);
@@ -119,13 +119,13 @@ async function run() {
   }
 
   closeEmailPool();
-  console.log(
+  logger.info(
     `[${new Date(Date.now()).toISOString()}] Sent [${subscribersToEmail.length}] churn email to relevant subscribers.`,
   );
 }
 
 async function sendChurnDiscountEmail(subscriber: FxaChurnSubscriber) {
-  console.log(`sent email to: ${subscriber.userid}`);
+  logger.info(`sent email to: ${subscriber.userid}`);
   // mark as sent
   // await markChurnPreventionEmailAsJustSent(parseInt(subscriber.userid, 10))
 }
