@@ -198,6 +198,7 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
         title={title}
         illustration={illustration}
         isPremiumUser={hasPremium(props.data.user)}
+        enabledFeatureFlags={props.enabledFeatureFlags}
         cta={
           !isStepDone && (
             <>

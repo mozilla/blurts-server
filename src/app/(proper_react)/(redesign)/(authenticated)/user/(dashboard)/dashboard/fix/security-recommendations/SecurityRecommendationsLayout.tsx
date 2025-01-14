@@ -164,6 +164,7 @@ export function SecurityRecommendationsLayout(
         title={title}
         illustration={illustration}
         isPremiumUser={hasPremium(props.data.user)}
+        enabledFeatureFlags={props.enabledFeatureFlags}
         cta={
           !isStepDone && (
             <Button
