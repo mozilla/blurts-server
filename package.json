@@ -70,8 +70,8 @@
     "npm": "10.1.0"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.717.0",
-    "@aws-sdk/lib-storage": "^3.717.0",
+    "@aws-sdk/client-s3": "^3.722.0",
+    "@aws-sdk/lib-storage": "^3.722.0",
     "@fluent/bundle": "^0.18.0",
     "@fluent/langneg": "^0.7.0",
     "@fluent/react": "^0.15.2",
@@ -84,9 +84,9 @@
     "@sentry/nextjs": "^8.47.0",
     "@sentry/node": "^8.0.0",
     "@sentry/utils": "^8.47.0",
-    "@stripe/stripe-js": "^5.2.0",
+    "@stripe/stripe-js": "^5.5.0",
     "@types/jsdom": "^21.1.7",
-    "@types/node": "^22.10.2",
+    "@types/node": "^22.10.5",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "canvas-confetti": "^1.9.3",
@@ -98,7 +98,7 @@
     "jwk-to-pem": "^2.0.7",
     "knex": "^3.1.0",
     "mjml": "^4.15.3",
-    "next": "^14.2.15",
+    "next": "^14.2.22",
     "next-auth": "^4.24.11",
     "nodemailer": "^6.9.16",
     "pg": "^8.13.1",
@@ -108,7 +108,7 @@
     "react-dom": "^18.3.1",
     "react-intersection-observer": "^9.14.0",
     "react-stately": "^3.34.0",
-    "react-toastify": "^10.0.6",
+    "react-toastify": "^11.0.2",
     "server-only": "^0.0.1",
     "uuid": "^11.0.3",
     "winston": "^3.17.0"
@@ -157,13 +157,13 @@
     "lint-staged": "^15.3.0",
     "mjml-browser": "^4.15.3",
     "prettier": "3.4.2",
-    "sass": "^1.83.0",
+    "sass": "^1.83.1",
     "storybook": "^8.4.6",
     "stylelint": "^16.12.0",
     "stylelint-config-recommended-scss": "^14.1.0",
     "stylelint-scss": "^6.10.0",
     "tsx": "^4.19.2",
-    "typescript": "^5.7.2",
-    "yaml": "^2.6.1"
+    "typescript": "^5.7.3",
+    "yaml": "^2.7.0"
   }
 }

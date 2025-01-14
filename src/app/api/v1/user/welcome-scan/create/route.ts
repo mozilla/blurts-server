@@ -98,7 +98,7 @@ export async function POST(
     previewMode: searchParams.get("nimbus_preview") === "true",
   });
   const optionalInfoExperimentData =
-    experimentData["welcome-scan-optional-info"];
+    experimentData["Features"]["welcome-scan-optional-info"];
 
   const profileData: CreateProfileRequest = {
     first_name: firstName,

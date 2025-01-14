@@ -65,5 +65,9 @@ settings-alert-preferences-allow-monthly-monitor-report-subtitle = En månedlig 
 ## Settings page redesign
 
 settings-tab-label-edit-info = Rediger dine oplysninger
+settings-tab-label-notifications = Indstil notifikationer
 settings-tab-label-manage-account = Håndter konto
 settings-tab-subtitle-manage-account = Håndter din { -product-name }-konto.
+settings-tab-notifications-marketing-title = Markedsføring
+settings-tab-notifications-marketing-text = Periodiske opdateringer om { -brand-monitor }, { -brand-mozilla } og vores andre sikkerhedsprodukter.
+settings-tab-notifications-marketing-link-label = Gå til indstillinger for mails fra { -brand-mozilla }

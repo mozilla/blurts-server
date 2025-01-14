@@ -31,16 +31,16 @@
 
 ##
 
-error-could-not-add-email = No se pudo agregar la dirección de correo electrónico a la base de datos.
 error-not-subscribed = Esta dirección de correo electrónico no está suscrita a { -product-name }.
 error-hibp-throttled = Demasiadas conexiones para { -brand-HIBP }.
 error-hibp-connect = Error conectándose a { -brand-HIBP }.
 user-add-invalid-email = Correo electrónico inválido
 user-add-too-many-emails = Estás monitoreando el número máximo de direcciones de correo.
 user-add-duplicate-email = Este correo ya se ha añadido a { -product-name }.
+user-add-verification-email-just-sent = No se puede enviar otro correo electrónico de verificación tan rápido. Por favor, inténtalo de nuevo más tarde.
+user-add-unknown-error = Algo salió mal al agregar otra dirección de correo electrónico. Por favor, inténtalo de nuevo más tarde.
+user-delete-unknown-error = Algo salió mal al eliminar una dirección de correo electrónico. Por favor, inténtalo de nuevo más tarde.
 user-verify-token-error = Se requiere el token de verificación.
-user-unsubscribe-token-error = Eliminar suscripción quiere un token.
-user-unsubscribe-token-email-error = Eliminar suscripción requiere un token y con correo electrónico.
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Datos comprometidos:
 # Breach data provided by Have I Been Pwned.
@@ -51,8 +51,6 @@ show-all = Mostrar todo
 sign-out = Salir de la sesión
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Administrar { -brand-fxa }
-# Link title
-frequently-asked-questions = Preguntas frecuentemente hechas
 # Link title
 preferences = Preferencias
 # Link title
@@ -144,9 +142,14 @@ new-breach = Nueva
 
 ##
 
+# “account” can be localized, “Mozilla” must be treated as a brand,
+# and kept in English.
+-brand-mozilla-account = Cuenta de Mozilla
+open-in-new-tab-alt = Abrir enlace en una nueva pestaña
 
 ## Search Engine Optimization
 
+meta-desc-2 = Descubre con { -brand-fx-monitor } si te ha afectado una filtración de datos. Te ayudaremos a comprender qué hacer a continuación y vigilaremos continuamente cualquier nueva filtración.
 
 ## Header
 
@@ -158,20 +161,38 @@ brand-mozilla-monitor = { -brand-fx-monitor }
 ## Site navigation
 
 mobile-menu-label = Menú principal
+main-nav-button-collapse-label = Contraer menú
+main-nav-button-collapse-tooltip = Contraer menú
+main-nav-button-expand-label = Expandir menú
+main-nav-button-expand-tooltip = Expandir menú
+main-nav-label = Navegación
+main-nav-link-home-label = Inicio
+main-nav-link-dashboard-label = Panel de control
 main-nav-link-settings-label = Ajustes
 main-nav-link-faq-label = Preguntas frecuentes
+main-nav-link-faq-tooltip = Preguntas frecuentes
 
 ## User menu
 
+user-menu-trigger-label = Abrir menú de usuario
 user-menu-trigger-tooltip = Perfil
 user-menu-manage-fxa-label = Administra tu { -brand-mozilla-account }
 user-menu-settings-label = Ajustes
+user-menu-settings-tooltip = Configurar { -brand-mozilla-monitor }
+user-menu-help-label = Ayuda y soporte
+user-menu-help-tooltip = Obtén ayuda para usar { -brand-mozilla-monitor }
+user-menu-signout-label = Cerrar sesión
+user-menu-signout-tooltip = Cerrar sesión en { -brand-mozilla-monitor }
 
 ## Footer
 
 mozilla = { -brand-mozilla }
+terms-of-service = Términos de servicio
+privacy-notice = Política de privacidad
 github = { -brand-github }
-footer-nav-all-breaches = Todas las filtraciones
+footer-nav-recent-breaches = Filtraciones de datos recientes
+footer-external-link-faq-label = FAQs
+footer-external-link-faq-tooltip = Preguntas frecuentes
 
 ## Error page
 
@@ -186,7 +207,8 @@ error-page-error-other-title = { $errorCode } Algo salió mal
 
 ## Breach overview page
 
-all-breaches-headline-2 = Todas las filtraciones detectadas por { -brand-fx-monitor }
+all-breaches-headline-3 = Base de datos de filtraciones de datos
+all-breaches-lead = Supervisamos todas las filtraciones de datos conocidas para averiguar si tu información personal se vio comprometida. Aquí hay una lista completa de todas las filtraciones que se han notificado desde 2007.
 search-breaches = Buscar filtraciones
 # the kind of user data exposed to hackers in data breach.
 exposed-data = Datos expuestos:
@@ -194,8 +216,12 @@ exposed-data = Datos expuestos:
 ## Public breach detail page
 
 find-out-if-2 = Averigua si has estado involucrado en esta filtración
+find-out-if-description = Te ayudaremos a ver rápidamente si tu dirección de correo electrónico quedó expuesta en esta infracción y a comprender qué hacer a continuación.
 breach-detail-cta-signup = Consulta las filtraciones
 
 ## Firefox Monitor -> Mozilla Monitor rebrand banner
 
+banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: nuevo nombre, apariencia e incluso más formas de <b>recuperar tu privacidad</b>.
+banner-monitor-rebrand-dismiss-button-label = Aceptar
+banner-monitor-rebrand-dismiss-button-tooltip = Descartar
 loading-accessibility = Cargando

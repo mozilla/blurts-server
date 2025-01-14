@@ -1,4 +1,4 @@
-@import "../../../../../../tokens";
+@use "../../../../../../tokens";
 
 // The attribute selector makes this more specific that <Button>'s direct styles,
 // so we can overwrite the font weight. Maybe it should just not be a <Button>…
@@ -10,30 +10,30 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: $spacing-xs;
+  gap: tokens.$spacing-xs;
   text-align: center;
 
   button {
     &.primaryCta {
-      margin-top: $spacing-sm;
+      margin-top: tokens.$spacing-sm;
       font-weight: 600;
     }
 
     &.discountCta {
-      background-color: $color-purple-60;
+      background-color: tokens.$color-purple-60;
       width: 100%;
 
-      @media screen and (min-width: $screen-sm) {
-        width: $content-sm;
+      @media screen and (min-width: tokens.$screen-sm) {
+        width: tokens.$content-sm;
       }
 
       &:hover {
-        background-color: $color-purple-70;
+        background-color: tokens.$color-purple-70;
       }
     }
 
     &.tertiaryCta {
-      margin-top: $spacing-lg;
+      margin-top: tokens.$spacing-lg;
       font-weight: 500;
     }
   }
@@ -43,13 +43,13 @@
   }
 
   .limitationsApplyLink {
-    text-decoration-color: $color-grey-30;
+    text-decoration-color: tokens.$color-grey-30;
     .limitationsApplyText {
       display: flex;
-      gap: $spacing-xs;
+      gap: tokens.$spacing-xs;
       align-items: center;
       justify-content: center;
-      text-decoration-color: $color-grey-30;
+      text-decoration-color: tokens.$color-grey-30;
 
       svg {
         width: 13px; // width of open in new tab icon
@@ -58,18 +58,18 @@
   }
 
   .errorApplyingCoupon {
-    padding-top: $spacing-sm;
-    color: $color-red-60;
+    padding-top: tokens.$spacing-sm;
+    color: tokens.$color-red-60;
     font-weight: 500;
 
     button {
-      color: $color-red-60;
+      color: tokens.$color-red-60;
       font-weight: 500;
     }
   }
 
   small {
-    color: $color-grey-30;
+    color: tokens.$color-grey-30;
     font-weight: 400;
   }
 
@@ -79,26 +79,26 @@
 }
 
 .goToDashboardCta {
-  margin-top: $spacing-lg;
-  font: $text-body-md;
+  margin-top: tokens.$spacing-lg;
+  font: tokens.$text-body-md;
   font-weight: 500;
   border: 0;
-  padding: $spacing-md $spacing-lg;
-  border-radius: $border-radius-md;
+  padding: tokens.$spacing-md tokens.$spacing-lg;
+  border-radius: tokens.$border-radius-md;
   cursor: pointer;
   display: inline-block;
   line-height: 1;
   text-align: center;
   text-decoration: none;
-  color: $color-white;
-  background-color: $color-blue-50;
+  color: tokens.$color-white;
+  background-color: tokens.$color-blue-50;
 
   &:hover {
-    background-color: $color-blue-60;
+    background-color: tokens.$color-blue-60;
   }
 
   &:focus {
-    outline: $border-focus-width solid $color-blue-30;
+    outline: tokens.$border-focus-width solid tokens.$color-blue-30;
   }
 }
 
@@ -109,7 +109,7 @@
 .cancellationIllustrationWrapper {
   height: 200px; // height of illustration;
   width: 100%;
-  padding-bottom: $spacing-lg;
+  padding-bottom: tokens.$spacing-lg;
 
   img {
     height: 100%;
@@ -128,7 +128,7 @@
   height: 280px; //height of iframe
 }
 
-@media (min-width: $content-lg) {
+@media (min-width: tokens.$content-lg) {
   .iframeWrapper {
     height: 260px;
   }

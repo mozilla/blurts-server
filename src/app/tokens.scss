@@ -1,3 +1,6 @@
+@use "sass:list";
+@use "sass:math";
+
 // Nebula Colours //
 // Purple:
 $color-purple-90: #321c64;
@@ -228,40 +231,41 @@ $layout-2xl: 192px;
 // In most cases they'll snap to one of the clamped values though, so it
 // doesn't matter too much.
 $text-title-lg:
-  700 clamp(48px, 4.4svw, 56px) / clamp(48px, 4.4svw, 56px)
+  700 list.slash(clamp(48px, 4.4svw, 56px), clamp(48px, 4.4svw, 56px))
     var(--font-metropolis),
   sans-serif;
 $text-title-md:
-  700 clamp(38px, 3.8svw, 48px) / clamp(40px, 3.8svw, 48px)
+  700 list.slash(clamp(38px, 3.8svw, 48px), clamp(40px, 3.8svw, 48px))
     var(--font-metropolis),
   sans-serif;
 $text-title-sm:
-  700 clamp(28px, 3svw, 38px) / clamp(30px, 3.16svw, 40px)
+  700 list.slash(clamp(28px, 3svw, 38px), clamp(30px, 3.16svw, 40px))
     var(--font-metropolis),
   sans-serif;
 $text-title-xs:
-  700 clamp(24px, 2.2svw, 28px) / clamp(26px, 2.4svw, 30px)
+  700 list.slash(clamp(24px, 2.2svw, 28px), clamp(26px, 2.4svw, 30px))
     var(--font-metropolis),
   sans-serif;
 $text-title-2xs:
-  700 clamp(20px, 1.6svw, 24px) / clamp(20px, 2svw, 26px) var(--font-metropolis),
+  700 list.slash(clamp(20px, 1.6svw, 24px), clamp(20px, 2svw, 26px))
+    var(--font-metropolis),
   sans-serif;
 $text-title-3xs:
-  700 clamp(16px, 1.4svw, 18px) / 20px var(--font-metropolis),
+  700 list.slash(clamp(16px, 1.4svw, 18px), 20px) var(--font-metropolis),
   sans-serif;
 
 // Body copy
 $text-body-xl:
-  400 clamp(18px, 1.7svw, 21px) / 1.5 var(--font-inter),
+  400 list.slash(clamp(18px, 1.7svw, 21px), 1.5) var(--font-inter),
   sans-serif;
 $text-body-lg:
-  400 clamp(16px, 1.5svw, 18px) / 1.5 var(--font-inter),
+  400 list.slash(clamp(16px, 1.5svw, 18px), 1.5) var(--font-inter),
   sans-serif;
 $text-body-md:
-  400 clamp(14px, 1.3svw, 16px) / 1.5 var(--font-inter),
+  400 list.slash(clamp(14px, 1.3svw, 16px), 1.5) var(--font-inter),
   sans-serif;
 $text-body-sm:
-  400 clamp(12px, 1.14svw, 14px) / 1.5 var(--font-inter),
+  400 list.slash(clamp(12px, 1.14svw, 14px), 1.5) var(--font-inter),
   sans-serif;
 $text-body-xs:
   400 12px / 1.5 var(--font-inter),

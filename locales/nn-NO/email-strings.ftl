@@ -68,3 +68,4 @@ email-spotted-new-breach = Vi har oppdaga ein ny datalekkasje
 ## Redesigned breach alert email
 
 email-breach-alert-all-subject = Ny datalekkasje oppdaga
+email-breach-alert-all-next-steps-button-dashboard = Gå til oversynet
