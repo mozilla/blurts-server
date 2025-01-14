@@ -83,10 +83,6 @@ async function readCSVFromBucket(
 }
 
 async function run() {
-  let batchSize = 10;
-
-  logger.info(`Getting churn subscribers with batch size: ${batchSize}`);
-
   const bucketName = process.env.GCP_BUCKET;
   if (!bucketName) {
     throw `Bucket name isn't set ( process.env.GCP_BUCKET = ${process.env.GCP_BUCKET}), please set: 'GCP_BUCKET'`;
