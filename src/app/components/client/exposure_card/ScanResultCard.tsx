@@ -217,6 +217,7 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
   const attemptCount = scanResult.optout_attempts ?? 0;
   const statusPillNote =
     props.enabledFeatureFlags?.includes("AdditionalRemovalStatuses") &&
+    props.enabledFeatureFlags?.includes("DataBrokerRemovalAttempts") &&
     !scanResult.manually_resolved &&
     scanResult.status === "waiting_for_verification" &&
     attemptCount >= 1
