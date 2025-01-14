@@ -55,8 +55,22 @@ async function readCSVFromBucket(
     file
       .createReadStream()
       .pipe(csv())
-      .on("data", (row) => {
-        results.push(row);
+      .on("data", (row: FxaChurnSubscriber) => {
+        /**
+         * Verifies the interval is yearly
+         * Ensures current_period_end exists
+         * Checks if the time difference is less than or equal to 7 days (in milliseconds)
+         * Makes sure the date is in the future
+         */
+        if (
+          row.intervl === "yearly" &&
+          row.current_period_end &&
+          new Date(row.current_period_end).getTime() - new Date().getTime() <=
+            7 * 24 * 60 * 60 * 1000 &&
+          new Date(row.current_period_end).getTime() > new Date().getTime()
+        ) {
+          results.push(row);
+        }
       })
       .on("error", reject)
       .on("end", () => {
@@ -71,7 +85,7 @@ async function readCSVFromBucket(
 async function run() {
   let batchSize = 10;
 
-  logger.info(`Getting free subscribers with batch size: ${batchSize}`);
+  logger.info(`Getting churn subscribers with batch size: ${batchSize}`);
 
   const bucketName = process.env.GCP_BUCKET;
   if (!bucketName) {
