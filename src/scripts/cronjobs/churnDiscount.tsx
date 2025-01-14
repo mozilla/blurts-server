@@ -119,7 +119,7 @@ async function run() {
 
   closeEmailPool();
   console.log(
-    `[${new Date(Date.now()).toISOString()}] Sent [${subscribersToEmail.length}] monthly activity emails to free users.`,
+    `[${new Date(Date.now()).toISOString()}] Sent [${subscribersToEmail.length}] churn email to relevant subscribers.`,
   );
 }
 
