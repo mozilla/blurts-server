@@ -18,6 +18,7 @@ import { getSubscriberBreaches } from "../../app/functions/server/getSubscriberB
 import { refreshStoredScanResults } from "../../app/functions/server/refreshStoredScanResults";
 import { getSignupLocaleCountry } from "../../emails/functions/getSignupLocaleCountry";
 import { hasPremium } from "../../app/functions/universal/user";
+import { getEnabledFeatureFlags } from "../../db/tables/featureFlags";
 
 void run();
 
@@ -73,7 +74,14 @@ async function sendMonthlyActivityEmail(subscriber: SubscriberRow) {
     fxaUid: subscriber.fxa_uid,
     countryCode: countryCodeGuess,
   });
-  const data = getDashboardSummary(latestScan.results, subscriberBreaches);
+  const enabledFeatureFlags = await getEnabledFeatureFlags({
+    email: subscriber.primary_email,
+  });
+  const data = getDashboardSummary(
+    latestScan.results,
+    subscriberBreaches,
+    enabledFeatureFlags,
+  );
 
   const subject = l10n.getString("email-monthly-plus-auto-subject");
 
