@@ -50,7 +50,8 @@ export const StorybookEmailRenderer = (props: Props) => {
       }
 
       .wrapper .styled {
-        flex: 3 1 0;
+        flex: 2 0 auto;
+        width: 66%;
         padding: 20px;
         display: flex;
         flex-direction: column;
@@ -58,7 +59,8 @@ export const StorybookEmailRenderer = (props: Props) => {
         gap: 20px;
       }
       .wrapper .plaintext {
-        flex: 1 1 0;
+        flex: 1 0 auto;
+        width: 33%;
         font-family: monospace;
         border-inline-start: 1px solid #eee;
         padding: 20px;
@@ -67,6 +69,10 @@ export const StorybookEmailRenderer = (props: Props) => {
         flex-direction: column;
         align-items: flex-start;
         gap: 20px;
+      }
+
+      .plaintext pre {
+        white-space: pre-wrap;
       }
   `}</style>
       <section className="styled">
