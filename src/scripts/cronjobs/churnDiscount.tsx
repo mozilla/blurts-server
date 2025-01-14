@@ -103,6 +103,7 @@ async function run() {
           subscriberId: subscriber.userid,
           message: `email already sent for the user at: ${sentDate}`,
         });
+        continue;
       }
       // send email
       await sendChurnDiscountEmail(subscriber);
