@@ -31,11 +31,28 @@ type LighthouseResult = {
 };
 
 async function getLighthouseResults() {
+  if (
+    !process.env.BQ_LIGHTHOUSE_PROJECT ||
+    !process.env.BQ_LIGHTHOUSE_DATASET ||
+    !process.env.BQ_LIGHTHOUSE_TABLE
+  ) {
+    return null;
+  }
+
   try {
-    const bigQueryClient = new BigQuery();
-    const query = `SELECT * FROM ${process.env.BQ_LIGHTHOUSE_DATASET}`;
-    const [rows] = await bigQueryClient.query({ query });
-    return rows;
+    const bigQueryClient = new BigQuery({
+      projectId: process.env.BQ_LIGHTHOUSE_PROJECT,
+    });
+
+    const table = bigQueryClient
+      .dataset(process.env.BQ_LIGHTHOUSE_DATASET)
+      .table(process.env.BQ_LIGHTHOUSE_TABLE);
+    const [metadata] = await table.getMetadata();
+
+    console.log(
+      `Table description: ${metadata.description || "No description"}`,
+    );
+    return table;
   } catch (error) {
     console.error("Error querying Lighthouse results", error);
   }
@@ -85,7 +102,7 @@ async function run() {
   console.table(transformedData);
   logger.info("lighthouse_report", lighthouseReport);
 
-  const results = getLighthouseResults();
+  const results = await getLighthouseResults();
   console.info("BigQuery dataset", results);
 }
 
