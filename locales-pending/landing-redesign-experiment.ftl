@@ -104,7 +104,7 @@ landing-redesign-logo-block-description = Since 2018, we’ve helped people in 2
 
 # FAQ (Frequently Asked Questions)
 
-landing-redesign-faq-section-title = Questions and answer
+landing-redesign-faq-section-title = Questions and answers
 landing-redesign-faq-expand-button-alt = Open
 landing-redesign-faq-close-button-alt = Close
 landing-redesign-faq-sumo-link-label = Read all FAQs
