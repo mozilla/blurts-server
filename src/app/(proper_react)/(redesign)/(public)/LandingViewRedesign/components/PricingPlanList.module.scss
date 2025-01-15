@@ -25,7 +25,6 @@
   }
 
   &Label {
-    @include tokens.uppercase-only-english;
     background-color: tokens.$color-white;
     border-radius: tokens.$border-radius-md;
     box-shadow: 0 0 0 3px tokens.$color-purple-70;
@@ -33,7 +32,6 @@
     font: tokens.$text-body-xs;
     font-weight: 700;
     left: 50%;
-    letter-spacing: 0.075em;
     // Add a bit more space: The next spacing step is too much.
     padding: calc(tokens.$spacing-sm * 1.1) calc(tokens.$spacing-sm * 1.5)
       tokens.$spacing-sm;
