@@ -551,6 +551,33 @@ async function markFirstDataBrokerRemovalFixedEmailAsJustSent(
 }
 
 /* c8 ignore stop */
+
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
+async function markChurnPreventionEmailAsJustSent(
+  subscriberId: SubscriberRow["id"],
+) {
+  const affectedSubscribers = await knex("subscribers")
+    .update({
+      // @ts-ignore knex.fn.now() results in it being set to a date,
+      // even if it's not typed as a JS date object:
+      churn_prevention_email_sent_at: knex.fn.now(),
+      // @ts-ignore knex.fn.now() results in it being set to a date,
+      // even if it's not typed as a JS date object:
+      updated_at: knex.fn.now(),
+    })
+    .where("id", subscriberId)
+    .returning("*");
+
+  if (affectedSubscribers.length !== 1) {
+    throw new Error(
+      `Attempted to mark 1 user as having just been sent the churn prevention email, but instead found [${affectedSubscribers.length}] matching its ID.`,
+    );
+  }
+}
+
+/* c8 ignore stop */
+
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
 async function markMonthlyActivityPlusEmailAsJustSent(
@@ -669,6 +696,18 @@ async function isSubscriberPlus(subscriberId: SubscriberRow["id"]) {
 }
 /* c8 ignore stop */
 
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
+async function getChurnPreventionEmailSentAt(
+  subscriberId: SubscriberRow["id"],
+) {
+  const res = await knex("subscribers")
+    .select("churn_prevention_email_sent_at")
+    .where("id", subscriberId);
+  return res?.[0]?.["churn_prevention_email_sent_at"] ?? null;
+}
+/* c8 ignore stop */
+
 export {
   getOnerepProfileId,
   getSubscribersByHashes,
@@ -685,6 +724,7 @@ export {
   getPotentialSubscribersWaitingForFirstDataBrokerRemovalFixedEmail,
   getFreeSubscribersWaitingForMonthlyEmail,
   getPlusSubscribersWaitingForMonthlyEmail,
+  markChurnPreventionEmailAsJustSent,
   markFirstDataBrokerRemovalFixedEmailAsJustSent,
   markMonthlyActivityPlusEmailAsJustSent,
   deleteUnverifiedSubscribers,
@@ -693,6 +733,7 @@ export {
   deleteOnerepProfileId,
   incrementSignInCountForEligibleFreeUser,
   getSignInCount,
+  getChurnPreventionEmailSentAt,
   unresolveAllBreaches,
   isSubscriberPlus,
   knex as knexSubscribers,

@@ -150,7 +150,7 @@ describe("ScanResultCard", () => {
     expect(innerDescription).toBeInTheDocument();
   });
 
-  it("shows an additional note for “requested removal” status label", () => {
+  it("shows an additional note for “requested removal” status label if the feature flag `DataBrokerRemovalAttempts` is enabled", () => {
     const ComposedProgressCard = composeStory(DataBrokerRequestedRemoval, Meta);
     render(<ComposedProgressCard />);
     const statusLabel = screen.getByText("Requested removal");
@@ -160,6 +160,22 @@ describe("ScanResultCard", () => {
     });
 
     expect(labelNote).toBeInTheDocument();
+  });
+
+  it("does not show an additional note for “requested removal” status label if the feature flag `DataBrokerRemovalAttempts` is not enabled", () => {
+    const ComposedProgressCard = composeStory(DataBrokerRequestedRemoval, Meta);
+    render(
+      <ComposedProgressCard
+        enabledFeatureFlags={["AdditionalRemovalStatuses"]}
+      />,
+    );
+    const statusLabel = screen.getByText("Requested removal");
+    const statusLabelParent = statusLabel.parentElement as HTMLElement;
+    const labelNote = within(statusLabelParent).queryByText("Attempt", {
+      exact: false,
+    });
+
+    expect(labelNote).not.toBeInTheDocument();
   });
 
   it("hides the dt element if its dd counterpart has hideonmobile", () => {
