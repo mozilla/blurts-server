@@ -2,7 +2,7 @@ name: Build Docker image and publish
 
 on:
   push:
-    branches: [ main 2025.01.08-branch ]
+    branches: [ main, 2025.01.08-branch ]
 jobs:
   push_to_registry:
     name: Push Docker image to Docker Hub
