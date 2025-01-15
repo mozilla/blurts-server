@@ -152,7 +152,6 @@ declare module "knex/types/tables" {
     sign_in_count: null | number;
     email_addresses: SubscriberEmail[];
     first_broker_removal_email_sent: boolean;
-    churn_prevention_email_sent: boolean;
   }
   type SubscriberOptionalColumns = Extract<
     keyof SubscriberRow,
@@ -175,7 +174,6 @@ declare module "knex/types/tables" {
     | "onerep_profile_id"
     | "email_addresses"
     | "first_broker_removal_email_sent"
-    | "churn_prevention_email_sent"
   >;
   type SubscriberAutoInsertedColumns = Extract<
     keyof SubscriberRow,
