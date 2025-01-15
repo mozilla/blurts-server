@@ -25,6 +25,7 @@
   }
 
   &Label {
+    @include tokens.uppercase-only-english;
     background-color: tokens.$color-white;
     border-radius: tokens.$border-radius-md;
     box-shadow: 0 0 0 3px tokens.$color-purple-70;

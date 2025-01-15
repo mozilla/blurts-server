@@ -53,7 +53,7 @@ landing-redesign-pricing-plans-section-title = Choose your level of protection
 landing-redesign-pricing-plans-section-description = Your privacy is our priority, so data breach monitoring is always free. For more robust protection, { -brand-monitor-plus } includes continuous automatic removal of your personal information.
 landing-redesign-pricing-plans-cards-title = Pricing plans
 
-landing-redesign-pricing-plans-card-plus-label = RECOMMENDED
+landing-redesign-pricing-plans-card-plus-label = Recommended
 landing-redesign-pricing-plans-card-plus-title = { -brand-monitor-plus }
 landing-redesign-pricing-plans-card-plus-subtitle = Automatic data removal requests
 landing-redesign-pricing-plans-card-plus-cta-label = Get { -brand-monitor-plus }
