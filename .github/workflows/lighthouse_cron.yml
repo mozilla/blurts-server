@@ -40,7 +40,7 @@ jobs:
         with:
           workload_identity_provider: ${{ secrets.GC_LIGHTHOUSE_WORKLOAD_IDENTITY_PROVIDER }}
           service_account: ${{ secrets.GC_LIGHTHOUSE_SERVICE_ACCOUNT }}
-          env:
-            BQ_LIGHTHOUSE_DATASET: ${{ secrets.BQ_LIGHTHOUSE_DATASET }}
+        env:
+          BQ_LIGHTHOUSE_DATASET: ${{ secrets.BQ_LIGHTHOUSE_DATASET }}
       - name: Report results
         run: npm run cron:report-lighthouse-results
