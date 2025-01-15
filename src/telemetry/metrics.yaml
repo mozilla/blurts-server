@@ -56,24 +56,6 @@ page:
       plan_tier:
         description: Which tier of plan the user is on [Free, Plus]
         type: string
-      nimbus_user_id:
-        description: Nimbus user ID
-        type: string
-      nimbus_app_id:
-        description: Nimbus application ID
-        type: string
-      nimbus_experiment:
-        description: Nimbus experiment name
-        type: string
-      nimbus_branch:
-        description: Nimbus branch
-        type: string
-      nimbus_experiment_type:
-        description: Nimbus experiment type
-        type: string
-      nimbus_is_preview:
-        description: Nimbus preview mode enabled
-        type: string
 
 dashboard:
   view:
@@ -120,24 +102,6 @@ dashboard:
       plan_tier:
         description: Which tier of plan the user is on [Free, Plus]
         type: string
-      nimbus_user_id:
-        description: Nimbus user ID
-        type: string
-      nimbus_app_id:
-        description: Nimbus application ID
-        type: string
-      nimbus_experiment:
-        description: Nimbus experiment name
-        type: string
-      nimbus_branch:
-        description: Nimbus branch
-        type: string
-      nimbus_experiment_type:
-        description: Nimbus experiment type
-        type: string
-      nimbus_is_preview:
-        description: Nimbus preview mode enabled
-        type: string
 
 popup:
   view:
@@ -171,24 +135,6 @@ popup:
       plan_tier:
         description: Which tier of plan the user is on [Free, Plus]
         type: string
-      nimbus_user_id:
-        description: Nimbus user ID
-        type: string
-      nimbus_app_id:
-        description: Nimbus application ID
-        type: string
-      nimbus_experiment:
-        description: Nimbus experiment name
-        type: string
-      nimbus_branch:
-        description: Nimbus branch
-        type: string
-      nimbus_experiment_type:
-        description: Nimbus experiment type
-        type: string
-      nimbus_is_preview:
-        description: Nimbus preview mode enabled
-        type: string
 
   exit:
     type: event
@@ -220,24 +166,6 @@ popup:
         description: The ID of the popup that was shown, or some way to identify where on the page the interaction is located.
       plan_tier:
         description: Which tier of plan the user is on [Free, Plus]
-        type: string
-      nimbus_user_id:
-        description: Nimbus user ID
-        type: string
-      nimbus_app_id:
-        description: Nimbus application ID
-        type: string
-      nimbus_experiment:
-        description: Nimbus experiment name
-        type: string
-      nimbus_branch:
-        description: Nimbus branch
-        type: string
-      nimbus_experiment_type:
-        description: Nimbus experiment type
-        type: string
-      nimbus_is_preview:
-        description: Nimbus preview mode enabled
         type: string
 
 banner:
@@ -272,24 +200,6 @@ banner:
       plan_tier:
         description: Which tier of plan the user is on [Free, Plus]
         type: string
-      nimbus_user_id:
-        description: Nimbus user ID
-        type: string
-      nimbus_app_id:
-        description: Nimbus application ID
-        type: string
-      nimbus_experiment:
-        description: Nimbus experiment name
-        type: string
-      nimbus_branch:
-        description: Nimbus branch
-        type: string
-      nimbus_experiment_type:
-        description: Nimbus experiment type
-        type: string
-      nimbus_is_preview:
-        description: Nimbus preview mode enabled
-        type: string
 
 button:
   click:
@@ -322,24 +232,6 @@ button:
         description: The ID of the button that was clicked on, or some way to identify where on the page the interaction is located.
       plan_tier:
         description: Which tier of plan the user is on [Free, Plus]
-        type: string
-      nimbus_user_id:
-        description: Nimbus user ID
-        type: string
-      nimbus_app_id:
-        description: Nimbus application ID
-        type: string
-      nimbus_experiment:
-        description: Nimbus experiment name
-        type: string
-      nimbus_branch:
-        description: Nimbus branch
-        type: string
-      nimbus_experiment_type:
-        description: Nimbus experiment type
-        type: string
-      nimbus_is_preview:
-        description: Nimbus preview mode enabled
         type: string
 
 field:
@@ -374,24 +266,6 @@ field:
       plan_tier:
         description: Which tier of plan the user is on [Free, Plus]
         type: string
-      nimbus_user_id:
-        description: Nimbus user ID
-        type: string
-      nimbus_app_id:
-        description: Nimbus application ID
-        type: string
-      nimbus_experiment:
-        description: Nimbus experiment name
-        type: string
-      nimbus_branch:
-        description: Nimbus branch
-        type: string
-      nimbus_experiment_type:
-        description: Nimbus experiment type
-        type: string
-      nimbus_is_preview:
-        description: Nimbus preview mode enabled
-        type: string
 
 link:
   click:
@@ -424,24 +298,6 @@ link:
         description: The ID of the link that was clicked on, or some way to identify where on the page the interaction is located.
       plan_tier:
         description: Which tier of plan the user is on [Free, Plus]
-        type: string
-      nimbus_user_id:
-        description: Nimbus user ID
-        type: string
-      nimbus_app_id:
-        description: Nimbus application ID
-        type: string
-      nimbus_experiment:
-        description: Nimbus experiment name
-        type: string
-      nimbus_branch:
-        description: Nimbus branch
-        type: string
-      nimbus_experiment_type:
-        description: Nimbus experiment type
-        type: string
-      nimbus_is_preview:
-        description: Nimbus preview mode enabled
         type: string
 
 upgrade_intent:
@@ -476,24 +332,6 @@ upgrade_intent:
       plan_tier:
         description: Which tier of plan the user is on [Free, Plus]
         type: string
-      nimbus_user_id:
-        description: Nimbus user ID
-        type: string
-      nimbus_app_id:
-        description: Nimbus application ID
-        type: string
-      nimbus_experiment:
-        description: Nimbus experiment name
-        type: string
-      nimbus_branch:
-        description: Nimbus branch
-        type: string
-      nimbus_experiment_type:
-        description: Nimbus experiment type
-        type: string
-      nimbus_is_preview:
-        description: Nimbus preview mode enabled
-        type: string
 
   success:
     type: event
@@ -523,24 +361,6 @@ upgrade_intent:
         type: string
       plan_tier:
         description: Which tier of plan the user is on [Free, Plus]
-        type: string
-      nimbus_user_id:
-        description: Nimbus user ID
-        type: string
-      nimbus_app_id:
-        description: Nimbus application ID
-        type: string
-      nimbus_experiment:
-        description: Nimbus experiment name
-        type: string
-      nimbus_branch:
-        description: Nimbus branch
-        type: string
-      nimbus_experiment_type:
-        description: Nimbus experiment type
-        type: string
-      nimbus_is_preview:
-        description: Nimbus preview mode enabled
         type: string
 
 expand:
@@ -575,24 +395,6 @@ expand:
       plan_tier:
         description: Which tier of plan the user is on [Free, Plus]
         type: string
-      nimbus_user_id:
-        description: Nimbus user ID
-        type: string
-      nimbus_app_id:
-        description: Nimbus application ID
-        type: string
-      nimbus_experiment:
-        description: Nimbus experiment name
-        type: string
-      nimbus_branch:
-        description: Nimbus branch
-        type: string
-      nimbus_experiment_type:
-        description: Nimbus experiment type
-        type: string
-      nimbus_is_preview:
-        description: Nimbus preview mode enabled
-        type: string
 
 collapse:
   click:
@@ -625,24 +427,6 @@ collapse:
         description: The ID of the button that was clicked on, or some way to identify where on the page the interaction is located.
       plan_tier:
         description: Which tier of plan the user is on [Free, Plus]
-        type: string
-      nimbus_user_id:
-        description: Nimbus user ID
-        type: string
-      nimbus_app_id:
-        description: Nimbus application ID
-        type: string
-      nimbus_experiment:
-        description: Nimbus experiment name
-        type: string
-      nimbus_branch:
-        description: Nimbus branch
-        type: string
-      nimbus_experiment_type:
-        description: Nimbus experiment type
-        type: string
-      nimbus_is_preview:
-        description: Nimbus preview mode enabled
         type: string
 
 cta_button:
@@ -677,24 +461,6 @@ cta_button:
       plan_tier:
         description: Which tier of plan the user is on [Free, Plus]
         type: string
-      nimbus_user_id:
-        description: Nimbus user ID
-        type: string
-      nimbus_app_id:
-        description: Nimbus application ID
-        type: string
-      nimbus_experiment:
-        description: Nimbus experiment name
-        type: string
-      nimbus_branch:
-        description: Nimbus branch
-        type: string
-      nimbus_experiment_type:
-        description: Nimbus experiment type
-        type: string
-      nimbus_is_preview:
-        description: Nimbus preview mode enabled
-        type: string
 
   view:
     type: event
@@ -726,24 +492,6 @@ cta_button:
         description: The ID of the button that entered the viewport, or some way to identify where on the page the interaction is located.
       plan_tier:
         description: Which tier of plan the user is on [Free, Plus]
-        type: string
-      nimbus_user_id:
-        description: Nimbus user ID
-        type: string
-      nimbus_app_id:
-        description: Nimbus application ID
-        type: string
-      nimbus_experiment:
-        description: Nimbus experiment name
-        type: string
-      nimbus_branch:
-        description: Nimbus branch
-        type: string
-      nimbus_experiment_type:
-        description: Nimbus experiment type
-        type: string
-      nimbus_is_preview:
-        description: Nimbus preview mode enabled
         type: string
 
 csat_survey:
@@ -778,25 +526,6 @@ csat_survey:
       automated_removal_period:
         description: The time period since the first automated removal for the user. [initial, 3-months, 6-months, 12-months]
         type: string
-      nimbus_user_id:
-        description: Nimbus user ID
-        type: string
-      nimbus_app_id:
-        description: Nimbus application ID
-        type: string
-      nimbus_experiment:
-        description: Nimbus experiment name
-        type: string
-      nimbus_branch:
-        description: Nimbus branch
-        type: string
-      nimbus_experiment_type:
-        description: Nimbus experiment type
-        type: string
-      nimbus_is_preview:
-        description: Nimbus preview mode enabled
-        type: string
-
   dismiss:
     type: event
     description: |
@@ -828,25 +557,6 @@ csat_survey:
       automated_removal_period:
         description: The time period since the first automated removal for the user. [initial, 3-months, 6-months, 12-months]
         type: string
-      nimbus_user_id:
-        description: Nimbus user ID
-        type: string
-      nimbus_app_id:
-        description: Nimbus application ID
-        type: string
-      nimbus_experiment:
-        description: Nimbus experiment name
-        type: string
-      nimbus_branch:
-        description: Nimbus branch
-        type: string
-      nimbus_experiment_type:
-        description: Nimbus experiment type
-        type: string
-      nimbus_is_preview:
-        description: Nimbus preview mode enabled
-        type: string
-
   click:
     type: event
     description: |
@@ -880,22 +590,4 @@ csat_survey:
         type: string
       automated_removal_period:
         description: The time period since the first automated removal for the user. [initial, 3-months, 6-months, 12-months]
-        type: string
-      nimbus_user_id:
-        description: Nimbus user ID
-        type: string
-      nimbus_app_id:
-        description: Nimbus application ID
-        type: string
-      nimbus_experiment:
-        description: Nimbus experiment name
-        type: string
-      nimbus_branch:
-        description: Nimbus branch
-        type: string
-      nimbus_experiment_type:
-        description: Nimbus experiment type
-        type: string
-      nimbus_is_preview:
-        description: Nimbus preview mode enabled
         type: string

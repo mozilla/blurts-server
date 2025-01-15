@@ -77,7 +77,7 @@ export default async function Onboarding({ params, searchParams }: Props) {
       breachesTotalCount={allBreachesCount}
       stepId={firstSlug === FreeScanSlug ? "enterInfo" : "getStarted"}
       previousRoute={previousRoute}
-      experimentData={experimentData["Features"]}
+      experimentData={experimentData}
     />
   );
 }
