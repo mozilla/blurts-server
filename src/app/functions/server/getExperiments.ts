@@ -10,7 +10,6 @@ import {
   localExperimentData,
 } from "../../../telemetry/generated/nimbus/experiments";
 import { ExperimentationId } from "./getExperimentationId";
-import { getEnabledFeatureFlags } from "../../../db/tables/featureFlags";
 
 /**
  * Call the Cirrus sidecar, which returns a list of eligible experiments for the current user.
@@ -36,14 +35,7 @@ export async function getExperiments(params: {
   if (!process.env.NIMBUS_SIDECAR_URL) {
     throw new Error("env var NIMBUS_SIDECAR_URL not set");
   }
-
-  const serverUrl = new URL(process.env.NIMBUS_SIDECAR_URL);
-  const flags = await getEnabledFeatureFlags({ isSignedOut: true });
-  if (flags.includes("CirrusV2")) {
-    serverUrl.pathname = "/v2/features";
-  } else {
-    serverUrl.pathname = "/v1/features";
-  }
+  const serverUrl = new URL(`${process.env.NIMBUS_SIDECAR_URL}/v1/features`);
 
   try {
     if (params.previewMode === true) {
@@ -70,29 +62,13 @@ export async function getExperiments(params: {
       }),
     });
 
-    if (!response.ok) {
-      logger.error("Cirrus request failed", {
-        status: response.status,
-        url: serverUrl.toString(),
-      });
-      throw new Error(`Cirrus request failed: ${response.statusText}`);
-    }
-
-    const json = await response.json();
-
-    let experimentData;
-    if (flags.includes("CirrusV2")) {
-      experimentData = json["Features"];
-    } else {
-      experimentData = json;
-    }
+    const experimentData = await response.json();
 
     return (experimentData as ExperimentData) ?? defaultExperimentData;
   } catch (ex) {
     logger.error("Could not connect to Cirrus", {
       serverUrl,
       ex,
-      flags,
       params,
     });
     captureException(ex);

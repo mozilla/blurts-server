@@ -68,7 +68,7 @@ export default async function FeatureFlagPage() {
             lastScanDate={null}
             // We're not going to run experiments on the feature flag page (it's
             // not user-visible), so no need to fetch experiment data:
-            experimentData={defaultExperimentData["Features"]}
+            experimentData={defaultExperimentData}
           />
         </div>
       </nav>

@@ -56,7 +56,7 @@ export type DashboardWrapperProps = (
   totalNumberOfPerformedScans?: number;
   activeTab?: TabType;
   enabledFeatureFlags?: FeatureFlagName[];
-  experimentData?: ExperimentData["Features"];
+  experimentData?: ExperimentData;
   hasFirstMonitoringScan?: boolean;
   signInCount?: number;
   autoOpenUpsellDialog?: boolean;
@@ -227,7 +227,7 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
             enabledFeatureFlags={props.enabledFeatureFlags ?? []}
             experimentData={
               props.experimentData ?? {
-                ...defaultExperimentData["Features"],
+                ...defaultExperimentData,
                 "last-scan-date": {
                   enabled: true,
                 },

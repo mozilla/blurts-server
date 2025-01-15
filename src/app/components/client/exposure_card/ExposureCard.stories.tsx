@@ -20,7 +20,7 @@ const meta: Meta<typeof ExposureCard> = {
   args: {
     enabledFeatureFlags: [],
     experimentData: {
-      ...defaultExperimentData["Features"],
+      ...defaultExperimentData,
       "data-broker-removal-time-estimates": {
         enabled: true,
       },

@@ -34,7 +34,7 @@ export type ExposureCardProps = {
   resolutionCta: ReactNode;
   isExpanded: boolean;
   enabledFeatureFlags: FeatureFlagName[];
-  experimentData: ExperimentData["Features"];
+  experimentData: ExperimentData;
   removalTimeEstimate?: number;
   onToggleExpanded: () => void;
 };

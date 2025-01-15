@@ -46,7 +46,7 @@ export type Props = {
   emailAddresses: EmailAddressRow[];
   breachCountByEmailAddress: Record<string, number>;
   enabledFeatureFlags: FeatureFlagName[];
-  experimentData: ExperimentData["Features"];
+  experimentData: ExperimentData;
   lastScanDate?: Date;
   isMonthlySubscriber: boolean;
   activeTab?: TabType;

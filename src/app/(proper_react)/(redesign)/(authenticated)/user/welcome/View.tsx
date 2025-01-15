@@ -30,7 +30,7 @@ export type Props = {
   breachesTotalCount: number;
   stepId?: StepId;
   previousRoute: string | null;
-  experimentData: ExperimentData["Features"];
+  experimentData: ExperimentData;
 };
 
 export const View = ({

@@ -19,7 +19,7 @@ import { useViewTelemetry } from "../../../hooks/useViewTelemetry";
 
 export const FreeScanCta = (
   props: Props & {
-    experimentData: ExperimentData["Features"];
+    experimentData: ExperimentData;
   },
 ) => {
   const l10n = useL10n();

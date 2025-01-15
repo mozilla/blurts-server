@@ -297,7 +297,7 @@ describe("CSAT survey banner: Latest scan date", () => {
     render(
       <ComposedCsatSurvey
         experimentData={{
-          ...defaultExperimentData["Features"],
+          ...defaultExperimentData,
           "last-scan-date": {
             enabled: false,
           },

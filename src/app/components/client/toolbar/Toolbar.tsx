@@ -22,7 +22,7 @@ export type Props = {
   };
   fxaSettingsUrl: string;
   lastScanDate: Date | null;
-  experimentData: ExperimentData["Features"];
+  experimentData: ExperimentData;
   children?: ReactNode;
   autoOpenUpsellDialog?: boolean;
 };

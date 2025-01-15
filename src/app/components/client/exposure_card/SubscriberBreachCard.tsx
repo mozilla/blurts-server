@@ -30,7 +30,7 @@ export type SubscriberBreachCardProps = {
   isPremiumUser: boolean;
   isExpanded: boolean;
   enabledFeatureFlags: FeatureFlagName[];
-  experimentData: ExperimentData["Features"];
+  experimentData: ExperimentData;
   onToggleExpanded: () => void;
 };
 

@@ -193,7 +193,7 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
             enabledFeatureFlags={props.enabledFeatureFlags ?? []}
             experimentData={
               props.experimentData ?? {
-                ...defaultExperimentData["Features"],
+                ...defaultExperimentData,
                 "last-scan-date": {
                   enabled: true,
                 },

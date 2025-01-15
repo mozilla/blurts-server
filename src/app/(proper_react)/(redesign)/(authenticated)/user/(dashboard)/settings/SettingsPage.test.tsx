@@ -265,7 +265,7 @@ it("passes the axe accessibility audit", async () => {
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[]}
-        experimentData={defaultExperimentData["Features"]}
+        experimentData={defaultExperimentData}
         isMonthlySubscriber={true}
       />
     </TestComponentWrapper>,
@@ -306,7 +306,7 @@ it("Add email address button is not shown when email limit of five reached", () 
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[]}
-        experimentData={defaultExperimentData["Features"]}
+        experimentData={defaultExperimentData}
         isMonthlySubscriber={true}
         data={mockedPlusSubscriberEmailPreferences}
       />
@@ -351,7 +351,7 @@ it("Add email address button is shown when fewer than five emails", () => {
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[]}
-        experimentData={defaultExperimentData["Features"]}
+        experimentData={defaultExperimentData}
         isMonthlySubscriber={true}
         data={mockedPlusSubscriberEmailPreferences}
       />
@@ -388,7 +388,7 @@ it("preselects 'Send all breach alerts to the primary email address' if that's t
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[]}
-        experimentData={defaultExperimentData["Features"]}
+        experimentData={defaultExperimentData}
         isMonthlySubscriber={true}
         data={mockedPlusSubscriberEmailPreferences}
       />
@@ -433,7 +433,7 @@ it("preselects 'Send breach alerts to the affected email address' if that's the 
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[]}
-        experimentData={defaultExperimentData["Features"]}
+        experimentData={defaultExperimentData}
         isMonthlySubscriber={true}
         data={mockedPlusSubscriberEmailPreferences}
       />
@@ -478,7 +478,7 @@ it("disables breach alert notification options if a user opts out of breach aler
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={["UpdatedEmailPreferencesOption"]}
-        experimentData={defaultExperimentData["Features"]}
+        experimentData={defaultExperimentData}
         isMonthlySubscriber={true}
         data={mockedPlusSubscriberEmailPreferences}
       />
@@ -533,7 +533,7 @@ it("preselects primary email alert option", () => {
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={["UpdatedEmailPreferencesOption"]}
-        experimentData={defaultExperimentData["Features"]}
+        experimentData={defaultExperimentData}
         isMonthlySubscriber={true}
         data={mockedPlusSubscriberEmailPreferences}
       />
@@ -574,7 +574,7 @@ it("unselects the breach alerts checkbox and sends a null value to the API", asy
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={["UpdatedEmailPreferencesOption"]}
-        experimentData={defaultExperimentData["Features"]}
+        experimentData={defaultExperimentData}
         isMonthlySubscriber={true}
         data={mockedPlusSubscriberEmailPreferences}
       />
@@ -631,7 +631,7 @@ it("preselects the affected email comms option after a user decides to enable br
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={["UpdatedEmailPreferencesOption"]}
-        experimentData={defaultExperimentData["Features"]}
+        experimentData={defaultExperimentData}
         isMonthlySubscriber={true}
         data={mockedPlusSubscriberEmailPreferences}
       />
@@ -679,7 +679,7 @@ it("sends a call to the API to change the email alert preferences when changing 
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={["UpdatedEmailPreferencesOption"]}
-        experimentData={defaultExperimentData["Features"]}
+        experimentData={defaultExperimentData}
         isMonthlySubscriber={true}
         data={mockedPlusSubscriberEmailPreferences}
       />
@@ -734,7 +734,7 @@ it("checks that monthly monitor report is available to free users", () => {
           "UpdatedEmailPreferencesOption",
           "MonthlyReportFreeUser",
         ]}
-        experimentData={defaultExperimentData["Features"]}
+        experimentData={defaultExperimentData}
         isMonthlySubscriber={false}
         data={mockedFreeSubscriberEmailPreferences}
       />
@@ -776,7 +776,7 @@ it("checks that monthly monitor report is enabled", () => {
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={["UpdatedEmailPreferencesOption"]}
-        experimentData={defaultExperimentData["Features"]}
+        experimentData={defaultExperimentData}
         isMonthlySubscriber={true}
         data={mockedPlusSubscriberEmailPreferences}
       />
@@ -821,7 +821,7 @@ it("sends an API call to disable monthly monitor reports", async () => {
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={["UpdatedEmailPreferencesOption"]}
-        experimentData={defaultExperimentData["Features"]}
+        experimentData={defaultExperimentData}
         isMonthlySubscriber={true}
         data={mockedPlusSubscriberEmailPreferences}
       />
@@ -873,7 +873,7 @@ it("calls the right telemetry event if a user opts out of monthly report", async
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={["UpdatedEmailPreferencesOption"]}
-        experimentData={defaultExperimentData["Features"]}
+        experimentData={defaultExperimentData}
         isMonthlySubscriber={true}
         data={mockedPlusSubscriberEmailPreferences}
       />
@@ -930,7 +930,7 @@ it("refreshes the session token after changing email alert preferences, to ensur
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[]}
-        experimentData={defaultExperimentData["Features"]}
+        experimentData={defaultExperimentData}
         isMonthlySubscriber={true}
         data={mockedPlusSubscriberEmailPreferences}
       />
@@ -967,7 +967,7 @@ it("marks unverified email addresses as such", () => {
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[]}
-        experimentData={defaultExperimentData["Features"]}
+        experimentData={defaultExperimentData}
         isMonthlySubscriber={true}
         data={mockedPlusSubscriberEmailPreferences}
       />
@@ -1005,7 +1005,7 @@ it("calls the API to resend a verification email if requested to", async () => {
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[]}
-        experimentData={defaultExperimentData["Features"]}
+        experimentData={defaultExperimentData}
         isMonthlySubscriber={true}
         data={mockedPlusSubscriberEmailPreferences}
       />
@@ -1053,7 +1053,7 @@ it("calls the 'remove' action when clicking the rubbish bin icon", async () => {
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[]}
-        experimentData={defaultExperimentData["Features"]}
+        experimentData={defaultExperimentData}
         isMonthlySubscriber={true}
         data={mockedPlusSubscriberEmailPreferences}
       />
@@ -1091,7 +1091,7 @@ it("hides the Plus cancellation link if the user doesn't have Plus", () => {
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[]}
-        experimentData={defaultExperimentData["Features"]}
+        experimentData={defaultExperimentData}
         isMonthlySubscriber={true}
         data={mockedPlusSubscriberEmailPreferences}
       />
@@ -1128,7 +1128,7 @@ it("shows the Plus cancellation link if the user has Plus", () => {
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[]}
-        experimentData={defaultExperimentData["Features"]}
+        experimentData={defaultExperimentData}
         isMonthlySubscriber={true}
         data={mockedPlusSubscriberEmailPreferences}
       />
@@ -1172,7 +1172,7 @@ it("takes you through the cancellation dialog flow all the way to subplat", asyn
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={["ConfirmCancellation", "CancellationFlow"]}
-        experimentData={defaultExperimentData["Features"]}
+        experimentData={defaultExperimentData}
         isMonthlySubscriber={true}
         data={mockedPlusSubscriberEmailPreferences}
       />
@@ -1251,7 +1251,7 @@ it("closes the cancellation survey if the user selects nevermind, take me back",
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={["ConfirmCancellation", "CancellationFlow"]}
-        experimentData={defaultExperimentData["Features"]}
+        experimentData={defaultExperimentData}
         isMonthlySubscriber={true}
         data={mockedPlusSubscriberEmailPreferences}
       />
@@ -1309,7 +1309,7 @@ it("closes the cancellation dialog", async () => {
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={["CancellationFlow"]}
-        experimentData={defaultExperimentData["Features"]}
+        experimentData={defaultExperimentData}
         isMonthlySubscriber={true}
         data={mockedPlusSubscriberEmailPreferences}
       />
@@ -1360,7 +1360,7 @@ it("shows the account deletion button if the user does not have Plus", () => {
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[]}
-        experimentData={defaultExperimentData["Features"]}
+        experimentData={defaultExperimentData}
         isMonthlySubscriber={true}
         data={mockedPlusSubscriberEmailPreferences}
       />
@@ -1402,7 +1402,7 @@ it("warns about the consequences before deleting a free user's account", async (
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[]}
-        experimentData={defaultExperimentData["Features"]}
+        experimentData={defaultExperimentData}
         isMonthlySubscriber={true}
         data={mockedPlusSubscriberEmailPreferences}
       />
@@ -1446,7 +1446,7 @@ it("shows a loading state while account deletion is in progress", async () => {
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[]}
-        experimentData={defaultExperimentData["Features"]}
+        experimentData={defaultExperimentData}
         isMonthlySubscriber={true}
         data={mockedPlusSubscriberEmailPreferences}
       />
@@ -1491,7 +1491,7 @@ it("shows the account deletion button if the user has Plus", () => {
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[]}
-        experimentData={defaultExperimentData["Features"]}
+        experimentData={defaultExperimentData}
         isMonthlySubscriber={true}
         data={mockedPlusSubscriberEmailPreferences}
       />
@@ -1533,7 +1533,7 @@ it("warns about the consequences before deleting a Plus user's account", async (
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[]}
-        experimentData={defaultExperimentData["Features"]}
+        experimentData={defaultExperimentData}
         isMonthlySubscriber={true}
         data={mockedPlusSubscriberEmailPreferences}
       />
@@ -1586,7 +1586,7 @@ it.skip("calls the 'add' action when adding another email address", async () => 
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[]}
-        experimentData={defaultExperimentData["Features"]}
+        experimentData={defaultExperimentData}
         isMonthlySubscriber={true}
         data={mockedPlusSubscriberEmailPreferences}
       />
@@ -1622,7 +1622,7 @@ describe("to learn about usage", () => {
           monthlySubscriptionUrl=""
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
           enabledFeatureFlags={[]}
-          experimentData={defaultExperimentData["Features"]}
+          experimentData={defaultExperimentData}
           isMonthlySubscriber={true}
           data={mockedPlusSubscriberEmailPreferences}
         />
@@ -1667,7 +1667,7 @@ describe("to learn about usage", () => {
           monthlySubscriptionUrl=""
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
           enabledFeatureFlags={[]}
-          experimentData={defaultExperimentData["Features"]}
+          experimentData={defaultExperimentData}
           isMonthlySubscriber={true}
           data={mockedPlusSubscriberEmailPreferences}
         />
@@ -1712,7 +1712,7 @@ describe("to learn about usage", () => {
           monthlySubscriptionUrl=""
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
           enabledFeatureFlags={[]}
-          experimentData={defaultExperimentData["Features"]}
+          experimentData={defaultExperimentData}
           isMonthlySubscriber={true}
           data={mockedPlusSubscriberEmailPreferences}
         />
@@ -1758,7 +1758,7 @@ describe("to learn about usage", () => {
           monthlySubscriptionUrl=""
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
           enabledFeatureFlags={[]}
-          experimentData={defaultExperimentData["Features"]}
+          experimentData={defaultExperimentData}
           isMonthlySubscriber={true}
           data={mockedPlusSubscriberEmailPreferences}
         />
@@ -1803,7 +1803,7 @@ describe("to learn about usage", () => {
           monthlySubscriptionUrl=""
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
           enabledFeatureFlags={[]}
-          experimentData={defaultExperimentData["Features"]}
+          experimentData={defaultExperimentData}
           isMonthlySubscriber={true}
           data={mockedPlusSubscriberEmailPreferences}
         />
@@ -1853,7 +1853,7 @@ describe("to learn about usage", () => {
           monthlySubscriptionUrl=""
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
           enabledFeatureFlags={[]}
-          experimentData={defaultExperimentData["Features"]}
+          experimentData={defaultExperimentData}
           isMonthlySubscriber={true}
           data={mockedPlusSubscriberEmailPreferences}
         />
@@ -1899,7 +1899,7 @@ describe("to learn about usage", () => {
           monthlySubscriptionUrl=""
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
           enabledFeatureFlags={[]}
-          experimentData={defaultExperimentData["Features"]}
+          experimentData={defaultExperimentData}
           isMonthlySubscriber={true}
           data={mockedPlusSubscriberEmailPreferences}
         />
@@ -1949,7 +1949,7 @@ describe("to learn about usage", () => {
           monthlySubscriptionUrl=""
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
           enabledFeatureFlags={[]}
-          experimentData={defaultExperimentData["Features"]}
+          experimentData={defaultExperimentData}
           isMonthlySubscriber={true}
           data={mockedPlusSubscriberEmailPreferences}
         />
@@ -1994,7 +1994,7 @@ describe("to learn about usage", () => {
           monthlySubscriptionUrl=""
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
           enabledFeatureFlags={[]}
-          experimentData={defaultExperimentData["Features"]}
+          experimentData={defaultExperimentData}
           isMonthlySubscriber={true}
           data={mockedPlusSubscriberEmailPreferences}
         />
@@ -2044,7 +2044,7 @@ describe("to learn about usage", () => {
           monthlySubscriptionUrl=""
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
           enabledFeatureFlags={[]}
-          experimentData={defaultExperimentData["Features"]}
+          experimentData={defaultExperimentData}
           isMonthlySubscriber={true}
           data={mockedPlusSubscriberEmailPreferences}
         />
@@ -2106,7 +2106,7 @@ it("selects the coupon code discount cta and shows the all-set dialog step", asy
           "ConfirmCancellation",
           "DiscountCouponNextThreeMonths",
         ]}
-        experimentData={defaultExperimentData["Features"]}
+        experimentData={defaultExperimentData}
         isMonthlySubscriber={true}
         data={mockedPlusSubscriberEmailPreferences}
       />
@@ -2193,7 +2193,7 @@ it("shows error message if the applying the coupon code function was unsuccessfu
           "ConfirmCancellation",
           "DiscountCouponNextThreeMonths",
         ]}
-        experimentData={defaultExperimentData["Features"]}
+        experimentData={defaultExperimentData}
         isMonthlySubscriber={true}
         data={mockedPlusSubscriberEmailPreferences}
       />
@@ -2260,7 +2260,7 @@ it("does not show the coupon code if a user already has a coupon set", async () 
           "ConfirmCancellation",
           "DiscountCouponNextThreeMonths",
         ]}
-        experimentData={defaultExperimentData["Features"]}
+        experimentData={defaultExperimentData}
         isMonthlySubscriber={true}
         data={mockedPlusSubscriberEmailPreferences}
       />

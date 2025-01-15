@@ -27,7 +27,7 @@ export type ScanResultCardProps = {
   isExpanded: boolean;
   isOnManualRemovePage?: boolean;
   enabledFeatureFlags?: FeatureFlagName[];
-  experimentData?: ExperimentData["Features"];
+  experimentData?: ExperimentData;
   removalTimeEstimate?: number;
   onToggleExpanded: () => void;
 };

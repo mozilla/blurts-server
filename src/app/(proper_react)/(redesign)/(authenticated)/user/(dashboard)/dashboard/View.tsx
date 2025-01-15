@@ -62,7 +62,7 @@ export type TabType = "action-needed" | "fixed";
 
 export type Props = {
   enabledFeatureFlags: FeatureFlagName[];
-  experimentData: ExperimentData["Features"];
+  experimentData: ExperimentData;
   user: Session["user"];
   userBreaches: SubscriberBreach[];
   userScanData: LatestOnerepScanData;

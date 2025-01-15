@@ -36,7 +36,7 @@ export type Props = {
   l10n: ExtendedReactLocalization;
   countryCode: string;
   scanLimitReached: boolean;
-  experimentData: ExperimentData["Features"];
+  experimentData: ExperimentData;
 };
 
 export const View = (props: Props) => {

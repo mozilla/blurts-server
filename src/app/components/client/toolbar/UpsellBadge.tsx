@@ -169,7 +169,7 @@ export type UpsellBadgeProps = UpsellButtonProps & {
    * at more experiments in the future, make sure to remove the `?` so that
    * they're actually passed everywhere.
    */
-  experimentData?: ExperimentData["Features"];
+  experimentData?: ExperimentData;
   autoOpenUpsellDialog?: boolean;
 };
 export function UpsellBadge(props: UpsellBadgeProps) {

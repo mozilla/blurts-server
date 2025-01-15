@@ -50,7 +50,7 @@ export type FilterState = {
 
 type ExposuresFilterProps = {
   enabledFeatureFlags: FeatureFlagName[];
-  experimentData: ExperimentData["Features"];
+  experimentData: ExperimentData;
   initialFilterValues: FilterState;
   filterValues: FilterState;
   setFilterValues: React.Dispatch<React.SetStateAction<FilterState>>;

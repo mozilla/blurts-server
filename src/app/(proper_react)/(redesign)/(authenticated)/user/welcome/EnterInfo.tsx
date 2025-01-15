@@ -63,7 +63,7 @@ export type Props = {
   user: Session["user"];
   skipInitialStep: boolean;
   previousRoute: string | null;
-  experimentData: ExperimentData["Features"];
+  experimentData: ExperimentData;
 };
 
 export const EnterInfo = ({
