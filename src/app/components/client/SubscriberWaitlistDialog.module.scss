@@ -1,17 +1,17 @@
-@import "../../tokens";
+@use "../../tokens";
 
 .dialogContent {
   display: flex;
   flex-direction: column;
-  gap: $spacing-lg;
-  color: $color-grey-50;
+  gap: tokens.$spacing-lg;
+  color: tokens.$color-grey-50;
 
   .buttonWrapper {
     align-self: center;
     display: flex;
     flex-direction: column;
-    gap: $spacing-sm;
-    min-width: $content-xs;
-    padding-block-start: $spacing-md;
+    gap: tokens.$spacing-sm;
+    min-width: tokens.$content-xs;
+    padding-block-start: tokens.$spacing-md;
   }
 }

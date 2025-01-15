@@ -28,9 +28,9 @@ export async function getExperiments(params: {
   locale: string;
   countryCode: string;
   previewMode: boolean;
-}): Promise<ExperimentData["Features"]> {
+}): Promise<ExperimentData> {
   if (["local"].includes(process.env.APP_ENV ?? "local")) {
-    return localExperimentData["Features"];
+    return localExperimentData;
   }
 
   if (!process.env.NIMBUS_SIDECAR_URL) {
@@ -50,6 +50,11 @@ export async function getExperiments(params: {
       serverUrl.searchParams.set("nimbus_preview", "true");
     }
 
+    logger.info("Sending request to Cirrus", {
+      serverUrl: serverUrl.toString(),
+      previewMode: params.previewMode,
+    });
+
     const response = await fetch(serverUrl, {
       headers: {
         "Content-Type": "application/json",
@@ -65,6 +70,14 @@ export async function getExperiments(params: {
       }),
     });
 
+    if (!response.ok) {
+      logger.error("Cirrus request failed", {
+        status: response.status,
+        url: serverUrl.toString(),
+      });
+      throw new Error(`Cirrus request failed: ${response.statusText}`);
+    }
+
     const json = await response.json();
 
     let experimentData;
@@ -74,13 +87,15 @@ export async function getExperiments(params: {
       experimentData = json;
     }
 
-    return (
-      (experimentData as ExperimentData["Features"]) ??
-      defaultExperimentData["Features"]
-    );
+    return (experimentData as ExperimentData) ?? defaultExperimentData;
   } catch (ex) {
-    logger.error("Could not connect to Cirrus", { serverUrl, ex });
+    logger.error("Could not connect to Cirrus", {
+      serverUrl,
+      ex,
+      flags,
+      params,
+    });
     captureException(ex);
-    return defaultExperimentData["Features"];
+    return defaultExperimentData;
   }
 }

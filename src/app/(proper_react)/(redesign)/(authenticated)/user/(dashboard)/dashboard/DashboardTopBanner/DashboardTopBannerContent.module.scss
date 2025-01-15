@@ -1,4 +1,4 @@
-@import "../../../../../../../tokens";
+@use "../../../../../../../tokens";
 
 .explainerContentWrapper {
   align-items: center;
@@ -6,7 +6,7 @@
   justify-content: center;
   flex: 1 1 0%;
 
-  @media screen and (min-width: $screen-sm) and (max-width: calc($screen-md - 1px)) {
+  @media screen and (min-width: tokens.$screen-sm) and (max-width: calc(tokens.$screen-md - 1px)) {
     justify-content: center;
     flex: 0.5 1 0%;
     text-align: center;
@@ -14,27 +14,27 @@
 
   .explainerContent {
     display: flex;
-    gap: $spacing-md;
+    gap: tokens.$spacing-md;
     flex-direction: column;
 
-    @media screen and (min-width: $screen-md) {
-      max-width: $content-sm;
+    @media screen and (min-width: tokens.$screen-md) {
+      max-width: tokens.$content-sm;
     }
 
     h3 {
-      font: $text-title-2xs;
+      font: tokens.$text-title-2xs;
     }
 
     .cta {
       align-self: start;
 
-      @media screen and (min-width: $screen-sm) and (max-width: calc($screen-md - 1px)) {
+      @media screen and (min-width: tokens.$screen-sm) and (max-width: calc(tokens.$screen-md - 1px)) {
         align-self: center;
       }
 
-      @media screen and (max-width: calc($screen-md - 1px)) {
+      @media screen and (max-width: calc(tokens.$screen-md - 1px)) {
         display: grid;
-        max-width: $content-sm;
+        max-width: tokens.$content-sm;
         width: 100%;
       }
     }

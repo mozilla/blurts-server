@@ -80,7 +80,10 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
     );
   }
 
-  const relevantGuidedStep = getNextGuidedStep(stepDeterminationData);
+  const relevantGuidedStep = getNextGuidedStep(
+    stepDeterminationData,
+    props.enabledFeatureFlags,
+  );
 
   const contentProps = {
     relevantGuidedStep,
