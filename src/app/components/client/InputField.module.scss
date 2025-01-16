@@ -70,6 +70,7 @@
   &:has(.floatingLabel) {
     ::placeholder {
       @include tokens.visually-hidden;
+      color: transparent;
     }
     .inputField {
       // Move the value string off-center.
