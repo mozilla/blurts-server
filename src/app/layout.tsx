@@ -17,6 +17,10 @@ import { GoogleAnalyticsWorkaround } from "./components/client/GoogleAnalyticsWo
 import StripeScript from "./components/client/StripeScript";
 import { GleanScript } from "./components/client/GleanScript";
 import { getExperimentationId } from "./functions/server/getExperimentationId";
+import { getExperiments } from "./functions/server/getExperiments";
+import { getCountryCode } from "./functions/server/getCountryCode";
+import { ExperimentsProvider } from "../contextProviders/experiments";
+import * as Sentry from "@sentry/nextjs";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -54,6 +58,26 @@ export default async function RootLayout({
   const nonce = headers().get("x-nonce") ?? "";
   const currentLocale = getLocale(getL10nBundles());
   const session = await getServerSession();
+  const headersList = headers();
+  const countryCode = getCountryCode(headersList);
+
+  // Check for Nimbus preview mode. Note that this requires a full page reload
+  // to activate: https://nextjs.org/docs/app/api-reference/file-conventions/layout#caveats
+  const nimbusPreviewMode = headers().get("x-nimbus-preview-mode");
+  const experimentationId = getExperimentationId(session?.user ?? null);
+  const experimentData = await getExperiments({
+    experimentationId: experimentationId,
+    countryCode: countryCode,
+    locale: currentLocale,
+    previewMode: nimbusPreviewMode === "true",
+  });
+
+  const nimbus_user_id = experimentData["Enrollments"]?.nimbus_user_id ?? "";
+  if (nimbus_user_id !== experimentationId) {
+    Sentry.captureMessage(
+      `Nimbus user ID from Cirrus: [${nimbus_user_id}] did not match experimentationId: [${experimentationId}]`,
+    );
+  }
 
   return (
     <html lang={currentLocale}>
@@ -64,12 +88,14 @@ export default async function RootLayout({
         data-ga4-measurement-id={CONST_GA4_MEASUREMENT_ID}
         data-node-env={process.env.NODE_ENV}
       >
-        <SessionProvider session={session}>{children}</SessionProvider>
+        <ExperimentsProvider experimentData={experimentData}>
+          <SessionProvider session={session}>{children}</SessionProvider>
+        </ExperimentsProvider>
       </body>
       <StripeScript />
       <GleanScript
         channel={process.env.APP_ENV ?? ""}
-        experimentationId={getExperimentationId(session?.user ?? null)}
+        experimentationId={experimentationId}
       />
       {headers().get("DNT") !== "1" && (
         <GoogleAnalyticsWorkaround

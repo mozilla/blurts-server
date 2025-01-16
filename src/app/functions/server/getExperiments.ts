@@ -28,9 +28,9 @@ export async function getExperiments(params: {
   locale: string;
   countryCode: string;
   previewMode: boolean;
-}): Promise<ExperimentData["Features"]> {
+}): Promise<ExperimentData> {
   if (["local"].includes(process.env.APP_ENV ?? "local")) {
-    return localExperimentData["Features"];
+    return localExperimentData;
   }
 
   if (!process.env.NIMBUS_SIDECAR_URL) {
@@ -87,10 +87,7 @@ export async function getExperiments(params: {
       experimentData = json;
     }
 
-    return (
-      (experimentData as ExperimentData["Features"]) ??
-      defaultExperimentData["Features"]
-    );
+    return (experimentData as ExperimentData) ?? defaultExperimentData;
   } catch (ex) {
     logger.error("Could not connect to Cirrus", {
       serverUrl,
@@ -99,6 +96,6 @@ export async function getExperiments(params: {
       params,
     });
     captureException(ex);
-    return defaultExperimentData["Features"];
+    return defaultExperimentData;
   }
 }
