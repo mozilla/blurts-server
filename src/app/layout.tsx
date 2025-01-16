@@ -72,7 +72,7 @@ export default async function RootLayout({
     previewMode: nimbusPreviewMode === "true",
   });
 
-  const nimbus_user_id = experimentData["Enrollments"]?.nimbus_user_id ?? "";
+  const nimbus_user_id = experimentData["Enrollments"].nimbus_user_id;
   if (nimbus_user_id !== experimentationId) {
     Sentry.captureMessage(
       `Nimbus user ID from Cirrus: [${nimbus_user_id}] did not match experimentationId: [${experimentationId}]`,
