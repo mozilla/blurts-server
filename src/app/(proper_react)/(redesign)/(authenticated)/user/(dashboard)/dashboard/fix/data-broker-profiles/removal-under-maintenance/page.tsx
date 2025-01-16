@@ -11,6 +11,7 @@ import {
 import { getCountryCode } from "../../../../../../../../../functions/server/getCountryCode";
 import { headers } from "next/headers";
 import {
+  getMockedScanResults,
   getScanResultsWithBroker,
   getScanResultsWithBrokerUnderMaintenance,
 } from "../../../../../../../../../../db/tables/onerep_scans";
@@ -20,6 +21,7 @@ import { getSubscriberEmails } from "../../../../../../../../../functions/server
 import { RemovalUnderMaintenanceView } from "./RemovalUnderMaintenanceView";
 import { hasPremium } from "../../../../../../../../../functions/universal/user";
 import { getEnabledFeatureFlags } from "../../../../../../../../../../db/tables/featureFlags";
+import { getQaToggleRow } from "../../../../../../../../../../db/tables/qa_customs";
 
 export default async function RemovalUnderMaintenance() {
   const session = await getServerSession();
@@ -64,19 +66,30 @@ export default async function RemovalUnderMaintenance() {
     "DataBrokerManualRemoval",
   );
 
-  if (
-    scansWithRemovalUnderMaintenance?.results.length === 0 ||
-    !scansWithRemovalUnderMaintenance
-  ) {
+  const mockScanResultsData = await getMockedScanResults(profileId ?? 100);
+  const qaToggles = await getQaToggleRow(profileId);
+  let showCustomBrokers = false;
+
+  if (qaToggles) {
+    showCustomBrokers = qaToggles.show_custom_brokers;
+  }
+
+  const brokerData = showCustomBrokers
+    ? mockScanResultsData
+    : scansWithRemovalUnderMaintenance;
+
+  if (brokerData?.results.length === 0 || !brokerData) {
     redirect(getNextStep.href);
   }
+
+  console.log({ brokerData });
 
   const subscriberEmails = await getSubscriberEmails(session.user);
 
   return (
     <RemovalUnderMaintenanceView
       stepDeterminationData={data}
-      data={scansWithRemovalUnderMaintenance}
+      data={brokerData}
       subscriberEmails={subscriberEmails}
       enabledFeatureFlags={enabledFeatureFlags}
     />
