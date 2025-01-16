@@ -26,6 +26,16 @@ declare module "knex/types/tables" {
     updated_at: Date;
   }
 
+  interface SubscriberChurnRow {
+    userid: string;
+    customer: string;
+    nickname: string;
+    intervl: string;
+    plan_id: string;
+    product_id: string;
+    current_period_end: string;
+  }
+
   interface OnerepScanResultDataBrokerRow extends OnerepScanResultRow {
     scan_result_status: RemovalStatus;
     broker_status: DataBrokerRemovalStatus;
@@ -152,6 +162,7 @@ declare module "knex/types/tables" {
     sign_in_count: null | number;
     email_addresses: SubscriberEmail[];
     first_broker_removal_email_sent: boolean;
+    churn_prevention_email_sent_at: null | Date;
   }
   type SubscriberOptionalColumns = Extract<
     keyof SubscriberRow,
@@ -174,6 +185,7 @@ declare module "knex/types/tables" {
     | "onerep_profile_id"
     | "email_addresses"
     | "first_broker_removal_email_sent"
+    | "churn_prevention_email_sent_at"
   >;
   type SubscriberAutoInsertedColumns = Extract<
     keyof SubscriberRow,
