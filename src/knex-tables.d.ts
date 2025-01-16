@@ -26,6 +26,16 @@ declare module "knex/types/tables" {
     updated_at: Date;
   }
 
+  interface SubscriberChurnRow {
+    userid: string;
+    customer: string;
+    nickname: string;
+    intervl: string;
+    plan_id: string;
+    product_id: string;
+    current_period_end: string;
+  }
+
   interface OnerepScanResultDataBrokerRow extends OnerepScanResultRow {
     scan_result_status: RemovalStatus;
     broker_status: DataBrokerRemovalStatus;
