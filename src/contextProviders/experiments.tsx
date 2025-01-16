@@ -5,14 +5,15 @@
 "use client";
 
 import { ReactNode, createContext, useContext } from "react";
-import { ExperimentData } from "../telemetry/generated/nimbus/experiments";
+import { ExperimentData_V2_Or_V2LikeV1 } from "../app/functions/server/getExperiments";
 
 interface ExperimentsProviderProps {
   children: ReactNode;
-  experimentData: ExperimentData;
+  experimentData: ExperimentData_V2_Or_V2LikeV1;
 }
 
-export const ExperimentsContext = createContext<ExperimentData | null>(null);
+export const ExperimentsContext =
+  createContext<ExperimentData_V2_Or_V2LikeV1 | null>(null);
 
 export const ExperimentsProvider = ({
   children,

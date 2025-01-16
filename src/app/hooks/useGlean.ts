@@ -44,7 +44,10 @@ export const useGlean = () => {
       // Record the `nimbus_*` keys on all events.
       // `nimbus_*` is set on every metric, but it's too much work for TypeScript
       // to infer that — hence the type assertion.
-      if (experimentData) {
+      if (
+        experimentData &&
+        typeof experimentData["Enrollments"] !== "undefined"
+      ) {
         (data as GleanMetricMap["button"]["click"]).nimbus_user_id =
           experimentData["Enrollments"]["nimbus_user_id"];
         (data as GleanMetricMap["button"]["click"]).nimbus_app_id =
