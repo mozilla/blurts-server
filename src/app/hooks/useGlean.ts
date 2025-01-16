@@ -50,17 +50,17 @@ export const useGlean = () => {
         typeof experimentData["Enrollments"] !== "undefined"
       ) {
         (data as GleanMetricMap["button"]["click"]).nimbus_user_id =
-          experimentData["Enrollments"]["nimbus_user_id"];
+          experimentData["Enrollments"][0]?.nimbus_user_id;
         (data as GleanMetricMap["button"]["click"]).nimbus_app_id =
-          experimentData["Enrollments"]["app_id"];
+          experimentData["Enrollments"][0]?.app_id;
         (data as GleanMetricMap["button"]["click"]).nimbus_experiment =
-          experimentData["Enrollments"]["experiment"];
+          experimentData["Enrollments"][0]?.experiment;
         (data as GleanMetricMap["button"]["click"]).nimbus_branch =
-          experimentData["Enrollments"]["branch"];
+          experimentData["Enrollments"][0]?.branch;
         (data as GleanMetricMap["button"]["click"]).nimbus_experiment_type =
-          experimentData["Enrollments"]["experiment_type"];
+          experimentData["Enrollments"][0]?.experiment_type;
         (data as GleanMetricMap["button"]["click"]).nimbus_is_preview =
-          experimentData["Enrollments"]["is_preview"].toString();
+          experimentData["Enrollments"][0]?.is_preview.toString();
       } else {
         console.warn("No experiment data available for Glean");
       }

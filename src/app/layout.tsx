@@ -78,7 +78,7 @@ export default async function RootLayout({
     previewMode: nimbusPreviewMode === "true",
   });
 
-  const nimbus_user_id = experimentData["Enrollments"]?.nimbus_user_id;
+  const nimbus_user_id = experimentData["Enrollments"]?.[0]?.nimbus_user_id;
   if (
     typeof nimbus_user_id !== "undefined" &&
     nimbus_user_id !== experimentationId
