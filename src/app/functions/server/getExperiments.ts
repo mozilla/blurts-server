@@ -101,7 +101,7 @@ export async function getExperiments(params: {
       };
     }
 
-    return experimentData ?? defaultExperimentData;
+    return (experimentData as ExperimentData) ?? defaultExperimentData;
   } catch (ex) {
     logger.error("Could not connect to Cirrus", {
       serverUrl,
