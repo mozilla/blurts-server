@@ -7,16 +7,16 @@ on:
       environment:
         description: 'Environment to run LHCI against'
         required: false
-        default: 'stage'
+        default: 'prod'
         type: choice
         options:
           - stage
           - prod
 jobs:
   lhci:
-    name: Lighthouse Report  - ${{ inputs.environment != null && inputs.environment || 'stage' }}
+    name: Lighthouse Report  - ${{ inputs.environment != null && inputs.environment || 'prod' }}
     runs-on: ubuntu-latest
-    environment: ${{ inputs.environment != null && inputs.environment || 'stage' }}
+    environment: ${{ inputs.environment != null && inputs.environment || 'prod' }}
     permissions:
       contents: read
       id-token: write
@@ -44,4 +44,6 @@ jobs:
       - name: Report results
         run: npm run cron:report-lighthouse-results
         env:
+          BQ_LIGHTHOUSE_PROJECT: ${{ secrets.BQ_LIGHTHOUSE_PROJECT }}
           BQ_LIGHTHOUSE_DATASET: ${{ secrets.BQ_LIGHTHOUSE_DATASET }}
+          BQ_LIGHTHOUSE_TABLE: ${{ secrets.BQ_LIGHTHOUSE_TABLE }}

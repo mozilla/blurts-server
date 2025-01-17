@@ -30,13 +30,26 @@ type LighthouseResult = {
   };
 };
 
-async function getLighthouseResults() {
+type LighthouseFullResult = {
+  url: LighthouseResult["url"];
+  fetchTime: string;
+  isRepresentativeRun: boolean;
+  summary: LighthouseResult["summary"];
+  audits: {
+    id: string;
+    score: number;
+    numericValue: number;
+  }[];
+};
+
+async function uploadLighthouseReport(results: LighthouseFullResult[]) {
   if (
     !process.env.BQ_LIGHTHOUSE_PROJECT ||
     !process.env.BQ_LIGHTHOUSE_DATASET ||
     !process.env.BQ_LIGHTHOUSE_TABLE
   ) {
-    return null;
+    console.error("Missing environment variables");
+    return;
   }
 
   try {
@@ -47,14 +60,9 @@ async function getLighthouseResults() {
     const table = bigQueryClient
       .dataset(process.env.BQ_LIGHTHOUSE_DATASET)
       .table(process.env.BQ_LIGHTHOUSE_TABLE);
-    const [metadata] = await table.getMetadata();
-
-    console.log(
-      `Table description: ${metadata.description || "No description"}`,
-    );
-    return table;
+    await table.insert(results);
   } catch (error) {
-    console.error("Error querying Lighthouse results", error);
+    console.error("Error uploading results", JSON.stringify(error, null, 2));
   }
 }
 
@@ -78,7 +86,7 @@ async function run() {
     lighthouseResults
       .filter((result) => result.isRepresentativeRun === true)
       .map(async (medianResult) => {
-        const { jsonPath, url, summary } = medianResult;
+        const { jsonPath, url, isRepresentativeRun, summary } = medianResult;
         const fullReport = JSON.parse(
           await readFile(new URL(jsonPath, import.meta.url), {
             encoding: "utf8",
@@ -89,21 +97,26 @@ async function run() {
           return { id, score, numericValue };
         });
 
-        return { url, summary, audits };
+        return {
+          url,
+          fetchTime: fullReport.fetchTime,
+          isRepresentativeRun,
+          summary,
+          audits,
+        };
       }),
   );
 
-  const transformedData = lighthouseReport.map((item) => {
+  const reportPreview = lighthouseReport.map((item) => {
     return {
       url: item.url,
       ...item.summary,
     };
   });
-  console.table(transformedData);
-  logger.info("lighthouse_report", lighthouseReport);
+  console.table(reportPreview);
 
-  const results = await getLighthouseResults();
-  console.info("BigQuery dataset", results);
+  await uploadLighthouseReport(lighthouseReport);
+  console.info("Uploaded Lighthouse report successfully");
 }
 
 try {
