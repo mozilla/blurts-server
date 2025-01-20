@@ -261,9 +261,7 @@ const SettingsWrapper = (props: {
       session={mockedSession}
       nonce=""
       countryCode="en"
-      enabledFeatureFlags={
-        props.enabledFeatureFlags ?? ["SettingsPageRedesign"]
-      }
+      enabledFeatureFlags={props.enabledFeatureFlags ?? []}
     >
       {props.children}
     </Shell>
@@ -271,44 +269,6 @@ const SettingsWrapper = (props: {
 );
 
 describe("Settings page redesign", () => {
-  it("shows the old layout", () => {
-    render(
-      <SettingsWrapper enabledFeatureFlags={[]}>
-        <SettingsView
-          activeTab="edit-info"
-          l10n={getL10n()}
-          user={{
-            ...mockedUser,
-            subscriber: {
-              ...mockedUser.subscriber!,
-              all_emails_to_primary: true,
-            },
-          }}
-          subscriber={mockedSubscriber}
-          breachCountByEmailAddress={{
-            [mockedUser.email]: 42,
-            [mockedSecondaryVerifiedEmail.email]: 42,
-          }}
-          emailAddresses={[mockedSecondaryVerifiedEmail]}
-          fxaSettingsUrl=""
-          fxaSubscriptionsUrl=""
-          yearlySubscriptionUrl=""
-          monthlySubscriptionUrl=""
-          subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-          enabledFeatureFlags={[]}
-          experimentData={defaultExperimentData["Features"]}
-          isMonthlySubscriber={true}
-          data={mockedPlusSubscriberEmailPreferences}
-        />
-      </SettingsWrapper>,
-    );
-
-    const tabListItem = screen.queryByRole("tab", {
-      name: "Edit your info",
-    });
-    expect(tabListItem).not.toBeInTheDocument();
-  });
-
   it("shows the new layout", () => {
     render(
       <SettingsWrapper>
@@ -333,7 +293,7 @@ describe("Settings page redesign", () => {
           yearlySubscriptionUrl=""
           monthlySubscriptionUrl=""
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-          enabledFeatureFlags={["SettingsPageRedesign"]}
+          enabledFeatureFlags={[]}
           experimentData={defaultExperimentData["Features"]}
           isMonthlySubscriber={true}
           data={mockedPlusSubscriberEmailPreferences}
@@ -370,7 +330,7 @@ describe("Settings page redesign", () => {
           yearlySubscriptionUrl=""
           monthlySubscriptionUrl=""
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-          enabledFeatureFlags={["SettingsPageRedesign"]}
+          enabledFeatureFlags={[]}
           experimentData={defaultExperimentData["Features"]}
           isMonthlySubscriber={true}
           data={mockedPlusSubscriberEmailPreferences}
@@ -408,7 +368,7 @@ describe("Settings page redesign", () => {
             yearlySubscriptionUrl=""
             monthlySubscriptionUrl=""
             subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-            enabledFeatureFlags={["SettingsPageRedesign"]}
+            enabledFeatureFlags={[]}
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
           />
@@ -442,7 +402,7 @@ describe("Settings page redesign", () => {
             yearlySubscriptionUrl=""
             monthlySubscriptionUrl=""
             subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-            enabledFeatureFlags={["SettingsPageRedesign"]}
+            enabledFeatureFlags={[]}
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
@@ -496,7 +456,7 @@ describe("Settings page redesign", () => {
             yearlySubscriptionUrl=""
             monthlySubscriptionUrl=""
             subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-            enabledFeatureFlags={["SettingsPageRedesign"]}
+            enabledFeatureFlags={[]}
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
@@ -542,7 +502,7 @@ describe("Settings page redesign", () => {
             yearlySubscriptionUrl=""
             monthlySubscriptionUrl=""
             subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-            enabledFeatureFlags={["SettingsPageRedesign"]}
+            enabledFeatureFlags={[]}
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
@@ -577,7 +537,7 @@ describe("Settings page redesign", () => {
             yearlySubscriptionUrl=""
             monthlySubscriptionUrl=""
             subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-            enabledFeatureFlags={["SettingsPageRedesign"]}
+            enabledFeatureFlags={[]}
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
@@ -616,7 +576,7 @@ describe("Settings page redesign", () => {
             yearlySubscriptionUrl=""
             monthlySubscriptionUrl=""
             subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-            enabledFeatureFlags={["SettingsPageRedesign"]}
+            enabledFeatureFlags={[]}
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
@@ -665,7 +625,7 @@ describe("Settings page redesign", () => {
             yearlySubscriptionUrl=""
             monthlySubscriptionUrl=""
             subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-            enabledFeatureFlags={["SettingsPageRedesign"]}
+            enabledFeatureFlags={[]}
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
@@ -710,7 +670,7 @@ describe("Settings page redesign", () => {
             yearlySubscriptionUrl=""
             monthlySubscriptionUrl=""
             subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-            enabledFeatureFlags={["SettingsPageRedesign"]}
+            enabledFeatureFlags={[]}
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
@@ -749,7 +709,7 @@ describe("Settings page redesign", () => {
               yearlySubscriptionUrl=""
               monthlySubscriptionUrl=""
               subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-              enabledFeatureFlags={["SettingsPageRedesign"]}
+              enabledFeatureFlags={[]}
               experimentData={defaultExperimentData["Features"]}
               isMonthlySubscriber={true}
               data={mockedPlusSubscriberEmailPreferences}
@@ -795,7 +755,7 @@ describe("Settings page redesign", () => {
               yearlySubscriptionUrl=""
               monthlySubscriptionUrl=""
               subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-              enabledFeatureFlags={["SettingsPageRedesign"]}
+              enabledFeatureFlags={[]}
               experimentData={defaultExperimentData["Features"]}
               isMonthlySubscriber={true}
               data={mockedPlusSubscriberEmailPreferences}
@@ -841,7 +801,7 @@ describe("Settings page redesign", () => {
               yearlySubscriptionUrl=""
               monthlySubscriptionUrl=""
               subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-              enabledFeatureFlags={["SettingsPageRedesign"]}
+              enabledFeatureFlags={[]}
               experimentData={defaultExperimentData["Features"]}
               isMonthlySubscriber={true}
               data={mockedPlusSubscriberEmailPreferences}
@@ -891,7 +851,7 @@ describe("Settings page redesign", () => {
             yearlySubscriptionUrl=""
             monthlySubscriptionUrl=""
             subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-            enabledFeatureFlags={["SettingsPageRedesign"]}
+            enabledFeatureFlags={[]}
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
@@ -928,7 +888,7 @@ describe("Settings page redesign", () => {
             yearlySubscriptionUrl=""
             monthlySubscriptionUrl=""
             subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-            enabledFeatureFlags={["SettingsPageRedesign"]}
+            enabledFeatureFlags={[]}
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
@@ -966,7 +926,7 @@ describe("Settings page redesign", () => {
             yearlySubscriptionUrl=""
             monthlySubscriptionUrl=""
             subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-            enabledFeatureFlags={["SettingsPageRedesign"]}
+            enabledFeatureFlags={[]}
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
@@ -1011,11 +971,7 @@ describe("Settings page redesign", () => {
             yearlySubscriptionUrl=""
             monthlySubscriptionUrl=""
             subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-            enabledFeatureFlags={[
-              "ConfirmCancellation",
-              "CancellationFlow",
-              "SettingsPageRedesign",
-            ]}
+            enabledFeatureFlags={["ConfirmCancellation", "CancellationFlow"]}
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
@@ -1095,11 +1051,7 @@ describe("Settings page redesign", () => {
             yearlySubscriptionUrl=""
             monthlySubscriptionUrl=""
             subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-            enabledFeatureFlags={[
-              "ConfirmCancellation",
-              "CancellationFlow",
-              "SettingsPageRedesign",
-            ]}
+            enabledFeatureFlags={["ConfirmCancellation", "CancellationFlow"]}
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
@@ -1158,7 +1110,7 @@ describe("Settings page redesign", () => {
             yearlySubscriptionUrl=""
             monthlySubscriptionUrl=""
             subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-            enabledFeatureFlags={["CancellationFlow", "SettingsPageRedesign"]}
+            enabledFeatureFlags={["CancellationFlow"]}
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
@@ -1210,7 +1162,7 @@ describe("Settings page redesign", () => {
             yearlySubscriptionUrl=""
             monthlySubscriptionUrl=""
             subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-            enabledFeatureFlags={["SettingsPageRedesign"]}
+            enabledFeatureFlags={[]}
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
@@ -1253,7 +1205,7 @@ describe("Settings page redesign", () => {
             yearlySubscriptionUrl=""
             monthlySubscriptionUrl=""
             subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-            enabledFeatureFlags={["SettingsPageRedesign"]}
+            enabledFeatureFlags={[]}
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
@@ -1298,7 +1250,7 @@ describe("Settings page redesign", () => {
             yearlySubscriptionUrl=""
             monthlySubscriptionUrl=""
             subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-            enabledFeatureFlags={["SettingsPageRedesign"]}
+            enabledFeatureFlags={[]}
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
@@ -1344,7 +1296,7 @@ describe("Settings page redesign", () => {
             yearlySubscriptionUrl=""
             monthlySubscriptionUrl=""
             subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-            enabledFeatureFlags={["SettingsPageRedesign"]}
+            enabledFeatureFlags={[]}
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
@@ -1387,7 +1339,7 @@ describe("Settings page redesign", () => {
             yearlySubscriptionUrl=""
             monthlySubscriptionUrl=""
             subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-            enabledFeatureFlags={["SettingsPageRedesign"]}
+            enabledFeatureFlags={[]}
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
@@ -1436,7 +1388,7 @@ describe("Settings page redesign", () => {
             yearlySubscriptionUrl=""
             monthlySubscriptionUrl=""
             subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-            enabledFeatureFlags={["SettingsPageRedesign"]}
+            enabledFeatureFlags={[]}
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
@@ -1482,7 +1434,7 @@ describe("Settings page redesign", () => {
             yearlySubscriptionUrl=""
             monthlySubscriptionUrl=""
             subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-            enabledFeatureFlags={["SettingsPageRedesign"]}
+            enabledFeatureFlags={[]}
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
@@ -1533,7 +1485,7 @@ describe("Settings page redesign", () => {
             yearlySubscriptionUrl=""
             monthlySubscriptionUrl=""
             subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-            enabledFeatureFlags={["SettingsPageRedesign"]}
+            enabledFeatureFlags={[]}
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
@@ -1580,7 +1532,7 @@ describe("Settings page redesign", () => {
             yearlySubscriptionUrl=""
             monthlySubscriptionUrl=""
             subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-            enabledFeatureFlags={["SettingsPageRedesign"]}
+            enabledFeatureFlags={[]}
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
@@ -1631,7 +1583,7 @@ describe("Settings page redesign", () => {
             yearlySubscriptionUrl=""
             monthlySubscriptionUrl=""
             subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-            enabledFeatureFlags={["SettingsPageRedesign"]}
+            enabledFeatureFlags={[]}
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
@@ -1677,7 +1629,7 @@ describe("Settings page redesign", () => {
             yearlySubscriptionUrl=""
             monthlySubscriptionUrl=""
             subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-            enabledFeatureFlags={["SettingsPageRedesign"]}
+            enabledFeatureFlags={[]}
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
@@ -1728,7 +1680,7 @@ describe("Settings page redesign", () => {
             yearlySubscriptionUrl=""
             monthlySubscriptionUrl=""
             subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-            enabledFeatureFlags={["SettingsPageRedesign"]}
+            enabledFeatureFlags={[]}
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
@@ -1792,7 +1744,6 @@ describe("Settings page redesign", () => {
               "CancellationFlow",
               "ConfirmCancellation",
               "DiscountCouponNextThreeMonths",
-              "SettingsPageRedesign",
             ]}
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
@@ -1883,7 +1834,6 @@ describe("Settings page redesign", () => {
               "CancellationFlow",
               "ConfirmCancellation",
               "DiscountCouponNextThreeMonths",
-              "SettingsPageRedesign",
             ]}
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
@@ -1952,7 +1902,6 @@ describe("Settings page redesign", () => {
               "CancellationFlow",
               "ConfirmCancellation",
               "DiscountCouponNextThreeMonths",
-              "SettingsPageRedesign",
             ]}
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
@@ -1996,7 +1945,7 @@ describe("Settings page redesign", () => {
             yearlySubscriptionUrl=""
             monthlySubscriptionUrl=""
             subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-            enabledFeatureFlags={["SettingsPageRedesign"]}
+            enabledFeatureFlags={[]}
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
@@ -2042,7 +1991,7 @@ describe("Settings page redesign", () => {
             yearlySubscriptionUrl=""
             monthlySubscriptionUrl=""
             subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-            enabledFeatureFlags={["SettingsPageRedesign"]}
+            enabledFeatureFlags={[]}
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
@@ -2088,10 +2037,7 @@ describe("Settings page redesign", () => {
             yearlySubscriptionUrl=""
             monthlySubscriptionUrl=""
             subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-            enabledFeatureFlags={[
-              "UpdatedEmailPreferencesOption",
-              "SettingsPageRedesign",
-            ]}
+            enabledFeatureFlags={["UpdatedEmailPreferencesOption"]}
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
@@ -2153,10 +2099,7 @@ describe("Settings page redesign", () => {
             yearlySubscriptionUrl=""
             monthlySubscriptionUrl=""
             subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-            enabledFeatureFlags={[
-              "UpdatedEmailPreferencesOption",
-              "SettingsPageRedesign",
-            ]}
+            enabledFeatureFlags={["UpdatedEmailPreferencesOption"]}
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
@@ -2198,10 +2141,7 @@ describe("Settings page redesign", () => {
             yearlySubscriptionUrl=""
             monthlySubscriptionUrl=""
             subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-            enabledFeatureFlags={[
-              "UpdatedEmailPreferencesOption",
-              "SettingsPageRedesign",
-            ]}
+            enabledFeatureFlags={["UpdatedEmailPreferencesOption"]}
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
@@ -2262,10 +2202,7 @@ describe("Settings page redesign", () => {
             yearlySubscriptionUrl=""
             monthlySubscriptionUrl=""
             subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-            enabledFeatureFlags={[
-              "UpdatedEmailPreferencesOption",
-              "SettingsPageRedesign",
-            ]}
+            enabledFeatureFlags={["UpdatedEmailPreferencesOption"]}
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
@@ -2314,10 +2251,7 @@ describe("Settings page redesign", () => {
             yearlySubscriptionUrl=""
             monthlySubscriptionUrl=""
             subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-            enabledFeatureFlags={[
-              "UpdatedEmailPreferencesOption",
-              "SettingsPageRedesign",
-            ]}
+            enabledFeatureFlags={["UpdatedEmailPreferencesOption"]}
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
@@ -2379,7 +2313,6 @@ describe("Settings page redesign", () => {
             enabledFeatureFlags={[
               "UpdatedEmailPreferencesOption",
               "MonthlyReportFreeUser",
-              "SettingsPageRedesign",
             ]}
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={false}
@@ -2423,10 +2356,7 @@ describe("Settings page redesign", () => {
             yearlySubscriptionUrl=""
             monthlySubscriptionUrl=""
             subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-            enabledFeatureFlags={[
-              "UpdatedEmailPreferencesOption",
-              "SettingsPageRedesign",
-            ]}
+            enabledFeatureFlags={["UpdatedEmailPreferencesOption"]}
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
@@ -2472,10 +2402,7 @@ describe("Settings page redesign", () => {
             yearlySubscriptionUrl=""
             monthlySubscriptionUrl=""
             subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-            enabledFeatureFlags={[
-              "UpdatedEmailPreferencesOption",
-              "SettingsPageRedesign",
-            ]}
+            enabledFeatureFlags={["UpdatedEmailPreferencesOption"]}
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
@@ -2531,10 +2458,7 @@ describe("Settings page redesign", () => {
             yearlySubscriptionUrl=""
             monthlySubscriptionUrl=""
             subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-            enabledFeatureFlags={[
-              "UpdatedEmailPreferencesOption",
-              "SettingsPageRedesign",
-            ]}
+            enabledFeatureFlags={["UpdatedEmailPreferencesOption"]}
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
@@ -2592,7 +2516,7 @@ describe("Settings page redesign", () => {
             yearlySubscriptionUrl=""
             monthlySubscriptionUrl=""
             subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-            enabledFeatureFlags={["SettingsPageRedesign"]}
+            enabledFeatureFlags={[]}
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
