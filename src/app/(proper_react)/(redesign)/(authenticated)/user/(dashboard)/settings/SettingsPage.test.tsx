@@ -2533,4 +2533,33 @@ describe("Settings page", () => {
       expect(mockedSessionUpdate).toHaveBeenCalledTimes(1);
     });
   });
+
+  it("does not crash if no email preferences were found for the current user", () => {
+    const component = (
+      <SettingsWrapper>
+        <SettingsView
+          activeTab="notifications"
+          l10n={getL10n()}
+          user={mockedUser}
+          subscriber={mockedSubscriber}
+          breachCountByEmailAddress={{
+            [mockedUser.email]: 42,
+            [mockedSecondaryVerifiedEmail.email]: 42,
+          }}
+          emailAddresses={[mockedSecondaryVerifiedEmail]}
+          fxaSettingsUrl=""
+          fxaSubscriptionsUrl=""
+          yearlySubscriptionUrl=""
+          monthlySubscriptionUrl=""
+          subscriptionBillingAmount={mockedSubscriptionBillingAmount}
+          enabledFeatureFlags={[]}
+          experimentData={defaultExperimentData["Features"]}
+          isMonthlySubscriber={true}
+          data={undefined}
+        />
+      </SettingsWrapper>
+    );
+
+    expect(() => render(component)).not.toThrow();
+  });
 });
