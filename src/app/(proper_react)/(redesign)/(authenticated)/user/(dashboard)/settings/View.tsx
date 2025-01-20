@@ -20,7 +20,7 @@ export type Props = {
   l10n: ExtendedReactLocalization;
   user: Session["user"];
   subscriber: SubscriberRow;
-  data: SubscriberEmailPreferencesOutput;
+  data?: SubscriberEmailPreferencesOutput;
   monthlySubscriptionUrl: string;
   yearlySubscriptionUrl: string;
   subscriptionBillingAmount: {

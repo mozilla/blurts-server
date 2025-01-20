@@ -22,7 +22,7 @@ import { RadioInput } from "../../../../../../../components/client/RadioInput";
 import { CONST_URL_MOZILLA_BASKET } from "../../../../../../../../constants";
 
 export type SettingsPanelNotificationsProps = {
-  data: SubscriberEmailPreferencesOutput;
+  data?: SubscriberEmailPreferencesOutput;
   subscriber: SubscriberRow;
   user: Session["user"];
 };

@@ -285,7 +285,7 @@ async function unsubscribeMonthlyMonitorReportForUnsubscribeToken(
 
 async function getEmailPreferenceForPrimaryEmail(
   email: string,
-): Promise<SubscriberEmailPreferencesOutput> {
+): Promise<SubscriberEmailPreferencesOutput | undefined> {
   logger.info("get_email_preference_for_primary_email", {
     email,
   });
