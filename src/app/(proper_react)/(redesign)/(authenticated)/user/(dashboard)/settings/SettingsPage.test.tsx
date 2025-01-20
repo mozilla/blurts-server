@@ -268,8 +268,8 @@ const SettingsWrapper = (props: {
   </TestComponentWrapper>
 );
 
-describe("Settings page redesign", () => {
-  it("shows the new layout", () => {
+describe("Settings page", () => {
+  it("shows the settings page", () => {
     render(
       <SettingsWrapper>
         <SettingsView
@@ -515,6 +515,7 @@ describe("Settings page redesign", () => {
       });
       expect(addEmailButton).toBeInTheDocument();
     });
+
     it("marks unverified email addresses as such", () => {
       render(
         <SettingsWrapper>
