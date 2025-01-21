@@ -41,7 +41,7 @@
     transform: translate(-50%, -50%);
   }
 
-  &Header {
+  dt {
     border-bottom: 1px solid tokens.$color-grey-10;
     padding: tokens.$spacing-xs tokens.$spacing-xs tokens.$spacing-lg;
     text-align: center;
