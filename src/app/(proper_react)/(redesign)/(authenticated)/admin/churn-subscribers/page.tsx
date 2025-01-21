@@ -10,10 +10,7 @@ import { ChurnAdmin } from "./ChurnAdmin";
 export default async function DevPage() {
   const session = await getServerSession();
 
-  if (
-    !session?.user?.email ||
-    !isAdmin(session.user.email)
-  ) {
+  if (!session?.user?.email || !isAdmin(session.user.email)) {
     return notFound();
   }
 
