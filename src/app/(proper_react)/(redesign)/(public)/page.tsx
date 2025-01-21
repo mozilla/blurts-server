@@ -59,14 +59,14 @@ export default async function Page({ searchParams }: Props) {
     oneRepActivations > monthlySubscribersQuota;
   return (
     <AccountsMetricsFlowProvider
-      enabled={experimentData["landing-page-free-scan-cta"].enabled}
+      enabled={experimentData["Features"]["landing-page-free-scan-cta"].enabled}
       metricsFlowParams={{
         entrypoint: CONST_URL_MONITOR_LANDING_PAGE_ID,
         entrypoint_experiment: "landing-page-free-scan-cta",
         entrypoint_variation:
-          experimentData["landing-page-free-scan-cta"].variant,
+          experimentData["Features"]["landing-page-free-scan-cta"].variant,
         form_type:
-          experimentData["landing-page-free-scan-cta"].variant ===
+          experimentData["Features"]["landing-page-free-scan-cta"].variant ===
           "ctaWithEmail"
             ? "email"
             : "button",
@@ -74,16 +74,18 @@ export default async function Page({ searchParams }: Props) {
       }}
     >
       {enabledFeatureFlags.includes("LandingPageRedesign") &&
-      experimentData["landing-page-redesign-plus-eligible-experiment"]
-        .enabled &&
-      experimentData["landing-page-redesign-plus-eligible-experiment"]
-        .variant === "redesign" ? (
+      experimentData["Features"][
+        "landing-page-redesign-plus-eligible-experiment"
+      ].enabled &&
+      experimentData["Features"][
+        "landing-page-redesign-plus-eligible-experiment"
+      ].variant === "redesign" ? (
         <LandingViewRedesign
           eligibleForPremium={eligibleForPremium}
           l10n={getL10n()}
           countryCode={countryCode}
           scanLimitReached={scanLimitReached}
-          experimentData={experimentData}
+          experimentData={experimentData["Features"]}
         />
       ) : (
         <LandingView
@@ -91,7 +93,7 @@ export default async function Page({ searchParams }: Props) {
           l10n={getL10n()}
           countryCode={countryCode}
           scanLimitReached={scanLimitReached}
-          experimentData={experimentData}
+          experimentData={experimentData["Features"]}
         />
       )}
     </AccountsMetricsFlowProvider>

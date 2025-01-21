@@ -14,7 +14,7 @@ import { getL10n } from "../../../app/functions/l10n/storybookAndJest";
 const meta: Meta<FC<Props>> = {
   title: "Emails/First data broker removal fixed",
   component: (props: Props) => (
-    <StorybookEmailRenderer>
+    <StorybookEmailRenderer plainTextVersion={null}>
       <FirstDataBrokerRemovalFixed {...props} />
     </StorybookEmailRenderer>
   ),
