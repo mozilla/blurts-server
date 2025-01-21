@@ -151,6 +151,7 @@ describe("Navigation and authentication", () => {
     // test:
     jest
       .spyOn(console, "error")
+      // we expect the error to get logged twice (once for each click below)
       .mockImplementationOnce(() => undefined)
       .mockImplementationOnce(() => undefined);
     await user.click(navbarLinks[0]);
