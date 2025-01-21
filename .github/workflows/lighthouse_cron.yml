@@ -7,16 +7,16 @@ on:
       environment:
         description: 'Environment to run LHCI against'
         required: false
-        default: 'prod'
+        default: 'stage'
         type: choice
         options:
           - stage
           - prod
 jobs:
   lhci:
-    name: Lighthouse Report  - ${{ inputs.environment != null && inputs.environment || 'prod' }}
+    name: Lighthouse Report  - ${{ inputs.environment != null && inputs.environment || 'stage' }}
     runs-on: ubuntu-latest
-    environment: ${{ inputs.environment != null && inputs.environment || 'prod' }}
+    environment: ${{ inputs.environment != null && inputs.environment || 'stage' }}
     permissions:
       contents: read
       id-token: write
