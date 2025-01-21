@@ -23,7 +23,7 @@ async function upsertSubscriberChurns(
       .returning("*");
 
     logger.info("upsert_subscriber_churns_success", { count: res.length });
-    return res as SubscriberChurnRow[];
+    return res;
   } catch (e) {
     logger.error("upsert_subscriber_churns_error", {
       error: JSON.stringify(e),

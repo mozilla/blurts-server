@@ -433,6 +433,8 @@ declare module "knex/types/tables" {
       WritableDateColumns<Partial<Omit<SubscriberCouponRow, "id">>>
     >;
 
+    subscriber_churns: SubscriberChurnRow;
+
     subscriber_email_preferences: Knex.CompositeTableType<
       SubscriberEmailPreferencesRow,
       // On inserts, auto-generated columns cannot be set, and nullable columns are optional:
