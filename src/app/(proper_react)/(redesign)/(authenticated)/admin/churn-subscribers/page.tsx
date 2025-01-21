@@ -12,8 +12,7 @@ export default async function DevPage() {
 
   if (
     !session?.user?.email ||
-    !isAdmin(session.user.email) ||
-    process.env.APP_ENV !== "local"
+    !isAdmin(session.user.email)
   ) {
     return notFound();
   }
