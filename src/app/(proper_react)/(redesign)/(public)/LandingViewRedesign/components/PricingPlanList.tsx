@@ -58,6 +58,8 @@ export const PricingPlanList = (props: Props & ScanLimitProp) => {
   const recordTelemetry = useTelemetry();
   const [billingPeriod, setBillingPeriod] = useState<BillingPeriod>("yearly");
 
+  // The cookie `attributionsLastTouch` is set in the component `PageLoadEvent`
+  // to help with attributions.
   const [cookies] = useCookies(["attributionsLastTouch"]);
   const newSearchParam = modifyAttributionsForUrlSearchParams(
     new URLSearchParams(cookies.attributionsLastTouch),
