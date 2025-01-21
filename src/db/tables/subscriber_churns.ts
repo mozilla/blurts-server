@@ -34,7 +34,7 @@ async function upsertSubscriberChurns(
 
 async function getAllSubscriberChurns(): Promise<SubscriberChurnRow[]> {
   try {
-    const res = await knex("subscriber_churns").select().returning("*");
+    const res = await knex("subscriber_churns").select("*");
 
     logger.info("get_all_subscriber_churns_success", { count: res.length });
     return res as SubscriberChurnRow[];
