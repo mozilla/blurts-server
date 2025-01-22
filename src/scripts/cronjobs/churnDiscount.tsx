@@ -31,18 +31,22 @@ interface FxaChurnSubscriber {
 }
 
 async function fetchSubscribersFromBigQuery(): Promise<FxaChurnSubscriber[]> {
-  const bigquery = new BigQuery();
-  const projectId = process.env.FXA_CHURN_PROJECT_ID;
   const datasetId = process.env.FXA_CHURN_DATASET_ID;
   const tableId = process.env.FXA_CHURN_TABLE_ID;
+  const projectId = process.env.FXA_CHURN_PROJECT_ID;
 
   if (!projectId || !datasetId || !tableId) {
     throw new Error("BigQuery environment variables are not set");
   }
 
+  const bigquery = new BigQuery({
+    projectId: process.env.FXA_CHURN_PROJECT_ID,
+    keyFilename: process.env.FXA_SA_PATH,
+  });
+
   const query = `
     SELECT userid, customer, created, nickname, intervl, intervl_count, plan_id, product_id, current_period_end
-    FROM \`${projectId}.${datasetId}.${tableId}\`
+    FROM \`${datasetId}.${tableId}\`
     WHERE intervl = 'yearly'
       AND current_period_end IS NOT NULL
       AND TIMESTAMP_DIFF(TIMESTAMP(current_period_end), CURRENT_TIMESTAMP(), DAY) <= 7
