@@ -55,7 +55,7 @@ export const StorybookEmailRenderer = (props: Props) => {
         padding: 20px;
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: stretch;
         gap: 20px;
       }
       .wrapper .plaintext {
@@ -89,7 +89,7 @@ export const StorybookEmailRenderer = (props: Props) => {
                   `
                 : renderResult.html,
           }}
-          className={props.emulateDarkMode ? "dark-mode-enforced" : ""}
+          className={`body ${props.emulateDarkMode ? "dark-mode-enforced" : ""}`}
         />
       </section>
       <section className="plaintext">
