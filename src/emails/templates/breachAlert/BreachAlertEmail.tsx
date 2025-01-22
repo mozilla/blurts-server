@@ -4,8 +4,11 @@
 
 import type { SubscriberRow } from "knex/types/tables";
 import { ExtendedReactLocalization } from "../../../app/functions/l10n";
-import { EmailFooter, RedesignedEmailFooter } from "../EmailFooter";
-import { EmailHeader } from "../EmailHeader";
+import {
+  EmailFooter,
+  RedesignedEmailFooter,
+} from "../../components/EmailFooter";
+import { EmailHeader } from "../../components/EmailHeader";
 import { HibpLikeDbBreach } from "../../../utils/hibp";
 import { BreachCard } from "../../components/BreachCard";
 import { FeatureFlagName } from "../../../db/tables/featureFlags";
@@ -19,7 +22,7 @@ import { DashboardSummary } from "../../../app/functions/server/dashboard";
 import { ResolutionRelevantBreachDataTypes } from "../../../app/functions/universal/breach";
 import { EmailBanner } from "../../components/EmailBanner";
 import { DataPointCount } from "../../components/EmailDataPointCount";
-import { HeaderStyles, MetaTags } from "../HeaderStyles";
+import { HeaderStyles, MetaTags } from "../../components/HeaderStyles";
 
 export type Props = {
   l10n: ExtendedReactLocalization;

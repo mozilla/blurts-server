@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import type { ExtendedReactLocalization } from "../../../app/functions/l10n";
-import { RedesignedEmailFooter } from "../EmailFooter";
+import { RedesignedEmailFooter } from "../../components/EmailFooter";
 import { EmailHero } from "../../components/EmailHero";
 import { DataPointCount } from "../../components/EmailDataPointCount";
 import { DashboardSummary } from "../../../app/functions/server/dashboard";
@@ -11,7 +11,7 @@ import { EmailBanner } from "../../components/EmailBanner";
 import { getPremiumSubscriptionUrl } from "../../../app/functions/server/getPremiumSubscriptionInfo";
 import { isEligibleForPremium } from "../../../app/functions/universal/premium";
 import { getSignupLocaleCountry } from "../../functions/getSignupLocaleCountry";
-import { HeaderStyles, MetaTags } from "../HeaderStyles";
+import { HeaderStyles, MetaTags } from "../../components/HeaderStyles";
 import { SanitizedSubscriberRow } from "../../../app/functions/server/sanitize";
 import { sumSanitizedDataPoints } from "../../functions/reduceSanitizedDataPoints";
 import { modifyAttributionsForUrl } from "../../../app/functions/universal/attributions";
