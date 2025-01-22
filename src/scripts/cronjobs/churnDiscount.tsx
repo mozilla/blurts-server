@@ -5,6 +5,7 @@ import {
   getChurnPreventionEmailSentAt,
   // markChurnPreventionEmailAsJustSent,
 } from "../../db/tables/subscribers";
+import { getAllSubscriberChurns } from "../../db/tables/subscriber_churns";
 import createDbConnection from "../../db/connect";
 import { logger } from "../../app/functions/server/logging";
 import {
@@ -14,23 +15,12 @@ import {
 } from "../../utils/email";
 // Imports the Google Cloud bigquery library
 import { BigQuery } from "@google-cloud/bigquery";
+import { SubscriberChurnRow } from "knex/types/tables";
 
 await run();
 await createDbConnection().destroy();
 
-interface FxaChurnSubscriber {
-  userid: string;
-  customer: string;
-  created: string;
-  nickname: string;
-  intervl: "monthly" | "yearly";
-  intervl_count: number;
-  plan_id: string;
-  product_id: string;
-  current_period_end: string;
-}
-
-async function fetchSubscribersFromBigQuery(): Promise<FxaChurnSubscriber[]> {
+async function fetchSubscribersFromBigQuery(): Promise<SubscriberChurnRow[]> {
   const datasetId = process.env.FXA_CHURN_DATASET_ID;
   const tableId = process.env.FXA_CHURN_TABLE_ID;
   const projectId = process.env.FXA_CHURN_PROJECT_ID;
@@ -54,15 +44,16 @@ async function fetchSubscribersFromBigQuery(): Promise<FxaChurnSubscriber[]> {
   `;
 
   const [rows] = await bigquery.query(query);
-  return rows as FxaChurnSubscriber[];
+  return rows as SubscriberChurnRow[];
 }
 
 // a function to take the rows from bigquery and store them in the database
-// async function storeSubscribersInDatabase(rows: FxaChurnSubscriber[]) {
+// async function storeSubscribersInDatabase(rows: SubscriberChurnRow[]) {
 
 // }
+
 async function run() {
-  const subscribersToEmail = await fetchSubscribersFromBigQuery();
+  const subscribersToEmail = await getAllSubscriberChurns();
 
   await initEmail();
 
@@ -98,7 +89,7 @@ async function run() {
   );
 }
 
-async function sendChurnDiscountEmail(subscriber: FxaChurnSubscriber) {
+async function sendChurnDiscountEmail(subscriber: SubscriberChurnRow) {
   logger.info(`sent email to: ${subscriber.userid}`);
   // mark as sent
   // await markChurnPreventionEmailAsJustSent(parseInt(subscriber.userid, 10))
