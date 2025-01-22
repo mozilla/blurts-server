@@ -66,8 +66,8 @@ export const useGlean = () => {
             (enrollment) => enrollment.experiment_type,
           );
         (data as GleanMetricMap["button"]["click"]).nimbus_is_preview =
-          experimentData["Enrollments"].map((enrollment) =>
-            enrollment.is_preview.toString(),
+          experimentData["Enrollments"].map(
+            (enrollment) => enrollment.is_preview,
           );
       } else {
         console.warn("No experiment data available for Glean");
