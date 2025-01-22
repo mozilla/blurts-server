@@ -85,7 +85,7 @@ page:
         description: Nimbus preview mode enabled
         type: array
         items:
-          type: string
+          type: boolean
 
 dashboard:
   view:
@@ -161,7 +161,7 @@ dashboard:
         description: Nimbus preview mode enabled
         type: array
         items:
-          type: string
+          type: boolean
 
 popup:
   view:
@@ -224,7 +224,7 @@ popup:
         description: Nimbus preview mode enabled
         type: array
         items:
-          type: string
+          type: boolean
 
   exit:
     type: event
@@ -286,7 +286,7 @@ popup:
         description: Nimbus preview mode enabled
         type: array
         items:
-          type: string
+          type: boolean
 
 banner:
   view:
@@ -349,7 +349,7 @@ banner:
         description: Nimbus preview mode enabled
         type: array
         items:
-          type: string
+          type: boolean
 
 button:
   click:
@@ -412,7 +412,7 @@ button:
         description: Nimbus preview mode enabled
         type: array
         items:
-          type: string
+          type: boolean
 
 field:
   focus:
@@ -475,7 +475,7 @@ field:
         description: Nimbus preview mode enabled
         type: array
         items:
-          type: string
+          type: boolean
 
 link:
   click:
@@ -538,7 +538,7 @@ link:
         description: Nimbus preview mode enabled
         type: array
         items:
-          type: string
+          type: boolean
 
 upgrade_intent:
   click:
@@ -601,7 +601,7 @@ upgrade_intent:
         description: Nimbus preview mode enabled
         type: array
         items:
-          type: string
+          type: boolean
 
   success:
     type: event
@@ -661,7 +661,7 @@ upgrade_intent:
         description: Nimbus preview mode enabled
         type: array
         items:
-          type: string
+          type: boolean
 
 expand:
   click:
@@ -724,7 +724,7 @@ expand:
         description: Nimbus preview mode enabled
         type: array
         items:
-          type: string
+          type: boolean
 
 collapse:
   click:
@@ -787,7 +787,7 @@ collapse:
         description: Nimbus preview mode enabled
         type: array
         items:
-          type: string
+          type: boolean
 
 cta_button:
   click:
@@ -850,7 +850,7 @@ cta_button:
         description: Nimbus preview mode enabled
         type: array
         items:
-          type: string
+          type: boolean
 
   view:
     type: event
@@ -912,7 +912,7 @@ cta_button:
         description: Nimbus preview mode enabled
         type: array
         items:
-          type: string
+          type: boolean
 
 csat_survey:
   view:
@@ -975,7 +975,7 @@ csat_survey:
         description: Nimbus preview mode enabled
         type: array
         items:
-          type: string
+          type: boolean
 
   dismiss:
     type: event
@@ -1037,7 +1037,7 @@ csat_survey:
         description: Nimbus preview mode enabled
         type: array
         items:
-          type: string
+          type: boolean
 
   click:
     type: event
@@ -1102,4 +1102,4 @@ csat_survey:
         description: Nimbus preview mode enabled
         type: array
         items:
-          type: string
+          type: boolean
