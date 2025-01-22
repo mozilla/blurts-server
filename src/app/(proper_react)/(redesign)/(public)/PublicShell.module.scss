@@ -37,7 +37,7 @@
   .logo {
     max-width: 250px;
     width: 100%;
-    height: auto;
+    max-height: 2rem;
   }
 
   button {
@@ -45,6 +45,12 @@
   }
 
   &.navDesktop {
+    justify-content: flex-end;
+
+    h1 {
+      margin-right: auto;
+    }
+
     ul {
       display: flex;
 
