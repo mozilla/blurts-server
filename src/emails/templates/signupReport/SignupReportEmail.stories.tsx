@@ -12,7 +12,7 @@ import { createRandomHibpListing } from "../../../apiMocks/mockData";
 const meta: Meta<FC<Props>> = {
   title: "Emails/Signup Report",
   component: (props: Props) => (
-    <StorybookEmailRenderer>
+    <StorybookEmailRenderer plainTextVersion={null}>
       <SignupReportEmail {...props} />
     </StorybookEmailRenderer>
   ),
