@@ -56,32 +56,32 @@ page:
       plan_tier:
         description: Which tier of plan the user is on [Free, Plus]
         type: string
-      nimbus_user_id:
+      nimbus_user_ids:
         description: Nimbus user ID
         type: array
         items:
           type: string
-      nimbus_app_id:
+      nimbus_app_ids:
         description: Nimbus application ID
         type: array
         items:
           type: string
-      nimbus_experiment:
+      nimbus_experiments:
         description: Nimbus experiment name
         type: array
         items:
           type: string
-      nimbus_branch:
+      nimbus_branches:
         description: Nimbus branch
         type: array
         items:
           type: string
-      nimbus_experiment_type:
+      nimbus_experiment_types:
         description: Nimbus experiment type
         type: array
         items:
           type: string
-      nimbus_is_preview:
+      nimbus_are_previews:
         description: Nimbus preview mode enabled
         type: array
         items:
@@ -132,32 +132,32 @@ dashboard:
       plan_tier:
         description: Which tier of plan the user is on [Free, Plus]
         type: string
-      nimbus_user_id:
+      nimbus_user_ids:
         description: Nimbus user ID
         type: array
         items:
           type: string
-      nimbus_app_id:
+      nimbus_app_ids:
         description: Nimbus application ID
         type: array
         items:
           type: string
-      nimbus_experiment:
+      nimbus_experiments:
         description: Nimbus experiment name
         type: array
         items:
           type: string
-      nimbus_branch:
+      nimbus_branches:
         description: Nimbus branch
         type: array
         items:
           type: string
-      nimbus_experiment_type:
+      nimbus_experiment_types:
         description: Nimbus experiment type
         type: array
         items:
           type: string
-      nimbus_is_preview:
+      nimbus_are_previews:
         description: Nimbus preview mode enabled
         type: array
         items:
@@ -195,32 +195,32 @@ popup:
       plan_tier:
         description: Which tier of plan the user is on [Free, Plus]
         type: string
-      nimbus_user_id:
+      nimbus_user_ids:
         description: Nimbus user ID
         type: array
         items:
           type: string
-      nimbus_app_id:
+      nimbus_app_ids:
         description: Nimbus application ID
         type: array
         items:
           type: string
-      nimbus_experiment:
+      nimbus_experiments:
         description: Nimbus experiment name
         type: array
         items:
           type: string
-      nimbus_branch:
+      nimbus_branches:
         description: Nimbus branch
         type: array
         items:
           type: string
-      nimbus_experiment_type:
+      nimbus_experiment_types:
         description: Nimbus experiment type
         type: array
         items:
           type: string
-      nimbus_is_preview:
+      nimbus_are_previews:
         description: Nimbus preview mode enabled
         type: array
         items:
@@ -257,32 +257,32 @@ popup:
       plan_tier:
         description: Which tier of plan the user is on [Free, Plus]
         type: string
-      nimbus_user_id:
+      nimbus_user_ids:
         description: Nimbus user ID
         type: array
         items:
           type: string
-      nimbus_app_id:
+      nimbus_app_ids:
         description: Nimbus application ID
         type: array
         items:
           type: string
-      nimbus_experiment:
+      nimbus_experiments:
         description: Nimbus experiment name
         type: array
         items:
           type: string
-      nimbus_branch:
+      nimbus_branches:
         description: Nimbus branch
         type: array
         items:
           type: string
-      nimbus_experiment_type:
+      nimbus_experiment_types:
         description: Nimbus experiment type
         type: array
         items:
           type: string
-      nimbus_is_preview:
+      nimbus_are_previews:
         description: Nimbus preview mode enabled
         type: array
         items:
@@ -320,32 +320,32 @@ banner:
       plan_tier:
         description: Which tier of plan the user is on [Free, Plus]
         type: string
-      nimbus_user_id:
+      nimbus_user_ids:
         description: Nimbus user ID
         type: array
         items:
           type: string
-      nimbus_app_id:
+      nimbus_app_ids:
         description: Nimbus application ID
         type: array
         items:
           type: string
-      nimbus_experiment:
+      nimbus_experiments:
         description: Nimbus experiment name
         type: array
         items:
           type: string
-      nimbus_branch:
+      nimbus_branches:
         description: Nimbus branch
         type: array
         items:
           type: string
-      nimbus_experiment_type:
+      nimbus_experiment_types:
         description: Nimbus experiment type
         type: array
         items:
           type: string
-      nimbus_is_preview:
+      nimbus_are_previews:
         description: Nimbus preview mode enabled
         type: array
         items:
@@ -383,32 +383,32 @@ button:
       plan_tier:
         description: Which tier of plan the user is on [Free, Plus]
         type: string
-      nimbus_user_id:
+      nimbus_user_ids:
         description: Nimbus user ID
         type: array
         items:
           type: string
-      nimbus_app_id:
+      nimbus_app_ids:
         description: Nimbus application ID
         type: array
         items:
           type: string
-      nimbus_experiment:
+      nimbus_experiments:
         description: Nimbus experiment name
         type: array
         items:
           type: string
-      nimbus_branch:
+      nimbus_branches:
         description: Nimbus branch
         type: array
         items:
           type: string
-      nimbus_experiment_type:
+      nimbus_experiment_types:
         description: Nimbus experiment type
         type: array
         items:
           type: string
-      nimbus_is_preview:
+      nimbus_are_previews:
         description: Nimbus preview mode enabled
         type: array
         items:
@@ -446,32 +446,32 @@ field:
       plan_tier:
         description: Which tier of plan the user is on [Free, Plus]
         type: string
-      nimbus_user_id:
+      nimbus_user_ids:
         description: Nimbus user ID
         type: array
         items:
           type: string
-      nimbus_app_id:
+      nimbus_app_ids:
         description: Nimbus application ID
         type: array
         items:
           type: string
-      nimbus_experiment:
+      nimbus_experiments:
         description: Nimbus experiment name
         type: array
         items:
           type: string
-      nimbus_branch:
+      nimbus_branches:
         description: Nimbus branch
         type: array
         items:
           type: string
-      nimbus_experiment_type:
+      nimbus_experiment_types:
         description: Nimbus experiment type
         type: array
         items:
           type: string
-      nimbus_is_preview:
+      nimbus_are_previews:
         description: Nimbus preview mode enabled
         type: array
         items:
@@ -509,32 +509,32 @@ link:
       plan_tier:
         description: Which tier of plan the user is on [Free, Plus]
         type: string
-      nimbus_user_id:
+      nimbus_user_ids:
         description: Nimbus user ID
         type: array
         items:
           type: string
-      nimbus_app_id:
+      nimbus_app_ids:
         description: Nimbus application ID
         type: array
         items:
           type: string
-      nimbus_experiment:
+      nimbus_experiments:
         description: Nimbus experiment name
         type: array
         items:
           type: string
-      nimbus_branch:
+      nimbus_branches:
         description: Nimbus branch
         type: array
         items:
           type: string
-      nimbus_experiment_type:
+      nimbus_experiment_types:
         description: Nimbus experiment type
         type: array
         items:
           type: string
-      nimbus_is_preview:
+      nimbus_are_previews:
         description: Nimbus preview mode enabled
         type: array
         items:
@@ -572,32 +572,32 @@ upgrade_intent:
       plan_tier:
         description: Which tier of plan the user is on [Free, Plus]
         type: string
-      nimbus_user_id:
+      nimbus_user_ids:
         description: Nimbus user ID
         type: array
         items:
           type: string
-      nimbus_app_id:
+      nimbus_app_ids:
         description: Nimbus application ID
         type: array
         items:
           type: string
-      nimbus_experiment:
+      nimbus_experiments:
         description: Nimbus experiment name
         type: array
         items:
           type: string
-      nimbus_branch:
+      nimbus_branches:
         description: Nimbus branch
         type: array
         items:
           type: string
-      nimbus_experiment_type:
+      nimbus_experiment_types:
         description: Nimbus experiment type
         type: array
         items:
           type: string
-      nimbus_is_preview:
+      nimbus_are_previews:
         description: Nimbus preview mode enabled
         type: array
         items:
@@ -632,32 +632,32 @@ upgrade_intent:
       plan_tier:
         description: Which tier of plan the user is on [Free, Plus]
         type: string
-      nimbus_user_id:
+      nimbus_user_ids:
         description: Nimbus user ID
         type: array
         items:
           type: string
-      nimbus_app_id:
+      nimbus_app_ids:
         description: Nimbus application ID
         type: array
         items:
           type: string
-      nimbus_experiment:
+      nimbus_experiments:
         description: Nimbus experiment name
         type: array
         items:
           type: string
-      nimbus_branch:
+      nimbus_branches:
         description: Nimbus branch
         type: array
         items:
           type: string
-      nimbus_experiment_type:
+      nimbus_experiment_types:
         description: Nimbus experiment type
         type: array
         items:
           type: string
-      nimbus_is_preview:
+      nimbus_are_previews:
         description: Nimbus preview mode enabled
         type: array
         items:
@@ -695,32 +695,32 @@ expand:
       plan_tier:
         description: Which tier of plan the user is on [Free, Plus]
         type: string
-      nimbus_user_id:
+      nimbus_user_ids:
         description: Nimbus user ID
         type: array
         items:
           type: string
-      nimbus_app_id:
+      nimbus_app_ids:
         description: Nimbus application ID
         type: array
         items:
           type: string
-      nimbus_experiment:
+      nimbus_experiments:
         description: Nimbus experiment name
         type: array
         items:
           type: string
-      nimbus_branch:
+      nimbus_branches:
         description: Nimbus branch
         type: array
         items:
           type: string
-      nimbus_experiment_type:
+      nimbus_experiment_types:
         description: Nimbus experiment type
         type: array
         items:
           type: string
-      nimbus_is_preview:
+      nimbus_are_previews:
         description: Nimbus preview mode enabled
         type: array
         items:
@@ -758,32 +758,32 @@ collapse:
       plan_tier:
         description: Which tier of plan the user is on [Free, Plus]
         type: string
-      nimbus_user_id:
+      nimbus_user_ids:
         description: Nimbus user ID
         type: array
         items:
           type: string
-      nimbus_app_id:
+      nimbus_app_ids:
         description: Nimbus application ID
         type: array
         items:
           type: string
-      nimbus_experiment:
+      nimbus_experiments:
         description: Nimbus experiment name
         type: array
         items:
           type: string
-      nimbus_branch:
+      nimbus_branches:
         description: Nimbus branch
         type: array
         items:
           type: string
-      nimbus_experiment_type:
+      nimbus_experiment_types:
         description: Nimbus experiment type
         type: array
         items:
           type: string
-      nimbus_is_preview:
+      nimbus_are_previews:
         description: Nimbus preview mode enabled
         type: array
         items:
@@ -821,32 +821,32 @@ cta_button:
       plan_tier:
         description: Which tier of plan the user is on [Free, Plus]
         type: string
-      nimbus_user_id:
+      nimbus_user_ids:
         description: Nimbus user ID
         type: array
         items:
           type: string
-      nimbus_app_id:
+      nimbus_app_ids:
         description: Nimbus application ID
         type: array
         items:
           type: string
-      nimbus_experiment:
+      nimbus_experiments:
         description: Nimbus experiment name
         type: array
         items:
           type: string
-      nimbus_branch:
+      nimbus_branches:
         description: Nimbus branch
         type: array
         items:
           type: string
-      nimbus_experiment_type:
+      nimbus_experiment_types:
         description: Nimbus experiment type
         type: array
         items:
           type: string
-      nimbus_is_preview:
+      nimbus_are_previews:
         description: Nimbus preview mode enabled
         type: array
         items:
@@ -883,32 +883,32 @@ cta_button:
       plan_tier:
         description: Which tier of plan the user is on [Free, Plus]
         type: string
-      nimbus_user_id:
+      nimbus_user_ids:
         description: Nimbus user ID
         type: array
         items:
           type: string
-      nimbus_app_id:
+      nimbus_app_ids:
         description: Nimbus application ID
         type: array
         items:
           type: string
-      nimbus_experiment:
+      nimbus_experiments:
         description: Nimbus experiment name
         type: array
         items:
           type: string
-      nimbus_branch:
+      nimbus_branches:
         description: Nimbus branch
         type: array
         items:
           type: string
-      nimbus_experiment_type:
+      nimbus_experiment_types:
         description: Nimbus experiment type
         type: array
         items:
           type: string
-      nimbus_is_preview:
+      nimbus_are_previews:
         description: Nimbus preview mode enabled
         type: array
         items:
@@ -946,32 +946,32 @@ csat_survey:
       automated_removal_period:
         description: The time period since the first automated removal for the user. [initial, 3-months, 6-months, 12-months]
         type: string
-      nimbus_user_id:
+      nimbus_user_ids:
         description: Nimbus user ID
         type: array
         items:
           type: string
-      nimbus_app_id:
+      nimbus_app_ids:
         description: Nimbus application ID
         type: array
         items:
           type: string
-      nimbus_experiment:
+      nimbus_experiments:
         description: Nimbus experiment name
         type: array
         items:
           type: string
-      nimbus_branch:
+      nimbus_branches:
         description: Nimbus branch
         type: array
         items:
           type: string
-      nimbus_experiment_type:
+      nimbus_experiment_types:
         description: Nimbus experiment type
         type: array
         items:
           type: string
-      nimbus_is_preview:
+      nimbus_are_previews:
         description: Nimbus preview mode enabled
         type: array
         items:
@@ -1008,32 +1008,32 @@ csat_survey:
       automated_removal_period:
         description: The time period since the first automated removal for the user. [initial, 3-months, 6-months, 12-months]
         type: string
-      nimbus_user_id:
+      nimbus_user_ids:
         description: Nimbus user ID
         type: array
         items:
           type: string
-      nimbus_app_id:
+      nimbus_app_ids:
         description: Nimbus application ID
         type: array
         items:
           type: string
-      nimbus_experiment:
+      nimbus_experiments:
         description: Nimbus experiment name
         type: array
         items:
           type: string
-      nimbus_branch:
+      nimbus_branches:
         description: Nimbus branch
         type: array
         items:
           type: string
-      nimbus_experiment_type:
+      nimbus_experiment_types:
         description: Nimbus experiment type
         type: array
         items:
           type: string
-      nimbus_is_preview:
+      nimbus_are_previews:
         description: Nimbus preview mode enabled
         type: array
         items:
@@ -1073,32 +1073,32 @@ csat_survey:
       automated_removal_period:
         description: The time period since the first automated removal for the user. [initial, 3-months, 6-months, 12-months]
         type: string
-      nimbus_user_id:
+      nimbus_user_ids:
         description: Nimbus user ID
         type: array
         items:
           type: string
-      nimbus_app_id:
+      nimbus_app_ids:
         description: Nimbus application ID
         type: array
         items:
           type: string
-      nimbus_experiment:
+      nimbus_experiments:
         description: Nimbus experiment name
         type: array
         items:
           type: string
-      nimbus_branch:
+      nimbus_branches:
         description: Nimbus branch
         type: array
         items:
           type: string
-      nimbus_experiment_type:
+      nimbus_experiment_types:
         description: Nimbus experiment type
         type: array
         items:
           type: string
-      nimbus_is_preview:
+      nimbus_are_previews:
         description: Nimbus preview mode enabled
         type: array
         items:

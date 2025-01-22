@@ -49,23 +49,23 @@ export const useGlean = () => {
         experimentData &&
         typeof experimentData["Enrollments"] !== "undefined"
       ) {
-        (data as GleanMetricMap["button"]["click"]).nimbus_user_id =
+        (data as GleanMetricMap["button"]["click"]).nimbus_user_ids =
           experimentData["Enrollments"].map(
             (enrollment) => enrollment.nimbus_user_id,
           );
-        (data as GleanMetricMap["button"]["click"]).nimbus_app_id =
+        (data as GleanMetricMap["button"]["click"]).nimbus_app_ids =
           experimentData["Enrollments"].map((enrollment) => enrollment.app_id);
-        (data as GleanMetricMap["button"]["click"]).nimbus_experiment =
+        (data as GleanMetricMap["button"]["click"]).nimbus_experiments =
           experimentData["Enrollments"].map(
             (enrollment) => enrollment.experiment,
           );
-        (data as GleanMetricMap["button"]["click"]).nimbus_branch =
+        (data as GleanMetricMap["button"]["click"]).nimbus_branches =
           experimentData["Enrollments"].map((enrollment) => enrollment.branch);
-        (data as GleanMetricMap["button"]["click"]).nimbus_experiment_type =
+        (data as GleanMetricMap["button"]["click"]).nimbus_experiment_types =
           experimentData["Enrollments"].map(
             (enrollment) => enrollment.experiment_type,
           );
-        (data as GleanMetricMap["button"]["click"]).nimbus_is_preview =
+        (data as GleanMetricMap["button"]["click"]).nimbus_are_previews =
           experimentData["Enrollments"].map(
             (enrollment) => enrollment.is_preview,
           );
