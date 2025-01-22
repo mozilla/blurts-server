@@ -6,6 +6,7 @@
 import {
   getAllSubscriberChurns,
   upsertSubscriberChurns,
+  deleteSubscriberChurns,
 } from "../../../../../../db/tables/subscriber_churns";
 import { SubscriberChurnRow } from "knex/types/tables";
 
@@ -17,4 +18,8 @@ export async function upsertAllChurns(
   churningSubscribers: SubscriberChurnRow[],
 ) {
   return upsertSubscriberChurns(churningSubscribers);
+}
+
+export async function clearAllChurns() {
+  return deleteSubscriberChurns();
 }

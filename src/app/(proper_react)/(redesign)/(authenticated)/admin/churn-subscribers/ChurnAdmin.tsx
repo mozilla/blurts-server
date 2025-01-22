@@ -8,13 +8,16 @@ import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import styles from "./ChurnAdmin.module.scss";
 import { SubscriberChurnRow } from "knex/types/tables";
-import { getAllChurns, upsertAllChurns } from "./actions";
+import { getAllChurns, upsertAllChurns, clearAllChurns } from "./actions";
 
 export const ChurnAdmin = () => {
   const session = useSession();
   const [subscriberData, setSubscriberData] = useState<
     SubscriberChurnRow[] | null
   >(null);
+  const [parsedData, setParsedData] = useState<SubscriberChurnRow[] | null>(
+    null,
+  );
 
   // Load data on component mount
   useEffect(() => {
@@ -31,7 +34,7 @@ export const ChurnAdmin = () => {
     if (!file) return;
 
     const reader = new FileReader();
-    reader.onload = async (e) => {
+    reader.onload = (e) => {
       const text = e.target?.result as string;
       const rows = text.split("\n");
 
@@ -47,60 +50,60 @@ export const ChurnAdmin = () => {
         "customer",
         "created",
         "nickname",
-        "interval",
-        "status",
+        "intervl",
         "plan_id",
         "product_id",
         "current_period_end",
       ];
-      const headers = rows[0].toLowerCase().split(",");
+      const headers = rows[0]
+        .toLowerCase()
+        .split(",")
+        .map((header) => header.trim());
 
-      if (headers.length !== expectedHeaders.length) {
+      console.log("Expected headers:", expectedHeaders);
+      console.log("Actual headers:", headers);
+      console.log(
+        "Validation result:",
+        expectedHeaders.every((expectedHeader) =>
+          headers.includes(expectedHeader),
+        ),
+      );
+
+      if (
+        !expectedHeaders.every((expectedHeader) =>
+          headers.includes(expectedHeader),
+        )
+      ) {
         alert(
-          `Invalid CSV format: Expected ${expectedHeaders.length} columns, found ${headers.length}`,
+          `Invalid CSV format: Headers don't match expected format\n${expectedHeaders.toString()}\n${headers.toString()}`,
         );
         return;
       }
 
-      if (
-        !expectedHeaders.every(
-          (header, index) => headers[index].trim() === header,
-        )
-      ) {
-        alert("Invalid CSV format: Headers don't match expected format");
-        return;
+      try {
+        const parsedData: SubscriberChurnRow[] = rows
+          .slice(1)
+          .filter((row) => row.trim()) // Skip empty rows
+          .map((row) => {
+            const values = row.split(",");
+
+            return {
+              userid: values[0],
+              customer: values[1],
+              created: values[2],
+              nickname: values[3],
+              intervl: values[4],
+              plan_id: values[6],
+              product_id: values[7],
+              current_period_end: new Date(values[8]).toISOString(),
+            };
+          });
+
+        setParsedData(parsedData);
+      } catch (error) {
+        alert(`Error parsing CSV: ${(error as Error).message}`);
+        setParsedData(null);
       }
-
-      const parsedData: SubscriberChurnRow[] = rows
-        .slice(1)
-        .filter((row) => row.trim()) // Skip empty rows
-        .map((row) => {
-          const values = row.split(",");
-
-          // Validate row column count
-          if (values.length !== expectedHeaders.length) {
-            throw new Error(
-              `Invalid row format: Expected ${expectedHeaders.length} columns, found ${values.length}`,
-            );
-          }
-
-          return {
-            userid: values[0],
-            customer: values[1],
-            created: values[2],
-            nickname: values[3],
-            intervl: values[4],
-            plan_id: values[6],
-            product_id: values[7],
-            current_period_end: new Date(values[8]).toISOString(),
-          };
-        });
-
-      console.log({ parsedData });
-      // Update backend and refresh data
-      await upsertAllChurns(parsedData);
-      const refreshedData = await getAllChurns();
-      setSubscriberData(refreshedData);
     };
     reader.readAsText(file);
   };
@@ -113,13 +116,38 @@ export const ChurnAdmin = () => {
       </p>
 
       <div className={styles.uploadSection}>
-        <input
-          type="file"
-          accept=".csv"
-          onChange={handleFileUpload}
-          className={styles.fileInput}
-        />
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            if (!parsedData) return;
+            void upsertAllChurns(parsedData);
+          }}
+        >
+          <input
+            onChange={handleFileUpload}
+            className={styles.fileInput}
+            type="file"
+          />
+          <button type="submit" disabled={!parsedData}>
+            Upload Data
+          </button>
+        </form>
       </div>
+
+      <button
+        className={styles.dangerButton}
+        onClick={() => {
+          if (
+            window.confirm(
+              "Are you sure you want to delete all churn data? This cannot be undone.",
+            )
+          ) {
+            void clearAllChurns();
+          }
+        }}
+      >
+        Clear All Data
+      </button>
 
       {subscriberData ? (
         <div>

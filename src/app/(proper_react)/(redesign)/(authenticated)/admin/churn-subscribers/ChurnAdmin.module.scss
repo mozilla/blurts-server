@@ -109,3 +109,13 @@
   width: 100%;
   padding: 0.5rem;
 }
+
+.dangerButton {
+  background-color: #dc3545;
+  color: white;
+  margin-top: 1rem;
+
+  &:hover {
+    background-color: #c82333;
+  }
+}
