@@ -32,9 +32,9 @@ interface FxaChurnSubscriber {
 
 async function fetchSubscribersFromBigQuery(): Promise<FxaChurnSubscriber[]> {
   const bigquery = new BigQuery();
-  const projectId = process.env.BQ_PROJECT_ID;
-  const datasetId = process.env.BQ_DATASET_ID;
-  const tableId = process.env.BQ_TABLE_ID;
+  const projectId = process.env.FXA_CHURN_PROJECT_ID;
+  const datasetId = process.env.FXA_CHURN_DATASET_ID;
+  const tableId = process.env.FXA_CHURN_TABLE_ID;
 
   if (!projectId || !datasetId || !tableId) {
     throw new Error("BigQuery environment variables are not set");
