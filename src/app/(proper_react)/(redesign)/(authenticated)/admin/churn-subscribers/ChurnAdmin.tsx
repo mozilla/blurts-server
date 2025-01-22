@@ -35,12 +35,55 @@ export const ChurnAdmin = () => {
       const text = e.target?.result as string;
       const rows = text.split("\n");
 
-      console.log({ rows: rows.length });
+      // Validate minimum number of rows
+      if (rows.length < 2) {
+        alert("CSV file appears to be empty or missing headers");
+        return;
+      }
+
+      // Expected headers and validation
+      const expectedHeaders = [
+        "userid",
+        "customer",
+        "created",
+        "nickname",
+        "interval",
+        "status",
+        "plan_id",
+        "product_id",
+        "current_period_end",
+      ];
+      const headers = rows[0].toLowerCase().split(",");
+
+      if (headers.length !== expectedHeaders.length) {
+        alert(
+          `Invalid CSV format: Expected ${expectedHeaders.length} columns, found ${headers.length}`,
+        );
+        return;
+      }
+
+      if (
+        !expectedHeaders.every(
+          (header, index) => headers[index].trim() === header,
+        )
+      ) {
+        alert("Invalid CSV format: Headers don't match expected format");
+        return;
+      }
+
       const parsedData: SubscriberChurnRow[] = rows
         .slice(1)
         .filter((row) => row.trim()) // Skip empty rows
         .map((row) => {
           const values = row.split(",");
+
+          // Validate row column count
+          if (values.length !== expectedHeaders.length) {
+            throw new Error(
+              `Invalid row format: Expected ${expectedHeaders.length} columns, found ${values.length}`,
+            );
+          }
+
           return {
             userid: values[0],
             customer: values[1],
