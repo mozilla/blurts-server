@@ -26,7 +26,11 @@
 
     &.hasBackground {
       background-color: tokens.$color-grey-05;
-      padding: tokens.$layout-sm;
+      padding: tokens.$layout-xs;
+
+      @media screen and (min-width: tokens.$screen-sm) {
+        padding: tokens.$layout-sm;
+      }
     }
   }
 
