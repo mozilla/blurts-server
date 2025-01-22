@@ -38,7 +38,7 @@ import { useTelemetry } from "../../../../../../hooks/useTelemetry";
 export type Props = {
   user: Session["user"];
   subscriber: SubscriberRow;
-  data: SubscriberEmailPreferencesOutput;
+  data?: SubscriberEmailPreferencesOutput;
   enabledFeatureFlags: FeatureFlagName[];
 };
 
@@ -53,8 +53,8 @@ export const AlertAddressForm = (props: Props) => {
 
   // Extract monthly report preference from the right column
   const monitorReportAllowed = hasPremium(props.user)
-    ? props.data.monthly_monitor_report
-    : props.data.monthly_monitor_report_free;
+    ? props.data?.monthly_monitor_report
+    : props.data?.monthly_monitor_report_free;
 
   // TODO: Deprecate this when monthly report for free users has been created
   const canToggleFreeOrPlusMonthlyReport =
