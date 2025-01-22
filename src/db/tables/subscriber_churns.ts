@@ -59,8 +59,30 @@ async function getAllSubscriberChurns(): Promise<SubscriberChurnRow[]> {
   }
 }
 
+async function getChurnsToEmail(): Promise<SubscriberChurnRow[]> {
+  try {
+    const res = await knex("subscriber_churns")
+      .select("*")
+      .where("intervl", "yearly")
+      .whereNotNull("current_period_end")
+      .whereRaw(
+        "TIMESTAMP_DIFF(TIMESTAMP(current_period_end), CURRENT_TIMESTAMP(), DAY) <= 7",
+      )
+      .whereRaw("TIMESTAMP(current_period_end) > CURRENT_TIMESTAMP()");
+
+    logger.info("get_churns_to_email_success", { count: res.length });
+    return res as SubscriberChurnRow[];
+  } catch (e) {
+    logger.error("get_churns_to_email_error", {
+      error: JSON.stringify(e),
+    });
+    throw e;
+  }
+}
+
 export {
   upsertSubscriberChurns,
   getAllSubscriberChurns,
   deleteSubscriberChurns,
+  getChurnsToEmail,
 };

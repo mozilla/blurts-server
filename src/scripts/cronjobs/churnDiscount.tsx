@@ -5,7 +5,7 @@ import {
   getChurnPreventionEmailSentAt,
   // markChurnPreventionEmailAsJustSent,
 } from "../../db/tables/subscribers";
-import { getAllSubscriberChurns } from "../../db/tables/subscriber_churns";
+import { getChurnsToEmail } from "../../db/tables/subscriber_churns";
 import createDbConnection from "../../db/connect";
 import { logger } from "../../app/functions/server/logging";
 import {
@@ -53,9 +53,9 @@ async function fetchSubscribersFromBigQuery(): Promise<SubscriberChurnRow[]> {
 // }
 
 async function run() {
-  const subscribersToEmail = await getAllSubscriberChurns();
+  const subscribersToEmail = await getChurnsToEmail();
 
-  await initEmail();
+  // await initEmail();
 
   for (const subscriber of subscribersToEmail) {
     try {
@@ -83,7 +83,7 @@ async function run() {
     }
   }
 
-  closeEmailPool();
+  // closeEmailPool();
   logger.info(
     `[${new Date(Date.now()).toISOString()}] Sent [${subscribersToEmail.length}] churn email to relevant subscribers.`,
   );
