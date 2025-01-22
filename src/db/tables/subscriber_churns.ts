@@ -16,14 +16,14 @@ async function upsertSubscriberChurns(
   });
 
   try {
-    const res = await knex("onerep_subscriber_churns")
+    const res = await knex("subscriber_churns")
       .insert(churningSubscribers)
       .onConflict("userid")
       .merge(["intervl", "current_period_end"])
       .returning("*");
 
     logger.info("upsert_subscriber_churns_success", { count: res.length });
-    return res as SubscriberChurnRow[];
+    return res;
   } catch (e) {
     logger.error("upsert_subscriber_churns_error", {
       error: JSON.stringify(e),
@@ -32,4 +32,18 @@ async function upsertSubscriberChurns(
   }
 }
 
-export { upsertSubscriberChurns };
+async function getAllSubscriberChurns(): Promise<SubscriberChurnRow[]> {
+  try {
+    const res = await knex("subscriber_churns").select("*");
+
+    logger.info("get_all_subscriber_churns_success", { count: res.length });
+    return res as SubscriberChurnRow[];
+  } catch (e) {
+    logger.error("get_all_subscriber_churns_error", {
+      error: JSON.stringify(e),
+    });
+    throw e;
+  }
+}
+
+export { upsertSubscriberChurns, getAllSubscriberChurns };
