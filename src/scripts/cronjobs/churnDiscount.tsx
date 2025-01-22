@@ -3,28 +3,17 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 import {
   getChurnPreventionEmailSentAt,
-  markChurnPreventionEmailAsJustSent,
+  // markChurnPreventionEmailAsJustSent,
 } from "../../db/tables/subscribers";
-// import { getFreeSubscribersWaitingForMonthlyEmail } from "../../db/tables/subscribers";
-// import { getScanResultsWithBroker } from "../../db/tables/onerep_scans";
-// import { updateEmailPreferenceForSubscriber } from "../../db/tables/subscriber_email_preferences";
-// import { renderEmail } from "../../emails/renderEmail";
-// import { MonthlyActivityFreeEmail } from "../../emails/templates/monthlyActivityFree/MonthlyActivityFreeEmail";
-// import { getCronjobL10n } from "../../app/functions/l10n/cronjobs";
-// import { sanitizeSubscriberRow } from "../../app/functions/server/sanitize";
-// import { getDashboardSummary } from "../../app/functions/server/dashboard";
-// import { getSubscriberBreaches } from "../../app/functions/server/getSubscriberBreaches";
-// import { refreshStoredScanResults } from "../../app/functions/server/refreshStoredScanResults";
-// import { getSignupLocaleCountry } from "../../emails/functions/getSignupLocaleCountry";
-// import { getMonthlyActivityFreeUnsubscribeLink } from "../../app/functions/cronjobs/unsubscribeLinks";
-// import { hasPremium } from "../../app/functions/universal/user";
-// import { SubscriberRow } from "knex/types/tables";
 import createDbConnection from "../../db/connect";
 import { logger } from "../../app/functions/server/logging";
-import { initEmail, sendEmail, closeEmailPool } from "../../utils/email";
-// Imports the Google Cloud client library
-import { Storage } from "@google-cloud/storage";
-import csv from "csv-parser";
+import {
+  initEmail,
+  // sendEmail,
+  closeEmailPool,
+} from "../../utils/email";
+// Imports the Google Cloud bigquery library
+import { BigQuery } from "@google-cloud/bigquery";
 
 await run();
 await createDbConnection().destroy();
@@ -41,45 +30,27 @@ interface FxaChurnSubscriber {
   current_period_end: string;
 }
 
-async function readCSVFromBucket(
-  bucketName: string,
-  fileName: string,
-): Promise<FxaChurnSubscriber[]> {
-  const storage = new Storage();
-  const bucket = storage.bucket(bucketName);
-  const file = bucket.file(fileName);
+async function fetchSubscribersFromBigQuery(): Promise<FxaChurnSubscriber[]> {
+  const bigquery = new BigQuery();
+  const projectId = process.env.BQ_PROJECT_ID;
+  const datasetId = process.env.BQ_DATASET_ID;
+  const tableId = process.env.BQ_TABLE_ID;
 
-  const results: FxaChurnSubscriber[] = [];
+  if (!projectId || !datasetId || !tableId) {
+    throw new Error("BigQuery environment variables are not set");
+  }
 
-  return new Promise((resolve, reject) => {
-    file
-      .createReadStream()
-      .pipe(csv())
-      .on("data", (row: FxaChurnSubscriber) => {
-        /**
-         * Verifies the interval is yearly
-         * Ensures current_period_end exists
-         * Checks if the time difference is less than or equal to 7 days (in milliseconds)
-         * Makes sure the date is in the future
-         */
-        if (
-          row.intervl === "yearly" &&
-          row.current_period_end &&
-          new Date(row.current_period_end).getTime() - new Date().getTime() <=
-            7 * 24 * 60 * 60 * 1000 &&
-          new Date(row.current_period_end).getTime() > new Date().getTime()
-        ) {
-          results.push(row);
-        }
-      })
-      .on("error", reject)
-      .on("end", () => {
-        logger.info(
-          `CSV file successfully processed. Num of rows: ${results.length}`,
-        );
-        resolve(results);
-      });
-  });
+  const query = `
+    SELECT userid, customer, created, nickname, intervl, intervl_count, plan_id, product_id, current_period_end
+    FROM \`${projectId}.${datasetId}.${tableId}\`
+    WHERE intervl = 'yearly'
+      AND current_period_end IS NOT NULL
+      AND TIMESTAMP_DIFF(TIMESTAMP(current_period_end), CURRENT_TIMESTAMP(), DAY) <= 7
+      AND TIMESTAMP(current_period_end) > CURRENT_TIMESTAMP()
+  `;
+
+  const [rows] = await bigquery.query(query);
+  return rows as FxaChurnSubscriber[];
 }
 
 async function run() {
@@ -88,7 +59,7 @@ async function run() {
     throw `Bucket name isn't set ( process.env.GCP_BUCKET = ${process.env.GCP_BUCKET}), please set: 'GCP_BUCKET'`;
   }
   const fileName = "churningSubscribers.csv";
-  const subscribersToEmail = await readCSVFromBucket(bucketName, fileName);
+  const subscribersToEmail = await fetchSubscribersFromBigQuery();
 
   await initEmail();
 
