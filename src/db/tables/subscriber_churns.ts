@@ -32,6 +32,19 @@ async function upsertSubscriberChurns(
   }
 }
 
+// function that delete all records from churns table
+async function deleteSubscriberChurns() {
+  try {
+    await knex("subscriber_churns").del();
+    logger.info("delete_subscriber_churns_success");
+  } catch (e) {
+    logger.error("delete_subscriber_churns_error", {
+      error: JSON.stringify(e),
+    });
+    throw e;
+  }
+}
+
 async function getAllSubscriberChurns(): Promise<SubscriberChurnRow[]> {
   try {
     const res = await knex("subscriber_churns").select("*");
@@ -46,4 +59,8 @@ async function getAllSubscriberChurns(): Promise<SubscriberChurnRow[]> {
   }
 }
 
-export { upsertSubscriberChurns, getAllSubscriberChurns };
+export {
+  upsertSubscriberChurns,
+  getAllSubscriberChurns,
+  deleteSubscriberChurns,
+};
