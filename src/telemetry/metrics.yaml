@@ -58,22 +58,34 @@ page:
         type: string
       nimbus_user_id:
         description: Nimbus user ID
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_app_id:
         description: Nimbus application ID
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_experiment:
         description: Nimbus experiment name
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_branch:
         description: Nimbus branch
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_experiment_type:
         description: Nimbus experiment type
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_is_preview:
         description: Nimbus preview mode enabled
-        type: string
+        type: array
+        items:
+          type: string
 
 dashboard:
   view:
@@ -122,22 +134,34 @@ dashboard:
         type: string
       nimbus_user_id:
         description: Nimbus user ID
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_app_id:
         description: Nimbus application ID
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_experiment:
         description: Nimbus experiment name
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_branch:
         description: Nimbus branch
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_experiment_type:
         description: Nimbus experiment type
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_is_preview:
         description: Nimbus preview mode enabled
-        type: string
+        type: array
+        items:
+          type: string
 
 popup:
   view:
@@ -173,22 +197,34 @@ popup:
         type: string
       nimbus_user_id:
         description: Nimbus user ID
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_app_id:
         description: Nimbus application ID
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_experiment:
         description: Nimbus experiment name
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_branch:
         description: Nimbus branch
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_experiment_type:
         description: Nimbus experiment type
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_is_preview:
         description: Nimbus preview mode enabled
-        type: string
+        type: array
+        items:
+          type: string
 
   exit:
     type: event
@@ -223,22 +259,34 @@ popup:
         type: string
       nimbus_user_id:
         description: Nimbus user ID
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_app_id:
         description: Nimbus application ID
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_experiment:
         description: Nimbus experiment name
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_branch:
         description: Nimbus branch
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_experiment_type:
         description: Nimbus experiment type
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_is_preview:
         description: Nimbus preview mode enabled
-        type: string
+        type: array
+        items:
+          type: string
 
 banner:
   view:
@@ -274,22 +322,34 @@ banner:
         type: string
       nimbus_user_id:
         description: Nimbus user ID
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_app_id:
         description: Nimbus application ID
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_experiment:
         description: Nimbus experiment name
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_branch:
         description: Nimbus branch
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_experiment_type:
         description: Nimbus experiment type
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_is_preview:
         description: Nimbus preview mode enabled
-        type: string
+        type: array
+        items:
+          type: string
 
 button:
   click:
@@ -325,22 +385,34 @@ button:
         type: string
       nimbus_user_id:
         description: Nimbus user ID
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_app_id:
         description: Nimbus application ID
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_experiment:
         description: Nimbus experiment name
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_branch:
         description: Nimbus branch
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_experiment_type:
         description: Nimbus experiment type
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_is_preview:
         description: Nimbus preview mode enabled
-        type: string
+        type: array
+        items:
+          type: string
 
 field:
   focus:
@@ -376,22 +448,34 @@ field:
         type: string
       nimbus_user_id:
         description: Nimbus user ID
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_app_id:
         description: Nimbus application ID
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_experiment:
         description: Nimbus experiment name
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_branch:
         description: Nimbus branch
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_experiment_type:
         description: Nimbus experiment type
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_is_preview:
         description: Nimbus preview mode enabled
-        type: string
+        type: array
+        items:
+          type: string
 
 link:
   click:
@@ -427,22 +511,34 @@ link:
         type: string
       nimbus_user_id:
         description: Nimbus user ID
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_app_id:
         description: Nimbus application ID
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_experiment:
         description: Nimbus experiment name
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_branch:
         description: Nimbus branch
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_experiment_type:
         description: Nimbus experiment type
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_is_preview:
         description: Nimbus preview mode enabled
-        type: string
+        type: array
+        items:
+          type: string
 
 upgrade_intent:
   click:
@@ -478,22 +574,34 @@ upgrade_intent:
         type: string
       nimbus_user_id:
         description: Nimbus user ID
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_app_id:
         description: Nimbus application ID
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_experiment:
         description: Nimbus experiment name
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_branch:
         description: Nimbus branch
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_experiment_type:
         description: Nimbus experiment type
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_is_preview:
         description: Nimbus preview mode enabled
-        type: string
+        type: array
+        items:
+          type: string
 
   success:
     type: event
@@ -526,22 +634,34 @@ upgrade_intent:
         type: string
       nimbus_user_id:
         description: Nimbus user ID
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_app_id:
         description: Nimbus application ID
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_experiment:
         description: Nimbus experiment name
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_branch:
         description: Nimbus branch
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_experiment_type:
         description: Nimbus experiment type
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_is_preview:
         description: Nimbus preview mode enabled
-        type: string
+        type: array
+        items:
+          type: string
 
 expand:
   click:
@@ -577,22 +697,34 @@ expand:
         type: string
       nimbus_user_id:
         description: Nimbus user ID
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_app_id:
         description: Nimbus application ID
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_experiment:
         description: Nimbus experiment name
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_branch:
         description: Nimbus branch
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_experiment_type:
         description: Nimbus experiment type
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_is_preview:
         description: Nimbus preview mode enabled
-        type: string
+        type: array
+        items:
+          type: string
 
 collapse:
   click:
@@ -628,22 +760,34 @@ collapse:
         type: string
       nimbus_user_id:
         description: Nimbus user ID
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_app_id:
         description: Nimbus application ID
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_experiment:
         description: Nimbus experiment name
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_branch:
         description: Nimbus branch
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_experiment_type:
         description: Nimbus experiment type
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_is_preview:
         description: Nimbus preview mode enabled
-        type: string
+        type: array
+        items:
+          type: string
 
 cta_button:
   click:
@@ -679,22 +823,34 @@ cta_button:
         type: string
       nimbus_user_id:
         description: Nimbus user ID
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_app_id:
         description: Nimbus application ID
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_experiment:
         description: Nimbus experiment name
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_branch:
         description: Nimbus branch
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_experiment_type:
         description: Nimbus experiment type
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_is_preview:
         description: Nimbus preview mode enabled
-        type: string
+        type: array
+        items:
+          type: string
 
   view:
     type: event
@@ -729,22 +885,34 @@ cta_button:
         type: string
       nimbus_user_id:
         description: Nimbus user ID
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_app_id:
         description: Nimbus application ID
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_experiment:
         description: Nimbus experiment name
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_branch:
         description: Nimbus branch
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_experiment_type:
         description: Nimbus experiment type
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_is_preview:
         description: Nimbus preview mode enabled
-        type: string
+        type: array
+        items:
+          type: string
 
 csat_survey:
   view:
@@ -780,22 +948,34 @@ csat_survey:
         type: string
       nimbus_user_id:
         description: Nimbus user ID
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_app_id:
         description: Nimbus application ID
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_experiment:
         description: Nimbus experiment name
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_branch:
         description: Nimbus branch
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_experiment_type:
         description: Nimbus experiment type
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_is_preview:
         description: Nimbus preview mode enabled
-        type: string
+        type: array
+        items:
+          type: string
 
   dismiss:
     type: event
@@ -830,22 +1010,34 @@ csat_survey:
         type: string
       nimbus_user_id:
         description: Nimbus user ID
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_app_id:
         description: Nimbus application ID
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_experiment:
         description: Nimbus experiment name
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_branch:
         description: Nimbus branch
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_experiment_type:
         description: Nimbus experiment type
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_is_preview:
         description: Nimbus preview mode enabled
-        type: string
+        type: array
+        items:
+          type: string
 
   click:
     type: event
@@ -883,19 +1075,31 @@ csat_survey:
         type: string
       nimbus_user_id:
         description: Nimbus user ID
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_app_id:
         description: Nimbus application ID
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_experiment:
         description: Nimbus experiment name
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_branch:
         description: Nimbus branch
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_experiment_type:
         description: Nimbus experiment type
-        type: string
+        type: array
+        items:
+          type: string
       nimbus_is_preview:
         description: Nimbus preview mode enabled
-        type: string
+        type: array
+        items:
+          type: string
