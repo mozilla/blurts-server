@@ -53,12 +53,11 @@ async function fetchSubscribersFromBigQuery(): Promise<FxaChurnSubscriber[]> {
   return rows as FxaChurnSubscriber[];
 }
 
+// a function to take the rows from bigquery and store them in the database
+// async function storeSubscribersInDatabase(rows: FxaChurnSubscriber[]) {
+
+// }
 async function run() {
-  const bucketName = process.env.GCP_BUCKET;
-  if (!bucketName) {
-    throw `Bucket name isn't set ( process.env.GCP_BUCKET = ${process.env.GCP_BUCKET}), please set: 'GCP_BUCKET'`;
-  }
-  const fileName = "churningSubscribers.csv";
   const subscribersToEmail = await fetchSubscribersFromBigQuery();
 
   await initEmail();
