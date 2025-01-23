@@ -3,16 +3,13 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { NextApiRequest, NextApiResponse } from "next";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import NextAuth from "next-auth";
 import { authOptions } from "../../utils/auth";
 
 // There is currently no support for handling OAuth provider callback errors:
 // https://github.com/nextauthjs/next-auth/discussions/8209
-const handler = async (
-  req: Request & NextApiRequest,
-  res: Request & NextApiResponse,
-) => {
+const handler = async (req: NextRequest, res: unknown) => {
   if (
     req.method === "GET" &&
     req.url?.startsWith(
@@ -22,7 +19,11 @@ const handler = async (
     return NextResponse.redirect(process.env.SERVER_URL as string);
   }
 
-  return NextAuth(req, res, authOptions) as Promise<Response>;
+  return NextAuth(
+    req as unknown as NextApiRequest,
+    res as NextApiResponse,
+    authOptions,
+  ) as Promise<Response>;
 };
 
 export { handler as GET, handler as POST };

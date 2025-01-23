@@ -21,8 +21,9 @@ export type ResolveScanResultResponse =
 
 export async function POST(
   req: NextRequest,
-  { params }: { params: { onerepScanResultId: string } },
+  props: { params: Promise<{ onerepScanResultId: string }> },
 ): Promise<NextResponse<ResolveScanResultResponse>> {
+  const params = await props.params;
   const session = await getServerSession();
   if (!session?.user?.subscriber) {
     return new NextResponse<ResolveScanResultResponse>(

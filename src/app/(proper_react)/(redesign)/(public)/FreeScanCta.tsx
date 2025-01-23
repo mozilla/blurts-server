@@ -63,7 +63,7 @@ export const FreeScanCta = (
   ) : (
     <div>
       <TelemetryButton
-        buttonRef={refViewTelemetry as RefObject<HTMLButtonElement>}
+        buttonRef={refViewTelemetry as RefObject<HTMLButtonElement | null>}
         variant="primary"
         event={{
           module: "ctaButton",

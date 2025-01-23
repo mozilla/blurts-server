@@ -10,7 +10,10 @@ import { renderEmail } from "../../../../../../emails/renderEmail";
 import { VerifyEmailAddressEmail } from "../../../../../../emails/templates/verifyEmailAddress/VerifyEmailAddressEmail";
 import { sanitizeSubscriberRow } from "../../../../../functions/server/sanitize";
 import { getServerSession } from "../../../../../functions/server/getServerSession";
-import { getL10n } from "../../../../../functions/l10n/serverComponents";
+import {
+  getAcceptLangHeaderInServerComponents,
+  getL10n,
+} from "../../../../../functions/l10n/serverComponents";
 import { getSubscriberByFxaUid } from "../../../../../../db/tables/subscribers";
 import { ReactNode } from "react";
 import { SubscriberRow } from "knex/types/tables";
@@ -80,7 +83,7 @@ async function send(
   return sendEmail(
     emailAddress,
     "Test email: " + subject,
-    renderEmail(template),
+    await renderEmail(template),
   );
 }
 
@@ -90,7 +93,8 @@ export async function triggerSignupReportEmail(emailAddress: string) {
     return false;
   }
 
-  const l10n = getL10n();
+  const acceptLangHeader = await getAcceptLangHeaderInServerComponents();
+  const l10n = getL10n(acceptLangHeader);
   const breaches = await getBreachesForEmail(
     getSha1(emailAddress),
     await getBreaches(),
@@ -115,7 +119,8 @@ export async function triggerVerificationEmail(emailAddress: string) {
     return false;
   }
 
-  const l10n = getL10n();
+  const acceptLangHeader = await getAcceptLangHeaderInServerComponents();
+  const l10n = getL10n(acceptLangHeader);
   await send(
     emailAddress,
     l10n.getString("email-subject-verify"),
@@ -135,7 +140,8 @@ export async function triggerMonthlyActivityFree(emailAddress: string) {
     return false;
   }
 
-  const l10n = getL10n();
+  const acceptLangHeader = await getAcceptLangHeaderInServerComponents();
+  const l10n = getL10n(acceptLangHeader);
 
   if (typeof subscriber.onerep_profile_id === "number") {
     await refreshStoredScanResults(subscriber.onerep_profile_id);
@@ -148,7 +154,7 @@ export async function triggerMonthlyActivityFree(emailAddress: string) {
     latestScan.results,
     await getSubscriberBreaches({
       fxaUid: session.user.subscriber?.fxa_uid,
-      countryCode: getCountryCode(headers()),
+      countryCode: getCountryCode(await headers()),
     }),
   );
 
@@ -174,7 +180,8 @@ export async function triggerMonthlyActivityPlus(emailAddress: string) {
     return false;
   }
 
-  const l10n = getL10n();
+  const acceptLangHeader = await getAcceptLangHeaderInServerComponents();
+  const l10n = getL10n(acceptLangHeader);
 
   if (typeof subscriber.onerep_profile_id === "number") {
     await refreshStoredScanResults(subscriber.onerep_profile_id);
@@ -187,7 +194,7 @@ export async function triggerMonthlyActivityPlus(emailAddress: string) {
     latestScan.results,
     await getSubscriberBreaches({
       fxaUid: session.user.subscriber?.fxa_uid,
-      countryCode: getCountryCode(headers()),
+      countryCode: getCountryCode(await headers()),
     }),
   );
 
@@ -212,7 +219,8 @@ export async function triggerBreachAlert(
     return false;
   }
 
-  const l10n = getL10n();
+  const acceptLangHeader = await getAcceptLangHeaderInServerComponents();
+  const l10n = getL10n(acceptLangHeader);
 
   const assumedCountryCode = getSignupLocaleCountry(subscriber);
 
@@ -260,7 +268,8 @@ export async function triggerBreachAlert(
 }
 
 export async function triggerFirstDataBrokerRemovalFixed(emailAddress: string) {
-  const l10n = getL10n();
+  const acceptLangHeader = await getAcceptLangHeaderInServerComponents();
+  const l10n = getL10n(acceptLangHeader);
   const randomScanResult = createRandomScanResult({ status: "removed" });
 
   await send(

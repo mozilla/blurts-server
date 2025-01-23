@@ -5,7 +5,10 @@
 import { ReactNode } from "react";
 import { headers, cookies } from "next/headers";
 import { getServerSession } from "../functions/server/getServerSession";
-import { getL10nBundles } from "../functions/l10n/serverComponents";
+import {
+  getAcceptLangHeaderInServerComponents,
+  getL10nBundles,
+} from "../functions/l10n/serverComponents";
 import { getLocale } from "../functions/universal/getLocale";
 import { L10nProvider } from "../../contextProviders/localization";
 import { ReactAriaI18nProvider } from "../../contextProviders/react-aria";
@@ -18,8 +21,10 @@ import { addClientIdForSubscriber } from "../../db/tables/google_analytics_clien
 import { logger } from "../functions/server/logging";
 
 export default async function Layout({ children }: { children: ReactNode }) {
-  const l10nBundles = getL10nBundles();
-  const headersList = headers();
+  const l10nBundles = getL10nBundles(
+    await getAcceptLangHeaderInServerComponents(),
+  );
+  const headersList = await headers();
   const countryCode = getCountryCode(headersList);
   const session = await getServerSession();
   const enabledFlags = await getEnabledFeatureFlags(
@@ -30,7 +35,7 @@ export default async function Layout({ children }: { children: ReactNode }) {
         },
   );
 
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   // This expects the default Google Analytics cookie documented here: https://support.google.com/analytics/answer/11397207?hl=en
   const gaCookie = cookieStore.get("_ga");
 

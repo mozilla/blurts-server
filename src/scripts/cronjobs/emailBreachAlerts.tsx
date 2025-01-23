@@ -301,7 +301,7 @@ export async function poll(
               await sendEmail(
                 recipientEmail,
                 subject,
-                renderEmail(
+                await renderEmail(
                   <RedesignedBreachAlertEmail
                     l10n={l10n}
                     breach={breachAlert}
@@ -318,7 +318,7 @@ export async function poll(
               await sendEmail(
                 recipientEmail,
                 subject,
-                renderEmail(
+                await renderEmail(
                   <BreachAlertEmail
                     l10n={l10n}
                     breach={breachAlert}
