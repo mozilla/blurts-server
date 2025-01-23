@@ -53,7 +53,6 @@ export const featureFlagNames = [
   "GA4SubscriptionEvents",
   "DataBrokerRemovalTimeEstimateLabel",
   "DataBrokerRemovalTimeEstimateCsat",
-  "SettingsPageRedesign",
   "LandingPageRedesign",
   "EnableRemovalUnderMaintenanceStep",
   "CirrusV2",
