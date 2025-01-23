@@ -79,7 +79,8 @@ export const MonthlyActivityFreeEmail = (
       ? premiumSubscriptionUrlObject
       : `${process.env.SERVER_URL}/user/dashboard/?utm_source=${scanOrUpgradeCtaUtm.utmSource}&utm_medium=${scanOrUpgradeCtaUtm.utmMedium}&utm_campaign=${scanOrUpgradeCtaUtm.utmCampaign}&utm_content=${scanOrUpgradeCtaUtm.utmContent}`,
   };
-  const greyInactiveColor = "#9E9E9E";
+  const greyBorderColor = "#CECECF";
+  const greyTextColor = "#6D6D6E";
   const greenActiveTextColor = "#00A49A";
   const greenActiveBorderColor = "#88FFD1";
 
@@ -194,7 +195,7 @@ export const MonthlyActivityFreeEmail = (
               <mj-group width="100%">
                 <mj-column
                   css-class={`stat_column`}
-                  inner-border={`2px solid ${leftBoxData.activeState ? greenActiveBorderColor : greyInactiveColor}`}
+                  inner-border={`2px solid ${leftBoxData.activeState ? greenActiveBorderColor : greyBorderColor}`}
                   inner-border-radius="10px"
                   padding="8px"
                 >
@@ -206,12 +207,12 @@ export const MonthlyActivityFreeEmail = (
                     color={
                       leftBoxData.activeState
                         ? greenActiveTextColor
-                        : greyInactiveColor
+                        : greyTextColor
                     }
                   >
                     {props.dataSummary.dataBreachResolvedNum}
                   </mj-text>
-                  <mj-text align="center" color="#9E9E9E">
+                  <mj-text align="center" color={greyTextColor}>
                     {l10n.getString(
                       "email-monthly-report-free-breaches-resolved-manually",
                     )}
@@ -219,7 +220,7 @@ export const MonthlyActivityFreeEmail = (
                 </mj-column>
                 <mj-column
                   css-class={`stat_column`}
-                  inner-border="2px solid #9E9E9E"
+                  inner-border={`2px solid ${greyBorderColor}`}
                   inner-border-radius="10px"
                   padding="8px"
                 >
@@ -227,11 +228,11 @@ export const MonthlyActivityFreeEmail = (
                     align="center"
                     font-weight="bold"
                     font-size="50px"
-                    color={greyInactiveColor}
+                    color={greyTextColor}
                   >
                     {rightBoxData.dataPointValue}
                   </mj-text>
-                  <mj-text align="center" color={greyInactiveColor}>
+                  <mj-text align="center" color={greyTextColor}>
                     {l10n.getString(rightBoxData.dataPointCountLabel, {
                       data_point_count: rightBoxData.dataPointValue,
                     })}
@@ -239,35 +240,18 @@ export const MonthlyActivityFreeEmail = (
                 </mj-column>
               </mj-group>
 
-              <mj-group width="100%">
-                <mj-column>
-                  <mj-button
-                    href={unlockWithMonitorPlusCta}
-                    background-color="transparent"
-                    color="#0060DF"
-                    text-decoration="underline"
-                    inner-padding="0"
-                    text-align="left"
-                  >
-                    <span className="upgrade_link">
-                      {/* This isn't Next.js, so no need to use Next.js's <Image>: */}
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        alt=""
-                        src={`${process.env.SERVER_URL}/images/email/icons/lock-icon.png`}
-                        width="14px"
-                        height="16px"
-                      />
-                      <i>
-                        {l10n.getString(
-                          "email-monthly-report-free-upgrade-cta",
-                        )}
-                      </i>
-                    </span>
-                  </mj-button>
-                </mj-column>
-                <mj-column width="50%"> </mj-column>
-              </mj-group>
+              <mj-column>
+                <mj-button
+                  href={unlockWithMonitorPlusCta}
+                  background-color="transparent"
+                  color="#0060DF"
+                  text-decoration="underline"
+                  inner-padding="0"
+                  text-align="left"
+                >
+                  {l10n.getString("email-monthly-report-free-upgrade-cta")}
+                </mj-button>
+              </mj-column>
             </mj-section>
           </>
         )}
