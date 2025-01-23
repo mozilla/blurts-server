@@ -30,7 +30,7 @@ export type SettingsPanelNotificationsProps = {
 export type NotificationSettingsProps = {
   user: Session["user"];
   subscriber: SubscriberRow;
-  data: SubscriberEmailPreferencesOutput;
+  data?: SubscriberEmailPreferencesOutput;
 };
 
 const EmailCommOption = {
@@ -53,8 +53,8 @@ export const NotificationsSettings = (props: NotificationSettingsProps) => {
 
   // Extract monthly report preference from the right column
   const monitorReportAllowed = hasPremium(props.user)
-    ? props.data.monthly_monitor_report
-    : props.data.monthly_monitor_report_free;
+    ? props.data?.monthly_monitor_report
+    : props.data?.monthly_monitor_report_free;
 
   const defaultActivateAlertEmail =
     typeof breachAlertsEmailsAllowed === "boolean";

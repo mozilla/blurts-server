@@ -171,6 +171,7 @@ export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
         illustration={illustration}
         isPremiumUser={hasPremium(props.data.user)}
         isEligibleForPremium={props.isEligibleForPremium}
+        enabledFeatureFlags={props.enabledFeatureFlags}
         cta={
           !isStepDone && (
             <>

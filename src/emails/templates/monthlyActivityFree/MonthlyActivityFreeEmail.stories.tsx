@@ -16,7 +16,7 @@ import { dataClassKeyMap } from "../../../app/functions/server/dashboard";
 const meta: Meta<FC<MonthlyActivityFreeEmailProps>> = {
   title: "Emails/Monthly activity (free user)",
   component: (props: MonthlyActivityFreeEmailProps) => (
-    <StorybookEmailRenderer>
+    <StorybookEmailRenderer plainTextVersion={null}>
       <MonthlyActivityFreeEmail {...props} />
     </StorybookEmailRenderer>
   ),
