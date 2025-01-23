@@ -79,26 +79,25 @@ export const MonthlyActivityFreeEmail = (
       ? premiumSubscriptionUrlObject
       : `${process.env.SERVER_URL}/user/dashboard/?utm_source=${scanOrUpgradeCtaUtm.utmSource}&utm_medium=${scanOrUpgradeCtaUtm.utmMedium}&utm_campaign=${scanOrUpgradeCtaUtm.utmCampaign}&utm_content=${scanOrUpgradeCtaUtm.utmContent}`,
   };
-  const purpleActiveColor = "#7542E5";
   const greyInactiveColor = "#9E9E9E";
+  const greenActiveTextColor = "#00A49A";
+  const greenActiveBorderColor = "#88FFD1";
 
-  const resolvedBoxData = {
+  const leftBoxData = {
+    activeState: props.dataSummary.dataBreachResolvedNum > 0,
+  };
+
+  console.log(leftBoxData);
+
+  const rightBoxData = {
+    // When a free scan is run, show auto-removed exposures data point
+    // If a free scan hasn't been run, show manually resolved exposures
     dataPointCountLabel: hasRunFreeScan
-      ? "email-monthly-report-free-summary-manually-resolved-exposures"
-      : "email-monthly-report-free-summary-resolved-breaches",
-    // Show a sum of resolved data breach & broker exposures if a scan has been run
-    // Otherwise, only show resolved data breaches
-    dataPointValue: hasRunFreeScan
-      ? sumSanitizedDataPoints(props.dataSummary.fixedSanitizedDataPoints)
-      : props.dataSummary.dataBreachResolvedNum,
-    // The resolved box would be active if
-    // a user has run a free scan and they have resolved data breaches, and or brokers (count number of resolved data points)
-    // if a user hasn't run a free scan but they have resolved data breaches (count number of resolved breach cards)
-    activeState:
-      (hasRunFreeScan &&
-        sumSanitizedDataPoints(props.dataSummary.fixedSanitizedDataPoints) >
-          0) ||
-      (!hasRunFreeScan && props.dataSummary.dataBreachResolvedNum > 0),
+      ? "email-monthly-report-free-summary-auto-removed"
+      : "email-monthly-report-free-broker-scan-available",
+    // Show number of free scans if a scan hasn't been run
+    // If a free scan is run, show 0 auto-removed exposures
+    dataPointValue: hasRunFreeScan ? 0 : 1,
   };
 
   // Show the congratulatory banner if a user does not have any remaining exposures left to resolve
@@ -196,7 +195,37 @@ export const MonthlyActivityFreeEmail = (
             <mj-section padding-bottom="0">
               <mj-group width="100%">
                 <mj-column
-                  css-class="stat_column"
+                  css-class={`stat_column`}
+                  inner-border={`2px solid ${leftBoxData.activeState ? greenActiveBorderColor : greyInactiveColor}`}
+                  inner-border-radius="10px"
+                  padding="8px"
+                >
+                  <mj-text
+                    align="center"
+                    font-weight="bold"
+                    font-size="50px"
+                    // If there are data breaches manually resolved, show the active state
+                    color={
+                      leftBoxData.activeState
+                        ? greenActiveTextColor
+                        : greyInactiveColor
+                    }
+                  >
+                    {props.dataSummary.dataBreachResolvedNum}
+                  </mj-text>
+                  <mj-text align="center" color="#9E9E9E">
+                    {/* {l10n.getString(
+                      "email-monthly-report-free-summary-auto-removed",
+                      {
+                        data_point_count:
+                          props.dataSummary.dataBrokerAutoFixedNum,
+                      },
+                    )} */}
+                    Data breaches resolved manually
+                  </mj-text>
+                </mj-column>
+                <mj-column
+                  css-class={`stat_column`}
                   inner-border="2px solid #9E9E9E"
                   inner-border-radius="10px"
                   padding="8px"
@@ -205,48 +234,13 @@ export const MonthlyActivityFreeEmail = (
                     align="center"
                     font-weight="bold"
                     font-size="50px"
-                    color="#9E9E9E"
+                    color={greyInactiveColor}
                   >
-                    {props.dataSummary.dataBrokerAutoFixedNum}
+                    {rightBoxData.dataPointValue}
                   </mj-text>
-                  <mj-text align="center" color="#9E9E9E">
-                    {l10n.getString(
-                      "email-monthly-report-free-summary-auto-removed",
-                      {
-                        data_point_count:
-                          props.dataSummary.dataBrokerAutoFixedNum,
-                      },
-                    )}
-                  </mj-text>
-                </mj-column>
-                <mj-column
-                  css-class={`stat_column ${resolvedBoxData.activeState ? `manually_resolved_column_sparkles` : ``}`}
-                  inner-border={`2px solid ${resolvedBoxData.activeState ? purpleActiveColor : greyInactiveColor}`}
-                  inner-border-radius="10px"
-                  padding="8px"
-                >
-                  <mj-text
-                    align="center"
-                    font-weight="bold"
-                    font-size="50px"
-                    color={
-                      resolvedBoxData.activeState
-                        ? purpleActiveColor
-                        : greyInactiveColor
-                    }
-                  >
-                    {resolvedBoxData.dataPointValue}
-                  </mj-text>
-                  <mj-text
-                    align="center"
-                    color={
-                      resolvedBoxData.activeState
-                        ? purpleActiveColor
-                        : greyInactiveColor
-                    }
-                  >
-                    {l10n.getString(resolvedBoxData.dataPointCountLabel, {
-                      data_point_count: resolvedBoxData.dataPointValue,
+                  <mj-text align="center" color={greyInactiveColor}>
+                    {l10n.getString(rightBoxData.dataPointCountLabel, {
+                      data_point_count: rightBoxData.dataPointValue,
                     })}
                   </mj-text>
                 </mj-column>

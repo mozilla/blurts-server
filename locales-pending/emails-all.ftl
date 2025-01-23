@@ -105,6 +105,8 @@ email-monthly-report-free-summary-manually-resolved-exposures =
        *[other] Manually resolved exposures
     }
 
+email-monthly-report-free-broker-scan-available = Free data broker scan available
+
 ##
 
 email-monthly-report-free-results-heading = Current exposures
