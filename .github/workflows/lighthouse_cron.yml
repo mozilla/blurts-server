@@ -22,10 +22,10 @@ jobs:
       id-token: write
     steps:
       - uses: actions/checkout@v4
-      - name: Use Node.js 20.9.x
+      - name: Use Node.js 20.18.x
         uses: actions/setup-node@v4
         with:
-          node-version: 20.9.x
+          node-version: 20.18.x
       - name: Run Lighthouse CI
         run: |
           npm install -g @lhci/cli@0.14.x
