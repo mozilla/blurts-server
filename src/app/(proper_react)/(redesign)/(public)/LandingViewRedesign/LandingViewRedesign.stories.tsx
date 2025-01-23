@@ -3,18 +3,23 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import type { Meta, StoryObj } from "@storybook/react";
-import { View, Props as ViewProps } from "./LandingViewRedesign";
-import { getL10n } from "../../../functions/l10n/storybookAndJest";
-import { PublicShell } from "./PublicShell";
-import { defaultExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
-import { AccountsMetricsFlowProvider } from "../../../../contextProviders/accounts-metrics-flow";
-import { CONST_URL_MONITOR_LANDING_PAGE_ID } from "../../../../constants";
+import { View, LandingPageProps } from "../LandingViewRedesign";
+import { PublicShell } from "../PublicShell";
+import { getL10n } from "../../../../functions/l10n/storybookAndJest";
+import { defaultExperimentData } from "../../../../../telemetry/generated/nimbus/experiments";
+import { AccountsMetricsFlowProvider } from "../../../../../contextProviders/accounts-metrics-flow";
+import { CONST_URL_MONITOR_LANDING_PAGE_ID } from "../../../../../constants";
 
 const meta: Meta<typeof View> = {
   title: "Pages/Public/Landing page/Redesign",
-  component: (props: ViewProps) => {
-    const experimentData =
-      props.experimentData ?? defaultExperimentData["Features"];
+  component: (props: LandingPageProps) => {
+    const experimentData = props.experimentData ?? {
+      ...defaultExperimentData["Features"],
+      "landing-page-redesign-plus-eligible-experiment": {
+        enabled: true,
+        variant: "redesign",
+      },
+    };
     return (
       <AccountsMetricsFlowProvider
         enabled={
@@ -33,16 +38,10 @@ const meta: Meta<typeof View> = {
         }}
       >
         <PublicShell
-          l10n={getL10n("en")}
           countryCode={props.countryCode}
+          l10n={getL10n("en")}
           enabledFeatureFlags={["LandingPageRedesign"]}
-          experimentData={{
-            ...defaultExperimentData["Features"],
-            "landing-page-redesign-plus-eligible-experiment": {
-              enabled: true,
-              variant: "redesign",
-            },
-          }}
+          experimentData={experimentData}
         >
           <View {...props} experimentData={experimentData} />
         </PublicShell>
@@ -72,31 +71,5 @@ export const LandingRedesignUsScanLimit: Story = {
     eligibleForPremium: true,
     countryCode: "us",
     scanLimitReached: true,
-  },
-};
-
-export const LandingRedesignNonUs: Story = {
-  name: "Non-US visitors",
-  args: {
-    eligibleForPremium: false,
-    countryCode: "nz",
-  },
-};
-
-export const LandingRedesignNonUsDe: Story = {
-  name: "German",
-  args: {
-    eligibleForPremium: false,
-    countryCode: "de",
-    l10n: getL10n("de"),
-  },
-};
-
-export const LandingRedesignNonUsFr: Story = {
-  name: "French",
-  args: {
-    eligibleForPremium: false,
-    countryCode: "fr",
-    l10n: getL10n("fr"),
   },
 };
