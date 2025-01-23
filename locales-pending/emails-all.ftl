@@ -68,13 +68,16 @@ email-breach-alert-plus-scan-results-data-points-label =
         [one] Data exposure
        *[other] Data exposures
     }
+# Deprecated
 email-breach-alert-plus-scan-results-cta-label = Take action to resolve these exposures
 email-breach-alert-plus-scan-results-trailer = We’ll guide you step-by-step through the process
+email-breach-alert-scan-results-cta-label = Resolve exposures
 
 # Monthly Report Free User
 
 email-monthly-report-hero-free-heading = Your monthly { -brand-mozilla-monitor } report
-email-monthly-report-hero-free-body = A summary of what needs your attention, and what’s been resolved over the past month.
+email-monthly-report-hero-free-subtitle = A summary of what needs attention and what’s been resolved this month.
+email-data-point-count-cta = Resolve these exposures
 
 ## This string is displayed under a large numeral that indicates the total
 ## number of data breaches that have exposed the user’s information.
@@ -106,6 +109,7 @@ email-monthly-report-free-summary-manually-resolved-exposures =
     }
 
 email-monthly-report-free-broker-scan-available = Free data broker scan available
+email-monthly-report-free-breaches-resolved-manually = Data breaches resolved manually
 
 ##
 

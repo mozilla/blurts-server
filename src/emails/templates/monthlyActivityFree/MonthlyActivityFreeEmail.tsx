@@ -87,8 +87,6 @@ export const MonthlyActivityFreeEmail = (
     activeState: props.dataSummary.dataBreachResolvedNum > 0,
   };
 
-  console.log(leftBoxData);
-
   const rightBoxData = {
     // When a free scan is run, show auto-removed exposures data point
     // If a free scan hasn't been run, show manually resolved exposures
@@ -150,7 +148,7 @@ export const MonthlyActivityFreeEmail = (
           l10n={l10n}
           utm_campaign={scanOrUpgradeCtaUtm.utmCampaign}
           heading={l10n.getString("email-monthly-report-hero-free-heading")}
-          subheading={l10n.getString("email-monthly-report-hero-free-body")}
+          subheading={l10n.getString("email-monthly-report-hero-free-subtitle")}
         />
         {/* Show the Data Point Count if there are unresolved exposures, otherwise show the congratulatory banner */}
         {!(
@@ -214,14 +212,9 @@ export const MonthlyActivityFreeEmail = (
                     {props.dataSummary.dataBreachResolvedNum}
                   </mj-text>
                   <mj-text align="center" color="#9E9E9E">
-                    {/* {l10n.getString(
-                      "email-monthly-report-free-summary-auto-removed",
-                      {
-                        data_point_count:
-                          props.dataSummary.dataBrokerAutoFixedNum,
-                      },
-                    )} */}
-                    Data breaches resolved manually
+                    {l10n.getString(
+                      "email-monthly-report-free-breaches-resolved-manually",
+                    )}
                   </mj-text>
                 </mj-column>
                 <mj-column

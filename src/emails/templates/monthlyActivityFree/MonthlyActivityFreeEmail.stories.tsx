@@ -139,16 +139,7 @@ export const MonthlyReportFreeUserWithScanWithExposuresResolved: Story = {
     unsubscribeLink: "/",
     dataSummary: {
       ...mockedDataSummary,
-      unresolvedSanitizedDataPoints: [
-        { [dataClassKeyMap.passwords]: 10 },
-        { [dataClassKeyMap.familyMembers]: 10 },
-        { [dataClassKeyMap.phoneNumbers]: 5 },
-      ],
-      fixedSanitizedDataPoints: [
-        { [dataClassKeyMap.passwords]: 10 },
-        { [dataClassKeyMap.familyMembers]: 10 },
-        { [dataClassKeyMap.phoneNumbers]: 5 },
-      ],
+      dataBreachResolvedNum: 3,
     },
     subscriber: {
       onerep_profile_id: 1,

@@ -110,9 +110,7 @@ export const DataPointCount = (props: Props) => {
             line-height="22px"
             width="100%"
           >
-            {props.l10n.getString(
-              "email-breach-alert-plus-scan-results-cta-label",
-            )}
+            {props.l10n.getString("email-breach-alert-scan-results-cta-label")}
           </mj-button>
           <mj-text
             font-size="12px"
