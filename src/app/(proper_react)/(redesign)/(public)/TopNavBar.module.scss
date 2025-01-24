@@ -1,0 +1,10 @@
+@use "../../../tokens";
+
+.wrapper {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: tokens.$spacing-md;
+  padding-bottom: tokens.$spacing-md;
+  width: 100%;
+}
