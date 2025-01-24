@@ -6,7 +6,7 @@ import { ReactNode } from "react";
 import Image from "next/image";
 import { Session } from "next-auth";
 import styles from "./Shell.module.scss";
-import monitorLogo from "../images/monitor-logo.webp";
+import MonitorLogo from "../images/monitor-logo.svg";
 import { MobileShell } from "./MobileShell";
 import Link from "next/link";
 import { PageLink } from "./PageLink";
@@ -55,7 +55,7 @@ export const Shell = (props: Props) => {
           >
             <Link href="/user/dashboard" className={styles.homeLink}>
               <Image
-                src={monitorLogo}
+                src={MonitorLogo}
                 alt={l10n.getString("main-nav-link-home-label")}
                 width={170}
               />

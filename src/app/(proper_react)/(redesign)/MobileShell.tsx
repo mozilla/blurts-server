@@ -9,7 +9,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Session } from "next-auth";
 import styles from "./MobileShell.module.scss";
-import monitorLogo from "../images/monitor-logo.webp";
+import MonitorLogo from "../images/monitor-logo.svg";
 import { UpsellBadge } from "../../components/client/toolbar/UpsellBadge";
 import { CloseBigIcon, ListIcon } from "../../components/server/Icons";
 import { UserMenu } from "../../components/client/toolbar/UserMenu";
@@ -79,7 +79,7 @@ export const MobileShell = (props: Props) => {
             }}
           >
             <Image
-              src={monitorLogo}
+              src={MonitorLogo}
               alt={l10n.getString("main-nav-link-home-label")}
               width={170}
             />
