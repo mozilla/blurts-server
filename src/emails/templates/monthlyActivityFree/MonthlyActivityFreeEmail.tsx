@@ -56,12 +56,6 @@ export const MonthlyActivityFreeEmail = (
     utm_content: scanOrUpgradeCtaUtm.utmContent,
   };
 
-  const premiumSubscriptionUrlObject = modifyAttributionsForUrl(
-    getPremiumSubscriptionUrl({ type: "yearly" }),
-    replaceValues,
-    {},
-  );
-
   const unlockWithMonitorPlusCta = modifyAttributionsForUrl(
     getPremiumSubscriptionUrl({ type: "yearly" }),
     {
@@ -71,14 +65,6 @@ export const MonthlyActivityFreeEmail = (
     {},
   );
 
-  const scanOrUpgradeBannerDataCta = {
-    label: hasRunFreeScan
-      ? l10n.getString("email-monthly-report-free-banner-cta-upgrade")
-      : l10n.getString("email-monthly-report-free-banner-cta-free-scan"),
-    link: hasRunFreeScan
-      ? premiumSubscriptionUrlObject
-      : `${process.env.SERVER_URL}/user/dashboard/?utm_source=${scanOrUpgradeCtaUtm.utmSource}&utm_medium=${scanOrUpgradeCtaUtm.utmMedium}&utm_campaign=${scanOrUpgradeCtaUtm.utmCampaign}&utm_content=${scanOrUpgradeCtaUtm.utmContent}`,
-  };
   const greyBorderColor = "#CECECF";
   const greyTextColor = "#6D6D6E";
   const greenActiveTextColor = "#00A49A";
@@ -136,9 +122,11 @@ export const MonthlyActivityFreeEmail = (
             }
 
             .manually_resolved_column_sparkles {
-              background-image: url(${process.env.SERVER_URL}/images/email/monthly-activity/sparkles.png);
-              background-position: center;
-              background-size: 90%;
+              background-image: url(${process.env.SERVER_URL}/images/email/monthly-activity/lock-icon.png);
+              background-position: top right;
+              background-size: 15px 20px;
+              background-position-x: calc(100% - 18px); 
+              background-position-y: 38px; 
               background-repeat: no-repeat;
             }
         `}
@@ -219,12 +207,14 @@ export const MonthlyActivityFreeEmail = (
                   </mj-text>
                 </mj-column>
                 <mj-column
-                  css-class={`stat_column`}
+                  css-class={`stat_column manually_resolved_column_sparkles`}
+                  // css-class={`stat_column manually_resolved_column_sparkles`}
                   inner-border={`2px solid ${greyBorderColor}`}
                   inner-border-radius="10px"
                   padding="8px"
                 >
                   <mj-text
+                    //  css-class={`manually_resolved_column_sparkles`}
                     align="center"
                     font-weight="bold"
                     font-size="50px"
@@ -239,31 +229,22 @@ export const MonthlyActivityFreeEmail = (
                   </mj-text>
                 </mj-column>
               </mj-group>
-
-              <mj-column>
-                <mj-button
-                  href={unlockWithMonitorPlusCta}
-                  background-color="transparent"
-                  color="#0060DF"
-                  text-decoration="underline"
-                  inner-padding="0"
-                  text-align="left"
-                >
-                  {l10n.getString("email-monthly-report-free-upgrade-cta")}
-                </mj-button>
-              </mj-column>
+              {hasRunFreeScan && (
+                <mj-column>
+                  <mj-button
+                    href={unlockWithMonitorPlusCta}
+                    background-color="transparent"
+                    color="#0060DF"
+                    text-decoration="underline"
+                    inner-padding="0"
+                    text-align="left"
+                  >
+                    {l10n.getString("email-monthly-report-free-upgrade-cta")}
+                  </mj-button>
+                </mj-column>
+              )}
             </mj-section>
           </>
-        )}
-
-        {isEligibleForPremium(assumedCountryCode) && (
-          <EmailBanner
-            variant="dark"
-            heading={l10n.getString("email-monthly-report-free-banner-heading")}
-            content={l10n.getString("email-monthly-report-free-banner-body")}
-            ctaLabel={scanOrUpgradeBannerDataCta.label}
-            ctaTarget={scanOrUpgradeBannerDataCta.link}
-          />
         )}
         <RedesignedEmailFooter
           l10n={l10n}
