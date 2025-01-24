@@ -116,6 +116,7 @@ email-monthly-report-free-breaches-resolved-manually = Data breaches resolved ma
 email-monthly-report-free-results-heading = Current exposures
 email-monthly-report-free-summary-heading = What’s happened in the last month
 email-monthly-report-free-upgrade-cta = * Unlock with { -brand-monitor-plus }
+email-monthly-report-free-view-details = View details
 email-monthly-report-free-banner-heading = { -brand-monitor } now protects you even more
 email-monthly-report-free-banner-body = We can find your personal info on data broker sites that sell it for a profit.
 email-monthly-report-free-banner-cta-free-scan = Get first scan free

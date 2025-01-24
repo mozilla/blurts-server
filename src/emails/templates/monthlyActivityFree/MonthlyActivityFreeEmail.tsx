@@ -114,19 +114,12 @@ export const MonthlyActivityFreeEmail = (
                 padding: 15px 0px;
             }
 
-            .upgrade_link {
-              display: flex !important;
-              align-items: center;
-              gap: 10px;
-              justify-content: center;
-            }
-
-            .manually_resolved_column_sparkles {
+            .lock_icon {
               background-image: url(${process.env.SERVER_URL}/images/email/monthly-activity/lock-icon.png);
               background-position: top right;
               background-size: 15px 20px;
               background-position-x: calc(100% - 18px); 
-              background-position-y: 38px; 
+              background-position-y: 35px; 
               background-repeat: no-repeat;
             }
         `}
@@ -207,14 +200,14 @@ export const MonthlyActivityFreeEmail = (
                   </mj-text>
                 </mj-column>
                 <mj-column
-                  css-class={`stat_column manually_resolved_column_sparkles`}
-                  // css-class={`stat_column manually_resolved_column_sparkles`}
+                  css-class={`stat_column lock_icon`}
+                  // css-class={`stat_column lock_icon`}
                   inner-border={`2px solid ${greyBorderColor}`}
                   inner-border-radius="10px"
                   padding="8px"
                 >
                   <mj-text
-                    //  css-class={`manually_resolved_column_sparkles`}
+                    //  css-class={`lock_icon`}
                     align="center"
                     font-weight="bold"
                     font-size="50px"
@@ -230,7 +223,7 @@ export const MonthlyActivityFreeEmail = (
                 </mj-column>
               </mj-group>
               {hasRunFreeScan && (
-                <mj-column>
+                <mj-column width="100%">
                   <mj-button
                     href={unlockWithMonitorPlusCta}
                     background-color="transparent"
@@ -243,6 +236,23 @@ export const MonthlyActivityFreeEmail = (
                   </mj-button>
                 </mj-column>
               )}
+
+              <mj-column width="100%" border-top="8px">
+                <mj-button
+                  href={`${process.env.SERVER_URL}/user/dashboard/action-needed?utm_source=monitor-product&utm_medium=product-email&utm_campaign=&utm_content=take-action`}
+                  background-color="#592ACB"
+                  border-radius="8px"
+                  padding="12px 24px"
+                  font-weight={600}
+                  font-size="15px"
+                  line-height="22px"
+                  width="100%"
+                >
+                  {props.l10n.getString(
+                    "email-monthly-report-free-view-details",
+                  )}
+                </mj-button>
+              </mj-column>
             </mj-section>
           </>
         )}
