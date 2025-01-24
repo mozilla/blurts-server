@@ -2,9 +2,12 @@
 
 .hero {
   background: linear-gradient(270deg, #9948fc 6.7%, #4b179f 67.9%);
-  border-radius: tokens.$border-radius-xl;
   overflow: hidden;
   position: relative;
+
+  @media screen and (min-width: tokens.$screen-sm) {
+    border-radius: tokens.$border-radius-xl;
+  }
 }
 
 .heroContent {

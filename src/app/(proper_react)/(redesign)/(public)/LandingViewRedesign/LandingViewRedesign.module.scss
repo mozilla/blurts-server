@@ -5,9 +5,13 @@
   flex-direction: column;
   gap: tokens.$layout-md;
   height: 100%;
-  padding: 0 tokens.$layout-2xs tokens.$layout-sm;
+  padding: 0 0 tokens.$layout-sm;
 
   @media screen and (min-width: tokens.$screen-sm) {
+    padding: 0 tokens.$layout-2xs tokens.$layout-sm;
+  }
+
+  @media screen and (min-width: tokens.$screen-md) {
     padding: 0 tokens.$layout-sm tokens.$layout-sm;
   }
 
