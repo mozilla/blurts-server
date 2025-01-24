@@ -45,17 +45,28 @@ export type LocaleData = {
  * @returns The sources for l10n bundles that can be used to construct a ReactLocalization object
  */
 export type GetL10nBundles = (acceptLangHeader?: string) => LocaleData[];
+/** Like [[GetL10nBundles]], but the caller has to pass in the Accept-Language header */
+export type GetL10nBundlesForLocales = (
+  acceptLangHeader: string,
+) => LocaleData[];
+
 type LocaleId = string;
 type CreateGetL10nBundlesOptions = {
   availableLocales: LocaleId[];
   loadLocaleFiles: (locale: LocaleId) => string[];
   loadPendingStrings: () => string[];
-  getAcceptLangHeader: () => string;
+  getAcceptLangHeader?: () => string;
 };
-export function createGetL10nBundles(
-  options: CreateGetL10nBundlesOptions,
-): GetL10nBundles {
-  return (acceptLangHeader = options.getAcceptLangHeader()) => {
+export function createGetL10nBundles<
+  Options extends CreateGetL10nBundlesOptions,
+>(
+  options: Options,
+): Options["getAcceptLangHeader"] extends NonNullable<
+  Options["getAcceptLangHeader"]
+>
+  ? GetL10nBundles
+  : GetL10nBundlesForLocales {
+  return (acceptLangHeader = options.getAcceptLangHeader?.()) => {
     const languages = acceptedLanguages(acceptLangHeader);
     const supportedLocales = process.env.SUPPORTED_LOCALES?.split(",");
     const filteredLocales =
@@ -89,12 +100,21 @@ export function createGetL10nBundles(
 export type GetL10n = (
   localeDataOrAcceptLangHeader?: LocaleData[] | Parameters<GetL10nBundles>[0],
 ) => ExtendedReactLocalization;
+export type GetL10nForLocales = (
+  localeDataOrAcceptLangHeader:
+    | LocaleData[]
+    | NonNullable<Parameters<GetL10nBundles>[0]>,
+) => ExtendedReactLocalization;
 type CreateGetL10nOptions = {
-  getL10nBundles: GetL10nBundles;
+  getL10nBundles: GetL10nBundles | GetL10nBundlesForLocales;
   ReactLocalization: typeof ReactLocalization;
   parseMarkup?: MarkupParser;
 };
-export function createGetL10n(options: CreateGetL10nOptions): GetL10n {
+export function createGetL10n<Options extends CreateGetL10nOptions>(
+  options: Options,
+): Options["getL10nBundles"] extends GetL10nBundles
+  ? GetL10n
+  : GetL10nForLocales {
   const bundles: Record<string, FluentBundle> = {};
   function getBundle(localeData: LocaleData): FluentBundle {
     if (bundles[localeData.locale]) {
@@ -107,10 +127,17 @@ export function createGetL10n(options: CreateGetL10nOptions): GetL10n {
     return bundles[localeData.locale];
   }
 
-  return (localeDataOrAcceptLangHeader = options.getL10nBundles()) => {
+  return (
+    localeDataOrAcceptLangHeader: LocaleData[] | Parameters<GetL10nBundles>[0],
+  ) => {
     const localeData =
-      typeof localeDataOrAcceptLangHeader === "string"
-        ? options.getL10nBundles(localeDataOrAcceptLangHeader)
+      typeof localeDataOrAcceptLangHeader === "string" ||
+      // The locale header is always set in tests:
+      /* c8 ignore next 5 */
+      typeof localeDataOrAcceptLangHeader === "undefined"
+        ? // `getL10nBundles` does accept undefined if it's of type GetL10nBundles,
+          // just not if it's GetL10nBundlesForLocales - and TS doesn't know which it is here.
+          options.getL10nBundles(localeDataOrAcceptLangHeader as string)
         : localeDataOrAcceptLangHeader;
     const bundles: FluentBundle[] = localeData.map((data) => getBundle(data));
     const l10n = new options.ReactLocalization(bundles, options.parseMarkup);

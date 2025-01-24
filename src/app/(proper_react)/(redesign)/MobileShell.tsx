@@ -161,29 +161,25 @@ export const MobileShell = (props: Props) => {
                     >
                       {l10n.getString("main-nav-link-settings-label")}
                     </PageLink>
-                    {props.enabledFeatureFlags.includes(
-                      "SettingsPageRedesign",
-                    ) && (
-                      <ul className={styles.subMenu}>
-                        {CONST_SETTINGS_TAB_SLUGS.map((submenuKey) => {
-                          return (
-                            <li key={submenuKey}>
-                              <PageLink
-                                href={`/user/settings/${submenuKey}`}
-                                activeClassName={styles.isActive}
-                                hasTelemetry={{
-                                  link_id: `navigation_settings_${submenuKey}`,
-                                }}
-                              >
-                                {l10n.getString(
-                                  `settings-tab-label-${submenuKey}`,
-                                )}
-                              </PageLink>
-                            </li>
-                          );
-                        })}
-                      </ul>
-                    )}
+                    <ul className={styles.subMenu}>
+                      {CONST_SETTINGS_TAB_SLUGS.map((submenuKey) => {
+                        return (
+                          <li key={submenuKey}>
+                            <PageLink
+                              href={`/user/settings/${submenuKey}`}
+                              activeClassName={styles.isActive}
+                              hasTelemetry={{
+                                link_id: `navigation_settings_${submenuKey}`,
+                              }}
+                            >
+                              {l10n.getString(
+                                `settings-tab-label-${submenuKey}`,
+                              )}
+                            </PageLink>
+                          </li>
+                        );
+                      })}
+                    </ul>
                   </li>
                 </ul>
                 <div className={styles.premiumCta}>

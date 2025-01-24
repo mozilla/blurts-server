@@ -14,14 +14,17 @@ import {
   removeOneSecondaryEmail,
   getEmailById,
 } from "../../../../../db/tables/emailAddresses";
-import { getL10n } from "../../../../functions/l10n/serverComponents";
+import {
+  getAcceptLangHeaderInServerComponents,
+  getL10n,
+} from "../../../../functions/l10n/serverComponents";
 
 interface EmailDeleteRequest {
   emailId: number;
 }
 
 export async function POST(req: NextRequest) {
-  const l10n = getL10n();
+  const l10n = getL10n(await getAcceptLangHeaderInServerComponents());
   const token = await getToken({ req });
 
   if (typeof token?.subscriber?.fxa_uid === "string") {

@@ -9,8 +9,9 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(
   _: NextRequest,
-  { params }: { params: { profileId: number; scanId: number } },
+  props: { params: Promise<{ profileId: number; scanId: number }> },
 ) {
+  const params = await props.params;
   const prodError = errorIfProduction();
   if (prodError) return prodError;
 

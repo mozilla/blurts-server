@@ -40,6 +40,22 @@ global.IntersectionObserver = jest.fn();
 defaultFallbackInView(false);
 beforeEach(() => {
   setupIntersectionMocking(jest.fn);
+
+  // react-dom/server.edge is apparently needed instead of react-dom/server
+  // to avoid this error:
+  // > Uncaught ReferenceError: MessageChannel is not defined
+  // See https://github.com/jsdom/jsdom/issues/2448#issuecomment-1581009331
+  window.MessageChannel = jest.fn().mockImplementation(() => {
+    return {
+      port1: {
+        postMessage: jest.fn(),
+      },
+      port2: {
+        addEventListener: jest.fn(),
+        removeEventListener: jest.fn(),
+      },
+    };
+  });
 });
 afterEach(() => {
   resetIntersectionMocking();

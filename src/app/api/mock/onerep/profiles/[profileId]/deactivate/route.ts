@@ -5,10 +5,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import { errorIfProduction } from "../../../../../utils/errorThrower";
 
-export function PUT(
+export async function PUT(
   _: NextRequest,
-  { params }: { params: { profileId: number } },
+  props: { params: Promise<{ profileId: number }> },
 ) {
+  const params = await props.params;
   const prodError = errorIfProduction();
   if (prodError) return prodError;
 

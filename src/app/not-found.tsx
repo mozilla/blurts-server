@@ -5,11 +5,14 @@
 import Image from "next/image";
 import styles from "./not-found.module.scss";
 import Illustration from "./(proper_react)/images/404.svg";
-import { getL10n } from "./functions/l10n/serverComponents";
+import {
+  getAcceptLangHeaderInServerComponents,
+  getL10n,
+} from "./functions/l10n/serverComponents";
 import { BackButton } from "./components/client/BackButton";
 
-export default function NotFound() {
-  const l10n = getL10n();
+export default async function NotFound() {
+  const l10n = getL10n(await getAcceptLangHeaderInServerComponents());
 
   return (
     <div className={styles.wrapper}>

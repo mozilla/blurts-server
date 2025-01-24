@@ -5,6 +5,7 @@
 "use client";
 
 import { useContext, useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { Session } from "next-auth";
@@ -388,7 +389,7 @@ export const View = (props: Props) => {
               typeof props.totalNumberOfPerformedScans === "undefined" ||
               props.totalNumberOfPerformedScans <
                 CONST_ONEREP_MAX_SCANS_THRESHOLD ? (
-                <a
+                <Link
                   ref={waitlistTriggerRef}
                   href="/user/welcome/free-scan?referrer=dashboard"
                   onClick={() => {

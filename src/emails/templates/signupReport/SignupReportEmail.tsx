@@ -4,11 +4,11 @@
 
 import { Fragment } from "react";
 import { ExtendedReactLocalization } from "../../../app/functions/l10n";
-import { EmailFooter } from "../EmailFooter";
-import { EmailHeader } from "../EmailHeader";
+import { EmailFooter } from "../../components/EmailFooter";
+import { EmailHeader } from "../../components/EmailHeader";
 import { HibpLikeDbBreach } from "../../../utils/hibp";
 import { BreachCard } from "../../components/BreachCard";
-import { HeaderStyles, MetaTags } from "../HeaderStyles";
+import { HeaderStyles, MetaTags } from "../../components/HeaderStyles";
 
 export type Props = {
   l10n: ExtendedReactLocalization;

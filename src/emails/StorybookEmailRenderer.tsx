@@ -5,7 +5,11 @@
 // We use mjml-browser for Storybook; for real emails, regular mjml should work:
 import mjml2html from "mjml-browser";
 import { ReactNode } from "react";
-import { renderToStaticMarkup } from "react-dom/server";
+// react-dom/server.edge is apparently needed instead of react-dom/server
+// to avoid this error:
+// > Uncaught ReferenceError: MessageChannel is not defined
+// See https://github.com/facebook/react/issues/31827#issuecomment-2563094822
+import { renderToStaticMarkup } from "react-dom/server.edge";
 
 export type Props = {
   children: ReactNode;
@@ -55,7 +59,7 @@ export const StorybookEmailRenderer = (props: Props) => {
         padding: 20px;
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: stretch;
         gap: 20px;
       }
       .wrapper .plaintext {
@@ -89,7 +93,7 @@ export const StorybookEmailRenderer = (props: Props) => {
                   `
                 : renderResult.html,
           }}
-          className={props.emulateDarkMode ? "dark-mode-enforced" : ""}
+          className={`body ${props.emulateDarkMode ? "dark-mode-enforced" : ""}`}
         />
       </section>
       <section className="plaintext">

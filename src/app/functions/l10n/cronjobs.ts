@@ -12,7 +12,7 @@ import {
   createGetL10nBundles,
   type ExtendedReactLocalization,
   type GetL10nBundles,
-} from ".";
+} from "./index";
 import type { SanitizedSubscriberRow } from "../server/sanitize";
 import { parseMarkup } from "./parseMarkup";
 
