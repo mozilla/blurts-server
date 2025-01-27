@@ -14,7 +14,10 @@ import { StepDeterminationData } from "../../../../../../../../../functions/serv
 import { getCountryCode } from "../../../../../../../../../functions/server/getCountryCode";
 import { activateAndOptoutProfile } from "../../../../../../../../../functions/server/onerep";
 import { logger } from "../../../../../../../../../functions/server/logging";
-import { getL10n } from "../../../../../../../../../functions/l10n/serverComponents";
+import {
+  getAcceptLangHeaderInServerComponents,
+  getL10n,
+} from "../../../../../../../../../functions/l10n/serverComponents";
 import { refreshStoredScanResults } from "../../../../../../../../../functions/server/refreshStoredScanResults";
 import { checkSession } from "../../../../../../../../../functions/server/checkSession";
 import { hasPremium } from "../../../../../../../../../functions/universal/user";
@@ -49,7 +52,7 @@ export default async function WelcomeToPlusPage() {
     profileId,
     hasPremium(session.user),
   );
-  const countryCode = getCountryCode(headers());
+  const countryCode = getCountryCode(await headers());
   const subBreaches = await getSubscriberBreaches({
     fxaUid: session.user.subscriber.fxa_uid,
     countryCode,
@@ -80,7 +83,7 @@ export default async function WelcomeToPlusPage() {
     <WelcomeToPlusView
       data={data}
       subscriberEmails={subscriberEmails}
-      l10n={getL10n()}
+      l10n={getL10n(await getAcceptLangHeaderInServerComponents())}
       enabledFeatureFlags={enabledFeatureFlags}
     />
   );

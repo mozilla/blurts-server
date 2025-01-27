@@ -4,7 +4,10 @@
 
 import { ReactNode } from "react";
 import { PublicShell } from "./PublicShell";
-import { getL10n } from "../../../functions/l10n/serverComponents";
+import {
+  getAcceptLangHeaderInServerComponents,
+  getL10n,
+} from "../../../functions/l10n/serverComponents";
 import { headers } from "next/headers";
 import { getCountryCode } from "../../../functions/server/getCountryCode";
 import { getLocale } from "../../../functions/universal/getLocale";
@@ -13,22 +16,23 @@ import { getExperimentationId } from "../../../functions/server/getExperimentati
 import { getEnabledFeatureFlags } from "../../../../db/tables/featureFlags";
 
 export default async function Layout(props: { children: ReactNode }) {
-  const headersList = headers();
+  const headersList = await headers();
   const countryCode = getCountryCode(headersList);
   const enabledFeatureFlags = await getEnabledFeatureFlags({
     isSignedOut: true,
   });
-  const experimentationId = getExperimentationId(null);
+  const l10n = getL10n(await getAcceptLangHeaderInServerComponents());
+  const experimentationId = await getExperimentationId(null);
   const experimentData = await getExperiments({
     experimentationId,
     countryCode,
-    locale: getLocale(getL10n()),
+    locale: getLocale(l10n),
     previewMode: false,
   });
 
   return (
     <PublicShell
-      l10n={getL10n()}
+      l10n={l10n}
       countryCode={countryCode}
       enabledFeatureFlags={enabledFeatureFlags}
       experimentData={experimentData["Features"]}

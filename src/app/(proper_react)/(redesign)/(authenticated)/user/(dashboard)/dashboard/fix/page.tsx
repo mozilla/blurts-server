@@ -23,7 +23,7 @@ export default async function FixPage() {
     return redirect("/");
   }
 
-  const countryCode = getCountryCode(headers());
+  const countryCode = getCountryCode(await headers());
   const breaches = await getSubscriberBreaches({
     fxaUid: session.user.subscriber.fxa_uid,
     countryCode,
