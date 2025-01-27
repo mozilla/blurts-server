@@ -63,12 +63,14 @@ async function getChurnsToEmail(): Promise<SubscriberChurnRow[]> {
   try {
     const res = await knex("subscriber_churns")
       .select("*")
-      .where("intervl", "yearly")
+      .where("intervl", "year")
       .whereNotNull("current_period_end")
-      .whereRaw(
-        "TIMESTAMP_DIFF(TIMESTAMP(current_period_end), CURRENT_TIMESTAMP(), DAY) <= 7",
-      )
-      .whereRaw("TIMESTAMP(current_period_end) > CURRENT_TIMESTAMP()");
+      .where(knex.raw("current_period_end::timestamptz"), ">=", knex.fn.now())
+      .where(
+        knex.raw("current_period_end::timestamptz"),
+        "<=",
+        knex.raw("CURRENT_TIMESTAMP + interval '7 days'"),
+      );
 
     logger.info("get_churns_to_email_success", { count: res.length });
     return res as SubscriberChurnRow[];
