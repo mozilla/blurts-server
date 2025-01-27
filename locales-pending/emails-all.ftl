@@ -68,8 +68,6 @@ email-breach-alert-plus-scan-results-data-points-label =
         [one] Data exposure
        *[other] Data exposures
     }
-# Deprecated
-email-breach-alert-plus-scan-results-cta-label = Take action to resolve these exposures
 email-breach-alert-plus-scan-results-trailer = We’ll guide you step-by-step through the process
 email-breach-alert-scan-results-cta-label = Resolve exposures
 
@@ -77,7 +75,6 @@ email-breach-alert-scan-results-cta-label = Resolve exposures
 
 email-monthly-report-hero-free-heading = Your monthly { -brand-mozilla-monitor } report
 email-monthly-report-hero-free-subtitle = A summary of what needs attention and what’s been resolved this month.
-email-data-point-count-cta = Resolve these exposures
 
 ## This string is displayed under a large numeral that indicates the total
 ## number of data breaches that have exposed the user’s information.
@@ -97,17 +94,6 @@ email-monthly-report-free-summary-auto-removed =
         [one] Auto-removed exposure*
        *[other] Auto-removed exposures*
     }
-email-monthly-report-free-summary-resolved-breaches =
-  { $data_point_count ->
-        [one] Manually resolved data breach
-       *[other] Manually resolved data breaches
-    }
-email-monthly-report-free-summary-manually-resolved-exposures =
-  { $data_point_count ->
-        [one] Manually resolved exposure
-       *[other] Manually resolved exposures
-    }
-
 email-monthly-report-free-broker-scan-available = Free data broker scan available
 email-monthly-report-free-breaches-resolved-manually = Data breaches resolved manually
 
@@ -117,10 +103,6 @@ email-monthly-report-free-results-heading = Current exposures
 email-monthly-report-free-summary-heading = What’s happened in the last month
 email-monthly-report-free-upgrade-cta = * Unlock with { -brand-monitor-plus }
 email-monthly-report-free-view-details = View details
-email-monthly-report-free-banner-heading = { -brand-monitor } now protects you even more
-email-monthly-report-free-banner-body = We can find your personal info on data broker sites that sell it for a profit.
-email-monthly-report-free-banner-cta-free-scan = Get first scan free
-email-monthly-report-free-banner-cta-upgrade = Get { -brand-monitor-plus }
 email-monthly-report-hero-free-no-breaches-heading = Great news!
 email-monthly-report-hero-free-no-breaches-body = { -brand-monitor } didn’t find any data exposures to be resolved.
 email-monthly-report-hero-free-no-breaches-cta = View your dashboard
