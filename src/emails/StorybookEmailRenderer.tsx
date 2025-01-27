@@ -9,7 +9,7 @@ import { ReactNode } from "react";
 // to avoid this error:
 // > Uncaught ReferenceError: MessageChannel is not defined
 // See https://github.com/facebook/react/issues/31827#issuecomment-2563094822
-import { renderToStaticMarkup } from "react-dom/server";
+import { renderToStaticMarkup } from "react-dom/server.edge";
 
 export type Props = {
   children: ReactNode;
