@@ -48,7 +48,7 @@ export const MonthlyActivityFreeEmail = (
 
   const l10n = props.l10n;
   const assumedCountryCode = getSignupLocaleCountry(props.subscriber);
-  /* c8 ignore next */
+  /* c8 ignore next 3 */
   const utmContentSuffix = isEligibleForPremium(assumedCountryCode)
     ? "-us"
     : "-global";
