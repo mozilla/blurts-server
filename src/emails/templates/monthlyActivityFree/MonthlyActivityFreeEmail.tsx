@@ -76,6 +76,7 @@ export const MonthlyActivityFreeEmail = (
   const purpleActiveTextColor = "#592ACB";
   const purpleActiveBorderColor = "#CB9EFF";
 
+  // Always breach-related
   const leftBoxData = {
     activeState: props.dataSummary.dataBreachResolvedNum > 0,
     dataPointCountLabel: l10n.getString(
@@ -84,10 +85,11 @@ export const MonthlyActivityFreeEmail = (
     dataPointValue: props.dataSummary.dataBreachResolvedNum,
   };
 
+  // Always scan-related
   const rightBoxData = {
     activeState: !hasRunFreeScan,
     // When a free scan is run, show auto-removed exposures data point
-    // If a free scan hasn't been run, show manually resolved exposures
+    // If a free scan hasn't been run, show that that is an available free scan
     dataPointCountLabel: hasRunFreeScan
       ? "email-monthly-report-free-summary-auto-removed"
       : "email-monthly-report-free-broker-scan-available",
