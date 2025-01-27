@@ -15,21 +15,26 @@ import { AutoSignIn } from "../../../../../../components/client/AutoSignIn";
 import { getExperimentationId } from "../../../../../../functions/server/getExperimentationId";
 import { getExperiments } from "../../../../../../functions/server/getExperiments";
 import { getLocale } from "../../../../../../functions/universal/getLocale";
-import { getL10n } from "../../../../../../functions/l10n/serverComponents";
+import {
+  getAcceptLangHeaderInServerComponents,
+  getL10n,
+} from "../../../../../../functions/l10n/serverComponents";
 
 const FreeScanSlug = "free-scan";
 
 type Props = {
-  params: {
+  params: Promise<{
     slug: string[] | undefined;
-  };
-  searchParams: {
+  }>;
+  searchParams: Promise<{
     referrer?: string;
     nimbus_preview?: string;
-  };
+  }>;
 };
 
-export default async function Onboarding({ params, searchParams }: Props) {
+export default async function Onboarding(props: Props) {
+  const searchParams = await props.searchParams;
+  const params = await props.params;
   const session = await getServerSession();
   if (!session) {
     return <AutoSignIn />;
@@ -45,7 +50,7 @@ export default async function Onboarding({ params, searchParams }: Props) {
     return notFound();
   }
 
-  const headersList = headers();
+  const headersList = await headers();
   const countryCode = getCountryCode(headersList);
   const userIsEligible = await isEligibleForFreeScan(session.user, countryCode);
 
@@ -62,11 +67,11 @@ export default async function Onboarding({ params, searchParams }: Props) {
     referrerParam: searchParams.referrer,
   });
 
-  const experimentationId = getExperimentationId(session.user);
+  const experimentationId = await getExperimentationId(session.user);
   const experimentData = await getExperiments({
     experimentationId,
     countryCode,
-    locale: getLocale(getL10n()),
+    locale: getLocale(getL10n(await getAcceptLangHeaderInServerComponents())),
     previewMode: searchParams.nimbus_preview === "true",
   });
 
@@ -77,7 +82,7 @@ export default async function Onboarding({ params, searchParams }: Props) {
       breachesTotalCount={allBreachesCount}
       stepId={firstSlug === FreeScanSlug ? "enterInfo" : "getStarted"}
       previousRoute={previousRoute}
-      experimentData={experimentData}
+      experimentData={experimentData["Features"]}
     />
   );
 }

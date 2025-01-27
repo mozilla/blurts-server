@@ -1,20 +1,22 @@
 @use "../../../tokens";
 
 .form {
+  align-items: flex-start;
   display: flex;
   flex-wrap: wrap;
   gap: tokens.$spacing-lg;
 
+  div:first-child {
+    display: flex;
+    flex: 1;
+    flex-direction: column-reverse;
+  }
+
   input {
-    flex: 1 0 auto;
-    border-radius: tokens.$border-radius-md;
-    border: 1px solid tokens.$color-grey-20;
-    padding: tokens.$spacing-md;
     font: tokens.$text-body-md;
   }
 
   button {
-    flex: 1 0 auto;
     font: tokens.$text-body-md;
     font-weight: 600;
   }

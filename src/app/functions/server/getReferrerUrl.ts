@@ -5,7 +5,7 @@
 import type { headers as headersGetter } from "next/headers";
 
 type ReferrerUrlProps = {
-  headers: ReturnType<typeof headersGetter>;
+  headers: Awaited<ReturnType<typeof headersGetter>>;
   referrerParam: string | undefined;
 };
 

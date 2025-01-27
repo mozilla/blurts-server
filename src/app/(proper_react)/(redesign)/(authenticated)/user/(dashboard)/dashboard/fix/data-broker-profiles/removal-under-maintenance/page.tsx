@@ -25,7 +25,7 @@ import { getQaToggleRow } from "../../../../../../../../../../db/tables/qa_custo
 
 export default async function RemovalUnderMaintenance() {
   const session = await getServerSession();
-  const countryCode = getCountryCode(headers());
+  const countryCode = getCountryCode(await headers());
 
   if (!session?.user?.subscriber?.id) {
     return redirect("/");

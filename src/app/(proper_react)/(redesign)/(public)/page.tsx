@@ -11,7 +11,10 @@ import {
   monthlySubscribersQuota,
 } from "../../../functions/server/onerep";
 import { isEligibleForPremium } from "../../../functions/universal/premium";
-import { getL10n } from "../../../functions/l10n/serverComponents";
+import {
+  getAcceptLangHeaderInServerComponents,
+  getL10n,
+} from "../../../functions/l10n/serverComponents";
 import { View as LandingView } from "./LandingView";
 import { View as LandingViewRedesign } from "./LandingViewRedesign";
 import {
@@ -25,27 +28,29 @@ import { AccountsMetricsFlowProvider } from "../../../../contextProviders/accoun
 import { getEnabledFeatureFlags } from "../../../../db/tables/featureFlags";
 
 type Props = {
-  searchParams: {
+  searchParams: Promise<{
     nimbus_preview?: string;
-  };
+  }>;
 };
 
-export default async function Page({ searchParams }: Props) {
+export default async function Page(props: Props) {
+  const searchParams = await props.searchParams;
   const session = await getServerSession();
   if (typeof session?.user.subscriber?.fxa_uid === "string") {
     return redirect("/user/dashboard");
   }
-  const countryCode = getCountryCode(headers());
+  const l10n = getL10n(await getAcceptLangHeaderInServerComponents());
+  const countryCode = getCountryCode(await headers());
   const eligibleForPremium = isEligibleForPremium(countryCode);
 
   const enabledFeatureFlags = await getEnabledFeatureFlags({
     isSignedOut: true,
   });
-  const experimentationId = getExperimentationId(session?.user ?? null);
+  const experimentationId = await getExperimentationId(session?.user ?? null);
   const experimentData = await getExperiments({
     experimentationId,
     countryCode,
-    locale: getLocale(getL10n()),
+    locale: getLocale(l10n),
     previewMode: searchParams.nimbus_preview === "true",
   });
 
@@ -59,14 +64,14 @@ export default async function Page({ searchParams }: Props) {
     oneRepActivations > monthlySubscribersQuota;
   return (
     <AccountsMetricsFlowProvider
-      enabled={experimentData["landing-page-free-scan-cta"].enabled}
+      enabled={experimentData["Features"]["landing-page-free-scan-cta"].enabled}
       metricsFlowParams={{
         entrypoint: CONST_URL_MONITOR_LANDING_PAGE_ID,
         entrypoint_experiment: "landing-page-free-scan-cta",
         entrypoint_variation:
-          experimentData["landing-page-free-scan-cta"].variant,
+          experimentData["Features"]["landing-page-free-scan-cta"].variant,
         form_type:
-          experimentData["landing-page-free-scan-cta"].variant ===
+          experimentData["Features"]["landing-page-free-scan-cta"].variant ===
           "ctaWithEmail"
             ? "email"
             : "button",
@@ -74,24 +79,26 @@ export default async function Page({ searchParams }: Props) {
       }}
     >
       {enabledFeatureFlags.includes("LandingPageRedesign") &&
-      experimentData["landing-page-redesign-plus-eligible-experiment"]
-        .enabled &&
-      experimentData["landing-page-redesign-plus-eligible-experiment"]
-        .variant === "redesign" ? (
+      experimentData["Features"][
+        "landing-page-redesign-plus-eligible-experiment"
+      ].enabled &&
+      experimentData["Features"][
+        "landing-page-redesign-plus-eligible-experiment"
+      ].variant === "redesign" ? (
         <LandingViewRedesign
           eligibleForPremium={eligibleForPremium}
-          l10n={getL10n()}
+          l10n={l10n}
           countryCode={countryCode}
           scanLimitReached={scanLimitReached}
-          experimentData={experimentData}
+          experimentData={experimentData["Features"]}
         />
       ) : (
         <LandingView
           eligibleForPremium={eligibleForPremium}
-          l10n={getL10n()}
+          l10n={l10n}
           countryCode={countryCode}
           scanLimitReached={scanLimitReached}
-          experimentData={experimentData}
+          experimentData={experimentData["Features"]}
         />
       )}
     </AccountsMetricsFlowProvider>
