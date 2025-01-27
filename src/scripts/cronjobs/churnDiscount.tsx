@@ -13,44 +13,10 @@ import {
   // sendEmail,
   closeEmailPool,
 } from "../../utils/email";
-// Imports the Google Cloud bigquery library
-import { BigQuery } from "@google-cloud/bigquery";
 import { SubscriberChurnRow } from "knex/types/tables";
 
 await run();
 await createDbConnection().destroy();
-
-async function fetchSubscribersFromBigQuery(): Promise<SubscriberChurnRow[]> {
-  const datasetId = process.env.FXA_CHURN_DATASET_ID;
-  const tableId = process.env.FXA_CHURN_TABLE_ID;
-  const projectId = process.env.FXA_CHURN_PROJECT_ID;
-
-  if (!projectId || !datasetId || !tableId) {
-    throw new Error("BigQuery environment variables are not set");
-  }
-
-  const bigquery = new BigQuery({
-    projectId: process.env.FXA_CHURN_PROJECT_ID,
-    keyFilename: process.env.FXA_SA_PATH,
-  });
-
-  const query = `
-    SELECT userid, customer, created, nickname, intervl, intervl_count, plan_id, product_id, current_period_end
-    FROM \`${datasetId}.${tableId}\`
-    WHERE intervl = 'yearly'
-      AND current_period_end IS NOT NULL
-      AND TIMESTAMP_DIFF(TIMESTAMP(current_period_end), CURRENT_TIMESTAMP(), DAY) <= 7
-      AND TIMESTAMP(current_period_end) > CURRENT_TIMESTAMP()
-  `;
-
-  const [rows] = await bigquery.query(query);
-  return rows as SubscriberChurnRow[];
-}
-
-// a function to take the rows from bigquery and store them in the database
-// async function storeSubscribersInDatabase(rows: SubscriberChurnRow[]) {
-
-// }
 
 async function run() {
   const subscribersToEmail = await getChurnsToEmail();
