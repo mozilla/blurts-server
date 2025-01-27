@@ -67,14 +67,22 @@ export const MonthlyActivityFreeEmail = (
 
   const greyBorderColor = "#CECECF";
   const greyTextColor = "#6D6D6E";
+  const blackTextColor = "#000000";
   const greenActiveTextColor = "#00A49A";
   const greenActiveBorderColor = "#88FFD1";
+  const purpleActiveTextColor = "#592ACB";
+  const purpleActiveBorderColor = "#CB9EFF";
 
   const leftBoxData = {
     activeState: props.dataSummary.dataBreachResolvedNum > 0,
+    dataPointCountLabel: l10n.getString(
+      "email-monthly-report-free-breaches-resolved-manually",
+    ),
+    dataPointValue: props.dataSummary.dataBreachResolvedNum,
   };
 
   const rightBoxData = {
+    activeState: !hasRunFreeScan,
     // When a free scan is run, show auto-removed exposures data point
     // If a free scan hasn't been run, show manually resolved exposures
     dataPointCountLabel: hasRunFreeScan
@@ -191,31 +199,42 @@ export const MonthlyActivityFreeEmail = (
                         : greyTextColor
                     }
                   >
-                    {props.dataSummary.dataBreachResolvedNum}
+                    {leftBoxData.dataPointValue}
                   </mj-text>
-                  <mj-text align="center" color={greyTextColor}>
-                    {l10n.getString(
-                      "email-monthly-report-free-breaches-resolved-manually",
-                    )}
+                  <mj-text
+                    align="center"
+                    color={
+                      leftBoxData.activeState ? blackTextColor : greyTextColor
+                    }
+                  >
+                    {leftBoxData.dataPointCountLabel}
                   </mj-text>
                 </mj-column>
                 <mj-column
-                  css-class={`stat_column lock_icon`}
-                  // css-class={`stat_column lock_icon`}
-                  inner-border={`2px solid ${greyBorderColor}`}
+                  css-class={`stat_column ${!rightBoxData.activeState && `lock_icon`}`}
+                  inner-border={`2px solid ${rightBoxData.activeState ? purpleActiveBorderColor : greyBorderColor}`}
                   inner-border-radius="10px"
                   padding="8px"
                 >
                   <mj-text
-                    //  css-class={`lock_icon`}
                     align="center"
                     font-weight="bold"
                     font-size="50px"
-                    color={greyTextColor}
+                    // If there is a free scan available, show the active state
+                    color={
+                      rightBoxData.activeState
+                        ? purpleActiveTextColor
+                        : greyTextColor
+                    }
                   >
                     {rightBoxData.dataPointValue}
                   </mj-text>
-                  <mj-text align="center" color={greyTextColor}>
+                  <mj-text
+                    align="center"
+                    color={
+                      rightBoxData.activeState ? blackTextColor : greyTextColor
+                    }
+                  >
                     {l10n.getString(rightBoxData.dataPointCountLabel, {
                       data_point_count: rightBoxData.dataPointValue,
                     })}

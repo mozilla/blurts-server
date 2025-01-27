@@ -109,7 +109,6 @@ export const MonthlyReportFreeUserNoScanWithBreachesResolved: Story = {
   },
 };
 
-// With scan, only check from unresolvedSanitizedDataPoints
 export const MonthlyReportFreeUserWithScanWithExposuresNothingResolved: Story =
   {
     name: "With Scan With Data Breaches and Brokers, Nothing Resolved",
@@ -134,11 +133,16 @@ export const MonthlyReportFreeUserWithScanWithExposuresNothingResolved: Story =
   };
 
 export const MonthlyReportFreeUserWithScanWithExposuresResolved: Story = {
-  name: "With Scan With Data Breaches and Data Brokers and Resolved Exposures",
+  name: "With Scan With Data Breaches and Data Brokers and Resolved Breaches",
   args: {
     unsubscribeLink: "/",
     dataSummary: {
       ...mockedDataSummary,
+      unresolvedSanitizedDataPoints: [
+        { [dataClassKeyMap.passwords]: 10 },
+        { [dataClassKeyMap.familyMembers]: 10 },
+        { [dataClassKeyMap.phoneNumbers]: 5 },
+      ],
       dataBreachResolvedNum: 3,
     },
     subscriber: {
