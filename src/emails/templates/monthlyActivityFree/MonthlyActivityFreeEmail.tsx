@@ -27,24 +27,28 @@ type UtmParams = {
   utmSource: string;
   utmCampaign: string;
   utmMedium: string;
-  utmContent: string;
+  utmContent?: string;
+};
+
+const setUtmCampaign = (
+  utmSuffix: string,
+  hasRunFreeScan: boolean,
+  hasResolvedBreaches: boolean,
+  hasExposures: boolean,
+): string => {
+  const scanStatus = hasRunFreeScan ? "scan-yes" : "scan-no";
+  const breachStatus = hasResolvedBreaches
+    ? "breach-resolved-yes"
+    : "breach-resolved-no";
+  const exposureStatus = hasExposures ? `exp-yes` : "exp-no";
+
+  return `monthly-report-free${utmSuffix}-${scanStatus}-${exposureStatus}-${breachStatus}`;
 };
 
 export const MonthlyActivityFreeEmail = (
   props: MonthlyActivityFreeEmailProps,
 ) => {
   const hasRunFreeScan = typeof props.subscriber.onerep_profile_id === "number";
-
-  const scanOrUpgradeCtaUtm: UtmParams = {
-    utmSource: "monitor-product",
-    utmCampaign: hasRunFreeScan
-      ? "monthly-report-free-us-scanned"
-      : "monthly-report-free-us-no-scan",
-    utmMedium: "product-email",
-    utmContent: hasRunFreeScan
-      ? "get-monitor-plus-us"
-      : "get-first-scan-free-us",
-  };
 
   const l10n = props.l10n;
   const assumedCountryCode = getSignupLocaleCountry(props.subscriber);
@@ -53,18 +57,29 @@ export const MonthlyActivityFreeEmail = (
     ? "-us"
     : "-global";
 
+  const utmValues: UtmParams = {
+    utmSource: "monitor-product",
+    utmCampaign: setUtmCampaign(
+      utmContentSuffix,
+      hasRunFreeScan,
+      props.dataSummary.dataBreachResolvedNum > 0,
+      sumSanitizedDataPoints(props.dataSummary.unresolvedSanitizedDataPoints) >
+        0,
+    ),
+    utmMedium: "product-email",
+  };
+
   const replaceValues = {
-    utm_source: scanOrUpgradeCtaUtm.utmSource,
-    utm_medium: scanOrUpgradeCtaUtm.utmMedium,
-    utm_campaign: scanOrUpgradeCtaUtm.utmCampaign,
-    utm_content: scanOrUpgradeCtaUtm.utmContent,
+    utm_source: utmValues.utmSource,
+    utm_medium: utmValues.utmMedium,
+    utm_campaign: utmValues.utmCampaign,
   };
 
   const unlockWithMonitorPlusCta = modifyAttributionsForUrl(
     getPremiumSubscriptionUrl({ type: "yearly" }),
     {
       ...replaceValues,
-      utm_content: "unlock-with-monitor-plus",
+      utm_content: `unlock-with-monitor-plus${utmContentSuffix}`,
     },
     {},
   );
@@ -142,9 +157,10 @@ export const MonthlyActivityFreeEmail = (
       <mj-body>
         <EmailHero
           l10n={l10n}
-          utm_campaign={scanOrUpgradeCtaUtm.utmCampaign}
+          utm_campaign={utmValues.utmCampaign}
           heading={l10n.getString("email-monthly-report-hero-free-heading")}
           subheading={l10n.getString("email-monthly-report-hero-free-subtitle")}
+          utmContentSuffix={utmContentSuffix}
         />
         {/* Show the Data Point Count if there are unresolved exposures, otherwise show the congratulatory banner */}
         {!(
@@ -154,9 +170,9 @@ export const MonthlyActivityFreeEmail = (
             subscriber={props.subscriber}
             l10n={l10n}
             dataSummary={props.dataSummary}
-            utmCampaignId={scanOrUpgradeCtaUtm.utmCampaign}
-            utmMedium={scanOrUpgradeCtaUtm.utmMedium}
-            utmSource={scanOrUpgradeCtaUtm.utmSource}
+            utmCampaignId={utmValues.utmCampaign}
+            utmMedium={utmValues.utmMedium}
+            utmSource={utmValues.utmSource}
           />
         ) : (
           <EmailBanner
@@ -170,7 +186,7 @@ export const MonthlyActivityFreeEmail = (
             ctaLabel={l10n.getString(
               "email-monthly-report-hero-free-no-breaches-cta",
             )}
-            ctaTarget={`${process.env.SERVER_URL}/user/dashboard/?utm_source=${scanOrUpgradeCtaUtm.utmSource}&utm_medium=${scanOrUpgradeCtaUtm.utmMedium}&utm_campaign=${scanOrUpgradeCtaUtm.utmCampaign}&utm_content=view-your-dashboard-us`}
+            ctaTarget={`${process.env.SERVER_URL}/user/dashboard/?utm_source=${utmValues.utmSource}&utm_medium=${utmValues.utmMedium}&utm_campaign=${utmValues.utmCampaign}&utm_content=view-your-dashboard-us`}
           />
         )}
         {isEligibleForPremium(assumedCountryCode) && (
@@ -264,7 +280,7 @@ export const MonthlyActivityFreeEmail = (
 
               <mj-column width="100%" border-top="8px">
                 <mj-button
-                  href={`${process.env.SERVER_URL}/user/dashboard/action-needed?utm_source=${scanOrUpgradeCtaUtm.utmSource}&utm_medium=${scanOrUpgradeCtaUtm.utmMedium}&utm_campaign=${scanOrUpgradeCtaUtm.utmCampaign}&utm_content=view-details-${utmContentSuffix}`}
+                  href={`${process.env.SERVER_URL}/user/dashboard/action-needed?utm_source=${utmValues.utmSource}&utm_medium=${utmValues.utmMedium}&utm_campaign=${utmValues.utmCampaign}&utm_content=view-details${utmContentSuffix}`}
                   background-color="#592ACB"
                   border-radius="8px"
                   padding="12px 24px"
@@ -283,7 +299,7 @@ export const MonthlyActivityFreeEmail = (
         )}
         <RedesignedEmailFooter
           l10n={l10n}
-          utm_campaign={scanOrUpgradeCtaUtm.utmCampaign}
+          utm_campaign={utmValues.utmCampaign}
           unsubscribeLink={props.unsubscribeLink}
         />
       </mj-body>
