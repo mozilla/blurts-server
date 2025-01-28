@@ -120,7 +120,7 @@ features:
         }
       - channel: staging
         value: {
-          "enabled": true,
+          "enabled": false,
           "variant": redesign,
         }
       - channel: production
