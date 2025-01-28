@@ -97,7 +97,10 @@ export default async function RootLayout({
         data-ga4-measurement-id={CONST_GA4_MEASUREMENT_ID}
         data-node-env={process.env.NODE_ENV}
       >
-        <ExperimentsProvider experimentData={experimentData}>
+        <ExperimentsProvider
+          experimentData={experimentData}
+          experimentationId={experimentationId}
+        >
           <SessionProvider session={session}>{children}</SessionProvider>
         </ExperimentsProvider>
       </body>

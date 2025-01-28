@@ -10,18 +10,23 @@ import { ExperimentData_V2_Or_V2LikeV1 } from "../app/functions/server/getExperi
 interface ExperimentsProviderProps {
   children: ReactNode;
   experimentData: ExperimentData_V2_Or_V2LikeV1;
+  experimentationId: string;
 }
 
-export const ExperimentsContext =
-  createContext<ExperimentData_V2_Or_V2LikeV1 | null>(null);
+export const ExperimentsContext = createContext<{
+  experimentData: ExperimentData_V2_Or_V2LikeV1;
+  experimentationId: string;
+} | null>(null);
 
-export const ExperimentsProvider = ({
-  children,
-  experimentData,
-}: ExperimentsProviderProps) => {
+export const ExperimentsProvider = (props: ExperimentsProviderProps) => {
   return (
-    <ExperimentsContext.Provider value={experimentData}>
-      {children}
+    <ExperimentsContext.Provider
+      value={{
+        experimentData: props.experimentData,
+        experimentationId: props.experimentationId,
+      }}
+    >
+      {props.children}
     </ExperimentsContext.Provider>
   );
 };
