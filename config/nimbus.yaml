@@ -121,7 +121,7 @@ features:
       - channel: staging
         value: {
           "enabled": false,
-          "variant": default,
+          "variant": redesign,
         }
       - channel: production
         value: {
