@@ -5,6 +5,9 @@ const buildEslintCommand = (filenames) =>
     .map((f) => path.relative(process.cwd(), f))
     .join(" --file ")}`;
 
+/**
+ * @type {import("lint-staged").Configuration}
+ */
 export default {
   "*.{js,cjs,mjs,jsx,ts,tsx}": [buildEslintCommand],
   "*.{scss,css}": "stylelint --allow-empty-input --fix",
