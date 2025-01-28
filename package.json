@@ -160,7 +160,7 @@
     "prettier": "3.4.2",
     "sass": "^1.83.1",
     "storybook": "^8.4.6",
-    "stylelint": "^16.13.2",
+    "stylelint": "^16.14.1",
     "stylelint-config-recommended-scss": "^14.1.0",
     "stylelint-scss": "^6.10.1",
     "tsx": "^4.19.2",
