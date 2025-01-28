@@ -7,7 +7,6 @@ import { PublicShell } from "./PublicShell";
 import {
   getAcceptLangHeaderInServerComponents,
   getL10n,
-  getL10nBundles,
 } from "../../../functions/l10n/serverComponents";
 import { headers } from "next/headers";
 import { getCountryCode } from "../../../functions/server/getCountryCode";
@@ -23,9 +22,7 @@ export default async function Layout(props: { children: ReactNode }) {
     isSignedOut: true,
   });
   const l10n = getL10n(await getAcceptLangHeaderInServerComponents());
-  const currentLocale = getLocale(
-    getL10nBundles(await getAcceptLangHeaderInServerComponents()),
-  );
+  const currentLocale = getLocale(l10n);
   const session = await getServerSession();
   const headersList = await headers();
   const countryCode = getCountryCode(headersList);
