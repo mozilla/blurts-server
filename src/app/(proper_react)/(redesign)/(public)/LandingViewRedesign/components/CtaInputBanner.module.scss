@@ -38,7 +38,8 @@
     display: flex;
     gap: tokens.$spacing-sm;
 
-    h2 {
+    b,
+    strong {
       font-weight: 700;
     }
 

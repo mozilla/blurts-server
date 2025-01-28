@@ -37,6 +37,14 @@
       justify-content: flex-end;
     }
 
+    .signInButton {
+      display: none;
+
+      @media screen and (min-width: tokens.$screen-sm) {
+        display: block;
+      }
+    }
+
     .menuToggleButton {
       display: flex;
       align-items: center;

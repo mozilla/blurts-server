@@ -6,16 +6,20 @@
   flex-direction: column;
   gap: tokens.$layout-sm;
   max-width: tokens.$content-lg;
-  padding: 0 tokens.$layout-sm;
   text-align: center;
+
+  @media screen and (min-width: tokens.$screen-sm) {
+    padding: 0 tokens.$layout-xs;
+  }
 
   &Header {
     display: flex;
     flex-direction: column;
     gap: tokens.$spacing-sm;
 
-    h2 {
-      font-weight: 600;
+    b,
+    strong {
+      font-weight: 700;
     }
 
     strong {
