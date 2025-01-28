@@ -11,5 +11,5 @@ const buildEslintCommand = (filenames) =>
 export default {
   "*.{js,cjs,mjs,jsx,ts,tsx}": [buildEslintCommand],
   "*.{scss,css}": "stylelint --allow-empty-input --fix",
-  "*.{ts,tsx,jsx,cjs,mjs,scss,css,md,html}": "prettier --write",
+  "*.{js,ts,tsx,jsx,cjs,mjs,scss,css,md,html}": "prettier --write",
 };
