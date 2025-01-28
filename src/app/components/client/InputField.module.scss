@@ -13,7 +13,6 @@
   }
 
   .floatingLabel {
-    background: tokens.$color-white;
     border-radius: tokens.$border-radius-sm;
     backface-visibility: hidden;
     color: tokens.$color-black;
@@ -22,9 +21,11 @@
     // Add a bit more space: The next spacing step is too much.
     left: calc(tokens.$spacing-sm * 1.5);
     line-height: 1em;
+    overflow: hidden;
     padding: 0 calc(tokens.$spacing-xs * 0.5);
     pointer-events: none;
     position: absolute;
+    text-overflow: ellipsis;
     top: 50%;
     transform-origin: top left;
     transform: translate(-0.05em, -50%) scale(1);
@@ -32,6 +33,8 @@
       transform 0.1s ease-in-out,
       color 0.1s ease-in-out;
     user-select: none;
+    white-space: nowrap;
+    width: calc(100% - tokens.$spacing-sm * 1.5);
   }
 
   .inputField {

@@ -147,7 +147,7 @@ describe("The redesigned breach alert email", () => {
     render(<ComposedEmail />);
 
     const takeActionButton = screen.getByRole("link", {
-      name: "Take action to resolve these exposures",
+      name: "Resolve exposures",
     });
     expect(takeActionButton).toBeInTheDocument();
   });
