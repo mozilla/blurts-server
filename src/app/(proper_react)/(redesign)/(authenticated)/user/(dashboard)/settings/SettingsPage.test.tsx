@@ -226,7 +226,7 @@ const mockedSubscriptionBillingAmount = {
   yearly: 13.37,
   monthly: 42.42,
 };
-const mockedPlusSubscriberEmailPreferences: SubscriberEmailPreferencesOutput = {
+const mockedPlusSubscriberEmailPreferences = {
   id: 1337,
   primary_email: "primary@example.com",
   unsubscribe_token: "495398jfjvjfdj",
@@ -234,9 +234,9 @@ const mockedPlusSubscriberEmailPreferences: SubscriberEmailPreferencesOutput = {
   monthly_monitor_report_free_at: new Date("1337-04-02T04:02:42.000Z"),
   monthly_monitor_report: true,
   monthly_monitor_report_at: new Date("1337-04-02T04:02:42.000Z"),
-};
+} as SubscriberEmailPreferencesOutput;
 
-const mockedFreeSubscriberEmailPreferences: SubscriberEmailPreferencesOutput = {
+const mockedFreeSubscriberEmailPreferences = {
   id: 1337,
   primary_email: "primary@example.com",
   unsubscribe_token: "495398jfjvjfdj",
@@ -244,7 +244,7 @@ const mockedFreeSubscriberEmailPreferences: SubscriberEmailPreferencesOutput = {
   monthly_monitor_report_free_at: new Date("1337-04-02T04:02:42.000Z"),
   monthly_monitor_report: false,
   monthly_monitor_report_at: new Date("1337-04-02T04:02:42.000Z"),
-};
+} as SubscriberEmailPreferencesOutput;
 
 const mockedSession = {
   expires: new Date().toISOString(),
@@ -2532,5 +2532,34 @@ describe("Settings page", () => {
 
       expect(mockedSessionUpdate).toHaveBeenCalledTimes(1);
     });
+  });
+
+  it("does not crash if no email preferences were found for the current user", () => {
+    const component = (
+      <SettingsWrapper>
+        <SettingsView
+          activeTab="notifications"
+          l10n={getL10n()}
+          user={mockedUser}
+          subscriber={mockedSubscriber}
+          breachCountByEmailAddress={{
+            [mockedUser.email]: 42,
+            [mockedSecondaryVerifiedEmail.email]: 42,
+          }}
+          emailAddresses={[mockedSecondaryVerifiedEmail]}
+          fxaSettingsUrl=""
+          fxaSubscriptionsUrl=""
+          yearlySubscriptionUrl=""
+          monthlySubscriptionUrl=""
+          subscriptionBillingAmount={mockedSubscriptionBillingAmount}
+          enabledFeatureFlags={[]}
+          experimentData={defaultExperimentData["Features"]}
+          isMonthlySubscriber={true}
+          data={undefined}
+        />
+      </SettingsWrapper>
+    );
+
+    expect(() => render(component)).not.toThrow();
   });
 });
