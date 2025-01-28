@@ -11,7 +11,7 @@
 }
 
 .pricingCard {
-  box-shadow: inset 0 0 0 4px tokens.$color-grey-10;
+  box-shadow: inset 0 0 0 6px tokens.$color-grey-10;
   border-radius: tokens.$border-radius-xl;
   display: inline-flex;
   flex: 1;
@@ -21,15 +21,14 @@
   position: relative;
 
   &:first-of-type {
-    box-shadow: inset 0 0 0 4px tokens.$color-purple-70;
+    box-shadow: inset 0 0 0 6px tokens.$color-purple-70;
   }
 
   &Label {
     background-color: tokens.$color-white;
     border-radius: tokens.$border-radius-md;
-    box-shadow: 0 0 0 3px tokens.$color-purple-70;
+    box-shadow: 0 0 0 4px tokens.$color-purple-70;
     color: tokens.$color-purple-70;
-    font: tokens.$text-body-xs;
     font-weight: 700;
     left: 50%;
     // Add a bit more space: The next spacing step is too much.
@@ -37,13 +36,13 @@
       tokens.$spacing-sm;
     line-height: 1em;
     position: absolute;
-    top: 1px;
+    top: calc(tokens.$spacing-xs * 0.5);
     transform: translate(-50%, -50%);
   }
 
   dt {
     border-bottom: 1px solid tokens.$color-grey-10;
-    padding: tokens.$spacing-xs tokens.$spacing-xs tokens.$spacing-lg;
+    padding: tokens.$spacing-md tokens.$spacing-xs tokens.$spacing-lg;
     text-align: center;
 
     b {

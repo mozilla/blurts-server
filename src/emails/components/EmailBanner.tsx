@@ -68,7 +68,7 @@ export const EmailBanner = (props: {
 
             <mj-button
               href={props.ctaTarget}
-              background-color="#0060DF"
+              background-color="#592ACB"
               font-weight={600}
               font-size="15px"
               line-height="22px"

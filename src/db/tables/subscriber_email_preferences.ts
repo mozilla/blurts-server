@@ -5,6 +5,10 @@
 import createDbConnection from "../connect";
 import { logger } from "../../app/functions/server/logging";
 import { captureException } from "@sentry/node";
+import {
+  SubscriberEmailPreferencesRow,
+  SubscriberRow,
+} from "knex/types/tables";
 
 const knex = createDbConnection();
 
@@ -21,22 +25,15 @@ interface SubscriberPlusEmailPreferencesInput {
   monthly_monitor_report_at?: Date;
 }
 
-export interface SubscriberEmailPreferencesOutput {
-  id?: number;
-  primary_email?: string;
-  unsubscribe_token?: string;
-  monthly_monitor_report_free?: boolean;
-  monthly_monitor_report_free_at?: Date;
-  monthly_monitor_report?: boolean;
-  monthly_monitor_report_at?: Date;
-}
+export type SubscriberEmailPreferencesOutput = SubscriberRow &
+  Partial<SubscriberEmailPreferencesRow>;
 
 // TODO: modify after MNTOR-3557 - pref currently lives in two tables
 // this function only adds email prefs for free reports
 async function addEmailPreferenceForSubscriber(
   subscriberId: number,
   preference: SubscriberFreeEmailPreferencesInput,
-) {
+): Promise<SubscriberEmailPreferencesRow> {
   logger.info("add_email_preference_for_subscriber", {
     subscriberId,
     preference,
@@ -73,7 +70,7 @@ async function addEmailPreferenceForSubscriber(
 async function addUnsubscribeTokenForSubscriber(
   subscriberId: number,
   token: string,
-) {
+): Promise<SubscriberEmailPreferencesRow> {
   logger.info("add_unsubscribe_token_for_subscriber", {
     subscriberId,
   });
@@ -125,7 +122,7 @@ async function updateEmailPreferenceForSubscriber(
         );
       } else {
         res = (
-          (await knex("subscriber_email_preferences")
+          await knex("subscriber_email_preferences")
             .where("subscriber_id", subscriberId)
             .update({
               ...(preference as SubscriberFreeEmailPreferencesInput),
@@ -133,7 +130,7 @@ async function updateEmailPreferenceForSubscriber(
               // even if it's not typed as a JS date object:
               monthly_monitor_report_free_at: knex.fn.now(),
             })
-            .returning("*")) as SubscriberEmailPreferencesOutput[]
+            .returning("*")
         )?.[0];
       }
       if (!res) {
@@ -144,7 +141,7 @@ async function updateEmailPreferenceForSubscriber(
     } else {
       // TODO: modify after MNTOR-3557 - pref currently lives in two tables
       res = (
-        (await knex("subscribers")
+        await knex("subscribers")
           .where("id", subscriberId)
           .update({
             ...(preference as SubscriberPlusEmailPreferencesInput),
@@ -152,7 +149,7 @@ async function updateEmailPreferenceForSubscriber(
             // even if it's not typed as a JS date object:
             updated_at: knex.fn.now(),
           })
-          .returning("*")) as SubscriberEmailPreferencesOutput[]
+          .returning("*")
       )?.[0];
 
       if (!res) {
@@ -216,7 +213,9 @@ async function getEmailPreferenceForSubscriber(subscriberId: number) {
   return res?.[0];
 }
 
-async function getEmailPreferenceForUnsubscribeToken(unsubscribeToken: string) {
+async function getEmailPreferenceForUnsubscribeToken(
+  unsubscribeToken: string,
+): Promise<SubscriberEmailPreferencesRow | undefined> {
   logger.info("get_email_preference_for_unsubscribe_token", {
     token: unsubscribeToken,
   });
@@ -225,14 +224,8 @@ async function getEmailPreferenceForUnsubscribeToken(unsubscribeToken: string) {
   // TODO: modify after MNTOR-3557 - pref currently lives in two tables, we have to join the tables
   try {
     res = await knex("subscriber_email_preferences")
-      .select(
-        "subscriber_id AS id",
-        "monthly_monitor_report_free",
-        "monthly_monitor_report_free_at",
-        "unsubscribe_token",
-      )
-      .where("unsubscribe_token", unsubscribeToken)
-      .returning(["*"]);
+      .select("*")
+      .where("unsubscribe_token", unsubscribeToken);
 
     logger.debug(
       `get_email_preference_for_unsubscriber_token: ${JSON.stringify(res)}`,
@@ -249,7 +242,7 @@ async function getEmailPreferenceForUnsubscribeToken(unsubscribeToken: string) {
 
     throw e;
   }
-  return res?.[0] as SubscriberEmailPreferencesOutput;
+  return res?.[0];
 }
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
@@ -257,9 +250,8 @@ async function getEmailPreferenceForUnsubscribeToken(unsubscribeToken: string) {
 async function unsubscribeMonthlyMonitorReportForUnsubscribeToken(
   unsubscribeToken: string,
 ) {
-  let sub;
   try {
-    sub = await getEmailPreferenceForUnsubscribeToken(unsubscribeToken);
+    const sub = await getEmailPreferenceForUnsubscribeToken(unsubscribeToken);
 
     if (
       typeof sub?.id === "number" &&
@@ -291,7 +283,9 @@ async function unsubscribeMonthlyMonitorReportForUnsubscribeToken(
 }
 /* c8 ignore stop */
 
-async function getEmailPreferenceForPrimaryEmail(email: string) {
+async function getEmailPreferenceForPrimaryEmail(
+  email: string,
+): Promise<SubscriberEmailPreferencesOutput | undefined> {
   logger.info("get_email_preference_for_primary_email", {
     email,
   });
@@ -300,25 +294,14 @@ async function getEmailPreferenceForPrimaryEmail(email: string) {
   // TODO: modify after MNTOR-3557 - pref currently lives in two tables, we have to join the tables
   try {
     res = await knex
-      .select(
-        "subscribers.primary_email",
-        "subscribers.id",
-        "subscribers.all_emails_to_primary",
-        "subscribers.monthly_monitor_report",
-        "subscribers.monthly_monitor_report_at",
-        "subscribers.first_broker_removal_email_sent",
-        "subscriber_email_preferences.monthly_monitor_report_free",
-        "subscriber_email_preferences.monthly_monitor_report_free_at",
-        "subscriber_email_preferences.unsubscribe_token",
-      )
+      .select("*")
       .from("subscribers")
       .where("subscribers.primary_email", email)
       .leftJoin(
         "subscriber_email_preferences",
         "subscribers.id",
         "subscriber_email_preferences.subscriber_id",
-      )
-      .returning(["*"]);
+      );
 
     logger.debug("get_email_preference_for_primary_email_success");
     logger.debug(
@@ -332,7 +315,7 @@ async function getEmailPreferenceForPrimaryEmail(email: string) {
 
     throw e;
   }
-  return res?.[0] as SubscriberEmailPreferencesOutput;
+  return res?.[0];
 }
 
 export {
