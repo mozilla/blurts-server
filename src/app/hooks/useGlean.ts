@@ -13,7 +13,7 @@ import { useExperiments } from "../../contextProviders/experiments";
 
 export const useGlean = () => {
   const session = useSession();
-  const experimentData = useExperiments();
+  const experiments = useExperiments();
   // Telemetry recording is mocked in our unit tests, therefore we
   // do not have test coverage for this method.
   /* c8 ignore start */
@@ -44,31 +44,19 @@ export const useGlean = () => {
       // Record the `nimbus_*` keys on all events.
       // `nimbus_*` is set on every metric, but it's too much work for TypeScript
       // to infer that — hence the type assertion.
-
-      if (
-        experimentData &&
-        typeof experimentData["Enrollments"] !== "undefined"
-      ) {
-        (data as GleanMetricMap["button"]["click"]).nimbus_user_id =
-          experimentData["Enrollments"]["nimbus_user_id"];
-        (data as GleanMetricMap["button"]["click"]).nimbus_app_id =
-          experimentData["Enrollments"]["app_id"];
-        (data as GleanMetricMap["button"]["click"]).nimbus_experiment =
-          experimentData["Enrollments"]["experiment"];
-        (data as GleanMetricMap["button"]["click"]).nimbus_branch =
-          experimentData["Enrollments"]["branch"];
-        (data as GleanMetricMap["button"]["click"]).nimbus_experiment_type =
-          experimentData["Enrollments"]["experiment_type"];
-        (data as GleanMetricMap["button"]["click"]).nimbus_is_preview =
-          experimentData["Enrollments"]["is_preview"].toString();
+      if (experiments === null) {
+        console.warn(
+          "`useGlean` is used in a component that is not a (grand)child of <ExperimentsProvider>",
+        );
       } else {
-        console.warn("No experiment data available for Glean");
+        (data as GleanMetricMap["button"]["click"]).nimbus_user_id =
+          experiments.experimentationId;
       }
 
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       mod[event].record(data as any);
     },
-    [isPremiumUser, experimentData],
+    [isPremiumUser, experiments],
   );
   /* c8 ignore end */
 

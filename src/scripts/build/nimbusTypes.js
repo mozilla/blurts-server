@@ -96,17 +96,19 @@ function getFallbackObject(nimbusConfig) {
   );
 
   const defaultExperimentData = `
-    "Features": {
+    Features: {
       ${featureFallbackDefs.join("\n")}
     },
-    "Enrollments": {
-      "nimbus_user_id": "-1",
-      "app_id": "-1",
-      "experiment": "-1",
-      "branch": "-1",
-      "experiment_type": "-1",
-      "is_preview": false
-    }`;
+    Enrollments: [
+      {
+        nimbus_user_id: "-1",
+        app_id: "-1",
+        experiment: "-1",
+        branch: "-1",
+        experiment_type: "-1",
+        is_preview: false
+      }
+    ]`;
   return `export const defaultExperimentData: ExperimentData = {\n${defaultExperimentData}};\n`;
 }
 
@@ -129,17 +131,19 @@ function getLocalOverrides(nimbusConfig) {
   );
 
   const localExperimentData = `
-  "Features": {
+  Features: {
     ${featureLocalOverridesDefs.join("\n")}
   },
-  "Enrollments": {
-    "nimbus_user_id": "-1",
-    "app_id": "-1",
-    "experiment": "-1",
-    "branch": "-1",
-    "experiment_type": "-1",
-    "is_preview": false
-  }`;
+  Enrollments: [
+    {
+      nimbus_user_id: "-1",
+      app_id: "-1",
+      experiment: "-1",
+      branch: "-1",
+      experiment_type: "-1",
+      is_preview: false
+    }
+  ]`;
 
   return `export const localExperimentData: ExperimentData = {\n${localExperimentData}};\n`;
 }
@@ -160,15 +164,15 @@ function getFeaturesTypeDef(nimbusConfig) {
   });
 
   const experimentDataType = `{
-  "Features": {${featureDefs.join("")}};
-  "Enrollments": {
-    "nimbus_user_id": string,
-    "app_id": string,
-    "experiment": string,
-    "branch": string,
-    "experiment_type": string,
-    "is_preview": boolean
-    };
+  Features: {${featureDefs.join("")}};
+  Enrollments: Array<{
+    nimbus_user_id: string,
+    app_id: string,
+    experiment: string,
+    branch: string,
+    experiment_type: string,
+    is_preview: boolean
+    }>;
   };`;
 
   const experimentDataTypeDef = `/** Status of experiments, as setup in Experimenter */\nexport type ExperimentData = ${experimentDataType}`;
