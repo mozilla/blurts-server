@@ -43,6 +43,7 @@ import { isEligibleForPremium } from "../../../../../functions/universal/premium
 import { MonthlyActivityFreeEmail } from "../../../../../../emails/templates/monthlyActivityFree/MonthlyActivityFreeEmail";
 import { getMonthlyActivityFreeUnsubscribeLink } from "../../../../../../app/functions/cronjobs/unsubscribeLinks";
 import { getScanResultsWithBroker } from "../../../../../../db/tables/onerep_scans";
+import { UpcomingExpirationEmail } from "../../../../../../emails/templates/upcomingExpiration/UpcomingExpirationEmail";
 
 async function getAdminSubscriber(): Promise<SubscriberRow | null> {
   const session = await getServerSession();
@@ -281,6 +282,26 @@ export async function triggerFirstDataBrokerRemovalFixed(emailAddress: string) {
         dataBrokerLink: `${process.env.SERVER_URL}/user/dashboard/fixed`,
         removalDate: randomScanResult.updated_at,
       }}
+      l10n={l10n}
+    />,
+  );
+}
+
+export async function triggerPlusExpirationEmail(emailAddress: string) {
+  const subscriber = await getAdminSubscriber();
+  if (!subscriber) {
+    return false;
+  }
+
+  const acceptLangHeader = await getAcceptLangHeaderInServerComponents();
+  const l10n = getL10n(acceptLangHeader);
+  await send(
+    emailAddress,
+    l10n.getString("email-plus-expiration-subject"),
+    <UpcomingExpirationEmail
+      subscriber={sanitizeSubscriberRow(subscriber)}
+      // Always pretend that the user's account expires in 7 days for the test email:
+      expirationDate={new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)}
       l10n={l10n}
     />,
   );
