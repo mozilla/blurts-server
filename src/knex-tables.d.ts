@@ -33,7 +33,7 @@ declare module "knex/types/tables" {
     intervl: string;
     plan_id: string;
     product_id: string;
-    current_period_end: string;
+    current_period_end: Date;
   }
 
   interface OnerepScanResultDataBrokerRow extends OnerepScanResultRow {

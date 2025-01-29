@@ -6,6 +6,8 @@ import { getServerSession } from "../../../../../functions/server/getServerSessi
 import { notFound } from "next/navigation";
 import { isAdmin } from "../../../../../api/utils/auth";
 import { ChurnAdmin } from "./ChurnAdmin";
+import { getAllChurns } from "./actions";
+import { getChurnsToEmail } from "../../../../../../db/tables/subscriber_churns";
 
 export default async function DevPage() {
   const session = await getServerSession();
@@ -14,5 +16,10 @@ export default async function DevPage() {
     return notFound();
   }
 
-  return <ChurnAdmin />;
+  return (
+    <ChurnAdmin
+      churningSubscribers={await getAllChurns()}
+      churnsToEmail={await getChurnsToEmail()}
+    />
+  );
 }
