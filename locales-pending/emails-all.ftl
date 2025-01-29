@@ -9,17 +9,6 @@ email-footer-reason-subscriber-one-time = You’ve received this one-time automa
 
 ## Monthly overview email
 
-email-monthly-plus-auto-subject = Your monthly { -brand-monitor } report
-email-monthly-plus-auto-preview = See how we’ve protected your personal information.
-email-monthly-plus-auto-intro-content = As a { -brand-monitor-plus } subscriber, you have our highest level of protection. We remove your personal info from data broker sites — no matter how many times they re-add you. We also help you resolve data breaches that require manual action. Here’s what we fixed:
-email-monthly-plus-auto-cta-label = View all activity
-# Accompanies a number that indicates how many data broker exposures the user fixed themselves
-email-monthly-plus-auto-fixed-section-manual-heading = Manually fixed
-# Accompanies a number that indicates how many data broker exposures we're still fixing
-email-monthly-plus-auto-fixed-section-in-progress-heading = Removals in progress
-# Accompanies a number that indicates how many data broker exposures we've already fixed
-email-monthly-plus-auto-fixed-section-done-heading = Auto-removed
-
 email-monthly-free-subject = Your monthly { -brand-monitor } report
 email-monthly-free-preview = See what was fixed this month and what needs your attention.
 email-monthly-free-intro-content = We constantly monitor for new exposures of your personal info. Sign in to see what exposures need you to take action, and what’s already been fixed.
