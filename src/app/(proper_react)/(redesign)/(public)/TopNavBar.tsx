@@ -56,7 +56,7 @@ export const TopNavBar = () => {
           </TelemetryLink>
         </li>
       </ul>
-      <SignInButton variant="secondary" small />
+      <SignInButton className={styles.signInButton} variant="secondary" small />
     </div>
   );
 };
