@@ -5,8 +5,9 @@
 import { notFound, redirect } from "next/navigation";
 import { getServerSession } from "../../../../../functions/server/getServerSession";
 import {
+  allFeatureFlags,
   FeatureFlagName,
-  featureFlagNames,
+  featureFlagsAdminOnly,
   getAllFeatureFlags,
 } from "../../../../../../db/tables/featureFlags";
 import { isAdmin } from "../../../../../api/utils/auth";
@@ -43,7 +44,7 @@ export default async function FeatureFlagPage() {
    * Elements in this array are either existing flags that are disabled,
    * or names of flags that are not known in the database yet.
    */
-  const disabledFlags = featureFlagNames
+  const disabledFlags = allFeatureFlags
     .map((flagName) => {
       return featureFlags.find((flag) => flag.name === flagName) ?? flagName;
     })
@@ -52,6 +53,11 @@ export default async function FeatureFlagPage() {
         typeof flagOrFlagName === "string" || !flagOrFlagName.is_enabled,
     )
     .reverse();
+
+  const isAdminOnlyFeature = (flagName: string) =>
+    featureFlagsAdminOnly.includes(
+      flagName as (typeof featureFlagsAdminOnly)[number],
+    );
 
   return (
     <div className={styles.wrapper}>
@@ -77,7 +83,11 @@ export default async function FeatureFlagPage() {
         <div className={styles.flagList}>
           {disabledFlags.map((flagOrFlagName) => {
             return typeof flagOrFlagName === "string" ? (
-              <NewFlagEditor key={flagOrFlagName} flagName={flagOrFlagName} />
+              <NewFlagEditor
+                key={flagOrFlagName}
+                flagName={flagOrFlagName}
+                adminOnly={isAdminOnlyFeature(flagOrFlagName)}
+              />
             ) : (
               <ExistingFlagEditor
                 key={flagOrFlagName.name}
@@ -92,7 +102,7 @@ export default async function FeatureFlagPage() {
             .filter(
               (flag) =>
                 flag.is_enabled &&
-                featureFlagNames.includes(flag.name as FeatureFlagName),
+                allFeatureFlags.includes(flag.name as FeatureFlagName),
             )
             .map((flag) => (
               <ExistingFlagEditor key={flag.name} flag={flag} />

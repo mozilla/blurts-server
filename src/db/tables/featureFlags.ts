@@ -58,7 +58,15 @@ export const featureFlagNames = [
   "CirrusV2",
   "DataBrokerRemovalAttempts",
 ] as const;
-export type FeatureFlagName = (typeof featureFlagNames)[number];
+
+export const featureFlagsAdminOnly = ["CustomDataBrokersAndBreaches"] as const;
+
+export const allFeatureFlags = [
+  ...featureFlagNames,
+  ...featureFlagsAdminOnly,
+] as const;
+
+export type FeatureFlagName = (typeof allFeatureFlags)[number];
 
 /**
  * @param options
@@ -92,7 +100,7 @@ export async function getEnabledFeatureFlags(
       const forcedFeatureFlagsFiltered = forcedFeatureFlags
         .split(",")
         .filter((forcedFeatureFlag) =>
-          featureFlagNames.includes(forcedFeatureFlag as FeatureFlagName),
+          allFeatureFlags.includes(forcedFeatureFlag as FeatureFlagName),
         );
       return [
         ...new Set([...enabledFlagNames, ...forcedFeatureFlagsFiltered]),

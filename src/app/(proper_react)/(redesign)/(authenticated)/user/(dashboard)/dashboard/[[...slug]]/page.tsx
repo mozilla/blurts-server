@@ -34,7 +34,10 @@ import {
   getPremiumSubscriptionUrl,
 } from "../../../../../../../functions/server/getPremiumSubscriptionInfo";
 import { refreshStoredScanResults } from "../../../../../../../functions/server/refreshStoredScanResults";
-import { getEnabledFeatureFlags } from "../../../../../../../../db/tables/featureFlags";
+import {
+  allFeatureFlags,
+  getEnabledFeatureFlags,
+} from "../../../../../../../../db/tables/featureFlags";
 import { getAttributionsFromCookiesOrDb } from "../../../../../../../functions/server/attributions";
 import { checkSession } from "../../../../../../../functions/server/checkSession";
 import { isPrePlusUser } from "../../../../../../../functions/server/isPrePlusUser";
@@ -47,7 +50,6 @@ import {
   getL10n,
 } from "../../../../../../../functions/l10n/serverComponents";
 import { getDataBrokerRemovalTimeEstimates } from "../../../../../../../functions/server/getDataBrokerRemovalTimeEstimates";
-import { getQaToggleRow } from "../../../../../../../../db/tables/qa_customs";
 
 const dashboardTabSlugs = ["action-needed", "fixed"];
 
@@ -116,15 +118,11 @@ export default async function DashboardPage(props: Props) {
 
   const mockScanResultsData = await getMockedScanResults(profileId ?? 100);
 
-  const qaToggles = await getQaToggleRow(profileId);
-  console.log({ qaToggles });
-  let showCustomBrokers = false;
+  const showCustomData = allFeatureFlags.includes(
+    "CustomDataBrokersAndBreaches",
+  );
 
-  if (qaToggles) {
-    showCustomBrokers = qaToggles.show_custom_brokers;
-  }
-
-  const brokerData = showCustomBrokers ? mockScanResultsData : latestScan;
+  const brokerData = showCustomData ? mockScanResultsData : latestScan;
 
   const scanCount =
     typeof profileId === "number"
