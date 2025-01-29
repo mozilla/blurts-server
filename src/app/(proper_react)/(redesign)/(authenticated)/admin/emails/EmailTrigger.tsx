@@ -12,6 +12,7 @@ import {
   triggerFirstDataBrokerRemovalFixed,
   triggerMonthlyActivityFree,
   triggerMonthlyActivityPlus,
+  triggerPlusExpirationEmail,
   triggerSignupReportEmail,
   triggerVerificationEmail,
 } from "./actions";
@@ -37,6 +38,10 @@ export const EmailTrigger = (props: Props) => {
   const [
     isSendingMonthlyActivityPlusOverview,
     setIsSendingMonthlyActivityPlusOverview,
+  ] = useState(false);
+  const [
+    isSendingPlusExpirationNotification,
+    setIsSendingPlusExpirationNotification,
   ] = useState(false);
   const [firstDataBrokerRemovalFixed, setFirstDataBrokerRemovalFixed] =
     useState(false);
@@ -154,6 +159,18 @@ export const EmailTrigger = (props: Props) => {
           }}
         >
           First data broker removal fixed
+        </Button>
+        <Button
+          variant="primary"
+          isLoading={isSendingPlusExpirationNotification}
+          onPress={() => {
+            setIsSendingPlusExpirationNotification(true);
+            void triggerPlusExpirationEmail(selectedEmailAddress).then(() => {
+              setIsSendingPlusExpirationNotification(false);
+            });
+          }}
+        >
+          Plus expiration notification
         </Button>
       </div>
     </main>

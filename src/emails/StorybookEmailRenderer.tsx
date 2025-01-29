@@ -5,11 +5,7 @@
 // We use mjml-browser for Storybook; for real emails, regular mjml should work:
 import mjml2html from "mjml-browser";
 import { ReactNode } from "react";
-// react-dom/server.edge is apparently needed instead of react-dom/server
-// to avoid this error:
-// > Uncaught ReferenceError: MessageChannel is not defined
-// See https://github.com/facebook/react/issues/31827#issuecomment-2563094822
-import { renderToStaticMarkup } from "react-dom/server.edge";
+import { renderToStaticMarkup } from "react-dom/server";
 
 export type Props = {
   children: ReactNode;

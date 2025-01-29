@@ -4,30 +4,24 @@
 
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import styles from "./ChurnAdmin.module.scss";
 import { SubscriberChurnRow } from "knex/types/tables";
-import { getAllChurns, upsertAllChurns, clearAllChurns } from "./actions";
+import { upsertAllChurns, clearAllChurns } from "./actions";
 
-export const ChurnAdmin = () => {
+export type Props = {
+  churningSubscribers: SubscriberChurnRow[];
+  churnsToEmail: SubscriberChurnRow[];
+};
+
+export const ChurnAdmin = (props: Props) => {
   const session = useSession();
-  const [subscriberData, setSubscriberData] = useState<
-    SubscriberChurnRow[] | null
-  >(null);
   const [parsedData, setParsedData] = useState<SubscriberChurnRow[] | null>(
     null,
   );
-
-  // Load data on component mount
-  useEffect(() => {
-    const loadSubscriberData = async () => {
-      const data = await getAllChurns();
-      setSubscriberData(data);
-    };
-
-    void loadSubscriberData();
-  }, []);
+  const router = useRouter();
 
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -95,7 +89,7 @@ export const ChurnAdmin = () => {
               intervl: values[4],
               plan_id: values[6],
               product_id: values[7],
-              current_period_end: new Date(values[8]).toISOString(),
+              current_period_end: new Date(values[8]),
             };
           });
 
@@ -120,7 +114,9 @@ export const ChurnAdmin = () => {
           onSubmit={(e) => {
             e.preventDefault();
             if (!parsedData) return;
-            void upsertAllChurns(parsedData);
+            void upsertAllChurns(parsedData).then(() => {
+              router.refresh();
+            });
           }}
         >
           <input
@@ -142,51 +138,53 @@ export const ChurnAdmin = () => {
               "Are you sure you want to delete all churn data? This cannot be undone.",
             )
           ) {
-            void clearAllChurns();
+            void clearAllChurns().then(() => router.refresh());
           }
         }}
       >
         Clear All Data
       </button>
 
-      {subscriberData ? (
-        <div>
-          <p>
-            Total rows: <b>{subscriberData.length}</b> | Yearly:{" "}
-            <b>{subscriberData.filter((s) => s.intervl === "year").length}</b>
-          </p>
-          <div className={styles.tableWrapper}>
-            <table>
-              <thead>
-                <tr>
-                  <th>FxA UID</th>
-                  <th>nickname</th>
-                  <th>Interval</th>
-                  <th>Plan ID</th>
-                  <th>Product ID</th>
-                  <th>Churn Date</th>
+      <div>
+        <p>
+          Total rows: <b>{props.churningSubscribers.length}</b> | Yearly:{" "}
+          <b>
+            {
+              props.churningSubscribers.filter((s) => s.intervl === "year")
+                .length
+            }
+          </b>{" "}
+          | To email in next cron run: <b>{props.churnsToEmail.length}</b>
+        </p>
+        <div className={styles.tableWrapper}>
+          <table>
+            <thead>
+              <tr>
+                <th>FxA UID</th>
+                <th>nickname</th>
+                <th>Interval</th>
+                <th>Plan ID</th>
+                <th>Product ID</th>
+                <th>Churn Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              {props.churningSubscribers.map((row) => (
+                <tr key={row.userid}>
+                  <td>{row.userid}</td>
+                  <td>{row.nickname}</td>
+                  <td>{row.intervl}</td>
+                  <td>{row.plan_id}</td>
+                  <td>{row.product_id}</td>
+                  <td>
+                    {new Date(row.current_period_end).toLocaleDateString()}
+                  </td>
                 </tr>
-              </thead>
-              <tbody>
-                {subscriberData.map((row) => (
-                  <tr key={row.userid}>
-                    <td>{row.userid}</td>
-                    <td>{row.nickname}</td>
-                    <td>{row.intervl}</td>
-                    <td>{row.plan_id}</td>
-                    <td>{row.product_id}</td>
-                    <td>
-                      {new Date(row.current_period_end).toLocaleDateString()}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+              ))}
+            </tbody>
+          </table>
         </div>
-      ) : (
-        <p>Loading subscriber data...</p>
-      )}
+      </div>
     </main>
   );
 };
