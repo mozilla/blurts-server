@@ -73,4 +73,4 @@ updates:
     ignore:
       - dependency-name: "node"
         # Odd-numbered versions are unstable releases, so skip those.
-        versions: ["23.x", "25.x", "27.x", "29.x"]
+        versions: ["23", "25", "27", "29"]
