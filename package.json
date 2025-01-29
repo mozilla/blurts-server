@@ -132,7 +132,7 @@
     "@types/adm-zip": "^0.5.7",
     "@types/canvas-confetti": "^1.9.0",
     "@types/jest-axe": "^3.5.9",
-    "@types/jsonwebtoken": "^9.0.7",
+    "@types/jsonwebtoken": "^9.0.8",
     "@types/jwk-to-pem": "^2.0.3",
     "@types/k6": "^0.54.2",
     "@types/mjml": "^4.7.4",
