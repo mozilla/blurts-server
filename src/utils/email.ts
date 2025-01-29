@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { createTransport, Transporter } from "nodemailer";
+import { createTransport, Transporter, SendMailOptions } from "nodemailer";
 import crypto from "crypto";
 
 import { SentMessageInfo } from "nodemailer/lib/smtp-transport/index.js";
@@ -47,22 +47,25 @@ export function closeEmailPool() {
  * @param recipient
  * @param subject
  * @param html
+ * @param plaintext
  */
 export async function sendEmail(
   recipient: string,
   subject: string,
   html: string,
+  plaintext?: string,
 ): Promise<SentMessageInfo> {
   if (!gTransporter) {
     throw new Error("SMTP transport not initialized");
   }
 
   const emailFrom = envVars.EMAIL_FROM;
-  const mailOptions = {
+  const mailOptions: SendMailOptions = {
     from: emailFrom,
     to: recipient,
     subject,
     html,
+    text: plaintext,
     headers: {
       "x-ses-configuration-set": envVars.SES_CONFIG_SET,
     },
