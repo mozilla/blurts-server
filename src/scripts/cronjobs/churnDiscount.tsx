@@ -12,12 +12,19 @@ import { sanitizeSubscriberRow } from "../../app/functions/server/sanitize";
 import { getCronjobL10n } from "../../app/functions/l10n/cronjobs";
 import { renderEmail } from "../../emails/renderEmail";
 import { UpcomingExpirationEmail } from "../../emails/templates/upcomingExpiration/UpcomingExpirationEmail";
+import { getFeatureFlagData } from "../../db/tables/featureFlags";
 
 await run();
 await createDbConnection().destroy();
 
 async function run() {
-  const subscribersToEmail = await getChurnsToEmail();
+  const churnFeatureFlag = await getFeatureFlagData("ExpirationNotification");
+  const subscribersToEmail = (await getChurnsToEmail()).filter((subscriber) => {
+    return (
+      churnFeatureFlag?.is_enabled ||
+      churnFeatureFlag?.allow_list?.includes(subscriber.primary_email)
+    );
+  });
 
   await initEmail();
 

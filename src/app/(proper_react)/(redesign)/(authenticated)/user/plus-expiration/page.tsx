@@ -10,6 +10,7 @@ import { View } from "./View";
 import { logger } from "../../../../../functions/server/logging";
 import { checkChurnCouponCode } from "../../../../../functions/server/applyCoupon";
 import { applyRenewalCoupon } from "./actions";
+import { getEnabledFeatureFlags } from "../../../../../../db/tables/featureFlags";
 
 export default async function PlusExpirationPage() {
   const session = await getServerSession();
@@ -27,6 +28,14 @@ export default async function PlusExpirationPage() {
   );
   if (!subscriber) {
     logger.warn("plus_expiration_no_subscriber_found_for_session");
+    return notFound();
+  }
+
+  const enabledFeatureFlags = await getEnabledFeatureFlags({
+    email: subscriber.primary_email,
+  });
+  if (!enabledFeatureFlags.includes("ExpirationNotification")) {
+    logger.warn("plus_expiration_accessing_offer_with_flag_off");
     return notFound();
   }
 
