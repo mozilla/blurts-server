@@ -15,7 +15,7 @@ export const PricingPlans = (props: LandingPageProps) => {
   const headingId = useId();
 
   return (
-    <div className={styles.content}>
+    <div id="pricing" className={styles.content}>
       <div className={styles.header}>
         <h3 id={headingId}>
           <b>
