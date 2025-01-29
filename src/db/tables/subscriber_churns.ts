@@ -4,7 +4,7 @@
 
 import createDbConnection from "../connect";
 import { logger } from "../../app/functions/server/logging";
-import { SubscriberChurnRow } from "knex/types/tables";
+import type { SubscriberChurnRow, SubscriberRow } from "knex/types/tables";
 
 const knex = createDbConnection();
 
@@ -59,10 +59,16 @@ async function getAllSubscriberChurns(): Promise<SubscriberChurnRow[]> {
   }
 }
 
-async function getChurnsToEmail(): Promise<SubscriberChurnRow[]> {
+async function getChurnsToEmail(): Promise<
+  Array<SubscriberChurnRow & SubscriberRow>
+> {
   try {
     const res = await knex("subscriber_churns")
+      .join("subscribers", "subscriber_churns.userid", "subscribers.fxa_uid")
       .select("*")
+      // TODO: Or sent more than a year ago?
+      //       (SubPlat is supposed to be doing this a year from now, but if not, we should probably add such a condition.)
+      .whereNull("churn_prevention_email_sent_at")
       .where("intervl", "year")
       .whereNotNull("current_period_end")
       .where(knex.raw("current_period_end::timestamptz"), ">=", knex.fn.now())
@@ -73,7 +79,7 @@ async function getChurnsToEmail(): Promise<SubscriberChurnRow[]> {
       );
 
     logger.info("get_churns_to_email_success", { count: res.length });
-    return res as SubscriberChurnRow[];
+    return res;
   } catch (e) {
     logger.error("get_churns_to_email_error", {
       error: JSON.stringify(e),
