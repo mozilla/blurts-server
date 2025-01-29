@@ -57,6 +57,7 @@ export const featureFlagNames = [
   "EnableRemovalUnderMaintenanceStep",
   "CirrusV2",
   "DataBrokerRemovalAttempts",
+  "ExpirationNotification",
 ] as const;
 export type FeatureFlagName = (typeof featureFlagNames)[number];
 
