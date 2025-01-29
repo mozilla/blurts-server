@@ -11,6 +11,7 @@ import { logger } from "../../../../../functions/server/logging";
 import { checkChurnCouponCode } from "../../../../../functions/server/applyCoupon";
 import { applyRenewalCoupon } from "./actions";
 import { getEnabledFeatureFlags } from "../../../../../../db/tables/featureFlags";
+import { getChurnsToEmail } from "../../../../../../db/tables/subscriber_churns";
 
 export default async function PlusExpirationPage() {
   const session = await getServerSession();
@@ -40,6 +41,7 @@ export default async function PlusExpirationPage() {
   }
 
   const couponCheckResult = await checkChurnCouponCode(subscriber);
+  const subscribersToEmail = await getChurnsToEmail();
 
   return (
     <View
@@ -47,9 +49,12 @@ export default async function PlusExpirationPage() {
       couponCheckResult={couponCheckResult}
       applyCouponAction={applyRenewalCoupon}
       manageSubscriptionsUrl={process.env.FXA_SUBSCRIPTIONS_URL!}
-      // TODO: When we can fetch a list of users whose subscriptions are expiring,
-      // set this value correctly.
-      isOnExpirationList={false}
+      isOnExpirationList={
+        typeof subscribersToEmail.find(
+          (subscriberToEmail) =>
+            subscriberToEmail.userid === subscriber.fxa_uid,
+        ) !== "undefined"
+      }
     />
   );
 }
