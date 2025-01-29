@@ -28,6 +28,13 @@ email-plus-expiration-body-part1 = Your { -brand-monitor-plus } subscription end
 # Variables:
 #    $end_date (string) - The localised date the subscription will expire, e.g. "April 2, 1337".
 email-plus-expiration-body-part2-styled = To keep your access, sign in and <renewal-link>renew your subscription</renewal-link> before <b>{ $end_date }</b>. If you need help, <support-link>contact our Support team</support-link>.
+# Variables:
+#    $end_date (string) - The localised date the subscription will expire, e.g. "April 2, 1337".
+#    $renewal_link (string) - The URL the user can visit to renew their subscription, e.g. "https://monitor.mozilla.com/user/plus-expiration/"
+email-plus-expiration-body-part2-plain = To keep your access, sign in and renew your subscription before { $end_date }: { $renewal_link }.
+# Variables:
+#    $support_link (string) - The URL the user can visit to contact support, e.g. "https://support.mozilla.org/questions/new/monitor/form"
+email-plus-expiration-body-part3-plain = If you need help, contact our Support team: { $support_link }.
 
 # Variables:
 #    $end_date (string) - The localised date the subscription will expire, e.g. "April 2, 1337".

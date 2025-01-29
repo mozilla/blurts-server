@@ -43,7 +43,10 @@ import { isEligibleForPremium } from "../../../../../functions/universal/premium
 import { MonthlyActivityFreeEmail } from "../../../../../../emails/templates/monthlyActivityFree/MonthlyActivityFreeEmail";
 import { getMonthlyActivityFreeUnsubscribeLink } from "../../../../../../app/functions/cronjobs/unsubscribeLinks";
 import { getScanResultsWithBroker } from "../../../../../../db/tables/onerep_scans";
-import { UpcomingExpirationEmail } from "../../../../../../emails/templates/upcomingExpiration/UpcomingExpirationEmail";
+import {
+  getUnstyledUpcomingExpirationEmail,
+  UpcomingExpirationEmail,
+} from "../../../../../../emails/templates/upcomingExpiration/UpcomingExpirationEmail";
 
 async function getAdminSubscriber(): Promise<SubscriberRow | null> {
   const session = await getServerSession();
@@ -66,6 +69,7 @@ async function send(
   emailAddress: string,
   subject: string,
   template: ReactNode,
+  plaintextVersion?: string,
 ) {
   const subscriber = await getAdminSubscriber();
   if (!subscriber) {
@@ -85,6 +89,7 @@ async function send(
     emailAddress,
     "Test email: " + subject,
     await renderEmail(template),
+    plaintextVersion,
   );
 }
 
@@ -304,5 +309,10 @@ export async function triggerPlusExpirationEmail(emailAddress: string) {
       expirationDate={new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)}
       l10n={l10n}
     />,
+    getUnstyledUpcomingExpirationEmail({
+      subscriber: sanitizeSubscriberRow(subscriber),
+      expirationDate: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
+      l10n: l10n,
+    }),
   );
 }

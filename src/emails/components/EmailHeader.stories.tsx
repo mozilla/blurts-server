@@ -5,13 +5,13 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { FC } from "react";
 import { StorybookEmailRenderer } from "../StorybookEmailRenderer";
-import { EmailHeader, Props } from "./EmailHeader";
+import { EmailHeader, getUnstyledEmailHeader, Props } from "./EmailHeader";
 import { getL10n } from "../../app/functions/l10n/storybookAndJest";
 
 const meta: Meta<FC<Props>> = {
   title: "Emails/Components/Header",
   component: (props: Props) => (
-    <StorybookEmailRenderer plainTextVersion={null}>
+    <StorybookEmailRenderer plainTextVersion={getUnstyledEmailHeader(props)}>
       <mjml>
         <mj-body>
           <EmailHeader {...props} />

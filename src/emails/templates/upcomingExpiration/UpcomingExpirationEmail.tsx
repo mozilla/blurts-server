@@ -4,8 +4,14 @@
 
 import { SanitizedSubscriberRow } from "../../../app/functions/server/sanitize";
 import { ExtendedReactLocalization } from "../../../app/functions/l10n";
-import { RedesignedEmailFooter } from "../../components/EmailFooter";
-import { EmailHeader } from "../../components/EmailHeader";
+import {
+  getUnstyledRedesignedEmailFooter,
+  RedesignedEmailFooter,
+} from "../../components/EmailFooter";
+import {
+  EmailHeader,
+  getUnstyledEmailHeader,
+} from "../../components/EmailHeader";
 import { HeaderStyles, MetaTags } from "../../components/HeaderStyles";
 import { getLocale } from "../../../app/functions/universal/getLocale";
 
@@ -119,6 +125,37 @@ export const UpcomingExpirationEmail = (props: Props) => {
   );
 };
 
-export const getUnstyledUpcomingExpirationEmail = (_props: Props): string => {
-  return "TODO";
+export const getUnstyledUpcomingExpirationEmail = (props: Props): string => {
+  const l10n = props.l10n;
+  return `
+${getUnstyledEmailHeader({ l10n: l10n, utm_campaign: utmCampaign })}
+
+# ${l10n.getString("email-plus-expiration-heading")}
+
+${l10n.getString("email-plus-expiration-body-part1", {
+  end_date: props.expirationDate.toLocaleDateString(getLocale(l10n), {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  }),
+})}
+
+${l10n.getString("email-plus-expiration-body-part2-plain", {
+  end_date: props.expirationDate.toLocaleDateString(getLocale(l10n), {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  }),
+  renewal_link: `${process.env.SERVER_URL}/user/plus-expiration/?utm_campaign=${utmCampaign}&utm_source=${utmSource}&utm_medium=${utmMedium}&utm_content=resubscribe-link-plain`,
+})}
+
+${l10n.getString("email-plus-expiration-body-part3-plain", {
+  support_link: `https://support.mozilla.org?utm_campaign=${utmCampaign}&utm_source=${utmSource}&utm_medium=${utmMedium}&utm_content=expiration-support-plain`,
+})}
+
+${l10n.getString("email-plus-expiration-signoff")}
+${l10n.getString("email-plus-expiration-sender")}
+
+${getUnstyledRedesignedEmailFooter({ l10n: l10n, utm_campaign: utmCampaign })}
+  `;
 };
