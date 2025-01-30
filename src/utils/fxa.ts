@@ -386,7 +386,10 @@ async function applyCoupon(
     }
   } catch (e) {
     if (e instanceof Error) {
-      logger.error("apply_fxa_coupon", { stack: e.stack, message: e.message });
+      logger.error(
+        "apply_fxa_coupon",
+        JSON.stringify({ stack: e.stack, message: e.message }),
+      );
     }
     throw e;
   }

@@ -8,7 +8,7 @@ import { getSubscriberByFxaUid } from "../../../../../../db/tables/subscribers";
 import { applyChurnCouponCode } from "../../../../../functions/server/applyCoupon";
 import { getServerSession } from "../../../../../functions/server/getServerSession";
 import { logger } from "../../../../../functions/server/logging";
-
+import { reactivateAccount } from "../../../../../functions/server/reactivateAccount";
 export type ApplyRenewalCouponResult =
   | {
       success: false;
@@ -39,6 +39,7 @@ export async function applyRenewalCoupon(): Promise<ApplyRenewalCouponResult> {
   }
   try {
     await applyChurnCouponCode(subscriber);
+    await reactivateAccount(subscriber);
     return { success: true };
   } catch (e) {
     logger.error("apply_renewal_coupon_error", { error: e });
