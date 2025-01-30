@@ -78,13 +78,12 @@ export default async function RootLayout({
     previewMode: nimbusPreviewMode === "true",
   });
 
-  const nimbus_user_id = experimentData["Enrollments"]?.nimbus_user_id;
-  if (
-    typeof nimbus_user_id !== "undefined" &&
-    nimbus_user_id !== experimentationId
-  ) {
+  const enrollmentWithConflictingUserId = (
+    experimentData.Enrollments ?? []
+  ).find((enrollment) => enrollment.nimbus_user_id !== experimentationId);
+  if (typeof enrollmentWithConflictingUserId !== "undefined") {
     Sentry.captureMessage(
-      `Nimbus user ID from Cirrus: [${nimbus_user_id}] did not match experimentationId: [${experimentationId}]`,
+      `Nimbus user ID from Cirrus: [${enrollmentWithConflictingUserId.nimbus_user_id}] did not match experimentationId: [${experimentationId}]`,
     );
   }
 
@@ -97,7 +96,10 @@ export default async function RootLayout({
         data-ga4-measurement-id={CONST_GA4_MEASUREMENT_ID}
         data-node-env={process.env.NODE_ENV}
       >
-        <ExperimentsProvider experimentData={experimentData}>
+        <ExperimentsProvider
+          experimentData={experimentData}
+          experimentationId={experimentationId}
+        >
           <SessionProvider session={session}>{children}</SessionProvider>
         </ExperimentsProvider>
       </body>

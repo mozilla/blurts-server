@@ -696,18 +696,6 @@ async function isSubscriberPlus(subscriberId: SubscriberRow["id"]) {
 }
 /* c8 ignore stop */
 
-// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
-/* c8 ignore start */
-async function getChurnPreventionEmailSentAt(
-  subscriberId: SubscriberRow["id"],
-) {
-  const res = await knex("subscribers")
-    .select("churn_prevention_email_sent_at")
-    .where("id", subscriberId);
-  return res?.[0]?.["churn_prevention_email_sent_at"] ?? null;
-}
-/* c8 ignore stop */
-
 export {
   getOnerepProfileId,
   getSubscribersByHashes,
@@ -733,7 +721,6 @@ export {
   deleteOnerepProfileId,
   incrementSignInCountForEligibleFreeUser,
   getSignInCount,
-  getChurnPreventionEmailSentAt,
   unresolveAllBreaches,
   isSubscriberPlus,
   knex as knexSubscribers,

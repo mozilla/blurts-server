@@ -59,21 +59,6 @@ page:
       nimbus_user_id:
         description: Nimbus user ID
         type: string
-      nimbus_app_id:
-        description: Nimbus application ID
-        type: string
-      nimbus_experiment:
-        description: Nimbus experiment name
-        type: string
-      nimbus_branch:
-        description: Nimbus branch
-        type: string
-      nimbus_experiment_type:
-        description: Nimbus experiment type
-        type: string
-      nimbus_is_preview:
-        description: Nimbus preview mode enabled
-        type: string
 
 dashboard:
   view:
@@ -123,21 +108,6 @@ dashboard:
       nimbus_user_id:
         description: Nimbus user ID
         type: string
-      nimbus_app_id:
-        description: Nimbus application ID
-        type: string
-      nimbus_experiment:
-        description: Nimbus experiment name
-        type: string
-      nimbus_branch:
-        description: Nimbus branch
-        type: string
-      nimbus_experiment_type:
-        description: Nimbus experiment type
-        type: string
-      nimbus_is_preview:
-        description: Nimbus preview mode enabled
-        type: string
 
 popup:
   view:
@@ -174,21 +144,6 @@ popup:
       nimbus_user_id:
         description: Nimbus user ID
         type: string
-      nimbus_app_id:
-        description: Nimbus application ID
-        type: string
-      nimbus_experiment:
-        description: Nimbus experiment name
-        type: string
-      nimbus_branch:
-        description: Nimbus branch
-        type: string
-      nimbus_experiment_type:
-        description: Nimbus experiment type
-        type: string
-      nimbus_is_preview:
-        description: Nimbus preview mode enabled
-        type: string
 
   exit:
     type: event
@@ -223,21 +178,6 @@ popup:
         type: string
       nimbus_user_id:
         description: Nimbus user ID
-        type: string
-      nimbus_app_id:
-        description: Nimbus application ID
-        type: string
-      nimbus_experiment:
-        description: Nimbus experiment name
-        type: string
-      nimbus_branch:
-        description: Nimbus branch
-        type: string
-      nimbus_experiment_type:
-        description: Nimbus experiment type
-        type: string
-      nimbus_is_preview:
-        description: Nimbus preview mode enabled
         type: string
 
 banner:
@@ -275,21 +215,6 @@ banner:
       nimbus_user_id:
         description: Nimbus user ID
         type: string
-      nimbus_app_id:
-        description: Nimbus application ID
-        type: string
-      nimbus_experiment:
-        description: Nimbus experiment name
-        type: string
-      nimbus_branch:
-        description: Nimbus branch
-        type: string
-      nimbus_experiment_type:
-        description: Nimbus experiment type
-        type: string
-      nimbus_is_preview:
-        description: Nimbus preview mode enabled
-        type: string
 
 button:
   click:
@@ -325,21 +250,6 @@ button:
         type: string
       nimbus_user_id:
         description: Nimbus user ID
-        type: string
-      nimbus_app_id:
-        description: Nimbus application ID
-        type: string
-      nimbus_experiment:
-        description: Nimbus experiment name
-        type: string
-      nimbus_branch:
-        description: Nimbus branch
-        type: string
-      nimbus_experiment_type:
-        description: Nimbus experiment type
-        type: string
-      nimbus_is_preview:
-        description: Nimbus preview mode enabled
         type: string
 
 field:
@@ -377,21 +287,6 @@ field:
       nimbus_user_id:
         description: Nimbus user ID
         type: string
-      nimbus_app_id:
-        description: Nimbus application ID
-        type: string
-      nimbus_experiment:
-        description: Nimbus experiment name
-        type: string
-      nimbus_branch:
-        description: Nimbus branch
-        type: string
-      nimbus_experiment_type:
-        description: Nimbus experiment type
-        type: string
-      nimbus_is_preview:
-        description: Nimbus preview mode enabled
-        type: string
 
 link:
   click:
@@ -427,21 +322,6 @@ link:
         type: string
       nimbus_user_id:
         description: Nimbus user ID
-        type: string
-      nimbus_app_id:
-        description: Nimbus application ID
-        type: string
-      nimbus_experiment:
-        description: Nimbus experiment name
-        type: string
-      nimbus_branch:
-        description: Nimbus branch
-        type: string
-      nimbus_experiment_type:
-        description: Nimbus experiment type
-        type: string
-      nimbus_is_preview:
-        description: Nimbus preview mode enabled
         type: string
 
 upgrade_intent:
@@ -479,21 +359,6 @@ upgrade_intent:
       nimbus_user_id:
         description: Nimbus user ID
         type: string
-      nimbus_app_id:
-        description: Nimbus application ID
-        type: string
-      nimbus_experiment:
-        description: Nimbus experiment name
-        type: string
-      nimbus_branch:
-        description: Nimbus branch
-        type: string
-      nimbus_experiment_type:
-        description: Nimbus experiment type
-        type: string
-      nimbus_is_preview:
-        description: Nimbus preview mode enabled
-        type: string
 
   success:
     type: event
@@ -526,21 +391,6 @@ upgrade_intent:
         type: string
       nimbus_user_id:
         description: Nimbus user ID
-        type: string
-      nimbus_app_id:
-        description: Nimbus application ID
-        type: string
-      nimbus_experiment:
-        description: Nimbus experiment name
-        type: string
-      nimbus_branch:
-        description: Nimbus branch
-        type: string
-      nimbus_experiment_type:
-        description: Nimbus experiment type
-        type: string
-      nimbus_is_preview:
-        description: Nimbus preview mode enabled
         type: string
 
 expand:
@@ -578,21 +428,6 @@ expand:
       nimbus_user_id:
         description: Nimbus user ID
         type: string
-      nimbus_app_id:
-        description: Nimbus application ID
-        type: string
-      nimbus_experiment:
-        description: Nimbus experiment name
-        type: string
-      nimbus_branch:
-        description: Nimbus branch
-        type: string
-      nimbus_experiment_type:
-        description: Nimbus experiment type
-        type: string
-      nimbus_is_preview:
-        description: Nimbus preview mode enabled
-        type: string
 
 collapse:
   click:
@@ -628,21 +463,6 @@ collapse:
         type: string
       nimbus_user_id:
         description: Nimbus user ID
-        type: string
-      nimbus_app_id:
-        description: Nimbus application ID
-        type: string
-      nimbus_experiment:
-        description: Nimbus experiment name
-        type: string
-      nimbus_branch:
-        description: Nimbus branch
-        type: string
-      nimbus_experiment_type:
-        description: Nimbus experiment type
-        type: string
-      nimbus_is_preview:
-        description: Nimbus preview mode enabled
         type: string
 
 cta_button:
@@ -680,21 +500,6 @@ cta_button:
       nimbus_user_id:
         description: Nimbus user ID
         type: string
-      nimbus_app_id:
-        description: Nimbus application ID
-        type: string
-      nimbus_experiment:
-        description: Nimbus experiment name
-        type: string
-      nimbus_branch:
-        description: Nimbus branch
-        type: string
-      nimbus_experiment_type:
-        description: Nimbus experiment type
-        type: string
-      nimbus_is_preview:
-        description: Nimbus preview mode enabled
-        type: string
 
   view:
     type: event
@@ -729,21 +534,6 @@ cta_button:
         type: string
       nimbus_user_id:
         description: Nimbus user ID
-        type: string
-      nimbus_app_id:
-        description: Nimbus application ID
-        type: string
-      nimbus_experiment:
-        description: Nimbus experiment name
-        type: string
-      nimbus_branch:
-        description: Nimbus branch
-        type: string
-      nimbus_experiment_type:
-        description: Nimbus experiment type
-        type: string
-      nimbus_is_preview:
-        description: Nimbus preview mode enabled
         type: string
 
 csat_survey:
@@ -781,21 +571,6 @@ csat_survey:
       nimbus_user_id:
         description: Nimbus user ID
         type: string
-      nimbus_app_id:
-        description: Nimbus application ID
-        type: string
-      nimbus_experiment:
-        description: Nimbus experiment name
-        type: string
-      nimbus_branch:
-        description: Nimbus branch
-        type: string
-      nimbus_experiment_type:
-        description: Nimbus experiment type
-        type: string
-      nimbus_is_preview:
-        description: Nimbus preview mode enabled
-        type: string
 
   dismiss:
     type: event
@@ -830,21 +605,6 @@ csat_survey:
         type: string
       nimbus_user_id:
         description: Nimbus user ID
-        type: string
-      nimbus_app_id:
-        description: Nimbus application ID
-        type: string
-      nimbus_experiment:
-        description: Nimbus experiment name
-        type: string
-      nimbus_branch:
-        description: Nimbus branch
-        type: string
-      nimbus_experiment_type:
-        description: Nimbus experiment type
-        type: string
-      nimbus_is_preview:
-        description: Nimbus preview mode enabled
         type: string
 
   click:
@@ -883,19 +643,4 @@ csat_survey:
         type: string
       nimbus_user_id:
         description: Nimbus user ID
-        type: string
-      nimbus_app_id:
-        description: Nimbus application ID
-        type: string
-      nimbus_experiment:
-        description: Nimbus experiment name
-        type: string
-      nimbus_branch:
-        description: Nimbus branch
-        type: string
-      nimbus_experiment_type:
-        description: Nimbus experiment type
-        type: string
-      nimbus_is_preview:
-        description: Nimbus preview mode enabled
         type: string

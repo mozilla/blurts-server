@@ -26,6 +26,16 @@ declare module "knex/types/tables" {
     updated_at: Date;
   }
 
+  interface SubscriberChurnRow {
+    userid: string;
+    customer: string;
+    nickname: string;
+    intervl: string;
+    plan_id: string;
+    product_id: string;
+    current_period_end: Date;
+  }
+
   interface OnerepScanResultDataBrokerRow extends OnerepScanResultRow {
     scan_result_status: RemovalStatus;
     broker_status: DataBrokerRemovalStatus;
@@ -422,6 +432,8 @@ declare module "knex/types/tables" {
       // On updates, don't allow updating the ID; all other fields are optional:
       WritableDateColumns<Partial<Omit<SubscriberCouponRow, "id">>>
     >;
+
+    subscriber_churns: SubscriberChurnRow;
 
     subscriber_email_preferences: Knex.CompositeTableType<
       SubscriberEmailPreferencesRow,

@@ -14,7 +14,10 @@ describe("Experiment context provider", () => {
       return <div />;
     };
     const { container } = render(
-      <ExperimentsProvider experimentData={defaultExperimentData}>
+      <ExperimentsProvider
+        experimentData={defaultExperimentData}
+        experimentationId="-1"
+      >
         <TestComponent />
       </ExperimentsProvider>,
     );
