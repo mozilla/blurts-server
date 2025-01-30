@@ -146,11 +146,11 @@ export const Faq = () => {
   };
 
   return (
-    <div className={styles.content}>
+    <div id="faq" className={styles.content}>
       <h3>
         <b>{l10n.getString("landing-redesign-faq-section-title")}</b>
       </h3>
-      <dl id="faq" className={styles.faqList}>
+      <dl className={styles.faqList}>
         {faqItems.map(
           ({ question, answer, isExpanded, id, onExpandAnswer }) => (
             <FaqItem

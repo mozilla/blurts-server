@@ -47,6 +47,8 @@ landing-redesign-info-block-three-label = Stay informed
 landing-redesign-info-block-three-title = Act fast with timely notifications
 landing-redesign-info-block-three-description = With { -brand-monitor }, you will be notified when your data is found in data breaches or data brokers, allowing you to take action such as securing accounts, updating passwords, or requesting data removal, reducing the risk of privacy threats.
 
+landing-redesign-info-block-cta-label = Get your free scan
+
 # Pricing plans
 
 landing-redesign-pricing-plans-section-title = Choose your level of protection
