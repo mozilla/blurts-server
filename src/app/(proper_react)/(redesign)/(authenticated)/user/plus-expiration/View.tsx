@@ -140,12 +140,14 @@ export const View = (props: Props) => {
           </>
         ) : (
           <>
-            <h1>
-              {l10n.getFragment("plus-expiration-intro-heading", {
-                elems: { b: <b /> },
-              })}
-            </h1>
-            <p>{l10n.getString("plus-expiration-intro-content")}</p>
+            <div className={styles.content}>
+              <h1>
+                {l10n.getFragment("plus-expiration-intro-heading", {
+                  elems: { b: <b /> },
+                })}
+              </h1>
+              <p>{l10n.getString("plus-expiration-intro-content")}</p>
+            </div>
             {applyCouponState.error &&
               applyCouponState.error !== "not_applied_yet" &&
               !isApplyCouponPending &&
@@ -181,16 +183,16 @@ export const View = (props: Props) => {
               >
                 {l10n.getString("plus-expiration-intro-cta-label")}
               </Button>
+              <p className={styles.terms}>
+                <Link href="/terms/expiration-offer" target="_blank">
+                  {l10n.getString("plus-expiration-intro-terms")}
+                  <OpenInNew
+                    alt={l10n.getString("open-in-new-tab-alt")}
+                    width={13}
+                  />
+                </Link>
+              </p>
             </div>
-            <p className={styles.terms}>
-              <Link href="/terms/expiration-offer" target="_blank">
-                {l10n.getString("plus-expiration-intro-terms")}
-                <OpenInNew
-                  alt={l10n.getString("open-in-new-tab-alt")}
-                  width={13}
-                />
-              </Link>
-            </p>
           </>
         )}
       </div>

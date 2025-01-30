@@ -36,7 +36,7 @@ export const View = (props: Props) => {
           <li>{l10n.getString("plus-expiration-terms-term5")}</li>
           <li>
             {l10n.getFragment("plus-expiration-terms-term6", {
-              elems: { "monitor-link": <Link href="/" /> },
+              elems: { "monitor-link": <Link href="/#pricing" /> },
             })}
           </li>
         </ul>
