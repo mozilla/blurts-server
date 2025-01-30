@@ -146,10 +146,9 @@ export const MonthlyActivityFreeEmail = (
             .lock_icon {
               background-image: url(${process.env.SERVER_URL}/images/email/monthly-activity/lock-icon.png);
               background-position: top right;
-              background-size: 15px 20px;
-              background-position-x: calc(100% - 18px); 
-              background-position-y: 35px; 
+              background-size: 23px 20px;
               background-repeat: no-repeat;
+              padding: 20px;
             }
         `}
         </mj-style>
@@ -233,12 +232,13 @@ export const MonthlyActivityFreeEmail = (
                   </mj-text>
                 </mj-column>
                 <mj-column
-                  css-class={`stat_column ${!rightBoxData.activeState && `lock_icon`}`}
+                  css-class={`stat_column`}
                   inner-border={`2px solid ${rightBoxData.activeState ? purpleActiveBorderColor : greyBorderColor}`}
                   inner-border-radius="10px"
-                  padding="8px"
+                  padding="10px"
                 >
                   <mj-text
+                    css-class={`${!rightBoxData.activeState && "lock_icon"}`}
                     align="center"
                     font-weight="bold"
                     font-size="50px"
