@@ -92,9 +92,11 @@ export const MobileShell = (props: Props) => {
               fxaSettingsUrl={props.fxaSettingsUrl}
             />
           ) : (
-            <div className={styles.signInButton}>
-              <SignInButton variant="secondary" small />
-            </div>
+            <SignInButton
+              className={styles.signInButton}
+              variant="secondary"
+              small
+            />
           )}
           <button
             onClick={() => setIsExpanded(!isExpanded)}

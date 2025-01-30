@@ -85,7 +85,7 @@ export const InfoBlock = (props: LandingPageProps) => {
           experimentData={props.experimentData}
           ctaLabel={
             <>
-              {props.l10n.getString("landing-redesign-banner-cta-button-label")}
+              {props.l10n.getString("landing-redesign-info-block-cta-label")}
               <ArrowIcon alt="" />
             </>
           }

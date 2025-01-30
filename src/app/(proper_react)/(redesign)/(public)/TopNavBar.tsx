@@ -26,7 +26,7 @@ export const TopNavBar = () => {
         </li>
         <li>
           <TelemetryLink
-            href="#pricing"
+            href="/#pricing"
             eventData={{
               link_id: "navbar_pricing",
             }}
@@ -37,7 +37,7 @@ export const TopNavBar = () => {
         <li>
           <TelemetryLink
             data-testid="navbar_faqs"
-            href="#faq"
+            href="/#faq"
             eventData={{
               link_id: "navbar_faqs",
             }}
@@ -56,7 +56,7 @@ export const TopNavBar = () => {
           </TelemetryLink>
         </li>
       </ul>
-      <SignInButton variant="secondary" small />
+      <SignInButton className={styles.signInButton} variant="secondary" small />
     </div>
   );
 };
