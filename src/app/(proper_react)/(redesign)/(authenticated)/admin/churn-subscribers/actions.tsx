@@ -9,17 +9,34 @@ import {
   deleteSubscriberChurns,
 } from "../../../../../../db/tables/subscriber_churns";
 import { SubscriberChurnRow } from "knex/types/tables";
+import { getServerSession } from "../../../../../functions/server/getServerSession";
+import { isAdmin } from "../../../../../api/utils/auth";
 
 export async function getAllChurns() {
+  const session = await getServerSession();
+  if (!session?.user?.email || !isAdmin(session.user.email)) {
+    return [];
+  }
+
   return getAllSubscriberChurns();
 }
 
 export async function upsertAllChurns(
   churningSubscribers: SubscriberChurnRow[],
 ) {
+  const session = await getServerSession();
+  if (!session?.user?.email || !isAdmin(session.user.email)) {
+    return [];
+  }
+
   return upsertSubscriberChurns(churningSubscribers);
 }
 
 export async function clearAllChurns() {
+  const session = await getServerSession();
+  if (!session?.user?.email || !isAdmin(session.user.email)) {
+    return [];
+  }
+
   return deleteSubscriberChurns();
 }
