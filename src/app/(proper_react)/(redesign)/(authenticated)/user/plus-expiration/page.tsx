@@ -9,7 +9,7 @@ import { getServerSession } from "../../../../../functions/server/getServerSessi
 import { View } from "./View";
 import { logger } from "../../../../../functions/server/logging";
 import { checkChurnCouponCode } from "../../../../../functions/server/applyCoupon";
-import { applyRenewalCoupon } from "./actions";
+import { applyRenewalCoupon, reactivateSubscriber } from "./actions";
 import { getEnabledFeatureFlags } from "../../../../../../db/tables/featureFlags";
 import { getChurnsToEmail } from "../../../../../../db/tables/subscriber_churns";
 
@@ -48,6 +48,7 @@ export default async function PlusExpirationPage() {
       subscriber={subscriber}
       couponCheckResult={couponCheckResult}
       applyCouponAction={applyRenewalCoupon}
+      reactivateSubscriberAction={reactivateSubscriber}
       manageSubscriptionsUrl={process.env.FXA_SUBSCRIPTIONS_URL!}
       isOnExpirationList={
         typeof subscribersToEmail.find(

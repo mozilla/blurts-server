@@ -14,13 +14,14 @@ import { Button } from "../../../../../components/client/Button";
 import type { checkChurnCouponCode } from "../../../../../functions/server/applyCoupon";
 import { CONST_URL_PLUS_CONTACT_SUPPORT } from "../../../../../../constants";
 import { CloseBtn, OpenInNew } from "../../../../../components/server/Icons";
-import type { applyRenewalCoupon } from "./actions";
+import type { applyRenewalCoupon, reactivateSubscriber } from "./actions";
 import { useL10n } from "../../../../../hooks/l10n";
 
 export type Props = {
   subscriber: SubscriberRow;
   couponCheckResult: Awaited<ReturnType<typeof checkChurnCouponCode>>;
   applyCouponAction: typeof applyRenewalCoupon;
+  reactivateSubscriberAction: typeof reactivateSubscriber;
   manageSubscriptionsUrl: string;
   isOnExpirationList: boolean;
 };

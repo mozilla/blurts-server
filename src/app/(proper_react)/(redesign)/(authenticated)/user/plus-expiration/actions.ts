@@ -8,7 +8,7 @@ import { getSubscriberByFxaUid } from "../../../../../../db/tables/subscribers";
 import { applyChurnCouponCode } from "../../../../../functions/server/applyCoupon";
 import { getServerSession } from "../../../../../functions/server/getServerSession";
 import { logger } from "../../../../../functions/server/logging";
-
+import { reactivateAccount } from "../../../../../functions/server/reactivateAccount";
 export type ApplyRenewalCouponResult =
   | {
       success: false;
@@ -17,6 +17,16 @@ export type ApplyRenewalCouponResult =
         | "apply_renewal_coupon_no_subscriber"
         | "apply_renewal_coupon_error"
         | "apply_renewal_coupon_no_subscriber_for_session";
+    }
+  | { success: true };
+
+export type ReactivateResult =
+  | {
+      success: false;
+      error:
+        | "reactivate_subscriber_no_subscriber"
+        | "reactivate_subscriber_error"
+        | "reactivate_subscriber_no_subscriber_for_session";
     }
   | { success: true };
 
@@ -39,9 +49,36 @@ export async function applyRenewalCoupon(): Promise<ApplyRenewalCouponResult> {
   }
   try {
     await applyChurnCouponCode(subscriber);
+    await reactivateAccount(subscriber);
     return { success: true };
   } catch (e) {
     logger.error("apply_renewal_coupon_error", { error: e });
     return { error: "apply_renewal_coupon_error", success: false };
+  }
+}
+
+export async function reactivateSubscriber(): Promise<ReactivateResult> {
+  const session = await getServerSession();
+  if (typeof session?.user.subscriber?.fxa_uid !== "string") {
+    logger.error("reactivate_subscriber_no_subscriber");
+    return { error: "reactivate_subscriber_no_subscriber", success: false };
+  }
+
+  const subscriber = await getSubscriberByFxaUid(
+    session.user.subscriber?.fxa_uid,
+  );
+  if (!subscriber) {
+    logger.warn("reactivate_subscriber_no_subscriber_for_session");
+    return {
+      error: "reactivate_subscriber_no_subscriber_for_session",
+      success: false,
+    };
+  }
+  try {
+    await reactivateAccount(subscriber);
+    return { success: true };
+  } catch (e) {
+    logger.error("reactivate_subscriber_error", { error: e });
+    return { error: "reactivate_subscriber_error", success: false };
   }
 }
