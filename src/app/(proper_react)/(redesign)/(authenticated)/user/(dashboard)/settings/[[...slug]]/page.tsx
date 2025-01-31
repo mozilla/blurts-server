@@ -35,13 +35,9 @@ type Props = {
   params: Promise<{
     slug: string[] | undefined;
   }>;
-  searchParams: Promise<{
-    nimbus_preview?: string;
-  }>;
 };
 
 export default async function SettingsPage(props: Props) {
-  const searchParams = await props.searchParams;
   const params = await props.params;
   const session = await getServerSession();
 
@@ -98,10 +94,9 @@ export default async function SettingsPage(props: Props) {
   const experimentationId = await getExperimentationId(session.user);
 
   const experimentData = await getExperiments({
-    experimentationId: experimentationId,
-    countryCode: countryCode,
+    experimentationId,
+    countryCode,
     locale: getLocale(l10n),
-    previewMode: searchParams.nimbus_preview === "true",
   });
 
   const lastOneRepScan = await getLatestOnerepScan(
