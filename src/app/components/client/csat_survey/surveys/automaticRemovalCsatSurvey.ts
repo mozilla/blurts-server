@@ -14,7 +14,7 @@ import {
 } from "./csatSurvey";
 
 export type AutomaticRemovalVariation = {
-  id: "initial" | "3-months" | "6-months" | "12-months";
+  id: "initial" | "3-months" | "6-months" | "12-months" | "24-months";
   showForUser: UserType[];
   showOnTab: TabType[];
   daysThreshold: number;
@@ -85,6 +85,19 @@ const surveyData: SurveyData = {
         neutral: "https://survey.alchemer.com/s3/7718562/76e17004efd6",
         satisfied: "https://survey.alchemer.com/s3/7718562/92b30b6aa491",
         "very-satisfied": "https://survey.alchemer.com/s3/7718562/002e20b6b82f",
+      },
+    },
+    {
+      id: "24-months",
+      showForUser: ["plus-user"],
+      showOnTab: ["fixed"],
+      daysThreshold: 716,
+      followUpSurveyOptions: {
+        "very-dissatisfied": "https://survey.alchemer.com/s3/",
+        dissatisfied: "https://survey.alchemer.com/s3/",
+        neutral: "https://survey.alchemer.com/s3/",
+        satisfied: "https://survey.alchemer.com/s3/",
+        "very-satisfied": "https://survey.alchemer.com/s3/",
       },
     },
   ],
