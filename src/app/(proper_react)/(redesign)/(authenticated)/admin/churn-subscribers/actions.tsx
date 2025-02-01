@@ -12,31 +12,34 @@ import { SubscriberChurnRow } from "knex/types/tables";
 import { getServerSession } from "../../../../../functions/server/getServerSession";
 import { isAdmin } from "../../../../../api/utils/auth";
 
-export async function getAllChurns() {
+/**
+ * Helper function to perform session + admin check.
+ * Returns true if the current session belongs to an admin user.
+ */
+async function isAuthorized(): Promise<boolean> {
   const session = await getServerSession();
-  if (!session?.user?.email || !isAdmin(session.user.email)) {
-    return [];
-  }
+  return Boolean(session?.user?.email && isAdmin(session.user.email));
+}
 
+export async function getAllChurns() {
+  if (!(await isAuthorized())) {
+    return null;
+  }
   return getAllSubscriberChurns();
 }
 
 export async function upsertAllChurns(
   churningSubscribers: SubscriberChurnRow[],
 ) {
-  const session = await getServerSession();
-  if (!session?.user?.email || !isAdmin(session.user.email)) {
-    return [];
+  if (!(await isAuthorized())) {
+    return null;
   }
-
   return upsertSubscriberChurns(churningSubscribers);
 }
 
 export async function clearAllChurns() {
-  const session = await getServerSession();
-  if (!session?.user?.email || !isAdmin(session.user.email)) {
-    return [];
+  if (!(await isAuthorized())) {
+    return null;
   }
-
   return deleteSubscriberChurns();
 }
