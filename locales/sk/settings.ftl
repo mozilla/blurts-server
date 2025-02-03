@@ -9,7 +9,7 @@ settings-page-title = Nastavenia { -product-short-name(case: "gen") }
 
 ## Breach alert preferences
 
-settings-alert-email-preferences-title = Predvoľby e-mailov
+settings-alert-email-preferences-title = Predvoľby e‑mailov
 settings-alert-email-preferences-subtitle = Povedzte nám, aké e‑maily chcete dostávať.
 settings-alert-preferences-allow-breach-alerts-title = Okamžité upozornenia na únik
 settings-alert-preferences-allow-breach-alerts-subtitle = Tieto upozornenia sa odosielajú okamžite po zistení úniku údajov
