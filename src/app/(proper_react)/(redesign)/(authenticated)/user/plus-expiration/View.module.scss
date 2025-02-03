@@ -10,11 +10,17 @@
   padding-block-end: tokens.$spacing-md;
   text-align: center;
 
-  h1 {
-    font: tokens.$text-title-xs;
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: tokens.$spacing-sm;
 
-    b {
-      color: tokens.$color-purple-70;
+    h1 {
+      font: tokens.$text-title-xs;
+
+      b {
+        color: tokens.$color-purple-70;
+      }
     }
   }
 
