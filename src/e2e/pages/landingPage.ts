@@ -248,6 +248,10 @@ export class LandingPage {
   }
 
   async open() {
+    await this.page.setExtraHTTPHeaders({
+      "x-forced-feature-flags":
+        "landing-page-redesign-plus-eligible-experiment",
+    });
     await this.page.goto(process.env.E2E_TEST_BASE_URL as string);
   }
 
