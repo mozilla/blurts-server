@@ -32,10 +32,15 @@ it("includes a link to the terms on the renewal page", () => {
 
 it("confirms the renewal after it's applied", async () => {
   const user = userEvent.setup();
+  const applyCouponPromise = new Promise((resolve) => {
+    resolve({
+      success: true,
+    });
+  });
   const PlusExpirationView = composeStory(HappyPath, Meta);
   render(
     <PlusExpirationView
-      applyCouponAction={jest.fn().mockResolvedValue({ success: true })}
+      applyCouponAction={jest.fn().mockReturnValue(applyCouponPromise)}
     />,
   );
 
@@ -49,6 +54,7 @@ it("confirms the renewal after it's applied", async () => {
     name: "Renew subscription",
   });
   await user.click(renewalButton);
+  await applyCouponPromise;
 
   expect(
     screen.getByRole("heading", {
@@ -59,16 +65,20 @@ it("confirms the renewal after it's applied", async () => {
 
 it("shows an error if applying the coupon failed", async () => {
   const user = userEvent.setup();
+  const applyCouponPromise = new Promise((resolve) => {
+    resolve({
+      success: false,
+      error: "apply_renewal_coupon_error",
+    });
+  });
   const PlusExpirationView = composeStory(HappyPath, Meta);
   render(
     <PlusExpirationView
-      applyCouponAction={jest.fn().mockResolvedValue({
-        success: false,
-        error: "apply_renewal_coupon_error",
-      })}
+      applyCouponAction={jest.fn().mockReturnValue(applyCouponPromise)}
     />,
   );
 
+  await applyCouponPromise;
   expect(
     screen.queryByText(/Couldn’t renew subscription./),
   ).not.toBeInTheDocument();
@@ -83,13 +93,16 @@ it("shows an error if applying the coupon failed", async () => {
 
 it("hides the error after dismissing it", async () => {
   const user = userEvent.setup();
+  const applyCouponErrorPromise = new Promise((resolve) => {
+    resolve({
+      success: false,
+      error: "apply_renewal_coupon_error",
+    });
+  });
   const PlusExpirationView = composeStory(HappyPath, Meta);
   render(
     <PlusExpirationView
-      applyCouponAction={jest.fn().mockResolvedValue({
-        success: false,
-        error: "apply_renewal_coupon_error",
-      })}
+      applyCouponAction={jest.fn().mockReturnValue(applyCouponErrorPromise)}
     />,
   );
 
@@ -97,6 +110,7 @@ it("hides the error after dismissing it", async () => {
     name: "Renew subscription",
   });
   await user.click(renewalButton);
+  await applyCouponErrorPromise;
 
   expect(screen.getByText(/Couldn’t renew subscription./)).toBeInTheDocument();
 
@@ -110,15 +124,23 @@ it("hides the error after dismissing it", async () => {
 it("allows retrying after an error", async () => {
   const user = userEvent.setup();
   const PlusExpirationView = composeStory(HappyPath, Meta);
+  const applyCouponErrorPromise = new Promise((resolve) => {
+    resolve({
+      success: false,
+      error: "apply_renewal_coupon_error",
+    });
+  });
+  const applyCouponSuccessPromise = new Promise((resolve) => {
+    resolve({
+      success: true,
+    });
+  });
   render(
     <PlusExpirationView
       applyCouponAction={jest
         .fn()
-        .mockResolvedValueOnce({
-          success: false,
-          error: "apply_renewal_coupon_error",
-        })
-        .mockResolvedValueOnce({ success: true })}
+        .mockReturnValueOnce(applyCouponErrorPromise)
+        .mockReturnValueOnce(applyCouponSuccessPromise)}
     />,
   );
 
@@ -126,11 +148,13 @@ it("allows retrying after an error", async () => {
     name: "Renew subscription",
   });
   await user.click(renewalButton);
+  await applyCouponErrorPromise;
 
   expect(screen.getByText(/Couldn’t renew subscription./)).toBeInTheDocument();
 
   const retryButton = screen.getByRole("button", { name: "Try again" });
   await user.click(retryButton);
+  await applyCouponSuccessPromise;
   expect(
     screen.queryByText(/Couldn’t renew subscription./),
   ).not.toBeInTheDocument();
