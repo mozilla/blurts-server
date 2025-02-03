@@ -61,7 +61,7 @@ email-breach-detected = { $email-address } hesabınızın arama sonuçları, e-p
 # Variables:
 #   $email-address (string) - Email address
 email-breach-detected-2 = <b>{ $email-address }</b> hesabınızın arama sonuçları, e-postanızın açığa çıkmış olabileceğini tespit etti. Bu ihlali çözmek için hemen harekete geçmenizi öneririz.
-email-dashboard-cta = Panoya git
+email-dashboard-cta = Kontrol paneline git
 
 ## Breach alert
 

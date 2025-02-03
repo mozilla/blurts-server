@@ -73,4 +73,8 @@ updates:
     ignore:
       - dependency-name: "node"
         # Odd-numbered versions are unstable releases, so skip those.
-        versions: ["23", "25", "27", "29"]
+        # This is using Ruby's version range syntax, specifically, the "twiddle-wakka"
+        # to indicate any matching version until the next major one..
+        # See https://docs.github.com/en/code-security/dependabot/working-with-dependabot/dependabot-options-reference#versions-ignore
+        # and https://guides.rubygems.org/patterns/#pessimistic-version-constraint
+        versions: ["~> 23", "~> 25", "~> 27", "~> 29"]
