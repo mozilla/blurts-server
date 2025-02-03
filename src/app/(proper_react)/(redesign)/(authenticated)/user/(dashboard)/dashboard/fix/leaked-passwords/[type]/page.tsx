@@ -14,19 +14,20 @@ import {
 import { getSubscriberEmails } from "../../../../../../../../../functions/server/getSubscriberEmails";
 import { getCountryCode } from "../../../../../../../../../functions/server/getCountryCode";
 import { getOnerepProfileId } from "../../../../../../../../../../db/tables/subscribers";
-import { getLatestOnerepScanResults } from "../../../../../../../../../../db/tables/onerep_scans";
+import { getScanResultsWithBroker } from "../../../../../../../../../../db/tables/onerep_scans";
 import { isEligibleForPremium } from "../../../../../../../../../functions/universal/premium";
 import { logger } from "../../../../../../../../../functions/server/logging";
+import { hasPremium } from "../../../../../../../../../functions/universal/user";
+import { getEnabledFeatureFlags } from "../../../../../../../../../../db/tables/featureFlags";
 
 interface LeakedPasswordsProps {
-  params: {
+  params: Promise<{
     type: LeakedPasswordsTypes;
-  };
+  }>;
 }
 
-export default async function LeakedPasswords({
-  params,
-}: LeakedPasswordsProps) {
+export default async function LeakedPasswords(props: LeakedPasswordsProps) {
+  const params = await props.params;
   const session = await getServerSession();
   if (!session?.user?.subscriber?.id) {
     logger.error("user_not_subscribed", {
@@ -34,7 +35,10 @@ export default async function LeakedPasswords({
     });
     return redirect("/");
   }
-  const countryCode = getCountryCode(headers());
+  const enabledFeatureFlags = await getEnabledFeatureFlags({
+    email: session.user.email,
+  });
+  const countryCode = getCountryCode(await headers());
   const breaches = await getSubscriberBreaches({
     fxaUid: session.user.subscriber.fxa_uid,
     countryCode,
@@ -47,7 +51,10 @@ export default async function LeakedPasswords({
   }
 
   const profileId = await getOnerepProfileId(session.user.subscriber.id);
-  const scanData = await getLatestOnerepScanResults(profileId);
+  const scanData = await getScanResultsWithBroker(
+    profileId,
+    hasPremium(session.user),
+  );
 
   return (
     <LeakedPasswordsLayout
@@ -60,6 +67,7 @@ export default async function LeakedPasswords({
         latestScanData: scanData,
       }}
       isEligibleForPremium={isEligibleForPremium(countryCode)}
+      enabledFeatureFlags={enabledFeatureFlags}
     />
   );
 }

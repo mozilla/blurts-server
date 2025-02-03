@@ -10,7 +10,10 @@ import { renderEmail } from "../../../../../../emails/renderEmail";
 import { VerifyEmailAddressEmail } from "../../../../../../emails/templates/verifyEmailAddress/VerifyEmailAddressEmail";
 import { sanitizeSubscriberRow } from "../../../../../functions/server/sanitize";
 import { getServerSession } from "../../../../../functions/server/getServerSession";
-import { getL10n } from "../../../../../functions/l10n/serverComponents";
+import {
+  getAcceptLangHeaderInServerComponents,
+  getL10n,
+} from "../../../../../functions/l10n/serverComponents";
 import { getSubscriberByFxaUid } from "../../../../../../db/tables/subscribers";
 import { ReactNode } from "react";
 import { SubscriberRow } from "knex/types/tables";
@@ -20,7 +23,6 @@ import { getDashboardSummary } from "../../../../../functions/server/dashboard";
 import { getSubscriberBreaches } from "../../../../../functions/server/getSubscriberBreaches";
 import { getCountryCode } from "../../../../../functions/server/getCountryCode";
 import { headers } from "next/headers";
-import { getLatestOnerepScanResults } from "../../../../../../db/tables/onerep_scans";
 import { FirstDataBrokerRemovalFixed } from "../../../../../../emails/templates/firstDataBrokerRemovalFixed/FirstDataBrokerRemovalFixed";
 import {
   createRandomHibpListing,
@@ -40,6 +42,8 @@ import { hasPremium } from "../../../../../functions/universal/user";
 import { isEligibleForPremium } from "../../../../../functions/universal/premium";
 import { MonthlyActivityFreeEmail } from "../../../../../../emails/templates/monthlyActivityFree/MonthlyActivityFreeEmail";
 import { getMonthlyActivityFreeUnsubscribeLink } from "../../../../../../app/functions/cronjobs/unsubscribeLinks";
+import { getScanResultsWithBroker } from "../../../../../../db/tables/onerep_scans";
+import { UpcomingExpirationEmail } from "../../../../../../emails/templates/upcomingExpiration/UpcomingExpirationEmail";
 
 async function getAdminSubscriber(): Promise<SubscriberRow | null> {
   const session = await getServerSession();
@@ -80,7 +84,7 @@ async function send(
   return sendEmail(
     emailAddress,
     "Test email: " + subject,
-    renderEmail(template),
+    await renderEmail(template),
   );
 }
 
@@ -90,7 +94,8 @@ export async function triggerSignupReportEmail(emailAddress: string) {
     return false;
   }
 
-  const l10n = getL10n();
+  const acceptLangHeader = await getAcceptLangHeaderInServerComponents();
+  const l10n = getL10n(acceptLangHeader);
   const breaches = await getBreachesForEmail(
     getSha1(emailAddress),
     await getBreaches(),
@@ -115,7 +120,8 @@ export async function triggerVerificationEmail(emailAddress: string) {
     return false;
   }
 
-  const l10n = getL10n();
+  const acceptLangHeader = await getAcceptLangHeaderInServerComponents();
+  const l10n = getL10n(acceptLangHeader);
   await send(
     emailAddress,
     l10n.getString("email-subject-verify"),
@@ -135,19 +141,21 @@ export async function triggerMonthlyActivityFree(emailAddress: string) {
     return false;
   }
 
-  const l10n = getL10n();
+  const acceptLangHeader = await getAcceptLangHeaderInServerComponents();
+  const l10n = getL10n(acceptLangHeader);
 
   if (typeof subscriber.onerep_profile_id === "number") {
     await refreshStoredScanResults(subscriber.onerep_profile_id);
   }
-  const latestScan = await getLatestOnerepScanResults(
+  const latestScan = await getScanResultsWithBroker(
     subscriber.onerep_profile_id,
+    hasPremium(session.user),
   );
   const data = getDashboardSummary(
     latestScan.results,
     await getSubscriberBreaches({
       fxaUid: session.user.subscriber?.fxa_uid,
-      countryCode: getCountryCode(headers()),
+      countryCode: getCountryCode(await headers()),
     }),
   );
 
@@ -173,19 +181,21 @@ export async function triggerMonthlyActivityPlus(emailAddress: string) {
     return false;
   }
 
-  const l10n = getL10n();
+  const acceptLangHeader = await getAcceptLangHeaderInServerComponents();
+  const l10n = getL10n(acceptLangHeader);
 
   if (typeof subscriber.onerep_profile_id === "number") {
     await refreshStoredScanResults(subscriber.onerep_profile_id);
   }
-  const latestScan = await getLatestOnerepScanResults(
+  const latestScan = await getScanResultsWithBroker(
     subscriber.onerep_profile_id,
+    hasPremium(session.user),
   );
   const data = getDashboardSummary(
     latestScan.results,
     await getSubscriberBreaches({
       fxaUid: session.user.subscriber?.fxa_uid,
-      countryCode: getCountryCode(headers()),
+      countryCode: getCountryCode(await headers()),
     }),
   );
 
@@ -210,15 +220,17 @@ export async function triggerBreachAlert(
     return false;
   }
 
-  const l10n = getL10n();
+  const acceptLangHeader = await getAcceptLangHeaderInServerComponents();
+  const l10n = getL10n(acceptLangHeader);
 
   const assumedCountryCode = getSignupLocaleCountry(subscriber);
 
   if (typeof subscriber.onerep_profile_id === "number") {
     await refreshStoredScanResults(subscriber.onerep_profile_id);
   }
-  const scanData = await getLatestOnerepScanResults(
+  const scanData = await getScanResultsWithBroker(
     subscriber.onerep_profile_id,
+    hasPremium(session.user),
   );
   const allSubscriberBreaches = await getSubscriberBreaches({
     fxaUid: subscriber.fxa_uid,
@@ -257,7 +269,8 @@ export async function triggerBreachAlert(
 }
 
 export async function triggerFirstDataBrokerRemovalFixed(emailAddress: string) {
-  const l10n = getL10n();
+  const acceptLangHeader = await getAcceptLangHeaderInServerComponents();
+  const l10n = getL10n(acceptLangHeader);
   const randomScanResult = createRandomScanResult({ status: "removed" });
 
   await send(
@@ -269,6 +282,26 @@ export async function triggerFirstDataBrokerRemovalFixed(emailAddress: string) {
         dataBrokerLink: `${process.env.SERVER_URL}/user/dashboard/fixed`,
         removalDate: randomScanResult.updated_at,
       }}
+      l10n={l10n}
+    />,
+  );
+}
+
+export async function triggerPlusExpirationEmail(emailAddress: string) {
+  const subscriber = await getAdminSubscriber();
+  if (!subscriber) {
+    return false;
+  }
+
+  const acceptLangHeader = await getAcceptLangHeaderInServerComponents();
+  const l10n = getL10n(acceptLangHeader);
+  await send(
+    emailAddress,
+    l10n.getString("email-plus-expiration-subject"),
+    <UpcomingExpirationEmail
+      subscriber={sanitizeSubscriberRow(subscriber)}
+      // Always pretend that the user's account expires in 7 days for the test email:
+      expirationDate={new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)}
       l10n={l10n}
     />,
   );

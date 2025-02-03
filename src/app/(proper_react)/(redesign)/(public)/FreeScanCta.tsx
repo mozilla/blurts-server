@@ -19,21 +19,28 @@ import { useViewTelemetry } from "../../../hooks/useViewTelemetry";
 
 export const FreeScanCta = (
   props: Props & {
-    experimentData: ExperimentData;
+    experimentData: ExperimentData["Features"];
+    hasFloatingLabel?: boolean;
+    showCtaOnly?: boolean;
   },
 ) => {
   const l10n = useL10n();
   const [cookies] = useCookies(["attributionsFirstTouch"]);
   const metricsFlowContext = useContext(AccountsMetricsFlowContext);
 
-  const telemetryButtonId = `${props.eventId.cta}-${props.experimentData["landing-page-free-scan-cta"].variant}`;
+  const freeScanVariantId = props.experimentData["landing-page-free-scan-cta"]
+    .enabled
+    ? `-${props.experimentData["landing-page-free-scan-cta"].variant}`
+    : "";
+  const telemetryButtonId = `${props.eventId.cta}${freeScanVariantId}`;
   const refViewTelemetry = useViewTelemetry("ctaButton", {
     button_id: telemetryButtonId,
   });
   if (
-    !props.experimentData["landing-page-free-scan-cta"].enabled ||
-    props.experimentData["landing-page-free-scan-cta"].variant ===
-      "ctaWithEmail"
+    (!props.experimentData["landing-page-free-scan-cta"].enabled ||
+      props.experimentData["landing-page-free-scan-cta"].variant ===
+        "ctaWithEmail") &&
+    !props.showCtaOnly
   ) {
     return (
       <SignUpForm
@@ -43,6 +50,10 @@ export const FreeScanCta = (
         signUpCallbackUrl={props.signUpCallbackUrl}
         eventId={props.eventId}
         experimentData={props.experimentData}
+        placeholder={props.placeholder}
+        label={props.label}
+        ctaLabel={props.ctaLabel}
+        hasFloatingLabel={props.hasFloatingLabel}
       />
     );
   }
@@ -52,7 +63,7 @@ export const FreeScanCta = (
   ) : (
     <div>
       <TelemetryButton
-        buttonRef={refViewTelemetry as RefObject<HTMLButtonElement>}
+        buttonRef={refViewTelemetry as RefObject<HTMLButtonElement | null>}
         variant="primary"
         event={{
           module: "ctaButton",
@@ -74,12 +85,13 @@ export const FreeScanCta = (
           );
         }}
       >
-        {l10n.getString(
-          props.experimentData["landing-page-free-scan-cta"].variant ===
-            "ctaOnly"
-            ? "landing-all-hero-emailform-submit-label"
-            : "landing-all-hero-emailform-submit-sign-up-label",
-        )}
+        {props.ctaLabel ??
+          l10n.getString(
+            props.experimentData["landing-page-free-scan-cta"].variant ===
+              "ctaOnly"
+              ? "landing-all-hero-emailform-submit-label"
+              : "landing-all-hero-emailform-submit-sign-up-label",
+          )}
       </TelemetryButton>
     </div>
   );

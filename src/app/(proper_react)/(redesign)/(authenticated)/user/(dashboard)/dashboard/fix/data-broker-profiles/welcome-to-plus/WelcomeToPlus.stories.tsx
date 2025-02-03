@@ -77,6 +77,7 @@ const WelcomeToPlusViewWrapper = (props: { brokerScanCount: number }) => {
         }}
         l10n={l10n}
         subscriberEmails={[]}
+        enabledFeatureFlags={[]}
       />
     </Shell>
   );

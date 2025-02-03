@@ -1,16 +1,16 @@
-@import "../../../tokens";
+@use "../../../tokens";
 
 .dialog {
-  background-color: $color-white;
-  border-radius: $border-radius-md;
+  background-color: tokens.$color-white;
+  border-radius: tokens.$border-radius-md;
   display: flex;
   flex-direction: column;
-  max-height: calc(100% - (2 * $spacing-md));
-  max-width: $content-lg;
+  max-height: calc(100% - (2 * tokens.$spacing-md));
+  max-width: tokens.$content-lg;
   outline: none;
   overflow-y: auto;
   position: relative;
-  width: calc(100% - (2 * $spacing-md));
+  width: calc(100% - (2 * tokens.$spacing-md));
 
   .header,
   .content {
@@ -18,51 +18,53 @@
   }
 
   .header {
-    @include no-focus-outline;
+    @include tokens.no-focus-outline;
     display: flex;
     flex-direction: column;
-    gap: $spacing-md;
-    padding: $layout-sm $layout-sm $spacing-sm;
+    gap: tokens.$spacing-md;
+    padding: tokens.$layout-sm tokens.$layout-sm tokens.$spacing-sm;
 
-    @media screen and (min-width: $screen-lg) {
-      padding: $layout-md $layout-xl $spacing-sm;
+    @media screen and (min-width: tokens.$screen-lg) {
+      padding: tokens.$layout-md tokens.$layout-xl tokens.$spacing-sm;
     }
   }
 
   .content {
-    padding: $spacing-sm $layout-sm $layout-sm;
+    padding: tokens.$spacing-sm tokens.$layout-sm tokens.$layout-sm;
 
-    @media screen and (min-width: $screen-lg) {
-      padding: $spacing-sm $layout-xl $layout-md;
+    @media screen and (min-width: tokens.$screen-lg) {
+      padding: tokens.$spacing-sm tokens.$layout-xl tokens.$layout-md;
     }
   }
 
   .title {
-    color: $color-grey-50;
-    font: $text-title-2xs;
+    color: tokens.$color-grey-50;
+    font: tokens.$text-title-2xs;
     text-align: center;
   }
 
   &.horizontal {
-    @media screen and (min-width: $screen-lg) {
+    @media screen and (min-width: tokens.$screen-lg) {
       flex-direction: row;
     }
 
     .header {
-      background-color: $color-grey-05;
+      background-color: tokens.$color-grey-05;
       flex-direction: column-reverse;
-      gap: $spacing-xl;
+      gap: tokens.$spacing-xl;
       justify-content: center;
       text-align: left;
 
-      @media screen and (min-width: $screen-lg) {
-        padding: $layout-md $layout-sm $layout-md $layout-xl;
+      @media screen and (min-width: tokens.$screen-lg) {
+        padding: tokens.$layout-md tokens.$layout-sm tokens.$layout-md
+          tokens.$layout-xl;
       }
     }
 
     .content {
-      @media screen and (min-width: $screen-lg) {
-        padding: $layout-md $layout-xl $layout-md $layout-sm;
+      @media screen and (min-width: tokens.$screen-lg) {
+        padding: tokens.$layout-md tokens.$layout-xl tokens.$layout-md
+          tokens.$layout-sm;
       }
     }
 
@@ -74,15 +76,15 @@
   .dismissButton {
     background: none;
     border: none;
-    color: $color-grey-40;
+    color: tokens.$color-grey-40;
     cursor: pointer;
-    padding: $spacing-md;
+    padding: tokens.$spacing-md;
     position: absolute;
     right: 0;
     top: 0;
 
     &:hover {
-      color: $color-grey-30;
+      color: tokens.$color-grey-30;
     }
   }
 
@@ -97,6 +99,6 @@
   ol {
     display: flex;
     flex-direction: column;
-    gap: $spacing-sm;
+    gap: tokens.$spacing-sm;
   }
 }

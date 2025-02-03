@@ -26,7 +26,7 @@ export type SurveyLinks = Record<SurveyResponse, string>;
 type RequiredExperimentStatus = "enabled" | "disabled";
 
 type RequiredExperiment = {
-  id: keyof ExperimentData;
+  id: keyof ExperimentData["Features"];
   statusAllowList: RequiredExperimentStatus[];
 };
 
@@ -50,7 +50,7 @@ export type Survey = AutomaticRemovalVariation | LatestScanDateVariation;
 
 export type CsatSurveyProps = {
   activeTab: TabType;
-  experimentData: ExperimentData;
+  experimentData: ExperimentData["Features"];
   user: Session["user"];
 };
 

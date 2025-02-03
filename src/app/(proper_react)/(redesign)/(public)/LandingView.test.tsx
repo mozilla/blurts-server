@@ -860,9 +860,9 @@ describe("Free scan CTA experiment", () => {
     render(
       <ComposedDashboard
         experimentData={{
-          ...defaultExperimentData,
+          ...defaultExperimentData["Features"],
           "landing-page-free-scan-cta": {
-            ...defaultExperimentData["landing-page-free-scan-cta"],
+            ...defaultExperimentData["Features"]["landing-page-free-scan-cta"],
             enabled: false,
           },
         }}
@@ -893,7 +893,7 @@ describe("Free scan CTA experiment", () => {
     render(
       <ComposedDashboard
         experimentData={{
-          ...defaultExperimentData,
+          ...defaultExperimentData["Features"],
           "landing-page-free-scan-cta": {
             enabled: true,
             variant: "ctaWithEmail",
@@ -928,7 +928,7 @@ describe("Free scan CTA experiment", () => {
     render(
       <ComposedDashboard
         experimentData={{
-          ...defaultExperimentData,
+          ...defaultExperimentData["Features"],
           "landing-page-free-scan-cta": {
             enabled: true,
             variant: "ctaOnly",
@@ -961,7 +961,7 @@ describe("Free scan CTA experiment", () => {
     render(
       <ComposedDashboard
         experimentData={{
-          ...defaultExperimentData,
+          ...defaultExperimentData["Features"],
           "landing-page-free-scan-cta": {
             enabled: true,
             variant: "ctaOnlyAlternativeLabel",
@@ -994,7 +994,7 @@ describe("Free scan CTA experiment", () => {
     render(
       <ComposedDashboard
         experimentData={{
-          ...defaultExperimentData,
+          ...defaultExperimentData["Features"],
           "landing-page-free-scan-cta": {
             enabled: true,
             variant: "ctaOnly",
@@ -1027,7 +1027,7 @@ describe("Free scan CTA experiment", () => {
     render(
       <ComposedDashboard
         experimentData={{
-          ...defaultExperimentData,
+          ...defaultExperimentData["Features"],
           "landing-page-free-scan-cta": {
             enabled: true,
             variant: "ctaOnly",
@@ -1067,7 +1067,7 @@ describe("Free scan CTA experiment", () => {
     render(
       <ComposedDashboard
         experimentData={{
-          ...defaultExperimentData,
+          ...defaultExperimentData["Features"],
           "landing-page-free-scan-cta": {
             enabled: true,
             variant: "ctaOnly",
@@ -1100,7 +1100,7 @@ describe("Free scan CTA experiment", () => {
     render(
       <ComposedDashboard
         experimentData={{
-          ...defaultExperimentData,
+          ...defaultExperimentData["Features"],
           "landing-page-free-scan-cta": {
             enabled: true,
             variant: "ctaWithEmail",
@@ -1155,7 +1155,7 @@ describe("Free scan CTA experiment", () => {
     render(
       <ComposedDashboard
         experimentData={{
-          ...defaultExperimentData,
+          ...defaultExperimentData["Features"],
           "landing-page-free-scan-cta": {
             enabled: true,
             variant: "ctaWithEmail",
@@ -1220,7 +1220,7 @@ describe("Free scan CTA experiment", () => {
     render(
       <ComposedDashboard
         experimentData={{
-          ...defaultExperimentData,
+          ...defaultExperimentData["Features"],
           "landing-page-free-scan-cta": {
             enabled: true,
             variant: "ctaWithEmail",

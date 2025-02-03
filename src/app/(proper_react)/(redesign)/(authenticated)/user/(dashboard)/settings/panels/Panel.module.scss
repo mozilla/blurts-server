@@ -1,25 +1,25 @@
-@import "../../../../../../../tokens";
+@use "../../../../../../../tokens";
 
 .panel {
   align-items: flex-start;
   display: flex;
   flex-direction: column;
-  gap: $layout-xs;
+  gap: tokens.$layout-xs;
   width: 100%;
 
   hr {
     border-style: none;
-    border-top: 1px solid $color-grey-30;
+    border-top: 1px solid tokens.$color-grey-30;
     width: 100%;
   }
 
   h3 {
-    font: $text-body-xl;
+    font: tokens.$text-body-xl;
     font-weight: 600;
 
     & + p {
-      color: $color-grey-40;
-      font: $text-body-md;
+      color: tokens.$color-grey-40;
+      font: tokens.$text-body-md;
     }
   }
 
@@ -28,18 +28,21 @@
     display: flex;
     flex-direction: column;
     font-weight: 600;
-    gap: $spacing-xs;
+    gap: tokens.$spacing-xs;
     width: 100%;
 
     h4 {
-      font: $text-body-lg;
+      font: tokens.$text-body-lg;
       font-weight: 600;
     }
 
     p {
-      color: $color-grey-40;
+      color: tokens.$color-grey-40;
       font-weight: 400;
-      padding-right: $layout-xl;
+
+      @media screen and (min-width: tokens.$content-md) {
+        padding-right: tokens.$layout-xl;
+      }
     }
   }
 }

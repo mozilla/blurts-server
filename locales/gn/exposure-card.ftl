@@ -28,9 +28,10 @@ exposure-card-other = Ambue
 exposure-card-description-data-breach-action-needed = Ne marandu oñembyaikuaa <data_breach_link>mba’ekuaarã ñembogua { $data_breach_company } ndive { $data_breach_date }.</data_breach_link> Rombohapéta emoĩporãkuaa hag̃uáicha.
 exposure-card-description-data-breach-fixed = Ejapóna ejapova’erã emoĩporã hag̃ua <data_breach_link>ko ñembogua</data_breach_link>. Rohecha meméta mba’ekuaarã ñembogua ha romomarandúta oĩramo mba’evairã pyahu.
 exposure-card-your-exposed-info = Ne marandu ivaikuaa:
+exposure-card-found-the-following-data = { -brand-monitor } ojuhu ko’ã mba’ekuaarã imarãkuaáva:
 exposure-card-exposure-type-data-broker = Marandu ñevendepy
 exposure-card-exposure-type-data-breach = Mba’ekuaarã ñembogua
-exposure-card-cta = Emyatyrõ opaite jehechaukakue
+exposure-card-resolve-exposures-cta = Emoporã ñembyaipyre
 exposure-card-label-company-logo = Atyguasu ra’ãnga’i
 exposure-card-label-company = Atyguasu
 # Status of the exposure card, could be In Progress, Fixed or Action Needed
@@ -39,3 +40,4 @@ exposure-card-label-status = Tekotee
 # $category_label is the data breach exposure type that was leaked. Eg. Email, IP Address.
 # $count is the number of times that the data type was leaked.
 exposure-card-label-and-count = { $category_label }: { $count }
+exposure-card-manual-resolution-praise = <b>¡Tembiapo porã!</b> Emoĩporãma ko ñembyaipyre.

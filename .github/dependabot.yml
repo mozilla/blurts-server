@@ -68,11 +68,13 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+    allow:
+      - dependency-type: "all"
     ignore:
-          - dependency-name: "node"
-            # Node 22 will become an LTS version on 2024-10-29; see
-            # https://nodejs.org/en/next-data/release-data
-            # Hence, we'll want to adopt 22.x releases after the last one
-            # before that date.
-            # Odd-numbered versions are unstable releases, so skip those too.
-            versions: ["<=22.10.0", "23.x", "25.x", "27.x", "29.x"]
+      - dependency-name: "node"
+        # Odd-numbered versions are unstable releases, so skip those.
+        # This is using Ruby's version range syntax, specifically, the "twiddle-wakka"
+        # to indicate any matching version until the next major one..
+        # See https://docs.github.com/en/code-security/dependabot/working-with-dependabot/dependabot-options-reference#versions-ignore
+        # and https://guides.rubygems.org/patterns/#pessimistic-version-constraint
+        versions: ["~> 23", "~> 25", "~> 27", "~> 29"]

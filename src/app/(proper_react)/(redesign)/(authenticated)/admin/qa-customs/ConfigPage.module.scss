@@ -1,12 +1,12 @@
-@import "../../../../../tokens";
+@use "../../../../../tokens";
 
 .wrapper {
   display: grid;
   grid-template-rows: 120px min-content;
-  gap: $spacing-md;
+  gap: tokens.$spacing-md;
   height: 100%;
-  padding: $layout-sm;
-  background-color: $color-grey-05;
+  padding: tokens.$layout-sm;
+  background-color: tokens.$color-grey-05;
   align-items: center;
   justify-content: center;
 }
@@ -17,7 +17,7 @@
 }
 
 .header {
-  font: $text-title-xs;
+  font: tokens.$text-title-xs;
   font-weight: normal;
   margin: auto;
   width: 100%;
@@ -28,8 +28,8 @@
 }
 
 .formAndListWrapper {
-  gap: $spacing-md;
-  margin-top: $spacing-lg;
+  gap: tokens.$spacing-md;
+  margin-top: tokens.$spacing-lg;
   display: grid;
   grid-template-rows: 1fr;
   grid-template-columns: 1fr 1fr;
@@ -63,7 +63,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: $spacing-sm;
+  gap: tokens.$spacing-sm;
 }
 
 .searchBox {
@@ -134,7 +134,7 @@
 .form {
   display: flex;
   flex-direction: column;
-  gap: $spacing-sm;
+  gap: tokens.$spacing-sm;
   align-items: center;
   width: min-content;
 
@@ -143,20 +143,20 @@
     align-items: center;
     display: flex;
     flex-wrap: wrap;
-    gap: $spacing-md;
-    min-height: $layout-md;
+    gap: tokens.$spacing-md;
+    min-height: tokens.$layout-md;
 
     label {
       display: flex;
       flex-direction: column;
-      gap: $spacing-sm;
+      gap: tokens.$spacing-sm;
       min-width: 50%;
       width: 350px;
     }
 
     input {
-      padding: $spacing-sm;
-      font: $text-body-md;
+      padding: tokens.$spacing-sm;
+      font: tokens.$text-body-md;
       transition: border-color 0.3s ease;
     }
   }
@@ -196,7 +196,7 @@
 
 .configContainer {
   display: flex;
-  background-color: $color-grey-05;
+  background-color: tokens.$color-grey-05;
 }
 
 .configLeft {

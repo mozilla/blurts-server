@@ -55,7 +55,7 @@ jest.mock("../../db/tables/featureFlags", () => {
 
 jest.mock("../../db/tables/onerep_scans", () => {
   return {
-    getLatestOnerepScanResults: jest.fn(() =>
+    getScanResultsWithBroker: jest.fn(() =>
       Promise.resolve({ scan: null, results: [] }),
     ),
   };

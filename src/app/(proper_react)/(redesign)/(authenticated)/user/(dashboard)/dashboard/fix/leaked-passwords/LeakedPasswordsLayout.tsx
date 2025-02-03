@@ -29,12 +29,14 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { LeakedPasswordsDataTypes } from "../../../../../../../../functions/universal/breach";
 import { useTelemetry } from "../../../../../../../../hooks/useTelemetry";
+import { FeatureFlagName } from "../../../../../../../../../db/tables/featureFlags";
 
 export interface LeakedPasswordsLayoutProps {
   type: LeakedPasswordsTypes;
   subscriberEmails: string[];
   data: StepDeterminationData;
   isEligibleForPremium: boolean;
+  enabledFeatureFlags: FeatureFlagName[];
 }
 
 export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
@@ -68,7 +70,11 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
   // TODO: Write unit tests MNTOR-2560
   /* c8 ignore start */
   const emailsAffected = unresolvedPasswordBreach?.emailsAffected ?? [];
-  const nextStep = getNextGuidedStep(props.data, stepMap[props.type]);
+  const nextStep = getNextGuidedStep(
+    props.data,
+    props.enabledFeatureFlags,
+    stepMap[props.type],
+  );
 
   // If there are no unresolved breaches for the ”leaked passwords” step:
   // Go to the next step in the guided resolution or back to the dashboard.
@@ -185,12 +191,14 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
       currentSection="leaked-passwords"
       hideProgressIndicator={isStepDone}
       showConfetti={isStepDone}
+      enabledFeatureFlags={props.enabledFeatureFlags}
     >
       <ResolutionContainer
         type="leakedPasswords"
         title={title}
         illustration={illustration}
         isPremiumUser={hasPremium(props.data.user)}
+        enabledFeatureFlags={props.enabledFeatureFlags}
         cta={
           !isStepDone && (
             <>

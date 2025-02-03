@@ -11,7 +11,7 @@ import {
 import { getCountryCode } from "../../../../../../../../../functions/server/getCountryCode";
 import { headers } from "next/headers";
 import {
-  getLatestOnerepScanResults,
+  getScanResultsWithBroker,
   getScanResultsWithBrokerUnderMaintenance,
 } from "../../../../../../../../../../db/tables/onerep_scans";
 import { getOnerepProfileId } from "../../../../../../../../../../db/tables/subscribers";
@@ -19,15 +19,35 @@ import { getSubscriberBreaches } from "../../../../../../../../../functions/serv
 import { getSubscriberEmails } from "../../../../../../../../../functions/server/getSubscriberEmails";
 import { RemovalUnderMaintenanceView } from "./RemovalUnderMaintenanceView";
 import { hasPremium } from "../../../../../../../../../functions/universal/user";
+import { getEnabledFeatureFlags } from "../../../../../../../../../../db/tables/featureFlags";
 
 export default async function RemovalUnderMaintenance() {
   const session = await getServerSession();
-  const countryCode = getCountryCode(headers());
-  if (!session?.user?.subscriber?.id || !hasPremium(session.user)) {
+  const countryCode = getCountryCode(await headers());
+
+  if (!session?.user?.subscriber?.id) {
+    return redirect("/");
+  }
+
+  const enabledFeatureFlags = await getEnabledFeatureFlags({
+    email: session.user.email,
+  });
+
+  if (
+    !hasPremium(session.user) ||
+    !enabledFeatureFlags.includes("EnableRemovalUnderMaintenanceStep")
+  ) {
     redirect("/user/dashboard");
   }
+
   const profileId = await getOnerepProfileId(session.user.subscriber.id);
-  const latestScan = await getLatestOnerepScanResults(profileId);
+  const latestScan = await getScanResultsWithBroker(
+    profileId,
+    hasPremium(session.user),
+  );
+  const scansWithRemovalUnderMaintenance =
+    (await getScanResultsWithBrokerUnderMaintenance(profileId)) ?? null;
+
   const data: StepDeterminationData = {
     countryCode,
     user: session.user,
@@ -37,9 +57,12 @@ export default async function RemovalUnderMaintenance() {
       countryCode,
     }),
   };
-  const scansWithRemovalUnderMaintenance =
-    (await getScanResultsWithBrokerUnderMaintenance(profileId)) ?? null;
-  const getNextStep = getNextGuidedStep(data, "DataBrokerManualRemoval");
+
+  const getNextStep = getNextGuidedStep(
+    data,
+    enabledFeatureFlags,
+    "DataBrokerManualRemoval",
+  );
 
   if (
     scansWithRemovalUnderMaintenance?.results.length === 0 ||
@@ -55,6 +78,7 @@ export default async function RemovalUnderMaintenance() {
       stepDeterminationData={data}
       data={scansWithRemovalUnderMaintenance}
       subscriberEmails={subscriberEmails}
+      enabledFeatureFlags={enabledFeatureFlags}
     />
   );
 }

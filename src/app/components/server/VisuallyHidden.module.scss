@@ -1,5 +1,5 @@
-@import "../../tokens";
+@use "../../tokens";
 
 .visuallyHidden {
-  @include visually-hidden;
+  @include tokens.visually-hidden;
 }

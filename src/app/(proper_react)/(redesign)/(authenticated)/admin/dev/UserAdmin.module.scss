@@ -1,20 +1,20 @@
-@import "../../../../../tokens";
+@use "../../../../../tokens";
 
 .wrapper {
   display: flex;
   flex-direction: column;
-  gap: $spacing-2xl;
-  background-color: $color-grey-05;
+  gap: tokens.$spacing-2xl;
+  background-color: tokens.$color-grey-05;
   height: 100%;
-  padding: $layout-lg $layout-2xl;
+  padding: tokens.$layout-lg tokens.$layout-2xl;
 
-  @media screen and (max-width: $screen-lg) {
-    padding: $spacing-lg;
+  @media screen and (max-width: tokens.$screen-lg) {
+    padding: tokens.$spacing-lg;
   }
 }
 
 .header {
-  font: $text-title-xs;
+  font: tokens.$text-title-xs;
   font-weight: normal;
 
   b {
@@ -25,33 +25,33 @@
 .form {
   display: flex;
   flex-direction: column;
-  gap: $spacing-2xl;
+  gap: tokens.$spacing-2xl;
 
   .userPicker {
     flex: 1 0 auto;
     align-items: center;
     display: flex;
     flex-wrap: wrap;
-    gap: $spacing-2xl;
-    min-height: $layout-2xl;
+    gap: tokens.$spacing-2xl;
+    min-height: tokens.$layout-2xl;
 
     label {
       display: flex;
       flex-direction: column;
-      gap: $spacing-sm;
+      gap: tokens.$spacing-sm;
       min-width: 50%;
     }
 
     input {
-      padding: $spacing-sm;
-      font: $text-body-md;
+      padding: tokens.$spacing-sm;
+      font: tokens.$text-body-md;
     }
   }
 
   .actions {
     display: flex;
     flex-wrap: wrap;
-    gap: $spacing-xl;
+    gap: tokens.$spacing-xl;
 
     button {
       flex: 1 1 25%;
@@ -60,9 +60,9 @@
 }
 
 .status {
-  background-color: $color-yellow-05;
-  border: 2px solid $color-yellow-20;
-  border-radius: $border-radius-sm;
-  padding: $spacing-md $spacing-lg;
-  font: $text-body-md;
+  background-color: tokens.$color-yellow-05;
+  border: 2px solid tokens.$color-yellow-20;
+  border-radius: tokens.$border-radius-sm;
+  padding: tokens.$spacing-md tokens.$spacing-lg;
+  font: tokens.$text-body-md;
 }

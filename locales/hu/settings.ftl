@@ -15,8 +15,6 @@ settings-alert-preferences-allow-breach-alerts-title = Azonnali figyelmeztetése
 settings-alert-preferences-allow-breach-alerts-subtitle = Ezek a figyelmeztetések azonnal elküldésre kerülnek az adatvédelmi incidensek észlelése után
 settings-alert-preferences-option-one = Adatvédelmi incidensek figyelmeztetéseinek elküldése az érintett e-mail-címre
 settings-alert-preferences-option-two = Az összes adatvédelmi incidens figyelmeztetésének elküldése az elsődleges e-mail-címre
-settings-alert-preferences-allow-monthly-monitor-report-title = Havi { -brand-monitor } jelentés
-settings-alert-preferences-allow-monthly-monitor-report-subtitle = Havi hírlevél az új megjelenésekről, arról, hogy mi lett kijavítva, és mire kell figyelnie.
 
 ## Monitored email addresses
 
@@ -47,12 +45,6 @@ settings-email-number-of-breaches-info =
        *[other] { $breachCount } ismert adatvédelmi incidensben szerepel.
     }
 
-## Deactivate account
-
-settings-deactivate-account-title = Fiók deaktiválása
-settings-deactivate-account-info-2 = A { -brand-mozilla-account }ja törlésével kikapcsolhatja a { -product-short-name }t.
-settings-fxa-link-label-3 = Ugrás a { -brand-mozilla-account } beállításaihoz
-
 ## Delete Monitor account
 
 settings-delete-monitor-free-account-title = A { -brand-monitor }-fiók törlése
@@ -64,3 +56,18 @@ settings-delete-monitor-free-account-dialog-cta-label = Fiók törlése
 settings-delete-monitor-free-account-dialog-cancel-button-label = Mégse, visszalépés
 settings-delete-monitor-account-confirmation-toast-label-2 = A { -brand-monitor }-fiókja törölve lett.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Eltüntetés
+
+## Monthly Monitor Report
+
+settings-alert-preferences-allow-monthly-monitor-report-title = Havi { -brand-monitor } jelentés
+settings-alert-preferences-allow-monthly-monitor-report-subtitle = Havi hírlevél az új megjelenésekről, arról, hogy mi lett kijavítva, és mire kell figyelnie.
+
+## Settings page redesign
+
+settings-tab-label-edit-info = Szerkessze az adatait
+settings-tab-label-notifications = Értesítések beállítása
+settings-tab-label-manage-account = Fiók kezelése
+settings-tab-subtitle-manage-account = A { -product-name }-fiókja kezelése.
+settings-tab-notifications-marketing-title = Marketingkommunikáció
+settings-tab-notifications-marketing-text = Rendszeres frissítések a { -brand-monitor }ról, a { -brand-mozilla(ending: "accented") }ról és más biztonsági termékeinkről.
+settings-tab-notifications-marketing-link-label = Ugrás a { -brand-mozilla } e-mail beállításaihoz

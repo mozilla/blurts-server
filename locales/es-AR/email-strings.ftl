@@ -12,7 +12,7 @@ email-header-button-sign-in = Iniciar sesión
 
 email-footer-support-heading = ¿Preguntas sobre { -brand-mozilla-monitor }?
 email-footer-support-content = Visitá nuestro <support-link>Centro de asistencia</support-link> para obtener ayuda
-email-footer-trigger-transactional = Estás recibiendo este correo electrónico como suscriptor de { -brand-mozilla-monitor }.
+email-footer-trigger-transactional = Recibís este correo porque te suscribiste a { -brand-mozilla-monitor }.
 email-footer-source-hibp = Datos de filtración proporcionados por <hibp-link>{ -brand-HIBP }</hibp-link>
 email-footer-logo-mozilla-alt = { -brand-mozilla }
 email-footer-meta-privacy-notice = Privacidad
@@ -36,8 +36,8 @@ email-subject-no-breaches = { -product-name } no encontró filtraciones conocida
 # Subject line of email
 email-subject-verify = Verificá tu correo electrónico para { -product-name }
 fxm-warns-you-no-breaches =
-    { -product-name } te advierte sobre filtraciones de datos relacionadas con tu información personal.
-    Hasta el momento, no se encontraron infracciones. Te enviaremos un alerta si tu dirección de correo electrónico aparece en una nueva filtración.
+    { -product-name } te advierte sobre filtraciones de datos involucrados con tu información personal.
+    Hasta ahora, no se encontraron infracciones. Te enviaremos una alerta si tu dirección de correo electrónico aparece en una nueva filtración.
 email-breach-alert-blurb =
     { -product-name } te advierte sobre filtraciones de datos relacionadas con tu información personal.
     Recién recibimos detalles sobre la filtración de datos de otra empresa.

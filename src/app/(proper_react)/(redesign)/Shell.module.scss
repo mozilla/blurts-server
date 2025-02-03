@@ -1,4 +1,4 @@
-@import "../../tokens";
+@use "../../tokens";
 
 .wrapper {
   height: 100%;
@@ -8,29 +8,29 @@
 .mainMenu {
   display: none;
 
-  @media screen and (min-width: $screen-xl) {
+  @media screen and (min-width: tokens.$screen-xl) {
     flex: 0 0 auto;
     display: flex;
     flex-direction: column;
 
     .homeLink {
-      height: $tab-bar-height;
+      height: tokens.$tab-bar-height;
       display: flex;
       align-items: center;
-      padding: $spacing-xl $spacing-2xl;
-      border-bottom: 1px solid $color-grey-10;
+      padding: tokens.$spacing-xl tokens.$spacing-2xl;
+      border-bottom: 1px solid tokens.$color-grey-10;
 
       &:hover {
-        box-shadow: $box-shadow-sm;
+        box-shadow: tokens.$box-shadow-sm;
       }
 
       &:focus {
-        border-bottom-color: $color-blue-50;
+        border-bottom-color: tokens.$color-blue-50;
       }
 
       img {
         width: auto;
-        height: $layout-sm;
+        height: tokens.$layout-sm;
       }
     }
 
@@ -42,19 +42,19 @@
 
       a {
         display: block;
-        padding: $spacing-md $spacing-lg;
-        color: $color-grey-40;
+        padding: tokens.$spacing-md tokens.$spacing-lg;
+        color: tokens.$color-grey-40;
         font-weight: 500;
-        border-bottom: 1px solid $color-grey-10;
+        border-bottom: 1px solid tokens.$color-grey-10;
         text-decoration: none;
 
         &.isActive {
-          color: $color-purple-70;
+          color: tokens.$color-purple-70;
         }
 
         &:hover {
-          background-color: $color-purple-50;
-          color: $color-white;
+          background-color: tokens.$color-purple-50;
+          color: tokens.$color-white;
           text-decoration: underline;
         }
       }
@@ -74,18 +74,18 @@
 }
 
 .footer {
-  background-color: $color-black;
+  background-color: tokens.$color-black;
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  gap: $spacing-xl;
-  padding-block: $spacing-xl;
+  gap: tokens.$spacing-xl;
+  padding-block: tokens.$spacing-xl;
 
   .mozillaLink {
-    padding: 0 $spacing-md;
+    padding: 0 tokens.$spacing-md;
 
     &:hover img {
-      background-color: $color-purple-50;
+      background-color: tokens.$color-purple-50;
     }
   }
 
@@ -98,18 +98,18 @@
 
     a {
       display: block;
-      color: $color-grey-05;
+      color: tokens.$color-grey-05;
       font-weight: 500;
       text-decoration: none;
-      padding: $spacing-sm $spacing-md;
+      padding: tokens.$spacing-sm tokens.$spacing-md;
 
       &:hover {
-        color: $color-purple-50;
+        color: tokens.$color-purple-50;
       }
     }
   }
 
-  @media screen and (min-width: $screen-lg) {
+  @media screen and (min-width: tokens.$screen-lg) {
     flex-direction: row;
     align-items: center;
     padding-block: 0;
@@ -117,11 +117,11 @@
     .externalLinks {
       flex-direction: row;
       justify-content: flex-end;
-      padding: 0 $spacing-2xl;
+      padding: 0 tokens.$spacing-2xl;
     }
 
     .mozillaLink {
-      padding: $spacing-md $spacing-2xl;
+      padding: tokens.$spacing-md tokens.$spacing-2xl;
     }
   }
 }

@@ -11,9 +11,10 @@ import { AccountsMetricsFlowProvider } from "../../../../contextProviders/accoun
 import { CONST_URL_MONITOR_LANDING_PAGE_ID } from "../../../../constants";
 
 const meta: Meta<typeof View> = {
-  title: "Pages/Public/Landing page",
+  title: "Pages/Public/Landing page/Default",
   component: (props: ViewProps) => {
-    const experimentData = props.experimentData ?? defaultExperimentData;
+    const experimentData =
+      props.experimentData ?? defaultExperimentData["Features"];
     return (
       <AccountsMetricsFlowProvider
         enabled={experimentData["landing-page-free-scan-cta"].enabled}
@@ -30,7 +31,18 @@ const meta: Meta<typeof View> = {
           service: process.env.OAUTH_CLIENT_ID as string,
         }}
       >
-        <PublicShell l10n={getL10n("en")} countryCode={props.countryCode}>
+        <PublicShell
+          l10n={getL10n("en")}
+          countryCode={props.countryCode}
+          enabledFeatureFlags={[]}
+          experimentData={{
+            ...defaultExperimentData["Features"],
+            "landing-page-redesign-plus-eligible-experiment": {
+              enabled: false,
+              variant: "default",
+            },
+          }}
+        >
           <View {...props} experimentData={experimentData} />
         </PublicShell>
       </AccountsMetricsFlowProvider>

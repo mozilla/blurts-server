@@ -15,8 +15,6 @@ settings-alert-preferences-allow-breach-alerts-title = Instant breach alerts
 settings-alert-preferences-allow-breach-alerts-subtitle = These alerts are sent immediately once a data breach is detected
 settings-alert-preferences-option-one = Send breach alerts to the affected email address
 settings-alert-preferences-option-two = Send all breach alerts to the primary email address
-settings-alert-preferences-allow-monthly-monitor-report-title = Monthly { -brand-monitor } report
-settings-alert-preferences-allow-monthly-monitor-report-subtitle = A monthly update of new exposures, what’s been fixed, and what needs your attention.
 
 ## Monitored email addresses
 
@@ -47,12 +45,6 @@ settings-email-number-of-breaches-info =
        *[other] Appears in { $breachCount } known breaches.
     }
 
-## Deactivate account
-
-settings-deactivate-account-title = Deactivate account
-settings-deactivate-account-info-2 = You can deactivate { -product-short-name } by deleting your { -brand-mozilla-account }.
-settings-fxa-link-label-3 = Go to { -brand-mozilla-account } settings
-
 ## Delete Monitor account
 
 settings-delete-monitor-free-account-title = Delete { -brand-monitor } account
@@ -64,3 +56,18 @@ settings-delete-monitor-free-account-dialog-cta-label = Delete account
 settings-delete-monitor-free-account-dialog-cancel-button-label = Never mind, take me back
 settings-delete-monitor-account-confirmation-toast-label-2 = Your { -brand-monitor } account is now deleted.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Dismiss
+
+## Monthly Monitor Report
+
+settings-alert-preferences-allow-monthly-monitor-report-title = Monthly { -brand-monitor } report
+settings-alert-preferences-allow-monthly-monitor-report-subtitle = A monthly update of new exposures, what’s been fixed, and what needs your attention.
+
+## Settings page redesign
+
+settings-tab-label-edit-info = Edit your info
+settings-tab-label-notifications = Set notifications
+settings-tab-label-manage-account = Manage account
+settings-tab-subtitle-manage-account = Manage your { -product-name } account.
+settings-tab-notifications-marketing-title = Marketing communications
+settings-tab-notifications-marketing-text = Periodic updates about { -brand-monitor }, { -brand-mozilla }, and our other security products.
+settings-tab-notifications-marketing-link-label = Go to { -brand-mozilla } email settings

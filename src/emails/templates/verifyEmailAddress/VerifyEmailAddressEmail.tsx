@@ -4,9 +4,9 @@
 
 import { SanitizedSubscriberRow } from "../../../app/functions/server/sanitize";
 import { ExtendedReactLocalization } from "../../../app/functions/l10n";
-import { EmailFooter } from "../EmailFooter";
-import { EmailHeader } from "../EmailHeader";
-import { HeaderStyles, MetaTags } from "../HeaderStyles";
+import { EmailFooter } from "../../components/EmailFooter";
+import { EmailHeader } from "../../components/EmailHeader";
+import { HeaderStyles, MetaTags } from "../../components/HeaderStyles";
 
 export type Props = {
   l10n: ExtendedReactLocalization;

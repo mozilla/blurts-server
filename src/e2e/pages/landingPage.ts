@@ -85,15 +85,17 @@ export class LandingPage {
   constructor(page: Page) {
     this.page = page;
     this.freeMonitoringTooltipTrigger = page
-      .getByRole("gridcell", { name: "Manual removal Open tooltip" })
+      .getByRole("gridcell", { name: "Manual removal" })
       .getByLabel("Open tooltip");
     this.freeMonitoringTooltipText = page.getByText(
-      "We’ll let you know which data",
+      "We’ll let you know which data brokers are selling your info so you can contact them to request removal.",
     );
     this.monitorPlusTooltipTrigger = page
-      .getByRole("gridcell", { name: "Automatic removal Open tooltip" })
+      .getByRole("gridcell", { name: "Automatic removal" })
       .getByLabel("Open tooltip");
-    this.monitorPlusTooltipText = page.getByText("We’ll automatically request");
+    this.monitorPlusTooltipText = page.getByText(
+      "We’ll automatically request removal of your private info across more than ⁨190⁩ data broker sites.",
+    );
     this.closeTooltips = page.locator(
       '//div[starts-with(@class, "PlansTable_popoverUnderlay")]',
     );
@@ -114,7 +116,7 @@ export class LandingPage {
     this.monitorLandingHeader = page.getByRole("heading", {
       name: "Mozilla Monitor",
     });
-    this.signInButton = page.getByRole("button", { name: "Sign In" });
+    this.signInButton = page.getByRole("button", { name: "Sign In" }).first();
 
     // hero section
     this.monitorHeroTitle = page.getByRole("heading", {
@@ -262,7 +264,8 @@ export class LandingPage {
   }
 
   async goToSignIn() {
-    await this.signInButton.click();
+    await this.page.waitForTimeout(500); // sign in button may not be loaded at this point.
+    await this.signInButton.click({ force: true });
     // FxA can take a while to load on stage:
     await this.page.waitForURL("**/oauth/**", { timeout: 60_000 });
   }

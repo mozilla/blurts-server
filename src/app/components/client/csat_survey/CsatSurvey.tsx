@@ -22,7 +22,7 @@ import { getRemovalTimeEstimatesCsatSurvey } from "./surveys/removalTimeEstimate
 export type CsatSurveyProps = {
   activeTab: TabType;
   user: Session["user"];
-  experimentData: ExperimentData;
+  experimentData: ExperimentData["Features"];
   enabledFeatureFlags: FeatureFlagName[];
   hasAutoFixedDataBrokers: boolean;
   hasFirstMonitoringScan: boolean;

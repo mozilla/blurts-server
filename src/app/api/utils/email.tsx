@@ -8,7 +8,10 @@ import { sendEmail } from "../../../utils/email";
 import { renderEmail } from "../../../emails/renderEmail";
 import { VerifyEmailAddressEmail } from "../../../emails/templates/verifyEmailAddress/VerifyEmailAddressEmail";
 import { sanitizeSubscriberRow } from "../../functions/server/sanitize";
-import { getL10n } from "../../functions/l10n/serverComponents";
+import {
+  getAcceptLangHeaderInServerComponents,
+  getL10n,
+} from "../../functions/l10n/serverComponents";
 import { BadRequestError } from "../../../utils/error";
 
 export async function sendVerificationEmail(
@@ -16,7 +19,10 @@ export async function sendVerificationEmail(
   emailId: number,
 ) {
   const sanitizedSubscriber = sanitizeSubscriberRow(user);
-  const l10n = getL10n(sanitizedSubscriber.signup_language ?? undefined);
+  const l10n = getL10n(
+    sanitizedSubscriber.signup_language ??
+      (await getAcceptLangHeaderInServerComponents()),
+  );
   const unverifiedEmailAddressRecord = await resetUnverifiedEmailAddress(
     emailId,
     user,
@@ -44,7 +50,7 @@ export async function sendVerificationEmail(
   await sendEmail(
     recipientEmail,
     l10n.getString("email-subject-verify"),
-    renderEmail(
+    await renderEmail(
       <VerifyEmailAddressEmail
         verificationUrl={verificationUrl.href}
         subscriber={sanitizedSubscriber}

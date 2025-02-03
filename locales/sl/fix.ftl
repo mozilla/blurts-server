@@ -7,6 +7,7 @@ fix-flow-nav-leaked-passwords = Razkrita gesla
 fix-flow-nav-security-recommendations = Varnostna priporočila
 guided-resolution-flow-exit = Nazaj na pregledno ploščo
 guided-resolution-flow-next-arrow = Pojdi na naslednji korak
+guided-resolution-flow-next-arrow-sub-step = Pojdi na naslednji zadetek
 guided-resolution-flow-step-navigation-label = Vodeni koraki
 
 # Celebration screens
@@ -161,7 +162,7 @@ security-recommendation-email-summary =
 security-recommendation-email-description = Tega žal ne morete popraviti. Vendar pa obstajajo koraki, s katerimi se lahko zaščitite.
 security-recommendation-email-step-one = Ne klikajte povezav v e-poštnih sporočilih neznanih pošiljateljev; če se zdi, da prihaja iz zaupanja vrednega vira, pokličite neposredno za potrditev
 security-recommendation-email-step-two = Bodite pozorni na <link_to_info>prevare z lažnim predstavljanjem</link_to_info>
-security-recommendation-email-step-three = Označi sumljivo pošto kot neželeno in blokiraj pošiljatelja
+security-recommendation-email-step-three = Označite sumljivo pošto kot neželeno in blokirajte pošiljatelja
 security-recommendation-email-step-four = Za zaščito e-pošte v prihodnje uporabite <link_to_info>e-poštne maske za { -brand-relay }</link_to_info>
 
 # IP security recommendation

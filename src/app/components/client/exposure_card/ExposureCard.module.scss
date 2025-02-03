@@ -1,18 +1,18 @@
-@import "../../../tokens";
+@use "../../../tokens";
 
 .exposureCard {
-  font: $text-body-sm;
-  background-color: $color-white;
-  border: 2px solid rgba($color-purple-70, 0.2);
-  border-radius: $border-radius-md;
+  font: tokens.$text-body-sm;
+  background-color: tokens.$color-white;
+  border: 2px solid rgba(tokens.$color-purple-70, 0.2);
+  border-radius: tokens.$border-radius-md;
 
   .exposureHeader {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: calc($spacing-md * 1.25) $spacing-md;
-    gap: $layout-xs;
+    padding: calc(tokens.$spacing-md * 1.25) tokens.$spacing-md;
+    gap: tokens.$layout-xs;
 
     .chevron {
       flex-shrink: 0;
@@ -20,11 +20,11 @@
       border-style: none;
       padding: 0;
       cursor: pointer;
-      color: rgba($color-purple-70, 0.7);
+      color: rgba(tokens.$color-purple-70, 0.7);
       width: 15px; // size of the chevron on mobile
       height: 20px; // height of down chevron
 
-      @media screen and (min-width: $screen-md) {
+      @media screen and (min-width: tokens.$screen-md) {
         width: 20px; // size of the chevron on larger devices
       }
 
@@ -47,13 +47,13 @@
     .hideOnMobile {
       display: none;
 
-      @media screen and (min-width: $screen-lg) {
+      @media screen and (min-width: tokens.$screen-lg) {
         display: block;
       }
     }
 
-    @media screen and (min-width: $screen-lg) {
-      gap: $layout-sm;
+    @media screen and (min-width: tokens.$screen-lg) {
+      gap: tokens.$layout-sm;
     }
 
     .dataBrokerLogo {
@@ -68,7 +68,7 @@
       height: 35px;
       border-radius: 50px;
       color: black;
-      font: $text-title-3xs;
+      font: tokens.$text-title-3xs;
     }
 
     dd {
@@ -76,14 +76,14 @@
       align-items: center;
 
       .exposureCompanyTitle {
-        font: $text-body-sm;
+        font: tokens.$text-body-sm;
         text-overflow: ellipsis;
         overflow: hidden;
         white-space: nowrap;
 
-        @media screen and (max-width: $screen-sm) {
+        @media screen and (max-width: tokens.$screen-sm) {
           &.makeFontSmaller {
-            font: $text-body-2xs;
+            font: tokens.$text-body-2xs;
           }
         }
       }
@@ -94,13 +94,13 @@
         }
       }
 
-      @media screen and (min-width: $screen-lg) {
+      @media screen and (min-width: tokens.$screen-lg) {
         &.exposureImageWrapper {
-          flex: 0.2 0 $width-first-column-filter-bar;
+          flex: 0.2 0 tokens.$width-first-column-filter-bar;
         }
       }
 
-      @media screen and (min-width: $screen-xl) {
+      @media screen and (min-width: tokens.$screen-xl) {
         flex: 1 1 0%;
 
         &.hideOnMobile {
@@ -112,7 +112,7 @@
 
   .exposureBreachLink {
     align-items: center;
-    color: $color-blue-50;
+    color: tokens.$color-blue-50;
     display: inline-flex;
     gap: 0.25em;
   }
@@ -120,7 +120,7 @@
   .exposureDetailsSection {
     margin: 0;
     overflow: hidden;
-    padding: 0 $layout-md;
+    padding: 0 tokens.$layout-md;
     height: 0;
     display: none;
 
@@ -128,15 +128,15 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: $layout-xs;
+      gap: tokens.$layout-xs;
 
-      @media screen and (min-width: $screen-sm) {
+      @media screen and (min-width: tokens.$screen-sm) {
         flex-direction: row;
         justify-content: space-between;
       }
 
-      @media screen and (min-width: $screen-md) {
-        gap: $layout-xl;
+      @media screen and (min-width: tokens.$screen-md) {
+        gap: tokens.$layout-xl;
       }
 
       span {
@@ -145,54 +145,54 @@
     }
 
     .exposureDetailsContent {
-      margin-top: $layout-xs;
-      background: $color-grey-05;
-      padding: $spacing-md $spacing-lg;
-      border-radius: $border-radius-md;
+      margin-top: tokens.$layout-xs;
+      background: tokens.$color-grey-05;
+      padding: tokens.$spacing-md tokens.$spacing-lg;
+      border-radius: tokens.$border-radius-md;
 
       .exposedDataTypes {
-        margin-top: $spacing-md;
+        margin-top: tokens.$spacing-md;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        gap: $spacing-lg;
+        gap: tokens.$spacing-lg;
       }
     }
 
     .openInNewTab {
-      color: $color-blue-50;
+      color: tokens.$color-blue-50;
 
       svg {
         display: inline;
-        margin: 0 $spacing-xs;
+        margin: 0 tokens.$spacing-xs;
       }
     }
 
     &.isOpen {
-      border-top: 2px solid rgba($color-purple-70, 0.2);
+      border-top: 2px solid rgba(tokens.$color-purple-70, 0.2);
       overflow: auto;
       height: auto;
       display: block;
-      padding: $spacing-lg;
+      padding: tokens.$spacing-lg;
 
-      @media screen and (min-width: $screen-lg) {
-        padding: $spacing-xl $layout-xl;
+      @media screen and (min-width: tokens.$screen-lg) {
+        padding: tokens.$spacing-xl tokens.$layout-xl;
       }
     }
   }
 }
 
 .visuallyHidden {
-  @include visually-hidden;
+  @include tokens.visually-hidden;
 }
 
 .companyNameArea {
-  @include company-name-area;
+  @include tokens.company-name-area;
 }
 
 .resolveExposuresCtaDesktop {
   display: none;
-  @media screen and (min-width: $screen-md) {
+  @media screen and (min-width: tokens.$screen-md) {
     display: block;
   }
 }
@@ -200,14 +200,14 @@
 .resolveExposuresCtaMobile {
   display: flex;
   justify-content: center;
-  margin-top: $spacing-lg;
+  margin-top: tokens.$spacing-lg;
 
-  @media screen and (min-width: $screen-md) {
+  @media screen and (min-width: tokens.$screen-md) {
     display: none;
   }
 }
 
 .manualResolutionPraise {
   display: flex;
-  gap: $spacing-xs;
+  gap: tokens.$spacing-xs;
 }

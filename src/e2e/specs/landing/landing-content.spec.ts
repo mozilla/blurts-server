@@ -226,10 +226,11 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page content`, (
       description:
         "https://testrail.stage.mozaws.net/index.php?/cases/view/2463504",
     });
-    await landingPage.freeMonitoringTooltipTrigger.click();
+    await expect(landingPage.freeMonitoringTooltipTrigger).toBeVisible();
+    await landingPage.freeMonitoringTooltipTrigger.click({ force: true });
     await expect(landingPage.freeMonitoringTooltipText).toBeVisible();
-    await landingPage.closeTooltips.click();
-    await landingPage.monitorPlusTooltipTrigger.click();
+    await landingPage.closeTooltips.click({ force: true });
+    await landingPage.monitorPlusTooltipTrigger.click({ force: true });
     await expect(landingPage.monitorPlusTooltipText).toBeVisible();
   });
 });

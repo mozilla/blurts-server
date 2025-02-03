@@ -1,26 +1,28 @@
-@import "../../../tokens";
+@use "../../../tokens";
 
 .form {
+  align-items: flex-start;
   display: flex;
   flex-wrap: wrap;
-  gap: $spacing-lg;
+  gap: tokens.$spacing-lg;
+
+  div:first-child {
+    display: flex;
+    flex: 1;
+    flex-direction: column-reverse;
+  }
 
   input {
-    flex: 1 0 auto;
-    border-radius: $border-radius-md;
-    border: 1px solid $color-grey-20;
-    padding: $spacing-md;
-    font: $text-body-md;
+    font: tokens.$text-body-md;
   }
 
   button {
-    flex: 1 0 auto;
-    font: $text-body-md;
+    font: tokens.$text-body-md;
     font-weight: 600;
   }
 
   label {
-    font: $text-body-sm;
+    font: tokens.$text-body-sm;
     font-weight: 500;
   }
 }

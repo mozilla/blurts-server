@@ -28,12 +28,14 @@ import {
 } from "../../../../../../../../functions/universal/breach";
 import { TelemetryButton } from "../../../../../../../../components/client/TelemetryButton";
 import { TelemetryLink } from "../../../../../../../../components/client/TelemetryLink";
+import { FeatureFlagName } from "../../../../../../../../../db/tables/featureFlags";
 
 export type HighRiskBreachLayoutProps = {
   type: HighRiskBreachTypes;
   subscriberEmails: string[];
   data: StepDeterminationData;
   isEligibleForPremium: boolean;
+  enabledFeatureFlags: FeatureFlagName[];
 };
 
 export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
@@ -55,7 +57,11 @@ export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
     props.subscriberEmails,
   );
 
-  const nextStep = getNextGuidedStep(props.data, stepMap[props.type]);
+  const nextStep = getNextGuidedStep(
+    props.data,
+    props.enabledFeatureFlags,
+    stepMap[props.type],
+  );
   const pageData = getHighRiskBreachesByType({
     dataType: props.type,
     breaches: guidedExperienceBreaches,
@@ -157,6 +163,7 @@ export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
       currentSection="high-risk-data-breach"
       hideProgressIndicator={isStepDone}
       showConfetti={isStepDone}
+      enabledFeatureFlags={props.enabledFeatureFlags}
     >
       <ResolutionContainer
         type="securityRecommendations"
@@ -164,6 +171,7 @@ export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
         illustration={illustration}
         isPremiumUser={hasPremium(props.data.user)}
         isEligibleForPremium={props.isEligibleForPremium}
+        enabledFeatureFlags={props.enabledFeatureFlags}
         cta={
           !isStepDone && (
             <>

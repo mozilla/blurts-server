@@ -1,13 +1,13 @@
-@import "../../../tokens";
+@use "../../../tokens";
 
 .plansTable {
-  border-spacing: $spacing-xl 0;
+  border-spacing: tokens.$spacing-xl 0;
   table-layout: fixed;
   width: 100%;
 
   // Set column widths:
   thead th {
-    width: calc(30% - $spacing-xl);
+    width: calc(30% - tokens.$spacing-xl);
   }
 
   // Styles for the column headings
@@ -15,21 +15,21 @@
     th.featureHeadingCell {
       text-align: start;
       vertical-align: bottom;
-      padding-block: $spacing-lg;
+      padding-block: tokens.$spacing-lg;
     }
 
     .freeHeadingCell,
     .plusHeadingCell {
-      padding-block: $spacing-2xl;
+      padding-block: tokens.$spacing-2xl;
       position: relative;
     }
 
     h3 {
-      font: $text-title-xs;
+      font: tokens.$text-title-xs;
       font-weight: 600;
 
       b {
-        color: $color-purple-70;
+        color: tokens.$color-purple-70;
       }
     }
   }
@@ -41,7 +41,7 @@
     // compromise, we only show it on individual cells, rather than on the `tr`:
     tr td,
     tr th {
-      border-top: 1px solid $color-grey-20;
+      border-top: 1px solid tokens.$color-grey-20;
       font-weight: 400;
     }
 
@@ -54,7 +54,7 @@
     /* stylelint-disable no-descending-specificity */
     th,
     td {
-      padding-block: $spacing-md;
+      padding-block: tokens.$spacing-md;
 
       .cellWrapper {
         display: flex;
@@ -63,7 +63,7 @@
 
       svg.checkIcon {
         display: inline-block;
-        color: $color-blue-50;
+        color: tokens.$color-blue-50;
       }
     }
     /* stylelint-enable no-descending-specificity */
@@ -72,23 +72,23 @@
       display: flex;
       flex-direction: column;
       align-items: stretch;
-      gap: $spacing-lg;
+      gap: tokens.$spacing-lg;
       text-align: center;
-      padding-block-end: $spacing-md;
-      padding-inline: $spacing-md;
+      padding-block-end: tokens.$spacing-md;
+      padding-inline: tokens.$spacing-md;
       width: 100%;
 
       .billingPeriod {
         display: flex;
         align-items: center;
         justify-content: center;
-        min-height: $layout-md;
+        min-height: tokens.$layout-md;
         font-weight: 500;
-        color: $color-blue-50;
+        color: tokens.$color-blue-50;
       }
 
       .price {
-        font: $text-title-sm;
+        font: tokens.$text-title-sm;
       }
 
       .total {
@@ -96,17 +96,17 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        min-height: $layout-xl;
-        font: $text-body-lg;
+        min-height: tokens.$layout-xl;
+        font: tokens.$text-body-lg;
 
         .discount {
-          color: $color-purple-70;
+          color: tokens.$color-purple-70;
           font-weight: 700;
           font-style: normal;
         }
 
         .sum {
-          color: $color-grey-40;
+          color: tokens.$color-grey-40;
           font-weight: 500;
         }
       }
@@ -116,7 +116,7 @@
       }
 
       .reassurance {
-        font: $text-body-sm;
+        font: tokens.$text-body-sm;
         font-weight: 400;
       }
     }
@@ -125,9 +125,9 @@
   // Draw purple border around the Plus plan column:
   .freeCell,
   .plusCell {
-    background-color: $color-white;
+    background-color: tokens.$color-white;
     vertical-align: middle;
-    color: $color-grey-50;
+    color: tokens.$color-grey-50;
 
     .cellWrapper {
       justify-content: center;
@@ -136,27 +136,27 @@
 
   .plusCell {
     font-weight: 700;
-    border-inline: 4px solid $color-purple-70;
+    border-inline: 4px solid tokens.$color-purple-70;
   }
 
   .badge {
     position: absolute;
     top: 0;
-    background-color: $color-purple-70;
-    color: $color-white;
+    background-color: tokens.$color-purple-70;
+    color: tokens.$color-white;
     transform: translateX(-50%) translateY(-50%);
-    border-radius: $border-radius-md;
-    font: $text-body-sm;
+    border-radius: tokens.$border-radius-md;
+    font: tokens.$text-body-sm;
     font-weight: 600;
-    padding: $spacing-sm $spacing-md;
+    padding: tokens.$spacing-sm tokens.$spacing-md;
 
-    @include uppercase-only-english;
+    @include tokens.uppercase-only-english;
   }
 
   th.plusHeadingCell {
-    border-top: 4px solid $color-purple-70;
-    border-top-right-radius: $border-radius-md;
-    border-top-left-radius: $border-radius-md;
+    border-top: 4px solid tokens.$color-purple-70;
+    border-top-right-radius: tokens.$border-radius-md;
+    border-top-left-radius: tokens.$border-radius-md;
 
     &::before {
       content: "+";
@@ -164,12 +164,12 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background-color: $color-purple-70;
-      color: $color-white;
-      width: $spacing-2xl;
-      height: $spacing-2xl;
-      border-radius: $border-radius-xl;
-      font: $text-title-sm;
+      background-color: tokens.$color-purple-70;
+      color: tokens.$color-white;
+      width: tokens.$spacing-2xl;
+      height: tokens.$spacing-2xl;
+      border-radius: tokens.$border-radius-xl;
+      font: tokens.$text-title-sm;
       inset-block-start: 0;
       inset-inline-start: 0;
       transform: translateX(-50%) translateY(-50%);
@@ -177,26 +177,26 @@
   }
 
   tbody tr:last-child .plusBodyCell {
-    border-bottom: 4px solid $color-purple-70;
-    border-bottom-right-radius: $border-radius-md;
-    border-bottom-left-radius: $border-radius-md;
+    border-bottom: 4px solid tokens.$color-purple-70;
+    border-bottom-right-radius: tokens.$border-radius-md;
+    border-bottom-left-radius: tokens.$border-radius-md;
   }
 
   // Draw a light-grey line around the Free plan column:
   .freeCell {
-    border-inline: 1px solid $color-grey-20;
+    border-inline: 1px solid tokens.$color-grey-20;
   }
 
   th.freeHeadingCell {
-    border-top: 1px solid $color-grey-20;
-    border-top-right-radius: $border-radius-md;
-    border-top-left-radius: $border-radius-md;
+    border-top: 1px solid tokens.$color-grey-20;
+    border-top-right-radius: tokens.$border-radius-md;
+    border-top-left-radius: tokens.$border-radius-md;
   }
 
   tbody tr:last-child td:nth-child(2) {
-    border-bottom: 1px solid $color-grey-20;
-    border-bottom-right-radius: $border-radius-md;
-    border-bottom-left-radius: $border-radius-md;
+    border-bottom: 1px solid tokens.$color-grey-20;
+    border-bottom-right-radius: tokens.$border-radius-md;
+    border-bottom-left-radius: tokens.$border-radius-md;
   }
 }
 
@@ -204,23 +204,23 @@
   display: flex;
   flex-direction: row-reverse;
   flex-wrap: wrap;
-  gap: $spacing-xl;
-  padding: $spacing-md;
+  gap: tokens.$spacing-xl;
+  padding: tokens.$spacing-md;
 
   [role="group"] {
-    flex: 1 1 $content-sm;
+    flex: 1 1 tokens.$content-sm;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    gap: $spacing-lg;
-    background-color: $color-white;
-    border-radius: $border-radius-md;
-    padding: $spacing-2xl $spacing-md;
+    gap: tokens.$spacing-lg;
+    background-color: tokens.$color-white;
+    border-radius: tokens.$border-radius-md;
+    padding: tokens.$spacing-2xl tokens.$spacing-md;
 
     hr {
       border-style: none;
-      border-top: 1px solid $color-grey-20;
+      border-top: 1px solid tokens.$color-grey-20;
       width: 100%;
     }
 
@@ -228,14 +228,14 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: $spacing-sm;
+      gap: tokens.$spacing-sm;
 
       h3 {
-        font: $text-title-xs;
+        font: tokens.$text-title-xs;
         font-weight: 600;
 
         b {
-          color: $color-purple-70;
+          color: tokens.$color-purple-70;
         }
       }
     }
@@ -244,21 +244,21 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: $spacing-lg;
+      gap: tokens.$spacing-lg;
 
       .cost {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: $spacing-md;
+        gap: tokens.$spacing-md;
 
         .price {
-          font: $text-title-sm;
+          font: tokens.$text-title-sm;
         }
 
         .total {
           display: block;
-          color: $color-grey-40;
+          color: tokens.$color-grey-40;
 
           em {
             font-weight: 700;
@@ -272,7 +272,7 @@
       }
 
       .reassurance {
-        font: $text-body-sm;
+        font: tokens.$text-body-sm;
         font-weight: 400;
       }
     }
@@ -280,11 +280,11 @@
     .featuresSection {
       display: flex;
       flex-direction: column;
-      gap: $spacing-md;
-      padding-inline: $spacing-sm;
+      gap: tokens.$spacing-md;
+      padding-inline: tokens.$spacing-sm;
 
       h4 {
-        font: $text-title-3xs;
+        font: tokens.$text-title-3xs;
       }
 
       .featureList {
@@ -293,26 +293,26 @@
         flex-direction: column;
         align-items: flex-start;
         justify-content: center;
-        gap: $spacing-lg;
+        gap: tokens.$spacing-lg;
         margin: 0;
         padding: 0;
 
         li {
           display: flex;
           align-items: flex-start;
-          gap: $spacing-xs;
+          gap: tokens.$spacing-xs;
 
           .inclusionIcon {
-            margin: $spacing-xs;
+            margin: tokens.$spacing-xs;
             flex: 1 0 auto;
           }
 
           &.included .inclusionIcon {
-            color: $color-green-90;
+            color: tokens.$color-green-90;
           }
 
           &.notIncluded .inclusionIcon {
-            color: $color-red-60;
+            color: tokens.$color-red-60;
           }
 
           button {
@@ -324,26 +324,26 @@
 
     &.plusCard {
       position: relative;
-      border: 4px solid $color-purple-70;
+      border: 4px solid tokens.$color-purple-70;
     }
 
     &.freeCard {
       position: relative;
-      border: 2px solid $color-grey-20;
+      border: 2px solid tokens.$color-grey-20;
     }
     .badge {
       position: absolute;
       top: 0;
       left: 50%;
       transform: translateY(-50%) translateX(-50%);
-      background-color: $color-purple-70;
-      color: $color-white;
-      border-radius: $border-radius-md;
-      font: $text-body-sm;
+      background-color: tokens.$color-purple-70;
+      color: tokens.$color-white;
+      border-radius: tokens.$border-radius-md;
+      font: tokens.$text-body-sm;
       font-weight: 600;
-      padding: $spacing-sm $spacing-md;
+      padding: tokens.$spacing-sm tokens.$spacing-md;
 
-      @include uppercase-only-english;
+      @include tokens.uppercase-only-english;
     }
   }
 }
@@ -352,12 +352,12 @@
   background-color: transparent;
   border-style: none;
   cursor: pointer;
-  border-radius: $border-radius-md;
+  border-radius: tokens.$border-radius-md;
   padding: 0;
 
   svg {
-    width: $layout-2xs;
-    height: $layout-2xs;
+    width: tokens.$layout-2xs;
+    height: tokens.$layout-2xs;
   }
 }
 
@@ -367,20 +367,20 @@
 }
 
 .popover {
-  box-shadow: $box-shadow-sm;
-  background-color: $color-white;
-  border: 1px solid $color-grey-20;
-  border-radius: $border-radius-md;
-  padding: $spacing-md;
-  max-width: $content-sm;
+  box-shadow: tokens.$box-shadow-sm;
+  background-color: tokens.$color-white;
+  border: 1px solid tokens.$color-grey-20;
+  border-radius: tokens.$border-radius-md;
+  padding: tokens.$spacing-md;
+  max-width: tokens.$content-sm;
 }
 
 .popoverArrow {
   position: absolute;
   width: 12px;
   height: 12px;
-  fill: $color-white;
-  stroke: $color-grey-20;
+  fill: tokens.$color-white;
+  stroke: tokens.$color-grey-20;
   stroke-width: 1px;
 
   &[data-placement="top"] {
@@ -394,12 +394,12 @@
   }
 }
 
-@media (max-width: $screen-lg) {
+@media (max-width: tokens.$screen-lg) {
   .plansTable {
     display: none;
   }
 }
-@media (min-width: calc($screen-lg + 1px)) {
+@media (min-width: calc(tokens.$screen-lg + 1px)) {
   .plansCards {
     display: none;
   }

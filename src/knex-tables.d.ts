@@ -13,9 +13,35 @@ import type {
   formatDataClassesArray,
   HibpGetBreachesResponse,
 } from "./utils/hibp";
+import { DataBrokerRemovalStatus } from "./app/functions/universal/dataBroker";
 
 // See https://knexjs.org/guide/#typescript
 declare module "knex/types/tables" {
+  interface OnerepDataBrokerRow {
+    id: number;
+    data_broker: string;
+    status: string;
+    url: string;
+    created_at: Date;
+    updated_at: Date;
+  }
+
+  interface SubscriberChurnRow {
+    userid: string;
+    customer: string;
+    nickname: string;
+    intervl: string;
+    plan_id: string;
+    product_id: string;
+    current_period_end: Date;
+  }
+
+  interface OnerepScanResultDataBrokerRow extends OnerepScanResultRow {
+    scan_result_status: RemovalStatus;
+    broker_status: DataBrokerRemovalStatus;
+    url: string;
+  }
+
   interface AttributionRow {
     id: number;
     subscriber_id: number;
@@ -136,6 +162,7 @@ declare module "knex/types/tables" {
     sign_in_count: null | number;
     email_addresses: SubscriberEmail[];
     first_broker_removal_email_sent: boolean;
+    churn_prevention_email_sent_at: null | Date;
   }
   type SubscriberOptionalColumns = Extract<
     keyof SubscriberRow,
@@ -158,6 +185,7 @@ declare module "knex/types/tables" {
     | "onerep_profile_id"
     | "email_addresses"
     | "first_broker_removal_email_sent"
+    | "churn_prevention_email_sent_at"
   >;
   type SubscriberAutoInsertedColumns = Extract<
     keyof SubscriberRow,
@@ -405,6 +433,8 @@ declare module "knex/types/tables" {
       WritableDateColumns<Partial<Omit<SubscriberCouponRow, "id">>>
     >;
 
+    subscriber_churns: SubscriberChurnRow;
+
     subscriber_email_preferences: Knex.CompositeTableType<
       SubscriberEmailPreferencesRow,
       // On inserts, auto-generated columns cannot be set, and nullable columns are optional:
@@ -520,13 +550,28 @@ declare module "knex/types/tables" {
     >;
 
     onerep_data_brokers: Knex.CompositeTableType<
-      DataBrokerRow,
+      OnerepDataBrokerRow,
       // On inserts, auto-generated columns cannot be set
-      WritableDateColumns<Omit<DataBrokerRow, DataBrokerAutoInsertedColumns>>,
+      WritableDateColumns<
+        Omit<OnerepDataBrokerRow, DataBrokerAutoInsertedColumns>
+      >,
       // On updates, don't allow updating the ID and created date; all other fields are optional, except updated_at
       WritableDateColumns<
-        Partial<Omit<DataBrokerRow, "id" | "created_at">> &
-          Pick<DataBrokerRow, "updated_at">
+        Partial<Omit<OnerepDataBrokerRow, "id" | "created_at">> &
+          Pick<OnerepDataBrokerRow, "updated_at">
+      >
+    >;
+
+    onerep_scan_results_data_brokers: Knex.CompositeTableType<
+      OnerepScanResultDataBrokerRow,
+      // On inserts, auto-generated columns cannot be set
+      WritableDateColumns<
+        Omit<OnerepScanResultDataBrokerRow, OnerepScanResultAutoInsertedColumns>
+      >,
+      // On updates, don't allow updating the ID and created date; all other fields are optional, except updated_at
+      WritableDateColumns<
+        Partial<Omit<OnerepScanResultDataBrokerRow, "id" | "created_at">> &
+          Pick<OnerepScanResultDataBrokerRow, "updated_at">
       >
     >;
   }
@@ -539,13 +584,4 @@ interface GoogleAnalyticsClientsRow {
   cookie_path: string;
   client_id: string;
   cookie_timestamp: Date;
-}
-
-interface DataBrokerRow {
-  id: number;
-  data_broker: string;
-  status: string;
-  url: string;
-  created_at: Date;
-  updated_at: Date;
 }

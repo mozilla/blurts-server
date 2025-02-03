@@ -1,6 +1,6 @@
-@import "../../tokens";
+@use "../../tokens";
 
 .popoverList {
-  border-radius: $border-radius-sm;
-  box-shadow: $box-shadow-sm;
+  border-radius: tokens.$border-radius-sm;
+  box-shadow: tokens.$box-shadow-sm;
 }

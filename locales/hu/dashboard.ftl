@@ -69,7 +69,7 @@ dashboard-exposures-area-description-all-line2 =
         [one] { $data_breach_unresolved_num } adatvédelmi incidensben jelent meg.
        *[other] { $data_breach_unresolved_num } adatvédelmi incidensben jelent meg.
     }
-dashboard-fixed-area-headline-all = Összes javított kitettségek megtekintése
+dashboard-fixed-area-headline-all = Összes javított kitettség megtekintése
 # This is the label on a button that opens a popover menu, which shows a menu to adjust filters for the listed exposures.
 dashboard-exposures-filter = Szűrő
 dashboard-exposures-filter-company = Cég
@@ -105,8 +105,8 @@ dashboard-top-banner-protect-your-data-cta = Javítsuk ki
 #   $exposures_unresolved_num (number) - the total number of exposures the user has.
 dashboard-top-banner-non-us-protect-your-data-description-line1 =
     { $exposures_unresolved_num ->
-        [one] { $exposures_unresolved_num } adatkikerülést találtuk.
-       *[other] { $exposures_unresolved_num } adatkikerülést találtuk.
+        [one] { $exposures_unresolved_num } kitettséget találtuk.
+       *[other] { $exposures_unresolved_num } kitettséget találtuk.
     }
 # Note: this line is preceded by `dashboard-top-banner-non-us-protect-your-data-description-line1`.
 # Variables:

@@ -15,8 +15,6 @@ settings-alert-preferences-allow-breach-alerts-title = Rhybuddion tor-data byw
 settings-alert-preferences-allow-breach-alerts-subtitle = Bydd y rhybuddion hyn yn cael eu hanfon yn syth ar ôl canfod tor-data
 settings-alert-preferences-option-one = Anfon rhybuddion tor-data at y cyfeiriadau e-bost sydd wedi'u heffeithio
 settings-alert-preferences-option-two = Anfon yr holl rybuddion tor-data at fy mhrif gyfeiriad e-bost.
-settings-alert-preferences-allow-monthly-monitor-report-title = Adroddiad misol { -brand-monitor }
-settings-alert-preferences-allow-monthly-monitor-report-subtitle = Diweddariad misol o ddatguddiadau newydd, beth sydd wedi'i drwsio, a beth sydd angen eich sylw.
 
 ## Monitored email addresses
 
@@ -55,12 +53,6 @@ settings-email-number-of-breaches-info =
        *[other] Yn ymddangos mewn { $breachCount } tor-data.
     }
 
-## Deactivate account
-
-settings-deactivate-account-title = Analluogi cyfrif
-settings-deactivate-account-info-2 = Gallwch ddadweithredu { -product-short-name } drwy ddileu eich { -brand-mozilla-account }.
-settings-fxa-link-label-3 = Ewch i Gosodiadau { -brand-mozilla-account }
-
 ## Delete Monitor account
 
 settings-delete-monitor-free-account-title = Dileu'r cyfrif { -brand-monitor }
@@ -72,3 +64,18 @@ settings-delete-monitor-free-account-dialog-cta-label = Dileu'r cyfrif
 settings-delete-monitor-free-account-dialog-cancel-button-label = Dim gwahaniaeth, mynd â fi yn ôl
 settings-delete-monitor-account-confirmation-toast-label-2 = Mae eich cyfrif { -brand-monitor } bellach wedi'i ddileu'n barhaol.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Cau
+
+## Monthly Monitor Report
+
+settings-alert-preferences-allow-monthly-monitor-report-title = Adroddiad misol { -brand-monitor }
+settings-alert-preferences-allow-monthly-monitor-report-subtitle = Diweddariad misol o ddatguddiadau newydd, beth sydd wedi'i drwsio, a beth sydd angen eich sylw.
+
+## Settings page redesign
+
+settings-tab-label-edit-info = Golygu eich manylion
+settings-tab-label-notifications = Gosod hysbysiadau
+settings-tab-label-manage-account = Rheoli cyfrif
+settings-tab-subtitle-manage-account = Rheoli eich cyfrif { -product-name }.
+settings-tab-notifications-marketing-title = Cyfathrebu marchnata
+settings-tab-notifications-marketing-text = Newyddion o bryd i'w gilydd am { -brand-monitor }, { -brand-mozilla }, a'n cynnyrch diogelwch eraill.
+settings-tab-notifications-marketing-link-label = Ewch i osodiadau e-bost { -brand-mozilla }

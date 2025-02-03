@@ -1,33 +1,33 @@
-@import "../../../../tokens";
+@use "../../../../tokens";
 
 .brokersEmphasis {
   display: inline;
-  color: $color-violet-50;
+  color: tokens.$color-violet-50;
 }
 .breachesEmphasis {
   display: inline;
-  color: $color-purple-70;
+  color: tokens.$color-purple-70;
 }
 
 .header {
-  padding: $layout-lg $spacing-md;
+  padding: tokens.$layout-lg tokens.$spacing-md;
   display: flex;
   justify-content: center;
   span {
     width: 100%;
-    max-width: $content-xl;
+    max-width: tokens.$content-xl;
   }
-  @media screen and (min-width: $content-md) {
-    padding: $layout-lg;
+  @media screen and (min-width: tokens.$content-md) {
+    padding: tokens.$layout-lg;
   }
   .title {
-    font: $text-title-lg;
+    font: tokens.$text-title-lg;
     font-family: "Inter", sans-serif;
-    color: $color-grey-60;
+    color: tokens.$color-grey-60;
   }
   p {
-    color: $color-grey-40;
-    font: $text-body-xl;
+    color: tokens.$color-grey-40;
+    font: tokens.$text-body-xl;
   }
 }
 .sectionWrapper {
@@ -36,7 +36,7 @@
   align-items: center;
   justify-content: space-between;
   &.grayBG {
-    background: $color-grey-05;
+    background: tokens.$color-grey-05;
   }
   ul {
     list-style-type: none;
@@ -47,28 +47,28 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    max-width: $content-xl;
-    @media screen and (min-width: $content-md) {
-      padding: $spacing-2xl 0;
-      gap: $spacing-lg;
+    max-width: tokens.$content-xl;
+    @media screen and (min-width: tokens.$content-md) {
+      padding: tokens.$spacing-2xl 0;
+      gap: tokens.$spacing-lg;
     }
     .introContent {
-      gap: $spacing-md;
+      gap: tokens.$spacing-md;
       display: flex;
       flex-direction: column;
-      padding: 0 $spacing-md;
+      padding: 0 tokens.$spacing-md;
       h2 {
-        color: $color-grey-60;
-        font: $text-title-md;
+        color: tokens.$color-grey-60;
+        font: tokens.$text-title-md;
         font-family: "Inter", sans-serif;
       }
       p {
-        color: $color-grey-40;
-        font: $text-body-xl;
+        color: tokens.$color-grey-40;
+        font: tokens.$text-body-xl;
       }
       .horizontalRule {
-        border: 1px solid $color-grey-20;
-        margin: $spacing-md 0;
+        border: 1px solid tokens.$color-grey-20;
+        margin: tokens.$spacing-md 0;
       }
     }
     .introCTA {
@@ -76,18 +76,18 @@
       flex-wrap: wrap;
       align-items: center;
       justify-content: center;
-      gap: $spacing-lg;
-      padding-inline: $spacing-md;
-      padding-block-start: $spacing-xl;
+      gap: tokens.$spacing-lg;
+      padding-inline: tokens.$spacing-md;
+      padding-block-start: tokens.$spacing-xl;
       width: 100%;
       h3 {
-        color: $color-grey-50;
-        font: $text-title-xs;
+        color: tokens.$color-grey-50;
+        font: tokens.$text-title-xs;
         font-family: "Inter", sans-serif;
         flex: auto;
-        max-width: $content-xl;
-        @media screen and (min-width: $screen-md) {
-          width: $content-sm;
+        max-width: tokens.$content-xl;
+        @media screen and (min-width: tokens.$screen-md) {
+          width: tokens.$content-sm;
         }
       }
     }
@@ -98,106 +98,106 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    max-width: $content-xl;
+    max-width: tokens.$content-xl;
     &.reversedStep {
       flex-direction: column-reverse;
     }
     .stepTextContainer {
-      max-width: $content-sm;
-      padding: $spacing-sm;
+      max-width: tokens.$content-sm;
+      padding: tokens.$spacing-sm;
       .stepTitle {
-        font: $text-title-2xs;
+        font: tokens.$text-title-2xs;
         font-family: "Inter", sans-serif;
-        padding-block-start: $spacing-xl;
-        @include uppercase-only-english;
+        padding-block-start: tokens.$spacing-xl;
+        @include tokens.uppercase-only-english;
       }
       .stepSubtitle {
-        color: $color-grey-50;
-        font: $text-title-xs;
+        color: tokens.$color-grey-50;
+        font: tokens.$text-title-xs;
         font-family: "Inter", sans-serif;
-        padding-block-start: $spacing-md;
+        padding-block-start: tokens.$spacing-md;
       }
       .stepBody {
-        color: $color-grey-50;
-        padding-block-start: $spacing-md;
+        color: tokens.$color-grey-50;
+        padding-block-start: tokens.$spacing-md;
       }
       .stepGroupTitleAfter1st {
-        padding-block-start: $spacing-2xl;
+        padding-block-start: tokens.$spacing-2xl;
       }
       .privateInfoRow {
         display: flex;
         flex-direction: row;
         align-items: flex-start;
         justify-content: flex-start;
-        gap: $spacing-xs;
-        padding-block-start: $spacing-sm;
+        gap: tokens.$spacing-xs;
+        padding-block-start: tokens.$spacing-sm;
         width: 100%;
         .privateInfoText {
-          color: $color-grey-50;
+          color: tokens.$color-grey-50;
         }
         img {
           width: 30px;
-          margin-top: $spacing-sm;
-          margin-right: $spacing-sm;
+          margin-top: tokens.$spacing-sm;
+          margin-right: tokens.$spacing-sm;
         }
         .boldedText {
           font-weight: 700;
         }
       }
     }
-    @media screen and (min-width: $screen-md) {
+    @media screen and (min-width: tokens.$screen-md) {
       display: flex;
       flex-wrap: wrap;
       flex-direction: row;
       align-items: center;
       justify-content: space-between;
-      padding: $spacing-md;
-      gap: $spacing-lg;
+      padding: tokens.$spacing-md;
+      gap: tokens.$spacing-lg;
       &.reversedStep {
         flex-direction: row;
       }
       .stepTextContainer {
-        max-width: $content-xs;
+        max-width: tokens.$content-xs;
       }
       img {
-        max-width: $content-xs;
+        max-width: tokens.$content-xs;
       }
     }
-    @media screen and (min-width: $screen-lg) {
-      padding: $spacing-xs;
+    @media screen and (min-width: tokens.$screen-lg) {
+      padding: tokens.$spacing-xs;
       .stepTextContainer {
-        max-width: $content-sm;
+        max-width: tokens.$content-sm;
       }
       img {
-        max-width: $content-sm;
+        max-width: tokens.$content-sm;
       }
     }
-    @media screen and (min-width: $screen-xl) {
-      padding: $spacing-xs;
+    @media screen and (min-width: tokens.$screen-xl) {
+      padding: tokens.$spacing-xs;
       .stepTextContainer {
-        max-width: $content-md;
+        max-width: tokens.$content-md;
       }
       img {
-        max-width: $content-sm;
+        max-width: tokens.$content-sm;
       }
     }
   }
   .sectionCTAButton {
     display: grid;
-    max-width: $content-sm;
+    max-width: tokens.$content-sm;
     width: 100%;
-    margin: $spacing-md 0;
+    margin: tokens.$spacing-md 0;
     button {
-      padding: $spacing-md $spacing-xl;
+      padding: tokens.$spacing-md tokens.$spacing-xl;
     }
     a {
-      margin-inline: $spacing-lg;
+      margin-inline: tokens.$spacing-lg;
     }
     &.breachesCTAButton {
-      padding-inline: $spacing-md;
-      margin-bottom: $spacing-xl;
+      padding-inline: tokens.$spacing-md;
+      margin-bottom: tokens.$spacing-xl;
     }
-    @media screen and (min-width: $screen-md) {
+    @media screen and (min-width: tokens.$screen-md) {
       width: unset;
       max-width: unset;
       a {
@@ -205,21 +205,21 @@
       }
     }
   }
-  @media screen and (min-width: $screen-md) {
+  @media screen and (min-width: tokens.$screen-md) {
     display: flex;
     justify-content: center;
     align-items: center;
     margin: unset;
-    margin-bottom: $layout-lg;
+    margin-bottom: tokens.$layout-lg;
     a {
-      margin: $layout-md;
+      margin: tokens.$layout-md;
     }
     button {
-      margin: $layout-md;
+      margin: tokens.$layout-md;
     }
   }
-  @media screen and (min-width: $screen-lg) {
-    padding-inline: $layout-lg;
+  @media screen and (min-width: tokens.$screen-lg) {
+    padding-inline: tokens.$layout-lg;
   }
 }
 .footerSection {
@@ -227,41 +227,19 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: $color-purple-05;
-  padding: $spacing-2xl $spacing-md;
+  background: tokens.$color-purple-05;
+  padding: tokens.$spacing-2xl tokens.$spacing-md;
+
   .footerSectionCTA {
-    font: $text-title-2xs;
+    font: tokens.$text-title-2xs;
     font-family: var(--font-inter);
     font-weight: 500;
-    margin-bottom: $spacing-xl;
+    margin-bottom: tokens.$spacing-xl;
   }
-  .footerSectionCTAInput {
-    display: flex;
-    flex-wrap: wrap;
-    gap: $spacing-md;
-    input {
-      flex: 1 0 auto;
-      border-radius: $border-radius-md;
-      border: 1px solid $color-grey-20;
-      padding: $spacing-sm;
-      font: $text-body-md;
-    }
-    button {
-      flex: 1 0 auto;
-      font: $text-body-md;
-      font-weight: 600;
-    }
-  }
+
   .note {
-    color: $color-grey-40;
-    font: $text-body-sm;
-    margin-top: $spacing-sm;
-  }
-  @media screen and (min-width: $screen-md) {
-    .footerSectionCTAInput {
-      input {
-        padding: $spacing-md $spacing-xl $spacing-md $spacing-md;
-      }
-    }
+    color: tokens.$color-grey-40;
+    font: tokens.$text-body-sm;
+    margin-top: tokens.$spacing-sm;
   }
 }

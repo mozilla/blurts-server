@@ -38,7 +38,6 @@ import {
 import { getCronjobL10n } from "../../app/functions/l10n/cronjobs";
 import { sanitizeSubscriberRow } from "../../app/functions/server/sanitize";
 import { getEnabledFeatureFlags } from "../../db/tables/featureFlags";
-import { getLatestOnerepScanResults } from "../../db/tables/onerep_scans";
 import { getSubscriberBreaches } from "../../app/functions/server/getSubscriberBreaches";
 import { getSignupLocaleCountry } from "../../emails/functions/getSignupLocaleCountry";
 import { refreshStoredScanResults } from "../../app/functions/server/refreshStoredScanResults";
@@ -48,6 +47,7 @@ import {
   DashboardSummary,
   getDashboardSummary,
 } from "../../app/functions/server/dashboard";
+import { getScanResultsWithBroker } from "../../db/tables/onerep_scans";
 
 const SENTRY_SLUG = "cron-breach-alerts";
 
@@ -282,8 +282,9 @@ export async function poll(
                 !hasPremium(recipient) &&
                 typeof recipient.onerep_profile_id === "number"
               ) {
-                const scanData = await getLatestOnerepScanResults(
+                const scanData = await getScanResultsWithBroker(
                   recipient.onerep_profile_id,
+                  hasPremium(recipient),
                 );
                 const allSubscriberBreaches = await getSubscriberBreaches({
                   fxaUid: recipient.fxa_uid,
@@ -300,7 +301,7 @@ export async function poll(
               await sendEmail(
                 recipientEmail,
                 subject,
-                renderEmail(
+                await renderEmail(
                   <RedesignedBreachAlertEmail
                     l10n={l10n}
                     breach={breachAlert}
@@ -317,7 +318,7 @@ export async function poll(
               await sendEmail(
                 recipientEmail,
                 subject,
-                renderEmail(
+                await renderEmail(
                   <BreachAlertEmail
                     l10n={l10n}
                     breach={breachAlert}

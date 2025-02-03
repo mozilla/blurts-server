@@ -31,7 +31,7 @@ exposure-card-your-exposed-info = A sua informação exposta:
 exposure-card-found-the-following-data = O { -brand-monitor } encontrou os seguintes dados expostos:
 exposure-card-exposure-type-data-broker = Informação à venda
 exposure-card-exposure-type-data-breach = Violação de dados
-exposure-card-resolve-exposures-cta = Resolver exposição
+exposure-card-resolve-exposures-cta = Resolver exposições
 exposure-card-label-company-logo = Logótipo da empresa
 exposure-card-label-company = Empresa
 # Status of the exposure card, could be In Progress, Fixed or Action Needed

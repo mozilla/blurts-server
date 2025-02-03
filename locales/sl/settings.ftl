@@ -65,3 +65,13 @@ settings-delete-monitor-account-confirmation-toast-dismiss-label = Opusti
 
 settings-alert-preferences-allow-monthly-monitor-report-title = Mesečno poročilo { -brand-monitor }a
 settings-alert-preferences-allow-monthly-monitor-report-subtitle = Mesečna posodobitev novih izpostavljenosti, kaj je bilo popravljeno in kaj zahteva vašo pozornost.
+
+## Settings page redesign
+
+settings-tab-label-edit-info = Uredite svoje podatke
+settings-tab-label-notifications = Nastavi obvestila
+settings-tab-label-manage-account = Upravljanje računa
+settings-tab-subtitle-manage-account = Upravljajte svoj račun { -product-name }.
+settings-tab-notifications-marketing-title = Tržno komuniciranje
+settings-tab-notifications-marketing-text = Občasne posodobitve o { -brand-monitor }ju, { -brand-mozilla(sklon: "mestnik") } in drugih naših varnostnih izdelkih.
+settings-tab-notifications-marketing-link-label = Odprite e-poštne nastavitve { -brand-mozilla(sklon: "rodilnik") }

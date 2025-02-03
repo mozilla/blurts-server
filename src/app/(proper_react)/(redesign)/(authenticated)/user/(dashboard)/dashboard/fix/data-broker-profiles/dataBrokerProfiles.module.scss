@@ -1,11 +1,11 @@
-@import "../../../../../../../../tokens";
+@use "../../../../../../../../tokens";
 
 .main {
   flex-direction: column;
 }
 
 .contentWrapper {
-  max-width: $content-md;
+  max-width: tokens.$content-md;
   margin: 0 auto;
   text-align: center;
 }
@@ -14,13 +14,13 @@
   display: flex;
   flex-direction: column;
   text-align: center;
-  gap: $spacing-md;
+  gap: tokens.$spacing-md;
 
   a {
     display: block;
   }
 
-  @media screen and (min-width: $screen-sm) {
+  @media screen and (min-width: tokens.$screen-sm) {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -30,7 +30,7 @@
 
 .upgradeToggleWrapper {
   display: block;
-  margin-bottom: $spacing-lg;
+  margin-bottom: tokens.$spacing-lg;
 
   > span {
     display: block;
@@ -38,21 +38,21 @@
 }
 
 .removalStepsList {
-  font: $text-body-md;
+  font: tokens.$text-body-md;
   text-align: left;
 
   li {
-    margin-bottom: $spacing-md;
+    margin-bottom: tokens.$spacing-md;
 
     > strong {
       display: block;
-      margin-bottom: $spacing-xs;
+      margin-bottom: tokens.$spacing-xs;
       font-weight: 700;
     }
 
     // The subhead/bullet content is wrapped in a span to style to OL marker (1.)
     > span {
-      font: $text-body-sm;
+      font: tokens.$text-body-sm;
       font-weight: normal;
     }
   }
@@ -60,20 +60,20 @@
 
 .content {
   text-align: center;
-  max-width: $content-md;
-  margin: 0 auto $spacing-2xl;
+  max-width: tokens.$content-md;
+  margin: 0 auto tokens.$spacing-2xl;
 
   h3 {
-    font: $text-title-2xs;
+    font: tokens.$text-title-2xs;
   }
 
   h4 {
-    font: $text-title-3xs;
+    font: tokens.$text-title-3xs;
   }
 
   p,
   h3 {
-    margin-block-end: $spacing-md;
+    margin-block-end: tokens.$spacing-md;
   }
 
   h3 + p {
@@ -81,14 +81,14 @@
   }
 
   > a {
-    color: $color-blue-60;
+    color: tokens.$color-blue-60;
     display: inline-block;
-    margin-inline-start: $spacing-sm;
+    margin-inline-start: tokens.$spacing-sm;
   }
 }
 
 .cityScape {
-  margin: 0 auto $spacing-2xl;
+  margin: 0 auto tokens.$spacing-2xl;
   display: block;
   max-width: 100%;
 }
@@ -97,31 +97,31 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: $spacing-xs;
-  font: $text-title-3xs;
+  gap: tokens.$spacing-xs;
+  font: tokens.$text-title-3xs;
 }
 
 .questionTooltip {
-  @include question-mark-circle-btn;
+  @include tokens.question-mark-circle-btn;
 }
 
 .contentAutomaticRemove {
   h3 {
-    @include no-focus-outline;
+    @include tokens.no-focus-outline;
     text-align: left;
   }
 }
 
 .featuresList {
   text-align: left;
-  max-width: $content-sm;
-  margin-bottom: $spacing-lg;
+  max-width: tokens.$content-sm;
+  margin-bottom: tokens.$spacing-lg;
 
   ul {
     padding: 0;
     li {
       background: url("../images/icon-check-mark.svg") no-repeat left center;
-      padding: $spacing-sm 0 $spacing-sm $spacing-xl;
+      padding: tokens.$spacing-sm 0 tokens.$spacing-sm tokens.$spacing-xl;
       list-style: none;
       margin: 0;
       vertical-align: middle;
@@ -132,40 +132,40 @@
 .upgradeToggle {
   width: auto;
   display: inline-flex;
-  gap: $spacing-sm;
-  background-color: $color-grey-10;
-  border-radius: $border-radius-xl;
-  padding: $spacing-sm $spacing-sm;
-  font: $text-body-sm;
-  margin-bottom: $spacing-md;
+  gap: tokens.$spacing-sm;
+  background-color: tokens.$color-grey-10;
+  border-radius: tokens.$border-radius-xl;
+  padding: tokens.$spacing-sm tokens.$spacing-sm;
+  font: tokens.$text-body-sm;
+  margin-bottom: tokens.$spacing-md;
 
   .toggleBtn {
     cursor: pointer;
     appearance: none;
     background-color: transparent;
     border: 0;
-    color: $color-grey-50;
-    padding: $spacing-xs $spacing-md;
+    color: tokens.$color-grey-50;
+    padding: tokens.$spacing-xs tokens.$spacing-md;
     font-weight: 500;
 
     &.isActive,
     &:hover {
-      background-color: $color-white;
-      border-radius: $border-radius-xl;
-      color: $color-informational;
+      background-color: tokens.$color-white;
+      border-radius: tokens.$border-radius-xl;
+      color: tokens.$color-informational;
     }
 
     &.isFocused {
-      outline: 2px solid $color-purple-70;
-      background-color: $color-purple-10;
+      outline: 2px solid tokens.$color-purple-70;
+      background-color: tokens.$color-purple-10;
     }
   }
 }
 
 .upgradeContentWrapper {
-  @media screen and (min-width: $screen-md) {
+  @media screen and (min-width: tokens.$screen-md) {
     display: flex;
-    gap: $spacing-md;
+    gap: tokens.$spacing-md;
     justify-content: space-between;
     // Used to stop purple box from stretching full width
     align-items: flex-start;
@@ -177,25 +177,37 @@
     justify-content: space-between;
     flex-direction: column;
     width: 100%;
-    background-color: $color-purple-70;
-    color: $color-white;
-    padding: $spacing-lg;
+    background-color: tokens.$color-purple-70;
+    color: tokens.$color-white;
+    padding: tokens.$spacing-lg;
     // Note: Confirmed with design to only round the top-right corner
-    border-top-right-radius: $border-radius-xl;
+    border-top-right-radius: tokens.$border-radius-xl;
     > strong {
       text-align: center;
       display: block;
-      font: $text-body-xl;
+      font: tokens.$text-body-xl;
       small {
         display: block;
-        font: $text-body-md;
+        font: tokens.$text-body-md;
       }
     }
     // Price block
     > span {
-      margin: $spacing-xl 0;
-      font: $text-title-sm;
+      margin: tokens.$spacing-xl 0;
+      font: tokens.$text-title-sm;
       font-weight: 500;
+    }
+
+    // Invert color for the plan selection CTA to increase visibility
+    // against the purple background.
+    & > a {
+      color: tokens.$color-white;
+      box-shadow: inset 0 0 0 2px tokens.$color-white;
+
+      &:hover {
+        background-color: tokens.$color-white;
+        color: tokens.$color-purple-70;
+      }
     }
   }
 }
@@ -203,15 +215,15 @@
 .dataBrokerResolutionStats {
   display: flex;
   flex-direction: column;
-  gap: $spacing-md;
+  gap: tokens.$spacing-md;
   justify-content: center;
-  padding-top: $layout-sm;
+  padding-top: tokens.$layout-sm;
 
-  @media screen and (min-width: $screen-md) {
+  @media screen and (min-width: tokens.$screen-md) {
     flex-direction: row;
   }
   div {
-    @include estimated-time;
+    @include tokens.estimated-time;
     justify-content: center;
   }
 }

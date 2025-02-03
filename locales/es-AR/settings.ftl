@@ -15,8 +15,6 @@ settings-alert-preferences-allow-breach-alerts-title = Alertas instantáneas de 
 settings-alert-preferences-allow-breach-alerts-subtitle = Estas alertas se envían inmediatamente una vez que se detecta una filtración de datos
 settings-alert-preferences-option-one = Enviar alertas de filtración a la dirección de correo electrónico afectada
 settings-alert-preferences-option-two = Enviar todas las alertas de filtración a la dirección de correo electrónico primaria
-settings-alert-preferences-allow-monthly-monitor-report-title = Informe mensual de { -brand-monitor }
-settings-alert-preferences-allow-monthly-monitor-report-subtitle = Una actualización mensual de las nuevas exposiciones, lo que se ha corregido y lo que necesita tu atención.
 
 ## Monitored email addresses
 
@@ -49,12 +47,6 @@ settings-email-number-of-breaches-info =
        *[other] Aparece en { $breachCount } filtraciones conocidas.
     }
 
-## Deactivate account
-
-settings-deactivate-account-title = Desactivar cuenta
-settings-deactivate-account-info-2 = Podés desactivar { -product-short-name } borrando tu { -brand-mozilla-account }.
-settings-fxa-link-label-3 = Ir a ajustes de la { -brand-mozilla-account }
-
 ## Delete Monitor account
 
 settings-delete-monitor-free-account-title = Eliminar la cuenta de { -brand-monitor }
@@ -66,3 +58,18 @@ settings-delete-monitor-free-account-dialog-cta-label = Eliminar la cuenta
 settings-delete-monitor-free-account-dialog-cancel-button-label = No importa, volvamos
 settings-delete-monitor-account-confirmation-toast-label-2 = Se eliminó tu cuenta de { -brand-monitor }.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Descartar
+
+## Monthly Monitor Report
+
+settings-alert-preferences-allow-monthly-monitor-report-title = Informe mensual de { -brand-monitor }
+settings-alert-preferences-allow-monthly-monitor-report-subtitle = Una actualización mensual de las nuevas exposiciones, lo que se ha corregido y lo que necesita tu atención.
+
+## Settings page redesign
+
+settings-tab-label-edit-info = Editar tu información
+settings-tab-label-notifications = Establecer notificaciones
+settings-tab-label-manage-account = Administrar cuenta
+settings-tab-subtitle-manage-account = Administrar tu cuenta de { -product-name }.
+settings-tab-notifications-marketing-title = Comunicaciones de marketing
+settings-tab-notifications-marketing-text = Actualizaciones periódicas sobre { -brand-monitor }, { -brand-mozilla } y nuestros otros productos de seguridad.
+settings-tab-notifications-marketing-link-label = Ir a la configuración de correo electrónico de { -brand-mozilla }

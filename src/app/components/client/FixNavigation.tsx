@@ -19,6 +19,7 @@ import {
 } from "../../functions/server/getRelevantGuidedSteps";
 import { getGuidedExperienceBreaches } from "../../functions/universal/guidedExperienceBreaches";
 import { CheckIcon } from "../server/Icons";
+import { FeatureFlagName } from "../../../db/tables/featureFlags";
 
 export type Props = {
   currentSection:
@@ -29,6 +30,7 @@ export type Props = {
   subscriberEmails: string[];
   data: StepDeterminationData;
   label: string;
+  enabledFeatureFlags: FeatureFlagName[];
 };
 
 export const FixNavigation = (props: Props) => {
@@ -38,6 +40,7 @@ export const FixNavigation = (props: Props) => {
         currentSection={props.currentSection}
         subscriberEmails={props.subscriberEmails}
         data={props.data}
+        enabledFeatureFlags={props.enabledFeatureFlags}
       />
     </nav>
   );
@@ -47,6 +50,7 @@ export const Steps = (props: {
   currentSection: Props["currentSection"];
   subscriberEmails: string[];
   data: StepDeterminationData;
+  enabledFeatureFlags: FeatureFlagName[];
 }) => {
   const l10n = useL10n();
 
@@ -82,6 +86,12 @@ export const Steps = (props: {
       {label} {count > 0 && `(${count})`}
     </div>
   );
+  const dataBrokerStepCompleted =
+    hasCompletedStepSection(props.data, "Scan") &&
+    // TODO: MNTOR-3886 - Remove EnableRemovalUnderMaintenanceStep feature flag
+    /* c8 ignore next */
+    (!props.enabledFeatureFlags.includes("EnableRemovalUnderMaintenanceStep") ||
+      hasCompletedStepSection(props.data, "DataBrokerManualRemoval"));
 
   return (
     <ul className={styles.steps}>
@@ -96,11 +106,7 @@ export const Steps = (props: {
           }
           className={`${styles.navigationItem} ${
             props.currentSection === "data-broker-profiles" ? styles.active : ""
-          } ${
-            hasCompletedStepSection(props.data, "Scan")
-              ? styles.isCompleted
-              : ""
-          }`}
+          } ${dataBrokerStepCompleted ? styles.isCompleted : ""}`}
         >
           <div className={styles.stepIcon}>
             <StepImage data={props.data} section="Scan" />

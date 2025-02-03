@@ -15,8 +15,6 @@ settings-alert-preferences-allow-breach-alerts-title = Мгновенные оп
 settings-alert-preferences-allow-breach-alerts-subtitle = Эти оповещения отправляются сразу же после обнаружения утечки данных
 settings-alert-preferences-option-one = Отправлять оповещения об утечках на затронутые ими адреса электронной почты
 settings-alert-preferences-option-two = Отправлять все оповещения об утечках на основной адрес электронной почты
-settings-alert-preferences-allow-monthly-monitor-report-title = Ежемесячный отчёт { -brand-monitor }
-settings-alert-preferences-allow-monthly-monitor-report-subtitle = Ежемесячное обновление новых утечек, исправленных утечек, а также требующих вашего внимания.
 
 ## Monitored email addresses
 
@@ -51,12 +49,6 @@ settings-email-number-of-breaches-info =
        *[other] Найден в { $breachCount } известных утечках.
     }
 
-## Deactivate account
-
-settings-deactivate-account-title = Деактивировать аккаунт
-settings-deactivate-account-info-2 = Вы можете деактивировать { -product-short-name }, удалив свой { -brand-mozilla-account }.
-settings-fxa-link-label-3 = Перейти в настройки { -brand-mozilla-account }.
-
 ## Delete Monitor account
 
 settings-delete-monitor-free-account-title = Удалить аккаунт { -brand-monitor }
@@ -68,3 +60,18 @@ settings-delete-monitor-free-account-dialog-cta-label = Удалить акка�
 settings-delete-monitor-free-account-dialog-cancel-button-label = Не важно, верните меня обратно
 settings-delete-monitor-account-confirmation-toast-label-2 = Ваш аккаунт { -brand-monitor } удалён.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Закрыть
+
+## Monthly Monitor Report
+
+settings-alert-preferences-allow-monthly-monitor-report-title = Ежемесячный отчёт { -brand-monitor }
+settings-alert-preferences-allow-monthly-monitor-report-subtitle = Ежемесячное обновление новых утечек, исправленных утечек, а также требующих вашего внимания.
+
+## Settings page redesign
+
+settings-tab-label-edit-info = Изменить ваши данные
+settings-tab-label-notifications = Настроить уведомления
+settings-tab-label-manage-account = Управление аккаунтом
+settings-tab-subtitle-manage-account = Управляйте своим аккаунтом { -product-name }.
+settings-tab-notifications-marketing-title = Маркетинговые коммуникации
+settings-tab-notifications-marketing-text = Периодические обновления о { -brand-monitor }, { -brand-mozilla } и других наших продуктах для обеспечения безопасности.
+settings-tab-notifications-marketing-link-label = Перейти в настройки электронной почты { -brand-mozilla }.

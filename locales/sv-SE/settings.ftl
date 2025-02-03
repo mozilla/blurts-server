@@ -15,8 +15,6 @@ settings-alert-preferences-allow-breach-alerts-title = Omedelbara intrångsvarni
 settings-alert-preferences-allow-breach-alerts-subtitle = Dessa varningar skickas omedelbart när ett dataintrång upptäcks
 settings-alert-preferences-option-one = Skicka intrångsvarningar till den drabbade e-postadressen
 settings-alert-preferences-option-two = Skicka alla intrångsvarningar till den primära e-postadressen
-settings-alert-preferences-allow-monthly-monitor-report-title = Månatlig { -brand-monitor }-rapport
-settings-alert-preferences-allow-monthly-monitor-report-subtitle = En månatlig uppdatering av nya exponeringar, vad som har fixats och vad som behöver din åtgärd.
 
 ## Monitored email addresses
 
@@ -47,12 +45,6 @@ settings-email-number-of-breaches-info =
        *[other] Förekommer i { $breachCount } kända intrång.
     }
 
-## Deactivate account
-
-settings-deactivate-account-title = Inaktivera konto
-settings-deactivate-account-info-2 = Du kan inaktivera { -product-short-name } genom att ta bort ditt { -brand-mozilla-account }.
-settings-fxa-link-label-3 = Gå till inställningarna för { -brand-mozilla-account }
-
 ## Delete Monitor account
 
 settings-delete-monitor-free-account-title = Ta bort { -brand-monitor }-konto
@@ -64,3 +56,18 @@ settings-delete-monitor-free-account-dialog-cta-label = Ta bort konto
 settings-delete-monitor-free-account-dialog-cancel-button-label = Glöm det, ta mig tillbaka
 settings-delete-monitor-account-confirmation-toast-label-2 = Ditt { -brand-monitor }-konto är nu raderat.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Ignorera
+
+## Monthly Monitor Report
+
+settings-alert-preferences-allow-monthly-monitor-report-title = Månatlig { -brand-monitor }-rapport
+settings-alert-preferences-allow-monthly-monitor-report-subtitle = En månatlig uppdatering av nya exponeringar, vad som har fixats och vad som behöver din åtgärd.
+
+## Settings page redesign
+
+settings-tab-label-edit-info = Redigera din info
+settings-tab-label-notifications = Ställ in aviseringar
+settings-tab-label-manage-account = Hantera konto
+settings-tab-subtitle-manage-account = Hantera ditt { -product-name }-konto.
+settings-tab-notifications-marketing-title = Marknadskommunikation
+settings-tab-notifications-marketing-text = Periodiska uppdateringar om { -brand-monitor }, { -brand-mozilla } och våra andra säkerhetsprodukter.
+settings-tab-notifications-marketing-link-label = Gå till e-postinställningar för { -brand-mozilla }

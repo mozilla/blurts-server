@@ -6,7 +6,7 @@
 
 import React, { ReactNode, useId } from "react";
 import Image from "next/image";
-import { OnerepScanResultRow } from "knex/types/tables";
+import { OnerepScanResultDataBrokerRow } from "knex/types/tables";
 import styles from "./ExposureCard.module.scss";
 import { StatusPill } from "../../server/StatusPill";
 import { ChevronDown } from "../../server/Icons";
@@ -17,16 +17,17 @@ import { TelemetryLink } from "../TelemetryLink";
 import { FeatureFlagName } from "../../../../db/tables/featureFlags";
 import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 import SparkleImage from "../assets/sparkle.png";
+import { isDataBrokerUnderMaintenance } from "../../../(proper_react)/(redesign)/(authenticated)/user/(dashboard)/dashboard/View";
 
 export type ScanResultCardProps = {
-  scanResult: OnerepScanResultRow;
+  scanResult: OnerepScanResultDataBrokerRow;
   locale: string;
   resolutionCta: ReactNode;
   isPremiumUser: boolean;
   isExpanded: boolean;
   isOnManualRemovePage?: boolean;
   enabledFeatureFlags?: FeatureFlagName[];
-  experimentData?: ExperimentData;
+  experimentData?: ExperimentData["Features"];
   removalTimeEstimate?: number;
   onToggleExpanded: () => void;
 };
@@ -118,19 +119,35 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
   const dataBrokerDescription = () => {
     // Data broker cards manually resolved do not change their status to "removed";
     // instead, we track them using the "manually_resolved" property.
-    if (scanResult.manually_resolved) {
-      switch (scanResult.status) {
-        case "removal_under_maintenance":
-          return l10n.getFragment(
-            "exposure-card-description-info-for-sale-fixed-removal-under-maintenance-manually-fixed",
-            { elems: { data_broker_profile: dataBrokerProfileLink } },
-          );
-        default:
-          return l10n.getFragment(
-            "exposure-card-description-info-for-sale-fixed-manually-fixed",
-            { elems: { data_broker_profile: dataBrokerProfileLink } },
-          );
+
+    if (
+      // TODO: MNTOR-3886 - Remove EnableRemovalUnderMaintenanceStep feature flag
+      props.enabledFeatureFlags?.includes(
+        "EnableRemovalUnderMaintenanceStep",
+      ) &&
+      isDataBrokerUnderMaintenance(props.scanResult)
+    ) {
+      if (scanResult.manually_resolved) {
+        return l10n.getFragment(
+          "exposure-card-description-info-for-sale-fixed-removal-under-maintenance-manually-fixed",
+          { elems: { data_broker_profile: dataBrokerProfileLink } },
+        );
       }
+      return l10n.getFragment(
+        "exposure-card-description-info-for-sale-manual-removal-needed",
+        {
+          elems: {
+            b: <b />,
+          },
+        },
+      );
+    }
+
+    if (scanResult.manually_resolved) {
+      return l10n.getFragment(
+        "exposure-card-description-info-for-sale-fixed-manually-fixed",
+        { elems: { data_broker_profile: dataBrokerProfileLink } },
+      );
     }
     // if a data broker is not manually resolved
     switch (scanResult.status) {
@@ -194,21 +211,13 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
             },
           },
         );
-      case "removal_under_maintenance":
-        return l10n.getFragment(
-          "exposure-card-description-info-for-sale-manual-removal-needed",
-          {
-            elems: {
-              b: <b />,
-            },
-          },
-        );
     }
   };
 
   const attemptCount = scanResult.optout_attempts ?? 0;
   const statusPillNote =
     props.enabledFeatureFlags?.includes("AdditionalRemovalStatuses") &&
+    props.enabledFeatureFlags?.includes("DataBrokerRemovalAttempts") &&
     !scanResult.manually_resolved &&
     scanResult.status === "waiting_for_verification" &&
     attemptCount >= 1
@@ -237,24 +246,31 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
   const resolveExposuresCta = (() => {
     if (props.scanResult.manually_resolved) {
       return (
-        props.scanResult.status === "removal_under_maintenance" && (
-          <div className={styles.manualResolutionPraise}>
-            <Image alt="" src={SparkleImage} width="20" height="20" />
-            <span>
-              {l10n.getFragment("exposure-card-manual-resolution-praise", {
-                elems: {
-                  b: <b />,
-                },
-              })}
-            </span>
-          </div>
-        )
+        <div className={styles.manualResolutionPraise}>
+          <Image alt="" src={SparkleImage} width="20" height="20" />
+          <span>
+            {l10n.getFragment("exposure-card-manual-resolution-praise", {
+              elems: {
+                b: <b />,
+              },
+            })}
+          </span>
+        </div>
       );
+    }
+
+    if (
+      // TODO: MNTOR-3886 - Remove EnableRemovalUnderMaintenanceStep feature flag
+      props.enabledFeatureFlags?.includes(
+        "EnableRemovalUnderMaintenanceStep",
+      ) &&
+      isDataBrokerUnderMaintenance(props.scanResult)
+    ) {
+      return <span>{props.resolutionCta}</span>;
     }
 
     switch (props.scanResult.status) {
       case "new":
-      case "removal_under_maintenance":
         return <span>{props.resolutionCta}</span>;
       default:
         return null;
@@ -323,6 +339,9 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
             </dt>
             <dd>
               <StatusPill
+                isRemovalUnderMaintenance={isDataBrokerUnderMaintenance(
+                  props.scanResult,
+                )}
                 exposure={scanResult}
                 note={statusPillNote}
                 enabledFeatureFlags={props.enabledFeatureFlags}

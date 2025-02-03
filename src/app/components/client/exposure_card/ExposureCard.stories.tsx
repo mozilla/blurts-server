@@ -20,7 +20,7 @@ const meta: Meta<typeof ExposureCard> = {
   args: {
     enabledFeatureFlags: [],
     experimentData: {
-      ...defaultExperimentData,
+      ...defaultExperimentData["Features"],
       "data-broker-removal-time-estimates": {
         enabled: true,
       },
@@ -50,14 +50,28 @@ const ScanMockItemInProgress = createRandomScanResult({
   status: "optout_in_progress",
   manually_resolved: false,
 });
+
 const ScanMockItemRemovalUnderMaintenance = createRandomScanResult({
-  status: "removal_under_maintenance",
+  status: "optout_in_progress",
   manually_resolved: false,
+  broker_status: "removal_under_maintenance",
 });
-const ScanMockItemRemovalUnderMaintenanceFixed = createRandomScanResult({
-  status: "removal_under_maintenance",
-  manually_resolved: true,
-});
+
+const ScanMockItemRemovalUnderMaintenanceManuallyFixed = createRandomScanResult(
+  {
+    status: "optout_in_progress",
+    manually_resolved: true,
+    broker_status: "removal_under_maintenance",
+  },
+);
+
+const ScanMockItemRemovalUnderMaintenanceAutomaticallyRemoved =
+  createRandomScanResult({
+    status: "removed",
+    manually_resolved: false,
+    broker_status: "removal_under_maintenance",
+  });
+
 const BreachMockItemRemoved = createRandomBreach({
   isResolved: true,
   dataClassesEffected: [
@@ -73,7 +87,10 @@ export const DataBrokerRequestedRemoval: Story = {
   args: {
     exposureImg: FamilyTreeImage,
     exposureData: ScanMockItemRequestedRemoval,
-    enabledFeatureFlags: ["AdditionalRemovalStatuses"],
+    enabledFeatureFlags: [
+      "AdditionalRemovalStatuses",
+      "DataBrokerRemovalAttempts",
+    ],
   },
 };
 
@@ -117,14 +134,25 @@ export const DataBrokerRemovalUnderMaintenance: Story = {
     exposureImg: FamilyTreeImage,
     exposureData: ScanMockItemRemovalUnderMaintenance,
     isPremiumUser: true,
+    enabledFeatureFlags: ["EnableRemovalUnderMaintenanceStep"],
   },
 };
 
 export const DataBrokerRemovalUnderMaintenanceFixed: Story = {
   args: {
     exposureImg: FamilyTreeImage,
-    exposureData: ScanMockItemRemovalUnderMaintenanceFixed,
+    exposureData: ScanMockItemRemovalUnderMaintenanceManuallyFixed,
     isPremiumUser: true,
+    enabledFeatureFlags: ["EnableRemovalUnderMaintenanceStep"],
+  },
+};
+
+export const DataBrokerRemovalUnderMaintenanceAutomaticallyRemoved: Story = {
+  args: {
+    exposureImg: FamilyTreeImage,
+    exposureData: ScanMockItemRemovalUnderMaintenanceAutomaticallyRemoved,
+    isPremiumUser: true,
+    enabledFeatureFlags: ["EnableRemovalUnderMaintenanceStep"],
   },
 };
 

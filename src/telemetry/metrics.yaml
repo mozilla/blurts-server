@@ -56,6 +56,9 @@ page:
       plan_tier:
         description: Which tier of plan the user is on [Free, Plus]
         type: string
+      nimbus_user_id:
+        description: Nimbus user ID
+        type: string
 
 dashboard:
   view:
@@ -102,6 +105,9 @@ dashboard:
       plan_tier:
         description: Which tier of plan the user is on [Free, Plus]
         type: string
+      nimbus_user_id:
+        description: Nimbus user ID
+        type: string
 
 popup:
   view:
@@ -135,6 +141,9 @@ popup:
       plan_tier:
         description: Which tier of plan the user is on [Free, Plus]
         type: string
+      nimbus_user_id:
+        description: Nimbus user ID
+        type: string
 
   exit:
     type: event
@@ -166,6 +175,9 @@ popup:
         description: The ID of the popup that was shown, or some way to identify where on the page the interaction is located.
       plan_tier:
         description: Which tier of plan the user is on [Free, Plus]
+        type: string
+      nimbus_user_id:
+        description: Nimbus user ID
         type: string
 
 banner:
@@ -200,6 +212,9 @@ banner:
       plan_tier:
         description: Which tier of plan the user is on [Free, Plus]
         type: string
+      nimbus_user_id:
+        description: Nimbus user ID
+        type: string
 
 button:
   click:
@@ -232,6 +247,9 @@ button:
         description: The ID of the button that was clicked on, or some way to identify where on the page the interaction is located.
       plan_tier:
         description: Which tier of plan the user is on [Free, Plus]
+        type: string
+      nimbus_user_id:
+        description: Nimbus user ID
         type: string
 
 field:
@@ -266,6 +284,9 @@ field:
       plan_tier:
         description: Which tier of plan the user is on [Free, Plus]
         type: string
+      nimbus_user_id:
+        description: Nimbus user ID
+        type: string
 
 link:
   click:
@@ -298,6 +319,9 @@ link:
         description: The ID of the link that was clicked on, or some way to identify where on the page the interaction is located.
       plan_tier:
         description: Which tier of plan the user is on [Free, Plus]
+        type: string
+      nimbus_user_id:
+        description: Nimbus user ID
         type: string
 
 upgrade_intent:
@@ -332,6 +356,9 @@ upgrade_intent:
       plan_tier:
         description: Which tier of plan the user is on [Free, Plus]
         type: string
+      nimbus_user_id:
+        description: Nimbus user ID
+        type: string
 
   success:
     type: event
@@ -361,6 +388,9 @@ upgrade_intent:
         type: string
       plan_tier:
         description: Which tier of plan the user is on [Free, Plus]
+        type: string
+      nimbus_user_id:
+        description: Nimbus user ID
         type: string
 
 expand:
@@ -395,6 +425,9 @@ expand:
       plan_tier:
         description: Which tier of plan the user is on [Free, Plus]
         type: string
+      nimbus_user_id:
+        description: Nimbus user ID
+        type: string
 
 collapse:
   click:
@@ -427,6 +460,9 @@ collapse:
         description: The ID of the button that was clicked on, or some way to identify where on the page the interaction is located.
       plan_tier:
         description: Which tier of plan the user is on [Free, Plus]
+        type: string
+      nimbus_user_id:
+        description: Nimbus user ID
         type: string
 
 cta_button:
@@ -461,6 +497,9 @@ cta_button:
       plan_tier:
         description: Which tier of plan the user is on [Free, Plus]
         type: string
+      nimbus_user_id:
+        description: Nimbus user ID
+        type: string
 
   view:
     type: event
@@ -492,6 +531,9 @@ cta_button:
         description: The ID of the button that entered the viewport, or some way to identify where on the page the interaction is located.
       plan_tier:
         description: Which tier of plan the user is on [Free, Plus]
+        type: string
+      nimbus_user_id:
+        description: Nimbus user ID
         type: string
 
 csat_survey:
@@ -526,6 +568,10 @@ csat_survey:
       automated_removal_period:
         description: The time period since the first automated removal for the user. [initial, 3-months, 6-months, 12-months]
         type: string
+      nimbus_user_id:
+        description: Nimbus user ID
+        type: string
+
   dismiss:
     type: event
     description: |
@@ -557,6 +603,10 @@ csat_survey:
       automated_removal_period:
         description: The time period since the first automated removal for the user. [initial, 3-months, 6-months, 12-months]
         type: string
+      nimbus_user_id:
+        description: Nimbus user ID
+        type: string
+
   click:
     type: event
     description: |
@@ -590,4 +640,7 @@ csat_survey:
         type: string
       automated_removal_period:
         description: The time period since the first automated removal for the user. [initial, 3-months, 6-months, 12-months]
+        type: string
+      nimbus_user_id:
+        description: Nimbus user ID
         type: string

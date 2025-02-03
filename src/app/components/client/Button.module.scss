@@ -1,14 +1,17 @@
-@import "../../tokens";
+@use "../../tokens";
 
 .button {
-  font: $text-body-md;
-  font-weight: 500;
+  align-items: center;
+  font: tokens.$text-body-md;
+  font-weight: 600;
   border: 0;
-  padding: $spacing-md $spacing-lg;
-  border-radius: $border-radius-md;
+  padding: tokens.$spacing-md tokens.$spacing-lg;
+  border-radius: tokens.$border-radius-md;
   cursor: pointer;
-  display: inline-block;
+  display: inline-flex;
+  gap: tokens.$spacing-sm;
   line-height: 1;
+  justify-content: center;
   text-align: center;
   text-decoration: none;
 
@@ -28,13 +31,13 @@
     animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
 
     &.primary {
-      border: 4px solid $color-white;
-      border-color: $color-white transparent transparent transparent;
+      border: 4px solid tokens.$color-white;
+      border-color: tokens.$color-white transparent transparent transparent;
     }
 
     &.secondary {
-      border: 4px solid $color-blue-50;
-      border-color: $color-blue-50 transparent transparent transparent;
+      border: 4px solid tokens.$color-purple-70;
+      border-color: tokens.$color-purple-70 transparent transparent transparent;
     }
   }
   .ldsRing div:nth-child(1) {
@@ -56,84 +59,83 @@
   }
 
   &.primary {
-    color: $color-white;
-    background-color: $color-purple-70;
+    color: tokens.$color-white;
+    background-color: tokens.$color-purple-70;
 
     &:hover {
-      background-color: $color-purple-80;
+      background-color: tokens.$color-purple-80;
     }
 
     &:focus {
-      outline: $border-focus-width solid $color-purple-30;
+      outline: tokens.$border-focus-width solid tokens.$color-purple-30;
     }
 
     &.destructive {
-      color: $color-white;
-      background-color: $color-red-60;
+      color: tokens.$color-white;
+      background-color: tokens.$color-red-60;
 
       &:hover {
-        background-color: $color-red-70;
+        background-color: tokens.$color-red-70;
       }
 
       &:focus {
-        outline: $border-focus-width solid $color-red-30;
+        outline: tokens.$border-focus-width solid tokens.$color-red-30;
       }
     }
 
     &.disabled {
-      background: $color-grey-20;
+      background: tokens.$color-grey-20;
       pointer-events: none;
     }
   }
 
   &.secondary {
-    font-weight: 400;
-    color: $color-purple-70;
-    box-shadow: inset 0 0 0 2px $color-purple-70;
+    color: tokens.$color-purple-70;
+    box-shadow: inset 0 0 0 2px tokens.$color-purple-70;
     background-color: transparent;
 
     &:hover {
-      background-color: $color-purple-70;
-      color: $color-white;
+      background-color: tokens.$color-purple-70;
+      color: tokens.$color-white;
 
       .ldsRing div {
         &.secondary {
-          border: 4px solid $color-white;
-          border-color: $color-white transparent transparent transparent;
+          border: 4px solid tokens.$color-white;
+          border-color: tokens.$color-white transparent transparent transparent;
         }
       }
     }
 
     &.destructive {
-      color: $color-red-70;
-      box-shadow: inset 0 0 0 2px $color-red-70;
+      color: tokens.$color-red-70;
+      box-shadow: inset 0 0 0 2px tokens.$color-red-70;
 
       &:hover {
-        background-color: $color-red-70;
-        color: $color-white;
+        background-color: tokens.$color-red-70;
+        color: tokens.$color-white;
       }
     }
 
     &.disabled {
-      color: $color-grey-20;
+      color: tokens.$color-grey-20;
       background: transparent;
-      box-shadow: inset 0 0 0 2px $color-grey-20;
+      box-shadow: inset 0 0 0 2px tokens.$color-grey-20;
       pointer-events: none;
     }
   }
 
   &.tertiary {
     background: none;
-    color: $color-purple-70;
+    color: tokens.$color-purple-70;
 
     &:hover {
-      background-color: rgba($color-purple-70, 0.2);
+      background-color: rgba(tokens.$color-purple-70, 0.2);
     }
   }
 
   &.link {
     background: none;
-    color: $color-purple-50;
+    color: tokens.$color-purple-50;
     font: inherit;
     padding: 0;
     text-decoration: underline;
@@ -141,11 +143,11 @@
 
   &.icon {
     background: none;
-    color: $color-grey-50;
-    padding: $spacing-md;
+    color: tokens.$color-grey-50;
+    padding: tokens.$spacing-md;
 
     &:hover {
-      background-color: $color-grey-05;
+      background-color: tokens.$color-grey-05;
     }
   }
 
@@ -156,14 +158,14 @@
 
   &.small {
     line-height: 1.5;
-    padding: $spacing-sm $spacing-md;
+    padding: tokens.$spacing-sm tokens.$spacing-md;
 
     &.icon {
-      padding: $spacing-sm;
+      padding: tokens.$spacing-sm;
     }
   }
 
   &.wide {
-    padding: $spacing-md $spacing-2xl;
+    padding: tokens.$spacing-md tokens.$spacing-2xl;
   }
 }

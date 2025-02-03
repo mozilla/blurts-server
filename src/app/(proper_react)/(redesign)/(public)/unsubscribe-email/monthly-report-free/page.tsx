@@ -4,11 +4,10 @@
 
 import { UnsubscribeMonthlyReportView } from "./UnsubscribeMonthlyReportView";
 
-export default function Page({
-  searchParams,
-}: {
-  searchParams: { token?: string };
+export default async function Page(props: {
+  searchParams: Promise<{ token?: string }>;
 }) {
+  const searchParams = await props.searchParams;
   const token = searchParams.token ?? "";
   if (!token) {
     console.error("Unsubscription token not provided");

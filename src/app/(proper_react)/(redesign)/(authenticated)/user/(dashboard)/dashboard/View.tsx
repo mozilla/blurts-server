@@ -5,10 +5,14 @@
 "use client";
 
 import { useContext, useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { Session } from "next-auth";
-import { OnerepScanResultRow } from "knex/types/tables";
+import {
+  OnerepScanResultDataBrokerRow,
+  OnerepScanResultRow,
+} from "knex/types/tables";
 import styles from "./View.module.scss";
 import { Toolbar } from "../../../../../../components/client/toolbar/Toolbar";
 import { DashboardTopBanner } from "./DashboardTopBanner";
@@ -59,7 +63,7 @@ export type TabType = "action-needed" | "fixed";
 
 export type Props = {
   enabledFeatureFlags: FeatureFlagName[];
-  experimentData: ExperimentData;
+  experimentData: ExperimentData["Features"];
   user: Session["user"];
   userBreaches: SubscriberBreach[];
   userScanData: LatestOnerepScanData;
@@ -120,7 +124,7 @@ export const View = (props: Props) => {
       return {
         ...scanResult,
         status: "optout_in_progress",
-      } as OnerepScanResultRow;
+      } as OnerepScanResultDataBrokerRow;
     }
     return scanResult;
   });
@@ -175,8 +179,10 @@ export const View = (props: Props) => {
     arraySortedByDate.filter((exposure: Exposure) => {
       const exposureStatus = getExposureStatus(
         exposure,
-        props.enabledFeatureFlags.includes("AdditionalRemovalStatuses"),
+        isDataBrokerUnderMaintenance(exposure),
+        props.enabledFeatureFlags,
       );
+
       return (
         (tabKey === "action-needed" && exposureStatus === "actionNeeded") ||
         (tabKey === "fixed" && exposureStatus !== "actionNeeded")
@@ -193,6 +199,7 @@ export const View = (props: Props) => {
     const removalTimeEstimate = isScanResult(exposure)
       ? props.removalTimeEstimates.find(({ d }) => d === exposure.data_broker)
       : undefined;
+
     return (
       <li key={exposureCardKey} className={styles.exposureListItem}>
         <ExposureCard
@@ -226,12 +233,15 @@ export const View = (props: Props) => {
               variant="primary"
               wide
               href={
-                getNextGuidedStep({
-                  user: props.user,
-                  countryCode,
-                  latestScanData: adjustedScanData,
-                  subscriberBreaches: props.userBreaches,
-                }).href
+                getNextGuidedStep(
+                  {
+                    user: props.user,
+                    countryCode,
+                    latestScanData: adjustedScanData,
+                    subscriberBreaches: props.userBreaches,
+                  },
+                  props.enabledFeatureFlags,
+                ).href
               }
             >
               {l10n.getString("exposure-card-resolve-exposures-cta")}
@@ -245,6 +255,7 @@ export const View = (props: Props) => {
   const dataSummary = getDashboardSummary(
     adjustedScanResults,
     props.userBreaches,
+    props.enabledFeatureFlags,
   );
 
   const hasExposures = combinedArray.length > 0;
@@ -378,7 +389,7 @@ export const View = (props: Props) => {
               typeof props.totalNumberOfPerformedScans === "undefined" ||
               props.totalNumberOfPerformedScans <
                 CONST_ONEREP_MAX_SCANS_THRESHOLD ? (
-                <a
+                <Link
                   ref={waitlistTriggerRef}
                   href="/user/welcome/free-scan?referrer=dashboard"
                   onClick={() => {
@@ -505,6 +516,7 @@ export const View = (props: Props) => {
           bannerData={getDashboardSummary(
             adjustedScanResults,
             props.userBreaches,
+            props.enabledFeatureFlags,
           )}
           stepDeterminationData={{
             countryCode,
@@ -525,6 +537,7 @@ export const View = (props: Props) => {
           yearlySubscriptionUrl={props.yearlySubscriptionUrl}
           subscriptionBillingAmount={props.subscriptionBillingAmount}
           totalNumberOfPerformedScans={props.totalNumberOfPerformedScans}
+          enabledFeatureFlags={props.enabledFeatureFlags}
         />
         <section className={styles.exposuresArea}>
           {activeTab === "action-needed" ? (
@@ -555,3 +568,13 @@ export const View = (props: Props) => {
     </div>
   );
 };
+
+export function isDataBrokerUnderMaintenance(
+  exposure: Exposure | OnerepScanResultDataBrokerRow,
+): boolean {
+  return (
+    isScanResult(exposure) &&
+    exposure.broker_status === "removal_under_maintenance" &&
+    exposure.status !== "removed"
+  );
+}

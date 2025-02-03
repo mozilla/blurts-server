@@ -4,6 +4,7 @@
 
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { parse } from "yaml";
+import * as prettier from "prettier";
 
 run();
 
@@ -68,7 +69,10 @@ async function run() {
     "\n" +
     getLocalOverrides(nimbusConfig);
   await mkdir("src/telemetry/generated/nimbus/", { recursive: true });
-  await writeFile("src/telemetry/generated/nimbus/experiments.ts", typedef);
+  await writeFile(
+    "src/telemetry/generated/nimbus/experiments.ts",
+    await prettier.format(typedef, { parser: "typescript" }),
+  );
 }
 
 /**
@@ -91,7 +95,21 @@ function getFallbackObject(nimbusConfig) {
     },
   );
 
-  return `export const defaultExperimentData: ExperimentData = {\n${featureFallbackDefs.join("\n")}};\n`;
+  const defaultExperimentData = `
+    Features: {
+      ${featureFallbackDefs.join("\n")}
+    },
+    Enrollments: [
+      {
+        nimbus_user_id: "-1",
+        app_id: "-1",
+        experiment: "-1",
+        branch: "-1",
+        experiment_type: "-1",
+        is_preview: false
+      }
+    ]`;
+  return `export const defaultExperimentData: ExperimentData = {\n${defaultExperimentData}};\n`;
 }
 
 /**
@@ -108,11 +126,26 @@ function getLocalOverrides(nimbusConfig) {
         typeof localOverrides === "undefined"
           ? ""
           : `    ...${JSON.stringify(localOverrides.value, null, 2).replaceAll("\n", "\n    ")}\n`;
-      return `  "${featureId}": {\n    ...defaultExperimentData["${featureId}"],\n${overriddenValuesDef}  },\n`;
+      return `  "${featureId}": {\n    ...defaultExperimentData["Features"]["${featureId}"],\n${overriddenValuesDef}  },\n`;
     },
   );
 
-  return `export const localExperimentData: ExperimentData = {\n${featureLocalOverridesDefs.join("\n")}};\n`;
+  const localExperimentData = `
+  Features: {
+    ${featureLocalOverridesDefs.join("\n")}
+  },
+  Enrollments: [
+    {
+      nimbus_user_id: "-1",
+      app_id: "-1",
+      experiment: "-1",
+      branch: "-1",
+      experiment_type: "-1",
+      is_preview: false
+    }
+  ]`;
+
+  return `export const localExperimentData: ExperimentData = {\n${localExperimentData}};\n`;
 }
 
 /**
@@ -129,7 +162,20 @@ function getFeaturesTypeDef(nimbusConfig) {
     });
     return `  "${featureId}": {\n${variableDefs.join("")}  };\n`;
   });
-  const experimentDataTypeDef = `/** Status of experiments, as setup in Experimenter */\nexport type ExperimentData = {\n${featureDefs.join("")}};\n`;
+
+  const experimentDataType = `{
+  Features: {${featureDefs.join("")}};
+  Enrollments: Array<{
+    nimbus_user_id: string,
+    app_id: string,
+    experiment: string,
+    branch: string,
+    experiment_type: string,
+    is_preview: boolean
+    }>;
+  };`;
+
+  const experimentDataTypeDef = `/** Status of experiments, as setup in Experimenter */\nexport type ExperimentData = ${experimentDataType}`;
   const featureTypeDef =
     getStringAliases(nimbusConfig) +
     "\n\n" +

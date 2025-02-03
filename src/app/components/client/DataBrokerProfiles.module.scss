@@ -1,4 +1,4 @@
-@import "../../tokens";
+@use "../../tokens";
 
 .dataBrokerProfileCardsWapper {
   text-align: center;
@@ -6,10 +6,10 @@
 
 // This view shows the first X many data broker profile cards based on the break point. It uses nth-child to set/unset visibility.
 .dataBrokerProfileCards {
-  padding: $spacing-md 0;
+  padding: tokens.$spacing-md 0;
   display: grid;
   grid-template-columns: 1fr;
-  gap: $spacing-lg;
+  gap: tokens.$spacing-lg;
   list-style: none;
   width: 100%;
 
@@ -27,12 +27,12 @@
   &.showAll {
     li {
       display: unset;
-      @media screen and (min-width: $screen-md) {
+      @media screen and (min-width: tokens.$screen-md) {
         &:nth-child(n + 5) {
           display: unset;
         }
       }
-      @media screen and (min-width: $screen-xl) {
+      @media screen and (min-width: tokens.$screen-xl) {
         &:nth-child(n + 7),
         &:nth-child(n + 9) {
           display: unset;
@@ -41,11 +41,11 @@
     }
   }
 
-  @media screen and (min-width: $screen-sm) {
+  @media screen and (min-width: tokens.$screen-sm) {
     grid-template-columns: 1fr 1fr;
   }
 
-  @media screen and (min-width: $screen-md) {
+  @media screen and (min-width: tokens.$screen-md) {
     grid-template-columns: 1fr 1fr 1fr;
 
     li:nth-child(n + 5) {
@@ -60,12 +60,12 @@
 }
 
 .dataBrokerProfileCard {
-  background-color: $color-white;
-  box-shadow: $box-shadow-sm;
-  border-radius: $border-radius-sm;
+  background-color: tokens.$color-white;
+  box-shadow: tokens.$box-shadow-sm;
+  border-radius: tokens.$border-radius-sm;
   text-align: center;
-  padding: $spacing-md $spacing-sm $spacing-md;
-  font: $text-body-sm;
+  padding: tokens.$spacing-md tokens.$spacing-sm tokens.$spacing-md;
+  font: tokens.$text-body-sm;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -84,11 +84,11 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: $spacing-sm;
+    gap: tokens.$spacing-sm;
   }
 
   .openInNewTab {
-    color: $color-blue-50;
+    color: tokens.$color-blue-50;
     display: inline-block;
   }
 }
@@ -100,7 +100,7 @@
   display: inline-flex;
   justify-items: center;
   align-items: center;
-  gap: $spacing-sm;
+  gap: tokens.$spacing-sm;
   transition: transform 0.2s ease;
   cursor: pointer;
 

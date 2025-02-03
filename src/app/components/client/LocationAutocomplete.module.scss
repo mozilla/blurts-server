@@ -1,9 +1,9 @@
-@import "../../tokens";
+@use "../../tokens";
 
 .locationItem {
-  font: $text-body-sm;
+  font: tokens.$text-body-sm;
   // Add a bit more vertical space: The next spacing step is too much.
-  padding: $spacing-sm calc($spacing-sm * 1.5);
+  padding: tokens.$spacing-sm calc(tokens.$spacing-sm * 1.5);
 
   strong {
     // Space small bold letters a bit wider for legibility.
@@ -11,13 +11,13 @@
   }
 
   span {
-    color: $color-grey-40;
-    font: $text-body-xs;
+    color: tokens.$color-grey-40;
+    font: tokens.$text-body-xs;
     margin-left: 0.5em;
   }
 }
 
 .infoText {
-  font: $text-body-xs;
-  padding: $spacing-sm 0;
+  font: tokens.$text-body-xs;
+  padding: tokens.$spacing-sm 0;
 }

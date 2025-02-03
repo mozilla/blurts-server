@@ -40,14 +40,14 @@ const mockedSession = {
 };
 
 const meta: Meta<typeof AutomaticRemoveView> = {
-  title: "Pages/Logged in/Guided resolution/1d. Automatically resolve brokers",
+  title: "Pages/Logged in/Guided resolution/1e. Automatically resolve brokers",
   component: AutomaticRemoveView,
 };
 export default meta;
 type Story = StoryObj<typeof AutomaticRemoveView>;
 
 export const AutomaticRemoveViewStory: Story = {
-  name: "1d. Automatically resolve brokers",
+  name: "1e. Automatically resolve brokers",
   render: () => {
     return (
       <Shell
@@ -76,6 +76,7 @@ export const AutomaticRemoveViewStory: Story = {
             yearly: 13.37,
             monthly: 42.42,
           }}
+          enabledFeatureFlags={[]}
         />
       </Shell>
     );

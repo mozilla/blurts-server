@@ -101,8 +101,8 @@ export const DataPointCount = (props: Props) => {
       >
         <mj-column>
           <mj-button
-            href={`${process.env.SERVER_URL}/user/dashboard/action-needed?utm_source=monitor-product&utm_medium=product-email&utm_campaign=${props.utmCampaignId}&utm_content=take-action${utmContentSuffix}`}
-            background-color="#0060DF"
+            href={`${process.env.SERVER_URL}/user/dashboard/action-needed?utm_source=monitor-product&utm_medium=product-email&utm_campaign=${props.utmCampaignId}&utm_content=resolve-exposures${utmContentSuffix}`}
+            background-color="#592ACB"
             border-radius="8px"
             padding="12px 24px"
             font-weight={600}
@@ -110,9 +110,7 @@ export const DataPointCount = (props: Props) => {
             line-height="22px"
             width="100%"
           >
-            {props.l10n.getString(
-              "email-breach-alert-plus-scan-results-cta-label",
-            )}
+            {props.l10n.getString("email-breach-alert-scan-results-cta-label")}
           </mj-button>
           <mj-text
             font-size="12px"

@@ -18,7 +18,10 @@ import { getBreaches } from "../../functions/server/getBreaches";
 import { getBreachesForEmail } from "../../../utils/hibp";
 import { getSha1, refreshOAuthTokens } from "../../../utils/fxa";
 import { initEmail, sendEmail } from "../../../utils/email";
-import { getL10n } from "../../functions/l10n/serverComponents";
+import {
+  getAcceptLangHeaderInServerComponents,
+  getL10n,
+} from "../../functions/l10n/serverComponents";
 import { OAuthConfig } from "next-auth/providers/oauth";
 import { SerializedSubscriber } from "../../../next-auth";
 import { record } from "../../functions/server/glean";
@@ -196,7 +199,8 @@ export const authOptions: AuthOptions = {
 
           // Send report email
           const l10n = getL10n(
-            verifiedSubscriber?.signup_language ?? undefined,
+            verifiedSubscriber?.signup_language ??
+              (await getAcceptLangHeaderInServerComponents()),
           );
           const subject = unsafeBreachesForEmail?.length
             ? l10n.getString("email-subject-found-breaches")
@@ -212,7 +216,7 @@ export const authOptions: AuthOptions = {
           await sendEmail(
             profile.email,
             subject,
-            renderEmail(
+            await renderEmail(
               <SignupReportEmail
                 l10n={l10n}
                 breachedEmailAddress={profile.email}

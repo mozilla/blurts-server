@@ -15,8 +15,6 @@ settings-alert-preferences-allow-breach-alerts-title = Cảnh báo rò rỉ tứ
 settings-alert-preferences-allow-breach-alerts-subtitle = Những cảnh báo này được gửi ngay lập tức khi phát hiện rò rỉ dữ liệu
 settings-alert-preferences-option-one = Gửi thông báo rò rỉ dữ liệu đến địa chỉ email bị ảnh hưởng
 settings-alert-preferences-option-two = Gửi tất cả cảnh báo rò rỉ dữ liệu đến địa chỉ email chính
-settings-alert-preferences-allow-monthly-monitor-report-title = Báo cáo hàng tháng { -brand-monitor }
-settings-alert-preferences-allow-monthly-monitor-report-subtitle = Bản cập nhật hàng tháng về số lần lộ dữ liệu mới, những gì đã được sửa và những gì bạn cần chú ý.
 
 ## Monitored email addresses
 
@@ -39,12 +37,6 @@ settings-remove-email-button-tooltip = Dừng giám sát { $emailAddress }
 #   $breachCount (number) - Number of breaches
 settings-email-number-of-breaches-info = Xuất hiện trong { $breachCount } rò rỉ dữ liệu đã biết.
 
-## Deactivate account
-
-settings-deactivate-account-title = Hủy kích hoạt tài khoản
-settings-deactivate-account-info-2 = Bạn có thể vô hiệu hóa { -product-short-name } bằng cách xoá { -brand-mozilla-account } của bạn.
-settings-fxa-link-label-3 = Đi đến cài đặt { -brand-mozilla-account }
-
 ## Delete Monitor account
 
 settings-delete-monitor-free-account-title = Xoá tài khoản { -brand-monitor }
@@ -56,3 +48,18 @@ settings-delete-monitor-free-account-dialog-cta-label = Xóa tài khoản
 settings-delete-monitor-free-account-dialog-cancel-button-label = Nghĩ lại rồi, đưa tôi quay lại
 settings-delete-monitor-account-confirmation-toast-label-2 = Tài khoản { -brand-monitor } của bạn đã bị xóa.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Bỏ qua
+
+## Monthly Monitor Report
+
+settings-alert-preferences-allow-monthly-monitor-report-title = Báo cáo hàng tháng { -brand-monitor }
+settings-alert-preferences-allow-monthly-monitor-report-subtitle = Bản cập nhật hàng tháng về số lần lộ dữ liệu mới, những gì đã được sửa và những gì bạn cần chú ý.
+
+## Settings page redesign
+
+settings-tab-label-edit-info = Chỉnh sửa thông tin của bạn
+settings-tab-label-notifications = Đặt thông báo
+settings-tab-label-manage-account = Quản lý tài khoản
+settings-tab-subtitle-manage-account = Quản lý tài khoản { -product-name } của bạn.
+settings-tab-notifications-marketing-title = Truyền thông tiếp thị
+settings-tab-notifications-marketing-text = Cập nhật định kỳ về { -brand-monitor }, { -brand-mozilla }, và các sản phẩm bảo mật khác của chúng tôi.
+settings-tab-notifications-marketing-link-label = Đi đến cài đặt email { -brand-mozilla }

@@ -3,7 +3,6 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 chevron-alt = Hollësi ekspozimi
-
 exposure-card-exposure-type = Lloj ekspozimi
 exposure-card-date-found = Datë e ekspozimit
 
@@ -29,9 +28,10 @@ exposure-card-other = Tjetër
 exposure-card-description-data-breach-action-needed = Informacion rreth juaj qe ekspozuar prej <data_breach_link>{ $data_breach_company } cenimit të të dhënave më { $data_breach_date }.</data_breach_link> Do t’ju udhëheqim nëpër hapat për ta ndrequr.
 exposure-card-description-data-breach-fixed = Ndërmorët hapat e nevojshëm për ta ndrequr <data_breach_link>këtë cenim</data_breach_link>. Do të mbikëqyrim vazhdimisht për cenime të dhënash dhe do t’ju njoftojmë për çfarëdo ekspozimesh të reja.
 exposure-card-your-exposed-info = Informacion i juaji i ekspozuar:
+exposure-card-found-the-following-data = { -brand-monitor } gjeti ekspozim për të dhënat vijues:
 exposure-card-exposure-type-data-broker = Informacion për shitje
 exposure-card-exposure-type-data-breach = Cenim të dhënash
-exposure-card-cta = Ndreqi krejt ekspozimet
+exposure-card-resolve-exposures-cta = Zgjidhni ekspozimet
 exposure-card-label-company-logo = Stemë e shoqërisë
 exposure-card-label-company = Shoqëri
 # Status of the exposure card, could be In Progress, Fixed or Action Needed
@@ -40,3 +40,4 @@ exposure-card-label-status = Gjendje
 # $category_label is the data breach exposure type that was leaked. Eg. Email, IP Address.
 # $count is the number of times that the data type was leaked.
 exposure-card-label-and-count = { $category_label }: { $count }
+exposure-card-manual-resolution-praise = <b>Punë e paqme!</b> E zgjidhët këtë ekspozim.

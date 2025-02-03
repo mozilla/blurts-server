@@ -18,12 +18,14 @@ import {
   StepLink,
 } from "../../../../../../../functions/server/getRelevantGuidedSteps";
 import { useTelemetry } from "../../../../../../../hooks/useTelemetry";
+import { TelemetryButton } from "../../../../../../../components/client/TelemetryButton";
+import { FeatureFlagName } from "../../../../../../../../db/tables/featureFlags";
 
 export type FixViewProps = {
   children: ReactNode;
   subscriberEmails: string[];
   data: StepDeterminationData;
-  nextStep: StepLink;
+  nextStep: StepLink | (() => void);
   currentSection:
     | "data-broker-profiles"
     | "high-risk-data-breach"
@@ -33,6 +35,7 @@ export type FixViewProps = {
   hideNavClose?: boolean;
   hideNextNavigationRightArrow?: boolean;
   showConfetti?: boolean;
+  enabledFeatureFlags: FeatureFlagName[];
 };
 
 export const FixView = (props: FixViewProps) => {
@@ -90,27 +93,53 @@ export const FixView = (props: FixViewProps) => {
             label={l10n.getString(
               "guided-resolution-flow-step-navigation-label",
             )}
+            enabledFeatureFlags={props.enabledFeatureFlags}
           />
         )}
         {!props.hideNavClose && navigationClose()}
         <section className={styles.fixSection}>
           <div className={styles.viewWrapper}>{props.children}</div>
-          {!props.hideNextNavigationRightArrow && (
-            <Link
-              className={`${styles.navArrow} ${styles.navArrowNext}`}
-              href={props.nextStep.href}
-              aria-label={l10n.getString("guided-resolution-flow-next-arrow")}
-              onClick={() => {
-                recordTelemetry("button", "click", {
-                  button_id: "next_arrow",
-                });
-              }}
-            >
-              <Image alt="" src={ImageArrowRight} />
-            </Link>
-          )}
+          {!props.hideNextNavigationRightArrow &&
+            (isNextStepALink(props.nextStep) ? (
+              <Link
+                className={`${styles.navArrow} ${styles.navArrowNext}`}
+                href={props.nextStep.href}
+                aria-label={l10n.getString("guided-resolution-flow-next-arrow")}
+                onClick={() => {
+                  recordTelemetry("button", "click", {
+                    button_id: "next_arrow",
+                  });
+                }}
+              >
+                <Image alt="" src={ImageArrowRight} />
+              </Link>
+            ) : (
+              <TelemetryButton
+                className={`${styles.navArrow} ${styles.navArrowNext}`}
+                event={{
+                  module: "button",
+                  name: "click",
+                  data: {
+                    button_id: "go_to_next_result",
+                  },
+                }}
+                variant="link"
+                onPress={props.nextStep}
+                aria-label={l10n.getString(
+                  "guided-resolution-flow-next-arrow-sub-step",
+                )}
+              >
+                <Image alt="" src={ImageArrowRight} />
+              </TelemetryButton>
+            ))}
         </section>
       </div>
     </div>
   );
 };
+
+function isNextStepALink(
+  nextStep: StepLink | (() => void),
+): nextStep is StepLink {
+  return "href" in nextStep;
+}

@@ -1,8 +1,8 @@
-@import "../../../tokens";
+@use "../../../tokens";
 
 .toolbar {
-  height: $tab-bar-height;
-  border-bottom: 1px solid $color-grey-20;
+  height: tokens.$tab-bar-height;
+  border-bottom: 1px solid tokens.$color-grey-20;
   display: flex;
   align-items: center;
 
@@ -10,17 +10,17 @@
     flex: 1 0 auto;
     display: flex;
     align-items: center;
-    padding-inline: $spacing-xl;
+    padding-inline: tokens.$spacing-xl;
   }
 
   .end {
-    padding-inline: $spacing-xl;
+    padding-inline: tokens.$spacing-xl;
     display: flex;
     align-items: center;
-    gap: $spacing-md;
+    gap: tokens.$spacing-md;
   }
 
-  @media screen and (max-width: $screen-md) {
+  @media screen and (max-width: tokens.$screen-md) {
     .start {
       justify-content: center;
     }

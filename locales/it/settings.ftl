@@ -15,8 +15,6 @@ settings-alert-preferences-allow-breach-alerts-title = Avvisi per violazioni imm
 settings-alert-preferences-allow-breach-alerts-subtitle = Questi avvisi vengono inviati non appena viene rilevata una violazione di dati
 settings-alert-preferences-option-one = Invia avvisi relativi alle violazioni all’indirizzo email coinvolto
 settings-alert-preferences-option-two = Invia tutti gli avvisi di violazione all’indirizzo email principale
-settings-alert-preferences-allow-monthly-monitor-report-title = Rapporto mensile di { -brand-monitor }
-settings-alert-preferences-allow-monthly-monitor-report-subtitle = Un aggiornamento mensile delle nuove esposizioni, che cosa è stato corretto e che cosa richiede la tua attenzione.
 
 ## Monitored email addresses
 
@@ -47,12 +45,6 @@ settings-email-number-of-breaches-info =
        *[other] Appare in { $breachCount } violazioni conosciute.
     }
 
-## Deactivate account
-
-settings-deactivate-account-title = Disattiva account
-settings-deactivate-account-info-2 = Puoi disattivare { -product-short-name } eliminando il tuo { -brand-mozilla-account }.
-settings-fxa-link-label-3 = Vai alle impostazioni dell’{ -brand-mozilla-account }
-
 ## Delete Monitor account
 
 settings-delete-monitor-free-account-title = Elimina l’account { -brand-monitor }
@@ -64,3 +56,18 @@ settings-delete-monitor-free-account-dialog-cta-label = Elimina account
 settings-delete-monitor-free-account-dialog-cancel-button-label = Ho cambiato idea, torna indietro
 settings-delete-monitor-account-confirmation-toast-label-2 = Il tuo account { -brand-monitor } è stato eliminato.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Chiudi
+
+## Monthly Monitor Report
+
+settings-alert-preferences-allow-monthly-monitor-report-title = Rapporto mensile di { -brand-monitor }
+settings-alert-preferences-allow-monthly-monitor-report-subtitle = Un aggiornamento mensile delle nuove esposizioni, che cosa è stato corretto e che cosa richiede la tua attenzione.
+
+## Settings page redesign
+
+settings-tab-label-edit-info = Modifica le tue informazioni
+settings-tab-label-notifications = Imposta notifiche
+settings-tab-label-manage-account = Gestisci account
+settings-tab-subtitle-manage-account = Gestisci il tuo account { -product-name }.
+settings-tab-notifications-marketing-title = Comunicazioni di marketing
+settings-tab-notifications-marketing-text = Aggiornamenti periodici su { -brand-monitor }, { -brand-mozilla } e altri nostri prodotti per la sicurezza.
+settings-tab-notifications-marketing-link-label = Vai alle impostazioni email di { -brand-mozilla }

@@ -14,7 +14,10 @@ type StoryProps = Props & { emulateDarkMode?: boolean };
 const meta: Meta<FC<Props>> = {
   title: "Emails/Monthly activity (Plus user)",
   component: (props: StoryProps) => (
-    <StorybookEmailRenderer emulateDarkMode={props.emulateDarkMode}>
+    <StorybookEmailRenderer
+      plainTextVersion={null}
+      emulateDarkMode={props.emulateDarkMode}
+    >
       <MonthlyActivityPlusEmail {...props} />
     </StorybookEmailRenderer>
   ),

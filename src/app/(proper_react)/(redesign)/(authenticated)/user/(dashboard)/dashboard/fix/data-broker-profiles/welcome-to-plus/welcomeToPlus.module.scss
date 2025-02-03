@@ -1,13 +1,13 @@
-@import "../../../../../../../../../tokens";
+@use "../../../../../../../../../tokens";
 
 .contentWrapper {
-  max-width: $content-md;
+  max-width: tokens.$content-md;
   margin: 0 auto;
   text-align: center;
   display: flex;
   align-items: center;
-  gap: $spacing-xl;
-  @media screen and (max-width: $screen-xl) {
+  gap: tokens.$spacing-xl;
+  @media screen and (max-width: tokens.$screen-xl) {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -18,13 +18,13 @@
   display: flex;
   flex-direction: column;
   text-align: center;
-  gap: $spacing-md;
+  gap: tokens.$spacing-md;
 
   a {
     display: block;
   }
 
-  @media screen and (min-width: $screen-sm) {
+  @media screen and (min-width: tokens.$screen-sm) {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -33,23 +33,23 @@
 
 .content {
   text-align: left;
-  max-width: $content-sm;
+  max-width: tokens.$content-sm;
   margin: 0 auto;
 
   h3 {
-    font: $text-title-2xs;
+    font: tokens.$text-title-2xs;
   }
 
   p,
   h3 {
-    margin-block-end: $spacing-md;
+    margin-block-end: tokens.$spacing-md;
     text-align: left;
   }
 
   > a {
-    color: $color-blue-60;
+    color: tokens.$color-blue-60;
     display: inline-block;
-    margin-inline-start: $spacing-sm;
+    margin-inline-start: tokens.$spacing-sm;
   }
 }
 
@@ -63,7 +63,7 @@
   &.hideOnMobile {
     display: none;
 
-    @media screen and (min-width: $screen-xl) {
+    @media screen and (min-width: tokens.$screen-xl) {
       display: flex;
     }
   }

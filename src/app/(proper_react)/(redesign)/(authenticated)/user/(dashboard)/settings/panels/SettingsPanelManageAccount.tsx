@@ -17,7 +17,7 @@ import { DeleteAccountButton } from "../DeleteAccountButton";
 
 export type SettingsPanelManageAccountProps = {
   enabledFeatureFlags: FeatureFlagName[];
-  experimentData: ExperimentData;
+  experimentData: ExperimentData["Features"];
   fxaSubscriptionsUrl: string;
   isMonthlySubscriber: boolean;
   user: Session["user"];

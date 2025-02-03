@@ -15,8 +15,6 @@ settings-alert-preferences-allow-breach-alerts-title = Anlık ihlal uyarıları
 settings-alert-preferences-allow-breach-alerts-subtitle = Bu uyarılar bir veri ihlali algılandığı anda hemen gönderilir.
 settings-alert-preferences-option-one = İhlal uyarılarını etkilenen e-posta adresine gönder
 settings-alert-preferences-option-two = Tüm ihlal uyarılarını birinci e-posta adresine gönder
-settings-alert-preferences-allow-monthly-monitor-report-title = Aylık { -brand-monitor } raporu
-settings-alert-preferences-allow-monthly-monitor-report-subtitle = Yeni riskler, çözülen sorunlar ve ilgilenmeniz gereken sorunlara dair aylık bir rapor.
 
 ## Monitored email addresses
 
@@ -47,12 +45,6 @@ settings-email-number-of-breaches-info =
        *[other] Bilinen { $breachCount } ihlalde yer alıyor.
     }
 
-## Deactivate account
-
-settings-deactivate-account-title = Hesabı devre dışı bırak
-settings-deactivate-account-info-2 = { -product-short-name }’ü { -brand-mozilla-account }nızı silerek devre dışı bırakabilirsiniz.
-settings-fxa-link-label-3 = { -brand-mozilla-account } ayarlarına gidin
-
 ## Delete Monitor account
 
 settings-delete-monitor-free-account-title = { -brand-monitor } hesabını sil
@@ -64,3 +56,18 @@ settings-delete-monitor-free-account-dialog-cta-label = Hesabı sil
 settings-delete-monitor-free-account-dialog-cancel-button-label = Vazgeçtim, geri dön
 settings-delete-monitor-account-confirmation-toast-label-2 = { -brand-monitor } hesabınız silindi.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Kapat
+
+## Monthly Monitor Report
+
+settings-alert-preferences-allow-monthly-monitor-report-title = Aylık { -brand-monitor } raporu
+settings-alert-preferences-allow-monthly-monitor-report-subtitle = Yeni riskler, çözülen sorunlar ve ilgilenmeniz gereken sorunlara dair aylık bir rapor.
+
+## Settings page redesign
+
+settings-tab-label-edit-info = Bilgilerinizi düzenleyin
+settings-tab-label-notifications = Bildirimleri ayarla
+settings-tab-label-manage-account = Hesabı yönet
+settings-tab-subtitle-manage-account = { -product-name } hesabınızı yönetin.
+settings-tab-notifications-marketing-title = Pazarlama iletişimi
+settings-tab-notifications-marketing-text = { -brand-monitor }, { -brand-mozilla } ve diğer güvenlik ürünlerimizle ilgili düzenli haberler.
+settings-tab-notifications-marketing-link-label = { -brand-mozilla } e-posta ayarlarına git

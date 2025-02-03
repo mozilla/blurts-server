@@ -1,20 +1,20 @@
-@import "../../../../../../../../tokens";
+@use "../../../../../../../../tokens";
 
 .triggerButton {
-  @include question-mark-circle-btn;
+  @include tokens.question-mark-circle-btn;
 }
 
 .dialogContents {
   display: flex;
   flex-direction: column;
-  gap: $spacing-lg;
-  color: $color-grey-50;
+  gap: tokens.$spacing-lg;
+  color: tokens.$color-grey-50;
 
   .confirmButtonWrapper {
     align-self: center;
     display: flex;
     flex-direction: column;
-    min-width: $content-xs;
-    padding-block-start: $spacing-md;
+    min-width: tokens.$content-xs;
+    padding-block-start: tokens.$spacing-md;
   }
 }

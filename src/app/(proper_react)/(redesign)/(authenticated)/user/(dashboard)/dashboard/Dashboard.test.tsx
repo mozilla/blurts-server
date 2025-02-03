@@ -3487,7 +3487,7 @@ describe("CSAT survey banner", () => {
         activeTab="fixed"
         enabledFeatureFlags={["PetitionBannerCsatSurvey"]}
         experimentData={{
-          ...defaultExperimentData,
+          ...defaultExperimentData["Features"],
           "data-privacy-petition-banner": {
             enabled: false,
           },
@@ -3515,7 +3515,7 @@ describe("CSAT survey banner", () => {
         activeTab="action-needed"
         enabledFeatureFlags={["PetitionBannerCsatSurvey"]}
         experimentData={{
-          ...defaultExperimentData,
+          ...defaultExperimentData["Features"],
           "data-privacy-petition-banner": {
             enabled: false,
           },
@@ -3539,7 +3539,7 @@ describe("CSAT survey banner", () => {
         activeTab="fixed"
         enabledFeatureFlags={["PetitionBannerCsatSurvey"]}
         experimentData={{
-          ...defaultExperimentData,
+          ...defaultExperimentData["Features"],
           "data-privacy-petition-banner": {
             enabled: true,
           },
@@ -3564,7 +3564,7 @@ describe("CSAT survey banner", () => {
         activeTab="fixed"
         enabledFeatureFlags={["PetitionBannerCsatSurvey"]}
         experimentData={{
-          ...defaultExperimentData,
+          ...defaultExperimentData["Features"],
           "data-privacy-petition-banner": {
             enabled: true,
           },
@@ -3595,7 +3595,7 @@ describe("CSAT survey banner", () => {
         activeTab="fixed"
         enabledFeatureFlags={["PetitionBannerCsatSurvey"]}
         experimentData={{
-          ...defaultExperimentData,
+          ...defaultExperimentData["Features"],
           "data-privacy-petition-banner": {
             enabled: true,
           },
@@ -3630,7 +3630,7 @@ describe("CSAT survey banner", () => {
           "AutomaticRemovalCsatSurvey",
         ]}
         experimentData={{
-          ...defaultExperimentData,
+          ...defaultExperimentData["Features"],
           "data-privacy-petition-banner": {
             enabled: true,
           },
@@ -3659,7 +3659,7 @@ describe("CSAT survey banner", () => {
         activeTab="fixed"
         enabledFeatureFlags={["DataBrokerRemovalTimeEstimateCsat"]}
         experimentData={{
-          ...defaultExperimentData,
+          ...defaultExperimentData["Features"],
           "data-broker-removal-time-estimates": {
             enabled: true,
           },
@@ -3683,7 +3683,7 @@ describe("CSAT survey banner", () => {
         activeTab="fixed"
         enabledFeatureFlags={["DataBrokerRemovalTimeEstimateCsat"]}
         experimentData={{
-          ...defaultExperimentData,
+          ...defaultExperimentData["Features"],
           "data-broker-removal-time-estimates": {
             enabled: false,
           },
@@ -3707,7 +3707,7 @@ describe("CSAT survey banner", () => {
         activeTab="action-needed"
         enabledFeatureFlags={["DataBrokerRemovalTimeEstimateCsat"]}
         experimentData={{
-          ...defaultExperimentData,
+          ...defaultExperimentData["Features"],
           "data-broker-removal-time-estimates": {
             enabled: true,
           },
@@ -3731,7 +3731,7 @@ describe("CSAT survey banner", () => {
         activeTab="fixed"
         enabledFeatureFlags={["DataBrokerRemovalTimeEstimateCsat"]}
         experimentData={{
-          ...defaultExperimentData,
+          ...defaultExperimentData["Features"],
           "data-broker-removal-time-estimates": {
             enabled: true,
           },
@@ -3756,7 +3756,7 @@ describe("Data privacy petition banner", () => {
       <ComposedDashboard
         enabledFeatureFlags={["PetitionBannerCsatSurvey"]}
         experimentData={{
-          ...defaultExperimentData,
+          ...defaultExperimentData["Features"],
           "data-privacy-petition-banner": {
             enabled: true,
           },
@@ -3780,7 +3780,7 @@ describe("Data privacy petition banner", () => {
         activeTab="fixed"
         enabledFeatureFlags={["PetitionBannerCsatSurvey"]}
         experimentData={{
-          ...defaultExperimentData,
+          ...defaultExperimentData["Features"],
           "data-privacy-petition-banner": {
             enabled: true,
           },
@@ -3804,7 +3804,7 @@ describe("Data privacy petition banner", () => {
         activeTab="fixed"
         enabledFeatureFlags={["PetitionBannerCsatSurvey"]}
         experimentData={{
-          ...defaultExperimentData,
+          ...defaultExperimentData["Features"],
           "data-privacy-petition-banner": {
             enabled: true,
           },
@@ -3827,7 +3827,7 @@ describe("Data privacy petition banner", () => {
       <ComposedDashboard
         enabledFeatureFlags={["PetitionBannerCsatSurvey"]}
         experimentData={{
-          ...defaultExperimentData,
+          ...defaultExperimentData["Features"],
           "data-privacy-petition-banner": {
             enabled: true,
           },
@@ -3847,7 +3847,7 @@ describe("Data privacy petition banner", () => {
       <ComposedDashboard
         enabledFeatureFlags={["PetitionBannerCsatSurvey"]}
         experimentData={{
-          ...defaultExperimentData,
+          ...defaultExperimentData["Features"],
           "data-privacy-petition-banner": {
             enabled: true,
           },
@@ -3882,7 +3882,7 @@ describe("Data privacy petition banner", () => {
         activeTab="fixed"
         enabledFeatureFlags={["PetitionBannerCsatSurvey"]}
         experimentData={{
-          ...defaultExperimentData,
+          ...defaultExperimentData["Features"],
           "data-privacy-petition-banner": {
             enabled: true,
           },
@@ -3914,7 +3914,7 @@ describe("Data privacy petition banner", () => {
         activeTab="fixed"
         enabledFeatureFlags={["PetitionBannerCsatSurvey"]}
         experimentData={{
-          ...defaultExperimentData,
+          ...defaultExperimentData["Features"],
           "data-privacy-petition-banner": {
             enabled: true,
           },

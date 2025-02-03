@@ -17,7 +17,10 @@ import {
 } from "../../../../../../../db/tables/subscribers";
 import { initEmail } from "../../../../../../../utils/email";
 import { sendVerificationEmail } from "../../../../../../api/utils/email";
-import { getL10n } from "../../../../../../functions/l10n/serverComponents";
+import {
+  getAcceptLangHeaderInServerComponents,
+  getL10n,
+} from "../../../../../../functions/l10n/serverComponents";
 import { logger } from "../../../../../../functions/server/logging";
 import { CONST_MAX_NUM_ADDRESSES } from "../../../../../../../constants";
 import { SanitizedEmailAddressRow } from "../../../../../../functions/server/sanitize";
@@ -42,7 +45,7 @@ export async function onAddEmail(
   _prevState: AddEmailFormState,
   formData: FormData,
 ): Promise<AddEmailFormState> {
-  const l10n = getL10n();
+  const l10n = getL10n(await getAcceptLangHeaderInServerComponents());
   const session = await getServerSession();
   if (!session?.user.subscriber?.fxa_uid) {
     return {
@@ -126,7 +129,7 @@ export async function onAddEmail(
 }
 
 export async function onRemoveEmail(email: SanitizedEmailAddressRow) {
-  const l10n = getL10n();
+  const l10n = getL10n(await getAcceptLangHeaderInServerComponents());
   const session = await getServerSession();
   if (!session?.user.subscriber?.fxa_uid) {
     logger.error(
@@ -192,7 +195,7 @@ export async function onDeleteAccount() {
   await deleteAccount(subscriber);
 
   // Tell the front page to display an "account deleted" notification:
-  cookies().set("justDeletedAccount", "justDeletedAccount", {
+  (await cookies()).set("justDeletedAccount", "justDeletedAccount", {
     expires: new Date(Date.now() + 5 * 60 * 1000),
     httpOnly: false,
   });

@@ -13,32 +13,32 @@ import Meta, {
   MonthlyReportFreeUserWithScanWithExposuresResolved,
 } from "./MonthlyActivityFreeEmail.stories";
 
-it("shows the right cta label if a user has not yet run a scan", () => {
+it("shows the right label in the right box if a scan hasn't been run", () => {
   const ComposedEmail = composeStory(
     MonthlyReportFreeUserNoScanWithBreachesNothingResolved,
     Meta,
   );
   render(<ComposedEmail />);
 
-  const getFirstScanFreeBtn = screen.getByRole("link", {
-    name: "Get first scan free",
-  });
+  const getFirstScanFreeLabel = screen.getByText(
+    "Free data broker scan available",
+  );
 
-  expect(getFirstScanFreeBtn).toBeInTheDocument();
+  expect(getFirstScanFreeLabel).toBeInTheDocument();
 });
 
-it("shows the right cta label if a user has run a scan", () => {
+it("shows the right label in the right box if a user has run a scan", () => {
   const ComposedEmail = composeStory(
     MonthlyReportFreeUserWithScanWithExposuresNothingResolved,
     Meta,
   );
   render(<ComposedEmail />);
 
-  const getFirstScanFreeBtn = screen.getByRole("link", {
-    name: "Get ⁨Monitor Plus⁩",
+  const autoRemovedExposuresLabel = screen.getByText("Auto-removed exposures", {
+    exact: false,
   });
 
-  expect(getFirstScanFreeBtn).toBeInTheDocument();
+  expect(autoRemovedExposuresLabel).toBeInTheDocument();
 });
 
 it("shows the inactive state if there are 0 manually resolved data breaches", () => {
@@ -49,11 +49,11 @@ it("shows the inactive state if there are 0 manually resolved data breaches", ()
   render(<ComposedEmail />);
 
   const manuallyResolvedDataBreaches = screen.getByText(
-    "Manually resolved data breaches",
+    "Data breaches resolved manually",
     { exact: false },
   );
 
-  expect(manuallyResolvedDataBreaches).toHaveStyle("color: #9E9E9E");
+  expect(manuallyResolvedDataBreaches).toHaveStyle("color: #6D6D6E");
 });
 
 it("shows the active state if there are manually resolved data breaches", () => {
@@ -64,11 +64,11 @@ it("shows the active state if there are manually resolved data breaches", () => 
   render(<ComposedEmail />);
 
   const manuallyResolvedExposures = screen.getByText(
-    "Manually resolved exposures",
+    "Data breaches resolved manually",
     { exact: false },
   );
 
-  expect(manuallyResolvedExposures).toHaveStyle("color: #7542E5");
+  expect(manuallyResolvedExposures).toHaveStyle("color: #000000");
 });
 
 it("says exposures instead of breaches once a user has run a scan", () => {
@@ -78,14 +78,9 @@ it("says exposures instead of breaches once a user has run a scan", () => {
   );
   render(<ComposedEmail />);
 
-  const manuallyResolvedExposures = screen.getByText(
-    "Manually resolved exposures",
-    { exact: false },
-  );
+  const dataExposures = screen.getByText("Data exposures", { exact: true });
 
-  const dataExposures = screen.getByText("Data exposures", { exact: false });
-
-  expect(manuallyResolvedExposures).toBeInTheDocument();
+  expect(screen.queryByText("Data breaches", { exact: true })).toBeNull();
   expect(dataExposures).toBeInTheDocument();
 });
 

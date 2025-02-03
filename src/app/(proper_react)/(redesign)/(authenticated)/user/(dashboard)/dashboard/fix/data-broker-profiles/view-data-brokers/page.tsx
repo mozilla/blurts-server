@@ -5,14 +5,19 @@
 import { redirect } from "next/navigation";
 import { headers } from "next/headers";
 import { getServerSession } from "../../../../../../../../../functions/server/getServerSession";
-import { getLatestOnerepScanResults } from "../../../../../../../../../../db/tables/onerep_scans";
+import { getScanResultsWithBroker } from "../../../../../../../../../../db/tables/onerep_scans";
 import { getOnerepProfileId } from "../../../../../../../../../../db/tables/subscribers";
 import { ViewDataBrokersView } from "./View";
 import { StepDeterminationData } from "../../../../../../../../../functions/server/getRelevantGuidedSteps";
 import { getCountryCode } from "../../../../../../../../../functions/server/getCountryCode";
 import { getSubscriberBreaches } from "../../../../../../../../../functions/server/getSubscriberBreaches";
 import { getSubscriberEmails } from "../../../../../../../../../functions/server/getSubscriberEmails";
-import { getL10n } from "../../../../../../../../../functions/l10n/serverComponents";
+import {
+  getAcceptLangHeaderInServerComponents,
+  getL10n,
+} from "../../../../../../../../../functions/l10n/serverComponents";
+import { hasPremium } from "../../../../../../../../../functions/universal/user";
+import { getEnabledFeatureFlags } from "../../../../../../../../../../db/tables/featureFlags";
 
 export default async function ViewDataBrokers() {
   const session = await getServerSession();
@@ -21,9 +26,17 @@ export default async function ViewDataBrokers() {
     redirect("/user/dashboard");
   }
 
-  const countryCode = getCountryCode(headers());
+  const countryCode = getCountryCode(await headers());
   const profileId = await getOnerepProfileId(session.user.subscriber.id);
-  const latestScan = await getLatestOnerepScanResults(profileId);
+  const latestScan = await getScanResultsWithBroker(
+    profileId,
+    hasPremium(session.user),
+  );
+
+  const enabledFeatureFlags = await getEnabledFeatureFlags({
+    email: session.user.email,
+  });
+
   const data: StepDeterminationData = {
     countryCode,
     user: session.user,
@@ -39,7 +52,8 @@ export default async function ViewDataBrokers() {
     <ViewDataBrokersView
       data={data}
       subscriberEmails={subscriberEmails}
-      l10n={getL10n()}
+      l10n={getL10n(await getAcceptLangHeaderInServerComponents())}
+      enabledFeatureFlags={enabledFeatureFlags}
     />
   );
 }

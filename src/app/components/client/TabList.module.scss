@@ -1,4 +1,4 @@
-@import "../../tokens";
+@use "../../tokens";
 
 .container {
   display: flex;
@@ -6,7 +6,7 @@
 
 .tabs {
   display: flex;
-  gap: $spacing-sm;
+  gap: tokens.$spacing-sm;
 
   &[aria-orientation="vertical"] {
     flex-direction: column;
@@ -15,23 +15,38 @@
 
 .tab {
   cursor: pointer;
+  border-radius: tokens.$border-radius-sm;
   display: flex;
-  gap: $spacing-xs;
-  padding: $spacing-sm;
+  gap: tokens.$spacing-xs;
+  padding: tokens.$spacing-sm;
   position: relative;
 
   &::after {
     bottom: 0;
     content: "";
-    height: $border-focus-width;
+    height: tokens.$border-focus-width;
     position: absolute;
     right: 0;
     width: 100%;
   }
 
-  &[aria-selected="true"] {
+  &:hover,
+  &:focus {
+    outline: 2px solid tokens.$color-blue-50;
     &::after {
-      background: $color-purple-70;
+      background: none;
+    }
+  }
+
+  &[aria-selected="true"] {
+    color: tokens.$color-purple-70;
+
+    // Only show the tab underline when the item
+    // is selected and not hovered or focussed.
+    &:not(:hover, :focus) {
+      &::after {
+        background: tokens.$color-purple-70;
+      }
     }
   }
 }
@@ -39,18 +54,23 @@
 .secondary {
   .tabs {
     align-items: flex-start;
-    gap: $spacing-sm;
+    gap: tokens.$spacing-sm;
   }
 
   .tab {
-    color: $color-grey-40;
-    padding: $spacing-xs 0;
+    color: tokens.$color-grey-40;
+    padding: tokens.$spacing-xs tokens.$spacing-xs tokens.$spacing-xs 0;
 
     &[aria-selected="true"] {
-      color: $color-purple-50;
-      &::after {
-        background: $color-purple-50;
-        height: 2px;
+      color: tokens.$color-purple-50;
+
+      // Only show the tab underline when the item
+      // is selected and not hovered or focussed.
+      &:not(:hover, :focus) {
+        &::after {
+          background: tokens.$color-purple-50;
+          height: 2px;
+        }
       }
     }
   }

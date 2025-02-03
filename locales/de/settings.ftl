@@ -15,8 +15,6 @@ settings-alert-preferences-allow-breach-alerts-title = Sofortige Warnmeldungen b
 settings-alert-preferences-allow-breach-alerts-subtitle = Diese Warnmeldungen werden sofort gesendet, wenn ein Datenleck erkannt wird.
 settings-alert-preferences-option-one = Benachrichtigungen über Datenlecks an die betroffene E-Mail-Adresse schicken
 settings-alert-preferences-option-two = Alle Warnungen zu Datenlecks an die primäre E-Mail-Adresse senden
-settings-alert-preferences-allow-monthly-monitor-report-title = Monatlicher { -brand-monitor }-Bericht
-settings-alert-preferences-allow-monthly-monitor-report-subtitle = Eine monatlich aktualisierte Information über neue Datenlecks, behobene Probleme und was Ihre Aufmerksamkeit erfordert.
 
 ## Monitored email addresses
 
@@ -47,12 +45,6 @@ settings-email-number-of-breaches-info =
        *[other] Ist von { $breachCount } bekannten Datenlecks betroffen.
     }
 
-## Deactivate account
-
-settings-deactivate-account-title = Konto deaktivieren
-settings-deactivate-account-info-2 = Sie können { -product-short-name } deaktivieren, indem Sie Ihr { -brand-mozilla-account } löschen.
-settings-fxa-link-label-3 = Zu den { -brand-mozilla-account }-Einstellungen gehen
-
 ## Delete Monitor account
 
 settings-delete-monitor-free-account-title = { -brand-monitor }-Konto löschen
@@ -64,3 +56,18 @@ settings-delete-monitor-free-account-dialog-cta-label = Konto löschen
 settings-delete-monitor-free-account-dialog-cancel-button-label = Ich habe es mir anders überlegt – zurück zur vorherigen Seite
 settings-delete-monitor-account-confirmation-toast-label-2 = Ihr { -brand-monitor }-Konto ist jetzt gelöscht.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Schließen
+
+## Monthly Monitor Report
+
+settings-alert-preferences-allow-monthly-monitor-report-title = Monatlicher { -brand-monitor }-Bericht
+settings-alert-preferences-allow-monthly-monitor-report-subtitle = Eine monatlich aktualisierte Information über neue Datenlecks, behobene Probleme und was Ihre Aufmerksamkeit erfordert.
+
+## Settings page redesign
+
+settings-tab-label-edit-info = Ihre Daten bearbeiten
+settings-tab-label-notifications = Benachrichtigungen festlegen
+settings-tab-label-manage-account = Benutzerkonto verwalten
+settings-tab-subtitle-manage-account = Verwalten Sie Ihr { -product-name }-Konto.
+settings-tab-notifications-marketing-title = Marketingkommunikation
+settings-tab-notifications-marketing-text = Regelmäßige Neuigkeiten zu { -brand-monitor }, { -brand-mozilla } und unseren anderen Sicherheitsprodukten.
+settings-tab-notifications-marketing-link-label = Zu den { -brand-mozilla }-E-Mail-Einstellungen

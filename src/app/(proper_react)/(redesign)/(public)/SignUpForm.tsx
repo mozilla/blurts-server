@@ -6,9 +6,9 @@
 
 import {
   FormEventHandler,
+  ReactNode,
   RefObject,
   useContext,
-  useId,
   useState,
 } from "react";
 import { signIn } from "next-auth/react";
@@ -17,13 +17,13 @@ import { Button } from "../../../components/client/Button";
 import styles from "./SignUpForm.module.scss";
 import { useTelemetry } from "../../../hooks/useTelemetry";
 import { useViewTelemetry } from "../../../hooks/useViewTelemetry";
-import { VisuallyHidden } from "../../../components/server/VisuallyHidden";
 import { WaitlistCta } from "./ScanLimit";
 import { useCookies } from "react-cookie";
 import { CONST_URL_MONITOR_LANDING_PAGE_ID } from "../../../../constants";
 import { getFreeScanSearchParams } from "../../../functions/universal/getFreeScanSearchParams";
 import { AccountsMetricsFlowContext } from "../../../../contextProviders/accounts-metrics-flow";
 import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
+import { InputField } from "../../../components/client/InputField";
 
 export type Props = {
   eligibleForPremium: boolean;
@@ -33,13 +33,15 @@ export type Props = {
   };
   scanLimitReached: boolean;
   signUpCallbackUrl: string;
-  experimentData?: ExperimentData;
+  label?: string;
+  experimentData?: ExperimentData["Features"];
   isHero?: boolean;
   placeholder?: string;
+  ctaLabel?: string | ReactNode;
+  hasFloatingLabel?: boolean;
 };
 
 export const SignUpForm = (props: Props) => {
-  const emailInputId = useId();
   const l10n = useL10n();
   const [emailInput, setEmailInput] = useState("");
   const record = useTelemetry();
@@ -64,42 +66,40 @@ export const SignUpForm = (props: Props) => {
     );
   };
 
-  const labelContent = (
-    <label htmlFor={emailInputId}>
-      {l10n.getString(
-        props.eligibleForPremium
-          ? "landing-premium-hero-emailform-input-label"
-          : "landing-all-hero-emailform-input-label",
-      )}
-    </label>
-  );
+  const label =
+    props.label ??
+    l10n.getString(
+      props.eligibleForPremium
+        ? "landing-premium-hero-emailform-input-label"
+        : "landing-all-hero-emailform-input-label",
+    );
 
   return props.scanLimitReached ? (
     <WaitlistCta />
   ) : (
     <form
-      ref={refViewTelemetry as RefObject<HTMLFormElement>}
+      ref={refViewTelemetry as RefObject<HTMLFormElement | null>}
       className={styles.form}
       onSubmit={onSubmit}
     >
-      <input
-        name={emailInputId}
+      <InputField
+        type="email"
         data-testid="signup-form-input"
-        id={emailInputId}
-        onChange={(e) => {
-          setEmailInput(e.target.value);
+        value={emailInput}
+        onChange={(value) => {
+          setEmailInput(value);
         }}
+        placeholder={
+          props.placeholder ??
+          l10n.getString("landing-all-hero-emailform-input-placeholder")
+        }
+        label={label}
         onFocus={() => {
           record("field", "focus", {
             field_id: props.eventId.field,
           });
         }}
-        value={emailInput}
-        type="email"
-        placeholder={
-          props.placeholder ??
-          l10n.getString("landing-all-hero-emailform-input-placeholder")
-        }
+        hasFloatingLabel={props.hasFloatingLabel}
       />
       <Button
         type="submit"
@@ -111,13 +111,9 @@ export const SignUpForm = (props: Props) => {
           });
         }}
       >
-        {l10n.getString("landing-all-hero-emailform-submit-label")}
+        {props.ctaLabel ??
+          l10n.getString("landing-all-hero-emailform-submit-label")}
       </Button>
-      {props.isHero ? (
-        labelContent
-      ) : (
-        <VisuallyHidden>{labelContent}</VisuallyHidden>
-      )}
     </form>
   );
 };

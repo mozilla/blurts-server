@@ -5,10 +5,10 @@
 import "../server/notInClientComponent";
 import { headers } from "next/headers";
 import {
-  GetL10nBundles,
   createGetL10nBundles,
-  GetL10n,
   createGetL10n,
+  GetL10nBundlesForLocales,
+  GetL10nForLocales,
 } from "./index";
 // @fluent/react's default export bundles all code in a single scope, so just
 // importing <ReactLocalization> from there will run createContext,
@@ -31,7 +31,9 @@ function loadSource(filename: string): string {
   return loadedSources[filename];
 }
 
-export const getL10nBundles: GetL10nBundles = createGetL10nBundles({
+export const getAcceptLangHeaderInServerComponents = async () =>
+  (await headers()).get("Accept-Language") ?? "en";
+export const getL10nBundles: GetL10nBundlesForLocales = createGetL10nBundles({
   // Filenames are formatted as `./<locale>/<module>.ftl`.
   // Example: ./en/bundle.ftl
   availableLocales: translationsContext
@@ -56,10 +58,9 @@ export const getL10nBundles: GetL10nBundles = createGetL10nBundles({
         pendingTranslationsContext(pendingTranslationFilename) as string,
     );
   },
-  getAcceptLangHeader: () => headers().get("Accept-Language") ?? "en",
 });
 
-export const getL10n: GetL10n = createGetL10n({
+export const getL10n: GetL10nForLocales = createGetL10n({
   getL10nBundles: getL10nBundles,
   ReactLocalization: ReactLocalization,
   parseMarkup: parseMarkup,

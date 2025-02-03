@@ -7,6 +7,7 @@ fix-flow-nav-leaked-passwords = Sızan parolalar
 fix-flow-nav-security-recommendations = Güvenlik önerileri
 guided-resolution-flow-exit = Kontrol paneline dön
 guided-resolution-flow-next-arrow = Sonraki adıma git
+guided-resolution-flow-next-arrow-sub-step = Sonraki sonuca git
 guided-resolution-flow-step-navigation-label = Rehberli adımlar
 
 # Celebration screens

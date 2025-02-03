@@ -13,11 +13,14 @@ import Meta, {
   DataBrokerActionNeeded,
   DataBrokerInProgress,
   DataBrokerManualRemoved,
-  DataBrokerRemovalUnderMaintenance,
-  DataBrokerRemovalUnderMaintenanceFixed,
   DataBrokerRemoved,
   DataBrokerRequestedRemoval,
+  DataBrokerRemovalUnderMaintenance,
+  DataBrokerRemovalUnderMaintenanceFixed,
+  DataBrokerRemovalUnderMaintenanceAutomaticallyRemoved,
 } from "./ExposureCard.stories";
+import { isDataBrokerUnderMaintenance } from "../../../(proper_react)/(redesign)/(authenticated)/user/(dashboard)/dashboard/View";
+import { createRandomScanResult } from "../../../../apiMocks/mockData";
 
 jest.mock("../../../hooks/useTelemetry");
 
@@ -75,7 +78,7 @@ describe("ScanResultCard", () => {
     expect(innerDescription).toBeInTheDocument();
   });
 
-  // Data broker removal under maintenance
+  // Data broker removal under maintenance unresolved
   it("shows the right description for a scan result card with removal under maintenance status", () => {
     const ComposedProgressCard = composeStory(
       DataBrokerRemovalUnderMaintenance,
@@ -90,8 +93,8 @@ describe("ScanResultCard", () => {
     expect(innerDescription).toBeInTheDocument();
   });
 
-  // Data broker removal under maintenance resolved
-  it("shows the right description for a scan result card with removal under maintenance status that's been resolved", () => {
+  // Data broker removal under maintenance manually removed
+  it("shows the right description for a scan result card with removal under maintenance status that's been manually resolved", () => {
     const ComposedProgressCard = composeStory(
       DataBrokerRemovalUnderMaintenanceFixed,
       Meta,
@@ -99,6 +102,22 @@ describe("ScanResultCard", () => {
     render(<ComposedProgressCard />);
     const innerDescription = screen.getByText(
       "You could be added back in the future, so ⁨Monitor⁩ will continue to scan data broker sites for new exposures.",
+      { exact: false },
+    );
+
+    expect(innerDescription).toBeInTheDocument();
+  });
+
+  // Data broker removal under maintenance automatically removed
+  it("shows the right description for a scan result card with removal under maintenance status that's been automatically resolved", () => {
+    const ComposedProgressCard = composeStory(
+      DataBrokerRemovalUnderMaintenanceAutomaticallyRemoved,
+      Meta,
+    );
+
+    render(<ComposedProgressCard />);
+    const innerDescription = screen.getByText(
+      "will continually monitor to make sure they don’t add you back",
       { exact: false },
     );
 
@@ -117,7 +136,6 @@ describe("ScanResultCard", () => {
     expect(innerDescription).toBeInTheDocument();
   });
 
-  // Data broker removal under maintenance
   it("shows the right description for a scan result card where removal is under maintenance", () => {
     const ComposedProgressCard = composeStory(
       DataBrokerRemovalUnderMaintenance,
@@ -132,7 +150,7 @@ describe("ScanResultCard", () => {
     expect(innerDescription).toBeInTheDocument();
   });
 
-  it("shows an additional note for “requested removal” status label", () => {
+  it("shows an additional note for “requested removal” status label if the feature flag `DataBrokerRemovalAttempts` is enabled", () => {
     const ComposedProgressCard = composeStory(DataBrokerRequestedRemoval, Meta);
     render(<ComposedProgressCard />);
     const statusLabel = screen.getByText("Requested removal");
@@ -142,6 +160,22 @@ describe("ScanResultCard", () => {
     });
 
     expect(labelNote).toBeInTheDocument();
+  });
+
+  it("does not show an additional note for “requested removal” status label if the feature flag `DataBrokerRemovalAttempts` is not enabled", () => {
+    const ComposedProgressCard = composeStory(DataBrokerRequestedRemoval, Meta);
+    render(
+      <ComposedProgressCard
+        enabledFeatureFlags={["AdditionalRemovalStatuses"]}
+      />,
+    );
+    const statusLabel = screen.getByText("Requested removal");
+    const statusLabelParent = statusLabel.parentElement as HTMLElement;
+    const labelNote = within(statusLabelParent).queryByText("Attempt", {
+      exact: false,
+    });
+
+    expect(labelNote).not.toBeInTheDocument();
   });
 
   it("hides the dt element if its dd counterpart has hideonmobile", () => {
@@ -274,4 +308,26 @@ describe("DataBreachCard", () => {
     const removalTimeLabel = screen.getByText("N/A");
     expect(removalTimeLabel).toBeInTheDocument();
   });
+});
+
+it("returns false for brokers not under maintenance", () => {
+  const result = isDataBrokerUnderMaintenance(
+    createRandomScanResult({
+      broker_status: "active",
+      status: "optout_in_progress",
+    }),
+  );
+
+  expect(result).toBe(false);
+});
+
+it("returns false for brokers under maintenance that are removed", () => {
+  const result = isDataBrokerUnderMaintenance(
+    createRandomScanResult({
+      broker_status: "removal_under_maintenance",
+      status: "removed",
+    }),
+  );
+
+  expect(result).toBe(false);
 });

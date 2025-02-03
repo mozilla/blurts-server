@@ -17,8 +17,9 @@ import { isAdmin } from "../../../../utils/auth";
 
 export async function GET(
   req: NextRequest,
-  { params }: { params: { flagId: string } },
+  props: { params: Promise<{ flagId: string }> },
 ) {
+  const params = await props.params;
   const session = await getServerSession();
   if (isAdmin(session?.user?.email || "")) {
     // Signed in

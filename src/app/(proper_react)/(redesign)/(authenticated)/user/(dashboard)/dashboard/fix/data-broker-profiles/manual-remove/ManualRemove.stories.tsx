@@ -66,6 +66,7 @@ export const ManualRemoveViewStory: Story = {
           subscriberEmails={[]}
           isPremiumUser={hasPremium(user)}
           isEligibleForPremium={true}
+          enabledFeatureFlags={[]}
         />
       </Shell>
     );

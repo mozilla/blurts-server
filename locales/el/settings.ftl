@@ -12,23 +12,21 @@ settings-page-title = Ρυθμίσεις { -product-short-name }
 settings-alert-email-preferences-title = Προτιμήσεις email
 settings-alert-email-preferences-subtitle = Πείτε μας ποια email θέλετε να λαμβάνετε.
 settings-alert-preferences-allow-breach-alerts-title = Άμεσες ειδοποιήσεις παραβιάσεων
-settings-alert-preferences-allow-breach-alerts-subtitle = Αυτές οι ειδοποιήσεις αποστέλλονται αμέσως μόλις ανιχνευθεί παραβίαση δεδομένων
-settings-alert-preferences-option-one = Αποστολή ειδοποιήσεων παραβίασης στην επηρεασμένη διεύθυνση email
+settings-alert-preferences-allow-breach-alerts-subtitle = Αποστέλλονται αμέσως μόλις ανιχνευθεί παραβίαση δεδομένων
+settings-alert-preferences-option-one = Αποστολή ειδοποιήσεων παραβιάσεων στην επηρεασμένη διεύθυνση email
 settings-alert-preferences-option-two = Αποστολή όλων των ειδοποιήσεων παραβιάσεων στην κύρια διεύθυνση email
-settings-alert-preferences-allow-monthly-monitor-report-title = Μηνιαία αναφορά { -brand-monitor }
-settings-alert-preferences-allow-monthly-monitor-report-subtitle = Μια μηνιαία ενημέρωση για τις νέες εκθέσεις, το τι έχει διορθωθεί και τι χρειάζεται την προσοχή σας.
 
 ## Monitored email addresses
 
 # Variables:
 #   $email (string) - Email address
-settings-email-list-title = Διευθύνσεις email σε εποπτεία
+settings-email-list-title = Διευθύνσεις email υπό εποπτεία
 # Variables:
 #   $limit (number) - Number of email addresses included in the plan
 settings-email-limit-info =
     { $limit ->
-        [one] Ο λογαριασμός σας περιλαμβάνει εποπτεία έως και { $limit } email.
-       *[other] Ο λογαριασμός σας περιλαμβάνει εποπτεία έως και { $limit } email.
+        [one] Ο λογαριασμός σας παρέχει εποπτεία για έως και { $limit } διεύθυνση email.
+       *[other] Ο λογαριασμός σας παρέχει εποπτεία για έως και { $limit } διευθύνσεις email.
     }
 settings-email-verification-callout = Απαιτείται επαλήθευση email
 settings-resend-email-verification-link = Εκ νέου αποστολή email επαλήθευσης
@@ -47,12 +45,6 @@ settings-email-number-of-breaches-info =
        *[other] Εμφανίζεται σε { $breachCount } γνωστές παραβιάσεις.
     }
 
-## Deactivate account
-
-settings-deactivate-account-title = Απενεργοποίηση λογαριασμού
-settings-deactivate-account-info-2 = Μπορείτε να απενεργοποιήσετε το { -product-short-name } διαγράφοντας τον { -brand-mozilla-account(case: "acc", capitalization: "lower") } σας.
-settings-fxa-link-label-3 = Μετάβαση στις ρυθμίσεις { -brand-mozilla-account(case: "gen", capitalization: "lower") }
-
 ## Delete Monitor account
 
 settings-delete-monitor-free-account-title = Διαγραφή λογαριασμού { -brand-monitor }
@@ -64,3 +56,18 @@ settings-delete-monitor-free-account-dialog-cta-label = Διαγραφή λογ�
 settings-delete-monitor-free-account-dialog-cancel-button-label = Άλλαξα γνώμη, θέλω να επιστρέψω
 settings-delete-monitor-account-confirmation-toast-label-2 = Ο λογαριασμός σας στο { -brand-monitor } έχει πλέον διαγραφεί.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Απόρριψη
+
+## Monthly Monitor Report
+
+settings-alert-preferences-allow-monthly-monitor-report-title = Μηνιαία αναφορά { -brand-monitor }
+settings-alert-preferences-allow-monthly-monitor-report-subtitle = Μια μηνιαία ενημέρωση για τις νέες εκθέσεις, το τι έχει διορθωθεί και τι χρειάζεται την προσοχή σας.
+
+## Settings page redesign
+
+settings-tab-label-edit-info = Επεξεργασία πληροφοριών
+settings-tab-label-notifications = Ορισμός ειδοποιήσεων
+settings-tab-label-manage-account = Διαχείριση λογαριασμού
+settings-tab-subtitle-manage-account = Διαχειριστείτε τον λογαριασμό { -product-name } σας.
+settings-tab-notifications-marketing-title = Επικοινωνία μάρκετινγκ
+settings-tab-notifications-marketing-text = Περιοδικές ενημερώσεις σχετικά με το { -brand-monitor }, τη { -brand-mozilla } και τα άλλα προϊόντα ασφαλείας μας.
+settings-tab-notifications-marketing-link-label = Μεταβείτε στις ρυθμίσεις email της { -brand-mozilla }

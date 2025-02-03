@@ -5,9 +5,9 @@
 fix-flow-nav-high-risk-data-breaches = Tor-data risg uchel
 fix-flow-nav-leaked-passwords = Cyfrineiriau wedi'u gollwng
 fix-flow-nav-security-recommendations = Argymhellion diogelwch
-
 guided-resolution-flow-exit = Nôl i'r bwrdd gwaith
 guided-resolution-flow-next-arrow = Ymlaen i'r cam nesaf
+guided-resolution-flow-next-arrow-sub-step = Ymlaen i'r canlyniad nesaf
 guided-resolution-flow-step-navigation-label = Camau tywys
 
 # Celebration screens

@@ -417,9 +417,10 @@ async function getPlusSubscribersWaitingForMonthlyEmail(
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-async function getFreeSubscribersWaitingForMonthlyEmail(): Promise<
-  SubscriberRow[]
-> {
+async function getFreeSubscribersWaitingForMonthlyEmail(
+  batchSize: number,
+  countryCodes: string[],
+): Promise<SubscriberRow[]> {
   const flag = await getFeatureFlagData("MonthlyReportFreeUser");
   const accountCutOffDate = parseIso8601Datetime(
     process.env.MONTHLY_ACTIVITY_FREE_EMAIL_ACCOUNT_CUTOFF_DATE ??
@@ -438,6 +439,24 @@ async function getFreeSubscribersWaitingForMonthlyEmail(): Promise<
 
   let query = knex("subscribers")
     .select<SubscriberRow[]>("subscribers.*")
+    .select(
+      knex.raw(
+        `CASE
+        WHEN (fxa_profile_json->>'locale') ~ ',' THEN
+          CASE
+            WHEN split_part(fxa_profile_json->>'locale', ',', 1) ~ '-' THEN
+              split_part(split_part(fxa_profile_json->>'locale', ',', 1), '-', 2) -- Extract country code from first part
+            ELSE
+              split_part(fxa_profile_json->>'locale', ',', 1) -- Fallback to the language code
+          END
+        WHEN (fxa_profile_json->>'locale') ~ '-' THEN
+          split_part(fxa_profile_json->>'locale', '-', 2) -- Extract country code if present
+        ELSE
+          fxa_profile_json->>'locale' -- Fallback to the language code
+      END AS country_code`,
+      ),
+    )
+
     .leftJoin(
       "subscriber_email_preferences",
       "subscribers.id",
@@ -494,16 +513,17 @@ async function getFreeSubscribersWaitingForMonthlyEmail(): Promise<
     // https://github.com/knex/knex/issues/1881#issuecomment-275433906
     query = query.whereIn("subscribers.primary_email", flag.allow_list);
   }
-  // One thing to note as being absent from this query: a LIMIT clause.
-  // The reason for this is that we want to filter out people who had
-  // a language other than `en-US` set when signing up, but to do so,
-  // we need to parse the `accept-language` field, which we can only
-  // do after we have the query results. Thus, if we were to limit
-  // the result of this query, we would at some point end up filtering
-  // every returned row, and then never moving on to the rows after that.
-  const rows = await query;
 
-  return rows;
+  const wrappedQuery = knex
+    // @ts-ignore TODO MNTOR-3890 Move away from this approach and simplify query.
+    .from({ base_query: query }) // Use the existing query as a subquery
+    .select("*")
+    .whereIn("country_code", countryCodes)
+    .limit(batchSize);
+
+  const rows = await wrappedQuery;
+
+  return rows as SubscriberRow[];
 }
 /* c8 ignore stop */
 
@@ -531,6 +551,33 @@ async function markFirstDataBrokerRemovalFixedEmailAsJustSent(
 }
 
 /* c8 ignore stop */
+
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
+async function markChurnPreventionEmailAsJustSent(
+  subscriberId: SubscriberRow["id"],
+) {
+  const affectedSubscribers = await knex("subscribers")
+    .update({
+      // @ts-ignore knex.fn.now() results in it being set to a date,
+      // even if it's not typed as a JS date object:
+      churn_prevention_email_sent_at: knex.fn.now(),
+      // @ts-ignore knex.fn.now() results in it being set to a date,
+      // even if it's not typed as a JS date object:
+      updated_at: knex.fn.now(),
+    })
+    .where("id", subscriberId)
+    .returning("*");
+
+  if (affectedSubscribers.length !== 1) {
+    throw new Error(
+      `Attempted to mark 1 user as having just been sent the churn prevention email, but instead found [${affectedSubscribers.length}] matching its ID.`,
+    );
+  }
+}
+
+/* c8 ignore stop */
+
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
 async function markMonthlyActivityPlusEmailAsJustSent(
@@ -665,6 +712,7 @@ export {
   getPotentialSubscribersWaitingForFirstDataBrokerRemovalFixedEmail,
   getFreeSubscribersWaitingForMonthlyEmail,
   getPlusSubscribersWaitingForMonthlyEmail,
+  markChurnPreventionEmailAsJustSent,
   markFirstDataBrokerRemovalFixedEmailAsJustSent,
   markMonthlyActivityPlusEmailAsJustSent,
   deleteUnverifiedSubscribers,

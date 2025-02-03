@@ -7,6 +7,7 @@ fix-flow-nav-leaked-passwords = Mật khẩu bị lộ
 fix-flow-nav-security-recommendations = Đề xuất bảo mật
 guided-resolution-flow-exit = Quay lại trang tổng quan
 guided-resolution-flow-next-arrow = Chuyển sang bước tiếp theo
+guided-resolution-flow-next-arrow-sub-step = Đi đến kết quả tiếp theo
 guided-resolution-flow-step-navigation-label = Các bước hướng dẫn
 
 # Celebration screens

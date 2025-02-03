@@ -26,7 +26,10 @@ import { getCountryCode } from "../../../../../functions/server/getCountryCode";
 import { getExperimentationId } from "../../../../../functions/server/getExperimentationId";
 import { getExperiments } from "../../../../../functions/server/getExperiments";
 import { getLocale } from "../../../../../functions/universal/getLocale";
-import { getL10n } from "../../../../../functions/l10n/serverComponents";
+import {
+  getAcceptLangHeaderInServerComponents,
+  getL10n,
+} from "../../../../../functions/l10n/serverComponents";
 
 export interface WelcomeScanBody {
   success: boolean;
@@ -54,10 +57,13 @@ export async function POST(
 
   const eligible = await isEligibleForFreeScan(
     session.user,
-    getCountryCode(headers()),
+    getCountryCode(await headers()),
   );
   if (!eligible) {
-    throw new Error("User is not eligible for feature");
+    logger.warn("scan_created_warn", {
+      message: "User is not eligible for feature",
+    });
+    return NextResponse.json({ success: false }, { status: 422 });
   }
 
   const params: UserInfo = await req.json();
@@ -87,15 +93,15 @@ export async function POST(
     throw new Error(`User does not meet the age requirement: ${dateOfBirth}`);
   }
 
-  const experimentationId = getExperimentationId(session.user);
+  const experimentationId = await getExperimentationId(session.user);
   const experimentData = await getExperiments({
     experimentationId: experimentationId,
-    countryCode: getCountryCode(headers()),
-    locale: getLocale(getL10n()),
+    countryCode: getCountryCode(await headers()),
+    locale: getLocale(getL10n(await getAcceptLangHeaderInServerComponents())),
     previewMode: searchParams.get("nimbus_preview") === "true",
   });
   const optionalInfoExperimentData =
-    experimentData["welcome-scan-optional-info"];
+    experimentData["Features"]["welcome-scan-optional-info"];
 
   const profileData: CreateProfileRequest = {
     first_name: firstName,

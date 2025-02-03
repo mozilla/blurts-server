@@ -15,13 +15,14 @@ import { EmailUpdateCommOptionRequest } from "../../../../../../../api/v1/user/u
 import { useTelemetry } from "../../../../../../../hooks/useTelemetry";
 import { useRadioGroup } from "react-aria";
 import { VisuallyHidden } from "../../../../../../../components/server/VisuallyHidden";
-import { Button } from "../../../../../../../components/client/Button";
+import { TelemetryButton } from "../../../../../../../components/client/TelemetryButton";
 import styles from "./SettingsPanelNotifications.module.scss";
 import { SwitchInput } from "../../../../../../../components/client/SwitchInput";
 import { RadioInput } from "../../../../../../../components/client/RadioInput";
+import { CONST_URL_MOZILLA_BASKET } from "../../../../../../../../constants";
 
 export type SettingsPanelNotificationsProps = {
-  data: SubscriberEmailPreferencesOutput;
+  data?: SubscriberEmailPreferencesOutput;
   subscriber: SubscriberRow;
   user: Session["user"];
 };
@@ -29,7 +30,7 @@ export type SettingsPanelNotificationsProps = {
 export type NotificationSettingsProps = {
   user: Session["user"];
   subscriber: SubscriberRow;
-  data: SubscriberEmailPreferencesOutput;
+  data?: SubscriberEmailPreferencesOutput;
 };
 
 const EmailCommOption = {
@@ -51,9 +52,10 @@ export const NotificationsSettings = (props: NotificationSettingsProps) => {
   const breachAlertsEmailsAllowed = props.subscriber.all_emails_to_primary;
 
   // Extract monthly report preference from the right column
-  const monitorReportAllowed = hasPremium(props.user)
-    ? props.data.monthly_monitor_report
-    : props.data.monthly_monitor_report_free;
+  const monitorReportAllowed =
+    (hasPremium(props.user)
+      ? props.data?.monthly_monitor_report
+      : props.data?.monthly_monitor_report_free) ?? true;
 
   const defaultActivateAlertEmail =
     typeof breachAlertsEmailsAllowed === "boolean";
@@ -215,9 +217,21 @@ function SettingsPanelNotifications(props: SettingsPanelNotificationsProps) {
       <section>
         <h4>{l10n.getString("settings-tab-notifications-marketing-title")}</h4>
         <p>{l10n.getString("settings-tab-notifications-marketing-text")}</p>
-        <Button className={styles.link} variant="link" href="/">
+        <TelemetryButton
+          className={styles.link}
+          variant="link"
+          href={`${CONST_URL_MOZILLA_BASKET}/fxa/?email=${props.subscriber.primary_email}`}
+          target="_blank"
+          event={{
+            module: "link",
+            name: "click",
+            data: {
+              link_id: "clicked_marketing_email_settings",
+            },
+          }}
+        >
           {l10n.getString("settings-tab-notifications-marketing-link-label")}
-        </Button>
+        </TelemetryButton>
       </section>
     </>
   );

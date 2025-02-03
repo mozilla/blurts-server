@@ -15,8 +15,6 @@ settings-alert-preferences-allow-breach-alerts-title = Øjeblikkelige advarsler 
 settings-alert-preferences-allow-breach-alerts-subtitle = Disse advarsler sendes straks, når en datalæk er opdaget
 settings-alert-preferences-option-one = Send alle advarsler om datalæk til den berørte mailadresse
 settings-alert-preferences-option-two = Send alle advarsler om datalæk til den primære mailadresse
-settings-alert-preferences-allow-monthly-monitor-report-title = Månedlig { -brand-monitor }-rapport
-settings-alert-preferences-allow-monthly-monitor-report-subtitle = En månedlig opdatering af nye eksponeringer, hvad der er blevet løst, og hvad der kræver din opmærksomhed.
 
 ## Monitored email addresses
 
@@ -58,3 +56,18 @@ settings-delete-monitor-free-account-dialog-cta-label = Slet konto
 settings-delete-monitor-free-account-dialog-cancel-button-label = Jag har skiftet mening - gå tilbage
 settings-delete-monitor-account-confirmation-toast-label-2 = Din { -brand-monitor }-konto er nu slettet.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Afvis
+
+## Monthly Monitor Report
+
+settings-alert-preferences-allow-monthly-monitor-report-title = Månedlig { -brand-monitor }-rapport
+settings-alert-preferences-allow-monthly-monitor-report-subtitle = En månedlig opdatering af nye eksponeringer, hvad der er blevet løst, og hvad der kræver din opmærksomhed.
+
+## Settings page redesign
+
+settings-tab-label-edit-info = Rediger dine oplysninger
+settings-tab-label-notifications = Indstil notifikationer
+settings-tab-label-manage-account = Håndter konto
+settings-tab-subtitle-manage-account = Håndter din { -product-name }-konto.
+settings-tab-notifications-marketing-title = Markedsføring
+settings-tab-notifications-marketing-text = Periodiske opdateringer om { -brand-monitor }, { -brand-mozilla } og vores andre sikkerhedsprodukter.
+settings-tab-notifications-marketing-link-label = Gå til indstillinger for mails fra { -brand-mozilla }

@@ -83,7 +83,6 @@ function ComboBox(props: ComboBoxProps) {
           </div>
         )}
       </div>
-
       {state.isOpen && (
         <Popover
           offset={8}

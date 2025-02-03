@@ -7,15 +7,19 @@ on:
       environment:
         description: 'Environment to run LHCI against'
         required: false
-        default: 'prod'
+        default: 'stage'
         type: choice
         options:
           - stage
           - prod
 jobs:
   lhci:
-    name: Lighthouse Report  - ${{ inputs.environment != null && inputs.environment || 'prod' }}
+    name: Lighthouse Report  - ${{ inputs.environment != null && inputs.environment || 'stage' }}
     runs-on: ubuntu-latest
+    environment: ${{ inputs.environment != null && inputs.environment || 'stage' }}
+    permissions:
+      contents: read
+      id-token: write
     steps:
       - uses: actions/checkout@v4
       - name: Use Node.js 20.9.x
@@ -28,5 +32,18 @@ jobs:
           npm run lighthouse
         env:
           LIGHTHOUSE_COLLECT_URL: ${{ secrets.LIGHTHOUSE_COLLECT_URL }}
+      - name: Build cronjobs
+        run: |
+          npm ci
+          npm run build-cronjobs
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.GC_LIGHTHOUSE_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GC_LIGHTHOUSE_SERVICE_ACCOUNT }}
       - name: Report results
         run: npm run cron:report-lighthouse-results
+        env:
+          BQ_LIGHTHOUSE_PROJECT: ${{ secrets.BQ_LIGHTHOUSE_PROJECT }}
+          BQ_LIGHTHOUSE_DATASET: ${{ secrets.BQ_LIGHTHOUSE_DATASET }}
+          BQ_LIGHTHOUSE_TABLE: ${{ secrets.BQ_LIGHTHOUSE_TABLE }}

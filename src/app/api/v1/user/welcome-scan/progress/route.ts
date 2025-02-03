@@ -13,8 +13,8 @@ import {
 } from "../../../../../../db/tables/subscribers";
 
 import {
-  getLatestOnerepScanResults,
   addOnerepScanResults,
+  getScanResultsWithBroker,
 } from "../../../../../../db/tables/onerep_scans";
 import {
   ListScanResultsResponse,
@@ -22,6 +22,7 @@ import {
   getScanDetails,
   getAllScanResults,
 } from "../../../../../functions/server/onerep";
+import { hasPremium } from "../../../../../functions/universal/user";
 
 export interface ScanProgressBody {
   success: boolean;
@@ -46,7 +47,10 @@ export async function GET(
       }
       const profileId = await getOnerepProfileId(subscriber.id);
 
-      const latestScan = await getLatestOnerepScanResults(profileId);
+      const latestScan = await getScanResultsWithBroker(
+        profileId,
+        hasPremium(session.user),
+      );
       const latestScanId = latestScan.scan?.onerep_scan_id;
 
       if (

@@ -1,24 +1,25 @@
-@import "../../../../../../../../../tokens";
+@use "../../../../../../../../../tokens";
 
 .dataBrokerInformationWrapper {
   .exposureCardWrapper {
-    margin-top: $spacing-md;
-    padding-bottom: $spacing-lg;
+    margin-top: tokens.$spacing-md;
+    padding-bottom: tokens.$spacing-lg;
 
     .exposureCard {
       display: flex;
       flex-direction: column;
-      background-color: $color-white;
-      border: 2px solid rgba($color-purple-70, 0.2);
-      border-radius: $border-radius-lg;
-      padding: $layout-sm $layout-sm $layout-xs $layout-sm;
+      background-color: tokens.$color-white;
+      border: 2px solid rgba(tokens.$color-purple-70, 0.2);
+      border-radius: tokens.$border-radius-lg;
+      padding: tokens.$layout-sm tokens.$layout-sm tokens.$layout-xs
+        tokens.$layout-sm;
 
       .dataClassesList {
         justify-content: space-between;
         margin-left: 0;
         display: grid;
         grid-template-columns: 1fr;
-        grid-row-gap: $spacing-sm;
+        grid-row-gap: tokens.$spacing-sm;
         transition: opacity 0.35s ease-in-out;
         opacity: 1;
 
@@ -26,38 +27,38 @@
           opacity: 0;
         }
 
-        @media screen and (min-width: $screen-md) {
+        @media screen and (min-width: tokens.$screen-md) {
           grid-template-columns: 1fr 1fr 1fr;
-          gap: $spacing-sm;
+          gap: tokens.$spacing-sm;
         }
 
-        @media screen and (min-width: $screen-lg) {
+        @media screen and (min-width: tokens.$screen-lg) {
           display: flex;
           flex-direction: row;
           align-items: flex-start;
-          gap: $layout-xs;
+          gap: tokens.$layout-xs;
           flex-wrap: wrap;
           justify-content: flex-start;
         }
       }
 
       .buttonsWrapper {
-        margin-top: $spacing-lg;
-        border-top: 2px solid $color-grey-10;
-        padding-top: $spacing-lg;
+        margin-top: tokens.$spacing-lg;
+        border-top: 2px solid tokens.$color-grey-10;
+        padding-top: tokens.$spacing-lg;
         display: flex;
-        gap: $spacing-sm;
+        gap: tokens.$spacing-sm;
       }
 
       .estimatedTime {
-        @include estimated-time;
-        padding-top: $spacing-sm;
+        @include tokens.estimated-time;
+        padding-top: tokens.$spacing-sm;
       }
     }
   }
 
   .header {
-    font: $text-body-lg;
+    font: tokens.$text-body-lg;
     font-weight: 700;
     transition: opacity 0.35s ease-in-out;
     opacity: 1;
@@ -74,44 +75,44 @@
     cursor: pointer;
   }
   .headerRemovalGuide {
-    padding-top: $spacing-lg;
-    font: $text-body-xl;
+    padding-top: tokens.$spacing-lg;
+    font: tokens.$text-body-xl;
     font-weight: 700;
   }
 
   .buttonWrapper {
     display: flex;
     justify-content: center;
-    padding-top: $spacing-lg;
+    padding-top: tokens.$spacing-lg;
   }
 }
 
 .removalContentSection {
-  margin-top: $layout-md;
+  margin-top: tokens.$layout-md;
 
   dt {
-    font: $text-body-lg;
+    font: tokens.$text-body-lg;
     font-weight: 600;
 
     &.removalGuideInstructions {
-      font: $text-body-md;
+      font: tokens.$text-body-md;
       font-weight: 700;
     }
   }
 
   dd {
-    padding-top: $spacing-sm;
+    padding-top: tokens.$spacing-sm;
   }
 
   ol {
-    padding-top: $spacing-sm;
+    padding-top: tokens.$spacing-sm;
 
     li {
-      margin-bottom: $spacing-xs;
+      margin-bottom: tokens.$spacing-xs;
     }
   }
 
   button {
-    margin-top: $spacing-lg;
+    margin-top: tokens.$spacing-lg;
   }
 }

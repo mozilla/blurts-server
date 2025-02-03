@@ -9,6 +9,7 @@ export class SettingsPage {
   readonly settingsHeader: Locator;
   readonly emailPrefHeader: Locator;
   readonly emailHeader: Locator;
+  readonly tabNotifications: Locator;
   readonly deleteHeader: Locator;
   readonly deactivateHeader: Locator;
   readonly addEmailButton: Locator;
@@ -25,6 +26,9 @@ export class SettingsPage {
     this.settingsHeader = page.locator("h2").first();
     this.emailPrefHeader = page.getByText(/Email preferences/);
     this.emailHeader = page.getByText(/Monitored email addresses/);
+    this.tabNotifications = page.getByRole("tab", {
+      name: "Set notifications",
+    });
     this.deleteHeader = page.getByText(/Delete ⁨Monitor⁩ account/);
     this.deactivateHeader = page.getByText(/Deactivate account/);
     this.addEmailButton = page.getByText(/Add email address/);

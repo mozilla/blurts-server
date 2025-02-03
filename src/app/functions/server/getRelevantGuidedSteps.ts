@@ -6,7 +6,7 @@ import { Session } from "next-auth";
 import { LatestOnerepScanData } from "../../../db/tables/onerep_scans";
 import { SubscriberBreach } from "../../../utils/subscriberBreaches";
 import { BreachDataTypes, HighRiskDataTypes } from "../universal/breach";
-import { hasPremium } from "../universal/user";
+import { FeatureFlagName } from "../../../db/tables/featureFlags";
 
 export type StepDeterminationData = {
   user: Session["user"];
@@ -83,10 +83,11 @@ export function isGuidedResolutionInProgress(stepId: StepLink["id"]) {
 
 export function getNextGuidedStep(
   data: StepDeterminationData,
+  enabledFeatureFlags: FeatureFlagName[],
   afterStep?: StepLink["id"],
 ): StepLink {
   // Resisting the urge to add a state machine... ^.^
-  const stepLinkStatuses = getGuidedStepStatuses(data);
+  const stepLinkStatuses = getGuidedStepStatuses(data, enabledFeatureFlags);
   const fromIndex =
     stepLinkStatuses.findIndex((step) => step.id === afterStep) + 1;
   const nextStep = stepLinkStatuses.slice(fromIndex).find((stepLink) => {
@@ -117,17 +118,21 @@ export function getNextGuidedStep(
 
 export function getGuidedStepStatuses(
   data: StepDeterminationData,
+  enabledFeatureFlags?: FeatureFlagName[],
 ): StepLinkWithStatus[] {
-  return stepLinks.map((stepLink) => getStepWithStatus(data, stepLink));
+  return stepLinks.map((stepLink) =>
+    getStepWithStatus(data, stepLink, enabledFeatureFlags),
+  );
 }
 
 function getStepWithStatus(
   data: StepDeterminationData,
   stepLink: StepLink,
+  enabledFeatureFlags?: FeatureFlagName[],
 ): StepLinkWithStatus {
   return {
     ...stepLink,
-    eligible: isEligibleForStep(data, stepLink.id),
+    eligible: isEligibleForStep(data, stepLink.id, enabledFeatureFlags),
     completed: hasCompletedStep(data, stepLink.id),
   };
 }
@@ -135,14 +140,28 @@ function getStepWithStatus(
 export function isEligibleForStep(
   data: StepDeterminationData,
   stepId: StepLink["id"],
+  enabledFeatureFlags?: FeatureFlagName[],
 ): boolean {
   // Only premium users can see the manual data broker removal flow, once they have run a scan
-  if (stepId === "DataBrokerManualRemoval") {
+  /* c8 ignore start */
+  if (
+    // TODO: MNTOR-3886 - Remove EnableRemovalUnderMaintenanceStep feature flag
+    enabledFeatureFlags?.includes("EnableRemovalUnderMaintenanceStep") &&
+    stepId === "DataBrokerManualRemoval"
+  ) {
     return (
-      hasPremium(data.user) &&
-      typeof data.user.subscriber?.onerep_profile_id === "number"
+      data.latestScanData?.results?.some((result) => {
+        return (
+          result.broker_status === "removal_under_maintenance" &&
+          result.status !== "removed" &&
+          !result.manually_resolved
+        );
+        // MNTOR-3892
+        // Already covered by unit test
+      }) ?? false
     );
   }
+  /* c8 ignore stop */
 
   if (stepId === "Scan") {
     return data.countryCode === "us";
@@ -197,9 +216,15 @@ export function hasCompletedStepSection(
     | "LeakedPasswords"
     | "SecurityTips"
     | "DataBrokerManualRemoval",
+  enabledFeatureFlags?: FeatureFlagName[],
 ): boolean {
-  /* c8 ignore next 3 */
-  if (section === "DataBrokerManualRemoval") {
+  /* c8 ignore next 8 */
+  // Already covered by unit tests
+  if (
+    // TODO: MNTOR-3886 - Remove EnableRemovalUnderMaintenanceStep feature flag
+    enabledFeatureFlags?.includes("EnableRemovalUnderMaintenanceStep") &&
+    section === "DataBrokerManualRemoval"
+  ) {
     return hasCompletedStep(data, "DataBrokerManualRemoval");
   }
   /* c8 ignore next 5 */
@@ -242,17 +267,26 @@ export function hasCompletedStepSection(
 export function hasCompletedStep(
   data: StepDeterminationData,
   stepId: StepLink["id"],
+  enabledFeatureFlags?: FeatureFlagName[],
 ): boolean {
-  if (stepId === "DataBrokerManualRemoval") {
-    const hasResolvedAllScanResults =
-      data.latestScanData?.results
-        ?.filter(
-          (scanResult) => scanResult.status === "removal_under_maintenance",
-        )
-        .every((scanResult) => scanResult.manually_resolved) ?? false;
-    return hasResolvedAllScanResults;
+  /* c8 ignore start */
+  if (
+    // TODO: MNTOR-3886 - Remove EnableRemovalUnderMaintenanceStep feature flag
+    enabledFeatureFlags?.includes("EnableRemovalUnderMaintenanceStep") &&
+    stepId === "DataBrokerManualRemoval"
+  ) {
+    return (
+      data.latestScanData?.results?.every(
+        (result) =>
+          !(result.broker_status === "removal_under_maintenance") ||
+          result.status === "removed" ||
+          result.manually_resolved,
+        // MNTOR-3892
+        // Already covered by unit tests
+      ) ?? false
+    );
   }
-
+  /* c8 ignore stop */
   if (stepId === "Scan") {
     const hasRunScan =
       typeof data.latestScanData?.scan === "object" &&

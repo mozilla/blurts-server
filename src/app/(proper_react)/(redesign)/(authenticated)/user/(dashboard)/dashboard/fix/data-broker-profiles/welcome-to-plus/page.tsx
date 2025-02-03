@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { getLatestOnerepScanResults } from "../../../../../../../../../../db/tables/onerep_scans";
+import { getScanResultsWithBroker } from "../../../../../../../../../../db/tables/onerep_scans";
 import { headers } from "next/headers";
 import { getServerSession } from "../../../../../../../../../functions/server/getServerSession";
 import { getOnerepProfileId } from "../../../../../../../../../../db/tables/subscribers";
@@ -14,9 +14,14 @@ import { StepDeterminationData } from "../../../../../../../../../functions/serv
 import { getCountryCode } from "../../../../../../../../../functions/server/getCountryCode";
 import { activateAndOptoutProfile } from "../../../../../../../../../functions/server/onerep";
 import { logger } from "../../../../../../../../../functions/server/logging";
-import { getL10n } from "../../../../../../../../../functions/l10n/serverComponents";
+import {
+  getAcceptLangHeaderInServerComponents,
+  getL10n,
+} from "../../../../../../../../../functions/l10n/serverComponents";
 import { refreshStoredScanResults } from "../../../../../../../../../functions/server/refreshStoredScanResults";
 import { checkSession } from "../../../../../../../../../functions/server/checkSession";
+import { hasPremium } from "../../../../../../../../../functions/universal/user";
+import { getEnabledFeatureFlags } from "../../../../../../../../../../db/tables/featureFlags";
 
 export default async function WelcomeToPlusPage() {
   const session = await getServerSession();
@@ -33,14 +38,21 @@ export default async function WelcomeToPlusPage() {
     });
   }
 
+  const enabledFeatureFlags = await getEnabledFeatureFlags({
+    email: session.user.email,
+  });
+
   const profileId = await getOnerepProfileId(session.user.subscriber.id);
   if (profileId === null) {
     // If the user subscribed to Plus before running a scan, have them run one now:
     redirect("/user/welcome");
   }
 
-  const scanData = await getLatestOnerepScanResults(profileId);
-  const countryCode = getCountryCode(headers());
+  const scanData = await getScanResultsWithBroker(
+    profileId,
+    hasPremium(session.user),
+  );
+  const countryCode = getCountryCode(await headers());
   const subBreaches = await getSubscriberBreaches({
     fxaUid: session.user.subscriber.fxa_uid,
     countryCode,
@@ -71,7 +83,8 @@ export default async function WelcomeToPlusPage() {
     <WelcomeToPlusView
       data={data}
       subscriberEmails={subscriberEmails}
-      l10n={getL10n()}
+      l10n={getL10n(await getAcceptLangHeaderInServerComponents())}
+      enabledFeatureFlags={enabledFeatureFlags}
     />
   );
 }

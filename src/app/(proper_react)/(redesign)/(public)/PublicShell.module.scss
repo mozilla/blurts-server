@@ -1,4 +1,4 @@
-@import "../../../tokens";
+@use "../../../tokens";
 
 .wrapper {
   display: flex;
@@ -6,17 +6,17 @@
   height: 100%;
 
   // See https://fkhadra.github.io/react-toastify/how-to-style#override-css-variabless
-  --toastify-color-light: #{$color-white};
-  --toastify-color-dark: #{$color-grey-50};
-  --toastify-color-info: #{$color-blue-50};
-  --toastify-color-success: #{$color-green-50};
-  --toastify-color-warning: #{$color-yellow-50};
-  --toastify-color-error: #{$color-red-60};
+  --toastify-color-light: #{tokens.$color-white};
+  --toastify-color-dark: #{tokens.$color-grey-50};
+  --toastify-color-info: #{tokens.$color-blue-50};
+  --toastify-color-success: #{tokens.$color-green-50};
+  --toastify-color-warning: #{tokens.$color-yellow-50};
+  --toastify-color-error: #{tokens.$color-red-60};
 
-  --toastify-text-color-info: #{$color-white};
-  --toastify-text-color-success: #{$color-grey-50};
-  --toastify-text-color-warning: #{$color-grey-50};
-  --toastify-text-color-error: #{$color-white};
+  --toastify-text-color-info: #{tokens.$color-white};
+  --toastify-text-color-success: #{tokens.$color-grey-50};
+  --toastify-text-color-warning: #{tokens.$color-grey-50};
+  --toastify-text-color-error: #{tokens.$color-white};
 
   --toastify-toast-min-height: $layout-md;
   --toastify-toast-max-height: $layout-md;
@@ -26,26 +26,49 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: $spacing-md;
-  background-color: $color-white;
-  gap: $spacing-lg;
+  padding: tokens.$spacing-lg tokens.$layout-xl;
+  background-color: tokens.$color-white;
+  gap: tokens.$spacing-lg;
 
   h1 {
-    font: $text-title-3xs;
+    font: tokens.$text-title-3xs;
   }
 
   .logo {
     max-width: 250px;
     width: 100%;
-    height: auto;
+    max-height: 2rem;
   }
 
   button {
     flex-shrink: 0;
   }
 
-  @media screen and (min-width: $screen-md) {
-    padding: $spacing-lg $layout-xl;
+  &.navDesktop {
+    justify-content: flex-end;
+
+    h1 {
+      margin-right: auto;
+    }
+
+    ul {
+      display: flex;
+
+      a {
+        color: tokens.$color-black;
+        text-decoration: none;
+        font-weight: 600;
+        padding: tokens.$spacing-sm tokens.$spacing-md;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    @media screen and (max-width: tokens.$screen-xl) {
+      display: none;
+    }
   }
 }
 

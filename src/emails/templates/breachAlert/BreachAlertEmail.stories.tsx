@@ -21,7 +21,7 @@ import { getDashboardSummary } from "../../../app/functions/server/dashboard";
 const meta: Meta<FC<RedesignedBreachAlertEmailProps>> = {
   title: "Emails/Breach alert",
   component: (props: RedesignedBreachAlertEmailProps) => (
-    <StorybookEmailRenderer>
+    <StorybookEmailRenderer plainTextVersion={null}>
       <RedesignedBreachAlertEmail {...props} />
     </StorybookEmailRenderer>
   ),

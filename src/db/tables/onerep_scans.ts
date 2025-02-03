@@ -14,17 +14,23 @@ import {
   OnerepScanResultRow,
   OnerepScanRow,
   SubscriberRow,
+  OnerepScanResultDataBrokerRow,
 } from "knex/types/tables";
 import { RemovalStatus } from "../../app/functions/universal/scanResult.js";
-import { getQaCustomBrokers, getQaToggleRow } from "./qa_customs.ts";
-import { DataBrokerRow } from "../../knex-tables";
 import { CONST_DAY_MILLISECONDS } from "../../constants.ts";
+import { getQaCustomBrokers, getQaToggleRow } from "./qa_customs.ts";
 
 const knex = createDbConnection();
 
 export interface LatestOnerepScanData {
   scan: OnerepScanRow | null;
-  results: OnerepScanResultRow[] | (OnerepScanResultRow & DataBrokerRow)[];
+  results: OnerepScanResultDataBrokerRow[];
+}
+
+/** @deprecated This has been replaced by the LatestOnerepScanData type which only recognizes OnerepScanResultDataBrokerRow as the result type */
+export interface LatestOnerepScanDataOld {
+  scan: OnerepScanRow | null;
+  results: OnerepScanResultRow[];
 }
 
 async function getAllScansForProfile(
@@ -145,9 +151,13 @@ async function getLatestOnerepScan(
 /*
 Note: please, don't write the results of this function back to the database!
 */
+/**
+ * @param onerepProfileId
+ * @deprecated This has been replaced by getScanResultsWithBroker
+ */
 async function getLatestOnerepScanResults(
   onerepProfileId: number | null,
-): Promise<LatestOnerepScanData> {
+): Promise<LatestOnerepScanDataOld> {
   const scan = await getLatestOnerepScan(onerepProfileId);
 
   let results: OnerepScanResultRow[] = [];
@@ -408,23 +418,27 @@ async function getEmailForProfile(onerepProfileId: number) {
 
 async function getScanResultsWithBrokerUnderMaintenance(
   onerepProfileId: number | null,
-) {
+): Promise<LatestOnerepScanData> {
   if (onerepProfileId === null) {
-    return null;
+    return { results: [], scan: null };
   }
 
-  let scanResults = await knex("onerep_scan_results as sr")
+  let scanResults: OnerepScanResultDataBrokerRow[] = await knex(
+    "onerep_scan_results as sr",
+  )
     .select(
       "sr.*",
       "s.*",
       "sr.status as scan_result_status", // rename to avoid collision
       "db.status as broker_status", // rename to avoid collision
     )
+    .distinctOn("link")
     .innerJoin("onerep_scans as s", "sr.onerep_scan_id", "s.onerep_scan_id")
     .where("s.onerep_profile_id", onerepProfileId)
     .andWhere("sr.manually_resolved", "false")
     .andWhereNot("sr.status", "removed")
     .join("onerep_data_brokers as db", "sr.data_broker", "db.data_broker")
+    .orderBy("link")
     .orderBy("sr.onerep_scan_result_id");
 
   scanResults = scanResults.filter(
@@ -437,13 +451,47 @@ async function getScanResultsWithBrokerUnderMaintenance(
   return { results: scanResults } as LatestOnerepScanData;
 }
 
+async function getScanResultsWithBroker(
+  onerepProfileId: number | null,
+  hasPremium: boolean | null,
+): Promise<LatestOnerepScanData> {
+  if (onerepProfileId === null) {
+    return {
+      scan: null,
+      results: [],
+    } as LatestOnerepScanData;
+  }
+
+  const scan = await getLatestOnerepScan(onerepProfileId);
+  let scanResults: OnerepScanResultDataBrokerRow[] | OnerepScanResultRow[] = [];
+
+  if (hasPremium) {
+    scanResults = await knex("onerep_scan_results as sr")
+      .select(
+        "sr.*",
+        "s.*",
+        "sr.status as scan_result_status", // rename to avoid collision
+        "db.status as broker_status", // rename to avoid collision
+      )
+      .distinctOn("link")
+      .innerJoin("onerep_scans as s", "sr.onerep_scan_id", "s.onerep_scan_id")
+      .where("s.onerep_profile_id", onerepProfileId)
+      .join("onerep_data_brokers as db", "sr.data_broker", "db.data_broker")
+      .orderBy("link")
+      .orderBy("sr.onerep_scan_result_id");
+  } else {
+    scanResults = (await getLatestOnerepScanResults(onerepProfileId)).results;
+  }
+
+  return { scan: scan ?? null, results: scanResults } as LatestOnerepScanData;
+}
+
 export {
   getAllScansForProfile,
   getLatestScanForProfileByReason,
   getScanResults,
   getLatestOnerepScan,
   getAllScanResults,
-  getLatestOnerepScanResults,
   setOnerepProfileId,
   setOnerepScan,
   addOnerepScanResults,
@@ -456,4 +504,7 @@ export {
   deleteSomeScansForProfile,
   getEmailForProfile,
   getScanResultsWithBrokerUnderMaintenance,
+  getScanResultsWithBroker,
+  /** @deprecated This has been replaced by getScanResultsWithBroker */
+  getLatestOnerepScanResults,
 };

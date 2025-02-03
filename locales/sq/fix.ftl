@@ -5,9 +5,9 @@
 fix-flow-nav-high-risk-data-breaches = Cenime të dhënash me rrezik të madh
 fix-flow-nav-leaked-passwords = Fjalëkalime të rrjedhur
 fix-flow-nav-security-recommendations = Rekomandime sigurie
-
 guided-resolution-flow-exit = Kthehuni te pulti
 guided-resolution-flow-next-arrow = Kaloni te hapi pasues
+guided-resolution-flow-next-arrow-sub-step = Kaloni te përfundimi pasues
 guided-resolution-flow-step-navigation-label = Hapa me drejtim
 
 # Celebration screens

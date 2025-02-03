@@ -9,14 +9,12 @@ settings-page-title = Nastavenia { -product-short-name(case: "gen") }
 
 ## Breach alert preferences
 
-settings-alert-email-preferences-title = Predvoľby e-mailov
+settings-alert-email-preferences-title = Predvoľby e‑mailov
 settings-alert-email-preferences-subtitle = Povedzte nám, aké e‑maily chcete dostávať.
 settings-alert-preferences-allow-breach-alerts-title = Okamžité upozornenia na únik
 settings-alert-preferences-allow-breach-alerts-subtitle = Tieto upozornenia sa odosielajú okamžite po zistení úniku údajov
 settings-alert-preferences-option-one = Upozornenia na únik údajov posielať na dotknutú e‑mailovú adresu
 settings-alert-preferences-option-two = Všetky upozornenia na únik údajov posielať na hlavnú e‑mailovú adresu
-settings-alert-preferences-allow-monthly-monitor-report-title = Mesačný prehľad { -brand-monitor(case: "gen") }
-settings-alert-preferences-allow-monthly-monitor-report-subtitle = Mesačný prehľad nových únikov, toho, čo bolo opravené a čo si vyžaduje vašu pozornosť.
 
 ## Monitored email addresses
 
@@ -51,12 +49,6 @@ settings-email-number-of-breaches-info =
        *[other] Vyskytuje sa v { $breachCount } známych únikoch.
     }
 
-## Deactivate account
-
-settings-deactivate-account-title = Deaktivovať účet
-settings-deactivate-account-info-2 = { -product-short-name } môžete deaktivovať odstránením svojho { -brand-mozilla-account(case: "gen", capitalization: "lower") }.
-settings-fxa-link-label-3 = Prejsť do Nastavení { -brand-mozilla-account(case: "gen", capitalization: "lowe") }
-
 ## Delete Monitor account
 
 settings-delete-monitor-free-account-title = Odstrániť účet služby { -brand-monitor }
@@ -68,3 +60,18 @@ settings-delete-monitor-free-account-dialog-cta-label = Odstrániť účet
 settings-delete-monitor-free-account-dialog-cancel-button-label = Rozmyslel som si to
 settings-delete-monitor-account-confirmation-toast-label-2 = Váš účet služby { -brand-monitor } je teraz odstránený.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Zavrieť
+
+## Monthly Monitor Report
+
+settings-alert-preferences-allow-monthly-monitor-report-title = Mesačný prehľad { -brand-monitor(case: "gen") }
+settings-alert-preferences-allow-monthly-monitor-report-subtitle = Mesačný prehľad nových únikov, toho, čo bolo opravené a čo si vyžaduje vašu pozornosť.
+
+## Settings page redesign
+
+settings-tab-label-edit-info = Upravte svoje informácie
+settings-tab-label-notifications = Nastaviť upozornenia
+settings-tab-label-manage-account = Spravovať účet
+settings-tab-subtitle-manage-account = Spravujte svoj účet služby { -product-name }.
+settings-tab-notifications-marketing-title = Marketingová komunikácia
+settings-tab-notifications-marketing-text = Pravidelné aktualizácie o službe { -brand-monitor }, { -brand-mozilla(case: "loc") } a našich ďalších bezpečnostných produktoch.
+settings-tab-notifications-marketing-link-label = Prejsť na nastavení e‑mailov od { -brand-mozilla(case: "gen") }

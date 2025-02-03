@@ -1,40 +1,40 @@
-@import "../../tokens";
+@use "../../tokens";
 
 .pillWrapper {
-  font: $text-body-2xs;
+  font: tokens.$text-body-2xs;
   display: inline-block;
   line-height: 1;
   text-align: center;
 
-  @media screen and (min-width: $screen-sm) {
-    font: $text-body-xs;
+  @media screen and (min-width: tokens.$screen-sm) {
+    font: tokens.$text-body-xs;
     min-width: 145px; // keep the width fixed
   }
 
   .pill {
-    padding: $spacing-xs $spacing-sm;
-    border-radius: $border-radius-sm;
+    padding: tokens.$spacing-xs tokens.$spacing-sm;
+    border-radius: tokens.$border-radius-sm;
     font-weight: 600;
 
-    @media screen and (min-width: $screen-sm) {
-      padding: $spacing-xs 0;
+    @media screen and (min-width: tokens.$screen-sm) {
+      padding: tokens.$spacing-xs 0;
     }
 
     &.actionNeeded {
-      background: $color-red-10;
+      background: tokens.$color-red-10;
     }
 
     &.requestedRemoval {
-      background: $color-violet-10;
+      background: tokens.$color-violet-10;
     }
 
     &.inProgress {
-      background: $color-blue-05;
+      background: tokens.$color-blue-05;
     }
 
     &.removed,
     &.fixed {
-      background: $color-green-20;
+      background: tokens.$color-green-20;
     }
   }
 }

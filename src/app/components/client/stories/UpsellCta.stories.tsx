@@ -38,7 +38,7 @@ const UpsellCtaWrapper = (props: UpsellCtaWrapperProps) => {
             subscriptionBillingAmount={subscriptionBillingAmount}
             lastScanDate={new Date(Date.UTC(1998, 2, 31))}
             experimentData={{
-              ...defaultExperimentData,
+              ...defaultExperimentData["Features"],
               "last-scan-date": {
                 enabled: true,
               },

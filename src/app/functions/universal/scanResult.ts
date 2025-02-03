@@ -8,12 +8,10 @@ export type RemovalStatus =
   | "new"
   | "optout_in_progress"
   | "waiting_for_verification"
-  | "removed"
-  | "removal_under_maintenance";
+  | "removed";
 export const RemovalStatusMap = {
   New: "new",
   OptOutInProgress: "optout_in_progress",
   WaitingForVerification: "waiting_for_verification",
   Removed: "removed",
-  RemovalUnderMaintenance: "removal_under_maintenance",
 };

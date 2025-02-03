@@ -2,7 +2,11 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { OnerepScanResultRow, SubscriberRow } from "knex/types/tables";
+import {
+  OnerepScanResultDataBrokerRow,
+  OnerepScanResultRow,
+  SubscriberRow,
+} from "knex/types/tables";
 import {
   getPotentialSubscribersWaitingForFirstDataBrokerRemovalFixedEmail,
   markFirstDataBrokerRemovalFixedEmailAsJustSent,
@@ -13,11 +17,12 @@ import { FirstDataBrokerRemovalFixed } from "../../emails/templates/firstDataBro
 import { getCronjobL10n } from "../../app/functions/l10n/cronjobs";
 import { sanitizeSubscriberRow } from "../../app/functions/server/sanitize";
 import { refreshStoredScanResults } from "../../app/functions/server/refreshStoredScanResults";
-import { getLatestOnerepScanResults } from "../../db/tables/onerep_scans";
+import { getScanResultsWithBroker } from "../../db/tables/onerep_scans";
+import { hasPremium } from "../../app/functions/universal/user";
 
 type SubscriberFirstRemovedScanResult = {
   subscriber: SubscriberRow;
-  firstRemovedScanResult: OnerepScanResultRow;
+  firstRemovedScanResult: OnerepScanResultDataBrokerRow;
 };
 
 function isFulfilledResult(
@@ -54,8 +59,9 @@ async function run() {
           if (subscriber.onerep_profile_id !== null) {
             await refreshStoredScanResults(subscriber.onerep_profile_id);
           }
-          const latestScan = await getLatestOnerepScanResults(
+          const latestScan = await getScanResultsWithBroker(
             subscriber.onerep_profile_id,
+            hasPremium(subscriber),
           );
 
           let firstRemovedScanResult = null;
@@ -127,7 +133,7 @@ async function sendFirstDataBrokerRemovalFixedActivityEmail(
   await sendEmail(
     sanitizedSubscriber.primary_email,
     subject,
-    renderEmail(
+    await renderEmail(
       <FirstDataBrokerRemovalFixed
         data={{
           dataBrokerName: scanResult.data_broker,

@@ -22,7 +22,7 @@ import { onRemoveEmail } from "../actions";
 
 export type SettingsPanelEditInfoProps = {
   breachCountByEmailAddress: Record<string, number>;
-  data: SubscriberEmailPreferencesOutput;
+  data?: SubscriberEmailPreferencesOutput;
   emailAddresses: SanitizedEmailAddressRow[];
   subscriber: SubscriberRow;
   user: Session["user"];
@@ -90,7 +90,7 @@ function MonitoredEmail(props: {
             }}
           >
             {l10n.getString("settings-resend-email-verification-link")}
-            {!isVerificationEmailResent && (
+            {isVerificationEmailResent && (
               <CheckIcon alt="" width={14} height={14} />
             )}
           </Button>

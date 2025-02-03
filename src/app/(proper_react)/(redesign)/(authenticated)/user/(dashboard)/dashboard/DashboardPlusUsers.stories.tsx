@@ -4,7 +4,10 @@
 
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { OnerepScanResultRow, OnerepScanRow } from "knex/types/tables";
+import {
+  OnerepScanResultDataBrokerRow,
+  OnerepScanRow,
+} from "knex/types/tables";
 import { faker } from "@faker-js/faker";
 import { View as DashboardEl } from "./View";
 import { Shell } from "../../../../Shell";
@@ -58,6 +61,8 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
   });
 
   let breaches: SubscriberBreach[] = [];
+  const scanData: LatestOnerepScanData = { scan: null, results: [] };
+
   if (props.breaches === "resolved") {
     breaches = [mockedResolvedBreach];
   }
@@ -80,7 +85,7 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
     onerep_scan_status: "in_progress",
   };
 
-  const mockedInProgressScanResults: OnerepScanResultRow[] = [
+  const mockedInProgressScanResults: OnerepScanResultDataBrokerRow[] = [
     createRandomScanResult({ status: "removed", manually_resolved: false }),
     createRandomScanResult({
       status: "waiting_for_verification",
@@ -92,19 +97,19 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
     }),
   ];
 
-  const mockedAllResolvedScanResults: OnerepScanResultRow[] = [
+  const mockedAllResolvedScanResults: OnerepScanResultDataBrokerRow[] = [
     createRandomScanResult({ status: "removed", manually_resolved: false }),
     createRandomScanResult({ status: "removed", manually_resolved: false }),
   ];
 
-  const mockedUnresolvedScanResults: OnerepScanResultRow[] = [
+  const mockedUnresolvedScanResults: OnerepScanResultDataBrokerRow[] = [
     ...mockedInProgressScanResults,
     createRandomScanResult({ status: "new", manually_resolved: false }),
     createRandomScanResult({ status: "new", manually_resolved: false }),
     createRandomScanResult({ status: "new", manually_resolved: true }),
   ];
 
-  const mockedManuallyResolvedScanResults: OnerepScanResultRow[] = [
+  const mockedManuallyResolvedScanResults: OnerepScanResultDataBrokerRow[] = [
     createRandomScanResult({ status: "new", manually_resolved: true }),
     createRandomScanResult({
       status: "waiting_for_verification",
@@ -116,8 +121,6 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
     }),
     createRandomScanResult({ status: "removed", manually_resolved: true }),
   ];
-
-  const scanData: LatestOnerepScanData = { scan: null, results: [] };
   let scanCount = 0;
 
   if (props.countryCode === "us") {
@@ -190,7 +193,7 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
             enabledFeatureFlags={props.enabledFeatureFlags ?? []}
             experimentData={
               props.experimentData ?? {
-                ...defaultExperimentData,
+                ...defaultExperimentData["Features"],
                 "last-scan-date": {
                   enabled: true,
                 },

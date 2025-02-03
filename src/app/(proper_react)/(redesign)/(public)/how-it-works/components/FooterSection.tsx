@@ -19,20 +19,18 @@ export const FooterSection = (props: Props) => {
       <h2 className={styles.footerSectionCTA}>
         {l10n.getString("how-it-works-page-footersection-title")}
       </h2>
-      <div className={styles.footerSectionCTAInput}>
-        <SignUpForm
-          eligibleForPremium={eligibleForPremium}
-          signUpCallbackUrl={`${process.env.SERVER_URL}/user/dashboard`}
-          eventId={{
-            cta: "clicked_get_scan",
-            field: "entered_email_address",
-          }}
-          scanLimitReached={scanLimitReached}
-          placeholder={l10n.getString(
-            "how-it-works-page-footersection-input-placeholder",
-          )}
-        />
-      </div>
+      <SignUpForm
+        eligibleForPremium={eligibleForPremium}
+        signUpCallbackUrl={`${process.env.SERVER_URL}/user/dashboard`}
+        eventId={{
+          cta: "clicked_get_scan",
+          field: "entered_email_address",
+        }}
+        scanLimitReached={scanLimitReached}
+        placeholder={l10n.getString(
+          "how-it-works-page-footersection-input-placeholder",
+        )}
+      />
     </footer>
   );
 };

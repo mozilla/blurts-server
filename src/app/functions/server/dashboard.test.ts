@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { OnerepScanResultRow } from "knex/types/tables";
+import { OnerepScanResultDataBrokerRow } from "knex/types/tables";
 import * as fc from "fast-check";
 import {
   DashboardSummary,
@@ -13,6 +13,7 @@ import {
 } from "./dashboard";
 import { SubscriberBreach } from "../../../utils/subscriberBreaches";
 import { RemovalStatus, RemovalStatusMap } from "../universal/scanResult";
+import { faker } from "@faker-js/faker";
 
 const unresolvedBreaches: SubscriberBreach[] = [
   {
@@ -104,7 +105,7 @@ const unresolvedBreaches: SubscriberBreach[] = [
     ],
   },
 ];
-const unresolvedScannedResults: OnerepScanResultRow[] = [
+const unresolvedScannedResults: OnerepScanResultDataBrokerRow[] = [
   {
     id: 1,
     onerep_scan_result_id: 11238,
@@ -146,9 +147,12 @@ const unresolvedScannedResults: OnerepScanResultRow[] = [
     created_at: new Date("2023-09-26T16:59:04.046Z"),
     updated_at: new Date("2023-09-26T16:59:04.046Z"),
     manually_resolved: false,
+    broker_status: "active",
+    scan_result_status: "optout_in_progress",
+    url: faker.internet.url(),
   },
 ];
-const inProgressScannedResults: OnerepScanResultRow[] = [
+const inProgressScannedResults: OnerepScanResultDataBrokerRow[] = [
   {
     id: 3,
     onerep_scan_result_id: 11236,
@@ -190,9 +194,12 @@ const inProgressScannedResults: OnerepScanResultRow[] = [
     created_at: new Date("2023-09-26T16:59:04.046Z"),
     updated_at: new Date("2023-09-26T16:59:04.046Z"),
     manually_resolved: false,
+    broker_status: "active",
+    scan_result_status: "optout_in_progress",
+    url: faker.internet.url(),
   },
 ];
-const manuallyResolvedScannedResults: OnerepScanResultRow[] = [
+const manuallyResolvedScannedResults: OnerepScanResultDataBrokerRow[] = [
   {
     id: 3,
     onerep_scan_result_id: 11236,
@@ -234,9 +241,12 @@ const manuallyResolvedScannedResults: OnerepScanResultRow[] = [
     created_at: new Date("2023-09-26T16:59:04.046Z"),
     updated_at: new Date("2023-09-26T16:59:04.046Z"),
     manually_resolved: true,
+    broker_status: "active",
+    scan_result_status: "optout_in_progress",
+    url: faker.internet.url(),
   },
 ];
-const allResolvedScannedResults: OnerepScanResultRow[] = [
+const allResolvedScannedResults: OnerepScanResultDataBrokerRow[] = [
   {
     id: 1,
     onerep_scan_result_id: 11238,
@@ -278,6 +288,9 @@ const allResolvedScannedResults: OnerepScanResultRow[] = [
     created_at: new Date("2023-09-26T16:59:04.046Z"),
     updated_at: new Date("2023-09-26T16:59:04.046Z"),
     manually_resolved: false,
+    broker_status: "active",
+    scan_result_status: "optout_in_progress",
+    url: faker.internet.url(),
   },
   {
     id: 2,
@@ -320,6 +333,9 @@ const allResolvedScannedResults: OnerepScanResultRow[] = [
     created_at: new Date("2023-09-26T16:59:04.046Z"),
     updated_at: new Date("2023-09-26T16:59:04.046Z"),
     manually_resolved: false,
+    broker_status: "active",
+    scan_result_status: "optout_in_progress",
+    url: faker.internet.url(),
   },
   {
     id: 3,
@@ -362,6 +378,9 @@ const allResolvedScannedResults: OnerepScanResultRow[] = [
     created_at: new Date("2023-09-26T16:59:04.046Z"),
     updated_at: new Date("2023-09-26T16:59:04.046Z"),
     manually_resolved: false,
+    broker_status: "active",
+    scan_result_status: "optout_in_progress",
+    url: faker.internet.url(),
   },
 ];
 const allResolvedBreaches: SubscriberBreach[] = [
@@ -496,6 +515,7 @@ describe("getExposureReduction", () => {
       dataBreachUnresolvedNum: 0,
       dataBreachResolvedNum: 0,
       dataBrokerManuallyResolvedNum: 0,
+      dataBrokerRemovalUnderMaintenance: 0,
     };
 
     const exposureReduction = getDataPointReduction(testSummary);
@@ -542,6 +562,7 @@ describe("getExposureReduction", () => {
       dataBreachUnresolvedNum: 0,
       dataBreachResolvedNum: 0,
       dataBrokerManuallyResolvedNum: 0,
+      dataBrokerRemovalUnderMaintenance: 0,
     };
 
     const exposureReduction = getDataPointReduction(testSummary);
@@ -839,7 +860,7 @@ describe("getDashboardSummary", () => {
         | "addresses"
         | "familyMembers",
       count: number,
-    ): OnerepScanResultRow {
+    ): OnerepScanResultDataBrokerRow {
       return {
         addresses:
           dataPoint === "addresses"
@@ -868,6 +889,9 @@ describe("getDashboardSummary", () => {
               ? "optout_in_progress"
               : "new",
         updated_at: new Date(),
+        broker_status: "active",
+        scan_result_status: "optout_in_progress",
+        url: faker.internet.url(),
       };
     }
 
@@ -1093,6 +1117,7 @@ describe("getDashboardSummary", () => {
             dataBrokerManuallyResolvedDataPointsNum:
               dataBrokerManuallyResolvedDataPointsNum,
             totalDataPointsNum: totalDataPointsNum,
+            dataBrokerRemovalUnderMaintenance: 0,
             // TODO: Figure out what these should be and, when we do, replace
             //       `toMatchObject` by `toStrictEqual`:
             // unresolvedSanitizedDataPoints: [],
@@ -1142,7 +1167,7 @@ describe("getDashboardSummary", () => {
         function getScanResultsForCounts(
           dataPointCounts: DataPoints,
           resolution: Parameters<typeof getScanResult>[0],
-        ): OnerepScanResultRow[] {
+        ): OnerepScanResultDataBrokerRow[] {
           return (
             [
               "emailAddresses",
@@ -1262,6 +1287,7 @@ describe("getDashboardSummary", () => {
         inProgressDataPoints: emptyDataPoints,
         fixedDataPoints: emptyDataPoints,
         manuallyResolvedDataBrokerDataPoints: emptyDataPoints,
+        dataBrokerRemovalUnderMaintenance: 0,
       };
     }
 

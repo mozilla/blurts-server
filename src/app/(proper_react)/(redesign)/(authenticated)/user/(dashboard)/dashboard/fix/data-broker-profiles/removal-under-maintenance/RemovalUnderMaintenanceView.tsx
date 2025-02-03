@@ -25,11 +25,13 @@ import confetti from "canvas-confetti";
 import { toast } from "react-toastify";
 import fetchWithDelay from "../../../../../../../../../../utils/fetchWithDelay";
 import { useRouter } from "next/navigation";
+import { FeatureFlagName } from "../../../../../../../../../../db/tables/featureFlags";
 
 export type Props = {
   data: LatestOnerepScanData;
   stepDeterminationData: StepDeterminationData;
   subscriberEmails: string[];
+  enabledFeatureFlags: FeatureFlagName[];
 };
 
 export const RemovalUnderMaintenanceView = (props: Props) => {
@@ -43,8 +45,30 @@ export const RemovalUnderMaintenanceView = (props: Props) => {
 
   const nextGuidedStep = getNextGuidedStep(
     props.stepDeterminationData,
+    props.enabledFeatureFlags,
     "DataBrokerManualRemoval",
   );
+
+  // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+  /* c8 ignore start */
+
+  function moveToNextAvailableStep() {
+    const currentResultIndex = props.data.results.findIndex(
+      (result) =>
+        result.onerep_scan_result_id ===
+        firstScanResultNotResolved.onerep_scan_result_id,
+    );
+
+    if (currentResultIndex < props.data.results.length - 1) {
+      // Move to the next unresolved result
+      const nextUnresolvedResult = props.data.results[currentResultIndex + 1];
+      setFirstScanResultNotResolved(nextUnresolvedResult);
+    } else {
+      // Redirect if no unresolved scan result remains
+      router.push(nextGuidedStep.href);
+      router.refresh();
+    }
+  }
 
   async function handleManualRemovalChange() {
     setIsLoadingNextDataBroker(true);
@@ -68,25 +92,14 @@ export const RemovalUnderMaintenanceView = (props: Props) => {
       void confetti();
 
       // Mark the current scan result as manually resolved
-      const currentResultIndex = props.data.results.findIndex(
-        (result) =>
-          result.onerep_scan_result_id ===
-          firstScanResultNotResolved.onerep_scan_result_id,
-      );
-
-      if (currentResultIndex < props.data.results.length - 1) {
-        const nextUnresolvedResult = props.data.results[currentResultIndex + 1];
-        setFirstScanResultNotResolved(nextUnresolvedResult);
-      } else {
-        // Redirect if no unresolved scan result remains
-        router.push(nextGuidedStep.href);
-      }
+      moveToNextAvailableStep();
     } catch (error) {
       console.error("Error occurred in handleManualRemovalChange:", error);
     } finally {
       setIsLoadingNextDataBroker(false);
     }
   }
+  /* c8 ignore stop */
 
   const exposureCategoriesArray: React.ReactElement[] = [];
   if (firstScanResultNotResolved.relatives.length > 0) {
@@ -144,13 +157,14 @@ export const RemovalUnderMaintenanceView = (props: Props) => {
       aria-label={firstScanResultNotResolved.data_broker}
     >
       <div
-        className={`${styles.dataClassesList} ${isLoadingNextDataBroker ? styles.fadeOut : ""}`}
+        className={`${styles.dataClassesList}
+        ${isLoadingNextDataBroker ? styles.fadeOut : ""}
+      `}
       >
         {exposureCategoriesArray.map((item) => (
           <React.Fragment key={item.key}>{item}</React.Fragment>
         ))}
       </div>
-
       <div className={styles.buttonsWrapper}>
         <TelemetryButton
           variant="primary"
@@ -218,25 +232,27 @@ export const RemovalUnderMaintenanceView = (props: Props) => {
       <div className={styles.exposureCardWrapper}>
         {dataBrokerCard}
         <div className={styles.removalContentSection}>
-          <dt>
-            {l10n.getString(
-              "data-broker-removal-maintenance-steps-to-remove-header",
-            )}
-          </dt>
-          <dd>
-            <ol>
-              <li>
-                {l10n.getString(
-                  "data-broker-removal-maintenance-steps-to-remove-header-step-one",
-                )}
-              </li>
-              <li>
-                {l10n.getString(
-                  "data-broker-removal-maintenance-steps-to-remove-header-step-two",
-                )}
-              </li>
-            </ol>
-          </dd>
+          <dl>
+            <dt>
+              {l10n.getString(
+                "data-broker-removal-maintenance-steps-to-remove-header",
+              )}
+            </dt>
+            <dd>
+              <ol>
+                <li>
+                  {l10n.getString(
+                    "data-broker-removal-maintenance-steps-to-remove-header-step-one",
+                  )}
+                </li>
+                <li>
+                  {l10n.getString(
+                    "data-broker-removal-maintenance-steps-to-remove-header-step-two",
+                  )}
+                </li>
+              </ol>
+            </dd>
+          </dl>
           <TelemetryButton
             variant="link"
             onPress={() => setDetailedRemovalGuide(true)}
@@ -255,29 +271,31 @@ export const RemovalUnderMaintenanceView = (props: Props) => {
         </div>
 
         <div className={styles.removalContentSection}>
-          <dt>
-            {l10n.getString(
-              "data-broker-removal-maintenance-steps-to-remove-header",
-            )}
-          </dt>
-          <dd>
-            {l10n.getFragment(
-              "data-broker-removal-maintenance-rationale-answer",
-              {
-                elems: {
-                  learn_about_data_exposure_link: (
-                    <TelemetryLink
-                      href={CONST_URL_SUMO_MANUAL_REMOVAL}
-                      target="_blank"
-                      eventData={{
-                        link_id: "learn_more_about_data_broker_removal",
-                      }}
-                    />
-                  ),
+          <dl>
+            <dt>
+              {l10n.getString(
+                "data-broker-removal-maintenance-steps-to-remove-header",
+              )}
+            </dt>
+            <dd>
+              {l10n.getFragment(
+                "data-broker-removal-maintenance-rationale-answer",
+                {
+                  elems: {
+                    learn_about_data_exposure_link: (
+                      <TelemetryLink
+                        href={CONST_URL_SUMO_MANUAL_REMOVAL}
+                        target="_blank"
+                        eventData={{
+                          link_id: "learn_more_about_data_broker_removal",
+                        }}
+                      />
+                    ),
+                  },
                 },
-              },
-            )}
-          </dd>
+              )}
+            </dd>
+          </dl>
         </div>
       </div>
     </div>
@@ -291,7 +309,13 @@ export const RemovalUnderMaintenanceView = (props: Props) => {
         }}
         className={styles.backArrow}
       >
-        <BackArrow width="20" height="20" alt="" />
+        <BackArrow
+          width="20"
+          height="20"
+          alt={l10n.getString(
+            "data-broker-removal-guide-button-back-to-exposures",
+          )}
+        />
       </button>
       <p className={styles.headerRemovalGuide}>
         {l10n.getString("data-broker-removal-guide-header")}
@@ -301,55 +325,66 @@ export const RemovalUnderMaintenanceView = (props: Props) => {
       <p>{l10n.getString("data-broker-removal-guide-top-section-para-2")}</p>
 
       <div className={styles.removalContentSection}>
-        <dt className={styles.removalGuideInstructions}>
-          {l10n.getString("data-broker-removal-guide-step-1-header")}
-        </dt>
-        <dd>{l10n.getString("data-broker-removal-guide-step-1-body")}</dd>
-        <ul>
-          <li>
-            {l10n.getString("data-broker-removal-guide-step-1-list-item-1")}
-          </li>
-          <li>
-            {l10n.getString("data-broker-removal-guide-step-1-list-item-2")}
-          </li>
-          <li>
-            {l10n.getString("data-broker-removal-guide-step-1-list-item-3")}
-          </li>
-          <li>
-            {l10n.getString("data-broker-removal-guide-step-1-list-item-4")}
-          </li>
-        </ul>
+        <dl>
+          <dt className={styles.removalGuideInstructions}>
+            {l10n.getString("data-broker-removal-guide-step-1-header")}
+          </dt>
+          <dd>
+            {l10n.getString("data-broker-removal-guide-step-1-body")}
+
+            <ul>
+              <li>
+                {l10n.getString("data-broker-removal-guide-step-1-list-item-1")}
+              </li>
+              <li>
+                {l10n.getString("data-broker-removal-guide-step-1-list-item-2")}
+              </li>
+              <li>
+                {l10n.getString("data-broker-removal-guide-step-1-list-item-3")}
+              </li>
+              <li>
+                {l10n.getString("data-broker-removal-guide-step-1-list-item-4")}
+              </li>
+            </ul>
+          </dd>
+        </dl>
       </div>
 
       <div className={styles.removalContentSection}>
-        <dt className={styles.removalGuideInstructions}>
-          {l10n.getString("data-broker-removal-guide-step-2-header")}
-        </dt>
-        <dd>
-          {l10n.getString("data-broker-removal-guide-step-2-body-para-1")}
-        </dd>
-        <dd>
-          {l10n.getString("data-broker-removal-guide-step-2-body-para-2")}
-        </dd>
+        <dl>
+          <dt className={styles.removalGuideInstructions}>
+            {l10n.getString("data-broker-removal-guide-step-2-header")}
+          </dt>
+          <dd>
+            {l10n.getString("data-broker-removal-guide-step-2-body-para-1")}
+          </dd>
+          <dd>
+            {l10n.getString("data-broker-removal-guide-step-2-body-para-2")}
+          </dd>
+        </dl>
       </div>
 
       <div className={styles.removalContentSection}>
-        <dt className={styles.removalGuideInstructions}>
-          {l10n.getString("data-broker-removal-guide-step-3-header")}
-        </dt>
-        <dd>
-          {l10n.getString("data-broker-removal-guide-step-3-body-para-1")}
-        </dd>
-        <dd>
-          {l10n.getString("data-broker-removal-guide-step-3-body-para-2")}
-        </dd>
+        <dl>
+          <dt className={styles.removalGuideInstructions}>
+            {l10n.getString("data-broker-removal-guide-step-3-header")}
+          </dt>
+          <dd>
+            {l10n.getString("data-broker-removal-guide-step-3-body-para-1")}
+          </dd>
+          <dd>
+            {l10n.getString("data-broker-removal-guide-step-3-body-para-2")}
+          </dd>
+        </dl>
       </div>
 
       <div className={styles.removalContentSection}>
-        <dt className={styles.removalGuideInstructions}>
-          {l10n.getString("data-broker-removal-guide-step-4-header")}
-        </dt>
-        <dd>{l10n.getString("data-broker-removal-guide-step-4-body")}</dd>
+        <dl>
+          <dt className={styles.removalGuideInstructions}>
+            {l10n.getString("data-broker-removal-guide-step-4-header")}
+          </dt>
+          <dd>{l10n.getString("data-broker-removal-guide-step-4-body")}</dd>
+        </dl>
       </div>
 
       <div className={styles.buttonWrapper}>
@@ -373,12 +408,13 @@ export const RemovalUnderMaintenanceView = (props: Props) => {
   return (
     <FixView
       subscriberEmails={props.subscriberEmails}
-      nextStep={nextGuidedStep}
+      nextStep={() => moveToNextAvailableStep()}
       currentSection="data-broker-profiles"
       data={props.stepDeterminationData}
       hideProgressIndicator={detailedRemovalGuide}
       hideNavClose={detailedRemovalGuide}
       hideNextNavigationRightArrow={detailedRemovalGuide}
+      enabledFeatureFlags={props.enabledFeatureFlags}
     >
       {!detailedRemovalGuide ? dataBrokerInformation : removalGuideInstructions}
     </FixView>

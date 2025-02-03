@@ -5,9 +5,9 @@
 fix-flow-nav-high-risk-data-breaches = Violationes de datos a alte risco
 fix-flow-nav-leaked-passwords = Contrasignos revelate
 fix-flow-nav-security-recommendations = Recommendationes de securitate
-
 guided-resolution-flow-exit = Retornar a pannello de controlo
 guided-resolution-flow-next-arrow = Va al passo successive
+guided-resolution-flow-next-arrow-sub-step = Ir al resultato successive
 guided-resolution-flow-step-navigation-label = Passos guidate
 
 # Celebration screens

@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { headers } from "next/headers";
-import { getLatestOnerepScanResults } from "../../../../../../../../../../db/tables/onerep_scans";
+import { getScanResultsWithBroker } from "../../../../../../../../../../db/tables/onerep_scans";
 import { redirect } from "next/navigation";
 import { getServerSession } from "../../../../../../../../../functions/server/getServerSession";
 import { getOnerepProfileId } from "../../../../../../../../../../db/tables/subscribers";
@@ -12,9 +12,11 @@ import { StepDeterminationData } from "../../../../../../../../../functions/serv
 import { getSubscriberBreaches } from "../../../../../../../../../functions/server/getSubscriberBreaches";
 import { getSubscriberEmails } from "../../../../../../../../../functions/server/getSubscriberEmails";
 import { StartFreeScanView } from "./StartFreeScanView";
+import { hasPremium } from "../../../../../../../../../functions/universal/user";
+import { getEnabledFeatureFlags } from "../../../../../../../../../../db/tables/featureFlags";
 
 export default async function StartFreeScanPage() {
-  const countryCode = getCountryCode(headers());
+  const countryCode = getCountryCode(await headers());
   if (countryCode !== "us") {
     redirect("/user/dashboard");
   }
@@ -24,11 +26,18 @@ export default async function StartFreeScanPage() {
     return redirect("/");
   }
 
+  const enabledFeatureFlags = await getEnabledFeatureFlags({
+    email: session.user.email,
+  });
+
   const onerepProfileId = await getOnerepProfileId(session.user.subscriber.id);
 
   const latestScanData =
     typeof onerepProfileId === "number"
-      ? await getLatestOnerepScanResults(onerepProfileId)
+      ? await getScanResultsWithBroker(
+          onerepProfileId,
+          hasPremium(session.user),
+        )
       : undefined;
   if (latestScanData?.scan) {
     // If the user already has done a scan, let them view their results:
@@ -48,5 +57,11 @@ export default async function StartFreeScanPage() {
   };
   const subscriberEmails = await getSubscriberEmails(session.user);
 
-  return <StartFreeScanView data={data} subscriberEmails={subscriberEmails} />;
+  return (
+    <StartFreeScanView
+      data={data}
+      subscriberEmails={subscriberEmails}
+      enabledFeatureFlags={enabledFeatureFlags}
+    />
+  );
 }

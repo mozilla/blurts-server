@@ -1,35 +1,35 @@
-@import "../../../tokens";
+@use "../../../tokens";
 
 .notification[role="alert"] {
   position: absolute;
-  top: $spacing-xs;
+  top: tokens.$spacing-xs;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   align-items: center;
-  gap: $spacing-md;
-  padding: $spacing-xs;
-  min-width: $content-sm;
-  background-color: $color-blue-50;
-  color: $color-white;
-  border-radius: $border-radius-sm;
-  box-shadow: $box-shadow-sm;
+  gap: tokens.$spacing-md;
+  padding: tokens.$spacing-xs;
+  min-width: tokens.$content-sm;
+  background-color: tokens.$color-blue-50;
+  color: tokens.$color-white;
+  border-radius: tokens.$border-radius-sm;
+  box-shadow: tokens.$box-shadow-sm;
   animation: fade-in 400ms;
 
   span {
-    padding: $spacing-sm $spacing-md;
+    padding: tokens.$spacing-sm tokens.$spacing-md;
   }
 
   .dismissButton {
-    padding: $spacing-md;
+    padding: tokens.$spacing-md;
     background-color: transparent;
     border-style: none;
-    color: $color-white;
-    border-radius: $border-radius-sm;
+    color: tokens.$color-white;
+    border-radius: tokens.$border-radius-sm;
     cursor: pointer;
 
     &:hover {
-      background-color: $color-blue-60;
+      background-color: tokens.$color-blue-60;
     }
   }
 }

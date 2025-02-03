@@ -4,7 +4,7 @@
 
 import createDbConnection from "../connect";
 import { logger } from "../../app/functions/server/logging";
-import { DataBrokerRow } from "../../knex-tables";
+import { OnerepDataBrokerRow } from "knex/types/tables";
 
 const knex = createDbConnection();
 
@@ -14,7 +14,7 @@ async function upsertDataBrokers(
     status: string;
     url: string;
   }>,
-): Promise<DataBrokerRow[]> {
+): Promise<OnerepDataBrokerRow[]> {
   logger.info("upsert_data_brokers", { count: databrokers.length });
 
   try {

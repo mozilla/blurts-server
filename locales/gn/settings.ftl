@@ -15,8 +15,6 @@ settings-alert-preferences-allow-breach-alerts-title = Mongyhyje ñembogua reheg
 settings-alert-preferences-allow-breach-alerts-subtitle = Ko kyhyjerã oñemondo pya’eterei ojejuhúvo mba’ekuaarã ñembogua
 settings-alert-preferences-option-one = Emondo ñembogua kyhyjerã ñanduti veve imarãkuapavape
 settings-alert-preferences-option-two = Emondopaite kyhyjerã ñembogua ñanduti veve kundaharape ñepyrũguápe
-settings-alert-preferences-allow-monthly-monitor-report-title = Marandu jasygua { -brand-monitor }
-settings-alert-preferences-allow-monthly-monitor-report-subtitle = Ñembohekopyahu jasygua oñembyai pyahukuaáva, oñemoĩporãva ha oikotevẽva ne ñema’ẽ.
 
 ## Monitored email addresses
 
@@ -49,12 +47,6 @@ settings-email-number-of-breaches-info =
        *[other] Ojekuaa { $breachCount }-pe ñembyaikuéra ojehecháva.
     }
 
-## Deactivate account
-
-settings-deactivate-account-title = Emboguete mba’ete
-settings-deactivate-account-info-2 = Eipe’aitekuaa { -product-short-name } emboguévo nde { -brand-mozilla-account }.
-settings-fxa-link-label-3 = Eho { -brand-mozilla-account } ñembohekópe
-
 ## Delete Monitor account
 
 settings-delete-monitor-free-account-title = Embogue { -brand-monitor } mba’ete
@@ -65,3 +57,18 @@ settings-delete-monitor-free-account-dialog-cta-label = Emboguete mba’ete
 settings-delete-monitor-free-account-dialog-cancel-button-label = Marave ndoikói, jajevyjey
 settings-delete-monitor-account-confirmation-toast-label-2 = Ne mba’ete { -brand-monitor } pegua oguetéma.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Mboyke
+
+## Monthly Monitor Report
+
+settings-alert-preferences-allow-monthly-monitor-report-title = Marandu jasygua { -brand-monitor }
+settings-alert-preferences-allow-monthly-monitor-report-subtitle = Ñembohekopyahu jasygua oñembyai pyahukuaáva, oñemoĩporãva ha oikotevẽva ne ñema’ẽ.
+
+## Settings page redesign
+
+settings-tab-label-edit-info = Embosako’i ne marandu
+settings-tab-label-notifications = Emboheko momarandu
+settings-tab-label-manage-account = Eñangareko mba’etére
+settings-tab-subtitle-manage-account = Eñangareko ne mba’etére { -product-name }.
+settings-tab-notifications-marketing-title = Marketing ñemomarandu
+settings-tab-notifications-marketing-text = Ñembohekopyahu meme { -brand-monitor } rehegua, { -brand-mozilla } ha ambue ore apopy tekorosãrã.
+settings-tab-notifications-marketing-link-label = Eho { -brand-mozilla } ñanduti veve moĩporãha ñembohekópe

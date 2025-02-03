@@ -15,8 +15,6 @@ settings-alert-preferences-allow-breach-alerts-title = Directe waarschuwingen ov
 settings-alert-preferences-allow-breach-alerts-subtitle = Deze waarschuwingen worden direct verzonden zodra een datalek wordt gedetecteerd
 settings-alert-preferences-option-one = Waarschuwingen over datalekken naar het getroffen e-mailadres sturen
 settings-alert-preferences-option-two = Alle waarschuwingen over datalekken naar het primaire e-mailadres sturen
-settings-alert-preferences-allow-monthly-monitor-report-title = Maandelijks { -brand-monitor }-rapport
-settings-alert-preferences-allow-monthly-monitor-report-subtitle = Een maandelijkse update van nieuwe lekken, wat is opgelost en wat uw aandacht nodig heeft.
 
 ## Monitored email addresses
 
@@ -47,12 +45,6 @@ settings-email-number-of-breaches-info =
        *[other] Komt voor in { $breachCount } bekende datalekken.
     }
 
-## Deactivate account
-
-settings-deactivate-account-title = Account deactiveren
-settings-deactivate-account-info-2 = U kunt { -product-short-name } deactiveren door uw { -brand-mozilla-account } te verwijderen.
-settings-fxa-link-label-3 = Naar { -brand-mozilla-account }-instellingen
-
 ## Delete Monitor account
 
 settings-delete-monitor-free-account-title = { -brand-monitor }-account verwijderen
@@ -64,3 +56,18 @@ settings-delete-monitor-free-account-dialog-cta-label = Account verwijderen
 settings-delete-monitor-free-account-dialog-cancel-button-label = Laat maar zitten, breng me terug
 settings-delete-monitor-account-confirmation-toast-label-2 = Uw { -brand-monitor }-account is nu verwijderd.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Sluiten
+
+## Monthly Monitor Report
+
+settings-alert-preferences-allow-monthly-monitor-report-title = Maandelijks { -brand-monitor }-rapport
+settings-alert-preferences-allow-monthly-monitor-report-subtitle = Een maandelijkse update van nieuwe lekken, wat is opgelost en wat uw aandacht nodig heeft.
+
+## Settings page redesign
+
+settings-tab-label-edit-info = Uw gegevens bewerken
+settings-tab-label-notifications = Notificaties instellen
+settings-tab-label-manage-account = Account beheren
+settings-tab-subtitle-manage-account = Uw { -product-name }-account beheren.
+settings-tab-notifications-marketing-title = Marketingcommunicatie
+settings-tab-notifications-marketing-text = Periodieke updates over { -brand-monitor }, { -brand-mozilla } en onze andere beveiligingsproducten.
+settings-tab-notifications-marketing-link-label = Naar de e-mailinstellingen van { -brand-mozilla }

@@ -15,8 +15,6 @@ settings-alert-preferences-allow-breach-alerts-title = Okamžitá upozornění n
 settings-alert-preferences-allow-breach-alerts-subtitle = Tato upozornění jsou odesílána okamžitě po zjištění úniku dat
 settings-alert-preferences-option-one = Upozornění poslat na postiženou e-mailovou adresu
 settings-alert-preferences-option-two = Všechna upozornění posílat na primární e-mailovou adresu
-settings-alert-preferences-allow-monthly-monitor-report-title = Měsíční přehled { -brand-monitor(case: "gen") }
-settings-alert-preferences-allow-monthly-monitor-report-subtitle = Měsíční informace o nových únicích, co bylo vyřešeno a co vyžaduje vaši pozornost.
 
 ## Monitored email addresses
 
@@ -51,12 +49,6 @@ settings-email-number-of-breaches-info =
        *[other] Vyskytuje se v { $breachCount } známých únicích.
     }
 
-## Deactivate account
-
-settings-deactivate-account-title = Deaktivovat účet
-settings-deactivate-account-info-2 = { -product-short-name } můžete deaktivovat odstraněním svého { -brand-mozilla-account(case: "gen", capitalization: "lower") }.
-settings-fxa-link-label-3 = Přejít do nastavení { -brand-mozilla-account(case: "gen", capitalization: "lower") }.
-
 ## Delete Monitor account
 
 settings-delete-monitor-free-account-title = Smazání účtu { -brand-monitor }
@@ -68,3 +60,18 @@ settings-delete-monitor-free-account-dialog-cta-label = Smazat účet
 settings-delete-monitor-free-account-dialog-cancel-button-label = Rozmyslel(a) jsem si to
 settings-delete-monitor-account-confirmation-toast-label-2 = Váš účet { -brand-monitor } je nyní smazán.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Zavřít
+
+## Monthly Monitor Report
+
+settings-alert-preferences-allow-monthly-monitor-report-title = Měsíční přehled { -brand-monitor(case: "gen") }
+settings-alert-preferences-allow-monthly-monitor-report-subtitle = Měsíční informace o nových únicích, co bylo vyřešeno a co vyžaduje vaši pozornost.
+
+## Settings page redesign
+
+settings-tab-label-edit-info = Upravte své údaje
+settings-tab-label-notifications = Nastavení upozornění
+settings-tab-label-manage-account = Správa účtu
+settings-tab-subtitle-manage-account = Spravujte svůj účet služby { -product-name }.
+settings-tab-notifications-marketing-title = Marketingová komunikace
+settings-tab-notifications-marketing-text = Pravidelné aktualizace o službě { -brand-monitor }, { -brand-mozilla(case: "loc") } a dalších našich bezpečnostních produktech.
+settings-tab-notifications-marketing-link-label = Přejít do nastavení e-mailu { -brand-mozilla(case: "gen") }
