@@ -27,6 +27,7 @@ export const RenewalShell = (props: Props) => {
             <Image
               src={monitorLogo}
               alt={l10n.getString("plus-expiration-header-logo-alt")}
+              height={32}
             />
           }
         >
