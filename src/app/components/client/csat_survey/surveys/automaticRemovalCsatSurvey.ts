@@ -93,11 +93,12 @@ const surveyData: SurveyData = {
       showOnTab: ["fixed"],
       daysThreshold: 716,
       followUpSurveyOptions: {
-        "very-dissatisfied": "https://survey.alchemer.com/s3/",
-        dissatisfied: "https://survey.alchemer.com/s3/",
-        neutral: "https://survey.alchemer.com/s3/",
-        satisfied: "https://survey.alchemer.com/s3/",
-        "very-satisfied": "https://survey.alchemer.com/s3/",
+        "very-dissatisfied":
+          "https://survey.alchemer.com/s3/8176616/edb0c3f18778",
+        dissatisfied: "https://survey.alchemer.com/s3/8176616/9b6ca1d007a5",
+        neutral: "https://survey.alchemer.com/s3/8176616/37955cef0c5e",
+        satisfied: "https://survey.alchemer.com/s3/8176616/091e554aa6ab",
+        "very-satisfied": "https://survey.alchemer.com/s3/8176616/7ac85d1249cd",
       },
     },
   ],

@@ -128,7 +128,7 @@ describe("CSAT survey banner: Automatic Removal", () => {
     expect(feedbackLink).toBeInTheDocument();
     expect(feedbackLink).toHaveAttribute(
       "href",
-      "https://survey.alchemer.com/s3/",
+      "https://survey.alchemer.com/s3/8176616/091e554aa6ab",
     );
   });
 
