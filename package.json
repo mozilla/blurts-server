@@ -112,13 +112,14 @@
     "react-stately": "^3.35.0",
     "react-toastify": "^11.0.2",
     "server-only": "^0.0.1",
+    "sharp": "^0.33.5",
     "uuid": "^11.0.5",
     "winston": "^3.17.0"
   },
   "devDependencies": {
     "@faker-js/faker": "^9.4.0",
     "@google-cloud/bigquery": "^7.9.1",
-    "@playwright/test": "^1.50.0",
+    "@playwright/test": "^1.50.1",
     "@storybook/addon-a11y": "^8.5.3",
     "@storybook/addon-actions": "^8.5.3",
     "@storybook/addon-essentials": "^8.5.3",

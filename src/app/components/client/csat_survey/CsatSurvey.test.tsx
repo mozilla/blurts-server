@@ -39,7 +39,7 @@ describe("CSAT survey banner: Automatic Removal", () => {
     expect(answerButton).toBeInTheDocument();
   });
 
-  it.each([90, 180, 351])(
+  it.each([90, 180, 351, 716])(
     "displays the survey to users with automatic data removal enabled for at least n days",
     (dayCount) => {
       const ComposedCsatSurvey = composeStory(CsatSurveyAutomaticRemoval, Meta);
@@ -115,7 +115,7 @@ describe("CSAT survey banner: Automatic Removal", () => {
   it("shows the correct follow-up feedback link for response “Satisfied”", async () => {
     const user = userEvent.setup();
     const ComposedCsatSurvey = composeStory(CsatSurveyAutomaticRemoval, Meta);
-    render(<ComposedCsatSurvey elapsedTimeInDaysSinceInitialScan={91} />);
+    render(<ComposedCsatSurvey elapsedTimeInDaysSinceInitialScan={716} />);
 
     const answerButton = screen.getByRole("button", {
       name: "Satisfied",
@@ -128,7 +128,7 @@ describe("CSAT survey banner: Automatic Removal", () => {
     expect(feedbackLink).toBeInTheDocument();
     expect(feedbackLink).toHaveAttribute(
       "href",
-      "https://survey.alchemer.com/s3/7718223/fbbb597a762a",
+      "https://survey.alchemer.com/s3/8176616/091e554aa6ab",
     );
   });
 
