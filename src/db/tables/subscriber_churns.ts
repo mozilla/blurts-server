@@ -59,6 +59,29 @@ async function getAllSubscriberChurns(): Promise<SubscriberChurnRow[]> {
   }
 }
 
+async function getUpcomingChurns(): Promise<Array<SubscriberChurnRow>> {
+  try {
+    const res = await knex("subscriber_churns")
+      .select("*")
+      .where("intervl", "year")
+      .whereNotNull("current_period_end")
+      .where(knex.raw("current_period_end::timestamptz"), ">=", knex.fn.now())
+      .where(
+        knex.raw("current_period_end::timestamptz"),
+        "<=",
+        knex.raw("CURRENT_TIMESTAMP + interval '7 days'"),
+      );
+
+    logger.info("get_upcoming_churns_success", { count: res.length });
+    return res;
+  } catch (e) {
+    logger.error("get_upcoming_churns_error", {
+      error: JSON.stringify(e),
+    });
+    throw e;
+  }
+}
+
 async function getChurnsToEmail(): Promise<
   Array<SubscriberChurnRow & SubscriberRow>
 > {
@@ -92,5 +115,6 @@ export {
   upsertSubscriberChurns,
   getAllSubscriberChurns,
   deleteSubscriberChurns,
+  getUpcomingChurns,
   getChurnsToEmail,
 };
