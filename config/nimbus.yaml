@@ -5,6 +5,24 @@ channels:
   - staging
   - production
 features:
+  example-feature:
+    description: An example feature
+    variables:
+      enabled:
+        description: If the feature is enabled
+        type: Boolean
+        default: false
+      something:
+        description: Another variable
+        type: Option<String>
+        default: null
+    defaults:
+      - channel: local
+        value: { "enabled": true }
+      - channel: staging
+        value: { "enabled": false }
+      - channel: production
+        value: { "enabled": false }
   last-scan-date:
     description: Show the date of the user's last scan in the top right-hand corner
     variables:
