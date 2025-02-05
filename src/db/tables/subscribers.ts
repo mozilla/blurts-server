@@ -333,12 +333,7 @@ async function deleteResolutionsWithEmail(id: number, email: string) {
 async function getPotentialSubscribersWaitingForFirstDataBrokerRemovalFixedEmail(): Promise<
   SubscriberRow[]
 > {
-  const flag = await getFeatureFlagData("FirstDataBrokerRemovalFixedEmail");
-  if (!flag?.is_enabled || !flag?.modified_at) {
-    return [];
-  }
-
-  let query = knex("subscribers")
+  const rows = await knex("subscribers")
     .select()
     // Only send to Plus users...
     .whereRaw(
@@ -350,17 +345,8 @@ async function getPotentialSubscribersWaitingForFirstDataBrokerRemovalFixedEmail
     // ...who haven't received the email...
     .andWhere("first_broker_removal_email_sent", false)
     // ...and signed up after the feature flag `FirstDataBrokerRemovalFixedEmail`
-    // has been enabled last.
-    .andWhere("created_at", ">=", flag.modified_at);
-
-  if (Array.isArray(flag.allow_list) && flag.allow_list.length > 0) {
-    // If the feature flag has an allowlist, only send to users on that list.
-    // The `.andWhereIn` alias doesn't exist:
-    // https://github.com/knex/knex/issues/1881#issuecomment-275433906
-    query = query.whereIn("primary_email", flag.allow_list);
-  }
-
-  const rows = await query;
+    // has been enabled (which happened on 2024-07-10).
+    .andWhere("created_at", ">=", "2024-07-10T00:00:00.000Z");
 
   return rows;
 }
