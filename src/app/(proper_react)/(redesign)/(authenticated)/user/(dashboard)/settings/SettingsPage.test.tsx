@@ -972,7 +972,7 @@ describe("Settings page", () => {
             yearlySubscriptionUrl=""
             monthlySubscriptionUrl=""
             subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-            enabledFeatureFlags={["ConfirmCancellation", "CancellationFlow"]}
+            enabledFeatureFlags={["CancellationFlow"]}
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
@@ -1052,7 +1052,7 @@ describe("Settings page", () => {
             yearlySubscriptionUrl=""
             monthlySubscriptionUrl=""
             subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-            enabledFeatureFlags={["ConfirmCancellation", "CancellationFlow"]}
+            enabledFeatureFlags={["CancellationFlow"]}
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
@@ -1743,7 +1743,6 @@ describe("Settings page", () => {
             subscriptionBillingAmount={mockedSubscriptionBillingAmount}
             enabledFeatureFlags={[
               "CancellationFlow",
-              "ConfirmCancellation",
               "DiscountCouponNextThreeMonths",
             ]}
             experimentData={defaultExperimentData["Features"]}
@@ -1833,7 +1832,6 @@ describe("Settings page", () => {
             subscriptionBillingAmount={mockedSubscriptionBillingAmount}
             enabledFeatureFlags={[
               "CancellationFlow",
-              "ConfirmCancellation",
               "DiscountCouponNextThreeMonths",
             ]}
             experimentData={defaultExperimentData["Features"]}
@@ -1901,7 +1899,6 @@ describe("Settings page", () => {
             subscriptionBillingAmount={mockedSubscriptionBillingAmount}
             enabledFeatureFlags={[
               "CancellationFlow",
-              "ConfirmCancellation",
               "DiscountCouponNextThreeMonths",
             ]}
             experimentData={defaultExperimentData["Features"]}
