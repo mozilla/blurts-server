@@ -12,6 +12,12 @@
     flex-direction: column;
   }
 
+  &.bottom {
+    div:first-child {
+      flex-direction: column-reverse;
+    }
+  }
+
   input {
     font: tokens.$text-body-md;
   }
