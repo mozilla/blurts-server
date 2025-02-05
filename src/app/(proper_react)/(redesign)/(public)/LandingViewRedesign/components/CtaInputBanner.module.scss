@@ -24,6 +24,7 @@
 
     @media screen and (min-width: tokens.$screen-md) {
       form {
+        align-items: flex-end;
         flex-direction: row;
         button {
           flex: 0 0 auto;

@@ -39,7 +39,8 @@
 
   .inputField {
     background: tokens.$color-white;
-    border: 1px solid tokens.$color-grey-30;
+    border: none;
+    box-shadow: inset 0 0 0 1px tokens.$color-grey-30;
     border-radius: tokens.$border-radius-md;
     color: tokens.$color-black;
     // Add a bit more space: The next spacing step is too much.
@@ -54,19 +55,19 @@
       border-color: tokens.$color-error;
 
       &:focus {
-        border: 1px solid tokens.$color-error;
+        box-shadow: inset 0 0 0 1px tokens.$color-error;
         outline: tokens.$border-focus-width solid tokens.$color-error-focus;
       }
     }
 
     &:focus {
-      border: 1px solid tokens.$color-purple-70;
+      box-shadow: inset 0 0 0 1px tokens.$color-purple-70;
       outline: tokens.$border-focus-width solid tokens.$color-purple-40;
     }
 
     &:disabled {
       background: none;
-      border: 1px solid tokens.$color-grey-10;
+      box-shadow: inset 0 0 0 1px tokens.$color-grey-10;
     }
   }
 
