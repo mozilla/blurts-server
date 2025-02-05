@@ -311,15 +311,16 @@ async function isOnerepScanResultForSubscriber(params: {
   return typeof result?.onerep_scan_result_id === "number";
 }
 
-async function markOnerepScanResultAsResolved(
+async function setOnerepScanResultManualResolution(
   onerepScanResultId: number,
+  resolved: boolean,
 ): Promise<void> {
   logger.info("scan_resolved", {
     onerepScanResultId,
   });
   await knex("onerep_scan_results")
     .update({
-      manually_resolved: true,
+      manually_resolved: resolved,
       // @ts-ignore knex.fn.now() results in it being set to a date,
       // even if it's not typed as a JS date object:
       updated_at: knex.fn.now(),
@@ -496,7 +497,7 @@ export {
   addOnerepScanResults,
   getScansCount,
   isOnerepScanResultForSubscriber,
-  markOnerepScanResultAsResolved,
+  setOnerepScanResultManualResolution,
   getScansCountForProfile,
   deleteScansForProfile,
   deleteScanResultsForProfile,
