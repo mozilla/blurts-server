@@ -20,7 +20,6 @@ import { useViewTelemetry } from "../../../hooks/useViewTelemetry";
 export const FreeScanCta = (
   props: Props & {
     experimentData: ExperimentData["Features"];
-    hasFloatingLabel?: boolean;
     showCtaOnly?: boolean;
   },
 ) => {
@@ -53,7 +52,7 @@ export const FreeScanCta = (
         placeholder={props.placeholder}
         label={props.label}
         ctaLabel={props.ctaLabel}
-        hasFloatingLabel={props.hasFloatingLabel}
+        labelPosition={props.labelPosition}
       />
     );
   }

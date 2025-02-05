@@ -46,7 +46,6 @@ export const CtaInputBanner = (props: LandingPageProps) => {
             ctaLabel={props.l10n.getString(
               "landing-redesign-hero-cta-button-label",
             )}
-            hasFloatingLabel
           />
         )}
       </div>
