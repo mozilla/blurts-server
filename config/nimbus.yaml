@@ -20,7 +20,7 @@ features:
       - channel: local
         value: { "enabled": true }
       - channel: staging
-        value: { "enabled": true }
+        value: { "enabled": false }
       - channel: production
         value: { "enabled": false }
   last-scan-date:
