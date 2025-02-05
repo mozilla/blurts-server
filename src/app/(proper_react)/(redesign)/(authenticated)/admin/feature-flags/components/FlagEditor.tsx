@@ -16,13 +16,9 @@ import { Button } from "../../../../../../components/client/Button";
 import { CreateFeatureFlagRequestBody } from "../../../../../../api/v1/admin/feature-flags/route";
 import { FeatureFlagName } from "../../../../../../../db/tables/featureFlags";
 
-export const NewFlagEditor = (props: {
-  flagName: FeatureFlagName;
-  adminOnly: boolean;
-}) => {
+export const NewFlagEditor = (props: { flagName: FeatureFlagName }) => {
   return (
     <FlagEditor
-      adminOnly={props.adminOnly}
       flagName={props.flagName}
       isEnabled={false}
       onToggleEnable={async (isEnabled) => {
@@ -52,7 +48,6 @@ export const NewFlagEditor = (props: {
 export const ExistingFlagEditor = (props: { flag: FeatureFlagRow }) => {
   return (
     <FlagEditor
-      adminOnly={false}
       flagName={props.flag.name}
       isEnabled={props.flag.is_enabled}
       onToggleEnable={async (isEnabled) => {
@@ -87,7 +82,6 @@ type Props = {
   isEnabled: boolean;
   onToggleEnable: (isEnabled: boolean) => Promise<void>;
   allowList: string[];
-  adminOnly: boolean;
   onUpdateAllowlist: (allowList: string[]) => Promise<void>;
 };
 const FlagEditor = (props: Props) => {
@@ -120,7 +114,6 @@ const FlagEditor = (props: Props) => {
             variant="secondary"
             onPress={() => void setIsEnabled(true)}
             small
-            disabled={props.adminOnly}
           >
             Enable for everyone
           </Button>

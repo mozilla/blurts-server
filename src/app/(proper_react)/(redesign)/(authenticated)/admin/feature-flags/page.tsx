@@ -7,7 +7,6 @@ import { getServerSession } from "../../../../../functions/server/getServerSessi
 import {
   allFeatureFlags,
   FeatureFlagName,
-  featureFlagsAdminOnly,
   getAllFeatureFlags,
 } from "../../../../../../db/tables/featureFlags";
 import { isAdmin } from "../../../../../api/utils/auth";
@@ -53,11 +52,6 @@ export default async function FeatureFlagPage() {
         typeof flagOrFlagName === "string" || !flagOrFlagName.is_enabled,
     )
     .reverse();
-
-  const isAdminOnlyFeature = (flagName: string) =>
-    featureFlagsAdminOnly.includes(
-      flagName as (typeof featureFlagsAdminOnly)[number],
-    );
 
   return (
     <div className={styles.wrapper}>
