@@ -9,7 +9,13 @@
   div:first-child {
     display: flex;
     flex: 1;
-    flex-direction: column-reverse;
+    flex-direction: column;
+  }
+
+  &.bottom {
+    div:first-child {
+      flex-direction: column-reverse;
+    }
   }
 
   input {

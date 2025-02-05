@@ -39,6 +39,7 @@ export type Props = {
   placeholder?: string;
   ctaLabel?: string | ReactNode;
   hasFloatingLabel?: boolean;
+  labelPosition?: "top" | "bottom" | "floating";
 };
 
 export const SignUpForm = (props: Props) => {
@@ -79,7 +80,7 @@ export const SignUpForm = (props: Props) => {
   ) : (
     <form
       ref={refViewTelemetry as RefObject<HTMLFormElement | null>}
-      className={styles.form}
+      className={`${styles.form} ${props.labelPosition ? styles[props.labelPosition] : ""}`}
       onSubmit={onSubmit}
     >
       <InputField
@@ -99,7 +100,7 @@ export const SignUpForm = (props: Props) => {
             field_id: props.eventId.field,
           });
         }}
-        hasFloatingLabel={props.hasFloatingLabel}
+        hasFloatingLabel={props.labelPosition === "floating"}
       />
       <Button
         type="submit"

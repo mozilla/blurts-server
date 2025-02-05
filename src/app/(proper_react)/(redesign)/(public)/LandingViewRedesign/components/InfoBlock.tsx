@@ -89,7 +89,6 @@ export const InfoBlock = (props: LandingPageProps) => {
               <ArrowIcon alt="" />
             </>
           }
-          hasFloatingLabel
           showCtaOnly
         />
       )}
