@@ -9,17 +9,37 @@ import {
   deleteSubscriberChurns,
 } from "../../../../../../db/tables/subscriber_churns";
 import { SubscriberChurnRow } from "knex/types/tables";
+import { getServerSession } from "../../../../../functions/server/getServerSession";
+import { isAdmin } from "../../../../../api/utils/auth";
+
+/**
+ * Helper function to perform session + admin check.
+ * Returns true if the current session belongs to an admin user.
+ */
+async function isAuthorized(): Promise<boolean> {
+  const session = await getServerSession();
+  return Boolean(session?.user?.email && isAdmin(session.user.email));
+}
 
 export async function getAllChurns() {
+  if (!(await isAuthorized())) {
+    return null;
+  }
   return getAllSubscriberChurns();
 }
 
 export async function upsertAllChurns(
   churningSubscribers: SubscriberChurnRow[],
 ) {
+  if (!(await isAuthorized())) {
+    return null;
+  }
   return upsertSubscriberChurns(churningSubscribers);
 }
 
 export async function clearAllChurns() {
+  if (!(await isAuthorized())) {
+    return null;
+  }
   return deleteSubscriberChurns();
 }

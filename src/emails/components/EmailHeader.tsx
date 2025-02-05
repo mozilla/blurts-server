@@ -48,3 +48,12 @@ export const EmailHeader = (props: Props) => {
     </mj-section>
   );
 };
+
+export const getUnstyledEmailHeader = (props: Props) => {
+  const l10n = props.l10n;
+
+  return `\
+${l10n.getString("public-nav-name")}
+${"-".repeat(30)}
+  `;
+};

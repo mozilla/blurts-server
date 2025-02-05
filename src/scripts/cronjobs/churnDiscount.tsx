@@ -11,7 +11,10 @@ import { SubscriberChurnRow, SubscriberRow } from "knex/types/tables";
 import { sanitizeSubscriberRow } from "../../app/functions/server/sanitize";
 import { getCronjobL10n } from "../../app/functions/l10n/cronjobs";
 import { renderEmail } from "../../emails/renderEmail";
-import { UpcomingExpirationEmail } from "../../emails/templates/upcomingExpiration/UpcomingExpirationEmail";
+import {
+  getUnstyledUpcomingExpirationEmail,
+  UpcomingExpirationEmail,
+} from "../../emails/templates/upcomingExpiration/UpcomingExpirationEmail";
 import { getFeatureFlagData } from "../../db/tables/featureFlags";
 
 await run();
@@ -71,6 +74,11 @@ async function sendChurnDiscountEmail(
         l10n={l10n}
       />,
     ),
+    getUnstyledUpcomingExpirationEmail({
+      subscriber: sanitizedSubscriber,
+      expirationDate: subscriber.current_period_end,
+      l10n: l10n,
+    }),
   );
 
   logger.info(`sent email to: ${subscriber.userid}`);
