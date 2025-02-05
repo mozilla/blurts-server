@@ -220,11 +220,12 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
     props.enabledFeatureFlags?.includes("DataBrokerRemovalAttempts") &&
     !scanResult.manually_resolved &&
     scanResult.status === "waiting_for_verification" &&
-    attemptCount >= 1
+    attemptCount >= 1 &&
+    typeof scanResult.last_optout_at !== "undefined"
       ? l10n.getString("status-pill-requested-removal-info", {
           attempt_count: attemptCount,
           last_attempt_date: new Intl.DateTimeFormat(locale).format(
-            scanResult.updated_at,
+            scanResult.last_optout_at,
           ),
         })
       : "";

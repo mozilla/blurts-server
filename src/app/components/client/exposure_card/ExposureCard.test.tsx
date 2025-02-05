@@ -189,6 +189,33 @@ describe("ScanResultCard", () => {
       elementsWithClass[0].previousElementSibling;
     expect(prevElementToInfoForSale).toHaveClass("hideOnMobile");
   });
+
+  it("shows the date of the last attempted opt-out, if known", () => {
+    const ComposedProgressCard = composeStory(DataBrokerInProgress, Meta);
+    render(
+      <ComposedProgressCard
+        enabledFeatureFlags={[
+          "AdditionalRemovalStatuses",
+          "DataBrokerRemovalAttempts",
+        ]}
+        exposureData={createRandomScanResult({
+          // `createRandomScanResult` explicitly sets the last opt-out date
+          // for scan results that are waiting for verification:
+          status: "waiting_for_verification",
+          manually_resolved: false,
+        })}
+      />,
+    );
+    const attemptListing = screen.getByText(/Attempt ⁨\d+⁩:/);
+    expect(attemptListing).toBeInTheDocument();
+    const textContent = attemptListing.textContent
+      // Remove the special characters that Fluent places around variables:
+      ?.replaceAll("⁨", "")
+      .replaceAll("⁩", "")
+      .split(/\s/);
+    const datePart = textContent?.[textContent.length - 1];
+    expect(Date.parse(datePart ?? "invalid date")).not.toBeNaN();
+  });
 });
 
 describe("DataBreachCard", () => {

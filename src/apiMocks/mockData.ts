@@ -87,6 +87,10 @@ export function createRandomScanResult(
     created_at: options.createdDate ?? faker.date.recent({ days: 2 }),
     updated_at: faker.date.recent({ days: 1 }),
     optout_attempts,
+    last_optout_at:
+      typeof optout_attempts === "number" && optout_attempts > 0
+        ? faker.date.recent({ days: 3 })
+        : undefined,
     broker_status: options.broker_status ?? "active",
     scan_result_status: faker.helpers.arrayElement(
       Object.values(RemovalStatusMap),
