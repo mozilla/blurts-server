@@ -25,6 +25,7 @@ interface QaBrokerData {
   status: string;
   manually_resolved: boolean;
   optout_attempts: number;
+  last_optout_at: string;
 }
 
 interface QaBreachData {

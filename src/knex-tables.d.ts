@@ -294,13 +294,14 @@ declare module "knex/types/tables" {
     last_name: string;
     status: RemovalStatus;
     optout_attempts?: number;
+    last_optout_at?: Date;
     manually_resolved: boolean;
     created_at: Date;
     updated_at: Date;
   }
   type OnerepScanResultOptionalColumns = Extract<
     keyof OnerepScanResultRow,
-    "manually_resolved" | "middle_name" | "optout_attempts"
+    "manually_resolved" | "middle_name" | "optout_attempts" | "last_optout_at"
   >;
   type OnerepScanResultSerializedColumns = Extract<
     keyof OnerepScanResultRow,
