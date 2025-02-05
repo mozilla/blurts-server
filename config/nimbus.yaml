@@ -17,10 +17,12 @@ features:
         type: Option<String>
         default: null
     defaults:
-      - channel: nightly
+      - channel: local
         value: { "enabled": true }
-      - channel: developer
-        value: { "something": "wicked" }
+      - channel: staging
+        value: { "enabled": true }
+      - channel: production
+        value: { "enabled": false }
   last-scan-date:
     description: Show the date of the user's last scan in the top right-hand corner
     variables:
