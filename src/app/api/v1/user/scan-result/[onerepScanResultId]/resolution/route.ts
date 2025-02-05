@@ -8,7 +8,7 @@ import { getServerSession } from "../../../../../../functions/server/getServerSe
 import { logger } from "../../../../../../functions/server/logging";
 import {
   isOnerepScanResultForSubscriber,
-  markOnerepScanResultAsResolved,
+  setOnerepScanResultManualResolution,
 } from "../../../../../../../db/tables/onerep_scans";
 import { markQaCustomBrokerAsResolved } from "../../../../../../../db/tables/qa_customs";
 import { isAdmin } from "../../../../../utils/auth";
@@ -57,13 +57,72 @@ export async function POST(
   });
   if (!isAllowedToResolve) {
     return new NextResponse<ResolveScanResultResponse>(
-      JSON.stringify({ success: false, message: "Invalid scan result ID" }),
+      JSON.stringify({ success: false, message: "Unauthorized" }),
       { status: 403 },
     );
   }
 
   try {
-    await markOnerepScanResultAsResolved(scanResultId);
+    await setOnerepScanResultManualResolution(scanResultId, true);
+    return new NextResponse<ResolveScanResultResponse>(
+      JSON.stringify({ success: true }),
+      { status: 200 },
+    );
+  } catch (e) {
+    logger.error(e);
+    return new NextResponse<ResolveScanResultResponse>(
+      JSON.stringify({
+        success: false,
+        message: "Something went wrong, please try again.",
+      }),
+      { status: 500 },
+    );
+  }
+}
+
+export async function PUT(
+  req: NextRequest,
+): Promise<NextResponse<ResolveScanResultResponse>> {
+  // const scanResultId = Number.parseInt(params.onerepScanResultId, 10);
+  // const { resolved } = body;
+  const session = await getServerSession();
+
+  if (!session?.user?.subscriber) {
+    return new NextResponse<ResolveScanResultResponse>(
+      JSON.stringify({ success: false, message: "Unauthenticated" }),
+      { status: 401 },
+    );
+  }
+
+  const { resolved, scanResultId } = await req.json();
+
+  if (typeof scanResultId !== "number" || Number.isNaN(scanResultId)) {
+    return new NextResponse<ResolveScanResultResponse>(
+      JSON.stringify({ success: false, message: "Invalid scan result ID" }),
+      { status: 400 },
+    );
+  }
+
+  if (typeof resolved !== "boolean") {
+    return new NextResponse<ResolveScanResultResponse>(
+      JSON.stringify({ success: false, message: "Invalid resolution value" }),
+      { status: 400 },
+    );
+  }
+
+  const isAllowedToResolve = await isOnerepScanResultForSubscriber({
+    onerepScanResultId: scanResultId,
+    subscriberId: session.user.subscriber.id,
+  });
+  if (!isAllowedToResolve) {
+    return new NextResponse<ResolveScanResultResponse>(
+      JSON.stringify({ success: false, message: "Unauthorized" }),
+      { status: 403 },
+    );
+  }
+
+  try {
+    await setOnerepScanResultManualResolution(scanResultId, resolved);
     return new NextResponse<ResolveScanResultResponse>(
       JSON.stringify({ success: true }),
       { status: 200 },
