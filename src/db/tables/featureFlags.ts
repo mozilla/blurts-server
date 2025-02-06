@@ -58,6 +58,7 @@ export const featureFlagNames = [
   "CirrusV2",
   "DataBrokerRemovalAttempts",
   "ExpirationNotification",
+  "CustomDataBrokers",
 ] as const;
 export type FeatureFlagName = (typeof featureFlagNames)[number];
 

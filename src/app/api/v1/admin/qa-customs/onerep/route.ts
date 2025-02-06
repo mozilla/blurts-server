@@ -4,19 +4,15 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import { isAdmin } from "../../../../utils/auth";
-import {
-  errorIfProduction,
-  internalServerError,
-  unauthError,
-} from "../../../../utils/errorThrower";
+import { errorIfProduction, unauthError } from "../../../../utils/errorThrower";
 import {
   addQaCustomBroker,
   deleteQaCustomBrokerRow,
   getAllQaCustomBrokers,
-  QaBrokerData,
   setQaCustomBrokerStatus,
 } from "../../../../../../db/tables/qa_customs";
 import { getServerSession } from "../../../../../functions/server/getServerSession";
+import { OnerepScanResultDataBrokerRow } from "knex/types/tables";
 
 function successResponse() {
   return NextResponse.json(
@@ -31,12 +27,6 @@ async function checkAdmin() {
   return null;
 }
 
-const mockAddress = {
-  zip: "93386",
-  city: "Berkeley",
-  state: "CA",
-  street: "Von Meadows",
-};
 const mockPhone = "000000000";
 const mockEmail = "mockEmail@email.com";
 const mockRelative = "Relative Johnson";
@@ -75,15 +65,21 @@ export async function POST(req: NextRequest) {
 
   const body = await req.json();
 
-  const onerep_profile_id = parseInt(body.onerep_profile_id || "21", 10);
+  const onerep_scan_id = parseInt(body.onerep_scan_id || "21", 10);
   const link = body.link || "https://test-broker.com";
   const age = body.age ? parseInt(body.age, 10) : undefined;
   const data_broker = body.data_broker || "test_broker";
   const emails = duplicateObj(mockEmail, body.emails) as string[];
   const phones = duplicateObj(mockPhone, body.phones) as string[];
-  const addresses = duplicateObj(mockAddress, body.addresses) as {
-    [key: string]: string;
-  }[];
+  const mockAddress = {
+    zip: "93386",
+    city: "Berkeley",
+    state: "CA",
+    street: "Von Meadows",
+  };
+  const addresses = body.addresses.map(() => ({
+    ...mockAddress,
+  }));
   const relatives = duplicateObj(mockRelative, body.relatives) as string[];
   const first_name = body.first_name || "John";
   const middle_name = body.middle_name || "";
@@ -91,9 +87,11 @@ export async function POST(req: NextRequest) {
   const status = body.status || "new";
   const manually_resolved = body.manually_resolved || false;
   const optout_attempts = body.optout_attempts || null;
+  const scan_result_status = body.scan_result_status || "new";
+  const broker_status = body.broker_status || "active";
+  const url = "";
 
-  const brokerData: QaBrokerData = {
-    onerep_profile_id,
+  const brokerData: OnerepScanResultDataBrokerRow = {
     link,
     age,
     data_broker,
@@ -107,12 +105,25 @@ export async function POST(req: NextRequest) {
     status,
     manually_resolved,
     optout_attempts,
+    id: 0,
+    onerep_scan_result_id: 0,
+    onerep_scan_id,
+    data_broker_id: 0,
+    created_at: new Date(),
+    updated_at: new Date(),
+    scan_result_status,
+    broker_status,
+    url,
   };
   try {
     await addQaCustomBroker(brokerData);
     return new NextResponse("Success", { status: 200 });
-  } catch {
-    return internalServerError();
+  } catch (error) {
+    console.error("Error in addQaCustomBroker:", error);
+    return new NextResponse(
+      `Internal Server Error: ${error instanceof Error ? error.message : "Unknown error"}`,
+      { status: 500 },
+    );
   }
 }
 

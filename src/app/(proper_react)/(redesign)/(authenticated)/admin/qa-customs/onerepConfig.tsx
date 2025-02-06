@@ -6,24 +6,7 @@
 
 import React, { useState, useEffect } from "react";
 import styles from "./ConfigPage.module.scss";
-
-interface QaBrokerDataCounts {
-  onerep_scan_result_id?: number;
-  onerep_profile_id: number;
-  link: string;
-  age: number | null | undefined;
-  data_broker: string;
-  emails: number;
-  phones: number;
-  addresses: number;
-  relatives: number;
-  first_name: string;
-  middle_name: string | null | undefined;
-  last_name: string;
-  status: string;
-  manually_resolved: string;
-  optout_attempts?: number;
-}
+import { OnerepScanResultDataBrokerRow } from "knex/types/tables";
 
 const endpointBase = "/api/v1/admin/qa-customs/onerep";
 const endpointToggleBase = "/api/v1/admin/qa-customs";
@@ -40,7 +23,7 @@ const OnerepConfigPage = (props: Props) => {
   const profileId = props.onerepProfileId;
   const [brokersFetchHappened, setBrokersFetchHappened] =
     useState<boolean>(false);
-  const [brokers, setBrokers] = useState<QaBrokerDataCounts[]>([]);
+  const [brokers, setBrokers] = useState<OnerepScanResultDataBrokerRow[]>([]);
   const [errors, setErrors] = useState({
     profile_id: false,
     data_broker: false,
@@ -49,24 +32,33 @@ const OnerepConfigPage = (props: Props) => {
 
   // Initialize a base broker template to reset form fields
 
-  const baseBroker: QaBrokerDataCounts = {
-    onerep_profile_id: -1,
+  const baseBroker: OnerepScanResultDataBrokerRow = {
     link: "",
-    age: null,
+    age: 30,
     data_broker: "",
-    emails: 0,
-    phones: 0,
-    addresses: 0,
-    relatives: 0,
+    emails: [],
+    phones: [],
+    addresses: [],
+    relatives: [],
     first_name: "",
-    middle_name: null,
+    middle_name: "",
     last_name: "",
     status: "new",
-    manually_resolved: "false",
+    manually_resolved: false,
+    scan_result_status: "new",
+    broker_status: "active",
+    url: "",
+    id: 0,
+    onerep_scan_result_id: 0,
+    onerep_scan_id: 0,
+    data_broker_id: 0,
+    created_at: new Date(),
+    updated_at: new Date(),
   };
 
   // Temporary state to hold form input for a new broker
-  const [newBroker, setNewBroker] = useState<QaBrokerDataCounts>(baseBroker);
+  const [newBroker, setNewBroker] =
+    useState<OnerepScanResultDataBrokerRow>(baseBroker);
   const [showQaBrokers, setShowQaBrokers] = useState<boolean>(
     props.showQaBrokers,
   );
@@ -127,7 +119,7 @@ const OnerepConfigPage = (props: Props) => {
 
     if (hasError) return;
 
-    newBroker.onerep_profile_id = profileId;
+    newBroker.onerep_scan_id = profileId;
     try {
       const req = fetch(endpointBase, {
         method: "POST",
@@ -137,8 +129,7 @@ const OnerepConfigPage = (props: Props) => {
         body: JSON.stringify({
           ...newBroker,
           link: linkString,
-          manually_resolved:
-            newBroker.manually_resolved === "false" ? false : true,
+          manually_resolved: !newBroker.manually_resolved ? false : true,
         }),
       });
       alert("Request made successfully");
@@ -305,7 +296,7 @@ const OnerepConfigPage = (props: Props) => {
                   type="number"
                   name="addresses"
                   placeholder="0"
-                  value={newBroker.addresses}
+                  value={[]}
                   onChange={handleChange}
                 />
               </label>
@@ -362,11 +353,11 @@ const OnerepConfigPage = (props: Props) => {
                 Manually Resolved:
                 <select
                   name="manually_resolved"
-                  value={newBroker.manually_resolved}
+                  value={0}
                   onChange={(e) => void handleChange(e)}
                 >
-                  <option value="false">False</option>
-                  <option value="true">True</option>
+                  <option value={0}>False</option>
+                  <option value={1}>True</option>
                 </select>
               </label>
 
@@ -380,6 +371,25 @@ const OnerepConfigPage = (props: Props) => {
                   <option value="new">New</option>
                   <option value="optout_in_progress">In Progress</option>
                   <option value="removed">Removed</option>
+                </select>
+              </label>
+
+              <label>
+                Broker Status:
+                <select
+                  name="broker_status"
+                  value={newBroker.broker_status}
+                  onChange={(e) => void handleChange(e)}
+                >
+                  <option value="active">Active</option>
+                  <option value="on_hold">On hold</option>
+                  <option value="ceased_operation">Ceased operation</option>
+                  <option value="scan_under_maintenance">
+                    Scan under maintenance
+                  </option>
+                  <option value="removal_under_maintenance">
+                    Removal under maintenance
+                  </option>
                 </select>
               </label>
 
@@ -407,7 +417,7 @@ const OnerepConfigPage = (props: Props) => {
               <p>fetching...</p>
             ) : brokers.length !== 0 ? (
               brokers.map((broker) => (
-                <li key={broker.onerep_profile_id} className={styles.listItem}>
+                <li key={broker.onerep_scan_id} className={styles.listItem}>
                   <details>
                     <summary>
                       {broker.data_broker}
@@ -418,7 +428,7 @@ const OnerepConfigPage = (props: Props) => {
                   </details>
                   <button
                     onClick={() =>
-                      void handleDeleteBroker(broker.onerep_scan_result_id!)
+                      void handleDeleteBroker(broker.onerep_scan_result_id)
                     }
                   >
                     Delete

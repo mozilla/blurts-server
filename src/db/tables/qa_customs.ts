@@ -2,7 +2,10 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { OnerepScanResultRow } from "knex/types/tables";
+import {
+  OnerepScanResultDataBrokerRow,
+  OnerepScanResultRow,
+} from "knex/types/tables";
 import { logger } from "../../app/functions/server/logging";
 import createDbConnection from "../connect";
 import { getOnerepProfileId } from "./subscribers";
@@ -107,15 +110,16 @@ async function getQaCustomBrokers(
 /**
  * Inserts a new row into the qa_custom_brokers table.
  *
- * @param brokerData This object conforms to QaBrokerData, which is the same as
- * OnerepScanResulsRow with some fields omitted due to them being automaticallty set.
+ * @param brokerData
  */
-async function addQaCustomBroker(brokerData: QaBrokerData): Promise<void> {
+async function addQaCustomBroker(
+  brokerData: OnerepScanResultDataBrokerRow,
+): Promise<void> {
   await knex("qa_custom_brokers").insert({
     ...brokerData,
     emails: JSON.stringify(brokerData.emails),
     phones: JSON.stringify(brokerData.phones),
-    addresses: JSON.stringify(brokerData.addresses),
+    addresses: JSON.stringify(brokerData.addresses || []),
     relatives: JSON.stringify(brokerData.relatives),
   });
   logger.info(`Created a custom broker: ${brokerData.data_broker}`);
@@ -123,10 +127,10 @@ async function addQaCustomBroker(brokerData: QaBrokerData): Promise<void> {
 
 async function getAllQaCustomBrokers(
   onerep_profile_id: number,
-): Promise<QaBrokerData[]> {
+): Promise<OnerepScanResultDataBrokerRow[]> {
   const res = (await knex("qa_custom_brokers")
     .where("onerep_profile_id", onerep_profile_id)
-    .select("*")) as QaBrokerData[];
+    .select("*")) as OnerepScanResultDataBrokerRow[];
   return res;
 }
 
