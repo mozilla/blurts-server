@@ -49,7 +49,6 @@ global.TextEncoder = TextEncoder;
 
 // Jest doesn't like the top-level await in envVars.ts, so we mock it.
 jest.mock("./src/envVars", () => {
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
   require("dotenv-flow").config();
   return {
     getEnvVarsOrThrow: () => process.env,
