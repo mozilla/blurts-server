@@ -2308,10 +2308,7 @@ describe("Settings page", () => {
             yearlySubscriptionUrl=""
             monthlySubscriptionUrl=""
             subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-            enabledFeatureFlags={[
-              "UpdatedEmailPreferencesOption",
-              "MonthlyReportFreeUser",
-            ]}
+            enabledFeatureFlags={["UpdatedEmailPreferencesOption"]}
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={false}
             data={mockedFreeSubscriberEmailPreferences}
