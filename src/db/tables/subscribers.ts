@@ -6,10 +6,8 @@ import type { Profile } from "next-auth";
 import type { EmailAddressRow, SubscriberRow } from "knex/types/tables";
 import createDbConnection from "../connect";
 import { SerializedSubscriber } from "../../next-auth.js";
-import { getFeatureFlagData } from "./featureFlags";
 import { getEnvVarsOrThrow } from "../../envVars";
 import { parseIso8601Datetime } from "../../utils/parse";
-import { logger } from "../../app/functions/server/logging";
 
 const knex = createDbConnection();
 const { DELETE_UNVERIFIED_SUBSCRIBERS_TIMER } = getEnvVarsOrThrow([
@@ -407,23 +405,12 @@ async function getFreeSubscribersWaitingForMonthlyEmail(
   batchSize: number,
   countryCodes: string[],
 ): Promise<SubscriberRow[]> {
-  const flag = await getFeatureFlagData("MonthlyReportFreeUser");
   const accountCutOffDate = parseIso8601Datetime(
     process.env.MONTHLY_ACTIVITY_FREE_EMAIL_ACCOUNT_CUTOFF_DATE ??
       "2022-01-01T00:00:00.000Z",
   );
 
-  if (
-    !flag?.is_enabled &&
-    !(Array.isArray(flag?.allow_list) && flag.allow_list.length > 0)
-  ) {
-    logger.info("monthly_free_report_disabled", {
-      flag: flag,
-    });
-    return [];
-  }
-
-  let query = knex("subscribers")
+  const query = knex("subscribers")
     .select<SubscriberRow[]>("subscribers.*")
     .select(
       knex.raw(
@@ -492,13 +479,6 @@ async function getFreeSubscribersWaitingForMonthlyEmail(
           MONITOR_PREMIUM_CAPABILITY,
         ),
     );
-
-  if (Array.isArray(flag.allow_list) && flag.allow_list.length > 0) {
-    // If the feature flag has an allowlist, only send to users on that list.
-    // The `.andWhereIn` alias doesn't exist:
-    // https://github.com/knex/knex/issues/1881#issuecomment-275433906
-    query = query.whereIn("subscribers.primary_email", flag.allow_list);
-  }
 
   const wrappedQuery = knex
     // @ts-ignore TODO MNTOR-3890 Move away from this approach and simplify query.
