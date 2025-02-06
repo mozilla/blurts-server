@@ -31,7 +31,7 @@ import {
   knexHibp,
 } from "../../utils/hibp";
 import { renderEmail } from "../../emails/renderEmail";
-import { RedesignedBreachAlertEmail } from "../../emails/templates/breachAlert/BreachAlertEmail";
+import { BreachAlertEmail } from "../../emails/templates/breachAlert/BreachAlertEmail";
 import { getCronjobL10n } from "../../app/functions/l10n/cronjobs";
 import { sanitizeSubscriberRow } from "../../app/functions/server/sanitize";
 import { getSubscriberBreaches } from "../../app/functions/server/getSubscriberBreaches";
@@ -294,7 +294,7 @@ export async function poll(
               recipientEmail,
               subject,
               await renderEmail(
-                <RedesignedBreachAlertEmail
+                <BreachAlertEmail
                   l10n={l10n}
                   breach={breachAlert}
                   breachedEmail={breachedEmail}

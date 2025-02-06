@@ -6,18 +6,15 @@ import { it, expect } from "@jest/globals";
 import { composeStory } from "@storybook/react";
 import { render, screen } from "@testing-library/react";
 import Meta, {
-  RedesignedBreachAlertEmailNonUsStory,
-  RedesignedBreachAlertEmailUsFreeNoScanStory,
-  RedesignedBreachAlertEmailUsFreeWithScanStory,
-  RedesignedBreachAlertEmailUsPlusWithScanStory,
+  BreachAlertEmailNonUsStory,
+  BreachAlertEmailUsFreeNoScanStory,
+  BreachAlertEmailUsFreeWithScanStory,
+  BreachAlertEmailUsPlusWithScanStory,
 } from "./BreachAlertEmail.stories";
 import { createRandomHibpListing } from "../../../apiMocks/mockData";
 
 it("lists compromised data", () => {
-  const ComposedEmail = composeStory(
-    RedesignedBreachAlertEmailNonUsStory,
-    Meta,
-  );
+  const ComposedEmail = composeStory(BreachAlertEmailNonUsStory, Meta);
   render(
     <ComposedEmail
       breach={createRandomHibpListing({
@@ -31,10 +28,7 @@ it("lists compromised data", () => {
 });
 
 it("shows the 'Go to Dashboard' button for non-US users", () => {
-  const ComposedEmail = composeStory(
-    RedesignedBreachAlertEmailNonUsStory,
-    Meta,
-  );
+  const ComposedEmail = composeStory(BreachAlertEmailNonUsStory, Meta);
   render(<ComposedEmail />);
 
   const goToDashboardButton = screen.getByRole("link", {
@@ -44,10 +38,7 @@ it("shows the 'Go to Dashboard' button for non-US users", () => {
 });
 
 it("shows the 'Go to Dashboard' button for US users with Plus", () => {
-  const ComposedEmail = composeStory(
-    RedesignedBreachAlertEmailUsPlusWithScanStory,
-    Meta,
-  );
+  const ComposedEmail = composeStory(BreachAlertEmailUsPlusWithScanStory, Meta);
   render(<ComposedEmail />);
 
   const goToDashboardButton = screen.getByRole("link", {
@@ -57,10 +48,7 @@ it("shows the 'Go to Dashboard' button for US users with Plus", () => {
 });
 
 it("does not show the 'Go to Dashboard' button for US users without Plus, who haven't run a scan yet", () => {
-  const ComposedEmail = composeStory(
-    RedesignedBreachAlertEmailUsFreeNoScanStory,
-    Meta,
-  );
+  const ComposedEmail = composeStory(BreachAlertEmailUsFreeNoScanStory, Meta);
   render(<ComposedEmail />);
 
   const goToDashboardButton = screen.queryByRole("link", {
@@ -70,10 +58,7 @@ it("does not show the 'Go to Dashboard' button for US users without Plus, who ha
 });
 
 it("does not show the 'Go to Dashboard' button for US users without Plus, who have run a scan", () => {
-  const ComposedEmail = composeStory(
-    RedesignedBreachAlertEmailUsFreeWithScanStory,
-    Meta,
-  );
+  const ComposedEmail = composeStory(BreachAlertEmailUsFreeWithScanStory, Meta);
   render(<ComposedEmail />);
 
   const goToDashboardButton = screen.queryByRole("link", {
@@ -83,10 +68,7 @@ it("does not show the 'Go to Dashboard' button for US users without Plus, who ha
 });
 
 it("encourages US users who haven't run a scan yet to run one", () => {
-  const ComposedEmail = composeStory(
-    RedesignedBreachAlertEmailUsFreeNoScanStory,
-    Meta,
-  );
+  const ComposedEmail = composeStory(BreachAlertEmailUsFreeNoScanStory, Meta);
   render(<ComposedEmail />);
 
   const getScanButton = screen.getByRole("link", {
@@ -96,10 +78,7 @@ it("encourages US users who haven't run a scan yet to run one", () => {
 });
 
 it("helps free US users who have run a scan to take manual action", () => {
-  const ComposedEmail = composeStory(
-    RedesignedBreachAlertEmailUsFreeWithScanStory,
-    Meta,
-  );
+  const ComposedEmail = composeStory(BreachAlertEmailUsFreeWithScanStory, Meta);
   render(<ComposedEmail />);
 
   const takeActionButton = screen.getByRole("link", {
@@ -109,10 +88,7 @@ it("helps free US users who have run a scan to take manual action", () => {
 });
 
 it("encourages free US users who have run a scan to have Monitor Plus resolve them for them", () => {
-  const ComposedEmail = composeStory(
-    RedesignedBreachAlertEmailUsFreeWithScanStory,
-    Meta,
-  );
+  const ComposedEmail = composeStory(BreachAlertEmailUsFreeWithScanStory, Meta);
   render(<ComposedEmail />);
 
   const getPlusButton = screen.getByRole("link", {
@@ -122,10 +98,7 @@ it("encourages free US users who have run a scan to have Monitor Plus resolve th
 });
 
 it("does not tell users who already have Plus to upgrade", () => {
-  const ComposedEmail = composeStory(
-    RedesignedBreachAlertEmailUsPlusWithScanStory,
-    Meta,
-  );
+  const ComposedEmail = composeStory(BreachAlertEmailUsPlusWithScanStory, Meta);
   render(<ComposedEmail />);
 
   const getPlusButton = screen.queryByRole("link", {
@@ -135,10 +108,7 @@ it("does not tell users who already have Plus to upgrade", () => {
 });
 
 it("uses `product-email` as the utm_medium everywhere", () => {
-  const ComposedEmail = composeStory(
-    RedesignedBreachAlertEmailUsFreeWithScanStory,
-    Meta,
-  );
+  const ComposedEmail = composeStory(BreachAlertEmailUsFreeWithScanStory, Meta);
   render(<ComposedEmail />);
 
   const links = screen.getAllByRole("link");

@@ -28,7 +28,7 @@ import {
   createRandomHibpListing,
   createRandomScanResult,
 } from "../../../../../../apiMocks/mockData";
-import { RedesignedBreachAlertEmail } from "../../../../../../emails/templates/breachAlert/BreachAlertEmail";
+import { BreachAlertEmail } from "../../../../../../emails/templates/breachAlert/BreachAlertEmail";
 import { SignupReportEmail } from "../../../../../../emails/templates/signupReport/SignupReportEmail";
 import { getBreachesForEmail } from "../../../../../../utils/hibp";
 import { getSha1 } from "../../../../../../utils/fxa";
@@ -240,7 +240,7 @@ export async function triggerBreachAlert(emailAddress: string) {
   await send(
     emailAddress,
     l10n.getString("email-breach-alert-all-subject"),
-    <RedesignedBreachAlertEmail
+    <BreachAlertEmail
       subscriber={subscriber}
       breach={createRandomHibpListing()}
       breachedEmail={emailAddress}
