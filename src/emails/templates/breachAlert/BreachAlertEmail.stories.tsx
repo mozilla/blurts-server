@@ -28,7 +28,6 @@ const meta: Meta<FC<RedesignedBreachAlertEmailProps>> = {
   args: {
     l10n: getL10n("en"),
     utmCampaignId: "breach-alert",
-    enabledFeatureFlags: [],
     subscriber: {
       fxa_profile_json: {
         locale: "en-US",
@@ -41,20 +40,11 @@ const meta: Meta<FC<RedesignedBreachAlertEmailProps>> = {
 export default meta;
 type Story = StoryObj<FC<RedesignedBreachAlertEmailProps>>;
 
-export const BreachAlertEmailStory: Story = {
-  name: "Breach alert",
-  args: {
-    breach: createRandomHibpListing(),
-    breachedEmail: "example@example.com",
-  },
-};
-
 export const RedesignedBreachAlertEmailNonUsStory: Story = {
   name: "Breach alert/Non-US",
   args: {
     breach: createRandomHibpListing(),
     breachedEmail: "example@example.com",
-    enabledFeatureFlags: ["BreachEmailRedesign"],
     subscriber: {
       fxa_profile_json: {
         locale: "en-CA",
@@ -69,7 +59,6 @@ export const RedesignedBreachAlertEmailUsFreeNoScanStory: Story = {
   args: {
     breach: createRandomHibpListing(),
     breachedEmail: "example@example.com",
-    enabledFeatureFlags: ["BreachEmailRedesign"],
     dataSummary: getDashboardSummary(
       [],
       Array.from({ length: 5 }, () => createRandomBreach()),
@@ -82,7 +71,6 @@ export const RedesignedBreachAlertEmailUsFreeWithScanStory: Story = {
   args: {
     breach: createRandomHibpListing(),
     breachedEmail: "example@example.com",
-    enabledFeatureFlags: ["BreachEmailRedesign"],
     dataSummary: getDashboardSummary(
       Array.from({ length: 5 }, () => createRandomScanResult()),
       Array.from({ length: 5 }, () => createRandomBreach()),
@@ -104,7 +92,6 @@ export const RedesignedBreachAlertEmailUsPlusNoScanStory: Story = {
         subscriptions: ["monitor"],
       },
     } as SubscriberRow,
-    enabledFeatureFlags: ["BreachEmailRedesign"],
   },
 };
 
@@ -119,7 +106,6 @@ export const RedesignedBreachAlertEmailUsPlusWithScanStory: Story = {
         subscriptions: ["monitor"],
       },
     } as SubscriberRow,
-    enabledFeatureFlags: ["BreachEmailRedesign"],
     dataSummary: getDashboardSummary(
       Array.from({ length: 5 }, () => createRandomScanResult()),
       Array.from({ length: 5 }, () => createRandomBreach()),

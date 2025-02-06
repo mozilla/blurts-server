@@ -4,14 +4,8 @@
 
 import type { SubscriberRow } from "knex/types/tables";
 import { ExtendedReactLocalization } from "../../../app/functions/l10n";
-import {
-  EmailFooter,
-  RedesignedEmailFooter,
-} from "../../components/EmailFooter";
-import { EmailHeader } from "../../components/EmailHeader";
+import { RedesignedEmailFooter } from "../../components/EmailFooter";
 import { HibpLikeDbBreach } from "../../../utils/hibp";
-import { BreachCard } from "../../components/BreachCard";
-import { FeatureFlagName } from "../../../db/tables/featureFlags";
 import { EmailHero } from "../../components/EmailHero";
 import { getLocale } from "../../../app/functions/universal/getLocale";
 import { isEligibleForPremium } from "../../../app/functions/universal/premium";
@@ -23,56 +17,6 @@ import { ResolutionRelevantBreachDataTypes } from "../../../app/functions/univer
 import { EmailBanner } from "../../components/EmailBanner";
 import { DataPointCount } from "../../components/EmailDataPointCount";
 import { HeaderStyles, MetaTags } from "../../components/HeaderStyles";
-
-export type Props = {
-  l10n: ExtendedReactLocalization;
-  breach: HibpLikeDbBreach;
-  breachedEmail: string;
-  utmCampaignId: string;
-  subscriber: SubscriberRow;
-};
-
-export const BreachAlertEmail = (props: Props) => {
-  const l10n = props.l10n;
-
-  return (
-    <mjml>
-      <mj-head>
-        <mj-preview>{l10n.getString("email-spotted-new-breach")}</mj-preview>
-        <MetaTags />
-        <HeaderStyles />
-      </mj-head>
-      <mj-body>
-        <EmailHeader l10n={l10n} utm_campaign={props.utmCampaignId} />
-        <mj-section padding="20px">
-          <mj-column>
-            <mj-text align="center" font-size="16px" line-height="24px">
-              {l10n.getFragment("email-breach-detected-2", {
-                vars: { "email-address": props.breachedEmail },
-                elems: { b: <b /> },
-              })}
-            </mj-text>
-          </mj-column>
-        </mj-section>
-        <BreachCard breach={props.breach} l10n={l10n} />
-        <mj-section padding="20px">
-          <mj-column>
-            <mj-button
-              href={`${process.env.SERVER_URL}/user/dashboard/action-needed?utm_source=monitor-product&utm_medium=product-email&utm_campaign=${props.utmCampaignId}&utm_content=view-your-dashboard-us`}
-              background-color="#0060DF"
-              font-weight={600}
-              font-size="15px"
-              line-height="22px"
-            >
-              {l10n.getString("email-dashboard-cta")}
-            </mj-button>
-          </mj-column>
-        </mj-section>
-        <EmailFooter l10n={l10n} utm_campaign={props.utmCampaignId} />
-      </mj-body>
-    </mjml>
-  );
-};
 
 export type RedesignedBreachAlertEmailProps = {
   l10n: ExtendedReactLocalization;
@@ -88,7 +32,6 @@ export type RedesignedBreachAlertEmailProps = {
    * <DataPointCount> for at the moment.
    */
   dataSummary?: DashboardSummary;
-  enabledFeatureFlags: FeatureFlagName[];
 };
 
 // These components are fully covered by the BreachAlertEmail test,
@@ -98,10 +41,6 @@ export type RedesignedBreachAlertEmailProps = {
 export const RedesignedBreachAlertEmail = (
   props: RedesignedBreachAlertEmailProps,
 ) => {
-  if (!props.enabledFeatureFlags.includes("BreachEmailRedesign")) {
-    return <BreachAlertEmail {...props} />;
-  }
-
   const hasRunFreeScan = typeof props.subscriber.onerep_profile_id === "number";
   const l10n = props.l10n;
   const locale = getLocale(props.l10n);

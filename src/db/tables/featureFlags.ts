@@ -46,7 +46,6 @@ export const featureFlagNames = [
   "AdditionalRemovalStatuses",
   "PetitionBannerCsatSurvey",
   "MonthlyReportFreeUser",
-  "BreachEmailRedesign",
   "PromptNoneAuthFlow",
   "GA4SubscriptionEvents",
   "DataBrokerRemovalTimeEstimateLabel",

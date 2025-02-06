@@ -47,12 +47,6 @@ jest.mock("../../db/tables/emailAddresses", () => {
   };
 });
 
-jest.mock("../../db/tables/featureFlags", () => {
-  return {
-    getEnabledFeatureFlags: jest.fn(() => Promise.resolve([])),
-  };
-});
-
 jest.mock("../../db/tables/onerep_scans", () => {
   return {
     getScanResultsWithBroker: jest.fn(() =>
@@ -347,12 +341,6 @@ test("new subject line for the redesigned breach email", async () => {
     (typeof emailMod)["sendEmail"]
   >;
 
-  const mockedFeatureFlagsModule: any = jest.requireMock(
-    "../../db/tables/featureFlags",
-  );
-  mockedFeatureFlagsModule.getEnabledFeatureFlags.mockResolvedValueOnce([
-    "BreachEmailRedesign",
-  ]);
   const mockedUtilsHibp: any = jest.requireMock("../../utils/hibp");
   mockedUtilsHibp.getBreachByName.mockReturnValue({
     IsVerified: true,
