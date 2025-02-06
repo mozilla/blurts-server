@@ -5,10 +5,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { FC } from "react";
 import type { SubscriberRow } from "knex/types/tables";
-import {
-  RedesignedBreachAlertEmailProps,
-  RedesignedBreachAlertEmail,
-} from "./BreachAlertEmail";
+import { BreachAlertEmailProps, BreachAlertEmail } from "./BreachAlertEmail";
 import { StorybookEmailRenderer } from "../../StorybookEmailRenderer";
 import { getL10n } from "../../../app/functions/l10n/storybookAndJest";
 import {
@@ -18,11 +15,11 @@ import {
 } from "../../../apiMocks/mockData";
 import { getDashboardSummary } from "../../../app/functions/server/dashboard";
 
-const meta: Meta<FC<RedesignedBreachAlertEmailProps>> = {
+const meta: Meta<FC<BreachAlertEmailProps>> = {
   title: "Emails/Breach alert",
-  component: (props: RedesignedBreachAlertEmailProps) => (
+  component: (props: BreachAlertEmailProps) => (
     <StorybookEmailRenderer plainTextVersion={null}>
-      <RedesignedBreachAlertEmail {...props} />
+      <BreachAlertEmail {...props} />
     </StorybookEmailRenderer>
   ),
   args: {
@@ -38,9 +35,9 @@ const meta: Meta<FC<RedesignedBreachAlertEmailProps>> = {
 };
 
 export default meta;
-type Story = StoryObj<FC<RedesignedBreachAlertEmailProps>>;
+type Story = StoryObj<FC<BreachAlertEmailProps>>;
 
-export const RedesignedBreachAlertEmailNonUsStory: Story = {
+export const BreachAlertEmailNonUsStory: Story = {
   name: "Breach alert/Non-US",
   args: {
     breach: createRandomHibpListing(),
@@ -54,7 +51,7 @@ export const RedesignedBreachAlertEmailNonUsStory: Story = {
   },
 };
 
-export const RedesignedBreachAlertEmailUsFreeNoScanStory: Story = {
+export const BreachAlertEmailUsFreeNoScanStory: Story = {
   name: "Breach alert/US free, no scan yet",
   args: {
     breach: createRandomHibpListing(),
@@ -66,7 +63,7 @@ export const RedesignedBreachAlertEmailUsFreeNoScanStory: Story = {
   },
 };
 
-export const RedesignedBreachAlertEmailUsFreeWithScanStory: Story = {
+export const BreachAlertEmailUsFreeWithScanStory: Story = {
   name: "Breach alert/US free, scan has run",
   args: {
     breach: createRandomHibpListing(),
@@ -81,7 +78,7 @@ export const RedesignedBreachAlertEmailUsFreeWithScanStory: Story = {
   },
 };
 
-export const RedesignedBreachAlertEmailUsPlusNoScanStory: Story = {
+export const BreachAlertEmailUsPlusNoScanStory: Story = {
   name: "Breach alert/US Plus, no scan yet",
   args: {
     breach: createRandomHibpListing(),
@@ -95,7 +92,7 @@ export const RedesignedBreachAlertEmailUsPlusNoScanStory: Story = {
   },
 };
 
-export const RedesignedBreachAlertEmailUsPlusWithScanStory: Story = {
+export const BreachAlertEmailUsPlusWithScanStory: Story = {
   name: "Breach alert/US Plus, scan has run",
   args: {
     breach: createRandomHibpListing(),

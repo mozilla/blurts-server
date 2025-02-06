@@ -18,7 +18,7 @@ import { EmailBanner } from "../../components/EmailBanner";
 import { DataPointCount } from "../../components/EmailDataPointCount";
 import { HeaderStyles, MetaTags } from "../../components/HeaderStyles";
 
-export type RedesignedBreachAlertEmailProps = {
+export type BreachAlertEmailProps = {
   l10n: ExtendedReactLocalization;
   breach: HibpLikeDbBreach;
   breachedEmail: string;
@@ -38,9 +38,7 @@ export type RedesignedBreachAlertEmailProps = {
 // but for some reason get marked as uncovered again once the
 // `src/scripts/cronjobs/emailBreachAlerts.test.ts` tests are run:
 /* c8 ignore start */
-export const RedesignedBreachAlertEmail = (
-  props: RedesignedBreachAlertEmailProps,
-) => {
+export const BreachAlertEmail = (props: BreachAlertEmailProps) => {
   const hasRunFreeScan = typeof props.subscriber.onerep_profile_id === "number";
   const l10n = props.l10n;
   const locale = getLocale(props.l10n);
