@@ -31,8 +31,7 @@ const compat = new FlatCompat({
 // again after the aforementioned issue has been fixed.
 header.rules.header.meta.schema = false;
 
-// eslint-disable-next-line import/no-anonymous-default-export
-export default [
+const config = [
   ...compat.config({
     extends: ["next"],
   }),
@@ -188,3 +187,5 @@ export default [
     },
   },
 ];
+
+export default config;
