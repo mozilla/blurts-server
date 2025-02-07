@@ -14,7 +14,7 @@ landing-redesign-hero-lead = { -brand-monitor } finds where your info has been e
 # Hero CTA
 
 landing-redesign-hero-cta-input-label = Start a free scan by creating an account
-landing-redesign-hero-cta-button-label = Get started
+landing-redesign-hero-cta-button-label = Start scan
 
 # Hero content
 
