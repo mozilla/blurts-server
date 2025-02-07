@@ -166,7 +166,6 @@ export const checkAuthState = async (page: Page) => {
  * @param text
  */
 export function removeUnicodeChars(text: string): string {
-  // eslint-disable-next-line no-control-regex
   return text.replace(/[^\x00-\x7F]/g, "");
 }
 

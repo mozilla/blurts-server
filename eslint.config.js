@@ -4,19 +4,14 @@
 
 import { dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+import { FlatCompat } from "@eslint/eslintrc";
+import checkFile from "eslint-plugin-check-file";
+import header from "eslint-plugin-header";
+import importPlugin from "eslint-plugin-import";
 import jestPlugin from "eslint-plugin-jest";
 import js from "@eslint/js";
 import jsdoc from "eslint-plugin-jsdoc";
 import tsEslint from "@typescript-eslint/eslint-plugin";
-// @ts-ignore No type declaration file for module available.
-import { FlatCompat } from "@eslint/eslintrc";
-// @ts-ignore No type declaration file for module available.
-import checkFile from "eslint-plugin-check-file";
-// @ts-ignore No type declaration file for module available.
-import header from "eslint-plugin-header";
-// @ts-ignore No type declaration file for module available.
-import importPlugin from "eslint-plugin-import";
-// @ts-ignore No type declaration file for module available.
 import tsParser from "@typescript-eslint/parser";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -44,7 +39,7 @@ const config = [
         project: "tsconfig.json",
       },
     },
-    ignores: ["coverage", "dist", "scripts", "sentry.*.config.ts"],
+    ignores: ["coverage", "dist", "sentry.*.config.ts"],
     plugins: {
       jsdoc,
       "@typescript-eslint": tsEslint,
@@ -155,21 +150,6 @@ const config = [
     },
   },
   {
-    files: [
-      "src/app.js",
-      "src/utils/redisMock.js",
-      "src/app/functions/server/breachResolution.ts",
-    ],
-    rules: {
-      "jsdoc/no-undefined-types": "off",
-      "@typescript-eslint/no-unused-vars": "off",
-      "@typescript-eslint/no-explicit-any": "off",
-      "@typescript-eslint/no-non-null-assertion": "off",
-      "import/no-named-as-default-member": "off",
-      "import/no-unresolved": "off",
-    },
-  },
-  {
     // Only enable rules that depend on type checking on TS files.
     files: ["**/*.{ts,tsx}"],
     languageOptions: {
@@ -189,6 +169,18 @@ const config = [
       "@typescript-eslint/no-unsafe-assignment": "off",
       "@typescript-eslint/no-unsafe-member-access": "off",
       "@typescript-eslint/no-unsafe-call": "off",
+    },
+  },
+  // Ignore the following `.js` files from linting for now.
+  {
+    files: [
+      "eslint.config.js",
+      "src/app/global-error.js",
+      "src/db/**/*.js",
+      "src/scripts/**/*.js",
+    ],
+    languageOptions: {
+      parserOptions: { project: null },
     },
   },
 ];

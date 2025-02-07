@@ -376,7 +376,7 @@ async function getPlusSubscribersWaitingForMonthlyEmail(
     // Only send to users who haven't opted out of the monthly activity email...
     // It looks like Knex's `.where` type definition doesn't accept Promise-returning
     // functions, even though the code does; hence the `eslint-disable`)
-    // eslint-disable-next-line @typescript-eslint/no-misused-promises
+
     .where((builder) =>
       builder
         .whereNull("monthly_monitor_report")
@@ -385,7 +385,7 @@ async function getPlusSubscribersWaitingForMonthlyEmail(
     // ...who haven't received the email in the last 1 month...
     // It looks like Knex's `.where` type definition doesn't accept Promise-returning
     // functions, even though the code does; hence the `eslint-disable`)
-    // eslint-disable-next-line @typescript-eslint/no-misused-promises
+
     .andWhere((builder) =>
       builder
         .whereNull("monthly_monitor_report_at")
@@ -467,7 +467,7 @@ async function getFreeSubscribersWaitingForMonthlyEmail(
     // user activity email, and the free user activity email.)
     // It looks like Knex's `.where` type definition doesn't accept Promise-returning
     // functions, even though the code does; hence the `eslint-disable`)
-    // eslint-disable-next-line @typescript-eslint/no-misused-promises
+
     .where((builder) =>
       builder
         .whereNull("monthly_monitor_report_free")
@@ -476,7 +476,7 @@ async function getFreeSubscribersWaitingForMonthlyEmail(
     // ...who haven't received the email in the last 1 month...
     // It looks like Knex's `.where` type definition doesn't accept Promise-returning
     // functions, even though the code does; hence the `eslint-disable`)
-    // eslint-disable-next-line @typescript-eslint/no-misused-promises
+
     .andWhere((builder) =>
       builder
         .whereNull("monthly_monitor_report_free_at")
@@ -495,7 +495,7 @@ async function getFreeSubscribersWaitingForMonthlyEmail(
     //       in. Locally, you might want to set this via `/admin/dev/`.
     // It looks like Knex's `.where` type definition doesn't accept Promise-returning
     // functions, even though the code does; hence the `eslint-disable`)
-    // eslint-disable-next-line @typescript-eslint/no-misused-promises
+
     .andWhere((builder) =>
       builder
         .whereRaw(
