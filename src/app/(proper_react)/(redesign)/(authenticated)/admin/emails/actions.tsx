@@ -243,35 +243,37 @@ export async function triggerBreachAlert(
     countryCode: assumedCountryCode,
   });
 
-  options.redesign === true
-    ? await send(
-        emailAddress,
-        l10n.getString("email-breach-alert-all-subject"),
-        <RedesignedBreachAlertEmail
-          subscriber={subscriber}
-          breach={createRandomHibpListing()}
-          breachedEmail={emailAddress}
-          enabledFeatureFlags={["BreachEmailRedesign"]}
-          utmCampaignId="breach-alert"
-          l10n={l10n}
-          dataSummary={
-            isEligibleForPremium(assumedCountryCode) && !hasPremium(subscriber)
-              ? getDashboardSummary(scanData.results, allSubscriberBreaches)
-              : undefined
-          }
-        />,
-      )
-    : await send(
-        emailAddress,
-        l10n.getString("breach-alert-subject"),
-        <BreachAlertEmail
-          subscriber={subscriber}
-          breach={createRandomHibpListing()}
-          breachedEmail={emailAddress}
-          utmCampaignId="breach-alert"
-          l10n={l10n}
-        />,
-      );
+  if (options.redesign === true) {
+    await send(
+      emailAddress,
+      l10n.getString("email-breach-alert-all-subject"),
+      <RedesignedBreachAlertEmail
+        subscriber={subscriber}
+        breach={createRandomHibpListing()}
+        breachedEmail={emailAddress}
+        enabledFeatureFlags={["BreachEmailRedesign"]}
+        utmCampaignId="breach-alert"
+        l10n={l10n}
+        dataSummary={
+          isEligibleForPremium(assumedCountryCode) && !hasPremium(subscriber)
+            ? getDashboardSummary(scanData.results, allSubscriberBreaches)
+            : undefined
+        }
+      />,
+    );
+  } else {
+    await send(
+      emailAddress,
+      l10n.getString("breach-alert-subject"),
+      <BreachAlertEmail
+        subscriber={subscriber}
+        breach={createRandomHibpListing()}
+        breachedEmail={emailAddress}
+        utmCampaignId="breach-alert"
+        l10n={l10n}
+      />,
+    );
+  }
 }
 
 export async function triggerFirstDataBrokerRemovalFixed(emailAddress: string) {

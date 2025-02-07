@@ -338,6 +338,7 @@ export async function poll(
           // if this call ever fails, stop stop the script with an error
           try {
             await markEmailAsNotified(subscriberId, breachId, recipientEmail);
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
           } catch (e: any) {
             console.error("Failed to mark email as notified: ", e);
             throw new Error(e);

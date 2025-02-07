@@ -100,11 +100,13 @@ jest.mock("../../app/functions/server/refreshStoredScanResults", () => {
   };
 });
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const subClient: any = {
   subscriptionPath: jest.fn(),
   acknowledge: jest.fn(),
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function buildReceivedMessages(testBreachAlert: any) {
   return [
     {
@@ -144,8 +146,8 @@ test("rejects invalid messages", async () => {
       hashSuffixes: ["test-suffix1"],
     }),
   );
-  expect(subClient.acknowledge).toBeCalledTimes(0);
-  expect(consoleError).toBeCalledWith(
+  expect(subClient.acknowledge).toHaveBeenCalledTimes(0);
+  expect(consoleError).toHaveBeenCalledWith(
     "HIBP breach notification: requires breachName, hashPrefix, and hashSuffixes.",
   );
   expect(consoleLog).toHaveBeenCalledWith(
@@ -160,8 +162,8 @@ test("rejects invalid messages", async () => {
       hashSuffixes: ["test-suffix1"],
     }),
   );
-  expect(subClient.acknowledge).toBeCalledTimes(0);
-  expect(consoleError).toBeCalledWith(
+  expect(subClient.acknowledge).toHaveBeenCalledTimes(0);
+  expect(consoleError).toHaveBeenCalledWith(
     "HIBP breach notification: requires breachName, hashPrefix, and hashSuffixes.",
   );
   expect(consoleLog).toHaveBeenCalledWith(
@@ -176,8 +178,8 @@ test("rejects invalid messages", async () => {
       // missing hashSuffixes
     }),
   );
-  expect(subClient.acknowledge).toBeCalledTimes(0);
-  expect(consoleError).toBeCalledWith(
+  expect(subClient.acknowledge).toHaveBeenCalledTimes(0);
+  expect(consoleError).toHaveBeenCalledWith(
     "HIBP breach notification: requires breachName, hashPrefix, and hashSuffixes.",
   );
   expect(consoleLog).toHaveBeenCalledWith(
@@ -192,8 +194,8 @@ test("rejects invalid messages", async () => {
       hashSuffixes: "", // hashSuffixes not an array
     }),
   );
-  expect(subClient.acknowledge).toBeCalledTimes(0);
-  expect(consoleError).toBeCalledWith(
+  expect(subClient.acknowledge).toHaveBeenCalledTimes(0);
+  expect(consoleError).toHaveBeenCalledWith(
     "HIBP breach notification: requires breachName, hashPrefix, and hashSuffixes.",
   );
   expect(consoleLog).toHaveBeenCalledWith(
@@ -214,6 +216,7 @@ test("processes valid messages", async () => {
     (typeof emailMod)["sendEmail"]
   >;
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const mockedUtilsHibp: any = jest.requireMock("../../utils/hibp");
   mockedUtilsHibp.getBreachByName.mockReturnValue({
     IsVerified: true,
@@ -310,6 +313,7 @@ test("rendering the MJML-based template", async () => {
     (typeof emailMod)["sendEmail"]
   >;
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const mockedUtilsHibp: any = jest.requireMock("../../utils/hibp");
   mockedUtilsHibp.getBreachByName.mockReturnValue({
     IsVerified: true,
@@ -347,12 +351,14 @@ test("new subject line for the redesigned breach email", async () => {
     (typeof emailMod)["sendEmail"]
   >;
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const mockedFeatureFlagsModule: any = jest.requireMock(
     "../../db/tables/featureFlags",
   );
   mockedFeatureFlagsModule.getEnabledFeatureFlags.mockResolvedValueOnce([
     "BreachEmailRedesign",
   ]);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const mockedUtilsHibp: any = jest.requireMock("../../utils/hibp");
   mockedUtilsHibp.getBreachByName.mockReturnValue({
     IsVerified: true,
@@ -388,6 +394,7 @@ test("skipping email when subscriber id exists in email_notifications table", as
   // I'm respecting Chesterton's Fence and leaving them in place for now:
   jest.spyOn(console, "info").mockImplementation(() => undefined);
   const { sendEmail } = await import("../../utils/email");
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const mockedUtilsHibp: any = jest.requireMock("../../utils/hibp");
   mockedUtilsHibp.getBreachByName.mockReturnValue({
     IsVerified: true,
@@ -443,6 +450,7 @@ test("throws an error when addEmailNotification fails", async () => {
   // I'm respecting Chesterton's Fence and leaving them in place for now:
   jest.spyOn(console, "info").mockImplementation(() => undefined);
   const { sendEmail } = await import("../../utils/email");
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const mockedUtilsHibp: any = jest.requireMock("../../utils/hibp");
   mockedUtilsHibp.getBreachByName.mockReturnValue({
     IsVerified: true,
@@ -483,7 +491,9 @@ test("throws an error when addEmailNotification fails", async () => {
   try {
     await poll(subClient, receivedMessages);
   } catch (e: unknown) {
-    expect(console.error).toBeCalled();
+    // eslint-disable-next-line jest/no-conditional-expect
+    expect(console.error).toHaveBeenCalled();
+    // eslint-disable-next-line jest/no-conditional-expect
     expect((e as Error).message).toBe("add failed");
   }
 
@@ -502,6 +512,7 @@ test("throws an error when markEmailAsNotified fails", async () => {
   // I'm respecting Chesterton's Fence and leaving them in place for now:
   jest.spyOn(console, "info").mockImplementation(() => undefined);
   const { sendEmail } = await import("../../utils/email");
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const mockedUtilsHibp: any = jest.requireMock("../../utils/hibp");
   mockedUtilsHibp.getBreachByName.mockReturnValue({
     IsVerified: true,
@@ -543,7 +554,9 @@ test("throws an error when markEmailAsNotified fails", async () => {
   try {
     await poll(subClient, receivedMessages);
   } catch (e: unknown) {
-    expect(console.error).toBeCalled();
+    // eslint-disable-next-line jest/no-conditional-expect
+    expect(console.error).toHaveBeenCalled();
+    // eslint-disable-next-line jest/no-conditional-expect
     expect((e as Error).message).toBe("mark failed");
   }
   expect(consoleLog).toHaveBeenCalledWith(
