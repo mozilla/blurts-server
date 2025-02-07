@@ -7,9 +7,9 @@ import { fileURLToPath } from "node:url";
 import jestPlugin from "eslint-plugin-jest";
 import js from "@eslint/js";
 import jsdoc from "eslint-plugin-jsdoc";
+import tsEslint from "@typescript-eslint/eslint-plugin";
 // @ts-ignore No type declaration file for module available.
 import { FlatCompat } from "@eslint/eslintrc";
-import tsEslint from "@typescript-eslint/eslint-plugin";
 // @ts-ignore No type declaration file for module available.
 import checkFile from "eslint-plugin-check-file";
 // @ts-ignore No type declaration file for module available.
@@ -66,7 +66,11 @@ const config = [
       "header/header": [
         "warn",
         "block",
-        " This Source Code Form is subject to the terms of the Mozilla Public\n * License, v. 2.0. If a copy of the MPL was not distributed with this\n * file, You can obtain one at http://mozilla.org/MPL/2.0/. ",
+        [
+          " This Source Code Form is subject to the terms of the Mozilla Public",
+          " * License, v. 2.0. If a copy of the MPL was not distributed with this",
+          " * file, You can obtain one at http://mozilla.org/MPL/2.0/. ",
+        ],
         2,
       ],
       // For some reason `eqeqeq` is not in the recommended set, but we try to
@@ -180,6 +184,7 @@ const config = [
     },
     plugins: { "@typescript-eslint": tsEslint },
     rules: {
+      ...tsEslint.configs["recommended"].rules,
       "@typescript-eslint/no-unsafe-argument": "off",
       "@typescript-eslint/no-unsafe-assignment": "off",
       "@typescript-eslint/no-unsafe-member-access": "off",
