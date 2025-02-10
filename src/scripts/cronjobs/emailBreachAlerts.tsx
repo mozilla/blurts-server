@@ -31,13 +31,9 @@ import {
   knexHibp,
 } from "../../utils/hibp";
 import { renderEmail } from "../../emails/renderEmail";
-import {
-  BreachAlertEmail,
-  RedesignedBreachAlertEmail,
-} from "../../emails/templates/breachAlert/BreachAlertEmail";
+import { BreachAlertEmail } from "../../emails/templates/breachAlert/BreachAlertEmail";
 import { getCronjobL10n } from "../../app/functions/l10n/cronjobs";
 import { sanitizeSubscriberRow } from "../../app/functions/server/sanitize";
-import { getEnabledFeatureFlags } from "../../db/tables/featureFlags";
 import { getSubscriberBreaches } from "../../app/functions/server/getSubscriberBreaches";
 import { getSignupLocaleCountry } from "../../emails/functions/getSignupLocaleCountry";
 import { refreshStoredScanResults } from "../../app/functions/server/refreshStoredScanResults";
@@ -255,80 +251,59 @@ export async function poll(
             });
 
             const l10n = getCronjobL10n(sanitizeSubscriberRow(recipient));
-            const enabledFeatureFlags = await getEnabledFeatureFlags({
-              email: recipient.primary_email,
-            });
-            if (enabledFeatureFlags.includes("BreachEmailRedesign")) {
-              /**
-               * Without an active user session, we don't know the user's country. This is
-               * our best guess based on their locale. At the time of writing, it's only
-               * used to determine whether to count SSN breaches (which we don't have
-               * recommendations for outside the US).
-               */
-              const assumedCountryCode = getSignupLocaleCountry(recipient);
+            /**
+             * Without an active user session, we don't know the user's country. This is
+             * our best guess based on their locale. At the time of writing, it's only
+             * used to determine whether to count SSN breaches (which we don't have
+             * recommendations for outside the US).
+             */
+            const assumedCountryCode = getSignupLocaleCountry(recipient);
 
-              // The unit tests are currently too complex for me to write
-              // a proper test for this, and I need to understand the code
-              // better to be able to refactor it to make it more amenable
-              // to simple tests. Hence, I don't have a test for this yet:
-              /* c8 ignore next 3 */
-              if (typeof recipient.onerep_profile_id === "number") {
-                await refreshStoredScanResults(recipient.onerep_profile_id);
-              }
+            // The unit tests are currently too complex for me to write
+            // a proper test for this, and I need to understand the code
+            // better to be able to refactor it to make it more amenable
+            // to simple tests. Hence, I don't have a test for this yet:
+            /* c8 ignore next 3 */
+            if (typeof recipient.onerep_profile_id === "number") {
+              await refreshStoredScanResults(recipient.onerep_profile_id);
+            }
 
-              let dataSummary: DashboardSummary | undefined;
-              if (
-                isEligibleForPremium(assumedCountryCode) &&
-                !hasPremium(recipient) &&
-                typeof recipient.onerep_profile_id === "number"
-              ) {
-                const scanData = await getScanResultsWithBroker(
-                  recipient.onerep_profile_id,
-                  hasPremium(recipient),
-                );
-                const allSubscriberBreaches = await getSubscriberBreaches({
-                  fxaUid: recipient.fxa_uid,
-                  countryCode: assumedCountryCode,
-                });
-                dataSummary = getDashboardSummary(
-                  scanData.results,
-                  allSubscriberBreaches,
-                );
-              }
-
-              const subject = l10n.getString("email-breach-alert-all-subject");
-
-              await sendEmail(
-                recipientEmail,
-                subject,
-                await renderEmail(
-                  <RedesignedBreachAlertEmail
-                    l10n={l10n}
-                    breach={breachAlert}
-                    breachedEmail={breachedEmail}
-                    utmCampaignId={utmCampaignId}
-                    enabledFeatureFlags={enabledFeatureFlags}
-                    subscriber={recipient}
-                    dataSummary={dataSummary}
-                  />,
-                ),
+            let dataSummary: DashboardSummary | undefined;
+            if (
+              isEligibleForPremium(assumedCountryCode) &&
+              !hasPremium(recipient) &&
+              typeof recipient.onerep_profile_id === "number"
+            ) {
+              const scanData = await getScanResultsWithBroker(
+                recipient.onerep_profile_id,
+                hasPremium(recipient),
               );
-            } else {
-              const subject = l10n.getString("breach-alert-subject");
-              await sendEmail(
-                recipientEmail,
-                subject,
-                await renderEmail(
-                  <BreachAlertEmail
-                    l10n={l10n}
-                    breach={breachAlert}
-                    breachedEmail={breachedEmail}
-                    utmCampaignId={utmCampaignId}
-                    subscriber={recipient}
-                  />,
-                ),
+              const allSubscriberBreaches = await getSubscriberBreaches({
+                fxaUid: recipient.fxa_uid,
+                countryCode: assumedCountryCode,
+              });
+              dataSummary = getDashboardSummary(
+                scanData.results,
+                allSubscriberBreaches,
               );
             }
+
+            const subject = l10n.getString("email-breach-alert-all-subject");
+
+            await sendEmail(
+              recipientEmail,
+              subject,
+              await renderEmail(
+                <BreachAlertEmail
+                  l10n={l10n}
+                  breach={breachAlert}
+                  breachedEmail={breachedEmail}
+                  utmCampaignId={utmCampaignId}
+                  subscriber={recipient}
+                  dataSummary={dataSummary}
+                />,
+              ),
+            );
           } catch (e) {
             console.error("Failed to add email notification to table: ", e);
             setTimeout(process.exit, 1000);

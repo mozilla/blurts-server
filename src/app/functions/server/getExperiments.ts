@@ -2,6 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import { headers } from "next/headers";
 import { captureException } from "@sentry/node";
 import { logger } from "./logging";
 import {
@@ -27,7 +28,6 @@ export type ExperimentData_V2_Or_V2LikeV1 = Partial<ExperimentData> &
  * @param params
  * @param params.experimentationId
  * @param params.locale
- * @param params.previewMode
  * @param params.countryCode
  * @returns
  */
@@ -35,7 +35,6 @@ export async function getExperiments(params: {
   experimentationId: ExperimentationId;
   locale: string;
   countryCode: string;
-  previewMode: boolean;
 }): Promise<ExperimentData_V2_Or_V2LikeV1> {
   if (["local"].includes(process.env.APP_ENV ?? "local")) {
     return localExperimentData;
@@ -53,14 +52,19 @@ export async function getExperiments(params: {
     serverUrl.pathname = "/v1/features";
   }
 
+  const headersList = await headers();
+  // Check if the Nimbus preview mode has been set by the middleware.
+  const nimbusPreviewMode = headersList.get("x-nimbus-preview-mode");
+  const previewMode = nimbusPreviewMode === "true";
+
   try {
-    if (params.previewMode === true) {
+    if (previewMode === true) {
       serverUrl.searchParams.set("nimbus_preview", "true");
     }
 
     logger.info("Sending request to Cirrus", {
       serverUrl: serverUrl.toString(),
-      previewMode: params.previewMode,
+      previewMode,
     });
 
     const response = await fetch(serverUrl, {
@@ -108,6 +112,7 @@ export async function getExperiments(params: {
       ex,
       flags,
       params,
+      previewMode,
     });
     captureException(ex);
     return defaultExperimentData;
