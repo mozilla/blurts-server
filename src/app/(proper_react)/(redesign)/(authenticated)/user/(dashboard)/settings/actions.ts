@@ -159,7 +159,7 @@ export async function onRemoveEmail(email: SanitizedEmailAddressRow) {
     await removeOneSecondaryEmail(email.id, subscriber.id);
     await deleteResolutionsWithEmail(subscriber.id, email.email);
     revalidatePath("/user/settings");
-  } catch (e) {
+  } catch {
     return {
       success: false,
       error: "delete-email-error",

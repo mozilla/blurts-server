@@ -8,7 +8,6 @@
 
 // It's unclear why this function has unused parameters, but since they're
 // positional parameters, removing them risks breaking things:
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 
 type RecommendationsType = {
   recommendationCopy: {

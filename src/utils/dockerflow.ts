@@ -33,13 +33,11 @@ if (!fs.existsSync(versionJsonPath)) {
 
 export function vers(): VersionData {
   if (process.env.APP_ENV === "heroku") {
-    /* eslint-disable no-process-env */
     return {
       commit: process.env.HEROKU_SLUG_COMMIT!,
       version: process.env.HEROKU_SLUG_COMMIT!,
       source: packageJson.homepage,
     };
-    /* eslint-enable no-process-env */
   }
   return JSON.parse(fs.readFileSync(versionJsonPath, "utf8")) as VersionData;
 }

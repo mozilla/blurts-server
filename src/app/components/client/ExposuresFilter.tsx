@@ -445,7 +445,7 @@ function Radio(props: RadioProps & AriaRadioProps) {
   // TypeScript can't verify that this element is always contained inside a
   // <FilterRadioGroup>, and thus that `radioGroupState` is not null, so we have
   // to tell it ourselves:
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+
   const { inputProps } = useRadio(props, radioGroupState!, ref);
 
   return (

@@ -6,18 +6,18 @@
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
-export function up (knex) {
-  return knex.schema.table('subscribers', (table) => {
-    table.integer('onerep_profile_id').nullable()
-  })
+export function up(knex) {
+  return knex.schema.table("subscribers", (table) => {
+    table.integer("onerep_profile_id").nullable();
+  });
 }
 
 /**
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
-export function down (knex) {
-  return knex.schema.table('subscribers', (table) => {
-    table.dropColumn('onerep_profile_id')
-  })
+export function down(knex) {
+  return knex.schema.table("subscribers", (table) => {
+    table.dropColumn("onerep_profile_id");
+  });
 }

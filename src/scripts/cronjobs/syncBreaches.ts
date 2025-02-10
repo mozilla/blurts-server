@@ -43,7 +43,7 @@ export async function getBreachIcons(breaches: HibpGetBreachesResponse) {
 
   await Promise.allSettled(
     breaches.map(async ({ Domain: breachDomain, Name: breachName }) => {
-      if (!breachDomain || breachDomain.length == 0) {
+      if (!breachDomain || breachDomain.length === 0) {
         console.log("empty domain: ", breachName);
         await updateBreachFaviconUrl(breachName, null);
         return;

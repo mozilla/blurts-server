@@ -4,14 +4,14 @@
 
 // It looks like the type definitions don't perfectly match how
 // `pg-connection-string` works, triggering a false positive for this lint rule:
-/* eslint-disable import/no-named-as-default-member */
+
 import pgConnectionStr from "pg-connection-string";
 import "dotenv-flow/config";
 
 /**
  * @typedef {object} KnexConfig
  * @property {string} client
- * @property {import("pg-connection-string").ConnectionOptions} connection 
+ * @property {import("pg-connection-string").ConnectionOptions} connection
  */
 
 const DATABASE_URL = process.env.DATABASE_URL ?? "";
@@ -19,7 +19,10 @@ const APP_ENV = process.env.APP_ENV ?? "production";
 /** @type {string} */
 const NODE_ENV = process.env.NODE_ENV ?? "production";
 const connectionObj = pgConnectionStr.parse(DATABASE_URL);
-if (typeof process.env.APP_ENV === "string" && process.env.APP_ENV === "heroku") {
+if (
+  typeof process.env.APP_ENV === "string" &&
+  process.env.APP_ENV === "heroku"
+) {
   // @ts-ignore TODO: Check if this typing error is correct, or if the types are wrong?
   connectionObj.ssl = { rejectUnauthorized: false };
 }
@@ -28,26 +31,28 @@ if (typeof process.env.APP_ENV === "string" && process.env.APP_ENV === "heroku")
 const RUNTIME_CONFIG = {
   client: "postgresql",
   connection: connectionObj,
-  pool: { min: 0, max: 5 }
+  pool: { min: 0, max: 5 },
 };
 
 // For tests, use test-DATABASE
-const testConnectionObj = pgConnectionStr.parse(DATABASE_URL.replace(/\/(\w*)$/, "/test-$1"));
+const testConnectionObj = pgConnectionStr.parse(
+  DATABASE_URL.replace(/\/(\w*)$/, "/test-$1"),
+);
 const TESTS_CONFIG = {
   client: "postgresql",
   connection: testConnectionObj,
 };
 
-let exportConfig = NODE_ENV === "tests" ? TESTS_CONFIG : RUNTIME_CONFIG
+let exportConfig = NODE_ENV === "tests" ? TESTS_CONFIG : RUNTIME_CONFIG;
 
 if (APP_ENV === "cloudrun") {
   // @ts-ignore TODO: Check if this typing error is correct, or if the types are wrong?
   connectionObj.ssl = false;
-  connectionObj.host = /** @type {string} */ (process.env.PG_HOST)
+  connectionObj.host = /** @type {string} */ (process.env.PG_HOST);
   exportConfig = {
     client: "pg",
-    connection: connectionObj
-  }
+    connection: connectionObj,
+  };
 }
 
 /** @returns KnexConfig */

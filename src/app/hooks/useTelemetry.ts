@@ -7,7 +7,7 @@
 import { usePathname } from "next/navigation";
 import { useCallback } from "react";
 // Imports for the `useGlean` and `useGa` hooks are restricted.
-/* eslint-disable-next-line no-restricted-imports */
+
 import { useGlean } from "./useGlean";
 import { GleanMetricMap } from "../../telemetry/generated/_map";
 import { convertCamelToSnakeCase } from "../functions/universal/convertCamelToSnakeCase";

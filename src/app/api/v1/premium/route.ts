@@ -11,7 +11,6 @@ export function GET(req: NextRequest) {
     // be trusted, we must also check that the
     // `subscriptions` claim on the FxA token contains
     // "monitor", or call the auth server API to confirm.
-
     const { searchParams } = new URL(req.url);
     const _email = searchParams.get("email");
 
@@ -19,7 +18,7 @@ export function GET(req: NextRequest) {
       `${process.env.SERVER_URL ?? ""}/user/breaches`,
       302,
     );
-  } catch (e) {
+  } catch {
     return NextResponse.json({ success: false }, { status: 500 });
   }
 }

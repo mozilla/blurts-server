@@ -4,7 +4,7 @@
 
 export function up(knex) {
   // camel case for easier insertion into table
-  return knex.schema.createTable("qa_custom_breaches", table => {
+  return knex.schema.createTable("qa_custom_breaches", (table) => {
     table.string("emailHashPrefix");
     table.integer("Id").notNullable().primary();
     table.string("Name").notNullable();
@@ -16,7 +16,7 @@ export function up(knex) {
     table.integer("PwnCount").notNullable();
     table.text("Description").notNullable();
     table.string("LogoPath").notNullable();
-    table.specificType('DataClasses', 'character varying(255)[]');
+    table.specificType("DataClasses", "character varying(255)[]");
     table.boolean("IsVerified").notNullable();
     table.boolean("IsFabricated").notNullable();
     table.boolean("IsSensitive").notNullable();

@@ -6,8 +6,8 @@
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
-export function up (knex) {
-  return knex.schema.table("subscribers", table => {
+export function up(knex) {
+  return knex.schema.table("subscribers", (table) => {
     table.boolean("first_broker_removal_email_sent").defaultTo(false);
     table.index("first_broker_removal_email_sent");
   });
@@ -17,9 +17,9 @@ export function up (knex) {
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
-export function down (knex) {
-  return knex.schema.table("subscribers", table => {
-    table.dropIndex("first_broker_removal_email_sent")
+export function down(knex) {
+  return knex.schema.table("subscribers", (table) => {
+    table.dropIndex("first_broker_removal_email_sent");
     table.dropColumn("first_broker_removal_email_sent");
   });
 }

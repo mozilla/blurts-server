@@ -253,15 +253,17 @@ export function AutomaticRemoveView(props: Props) {
                 variant="secondary"
                 /* c8 ignore start */
                 onPress={() => {
-                  selectedPlanIsYearly
-                    ? recordTelemetry("upgradeIntent", "click", {
-                        button_id:
-                          "intent_to_purchase_yearly_plan_guided_experience",
-                      })
-                    : recordTelemetry("upgradeIntent", "click", {
-                        button_id:
-                          "intent_to_purchase_monthly_plan_guided_experience",
-                      });
+                  if (selectedPlanIsYearly) {
+                    recordTelemetry("upgradeIntent", "click", {
+                      button_id:
+                        "intent_to_purchase_yearly_plan_guided_experience",
+                    });
+                  } else {
+                    recordTelemetry("upgradeIntent", "click", {
+                      button_id:
+                        "intent_to_purchase_monthly_plan_guided_experience",
+                    });
+                  }
                 }}
                 /* c8 ignore stop */
                 href={

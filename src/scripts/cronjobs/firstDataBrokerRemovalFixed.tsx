@@ -88,7 +88,7 @@ async function run() {
           }
 
           return { subscriber, firstRemovedScanResult };
-        } catch (_error) {
+        } catch {
           console.error(
             `An error ocurred while attemting to get the first removed scan result for subscriber: ${subscriber.id}`,
           );

@@ -3,8 +3,8 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 export function up(knex) {
-  return knex.schema.table('subscribers', table => {
-    table.timestamp('fxa_session_expiry').after("fxa_access_token").nullable();
+  return knex.schema.table("subscribers", (table) => {
+    table.timestamp("fxa_session_expiry").after("fxa_access_token").nullable();
   });
 }
 
@@ -13,7 +13,7 @@ export function up(knex) {
  * @returns { Promise<void> }
  */
 export function down(knex) {
-  return knex.schema.table('subscribers', table => {
-    table.dropColumn('fxa_session_expiry');
+  return knex.schema.table("subscribers", (table) => {
+    table.dropColumn("fxa_session_expiry");
   });
 }

@@ -7,7 +7,6 @@ import { NextResponse, NextRequest } from "next/server";
 import { RelevantLocation } from "./types";
 // The location autocomplete data will be created during the build step.
 // @ts-ignore-next-line
-// eslint-disable-next-line import/no-unresolved
 import locationData from "../../../../../locationAutocompleteData.json";
 import { getRelevantLocations } from "./getRelevantLocations";
 
@@ -66,7 +65,7 @@ export async function POST(request: NextRequest) {
     });
 
     return NextResponse.json(results, { status: 200 });
-  } catch (e) {
+  } catch {
     return NextResponse.json({ success: false }, { status: 500 });
   }
 }

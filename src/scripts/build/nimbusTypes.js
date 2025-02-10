@@ -10,6 +10,7 @@ run();
 
 /**
  * See https://experimenter.info/fml-spec/#additional-types
+ *
  * @typedef {"String" | "Boolean" | "Int" | "Text" | "Image" | `Option<${Type}>` | `List<${Type}>` | `Map<${Type}, ${Type}>`} Type
  */
 /**

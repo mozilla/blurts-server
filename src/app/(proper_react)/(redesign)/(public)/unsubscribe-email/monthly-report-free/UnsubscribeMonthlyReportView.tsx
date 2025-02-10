@@ -115,9 +115,11 @@ export const UnsubscribeMonthlyReportView = ({ token }: { token: string }) => {
         className={styles.cta}
         variant="primary"
         onPress={() => {
-          !unsubscribeSuccess
-            ? void handleUnsubscription()
-            : void signIn("fxa", { callbackUrl: "/user/dashboard" });
+          if (!unsubscribeSuccess) {
+            void handleUnsubscription();
+          } else {
+            void signIn("fxa", { callbackUrl: "/user/dashboard" });
+          }
         }}
       >
         {cta}
