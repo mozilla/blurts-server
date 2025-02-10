@@ -27,14 +27,7 @@ import { getLocale } from "../../../functions/universal/getLocale";
 import { AccountsMetricsFlowProvider } from "../../../../contextProviders/accounts-metrics-flow";
 import { getEnabledFeatureFlags } from "../../../../db/tables/featureFlags";
 
-type Props = {
-  searchParams: Promise<{
-    nimbus_preview?: string;
-  }>;
-};
-
-export default async function Page(props: Props) {
-  const searchParams = await props.searchParams;
+export default async function Page() {
   const session = await getServerSession();
   if (typeof session?.user.subscriber?.fxa_uid === "string") {
     return redirect("/user/dashboard");
@@ -51,7 +44,6 @@ export default async function Page(props: Props) {
     experimentationId,
     countryCode,
     locale: getLocale(l10n),
-    previewMode: searchParams.nimbus_preview === "true",
   });
 
   // request the profile stats for the last 30 days

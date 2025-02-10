@@ -54,7 +54,6 @@ type Props = {
     slug: string[] | undefined;
   }>;
   searchParams: Promise<{
-    nimbus_preview?: string;
     dialog?: "subscriptions";
   }>;
 };
@@ -132,10 +131,9 @@ export default async function DashboardPage(props: Props) {
 
   const experimentationId = await getExperimentationId(session.user);
   const experimentData = await getExperiments({
-    experimentationId: experimentationId,
-    countryCode: countryCode,
+    experimentationId,
+    countryCode,
     locale: getLocale(getL10n(await getAcceptLangHeaderInServerComponents())),
-    previewMode: searchParams.nimbus_preview === "true",
   });
 
   const monthlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "monthly" });
