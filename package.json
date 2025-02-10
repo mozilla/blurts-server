@@ -143,7 +143,7 @@
     "@typescript-eslint/eslint-plugin": "^8.23.0",
     "@typescript-eslint/parser": "^8.23.0",
     "adm-zip": "^0.5.16",
-    "esbuild": "0.24.2",
+    "esbuild": "0.25.0",
     "eslint": "^9.20.0",
     "eslint-config-next": "^15.1.6",
     "eslint-import-resolver-typescript": "^3.7.0",
