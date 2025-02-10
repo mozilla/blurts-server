@@ -16,7 +16,8 @@
   }
 
   min-height: 100%;
-  background-image: url("./images/Scanning.svg"),
+  background-image:
+    url("./images/Scanning.svg"),
     linear-gradient(
       to right,
       tokens.$color-grey-05,
@@ -25,10 +26,8 @@
     );
   background-repeat: no-repeat;
   background-position-y: center;
-  background-position-x: calc(
-      var(--sidebarWidth) / 2 - var(--backgroundImageWidth) / 2
-    ),
-    center;
+  background-position-x:
+    calc(var(--sidebarWidth) / 2 - var(--backgroundImageWidth) / 2), center;
   background-size:
     var(--backgroundImageWidth) auto,
     auto;

@@ -56,7 +56,8 @@
     // The first gradient is all white, except for the bottom 3 pixels which
     // are transparent. That way, they leave a gap for the coloured background
     // that flows to the right, rendering it as a coloured bottom border.
-    background-image: linear-gradient(
+    background-image:
+      linear-gradient(
         to bottom,
         tokens.$color-white calc(100% - 3px),
         rgba(0, 0, 0, 0)
