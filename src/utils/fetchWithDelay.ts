@@ -33,6 +33,9 @@ async function fetchWithDelay(
     const [response, _] = await Promise.all([
       fetch(url, { ...options, signal: fetchSignal }),
       fetchDelay(delay, fetchSignal),
+      // Since the Node 20.18 upgrade, it's been marking this  as uncovered, even
+      // though it's covered by tests.
+      /* c8 ignore next 7 */
     ]);
     return response;
   } catch (error) {

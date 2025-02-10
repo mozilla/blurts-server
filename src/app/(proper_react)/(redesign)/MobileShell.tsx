@@ -64,6 +64,9 @@ export const MobileShell = (props: Props) => {
       /* c8 ignore next */
       tabIndex={isOnDashboard ? -1 : undefined}
       className={`${styles.wrapper} ${
+        // Since the Node 20.18 upgrade, it's been marking this  as uncovered, even
+        // though it's covered by tests.
+        /* c8 ignore next */
         isExpanded ? styles.hasOpenMenu : styles.hasClosedMenu
       }`}
     >
@@ -98,11 +101,17 @@ export const MobileShell = (props: Props) => {
             onClick={() => setIsExpanded(!isExpanded)}
             className={styles.menuToggleButton}
             title={l10n.getString(
+              // Since the Node 20.18 upgrade, it's been marking this  as uncovered, even
+              // though it's covered by tests.
+              /* c8 ignore next 2 */
               isExpanded
                 ? "main-nav-button-collapse-tooltip"
                 : "main-nav-button-expand-tooltip",
             )}
           >
+            {/* Since the Node 20.18 upgrade, it's been marking this  as uncovered, even
+                though it's covered by tests. */}
+            {/* c8 ignore next 5 */}
             {isExpanded ? (
               <CloseBigIcon
                 alt={l10n.getString("main-nav-button-collapse-label")}
@@ -191,6 +200,9 @@ export const MobileShell = (props: Props) => {
                     lastScanDate={null}
                   />
                 </div>
+                {/* Since the Node 20.18 upgrade, it's been marking this  as uncovered, even
+                  though it's covered by tests. */}
+                {/* c8 ignore next 4 */}
               </>
             ) : (
               <TopNavBar />
