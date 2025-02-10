@@ -230,3 +230,46 @@ export const RedesignedEmailFooter = (props: Props) => {
     </mj-wrapper>
   );
 };
+
+export const getUnstyledRedesignedEmailFooter = (props: Props): string => {
+  const l10n = props.l10n;
+  const supportLinkUrlObject = new URL(CONST_URL_SUMO_MONITOR_SUPPORT_CENTER);
+  supportLinkUrlObject.searchParams.set("utm_medium", "product-email");
+  supportLinkUrlObject.searchParams.set("utm_source", "monitor-product");
+  supportLinkUrlObject.searchParams.set("utm_campaign", props.utm_campaign);
+  supportLinkUrlObject.searchParams.set("utm_content", "support-center");
+
+  const separator = "-".repeat(30);
+
+  return `
+${separator}
+
+${l10n.getString("email-footer-support-heading")}
+${l10n.getString("email-footer-support-content-plain", { support_link: supportLinkUrlObject.href })}
+
+${separator}
+
+Mozilla Corporation
+149 New Montgomery St, 4th Floor, San Francisco, CA 94105
+
+${l10n.getString("email-footer-trigger-transactional")}
+${
+  // We don't have emails yet that send both a plaintext version and an unsubscribe link:
+  /* c8 ignore next 7 */
+  typeof props.unsubscribeLink !== "undefined"
+    ? "\n" +
+      l10n.getString("email-unsubscribe-link-plain", {
+        unsub_link: props.unsubscribeLink,
+      }) +
+      "\n"
+    : ""
+}
+${l10n.getString("email-footer-source-hibp-plain", { hibp_link: "https://haveibeenpwned.com" })}
+
+${l10n.getString("terms-of-service")}:
+${CONST_URL_TERMS}
+
+${l10n.getString("email-footer-meta-privacy-notice")}:
+${CONST_URL_PRIVACY_POLICY}
+`;
+};

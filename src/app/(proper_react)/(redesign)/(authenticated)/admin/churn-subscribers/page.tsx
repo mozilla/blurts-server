@@ -18,7 +18,7 @@ export default async function DevPage() {
 
   return (
     <ChurnAdmin
-      churningSubscribers={await getAllChurns()}
+      churningSubscribers={(await getAllChurns()) ?? []}
       churnsToEmail={await getChurnsToEmail()}
     />
   );

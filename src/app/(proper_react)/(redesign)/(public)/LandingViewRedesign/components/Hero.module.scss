@@ -67,6 +67,10 @@
     display: flex;
     flex-direction: column;
     gap: tokens.$spacing-md;
+
+    label {
+      color: tokens.$color-purple-05;
+    }
   }
 
   @media screen and (min-width: tokens.$screen-md) {
@@ -74,6 +78,7 @@
     padding: 0 tokens.$layout-md;
 
     form {
+      align-items: flex-end;
       flex-direction: row;
       button {
         flex: 0 0 auto;

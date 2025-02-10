@@ -72,6 +72,7 @@ export const View = (props: Props) => {
                   field: "entered_email_address_header",
                 }}
                 experimentData={props.experimentData}
+                labelPosition="bottom"
               />
             )}
           </div>
@@ -144,6 +145,7 @@ export const View = (props: Props) => {
                   field: "entered_email_address_second",
                 }}
                 experimentData={props.experimentData}
+                labelPosition="bottom"
               />
             </span>
             <div className={styles.illustration}>
@@ -191,6 +193,7 @@ export const View = (props: Props) => {
                   field: "entered_email_address_third",
                 }}
                 experimentData={props.experimentData}
+                labelPosition="bottom"
               />
             </span>
             <div className={styles.illustration}>
@@ -212,6 +215,7 @@ export const View = (props: Props) => {
             }}
             scanLimitReached={props.scanLimitReached}
             experimentData={props.experimentData}
+            labelPosition="bottom"
           />
         </div>
 
@@ -256,6 +260,7 @@ export const View = (props: Props) => {
             }}
             scanLimitReached={props.scanLimitReached}
             experimentData={props.experimentData}
+            labelPosition="bottom"
           />
         </div>
       </main>
@@ -324,10 +329,10 @@ const Plans = (props: Props) => {
             }}
             scanLimitReached={props.scanLimitReached}
             experimentData={props.experimentData}
+            labelPosition="bottom"
           />
         </div>
       )}
-
       <PlansTable
         aria-labelledby={headingId}
         premiumSubscriptionUrl={{
