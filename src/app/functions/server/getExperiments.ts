@@ -53,8 +53,7 @@ export async function getExperiments(params: {
   }
 
   const headersList = await headers();
-  // Check for Nimbus preview mode. Note that this requires a full page reload
-  // to activate: https://nextjs.org/docs/app/api-reference/file-conventions/layout#caveats
+  // Check if the Nimbus preview mode has been set by the middleware.
   const nimbusPreviewMode = headersList.get("x-nimbus-preview-mode");
   const previewMode = nimbusPreviewMode === "true";
 
