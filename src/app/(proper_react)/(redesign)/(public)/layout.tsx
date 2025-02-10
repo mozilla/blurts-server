@@ -27,15 +27,11 @@ export default async function Layout(props: { children: ReactNode }) {
   const headersList = await headers();
   const countryCode = getCountryCode(headersList);
 
-  // Check for Nimbus preview mode. Note that this requires a full page reload
-  // to activate: https://nextjs.org/docs/app/api-reference/file-conventions/layout#caveats
-  const nimbusPreviewMode = (await headers()).get("x-nimbus-preview-mode");
   const experimentationId = await getExperimentationId(session?.user ?? null);
   const experimentData = await getExperiments({
-    experimentationId: experimentationId,
-    countryCode: countryCode,
+    experimentationId,
+    countryCode,
     locale: currentLocale,
-    previewMode: nimbusPreviewMode === "true",
   });
 
   const enrollmentWithConflictingUserId = (

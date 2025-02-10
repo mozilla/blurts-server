@@ -41,7 +41,7 @@ export default async function FixPage() {
     hasPremium(session.user),
   );
   const stepDeterminationData: StepDeterminationData = {
-    countryCode: countryCode,
+    countryCode,
     user: session.user,
     subscriberBreaches: breaches,
     latestScanData: scanData,

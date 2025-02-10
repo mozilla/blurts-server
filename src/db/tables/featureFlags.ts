@@ -38,17 +38,12 @@ export async function getDeletedFeatureFlags() {
 }
 
 export const featureFlagNames = [
-  "UpdatedEmailPreferencesOption",
   "CancellationFlow",
-  "ConfirmCancellation",
-  "FirstDataBrokerRemovalFixedEmail",
   "DiscountCouponNextThreeMonths",
   "LatestScanDateCsatSurvey",
   "AutomaticRemovalCsatSurvey",
   "AdditionalRemovalStatuses",
   "PetitionBannerCsatSurvey",
-  "MonthlyReportFreeUser",
-  "BreachEmailRedesign",
   "PromptNoneAuthFlow",
   "GA4SubscriptionEvents",
   "DataBrokerRemovalTimeEstimateLabel",

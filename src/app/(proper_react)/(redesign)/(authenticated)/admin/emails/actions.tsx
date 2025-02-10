@@ -28,10 +28,7 @@ import {
   createRandomHibpListing,
   createRandomScanResult,
 } from "../../../../../../apiMocks/mockData";
-import {
-  BreachAlertEmail,
-  RedesignedBreachAlertEmail,
-} from "../../../../../../emails/templates/breachAlert/BreachAlertEmail";
+import { BreachAlertEmail } from "../../../../../../emails/templates/breachAlert/BreachAlertEmail";
 import { SignupReportEmail } from "../../../../../../emails/templates/signupReport/SignupReportEmail";
 import { getBreachesForEmail } from "../../../../../../utils/hibp";
 import { getSha1 } from "../../../../../../utils/fxa";
@@ -216,10 +213,7 @@ export async function triggerMonthlyActivityPlus(emailAddress: string) {
   );
 }
 
-export async function triggerBreachAlert(
-  emailAddress: string,
-  options: Partial<{ redesign: boolean }> = {},
-) {
+export async function triggerBreachAlert(emailAddress: string) {
   const session = await getServerSession();
   const subscriber = await getAdminSubscriber();
   if (!subscriber || !session?.user) {
@@ -243,35 +237,22 @@ export async function triggerBreachAlert(
     countryCode: assumedCountryCode,
   });
 
-  options.redesign === true
-    ? await send(
-        emailAddress,
-        l10n.getString("email-breach-alert-all-subject"),
-        <RedesignedBreachAlertEmail
-          subscriber={subscriber}
-          breach={createRandomHibpListing()}
-          breachedEmail={emailAddress}
-          enabledFeatureFlags={["BreachEmailRedesign"]}
-          utmCampaignId="breach-alert"
-          l10n={l10n}
-          dataSummary={
-            isEligibleForPremium(assumedCountryCode) && !hasPremium(subscriber)
-              ? getDashboardSummary(scanData.results, allSubscriberBreaches)
-              : undefined
-          }
-        />,
-      )
-    : await send(
-        emailAddress,
-        l10n.getString("breach-alert-subject"),
-        <BreachAlertEmail
-          subscriber={subscriber}
-          breach={createRandomHibpListing()}
-          breachedEmail={emailAddress}
-          utmCampaignId="breach-alert"
-          l10n={l10n}
-        />,
-      );
+  await send(
+    emailAddress,
+    l10n.getString("email-breach-alert-all-subject"),
+    <BreachAlertEmail
+      subscriber={subscriber}
+      breach={createRandomHibpListing()}
+      breachedEmail={emailAddress}
+      utmCampaignId="breach-alert"
+      l10n={l10n}
+      dataSummary={
+        isEligibleForPremium(assumedCountryCode) && !hasPremium(subscriber)
+          ? getDashboardSummary(scanData.results, allSubscriberBreaches)
+          : undefined
+      }
+    />,
+  );
 }
 
 export async function triggerFirstDataBrokerRemovalFixed(emailAddress: string) {

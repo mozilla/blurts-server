@@ -9,6 +9,5 @@ toolbar-app-picker-product-pocket = { -brand-pocket }
 toolbar-app-picker-product-fx-desktop = { -brand-firefox } untuk Desktop
 toolbar-app-picker-product-fx-mobile = { -brand-firefox } untuk Seluler
 toolbar-app-picker-by-mozilla = Dibuat oleh { -brand-mozilla }
-
 # Bento headline
 fx-makes-tech = { -brand-name } adalah teknologi yang memperjuangkan privasi daring Anda.

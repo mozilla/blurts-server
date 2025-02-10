@@ -49,7 +49,6 @@ export async function POST(
   req: NextRequest,
 ): Promise<NextResponse<WelcomeScanBody> | NextResponse<unknown>> {
   const session = await getServerSession();
-  const searchParams = req.nextUrl.searchParams;
 
   if (!session?.user?.subscriber) {
     throw new Error("No fxa_uid found in session");
@@ -95,10 +94,9 @@ export async function POST(
 
   const experimentationId = await getExperimentationId(session.user);
   const experimentData = await getExperiments({
-    experimentationId: experimentationId,
+    experimentationId,
     countryCode: getCountryCode(await headers()),
     locale: getLocale(getL10n(await getAcceptLangHeaderInServerComponents())),
-    previewMode: searchParams.get("nimbus_preview") === "true",
   });
   const optionalInfoExperimentData =
     experimentData["Features"]["welcome-scan-optional-info"];

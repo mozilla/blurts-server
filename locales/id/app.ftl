@@ -38,8 +38,8 @@ user-add-invalid-email = Surel Tidak Valid
 user-add-too-many-emails = Anda memantau alamat email dengan jumlah maksimum.
 user-add-duplicate-email = Surel ini telah ditambahkan ke { -product-name }.
 user-add-verification-email-just-sent = Surel verifikasi lainnya tidak dapat dikirim secepat ini. Silakan coba lagi nanti.
-user-add-unknown-error = Terjadi kesalahan saat menambahkan alamat surel lainnya. Silakan coba lagi nanti.
-user-delete-unknown-error = Terjadi kesalahan saat menghapus alamat surel. Silakan coba lagi nanti.
+user-add-unknown-error = Ada yang salah saat menambahkan alamat surel lainnya. Silakan coba lagi nanti.
+user-delete-unknown-error = Ada yang salah saat menghapus alamat surel. Silakan coba lagi nanti.
 user-verify-token-error = Token verifikasi diperlukan.
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Data yang telah diketahui orang lain:
@@ -168,8 +168,8 @@ brand-mozilla-monitor = { -brand-fx-monitor }
 ## Site navigation
 
 mobile-menu-label = Menu utama
-main-nav-button-collapse-label = Ciutkan menu
-main-nav-button-collapse-tooltip = Ciutkan menu
+main-nav-button-collapse-label = Kuncupkan menu
+main-nav-button-collapse-tooltip = Kuncupkan menu
 main-nav-button-expand-label = Bentangkan menu
 main-nav-button-expand-tooltip = Bentangkan menu
 main-nav-label = Navigasi
@@ -177,7 +177,7 @@ main-nav-link-home-label = Beranda
 main-nav-link-dashboard-label = Dasbor
 main-nav-link-settings-label = Pengaturan
 main-nav-link-faq-label = T&J
-main-nav-link-faq-tooltip = Tanya-Jawab
+main-nav-link-faq-tooltip = Pertanyaan yang sering diajukan
 
 ## User menu
 
@@ -195,11 +195,11 @@ user-menu-signout-tooltip = Keluar dari { -brand-mozilla-monitor }
 
 mozilla = { -brand-mozilla }
 terms-of-service = Ketentuan Layanan
-privacy-notice = Kebijakan Privasi
+privacy-notice = Pemberitahuan Privasi
 github = { -brand-github }
 footer-nav-recent-breaches = Pembobolan Data Terbaru
 footer-external-link-faq-label = T&J
-footer-external-link-faq-tooltip = Tanya-Jawab
+footer-external-link-faq-tooltip = Pertanyaan yang sering diajukan
 
 ## Error page
 
