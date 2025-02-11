@@ -61,18 +61,9 @@ email-breach-summary = Aquí está el resumen de tu filtración de datos
 # Variables:
 #   $email-address (string) - Email address, bolded
 email-breach-detected = Los resultados de búsqueda de tu cuenta { $email-address } han detectado que tu correo electrónico podría haber sido expuesto. Te recomendamos que actúes ahora para resolver este problema.
-# Deprecated after the redesigned breach alert email is launched
-# Variables:
-#   $email-address (string) - Email address
-email-breach-detected-2 = Los resultados de búsqueda de tu cuenta <b>{ $email-address }</b> han detectado que tu correo electrónico podría haber sido expuesto. Te recomendamos que actúes ahora para resolver este problema.
 email-dashboard-cta = Ir al panel de control
 
-## Breach alert
-
-# Deprecated after the redesigned breach alert email is launched
-email-spotted-new-breach = Hemos detectado una nueva filtración de datos
-
-## Redesigned breach alert email
+## Breach alert email
 
 email-breach-alert-all-subject = Nueva filtración de datos detectada
 email-breach-alert-all-preview = Te guiaremos a través de los pasos para resolverlo.

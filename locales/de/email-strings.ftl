@@ -61,18 +61,9 @@ email-breach-summary = Hier ist die Zusammenfassung Ihrer Datenlecks
 # Variables:
 #   $email-address (string) - Email address, bolded
 email-breach-detected = Suchergebnisse für Ihr Konto { $email-address } haben gezeigt, dass Ihre E-Mail-Adresse möglicherweise offengelegt wurde. Wir empfehlen Ihnen, jetzt zu handeln, um dieses Datenleck zu beheben.
-# Deprecated after the redesigned breach alert email is launched
-# Variables:
-#   $email-address (string) - Email address
-email-breach-detected-2 = Suchergebnisse für Ihr Konto <b>{ $email-address }</b> haben gezeigt, dass Ihre E-Mail-Adresse möglicherweise offengelegt wurde. Wir empfehlen Ihnen, jetzt zu handeln, um dieses Datenleck zu beheben.
 email-dashboard-cta = Zur Übersicht
 
-## Breach alert
-
-# Deprecated after the redesigned breach alert email is launched
-email-spotted-new-breach = Wir haben ein neues Datenleck entdeckt
-
-## Redesigned breach alert email
+## Breach alert email
 
 email-breach-alert-all-subject = Neues Datenleck erkannt
 email-breach-alert-all-preview = Wir führen Sie durch die Schritte, um das Problem zu lösen.

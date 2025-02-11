@@ -88,7 +88,6 @@ breach-summary = Resumen de filtraciones
 
 ##
 
-breach-alert-subject = { -product-name } encontró tu dirección de correo en una nueva filtración de datos.
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that exposed a user’s password. Don’t add $passwords to
 # your localization, because it would result in the number showing twice.

@@ -59,18 +59,9 @@ email-breach-summary = Ecce tu summario de violationes de datos
 # Variables:
 #   $email-address (string) - Email address, bolded
 email-breach-detected = Le resultatos del recerca pro tu conto { $email-address } ha disvelate que tu email forsan ha essite exponite. Nos consilia que tu ora age pro resolver iste violation.
-# Deprecated after the redesigned breach alert email is launched
-# Variables:
-#   $email-address (string) - Email address
-email-breach-detected-2 = Le resultatos del recerca pro tu conto <b> { $email-address } </b> ha disvelate que tu email forsan ha essite exponite. Nos consilia que tu ora age pro resolver iste violation.
 email-dashboard-cta = Va al pannello de controlo
 
-## Breach alert
-
-# Deprecated after the redesigned breach alert email is launched
-email-spotted-new-breach = Nos ha individuate un nove violation de datos
-
-## Redesigned breach alert email
+## Breach alert email
 
 email-breach-alert-all-subject = Nove violation de datos disvelate
 email-breach-alert-all-preview = Nos te guidara passo a passo pro resolver lo.

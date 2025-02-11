@@ -61,18 +61,9 @@ email-breach-summary = Ja përmbledhja për cenimin e të dhënave tuaja
 # Variables:
 #   $email-address (string) - Email address, bolded
 email-breach-detected = Përfundime kërkimesh për llogarinë tuaj { $email-address } kanë pikasur se email-i juaj mund të jetë ekspozuar. Rekomandojmë që të veproni që tani për ta zgjidhur këtë cenim.
-# Deprecated after the redesigned breach alert email is launched
-# Variables:
-#   $email-address (string) - Email address
-email-breach-detected-2 = Përfundime kërkimesh për llogarinë tuaj <b>{ $email-address }</b> kanë pikasur se email-i juaj mund të jetë ekspozuar. Rekomandojmë që të veproni që tani për ta zgjidhur këtë cenim.
 email-dashboard-cta = Kaloni te Pulti
 
-## Breach alert
-
-# Deprecated after the redesigned breach alert email is launched
-email-spotted-new-breach = Vumë re një cenim të ri të dhënash
-
-## Redesigned breach alert email
+## Breach alert email
 
 email-breach-alert-all-subject = U zbulua cenim i ri të dhënash
 email-breach-alert-all-preview = Do t’ju udhëheqim nëpër hapat se si ta ndreqni.

@@ -61,18 +61,9 @@ email-breach-summary = Íme az adatvédelmi incidens összefoglalója
 # Variables:
 #   $email-address (string) - Email address, bolded
 email-breach-detected = Az Ön { $email-address } fiókjához tartozó keresési találatok azt észlelték, hogy e-mail-címe nyilvánosságra került. Javasoljuk, hogy azonnal intézkedjen az adatvédelmi incidens megszüntetése érdekében.
-# Deprecated after the redesigned breach alert email is launched
-# Variables:
-#   $email-address (string) - Email address
-email-breach-detected-2 = Az Ön <b>{ $email-address }</b> fiókjához tartozó keresési találatok azt észlelték, hogy e-mail-címe nyilvánosságra került. Javasoljuk, hogy azonnal intézkedjen az adatvédelmi incidens megszüntetése érdekében.
 email-dashboard-cta = Ugrás a vezérlőpulthoz
 
-## Breach alert
-
-# Deprecated after the redesigned breach alert email is launched
-email-spotted-new-breach = Új adatvédelmi incidenst észleltünk
-
-## Redesigned breach alert email
+## Breach alert email
 
 email-breach-alert-all-subject = Új adatvédelmi incidens észlelve
 email-breach-alert-all-preview = Végigvezetjük a megoldási lépéseken.

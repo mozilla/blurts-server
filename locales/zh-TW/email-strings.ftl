@@ -57,18 +57,9 @@ email-breach-summary = 以下是您的資料外洩情況摘要
 # Variables:
 #   $email-address (string) - Email address, bolded
 email-breach-detected = 我們偵測到您的 { $email-address } 帳號可能已遭到洩露。建議您立即採取行動，處理此資料外洩事件。
-# Deprecated after the redesigned breach alert email is launched
-# Variables:
-#   $email-address (string) - Email address
-email-breach-detected-2 = 我們偵測到您的 <b>{ $email-address }</b> 帳號可能已遭到洩露。建議您立即採取行動，處理此資料外洩事件。
 email-dashboard-cta = 前往儀錶板
 
-## Breach alert
-
-# Deprecated after the redesigned breach alert email is launched
-email-spotted-new-breach = 我們發現新的資料外洩事件
-
-## Redesigned breach alert email
+## Breach alert email
 
 email-breach-alert-all-subject = 偵測到新的資料外洩事件
 email-breach-alert-all-preview = 我們將帶您逐步處理此問題。

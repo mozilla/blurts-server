@@ -57,18 +57,9 @@ email-breach-summary = Sommario delle violazioni dati che hanno coinvolto il tuo
 # Variables:
 #   $email-address (string) - Email address, bolded
 email-breach-detected = I risultati della ricerca per il tuo account { $email-address } indicano che il tuo indirizzo email potrebbe essere stato esposto. Ti consigliamo di agire ora per risolvere questa violazione.
-# Deprecated after the redesigned breach alert email is launched
-# Variables:
-#   $email-address (string) - Email address
-email-breach-detected-2 = I risultati della ricerca per il tuo account <b>{ $email-address }</b> indicano che il tuo indirizzo email potrebbe essere stato esposto. Ti consigliamo di agire ora per risolvere questa violazione.
 email-dashboard-cta = Vai al pannello utente
 
-## Breach alert
-
-# Deprecated after the redesigned breach alert email is launched
-email-spotted-new-breach = Abbiamo individuato una nuova violazione di dati
-
-## Redesigned breach alert email
+## Breach alert email
 
 email-breach-alert-all-subject = Rilevata nuova violazione di dati
 email-breach-alert-all-preview = Ti guideremo attraverso i passaggi per risolverla.

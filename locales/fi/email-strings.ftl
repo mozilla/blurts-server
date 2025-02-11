@@ -63,12 +63,7 @@ email-breach-summary = Tässä on yhteenveto tietovuodosta
 email-breach-detected = Tiliäsi { $email-address } koskevissa hakutuloksissa havaittiin, että sähköpostiosoitteesi on saattanut paljastua. Suosittelemme, että toimit nyt tämän vuodon ratkaisemiseksi.
 email-dashboard-cta = Siirry kojelaudalle
 
-## Breach alert
-
-# Deprecated after the redesigned breach alert email is launched
-email-spotted-new-breach = Olemme havainneet uuden tietovuodon
-
-## Redesigned breach alert email
+## Breach alert email
 
 email-breach-alert-all-subject = Uusi tietovuoto havaittu
 email-breach-alert-all-hero-heading = Olet joutunut uuden tietovuodon joukkoon
