@@ -2,16 +2,16 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-export function up (knex) {
-  return knex.schema.table('subscribers', (table) => {
-    table.boolean('db_migration_1')
-    table.boolean('db_migration_2')
-  })
+export function up(knex) {
+  return knex.schema.table("subscribers", (table) => {
+    table.boolean("db_migration_1");
+    table.boolean("db_migration_2");
+  });
 }
 
-export function down (knex) {
-  return knex.schema.table('subscribers', (table) => {
-    table.dropColumn('db_migration_1')
-    table.dropColumn('db_migration_2')
-  })
+export function down(knex) {
+  return knex.schema.table("subscribers", (table) => {
+    table.dropColumn("db_migration_1");
+    table.dropColumn("db_migration_2");
+  });
 }

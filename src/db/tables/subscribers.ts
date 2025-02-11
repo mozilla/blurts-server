@@ -6,10 +6,8 @@ import type { Profile } from "next-auth";
 import type { EmailAddressRow, SubscriberRow } from "knex/types/tables";
 import createDbConnection from "../connect";
 import { SerializedSubscriber } from "../../next-auth.js";
-import { getFeatureFlagData } from "./featureFlags";
 import { getEnvVarsOrThrow } from "../../envVars";
 import { parseIso8601Datetime } from "../../utils/parse";
-import { logger } from "../../app/functions/server/logging";
 
 const knex = createDbConnection();
 const { DELETE_UNVERIFIED_SUBSCRIBERS_TIMER } = getEnvVarsOrThrow([
@@ -333,12 +331,7 @@ async function deleteResolutionsWithEmail(id: number, email: string) {
 async function getPotentialSubscribersWaitingForFirstDataBrokerRemovalFixedEmail(): Promise<
   SubscriberRow[]
 > {
-  const flag = await getFeatureFlagData("FirstDataBrokerRemovalFixedEmail");
-  if (!flag?.is_enabled || !flag?.modified_at) {
-    return [];
-  }
-
-  let query = knex("subscribers")
+  const rows = await knex("subscribers")
     .select()
     // Only send to Plus users...
     .whereRaw(
@@ -350,17 +343,8 @@ async function getPotentialSubscribersWaitingForFirstDataBrokerRemovalFixedEmail
     // ...who haven't received the email...
     .andWhere("first_broker_removal_email_sent", false)
     // ...and signed up after the feature flag `FirstDataBrokerRemovalFixedEmail`
-    // has been enabled last.
-    .andWhere("created_at", ">=", flag.modified_at);
-
-  if (Array.isArray(flag.allow_list) && flag.allow_list.length > 0) {
-    // If the feature flag has an allowlist, only send to users on that list.
-    // The `.andWhereIn` alias doesn't exist:
-    // https://github.com/knex/knex/issues/1881#issuecomment-275433906
-    query = query.whereIn("primary_email", flag.allow_list);
-  }
-
-  const rows = await query;
+    // has been enabled (which happened on 2024-07-10).
+    .andWhere("created_at", ">=", "2024-07-10T00:00:00.000Z");
 
   return rows;
 }
@@ -376,7 +360,7 @@ async function getPlusSubscribersWaitingForMonthlyEmail(
     // Only send to users who haven't opted out of the monthly activity email...
     // It looks like Knex's `.where` type definition doesn't accept Promise-returning
     // functions, even though the code does; hence the `eslint-disable`)
-    // eslint-disable-next-line @typescript-eslint/no-misused-promises
+
     .where((builder) =>
       builder
         .whereNull("monthly_monitor_report")
@@ -385,7 +369,7 @@ async function getPlusSubscribersWaitingForMonthlyEmail(
     // ...who haven't received the email in the last 1 month...
     // It looks like Knex's `.where` type definition doesn't accept Promise-returning
     // functions, even though the code does; hence the `eslint-disable`)
-    // eslint-disable-next-line @typescript-eslint/no-misused-promises
+
     .andWhere((builder) =>
       builder
         .whereNull("monthly_monitor_report_at")
@@ -421,23 +405,12 @@ async function getFreeSubscribersWaitingForMonthlyEmail(
   batchSize: number,
   countryCodes: string[],
 ): Promise<SubscriberRow[]> {
-  const flag = await getFeatureFlagData("MonthlyReportFreeUser");
   const accountCutOffDate = parseIso8601Datetime(
     process.env.MONTHLY_ACTIVITY_FREE_EMAIL_ACCOUNT_CUTOFF_DATE ??
       "2022-01-01T00:00:00.000Z",
   );
 
-  if (
-    !flag?.is_enabled &&
-    !(Array.isArray(flag?.allow_list) && flag.allow_list.length > 0)
-  ) {
-    logger.info("monthly_free_report_disabled", {
-      flag: flag,
-    });
-    return [];
-  }
-
-  let query = knex("subscribers")
+  const query = knex("subscribers")
     .select<SubscriberRow[]>("subscribers.*")
     .select(
       knex.raw(
@@ -467,7 +440,7 @@ async function getFreeSubscribersWaitingForMonthlyEmail(
     // user activity email, and the free user activity email.)
     // It looks like Knex's `.where` type definition doesn't accept Promise-returning
     // functions, even though the code does; hence the `eslint-disable`)
-    // eslint-disable-next-line @typescript-eslint/no-misused-promises
+
     .where((builder) =>
       builder
         .whereNull("monthly_monitor_report_free")
@@ -476,7 +449,7 @@ async function getFreeSubscribersWaitingForMonthlyEmail(
     // ...who haven't received the email in the last 1 month...
     // It looks like Knex's `.where` type definition doesn't accept Promise-returning
     // functions, even though the code does; hence the `eslint-disable`)
-    // eslint-disable-next-line @typescript-eslint/no-misused-promises
+
     .andWhere((builder) =>
       builder
         .whereNull("monthly_monitor_report_free_at")
@@ -495,7 +468,7 @@ async function getFreeSubscribersWaitingForMonthlyEmail(
     //       in. Locally, you might want to set this via `/admin/dev/`.
     // It looks like Knex's `.where` type definition doesn't accept Promise-returning
     // functions, even though the code does; hence the `eslint-disable`)
-    // eslint-disable-next-line @typescript-eslint/no-misused-promises
+
     .andWhere((builder) =>
       builder
         .whereRaw(
@@ -506,13 +479,6 @@ async function getFreeSubscribersWaitingForMonthlyEmail(
           MONITOR_PREMIUM_CAPABILITY,
         ),
     );
-
-  if (Array.isArray(flag.allow_list) && flag.allow_list.length > 0) {
-    // If the feature flag has an allowlist, only send to users on that list.
-    // The `.andWhereIn` alias doesn't exist:
-    // https://github.com/knex/knex/issues/1881#issuecomment-275433906
-    query = query.whereIn("subscribers.primary_email", flag.allow_list);
-  }
 
   const wrappedQuery = knex
     // @ts-ignore TODO MNTOR-3890 Move away from this approach and simplify query.

@@ -48,10 +48,7 @@ email-breach-alert-blurb =
 
 email-dashboard-cta = Ddu ɣer tfelwit n usenqed
 
-## Breach alert
-
-
-## Redesigned breach alert email
+## Breach alert email
 
 email-breach-alert-all-next-steps-cta-label = Iya-d ad nebdu
 email-breach-alert-all-next-steps-button-dashboard = Ddu ɣer tfelwit n usenqed

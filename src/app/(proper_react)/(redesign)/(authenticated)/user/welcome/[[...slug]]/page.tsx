@@ -28,7 +28,6 @@ type Props = {
   }>;
   searchParams: Promise<{
     referrer?: string;
-    nimbus_preview?: string;
   }>;
 };
 
@@ -72,7 +71,6 @@ export default async function Onboarding(props: Props) {
     experimentationId,
     countryCode,
     locale: getLocale(getL10n(await getAcceptLangHeaderInServerComponents())),
-    previewMode: searchParams.nimbus_preview === "true",
   });
 
   return (

@@ -3,16 +3,15 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 export async function up(knex) {
-  return knex.schema
-    .createTable("stats", table => {
-      table.increments('id').primary()
-      table.string("name")
-      table.string("current")
-      table.string("max")
-      table.string("type")
-      table.timestamp("created_at").defaultTo(knex.fn.now())
-      table.timestamp("modified_at").defaultTo(knex.fn.now())
-    })
+  return knex.schema.createTable("stats", (table) => {
+    table.increments("id").primary();
+    table.string("name");
+    table.string("current");
+    table.string("max");
+    table.string("type");
+    table.timestamp("created_at").defaultTo(knex.fn.now());
+    table.timestamp("modified_at").defaultTo(knex.fn.now());
+  });
 }
 
 /**
@@ -20,6 +19,5 @@ export async function up(knex) {
  * @returns { Promise<void> }
  */
 export async function down(knex) {
-  return knex.schema
-    .dropTableIfExists("stats")
+  return knex.schema.dropTableIfExists("stats");
 }

@@ -6,18 +6,18 @@
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
-export function up (knex) {
-  return knex.schema.table('breaches', (table) => {
-    table.string('favicon_url').nullable()
-  })
+export function up(knex) {
+  return knex.schema.table("breaches", (table) => {
+    table.string("favicon_url").nullable();
+  });
 }
 
 /**
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
-export function down (knex) {
-  return knex.schema.table('breaches', (table) => {
-    table.dropColumn('favicon_url')
-  })
+export function down(knex) {
+  return knex.schema.table("breaches", (table) => {
+    table.dropColumn("favicon_url");
+  });
 }

@@ -29,8 +29,6 @@ export const EmailTrigger = (props: Props) => {
   const [isSendingSignupReport, setIsSendingSignupReport] = useState(false);
   const [isSendingVerification, setIsSendingVerification] = useState(false);
   const [isSendingBreachAlert, setIsSendingBreachAlert] = useState(false);
-  const [isSendingRedesignedBreachAlert, setIsSendingRedesignedBreachAlert] =
-    useState(false);
   const [
     isSendingMonthlyActivityFreeOverview,
     setIsSendingMonthlyActivityFreeOverview,
@@ -131,20 +129,6 @@ export const EmailTrigger = (props: Props) => {
           }}
         >
           Breach alert
-        </Button>
-        <Button
-          variant="primary"
-          isLoading={isSendingRedesignedBreachAlert}
-          onPress={() => {
-            setIsSendingRedesignedBreachAlert(true);
-            void triggerBreachAlert(selectedEmailAddress, {
-              redesign: true,
-            }).then(() => {
-              setIsSendingRedesignedBreachAlert(false);
-            });
-          }}
-        >
-          Breach alert (redesigned)
         </Button>
         <Button
           variant="primary"

@@ -82,7 +82,6 @@ breach-summary = Përmbledhje Cenimi
 
 ##
 
-breach-alert-subject = { -product-name } e gjeti email-in tuaj të ri në një cenim të dhënash
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that exposed a user’s password. Don’t add $passwords to
 # your localization, because it would result in the number showing twice.

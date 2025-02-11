@@ -6,8 +6,8 @@
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
-export function up (knex) {
-  return knex.schema.table("subscribers", table => {
+export function up(knex) {
+  return knex.schema.table("subscribers", (table) => {
     table.timestamp("churn_prevention_email_sent_at");
     table.index("churn_prevention_email_sent_at");
   });
@@ -17,9 +17,9 @@ export function up (knex) {
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
-export function down (knex) {
-  return knex.schema.table("subscribers", table => {
-    table.dropIndex("churn_prevention_email_sent_at")
+export function down(knex) {
+  return knex.schema.table("subscribers", (table) => {
+    table.dropIndex("churn_prevention_email_sent_at");
     table.dropColumn("churn_prevention_email_sent_at");
   });
 }

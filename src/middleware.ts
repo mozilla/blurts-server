@@ -29,8 +29,7 @@ export function middleware(request: NextRequest) {
     existingExperimentationId?.value ?? `guest-${crypto.randomUUID()}`;
   requestHeaders.set("x-experimentation-id", experimentationId);
 
-  // Check for Nimbus preview mode. Note that this requires a full page reload
-  // to activate: https://nextjs.org/docs/app/api-reference/file-conventions/layout#caveats
+  // Check for the presence of the Nimbus preview mode param.
   const nimbusPreviewMode = request.nextUrl.searchParams.get("nimbus_preview");
   requestHeaders.set(
     "x-nimbus-preview-mode",
@@ -93,7 +92,7 @@ function generateCspData() {
     } https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.ingest.sentry.io https://incoming.telemetry.mozilla.org https://api.stripe.com`,
     // `withSentryConfig` in next.config.js messes up the type, but we know that
     // it's a valid NextConfig with `images.remotePatterns` set:
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+
     `img-src 'self' https://*.google-analytics.com https://*.googletagmanager.com https://firefoxusercontent.com https://mozillausercontent.com https://monitor.cdn.mozilla.net ${nextConfig
       .images!.remotePatterns!.map(
         (pattern) =>

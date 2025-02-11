@@ -70,7 +70,7 @@ export const run = () => {
     if (result.success !== true) {
       throw new Error(`Non-success result: ${JSON.stringify(result)}`);
     }
-  } catch (ex) {
+  } catch {
     throw new Error(`Failed to parse result: ${res.status}, ${res.text}`);
   }
 };

@@ -7,7 +7,7 @@
  * @returns { Promise<void> }
  */
 export function up(knex) {
-  return knex.schema.createTable("qa_custom_toggles", function(table) {
+  return knex.schema.createTable("qa_custom_toggles", function (table) {
     table.string("email_hash").primary();
     table.integer("onerep_profile_id").notNullable();
     table.boolean("show_real_breaches").notNullable();

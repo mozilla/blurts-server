@@ -2,25 +2,18 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-# Firefox Monitor is a product name and should not be translated.
--product-name = Firefox Monitor
-# Firefox is a brand name and should not be translated.
--brand-name = Firefox
+
+## Email headers
+
+
+## Email footers
+
 # Firefox Relay is a product name and should not be translated.
 -product-name-relay = Firefox Relay
 # Mozilla VPN is a product name and should not be translated.
 -product-name-vpn = Mozilla VPN
 # A link to legal information about mozilla products.
 legal = 法的通知
-# Unsubscribe link in email.
-email-unsub-link = 登録解除
-# This string appears in the footer of breach report and breach alert emails.
-# { $unsubLink } is a link to the user's dashboard where they can unsubscribe from Monitor
-# and uses the text from { email-unsub-link }. { $faqLink } is a link to the
-# Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
-email-footer-blurb =
-    このアラートメールは、{ -product-name } に登録されている方に届きます。
-    これらのメールはもう必要ありませんか？ { $unsubLink }。これは自動化されたメールです。サポートについては、{ $faqLink } にアクセスしてください。
 # Button text
 verify-email-cta = メールアドレスを確認
 # Headline of verification email
@@ -48,5 +41,5 @@ email-2022-hibp-attribution = 侵害データ提供元: <a { $hibp-link-attr }>{
 ## Breach report
 
 
-## Breach alert
+## Breach alert email
 

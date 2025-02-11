@@ -207,7 +207,6 @@ function normalizeDate(date: string | Date): Date {
     ? // If `date` is a string, it was fetched from the HIBP API, and we should be
       // able to assume that it is a valid ISO 8601 string, and thus use the
       // non-null assertion:
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       parseIso8601Datetime(date)!
     : date;
 }

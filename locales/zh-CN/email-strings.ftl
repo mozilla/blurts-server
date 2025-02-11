@@ -57,18 +57,9 @@ email-breach-summary = 以下是您的数据外泄情况概览
 # Variables:
 #   $email-address (string) - Email address, bolded
 email-breach-detected = 您的 { $email-address } 账户的搜索结果显示您的邮箱地址可能已被泄露。我们建议您立即采取行动来应对此次泄露。
-# Deprecated after the redesigned breach alert email is launched
-# Variables:
-#   $email-address (string) - Email address
-email-breach-detected-2 = 您的 <b>{ $email-address }</b> 账户的搜索结果显示，您的邮箱地址可能已被泄露。建议立即采取行动来应对此次外泄事件。
 email-dashboard-cta = 前往面板
 
-## Breach alert
-
-# Deprecated after the redesigned breach alert email is launched
-email-spotted-new-breach = 我们发现新的数据外泄事件
-
-## Redesigned breach alert email
+## Breach alert email
 
 email-breach-alert-all-subject = 检测到新的数据外泄事件
 email-breach-alert-all-preview = 我们将指导您采取措施，逐项解决此问题。

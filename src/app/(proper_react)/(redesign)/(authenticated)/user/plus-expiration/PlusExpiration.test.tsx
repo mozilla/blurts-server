@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { it, expect } from "@jest/globals";
-import { render, screen } from "@testing-library/react";
+import { act, render, screen } from "@testing-library/react";
 import { composeStory } from "@storybook/react";
 import { axe } from "jest-axe";
 import userEvent from "@testing-library/user-event";
@@ -54,7 +54,7 @@ it("confirms the renewal after it's applied", async () => {
     name: "Renew subscription",
   });
   await user.click(renewalButton);
-  await applyCouponPromise;
+  await act(() => applyCouponPromise);
 
   expect(
     screen.getByRole("heading", {
@@ -78,7 +78,7 @@ it("shows an error if applying the coupon failed", async () => {
     />,
   );
 
-  await applyCouponPromise;
+  await act(() => applyCouponPromise);
   expect(
     screen.queryByText(/Couldn’t renew subscription./),
   ).not.toBeInTheDocument();
@@ -110,7 +110,7 @@ it("hides the error after dismissing it", async () => {
     name: "Renew subscription",
   });
   await user.click(renewalButton);
-  await applyCouponErrorPromise;
+  await act(() => applyCouponErrorPromise);
 
   expect(screen.getByText(/Couldn’t renew subscription./)).toBeInTheDocument();
 
@@ -148,13 +148,13 @@ it("allows retrying after an error", async () => {
     name: "Renew subscription",
   });
   await user.click(renewalButton);
-  await applyCouponErrorPromise;
+  await act(() => applyCouponErrorPromise);
 
   expect(screen.getByText(/Couldn’t renew subscription./)).toBeInTheDocument();
 
   const retryButton = screen.getByRole("button", { name: "Try again" });
   await user.click(retryButton);
-  await applyCouponSuccessPromise;
+  await act(() => applyCouponSuccessPromise);
   expect(
     screen.queryByText(/Couldn’t renew subscription./),
   ).not.toBeInTheDocument();

@@ -67,7 +67,7 @@ test("EmailUtils.init with SMTP URL invokes nodemailer.createTransport", async (
 
   const result = await initEmail(testSmtpUrl);
   expect(mockedNodemailer.createTransport).toHaveBeenCalledWith(testSmtpUrl);
-  // eslint-disable-next-line @typescript-eslint/unbound-method
+
   expect(mockedTransporter.verify).toHaveBeenCalledTimes(1);
   expect(result).toBe("verified");
 });

@@ -24,7 +24,7 @@ export async function GET() {
     try {
       const flags = await getAllFeatureFlags();
       return NextResponse.json(flags);
-    } catch (e) {
+    } catch {
       return NextResponse.json({ success: false }, { status: 500 });
     }
   } else {
@@ -102,7 +102,7 @@ export async function PUT(req: NextRequest) {
       }
 
       return NextResponse.json({ success: true, name: reqBody.name });
-    } catch (e) {
+    } catch {
       return NextResponse.json({ success: false }, { status: 500 });
     }
   } else {
@@ -123,7 +123,7 @@ export async function DELETE(req: NextRequest) {
       await deleteFeatureFlagByName(reqBody.name);
 
       return NextResponse.json({ success: true, name: reqBody.name });
-    } catch (e) {
+    } catch {
       return NextResponse.json({ success: false }, { status: 500 });
     }
   } else {

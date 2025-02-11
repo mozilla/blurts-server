@@ -74,7 +74,7 @@ function getUtmParams() {
       referrerUrl.hash = "";
 
       utmParams["referrer"] = referrerUrl.toString();
-    } catch (ex) {
+    } catch {
       console.error("Could not parse referrer as URL:", document.referrer);
     }
 

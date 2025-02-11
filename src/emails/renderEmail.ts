@@ -16,6 +16,9 @@ export async function renderEmail(emailTemplate: ReactNode): Promise<string> {
   return mjml2html(renderToStaticMarkup(emailTemplate), {
     validationLevel: "strict",
     beautify: false,
+    // NOTE: Before changing the option to anything else than `minify: false`
+    // we should ensure that the following issue is resolved:
+    // https://mozilla-hub.atlassian.net/browse/MNTOR-4050
     minify: false,
     ignoreIncludes: true,
   }).html;

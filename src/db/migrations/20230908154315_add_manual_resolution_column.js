@@ -7,7 +7,7 @@
  * @returns { Promise<void> }
  */
 export async function up(knex) {
-  return knex.schema.alterTable("onerep_scan_results", table => {
+  return knex.schema.alterTable("onerep_scan_results", (table) => {
     table.boolean("manually_resolved").notNullable().defaultTo(false);
   });
 }
@@ -17,7 +17,7 @@ export async function up(knex) {
  * @returns { Promise<void> }
  */
 export async function down(knex) {
-  return knex.schema.alterTable("onerep_scan_results", table => {
+  return knex.schema.alterTable("onerep_scan_results", (table) => {
     table.dropColumn("manually_resolved");
   });
 }
