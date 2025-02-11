@@ -131,7 +131,6 @@ export const getExposureStatus = (
     if (manualRemovalEnabled && isRemovalUnderMaintenance) {
       return "actionNeeded";
     }
-    console.log(exposure);
 
     switch (exposure.status) {
       case "removed":

@@ -119,7 +119,10 @@ export async function POST(req: NextRequest) {
     await addQaCustomBroker(brokerData);
     return new NextResponse("Success", { status: 200 });
   } catch (error) {
-    console.error("Error in addQaCustomBroker:", error);
+    return NextResponse.json(
+      { error: "Error in adding a custom broker" },
+      { status: 500 },
+    );
   }
 }
 
