@@ -62,6 +62,8 @@ export const featureFlagNames = [
 ] as const;
 export type FeatureFlagName = (typeof featureFlagNames)[number];
 
+export const adminOnlyFlags: FeatureFlagName[] = ["CustomDataBrokers"];
+
 /**
  * @param options
  */

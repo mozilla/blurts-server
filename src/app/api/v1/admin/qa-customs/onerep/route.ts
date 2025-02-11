@@ -120,10 +120,6 @@ export async function POST(req: NextRequest) {
     return new NextResponse("Success", { status: 200 });
   } catch (error) {
     console.error("Error in addQaCustomBroker:", error);
-    return new NextResponse(
-      `Internal Server Error: ${error instanceof Error ? error.message : "Unknown error"}`,
-      { status: 500 },
-    );
   }
 }
 

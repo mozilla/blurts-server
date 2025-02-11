@@ -90,7 +90,7 @@ async function getQaCustomBrokers(
   // Fetch all results from qa_custom_brokers
   const brokerResults = await knex("qa_custom_brokers")
     .select("*")
-    .where("onerep_profile_id", onerepProfileId);
+    .where("onerep_scan_id", onerepProfileId);
 
   if (brokerResults.length > 0) {
     /*
@@ -99,7 +99,6 @@ async function getQaCustomBrokers(
     */
     brokerResults.forEach((brokerResult) => {
       brokerResult.onerep_scan_id = onerepScanId;
-      brokerResult.data_broker_id = brokerResult.onerep_scan_result_id;
     });
 
     results = [...results, ...brokerResults];
@@ -107,16 +106,12 @@ async function getQaCustomBrokers(
   return results;
 }
 
-/**
- * Inserts a new row into the qa_custom_brokers table.
- *
- * @param brokerData
- */
 async function addQaCustomBroker(
   brokerData: OnerepScanResultDataBrokerRow,
 ): Promise<void> {
   await knex("qa_custom_brokers").insert({
     ...brokerData,
+    onerep_scan_result_id: undefined,
     emails: JSON.stringify(brokerData.emails),
     phones: JSON.stringify(brokerData.phones),
     addresses: JSON.stringify(brokerData.addresses || []),
@@ -129,7 +124,7 @@ async function getAllQaCustomBrokers(
   onerep_profile_id: number,
 ): Promise<OnerepScanResultDataBrokerRow[]> {
   const res = (await knex("qa_custom_brokers")
-    .where("onerep_profile_id", onerep_profile_id)
+    .where("onerep_scan_id", onerep_profile_id)
     .select("*")) as OnerepScanResultDataBrokerRow[];
   return res;
 }

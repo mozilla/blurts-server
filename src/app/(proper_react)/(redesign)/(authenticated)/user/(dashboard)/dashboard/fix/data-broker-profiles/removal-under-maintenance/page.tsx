@@ -11,6 +11,7 @@ import {
 import { getCountryCode } from "../../../../../../../../../functions/server/getCountryCode";
 import { headers } from "next/headers";
 import {
+  getMockedScanResultsWithBrokerUnderMaintenance,
   getScanResultsWithBroker,
   getScanResultsWithBrokerUnderMaintenance,
 } from "../../../../../../../../../../db/tables/onerep_scans";
@@ -45,8 +46,20 @@ export default async function RemovalUnderMaintenance() {
     profileId,
     hasPremium(session.user),
   );
+
   const scansWithRemovalUnderMaintenance =
     (await getScanResultsWithBrokerUnderMaintenance(profileId)) ?? null;
+
+  const mockedScansWithRemovalUnderMaintenance =
+    (await getMockedScanResultsWithBrokerUnderMaintenance(profileId)) ?? null;
+
+  const useMockedScans =
+    enabledFeatureFlags.includes("CustomDataBrokers") &&
+    process.env.NODE_ENV !== "production";
+
+  const scanResults = useMockedScans
+    ? mockedScansWithRemovalUnderMaintenance
+    : scansWithRemovalUnderMaintenance;
 
   const data: StepDeterminationData = {
     countryCode,
@@ -76,7 +89,7 @@ export default async function RemovalUnderMaintenance() {
   return (
     <RemovalUnderMaintenanceView
       stepDeterminationData={data}
-      data={scansWithRemovalUnderMaintenance}
+      data={scanResults}
       subscriberEmails={subscriberEmails}
       enabledFeatureFlags={enabledFeatureFlags}
     />

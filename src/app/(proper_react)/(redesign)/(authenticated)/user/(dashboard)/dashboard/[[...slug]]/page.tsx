@@ -14,6 +14,7 @@ import {
 } from "../../../../../../../functions/universal/user";
 import {
   getLatestScanForProfileByReason,
+  getMockedScanResults,
   getScanResultsWithBroker,
   getScansCountForProfile,
 } from "../../../../../../../../db/tables/onerep_scans";
@@ -85,6 +86,9 @@ export default async function DashboardPage(props: Props) {
   const profileId = await getOnerepProfileId(session.user.subscriber.id);
   const hasRunScan = typeof profileId === "number";
   const isNewUser = !isPrePlusUser(session.user);
+  const enabledFeatureFlags = await getEnabledFeatureFlags({
+    email: session.user.email,
+  });
 
   if (hasRunScan) {
     await refreshStoredScanResults(profileId);
@@ -112,6 +116,14 @@ export default async function DashboardPage(props: Props) {
     hasPremium(session.user),
   );
 
+  const mockedScanResults = await getMockedScanResults(profileId);
+
+  const useMockedScans =
+    enabledFeatureFlags.includes("CustomDataBrokers") &&
+    process.env.NODE_ENV !== "production";
+
+  const scanResults = useMockedScans ? mockedScanResults : latestScan;
+
   const scanCount =
     typeof profileId === "number"
       ? await getScansCountForProfile(profileId)
@@ -125,9 +137,7 @@ export default async function DashboardPage(props: Props) {
     session.user,
     countryCode,
   );
-  const enabledFeatureFlags = await getEnabledFeatureFlags({
-    email: session.user.email,
-  });
+
   const userIsEligibleForPremium = isEligibleForPremium(countryCode);
 
   const experimentationId = await getExperimentationId(session.user);
@@ -161,7 +171,7 @@ export default async function DashboardPage(props: Props) {
       user={session.user}
       isEligibleForPremium={userIsEligibleForPremium}
       isEligibleForFreeScan={userIsEligibleForFreeScan}
-      userScanData={latestScan}
+      userScanData={scanResults}
       userBreaches={subBreaches}
       enabledFeatureFlags={enabledFeatureFlags}
       monthlySubscriptionUrl={`${monthlySubscriptionUrl}&${additionalSubplatParams.toString()}`}

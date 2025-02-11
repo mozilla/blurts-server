@@ -7,6 +7,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "./ConfigPage.module.scss";
 import { OnerepScanResultDataBrokerRow } from "knex/types/tables";
+import { StateAbbr } from "../../../../../../utils/states";
 
 const endpointBase = "/api/v1/admin/qa-customs/onerep";
 const endpointToggleBase = "/api/v1/admin/qa-customs";
@@ -30,6 +31,13 @@ const OnerepConfigPage = (props: Props) => {
     link: false,
   });
 
+  const mockAddress = {
+    zip: "93386",
+    city: "Berkeley",
+    state: "CA" as StateAbbr,
+    street: "Von Meadows",
+  };
+
   // Initialize a base broker template to reset form fields
 
   const baseBroker: OnerepScanResultDataBrokerRow = {
@@ -38,7 +46,7 @@ const OnerepConfigPage = (props: Props) => {
     data_broker: "",
     emails: [],
     phones: [],
-    addresses: [],
+    addresses: [mockAddress],
     relatives: [],
     first_name: "",
     middle_name: "",
@@ -285,18 +293,6 @@ const OnerepConfigPage = (props: Props) => {
                   name="phones"
                   placeholder="0"
                   value={newBroker.phones}
-                  onChange={handleChange}
-                />
-              </label>
-
-              <label className={styles.label}>
-                Addresses:
-                <input
-                  className={styles.input}
-                  type="number"
-                  name="addresses"
-                  placeholder="0"
-                  value={[]}
                   onChange={handleChange}
                 />
               </label>
