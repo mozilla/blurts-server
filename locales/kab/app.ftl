@@ -31,7 +31,6 @@
 
 ##
 
-error-could-not-add-email = Ur izmir ara ad yernu tansa n yimayl ɣer taffa n yisefka.
 error-not-subscribed = Tansa-a imayl ur tettwajerred ara ar yilɣa { -product-name }.
 error-hibp-throttled = Ddeqs n tuqqniwin ar { -brand-HIBP }.
 error-hibp-connect = Tuccḍa deg tuqqna ar { -brand-HIBP }.
@@ -39,8 +38,6 @@ user-add-invalid-email = Yir imayl
 user-add-too-many-emails = Aql-ak tessefrakeḍ amḍan afellay n tansiwin n yimayl.
 user-add-duplicate-email = Imayl-a yettwarna yakan ɣer { -product-name }.
 user-verify-token-error = Ajiṭun n usentem ilaq.
-user-unsubscribe-token-error = Tuffɣa seg ujerred yesra ajiṭun.
-user-unsubscribe-token-email-error = Tuffɣa seg ujerred tesra ajiṭun d udsil n yimayl.
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Isefka yettwakren:
 # Breach data provided by Have I Been Pwned.
@@ -51,8 +48,6 @@ show-all = Sken akk
 sign-out = Ffeɣ
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Sefrek { -brand-fxa }
-# Link title
-frequently-asked-questions = Isteqsiyen itezzin ttuɣalen-d
 # Link title
 preferences = Ismenyifen
 # Link title
@@ -84,7 +79,6 @@ breach-summary = Agzul ɣef trewla n yisefka
 
 ##
 
-breach-alert-subject = { -product-name } yufa-d d akken tansa-ik tella deg trewla n yisefka tamaynut.
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that exposed a user’s password. Don’t add $passwords to
 # your localization, because it would result in the number showing twice.
@@ -185,7 +179,6 @@ mozilla = { -brand-mozilla }
 terms-of-service = Tiwtilin n useqdec
 privacy-notice = Tasertit n tbaḍnit
 github = { -brand-github }
-footer-nav-all-breaches = Meṛṛa tirewliwin
 footer-external-link-faq-label = Isteqsiyen FAQ
 footer-external-link-faq-tooltip = Isteqsiyen i d-yettuɣalen s waṭas.
 
@@ -198,7 +191,6 @@ error-page-error-404-cta-button = Uɣal
 
 ## Breach overview page
 
-all-breaches-headline-2 = Akk tirewliwin ttwafent-d s { -brand-fx-monitor }
 search-breaches = Nadi tirewliwin n yisefka
 
 ## Public breach detail page

@@ -82,7 +82,6 @@ breach-summary = 外泄事件概要
 
 ##
 
-breach-alert-subject = { -product-name } 发现您的邮箱出现在新的数据外泄事件中。
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that exposed a user’s password. Don’t add $passwords to
 # your localization, because it would result in the number showing twice.

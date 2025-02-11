@@ -61,18 +61,9 @@ email-breach-summary = Voici le résumé de vos fuites de données
 # Variables:
 #   $email-address (string) - Email address, bolded
 email-breach-detected = Les résultats de la recherche pour votre compte { $email-address } indiquent que votre adresse e-mail a peut-être été divulguée. Nous vous recommandons d’agir maintenant pour résoudre cette fuite de données.
-# Deprecated after the redesigned breach alert email is launched
-# Variables:
-#   $email-address (string) - Email address
-email-breach-detected-2 = Les résultats de recherche pour votre compte <b>{ $email-address }</b> indiquent que votre adresse e-mail a peut-être été divulguée. Nous vous recommandons d’agir maintenant pour résoudre cette fuite de données.
 email-dashboard-cta = Accéder au tableau de bord
 
-## Breach alert
-
-# Deprecated after the redesigned breach alert email is launched
-email-spotted-new-breach = Nous avons détecté une nouvelle fuite de données
-
-## Redesigned breach alert email
+## Breach alert email
 
 email-breach-alert-all-subject = Nouvelle fuite de données détectée
 email-breach-alert-all-preview = Nous allons vous guider pas à pas pour résoudre le problème.

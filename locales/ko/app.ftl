@@ -95,7 +95,6 @@ breach-summary = 유출 내역 요약
 
 ##
 
-breach-alert-subject = { -product-name }가 새로 유출된 자료에서 일치하는 이메일을 찾았습니다
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that exposed a user’s password. Don’t add $passwords to
 # your localization, because it would result in the number showing twice.
