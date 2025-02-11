@@ -61,18 +61,9 @@ email-breach-summary = Вот сводка ваших утечек данных
 # Variables:
 #   $email-address (string) - Email address, bolded
 email-breach-detected = Результаты поиска для вашей учётной записи { $email-address } обнаружили, что ваша электронная почта могла быть раскрыта. Мы рекомендуем вам действовать сейчас, чтобы устранить эту утечку.
-# Deprecated after the redesigned breach alert email is launched
-# Variables:
-#   $email-address (string) - Email address
-email-breach-detected-2 = Результаты поиска для вашей учётной записи <b>{ $email-address }</b> обнаружили, что ваша электронная почта могла быть раскрыта. Мы рекомендуем вам действовать сейчас для устранения этой утечки.
 email-dashboard-cta = Перейти в панель управления
 
-## Breach alert
-
-# Deprecated after the redesigned breach alert email is launched
-email-spotted-new-breach = Мы обнаружили новую утечку данных
-
-## Redesigned breach alert email
+## Breach alert email
 
 email-breach-alert-all-subject = Обнаружена новая утечка данных
 email-breach-alert-all-preview = Мы проведём вас через шаги для её решения.

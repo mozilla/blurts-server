@@ -61,18 +61,9 @@ email-breach-summary = Ось стислий огляд ваших витокі�
 # Variables:
 #   $email-address (string) - Email address, bolded
 email-breach-detected = Результати пошуку для вашого облікового запису { $email-address } виявили, що вашу електронну адресу могли розкрити. Ми радимо діяти зараз, щоб усунути цю проблему.
-# Deprecated after the redesigned breach alert email is launched
-# Variables:
-#   $email-address (string) - Email address
-email-breach-detected-2 = Результати пошуку для <b>{ $email-address }</b> вашого облікового запису виявили, що вашу електронну адресу могли розкрити. Ми радимо діяти зараз, щоб усунути цю проблему.
 email-dashboard-cta = Перейти до панелі стану
 
-## Breach alert
-
-# Deprecated after the redesigned breach alert email is launched
-email-spotted-new-breach = Ми помітили новий витік даних
-
-## Redesigned breach alert email
+## Breach alert email
 
 email-breach-alert-all-subject = Виявлено новий витік даних
 email-breach-alert-all-preview = Ми допоможемо вам це виправити.

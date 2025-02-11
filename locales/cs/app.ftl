@@ -209,7 +209,6 @@ breach-summary = Souhrnné informace
 
 ##
 
-breach-alert-subject = { -product-name } našel vaši e-mailovou adresu v novém úniku dat
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that exposed a user’s password. Don’t add $passwords to
 # your localization, because it would result in the number showing twice.
