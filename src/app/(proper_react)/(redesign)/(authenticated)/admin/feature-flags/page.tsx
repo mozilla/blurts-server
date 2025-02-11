@@ -5,6 +5,7 @@
 import { notFound, redirect } from "next/navigation";
 import { getServerSession } from "../../../../../functions/server/getServerSession";
 import {
+  adminOnlyFlags,
   FeatureFlagName,
   featureFlagNames,
   getAllFeatureFlags,
@@ -77,7 +78,11 @@ export default async function FeatureFlagPage() {
         <div className={styles.flagList}>
           {disabledFlags.map((flagOrFlagName) => {
             return typeof flagOrFlagName === "string" ? (
-              <NewFlagEditor key={flagOrFlagName} flagName={flagOrFlagName} />
+              <NewFlagEditor
+                key={flagOrFlagName}
+                flagName={flagOrFlagName}
+                adminOnly={isFeatureFlagAdminOnly(flagOrFlagName)}
+              />
             ) : (
               <ExistingFlagEditor
                 key={flagOrFlagName.name}
@@ -95,10 +100,21 @@ export default async function FeatureFlagPage() {
                 featureFlagNames.includes(flag.name as FeatureFlagName),
             )
             .map((flag) => (
-              <ExistingFlagEditor key={flag.name} flag={flag} />
+              <ExistingFlagEditor
+                key={flag.name}
+                flag={flag}
+                adminOnly={isFeatureFlagAdminOnly(flag.name)}
+              />
             ))}
         </div>
       </div>
     </div>
+  );
+}
+
+function isFeatureFlagAdminOnly(flagName: string): boolean {
+  return (
+    featureFlagNames.includes(flagName as FeatureFlagName) &&
+    adminOnlyFlags.includes(flagName as FeatureFlagName)
   );
 }
