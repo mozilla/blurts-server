@@ -61,18 +61,9 @@ email-breach-summary = Berikut ringkasan pembobolan data Anda
 # Variables:
 #   $email-address (string) - Email address, bolded
 email-breach-detected = Hasil pencarian untuk akun { $email-address } Anda telah mendeteksi bahwa surel Anda mungkin telah terekspos. Kami menyarankan Anda bertindak sekarang untuk menindaklanjuti pelanggaran ini.
-# Deprecated after the redesigned breach alert email is launched
-# Variables:
-#   $email-address (string) - Email address
-email-breach-detected-2 = Hasil pencarian untuk akun <b>{ $email-address }</b> Anda telah mendeteksi bahwa surel Anda mungkin telah diekspos. Kami menyarankan Anda bertindak sekarang untuk mengatasi pelanggaran ini.
 email-dashboard-cta = Buka Dasbor
 
-## Breach alert
-
-# Deprecated after the redesigned breach alert email is launched
-email-spotted-new-breach = Kami telah menemukan pembobolan data baru
-
-## Redesigned breach alert email
+## Breach alert email
 
 email-breach-alert-all-subject = Pembobolan data baru terdeteksi
 email-breach-alert-all-preview = Kami akan memandu Anda melalui langkah-langkah untuk mengatasinya.

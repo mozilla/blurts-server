@@ -33,8 +33,5 @@ email-subject-verify = אימות הדוא״ל שלך עבור { -product-name }
 ## Breach report
 
 
-## Breach alert
-
-
-## Redesigned breach alert email
+## Breach alert email
 

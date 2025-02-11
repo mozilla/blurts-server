@@ -61,18 +61,9 @@ email-breach-summary = Tu je sumár únikov údajov
 # Variables:
 #   $email-address (string) - Email address, bolded
 email-breach-detected = Výsledky vyhľadávania pre váš účet { $email-address } zistili, že váš e‑mail mohol byť odhalený. Odporúčame vám, aby ste okamžite začali daný únik riešiť.
-# Deprecated after the redesigned breach alert email is launched
-# Variables:
-#   $email-address (string) - Email address
-email-breach-detected-2 = Výsledky vyhľadávania pre váš účet <b>{ $email-address }</b> zistili, že váš e‑mail mohol byť súčasťou úniku. Odporúčame vám, aby ste okamžite začali daný únik riešiť.
 email-dashboard-cta = Prejsť na nástenku
 
-## Breach alert
-
-# Deprecated after the redesigned breach alert email is launched
-email-spotted-new-breach = Zistili sme nový únik údajov
-
-## Redesigned breach alert email
+## Breach alert email
 
 email-breach-alert-all-subject = Bol zistený nový únik údajov
 email-breach-alert-all-preview = Prevedieme vás krokmi, ako to vyriešiť.

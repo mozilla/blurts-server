@@ -33,8 +33,5 @@ email-subject-verify = { -product-name }നായി താങ്ങളുടെ
 ## Breach report
 
 
-## Breach alert
-
-
-## Redesigned breach alert email
+## Breach alert email
 

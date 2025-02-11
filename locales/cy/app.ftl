@@ -88,7 +88,6 @@ breach-summary = Crynodeb o'r Tor-data
 
 ##
 
-breach-alert-subject = Mae { -product-name } wedi canfod eich e-bost mewn tor-data newydd.
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that exposed a user’s password. Don’t add $passwords to
 # your localization, because it would result in the number showing twice.

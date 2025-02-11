@@ -61,18 +61,9 @@ email-breach-summary = Đây là tóm tắt về rò rỉ dữ liệu của bạ
 # Variables:
 #   $email-address (string) - Email address, bolded
 email-breach-detected = Kết quả tìm kiếm cho tài khoản { $email-address } của bạn đã phát hiện ra rằng email của bạn có thể đã bị lộ. Chúng tôi khuyên bạn nên hành động ngay bây giờ để giải quyết rò rỉ này.
-# Deprecated after the redesigned breach alert email is launched
-# Variables:
-#   $email-address (string) - Email address
-email-breach-detected-2 = Kết quả tìm kiếm cho tài khoản <b>{ $email-address }</b> của bạn đã phát hiện ra rằng email của bạn có thể đã bị lộ. Chúng tôi khuyên bạn nên hành động ngay bây giờ để giải quyết rò rỉ này.
 email-dashboard-cta = Đi đến bảng điều khiển
 
-## Breach alert
-
-# Deprecated after the redesigned breach alert email is launched
-email-spotted-new-breach = Chúng tôi đã phát hiện một lỗ hổng dữ liệu mới
-
-## Redesigned breach alert email
+## Breach alert email
 
 email-breach-alert-all-subject = Đã phát hiện rò rỉ dữ liệu mới
 email-breach-alert-all-preview = Chúng tôi sẽ hướng dẫn bạn các bước để giải quyết vấn đề này.
