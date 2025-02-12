@@ -11,7 +11,8 @@ run();
 /**
  * See https://experimenter.info/fml-spec/#additional-types
  *
- * @typedef {"String" | "Boolean" | "Int" | "Text" | "Image" | `Option<${Type}>` | `List<${Type}>` | `Map<${Type}, ${Type}>`} Type
+ * @typedef { "String" | "Boolean" | "Int" | "Text" | "Image" } BaseType
+ * @typedef { BaseType | `Option<${BaseType}>` | `List<${BaseType}>` | `Map<${BaseType}, ${BaseType}>` } Type
  */
 /**
  * @typedef {"local" | "staging" | "production"} Channel
@@ -23,7 +24,7 @@ run();
  *     description: string;
  *     type: Type;
  *     default: unknown;
- *     string-alias?: string;
+ *     "string-alias"?: string;
  *   }
  * >} Variables
  */
@@ -126,7 +127,7 @@ function getLocalOverrides(nimbusConfig) {
       const overriddenValuesDef =
         typeof localOverrides === "undefined"
           ? ""
-          : `    ...${JSON.stringify(localOverrides.value, null, 2).replaceAll("\n", "\n    ")}\n`;
+          : `    ...${JSON.stringify(localOverrides.values, null, 2).replaceAll("\n", "\n    ")}\n`;
       return `  "${featureId}": {\n    ...defaultExperimentData["Features"]["${featureId}"],\n${overriddenValuesDef}  },\n`;
     },
   );
@@ -159,7 +160,7 @@ function getFeaturesTypeDef(nimbusConfig) {
       nimbusConfig.features[featureId].variables,
     );
     const variableDefs = variableNames.map((variableName) => {
-      return `    "${variableName}": ${getType(nimbusConfig.features[featureId].variables[variableName].type)};\n`;
+      return `    "${variableName}": ${getTypeScriptType(nimbusConfig.features[featureId].variables[variableName].type)};\n`;
     });
     return `  "${featureId}": {\n${variableDefs.join("")}  };\n`;
   });
@@ -208,15 +209,15 @@ function getStringAliases(nimbusConfig) {
 
 /**
  * @param {NimbusConfig} nimbusConfig
- * @returns string
+ * @returns {string}
  */
 function getTypeAliases(nimbusConfig) {
   const objects = nimbusConfig.objects ?? {};
   const objectDefs = Object.keys(objects).map((typeAlias) => {
-    const propertyNames = Object.keys(nimbusConfig.objects[typeAlias].fields);
+    const propertyNames = Object.keys(objects[typeAlias].fields);
     const propertyDefs = propertyNames.map((propertyName) => {
       // TODO: Add descriptions as TSDoc comment?
-      return `  "${propertyName}": ${getType(nimbusConfig.objects[typeAlias].fields[propertyName].type)};\n`;
+      return `  "${propertyName}": ${getTypeScriptType(objects[typeAlias].fields[propertyName].type)};\n`;
     });
     // TODO: Add description as TSDoc comment?
     return `type ${typeAlias} = {\n${propertyDefs.join("")}};\n`;
@@ -225,7 +226,7 @@ function getTypeAliases(nimbusConfig) {
   const enums = nimbusConfig.enums ?? {};
   const enumDefs = Object.keys(enums).map((typeAlias) => {
     // TODO: Add values as TSDoc comment?
-    const unionOfStrings = Object.keys(nimbusConfig.enums[typeAlias].variants)
+    const unionOfStrings = Object.keys(enums[typeAlias].variants)
       .map((variant) => `"${variant}"`)
       .join(" | ");
     return `type ${typeAlias} = ${unionOfStrings};`;
@@ -241,9 +242,9 @@ function getTypeAliases(nimbusConfig) {
 
 /**
  * @param {string} type
- * @returns string
+ * @returns {string} type
  */
-function getType(type) {
+function getTypeScriptType(type) {
   if (type === "String") {
     return "string";
   }
@@ -258,16 +259,16 @@ function getType(type) {
   }
   if (type.startsWith("Option<")) {
     const t = type.substring("Option<".length, type.length - 1).trim();
-    return `null | ${getType(t)}`;
+    return `null | ${getTypeScriptType(t)}`;
   }
   if (type.startsWith("List<")) {
     const t = type.substring("List<".length, type.length - 1).trim();
-    return `Array<${getType(t)}>`;
+    return `Array<${getTypeScriptType(t)}>`;
   }
   if (type.startsWith("Map<")) {
     const kv = type.substring("Map<".length, type.length - 1).trim();
     const [k, v] = kv.split(",").map((part) => part.trim());
-    return `Record<${getType(k)}, ${getType(v)}>`;
+    return `Record<${getTypeScriptType(k)}, ${getTypeScriptType(v)}>`;
   }
 
   return type;
