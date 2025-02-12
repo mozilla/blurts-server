@@ -15,8 +15,6 @@ settings-alert-preferences-allow-breach-alerts-title = Direkte datalekkasjevarse
 settings-alert-preferences-allow-breach-alerts-subtitle = Desse varsla vert sende med ein gong ein datalekkasje er oppdaga
 settings-alert-preferences-option-one = Send alle åtvaringar om datalekkasjar til den ramma e-postadressa
 settings-alert-preferences-option-two = Send alle åtvaringar om datalekkasjar til den primære e-postadressa
-settings-alert-preferences-allow-monthly-monitor-report-title = Månadleg { -brand-monitor }-rapport
-settings-alert-preferences-allow-monthly-monitor-report-subtitle = Ei månadleg oppdatering av nye eksponeringar, kva som er fiksa og kva som krev di merksemd.
 
 ## Monitored email addresses
 
@@ -58,3 +56,15 @@ settings-delete-monitor-free-account-dialog-cta-label = Slett kontoen
 settings-delete-monitor-free-account-dialog-cancel-button-label = Gløym det, ta meg tillbake
 settings-delete-monitor-account-confirmation-toast-label-2 = { -brand-monitor }-kontoen din er no sletta.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Ignorer
+
+## Monthly Monitor Report
+
+settings-alert-preferences-allow-monthly-monitor-report-title = Månadleg { -brand-monitor }-rapport
+settings-alert-preferences-allow-monthly-monitor-report-subtitle = Ei månadleg oppdatering av nye eksponeringar, kva som er fiksa og kva som krev di merksemd.
+
+## Settings page redesign
+
+settings-tab-label-edit-info = Rediger opplysningane dine
+settings-tab-label-notifications = Still inn varsel
+settings-tab-subtitle-manage-account = Handsam { -product-name }-kontoen din.
+settings-tab-notifications-marketing-link-label = Gå til e-postinnstillingar for { -brand-mozilla }
