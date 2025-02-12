@@ -8,6 +8,7 @@ landing-all-hero-lead = Vi undersøkjer datalekkasjar for å sjå om dine data h
 landing-all-hero-emailform-input-placeholder = dittnamn@doeme.no
 landing-all-hero-emailform-input-label = Skriv inn e-postadressa di for å søkje etter datalekkasje-eksponeringar.
 landing-all-hero-emailform-submit-label = Få gratis skanning
+landing-all-hero-emailform-submit-sign-up-label = Registrer deg for å få gratis skanning
 # This is a label underneath a big number "14" - it's an image that demos Monitor.
 landing-all-hero-image-chart-label = eksponeringar
 
