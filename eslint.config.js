@@ -172,7 +172,6 @@ const config = [
   // Ignore the following files for now.
   {
     files: [
-      "src/app/global-error.js",
       "src/db/migrations/*.js",
       "src/scripts/build/*.js",
       "src/scripts/loadtest/*.js",
