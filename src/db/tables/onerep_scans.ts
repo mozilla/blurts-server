@@ -263,6 +263,10 @@ async function addOnerepScanResults(
     last_name: scanResult.last_name,
     status: scanResult.status,
     optout_attempts: scanResult.optout_attempts,
+    last_optout_at:
+      typeof scanResult.last_optout_at === "string"
+        ? scanResult.last_optout_at
+        : undefined,
   }));
 
   // Only log metadata. This is used for reporting purposes.

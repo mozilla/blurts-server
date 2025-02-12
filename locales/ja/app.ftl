@@ -39,8 +39,6 @@ user-add-verification-email-just-sent = メールをすぐに再送信するこ�
 user-add-unknown-error = 別のメールアドレスを追加する際に問題が発生しました。後でもう一度試してください。
 user-delete-unknown-error = メールアドレスを削除する際に問題が発生しました。後でもう一度試してください。
 user-verify-token-error = 検証トークンが必要です。
-user-unsubscribe-token-error = 登録解除にはトークンが必要です。
-user-unsubscribe-token-email-error = 登録解除にはトークンと emailHash が必要です。
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = 漏洩したデータ:
 # Breach data provided by Have I Been Pwned.
@@ -51,8 +49,6 @@ show-all = すべて表示
 sign-out = ログアウト
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = { -brand-fxa }の管理
-# Link title
-frequently-asked-questions = よくある質問
 # Link title
 preferences = 設定
 # Link title
@@ -84,7 +80,6 @@ breach-summary = データ侵害概要
 
 ##
 
-breach-alert-subject = { -product-name } が、あなたのメールアドレスの新しいデータ侵害を発見しました。
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that exposed a user’s password. Don’t add $passwords to
 # your localization, because it would result in the number showing twice.
@@ -167,7 +162,6 @@ user-menu-signout-tooltip = { -brand-mozilla-monitor } からログアウトす�
 
 mozilla = { -brand-mozilla }
 github = { -brand-github }
-footer-nav-all-breaches = すべての侵害
 footer-external-link-faq-label = FAQ
 footer-external-link-faq-tooltip = よくある質問
 
@@ -181,7 +175,6 @@ error-page-error-404-cta-button = 戻る
 
 ## Breach overview page
 
-all-breaches-headline-2 = { -brand-fx-monitor } によって検知されたすべての侵害
 all-breaches-lead = 個人情報が漏えいしていないか確認するために、既知のデータ侵害を監視しています。2007 年以降に報告されたすべての侵害の完全なリストです。
 search-breaches = データ侵害を検索
 # the kind of user data exposed to hackers in data breach.

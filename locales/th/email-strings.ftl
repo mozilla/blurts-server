@@ -61,18 +61,9 @@ email-breach-summary = นี่คือสรุปการละเมิด
 # Variables:
 #   $email-address (string) - Email address, bolded
 email-breach-detected = ผลลัพธ์การค้นหาสำหรับบัญชี { $email-address } ของคุณตรวจพบว่าอีเมลของคุณอาจถูกเปิดเผย เราแนะนำให้คุณดำเนินการทันทีเพื่อแก้ไขการละเมิดนี้
-# Deprecated after the redesigned breach alert email is launched
-# Variables:
-#   $email-address (string) - Email address
-email-breach-detected-2 = ผลลัพธ์การค้นหาสำหรับบัญชี <b>{ $email-address }</b> ของคุณตรวจพบว่าอีเมลของคุณอาจถูกเปิดเผย เราแนะนำให้คุณดำเนินการทันทีเพื่อแก้ไขการละเมิดนี้
 email-dashboard-cta = ไปที่แดชบอร์ด
 
-## Breach alert
-
-# Deprecated after the redesigned breach alert email is launched
-email-spotted-new-breach = เราพบการละเมิดข้อมูลใหม่
-
-## Redesigned breach alert email
+## Breach alert email
 
 email-breach-alert-all-subject = ตรวจพบการละเมิดข้อมูลใหม่
 email-breach-alert-all-preview = เราจะแนะนำคุณผ่านขั้นตอนต่างๆ เพื่อแก้ไขปัญหา

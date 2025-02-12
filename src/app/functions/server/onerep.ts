@@ -93,6 +93,7 @@ export type ScanResult = {
   data_broker: string;
   status: RemovalStatus;
   optout_attempts?: number;
+  last_optout_at?: ISO8601DateString;
   data_broker_id: number;
   created_at: ISO8601DateString;
   updated_at: ISO8601DateString;

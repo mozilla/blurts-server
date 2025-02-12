@@ -248,6 +248,12 @@ const meta: Meta<typeof DashboardWrapper> = {
         type: "number",
       },
     },
+    enabledFeatureFlags: {
+      name: "Enabled feature flags",
+      control: {
+        type: "object",
+      },
+    },
   },
 };
 

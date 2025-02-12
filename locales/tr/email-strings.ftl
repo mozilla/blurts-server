@@ -57,18 +57,9 @@ email-breach-summary = İşte veri ihlali özetiniz
 # Variables:
 #   $email-address (string) - Email address, bolded
 email-breach-detected = { $email-address } hesabınızın arama sonuçları, e-postanızın açığa çıkmış olabileceğini tespit etti. Bu ihlali çözmek için hemen harekete geçmenizi öneririz.
-# Deprecated after the redesigned breach alert email is launched
-# Variables:
-#   $email-address (string) - Email address
-email-breach-detected-2 = <b>{ $email-address }</b> hesabınızın arama sonuçları, e-postanızın açığa çıkmış olabileceğini tespit etti. Bu ihlali çözmek için hemen harekete geçmenizi öneririz.
 email-dashboard-cta = Kontrol paneline git
 
-## Breach alert
-
-# Deprecated after the redesigned breach alert email is launched
-email-spotted-new-breach = Yeni bir veri ihlali tespit ettik
-
-## Redesigned breach alert email
+## Breach alert email
 
 email-breach-alert-all-subject = Yeni bir veri ihlali tespit ettik
 email-breach-alert-all-preview = Sorunu çözmeniz için gereken adımlarda size rehberlik edeceğiz.

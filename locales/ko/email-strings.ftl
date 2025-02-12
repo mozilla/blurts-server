@@ -61,18 +61,9 @@ email-breach-summary = 데이터 유출 요약은 다음과 같습니다.
 # Variables:
 #   $email-address (string) - Email address, bolded
 email-breach-detected = { $email-address } 계정에 대한 검색 결과에서 이메일이 유출되었을 수 있음이 감지되었습니다. 이 유출 사항을 해결하려면 지금 조치를 취하세요.
-# Deprecated after the redesigned breach alert email is launched
-# Variables:
-#   $email-address (string) - Email address
-email-breach-detected-2 = <b>{ $email-address }</b> 계정에 대한 검색 결과에서 이메일이 유출되었을 수 있음이 감지되었습니다. 이 유출 사항을 해결하려면 지금 조치를 취하세요.
 email-dashboard-cta = 대시보드로 가기
 
-## Breach alert
-
-# Deprecated after the redesigned breach alert email is launched
-email-spotted-new-breach = 새로운 데이터 유출이 발견되었습니다.
-
-## Redesigned breach alert email
+## Breach alert email
 
 email-breach-alert-all-subject = 새로운 데이터 유출 감지됨
 email-breach-alert-all-preview = 문제 해결을 위한 단계를 안내해 드리겠습니다.

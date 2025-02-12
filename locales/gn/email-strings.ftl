@@ -64,12 +64,7 @@ email-breach-summary = Na’ápe ne mba’ekuaarã ñembogua rapykuere
 email-breach-detected = Ne mba’ete jeheka rapykuere { $email-address } ohechakuaa ne ñanduti veve oñembyaikuaaha. Romombe’u ndéve emyatyrõ hag̃ua ko ñembogua rehegua.
 email-dashboard-cta = Eho ñangarekoha rupápe
 
-## Breach alert
-
-# Deprecated after the redesigned breach alert email is launched
-email-spotted-new-breach = Rohecha oĩha mba’ekuaarã ñembogua pyahu
-
-## Redesigned breach alert email
+## Breach alert email
 
 email-breach-alert-all-subject = Ojejuhu mba’ekuaarã ñembyai pyahu
 email-breach-alert-all-preview = Rombohapéta emoĩporãkuaa hag̃uáicha.

@@ -61,18 +61,9 @@ email-breach-summary = Aqui está o resumo de vazamento de dados
 # Variables:
 #   $email-address (string) - Email address, bolded
 email-breach-detected = Os resultados da pesquisa da sua conta { $email-address } detectaram que seu email pode ter sido exposto. Recomendamos você agir agora para resolver este vazamento.
-# Deprecated after the redesigned breach alert email is launched
-# Variables:
-#   $email-address (string) - Email address
-email-breach-detected-2 = Os resultados da pesquisa da sua conta <b>{ $email-address }</b> detectaram que seu email pode ter sido exposto. Recomendamos agir agora mesmo para resolver este vazamento.
 email-dashboard-cta = Ir para o painel
 
-## Breach alert
-
-# Deprecated after the redesigned breach alert email is launched
-email-spotted-new-breach = Detectamos um novo vazamento de dados
-
-## Redesigned breach alert email
+## Breach alert email
 
 email-breach-alert-all-subject = Detectado novo vazamento de dados
 email-breach-alert-all-preview = Orientamos você nas etapas para resolver.
