@@ -39,7 +39,7 @@ const config = [
         project: "tsconfig.json",
       },
     },
-    ignores: ["coverage", "dist", "sentry.*.config.ts"],
+    ignores: ["coverage", "dist"],
     plugins: {
       jsdoc,
       "@typescript-eslint": tsEslint,
@@ -145,9 +145,7 @@ const config = [
   {
     files: ["**/*.test.{ts,tsx,js}"],
     plugins: { jest: jestPlugin },
-    rules: {
-      ...jestPlugin.configs.recommended.rules,
-    },
+    rules: jestPlugin.configs.recommended.rules,
   },
   {
     // Only enable rules that depend on type checking on TS files.
@@ -171,13 +169,19 @@ const config = [
       "@typescript-eslint/no-unsafe-call": "off",
     },
   },
-  // Ignore the following `.js` files from linting for now.
+  // Ignore the following files for now.
   {
     files: [
-      "eslint.config.js",
       "src/app/global-error.js",
-      "src/db/**/*.js",
-      "src/scripts/**/*.js",
+      "src/db/migrations/*.js",
+      "src/scripts/build/*.js",
+      "src/scripts/loadtest/*.js",
+      // Next is not running ESLint on root files by default. The only way to
+      // include those would be to explicitly add them one by one. Instead, we
+      // run ESLint directly in addition to next lint on just the root files.
+      // For more info see:
+      // https://nextjs.org/docs/app/api-reference/config/eslint#linting-custom-directories-and-files
+      "*.{js,cjs,ts}",
     ],
     languageOptions: {
       parserOptions: { project: null },
