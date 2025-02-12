@@ -4,7 +4,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     // JS files that are not yet migrated to TS.
-    "src/app/global-error.js"
+    "src/app/global-error.js",
+    "src/scripts/build/*.js"
   ],
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig to read more about this file */

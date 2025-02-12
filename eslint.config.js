@@ -173,7 +173,6 @@ const config = [
   {
     files: [
       "src/db/migrations/*.js",
-      "src/scripts/build/*.js",
       "src/scripts/loadtest/*.js",
       // Next is not running ESLint on root files by default. The only way to
       // include those would be to explicitly add them one by one. Instead, we
