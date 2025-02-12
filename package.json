@@ -24,7 +24,7 @@
     "build": "npm run get-location-data && npm run build-glean && npm run build-nimbus && next build && npm run build-cronjobs",
     "cloudrun": "npm run db:migrate && npm start",
     "start": "next start",
-    "lint": "stylelint '**/*.scss' && prettier --check './src' && next lint --max-warnings=0 && tsc -p tsconfig.json --noEmit && npm run validate-nimbus",
+    "lint": "stylelint '**/*.scss' && prettier --check './src' && eslint './*.{js,cjs,ts}' --max-warnings=0 && next lint --max-warnings=0 && tsc -p tsconfig.json --noEmit && npm run validate-nimbus",
     "fix": "prettier --write './src' && next lint --fix && stylelint --fix '**/*.scss'",
     "test": "npm run build-nimbus && jest",
     "e2e": "playwright test src/e2e/",
