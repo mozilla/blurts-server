@@ -37,7 +37,7 @@ run();
  *     variables: Variables;
  *     defaults?: Array<{
  *       channel: Channel;
- *       values: Record<keyof Variables, unknown>;
+ *       value: Record<keyof Variables, unknown>;
  *     }>;
  *   }>;
  *   enums?: Record<string, {
@@ -127,7 +127,7 @@ function getLocalOverrides(nimbusConfig) {
       const overriddenValuesDef =
         typeof localOverrides === "undefined"
           ? ""
-          : `    ...${JSON.stringify(localOverrides.values, null, 2).replaceAll("\n", "\n    ")}\n`;
+          : `    ...${JSON.stringify(localOverrides.value, null, 2).replaceAll("\n", "\n    ")}\n`;
       return `  "${featureId}": {\n    ...defaultExperimentData["Features"]["${featureId}"],\n${overriddenValuesDef}  },\n`;
     },
   );
