@@ -18,6 +18,8 @@ export function up(knex) {
  */
 export function down(knex) {
   return knex.schema.table("subscribers", (table) => {
+    // @ts-ignore TODO: Determine if the following line should be changed to
+    // `defaultTo` or remain unchanged as initially deployed.
     table.dropUnique("onerep_profile_id");
   });
 }

@@ -169,17 +169,13 @@ const config = [
       "@typescript-eslint/no-unsafe-call": "off",
     },
   },
-  // Ignore the following files for now.
+  // Next is not running ESLint on root files by default. The only way to
+  // include those would be to explicitly add them one by one. Instead, we
+  // run ESLint directly in addition to next lint on just the root files.
+  // For more info see:
+  // https://nextjs.org/docs/app/api-reference/config/eslint#linting-custom-directories-and-files
   {
-    files: [
-      "src/db/migrations/*.js",
-      // Next is not running ESLint on root files by default. The only way to
-      // include those would be to explicitly add them one by one. Instead, we
-      // run ESLint directly in addition to next lint on just the root files.
-      // For more info see:
-      // https://nextjs.org/docs/app/api-reference/config/eslint#linting-custom-directories-and-files
-      "*.{js,cjs,ts}",
-    ],
+    files: ["*.{js,cjs,ts}"],
     languageOptions: {
       parserOptions: { project: null },
     },

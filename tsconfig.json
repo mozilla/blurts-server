@@ -5,6 +5,7 @@
     ".next/types/**/*.ts",
     // JS files that are not yet migrated to TS.
     "src/app/global-error.js",
+    "src/db/migrations/*.js",
     "src/scripts/build/*.js",
     "src/scripts/loadtest/hibp.js"
   ],

@@ -24,6 +24,8 @@ export async function up(knex) {
  */
 export function down(knex) {
   return knex.schema.table("onerep_scan_results", (table) => {
+    // @ts-ignore TODO: Determine if the following line should be changed to
+    // `defaultTo` or remain unchanged as initially deployed.
     table.dropUnique("onerep_scan_result_id");
   });
 }
