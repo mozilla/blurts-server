@@ -58,8 +58,7 @@ export const Dialog = ({
           height="14"
         />
       </button>
-    ) : /* c8 ignore next */
-    null;
+    ) : null;
 
   return (
     <div

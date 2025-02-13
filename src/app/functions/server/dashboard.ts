@@ -481,9 +481,6 @@ function sanitizeDataPoints(
 }
 
 export function getDataPointReduction(summary: DashboardSummary): number {
-  // The `if` statement is totally covered by unit tests, but for some reason,
-  // since the upgrade to Node 20.10, it doesn't get marked as covered anymore:
-  /* c8 ignore next */
   if (summary.totalDataPointsNum <= 0) return 100;
   return Math.round(
     (summary.dataBrokerTotalDataPointsNum / summary.totalDataPointsNum) * 100,

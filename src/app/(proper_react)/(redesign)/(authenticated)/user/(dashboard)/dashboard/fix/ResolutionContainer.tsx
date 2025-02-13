@@ -32,9 +32,6 @@ type ResolutionContainerProps = {
 export const ResolutionContainer = (props: ResolutionContainerProps) => {
   const l10n = useL10n();
   const estimatedTimeString =
-    /* c8 ignore next 8 */
-    // Since the Node 20.10 upgrade, it's been intermittently marking this (and
-    // this comment) as uncovered, even though I think it's covered by tests.
     props.type === "leakedPasswords"
       ? "leaked-passwords-estimated-time"
       : "high-risk-breach-estimated-time";
