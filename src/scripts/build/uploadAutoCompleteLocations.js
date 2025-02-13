@@ -21,9 +21,6 @@ import {
   readFileSync,
   rmSync,
   writeFileSync,
-  // WriteStream is used as type in this file.
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  WriteStream,
 } from "fs";
 import Sentry from "@sentry/nextjs";
 import os from "os";
@@ -81,7 +78,7 @@ function logProgress(currentCount, totalCount) {
  *
  * @param {Object} param - The parameters for the function.
  * @param {string} param.url - The URL of the remote file.
- * @param {WriteStream} param.writeStream - The write stream the file content is written to.
+ * @param {import("fs").WriteStream} param.writeStream - The write stream the file content is written to.
  * @returns {Promise<unknown>} Resolves when the file has been written.
  */
 function writeFromRemoteFile({ url, writeStream }) {
@@ -210,7 +207,7 @@ try {
 
       return null;
     })
-    .filter((alternateName) => alternateName);
+    .filter((alternateName) => alternateName !== null);
 
   console.info("Reading file: Hierarchy");
   const hierachyData = readFileSync(
@@ -272,35 +269,21 @@ try {
 
       if (isPopulatedPlaceOfInterest) {
         const alternateNames = parsedAlternateNames.filter(
-          (parsedAlternateName) => {
-            if (!parsedAlternateName) {
-              return;
-            }
-            const { alternateOf, name: alternateName } = parsedAlternateName;
-            return alternateOf === geonameId && alternateName !== name;
-          },
+          ({ alternateOf, name: alternateName }) =>
+            alternateOf === geonameId && alternateName !== name,
         );
-        const preferredName = alternateNames.find((alternateName) => {
-          if (!alternateName) {
-            return;
+        const preferredName = alternateNames.find(
+          ({ isPreferredName }) => isPreferredName === "1",
+        );
+        const alternateNamesFinal = alternateNames.map((alternateName) => {
+          // Include the original name as an alternative name if we’ll use an
+          // alternate name that is the preferred name.
+          if (preferredName && preferredName.name === alternateName.name) {
+            return name;
           }
-          const { isPreferredName } = alternateName;
-          return isPreferredName === "1";
-        });
-        const alternateNamesFinal = alternateNames
-          .map((alternateName) => {
-            if (!alternateName) {
-              return "";
-            }
-            // Include the original name as an alternative name if we’ll use an
-            // alternate name that is the preferred name.
-            if (preferredName && preferredName.name === alternateName.name) {
-              return name;
-            }
 
-            return alternateName.name;
-          })
-          .filter((alternateNameFinal) => alternateNameFinal);
+          return alternateName.name;
+        });
 
         // NOTE: Using short keys and only including entries when available
         // keeps the resulting JSON significantly smaller.
