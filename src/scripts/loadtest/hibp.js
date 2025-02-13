@@ -66,12 +66,12 @@ export const run = () => {
 
   try {
     const result = res.json();
-    // @ts-ignore TODO: Add type for result.
+    // @ts-ignore TODO: Add `PostHibpNotificationResponseBody` type to `src/app/api/v1/hibp/notify/route`, and use it.
     if (result.success !== true) {
       throw new Error(`Non-success result: ${JSON.stringify(result)}`);
     }
   } catch {
-    // @ts-ignore TODO: Add type for result.
+    // @ts-ignore TODO: Add type correct type for res.
     throw new Error(`Failed to parse result: ${res.status}, ${res.text}`);
   }
 };
