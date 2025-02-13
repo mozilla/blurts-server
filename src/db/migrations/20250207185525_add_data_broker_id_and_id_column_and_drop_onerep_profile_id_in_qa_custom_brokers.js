@@ -11,7 +11,7 @@
     .table("qa_custom_brokers", table => {
       table.dropColumn("onerep_profile_id");
       table.string('data_broker_id').nullable();
-      table.string('id').primary();
+      table.increments('id').primary()
     });
 }
 
