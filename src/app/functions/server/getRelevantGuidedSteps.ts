@@ -227,9 +227,6 @@ export function hasCompletedStepSection(
   ) {
     return hasCompletedStep(data, "DataBrokerManualRemoval");
   }
-  /* c8 ignore next 5 */
-  // I believe this *is* covered by unit tests, but for some reason,
-  // since the upgrade to Node 20.10, it doesn't get marked as covered anymore:
   if (section === "Scan") {
     return hasCompletedStep(data, "Scan");
   }

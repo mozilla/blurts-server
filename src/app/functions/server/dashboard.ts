@@ -379,9 +379,6 @@ export function getDashboardSummary(
       }
     }
 
-    /* c8 ignore next 11 */
-    // Since the Node 20.10 upgrade, it's been intermittently marking this (and
-    // this comment) as uncovered, even though I think it's covered by tests.
     if (dataClasses.includes(BreachDataTypes.BankAccount)) {
       summary.totalDataPointsNum += increment;
       summary.dataBreachTotalDataPointsNum += increment;

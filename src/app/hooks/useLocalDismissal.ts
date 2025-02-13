@@ -55,9 +55,6 @@ export function useLocalDismissal(
     setCookie(cookieId, Date.now().toString(), {
       maxAge: maxAgeInSeconds,
     });
-    /* c8 ignore next 5 */
-    // Since the Node 20.10 upgrade, it's been intermittently marking this (and
-    // this comment) as uncovered, even though I think it's covered by tests.
     if (dismissOptions?.soft !== true) {
       setIsDismissed(true);
     }
