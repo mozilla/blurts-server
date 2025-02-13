@@ -20,9 +20,9 @@
  * @returns { Promise<void> }
  */
 export function down(knex) {
-    return knex.schema.table('qa_custom_brokers',table => {
-      table.dropColumn('id');  
-      table.string("onerep_profile_id").nullable();
-      table.dropColumn('data_broker_id');  
-    });
+  return knex.schema.table('qa_custom_brokers',table => {
+    table.dropColumn('id');  
+    table.string("onerep_profile_id").nullable();
+    table.dropColumn('data_broker_id');  
+  });
 }
