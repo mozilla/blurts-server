@@ -9,7 +9,7 @@
  export function up(knex) {
   return knex.schema
     .table("qa_custom_brokers", table => {
-      table.integer('id');
+      table.integer('id').nullable();
       table.dropColumn("onerep_profile_id");
       table.string('data_broker_id').nullable();
     });
