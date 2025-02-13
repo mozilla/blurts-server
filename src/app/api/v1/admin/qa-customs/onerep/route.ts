@@ -113,7 +113,7 @@ export async function POST(req: NextRequest) {
     updated_at: new Date(),
     scan_result_status,
     broker_status,
-    url,
+    url
   };
   try {
     await addQaCustomBroker(brokerData);

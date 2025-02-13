@@ -6,7 +6,6 @@
 
 import React, { useState, useEffect } from "react";
 import styles from "./ConfigPage.module.scss";
-import { OnerepScanResultDataBrokerRow } from "knex/types/tables";
 import { StateAbbr } from "../../../../../../utils/states";
 
 const endpointBase = "/api/v1/admin/qa-customs/onerep";
@@ -397,6 +396,18 @@ const OnerepConfigPage = (props: Props) => {
                   name="optout_attempts"
                   placeholder="0"
                   value={newBroker.optout_attempts ?? ""}
+                  onChange={handleChange}
+                />
+              </label>
+
+              <label className={styles.label}>
+                Last opt-out attempt:
+                <input
+                  className={styles.input}
+                  type="date"
+                  name="last_optout_at"
+                  placeholder={new Date().toISOString().split("T")[0]}
+                  value={newBroker.last_optout_at ?? ""}
                   onChange={handleChange}
                 />
               </label>

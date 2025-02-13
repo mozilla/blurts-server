@@ -188,15 +188,15 @@ async function getLatestOnerepScanResults(
       results = qaBrokers;
     } else {
       // Fetch initial results from onerep_scan_results
-      const scanResults = (await knex("onerep_scan_results")
-        .select("*")
+      const scanResults = (await knex("onerep_scan_results as sr")
+        .select(
+          "sr.*",
+          "s.created_at as scan_created_at",
+          "s.updated_at as scan_updated_at",
+        )
         .distinctOn("link")
         .where("onerep_profile_id", onerepProfileId)
-        .innerJoin(
-          "onerep_scans",
-          "onerep_scan_results.onerep_scan_id",
-          "onerep_scans.onerep_scan_id",
-        )
+        .innerJoin("onerep_scans as s", "sr.onerep_scan_id", "s.onerep_scan_id")
         .orderBy("link")
         .orderBy("onerep_scan_result_id", "desc")) as OnerepScanResultRow[];
       results = [...scanResults, ...qaBrokers];
@@ -267,6 +267,10 @@ async function addOnerepScanResults(
     last_name: scanResult.last_name,
     status: scanResult.status,
     optout_attempts: scanResult.optout_attempts,
+    last_optout_at:
+      typeof scanResult.last_optout_at === "string"
+        ? scanResult.last_optout_at
+        : undefined,
   }));
 
   // Only log metadata. This is used for reporting purposes.
@@ -473,7 +477,8 @@ async function getScanResultsWithBroker(
     scanResults = await knex("onerep_scan_results as sr")
       .select(
         "sr.*",
-        "s.*",
+        "s.created_at as scan_created_at",
+        "s.updated_at as scan_updated_at",
         "sr.status as scan_result_status", // rename to avoid collision
         "db.status as broker_status", // rename to avoid collision
       )

@@ -7,6 +7,7 @@ fix-flow-nav-leaked-passwords = Lekne passord
 fix-flow-nav-security-recommendations = Tryggingstilrådingar
 guided-resolution-flow-exit = Tilbake til oversyn
 guided-resolution-flow-next-arrow = Gå til neste steg
+guided-resolution-flow-next-arrow-sub-step = Gå til neste resultat
 guided-resolution-flow-step-navigation-label = Guida steg
 
 # Celebration screens
@@ -14,6 +15,7 @@ guided-resolution-flow-step-navigation-label = Guida steg
 
 ## Shared CTA labels
 
+fix-flow-celebration-next-recommendations-label = Sjå tilrådingar
 fix-flow-celebration-next-dashboard-label = Gå til ditt oversyn
 
 ## High-risk flow
