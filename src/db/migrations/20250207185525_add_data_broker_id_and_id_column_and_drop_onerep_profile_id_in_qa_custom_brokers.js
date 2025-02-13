@@ -9,8 +9,9 @@
  export function up(knex) {
   return knex.schema
     .table("qa_custom_brokers", table => {
+      table.dropPrimary(); 
       table.increments('id').primary();
-      table.dropColumn("onerep_profile_id");
+      table.dropColumn("onerep_profile_id"); //
       table.string('data_broker_id').nullable();
     });
 }
