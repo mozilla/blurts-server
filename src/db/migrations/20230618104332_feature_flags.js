@@ -10,9 +10,7 @@ export function up(knex) {
   return knex.schema.createTable("feature_flags", (table) => {
     table.string("name").primary().unique();
     table.boolean("is_enabled").defaultTo(false);
-    // @ts-ignore TODO: Determine if the following line should be changed to
-    // `defaultTo` or remain unchanged as initially deployed.
-    table.text("description").default("");
+    table.text("description").defaultTo("");
     table.specificType("dependencies", "character varying(255)[]");
     table.specificType("allow_list", "character varying(255)[]");
     table.specificType("wait_list", "character varying(255)[]");

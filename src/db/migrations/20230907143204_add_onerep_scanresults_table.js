@@ -104,8 +104,6 @@ export async function down(knex) {
   });
   await knex.schema.dropTable("onerep_scan_results");
   await knex.schema.alterTable("onerep_scans", (table) => {
-    // @ts-ignore TODO: Determine if the following line should be changed to
-    // `defaultTo` or remain unchanged as initially deployed.
-    table.dropUnique("onerep_scan_id");
+    table.dropUnique(["onerep_scan_id"]);
   });
 }
