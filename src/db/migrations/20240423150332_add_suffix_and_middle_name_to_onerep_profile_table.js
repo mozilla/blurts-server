@@ -8,11 +8,13 @@
  */
 export function up(knex) {
   return knex.schema.table("onerep_profiles", (table) => {
-    // @ts-ignore TODO: Determine if the following line should be changed
-    // or remain unchanged as initially deployed.
+    // @ts-ignore TODO: The type Knex.CreateTableBuilder is missing `varchar`:
+    // https://github.com/knex/knex/blob/master/types/index.d.ts#L2420
+    // The method is implemented, but the method `string` is recommended.
     table.varchar("name_suffix").after("onerep_profile_id");
-    // @ts-ignore TODO: Determine if the following line should be changed
-    // or remain unchanged as initially deployed.
+    // @ts-ignore TODO: The type Knex.CreateTableBuilder is missing `varchar`:
+    // https://github.com/knex/knex/blob/master/types/index.d.ts#L2420
+    // The method is implemented, but the method `string` is recommended.
     table.varchar("middle_name").after("first_name");
   });
 }

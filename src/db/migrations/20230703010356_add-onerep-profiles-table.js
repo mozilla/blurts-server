@@ -13,17 +13,21 @@ export function up(knex) {
       .integer("onerep_profile_id")
       .references("subscribers.onerep_profile_id")
       .nullable();
-    // @ts-ignore TODO: Determine if the following line should be changed
-    // or remain unchanged as initially deployed.
+    // @ts-ignore TODO: The type Knex.CreateTableBuilder is missing `varchar`:
+    // https://github.com/knex/knex/blob/master/types/index.d.ts#L2420
+    // The method is implemented, but the method `string` is recommended.
     table.varchar("first_name");
-    // @ts-ignore TODO: Determine if the following line should be changed
-    // or remain unchanged as initially deployed.
+    // @ts-ignore TODO: The type Knex.CreateTableBuilder is missing `varchar`:
+    // https://github.com/knex/knex/blob/master/types/index.d.ts#L2420
+    // The method is implemented, but the method `string` is recommended.
     table.varchar("last_name");
-    // @ts-ignore TODO: Determine if the following line should be changed
-    // or remain unchanged as initially deployed.
+    // @ts-ignore TODO: The type Knex.CreateTableBuilder is missing `varchar`:
+    // https://github.com/knex/knex/blob/master/types/index.d.ts#L2420
+    // The method is implemented, but the method `string` is recommended.
     table.varchar("city_name");
-    // @ts-ignore TODO: Determine if the following line should be changed
-    // or remain unchanged as initially deployed.
+    // @ts-ignore TODO: The type Knex.CreateTableBuilder is missing `varchar`:
+    // https://github.com/knex/knex/blob/master/types/index.d.ts#L2420
+    // The method is implemented, but the method `string` is recommended.
     table.varchar("state_code");
     table.date("date_of_birth");
     table.timestamp("created_at").defaultTo(knex.fn.now());
