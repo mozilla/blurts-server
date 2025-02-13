@@ -206,11 +206,7 @@ const StepImage = (props: {
       ? stepDataBrokerProfilesIcon
       : props.section === "HighRisk"
         ? stepHighRiskDataBreachesIcon
-        : /* c8 ignore next 6 */
-          // These lines should be covered by unit tests, but since the Node
-          // 20.10 upgrade, it's been intermittently marking this (and this
-          // comment) as uncovered.
-          props.section === "LeakedPasswords"
+        : props.section === "LeakedPasswords"
           ? stepLeakedPasswordsIcon
           : stepSecurityRecommendationsIcon;
 
@@ -220,10 +216,6 @@ const StepImage = (props: {
 function calculateActiveProgressBarPosition(section: Props["currentSection"]) {
   if (section === "high-risk-data-breach") {
     return styles.beginHighRiskDataBreaches;
-    /* c8 ignore next 10 */
-    // These lines should be covered by unit tests, but since the Node 20.10
-    // upgrade, it's been intermittently marking them (and this comment) as
-    // uncovered.
   } else if (section === "leaked-passwords") {
     return styles.beginLeakedPasswords;
   } else if (section === "security-recommendations") {

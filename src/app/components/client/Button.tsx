@@ -80,12 +80,7 @@ export const Button = (props: ButtonProps) => {
       target={target}
       className={classes}
     >
-      {
-        /* c8 ignore next 3 */
-        // Since the Node 20.10 upgrade, it's been intermittently marking this (and
-        // this comment) as uncovered, even though I think it's covered by tests.
-        isLoading ? <Loader /> : children
-      }
+      {isLoading ? <Loader /> : children}
     </Link>
   ) : (
     <button
