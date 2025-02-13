@@ -43,7 +43,6 @@
     "cron:report-lighthouse-results": "node dist/scripts/cronjobs/reportLighthouseResults.js",
     "db:migrate": "node -r dotenv-flow/config node_modules/knex/bin/cli.js migrate:latest --knexfile src/db/knexfile.js",
     "db:rollback": "node -r dotenv-flow/config node_modules/knex/bin/cli.js migrate:rollback --knexfile src/db/knexfile.js",
-    "prepare": "husky",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "npm run build-glean && npm run build-nimbus && storybook build",
     "create-location-data": "node src/scripts/build/uploadAutoCompleteLocations.js",
@@ -59,7 +58,9 @@
     "build-glean-backend-docs": "glean translate src/telemetry/backend-metrics.yaml --format markdown --output docs/telemetry/backend",
     "loadtest:hbibp-webhook": "echo 'Ensure k6 is installed; see:\n\thttps://grafana.com/docs/k6/latest/set-up/install-k6/\n' && k6 run src/scripts/loadtest/hibp.js",
     "validate-nimbus": "sh src/scripts/build/validate-nimbus-file.sh",
-    "lighthouse": "lhci autorun"
+    "lighthouse": "lhci autorun",
+    "prepare": "husky",
+    "postinstall": "patch-package"
   },
   "repository": {
     "type": "git",
@@ -162,6 +163,7 @@
     "jest-fail-on-console": "^3.3.1",
     "lint-staged": "^15.4.3",
     "mjml-browser": "^4.15.3",
+    "patch-package": "^8.0.0",
     "prettier": "3.5.0",
     "sass": "^1.84.0",
     "storybook": "^8.4.6",
