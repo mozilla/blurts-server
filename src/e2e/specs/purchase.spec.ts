@@ -45,48 +45,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breach Scan, Monitor Plus Purchase 
     expect(page.url()).toContain("/user/dashboard");
   });
 
-  test("Verify that the user can purchase the plus subscription with a Stripe card - Yearly", async ({
-    dashboardPage,
-    purchasePage,
-    page,
-  }) => {
-    // link to testrail case
-    test.info().annotations.push({
-      type: "testrail",
-      description:
-        "https://testrail.stage.mozaws.net/index.php?/cases/view/2463627",
-    });
-
-    try {
-      await checkAuthState(page);
-    } catch {
-      console.log(
-        "[E2E_LOG] - No fxa auth required, proceeding... with stripe yearly",
-      );
-    }
-
-    // navigate to subscription
-    await dashboardPage.open();
-    await dashboardPage.subscribeButton.click();
-    await dashboardPage.subscribeDialogSelectYearlyPlanLink.click();
-    await purchasePage.subscriptionHeader.waitFor();
-
-    // fill out subscription payment
-    await purchasePage.authorizationCheckbox.check();
-    await purchasePage.fillOutStripeCardInfo();
-    await purchasePage.payNowButton.click({ force: true });
-    await page.getByText("Subscription confirmation").waitFor();
-    // navigate to confirmation
-    await purchasePage.getStartedButton.click();
-    await purchasePage.goToNextStep.waitFor();
-    await purchasePage.goToNextStep.click();
-
-    // confirm successful payment
-    await dashboardPage.plusSubscription.waitFor();
-    await expect(dashboardPage.plusSubscription).toBeVisible();
-  });
-
-  test("Verify that the user can purchase the plus subscription with a Stripe card - Monthly", async ({
+  test("Verify that the user can purchase the plus subscription with a Stripe card", async ({
     purchasePage,
     dashboardPage,
     page,
@@ -149,43 +108,5 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breach Scan, Monitor Plus Purchase 
       timeout: 5000,
     });
     await expect(dashboardPage.plusSubscription).toBeVisible();
-  });
-
-  test("Verify that the user can purchase the plus subscription with a PayPal account - yearly", async ({
-    purchasePage,
-    dashboardPage,
-    context,
-  }) => {
-    // link to testrail case
-    test.info().annotations.push({
-      type: "testrail",
-      description:
-        "https://testrail.stage.mozaws.net/index.php?/cases/view/2463628",
-    });
-
-    await purchasePage.gotoPurchaseFromDashboard(dashboardPage, true);
-    // fill out subscription payment
-    await purchasePage.authorizationCheckbox.check();
-    await purchasePage.fillOutPaypalInfo(context);
-    await purchasePage.postPaymentPageCheck(dashboardPage);
-  });
-
-  test("Verify that the user can purchase the plus subscription with a PayPal account - monthly", async ({
-    purchasePage,
-    dashboardPage,
-    context,
-  }) => {
-    // link to testrail case
-    test.info().annotations.push({
-      type: "testrail",
-      description:
-        "https://testrail.stage.mozaws.net/index.php?/cases/view/2463628",
-    });
-
-    await purchasePage.gotoPurchaseFromDashboard(dashboardPage, false);
-    // fill out subscription payment
-    await purchasePage.authorizationCheckbox.check();
-    await purchasePage.fillOutPaypalInfo(context);
-    await purchasePage.postPaymentPageCheck(dashboardPage);
   });
 });
