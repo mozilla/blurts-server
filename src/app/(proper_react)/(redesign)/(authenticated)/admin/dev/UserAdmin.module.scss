@@ -1,11 +1,11 @@
 @use "../../../../../tokens";
 
 .wrapper {
+  background-color: tokens.$color-grey-05;
   display: flex;
   flex-direction: column;
-  gap: tokens.$spacing-2xl;
-  background-color: tokens.$color-grey-05;
-  height: 100%;
+  gap: tokens.$spacing-lg;
+  min-height: 100%;
   padding: tokens.$layout-lg tokens.$layout-2xl;
 
   @media screen and (max-width: tokens.$screen-lg) {
@@ -25,15 +25,14 @@
 .form {
   display: flex;
   flex-direction: column;
-  gap: tokens.$spacing-2xl;
+  gap: tokens.$spacing-lg;
 
   .userPicker {
     flex: 1 0 auto;
     align-items: center;
     display: flex;
     flex-wrap: wrap;
-    gap: tokens.$spacing-2xl;
-    min-height: tokens.$layout-2xl;
+    gap: tokens.$spacing-lg;
 
     label {
       display: flex;
@@ -47,15 +46,15 @@
       font: tokens.$text-body-md;
     }
   }
+}
 
-  .actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: tokens.$spacing-xl;
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: tokens.$spacing-md;
 
-    button {
-      flex: 1 1 25%;
-    }
+  button {
+    flex: 1 1 25%;
   }
 }
 

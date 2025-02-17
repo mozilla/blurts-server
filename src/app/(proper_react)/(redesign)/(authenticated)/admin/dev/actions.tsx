@@ -8,6 +8,11 @@ import { notFound } from "next/navigation";
 import { getSubscribersByHashes } from "../../../../../../db/tables/subscribers";
 import { isAdmin } from "../../../../../api/utils/auth";
 import { getServerSession } from "../../../../../functions/server/getServerSession";
+import {
+  getProfileDetails,
+  updateProfileDetails,
+} from "../../../../../../db/tables/onerep_profiles";
+import { UpdateableProfileDetails } from "knex/types/tables";
 
 export async function lookupFxaUid(emailHash: string) {
   const session = await getServerSession();
@@ -22,5 +27,42 @@ export async function lookupFxaUid(emailHash: string) {
   const subscriber = await getSubscribersByHashes([emailHash]);
   if (subscriber.length) {
     return subscriber[0].fxa_uid;
+  }
+}
+
+export async function getOnerepProfile(onerepProfileId: number) {
+  const session = await getServerSession();
+  if (
+    !session?.user?.email ||
+    !isAdmin(session.user.email) ||
+    process.env.APP_ENV !== "local"
+  ) {
+    return notFound();
+  }
+
+  try {
+    return await getProfileDetails(onerepProfileId);
+  } catch (error) {
+    console.error("Could not get profile details:", error);
+  }
+}
+
+export async function updateOnerepProfile(
+  onerepProfileId: number,
+  profileData: UpdateableProfileDetails,
+) {
+  const session = await getServerSession();
+  if (
+    !session?.user?.email ||
+    !isAdmin(session.user.email) ||
+    process.env.APP_ENV !== "local"
+  ) {
+    return notFound();
+  }
+
+  try {
+    return await updateProfileDetails(onerepProfileId, profileData);
+  } catch (error) {
+    console.error("Could not update profile details:", error);
   }
 }

@@ -46,3 +46,10 @@ export const CONST_SETTINGS_TAB_SLUGS = [
   "notifications",
   "manage-account",
 ] as const;
+export const CONST_ONEREP_PROFILE_DETAIL_LIMITS = {
+  first_names: 4,
+  middle_names: 4,
+  last_names: 4,
+  addresses: 10,
+  phone_numbers: 10,
+} as const;

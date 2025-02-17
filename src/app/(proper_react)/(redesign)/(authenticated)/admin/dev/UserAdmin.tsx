@@ -13,7 +13,8 @@ import {
   type PutUserStateRequestBody,
   GetUserStateResponseBody,
 } from "../../../../../api/v1/admin/users/[fxaUid]/route";
-import { lookupFxaUid } from "./actions";
+import { lookupFxaUid, getOnerepProfile, updateOnerepProfile } from "./actions";
+import { OnerepProfileRow } from "knex/types/tables";
 
 export const UserAdmin = () => {
   const session = useSession();
@@ -21,6 +22,8 @@ export const UserAdmin = () => {
   const [status, setStatus] = useState<null | string>(null);
   const [subscriberData, setSubscriberData] =
     useState<GetUserStateResponseBody | null>(null);
+  const [onerepProfileData, setOnerepProfileData] =
+    useState<OnerepProfileRow | null>(null);
 
   useEffect(() => {
     if (emailInput.length <= 5) {
@@ -39,6 +42,11 @@ export const UserAdmin = () => {
       }
       const data = await response.json();
       setSubscriberData(data);
+
+      const profileData = await getOnerepProfile(data.onerepProfileId);
+      if (profileData) {
+        setOnerepProfileData(profileData);
+      }
     });
 
     return () => {
@@ -82,6 +90,28 @@ export const UserAdmin = () => {
     }
   };
 
+  const updateProfileAction = () => {
+    if (subscriberData?.onerepProfileId) {
+      updateOnerepProfile(subscriberData.onerepProfileId, {
+        first_name: "First name",
+        last_name: "Last",
+        addresses: [
+          {
+            city: "New York",
+            state: "NY",
+          },
+        ],
+        first_names: null,
+        middle_name: "",
+        middle_names: null,
+        last_names: null,
+        city_name: undefined,
+        state_code: undefined,
+        phone_numbers: null,
+      });
+    }
+  };
+
   return (
     <main className={styles.wrapper}>
       <header className={styles.header}>
@@ -99,11 +129,12 @@ export const UserAdmin = () => {
               id="email"
             />
           </label>
-          {subscriberData && (
-            <pre>{JSON.stringify(subscriberData, null, 2)}</pre>
-          )}
         </div>
-        {subscriberData && (
+      </form>
+      {subscriberData && (
+        <section>
+          <h2>Subscriber</h2>
+          <pre>{JSON.stringify(subscriberData, null, 2)}</pre>
           <div className={styles.actions}>
             <Button
               variant="secondary"
@@ -116,6 +147,28 @@ export const UserAdmin = () => {
               onPress={() => void performAction("unsubscribe")}
             >
               Remove Plus
+            </Button>
+            <Button
+              variant="secondary"
+              destructive={true}
+              onPress={() => void performAction("delete_subscriber")}
+            >
+              Delete subscriber
+            </Button>
+          </div>
+        </section>
+      )}
+      {onerepProfileData && (
+        <section>
+          <h2>OneRep profile</h2>
+          <pre>{JSON.stringify(onerepProfileData, null, 2)}</pre>
+          <div className={styles.actions}>
+            <Button
+              variant="secondary"
+              destructive={true}
+              onPress={() => void updateProfileAction()}
+            >
+              Update OneRep profile
             </Button>
             <Button
               variant="secondary"
@@ -138,16 +191,9 @@ export const UserAdmin = () => {
             >
               Delete OneRep scan results
             </Button>
-            <Button
-              variant="secondary"
-              destructive={true}
-              onPress={() => void performAction("delete_subscriber")}
-            >
-              Delete subscriber
-            </Button>
           </div>
-        )}
-      </form>
+        </section>
+      )}
       {status && <p className={styles.status}>{status}</p>}
     </main>
   );

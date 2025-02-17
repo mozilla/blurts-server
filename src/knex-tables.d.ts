@@ -313,8 +313,8 @@ declare module "knex/types/tables" {
   >;
 
   type OnerepProfileAddress = {
-    city_name: string;
-    state_code: StateAbbr;
+    city: string;
+    state: StateAbbr;
   };
 
   interface OnerepProfileRow {
@@ -322,14 +322,15 @@ declare module "knex/types/tables" {
     onerep_profile_id: null | number;
     name_suffix: null | string;
     first_name: string;
-    first_names: null | OnerepProfileRow["first_names"];
+    first_names: null | OnerepProfileRow["first_name"];
     middle_name: null | string;
-    middle_names: null | OnerepProfileRow["middle_names"];
+    middle_names: null | OnerepProfileRow["middle_name"];
     last_name: string;
-    last_names: null | OnerepProfileRow["last_names"];
-    city_name: OnerepProfileAddress["city_name"];
-    state_code: OnerepProfileAddress["state_code"];
+    last_names: null | OnerepProfileRow["last_name"];
+    city_name: OnerepProfileAddress["city"];
+    state_code: OnerepProfileAddress["state"];
     addresses: null | OnerepProfileAddress[];
+    phone_numbers: null | string[];
     date_of_birth: Date;
     created_at: Date;
     updated_at: Date;
@@ -342,6 +343,19 @@ declare module "knex/types/tables" {
     keyof OnerepProfileRow,
     "id" | "created_at" | "updated_at"
   >;
+
+  interface UpdateableProfileDetails {
+    first_name: string;
+    first_names: OnerepProfileRow["first_names"];
+    middle_name: string;
+    middle_names: OnerepProfileRow["middle_names"];
+    last_name: string;
+    last_names: OnerepProfileRow["last_names"];
+    city_name: OnerepProfileAddress["city_name"];
+    state_code: OnerepProfileAddress["state_code"];
+    addresses: OnerepProfileAddress[];
+    phone_numbers: OnerepProfileRow["phone_numbers"];
+  }
 
   interface EmailNotificationRow {
     id: number;
