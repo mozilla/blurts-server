@@ -312,15 +312,24 @@ declare module "knex/types/tables" {
     "id" | "created_at" | "updated_at"
   >;
 
+  type OnerepProfileAddress = {
+    city_name: string;
+    state_code: StateAbbr;
+  };
+
   interface OnerepProfileRow {
     id: number;
     onerep_profile_id: null | number;
     name_suffix: null | string;
     first_name: string;
+    first_names: null | OnerepProfileRow["first_names"];
     middle_name: null | string;
+    middle_names: null | OnerepProfileRow["middle_names"];
     last_name: string;
-    city_name: string;
-    state_code: StateAbbr;
+    last_names: null | OnerepProfileRow["last_names"];
+    city_name: OnerepProfileAddress["city_name"];
+    state_code: OnerepProfileAddress["state_code"];
+    addresses: null | OnerepProfileAddress[];
     date_of_birth: Date;
     created_at: Date;
     updated_at: Date;
