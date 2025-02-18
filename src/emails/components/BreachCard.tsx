@@ -75,7 +75,7 @@ const BreachLogo = (props: { breach: HibpLikeDbBreach }) => {
   // These lines get covered by the BreachAlertEmail.test.tsx tests,
   // but for some reason get marked as uncovered again once the
   // `src/scripts/cronjobs/emailBreachAlerts.test.ts` tests are run:
-  /* c8 ignore next 12 */
+  /* c8 ignore next 15 */
   if (props.breach.FaviconUrl) {
     return (
       // eslint-disable-next-line @next/next/no-img-element
