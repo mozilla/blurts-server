@@ -4,9 +4,11 @@
 
 import { it, expect } from "@jest/globals";
 import { composeStory } from "@storybook/react";
+import { type ComponentProps } from "react";
 import { render, screen } from "@testing-library/react";
 import Meta, { BreachDetailViewStory } from "./BreachDetailView.stories";
 import { createRandomHibpListing } from "../../../../../../apiMocks/mockData";
+import { type TelemetryLink } from "../../../../../components/client/TelemetryLink";
 
 jest.mock("../../../../../components/client/SignInButton", () => {
   return {
@@ -15,7 +17,10 @@ jest.mock("../../../../../components/client/SignInButton", () => {
 });
 jest.mock("../../../../../components/client/TelemetryLink", () => {
   return {
-    TelemetryLink: () => null,
+    TelemetryLink: ({
+      eventData: _eventData,
+      ...otherProps
+    }: ComponentProps<typeof TelemetryLink>) => <a {...otherProps} />,
   };
 });
 
@@ -28,6 +33,26 @@ it("details the breach", () => {
     { exact: false },
   );
   expect(overviewSection).toBeInTheDocument();
+});
+
+it("tells search engines that we do not endorse breached websites, even if we link to them", () => {
+  const ComposedBreachDetailView = composeStory(BreachDetailViewStory, Meta);
+  const breachedDomain = "example.com";
+  render(
+    <ComposedBreachDetailView
+      breach={createRandomHibpListing({ Domain: breachedDomain })}
+    />,
+  );
+
+  const linksToBreachedDomain = screen
+    .getAllByRole("link")
+    .filter(
+      (link) => link.getAttribute("href") === `https://${breachedDomain}`,
+    );
+  expect(linksToBreachedDomain).not.toHaveLength(0);
+  linksToBreachedDomain.forEach((link) => {
+    expect(link.getAttribute("rel")).toMatch("nofollow");
+  });
 });
 
 it("special-cases the description for BVD, as per their request", () => {
