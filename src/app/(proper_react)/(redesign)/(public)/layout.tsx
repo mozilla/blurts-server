@@ -38,9 +38,15 @@ export default async function Layout(props: { children: ReactNode }) {
     experimentData.Enrollments ?? []
   ).find((enrollment) => enrollment.nimbus_user_id !== experimentationId);
   if (typeof enrollmentWithConflictingUserId !== "undefined") {
-    Sentry.captureMessage(
-      `Nimbus user ID from Cirrus: [${enrollmentWithConflictingUserId.nimbus_user_id}] did not match experimentationId: [${experimentationId}]`,
-    );
+    if (enrollmentWithConflictingUserId.nimbus_user_id === "-1") {
+      Sentry.captureMessage(
+        `Cirrus did not provide a Nimbus user ID: [${enrollmentWithConflictingUserId.nimbus_user_id}].`,
+      );
+    } else {
+      Sentry.captureMessage(
+        `Nimbus user ID from Cirrus: [${enrollmentWithConflictingUserId.nimbus_user_id}] did not match experimentationId: [${experimentationId}]`,
+      );
+    }
   }
 
   return (
