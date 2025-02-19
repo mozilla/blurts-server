@@ -6,10 +6,11 @@
 
 import React, { useState, useEffect } from "react";
 import styles from "./ConfigPage.module.scss";
+import { OnerepScanResultDataBrokerRow } from "knex/types/tables";
+import { StateAbbr } from "../../../../../../utils/states";
 
 interface QaBrokerDataCounts {
   onerep_scan_result_id?: number;
-  onerep_profile_id: number;
   link: string;
   age: number | null | undefined;
   data_broker: string;
@@ -49,25 +50,40 @@ const OnerepConfigPage = (props: Props) => {
   });
 
   // Initialize a base broker template to reset form fields
+  const mockAddress = {
+    zip: "93386",
+    city: "Berkeley",
+    state: "CA" as StateAbbr,
+    street: "Von Meadows",
+  };
 
-  const baseBroker: QaBrokerDataCounts = {
-    onerep_profile_id: -1,
+  const baseBroker: OnerepScanResultDataBrokerRow = {
     link: "",
-    age: null,
+    age: 30,
     data_broker: "",
-    emails: 0,
-    phones: 0,
-    addresses: 0,
-    relatives: 0,
+    emails: [],
+    phones: [],
+    addresses: [mockAddress],
+    relatives: [],
     first_name: "",
-    middle_name: null,
+    middle_name: "null",
     last_name: "",
     status: "new",
-    manually_resolved: "false",
+    manually_resolved: false,
+    scan_result_status: "new",
+    broker_status: "removal_under_maintenance",
+    url: "",
+    id: 0,
+    onerep_scan_result_id: 0,
+    onerep_scan_id: 0,
+    data_broker_id: 0,
+    created_at: new Date(),
+    updated_at: new Date(),
   };
 
   // Temporary state to hold form input for a new broker
-  const [newBroker, setNewBroker] = useState<QaBrokerDataCounts>(baseBroker);
+  const [newBroker, setNewBroker] =
+    useState<OnerepScanResultDataBrokerRow>(baseBroker);
   const [showQaBrokers, setShowQaBrokers] = useState<boolean>(
     props.showQaBrokers,
   );
@@ -84,7 +100,7 @@ const OnerepConfigPage = (props: Props) => {
     setBrokersFetchHappened(false);
     try {
       const response = await fetch(
-        `${endpointBase}?onerep_profile_id=${props.onerepProfileId}`,
+        `${endpointBase}?onerep_scan_result_id=${props.onerepProfileId}`,
       );
       const data = await response.json();
       setBrokers(data);
@@ -99,7 +115,12 @@ const OnerepConfigPage = (props: Props) => {
       | React.ChangeEvent<HTMLInputElement>
       | React.ChangeEvent<HTMLSelectElement>,
   ) => {
-    setNewBroker({ ...newBroker, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+
+    setNewBroker({
+      ...newBroker,
+      [name]: name === "manually_resolved" ? value === "true" : value, // Convert only for manually_resolved
+    });
   };
 
   const handleAddBroker = async (event: React.FormEvent) => {
@@ -128,7 +149,7 @@ const OnerepConfigPage = (props: Props) => {
 
     if (hasError) return;
 
-    newBroker.onerep_profile_id = profileId;
+    newBroker.onerep_scan_id = profileId;
     try {
       const req = fetch(endpointBase, {
         method: "POST",
@@ -138,8 +159,7 @@ const OnerepConfigPage = (props: Props) => {
         body: JSON.stringify({
           ...newBroker,
           link: linkString,
-          manually_resolved:
-            newBroker.manually_resolved === "false" ? false : true,
+          manually_resolved: !newBroker.manually_resolved ? false : true,
         }),
       });
       alert("Request made successfully");
@@ -299,17 +319,18 @@ const OnerepConfigPage = (props: Props) => {
                 />
               </label>
 
-              <label className={styles.label}>
+              {/* TODO: Add address later */}
+              {/* <label className={styles.label}>
                 Addresses:
                 <input
                   className={styles.input}
                   type="number"
                   name="addresses"
                   placeholder="0"
-                  value={newBroker.addresses}
+                  value={[]}
                   onChange={handleChange}
                 />
-              </label>
+              </label> */}
 
               <label className={styles.label}>
                 Relatives:
@@ -358,18 +379,14 @@ const OnerepConfigPage = (props: Props) => {
                   onChange={handleChange}
                 />
               </label>
-
-              <label className={styles.label}>
-                Manually Resolved:
-                <select
-                  name="manually_resolved"
-                  value={newBroker.manually_resolved}
-                  onChange={(e) => void handleChange(e)}
-                >
-                  <option value="false">False</option>
-                  <option value="true">True</option>
-                </select>
-              </label>
+              <select
+                name="manually_resolved"
+                value={newBroker.manually_resolved ? "true" : "false"}
+                onChange={(e) => void handleChange(e)}
+              >
+                <option value="false">False</option>
+                <option value="true">True</option>
+              </select>
 
               <label>
                 Status:
@@ -381,6 +398,25 @@ const OnerepConfigPage = (props: Props) => {
                   <option value="new">New</option>
                   <option value="optout_in_progress">In Progress</option>
                   <option value="removed">Removed</option>
+                </select>
+              </label>
+
+              <label>
+                Broker Status:
+                <select
+                  name="broker_status"
+                  value={newBroker.broker_status}
+                  onChange={(e) => void handleChange(e)}
+                >
+                  <option value="active">Active</option>
+                  <option value="on_hold">On hold</option>
+                  <option value="ceased_operation">Ceased operation</option>
+                  <option value="scan_under_maintenance">
+                    Scan under maintenance
+                  </option>
+                  <option value="removal_under_maintenance">
+                    Removal under maintenance
+                  </option>
                 </select>
               </label>
 
@@ -403,7 +439,7 @@ const OnerepConfigPage = (props: Props) => {
                   type="date"
                   name="last_optout_at"
                   placeholder={new Date().toISOString().split("T")[0]}
-                  value={newBroker.last_optout_at ?? ""}
+                  value={newBroker.last_optout_at?.toDateString()}
                   onChange={handleChange}
                 />
               </label>
@@ -420,7 +456,10 @@ const OnerepConfigPage = (props: Props) => {
               <p>fetching...</p>
             ) : brokers.length !== 0 ? (
               brokers.map((broker) => (
-                <li key={broker.onerep_profile_id} className={styles.listItem}>
+                <li
+                  key={broker.onerep_scan_result_id}
+                  className={styles.listItem}
+                >
                   <details>
                     <summary>
                       {broker.data_broker}
