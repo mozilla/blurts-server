@@ -15,6 +15,7 @@ import {
 } from "../../../../../api/v1/admin/users/[fxaUid]/route";
 import { lookupFxaUid, getOnerepProfile, updateOnerepProfile } from "./actions";
 import { OnerepProfileRow } from "knex/types/tables";
+import { ShowProfileResponse } from "../../../../../functions/server/onerep";
 
 export const UserAdmin = () => {
   const session = useSession();
@@ -22,8 +23,10 @@ export const UserAdmin = () => {
   const [status, setStatus] = useState<null | string>(null);
   const [subscriberData, setSubscriberData] =
     useState<GetUserStateResponseBody | null>(null);
-  const [onerepProfileData, setOnerepProfileData] =
-    useState<OnerepProfileRow | null>(null);
+  const [onerepProfileData, setOnerepProfileData] = useState<{
+    local: OnerepProfileRow;
+    remote: ShowProfileResponse;
+  } | null>(null);
 
   useEffect(() => {
     if (emailInput.length <= 5) {
@@ -101,13 +104,13 @@ export const UserAdmin = () => {
             state: "NY",
           },
         ],
-        first_names: null,
-        middle_name: "",
-        middle_names: null,
-        last_names: null,
+        first_names: [],
+        middle_name: "Middle",
+        middle_names: [],
+        last_names: [],
         city_name: undefined,
         state_code: undefined,
-        phone_numbers: null,
+        phone_numbers: [],
       });
     }
   };

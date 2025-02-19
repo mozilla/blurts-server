@@ -346,11 +346,11 @@ declare module "knex/types/tables" {
 
   interface UpdateableProfileDetails {
     first_name: string;
-    first_names: OnerepProfileRow["first_names"];
+    first_names: OnerepProfileRow["first_names"][];
     middle_name: string;
-    middle_names: OnerepProfileRow["middle_names"];
+    middle_names: OnerepProfileRow["middle_names"][];
     last_name: string;
-    last_names: OnerepProfileRow["last_names"];
+    last_names: OnerepProfileRow["last_names"][];
     city_name: OnerepProfileAddress["city_name"];
     state_code: OnerepProfileAddress["state_code"];
     addresses: OnerepProfileAddress[];

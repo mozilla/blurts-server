@@ -13,6 +13,10 @@ import {
   updateProfileDetails,
 } from "../../../../../../db/tables/onerep_profiles";
 import { UpdateableProfileDetails } from "knex/types/tables";
+import {
+  getProfile,
+  updateProfile,
+} from "../../../../../functions/server/onerep";
 
 export async function lookupFxaUid(emailHash: string) {
   const session = await getServerSession();
@@ -41,7 +45,10 @@ export async function getOnerepProfile(onerepProfileId: number) {
   }
 
   try {
-    return await getProfileDetails(onerepProfileId);
+    return {
+      local: await getProfileDetails(onerepProfileId),
+      remote: await getProfile(onerepProfileId),
+    };
   } catch (error) {
     console.error("Could not get profile details:", error);
   }
@@ -61,7 +68,8 @@ export async function updateOnerepProfile(
   }
 
   try {
-    return await updateProfileDetails(onerepProfileId, profileData);
+    await updateProfile(onerepProfileId, profileData);
+    await updateProfileDetails(onerepProfileId, profileData);
   } catch (error) {
     console.error("Could not update profile details:", error);
   }
