@@ -44,6 +44,7 @@ import {
   getDashboardSummary,
 } from "../../app/functions/server/dashboard";
 import { getScanResultsWithBroker } from "../../db/tables/onerep_scans";
+import { logger } from "../../app/functions/server/logging";
 
 const SENTRY_SLUG = "cron-breach-alerts";
 
@@ -219,7 +220,16 @@ export async function poll(
       const notifiedRecipients: string[] = [];
 
       for (const recipient of recipients) {
-        console.info("notify", { recipient });
+        logger.info(
+          "Notifying a user of a breach. Some non-identifying user data:",
+          {
+            breaches_last_shown: recipient.breaches_last_shown,
+            sign_in_count: recipient.sign_in_count,
+            breaches_resolved: recipient.breaches_resolved,
+            created_at: recipient.created_at,
+            updated_at: recipient.updated_at,
+          },
+        );
 
         const notifiedSubs = await getNotifiedSubscribersForBreach(breachId);
 
