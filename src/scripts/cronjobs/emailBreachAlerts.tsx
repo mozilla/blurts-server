@@ -131,7 +131,7 @@ export async function poll(
     /* c8 ignore next 6 */
     if (!breachAlert) {
       console.error(
-        "HIBP breach notification: couldn't find the breach to notify about.",
+        `HIBP breach notification: couldn't find the breach to notify about: [${breachName}].`,
       );
       continue;
     }
