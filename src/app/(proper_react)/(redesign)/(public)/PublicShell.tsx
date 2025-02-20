@@ -18,7 +18,7 @@ import {
   getSubscriptionBillingAmount,
 } from "../../../functions/server/getPremiumSubscriptionInfo";
 import { FeatureFlagName } from "../../../../db/tables/featureFlags";
-import { TopNavBar } from "./TopNavBar";
+import { TopNavBar } from "./LandingViewRedesign/components/TopNavBar";
 import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 
 export type Props = {
@@ -39,6 +39,7 @@ const PublicMobileShell = (
       <MobileShell
         countryCode={props.countryCode}
         enabledFeatureFlags={props.enabledFeatureFlags}
+        experimentData={props.experimentData}
         fxaSettingsUrl={process.env.FXA_SETTINGS_URL!}
         monthlySubscriptionUrl={getPremiumSubscriptionUrl({ type: "monthly" })}
         session={null}

@@ -17,6 +17,7 @@ import {
 import { BreachDataTypes } from "../../../../../../../../../functions/universal/breach";
 import { StepDeterminationData } from "../../../../../../../../../functions/server/getRelevantGuidedSteps";
 import { OnerepScanRow } from "knex/types/tables";
+import { defaultExperimentData } from "../../../../../../../../../../telemetry/generated/nimbus/experiments";
 
 const user = createUserWithPremiumSubscription();
 
@@ -108,6 +109,7 @@ const HighRiskBreachWrapper = (props: {
       nonce=""
       countryCode={data.countryCode}
       enabledFeatureFlags={[]}
+      experimentData={defaultExperimentData["Features"]}
     >
       <HighRiskBreachLayout
         subscriberEmails={[]}
