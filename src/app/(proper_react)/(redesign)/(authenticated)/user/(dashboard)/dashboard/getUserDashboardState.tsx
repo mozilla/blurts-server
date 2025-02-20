@@ -356,11 +356,27 @@ export const getUserDashboardState = (
       isEligibleForPremium: false,
       isPremiumUser: true,
       scanInProgress: false,
+    }) ||
+    /**
+     * - US user
+     * - Non-premium
+     * - With exposures
+     * - No breaches
+     * - Scan: Resolved
+     */
+    isMatchingContent(contentProps, {
+      isRelevantGuidedStep: relevantGuidedStep.id === "DataBrokerManualRemoval", // The guided step needs to be relevant
+      hasExposures: true,
+      hasUnresolvedBreaches: false,
+      hasUnresolvedBrokers: true,
+      isEligibleForFreeScan: false,
+      isEligibleForPremium: true,
+      isPremiumUser: false,
+      scanInProgress: false,
     })
   ) {
     return "UsUserPremiumOrNonPremiumWithScanUnresolvedExposures";
   }
-
   if (
     /**
      * - US user
@@ -461,8 +477,9 @@ export const getUserDashboardState = (
     }) ||
     /**
      * - US user
-     * - Premium
-     * - Unresolved breaches
+     * - Non premium
+     * - Unresolved brokers
+     * - No breaches
      * - Scan: In progress
      */
     isMatchingContent(contentProps, {

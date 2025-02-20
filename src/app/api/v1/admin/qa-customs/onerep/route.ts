@@ -54,17 +54,18 @@ export async function GET(req: NextRequest) {
   const prodErr = errorIfProduction();
   if (prodErr !== null) return prodErr;
 
-  const profileId = Number(req.nextUrl.searchParams.get("onerep_scan_id"));
-  console.log(profileId);
+  const profileId = Number(
+    req.nextUrl.searchParams.get("onerep_scan_result_id"),
+  );
 
   if (!profileId || Number.isNaN(profileId)) {
     return NextResponse.json(
-      { error: "Missing onerep_scan_id parameter" },
+      { error: "Missing onerep_scan_result_id parameter" },
       { status: 400 },
     );
   }
 
-  return NextResponse.json(await getAllQaCustomBrokers(profileId));
+  return NextResponse.json(await getAllQaCustomBrokers());
 }
 
 export async function POST(req: NextRequest) {
@@ -115,11 +116,11 @@ export async function POST(req: NextRequest) {
     broker_status: broker_status,
     url: url,
     id: 0,
-    onerep_scan_result_id: 0,
     onerep_scan_id: 0,
     data_broker_id: 0,
     created_at: new Date(),
     updated_at: new Date(),
+    onerep_scan_result_id: Date.now() + Math.floor(Math.random() * 1000),
   };
   try {
     await addQaCustomBroker(brokerData);
