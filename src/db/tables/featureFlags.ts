@@ -312,3 +312,10 @@ export async function disableFeatureFlagByName(name: string) {
 
   return res[0];
 }
+
+export function isFeatureFlagAdminOnly(flagName: string): boolean {
+  return (
+    featureFlagNames.includes(flagName as FeatureFlagName) &&
+    adminOnlyFlags.includes(flagName as FeatureFlagName)
+  );
+}

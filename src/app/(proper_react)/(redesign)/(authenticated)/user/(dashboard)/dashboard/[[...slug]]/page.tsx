@@ -111,7 +111,7 @@ export default async function DashboardPage(props: Props) {
     email: session.user.email,
   });
 
-  const latestScan = await getScanResultsWithBroker(
+  const realScanResults = await getScanResultsWithBroker(
     profileId,
     hasPremium(session.user),
   );
@@ -121,7 +121,7 @@ export default async function DashboardPage(props: Props) {
     enabledFeatureFlags.includes("CustomDataBrokers") &&
     process.env.NODE_ENV !== "production";
 
-  const scanResults = useMockedScans ? mockedScanResults : latestScan;
+  const scanResults = useMockedScans ? mockedScanResults : realScanResults;
 
   const scanCount =
     typeof profileId === "number"
@@ -168,7 +168,7 @@ export default async function DashboardPage(props: Props) {
       user={session.user}
       isEligibleForPremium={userIsEligibleForPremium}
       isEligibleForFreeScan={userIsEligibleForFreeScan}
-      userScanData={scanResults}
+      userScanData={mockedScanResults}
       userBreaches={subBreaches}
       enabledFeatureFlags={enabledFeatureFlags}
       monthlySubscriptionUrl={`${monthlySubscriptionUrl}&${additionalSubplatParams.toString()}`}
