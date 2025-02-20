@@ -30,14 +30,12 @@ import { ExperimentData } from "../../../../telemetry/generated/nimbus/experimen
 import { FreeScanCta } from "./FreeScanCta";
 import { TopNavBar } from "./TopNavBar";
 import { AccountDeletionNotification } from "./AccountDeletionNotification";
-import { FeatureFlagName } from "../../../../db/tables/featureFlags";
 
 export type Props = {
   eligibleForPremium: boolean;
   l10n: ExtendedReactLocalization;
   countryCode: string;
   scanLimitReached: boolean;
-  enabledFeatureFlags: FeatureFlagName[];
   experimentData: ExperimentData["Features"];
 };
 
@@ -48,10 +46,7 @@ export const View = (props: Props) => {
       <main className={styles.wrapper}>
         {props.eligibleForPremium && (
           <div className={styles.navbar}>
-            <TopNavBar
-              enabledFeatureFlags={props.enabledFeatureFlags}
-              experimentData={props.experimentData}
-            />
+            <TopNavBar />
           </div>
         )}
         <header className={styles.hero}>

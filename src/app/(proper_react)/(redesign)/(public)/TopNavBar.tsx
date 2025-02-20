@@ -4,19 +4,12 @@
 
 "use client";
 
-import { FeatureFlagName } from "../../../../db/tables/featureFlags";
-import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 import { SignInButton } from "../../../components/client/SignInButton";
 import { TelemetryLink } from "../../../components/client/TelemetryLink";
 import { useL10n } from "../../../hooks/l10n";
 import styles from "./TopNavBar.module.scss";
 
-export type Props = {
-  enabledFeatureFlags: FeatureFlagName[];
-  experimentData: ExperimentData["Features"];
-};
-
-export const TopNavBar = (props: Props) => {
+export const TopNavBar = () => {
   const l10n = useL10n();
   return (
     <div className={styles.wrapper}>
@@ -63,17 +56,7 @@ export const TopNavBar = (props: Props) => {
           </TelemetryLink>
         </li>
       </ul>
-      {props.enabledFeatureFlags.includes("LandingPageRedesign") &&
-        props.experimentData["landing-page-redesign-plus-eligible-experiment"]
-          .enabled &&
-        props.experimentData["landing-page-redesign-plus-eligible-experiment"]
-          .variant === "redesign" && (
-          <SignInButton
-            className={styles.signInButton}
-            variant="secondary"
-            small
-          />
-        )}
+      <SignInButton className={styles.signInButton} variant="secondary" small />
     </div>
   );
 };

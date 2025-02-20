@@ -90,7 +90,6 @@ export default async function Page() {
           l10n={l10n}
           countryCode={countryCode}
           scanLimitReached={scanLimitReached}
-          enabledFeatureFlags={enabledFeatureFlags}
           experimentData={experimentData["Features"]}
         />
       )}
