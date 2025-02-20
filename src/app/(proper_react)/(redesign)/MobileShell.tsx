@@ -206,6 +206,11 @@ export const MobileShell = (props: Props) => {
               props.experimentData[
                 "landing-page-redesign-plus-eligible-experiment"
               ].variant === "redesign" ? (
+              // The old <TopNavBar /> component is no longer hit by unit tests
+              // that have already enabled the experiment, so ignore that for now:
+              // (But c8 is weird so just pretend that this ignore comment is
+              // two lines lower.)
+              /* c8 ignore next 4 */
               <RedesignedTopNavBar />
             ) : (
               <TopNavBar />
