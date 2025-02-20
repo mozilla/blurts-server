@@ -21,6 +21,7 @@ import { CONST_SETTINGS_TAB_SLUGS } from "../../../constants";
 import { FeatureFlagName } from "../../../db/tables/featureFlags";
 import { SignInButton } from "../../components/client/SignInButton";
 import { TopNavBar } from "./(public)/TopNavBar";
+import { ExperimentData } from "../../../telemetry/generated/nimbus/experiments";
 
 export type Props = {
   countryCode: string;
@@ -34,6 +35,7 @@ export type Props = {
   fxaSettingsUrl: string;
   children: ReactNode;
   enabledFeatureFlags: FeatureFlagName[];
+  experimentData: ExperimentData["Features"];
 };
 
 export const MobileShell = (props: Props) => {
@@ -197,7 +199,10 @@ export const MobileShell = (props: Props) => {
                 </div>
               </>
             ) : (
-              <TopNavBar />
+              <TopNavBar
+                enabledFeatureFlags={props.enabledFeatureFlags}
+                experimentData={props.experimentData}
+              />
             )}
           </div>
         </nav>

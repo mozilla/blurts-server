@@ -44,6 +44,7 @@ const PublicMobileShell = (
         session={null}
         subscriptionBillingAmount={getSubscriptionBillingAmount()}
         yearlySubscriptionUrl={getPremiumSubscriptionUrl({ type: "yearly" })}
+        experimentData={props.experimentData}
       >
         {props.children}
       </MobileShell>
@@ -84,7 +85,12 @@ export const PublicShell = (props: Props) => {
               />
             </Link>
           </h1>
-          {hasLandingPageRedesign && <TopNavBar />}
+          {hasLandingPageRedesign && (
+            <TopNavBar
+              enabledFeatureFlags={props.enabledFeatureFlags}
+              experimentData={props.experimentData}
+            />
+          )}
           <SignInButton variant="secondary" />
         </nav>
         <div className={styles.content}>{props.children}</div>
