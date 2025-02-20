@@ -70,6 +70,7 @@ const OnerepConfigPage = ({
 
   useEffect(() => {
     void fetchBrokers();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchBrokers = async () => {
