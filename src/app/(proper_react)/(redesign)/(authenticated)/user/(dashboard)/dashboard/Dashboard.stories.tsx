@@ -204,6 +204,14 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
           nonce=""
           countryCode={props.countryCode}
           enabledFeatureFlags={props.enabledFeatureFlags ?? []}
+          experimentData={
+            props.experimentData ?? {
+              ...defaultExperimentData["Features"],
+              "last-scan-date": {
+                enabled: true,
+              },
+            }
+          }
         >
           <DashboardEl
             user={user}

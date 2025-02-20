@@ -13,6 +13,7 @@ import { Shell } from "../../../../../../../Shell";
 import { getL10n } from "../../../../../../../../../functions/l10n/storybookAndJest";
 import { LatestOnerepScanData } from "../../../../../../../../../../db/tables/onerep_scans";
 import { RemovalUnderMaintenanceView } from "./RemovalUnderMaintenanceView";
+import { defaultExperimentData } from "../../../../../../../../../../telemetry/generated/nimbus/experiments";
 
 const meta: Meta<typeof RemovalUnderMaintenanceView> = {
   title: "Pages/Logged in/Guided resolution/1d. Removal Under Maintenance",
@@ -54,6 +55,7 @@ export const RemovalUnderMaintenanceViewStory: Story = {
         nonce=""
         countryCode="us"
         enabledFeatureFlags={[]}
+        experimentData={defaultExperimentData["Features"]}
       >
         <RemovalUnderMaintenanceView
           data={mockedScanData}
