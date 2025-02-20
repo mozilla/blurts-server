@@ -262,6 +262,7 @@ const SettingsWrapper = (props: {
       nonce=""
       countryCode="en"
       enabledFeatureFlags={props.enabledFeatureFlags ?? []}
+      experimentData={defaultExperimentData["Features"]}
     >
       {props.children}
     </Shell>

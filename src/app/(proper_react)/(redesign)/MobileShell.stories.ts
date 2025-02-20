@@ -7,6 +7,7 @@ import { SerializedSubscriber } from "../../../next-auth";
 
 import type { Meta, StoryObj } from "@storybook/react";
 import { MobileShell } from "./MobileShell";
+import { defaultExperimentData } from "../../../telemetry/generated/nimbus/experiments";
 
 function createUser(): Session["user"] {
   return {
@@ -33,6 +34,16 @@ const mockedSession = {
 const meta: Meta<typeof MobileShell> = {
   title: "Layout/Mobile Shell",
   component: MobileShell,
+  args: {
+    enabledFeatureFlags: ["LandingPageRedesign"],
+    experimentData: {
+      ...defaultExperimentData["Features"],
+      "landing-page-redesign-plus-eligible-experiment": {
+        enabled: true,
+        variant: "redesign",
+      },
+    },
+  },
 };
 export default meta;
 type Story = StoryObj<typeof MobileShell>;
@@ -48,6 +59,5 @@ export const MobileShellAuthenticated: Story = {
   args: {
     countryCode: "us",
     session: mockedSession,
-    enabledFeatureFlags: [],
   },
 };
