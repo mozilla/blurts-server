@@ -18,11 +18,7 @@ import {
 } from "knex/types/tables";
 import { RemovalStatus } from "../../app/functions/universal/scanResult.js";
 import { CONST_DAY_MILLISECONDS } from "../../constants.ts";
-import {
-  getAllQaCustomBrokers,
-  getQaCustomBrokers,
-  getQaToggleRow,
-} from "./qa_customs.ts";
+import { getAllQaCustomBrokers, getQaToggleRow } from "./qa_customs.ts";
 
 const knex = createDbConnection();
 
@@ -178,7 +174,7 @@ async function getLatestOnerepScanResults(
 
     const qaBrokers = !showCustomBrokers
       ? []
-      : await getQaCustomBrokers(onerepProfileId, scan?.onerep_scan_id);
+      : await getAllQaCustomBrokers(scan?.onerep_scan_id);
     if (!showRealBrokers) {
       logger.info("get_latest_results_custom_brokers", {
         onerepProfileId,

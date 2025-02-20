@@ -11,6 +11,8 @@ import {
 import { getCountryCode } from "../../../../../../../../../functions/server/getCountryCode";
 import { headers } from "next/headers";
 import {
+  getMockedScanResults,
+  getMockedScanResultsWithBrokerUnderMaintenance,
   getScanResultsWithBroker,
   getScanResultsWithBrokerUnderMaintenance,
 } from "../../../../../../../../../../db/tables/onerep_scans";
@@ -41,17 +43,34 @@ export default async function RemovalUnderMaintenance() {
   }
 
   const profileId = await getOnerepProfileId(session.user.subscriber.id);
+
+  const mockedScansWithRemovalUnderMaintenance =
+    (await getMockedScanResultsWithBrokerUnderMaintenance(profileId)) ?? null;
+
+  const useMockedScans =
+    enabledFeatureFlags.includes("CustomDataBrokers") &&
+    process.env.NODE_ENV !== "production";
+
+  const realScansWithRemovalUnderMaintenance =
+    (await getScanResultsWithBrokerUnderMaintenance(profileId)) ?? null;
+
+  const scanResultsWithRemovalUnderMaintenance = useMockedScans
+    ? mockedScansWithRemovalUnderMaintenance
+    : realScansWithRemovalUnderMaintenance;
+
   const latestScan = await getScanResultsWithBroker(
     profileId,
     hasPremium(session.user),
   );
-  const scansWithRemovalUnderMaintenance =
-    (await getScanResultsWithBrokerUnderMaintenance(profileId)) ?? null;
+
+  const mockedScanResults = await getMockedScanResults(profileId);
+
+  const scanResults = useMockedScans ? mockedScanResults : latestScan;
 
   const data: StepDeterminationData = {
     countryCode,
     user: session.user,
-    latestScanData: latestScan ?? null,
+    latestScanData: scanResults ?? null,
     subscriberBreaches: await getSubscriberBreaches({
       fxaUid: session.user.subscriber.fxa_uid,
       countryCode,
@@ -65,8 +84,8 @@ export default async function RemovalUnderMaintenance() {
   );
 
   if (
-    scansWithRemovalUnderMaintenance?.results.length === 0 ||
-    !scansWithRemovalUnderMaintenance
+    scanResultsWithRemovalUnderMaintenance?.results.length === 0 ||
+    !scanResultsWithRemovalUnderMaintenance
   ) {
     redirect(getNextStep.href);
   }
@@ -76,7 +95,7 @@ export default async function RemovalUnderMaintenance() {
   return (
     <RemovalUnderMaintenanceView
       stepDeterminationData={data}
-      data={scansWithRemovalUnderMaintenance}
+      data={scanResultsWithRemovalUnderMaintenance}
       subscriberEmails={subscriberEmails}
       enabledFeatureFlags={enabledFeatureFlags}
     />

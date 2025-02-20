@@ -53,7 +53,11 @@ export const featureFlagNames = [
   "CirrusV2",
   "DataBrokerRemovalAttempts",
   "ExpirationNotification",
+  "CustomDataBrokers",
 ] as const;
+
+export const adminOnlyFlags: FeatureFlagName[] = ["CustomDataBrokers"];
+
 export type FeatureFlagName = (typeof featureFlagNames)[number];
 
 /**
