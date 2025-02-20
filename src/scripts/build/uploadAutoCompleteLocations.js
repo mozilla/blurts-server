@@ -25,7 +25,6 @@ import {
 import Sentry from "@sentry/nextjs";
 import os from "os";
 import path from "path";
-import fs from "fs";
 import AdmZip from "adm-zip";
 import { uploadToS3 } from "../../utils/s3.js";
 
@@ -61,6 +60,12 @@ const allowedFeatureCodes = [
   "PPLL",
 ];
 
+/**
+ * Logs the progress of a task.
+ *
+ * @param {number} currentCount - The current count.
+ * @param {number} totalCount - The total count.
+ */
 function logProgress(currentCount, totalCount) {
   const progress = Math.round(((currentCount + 1) / totalCount) * 100);
   process.stdout.write(
@@ -68,6 +73,14 @@ function logProgress(currentCount, totalCount) {
   );
 }
 
+/**
+ * Writes the content of a remote file to a local write stream.
+ *
+ * @param {Object} param - The parameters for the function.
+ * @param {string} param.url - The URL of the remote file.
+ * @param {import("fs").WriteStream} param.writeStream - The write stream the file content is written to.
+ * @returns {Promise<unknown>} Resolves when the file has been written.
+ */
 function writeFromRemoteFile({ url, writeStream }) {
   return new Promise((resolve, reject) => {
     https.get(url, (res) => {
@@ -82,6 +95,15 @@ function writeFromRemoteFile({ url, writeStream }) {
   });
 }
 
+/**
+ * Fetches the remote archive.
+ *
+ * @param {Object} param - The parameters for the function.
+ * @param {string} param.remoteArchiveUrl - The URL of the remote archive.
+ * @param {string} param.localDownloadPath - The local path where the file will be downloaded.
+ * @param {string} param.localExtractionPath - The local path where the archive will be extracted.
+ * @returns {Promise<any>} Resolves when the extraction is complete.
+ */
 async function fetchRemoteArchive({
   remoteArchiveUrl,
   localDownloadPath,
@@ -100,7 +122,7 @@ async function fetchRemoteArchive({
   const zip = new AdmZip(localDownloadPath);
   await new Promise((resolve, reject) => {
     zip.extractAllToAsync(localExtractionPath, true, false, (error) =>
-      error ? reject(error) : resolve(),
+      error ? reject(error) : resolve(localExtractionPath),
     );
   });
 }
@@ -185,7 +207,7 @@ try {
 
       return null;
     })
-    .filter((alternateName) => alternateName);
+    .filter((alternateName) => alternateName !== null);
 
   console.info("Reading file: Hierarchy");
   const hierachyData = readFileSync(
@@ -211,7 +233,12 @@ try {
   const locationDataRows = locationData.split("\n");
   const locationRowCount = locationDataRows.length;
   const locationDataPopulated = locationDataRows.reduce(
-    (relevantLocations, location, rowIndex) => {
+    (
+      /** @type {Array<import("../../app/api/v1/location-autocomplete/types.ts").RelevantLocation>} */
+      relevantLocations,
+      location,
+      rowIndex,
+    ) => {
       logProgress(rowIndex, locationRowCount);
 
       const [
@@ -293,10 +320,30 @@ try {
             return false;
           }
 
-          return locationDataPopulated.some((location) => {
+          return locationDataRows.some((location) => {
+            const [
+              geonameId,
+              _name,
+              _asciiname,
+              _alternatenames,
+              _latitude,
+              _longitude,
+              featureClass,
+              _featureCode,
+              _countryCode,
+              _cc2,
+              _admin1Code,
+              _admin2Code,
+              _admin3Code,
+              _admin4Code,
+              _population,
+              _elevation,
+              _dem,
+              _timezone,
+              _modificationDate,
+            ] = location.split("\t"); // lines are tab delimited
             return (
-              location.id === parentId &&
-              location.featureClass === allowedFeatureClass
+              geonameId === parentId && featureClass === allowedFeatureClass
             );
           });
         },
@@ -324,12 +371,12 @@ try {
   };
   writeFileSync(LOCATIONS_DATA_FILE, JSON.stringify(locationDataFinal));
 
-  let readStream = fs.createReadStream(LOCATIONS_DATA_FILE);
+  const fileBuffer = readFileSync(LOCATIONS_DATA_FILE);
 
   if (process.argv.includes("--skip-upload")) {
     console.debug("Skipping S3 upload");
   } else {
-    await uploadToS3(`autocomplete/${LOCATIONS_DATA_FILE}`, readStream);
+    await uploadToS3(`autocomplete/${LOCATIONS_DATA_FILE}`, fileBuffer);
   }
 
   if (CLEANUP_TMP_DATA_AFTER_FINISHED) {

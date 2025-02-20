@@ -12,6 +12,10 @@ export function up(knex) {
   });
 }
 
+/**
+ * @param { import("knex").Knex } knex
+ * @returns { Promise<void> }
+ */
 export function down(knex) {
   return knex.schema.table("onerep_scans", (table) => {
     table.dropColumn("onerep_scan_reason");

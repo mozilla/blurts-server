@@ -10,6 +10,7 @@ export async function up(knex) {
   await knex.schema.alterTable("onerep_scans", (table) => {
     table.string("onerep_scan_status");
   });
+  // @ts-ignore TODO: Fix type error.
   await knex("onerep_scans").update({ onerep_scan_status: "finished" });
   await knex.schema.alterTable("onerep_scans", (table) => {
     table.dropNullable("onerep_scan_status");

@@ -15,6 +15,10 @@ if (!existsSync(dataPath)) {
     const fetchUrl = `https://s3.amazonaws.com/${process.env.S3_BUCKET}/autocomplete/locationAutocompleteData.json`;
     console.debug({ fetchUrl });
     const { body } = await fetch(fetchUrl);
+    if (!body) {
+      throw new Error(`Failed to fetch: ${fetchUrl}`);
+    }
+    // @ts-ignore If body is `null` we are already throwing an error above.
     await finished(Readable.fromWeb(body).pipe(stream));
   } catch (e) {
     console.error(e);
