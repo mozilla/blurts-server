@@ -14,6 +14,9 @@ import { headers } from "next/headers";
 import { AutoSignIn } from "../../../../../components/client/AutoSignIn";
 import { getCountryCode } from "../../../../../functions/server/getCountryCode";
 import { getEnabledFeatureFlags } from "../../../../../../db/tables/featureFlags";
+import { getExperimentationId } from "../../../../../functions/server/getExperimentationId";
+import { getExperiments } from "../../../../../functions/server/getExperiments";
+import { getLocale } from "../../../../../functions/universal/getLocale";
 
 export default async function Layout({ children }: { children: ReactNode }) {
   const l10nBundles = getL10nBundles(
@@ -32,6 +35,13 @@ export default async function Layout({ children }: { children: ReactNode }) {
   const enabledFeatureFlags = await getEnabledFeatureFlags({
     email: session.user.email,
   });
+  const currentLocale = getLocale(l10n);
+  const experimentationId = await getExperimentationId(session?.user ?? null);
+  const experimentData = await getExperiments({
+    experimentationId,
+    countryCode,
+    locale: currentLocale,
+  });
 
   return (
     <Shell
@@ -40,6 +50,7 @@ export default async function Layout({ children }: { children: ReactNode }) {
       nonce={nonce}
       countryCode={countryCode}
       enabledFeatureFlags={enabledFeatureFlags}
+      experimentData={experimentData["Features"]}
     >
       {children}
     </Shell>

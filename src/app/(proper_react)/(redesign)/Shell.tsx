@@ -18,6 +18,7 @@ import {
 import { SubscriptionCheck } from "../../components/client/SubscriptionCheck";
 import { Footer } from "./Footer";
 import { FeatureFlagName } from "../../../db/tables/featureFlags";
+import { ExperimentData } from "../../../telemetry/generated/nimbus/experiments";
 
 export type Props = {
   l10n: ExtendedReactLocalization;
@@ -26,6 +27,7 @@ export type Props = {
   nonce: string;
   countryCode: string;
   enabledFeatureFlags: FeatureFlagName[];
+  experimentData: ExperimentData["Features"];
 };
 
 export const Shell = (props: Props) => {
@@ -47,6 +49,7 @@ export const Shell = (props: Props) => {
         fxaSettingsUrl={process.env.FXA_SETTINGS_URL!}
         subscriptionBillingAmount={getSubscriptionBillingAmount()}
         enabledFeatureFlags={props.enabledFeatureFlags}
+        experimentData={props.experimentData}
       >
         <div className={styles.wrapper}>
           <nav

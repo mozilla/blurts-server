@@ -21,6 +21,8 @@ import { CONST_SETTINGS_TAB_SLUGS } from "../../../constants";
 import { FeatureFlagName } from "../../../db/tables/featureFlags";
 import { SignInButton } from "../../components/client/SignInButton";
 import { TopNavBar } from "./(public)/TopNavBar";
+import { TopNavBar as RedesignedTopNavBar } from "./(public)/LandingViewRedesign/components/TopNavBar";
+import { ExperimentData } from "../../../telemetry/generated/nimbus/experiments";
 
 export type Props = {
   countryCode: string;
@@ -34,6 +36,7 @@ export type Props = {
   fxaSettingsUrl: string;
   children: ReactNode;
   enabledFeatureFlags: FeatureFlagName[];
+  experimentData: ExperimentData["Features"];
 };
 
 export const MobileShell = (props: Props) => {
@@ -196,6 +199,14 @@ export const MobileShell = (props: Props) => {
                   />
                 </div>
               </>
+            ) : props.enabledFeatureFlags.includes("LandingPageRedesign") &&
+              props.experimentData[
+                "landing-page-redesign-plus-eligible-experiment"
+              ].enabled &&
+              props.experimentData[
+                "landing-page-redesign-plus-eligible-experiment"
+              ].variant === "redesign" ? (
+              <RedesignedTopNavBar />
             ) : (
               <TopNavBar />
             )}
