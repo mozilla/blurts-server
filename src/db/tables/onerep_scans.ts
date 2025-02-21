@@ -506,13 +506,7 @@ async function getMockedScanResults(
   return { scan: scan ?? null, results: scanResults } as LatestOnerepScanData;
 }
 
-async function getMockedScanResultsWithBrokerUnderMaintenance(
-  onerepProfileId: number | null,
-): Promise<LatestOnerepScanData> {
-  if (onerepProfileId === null) {
-    return { results: [], scan: null };
-  }
-
+async function getMockedScanResultsWithBrokerUnderMaintenance(): Promise<LatestOnerepScanData> {
   let scanResults = (await knex("qa_custom_brokers")
     .where("broker_status", "removal_under_maintenance")
     .where("manually_resolved", false)

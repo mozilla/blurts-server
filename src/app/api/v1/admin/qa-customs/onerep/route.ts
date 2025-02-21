@@ -47,23 +47,12 @@ function duplicateObj(obj: mockInputs, n: string | undefined) {
   return Array.from({ length: howMany }, () => obj);
 }
 
-export async function GET(req: NextRequest) {
+export async function GET() {
   const err = await checkAdmin();
   if (err) return err;
 
   const prodErr = errorIfProduction();
   if (prodErr !== null) return prodErr;
-
-  const profileId = Number(
-    req.nextUrl.searchParams.get("onerep_scan_result_id"),
-  );
-
-  if (!profileId || Number.isNaN(profileId)) {
-    return NextResponse.json(
-      { error: "Missing onerep_scan_result_id parameter" },
-      { status: 400 },
-    );
-  }
 
   return NextResponse.json(await getAllQaCustomBrokers());
 }

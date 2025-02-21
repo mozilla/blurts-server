@@ -127,10 +127,8 @@ async function addQaCustomBroker(
     });
 
     logger.info(`Created a custom broker: ${brokerData.data_broker}`);
-  } catch (error) {
+  } catch {
     logger.error(`Error creating custom broker: ${brokerData.data_broker}`);
-    logger.error(`Error message: ${error}`);
-    logger.error(`Error stack: ${error}`);
     throw new Error(
       `Failed to insert broker data for ${brokerData.data_broker}`,
     );
