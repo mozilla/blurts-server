@@ -29,30 +29,27 @@ export const monthlySubscribersQuota = parseInt(
 export type CreateProfileRequest = {
   first_name: string;
   last_name: string;
+  birth_date: ISO8601DateString;
   addresses: {
     city: string;
     state: StateAbbr;
   }[];
   name_suffix?: string;
   middle_name?: string;
-  birth_date?: ISO8601DateString;
-  phone_numbers?: {
-    number: E164PhoneNumberString;
-  }[];
 };
 
-export type UpdateProfileRequest = Omit<
-  CreateProfileRequest,
-  "birth_date" | "name_suffix"
-> & {
-  first_names?: {
+export type UpdateProfileRequest = CreateProfileRequest & {
+  first_names: {
     first_name: string;
   }[];
-  last_names?: {
+  last_names: {
     last_name: string;
   }[];
-  middle_names?: {
+  middle_names: {
     middle_name: string;
+  }[];
+  phone_numbers: {
+    number: E164PhoneNumberString;
   }[];
 };
 
@@ -208,19 +205,14 @@ export async function updateProfile(
   profileId: number,
   profileData: UpdateProfileRequest,
 ) {
-  const requestBody = {
-    ...profileData,
-    first_name: profileData.first_name,
-  };
   const response = await onerepFetch(`/profiles/${profileId}`, {
     method: "PUT",
-    body: JSON.stringify(requestBody),
+    body: JSON.stringify(profileData),
   });
   if (!response.ok) {
+    const responseJson = await response.json();
     logger.error(
-      `Failed to update OneRep profile: [${response.status}] [${
-        response.statusText
-      }] [${JSON.stringify(await response.json())}]`,
+      `Failed to update OneRep profile: [${response.status}] [${response.statusText}] [${JSON.stringify(responseJson)}]`,
     );
     throw new Error(
       `Failed to update OneRep profile: [${response.status}] [${response.statusText}]`,

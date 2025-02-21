@@ -313,27 +313,30 @@ declare module "knex/types/tables" {
   >;
 
   type OnerepProfileAddress = {
-    city: string;
-    state: StateAbbr;
+    city_name: string;
+    state_code: StateAbbr;
   };
 
   interface OnerepProfileRow {
     id: number;
     onerep_profile_id: null | number;
+    // TODO: Clarify if we need to keep `name_suffix`.
     name_suffix: null | string;
     first_name: string;
-    first_names: null | OnerepProfileRow["first_name"];
     middle_name: null | string;
-    middle_names: null | OnerepProfileRow["middle_name"];
     last_name: string;
-    last_names: null | OnerepProfileRow["last_name"];
-    city_name: OnerepProfileAddress["city"];
-    state_code: OnerepProfileAddress["state"];
-    addresses: null | OnerepProfileAddress[];
-    phone_numbers: null | string[];
+    first_names: string[];
+    middle_names: string[];
+    last_names: string[];
+    addresses: OnerepProfileAddress[];
+    phone_numbers: E164PhoneNumberString[];
     date_of_birth: Date;
     created_at: Date;
     updated_at: Date;
+    /** @deprecated Please use `addresses` instead. */
+    city_name: OnerepProfileAddress["city"];
+    /** @deprecated Please use `addresses` instead. */
+    state_code: OnerepProfileAddress["state"];
   }
   type OnerepProfileOptionalColumns = Extract<
     keyof OnerepProfileRow,
@@ -346,15 +349,14 @@ declare module "knex/types/tables" {
 
   interface UpdateableProfileDetails {
     first_name: string;
-    first_names: OnerepProfileRow["first_names"][];
-    middle_name: string;
-    middle_names: OnerepProfileRow["middle_names"][];
     last_name: string;
-    last_names: OnerepProfileRow["last_names"][];
-    city_name: OnerepProfileAddress["city_name"];
-    state_code: OnerepProfileAddress["state_code"];
+    first_names: string[];
+    last_names: string[];
+    middle_names: string[];
+    phone_numbers: string[];
     addresses: OnerepProfileAddress[];
-    phone_numbers: OnerepProfileRow["phone_numbers"];
+    name_suffix?: string;
+    middle_name?: string;
   }
 
   interface EmailNotificationRow {

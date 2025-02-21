@@ -8,15 +8,10 @@ import { notFound } from "next/navigation";
 import { getSubscribersByHashes } from "../../../../../../db/tables/subscribers";
 import { isAdmin } from "../../../../../api/utils/auth";
 import { getServerSession } from "../../../../../functions/server/getServerSession";
-import {
-  getProfileDetails,
-  updateProfileDetails,
-} from "../../../../../../db/tables/onerep_profiles";
+import { getProfileDetails } from "../../../../../../db/tables/onerep_profiles";
+import { getProfile } from "../../../../../functions/server/onerep";
+import updateDataBrokerScanProfile from "../../../../../functions/server/updateDataBrokerScanProfile";
 import { UpdateableProfileDetails } from "knex/types/tables";
-import {
-  getProfile,
-  updateProfile,
-} from "../../../../../functions/server/onerep";
 
 export async function lookupFxaUid(emailHash: string) {
   const session = await getServerSession();
@@ -68,8 +63,7 @@ export async function updateOnerepProfile(
   }
 
   try {
-    await updateProfile(onerepProfileId, profileData);
-    await updateProfileDetails(onerepProfileId, profileData);
+    await updateDataBrokerScanProfile(onerepProfileId, profileData);
   } catch (error) {
     console.error("Could not update profile details:", error);
   }

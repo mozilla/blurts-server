@@ -3,10 +3,8 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import createDbConnection from "../connect";
-import { CreateProfileRequest } from "../../app/functions/server/onerep.js";
+import { CreateProfileRequest } from "../../app/functions/server/onerep";
 import { parseIso8601Datetime } from "../../utils/parse";
-import { CONST_ONEREP_PROFILE_DETAIL_LIMITS } from "../../constants.ts";
-import { logger } from "../../app/functions/server/logging";
 import { UpdateableProfileDetails } from "knex/types/tables";
 
 const knex = createDbConnection();
@@ -53,57 +51,15 @@ export async function getProfileDetails(onerepProfileId: number) {
 
 export async function updateProfileDetails(
   onerepProfileId: number,
-  profileData: UpdateableProfileDetails,
+  profileDataToUpdate: UpdateableProfileDetails,
 ) {
-  const onerepProfile = await getProfileDetails(onerepProfileId);
-  const exceedsProfileDataLimit = Object.keys(
-    CONST_ONEREP_PROFILE_DETAIL_LIMITS,
-  ).some((detailKey) => {
-    const profileDetailKey =
-      detailKey as keyof typeof CONST_ONEREP_PROFILE_DETAIL_LIMITS;
-    const profileDataItem = profileData[profileDetailKey];
-    return (
-      profileDataItem &&
-      profileDataItem.length >
-        CONST_ONEREP_PROFILE_DETAIL_LIMITS[profileDetailKey]
-    );
-  });
-
-  if (exceedsProfileDataLimit) {
-    logger.error("Profile details data exceeds limit");
-    return;
-  }
-
-  const {
-    first_name,
-    last_name,
-    middle_name,
-    addresses,
-    first_names,
-    last_names,
-    middle_names,
-  } = profileData;
-  const [primaryAddress, ...additionalAddresses] = addresses;
-  const { city: city_name, state: state_code } = primaryAddress;
-  const optionalProfileData = {
-    ...(typeof first_names !== "undefined" && { first_names }),
-    ...(typeof last_names !== "undefined" && { last_names }),
-    ...(typeof middle_name !== "undefined" && { middle_name }),
-    ...(typeof middle_names !== "undefined" && { middle_names }),
-    ...(typeof additionalAddresses !== "undefined" && {
-      addresses: additionalAddresses,
-    }),
-  };
+  const { addresses, ...profileDataToUpdateRest } = profileDataToUpdate;
 
   await knex("onerep_profiles")
     .update({
-      ...optionalProfileData,
-      first_name,
-      last_name,
-      city_name,
-      state_code,
-      date_of_birth: onerepProfile.date_of_birth,
-      created_at: onerepProfile.created_at,
+      ...profileDataToUpdateRest,
+      // @ts-ignore The `addresses` column has the type jsonb.
+      addresses: JSON.stringify(addresses),
       // @ts-ignore knex.fn.now() results in it being set to a date,
       // even if it's not typed as a JS date object:
       updated_at: knex.fn.now(),
