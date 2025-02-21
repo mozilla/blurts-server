@@ -12,7 +12,7 @@ import {
 import {
   addQaCustomBroker,
   deleteQaCustomBrokerRow,
-  getAllQaCustomBrokers,
+  getAllMockedScanResults,
   setQaCustomBrokerStatus,
 } from "../../../../../../db/tables/qa_customs";
 import { getServerSession } from "../../../../../functions/server/getServerSession";
@@ -54,7 +54,7 @@ export async function GET() {
   const prodErr = errorIfProduction();
   if (prodErr !== null) return prodErr;
 
-  return NextResponse.json(await getAllQaCustomBrokers());
+  return NextResponse.json(await getAllMockedScanResults());
 }
 
 export async function POST(req: NextRequest) {

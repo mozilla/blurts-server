@@ -111,17 +111,14 @@ export default async function DashboardPage(props: Props) {
     email: session.user.email,
   });
 
-  const realScanResults = await getScanResultsWithBroker(
-    profileId,
-    hasPremium(session.user),
-  );
-
-  const mockedScanResults = await getMockedScanResults(profileId);
   const useMockedScans =
     enabledFeatureFlags.includes("CustomDataBrokers") &&
     process.env.NODE_ENV !== "production";
 
-  const scanResults = useMockedScans ? mockedScanResults : realScanResults;
+  const scanResults = useMockedScans
+    ? await getMockedScanResults(profileId)
+    : await getScanResultsWithBroker(profileId, hasPremium(session.user));
+
   const scanCount =
     typeof profileId === "number"
       ? await getScansCountForProfile(profileId)

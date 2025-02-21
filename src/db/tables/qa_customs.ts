@@ -135,7 +135,7 @@ async function addQaCustomBroker(
   }
 }
 
-async function getAllQaCustomBrokers(): Promise<
+async function getAllMockedScanResults(): Promise<
   OnerepScanResultDataBrokerRow[]
 > {
   const res = (await knex("qa_custom_brokers").select(
@@ -298,7 +298,7 @@ async function createQaTogglesRow(
 export {
   getQaCustomBrokers,
   addQaCustomBroker,
-  getAllQaCustomBrokers,
+  getAllMockedScanResults,
   deleteQaCustomBrokerRow,
   setQaCustomBrokerStatus,
   markQaCustomBrokerAsResolved,
