@@ -193,7 +193,7 @@ async function getLatestOnerepScanResults(
         .innerJoin("onerep_scans as s", "sr.onerep_scan_id", "s.onerep_scan_id")
         .orderBy("link")
         .orderBy("onerep_scan_result_id", "desc")) as OnerepScanResultRow[];
-      results = [...scanResults, ...qaBrokers];
+      results = [...scanResults];
     }
   }
 
