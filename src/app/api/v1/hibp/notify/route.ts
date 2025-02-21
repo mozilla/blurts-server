@@ -40,6 +40,7 @@ export async function POST(req: NextRequest) {
 
     const headerToken = bearerToken(req);
     if (headerToken !== process.env.HIBP_NOTIFY_TOKEN) {
+      logger.error(`Received invalid header token: [${headerToken}]`);
       return NextResponse.json({ success: false }, { status: 401 });
     }
 
