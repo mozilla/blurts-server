@@ -43,29 +43,17 @@ export default async function RemovalUnderMaintenance() {
   }
 
   const profileId = await getOnerepProfileId(session.user.subscriber.id);
-
-  const mockedScansWithRemovalUnderMaintenance =
-    (await getMockedScanResultsWithBrokerUnderMaintenance(profileId)) ?? null;
-
   const useMockedScans =
     enabledFeatureFlags.includes("CustomDataBrokers") &&
     process.env.NODE_ENV !== "production";
 
-  const realScansWithRemovalUnderMaintenance =
-    (await getScanResultsWithBrokerUnderMaintenance(profileId)) ?? null;
-
   const scanResultsWithRemovalUnderMaintenance = useMockedScans
-    ? mockedScansWithRemovalUnderMaintenance
-    : realScansWithRemovalUnderMaintenance;
+    ? await getMockedScanResultsWithBrokerUnderMaintenance()
+    : await getScanResultsWithBrokerUnderMaintenance(profileId);
 
-  const latestScan = await getScanResultsWithBroker(
-    profileId,
-    hasPremium(session.user),
-  );
-
-  const mockedScanResults = await getMockedScanResults(profileId);
-
-  const scanResults = useMockedScans ? mockedScanResults : latestScan;
+  const scanResults = useMockedScans
+    ? await getMockedScanResults(profileId)
+    : await getScanResultsWithBroker(profileId, hasPremium(session.user));
 
   const data: StepDeterminationData = {
     countryCode,
