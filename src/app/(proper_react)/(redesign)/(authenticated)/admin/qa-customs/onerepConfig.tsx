@@ -6,28 +6,8 @@
 
 import React, { useState, useEffect } from "react";
 import styles from "./ConfigPage.module.scss";
-
-interface QaBrokerDataCounts {
-  onerep_scan_result_id?: number;
-  onerep_profile_id: number;
-  link: string;
-  age: number | null | undefined;
-  data_broker: string;
-  emails: number;
-  phones: number;
-  addresses: number;
-  relatives: number;
-  first_name: string;
-  middle_name: string | null | undefined;
-  last_name: string;
-  status: string;
-  manually_resolved: string;
-  optout_attempts?: number;
-  last_optout_at?: string;
-}
-
-const endpointBase = "/api/v1/admin/qa-customs/onerep";
-const endpointToggleBase = "/api/v1/admin/qa-customs";
+import { OnerepScanResultDataBrokerRow } from "knex/types/tables";
+import { StateAbbr } from "../../../../../../utils/states";
 
 interface Props {
   onerepProfileId: number;
@@ -37,43 +17,49 @@ interface Props {
   showQaParamEnum: string;
 }
 
-const OnerepConfigPage = (props: Props) => {
-  const profileId = props.onerepProfileId;
-  const [brokersFetchHappened, setBrokersFetchHappened] =
-    useState<boolean>(false);
-  const [brokers, setBrokers] = useState<QaBrokerDataCounts[]>([]);
+const endpointBase = "/api/v1/admin/qa-customs/onerep";
+const endpointToggleBase = "/api/v1/admin/qa-customs";
+
+const OnerepConfigPage = ({
+  onerepProfileId,
+  showApiBrokers,
+  showQaBrokers,
+  showApiParamEnum,
+  showQaParamEnum,
+}: Props) => {
+  const [brokers, setBrokers] = useState<OnerepScanResultDataBrokerRow[]>([]);
+  const [newBroker, setNewBroker] = useState<OnerepScanResultDataBrokerRow>({
+    link: "",
+    age: 30,
+    data_broker: "",
+    emails: [],
+    phones: [],
+    addresses: [],
+    relatives: [],
+    first_name: "",
+    middle_name: "",
+    last_name: "",
+    status: "new",
+    manually_resolved: false,
+    scan_result_status: "new",
+    broker_status: "removal_under_maintenance",
+    url: "",
+    id: 0,
+    onerep_scan_result_id: Math.floor(Math.random() * 2147483647),
+    onerep_scan_id: 0,
+    data_broker_id: 0,
+    created_at: new Date(),
+    updated_at: new Date(),
+  });
   const [errors, setErrors] = useState({
     profile_id: false,
     data_broker: false,
     link: false,
   });
 
-  // Initialize a base broker template to reset form fields
-
-  const baseBroker: QaBrokerDataCounts = {
-    onerep_profile_id: -1,
-    link: "",
-    age: null,
-    data_broker: "",
-    emails: 0,
-    phones: 0,
-    addresses: 0,
-    relatives: 0,
-    first_name: "",
-    middle_name: null,
-    last_name: "",
-    status: "new",
-    manually_resolved: "false",
-  };
-
-  // Temporary state to hold form input for a new broker
-  const [newBroker, setNewBroker] = useState<QaBrokerDataCounts>(baseBroker);
-  const [showQaBrokers, setShowQaBrokers] = useState<boolean>(
-    props.showQaBrokers,
-  );
-  const [showApiBrokers, setShowApiBrokers] = useState<boolean>(
-    props.showApiBrokers,
-  );
+  const [brokersFetchHappened, setBrokersFetchHappened] = useState(false);
+  const [showQaBrokersState, setShowQaBrokers] = useState(showQaBrokers);
+  const [showApiBrokersState, setShowApiBrokers] = useState(showApiBrokers);
 
   useEffect(() => {
     void fetchBrokers();
@@ -84,7 +70,7 @@ const OnerepConfigPage = (props: Props) => {
     setBrokersFetchHappened(false);
     try {
       const response = await fetch(
-        `${endpointBase}?onerep_profile_id=${props.onerepProfileId}`,
+        `${endpointBase}?onerep_scan_result_id=${onerepProfileId}`,
       );
       const data = await response.json();
       setBrokers(data);
@@ -99,77 +85,64 @@ const OnerepConfigPage = (props: Props) => {
       | React.ChangeEvent<HTMLInputElement>
       | React.ChangeEvent<HTMLSelectElement>,
   ) => {
-    setNewBroker({ ...newBroker, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setNewBroker({
+      ...newBroker,
+      [name]: name === "manually_resolved" ? value === "true" : value,
+    });
   };
 
-  const handleAddBroker = async (event: React.FormEvent) => {
-    event.preventDefault();
+  const handleAddBroker = async (e: React.FormEvent) => {
+    e.preventDefault();
 
     let hasError = false;
 
-    if (profileId < 0) {
+    if (onerepProfileId < 0) {
       setErrors({ ...errors, profile_id: true });
       hasError = true;
     } else {
       setErrors({ ...errors, profile_id: false });
     }
 
-    let linkString = "";
-    try {
-      if (newBroker.link.length !== 0) {
-        const urlObj = new URL(newBroker.link);
-        linkString = urlObj.href;
-      }
-      setErrors({ ...errors, link: false });
-    } catch {
-      setErrors({ ...errors, link: true });
-      hasError = true;
-    }
-
     if (hasError) return;
 
-    newBroker.onerep_profile_id = profileId;
     try {
-      const req = fetch(endpointBase, {
+      const response = await fetch(endpointBase, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...newBroker,
-          link: linkString,
-          manually_resolved:
-            newBroker.manually_resolved === "false" ? false : true,
+          manually_resolved: newBroker.manually_resolved,
         }),
       });
-      alert("Request made successfully");
-
-      const response = await req;
-
       if (response.ok) {
-        await fetchBrokers(); // Refresh the brokers list
-        setNewBroker(baseBroker); // Reset form fields
+        alert("Request made successfully");
+        await fetchBrokers();
+        setNewBroker({
+          ...newBroker,
+          link: "",
+          age: 30,
+          data_broker: "",
+          emails: [],
+          phones: [],
+          relatives: [],
+        });
       } else {
-        console.error("Error adding broker:", await response.json());
+        alert(`Error adding broker: ${await response.json()}`);
       }
     } catch (error) {
-      console.error("Error adding broker:", error);
+      alert("Error adding broker: " + error);
     }
   };
 
   const handleDeleteBroker = async (onerep_scan_result_id: number) => {
     try {
-      const req = fetch(
+      const response = await fetch(
         `${endpointBase}?onerep_scan_result_id=${onerep_scan_result_id}`,
-        {
-          method: "DELETE",
-        },
+        { method: "DELETE" },
       );
-      alert("Deletion request made successfully!");
-      const response = await req;
-
       if (response.ok) {
-        await fetchBrokers(); // Refresh the brokers list
+        await fetchBrokers();
       } else {
         console.error("Error deleting broker:", await response.json());
       }
@@ -178,40 +151,48 @@ const OnerepConfigPage = (props: Props) => {
     }
   };
 
-  const toggleQaBrokers = () => {
-    void fetch(
-      endpointToggleBase +
-        `?columnName=${props.showQaParamEnum}&isVisible=${!showQaBrokers}`,
-      {
-        method: "PUT",
-      },
+  const toggleQaBrokersVisibility = () => {
+    fetch(
+      `${endpointToggleBase}?columnName=${showQaParamEnum}&isVisible=${!showQaBrokersState}`,
+      { method: "PUT" },
     ).then((res) => {
       if (res.ok) {
-        setShowQaBrokers(!showQaBrokers);
-        return;
+        setShowQaBrokers(!showQaBrokersState);
+      } else {
+        alert("Something went wrong during the QA brokers toggle...");
       }
-      alert("Something went wrong during the QA brokers toggle...");
     });
-    alert("Request made successfully!");
   };
 
-  const toggleApiBrokers = () => {
-    void fetch(
-      endpointToggleBase +
-        `?columnName=${props.showApiParamEnum}&isVisible=${!showApiBrokers}`,
-      {
-        method: "PUT",
-      },
+  const toggleApiBrokersVisibility = () => {
+    fetch(
+      `${endpointToggleBase}?columnName=${showApiParamEnum}&isVisible=${!showApiBrokersState}`,
+      { method: "PUT" },
     ).then((res) => {
       if (res.ok) {
-        setShowApiBrokers(!showApiBrokers);
-        return;
+        setShowApiBrokers(!showApiBrokersState);
+      } else {
+        alert("Something went wrong during the API brokers toggle...");
       }
-      alert("Something went wrong during the API brokers toggle...");
     });
-    alert("Request made successfully!");
   };
 
+  const [numAddresses, setNumAddresses] = useState(1);
+
+  const handleNumAddressesChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const count = Math.max(1, parseInt(e.target.value, 10) || 1);
+    setNumAddresses(count);
+
+    setNewBroker({
+      ...newBroker,
+      addresses: Array.from({ length: count }, () => ({
+        zip: "93386",
+        city: "Berkeley",
+        state: "CA" as StateAbbr,
+        street: "Von Meadows",
+      })),
+    });
+  };
   return (
     <main className={`${styles.wrapper} ${styles.configRight}`}>
       <header className={styles.header}>
@@ -221,11 +202,11 @@ const OnerepConfigPage = (props: Props) => {
       </header>
 
       <div className={styles.buttonContainer}>
-        <button className={styles.button} onClick={toggleQaBrokers}>
-          Toggle QA brokers, current: {showQaBrokers ? "on" : "off"}
+        <button className={styles.button} onClick={toggleQaBrokersVisibility}>
+          Toggle QA brokers, current: {showQaBrokersState ? "on" : "off"}
         </button>
-        <button className={styles.button} onClick={toggleApiBrokers}>
-          Toggle API brokers, current: {showApiBrokers ? "on" : "off"}
+        <button className={styles.button} onClick={toggleApiBrokersVisibility}>
+          Toggle API brokers, current: {showApiBrokersState ? "on" : "off"}
         </button>
       </div>
 
@@ -300,18 +281,6 @@ const OnerepConfigPage = (props: Props) => {
               </label>
 
               <label className={styles.label}>
-                Addresses:
-                <input
-                  className={styles.input}
-                  type="number"
-                  name="addresses"
-                  placeholder="0"
-                  value={newBroker.addresses}
-                  onChange={handleChange}
-                />
-              </label>
-
-              <label className={styles.label}>
                 Relatives:
                 <input
                   className={styles.input}
@@ -320,6 +289,17 @@ const OnerepConfigPage = (props: Props) => {
                   placeholder="0"
                   value={newBroker.relatives}
                   onChange={handleChange}
+                />
+              </label>
+
+              <label className={styles.label}>
+                Number of Addresses:
+                <input
+                  className={styles.input}
+                  type="number"
+                  min="1"
+                  value={numAddresses}
+                  onChange={handleNumAddressesChange}
                 />
               </label>
 
@@ -359,11 +339,11 @@ const OnerepConfigPage = (props: Props) => {
                 />
               </label>
 
-              <label className={styles.label}>
-                Manually Resolved:
+              <label>
+                Manually resolved:
                 <select
                   name="manually_resolved"
-                  value={newBroker.manually_resolved}
+                  value={newBroker.manually_resolved ? "true" : "false"}
                   onChange={(e) => void handleChange(e)}
                 >
                   <option value="false">False</option>
@@ -381,6 +361,25 @@ const OnerepConfigPage = (props: Props) => {
                   <option value="new">New</option>
                   <option value="optout_in_progress">In Progress</option>
                   <option value="removed">Removed</option>
+                </select>
+              </label>
+
+              <label>
+                Broker Status:
+                <select
+                  name="broker_status"
+                  value={newBroker.broker_status}
+                  onChange={(e) => void handleChange(e)}
+                >
+                  <option value="active">Active</option>
+                  <option value="on_hold">On hold</option>
+                  <option value="ceased_operation">Ceased operation</option>
+                  <option value="scan_under_maintenance">
+                    Scan under maintenance
+                  </option>
+                  <option value="removal_under_maintenance">
+                    Removal under maintenance
+                  </option>
                 </select>
               </label>
 
@@ -403,7 +402,7 @@ const OnerepConfigPage = (props: Props) => {
                   type="date"
                   name="last_optout_at"
                   placeholder={new Date().toISOString().split("T")[0]}
-                  value={newBroker.last_optout_at ?? ""}
+                  value={newBroker.last_optout_at?.toDateString()}
                   onChange={handleChange}
                 />
               </label>
@@ -413,14 +412,18 @@ const OnerepConfigPage = (props: Props) => {
             Add Broker to List
           </button>
         </form>
+
         <div>
           <h2 className={styles.h2}>Brokers List</h2>
           <ul className={styles.listContainer}>
             {!brokersFetchHappened ? (
               <p>fetching...</p>
-            ) : brokers.length !== 0 ? (
+            ) : brokers.length ? (
               brokers.map((broker) => (
-                <li key={broker.onerep_profile_id} className={styles.listItem}>
+                <li
+                  key={broker.onerep_scan_result_id}
+                  className={styles.listItem}
+                >
                   <details>
                     <summary>
                       {broker.data_broker}
@@ -431,7 +434,7 @@ const OnerepConfigPage = (props: Props) => {
                   </details>
                   <button
                     onClick={() =>
-                      void handleDeleteBroker(broker.onerep_scan_result_id!)
+                      handleDeleteBroker(broker.onerep_scan_result_id!)
                     }
                   >
                     Delete
