@@ -67,12 +67,12 @@ function getUtmParams() {
     window.location
   ) {
     try {
-      if (document.referrer && /^(https?:\/\/)/.test(document.referrer)) {
-        const referrerUrl = new URL(document.referrer);
-        referrerUrl.search = ""; // Remove query params
-        referrerUrl.hash = ""; // Remove fragments
-        utmParams["referrer"] = referrerUrl.toString();
-      }
+      const referrerUrl = new URL(document.referrer);
+      // Remove any query params.
+      referrerUrl.search = "";
+      // Remove any fragment identifiers.
+      referrerUrl.hash = "";
+      utmParams["referrer"] = referrerUrl.toString();
     } catch {
       console.error("Could not parse referrer as URL:", document.referrer);
     }

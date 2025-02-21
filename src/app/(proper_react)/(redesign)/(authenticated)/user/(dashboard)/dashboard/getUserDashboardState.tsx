@@ -478,8 +478,8 @@ export const getUserDashboardState = (
     /**
      * - US user
      * - Non premium
-     * - Unresolved brokers
-     * - No breaches
+     * - No brokers
+     * - Unresolved breaches
      * - Scan: In progress
      */
     isMatchingContent(contentProps, {
