@@ -120,7 +120,7 @@ export async function POST(req: NextRequest) {
     data_broker_id: 0,
     created_at: new Date(),
     updated_at: new Date(),
-    onerep_scan_result_id: Date.now() + Math.floor(Math.random() * 1000),
+    onerep_scan_result_id: Math.floor(Math.random() * 2147483647),
   };
   try {
     await addQaCustomBroker(brokerData);

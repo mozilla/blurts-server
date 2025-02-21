@@ -122,7 +122,6 @@ export default async function DashboardPage(props: Props) {
     process.env.NODE_ENV !== "production";
 
   const scanResults = useMockedScans ? mockedScanResults : realScanResults;
-
   const scanCount =
     typeof profileId === "number"
       ? await getScansCountForProfile(profileId)
@@ -168,7 +167,7 @@ export default async function DashboardPage(props: Props) {
       user={session.user}
       isEligibleForPremium={userIsEligibleForPremium}
       isEligibleForFreeScan={userIsEligibleForFreeScan}
-      userScanData={mockedScanResults}
+      userScanData={scanResults}
       userBreaches={subBreaches}
       enabledFeatureFlags={enabledFeatureFlags}
       monthlySubscriptionUrl={`${monthlySubscriptionUrl}&${additionalSubplatParams.toString()}`}

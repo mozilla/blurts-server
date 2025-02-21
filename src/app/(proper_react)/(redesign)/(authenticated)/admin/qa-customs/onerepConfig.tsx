@@ -34,17 +34,10 @@ const OnerepConfigPage = ({
     data_broker: "",
     emails: [],
     phones: [],
-    addresses: [
-      {
-        zip: "93386",
-        city: "Berkeley",
-        state: "CA" as StateAbbr,
-        street: "Von Meadows",
-      },
-    ],
+    addresses: [],
     relatives: [],
     first_name: "",
-    middle_name: "null",
+    middle_name: "",
     last_name: "",
     status: "new",
     manually_resolved: false,
@@ -52,7 +45,7 @@ const OnerepConfigPage = ({
     broker_status: "removal_under_maintenance",
     url: "",
     id: 0,
-    onerep_scan_result_id: 0,
+    onerep_scan_result_id: Math.floor(Math.random() * 2147483647),
     onerep_scan_id: 0,
     data_broker_id: 0,
     created_at: new Date(),
@@ -103,20 +96,12 @@ const OnerepConfigPage = ({
     e.preventDefault();
 
     let hasError = false;
-    const linkString = validateLink(newBroker.link);
 
     if (onerepProfileId < 0) {
       setErrors({ ...errors, profile_id: true });
       hasError = true;
     } else {
       setErrors({ ...errors, profile_id: false });
-    }
-
-    if (!linkString) {
-      setErrors({ ...errors, link: true });
-      hasError = true;
-    } else {
-      setErrors({ ...errors, link: false });
     }
 
     if (hasError) return;
@@ -127,7 +112,6 @@ const OnerepConfigPage = ({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...newBroker,
-          link: linkString,
           manually_resolved: newBroker.manually_resolved,
         }),
       });
@@ -147,7 +131,6 @@ const OnerepConfigPage = ({
         alert(`Error adding broker: ${await response.json()}`);
       }
     } catch (error) {
-      console.error("Error adding broker:", error);
       alert("Error adding broker: " + error);
     }
   };
@@ -194,16 +177,22 @@ const OnerepConfigPage = ({
     });
   };
 
-  const validateLink = (link: string) => {
-    if (link.length === 0) return "";
-    try {
-      const urlObj = new URL(link);
-      return urlObj.href;
-    } catch {
-      return "";
-    }
-  };
+  const [numAddresses, setNumAddresses] = useState(1);
 
+  const handleNumAddressesChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const count = Math.max(1, parseInt(e.target.value, 10) || 1);
+    setNumAddresses(count);
+
+    setNewBroker({
+      ...newBroker,
+      addresses: Array.from({ length: count }, () => ({
+        zip: "93386",
+        city: "Berkeley",
+        state: "CA" as StateAbbr,
+        street: "Von Meadows",
+      })),
+    });
+  };
   return (
     <main className={`${styles.wrapper} ${styles.configRight}`}>
       <header className={styles.header}>
@@ -304,6 +293,17 @@ const OnerepConfigPage = ({
               </label>
 
               <label className={styles.label}>
+                Number of Addresses:
+                <input
+                  className={styles.input}
+                  type="number"
+                  min="1"
+                  value={numAddresses}
+                  onChange={handleNumAddressesChange}
+                />
+              </label>
+
+              <label className={styles.label}>
                 First Name:
                 <input
                   className={styles.input}
@@ -339,14 +339,17 @@ const OnerepConfigPage = ({
                 />
               </label>
 
-              <select
-                name="manually_resolved"
-                value={newBroker.manually_resolved ? "true" : "false"}
-                onChange={(e) => void handleChange(e)}
-              >
-                <option value="false">False</option>
-                <option value="true">True</option>
-              </select>
+              <label>
+                Manually resolved:
+                <select
+                  name="manually_resolved"
+                  value={newBroker.manually_resolved ? "true" : "false"}
+                  onChange={(e) => void handleChange(e)}
+                >
+                  <option value="false">False</option>
+                  <option value="true">True</option>
+                </select>
+              </label>
 
               <label>
                 Status:
