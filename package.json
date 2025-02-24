@@ -135,7 +135,7 @@
     "@types/canvas-confetti": "^1.9.0",
     "@types/eslint": "^9.6.1",
     "@types/jest-axe": "^3.5.9",
-    "@types/jsonwebtoken": "^9.0.8",
+    "@types/jsonwebtoken": "^9.0.9",
     "@types/jwk-to-pem": "^2.0.3",
     "@types/k6": "^0.57.1",
     "@types/mjml": "^4.7.4",
