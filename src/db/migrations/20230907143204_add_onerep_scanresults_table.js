@@ -55,28 +55,32 @@ export async function up(knex) {
   const scanResultRows = scanRows
     .map((scan) => {
       return (
-        scan.onerep_scan_results?.data.map((scanResult) => {
-          const rowToInsert = {
-            onerep_scan_result_id: scanResult.id,
-            onerep_scan_id: scan.onerep_scan_id,
-            link: scanResult.link,
-            age:
-              typeof scanResult.age === "string"
-                ? Number.parseInt(scanResult.age, 10)
-                : null,
-            data_broker: scanResult.data_broker,
-            data_broker_id: scanResult.data_broker_id,
-            emails: JSON.stringify(scanResult.emails),
-            phones: JSON.stringify(scanResult.phones),
-            addresses: JSON.stringify(scanResult.addresses),
-            relatives: JSON.stringify(scanResult.relatives),
-            first_name: scanResult.first_name,
-            middle_name: scanResult.middle_name,
-            last_name: scanResult.last_name,
-            status: scanResult.status,
-          };
-          return rowToInsert;
-        }) ?? []
+        scan.onerep_scan_results?.data.map(
+          (
+            /** @type {import("knex/types/tables").OnerepScanResultRow} */ scanResult,
+          ) => {
+            const rowToInsert = {
+              onerep_scan_result_id: scanResult.id,
+              onerep_scan_id: scan.onerep_scan_id,
+              link: scanResult.link,
+              age:
+                typeof scanResult.age === "string"
+                  ? Number.parseInt(scanResult.age, 10)
+                  : null,
+              data_broker: scanResult.data_broker,
+              data_broker_id: scanResult.data_broker_id,
+              emails: JSON.stringify(scanResult.emails),
+              phones: JSON.stringify(scanResult.phones),
+              addresses: JSON.stringify(scanResult.addresses),
+              relatives: JSON.stringify(scanResult.relatives),
+              first_name: scanResult.first_name,
+              middle_name: scanResult.middle_name,
+              last_name: scanResult.last_name,
+              status: scanResult.status,
+            };
+            return rowToInsert;
+          },
+        ) ?? []
       );
     })
     .flat();
@@ -100,6 +104,6 @@ export async function down(knex) {
   });
   await knex.schema.dropTable("onerep_scan_results");
   await knex.schema.alterTable("onerep_scans", (table) => {
-    table.dropUnique("onerep_scan_id");
+    table.dropUnique(["onerep_scan_id"]);
   });
 }
