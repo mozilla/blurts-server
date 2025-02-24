@@ -4,10 +4,7 @@
 
 import type { Session } from "next-auth";
 import { getOnerepProfileId } from "../../../db/tables/subscribers";
-import {
-  E164PhoneNumberString,
-  ISO8601DateString,
-} from "../../../utils/parse.js";
+import { ISO8601DateString } from "../../../utils/parse.js";
 import { StateAbbr } from "../../../utils/states.js";
 import {
   getEmailForProfile,
@@ -49,7 +46,7 @@ export type UpdateProfileRequest = CreateProfileRequest & {
     middle_name: string;
   }[];
   phone_numbers: {
-    number: E164PhoneNumberString;
+    number: string;
   }[];
 };
 

@@ -17,7 +17,7 @@ import { lookupFxaUid, getOnerepProfile, updateOnerepProfile } from "./actions";
 import { OnerepProfileRow, UpdateableProfileDetails } from "knex/types/tables";
 import { ShowProfileResponse } from "../../../../../functions/server/onerep";
 import { InputField } from "../../../../../components/client/InputField";
-import { CONST_ONEREP_PROFILE_DETAIL_ALLOW_LIST } from "../../../../../../constants";
+import { CONST_DATA_BROKER_PROFILE_DETAIL_ALLOW_LIST } from "../../../../../../constants";
 
 const DataTable = ({
   header,
@@ -56,14 +56,16 @@ const ProfileDataInputs = ({
   onError: (error: string) => void;
 }) => {
   const dataKeys = Object.keys(data).filter((dataKey) =>
-    CONST_ONEREP_PROFILE_DETAIL_ALLOW_LIST.includes(
-      dataKey as (typeof CONST_ONEREP_PROFILE_DETAIL_ALLOW_LIST)[number],
+    CONST_DATA_BROKER_PROFILE_DETAIL_ALLOW_LIST.includes(
+      dataKey as (typeof CONST_DATA_BROKER_PROFILE_DETAIL_ALLOW_LIST)[number],
     ),
   );
   const initialData = dataKeys.reduce(
     (filteredData: Record<string, string>, key) => {
       filteredData[key] = JSON.stringify(
-        data[key as (typeof CONST_ONEREP_PROFILE_DETAIL_ALLOW_LIST)[number]],
+        data[
+          key as (typeof CONST_DATA_BROKER_PROFILE_DETAIL_ALLOW_LIST)[number]
+        ],
       );
       return filteredData;
     },

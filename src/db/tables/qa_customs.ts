@@ -66,10 +66,8 @@ enum AllowedToggleColumns {
   ShowCustomBrokers = "show_custom_brokers",
 }
 
-function envIsProd() {
-  return process.env.APP_ENV === "production";
-}
-
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function getQaCustomBrokers(
   onerepProfileId: number | null,
   onerepScanId: number | undefined | null,
@@ -104,6 +102,7 @@ async function getQaCustomBrokers(
   }
   return results;
 }
+/* c8 ignore stop */
 
 /**
  * Inserts a new row into the qa_custom_brokers table.
@@ -111,6 +110,8 @@ async function getQaCustomBrokers(
  * @param brokerData This object conforms to QaBrokerData, which is the same as
  * OnerepScanResulsRow with some fields omitted due to them being automaticallty set.
  */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function addQaCustomBroker(brokerData: QaBrokerData): Promise<void> {
   await knex("qa_custom_brokers").insert({
     ...brokerData,
@@ -121,7 +122,10 @@ async function addQaCustomBroker(brokerData: QaBrokerData): Promise<void> {
   });
   logger.info(`Created a custom broker: ${brokerData.data_broker}`);
 }
+/* c8 ignore stop */
 
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function getAllQaCustomBrokers(
   onerep_profile_id: number,
 ): Promise<QaBrokerData[]> {
@@ -131,12 +135,17 @@ async function getAllQaCustomBrokers(
   return res;
 }
 
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function deleteQaCustomBrokerRow(onerep_scan_result_id: number) {
   await knex("qa_custom_brokers")
     .where("onerep_scan_result_id", onerep_scan_result_id)
     .del();
 }
+/* c8 ignore stop */
 
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function setQaCustomBrokerStatus(
   onerep_scan_result_id: number,
   newStatus: string,
@@ -145,7 +154,10 @@ async function setQaCustomBrokerStatus(
     .where("onerep_scan_result_id", onerep_scan_result_id)
     .update({ status: newStatus });
 }
+/* c8 ignore stop */
 
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function markQaCustomBrokerAsResolved(onerepScanResultId: number) {
   const rowsAffected = await knex("qa_custom_brokers")
     .update({
@@ -155,7 +167,10 @@ async function markQaCustomBrokerAsResolved(onerepScanResultId: number) {
     .where("onerep_scan_result_id", onerepScanResultId);
   return rowsAffected;
 }
+/* c8 ignore stop */
 
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function getAllQaCustomBreaches(emailHashPrefix: string) {
   const res = (
     await knex("qa_custom_breaches")
@@ -168,27 +183,39 @@ async function getAllQaCustomBreaches(emailHashPrefix: string) {
   });
   return res;
 }
+/* c8 ignore stop */
 
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 function formatQaBreach(breach: QaBreachData) {
   const { emailHashPrefix: _, ...rest } = breach;
   return rest as HibpLikeDbBreach;
 }
+/* c8 ignore stop */
 
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function addQaCustomBreach(breach: QaBreachData): Promise<void> {
   await knex("qa_custom_breaches").insert({
     ...breach,
   });
 }
+/* c8 ignore stop */
 
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function deleteQaCustomBreach(
   emailHashPrefix: string,
   Id: number,
 ): Promise<void> {
   await knex("qa_custom_breaches").where({ emailHashPrefix, Id }).del();
 }
+/* c8 ignore stop */
 
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function getQaToggleRow(emailHashOrOneRepId: string | number | null) {
-  if (emailHashOrOneRepId === null || envIsProd()) {
+  if (emailHashOrOneRepId === null || process.env.APP_ENV === "production") {
     return null;
   }
   if (typeof emailHashOrOneRepId === "string") {
@@ -204,7 +231,10 @@ async function getQaToggleRow(emailHashOrOneRepId: string | number | null) {
   }
   return null;
 }
+/* c8 ignore stop */
 
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function setQaToggle(
   columnName: string,
   isShown: boolean,
@@ -238,7 +268,10 @@ async function setQaToggle(
     })
     .where("email_hash", emailHash);
 }
+/* c8 ignore stop */
 
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function createQaTogglesRow(
   emailHash: string,
   subscriberId: number,
@@ -281,6 +314,7 @@ async function createQaTogglesRow(
     return existingRow as QaToggleRow;
   }
 }
+/* c8 ignore stop */
 
 export {
   getQaCustomBrokers,

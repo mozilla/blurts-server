@@ -320,8 +320,6 @@ declare module "knex/types/tables" {
   interface OnerepProfileRow {
     id: number;
     onerep_profile_id: null | number;
-    // TODO: Clarify if we need to keep `name_suffix`.
-    name_suffix: null | string;
     first_name: string;
     middle_name: null | string;
     last_name: string;
@@ -334,9 +332,11 @@ declare module "knex/types/tables" {
     created_at: Date;
     updated_at: Date;
     /** @deprecated Please use `addresses` instead. */
-    city_name: OnerepProfileAddress["city"];
+    city_name?: OnerepProfileAddress["city"];
     /** @deprecated Please use `addresses` instead. */
-    state_code: OnerepProfileAddress["state"];
+    state_code?: OnerepProfileAddress["state"];
+    /** @deprecated The field `name_suffix` is not used at the the moment. */
+    name_suffix: null | string;
   }
   type OnerepProfileOptionalColumns = Extract<
     keyof OnerepProfileRow,
@@ -355,7 +355,6 @@ declare module "knex/types/tables" {
     middle_names: string[];
     phone_numbers: string[];
     addresses: OnerepProfileAddress[];
-    name_suffix?: string;
     middle_name?: string;
   }
 
