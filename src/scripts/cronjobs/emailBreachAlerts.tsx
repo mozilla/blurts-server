@@ -4,6 +4,7 @@
 
 import Sentry from "@sentry/nextjs";
 
+import process from "node:process";
 import * as pubsub from "@google-cloud/pubsub";
 import * as grpc from "@grpc/grpc-js";
 import type { SubscriberClient } from "@google-cloud/pubsub/build/src/v1/subscriber_client.js";
@@ -392,11 +393,29 @@ async function pullMessages() {
 
   return [subClient, response.receivedMessages] as const;
 }
-async function init() {
-  await initEmail();
 
+async function run() {
   const [subClient, receivedMessages] = await pullMessages();
   await poll(subClient, receivedMessages ?? []);
+
+  // We're transitioning this into a long-running process,
+  // but to ensure a smooth transition, allow keeping the cronjob behaviour:
+  if (process.env.LOOP === "true") {
+    logger.info("Processed batch, starting next one.");
+    await run();
+  }
+}
+
+async function init() {
+  // By adding this event listener, the default behaviour (exiting) will be disabled.
+  // Instead, we'll be able to wind down DB connections etc. before exiting.
+  // (See the `finally` handler down below.)
+  process.on("SIGINT", () => {
+    throw new Error("SIGINT received, exiting...");
+  });
+  await initEmail();
+
+  await run();
 }
 
 if (process.env.NODE_ENV !== "test") {
@@ -408,7 +427,7 @@ if (process.env.NODE_ENV !== "test") {
         );
       }
     })
-    .catch((err) => console.error(err))
+    .catch((err) => console.error("breach-alerts ended with an error:", err))
     .finally(async () => {
       // Tear down knex connection pools
       await knexSubscribers.destroy();
@@ -420,7 +439,7 @@ if (process.env.NODE_ENV !== "test") {
         monitorSlug: SENTRY_SLUG,
         status: "ok",
       });
-      setTimeout(process.exit, 1000);
+      setTimeout(() => process.exit(0), 1000);
     });
 }
 /* c8 ignore stop */
