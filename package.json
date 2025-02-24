@@ -137,7 +137,7 @@
     "@types/jest-axe": "^3.5.9",
     "@types/jsonwebtoken": "^9.0.8",
     "@types/jwk-to-pem": "^2.0.3",
-    "@types/k6": "^0.57.0",
+    "@types/k6": "^0.57.1",
     "@types/mjml": "^4.7.4",
     "@types/mjml-browser": "^4.15.0",
     "@types/nodemailer": "^6.4.17",
