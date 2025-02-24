@@ -71,8 +71,7 @@ export const run = () => {
       throw new Error(`Non-success result: ${JSON.stringify(result)}`);
     }
   } catch {
-    // @ts-ignore TODO: Add type correct type for res.
-    throw new Error(`Failed to parse result: ${res.status}, ${res.text}`);
+    throw new Error(`Failed to parse result: ${res.status}`);
   }
 };
 export default run;
