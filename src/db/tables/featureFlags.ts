@@ -53,7 +53,11 @@ export const featureFlagNames = [
   "CirrusV2",
   "DataBrokerRemovalAttempts",
   "ExpirationNotification",
+  "CustomDataBrokers",
 ] as const;
+
+export const adminOnlyFlags: FeatureFlagName[] = ["CustomDataBrokers"];
+
 export type FeatureFlagName = (typeof featureFlagNames)[number];
 
 /**
@@ -307,4 +311,11 @@ export async function disableFeatureFlagByName(name: string) {
     .returning("*");
 
   return res[0];
+}
+
+export function isFeatureFlagAdminOnly(flagName: string): boolean {
+  return (
+    featureFlagNames.includes(flagName as FeatureFlagName) &&
+    adminOnlyFlags.includes(flagName as FeatureFlagName)
+  );
 }

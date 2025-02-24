@@ -18,7 +18,7 @@ import {
 } from "knex/types/tables";
 import { RemovalStatus } from "../../app/functions/universal/scanResult.js";
 import { CONST_DAY_MILLISECONDS } from "../../constants.ts";
-import { getQaCustomBrokers, getQaToggleRow } from "./qa_customs.ts";
+import { getAllMockedScanResults, getQaToggleRow } from "./qa_customs.ts";
 
 const knex = createDbConnection();
 
@@ -172,9 +172,7 @@ async function getLatestOnerepScanResults(
       showRealBrokers = qaToggles.show_real_brokers;
     }
 
-    const qaBrokers = !showCustomBrokers
-      ? []
-      : await getQaCustomBrokers(onerepProfileId, scan?.onerep_scan_id);
+    const qaBrokers = !showCustomBrokers ? [] : await getAllMockedScanResults();
     if (!showRealBrokers) {
       logger.info("get_latest_results_custom_brokers", {
         onerepProfileId,
@@ -195,7 +193,7 @@ async function getLatestOnerepScanResults(
         .innerJoin("onerep_scans as s", "sr.onerep_scan_id", "s.onerep_scan_id")
         .orderBy("link")
         .orderBy("onerep_scan_result_id", "desc")) as OnerepScanResultRow[];
-      results = [...scanResults, ...qaBrokers];
+      results = [...scanResults];
     }
   }
 
@@ -491,6 +489,39 @@ async function getScanResultsWithBroker(
   return { scan: scan ?? null, results: scanResults } as LatestOnerepScanData;
 }
 
+async function getMockedScanResults(
+  onerepProfileId: number | null,
+): Promise<LatestOnerepScanData> {
+  if (onerepProfileId === null) {
+    return {
+      scan: null,
+      results: [],
+    } as LatestOnerepScanData;
+  }
+
+  const scan = await getLatestOnerepScan(onerepProfileId);
+  const scanResults: OnerepScanResultDataBrokerRow[] | OnerepScanResultRow[] =
+    await getAllMockedScanResults();
+
+  return { scan: scan ?? null, results: scanResults } as LatestOnerepScanData;
+}
+
+async function getMockedScanResultsWithBrokerUnderMaintenance(): Promise<LatestOnerepScanData> {
+  let scanResults = (await knex("qa_custom_brokers")
+    .where("broker_status", "removal_under_maintenance")
+    .where("manually_resolved", false)
+    .select("*")) as OnerepScanResultDataBrokerRow[];
+
+  scanResults = scanResults.filter(
+    (result) =>
+      result.broker_status === "removal_under_maintenance" ||
+      new Date().getTime() - new Date(result.updated_at).getTime() >
+        CONST_DAY_MILLISECONDS * 200,
+  );
+
+  return { results: scanResults } as LatestOnerepScanData;
+}
+
 export {
   getAllScansForProfile,
   getLatestScanForProfileByReason,
@@ -510,6 +541,8 @@ export {
   getEmailForProfile,
   getScanResultsWithBrokerUnderMaintenance,
   getScanResultsWithBroker,
+  getMockedScanResults,
+  getMockedScanResultsWithBrokerUnderMaintenance,
   /** @deprecated This has been replaced by getScanResultsWithBroker */
   getLatestOnerepScanResults,
 };
