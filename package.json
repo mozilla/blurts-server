@@ -169,7 +169,7 @@
     "storybook": "^8.4.6",
     "stylelint": "^16.14.1",
     "stylelint-config-recommended-scss": "^14.1.0",
-    "stylelint-scss": "^6.11.0",
+    "stylelint-scss": "^6.11.1",
     "tsx": "^4.19.3",
     "typescript": "^5.7.3",
     "yaml": "^2.7.0"
