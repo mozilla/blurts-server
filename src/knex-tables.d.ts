@@ -367,7 +367,6 @@ declare module "knex/types/tables" {
   interface NotificationRow {
     id: number;
     notification_id?: string;
-    label: string;
     title: string;
     description: string;
     small_image_path: string;
@@ -377,6 +376,7 @@ declare module "knex/types/tables" {
     audience: string;
     created_at: Date;
     updated_at: Date;
+    label: string;
   }
 
   type NotificationAutoInsertedColumns =
