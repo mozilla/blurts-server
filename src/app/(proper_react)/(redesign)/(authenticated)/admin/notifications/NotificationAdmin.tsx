@@ -117,7 +117,12 @@ export const NotificationAdmin = ({ notifications }: Props) => {
         {activeNotification && (
           <div className={styles.previewModalWrapper}>
             <div className={styles.previewModal}>
-              <Image alt="Notification preview" src={""} />
+              <Image
+                alt="Notification preview"
+                width="500"
+                height="300"
+                src={`/images/${activeNotification.notification_id}/big.jpg`}
+              />
               <dl>
                 <dt>{activeNotification.title}</dt>
                 <dd>{activeNotification.description}</dd>
