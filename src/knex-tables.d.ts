@@ -364,6 +364,35 @@ declare module "knex/types/tables" {
     "id" | "created_at" | "modified_at"
   >;
 
+  interface NotificationRow {
+    id: number;
+    notification_id?: string;
+    label: string;
+    title: string;
+    description: string;
+    small_image_path: string;
+    big_image_path: string;
+    cta_label?: string;
+    cta_link?: string;
+    audience: string;
+    created_at: Date;
+    updated_at: Date;
+  }
+
+  type NotificationAutoInsertedColumns =
+    | "id"
+    | "created_at"
+    | "updated_at"
+    | "audience"
+    | "small_image_path"
+    | "big_image_path"
+    | "title"
+    | "description";
+  type NotificationOptionalColumns =
+    | "notification_id"
+    | "cta_label"
+    | "cta_link";
+
   /**
    * This modifies row types to indicate that dates can also be inserted as ISO
    * 8601 strings, not just Date objects (which will be returned on SELECT queries)
@@ -389,6 +418,22 @@ declare module "knex/types/tables" {
       WritableDateColumns<
         Partial<Omit<AttributionRow, "id" | "created_at">> &
           Pick<AttributionRow, "updated_at">
+      >
+    >;
+
+    notifications: Knex.CompositeTableType<
+      NotificationRow,
+      WritableDateColumns<
+        Omit<
+          NotificationRow,
+          NotificationAutoInsertedColumns | NotificationOptionalColumns
+        > &
+          Partial<Pick<NotificationRow, NotificationOptionalColumns>>
+      >,
+      // On updates, don't allow updating the ID and created date
+      WritableDateColumns<
+        Partial<Omit<NotificationRow, "id" | "created_at">> &
+          Pick<NotificationRow, "updated_at">
       >
     >;
 

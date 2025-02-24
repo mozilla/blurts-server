@@ -110,9 +110,6 @@ export const ExposuresFilter = ({
   // Status filter explainer dialog
   const exposureStatusExplainerDialogState = useOverlayTriggerState({
     onOpenChange: (isOpen) => {
-      /* c8 ignore next 3 */
-      // Since the Node 20.10 upgrade, it's been intermittently marking this
-      // (and this comment) as uncovered.
       recordTelemetry("popup", isOpen ? "view" : "exit", {
         popup_id: "exposure_status_info",
       });

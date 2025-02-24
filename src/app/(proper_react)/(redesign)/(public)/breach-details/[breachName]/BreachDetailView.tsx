@@ -117,7 +117,7 @@ export const BreachDetailsView = (props: Props) => {
               href={`https://${breach.Domain}`}
               eventData={{ link_id: breach.Domain }}
               target="_blank"
-              rel="noopener noreferrer"
+              rel="nofollow noopener noreferrer"
             >
               {breach.Domain}
             </TelemetryLink>
