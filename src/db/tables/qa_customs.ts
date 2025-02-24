@@ -2,7 +2,10 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { OnerepScanResultRow } from "knex/types/tables";
+import {
+  OnerepScanResultDataBrokerRow,
+  OnerepScanResultRow,
+} from "knex/types/tables";
 import { logger } from "../../app/functions/server/logging";
 import createDbConnection from "../connect";
 import { getOnerepProfileId } from "./subscribers";
@@ -112,28 +115,39 @@ async function getQaCustomBrokers(
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-async function addQaCustomBroker(brokerData: QaBrokerData): Promise<void> {
-  await knex("qa_custom_brokers").insert({
-    ...brokerData,
-    emails: JSON.stringify(brokerData.emails),
-    phones: JSON.stringify(brokerData.phones),
-    addresses: JSON.stringify(brokerData.addresses),
-    relatives: JSON.stringify(brokerData.relatives),
-  });
-  logger.info(`Created a custom broker: ${brokerData.data_broker}`);
+async function addQaCustomBroker(
+  brokerData: OnerepScanResultDataBrokerRow,
+): Promise<void> {
+  try {
+    await knex("qa_custom_brokers").insert({
+      ...brokerData,
+      emails: JSON.stringify(brokerData.emails),
+      phones: JSON.stringify(brokerData.phones),
+      addresses: JSON.stringify(brokerData.addresses),
+      relatives: JSON.stringify(brokerData.relatives),
+    });
+
+    logger.info(`Created a custom broker: ${brokerData.data_broker}`);
+  } catch {
+    logger.error(`Error creating custom broker: ${brokerData.data_broker}`);
+    throw new Error(
+      `Failed to insert broker data for ${brokerData.data_broker}`,
+    );
+  }
 }
 /* c8 ignore stop */
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-async function getAllQaCustomBrokers(
-  onerep_profile_id: number,
-): Promise<QaBrokerData[]> {
-  const res = (await knex("qa_custom_brokers")
-    .where("onerep_profile_id", onerep_profile_id)
-    .select("*")) as QaBrokerData[];
+async function getAllMockedScanResults(): Promise<
+  OnerepScanResultDataBrokerRow[]
+> {
+  const res = (await knex("qa_custom_brokers").select(
+    "*",
+  )) as OnerepScanResultDataBrokerRow[];
   return res;
 }
+/* c8 ignore stop */
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
@@ -319,7 +333,7 @@ async function createQaTogglesRow(
 export {
   getQaCustomBrokers,
   addQaCustomBroker,
-  getAllQaCustomBrokers,
+  getAllMockedScanResults,
   deleteQaCustomBrokerRow,
   setQaCustomBrokerStatus,
   markQaCustomBrokerAsResolved,
