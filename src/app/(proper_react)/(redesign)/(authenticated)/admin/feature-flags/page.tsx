@@ -8,6 +8,7 @@ import {
   FeatureFlagName,
   featureFlagNames,
   getAllFeatureFlags,
+  isFeatureFlagAdminOnly,
 } from "../../../../../../db/tables/featureFlags";
 import { isAdmin } from "../../../../../api/utils/auth";
 import { Toolbar } from "../../../../../components/client/toolbar/Toolbar";
@@ -77,11 +78,16 @@ export default async function FeatureFlagPage() {
         <div className={styles.flagList}>
           {disabledFlags.map((flagOrFlagName) => {
             return typeof flagOrFlagName === "string" ? (
-              <NewFlagEditor key={flagOrFlagName} flagName={flagOrFlagName} />
+              <NewFlagEditor
+                key={flagOrFlagName}
+                flagName={flagOrFlagName}
+                adminOnly={isFeatureFlagAdminOnly(flagOrFlagName)}
+              />
             ) : (
               <ExistingFlagEditor
                 key={flagOrFlagName.name}
                 flag={flagOrFlagName}
+                adminOnly={isFeatureFlagAdminOnly(flagOrFlagName.name)}
               />
             );
           })}
@@ -95,7 +101,11 @@ export default async function FeatureFlagPage() {
                 featureFlagNames.includes(flag.name as FeatureFlagName),
             )
             .map((flag) => (
-              <ExistingFlagEditor key={flag.name} flag={flag} />
+              <ExistingFlagEditor
+                key={flag.name}
+                flag={flag}
+                adminOnly={isFeatureFlagAdminOnly(flag.name)}
+              />
             ))}
         </div>
       </div>
