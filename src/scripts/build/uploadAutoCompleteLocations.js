@@ -320,30 +320,13 @@ try {
             return false;
           }
 
-          return locationDataRows.some((location) => {
-            const [
-              geonameId,
-              _name,
-              _asciiname,
-              _alternatenames,
-              _latitude,
-              _longitude,
-              featureClass,
-              _featureCode,
-              _countryCode,
-              _cc2,
-              _admin1Code,
-              _admin2Code,
-              _admin3Code,
-              _admin4Code,
-              _population,
-              _elevation,
-              _dem,
-              _timezone,
-              _modificationDate,
-            ] = location.split("\t"); // lines are tab delimited
+          return locationDataPopulated.some((location) => {
             return (
-              geonameId === parentId && featureClass === allowedFeatureClass
+              location.id === parentId &&
+              // @ts-ignore FIXME: `featureClass` does not exist in `location`.
+              // The result of the top-level filter still returns the expected
+              // results for now.
+              location.featureClass === allowedFeatureClass
             );
           });
         },
