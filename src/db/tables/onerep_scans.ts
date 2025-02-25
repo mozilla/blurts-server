@@ -172,7 +172,9 @@ async function getLatestOnerepScanResults(
       showRealBrokers = qaToggles.show_real_brokers;
     }
 
-    const qaBrokers = !showCustomBrokers ? [] : await getAllMockedScanResults();
+    const qaBrokers = !showCustomBrokers
+      ? []
+      : await getAllMockedScanResults(onerepProfileId);
     if (!showRealBrokers) {
       logger.info("get_latest_results_custom_brokers", {
         onerepProfileId,
@@ -501,7 +503,7 @@ async function getMockedScanResults(
 
   const scan = await getLatestOnerepScan(onerepProfileId);
   const scanResults: OnerepScanResultDataBrokerRow[] | OnerepScanResultRow[] =
-    await getAllMockedScanResults();
+    await getAllMockedScanResults(onerepProfileId);
 
   return { scan: scan ?? null, results: scanResults } as LatestOnerepScanData;
 }
