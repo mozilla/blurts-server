@@ -37,7 +37,7 @@ export default async function FeatureFlagPage() {
 
   const featureFlags =
     (await getAllFeatureFlags()).toSorted(
-      (flagA, flagB) => flagB.created_at.getTime() - flagA.created_at.getTime(),
+      (flagA, flagB) => flagB.updated_at.getTime() - flagA.updated_at.getTime(),
     ) ?? [];
 
   /**
