@@ -135,12 +135,13 @@ async function addQaCustomBroker(
   }
 }
 
-async function getAllMockedScanResults(): Promise<
-  OnerepScanResultDataBrokerRow[]
-> {
-  const res = (await knex("qa_custom_brokers").select(
-    "*",
-  )) as OnerepScanResultDataBrokerRow[];
+async function getAllMockedScanResults(
+  onerepScanId: number,
+): Promise<OnerepScanResultDataBrokerRow[]> {
+  const res = (await knex("qa_custom_brokers")
+    .select("*")
+    .where("onerep_scan_id", onerepScanId)) as OnerepScanResultDataBrokerRow[];
+
   return res;
 }
 

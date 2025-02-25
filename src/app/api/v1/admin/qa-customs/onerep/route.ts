@@ -17,6 +17,7 @@ import {
 } from "../../../../../../db/tables/qa_customs";
 import { getServerSession } from "../../../../../functions/server/getServerSession";
 import { OnerepScanResultDataBrokerRow } from "knex/types/tables";
+import { getOnerepProfileId } from "../../../../../../db/tables/subscribers";
 
 function successResponse() {
   return NextResponse.json(
@@ -54,7 +55,17 @@ export async function GET() {
   const prodErr = errorIfProduction();
   if (prodErr !== null) return prodErr;
 
-  return NextResponse.json(await getAllMockedScanResults());
+  const session = await getServerSession();
+  const email = session?.user.email;
+
+  const subscriberId = session?.user.subscriber?.id;
+  if (!session || !email || !subscriberId) return unauthError();
+
+  const onerepProfileId = await getOnerepProfileId(subscriberId);
+  if (!onerepProfileId)
+    return internalServerError("Unable to fetch OneRep profile ID");
+
+  return NextResponse.json(await getAllMockedScanResults(onerepProfileId));
 }
 
 export async function POST(req: NextRequest) {
@@ -85,6 +96,8 @@ export async function POST(req: NextRequest) {
   const scan_result_status = body.scan_result_status || "new";
   const broker_status = body.broker_status || "active";
   const url = "";
+  const onerep_scan_id = body.onerep_scan_id;
+  console.log("onerep_scan_id ", body.onerep_scan_id);
 
   const brokerData: OnerepScanResultDataBrokerRow = {
     link,
@@ -101,11 +114,11 @@ export async function POST(req: NextRequest) {
     manually_resolved,
     optout_attempts,
     last_optout_at,
-    scan_result_status: scan_result_status,
-    broker_status: broker_status,
-    url: url,
+    scan_result_status,
+    broker_status,
+    url,
     id: 0,
-    onerep_scan_id: 0,
+    onerep_scan_id,
     data_broker_id: 0,
     created_at: new Date(),
     updated_at: new Date(),
