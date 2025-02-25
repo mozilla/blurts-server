@@ -86,9 +86,12 @@ const OnerepConfigPage = ({
       | React.ChangeEvent<HTMLSelectElement>,
   ) => {
     const { name, value } = e.target;
+    const updatedValue =
+      name === "last_optout_at" ? (value ? new Date(value) : null) : value;
+
     setNewBroker({
       ...newBroker,
-      [name]: name === "manually_resolved" ? value === "true" : value,
+      [name]: name === "manually_resolved" ? value === "true" : updatedValue,
     });
   };
 
@@ -401,8 +404,12 @@ const OnerepConfigPage = ({
                   className={styles.input}
                   type="date"
                   name="last_optout_at"
-                  placeholder={new Date().toISOString().split("T")[0]}
-                  value={newBroker.last_optout_at?.toDateString()}
+                  // placeholder={new Date().toISOString().split("T")[0]}
+                  value={
+                    newBroker.last_optout_at
+                      ? newBroker.last_optout_at.toISOString().split("T")[0]
+                      : ""
+                  }
                   onChange={handleChange}
                 />
               </label>
