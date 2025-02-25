@@ -30,6 +30,10 @@
   background-color: tokens.$color-white;
   gap: tokens.$spacing-lg;
 
+  @media screen and (min-width: tokens.$screen-md) {
+    padding-inline: tokens.$layout-xl;
+  }
+
   h1 {
     font: tokens.$text-title-3xs;
   }
