@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 "use client";
-import { FeatureFlagRow } from "knex/types/tables";
+import { FeatureFlagViewRow } from "knex/types/tables";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import styles from "./FlagEditor.module.scss";
@@ -50,7 +50,7 @@ export const NewFlagEditor = (props: {
 };
 
 export const ExistingFlagEditor = (props: {
-  flag: FeatureFlagRow;
+  flag: FeatureFlagViewRow;
   adminOnly: boolean;
 }) => {
   return (
