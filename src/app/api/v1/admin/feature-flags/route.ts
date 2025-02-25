@@ -10,10 +10,20 @@ import {
   addFeatureFlag,
   enableFeatureFlagByName,
   disableFeatureFlagByName,
+  featureFlagNames,
+  getEnabledFeatureFlags,
 } from "../../../../../db/tables/featureFlags";
 
 import { isAdmin } from "../../../utils/auth";
 
+/**
+ * This API endpoint returns a list of all globally-enabled feature flag names by default.
+ * If an admin is signed in, it will return all data about all feature flags,
+ * regardless of whether they're enabled.
+ * (This latter functionality does not seem to be used anywhere, so maybe we
+ * should remove that for consistency? Or alternatively, move the non-admin
+ * functionality outside of the `/admin/` namespace?)
+ */
 export async function GET() {
   const session = await getServerSession();
   if (isAdmin(session?.user?.email || "")) {
@@ -25,7 +35,11 @@ export async function GET() {
       return NextResponse.json({ success: false }, { status: 500 });
     }
   } else {
-    return NextResponse.json({ success: false }, { status: 401 });
+    const flagNamesInDb = await getEnabledFeatureFlags({ isSignedOut: true });
+    const availableFlags = featureFlagNames;
+    return NextResponse.json(
+      availableFlags.filter((flag) => flagNamesInDb.indexOf(flag) !== -1),
+    );
   }
 }
 
