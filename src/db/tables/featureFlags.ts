@@ -22,8 +22,24 @@ export type FeatureFlag = {
 };
 
 /** @deprecated The method should not be used, use Nimbus experiment or roll-out: /src/app/functions/server/getExperiments */
-export async function getAllFeatureFlags() {
-  return await knex("feature_flag_view").select("*").orderBy("name");
+export async function getAllFeatureFlags(): Promise<
+  Array<
+    FeatureFlagViewRow & {
+      last_updated_by_subscriber_email: SubscriberRow["primary_email"];
+    }
+  >
+> {
+  return await knex("feature_flag_view")
+    .join(
+      "subscribers",
+      "subscribers.id",
+      "feature_flag_view.last_updated_by_subscriber_id",
+    )
+    .select(
+      "feature_flag_view.*",
+      "subscribers.primary_email as last_updated_by_subscriber_email",
+    )
+    .orderBy("feature_flag_view.name");
 }
 
 /** @deprecated The method should not be used, use Nimbus experiment or roll-out: /src/app/functions/server/getExperiments */

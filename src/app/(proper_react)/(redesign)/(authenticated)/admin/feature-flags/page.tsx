@@ -20,6 +20,10 @@ import {
 import { defaultExperimentData } from "../../../../../../telemetry/generated/nimbus/experiments";
 import { ExistingFlagEditor, NewFlagEditor } from "./components/FlagEditor";
 
+export const metadata = {
+  title: "Monitor Feature Flags",
+};
+
 export default async function FeatureFlagPage() {
   const session = await getServerSession();
 
