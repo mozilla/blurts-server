@@ -546,6 +546,8 @@ async function getScanResultsWithBroker(
 }
 /* c8 ignore stop */
 
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function getMockedScanResults(
   onerepProfileId: number | null,
 ): Promise<LatestOnerepScanData> {
@@ -562,7 +564,10 @@ async function getMockedScanResults(
 
   return { scan: scan ?? null, results: scanResults } as LatestOnerepScanData;
 }
+/* c8 ignore stop */
 
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function getMockedScanResultsWithBrokerUnderMaintenance(): Promise<LatestOnerepScanData> {
   let scanResults = (await knex("qa_custom_brokers")
     .where("broker_status", "removal_under_maintenance")
@@ -578,6 +583,7 @@ async function getMockedScanResultsWithBrokerUnderMaintenance(): Promise<LatestO
 
   return { results: scanResults } as LatestOnerepScanData;
 }
+/* c8 ignore stop */
 
 export {
   getAllScansForProfile,
