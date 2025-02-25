@@ -22,7 +22,6 @@ export default async function DevPage() {
   const profileIdNonExistent = async () => {
     if (!session?.user.subscriber) return true;
     const profileId = await getOnerepProfileId(session.user.subscriber.id);
-    console.log({ profileId });
     if (!profileId) return true;
     onerepProfileId = profileId;
     return false;
