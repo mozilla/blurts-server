@@ -160,7 +160,7 @@ async function getLatestOnerepScanResults(
 ): Promise<LatestOnerepScanDataOld> {
   const scan = await getLatestOnerepScan(onerepProfileId);
   let results: OnerepScanResultRow[] = [];
-  // Fetch initial results from onerep_scan_results
+
   const scanResults = (await knex("onerep_scan_results as sr")
     .select(
       "sr.*",

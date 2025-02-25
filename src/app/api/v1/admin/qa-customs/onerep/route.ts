@@ -97,7 +97,6 @@ export async function POST(req: NextRequest) {
   const broker_status = body.broker_status || "active";
   const url = "";
   const onerep_scan_id = body.onerep_scan_id;
-  console.log("onerep_scan_id ", body.onerep_scan_id);
 
   const brokerData: OnerepScanResultDataBrokerRow = {
     link,
