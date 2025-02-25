@@ -144,6 +144,7 @@ async function getAllMockedScanResults(
 
   const res = (await knex("qa_custom_brokers")
     .select("*")
+    // Using the onerep_scan_id  as a placeholder for the profile ID
     .where(
       "onerep_scan_id",
       onerepProfileId,
