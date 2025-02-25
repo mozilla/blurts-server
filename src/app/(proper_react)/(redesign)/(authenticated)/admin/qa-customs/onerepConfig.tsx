@@ -29,6 +29,7 @@ const OnerepConfigPage = ({
 }: Props) => {
   const [brokers, setBrokers] = useState<OnerepScanResultDataBrokerRow[]>([]);
   const [newBroker, setNewBroker] = useState<OnerepScanResultDataBrokerRow>({
+    // Using the onerep_scan_id  as a placeholder for the profile ID
     onerep_scan_id: onerepProfileId,
     link: "",
     age: 30,
@@ -69,8 +70,8 @@ const OnerepConfigPage = ({
   const fetchBrokers = async () => {
     setBrokersFetchHappened(false);
     try {
+      // Using the onerep_scan_id  as a placeholder for the profile ID
       const response = await fetch(
-        // Using the onerep_scan_id  as a placeholder for the profile ID
         `${endpointBase}?onerep_scan_id=${onerepProfileId}`,
       );
       const data = await response.json();
