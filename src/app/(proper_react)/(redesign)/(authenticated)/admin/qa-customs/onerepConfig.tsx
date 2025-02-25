@@ -10,7 +10,7 @@ import { OnerepScanResultDataBrokerRow } from "knex/types/tables";
 import { StateAbbr } from "../../../../../../utils/states";
 
 interface Props {
-  onerepScanId: number;
+  onerepProfileId: number;
   showApiBrokers: boolean;
   showQaBrokers: boolean;
   showApiParamEnum: string;
@@ -21,7 +21,7 @@ const endpointBase = "/api/v1/admin/qa-customs/onerep";
 const endpointToggleBase = "/api/v1/admin/qa-customs";
 
 const OnerepConfigPage = ({
-  onerepScanId,
+  onerepProfileId,
   showApiBrokers,
   showQaBrokers,
   showApiParamEnum,
@@ -29,7 +29,7 @@ const OnerepConfigPage = ({
 }: Props) => {
   const [brokers, setBrokers] = useState<OnerepScanResultDataBrokerRow[]>([]);
   const [newBroker, setNewBroker] = useState<OnerepScanResultDataBrokerRow>({
-    onerep_scan_id: onerepScanId,
+    onerep_scan_id: onerepProfileId,
     link: "",
     age: 30,
     data_broker: "",
@@ -70,7 +70,8 @@ const OnerepConfigPage = ({
     setBrokersFetchHappened(false);
     try {
       const response = await fetch(
-        `${endpointBase}?onerep_scan_id=${onerepScanId}`,
+        // Using the onerep_scan_id  as a placeholder for the profile ID
+        `${endpointBase}?onerep_scan_id=${onerepProfileId}`,
       );
       const data = await response.json();
       setBrokers(data);
@@ -100,7 +101,7 @@ const OnerepConfigPage = ({
 
     let hasError = false;
 
-    if (onerepScanId < 0) {
+    if (onerepProfileId < 0) {
       setErrors({ ...errors, profile_id: true });
       hasError = true;
     } else {
@@ -407,7 +408,6 @@ const OnerepConfigPage = ({
                   className={styles.input}
                   type="date"
                   name="last_optout_at"
-                  // placeholder={new Date().toISOString().split("T")[0]}
                   value={
                     newBroker.last_optout_at
                       ? newBroker.last_optout_at.toISOString().split("T")[0]

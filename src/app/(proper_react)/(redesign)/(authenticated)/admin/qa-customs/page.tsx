@@ -50,7 +50,7 @@ export default async function DevPage() {
         showQaParamEnum={AllowedToggleColumns.ShowCustomBreaches}
       />
       <OnerepConfigPage
-        onerepScanId={onerepProfileId}
+        onerepProfileId={onerepProfileId}
         showApiBrokers={existingRow.show_real_brokers}
         showQaBrokers={existingRow.show_custom_brokers}
         showApiParamEnum={AllowedToggleColumns.ShowRealBrokers}

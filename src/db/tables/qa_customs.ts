@@ -136,15 +136,18 @@ async function addQaCustomBroker(
 }
 
 async function getAllMockedScanResults(
-  onerepScanId: number | null,
+  onerepProfileId: number | null,
 ): Promise<OnerepScanResultDataBrokerRow[]> {
-  if (onerepScanId === null) {
-    logger.error(`onerepScanId not set`);
+  if (onerepProfileId === null) {
+    logger.error(`onerepProfileId not set`);
   }
 
   const res = (await knex("qa_custom_brokers")
     .select("*")
-    .where("onerep_scan_id", onerepScanId)) as OnerepScanResultDataBrokerRow[];
+    .where(
+      "onerep_scan_id",
+      onerepProfileId,
+    )) as OnerepScanResultDataBrokerRow[];
 
   return res;
 }
