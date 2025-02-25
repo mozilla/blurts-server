@@ -15,8 +15,8 @@ export async function up(knex) {
     UPDATE "onerep_profiles"
     SET "addresses" = jsonb_build_array(
       jsonb_build_object(
-        'city_name', "city_name",
-        'state_code', "state_code"
+        'city', "city_name",
+        'state', "state_code"
       )
     )
     WHERE "city_name" IS NOT NULL AND "state_code" IS NOT NULL;
@@ -40,8 +40,8 @@ export async function down(knex) {
 
   await knex.raw(`
     UPDATE "onerep_profiles"
-    SET "city_name" = COALESCE(("addresses"->0->>'city_name'), ''),
-        "state_code" = COALESCE(("addresses"->0->>'state_code'), '')
+    SET "city_name" = COALESCE(("addresses"->0->>'city'), ''),
+        "state_code" = COALESCE(("addresses"->0->>'state'), '')
     WHERE jsonb_array_length(COALESCE("addresses", '[]'::jsonb)) > 0;
   `);
 

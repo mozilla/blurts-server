@@ -14,8 +14,7 @@ const currentProfileDetails: OnerepProfileRow = {
   first_names: [],
   middle_names: [],
   last_names: [],
-  name_suffix: null,
-  addresses: [{ city_name: "City01", state_code: "NY" }],
+  addresses: [{ city: "City01", state: "NY" }],
   phone_numbers: ["8005553534"],
   date_of_birth: new Date(),
   created_at: new Date(),
@@ -29,7 +28,7 @@ const newProfileDetails: UpdateableProfileDetails = {
   first_names: [],
   middle_names: [],
   last_names: [],
-  addresses: [{ city_name: "City01", state_code: "NY" }],
+  addresses: [{ city: "City01", state: "NY" }],
   phone_numbers: ["8005553534"],
 };
 
@@ -127,17 +126,17 @@ describe("Update broker scan profile", () => {
       await updateDataBrokerScanProfile(5678, {
         ...newProfileDetails,
         addresses: [
-          { city_name: "City01", state_code: "NY" },
-          { city_name: "City02", state_code: "NY" },
-          { city_name: "City03", state_code: "NY" },
-          { city_name: "City04", state_code: "NY" },
-          { city_name: "City05", state_code: "NY" },
-          { city_name: "City06", state_code: "NY" },
-          { city_name: "City07", state_code: "NY" },
-          { city_name: "City08", state_code: "NY" },
-          { city_name: "City09", state_code: "NY" },
-          { city_name: "City10", state_code: "NY" },
-          { city_name: "City11", state_code: "NY" },
+          { city: "City01", state: "NY" },
+          { city: "City02", state: "NY" },
+          { city: "City03", state: "NY" },
+          { city: "City04", state: "NY" },
+          { city: "City05", state: "NY" },
+          { city: "City06", state: "NY" },
+          { city: "City07", state: "NY" },
+          { city: "City08", state: "NY" },
+          { city: "City09", state: "NY" },
+          { city: "City10", state: "NY" },
+          { city: "City11", state: "NY" },
         ],
       });
     }).rejects.toThrow("Profile details are exceeding limit");
@@ -156,8 +155,8 @@ describe("Update broker scan profile", () => {
       await updateDataBrokerScanProfile(5678, {
         ...newProfileDetails,
         // @ts-ignore The entry `birth_date` is not part of the type
-        // `UpdateableProfileDetails`. It is being passed here anyway to validate
-        // that only valid values are considered during runtime.
+        // `UpdateableProfileDetails`. It is being passed here anyway in order
+        // to validate that only valid values are being considered at runtime.
         birth_date: new Date(),
       });
     }).rejects.toThrow("Passed invalid profile detail: birth_date");

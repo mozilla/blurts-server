@@ -94,10 +94,7 @@ async function updateDataBrokerScanProfile(
     phone_numbers: phone_numbers.map((number) => ({
       number,
     })),
-    addresses: addresses.map(({ city_name, state_code }) => ({
-      city: city_name,
-      state: state_code,
-    })),
+    addresses,
     birth_date: currentProfileData.date_of_birth.toISOString().split("T")[0],
   };
   await updateProfile(onerepProfileId, remoteProfileData);

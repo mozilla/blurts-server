@@ -313,8 +313,8 @@ declare module "knex/types/tables" {
   >;
 
   type OnerepProfileAddress = {
-    city_name: string;
-    state_code: StateAbbr;
+    city: string;
+    state: StateAbbr;
   };
 
   interface OnerepProfileRow {
@@ -332,11 +332,11 @@ declare module "knex/types/tables" {
     created_at: Date;
     updated_at: Date;
     /** @deprecated Please use `addresses` instead. */
-    city_name?: OnerepProfileAddress["city"];
+    city_name?: never;
     /** @deprecated Please use `addresses` instead. */
-    state_code?: OnerepProfileAddress["state"];
+    state_code?: never;
     /** @deprecated The field `name_suffix` is not used at the the moment. */
-    name_suffix: null | string;
+    name_suffix?: never;
   }
   type OnerepProfileOptionalColumns = Extract<
     keyof OnerepProfileRow,

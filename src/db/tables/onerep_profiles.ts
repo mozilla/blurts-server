@@ -21,7 +21,6 @@ export async function setProfileDetails(
     middle_name,
     name_suffix,
   } = profileData;
-  const { city: city_name, state: state_code } = addresses[0];
   const optionalProfileData = {
     ...(typeof middle_name !== "undefined" && { middle_name }),
     ...(typeof name_suffix !== "undefined" && { name_suffix }),
@@ -31,8 +30,8 @@ export async function setProfileDetails(
     onerep_profile_id: onerepProfileId,
     first_name,
     last_name,
-    city_name,
-    state_code,
+    // @ts-ignore The `addresses` column has the type jsonb.
+    addresses: JSON.stringify(addresses),
     // TODO: MNTOR-2157 Validate input:
     date_of_birth: parseIso8601Datetime(birth_date as string)!,
     // @ts-ignore knex.fn.now() results in it being set to a date,
