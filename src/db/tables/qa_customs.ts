@@ -142,6 +142,7 @@ async function getAllMockedScanResults(
     logger.error(`onerepProfileId not set`);
   }
 
+  // TODO: MNTOR-4153 use onerep_profile_id instead
   // Using the onerep_scan_id  as a placeholder for the profile ID
   const res = (await knex("qa_custom_brokers")
     .select("*")

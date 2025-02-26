@@ -29,6 +29,7 @@ const OnerepConfigPage = ({
 }: Props) => {
   const [brokers, setBrokers] = useState<OnerepScanResultDataBrokerRow[]>([]);
   const [newBroker, setNewBroker] = useState<OnerepScanResultDataBrokerRow>({
+    // TODO: MNTOR-4153 use onerep_profile_id instead
     // Using the onerep_scan_id  as a placeholder for the profile ID
     onerep_scan_id: onerepProfileId,
     link: "",
@@ -70,6 +71,7 @@ const OnerepConfigPage = ({
   const fetchBrokers = async () => {
     setBrokersFetchHappened(false);
     try {
+      // TODO: MNTOR-4153 use onerep_profile_id instead
       // Using the onerep_scan_id  as a placeholder for the profile ID
       const response = await fetch(
         `${endpointBase}?onerep_scan_id=${onerepProfileId}`,
