@@ -21,6 +21,7 @@ export async function setProfileDetails(
     middle_name,
     name_suffix,
   } = profileData;
+  const { city, state } = addresses[0];
   const optionalProfileData = {
     ...(typeof middle_name !== "undefined" && { middle_name }),
     ...(typeof name_suffix !== "undefined" && { name_suffix }),
@@ -30,6 +31,8 @@ export async function setProfileDetails(
     onerep_profile_id: onerepProfileId,
     first_name,
     last_name,
+    city_name: city,
+    state_code: state,
     // @ts-ignore The `addresses` column has the type jsonb.
     addresses: JSON.stringify(addresses),
     // TODO: MNTOR-2157 Validate input:

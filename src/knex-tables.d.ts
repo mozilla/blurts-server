@@ -331,10 +331,12 @@ declare module "knex/types/tables" {
     date_of_birth: Date;
     created_at: Date;
     updated_at: Date;
+    // For backwards compatibility reasons we are keeping `city_name` and
+    // `state_code` until MNTOR-3567 is implemented and enabled by default.
     /** @deprecated Please use `addresses` instead. */
-    city_name?: never;
+    city_name: string;
     /** @deprecated Please use `addresses` instead. */
-    state_code?: never;
+    state_code: StateAbbr;
     /** @deprecated The field `name_suffix` is not used at the the moment. */
     name_suffix?: never;
   }

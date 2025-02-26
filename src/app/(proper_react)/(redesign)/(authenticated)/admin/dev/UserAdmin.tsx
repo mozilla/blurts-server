@@ -18,6 +18,7 @@ import { OnerepProfileRow, UpdateableProfileDetails } from "knex/types/tables";
 import { ShowProfileResponse } from "../../../../../functions/server/onerep";
 import { InputField } from "../../../../../components/client/InputField";
 import { CONST_DATA_BROKER_PROFILE_DETAIL_ALLOW_LIST } from "../../../../../../constants";
+import { FeatureFlagName } from "../../../../../../db/tables/featureFlags";
 
 const DataTable = ({
   header,
@@ -48,10 +49,12 @@ const DataTable = ({
 
 const ProfileDataInputs = ({
   data,
+  isEnabled,
   onChange,
   onError,
 }: {
   data: OnerepProfileRow;
+  isEnabled: boolean;
   onChange: (values: UpdateableProfileDetails) => void;
   onError: (error: string) => void;
 }) => {
@@ -82,6 +85,7 @@ const ProfileDataInputs = ({
             <InputField
               key={key}
               value={dataValue}
+              isDisabled={!isEnabled}
               onChange={(value) => {
                 const updatedProfileData = {
                   ...editableProfileData,
@@ -122,7 +126,11 @@ const ProfileDataInputs = ({
   );
 };
 
-export const UserAdmin = () => {
+export const UserAdmin = ({
+  enabledFeatureFlags,
+}: {
+  enabledFeatureFlags: FeatureFlagName[];
+}) => {
   const session = useSession();
   const [isLoading, setIsLoading] = useState(false);
   const [emailInput, setEmailInput] = useState("");
@@ -210,6 +218,10 @@ export const UserAdmin = () => {
   const updateProfileAction = async (
     updatedProfileData: UpdateableProfileDetails,
   ) => {
+    if (!enabledFeatureFlags.includes("EditScanProfileDetails")) {
+      return;
+    }
+
     try {
       if (subscriberData?.onerepProfileId) {
         await updateOnerepProfile(
@@ -311,6 +323,9 @@ export const UserAdmin = () => {
               </div>
               <ProfileDataInputs
                 data={onerepProfileData.local}
+                isEnabled={enabledFeatureFlags.includes(
+                  "EditScanProfileDetails",
+                )}
                 onChange={(updatedProfileData) => {
                   void updateProfileAction(updatedProfileData);
                 }}
