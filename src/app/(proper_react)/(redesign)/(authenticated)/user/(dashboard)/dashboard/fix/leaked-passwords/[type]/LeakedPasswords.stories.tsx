@@ -15,6 +15,7 @@ import {
   leakedPasswordTypes,
 } from "../leakedPasswordsData";
 import { BreachDataTypes } from "../../../../../../../../../functions/universal/breach";
+import { defaultExperimentData } from "../../../../../../../../../../telemetry/generated/nimbus/experiments";
 
 const user = createUserWithPremiumSubscription();
 
@@ -70,6 +71,7 @@ const LeakedPasswordsWrapper = (props: {
       nonce=""
       countryCode="nl"
       enabledFeatureFlags={[]}
+      experimentData={defaultExperimentData["Features"]}
     >
       <LeakedPasswordsLayout
         subscriberEmails={[]}

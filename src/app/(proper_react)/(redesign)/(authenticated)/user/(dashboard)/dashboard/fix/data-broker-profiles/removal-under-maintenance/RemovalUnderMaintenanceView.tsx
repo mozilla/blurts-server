@@ -18,6 +18,7 @@ import React, { useState } from "react";
 import {
   BackArrow,
   ClockIcon,
+  OpenInNew,
 } from "../../../../../../../../../components/server/Icons";
 import { LatestOnerepScanData } from "../../../../../../../../../../db/tables/onerep_scans";
 import { ExposureCardDataClassLayout } from "../../../../../../../../../components/client/exposure_card/ExposureCardDataClass";
@@ -176,10 +177,17 @@ export const RemovalUnderMaintenanceView = (props: Props) => {
               button_id: `go_to_${firstScanResultNotResolved.data_broker}_link_to_get_started`,
             },
           }}
+          target="_blank"
+          rel="noopener noreferrer"
         >
           {l10n.getString(
             "data-broker-removal-maintenance-cta-go-to-data-broker",
           )}
+          <OpenInNew
+            alt={l10n.getString("open-in-new-tab-alt")}
+            width="13"
+            height="13"
+          />
         </TelemetryButton>
         <TelemetryButton
           variant="secondary"
@@ -218,6 +226,7 @@ export const RemovalUnderMaintenanceView = (props: Props) => {
               <TelemetryLink
                 href={firstScanResultNotResolved.link}
                 target="_blank"
+                rel="noopener noreferrer"
                 eventData={{
                   link_id: `go_to_${firstScanResultNotResolved.data_broker}_link`,
                 }}

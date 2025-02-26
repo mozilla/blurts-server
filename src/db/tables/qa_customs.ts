@@ -139,12 +139,22 @@ async function addQaCustomBroker(
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-async function getAllMockedScanResults(): Promise<
-  OnerepScanResultDataBrokerRow[]
-> {
-  const res = (await knex("qa_custom_brokers").select(
-    "*",
-  )) as OnerepScanResultDataBrokerRow[];
+async function getAllMockedScanResults(
+  onerepProfileId: number | null,
+): Promise<OnerepScanResultDataBrokerRow[]> {
+  if (onerepProfileId === null) {
+    logger.error(`onerepProfileId not set`);
+  }
+
+  // TODO: MNTOR-4153 use onerep_profile_id instead
+  // Using the onerep_scan_id  as a placeholder for the profile ID
+  const res = (await knex("qa_custom_brokers")
+    .select("*")
+    .where(
+      "onerep_scan_id",
+      onerepProfileId,
+    )) as OnerepScanResultDataBrokerRow[];
+
   return res;
 }
 /* c8 ignore stop */

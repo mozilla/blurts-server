@@ -18,6 +18,6 @@ export function up(knex) {
  */
 export function down(knex) {
   return knex.schema.table("subscribers", (table) => {
-    table.dropUnique("onerep_profile_id");
+    table.dropUnique(["onerep_profile_id"]);
   });
 }

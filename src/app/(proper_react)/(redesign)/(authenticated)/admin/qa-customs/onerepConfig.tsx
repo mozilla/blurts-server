@@ -29,6 +29,9 @@ const OnerepConfigPage = ({
 }: Props) => {
   const [brokers, setBrokers] = useState<OnerepScanResultDataBrokerRow[]>([]);
   const [newBroker, setNewBroker] = useState<OnerepScanResultDataBrokerRow>({
+    // TODO: MNTOR-4153 use onerep_profile_id instead
+    // Using the onerep_scan_id  as a placeholder for the profile ID
+    onerep_scan_id: onerepProfileId,
     link: "",
     age: 30,
     data_broker: "",
@@ -46,7 +49,6 @@ const OnerepConfigPage = ({
     url: "",
     id: 0,
     onerep_scan_result_id: Math.floor(Math.random() * 2147483647),
-    onerep_scan_id: 0,
     data_broker_id: 0,
     created_at: new Date(),
     updated_at: new Date(),
@@ -69,8 +71,10 @@ const OnerepConfigPage = ({
   const fetchBrokers = async () => {
     setBrokersFetchHappened(false);
     try {
+      // TODO: MNTOR-4153 use onerep_profile_id instead
+      // Using the onerep_scan_id  as a placeholder for the profile ID
       const response = await fetch(
-        `${endpointBase}?onerep_scan_result_id=${onerepProfileId}`,
+        `${endpointBase}?onerep_scan_id=${onerepProfileId}`,
       );
       const data = await response.json();
       setBrokers(data);
@@ -86,9 +90,12 @@ const OnerepConfigPage = ({
       | React.ChangeEvent<HTMLSelectElement>,
   ) => {
     const { name, value } = e.target;
+    const updatedValue =
+      name === "last_optout_at" ? (value ? new Date(value) : null) : value;
+
     setNewBroker({
       ...newBroker,
-      [name]: name === "manually_resolved" ? value === "true" : value,
+      [name]: name === "manually_resolved" ? value === "true" : updatedValue,
     });
   };
 
@@ -361,6 +368,9 @@ const OnerepConfigPage = ({
                   <option value="new">New</option>
                   <option value="optout_in_progress">In Progress</option>
                   <option value="removed">Removed</option>
+                  <option value="waiting_for_verification">
+                    Requested Removal
+                  </option>
                 </select>
               </label>
 
@@ -401,8 +411,11 @@ const OnerepConfigPage = ({
                   className={styles.input}
                   type="date"
                   name="last_optout_at"
-                  placeholder={new Date().toISOString().split("T")[0]}
-                  value={newBroker.last_optout_at?.toDateString()}
+                  value={
+                    newBroker.last_optout_at
+                      ? newBroker.last_optout_at.toISOString().split("T")[0]
+                      : ""
+                  }
                   onChange={handleChange}
                 />
               </label>

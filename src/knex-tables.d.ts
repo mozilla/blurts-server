@@ -337,8 +337,6 @@ declare module "knex/types/tables" {
     city_name: string;
     /** @deprecated Please use `addresses` instead. */
     state_code: StateAbbr;
-    /** @deprecated The field `name_suffix` is not used at the the moment. */
-    name_suffix?: never;
   }
   type OnerepProfileOptionalColumns = Extract<
     keyof OnerepProfileRow,

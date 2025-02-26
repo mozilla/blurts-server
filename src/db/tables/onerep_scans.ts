@@ -18,7 +18,7 @@ import {
 } from "knex/types/tables";
 import { RemovalStatus } from "../../app/functions/universal/scanResult.js";
 import { CONST_DAY_MILLISECONDS } from "../../constants.ts";
-import { getAllMockedScanResults, getQaToggleRow } from "./qa_customs.ts";
+import { getAllMockedScanResults } from "./qa_customs.ts";
 
 const knex = createDbConnection();
 
@@ -176,43 +176,20 @@ async function getLatestOnerepScanResults(
   onerepProfileId: number | null,
 ): Promise<LatestOnerepScanDataOld> {
   const scan = await getLatestOnerepScan(onerepProfileId);
-
   let results: OnerepScanResultRow[] = [];
 
-  if (scan !== null) {
-    const qaToggles = await getQaToggleRow(onerepProfileId);
-    let showCustomBrokers = false;
-    let showRealBrokers = true;
-
-    if (qaToggles) {
-      showCustomBrokers = qaToggles.show_custom_brokers;
-      showRealBrokers = qaToggles.show_real_brokers;
-    }
-
-    const qaBrokers = !showCustomBrokers ? [] : await getAllMockedScanResults();
-    if (!showRealBrokers) {
-      logger.info("get_latest_results_custom_brokers", {
-        onerepProfileId,
-        onerepScanId: scan?.onerep_scan_id,
-        qaBrokers,
-      });
-      results = qaBrokers;
-    } else {
-      // Fetch initial results from onerep_scan_results
-      const scanResults = (await knex("onerep_scan_results as sr")
-        .select(
-          "sr.*",
-          "s.created_at as scan_created_at",
-          "s.updated_at as scan_updated_at",
-        )
-        .distinctOn("link")
-        .where("onerep_profile_id", onerepProfileId)
-        .innerJoin("onerep_scans as s", "sr.onerep_scan_id", "s.onerep_scan_id")
-        .orderBy("link")
-        .orderBy("onerep_scan_result_id", "desc")) as OnerepScanResultRow[];
-      results = [...scanResults];
-    }
-  }
+  const scanResults = (await knex("onerep_scan_results as sr")
+    .select(
+      "sr.*",
+      "s.created_at as scan_created_at",
+      "s.updated_at as scan_updated_at",
+    )
+    .distinctOn("link")
+    .where("onerep_profile_id", onerepProfileId)
+    .innerJoin("onerep_scans as s", "sr.onerep_scan_id", "s.onerep_scan_id")
+    .orderBy("link")
+    .orderBy("onerep_scan_result_id", "desc")) as OnerepScanResultRow[];
+  results = [...scanResults];
 
   return {
     scan: scan ?? null,
@@ -560,7 +537,7 @@ async function getMockedScanResults(
 
   const scan = await getLatestOnerepScan(onerepProfileId);
   const scanResults: OnerepScanResultDataBrokerRow[] | OnerepScanResultRow[] =
-    await getAllMockedScanResults();
+    await getAllMockedScanResults(onerepProfileId);
 
   return { scan: scan ?? null, results: scanResults } as LatestOnerepScanData;
 }
@@ -568,10 +545,20 @@ async function getMockedScanResults(
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-async function getMockedScanResultsWithBrokerUnderMaintenance(): Promise<LatestOnerepScanData> {
+async function getMockedScanResultsWithBrokerUnderMaintenance(
+  onerepProfileId: number | null,
+): Promise<LatestOnerepScanData> {
+  if (onerepProfileId === null) {
+    return {
+      scan: null,
+      results: [],
+    } as LatestOnerepScanData;
+  }
+
   let scanResults = (await knex("qa_custom_brokers")
     .where("broker_status", "removal_under_maintenance")
     .where("manually_resolved", false)
+    .where("onerep_scan_id", onerepProfileId)
     .select("*")) as OnerepScanResultDataBrokerRow[];
 
   scanResults = scanResults.filter(

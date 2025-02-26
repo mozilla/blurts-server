@@ -8,7 +8,12 @@ import * as Sentry from "@sentry/nextjs";
 import NextError from "next/error";
 import { useEffect } from "react";
 
-export default function GlobalError({ error }) {
+/**
+ * @param {Object} props
+ * @param {Error} props.error - The error object
+ * @param {number} props.statusCode - HTTP error status code (default: 500)
+ */
+export default function GlobalError({ error, statusCode = 500 }) {
   useEffect(() => {
     Sentry.captureException(error);
   }, [error]);
@@ -17,7 +22,7 @@ export default function GlobalError({ error }) {
     <html>
       <body>
         {/* This is the default Next.js error component. */}
-        <NextError />
+        <NextError statusCode={statusCode} />
       </body>
     </html>
   );

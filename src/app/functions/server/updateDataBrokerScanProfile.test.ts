@@ -14,6 +14,8 @@ const currentProfileDetails: OnerepProfileRow = {
   first_names: [],
   middle_names: [],
   last_names: [],
+  city_name: "City01",
+  state_code: "NY",
   addresses: [{ city: "City01", state: "NY" }],
   phone_numbers: ["8005553534"],
   date_of_birth: new Date(),
