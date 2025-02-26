@@ -1,4 +1,4 @@
-@use "../../../tokens";
+@use "../../../../../tokens";
 
 .wrapper {
   align-items: center;
@@ -7,12 +7,12 @@
   gap: tokens.$spacing-md;
   padding-bottom: tokens.$spacing-md;
   width: 100%;
-}
 
-.signInButton {
-  display: block;
+  .signInButton {
+    display: block;
 
-  @media screen and (min-width: tokens.$screen-sm) {
-    display: none;
+    @media screen and (min-width: tokens.$screen-sm) {
+      display: none;
+    }
   }
 }

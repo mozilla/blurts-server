@@ -14,9 +14,8 @@
 import { post } from "k6/http";
 import crypto from "k6/crypto";
 
-// k6 exposes environment variables via the __ENV variable:
+// @ts-ignore: k6 exposes environment variables via the __ENV variable:
 // https://grafana.com/docs/k6/latest/using-k6/environment-variables/
-/** @type {typeof process.env} */
 const envVars = __ENV;
 
 const HIBP_NOTIFY_TOKEN = envVars.HIBP_NOTIFY_TOKEN;
@@ -48,7 +47,7 @@ const mockedBreachedEmailHash =
 
 export const run = () => {
   /** @type {import("../../app/api/v1/hibp/notify/route").PostHibpNotificationRequestBody} */
-  let data = {
+  const data = {
     breachName: "ApexSMS",
     // NOTE: modify this hash range if you want to receive email to specific test account(s).
     // This example should only email an address that is a sha1 hash for 1c48923da9f6f17165711712d11bc104087444cc.
@@ -58,7 +57,7 @@ export const run = () => {
   };
 
   // Using a JSON string as body
-  let res = post(url, JSON.stringify(data), {
+  const res = post(url, JSON.stringify(data), {
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${HIBP_NOTIFY_TOKEN}`,
@@ -67,11 +66,12 @@ export const run = () => {
 
   try {
     const result = res.json();
+    // @ts-ignore TODO: Add `PostHibpNotificationResponseBody` type to `src/app/api/v1/hibp/notify/route`, and use it.
     if (result.success !== true) {
       throw new Error(`Non-success result: ${JSON.stringify(result)}`);
     }
   } catch {
-    throw new Error(`Failed to parse result: ${res.status}, ${res.text}`);
+    throw new Error(`Failed to parse result: ${res.status}`);
   }
 };
 export default run;

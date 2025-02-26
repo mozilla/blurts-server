@@ -15,6 +15,7 @@ import {
   securityRecommendationTypes,
 } from "../securityRecommendationsData";
 import { BreachDataTypes } from "../../../../../../../../../functions/universal/breach";
+import { defaultExperimentData } from "../../../../../../../../../../telemetry/generated/nimbus/experiments";
 
 const mockedBreaches = [...Array(5)].map(() => createRandomBreach());
 // Ensure all security recommendation data breaches are present in at least one breach:
@@ -48,6 +49,7 @@ const SecurityRecommendationsWrapper = (props: {
       nonce=""
       countryCode="nl"
       enabledFeatureFlags={[]}
+      experimentData={defaultExperimentData["Features"]}
     >
       <SecurityRecommendationsLayout
         subscriberEmails={[]}

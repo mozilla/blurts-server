@@ -2,11 +2,15 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+/**
+ * @param { import("knex").Knex } knex
+ * @returns { Promise<void> }
+ */
 export function up(knex) {
   return knex.schema.createTable("feature_flags", (table) => {
     table.string("name").primary().unique();
     table.boolean("is_enabled").defaultTo(false);
-    table.text("description").default("");
+    table.text("description").defaultTo("");
     table.specificType("dependencies", "character varying(255)[]");
     table.specificType("allow_list", "character varying(255)[]");
     table.specificType("wait_list", "character varying(255)[]");
@@ -17,7 +21,10 @@ export function up(knex) {
     table.string("owner");
   });
 }
-
+/**
+ * @param { import("knex").Knex } knex
+ * @returns { Promise<void> }
+ */
 export function down(knex) {
   return knex.schema.dropTableIfExists("feature_flags");
 }

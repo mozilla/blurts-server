@@ -26,9 +26,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: tokens.$spacing-lg tokens.$layout-xl;
+  padding: tokens.$spacing-lg tokens.$spacing-md;
   background-color: tokens.$color-white;
   gap: tokens.$spacing-lg;
+
+  @media screen and (min-width: tokens.$screen-md) {
+    padding-inline: tokens.$layout-xl;
+  }
 
   h1 {
     font: tokens.$text-title-3xs;

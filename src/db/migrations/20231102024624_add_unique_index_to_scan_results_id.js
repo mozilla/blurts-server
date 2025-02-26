@@ -24,6 +24,6 @@ export async function up(knex) {
  */
 export function down(knex) {
   return knex.schema.table("onerep_scan_results", (table) => {
-    table.dropUnique("onerep_scan_result_id");
+    table.dropUnique(["onerep_scan_result_id"]);
   });
 }
