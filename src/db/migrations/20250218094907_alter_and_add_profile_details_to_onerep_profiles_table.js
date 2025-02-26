@@ -6,8 +6,8 @@
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
-export function up(knex) {
-  return knex.schema.alterTable("onerep_profiles", async (table) => {
+export async function up(knex) {
+  await knex.schema.alterTable("onerep_profiles", (table) => {
     table
       .specificType("first_names", "character varying(255)[]")
       .notNullable()
@@ -25,33 +25,33 @@ export function up(knex) {
       .notNullable()
       .defaultTo(knex.raw(`ARRAY[]::character varying(255)[]`));
     table.jsonb("addresses").notNullable().defaultTo("[]");
-
-    await knex.raw(`
-      UPDATE "onerep_profiles"
-      SET "addresses" = jsonb_build_array(
-        jsonb_build_object(
-          'city', "city_name",
-          'state', "state_code"
-        )
-      )
-      WHERE "city_name" IS NOT NULL AND "state_code" IS NOT NULL;
-    `);
   });
+
+  await knex.raw(`
+    UPDATE "onerep_profiles"
+    SET "addresses" = jsonb_build_array(
+      jsonb_build_object(
+        'city', "city_name",
+        'state', "state_code"
+      )
+    )
+    WHERE "city_name" IS NOT NULL AND "state_code" IS NOT NULL;
+  `);
 }
 
 /**
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
-export function down(knex) {
-  return knex.schema.alterTable("onerep_profiles", async (table) => {
-    await knex.raw(`
-      UPDATE "onerep_profiles"
-      SET "city_name" = COALESCE(("addresses"->0->>'city'), ''),
-          "state_code" = COALESCE(("addresses"->0->>'state'), '')
-      WHERE jsonb_array_length(COALESCE("addresses", '[]'::jsonb)) > 0;
-    `);
+export async function down(knex) {
+  await knex.raw(`
+    UPDATE "onerep_profiles"
+    SET "city_name" = COALESCE(("addresses"->0->>'city'), ''),
+        "state_code" = COALESCE(("addresses"->0->>'state'), '')
+    WHERE jsonb_array_length(COALESCE("addresses", '[]'::jsonb)) > 0;
+  `);
 
+  await knex.schema.alterTable("onerep_profiles", (table) => {
     table.dropColumns(
       "first_names",
       "last_names",
