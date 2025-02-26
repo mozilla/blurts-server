@@ -48,7 +48,7 @@ export default async function RemovalUnderMaintenance() {
     process.env.NODE_ENV !== "production";
 
   const scanResultsWithRemovalUnderMaintenance = useMockedScans
-    ? await getMockedScanResultsWithBrokerUnderMaintenance()
+    ? await getMockedScanResultsWithBrokerUnderMaintenance(profileId)
     : await getScanResultsWithBrokerUnderMaintenance(profileId);
 
   const scanResults = useMockedScans
