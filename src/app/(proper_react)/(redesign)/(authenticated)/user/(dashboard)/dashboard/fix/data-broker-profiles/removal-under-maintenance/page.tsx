@@ -45,7 +45,7 @@ export default async function RemovalUnderMaintenance() {
   const profileId = await getOnerepProfileId(session.user.subscriber.id);
   const useMockedScans =
     enabledFeatureFlags.includes("CustomDataBrokers") &&
-    process.env.NODE_ENV !== "production";
+    process.env.APP_ENV !== "production";
 
   const scanResultsWithRemovalUnderMaintenance = useMockedScans
     ? await getMockedScanResultsWithBrokerUnderMaintenance(profileId)
