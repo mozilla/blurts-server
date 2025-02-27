@@ -9,7 +9,7 @@ import {
   getL10n,
   getL10nBundles,
 } from "../../../../../functions/l10n/serverComponents";
-import { Shell } from "../../../Shell";
+import { Shell } from "../../../Shell/Shell";
 import { headers } from "next/headers";
 import { AutoSignIn } from "../../../../../components/client/AutoSignIn";
 import { getCountryCode } from "../../../../../functions/server/getCountryCode";
