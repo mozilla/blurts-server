@@ -8,15 +8,29 @@ import { useEffect, useState } from "react";
 import styles from "./NotificationAdmin.module.scss";
 import Image from "next/image";
 import { NotificationRow } from "knex/types/tables";
+import NotificationModal from "./NotificationModal";
 
 type Props = {
   notifications: NotificationRow[];
 };
 
-export const NotificationAdmin = ({ notifications }: Props) => {
+export const NotificationAdmin = (props: Props) => {
   const [activeNotificationId, setActiveNotificationId] = useState<
     number | null
-  >(notifications[0]?.id || null);
+  >(props.notifications[0]?.id || null);
+
+  // State for controlling modal visibility
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+
+  // State for storing notifications
+  const [notifications, setNotifications] = useState<NotificationRow[]>(
+    props.notifications,
+  );
+
+  // Handler for adding a new notification
+  const handleAddNotification = (newNotification: NotificationRow): void => {
+    setNotifications([...notifications, newNotification]);
+  };
 
   // Handle selecting a notification
   const handleClick = (notificationId: number) => {
@@ -63,6 +77,12 @@ export const NotificationAdmin = ({ notifications }: Props) => {
                 </div>
               </li>
             ))}
+            <button
+              className={styles.addButton}
+              onClick={() => setIsModalOpen(true)}
+            >
+              Add new notification
+            </button>
           </ul>
         </div>
 
@@ -134,6 +154,13 @@ export const NotificationAdmin = ({ notifications }: Props) => {
           </div>
         )}
       </div>
+
+      {/* Include the modal component, passing required props */}
+      <NotificationModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onAddNotification={handleAddNotification}
+      />
     </div>
   );
 };

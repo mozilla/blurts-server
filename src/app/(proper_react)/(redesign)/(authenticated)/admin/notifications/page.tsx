@@ -19,6 +19,7 @@ export default async function DevPage() {
     return notFound();
   }
 
+  console.log(session);
   const notifications = await getAllNotifications();
 
   return <NotificationAdmin notifications={notifications} />;
