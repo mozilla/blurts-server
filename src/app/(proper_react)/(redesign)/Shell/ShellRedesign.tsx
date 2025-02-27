@@ -3,8 +3,8 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { ReactNode } from "react";
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
 import { Session } from "next-auth";
 import { MobileShell } from "../MobileShell";
 import { PageLink } from "../PageLink";
@@ -12,6 +12,14 @@ import { Footer } from "../Footer";
 import { ExtendedReactLocalization } from "../../../functions/l10n";
 import { FeatureFlagName } from "../../../../db/tables/featureFlags";
 import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
+import {
+  DashboardIcon,
+  NotificationIcon,
+  FaqIcon,
+  EditInfoIcon,
+  SettingsIcon,
+  TipIcon,
+} from "../../../components/server/Icons";
 import MonitorLogo from "../../images/monitor-logo.svg";
 import styles from "./ShellRedesign.module.scss";
 
@@ -31,6 +39,94 @@ export type Props = {
   };
 };
 
+export const NavbarList = (props: {
+  l10n: ExtendedReactLocalization;
+  countryCode: string;
+}) => (
+  <ul className={styles.navbarList}>
+    <Link href="/user/dashboard" className={styles.homeLink}>
+      <Image
+        src={MonitorLogo}
+        alt={props.l10n.getString("main-nav-link-home-label")}
+        width={170}
+      />
+    </Link>
+    <li key="dashboard">
+      <PageLink
+        href="/user/dashboard"
+        activeClassName={styles.isActive}
+        hasTelemetry={{ link_id: "navigation_dashboard" }}
+      >
+        <DashboardIcon alt="" />
+        {props.l10n.getString("main-nav-link-dashboard-label")}
+      </PageLink>
+    </li>
+    <li key="settings-edit-profile">
+      <PageLink
+        href="/user/settings/edit-info"
+        activeClassName={styles.isActive}
+        hasTelemetry={{ link_id: "navigation_edit_info" }}
+      >
+        <EditInfoIcon alt="" />
+        {props.l10n.getString("settings-tab-label-update-scan-info")}
+      </PageLink>
+    </li>
+    <hr key="separator-first" />
+    <strong key="settings-title">
+      {props.l10n.getString("main-nav-link-settings-label")}
+    </strong>
+    <li key="settings-notifications">
+      <PageLink
+        href="/user/settings/notifications"
+        activeClassName={styles.isActive}
+        hasTelemetry={{
+          link_id: "navigation_settings_notifications",
+        }}
+      >
+        <NotificationIcon alt="" />
+        {props.l10n.getString("settings-tab-label-notifications")}
+      </PageLink>
+    </li>
+    <li key="settings-manage-account">
+      <PageLink
+        href="/user/settings/manage-account"
+        activeClassName={styles.isActive}
+        hasTelemetry={{
+          link_id: "navigation_settings_manage_account",
+        }}
+      >
+        <SettingsIcon alt="" />
+        {props.l10n.getString("settings-tab-label-manage-account")}
+      </PageLink>
+    </li>
+    <hr key="separator-second" />
+    {props.countryCode === "us" && (
+      <li key="how-it-works">
+        <PageLink
+          href="/how-it-works"
+          activeClassName={styles.isActive}
+          target="_blank"
+          hasTelemetry={{ link_id: "navigation_how_it_works" }}
+        >
+          <TipIcon alt="" />
+          {props.l10n.getString("main-nav-link-how-it-works-label")}
+        </PageLink>
+      </li>
+    )}
+    <li key="faq">
+      <PageLink
+        href="https://support.mozilla.org/kb/firefox-monitor-faq"
+        title={props.l10n.getString("main-nav-link-faq-tooltip")}
+        target="_blank"
+        hasTelemetry={{ link_id: "navigation_faq" }}
+      >
+        <FaqIcon alt="" />
+        {props.l10n.getString("main-nav-link-faq-label")}
+      </PageLink>
+    </li>
+  </ul>
+);
+
 export const ShellRedesign = (props: Props) => {
   return (
     <MobileShell
@@ -49,56 +145,7 @@ export const ShellRedesign = (props: Props) => {
             className={styles.mainMenu}
             aria-label={props.l10n.getString("main-nav-label")}
           >
-            <Link href="/user/dashboard" className={styles.homeLink}>
-              <Image
-                src={MonitorLogo}
-                alt={props.l10n.getString("main-nav-link-home-label")}
-                width={170}
-              />
-            </Link>
-            <ul>
-              {/* Note: If you add elements here, also add them to <MobileShell>'s navigation */}
-              <li key="home">
-                <PageLink
-                  href="/user/dashboard"
-                  activeClassName={styles.isActive}
-                  hasTelemetry={{ link_id: "navigation_dashboard" }}
-                >
-                  {props.l10n.getString("main-nav-link-dashboard-label")}
-                </PageLink>
-              </li>
-              {props.countryCode === "us" && (
-                <li key="how-it-works">
-                  <PageLink
-                    href="/how-it-works"
-                    activeClassName={styles.isActive}
-                    target="_blank"
-                    hasTelemetry={{ link_id: "navigation_how_it_works" }}
-                  >
-                    {props.l10n.getString("main-nav-link-how-it-works-label")}
-                  </PageLink>
-                </li>
-              )}
-              <li key="faq">
-                <PageLink
-                  href="https://support.mozilla.org/kb/firefox-monitor-faq"
-                  title={props.l10n.getString("main-nav-link-faq-tooltip")}
-                  target="_blank"
-                  hasTelemetry={{ link_id: "navigation_faq" }}
-                >
-                  {props.l10n.getString("main-nav-link-faq-label")}
-                </PageLink>
-              </li>
-              <li key="settings">
-                <PageLink
-                  href="/user/settings"
-                  activeClassName={styles.isActive}
-                  hasTelemetry={{ link_id: "navigation_settings" }}
-                >
-                  {props.l10n.getString("main-nav-link-settings-label")}
-                </PageLink>
-              </li>
-            </ul>
+            <NavbarList l10n={props.l10n} countryCode={props.countryCode} />
           </nav>
           <div className={styles.page}>{props.children}</div>
         </div>

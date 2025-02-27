@@ -8,64 +8,91 @@
 
 .mainMenu {
   display: none;
+  padding: 0 tokens.$spacing-md;
 
   @media screen and (min-width: tokens.$screen-xl) {
-    flex: 0 0 auto;
     display: flex;
     flex-direction: column;
+    flex: 0 0 auto;
+  }
+}
 
-    .homeLink {
-      height: tokens.$tab-bar-height;
-      display: flex;
+.navbarList {
+  display: flex;
+  flex-direction: column;
+  gap: tokens.$spacing-xs;
+  list-style-type: none;
+  padding: 0;
+
+  .homeLink {
+    display: none;
+
+    @media screen and (min-width: calc(tokens.$screen-xl + 1px)) {
       align-items: center;
-      padding: tokens.$spacing-xl tokens.$spacing-2xl;
-      border-bottom: 1px solid tokens.$color-grey-10;
-
-      &:hover {
-        box-shadow: tokens.$box-shadow-sm;
-      }
-
-      &:focus {
-        border-bottom-color: tokens.$color-blue-50;
-      }
+      display: flex;
+      height: tokens.$tab-bar-height;
+      position: relative;
 
       img {
-        width: auto;
-        height: tokens.$layout-sm;
+        display: block;
+        max-width: 100%;
+      }
+
+      &::after {
+        content: "";
+        background: tokens.$color-grey-20;
+        height: 1px;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: calc(100% + tokens.$spacing-md * 2);
       }
     }
+  }
 
-    ul {
-      display: flex;
-      flex-direction: column;
-      padding: 0;
-      list-style-type: none;
+  hr {
+    border: none;
+    background-color: tokens.$color-grey-10;
+    display: block;
+    height: 1px;
+    margin: tokens.$spacing-sm 0;
+    width: 100%;
+  }
 
-      a {
-        display: block;
-        padding: tokens.$spacing-md tokens.$spacing-lg;
-        color: tokens.$color-grey-40;
-        font-weight: 500;
-        border-bottom: 1px solid tokens.$color-grey-10;
-        text-decoration: none;
+  strong {
+    color: tokens.$color-grey-40;
+    font-weight: 600;
+  }
 
-        &.isActive {
-          color: tokens.$color-purple-70;
-        }
+  a {
+    border-radius: calc(tokens.$border-radius-xs + tokens.$border-radius-sm);
+    color: tokens.$color-black;
+    display: flex;
+    font-weight: 600;
+    gap: tokens.$spacing-md;
+    padding: tokens.$spacing-sm tokens.$spacing-sm;
+    text-decoration: none;
 
-        &:hover {
-          background-color: tokens.$color-purple-50;
-          color: tokens.$color-white;
-          text-decoration: underline;
-        }
-      }
+    &.isActive {
+      background-color: tokens.$color-grey-10;
+    }
+
+    &:hover {
+      background-color: tokens.$color-purple-05;
+      color: tokens.$color-purple-70;
+    }
+
+    &:focus {
+      outline: tokens.$border-focus-width solid tokens.$color-purple-10;
     }
   }
 }
 
 .content {
+  background-color: tokens.$color-grey-05;
   display: flex;
-  height: 100%;
+  flex: 1 1 auto;
   width: 100%;
 
   .page {

@@ -46,7 +46,7 @@ type Story = StoryObj<typeof Shell>;
 
 export const ShellAuthenticated: Story = {};
 
-export const ShellRedesign: Story = {
+export const ShellAuthenticatedRedesign: Story = {
   args: {
     enabledFeatureFlags: ["SidebarNavigationRedesign"],
   },
