@@ -6,11 +6,11 @@ import React, { useState } from "react";
 import styles from "./NotificationModal.module.scss";
 import { NotificationRow } from "knex/types/tables";
 
-interface NotificationModalProps {
+type NotificationModalProps = {
   isOpen: boolean;
   onClose: () => void;
   onAddNotification: (notification: NotificationRow) => void;
-}
+};
 
 interface FormData {
   title: string;
@@ -23,11 +23,7 @@ interface FormData {
   label: string;
 }
 
-const NotificationModal: React.FC<NotificationModalProps> = ({
-  isOpen,
-  onClose,
-  onAddNotification,
-}) => {
+const NotificationModal = (props: NotificationModalProps) => {
   const [formData, setFormData] = useState<FormData>({
     title: "",
     description: "",
@@ -63,7 +59,7 @@ const NotificationModal: React.FC<NotificationModalProps> = ({
       updated_at: new Date(),
     };
 
-    onAddNotification(newNotification);
+    props.onAddNotification(newNotification);
     setFormData({
       title: "",
       description: "",
@@ -74,17 +70,17 @@ const NotificationModal: React.FC<NotificationModalProps> = ({
       audience: "all_users",
       label: "draft",
     });
-    onClose();
+    props.onClose();
   };
 
-  if (!isOpen) return null;
+  if (!props.isOpen) return null;
 
   return (
     <div className={styles.modalOverlay}>
       <div className={styles.modal}>
         <div className={styles.modalHeader}>
           <h2>Add New Notification</h2>
-          <button className={styles.closeButton} onClick={onClose}>
+          <button className={styles.closeButton} onClick={props.onClose}>
             ×
           </button>
         </div>
@@ -207,7 +203,7 @@ const NotificationModal: React.FC<NotificationModalProps> = ({
           <div className={styles.formActions}>
             <button
               type="button"
-              onClick={onClose}
+              onClick={props.onClose}
               className={styles.cancelButton}
             >
               Cancel

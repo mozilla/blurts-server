@@ -19,15 +19,11 @@ export const NotificationAdmin = (props: Props) => {
     number | null
   >(props.notifications[0]?.id || null);
 
-  // State for controlling modal visibility
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-
-  // State for storing notifications
   const [notifications, setNotifications] = useState<NotificationRow[]>(
     props.notifications,
   );
 
-  // Handler for adding a new notification
   const handleAddNotification = (newNotification: NotificationRow): void => {
     setNotifications([...notifications, newNotification]);
   };
@@ -43,7 +39,6 @@ export const NotificationAdmin = (props: Props) => {
   );
 
   useEffect(() => {
-    // Ensure the first notification is always selected on mount
     if (notifications.length > 0 && activeNotificationId === null) {
       setActiveNotificationId(notifications[0].id);
     }
@@ -155,7 +150,6 @@ export const NotificationAdmin = (props: Props) => {
         )}
       </div>
 
-      {/* Include the modal component, passing required props */}
       <NotificationModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
