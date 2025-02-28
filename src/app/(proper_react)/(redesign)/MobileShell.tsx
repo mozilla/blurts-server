@@ -132,6 +132,7 @@ export const MobileShell = (props: Props) => {
               <NavbarListAuthenticated
                 l10n={l10n}
                 countryCode={props.countryCode}
+                enabledFeatureFlags={props.enabledFeatureFlags}
               />
               <div className={styles.premiumCta}>
                 <UpsellBadge

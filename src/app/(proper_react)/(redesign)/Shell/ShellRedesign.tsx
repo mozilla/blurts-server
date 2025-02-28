@@ -42,6 +42,7 @@ export type Props = {
 export const NavbarList = (props: {
   l10n: ExtendedReactLocalization;
   countryCode: string;
+  enabledFeatureFlags: FeatureFlagName[];
 }) => (
   <ul className={styles.navbarList}>
     <li key="dashboard">
@@ -54,22 +55,36 @@ export const NavbarList = (props: {
         {props.l10n.getString("main-nav-link-dashboard-label")}
       </PageLink>
     </li>
-    <li key="settings-edit-profile">
-      <PageLink
-        href="/user/settings/edit-info"
-        activeClassName={styles.isActive}
-        hasTelemetry={{ link_id: "navigation_edit_info" }}
-      >
-        <ScanInfoIcon alt="" />
-        {props.l10n.getString("settings-tab-label-update-scan-info")}
-      </PageLink>
-    </li>
+    {props.enabledFeatureFlags.includes("EditScanProfileDetails") && (
+      <li key="settings-edit-info">
+        <PageLink
+          href="/user/settings/edit-info"
+          activeClassName={styles.isActive}
+          hasTelemetry={{ link_id: "navigation_edit_info" }}
+        >
+          <ScanInfoIcon alt="" />
+          {props.l10n.getString("settings-tab-label-update-scan-info")}
+        </PageLink>
+      </li>
+    )}
     <li key="separator-first">
       <hr />
     </li>
     <li key="settings-title">
       <strong>{props.l10n.getString("main-nav-link-settings-label")}</strong>
     </li>
+    {!props.enabledFeatureFlags.includes("EditScanProfileDetails") && (
+      <li key="settings-edit-info">
+        <PageLink
+          href="/user/settings/edit-info"
+          activeClassName={styles.isActive}
+          hasTelemetry={{ link_id: "navigation_edit_info" }}
+        >
+          <ScanInfoIcon alt="" />
+          {props.l10n.getString("settings-tab-label-edit-info")}
+        </PageLink>
+      </li>
+    )}
     <li key="settings-notifications">
       <PageLink
         href="/user/settings/notifications"
@@ -149,7 +164,11 @@ export const ShellRedesign = (props: Props) => {
                 width={170}
               />
             </Link>
-            <NavbarList l10n={props.l10n} countryCode={props.countryCode} />
+            <NavbarList
+              l10n={props.l10n}
+              countryCode={props.countryCode}
+              enabledFeatureFlags={props.enabledFeatureFlags}
+            />
           </nav>
           <div className={styles.page}>{props.children}</div>
         </div>
