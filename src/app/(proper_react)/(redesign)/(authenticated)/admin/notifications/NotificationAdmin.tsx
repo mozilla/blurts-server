@@ -151,6 +151,9 @@ export const NotificationAdmin = (props: Props) => {
           <div className={styles.notificationSettings}>
             <h2>Details</h2>
             <dl>
+              <dt>Notification ID</dt>
+              <dd>{activeNotification.notification_id}</dd>
+
               <dt>Title</dt>
               <dd>{activeNotification.title}</dd>
 
@@ -187,7 +190,8 @@ export const NotificationAdmin = (props: Props) => {
             </dl>
 
             <div className={styles.buttons}>
-              <button>Edit</button>
+              {/* <button>Edit</button> */}
+              {/* TODO: Add delete button */}
               {/* <button
                 onClick={() => handleDeleteNotification(activeNotification.id)}
               >Delete</button> */}

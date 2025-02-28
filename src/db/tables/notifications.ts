@@ -36,6 +36,14 @@ export async function addNotification(
   }
 }
 
+export async function getNotificationByNotificationId(notificationId: string) {
+  const res = await knex("notifications").where(
+    "notification_id",
+    notificationId,
+  );
+  return res[0] || null;
+}
+
 export async function deleteNotification(notificationId: string | undefined) {
   if (!notificationId) {
     logger.error("Notification ID is not set");
