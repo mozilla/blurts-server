@@ -64,10 +64,12 @@ export const NavbarList = (props: {
         {props.l10n.getString("settings-tab-label-update-scan-info")}
       </PageLink>
     </li>
-    <hr key="separator-first" />
-    <strong key="settings-title">
-      {props.l10n.getString("main-nav-link-settings-label")}
-    </strong>
+    <li key="separator-first">
+      <hr />
+    </li>
+    <li key="settings-title">
+      <strong>{props.l10n.getString("main-nav-link-settings-label")}</strong>
+    </li>
     <li key="settings-notifications">
       <PageLink
         href="/user/settings/notifications"
@@ -92,7 +94,9 @@ export const NavbarList = (props: {
         {props.l10n.getString("settings-tab-label-manage-account")}
       </PageLink>
     </li>
-    <hr key="separator-second" />
+    <li key="separator-second">
+      <hr />
+    </li>
     {props.countryCode === "us" && (
       <li key="how-it-works">
         <PageLink
