@@ -44,27 +44,6 @@ export async function getNotificationByNotificationId(notificationId: string) {
   return res[0] || null;
 }
 
-export async function deleteNotification(notificationId: string | undefined) {
-  if (!notificationId) {
-    logger.error("Notification ID is not set");
-  }
-
-  try {
-    const response = await fetch(
-      `/api/v1/admin/notifications/${notificationId}`,
-      {
-        method: "DELETE",
-      },
-    );
-
-    if (!response.ok) {
-      logger.error("Failed to delete notification");
-      return false;
-    }
-
-    return true;
-  } catch (error) {
-    logger.error("Error deleting notification:", error);
-    return false;
-  }
+export async function deleteNotification(notificationId: string) {
+  await knex("notifications").where("notification_id", notificationId).del();
 }

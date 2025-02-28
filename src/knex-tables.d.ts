@@ -366,7 +366,7 @@ declare module "knex/types/tables" {
 
   interface NotificationRow {
     id: number;
-    notification_id?: string;
+    notification_id: string;
     title: string;
     description: string;
     small_image_path: string;

@@ -52,27 +52,35 @@ export const NotificationAdmin = (props: Props) => {
     }
   };
 
-  //TODO: Fix delete handler
-  // const handleDeleteNotification = async (notificationId: number) => {
-  //   try {
-  //     const response = await fetch(`/api/v1/admin/notifications/${notificationId}`, {
-  //       method: "DELETE",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //     });
-  //     if (response.ok) {
-  //       // Update the state to reflect the deleted notification
-  //       setNotifications((prevNotifications) =>
-  //         prevNotifications.filter((notification) => notification.id !== notificationId)
-  //       );
-  //     } else {
-  //       console.error("Failed to delete notification");
-  //     }
-  //   } catch (error) {
-  //     console.error("Error deleting notification:", error);
-  //   }
-  // };
+  const handleDeleteNotification = async (notificationId: string) => {
+    try {
+      const response = await fetch(
+        `/api/v1/admin/notifications/${notificationId}/`,
+        {
+          method: "DELETE",
+        },
+      );
+      if (response.ok) {
+        // Update the state to reflect the deleted notification
+        setNotifications((prevNotifications) =>
+          prevNotifications.filter(
+            (notification) => notification.notification_id !== notificationId,
+          ),
+        );
+      }
+      if (!response.ok) {
+        console.error(
+          "Failed to delete notification:",
+          response.status,
+          response.statusText,
+        );
+      } else {
+        console.error("Failed to delete notification");
+      }
+    } catch (error) {
+      console.error("Error deleting notification:", error);
+    }
+  };
 
   // Handle selecting a notification
   const handleClick = (notificationId: number) => {
@@ -190,11 +198,15 @@ export const NotificationAdmin = (props: Props) => {
             </dl>
 
             <div className={styles.buttons}>
-              {/* <button>Edit</button> */}
-              {/* TODO: Add delete button */}
-              {/* <button
-                onClick={() => handleDeleteNotification(activeNotification.id)}
-              >Delete</button> */}
+              <button
+                onClick={() =>
+                  void handleDeleteNotification(
+                    activeNotification.notification_id,
+                  )
+                }
+              >
+                Delete
+              </button>
             </div>
           </div>
         )}
