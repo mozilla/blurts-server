@@ -12,10 +12,10 @@
 
   @media screen and (min-width: tokens.$screen-xl) {
     display: flex;
-    gap: tokens.$layout-md;
+    gap: tokens.$layout-sm;
     flex-direction: column;
     flex: 0 0 auto;
-    padding-bottom: tokens.$layout-md;
+    padding-bottom: tokens.$layout-sm;
   }
 }
 
@@ -65,7 +65,8 @@
     display: flex;
     font-weight: 600;
     gap: tokens.$spacing-md;
-    padding: tokens.$spacing-sm tokens.$spacing-sm;
+    padding: tokens.$spacing-sm tokens.$spacing-md tokens.$spacing-sm
+      tokens.$spacing-sm;
     text-decoration: none;
 
     &.isActive {
