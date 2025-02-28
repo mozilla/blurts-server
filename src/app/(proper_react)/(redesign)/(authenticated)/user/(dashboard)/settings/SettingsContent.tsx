@@ -72,7 +72,7 @@ function SettingsContent(props: SettingsProps) {
 
   return (
     <main className={styles.main}>
-      {props.enabledFeatureFlags.includes("SidebarNavigationRedesign") && (
+      {!props.enabledFeatureFlags.includes("SidebarNavigationRedesign") && (
         <header className={styles.header}>
           <h2>{l10n.getString("settings-page-title")}</h2>
           <TabList

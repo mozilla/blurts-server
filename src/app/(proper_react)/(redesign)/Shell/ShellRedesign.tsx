@@ -121,7 +121,9 @@ export const NavbarList = (props: {
           hasTelemetry={{ link_id: "navigation_how_it_works" }}
         >
           <TipIcon alt="" />
-          {props.l10n.getString("main-nav-link-how-it-works-label")}
+          {props.l10n.getString(
+            "landing-premium-hero-navbar-link-how-it-works",
+          )}
         </PageLink>
       </li>
     )}

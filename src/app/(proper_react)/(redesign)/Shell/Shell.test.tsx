@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { it, expect } from "@jest/globals";
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { composeStory } from "@storybook/react";
 import { axe } from "jest-axe";
 import Meta, {
@@ -24,5 +24,24 @@ describe("ShellAuthenticatedRedesign", () => {
     const ShellComponent = composeStory(ShellAuthenticatedRedesign, Meta);
     const { container } = render(<ShellComponent />);
     expect(await axe(container)).toHaveNoViolations();
+  });
+
+  it("shows the “Update scan info” navbar item", async () => {
+    const ShellComponent = composeStory(ShellAuthenticatedRedesign, Meta);
+    render(
+      <ShellComponent
+        enabledFeatureFlags={[
+          "SidebarNavigationRedesign",
+          "EditScanProfileDetails",
+        ]}
+      />,
+    );
+
+    // Note: there are two user menus, for both small and wide screens:
+    const updateScanInfoItems = screen.getAllByRole("link", {
+      name: "Update scan info",
+    });
+    expect(updateScanInfoItems[0]).toBeInTheDocument();
+    expect(updateScanInfoItems[1]).toBeInTheDocument();
   });
 });
