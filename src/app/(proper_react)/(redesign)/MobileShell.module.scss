@@ -11,6 +11,7 @@
 
   @media screen and (max-width: tokens.$screen-xl) {
     box-shadow: tokens.$box-shadow-xs;
+    border-bottom: 1px solid tokens.$color-grey-20;
     position: sticky;
     background-color: tokens.$color-white;
     width: 100%;
@@ -158,7 +159,6 @@
       .navbarListWrapper {
         background: tokens.$color-white;
         box-shadow: tokens.$box-shadow-xs;
-        border-top: 1px solid tokens.$color-grey-10;
         padding: tokens.$spacing-sm tokens.$spacing-md;
 
         ul {
