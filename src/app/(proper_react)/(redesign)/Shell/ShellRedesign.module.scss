@@ -76,6 +76,11 @@
     &:hover {
       background-color: tokens.$color-purple-05;
       color: tokens.$color-purple-70;
+      fill: tokens.$color-purple-70;
+
+      path {
+        stroke: tokens.$color-purple-70;
+      }
     }
 
     &:focus {

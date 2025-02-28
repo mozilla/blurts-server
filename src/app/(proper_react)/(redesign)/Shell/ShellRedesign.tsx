@@ -16,7 +16,7 @@ import {
   DashboardIcon,
   NotificationIcon,
   FaqIcon,
-  EditInfoIcon,
+  ScanInfoIcon,
   SettingsIcon,
   TipIcon,
 } from "../../../components/server/Icons";
@@ -60,7 +60,7 @@ export const NavbarList = (props: {
         activeClassName={styles.isActive}
         hasTelemetry={{ link_id: "navigation_edit_info" }}
       >
-        <EditInfoIcon alt="" />
+        <ScanInfoIcon alt="" />
         {props.l10n.getString("settings-tab-label-update-scan-info")}
       </PageLink>
     </li>
