@@ -160,6 +160,10 @@
         box-shadow: tokens.$box-shadow-xs;
         border-top: 1px solid tokens.$color-grey-10;
         padding: tokens.$spacing-sm tokens.$spacing-md;
+
+        ul {
+          padding: 0;
+        }
       }
 
       .premiumCta {

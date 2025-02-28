@@ -1,10 +1,14 @@
 @use "../../../tokens";
 
 .toolbar {
+  background: tokens.$color-white;
   height: tokens.$tab-bar-height;
   border-bottom: 1px solid tokens.$color-grey-20;
+  box-shadow: tokens.$box-shadow-xs;
   display: flex;
   align-items: center;
+  position: relative;
+  z-index: 1;
 
   .start {
     flex: 1 0 auto;

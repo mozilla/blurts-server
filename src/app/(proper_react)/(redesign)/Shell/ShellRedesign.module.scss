@@ -8,12 +8,33 @@
 
 .mainMenu {
   display: none;
-  padding: 0 tokens.$spacing-md;
+  overflow: hidden;
 
   @media screen and (min-width: tokens.$screen-xl) {
     display: flex;
+    gap: tokens.$layout-md;
     flex-direction: column;
     flex: 0 0 auto;
+    padding-bottom: tokens.$layout-md;
+  }
+}
+
+.homeLink {
+  display: none;
+
+  @media screen and (min-width: calc(tokens.$screen-xl + 1px)) {
+    align-items: center;
+    background: tokens.$color-white;
+    border-bottom: 1px solid tokens.$color-grey-20;
+    box-shadow: tokens.$box-shadow-xs;
+    display: flex;
+    height: tokens.$tab-bar-height;
+    padding: 0 tokens.$spacing-lg;
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
   }
 }
 
@@ -22,34 +43,7 @@
   flex-direction: column;
   gap: tokens.$spacing-xs;
   list-style-type: none;
-  padding: 0;
-
-  .homeLink {
-    display: none;
-
-    @media screen and (min-width: calc(tokens.$screen-xl + 1px)) {
-      align-items: center;
-      display: flex;
-      height: tokens.$tab-bar-height;
-      position: relative;
-
-      img {
-        display: block;
-        max-width: 100%;
-      }
-
-      &::after {
-        content: "";
-        background: tokens.$color-grey-20;
-        height: 1px;
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: calc(100% + tokens.$spacing-md * 2);
-      }
-    }
-  }
+  padding: 0 tokens.$spacing-md;
 
   hr {
     border: none;
@@ -93,10 +87,10 @@
   background-color: tokens.$color-grey-05;
   display: flex;
   flex: 1 1 auto;
-  width: 100%;
 
   .page {
-    flex: 1 0 auto;
+    flex: 1 1 auto;
+    overflow: hidden;
   }
 }
 

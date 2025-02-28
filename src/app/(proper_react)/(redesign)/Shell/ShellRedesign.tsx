@@ -44,13 +44,6 @@ export const NavbarList = (props: {
   countryCode: string;
 }) => (
   <ul className={styles.navbarList}>
-    <Link href="/user/dashboard" className={styles.homeLink}>
-      <Image
-        src={MonitorLogo}
-        alt={props.l10n.getString("main-nav-link-home-label")}
-        width={170}
-      />
-    </Link>
     <li key="dashboard">
       <PageLink
         href="/user/dashboard"
@@ -145,6 +138,13 @@ export const ShellRedesign = (props: Props) => {
             className={styles.mainMenu}
             aria-label={props.l10n.getString("main-nav-label")}
           >
+            <Link href="/user/dashboard" className={styles.homeLink}>
+              <Image
+                src={MonitorLogo}
+                alt={props.l10n.getString("main-nav-link-home-label")}
+                width={170}
+              />
+            </Link>
             <NavbarList l10n={props.l10n} countryCode={props.countryCode} />
           </nav>
           <div className={styles.page}>{props.children}</div>
