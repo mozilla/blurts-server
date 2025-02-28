@@ -9,6 +9,8 @@ import styles from "./NotificationAdmin.module.scss";
 import Image from "next/image";
 import { NotificationRow } from "knex/types/tables";
 import NotificationModal from "./NotificationModal";
+import { useL10n } from "../../../../../hooks/l10n";
+// import { deleteNotification } from "../../../../../../db/tables/notifications";
 
 type Props = {
   notifications: NotificationRow[];
@@ -24,9 +26,53 @@ export const NotificationAdmin = (props: Props) => {
     props.notifications,
   );
 
-  const handleAddNotification = (newNotification: NotificationRow): void => {
-    setNotifications([...notifications, newNotification]);
+  const handleAddNotification = async (newNotification: NotificationRow) => {
+    try {
+      const endpoint = `/api/v1/admin/notifications/`;
+      const options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newNotification),
+      };
+
+      const response = await fetch(endpoint, options);
+
+      if (response.ok) {
+        setNotifications((prevNotifications) => [
+          ...prevNotifications,
+          newNotification,
+        ]);
+      } else {
+        throw new Error("Failed to add notification");
+      }
+    } catch (error) {
+      console.error("Error adding notification:", error);
+    }
   };
+
+  //TODO: Fix delete handler
+  // const handleDeleteNotification = async (notificationId: number) => {
+  //   try {
+  //     const response = await fetch(`/api/v1/admin/notifications/${notificationId}`, {
+  //       method: "DELETE",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //     });
+  //     if (response.ok) {
+  //       // Update the state to reflect the deleted notification
+  //       setNotifications((prevNotifications) =>
+  //         prevNotifications.filter((notification) => notification.id !== notificationId)
+  //       );
+  //     } else {
+  //       console.error("Failed to delete notification");
+  //     }
+  //   } catch (error) {
+  //     console.error("Error deleting notification:", error);
+  //   }
+  // };
 
   // Handle selecting a notification
   const handleClick = (notificationId: number) => {
@@ -44,6 +90,17 @@ export const NotificationAdmin = (props: Props) => {
     }
   }, [notifications, activeNotificationId]);
 
+  // const handleDeleteNotification = async (notificationId: number) => {
+  //   const isDeleted = await deleteNotification(activeNotification?.notification_id); // Use the imported function
+
+  //   if (isDeleted) {
+  //     setNotifications((prevNotifications) =>
+  //       prevNotifications.filter((notification) => notification.id !== notificationId)
+  //     );
+  //     setActiveNotificationId(null);
+  //   }
+  // };
+
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
@@ -60,9 +117,17 @@ export const NotificationAdmin = (props: Props) => {
                 onClick={() => handleClick(notification.id)}
               >
                 <div>
-                  <p className={styles.title}>{notification.title}</p>
+                  <p className={styles.title}>
+                    <LocalizedNotificationString
+                      notification={notification}
+                      type="title"
+                    />
+                  </p>
                   <p className={styles.description}>
-                    {notification.description}
+                    <LocalizedNotificationString
+                      notification={notification}
+                      type="description"
+                    />
                   </p>
                 </div>
                 <div
@@ -123,7 +188,9 @@ export const NotificationAdmin = (props: Props) => {
 
             <div className={styles.buttons}>
               <button>Edit</button>
-              <button>Unpublish</button>
+              {/* <button
+                onClick={() => handleDeleteNotification(activeNotification.id)}
+              >Delete</button> */}
             </div>
           </div>
         )}
@@ -139,11 +206,24 @@ export const NotificationAdmin = (props: Props) => {
                 src={`/images/${activeNotification.notification_id}/big.jpg`}
               />
               <dl>
-                <dt>{activeNotification.title}</dt>
-                <dd>{activeNotification.description}</dd>
+                <dt>
+                  <LocalizedNotificationString
+                    notification={activeNotification}
+                    type="title"
+                  />
+                </dt>
+                <dd>
+                  <LocalizedNotificationString
+                    notification={activeNotification}
+                    type="description"
+                  />
+                </dd>
               </dl>
               <a href={activeNotification.cta_link}>
-                {activeNotification.cta_label}
+                <LocalizedNotificationString
+                  notification={activeNotification}
+                  type="cta-label"
+                />
               </a>
             </div>
           </div>
@@ -157,4 +237,38 @@ export const NotificationAdmin = (props: Props) => {
       />
     </div>
   );
+};
+
+type LocalizedNotificationStringProps = {
+  notification: NotificationRow;
+  type: "title" | "description" | "cta-label";
+};
+
+export const LocalizedNotificationString = (
+  props: LocalizedNotificationStringProps,
+) => {
+  const l10n = useL10n();
+
+  // Build the key based on the type (fluent IDs are named in this format)
+  const key = `notif-${props.notification.notification_id}-${props.type}`;
+
+  // Get the localized string for the key
+  const localizedString = l10n.getString(key);
+
+  // If the key is not translated, use the fallback values from the notifications table
+  if (localizedString === key) {
+    console.warn(`${props.notification.notification_id} is not localized`);
+
+    if (props.type === "title") {
+      return <>{props.notification.title}</>;
+    }
+    if (props.type === "description") {
+      return <>{props.notification.description}</>;
+    }
+    if (props.type === "cta-label") {
+      return <>{props.notification.cta_label}</>;
+    }
+  }
+
+  return <>{localizedString}</>;
 };

@@ -13,6 +13,7 @@ type NotificationModalProps = {
 };
 
 interface FormData {
+  notification_id: string;
   title: string;
   description: string;
   small_image_path: string;
@@ -25,6 +26,7 @@ interface FormData {
 
 const NotificationModal = (props: NotificationModalProps) => {
   const [formData, setFormData] = useState<FormData>({
+    notification_id: "",
     title: "",
     description: "",
     small_image_path: "",
@@ -47,30 +49,45 @@ const NotificationModal = (props: NotificationModalProps) => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Create new notification with generated id and timestamps
-    const newNotification: NotificationRow = {
-      ...formData,
-      id: Date.now(),
-      notification_id: `notif_${Date.now()}`,
+    const newNotification = {
       created_at: new Date(),
       updated_at: new Date(),
+      ...formData, // Ensure no 'id' field is included here
     };
 
-    props.onAddNotification(newNotification);
-    setFormData({
-      title: "",
-      description: "",
-      small_image_path: "",
-      big_image_path: "",
-      cta_label: "",
-      cta_link: "",
-      audience: "all_users",
-      label: "draft",
-    });
-    props.onClose();
+    try {
+      const response = await fetch("/api/v1/admin/notifications/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newNotification),
+      });
+
+      if (response.ok) {
+        const addedNotification = await response.json();
+        props.onAddNotification(addedNotification); // Update state in parent component
+        setFormData({
+          notification_id: "",
+          title: "",
+          description: "",
+          small_image_path: "",
+          big_image_path: "",
+          cta_label: "",
+          cta_link: "",
+          audience: "all_users",
+          label: "draft",
+        });
+        props.onClose(); // Close the modal after submission
+      } else {
+        console.error("Failed to add notification");
+      }
+    } catch (error) {
+      console.error("Error adding notification:", error);
+    }
   };
 
   if (!props.isOpen) return null;
@@ -86,6 +103,19 @@ const NotificationModal = (props: NotificationModalProps) => {
         </div>
 
         <form onSubmit={handleSubmit} className={styles.form}>
+          <div className={styles.formGroup}>
+            <label htmlFor="title">Notification ID *</label>
+            <input
+              type="text"
+              id="notification_id"
+              name="notification_id"
+              value={formData.notification_id}
+              onChange={handleChange}
+              required
+              className={styles.input}
+            />
+          </div>
+
           <div className={styles.formGroup}>
             <label htmlFor="title">Title *</label>
             <input
@@ -192,11 +222,8 @@ const NotificationModal = (props: NotificationModalProps) => {
               required
               className={styles.select}
             >
-              <option value="info">Info</option>
-              <option value="warning">Warning</option>
-              <option value="error">Error</option>
-              <option value="success">Success</option>
-              <option value="update">Update</option>
+              <option value="draft">Draft</option>
+              <option value="published">Published</option>
             </select>
           </div>
 

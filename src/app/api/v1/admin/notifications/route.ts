@@ -4,11 +4,11 @@
 
 import { NotificationRow } from "knex/types/tables";
 import { NextRequest, NextResponse } from "next/server";
-import createDbConnection from "../../../../db/connect";
-import { getAllNotifications } from "../../../../db/tables/notifications";
-import { getServerSession } from "../../../functions/server/getServerSession";
-import { isAdmin } from "../../utils/auth";
-import { logger } from "../../../functions/server/logging";
+import createDbConnection from "../../../../../db/connect";
+import { getAllNotifications } from "../../../../../db/tables/notifications";
+import { getServerSession } from "../../../../functions/server/getServerSession";
+import { isAdmin } from "../../../utils/auth";
+import { logger } from "../../../../functions/server/logging";
 
 const knex = createDbConnection();
 
