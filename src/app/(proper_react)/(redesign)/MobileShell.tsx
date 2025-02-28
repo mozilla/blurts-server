@@ -133,6 +133,15 @@ export const MobileShell = (props: Props) => {
                 l10n={l10n}
                 countryCode={props.countryCode}
               />
+              <div className={styles.premiumCta}>
+                <UpsellBadge
+                  monthlySubscriptionUrl={props.monthlySubscriptionUrl}
+                  yearlySubscriptionUrl={props.yearlySubscriptionUrl}
+                  subscriptionBillingAmount={props.subscriptionBillingAmount}
+                  // The last scan date is too noisy on mobile, so don't show it there:
+                  lastScanDate={null}
+                />
+              </div>
             </div>
           ) : (
             <div className={styles.mainMenu}>
