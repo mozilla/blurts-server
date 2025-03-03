@@ -8,7 +8,7 @@ exposure-card-date-found = Tanggal pemaparan
 
 # Status Pill
 
-status-pill-action-needed = Tindakan diperlukan
+status-pill-action-needed = Diperlukan tindakan
 status-pill-progress = Dalam proses
 status-pill-fixed = Diperbaiki
 
@@ -28,7 +28,7 @@ exposure-card-other = Lainnya
 exposure-card-description-data-breach-action-needed = Informasi Anda terungkap dalam kebocoran data <data_breach_link>{ $data_breach_company } pada { $data_breach_date }.</data_breach_link> Kami akan memandu Anda melalui langkah-langkah untuk memperbaikinya.
 exposure-card-description-data-breach-fixed = Anda telah mengambil langkah-langkah yang diperlukan untuk memperbaiki <data_breach_link>pelanggaran ini</data_breach_link>. Kami akan terus memantau pembobolan data dan memperingatkan Anda jika ada eksposur baru.
 exposure-card-your-exposed-info = Info Anda yang terekspos:
-exposure-card-found-the-following-data = { -brand-monitor } menemukan data terbuka berikut:
+exposure-card-found-the-following-data = { -brand-monitor } menemukan data terpapar berikut:
 exposure-card-exposure-type-data-broker = Info untuk dijual
 exposure-card-exposure-type-data-breach = Kebocoran data
 exposure-card-resolve-exposures-cta = Selesaikan eksposur
