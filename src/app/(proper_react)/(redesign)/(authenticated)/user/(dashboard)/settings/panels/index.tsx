@@ -7,6 +7,10 @@ import {
   SettingsPanelEditInfoProps,
 } from "./SettingsPanelEditInfo";
 import {
+  SettingsPanelEditInfoRedesign,
+  SettingsPanelEditInfoRedesignProps,
+} from "./SettingsPanelEditInfoRedesign";
+import {
   SettingsPanelNotifications,
   SettingsPanelNotificationsProps,
 } from "./SettingsPanelNotifications";
@@ -17,7 +21,10 @@ import {
 import styles from "./Panel.module.scss";
 import { TabType } from "../View";
 
-export type SettingsProps = SettingsPanelEditInfoProps &
+export type SettingsProps = (
+  | SettingsPanelEditInfoProps
+  | SettingsPanelEditInfoRedesignProps
+) &
   SettingsPanelNotificationsProps &
   SettingsPanelManageAccountProps & {
     activeTab?: TabType;
@@ -26,7 +33,11 @@ export type SettingsProps = SettingsPanelEditInfoProps &
 function Panel(props: SettingsProps) {
   switch (props.activeTab) {
     case "edit-info":
-      return <SettingsPanelEditInfo {...props} />;
+      return props.enabledFeatureFlags.includes("EditScanProfileDetails") ? (
+        <SettingsPanelEditInfoRedesign {...props} />
+      ) : (
+        <SettingsPanelEditInfo {...props} />
+      );
     case "notifications":
       return <SettingsPanelNotifications {...props} />;
     case "manage-account":

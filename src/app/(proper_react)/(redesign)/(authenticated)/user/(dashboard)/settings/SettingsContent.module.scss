@@ -37,13 +37,24 @@
 
 .content {
   align-items: flex-start;
-  background-color: tokens.$color-white;
-  border-radius: tokens.$border-radius-md;
-  box-shadow: tokens.$box-shadow-xs;
   display: flex;
   flex-direction: column;
   flex: 1 0 0;
   gap: tokens.$spacing-lg;
-  overflow: hidden;
-  padding: tokens.$spacing-lg;
+
+  &.isCard {
+    border-radius: tokens.$border-radius-lg;
+    background-color: tokens.$color-white;
+    box-shadow: tokens.$box-shadow-xs;
+    padding: tokens.$spacing-lg;
+    overflow: hidden;
+  }
+
+  &:not(.isCard) section {
+    background-color: tokens.$color-white;
+    border-radius: tokens.$border-radius-lg;
+    box-shadow: tokens.$box-shadow-xs;
+    gap: tokens.$spacing-md;
+    padding: tokens.$spacing-lg;
+  }
 }

@@ -86,7 +86,9 @@ function SettingsContent(props: SettingsProps) {
           />
         </header>
       )}
-      <div className={styles.content}>
+      <div
+        className={`${styles.content} ${props.enabledFeatureFlags.includes("EditScanProfileDetails") && activeTab === "edit-info" ? "" : styles.isCard}`}
+      >
         <SettingsPanel
           activeTab={activeTab}
           breachCountByEmailAddress={props.breachCountByEmailAddress}
