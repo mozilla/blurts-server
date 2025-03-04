@@ -14,7 +14,10 @@ import { build } from "esbuild";
 // own issues in Next.js. Thus, esbuild is a compromise that can resolve these
 // import specifiers for us.
 build({
-  entryPoints: ["./src/scripts/cronjobs/**/*.tsx", "./src/scripts/cronjobs/**/*.ts"],
+  entryPoints: [
+    "./src/scripts/cronjobs/**/*.tsx",
+    "./src/scripts/cronjobs/**/*.ts",
+  ],
   tsconfig: "tsconfig.cronjobs.json",
   bundle: true,
   platform: "node",

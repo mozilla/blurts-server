@@ -113,7 +113,7 @@ export default async function DashboardPage(props: Props) {
 
   const useMockedScans =
     enabledFeatureFlags.includes("CustomDataBrokers") &&
-    process.env.NODE_ENV !== "production";
+    process.env.APP_ENV !== "production";
 
   const scanResults = useMockedScans
     ? await getMockedScanResults(profileId)
