@@ -769,20 +769,18 @@ export const DashboardIcon = (
       aria-hidden={props.alt === ""}
       xmlns="http://www.w3.org/2000/svg"
       {...props}
-      className={`${props.className ?? ""} ${styles.colorifyFill}`}
+      className={`${props.className ?? ""} ${styles.colorifyFill} ${styles.colorifyStroke}`}
     >
       <title>{props.alt}</title>
       <g>
         <path
           d="M5 7C5 6.44772 5.44772 6 6 6H9C9.55228 6 10 6.44772 10 7V10C10 10.5523 9.55228 11 9 11H6C5.44772 11 5 10.5523 5 10V7Z"
           fill="none"
-          stroke="black"
           strokeWidth="2"
         />
         <path
           d="M14 7C14 6.44772 14.4477 6 15 6H18C18.5523 6 19 6.44772 19 7V10C19 10.5523 18.5523 11 18 11H15C14.4477 11 14 10.5523 14 10V7Z"
           fill="none"
-          stroke="black"
           strokeWidth="2"
         />
         <rect x="4" y="14" width="16" height="2" rx="1" strokeWidth="0" />
@@ -856,7 +854,7 @@ export const ScanInfoIcon = (
       aria-hidden={props.alt === ""}
       xmlns="http://www.w3.org/2000/svg"
       {...props}
-      className={`${props.className ?? ""} ${styles.colorifyFill}`}
+      className={`${props.className ?? ""} ${styles.colorifyFill} ${styles.colorifyStroke}`}
     >
       <title>{props.alt}</title>
       <g>
@@ -871,7 +869,6 @@ export const ScanInfoIcon = (
         <path
           d="M5 9V6.5C5 5.67157 5.67157 5 6.5 5H9"
           fill="none"
-          stroke="black"
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -879,7 +876,6 @@ export const ScanInfoIcon = (
         <path
           d="M15 5H17.5C18.3284 5 19 5.67157 19 6.5V9"
           fill="none"
-          stroke="black"
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -887,7 +883,6 @@ export const ScanInfoIcon = (
         <path
           d="M19 15V17.5C19 18.3284 18.3284 19 17.5 19H15"
           fill="none"
-          stroke="black"
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -895,7 +890,6 @@ export const ScanInfoIcon = (
         <path
           d="M5 15V17.5C5 18.3284 5.67157 19 6.5 19H9"
           fill="none"
-          stroke="black"
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
