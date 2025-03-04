@@ -63,7 +63,7 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run Playwright tests
-        if: github.actor != 'dependabot[bot]'
+        if: github.event.pull_request.user.login != 'dependabot[bot]'
         run: npm run e2e:smoke
         timeout-minutes: 10
         env:
