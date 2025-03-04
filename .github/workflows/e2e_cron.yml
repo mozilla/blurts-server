@@ -1,4 +1,7 @@
 name: Monitor Cron e2e Tests
+
+permissions: {}
+
 on:
   schedule:
     - cron: '0 8 * * *'

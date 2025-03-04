@@ -1,5 +1,7 @@
 name: Lint
 
+permissions: {}
+
 on: [push]
 
 jobs:

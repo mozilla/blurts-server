@@ -1,5 +1,7 @@
 name: Build Docker image and publish
 
+permissions: {}
+
 on:
   push:
     branches: [ main ]
