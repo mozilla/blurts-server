@@ -21,7 +21,9 @@ async function updateDataBrokerScanProfile(
   onerepProfileId: number,
   profileDataToUpdate: UpdateableProfileDetails,
 ) {
-  logger.info(`Attempt to update data broker scan profile: ${onerepProfileId}`);
+  logger.info(
+    `Attempt to update data broker scan profile: [${onerepProfileId}]`,
+  );
 
   // NOTE: The type `UpdateableProfileDetails` only makes sure we don’t pass
   // the expected profile details during compile time. We are checking the
@@ -33,13 +35,13 @@ async function updateDataBrokerScanProfile(
         profileDataKey as keyof typeof profileDataToUpdate,
       )
     ) {
-      throw new Error(`Passed invalid profile detail: ${profileDataKey}`);
+      throw new Error(`Passed invalid profile detail: [${profileDataKey}]`);
     }
   }
 
   const currentProfileData = await getProfileDetails(onerepProfileId);
   if (currentProfileData?.onerep_profile_id === null) {
-    throw new Error(`No profile found for: ${onerepProfileId}`);
+    throw new Error(`No profile found for: [${onerepProfileId}]`);
   }
 
   const updatedProfileData = {
@@ -119,7 +121,7 @@ async function updateDataBrokerScanProfile(
   await refreshStoredScanResults(onerepProfileId);
 
   logger.info(
-    `Data broker scan profile updated successfully: ${onerepProfileId}`,
+    `Data broker scan profile updated successfully: [${onerepProfileId}]`,
   );
 }
 
