@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import styles from "./Shell.module.scss";
+import styles from "./Shell/Shell.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 import mozillaLogo from "../images/mozilla-logo.svg";

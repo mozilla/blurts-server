@@ -59,7 +59,7 @@ import { SettingsView } from "./View";
 import { sanitizeEmailRow } from "../../../../../../functions/server/sanitize";
 import { defaultExperimentData } from "../../../../../../../telemetry/generated/nimbus/experiments";
 import { SubscriberEmailPreferencesOutput } from "../../../../../../../db/tables/subscriber_email_preferences";
-import { Shell } from "../../../../Shell";
+import { Shell } from "../../../../Shell/Shell";
 import { ReactNode } from "react";
 import { FeatureFlagName } from "../../../../../../../db/tables/featureFlags";
 

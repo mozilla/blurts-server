@@ -10,6 +10,8 @@
   display: none;
 
   @media screen and (max-width: tokens.$screen-xl) {
+    box-shadow: tokens.$box-shadow-xs;
+    border-bottom: 1px solid tokens.$color-grey-20;
     position: sticky;
     background-color: tokens.$color-white;
     width: 100%;
@@ -154,13 +156,21 @@
         }
       }
 
-      .premiumCta {
-        margin: tokens.$spacing-md;
-        min-width: tokens.$screen-xs;
+      .navbarListWrapper {
+        background: tokens.$color-white;
+        box-shadow: tokens.$box-shadow-xs;
 
-        & > button {
-          width: 100%;
+        ul {
+          padding: tokens.$spacing-sm tokens.$spacing-md;
         }
+      }
+
+      .premiumCta {
+        border-top: 1px solid tokens.$color-grey-10;
+        display: flex;
+        justify-content: center;
+        padding: tokens.$spacing-md;
+        min-width: tokens.$screen-xs;
       }
     }
   }
