@@ -47,7 +47,7 @@ export async function setProfileDetails(
 }
 
 export async function getProfileDetails(onerepProfileId: number) {
-  const [profile] = await knex("onerep_profiles").where({
+  const profile = await knex("onerep_profiles").first("*").where({
     onerep_profile_id: onerepProfileId,
   });
   return profile;
