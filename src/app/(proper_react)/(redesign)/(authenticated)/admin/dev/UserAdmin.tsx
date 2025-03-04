@@ -14,8 +14,11 @@ import {
   GetUserStateResponseBody,
 } from "../../../../../api/v1/admin/users/[fxaUid]/route";
 import { lookupFxaUid, getOnerepProfile, updateOnerepProfile } from "./actions";
-import { OnerepProfileRow, UpdateableProfileDetails } from "knex/types/tables";
-import { ShowProfileResponse } from "../../../../../functions/server/onerep";
+import { OnerepProfileRow } from "knex/types/tables";
+import {
+  ShowProfileResponse,
+  UpdateableProfileDetails,
+} from "../../../../../functions/server/onerep";
 import { InputField } from "../../../../../components/client/InputField";
 import { CONST_DATA_BROKER_PROFILE_DETAIL_ALLOW_LIST } from "../../../../../../constants";
 import { FeatureFlagName } from "../../../../../../db/tables/featureFlags";

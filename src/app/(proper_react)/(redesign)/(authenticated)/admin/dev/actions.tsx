@@ -9,9 +9,11 @@ import { getSubscribersByHashes } from "../../../../../../db/tables/subscribers"
 import { isAdmin } from "../../../../../api/utils/auth";
 import { getServerSession } from "../../../../../functions/server/getServerSession";
 import { getProfileDetails } from "../../../../../../db/tables/onerep_profiles";
-import { getProfile } from "../../../../../functions/server/onerep";
+import {
+  getProfile,
+  UpdateableProfileDetails,
+} from "../../../../../functions/server/onerep";
 import updateDataBrokerScanProfile from "../../../../../functions/server/updateDataBrokerScanProfile";
-import { UpdateableProfileDetails } from "knex/types/tables";
 
 export async function lookupFxaUid(emailHash: string) {
   const session = await getServerSession();

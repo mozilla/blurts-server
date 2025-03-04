@@ -3,9 +3,11 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import createDbConnection from "../connect";
-import { CreateProfileRequest } from "../../app/functions/server/onerep";
+import {
+  CreateProfileRequest,
+  UpdateableProfileDetails,
+} from "../../app/functions/server/onerep";
 import { parseIso8601Datetime } from "../../utils/parse";
-import { UpdateableProfileDetails } from "knex/types/tables";
 
 const knex = createDbConnection();
 

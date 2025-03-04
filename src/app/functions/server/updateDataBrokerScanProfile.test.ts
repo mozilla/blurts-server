@@ -3,7 +3,8 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { it, expect, jest } from "@jest/globals";
-import { OnerepProfileRow, UpdateableProfileDetails } from "knex/types/tables";
+import { OnerepProfileRow } from "knex/types/tables";
+import { UpdateableProfileDetails } from "./onerep";
 
 const currentProfileDetails: OnerepProfileRow = {
   id: 1234,

@@ -347,17 +347,6 @@ declare module "knex/types/tables" {
     "id" | "created_at" | "updated_at"
   >;
 
-  interface UpdateableProfileDetails {
-    first_name: string;
-    last_name: string;
-    first_names: string[];
-    last_names: string[];
-    middle_names: string[];
-    phone_numbers: string[];
-    addresses: OnerepProfileAddress[];
-    middle_name?: string;
-  }
-
   interface EmailNotificationRow {
     id: number;
     subscriber_id: number;

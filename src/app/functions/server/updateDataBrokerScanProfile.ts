@@ -2,8 +2,10 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { updateProfile } from "../../functions/server/onerep";
-import { UpdateableProfileDetails } from "knex/types/tables";
+import {
+  UpdateableProfileDetails,
+  updateProfile,
+} from "../../functions/server/onerep";
 import { logger } from "../../functions/server/logging";
 import { refreshStoredScanResults } from "../../functions/server/refreshStoredScanResults.ts";
 import {
