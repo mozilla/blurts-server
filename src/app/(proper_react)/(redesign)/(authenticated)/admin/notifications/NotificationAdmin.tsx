@@ -10,7 +10,6 @@ import Image from "next/image";
 import { NotificationRow } from "knex/types/tables";
 import NotificationModal from "./NotificationModal";
 import { useL10n } from "../../../../../hooks/l10n";
-// import { deleteNotification } from "../../../../../../db/tables/notifications";
 
 type Props = {
   notifications: NotificationRow[];
@@ -25,27 +24,29 @@ export const NotificationAdmin = (props: Props) => {
   const [notifications, setNotifications] = useState<NotificationRow[]>(
     props.notifications,
   );
+  const endpointBase = `/api/v1/admin/notifications`;
 
   const handleAddNotification = async (newNotification: NotificationRow) => {
     try {
-      const endpoint = `/api/v1/admin/notifications/`;
-      const options = {
+      const response = await fetch(endpointBase, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(newNotification),
-      };
-
-      const response = await fetch(endpoint, options);
+      });
+      const savedNotification: NotificationRow = await response.json(); // Ensure we get the ID from the backend
 
       if (response.ok) {
         setNotifications((prevNotifications) => [
           ...prevNotifications,
-          newNotification,
+          savedNotification,
         ]);
-      } else {
-        throw new Error("Failed to add notification");
+      }
+
+      // If no notification is active, set the newly added one as active
+      if (!activeNotificationId) {
+        setActiveNotificationId(savedNotification.id);
       }
     } catch (error) {
       console.error("Error adding notification:", error);
@@ -60,31 +61,36 @@ export const NotificationAdmin = (props: Props) => {
           method: "DELETE",
         },
       );
-      if (response.ok) {
-        // Update the state to reflect the deleted notification
-        setNotifications((prevNotifications) =>
-          prevNotifications.filter(
-            (notification) => notification.notification_id !== notificationId,
-          ),
+
+      setNotifications((prevNotifications) =>
+        prevNotifications.filter(
+          (notification) => notification.notification_id !== notificationId,
+        ),
+      );
+      // If the deleted notification was active, reset activeNotificationId
+      if (notificationId === activeNotification?.notification_id) {
+        setActiveNotificationId(
+          notifications.length > 1 ? notifications[0].id : null,
         );
-      }
-      if (!response.ok) {
+      } else {
         console.error(
           "Failed to delete notification:",
           response.status,
           response.statusText,
         );
-      } else {
-        console.error("Failed to delete notification");
       }
     } catch (error) {
       console.error("Error deleting notification:", error);
     }
   };
-
   // Handle selecting a notification
   const handleClick = (notificationId: number) => {
-    setActiveNotificationId(notificationId);
+    const newActiveNotification = notifications.find(
+      (n) => n.id === notificationId,
+    );
+    if (newActiveNotification) {
+      setActiveNotificationId(notificationId);
+    }
   };
 
   // Find the active notification from the list of notifications
@@ -98,16 +104,10 @@ export const NotificationAdmin = (props: Props) => {
     }
   }, [notifications, activeNotificationId]);
 
-  // const handleDeleteNotification = async (notificationId: number) => {
-  //   const isDeleted = await deleteNotification(activeNotification?.notification_id); // Use the imported function
-
-  //   if (isDeleted) {
-  //     setNotifications((prevNotifications) =>
-  //       prevNotifications.filter((notification) => notification.id !== notificationId)
-  //     );
-  //     setActiveNotificationId(null);
-  //   }
-  // };
+  const [imageVersion, setImageVersion] = useState(Date.now());
+  useEffect(() => {
+    setImageVersion(Date.now()); // Forces re-render
+  }, [activeNotificationId]);
 
   return (
     <div className={styles.container}>
@@ -219,7 +219,8 @@ export const NotificationAdmin = (props: Props) => {
                 alt="Notification preview"
                 width="500"
                 height="300"
-                src={`/images/${activeNotification.notification_id}/big.jpg`}
+                key={activeNotification?.notification_id}
+                src={`/images/notifications/${activeNotification.notification_id}/big.jpg?v=${imageVersion}`}
               />
               <dl>
                 <dt>

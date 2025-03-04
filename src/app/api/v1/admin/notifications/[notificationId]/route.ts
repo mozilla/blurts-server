@@ -21,8 +21,9 @@ export async function GET(
     // Signed in
     const notificationId = params.notificationId;
     try {
-      const flag = await getNotificationByNotificationId(notificationId);
-      return NextResponse.json(flag);
+      const notificationItem =
+        await getNotificationByNotificationId(notificationId);
+      return NextResponse.json(notificationItem);
     } catch (e) {
       logger.error(e);
       return NextResponse.json({ success: false }, { status: 500 });
@@ -42,8 +43,8 @@ export async function DELETE(
     // Signed in
     const notificationId = params.notificationId;
     try {
-      const flag = await deleteNotification(notificationId);
-      return NextResponse.json(flag);
+      const notificationItem = await deleteNotification(notificationId);
+      return NextResponse.json(notificationItem);
     } catch (e) {
       logger.error(e);
       return NextResponse.json({ success: false }, { status: 500 });
