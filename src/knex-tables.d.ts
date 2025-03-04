@@ -347,6 +347,11 @@ declare module "knex/types/tables" {
     "id" | "created_at" | "updated_at"
   >;
 
+  type OnerepProfileAddress = {
+    city: string;
+    state: StateAbbr;
+  };
+
   interface OnerepProfileRow {
     id: number;
     onerep_profile_id: null | number;
@@ -354,11 +359,20 @@ declare module "knex/types/tables" {
     first_name: string;
     middle_name: null | string;
     last_name: string;
-    city_name: string;
-    state_code: StateAbbr;
+    first_names: string[];
+    middle_names: string[];
+    last_names: string[];
+    addresses: OnerepProfileAddress[];
+    phone_numbers: E164PhoneNumberString[];
     date_of_birth: Date;
     created_at: Date;
     updated_at: Date;
+    // For backwards compatibility reasons we are keeping `city_name` and
+    // `state_code` until MNTOR-3567 is implemented and enabled by default.
+    /** @deprecated Please use `addresses` instead. */
+    city_name: string;
+    /** @deprecated Please use `addresses` instead. */
+    state_code: StateAbbr;
   }
   type OnerepProfileOptionalColumns = Extract<
     keyof OnerepProfileRow,
