@@ -12,11 +12,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20.18.x'
-          persist-credentials: false
       - run: npm ci
       - run: npm run build-glean
       # Run the regular tests on push
