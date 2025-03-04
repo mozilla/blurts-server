@@ -15,6 +15,7 @@ import { RemovalStatus } from "../universal/scanResult.js";
 import { logger } from "./logging";
 import { isUsingMockONEREPEndpoint } from "../universal/mock.ts";
 import { hasPremium } from "../universal/user.ts";
+import { OnerepProfileAddress } from "knex/types/tables";
 
 export const monthlyScansQuota = parseInt(
   (process.env.MONTHLY_SCANS_QUOTA as string) ?? "0",
@@ -49,6 +50,17 @@ export type UpdateProfileRequest = CreateProfileRequest & {
     number: string;
   }[];
 };
+
+export interface UpdateableProfileDetails {
+  first_name: string;
+  last_name: string;
+  first_names: string[];
+  last_names: string[];
+  middle_names: string[];
+  phone_numbers: string[];
+  addresses: OnerepProfileAddress[];
+  middle_name?: string;
+}
 
 export type ShowProfileResponse = CreateProfileRequest & {
   id: number;
@@ -202,9 +214,32 @@ export async function updateProfile(
   profileId: number,
   profileData: UpdateProfileRequest,
 ) {
+  const {
+    first_name,
+    last_name,
+    name_suffix,
+    middle_name,
+    first_names,
+    last_names,
+    middle_names,
+    birth_date,
+    addresses,
+    phone_numbers,
+  } = profileData;
   const response = await onerepFetch(`/profiles/${profileId}`, {
     method: "PUT",
-    body: JSON.stringify(profileData),
+    body: JSON.stringify({
+      first_name,
+      last_name,
+      name_suffix,
+      middle_name,
+      first_names,
+      last_names,
+      middle_names,
+      birth_date,
+      addresses,
+      phone_numbers,
+    }),
   });
   if (!response.ok) {
     const responseJson = await response.json();
