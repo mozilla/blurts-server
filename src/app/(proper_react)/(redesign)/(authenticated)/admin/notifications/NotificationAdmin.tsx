@@ -104,6 +104,22 @@ export const NotificationAdmin = (props: Props) => {
   }, [notifications, activeNotificationId]);
 
   const [imageIsLoading, setImageIsLoading] = useState<boolean>(true);
+  // States for each image
+  const [smallImageIsLoading, setSmallImageIsLoading] = useState(true);
+  const [bigImageIsLoading, setBigImageIsLoading] = useState(true);
+
+  const [smallImageUnavailable, setSmallImageUnavailable] = useState(false);
+  const [bigImageUnavailable, setBigImageUnavailable] = useState(false);
+
+  const smallImagePath = `/images/notifications/${activeNotification?.notification_id.trim()}/small.jpg`;
+  const bigImagePath = `/images/notifications/${activeNotification?.notification_id.trim()}/big.jpg`;
+
+  useEffect(() => {
+    setSmallImageIsLoading(true);
+    setBigImageIsLoading(true);
+    setSmallImageUnavailable(false);
+    setBigImageUnavailable(false);
+  }, [activeNotificationId]);
 
   return (
     <div className={styles.container}>
@@ -177,12 +193,52 @@ export const NotificationAdmin = (props: Props) => {
                 />
               </dd>
 
-              <dt>Small Image Path</dt>
-              <dd>{activeNotification.small_image_path}</dd>
+              <dt>Small Image</dt>
+              <dd>
+                {smallImageIsLoading && !smallImageUnavailable && (
+                  <div className={styles.loader}>Loading...</div>
+                )}
+                {smallImageUnavailable ? (
+                  <span className={styles.imagePathUnavailable}>
+                    Cannot load /images/notifications/
+                    {activeNotification.notification_id.trim()}/small.jpg
+                  </span>
+                ) : (
+                  <Image
+                    alt="Small Image"
+                    width={500}
+                    height={300}
+                    key={activeNotification.id}
+                    src={smallImagePath}
+                    onLoadingComplete={() => setSmallImageIsLoading(false)}
+                    onError={() => setSmallImageUnavailable(true)}
+                  />
+                )}
+              </dd>
 
-              <dt>Big Image Path</dt>
-              <dd>{activeNotification.big_image_path}</dd>
-
+              {/* Big Image */}
+              <dt>Big Image</dt>
+              <dd>
+                {bigImageIsLoading && !bigImageUnavailable && (
+                  <div className={styles.loader}>Loading...</div>
+                )}
+                {bigImageUnavailable ? (
+                  <span className={styles.imagePathUnavailable}>
+                    Cannot load /images/notifications/
+                    {activeNotification.notification_id.trim()}/big.jpg
+                  </span>
+                ) : (
+                  <Image
+                    alt="Notification preview"
+                    width={500}
+                    height={300}
+                    key={activeNotification.id}
+                    src={bigImagePath}
+                    onLoadingComplete={() => setBigImageIsLoading(false)}
+                    onError={() => setBigImageUnavailable(true)}
+                  />
+                )}
+              </dd>
               <dt>CTA Label</dt>
               <dd>
                 <LocalizedNotificationString
@@ -289,7 +345,7 @@ export const LocalizedNotificationString = (
   // Get the localized string for the key
   const localizedString = l10n.getString(key);
 
-  const missingLabel = (
+  const missingLabel = process.env.APP_ENV !== "production" && (
     <span className={styles.missingLabel}>Missing fluent ID</span>
   );
 

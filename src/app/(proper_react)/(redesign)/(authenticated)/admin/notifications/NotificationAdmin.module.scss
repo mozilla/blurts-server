@@ -130,4 +130,9 @@
       padding: tokens.$spacing-xs tokens.$spacing-sm;
     }
   }
+
+  .imagePathUnavailable {
+    color: tokens.$color-red-50;
+    font-weight: 600;
+  }
 }
