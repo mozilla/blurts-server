@@ -1,5 +1,7 @@
 name: Deploy Preview Cleanup
 
+permissions: {}
+
 on:
   # when pull request is merged or closed
   pull_request:

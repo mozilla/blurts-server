@@ -1,4 +1,7 @@
 name: Retag and Push Docker Image on Release
+
+permissions: {}
+
 # GH release should always create a tag automatically
 on:
   push:

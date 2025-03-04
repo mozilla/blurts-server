@@ -1,7 +1,11 @@
 name: No unresolved conflicts
+
+permissions: {}
+
 on:
   pull_request:
     branches: [ main, localization ]
+
 jobs:
   detect-unresolved-conflicts:
     runs-on: ubuntu-latest

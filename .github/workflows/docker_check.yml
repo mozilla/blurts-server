@@ -1,4 +1,7 @@
 name: Build Docker image check
+
+permissions: {}
+
 on:
   pull_request:
 jobs:
