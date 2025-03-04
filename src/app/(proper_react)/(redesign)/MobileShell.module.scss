@@ -159,10 +159,6 @@
       .navbarListWrapper {
         background: tokens.$color-white;
         box-shadow: tokens.$box-shadow-xs;
-
-        ul {
-          padding: tokens.$spacing-sm tokens.$spacing-md;
-        }
       }
 
       .premiumCta {

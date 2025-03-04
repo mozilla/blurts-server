@@ -48,7 +48,13 @@
   flex-direction: column;
   gap: tokens.$spacing-xs;
   list-style-type: none;
-  padding: 0 tokens.$spacing-md;
+  padding: tokens.$spacing-sm tokens.$spacing-md;
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: tokens.$spacing-xs;
+  }
 
   hr {
     border: none;
