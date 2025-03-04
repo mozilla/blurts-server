@@ -755,3 +755,25 @@ export const BackArrow = (props: SVGProps<SVGSVGElement> & { alt: string }) => {
     </svg>
   );
 };
+
+// Keywords: search, magnifying glass, find
+export const SearchIcon = (
+  props: SVGProps<SVGSVGElement> & { alt: string },
+) => {
+  return (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      role="img"
+      aria-label={props.alt}
+      aria-hidden={props.alt === ""}
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+      className={`${props.className ?? ""} ${styles.colorifyFill}`}
+    >
+      <title>{props.alt}</title>
+      <path d="m19.745 18.33-4.822-4.821a6.018 6.018 0 1 0-1.414 1.414l4.822 4.822a1 1 0 0 0 1.414-1.414m-9.707-4.292a4 4 0 1 1 0-7.999 4 4 0 0 1 0 7.999"></path>
+    </svg>
+  );
+};
