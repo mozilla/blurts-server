@@ -1,4 +1,7 @@
 name: Monitor E2E Test Suite (full)
+
+permissions: {}
+
 on:
   push:
     branches: [ main ]

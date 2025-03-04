@@ -1,5 +1,7 @@
 name: Unit Tests
 
+permissions: {}
+
 on:
   push:
   schedule:

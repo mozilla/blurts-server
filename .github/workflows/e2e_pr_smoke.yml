@@ -1,4 +1,7 @@
 name: Monitor E2E Test Suite (smoke)
+
+permissions: {}
+
 on:
   push:
     branches: [ main ]
