@@ -5,16 +5,16 @@
 public-nav-name = { -brand-mozilla-monitor }
 landing-all-hero-title = Temukan di mana info pribadi Anda terbuka — dan ambil kembali
 landing-all-hero-lead = Kami memindai kebocoran data untuk melihat apakah data Anda telah bocor dan memberi Anda langkah-langkah untuk memperbaikinya.
-landing-all-hero-emailform-input-placeholder = namaanda@example.com
-landing-all-hero-emailform-input-label = Masukkan alamat surel Anda untuk memeriksa eksposur pelanggaran data.
+landing-all-hero-emailform-input-placeholder = namaanda@contoh.com
+landing-all-hero-emailform-input-label = Masukkan alamat surel Anda untuk memeriksa terpaparnya data bocor.
 landing-all-hero-emailform-submit-label = Dapatkan pemindaian gratis
-landing-all-hero-emailform-submit-sign-up-label = Daftar untuk mendapatkan pemindaian gratis
+landing-all-hero-emailform-submit-sign-up-label = Mendaftarlah untuk mendapatkan pemindaian gratis
 # This is a label underneath a big number "14" - it's an image that demos Monitor.
-landing-all-hero-image-chart-label = eksposur
+landing-all-hero-image-chart-label = keterpaparan
 
 # Value Proposition
 
-landing-all-value-prop-fix-exposures = Kami akan membantu Anda memperbaiki eksposur Anda
+landing-all-value-prop-fix-exposures = Kami akan membantu Anda memperbaiki keterpaparan Anda
 landing-all-value-prop-fix-exposures-description = Misi kami adalah mengembalikan kendali data pribadi Anda ke tangan Anda. Kami akan membantu Anda mengatasi kebocoran data dan menjaga kerahasiaan informasi Anda — dan kami akan <privacy_link>menghormati privasi Anda</privacy_link> dalam prosesnya.
 landing-all-value-prop-info-at-risk = Informasi apa yang berisiko?
 landing-all-value-prop-info-at-risk-description = Sayangnya, kebocoran data adalah bagian dari kehidupan digital kita. Kata sandi Anda, rincian kontak, informasi keuangan, dan info pribadi lainnya dapat diekspos, menempatkan Anda pada risiko pencurian identitas.

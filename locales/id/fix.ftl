@@ -24,8 +24,8 @@ fix-flow-celebration-next-dashboard-label = Buka Dasbor Anda
 fix-flow-celebration-high-risk-title = Anda telah memperbaiki eksposur risiko tinggi Anda!
 fix-flow-celebration-high-risk-description-in-progress = Melakukan pekerjaan ini bisa terasa sangat melelahkan, tetapi penting untuk dilakukan agar Anda tetap aman. Teruskan bekerja dengan baik.
 fix-flow-celebration-high-risk-description-done = Melakukan pekerjaan ini bisa terasa sangat melelahkan, tetapi penting untuk dilakukan agar Anda tetap aman.
-fix-flow-celebration-high-risk-description-next-passwords = Sekarang mari perbaiki kata sandi Anda yang terbuka.
-fix-flow-celebration-high-risk-description-next-security-questions = Sekarang mari kita perbaiki pertanyaan keamanan Anda yang terbuka.
+fix-flow-celebration-high-risk-description-next-passwords = Sekarang mari perbaiki kata sandi Anda yang terpapar.
+fix-flow-celebration-high-risk-description-next-security-questions = Sekarang mari kita perbaiki pertanyaan keamanan Anda yang terpapar.
 fix-flow-celebration-high-risk-description-next-security-recommendations = Selanjutnya, kami akan memberi Anda rekomendasi keamanan yang dipersonalisasi berdasarkan data Anda yang telah diekspos.
 fix-flow-celebration-high-risk-description-next-dashboard = Anda telah mencapai akhir langkah Anda. Anda dapat melihat item tindakan apa pun dan melacak kemajuan Anda di dasbor Anda.
 
@@ -57,8 +57,7 @@ high-risk-breach-summary =
 # $breach_date is the date when the breach occurred.
 # An example of this string is Twitter on 13/09/18.
 high-risk-breach-name-and-date = { $breach_name } <breach_date>pada { $breach_date }</breach_date>
-high-risk-breach-mark-as-fixed = Tandai sebagai diperbaiki
-high-risk-breach-skip = Lewatkan untuk sekarang
+high-risk-breach-skip = Lewatkan sekarang
 # Variables:
 # $estimated_time is the estimated time it would take for a user to complete breach resolution steps. It not be singular, and the + is meant as "or more".
 # An example of this string is Your estimated time: 15+ minutes.
@@ -77,9 +76,9 @@ high-risk-breach-credit-card-step-three = Periksa akun Anda untuk tagihan yang t
 
 # Bank Account Breaches
 
-high-risk-breach-bank-account-title = Rekening bank Anda terekspos
+high-risk-breach-bank-account-title = Rekening bank Anda terungkap
 high-risk-breach-bank-account-description = Mengambil tindakan sesegera mungkin dapat memberi Anda lebih banyak perlindungan hukum untuk membantu Anda memulihkan kerugian apa pun.
-high-risk-breach-bank-account-step-one = Segera beri tahu bank Anda bahwa nomor rekening Anda telah disusupi.
+high-risk-breach-bank-account-step-one = Segera beri tahu bank Anda bahwa nomor rekening Anda telah terkompromi.
 high-risk-breach-bank-account-step-two = Ubah nomor akun Anda.
 high-risk-breach-bank-account-step-three = Periksa akun Anda untuk tagihan yang tidak sah.
 
@@ -93,7 +92,7 @@ high-risk-breach-social-security-step-two = <link_to_info>Periksa laporan kredit
 # Social Security Number Modal
 
 ssn-modal-title = Tentang peringatan penipuan dan pembekuan kredit
-ssn-modal-description-fraud-part-one = <b>Peringatan penipuan</b> mengharuskan bisnis untuk memverifikasi identitas Anda sebelum mengeluarkan kredit baru atas nama Anda. Gratis, bertahan satu tahun, dan tidak akan berdampak negatif pada nilai kredit Anda.
+ssn-modal-description-fraud-part-one = <b>Peringatan penipuan</b> mengharuskan bisnis untuk memverifikasi identitas Anda sebelum mengeluarkan kredit baru atas nama Anda. Gratis, berlaku satu tahun, dan tidak akan berdampak negatif pada nilai kredit Anda.
 ssn-modal-description-fraud-part-two = Untuk menyiapkannya, hubungi salah satu dari tiga biro kredit. Anda tidak perlu menghubungi ketiganya.
 ssn-modal-description-freeze-credit-part-one = <b>Membekukan kredit Anda</b> mencegah siapa pun membuka akun baru atas nama Anda. Ini gratis dan tidak akan berdampak negatif pada skor kredit Anda, tetapi Anda harus mencairkannya sebelum membuka akun baru.
 ssn-modal-description-freeze-credit-part-two = Untuk membekukan kredit Anda, hubungi masing-masing dari tiga biro kredit — <equifax_link>Equifax</equifax_link>, <experian_link>Experian</experian_link>, dan <transunion_link>TransUnion</transunion_link>.
@@ -102,9 +101,9 @@ ssn-modal-ok = Oke
 
 # PIN Breaches
 
-high-risk-breach-pin-title = PIN Anda terekspos
+high-risk-breach-pin-title = PIN Anda terungkap
 high-risk-breach-pin-description = Mengambil tindakan sesegera mungkin dapat memberi Anda lebih banyak perlindungan hukum untuk membantu Anda memulihkan kerugian apa pun.
-high-risk-breach-pin-step-one = Segera beri tahu bank Anda bahwa PIN Anda telah dibobol.
+high-risk-breach-pin-step-one = Segera beri tahu bank Anda bahwa PIN Anda telah terkompromi.
 high-risk-breach-pin-step-two = Ubah PIN Anda di mana pun Anda menggunakan PIN yang sama.
 high-risk-breach-pin-step-three = Periksa akun Anda untuk tagihan yang tidak sah.
 
@@ -181,15 +180,7 @@ leaked-passwords-steps-subtitle = Ini memerlukan akses ke akun Anda, jadi Anda h
 leaked-passwords-step-one = Ubah sandi Anda untuk <b>{ $emails_affected }</b> di <link_to_breach_site>{ $breach_name }</link_to_breach_site>.
 leaked-passwords-step-two = Ubah di mana pun Anda pernah menggunakannya.
 leaked-passwords-mark-as-fixed = Tandai sebagai diperbaiki
-leaked-passwords-skip = Lewatkan untuk sekarang
-# Variables
-# $estimated_time is the amount of time it would take for a user to manually resolve a leaked password breach. It will always be a number greater than 1.
-# "Est." is shortform for "Estimated".
-# "mins" is shortform for "minutes".
-leaked-passwords-estimated-time =
-    { $estimated_time ->
-       *[other] Taks. waktu untuk menyelesaikan: { $estimated_time } menit per situs
-    }
+leaked-passwords-skip = Lewatkan sekarang
 
 # Leaked Security Questions
 
@@ -199,7 +190,6 @@ leaked-security-questions-title = Pertanyaan keamanan Anda terungkap
 # $breach_date is the date when the breach occurred.
 # An example of this string is Twitter on 13/09/18.
 leaked-security-questions-summary = Mereka muncul dalam pembobolan data pada { $breach_name } pada { $breach_date }.
-leaked-security-questions-description = Scammers dapat menggunakan ini untuk mengakses akun Anda, dan situs lain di mana Anda telah menggunakan pertanyaan keamanan yang sama. Perbarui sekarang untuk melindungi akun Anda.
 leaked-security-questions-steps-title = Inilah yang harus dilakukan
 leaked-security-questions-steps-subtitle = Ini memerlukan akses ke akun Anda, jadi Anda harus memperbaikinya secara manual.
 # Variables
