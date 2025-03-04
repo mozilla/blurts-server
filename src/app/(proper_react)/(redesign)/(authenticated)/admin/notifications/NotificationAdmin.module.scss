@@ -39,26 +39,35 @@
             font-weight: 700;
           }
 
-          .statusPill {
-            border-radius: tokens.$border-radius-lg;
-            padding: tokens.$spacing-xs;
-            text-align: center;
-            min-width: 100px;
+          .pills {
+            display: flex;
+            flex-direction: column;
             align-items: center;
-            align-self: center;
+            align-content: center;
+            justify-content: center;
+            gap: tokens.$spacing-xs;
             margin-left: auto;
-            text-transform: capitalize;
-            font-size: 14px;
-            font-weight: 700;
 
-            &.draft {
-              background-color: tokens.$color-grey-20;
-              color: tokens.$color-grey-50;
-            }
+            .statusPill {
+              border-radius: tokens.$border-radius-lg;
+              padding: tokens.$spacing-xs tokens.$spacing-sm;
+              text-align: center;
+              min-width: 100px;
+              align-items: center;
+              align-self: center;
+              text-transform: capitalize;
+              font-size: 14px;
+              font-weight: 700;
 
-            &.published {
-              background-color: tokens.$color-green-30;
-              color: tokens.$color-green-90;
+              &.draft {
+                background-color: tokens.$color-grey-20;
+                color: tokens.$color-grey-50;
+              }
+
+              &.published {
+                background-color: tokens.$color-green-30;
+                color: tokens.$color-green-90;
+              }
             }
           }
         }
@@ -103,6 +112,22 @@
           padding-top: tokens.$spacing-md;
         }
       }
+    }
+  }
+
+  .missingLabelContainer {
+    display: flex;
+    flex-direction: row;
+    gap: tokens.$spacing-sm;
+    align-items: center;
+
+    .missingLabel {
+      font-size: 12px;
+      font-weight: 600;
+      color: tokens.$color-yellow-70;
+      background-color: tokens.$color-yellow-20;
+      border-radius: tokens.$border-radius-lg;
+      padding: tokens.$spacing-xs tokens.$spacing-sm;
     }
   }
 }

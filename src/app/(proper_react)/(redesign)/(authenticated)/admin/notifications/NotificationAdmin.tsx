@@ -104,7 +104,6 @@ export const NotificationAdmin = (props: Props) => {
   }, [notifications, activeNotificationId]);
 
   const [imageIsLoading, setImageIsLoading] = useState<boolean>(true);
-  console.log(activeNotification?.notification_id);
 
   return (
     <div className={styles.container}>
@@ -135,10 +134,12 @@ export const NotificationAdmin = (props: Props) => {
                     />
                   </p>
                 </div>
-                <div
-                  className={`${styles.statusPill} ${styles[notification.label]}`}
-                >
-                  {notification.label}
+                <div className={styles.pills}>
+                  <div
+                    className={`${styles.statusPill} ${styles[notification.label]}`}
+                  >
+                    {notification.label}
+                  </div>
                 </div>
               </li>
             ))}
@@ -160,10 +161,21 @@ export const NotificationAdmin = (props: Props) => {
               <dd>{activeNotification.notification_id}</dd>
 
               <dt>Title</dt>
-              <dd>{activeNotification.title}</dd>
+              <dd>
+                {" "}
+                <LocalizedNotificationString
+                  notification={activeNotification}
+                  type="title"
+                />
+              </dd>
 
               <dt>Description</dt>
-              <dd>{activeNotification.description}</dd>
+              <dd>
+                <LocalizedNotificationString
+                  notification={activeNotification}
+                  type="description"
+                />
+              </dd>
 
               <dt>Small Image Path</dt>
               <dd>{activeNotification.small_image_path}</dd>
@@ -172,7 +184,12 @@ export const NotificationAdmin = (props: Props) => {
               <dd>{activeNotification.big_image_path}</dd>
 
               <dt>CTA Label</dt>
-              <dd>{activeNotification.cta_label}</dd>
+              <dd>
+                <LocalizedNotificationString
+                  notification={activeNotification}
+                  type="cta-label"
+                />
+              </dd>
 
               <dt>CTA Link</dt>
               <dd>{activeNotification.cta_link}</dd>
@@ -211,7 +228,6 @@ export const NotificationAdmin = (props: Props) => {
         {activeNotification && (
           <div className={styles.previewModalWrapper}>
             <div className={styles.previewModal}>
-              {/* Show loader until the image is loaded */}
               {imageIsLoading && (
                 <div className={styles.loader}>Loading...</div>
               )}
@@ -273,18 +289,37 @@ export const LocalizedNotificationString = (
   // Get the localized string for the key
   const localizedString = l10n.getString(key);
 
+  const missingLabel = (
+    <span className={styles.missingLabel}>Missing fluent ID</span>
+  );
+
   // If the key is not translated, use the fallback values from the notifications table
   if (localizedString === key) {
     console.warn(`${props.notification.notification_id} is not localized`);
 
     if (props.type === "title") {
-      return <>{props.notification.title}</>;
+      return (
+        <div className={styles.missingLabelContainer}>
+          {props.notification.title}
+          {missingLabel}
+        </div>
+      );
     }
     if (props.type === "description") {
-      return <>{props.notification.description}</>;
+      return (
+        <div className={styles.missingLabelContainer}>
+          {props.notification.description}
+          {missingLabel}
+        </div>
+      );
     }
     if (props.type === "cta-label") {
-      return <>{props.notification.cta_label}</>;
+      return (
+        <div className={styles.missingLabelContainer}>
+          {props.notification.cta_label}
+          {missingLabel}
+        </div>
+      );
     }
   }
 
