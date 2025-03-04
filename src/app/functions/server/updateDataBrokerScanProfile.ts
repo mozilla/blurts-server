@@ -49,21 +49,19 @@ async function updateDataBrokerScanProfile(
     ...profileDataToUpdate,
   };
 
-  const isExceedingProfileDetailLimits = Object.keys(
-    CONST_DATA_BROKER_PROFILE_DETAIL_LIMITS,
-  ).some((detailKey) => {
+  for (const detailKey in CONST_DATA_BROKER_PROFILE_DETAIL_LIMITS) {
     const profileDetailKey =
       detailKey as keyof typeof CONST_DATA_BROKER_PROFILE_DETAIL_LIMITS;
     const profileDataItem = updatedProfileData[profileDetailKey];
-    return (
+    if (
       profileDataItem &&
       profileDataItem.length >
         CONST_DATA_BROKER_PROFILE_DETAIL_LIMITS[profileDetailKey]
-    );
-  });
-
-  if (isExceedingProfileDetailLimits) {
-    throw new Error("Profile details are exceeding limit");
+    ) {
+      throw new Error(
+        `Profile detail [${profileDetailKey}] is exceeding limit: [${profileDataItem.length}]`,
+      );
+    }
   }
 
   const {
