@@ -25,7 +25,6 @@ export const NotificationAdmin = (props: Props) => {
     props.notifications,
   );
   const endpointBase = `/api/v1/admin/notifications`;
-
   const handleAddNotification = async (newNotification: NotificationRow) => {
     try {
       const response = await fetch(endpointBase, {
@@ -104,10 +103,8 @@ export const NotificationAdmin = (props: Props) => {
     }
   }, [notifications, activeNotificationId]);
 
-  const [imageVersion, setImageVersion] = useState(Date.now());
-  useEffect(() => {
-    setImageVersion(Date.now()); // Forces re-render
-  }, [activeNotificationId]);
+  const [imageIsLoading, setImageIsLoading] = useState<boolean>(true);
+  console.log(activeNotification?.notification_id);
 
   return (
     <div className={styles.container}>
@@ -210,17 +207,21 @@ export const NotificationAdmin = (props: Props) => {
             </div>
           </div>
         )}
-
         {/* Preview Modal */}
         {activeNotification && (
           <div className={styles.previewModalWrapper}>
             <div className={styles.previewModal}>
+              {/* Show loader until the image is loaded */}
+              {imageIsLoading && (
+                <div className={styles.loader}>Loading...</div>
+              )}
               <Image
                 alt="Notification preview"
                 width="500"
                 height="300"
-                key={activeNotification?.notification_id}
-                src={`/images/notifications/${activeNotification.notification_id}/big.jpg?v=${imageVersion}`}
+                key={activeNotification.id}
+                src={`/images/notifications/${activeNotification.notification_id.trim()}/big.jpg`}
+                onLoadingComplete={() => setImageIsLoading(false)}
               />
               <dl>
                 <dt>
