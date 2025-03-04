@@ -49,12 +49,8 @@ jest.mock("./logging", () => {
   };
 });
 
-beforeEach(() => {
-  jest.spyOn(console, "info").mockImplementation(() => undefined);
-});
-
 describe("Update broker scan profile", () => {
-  it("updates the profile details", async () => {
+  it("does not throw errors when passing data to the relevant backends", async () => {
     jest.mock("../../../db/tables/onerep_profiles", () => ({
       getProfileDetails: jest.fn(() => Promise.resolve(currentProfileDetails)),
       updateProfileDetails: jest.fn(),
@@ -63,15 +59,15 @@ describe("Update broker scan profile", () => {
       await import("./updateDataBrokerScanProfile")
     ).default;
 
-    expect(async () => {
-      await updateDataBrokerScanProfile(5678, {
+    expect(() =>
+      updateDataBrokerScanProfile(5678, {
         ...newProfileDetails,
         first_names: ["First02", "First03"],
         last_names: ["Last02"],
         middle_name: "Middle01",
         middle_names: ["Middle02", "Middle03"],
-      });
-    }).not.toThrow();
+      }),
+    ).not.toThrow();
   });
 
   it("throws an error when the profile has no profile ID assigned", async () => {
@@ -88,15 +84,9 @@ describe("Update broker scan profile", () => {
       await import("./updateDataBrokerScanProfile")
     ).default;
 
-    await expect(async () => {
-      await updateDataBrokerScanProfile(5678, {
-        ...newProfileDetails,
-        first_names: ["First02", "First03"],
-        last_names: ["Last02"],
-        middle_name: "Middle01",
-        middle_names: ["Middle02", "Middle03"],
-      });
-    }).rejects.toThrow("No profile found for: 5678");
+    await expect(() =>
+      updateDataBrokerScanProfile(5678, newProfileDetails),
+    ).rejects.toThrow("No profile found for: [5678]");
   });
 
   it("throws an error when profile data exceeds the limit for `first_names`", async () => {
@@ -108,12 +98,12 @@ describe("Update broker scan profile", () => {
       await import("./updateDataBrokerScanProfile")
     ).default;
 
-    await expect(async () => {
-      await updateDataBrokerScanProfile(5678, {
+    await expect(() =>
+      updateDataBrokerScanProfile(5678, {
         ...newProfileDetails,
         first_names: ["First02", "First03", "First04", "First05", "First06"],
-      });
-    }).rejects.toThrow("Profile details are exceeding limit");
+      }),
+    ).rejects.toThrow("Profile detail [first_names] is exceeding limit: [5]");
   });
 
   it("throws an error when profile data exceeds the limit for `addresses`", async () => {
@@ -125,8 +115,8 @@ describe("Update broker scan profile", () => {
       await import("./updateDataBrokerScanProfile")
     ).default;
 
-    await expect(async () => {
-      await updateDataBrokerScanProfile(5678, {
+    await expect(() =>
+      updateDataBrokerScanProfile(5678, {
         ...newProfileDetails,
         addresses: [
           { city: "City01", state: "NY" },
@@ -141,8 +131,8 @@ describe("Update broker scan profile", () => {
           { city: "City10", state: "NY" },
           { city: "City11", state: "NY" },
         ],
-      });
-    }).rejects.toThrow("Profile details are exceeding limit");
+      }),
+    ).rejects.toThrow("Profile detail [addresses] is exceeding limit: [11]");
   });
 
   it("throws an error if an invalid profile detail is passed", async () => {
@@ -154,14 +144,14 @@ describe("Update broker scan profile", () => {
       await import("./updateDataBrokerScanProfile")
     ).default;
 
-    await expect(async () => {
-      await updateDataBrokerScanProfile(5678, {
+    await expect(() =>
+      updateDataBrokerScanProfile(5678, {
         ...newProfileDetails,
         // @ts-ignore The entry `birth_date` is not part of the type
         // `UpdateableProfileDetails`. It is being passed here anyway in order
         // to validate that only valid values are being considered at runtime.
         birth_date: new Date(),
-      });
-    }).rejects.toThrow("Passed invalid profile detail: birth_date");
+      }),
+    ).rejects.toThrow("Passed invalid profile detail: [birth_date]");
   });
 });
