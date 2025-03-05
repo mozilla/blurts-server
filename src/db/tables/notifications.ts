@@ -43,3 +43,26 @@ export async function getNotificationByNotificationId(notificationId: string) {
 export async function deleteNotification(notificationId: string) {
   await knex("notifications").where("notification_id", notificationId).del();
 }
+
+export async function updateNotification(
+  notificationId: string,
+  updatedData: NotificationRow,
+): Promise<NotificationRow> {
+  try {
+    const [updatedNotification] = await knex("notifications")
+      .where("notification_id", notificationId)
+      .update(updatedData)
+      .returning("*");
+
+    if (!updatedNotification) {
+      throw new Error(
+        "Failed to update the notification or notification not found",
+      );
+    }
+
+    return updatedNotification;
+  } catch (error) {
+    logger.error("Error updating notification:", error);
+    throw error;
+  }
+}

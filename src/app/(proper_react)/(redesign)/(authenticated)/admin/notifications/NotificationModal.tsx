@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./NotificationModal.module.scss";
 import { NotificationRow } from "knex/types/tables";
 
@@ -10,6 +10,8 @@ type NotificationModalProps = {
   isOpen: boolean;
   onClose: () => void;
   onAddNotification: (notification: NotificationRow) => void;
+  onUpdateNotification: (notification: NotificationRow) => void; // Callback for updating
+  notificationToEdit: NotificationRow | null; // Receive notification to edit if available
 };
 
 interface FormData {
@@ -37,6 +39,23 @@ const NotificationModal = (props: NotificationModalProps) => {
     label: "draft",
   });
 
+  // Pre-fill form if editing an existing notification
+  useEffect(() => {
+    if (props.notificationToEdit) {
+      setFormData({
+        notification_id: props.notificationToEdit.notification_id,
+        title: props.notificationToEdit.title,
+        description: props.notificationToEdit.description,
+        small_image_path: props.notificationToEdit.small_image_path,
+        big_image_path: props.notificationToEdit.big_image_path,
+        cta_label: props.notificationToEdit.cta_label ?? "",
+        cta_link: props.notificationToEdit.cta_link ?? "",
+        audience: props.notificationToEdit.audience,
+        label: props.notificationToEdit.label,
+      });
+    }
+  }, [props.notificationToEdit]);
+
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
@@ -52,41 +71,60 @@ const NotificationModal = (props: NotificationModalProps) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const newNotification = {
+    const notificationData = {
       created_at: new Date(),
       updated_at: new Date(),
       ...formData, // Ensure no 'id' field is included here
     };
 
     try {
-      const response = await fetch("/api/v1/admin/notifications/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newNotification),
-      });
+      let response;
 
-      if (response.ok) {
-        const addedNotification = await response.json();
-        props.onAddNotification(addedNotification); // Update state in parent component
-        setFormData({
-          notification_id: "",
-          title: "",
-          description: "",
-          small_image_path: "",
-          big_image_path: "",
-          cta_label: "",
-          cta_link: "",
-          audience: "all_users",
-          label: "draft",
-        });
-        props.onClose(); // Close the modal after submission
+      if (props.notificationToEdit) {
+        console.log(
+          "this is the notif to edit ",
+          props.notificationToEdit.notification_id,
+        );
+        // If editing an existing notification, update it
+        response = await fetch(
+          `/api/v1/admin/notifications/${props.notificationToEdit.notification_id}`,
+          {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(notificationData),
+          },
+        );
+        const updatedNotification = await response.json();
+        props.onUpdateNotification(updatedNotification); // Update in parent
       } else {
-        console.error("Failed to add notification");
+        // If adding a new notification
+        response = await fetch("/api/v1/admin/notifications/", {
+          method: "POST", // Create method
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(notificationData),
+        });
+
+        const addedNotification = await response.json();
+        props.onAddNotification(addedNotification); // Update parent
       }
+      setFormData({
+        notification_id: "",
+        title: "",
+        description: "",
+        small_image_path: "",
+        big_image_path: "",
+        cta_label: "",
+        cta_link: "",
+        audience: "all_users",
+        label: "draft",
+      });
+      props.onClose(); // Close the modal after submission
     } catch (error) {
-      console.error("Error adding notification:", error);
+      console.error("Error saving notification:", error);
     }
   };
 
@@ -96,7 +134,11 @@ const NotificationModal = (props: NotificationModalProps) => {
     <div className={styles.modalOverlay}>
       <div className={styles.modal}>
         <div className={styles.modalHeader}>
-          <h2>Add New Notification</h2>
+          <h2>
+            {props.notificationToEdit
+              ? "Edit Notification"
+              : "Add New Notification"}
+          </h2>
           <button className={styles.closeButton} onClick={props.onClose}>
             ×
           </button>
@@ -104,7 +146,7 @@ const NotificationModal = (props: NotificationModalProps) => {
 
         <form onSubmit={handleSubmit} className={styles.form}>
           <div className={styles.formGroup}>
-            <label htmlFor="title">Notification ID *</label>
+            <label htmlFor="notification_id">Notification ID *</label>
             <input
               type="text"
               id="notification_id"
@@ -113,6 +155,7 @@ const NotificationModal = (props: NotificationModalProps) => {
               onChange={handleChange}
               required
               className={styles.input}
+              disabled={!!props.notificationToEdit} // Disable when editing
             />
           </div>
 
@@ -236,7 +279,9 @@ const NotificationModal = (props: NotificationModalProps) => {
               Cancel
             </button>
             <button type="submit" className={styles.submitButton}>
-              Add Notification
+              {props.notificationToEdit
+                ? "Update Notification"
+                : "Add Notification"}
             </button>
           </div>
         </form>

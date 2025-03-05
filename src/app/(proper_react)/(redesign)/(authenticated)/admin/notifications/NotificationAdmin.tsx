@@ -82,6 +82,51 @@ export const NotificationAdmin = (props: Props) => {
       console.error("Error deleting notification:", error);
     }
   };
+
+  const [activeNotificationToEdit, setActiveNotificationToEdit] =
+    useState<NotificationRow | null>(null);
+
+  const handleUpdateNotification = async (
+    updatedNotification: NotificationRow,
+  ) => {
+    try {
+      const response = await fetch(
+        `/api/v1/admin/notifications/${updatedNotification.notification_id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(updatedNotification),
+        },
+      );
+
+      if (response.ok) {
+        setNotifications((prevNotifications) =>
+          prevNotifications.map((notification) =>
+            notification.id === updatedNotification.id
+              ? updatedNotification
+              : notification,
+          ),
+        );
+      } else {
+        console.error("Failed to update notification:", response.status);
+      }
+    } catch (error) {
+      console.error("Error updating notification:", error);
+    }
+  };
+  const handleEditNotification = (notificationId: string) => {
+    const notificationToEdit = notifications.find(
+      (n) => n.notification_id === notificationId,
+    );
+    if (notificationToEdit) {
+      setIsModalOpen(true);
+      // Pass the notification data to the modal for editing
+      setActiveNotificationToEdit(notificationToEdit);
+    }
+  };
+
   // Handle selecting a notification
   const handleClick = (notificationId: number) => {
     const newActiveNotification = notifications.find(
@@ -277,6 +322,15 @@ export const NotificationAdmin = (props: Props) => {
               >
                 Delete
               </button>
+              <button
+                onClick={() =>
+                  void handleEditNotification(
+                    activeNotification.notification_id,
+                  )
+                }
+              >
+                Edit
+              </button>
             </div>
           </div>
         )}
@@ -323,7 +377,9 @@ export const NotificationAdmin = (props: Props) => {
       <NotificationModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
+        notificationToEdit={activeNotificationToEdit} // Pass the notification to edit
         onAddNotification={handleAddNotification}
+        onUpdateNotification={handleUpdateNotification} // Pass the update handler
       />
     </div>
   );

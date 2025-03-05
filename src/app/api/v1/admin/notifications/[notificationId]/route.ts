@@ -9,7 +9,9 @@ import { isAdmin } from "../../../../utils/auth";
 import {
   deleteNotification,
   getNotificationByNotificationId,
+  updateNotification,
 } from "../../../../../../db/tables/notifications";
+import { NotificationRow } from "knex/types/tables";
 
 export async function GET(
   req: NextRequest,
@@ -33,10 +35,9 @@ export async function GET(
   }
 }
 
-export async function DELETE(
-  req: NextRequest,
-  props: { params: Promise<{ notificationId: string }> },
-) {
+export async function DELETE(props: {
+  params: Promise<{ notificationId: string }>;
+}) {
   const params = await props.params;
   const session = await getServerSession();
   if (isAdmin(session?.user?.email || "")) {
@@ -51,5 +52,28 @@ export async function DELETE(
     }
   } else {
     return NextResponse.json({ success: false }, { status: 401 });
+  }
+}
+
+export async function PUT(
+  req: NextRequest,
+  { params }: { params: { notificationId: string } },
+) {
+  const { notificationId } = params;
+
+  try {
+    const updatedData: NotificationRow = await req.json();
+    const updatedNotification = await updateNotification(
+      notificationId,
+      updatedData,
+    );
+
+    return NextResponse.json(updatedNotification, { status: 200 });
+  } catch (error) {
+    console.error("Error updating notification:", error);
+    return NextResponse.json(
+      { error: "Internal Server Error" },
+      { status: 500 },
+    );
   }
 }
