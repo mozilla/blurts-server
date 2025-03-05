@@ -49,6 +49,8 @@
 
   :first-child {
     flex-grow: 1;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
 
   button {
@@ -56,6 +58,7 @@
     border: none;
     border-radius: tokens.$border-radius-xl;
     aspect-ratio: 1;
+    flex-shrink: 0;
 
     &:hover {
       cursor: pointer;

@@ -226,7 +226,7 @@ const AllowlistedAddress = (props: {
 }) => {
   return (
     <span className={styles.addressListing}>
-      <span>{props.address}</span>
+      <span title={props.address}>{props.address}</span>
       <button
         type="button"
         onClick={() => props.onRemove()}
