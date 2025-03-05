@@ -14,6 +14,7 @@ const knex = createDbConnection();
 
 export async function GET() {
   const session = await getServerSession();
+  console.log("session from default route: ", session);
 
   if (!isAdmin(session?.user?.email || "")) {
     logger.error("Not an admin user");

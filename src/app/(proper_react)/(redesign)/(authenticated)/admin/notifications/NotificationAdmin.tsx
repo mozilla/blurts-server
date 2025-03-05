@@ -377,9 +377,9 @@ export const NotificationAdmin = (props: Props) => {
       <NotificationModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        notificationToEdit={activeNotificationToEdit} // Pass the notification to edit
+        notificationToEdit={activeNotificationToEdit}
         onAddNotification={handleAddNotification}
-        onUpdateNotification={handleUpdateNotification} // Pass the update handler
+        onUpdateNotification={handleUpdateNotification}
       />
     </div>
   );

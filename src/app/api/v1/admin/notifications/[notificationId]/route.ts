@@ -19,6 +19,7 @@ export async function GET(
 ) {
   const params = await props.params;
   const session = await getServerSession();
+
   if (isAdmin(session?.user?.email || "")) {
     // Signed in
     const notificationId = params.notificationId;

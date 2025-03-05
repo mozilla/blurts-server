@@ -21,6 +21,8 @@ export async function GET(
 ) {
   const params = await props.params;
   const session = await getServerSession();
+  console.log("session from default route: ", session);
+
   if (isAdmin(session?.user?.email || "")) {
     // Signed in
     const flagName = params.flagId;

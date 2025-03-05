@@ -37,17 +37,29 @@ export async function addNotification(
 }
 
 export async function getNotificationByNotificationId(notificationId: string) {
-  await knex("notifications").where("notification_id", notificationId);
+  logger.info("getNotificationByNotificationId", notificationId);
+  const res = await knex("notifications").where(
+    "notification_id",
+    notificationId,
+  );
+
+  return res[0] || null;
 }
 
 export async function deleteNotification(notificationId: string) {
-  await knex("notifications").where("notification_id", notificationId).del();
+  logger.info("deleteNotification", notificationId);
+  const res = await knex("notifications")
+    .where("notification_id", notificationId)
+    .del();
+
+  return res;
 }
 
 export async function updateNotification(
   notificationId: string,
   updatedData: NotificationRow,
 ): Promise<NotificationRow> {
+  logger.info("updateNotification", notificationId);
   try {
     const [updatedNotification] = await knex("notifications")
       .where("notification_id", notificationId)
