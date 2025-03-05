@@ -14,7 +14,7 @@ import {
 import { NotificationRow } from "knex/types/tables";
 
 export async function GET(
-  req: NextRequest,
+  _req: NextRequest,
   props: { params: Promise<{ notificationId: string }> },
 ) {
   const params = await props.params;
@@ -36,9 +36,12 @@ export async function GET(
   }
 }
 
-export async function DELETE(props: {
-  params: Promise<{ notificationId: string }>;
-}) {
+export async function DELETE(
+  _req: NextRequest,
+  props: {
+    params: Promise<{ notificationId: string }>;
+  },
+) {
   const params = await props.params;
   const session = await getServerSession();
   if (isAdmin(session?.user?.email || "")) {
@@ -58,23 +61,29 @@ export async function DELETE(props: {
 
 export async function PUT(
   req: NextRequest,
-  { params }: { params: { notificationId: string } },
+  props: { params: Promise<{ notificationId: string }> },
 ) {
+  const params = await props.params;
   const { notificationId } = params;
+  const session = await getServerSession();
 
-  try {
-    const updatedData: NotificationRow = await req.json();
-    const updatedNotification = await updateNotification(
-      notificationId,
-      updatedData,
-    );
+  if (isAdmin(session?.user?.email || "")) {
+    try {
+      const updatedData: NotificationRow = await req.json();
+      const updatedNotification = await updateNotification(
+        notificationId,
+        updatedData,
+      );
 
-    return NextResponse.json(updatedNotification, { status: 200 });
-  } catch (error) {
-    console.error("Error updating notification:", error);
-    return NextResponse.json(
-      { error: "Internal Server Error" },
-      { status: 500 },
-    );
+      return NextResponse.json(updatedNotification, { status: 200 });
+    } catch (error) {
+      console.error("Error updating notification:", error);
+      return NextResponse.json(
+        { error: "Internal Server Error" },
+        { status: 500 },
+      );
+    }
+  } else {
+    return NextResponse.json({ success: false }, { status: 401 });
   }
 }
