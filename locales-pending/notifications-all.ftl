@@ -4,7 +4,7 @@
 
 # between notif- and -title or -description is the notification_id
 
-notif-save-monitor-plus-title = Save 35% on Monitor Plus
+notif-save-monitor-plus-title = Save 35% on { -brand-monitor } Plus
 notif-save-monitor-plus-description = Upgrade from a monthly plan to a yearly plan and save!
 notif-save-monitor-plus-cta-label = Upgrade now
 
