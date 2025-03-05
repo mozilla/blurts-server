@@ -44,11 +44,16 @@
 }
 
 .navbarList {
+  border-bottom: 1px solid tokens.$color-grey-10;
   display: flex;
   flex-direction: column;
   gap: tokens.$spacing-xs;
   list-style-type: none;
   padding: tokens.$spacing-sm tokens.$spacing-md;
+
+  @media screen and (min-width: tokens.$screen-xl) {
+    border: none;
+  }
 
   ul {
     display: flex;

@@ -18,8 +18,7 @@
       display: flex;
       align-items: center;
       padding: tokens.$spacing-xl tokens.$spacing-2xl;
-      border-bottom: 1px solid tokens.$color-grey-20;
-      box-shadow: tokens.$box-shadow-xs;
+      border-bottom: 1px solid tokens.$color-grey-10;
 
       &:hover {
         box-shadow: tokens.$box-shadow-sm;
@@ -71,7 +70,6 @@
 
   .page {
     flex: 1 0 auto;
-    overflow: hidden;
   }
 }
 
