@@ -393,19 +393,6 @@ async function pullMessages() {
 
   return [subClient, response.receivedMessages] as const;
 }
-
-async function run() {
-  const [subClient, receivedMessages] = await pullMessages();
-  await poll(subClient, receivedMessages ?? []);
-
-  // We're transitioning this into a long-running process,
-  // but to ensure a smooth transition, allow keeping the cronjob behaviour:
-  if (process.env.LOOP === "true") {
-    logger.info("Processed batch, starting next one.");
-    await run();
-  }
-}
-
 async function init() {
   // By adding this event listener, the default behaviour (exiting) will be disabled.
   // Instead, we'll be able to wind down DB connections etc. before exiting.
@@ -415,7 +402,8 @@ async function init() {
   });
   await initEmail();
 
-  await run();
+  const [subClient, receivedMessages] = await pullMessages();
+  await poll(subClient, receivedMessages ?? []);
 }
 
 if (process.env.NODE_ENV !== "test") {
