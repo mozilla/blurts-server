@@ -113,7 +113,7 @@ export function mockOnerepProfileStatus() {
 }
 
 export function mockOnerepAddresses() {
-  type typeOfAddr = [{ city: string; state: StateAbbr }];
+  type typeOfAddr = { city: string; state: StateAbbr }[];
 
   return MockUser.ADDRESSES.map((address) => ({
     city: address.city,
