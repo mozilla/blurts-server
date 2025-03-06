@@ -8,6 +8,6 @@ notif-save-monitor-plus-title = Save 35% on { -brand-monitor } Plus
 notif-save-monitor-plus-description = Upgrade from a monthly plan to a yearly plan and save!
 notif-save-monitor-plus-cta-label = Upgrade now
 
-notif-this-is-a-new-notification-title = Some very cool news is going to go here
-notif-this-is-a-new-notification-description = New notification description wow that's crazy
-notif-this-is-a-new-notification-label = This is a link
+notif-this-is-a-new-notification-title = New notification sample title
+notif-this-is-a-new-notification-description = New notification sample description
+notif-this-is-a-new-notification-label = New notification sample label

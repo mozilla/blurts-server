@@ -100,8 +100,9 @@ const NotificationModal = (props: NotificationModalProps) => {
         props.onUpdateNotification(updatedNotification); // Update in parent
       } else {
         // If adding a new notification
+
         response = await fetch("/api/v1/admin/notifications/", {
-          method: "POST", // Create method
+          method: "POST",
           headers: {
             "Content-Type": "application/json",
           },

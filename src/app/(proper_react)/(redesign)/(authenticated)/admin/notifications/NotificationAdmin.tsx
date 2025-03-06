@@ -19,6 +19,8 @@ export const NotificationAdmin = (props: Props) => {
   const [activeNotificationId, setActiveNotificationId] = useState<
     number | null
   >(props.notifications[0]?.id || null);
+  const [activeNotificationToEdit, setActiveNotificationToEdit] =
+    useState<NotificationRow | null>(null);
 
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [notifications, setNotifications] = useState<NotificationRow[]>(
@@ -94,9 +96,6 @@ export const NotificationAdmin = (props: Props) => {
     }
   };
 
-  const [activeNotificationToEdit, setActiveNotificationToEdit] =
-    useState<NotificationRow | null>(null);
-
   const handleUpdateNotification = async (
     updatedNotification: NotificationRow,
   ) => {
@@ -169,7 +168,6 @@ export const NotificationAdmin = (props: Props) => {
   // States for each image
   const [smallImageIsLoading, setSmallImageIsLoading] = useState(true);
   const [bigImageIsLoading, setBigImageIsLoading] = useState(true);
-
   const [smallImageUnavailable, setSmallImageUnavailable] = useState(false);
   const [bigImageUnavailable, setBigImageUnavailable] = useState(false);
 
