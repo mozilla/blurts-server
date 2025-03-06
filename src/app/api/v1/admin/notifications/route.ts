@@ -33,26 +33,29 @@ export async function GET() {
 }
 
 export async function POST(req: NextRequest) {
-  try {
-    const newNotification: NotificationRow = await req.json();
+  const session = await getServerSession();
+  if (isAdmin(session?.user?.email || "")) {
+    try {
+      const newNotification: NotificationRow = await req.json();
 
-    const [addedNotification] = await knex("notifications")
-      .insert(newNotification)
-      .returning("*");
+      const [addedNotification] = await knex("notifications")
+        .insert(newNotification)
+        .returning("*");
 
-    if (!addedNotification) {
+      if (!addedNotification) {
+        return NextResponse.json(
+          { error: "Failed to insert notification" },
+          { status: 400 },
+        );
+      }
+
+      return NextResponse.json(addedNotification, { status: 201 });
+    } catch (error) {
+      console.error("Error adding notification:", error);
       return NextResponse.json(
-        { error: "Failed to insert notification" },
-        { status: 400 },
+        { error: "Internal Server Error" },
+        { status: 500 },
       );
     }
-
-    return NextResponse.json(addedNotification, { status: 201 });
-  } catch (error) {
-    console.error("Error adding notification:", error);
-    return NextResponse.json(
-      { error: "Internal Server Error" },
-      { status: 500 },
-    );
   }
 }
