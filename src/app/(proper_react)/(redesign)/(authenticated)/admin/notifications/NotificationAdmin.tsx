@@ -163,8 +163,6 @@ export const NotificationAdmin = (props: Props) => {
       setActiveNotificationId(notifications[0].id);
     }
   }, [notifications, activeNotificationId]);
-
-  const [imageIsLoading, setImageIsLoading] = useState<boolean>(true);
   // States for each image
   const [smallImageIsLoading, setSmallImageIsLoading] = useState(true);
   const [bigImageIsLoading, setBigImageIsLoading] = useState(true);
@@ -259,10 +257,15 @@ export const NotificationAdmin = (props: Props) => {
                   <div className={styles.loader}>Loading...</div>
                 )}
                 {smallImageUnavailable ? (
-                  <span className={styles.imagePathUnavailable}>
-                    Cannot load /images/notifications/
-                    {activeNotification.notification_id.trim()}/small.jpg
-                  </span>
+                  <Image
+                    alt="Fallback image"
+                    width={500}
+                    height={300}
+                    key={activeNotification.id}
+                    className={styles.smallImage}
+                    src="/images/notifications/fallback/small.jpg"
+                    onLoadingComplete={() => setSmallImageIsLoading(false)}
+                  />
                 ) : (
                   <Image
                     alt="Small Image"
@@ -270,6 +273,7 @@ export const NotificationAdmin = (props: Props) => {
                     height={300}
                     key={activeNotification.id}
                     src={smallImagePath}
+                    className={styles.smallImage}
                     onLoadingComplete={() => setSmallImageIsLoading(false)}
                     onError={() => setSmallImageUnavailable(true)}
                   />
@@ -283,10 +287,15 @@ export const NotificationAdmin = (props: Props) => {
                   <div className={styles.loader}>Loading...</div>
                 )}
                 {bigImageUnavailable ? (
-                  <span className={styles.imagePathUnavailable}>
-                    Cannot load /images/notifications/
-                    {activeNotification.notification_id.trim()}/big.jpg
-                  </span>
+                  <Image
+                    alt="Fallback image"
+                    width={500}
+                    height={300}
+                    key={activeNotification.id}
+                    className={styles.bigImage}
+                    src="/images/notifications/fallback/big.jpg"
+                    onLoadingComplete={() => setBigImageIsLoading(false)}
+                  />
                 ) : (
                   <Image
                     alt="Notification preview"
@@ -294,6 +303,7 @@ export const NotificationAdmin = (props: Props) => {
                     height={300}
                     key={activeNotification.id}
                     src={bigImagePath}
+                    className={styles.bigImage}
                     onLoadingComplete={() => setBigImageIsLoading(false)}
                     onError={() => setBigImageUnavailable(true)}
                   />
@@ -353,17 +363,29 @@ export const NotificationAdmin = (props: Props) => {
         {activeNotification && (
           <div className={styles.previewModalWrapper}>
             <div className={styles.previewModal}>
-              {imageIsLoading && (
+              {bigImageIsLoading && (
                 <div className={styles.loader}>Loading...</div>
               )}
-              <Image
-                alt="Notification preview"
-                width="500"
-                height="300"
-                key={activeNotification.id}
-                src={`/images/notifications/${activeNotification.notification_id.trim()}/big.jpg`}
-                onLoadingComplete={() => setImageIsLoading(false)}
-              />
+              {bigImageUnavailable ? (
+                <Image
+                  alt="Fallback image"
+                  width={500}
+                  height={300}
+                  key={activeNotification.id}
+                  src="/images/notifications/fallback/big.jpg"
+                  onLoadingComplete={() => setBigImageIsLoading(false)}
+                />
+              ) : (
+                <Image
+                  alt="Notification preview"
+                  width={500}
+                  height={300}
+                  key={activeNotification.id}
+                  src={bigImagePath}
+                  onLoadingComplete={() => setBigImageIsLoading(false)}
+                  onError={() => setBigImageUnavailable(true)}
+                />
+              )}
               <dl>
                 <dt>
                   <LocalizedNotificationString

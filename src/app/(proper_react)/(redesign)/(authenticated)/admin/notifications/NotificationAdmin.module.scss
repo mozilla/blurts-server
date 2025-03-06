@@ -83,6 +83,16 @@
 
         dd {
           margin-bottom: tokens.$spacing-md;
+
+          .smallImage {
+            width: 70px;
+            height: auto;
+          }
+
+          .bigImage {
+            width: 300px;
+            height: auto;
+          }
         }
       }
     }

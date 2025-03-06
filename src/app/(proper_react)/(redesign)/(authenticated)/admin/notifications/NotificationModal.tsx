@@ -81,10 +81,6 @@ const NotificationModal = (props: NotificationModalProps) => {
       let response;
 
       if (props.notificationToEdit) {
-        console.log(
-          "this is the notif to edit ",
-          props.notificationToEdit.notification_id,
-        );
         // If editing an existing notification, update it
         response = await fetch(
           `/api/v1/admin/notifications/${props.notificationToEdit.notification_id}`,
