@@ -1,4 +1,7 @@
 name: Lighthouse Report Cron
+
+permissions: {}
+
 on:
   schedule:
     - cron: '0 6 * * *'
