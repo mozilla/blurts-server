@@ -26,17 +26,6 @@ export async function up(knex) {
       .defaultTo(knex.raw(`ARRAY[]::character varying(255)[]`));
     table.jsonb("addresses").notNullable().defaultTo("[]");
   });
-
-  await knex.raw(`
-    UPDATE "onerep_profiles"
-    SET "addresses" = jsonb_build_array(
-      jsonb_build_object(
-        'city', "city_name",
-        'state', "state_code"
-      )
-    )
-    WHERE "city_name" IS NOT NULL AND "state_code" IS NOT NULL;
-  `);
 }
 
 /**
@@ -44,13 +33,6 @@ export async function up(knex) {
  * @returns { Promise<void> }
  */
 export async function down(knex) {
-  await knex.raw(`
-    UPDATE "onerep_profiles"
-    SET "city_name" = COALESCE(("addresses"->0->>'city'), ''),
-        "state_code" = COALESCE(("addresses"->0->>'state'), '')
-    WHERE jsonb_array_length(COALESCE("addresses", '[]'::jsonb)) > 0;
-  `);
-
   await knex.schema.alterTable("onerep_profiles", (table) => {
     table.dropColumns(
       "first_names",
