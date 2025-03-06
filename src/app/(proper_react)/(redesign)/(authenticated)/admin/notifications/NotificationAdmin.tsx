@@ -25,6 +25,7 @@ export const NotificationAdmin = (props: Props) => {
     props.notifications,
   );
   const endpointBase = `/api/v1/admin/notifications`;
+
   const handleAddNotification = async (newNotification: NotificationRow) => {
     try {
       const response = await fetch(endpointBase, {
@@ -34,16 +35,23 @@ export const NotificationAdmin = (props: Props) => {
         },
         body: JSON.stringify(newNotification),
       });
-      const savedNotification: NotificationRow = await response.json(); // Ensure we get the ID from the backend
 
-      if (response.ok) {
-        setNotifications((prevNotifications) => [
-          ...prevNotifications,
-          savedNotification,
-        ]);
+      if (!response.ok) {
+        console.error(
+          "Failed to add notification:",
+          response.status,
+          response.statusText,
+        );
+        return;
       }
 
-      // If no notification is active, set the newly added one as active
+      const savedNotification: NotificationRow = await response.json();
+
+      setNotifications((prevNotifications) => [
+        ...prevNotifications,
+        savedNotification,
+      ]);
+
       if (!activeNotificationId) {
         setActiveNotificationId(savedNotification.id);
       }
@@ -61,21 +69,24 @@ export const NotificationAdmin = (props: Props) => {
         },
       );
 
+      if (!response.ok) {
+        console.error(
+          "Failed to delete notification:",
+          response.status,
+          response.statusText,
+        );
+        return;
+      }
+
       setNotifications((prevNotifications) =>
         prevNotifications.filter(
           (notification) => notification.notification_id !== notificationId,
         ),
       );
-      // If the deleted notification was active, reset activeNotificationId
+
       if (notificationId === activeNotification?.notification_id) {
         setActiveNotificationId(
           notifications.length > 1 ? notifications[0].id : null,
-        );
-      } else {
-        console.error(
-          "Failed to delete notification:",
-          response.status,
-          response.statusText,
         );
       }
     } catch (error) {
@@ -101,21 +112,27 @@ export const NotificationAdmin = (props: Props) => {
         },
       );
 
-      if (response.ok) {
-        setNotifications((prevNotifications) =>
-          prevNotifications.map((notification) =>
-            notification.id === updatedNotification.id
-              ? updatedNotification
-              : notification,
-          ),
+      if (!response.ok) {
+        console.error(
+          "Failed to update notification:",
+          response.status,
+          response.statusText,
         );
-      } else {
-        console.error("Failed to update notification:", response.status);
+        return;
       }
+
+      setNotifications((prevNotifications) =>
+        prevNotifications.map((notification) =>
+          notification.id === updatedNotification.id
+            ? updatedNotification
+            : notification,
+        ),
+      );
     } catch (error) {
       console.error("Error updating notification:", error);
     }
   };
+
   const handleEditNotification = (notificationId: string) => {
     const notificationToEdit = notifications.find(
       (n) => n.notification_id === notificationId,
