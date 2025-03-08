@@ -25,7 +25,7 @@ breach-checklist-pw-header-text = Perbarui kata sandi Anda dan aktifkan autentik
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
-breach-checklist-pw-body-text = Dalam kebanyakan kasus, kami menyarankan Anda mengubah kata sandi Anda di situs web perusahaan. Tetapi <b>situs web mereka mungkin sedang tidak aktif atau mengandung konten berbahaya</b>, jadi berhati-hatilah jika Anda <breached-company-link>mengunjungi situs</breached-company-link>. Untuk perlindungan tambahan, pastikan Anda menggunakan kata sandi unik untuk semua akun, sehingga kata sandi yang bocor tidak dapat digunakan untuk mengakses akun lain. { $passwordManagerLink } dapat membantu Anda melacak semua kata sandi Anda dengan aman.
+breach-checklist-pw-body-text = Dalam kebanyakan kasus, kami menyarankan Anda mengubah kata sandi Anda di situs web perusahaan. Tetapi <b>situs web mereka mungkin sedang tidak aktif atau mengandung konten berbahaya</b>, jadi berhati-hatilah jika Anda <breached-company-link>mengunjungi situs tersebut</breached-company-link>. Untuk perlindungan tambahan, pastikan Anda menggunakan kata sandi unik untuk semua akun, sehingga kata sandi yang bocor tidak dapat digunakan untuk mengakses akun lain. { $passwordManagerLink } dapat membantu Anda melacak semua kata sandi Anda dengan aman.
 
 ## Prompts the user for changes when there is a breach detected of email
 
@@ -91,7 +91,7 @@ breach-checklist-phone-header-2 = Lindungi nomor telepon Anda dengan layanan pen
 
 breach-checklist-sq-header-text = Perbarui pertanyaan keamanan Anda.
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
-breach-checklist-sq-body-text = Dalam kebanyakan kasus, kami menyarankan Anda memperbarui pertanyaan keamanan Anda di situs web perusahaan. Tetapi <b>situs web mereka mungkin sedang tidak aktif atau mengandung konten berbahaya</b>, jadi berhati-hatilah jika Anda <breached-company-link>mengunjungi situs</breached-company-link>. Untuk perlindungan tambahan, perbarui pertanyaan keamanan ini pada akun penting mana pun yang Anda gunakan, dan buat kata sandi unik untuk semua akun.
+breach-checklist-sq-body-text = Dalam kebanyakan kasus, kami menyarankan Anda memperbarui pertanyaan keamanan Anda di situs web perusahaan. Tetapi <b>situs web mereka mungkin sedang tidak aktif atau mengandung konten berbahaya</b>, jadi berhati-hatilah jika Anda <breached-company-link>mengunjungi situs tersebut</breached-company-link>. Untuk perlindungan tambahan, perbarui pertanyaan keamanan ini pada akun penting mana pun yang Anda gunakan, dan buat kata sandi unik untuk semua akun.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
