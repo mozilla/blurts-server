@@ -2,14 +2,14 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-chevron-alt = Detail eksposur
-exposure-card-exposure-type = Jenis paparan
-exposure-card-date-found = Tanggal pemaparan
+chevron-alt = Rincian keterpaparan
+exposure-card-exposure-type = Tipe keterpaparan
+exposure-card-date-found = Tanggal terpapar
 
 # Status Pill
 
-status-pill-action-needed = Tindakan diperlukan
-status-pill-progress = Dalam proses
+status-pill-action-needed = Diperlukan tindakan
+status-pill-progress = Sedang berlangsung
 status-pill-fixed = Diperbaiki
 
 # Exposure Card
@@ -26,9 +26,9 @@ exposure-card-other = Lainnya
 # $data_breach_company is the company associated with the data breach.
 # $data_breach_date is the date of the data breach.
 exposure-card-description-data-breach-action-needed = Informasi Anda terungkap dalam kebocoran data <data_breach_link>{ $data_breach_company } pada { $data_breach_date }.</data_breach_link> Kami akan memandu Anda melalui langkah-langkah untuk memperbaikinya.
-exposure-card-description-data-breach-fixed = Anda telah mengambil langkah-langkah yang diperlukan untuk memperbaiki <data_breach_link>pelanggaran ini</data_breach_link>. Kami akan terus memantau pembobolan data dan memperingatkan Anda jika ada eksposur baru.
+exposure-card-description-data-breach-fixed = Anda telah mengambil langkah-langkah yang diperlukan untuk memperbaiki <data_breach_link>kebocoran ini</data_breach_link>. Kami akan terus memantau kebocoran data dan memperingatkan Anda jika ada keterpaparan baru.
 exposure-card-your-exposed-info = Info Anda yang terekspos:
-exposure-card-found-the-following-data = { -brand-monitor } menemukan data terbuka berikut:
+exposure-card-found-the-following-data = { -brand-monitor } menemukan data terpapar berikut:
 exposure-card-exposure-type-data-broker = Info untuk dijual
 exposure-card-exposure-type-data-breach = Kebocoran data
 exposure-card-resolve-exposures-cta = Selesaikan eksposur
