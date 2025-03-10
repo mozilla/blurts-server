@@ -9,6 +9,7 @@ import { UpdateableProfileDetails } from "./onerep";
 const currentProfileDetails: OnerepProfileRow = {
   id: 1234,
   onerep_profile_id: 5678,
+  name_suffix: "",
   first_name: "First01",
   last_name: "last01",
   middle_name: "",

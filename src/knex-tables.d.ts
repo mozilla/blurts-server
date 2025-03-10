@@ -320,6 +320,7 @@ declare module "knex/types/tables" {
   interface OnerepProfileRow {
     id: number;
     onerep_profile_id: null | number;
+    name_suffix: null | string;
     first_name: string;
     middle_name: null | string;
     last_name: string;
