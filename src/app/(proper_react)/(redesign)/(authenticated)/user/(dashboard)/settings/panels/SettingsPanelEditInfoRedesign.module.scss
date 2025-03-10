@@ -28,6 +28,20 @@
   }
 }
 
+.addEmailButton {
+  display: flex;
+  flex-direction: column;
+  gap: tokens.$spacing-sm;
+  text-align: center;
+  width: 100%;
+
+  @media screen and (min-width: tokens.$screen-sm) {
+    align-items: center;
+    flex-direction: row;
+    gap: tokens.$spacing-md;
+  }
+}
+
 .email {
   &Wrapper,
   &Content {

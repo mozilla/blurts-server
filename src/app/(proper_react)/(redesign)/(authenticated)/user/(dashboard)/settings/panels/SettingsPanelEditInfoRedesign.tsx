@@ -7,7 +7,7 @@ import { SubscriberRow } from "knex/types/tables";
 import { CONST_MAX_NUM_ADDRESSES } from "../../../../../../../../constants";
 import { SubscriberEmailPreferencesOutput } from "../../../../../../../../db/tables/subscriber_email_preferences";
 import { useL10n } from "../../../../../../../hooks/l10n";
-import { EmailAddressAdder } from "../EmailAddressAdder";
+import { EmailAddressAdderRedesign } from "../EmailAddressAdderRedesign";
 import { Session } from "next-auth";
 import { SanitizedEmailAddressRow } from "../../../../../../../functions/server/sanitize";
 import {
@@ -130,7 +130,9 @@ function MonitoredEmailAddressesSection(
           </li>
         ))}
       </ul>
-      <span>{hasMaxEmailAddresses && <EmailAddressAdder />}</span>
+      <span className={styles.addEmailButton}>
+        {hasMaxEmailAddresses && <EmailAddressAdderRedesign />}
+      </span>
     </section>
   );
 }
