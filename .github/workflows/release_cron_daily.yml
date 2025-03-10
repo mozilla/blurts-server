@@ -1,5 +1,7 @@
 name: Daily Pre-release
 
+permissions: {}
+
 on:
   schedule:
     - cron: '0 0 * * 1-5' # Runs Mon-Fri at midnight UTC
@@ -7,6 +9,8 @@ on:
 
 jobs:
   create-pre-release:
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
 
     steps:
@@ -14,6 +18,7 @@ jobs:
       uses: actions/checkout@v4
       with:
         ref: main # Ensure we are working with the main branch
+        persist-credentials: false
 
     - name: Get latest commit hash
       id: get_latest_commit
@@ -43,7 +48,7 @@ jobs:
             "generate_release_notes": true
           }'
 
-    # We cannot rely on the release_retag.yaml workflow because of the 
+    # We cannot rely on the release_retag.yaml workflow because of the
     # auth scope of the default github token. It's a good security practice
     # to prevent a github action being triggered by another.
     # So we will deliberately push to dockerhub below

@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 "use client";
-import { FeatureFlagRow } from "knex/types/tables";
+import { FeatureFlagViewRow, SubscriberRow } from "knex/types/tables";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import styles from "./FlagEditor.module.scss";
@@ -50,7 +50,9 @@ export const NewFlagEditor = (props: {
 };
 
 export const ExistingFlagEditor = (props: {
-  flag: FeatureFlagRow;
+  flag: FeatureFlagViewRow & {
+    last_updated_by_subscriber_email: SubscriberRow["primary_email"];
+  };
   adminOnly: boolean;
 }) => {
   return (
@@ -81,6 +83,8 @@ export const ExistingFlagEditor = (props: {
           console.error(e);
         }
       }}
+      lastUpdated={props.flag.updated_at}
+      lastUpdatedBy={props.flag.last_updated_by_subscriber_email}
     />
   );
 };
@@ -92,6 +96,8 @@ type Props = {
   allowList: string[];
   adminOnly: boolean;
   onUpdateAllowlist: (allowList: string[]) => Promise<void>;
+  lastUpdated?: Date;
+  lastUpdatedBy?: string;
 };
 const FlagEditor = (props: Props) => {
   const router = useRouter();
@@ -130,6 +136,22 @@ const FlagEditor = (props: Props) => {
         )}
       </div>
       {!props.isEnabled && <AllowlistEditor {...props} />}
+      {typeof props.lastUpdated !== "undefined" &&
+        typeof props.lastUpdatedBy !== "undefined" && (
+          <dl className={styles.editLog}>
+            <div>
+              <dt>Last update:</dt>
+              <dd>
+                {props.lastUpdated.toLocaleDateString()}{" "}
+                {props.lastUpdated.toLocaleTimeString()}
+              </dd>
+            </div>
+            <div>
+              <dt>by</dt>
+              <dd>{props.lastUpdatedBy}</dd>
+            </div>
+          </dl>
+        )}
     </div>
   );
 };
@@ -204,7 +226,7 @@ const AllowlistedAddress = (props: {
 }) => {
   return (
     <span className={styles.addressListing}>
-      <span>{props.address}</span>
+      <span title={props.address}>{props.address}</span>
       <button
         type="button"
         onClick={() => props.onRemove()}

@@ -4,7 +4,7 @@
 
 import createDbConnection from "../connect";
 import { logger } from "../../app/functions/server/logging";
-import { FeatureFlagRow } from "knex/types/tables";
+import { FeatureFlagViewRow, SubscriberRow } from "knex/types/tables";
 
 const knex = createDbConnection();
 
@@ -22,19 +22,29 @@ export type FeatureFlag = {
 };
 
 /** @deprecated The method should not be used, use Nimbus experiment or roll-out: /src/app/functions/server/getExperiments */
-export async function getAllFeatureFlags() {
-  return await knex("feature_flags")
-    .whereNull("deleted_at")
-    .orderBy("name")
-    .returning("*");
+export async function getAllFeatureFlags(): Promise<
+  Array<
+    FeatureFlagViewRow & {
+      last_updated_by_subscriber_email: SubscriberRow["primary_email"];
+    }
+  >
+> {
+  return await knex("feature_flag_view")
+    .join(
+      "subscribers",
+      "subscribers.id",
+      "feature_flag_view.last_updated_by_subscriber_id",
+    )
+    .select(
+      "feature_flag_view.*",
+      "subscribers.primary_email as last_updated_by_subscriber_email",
+    )
+    .orderBy("feature_flag_view.name");
 }
 
 /** @deprecated The method should not be used, use Nimbus experiment or roll-out: /src/app/functions/server/getExperiments */
 export async function getDeletedFeatureFlags() {
-  return await knex("feature_flags")
-    .whereNotNull("deleted_at")
-    .orderBy("name")
-    .returning("*");
+  return await knex("feature_flag_view").select("*").orderBy("name");
 }
 
 export const featureFlagNames = [
@@ -66,10 +76,8 @@ export type FeatureFlagName = (typeof featureFlagNames)[number];
 export async function getEnabledFeatureFlags(
   options: { isSignedOut?: false; email: string } | { isSignedOut: true },
 ): Promise<FeatureFlagName[]> {
-  const query = knex("feature_flags")
+  const query = knex("feature_flag_view")
     .select("name")
-    .where("deleted_at", null)
-    .and.where("expired_at", null)
     .and.where((subQuery) => {
       subQuery = subQuery.where("is_enabled", true);
       if (!options.isSignedOut) {
@@ -115,20 +123,16 @@ export async function getEnabledFeatureFlags(
  */
 export async function getFeatureFlagData(
   featureFlagName: FeatureFlagName,
-): Promise<FeatureFlagRow | null> {
+): Promise<FeatureFlagViewRow | null> {
   return (
-    (await knex("feature_flags")
-      .first()
-      .where("name", featureFlagName)
-      // The `.andWhereNull` alias doesn't seem to exist:
-      // https://github.com/knex/knex/issues/1881#issuecomment-275433906
-      .whereNull("deleted_at")) ?? null
+    (await knex("feature_flag_view").first().where("name", featureFlagName)) ??
+    null
   );
 }
 
 export async function getFeatureFlagByName(name: string) {
   logger.info("getFeatureFlagByName", name);
-  const res = await knex("feature_flags").where("name", name);
+  const res = await knex("feature_flag_view").where("name", name);
 
   return res[0] || null;
 }
@@ -138,87 +142,22 @@ export async function getFeatureFlagByName(name: string) {
  * @deprecated The method should not be used, use Nimbus experiment or roll-out: /src/app/functions/server/getExperiments
  */
 export async function addFeatureFlag(
-  flag: Omit<FeatureFlagRow, "created_at" | "modified_at">,
+  flag: Omit<FeatureFlagViewRow, "updated_at">,
 ) {
   logger.info("addFeatureFlag", flag);
-  const featureFlagDb: Omit<FeatureFlagRow, "created_at" | "modified_at"> = {
+  await knex("feature_flag_events").insert({
     name: flag.name,
     is_enabled: flag.is_enabled,
-    description: flag.description,
-    dependencies: flag.dependencies,
-    allow_list: flag.allow_list
-      ?.map((email: string) => email.trim())
-      .filter((email: string) => email.length > 0),
-    wait_list: flag.wait_list
-      ?.map((email: string) => email.trim())
-      .filter((email: string) => email.length > 0),
-    expired_at: flag.expired_at,
-    owner: flag.owner,
-  };
-  const res = await knex("feature_flags")
-    .insert(featureFlagDb)
-    .onConflict("name")
-    .merge(["deleted_at"])
-    .returning("*");
+    allow_list: flag.allow_list,
+    created_by_subscriber_id: flag.last_updated_by_subscriber_id,
+  });
 
-  return res[0];
-}
+  const flagFromDb = await knex("feature_flag_view")
+    .select("*")
+    .where("name", flag.name)
+    .first();
 
-/**
- * @param name
- * @deprecated The method should not be used, use Nimbus experiment or roll-out: /src/app/functions/server/getExperiments
- */
-export async function deleteFeatureFlagByName(name: string) {
-  logger.info("deleteFeatureFlagByName", name);
-  const res = await knex("feature_flags")
-    .where("name", name)
-    .update({
-      // @ts-ignore knex.fn.now() results in it being set to a date,
-      // even if it's not typed as a JS date object:
-      deleted_at: knex.fn.now(),
-    })
-    .returning("*");
-  return res[0];
-}
-
-/**
- * @param name
- * @param dependencies
- * @deprecated The method should not be used, use Nimbus experiment or roll-out: /src/app/functions/server/getExperiments
- */
-export async function updateDependencies(name: string, dependencies: string[]) {
-  logger.info("updateDependencies", { name, dependencies });
-  const res = await knex("feature_flags")
-    .where("name", name)
-    .update({
-      dependencies,
-      // @ts-ignore knex.fn.now() results in it being set to a date,
-      // even if it's not typed as a JS date object:
-      modified_at: knex.fn.now(),
-    })
-    .returning("*");
-
-  return res[0];
-}
-
-/**
- * @param name
- * @param owner
- * @deprecated The method should not be used, use Nimbus experiment or roll-out: /src/app/functions/server/getExperiments
- */
-export async function updateOwner(name: string, owner: string) {
-  logger.info("updateOwner", { name, owner });
-  const res = await knex("feature_flags")
-    .where("name", name)
-    .update({
-      owner: owner,
-      // @ts-ignore knex.fn.now() results in it being set to a date,
-      // even if it's not typed as a JS date object:
-      modified_at: knex.fn.now(),
-    })
-    .returning("*");
-
-  return res[0];
+  return flagFromDb!;
 }
 
 /**
@@ -226,49 +165,30 @@ export async function updateOwner(name: string, owner: string) {
  * @param allowList
  * @deprecated The method should not be used, use Nimbus experiment or roll-out: /src/app/functions/server/getExperiments
  */
-export async function updateAllowList(name: string, allowList: string[]) {
+export async function updateAllowList(
+  name: string,
+  allowList: string[],
+  updaterId: SubscriberRow["id"],
+) {
   allowList = allowList.reduce((acc: string[], e: string) => {
     e = e.trim();
     if (e) acc.push(e);
     return acc;
   }, []);
   logger.info("updateAllowList", { name, allowList });
-  const res = await knex("feature_flags")
+  const existingFlag = await knex("feature_flag_view")
+    .select("*")
     .where("name", name)
-    .update({
-      allow_list: allowList,
-      // @ts-ignore knex.fn.now() results in it being set to a date,
-      // even if it's not typed as a JS date object:
-      modified_at: knex.fn.now(),
-    })
-    .returning("*");
-
-  return res[0];
-}
-
-/**
- * @param name
- * @param waitList
- * @deprecated The method should not be used, use Nimbus experiment or roll-out: /src/app/functions/server/getExperiments
- */
-export async function updateWaitList(name: string, waitList: string[]) {
-  waitList = waitList.reduce((acc: string[], e: string) => {
-    e = e.trim();
-    if (e) acc.push(e);
-    return acc;
-  }, []);
-  logger.info("updateWaitList", { name, waitList });
-  const res = await knex("feature_flags")
-    .where("name", name)
-    .update({
-      wait_list: waitList,
-      // @ts-ignore knex.fn.now() results in it being set to a date,
-      // even if it's not typed as a JS date object:
-      modified_at: knex.fn.now(),
-    })
-    .returning("*");
-
-  return res[0];
+    .first();
+  if (!existingFlag) {
+    throw new Error(`No flag found with name [${name}]`);
+  }
+  await knex("feature_flag_events").insert({
+    name: existingFlag.name,
+    is_enabled: existingFlag.is_enabled,
+    created_by_subscriber_id: updaterId,
+    allow_list: allowList,
+  });
 }
 
 /**
@@ -279,38 +199,46 @@ export async function updateWaitList(name: string, waitList: string[]) {
 export async function enableFeatureFlagByName(
   name: string,
   isEnabled: boolean,
+  updaterId: SubscriberRow["id"],
 ) {
   logger.info("enableFeatureFlagByName", name);
-  const res = await knex("feature_flags")
+  const existingFlag = await knex("feature_flag_view")
+    .select("*")
     .where("name", name)
-    .update({
-      is_enabled: isEnabled,
-      // @ts-ignore knex.fn.now() results in it being set to a date,
-      // even if it's not typed as a JS date object:
-      modified_at: knex.fn.now(),
-    })
-    .returning("*");
-
-  return res[0];
+    .first();
+  if (!existingFlag) {
+    throw new Error(`No flag found with name [${name}]`);
+  }
+  await knex("feature_flag_events").insert({
+    name: existingFlag.name,
+    is_enabled: isEnabled,
+    created_by_subscriber_id: updaterId,
+    allow_list: existingFlag.allow_list,
+  });
 }
 
 /**
  * @param name
  * @deprecated The method should not be used, use Nimbus experiment or roll-out: /src/app/functions/server/getExperiments
  */
-export async function disableFeatureFlagByName(name: string) {
+export async function disableFeatureFlagByName(
+  name: string,
+  updaterId: SubscriberRow["id"],
+) {
   logger.info("disableFeatureFlagByName", name);
-  const res = await knex("feature_flags")
+  const existingFlag = await knex("feature_flag_view")
+    .select("*")
     .where("name", name)
-    .update({
-      is_enabled: false,
-      // @ts-ignore knex.fn.now() results in it being set to a date,
-      // even if it's not typed as a JS date object:
-      modified_at: knex.fn.now(),
-    })
-    .returning("*");
-
-  return res[0];
+    .first();
+  if (!existingFlag) {
+    throw new Error(`No flag found with name [${name}]`);
+  }
+  await knex("feature_flag_events").insert({
+    name: existingFlag.name,
+    is_enabled: false,
+    created_by_subscriber_id: updaterId,
+    allow_list: existingFlag.allow_list,
+  });
 }
 
 export function isFeatureFlagAdminOnly(flagName: string): boolean {

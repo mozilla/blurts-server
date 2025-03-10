@@ -49,6 +49,8 @@
 
   :first-child {
     flex-grow: 1;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
 
   button {
@@ -56,6 +58,7 @@
     border: none;
     border-radius: tokens.$border-radius-xl;
     aspect-ratio: 1;
+    flex-shrink: 0;
 
     &:hover {
       cursor: pointer;
@@ -72,10 +75,15 @@
 .addressAdder {
   display: flex;
   align-items: center;
-  gap: tokens.$spacing-sm;
+  flex-wrap: wrap;
+
+  label {
+    width: 100%;
+  }
 
   input[type="email"] {
     flex-grow: 1;
+    min-width: 0;
   }
 
   // This rule is more specific than the button:hover in `.addressListing`,
@@ -86,6 +94,7 @@
     justify-content: center;
     align-items: center;
     height: 100%;
+    aspect-ratio: 1;
     background-color: transparent;
     color: tokens.$color-blue-50;
     border: none;
@@ -99,4 +108,22 @@
     }
   }
   /* stylelint-enable no-descending-specificity */
+}
+
+.editLog {
+  color: tokens.$color-grey-50;
+  font: tokens.$text-body-sm;
+  padding-top: tokens.$spacing-md;
+  /* Bottom-align the edit log */
+  margin-block-start: auto;
+
+  div {
+    display: flex;
+    gap: tokens.$spacing-xs;
+    justify-content: center;
+  }
+
+  dd {
+    font-weight: bold;
+  }
 }

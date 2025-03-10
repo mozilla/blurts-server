@@ -13,6 +13,7 @@ import { BreachLogo } from "../../../../components/server/BreachLogo";
 import { getLocale } from "../../../../functions/universal/getLocale";
 import { useHasRenderedClientSide } from "../../../../hooks/useHasRenderedClientSide";
 import { memo, useMemo, useState, useTransition } from "react";
+import { SearchIcon } from "../../../../components/server/Icons";
 
 export type Props = {
   allBreaches: HibpLikeDbBreach[];
@@ -58,17 +59,21 @@ const FilterForm = (props: { onChange: (newValue: string) => void }) => {
 
   return (
     <form className={styles.filterForm} aria-hidden={!hasRenderedClientSide}>
-      <label htmlFor="filterTerm">{l10n.getString("search-breaches")}</label>
-      <input
-        onChange={(e) => {
-          setFilterTerm(e.target.value);
-          props.onChange(e.target.value);
-        }}
-        value={filterTerm}
-        type="search"
-        name="filterTerm"
-        id="filterTerm"
-      />
+      <div className={styles.control}>
+        <label htmlFor="filterTerm">
+          <SearchIcon alt={l10n.getString("search-breaches")} />
+        </label>
+        <input
+          onChange={(e) => {
+            setFilterTerm(e.target.value);
+            props.onChange(e.target.value);
+          }}
+          value={filterTerm}
+          type="search"
+          name="filterTerm"
+          id="filterTerm"
+        />
+      </div>
     </form>
   );
 };

@@ -1,12 +1,18 @@
 name: No unresolved conflicts
+
+permissions: {}
+
 on:
   pull_request:
     branches: [ main, localization ]
+
 jobs:
   detect-unresolved-conflicts:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
       - name: List files with merge conflict markers
         # Encode conflict markers so this file does not trigger git's conflict detection.
         run: git --no-pager grep "$(echo 'PDw8PDw8PAo=' | base64 -d)" ":(exclude).github/" || true

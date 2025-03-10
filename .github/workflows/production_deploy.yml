@@ -1,4 +1,7 @@
 name: Monitor 1-click Deployment
+
+permissions: {}
+
 on:
   workflow_dispatch:
     inputs:
@@ -23,6 +26,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
       - name: Log in to Docker Hub
         uses: docker/login-action@v3
@@ -35,6 +40,6 @@ jobs:
 
       - name: Retag image
         run: docker tag ${{ env.DOCKER_IMAGE_NAME }}:${{ inputs.originalImageTag }} ${{ env.DOCKER_IMAGE_NAME }}:${{ inputs.environment }}-${{ inputs.originalImageTag }}
-          
+
       - name: Redeploy image
         run: docker push ${{ env.DOCKER_IMAGE_NAME }}:${{ inputs.environment }}-${{ inputs.originalImageTag }}

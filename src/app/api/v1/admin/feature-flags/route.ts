@@ -10,13 +10,20 @@ import {
   addFeatureFlag,
   enableFeatureFlagByName,
   disableFeatureFlagByName,
-  updateAllowList,
-  updateWaitList,
-  deleteFeatureFlagByName,
+  featureFlagNames,
+  getEnabledFeatureFlags,
 } from "../../../../../db/tables/featureFlags";
 
 import { isAdmin } from "../../../utils/auth";
 
+/**
+ * This API endpoint returns a list of all globally-enabled feature flag names by default.
+ * If an admin is signed in, it will return all data about all feature flags,
+ * regardless of whether they're enabled.
+ * (This latter functionality does not seem to be used anywhere, so maybe we
+ * should remove that for consistency? Or alternatively, move the non-admin
+ * functionality outside of the `/admin/` namespace?)
+ */
 export async function GET() {
   const session = await getServerSession();
   if (isAdmin(session?.user?.email || "")) {
@@ -28,7 +35,11 @@ export async function GET() {
       return NextResponse.json({ success: false }, { status: 500 });
     }
   } else {
-    return NextResponse.json({ success: false }, { status: 401 });
+    const flagNamesInDb = await getEnabledFeatureFlags({ isSignedOut: true });
+    const availableFlags = featureFlagNames;
+    return NextResponse.json(
+      availableFlags.filter((flag) => flagNamesInDb.indexOf(flag) !== -1),
+    );
   }
 }
 
@@ -46,7 +57,10 @@ export type CreateFeatureFlagRequestBody = {
 
 export async function POST(req: NextRequest) {
   const session = await getServerSession();
-  if (isAdmin(session?.user?.email || "")) {
+  if (
+    isAdmin(session?.user?.email || "") &&
+    typeof session?.user?.subscriber?.id === "number"
+  ) {
     // Signed in
     try {
       const newFlag = (await req.json()) as CreateFeatureFlagRequestBody;
@@ -56,12 +70,8 @@ export async function POST(req: NextRequest) {
       const resp = await addFeatureFlag({
         name: newFlag.name,
         is_enabled: newFlag.isEnabled,
-        description: newFlag.description,
-        dependencies: newFlag.dependencies,
         allow_list: newFlag.allowList,
-        wait_list: newFlag.waitList,
-        expired_at: newFlag.expiredAt,
-        owner: newFlag.owner,
+        last_updated_by_subscriber_id: session.user.subscriber.id,
       });
       return NextResponse.json(resp);
     } catch (e) {
@@ -82,46 +92,26 @@ export type FeatureFlagPutRequest = {
 
 export async function PUT(req: NextRequest) {
   const session = await getServerSession();
-  if (isAdmin(session?.user?.email || "")) {
+  if (
+    isAdmin(session?.user?.email || "") &&
+    typeof session?.user?.subscriber?.id === "number"
+  ) {
     // Signed in
     try {
       const reqBody = (await req.json()) as FeatureFlagPutRequest;
       // if toggle request
       if (reqBody.isEnabled !== undefined && reqBody.isEnabled) {
-        await enableFeatureFlagByName(reqBody.name, reqBody.isEnabled);
+        await enableFeatureFlagByName(
+          reqBody.name,
+          reqBody.isEnabled,
+          session.user.subscriber.id,
+        );
       } else if (reqBody.isEnabled !== undefined && !reqBody.isEnabled) {
-        await disableFeatureFlagByName(reqBody.name);
+        await disableFeatureFlagByName(
+          reqBody.name,
+          session.user.subscriber.id,
+        );
       }
-
-      if (reqBody.allowList) {
-        await updateAllowList(reqBody.name, reqBody.allowList);
-      }
-
-      if (reqBody.waitList) {
-        await updateWaitList(reqBody.name, reqBody.waitList);
-      }
-
-      return NextResponse.json({ success: true, name: reqBody.name });
-    } catch {
-      return NextResponse.json({ success: false }, { status: 500 });
-    }
-  } else {
-    return NextResponse.json({ success: false }, { status: 401 });
-  }
-}
-
-export type FeatureFlagDeleteRequest = {
-  name: string;
-};
-
-export async function DELETE(req: NextRequest) {
-  const session = await getServerSession();
-  if (isAdmin(session?.user?.email || "")) {
-    // Signed in
-    try {
-      const reqBody = (await req.json()) as FeatureFlagDeleteRequest;
-      await deleteFeatureFlagByName(reqBody.name);
-
       return NextResponse.json({ success: true, name: reqBody.name });
     } catch {
       return NextResponse.json({ success: false }, { status: 500 });

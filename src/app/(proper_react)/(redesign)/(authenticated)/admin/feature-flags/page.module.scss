@@ -55,5 +55,5 @@
   grid-template-columns: repeat(auto-fit, minmax(tokens.$content-xs, 1fr));
   justify-content: flex-start;
   gap: tokens.$spacing-lg;
-  padding: tokens.$spacing-2xl;
+  padding: tokens.$spacing-xl;
 }
