@@ -1,4 +1,7 @@
 name: Monitor 1-click Deployment
+
+permissions: {}
+
 on:
   workflow_dispatch:
     inputs:
@@ -37,6 +40,6 @@ jobs:
 
       - name: Retag image
         run: docker tag ${{ env.DOCKER_IMAGE_NAME }}:${{ inputs.originalImageTag }} ${{ env.DOCKER_IMAGE_NAME }}:${{ inputs.environment }}-${{ inputs.originalImageTag }}
-          
+
       - name: Redeploy image
         run: docker push ${{ env.DOCKER_IMAGE_NAME }}:${{ inputs.environment }}-${{ inputs.originalImageTag }}
