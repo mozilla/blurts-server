@@ -75,8 +75,8 @@
     "npm": "10.1.0"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.750.0",
-    "@aws-sdk/lib-storage": "^3.750.0",
+    "@aws-sdk/client-s3": "^3.758.0",
+    "@aws-sdk/lib-storage": "^3.758.0",
     "@fluent/bundle": "^0.18.0",
     "@fluent/langneg": "^0.7.0",
     "@fluent/react": "^0.15.2",
@@ -166,7 +166,7 @@
     "lint-staged": "^15.4.3",
     "mjml-browser": "^4.15.3",
     "patch-package": "^8.0.0",
-    "prettier": "3.5.2",
+    "prettier": "3.5.3",
     "sass": "^1.85.0",
     "storybook": "^8.4.6",
     "stylelint": "^16.15.0",
