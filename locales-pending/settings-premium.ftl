@@ -8,6 +8,11 @@ settings-cancel-plus-title = Cancel { -brand-monitor-plus } subscription
 settings-cancel-plus-details = Your subscription will revert to a free account after the current billing cycle ends. Your data broker scan results will be permanently deleted, and you may be re-added to those sites.
 settings-cancel-plus-link-label = Cancel from your { -brand-mozilla-account }
 
+## Sidebar navigation
+
+# Label for a navigation bar link to settings for updating the users scan profile info – “update” is used as a verb.
+settings-tab-label-update-scan-info = Update scan info
+
 ## Cancel Plus subscription - flow with a cancellation survey
 
 settings-cancel-plus-survey-button-label = Cancel your subscription

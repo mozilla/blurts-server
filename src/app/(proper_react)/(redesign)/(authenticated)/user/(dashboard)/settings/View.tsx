@@ -49,6 +49,7 @@ export const SettingsView = (props: Props) => {
         fxaSettingsUrl={props.fxaSettingsUrl}
         lastScanDate={props.lastScanDate ?? null}
         experimentData={props.experimentData}
+        enabledFeatureFlags={props.enabledFeatureFlags}
       />
       <SettingsContent
         activeTab={props.activeTab}

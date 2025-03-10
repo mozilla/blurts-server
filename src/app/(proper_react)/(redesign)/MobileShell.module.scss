@@ -154,13 +154,16 @@
         }
       }
 
-      .premiumCta {
-        margin: tokens.$spacing-md;
-        min-width: tokens.$screen-xs;
+      .navbarListWrapper {
+        background: tokens.$color-white;
+        box-shadow: tokens.$box-shadow-xs;
+      }
 
-        & > button {
-          width: 100%;
-        }
+      .premiumCta {
+        display: flex;
+        justify-content: center;
+        padding: tokens.$spacing-md;
+        min-width: tokens.$screen-xs;
       }
     }
   }

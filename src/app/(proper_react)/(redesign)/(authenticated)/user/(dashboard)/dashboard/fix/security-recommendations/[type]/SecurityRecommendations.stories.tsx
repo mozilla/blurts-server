@@ -7,7 +7,7 @@ import {
   createRandomBreach,
   createUserWithPremiumSubscription,
 } from "../../../../../../../../../../apiMocks/mockData";
-import { Shell } from "../../../../../../../Shell";
+import { Shell } from "../../../../../../../Shell/Shell";
 import { getL10n } from "../../../../../../../../../functions/l10n/storybookAndJest";
 import { SecurityRecommendationsLayout } from "../SecurityRecommendationsLayout";
 import {

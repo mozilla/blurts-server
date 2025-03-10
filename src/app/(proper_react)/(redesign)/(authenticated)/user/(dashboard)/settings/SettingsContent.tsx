@@ -72,18 +72,20 @@ function SettingsContent(props: SettingsProps) {
 
   return (
     <main className={styles.main}>
-      <header className={styles.header}>
-        <h2>{l10n.getString("settings-page-title")}</h2>
-        <TabList
-          selectedKey={activeTab}
-          tabs={tabsData}
-          orientation="vertical"
-          onSelectionChange={(selectedKey) => {
-            setActiveTab(selectedKey as TabType);
-          }}
-          variant="secondary"
-        />
-      </header>
+      {!props.enabledFeatureFlags.includes("SidebarNavigationRedesign") && (
+        <header className={styles.header}>
+          <h2>{l10n.getString("settings-page-title")}</h2>
+          <TabList
+            selectedKey={activeTab}
+            tabs={tabsData}
+            orientation="vertical"
+            onSelectionChange={(selectedKey) => {
+              setActiveTab(selectedKey as TabType);
+            }}
+            variant="secondary"
+          />
+        </header>
+      )}
       <div className={styles.content}>
         <SettingsPanel
           activeTab={activeTab}

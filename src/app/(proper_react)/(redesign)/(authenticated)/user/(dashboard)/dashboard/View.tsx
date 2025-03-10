@@ -461,6 +461,7 @@ export const View = (props: Props) => {
         lastScanDate={props.userScanData.scan?.created_at ?? null}
         experimentData={props.experimentData}
         autoOpenUpsellDialog={props.autoOpenUpsellDialog}
+        enabledFeatureFlags={props.enabledFeatureFlags}
       >
         <TabList
           tabs={tabsData}
