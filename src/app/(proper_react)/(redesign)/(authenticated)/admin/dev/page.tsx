@@ -6,6 +6,7 @@ import { getServerSession } from "../../../../../functions/server/getServerSessi
 import { notFound } from "next/navigation";
 import { isAdmin } from "../../../../../api/utils/auth";
 import { UserAdmin } from "./UserAdmin";
+import { getEnabledFeatureFlags } from "../../../../../../db/tables/featureFlags";
 
 export default async function DevPage() {
   const session = await getServerSession();
@@ -18,5 +19,9 @@ export default async function DevPage() {
     return notFound();
   }
 
-  return <UserAdmin />;
+  const enabledFeatureFlags = await getEnabledFeatureFlags({
+    email: session.user.email,
+  });
+
+  return <UserAdmin enabledFeatureFlags={enabledFeatureFlags} />;
 }
