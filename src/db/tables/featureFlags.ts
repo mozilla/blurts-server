@@ -64,6 +64,7 @@ export const featureFlagNames = [
   "DataBrokerRemovalAttempts",
   "ExpirationNotification",
   "CustomDataBrokers",
+  "SubPlat3",
 ] as const;
 
 export const adminOnlyFlags: FeatureFlagName[] = ["CustomDataBrokers"];

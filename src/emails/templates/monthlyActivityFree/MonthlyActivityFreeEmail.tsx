@@ -76,7 +76,10 @@ export const MonthlyActivityFreeEmail = (
   };
 
   const unlockWithMonitorPlusCta = modifyAttributionsForUrl(
-    getPremiumSubscriptionUrl({ type: "yearly" }),
+    getPremiumSubscriptionUrl({
+      type: "yearly",
+      enabledFeatureFlags: [],
+    }),
     {
       ...replaceValues,
       utm_content: `unlock-with-monitor-plus${utmContentSuffix}`,

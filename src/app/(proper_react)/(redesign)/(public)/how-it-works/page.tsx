@@ -16,10 +16,16 @@ import {
 } from "../../../../functions/server/onerep";
 import { isEligibleForPremium } from "../../../../functions/universal/premium";
 import { CONST_DAY_MILLISECONDS } from "../../../../../constants";
+import { getEnabledFeatureFlags } from "../../../../../db/tables/featureFlags";
 
 export default async function Page() {
   const headersList = await headers();
   const countryCode = getCountryCode(headersList);
+
+  if (countryCode !== "us") {
+    return redirect("/");
+  }
+
   const eligibleForPremium = isEligibleForPremium(countryCode);
   const l10n = getL10n(await getAcceptLangHeaderInServerComponents());
 
@@ -32,15 +38,16 @@ export default async function Page() {
     typeof oneRepActivations === "undefined" ||
     oneRepActivations > monthlySubscribersQuota;
 
-  if (countryCode !== "us") {
-    return redirect("/");
-  }
+  const enabledFeatureFlags = await getEnabledFeatureFlags({
+    isSignedOut: true,
+  });
 
   return (
     <HowItWorksView
       l10n={l10n}
       eligibleForPremium={eligibleForPremium}
       scanLimitReached={scanLimitReached}
+      enabledFeatureFlags={enabledFeatureFlags}
     />
   );
 }
