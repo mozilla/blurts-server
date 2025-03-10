@@ -190,3 +190,23 @@ export const MonthlyReportFreeUserWithoutScanNoExposures: Story = {
     } as SanitizedSubscriberRow,
   },
 };
+
+export const MonthlyReportFreeUserWithScanExpiredSubscriptionWithPastExposures: Story =
+  {
+    name: "With Scan Expired Subscription With Previously Removed Exposures",
+    args: {
+      unsubscribeLink: "/",
+      dataSummary: {
+        ...mockedDataSummary,
+        dataBreachResolvedNum: 0,
+        dataBrokerAutoFixedDataPointsNum: 10,
+      },
+      subscriber: {
+        onerep_profile_id: 1,
+        fxa_profile_json: {
+          locale: "en-US",
+          subscriptions: ["not-monitor-plus"],
+        },
+      } as SanitizedSubscriberRow,
+    },
+  };

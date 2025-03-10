@@ -1,6 +1,8 @@
 name: Deploy Preview
 
-on: 
+permissions: {}
+
+on:
   pull_request:
 
 env:
@@ -12,7 +14,7 @@ env:
 
 jobs:
   deploy:
-    permissions: 
+    permissions:
       pull-requests: write
     # Secrets aren't available for Dependabot PR (because the updated
     # dependencies might abuse them), so they don't have enough rights to
@@ -22,12 +24,14 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v4
-    
+      with:
+        persist-credentials: false
+
     - name: Setup Cloud SDK
       uses: 'google-github-actions/auth@v2'
       with:
         credentials_json: '${{ secrets.GCP_SA_KEY }}'
-  
+
     - name: Use gcloud CLI
       run: gcloud info
 
@@ -37,11 +41,11 @@ jobs:
       continue-on-error: true
       run: |
         gcloud sql instances create ${{ env.SERVICE }}-${{ env.TAG }} --tier=db-f1-micro --region=${{ env.REGION }} --database-version=POSTGRES_15 --edition=enterprise
-        gcloud sql users set-password postgres --host=% --instance ${{ env.SERVICE }}-${{ env.TAG }} --password postgres 
+        gcloud sql users set-password postgres --host=% --instance ${{ env.SERVICE }}-${{ env.TAG }} --password postgres
         gcloud sql databases create blurts --instance=${{ env.SERVICE }}-${{ env.TAG }}
         gcloud sql databases list --instance=${{ env.SERVICE }}-${{ env.TAG }}
         gcloud sql instances list
-  
+
     - name: Authorize Docker push
       run: gcloud auth configure-docker ${{ env.REGION }}-docker.pkg.dev
 
@@ -49,7 +53,7 @@ jobs:
       run: |-
         docker build -t ${{env.REGION}}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE }}/${{ env.SERVICE }}:${{ env.TAG }} -f './Dockerfile.cloudrun' .
         docker push ${{env.REGION}}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE }}/${{ env.SERVICE }}:${{ env.TAG }}
-        
+
     - name: Deploy to Cloud Run
       id: deploy
       uses: google-github-actions/deploy-cloudrun@v2
@@ -79,7 +83,7 @@ jobs:
           DB_USER=postgres
           DB_PASSWORD=postgres
           CLOUD_SQL_CONNECTION_NAME=${{ env.PROJECT_ID }}:${{env.REGION}}:${{ env.SERVICE }}-${{ env.TAG }}
-          DATABASE_URL= postgres://postgres:postgres@localhost:5432/blurts 
+          DATABASE_URL= postgres://postgres:postgres@localhost:5432/blurts
 
     - name: Comment on Pull Request
       uses: thollander/actions-comment-pull-request@v3
@@ -89,4 +93,3 @@ jobs:
             Preview URL :rocket: : ${{ steps.deploy.outputs.url }}
           comment-tag: preview_url
           create-if-not-exists: true
-          
