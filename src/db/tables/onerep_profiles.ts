@@ -59,16 +59,19 @@ export async function updateProfileDetails(
 ) {
   const { addresses, ...profileDataToUpdateRest } = profileDataToUpdate;
 
-  await knex("onerep_profiles")
-    .update({
-      ...profileDataToUpdateRest,
-      // @ts-ignore The `addresses` column has the type jsonb.
-      addresses: JSON.stringify(addresses),
-      // @ts-ignore knex.fn.now() results in it being set to a date,
-      // even if it's not typed as a JS date object:
-      updated_at: knex.fn.now(),
-    })
-    .where("onerep_profile_id", onerepProfileId);
+  await knex.transaction(async (trx) => {
+    await trx.raw("SET TRANSACTION ISOLATION LEVEL SERIALIZABLE");
+    await trx("onerep_profiles")
+      .update({
+        ...profileDataToUpdateRest,
+        // @ts-ignore The `addresses` column has the type jsonb.
+        addresses: JSON.stringify(addresses),
+        // @ts-ignore knex.fn.now() results in it being set to a date,
+        // even if it's not typed as a JS date object:
+        updated_at: trx.fn.now(),
+      })
+      .where("onerep_profile_id", onerepProfileId);
+  });
 }
 
 export async function deleteProfileDetails(onerepProfileId: number) {
