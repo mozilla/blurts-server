@@ -158,8 +158,10 @@ async function refreshOAuthTokens(
       method: "POST",
     });
 
+    if (!response.ok) {
+      throw new Error(await response.text());
+    }
     const responseJson = await response.json();
-    if (!response.ok) throw new Error(responseJson);
     logger.info("refresh_fxa_access_token_success");
     return responseJson as FxaPostOauthTokenResponseSuccessRefreshToken;
   } catch (e) {
