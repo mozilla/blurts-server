@@ -19,23 +19,24 @@ import { sanitizeSubscriberRow } from "../../app/functions/server/sanitize";
 import { refreshStoredScanResults } from "../../app/functions/server/refreshStoredScanResults";
 import { getScanResultsWithBroker } from "../../db/tables/onerep_scans";
 import { hasPremium } from "../../app/functions/universal/user";
+import { logger } from "../../app/functions/server/logging";
 
 type SubscriberFirstRemovedScanResult = {
   subscriber: SubscriberRow;
   firstRemovedScanResult: OnerepScanResultDataBrokerRow;
 };
 
-function isFulfilledResult(
-  result: PromiseSettledResult<SubscriberFirstRemovedScanResult | undefined>,
-): result is PromiseFulfilledResult<SubscriberFirstRemovedScanResult> {
-  return (
-    typeof result !== "undefined" &&
-    result.status === "fulfilled" &&
-    typeof result.value !== "undefined"
-  );
-}
+process.on("SIGINT", () => {
+  logger.info("SIGINT received, exiting...");
+  tearDown();
+});
 
 void run();
+
+function tearDown() {
+  closeEmailPool();
+  process.exit(0);
+}
 
 async function run() {
   const batchSize = Number.parseInt(
@@ -110,11 +111,11 @@ async function run() {
     }),
   );
 
-  closeEmailPool();
-
   console.log(
     `[${new Date(Date.now()).toISOString()}] Sent [${subscribersToEmailWithData.length}] first data broker removal fixed emails.`,
   );
+
+  tearDown();
 }
 
 async function sendFirstDataBrokerRemovalFixedActivityEmail(
@@ -143,5 +144,15 @@ async function sendFirstDataBrokerRemovalFixedActivityEmail(
         l10n={l10n}
       />,
     ),
+  );
+}
+
+function isFulfilledResult(
+  result: PromiseSettledResult<SubscriberFirstRemovedScanResult | undefined>,
+): result is PromiseFulfilledResult<SubscriberFirstRemovedScanResult> {
+  return (
+    typeof result !== "undefined" &&
+    result.status === "fulfilled" &&
+    typeof result.value !== "undefined"
   );
 }
