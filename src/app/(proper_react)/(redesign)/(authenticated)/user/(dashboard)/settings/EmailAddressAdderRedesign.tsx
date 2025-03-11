@@ -4,25 +4,21 @@
 
 "use client";
 
-import {
-  ChangeEvent,
-  useEffect,
-  useRef,
-  useState,
-  useActionState,
-} from "react";
+import { useEffect, useRef, useState, useActionState } from "react";
 import { useOverlayTriggerState } from "react-stately";
 import { useOverlayTrigger } from "react-aria";
 import Image from "next/image";
 import styles from "./EmailAddressAdderRedesign.module.scss";
-import Illustration from "./images/AddEmailDialogIllustration.svg";
+import IllustrationInitial from "./images/AddEmailIllustration.svg";
+import IllustrationConfirmation from "./images/AddEmailIllustrationConfirmation.svg";
 import { Button } from "../../../../../../components/client/Button";
 import { useL10n } from "../../../../../../hooks/l10n";
 import { ModalOverlay } from "../../../../../../components/client/dialog/ModalOverlay";
 import { Dialog } from "../../../../../../components/client/dialog/Dialog";
-import { onAddEmail } from "./actions";
+import { AddEmailFormState, onAddEmail } from "./actions";
 import { CONST_MAX_NUM_ADDRESSES } from "../../../../../../../constants";
 import { useTelemetry } from "../../../../../../hooks/useTelemetry";
+import { InputField } from "../../../../../../components/client/InputField";
 
 export const EmailAddressAdderRedesign = () => {
   const l10n = useL10n();
@@ -51,6 +47,12 @@ export const EmailAddressAdderRedesign = () => {
     { type: "dialog" },
     dialogState,
   );
+  const [onAddEmailState, onAddEmailAction] = useActionState(onAddEmail, {});
+
+  const handleOnDismiss = () => {
+    onAddEmailAction(new FormData());
+    dialogState.close();
+  };
 
   return (
     <>
@@ -65,16 +67,31 @@ export const EmailAddressAdderRedesign = () => {
           isDismissable={true}
         >
           <Dialog
-            title={l10n.getString("add-email-add-another-heading")}
-            illustration={<Image src={Illustration} alt="" />}
+            title={
+              !onAddEmailState.success
+                ? "Add an email address"
+                : `Verification link sent to ${onAddEmailState.submittedAddress}`
+            }
+            illustration={
+              !onAddEmailState.success ? (
+                <Image src={IllustrationInitial} alt="" />
+              ) : (
+                <Image src={IllustrationConfirmation} alt="" />
+              )
+            }
             // Unfortunately we're currently running into a bug testing code
             // that hits `useFormState`. See the comment for the test "calls the
             // 'add' action when adding another email address":
             /* c8 ignore next */
-            onDismiss={() => dialogState.close()}
+            onDismiss={handleOnDismiss}
+            fitContent
           >
-            <div className={styles.dialogContents}>
-              <EmailAddressAddForm />
+            <div className={styles.dialogContent}>
+              <EmailAddressAddForm
+                onDismiss={handleOnDismiss}
+                onAddEmailState={onAddEmailState}
+                onAddEmailAction={onAddEmailAction}
+              />
             </div>
           </Dialog>
         </ModalOverlay>
@@ -87,55 +104,57 @@ export const EmailAddressAdderRedesign = () => {
 // `useFormState`. See the comment for the test
 // "calls the 'add' action when adding another email address":
 /* c8 ignore start */
-const EmailAddressAddForm = () => {
+const EmailAddressAddForm = (props: {
+  onDismiss: () => void;
+  onAddEmailState: AddEmailFormState;
+  onAddEmailAction: (payload: FormData) => void;
+}) => {
   const l10n = useL10n();
   const recordTelemetry = useTelemetry();
   const formRef = useRef<HTMLFormElement>(null);
-  const [onAddEmailState, onAddEmailAction] = useActionState(onAddEmail, {});
   const [hasPressedButton, setHasPressedButton] = useState(false);
   const [email, setEmail] = useState("");
 
   useEffect(() => {
-    if (typeof onAddEmailState.success !== "undefined") {
+    if (typeof props.onAddEmailState.success !== "undefined") {
       recordTelemetry("ctaButton", "click", {
         button_id: "add_email_verification",
       });
     }
-  }, [onAddEmailState, recordTelemetry]);
+  }, [props.onAddEmailState, recordTelemetry]);
 
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setEmail(e.target.value);
+  const handleInputChangeRedesign = (value: string) => {
+    setEmail(value);
   };
 
   const isEmailValid = () => {
     return email.length > 0 && (formRef.current?.reportValidity() ?? false);
   };
 
-  return !onAddEmailState.success ? (
+  return !props.onAddEmailState.success ? (
     <>
       <p>
-        {l10n.getString("add-email-your-account-includes", {
-          total: CONST_MAX_NUM_ADDRESSES,
-        })}
+        {
+          "We’ll send a verification link for you to confirm you’d like to include in a future Monitor scan."
+        }
       </p>
       <form
-        action={onAddEmailAction}
+        action={props.onAddEmailAction}
         ref={formRef}
         className={styles.newEmailAddressForm}
       >
-        <label htmlFor="newEmailAddress">
-          {l10n.getString("add-email-address-input-label")}
-        </label>
-        <input
-          type="email"
-          name="newEmailAddress"
+        <InputField
           id="newEmailAddress"
-          onChange={handleInputChange}
+          name="newEmailAddress"
+          label={"Enter email address"}
+          onChange={handleInputChangeRedesign}
+          type="email"
+          value={email}
+          hasFloatingLabel
         />
         <Button
           type="submit"
           variant="primary"
-          className={styles.btn}
           disabled={!isEmailValid()}
           onPress={() => {
             if (isEmailValid()) {
@@ -149,12 +168,14 @@ const EmailAddressAddForm = () => {
       </form>
     </>
   ) : (
-    <p className={styles.description}>
-      {l10n.getFragment("add-email-verify-the-link-2", {
-        vars: { email: onAddEmailState.submittedAddress },
-        elems: { b: <b /> },
-      })}
-    </p>
+    <>
+      <p>
+        {"Open the link to add it to this account for future Monitor scans."}
+      </p>
+      <Button variant="primary" onPress={props.onDismiss}>
+        {"Done"}
+      </Button>
+    </>
   );
 };
 /* c8 ignore stop */

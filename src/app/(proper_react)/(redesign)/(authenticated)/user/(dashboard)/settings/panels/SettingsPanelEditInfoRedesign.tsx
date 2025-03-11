@@ -43,7 +43,7 @@ function MonitoredEmail(props: { emailAddress: SanitizedEmailAddressRow }) {
             {l10n.getString("settings-email-verification-callout")}
           </span>
         </div>
-        {props.emailAddress.verified && (
+        {!props.emailAddress.verified && (
           <Button
             className={styles.button}
             variant="link"
