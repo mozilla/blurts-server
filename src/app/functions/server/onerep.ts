@@ -4,10 +4,7 @@
 
 import type { Session } from "next-auth";
 import { getOnerepProfileId } from "../../../db/tables/subscribers";
-import {
-  E164PhoneNumberString,
-  ISO8601DateString,
-} from "../../../utils/parse.js";
+import { ISO8601DateString } from "../../../utils/parse.js";
 import { StateAbbr } from "../../../utils/states.js";
 import {
   getEmailForProfile,
@@ -18,6 +15,7 @@ import { RemovalStatus } from "../universal/scanResult.js";
 import { logger } from "./logging";
 import { isUsingMockONEREPEndpoint } from "../universal/mock.ts";
 import { hasPremium } from "../universal/user.ts";
+import { OnerepProfileAddress } from "knex/types/tables";
 
 export const monthlyScansQuota = parseInt(
   (process.env.MONTHLY_SCANS_QUOTA as string) ?? "0",
@@ -29,12 +27,40 @@ export const monthlySubscribersQuota = parseInt(
 export type CreateProfileRequest = {
   first_name: string;
   last_name: string;
-  addresses: [{ city: string; state: StateAbbr }];
+  birth_date: ISO8601DateString;
+  addresses: {
+    city: string;
+    state: StateAbbr;
+  }[];
   name_suffix?: string;
   middle_name?: string;
-  birth_date?: ISO8601DateString;
-  phone_numbers?: E164PhoneNumberString[];
 };
+
+export type UpdateProfileRequest = CreateProfileRequest & {
+  first_names: {
+    first_name: string;
+  }[];
+  last_names: {
+    last_name: string;
+  }[];
+  middle_names: {
+    middle_name: string;
+  }[];
+  phone_numbers: {
+    number: string;
+  }[];
+};
+
+export interface UpdateableProfileDetails {
+  first_name: string;
+  last_name: string;
+  first_names: string[];
+  last_names: string[];
+  middle_names: string[];
+  phone_numbers: string[];
+  addresses: OnerepProfileAddress[];
+  middle_name?: string;
+}
 
 export type ShowProfileResponse = CreateProfileRequest & {
   id: number;
@@ -182,6 +208,50 @@ export async function createProfile(
   logger.info("onerep_profile_created");
 
   return savedProfile.id;
+}
+
+export async function updateProfile(
+  profileId: number,
+  profileData: UpdateProfileRequest,
+) {
+  const {
+    first_name,
+    last_name,
+    name_suffix,
+    middle_name,
+    first_names,
+    last_names,
+    middle_names,
+    birth_date,
+    addresses,
+    phone_numbers,
+  } = profileData;
+  const response = await onerepFetch(`/profiles/${profileId}`, {
+    method: "PUT",
+    body: JSON.stringify({
+      first_name,
+      last_name,
+      name_suffix,
+      middle_name,
+      first_names,
+      last_names,
+      middle_names,
+      birth_date,
+      addresses,
+      phone_numbers,
+    }),
+  });
+  if (!response.ok) {
+    const responseJson = await response.json();
+    logger.error(
+      `Failed to update OneRep profile: [${response.status}] [${response.statusText}] [${JSON.stringify(responseJson)}]`,
+    );
+    throw new Error(
+      `Failed to update OneRep profile: [${response.status}] [${response.statusText}]`,
+    );
+  }
+
+  logger.info("onerep_profile_updated");
 }
 
 export async function getProfile(
