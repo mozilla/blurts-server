@@ -44,101 +44,101 @@ export const NavbarList = (props: {
   countryCode: string;
   enabledFeatureFlags: FeatureFlagName[];
 }) => (
-  <ul className={styles.navbarList}>
-    <li key="dashboard">
-      <PageLink
-        href="/user/dashboard"
-        activeClassName={styles.isActive}
-        hasTelemetry={{ link_id: "navigation_dashboard" }}
-      >
-        <DashboardIcon alt="" />
-        {props.l10n.getString("main-nav-link-dashboard-label")}
-      </PageLink>
-    </li>
-    {props.enabledFeatureFlags.includes("EditScanProfileDetails") && (
-      <li key="settings-edit-info">
+  <div className={styles.navbarList}>
+    <ul className="noList">
+      <li key="dashboard">
         <PageLink
-          href="/user/settings/edit-info"
+          href="/user/dashboard"
           activeClassName={styles.isActive}
-          hasTelemetry={{ link_id: "navigation_edit_info" }}
+          hasTelemetry={{ link_id: "navigation_dashboard" }}
         >
-          <ScanInfoIcon alt="" />
-          {props.l10n.getString("settings-tab-label-update-scan-info")}
+          <DashboardIcon alt="" />
+          {props.l10n.getString("main-nav-link-dashboard-label")}
         </PageLink>
       </li>
-    )}
-    <li key="separator-first">
-      <hr />
-    </li>
-    <li key="settings-title">
-      <strong>{props.l10n.getString("main-nav-link-settings-label")}</strong>
-    </li>
-    {!props.enabledFeatureFlags.includes("EditScanProfileDetails") && (
-      <li key="settings-edit-info">
+      {props.enabledFeatureFlags.includes("EditScanProfileDetails") && (
+        <li key="settings-edit-info">
+          <PageLink
+            href="/user/settings/edit-info"
+            activeClassName={styles.isActive}
+            hasTelemetry={{ link_id: "navigation_edit_info" }}
+          >
+            <ScanInfoIcon alt="" />
+            {props.l10n.getString("settings-tab-label-update-scan-info")}
+          </PageLink>
+        </li>
+      )}
+    </ul>
+    <hr />
+    <strong>{props.l10n.getString("main-nav-link-settings-label")}</strong>
+    <ul className="noList">
+      {!props.enabledFeatureFlags.includes("EditScanProfileDetails") && (
+        <li key="settings-edit-info">
+          <PageLink
+            href="/user/settings/edit-info"
+            activeClassName={styles.isActive}
+            hasTelemetry={{ link_id: "navigation_edit_info" }}
+          >
+            <ScanInfoIcon alt="" />
+            {props.l10n.getString("settings-tab-label-edit-info")}
+          </PageLink>
+        </li>
+      )}
+      <li key="settings-notifications">
         <PageLink
-          href="/user/settings/edit-info"
+          href="/user/settings/notifications"
           activeClassName={styles.isActive}
-          hasTelemetry={{ link_id: "navigation_edit_info" }}
+          hasTelemetry={{
+            link_id: "navigation_settings_notifications",
+          }}
         >
-          <ScanInfoIcon alt="" />
-          {props.l10n.getString("settings-tab-label-edit-info")}
+          <NotificationIcon alt="" />
+          {props.l10n.getString("settings-tab-label-notifications")}
         </PageLink>
       </li>
-    )}
-    <li key="settings-notifications">
-      <PageLink
-        href="/user/settings/notifications"
-        activeClassName={styles.isActive}
-        hasTelemetry={{
-          link_id: "navigation_settings_notifications",
-        }}
-      >
-        <NotificationIcon alt="" />
-        {props.l10n.getString("settings-tab-label-notifications")}
-      </PageLink>
-    </li>
-    <li key="settings-manage-account">
-      <PageLink
-        href="/user/settings/manage-account"
-        activeClassName={styles.isActive}
-        hasTelemetry={{
-          link_id: "navigation_settings_manage_account",
-        }}
-      >
-        <SettingsIcon alt="" />
-        {props.l10n.getString("settings-tab-label-manage-account")}
-      </PageLink>
-    </li>
-    <li key="separator-second">
-      <hr />
-    </li>
-    {props.countryCode === "us" && (
-      <li key="how-it-works">
+      <li key="settings-manage-account">
         <PageLink
-          href="/how-it-works"
+          href="/user/settings/manage-account"
           activeClassName={styles.isActive}
+          hasTelemetry={{
+            link_id: "navigation_settings_manage_account",
+          }}
+        >
+          <SettingsIcon alt="" />
+          {props.l10n.getString("settings-tab-label-manage-account")}
+        </PageLink>
+      </li>
+    </ul>
+    <hr />
+    <ul className="noList">
+      {props.countryCode === "us" && (
+        <li key="how-it-works">
+          <PageLink
+            href="/how-it-works"
+            activeClassName={styles.isActive}
+            target="_blank"
+            hasTelemetry={{ link_id: "navigation_how_it_works" }}
+          >
+            <TipIcon alt="" />
+            {props.l10n.getString(
+              "landing-premium-hero-navbar-link-how-it-works",
+            )}
+          </PageLink>
+        </li>
+      )}
+      <li key="faq">
+        <PageLink
+          href="https://support.mozilla.org/kb/firefox-monitor-faq"
+          title={props.l10n.getString("main-nav-link-faq-tooltip")}
           target="_blank"
-          hasTelemetry={{ link_id: "navigation_how_it_works" }}
+          hasTelemetry={{ link_id: "navigation_faq" }}
         >
-          <TipIcon alt="" />
-          {props.l10n.getString(
-            "landing-premium-hero-navbar-link-how-it-works",
-          )}
+          <FaqIcon alt="" />
+          {props.l10n.getString("main-nav-link-faq-label")}
         </PageLink>
       </li>
-    )}
-    <li key="faq">
-      <PageLink
-        href="https://support.mozilla.org/kb/firefox-monitor-faq"
-        title={props.l10n.getString("main-nav-link-faq-tooltip")}
-        target="_blank"
-        hasTelemetry={{ link_id: "navigation_faq" }}
-      >
-        <FaqIcon alt="" />
-        {props.l10n.getString("main-nav-link-faq-label")}
-      </PageLink>
-    </li>
-  </ul>
+    </ul>
+  </div>
 );
 
 export const ShellRedesign = (props: Props) => {

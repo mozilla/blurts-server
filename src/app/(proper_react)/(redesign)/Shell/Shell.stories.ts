@@ -2,15 +2,15 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { Session } from "next-auth";
 import { SerializedSubscriber } from "../../../../next-auth";
 
 import type { Meta, StoryObj } from "@storybook/react";
 import { Shell } from "./Shell";
 import { getL10n } from "../../../functions/l10n/storybookAndJest";
 
-function createUser(): Session["user"] {
-  return {
+const mockedSession = {
+  expires: new Date().toISOString(),
+  user: {
     email: "example@example.com",
     fxa: {
       locale: "us",
@@ -23,12 +23,7 @@ function createUser(): Session["user"] {
     subscriber: {
       id: 42,
     } as SerializedSubscriber,
-  };
-}
-
-const mockedSession = {
-  expires: new Date().toISOString(),
-  user: createUser(),
+  },
 };
 
 const meta: Meta<typeof Shell> = {

@@ -67,7 +67,6 @@ settings-alert-preferences-allow-monthly-monitor-report-subtitle = A monthly upd
 ## Settings page redesign
 
 settings-tab-label-edit-info = Edit your info
-settings-tab-label-update-scan-info = Update scan info
 settings-tab-label-notifications = Set notifications
 settings-tab-label-manage-account = Manage account
 

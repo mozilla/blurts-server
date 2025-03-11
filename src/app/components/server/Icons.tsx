@@ -769,20 +769,18 @@ export const DashboardIcon = (
       aria-hidden={props.alt === ""}
       xmlns="http://www.w3.org/2000/svg"
       {...props}
-      className={`${props.className ?? ""} ${styles.colorifyFill}`}
+      className={`${props.className ?? ""} ${styles.colorifyFill} ${styles.colorifyStroke}`}
     >
       <title>{props.alt}</title>
       <g>
         <path
           d="M5 7C5 6.44772 5.44772 6 6 6H9C9.55228 6 10 6.44772 10 7V10C10 10.5523 9.55228 11 9 11H6C5.44772 11 5 10.5523 5 10V7Z"
           fill="none"
-          stroke="black"
           strokeWidth="2"
         />
         <path
           d="M14 7C14 6.44772 14.4477 6 15 6H18C18.5523 6 19 6.44772 19 7V10C19 10.5523 18.5523 11 18 11H15C14.4477 11 14 10.5523 14 10V7Z"
           fill="none"
-          stroke="black"
           strokeWidth="2"
         />
         <rect x="4" y="14" width="16" height="2" rx="1" strokeWidth="0" />
@@ -856,7 +854,7 @@ export const ScanInfoIcon = (
       aria-hidden={props.alt === ""}
       xmlns="http://www.w3.org/2000/svg"
       {...props}
-      className={`${props.className ?? ""} ${styles.colorifyFill}`}
+      className={`${props.className ?? ""} ${styles.colorifyFill} ${styles.colorifyStroke}`}
     >
       <title>{props.alt}</title>
       <g>
@@ -871,7 +869,6 @@ export const ScanInfoIcon = (
         <path
           d="M5 9V6.5C5 5.67157 5.67157 5 6.5 5H9"
           fill="none"
-          stroke="black"
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -879,7 +876,6 @@ export const ScanInfoIcon = (
         <path
           d="M15 5H17.5C18.3284 5 19 5.67157 19 6.5V9"
           fill="none"
-          stroke="black"
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -887,7 +883,6 @@ export const ScanInfoIcon = (
         <path
           d="M19 15V17.5C19 18.3284 18.3284 19 17.5 19H15"
           fill="none"
-          stroke="black"
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -895,7 +890,6 @@ export const ScanInfoIcon = (
         <path
           d="M5 15V17.5C5 18.3284 5.67157 19 6.5 19H9"
           fill="none"
-          stroke="black"
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -1005,6 +999,28 @@ export const MinusCircledIcon = (
           d="M7.5 12C7.5 11.4477 7.94772 11 8.5 11H15.5C16.0523 11 16.5 11.4477 16.5 12C16.5 12.5523 16.0523 13 15.5 13H8.5C7.94772 13 7.5 12.5523 7.5 12Z"
         />
       </g>
+    </svg>
+  );
+};
+
+// Keywords: search, magnifying glass, find
+export const SearchIcon = (
+  props: SVGProps<SVGSVGElement> & { alt: string },
+) => {
+  return (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      role="img"
+      aria-label={props.alt}
+      aria-hidden={props.alt === ""}
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+      className={`${props.className ?? ""} ${styles.colorifyFill}`}
+    >
+      <title>{props.alt}</title>
+      <path d="m19.745 18.33-4.822-4.821a6.018 6.018 0 1 0-1.414 1.414l4.822 4.822a1 1 0 0 0 1.414-1.414m-9.707-4.292a4 4 0 1 1 0-7.999 4 4 0 0 1 0 7.999"></path>
     </svg>
   );
 };
