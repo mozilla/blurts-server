@@ -20,8 +20,18 @@ import { logger } from "../../app/functions/server/logging";
 import { getMonthlyActivityFreeUnsubscribeLink } from "../../app/functions/cronjobs/unsubscribeLinks";
 import { hasPremium } from "../../app/functions/universal/user";
 
+process.on("SIGINT", () => {
+  logger.info("SIGINT received, exiting...");
+  tearDown();
+});
+
 await run();
-await createDbConnection().destroy();
+
+async function tearDown() {
+  closeEmailPool();
+  await createDbConnection().destroy();
+  process.exit(0);
+}
 
 async function run() {
   let batchSize = Number.parseInt(
@@ -56,10 +66,10 @@ async function run() {
     }
   }
 
-  closeEmailPool();
   console.log(
     `[${new Date(Date.now()).toISOString()}] Sent [${subscribersToEmail.length}] monthly activity emails to free users.`,
   );
+  await tearDown();
 }
 
 async function sendMonthlyActivityEmail(subscriber: SubscriberRow) {

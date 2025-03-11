@@ -39,13 +39,28 @@
     opacity: 0;
   }
 
-  label {
-    font: tokens.$text-body-sm;
-    @include tokens.visually-hidden;
-  }
-  input {
-    font: tokens.$text-body-lg;
-    padding: tokens.$spacing-sm;
+  .control {
+    position: relative;
+    $searchIconWidth: 24px;
+
+    label {
+      position: absolute;
+      inset-block-start: 50%;
+      transform: translateY(-50%);
+      inset-inline-start: tokens.$spacing-md;
+      width: $searchIconWidth;
+
+      svg {
+        width: $searchIconWidth;
+      }
+    }
+    input {
+      font: tokens.$text-body-lg;
+      padding: tokens.$spacing-sm;
+      /* Left label padding + label width + left input padding */
+      $inputPadding: tokens.$spacing-md + $searchIconWidth + tokens.$spacing-sm;
+      padding-inline-start: $inputPadding;
+    }
   }
 }
 

@@ -20,6 +20,10 @@ import {
 import { defaultExperimentData } from "../../../../../../telemetry/generated/nimbus/experiments";
 import { ExistingFlagEditor, NewFlagEditor } from "./components/FlagEditor";
 
+export const metadata = {
+  title: "Monitor Feature Flags",
+};
+
 export default async function FeatureFlagPage() {
   const session = await getServerSession();
 
@@ -37,7 +41,7 @@ export default async function FeatureFlagPage() {
 
   const featureFlags =
     (await getAllFeatureFlags()).toSorted(
-      (flagA, flagB) => flagB.created_at.getTime() - flagA.created_at.getTime(),
+      (flagA, flagB) => flagB.updated_at.getTime() - flagA.updated_at.getTime(),
     ) ?? [];
 
   /**
@@ -70,6 +74,7 @@ export default async function FeatureFlagPage() {
             // We're not going to run experiments on the feature flag page (it's
             // not user-visible), so no need to fetch experiment data:
             experimentData={defaultExperimentData["Features"]}
+            enabledFeatureFlags={[]}
           />
         </div>
       </nav>

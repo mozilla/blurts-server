@@ -1,4 +1,7 @@
 name: Glean probe-scraper
+
+permissions: {}
+
 on:
   push:
     paths:
