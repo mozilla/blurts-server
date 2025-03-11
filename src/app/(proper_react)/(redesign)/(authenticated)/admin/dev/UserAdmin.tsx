@@ -4,7 +4,7 @@
 
 "use client";
 
-import { ChangeEventHandler, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import styles from "./UserAdmin.module.scss";
 import { Button } from "../../../../../components/client/Button";
@@ -13,14 +13,144 @@ import {
   type PutUserStateRequestBody,
   GetUserStateResponseBody,
 } from "../../../../../api/v1/admin/users/[fxaUid]/route";
-import { lookupFxaUid } from "./actions";
+import { lookupFxaUid, getOnerepProfile, updateOnerepProfile } from "./actions";
+import { OnerepProfileRow } from "knex/types/tables";
+import {
+  ShowProfileResponse,
+  UpdateableProfileDetails,
+} from "../../../../../functions/server/onerep";
+import { InputField } from "../../../../../components/client/InputField";
+import { CONST_DATA_BROKER_PROFILE_DETAIL_ALLOW_LIST } from "../../../../../../constants";
+import { FeatureFlagName } from "../../../../../../db/tables/featureFlags";
 
-export const UserAdmin = () => {
+const DataTable = ({
+  header,
+  data,
+  open,
+}: {
+  header: string;
+  data: object;
+  open?: boolean;
+}) => {
+  const dataKeys = Object.keys(data);
+  return (
+    <details open={open}>
+      <summary>{header}</summary>
+      <table>
+        <tbody>
+          {dataKeys.map((key) => (
+            <tr key={key}>
+              <th>{key}</th>
+              <td>{JSON.stringify(data[key as keyof typeof data], null, 2)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </details>
+  );
+};
+
+const ProfileDataInputs = ({
+  data,
+  isEnabled,
+  onChange,
+  onError,
+}: {
+  data: OnerepProfileRow;
+  isEnabled: boolean;
+  onChange: (values: UpdateableProfileDetails) => void;
+  onError: (error: string) => void;
+}) => {
+  const dataKeys = Object.keys(data).filter((dataKey) =>
+    CONST_DATA_BROKER_PROFILE_DETAIL_ALLOW_LIST.includes(
+      dataKey as (typeof CONST_DATA_BROKER_PROFILE_DETAIL_ALLOW_LIST)[number],
+    ),
+  );
+  const initialData = dataKeys.reduce(
+    (filteredData: Record<string, string>, key) => {
+      filteredData[key] = JSON.stringify(
+        data[
+          key as (typeof CONST_DATA_BROKER_PROFILE_DETAIL_ALLOW_LIST)[number]
+        ],
+      );
+      return filteredData;
+    },
+    {},
+  );
+  const [editableProfileData, setEditableProfileData] = useState(initialData);
+
+  return (
+    <>
+      <div className={styles.editInputs}>
+        {dataKeys.map((key) => {
+          const dataValue = editableProfileData[key];
+          return (
+            <InputField
+              key={key}
+              value={dataValue}
+              isDisabled={!isEnabled}
+              onChange={(value) => {
+                const updatedProfileData = {
+                  ...editableProfileData,
+                  [key]: value,
+                };
+                setEditableProfileData(updatedProfileData);
+              }}
+              label={key}
+            />
+          );
+        })}
+      </div>
+      <Button
+        variant="primary"
+        disabled={
+          JSON.stringify(initialData) === JSON.stringify(editableProfileData)
+        }
+        onPress={() => {
+          try {
+            const editableProfileDataParsed = Object.keys(
+              editableProfileData,
+            ).reduce((parsedData: Record<string, string>, key) => {
+              parsedData[key] = JSON.parse(editableProfileData[key]);
+              return parsedData;
+            }, {});
+            onChange(
+              editableProfileDataParsed as unknown as UpdateableProfileDetails,
+            );
+          } catch (error) {
+            console.error("Could not parse input data:", error);
+            onError(`Could not parse input data: ${JSON.stringify(error)}`);
+          }
+        }}
+      >
+        Update profile
+      </Button>
+    </>
+  );
+};
+
+export const UserAdmin = ({
+  enabledFeatureFlags,
+}: {
+  enabledFeatureFlags: FeatureFlagName[];
+}) => {
   const session = useSession();
+  const [isLoading, setIsLoading] = useState(false);
   const [emailInput, setEmailInput] = useState("");
   const [status, setStatus] = useState<null | string>(null);
   const [subscriberData, setSubscriberData] =
     useState<GetUserStateResponseBody | null>(null);
+  const [onerepProfileData, setOnerepProfileData] = useState<{
+    local: OnerepProfileRow;
+    remote: ShowProfileResponse;
+  } | null>(null);
+
+  const setProfile = async (onerepProfileId: number) => {
+    const profileData = await getOnerepProfile(onerepProfileId);
+    if (profileData) {
+      setOnerepProfileData(profileData);
+    }
+  };
 
   useEffect(() => {
     if (emailInput.length <= 5) {
@@ -29,16 +159,21 @@ export const UserAdmin = () => {
 
     const abortController = new AbortController();
     void getSha1(emailInput).then(async (emailHash) => {
+      setIsLoading(true);
       const fxaUid = await lookupFxaUid(emailHash);
       const response = await fetch(`/api/v1/admin/users/${fxaUid}`, {
         signal: abortController.signal,
       });
       if (!response.ok) {
+        setIsLoading(false);
         setSubscriberData(null);
         return;
       }
       const data = await response.json();
       setSubscriberData(data);
+      setProfile(data.onerepProfileId);
+
+      setIsLoading(false);
     });
 
     return () => {
@@ -46,12 +181,11 @@ export const UserAdmin = () => {
     };
   }, [emailInput]);
 
-  const onChangeEmail: ChangeEventHandler<HTMLInputElement> = (event) => {
-    event.preventDefault();
-
+  const onChangeEmail = (email: string) => {
     setStatus(null);
     setSubscriberData(null);
-    setEmailInput(event.target.value);
+    setOnerepProfileData(null);
+    setEmailInput(email);
   };
 
   const performAction = async (action: UserStateAction) => {
@@ -78,77 +212,148 @@ export const UserAdmin = () => {
     setStatus(`[${action}] succeeded for email address [${emailInput}].`);
     const refreshResponse = await fetch(`/api/v1/admin/users/${fxaUid}`);
     if (refreshResponse.ok) {
-      setSubscriberData(await refreshResponse.json());
+      const refreshData = await refreshResponse.json();
+      setSubscriberData(refreshData);
+      setProfile(refreshData.onerepProfileId);
+    }
+  };
+
+  const updateProfileAction = async (
+    updatedProfileData: UpdateableProfileDetails,
+  ) => {
+    if (!enabledFeatureFlags.includes("EditScanProfileDetails")) {
+      return;
+    }
+
+    try {
+      if (subscriberData?.onerepProfileId) {
+        await updateOnerepProfile(
+          subscriberData.onerepProfileId,
+          updatedProfileData,
+        );
+        setProfile(subscriberData?.onerepProfileId);
+        setStatus(
+          `Updating profile succeeded for email address [${emailInput}].`,
+        );
+      }
+    } catch (error) {
+      setStatus(`[Updating profile failed: [${error}].`);
     }
   };
 
   return (
     <main className={styles.wrapper}>
       <header className={styles.header}>
-        Logged in as <b>{session.data?.user.email}</b>.
+        Logged in as <b>{session.data?.user.email}</b>
       </header>
       <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
         <div className={styles.userPicker}>
-          <label>
-            Find user by email address:
-            <input
-              value={emailInput}
-              onChange={onChangeEmail}
-              type="email"
-              name="email"
-              id="email"
-            />
-          </label>
-          {subscriberData && (
-            <pre>{JSON.stringify(subscriberData, null, 2)}</pre>
-          )}
+          <InputField
+            type="email"
+            value={emailInput}
+            onChange={onChangeEmail}
+            placeholder="Subscriber email"
+            label={`Find user by email address ${isLoading ? "…" : ""}`}
+          />
         </div>
-        {subscriberData && (
-          <div className={styles.actions}>
-            <Button
-              variant="secondary"
-              onPress={() => void performAction("subscribe")}
-            >
-              Give Plus
-            </Button>
-            <Button
-              variant="secondary"
-              onPress={() => void performAction("unsubscribe")}
-            >
-              Remove Plus
-            </Button>
-            <Button
-              variant="secondary"
-              destructive={true}
-              onPress={() => void performAction("delete_onerep_profile")}
-            >
-              Delete OneRep profile
-            </Button>
-            <Button
-              variant="secondary"
-              destructive={true}
-              onPress={() => void performAction("delete_onerep_scans")}
-            >
-              Delete OneRep scans
-            </Button>
-            <Button
-              variant="secondary"
-              destructive={true}
-              onPress={() => void performAction("delete_onerep_scan_results")}
-            >
-              Delete OneRep scan results
-            </Button>
-            <Button
-              variant="secondary"
-              destructive={true}
-              onPress={() => void performAction("delete_subscriber")}
-            >
-              Delete subscriber
-            </Button>
-          </div>
-        )}
       </form>
       {status && <p className={styles.status}>{status}</p>}
+      <section>
+        <h2>Subscriber</h2>
+        {subscriberData ? (
+          <>
+            <div className={styles.actions}>
+              {subscriberData.subscriptions?.includes("monitor") ? (
+                <Button
+                  variant="secondary"
+                  onPress={() => void performAction("unsubscribe")}
+                >
+                  Remove Plus subscription
+                </Button>
+              ) : (
+                <Button
+                  variant="secondary"
+                  onPress={() => void performAction("subscribe")}
+                >
+                  Add Plus subscription
+                </Button>
+              )}
+              <Button
+                variant="secondary"
+                destructive={true}
+                onPress={() => void performAction("delete_subscriber")}
+              >
+                Delete subscriber
+              </Button>
+            </div>
+            <div className={styles.content}>
+              <DataTable header="Subscriber data" data={subscriberData} open />
+            </div>
+          </>
+        ) : (
+          "No subscriber found"
+        )}
+      </section>
+      {subscriberData && (
+        <section>
+          <h2>OneRep profile</h2>
+          {onerepProfileData ? (
+            <>
+              <div className={styles.actions}>
+                <Button
+                  variant="secondary"
+                  destructive={true}
+                  onPress={() => void performAction("delete_onerep_profile")}
+                >
+                  Delete profile
+                </Button>
+                <Button
+                  variant="secondary"
+                  destructive={true}
+                  onPress={() => void performAction("delete_onerep_scans")}
+                >
+                  Delete scans
+                </Button>
+                <Button
+                  variant="secondary"
+                  destructive={true}
+                  onPress={() =>
+                    void performAction("delete_onerep_scan_results")
+                  }
+                >
+                  Delete scan results
+                </Button>
+              </div>
+              <ProfileDataInputs
+                data={onerepProfileData.local}
+                isEnabled={enabledFeatureFlags.includes(
+                  "EditScanProfileDetails",
+                )}
+                onChange={(updatedProfileData) => {
+                  void updateProfileAction(updatedProfileData);
+                }}
+                onError={(error) => {
+                  setStatus(`[Updating profile failed: [${error}].`);
+                }}
+              />
+              <div className={styles.content}>
+                <DataTable
+                  header="Current profile data (local)"
+                  data={onerepProfileData.local}
+                  open
+                />
+                <DataTable
+                  header="Current profile data (remote)"
+                  data={onerepProfileData.remote}
+                  open
+                />
+              </div>
+            </>
+          ) : (
+            "No profile found for subscriber"
+          )}
+        </section>
+      )}
     </main>
   );
 };

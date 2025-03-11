@@ -19,8 +19,19 @@ import { refreshStoredScanResults } from "../../app/functions/server/refreshStor
 import { getSignupLocaleCountry } from "../../emails/functions/getSignupLocaleCountry";
 import { hasPremium } from "../../app/functions/universal/user";
 import { getEnabledFeatureFlags } from "../../db/tables/featureFlags";
+import { logger } from "../../app/functions/server/logging";
+
+process.on("SIGINT", () => {
+  logger.info("SIGINT received, exiting...");
+  tearDown();
+});
 
 void run();
+
+function tearDown() {
+  closeEmailPool();
+  process.exit(0);
+}
 
 async function run() {
   const batchSize = Number.parseInt(
@@ -43,10 +54,11 @@ async function run() {
     }),
   );
 
-  closeEmailPool();
   console.log(
     `[${new Date(Date.now()).toISOString()}] Sent [${subscribersToEmail.length}] monthly activity emails to Plus users.`,
   );
+
+  tearDown();
 }
 
 async function sendMonthlyActivityEmail(subscriber: SubscriberRow) {

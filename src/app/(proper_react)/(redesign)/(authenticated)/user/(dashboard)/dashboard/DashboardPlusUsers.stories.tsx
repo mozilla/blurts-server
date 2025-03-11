@@ -10,7 +10,7 @@ import {
 } from "knex/types/tables";
 import { faker } from "@faker-js/faker";
 import { View as DashboardEl } from "./View";
-import { Shell } from "../../../../Shell";
+import { Shell } from "../../../../Shell/Shell";
 import { getL10n } from "../../../../../../functions/l10n/storybookAndJest";
 import {
   createRandomScanResult,
