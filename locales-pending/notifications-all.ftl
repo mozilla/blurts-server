@@ -13,5 +13,5 @@ notif-add-more-personal-details-description = { -brand-monitor } is most effecti
 notif-add-more-personal-details-label = Add more details
 
 notif-add-up-to-20-emails-title = Add up to 20 emails
-notif-add-up-to-20-emails-description = It's not easy to keep up with the latest privacy and security tips and habits. So we started a newsletter to help you make your online life more secure.
+notif-add-up-to-20-emails-description = It’s not easy to keep up with the latest privacy and security tips and habits. So we started a newsletter to help you make your online life more secure.
 notif-add-up-to-20-emails-label = Add email addresses
