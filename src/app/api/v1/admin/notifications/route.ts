@@ -8,7 +8,6 @@ import createDbConnection from "../../../../../db/connect";
 import { getAllNotifications } from "../../../../../db/tables/notifications";
 import { getServerSession } from "../../../../functions/server/getServerSession";
 import { isAdmin } from "../../../utils/auth";
-import { logger } from "../../../../functions/server/logging";
 
 const knex = createDbConnection();
 
@@ -17,7 +16,7 @@ export async function GET() {
   console.log("session from default route: ", session);
 
   if (!isAdmin(session?.user?.email || "")) {
-    logger.error("Not an admin user");
+    return NextResponse.json({ error: "Not an admin user" }, { status: 401 });
   }
 
   try {
@@ -34,28 +33,30 @@ export async function GET() {
 
 export async function POST(req: NextRequest) {
   const session = await getServerSession();
-  if (isAdmin(session?.user?.email || "")) {
-    try {
-      const newNotification: NotificationRow = await req.json();
+  if (!isAdmin(session?.user?.email || "")) {
+    return NextResponse.json({ error: "Not an admin user" }, { status: 401 });
+  }
 
-      const [addedNotification] = await knex("notifications")
-        .insert(newNotification)
-        .returning("*");
+  try {
+    const newNotification: NotificationRow = await req.json();
 
-      if (!addedNotification) {
-        return NextResponse.json(
-          { error: "Failed to insert notification" },
-          { status: 400 },
-        );
-      }
+    const [addedNotification] = await knex("notifications")
+      .insert(newNotification)
+      .returning("*");
 
-      return NextResponse.json(addedNotification, { status: 201 });
-    } catch (error) {
-      console.error("Error adding notification:", error);
+    if (!addedNotification) {
       return NextResponse.json(
-        { error: "Internal Server Error" },
-        { status: 500 },
+        { error: "Failed to insert notification" },
+        { status: 400 },
       );
     }
+
+    return NextResponse.json(addedNotification, { status: 201 });
+  } catch (error) {
+    console.error("Error adding notification:", error);
+    return NextResponse.json(
+      { error: "Internal Server Error" },
+      { status: 500 },
+    );
   }
 }
