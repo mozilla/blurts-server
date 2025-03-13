@@ -22,6 +22,7 @@ import { Button } from "../../../../../../../components/client/Button";
 import styles from "./SettingsPanelEditInfoRedesign.module.scss";
 import { onRemoveEmail } from "../actions";
 import { getLocale } from "../../../../../../../functions/universal/getLocale";
+import { TelemetryButton } from "../../../../../../../components/client/TelemetryButton";
 
 export type SettingsPanelEditInfoRedesignProps = {
   breachCountByEmailAddress: Record<string, number>;
@@ -137,6 +138,22 @@ function ProfileInfoSection({
           {`${city_name}, ${state_code}`}
         </li>
       </ul>
+      <span className={styles.addButton}>
+        <TelemetryButton
+          className={styles.link}
+          variant="secondary"
+          href={"/user/settings/edit-profile"}
+          event={{
+            module: "link",
+            name: "click",
+            data: {
+              link_id: "clicked_settings_edit_info",
+            },
+          }}
+        >
+          {"Update info"}
+        </TelemetryButton>
+      </span>
     </section>
   );
 }
