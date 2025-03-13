@@ -70,6 +70,7 @@ declare module "knex/types/tables" {
     "id" | "subscriber_id" | "created_at" | "updated_at"
   >;
 
+  /** @deprecated MNTOR-4191 */
   interface FeatureFlagRow {
     name: string;
     is_enabled: boolean;
@@ -96,6 +97,40 @@ declare module "knex/types/tables" {
   type FeatureFlagAutoInsertedColumns = Extract<
     keyof FeatureFlagRow,
     "name" | "created_at" | "modified_at"
+  >;
+
+  interface FeatureFlagViewRow {
+    name: string;
+    is_enabled: boolean;
+    allow_list?: string[];
+    updated_at: Date;
+    last_updated_by_subscriber_id: SubscriberRow["id"];
+  }
+
+  type FeatureFlagViewOptionalColumns = Extract<
+    keyof FeatureFlagViewRow,
+    "allow_list"
+  >;
+  type FeatureFlagViewAutoInsertedColumns = Extract<
+    keyof FeatureFlagViewRow,
+    "created_at"
+  >;
+
+  interface FeatureFlagEventRow {
+    name: string;
+    is_enabled: boolean;
+    allow_list?: string[];
+    created_at: Date;
+    created_by_subscriber_id: SubscriberRow["id"];
+  }
+
+  type FeatureFlagEventOptionalColumns = Extract<
+    keyof FeatureFlagEventRow,
+    "allow_list"
+  >;
+  type FeatureFlagEventAutoInsertedColumns = Extract<
+    keyof FeatureFlagEventRow,
+    "created_at"
   >;
 
   interface SubscriberEmail {
@@ -312,6 +347,11 @@ declare module "knex/types/tables" {
     "id" | "created_at" | "updated_at"
   >;
 
+  type OnerepProfileAddress = {
+    city: string;
+    state: StateAbbr;
+  };
+
   interface OnerepProfileRow {
     id: number;
     onerep_profile_id: null | number;
@@ -319,11 +359,20 @@ declare module "knex/types/tables" {
     first_name: string;
     middle_name: null | string;
     last_name: string;
-    city_name: string;
-    state_code: StateAbbr;
+    first_names: string[];
+    middle_names: string[];
+    last_names: string[];
+    addresses: OnerepProfileAddress[];
+    phone_numbers: E164PhoneNumberString[];
     date_of_birth: Date;
     created_at: Date;
     updated_at: Date;
+    // For backwards compatibility reasons we are keeping `city_name` and
+    // `state_code` until MNTOR-3567 is implemented and enabled by default.
+    /** @deprecated Please use `addresses` instead. */
+    city_name: string;
+    /** @deprecated Please use `addresses` instead. */
+    state_code: StateAbbr;
   }
   type OnerepProfileOptionalColumns = Extract<
     keyof OnerepProfileRow,
@@ -437,6 +486,7 @@ declare module "knex/types/tables" {
       >
     >;
 
+    /** @deprecated MNTOR-4191 */
     feature_flags: Knex.CompositeTableType<
       FeatureFlagRow,
       // On inserts, auto-generated columns cannot be set, and nullable columns are optional:
@@ -449,6 +499,36 @@ declare module "knex/types/tables" {
       >,
       // On updates, don't allow updating the ID and created date; all other fields are optional:
       WritableDateColumns<Partial<Omit<FeatureFlagRow, "name" | "created_at">>>
+    >;
+
+    feature_flag_view: Knex.CompositeTableType<
+      FeatureFlagViewRow,
+      // On inserts, auto-generated columns cannot be set, and nullable columns are optional:
+      WritableDateColumns<
+        Omit<
+          FeatureFlagViewRow,
+          FeatureFlagViewAutoInsertedColumns | FeatureFlagViewOptionalColumns
+        > &
+          Partial<Pick<FeatureFlagViewRow, FeatureFlagViewOptionalColumns>>
+      >,
+      // Don't allow updates; updating a flag requires adding a new event.
+      // This allows us to make sure all updates are auditable.
+      Record<string, never>
+    >;
+
+    feature_flag_events: Knex.CompositeTableType<
+      FeatureFlagEventRow,
+      // On inserts, auto-generated columns cannot be set, and nullable columns are optional:
+      WritableDateColumns<
+        Omit<
+          FeatureFlagEventRow,
+          FeatureFlagEventAutoInsertedColumns | FeatureFlagEventOptionalColumns
+        > &
+          Partial<Pick<FeatureFlagEventRow, FeatureFlagEventOptionalColumns>>
+      >,
+      // Don't allow updates; updating a flag requires adding a new event.
+      // This allows us to make sure all updates are auditable.
+      Record<string, never>
     >;
 
     subscribers: Knex.CompositeTableType<

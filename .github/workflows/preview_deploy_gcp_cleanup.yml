@@ -1,8 +1,10 @@
 name: Deploy Preview Cleanup
 
-on: 
+permissions: {}
+
+on:
   # when pull request is merged or closed
-  pull_request: 
+  pull_request:
     types: [closed]
 
 env:
@@ -14,7 +16,7 @@ env:
 
 jobs:
   deploy:
-    permissions: 
+    permissions:
       pull-requests: write
     # Secrets aren't available for Dependabot PR (because the updated
     # dependencies might abuse them), so they don't have enough rights to
@@ -26,7 +28,7 @@ jobs:
       uses: 'google-github-actions/auth@v2'
       with:
         credentials_json: '${{ secrets.GCP_SA_KEY }}'
-  
+
     - name: Use gcloud CLI
       run: 'gcloud info'
 
@@ -34,7 +36,7 @@ jobs:
       id: db_delete
       # Delete cloud sql instance
       run: 'gcloud sql instances delete blurts-server-${{ env.TAG }}'
-    
+
     - name: Delete created cloud run service
       id: cloudrun_delete
       run: gcloud run services delete blurts-server-${{ env.TAG }} --region ${{ env.REGION }} --platform managed --quiet

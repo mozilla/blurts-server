@@ -1,4 +1,7 @@
 name: Lint Reference Files
+
+permissions: {}
+
 on:
   push:
   pull_request:
@@ -9,6 +12,8 @@ jobs:
     steps:
       - name: Clone repository
         uses: actions/checkout@v4
+        with:
+          persist-credentials: false
       - name: Set up Python 3
         uses: actions/setup-python@v5
         with:

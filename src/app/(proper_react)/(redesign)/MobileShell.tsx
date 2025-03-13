@@ -23,6 +23,7 @@ import { SignInButton } from "../../components/client/SignInButton";
 import { TopNavBar } from "./(public)/TopNavBar";
 import { TopNavBar as RedesignedTopNavBar } from "./(public)/LandingViewRedesign/components/TopNavBar";
 import { ExperimentData } from "../../../telemetry/generated/nimbus/experiments";
+import { NavbarList as NavbarListAuthenticated } from "./Shell/ShellRedesign";
 
 export type Props = {
   countryCode: string;
@@ -125,97 +126,119 @@ export const MobileShell = (props: Props) => {
           className={styles.mainMenuLayer}
           aria-label={l10n.getString("mobile-menu-label")}
         >
-          <div className={styles.mainMenu}>
-            {props.session ? (
-              <>
-                <ul>
-                  <li key="home">
-                    <PageLink
-                      href="/user/dashboard"
-                      activeClassName={styles.isActive}
-                      hasTelemetry={{ link_id: "navigation_dashboard" }}
-                    >
-                      {l10n.getString("main-nav-link-dashboard-label")}
-                    </PageLink>
-                  </li>
-                  {props.countryCode === "us" && (
-                    <li key="how-it-works">
+          {props.session &&
+          props.enabledFeatureFlags.includes("SidebarNavigationRedesign") ? (
+            <div className={styles.navbarListWrapper}>
+              <NavbarListAuthenticated
+                l10n={l10n}
+                countryCode={props.countryCode}
+                enabledFeatureFlags={props.enabledFeatureFlags}
+              />
+              <div className={styles.premiumCta}>
+                <UpsellBadge
+                  monthlySubscriptionUrl={props.monthlySubscriptionUrl}
+                  yearlySubscriptionUrl={props.yearlySubscriptionUrl}
+                  subscriptionBillingAmount={props.subscriptionBillingAmount}
+                  // The last scan date is too noisy on mobile, so don't show it there:
+                  lastScanDate={null}
+                />
+              </div>
+            </div>
+          ) : (
+            <div className={styles.mainMenu}>
+              {props.session ? (
+                <>
+                  <ul>
+                    <li key="home">
                       <PageLink
-                        href="/how-it-works"
+                        href="/user/dashboard"
                         activeClassName={styles.isActive}
-                        target="_blank"
-                        hasTelemetry={{ link_id: "navigation_how_it_works" }}
+                        hasTelemetry={{ link_id: "navigation_dashboard" }}
                       >
-                        {l10n.getString("main-nav-link-how-it-works-label")}
+                        {l10n.getString("main-nav-link-dashboard-label")}
                       </PageLink>
                     </li>
-                  )}
-                  <li key="faq">
-                    <PageLink
-                      href="https://support.mozilla.org/kb/firefox-monitor-faq"
-                      title={l10n.getString("main-nav-link-faq-tooltip")}
-                      target="_blank"
-                      hasTelemetry={{ link_id: "navigation_faq" }}
-                    >
-                      {l10n.getString("main-nav-link-faq-label")}
-                    </PageLink>
-                  </li>
-                  <li key="settings">
-                    <PageLink
-                      href="/user/settings"
-                      activeClassName={styles.isActive}
-                      hasTelemetry={{ link_id: "navigation_settings" }}
-                    >
-                      {l10n.getString("main-nav-link-settings-label")}
-                    </PageLink>
-                    <ul className={styles.subMenu}>
-                      {CONST_SETTINGS_TAB_SLUGS.map((submenuKey) => {
-                        return (
-                          <li key={submenuKey}>
-                            <PageLink
-                              href={`/user/settings/${submenuKey}`}
-                              activeClassName={styles.isActive}
-                              hasTelemetry={{
-                                link_id: `navigation_settings_${submenuKey}`,
-                              }}
-                            >
-                              {l10n.getString(
-                                `settings-tab-label-${submenuKey}`,
-                              )}
-                            </PageLink>
-                          </li>
-                        );
-                      })}
-                    </ul>
-                  </li>
-                </ul>
-                <div className={styles.premiumCta}>
-                  <UpsellBadge
-                    monthlySubscriptionUrl={props.monthlySubscriptionUrl}
-                    yearlySubscriptionUrl={props.yearlySubscriptionUrl}
-                    subscriptionBillingAmount={props.subscriptionBillingAmount}
-                    // The last scan date is too noisy on mobile, so don't show it there:
-                    lastScanDate={null}
-                  />
-                </div>
-              </>
-            ) : props.enabledFeatureFlags.includes("LandingPageRedesign") &&
-              props.experimentData[
-                "landing-page-redesign-plus-eligible-experiment"
-              ].enabled &&
-              props.experimentData[
-                "landing-page-redesign-plus-eligible-experiment"
-              ].variant === "redesign" ? (
-              // The old <TopNavBar /> component is no longer hit by unit tests
-              // that have already enabled the experiment, so ignore that for now:
-              // (But c8 is weird so just pretend that this ignore comment is
-              // two lines lower.)
-              /* c8 ignore next 4 */
-              <RedesignedTopNavBar />
-            ) : (
-              <TopNavBar />
-            )}
-          </div>
+                    {props.countryCode === "us" && (
+                      <li key="how-it-works">
+                        <PageLink
+                          href="/how-it-works"
+                          activeClassName={styles.isActive}
+                          target="_blank"
+                          hasTelemetry={{ link_id: "navigation_how_it_works" }}
+                        >
+                          {l10n.getString("main-nav-link-how-it-works-label")}
+                        </PageLink>
+                      </li>
+                    )}
+                    <li key="faq">
+                      <PageLink
+                        href="https://support.mozilla.org/kb/firefox-monitor-faq"
+                        title={l10n.getString("main-nav-link-faq-tooltip")}
+                        target="_blank"
+                        hasTelemetry={{ link_id: "navigation_faq" }}
+                      >
+                        {l10n.getString("main-nav-link-faq-label")}
+                      </PageLink>
+                    </li>
+                    <li key="settings">
+                      <PageLink
+                        href="/user/settings"
+                        activeClassName={styles.isActive}
+                        hasTelemetry={{ link_id: "navigation_settings" }}
+                      >
+                        {l10n.getString("main-nav-link-settings-label")}
+                      </PageLink>
+                      <ul className={styles.subMenu}>
+                        {CONST_SETTINGS_TAB_SLUGS.map((submenuKey) => {
+                          return (
+                            <li key={submenuKey}>
+                              <PageLink
+                                href={`/user/settings/${submenuKey}`}
+                                activeClassName={styles.isActive}
+                                hasTelemetry={{
+                                  link_id: `navigation_settings_${submenuKey}`,
+                                }}
+                              >
+                                {l10n.getString(
+                                  `settings-tab-label-${submenuKey}`,
+                                )}
+                              </PageLink>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    </li>
+                  </ul>
+                  <div className={styles.premiumCta}>
+                    <UpsellBadge
+                      monthlySubscriptionUrl={props.monthlySubscriptionUrl}
+                      yearlySubscriptionUrl={props.yearlySubscriptionUrl}
+                      subscriptionBillingAmount={
+                        props.subscriptionBillingAmount
+                      }
+                      // The last scan date is too noisy on mobile, so don't show it there:
+                      lastScanDate={null}
+                    />
+                  </div>
+                </>
+              ) : props.enabledFeatureFlags.includes("LandingPageRedesign") &&
+                props.experimentData[
+                  "landing-page-redesign-plus-eligible-experiment"
+                ].enabled &&
+                props.experimentData[
+                  "landing-page-redesign-plus-eligible-experiment"
+                ].variant === "redesign" ? (
+                // The old <TopNavBar /> component is no longer hit by unit tests
+                // that have already enabled the experiment, so ignore that for now:
+                // (But c8 is weird so just pretend that this ignore comment is
+                // two lines lower.)
+                /* c8 ignore next 4 */
+                <RedesignedTopNavBar />
+              ) : (
+                <TopNavBar />
+              )}
+            </div>
+          )}
         </nav>
         <div className={styles.content}>{props.children}</div>
       </div>

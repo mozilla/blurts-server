@@ -33,6 +33,8 @@ export interface LatestOnerepScanDataOld {
   results: OnerepScanResultRow[];
 }
 
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function getAllScansForProfile(
   onerepProfileId: number,
 ): Promise<OnerepScanRow[]> {
@@ -42,7 +44,10 @@ async function getAllScansForProfile(
 
   return scans;
 }
+/* c8 ignore stop */
 
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function getLatestScanForProfileByReason(
   onerepProfileId: number,
   oneRepScanReason: ScanReason,
@@ -55,7 +60,10 @@ async function getLatestScanForProfileByReason(
 
   return scan;
 }
+/* c8 ignore stop */
 
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function getScanResults(
   onerepScanId: number,
 ): Promise<OnerepScanResultRow[]> {
@@ -66,7 +74,10 @@ async function getScanResults(
 
   return scanResults;
 }
+/* c8 ignore stop */
 
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function getAllScanResults(
   age: Date,
   statuses: RemovalStatus[],
@@ -132,7 +143,10 @@ async function getAllScanResults(
     return { scanResults };
   }
 }
+/* c8 ignore stop */
 
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function getLatestOnerepScan(
   onerepProfileId: number | null,
 ): Promise<OnerepScanRow | null> {
@@ -147,6 +161,7 @@ async function getLatestOnerepScan(
 
   return scan ?? null;
 }
+/* c8 ignore stop */
 
 /*
 Note: please, don't write the results of this function back to the database!
@@ -155,6 +170,8 @@ Note: please, don't write the results of this function back to the database!
  * @param onerepProfileId
  * @deprecated This has been replaced by getScanResultsWithBroker
  */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function getLatestOnerepScanResults(
   onerepProfileId: number | null,
 ): Promise<LatestOnerepScanDataOld> {
@@ -179,7 +196,10 @@ async function getLatestOnerepScanResults(
     results,
   };
 }
+/* c8 ignore stop */
 
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function setOnerepProfileId(
   subscriber: SubscriberRow,
   onerepProfileId: number,
@@ -191,7 +211,10 @@ async function setOnerepProfileId(
     updated_at: knex.fn.now(),
   });
 }
+/* c8 ignore stop */
 
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function setOnerepScan(
   onerepProfileId: number,
   onerepScanId: number,
@@ -214,7 +237,10 @@ async function setOnerepScan(
       updated_at: knex.fn.now(),
     });
 }
+/* c8 ignore stop */
 
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function addOnerepScanResults(
   onerepProfileId: number,
   onerepScanResults: Array<ScanResult>,
@@ -264,7 +290,10 @@ async function addOnerepScanResults(
       .merge();
   }
 }
+/* c8 ignore stop */
 
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function isOnerepScanResultForSubscriber(params: {
   onerepScanResultId: number;
   subscriberId: number;
@@ -289,7 +318,10 @@ async function isOnerepScanResultForSubscriber(params: {
 
   return typeof result?.onerep_scan_result_id === "number";
 }
+/* c8 ignore stop */
 
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function setOnerepScanResultManualResolution(
   onerepScanResultId: number,
   resolved: boolean,
@@ -306,7 +338,10 @@ async function setOnerepScanResultManualResolution(
     })
     .where("onerep_scan_result_id", onerepScanResultId);
 }
+/* c8 ignore stop */
 
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function getScansCount(
   startDate: string,
   endDate: string,
@@ -317,7 +352,10 @@ async function getScansCount(
     .whereBetween("created_at", [startDate, endDate])
     .andWhere("onerep_scan_reason", scanReason);
 }
+/* c8 ignore stop */
 
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function getScansCountForProfile(
   onerepProfileId: number,
 ): Promise<number> {
@@ -329,13 +367,19 @@ async function getScansCountForProfile(
     )?.[0]?.["count"] as string) || "0",
   );
 }
+/* c8 ignore stop */
 
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function deleteScansForProfile(onerepProfileId: number): Promise<void> {
   await knex("onerep_scans")
     .delete()
     .where("onerep_profile_id", onerepProfileId);
 }
+/* c8 ignore stop */
 
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function deleteScanResultsForProfile(
   onerepProfileId: number,
 ): Promise<void> {
@@ -348,7 +392,10 @@ async function deleteScanResultsForProfile(
     )
     .where("onerep_profile_id", onerepProfileId);
 }
+/* c8 ignore stop */
 
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function deleteSomeScansForProfile(
   onerepProfileId: number,
   leaveOutAtMost: number = 0,
@@ -381,7 +428,10 @@ async function deleteSomeScansForProfile(
     );
   }
 }
+/* c8 ignore stop */
 
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function getEmailForProfile(onerepProfileId: number) {
   const result = await knex("subscribers")
     .select("primary_email")
@@ -394,7 +444,10 @@ async function getEmailForProfile(onerepProfileId: number) {
     return undefined;
   }
 }
+/* c8 ignore stop */
 
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function getScanResultsWithBrokerUnderMaintenance(
   onerepProfileId: number | null,
 ): Promise<LatestOnerepScanData> {
@@ -429,7 +482,10 @@ async function getScanResultsWithBrokerUnderMaintenance(
 
   return { results: scanResults } as LatestOnerepScanData;
 }
+/* c8 ignore stop */
 
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function getScanResultsWithBroker(
   onerepProfileId: number | null,
   hasPremium: boolean | null,
@@ -465,7 +521,10 @@ async function getScanResultsWithBroker(
 
   return { scan: scan ?? null, results: scanResults } as LatestOnerepScanData;
 }
+/* c8 ignore stop */
 
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function getMockedScanResults(
   onerepProfileId: number | null,
 ): Promise<LatestOnerepScanData> {
@@ -482,7 +541,10 @@ async function getMockedScanResults(
 
   return { scan: scan ?? null, results: scanResults } as LatestOnerepScanData;
 }
+/* c8 ignore stop */
 
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function getMockedScanResultsWithBrokerUnderMaintenance(
   onerepProfileId: number | null,
 ): Promise<LatestOnerepScanData> {
@@ -508,6 +570,7 @@ async function getMockedScanResultsWithBrokerUnderMaintenance(
 
   return { results: scanResults } as LatestOnerepScanData;
 }
+/* c8 ignore stop */
 
 export {
   getAllScansForProfile,
