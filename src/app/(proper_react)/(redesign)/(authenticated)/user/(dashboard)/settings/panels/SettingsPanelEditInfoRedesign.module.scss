@@ -20,15 +20,21 @@
       border-bottom: 1px solid tokens.$color-grey-10;
       display: flex;
       padding: calc(tokens.$spacing-sm + tokens.$spacing-xs) 0;
+      gap: tokens.$spacing-sm;
 
       &:last-of-type {
         border: none;
+      }
+
+      & > span {
+        font-weight: 400;
+        min-width: calc(tokens.$content-xs * 0.5);
       }
     }
   }
 }
 
-.addEmailButton {
+.addButton {
   display: flex;
   flex-direction: column;
   gap: tokens.$spacing-sm;

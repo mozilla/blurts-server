@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { useState } from "react";
-import { SubscriberRow } from "knex/types/tables";
+import { OnerepProfileRow, SubscriberRow } from "knex/types/tables";
 import { CONST_MAX_NUM_ADDRESSES } from "../../../../../../../../constants";
 import { SubscriberEmailPreferencesOutput } from "../../../../../../../../db/tables/subscriber_email_preferences";
 import { useL10n } from "../../../../../../../hooks/l10n";
@@ -26,6 +26,7 @@ export type SettingsPanelEditInfoProps = {
   emailAddresses: SanitizedEmailAddressRow[];
   subscriber: SubscriberRow;
   user: Session["user"];
+  profileData?: OnerepProfileRow;
 };
 
 function MonitoredEmail(props: {

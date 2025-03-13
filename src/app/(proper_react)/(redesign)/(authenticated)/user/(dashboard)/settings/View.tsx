@@ -3,7 +3,11 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { Session } from "next-auth";
-import { EmailAddressRow, SubscriberRow } from "knex/types/tables";
+import {
+  EmailAddressRow,
+  OnerepProfileRow,
+  SubscriberRow,
+} from "knex/types/tables";
 import styles from "./View.module.scss";
 import { Toolbar } from "../../../../../../components/client/toolbar/Toolbar";
 import { ExtendedReactLocalization } from "../../../../../../functions/l10n";
@@ -36,6 +40,7 @@ export type Props = {
   lastScanDate?: Date;
   isMonthlySubscriber: boolean;
   activeTab?: TabType;
+  profileData?: OnerepProfileRow;
 };
 
 export const SettingsView = (props: Props) => {
@@ -62,6 +67,7 @@ export const SettingsView = (props: Props) => {
         isMonthlySubscriber={props.isMonthlySubscriber}
         subscriber={props.subscriber}
         user={props.user}
+        profileData={props.profileData}
       />
     </div>
   );

@@ -30,6 +30,7 @@ import { checkSession } from "../../../../../../../functions/server/checkSession
 import { checkUserHasMonthlySubscription } from "../../../../../../../functions/server/user";
 import { getEmailPreferenceForPrimaryEmail } from "../../../../../../../../db/tables/subscriber_email_preferences";
 import { CONST_SETTINGS_TAB_SLUGS } from "../../../../../../../../constants";
+import getDataBrokerScanProfile from "../../../../../../../functions/server/getDataBrokerScanProfile";
 
 type Props = {
   params: Promise<{
@@ -111,6 +112,9 @@ export default async function SettingsPage(props: Props) {
   const settingsData = await getEmailPreferenceForPrimaryEmail(
     session.user.email,
   );
+  const profileData =
+    session.user.subscriber.onerep_profile_id &&
+    (await getDataBrokerScanProfile(session.user.subscriber.onerep_profile_id));
 
   return (
     <SettingsView
@@ -130,6 +134,7 @@ export default async function SettingsPage(props: Props) {
       lastScanDate={lastOneRepScan?.created_at}
       isMonthlySubscriber={isMonthlySubscriber}
       activeTab={activeTab}
+      {...(profileData && { profileData })}
     />
   );
 }

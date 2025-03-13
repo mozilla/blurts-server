@@ -2,8 +2,10 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+"use client";
+
 import { useState } from "react";
-import { SubscriberRow } from "knex/types/tables";
+import { OnerepProfileRow, SubscriberRow } from "knex/types/tables";
 import { CONST_MAX_NUM_ADDRESSES } from "../../../../../../../../constants";
 import { SubscriberEmailPreferencesOutput } from "../../../../../../../../db/tables/subscriber_email_preferences";
 import { useL10n } from "../../../../../../../hooks/l10n";
@@ -19,6 +21,7 @@ import { useTelemetry } from "../../../../../../../hooks/useTelemetry";
 import { Button } from "../../../../../../../components/client/Button";
 import styles from "./SettingsPanelEditInfoRedesign.module.scss";
 import { onRemoveEmail } from "../actions";
+import { getLocale } from "../../../../../../../functions/universal/getLocale";
 
 export type SettingsPanelEditInfoRedesignProps = {
   breachCountByEmailAddress: Record<string, number>;
@@ -26,6 +29,7 @@ export type SettingsPanelEditInfoRedesignProps = {
   emailAddresses: SanitizedEmailAddressRow[];
   subscriber: SubscriberRow;
   user: Session["user"];
+  profileData?: OnerepProfileRow;
 };
 
 function MonitoredEmail(props: { emailAddress: SanitizedEmailAddressRow }) {
@@ -90,7 +94,27 @@ function MonitoredEmail(props: { emailAddress: SanitizedEmailAddressRow }) {
   );
 }
 
-function ProfileInfoSection() {
+function ProfileInfoSection({
+  profileData,
+}: {
+  profileData: OnerepProfileRow;
+}) {
+  const l10n = useL10n();
+  const {
+    first_name,
+    middle_name,
+    last_name,
+    date_of_birth,
+    city_name,
+    state_code,
+  } = profileData;
+  const dateOfBirthString = new Date(date_of_birth).toLocaleDateString(
+    getLocale(l10n),
+    {
+      dateStyle: "medium",
+      timeZone: "UTC",
+    },
+  );
   return (
     <section className={styles.section}>
       <div>
@@ -100,9 +124,18 @@ function ProfileInfoSection() {
         </p>
       </div>
       <ul className="noList">
-        <li>Item 1</li>
-        <li>Item 2</li>
-        <li>Item 3</li>
+        <li>
+          <span>{"Name"}</span>
+          {`${first_name} ${middle_name} ${last_name}`}
+        </li>
+        <li>
+          <span>{"Date of birth"}</span>
+          {dateOfBirthString}
+        </li>
+        <li>
+          <span>{"Location"}</span>
+          {`${city_name}, ${state_code}`}
+        </li>
       </ul>
     </section>
   );
@@ -130,7 +163,7 @@ function MonitoredEmailAddressesSection(
           </li>
         ))}
       </ul>
-      <span className={styles.addEmailButton}>
+      <span className={styles.addButton}>
         {hasMaxEmailAddresses && <EmailAddressAdderRedesign />}
       </span>
     </section>
@@ -150,7 +183,9 @@ function SettingsPanelEditInfoRedesign(
           }
         </p>
       </div>
-      <ProfileInfoSection />
+      {props.profileData && (
+        <ProfileInfoSection profileData={props.profileData} />
+      )}
       <MonitoredEmailAddressesSection {...props} />
     </>
   );
