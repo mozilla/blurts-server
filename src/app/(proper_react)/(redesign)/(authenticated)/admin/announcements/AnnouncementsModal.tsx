@@ -3,19 +3,19 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import React, { useEffect, useState } from "react";
-import styles from "./NotificationModal.module.scss";
-import { NotificationRow } from "knex/types/tables";
+import styles from "./AnnouncementsModal.module.scss";
+import { AnnouncementRow } from "knex/types/tables";
 
-type NotificationModalProps = {
+type AnnouncementsModalProps = {
   isOpen: boolean;
   onClose: () => void;
-  onAddNotification: (notification: NotificationRow) => void;
-  onUpdateNotification: (notification: NotificationRow) => void; // Callback for updating
-  notificationToEdit: NotificationRow | null; // Receive notification to edit if available
+  onAddAnnouncement: (notification: AnnouncementRow) => void;
+  onUpdateAnnouncement: (notification: AnnouncementRow) => void; // Callback for updating
+  notificationToEdit: AnnouncementRow | null; // Receive notification to edit if available
 };
 
 interface FormData {
-  notification_id: string;
+  announcement_id: string;
   title: string;
   description: string;
   small_image_path: string;
@@ -26,9 +26,9 @@ interface FormData {
   label: string;
 }
 
-const NotificationModal = (props: NotificationModalProps) => {
+const AnnouncementsModal = (props: AnnouncementsModalProps) => {
   const [formData, setFormData] = useState<FormData>({
-    notification_id: "",
+    announcement_id: "",
     title: "",
     description: "",
     small_image_path: "",
@@ -43,7 +43,7 @@ const NotificationModal = (props: NotificationModalProps) => {
   useEffect(() => {
     if (props.notificationToEdit) {
       setFormData({
-        notification_id: props.notificationToEdit.notification_id,
+        announcement_id: props.notificationToEdit.announcement_id,
         title: props.notificationToEdit.title,
         description: props.notificationToEdit.description,
         small_image_path: props.notificationToEdit.small_image_path,
@@ -83,7 +83,7 @@ const NotificationModal = (props: NotificationModalProps) => {
       if (props.notificationToEdit) {
         // If editing an existing notification, update it
         response = await fetch(
-          `/api/v1/admin/notifications/${props.notificationToEdit.notification_id}`,
+          `/api/v1/admin/announcements/${props.notificationToEdit.announcement_id}`,
           {
             method: "PUT",
             headers: {
@@ -92,12 +92,12 @@ const NotificationModal = (props: NotificationModalProps) => {
             body: JSON.stringify(notificationData),
           },
         );
-        const updatedNotification = await response.json();
-        props.onUpdateNotification(updatedNotification); // Update in parent
+        const updatedAnnouncement = await response.json();
+        props.onUpdateAnnouncement(updatedAnnouncement); // Update in parent
       } else {
         // If adding a new notification
 
-        response = await fetch("/api/v1/admin/notifications/", {
+        response = await fetch("/api/v1/admin/announcements/", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -105,11 +105,11 @@ const NotificationModal = (props: NotificationModalProps) => {
           body: JSON.stringify(notificationData),
         });
 
-        const addedNotification = await response.json();
-        props.onAddNotification(addedNotification); // Update parent
+        const addedAnnouncement = await response.json();
+        props.onAddAnnouncement(addedAnnouncement); // Update parent
       }
       setFormData({
-        notification_id: "",
+        announcement_id: "",
         title: "",
         description: "",
         small_image_path: "",
@@ -133,8 +133,8 @@ const NotificationModal = (props: NotificationModalProps) => {
         <div className={styles.modalHeader}>
           <h2>
             {props.notificationToEdit
-              ? "Edit Notification"
-              : "Add New Notification"}
+              ? "Edit Announcement"
+              : "Add New Announcement"}
           </h2>
           <button className={styles.closeButton} onClick={props.onClose}>
             ×
@@ -143,12 +143,12 @@ const NotificationModal = (props: NotificationModalProps) => {
 
         <form onSubmit={handleSubmit} className={styles.form}>
           <div className={styles.formGroup}>
-            <label htmlFor="notification_id">Notification ID *</label>
+            <label htmlFor="announcement_id">Announcement ID *</label>
             <input
               type="text"
-              id="notification_id"
-              name="notification_id"
-              value={formData.notification_id}
+              id="announcement_id"
+              name="announcement_id"
+              value={formData.announcement_id}
               onChange={handleChange}
               required
               className={styles.input}
@@ -277,8 +277,8 @@ const NotificationModal = (props: NotificationModalProps) => {
             </button>
             <button type="submit" className={styles.submitButton}>
               {props.notificationToEdit
-                ? "Update Notification"
-                : "Add Notification"}
+                ? "Update Announcement"
+                : "Add Announcement"}
             </button>
           </div>
         </form>
@@ -287,4 +287,4 @@ const NotificationModal = (props: NotificationModalProps) => {
   );
 };
 
-export default NotificationModal;
+export default AnnouncementsModal;

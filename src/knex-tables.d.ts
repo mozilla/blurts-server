@@ -413,9 +413,9 @@ declare module "knex/types/tables" {
     "id" | "created_at" | "modified_at"
   >;
 
-  interface NotificationRow {
+  interface AnnouncementRow {
     id: number;
-    notification_id: string;
+    announcement_id: string;
     title: string;
     description: string;
     small_image_path: string;
@@ -428,7 +428,7 @@ declare module "knex/types/tables" {
     label: string;
   }
 
-  type NotificationAutoInsertedColumns =
+  type AnnouncementRowInsertedColumns =
     | "id"
     | "created_at"
     | "updated_at"
@@ -437,8 +437,8 @@ declare module "knex/types/tables" {
     | "big_image_path"
     | "title"
     | "description";
-  type NotificationOptionalColumns =
-    | "notification_id"
+  type AnnouncementRowOptionalColumns =
+    | "announcement_id"
     | "cta_label"
     | "cta_link";
 
@@ -471,18 +471,18 @@ declare module "knex/types/tables" {
     >;
 
     notifications: Knex.CompositeTableType<
-      NotificationRow,
+      AnnouncementRow,
       WritableDateColumns<
         Omit<
-          NotificationRow,
+          AnnouncementRow,
           NotificationAutoInsertedColumns | NotificationOptionalColumns
         > &
-          Partial<Pick<NotificationRow, NotificationOptionalColumns>>
+          Partial<Pick<AnnouncementRow, NotificationOptionalColumns>>
       >,
       // On updates, don't allow updating the ID and created date
       WritableDateColumns<
-        Partial<Omit<NotificationRow, "id" | "created_at">> &
-          Pick<NotificationRow, "updated_at">
+        Partial<Omit<AnnouncementRow, "id" | "created_at">> &
+          Pick<AnnouncementRow, "updated_at">
       >
     >;
 
