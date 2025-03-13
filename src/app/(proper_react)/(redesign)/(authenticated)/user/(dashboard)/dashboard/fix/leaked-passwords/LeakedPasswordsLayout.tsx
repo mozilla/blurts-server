@@ -79,10 +79,23 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
   // If there are no unresolved breaches for the ”leaked passwords” step:
   // Go to the next step in the guided resolution or back to the dashboard.
   useEffect(() => {
-    if (!unresolvedPasswordBreach && !isStepDone) {
+    // The check for `isResolving` is a bit of a workaround; when we're done resolving
+    // all leaked passwords/security questions, we call `router.push()` with a `-done`
+    // route, and then call `router.refresh()`. However, that call to `router.refresh()`
+    // results in a new instance of `unresolvedPasswordBreach`, resulting in this effect
+    // trigger and redirecting to the next step.
+    // To avoid this, we also check `isResolving`, which is still `true` when marking
+    // this step as done.
+    if (!unresolvedPasswordBreach && !isStepDone && !isResolving) {
       router.push(nextStep.href);
     }
-  }, [nextStep.href, router, unresolvedPasswordBreach, isStepDone]);
+  }, [
+    nextStep.href,
+    router,
+    unresolvedPasswordBreach,
+    isStepDone,
+    isResolving,
+  ]);
 
   const pageData = getLeakedPasswords({
     dataType: props.type,
