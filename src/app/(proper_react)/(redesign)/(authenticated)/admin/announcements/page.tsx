@@ -5,8 +5,8 @@
 import { getServerSession } from "../../../../../functions/server/getServerSession";
 import { notFound } from "next/navigation";
 import { isAdmin } from "../../../../../api/utils/auth";
-import { getAllNotifications } from "../../../../../../db/tables/notifications";
-import { NotificationAdmin } from "./NotificationAdmin";
+import { getAllAnnouncements } from "../../../../../../db/tables/announcements";
+import { AnnouncementsAdmin } from "./AnnouncementsAdmin";
 
 export default async function DevPage() {
   const session = await getServerSession();
@@ -18,9 +18,7 @@ export default async function DevPage() {
   ) {
     return notFound();
   }
+  const announcements = await getAllAnnouncements();
 
-  console.log(session);
-  const notifications = await getAllNotifications();
-
-  return <NotificationAdmin notifications={notifications} />;
+  return <AnnouncementsAdmin announcements={announcements} />;
 }

@@ -5,37 +5,37 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import styles from "./NotificationAdmin.module.scss";
+import styles from "./AnnouncementsAdmin.module.scss";
 import Image from "next/image";
-import { NotificationRow } from "knex/types/tables";
-import NotificationModal from "./NotificationModal";
+import { AnnouncementRow } from "knex/types/tables";
+import AnnouncementsModal from "./AnnouncementsModal";
 import { useL10n } from "../../../../../hooks/l10n";
 
 type Props = {
-  notifications: NotificationRow[];
+  announcements: AnnouncementRow[];
 };
 
-export const NotificationAdmin = (props: Props) => {
-  const [activeNotificationId, setActiveNotificationId] = useState<
+export const AnnouncementsAdmin = (props: Props) => {
+  const [activeAnnouncementId, setActiveAnnouncementId] = useState<
     number | null
-  >(props.notifications[0]?.id || null);
-  const [activeNotificationToEdit, setActiveNotificationToEdit] =
-    useState<NotificationRow | null>(null);
+  >(props.announcements[0]?.id || null);
+  const [activeAnnouncementToEdit, setActiveAnnouncementToEdit] =
+    useState<AnnouncementRow | null>(null);
 
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const [notifications, setNotifications] = useState<NotificationRow[]>(
-    props.notifications,
+  const [announcements, setAnnouncements] = useState<AnnouncementRow[]>(
+    props.announcements,
   );
-  const endpointBase = `/api/v1/admin/notifications`;
+  const endpointBase = `/api/v1/admin/announcements`;
 
-  const handleAddNotification = async (newNotification: NotificationRow) => {
+  const handleAddAnnouncement = async (newAnnouncement: AnnouncementRow) => {
     try {
       const response = await fetch(endpointBase, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(newNotification),
+        body: JSON.stringify(newAnnouncement),
       });
 
       if (!response.ok) {
@@ -47,25 +47,25 @@ export const NotificationAdmin = (props: Props) => {
         return;
       }
 
-      const savedNotification: NotificationRow = await response.json();
+      const savedAnnouncement: AnnouncementRow = await response.json();
 
-      setNotifications((prevNotifications) => [
-        ...prevNotifications,
-        savedNotification,
+      setAnnouncements((prevAnnouncements) => [
+        ...prevAnnouncements,
+        savedAnnouncement,
       ]);
 
-      if (!activeNotificationId) {
-        setActiveNotificationId(savedNotification.id);
+      if (!activeAnnouncementId) {
+        setActiveAnnouncementId(savedAnnouncement.id);
       }
     } catch (error) {
       console.error("Error adding notification:", error);
     }
   };
 
-  const handleDeleteNotification = async (notificationId: string) => {
+  const handleDeleteAnnouncement = async (announcementId: string) => {
     try {
       const response = await fetch(
-        `/api/v1/admin/notifications/${notificationId}/`,
+        `/api/v1/admin/announcements/${announcementId}/`,
         {
           method: "DELETE",
         },
@@ -80,15 +80,15 @@ export const NotificationAdmin = (props: Props) => {
         return;
       }
 
-      setNotifications((prevNotifications) =>
-        prevNotifications.filter(
-          (notification) => notification.notification_id !== notificationId,
+      setAnnouncements((prevAnnouncements) =>
+        prevAnnouncements.filter(
+          (notification) => notification.announcement_id !== announcementId,
         ),
       );
 
-      if (notificationId === activeNotification?.notification_id) {
-        setActiveNotificationId(
-          notifications.length > 1 ? notifications[0].id : null,
+      if (announcementId === activeAnnouncement?.announcement_id) {
+        setActiveAnnouncementId(
+          announcements.length > 1 ? announcements[0].id : null,
         );
       }
     } catch (error) {
@@ -96,18 +96,18 @@ export const NotificationAdmin = (props: Props) => {
     }
   };
 
-  const handleUpdateNotification = async (
-    updatedNotification: NotificationRow,
+  const handleUpdateAnnouncement = async (
+    updatedAnnouncement: AnnouncementRow,
   ) => {
     try {
       const response = await fetch(
-        `/api/v1/admin/notifications/${updatedNotification.notification_id}`,
+        `/api/v1/admin/announcements/${updatedAnnouncement.announcement_id}`,
         {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(updatedNotification),
+          body: JSON.stringify(updatedAnnouncement),
         },
       );
 
@@ -120,10 +120,10 @@ export const NotificationAdmin = (props: Props) => {
         return;
       }
 
-      setNotifications((prevNotifications) =>
-        prevNotifications.map((notification) =>
-          notification.id === updatedNotification.id
-            ? updatedNotification
+      setAnnouncements((prevAnnouncements) =>
+        prevAnnouncements.map((notification) =>
+          notification.id === updatedAnnouncement.id
+            ? updatedAnnouncement
             : notification,
         ),
       );
@@ -132,77 +132,77 @@ export const NotificationAdmin = (props: Props) => {
     }
   };
 
-  const handleEditNotification = (notificationId: string) => {
-    const notificationToEdit = notifications.find(
-      (n) => n.notification_id === notificationId,
+  const handleEditAnnouncement = (announcementId: string) => {
+    const notificationToEdit = announcements.find(
+      (n) => n.announcement_id === announcementId,
     );
     if (notificationToEdit) {
       setIsModalOpen(true);
       // Pass the notification data to the modal for editing
-      setActiveNotificationToEdit(notificationToEdit);
+      setActiveAnnouncementToEdit(notificationToEdit);
     }
   };
 
   // Handle selecting a notification
-  const handleClick = (notificationId: number) => {
-    const newActiveNotification = notifications.find(
-      (n) => n.id === notificationId,
+  const handleClick = (announcementId: number) => {
+    const newActiveAnnouncement = announcements.find(
+      (n) => n.id === announcementId,
     );
-    if (newActiveNotification) {
-      setActiveNotificationId(notificationId);
+    if (newActiveAnnouncement) {
+      setActiveAnnouncementId(announcementId);
     }
   };
 
-  // Find the active notification from the list of notifications
-  const activeNotification = notifications.find(
-    (notification) => notification.id === activeNotificationId,
+  // Find the active notification from the list of announcements
+  const activeAnnouncement = announcements.find(
+    (notification) => notification.id === activeAnnouncementId,
   );
 
   useEffect(() => {
-    if (notifications.length > 0 && activeNotificationId === null) {
-      setActiveNotificationId(notifications[0].id);
+    if (announcements.length > 0 && activeAnnouncementId === null) {
+      setActiveAnnouncementId(announcements[0].id);
     }
-  }, [notifications, activeNotificationId]);
+  }, [announcements, activeAnnouncementId]);
   // States for each image
   const [smallImageIsLoading, setSmallImageIsLoading] = useState(true);
   const [bigImageIsLoading, setBigImageIsLoading] = useState(true);
   const [smallImageUnavailable, setSmallImageUnavailable] = useState(false);
   const [bigImageUnavailable, setBigImageUnavailable] = useState(false);
 
-  const smallImagePath = `/images/notifications/${activeNotification?.notification_id.trim()}/small.jpg`;
-  const bigImagePath = `/images/notifications/${activeNotification?.notification_id.trim()}/big.jpg`;
+  const smallImagePath = `/images/announcements/${activeAnnouncement?.announcement_id.trim()}/small.jpg`;
+  const bigImagePath = `/images/announcements/${activeAnnouncement?.announcement_id.trim()}/big.jpg`;
 
   useEffect(() => {
     setSmallImageIsLoading(true);
     setBigImageIsLoading(true);
     setSmallImageUnavailable(false);
     setBigImageUnavailable(false);
-  }, [activeNotificationId]);
+  }, [activeAnnouncementId]);
 
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
-        {/* List of notifications */}
+        {/* List of announcements */}
         <div className={styles.notificationsWrapper}>
-          <h1>All Notifications</h1>
+          <h1>All Announcements</h1>
           <ul>
-            {notifications.map((notification) => (
+            {announcements.map((notification) => (
               <li
                 key={notification.id}
                 className={
-                  activeNotificationId === notification.id ? styles.active : ""
+                  activeAnnouncementId === notification.id ? styles.active : ""
                 }
                 onClick={() => handleClick(notification.id)}
               >
                 <div>
                   <p className={styles.title}>
-                    <LocalizedNotificationString
+                    <LocalizedAnnouncementString
                       notification={notification}
                       type="title"
                     />
                   </p>
                   <p className={styles.description}>
-                    <LocalizedNotificationString
+                    <LocalizedAnnouncementString
                       notification={notification}
                       type="description"
                     />
@@ -226,27 +226,27 @@ export const NotificationAdmin = (props: Props) => {
           </ul>
         </div>
 
-        {/* Notification Details */}
-        {activeNotification && (
+        {/* Announcement Details */}
+        {activeAnnouncement && (
           <div className={styles.notificationSettings}>
             <h2>Details</h2>
             <dl>
-              <dt>Notification ID</dt>
-              <dd>{activeNotification.notification_id}</dd>
+              <dt>Announcement ID</dt>
+              <dd>{activeAnnouncement.announcement_id}</dd>
 
               <dt>Title</dt>
               <dd>
                 {" "}
-                <LocalizedNotificationString
-                  notification={activeNotification}
+                <LocalizedAnnouncementString
+                  notification={activeAnnouncement}
                   type="title"
                 />
               </dd>
 
               <dt>Description</dt>
               <dd>
-                <LocalizedNotificationString
-                  notification={activeNotification}
+                <LocalizedAnnouncementString
+                  notification={activeAnnouncement}
                   type="description"
                 />
               </dd>
@@ -261,9 +261,9 @@ export const NotificationAdmin = (props: Props) => {
                     alt="Fallback image"
                     width={500}
                     height={300}
-                    key={activeNotification.id}
+                    key={activeAnnouncement.id}
                     className={styles.smallImage}
-                    src="/images/notifications/fallback/small.jpg"
+                    src="/images/announcements/fallback/small.jpg"
                     onLoadingComplete={() => setSmallImageIsLoading(false)}
                   />
                 ) : (
@@ -271,7 +271,7 @@ export const NotificationAdmin = (props: Props) => {
                     alt="Small Image"
                     width={500}
                     height={300}
-                    key={activeNotification.id}
+                    key={activeAnnouncement.id}
                     src={smallImagePath}
                     className={styles.smallImage}
                     onLoadingComplete={() => setSmallImageIsLoading(false)}
@@ -291,17 +291,17 @@ export const NotificationAdmin = (props: Props) => {
                     alt="Fallback image"
                     width={500}
                     height={300}
-                    key={activeNotification.id}
+                    key={activeAnnouncement.id}
                     className={styles.bigImage}
-                    src="/images/notifications/fallback/big.jpg"
+                    src="/images/announcements/fallback/big.jpg"
                     onLoadingComplete={() => setBigImageIsLoading(false)}
                   />
                 ) : (
                   <Image
-                    alt="Notification preview"
+                    alt="Announcement preview"
                     width={500}
                     height={300}
-                    key={activeNotification.id}
+                    key={activeAnnouncement.id}
                     src={bigImagePath}
                     className={styles.bigImage}
                     onLoadingComplete={() => setBigImageIsLoading(false)}
@@ -311,37 +311,37 @@ export const NotificationAdmin = (props: Props) => {
               </dd>
               <dt>CTA Label</dt>
               <dd>
-                <LocalizedNotificationString
-                  notification={activeNotification}
+                <LocalizedAnnouncementString
+                  notification={activeAnnouncement}
                   type="cta-label"
                 />
               </dd>
 
               <dt>CTA Link</dt>
-              <dd>{activeNotification.cta_link}</dd>
+              <dd>{activeAnnouncement.cta_link}</dd>
 
               <dt>Status</dt>
-              <dd>{activeNotification.label}</dd>
+              <dd>{activeAnnouncement.label}</dd>
 
               <dt>Audience</dt>
-              <dd>{activeNotification.audience}</dd>
+              <dd>{activeAnnouncement.audience}</dd>
 
               <dt>Created At</dt>
               <dd>
-                {new Date(activeNotification.created_at).toLocaleString()}
+                {new Date(activeAnnouncement.created_at).toLocaleString()}
               </dd>
 
               <dt>Updated At</dt>
               <dd>
-                {new Date(activeNotification.updated_at).toLocaleString()}
+                {new Date(activeAnnouncement.updated_at).toLocaleString()}
               </dd>
             </dl>
 
             <div className={styles.buttons}>
               <button
                 onClick={() =>
-                  void handleDeleteNotification(
-                    activeNotification.notification_id,
+                  void handleDeleteAnnouncement(
+                    activeAnnouncement.announcement_id,
                   )
                 }
               >
@@ -349,8 +349,8 @@ export const NotificationAdmin = (props: Props) => {
               </button>
               <button
                 onClick={() =>
-                  void handleEditNotification(
-                    activeNotification.notification_id,
+                  void handleEditAnnouncement(
+                    activeAnnouncement.announcement_id,
                   )
                 }
               >
@@ -360,7 +360,7 @@ export const NotificationAdmin = (props: Props) => {
           </div>
         )}
         {/* Preview Modal */}
-        {activeNotification && (
+        {activeAnnouncement && (
           <div className={styles.previewModalWrapper}>
             <div className={styles.previewModal}>
               {bigImageIsLoading && (
@@ -371,16 +371,16 @@ export const NotificationAdmin = (props: Props) => {
                   alt="Fallback image"
                   width={500}
                   height={300}
-                  key={activeNotification.id}
-                  src="/images/notifications/fallback/big.jpg"
+                  key={activeAnnouncement.id}
+                  src="/images/announcements/fallback/big.jpg"
                   onLoadingComplete={() => setBigImageIsLoading(false)}
                 />
               ) : (
                 <Image
-                  alt="Notification preview"
+                  alt="Announcement preview"
                   width={500}
                   height={300}
-                  key={activeNotification.id}
+                  key={activeAnnouncement.id}
                   src={bigImagePath}
                   onLoadingComplete={() => setBigImageIsLoading(false)}
                   onError={() => setBigImageUnavailable(true)}
@@ -388,21 +388,21 @@ export const NotificationAdmin = (props: Props) => {
               )}
               <dl>
                 <dt>
-                  <LocalizedNotificationString
-                    notification={activeNotification}
+                  <LocalizedAnnouncementString
+                    notification={activeAnnouncement}
                     type="title"
                   />
                 </dt>
                 <dd>
-                  <LocalizedNotificationString
-                    notification={activeNotification}
+                  <LocalizedAnnouncementString
+                    notification={activeAnnouncement}
                     type="description"
                   />
                 </dd>
               </dl>
-              <a href={activeNotification.cta_link}>
-                <LocalizedNotificationString
-                  notification={activeNotification}
+              <a href={activeAnnouncement.cta_link}>
+                <LocalizedAnnouncementString
+                  notification={activeAnnouncement}
                   type="cta-label"
                 />
               </a>
@@ -411,29 +411,29 @@ export const NotificationAdmin = (props: Props) => {
         )}
       </div>
 
-      <NotificationModal
+      <AnnouncementsModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        notificationToEdit={activeNotificationToEdit}
-        onAddNotification={handleAddNotification}
-        onUpdateNotification={handleUpdateNotification}
+        notificationToEdit={activeAnnouncementToEdit}
+        onAddAnnouncement={handleAddAnnouncement}
+        onUpdateAnnouncement={handleUpdateAnnouncement}
       />
     </div>
   );
 };
 
-type LocalizedNotificationStringProps = {
-  notification: NotificationRow;
+type LocalizedAnnouncementStringProps = {
+  notification: AnnouncementRow;
   type: "title" | "description" | "cta-label";
 };
 
-export const LocalizedNotificationString = (
-  props: LocalizedNotificationStringProps,
+export const LocalizedAnnouncementString = (
+  props: LocalizedAnnouncementStringProps,
 ) => {
   const l10n = useL10n();
 
   // Build the key based on the type (fluent IDs are named in this format)
-  const key = `notif-${props.notification.notification_id}-${props.type}`;
+  const key = `announcement-${props.notification.announcement_id}-${props.type}`;
 
   // Get the localized string for the key
   const localizedString = l10n.getString(key);
@@ -442,9 +442,9 @@ export const LocalizedNotificationString = (
     <span className={styles.missingLabel}>Missing fluent ID</span>
   );
 
-  // If the key is not translated, use the fallback values from the notifications table
+  // If the key is not translated, use the fallback values from the announcements table
   if (localizedString === key) {
-    console.warn(`${props.notification.notification_id} is not localized`);
+    console.warn(`${props.notification.announcement_id} is not localized`);
 
     if (props.type === "title") {
       return (

@@ -2,10 +2,10 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { NotificationRow } from "knex/types/tables";
+import { AnnouncementRow } from "knex/types/tables";
 import { NextRequest, NextResponse } from "next/server";
 import createDbConnection from "../../../../../db/connect";
-import { getAllNotifications } from "../../../../../db/tables/notifications";
+import { getAllAnnouncements } from "../../../../../db/tables/announcements";
 import { getServerSession } from "../../../../functions/server/getServerSession";
 import { isAdmin } from "../../../utils/auth";
 
@@ -20,10 +20,10 @@ export async function GET() {
   }
 
   try {
-    const notifications = await getAllNotifications();
-    return NextResponse.json(notifications, { status: 200 });
+    const announcements = await getAllAnnouncements();
+    return NextResponse.json(announcements, { status: 200 });
   } catch (error) {
-    console.error("Error fetching notifications:", error);
+    console.error("Error fetching announcements:", error);
     return NextResponse.json(
       { error: "Internal Server Error" },
       { status: 500 },
@@ -38,22 +38,22 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    const newNotification: NotificationRow = await req.json();
+    const newAnnouncements: AnnouncementRow = await req.json();
 
-    const [addedNotification] = await knex("notifications")
-      .insert(newNotification)
+    const [addedAnnouncements] = await knex("announcements")
+      .insert(newAnnouncements)
       .returning("*");
 
-    if (!addedNotification) {
+    if (!addedAnnouncements) {
       return NextResponse.json(
-        { error: "Failed to insert notification" },
+        { error: "Failed to insert announcement" },
         { status: 400 },
       );
     }
 
-    return NextResponse.json(addedNotification, { status: 201 });
+    return NextResponse.json(addedAnnouncements, { status: 201 });
   } catch (error) {
-    console.error("Error adding notification:", error);
+    console.error("Error adding announcement:", error);
     return NextResponse.json(
       { error: "Internal Server Error" },
       { status: 500 },
