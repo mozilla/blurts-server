@@ -21,7 +21,7 @@
     li .contentWrapper {
       display: flex;
       gap: tokens.$spacing-sm;
-      align-items: center;
+      align-items: stretch;
 
       .manualNumber {
         padding: tokens.$spacing-sm 10px;
