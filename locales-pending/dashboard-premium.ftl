@@ -268,3 +268,9 @@ petition-banner-data-privacy-title = Join the Movement for a U.S. Data Privacy L
 petition-banner-data-privacy-text = Advocate for stronger data protection laws with the { -brand-mozilla-foundation } — <b>your voice can shape a safer digital future!</b>
 petition-banner-data-privacy-button-sign = Sign petition
 petition-banner-data-privacy-button-dismiss = No, thank you
+
+## Removal process explainer
+
+removal-process-step-requested = Removal requested
+removal-process-step-awaiting = Broker works on removal
+removal-process-step-resolved = Resolved
