@@ -1,5 +1,36 @@
 @use "../../../../../../../tokens";
 
-.panelContent {
-  border: 1px solid red;
+.profileForm {
+  display: flex;
+  flex-direction: column;
+  gap: tokens.$spacing-md;
+  width: 100%;
+
+  legend {
+    display: contents;
+
+    & > span {
+      min-width: calc(tokens.$content-xs * 0.5);
+    }
+  }
+
+  fieldset {
+    border: 0;
+    display: flex;
+    padding: 0;
+    margin: 0;
+    min-width: 0;
+  }
+}
+
+.profileFormButtons {
+  align-items: flex-end;
+  display: flex;
+  gap: tokens.$spacing-md;
+  justify-content: flex-end;
+}
+
+.profileFormItem {
+  display: flex;
+  gap: tokens.$spacing-md;
 }

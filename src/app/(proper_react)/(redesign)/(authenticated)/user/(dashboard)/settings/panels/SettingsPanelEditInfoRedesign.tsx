@@ -112,7 +112,7 @@ function ProfileInfoSection({
   const dateOfBirthString = new Date(date_of_birth).toLocaleDateString(
     getLocale(l10n),
     {
-      dateStyle: "medium",
+      dateStyle: "short",
       timeZone: "UTC",
     },
   );
@@ -190,10 +190,11 @@ function MonitoredEmailAddressesSection(
 function SettingsPanelEditInfoRedesign(
   props: SettingsPanelEditInfoRedesignProps,
 ) {
+  const l10n = useL10n();
   return (
     <>
       <div>
-        <h3>{"Update scan info"}</h3>
+        <h3>{l10n.getString("settings-tab-label-update-scan-info")}</h3>
         <p>
           {
             "Monitor is most effective at protecting your info when you add specific details. Add any of your name variations, emails, or locations. Why should I add details for my scan?"
