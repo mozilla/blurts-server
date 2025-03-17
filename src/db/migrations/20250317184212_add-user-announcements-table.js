@@ -10,8 +10,13 @@ export function up(knex) {
   return knex.schema.createTable("user_announcements", (table) => {
     table.increments("id").primary();
     table.integer("user_id").notNullable();
-    table.string("announcement_id").notNullable();
-    table.string("status").notNullable(); // seen, cleared, clicked
+    table
+      .string("announcement_id")
+      .references("announcements.announcement_id")
+      .notNullable()
+      .onDelete("CASCADE")
+      .onUpdate("CASCADE");
+    table.string("status").notNullable(); // seen, cleared, clicked, new
     table.timestamp("seen_at").nullable();
     table.timestamp("cleared_at").nullable();
     table.boolean("is_history").defaultTo(false);
