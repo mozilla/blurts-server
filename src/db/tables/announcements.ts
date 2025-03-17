@@ -70,13 +70,13 @@ export async function updateAnnouncements(
 
     if (!updatedAnnouncements) {
       throw new Error(
-        "Failed to update the notification or notification not found",
+        "Failed to update the announcement or announcement not found",
       );
     }
 
     return updatedAnnouncements;
   } catch (error) {
-    logger.error("Error updating notification:", error);
+    logger.error("Error updating announcement:", error);
     throw error;
   }
 }
