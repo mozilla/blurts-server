@@ -970,6 +970,39 @@ export const LinkIcon = (props: SVGProps<SVGSVGElement> & { alt: string }) => {
   );
 };
 
+// Keywords: plus, circle, circled, add
+export const PlusCircledIcon = (
+  props: SVGProps<SVGSVGElement> & { alt: string },
+) => {
+  return (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      role="img"
+      aria-label={props.alt}
+      aria-hidden={props.alt === ""}
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+      className={`${props.className ?? ""} ${styles.colorifyFill}`}
+    >
+      <title>{props.alt}</title>
+      <g>
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M12 5C8.13401 5 5 8.13401 5 12C5 15.866 8.13401 19 12 19C15.866 19 19 15.866 19 12C19 8.13401 15.866 5 12 5ZM3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12Z"
+        />
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M12 7.5C12.5523 7.5 13 7.94772 13 8.5V11H15.5C16.0523 11 16.5 11.4477 16.5 12C16.5 12.5523 16.0523 13 15.5 13H13V15.5C13 16.0523 12.5523 16.5 12 16.5C11.4477 16.5 11 16.0523 11 15.5V13H8.5C7.94772 13 7.5 12.5523 7.5 12C7.5 11.4477 7.94772 11 8.5 11H11V8.5C11 7.94772 11.4477 7.5 12 7.5Z"
+        />
+      </g>
+    </svg>
+  );
+};
+
 // Keywords: minus, circle, circled, remove
 export const MinusCircledIcon = (
   props: SVGProps<SVGSVGElement> & { alt: string },

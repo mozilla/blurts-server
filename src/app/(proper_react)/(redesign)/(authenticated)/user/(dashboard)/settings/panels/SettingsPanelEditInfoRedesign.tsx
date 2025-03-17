@@ -147,7 +147,7 @@ function ProfileInfoSection({
             module: "link",
             name: "click",
             data: {
-              link_id: "clicked_settings_edit_info",
+              link_id: "clicked_edit_info",
             },
           }}
         >
