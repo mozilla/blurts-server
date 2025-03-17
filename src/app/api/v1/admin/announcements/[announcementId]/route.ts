@@ -7,15 +7,15 @@ import { getServerSession } from "../../../../../functions/server/getServerSessi
 import { logger } from "../../../../../functions/server/logging";
 import { isAdmin } from "../../../../utils/auth";
 import {
-  deleteNotification,
-  getNotificationByNotificationId,
-  updateNotification,
-} from "../../../../../../db/tables/notifications";
-import { NotificationRow } from "knex/types/tables";
+  deleteAnnouncements,
+  getAnnouncementsByAnnouncementsId,
+  updateAnnouncements,
+} from "../../../../../../db/tables/announcements";
+import { AnnouncementRow } from "knex/types/tables";
 
 export async function GET(
   _req: NextRequest,
-  props: { params: Promise<{ notificationId: string }> },
+  props: { params: Promise<{ announcementId: string }> },
 ) {
   const params = await props.params;
   const session = await getServerSession();
@@ -24,10 +24,10 @@ export async function GET(
     return NextResponse.json({ error: "Not an admin user" }, { status: 401 });
   }
 
-  const notificationId = params.notificationId;
+  const announcementId = params.announcementId;
   try {
     const notificationItem =
-      await getNotificationByNotificationId(notificationId);
+      await getAnnouncementsByAnnouncementsId(announcementId);
     return NextResponse.json(notificationItem);
   } catch (e) {
     logger.error(e);
@@ -38,7 +38,7 @@ export async function GET(
 export async function DELETE(
   _req: NextRequest,
   props: {
-    params: Promise<{ notificationId: string }>;
+    params: Promise<{ announcementId: string }>;
   },
 ) {
   const params = await props.params;
@@ -47,9 +47,9 @@ export async function DELETE(
     return NextResponse.json({ error: "Not an admin user" }, { status: 401 });
   }
 
-  const notificationId = params.notificationId;
+  const announcementId = params.announcementId;
   try {
-    const notificationItem = await deleteNotification(notificationId);
+    const notificationItem = await deleteAnnouncements(announcementId);
     return NextResponse.json(notificationItem);
   } catch (e) {
     logger.error(e);
@@ -59,24 +59,24 @@ export async function DELETE(
 
 export async function PUT(
   req: NextRequest,
-  props: { params: Promise<{ notificationId: string }> },
+  props: { params: Promise<{ announcementId: string }> },
 ) {
   const params = await props.params;
-  const { notificationId } = params;
+  const { announcementId } = params;
   const session = await getServerSession();
   if (!isAdmin(session?.user?.email || "")) {
     return NextResponse.json({ error: "Not an admin user" }, { status: 401 });
   }
   try {
-    const updatedData: NotificationRow = await req.json();
-    const updatedNotification = await updateNotification(
-      notificationId,
+    const updatedData: AnnouncementRow = await req.json();
+    const updatedAnnouncements = await updateAnnouncements(
+      announcementId,
       updatedData,
     );
 
-    return NextResponse.json(updatedNotification, { status: 200 });
+    return NextResponse.json(updatedAnnouncements, { status: 200 });
   } catch (error) {
-    console.error("Error updating notification:", error);
+    console.error("Error updating announcement:", error);
     return NextResponse.json(
       { error: "Internal Server Error" },
       { status: 500 },
