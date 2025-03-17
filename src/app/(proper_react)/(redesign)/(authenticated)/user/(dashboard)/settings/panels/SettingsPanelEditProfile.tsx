@@ -2,6 +2,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+"use client";
+
 import { FormEvent, Fragment, useActionState, useState } from "react";
 import { Session } from "next-auth";
 import { redirect, useRouter } from "next/navigation";
@@ -55,6 +57,7 @@ export type SettingsPanelEditProfileProps = {
 };
 
 function SettingsPanelEditProfile(props: SettingsPanelEditProfileProps) {
+  const l10n = useL10n();
   const router = useRouter();
   if (typeof props.profileData === "undefined") {
     router.push("/user/settings/edit-info");
@@ -63,7 +66,7 @@ function SettingsPanelEditProfile(props: SettingsPanelEditProfileProps) {
 
   return (
     <>
-      <h3>{"Details about you"}</h3>
+      <h3>{l10n.getString("settings-details-about-you-header")}</h3>
       <section>
         <EditProfileForm profileData={props.profileData} />
       </section>
@@ -81,6 +84,7 @@ function handleUpdateProfileData(formData: FormData) {
 }
 
 function EditProfileForm(props: { profileData: OnerepProfileRow }) {
+  const l10n = useL10n();
   const [profileFormData, setProfileFormData] = useState(props.profileData);
   const [
     _updateProfileActionError,
@@ -97,7 +101,7 @@ function EditProfileForm(props: { profileData: OnerepProfileRow }) {
     const fieldValue = target.value;
 
     const formDataUpdated = { ...profileFormData };
-    if (typeof fieldIndex !== "undefined") {
+    if (typeof fieldIndex === "undefined") {
       formDataUpdated[fieldBaseName as ProfileDataItemKey] = fieldValue;
     } else {
       formDataUpdated[fieldBaseName as ProfileDataListKey][
@@ -134,27 +138,34 @@ function EditProfileForm(props: { profileData: OnerepProfileRow }) {
       action={updateProfileAction}
       onChange={handleFormChange}
     >
-      {profileFields.map((profileDataKey, detailIndex) => (
-        <Fragment key={profileDataKey}>
-          <fieldset className="noList">
-            <legend>
-              <span>{profileDataKey}</span>
-            </legend>
-            <div className={styles.formInputs}>
-              <EditProfileFormInputs
-                profileData={profileFormData}
-                profileDataKey={profileDataKey as keyof OnerepProfileRow}
-                onAdd={handleOnAdd}
-                onRemove={handleOnRemove}
-              />
-            </div>
-          </fieldset>
-          {detailIndex < Object.keys(profileFormData).length - 1 && <hr />}
-        </Fragment>
-      ))}
+      {profileFields.map((profileDataKey, detailIndex) => {
+        const label = l10n.getString(
+          `settings-edit-profile-info-form-fieldset-label-${profileDataKey.replaceAll("_", "-")}`,
+        );
+        return (
+          <Fragment key={profileDataKey}>
+            <fieldset className="noList">
+              <legend>
+                <span>{label}</span>
+              </legend>
+              <div className={styles.formInputs}>
+                <EditProfileFormInputs
+                  profileData={profileFormData}
+                  profileDataKey={profileDataKey as keyof OnerepProfileRow}
+                  onAdd={handleOnAdd}
+                  onRemove={handleOnRemove}
+                />
+              </div>
+            </fieldset>
+            {detailIndex < Object.keys(profileFormData).length - 1 && <hr />}
+          </Fragment>
+        );
+      })}
       <div className={styles.profileFormButtons}>
         <Button type="button" variant="secondary" onPress={() => {}}>
-          {"Cancel"}
+          {l10n.getString(
+            "settings-edit-profile-info-form-cancel-button-label",
+          )}
         </Button>
         <Button
           type="submit"
@@ -163,7 +174,9 @@ function EditProfileForm(props: { profileData: OnerepProfileRow }) {
           onPress={() => {}}
           isLoading={false}
         >
-          {"Save"}
+          {l10n.getString(
+            "settings-edit-profile-info-form-cancel-button-label",
+          )}
         </Button>
       </div>
     </form>
@@ -174,6 +187,7 @@ function AddItemButton(props: {
   itemKey: keyof OnerepProfileRow;
   onAdd: () => void;
 }) {
+  const l10n = useL10n();
   return (
     <span className={styles.addItemButtonWrapper}>
       <TelemetryButton
@@ -190,7 +204,9 @@ function AddItemButton(props: {
         small
       >
         <PlusCircledIcon alt="" />
-        Add item
+        {l10n.getString(
+          "settings-edit-profile-info-form-add-item-button-label",
+        )}
       </TelemetryButton>
     </span>
   );
@@ -200,6 +216,7 @@ function RemoveItemButton(props: {
   itemKey: keyof OnerepProfileRow;
   onRemove: () => void;
 }) {
+  const l10n = useL10n();
   return (
     <span className={styles.addItemButtonWrapper}>
       <TelemetryButton
@@ -215,7 +232,11 @@ function RemoveItemButton(props: {
         variant="icon"
         small
       >
-        <MinusCircledIcon alt={"Remove item"} />
+        <MinusCircledIcon
+          alt={l10n.getString(
+            "settings-edit-profile-info-form-remove-item-button-label",
+          )}
+        />
       </TelemetryButton>
     </span>
   );
@@ -240,11 +261,18 @@ function EditProfileFormInputs(props: {
             key={props.profileDataKey}
             name={props.profileDataKey}
             value={itemData as string}
-            label={props.profileDataKey}
+            label={l10n.getString(
+              `settings-edit-profile-info-form-input-label-primary-${props.profileDataKey.replaceAll("_", "-")}`,
+            )}
             hasFloatingLabel
             isDisabled={false}
             isRequired={props.profileDataKey !== "middle_name"}
           />
+          <p>
+            {l10n.getString(
+              `settings-edit-profile-info-form-fieldset-section-other-label-${props.profileDataKey.replaceAll("_", "-")}s`,
+            )}
+          </p>
           {props.profileData[`${props.profileDataKey}s`].map(
             (item, itemIndex) => {
               const inputKey = `${props.profileDataKey}s-${itemIndex}`;
@@ -253,7 +281,9 @@ function EditProfileFormInputs(props: {
                   <InputField
                     name={inputKey}
                     value={item}
-                    label={props.profileDataKey}
+                    label={l10n.getString(
+                      `settings-edit-profile-info-form-input-label-other-${props.profileDataKey.replaceAll("_", "-")}`,
+                    )}
                     hasFloatingLabel
                     isDisabled={false}
                   />
@@ -276,6 +306,11 @@ function EditProfileFormInputs(props: {
               props.onAdd(`${props.profileDataKey}s` as ProfileDataListKey)
             }
           />
+          <p>
+            {l10n.getString(
+              `settings-edit-profile-info-form-fieldset-section-limit-label-${props.profileDataKey.replaceAll("_", "-")}s`,
+            )}
+          </p>
         </>
       );
     case "date_of_birth":
@@ -290,22 +325,33 @@ function EditProfileFormInputs(props: {
         <div className={styles.itemDob}>
           {dateOfBirthString}
           <p>
-            {"Date of birth cannot be changed for security reasons. "}
-            <TelemetryLink
-              href=""
-              target="_blank"
-              eventData={{
-                link_id: "clicked_edit_profile_dob_explainer",
-              }}
-            >
-              Why?
-            </TelemetryLink>
+            {l10n.getFragment(
+              "settings-edit-profile-info-form-date-of-birth-note",
+              {
+                elems: {
+                  a: (
+                    <TelemetryLink
+                      href="/user/settings"
+                      target="_blank"
+                      eventData={{
+                        link_id: "clicked_edit_profile_dob_explainer",
+                      }}
+                    />
+                  ),
+                },
+              },
+            )}
           </p>
         </div>
       );
     case "phone_numbers":
       return (
         <>
+          <p>
+            {l10n.getString(
+              "settings-edit-profile-info-form-fieldset-section-other-label-phone-numbers",
+            )}
+          </p>
           {(itemData as E164PhoneNumberString[]).map((item, itemIndex) => {
             const inputKey = `${props.profileDataKey}-${itemIndex}`;
             return (
@@ -313,10 +359,17 @@ function EditProfileFormInputs(props: {
                 <InputField
                   name={inputKey}
                   value={item}
-                  label={props.profileDataKey}
+                  label={
+                    itemIndex === 0
+                      ? l10n.getString(
+                          `settings-edit-profile-info-form-input-label-primary-phone-number`,
+                        )
+                      : l10n.getString(
+                          `settings-edit-profile-info-form-input-label-other-phone-number`,
+                        )
+                  }
                   hasFloatingLabel
                   isDisabled={false}
-                  isRequired={itemIndex === 0}
                 />
                 <RemoveItemButton
                   itemKey={props.profileDataKey}
@@ -336,11 +389,26 @@ function EditProfileFormInputs(props: {
               props.onAdd(props.profileDataKey as ProfileDataListKey)
             }
           />
+          <p>
+            {l10n.getString(
+              "settings-edit-profile-info-form-fieldset-section-limit-label-phone-numbers",
+            )}
+          </p>
         </>
       );
     case "addresses":
       return (
         <>
+          <p>
+            {l10n.getString(
+              "settings-edit-profile-info-form-fieldset-section-primary-label-addresses",
+            )}
+          </p>
+          <p>
+            {l10n.getString(
+              "settings-edit-profile-info-form-fieldset-section-other-label-addresses",
+            )}
+          </p>
           {(itemData as OnerepProfileAddress[]).map((item, itemIndex) => {
             const inputKey = `${props.profileDataKey}-${itemIndex}`;
             return (
@@ -348,7 +416,15 @@ function EditProfileFormInputs(props: {
                 <InputField
                   name={inputKey}
                   value={`${item.city}, ${item.state}`}
-                  label={props.profileDataKey}
+                  label={
+                    itemIndex === 0
+                      ? l10n.getString(
+                          `settings-edit-profile-info-form-input-label-primary-location`,
+                        )
+                      : l10n.getString(
+                          `settings-edit-profile-info-form-input-label-other-location`,
+                        )
+                  }
                   hasFloatingLabel
                   isDisabled={false}
                   isRequired={itemIndex === 0}
@@ -371,6 +447,11 @@ function EditProfileFormInputs(props: {
               props.onAdd(props.profileDataKey as ProfileDataListKey)
             }
           />
+          <p>
+            {l10n.getString(
+              "settings-edit-profile-info-form-fieldset-section-limit-label-addresses",
+            )}
+          </p>
         </>
       );
     default:

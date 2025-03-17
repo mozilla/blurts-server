@@ -57,9 +57,13 @@ export const EmailAddressAdderRedesign = () => {
   return (
     <>
       <Button {...triggerProps} variant="secondary">
-        {l10n.getString("settings-add-email-button")}
+        {l10n.getString("settings-email-addresses-add-email-cta")}
       </Button>
-      <p>Add up to {CONST_MAX_NUM_ADDRESSES}</p>
+      <p>
+        {l10n.getString("settings-email-addresses-add-email-indicator-limit", {
+          limit: CONST_MAX_NUM_ADDRESSES,
+        })}
+      </p>
       {dialogState.isOpen && (
         <ModalOverlay
           state={dialogState}
@@ -69,8 +73,15 @@ export const EmailAddressAdderRedesign = () => {
           <Dialog
             title={
               !onAddEmailState.success
-                ? "Add an email address"
-                : `Verification link sent to ${onAddEmailState.submittedAddress}`
+                ? l10n.getString(
+                    "settings-email-addresses-initial-dialog-header",
+                  )
+                : l10n.getString(
+                    "settings-email-addresses-confirmation-dialog-header",
+                    {
+                      email: onAddEmailState.submittedAddress,
+                    },
+                  )
             }
             illustration={
               !onAddEmailState.success ? (
@@ -134,9 +145,7 @@ const EmailAddressAddForm = (props: {
   return !props.onAddEmailState.success ? (
     <>
       <p>
-        {
-          "We’ll send a verification link for you to confirm you’d like to include in a future Monitor scan."
-        }
+        {l10n.getString("settings-email-addresses-initial-dialog-description")}
       </p>
       <form
         action={props.onAddEmailAction}
@@ -146,7 +155,9 @@ const EmailAddressAddForm = (props: {
         <InputField
           id="newEmailAddress"
           name="newEmailAddress"
-          label={"Enter email address"}
+          label={l10n.getString(
+            "settings-email-addresses-initial-dialog-add-email-input-label",
+          )}
           onChange={handleInputChangeRedesign}
           type="email"
           value={email}
@@ -163,17 +174,23 @@ const EmailAddressAddForm = (props: {
           }}
           isLoading={hasPressedButton}
         >
-          {l10n.getString("add-email-send-verification-button")}
+          {l10n.getString(
+            "settings-email-addresses-initial-dialog-add-email-cta",
+          )}
         </Button>
       </form>
     </>
   ) : (
     <>
       <p>
-        {"Open the link to add it to this account for future Monitor scans."}
+        {l10n.getString(
+          "settings-email-addresses-confirmation-dialog-description",
+        )}
       </p>
       <Button variant="primary" onPress={props.onDismiss}>
-        {"Done"}
+        {l10n.getString(
+          "settings-email-addresses-confirmation-dialog-close-button",
+        )}
       </Button>
     </>
   );

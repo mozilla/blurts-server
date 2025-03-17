@@ -74,7 +74,9 @@ function MonitoredEmail(props: { emailAddress: SanitizedEmailAddressRow }) {
             ) : (
               <LinkIcon alt="" />
             )}
-            {"Resend verification link"}
+            {l10n.getString(
+              "settings-email-addresses-add-email-resend-button-label",
+            )}
           </Button>
         )}
       </div>
@@ -119,22 +121,24 @@ function ProfileInfoSection({
   return (
     <section className={styles.section}>
       <div>
-        <h4>{"Details about you"}</h4>
-        <p>
-          {"Monitor will use this info for scans and data removal requests."}
-        </p>
+        <h4>{l10n.getString("settings-details-about-you-header")}</h4>
+        <p>{l10n.getString("settings-details-about-you-description")}</p>
       </div>
       <ul className="noList">
         <li>
-          <span>{"Name"}</span>
+          <span>{l10n.getString("settings-details-about-you-name-label")}</span>
           {`${first_name} ${middle_name} ${last_name}`}
         </li>
         <li>
-          <span>{"Date of birth"}</span>
+          <span>
+            {l10n.getString("settings-details-about-you-date-of-birth-label")}
+          </span>
           {dateOfBirthString}
         </li>
         <li>
-          <span>{"Location"}</span>
+          <span>
+            {l10n.getString("settings-details-about-you-location-label")}
+          </span>
           {`${city_name}, ${state_code}`}
         </li>
       </ul>
@@ -151,7 +155,7 @@ function ProfileInfoSection({
             },
           }}
         >
-          {"Update info"}
+          {l10n.getString("settings-details-about-you-cta-label")}
         </TelemetryButton>
       </span>
     </section>
@@ -161,16 +165,15 @@ function ProfileInfoSection({
 function MonitoredEmailAddressesSection(
   props: SettingsPanelEditInfoRedesignProps,
 ) {
+  const l10n = useL10n();
   const hasMaxEmailAddresses =
     props.emailAddresses.length < CONST_MAX_NUM_ADDRESSES - 1;
 
   return (
     <section className={styles.section}>
       <div>
-        <h4>{"Email addresses"}</h4>
-        <p>
-          {"Monitor will alert you if these emails show up in known breaches."}
-        </p>
+        <h4>{l10n.getString("settings-email-addresses-header")}</h4>
+        <p>{l10n.getString("settings-email-addresses-description")}</p>
       </div>
       <ul className="noList">
         <li key="primary">{props.user.email}</li>
@@ -195,11 +198,7 @@ function SettingsPanelEditInfoRedesign(
     <>
       <div>
         <h3>{l10n.getString("settings-tab-label-update-scan-info")}</h3>
-        <p>
-          {
-            "Monitor is most effective at protecting your info when you add specific details. Add any of your name variations, emails, or locations. Why should I add details for my scan?"
-          }
-        </p>
+        <p>{l10n.getString("settings-update-scan-info-description")}</p>
       </div>
       {props.profileData && (
         <ProfileInfoSection profileData={props.profileData} />
