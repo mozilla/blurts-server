@@ -15,8 +15,6 @@ settings-alert-preferences-allow-breach-alerts-title = Välittömät vuotohälyt
 settings-alert-preferences-allow-breach-alerts-subtitle = Nämä hälytykset lähetetään välittömästi, kun tietovuoto havaitaan
 settings-alert-preferences-option-one = Lähetä tietovuotoilmoitukset vuodettuun sähköpostiosoitteeseen
 settings-alert-preferences-option-two = Lähetä kaikki tietovuotoilmoitukset ensisijaiseen sähköpostiosoitteeseen
-settings-alert-preferences-allow-monthly-monitor-report-title = Kuukausittainen { -brand-monitor }-raportti
-settings-alert-preferences-allow-monthly-monitor-report-subtitle = Kuukausittainen päivitys uusista vuodoista, korjauksista ja mitä sinun tarvitsee huomioida.
 
 ## Monitored email addresses
 
@@ -58,3 +56,18 @@ settings-delete-monitor-free-account-dialog-cta-label = Poista tili
 settings-delete-monitor-free-account-dialog-cancel-button-label = Unohdetaan tämä, palataan takaisin
 settings-delete-monitor-account-confirmation-toast-label-2 = { -brand-monitor } -tilisi on nyt poistettu.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Hylkää
+
+## Monthly Monitor Report
+
+settings-alert-preferences-allow-monthly-monitor-report-title = Kuukausittainen { -brand-monitor }-raportti
+settings-alert-preferences-allow-monthly-monitor-report-subtitle = Kuukausittainen päivitys uusista vuodoista, korjauksista ja mitä sinun tarvitsee huomioida.
+
+## Settings page redesign
+
+settings-tab-label-edit-info = Muokkaa tietojasi
+settings-tab-label-notifications = Aseta ilmoitukset
+settings-tab-label-manage-account = Hallinnoi tiliä
+settings-tab-subtitle-manage-account = Hallinnoi { -product-name }-tiliäsi.
+settings-tab-notifications-marketing-title = Markkinointiviestintä
+settings-tab-notifications-marketing-text = Säännöllisiä päivityksiä koskien { -brand-monitor }ia, { -brand-mozilla }a ja muita tietoturvatuotteitamme.
+settings-tab-notifications-marketing-link-label = Siirry { -brand-mozilla }n sähköpostiasetuksiin

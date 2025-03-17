@@ -110,9 +110,6 @@ export const ExposuresFilter = ({
   // Status filter explainer dialog
   const exposureStatusExplainerDialogState = useOverlayTriggerState({
     onOpenChange: (isOpen) => {
-      /* c8 ignore next 3 */
-      // Since the Node 20.10 upgrade, it's been intermittently marking this
-      // (and this comment) as uncovered.
       recordTelemetry("popup", isOpen ? "view" : "exit", {
         popup_id: "exposure_status_info",
       });
@@ -445,7 +442,7 @@ function Radio(props: RadioProps & AriaRadioProps) {
   // TypeScript can't verify that this element is always contained inside a
   // <FilterRadioGroup>, and thus that `radioGroupState` is not null, so we have
   // to tell it ourselves:
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+
   const { inputProps } = useRadio(props, radioGroupState!, ref);
 
   return (

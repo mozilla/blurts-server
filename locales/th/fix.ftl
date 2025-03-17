@@ -2,11 +2,12 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-fix-flow-nav-high-risk-data-breaches = ข้อมูลรั่วไหลที่มีความเสี่ยงสูง
+fix-flow-nav-high-risk-data-breaches = การละเมิดข้อมูลที่มีความเสี่ยงสูง
 fix-flow-nav-leaked-passwords = รหัสผ่านที่รั่วไหล
 fix-flow-nav-security-recommendations = คำแนะนำด้านความปลอดภัย
 guided-resolution-flow-exit = กลับไปยังแดชบอร์ด
 guided-resolution-flow-next-arrow = ไปยังขั้นตอนถัดไป
+guided-resolution-flow-next-arrow-sub-step = ไปที่ผลลัพธ์ถัดไป
 guided-resolution-flow-step-navigation-label = ขั้นตอนแนะนำ
 
 # Celebration screens
@@ -20,9 +21,21 @@ fix-flow-celebration-next-dashboard-label = ไปยังแดชบอร์
 
 ## High-risk flow
 
+fix-flow-celebration-high-risk-title = คุณได้แก้ไขการเปิดเผยที่มีความเสี่ยงสูงของคุณแล้ว!
+fix-flow-celebration-high-risk-description-in-progress = การทำงานนี้อาจดูเป็นงานหนัก แต่เป็นสิ่งสำคัญที่ต้องดำเนินการเพื่อความปลอดภัยของตัวคุณเอง จงทำงานดีๆ ต่อไป
+fix-flow-celebration-high-risk-description-done = การทำงานนี้อาจดูเป็นงานหนัก แต่เป็นสิ่งสำคัญที่ต้องดำเนินการเพื่อความปลอดภัยของตัวคุณเอง
+fix-flow-celebration-high-risk-description-next-passwords = ทีนี้มาแก้ไขรหัสผ่านที่ถูกเปิดเผยของคุณกัน
+fix-flow-celebration-high-risk-description-next-security-questions = ทีนี้มาแก้ไขคำถามความปลอดภัยที่ถูกเปิดเผยของคุณกัน
+fix-flow-celebration-high-risk-description-next-security-recommendations = ต่อไป เราจะให้คำแนะนำด้านความปลอดภัยส่วนบุคคลแก่คุณโดยพิจารณาจากข้อมูลของคุณที่ถูกเปิดเผย
+fix-flow-celebration-high-risk-description-next-dashboard = คุณมาถึงขั้นตอนสุดท้ายแล้ว คุณสามารถดูรายการสิ่งที่ต้องทำและติดตามความคืบหน้าของคุณได้บนแดชบอร์ด
 
 ## Leaked passwords and security questions flow
 
+fix-flow-celebration-leaked-passwords-title = รหัสผ่านของคุณได้รับการปกป้องแล้ว!
+fix-flow-celebration-security-questions-title = คำถามความปลอดภัยของคุณได้รับการปกป้องแล้ว!
+fix-flow-celebration-leaked-passwords-description-next-security-questions = ทีนี้มาตรวจดูและอัปเดตคำถามความปลอดภัยที่ถูกเปิดเผยของคุณกัน
+fix-flow-celebration-leaked-passwords-description-next-security-recommendations = ต่อไป เราจะให้คำแนะนำด้านความปลอดภัยส่วนบุคคลแก่คุณโดยพิจารณาจากข้อมูลของคุณที่ถูกเปิดเผย
+fix-flow-celebration-leaked-passwords-description-next-dashboard = เยี่ยมเลย! คุณมาถึงขั้นตอนสุดท้ายแล้ว คุณสามารถดูรายการสิ่งที่ต้องทำและติดตามความคืบหน้าของคุณได้บนแดชบอร์ด
 
 ## Security recommendations flow
 
@@ -51,7 +64,7 @@ ssn-modal-ok = ตกลง
 
 # No high risk breaches found
 
-high-risk-breach-none-sub-description-part-one = ข้อมูลรั่วไหลที่มีความเสี่ยงสูงประกอบด้วย:
+high-risk-breach-none-sub-description-part-one = การละเมิดข้อมูลที่มีความเสี่ยงสูงประกอบด้วย:
 high-risk-breach-none-sub-description-ssn = หมายเลขประกันสังคม
 high-risk-breach-none-sub-description-bank-account = ข้อมูลบัญชีธนาคาร
 high-risk-breach-none-sub-description-cc-number = หมายเลขบัตรเครดิต

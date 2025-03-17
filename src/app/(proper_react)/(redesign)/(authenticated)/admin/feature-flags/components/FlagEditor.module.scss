@@ -1,32 +1,32 @@
-@import "../../../../../../tokens";
+@use "../../../../../../tokens";
 
 .flagWrapper {
   display: flex;
   flex-direction: column;
-  gap: $spacing-lg;
-  background-color: $color-white;
-  padding: $spacing-lg;
-  border-radius: $border-radius-md;
-  max-width: $content-sm;
+  gap: tokens.$spacing-lg;
+  background-color: tokens.$color-white;
+  padding: tokens.$spacing-lg;
+  border-radius: tokens.$border-radius-md;
+  max-width: tokens.$content-sm;
 }
 
 .flagName {
-  font: $text-title-3xs;
+  font: tokens.$text-title-3xs;
 }
 
 .enabledControl {
   display: flex;
-  gap: $spacing-xs;
-  font: $text-body-lg;
+  gap: tokens.$spacing-xs;
+  font: tokens.$text-body-lg;
 }
 
 .allowListWrapper {
   display: flex;
   flex-direction: column;
-  gap: $spacing-md;
+  gap: tokens.$spacing-md;
 
   h4 {
-    font: $text-body-md;
+    font: tokens.$text-body-md;
     font-weight: bold;
   }
 }
@@ -35,7 +35,7 @@
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  gap: $spacing-xs;
+  gap: tokens.$spacing-xs;
   padding: 0;
   list-style-type: none;
 }
@@ -43,39 +43,47 @@
 .addressListing {
   display: flex;
   align-items: center;
-  gap: $spacing-xs;
-  font: $text-body-md;
+  gap: tokens.$spacing-xs;
+  font: tokens.$text-body-md;
   font-family: monospace;
 
   :first-child {
     flex-grow: 1;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
 
   button {
     background-color: transparent;
     border: none;
-    border-radius: $border-radius-xl;
+    border-radius: tokens.$border-radius-xl;
     aspect-ratio: 1;
+    flex-shrink: 0;
 
     &:hover {
       cursor: pointer;
-      background-color: $color-red-70;
-      color: $color-white;
+      background-color: tokens.$color-red-70;
+      color: tokens.$color-white;
     }
   }
 
   &:has(button:hover) {
-    color: $color-red-70;
+    color: tokens.$color-red-70;
   }
 }
 
 .addressAdder {
   display: flex;
   align-items: center;
-  gap: $spacing-sm;
+  flex-wrap: wrap;
+
+  label {
+    width: 100%;
+  }
 
   input[type="email"] {
     flex-grow: 1;
+    min-width: 0;
   }
 
   // This rule is more specific than the button:hover in `.addressListing`,
@@ -86,17 +94,36 @@
     justify-content: center;
     align-items: center;
     height: 100%;
+    aspect-ratio: 1;
     background-color: transparent;
-    color: $color-blue-50;
+    color: tokens.$color-blue-50;
     border: none;
-    border-radius: $border-radius-sm;
-    padding: $spacing-sm;
+    border-radius: tokens.$border-radius-sm;
+    padding: tokens.$spacing-sm;
 
     &:hover {
       cursor: pointer;
-      background-color: $color-blue-50;
-      color: $color-white;
+      background-color: tokens.$color-blue-50;
+      color: tokens.$color-white;
     }
   }
   /* stylelint-enable no-descending-specificity */
+}
+
+.editLog {
+  color: tokens.$color-grey-50;
+  font: tokens.$text-body-sm;
+  padding-top: tokens.$spacing-md;
+  /* Bottom-align the edit log */
+  margin-block-start: auto;
+
+  div {
+    display: flex;
+    gap: tokens.$spacing-xs;
+    justify-content: center;
+  }
+
+  dd {
+    font-weight: bold;
+  }
 }

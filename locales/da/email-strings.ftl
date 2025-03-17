@@ -61,18 +61,9 @@ email-breach-summary = Her er din oversigt over datalæk
 # Variables:
 #   $email-address (string) - Email address, bolded
 email-breach-detected = Resultatet af en søgning efter { $email-address } viser, at din mailadresse kan være involveret i en datalæk. Vi anbefaler, at du reagerer med det samme for at løse denne datalæk.
-# Deprecated after the redesigned breach alert email is launched
-# Variables:
-#   $email-address (string) - Email address
-email-breach-detected-2 = Resultatet af en søgning efter <b>{ $email-address }</b> viser, at din mailadresse kan være involveret i en datalæk. Vi anbefaler, at du reagerer med det samme for at løse denne datalæk.
 email-dashboard-cta = Gå til oversigten
 
-## Breach alert
-
-# Deprecated after the redesigned breach alert email is launched
-email-spotted-new-breach = Vi har opdaget en ny datalæk
-
-## Redesigned breach alert email
+## Breach alert email
 
 email-breach-alert-all-subject = Ny datalæk opdaget
 email-breach-alert-all-preview = Vi guider dig gennem løsningen trin for trin.

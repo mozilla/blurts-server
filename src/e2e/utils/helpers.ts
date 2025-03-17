@@ -75,12 +75,8 @@ export const waitForUrlOrTimeout = async (
 export const getVerificationCode = async (
   testEmail: string,
   page: Page,
-  attempts = 10,
+  attemptsRemaining = 5,
 ): Promise<string | undefined> => {
-  if (attempts === 0) {
-    throw new Error("Unable to retrieve restmail data");
-  }
-
   try {
     const context = await request.newContext();
     const restmailUrl = `http://restmail.net/mail/${testEmail}`;
@@ -98,8 +94,13 @@ export const getVerificationCode = async (
   } catch (error) {
     console.error("Error fetching verification code from restmail", error);
 
-    await page.waitForTimeout(1500);
-    return getVerificationCode(testEmail, page, attempts - 1);
+    const retryTimeout = (5 - attemptsRemaining) * 1500;
+    console.log(`Trying again in ${retryTimeout}ms`);
+    if (attemptsRemaining === 0) {
+      throw new Error("Unable to retrieve restmail data");
+    }
+    await page.waitForTimeout(retryTimeout);
+    return getVerificationCode(testEmail, page, attemptsRemaining - 1);
   }
 };
 
@@ -166,7 +167,6 @@ export const checkAuthState = async (page: Page) => {
  * @param text
  */
 export function removeUnicodeChars(text: string): string {
-  // eslint-disable-next-line no-control-regex
   return text.replace(/[^\x00-\x7F]/g, "");
 }
 

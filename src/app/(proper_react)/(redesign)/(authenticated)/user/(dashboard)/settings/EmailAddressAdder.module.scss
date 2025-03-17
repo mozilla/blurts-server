@@ -1,9 +1,9 @@
-@import "../../../../../../tokens";
+@use "../../../../../../tokens";
 
 .dialogContents {
   display: flex;
   flex-direction: column;
-  gap: $spacing-md;
+  gap: tokens.$spacing-md;
 
   .description {
     text-align: center;
@@ -14,7 +14,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: $spacing-md;
+  gap: tokens.$spacing-md;
 
   label {
     font-weight: 600;
@@ -22,10 +22,10 @@
   }
 
   input {
-    border: 1px solid $color-grey-30;
-    border-radius: $border-radius-sm;
-    color: $color-black;
-    padding: $spacing-sm $spacing-md;
+    border: 1px solid tokens.$color-grey-30;
+    border-radius: tokens.$border-radius-sm;
+    color: tokens.$color-black;
+    padding: tokens.$spacing-sm tokens.$spacing-md;
     width: 100%;
   }
 

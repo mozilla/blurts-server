@@ -12,11 +12,12 @@ import {
 import {
   addQaCustomBroker,
   deleteQaCustomBrokerRow,
-  getAllQaCustomBrokers,
-  QaBrokerData,
+  getAllMockedScanResults,
   setQaCustomBrokerStatus,
 } from "../../../../../../db/tables/qa_customs";
 import { getServerSession } from "../../../../../functions/server/getServerSession";
+import { OnerepScanResultDataBrokerRow } from "knex/types/tables";
+import { getOnerepProfileId } from "../../../../../../db/tables/subscribers";
 
 function successResponse() {
   return NextResponse.json(
@@ -47,23 +48,24 @@ function duplicateObj(obj: mockInputs, n: string | undefined) {
   return Array.from({ length: howMany }, () => obj);
 }
 
-export async function GET(req: NextRequest) {
+export async function GET() {
   const err = await checkAdmin();
   if (err) return err;
 
   const prodErr = errorIfProduction();
   if (prodErr !== null) return prodErr;
 
-  const profileId = Number(req.nextUrl.searchParams.get("onerep_profile_id"));
+  const session = await getServerSession();
+  const email = session?.user.email;
 
-  if (!profileId || Number.isNaN(profileId)) {
-    return NextResponse.json(
-      { error: "Missing onerep_profile_id parameter" },
-      { status: 400 },
-    );
-  }
+  const subscriberId = session?.user.subscriber?.id;
+  if (!session || !email || !subscriberId) return unauthError();
 
-  return NextResponse.json(await getAllQaCustomBrokers(profileId));
+  const onerepProfileId = await getOnerepProfileId(subscriberId);
+  if (!onerepProfileId)
+    return internalServerError("Unable to fetch OneRep profile ID");
+
+  return NextResponse.json(await getAllMockedScanResults(onerepProfileId));
 }
 
 export async function POST(req: NextRequest) {
@@ -75,15 +77,14 @@ export async function POST(req: NextRequest) {
 
   const body = await req.json();
 
-  const onerep_profile_id = parseInt(body.onerep_profile_id || "21", 10);
   const link = body.link || "https://test-broker.com";
   const age = body.age ? parseInt(body.age, 10) : undefined;
   const data_broker = body.data_broker || "test_broker";
   const emails = duplicateObj(mockEmail, body.emails) as string[];
   const phones = duplicateObj(mockPhone, body.phones) as string[];
-  const addresses = duplicateObj(mockAddress, body.addresses) as {
-    [key: string]: string;
-  }[];
+  const addresses = body.addresses.map(() => ({
+    ...mockAddress,
+  }));
   const relatives = duplicateObj(mockRelative, body.relatives) as string[];
   const first_name = body.first_name || "John";
   const middle_name = body.middle_name || "";
@@ -91,9 +92,13 @@ export async function POST(req: NextRequest) {
   const status = body.status || "new";
   const manually_resolved = body.manually_resolved || false;
   const optout_attempts = body.optout_attempts || null;
+  const last_optout_at = body.last_optout_at || null;
+  const scan_result_status = body.scan_result_status || "new";
+  const broker_status = body.broker_status || "active";
+  const url = "";
+  const onerep_scan_id = body.onerep_scan_id;
 
-  const brokerData: QaBrokerData = {
-    onerep_profile_id,
+  const brokerData: OnerepScanResultDataBrokerRow = {
     link,
     age,
     data_broker,
@@ -107,6 +112,16 @@ export async function POST(req: NextRequest) {
     status,
     manually_resolved,
     optout_attempts,
+    last_optout_at,
+    scan_result_status,
+    broker_status,
+    url,
+    id: 0,
+    onerep_scan_id,
+    data_broker_id: 0,
+    created_at: new Date(),
+    updated_at: new Date(),
+    onerep_scan_result_id: Math.floor(Math.random() * 2147483647),
   };
   try {
     await addQaCustomBroker(brokerData);

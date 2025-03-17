@@ -1,33 +1,35 @@
-@import "../../tokens";
+@use "sass:math";
+
+@use "../../tokens";
 
 .stepsWrapper {
-  @include no-focus-outline;
-  margin-block-end: $layout-lg;
+  @include tokens.no-focus-outline;
+  margin-block-end: tokens.$layout-lg;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-inline: $spacing-lg;
+  padding-inline: tokens.$spacing-lg;
 
-  @media screen and (min-width: $screen-md) {
+  @media screen and (min-width: tokens.$screen-md) {
     height: 33%;
   }
 
-  @media screen and (min-width: $screen-md) {
-    padding-inline: $spacing-2xl;
+  @media screen and (min-width: tokens.$screen-md) {
+    padding-inline: tokens.$spacing-2xl;
   }
 
-  @media screen and (min-width: $screen-lg) {
-    padding-inline: $layout-xl;
+  @media screen and (min-width: tokens.$screen-lg) {
+    padding-inline: tokens.$layout-xl;
   }
 
   .steps {
-    @include no-focus-outline;
+    @include tokens.no-focus-outline;
   }
 }
 
-@media screen and (min-width: $screen-md) {
+@media screen and (min-width: tokens.$screen-md) {
   .steps {
-    $stepGap: $layout-xl;
+    $stepGap: tokens.$layout-xl;
     $iconDiameter: 40px;
     $checkIconDiameter: 15px;
     $iconBorderWidth: 4px;
@@ -38,7 +40,7 @@
     display: flex;
     gap: $stepGap;
     position: relative;
-    max-width: $content-md;
+    max-width: tokens.$content-md;
     align-items: center;
 
     .progressBarLineContainer {
@@ -51,11 +53,11 @@
       .progressBarLineWrapper {
         width: 100%;
         height: 3px;
-        background-color: $color-grey-30;
+        background-color: tokens.$color-grey-30;
         position: relative;
 
         .activeProgressBarLine {
-          background-color: $color-purple-10;
+          background-color: tokens.$color-purple-10;
           height: 3px;
           position: absolute;
 
@@ -65,13 +67,13 @@
               width: calc(100% / 6 + $iconDiameter);
             }
             &.beginHighRiskDataBreaches {
-              width: 100% / 6 * 2;
+              width: math.div(100%, 6) * 2;
             }
             &.duringHighRiskDataBreaches {
-              width: 100% / 6 * 3;
+              width: math.div(100%, 6) * 3;
             }
             &.beginLeakedPasswords {
-              width: 100% / 6 * 4;
+              width: math.div(100%, 6) * 4;
             }
             &.duringLeakedPasswords {
               width: calc(100% / 6 * 5 - $iconDiameter);
@@ -89,7 +91,7 @@
               width: 50%;
             }
             &.duringLeakedPasswords {
-              width: 100% / 3 * 2;
+              width: math.div(100%, 3) * 2;
             }
             &.beginSecurityRecommendations {
               width: 100%;
@@ -103,11 +105,11 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: $spacing-xs;
+      gap: tokens.$spacing-xs;
       text-align: center;
-      font: $text-body-xs;
+      font: tokens.$text-body-xs;
       font-weight: 400;
-      color: $color-grey-30;
+      color: tokens.$color-grey-30;
 
       &.navigationItem {
         // Overlap the horizontal line
@@ -126,48 +128,48 @@
           width: 100%;
           height: 100%;
           border-radius: 100%;
-          padding: $spacing-sm;
-          background-color: $color-grey-30;
+          padding: tokens.$spacing-sm;
+          background-color: tokens.$color-grey-30;
 
           &.checkIcon {
-            color: $color-white;
+            color: tokens.$color-white;
             padding: 12px; // Specific padding for check mark icon
           }
         }
       }
 
       &[aria-current="step"] .stepIcon > * {
-        outline: $iconBorderWidth solid $color-purple-10;
+        outline: $iconBorderWidth solid tokens.$color-purple-10;
       }
 
       .stepLabel {
-        padding-top: $layout-md;
+        padding-top: tokens.$layout-md;
         position: absolute;
         width: 100px;
       }
 
       &[aria-current="step"] .stepLabel {
-        padding-top: calc($layout-md + $spacing-sm);
+        padding-top: calc(tokens.$layout-md + tokens.$spacing-sm);
       }
 
       &.isCompleted,
       &[aria-current="step"] {
-        color: $color-purple-70;
+        color: tokens.$color-purple-70;
 
         .stepIcon > * {
-          background-color: $color-purple-70;
+          background-color: tokens.$color-purple-70;
         }
       }
     }
   }
 }
-@media screen and (max-width: calc($screen-md - 1px)) {
+@media screen and (max-width: calc(tokens.$screen-md - 1px)) {
   .steps {
     padding-inline-start: 0;
     list-style-type: none;
     display: flex;
     justify-content: space-evenly;
-    gap: $spacing-sm;
+    gap: tokens.$spacing-sm;
 
     li {
       .stepIcon {
@@ -176,9 +178,9 @@
         // a 0 height and a border. The images are <1kB in size, so that
         // shouldn't matter too much.
         height: 0;
-        border: 3px solid $color-grey-30;
+        border: 3px solid tokens.$color-grey-30;
         border-radius: 3px;
-        min-width: $layout-sm;
+        min-width: tokens.$layout-sm;
         width: 100%;
         pointer-events: none;
         user-select: none;
@@ -189,24 +191,24 @@
       }
 
       &[aria-current="step"] .stepIcon {
-        border-color: $color-purple-10;
+        border-color: tokens.$color-purple-10;
       }
 
       &.isCompleted .stepIcon {
-        border-color: $color-purple-70;
+        border-color: tokens.$color-purple-70;
       }
 
       .stepLabel {
-        padding-block: $spacing-sm;
-        padding-inline: $spacing-md;
-        color: $color-purple-70;
-        font: $text-body-xs;
+        padding-block: tokens.$spacing-sm;
+        padding-inline: tokens.$spacing-md;
+        color: tokens.$color-purple-70;
+        font: tokens.$text-body-xs;
         font-weight: 600;
-        top: $spacing-lg;
+        top: tokens.$spacing-lg;
       }
 
       &:not([aria-current="step"]) .stepLabel {
-        @include visually-hidden;
+        @include tokens.visually-hidden;
       }
     }
   }

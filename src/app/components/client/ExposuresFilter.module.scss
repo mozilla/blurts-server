@@ -1,13 +1,13 @@
-@import "../../tokens";
+@use "../../tokens";
 
 .filterHeaderWrapper {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  gap: $layout-xs;
-  padding: $spacing-sm $spacing-md;
-  border-bottom: 1px solid $color-grey-20;
+  gap: tokens.$layout-xs;
+  padding: tokens.$spacing-sm tokens.$spacing-md;
+  border-bottom: 1px solid tokens.$color-grey-20;
 
   .rightSpace {
     // Spacing to accomodate the gap where the chevron of the same dimension falls within the alignment
@@ -16,24 +16,24 @@
   }
 
   button {
-    @include question-mark-circle-btn;
+    @include tokens.question-mark-circle-btn;
   }
 
   ul.filterHeaderList {
-    font: $text-body-sm;
+    font: tokens.$text-body-sm;
     font-weight: 600;
     list-style-type: none;
     display: flex;
     align-items: center;
     padding-left: 0;
-    gap: $layout-sm;
+    gap: tokens.$layout-sm;
     width: 100%;
     justify-content: space-between;
 
     li {
       display: flex;
       align-items: center;
-      gap: $spacing-xs;
+      gap: tokens.$spacing-xs;
 
       button svg {
         min-width: 15px;
@@ -43,15 +43,15 @@
         display: none;
       }
 
-      @media screen and (min-width: $screen-lg) {
+      @media screen and (min-width: tokens.$screen-lg) {
         flex: 1 1 0%;
 
         &.exposureImageWrapper {
-          flex: 0.2 0 $width-first-column-filter-bar;
+          flex: 0.2 0 tokens.$width-first-column-filter-bar;
         }
       }
 
-      @media screen and (min-width: $screen-xl) {
+      @media screen and (min-width: tokens.$screen-xl) {
         &.hideOnMobile {
           display: flex;
         }
@@ -65,43 +65,43 @@
     .filterBtn {
       display: flex;
       flex-direction: row;
-      gap: $spacing-xs;
+      gap: tokens.$spacing-xs;
       align-items: center;
     }
   }
 }
 
 .filterDialog {
-  background: $color-white;
-  border-radius: $border-radius-sm;
-  box-shadow: $box-shadow-md;
-  width: $content-xs;
+  background: tokens.$color-white;
+  border-radius: tokens.$border-radius-sm;
+  box-shadow: tokens.$box-shadow-md;
+  width: tokens.$content-xs;
   overflow-y: scroll;
 
-  @media screen and (min-width: $screen-sm) {
+  @media screen and (min-width: tokens.$screen-sm) {
     width: auto;
     overflow-y: hidden;
   }
 
   .exposuresFilterWrapper {
-    padding: $spacing-md;
+    padding: tokens.$spacing-md;
 
-    @media screen and (min-width: $screen-sm) {
-      padding: $spacing-xl;
+    @media screen and (min-width: tokens.$screen-sm) {
+      padding: tokens.$spacing-xl;
     }
 
     .dismissButton {
       position: absolute;
       top: 0;
       right: 0;
-      padding: $spacing-md;
-      color: $color-grey-40;
+      padding: tokens.$spacing-md;
+      color: tokens.$color-grey-40;
       background: none;
       border: none;
       cursor: pointer;
 
       &:hover {
-        color: $color-grey-30;
+        color: tokens.$color-grey-30;
       }
     }
 
@@ -109,43 +109,43 @@
       display: flex;
       justify-content: flex-end;
       flex-direction: row;
-      gap: $spacing-sm;
-      padding-top: $spacing-md;
+      gap: tokens.$spacing-sm;
+      padding-top: tokens.$spacing-md;
       width: 100%;
     }
 
     .exposuresFilterRadioButtons {
       display: flex;
       flex-direction: column;
-      gap: $spacing-md;
+      gap: tokens.$spacing-md;
 
-      @media screen and (min-width: $screen-sm) {
+      @media screen and (min-width: tokens.$screen-sm) {
         flex-direction: row;
-        gap: $spacing-2xl;
+        gap: tokens.$spacing-2xl;
       }
 
       .exposuresFilterCategory {
         .radioButtonsWrapper {
-          padding-top: $spacing-sm;
+          padding-top: tokens.$spacing-sm;
           display: flex;
           flex-direction: column;
-          gap: $spacing-xs;
+          gap: tokens.$spacing-xs;
 
           .radioItem {
-            font: $text-body-sm;
+            font: tokens.$text-body-sm;
             font-weight: 500;
             display: flex;
-            gap: $spacing-xs;
+            gap: tokens.$spacing-xs;
           }
         }
 
         .exposuresFilterLabel {
           font-weight: 600;
-          border-bottom: 1px solid $color-black;
-          padding-bottom: $spacing-xs;
+          border-bottom: 1px solid tokens.$color-black;
+          padding-bottom: tokens.$spacing-xs;
           display: flex;
           flex-direction: row;
-          gap: $spacing-xs;
+          gap: tokens.$spacing-xs;
           align-items: center;
         }
       }
@@ -157,20 +157,20 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: $spacing-md;
+  gap: tokens.$spacing-md;
 
   .statusList {
-    padding: $spacing-md 0;
+    padding: tokens.$spacing-md 0;
 
     .statusListItem {
       align-items: flex-start;
-      gap: $spacing-sm;
+      gap: tokens.$spacing-sm;
       display: flex;
       flex-direction: column;
 
-      @media screen and (min-width: $screen-sm) {
+      @media screen and (min-width: tokens.$screen-sm) {
         align-items: center;
-        gap: $spacing-md;
+        gap: tokens.$spacing-md;
         flex-direction: row;
       }
     }
@@ -178,9 +178,9 @@
 }
 
 .visuallyHidden {
-  @include visually-hidden;
+  @include tokens.visually-hidden;
 }
 
 .companyNameArea {
-  @include company-name-area;
+  @include tokens.company-name-area;
 }

@@ -9,7 +9,10 @@ import { logger } from "../../../../functions/server/logging";
 import { getSubscriberByFxaUid } from "../../../../../db/tables/subscribers";
 import { getUserEmails } from "../../../../../db/tables/emailAddresses";
 import { sendVerificationEmail } from "../../../utils/email";
-import { getL10n } from "../../../../functions/l10n/serverComponents";
+import {
+  getAcceptLangHeaderInServerComponents,
+  getL10n,
+} from "../../../../functions/l10n/serverComponents";
 import { initEmail } from "../../../../../utils/email";
 
 interface EmailResendRequest {
@@ -18,7 +21,7 @@ interface EmailResendRequest {
 
 export async function POST(req: NextRequest) {
   const token = await getToken({ req });
-  const l10n = getL10n();
+  const l10n = getL10n(await getAcceptLangHeaderInServerComponents());
 
   if (typeof token?.subscriber?.fxa_uid === "string") {
     try {

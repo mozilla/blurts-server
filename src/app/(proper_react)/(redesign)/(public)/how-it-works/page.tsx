@@ -6,7 +6,10 @@ import { headers } from "next/headers";
 import { HowItWorksView } from "./HowItWorksView";
 import { getCountryCode } from "../../../../functions/server/getCountryCode";
 import { redirect } from "next/navigation";
-import { getL10n } from "../../../../functions/l10n/serverComponents";
+import {
+  getAcceptLangHeaderInServerComponents,
+  getL10n,
+} from "../../../../functions/l10n/serverComponents";
 import {
   getProfilesStats,
   monthlySubscribersQuota,
@@ -15,10 +18,10 @@ import { isEligibleForPremium } from "../../../../functions/universal/premium";
 import { CONST_DAY_MILLISECONDS } from "../../../../../constants";
 
 export default async function Page() {
-  const headersList = headers();
+  const headersList = await headers();
   const countryCode = getCountryCode(headersList);
   const eligibleForPremium = isEligibleForPremium(countryCode);
-  const l10n = getL10n();
+  const l10n = getL10n(await getAcceptLangHeaderInServerComponents());
 
   // request the profile stats for the last 30 days
   const profileStats = await getProfilesStats(

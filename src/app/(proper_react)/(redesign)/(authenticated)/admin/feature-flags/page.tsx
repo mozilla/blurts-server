@@ -8,6 +8,7 @@ import {
   FeatureFlagName,
   featureFlagNames,
   getAllFeatureFlags,
+  isFeatureFlagAdminOnly,
 } from "../../../../../../db/tables/featureFlags";
 import { isAdmin } from "../../../../../api/utils/auth";
 import { Toolbar } from "../../../../../components/client/toolbar/Toolbar";
@@ -18,6 +19,10 @@ import {
 } from "../../../../../functions/server/getPremiumSubscriptionInfo";
 import { defaultExperimentData } from "../../../../../../telemetry/generated/nimbus/experiments";
 import { ExistingFlagEditor, NewFlagEditor } from "./components/FlagEditor";
+
+export const metadata = {
+  title: "Monitor Feature Flags",
+};
 
 export default async function FeatureFlagPage() {
   const session = await getServerSession();
@@ -36,7 +41,7 @@ export default async function FeatureFlagPage() {
 
   const featureFlags =
     (await getAllFeatureFlags()).toSorted(
-      (flagA, flagB) => flagB.created_at.getTime() - flagA.created_at.getTime(),
+      (flagA, flagB) => flagB.updated_at.getTime() - flagA.updated_at.getTime(),
     ) ?? [];
 
   /**
@@ -69,6 +74,7 @@ export default async function FeatureFlagPage() {
             // We're not going to run experiments on the feature flag page (it's
             // not user-visible), so no need to fetch experiment data:
             experimentData={defaultExperimentData["Features"]}
+            enabledFeatureFlags={[]}
           />
         </div>
       </nav>
@@ -77,11 +83,16 @@ export default async function FeatureFlagPage() {
         <div className={styles.flagList}>
           {disabledFlags.map((flagOrFlagName) => {
             return typeof flagOrFlagName === "string" ? (
-              <NewFlagEditor key={flagOrFlagName} flagName={flagOrFlagName} />
+              <NewFlagEditor
+                key={flagOrFlagName}
+                flagName={flagOrFlagName}
+                adminOnly={isFeatureFlagAdminOnly(flagOrFlagName)}
+              />
             ) : (
               <ExistingFlagEditor
                 key={flagOrFlagName.name}
                 flag={flagOrFlagName}
+                adminOnly={isFeatureFlagAdminOnly(flagOrFlagName.name)}
               />
             );
           })}
@@ -95,7 +106,11 @@ export default async function FeatureFlagPage() {
                 featureFlagNames.includes(flag.name as FeatureFlagName),
             )
             .map((flag) => (
-              <ExistingFlagEditor key={flag.name} flag={flag} />
+              <ExistingFlagEditor
+                key={flag.name}
+                flag={flag}
+                adminOnly={isFeatureFlagAdminOnly(flag.name)}
+              />
             ))}
         </div>
       </div>

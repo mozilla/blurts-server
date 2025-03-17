@@ -1,0 +1,50 @@
+@use "../../../../tokens";
+
+$maxLogoHeight: 40px;
+.wrapper {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  position: absolute;
+  inset-block-start: tokens.$spacing-xl;
+  inset-inline-start: tokens.$spacing-2xl;
+  max-height: $maxLogoHeight;
+}
+
+.terms {
+  max-width: tokens.$content-md;
+  padding: tokens.$spacing-xl;
+  /* Logo top offset + logo height + .terms padding */
+  padding-top: calc(tokens.$spacing-xl + $maxLogoHeight + tokens.$spacing-xl);
+  display: flex;
+  flex-direction: column;
+  gap: tokens.$spacing-md;
+
+  hgroup {
+    font: tokens.$text-title-xs;
+
+    h1 {
+      font: tokens.$text-title-xs;
+      color: tokens.$color-purple-70;
+    }
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: tokens.$spacing-sm;
+  }
+
+  a {
+    color: tokens.$color-black;
+    text-decoration: underline;
+    &:hover {
+      color: tokens.$color-purple-70;
+    }
+  }
+}

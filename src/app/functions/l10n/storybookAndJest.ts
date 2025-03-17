@@ -6,7 +6,7 @@ import { MarkupParser, ReactLocalization } from "@fluent/react";
 import type { readdirSync, readFileSync } from "node:fs";
 import type { resolve } from "node:path";
 import { createGetL10n, createGetL10nBundles } from ".";
-import type { GetL10n, GetL10nBundles } from ".";
+import type { GetL10nBundles } from "./index";
 
 // Code in this file is only used in tests and Storybook, not in production:
 /* c8 ignore start */
@@ -38,7 +38,7 @@ if (process.env.STORYBOOK === "true") {
   const loadedSources: Record<string, string> = {};
   // We specifically only declare this `require.context`-using function in a
   // scope where `require.context` actually exists:
-  // eslint-disable-next-line no-inner-declarations
+
   function loadSource(filename: string): string {
     loadedSources[filename] ??= translationsContext(filename);
     return loadedSources[filename];
@@ -84,14 +84,14 @@ if (process.env.STORYBOOK === "true") {
     // This code only runs in a Node context, and we explicitly adjust the
     // modules we import based on that, without going async - so we need
     // `require`.
-    /* eslint-disable-next-line @typescript-eslint/no-var-requires */
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
   } = require("fs");
   const {
     resolve: resolvePath,
     // This code only runs in a Node context, and we explicitly adjust the
     // modules we import based on that, without going async - so we need
     // `require`.
-    /* eslint-disable-next-line @typescript-eslint/no-var-requires */
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
   }: { resolve: typeof resolve } = require("path");
 
   const ftlRoot = resolvePath(__dirname, `../../../../locales/`);
@@ -142,7 +142,7 @@ const parseMarkup: MarkupParser = (str) => {
   ];
 };
 
-export const getL10n: GetL10n = createGetL10n({
+export const getL10n = createGetL10n({
   getL10nBundles: getL10nBundles,
   ReactLocalization: ReactLocalization,
   parseMarkup:

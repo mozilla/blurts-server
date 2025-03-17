@@ -3,11 +3,14 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { getBreaches } from "../../../../functions/server/getBreaches";
-import { getL10n } from "../../../../functions/l10n/serverComponents";
+import {
+  getAcceptLangHeaderInServerComponents,
+  getL10n,
+} from "../../../../functions/l10n/serverComponents";
 import { BreachIndexView } from "./BreachIndexView";
 
-export function generateMetadata() {
-  const l10n = getL10n();
+export async function generateMetadata() {
+  const l10n = getL10n(await getAcceptLangHeaderInServerComponents());
   return {
     title: l10n.getString("breach-all-meta-page-title"),
     twitter: {

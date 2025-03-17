@@ -72,9 +72,8 @@ function getUtmParams() {
       referrerUrl.search = "";
       // Remove any fragment identifiers.
       referrerUrl.hash = "";
-
       utmParams["referrer"] = referrerUrl.toString();
-    } catch (ex) {
+    } catch {
       console.error("Could not parse referrer as URL:", document.referrer);
     }
 

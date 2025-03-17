@@ -1,0 +1,109 @@
+@use "../../../../../tokens";
+
+.pricingPlans {
+  display: flex;
+  flex-direction: column;
+  gap: tokens.$spacing-lg;
+
+  @media screen and (min-width: tokens.$screen-md) {
+    flex-direction: row-reverse;
+  }
+}
+
+.pricingCard {
+  box-shadow: inset 0 0 0 6px tokens.$color-grey-10;
+  border-radius: tokens.$border-radius-xl;
+  display: inline-flex;
+  flex: 1;
+  flex-direction: column;
+  max-width: tokens.$content-sm;
+  padding: tokens.$layout-sm tokens.$spacing-lg;
+  position: relative;
+
+  &:first-of-type {
+    box-shadow: inset 0 0 0 6px tokens.$color-purple-70;
+  }
+
+  &Label {
+    background-color: tokens.$color-white;
+    border-radius: tokens.$border-radius-md;
+    box-shadow: 0 0 0 4px tokens.$color-purple-70;
+    color: tokens.$color-purple-70;
+    font-weight: 700;
+    left: 50%;
+    // Add a bit more space: The next spacing step is too much.
+    padding: calc(tokens.$spacing-sm * 1.1) calc(tokens.$spacing-sm * 1.5)
+      tokens.$spacing-sm;
+    line-height: 1em;
+    position: absolute;
+    top: calc(tokens.$spacing-xs * 0.5);
+    transform: translate(-50%, -50%);
+  }
+
+  dt {
+    border-bottom: 1px solid tokens.$color-grey-10;
+    padding: tokens.$spacing-md tokens.$spacing-xs tokens.$spacing-lg;
+    text-align: center;
+
+    b {
+      font: tokens.$text-title-xs;
+      font-family: var(--font-inter);
+      font-weight: 700;
+      padding: tokens.$spacing-xs 0;
+    }
+  }
+
+  dd {
+    border-bottom: 1px solid tokens.$color-grey-10;
+    align-items: center;
+    display: flex;
+    gap: tokens.$spacing-md;
+    // Add a bit more space: The next spacing step is too much.
+    padding: calc(tokens.$spacing-sm * 1.5) tokens.$spacing-sm;
+
+    &.pricingCardCta {
+      align-items: normal;
+      border: none;
+      display: flex;
+      flex-direction: column;
+      gap: tokens.$spacing-lg;
+      justify-content: center;
+      margin-top: auto;
+      padding: tokens.$spacing-md tokens.$spacing-xs 0;
+
+      p {
+        align-items: center;
+        display: flex;
+        gap: tokens.$spacing-xs;
+        flex-direction: column;
+      }
+
+      strong {
+        color: tokens.$color-purple-70;
+        display: flex;
+        flex-direction: column-reverse;
+        font: tokens.$text-title-sm;
+        font-weight: 500;
+        gap: tokens.$spacing-sm;
+        text-align: center;
+      }
+
+      button,
+      a {
+        width: 100%;
+      }
+    }
+
+    svg {
+      color: tokens.$color-purple-70;
+      flex: 1 0 18px;
+      max-width: 18px;
+      height: auto;
+    }
+  }
+
+  .pricingCardSavings {
+    color: tokens.$color-black;
+    font: tokens.$text-body-md;
+  }
+}

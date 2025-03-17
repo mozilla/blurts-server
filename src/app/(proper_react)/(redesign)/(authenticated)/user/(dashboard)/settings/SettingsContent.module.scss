@@ -1,49 +1,49 @@
-@import "../../../../../../tokens";
+@use "../../../../../../tokens";
 
 .main {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  gap: $spacing-lg;
-  padding: $layout-2xs;
+  gap: tokens.$spacing-lg;
+  padding: tokens.$layout-2xs;
 
-  @media screen and (min-width: $screen-lg) {
+  @media screen and (min-width: tokens.$screen-lg) {
     flex-direction: row;
-    padding: $layout-lg;
+    padding: tokens.$layout-lg;
   }
 
-  @media screen and (min-width: $screen-sm) {
-    padding: $layout-sm;
+  @media screen and (min-width: tokens.$screen-sm) {
+    padding: tokens.$layout-sm;
   }
 }
 
 .header {
   display: flex;
   flex-direction: column;
-  gap: $layout-xs;
+  gap: tokens.$layout-xs;
 
   h2 {
-    font: $text-title-xs;
+    font: tokens.$text-title-xs;
   }
 
   & [role="tab"]::after {
-    width: calc(100% - 24px - $spacing-xs);
+    width: calc(100% - 24px - tokens.$spacing-xs);
   }
 
-  @media screen and (min-width: $screen-lg) {
-    flex: 0 0 $content-xs;
+  @media screen and (min-width: tokens.$screen-lg) {
+    flex: 0 0 tokens.$content-xs;
   }
 }
 
 .content {
   align-items: flex-start;
-  background-color: $color-white;
-  border-radius: $border-radius-md;
-  box-shadow: $box-shadow-xs;
+  background-color: tokens.$color-white;
+  border-radius: tokens.$border-radius-md;
+  box-shadow: tokens.$box-shadow-xs;
   display: flex;
   flex-direction: column;
   flex: 1 0 0;
-  gap: $spacing-lg;
+  gap: tokens.$spacing-lg;
   overflow: hidden;
-  padding: $spacing-lg;
+  padding: tokens.$spacing-lg;
 }

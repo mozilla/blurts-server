@@ -10,7 +10,10 @@ import { addSubscriberUnverifiedEmailHash } from "../../../../../db/tables/email
 
 import { sendVerificationEmail } from "../../../utils/email";
 
-import { getL10n } from "../../../../functions/l10n/serverComponents";
+import {
+  getAcceptLangHeaderInServerComponents,
+  getL10n,
+} from "../../../../functions/l10n/serverComponents";
 import { initEmail } from "../../../../../utils/email";
 import { CONST_MAX_NUM_ADDRESSES } from "../../../../../constants";
 import { validateEmailAddress } from "../../../../../utils/emailAddress";
@@ -21,7 +24,7 @@ interface EmailAddRequest {
 
 export async function POST(req: NextRequest) {
   const token = await getToken({ req });
-  const l10n = getL10n();
+  const l10n = getL10n(await getAcceptLangHeaderInServerComponents());
 
   if (typeof token?.subscriber?.fxa_uid === "string") {
     try {

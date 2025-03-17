@@ -1,16 +1,16 @@
-@import "../../../../../tokens";
+@use "../../../../../tokens";
 
 .stepContent {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: $spacing-md;
+  gap: tokens.$spacing-md;
 
   h1 {
-    font: $text-title-2xs;
+    font: tokens.$text-title-2xs;
 
-    @media screen and (min-width: $screen-md) {
-      font: $text-title-xs;
+    @media screen and (min-width: tokens.$screen-md) {
+      font: tokens.$text-title-xs;
     }
   }
 
@@ -21,12 +21,12 @@
   .explainerTrigger {
     background-color: transparent;
     border-style: none;
-    color: $color-blue-50;
+    color: tokens.$color-blue-50;
     text-decoration: underline;
     cursor: pointer;
 
     &:hover {
-      color: $color-blue-70;
+      color: tokens.$color-blue-70;
     }
   }
 }
@@ -34,23 +34,23 @@
 .dialogContents {
   display: flex;
   flex-direction: column;
-  gap: $spacing-lg;
-  font: $text-body-md;
-  color: $color-grey-50;
+  gap: tokens.$spacing-lg;
+  font: tokens.$text-body-md;
+  color: tokens.$color-grey-50;
 
   .confirmButtonWrapper {
     align-self: center;
     display: flex;
     flex-direction: column;
-    min-width: $content-xs;
-    padding-block-start: $spacing-md;
+    min-width: tokens.$content-xs;
+    padding-block-start: tokens.$spacing-md;
   }
 
   .list {
     list-style-position: inside;
     display: flex;
     flex-direction: column;
-    gap: $spacing-md;
+    gap: tokens.$spacing-md;
     padding: 0;
 
     li::marker {
@@ -63,13 +63,13 @@
 .stepButtonWrapper {
   align-items: center;
   display: flex;
-  gap: $spacing-md;
+  gap: tokens.$spacing-md;
   justify-content: flex-end;
-  padding-block: $layout-xs;
+  padding-block: tokens.$layout-xs;
   width: 100%;
 
-  @media screen and (min-width: $screen-sm) {
-    padding-block-start: $layout-sm;
+  @media screen and (min-width: tokens.$screen-sm) {
+    padding-block-start: tokens.$layout-sm;
     flex-direction: row;
     align-items: center;
     justify-content: flex-end;

@@ -1,20 +1,20 @@
-@import "../../../../../tokens";
+@use "../../../../../tokens";
 
 .wrapper {
   display: flex;
   flex-direction: column;
-  gap: $spacing-2xl;
-  background-color: $color-grey-05;
+  gap: tokens.$spacing-2xl;
+  background-color: tokens.$color-grey-05;
   height: 100%;
-  padding: $layout-lg $layout-2xl;
+  padding: tokens.$layout-lg tokens.$layout-2xl;
 
-  @media screen and (max-width: $screen-lg) {
-    padding: $spacing-lg;
+  @media screen and (max-width: tokens.$screen-lg) {
+    padding: tokens.$spacing-lg;
   }
 }
 
 .header {
-  font: $text-title-xs;
+  font: tokens.$text-title-xs;
   font-weight: normal;
 
   b {

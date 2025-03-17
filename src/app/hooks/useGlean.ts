@@ -9,11 +9,15 @@ import EventMetricType from "@mozilla/glean/private/metrics/event";
 import type { GleanMetricMap } from "../../telemetry/generated/_map";
 import { useSession } from "next-auth/react";
 import { hasPremium } from "../functions/universal/user";
+import { useExperiments } from "../../contextProviders/experiments";
 
 export const useGlean = () => {
   const session = useSession();
+  const experiments = useExperiments();
+  // Telemetry recording is mocked in our unit tests, therefore we
+  // do not have test coverage for this method.
+  /* c8 ignore start */
   const isPremiumUser = hasPremium(session.data?.user);
-
   const record = useCallback(
     async <
       EventModule extends keyof GleanMetricMap,
@@ -37,11 +41,24 @@ export const useGlean = () => {
         ? "Plus"
         : "Free";
 
+      // Record the `nimbus_*` keys on all events.
+      // `nimbus_*` is set on every metric, but it's too much work for TypeScript
+      // to infer that — hence the type assertion.
+      if (experiments === null) {
+        console.warn(
+          "`useGlean` is used in a component that is not a (grand)child of <ExperimentsProvider>",
+        );
+      } else {
+        (data as GleanMetricMap["button"]["click"]).nimbus_user_id =
+          experiments.experimentationId;
+      }
+
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       mod[event].record(data as any);
     },
-    [isPremiumUser],
+    [isPremiumUser, experiments],
   );
+  /* c8 ignore end */
 
   return record;
 };

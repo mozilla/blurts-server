@@ -42,7 +42,7 @@ export default async function AutomaticRemovePage() {
     email: session.user.email,
   });
 
-  const countryCode = getCountryCode(headers());
+  const countryCode = getCountryCode(await headers());
   const profileId = await getOnerepProfileId(session.user.subscriber.id);
   const scanData = await getScanResultsWithBroker(
     profileId,

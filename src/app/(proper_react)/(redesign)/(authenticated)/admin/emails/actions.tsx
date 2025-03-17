@@ -10,7 +10,10 @@ import { renderEmail } from "../../../../../../emails/renderEmail";
 import { VerifyEmailAddressEmail } from "../../../../../../emails/templates/verifyEmailAddress/VerifyEmailAddressEmail";
 import { sanitizeSubscriberRow } from "../../../../../functions/server/sanitize";
 import { getServerSession } from "../../../../../functions/server/getServerSession";
-import { getL10n } from "../../../../../functions/l10n/serverComponents";
+import {
+  getAcceptLangHeaderInServerComponents,
+  getL10n,
+} from "../../../../../functions/l10n/serverComponents";
 import { getSubscriberByFxaUid } from "../../../../../../db/tables/subscribers";
 import { ReactNode } from "react";
 import { SubscriberRow } from "knex/types/tables";
@@ -25,10 +28,7 @@ import {
   createRandomHibpListing,
   createRandomScanResult,
 } from "../../../../../../apiMocks/mockData";
-import {
-  BreachAlertEmail,
-  RedesignedBreachAlertEmail,
-} from "../../../../../../emails/templates/breachAlert/BreachAlertEmail";
+import { BreachAlertEmail } from "../../../../../../emails/templates/breachAlert/BreachAlertEmail";
 import { SignupReportEmail } from "../../../../../../emails/templates/signupReport/SignupReportEmail";
 import { getBreachesForEmail } from "../../../../../../utils/hibp";
 import { getSha1 } from "../../../../../../utils/fxa";
@@ -40,6 +40,11 @@ import { isEligibleForPremium } from "../../../../../functions/universal/premium
 import { MonthlyActivityFreeEmail } from "../../../../../../emails/templates/monthlyActivityFree/MonthlyActivityFreeEmail";
 import { getMonthlyActivityFreeUnsubscribeLink } from "../../../../../../app/functions/cronjobs/unsubscribeLinks";
 import { getScanResultsWithBroker } from "../../../../../../db/tables/onerep_scans";
+import {
+  getUnstyledUpcomingExpirationEmail,
+  UpcomingExpirationEmail,
+} from "../../../../../../emails/templates/upcomingExpiration/UpcomingExpirationEmail";
+import { CONST_DAY_MILLISECONDS } from "../../../../../../constants";
 
 async function getAdminSubscriber(): Promise<SubscriberRow | null> {
   const session = await getServerSession();
@@ -62,6 +67,7 @@ async function send(
   emailAddress: string,
   subject: string,
   template: ReactNode,
+  plaintextVersion?: string,
 ) {
   const subscriber = await getAdminSubscriber();
   if (!subscriber) {
@@ -80,7 +86,8 @@ async function send(
   return sendEmail(
     emailAddress,
     "Test email: " + subject,
-    renderEmail(template),
+    await renderEmail(template),
+    plaintextVersion,
   );
 }
 
@@ -90,7 +97,8 @@ export async function triggerSignupReportEmail(emailAddress: string) {
     return false;
   }
 
-  const l10n = getL10n();
+  const acceptLangHeader = await getAcceptLangHeaderInServerComponents();
+  const l10n = getL10n(acceptLangHeader);
   const breaches = await getBreachesForEmail(
     getSha1(emailAddress),
     await getBreaches(),
@@ -115,7 +123,8 @@ export async function triggerVerificationEmail(emailAddress: string) {
     return false;
   }
 
-  const l10n = getL10n();
+  const acceptLangHeader = await getAcceptLangHeaderInServerComponents();
+  const l10n = getL10n(acceptLangHeader);
   await send(
     emailAddress,
     l10n.getString("email-subject-verify"),
@@ -135,7 +144,8 @@ export async function triggerMonthlyActivityFree(emailAddress: string) {
     return false;
   }
 
-  const l10n = getL10n();
+  const acceptLangHeader = await getAcceptLangHeaderInServerComponents();
+  const l10n = getL10n(acceptLangHeader);
 
   if (typeof subscriber.onerep_profile_id === "number") {
     await refreshStoredScanResults(subscriber.onerep_profile_id);
@@ -148,7 +158,7 @@ export async function triggerMonthlyActivityFree(emailAddress: string) {
     latestScan.results,
     await getSubscriberBreaches({
       fxaUid: session.user.subscriber?.fxa_uid,
-      countryCode: getCountryCode(headers()),
+      countryCode: getCountryCode(await headers()),
     }),
   );
 
@@ -174,7 +184,8 @@ export async function triggerMonthlyActivityPlus(emailAddress: string) {
     return false;
   }
 
-  const l10n = getL10n();
+  const acceptLangHeader = await getAcceptLangHeaderInServerComponents();
+  const l10n = getL10n(acceptLangHeader);
 
   if (typeof subscriber.onerep_profile_id === "number") {
     await refreshStoredScanResults(subscriber.onerep_profile_id);
@@ -187,7 +198,7 @@ export async function triggerMonthlyActivityPlus(emailAddress: string) {
     latestScan.results,
     await getSubscriberBreaches({
       fxaUid: session.user.subscriber?.fxa_uid,
-      countryCode: getCountryCode(headers()),
+      countryCode: getCountryCode(await headers()),
     }),
   );
 
@@ -202,17 +213,15 @@ export async function triggerMonthlyActivityPlus(emailAddress: string) {
   );
 }
 
-export async function triggerBreachAlert(
-  emailAddress: string,
-  options: Partial<{ redesign: boolean }> = {},
-) {
+export async function triggerBreachAlert(emailAddress: string) {
   const session = await getServerSession();
   const subscriber = await getAdminSubscriber();
   if (!subscriber || !session?.user) {
     return false;
   }
 
-  const l10n = getL10n();
+  const acceptLangHeader = await getAcceptLangHeaderInServerComponents();
+  const l10n = getL10n(acceptLangHeader);
 
   const assumedCountryCode = getSignupLocaleCountry(subscriber);
 
@@ -228,39 +237,27 @@ export async function triggerBreachAlert(
     countryCode: assumedCountryCode,
   });
 
-  options.redesign === true
-    ? await send(
-        emailAddress,
-        l10n.getString("email-breach-alert-all-subject"),
-        <RedesignedBreachAlertEmail
-          subscriber={subscriber}
-          breach={createRandomHibpListing()}
-          breachedEmail={emailAddress}
-          enabledFeatureFlags={["BreachEmailRedesign"]}
-          utmCampaignId="breach-alert"
-          l10n={l10n}
-          dataSummary={
-            isEligibleForPremium(assumedCountryCode) && !hasPremium(subscriber)
-              ? getDashboardSummary(scanData.results, allSubscriberBreaches)
-              : undefined
-          }
-        />,
-      )
-    : await send(
-        emailAddress,
-        l10n.getString("breach-alert-subject"),
-        <BreachAlertEmail
-          subscriber={subscriber}
-          breach={createRandomHibpListing()}
-          breachedEmail={emailAddress}
-          utmCampaignId="breach-alert"
-          l10n={l10n}
-        />,
-      );
+  await send(
+    emailAddress,
+    l10n.getString("email-breach-alert-all-subject"),
+    <BreachAlertEmail
+      subscriber={subscriber}
+      breach={createRandomHibpListing()}
+      breachedEmail={emailAddress}
+      utmCampaignId="breach-alert"
+      l10n={l10n}
+      dataSummary={
+        isEligibleForPremium(assumedCountryCode) && !hasPremium(subscriber)
+          ? getDashboardSummary(scanData.results, allSubscriberBreaches)
+          : undefined
+      }
+    />,
+  );
 }
 
 export async function triggerFirstDataBrokerRemovalFixed(emailAddress: string) {
-  const l10n = getL10n();
+  const acceptLangHeader = await getAcceptLangHeaderInServerComponents();
+  const l10n = getL10n(acceptLangHeader);
   const randomScanResult = createRandomScanResult({ status: "removed" });
 
   await send(
@@ -274,5 +271,30 @@ export async function triggerFirstDataBrokerRemovalFixed(emailAddress: string) {
       }}
       l10n={l10n}
     />,
+  );
+}
+
+export async function triggerPlusExpirationEmail(emailAddress: string) {
+  const subscriber = await getAdminSubscriber();
+  if (!subscriber) {
+    return false;
+  }
+
+  const acceptLangHeader = await getAcceptLangHeaderInServerComponents();
+  const l10n = getL10n(acceptLangHeader);
+  await send(
+    emailAddress,
+    l10n.getString("email-plus-expiration-subject"),
+    <UpcomingExpirationEmail
+      subscriber={sanitizeSubscriberRow(subscriber)}
+      // Always pretend that the user's account expires in 7 days for the test email:
+      expirationDate={new Date(Date.now() + 7 * CONST_DAY_MILLISECONDS)}
+      l10n={l10n}
+    />,
+    getUnstyledUpcomingExpirationEmail({
+      subscriber: sanitizeSubscriberRow(subscriber),
+      expirationDate: new Date(Date.now() + 7 * CONST_DAY_MILLISECONDS),
+      l10n: l10n,
+    }),
   );
 }

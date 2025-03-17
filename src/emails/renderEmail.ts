@@ -5,19 +5,20 @@
 import "../app/functions/server/notInClientComponent";
 import mjml2html from "mjml";
 import { ReactNode } from "react";
-// The `.node` works around the following error:
-//
-//    Error:
-//     × You're importing a component that imports react-dom/server. To fix it, render or return the content directly as a Server Component instead for perf and security.
-//     │ Learn more: https://nextjs.org/docs/getting-started/react-essentials
-//
-// See https://github.com/vercel/next.js/issues/43810#issuecomment-1687002502
-import { renderToStaticMarkup } from "react-dom/server.node";
 
-export function renderEmail(emailTemplate: ReactNode): string {
+export async function renderEmail(emailTemplate: ReactNode): Promise<string> {
+  // Importing react-dom/server dynamically here is a workaround for the following error:
+  //
+  //    Error: react-dom/server is not supported in React Server Components.
+  //
+  // https://github.com/vercel/next.js/issues/43810#issuecomment-2437931415
+  const { renderToStaticMarkup } = await import("react-dom/server");
   return mjml2html(renderToStaticMarkup(emailTemplate), {
     validationLevel: "strict",
     beautify: false,
+    // NOTE: Before changing the option to anything else than `minify: false`
+    // we should ensure that the following issue is resolved:
+    // https://mozilla-hub.atlassian.net/browse/MNTOR-4050
     minify: false,
     ignoreIncludes: true,
   }).html;

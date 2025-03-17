@@ -12,21 +12,21 @@ settings-page-title = Ρυθμίσεις { -product-short-name }
 settings-alert-email-preferences-title = Προτιμήσεις email
 settings-alert-email-preferences-subtitle = Πείτε μας ποια email θέλετε να λαμβάνετε.
 settings-alert-preferences-allow-breach-alerts-title = Άμεσες ειδοποιήσεις παραβιάσεων
-settings-alert-preferences-allow-breach-alerts-subtitle = Αυτές οι ειδοποιήσεις αποστέλλονται αμέσως μόλις ανιχνευθεί παραβίαση δεδομένων
-settings-alert-preferences-option-one = Αποστολή ειδοποιήσεων παραβίασης στην επηρεασμένη διεύθυνση email
+settings-alert-preferences-allow-breach-alerts-subtitle = Αποστέλλονται αμέσως μόλις ανιχνευθεί παραβίαση δεδομένων
+settings-alert-preferences-option-one = Αποστολή ειδοποιήσεων παραβιάσεων στην επηρεασμένη διεύθυνση email
 settings-alert-preferences-option-two = Αποστολή όλων των ειδοποιήσεων παραβιάσεων στην κύρια διεύθυνση email
 
 ## Monitored email addresses
 
 # Variables:
 #   $email (string) - Email address
-settings-email-list-title = Διευθύνσεις email σε εποπτεία
+settings-email-list-title = Διευθύνσεις email υπό εποπτεία
 # Variables:
 #   $limit (number) - Number of email addresses included in the plan
 settings-email-limit-info =
     { $limit ->
-        [one] Ο λογαριασμός σας περιλαμβάνει εποπτεία έως και { $limit } email.
-       *[other] Ο λογαριασμός σας περιλαμβάνει εποπτεία έως και { $limit } email.
+        [one] Ο λογαριασμός σας παρέχει εποπτεία για έως και { $limit } διεύθυνση email.
+       *[other] Ο λογαριασμός σας παρέχει εποπτεία για έως και { $limit } διευθύνσεις email.
     }
 settings-email-verification-callout = Απαιτείται επαλήθευση email
 settings-resend-email-verification-link = Εκ νέου αποστολή email επαλήθευσης
@@ -64,7 +64,7 @@ settings-alert-preferences-allow-monthly-monitor-report-subtitle = Μια μην
 
 ## Settings page redesign
 
-settings-tab-label-edit-info = Επεξεργαστείτε τις πληροφορίες σας
+settings-tab-label-edit-info = Επεξεργασία πληροφοριών
 settings-tab-label-notifications = Ορισμός ειδοποιήσεων
 settings-tab-label-manage-account = Διαχείριση λογαριασμού
 settings-tab-subtitle-manage-account = Διαχειριστείτε τον λογαριασμό { -product-name } σας.

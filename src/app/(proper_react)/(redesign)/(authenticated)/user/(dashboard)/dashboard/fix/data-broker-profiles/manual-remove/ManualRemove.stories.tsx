@@ -10,10 +10,11 @@ import {
   createRandomScanResult,
   createUserWithPremiumSubscription,
 } from "../../../../../../../../../../apiMocks/mockData";
-import { Shell } from "../../../../../../../Shell";
+import { Shell } from "../../../../../../../Shell/Shell";
 import { getL10n } from "../../../../../../../../../functions/l10n/storybookAndJest";
 import { LatestOnerepScanData } from "../../../../../../../../../../db/tables/onerep_scans";
 import { hasPremium } from "../../../../../../../../../functions/universal/user";
+import { defaultExperimentData } from "../../../../../../../../../../telemetry/generated/nimbus/experiments";
 
 const mockedScan: OnerepScanRow = {
   created_at: new Date(1998, 2, 31),
@@ -57,6 +58,7 @@ export const ManualRemoveViewStory: Story = {
         nonce=""
         countryCode="us"
         enabledFeatureFlags={[]}
+        experimentData={defaultExperimentData["Features"]}
       >
         <ManualRemoveView
           scanData={mockedScanData}

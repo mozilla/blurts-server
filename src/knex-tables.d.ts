@@ -26,6 +26,16 @@ declare module "knex/types/tables" {
     updated_at: Date;
   }
 
+  interface SubscriberChurnRow {
+    userid: string;
+    customer: string;
+    nickname: string;
+    intervl: string;
+    plan_id: string;
+    product_id: string;
+    current_period_end: Date;
+  }
+
   interface OnerepScanResultDataBrokerRow extends OnerepScanResultRow {
     scan_result_status: RemovalStatus;
     broker_status: DataBrokerRemovalStatus;
@@ -60,6 +70,7 @@ declare module "knex/types/tables" {
     "id" | "subscriber_id" | "created_at" | "updated_at"
   >;
 
+  /** @deprecated MNTOR-4191 */
   interface FeatureFlagRow {
     name: string;
     is_enabled: boolean;
@@ -86,6 +97,40 @@ declare module "knex/types/tables" {
   type FeatureFlagAutoInsertedColumns = Extract<
     keyof FeatureFlagRow,
     "name" | "created_at" | "modified_at"
+  >;
+
+  interface FeatureFlagViewRow {
+    name: string;
+    is_enabled: boolean;
+    allow_list?: string[];
+    updated_at: Date;
+    last_updated_by_subscriber_id: SubscriberRow["id"];
+  }
+
+  type FeatureFlagViewOptionalColumns = Extract<
+    keyof FeatureFlagViewRow,
+    "allow_list"
+  >;
+  type FeatureFlagViewAutoInsertedColumns = Extract<
+    keyof FeatureFlagViewRow,
+    "created_at"
+  >;
+
+  interface FeatureFlagEventRow {
+    name: string;
+    is_enabled: boolean;
+    allow_list?: string[];
+    created_at: Date;
+    created_by_subscriber_id: SubscriberRow["id"];
+  }
+
+  type FeatureFlagEventOptionalColumns = Extract<
+    keyof FeatureFlagEventRow,
+    "allow_list"
+  >;
+  type FeatureFlagEventAutoInsertedColumns = Extract<
+    keyof FeatureFlagEventRow,
+    "created_at"
   >;
 
   interface SubscriberEmail {
@@ -124,15 +169,15 @@ declare module "knex/types/tables" {
     fxa_profile_json: null | Profile;
     fxa_uid: null | string;
     // TODO: Find unknown type
-    // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
+
     breaches_last_shown: Date;
     // NOTE: this field is inherited from an older version of the product, it only applies to instant alerts
     all_emails_to_primary: boolean | null; // added  null in MNTOR-1368
     // TODO: Find unknown type
-    // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
+
     breaches_resolved: null | unknown;
     // TODO: Find unknown type
-    // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
+
     waitlists_joined: null | unknown;
     breach_stats: null | {
       passwords: { count: number; numResolved: number };
@@ -152,6 +197,7 @@ declare module "knex/types/tables" {
     sign_in_count: null | number;
     email_addresses: SubscriberEmail[];
     first_broker_removal_email_sent: boolean;
+    churn_prevention_email_sent_at: null | Date;
   }
   type SubscriberOptionalColumns = Extract<
     keyof SubscriberRow,
@@ -174,6 +220,7 @@ declare module "knex/types/tables" {
     | "onerep_profile_id"
     | "email_addresses"
     | "first_broker_removal_email_sent"
+    | "churn_prevention_email_sent_at"
   >;
   type SubscriberAutoInsertedColumns = Extract<
     keyof SubscriberRow,
@@ -282,13 +329,14 @@ declare module "knex/types/tables" {
     last_name: string;
     status: RemovalStatus;
     optout_attempts?: number;
+    last_optout_at?: Date;
     manually_resolved: boolean;
     created_at: Date;
     updated_at: Date;
   }
   type OnerepScanResultOptionalColumns = Extract<
     keyof OnerepScanResultRow,
-    "manually_resolved" | "middle_name" | "optout_attempts"
+    "manually_resolved" | "middle_name" | "optout_attempts" | "last_optout_at"
   >;
   type OnerepScanResultSerializedColumns = Extract<
     keyof OnerepScanResultRow,
@@ -299,6 +347,11 @@ declare module "knex/types/tables" {
     "id" | "created_at" | "updated_at"
   >;
 
+  type OnerepProfileAddress = {
+    city: string;
+    state: StateAbbr;
+  };
+
   interface OnerepProfileRow {
     id: number;
     onerep_profile_id: null | number;
@@ -306,11 +359,20 @@ declare module "knex/types/tables" {
     first_name: string;
     middle_name: null | string;
     last_name: string;
-    city_name: string;
-    state_code: StateAbbr;
+    first_names: string[];
+    middle_names: string[];
+    last_names: string[];
+    addresses: OnerepProfileAddress[];
+    phone_numbers: E164PhoneNumberString[];
     date_of_birth: Date;
     created_at: Date;
     updated_at: Date;
+    // For backwards compatibility reasons we are keeping `city_name` and
+    // `state_code` until MNTOR-3567 is implemented and enabled by default.
+    /** @deprecated Please use `addresses` instead. */
+    city_name: string;
+    /** @deprecated Please use `addresses` instead. */
+    state_code: StateAbbr;
   }
   type OnerepProfileOptionalColumns = Extract<
     keyof OnerepProfileRow,
@@ -351,6 +413,35 @@ declare module "knex/types/tables" {
     "id" | "created_at" | "modified_at"
   >;
 
+  interface AnnouncementRow {
+    id: number;
+    announcement_id: string;
+    title: string;
+    description: string;
+    small_image_path: string;
+    big_image_path: string;
+    cta_label?: string;
+    cta_link?: string;
+    audience: string;
+    created_at: Date;
+    updated_at: Date;
+    label: string;
+  }
+
+  type AnnouncementRowInsertedColumns =
+    | "id"
+    | "created_at"
+    | "updated_at"
+    | "audience"
+    | "small_image_path"
+    | "big_image_path"
+    | "title"
+    | "description";
+  type AnnouncementRowOptionalColumns =
+    | "announcement_id"
+    | "cta_label"
+    | "cta_link";
+
   /**
    * This modifies row types to indicate that dates can also be inserted as ISO
    * 8601 strings, not just Date objects (which will be returned on SELECT queries)
@@ -379,6 +470,23 @@ declare module "knex/types/tables" {
       >
     >;
 
+    notifications: Knex.CompositeTableType<
+      AnnouncementRow,
+      WritableDateColumns<
+        Omit<
+          AnnouncementRow,
+          NotificationAutoInsertedColumns | NotificationOptionalColumns
+        > &
+          Partial<Pick<AnnouncementRow, NotificationOptionalColumns>>
+      >,
+      // On updates, don't allow updating the ID and created date
+      WritableDateColumns<
+        Partial<Omit<AnnouncementRow, "id" | "created_at">> &
+          Pick<AnnouncementRow, "updated_at">
+      >
+    >;
+
+    /** @deprecated MNTOR-4191 */
     feature_flags: Knex.CompositeTableType<
       FeatureFlagRow,
       // On inserts, auto-generated columns cannot be set, and nullable columns are optional:
@@ -391,6 +499,36 @@ declare module "knex/types/tables" {
       >,
       // On updates, don't allow updating the ID and created date; all other fields are optional:
       WritableDateColumns<Partial<Omit<FeatureFlagRow, "name" | "created_at">>>
+    >;
+
+    feature_flag_view: Knex.CompositeTableType<
+      FeatureFlagViewRow,
+      // On inserts, auto-generated columns cannot be set, and nullable columns are optional:
+      WritableDateColumns<
+        Omit<
+          FeatureFlagViewRow,
+          FeatureFlagViewAutoInsertedColumns | FeatureFlagViewOptionalColumns
+        > &
+          Partial<Pick<FeatureFlagViewRow, FeatureFlagViewOptionalColumns>>
+      >,
+      // Don't allow updates; updating a flag requires adding a new event.
+      // This allows us to make sure all updates are auditable.
+      Record<string, never>
+    >;
+
+    feature_flag_events: Knex.CompositeTableType<
+      FeatureFlagEventRow,
+      // On inserts, auto-generated columns cannot be set, and nullable columns are optional:
+      WritableDateColumns<
+        Omit<
+          FeatureFlagEventRow,
+          FeatureFlagEventAutoInsertedColumns | FeatureFlagEventOptionalColumns
+        > &
+          Partial<Pick<FeatureFlagEventRow, FeatureFlagEventOptionalColumns>>
+      >,
+      // Don't allow updates; updating a flag requires adding a new event.
+      // This allows us to make sure all updates are auditable.
+      Record<string, never>
     >;
 
     subscribers: Knex.CompositeTableType<
@@ -420,6 +558,8 @@ declare module "knex/types/tables" {
       // On updates, don't allow updating the ID; all other fields are optional:
       WritableDateColumns<Partial<Omit<SubscriberCouponRow, "id">>>
     >;
+
+    subscriber_churns: SubscriberChurnRow;
 
     subscriber_email_preferences: Knex.CompositeTableType<
       SubscriberEmailPreferencesRow,

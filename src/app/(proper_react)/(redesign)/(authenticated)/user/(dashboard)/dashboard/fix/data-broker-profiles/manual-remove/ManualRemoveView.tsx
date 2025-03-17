@@ -43,7 +43,11 @@ export function ManualRemoveView(props: Props) {
   const l10n = useL10n();
   const [activeExposureCardKey, setActiveExposureCardKey] = useState(0);
 
-  const summary = getDashboardSummary(props.scanData.results, props.breaches);
+  const summary = getDashboardSummary(
+    props.scanData.results,
+    props.breaches,
+    props.enabledFeatureFlags,
+  );
 
   const countOfDataBrokerProfiles = props.scanData.results.length;
   const estimatedTime = countOfDataBrokerProfiles * 10; // 10 minutes per data broker site.

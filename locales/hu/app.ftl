@@ -97,7 +97,6 @@ breach-summary = Adatvédelmi incidens összefoglalója
 
 ##
 
-breach-alert-subject = A { -product-name } megtalálta az e-mail-címét egy új adatvédelmi incidensben.
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that exposed a user’s password. Don’t add $passwords to
 # your localization, because it would result in the number showing twice.

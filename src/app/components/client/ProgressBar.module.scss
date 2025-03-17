@@ -1,15 +1,15 @@
-@import "../../tokens";
+@use "../../tokens";
 
 $progressBarHeight: 56px;
 .progressContainer {
   .labelContainer {
-    font: $text-title-2xs;
-    padding: 0 $spacing-sm;
-    margin-bottom: $spacing-sm;
+    font: tokens.$text-title-2xs;
+    padding: 0 tokens.$spacing-sm;
+    margin-bottom: tokens.$spacing-sm;
   }
 
   .progressBar {
-    background: $color-grey-05;
+    background: tokens.$color-grey-05;
     border-radius: calc($progressBarHeight / 2);
     height: $progressBarHeight;
     overflow: hidden;
@@ -17,10 +17,10 @@ $progressBarHeight: 56px;
     width: 100%;
 
     &Percentage {
-      color: $color-white;
+      color: tokens.$color-white;
       position: absolute;
-      font: $text-title-xs;
-      left: $spacing-lg;
+      font: tokens.$text-title-xs;
+      left: tokens.$spacing-lg;
       // Center vertically plus some extra for visual balance of the label
       // within the progress bar.
       top: 52%;
@@ -29,7 +29,7 @@ $progressBarHeight: 56px;
     }
 
     &Inner {
-      background: $gradient-linear-purple;
+      background: tokens.$gradient-linear-purple;
       border-radius: calc($progressBarHeight / 2);
       height: 100%;
       left: 0;

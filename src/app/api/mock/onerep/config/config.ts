@@ -25,6 +25,7 @@ export interface Broker {
   data_broker: string;
   data_broker_id: number;
   optout_attempts: number;
+  last_optout_at: string;
   created_at: string;
   updated_at: string;
 }
@@ -46,6 +47,7 @@ export interface BrokerOptionals {
   data_broker?: string;
   data_broker_id?: number;
   optout_attempts?: number;
+  last_optout_at?: string;
   created_at?: string;
   updated_at?: string;
 }
@@ -111,7 +113,7 @@ export function mockOnerepProfileStatus() {
 }
 
 export function mockOnerepAddresses() {
-  type typeOfAddr = [{ city: string; state: StateAbbr }];
+  type typeOfAddr = { city: string; state: StateAbbr }[];
 
   return MockUser.ADDRESSES.map((address) => ({
     city: address.city,
@@ -191,6 +193,7 @@ export async function mockOnerepBrokers(
         data_broker: elem["data_broker"] || `mockexample${index}.com`,
         data_broker_id: elem["data_broker_id"] || idStartDataBroker - index,
         optout_attempts: elem["optout_attempts"] || 0,
+        last_optout_at: elem["last_optout_at"] || mockOnerepTime(),
         created_at: elem["created_at"] || mockOnerepTime(),
         updated_at: elem["updated_at"] || mockOnerepTime(),
       }) as Broker,

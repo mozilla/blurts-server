@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 "use client";
-import { FeatureFlagRow } from "knex/types/tables";
+import { FeatureFlagViewRow, SubscriberRow } from "knex/types/tables";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import styles from "./FlagEditor.module.scss";
@@ -16,9 +16,13 @@ import { Button } from "../../../../../../components/client/Button";
 import { CreateFeatureFlagRequestBody } from "../../../../../../api/v1/admin/feature-flags/route";
 import { FeatureFlagName } from "../../../../../../../db/tables/featureFlags";
 
-export const NewFlagEditor = (props: { flagName: FeatureFlagName }) => {
+export const NewFlagEditor = (props: {
+  flagName: FeatureFlagName;
+  adminOnly: boolean;
+}) => {
   return (
     <FlagEditor
+      adminOnly={props.adminOnly}
       flagName={props.flagName}
       isEnabled={false}
       onToggleEnable={async (isEnabled) => {
@@ -45,9 +49,15 @@ export const NewFlagEditor = (props: { flagName: FeatureFlagName }) => {
   );
 };
 
-export const ExistingFlagEditor = (props: { flag: FeatureFlagRow }) => {
+export const ExistingFlagEditor = (props: {
+  flag: FeatureFlagViewRow & {
+    last_updated_by_subscriber_email: SubscriberRow["primary_email"];
+  };
+  adminOnly: boolean;
+}) => {
   return (
     <FlagEditor
+      adminOnly={props.adminOnly}
       flagName={props.flag.name}
       isEnabled={props.flag.is_enabled}
       onToggleEnable={async (isEnabled) => {
@@ -73,6 +83,8 @@ export const ExistingFlagEditor = (props: { flag: FeatureFlagRow }) => {
           console.error(e);
         }
       }}
+      lastUpdated={props.flag.updated_at}
+      lastUpdatedBy={props.flag.last_updated_by_subscriber_email}
     />
   );
 };
@@ -82,7 +94,10 @@ type Props = {
   isEnabled: boolean;
   onToggleEnable: (isEnabled: boolean) => Promise<void>;
   allowList: string[];
+  adminOnly: boolean;
   onUpdateAllowlist: (allowList: string[]) => Promise<void>;
+  lastUpdated?: Date;
+  lastUpdatedBy?: string;
 };
 const FlagEditor = (props: Props) => {
   const router = useRouter();
@@ -114,12 +129,29 @@ const FlagEditor = (props: Props) => {
             variant="secondary"
             onPress={() => void setIsEnabled(true)}
             small
+            disabled={props.adminOnly}
           >
-            Enable for everyone
+            {props.adminOnly ? "Allow list only" : "Enable for everyone"}
           </Button>
         )}
       </div>
       {!props.isEnabled && <AllowlistEditor {...props} />}
+      {typeof props.lastUpdated !== "undefined" &&
+        typeof props.lastUpdatedBy !== "undefined" && (
+          <dl className={styles.editLog}>
+            <div>
+              <dt>Last update:</dt>
+              <dd>
+                {props.lastUpdated.toLocaleDateString()}{" "}
+                {props.lastUpdated.toLocaleTimeString()}
+              </dd>
+            </div>
+            <div>
+              <dt>by</dt>
+              <dd>{props.lastUpdatedBy}</dd>
+            </div>
+          </dl>
+        )}
     </div>
   );
 };
@@ -194,7 +226,7 @@ const AllowlistedAddress = (props: {
 }) => {
   return (
     <span className={styles.addressListing}>
-      <span>{props.address}</span>
+      <span title={props.address}>{props.address}</span>
       <button
         type="button"
         onClick={() => props.onRemove()}

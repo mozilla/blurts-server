@@ -38,9 +38,6 @@ function ComboBox(props: ComboBoxProps) {
   const l10n = useL10n();
 
   useEffect(() => {
-    /* c8 ignore next 5 */
-    // This does get hit by unit tests, but for some reason, since the Node
-    // 20.10 upgrade, it (and this comment) no longer gets marked as such:
     if (inputProps.value === "") {
       state.close();
     }
@@ -51,27 +48,13 @@ function ComboBox(props: ComboBoxProps) {
       <div className={inputFieldStyles.comboBox}>
         <label {...labelProps} className={inputFieldStyles.inputLabel}>
           {label}
-          {isRequired ? (
-            <span aria-hidden="true">*</span>
-          ) : (
-            /* c8 ignore next 4 */
-            // This does get hit by unit tests, but for some reason, since the
-            // Node 20.10 upgrade, it (and this comment) no longer gets marked
-            // as such:
-            ""
-          )}
+          {isRequired ? <span aria-hidden="true">*</span> : ""}
         </label>
         <input
           {...inputProps}
           ref={inputRef}
           className={`${inputFieldStyles.inputField} ${
-            !inputProps.value
-              ? /* c8 ignore next 4 */
-                // This does get hit by unit tests, but for some reason, since
-                // the Node 20.10 upgrade, it (and this comment) no longer gets
-                // marked as such:
-                inputFieldStyles.noValue
-              : ""
+            !inputProps.value ? inputFieldStyles.noValue : ""
           } ${isInvalid ? /* c8 ignore next */ inputFieldStyles.hasError : ""}`}
         />
         {isInvalid && typeof errorMessage === "string" && (
@@ -83,7 +66,6 @@ function ComboBox(props: ComboBoxProps) {
           </div>
         )}
       </div>
-
       {state.isOpen && (
         <Popover
           offset={8}

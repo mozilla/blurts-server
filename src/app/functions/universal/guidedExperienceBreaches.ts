@@ -44,30 +44,18 @@ export function getGuidedExperienceBreaches(
 
   subscriberBreaches.forEach((breach) => {
     // high risks
-    // This does get covered by unit tests, but for some reason, since the
-    // upgrade to Node 20.10, it doesn't get marked as covered anymore:
-    /* c8 ignore next 3 */
     if (isUnresolvedDataBreachClass(breach, BreachDataTypes.SSN)) {
       guidedExperienceBreaches.highRisk.ssnBreaches.push(breach);
     }
 
-    // This does get covered by unit tests, but for some reason, since the
-    // upgrade to Node 20.10, it doesn't get marked as covered anymore:
-    /* c8 ignore next 3 */
     if (isUnresolvedDataBreachClass(breach, BreachDataTypes.CreditCard)) {
       guidedExperienceBreaches.highRisk.creditCardBreaches.push(breach);
     }
 
-    // This does get covered by unit tests, but for some reason, since the
-    // upgrade to Node 20.10, it doesn't get marked as covered anymore:
-    /* c8 ignore next 3 */
     if (isUnresolvedDataBreachClass(breach, BreachDataTypes.PIN)) {
       guidedExperienceBreaches.highRisk.pinBreaches.push(breach);
     }
 
-    // This does get covered by unit tests, but for some reason, since the
-    // upgrade to Node 20.10, it doesn't get marked as covered anymore:
-    /* c8 ignore next 3 */
     if (isUnresolvedDataBreachClass(breach, BreachDataTypes.BankAccount)) {
       guidedExperienceBreaches.highRisk.bankBreaches.push(breach);
     }

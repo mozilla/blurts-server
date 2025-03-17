@@ -7,7 +7,7 @@
 import { usePathname } from "next/navigation";
 import { useCallback } from "react";
 // Imports for the `useGlean` and `useGa` hooks are restricted.
-/* eslint-disable-next-line no-restricted-imports */
+
 import { useGlean } from "./useGlean";
 import { GleanMetricMap } from "../../telemetry/generated/_map";
 import { convertCamelToSnakeCase } from "../functions/universal/convertCamelToSnakeCase";
@@ -23,6 +23,9 @@ export const useTelemetry = () => {
   const recordGlean = useGlean();
 
   const { Glean, Ga } = TelemetryPlatforms;
+  // Telemetry recording is mocked in our unit tests, therefore we
+  // do not have test coverage for this method.
+  /* c8 ignore start */
   const recordTelemetry = useCallback(
     <
       EventModule extends keyof GleanMetricMap,
@@ -51,6 +54,7 @@ export const useTelemetry = () => {
     },
     [Ga, Glean, path, recordGlean],
   );
+  /* c8 ignore stop */
 
   return recordTelemetry;
 };

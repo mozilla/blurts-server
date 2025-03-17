@@ -17,7 +17,6 @@ export async function getMonthlyActivityFreeUnsubscribeLink(
 ) {
   try {
     const newUnsubToken = randomBytes(64).toString("hex");
-    let sub;
     const getRes = await getEmailPreferenceForSubscriber(subscriber.id);
     if (getRes.unsubscribe_token) {
       // if record has been created and the token exists, return the token
@@ -27,18 +26,15 @@ export async function getMonthlyActivityFreeUnsubscribeLink(
       !getRes.unsubscribe_token
     ) {
       // if record in the new table has not been created
-      sub = await addUnsubscribeTokenForSubscriber(
-        subscriber.id,
-        newUnsubToken,
-      );
+      await addUnsubscribeTokenForSubscriber(subscriber.id, newUnsubToken);
     } else {
       // if record already exists, but token doesn't exist, add the token
-      sub = await updateEmailPreferenceForSubscriber(subscriber.id, true, {
+      await updateEmailPreferenceForSubscriber(subscriber.id, true, {
         unsubscribe_token: newUnsubToken,
       });
     }
 
-    return `${process.env.SERVER_URL}/unsubscribe-email/monthly-report-free?token=${sub.unsubscribe_token}`;
+    return `${process.env.SERVER_URL}/unsubscribe-email/monthly-report-free?token=${newUnsubToken}`;
   } catch (e) {
     logger.error("generate_unsubscribe_link", {
       exception: e,

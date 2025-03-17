@@ -87,7 +87,10 @@ export const DataBrokerRequestedRemoval: Story = {
   args: {
     exposureImg: FamilyTreeImage,
     exposureData: ScanMockItemRequestedRemoval,
-    enabledFeatureFlags: ["AdditionalRemovalStatuses"],
+    enabledFeatureFlags: [
+      "AdditionalRemovalStatuses",
+      "DataBrokerRemovalAttempts",
+    ],
   },
 };
 

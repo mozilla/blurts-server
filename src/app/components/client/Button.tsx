@@ -23,7 +23,7 @@ export interface Props {
   isLoading?: boolean;
   small?: boolean;
   wide?: boolean;
-  buttonRef?: RefObject<HTMLButtonElement | HTMLAnchorElement>;
+  buttonRef?: RefObject<HTMLButtonElement | HTMLAnchorElement | null>;
 }
 
 export type ButtonProps = Props & Parameters<typeof useButton>[0]; // AriaButtonOptions
@@ -69,32 +69,24 @@ export const Button = (props: ButtonProps) => {
   // If `props.isLoading` is not undefined, the contents of the link is going to
   // change into a loading indicator, which needs to be read by a screen reader:
   const ariaLiveValue: AriaAttributes["aria-live"] =
-    /* c8 ignore next 3 */
-    // Since the Node 20.10 upgrade, it's been intermittently marking this (and
-    // this comment) as uncovered, even though I think it's covered by tests.
     typeof isLoading === "boolean" ? "polite" : undefined;
 
   return typeof href === "string" ? (
     <Link
       aria-live={ariaLiveValue}
       {...buttonProps}
-      ref={buttonRef as RefObject<HTMLAnchorElement>}
+      ref={buttonRef as RefObject<HTMLAnchorElement | null>}
       href={href}
       target={target}
       className={classes}
     >
-      {
-        /* c8 ignore next 3 */
-        // Since the Node 20.10 upgrade, it's been intermittently marking this (and
-        // this comment) as uncovered, even though I think it's covered by tests.
-        isLoading ? <Loader /> : children
-      }
+      {isLoading ? <Loader /> : children}
     </Link>
   ) : (
     <button
       aria-live={ariaLiveValue}
       {...buttonProps}
-      ref={buttonRef as RefObject<HTMLButtonElement>}
+      ref={buttonRef as RefObject<HTMLButtonElement | null>}
       className={classes}
     >
       {

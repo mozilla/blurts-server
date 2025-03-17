@@ -1,7 +1,7 @@
-@import "../../../../../../../tokens";
+@use "../../../../../../../tokens";
 
 .fixContainer {
-  background-color: $color-grey-05;
+  background-color: tokens.$color-grey-05;
   height: 100%;
   display: flex;
   align-items: center;
@@ -9,17 +9,17 @@
   // Set position relative so the child <Confetti> canvas can overlay <FixView>
   position: relative;
 
-  @media screen and (min-width: $screen-md) {
-    padding: $layout-sm;
+  @media screen and (min-width: tokens.$screen-md) {
+    padding: tokens.$layout-sm;
   }
 
   .fixWrapper {
-    box-shadow: $box-shadow-xs;
-    border-radius: $border-radius-md;
-    max-width: $content-xl;
+    box-shadow: tokens.$box-shadow-xs;
+    border-radius: tokens.$border-radius-md;
+    max-width: tokens.$content-xl;
     width: 100%;
-    padding: $layout-xs;
-    background-color: $color-white;
+    padding: tokens.$layout-xs;
+    background-color: tokens.$color-white;
     background-size: cover;
     background-position: center;
     position: relative;
@@ -27,7 +27,7 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-    min-height: $content-sm;
+    min-height: tokens.$content-sm;
 
     &.contentBackgroundImage {
       background-image: url("./images/high-risk-breaches-content-background.svg");
@@ -36,23 +36,24 @@
 
   .navClose {
     position: absolute;
-    right: $spacing-md;
-    top: $spacing-md;
+    right: tokens.$spacing-md;
+    top: tokens.$spacing-md;
   }
 
   .fixSection {
     display: flex;
     justify-content: stretch;
     align-items: center;
-    gap: $spacing-md;
+    gap: tokens.$spacing-md;
 
-    @media screen and (min-width: $screen-md) {
+    @media screen and (min-width: tokens.$screen-md) {
       // Add horizontal padding to account for next/prev arrow placement on larger screens
-      padding: $spacing-lg $spacing-2xl;
+      padding: tokens.$spacing-lg tokens.$spacing-2xl;
     }
 
-    @media screen and (min-width: $screen-xl) {
-      padding: $spacing-xl $spacing-lg $spacing-md $spacing-lg;
+    @media screen and (min-width: tokens.$screen-xl) {
+      padding: tokens.$spacing-xl tokens.$spacing-lg tokens.$spacing-md
+        tokens.$spacing-lg;
     }
 
     .navArrow {
@@ -61,15 +62,15 @@
       position: absolute;
       align-items: center;
       justify-content: center;
-      padding: $spacing-md;
-      border-radius: $border-radius-sm;
-      right: $spacing-md;
+      padding: tokens.$spacing-md;
+      border-radius: tokens.$border-radius-sm;
+      right: tokens.$spacing-md;
 
       &:hover {
-        background-color: $color-violet-20;
+        background-color: tokens.$color-violet-20;
       }
 
-      @media screen and (min-width: $screen-md) {
+      @media screen and (min-width: tokens.$screen-md) {
         display: flex;
       }
     }

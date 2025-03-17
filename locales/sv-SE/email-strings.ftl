@@ -61,18 +61,9 @@ email-breach-summary = Här är din sammanfattning av dataintrång
 # Variables:
 #   $email-address (string) - Email address, bolded
 email-breach-detected = Sökresultat för ditt { $email-address }-konto har upptäckt att din e-post kan ha blivit avslöjad. Vi rekommenderar att du agerar nu för att lösa detta intrång.
-# Deprecated after the redesigned breach alert email is launched
-# Variables:
-#   $email-address (string) - Email address
-email-breach-detected-2 = Sökresultat för ditt <b>{ $email-address }</b>-konto har upptäckt att din e-post kan ha blivit exponerad. Vi rekommenderar att du agerar nu för att lösa detta intrång.
 email-dashboard-cta = Gå till översikten
 
-## Breach alert
-
-# Deprecated after the redesigned breach alert email is launched
-email-spotted-new-breach = Vi har upptäckt ett nytt dataintrång
-
-## Redesigned breach alert email
+## Breach alert email
 
 email-breach-alert-all-subject = Nytt dataintrång upptäcktes
 email-breach-alert-all-preview = Vi guidar dig genom stegen för att lösa det.

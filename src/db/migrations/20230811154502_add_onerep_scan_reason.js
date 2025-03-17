@@ -6,14 +6,18 @@
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
-export function up (knex) {
-  return knex.schema.table('onerep_scans', (table) => {
-    table.string('onerep_scan_reason')
-  })
+export function up(knex) {
+  return knex.schema.table("onerep_scans", (table) => {
+    table.string("onerep_scan_reason");
+  });
 }
 
-export function down (knex) {
-  return knex.schema.table('onerep_scans', (table) => {
-    table.dropColumn('onerep_scan_reason')
-  })
+/**
+ * @param { import("knex").Knex } knex
+ * @returns { Promise<void> }
+ */
+export function down(knex) {
+  return knex.schema.table("onerep_scans", (table) => {
+    table.dropColumn("onerep_scan_reason");
+  });
 }

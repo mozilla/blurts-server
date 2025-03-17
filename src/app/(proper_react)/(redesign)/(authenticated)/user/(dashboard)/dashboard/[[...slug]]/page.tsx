@@ -14,6 +14,7 @@ import {
 } from "../../../../../../../functions/universal/user";
 import {
   getLatestScanForProfileByReason,
+  getMockedScanResults,
   getScanResultsWithBroker,
   getScansCountForProfile,
 } from "../../../../../../../../db/tables/onerep_scans";
@@ -41,22 +42,26 @@ import { getExperimentationId } from "../../../../../../../functions/server/getE
 import { getElapsedTimeInDaysSinceInitialScan } from "../../../../../../../functions/server/getElapsedTimeInDaysSinceInitialScan";
 import { getExperiments } from "../../../../../../../functions/server/getExperiments";
 import { getLocale } from "../../../../../../../functions/universal/getLocale";
-import { getL10n } from "../../../../../../../functions/l10n/serverComponents";
+import {
+  getAcceptLangHeaderInServerComponents,
+  getL10n,
+} from "../../../../../../../functions/l10n/serverComponents";
 import { getDataBrokerRemovalTimeEstimates } from "../../../../../../../functions/server/getDataBrokerRemovalTimeEstimates";
 
 const dashboardTabSlugs = ["action-needed", "fixed"];
 
 type Props = {
-  params: {
+  params: Promise<{
     slug: string[] | undefined;
-  };
-  searchParams: {
-    nimbus_preview?: string;
+  }>;
+  searchParams: Promise<{
     dialog?: "subscriptions";
-  };
+  }>;
 };
 
-export default async function DashboardPage({ params, searchParams }: Props) {
+export default async function DashboardPage(props: Props) {
+  const searchParams = await props.searchParams;
+  const params = await props.params;
   const session = await getServerSession();
   if (!checkSession(session) || !session?.user?.subscriber?.id) {
     return redirect("/auth/logout");
@@ -74,7 +79,7 @@ export default async function DashboardPage({ params, searchParams }: Props) {
     return redirect(`/user/dashboard/${defaultTab}`);
   }
 
-  const headersList = headers();
+  const headersList = await headers();
   const countryCode = getCountryCode(headersList);
 
   const profileId = await getOnerepProfileId(session.user.subscriber.id);
@@ -102,10 +107,17 @@ export default async function DashboardPage({ params, searchParams }: Props) {
     return redirect("/user/welcome");
   }
 
-  const latestScan = await getScanResultsWithBroker(
-    profileId,
-    hasPremium(session.user),
-  );
+  const enabledFeatureFlags = await getEnabledFeatureFlags({
+    email: session.user.email,
+  });
+
+  const useMockedScans =
+    enabledFeatureFlags.includes("CustomDataBrokers") &&
+    process.env.APP_ENV !== "production";
+
+  const scanResults = useMockedScans
+    ? await getMockedScanResults(profileId)
+    : await getScanResultsWithBroker(profileId, hasPremium(session.user));
 
   const scanCount =
     typeof profileId === "number"
@@ -120,17 +132,13 @@ export default async function DashboardPage({ params, searchParams }: Props) {
     session.user,
     countryCode,
   );
-  const enabledFeatureFlags = await getEnabledFeatureFlags({
-    email: session.user.email,
-  });
   const userIsEligibleForPremium = isEligibleForPremium(countryCode);
 
-  const experimentationId = getExperimentationId(session.user);
+  const experimentationId = await getExperimentationId(session.user);
   const experimentData = await getExperiments({
-    experimentationId: experimentationId,
-    countryCode: countryCode,
-    locale: getLocale(getL10n()),
-    previewMode: searchParams.nimbus_preview === "true",
+    experimentationId,
+    countryCode,
+    locale: getLocale(getL10n(await getAcceptLangHeaderInServerComponents())),
   });
 
   const monthlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "monthly" });
@@ -156,7 +164,7 @@ export default async function DashboardPage({ params, searchParams }: Props) {
       user={session.user}
       isEligibleForPremium={userIsEligibleForPremium}
       isEligibleForFreeScan={userIsEligibleForFreeScan}
-      userScanData={latestScan}
+      userScanData={scanResults}
       userBreaches={subBreaches}
       enabledFeatureFlags={enabledFeatureFlags}
       monthlySubscriptionUrl={`${monthlySubscriptionUrl}&${additionalSubplatParams.toString()}`}
@@ -167,12 +175,12 @@ export default async function DashboardPage({ params, searchParams }: Props) {
       totalNumberOfPerformedScans={profileStats?.total}
       isNewUser={isNewUser}
       elapsedTimeInDaysSinceInitialScan={elapsedTimeInDaysSinceInitialScan}
-      experimentData={experimentData}
+      experimentData={experimentData["Features"]}
       activeTab={activeTab}
       hasFirstMonitoringScan={hasFirstMonitoringScan}
       signInCount={signInCount}
       autoOpenUpsellDialog={searchParams.dialog === "subscriptions"}
-      removalTimeEstimates={getDataBrokerRemovalTimeEstimates(latestScan)}
+      removalTimeEstimates={getDataBrokerRemovalTimeEstimates(scanResults)}
     />
   );
 }

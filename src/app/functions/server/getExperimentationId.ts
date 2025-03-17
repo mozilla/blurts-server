@@ -18,9 +18,9 @@ export type ExperimentationId = UUID | `guest-${UUID}`;
  * @param user
  * @returns v5 UUID, possibly with `guest-` prefix.
  */
-export function getExperimentationId(
+export async function getExperimentationId(
   user: Session["user"] | null,
-): ExperimentationId {
+): Promise<ExperimentationId> {
   const accountId = user?.subscriber?.id;
   let experimentationId: null | ExperimentationId;
 
@@ -28,6 +28,9 @@ export function getExperimentationId(
     // If the user is logged in, use the Subscriber ID.
     const namespace = process.env.NIMBUS_UUID_NAMESPACE;
     if (!namespace) {
+      logger.error(
+        "NIMBUS_UUID_NAMESPACE environment variable is missing. Cannot generate experimentationId.",
+      );
       throw new Error(
         "NIMBUS_UUID_NAMESPACE not set, cannot create experimentationId",
       );
@@ -39,14 +42,17 @@ export function getExperimentationId(
     // (This header is set in middleware.ts, which reads it from a cookie, and creates the
     // cookie if it doesn't exist yet.)
     // TODO: could we use client ID for this? There's no supported way to get it from GleanJS.
-    const experimentationId = headers().get("x-experimentation-id");
+    const experimentationId = (await headers()).get("x-experimentation-id");
     if (!experimentationId) {
       logger.error(
         "get_experimentation_id_no_x-experimentation-id_header",
-        headers().keys(),
+        (await headers()).keys(),
       );
       return "guest-no-experimentation-id-set-by-monitor-middleware";
     }
+    logger.info("Using experimentationId from header for guest user", {
+      experimentationId,
+    });
     return experimentationId as ExperimentationId;
   }
 }

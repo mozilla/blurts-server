@@ -116,7 +116,7 @@ export class LandingPage {
     this.monitorLandingHeader = page.getByRole("heading", {
       name: "Mozilla Monitor",
     });
-    this.signInButton = page.getByRole("button", { name: "Sign In" });
+    this.signInButton = page.getByRole("button", { name: "Sign In" }).first();
 
     // hero section
     this.monitorHeroTitle = page.getByRole("heading", {

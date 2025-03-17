@@ -6,18 +6,18 @@
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
-export function up (knex) {
-  return knex.schema.table('subscribers', table => {
-    table.unique('onerep_profile_id')
-  })
+export function up(knex) {
+  return knex.schema.table("subscribers", (table) => {
+    table.unique("onerep_profile_id");
+  });
 }
 
 /**
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
-export function down (knex) {
-  return knex.schema.table('subscribers', table => {
-    table.dropUnique('onerep_profile_id')
-  })
+export function down(knex) {
+  return knex.schema.table("subscribers", (table) => {
+    table.dropUnique(["onerep_profile_id"]);
+  });
 }

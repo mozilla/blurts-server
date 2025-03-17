@@ -9,6 +9,8 @@ import { AutomaticRemovalVariation } from "./automaticRemovalCsatSurvey";
 import { ExperimentData } from "../../../../../telemetry/generated/nimbus/experiments";
 import { GleanMetricMap } from "../../../../../telemetry/generated/_map";
 
+// The variable `surveyResponses` is used as a type reference.
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const surveyResponses = [
   "very-dissatisfied",
   "dissatisfied",

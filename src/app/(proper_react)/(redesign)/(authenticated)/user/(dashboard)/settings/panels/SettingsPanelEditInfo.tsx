@@ -22,7 +22,7 @@ import { onRemoveEmail } from "../actions";
 
 export type SettingsPanelEditInfoProps = {
   breachCountByEmailAddress: Record<string, number>;
-  data: SubscriberEmailPreferencesOutput;
+  data?: SubscriberEmailPreferencesOutput;
   emailAddresses: SanitizedEmailAddressRow[];
   subscriber: SubscriberRow;
   user: Session["user"];

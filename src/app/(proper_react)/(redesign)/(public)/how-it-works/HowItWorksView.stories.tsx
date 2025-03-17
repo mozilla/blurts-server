@@ -6,11 +6,23 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { HowItWorksView } from "./HowItWorksView";
 import { getL10n } from "../../../../functions/l10n/storybookAndJest";
 import { PublicShell } from "../PublicShell";
+import { defaultExperimentData } from "../../../../../telemetry/generated/nimbus/experiments";
 
 const meta: Meta<typeof HowItWorksView> = {
   title: "Pages/Public/HowItWorks page",
   component: () => (
-    <PublicShell l10n={getL10n()} countryCode="us">
+    <PublicShell
+      l10n={getL10n("en")}
+      countryCode="us"
+      enabledFeatureFlags={[]}
+      experimentData={{
+        ...defaultExperimentData["Features"],
+        "landing-page-redesign-plus-eligible-experiment": {
+          enabled: false,
+          variant: "default",
+        },
+      }}
+    >
       <HowItWorksView
         l10n={getL10n()}
         eligibleForPremium={true}

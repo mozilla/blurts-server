@@ -1,72 +1,124 @@
-@import "../../tokens";
+@use "../../tokens";
 
 .input,
 .comboBox {
-  background: $color-white;
+  border-radius: tokens.$border-radius-md;
   display: flex;
   flex-direction: column;
+  gap: tokens.$spacing-sm;
   position: relative;
 
-  .inputField {
-    border: 1px solid $color-grey-30;
-    border-radius: $border-radius-sm;
-    color: $color-black;
-    // Add a bit more vertical space: The next spacing step is too much.
-    padding: calc($spacing-sm * 1.5) $spacing-md;
+  .inputFieldWrapper {
+    position: relative;
+  }
 
-    &::placeholder,
+  .floatingLabel {
+    border-radius: tokens.$border-radius-sm;
+    backface-visibility: hidden;
+    color: tokens.$color-black;
+    display: inline-block;
+    font-weight: 400;
+    // Add a bit more space: The next spacing step is too much.
+    left: calc(tokens.$spacing-sm * 1.5);
+    line-height: 1em;
+    overflow: hidden;
+    padding: 0 calc(tokens.$spacing-xs * 0.5);
+    pointer-events: none;
+    position: absolute;
+    text-overflow: ellipsis;
+    top: 50%;
+    transform-origin: top left;
+    transform: translate(-0.05em, -50%) scale(1);
+    transition:
+      transform 0.1s ease-in-out,
+      color 0.1s ease-in-out;
+    user-select: none;
+    white-space: nowrap;
+    width: calc(100% - tokens.$spacing-sm * 1.5);
+  }
+
+  .inputField {
+    background: tokens.$color-white;
+    border: none;
+    box-shadow: inset 0 0 0 1px tokens.$color-grey-30;
+    border-radius: tokens.$border-radius-md;
+    color: tokens.$color-black;
+    // Add a bit more space: The next spacing step is too much.
+    padding: tokens.$spacing-md calc(tokens.$spacing-sm * 1.5);
+    width: 100%;
+
     &.noValue {
-      color: $color-grey-40;
+      color: tokens.$color-grey-40;
     }
 
     &.hasError {
-      border-color: $color-error;
+      border-color: tokens.$color-error;
 
       &:focus {
-        border: 1px solid $color-error;
-        outline: $border-focus-width solid $color-error-focus;
+        box-shadow: inset 0 0 0 1px tokens.$color-error;
+        outline: tokens.$border-focus-width solid tokens.$color-error-focus;
       }
     }
 
     &:focus {
-      border: 1px solid $color-informational-active;
-      outline: $border-focus-width solid $color-informational-focus;
+      box-shadow: inset 0 0 0 1px tokens.$color-purple-70;
+      outline: tokens.$border-focus-width solid tokens.$color-purple-40;
     }
 
     &:disabled {
       background: none;
-      border: 1px solid $color-grey-10;
+      box-shadow: inset 0 0 0 1px tokens.$color-grey-10;
+    }
+  }
+
+  &:has(.floatingLabel) {
+    ::placeholder {
+      @include tokens.visually-hidden;
+      color: transparent;
+    }
+    .inputField {
+      // Move the value string off-center.
+      padding: calc(tokens.$spacing-md * 1.35) calc(tokens.$spacing-sm * 1.5)
+        calc(tokens.$spacing-md * 0.65);
+    }
+  }
+
+  &:focus-within,
+  &:not(:has(:placeholder-shown)) {
+    .floatingLabel {
+      color: tokens.$color-grey-40;
+      // Make the floating label visually align with the input value.
+      transform: translate(-0.05em, -150%) scale(0.85);
     }
   }
 
   .inputLabel {
     font-weight: 600;
-    margin-bottom: $spacing-sm;
   }
 
   .buttonIcon {
     position: absolute;
-    right: $spacing-xs;
+    right: tokens.$spacing-xs;
     top: 50%;
     transform: translateY(-50%);
 
     &:hover button {
-      color: $color-error;
+      color: tokens.$color-error;
     }
   }
 
   .inputMessage {
     display: flex;
     align-items: center;
-    color: $color-grey-40;
-    gap: $spacing-xs;
-    background: inherit;
-    border-radius: $border-radius-sm;
+    color: tokens.$color-grey-40;
+    gap: tokens.$spacing-xs;
+    background: tokens.$color-white;
+    border-radius: tokens.$border-radius-sm;
     bottom: 0;
-    font: $text-body-xs;
+    font: tokens.$text-body-xs;
     left: 0;
-    margin: 0 $spacing-sm;
-    padding: 0 $spacing-sm;
+    margin: 0 tokens.$spacing-sm;
+    padding: 0 tokens.$spacing-sm;
     position: absolute;
     // the negative y-offset is 50% of the line-height plus a bit extra for
     // visual balance in relation to the input border endings left and right
@@ -74,6 +126,6 @@
   }
 
   &:has([aria-invalid="true"]) .inputMessage {
-    color: $color-error;
+    color: tokens.$color-error;
   }
 }

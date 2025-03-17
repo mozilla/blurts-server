@@ -6,10 +6,10 @@
 
 import { signIn, useSession } from "next-auth/react";
 import { useL10n } from "../../hooks/l10n";
-import { Button } from "./Button";
+import { Button, ButtonProps } from "./Button";
 import { useTelemetry } from "../../hooks/useTelemetry";
 
-export const SignInButton = () => {
+export const SignInButton = (props: ButtonProps) => {
   const l10n = useL10n();
   const session = useSession();
   const recordTelemetry = useTelemetry();
@@ -20,6 +20,7 @@ export const SignInButton = () => {
 
   return (
     <Button
+      {...props}
       variant="secondary"
       onPress={() => {
         recordTelemetry("ctaButton", "click", {

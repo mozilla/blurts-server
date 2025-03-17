@@ -10,7 +10,7 @@ import {
 } from "knex/types/tables";
 import { faker } from "@faker-js/faker";
 import { View as DashboardEl } from "./View";
-import { Shell } from "../../../../Shell";
+import { Shell } from "../../../../Shell/Shell";
 import { getL10n } from "../../../../../../functions/l10n/storybookAndJest";
 import {
   createRandomScanResult,
@@ -171,6 +171,14 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
           nonce=""
           countryCode={props.countryCode}
           enabledFeatureFlags={props.enabledFeatureFlags ?? []}
+          experimentData={
+            props.experimentData ?? {
+              ...defaultExperimentData["Features"],
+              "last-scan-date": {
+                enabled: true,
+              },
+            }
+          }
         >
           <DashboardEl
             user={user}

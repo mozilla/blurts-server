@@ -1,34 +1,34 @@
-@import "../../tokens";
+@use "../../tokens";
 
 .progressCard {
-  background: $color-white;
-  border-radius: $border-radius-md;
-  border: 2px solid rgba($color-purple-70, 0.4);
+  background: tokens.$color-white;
+  border-radius: tokens.$border-radius-md;
+  border: 2px solid rgba(tokens.$color-purple-70, 0.4);
   display: flex;
   flex-direction: column;
   height: 100%;
   justify-content: center;
-  padding: $spacing-lg;
+  padding: tokens.$spacing-lg;
 
-  @media screen and (min-width: $screen-lg) {
-    min-width: $content-sm;
+  @media screen and (min-width: tokens.$screen-lg) {
+    min-width: tokens.$content-sm;
   }
 
   .header {
     display: flex;
     align-items: center;
-    gap: $spacing-sm;
+    gap: tokens.$spacing-sm;
     justify-content: center;
-    font: $text-title-3xs;
+    font: tokens.$text-title-3xs;
     font-weight: 600;
 
     button {
-      @include question-mark-circle-btn;
+      @include tokens.question-mark-circle-btn;
     }
   }
 
   .progressBarContainer {
-    gap: $spacing-md;
+    gap: tokens.$spacing-md;
     align-items: center;
     display: flex;
 
@@ -38,30 +38,30 @@
     }
 
     .fullProgressBar {
-      border-radius: $border-radius-lg;
+      border-radius: tokens.$border-radius-lg;
       height: 15px;
       background: repeating-linear-gradient(
         -45deg,
-        $color-grey-20,
-        $color-grey-20 5px,
-        $color-grey-10 5px,
-        $color-grey-10 10px
+        tokens.$color-grey-20,
+        tokens.$color-grey-20 5px,
+        tokens.$color-grey-10 5px,
+        tokens.$color-grey-10 10px
       );
       position: relative;
       width: 100%;
 
       .activeProgressBar {
         height: inherit;
-        border-radius: $border-radius-lg;
+        border-radius: tokens.$border-radius-lg;
         position: absolute;
-        background: $gradient-blue;
+        background: tokens.$gradient-blue;
       }
 
       .percentageBreakdown {
-        font: $text-body-sm;
-        color: $color-grey-60;
+        font: tokens.$text-body-sm;
+        color: tokens.$color-grey-60;
         margin-top: 15px; // offset height of progress bar
-        padding-top: $spacing-xs;
+        padding-top: tokens.$spacing-xs;
         display: flex;
         justify-content: space-between;
       }
@@ -69,12 +69,12 @@
   }
 
   .progressStatsWrapper {
-    font: $text-body-sm;
+    font: tokens.$text-body-sm;
     font-weight: 500;
     display: flex;
     flex-direction: row;
-    gap: $layout-md;
-    padding: $spacing-md 0;
+    gap: tokens.$layout-md;
+    padding: tokens.$spacing-md 0;
     justify-content: center;
 
     .progressItem {
@@ -86,14 +86,14 @@
 
       &:not(:first-child)::before {
         // Lines in between the different items in the progress cardå
-        @media screen and (min-width: $screen-sm) {
+        @media screen and (min-width: tokens.$screen-sm) {
           content: "";
           position: absolute;
-          left: -($layout-xs);
+          left: -(tokens.$layout-xs);
           top: 0;
           bottom: 0;
           width: 1px;
-          background-color: $color-grey-20;
+          background-color: tokens.$color-grey-20;
         }
       }
 
@@ -101,12 +101,12 @@
         align-items: center;
         justify-content: center;
         display: flex;
-        gap: $spacing-sm;
+        gap: tokens.$spacing-sm;
 
         img {
           display: none;
 
-          @media screen and (min-width: $screen-sm) {
+          @media screen and (min-width: tokens.$screen-sm) {
             display: block;
             width: 50px;
             height: auto;
@@ -115,15 +115,15 @@
       }
 
       span {
-        font: $text-title-sm;
-        color: $color-purple-70;
+        font: tokens.$text-title-sm;
+        color: tokens.$color-purple-70;
 
-        @media screen and (min-width: $screen-sm) {
-          font: $text-title-md;
+        @media screen and (min-width: tokens.$screen-sm) {
+          font: tokens.$text-title-md;
         }
 
-        @media screen and (min-width: $screen-xl) {
-          font: $text-title-lg;
+        @media screen and (min-width: tokens.$screen-xl) {
+          font: tokens.$text-title-lg;
           font-weight: 600;
         }
       }
@@ -134,13 +134,13 @@
         }
 
         span {
-          color: $color-grey-40;
+          color: tokens.$color-grey-40;
         }
         p {
-          color: $color-grey-40;
+          color: tokens.$color-grey-40;
           display: flex;
           align-items: center;
-          gap: $spacing-xs;
+          gap: tokens.$spacing-xs;
         }
       }
     }
@@ -150,13 +150,13 @@
 .modalBodyContent {
   display: flex;
   flex-direction: column;
-  gap: $spacing-sm;
+  gap: tokens.$spacing-sm;
 
   .confirmButtonWrapper {
     align-self: center;
     display: flex;
     flex-direction: column;
-    min-width: $content-xs;
-    padding-block-start: $spacing-md;
+    min-width: tokens.$content-xs;
+    padding-block-start: tokens.$spacing-md;
   }
 }

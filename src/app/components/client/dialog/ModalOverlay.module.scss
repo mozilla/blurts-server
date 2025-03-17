@@ -1,9 +1,9 @@
-@import "../../../tokens";
+@use "../../../tokens";
 
 .underlay {
   position: fixed;
   inset: 0;
-  background-color: rgba($color-black, 0.5);
+  background-color: rgba(tokens.$color-black, 0.5);
   // Overlap all regular content on the site with a z-index,
   // the highest of which (at the time of writing) are the <Steps> in the
   // onboarding flow, whose images have a z-index of 1:

@@ -16,7 +16,7 @@ import { dataClassKeyMap } from "../../../app/functions/server/dashboard";
 const meta: Meta<FC<MonthlyActivityFreeEmailProps>> = {
   title: "Emails/Monthly activity (free user)",
   component: (props: MonthlyActivityFreeEmailProps) => (
-    <StorybookEmailRenderer>
+    <StorybookEmailRenderer plainTextVersion={null}>
       <MonthlyActivityFreeEmail {...props} />
     </StorybookEmailRenderer>
   ),
@@ -109,7 +109,6 @@ export const MonthlyReportFreeUserNoScanWithBreachesResolved: Story = {
   },
 };
 
-// With scan, only check from unresolvedSanitizedDataPoints
 export const MonthlyReportFreeUserWithScanWithExposuresNothingResolved: Story =
   {
     name: "With Scan With Data Breaches and Brokers, Nothing Resolved",
@@ -134,7 +133,7 @@ export const MonthlyReportFreeUserWithScanWithExposuresNothingResolved: Story =
   };
 
 export const MonthlyReportFreeUserWithScanWithExposuresResolved: Story = {
-  name: "With Scan With Data Breaches and Data Brokers and Resolved Exposures",
+  name: "With Scan With Data Breaches and Data Brokers and Resolved Breaches",
   args: {
     unsubscribeLink: "/",
     dataSummary: {
@@ -144,11 +143,7 @@ export const MonthlyReportFreeUserWithScanWithExposuresResolved: Story = {
         { [dataClassKeyMap.familyMembers]: 10 },
         { [dataClassKeyMap.phoneNumbers]: 5 },
       ],
-      fixedSanitizedDataPoints: [
-        { [dataClassKeyMap.passwords]: 10 },
-        { [dataClassKeyMap.familyMembers]: 10 },
-        { [dataClassKeyMap.phoneNumbers]: 5 },
-      ],
+      dataBreachResolvedNum: 3,
     },
     subscriber: {
       onerep_profile_id: 1,
@@ -195,3 +190,23 @@ export const MonthlyReportFreeUserWithoutScanNoExposures: Story = {
     } as SanitizedSubscriberRow,
   },
 };
+
+export const MonthlyReportFreeUserWithScanExpiredSubscriptionWithPastExposures: Story =
+  {
+    name: "With Scan Expired Subscription With Previously Removed Exposures",
+    args: {
+      unsubscribeLink: "/",
+      dataSummary: {
+        ...mockedDataSummary,
+        dataBreachResolvedNum: 0,
+        dataBrokerAutoFixedDataPointsNum: 10,
+      },
+      subscriber: {
+        onerep_profile_id: 1,
+        fxa_profile_json: {
+          locale: "en-US",
+          subscriptions: ["not-monitor-plus"],
+        },
+      } as SanitizedSubscriberRow,
+    },
+  };

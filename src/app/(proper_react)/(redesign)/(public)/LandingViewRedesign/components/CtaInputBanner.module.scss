@@ -1,0 +1,51 @@
+@use "../../../../../tokens";
+
+.banner {
+  background-color: tokens.$color-grey-05;
+  border-radius: tokens.$border-radius-xl;
+  display: flex;
+  justify-content: center;
+  padding: tokens.$layout-sm;
+  width: 100%;
+
+  &Content {
+    display: flex;
+    flex-direction: column;
+    gap: tokens.$layout-sm;
+    max-width: tokens.$content-lg;
+
+    form {
+      align-items: stretch;
+      display: flex;
+      flex-direction: column;
+      gap: tokens.$spacing-md;
+      max-width: tokens.$content-md;
+    }
+
+    @media screen and (min-width: tokens.$screen-md) {
+      form {
+        align-items: flex-end;
+        flex-direction: row;
+        button {
+          flex: 0 0 auto;
+        }
+      }
+    }
+  }
+
+  &Header {
+    align-items: flex-start;
+    flex-direction: column;
+    display: flex;
+    gap: tokens.$spacing-sm;
+
+    b,
+    strong {
+      font-weight: 700;
+    }
+
+    strong {
+      color: tokens.$color-purple-70;
+    }
+  }
+}

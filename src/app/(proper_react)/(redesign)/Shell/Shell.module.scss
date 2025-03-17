@@ -1,0 +1,127 @@
+@use "../../../tokens";
+
+.wrapper {
+  height: 100%;
+  display: flex;
+}
+
+.mainMenu {
+  display: none;
+
+  @media screen and (min-width: tokens.$screen-xl) {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+
+    .homeLink {
+      height: tokens.$tab-bar-height;
+      display: flex;
+      align-items: center;
+      padding: tokens.$spacing-xl tokens.$spacing-2xl;
+      border-bottom: 1px solid tokens.$color-grey-10;
+
+      &:hover {
+        box-shadow: tokens.$box-shadow-sm;
+      }
+
+      &:focus {
+        border-bottom-color: tokens.$color-blue-50;
+      }
+
+      img {
+        width: auto;
+        height: tokens.$layout-sm;
+      }
+    }
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+      list-style-type: none;
+
+      a {
+        display: block;
+        padding: tokens.$spacing-md tokens.$spacing-lg;
+        color: tokens.$color-grey-40;
+        font-weight: 500;
+        border-bottom: 1px solid tokens.$color-grey-10;
+        text-decoration: none;
+
+        &.isActive {
+          color: tokens.$color-purple-70;
+        }
+
+        &:hover {
+          background-color: tokens.$color-purple-50;
+          color: tokens.$color-white;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+.content {
+  height: 100%;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+
+  .page {
+    flex: 1 0 auto;
+  }
+}
+
+.footer {
+  background-color: tokens.$color-black;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: tokens.$spacing-xl;
+  padding-block: tokens.$spacing-xl;
+
+  .mozillaLink {
+    padding: 0 tokens.$spacing-md;
+
+    &:hover img {
+      background-color: tokens.$color-purple-50;
+    }
+  }
+
+  .externalLinks {
+    flex: 1 0 auto;
+    display: flex;
+    padding: 0;
+    list-style-type: none;
+    flex-direction: column;
+
+    a {
+      display: block;
+      color: tokens.$color-grey-05;
+      font-weight: 500;
+      text-decoration: none;
+      padding: tokens.$spacing-sm tokens.$spacing-md;
+
+      &:hover {
+        color: tokens.$color-purple-50;
+      }
+    }
+  }
+
+  @media screen and (min-width: tokens.$screen-lg) {
+    flex-direction: row;
+    align-items: center;
+    padding-block: 0;
+
+    .externalLinks {
+      flex-direction: row;
+      justify-content: flex-end;
+      padding: 0 tokens.$spacing-2xl;
+    }
+
+    .mozillaLink {
+      padding: tokens.$spacing-md tokens.$spacing-2xl;
+    }
+  }
+}

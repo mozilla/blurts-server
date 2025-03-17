@@ -60,11 +60,7 @@ email-breach-summary = Her er oversynet ditt over datalekkasjar
 email-breach-detected = Søkjeresultat for { $email-address }-kontoen din har oppdaga at e-posten din kan vere utsett. Vil tilrår at du handlar no for å løyse denne datalekkasjen.
 email-dashboard-cta = Gå til oversynet
 
-## Breach alert
-
-# Deprecated after the redesigned breach alert email is launched
-email-spotted-new-breach = Vi har oppdaga ein ny datalekkasje
-
-## Redesigned breach alert email
+## Breach alert email
 
 email-breach-alert-all-subject = Ny datalekkasje oppdaga
+email-breach-alert-all-next-steps-button-dashboard = Gå til oversynet

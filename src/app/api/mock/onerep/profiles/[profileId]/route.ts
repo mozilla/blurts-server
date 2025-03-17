@@ -15,10 +15,11 @@ import { NextRequest, NextResponse } from "next/server";
 import { errorIfProduction } from "../../../../utils/errorThrower.ts";
 
 // Mock endpoint to simulate fetching a profile by ID
-export function GET(
+export async function GET(
   _: NextRequest,
-  { params }: { params: { profileId: string } },
+  props: { params: Promise<{ profileId: string }> },
 ) {
+  const params = await props.params;
   const prodError = errorIfProduction();
   if (prodError) return prodError;
 

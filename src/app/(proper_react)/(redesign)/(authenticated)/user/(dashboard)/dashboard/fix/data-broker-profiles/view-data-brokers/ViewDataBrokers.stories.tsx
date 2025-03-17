@@ -12,9 +12,10 @@ import {
   createRandomScanResult,
   createUserWithPremiumSubscription,
 } from "../../../../../../../../../../apiMocks/mockData";
-import { Shell } from "../../../../../../../Shell";
+import { Shell } from "../../../../../../../Shell/Shell";
 import { getL10n } from "../../../../../../../../../functions/l10n/storybookAndJest";
 import { LatestOnerepScanData } from "../../../../../../../../../../db/tables/onerep_scans";
+import { defaultExperimentData } from "../../../../../../../../../../telemetry/generated/nimbus/experiments";
 
 const brokerOptions = {
   "no-scan": "No scan started",
@@ -103,6 +104,7 @@ const ViewWrapper = (props: ViewWrapperProps) => {
       nonce=""
       countryCode="us"
       enabledFeatureFlags={[]}
+      experimentData={defaultExperimentData["Features"]}
     >
       <ViewDataBrokersView
         data={{

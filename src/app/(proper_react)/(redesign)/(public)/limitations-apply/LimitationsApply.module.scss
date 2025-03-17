@@ -1,35 +1,35 @@
-@import "../../../../tokens";
+@use "../../../../tokens";
 
 .limitationsApplyContainer {
   display: flex;
-  padding: $layout-md $spacing-sm;
+  padding: tokens.$layout-md tokens.$spacing-sm;
 
   .limitationsApplyWrapper {
     display: flex;
     flex-direction: column;
-    gap: $layout-md;
+    gap: tokens.$layout-md;
     align-items: center;
     margin: 0 auto;
 
-    @media screen and (min-width: $screen-md) {
+    @media screen and (min-width: tokens.$screen-md) {
       flex-direction: row;
     }
 
     .limitationsApplyDescription {
       display: flex;
       flex-direction: column;
-      gap: $spacing-md;
+      gap: tokens.$spacing-md;
 
       h1 {
-        font: $text-title-sm;
+        font: tokens.$text-title-sm;
         font-family: var(--font-inter);
       }
 
       aside {
         width: fit-content;
-        background-color: $color-purple-10;
-        border-radius: $border-radius-lg;
-        padding: $spacing-sm $spacing-md;
+        background-color: tokens.$color-purple-10;
+        border-radius: tokens.$border-radius-lg;
+        padding: tokens.$spacing-sm tokens.$spacing-md;
       }
     }
   }

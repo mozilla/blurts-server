@@ -21,14 +21,13 @@ import { hasPremium } from "../../../../../../../../../functions/universal/user"
 import { getEnabledFeatureFlags } from "../../../../../../../../../../db/tables/featureFlags";
 
 interface LeakedPasswordsProps {
-  params: {
+  params: Promise<{
     type: LeakedPasswordsTypes;
-  };
+  }>;
 }
 
-export default async function LeakedPasswords({
-  params,
-}: LeakedPasswordsProps) {
+export default async function LeakedPasswords(props: LeakedPasswordsProps) {
+  const params = await props.params;
   const session = await getServerSession();
   if (!session?.user?.subscriber?.id) {
     logger.error("user_not_subscribed", {
@@ -39,7 +38,7 @@ export default async function LeakedPasswords({
   const enabledFeatureFlags = await getEnabledFeatureFlags({
     email: session.user.email,
   });
-  const countryCode = getCountryCode(headers());
+  const countryCode = getCountryCode(await headers());
   const breaches = await getSubscriberBreaches({
     fxaUid: session.user.subscriber.fxa_uid,
     countryCode,

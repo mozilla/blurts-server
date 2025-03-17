@@ -1,4 +1,4 @@
-@import "../../../../../tokens";
+@use "../../../../../tokens";
 
 .wrapper {
   --backgroundImageWidth: 400px;
@@ -11,39 +11,38 @@
     --backgroundImageWidth: 200px;
     --sidebarWidth: 300px;
   }
-  @media screen and (max-width: $screen-md) {
+  @media screen and (max-width: tokens.$screen-md) {
     --sidebarWidth: 0;
   }
 
   min-height: 100%;
-  background-image: url("./images/Scanning.svg"),
+  background-image:
+    url("./images/Scanning.svg"),
     linear-gradient(
       to right,
-      $color-grey-05,
-      $color-grey-05 var(--sidebarWidth),
-      $color-white calc(var(--sidebarWidth) + 1px)
+      tokens.$color-grey-05,
+      tokens.$color-grey-05 var(--sidebarWidth),
+      tokens.$color-white calc(var(--sidebarWidth) + 1px)
     );
   background-repeat: no-repeat;
   background-position-y: center;
-  background-position-x: calc(
-      var(--sidebarWidth) / 2 - var(--backgroundImageWidth) / 2
-    ),
-    center;
+  background-position-x:
+    calc(var(--sidebarWidth) / 2 - var(--backgroundImageWidth) / 2), center;
   background-size:
     var(--backgroundImageWidth) auto,
     auto;
   padding-inline-start: var(--sidebarWidth);
   display: flex;
   flex-direction: column;
-  gap: $spacing-xl;
+  gap: tokens.$spacing-xl;
 
   .homeLink {
     margin-inline-start: calc(-1 * var(--sidebarWidth));
     display: block;
-    padding: $spacing-md;
+    padding: tokens.$spacing-md;
 
-    @media screen and (min-width: $screen-md) {
-      padding-inline: $spacing-xl;
+    @media screen and (min-width: tokens.$screen-md) {
+      padding-inline: tokens.$spacing-xl;
     }
   }
 
@@ -52,34 +51,34 @@
     align-items: center;
     justify-content: center;
 
-    @media screen and (min-width: $screen-md) {
+    @media screen and (min-width: tokens.$screen-md) {
       // Gives the steps indicator some extra white-space to match the designs
       // on desktop
       height: 20vh;
     }
 
     .steps {
-      @include no-focus-outline;
+      @include tokens.no-focus-outline;
     }
   }
 
   .stepsWrapper,
   .contentWrapper {
-    padding-inline: $spacing-lg;
+    padding-inline: tokens.$spacing-lg;
 
-    @media screen and (min-width: $screen-md) {
-      padding-inline: $spacing-2xl;
+    @media screen and (min-width: tokens.$screen-md) {
+      padding-inline: tokens.$spacing-2xl;
     }
 
-    @media screen and (min-width: $screen-lg) {
-      padding-inline: $layout-xl;
+    @media screen and (min-width: tokens.$screen-lg) {
+      padding-inline: tokens.$layout-xl;
     }
   }
 
-  @media screen and (max-width: $screen-md) {
+  @media screen and (max-width: tokens.$screen-md) {
     .contentWrapper {
       $backgroundImageHeight: 200px;
-      padding-top: $backgroundImageHeight + $spacing-lg;
+      padding-top: $backgroundImageHeight + tokens.$spacing-lg;
       background-image: url("./images/Scanning.svg");
       background-repeat: no-repeat;
       background-position-x: center;
@@ -88,15 +87,15 @@
   }
 }
 
-@media screen and (min-width: $screen-md) {
+@media screen and (min-width: tokens.$screen-md) {
   .steps {
-    $stepGap: $spacing-2xl;
+    $stepGap: tokens.$spacing-2xl;
     padding-inline-start: 0;
     list-style-type: none;
     display: flex;
     justify-content: space-evenly;
     gap: $stepGap;
-    max-width: $content-sm;
+    max-width: tokens.$content-sm;
     position: relative;
 
     li {
@@ -106,14 +105,14 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: $spacing-xs;
+      gap: tokens.$spacing-xs;
       text-align: center;
-      font: $text-body-xs;
+      font: tokens.$text-body-xs;
       font-weight: 600;
-      color: $color-grey-30;
+      color: tokens.$color-grey-30;
 
       img {
-        background-color: $color-grey-30;
+        background-color: tokens.$color-grey-30;
         padding: 5px;
         margin-block: $iconBorderWidth;
         width: $iconDiameter;
@@ -132,7 +131,7 @@
       // 1-indexed, i.e. it doesn't start at 0.
       &:nth-child(n + 2)::before {
         content: "";
-        background-color: $color-grey-30;
+        background-color: tokens.$color-grey-30;
         // Since the step indicators are justified using space-evenly above, and
         // since there are three of them, they are positioned at 25%, 50% and
         // 75% of the width of the container. So to draw a line between two of
@@ -165,20 +164,20 @@
       &[aria-current="step"] {
         img {
           margin-block: 0;
-          border: $iconBorderWidth solid $color-purple-10;
+          border: $iconBorderWidth solid tokens.$color-purple-10;
         }
       }
 
       &.isCompleted,
       &[aria-current="step"] {
-        color: $color-purple-70;
+        color: tokens.$color-purple-70;
 
         &::before {
-          background-color: $color-purple-10;
+          background-color: tokens.$color-purple-10;
         }
 
         img {
-          background-color: $color-purple-70;
+          background-color: tokens.$color-purple-70;
         }
       }
     }
@@ -195,13 +194,13 @@
     }
   }
 }
-@media screen and (max-width: calc($screen-md - 1px)) {
+@media screen and (max-width: calc(tokens.$screen-md - 1px)) {
   .steps {
     padding-inline-start: 0;
     list-style-type: none;
     display: flex;
     justify-content: space-evenly;
-    gap: $spacing-sm;
+    gap: tokens.$spacing-sm;
 
     li {
       img {
@@ -210,32 +209,32 @@
         // a 0 height and a border. The images are <1kB in size, so that
         // shouldn't matter too much.
         height: 0;
-        border: 3px solid $color-grey-30;
+        border: 3px solid tokens.$color-grey-30;
         border-radius: 3px;
-        min-width: $layout-sm;
+        min-width: tokens.$layout-sm;
         width: 100%;
         pointer-events: none;
         user-select: none;
       }
 
       &[aria-current="step"] img {
-        border-color: $color-purple-10;
+        border-color: tokens.$color-purple-10;
       }
 
       &.isCompleted img {
-        border-color: $color-purple-70;
+        border-color: tokens.$color-purple-70;
       }
 
       .stepLabel {
-        padding-block: $spacing-sm;
-        padding-inline: $spacing-md;
-        color: $color-purple-70;
-        font: $text-body-xs;
+        padding-block: tokens.$spacing-sm;
+        padding-inline: tokens.$spacing-md;
+        color: tokens.$color-purple-70;
+        font: tokens.$text-body-xs;
         font-weight: 600;
       }
 
       &:not([aria-current="step"]) .stepLabel {
-        @include visually-hidden;
+        @include tokens.visually-hidden;
       }
     }
   }

@@ -7,11 +7,12 @@
  * @returns { Promise<void> }
  */
 export async function up(knex) {
-  await knex.schema.alterTable("onerep_scans", table => {
+  await knex.schema.alterTable("onerep_scans", (table) => {
     table.string("onerep_scan_status");
   });
+  // @ts-ignore TODO: Fix type error.
   await knex("onerep_scans").update({ onerep_scan_status: "finished" });
-  await knex.schema.alterTable("onerep_scans", table => {
+  await knex.schema.alterTable("onerep_scans", (table) => {
     table.dropNullable("onerep_scan_status");
   });
 }
@@ -21,7 +22,7 @@ export async function up(knex) {
  * @returns { Promise<void> }
  */
 export async function down(knex) {
-  return knex.schema.alterTable("onerep_scans", table => {
+  return knex.schema.alterTable("onerep_scans", (table) => {
     table.dropColumn("onerep_scan_status");
   });
 }

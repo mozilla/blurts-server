@@ -1,31 +1,31 @@
-@import "../../../tokens";
+@use "../../../tokens";
 
 .faqWrapper {
   display: flex;
   flex-direction: column;
-  padding: $layout-md $spacing-md;
+  padding: tokens.$layout-md tokens.$spacing-md;
   align-items: center;
-  gap: $spacing-md;
+  gap: tokens.$spacing-md;
 
   .faqTitle {
-    font: $text-title-2xs;
+    font: tokens.$text-title-2xs;
     font-weight: 600;
   }
 
   .faqCta {
     font-weight: 600;
-    color: $color-blue-50;
+    color: tokens.$color-blue-50;
   }
 
   dl {
-    padding-top: $spacing-md;
+    padding-top: tokens.$spacing-md;
     display: flex;
     flex-direction: column;
-    gap: $layout-xs;
+    gap: tokens.$layout-xs;
     width: 100%;
 
-    @media screen and (min-width: $screen-lg) {
-      width: $content-lg;
+    @media screen and (min-width: tokens.$screen-lg) {
+      width: tokens.$content-lg;
     }
 
     .faqQuestion {
@@ -38,14 +38,14 @@
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-      gap: $layout-md;
+      gap: tokens.$layout-md;
       align-items: center;
-      font: $text-body-lg;
+      font: tokens.$text-body-lg;
       cursor: pointer;
       text-align: start;
 
       svg {
-        color: $color-blue-60;
+        color: tokens.$color-blue-60;
         width: 12px;
         height: 12px;
         transform: rotate(135deg);
@@ -61,8 +61,8 @@
       display: none;
       height: 0;
 
-      @media screen and (min-width: $screen-lg) {
-        padding-right: $spacing-lg;
+      @media screen and (min-width: tokens.$screen-lg) {
+        padding-right: tokens.$spacing-lg;
       }
 
       &.expanded {

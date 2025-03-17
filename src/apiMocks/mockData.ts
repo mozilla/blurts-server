@@ -58,6 +58,7 @@ export function createRandomScanResult(
     options.status === "waiting_for_verification"
       ? faker.number.int({ min: 1, max: 42 })
       : undefined;
+  const url = faker.internet.url();
   return {
     id: faker.number.int(),
     onerep_scan_result_id: faker.number.int(),
@@ -81,17 +82,21 @@ export function createRandomScanResult(
     phones: [faker.phone.number()],
     emails: [faker.internet.exampleEmail()],
     relatives: Array.from({ length: 3 }, () => faker.person.fullName()),
-    link: faker.internet.url(),
-    data_broker: faker.internet.domainName(),
+    link: url,
+    data_broker: new URL(url).hostname,
     data_broker_id: faker.number.int(),
     created_at: options.createdDate ?? faker.date.recent({ days: 2 }),
     updated_at: faker.date.recent({ days: 1 }),
     optout_attempts,
+    last_optout_at:
+      typeof optout_attempts === "number" && optout_attempts > 0
+        ? faker.date.recent({ days: 3 })
+        : undefined,
     broker_status: options.broker_status ?? "active",
     scan_result_status: faker.helpers.arrayElement(
       Object.values(RemovalStatusMap),
     ) as RemovalStatus,
-    url: faker.internet.url(),
+    url: url,
   };
 }
 

@@ -81,3 +81,22 @@ export const DateInputFieldInvalidWithMessage: Story = {
     errorMessage: "Select a date",
   },
 };
+
+export const TextInputFieldEmptyFloatingLabel: Story = {
+  args: {
+    label: "Text input floating label",
+    placeholder: "Type here",
+    type: "text",
+    hasFloatingLabel: true,
+  },
+};
+
+export const TextInputFieldFilledFloatingLabel: Story = {
+  args: {
+    label: "Text input floating label",
+    placeholder: "Type here",
+    type: "text",
+    value: "Input is filled",
+    hasFloatingLabel: true,
+  },
+};

@@ -61,18 +61,9 @@ email-breach-summary = Tukaj je povzetek kraje podatkov
 # Variables:
 #   $email-address (string) - Email address, bolded
 email-breach-detected = Rezultati iskanja za vaš račun { $email-address } kažejo, da je bil vaš e-poštni naslov morda izpostavljen. Priporočamo, da takoj ukrepate in razrešite to krajo.
-# Deprecated after the redesigned breach alert email is launched
-# Variables:
-#   $email-address (string) - Email address
-email-breach-detected-2 = Rezultati iskanja za vaš račun <b>{ $email-address }</b> so zaznali, da je bil vaš e-poštni naslov morda izpostavljen. Priporočamo vam, da ukrepate zdaj.
 email-dashboard-cta = Pojdi na nadzorno ploščo
 
-## Breach alert
-
-# Deprecated after the redesigned breach alert email is launched
-email-spotted-new-breach = Zaznali smo novo krajo podatkov
-
-## Redesigned breach alert email
+## Breach alert email
 
 email-breach-alert-all-subject = Zaznana nova kraja podatkov
 email-breach-alert-all-preview = Vodili vas bomo skozi korake za rešitev težave.

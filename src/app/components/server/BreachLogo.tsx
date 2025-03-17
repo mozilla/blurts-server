@@ -84,7 +84,7 @@ function getColorForName(name: string) {
   const charValue = name
     .split("")
     .map((letter) => letter.codePointAt(0))
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+
     .reduce((sum, codePoint) => sum! + codePoint!) as number;
 
   return logoColors[charValue % logoColors.length];

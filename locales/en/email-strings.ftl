@@ -67,18 +67,9 @@ email-breach-summary = Here’s your data breach summary
 # Variables:
 #   $email-address (string) - Email address, bolded
 email-breach-detected = Search results for your { $email-address } account have detected that your email may have been exposed. We recommend you act now to resolve this breach.
-# Deprecated after the redesigned breach alert email is launched
-# Variables:
-#   $email-address (string) - Email address
-email-breach-detected-2 = Search results for your <b>{ $email-address }</b> account have detected that your email may have been exposed. We recommend you act now to resolve this breach.
 email-dashboard-cta = Go to Dashboard
 
-## Breach alert
-
-# Deprecated after the redesigned breach alert email is launched
-email-spotted-new-breach = We’ve spotted a new data breach
-
-## Redesigned breach alert email
+## Breach alert email
 
 email-breach-alert-all-subject = New data breach detected
 email-breach-alert-all-preview = We’ll guide you through the steps to resolve it.

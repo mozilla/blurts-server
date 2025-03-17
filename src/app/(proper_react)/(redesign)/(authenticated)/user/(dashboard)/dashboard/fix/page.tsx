@@ -15,6 +15,7 @@ import { getScanResultsWithBroker } from "../../../../../../../../db/tables/oner
 import { getServerSession } from "../../../../../../../functions/server/getServerSession";
 import { refreshStoredScanResults } from "../../../../../../../functions/server/refreshStoredScanResults";
 import { hasPremium } from "../../../../../../../functions/universal/user";
+import { getEnabledFeatureFlags } from "../../../../../../../../db/tables/featureFlags";
 
 export default async function FixPage() {
   const session = await getServerSession();
@@ -22,7 +23,7 @@ export default async function FixPage() {
     return redirect("/");
   }
 
-  const countryCode = getCountryCode(headers());
+  const countryCode = getCountryCode(await headers());
   const breaches = await getSubscriberBreaches({
     fxaUid: session.user.subscriber.fxa_uid,
     countryCode,
@@ -31,18 +32,24 @@ export default async function FixPage() {
   if (typeof profileId === "number") {
     await refreshStoredScanResults(profileId);
   }
+  const enabledFeatureFlags = await getEnabledFeatureFlags({
+    email: session.user.email,
+  });
 
   const scanData = await getScanResultsWithBroker(
     profileId,
     hasPremium(session.user),
   );
   const stepDeterminationData: StepDeterminationData = {
-    countryCode: countryCode,
+    countryCode,
     user: session.user,
     subscriberBreaches: breaches,
     latestScanData: scanData,
   };
 
-  const nextStep = getNextGuidedStep(stepDeterminationData);
+  const nextStep = getNextGuidedStep(
+    stepDeterminationData,
+    enabledFeatureFlags,
+  );
   redirect(nextStep.href);
 }

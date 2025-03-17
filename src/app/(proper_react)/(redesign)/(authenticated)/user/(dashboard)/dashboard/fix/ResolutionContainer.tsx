@@ -12,6 +12,7 @@ import styles from "./ResolutionContainer.module.scss";
 import { ProgressCard } from "../../../../../../../components/client/ProgressCard";
 import { StepDeterminationData } from "../../../../../../../functions/server/getRelevantGuidedSteps";
 import { getDashboardSummary } from "../../../../../../../functions/server/dashboard";
+import { FeatureFlagName } from "../../../../../../../../db/tables/featureFlags";
 
 type ResolutionContainerProps = {
   type: "highRisk" | "leakedPasswords" | "securityRecommendations";
@@ -25,14 +26,12 @@ type ResolutionContainerProps = {
   data: StepDeterminationData;
   label?: string;
   cta?: ReactNode;
+  enabledFeatureFlags: FeatureFlagName[];
 };
 
 export const ResolutionContainer = (props: ResolutionContainerProps) => {
   const l10n = useL10n();
   const estimatedTimeString =
-    /* c8 ignore next 8 */
-    // Since the Node 20.10 upgrade, it's been intermittently marking this (and
-    // this comment) as uncovered, even though I think it's covered by tests.
     props.type === "leakedPasswords"
       ? "leaked-passwords-estimated-time"
       : "high-risk-breach-estimated-time";
@@ -40,6 +39,7 @@ export const ResolutionContainer = (props: ResolutionContainerProps) => {
   const resolutionSummary = getDashboardSummary(
     props.data.latestScanData?.results ?? [],
     props.data.subscriberBreaches,
+    props.enabledFeatureFlags,
   );
 
   return (

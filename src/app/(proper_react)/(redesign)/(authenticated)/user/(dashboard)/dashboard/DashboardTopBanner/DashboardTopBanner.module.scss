@@ -1,19 +1,19 @@
-@import "../../../../../../../tokens";
+@use "../../../../../../../tokens";
 
 .container {
-  background-color: $color-white;
+  background-color: tokens.$color-white;
   background-image: url("../images/dashboard-top-banner-wave.svg");
   background-position: center;
   background-size: cover;
-  border-radius: $border-radius-md;
-  border: 1px solid rgba($color-purple-50, 0.2);
+  border-radius: tokens.$border-radius-md;
+  border: 1px solid rgba(tokens.$color-purple-50, 0.2);
   display: flex;
   flex-direction: column-reverse;
-  gap: $layout-sm;
-  padding: $layout-xs;
+  gap: tokens.$layout-sm;
+  padding: tokens.$layout-xs;
 
-  @media screen and (min-width: $screen-lg) {
-    padding: $layout-md;
+  @media screen and (min-width: tokens.$screen-lg) {
+    padding: tokens.$layout-md;
     flex-direction: row;
     align-items: center;
   }
@@ -22,7 +22,7 @@
     display: flex;
     justify-content: center;
 
-    @media screen and (min-width: $screen-md) {
+    @media screen and (min-width: tokens.$screen-md) {
       flex: 1 1 0%;
     }
   }

@@ -6,6 +6,8 @@ import { OnerepScanResultDataBrokerRow } from "knex/types/tables";
 import { BreachDataTypes } from "../universal/breach";
 import { RemovalStatusMap } from "../universal/scanResult";
 import { SubscriberBreach } from "../../../utils/subscriberBreaches";
+import { DataBrokerRemovalStatusMap } from "../universal/dataBroker";
+import { FeatureFlagName } from "../../../db/tables/featureFlags";
 
 export type DataPoints = {
   // shared
@@ -96,6 +98,7 @@ export const dataClassKeyMap: Record<keyof DataPoints, string> = {
 export function getDashboardSummary(
   scannedResults: OnerepScanResultDataBrokerRow[],
   subscriberBreaches: SubscriberBreach[],
+  enabledFeatureFlags?: FeatureFlagName[],
 ): DashboardSummary {
   const summary: DashboardSummary = {
     dataBreachTotalNum: 0,
@@ -204,15 +207,22 @@ export function getDashboardSummary(
           r.status === RemovalStatusMap.WaitingForVerification) &&
         !isManuallyResolved;
 
-      // TODO: Waiting for criteria for data brokers under maintenance to be determined
-      // const isRemovalUnderMaintenance =
-      //   r.broker_status === DataBrokerRemovalStatusMap.RemovalUnderMaintenance;
+      // TODO: MNTOR-3886 - Remove EnableRemovalUnderMaintenanceStep feature flag
+      // If the flag is disabled, include the data.
+      // If the flag is enabled, include the data only if the broker status is not
+      const isRemovalUnderMaintenance =
+        r.broker_status === DataBrokerRemovalStatusMap.RemovalUnderMaintenance;
+
+      // The condition ensures that removal under maintenance is only considered when the flag is enabled.
+      /* c8 ignore next 3 */
+      const countRemovalUnderMaintenanceData =
+        !enabledFeatureFlags?.includes("EnableRemovalUnderMaintenanceStep") ||
+        !isRemovalUnderMaintenance;
 
       if (isInProgress) {
-        // TODO: Waiting for criteria for data brokers under maintenance to be determined
-        // if (!isRemovalUnderMaintenance) {
-        summary.dataBrokerInProgressNum++;
-        // }
+        if (countRemovalUnderMaintenanceData) {
+          summary.dataBrokerInProgressNum++;
+        }
       } else if (isAutoFixed) {
         summary.dataBrokerAutoFixedNum++;
       } else if (isManuallyResolved) {
@@ -234,14 +244,13 @@ export function getDashboardSummary(
       summary.allDataPoints.familyMembers += r.relatives.length;
 
       if (isInProgress) {
-        // TODO: Waiting for criteria for data brokers under maintenance to be determined
-        // if (!isRemovalUnderMaintenance) {
-        summary.inProgressDataPoints.emailAddresses += r.emails.length;
-        summary.inProgressDataPoints.phoneNumbers += r.phones.length;
-        summary.inProgressDataPoints.addresses += r.addresses.length;
-        summary.inProgressDataPoints.familyMembers += r.relatives.length;
-        summary.dataBrokerInProgressDataPointsNum += dataPointsIncrement;
-        // }
+        if (countRemovalUnderMaintenanceData) {
+          summary.inProgressDataPoints.emailAddresses += r.emails.length;
+          summary.inProgressDataPoints.phoneNumbers += r.phones.length;
+          summary.inProgressDataPoints.addresses += r.addresses.length;
+          summary.inProgressDataPoints.familyMembers += r.relatives.length;
+          summary.dataBrokerInProgressDataPointsNum += dataPointsIncrement;
+        }
       }
 
       // for fixed data points: email, phones, addresses, relatives, full name (1)
@@ -370,9 +379,6 @@ export function getDashboardSummary(
       }
     }
 
-    /* c8 ignore next 11 */
-    // Since the Node 20.10 upgrade, it's been intermittently marking this (and
-    // this comment) as uncovered, even though I think it's covered by tests.
     if (dataClasses.includes(BreachDataTypes.BankAccount)) {
       summary.totalDataPointsNum += increment;
       summary.dataBreachTotalDataPointsNum += increment;
@@ -472,9 +478,6 @@ function sanitizeDataPoints(
 }
 
 export function getDataPointReduction(summary: DashboardSummary): number {
-  // The `if` statement is totally covered by unit tests, but for some reason,
-  // since the upgrade to Node 20.10, it doesn't get marked as covered anymore:
-  /* c8 ignore next */
   if (summary.totalDataPointsNum <= 0) return 100;
   return Math.round(
     (summary.dataBrokerTotalDataPointsNum / summary.totalDataPointsNum) * 100,

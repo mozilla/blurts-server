@@ -137,7 +137,7 @@ export function SecurityRecommendationsLayout(
       // `revalidatePath("/user/dashboard")` there, but the API doesn't appear
       // to necessarily share a cache with the client.
       router.refresh();
-    } catch (_error) {
+    } catch {
       // TODO: MNTOR-2563: Capture client error with @next/sentry
       setIsResolving(false);
     }
@@ -164,6 +164,7 @@ export function SecurityRecommendationsLayout(
         title={title}
         illustration={illustration}
         isPremiumUser={hasPremium(props.data.user)}
+        enabledFeatureFlags={props.enabledFeatureFlags}
         cta={
           !isStepDone && (
             <Button

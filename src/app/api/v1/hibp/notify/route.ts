@@ -40,6 +40,7 @@ export async function POST(req: NextRequest) {
 
     const headerToken = bearerToken(req);
     if (headerToken !== process.env.HIBP_NOTIFY_TOKEN) {
+      logger.error(`Received invalid header token: [${headerToken}]`);
       return NextResponse.json({ success: false }, { status: 401 });
     }
 
@@ -71,7 +72,7 @@ export async function POST(req: NextRequest) {
     await topic.publishMessage({ json });
     logger.info("queued_breach_notification_success", { json });
     return NextResponse.json({ success: true }, { status: 200 });
-  } catch (ex) {
+  } catch {
     if (process.env.NODE_ENV === "development") {
       if (!subscriptionName) {
         throw new Error("GCP_PUBSUB_SUBSCRIPTION_NAME env var not set");

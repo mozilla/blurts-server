@@ -39,6 +39,7 @@ export function WelcomeToPlusView(props: Props) {
   const summary = getDashboardSummary(
     scanResultsInProgress,
     props.data.subscriberBreaches,
+    props.enabledFeatureFlags,
   );
   const dataPointReduction = getDataPointReduction(summary);
 

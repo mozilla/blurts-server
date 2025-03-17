@@ -18,7 +18,7 @@ import { GetStarted } from "./GetStarted";
 import { FindExposures } from "./FindExposures";
 import { EnterInfo } from "./EnterInfo";
 import { useL10n } from "../../../../../hooks/l10n";
-import monitorLogo from "../../../../images/monitor-logo.webp";
+import MonitorLogo from "../../../../images/monitor-logo.svg";
 import { useTelemetry } from "../../../../../hooks/useTelemetry";
 import { ExperimentData } from "../../../../../../telemetry/generated/nimbus/experiments";
 
@@ -106,7 +106,7 @@ export const View = ({
       <header>
         <Link href="/" className={styles.homeLink}>
           <Image
-            src={monitorLogo}
+            src={MonitorLogo}
             alt={l10n.getString("main-nav-link-home-label")}
             width={170}
           />

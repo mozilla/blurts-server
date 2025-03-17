@@ -7,7 +7,7 @@ import {
   createRandomBreach,
   createUserWithPremiumSubscription,
 } from "../../../../../../../../../../apiMocks/mockData";
-import { Shell } from "../../../../../../../Shell";
+import { Shell } from "../../../../../../../Shell/Shell";
 import { getL10n } from "../../../../../../../../../functions/l10n/storybookAndJest";
 import { LeakedPasswordsLayout } from "../LeakedPasswordsLayout";
 import {
@@ -15,6 +15,7 @@ import {
   leakedPasswordTypes,
 } from "../leakedPasswordsData";
 import { BreachDataTypes } from "../../../../../../../../../functions/universal/breach";
+import { defaultExperimentData } from "../../../../../../../../../../telemetry/generated/nimbus/experiments";
 
 const user = createUserWithPremiumSubscription();
 
@@ -70,6 +71,7 @@ const LeakedPasswordsWrapper = (props: {
       nonce=""
       countryCode="nl"
       enabledFeatureFlags={[]}
+      experimentData={defaultExperimentData["Features"]}
     >
       <LeakedPasswordsLayout
         subscriberEmails={[]}

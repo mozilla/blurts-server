@@ -45,8 +45,9 @@ const mockScans = mockUser.SCANS_LIST as ScansMap;
 
 export async function POST(
   _: NextRequest,
-  { params }: { params: { profileId: number } },
+  props: { params: Promise<{ profileId: number }> },
 ) {
+  const params = await props.params;
   const prodError = errorIfProduction();
   if (prodError) return prodError;
 
@@ -76,8 +77,9 @@ export async function POST(
 
 export async function GET(
   _: NextRequest,
-  { params }: { params: { profileId: number } },
+  props: { params: Promise<{ profileId: number }> },
 ) {
+  const params = await props.params;
   const prodError = errorIfProduction();
   if (prodError) return prodError;
 

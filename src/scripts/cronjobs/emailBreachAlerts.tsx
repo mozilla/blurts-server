@@ -4,6 +4,7 @@
 
 import Sentry from "@sentry/nextjs";
 
+import process from "node:process";
 import * as pubsub from "@google-cloud/pubsub";
 import * as grpc from "@grpc/grpc-js";
 import type { SubscriberClient } from "@google-cloud/pubsub/build/src/v1/subscriber_client.js";
@@ -31,13 +32,9 @@ import {
   knexHibp,
 } from "../../utils/hibp";
 import { renderEmail } from "../../emails/renderEmail";
-import {
-  BreachAlertEmail,
-  RedesignedBreachAlertEmail,
-} from "../../emails/templates/breachAlert/BreachAlertEmail";
+import { BreachAlertEmail } from "../../emails/templates/breachAlert/BreachAlertEmail";
 import { getCronjobL10n } from "../../app/functions/l10n/cronjobs";
 import { sanitizeSubscriberRow } from "../../app/functions/server/sanitize";
-import { getEnabledFeatureFlags } from "../../db/tables/featureFlags";
 import { getSubscriberBreaches } from "../../app/functions/server/getSubscriberBreaches";
 import { getSignupLocaleCountry } from "../../emails/functions/getSignupLocaleCountry";
 import { refreshStoredScanResults } from "../../app/functions/server/refreshStoredScanResults";
@@ -48,6 +45,7 @@ import {
   getDashboardSummary,
 } from "../../app/functions/server/dashboard";
 import { getScanResultsWithBroker } from "../../db/tables/onerep_scans";
+import { logger } from "../../app/functions/server/logging";
 
 const SENTRY_SLUG = "cron-breach-alerts";
 
@@ -135,7 +133,7 @@ export async function poll(
     /* c8 ignore next 6 */
     if (!breachAlert) {
       console.error(
-        "HIBP breach notification: couldn't find the breach to notify about.",
+        `HIBP breach notification: couldn't find the breach to notify about: [${breachName}].`,
       );
       continue;
     }
@@ -223,7 +221,16 @@ export async function poll(
       const notifiedRecipients: string[] = [];
 
       for (const recipient of recipients) {
-        console.info("notify", { recipient });
+        logger.info(
+          "Notifying a user of a breach. Some non-identifying user data:",
+          {
+            breaches_last_shown: recipient.breaches_last_shown,
+            sign_in_count: recipient.sign_in_count,
+            breaches_resolved: recipient.breaches_resolved,
+            created_at: recipient.created_at,
+            updated_at: recipient.updated_at,
+          },
+        );
 
         const notifiedSubs = await getNotifiedSubscribersForBreach(breachId);
 
@@ -255,80 +262,59 @@ export async function poll(
             });
 
             const l10n = getCronjobL10n(sanitizeSubscriberRow(recipient));
-            const enabledFeatureFlags = await getEnabledFeatureFlags({
-              email: recipient.primary_email,
-            });
-            if (enabledFeatureFlags.includes("BreachEmailRedesign")) {
-              /**
-               * Without an active user session, we don't know the user's country. This is
-               * our best guess based on their locale. At the time of writing, it's only
-               * used to determine whether to count SSN breaches (which we don't have
-               * recommendations for outside the US).
-               */
-              const assumedCountryCode = getSignupLocaleCountry(recipient);
+            /**
+             * Without an active user session, we don't know the user's country. This is
+             * our best guess based on their locale. At the time of writing, it's only
+             * used to determine whether to count SSN breaches (which we don't have
+             * recommendations for outside the US).
+             */
+            const assumedCountryCode = getSignupLocaleCountry(recipient);
 
-              // The unit tests are currently too complex for me to write
-              // a proper test for this, and I need to understand the code
-              // better to be able to refactor it to make it more amenable
-              // to simple tests. Hence, I don't have a test for this yet:
-              /* c8 ignore next 3 */
-              if (typeof recipient.onerep_profile_id === "number") {
-                await refreshStoredScanResults(recipient.onerep_profile_id);
-              }
+            // The unit tests are currently too complex for me to write
+            // a proper test for this, and I need to understand the code
+            // better to be able to refactor it to make it more amenable
+            // to simple tests. Hence, I don't have a test for this yet:
+            /* c8 ignore next 3 */
+            if (typeof recipient.onerep_profile_id === "number") {
+              await refreshStoredScanResults(recipient.onerep_profile_id);
+            }
 
-              let dataSummary: DashboardSummary | undefined;
-              if (
-                isEligibleForPremium(assumedCountryCode) &&
-                !hasPremium(recipient) &&
-                typeof recipient.onerep_profile_id === "number"
-              ) {
-                const scanData = await getScanResultsWithBroker(
-                  recipient.onerep_profile_id,
-                  hasPremium(recipient),
-                );
-                const allSubscriberBreaches = await getSubscriberBreaches({
-                  fxaUid: recipient.fxa_uid,
-                  countryCode: assumedCountryCode,
-                });
-                dataSummary = getDashboardSummary(
-                  scanData.results,
-                  allSubscriberBreaches,
-                );
-              }
-
-              const subject = l10n.getString("email-breach-alert-all-subject");
-
-              await sendEmail(
-                recipientEmail,
-                subject,
-                renderEmail(
-                  <RedesignedBreachAlertEmail
-                    l10n={l10n}
-                    breach={breachAlert}
-                    breachedEmail={breachedEmail}
-                    utmCampaignId={utmCampaignId}
-                    enabledFeatureFlags={enabledFeatureFlags}
-                    subscriber={recipient}
-                    dataSummary={dataSummary}
-                  />,
-                ),
+            let dataSummary: DashboardSummary | undefined;
+            if (
+              isEligibleForPremium(assumedCountryCode) &&
+              !hasPremium(recipient) &&
+              typeof recipient.onerep_profile_id === "number"
+            ) {
+              const scanData = await getScanResultsWithBroker(
+                recipient.onerep_profile_id,
+                hasPremium(recipient),
               );
-            } else {
-              const subject = l10n.getString("breach-alert-subject");
-              await sendEmail(
-                recipientEmail,
-                subject,
-                renderEmail(
-                  <BreachAlertEmail
-                    l10n={l10n}
-                    breach={breachAlert}
-                    breachedEmail={breachedEmail}
-                    utmCampaignId={utmCampaignId}
-                    subscriber={recipient}
-                  />,
-                ),
+              const allSubscriberBreaches = await getSubscriberBreaches({
+                fxaUid: recipient.fxa_uid,
+                countryCode: assumedCountryCode,
+              });
+              dataSummary = getDashboardSummary(
+                scanData.results,
+                allSubscriberBreaches,
               );
             }
+
+            const subject = l10n.getString("email-breach-alert-all-subject");
+
+            await sendEmail(
+              recipientEmail,
+              subject,
+              await renderEmail(
+                <BreachAlertEmail
+                  l10n={l10n}
+                  breach={breachAlert}
+                  breachedEmail={breachedEmail}
+                  utmCampaignId={utmCampaignId}
+                  subscriber={recipient}
+                  dataSummary={dataSummary}
+                />,
+              ),
+            );
           } catch (e) {
             console.error("Failed to add email notification to table: ", e);
             setTimeout(process.exit, 1000);
@@ -338,6 +324,7 @@ export async function poll(
           // if this call ever fails, stop stop the script with an error
           try {
             await markEmailAsNotified(subscriberId, breachId, recipientEmail);
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
           } catch (e: any) {
             console.error("Failed to mark email as notified: ", e);
             throw new Error(e);
@@ -407,6 +394,12 @@ async function pullMessages() {
   return [subClient, response.receivedMessages] as const;
 }
 async function init() {
+  // By adding this event listener, the default behaviour (exiting) will be disabled.
+  // Instead, we'll be able to wind down DB connections etc. before exiting.
+  // (See the `finally` handler down below.)
+  process.on("SIGINT", () => {
+    throw new Error("SIGINT received, exiting...");
+  });
   await initEmail();
 
   const [subClient, receivedMessages] = await pullMessages();
@@ -422,7 +415,7 @@ if (process.env.NODE_ENV !== "test") {
         );
       }
     })
-    .catch((err) => console.error(err))
+    .catch((err) => console.error("breach-alerts ended with an error:", err))
     .finally(async () => {
       // Tear down knex connection pools
       await knexSubscribers.destroy();
@@ -434,7 +427,7 @@ if (process.env.NODE_ENV !== "test") {
         monitorSlug: SENTRY_SLUG,
         status: "ok",
       });
-      setTimeout(process.exit, 1000);
+      setTimeout(() => process.exit(0), 1000);
     });
 }
 /* c8 ignore stop */

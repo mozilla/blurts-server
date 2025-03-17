@@ -10,7 +10,10 @@ import {
   getSubscriptionBillingAmount,
   getPremiumSubscriptionUrl,
 } from "../../../../../../../functions/server/getPremiumSubscriptionInfo";
-import { getL10n } from "../../../../../../../functions/l10n/serverComponents";
+import {
+  getAcceptLangHeaderInServerComponents,
+  getL10n,
+} from "../../../../../../../functions/l10n/serverComponents";
 import { getUserEmails } from "../../../../../../../../db/tables/emailAddresses";
 import { getBreaches } from "../../../../../../../functions/server/getBreaches";
 import { getBreachesForEmail } from "../../../../../../../../utils/hibp";
@@ -29,15 +32,13 @@ import { getEmailPreferenceForPrimaryEmail } from "../../../../../../../../db/ta
 import { CONST_SETTINGS_TAB_SLUGS } from "../../../../../../../../constants";
 
 type Props = {
-  params: {
+  params: Promise<{
     slug: string[] | undefined;
-  };
-  searchParams: {
-    nimbus_preview?: string;
-  };
+  }>;
 };
 
-export default async function SettingsPage({ params, searchParams }: Props) {
+export default async function SettingsPage(props: Props) {
+  const params = await props.params;
   const session = await getServerSession();
 
   if (!session?.user?.subscriber?.id || !checkSession(session)) {
@@ -87,15 +88,15 @@ export default async function SettingsPage({ params, searchParams }: Props) {
     email: session.user.email,
   });
 
-  const headersList = headers();
+  const headersList = await headers();
+  const l10n = getL10n(await getAcceptLangHeaderInServerComponents());
   const countryCode = getCountryCode(headersList);
-  const experimentationId = getExperimentationId(session.user);
+  const experimentationId = await getExperimentationId(session.user);
 
   const experimentData = await getExperiments({
-    experimentationId: experimentationId,
-    countryCode: countryCode,
-    locale: getLocale(getL10n()),
-    previewMode: searchParams.nimbus_preview === "true",
+    experimentationId,
+    countryCode,
+    locale: getLocale(l10n),
   });
 
   const lastOneRepScan = await getLatestOnerepScan(
@@ -113,7 +114,7 @@ export default async function SettingsPage({ params, searchParams }: Props) {
 
   return (
     <SettingsView
-      l10n={getL10n()}
+      l10n={l10n}
       user={session.user}
       subscriber={userData}
       data={settingsData}
@@ -125,7 +126,7 @@ export default async function SettingsPage({ params, searchParams }: Props) {
       yearlySubscriptionUrl={`${yearlySubscriptionUrl}&${additionalSubplatParams.toString()}`}
       subscriptionBillingAmount={getSubscriptionBillingAmount()}
       enabledFeatureFlags={enabledFeatureFlags}
-      experimentData={experimentData}
+      experimentData={experimentData["Features"]}
       lastScanDate={lastOneRepScan?.created_at}
       isMonthlySubscriber={isMonthlySubscriber}
       activeTab={activeTab}

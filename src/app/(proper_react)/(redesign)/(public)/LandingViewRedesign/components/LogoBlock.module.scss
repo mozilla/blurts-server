@@ -1,0 +1,36 @@
+@use "../../../../../tokens";
+
+.content,
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: tokens.$layout-sm;
+  max-width: tokens.$content-lg;
+}
+
+.header {
+  align-items: center;
+  gap: tokens.$spacing-sm;
+  text-align: center;
+}
+
+.logosWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: tokens.$spacing-xs;
+  justify-content: center;
+  padding: 0;
+
+  @media screen and (min-width: tokens.$screen-lg) {
+    padding: 0 tokens.$layout-sm;
+  }
+
+  .logo {
+    align-items: center;
+    display: flex;
+
+    img {
+      padding: tokens.$spacing-xs 0;
+    }
+  }
+}

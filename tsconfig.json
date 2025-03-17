@@ -1,5 +1,14 @@
 {
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "jest.setup.ts"],
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    // JS files that are not yet migrated to TS.
+    "src/app/global-error.js",
+    "src/db/migrations/*.js",
+    "src/scripts/build/*.js",
+    "src/scripts/loadtest/hibp.js"
+  ],
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig to read more about this file */
     /* Projects */
@@ -93,8 +102,5 @@
     "skipLibCheck": true /* Skip type checking all .d.ts files. */,
     "lib": ["dom", "dom.iterable", "esnext"]
   },
-  "exclude": [
-    "node_modules/",
-    "sentry.*.config.ts",
-  ]
+  "exclude": ["node_modules"]
 }

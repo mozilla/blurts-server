@@ -1,16 +1,16 @@
-@import "../../../../../tokens";
+@use "../../../../../tokens";
 
 .stepContent {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: $spacing-md;
+  gap: tokens.$spacing-md;
 
   h1 {
-    font: $text-title-2xs;
+    font: tokens.$text-title-2xs;
 
-    @media screen and (min-width: $screen-md) {
-      font: $text-title-xs;
+    @media screen and (min-width: tokens.$screen-md) {
+      font: tokens.$text-title-xs;
     }
   }
 
@@ -21,12 +21,12 @@
   .explainerTrigger {
     background-color: transparent;
     border-style: none;
-    color: $color-blue-50;
+    color: tokens.$color-blue-50;
     text-decoration: underline;
     cursor: pointer;
 
     &:hover {
-      color: $color-blue-70;
+      color: tokens.$color-blue-70;
     }
   }
 }
@@ -34,23 +34,23 @@
 .dialogContents {
   display: flex;
   flex-direction: column;
-  gap: $spacing-lg;
-  font: $text-body-md;
-  color: $color-grey-50;
+  gap: tokens.$spacing-lg;
+  font: tokens.$text-body-md;
+  color: tokens.$color-grey-50;
 
   .confirmButtonWrapper {
     align-self: center;
     display: flex;
     flex-direction: column;
-    min-width: $content-xs;
-    padding-block-start: $spacing-md;
+    min-width: tokens.$content-xs;
+    padding-block-start: tokens.$spacing-md;
   }
 
   .list {
     list-style-position: inside;
     display: flex;
     flex-direction: column;
-    gap: $spacing-md;
+    gap: tokens.$spacing-md;
     padding: 0;
 
     li::marker {
@@ -63,13 +63,13 @@
 .stepButtonWrapper {
   align-items: center;
   display: flex;
-  gap: $spacing-md;
+  gap: tokens.$spacing-md;
   justify-content: flex-end;
-  padding-block: $layout-xs;
+  padding-block: tokens.$layout-xs;
   width: 100%;
 
-  @media screen and (min-width: $screen-sm) {
-    padding-block-start: $layout-sm;
+  @media screen and (min-width: tokens.$screen-sm) {
+    padding-block-start: tokens.$layout-sm;
     flex-direction: row;
     align-items: center;
     justify-content: flex-end;
@@ -80,10 +80,10 @@
   align-items: flex-start;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  gap: $spacing-lg $spacing-xl;
-  padding: $spacing-lg 0;
+  gap: tokens.$spacing-lg tokens.$spacing-xl;
+  padding: tokens.$spacing-lg 0;
 
-  @media screen and (min-width: $screen-lg) {
+  @media screen and (min-width: tokens.$screen-lg) {
     // The child items in the grid are input fields. Whether items marked as
     // “optional” are shown depends on the enabled variants in the
     // `welcome-scan-optional-info` experiment.
@@ -118,7 +118,7 @@
     }
   }
 
-  @media screen and (max-width: calc($screen-lg - 1px)) {
+  @media screen and (max-width: calc(tokens.$screen-lg - 1px)) {
     grid-template-columns: 1fr;
   }
 
@@ -143,22 +143,22 @@
 .infoList {
   align-items: center;
   columns: 2;
-  font: $text-body-lg;
-  gap: $spacing-lg;
+  font: tokens.$text-body-lg;
+  gap: tokens.$spacing-lg;
   list-style: none;
   margin: 0;
   padding-inline-start: var(--exposureDetailsIconWidth);
   padding: 0;
 
-  @media screen and (max-width: $screen-md) {
+  @media screen and (max-width: tokens.$screen-md) {
     columns: 1;
   }
 }
 
 .infoItem {
   display: flex;
-  gap: $spacing-sm;
-  padding: $spacing-sm 0;
+  gap: tokens.$spacing-sm;
+  padding: tokens.$spacing-sm 0;
 
   // Force all fields related to the users name to be listed in the left column.
   &.isNameRelatedField {

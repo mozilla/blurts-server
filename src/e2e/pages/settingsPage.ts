@@ -51,9 +51,6 @@ export class SettingsPage {
   }
 
   async open() {
-    await this.page.setExtraHTTPHeaders({
-      "x-forced-feature-flags": "SettingsPageRedesign",
-    });
     await this.page.goto("/user/settings");
   }
 }

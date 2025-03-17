@@ -1,32 +1,40 @@
-@import "../../tokens";
+@use "../../tokens";
 
 .toggleContainer {
-  background-color: $color-grey-10;
-  border-radius: $border-radius-xl;
-  border: 1px solid $color-grey-30;
-  padding: $spacing-sm;
+  background-color: tokens.$color-grey-05;
+  border-radius: tokens.$border-radius-xl;
+  border: 2px solid tokens.$color-purple-70;
+  padding: tokens.$spacing-xs;
   display: flex;
   align-items: center;
-  gap: $spacing-sm;
+  align-self: center;
+  gap: tokens.$spacing-xs;
+
+  &:focus-within {
+    outline: tokens.$border-focus-width solid tokens.$color-purple-10;
+  }
 
   .option {
-    border-radius: $border-radius-xl;
-    padding: $spacing-xs $spacing-md;
+    border-radius: tokens.$border-radius-xl;
+    // Add a bit more space: The next spacing step is too much.
+    padding: tokens.$spacing-sm calc(tokens.$spacing-md * 1.5);
+    line-height: 1.25em;
     font-weight: 500;
-    color: $color-grey-50;
+    color: tokens.$color-grey-50;
     cursor: pointer;
 
     &.isFocused {
-      outline: 4px solid $color-purple-70;
-      background-color: $color-purple-10;
+      background-color: tokens.$color-purple-10;
     }
+
     &:hover {
-      background-color: $color-purple-20;
+      background-color: tokens.$color-purple-20;
     }
 
     &.isSelected {
-      background-color: $color-white;
-      color: $color-blue-50;
+      background-color: tokens.$color-purple-40;
+      color: tokens.$color-white;
+      font-weight: 600;
     }
   }
 }

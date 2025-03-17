@@ -8,16 +8,18 @@ import { isAdmin } from "../../../../../api/utils/auth";
 import { NoResults, Removals } from "./Removals";
 import { getStuckRemovals } from "../../../../../functions/server/getStuckRemovals";
 
-export default async function Page({
-  searchParams: { page = "1", days = "30", perPage = "100" },
-}: {
-  searchParams: {
+export default async function Page(props: {
+  searchParams: Promise<{
     query?: string;
     page: string;
     days: string;
     perPage: string;
-  };
+  }>;
 }) {
+  const searchParams = await props.searchParams;
+
+  const { page = "1", days = "30", perPage = "100" } = searchParams;
+
   const session = await getServerSession();
 
   if (!isAdmin(session?.user?.email || "")) {

@@ -1,4 +1,4 @@
-@import "../../../../../tokens";
+@use "../../../../../tokens";
 
 .unSubscribeMonthlyReportContainer {
   margin: 0 auto;
@@ -6,25 +6,25 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: $spacing-lg $spacing-sm;
-  gap: $spacing-lg;
+  padding: tokens.$spacing-lg tokens.$spacing-sm;
+  gap: tokens.$spacing-lg;
   text-align: center;
 
-  @media screen and (min-width: $screen-md) {
-    max-width: $content-lg;
+  @media screen and (min-width: tokens.$screen-md) {
+    max-width: tokens.$content-lg;
   }
 
   h1 {
-    font: $text-title-md;
+    font: tokens.$text-title-md;
   }
 
   .cta {
-    max-width: $content-xs;
+    max-width: tokens.$content-xs;
   }
 }
 
 .tryAgain {
-  color: $color-white;
+  color: tokens.$color-white;
   font-weight: 600;
   text-decoration: underline;
   background: none;

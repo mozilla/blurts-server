@@ -61,18 +61,9 @@ email-breach-summary = Ακολουθεί η σύνοψη παραβίασης �
 # Variables:
 #   $email-address (string) - Email address, bolded
 email-breach-detected = Τα αποτελέσματα αναζήτησης για το { $email-address } δείχνουν ότι το email σας μπορεί να έχει εκτεθεί. Σας συνιστούμε να ενεργήσετε τώρα για να επιλύσετε αυτήν την παραβίαση.
-# Deprecated after the redesigned breach alert email is launched
-# Variables:
-#   $email-address (string) - Email address
-email-breach-detected-2 = Τα αποτελέσματα αναζήτησης για το <b>{ $email-address }</b> δείχνουν ότι το email σας μπορεί να έχει εκτεθεί. Σας συνιστούμε να ενεργήσετε τώρα για να επιλύσετε αυτήν την παραβίαση.
 email-dashboard-cta = Μετάβαση στον πίνακα ελέγχου
 
-## Breach alert
-
-# Deprecated after the redesigned breach alert email is launched
-email-spotted-new-breach = Εντοπίσαμε μια νέα παραβίαση δεδομένων
-
-## Redesigned breach alert email
+## Breach alert email
 
 email-breach-alert-all-subject = Εντοπίστηκε νέα παραβίαση δεδομένων
 email-breach-alert-all-preview = Θα σας καθοδηγήσουμε στα βήματα για την επίλυσή της.

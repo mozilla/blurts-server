@@ -2,7 +2,6 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const nextJest = require("next/jest");
 const createJestConfig = nextJest({ dir: "./" });
 
@@ -114,6 +113,11 @@ const customJestConfig = {
 
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
   moduleNameMapper: {
+    // react-dom/server.edge is apparently needed instead of react-dom/server
+    // to avoid this error:
+    // > Uncaught ReferenceError: MessageChannel is not defined
+    // See https://github.com/facebook/react/issues/31827#issuecomment-2563094822
+    "react-dom/server": "react-dom/server.edge",
     // Force module uuid to resolve with the CJS entry point, because Jest does not support package.json.exports. See https://github.com/uuidjs/uuid/issues/451
     uuid: require.resolve("uuid"),
   },

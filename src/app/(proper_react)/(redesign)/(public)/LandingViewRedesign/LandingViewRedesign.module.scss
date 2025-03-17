@@ -1,0 +1,51 @@
+@use "../../../../tokens";
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: tokens.$layout-md;
+  height: 100%;
+  padding: 0 0 tokens.$layout-sm;
+
+  @media screen and (min-width: tokens.$screen-sm) {
+    padding: 0 tokens.$layout-2xs tokens.$layout-sm;
+  }
+
+  @media screen and (min-width: tokens.$screen-md) {
+    padding: 0 tokens.$layout-sm tokens.$layout-sm;
+  }
+
+  @media screen and (min-width: tokens.$screen-lg) {
+    padding: 0 tokens.$layout-md tokens.$layout-sm;
+  }
+
+  section {
+    align-items: center;
+    border-radius: tokens.$border-radius-xl;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: tokens.$layout-sm;
+    width: 100%;
+
+    &.hasBackground {
+      background-color: tokens.$color-grey-05;
+      padding: tokens.$layout-xs;
+
+      @media screen and (min-width: tokens.$screen-sm) {
+        padding: tokens.$layout-sm;
+      }
+    }
+  }
+
+  h3 {
+    font: tokens.$text-title-xs;
+    font-family: var(--font-inter);
+    font-weight: 400;
+    line-height: 1.25em;
+  }
+
+  b {
+    font-weight: 700;
+  }
+}
