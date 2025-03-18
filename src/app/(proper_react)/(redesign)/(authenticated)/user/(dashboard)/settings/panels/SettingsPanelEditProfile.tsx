@@ -5,14 +5,14 @@
 "use client";
 
 import { FormEvent, Fragment, useActionState, useState } from "react";
+import Image from "next/image";
 import { Session } from "next-auth";
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import {
   OnerepProfileAddress,
   OnerepProfileRow,
   SubscriberRow,
 } from "knex/types/tables";
-import * as Sentry from "@sentry/nextjs";
 import { SubscriberEmailPreferencesOutput } from "../../../../../../../../db/tables/subscriber_email_preferences";
 import { SanitizedEmailAddressRow } from "../../../../../../../functions/server/sanitize";
 import styles from "./SettingsPanelEditProfile.module.scss";
@@ -31,6 +31,13 @@ import {
   CONST_URL_SUMO_EDIT_PROFILE_DOB,
 } from "../../../../../../../../constants";
 import { LocationAutocompleteInput } from "../../../../../../../components/client/LocationAutocompleteInput";
+import { onHandleUpdateProfileData } from "../actions";
+import { useTelemetry } from "../../../../../../../hooks/useTelemetry";
+import { useOverlayTriggerState } from "react-stately";
+import { useOverlayTrigger } from "react-aria";
+import { ModalOverlay } from "../../../../../../../components/client/dialog/ModalOverlay";
+import { Dialog } from "../../../../../../../components/client/dialog/Dialog";
+import CancelDialogIllustration from "../../../../../../images/monitor-logo-minimal.svg";
 
 const profileFields: (keyof OnerepProfileRow)[] = [
   "first_name",
@@ -78,24 +85,15 @@ function SettingsPanelEditProfile(props: SettingsPanelEditProfileProps) {
   );
 }
 
-function handleUpdateProfileData(formData: FormData) {
-  try {
-    console.info(formData);
-    redirect("/user/settings/edit-info");
-  } catch (error) {
-    Sentry.captureException(error);
-  }
-}
-
 function EditProfileForm(props: { profileData: OnerepProfileRow }) {
   const l10n = useL10n();
   const [profileFormData, setProfileFormData] = useState(props.profileData);
   const [
     _updateProfileActionError,
     updateProfileAction,
-    _updateProfileActionIsPending,
-  ] = useActionState(async (_previousState: unknown, formData: FormData) => {
-    await handleUpdateProfileData(formData);
+    updateProfileActionIsPending,
+  ] = useActionState(async () => {
+    await onHandleUpdateProfileData(profileFormData);
   }, null);
 
   const handleFormChange = (event: FormEvent<HTMLFormElement>) => {
@@ -148,7 +146,10 @@ function EditProfileForm(props: { profileData: OnerepProfileRow }) {
         );
         return (
           <Fragment key={profileDataKey}>
-            <fieldset className="noList">
+            <fieldset
+              className="noList"
+              disabled={updateProfileActionIsPending}
+            >
               <legend>
                 <span>{label}</span>
               </legend>
@@ -166,21 +167,15 @@ function EditProfileForm(props: { profileData: OnerepProfileRow }) {
         );
       })}
       <div className={styles.profileFormButtons}>
-        <Button type="button" variant="secondary" onPress={() => {}}>
-          {l10n.getString(
-            "settings-edit-profile-info-form-cancel-button-label",
-          )}
-        </Button>
+        <CancelDialog />
         <Button
           type="submit"
           variant="primary"
           disabled={false}
           onPress={() => {}}
-          isLoading={false}
+          isLoading={updateProfileActionIsPending}
         >
-          {l10n.getString(
-            "settings-edit-profile-info-form-cancel-button-label",
-          )}
+          {l10n.getString("settings-edit-profile-info-form-save-button-label")}
         </Button>
       </div>
     </form>
@@ -246,6 +241,100 @@ function RemoveItemButton(props: {
   );
 }
 
+export const CancelDialog = () => {
+  const l10n = useL10n();
+  const recordTelemetry = useTelemetry();
+  const dialogState = useOverlayTriggerState({
+    defaultOpen: false,
+    // Unfortunately we're currently running into a bug testing code that hits
+    // `useFormState`, which would happen when the dialog is opened.
+    // See the comment for the test "counts how often people click the 'Add
+    // email address' button":
+    /* c8 ignore start */
+    onOpenChange(isOpen) {
+      if (isOpen) {
+        recordTelemetry("ctaButton", "click", {
+          button_id: "settings_edit_profile_form_cancel_dialog_open",
+        });
+      } else {
+        recordTelemetry("button", "click", {
+          button_id: "settings_edit_profile_form_cancel_dialog_close",
+        });
+      }
+    },
+    /* c8 ignore stop */
+  });
+  const { triggerProps, overlayProps } = useOverlayTrigger(
+    { type: "dialog" },
+    dialogState,
+  );
+
+  return (
+    <>
+      <Button {...triggerProps} variant="secondary">
+        {l10n.getString("settings-edit-profile-info-form-cancel-button-label")}
+      </Button>
+      {dialogState.isOpen && (
+        <ModalOverlay state={dialogState} {...overlayProps} isDismissable>
+          <Dialog
+            title={l10n.getString(
+              "settings-edit-profile-info-form-cancel-dialog-header",
+            )}
+            illustration={<Image src={CancelDialogIllustration} alt="" />}
+            // Unfortunately we're currently running into a bug testing code
+            // that hits `useFormState`. See the comment for the test "calls the
+            // 'add' action when adding another email address":
+            /* c8 ignore next */
+            onDismiss={() => dialogState.close()}
+            fitContent
+          >
+            <div className={styles.cancelDialogContents}>
+              <p>
+                {l10n.getString(
+                  "settings-edit-profile-info-form-cancel-dialog-description",
+                )}
+              </p>
+              <div className={styles.cancelDialogButtons}>
+                <TelemetryButton
+                  event={{
+                    module: "link",
+                    name: "click",
+                    data: {
+                      link_id: "settings_edit_profile_form_cancel_dialog_save",
+                    },
+                  }}
+                  variant="primary"
+                  href="/users/settings/edit-info"
+                >
+                  {l10n.getString(
+                    "settings-edit-profile-info-form-save-button-label",
+                  )}
+                </TelemetryButton>
+                <TelemetryButton
+                  event={{
+                    module: "link",
+                    name: "click",
+                    data: {
+                      link_id:
+                        "settings_edit_profile_form_cancel_dialog_confirm",
+                    },
+                  }}
+                  variant="secondary"
+                  href="/users/settings/edit-info"
+                >
+                  {l10n.getString(
+                    "settings-edit-profile-info-form-cancel-dialog-confimation-button-label",
+                  )}
+                </TelemetryButton>
+              </div>
+            </div>
+          </Dialog>
+        </ModalOverlay>
+      )}
+    </>
+  );
+};
+
 function EditProfileFormInputs(props: {
   profileData: OnerepProfileRow;
   profileDataKey: keyof OnerepProfileRow;
@@ -269,7 +358,6 @@ function EditProfileFormInputs(props: {
               `settings-edit-profile-info-form-input-label-primary-${props.profileDataKey.replaceAll("_", "-")}`,
             )}
             hasFloatingLabel
-            isDisabled={false}
             isRequired={props.profileDataKey !== "middle_name"}
           />
           <strong>
@@ -289,7 +377,6 @@ function EditProfileFormInputs(props: {
                       `settings-edit-profile-info-form-input-label-other-${props.profileDataKey.replaceAll("_", "-")}`,
                     )}
                     hasFloatingLabel
-                    isDisabled={false}
                   />
                   <RemoveItemButton
                     itemKey={props.profileDataKey}
@@ -377,7 +464,6 @@ function EditProfileFormInputs(props: {
                           )
                     }
                     hasFloatingLabel
-                    isDisabled={false}
                   />
                   {itemIndex > 0 && (
                     <RemoveItemButton

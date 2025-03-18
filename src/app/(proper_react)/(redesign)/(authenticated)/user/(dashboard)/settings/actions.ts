@@ -4,8 +4,9 @@
 
 "use server";
 
+import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
-import { SubscriberRow } from "knex/types/tables";
+import { OnerepProfileRow, SubscriberRow } from "knex/types/tables";
 import { getServerSession } from "../../../../../../functions/server/getServerSession";
 import {
   addSubscriberUnverifiedEmailHash,
@@ -31,6 +32,7 @@ import {
   checkCurrentCouponCode,
 } from "../../../../../../functions/server/applyCoupon";
 import { validateEmailAddress } from "../../../../../../../utils/emailAddress";
+import updateDataBrokerScanProfile from "../../../../../../functions/server/updateDataBrokerScanProfile";
 
 export type AddEmailFormState =
   | { success?: never }
@@ -248,4 +250,56 @@ export async function onCheckUserHasCurrentCouponSet() {
 
   const result = await checkCurrentCouponCode(session.user.subscriber);
   return result;
+}
+
+export async function onHandleUpdateProfileData(profileData: OnerepProfileRow) {
+  const session = await getServerSession();
+  if (!session?.user.subscriber?.id) {
+    logger.error(`User does not have an active session.`);
+    return {
+      success: false,
+      error: "update-profile-data-without-active-session",
+      errorMessage: `User does not have an active session.`,
+    };
+  }
+
+  if (!profileData.onerep_profile_id) {
+    logger.error(`User does not have a OneRep profile.`);
+    return {
+      success: false,
+      error: "update-profile-data-without-onerep-profile",
+      errorMessage: `User does not have a OneRep profile.`,
+    };
+  }
+
+  try {
+    const {
+      first_name,
+      last_name,
+      first_names,
+      last_names,
+      middle_names,
+      phone_numbers,
+      addresses,
+    } = profileData;
+    await updateDataBrokerScanProfile(profileData.onerep_profile_id, {
+      first_name,
+      last_name,
+      first_names,
+      last_names,
+      middle_names,
+      phone_numbers,
+      addresses,
+    });
+
+    revalidatePath("/user/settings");
+    redirect("/user/settings/edit-info");
+  } catch (error) {
+    console.error("Could not update profile details:", error);
+    return {
+      success: false,
+      error: "update-profile-data-updating-profile-failed",
+      errorMessage: `Updating profile failed.`,
+    };
+  }
 }

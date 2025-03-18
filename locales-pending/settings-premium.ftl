@@ -136,4 +136,8 @@ settings-edit-profile-info-form-date-of-birth-note = Date of birth cannot be cha
 settings-edit-profile-info-form-add-item-button-label = Add item
 settings-edit-profile-info-form-remove-item-button-label = Remove item
 settings-edit-profile-info-form-cancel-button-label = Cancel
-settings-edit-profile-info-form-save-butto-label = Save
+settings-edit-profile-info-form-save-button-label = Save
+
+settings-edit-profile-info-form-cancel-dialog-header = Save info?
+settings-edit-profile-info-form-cancel-dialog-description = If you leave, your info won’t be saved and you’ll need to re-enter it.
+settings-edit-profile-info-form-cancel-dialog-confimation-button-label = Leave without saving
