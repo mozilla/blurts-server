@@ -34,7 +34,6 @@ export function up(knex) {
         table.timestamp("updated_at").defaultTo(knex.fn.now());
         table.unique(["user_id", "announcement_id"]); // ensure uniqueness of the user_announcement pair (user_id, announcement_id)
         table.index("user_id");
-        table.index("announcement_id");
       });
     });
 }
