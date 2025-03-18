@@ -26,7 +26,11 @@ import {
   PlusCircledIcon,
 } from "../../../../../../../components/server/Icons";
 import { TelemetryLink } from "../../../../../../../components/client/TelemetryLink";
-import { E164PhoneNumberString } from "../../../../../../../../utils/parse";
+import {
+  CONST_DATA_BROKER_PROFILE_DETAIL_LIMITS,
+  CONST_URL_SUMO_EDIT_PROFILE_DOB,
+} from "../../../../../../../../constants";
+import { LocationAutocompleteInput } from "../../../../../../../components/client/LocationAutocompleteInput";
 
 const profileFields: (keyof OnerepProfileRow)[] = [
   "first_name",
@@ -268,11 +272,11 @@ function EditProfileFormInputs(props: {
             isDisabled={false}
             isRequired={props.profileDataKey !== "middle_name"}
           />
-          <p>
+          <strong>
             {l10n.getString(
               `settings-edit-profile-info-form-fieldset-section-other-label-${props.profileDataKey.replaceAll("_", "-")}s`,
             )}
-          </p>
+          </strong>
           {props.profileData[`${props.profileDataKey}s`].map(
             (item, itemIndex) => {
               const inputKey = `${props.profileDataKey}s-${itemIndex}`;
@@ -300,17 +304,23 @@ function EditProfileFormInputs(props: {
               );
             },
           )}
-          <AddItemButton
-            itemKey={`${props.profileDataKey}s`}
-            onAdd={() =>
-              props.onAdd(`${props.profileDataKey}s` as ProfileDataListKey)
-            }
-          />
-          <p>
-            {l10n.getString(
-              `settings-edit-profile-info-form-fieldset-section-limit-label-${props.profileDataKey.replaceAll("_", "-")}s`,
-            )}
-          </p>
+          {props.profileData[`${props.profileDataKey}s`].length <
+          CONST_DATA_BROKER_PROFILE_DETAIL_LIMITS[
+            `${props.profileDataKey}s`
+          ] ? (
+            <AddItemButton
+              itemKey={`${props.profileDataKey}s`}
+              onAdd={() =>
+                props.onAdd(`${props.profileDataKey}s` as ProfileDataListKey)
+              }
+            />
+          ) : (
+            <p>
+              {l10n.getString(
+                `settings-edit-profile-info-form-fieldset-section-limit-label-${props.profileDataKey.replaceAll("_", "-")}s`,
+              )}
+            </p>
+          )}
         </>
       );
     case "date_of_birth":
@@ -331,7 +341,7 @@ function EditProfileFormInputs(props: {
                 elems: {
                   a: (
                     <TelemetryLink
-                      href="/user/settings"
+                      href={CONST_URL_SUMO_EDIT_PROFILE_DOB}
                       target="_blank"
                       eventData={{
                         link_id: "clicked_edit_profile_dob_explainer",
@@ -345,113 +355,134 @@ function EditProfileFormInputs(props: {
         </div>
       );
     case "phone_numbers":
+      const phoneNumbers =
+        (itemData as string[]).length === 0 ? [""] : itemData;
       return (
         <>
-          <p>
-            {l10n.getString(
-              "settings-edit-profile-info-form-fieldset-section-other-label-phone-numbers",
-            )}
-          </p>
-          {(itemData as E164PhoneNumberString[]).map((item, itemIndex) => {
+          {(phoneNumbers as string[]).map((item, itemIndex) => {
             const inputKey = `${props.profileDataKey}-${itemIndex}`;
             return (
-              <div key={inputKey} className={styles.inputWrapper}>
-                <InputField
-                  name={inputKey}
-                  value={item}
-                  label={
-                    itemIndex === 0
-                      ? l10n.getString(
-                          `settings-edit-profile-info-form-input-label-primary-phone-number`,
+              <Fragment key={inputKey}>
+                <div className={styles.inputWrapper}>
+                  <InputField
+                    name={inputKey}
+                    value={item}
+                    label={
+                      itemIndex === 0
+                        ? l10n.getString(
+                            `settings-edit-profile-info-form-input-label-primary-phone-number`,
+                          )
+                        : l10n.getString(
+                            `settings-edit-profile-info-form-input-label-other-phone-number`,
+                          )
+                    }
+                    hasFloatingLabel
+                    isDisabled={false}
+                  />
+                  {itemIndex > 0 && (
+                    <RemoveItemButton
+                      itemKey={props.profileDataKey}
+                      onRemove={() =>
+                        props.onRemove(
+                          props.profileDataKey as ProfileDataListKey,
+                          itemIndex,
                         )
-                      : l10n.getString(
-                          `settings-edit-profile-info-form-input-label-other-phone-number`,
-                        )
-                  }
-                  hasFloatingLabel
-                  isDisabled={false}
-                />
-                <RemoveItemButton
-                  itemKey={props.profileDataKey}
-                  onRemove={() =>
-                    props.onRemove(
-                      props.profileDataKey as ProfileDataListKey,
-                      itemIndex,
-                    )
-                  }
-                />
-              </div>
+                      }
+                    />
+                  )}
+                </div>
+                {itemIndex === 0 && (
+                  <strong>
+                    {l10n.getString(
+                      "settings-edit-profile-info-form-fieldset-section-other-label-phone-numbers",
+                    )}
+                  </strong>
+                )}
+              </Fragment>
             );
           })}
-          <AddItemButton
-            itemKey={props.profileDataKey}
-            onAdd={() =>
-              props.onAdd(props.profileDataKey as ProfileDataListKey)
-            }
-          />
-          <p>
-            {l10n.getString(
-              "settings-edit-profile-info-form-fieldset-section-limit-label-phone-numbers",
-            )}
-          </p>
+          {props.profileData[props.profileDataKey].length <
+          CONST_DATA_BROKER_PROFILE_DETAIL_LIMITS[props.profileDataKey] ? (
+            <AddItemButton
+              itemKey={props.profileDataKey}
+              onAdd={() =>
+                props.onAdd(props.profileDataKey as ProfileDataListKey)
+              }
+            />
+          ) : (
+            <p>
+              {l10n.getString(
+                "settings-edit-profile-info-form-fieldset-section-limit-label-phone-numbers",
+              )}
+            </p>
+          )}
         </>
       );
     case "addresses":
       return (
         <>
-          <p>
+          <strong>
             {l10n.getString(
               "settings-edit-profile-info-form-fieldset-section-primary-label-addresses",
             )}
-          </p>
-          <p>
-            {l10n.getString(
-              "settings-edit-profile-info-form-fieldset-section-other-label-addresses",
-            )}
-          </p>
+          </strong>
           {(itemData as OnerepProfileAddress[]).map((item, itemIndex) => {
             const inputKey = `${props.profileDataKey}-${itemIndex}`;
             return (
-              <div key={inputKey} className={styles.inputWrapper}>
-                <InputField
-                  name={inputKey}
-                  value={`${item.city}, ${item.state}`}
-                  label={
-                    itemIndex === 0
-                      ? l10n.getString(
-                          `settings-edit-profile-info-form-input-label-primary-location`,
+              <Fragment key={inputKey}>
+                <div className={styles.inputWrapper}>
+                  <LocationAutocompleteInput
+                    key={inputKey}
+                    label={
+                      itemIndex === 0
+                        ? l10n.getString(
+                            `settings-edit-profile-info-form-input-label-primary-location`,
+                          )
+                        : l10n.getString(
+                            `settings-edit-profile-info-form-input-label-other-location`,
+                          )
+                    }
+                    inputValue={`${item.city}, ${item.state}, USA`}
+                    isRequired
+                    onChange={() => {}}
+                  />
+                  {itemIndex > 0 && (
+                    <RemoveItemButton
+                      itemKey={props.profileDataKey}
+                      onRemove={() =>
+                        props.onRemove(
+                          props.profileDataKey as ProfileDataListKey,
+                          itemIndex,
                         )
-                      : l10n.getString(
-                          `settings-edit-profile-info-form-input-label-other-location`,
-                        )
-                  }
-                  hasFloatingLabel
-                  isDisabled={false}
-                  isRequired={itemIndex === 0}
-                />
-                <RemoveItemButton
-                  itemKey={props.profileDataKey}
-                  onRemove={() =>
-                    props.onRemove(
-                      props.profileDataKey as ProfileDataListKey,
-                      itemIndex,
-                    )
-                  }
-                />
-              </div>
+                      }
+                    />
+                  )}
+                </div>
+                {itemIndex === 0 && (
+                  <strong>
+                    {l10n.getString(
+                      "settings-edit-profile-info-form-fieldset-section-other-label-addresses",
+                    )}
+                  </strong>
+                )}
+              </Fragment>
             );
           })}
-          <AddItemButton
-            itemKey={props.profileDataKey}
-            onAdd={() =>
-              props.onAdd(props.profileDataKey as ProfileDataListKey)
-            }
-          />
-          <p>
-            {l10n.getString(
-              "settings-edit-profile-info-form-fieldset-section-limit-label-addresses",
-            )}
-          </p>
+          {props.profileData[props.profileDataKey].length <
+          CONST_DATA_BROKER_PROFILE_DETAIL_LIMITS[props.profileDataKey] ? (
+            <AddItemButton
+              itemKey={props.profileDataKey}
+              onAdd={() =>
+                props.onAdd(props.profileDataKey as ProfileDataListKey)
+              }
+            />
+          ) : (
+            <p>
+              {l10n.getString(
+                "settings-edit-profile-info-form-fieldset-section-limit-label-addresses",
+              )}
+            </p>
+          )}
         </>
       );
     default:

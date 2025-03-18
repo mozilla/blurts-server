@@ -42,7 +42,7 @@ export const LocationAutocompleteInput = ({
 }: Exclude<
   ComboBoxStateOptions<object>,
   "onInputChange" | "onSelectionChange"
-> & { onChange: (_location: string) => void; infoText: string }) => {
+> & { onChange: (_location: string) => void; infoText?: string }) => {
   const l10n = useL10n();
   const locationSuggestions = useLocationSuggestions();
 

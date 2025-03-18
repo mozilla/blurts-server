@@ -21,6 +21,19 @@
     margin: 0;
     min-width: 0;
   }
+
+  strong,
+  p {
+    font: tokens.$text-body-sm;
+  }
+
+  strong {
+    font-weight: 600;
+  }
+
+  p {
+    color: tokens.$color-grey-40;
+  }
 }
 
 .profileFormButtons {
@@ -65,9 +78,4 @@
 
 .itemDob {
   font-weight: 400;
-
-  p {
-    color: tokens.$color-grey-40;
-    font: tokens.$text-body-sm;
-  }
 }
