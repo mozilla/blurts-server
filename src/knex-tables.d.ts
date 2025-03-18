@@ -450,7 +450,6 @@ declare module "knex/types/tables" {
     seen_at: Date;
     cleared_at: Date;
     clicked_at: Date;
-    is_history: boolean;
     created_at: Date;
     updated_at: Date;
   }

@@ -29,7 +29,6 @@ export function up(knex) {
         table.string("status").notNullable(); // seen, cleared, clicked, new
         table.timestamp("seen_at").nullable();
         table.timestamp("cleared_at").nullable();
-        table.boolean("is_history").defaultTo(false);
         table.timestamp("created_at").defaultTo(knex.fn.now());
         table.timestamp("updated_at").defaultTo(knex.fn.now());
         table.unique(["user_id", "announcement_id"]); // ensure uniqueness of the user_announcement pair (user_id, announcement_id)
