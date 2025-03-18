@@ -14,7 +14,12 @@ export function up(knex) {
     .then(() => {
       return knex.schema.createTable("user_announcements", (table) => {
         table.increments("id").primary();
-        table.integer("user_id").notNullable();
+        table
+          .integer("user_id")
+          .references("subscribers.id")
+          .notNullable()
+          .onDelete("CASCADE")
+          .onUpdate("CASCADE");
         table
           .string("announcement_id")
           .references("announcements.announcement_id")
