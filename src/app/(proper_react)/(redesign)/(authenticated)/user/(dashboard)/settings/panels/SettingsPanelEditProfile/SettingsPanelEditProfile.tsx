@@ -136,7 +136,6 @@ function EditProfileForm(props: { profileData: OnerepProfileRow }) {
 
   return (
     <form className={styles.profileForm} action={updateProfileAction}>
-      <pre>{JSON.stringify(profileFormData, null, 2)}</pre>
       {profileFields.map((profileDataKey, detailIndex) => {
         const label = l10n.getString(
           `settings-edit-profile-info-form-fieldset-label-${profileDataKey.replaceAll("_", "-")}`,
@@ -551,6 +550,7 @@ function EditProfileFormInputs(props: {
                       "onboarding-enter-details-input-error-message-location",
                     )}
                     isInvalid={!item.city || !item.state}
+                    hasFloatingLabel
                   />
                   {itemIndex > 0 && (
                     <RemoveItemButton
