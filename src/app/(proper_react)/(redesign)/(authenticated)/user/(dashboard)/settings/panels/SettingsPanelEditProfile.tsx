@@ -4,7 +4,7 @@
 
 "use client";
 
-import { FormEvent, Fragment, useActionState, useState } from "react";
+import { Fragment, useActionState, useState } from "react";
 import Image from "next/image";
 import { Session } from "next-auth";
 import { useRouter } from "next/navigation";
@@ -96,19 +96,19 @@ function EditProfileForm(props: { profileData: OnerepProfileRow }) {
     await onHandleUpdateProfileData(profileFormData);
   }, null);
 
-  const handleFormChange = (event: FormEvent<HTMLFormElement>) => {
-    const target = event.target as HTMLInputElement;
-    const fieldName = target.name;
-    const [fieldBaseName, fieldIndex] = fieldName.split("-");
-    const fieldValue = target.value;
+  const hasProfileDataChanged =
+    JSON.stringify(props.profileData) !== JSON.stringify(profileFormData);
 
+  const handleOnInputChange = (value: string, key: string) => {
+    const [fieldBaseName, fieldIndex] = key.split("-");
     const formDataUpdated = { ...profileFormData };
     if (typeof fieldIndex === "undefined") {
-      formDataUpdated[fieldBaseName as ProfileDataItemKey] = fieldValue;
+      formDataUpdated[fieldBaseName as ProfileDataItemKey] = value;
     } else {
+      const [city, state, _countryCode] = value.split(", ");
       formDataUpdated[fieldBaseName as ProfileDataListKey][
         parseInt(fieldIndex)
-      ] = fieldValue;
+      ] = fieldBaseName === "addresses" ? { city, state } : value;
     }
     setProfileFormData(formDataUpdated);
   };
@@ -135,11 +135,7 @@ function EditProfileForm(props: { profileData: OnerepProfileRow }) {
   };
 
   return (
-    <form
-      className={styles.profileForm}
-      action={updateProfileAction}
-      onChange={handleFormChange}
-    >
+    <form className={styles.profileForm} action={updateProfileAction}>
       {profileFields.map((profileDataKey, detailIndex) => {
         const label = l10n.getString(
           `settings-edit-profile-info-form-fieldset-label-${profileDataKey.replaceAll("_", "-")}`,
@@ -157,6 +153,7 @@ function EditProfileForm(props: { profileData: OnerepProfileRow }) {
                 <EditProfileFormInputs
                   profileData={profileFormData}
                   profileDataKey={profileDataKey as keyof OnerepProfileRow}
+                  handleOnInputChange={handleOnInputChange}
                   onAdd={handleOnAdd}
                   onRemove={handleOnRemove}
                 />
@@ -171,9 +168,9 @@ function EditProfileForm(props: { profileData: OnerepProfileRow }) {
         <Button
           type="submit"
           variant="primary"
-          disabled={false}
           onPress={() => {}}
           isLoading={updateProfileActionIsPending}
+          disabled={!hasProfileDataChanged}
         >
           {l10n.getString("settings-edit-profile-info-form-save-button-label")}
         </Button>
@@ -338,31 +335,41 @@ export const CancelDialog = () => {
 function EditProfileFormInputs(props: {
   profileData: OnerepProfileRow;
   profileDataKey: keyof OnerepProfileRow;
+  handleOnInputChange: (value: string, key: string) => void;
   onAdd: (profileDataKey: ProfileDataListKey) => void;
   onRemove: (profileDataKey: ProfileDataListKey, itemIndex: number) => void;
 }) {
   const l10n = useL10n();
   const itemData = props.profileData[props.profileDataKey];
+  const profileDataKeyParsed = props.profileDataKey.replaceAll("_", "-");
 
   switch (props.profileDataKey) {
     case "first_name":
     case "middle_name":
     case "last_name":
+      const isRequired = props.profileDataKey !== "middle_name";
       return (
         <>
           <InputField
+            onChange={(value) =>
+              props.handleOnInputChange(value, props.profileDataKey)
+            }
             key={props.profileDataKey}
             name={props.profileDataKey}
             value={itemData as string}
             label={l10n.getString(
-              `settings-edit-profile-info-form-input-label-primary-${props.profileDataKey.replaceAll("_", "-")}`,
+              `settings-edit-profile-info-form-input-label-primary-${profileDataKeyParsed}`,
             )}
             hasFloatingLabel
             isRequired={props.profileDataKey !== "middle_name"}
+            isInvalid={isRequired && (itemData as string).trim() === ""}
+            errorMessage={l10n.getString(
+              "settings-edit-profile-info-form-input-empty-error-label",
+            )}
           />
           <strong>
             {l10n.getString(
-              `settings-edit-profile-info-form-fieldset-section-other-label-${props.profileDataKey.replaceAll("_", "-")}s`,
+              `settings-edit-profile-info-form-fieldset-section-other-label-${profileDataKeyParsed}s`,
             )}
           </strong>
           {props.profileData[`${props.profileDataKey}s`].map(
@@ -371,10 +378,13 @@ function EditProfileFormInputs(props: {
               return (
                 <div key={inputKey} className={styles.inputWrapper}>
                   <InputField
+                    onChange={(value) =>
+                      props.handleOnInputChange(value, inputKey)
+                    }
                     name={inputKey}
                     value={item}
                     label={l10n.getString(
-                      `settings-edit-profile-info-form-input-label-other-${props.profileDataKey.replaceAll("_", "-")}`,
+                      `settings-edit-profile-info-form-input-label-other-${profileDataKeyParsed}`,
                     )}
                     hasFloatingLabel
                   />
@@ -404,7 +414,7 @@ function EditProfileFormInputs(props: {
           ) : (
             <p>
               {l10n.getString(
-                `settings-edit-profile-info-form-fieldset-section-limit-label-${props.profileDataKey.replaceAll("_", "-")}s`,
+                `settings-edit-profile-info-form-fieldset-section-limit-label-${profileDataKeyParsed}s`,
               )}
             </p>
           )}
@@ -442,16 +452,17 @@ function EditProfileFormInputs(props: {
         </div>
       );
     case "phone_numbers":
-      const phoneNumbers =
-        (itemData as string[]).length === 0 ? [""] : itemData;
       return (
         <>
-          {(phoneNumbers as string[]).map((item, itemIndex) => {
+          {(itemData as string[]).map((item, itemIndex) => {
             const inputKey = `${props.profileDataKey}-${itemIndex}`;
             return (
               <Fragment key={inputKey}>
                 <div className={styles.inputWrapper}>
                   <InputField
+                    onChange={(value) =>
+                      props.handleOnInputChange(value, inputKey)
+                    }
                     name={inputKey}
                     value={item}
                     label={
@@ -528,9 +539,15 @@ function EditProfileFormInputs(props: {
                             `settings-edit-profile-info-form-input-label-other-location`,
                           )
                     }
+                    onChange={(value) =>
+                      props.handleOnInputChange(value, inputKey)
+                    }
                     inputValue={`${item.city}, ${item.state}, USA`}
                     isRequired
-                    onChange={() => {}}
+                    isInvalid={true}
+                    errorMessage={l10n.getString(
+                      "settings-edit-profile-info-form-input-empty-error-label",
+                    )}
                   />
                   {itemIndex > 0 && (
                     <RemoveItemButton

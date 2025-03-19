@@ -131,6 +131,7 @@ settings-edit-profile-info-form-input-label-primary-phone-number = Primary numbe
 settings-edit-profile-info-form-input-label-other-phone-number = Other phone number
 settings-edit-profile-info-form-input-label-primary-location = City and state
 settings-edit-profile-info-form-input-label-other-location = Past location
+settings-edit-profile-info-form-input-empty-error-label = This field can’t be empty
 
 settings-edit-profile-info-form-date-of-birth-note = Date of birth cannot be changed for security reasons. <a>Why?</a>
 settings-edit-profile-info-form-add-item-button-label = Add item
