@@ -215,6 +215,7 @@ error-page-error-other-title = { $errorCode } Noko gjekk gale
 
 ## Breach overview page
 
+all-breaches-headline-3 = Database for datalekkasjar
 all-breaches-lead = Vi overvakar heile tida kjende datalekkasjar for å finne ut om din personelege informasjon er komprommitert. Her er ei fullstendig liste over alle datalekkasjar som er rapporterte sidan 2007.
 search-breaches = Søk etter datalekkasjar
 # the kind of user data exposed to hackers in data breach.

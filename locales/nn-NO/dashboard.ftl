@@ -65,6 +65,7 @@ dashboard-top-banner-scan-in-progress-title = Skanninga held framleis på
 dashboard-top-banner-your-data-is-protected-title = Dine data er verna
 dashboard-top-banner-your-data-is-protected-cta = Sjå kva som er løyst
 dashboard-top-banner-lets-keep-protecting-title = La oss halde fram med å verne dataa dine
+dashboard-top-banner-lets-keep-protecting-cta = La oss halde fram
 dashboard-top-banner-protect-your-data-cta = La oss løyse det
 dashboard-top-banner-no-exposures-found-title = Fann ingen eksponeringar
 dashboard-no-exposures-label = Fann ingen eksponeringar
