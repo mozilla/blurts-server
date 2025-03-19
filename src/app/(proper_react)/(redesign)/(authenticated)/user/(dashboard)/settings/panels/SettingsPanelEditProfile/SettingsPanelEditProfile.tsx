@@ -13,31 +13,31 @@ import {
   OnerepProfileRow,
   SubscriberRow,
 } from "knex/types/tables";
-import { SubscriberEmailPreferencesOutput } from "../../../../../../../../db/tables/subscriber_email_preferences";
-import { SanitizedEmailAddressRow } from "../../../../../../../functions/server/sanitize";
+import { SubscriberEmailPreferencesOutput } from "../../../../../../../../../db/tables/subscriber_email_preferences";
+import { SanitizedEmailAddressRow } from "../../../../../../../../functions/server/sanitize";
 import styles from "./SettingsPanelEditProfile.module.scss";
-import { InputField } from "../../../../../../../components/client/InputField";
-import { getLocale } from "../../../../../../../functions/universal/getLocale";
-import { useL10n } from "../../../../../../../hooks/l10n";
-import { Button } from "../../../../../../../components/client/Button";
-import { TelemetryButton } from "../../../../../../../components/client/TelemetryButton";
+import { InputField } from "../../../../../../../../components/client/InputField";
+import { getLocale } from "../../../../../../../../functions/universal/getLocale";
+import { useL10n } from "../../../../../../../../hooks/l10n";
+import { Button } from "../../../../../../../../components/client/Button";
+import { TelemetryButton } from "../../../../../../../../components/client/TelemetryButton";
 import {
   MinusCircledIcon,
   PlusCircledIcon,
-} from "../../../../../../../components/server/Icons";
-import { TelemetryLink } from "../../../../../../../components/client/TelemetryLink";
+} from "../../../../../../../../components/server/Icons";
+import { TelemetryLink } from "../../../../../../../../components/client/TelemetryLink";
 import {
   CONST_DATA_BROKER_PROFILE_DETAIL_LIMITS,
   CONST_URL_SUMO_EDIT_PROFILE_DOB,
-} from "../../../../../../../../constants";
-import { LocationAutocompleteInput } from "../../../../../../../components/client/LocationAutocompleteInput";
-import { onHandleUpdateProfileData } from "../actions";
-import { useTelemetry } from "../../../../../../../hooks/useTelemetry";
+} from "../../../../../../../../../constants";
+import { LocationAutocompleteInput } from "../../../../../../../../components/client/LocationAutocompleteInput";
+import { onHandleUpdateProfileData } from "../../actions";
+import { useTelemetry } from "../../../../../../../../hooks/useTelemetry";
 import { useOverlayTriggerState } from "react-stately";
 import { useOverlayTrigger } from "react-aria";
-import { ModalOverlay } from "../../../../../../../components/client/dialog/ModalOverlay";
-import { Dialog } from "../../../../../../../components/client/dialog/Dialog";
-import CancelDialogIllustration from "../../../../../../images/monitor-logo-minimal.svg";
+import { ModalOverlay } from "../../../../../../../../components/client/dialog/ModalOverlay";
+import { Dialog } from "../../../../../../../../components/client/dialog/Dialog";
+import CancelDialogIllustration from "../../../../../../../images/monitor-logo-minimal.svg";
 
 const profileFields: (keyof OnerepProfileRow)[] = [
   "first_name",
@@ -136,6 +136,7 @@ function EditProfileForm(props: { profileData: OnerepProfileRow }) {
 
   return (
     <form className={styles.profileForm} action={updateProfileAction}>
+      <pre>{JSON.stringify(profileFormData, null, 2)}</pre>
       {profileFields.map((profileDataKey, detailIndex) => {
         const label = l10n.getString(
           `settings-edit-profile-info-form-fieldset-label-${profileDataKey.replaceAll("_", "-")}`,
@@ -542,7 +543,7 @@ function EditProfileFormInputs(props: {
                     onChange={(value) =>
                       props.handleOnInputChange(value, inputKey)
                     }
-                    inputValue={`${item.city}, ${item.state}, USA`}
+                    defaultInputValue={`${item.city}, ${item.state}, USA`}
                     isRequired
                     isInvalid={true}
                     errorMessage={l10n.getString(

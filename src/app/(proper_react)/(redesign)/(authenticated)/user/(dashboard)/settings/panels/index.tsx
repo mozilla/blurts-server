@@ -21,7 +21,7 @@ import {
 import {
   SettingsPanelEditProfile,
   SettingsPanelEditProfileProps,
-} from "./SettingsPanelEditProfile";
+} from "./SettingsPanelEditProfile/SettingsPanelEditProfile";
 import styles from "./Panel.module.scss";
 import { TabType } from "../View";
 
