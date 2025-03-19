@@ -39,7 +39,7 @@ export const options = {
   duration: DURATION,
 };
 
-const url = `${envVars.SERVER_URL ?? "https://stage.firefoxmonitor.nonprod.cloudops.mozgcp.net"}/api/v1/hibp/notify`;
+const url = `${envVars.SERVER_URL ?? "https://monitor-stage.allizom.org"}/api/v1/hibp/notify`;
 const mockedBreachedEmailHash =
   typeof envVars.LOADTEST_BREACHED_EMAIL === "string"
     ? crypto.sha1(envVars.LOADTEST_BREACHED_EMAIL, "hex")
