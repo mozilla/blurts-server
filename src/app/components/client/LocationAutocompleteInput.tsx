@@ -44,7 +44,9 @@ export const LocationAutocompleteInput = ({
   "onInputChange" | "onSelectionChange"
 > & { onChange: (_location: string) => void; infoText?: string }) => {
   const l10n = useL10n();
-  const locationSuggestions = useLocationSuggestions();
+  const locationSuggestions = useLocationSuggestions(
+    props.defaultInputValue ?? "",
+  );
 
   const handleOnSelectionChange = (
     key: ComboBoxStateOptions<object>["selectedKey"],

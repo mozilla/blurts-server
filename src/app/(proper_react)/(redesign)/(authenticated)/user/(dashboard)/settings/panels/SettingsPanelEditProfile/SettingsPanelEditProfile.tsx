@@ -108,7 +108,7 @@ function EditProfileForm(props: { profileData: OnerepProfileRow }) {
       const [city, state, _countryCode] = value.split(", ");
       formDataUpdated[fieldBaseName as ProfileDataListKey][
         parseInt(fieldIndex)
-      ] = fieldBaseName === "addresses" ? { city, state } : value;
+      ] = fieldBaseName === "addresses" ? { city: city, state } : value;
     }
     setProfileFormData(formDataUpdated);
   };
@@ -526,6 +526,8 @@ function EditProfileFormInputs(props: {
           </strong>
           {(itemData as OnerepProfileAddress[]).map((item, itemIndex) => {
             const inputKey = `${props.profileDataKey}-${itemIndex}`;
+            const inputValue =
+              item.city && item.state ? `${item.city}, ${item.state}, USA` : "";
             return (
               <Fragment key={inputKey}>
                 <div className={styles.inputWrapper}>
@@ -543,12 +545,12 @@ function EditProfileFormInputs(props: {
                     onChange={(value) =>
                       props.handleOnInputChange(value, inputKey)
                     }
-                    defaultInputValue={`${item.city}, ${item.state}, USA`}
+                    defaultInputValue={inputValue}
                     isRequired
-                    isInvalid={true}
                     errorMessage={l10n.getString(
-                      "settings-edit-profile-info-form-input-empty-error-label",
+                      "onboarding-enter-details-input-error-message-location",
                     )}
+                    isInvalid={!item.city || !item.state}
                   />
                   {itemIndex > 0 && (
                     <RemoveItemButton
