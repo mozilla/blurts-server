@@ -142,6 +142,11 @@ $color-pink-20: #ff8ac5;
 $color-pink-10: #ffb4db;
 $color-pink-05: #ffdef0;
 
+// Removal status colors
+$color-removal-status-requested: $color-violet-10;
+$color-removal-status-in-progress: $color-blue-05;
+$color-removal-status-resolved: $color-green-30;
+
 // Gradient
 $gradient-blue: linear-gradient(
   to right,
