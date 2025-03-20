@@ -66,7 +66,7 @@ export const BreachAlertEmail = (props: BreachAlertEmailProps) => {
   const premiumSubscriptionUrlObject = new URL(
     getPremiumSubscriptionUrl({
       type: "yearly",
-      enabledFeatureFlags: [],
+      enabledFeatureFlags: props.enabledFeatureFlags,
     }),
   );
   premiumSubscriptionUrlObject.searchParams.set("utm_medium", "product-email");
