@@ -146,6 +146,20 @@ features:
           "enabled": false,
           "variant": default,
         }
+  in-progress-tab:
+    description: As a Monitor Plus subscriber I would like to have a dedicated area that tells me what’s in-progress and the process for progressing through in-progress so I have a good understanding of how my privacy is being protected.
+    variables:
+      enabled:
+        description: If the feature is enabled
+        type: Boolean
+        default: false
+    defaults:
+      - channel: local
+        value: { "enabled": true }
+      - channel: staging
+        value: { "enabled": false }
+      - channel: production
+        value: { "enabled": false }
 enums:
   OptionalBrokerScanInfoFields:
     description: An enum of optional broker scan info fields

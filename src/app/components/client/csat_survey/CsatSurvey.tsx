@@ -18,6 +18,7 @@ import { ExperimentData } from "../../../../telemetry/generated/nimbus/experimen
 import { FeatureFlagName } from "../../../../db/tables/featureFlags";
 import { getPetitionBannerCsatSurvey } from "./surveys/petitionBannerCsatSurvey";
 import { getRemovalTimeEstimatesCsatSurvey } from "./surveys/removalTimeEstimates";
+import { getInProgressTabCsatSurvey } from "./surveys/inProgressTabCsatSurvey";
 
 export type CsatSurveyProps = {
   activeTab: TabType;
@@ -64,6 +65,7 @@ export const CsatSurvey = (props: CsatSurveyProps) => {
       getPetitionBannerCsatSurvey(surveyOptions),
     props.enabledFeatureFlags.includes("DataBrokerRemovalTimeEstimateCsat") &&
       getRemovalTimeEstimatesCsatSurvey(surveyOptions),
+    getInProgressTabCsatSurvey(surveyOptions),
   ];
 
   // Filters out previously dismissed surveys to make sure `currentSurvey` will

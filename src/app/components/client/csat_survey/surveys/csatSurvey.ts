@@ -37,7 +37,8 @@ export type SurveyData = {
     | "csat_survey"
     | "last_scan_date"
     | "petition_banner"
-    | "removal_time_estimates_banner";
+    | "removal_time_estimates_banner"
+    | "in_progress_tab";
   requiredExperiments: RequiredExperiment[];
   variations: Survey[];
 };
