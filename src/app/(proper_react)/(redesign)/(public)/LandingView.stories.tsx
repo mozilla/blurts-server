@@ -15,6 +15,8 @@ const meta: Meta<typeof View> = {
   component: (props: ViewProps) => {
     const experimentData =
       props.experimentData ?? defaultExperimentData["Features"];
+    const { enabledFeatureFlags: enabledFeatureFlagsProp } = props;
+    const enabledFeatureFlags = enabledFeatureFlagsProp ?? [];
     return (
       <AccountsMetricsFlowProvider
         enabled={experimentData["landing-page-free-scan-cta"].enabled}
@@ -34,7 +36,7 @@ const meta: Meta<typeof View> = {
         <PublicShell
           l10n={getL10n("en")}
           countryCode={props.countryCode}
-          enabledFeatureFlags={[]}
+          enabledFeatureFlags={enabledFeatureFlags}
           experimentData={{
             ...defaultExperimentData["Features"],
             "landing-page-redesign-plus-eligible-experiment": {
@@ -43,7 +45,11 @@ const meta: Meta<typeof View> = {
             },
           }}
         >
-          <View {...props} experimentData={experimentData} />
+          <View
+            {...props}
+            experimentData={experimentData}
+            enabledFeatureFlags={enabledFeatureFlags}
+          />
         </PublicShell>
       </AccountsMetricsFlowProvider>
     );

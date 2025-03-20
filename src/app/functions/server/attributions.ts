@@ -9,9 +9,6 @@ import {
 } from "../../../db/tables/attributions";
 
 export async function getAttributionsFromCookiesOrDb(subscriberId: number) {
-  return new URLSearchParams({
-    hello: "test",
-  });
   const cookiesList = await cookies();
   let additionalSubplatParams = new URLSearchParams(
     cookiesList.get("attributionsLastTouch")?.value,

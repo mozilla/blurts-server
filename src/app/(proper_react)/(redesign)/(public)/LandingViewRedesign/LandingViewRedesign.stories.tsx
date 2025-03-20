@@ -20,6 +20,10 @@ const meta: Meta<typeof View> = {
         variant: "redesign",
       },
     };
+    const { enabledFeatureFlags: enabledFeatureFlagsProp } = props;
+    const enabledFeatureFlags = enabledFeatureFlagsProp ?? [
+      "LandingPageRedesign",
+    ];
     return (
       <AccountsMetricsFlowProvider
         enabled={
@@ -40,10 +44,14 @@ const meta: Meta<typeof View> = {
         <PublicShell
           countryCode={props.countryCode}
           l10n={getL10n("en")}
-          enabledFeatureFlags={["LandingPageRedesign"]}
+          enabledFeatureFlags={enabledFeatureFlags}
           experimentData={experimentData}
         >
-          <View {...props} experimentData={experimentData} />
+          <View
+            {...props}
+            experimentData={experimentData}
+            enabledFeatureFlags={enabledFeatureFlags}
+          />
         </PublicShell>
       </AccountsMetricsFlowProvider>
     );
