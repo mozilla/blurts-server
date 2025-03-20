@@ -347,6 +347,11 @@ declare module "knex/types/tables" {
     "id" | "created_at" | "updated_at"
   >;
 
+  type OnerepProfileAddress = {
+    city: string;
+    state: StateAbbr;
+  };
+
   interface OnerepProfileRow {
     id: number;
     onerep_profile_id: null | number;
@@ -354,11 +359,20 @@ declare module "knex/types/tables" {
     first_name: string;
     middle_name: null | string;
     last_name: string;
-    city_name: string;
-    state_code: StateAbbr;
+    first_names: string[];
+    middle_names: string[];
+    last_names: string[];
+    addresses: OnerepProfileAddress[];
+    phone_numbers: E164PhoneNumberString[];
     date_of_birth: Date;
     created_at: Date;
     updated_at: Date;
+    // For backwards compatibility reasons we are keeping `city_name` and
+    // `state_code` until MNTOR-3567 is implemented and enabled by default.
+    /** @deprecated Please use `addresses` instead. */
+    city_name: string;
+    /** @deprecated Please use `addresses` instead. */
+    state_code: StateAbbr;
   }
   type OnerepProfileOptionalColumns = Extract<
     keyof OnerepProfileRow,
@@ -399,10 +413,9 @@ declare module "knex/types/tables" {
     "id" | "created_at" | "modified_at"
   >;
 
-  interface NotificationRow {
+  interface AnnouncementRow {
     id: number;
-    notification_id?: string;
-    label: string;
+    announcement_id: string;
     title: string;
     description: string;
     small_image_path: string;
@@ -412,9 +425,10 @@ declare module "knex/types/tables" {
     audience: string;
     created_at: Date;
     updated_at: Date;
+    label: string;
   }
 
-  type NotificationAutoInsertedColumns =
+  type AnnouncementRowInsertedColumns =
     | "id"
     | "created_at"
     | "updated_at"
@@ -423,10 +437,22 @@ declare module "knex/types/tables" {
     | "big_image_path"
     | "title"
     | "description";
-  type NotificationOptionalColumns =
-    | "notification_id"
+  type AnnouncementRowOptionalColumns =
+    | "announcement_id"
     | "cta_label"
     | "cta_link";
+
+  interface UserAnnouncementsRow {
+    id: number;
+    user_id: number;
+    announcement_id: string;
+    status: string;
+    seen_at: Date;
+    cleared_at: Date;
+    clicked_at: Date;
+    created_at: Date;
+    updated_at: Date;
+  }
 
   /**
    * This modifies row types to indicate that dates can also be inserted as ISO
@@ -457,18 +483,18 @@ declare module "knex/types/tables" {
     >;
 
     notifications: Knex.CompositeTableType<
-      NotificationRow,
+      AnnouncementRow,
       WritableDateColumns<
         Omit<
-          NotificationRow,
+          AnnouncementRow,
           NotificationAutoInsertedColumns | NotificationOptionalColumns
         > &
-          Partial<Pick<NotificationRow, NotificationOptionalColumns>>
+          Partial<Pick<AnnouncementRow, NotificationOptionalColumns>>
       >,
       // On updates, don't allow updating the ID and created date
       WritableDateColumns<
-        Partial<Omit<NotificationRow, "id" | "created_at">> &
-          Pick<NotificationRow, "updated_at">
+        Partial<Omit<AnnouncementRow, "id" | "created_at">> &
+          Pick<AnnouncementRow, "updated_at">
       >
     >;
 

@@ -64,6 +64,8 @@ export const featureFlagNames = [
   "DataBrokerRemovalAttempts",
   "ExpirationNotification",
   "CustomDataBrokers",
+  "SidebarNavigationRedesign",
+  "EditScanProfileDetails",
   "SubPlat3",
 ] as const;
 

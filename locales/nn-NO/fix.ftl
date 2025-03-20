@@ -15,6 +15,7 @@ guided-resolution-flow-step-navigation-label = Guida steg
 
 ## Shared CTA labels
 
+fix-flow-celebration-next-label = La oss halde fram
 fix-flow-celebration-next-recommendations-label = Sjå tilrådingar
 fix-flow-celebration-next-dashboard-label = Gå til ditt oversyn
 

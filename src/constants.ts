@@ -46,3 +46,20 @@ export const CONST_SETTINGS_TAB_SLUGS = [
   "notifications",
   "manage-account",
 ] as const;
+export const CONST_DATA_BROKER_PROFILE_DETAIL_ALLOW_LIST = [
+  "first_name",
+  "last_name",
+  "middle_name",
+  "first_names",
+  "last_names",
+  "middle_names",
+  "phone_numbers",
+  "addresses",
+] as const;
+export const CONST_DATA_BROKER_PROFILE_DETAIL_LIMITS = {
+  first_names: 4, // 5 in total including the standalone `first_name`
+  middle_names: 4, // 5 in total including the standalone `middle_name`
+  last_names: 4, // 5 in total including the standalone `last_name`
+  phone_numbers: 10,
+  addresses: 10,
+} as const;

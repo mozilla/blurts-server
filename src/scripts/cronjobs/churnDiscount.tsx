@@ -17,8 +17,18 @@ import {
 } from "../../emails/templates/upcomingExpiration/UpcomingExpirationEmail";
 import { getFeatureFlagData } from "../../db/tables/featureFlags";
 
+process.on("SIGINT", () => {
+  logger.info("SIGINT received, exiting...");
+  tearDown();
+});
+
 await run();
-await createDbConnection().destroy();
+
+async function tearDown() {
+  closeEmailPool();
+  await createDbConnection().destroy();
+  process.exit(0);
+}
 
 async function run() {
   const churnFeatureFlag = await getFeatureFlagData("ExpirationNotification");
@@ -46,7 +56,8 @@ async function run() {
     }
   }
 
-  closeEmailPool();
+  await tearDown();
+
   logger.info(
     `[${new Date(Date.now()).toISOString()}] Sent [${subscribersToEmail.length}] churn email to relevant subscribers.`,
   );

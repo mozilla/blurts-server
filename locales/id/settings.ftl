@@ -9,7 +9,7 @@ settings-page-title = Pengaturan { -product-short-name }
 
 ## Breach alert preferences
 
-settings-alert-email-preferences-title = Pengaturan email
+settings-alert-email-preferences-title = Preferensi surel
 settings-alert-email-preferences-subtitle = Beri tahu kami surel mana yang ingin Anda terima.
 settings-alert-preferences-allow-breach-alerts-title = Peringatan pembobolan instan
 settings-alert-preferences-allow-breach-alerts-subtitle = Peringatan ini dikirim segera setelah pembobolan data terdeteksi
@@ -25,10 +25,10 @@ settings-email-list-title = Alamat surel yang dipantau
 #   $limit (number) - Number of email addresses included in the plan
 settings-email-limit-info =
     { $limit ->
-       *[other] Akun Anda mencakup pemantauan hingga { $limit } surel.
+       *[other] Akun Anda termasuk pemantauan hingga { $limit } surel.
     }
 settings-email-verification-callout = Verifikasi surel diperlukan
-settings-resend-email-verification-link = Kirim ulang verifikasi surel
+settings-resend-email-verification-link = Kirim ulang surel verifikasi
 settings-add-email-button = Tambahkan alamat surel
 settings-remove-email-button-label = Hapus
 # Variables:
@@ -51,7 +51,7 @@ settings-delete-monitor-free-account-cta-label = Hapus akun
 settings-delete-monitor-free-account-dialog-title = Akun { -brand-monitor } Anda akan dihapus secara permanen
 settings-delete-monitor-free-account-dialog-lead-v2 = Semua informasi akun { -brand-monitor } Anda akan dihapus dan kami tidak akan lagi memantau kebocoran data baru. Ini tidak akan menghapus { -brand-mozilla-account } Anda.
 settings-delete-monitor-free-account-dialog-cta-label = Hapus akun
-settings-delete-monitor-free-account-dialog-cancel-button-label = Sudahlah, bawa aku kembali
+settings-delete-monitor-free-account-dialog-cancel-button-label = Lupakan saja, bawa aku kembali
 settings-delete-monitor-account-confirmation-toast-label-2 = Akun { -brand-monitor } Anda sekarang telah dihapus.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Tutup
 
@@ -68,4 +68,4 @@ settings-tab-label-manage-account = Kelola akun
 settings-tab-subtitle-manage-account = Kelola akun { -product-name } Anda.
 settings-tab-notifications-marketing-title = Komunikasi pemasaran
 settings-tab-notifications-marketing-text = Pembaruan berkala tentang { -brand-monitor }, { -brand-mozilla }, dan produk keamanan kami lainnya.
-settings-tab-notifications-marketing-link-label = Buka pengaturan surel { -brand-mozilla }
+settings-tab-notifications-marketing-link-label = Ke pengaturan surel { -brand-mozilla }

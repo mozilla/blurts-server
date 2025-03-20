@@ -30,7 +30,7 @@ export const defaultScreenshotOpts: Partial<DefaultScreenshotOpts> = {
 export const ENV_URLS = {
   local: "http://localhost:6060",
   heroku: "https://fx-breach-alerts.herokuapp.com",
-  stage: "https://stage.firefoxmonitor.nonprod.cloudops.mozgcp.net",
+  stage: "https://monitor-stage.allizom.org",
   prod: "https://monitor.mozilla.org",
 };
 
