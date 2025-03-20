@@ -20,8 +20,7 @@ const meta: Meta<typeof View> = {
         variant: "redesign",
       },
     };
-    const { enabledFeatureFlags: enabledFeatureFlagsProp } = props;
-    const enabledFeatureFlags = enabledFeatureFlagsProp ?? [
+    const enabledFeatureFlags = props.enabledFeatureFlags ?? [
       "LandingPageRedesign",
     ];
     return (

@@ -15,8 +15,7 @@ const meta: Meta<typeof View> = {
   component: (props: ViewProps) => {
     const experimentData =
       props.experimentData ?? defaultExperimentData["Features"];
-    const { enabledFeatureFlags: enabledFeatureFlagsProp } = props;
-    const enabledFeatureFlags = enabledFeatureFlagsProp ?? [];
+    const enabledFeatureFlags = props.enabledFeatureFlags ?? [];
     return (
       <AccountsMetricsFlowProvider
         enabled={experimentData["landing-page-free-scan-cta"].enabled}
