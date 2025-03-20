@@ -15,12 +15,14 @@ import { HeaderStyles, MetaTags } from "../../components/HeaderStyles";
 import { SanitizedSubscriberRow } from "../../../app/functions/server/sanitize";
 import { sumSanitizedDataPoints } from "../../functions/reduceSanitizedDataPoints";
 import { modifyAttributionsForUrl } from "../../../app/functions/universal/attributions";
+import { FeatureFlagName } from "../../../db/tables/featureFlags";
 
 export type MonthlyActivityFreeEmailProps = {
   l10n: ExtendedReactLocalization;
   subscriber: SanitizedSubscriberRow;
   dataSummary: DashboardSummary;
   unsubscribeLink: string;
+  enabledFeatureFlags: FeatureFlagName[];
 };
 
 type UtmParams = {
@@ -78,7 +80,7 @@ export const MonthlyActivityFreeEmail = (
   const unlockWithMonitorPlusCta = modifyAttributionsForUrl(
     getPremiumSubscriptionUrl({
       type: "yearly",
-      enabledFeatureFlags: [],
+      enabledFeatureFlags: props.enabledFeatureFlags,
     }),
     {
       ...replaceValues,

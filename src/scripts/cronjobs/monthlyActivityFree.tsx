@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { SubscriberRow } from "knex/types/tables";
+import { FeatureFlagViewRow, SubscriberRow } from "knex/types/tables";
 import { getFreeSubscribersWaitingForMonthlyEmail } from "../../db/tables/subscribers";
 import { getScanResultsWithBroker } from "../../db/tables/onerep_scans";
 import { updateEmailPreferenceForSubscriber } from "../../db/tables/subscriber_email_preferences";
@@ -19,6 +19,7 @@ import createDbConnection from "../../db/connect";
 import { logger } from "../../app/functions/server/logging";
 import { getMonthlyActivityFreeUnsubscribeLink } from "../../app/functions/cronjobs/unsubscribeLinks";
 import { hasPremium } from "../../app/functions/universal/user";
+import { getFeatureFlagData } from "../../db/tables/featureFlags";
 
 process.on("SIGINT", () => {
   logger.info("SIGINT received, exiting...");
@@ -54,7 +55,8 @@ async function run() {
 
   for (const subscriber of subscribersToEmail) {
     try {
-      await sendMonthlyActivityEmail(subscriber);
+      const subPlatFeatureFlag = await getFeatureFlagData("SubPlat3");
+      await sendMonthlyActivityEmail(subscriber, subPlatFeatureFlag);
       logger.info("send_monthly_activity_email_free_success", {
         subscriberId: subscriber.id,
       });
@@ -72,7 +74,10 @@ async function run() {
   await tearDown();
 }
 
-async function sendMonthlyActivityEmail(subscriber: SubscriberRow) {
+async function sendMonthlyActivityEmail(
+  subscriber: SubscriberRow,
+  subPlatFeatureFlag: FeatureFlagViewRow | null,
+) {
   const sanitizedSubscriber = sanitizeSubscriberRow(subscriber);
   const l10n = getCronjobL10n(sanitizedSubscriber);
   /**
@@ -115,6 +120,10 @@ async function sendMonthlyActivityEmail(subscriber: SubscriberRow) {
     monthly_monitor_report_free_at: new Date(Date.now()),
   });
 
+  const subPlatFeatureFlagEnabled =
+    subPlatFeatureFlag?.is_enabled ||
+    subPlatFeatureFlag?.allow_list?.includes(subscriber.primary_email);
+
   try {
     await sendEmail(
       sanitizedSubscriber.primary_email,
@@ -125,6 +134,7 @@ async function sendMonthlyActivityEmail(subscriber: SubscriberRow) {
           dataSummary={data}
           l10n={l10n}
           unsubscribeLink={unsubscribeLink}
+          enabledFeatureFlags={subPlatFeatureFlagEnabled ? ["SubPlat3"] : []}
         />,
       ),
     );
