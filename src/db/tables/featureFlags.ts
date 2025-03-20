@@ -22,6 +22,8 @@ export type FeatureFlag = {
 };
 
 /** @deprecated The method should not be used, use Nimbus experiment or roll-out: /src/app/functions/server/getExperiments */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 export async function getAllFeatureFlags(): Promise<
   Array<
     FeatureFlagViewRow & {
@@ -41,11 +43,15 @@ export async function getAllFeatureFlags(): Promise<
     )
     .orderBy("feature_flag_view.name");
 }
+/* c8 ignore stop */
 
 /** @deprecated The method should not be used, use Nimbus experiment or roll-out: /src/app/functions/server/getExperiments */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 export async function getDeletedFeatureFlags() {
   return await knex("feature_flag_view").select("*").orderBy("name");
 }
+/* c8 ignore stop */
 
 export const featureFlagNames = [
   "CancellationFlow",
@@ -76,6 +82,8 @@ export type FeatureFlagName = (typeof featureFlagNames)[number];
 /**
  * @param options
  */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 export async function getEnabledFeatureFlags(
   options: { isSignedOut?: false; email: string } | { isSignedOut: true },
 ): Promise<FeatureFlagName[]> {
@@ -113,6 +121,7 @@ export async function getEnabledFeatureFlags(
 
   return enabledFlagNames;
 }
+/* c8 ignore stop */
 
 /**
  * It is recommended to use `getEnabledFeatureFlags` if you want to know what
@@ -124,6 +133,8 @@ export async function getEnabledFeatureFlags(
  *
  * @param featureFlagName
  */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 export async function getFeatureFlagData(
   featureFlagName: FeatureFlagName,
 ): Promise<FeatureFlagViewRow | null> {
@@ -132,18 +143,24 @@ export async function getFeatureFlagData(
     null
   );
 }
+/* c8 ignore stop */
 
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 export async function getFeatureFlagByName(name: string) {
   logger.info("getFeatureFlagByName", name);
   const res = await knex("feature_flag_view").where("name", name);
 
   return res[0] || null;
 }
+/* c8 ignore stop */
 
 /**
  * @param flag
  * @deprecated The method should not be used, use Nimbus experiment or roll-out: /src/app/functions/server/getExperiments
  */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 export async function addFeatureFlag(
   flag: Omit<FeatureFlagViewRow, "updated_at">,
 ) {
@@ -162,12 +179,15 @@ export async function addFeatureFlag(
 
   return flagFromDb!;
 }
+/* c8 ignore stop */
 
 /**
  * @param name
  * @param allowList
  * @deprecated The method should not be used, use Nimbus experiment or roll-out: /src/app/functions/server/getExperiments
  */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 export async function updateAllowList(
   name: string,
   allowList: string[],
@@ -193,12 +213,15 @@ export async function updateAllowList(
     allow_list: allowList,
   });
 }
+/* c8 ignore stop */
 
 /**
  * @param name
  * @param isEnabled
  * @deprecated The method should not be used, use Nimbus experiment or roll-out: /src/app/functions/server/getExperiments
  */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 export async function enableFeatureFlagByName(
   name: string,
   isEnabled: boolean,
@@ -219,11 +242,14 @@ export async function enableFeatureFlagByName(
     allow_list: existingFlag.allow_list,
   });
 }
+/* c8 ignore stop */
 
 /**
  * @param name
  * @deprecated The method should not be used, use Nimbus experiment or roll-out: /src/app/functions/server/getExperiments
  */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 export async function disableFeatureFlagByName(
   name: string,
   updaterId: SubscriberRow["id"],
@@ -250,3 +276,4 @@ export function isFeatureFlagAdminOnly(flagName: string): boolean {
     adminOnlyFlags.includes(flagName as FeatureFlagName)
   );
 }
+/* c8 ignore stop */
