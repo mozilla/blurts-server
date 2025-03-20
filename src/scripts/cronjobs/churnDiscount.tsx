@@ -31,6 +31,7 @@ async function tearDown() {
 }
 
 async function run() {
+  // Using `getFeatureFlagData` instead of `getEnabledFeatureFlags` here to prevent fetching them for every subscriber.
   const churnFeatureFlag = await getFeatureFlagData("ExpirationNotification");
   const subscribersToEmail = (await getChurnsToEmail()).filter((subscriber) => {
     return (

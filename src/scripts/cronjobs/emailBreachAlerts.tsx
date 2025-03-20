@@ -109,6 +109,7 @@ export async function poll(
   );
 
   const breaches = await getAllBreachesFromDb();
+  // Using `getFeatureFlagData` instead of `getEnabledFeatureFlags` here to prevent fetching them for every subscriber.
   const subPlatFeatureFlag = await getFeatureFlagData("SubPlat3");
 
   // Process the messages. Skip any that cannot be processed, and do not mark as acknowledged.

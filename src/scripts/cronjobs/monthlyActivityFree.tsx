@@ -51,11 +51,12 @@ async function run() {
     batchSize,
     ["US"],
   );
+  // Using `getFeatureFlagData` instead of `getEnabledFeatureFlags` here to prevent fetching them for every subscriber.
+  const subPlatFeatureFlag = await getFeatureFlagData("SubPlat3");
   await initEmail();
 
   for (const subscriber of subscribersToEmail) {
     try {
-      const subPlatFeatureFlag = await getFeatureFlagData("SubPlat3");
       await sendMonthlyActivityEmail(subscriber, subPlatFeatureFlag);
       logger.info("send_monthly_activity_email_free_success", {
         subscriberId: subscriber.id,
