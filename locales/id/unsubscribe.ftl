@@ -6,7 +6,7 @@
 # Confirm Unsubscription State
 
 unsubscribe-from-monthly-report-header = Berhenti berlangganan surel ini?
-unsubscribe-from-monthly-report-body = Anda tidak akan lagi menerima laporan bulanan { -brand-monitor }, yang memberi tahu Anda berapa banyak eksposur baru yang Anda miliki setiap bulan dan berapa banyak yang diperbaiki.
+unsubscribe-from-monthly-report-body = Anda tidak akan lagi menerima laporan bulanan { -brand-monitor }, yang memberi tahu Anda berapa banyak keterpaparan baru yang Anda kena setiap bulan dan berapa banyak yang diperbaiki.
 unsubscribe-cta = Berhenti berlangganan
 
 # Success Unsubscription State

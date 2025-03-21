@@ -5,17 +5,9 @@
 
 # Chart summarizing total exposures
 
-# The number inside <nr> will be displayed in a large font,
-# the label inside <label> will be shown underneath, in a smaller font.
-# Variables:
-#   $nr (number) - Number of unresolved exposures for the user
-exposure-chart-heading =
-    { $nr ->
-       *[other] <nr>{ $nr }</nr> <label>exposures</label>
-    }
 # Variables:
 #   $nr (number) - Number of fixed exposures found for the user
-exposure-chart-heading-fixed = <nr>{ $nr }</nr> <label>Tetap</label>
+exposure-chart-heading-fixed = <nr>{ $nr }</nr> <label>Diperbaiki</label>
 exposure-chart-legend-heading-type = Eksposur
 exposure-chart-legend-heading-nr = Angka
 # Variables:
@@ -34,16 +26,16 @@ modal-active-number-of-exposures-title = Tentang jumlah eksposur aktif Anda
 #   $limit (number) - Number of email addresses included in the plan
 modal-active-number-of-exposures-part-one-all =
     { $limit ->
-       *[other] Bagan ini mencakup berapa kali kami menemukan setiap jenis data yang terekspos di semua kebocoran data hingga { $limit } alamat surel yang sedang Anda pantau.
+       *[other] Bagan ini mencakup berapa kali kami menemukan setiap jenis data yang terpapar di semua kebocoran data hingga { $limit } alamat surel yang sedang Anda pantau.
     }
-modal-active-number-of-exposures-part-two = Misalnya, jika Anda memiliki 10 eksposur nomor telepon Anda, itu mungkin berarti satu nomor telepon terpapar di 10 situs berbeda, atau bisa berarti 2 nomor telepon berbeda terpapar di 5 situs berbeda.
-modal-active-number-of-exposures-part-three-all = Setelah mereka diselesaikan, mereka akan ditambahkan ke jumlah total eksposur tetap Anda pada halaman Tetap.
-modal-fixed-number-of-exposures-title = Tentang jumlah eksposur tetap Anda
-modal-fixed-number-of-exposures-all = Bagan ini mencakup jumlah kebocoran data yang telah diperbaiki untuk semua alamat surel yang sedang Anda pantau. Setelah eksposur ditandai sebagai tetap, mereka akan ditambahkan ke total di sini.
+modal-active-number-of-exposures-part-two = Misalnya, jika Anda memiliki 10 keterpaparan nomor telepon Anda, itu mungkin berarti satu nomor telepon terpapar di 10 situs berbeda, atau bisa berarti 2 nomor telepon berbeda terpapar di 5 situs berbeda.
+modal-active-number-of-exposures-part-three-all = Setelah mereka diselesaikan, mereka akan ditambahkan ke jumlah total keterpaparan tetap Anda pada halaman Diperbaiki.
+modal-fixed-number-of-exposures-title = Tentang jumlah keterpaparan Anda yang diperbaiki
+modal-fixed-number-of-exposures-all = Bagan ini mencakup jumlah kebocoran data yang telah diperbaiki untuk semua alamat surel yang sedang Anda pantau. Setelah keterpaparan ditandai sebagai diperbaiki, mereka akan ditambahkan ke total di sini.
 modal-cta-ok = Oke
 modal-cta-got-it = Paham
 open-modal-alt = Buka modal
-close-modal-alt = Tutup
+close-modal-alt = Tutup modal
 open-tooltip-alt = Buka tooltip
 progress-card-heres-what-we-fixed-headline-all = Inilah yang Anda perbaiki
 progress-card-manually-fixed-headline = Diperbaiki secara manual
@@ -56,7 +48,7 @@ dashboard-exposures-area-headline = Lihat semua situs tempat info Anda terekspos
 #   $exposures_unresolved_num (number) - the unresolved number of exposures the user has.
 dashboard-exposures-area-description-all-line1 =
     { $exposures_unresolved_num ->
-       *[other] Kami menemukan { $exposures_unresolved_num } eksposur data Anda.
+       *[other] Kami menemukan { $exposures_unresolved_num } keterpaparan data Anda.
     }
 # Note: this line follows dashboard-exposures-area-description-all-line1.
 # Variables:
@@ -65,7 +57,7 @@ dashboard-exposures-area-description-all-line2 =
     { $data_breach_unresolved_num ->
        *[other] Itu muncul di { $data_breach_unresolved_num } kebocoran data.
     }
-dashboard-fixed-area-headline-all = Lihat semua eksposur yang diperbaiki
+dashboard-fixed-area-headline-all = Lihat semua keterpaparan yang diperbaiki
 # This is the label on a button that opens a popover menu, which shows a menu to adjust filters for the listed exposures.
 dashboard-exposures-filter = Filter
 dashboard-exposures-filter-company = Perusahaan
@@ -75,14 +67,14 @@ dashboard-exposures-filter-date-found-last-thirty-days = 30 hari terakhir
 dashboard-exposures-filter-date-found-last-year = Tahun lalu
 dashboard-exposures-filter-status = Status
 popover-open-filter-settings-alt = Pilih filter
-dashboard-exposures-filter-show-all = Tampilkan Semua
+dashboard-exposures-filter-show-all = Tampilkan semua
 dashboard-exposures-filter-show-results = Tampilkan hasil
 dashboard-exposures-filter-reset = Setel Ulang
 
 ## Top banner on the dashboard
 
 dashboard-top-banner-section-label = Ringkasan dasbor
-dashboard-top-banner-scan-in-progress-title = Pemindaian Anda masih dalam proses
+dashboard-top-banner-scan-in-progress-title = Pemindaian Anda masih berlangsung
 dashboard-top-banner-your-data-is-protected-title = Data Anda terlindungi
 dashboard-top-banner-your-data-is-protected-cta = Lihat apa yang diperbaiki
 dashboard-top-banner-lets-keep-protecting-title = Mari terus melindungi data Anda
@@ -90,7 +82,7 @@ dashboard-top-banner-lets-keep-protecting-title = Mari terus melindungi data And
 # $exposures_unresolved_num is the remaining number of exposures the user has to resolve.
 dashboard-top-banner-lets-keep-protecting-description =
     { $exposures_unresolved_num ->
-       *[other] Anda masih memiliki { $exposures_unresolved_num } eksposur yang tersisa untuk diperbaiki. Lanjutkan dan lindungi diri Anda. Kami akan memandu Anda langkah demi langkah.
+       *[other] Anda masih memiliki { $exposures_unresolved_num } keterpaparan yang tersisa untuk diperbaiki. Lanjutkan dan lindungi diri Anda. Kami akan memandu Anda langkah demi langkah.
     }
 dashboard-top-banner-lets-keep-protecting-cta = Ayo lanjutkan
 dashboard-top-banner-protect-your-data-title = Mari lindungi data Anda
@@ -109,20 +101,20 @@ dashboard-top-banner-non-us-protect-your-data-description-line2 =
     { $data_breach_unresolved_num ->
        *[other] Itu muncul di { $data_breach_unresolved_num } kebocoran data. Kami akan memandu Anda langkah demi langkah tentang cara memperbaikinya.
     }
-dashboard-top-banner-no-exposures-found-title = Tidak ada eksposur ditemukan
-dashboard-top-banner-non-us-no-exposures-found-description = Berita bagus! Kami mencari semua pembobolan data yang diketahui dan tidak menemukan eksposur. Kami akan terus memantau alamat surel Anda dan akan mengingatkan Anda jika terjadi pembobolan baru.
-dashboard-no-exposures-label = Tidak ada eksposur ditemukan
+dashboard-top-banner-no-exposures-found-title = Tidak ada keterpaparan ditemukan
+dashboard-top-banner-non-us-no-exposures-found-description = Berita bagus! Kami mencari semua kebocoran data yang diketahui dan tidak menemukan keterpaparan. Kami akan terus memantau alamat surel Anda dan akan mengingatkan Anda jika terjadi kebocoran baru.
+dashboard-no-exposures-label = Tidak ada keterpaparan ditemukan
 # Variables:
 # $exposures_resolved_num is the number of exposures the user has resolved.
 dashboard-top-banner-non-us-your-data-is-protected-description =
     { $exposures_resolved_num ->
-       *[other] Kerja bagus, semua { $exposures_resolved_num } eksposur data Anda telah diperbaiki! Kami akan terus memantau dan akan mengingatkan Anda tentang eksposur baru.
+       *[other] Kerja bagus, semua { $exposures_resolved_num } keterpaparn data Anda telah diperbaiki! Kami akan terus memantau dan akan mengingatkan Anda tentang keterpaparan baru.
     }
 dashboard-top-banner-monitor-more-cta = Pantau lebih banyak surel
 
 # About Exposure Indicators Modal
 
-modal-exposure-status-description-all = Kami mencari eksposur di semua pembobolan data yang diketahui. Eksposur Anda akan memiliki salah satu status berikut:
-modal-exposure-indicator-title = Status paparan
+modal-exposure-status-description-all = Kami mencari keterpaparan di semua kebocoran data yang diketahui. Keterpaparan Anda akan memiliki salah satu status berikut:
+modal-exposure-indicator-title = Status keterpaparan
 modal-exposure-indicator-action-needed = Tindakan lanjutan atau manual diperlukan oleh Anda untuk menyelesaikan suatu tindakan.
-modal-exposure-indicator-fixed = Eksposur telah teratasi dan tidak ada tindakan yang dapat Anda lakukan.
+modal-exposure-indicator-fixed = Keterpaparan telah teratasi dan tidak ada tindakan yang dapat Anda lakukan.

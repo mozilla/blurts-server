@@ -2,7 +2,7 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-breach-all-meta-title = { -brand-fx-monitor } - Alle datalekkasjar
+breach-all-meta-page-title = Database for datalekkasjar — { -brand-fx-monitor }
 breach-all-meta-social-title = Alle datalekkasjar oppdaga av { -brand-fx-monitor }
 breach-all-meta-social-description = Bl gjenom heile lista over kjende datalekkasjar oppdaga av { -brand-fx-monitor } og finn ut om informasjonen har vore eksponert tidlegare.
 # Variables:
