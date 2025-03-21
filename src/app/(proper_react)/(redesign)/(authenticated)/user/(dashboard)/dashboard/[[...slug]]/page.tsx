@@ -164,7 +164,6 @@ export default async function DashboardPage(props: Props) {
     session.user.subscriber.id,
   );
 
-  console.log("these are the announcements: ", userAnnouncements);
   return (
     <View
       user={session.user}
@@ -187,6 +186,7 @@ export default async function DashboardPage(props: Props) {
       signInCount={signInCount}
       autoOpenUpsellDialog={searchParams.dialog === "subscriptions"}
       removalTimeEstimates={getDataBrokerRemovalTimeEstimates(scanResults)}
+      userAnnouncements={userAnnouncements}
     />
   );
 }
