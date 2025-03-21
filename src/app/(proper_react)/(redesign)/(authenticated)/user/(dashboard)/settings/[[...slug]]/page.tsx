@@ -30,6 +30,7 @@ import { checkSession } from "../../../../../../../functions/server/checkSession
 import { checkUserHasMonthlySubscription } from "../../../../../../../functions/server/user";
 import { getEmailPreferenceForPrimaryEmail } from "../../../../../../../../db/tables/subscriber_email_preferences";
 import { CONST_SETTINGS_TAB_SLUGS } from "../../../../../../../../constants";
+import { initializeUserAnnouncements } from "../../../../../../../../db/tables/user_announcements";
 
 type Props = {
   params: Promise<{
@@ -119,6 +120,10 @@ export default async function SettingsPage(props: Props) {
     session.user.email,
   );
 
+  const userAnnouncements = await initializeUserAnnouncements(
+    session.user.subscriber.id,
+  );
+
   return (
     <SettingsView
       l10n={l10n}
@@ -137,6 +142,7 @@ export default async function SettingsPage(props: Props) {
       lastScanDate={lastOneRepScan?.created_at}
       isMonthlySubscriber={isMonthlySubscriber}
       activeTab={activeTab}
+      userAnnouncements={userAnnouncements}
     />
   );
 }

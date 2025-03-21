@@ -13,6 +13,7 @@ import { UpsellBadge } from "./UpsellBadge";
 import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 import { FeatureFlagName } from "../../../../db/tables/featureFlags";
 import { AnnouncementDialog } from "./AnnouncementDialog";
+import { UserAnnouncementWithDetails } from "../../../../db/tables/user_announcements";
 
 export type Props = {
   user: Session["user"];
@@ -28,6 +29,7 @@ export type Props = {
   enabledFeatureFlags: FeatureFlagName[];
   children?: ReactNode;
   autoOpenUpsellDialog?: boolean;
+  announcements: UserAnnouncementWithDetails[] | null;
 };
 
 export const Toolbar = (props: Props) => {
@@ -49,7 +51,9 @@ export const Toolbar = (props: Props) => {
           experimentData={props.experimentData}
           autoOpenUpsellDialog={props.autoOpenUpsellDialog}
         />
-        <AnnouncementDialog />
+        {props.announcements && (
+          <AnnouncementDialog announcements={props.announcements} />
+        )}
         <AppPicker />
         {props.user && (
           <UserMenu user={props.user} fxaSettingsUrl={props.fxaSettingsUrl} />

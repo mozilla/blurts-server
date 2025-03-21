@@ -7,3 +7,14 @@
   cursor: pointer;
   color: tokens.$color-grey-60;
 }
+
+.announcementsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: tokens.$spacing-sm;
+
+  dt {
+    font-weight: 600;
+    padding-bottom: tokens.$spacing-xs;
+  }
+}

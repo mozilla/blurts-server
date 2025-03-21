@@ -108,9 +108,6 @@ export const View = (props: Props) => {
   const [announcements, setAnnouncements] = useState<
     UserAnnouncementWithDetails[] | null
   >(props.userAnnouncements);
-
-  console.log({ announcements });
-
   useEffect(() => {
     setAnnouncements(props.userAnnouncements);
     const nextPathname = `/user/dashboard/${activeTab}`;
@@ -471,6 +468,7 @@ export const View = (props: Props) => {
         experimentData={props.experimentData}
         autoOpenUpsellDialog={props.autoOpenUpsellDialog}
         enabledFeatureFlags={props.enabledFeatureFlags}
+        announcements={announcements}
       >
         <TabList
           tabs={tabsData}
