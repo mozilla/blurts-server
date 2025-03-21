@@ -11,8 +11,17 @@ import { useOverlayTriggerState } from "react-stately";
 import { Popover } from "../Popover";
 import { AnnouncementsIcon } from "../../server/Icons";
 import styles from "./AnnouncementDialog.module.scss";
+import { UserAnnouncementWithDetails } from "../../../../../src/db/tables/user_announcements";
+import { LocalizedAnnouncementString } from "../../../(proper_react)/(redesign)/(authenticated)/admin/announcements/AnnouncementsAdmin";
 
-export const AnnouncementDialog = ({ ...otherProps }) => {
+type AnnouncementDialogProps = {
+  announcements: UserAnnouncementWithDetails[];
+};
+
+export const AnnouncementDialog = ({
+  announcements,
+  ...otherProps
+}: AnnouncementDialogProps) => {
   const l10n = useL10n();
   const triggerRef = useRef<HTMLButtonElement>(null);
   const triggerState = useOverlayTriggerState(otherProps);
@@ -45,7 +54,24 @@ export const AnnouncementDialog = ({ ...otherProps }) => {
           state={triggerState}
           {...overlayProps}
         >
-          TODO: Add notifications here
+          <div className={styles.announcementsContainer}>
+            {announcements.map((announcement) => (
+              <dl key={announcement.announcement_id}>
+                <dt className="font-semibold">
+                  <LocalizedAnnouncementString
+                    notification={announcement}
+                    type="title"
+                  />
+                </dt>
+                <dd className="text-sm text-muted-foreground">
+                  <LocalizedAnnouncementString
+                    notification={announcement}
+                    type="description"
+                  />
+                </dd>
+              </dl>
+            ))}
+          </div>
         </Popover>
       )}
     </>

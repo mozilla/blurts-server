@@ -13,6 +13,7 @@ import { FeatureFlagName } from "../../../../../../../db/tables/featureFlags";
 import { ExperimentData } from "../../../../../../../telemetry/generated/nimbus/experiments";
 import { SubscriberEmailPreferencesOutput } from "../../../../../../../db/tables/subscriber_email_preferences";
 import { SettingsContent } from "./SettingsContent";
+import { UserAnnouncementWithDetails } from "../../../../../../../db/tables/user_announcements";
 
 export type TabType = (typeof CONST_SETTINGS_TAB_SLUGS)[number];
 
@@ -36,6 +37,7 @@ export type Props = {
   lastScanDate?: Date;
   isMonthlySubscriber: boolean;
   activeTab?: TabType;
+  userAnnouncements: UserAnnouncementWithDetails[];
 };
 
 export const SettingsView = (props: Props) => {
@@ -50,6 +52,7 @@ export const SettingsView = (props: Props) => {
         lastScanDate={props.lastScanDate ?? null}
         experimentData={props.experimentData}
         enabledFeatureFlags={props.enabledFeatureFlags}
+        announcements={props.userAnnouncements}
       />
       <SettingsContent
         activeTab={props.activeTab}
