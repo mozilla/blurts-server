@@ -63,4 +63,5 @@ email-dashboard-cta = Gå til oversynet
 ## Breach alert email
 
 email-breach-alert-all-subject = Ny datalekkasje oppdaga
+email-breach-alert-all-next-steps-cta-label = La oss kome i gang
 email-breach-alert-all-next-steps-button-dashboard = Gå til oversynet
