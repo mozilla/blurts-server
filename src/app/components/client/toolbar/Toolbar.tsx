@@ -12,6 +12,7 @@ import { AppPicker } from "./AppPicker";
 import { UpsellBadge } from "./UpsellBadge";
 import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 import { FeatureFlagName } from "../../../../db/tables/featureFlags";
+import { AnnouncementDialog } from "./AnnouncementDialog";
 
 export type Props = {
   user: Session["user"];
@@ -48,6 +49,7 @@ export const Toolbar = (props: Props) => {
           experimentData={props.experimentData}
           autoOpenUpsellDialog={props.autoOpenUpsellDialog}
         />
+        <AnnouncementDialog />
         <AppPicker />
         {props.user && (
           <UserMenu user={props.user} fxaSettingsUrl={props.fxaSettingsUrl} />
