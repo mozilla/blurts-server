@@ -45,7 +45,7 @@ export const AnnouncementDialog = ({ ...otherProps }) => {
           state={triggerState}
           {...overlayProps}
         >
-          HELLO THIS IS THE CONTENT
+          TODO: Add notifications here
         </Popover>
       )}
     </>
