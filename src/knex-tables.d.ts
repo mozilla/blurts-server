@@ -442,6 +442,18 @@ declare module "knex/types/tables" {
     | "cta_label"
     | "cta_link";
 
+  interface UserAnnouncementsRow {
+    id: number;
+    user_id: number;
+    announcement_id: string;
+    status: string;
+    seen_at: Date;
+    cleared_at: Date;
+    clicked_at: Date;
+    created_at: Date;
+    updated_at: Date;
+  }
+
   /**
    * This modifies row types to indicate that dates can also be inserted as ISO
    * 8601 strings, not just Date objects (which will be returned on SELECT queries)
