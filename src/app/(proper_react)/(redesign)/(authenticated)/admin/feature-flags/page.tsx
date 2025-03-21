@@ -19,6 +19,7 @@ import {
 } from "../../../../../functions/server/getPremiumSubscriptionInfo";
 import { defaultExperimentData } from "../../../../../../telemetry/generated/nimbus/experiments";
 import { ExistingFlagEditor, NewFlagEditor } from "./components/FlagEditor";
+import { initializeUserAnnouncements } from "../../../../../../db/tables/user_announcements";
 
 export const metadata = {
   title: "Monitor Feature Flags",
@@ -37,7 +38,7 @@ export default async function FeatureFlagPage() {
   });
   const fxaSettingsUrl = process.env.FXA_SETTINGS_URL!;
 
-  if (!session?.user?.email) {
+  if (!session?.user?.email || !session.user.subscriber?.id) {
     return redirect("/");
   }
 
@@ -49,6 +50,10 @@ export default async function FeatureFlagPage() {
     (await getAllFeatureFlags()).toSorted(
       (flagA, flagB) => flagB.updated_at.getTime() - flagA.updated_at.getTime(),
     ) ?? [];
+
+  const userAnnouncements = await initializeUserAnnouncements(
+    session.user.subscriber.id,
+  );
 
   /**
    * Elements in this array are either existing flags that are disabled,
@@ -81,6 +86,7 @@ export default async function FeatureFlagPage() {
             // not user-visible), so no need to fetch experiment data:
             experimentData={defaultExperimentData["Features"]}
             enabledFeatureFlags={[]}
+            announcements={userAnnouncements}
           />
         </div>
       </nav>
