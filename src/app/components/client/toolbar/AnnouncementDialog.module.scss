@@ -1,0 +1,9 @@
+@use "../../../tokens";
+
+.announcementBtn {
+  all: unset;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: tokens.$color-grey-60;
+}
