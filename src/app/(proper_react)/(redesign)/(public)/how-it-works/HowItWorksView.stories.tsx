@@ -27,6 +27,7 @@ const meta: Meta<typeof HowItWorksView> = {
         l10n={getL10n()}
         eligibleForPremium={true}
         scanLimitReached={false}
+        enabledFeatureFlags={[]}
       />
     </PublicShell>
   ),

@@ -41,10 +41,16 @@ const PublicMobileShell = (
         enabledFeatureFlags={props.enabledFeatureFlags}
         experimentData={props.experimentData}
         fxaSettingsUrl={process.env.FXA_SETTINGS_URL!}
-        monthlySubscriptionUrl={getPremiumSubscriptionUrl({ type: "monthly" })}
+        monthlySubscriptionUrl={getPremiumSubscriptionUrl({
+          type: "monthly",
+          enabledFeatureFlags: props.enabledFeatureFlags,
+        })}
         session={null}
         subscriptionBillingAmount={getSubscriptionBillingAmount()}
-        yearlySubscriptionUrl={getPremiumSubscriptionUrl({ type: "yearly" })}
+        yearlySubscriptionUrl={getPremiumSubscriptionUrl({
+          type: "yearly",
+          enabledFeatureFlags: props.enabledFeatureFlags,
+        })}
       >
         {props.children}
       </MobileShell>

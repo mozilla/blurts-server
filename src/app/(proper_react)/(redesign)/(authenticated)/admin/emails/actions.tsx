@@ -45,6 +45,7 @@ import {
   UpcomingExpirationEmail,
 } from "../../../../../../emails/templates/upcomingExpiration/UpcomingExpirationEmail";
 import { CONST_DAY_MILLISECONDS } from "../../../../../../constants";
+import { getEnabledFeatureFlags } from "../../../../../../db/tables/featureFlags";
 
 async function getAdminSubscriber(): Promise<SubscriberRow | null> {
   const session = await getServerSession();
@@ -164,6 +165,9 @@ export async function triggerMonthlyActivityFree(emailAddress: string) {
 
   const unsubscribeLink =
     await getMonthlyActivityFreeUnsubscribeLink(subscriber);
+  const enabledFeatureFlags = await getEnabledFeatureFlags({
+    email: subscriber.primary_email,
+  });
 
   await send(
     emailAddress,
@@ -173,6 +177,7 @@ export async function triggerMonthlyActivityFree(emailAddress: string) {
       l10n={l10n}
       dataSummary={data}
       unsubscribeLink={unsubscribeLink as string}
+      enabledFeatureFlags={enabledFeatureFlags}
     />,
   );
 }
@@ -236,6 +241,9 @@ export async function triggerBreachAlert(emailAddress: string) {
     fxaUid: subscriber.fxa_uid,
     countryCode: assumedCountryCode,
   });
+  const enabledFeatureFlags = await getEnabledFeatureFlags({
+    email: subscriber.primary_email,
+  });
 
   await send(
     emailAddress,
@@ -251,6 +259,7 @@ export async function triggerBreachAlert(emailAddress: string) {
           ? getDashboardSummary(scanData.results, allSubscriberBreaches)
           : undefined
       }
+      enabledFeatureFlags={enabledFeatureFlags}
     />,
   );
 }

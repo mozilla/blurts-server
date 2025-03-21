@@ -141,13 +141,23 @@ export default async function DashboardPage(props: Props) {
     locale: getLocale(getL10n(await getAcceptLangHeaderInServerComponents())),
   });
 
-  const monthlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "monthly" });
-  const yearlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "yearly" });
+  const monthlySubscriptionUrl = getPremiumSubscriptionUrl({
+    type: "monthly",
+    enabledFeatureFlags,
+  });
+  const yearlySubscriptionUrl = getPremiumSubscriptionUrl({
+    type: "yearly",
+    enabledFeatureFlags,
+  });
   const fxaSettingsUrl = process.env.FXA_SETTINGS_URL!;
   const profileStats = await getProfilesStats();
   const additionalSubplatParams = await getAttributionsFromCookiesOrDb(
     session.user.subscriber.id,
   );
+  const additionalSubplatParamsString =
+    additionalSubplatParams.size > 0
+      ? `?${additionalSubplatParams.toString()}`
+      : "";
   const elapsedTimeInDaysSinceInitialScan =
     await getElapsedTimeInDaysSinceInitialScan(session.user);
 
@@ -167,8 +177,8 @@ export default async function DashboardPage(props: Props) {
       userScanData={scanResults}
       userBreaches={subBreaches}
       enabledFeatureFlags={enabledFeatureFlags}
-      monthlySubscriptionUrl={`${monthlySubscriptionUrl}&${additionalSubplatParams.toString()}`}
-      yearlySubscriptionUrl={`${yearlySubscriptionUrl}&${additionalSubplatParams.toString()}`}
+      monthlySubscriptionUrl={`${monthlySubscriptionUrl}${additionalSubplatParamsString}`}
+      yearlySubscriptionUrl={`${yearlySubscriptionUrl}${additionalSubplatParamsString}`}
       subscriptionBillingAmount={getSubscriptionBillingAmount()}
       fxaSettingsUrl={fxaSettingsUrl}
       scanCount={scanCount}

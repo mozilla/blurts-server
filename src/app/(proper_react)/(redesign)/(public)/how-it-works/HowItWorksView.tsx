@@ -9,17 +9,22 @@ import { DataBrokers } from "./components/DataBrokers";
 import { DataBreaches } from "./components/DataBreaches";
 import { FooterSection } from "./components/FooterSection";
 import { getPremiumSubscriptionUrl } from "../../../../functions/server/getPremiumSubscriptionInfo";
+import { FeatureFlagName } from "../../../../../db/tables/featureFlags";
 
 export type Props = {
   l10n: ExtendedReactLocalization;
   eligibleForPremium: boolean;
   scanLimitReached: boolean;
+  enabledFeatureFlags: FeatureFlagName[];
 };
 
 export const HowItWorksView = (props: Props) => {
   const { l10n, eligibleForPremium, scanLimitReached } = props;
 
-  const yearlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "yearly" });
+  const yearlySubscriptionUrl = getPremiumSubscriptionUrl({
+    type: "yearly",
+    enabledFeatureFlags: props.enabledFeatureFlags,
+  });
   return (
     <main>
       <Header l10n={l10n} />

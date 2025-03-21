@@ -42,6 +42,7 @@ export const BreachAlertEmailNonUsStory: Story = {
   args: {
     breach: createRandomHibpListing(),
     breachedEmail: "example@example.com",
+    enabledFeatureFlags: [],
     subscriber: {
       fxa_profile_json: {
         locale: "en-CA",
@@ -56,6 +57,7 @@ export const BreachAlertEmailUsFreeNoScanStory: Story = {
   args: {
     breach: createRandomHibpListing(),
     breachedEmail: "example@example.com",
+    enabledFeatureFlags: [],
     dataSummary: getDashboardSummary(
       [],
       Array.from({ length: 5 }, () => createRandomBreach()),
@@ -68,6 +70,7 @@ export const BreachAlertEmailUsFreeWithScanStory: Story = {
   args: {
     breach: createRandomHibpListing(),
     breachedEmail: "example@example.com",
+    enabledFeatureFlags: [],
     dataSummary: getDashboardSummary(
       Array.from({ length: 5 }, () => createRandomScanResult()),
       Array.from({ length: 5 }, () => createRandomBreach()),
@@ -83,6 +86,7 @@ export const BreachAlertEmailUsPlusNoScanStory: Story = {
   args: {
     breach: createRandomHibpListing(),
     breachedEmail: "example@example.com",
+    enabledFeatureFlags: [],
     subscriber: {
       onerep_profile_id: null,
       fxa_profile_json: {
@@ -97,6 +101,7 @@ export const BreachAlertEmailUsPlusWithScanStory: Story = {
   args: {
     breach: createRandomHibpListing(),
     breachedEmail: "example@example.com",
+    enabledFeatureFlags: [],
     subscriber: {
       onerep_profile_id: 1,
       fxa_profile_json: {

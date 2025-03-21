@@ -43,7 +43,10 @@ describe("How it works page", () => {
   });
 
   it("Data Removal buttons enter user into premium subscription flow", () => {
-    const yearlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "yearly" });
+    const yearlySubscriptionUrl = getPremiumSubscriptionUrl({
+      type: "yearly",
+      enabledFeatureFlags: [],
+    });
     const ComposedPage = composeStory(HowItWorks, Meta);
     render(<ComposedPage />);
 
