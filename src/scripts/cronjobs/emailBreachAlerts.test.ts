@@ -94,6 +94,10 @@ jest.mock("../../app/functions/server/refreshStoredScanResults", () => {
   };
 });
 
+jest.mock("../../db/tables/featureFlags.ts", () => ({
+  getFeatureFlagData: jest.fn(() => Promise.resolve(null)),
+}));
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const subClient: any = {
   subscriptionPath: jest.fn(),
