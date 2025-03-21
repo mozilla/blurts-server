@@ -47,6 +47,7 @@ import {
   getL10n,
 } from "../../../../../../../functions/l10n/serverComponents";
 import { getDataBrokerRemovalTimeEstimates } from "../../../../../../../functions/server/getDataBrokerRemovalTimeEstimates";
+import { initializeUserAnnouncements } from "../../../../../../../../db/tables/user_announcements";
 
 const dashboardTabSlugs = ["action-needed", "fixed"];
 
@@ -170,6 +171,11 @@ export default async function DashboardPage(props: Props) {
     : false;
   const signInCount = await getSignInCount(session.user.subscriber.id);
 
+  const userAnnouncements = await initializeUserAnnouncements(
+    session.user.subscriber.id,
+  );
+
+  console.log("these are the announcements: ", userAnnouncements);
   return (
     <View
       user={session.user}
