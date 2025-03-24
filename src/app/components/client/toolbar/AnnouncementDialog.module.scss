@@ -9,12 +9,35 @@
 }
 
 .announcementsContainer {
+  width: tokens.$content-sm;
   display: flex;
   flex-direction: column;
   gap: tokens.$spacing-sm;
+  box-shadow: tokens.$box-shadow-lg;
+  border-radius: tokens.$border-radius-md;
+  padding: tokens.$spacing-md;
 
-  dt {
-    font-weight: 600;
-    padding-bottom: tokens.$spacing-xs;
+  .announcementItem {
+    display: flex;
+    flex-direction: row;
+    gap: tokens.$spacing-md;
+    align-content: center;
+    align-items: center;
+
+    img {
+      width: 70px;
+      height: 70px;
+      border-radius: tokens.$border-radius-md;
+    }
+
+    dl {
+      display: flex;
+      flex-direction: column;
+
+      dt {
+        font-weight: 600;
+        padding-bottom: tokens.$spacing-xs;
+      }
+    }
   }
 }

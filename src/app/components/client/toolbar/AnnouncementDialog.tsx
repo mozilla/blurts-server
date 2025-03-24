@@ -4,9 +4,10 @@
 
 "use client";
 
+import Image from "next/image";
 import { useButton, useOverlayTrigger } from "react-aria";
 import { useL10n } from "../../../hooks/l10n";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useOverlayTriggerState } from "react-stately";
 import { Popover } from "../Popover";
 import { AnnouncementsIcon } from "../../server/Icons";
@@ -32,6 +33,11 @@ export const AnnouncementDialog = ({
   );
   const { buttonProps } = useButton(triggerProps, triggerRef);
   const popoverRef = useRef(null);
+  // const [bigImageIsLoading, setBigImageIsLoading] = useState(true);
+  // const [bigImageUnavailable, setBigImageUnavailable] = useState(false);
+  const [smallImageUnavailableMap, setSmallImageUnavailableMap] = useState<
+    Record<string, boolean>
+  >({});
 
   return (
     <>
@@ -56,20 +62,38 @@ export const AnnouncementDialog = ({
         >
           <div className={styles.announcementsContainer}>
             {announcements.map((announcement) => (
-              <dl key={announcement.announcement_id}>
-                <dt className="font-semibold">
-                  <LocalizedAnnouncementString
-                    notification={announcement}
-                    type="title"
-                  />
-                </dt>
-                <dd className="text-sm text-muted-foreground">
-                  <LocalizedAnnouncementString
-                    notification={announcement}
-                    type="description"
-                  />
-                </dd>
-              </dl>
+              <div className={styles.announcementItem} key={announcement.id}>
+                <Image
+                  src={
+                    !smallImageUnavailableMap[announcement.announcement_id]
+                      ? `/images/announcements/${announcement.announcement_id}/small.jpg`
+                      : `/images/announcements/fallback/small.jpg`
+                  }
+                  alt=""
+                  width={48}
+                  height={48}
+                  onError={() =>
+                    setSmallImageUnavailableMap((prev) => ({
+                      ...prev,
+                      [announcement.announcement_id]: true,
+                    }))
+                  }
+                />
+                <dl>
+                  <dt>
+                    <LocalizedAnnouncementString
+                      notification={announcement}
+                      type="title"
+                    />
+                  </dt>
+                  <dd>
+                    <LocalizedAnnouncementString
+                      notification={announcement}
+                      type="description"
+                    />
+                  </dd>
+                </dl>
+              </div>
             ))}
           </div>
         </Popover>
