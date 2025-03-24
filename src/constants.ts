@@ -22,6 +22,8 @@ export const CONST_URL_SUMO_MONITOR_REMOVAL =
   "https://support.mozilla.org/kb/how-does-monitor-plus-work#w_we-automatically-remove-your-information";
 export const CONST_URL_SUMO_MANUAL_REMOVAL =
   "https://support.mozilla.org/kb/general-questions-about-privacy-protection-scans#w_how-do-i-manually-remove-my-personal-information-from-data-broker-sites";
+export const CONST_URL_SUMO_EDIT_INFO_PERSONAL_INFO =
+  "https://support.mozilla.org/kb/mozilla-monitor-faq#w_why-do-you-need-my-personal-info";
 export const CONST_URL_SUMO_EDIT_PROFILE_DOB =
   "https://support.mozilla.org/kb/add-edit-your-monitor-information#w_why-can-i-not-edit-my-birth-date";
 export const CONST_URL_WAITLIST =

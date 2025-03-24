@@ -1,5 +1,13 @@
 @use "../../../../../../../tokens";
 
+.header {
+  align-items: center;
+  display: flex;
+  gap: tokens.$spacing-md;
+  justify-content: space-between;
+  width: 100%;
+}
+
 .section {
   font: tokens.$text-body-md;
   font-weight: 400;
@@ -101,4 +109,8 @@
     font: tokens.$text-body-sm;
     font-weight: 400;
   }
+}
+
+.upsellLinkContainer {
+  padding: tokens.$spacing-lg;
 }

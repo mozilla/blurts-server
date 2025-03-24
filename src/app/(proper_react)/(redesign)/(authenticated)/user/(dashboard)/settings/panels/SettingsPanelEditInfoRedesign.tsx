@@ -5,8 +5,12 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { OnerepProfileRow, SubscriberRow } from "knex/types/tables";
-import { CONST_MAX_NUM_ADDRESSES } from "../../../../../../../../constants";
+import {
+  CONST_MAX_NUM_ADDRESSES,
+  CONST_URL_SUMO_EDIT_INFO_PERSONAL_INFO,
+} from "../../../../../../../../constants";
 import { SubscriberEmailPreferencesOutput } from "../../../../../../../../db/tables/subscriber_email_preferences";
 import { useL10n } from "../../../../../../../hooks/l10n";
 import { EmailAddressAdderRedesign } from "../EmailAddressAdderRedesign";
@@ -23,13 +27,16 @@ import styles from "./SettingsPanelEditInfoRedesign.module.scss";
 import { onRemoveEmail } from "../actions";
 import { getLocale } from "../../../../../../../functions/universal/getLocale";
 import { TelemetryButton } from "../../../../../../../components/client/TelemetryButton";
+import { TelemetryLink } from "../../../../../../../components/client/TelemetryLink";
+import InfoShield from "../images/InfoShield.svg";
 
 export type SettingsPanelEditInfoRedesignProps = {
   breachCountByEmailAddress: Record<string, number>;
-  data?: SubscriberEmailPreferencesOutput;
   emailAddresses: SanitizedEmailAddressRow[];
+  isEligibleForPremium: boolean;
   subscriber: SubscriberRow;
   user: Session["user"];
+  data?: SubscriberEmailPreferencesOutput;
   profileData?: OnerepProfileRow;
 };
 
@@ -196,14 +203,45 @@ function SettingsPanelEditInfoRedesign(
   const l10n = useL10n();
   return (
     <>
-      <div>
-        <h3>{l10n.getString("settings-tab-label-update-scan-info")}</h3>
-        <p>{l10n.getString("settings-update-scan-info-description")}</p>
+      <div className={styles.header}>
+        <div>
+          <h3>{l10n.getString("settings-tab-label-update-scan-info")}</h3>
+          <p>
+            {l10n.getFragment("settings-update-scan-info-description", {
+              elems: {
+                a: (
+                  <TelemetryLink
+                    href={CONST_URL_SUMO_EDIT_INFO_PERSONAL_INFO}
+                    target="_blank"
+                    eventData={{
+                      link_id: "settings_edit_info_sumo_pesonal_info",
+                    }}
+                    showIcon
+                  />
+                ),
+              },
+            })}
+          </p>
+        </div>
+        <Image src={InfoShield} alt="" />
       </div>
       {props.profileData && (
         <ProfileInfoSection profileData={props.profileData} />
       )}
       <MonitoredEmailAddressesSection {...props} />
+      <div className={styles.upsellLinkContainer}>
+        {props.isEligibleForPremium && (
+          <TelemetryLink
+            href="/user/dashboard/action-needed?dialog=subscriptions"
+            target="_blank"
+            eventData={{
+              link_id: "settings_edit_info_upsell_cta",
+            }}
+          >
+            {l10n.getString("settings-update-scan-info-upsell-cta-label")}
+          </TelemetryLink>
+        )}
+      </div>
     </>
   );
 }

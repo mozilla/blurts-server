@@ -37,6 +37,7 @@ export type Props = {
   breachCountByEmailAddress: Record<string, number>;
   enabledFeatureFlags: FeatureFlagName[];
   experimentData: ExperimentData["Features"];
+  isEligibleForPremium: boolean;
   lastScanDate?: Date;
   isMonthlySubscriber: boolean;
   activeTab?: TabType;
@@ -68,6 +69,7 @@ export const SettingsView = (props: Props) => {
         subscriber={props.subscriber}
         user={props.user}
         profileData={props.profileData}
+        isEligibleForPremium={props.isEligibleForPremium}
       />
     </div>
   );

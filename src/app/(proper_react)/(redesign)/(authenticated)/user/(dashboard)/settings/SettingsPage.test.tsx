@@ -298,6 +298,7 @@ describe("Settings page", () => {
           experimentData={defaultExperimentData["Features"]}
           isMonthlySubscriber={true}
           data={mockedPlusSubscriberEmailPreferences}
+          isEligibleForPremium={false}
         />
       </SettingsWrapper>,
     );
@@ -335,6 +336,7 @@ describe("Settings page", () => {
           experimentData={defaultExperimentData["Features"]}
           isMonthlySubscriber={true}
           data={mockedPlusSubscriberEmailPreferences}
+          isEligibleForPremium={false}
         />
       </SettingsWrapper>,
     );
@@ -372,6 +374,7 @@ describe("Settings page", () => {
             enabledFeatureFlags={[]}
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
+            isEligibleForPremium={false}
           />
         </SettingsWrapper>,
       );
@@ -407,6 +410,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
           />
         </SettingsWrapper>,
       );
@@ -461,6 +465,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
           />
         </SettingsWrapper>,
       );
@@ -507,6 +512,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
           />
         </SettingsWrapper>,
       );
@@ -543,6 +549,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
           />
         </SettingsWrapper>,
       );
@@ -582,6 +589,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
           />
         </SettingsWrapper>,
       );
@@ -631,6 +639,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
           />
         </SettingsWrapper>,
       );
@@ -676,6 +685,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
           />
         </SettingsWrapper>,
       );
@@ -715,6 +725,7 @@ describe("Settings page", () => {
               experimentData={defaultExperimentData["Features"]}
               isMonthlySubscriber={true}
               data={mockedPlusSubscriberEmailPreferences}
+              isEligibleForPremium={false}
             />
           </SettingsWrapper>,
         );
@@ -761,6 +772,7 @@ describe("Settings page", () => {
               experimentData={defaultExperimentData["Features"]}
               isMonthlySubscriber={true}
               data={mockedPlusSubscriberEmailPreferences}
+              isEligibleForPremium={false}
             />
           </SettingsWrapper>,
         );
@@ -807,6 +819,7 @@ describe("Settings page", () => {
               experimentData={defaultExperimentData["Features"]}
               isMonthlySubscriber={true}
               data={mockedPlusSubscriberEmailPreferences}
+              isEligibleForPremium={false}
             />
           </SettingsWrapper>,
         );
@@ -857,6 +870,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
           />
         </SettingsWrapper>,
       );
@@ -894,6 +908,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
           />
         </SettingsWrapper>,
       );
@@ -932,6 +947,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
           />
         </SettingsWrapper>,
       );
@@ -977,6 +993,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
           />
         </SettingsWrapper>,
       );
@@ -1057,6 +1074,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
           />
         </SettingsWrapper>,
       );
@@ -1116,6 +1134,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
           />
         </SettingsWrapper>,
       );
@@ -1168,6 +1187,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
           />
         </SettingsWrapper>,
       );
@@ -1211,6 +1231,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
           />
         </SettingsWrapper>,
       );
@@ -1256,6 +1277,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
           />
         </SettingsWrapper>,
       );
@@ -1302,6 +1324,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
           />
         </SettingsWrapper>,
       );
@@ -1345,6 +1368,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
           />
         </SettingsWrapper>,
       );
@@ -1394,6 +1418,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
           />
         </SettingsWrapper>,
       );
@@ -1440,6 +1465,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
           />
         </SettingsWrapper>,
       );
@@ -1491,6 +1517,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
           />
         </SettingsWrapper>,
       );
@@ -1538,6 +1565,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
           />
         </SettingsWrapper>,
       );
@@ -1589,6 +1617,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
           />
         </SettingsWrapper>,
       );
@@ -1635,6 +1664,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
           />
         </SettingsWrapper>,
       );
@@ -1686,6 +1716,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
           />
         </SettingsWrapper>,
       );
@@ -1749,6 +1780,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
           />
         </SettingsWrapper>,
       );
@@ -1838,6 +1870,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
           />
         </SettingsWrapper>,
       );
@@ -1905,6 +1938,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
           />
         </SettingsWrapper>,
       );
@@ -1948,6 +1982,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
           />
         </SettingsWrapper>,
       );
@@ -1994,6 +2029,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
           />
         </SettingsWrapper>,
       );
@@ -2040,6 +2076,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
           />
         </SettingsWrapper>,
       );
@@ -2102,6 +2139,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
           />
         </SettingsWrapper>,
       );
@@ -2144,6 +2182,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
           />
         </SettingsWrapper>,
       );
@@ -2205,6 +2244,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
           />
         </SettingsWrapper>,
       );
@@ -2254,6 +2294,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
           />
         </SettingsWrapper>,
       );
@@ -2313,6 +2354,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={false}
             data={mockedFreeSubscriberEmailPreferences}
+            isEligibleForPremium={false}
           />
         </SettingsWrapper>,
       );
@@ -2356,6 +2398,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
           />
         </SettingsWrapper>,
       );
@@ -2402,6 +2445,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
           />
         </SettingsWrapper>,
       );
@@ -2458,6 +2502,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
           />
         </SettingsWrapper>,
       );
@@ -2516,6 +2561,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
           />
         </SettingsWrapper>,
       );

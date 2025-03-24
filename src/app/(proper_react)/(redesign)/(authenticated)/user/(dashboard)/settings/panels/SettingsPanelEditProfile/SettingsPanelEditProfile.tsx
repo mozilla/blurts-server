@@ -364,7 +364,7 @@ function EditProfileFormInputs(props: {
             isRequired={props.profileDataKey !== "middle_name"}
             isInvalid={isRequired && (itemData as string).trim() === ""}
             errorMessage={l10n.getString(
-              "settings-edit-profile-info-form-input-empty-error-label",
+              `settings-edit-profile-info-form-input-error-${profileDataKeyParsed}`,
             )}
           />
           <strong>
@@ -474,6 +474,10 @@ function EditProfileFormInputs(props: {
                             `settings-edit-profile-info-form-input-label-other-phone-number`,
                           )
                     }
+                    isInvalid={item.trim() === ""}
+                    errorMessage={l10n.getString(
+                      "settings-edit-profile-info-form-input-error-phone-number",
+                    )}
                     hasFloatingLabel
                   />
                   {itemIndex > 0 && (

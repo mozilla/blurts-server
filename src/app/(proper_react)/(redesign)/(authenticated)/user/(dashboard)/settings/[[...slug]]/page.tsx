@@ -31,6 +31,7 @@ import { checkUserHasMonthlySubscription } from "../../../../../../../functions/
 import { getEmailPreferenceForPrimaryEmail } from "../../../../../../../../db/tables/subscriber_email_preferences";
 import { CONST_SETTINGS_TAB_SLUGS } from "../../../../../../../../constants";
 import getDataBrokerScanProfile from "../../../../../../../functions/server/getDataBrokerScanProfile";
+import { canSubscribeToPremium } from "../../../../../../../functions/universal/user";
 
 type Props = {
   params: Promise<{
@@ -115,6 +116,10 @@ export default async function SettingsPage(props: Props) {
   const profileData =
     session.user.subscriber.onerep_profile_id &&
     (await getDataBrokerScanProfile(session.user.subscriber.onerep_profile_id));
+  const isEligibleForPremium = canSubscribeToPremium({
+    user: session.user,
+    countryCode,
+  });
 
   return (
     <SettingsView
@@ -134,6 +139,7 @@ export default async function SettingsPage(props: Props) {
       lastScanDate={lastOneRepScan?.created_at}
       isMonthlySubscriber={isMonthlySubscriber}
       activeTab={activeTab}
+      isEligibleForPremium={isEligibleForPremium}
       {...(profileData && { profileData })}
     />
   );

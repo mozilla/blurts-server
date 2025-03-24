@@ -31,10 +31,7 @@ import { getExposureStatus } from "../../../../../../components/server/StatusPil
 import { TabList } from "../../../../../../components/client/TabList";
 import { filterExposures } from "./filterExposures";
 import { SubscriberBreach } from "../../../../../../../utils/subscriberBreaches";
-import {
-  canSubscribeToPremium,
-  hasPremium,
-} from "../../../../../../functions/universal/user";
+import { hasPremium } from "../../../../../../functions/universal/user";
 import { LatestOnerepScanData } from "../../../../../../../db/tables/onerep_scans";
 import { getLocale } from "../../../../../../functions/universal/getLocale";
 import { Button } from "../../../../../../components/client/Button";
@@ -506,10 +503,7 @@ export const View = (props: Props) => {
           tabType={activeTab}
           scanInProgress={initialScanInProgress}
           isPremiumUser={hasPremium(props.user)}
-          isEligibleForPremium={canSubscribeToPremium({
-            user: props.user,
-            countryCode,
-          })}
+          isEligibleForPremium={props.isEligibleForPremium}
           isEligibleForFreeScan={props.isEligibleForFreeScan}
           hasExposures={hasExposures}
           hasUnresolvedBreaches={hasUnresolvedBreaches}

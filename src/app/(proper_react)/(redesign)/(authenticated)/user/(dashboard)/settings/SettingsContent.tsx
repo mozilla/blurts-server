@@ -100,6 +100,7 @@ function SettingsContent(props: SettingsProps) {
           isMonthlySubscriber={props.isMonthlySubscriber}
           subscriber={props.subscriber}
           user={props.user}
+          isEligibleForPremium={props.isEligibleForPremium}
           {...(props.profileData && { profileData: props.profileData })}
         />
       </div>

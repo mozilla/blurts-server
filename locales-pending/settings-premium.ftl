@@ -66,7 +66,8 @@ settings-alert-preferences-allow-monthly-monitor-plus-report-title = Monthly { -
 
 ## Update scan info
 
-settings-update-scan-info-description = { -brand-monitor } is most effective at protecting your info when you add specific details. Add any of your name variations, emails, or locations. Why should I add details for my scan?
+settings-update-scan-info-description = { -brand-monitor } is most effective at protecting your info when you add specific details. Add any of your name variations, emails, or locations. <a>Why should I add details for my scan?</a>
+settings-update-scan-info-upsell-cta-label = Upgrade to { -brand-monitor-plus } to protect your personal info
 
 ## Details about you
 
@@ -131,7 +132,9 @@ settings-edit-profile-info-form-input-label-primary-phone-number = Primary numbe
 settings-edit-profile-info-form-input-label-other-phone-number = Other phone number
 settings-edit-profile-info-form-input-label-primary-location = City and state
 settings-edit-profile-info-form-input-label-other-location = Past location
-settings-edit-profile-info-form-input-empty-error-label = This field can’t be empty
+settings-edit-profile-info-form-input-error-first-name = First name is required
+settings-edit-profile-info-form-input-error-last-name = Last name is required
+settings-edit-profile-info-form-input-error-phone-number = Enter a valid phone number
 
 settings-edit-profile-info-form-date-of-birth-note = Date of birth cannot be changed for security reasons. <a>Why?</a>
 settings-edit-profile-info-form-add-item-button-label = Add item
