@@ -20,7 +20,7 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "stage.firefoxmonitor.nonprod.cloudops.mozgcp.net",
+        hostname: "monitor-stage.allizom.org",
       },
       {
         protocol: "https",
