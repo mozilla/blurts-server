@@ -1,0 +1,218 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+@use "../../tokens";
+
+.diagram {
+  @media (max-width: tokens.$screen-sm - 1) {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    $chevronHeight: 12px;
+    /* This is the white gap between the coloured numbers */
+    gap: 5px;
+    font: tokens.$text-body-md;
+    font-weight: 600;
+    list-style-type: none;
+    $verticalPadding: tokens.$spacing-md;
+    $horizontalPadding: tokens.$spacing-md;
+    $verticalChevronPadding: tokens.$spacing-xs;
+
+    li .contentWrapper {
+      display: flex;
+      gap: tokens.$spacing-sm;
+      align-items: stretch;
+
+      .manualNumber {
+        padding: tokens.$spacing-sm 10px;
+        border-radius: tokens.$border-radius-sm;
+        width: tokens.$layout-sm;
+        text-align: center;
+      }
+      .label {
+        padding-block: tokens.$spacing-sm;
+      }
+    }
+
+    li:nth-child(1) {
+      .manualNumber {
+        background-color: tokens.$color-removal-status-requested;
+        clip-path: polygon(
+          100% 0%,
+          100% calc(100% - $chevronHeight),
+          50% 100%,
+          0% calc(100% - $chevronHeight),
+          0% 0%
+        );
+      }
+      .manualNumber,
+      .label {
+        padding-block-end: $chevronHeight;
+      }
+      /*
+        This <li>'s .manualNumber has a pink triangle at the bottom of it,
+        and the next (blue) one has a triangle-shaped hole at the top that
+        this one can visually slot into. To do so, the elements should overlap
+        by the height of those triangles ($chevronHeight), which is why we have
+        a negative bottom margin here, and the padding-block-end above to compensate:
+       */
+      margin-block-end: $chevronHeight * -1;
+    }
+
+    li:nth-child(2) {
+      .manualNumber {
+        background-color: tokens.$color-removal-status-in-progress;
+        clip-path: polygon(
+          100% 0%,
+          100% calc(100% - $chevronHeight),
+          50% 100%,
+          0% calc(100% - $chevronHeight),
+          0% 0%,
+          50% $chevronHeight,
+          100% 0%
+        );
+      }
+      .manualNumber,
+      .label {
+        padding-block-start: $chevronHeight + $verticalChevronPadding;
+        padding-block-end: $chevronHeight;
+      }
+      /*
+        This <li>'s .manualNumber has a blue triangle at the bottom of it,
+        and the next (green) one has a triangle-shaped hole at the top that
+        this one can visually slot into. To do so, the elements should overlap
+        by the height of those triangles ($chevronHeight), which is why we have
+        a negative bottom margin here, and the padding-block-end above to compensate.
+        (And also a padding-block-start to do the same trick with the element above.)
+       */
+      margin-block-end: $chevronHeight * -1;
+    }
+
+    li:nth-child(3) {
+      .manualNumber {
+        background-color: tokens.$color-removal-status-resolved;
+        clip-path: polygon(
+          0% 0%,
+          50% $chevronHeight,
+          100% 0%,
+          100% 100%,
+          0% 100%
+        );
+      }
+      .manualNumber,
+      .label {
+        padding-block-start: $chevronHeight + $verticalChevronPadding;
+      }
+    }
+  }
+
+  @media (min-width: tokens.$screen-sm) {
+    padding: 0;
+    display: flex;
+    $chevronWidth: 12px;
+    /* This is the white gap between the coloured sections */
+    gap: 5px;
+    $verticalPadding: tokens.$spacing-md;
+    $horizontalPadding: tokens.$spacing-md;
+    list-style-type: none;
+
+    .flexWrapper {
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+
+    li {
+      flex: 1 0 33%;
+      padding: $verticalPadding $horizontalPadding;
+      list-style-position: inside;
+      border-radius: tokens.$border-radius-sm;
+      font: tokens.$text-body-md;
+      font-weight: 600;
+    }
+
+    li:nth-child(1) {
+      background-color: tokens.$color-removal-status-requested;
+      /*
+        This <li>'s .manualNumber has a pink triangle at the end of it,
+        and the next (blue) one has a triangle-shaped hole on the left that
+        this one can visually slot into. To do so, the elements should overlap
+        by the width of those triangles ($chevronWidth), which is why we have
+        a negative right margin here:
+       */
+      margin-inline-end: $chevronWidth * -1;
+      clip-path: polygon(
+        0% 0%,
+        calc(100% - $chevronWidth) 0%,
+        100% 50%,
+        calc(100% - $chevronWidth) 100%,
+        0% 100%
+      );
+      &:dir(rtl) {
+        clip-path: polygon(
+          0% 0%,
+          100% 0%,
+          100% 100%,
+          $chevronWidth 100%,
+          0% 50%,
+          $chevronWidth 0%
+        );
+      }
+    }
+
+    /* The :dir(rtl) selector above is more specific,
+       but it doesn't conflict with this one, so for clarity,
+       I'm keeping this below. */
+    /* stylelint-disable-next-line no-descending-specificity */
+    li:nth-child(2) {
+      background-color: tokens.$color-removal-status-in-progress;
+      padding-inline-start: $chevronWidth + $horizontalPadding;
+      /*
+        This <li>'s .manualNumber has a blue triangle at the end of it,
+        and the next (green) one has a triangle-shaped hole on the left that
+        this one can visually slot into. To do so, the elements should overlap
+        by the width of those triangles ($chevronWidth), which is why we have
+        a negative right margin here:
+       */
+      margin-inline-end: $chevronWidth * -1;
+      clip-path: polygon(
+        calc(100% - $chevronWidth) 0%,
+        100% 50%,
+        calc(100% - $chevronWidth) 100%,
+        0% 100%,
+        $chevronWidth 50%,
+        0% 0%
+      );
+      &:dir(rtl) {
+        clip-path: polygon(
+          100% 0%,
+          calc(100% - $chevronWidth) 50%,
+          100% 100%,
+          $chevronWidth 100%,
+          0% 50%,
+          $chevronWidth 0%
+        );
+      }
+    }
+
+    /* The :dir(rtl) selectors above are more specific,
+       but they don't conflict with this one, so for clarity,
+       I'm keeping this below. */
+    /* stylelint-disable-next-line no-descending-specificity */
+    li:nth-child(3) {
+      background-color: tokens.$color-removal-status-resolved;
+      padding-inline-start: $chevronWidth + $horizontalPadding;
+      clip-path: polygon(100% 0%, 100% 100%, 0% 100%, $chevronWidth 50%, 0% 0%);
+      &:dir(rtl) {
+        clip-path: polygon(
+          100% 0%,
+          calc(100% - $chevronWidth) 50%,
+          100% 100%,
+          0% 100%,
+          0% 0%
+        );
+      }
+    }
+  }
+}

@@ -25,6 +25,10 @@ user-add-invalid-email = ഇമെയിൽ അസാധുവാണ്
 user-verify-token-error = വെരിഫിക്കേഷൻ ടോക്കൺ ആവശ്യമാണ്.
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = അപഹരിക്കപ്പെട്ട വിവരങ്ങള്‍:
+# Breach data provided by Have I Been Pwned.
+# Variables:
+#   $hibp-link (String) - Link to Have I Been Pwned
+hibp-attribution = { $hibp-link } നല്‍കിയ ചോര്‍ച്ചാ വിവരങ്ങള്‍
 show-all = എല്ലാം കാണിക്കുക
 sign-out = പുറത്തിറങ്ങുക
 # Manage Firefox Account, link to page where account holders can change their account settings.

@@ -413,10 +413,9 @@ declare module "knex/types/tables" {
     "id" | "created_at" | "modified_at"
   >;
 
-  interface NotificationRow {
+  interface AnnouncementRow {
     id: number;
-    notification_id?: string;
-    label: string;
+    announcement_id: string;
     title: string;
     description: string;
     small_image_path: string;
@@ -426,9 +425,10 @@ declare module "knex/types/tables" {
     audience: string;
     created_at: Date;
     updated_at: Date;
+    label: string;
   }
 
-  type NotificationAutoInsertedColumns =
+  type AnnouncementRowInsertedColumns =
     | "id"
     | "created_at"
     | "updated_at"
@@ -437,10 +437,22 @@ declare module "knex/types/tables" {
     | "big_image_path"
     | "title"
     | "description";
-  type NotificationOptionalColumns =
-    | "notification_id"
+  type AnnouncementRowOptionalColumns =
+    | "announcement_id"
     | "cta_label"
     | "cta_link";
+
+  interface UserAnnouncementsRow {
+    id: number;
+    user_id: number;
+    announcement_id: string;
+    status: string;
+    seen_at: Date;
+    cleared_at: Date;
+    clicked_at: Date;
+    created_at: Date;
+    updated_at: Date;
+  }
 
   /**
    * This modifies row types to indicate that dates can also be inserted as ISO
@@ -471,18 +483,18 @@ declare module "knex/types/tables" {
     >;
 
     notifications: Knex.CompositeTableType<
-      NotificationRow,
+      AnnouncementRow,
       WritableDateColumns<
         Omit<
-          NotificationRow,
+          AnnouncementRow,
           NotificationAutoInsertedColumns | NotificationOptionalColumns
         > &
-          Partial<Pick<NotificationRow, NotificationOptionalColumns>>
+          Partial<Pick<AnnouncementRow, NotificationOptionalColumns>>
       >,
       // On updates, don't allow updating the ID and created date
       WritableDateColumns<
-        Partial<Omit<NotificationRow, "id" | "created_at">> &
-          Pick<NotificationRow, "updated_at">
+        Partial<Omit<AnnouncementRow, "id" | "created_at">> &
+          Pick<AnnouncementRow, "updated_at">
       >
     >;
 
