@@ -24,9 +24,6 @@ import { getAttributionsFromCookiesOrDb } from "../../../../../../../../../funct
 import { hasPremium } from "../../../../../../../../../functions/universal/user";
 import { getEnabledFeatureFlags } from "../../../../../../../../../../db/tables/featureFlags";
 
-const monthlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "monthly" });
-const yearlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "yearly" });
-
 export default async function AutomaticRemovePage() {
   const session = await getServerSession();
 
@@ -40,6 +37,15 @@ export default async function AutomaticRemovePage() {
 
   const enabledFeatureFlags = await getEnabledFeatureFlags({
     email: session.user.email,
+  });
+
+  const monthlySubscriptionUrl = getPremiumSubscriptionUrl({
+    type: "monthly",
+    enabledFeatureFlags,
+  });
+  const yearlySubscriptionUrl = getPremiumSubscriptionUrl({
+    type: "yearly",
+    enabledFeatureFlags,
   });
 
   const countryCode = getCountryCode(await headers());

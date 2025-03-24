@@ -33,8 +33,14 @@ export const PricingPlans = (props: LandingPageProps) => {
       <PricingPlanList
         aria-labelledby={headingId}
         premiumSubscriptionUrl={{
-          monthly: getPremiumSubscriptionUrl({ type: "monthly" }),
-          yearly: getPremiumSubscriptionUrl({ type: "yearly" }),
+          monthly: getPremiumSubscriptionUrl({
+            type: "monthly",
+            enabledFeatureFlags: props.enabledFeatureFlags,
+          }),
+          yearly: getPremiumSubscriptionUrl({
+            type: "yearly",
+            enabledFeatureFlags: props.enabledFeatureFlags,
+          }),
         }}
         subscriptionBillingAmount={getSubscriptionBillingAmount()}
         scanLimitReached={props.scanLimitReached}
