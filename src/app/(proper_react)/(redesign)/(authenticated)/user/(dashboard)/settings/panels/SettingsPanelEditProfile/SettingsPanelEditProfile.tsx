@@ -38,6 +38,7 @@ import { useOverlayTrigger } from "react-aria";
 import { ModalOverlay } from "../../../../../../../../components/client/dialog/ModalOverlay";
 import { Dialog } from "../../../../../../../../components/client/dialog/Dialog";
 import CancelDialogIllustration from "../../../../../../../images/monitor-logo-minimal.svg";
+import { hasPremium } from "../../../../../../../../functions/universal/user";
 
 const profileFields: (keyof OnerepProfileRow)[] = [
   "first_name",
@@ -70,7 +71,7 @@ export type SettingsPanelEditProfileProps = {
 function SettingsPanelEditProfile(props: SettingsPanelEditProfileProps) {
   const l10n = useL10n();
   const router = useRouter();
-  if (typeof props.profileData === "undefined") {
+  if (!hasPremium(props.user) || typeof props.profileData === "undefined") {
     router.push("/user/settings/edit-info");
     return;
   }

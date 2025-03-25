@@ -24,7 +24,6 @@ import {
 } from "./SettingsPanelEditProfile/SettingsPanelEditProfile";
 import styles from "./Panel.module.scss";
 import { TabType } from "../View";
-import { hasPremium } from "../../../../../../../functions/universal/user";
 
 export type SettingsProps = (
   | SettingsPanelEditInfoProps
@@ -50,10 +49,7 @@ function Panel(props: SettingsProps) {
     case "manage-account":
       return <SettingsPanelManageAccount {...props} />;
     case "edit-profile":
-      if (
-        props.enabledFeatureFlags.includes("EditScanProfileDetails") &&
-        hasPremium(props.user)
-      ) {
+      if (props.enabledFeatureFlags.includes("EditScanProfileDetails")) {
         return <SettingsPanelEditProfile {...props} />;
       }
     default:
