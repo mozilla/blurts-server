@@ -27,8 +27,14 @@ export const metadata = {
 export default async function FeatureFlagPage() {
   const session = await getServerSession();
 
-  const monthlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "monthly" });
-  const yearlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "yearly" });
+  const monthlySubscriptionUrl = getPremiumSubscriptionUrl({
+    type: "monthly",
+    enabledFeatureFlags: [],
+  });
+  const yearlySubscriptionUrl = getPremiumSubscriptionUrl({
+    type: "yearly",
+    enabledFeatureFlags: [],
+  });
   const fxaSettingsUrl = process.env.FXA_SETTINGS_URL!;
 
   if (!session?.user?.email) {

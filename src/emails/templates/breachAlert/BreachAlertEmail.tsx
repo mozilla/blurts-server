@@ -17,6 +17,7 @@ import { ResolutionRelevantBreachDataTypes } from "../../../app/functions/univer
 import { EmailBanner } from "../../components/EmailBanner";
 import { DataPointCount } from "../../components/EmailDataPointCount";
 import { HeaderStyles, MetaTags } from "../../components/HeaderStyles";
+import { FeatureFlagName } from "../../../db/tables/featureFlags";
 
 export type BreachAlertEmailProps = {
   l10n: ExtendedReactLocalization;
@@ -24,6 +25,7 @@ export type BreachAlertEmailProps = {
   breachedEmail: string;
   utmCampaignId: string;
   subscriber: SubscriberRow;
+  enabledFeatureFlags: FeatureFlagName[];
   /**
    * We need to run a bunch of queries to collect this data,
    * so it's optional; however, make sure to pass it in for
@@ -62,7 +64,10 @@ export const BreachAlertEmail = (props: BreachAlertEmailProps) => {
   }
 
   const premiumSubscriptionUrlObject = new URL(
-    getPremiumSubscriptionUrl({ type: "yearly" }),
+    getPremiumSubscriptionUrl({
+      type: "yearly",
+      enabledFeatureFlags: props.enabledFeatureFlags,
+    }),
   );
   premiumSubscriptionUrlObject.searchParams.set("utm_medium", "product-email");
   premiumSubscriptionUrlObject.searchParams.set(

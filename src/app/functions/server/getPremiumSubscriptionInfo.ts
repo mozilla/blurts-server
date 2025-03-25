@@ -2,6 +2,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import { FeatureFlagName } from "../../../db/tables/featureFlags";
+
 // We need access to environment variables that are only available on the
 // server-side, because they're set by the server environment (but in
 // Storybook this is fine to run; the URLs don't need to work there):
@@ -13,11 +15,19 @@ type SubscriptionPeriod = "monthly" | "yearly";
 
 interface GetPremiumSubscriptionUrlParams {
   type: SubscriptionPeriod;
+  enabledFeatureFlags: FeatureFlagName[];
 }
 
 export function getPremiumSubscriptionUrl({
   type,
+  enabledFeatureFlags,
 }: GetPremiumSubscriptionUrlParams): string {
+  if (enabledFeatureFlags.includes("SubPlat3")) {
+    const subscriptionUrl = process.env.SUBPLAT_SUBSCRIPTIONS_URL as string;
+    const offeringId = process.env.SUBPLAT_MONITOR_OFFERING_ID as string;
+    return `${subscriptionUrl}/${offeringId}/${type}/landing`;
+  }
+
   const subscriptionUrl = process.env.FXA_SUBSCRIPTIONS_URL as string;
   const productId = process.env.PREMIUM_PRODUCT_ID as string;
   const planId = (

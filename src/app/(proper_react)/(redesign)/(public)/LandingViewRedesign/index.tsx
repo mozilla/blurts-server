@@ -13,9 +13,11 @@ import { LogoBlock } from "./components/LogoBlock";
 import { Faq } from "./components/Faq";
 import { CtaInputBanner } from "./components/CtaInputBanner";
 import { PricingPlans } from "./components/PricingPlans";
+import { FeatureFlagName } from "../../../../../db/tables/featureFlags";
 
 export type LandingPageProps = {
   countryCode: string;
+  enabledFeatureFlags: FeatureFlagName[];
   experimentData: ExperimentData["Features"];
   l10n: ExtendedReactLocalization;
   eligibleForPremium: boolean;

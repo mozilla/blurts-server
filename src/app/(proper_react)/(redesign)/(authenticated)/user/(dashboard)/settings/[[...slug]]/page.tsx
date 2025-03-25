@@ -63,8 +63,6 @@ export default async function SettingsPage(props: Props) {
     session.user,
   );
 
-  const monthlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "monthly" });
-  const yearlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "yearly" });
   const fxaSettingsUrl = process.env.FXA_SETTINGS_URL!;
   const fxaSubscriptionsUrl = process.env.FXA_SUBSCRIPTIONS_URL!;
   const additionalSubplatParams = await getAttributionsFromCookiesOrDb(
@@ -88,6 +86,15 @@ export default async function SettingsPage(props: Props) {
   const enabledFeatureFlags = await getEnabledFeatureFlags({
     isSignedOut: false,
     email: session.user.email,
+  });
+
+  const monthlySubscriptionUrl = getPremiumSubscriptionUrl({
+    type: "monthly",
+    enabledFeatureFlags,
+  });
+  const yearlySubscriptionUrl = getPremiumSubscriptionUrl({
+    type: "yearly",
+    enabledFeatureFlags,
   });
 
   const headersList = await headers();
