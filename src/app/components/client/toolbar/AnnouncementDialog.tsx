@@ -34,9 +34,10 @@ export const AnnouncementDialog = ({
   );
   const { buttonProps } = useButton(triggerProps, triggerRef);
   const popoverRef = useRef(null);
-  // const [bigImageIsLoading, setBigImageIsLoading] = useState(true);
-  // const [bigImageUnavailable, setBigImageUnavailable] = useState(false);
   const [smallImageUnavailableMap, setSmallImageUnavailableMap] = useState<
+    Record<string, boolean>
+  >({});
+  const [bigImageUnavailableMap, setBigImageUnavailableMap] = useState<
     Record<string, boolean>
   >({});
   const [announcementDetailsView, setAnnouncementDetailsView] = useState(false);
@@ -48,6 +49,7 @@ export const AnnouncementDialog = ({
   const [userAnnouncements, setUserAnnouncements] =
     useState<UserAnnouncementWithDetails[]>(announcements);
 
+  // Refetch announcements when a user opens the dialog
   useEffect(() => {
     if (triggerState.isOpen) {
       fetch("/api/v1/user/announcements")
@@ -59,6 +61,42 @@ export const AnnouncementDialog = ({
   const sortedAnnouncements = [...userAnnouncements].sort((a, b) => {
     return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
   });
+
+  const handleClickAnnouncement = async (
+    announcement: UserAnnouncementWithDetails,
+  ) => {
+    try {
+      await fetch(
+        `/api/v1/user/announcements/${announcement.announcement_id}/seen`,
+        {
+          method: "PUT",
+        },
+      );
+
+      setUserAnnouncements((prev) =>
+        prev.map((a) =>
+          a.announcement_id === announcement.announcement_id
+            ? {
+                ...a,
+                status: "seen",
+                clicked_at: new Date().toISOString(),
+              }
+            : a,
+        ),
+      );
+
+      setRelevantAnnouncement(announcement);
+      setAnnouncementDetailsView(true);
+    } catch (err) {
+      console.error("Failed to mark as clicked", err);
+    }
+  };
+
+  const filteredAnnouncements = sortedAnnouncements.filter((a) =>
+    activeTab === "new"
+      ? a.status === "new"
+      : a.status === "seen" || a.status === "clicked",
+  );
 
   return (
     <>
@@ -105,7 +143,7 @@ export const AnnouncementDialog = ({
                   <Image
                     className={styles.bigImg}
                     src={
-                      !smallImageUnavailableMap[
+                      !bigImageUnavailableMap[
                         relevantAnnouncement.announcement_id
                       ]
                         ? `/images/announcements/${relevantAnnouncement.announcement_id}/big.jpg`
@@ -115,7 +153,7 @@ export const AnnouncementDialog = ({
                     width={300}
                     height={100}
                     onError={() =>
-                      setSmallImageUnavailableMap((prev) => ({
+                      setBigImageUnavailableMap((prev) => ({
                         ...prev,
                         [relevantAnnouncement.announcement_id]: true,
                       }))
@@ -163,15 +201,12 @@ export const AnnouncementDialog = ({
                 </div>
               ) : (
                 // List of announcements
-                sortedAnnouncements.map((announcement) => (
+                filteredAnnouncements.map((announcement) => (
                   <div
                     role="button"
                     className={styles.announcementItem}
                     key={announcement.id}
-                    onClick={() => {
-                      setRelevantAnnouncement(announcement);
-                      setAnnouncementDetailsView(true);
-                    }}
+                    onClick={() => handleClickAnnouncement(announcement)}
                   >
                     <Image
                       className={styles.smallImg}
