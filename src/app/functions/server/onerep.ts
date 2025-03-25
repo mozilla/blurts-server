@@ -158,7 +158,14 @@ async function onerepFetch(
     path = path.substring(1);
   }
 
-  const url = new URL(path, onerepApiBase);
+  console.log({ path });
+  console.log({ onerepApiBase });
+
+  // const url = new URL(path, onerepApiBase);
+  // If path starts with /, remove it when onerepApiBase already has a path
+  const adjustedPath = path.startsWith("/") ? path.substring(1) : path;
+  const url = new URL(adjustedPath, onerepApiBase);
+  console.log({ url });
   const headers = new Headers(options.headers);
   headers.set("Authorization", `Bearer ${onerepApiKey}`);
   headers.set("Accept", "application/json");
