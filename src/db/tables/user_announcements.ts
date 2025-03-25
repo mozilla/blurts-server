@@ -15,6 +15,25 @@ export type UserAnnouncementWithDetails = AnnouncementRow & {
   user_created_at: Date;
   user_updated_at: Date;
 };
+
+export async function markAnnouncementAsSeen(
+  userId: number,
+  announcementId: string,
+) {
+  try {
+    return knex("user_announcements")
+      .where({ user_id: userId, announcement_id: announcementId })
+      .update({
+        status: "seen",
+        seen_at: new Date(),
+        updated_at: new Date(),
+      });
+  } catch (error) {
+    logger.error("Could not set announcement to seen", error);
+    throw error;
+  }
+}
+
 export async function initializeUserAnnouncements(
   userId: number,
 ): Promise<UserAnnouncementWithDetails[]> {
