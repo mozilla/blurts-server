@@ -17,13 +17,17 @@ import { logger } from "./logging";
  * Continue if there are any errors.
  *
  * @param onerepProfileId {number} OneRep Profile ID to refresh.
+ * @param fxaUid {string} Firefox Account UID for authentication.
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-export async function refreshStoredScanResults(onerepProfileId: number) {
+export async function refreshStoredScanResults(
+  onerepProfileId: number,
+  fxaUid: string,
+) {
   try {
     console.log("refresh stored scan results");
-    const remoteScans = (await listScans(onerepProfileId)).data;
+    const remoteScans = (await listScans(onerepProfileId, fxaUid)).data;
     const localScans = await getAllScansForProfile(onerepProfileId);
     console.log({ remoteScans });
     console.log({ localScans });
@@ -54,7 +58,7 @@ export async function refreshStoredScanResults(onerepProfileId: number) {
 
     // Refresh results for all scans, new and existing.
     // The database will ignore any attempt to insert duplicate scan result IDs.
-    const allScanResults = await getAllScanResults(onerepProfileId);
+    const allScanResults = await getAllScanResults(onerepProfileId, fxaUid);
     console.log({ allScanResults });
     await addOnerepScanResults(onerepProfileId, allScanResults);
   } catch (ex) {

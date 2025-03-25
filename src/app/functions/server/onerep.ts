@@ -3,7 +3,10 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import type { Session } from "next-auth";
-import { getOnerepProfileId } from "../../../db/tables/subscribers";
+import {
+  getFxATokensByFxaId,
+  getOnerepProfileId,
+} from "../../../db/tables/subscribers";
 import { ISO8601DateString } from "../../../utils/parse.js";
 import { StateAbbr } from "../../../utils/states.js";
 import {
@@ -138,6 +141,7 @@ export type ListScanResultsResponse = OneRepResponse<ScanResult[]>;
 
 async function onerepFetch(
   path: string,
+  fxaUid: string,
   options: Parameters<typeof fetch>[1] = {},
 ) {
   const onerepApiBase = process.env.ONEREP_API_BASE;
@@ -148,6 +152,9 @@ async function onerepFetch(
   if (!onerepApiKey) {
     throw new Error("ONEREP_API_KEY env var not set");
   }
+
+  const fxaTokens = await getFxATokensByFxaId(fxaUid);
+  const oauthToken = fxaTokens?.fxa_access_token;
 
   //If mock, remove the first slash so that it doesn't overwrite the path
   if (
@@ -167,7 +174,7 @@ async function onerepFetch(
   const url = new URL(adjustedPath, onerepApiBase);
   console.log({ url });
   const headers = new Headers(options.headers);
-  headers.set("Authorization", `Bearer ${onerepApiKey}`);
+  headers.set("Authorization", `Bearer ${oauthToken}`);
   headers.set("Accept", "application/json");
   headers.set("Content-Type", "application/json");
   return fetch(url, { ...options, headers });
@@ -175,6 +182,7 @@ async function onerepFetch(
 
 export async function createProfile(
   profileData: CreateProfileRequest,
+  fxaUid: string,
 ): Promise<number> {
   const requestBody = {
     first_name: profileData.first_name,
@@ -189,7 +197,7 @@ export async function createProfile(
       },
     ],
   };
-  const response = await onerepFetch("/profiles", {
+  const response = await onerepFetch("/profiles", fxaUid, {
     method: "POST",
     body: JSON.stringify(requestBody),
   });
@@ -220,6 +228,7 @@ export async function createProfile(
 export async function updateProfile(
   profileId: number,
   profileData: UpdateProfileRequest,
+  fxaUid: string,
 ) {
   const {
     first_name,
@@ -233,7 +242,7 @@ export async function updateProfile(
     addresses,
     phone_numbers,
   } = profileData;
-  const response = await onerepFetch(`/profiles/${profileId}`, {
+  const response = await onerepFetch(`/profiles/${profileId}`, fxaUid, {
     method: "PUT",
     body: JSON.stringify({
       first_name,
@@ -263,10 +272,15 @@ export async function updateProfile(
 
 export async function getProfile(
   profileId: number,
+  fxaUid: string,
 ): Promise<ShowProfileResponse> {
-  const response: Response = await onerepFetch(`/profiles/${profileId}`, {
-    method: "GET",
-  });
+  const response: Response = await onerepFetch(
+    `/profiles/${profileId}`,
+    fxaUid,
+    {
+      method: "GET",
+    },
+  );
   if (!response.ok) {
     logger.error(
       `Failed to fetch OneRep profile: [${response.status}] [${response.statusText}]`,
@@ -280,9 +294,13 @@ export async function getProfile(
   return profile;
 }
 
-export async function activateProfile(profileId: number): Promise<void> {
+export async function activateProfile(
+  profileId: number,
+  fxaUid: string,
+): Promise<void> {
   const response: Response = await onerepFetch(
     `/profiles/${profileId}/activate`,
+    fxaUid,
     {
       method: "PUT",
     },
@@ -297,9 +315,13 @@ export async function activateProfile(profileId: number): Promise<void> {
   }
 }
 
-export async function deactivateProfile(profileId: number): Promise<void> {
+export async function deactivateProfile(
+  profileId: number,
+  fxaUid: string,
+): Promise<void> {
   const response: Response = await onerepFetch(
     `/profiles/${profileId}/deactivate`,
+    fxaUid,
     {
       method: "PUT",
     },
@@ -314,8 +336,11 @@ export async function deactivateProfile(profileId: number): Promise<void> {
   }
 }
 
-export async function optoutProfile(profileId: number): Promise<void> {
-  const response = await onerepFetch(`/profiles/${profileId}/optout`, {
+export async function optoutProfile(
+  profileId: number,
+  fxaUid: string,
+): Promise<void> {
+  const response = await onerepFetch(`/profiles/${profileId}/optout`, fxaUid, {
     method: "POST",
   });
   if (!response.ok) {
@@ -334,9 +359,11 @@ export async function optoutProfile(profileId: number): Promise<void> {
 
 export async function activateAndOptoutProfile({
   profileId,
+  fxaUid,
   forceActivation = false,
 }: {
   profileId: number;
+  fxaUid: string;
   forceActivation?: boolean;
 }): Promise<void> {
   try {
@@ -345,12 +372,12 @@ export async function activateAndOptoutProfile({
       return;
     }
 
-    const { status: profileStatus } = await getProfile(profileId);
+    const { status: profileStatus } = await getProfile(profileId, fxaUid);
     if (profileStatus === "inactive" && !forceActivation) {
-      await activateProfile(profileId);
+      await activateProfile(profileId, fxaUid);
     }
 
-    await optoutProfile(profileId);
+    await optoutProfile(profileId, fxaUid);
   } catch (error) {
     logger.error("Failed to activate and optout profile:", error);
   }
@@ -358,11 +385,12 @@ export async function activateAndOptoutProfile({
 
 export async function createScan(
   profileId: number,
+  fxaUid: string,
 ): Promise<CreateScanResponse> {
   /**
    * See https://docs.onerep.com/#operation/createScan
    */
-  const response = await onerepFetch(`/profiles/${profileId}/scans`, {
+  const response = await onerepFetch(`/profiles/${profileId}/scans`, fxaUid, {
     method: "POST",
   });
   if (!response.ok) {
@@ -378,6 +406,7 @@ export async function createScan(
 
 export async function listScans(
   profileId: number,
+  fxaUid: string,
   options: Partial<{ page: number; per_page: number }> = {},
 ): Promise<ListScansResponse> {
   const queryParams = new URLSearchParams();
@@ -389,6 +418,7 @@ export async function listScans(
   }
   const response: Response = await onerepFetch(
     `/profiles/${profileId}/scans?` + queryParams.toString(),
+    fxaUid,
     {
       method: "GET",
     },
@@ -406,6 +436,7 @@ export async function listScans(
 
 export async function listScanResults(
   profileId: number,
+  fxaUid: string,
   options: Partial<{
     page: number;
     per_page: number;
@@ -436,6 +467,7 @@ export async function listScanResults(
   }
   const response: Response = await onerepFetch(
     "/scan-results/?" + queryParams.toString(),
+    fxaUid,
     {
       method: "GET",
     },
@@ -480,10 +512,15 @@ export async function isEligibleForFreeScan(
 export async function getScanDetails(
   profileId: number,
   scanId: number,
+  fxaUid: string,
 ): Promise<Scan> {
-  const response = await onerepFetch(`/profiles/${profileId}/scans/${scanId}`, {
-    method: "GET",
-  });
+  const response = await onerepFetch(
+    `/profiles/${profileId}/scans/${scanId}`,
+    fxaUid,
+    {
+      method: "GET",
+    },
+  );
   if (!response.ok) {
     logger.error(
       `Failed to fetch scan details: [${response.status}] [${response.statusText}]`,
@@ -497,16 +534,18 @@ export async function getScanDetails(
 
 export async function getAllScanResults(
   profileId: number,
+  fxaUid: string,
 ): Promise<ScanResult[]> {
   return fetchAllPages((page: number) =>
-    listScanResults(profileId, { per_page: 100, page: page }),
+    listScanResults(profileId, fxaUid, { per_page: 100, page: page }),
   );
 }
 
-export async function getAllDataBrokers() {
+export async function getAllDataBrokers(fxaUid: string) {
   return fetchAllPages(async (page: number) => {
     const response = await onerepFetch(
       "/data-brokers?per_page=100&page=" + page.toString(),
+      fxaUid,
     );
     const data: OneRepResponse<
       Array<{
@@ -547,6 +586,7 @@ export async function fetchAllPages<Data>(
 // Would be nice to share this cache with other pod via Redis in the future
 const profileStatsCache = new Map<string, ProfileStats>();
 export async function getProfilesStats(
+  fxaUid: string,
   from?: Date,
   to?: Date,
 ): Promise<ProfileStats | undefined> {
@@ -561,6 +601,7 @@ export async function getProfilesStats(
 
   const response: Response = await onerepFetch(
     `/stats/profiles?${queryParamsString}`,
+    fxaUid,
     {
       method: "GET",
     },
