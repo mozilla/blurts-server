@@ -15,20 +15,30 @@ export type UserAnnouncementWithDetails = AnnouncementRow & {
   user_created_at: Date;
   user_updated_at: Date;
 };
-
 export async function initializeUserAnnouncements(
   userId: number,
 ): Promise<UserAnnouncementWithDetails[]> {
   try {
-    const existing = await knex("user_announcements")
+    // Get all current announcement IDs for the user
+    const existingRows = await knex("user_announcements")
       .where("user_id", userId)
-      .first();
+      .select("announcement_id");
 
-    if (!existing) {
-      const announcements =
-        await knex("announcements").select("announcement_id");
+    const userAnnouncementIds = new Set(
+      existingRows.map((row) => row.announcement_id),
+    );
 
-      const insertData = announcements.map((a) => ({
+    // Get all global announcements
+    const allAnnouncements =
+      await knex("announcements").select("announcement_id");
+
+    const newAnnouncements = allAnnouncements.filter(
+      (a) => !userAnnouncementIds.has(a.announcement_id),
+    );
+
+    // Insert missing announcements
+    if (newAnnouncements.length > 0) {
+      const insertData = newAnnouncements.map((a) => ({
         user_id: userId,
         announcement_id: a.announcement_id,
         status: "new",
@@ -36,9 +46,7 @@ export async function initializeUserAnnouncements(
         updated_at: new Date(),
       }));
 
-      if (insertData.length > 0) {
-        await knex("user_announcements").insert(insertData);
-      }
+      await knex("user_announcements").insert(insertData);
     }
 
     const results: UserAnnouncementWithDetails[] = await knex(
@@ -47,19 +55,7 @@ export async function initializeUserAnnouncements(
       .join("announcements as a", "ua.announcement_id", "a.announcement_id")
       .where("ua.user_id", userId)
       .select(
-        "a.announcement_id",
-        "a.title",
-        "a.description",
-        "a.label",
-        "a.cta_label",
-        "a.cta_link",
-        "a.small_image_path",
-        "a.big_image_path",
-        "a.audience",
-        "a.created_at as created_at",
-        "a.updated_at as updated_at",
-
-        // user-specific info
+        "a.*",
         "ua.status",
         "ua.seen_at",
         "ua.cleared_at",
