@@ -156,7 +156,8 @@ export default async function DashboardPage(props: Props) {
   );
   const additionalSubplatParamsString =
     additionalSubplatParams.size > 0
-      ? `?${additionalSubplatParams.toString()}`
+      ? // SubPlat2 subscription links already have the UTM parameter `?plan` appended.
+        `${enabledFeatureFlags.includes("SubPlat3") ? "?" : "&"}${additionalSubplatParams.toString()}`
       : "";
   const elapsedTimeInDaysSinceInitialScan =
     await getElapsedTimeInDaysSinceInitialScan(session.user);
