@@ -62,9 +62,21 @@ export const AnnouncementDialog = ({
     return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
   });
 
-  const handleClickAnnouncement = async (
+  const handleMarkAsSeen = async (
     announcement: UserAnnouncementWithDetails,
   ) => {
+    setUserAnnouncements((prev) =>
+      prev.map((a) =>
+        a.announcement_id === announcement.announcement_id
+          ? {
+              ...a,
+              status: "seen",
+              clicked_at: new Date().toISOString(),
+            }
+          : a,
+      ),
+    );
+
     try {
       await fetch(
         `/api/v1/user/announcements/${announcement.announcement_id}/seen`,
@@ -72,21 +84,6 @@ export const AnnouncementDialog = ({
           method: "PUT",
         },
       );
-
-      setUserAnnouncements((prev) =>
-        prev.map((a) =>
-          a.announcement_id === announcement.announcement_id
-            ? {
-                ...a,
-                status: "seen",
-                clicked_at: new Date().toISOString(),
-              }
-            : a,
-        ),
-      );
-
-      setRelevantAnnouncement(announcement);
-      setAnnouncementDetailsView(true);
     } catch (err) {
       console.error("Failed to mark as clicked", err);
     }
@@ -206,7 +203,11 @@ export const AnnouncementDialog = ({
                     role="button"
                     className={styles.announcementItem}
                     key={announcement.id}
-                    onClick={() => handleClickAnnouncement(announcement)}
+                    onClick={() => {
+                      setRelevantAnnouncement(announcement);
+                      setAnnouncementDetailsView(true);
+                      handleMarkAsSeen(announcement);
+                    }}
                   >
                     <Image
                       className={styles.smallImg}
