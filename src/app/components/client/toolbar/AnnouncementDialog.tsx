@@ -10,7 +10,7 @@ import { useL10n } from "../../../hooks/l10n";
 import { useEffect, useRef, useState } from "react";
 import { useOverlayTriggerState } from "react-stately";
 import { Popover } from "../Popover";
-import { AnnouncementsIcon } from "../../server/Icons";
+import { AnnouncementsIcon, CloseBtn } from "../../server/Icons";
 import styles from "./AnnouncementDialog.module.scss";
 import { UserAnnouncementWithDetails } from "../../../../../src/db/tables/user_announcements";
 import { LocalizedAnnouncementString } from "../../../(proper_react)/(redesign)/(authenticated)/admin/announcements/AnnouncementsAdmin";
@@ -33,6 +33,17 @@ export const AnnouncementDialog = ({
     triggerRef,
   );
   const { buttonProps } = useButton(triggerProps, triggerRef);
+  const dismissButtonRef = useRef<HTMLButtonElement>(null);
+  const dismissButtonProps = useButton(
+    {
+      /* c8 ignore next 3 */
+      onPress: () => {
+        triggerState.close();
+      },
+    },
+    dismissButtonRef,
+  ).buttonProps;
+
   const popoverRef = useRef(null);
   const [smallImageUnavailableMap, setSmallImageUnavailableMap] = useState<
     Record<string, boolean>
@@ -314,6 +325,18 @@ export const AnnouncementDialog = ({
                 </div>
               )}
             </div>
+            <button
+              {...dismissButtonProps}
+              ref={dismissButtonRef}
+              type="button"
+              className={styles.dismissButton}
+            >
+              <CloseBtn
+                alt={l10n.getString("close-modal-alt")}
+                width="14"
+                height="14"
+              />
+            </button>
           </div>
         </Popover>
       )}
