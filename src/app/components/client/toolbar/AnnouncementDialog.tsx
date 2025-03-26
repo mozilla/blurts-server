@@ -85,7 +85,36 @@ export const AnnouncementDialog = ({
         },
       );
     } catch (err) {
-      console.error("Failed to mark as clicked", err);
+      console.error("Failed to mark as seen", err);
+    }
+  };
+
+  const handleClearAll = async () => {
+    const newAnnouncements = userAnnouncements.filter(
+      (a) => a.status === "new",
+    );
+
+    setUserAnnouncements((prev) =>
+      prev.map((a) =>
+        a.status === "new"
+          ? {
+              ...a,
+              status: "seen",
+              seen_at: new Date(),
+            }
+          : a,
+      ),
+    );
+    try {
+      await Promise.all(
+        newAnnouncements.map((a) =>
+          fetch(`/api/v1/user/announcements/${a.announcement_id}/seen`, {
+            method: "PUT",
+          }),
+        ),
+      );
+    } catch (err) {
+      console.error("Failed to clear all announcements:", err);
     }
   };
 
@@ -159,7 +188,6 @@ export const AnnouncementDialog = ({
                   <div className={styles.announcementWrapperOpen}>
                     <dl className={styles.announcementItemOpen}>
                       <dt>
-                        {" "}
                         <LocalizedAnnouncementString
                           notification={relevantAnnouncement}
                           type="title"
@@ -188,7 +216,6 @@ export const AnnouncementDialog = ({
                       </TelemetryLink>
                     )}
                   </div>
-
                   <button
                     className={styles.backBtn}
                     onClick={() => setAnnouncementDetailsView(false)}
@@ -197,52 +224,92 @@ export const AnnouncementDialog = ({
                   </button>
                 </div>
               ) : (
-                // List of announcements
-                filteredAnnouncements.map((announcement) => (
-                  <div
-                    role="button"
-                    className={styles.announcementItem}
-                    key={announcement.id}
-                    onClick={() => {
-                      setRelevantAnnouncement(announcement);
-                      setAnnouncementDetailsView(true);
-                      handleMarkAsSeen(announcement);
-                    }}
-                  >
-                    <Image
-                      className={styles.smallImg}
-                      src={
-                        !smallImageUnavailableMap[announcement.announcement_id]
-                          ? `/images/announcements/${announcement.announcement_id}/small.jpg`
-                          : `/images/announcements/fallback/small.jpg`
-                      }
-                      alt=""
-                      width={48}
-                      height={48}
-                      onError={() =>
-                        setSmallImageUnavailableMap((prev) => ({
-                          ...prev,
-                          [announcement.announcement_id]: true,
-                        }))
-                      }
-                    />
-                    <dl>
-                      <dt>
-                        <LocalizedAnnouncementString
-                          notification={announcement}
-                          type="title"
+                <div>
+                  {filteredAnnouncements.length === 0 ? (
+                    // Empty state
+                    <div className={styles.emptyState}>
+                      <Image
+                        width={300}
+                        height={100}
+                        alt=""
+                        src="/images/announcements/announcement-empty-come-back.svg"
+                      />
+                      <dl>
+                        <dt>
+                          {l10n.getString(
+                            "announcement-dialog-empty-state-title",
+                          )}
+                        </dt>
+                        <dd>
+                          {l10n.getString(
+                            "announcement-dialog-empty-state-description",
+                          )}
+                        </dd>
+                      </dl>
+                    </div>
+                  ) : (
+                    // List of announcements
+
+                    filteredAnnouncements.map((announcement) => (
+                      <div
+                        role="button"
+                        className={styles.announcementItem}
+                        key={announcement.id}
+                        onClick={() => {
+                          setRelevantAnnouncement(announcement);
+                          setAnnouncementDetailsView(true);
+                          handleMarkAsSeen(announcement);
+                        }}
+                      >
+                        <Image
+                          className={styles.smallImg}
+                          src={
+                            !smallImageUnavailableMap[
+                              announcement.announcement_id
+                            ]
+                              ? `/images/announcements/${announcement.announcement_id}/small.jpg`
+                              : `/images/announcements/fallback/small.jpg`
+                          }
+                          alt=""
+                          width={48}
+                          height={48}
+                          onError={() =>
+                            setSmallImageUnavailableMap((prev) => ({
+                              ...prev,
+                              [announcement.announcement_id]: true,
+                            }))
+                          }
                         />
-                      </dt>
-                      <dd>
-                        <LocalizedAnnouncementString
-                          notification={announcement}
-                          type="description"
-                          truncatedDescription
-                        />
-                      </dd>
-                    </dl>
-                  </div>
-                ))
+                        <dl>
+                          <dt>
+                            <LocalizedAnnouncementString
+                              notification={announcement}
+                              type="title"
+                            />
+                          </dt>
+                          <dd>
+                            <LocalizedAnnouncementString
+                              notification={announcement}
+                              type="description"
+                              truncatedDescription
+                            />
+                          </dd>
+                        </dl>
+                      </div>
+                    ))
+                  )}
+                  {activeTab === "new" &&
+                    filteredAnnouncements.length !== 0 && (
+                      <button
+                        className={styles.clearAllBtn}
+                        onClick={handleClearAll}
+                      >
+                        <span>
+                          {l10n.getString("announcement-dialog-clear-all")}
+                        </span>
+                      </button>
+                    )}
+                </div>
               )}
             </div>
           </div>
