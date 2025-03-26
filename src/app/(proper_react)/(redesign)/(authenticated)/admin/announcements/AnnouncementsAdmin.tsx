@@ -170,8 +170,8 @@ export const AnnouncementsAdmin = (props: Props) => {
   const [smallImageUnavailable, setSmallImageUnavailable] = useState(false);
   const [bigImageUnavailable, setBigImageUnavailable] = useState(false);
 
-  const smallImagePath = `/images/announcements/${activeAnnouncement?.announcement_id.trim()}/small.jpg`;
-  const bigImagePath = `/images/announcements/${activeAnnouncement?.announcement_id.trim()}/big.jpg`;
+  const smallImagePath = `/images/announcements/${activeAnnouncement?.announcement_id.trim()}/small.svg`;
+  const bigImagePath = `/images/announcements/${activeAnnouncement?.announcement_id.trim()}/big.svg`;
 
   useEffect(() => {
     setSmallImageIsLoading(true);
@@ -264,7 +264,7 @@ export const AnnouncementsAdmin = (props: Props) => {
                     height={300}
                     key={activeAnnouncement.id}
                     className={styles.smallImage}
-                    src="/images/announcements/fallback/small.jpg"
+                    src="/images/announcements/fallback/small.svg"
                     onLoadingComplete={() => setSmallImageIsLoading(false)}
                   />
                 ) : (
@@ -294,7 +294,7 @@ export const AnnouncementsAdmin = (props: Props) => {
                     height={300}
                     key={activeAnnouncement.id}
                     className={styles.bigImage}
-                    src="/images/announcements/fallback/big.jpg"
+                    src="/images/announcements/fallback/big.svg"
                     onLoadingComplete={() => setBigImageIsLoading(false)}
                   />
                 ) : (
@@ -373,7 +373,7 @@ export const AnnouncementsAdmin = (props: Props) => {
                   width={500}
                   height={300}
                   key={activeAnnouncement.id}
-                  src="/images/announcements/fallback/big.jpg"
+                  src="/images/announcements/fallback/big.svg"
                   onLoadingComplete={() => setBigImageIsLoading(false)}
                 />
               ) : (
