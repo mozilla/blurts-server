@@ -22,6 +22,7 @@ import { useL10n } from "../../../../../../../../hooks/l10n";
 import { Button } from "../../../../../../../../components/client/Button";
 import { TelemetryButton } from "../../../../../../../../components/client/TelemetryButton";
 import {
+  LockIcon,
   MinusCircledIcon,
   PlusCircledIcon,
 } from "../../../../../../../../components/server/Icons";
@@ -367,37 +368,41 @@ function EditProfileFormInputs(props: {
               `settings-edit-profile-info-form-input-error-${profileDataKeyParsed}`,
             )}
           />
-          <strong>
-            {l10n.getString(
-              `settings-edit-profile-info-form-fieldset-section-other-label-${profileDataKeyParsed}s`,
-            )}
-          </strong>
           {props.profileData[`${props.profileDataKey}s`].map(
             (item, itemIndex) => {
               const inputKey = `${props.profileDataKey}s-${itemIndex}`;
               return (
-                <div key={inputKey} className={styles.inputWrapper}>
-                  <InputField
-                    onChange={(value) =>
-                      props.handleOnInputChange(value, inputKey)
-                    }
-                    name={inputKey}
-                    value={item}
-                    label={l10n.getString(
-                      `settings-edit-profile-info-form-input-label-other-${profileDataKeyParsed}`,
-                    )}
-                    hasFloatingLabel
-                  />
-                  <RemoveItemButton
-                    itemKey={props.profileDataKey}
-                    onRemove={() => {
-                      props.onRemove(
-                        `${props.profileDataKey}s` as ProfileDataListKey,
-                        itemIndex,
-                      );
-                    }}
-                  />
-                </div>
+                <Fragment key={inputKey}>
+                  {itemIndex === 0 && (
+                    <strong>
+                      {l10n.getString(
+                        `settings-edit-profile-info-form-fieldset-section-other-label-${profileDataKeyParsed}s`,
+                      )}
+                    </strong>
+                  )}
+                  <div className={styles.inputWrapper}>
+                    <InputField
+                      onChange={(value) =>
+                        props.handleOnInputChange(value, inputKey)
+                      }
+                      name={inputKey}
+                      value={item}
+                      label={l10n.getString(
+                        `settings-edit-profile-info-form-input-label-other-${profileDataKeyParsed}`,
+                      )}
+                      hasFloatingLabel
+                    />
+                    <RemoveItemButton
+                      itemKey={props.profileDataKey}
+                      onRemove={() => {
+                        props.onRemove(
+                          `${props.profileDataKey}s` as ProfileDataListKey,
+                          itemIndex,
+                        );
+                      }}
+                    />
+                  </div>
+                </Fragment>
               );
             },
           )}
@@ -430,7 +435,10 @@ function EditProfileFormInputs(props: {
       );
       return (
         <div className={styles.itemDob}>
-          {dateOfBirthString}
+          <span className={styles.dobString}>
+            {dateOfBirthString}
+            <LockIcon alt="" />
+          </span>
           <p>
             {l10n.getFragment(
               "settings-edit-profile-info-form-date-of-birth-note",
@@ -452,12 +460,20 @@ function EditProfileFormInputs(props: {
         </div>
       );
     case "phone_numbers":
+      const phoneNumbers = itemData?.length === 0 ? [""] : itemData;
       return (
         <>
-          {(itemData as string[]).map((item, itemIndex) => {
+          {(phoneNumbers as string[]).map((item, itemIndex) => {
             const inputKey = `${props.profileDataKey}-${itemIndex}`;
             return (
               <Fragment key={inputKey}>
+                {itemIndex === 1 && (
+                  <strong>
+                    {l10n.getString(
+                      "settings-edit-profile-info-form-fieldset-section-other-label-phone-numbers",
+                    )}
+                  </strong>
+                )}
                 <div className={styles.inputWrapper}>
                   <InputField
                     type="tel"
@@ -493,13 +509,6 @@ function EditProfileFormInputs(props: {
                     />
                   )}
                 </div>
-                {itemIndex === 0 && (
-                  <strong>
-                    {l10n.getString(
-                      "settings-edit-profile-info-form-fieldset-section-other-label-phone-numbers",
-                    )}
-                  </strong>
-                )}
               </Fragment>
             );
           })}
@@ -534,6 +543,13 @@ function EditProfileFormInputs(props: {
               item.city && item.state ? `${item.city}, ${item.state}, USA` : "";
             return (
               <Fragment key={inputKey}>
+                {itemIndex === 1 && (
+                  <strong>
+                    {l10n.getString(
+                      "settings-edit-profile-info-form-fieldset-section-other-label-addresses",
+                    )}
+                  </strong>
+                )}
                 <div className={styles.inputWrapper}>
                   <LocationAutocompleteInput
                     key={inputKey}
@@ -569,13 +585,6 @@ function EditProfileFormInputs(props: {
                     />
                   )}
                 </div>
-                {itemIndex === 0 && (
-                  <strong>
-                    {l10n.getString(
-                      "settings-edit-profile-info-form-fieldset-section-other-label-addresses",
-                    )}
-                  </strong>
-                )}
               </Fragment>
             );
           })}

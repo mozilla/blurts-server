@@ -3,7 +3,7 @@
 .profileForm {
   display: flex;
   flex-direction: column;
-  gap: tokens.$spacing-md;
+  gap: tokens.$spacing-lg;
   width: 100%;
 
   legend {
@@ -52,7 +52,7 @@
   align-items: flex-start;
   display: flex;
   flex-direction: column;
-  gap: tokens.$spacing-sm;
+  gap: tokens.$spacing-md;
 }
 
 .inputWrapper {
@@ -69,6 +69,7 @@
     gap: tokens.$spacing-xs;
     padding: tokens.$spacing-xs tokens.$spacing-xs tokens.$spacing-xs 0;
     text-decoration: none;
+    text-align: left;
 
     &:hover {
       text-decoration: underline;
@@ -78,6 +79,13 @@
 
 .itemDob {
   font-weight: 400;
+
+  .dobString {
+    align-items: center;
+    display: flex;
+    color: tokens.$color-black;
+    gap: tokens.$spacing-sm;
+  }
 }
 
 .cancelDialogContents,
