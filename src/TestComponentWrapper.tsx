@@ -7,17 +7,20 @@ import { L10nProvider } from "./contextProviders/localization";
 import { SessionProvider } from "next-auth/react";
 import { ReactAriaI18nProvider } from "./contextProviders/react-aria";
 import { getL10nBundles } from "./app/functions/l10n/storybookAndJest";
+import CookiesProvider from "./contextProviders/cookies";
 
 const l10nBundles = getL10nBundles();
 
 export const TestComponentWrapper = (props: { children: ReactNode }) => {
   return (
     <L10nProvider bundleSources={l10nBundles}>
-      <SessionProvider session={null}>
-        <ReactAriaI18nProvider locale="en">
-          {props.children}
-        </ReactAriaI18nProvider>
-      </SessionProvider>
+      <CookiesProvider>
+        <SessionProvider session={null}>
+          <ReactAriaI18nProvider locale="en">
+            {props.children}
+          </ReactAriaI18nProvider>
+        </SessionProvider>
+      </CookiesProvider>
     </L10nProvider>
   );
 };
