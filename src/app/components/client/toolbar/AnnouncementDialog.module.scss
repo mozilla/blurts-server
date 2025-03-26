@@ -164,4 +164,19 @@
     width: 100%;
     height: auto;
   }
+
+  .dismissButton {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: tokens.$spacing-md;
+    color: tokens.$color-grey-40;
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+      color: tokens.$color-grey-30;
+    }
+  }
 }
