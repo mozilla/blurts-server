@@ -169,7 +169,6 @@ function EditProfileForm(props: { profileData: OnerepProfileRow }) {
         <Button
           type="submit"
           variant="primary"
-          onPress={() => {}}
           isLoading={updateProfileActionIsPending}
           disabled={!hasProfileDataChanged}
         >
@@ -202,7 +201,7 @@ function AddItemButton(props: {
       >
         <PlusCircledIcon alt="" />
         {l10n.getString(
-          "settings-edit-profile-info-form-add-item-button-label",
+          `settings-edit-profile-info-form-add-item-${props.itemKey.replaceAll("_", "-")}-button-label`,
         )}
       </TelemetryButton>
     </span>
@@ -461,6 +460,7 @@ function EditProfileFormInputs(props: {
               <Fragment key={inputKey}>
                 <div className={styles.inputWrapper}>
                   <InputField
+                    type="tel"
                     onChange={(value) =>
                       props.handleOnInputChange(value, inputKey)
                     }

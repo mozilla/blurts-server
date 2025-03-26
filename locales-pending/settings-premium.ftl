@@ -137,7 +137,11 @@ settings-edit-profile-info-form-input-error-last-name = Last name is required
 settings-edit-profile-info-form-input-error-phone-number = Enter a valid phone number
 
 settings-edit-profile-info-form-date-of-birth-note = Date of birth cannot be changed for security reasons. <a>Why?</a>
-settings-edit-profile-info-form-add-item-button-label = Add item
+settings-edit-profile-info-form-add-item-first-names-button-label = Add variations, aliases, deadnames you’ve gone by
+settings-edit-profile-info-form-add-item-middle-names-button-label = Add variations or more middle names
+settings-edit-profile-info-form-add-item-last-names-button-label = Add variations or last names you’ve had
+settings-edit-profile-info-form-add-item-phone-numbers-button-label = Add more numbers
+settings-edit-profile-info-form-add-item-addresses-button-label = Add past US locations
 settings-edit-profile-info-form-remove-item-button-label = Remove item
 settings-edit-profile-info-form-cancel-button-label = Cancel
 settings-edit-profile-info-form-save-button-label = Save
