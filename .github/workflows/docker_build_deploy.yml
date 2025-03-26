@@ -6,8 +6,24 @@ on:
   push:
     branches: [ main ]
 jobs:
+  extract_docker_metadata:
+    name: Extract metadata (tags, labels) for Docker
+    runs-on: ubuntu-latest
+    outputs: 
+      tags: ${{ steps.meta.outputs.tags }}
+    steps:
+      - name: get metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: mozilla/blurts-server
+          tags: |
+            type=semver,pattern={{raw}}
+            type=raw,value={{sha}},event=tag
+
   push_to_registry:
     name: Push Docker image to Docker Hub
+    needs: [extract_docker_metadata]
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
@@ -20,15 +36,6 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-
-      - name: Extract metadata (tags, labels) for Docker
-        id: meta
-        uses: docker/metadata-action@v5
-        with:
-          images: mozilla/blurts-server
-          tags: |
-            type=semver,pattern={{raw}}
-            type=raw,value={{sha}},event=tag
 
       - name: Create version.json
         run: |
@@ -61,5 +68,16 @@ jobs:
           DOCKERHUB_REPO: ${{ env.DOCKERHUB_REPO }}
         run: |
           # deploy main
-          docker tag blurts-server ${{ steps.meta.outputs.tags }}
-          docker push ${{ steps.meta.outputs.tags }}
+          docker tag blurts-server ${{ needs.extract_docker_metadata.outputs.tags }}
+          docker push ${{ needs.extract_docker_metadata.outputs.tags }}
+  push_to_gcp_gar:
+    name: "Build and push to GCP GAR (V2 Environment)"
+    needs: [extract_docker_metadata]
+    uses: ./.github/workflows/reuse-build-and-push.yml
+    secrets: inherit
+    with:
+      image-name: blurts-server
+      image-tag: ${{ needs.extract_docker_metadata.outputs.tags}}
+      gar-region: us
+      workload-identity-provider: ${{ vars.GCPV2_GITHUB_WORKLOAD_IDENTITY_PROVIDER }}
+      push: true

@@ -1,0 +1,117 @@
+name: Build and Push Docker
+on:
+  workflow_call:
+    inputs:
+      image-name:
+        description: "The name of the image, e.g. the app's name"
+        required: true
+        type: string
+      image-tag:
+        description: "Unique tag for the image"
+        required: true
+        type: string
+      tag-latest:
+        description: "Whether to also update the image with the :latest tag"
+        required: false
+        default: false
+        type: boolean
+      gar-region:
+        description: "The region for Google Artifact repository"
+        type: string
+        required: false
+        default: "us"
+      workload-identity-provider:
+        # https://github.com/google-github-actions/auth?tab=readme-ov-file#inputs-workload-identity-federation
+        description: "The full identifier of the Workload Identity Provider, including the project number, pool name, and provider name. If provided, this must be the full identifier which includes all parts: projects/123456789/locations/global/workloadIdentityPools/my-pool/providers/my-provider"
+        required: true
+        type: string
+      file:
+        description: Name of Dockerfile used for build (should be in root context directory)
+        required: false
+        type: string
+        default: "Dockerfile"
+      push:
+        description: "Whether to push the image"
+        required: false
+        default: true
+        type: boolean
+
+# Add "id-token" with the intended permissions.
+permissions:
+  contents: "read"
+  id-token: "write"
+
+jobs:
+  build-and-push:
+    name: Docker release to Google Artifact Registry
+    outputs:
+      docker_image_name: ${{ steps.get-build-name.outputs.DOCKER_IMAGE_NAME}}
+    runs-on: ubuntu-latest
+    environment: build
+
+    steps:
+      - id: checkout
+        name: Checkout
+        uses: actions/checkout@v4
+
+      # can be useful if you want to add emulation support with QEMU to be able to build against more platforms.
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      # action will create and boot a builder using by default the docker-container driver.
+      # This is not required but recommended using it to be able to build multi-platform images, export cache, etc.
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - id: auth
+        name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          token_format: access_token
+          workload_identity_provider: ${{ inputs.workload-identity-provider }}
+          service_account: ${{ vars.GCP_GAR_SERVICE_ACCOUNT }}
+
+      - name: Login to Artifact Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{inputs.gar-region}}-docker.pkg.dev
+          username: oauth2accesstoken
+          password: ${{ steps.auth.outputs.access_token }}
+
+      - name: Set image tags
+        id: set-tags
+        shell: bash
+        run: |
+          if [[ "${{ inputs.tag-latest }}" == true ]]; then
+            {
+              echo "TAGS<<EOF"
+              echo -e "${{ vars.GAR_REPO }}/${{ inputs.image-name }}:${{ inputs.image-tag }}\n${{ vars.GAR_REPO }}/${{ inputs.image-name }}:latest"
+              echo "EOF"
+            } >> $GITHUB_OUTPUT
+          else
+            echo "TAGS=${{ vars.GAR_REPO }}/${{ inputs.image-name }}:${{ inputs.image-tag }}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Build docker image
+        id: docker-build-push
+        uses: docker/build-push-action@v6
+        env:
+          UPLOAD_SENTRY_SOURCEMAPS: true
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          SENTRY_RELEASE: ${{ github.ref_name }}
+          NEXT_PUBLIC_SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
+        with:
+          context: .
+          file: ./${{ inputs.file }}
+          push: ${{ inputs.push }}
+          tags: ${{ steps.set-tags.outputs.TAGS}}
+          build-args: |
+            SENTRY_RELEASE=${{ github.ref_name }}
+            NEXT_PUBLIC_SENTRY_DSN=${{ secrets.SENTRY_DSN }}
+          secrets: |
+            sentry_token=${{ secrets.SENTRY_AUTH_TOKEN }}
+      - name: Output Build Name
+        id: get-build-name
+        shell: bash
+        run: |
+          echo "DOCKER_IMAGE_NAME=${{ vars.GAR_REPO }}/${{ inputs.image-name }}:${{ inputs.image-tag }}" >> $GITHUB_OUTPUT
