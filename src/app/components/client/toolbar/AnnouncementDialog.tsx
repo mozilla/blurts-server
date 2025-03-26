@@ -106,10 +106,11 @@ export const AnnouncementDialog = ({
           : a,
       ),
     );
+
     try {
       await Promise.all(
         newAnnouncements.map((a) =>
-          fetch(`/api/v1/user/announcements/${a.announcement_id}/seen`, {
+          fetch(`/api/v1/user/announcements/${a.announcement_id}/cleared`, {
             method: "PUT",
           }),
         ),

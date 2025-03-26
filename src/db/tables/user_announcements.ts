@@ -34,6 +34,19 @@ export async function markAnnouncementAsSeen(
   }
 }
 
+export async function markAnnouncementAsCleared(
+  userId: number,
+  announcementId: string,
+) {
+  return await knex("user_announcements")
+    .where({ user_id: userId, announcement_id: announcementId })
+    .update({
+      status: "cleared",
+      cleared_at: new Date(),
+      updated_at: new Date(),
+    });
+}
+
 export async function initializeUserAnnouncements(
   userId: number,
 ): Promise<UserAnnouncementWithDetails[]> {
