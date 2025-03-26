@@ -20,7 +20,6 @@
   .announcementsTabList {
     display: flex;
     flex-direction: row;
-    gap: tokens.$spacing-sm;
     border-radius: tokens.$border-radius-xl;
     background-color: tokens.$color-grey-10;
     align-items: center;
@@ -82,6 +81,30 @@
       }
     }
 
+    .emptyState {
+      display: flex;
+      flex-direction: column;
+      gap: tokens.$spacing-md;
+      padding: tokens.$spacing-md;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+
+      dl {
+        display: flex;
+        flex-direction: column;
+        gap: tokens.$spacing-sm;
+
+        dt {
+          font: tokens.$text-title-3xs;
+        }
+      }
+
+      img {
+        width: 100%;
+      }
+    }
+
     .announcementWrapperOpen {
       padding: tokens.$spacing-md;
 
@@ -91,8 +114,7 @@
         gap: tokens.$spacing-sm;
 
         dt {
-          font: tokens.$text-title-2xs;
-          font-weight: 700;
+          font: tokens.$text-title-3xs;
         }
       }
 
@@ -105,7 +127,6 @@
       all: unset;
       font-weight: 500;
       color: tokens.$color-purple-80;
-      align-self: left;
       border-top: 1px solid tokens.$color-grey-20;
       padding-top: tokens.$spacing-sm;
       width: 100%;
@@ -113,6 +134,21 @@
 
       span {
         padding-left: tokens.$spacing-md;
+        cursor: pointer;
+      }
+    }
+
+    .clearAllBtn {
+      all: unset;
+      font-weight: 500;
+      color: tokens.$color-purple-80;
+      border-top: 1px solid tokens.$color-grey-20;
+      padding-top: tokens.$spacing-sm;
+      width: 100%;
+      text-align: right;
+
+      span {
+        padding-right: tokens.$spacing-md;
         cursor: pointer;
       }
     }
