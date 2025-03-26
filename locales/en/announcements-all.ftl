@@ -5,7 +5,7 @@
 # between announcement- and -title or -description is the announcement_id.
 
 announcement-dialog-default-tab = New
-announcement-dialog-history-tab = History
+announcement-dialog-history-tab = All
 announcement-dialog-back = Back
 announcement-dialog-clear-all = Mark all as read
 announcement-dialog-empty-state-title = No updates
