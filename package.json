@@ -118,7 +118,7 @@
   },
   "devDependencies": {
     "@faker-js/faker": "^9.6.0",
-    "@google-cloud/bigquery": "^7.9.2",
+    "@google-cloud/bigquery": "^7.9.3",
     "@playwright/test": "^1.51.1",
     "@storybook/addon-a11y": "^8.6.8",
     "@storybook/addon-actions": "^8.6.8",
