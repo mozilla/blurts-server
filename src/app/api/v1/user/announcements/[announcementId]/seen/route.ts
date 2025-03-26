@@ -8,8 +8,11 @@ import { markAnnouncementAsSeen } from "../../../../../../../db/tables/user_anno
 
 export async function PUT(
   _req: NextRequest,
-  { params }: { params: { announcementId: string } },
+  props: { params: Promise<{ announcementId: string }> },
 ) {
+  const params = await props.params;
+  const { announcementId } = params;
+
   const session = await getServerSession();
   const userId = session?.user?.subscriber?.id;
 
@@ -18,11 +21,12 @@ export async function PUT(
   }
 
   try {
-    await markAnnouncementAsSeen(userId, params.announcementId);
+    await markAnnouncementAsSeen(userId, announcementId);
     return NextResponse.json({ success: true });
-  } catch {
+  } catch (err) {
+    console.error("Failed to mark announcement as seen:", err);
     return NextResponse.json(
-      { error: `Failed to update ${params.announcementId}` },
+      { error: `Failed to update ${announcementId}` },
       { status: 500 },
     );
   }

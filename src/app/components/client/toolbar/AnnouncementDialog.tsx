@@ -71,7 +71,8 @@ export const AnnouncementDialog = ({
           ? {
               ...a,
               status: "seen",
-              clicked_at: new Date().toISOString(),
+              clicked_at: new Date(),
+              seen_at: new Date(),
             }
           : a,
       ),
@@ -99,8 +100,8 @@ export const AnnouncementDialog = ({
         a.status === "new"
           ? {
               ...a,
-              status: "seen",
-              seen_at: new Date(),
+              status: "cleared",
+              cleared_at: new Date(),
             }
           : a,
       ),
@@ -121,7 +122,7 @@ export const AnnouncementDialog = ({
   const filteredAnnouncements = sortedAnnouncements.filter((a) =>
     activeTab === "new"
       ? a.status === "new"
-      : a.status === "seen" || a.status === "clicked",
+      : a.status === "seen" || a.status === "cleared",
   );
 
   return (
@@ -172,8 +173,8 @@ export const AnnouncementDialog = ({
                       !bigImageUnavailableMap[
                         relevantAnnouncement.announcement_id
                       ]
-                        ? `/images/announcements/${relevantAnnouncement.announcement_id}/big.jpg`
-                        : `/images/announcements/fallback/big.jpg`
+                        ? `/images/announcements/${relevantAnnouncement.announcement_id}/big.svg`
+                        : `/images/announcements/fallback/big.svg`
                     }
                     alt=""
                     width={300}
@@ -267,8 +268,8 @@ export const AnnouncementDialog = ({
                             !smallImageUnavailableMap[
                               announcement.announcement_id
                             ]
-                              ? `/images/announcements/${announcement.announcement_id}/small.jpg`
-                              : `/images/announcements/fallback/small.jpg`
+                              ? `/images/announcements/${announcement.announcement_id}/small.svg`
+                              : `/images/announcements/fallback/small.svg`
                           }
                           alt=""
                           width={48}
