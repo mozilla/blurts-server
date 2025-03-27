@@ -33,6 +33,19 @@
   box-shadow: tokens.$box-shadow-lg;
   border-radius: tokens.$border-radius-md;
   padding: tokens.$spacing-md 0;
+  position: relative;
+
+  &::before {
+    $tooltip-size: 12px;
+    background-color: white;
+    content: "";
+    height: $tooltip-size;
+    position: absolute;
+    right: 125px; // Vertically align chevron with bento icon
+    top: 0;
+    transform: translateY(-50%) rotate(45deg);
+    width: $tooltip-size;
+  }
 
   .announcementsTabList {
     display: flex;

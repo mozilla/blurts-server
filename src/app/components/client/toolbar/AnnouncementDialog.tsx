@@ -164,7 +164,7 @@ export const AnnouncementDialog = ({
       {triggerState.isOpen && (
         <Popover
           popoverRef={popoverRef}
-          offset={4}
+          offset={20}
           triggerRef={triggerRef}
           state={triggerState}
           {...overlayProps}
