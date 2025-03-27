@@ -6,4 +6,4 @@
 
 announcement-add-more-personal-details-title = Add more personal details to improve scan accuracy
 announcement-add-more-personal-details-description = { -brand-monitor } is most effective at protecting your info when you add specific details. Add any of your name variations, emails, or locations.
-announcement-add-more-personal-details-label = Add more details
+announcement-add-more-personal-details-cta-label = Add more details
