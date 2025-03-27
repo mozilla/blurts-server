@@ -2,7 +2,8 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-## Breach Data Classes
+
+# Breach Data Classes
 
 account-balances = അക്കൗണ്ട് ബാലൻസുകൾ
 address-book-contacts = വിലാസപുസ്തകത്തിലെ സമ്പർക്കങ്ങൾ
@@ -60,6 +61,7 @@ income-levels = വരുമാന നിലകൾ
 instant-messenger-identities = ഇന്‍സ്റ്റന്റ് മെസഞ്ചർ വ്യക്തിത്വങ്ങള്‍
 ip-addresses = ഐപി വിലാസങ്ങള്‍
 job-titles = ജോലിയുടെ പദവികള്‍
+login-histories = പ്രവേശന നാൾവഴി
 mac-addresses = MAC വിലാസങ്ങൾ
 marital-statuses = വൈവാഹിക നിലകൾ
 names = പേരുകൾ
