@@ -26,7 +26,7 @@
 }
 
 .announcementsWrapper {
-  width: tokens.$content-sm;
+  width: tokens.$content-xs;
   display: flex;
   flex-direction: column;
   gap: tokens.$spacing-sm;
@@ -35,16 +35,24 @@
   padding: tokens.$spacing-md 0;
   position: relative;
 
+  @media screen and (min-width: tokens.$screen-md) {
+    width: tokens.$content-sm;
+  }
+
   &::before {
     $tooltip-size: 12px;
     background-color: white;
     content: "";
     height: $tooltip-size;
     position: absolute;
-    right: 125px; // Vertically align chevron with bento icon
+    right: 100px; // Vertically align chevron with bell icon on mobile
     top: 0;
     transform: translateY(-50%) rotate(45deg);
     width: $tooltip-size;
+
+    @media screen and (min-width: tokens.$screen-md) {
+      right: 125px; // Vertically align chevron with bell icon on desktop
+    }
   }
 
   .announcementsTabList {

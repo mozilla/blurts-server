@@ -17,6 +17,7 @@ import { getEnabledFeatureFlags } from "../../../../../../db/tables/featureFlags
 import { getExperimentationId } from "../../../../../functions/server/getExperimentationId";
 import { getExperiments } from "../../../../../functions/server/getExperiments";
 import { getLocale } from "../../../../../functions/universal/getLocale";
+import { initializeUserAnnouncements } from "../../../../../../db/tables/user_announcements";
 
 export default async function Layout({ children }: { children: ReactNode }) {
   const l10nBundles = getL10nBundles(
@@ -27,7 +28,7 @@ export default async function Layout({ children }: { children: ReactNode }) {
   const headersList = await headers();
   const countryCode = getCountryCode(headersList);
 
-  if (!session) {
+  if (!session || !session?.user?.subscriber?.id) {
     return <AutoSignIn />;
   }
 
@@ -43,6 +44,10 @@ export default async function Layout({ children }: { children: ReactNode }) {
     locale: currentLocale,
   });
 
+  const userAnnouncements = await initializeUserAnnouncements(
+    session?.user?.subscriber.id,
+  );
+
   return (
     <Shell
       l10n={l10n}
@@ -51,6 +56,7 @@ export default async function Layout({ children }: { children: ReactNode }) {
       countryCode={countryCode}
       enabledFeatureFlags={enabledFeatureFlags}
       experimentData={experimentData["Features"]}
+      announcements={userAnnouncements}
     >
       {children}
     </Shell>
