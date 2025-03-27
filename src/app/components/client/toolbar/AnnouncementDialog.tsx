@@ -52,7 +52,7 @@ export const AnnouncementDialog = ({
     Record<string, boolean>
   >({});
   const [announcementDetailsView, setAnnouncementDetailsView] = useState(false);
-  const [activeTab, setActiveTab] = useState<"new" | "history">("new");
+  const [activeTab, setActiveTab] = useState<"new" | "all">("new");
 
   const [relevantAnnouncement, setRelevantAnnouncement] =
     useState<UserAnnouncementWithDetails | null>(null);
@@ -182,10 +182,10 @@ export const AnnouncementDialog = ({
                 {l10n.getString("announcement-dialog-default-tab")}
               </button>
               <button
-                className={activeTab === "history" ? styles.active : ""}
+                className={activeTab === "all" ? styles.active : ""}
                 role="tab"
                 onClick={() => {
-                  setActiveTab("history");
+                  setActiveTab("all");
                   setAnnouncementDetailsView(false);
                 }}
               >

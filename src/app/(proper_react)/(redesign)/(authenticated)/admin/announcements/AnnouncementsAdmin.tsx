@@ -28,40 +28,93 @@ export const AnnouncementsAdmin = (props: Props) => {
     props.announcements,
   );
   const endpointBase = `/api/v1/admin/announcements`;
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleAddAnnouncement = async (newAnnouncement: AnnouncementRow) => {
     try {
       const response = await fetch(endpointBase, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newAnnouncement),
       });
 
-      if (!response.ok) {
-        console.error(
-          "Failed to add notification:",
-          response.status,
-          response.statusText,
-        );
-        return;
-      }
+      if (!response.ok) throw new Error("Failed to add notification");
 
       const savedAnnouncement: AnnouncementRow = await response.json();
 
-      setAnnouncements((prevAnnouncements) => [
-        ...prevAnnouncements,
-        savedAnnouncement,
-      ]);
-
-      if (!activeAnnouncementId) {
-        setActiveAnnouncementId(savedAnnouncement.id);
-      }
+      setAnnouncements((prev) => [...prev, savedAnnouncement]);
+      setActiveAnnouncementId(savedAnnouncement.id);
+      setIsModalOpen(false);
     } catch (error) {
       console.error("Error adding notification:", error);
+    } finally {
+      setIsSubmitting(false);
     }
   };
+
+  const handleUpdateAnnouncement = async (
+    updatedAnnouncement: AnnouncementRow,
+  ) => {
+    setIsSubmitting(true);
+    try {
+      const response = await fetch(
+        `/api/v1/admin/announcements/${updatedAnnouncement.announcement_id}`,
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(updatedAnnouncement),
+        },
+      );
+
+      if (!response.ok) throw new Error("Failed to update notification");
+
+      const updated = await response.json();
+
+      setAnnouncements((prev) =>
+        prev.map((a) => (a.id === updated.id ? updated : a)),
+      );
+      setActiveAnnouncementId(updated.id);
+      setIsModalOpen(false);
+    } catch (error) {
+      console.error("Error updating notification:", error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  // const handleAddAnnouncement = async (newAnnouncement: AnnouncementRow) => {
+  //   try {
+  //     const response = await fetch(endpointBase, {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify(newAnnouncement),
+  //     });
+
+  //     if (!response.ok) {
+  //       console.error(
+  //         "Failed to add notification:",
+  //         response.status,
+  //         response.statusText,
+  //       );
+  //       return;
+  //     }
+
+  //     const savedAnnouncement: AnnouncementRow = await response.json();
+
+  //     setAnnouncements((prevAnnouncements) => [
+  //       ...prevAnnouncements,
+  //       savedAnnouncement,
+  //     ]);
+
+  //     if (!activeAnnouncementId) {
+  //       setActiveAnnouncementId(savedAnnouncement.id);
+  //     }
+  //   } catch (error) {
+  //     console.error("Error adding notification:", error);
+  //   }
+  // };
 
   const handleDeleteAnnouncement = async (announcementId: string) => {
     try {
@@ -97,41 +150,41 @@ export const AnnouncementsAdmin = (props: Props) => {
     }
   };
 
-  const handleUpdateAnnouncement = async (
-    updatedAnnouncement: AnnouncementRow,
-  ) => {
-    try {
-      const response = await fetch(
-        `/api/v1/admin/announcements/${updatedAnnouncement.announcement_id}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(updatedAnnouncement),
-        },
-      );
+  // const handleUpdateAnnouncement = async (
+  //   updatedAnnouncement: AnnouncementRow,
+  // ) => {
+  //   try {
+  //     const response = await fetch(
+  //       `/api/v1/admin/announcements/${updatedAnnouncement.announcement_id}`,
+  //       {
+  //         method: "PUT",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //         body: JSON.stringify(updatedAnnouncement),
+  //       },
+  //     );
 
-      if (!response.ok) {
-        console.error(
-          "Failed to update notification:",
-          response.status,
-          response.statusText,
-        );
-        return;
-      }
+  //     if (!response.ok) {
+  //       console.error(
+  //         "Failed to update notification:",
+  //         response.status,
+  //         response.statusText,
+  //       );
+  //       return;
+  //     }
 
-      setAnnouncements((prevAnnouncements) =>
-        prevAnnouncements.map((notification) =>
-          notification.id === updatedAnnouncement.id
-            ? updatedAnnouncement
-            : notification,
-        ),
-      );
-    } catch (error) {
-      console.error("Error updating notification:", error);
-    }
-  };
+  //     setAnnouncements((prevAnnouncements) =>
+  //       prevAnnouncements.map((notification) =>
+  //         notification.id === updatedAnnouncement.id
+  //           ? updatedAnnouncement
+  //           : notification,
+  //       ),
+  //     );
+  //   } catch (error) {
+  //     console.error("Error updating notification:", error);
+  //   }
+  // };
 
   const handleEditAnnouncement = (announcementId: string) => {
     const notificationToEdit = announcements.find(
@@ -222,7 +275,7 @@ export const AnnouncementsAdmin = (props: Props) => {
               className={styles.addButton}
               onClick={() => setIsModalOpen(true)}
             >
-              + Add new notification
+              + Add new announcement
             </button>
           </ul>
         </div>
@@ -419,6 +472,8 @@ export const AnnouncementsAdmin = (props: Props) => {
         notificationToEdit={activeAnnouncementToEdit}
         onAddAnnouncement={handleAddAnnouncement}
         onUpdateAnnouncement={handleUpdateAnnouncement}
+        isSubmitting={isSubmitting}
+        setIsSubmitting={setIsSubmitting}
       />
     </div>
   );

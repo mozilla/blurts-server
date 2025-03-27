@@ -5,6 +5,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./AnnouncementsModal.module.scss";
 import { AnnouncementRow } from "knex/types/tables";
+import { Button } from "../../../../../components/client/Button";
 
 type AnnouncementsModalProps = {
   isOpen: boolean;
@@ -12,6 +13,8 @@ type AnnouncementsModalProps = {
   onAddAnnouncement: (notification: AnnouncementRow) => void;
   onUpdateAnnouncement: (notification: AnnouncementRow) => void; // Callback for updating
   notificationToEdit: AnnouncementRow | null; // Receive notification to edit if available
+  isSubmitting: boolean;
+  setIsSubmitting: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 interface FormData {
@@ -70,18 +73,18 @@ const AnnouncementsModal = (props: AnnouncementsModalProps) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    props.setIsSubmitting(true);
 
     const notificationData = {
       created_at: new Date(),
       updated_at: new Date(),
-      ...formData, // Ensure no 'id' field is included here
+      ...formData,
     };
 
     try {
       let response;
 
       if (props.notificationToEdit) {
-        // If editing an existing notification, update it
         response = await fetch(
           `/api/v1/admin/announcements/${props.notificationToEdit.announcement_id}`,
           {
@@ -93,10 +96,8 @@ const AnnouncementsModal = (props: AnnouncementsModalProps) => {
           },
         );
         const updatedAnnouncement = await response.json();
-        props.onUpdateAnnouncement(updatedAnnouncement); // Update in parent
+        props.onUpdateAnnouncement(updatedAnnouncement);
       } else {
-        // If adding a new notification
-
         response = await fetch("/api/v1/admin/announcements/", {
           method: "POST",
           headers: {
@@ -104,10 +105,10 @@ const AnnouncementsModal = (props: AnnouncementsModalProps) => {
           },
           body: JSON.stringify(notificationData),
         });
-
         const addedAnnouncement = await response.json();
-        props.onAddAnnouncement(addedAnnouncement); // Update parent
+        props.onAddAnnouncement(addedAnnouncement);
       }
+
       setFormData({
         announcement_id: "",
         title: "",
@@ -119,9 +120,12 @@ const AnnouncementsModal = (props: AnnouncementsModalProps) => {
         audience: "all_users",
         label: "draft",
       });
-      props.onClose(); // Close the modal after submission
+
+      props.onClose();
     } catch (error) {
       console.error("Error saving notification:", error);
+    } finally {
+      props.setIsSubmitting(false);
     }
   };
 
@@ -275,11 +279,16 @@ const AnnouncementsModal = (props: AnnouncementsModalProps) => {
             >
               Cancel
             </button>
-            <button type="submit" className={styles.submitButton}>
+            <Button
+              isLoading={props.isSubmitting}
+              variant="primary"
+              type="submit"
+              className={styles.submitButton}
+            >
               {props.notificationToEdit
                 ? "Update Announcement"
                 : "Add Announcement"}
-            </button>
+            </Button>
           </div>
         </form>
       </div>
