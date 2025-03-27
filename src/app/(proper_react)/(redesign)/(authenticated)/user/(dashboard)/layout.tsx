@@ -45,7 +45,7 @@ export default async function Layout({ children }: { children: ReactNode }) {
   });
 
   const userAnnouncements = await initializeUserAnnouncements(
-    session?.user?.subscriber.id,
+    session.user.subscriber,
   );
 
   return (

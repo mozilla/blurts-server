@@ -82,40 +82,6 @@ export const AnnouncementsAdmin = (props: Props) => {
     }
   };
 
-  // const handleAddAnnouncement = async (newAnnouncement: AnnouncementRow) => {
-  //   try {
-  //     const response = await fetch(endpointBase, {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify(newAnnouncement),
-  //     });
-
-  //     if (!response.ok) {
-  //       console.error(
-  //         "Failed to add notification:",
-  //         response.status,
-  //         response.statusText,
-  //       );
-  //       return;
-  //     }
-
-  //     const savedAnnouncement: AnnouncementRow = await response.json();
-
-  //     setAnnouncements((prevAnnouncements) => [
-  //       ...prevAnnouncements,
-  //       savedAnnouncement,
-  //     ]);
-
-  //     if (!activeAnnouncementId) {
-  //       setActiveAnnouncementId(savedAnnouncement.id);
-  //     }
-  //   } catch (error) {
-  //     console.error("Error adding notification:", error);
-  //   }
-  // };
-
   const handleDeleteAnnouncement = async (announcementId: string) => {
     try {
       const response = await fetch(
@@ -150,42 +116,6 @@ export const AnnouncementsAdmin = (props: Props) => {
     }
   };
 
-  // const handleUpdateAnnouncement = async (
-  //   updatedAnnouncement: AnnouncementRow,
-  // ) => {
-  //   try {
-  //     const response = await fetch(
-  //       `/api/v1/admin/announcements/${updatedAnnouncement.announcement_id}`,
-  //       {
-  //         method: "PUT",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //         body: JSON.stringify(updatedAnnouncement),
-  //       },
-  //     );
-
-  //     if (!response.ok) {
-  //       console.error(
-  //         "Failed to update notification:",
-  //         response.status,
-  //         response.statusText,
-  //       );
-  //       return;
-  //     }
-
-  //     setAnnouncements((prevAnnouncements) =>
-  //       prevAnnouncements.map((notification) =>
-  //         notification.id === updatedAnnouncement.id
-  //           ? updatedAnnouncement
-  //           : notification,
-  //       ),
-  //     );
-  //   } catch (error) {
-  //     console.error("Error updating notification:", error);
-  //   }
-  // };
-
   const handleEditAnnouncement = (announcementId: string) => {
     const notificationToEdit = announcements.find(
       (n) => n.announcement_id === announcementId,
@@ -217,6 +147,7 @@ export const AnnouncementsAdmin = (props: Props) => {
       setActiveAnnouncementId(announcements[0].id);
     }
   }, [announcements, activeAnnouncementId]);
+
   // States for each image
   const [smallImageIsLoading, setSmallImageIsLoading] = useState(true);
   const [bigImageIsLoading, setBigImageIsLoading] = useState(true);
@@ -233,6 +164,10 @@ export const AnnouncementsAdmin = (props: Props) => {
     setBigImageUnavailable(false);
   }, [activeAnnouncementId]);
 
+  const sortedAnnouncements = [...announcements].sort((a, b) => {
+    return new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime();
+  });
+
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
@@ -240,7 +175,7 @@ export const AnnouncementsAdmin = (props: Props) => {
         <div className={styles.notificationsWrapper}>
           <h1>All Announcements</h1>
           <ul>
-            {announcements.map((notification) => (
+            {sortedAnnouncements.map((notification) => (
               <li
                 key={notification.id}
                 className={

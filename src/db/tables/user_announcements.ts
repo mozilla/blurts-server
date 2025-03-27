@@ -5,6 +5,7 @@
 import { AnnouncementRow } from "knex/types/tables";
 import createDbConnection from "../connect";
 import { logger } from "../../app/functions/server/logging";
+import { SerializedSubscriber } from "../../next-auth";
 
 const knex = createDbConnection();
 
@@ -48,31 +49,58 @@ export async function markAnnouncementAsCleared(
 }
 
 export async function initializeUserAnnouncements(
-  userId: number,
+  subscriber: SerializedSubscriber,
 ): Promise<UserAnnouncementWithDetails[]> {
   try {
+    // Determine audience eligibility
+    const isUS = subscriber.signup_language?.includes("en-US");
+    const subscriptions = subscriber.fxa_profile_json?.subscriptions ?? [];
+    const isPremium = subscriptions.includes("monitor");
+    const hasRunScan = subscriber.onerep_profile_id !== null;
+
     // Get all current announcement IDs for the user
     const existingRows = await knex("user_announcements")
-      .where("user_id", userId)
+      .where("user_id", subscriber.id)
       .select("announcement_id");
 
     const userAnnouncementIds = new Set(
       existingRows.map((row) => row.announcement_id),
     );
 
-    // Get all global announcements
+    // Get all published announcements
     const publishedAnnouncements = await knex("announcements")
       .where("label", "published")
-      .select("announcement_id");
+      .select("*");
 
-    const newAnnouncements = publishedAnnouncements.filter(
+    // Filter announcements by audience
+    const eligibleAnnouncements = publishedAnnouncements.filter((a) => {
+      switch (a.audience) {
+        case "us_only":
+          return isUS;
+        case "premium_users":
+          return isPremium;
+        case "free_users":
+          return !isPremium && isUS;
+        case "has_run_scan":
+          return hasRunScan;
+        case "has_not_run_scan":
+          return !hasRunScan;
+        case "non_us":
+          return !isUS;
+        case "all_users":
+        default:
+          return true;
+      }
+    });
+
+    const newAnnouncements = eligibleAnnouncements.filter(
       (a) => !userAnnouncementIds.has(a.announcement_id),
     );
 
     // Insert missing announcements
     if (newAnnouncements.length > 0) {
       const insertData = newAnnouncements.map((a) => ({
-        user_id: userId,
+        user_id: subscriber.id,
         announcement_id: a.announcement_id,
         status: "new",
         created_at: new Date(),
@@ -86,7 +114,7 @@ export async function initializeUserAnnouncements(
       "user_announcements as ua",
     )
       .join("announcements as a", "ua.announcement_id", "a.announcement_id")
-      .where("ua.user_id", userId)
+      .where("ua.user_id", subscriber.id)
       .select(
         "a.*",
         "ua.status",
