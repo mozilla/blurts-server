@@ -4,7 +4,7 @@
 
 import React, { useEffect, useState } from "react";
 import styles from "./AnnouncementsModal.module.scss";
-import { AnnouncementRow } from "knex/types/tables";
+import { AnnouncementRow, AudienceRow } from "knex/types/tables";
 import { Button } from "../../../../../components/client/Button";
 
 type AnnouncementsModalProps = {
@@ -25,7 +25,7 @@ interface FormData {
   big_image_path: string;
   cta_label: string;
   cta_link: string;
-  audience: string;
+  audience: AudienceRow;
   label: string;
 }
 
@@ -250,9 +250,12 @@ const AnnouncementsModal = (props: AnnouncementsModalProps) => {
               className={styles.select}
             >
               <option value="all_users">All Users</option>
-              <option value="premium_users">Premium Users</option>
-              <option value="free_users">Free Users</option>
-              <option value="new_users">New Users</option>
+              <option value="premium_users">Premium Users US</option>
+              <option value="free_users">Free Users US</option>
+              <option value="has_run_scan">Has Run Scan US</option>
+              <option value="has_not_run_scan">Has Not Run Scan US</option>
+              <option value="non_us">Non-US Users</option>
+              <option value="us_only">US Users Only</option>
             </select>
           </div>
 

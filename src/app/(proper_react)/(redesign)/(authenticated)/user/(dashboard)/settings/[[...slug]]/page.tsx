@@ -121,7 +121,7 @@ export default async function SettingsPage(props: Props) {
   );
 
   const userAnnouncements = await initializeUserAnnouncements(
-    session.user.subscriber.id,
+    session.user.subscriber,
   );
 
   return (

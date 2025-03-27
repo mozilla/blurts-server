@@ -52,7 +52,7 @@ export default async function FeatureFlagPage() {
     ) ?? [];
 
   const userAnnouncements = await initializeUserAnnouncements(
-    session.user.subscriber.id,
+    session.user.subscriber,
   );
 
   /**

@@ -5,18 +5,21 @@
 import { NextResponse } from "next/server";
 import { getServerSession } from "../../../../functions/server/getServerSession";
 import { initializeUserAnnouncements } from "../../../../../db/tables/user_announcements";
+import { redirect } from "next/navigation";
 
 export async function GET() {
   const session = await getServerSession();
-  const userId = session?.user?.subscriber?.id;
 
-  if (!userId) {
-    return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
+  if (!session?.user?.subscriber?.id) {
+    return redirect("/auth/logout");
   }
 
   try {
-    const announcements = await initializeUserAnnouncements(userId);
-    return NextResponse.json(announcements, { status: 200 });
+    const userAnnouncements = await initializeUserAnnouncements(
+      session.user.subscriber,
+    );
+
+    return NextResponse.json(userAnnouncements, { status: 200 });
   } catch (error) {
     console.error("Error initializing announcements:", error);
     return NextResponse.json({ error: "Server error" }, { status: 500 });
