@@ -87,6 +87,8 @@
 
   .announcementsContainer {
     padding: 0 tokens.$spacing-sm;
+    max-height: 500px; // Limit container height and enable scrolling if content overflows
+    overflow-y: auto;
 
     .announcementItem {
       cursor: pointer;
@@ -123,8 +125,12 @@
       display: flex;
       flex-direction: column;
       gap: tokens.$spacing-md;
-      padding: tokens.$spacing-md;
+      padding-top: tokens.$spacing-xl;
+      padding-bottom: tokens.$spacing-lg;
+      padding-left: tokens.$spacing-md;
+      padding-right: tokens.$spacing-md;
       text-align: center;
+
       justify-content: center;
       align-items: center;
 
@@ -166,7 +172,7 @@
       font-weight: 500;
       color: tokens.$color-purple-80;
       border-top: 1px solid tokens.$color-grey-20;
-      padding-top: tokens.$spacing-sm;
+      padding-top: tokens.$spacing-md;
       width: 100%;
       text-align: left;
 
@@ -178,10 +184,11 @@
 
     .clearAllBtn {
       all: unset;
+      margin-top: tokens.$spacing-sm;
       font-weight: 500;
       color: tokens.$color-purple-80;
       border-top: 1px solid tokens.$color-grey-20;
-      padding-top: tokens.$spacing-sm;
+      padding-top: tokens.$spacing-md;
       width: 100%;
       text-align: right;
 

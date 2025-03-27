@@ -61,10 +61,11 @@ export async function initializeUserAnnouncements(
     );
 
     // Get all global announcements
-    const allAnnouncements =
-      await knex("announcements").select("announcement_id");
+    const publishedAnnouncements = await knex("announcements")
+      .where("label", "published")
+      .select("announcement_id");
 
-    const newAnnouncements = allAnnouncements.filter(
+    const newAnnouncements = publishedAnnouncements.filter(
       (a) => !userAnnouncementIds.has(a.announcement_id),
     );
 
