@@ -73,8 +73,8 @@
     "npm": "10.1.0"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.758.0",
-    "@aws-sdk/lib-storage": "^3.758.0",
+    "@aws-sdk/client-s3": "^3.775.0",
+    "@aws-sdk/lib-storage": "^3.775.0",
     "@fluent/bundle": "^0.18.0",
     "@fluent/langneg": "^0.7.0",
     "@fluent/react": "^0.15.2",
@@ -84,7 +84,7 @@
     "@leeoniya/ufuzzy": "^1.0.18",
     "@mozilla/glean": "^5.0.3",
     "@next/third-parties": "15.2.3",
-    "@sentry/nextjs": "^9.5.0",
+    "@sentry/nextjs": "^9.9.0",
     "@sentry/node": "^9.0.0",
     "@sentry/utils": "^8.55.0",
     "@stripe/stripe-js": "^6.1.0",
@@ -118,8 +118,8 @@
   },
   "devDependencies": {
     "@faker-js/faker": "^9.6.0",
-    "@google-cloud/bigquery": "^7.9.2",
-    "@playwright/test": "^1.50.1",
+    "@google-cloud/bigquery": "^7.9.3",
+    "@playwright/test": "^1.51.1",
     "@storybook/addon-a11y": "^8.6.8",
     "@storybook/addon-actions": "^8.6.8",
     "@storybook/addon-essentials": "^8.6.8",
@@ -171,7 +171,7 @@
     "stylelint-config-recommended-scss": "^14.1.0",
     "stylelint-scss": "^6.11.1",
     "tsx": "^4.19.3",
-    "typescript": "^5.7.3",
+    "typescript": "^5.8.2",
     "yaml": "^2.7.0"
   },
   "overrides": {
