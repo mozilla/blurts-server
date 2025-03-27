@@ -222,7 +222,7 @@ export const AnnouncementsAdmin = (props: Props) => {
               className={styles.addButton}
               onClick={() => setIsModalOpen(true)}
             >
-              Add new notification
+              + Add new notification
             </button>
           </ul>
         </div>
@@ -340,6 +340,7 @@ export const AnnouncementsAdmin = (props: Props) => {
 
             <div className={styles.buttons}>
               <button
+                className={styles.deleteBtn}
                 onClick={() =>
                   void handleDeleteAnnouncement(
                     activeAnnouncement.announcement_id,

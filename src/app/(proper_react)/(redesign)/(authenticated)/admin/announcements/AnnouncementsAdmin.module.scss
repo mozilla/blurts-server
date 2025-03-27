@@ -95,6 +95,24 @@
           }
         }
       }
+
+      .buttons {
+        display: flex;
+        flex-direction: row;
+        gap: tokens.$spacing-sm;
+        button {
+          all: unset;
+          background-color: tokens.$color-grey-10;
+          font-weight: 600;
+          padding: tokens.$spacing-sm tokens.$spacing-md;
+          border-radius: tokens.$border-radius-md;
+          cursor: pointer;
+
+          &.deleteBtn {
+            background-color: tokens.$color-red-10;
+          }
+        }
+      }
     }
 
     .previewModalWrapper {
@@ -145,4 +163,14 @@
     color: tokens.$color-red-50;
     font-weight: 600;
   }
+}
+
+.addButton {
+  all: unset;
+  background-color: tokens.$color-grey-10;
+  font-weight: 600;
+  padding: tokens.$spacing-sm tokens.$spacing-md;
+  border-radius: tokens.$border-radius-md;
+  cursor: pointer;
+  margin-top: tokens.$spacing-md;
 }

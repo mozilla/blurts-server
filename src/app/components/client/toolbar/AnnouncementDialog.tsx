@@ -73,9 +73,20 @@ export const AnnouncementDialog = ({
     return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
   });
 
+  const numNewAnnouncements = userAnnouncements.filter(
+    (a) => a.status === "new",
+  ).length;
+
+  const filteredAnnouncements = sortedAnnouncements.filter((a) =>
+    activeTab === "new"
+      ? a.status === "new"
+      : a.status === "seen" || a.status === "cleared",
+  );
+
   const handleMarkAsSeen = async (
     announcement: UserAnnouncementWithDetails,
   ) => {
+    // Optimistically handle state change
     setUserAnnouncements((prev) =>
       prev.map((a) =>
         a.announcement_id === announcement.announcement_id
@@ -131,12 +142,6 @@ export const AnnouncementDialog = ({
     }
   };
 
-  const filteredAnnouncements = sortedAnnouncements.filter((a) =>
-    activeTab === "new"
-      ? a.status === "new"
-      : a.status === "seen" || a.status === "cleared",
-  );
-
   return (
     <>
       <button
@@ -149,7 +154,13 @@ export const AnnouncementDialog = ({
         )}
       >
         <AnnouncementsIcon alt="" />
+        {numNewAnnouncements > 0 && (
+          <span className={styles.badge}>
+            {numNewAnnouncements > 9 ? "9+" : numNewAnnouncements}
+          </span>
+        )}
       </button>
+
       {triggerState.isOpen && (
         <Popover
           popoverRef={popoverRef}
@@ -163,14 +174,20 @@ export const AnnouncementDialog = ({
               <button
                 className={activeTab === "new" ? styles.active : ""}
                 role="tab"
-                onClick={() => setActiveTab("new")}
+                onClick={() => {
+                  setActiveTab("new");
+                  setAnnouncementDetailsView(false);
+                }}
               >
                 {l10n.getString("announcement-dialog-default-tab")}
               </button>
               <button
                 className={activeTab === "history" ? styles.active : ""}
                 role="tab"
-                onClick={() => setActiveTab("history")}
+                onClick={() => {
+                  setActiveTab("history");
+                  setAnnouncementDetailsView(false);
+                }}
               >
                 {l10n.getString("announcement-dialog-history-tab")}
               </button>
