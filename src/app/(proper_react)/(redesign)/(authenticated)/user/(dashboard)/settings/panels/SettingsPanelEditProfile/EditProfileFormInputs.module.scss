@@ -1,0 +1,40 @@
+@use "../../../../../../../../tokens";
+
+.secondaryInputs {
+  display: flex;
+  flex-direction: column;
+  gap: tokens.$spacing-sm;
+}
+
+.inputWrapper {
+  align-items: center;
+  display: flex;
+  gap: tokens.$spacing-xs;
+}
+
+.addItemButtonWrapper {
+  .button {
+    color: tokens.$color-purple-70;
+    font: tokens.$text-body-sm;
+    font-weight: 600;
+    gap: tokens.$spacing-xs;
+    padding: tokens.$spacing-xs tokens.$spacing-xs tokens.$spacing-xs 0;
+    text-decoration: none;
+    text-align: left;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.itemDob {
+  font-weight: 400;
+
+  .dobString {
+    align-items: center;
+    display: flex;
+    color: tokens.$color-black;
+    gap: tokens.$spacing-sm;
+  }
+}
