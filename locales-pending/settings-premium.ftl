@@ -76,7 +76,7 @@ settings-details-about-you-description = { -brand-monitor } will use this info f
 settings-details-about-you-name-label = Name
 settings-details-about-you-date-of-birth-label = Date of birth
 settings-details-about-you-location-label = Location
-settings-details-about-you-cta-label = Update info
+settings-details-about-you-cta-label = Add details
 
 ## Email addresses
 
@@ -135,6 +135,7 @@ settings-edit-profile-info-form-input-label-other-location = Past location
 settings-edit-profile-info-form-input-error-first-name = First name is required
 settings-edit-profile-info-form-input-error-last-name = Last name is required
 settings-edit-profile-info-form-input-error-phone-number = Enter a valid phone number
+settings-edit-profile-info-form-input-error-current-location = A current location is required
 
 settings-edit-profile-info-form-date-of-birth-note = Date of birth cannot be changed for security reasons. <a>Why?</a>
 settings-edit-profile-info-form-add-item-first-names-button-label = Add variations, aliases, deadnames you’ve gone by

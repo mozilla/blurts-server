@@ -55,6 +55,12 @@
   gap: tokens.$spacing-md;
 }
 
+.secondaryInputs {
+  display: flex;
+  flex-direction: column;
+  gap: tokens.$spacing-sm;
+}
+
 .inputWrapper {
   align-items: center;
   display: flex;
