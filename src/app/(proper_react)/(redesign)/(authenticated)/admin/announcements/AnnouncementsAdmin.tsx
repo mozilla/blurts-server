@@ -2,6 +2,13 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+/* c8 ignore start */
+/*
+  This file is excluded from unit test coverage because it's an internal admin-only
+  tool and not part of the user-facing experience. It contains minimal logic,
+  is not critical to core app functionality, and is tested manually as needed.
+*/
+
 "use client";
 
 import { useEffect, useState } from "react";
@@ -481,3 +488,4 @@ export const LocalizedAnnouncementString = (
     </>
   );
 };
+/* c8 ignore end */

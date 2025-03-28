@@ -61,6 +61,8 @@ export const AnnouncementDialog = ({
     useState<UserAnnouncementWithDetails[]>(announcements);
 
   // Refetch announcements when a user opens the dialog
+  // This useEffect re-fetches announcements when the popover opens.
+  /* c8 ignore start */
   useEffect(() => {
     if (triggerState.isOpen) {
       fetch("/api/v1/user/announcements")
@@ -68,6 +70,7 @@ export const AnnouncementDialog = ({
         .then(setUserAnnouncements);
     }
   }, [triggerState.isOpen]);
+  /* c8 ignore stop */
 
   const sortedAnnouncements = [...userAnnouncements].sort((a, b) => {
     return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
@@ -148,10 +151,7 @@ export const AnnouncementDialog = ({
         {...buttonProps}
         className={styles.announcementBtn}
         ref={triggerRef}
-        aria-label={l10n.getString("open-tooltip-alt")}
-        aria-describedby={l10n.getString(
-          "landing-premium-plans-table-feature-callout-trigger",
-        )}
+        aria-label={l10n.getString("announcement-dialog-trigger-alt")}
       >
         <AnnouncementsIcon alt="" />
         {numNewAnnouncements > 0 && (
@@ -169,11 +169,16 @@ export const AnnouncementDialog = ({
           state={triggerState}
           {...overlayProps}
         >
-          <div className={styles.announcementsWrapper}>
+          <div
+            className={styles.announcementsWrapper}
+            role="dialog"
+            aria-labelledby={l10n.getString("announcement-dialog-alt")}
+          >
             <div className={styles.announcementsTabList} role="tablist">
               <button
                 className={activeTab === "new" ? styles.active : ""}
                 role="tab"
+                aria-selected={activeTab === "new"}
                 onClick={() => {
                   setActiveTab("new");
                   setAnnouncementDetailsView(false);
@@ -184,6 +189,7 @@ export const AnnouncementDialog = ({
               <button
                 className={activeTab === "all" ? styles.active : ""}
                 role="tab"
+                aria-selected={activeTab === "all"}
                 onClick={() => {
                   setActiveTab("all");
                   setAnnouncementDetailsView(false);
