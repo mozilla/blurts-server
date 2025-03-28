@@ -219,13 +219,13 @@ export const AnnouncementDialog = ({
                     <dl className={styles.announcementItemOpen}>
                       <dt>
                         <LocalizedAnnouncementString
-                          notification={relevantAnnouncement}
+                          announcement={relevantAnnouncement}
                           type="title"
                         />
                       </dt>
                       <dd>
                         <LocalizedAnnouncementString
-                          notification={relevantAnnouncement}
+                          announcement={relevantAnnouncement}
                           type="description"
                         />
                       </dd>
@@ -240,7 +240,7 @@ export const AnnouncementDialog = ({
                         }}
                       >
                         <LocalizedAnnouncementString
-                          notification={relevantAnnouncement}
+                          announcement={relevantAnnouncement}
                           type="cta-label"
                         />
                       </TelemetryLink>
@@ -313,13 +313,13 @@ export const AnnouncementDialog = ({
                         <dl>
                           <dt>
                             <LocalizedAnnouncementString
-                              notification={announcement}
+                              announcement={announcement}
                               type="title"
                             />
                           </dt>
                           <dd>
                             <LocalizedAnnouncementString
-                              notification={announcement}
+                              announcement={announcement}
                               type="description"
                               truncatedDescription
                             />

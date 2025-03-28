@@ -10,8 +10,8 @@ import { Button } from "../../../../../components/client/Button";
 type AnnouncementsModalProps = {
   isOpen: boolean;
   onClose: () => void;
-  onAddAnnouncement: (notification: AnnouncementRow) => void;
-  onUpdateAnnouncement: (notification: AnnouncementRow) => void;
+  onAddAnnouncement: (announcement: AnnouncementRow) => void;
+  onUpdateAnnouncement: (announcement: AnnouncementRow) => void;
   announcementToEdit: AnnouncementRow | null;
   isSubmitting: boolean;
   setIsSubmitting: React.Dispatch<React.SetStateAction<boolean>>;
@@ -42,7 +42,7 @@ const AnnouncementsModal = (props: AnnouncementsModalProps) => {
     label: "draft",
   });
 
-  // Pre-fill form if editing an existing notification
+  // Pre-fill form if editing an existing announcement
   useEffect(() => {
     if (props.announcementToEdit) {
       setFormData({
@@ -75,7 +75,7 @@ const AnnouncementsModal = (props: AnnouncementsModalProps) => {
     e.preventDefault();
     props.setIsSubmitting(true);
 
-    const notificationData = {
+    const announcementData = {
       created_at: new Date(),
       updated_at: new Date(),
       ...formData,
@@ -92,7 +92,7 @@ const AnnouncementsModal = (props: AnnouncementsModalProps) => {
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify(notificationData),
+            body: JSON.stringify(announcementData),
           },
         );
         const updatedAnnouncement = await response.json();
@@ -103,7 +103,7 @@ const AnnouncementsModal = (props: AnnouncementsModalProps) => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(notificationData),
+          body: JSON.stringify(announcementData),
         });
         const addedAnnouncement = await response.json();
         props.onAddAnnouncement(addedAnnouncement);

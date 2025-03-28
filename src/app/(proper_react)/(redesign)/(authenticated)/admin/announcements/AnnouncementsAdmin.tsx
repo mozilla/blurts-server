@@ -102,7 +102,7 @@ export const AnnouncementsAdmin = (props: Props) => {
 
       setAnnouncements((prevAnnouncements) =>
         prevAnnouncements.filter(
-          (notification) => notification.announcement_id !== announcementId,
+          (announcement) => announcement.announcement_id !== announcementId,
         ),
       );
 
@@ -186,13 +186,13 @@ export const AnnouncementsAdmin = (props: Props) => {
                 <div>
                   <p className={styles.title}>
                     <LocalizedAnnouncementString
-                      notification={notification}
+                      announcement={notification}
                       type="title"
                     />
                   </p>
                   <p className={styles.description}>
                     <LocalizedAnnouncementString
-                      notification={notification}
+                      announcement={notification}
                       type="description"
                     />
                   </p>
@@ -227,7 +227,7 @@ export const AnnouncementsAdmin = (props: Props) => {
               <dd>
                 {" "}
                 <LocalizedAnnouncementString
-                  notification={activeAnnouncement}
+                  announcement={activeAnnouncement}
                   type="title"
                 />
               </dd>
@@ -235,7 +235,7 @@ export const AnnouncementsAdmin = (props: Props) => {
               <dt>Description</dt>
               <dd>
                 <LocalizedAnnouncementString
-                  notification={activeAnnouncement}
+                  announcement={activeAnnouncement}
                   type="description"
                 />
               </dd>
@@ -301,7 +301,7 @@ export const AnnouncementsAdmin = (props: Props) => {
               <dt>CTA Label</dt>
               <dd>
                 <LocalizedAnnouncementString
-                  notification={activeAnnouncement}
+                  announcement={activeAnnouncement}
                   type="cta-label"
                 />
               </dd>
@@ -379,20 +379,20 @@ export const AnnouncementsAdmin = (props: Props) => {
               <dl>
                 <dt>
                   <LocalizedAnnouncementString
-                    notification={activeAnnouncement}
+                    announcement={activeAnnouncement}
                     type="title"
                   />
                 </dt>
                 <dd>
                   <LocalizedAnnouncementString
-                    notification={activeAnnouncement}
+                    announcement={activeAnnouncement}
                     type="description"
                   />
                 </dd>
               </dl>
               <a href={activeAnnouncement.cta_link}>
                 <LocalizedAnnouncementString
-                  notification={activeAnnouncement}
+                  announcement={activeAnnouncement}
                   type="cta-label"
                 />
               </a>
@@ -415,7 +415,7 @@ export const AnnouncementsAdmin = (props: Props) => {
 };
 
 type LocalizedAnnouncementStringProps = {
-  notification: AnnouncementRow;
+  announcement: AnnouncementRow;
   type: "title" | "description" | "cta-label";
   truncatedDescription?: boolean;
 };
@@ -432,7 +432,7 @@ export const LocalizedAnnouncementString = (
   const l10n = useL10n();
 
   // Build the key based on the type (fluent IDs are named in this format)
-  const key = `announcement-${props.notification.announcement_id}-${props.type}`;
+  const key = `announcement-${props.announcement.announcement_id}-${props.type}`;
 
   // Get the localized string for the key
   const localizedString = l10n.getString(key);
@@ -447,12 +447,12 @@ export const LocalizedAnnouncementString = (
 
   // If the key is not translated, use the fallback values from the announcements table
   if (localizedString === key) {
-    console.warn(`${props.notification.announcement_id} is not localized`);
+    console.warn(`${props.announcement.announcement_id} is not localized`);
 
     if (props.type === "title") {
       return (
         <div className={styles.missingLabelContainer}>
-          {props.notification.title}
+          {props.announcement.title}
           {missingLabel}
         </div>
       );
@@ -460,7 +460,7 @@ export const LocalizedAnnouncementString = (
     if (props.type === "description") {
       return (
         <div className={styles.missingLabelContainer}>
-          {props.notification.description}
+          {props.announcement.description}
           {missingLabel}
         </div>
       );
@@ -468,7 +468,7 @@ export const LocalizedAnnouncementString = (
     if (props.type === "cta-label") {
       return (
         <div className={styles.missingLabelContainer}>
-          {props.notification.cta_label}
+          {props.announcement.cta_label}
           {missingLabel}
         </div>
       );
