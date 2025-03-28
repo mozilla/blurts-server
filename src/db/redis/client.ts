@@ -9,7 +9,7 @@ import type { Redis } from "ioredis";
 
 export const REDIS_ALL_BREACHES_KEY = "breaches";
 export const REDIS_ALL_DATA_BROKERS_KEY = "dataBrokers";
-export const REDIS_JWT_KEY_PREFIX = "jwt-";
+export const REDIS_JWT_KEY_PREFIX = "moscary:jwt:";
 
 let singleton: Redis;
 export const redisClient = () => {
