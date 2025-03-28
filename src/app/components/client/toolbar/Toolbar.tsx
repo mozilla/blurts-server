@@ -51,9 +51,10 @@ export const Toolbar = (props: Props) => {
           experimentData={props.experimentData}
           autoOpenUpsellDialog={props.autoOpenUpsellDialog}
         />
-        {props.announcements && (
-          <AnnouncementDialog announcements={props.announcements} />
-        )}
+        {props.enabledFeatureFlags.includes("Announcements") &&
+          props.announcements && (
+            <AnnouncementDialog announcements={props.announcements} />
+          )}
         <AppPicker />
         {props.user && (
           <UserMenu user={props.user} fxaSettingsUrl={props.fxaSettingsUrl} />
