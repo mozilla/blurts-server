@@ -18,10 +18,12 @@ import { TelemetryLink } from "../TelemetryLink";
 
 type AnnouncementDialogProps = {
   announcements: UserAnnouncementWithDetails[];
+  activeState?: "new" | "all";
 };
 
 export const AnnouncementDialog = ({
   announcements,
+  activeState,
   ...otherProps
 }: AnnouncementDialogProps) => {
   const l10n = useL10n();
@@ -52,7 +54,9 @@ export const AnnouncementDialog = ({
     Record<string, boolean>
   >({});
   const [announcementDetailsView, setAnnouncementDetailsView] = useState(false);
-  const [activeTab, setActiveTab] = useState<"new" | "all">("new");
+  const [activeTab, setActiveTab] = useState<"new" | "all">(
+    activeState ?? "new",
+  );
 
   const [relevantAnnouncement, setRelevantAnnouncement] =
     useState<UserAnnouncementWithDetails | null>(null);
@@ -316,7 +320,7 @@ export const AnnouncementDialog = ({
                             }))
                           }
                         />
-                        <dl>
+                        <dl role="group">
                           <dt>
                             <LocalizedAnnouncementString
                               announcement={announcement}
