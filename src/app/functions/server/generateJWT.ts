@@ -6,6 +6,7 @@ import jwt from "jsonwebtoken";
 import { redisClient, REDIS_JWT_KEY_PREFIX } from "../../../db/redis/client";
 import { getSubscriberByFxaUid } from "../../../db/tables/subscribers";
 import { isAdmin } from "../../api/utils/auth";
+import { logger } from "./logging";
 const rClient = redisClient();
 
 export async function getMoscaryJWT(fxaUid: string) {
@@ -13,6 +14,10 @@ export async function getMoscaryJWT(fxaUid: string) {
   // if token is already exists in redis, return it
   let token = await rClient.get(REDIS_KEY);
   if (token) {
+    logger.info("get_moscary_jwt_from_redis", {
+      message: `fetched moscary jwt from redis: ${REDIS_KEY}`,
+      token,
+    });
     return token;
   }
   // oteherwise, generate new token
@@ -25,7 +30,7 @@ export async function getMoscaryJWT(fxaUid: string) {
   }
   token = jwt.sign(
     {
-      sub: subscriber.id,
+      sub: subscriber.fxa_uid,
       email: subscriber.primary_email,
       isAdmin: isAdmin(subscriber.primary_email),
     },
