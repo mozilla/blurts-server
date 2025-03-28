@@ -4,6 +4,7 @@
 
 import type { Meta, StoryObj } from "@storybook/react";
 import {
+  createRandomAnnouncement,
   createRandomBreach,
   createUserWithPremiumSubscription,
 } from "../../../../../../../../../../apiMocks/mockData";
@@ -16,6 +17,7 @@ import {
 } from "../leakedPasswordsData";
 import { BreachDataTypes } from "../../../../../../../../../functions/universal/breach";
 import { defaultExperimentData } from "../../../../../../../../../../telemetry/generated/nimbus/experiments";
+import { UserAnnouncementWithDetails } from "../../../../../../../../../../db/tables/user_announcements";
 
 const user = createUserWithPremiumSubscription();
 
@@ -64,6 +66,11 @@ const LeakedPasswordsWrapper = (props: {
     );
   }
 
+  const mockedAnnouncements: UserAnnouncementWithDetails[] = [
+    createRandomAnnouncement(),
+    createRandomAnnouncement(),
+    createRandomAnnouncement(),
+  ];
   return (
     <Shell
       l10n={getL10n()}
@@ -72,6 +79,7 @@ const LeakedPasswordsWrapper = (props: {
       countryCode="nl"
       enabledFeatureFlags={[]}
       experimentData={defaultExperimentData["Features"]}
+      announcements={mockedAnnouncements}
     >
       <LeakedPasswordsLayout
         subscriberEmails={[]}

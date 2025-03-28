@@ -12,10 +12,6 @@ $button-size: 42px;
   width: $button-size;
   overflow: hidden;
 
-  @media screen and (max-width: tokens.$screen-md) {
-    margin-right: tokens.$spacing-sm;
-  }
-
   &:focus,
   &:hover {
     outline: 2px solid tokens.$color-purple-70;
@@ -39,14 +35,10 @@ $button-size: 42px;
     content: "";
     height: $tooltip-size;
     position: absolute;
-    right: calc(tokens.$spacing-md + $button-size * 0.5);
     top: 0;
     transform: translateY(-50%) rotate(45deg);
     width: $tooltip-size;
-
-    @media screen and (max-width: tokens.$screen-md) {
-      right: calc($button-size * 0.5);
-    }
+    right: 50px;
   }
 }
 
