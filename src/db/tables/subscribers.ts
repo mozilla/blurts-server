@@ -192,19 +192,6 @@ async function getFxATokens(subscriberId: SubscriberRow["id"]) {
 /* c8 ignore stop */
 
 /**
- * Get fxa tokens and expiry for subscriber
- */
-// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
-/* c8 ignore start */
-async function getFxATokensByFxaId(fxaUid: SubscriberRow["fxa_uid"]) {
-  const res = await knex("subscribers")
-    .first("fxa_access_token", "fxa_session_expiry")
-    .where("fxa_uid", fxaUid);
-  return res ?? null;
-}
-/* c8 ignore stop */
-
-/**
  * Update fxa_profile_json for subscriber
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
@@ -684,7 +671,6 @@ export {
   updateFxAData,
   updateFxATokens,
   getFxATokens,
-  getFxATokensByFxaId,
   updateFxAProfileData,
   setAllEmailsToPrimary,
   setMonthlyMonitorReport,

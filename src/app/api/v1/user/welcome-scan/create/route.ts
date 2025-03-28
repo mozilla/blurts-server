@@ -54,12 +54,6 @@ export async function POST(
     throw new Error("No fxa_uid found in session");
   }
 
-  // Save fxaUid for later use in function calls
-  const fxaUid = session.user.subscriber.fxa_uid;
-  if (typeof fxaUid !== "string") {
-    return NextResponse.json({ success: false }, { status: 401 });
-  }
-
   const eligible = await isEligibleForFreeScan(
     session.user,
     getCountryCode(await headers()),
@@ -135,12 +129,12 @@ export async function POST(
       }
       if (!subscriber.onerep_profile_id) {
         // Create OneRep profile
-        const profileId = await createProfile(profileData, fxaUid);
+        const profileId = await createProfile(profileData);
         await setOnerepProfileId(subscriber, profileId);
         await setProfileDetails(profileId, profileData);
 
         // Start exposure scan
-        const scan = await createScan(profileId, fxaUid);
+        const scan = await createScan(profileId);
         const scanId = scan.id;
         await setOnerepScan(profileId, scanId, scan.status, "manual");
         // TODO MNTOR-2686 - refactor onerep.ts and centralize logging.
