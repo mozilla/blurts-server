@@ -38,7 +38,7 @@ export const AnnouncementsAdmin = (props: Props) => {
         body: JSON.stringify(newAnnouncement),
       });
 
-      if (!response.ok) throw new Error("Failed to add notification");
+      if (!response.ok) throw new Error("Failed to add announcement");
 
       const savedAnnouncement: AnnouncementRow = await response.json();
 
@@ -46,7 +46,7 @@ export const AnnouncementsAdmin = (props: Props) => {
       setActiveAnnouncementId(savedAnnouncement.id);
       setIsModalOpen(false);
     } catch (error) {
-      console.error("Error adding notification:", error);
+      console.error("Error adding announcement:", error);
     } finally {
       setIsSubmitting(false);
     }
@@ -66,7 +66,7 @@ export const AnnouncementsAdmin = (props: Props) => {
         },
       );
 
-      if (!response.ok) throw new Error("Failed to update notification");
+      if (!response.ok) throw new Error("Failed to update announcement");
 
       const updated = await response.json();
 
@@ -76,7 +76,7 @@ export const AnnouncementsAdmin = (props: Props) => {
       setActiveAnnouncementId(updated.id);
       setIsModalOpen(false);
     } catch (error) {
-      console.error("Error updating notification:", error);
+      console.error("Error updating announcement:", error);
     } finally {
       setIsSubmitting(false);
     }
@@ -93,7 +93,7 @@ export const AnnouncementsAdmin = (props: Props) => {
 
       if (!response.ok) {
         console.error(
-          "Failed to delete notification:",
+          "Failed to delete announcement:",
           response.status,
           response.statusText,
         );
@@ -112,7 +112,7 @@ export const AnnouncementsAdmin = (props: Props) => {
         );
       }
     } catch (error) {
-      console.error("Error deleting notification:", error);
+      console.error("Error deleting announcement:", error);
     }
   };
 
