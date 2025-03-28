@@ -4,9 +4,11 @@
 .comboBox {
   border-radius: tokens.$border-radius-md;
   display: flex;
+  flex: 1;
   flex-direction: column;
   gap: tokens.$spacing-sm;
   position: relative;
+  width: 100%;
 
   .inputFieldWrapper {
     position: relative;
