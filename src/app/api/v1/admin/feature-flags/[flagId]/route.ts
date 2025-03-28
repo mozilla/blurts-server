@@ -9,9 +9,6 @@ import {
   enableFeatureFlagByName,
   getFeatureFlagByName,
   updateAllowList,
-  updateDependencies,
-  updateOwner,
-  updateWaitList,
 } from "../../../../../../db/tables/featureFlags";
 import { isAdmin } from "../../../../utils/auth";
 
@@ -44,25 +41,16 @@ export type UpdateFeatureFlagRequestBody =
       isEnabled: boolean;
     }
   | {
-      id: "dependencies";
-      value: string;
-    }
-  | {
       id: "allowList";
-      value: string;
-    }
-  | {
-      id: "waitList";
-      value: string;
-    }
-  | {
-      id: "owner";
       value: string;
     };
 
 export async function PUT(req: NextRequest) {
   const session = await getServerSession();
-  if (isAdmin(session?.user?.email || "")) {
+  if (
+    isAdmin(session?.user?.email || "") &&
+    typeof session?.user?.subscriber?.id === "number"
+  ) {
     // Signed in
     try {
       const flagName = req.nextUrl.pathname.split("/").at(-1);
@@ -72,19 +60,14 @@ export async function PUT(req: NextRequest) {
       const result: UpdateFeatureFlagRequestBody = await req.json();
 
       if (result.id === "isEnabled") {
-        await enableFeatureFlagByName(flagName, result.isEnabled);
-      } else if (result.id === "dependencies") {
-        const dependencies = result.value.split(",");
-        await updateDependencies(flagName, dependencies);
+        await enableFeatureFlagByName(
+          flagName,
+          result.isEnabled,
+          session.user.subscriber.id,
+        );
       } else if (result.id === "allowList") {
         const allowList = result.value.split(",");
-        await updateAllowList(flagName, allowList);
-      } else if (result.id === "waitList") {
-        const waitList = result.value.split(",");
-        await updateWaitList(flagName, waitList);
-      } else if (result.id === "owner") {
-        const owner = result.value;
-        await updateOwner(flagName, owner);
+        await updateAllowList(flagName, allowList, session.user.subscriber.id);
       }
 
       return NextResponse.json({ success: true }, { status: 200 });
