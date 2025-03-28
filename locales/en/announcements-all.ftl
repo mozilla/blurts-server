@@ -10,3 +10,6 @@ announcement-dialog-back = Back
 announcement-dialog-clear-all = Mark all as read
 announcement-dialog-empty-state-title = No updates
 announcement-dialog-empty-state-description = Check back regularly for updates and information on our latest features.
+announcement-dialog-trigger-alt = Open announcements
+announcement-dialog-alt = List of announcements
+
