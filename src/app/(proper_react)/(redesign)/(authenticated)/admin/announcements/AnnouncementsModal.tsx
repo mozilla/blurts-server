@@ -12,7 +12,7 @@ type AnnouncementsModalProps = {
   onClose: () => void;
   onAddAnnouncement: (notification: AnnouncementRow) => void;
   onUpdateAnnouncement: (notification: AnnouncementRow) => void;
-  notificationToEdit: AnnouncementRow | null;
+  announcementToEdit: AnnouncementRow | null;
   isSubmitting: boolean;
   setIsSubmitting: React.Dispatch<React.SetStateAction<boolean>>;
 };
@@ -44,20 +44,20 @@ const AnnouncementsModal = (props: AnnouncementsModalProps) => {
 
   // Pre-fill form if editing an existing notification
   useEffect(() => {
-    if (props.notificationToEdit) {
+    if (props.announcementToEdit) {
       setFormData({
-        announcement_id: props.notificationToEdit.announcement_id,
-        title: props.notificationToEdit.title,
-        description: props.notificationToEdit.description,
-        small_image_path: props.notificationToEdit.small_image_path,
-        big_image_path: props.notificationToEdit.big_image_path,
-        cta_label: props.notificationToEdit.cta_label ?? "",
-        cta_link: props.notificationToEdit.cta_link ?? "",
-        audience: props.notificationToEdit.audience,
-        label: props.notificationToEdit.label,
+        announcement_id: props.announcementToEdit.announcement_id,
+        title: props.announcementToEdit.title,
+        description: props.announcementToEdit.description,
+        small_image_path: props.announcementToEdit.small_image_path,
+        big_image_path: props.announcementToEdit.big_image_path,
+        cta_label: props.announcementToEdit.cta_label ?? "",
+        cta_link: props.announcementToEdit.cta_link ?? "",
+        audience: props.announcementToEdit.audience,
+        label: props.announcementToEdit.label,
       });
     }
-  }, [props.notificationToEdit]);
+  }, [props.announcementToEdit]);
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -84,9 +84,9 @@ const AnnouncementsModal = (props: AnnouncementsModalProps) => {
     try {
       let response;
 
-      if (props.notificationToEdit) {
+      if (props.announcementToEdit) {
         response = await fetch(
-          `/api/v1/admin/announcements/${props.notificationToEdit.announcement_id}`,
+          `/api/v1/admin/announcements/${props.announcementToEdit.announcement_id}`,
           {
             method: "PUT",
             headers: {
@@ -136,7 +136,7 @@ const AnnouncementsModal = (props: AnnouncementsModalProps) => {
       <div className={styles.modal}>
         <div className={styles.modalHeader}>
           <h2>
-            {props.notificationToEdit
+            {props.announcementToEdit
               ? "Edit Announcement"
               : "Add New Announcement"}
           </h2>
@@ -156,7 +156,7 @@ const AnnouncementsModal = (props: AnnouncementsModalProps) => {
               onChange={handleChange}
               required
               className={styles.input}
-              disabled={!!props.notificationToEdit} // Disable when editing
+              disabled={!!props.announcementToEdit} // Disable when editing
             />
           </div>
 
@@ -288,7 +288,7 @@ const AnnouncementsModal = (props: AnnouncementsModalProps) => {
               type="submit"
               className={styles.submitButton}
             >
-              {props.notificationToEdit
+              {props.announcementToEdit
                 ? "Update Announcement"
                 : "Add Announcement"}
             </Button>

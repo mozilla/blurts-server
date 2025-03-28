@@ -117,13 +117,13 @@ export const AnnouncementsAdmin = (props: Props) => {
   };
 
   const handleEditAnnouncement = (announcementId: string) => {
-    const notificationToEdit = announcements.find(
+    const announcementToEdit = announcements.find(
       (n) => n.announcement_id === announcementId,
     );
-    if (notificationToEdit) {
+    if (announcementToEdit) {
       setIsModalOpen(true);
       // Pass the notification data to the modal for editing
-      setActiveAnnouncementToEdit(notificationToEdit);
+      setActiveAnnouncementToEdit(announcementToEdit);
     }
   };
 
@@ -404,7 +404,7 @@ export const AnnouncementsAdmin = (props: Props) => {
       <AnnouncementsModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        notificationToEdit={activeAnnouncementToEdit}
+        announcementToEdit={activeAnnouncementToEdit}
         onAddAnnouncement={handleAddAnnouncement}
         onUpdateAnnouncement={handleUpdateAnnouncement}
         isSubmitting={isSubmitting}
