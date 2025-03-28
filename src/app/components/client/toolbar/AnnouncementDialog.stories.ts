@@ -15,14 +15,26 @@ const meta: Meta<typeof AnnouncementDialog> = {
 export default meta;
 type Story = StoryObj<typeof AnnouncementDialog>;
 
-const mockedAnnouncements: UserAnnouncementWithDetails[] = [
+const mockedAnnouncementsAllUsers: UserAnnouncementWithDetails[] = [
   createRandomAnnouncement(),
   createRandomAnnouncement(),
   createRandomAnnouncement(),
 ];
 
+const mockedAnnouncementsSeenOrCleared: UserAnnouncementWithDetails[] = [
+  createRandomAnnouncement({ status: "seen" }),
+  createRandomAnnouncement({ status: "cleared" }),
+];
+
 export const AnnouncementDialogDefault: Story = {
   args: {
-    announcements: mockedAnnouncements,
+    announcements: mockedAnnouncementsAllUsers,
+  },
+};
+
+export const AnnouncementDialogSeenOrCleared: Story = {
+  args: {
+    announcements: mockedAnnouncementsSeenOrCleared,
+    activeState: "all",
   },
 };

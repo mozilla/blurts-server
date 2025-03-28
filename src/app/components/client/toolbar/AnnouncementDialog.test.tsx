@@ -6,9 +6,11 @@ import { it, expect } from "@jest/globals";
 import { render, screen } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
 import { composeStory } from "@storybook/react";
-import Meta from "./AnnouncementDialog.stories";
+import Meta, {
+  AnnouncementDialogDefault,
+  AnnouncementDialogSeenOrCleared,
+} from "./AnnouncementDialog.stories";
 import { axe } from "jest-axe";
-import { AnnouncementDialogDefault } from "./AnnouncementDialog.stories";
 
 jest.mock("../../../hooks/useTelemetry");
 
@@ -61,7 +63,7 @@ it("switches between new and all tab", async () => {
     }),
   );
 
-  // jsdom will complain about not being able to find the right fluent-id which we can ignore
+  // suppress fluent-id warning
   jest.spyOn(console, "warn").mockImplementation(() => {});
 
   const user = userEvent.setup();
@@ -77,7 +79,6 @@ it("switches between new and all tab", async () => {
 
   await user.click(announcementTrigger);
 
-  // const announcementTabList = screen.getByRole("tablist");
   const newTab = screen.getByRole("tab", { name: "New" });
   const allTab = screen.getByRole("tab", { name: "All" });
 
@@ -90,4 +91,35 @@ it("switches between new and all tab", async () => {
   // Switch to all tab
   expect(newTab).toHaveAttribute("aria-selected", "false");
   expect(allTab).toHaveAttribute("aria-selected", "true");
+});
+
+it("seen or cleared announcements should only be in the All tab", async () => {
+  global.fetch = jest.fn().mockImplementation(() =>
+    Promise.resolve({
+      success: true,
+      json: jest.fn(() => Promise.resolve([])),
+    }),
+  );
+
+  // suppress fluent-id warning
+  jest.spyOn(console, "warn").mockImplementation(() => {});
+
+  const user = userEvent.setup();
+  const ComposedAnnouncementDialog = composeStory(
+    AnnouncementDialogSeenOrCleared,
+    Meta,
+  );
+  render(<ComposedAnnouncementDialog />);
+
+  const announcementTrigger = screen.getByRole("button", {
+    name: "Open announcements",
+  });
+
+  await user.click(announcementTrigger);
+
+  const allTab = screen.getByRole("tab", { name: "All" });
+  expect(allTab).toHaveAttribute("aria-selected", "true");
+
+  const announcementItems = await screen.findAllByRole("group");
+  expect(announcementItems.length).toBeGreaterThan(0);
 });
