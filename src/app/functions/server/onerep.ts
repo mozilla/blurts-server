@@ -16,6 +16,7 @@ import { logger } from "./logging";
 import { isUsingMockONEREPEndpoint } from "../universal/mock.ts";
 import { hasPremium } from "../universal/user.ts";
 import { OnerepProfileAddress } from "knex/types/tables";
+import { getServerSession } from "./getServerSession";
 
 export const monthlyScansQuota = parseInt(
   (process.env.MONTHLY_SCANS_QUOTA as string) ?? "0",
@@ -149,6 +150,8 @@ async function onerepFetch(
     throw new Error("ONEREP_API_KEY env var not set");
   }
 
+  const session = await getServerSession();
+
   //If mock, remove the first slash so that it doesn't overwrite the path
   if (
     onerepApiBase.includes("/api/mock") &&
@@ -167,7 +170,15 @@ async function onerepFetch(
   const url = new URL(adjustedPath, onerepApiBase);
   console.log({ url });
   const headers = new Headers(options.headers);
-  headers.set("Authorization", `Bearer ${onerepApiKey}`);
+  if (session?.user.moscaryJWT) {
+    logger.info("onerep_fetch_with_moscary_jwt", {
+      message: `fetching ${url} with moscary jwt`,
+      moscaryJWT: session.user.moscaryJWT,
+    });
+    headers.set("Authorization", `Bearer ${session.user.moscaryJWT}`);
+  } else {
+    headers.set("Authorization", `Bearer ${onerepApiKey}`);
+  }
   headers.set("Accept", "application/json");
   headers.set("Content-Type", "application/json");
   return fetch(url, { ...options, headers });
