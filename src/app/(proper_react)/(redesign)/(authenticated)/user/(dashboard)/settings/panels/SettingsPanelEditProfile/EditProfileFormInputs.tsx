@@ -24,6 +24,12 @@ import {
   CONST_URL_SUMO_EDIT_PROFILE_DOB,
 } from "../../../../../../../../../constants";
 
+export type EditProfileInputOnChangeReturnValue = {
+  key: ProfileDataListKey;
+  value: string;
+  index?: number;
+};
+
 function AddItemButton(props: {
   itemKey: keyof OnerepProfileRow;
   onAdd: () => void;
@@ -86,89 +92,93 @@ function RemoveItemButton(props: {
 function EditProfileFormInputs(props: {
   profileData: OnerepProfileRow;
   profileDataKey: keyof OnerepProfileRow;
-  handleOnInputChange: (value: string, key: string) => void;
+  handleOnInputChange: ({
+    key,
+    value,
+    index,
+  }: EditProfileInputOnChangeReturnValue) => void;
   onAdd: (profileDataKey: ProfileDataListKey) => void;
   onRemove: (profileDataKey: ProfileDataListKey, itemIndex: number) => void;
 }) {
   const l10n = useL10n();
-  const itemData = props.profileData[props.profileDataKey];
   const profileDataKeyParsed = props.profileDataKey.replaceAll("_", "-");
 
   switch (props.profileDataKey) {
     case "first_name":
     case "middle_name":
     case "last_name":
+      const nameData = props.profileData[props.profileDataKey];
       const isRequired = props.profileDataKey !== "middle_name";
+      const secondaryNameKey = `${props.profileDataKey}s` as ProfileDataListKey;
+      const secondaryNameData = props.profileData[secondaryNameKey];
       return (
         <>
           <InputField
             onChange={(value) =>
-              props.handleOnInputChange(value, props.profileDataKey)
+              props.handleOnInputChange({
+                key: props.profileDataKey as ProfileDataListKey,
+                value,
+              })
             }
             key={props.profileDataKey}
             name={props.profileDataKey}
-            value={itemData as string}
+            value={nameData as string}
             label={l10n.getString(
               `settings-edit-profile-info-form-input-label-primary-${profileDataKeyParsed}`,
             )}
             hasFloatingLabel
             isRequired={props.profileDataKey !== "middle_name"}
-            isInvalid={isRequired && (itemData as string).trim() === ""}
+            isInvalid={isRequired && (nameData as string).trim() === ""}
             errorMessage={l10n.getString(
               `settings-edit-profile-info-form-input-error-${profileDataKeyParsed}`,
             )}
           />
-          {props.profileData[`${props.profileDataKey}s`].length > 0 && (
+          {secondaryNameData.length > 0 && (
             <div className={styles.secondaryInputs}>
-              {props.profileData[`${props.profileDataKey}s`].map(
-                (item, itemIndex) => {
-                  const inputKey = `${props.profileDataKey}s-${itemIndex}`;
-                  return (
-                    <Fragment key={inputKey}>
-                      {itemIndex === 0 && (
-                        <strong>
-                          {l10n.getString(
-                            `settings-edit-profile-info-form-fieldset-section-other-label-${profileDataKeyParsed}s`,
-                          )}
-                        </strong>
-                      )}
-                      <div className={styles.inputWrapper}>
-                        <InputField
-                          onChange={(value) =>
-                            props.handleOnInputChange(value, inputKey)
-                          }
-                          name={inputKey}
-                          value={item}
-                          label={l10n.getString(
-                            `settings-edit-profile-info-form-input-label-other-${profileDataKeyParsed}`,
-                          )}
-                          hasFloatingLabel
-                        />
-                        <RemoveItemButton
-                          itemKey={props.profileDataKey}
-                          onRemove={() => {
-                            props.onRemove(
-                              `${props.profileDataKey}s` as ProfileDataListKey,
-                              itemIndex,
-                            );
-                          }}
-                        />
-                      </div>
-                    </Fragment>
-                  );
-                },
-              )}
+              {secondaryNameData.map((item, itemIndex) => {
+                const inputKey = `${props.profileDataKey}s-${itemIndex}`;
+                return (
+                  <Fragment key={inputKey}>
+                    {itemIndex === 0 && (
+                      <strong>
+                        {l10n.getString(
+                          `settings-edit-profile-info-form-fieldset-section-other-label-${profileDataKeyParsed}s`,
+                        )}
+                      </strong>
+                    )}
+                    <div className={styles.inputWrapper}>
+                      <InputField
+                        onChange={(value) =>
+                          props.handleOnInputChange({
+                            key: inputKey as ProfileDataListKey,
+                            value,
+                            index: itemIndex,
+                          })
+                        }
+                        name={inputKey}
+                        value={item}
+                        label={l10n.getString(
+                          `settings-edit-profile-info-form-input-label-other-${profileDataKeyParsed}`,
+                        )}
+                        hasFloatingLabel
+                      />
+                      <RemoveItemButton
+                        itemKey={props.profileDataKey}
+                        onRemove={() => {
+                          props.onRemove(secondaryNameKey, itemIndex);
+                        }}
+                      />
+                    </div>
+                  </Fragment>
+                );
+              })}
             </div>
           )}
-          {props.profileData[`${props.profileDataKey}s`].length <
-          CONST_DATA_BROKER_PROFILE_DETAIL_LIMITS[
-            `${props.profileDataKey}s`
-          ] ? (
+          {secondaryNameData.length <
+          CONST_DATA_BROKER_PROFILE_DETAIL_LIMITS[secondaryNameKey] ? (
             <AddItemButton
-              itemKey={`${props.profileDataKey}s`}
-              onAdd={() =>
-                props.onAdd(`${props.profileDataKey}s` as ProfileDataListKey)
-              }
+              itemKey={secondaryNameKey}
+              onAdd={() => props.onAdd(secondaryNameKey)}
             />
           ) : (
             <p>
@@ -180,7 +190,8 @@ function EditProfileFormInputs(props: {
         </>
       );
     case "date_of_birth":
-      const dateOfBirthString = new Date(itemData as Date).toLocaleDateString(
+      const dobData = props.profileData[props.profileDataKey];
+      const dateOfBirthString = new Date(dobData).toLocaleDateString(
         getLocale(l10n),
         {
           dateStyle: "short",
@@ -214,13 +225,19 @@ function EditProfileFormInputs(props: {
         </div>
       );
     case "phone_numbers":
-      const primaryPhoneItem = itemData.length > 0 ? itemData[0] : "";
+      const phoneData = props.profileData[props.profileDataKey];
+      const primaryPhoneItem = phoneData[0] ?? "";
+      const secondaryPhoneItems = phoneData.slice(1);
       return (
         <>
           <InputField
             type="tel"
             onChange={(value) =>
-              props.handleOnInputChange(value, `${props.profileDataKey}-0`)
+              props.handleOnInputChange({
+                key: props.profileDataKey as ProfileDataListKey,
+                value,
+                index: 0,
+              })
             }
             name={`${props.profileDataKey}-0`}
             value={primaryPhoneItem}
@@ -233,9 +250,9 @@ function EditProfileFormInputs(props: {
             )}
             hasFloatingLabel
           />
-          {itemData.slice(1).length > 0 && (
+          {secondaryPhoneItems.length > 0 && (
             <div className={styles.secondaryInputs}>
-              {(itemData.slice(1) as string[]).map((item, itemIndex) => {
+              {(phoneData.slice(1) as string[]).map((item, itemIndex) => {
                 const inputKey = `${props.profileDataKey}-${itemIndex + 1}`;
                 return (
                   <Fragment key={inputKey}>
@@ -250,7 +267,11 @@ function EditProfileFormInputs(props: {
                       <InputField
                         type="tel"
                         onChange={(value) =>
-                          props.handleOnInputChange(value, inputKey)
+                          props.handleOnInputChange({
+                            key: inputKey as ProfileDataListKey,
+                            value,
+                            index: itemIndex,
+                          })
                         }
                         name={inputKey}
                         value={item}
@@ -301,11 +322,12 @@ function EditProfileFormInputs(props: {
         </>
       );
     case "addresses":
-      const primaryAddressItem = itemData[0];
-      const primaryItemValue =
-        primaryAddressItem.city && primaryAddressItem.state
-          ? `${primaryAddressItem.city}, ${primaryAddressItem.state}, USA`
+      const addressData = props.profileData[props.profileDataKey];
+      const primaryAddressItem =
+        addressData[0].city && addressData[0].state
+          ? `${addressData[0].city}, ${addressData[0].state}, USA`
           : "";
+      const secondaryAddressItems = addressData.slice(1);
       return (
         <>
           <strong>
@@ -319,19 +341,23 @@ function EditProfileFormInputs(props: {
               `settings-edit-profile-info-form-input-label-primary-location`,
             )}
             onChange={(value) =>
-              props.handleOnInputChange(value, `${props.profileDataKey}-0`)
+              props.handleOnInputChange({
+                key: props.profileDataKey as ProfileDataListKey,
+                value,
+                index: 0,
+              })
             }
-            defaultInputValue={primaryItemValue}
+            defaultInputValue={primaryAddressItem}
             isRequired
             errorMessage={l10n.getString(
               "settings-edit-profile-info-form-input-error-current-location",
             )}
-            isInvalid={!primaryAddressItem.city || !primaryAddressItem.state}
+            isInvalid={!addressData[0].city || !addressData[0].state}
             hasFloatingLabel
           />
-          {itemData.slice(1).length > 0 && (
+          {secondaryAddressItems.length > 0 && (
             <div className={styles.secondaryInputs}>
-              {(itemData.slice(1) as OnerepProfileAddress[]).map(
+              {(secondaryAddressItems as OnerepProfileAddress[]).map(
                 (item, itemIndex) => {
                   const inputKey = `${props.profileDataKey}-${itemIndex + 1}`;
                   const inputValue =
@@ -354,7 +380,11 @@ function EditProfileFormInputs(props: {
                             "settings-edit-profile-info-form-input-label-other-location",
                           )}
                           onChange={(value) =>
-                            props.handleOnInputChange(value, inputKey)
+                            props.handleOnInputChange({
+                              key: props.profileDataKey as ProfileDataListKey,
+                              value,
+                              index: itemIndex,
+                            })
                           }
                           defaultInputValue={inputValue}
                           errorMessage={l10n.getString(

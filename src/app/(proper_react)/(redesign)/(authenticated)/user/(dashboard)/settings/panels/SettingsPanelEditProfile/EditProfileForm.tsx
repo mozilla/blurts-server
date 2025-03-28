@@ -7,7 +7,10 @@
 import { Fragment, useActionState, useState } from "react";
 import { OnerepProfileRow } from "knex/types/tables";
 import { EditProfileCancelDialog } from "./EditProfileCancelDialog";
-import { EditProfileFormInputs } from "./EditProfileFormInputs";
+import {
+  EditProfileFormInputs,
+  EditProfileInputOnChangeReturnValue,
+} from "./EditProfileFormInputs";
 import { onHandleUpdateProfileData } from "../../actions";
 import { Button } from "../../../../../../../../components/client/Button";
 import { useL10n } from "../../../../../../../../hooks/l10n";
@@ -46,16 +49,18 @@ function EditProfileForm(props: { profileData: OnerepProfileRow }) {
   const hasProfileDataChanged =
     JSON.stringify(props.profileData) !== JSON.stringify(profileFormData);
 
-  const handleOnInputChange = (value: string, key: string) => {
-    const [fieldBaseName, fieldIndex] = key.split("-");
+  const handleOnInputChange = ({
+    key,
+    value,
+    index,
+  }: EditProfileInputOnChangeReturnValue) => {
     const formDataUpdated = { ...profileFormData };
-    if (typeof fieldIndex === "undefined") {
-      formDataUpdated[fieldBaseName as ProfileDataItemKey] = value;
+    if (typeof index === "undefined") {
+      formDataUpdated[key as ProfileDataItemKey] = value;
     } else {
       const [city, state, _countryCode] = value.split(", ");
-      formDataUpdated[fieldBaseName as ProfileDataListKey][
-        parseInt(fieldIndex)
-      ] = fieldBaseName === "addresses" ? { city: city, state } : value;
+      formDataUpdated[key as ProfileDataListKey][index] =
+        key === "addresses" ? { city, state } : value;
     }
     setProfileFormData(formDataUpdated);
   };
