@@ -9,6 +9,7 @@ import {
 } from "knex/types/tables";
 import { ViewDataBrokersView } from "./View";
 import {
+  createRandomAnnouncement,
   createRandomScanResult,
   createUserWithPremiumSubscription,
 } from "../../../../../../../../../../apiMocks/mockData";
@@ -16,6 +17,7 @@ import { Shell } from "../../../../../../../Shell/Shell";
 import { getL10n } from "../../../../../../../../../functions/l10n/storybookAndJest";
 import { LatestOnerepScanData } from "../../../../../../../../../../db/tables/onerep_scans";
 import { defaultExperimentData } from "../../../../../../../../../../telemetry/generated/nimbus/experiments";
+import { UserAnnouncementWithDetails } from "../../../../../../../../../../db/tables/user_announcements";
 
 const brokerOptions = {
   "no-scan": "No scan started",
@@ -97,6 +99,12 @@ const ViewWrapper = (props: ViewWrapperProps) => {
   };
   const l10n = getL10n();
 
+  const mockedAnnouncements: UserAnnouncementWithDetails[] = [
+    createRandomAnnouncement({ audience: "has_run_scan" }),
+    createRandomAnnouncement({ audience: "has_run_scan" }),
+    createRandomAnnouncement({ audience: "has_run_scan" }),
+  ];
+
   return (
     <Shell
       l10n={l10n}
@@ -105,6 +113,7 @@ const ViewWrapper = (props: ViewWrapperProps) => {
       countryCode="us"
       enabledFeatureFlags={[]}
       experimentData={defaultExperimentData["Features"]}
+      announcements={mockedAnnouncements}
     >
       <ViewDataBrokersView
         data={{
