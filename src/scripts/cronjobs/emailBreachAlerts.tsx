@@ -46,6 +46,7 @@ import {
 } from "../../app/functions/server/dashboard";
 import { getScanResultsWithBroker } from "../../db/tables/onerep_scans";
 import { logger } from "../../app/functions/server/logging";
+import { getFeatureFlagData } from "../../db/tables/featureFlags";
 
 const SENTRY_SLUG = "cron-breach-alerts";
 
@@ -108,6 +109,8 @@ export async function poll(
   );
 
   const breaches = await getAllBreachesFromDb();
+  // Using `getFeatureFlagData` instead of `getEnabledFeatureFlags` here to prevent fetching them for every subscriber.
+  const subPlatFeatureFlag = await getFeatureFlagData("SubPlat3");
 
   // Process the messages. Skip any that cannot be processed, and do not mark as acknowledged.
   for (const message of receivedMessages) {
@@ -300,6 +303,9 @@ export async function poll(
             }
 
             const subject = l10n.getString("email-breach-alert-all-subject");
+            const subPlatFeatureFlagEnabled =
+              subPlatFeatureFlag?.is_enabled ||
+              subPlatFeatureFlag?.allow_list?.includes(recipient.primary_email);
 
             await sendEmail(
               recipientEmail,
@@ -312,6 +318,9 @@ export async function poll(
                   utmCampaignId={utmCampaignId}
                   subscriber={recipient}
                   dataSummary={dataSummary}
+                  enabledFeatureFlags={
+                    subPlatFeatureFlagEnabled ? ["SubPlat3"] : []
+                  }
                 />,
               ),
             );

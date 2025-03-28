@@ -83,6 +83,7 @@ export default async function Page() {
           countryCode={countryCode}
           scanLimitReached={scanLimitReached}
           experimentData={experimentData["Features"]}
+          enabledFeatureFlags={enabledFeatureFlags}
         />
       ) : (
         <LandingView
@@ -91,6 +92,7 @@ export default async function Page() {
           countryCode={countryCode}
           scanLimitReached={scanLimitReached}
           experimentData={experimentData["Features"]}
+          enabledFeatureFlags={enabledFeatureFlags}
         />
       )}
     </AccountsMetricsFlowProvider>

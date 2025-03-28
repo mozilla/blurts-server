@@ -136,10 +136,7 @@ it("shows the explainer dialog on step 2", async () => {
   await user.click(explainerTrigger);
   expect(screen.getByRole("dialog")).toBeInTheDocument();
 
-  const confirmButton = screen.getByRole("button", {
-    name: "OK",
-  });
-  await user.click(confirmButton);
+  await user.keyboard("[Tab][Tab][Tab][Enter]");
 
   expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
 });
