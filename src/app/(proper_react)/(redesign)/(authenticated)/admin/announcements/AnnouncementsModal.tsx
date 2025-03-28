@@ -11,8 +11,8 @@ type AnnouncementsModalProps = {
   isOpen: boolean;
   onClose: () => void;
   onAddAnnouncement: (notification: AnnouncementRow) => void;
-  onUpdateAnnouncement: (notification: AnnouncementRow) => void; // Callback for updating
-  notificationToEdit: AnnouncementRow | null; // Receive notification to edit if available
+  onUpdateAnnouncement: (notification: AnnouncementRow) => void;
+  notificationToEdit: AnnouncementRow | null;
   isSubmitting: boolean;
   setIsSubmitting: React.Dispatch<React.SetStateAction<boolean>>;
 };
@@ -123,7 +123,7 @@ const AnnouncementsModal = (props: AnnouncementsModalProps) => {
 
       props.onClose();
     } catch (error) {
-      console.error("Error saving notification:", error);
+      console.error("Error saving announcement:", error);
     } finally {
       props.setIsSubmitting(false);
     }
