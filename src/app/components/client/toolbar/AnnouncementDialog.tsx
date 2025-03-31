@@ -7,7 +7,7 @@
 import Image from "next/image";
 import { useButton, useOverlayTrigger } from "react-aria";
 import { useL10n } from "../../../hooks/l10n";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useOverlayTriggerState } from "react-stately";
 import { Popover } from "../Popover";
 import { AnnouncementsIcon, CloseBtn } from "../../server/Icons";
@@ -18,12 +18,10 @@ import { TelemetryLink } from "../TelemetryLink";
 
 type AnnouncementDialogProps = {
   announcements: UserAnnouncementWithDetails[];
-  activeState?: "new" | "all";
 };
 
 export const AnnouncementDialog = ({
   announcements,
-  activeState,
   ...otherProps
 }: AnnouncementDialogProps) => {
   const l10n = useL10n();
@@ -54,27 +52,13 @@ export const AnnouncementDialog = ({
     Record<string, boolean>
   >({});
   const [announcementDetailsView, setAnnouncementDetailsView] = useState(false);
-  const [activeTab, setActiveTab] = useState<"new" | "all">(
-    activeState ?? "new",
-  );
+  const [activeTab, setActiveTab] = useState<"new" | "all">("new");
 
   const [relevantAnnouncement, setRelevantAnnouncement] =
     useState<UserAnnouncementWithDetails | null>(null);
 
   const [userAnnouncements, setUserAnnouncements] =
     useState<UserAnnouncementWithDetails[]>(announcements);
-
-  // Refetch announcements when a user opens the dialog
-  // This useEffect re-fetches announcements when the popover opens.
-  /* c8 ignore start */
-  useEffect(() => {
-    if (triggerState.isOpen) {
-      fetch("/api/v1/user/announcements")
-        .then((res) => res.json())
-        .then(setUserAnnouncements);
-    }
-  }, [triggerState.isOpen]);
-  /* c8 ignore stop */
 
   const sortedAnnouncements = [...userAnnouncements].sort((a, b) => {
     return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();

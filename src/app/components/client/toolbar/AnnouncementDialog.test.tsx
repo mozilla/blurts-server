@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { it, expect } from "@jest/globals";
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
 import { composeStory } from "@storybook/react";
 import Meta, {
@@ -24,13 +24,6 @@ it("passes the axe accessibility test suite", async () => {
 });
 
 it("closes and opens the announcement button", async () => {
-  global.fetch = jest.fn().mockImplementation(() =>
-    Promise.resolve({
-      success: true,
-      json: jest.fn(() => Promise.resolve([])),
-    }),
-  );
-
   // jsdom will complain about not being able to find the right fluent-id which we can ignore
   jest.spyOn(console, "warn").mockImplementation(() => {});
 
@@ -56,13 +49,6 @@ it("closes and opens the announcement button", async () => {
 });
 
 it("switches between new and all tab", async () => {
-  global.fetch = jest.fn().mockImplementation(() =>
-    Promise.resolve({
-      success: true,
-      json: jest.fn(() => Promise.resolve([])),
-    }),
-  );
-
   // suppress fluent-id warning
   jest.spyOn(console, "warn").mockImplementation(() => {});
 
@@ -94,13 +80,6 @@ it("switches between new and all tab", async () => {
 });
 
 it("seen or cleared announcements should only be in the All tab", async () => {
-  global.fetch = jest.fn().mockImplementation(() =>
-    Promise.resolve({
-      success: true,
-      json: jest.fn(() => Promise.resolve([])),
-    }),
-  );
-
   // suppress fluent-id warning
   jest.spyOn(console, "warn").mockImplementation(() => {});
 
@@ -118,8 +97,119 @@ it("seen or cleared announcements should only be in the All tab", async () => {
   await user.click(announcementTrigger);
 
   const allTab = screen.getByRole("tab", { name: "All" });
+
+  await user.click(allTab);
+
   expect(allTab).toHaveAttribute("aria-selected", "true");
 
   const announcementItems = await screen.findAllByRole("group");
-  expect(announcementItems.length).toBeGreaterThan(0);
+  expect(announcementItems.length).toBeGreaterThan(1);
+});
+
+it("mark a new announcement as seen seen", async () => {
+  // suppress fluent-id warning
+  jest.spyOn(console, "warn").mockImplementation(() => {});
+
+  // suppress error from trying to hit the /seen emdpoint
+  jest.spyOn(console, "error").mockImplementation(() => {});
+
+  global.fetch = jest.fn().mockImplementation(() =>
+    Promise.resolve({
+      ok: true,
+      json: () => Promise.resolve({ success: true }),
+    }),
+  );
+
+  const user = userEvent.setup();
+  const ComposedAnnouncementDialog = composeStory(
+    AnnouncementDialogSeenOrCleared,
+    Meta,
+  );
+
+  render(<ComposedAnnouncementDialog />);
+
+  const announcementTrigger = screen.getByRole("button", {
+    name: "Open announcements",
+  });
+
+  await user.click(announcementTrigger);
+
+  const announcementItems = await screen.findAllByRole("group");
+
+  await user.click(announcementItems[0]);
+
+  await waitFor(() => {
+    // The first randomized announcement is the only one that's new
+    expect(global.fetch).toHaveBeenCalledWith(
+      `/api/v1/user/announcements/test_new/seen`,
+      expect.objectContaining({
+        method: "PUT",
+      }),
+    );
+  });
+
+  const upgradeNow = screen.getByText("Upgrade now");
+  expect(upgradeNow).toBeInTheDocument();
+});
+
+it("mark all announcements as cleared", async () => {
+  // suppress fluent-id warning
+  jest.spyOn(console, "warn").mockImplementation(() => {});
+
+  // suppress error from trying to hit the /seen emdpoint
+  jest.spyOn(console, "error").mockImplementation(() => {});
+
+  global.fetch = jest.fn().mockImplementation(() =>
+    Promise.resolve({
+      ok: true,
+      json: () => Promise.resolve({ success: true }),
+    }),
+  );
+
+  const user = userEvent.setup();
+  const ComposedAnnouncementDialog = composeStory(
+    AnnouncementDialogDefault,
+    Meta,
+  );
+
+  render(<ComposedAnnouncementDialog />);
+
+  const announcementTrigger = screen.getByRole("button", {
+    name: "Open announcements",
+  });
+
+  await user.click(announcementTrigger);
+
+  const markAllAsReadBtn = screen.getByRole("button", {
+    name: "Mark all as read",
+  });
+
+  await user.click(markAllAsReadBtn);
+
+  await waitFor(() => {
+    expect(global.fetch).toHaveBeenCalledWith(
+      `/api/v1/user/announcements/test_one/cleared`,
+      expect.objectContaining({
+        method: "PUT",
+      }),
+    );
+    expect(global.fetch).toHaveBeenCalledWith(
+      `/api/v1/user/announcements/test_two/cleared`,
+      expect.objectContaining({
+        method: "PUT",
+      }),
+    );
+    expect(global.fetch).toHaveBeenCalledWith(
+      `/api/v1/user/announcements/test_three/cleared`,
+      expect.objectContaining({
+        method: "PUT",
+      }),
+    );
+  });
+
+  const allTab = screen.getByRole("tab", { name: "All" });
+  await user.click(allTab);
+
+  const announcementItems = await screen.findAllByRole("group");
+  expect(announcementItems).toHaveLength(3);
 });
