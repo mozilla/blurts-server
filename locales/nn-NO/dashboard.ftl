@@ -31,6 +31,7 @@ exposure-chart-returning-user-upgrade-prompt = Heimeadresse, familiemedlemmar, m
 exposure-chart-returning-user-upgrade-prompt-cta = Start ei gratis skanning
 exposure-chart-scan-in-progress-prompt = <b>Skanning i gang:</b> adresse, familiemedlemmar, og meir, er ikkje inkludert enno.
 modal-active-number-of-exposures-title = Om antal aktive eksponeringar
+modal-active-number-of-exposures-part-three-all = Når dei er løyste, vil dei bli lagt til det samla talet faste eksponeringar på Løyst-sida.
 modal-fixed-number-of-exposures-title = Om talet på dine løyste eksponeringar
 modal-fixed-number-of-exposures-all = Dette diagrammet inkluderer det samla talet datalekkasjar som er løyst for alle e-postadresser du overvaker akkurat no. Når eksponeringar er merkte som løyste, blir dei lagt til i totalen her.
 modal-cta-ok = OK
@@ -44,6 +45,14 @@ dashboard-tab-label-action-needed = Handling påkravd
 dashboard-tab-label-fixed = Løyst
 dashboard-exposures-all-fixed-label = Alt er løyst!
 dashboard-exposures-area-headline = Sjå alle nettstadar der informasjonen din er eksponert
+# Note: this line precedes dashboard-exposures-area-description-all-line2.
+# Variables:
+#   $exposures_unresolved_num (number) - the unresolved number of exposures the user has.
+dashboard-exposures-area-description-all-line1 =
+    { $exposures_unresolved_num ->
+        [one] Vi fann { $exposures_unresolved_num } eksponering av dataa dine.
+       *[other] Vi fann { $exposures_unresolved_num } eksponeringar av dataa dine.
+    }
 dashboard-fixed-area-headline-all = Vis alle eksponeringar som er løyste
 # This is the label on a button that opens a popover menu, which shows a menu to adjust filters for the listed exposures.
 dashboard-exposures-filter = Filter
@@ -66,7 +75,16 @@ dashboard-top-banner-your-data-is-protected-title = Dine data er verna
 dashboard-top-banner-your-data-is-protected-cta = Sjå kva som er løyst
 dashboard-top-banner-lets-keep-protecting-title = La oss halde fram med å verne dataa dine
 dashboard-top-banner-lets-keep-protecting-cta = La oss halde fram
+dashboard-top-banner-protect-your-data-title = La oss verne dataa dine
 dashboard-top-banner-protect-your-data-cta = La oss løyse det
+# Note: this line is followed by `dashboard-top-banner-non-us-protect-your-data-description-line1`.
+# Variables:
+#   $exposures_unresolved_num (number) - the total number of exposures the user has.
+dashboard-top-banner-non-us-protect-your-data-description-line1 =
+    { $exposures_unresolved_num ->
+        [one] Vi fann { $exposures_unresolved_num } eksponering av dataa dine.
+       *[other] Vi fann { $exposures_unresolved_num } eksponeringar av dataa dine.
+    }
 dashboard-top-banner-no-exposures-found-title = Fann ingen eksponeringar
 dashboard-no-exposures-label = Fann ingen eksponeringar
 # Variables:
@@ -80,3 +98,6 @@ dashboard-top-banner-monitor-more-cta = Overvak fleire e-postadresser
 
 # About Exposure Indicators Modal
 
+modal-exposure-indicator-title = Status for eksponeringar
+modal-exposure-indicator-action-needed = Avansert eller manuell handling er nødvendig for å fullføre ei handling.
+modal-exposure-indicator-fixed = Eksponeringa er løyst, og du treng ikkje å gjere noko.
