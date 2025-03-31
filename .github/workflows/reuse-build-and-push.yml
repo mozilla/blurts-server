@@ -53,6 +53,8 @@ jobs:
       - id: checkout
         name: Checkout
         uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
       # can be useful if you want to add emulation support with QEMU to be able to build against more platforms.
       - name: Set up QEMU
