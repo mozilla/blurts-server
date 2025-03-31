@@ -21,8 +21,13 @@ import { getMonthlyActivityFreeUnsubscribeLink } from "../../app/functions/cronj
 import { hasPremium } from "../../app/functions/universal/user";
 import { getFeatureFlagData } from "../../db/tables/featureFlags";
 
+let sentEmails = 0;
 process.on("SIGINT", () => {
-  logger.info("SIGINT received, exiting...");
+  logger.info(`SIGINT received, exiting ([${sentEmails}] emails sent)...`);
+  tearDown();
+});
+process.on("SIGTERM", () => {
+  logger.info(`SIGTERM received, exiting ([${sentEmails}] emails sent)...`);
   tearDown();
 });
 
@@ -139,6 +144,7 @@ async function sendMonthlyActivityEmail(
         />,
       ),
     );
+    sentEmails += 1;
   } catch (e) {
     logger.error("send_monthly_activity_email_free", {
       exception: e,
