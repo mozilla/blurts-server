@@ -17,6 +17,7 @@ import { isUsingMockONEREPEndpoint } from "../universal/mock.ts";
 import { hasPremium } from "../universal/user.ts";
 import { OnerepProfileAddress } from "knex/types/tables";
 import { getServerSession } from "./getServerSession";
+import { getEnabledFeatureFlags } from "../../../db/tables/featureFlags.ts";
 
 export const monthlyScansQuota = parseInt(
   (process.env.MONTHLY_SCANS_QUOTA as string) ?? "0",
@@ -151,6 +152,10 @@ async function onerepFetch(
   }
 
   const session = await getServerSession();
+  const enabledFeatureFlags = await getEnabledFeatureFlags({
+    isSignedOut: false,
+    email: session?.user.email ?? "",
+  });
 
   //If mock, remove the first slash so that it doesn't overwrite the path
   if (
@@ -170,13 +175,16 @@ async function onerepFetch(
   const url = new URL(adjustedPath, onerepApiBase);
   console.log({ url });
   const headers = new Headers(options.headers);
-  if (session?.user.moscaryJWT) {
+  if (session?.user.moscaryJWT && enabledFeatureFlags.includes("MoscaryAuth")) {
     logger.info("onerep_fetch_with_moscary_jwt", {
       message: `fetching ${url} with moscary jwt`,
       moscaryJWT: session.user.moscaryJWT,
     });
     headers.set("Authorization", `Bearer ${session.user.moscaryJWT}`);
   } else {
+    logger.info("onerep_fetch_with_bearer_token", {
+      message: `fetching ${url} with bearer token`,
+    });
     headers.set("Authorization", `Bearer ${onerepApiKey}`);
   }
   headers.set("Accept", "application/json");

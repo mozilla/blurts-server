@@ -10,7 +10,7 @@ import { logger } from "./logging";
 const rClient = redisClient();
 
 export async function getMoscaryJWT(fxaUid: string) {
-  const REDIS_KEY = `${REDIS_JWT_KEY_PREFIX}-${fxaUid}`;
+  const REDIS_KEY = `${REDIS_JWT_KEY_PREFIX}${fxaUid}`;
   // if token is already exists in redis, return it
   let token = await rClient.get(REDIS_KEY);
   if (token) {
