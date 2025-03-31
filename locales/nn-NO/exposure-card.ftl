@@ -28,9 +28,10 @@ exposure-card-other = Anna
 exposure-card-description-data-breach-action-needed = Informasjonen din er eksponert i ein datalekkasje på <data_breach_link>{ $data_breach_company } den { $data_breach_date }.</data_breach_link> Vi går gjenom stega for å fikse det.
 exposure-card-description-data-breach-fixed = Du har teke stega som trengst for å fikse <data_breach_link>denne datalekkasjen</data_breach_link>. Vi vil kontinuerleg overvake datalekkasjar og varsle deg om eventuelle nye eksponeringar.
 exposure-card-your-exposed-info = DIn eksporterte informasjon:
+exposure-card-found-the-following-data = { -brand-monitor } fann følgjande eksponerte data:
 exposure-card-exposure-type-data-broker = Info til sals
 exposure-card-exposure-type-data-breach = Datalekkasje
-exposure-card-cta = Løys alle eksponeringar
+exposure-card-resolve-exposures-cta = Løys eksponeringar
 exposure-card-label-company-logo = Firmalogo
 exposure-card-label-company = Firma
 # Status of the exposure card, could be In Progress, Fixed or Action Needed
@@ -39,3 +40,4 @@ exposure-card-label-status = Status
 # $category_label is the data breach exposure type that was leaked. Eg. Email, IP Address.
 # $count is the number of times that the data type was leaked.
 exposure-card-label-and-count = { $category_label }: { $count }
+exposure-card-manual-resolution-praise = <b>Bra jobba!</b> Du løyste denna eksponeringa.
