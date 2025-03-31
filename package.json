@@ -84,7 +84,7 @@
     "@leeoniya/ufuzzy": "^1.0.18",
     "@mozilla/glean": "^5.0.3",
     "@next/third-parties": "15.2.4",
-    "@sentry/nextjs": "^9.9.0",
+    "@sentry/nextjs": "^9.10.1",
     "@sentry/node": "^9.0.0",
     "@sentry/utils": "^8.55.0",
     "@stripe/stripe-js": "^6.1.0",
