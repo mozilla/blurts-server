@@ -111,10 +111,13 @@ export const AnnouncementDialog = ({
       recordTelemetry("expand", "click", {
         button_id: `${announcement.announcement_id}_marked_as_seen`,
       });
+      // The mock implementation throws an error by design,
+      // so this state is difficult to reach in tests.
+      /* c8 ignore start */
     } catch (err) {
-      /* c8 ignore next 3 */
-      console.error("Failed to mark as seen", err);
+      console.error("Failed to clear all announcements:", err);
     }
+    /* c8 ignore end */
   };
 
   const handleClearAll = async () => {
@@ -146,10 +149,13 @@ export const AnnouncementDialog = ({
       recordTelemetry("button", "click", {
         button_id: "cleared_all_announcements",
       });
+      // The mock implementation throws an error by design,
+      // so this state is difficult to reach in tests.
+      /* c8 ignore start */
     } catch (err) {
-      /* c8 ignore next 3 */
       console.error("Failed to clear all announcements:", err);
     }
+    /* c8 ignore end */
   };
 
   return (
