@@ -2597,6 +2597,7 @@ describe("Settings page", () => {
           experimentData={defaultExperimentData["Features"]}
           isMonthlySubscriber={true}
           data={undefined}
+          isEligibleForPremium={false}
         />
       </SettingsWrapper>
     );

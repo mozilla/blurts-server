@@ -3,8 +3,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    ".storybook/**.ts",
-    ".storybook/**.tsx",
+    ".storybook/*.ts",
+    ".storybook/*.tsx",
     // JS files that are not yet migrated to TS.
     "src/app/global-error.js",
     "src/db/migrations/*.js",
@@ -40,9 +40,8 @@
       }
     ],
     "paths": {
-      "#settings/actions": [
-        "./src/app/(proper_react)/(redesign)/(authenticated)/user/(dashboard)/settings/actions.mock.ts",
-        "./src/app/(proper_react)/(redesign)/(authenticated)/user/(dashboard)/settings/actions.ts",
+      "#settings/*": [
+        "./src/app/(proper_react)/(redesign)/(authenticated)/user/(dashboard)/settings/*.ts",
       ],
     },                                                   /* Specify a set of entries that re-map imports to additional lookup locations. */
     // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */
