@@ -4,20 +4,12 @@
 
 import * as Sentry from "@sentry/nextjs";
 
-export function register() {
+export async function register() {
   if (process.env.NEXT_RUNTIME === "nodejs") {
-    Sentry.init({
-      environment: process.env.APP_ENV,
-      dsn: process.env.SENTRY_DSN,
-
-      // Adjust this value in production, or use tracesSampler for greater control
-      tracesSampleRate: ["local", "heroku"].includes(process.env.NODE_ENV)
-        ? 1.0
-        : 0.1,
-
-      // Setting this option to true will print useful information to the console while you're setting up Sentry.
-      debug: false,
-    });
+    // This instrumentation code won't work in Next.js's "edge runtime"
+    // (which we're not using):
+    const { register } = await import("./instrumentation.node");
+    register();
   }
 }
 
