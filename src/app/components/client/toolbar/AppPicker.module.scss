@@ -39,7 +39,7 @@
     content: "";
     height: $tooltip-size;
     position: absolute;
-    right: 85px; // Vertically align chevron with bento icon
+    right: 100px; // Vertically align chevron with bento icon
     top: 0;
     transform: translateY(-50%) rotate(45deg);
     width: $tooltip-size;

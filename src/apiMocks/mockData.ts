@@ -115,7 +115,7 @@ export function createRandomAnnouncement(
   return {
     id: faker.number.int(),
     announcement_id: options.announcement_id ?? faker.string.alpha(),
-    title: `${options.announcement_id} ${adjective.replace(/^./, (c) => c.toUpperCase())} new feature on Monitor`,
+    title: `${adjective.replace(/^./, (c) => c.toUpperCase())} new feature on Monitor`,
     description: faker.lorem.sentence(),
     small_image_path: faker.string.alpha(),
     big_image_path: faker.string.alpha(),
