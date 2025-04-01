@@ -15,6 +15,7 @@ import styles from "./AnnouncementDialog.module.scss";
 import { UserAnnouncementWithDetails } from "../../../../../src/db/tables/user_announcements";
 import { LocalizedAnnouncementString } from "../../../(proper_react)/(redesign)/(authenticated)/admin/announcements/AnnouncementsAdmin";
 import { TelemetryLink } from "../TelemetryLink";
+import { useTelemetry } from "../../../hooks/useTelemetry";
 
 type AnnouncementDialogProps = {
   announcements: UserAnnouncementWithDetails[];
@@ -22,11 +23,19 @@ type AnnouncementDialogProps = {
 
 export const AnnouncementDialog = ({
   announcements,
-  ...otherProps
 }: AnnouncementDialogProps) => {
   const l10n = useL10n();
+  const recordTelemetry = useTelemetry();
   const triggerRef = useRef<HTMLButtonElement>(null);
-  const triggerState = useOverlayTriggerState(otherProps);
+  const triggerState = useOverlayTriggerState({
+    onOpenChange: (isOpen) => {
+      if (isOpen) {
+        recordTelemetry("button", "click", {
+          button_id: "opened_announcements",
+        });
+      }
+    },
+  });
   const { triggerProps, overlayProps } = useOverlayTrigger(
     { type: "dialog" },
     triggerState,
@@ -98,6 +107,10 @@ export const AnnouncementDialog = ({
           method: "PUT",
         },
       );
+
+      recordTelemetry("expand", "click", {
+        button_id: `${announcement.announcement_id}_marked_as_seen`,
+      });
     } catch (err) {
       /* c8 ignore next 3 */
       console.error("Failed to mark as seen", err);
@@ -129,6 +142,10 @@ export const AnnouncementDialog = ({
           }),
         ),
       );
+
+      recordTelemetry("button", "click", {
+        button_id: "cleared_all_announcements",
+      });
     } catch (err) {
       /* c8 ignore next 3 */
       console.error("Failed to clear all announcements:", err);
@@ -173,6 +190,9 @@ export const AnnouncementDialog = ({
                 onClick={() => {
                   setActiveTab("new");
                   setAnnouncementDetailsView(false);
+                  recordTelemetry("button", "click", {
+                    button_id: `view_new_announcements`,
+                  });
                 }}
               >
                 {l10n.getString("announcement-dialog-default-tab")}
@@ -184,6 +204,9 @@ export const AnnouncementDialog = ({
                 onClick={() => {
                   setActiveTab("all");
                   setAnnouncementDetailsView(false);
+                  recordTelemetry("button", "click", {
+                    button_id: `view_all_announcements`,
+                  });
                 }}
               >
                 {l10n.getString("announcement-dialog-history-tab")}
