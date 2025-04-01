@@ -24,11 +24,11 @@ import {
 import { useTelemetry } from "../../../../../../../hooks/useTelemetry";
 import { Button } from "../../../../../../../components/client/Button";
 import styles from "./SettingsPanelEditInfoRedesign.module.scss";
-import { onRemoveEmail } from "../actions";
 import { getLocale } from "../../../../../../../functions/universal/getLocale";
 import { TelemetryButton } from "../../../../../../../components/client/TelemetryButton";
 import { TelemetryLink } from "../../../../../../../components/client/TelemetryLink";
 import InfoShield from "../images/InfoShield.svg";
+import { onRemoveEmail } from "#settings/actions";
 
 export type SettingsPanelEditInfoRedesignProps = {
   breachCountByEmailAddress: Record<string, number>;
@@ -51,9 +51,11 @@ function MonitoredEmail(props: { emailAddress: SanitizedEmailAddressRow }) {
       <div className={styles.emailContent}>
         <div className={styles.emailAddress}>
           {props.emailAddress.email}
-          <span className={styles.emailNote}>
-            {l10n.getString("settings-email-verification-callout")}
-          </span>
+          {!props.emailAddress.verified && (
+            <span className={styles.emailNote}>
+              {l10n.getString("settings-email-verification-callout")}
+            </span>
+          )}
         </div>
         {!props.emailAddress.verified && (
           <Button
@@ -206,22 +208,24 @@ function SettingsPanelEditInfoRedesign(
       <div className={styles.header}>
         <div>
           <h3>{l10n.getString("settings-tab-label-update-scan-info")}</h3>
-          <p>
-            {l10n.getFragment("settings-update-scan-info-description", {
-              elems: {
-                a: (
-                  <TelemetryLink
-                    href={CONST_URL_SUMO_EDIT_INFO_PERSONAL_INFO}
-                    target="_blank"
-                    eventData={{
-                      link_id: "settings_edit_info_sumo_pesonal_info",
-                    }}
-                    showIcon
-                  />
-                ),
-              },
-            })}
-          </p>
+          {props.profileData && (
+            <p>
+              {l10n.getFragment("settings-update-scan-info-description", {
+                elems: {
+                  a: (
+                    <TelemetryLink
+                      href={CONST_URL_SUMO_EDIT_INFO_PERSONAL_INFO}
+                      target="_blank"
+                      eventData={{
+                        link_id: "settings_edit_info_sumo_pesonal_info",
+                      }}
+                      showIcon
+                    />
+                  ),
+                },
+              })}
+            </p>
+          )}
         </div>
         <Image src={InfoShield} alt="" />
       </div>
@@ -229,8 +233,8 @@ function SettingsPanelEditInfoRedesign(
         <ProfileInfoSection profileData={props.profileData} />
       )}
       <MonitoredEmailAddressesSection {...props} />
-      <div className={styles.upsellLinkContainer}>
-        {props.isEligibleForPremium && (
+      {props.isEligibleForPremium && (
+        <div className={styles.upsellLinkContainer}>
           <TelemetryLink
             href="/user/dashboard/action-needed?dialog=subscriptions"
             target="_blank"
@@ -240,8 +244,8 @@ function SettingsPanelEditInfoRedesign(
           >
             {l10n.getString("settings-update-scan-info-upsell-cta-label")}
           </TelemetryLink>
-        )}
-      </div>
+        </div>
+      )}
     </>
   );
 }

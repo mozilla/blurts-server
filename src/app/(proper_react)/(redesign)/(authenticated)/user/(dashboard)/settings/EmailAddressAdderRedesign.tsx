@@ -15,10 +15,10 @@ import { Button } from "../../../../../../components/client/Button";
 import { useL10n } from "../../../../../../hooks/l10n";
 import { ModalOverlay } from "../../../../../../components/client/dialog/ModalOverlay";
 import { Dialog } from "../../../../../../components/client/dialog/Dialog";
-import { AddEmailFormState, onAddEmail } from "./actions";
 import { CONST_MAX_NUM_ADDRESSES } from "../../../../../../../constants";
 import { useTelemetry } from "../../../../../../hooks/useTelemetry";
 import { InputField } from "../../../../../../components/client/InputField";
+import { AddEmailFormState, onAddEmail } from "#settings/actions";
 
 export const EmailAddressAdderRedesign = () => {
   const l10n = useL10n();
@@ -50,7 +50,7 @@ export const EmailAddressAdderRedesign = () => {
   const [onAddEmailState, onAddEmailAction] = useActionState(onAddEmail, {});
 
   const handleOnDismiss = () => {
-    onAddEmailAction(new FormData());
+    onAddEmailAction();
     dialogState.close();
   };
 

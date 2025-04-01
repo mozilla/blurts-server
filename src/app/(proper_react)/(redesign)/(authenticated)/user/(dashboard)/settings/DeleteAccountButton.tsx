@@ -7,8 +7,8 @@
 import { useState } from "react";
 import { signOut } from "next-auth/react";
 import { Button } from "../../../../../../components/client/Button";
-import { onDeleteAccount } from "./actions";
 import { useTelemetry } from "../../../../../../hooks/useTelemetry";
+import { onDeleteAccount } from "#settings/actions";
 
 /**
  * Since <Button> is a client component, the `onDeleteAccount` handler can only

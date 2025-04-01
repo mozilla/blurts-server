@@ -20,9 +20,9 @@ import { Button } from "../../../../../../components/client/Button";
 import { useL10n } from "../../../../../../hooks/l10n";
 import { ModalOverlay } from "../../../../../../components/client/dialog/ModalOverlay";
 import { Dialog } from "../../../../../../components/client/dialog/Dialog";
-import { onAddEmail } from "./actions";
 import { CONST_MAX_NUM_ADDRESSES } from "../../../../../../../constants";
 import { useTelemetry } from "../../../../../../hooks/useTelemetry";
+import { onAddEmail } from "#settings/actions";
 
 export const EmailAddressAdder = () => {
   const l10n = useL10n();

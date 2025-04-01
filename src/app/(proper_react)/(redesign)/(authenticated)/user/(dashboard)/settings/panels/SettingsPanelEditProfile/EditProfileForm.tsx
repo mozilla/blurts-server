@@ -11,10 +11,10 @@ import {
   EditProfileFormInputs,
   EditProfileInputOnChangeReturnValue,
 } from "./EditProfileFormInputs";
-import { onHandleUpdateProfileData } from "../../actions";
 import { Button } from "../../../../../../../../components/client/Button";
 import { useL10n } from "../../../../../../../../hooks/l10n";
 import styles from "./EditProfileForm.module.scss";
+import { onHandleUpdateProfileData } from "#settings/actions";
 
 const profileFields: (keyof OnerepProfileRow)[] = [
   "first_name",
