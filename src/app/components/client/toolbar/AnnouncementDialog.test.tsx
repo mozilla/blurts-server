@@ -106,11 +106,11 @@ it("seen or cleared announcements should only be in the All tab", async () => {
   expect(announcementItems.length).toBeGreaterThan(1);
 });
 
-it("mark a new announcement as seen seen", async () => {
+it("mark a new announcement as seen", async () => {
   // suppress fluent-id warning
   jest.spyOn(console, "warn").mockImplementation(() => {});
 
-  // suppress error from trying to hit the /seen emdpoint
+  // suppress error from trying to hit the /seen endpoint
   jest.spyOn(console, "error").mockImplementation(() => {});
 
   global.fetch = jest.fn().mockImplementation(() =>
@@ -150,13 +150,18 @@ it("mark a new announcement as seen seen", async () => {
 
   const upgradeNow = screen.getByText("Upgrade now");
   expect(upgradeNow).toBeInTheDocument();
+
+  const newTab = screen.getByRole("tab", { name: "New" });
+
+  await user.click(newTab);
+  expect(upgradeNow).not.toBeInTheDocument();
 });
 
 it("mark all announcements as cleared", async () => {
   // suppress fluent-id warning
   jest.spyOn(console, "warn").mockImplementation(() => {});
 
-  // suppress error from trying to hit the /seen emdpoint
+  // suppress error from trying to hit the /cleared endpoint
   jest.spyOn(console, "error").mockImplementation(() => {});
 
   global.fetch = jest.fn().mockImplementation(() =>
@@ -184,7 +189,13 @@ it("mark all announcements as cleared", async () => {
     name: "Mark all as read",
   });
 
+  const announcementItemsNewAnnouncements = await screen.findAllByRole("group");
+  expect(announcementItemsNewAnnouncements).toHaveLength(3);
+
   await user.click(markAllAsReadBtn);
+
+  const updatedNewAnnouncements = screen.queryAllByRole("group");
+  expect(updatedNewAnnouncements).toHaveLength(0);
 
   await waitFor(() => {
     expect(global.fetch).toHaveBeenCalledWith(
@@ -207,9 +218,66 @@ it("mark all announcements as cleared", async () => {
     );
   });
 
+  // Empty state in the new tab when all announcements are cleared
+  const noUpdates = screen.getByText("No updates");
+  expect(noUpdates).toBeInTheDocument();
+
   const allTab = screen.getByRole("tab", { name: "All" });
   await user.click(allTab);
 
-  const announcementItems = await screen.findAllByRole("group");
-  expect(announcementItems).toHaveLength(3);
+  const announcementItemsAllAnnouncements = await screen.findAllByRole("group");
+  expect(announcementItemsAllAnnouncements).toHaveLength(3);
+});
+
+it("only moves new announcements to all if cleared", async () => {
+  // suppress fluent-id warning
+  jest.spyOn(console, "warn").mockImplementation(() => {});
+
+  // suppress error from trying to hit the /cleared endpoint
+  jest.spyOn(console, "error").mockImplementation(() => {});
+
+  global.fetch = jest.fn().mockImplementation(() =>
+    Promise.resolve({
+      ok: true,
+      json: () => Promise.resolve({ success: true }),
+    }),
+  );
+
+  const user = userEvent.setup();
+  const ComposedAnnouncementDialog = composeStory(
+    AnnouncementDialogSeenOrCleared,
+    Meta,
+  );
+
+  render(<ComposedAnnouncementDialog />);
+
+  const announcementTrigger = screen.getByRole("button", {
+    name: "Open announcements",
+  });
+
+  await user.click(announcementTrigger);
+
+  const announcementItemsNewAnnouncements = await screen.findAllByRole("group");
+  expect(announcementItemsNewAnnouncements).toHaveLength(1);
+
+  const markAllAsReadBtn = screen.getByRole("button", {
+    name: "Mark all as read",
+  });
+
+  await user.click(markAllAsReadBtn);
+
+  await waitFor(() => {
+    expect(global.fetch).toHaveBeenCalledWith(
+      `/api/v1/user/announcements/test_new/cleared`,
+      expect.objectContaining({
+        method: "PUT",
+      }),
+    );
+  });
+
+  const allTab = screen.getByRole("tab", { name: "All" });
+  await user.click(allTab);
+
+  const announcementItemsAllAnnouncements = await screen.findAllByRole("group");
+  expect(announcementItemsAllAnnouncements).toHaveLength(3);
 });

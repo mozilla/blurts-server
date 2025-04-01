@@ -15,6 +15,7 @@ const meta: Meta<typeof AnnouncementDialog> = {
 export default meta;
 type Story = StoryObj<typeof AnnouncementDialog>;
 
+// All set to status: new
 const mockedAnnouncementsAllUsers: UserAnnouncementWithDetails[] = [
   createRandomAnnouncement({ announcement_id: "test_one" }),
   createRandomAnnouncement({ announcement_id: "test_two" }),
