@@ -19,14 +19,14 @@ export async function getMoscaryJWT(fxaUid: string) {
   }
   // otherwise, generate new token
   if (!process.env.NEXTAUTH_SECRET) {
-    logger.error("get_moscary_jwt_from_redis", {
+    logger.error("generate_new_moscary_jwt_error", {
       message: "NEXTAUTH_SECRET is not set",
     });
     return;
   }
   const subscriber = await getSubscriberByFxaUid(fxaUid);
   if (!subscriber) {
-    logger.error("get_moscary_jwt_from_redis", {
+    logger.error("generate_new_moscary_jwt_error", {
       message: "Subscriber not found",
       fxaUid,
     });
