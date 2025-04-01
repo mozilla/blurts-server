@@ -17,7 +17,7 @@ export async function getMoscaryJWT(fxaUid: string) {
     logger.info("get_moscary_jwt_from_redis_success");
     return token;
   }
-  // oteherwise, generate new token
+  // otherwise, generate new token
   if (!process.env.NEXTAUTH_SECRET) {
     logger.error("get_moscary_jwt_from_redis", {
       message: "NEXTAUTH_SECRET is not set",
