@@ -28,6 +28,7 @@ export async function getMoscaryJWT(fxaUid: string) {
   if (!subscriber) {
     logger.error("get_moscary_jwt_from_redis", {
       message: "Subscriber not found",
+      fxaUid,
     });
     return;
   }
