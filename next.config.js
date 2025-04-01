@@ -173,7 +173,16 @@ const nextConfig = {
   // uglify-js when compiling MJML email templates to HTML in `renderEmail.ts`:
   // commonjs and knex are needed to avoid errors about not being able to load
   // better-sqlite3, for some reason.
-  serverExternalPackages: ["mjml", "commonjs", "knex"],
+  // @opentelemetry/sdk-node is there because it conditionally imports a package
+  // we don't have (@opentelemetry/exporter-jaeger), which Webpack will try to
+  // bundle otherwise. See
+  // https://github.com/open-telemetry/opentelemetry-js/issues/4297.
+  serverExternalPackages: [
+    "mjml",
+    "commonjs",
+    "knex",
+    "@opentelemetry/sdk-node",
+  ],
 };
 
 const sentryOptions = {
