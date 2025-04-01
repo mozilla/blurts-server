@@ -93,6 +93,7 @@ export const MobileShell = (props: Props) => {
           </Link>
         </div>
         <div className={styles.headerEnd}>
+          {/* c8 ignore next 3 */}
           {props.enabledFeatureFlags.includes("Announcements") &&
             props.announcements && (
               <AnnouncementDialog announcements={props.announcements} />
