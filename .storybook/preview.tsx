@@ -28,7 +28,7 @@ const AppDecorator: Preview["decorators"] = (storyFn) => {
 };
 
 // Arguments to the `storySort` callback, left as documentation.
-type SortData = {
+type _SortData = {
   type: "story";
   id: string;
   name: string;
