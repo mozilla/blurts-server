@@ -51,7 +51,7 @@ export const Toolbar = (props: Props) => {
           experimentData={props.experimentData}
           autoOpenUpsellDialog={props.autoOpenUpsellDialog}
         />
-        {/* c8 ignore next */}
+        {/* c8 ignore next 3 */}
         {props.enabledFeatureFlags.includes("Announcements") &&
           props.announcements && (
             <AnnouncementDialog announcements={props.announcements} />
