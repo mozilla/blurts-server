@@ -43,7 +43,7 @@ export async function getMoscaryJWT(fxaUid: string) {
       expiresIn: "1h",
       algorithm: "HS256",
       issuer: process.env.SERVER_URL,
-      audience: process.env.MOSCARY_URL,
+      audience: process.env.MOSCARY_URL || "",
     },
   );
   await rClient.set(REDIS_KEY, token);
