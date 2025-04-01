@@ -195,14 +195,17 @@ export const AnnouncementDialog = ({
                 <div>
                   <Image
                     className={styles.bigImg}
+                    // The image rendering logic is skipped in coverage reports because
+                    // it relies on static imports of SVGs that are difficult to mock/test
+                    /* c8 ignore start */
                     src={
                       !bigImageUnavailableMap[
                         relevantAnnouncement.announcement_id
                       ]
                         ? `/images/announcements/${relevantAnnouncement.announcement_id}/big.svg`
-                        : /* c8 ignore next */
-                          `/images/announcements/fallback/big.svg`
+                        : `/images/announcements/fallback/big.svg`
                     }
+                    /* c8 ignore end */
                     alt={l10n.getString("announcement-big-img-alt")}
                     width={300}
                     height={100}
@@ -295,14 +298,17 @@ export const AnnouncementDialog = ({
                       >
                         <Image
                           className={styles.smallImg}
+                          // The image rendering logic is skipped in coverage reports because
+                          // it relies on static imports of SVGs that are difficult to mock/test
+                          /* c8 ignore start */
                           src={
                             !smallImageUnavailableMap[
                               announcement.announcement_id
                             ]
                               ? `/images/announcements/${announcement.announcement_id}/small.svg`
-                              : /* c8 ignore next */
-                                `/images/announcements/fallback/small.svg`
+                              : `/images/announcements/fallback/small.svg`
                           }
+                          /* c8 ignore end */
                           alt={l10n.getString("announcement-small-img-alt")}
                           width={48}
                           height={48}
