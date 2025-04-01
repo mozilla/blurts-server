@@ -21,13 +21,18 @@ fix-flow-celebration-next-dashboard-label = Gå til ditt oversyn
 
 ## High-risk flow
 
+fix-flow-celebration-high-risk-title = Du har løyst eksponeringane dine med høg risiko!
+fix-flow-celebration-high-risk-description-next-passwords = La oss no fikse dei eksponerte passorda dine.
 fix-flow-celebration-high-risk-description-next-security-questions = La oss no fikse dei eksponerte tryggingsspørsmåla dine.
+fix-flow-celebration-high-risk-description-next-security-recommendations = Deretter vil vi gi deg personlege tryggingstilrådingar basert på kva data som er eksponerte.
 
 ## Leaked passwords and security questions flow
 
+fix-flow-celebration-leaked-passwords-title = Passorda dine er no verna!
 fix-flow-celebration-security-questions-title = Tryggingsspørsmåla dine er verna!
 fix-flow-celebration-leaked-passwords-description-next-security-questions = La oss no gå gjennom og oppdatere dei eksponerte tryggingsspørsmåla dine.
 fix-flow-celebration-leaked-passwords-description-next-security-recommendations = Deretter vil vi gi deg personlege tryggingstilrådingar basert på kva data som er eksponerte.
+fix-flow-celebration-leaked-passwords-description-next-dashboard = Bra gjort! Du har nådd slutten av stega dine. Du kan sjå alle handlingselement og spore framgangen din på dashbordet.
 
 ## Security recommendations flow
 
@@ -37,6 +42,11 @@ fix-flow-celebration-security-recommendations-description-next-dashboard = Bra g
 # High Risk Data Breaches
 
 high-risk-breach-heading = Dette er det du skal gjere
+# Variables
+# $breach_name is the name of the breach where the high risk data was found.
+# $breach_date is the date when the breach occurred.
+# An example of this string is Twitter on 13/09/18.
+high-risk-breach-name-and-date = { $breach_name } <breach_date>den { $breach_date }</breach_date>
 high-risk-breach-mark-as-fixed = Merk som løyst
 high-risk-breach-skip = Hopp over no
 
@@ -44,10 +54,14 @@ high-risk-breach-skip = Hopp over no
 
 high-risk-breach-credit-card-title = Betalingskortnummeret ditt er eksponert
 high-risk-breach-credit-card-step-two = Be om eit nytt kort med eit nytt nummer.
+high-risk-breach-credit-card-step-three = Sjekk kontoane dine for uautoriserte belastningar.
 
 # Bank Account Breaches
 
+high-risk-breach-bank-account-title = Bankkontoen din har blitt eksponert
+high-risk-breach-bank-account-step-one = Informer banken din omgåande om at kontonummeret ditt er kompromittert.
 high-risk-breach-bank-account-step-two = Endre kontonummeret ditt.
+high-risk-breach-bank-account-step-three = Sjekk kontoane dine for uautoriserte belastningar.
 
 # Social Security Number Breaches
 
@@ -55,10 +69,14 @@ high-risk-breach-social-security-title = Personnummeret ditt vart avslørt
 
 # Social Security Number Modal
 
+ssn-modal-title = Om svindelvarsel og frosne kredittar
+ssn-modal-learn-more = Lær meir om svindelvarsel og frosne kredittar
 ssn-modal-ok = OK
 
 # PIN Breaches
 
+high-risk-breach-pin-title = PIN-koden din er eksponert
+high-risk-breach-pin-step-one = Informer banken din omgåande om at PIN-koden din er kompromittert.
 
 # No high risk breaches found
 

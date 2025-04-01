@@ -68,4 +68,6 @@ settings-tab-label-edit-info = Rediger opplysningane dine
 settings-tab-label-notifications = Still inn varsel
 settings-tab-label-manage-account = Handsam kontoen
 settings-tab-subtitle-manage-account = Handsam { -product-name }-kontoen din.
+settings-tab-notifications-marketing-title = Marknadskommunikasjon
+settings-tab-notifications-marketing-text = Periodiske oppdateringar om { -brand-monitor }, { -brand-mozilla } og dei andre tryggingsprodukta våre.
 settings-tab-notifications-marketing-link-label = Gå til e-postinnstillingar for { -brand-mozilla }
