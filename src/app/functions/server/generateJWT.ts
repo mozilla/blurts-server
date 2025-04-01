@@ -14,19 +14,22 @@ export async function getMoscaryJWT(fxaUid: string) {
   // if token is already exists in redis, return it
   let token = await rClient.get(REDIS_KEY);
   if (token) {
-    logger.info("get_moscary_jwt_from_redis", {
-      message: `fetched moscary jwt from redis: ${REDIS_KEY}`,
-      token,
-    });
+    logger.info("get_moscary_jwt_from_redis_success");
     return token;
   }
   // oteherwise, generate new token
   if (!process.env.NEXTAUTH_SECRET) {
-    throw new Error("NEXTAUTH_SECRET is not set");
+    logger.error("get_moscary_jwt_from_redis", {
+      message: "NEXTAUTH_SECRET is not set",
+    });
+    return;
   }
   const subscriber = await getSubscriberByFxaUid(fxaUid);
   if (!subscriber) {
-    throw new Error("Subscriber not found");
+    logger.error("get_moscary_jwt_from_redis", {
+      message: "Subscriber not found",
+    });
+    return;
   }
   token = jwt.sign(
     {
@@ -43,5 +46,6 @@ export async function getMoscaryJWT(fxaUid: string) {
     },
   );
   await rClient.set(REDIS_KEY, token);
+  logger.info("generate_new_moscary_jwt_success");
   return token;
 }

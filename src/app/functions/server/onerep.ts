@@ -166,25 +166,15 @@ async function onerepFetch(
     path = path.substring(1);
   }
 
-  console.log({ path });
-  console.log({ onerepApiBase });
-
-  // const url = new URL(path, onerepApiBase);
-  // If path starts with /, remove it when onerepApiBase already has a path
+  // If path starts with /, remove it. This is necessary for base urls already contain a path
   const adjustedPath = path.startsWith("/") ? path.substring(1) : path;
   const url = new URL(adjustedPath, onerepApiBase);
-  console.log({ url });
   const headers = new Headers(options.headers);
   if (session?.user.moscaryJWT && enabledFeatureFlags.includes("MoscaryAuth")) {
-    logger.info("onerep_fetch_with_moscary_jwt", {
-      message: `fetching ${url} with moscary jwt`,
-      moscaryJWT: session.user.moscaryJWT,
-    });
+    logger.info("onerep_fetch_with_moscary_jwt");
     headers.set("Authorization", `Bearer ${session.user.moscaryJWT}`);
   } else {
-    logger.info("onerep_fetch_with_bearer_token", {
-      message: `fetching ${url} with bearer token`,
-    });
+    logger.info("onerep_fetch_with_bearer_token");
     headers.set("Authorization", `Bearer ${onerepApiKey}`);
   }
   headers.set("Accept", "application/json");

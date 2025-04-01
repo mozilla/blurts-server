@@ -22,11 +22,8 @@ import { logger } from "./logging";
 /* c8 ignore start */
 export async function refreshStoredScanResults(onerepProfileId: number) {
   try {
-    console.log("refresh stored scan results");
     const remoteScans = (await listScans(onerepProfileId)).data;
     const localScans = await getAllScansForProfile(onerepProfileId);
-    console.log({ remoteScans });
-    console.log({ localScans });
 
     const newScans = remoteScans.filter(
       (remoteScan) =>
@@ -46,8 +43,6 @@ export async function refreshStoredScanResults(onerepProfileId: number) {
     // Record any new scans, or change in existing scan status.
     await Promise.all(
       remoteScans.map(async (scan) => {
-        console.log("set one rep scan: ", { scan });
-
         await setOnerepScan(onerepProfileId, scan.id, scan.status, scan.reason);
       }),
     );
@@ -55,7 +50,6 @@ export async function refreshStoredScanResults(onerepProfileId: number) {
     // Refresh results for all scans, new and existing.
     // The database will ignore any attempt to insert duplicate scan result IDs.
     const allScanResults = await getAllScanResults(onerepProfileId);
-    console.log({ allScanResults });
     await addOnerepScanResults(onerepProfileId, allScanResults);
   } catch (ex) {
     logger.warn("Could not fetch current OneRep results:", ex);
