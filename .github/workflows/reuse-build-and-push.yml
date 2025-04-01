@@ -36,13 +36,13 @@ on:
         default: true
         type: boolean
 
-# Add "id-token" with the intended permissions.
-permissions:
-  contents: "read"
-  id-token: "write"
+permissions: {}
 
 jobs:
   build-and-push:
+    permissions:
+      contents: read
+      id-token: write
     name: Docker release to Google Artifact Registry
     outputs:
       docker_image_name: ${{ steps.get-build-name.outputs.DOCKER_IMAGE_NAME}}
