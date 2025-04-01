@@ -281,3 +281,50 @@ it("only moves new announcements to all if cleared", async () => {
   const announcementItemsAllAnnouncements = await screen.findAllByRole("group");
   expect(announcementItemsAllAnnouncements).toHaveLength(3);
 });
+
+it("dismisses the popup", async () => {
+  // suppress fluent-id warning
+  jest.spyOn(console, "warn").mockImplementation(() => {});
+
+  const user = userEvent.setup();
+  const ComposedAnnouncementDialog = composeStory(
+    AnnouncementDialogSeenOrCleared,
+    Meta,
+  );
+
+  const { container } = render(<ComposedAnnouncementDialog />);
+
+  const announcementTrigger = screen.getByRole("button", {
+    name: "Open announcements",
+  });
+
+  await user.click(announcementTrigger);
+
+  const announcementItemsNewAnnouncements = await screen.findAllByRole("group");
+  expect(announcementItemsNewAnnouncements).toHaveLength(1);
+
+  const dismissBtn = screen.getByRole("button", {
+    name: "Close modal",
+  });
+
+  await user.click(dismissBtn);
+
+  const dialog = screen.queryByRole("dialog", {
+    name: "List of announcements",
+  });
+  expect(dialog).not.toBeInTheDocument();
+
+  await user.click(announcementTrigger);
+
+  const dialogAgain = await screen.findByRole("dialog", {
+    name: "List of announcements",
+  });
+  expect(dialogAgain).toBeInTheDocument();
+
+  await user.click(container);
+
+  const dialogDismissed = screen.queryByRole("dialog", {
+    name: "List of announcements",
+  });
+  expect(dialogDismissed).not.toBeInTheDocument();
+});

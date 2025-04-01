@@ -163,7 +163,7 @@ export const AnnouncementDialog = ({
           <div
             className={styles.announcementsWrapper}
             role="dialog"
-            aria-labelledby={l10n.getString("announcement-dialog-alt")}
+            aria-label={l10n.getString("announcement-dialog-alt")}
           >
             <div className={styles.announcementsTabList} role="tablist">
               <button
