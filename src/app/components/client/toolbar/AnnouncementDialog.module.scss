@@ -51,7 +51,7 @@
     width: $tooltip-size;
 
     @media screen and (min-width: tokens.$screen-md) {
-      right: 140px; // Vertically align chevron with bell icon on desktop
+      right: 125px; // Vertically align chevron with bell icon on desktop
     }
   }
 
