@@ -37,6 +37,14 @@ const config: StorybookConfig = {
       type: "asset/source",
     });
 
+    config.resolve = {
+      ...(config.resolve ?? {}),
+      alias: {
+        ...(config.resolve?.alias ?? {}),
+        "next/image": require.resolve("./NextImage.tsx"),
+      },
+    };
+
     return config;
   },
 
