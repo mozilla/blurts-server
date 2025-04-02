@@ -29,10 +29,10 @@
     // "reactNamespace": "",                             /* Specify the object invoked for 'createElement'. This only applies when targeting 'react' JSX emit. */
     // "noLib": true,                                    /* Disable including any library files, including the default lib.d.ts. */
     // "useDefineForClassFields": true,                  /* Emit ECMAScript-standard-compliant class fields. */
-    "moduleDetection": "force" /* Control what method is used to detect module-format JS files. */ /* Modules */,
-    "module": "ESNext" /* Specify what module code is generated. */,
-    // "rootDir": "./src/" /* Specify the root folder within your source files. */,
-    "moduleResolution": "node" /* Specify how TypeScript looks up a file from a given module specifier. */,
+    "moduleDetection": "force"                           /* Control what method is used to detect module-format JS files. */ /* Modules */,
+    "module": "ESNext"                                   /* Specify what module code is generated. */,
+    "moduleResolution": "node"                           /* Specify how TypeScript looks up a file from a given module specifier. */,
+    // "rootDir": "./src/"                               /* Specify the root folder within your source files. */,
     // "baseUrl": "./",                                  /* Specify the base directory to resolve non-relative module names. */
     "plugins": [
       {
@@ -41,6 +41,7 @@
     ],
     "paths": {
       "#settings/*": [
+        "./src/app/(proper_react)/(redesign)/(authenticated)/user/(dashboard)/settings/*.mock.ts",
         "./src/app/(proper_react)/(redesign)/(authenticated)/user/(dashboard)/settings/*.ts",
       ],
     },                                                   /* Specify a set of entries that re-map imports to additional lookup locations. */
