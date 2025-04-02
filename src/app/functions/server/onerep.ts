@@ -16,6 +16,8 @@ import { logger } from "./logging";
 import { isUsingMockONEREPEndpoint } from "../universal/mock.ts";
 import { hasPremium } from "../universal/user.ts";
 import { OnerepProfileAddress } from "knex/types/tables";
+import { getServerSession } from "./getServerSession";
+import { getEnabledFeatureFlags } from "../../../db/tables/featureFlags.ts";
 
 export const monthlyScansQuota = parseInt(
   (process.env.MONTHLY_SCANS_QUOTA as string) ?? "0",
@@ -149,6 +151,12 @@ async function onerepFetch(
     throw new Error("ONEREP_API_KEY env var not set");
   }
 
+  const session = await getServerSession();
+  const enabledFeatureFlags = await getEnabledFeatureFlags({
+    isSignedOut: false,
+    email: session?.user.email ?? "",
+  });
+
   //If mock, remove the first slash so that it doesn't overwrite the path
   if (
     onerepApiBase.includes("/api/mock") &&
@@ -158,9 +166,17 @@ async function onerepFetch(
     path = path.substring(1);
   }
 
-  const url = new URL(path, onerepApiBase);
+  // If path starts with /, remove it. This is necessary for base urls already contain a path
+  const adjustedPath = path.startsWith("/") ? path.substring(1) : path;
+  const url = new URL(adjustedPath, onerepApiBase);
   const headers = new Headers(options.headers);
-  headers.set("Authorization", `Bearer ${onerepApiKey}`);
+  if (session?.user.moscaryJWT && enabledFeatureFlags.includes("MoscaryAuth")) {
+    logger.info("onerep_fetch_with_moscary_jwt");
+    headers.set("Authorization", `Bearer ${session.user.moscaryJWT}`);
+  } else {
+    logger.info("onerep_fetch_with_bearer_token");
+    headers.set("Authorization", `Bearer ${onerepApiKey}`);
+  }
   headers.set("Accept", "application/json");
   headers.set("Content-Type", "application/json");
   return fetch(url, { ...options, headers });

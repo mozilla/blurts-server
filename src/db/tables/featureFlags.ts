@@ -73,6 +73,7 @@ export const featureFlagNames = [
   "SidebarNavigationRedesign",
   "EditScanProfileDetails",
   "SubPlat3",
+  "MoscaryAuth",
 ] as const;
 
 export const adminOnlyFlags: FeatureFlagName[] = ["CustomDataBrokers"];

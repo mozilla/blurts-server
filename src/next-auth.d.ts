@@ -58,6 +58,7 @@ declare module "next-auth" {
         subscriptions: Array<string>;
       };
       subscriber?: SerializedSubscriber;
+      moscaryJWT?: string;
     } & DefaultSession["user"] & { email: string };
   }
 }
