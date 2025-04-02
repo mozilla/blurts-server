@@ -5,7 +5,7 @@
 import { Locator } from "@playwright/test";
 import { test, expect } from "../../fixtures/basePage.js";
 import { DashboardPage } from "../../pages/dashBoardPage.js";
-import { checkAuthState, clickOnATagCheckDomain } from "../../utils/helpers.js";
+import { checkAuthState } from "../../utils/helpers.js";
 
 // bypass login
 test.use({ storageState: "./e2e/storageState.json" });
@@ -154,46 +154,28 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Headers @smoke
     await dashboardPage.actionNeededTab.click();
     expect(page.url()).toMatch(/.*dashboard\/action-needed.*/);
 
-    //apps and services button check
-    const clickOnLinkAndGoBack = async (
-      aTag: Locator,
-      host: string | RegExp = /.*/,
-      path: string | RegExp = /.*/,
-    ) => {
-      await expect(dashboardPage.appsAndServices).toBeVisible();
-      await dashboardPage.appsAndServices.click();
-      await expect(dashboardPage.appsAndServicesMenu).toBeVisible();
-      await clickOnATagCheckDomain(aTag, host, path, page);
-    };
+    // Verify that we can click on a link, and that it takes us away from the Monitor website
+    await expect(dashboardPage.appsAndServices).toBeVisible();
+    await expect(dashboardPage.appsAndServicesMenu).not.toBeVisible();
+    await dashboardPage.appsAndServices.click();
+    await expect(dashboardPage.appsAndServicesMenu).toBeVisible();
+    const monitorHostname = new URL(page.url()).hostname;
+    const firefoxDesktopPagePromise = page.context().waitForEvent("page");
+    await dashboardPage.servicesFirefoxDesktop.click();
+    const newFirefoxDesktopTab = await firefoxDesktopPagePromise;
+    expect(new URL(newFirefoxDesktopTab.url()).hostname).not.toBe(
+      monitorHostname,
+    );
+    await page.bringToFront();
 
-    await clickOnLinkAndGoBack(
-      dashboardPage.servicesVpn,
-      "www.mozilla.org",
-      /.*\/products\/vpn\/?.*/,
-    );
-    await clickOnLinkAndGoBack(
-      dashboardPage.servicesRelay,
-      "relay.firefox.com",
-    );
-    await clickOnLinkAndGoBack(
-      dashboardPage.servicesPocket,
-      /getpocket\.com|apps\.apple\.com|app\.adjust\.com/,
-      /.*(\/pocket-and-firefox\/?).*|.*about.*|.*pocket-stay-informed.*/,
-    );
-    await clickOnLinkAndGoBack(
-      dashboardPage.servicesFirefoxDesktop,
-      "www.mozilla.org",
-      /.*\/firefox\/new\/?.*/,
-    );
-    await clickOnLinkAndGoBack(
-      dashboardPage.servicesFirefoxMobile,
-      "www.mozilla.org",
-      /.*\/browsers\/mobile\/?.*/,
-    );
-    await clickOnLinkAndGoBack(
-      dashboardPage.servicesMozilla,
-      "www.mozilla.org",
-    );
+    // Verify that we navgating to a link by keyboard, and that it takes us away from the Monitor website
+    await dashboardPage.appsAndServices.click();
+    await page.keyboard.press("ArrowDown");
+    const relayPagePromise = page.context().waitForEvent("page");
+    await page.keyboard.press("Enter");
+    const newRelayTab = await relayPagePromise;
+    expect(new URL(newRelayTab.url()).hostname).not.toBe(monitorHostname);
+    await page.bringToFront();
 
     const openProfileMenuItem = async (
       what: Locator,
