@@ -5,6 +5,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { OnerepScanRow } from "knex/types/tables";
 import {
+  createRandomAnnouncement,
   createRandomBreach,
   createRandomScanResult,
   createUserWithPremiumSubscription,
@@ -14,6 +15,7 @@ import { getL10n } from "../../../../../../../../../functions/l10n/storybookAndJ
 import { LatestOnerepScanData } from "../../../../../../../../../../db/tables/onerep_scans";
 import { RemovalUnderMaintenanceView } from "./RemovalUnderMaintenanceView";
 import { defaultExperimentData } from "../../../../../../../../../../telemetry/generated/nimbus/experiments";
+import { UserAnnouncementWithDetails } from "../../../../../../../../../../db/tables/user_announcements";
 
 const meta: Meta<typeof RemovalUnderMaintenanceView> = {
   title: "Pages/Logged in/Guided resolution/1d. Removal Under Maintenance",
@@ -46,6 +48,12 @@ const mockedScanData: LatestOnerepScanData = {
 };
 const mockedBreaches = [...Array(5)].map(() => createRandomBreach());
 
+const mockedAnnouncements: UserAnnouncementWithDetails[] = [
+  createRandomAnnouncement({ audience: "premium_users" }),
+  createRandomAnnouncement({ audience: "premium_users" }),
+  createRandomAnnouncement({ audience: "premium_users" }),
+];
+
 export const RemovalUnderMaintenanceViewStory: Story = {
   render: () => {
     return (
@@ -56,6 +64,7 @@ export const RemovalUnderMaintenanceViewStory: Story = {
         countryCode="us"
         enabledFeatureFlags={[]}
         experimentData={defaultExperimentData["Features"]}
+        announcements={mockedAnnouncements}
       >
         <RemovalUnderMaintenanceView
           data={mockedScanData}

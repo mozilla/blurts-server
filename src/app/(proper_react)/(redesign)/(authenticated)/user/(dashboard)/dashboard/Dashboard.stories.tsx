@@ -16,6 +16,7 @@ import {
   createRandomScanResult,
   createRandomBreach,
   createUserWithPremiumSubscription,
+  createRandomAnnouncement,
 } from "../../../../../../../apiMocks/mockData";
 import { SubscriberBreach } from "../../../../../../../utils/subscriberBreaches";
 import { LatestOnerepScanData } from "../../../../../../../db/tables/onerep_scans";
@@ -26,6 +27,7 @@ import {
   defaultExperimentData,
 } from "../../../../../../../telemetry/generated/nimbus/experiments";
 import { FeatureFlagName } from "../../../../../../../db/tables/featureFlags";
+import { UserAnnouncementWithDetails } from "../../../../../../../db/tables/user_announcements";
 
 export const brokerOptions = {
   "no-scan": "No scan started",
@@ -155,6 +157,12 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
     createRandomScanResult({ status: "removed", manually_resolved: true }),
   ];
 
+  const mockedAnnouncements: UserAnnouncementWithDetails[] = [
+    createRandomAnnouncement(),
+    createRandomAnnouncement(),
+    createRandomAnnouncement(),
+  ];
+
   let scanCount = 0;
 
   if (props.countryCode === "us") {
@@ -212,6 +220,7 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
               },
             }
           }
+          announcements={mockedAnnouncements}
         >
           <DashboardEl
             user={user}
@@ -246,6 +255,7 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
             signInCount={props.signInCount ?? null}
             autoOpenUpsellDialog={props.autoOpenUpsellDialog ?? false}
             removalTimeEstimates={mockedRemovalTimeEstimates}
+            userAnnouncements={mockedAnnouncements}
           />
         </Shell>
       </CountryCodeProvider>

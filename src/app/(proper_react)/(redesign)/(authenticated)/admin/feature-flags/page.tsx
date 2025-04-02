@@ -37,7 +37,7 @@ export default async function FeatureFlagPage() {
   });
   const fxaSettingsUrl = process.env.FXA_SETTINGS_URL!;
 
-  if (!session?.user?.email) {
+  if (!session?.user?.email || !session.user.subscriber?.id) {
     return redirect("/");
   }
 
@@ -81,6 +81,7 @@ export default async function FeatureFlagPage() {
             // not user-visible), so no need to fetch experiment data:
             experimentData={defaultExperimentData["Features"]}
             enabledFeatureFlags={[]}
+            announcements={null}
           />
         </div>
       </nav>
