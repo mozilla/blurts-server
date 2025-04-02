@@ -18,9 +18,9 @@ export async function getMoscaryJWT(fxaUid: string) {
     return token;
   }
   // otherwise, generate new token
-  if (!process.env.NEXTAUTH_SECRET) {
+  if (!process.env.MOSCARY_JWT_SECRET) {
     logger.error("generate_new_moscary_jwt_error", {
-      message: "NEXTAUTH_SECRET is not set",
+      message: "MOSCARY_JWT_SECRET is not set",
     });
     return;
   }
@@ -38,7 +38,7 @@ export async function getMoscaryJWT(fxaUid: string) {
       email: subscriber.primary_email,
       isAdmin: isAdmin(subscriber.primary_email),
     },
-    process.env.NEXTAUTH_SECRET,
+    process.env.MOSCARY_JWT_SECRET,
     {
       expiresIn: "1h",
       algorithm: "HS256",
