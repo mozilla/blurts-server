@@ -31,6 +31,7 @@ exposure-chart-returning-user-upgrade-prompt = Heimeadresse, familiemedlemmar, m
 exposure-chart-returning-user-upgrade-prompt-cta = Start ei gratis skanning
 exposure-chart-scan-in-progress-prompt = <b>Skanning i gang:</b> adresse, familiemedlemmar, og meir, er ikkje inkludert enno.
 modal-active-number-of-exposures-title = Om antal aktive eksponeringar
+modal-active-number-of-exposures-part-two = Viss du til dømes har 10 eksponeringar av telefonnummeret ditt, kan det bety at eitt telefonnummer er eksponert på 10 ulike nettstadar, eller det kan bety at 2 ulike telefonnummer vart eksponerte på 5 ulike nettstadar.
 modal-active-number-of-exposures-part-three-all = Når dei er løyste, vil dei bli lagt til det samla talet faste eksponeringar på Løyst-sida.
 modal-fixed-number-of-exposures-title = Om talet på dine løyste eksponeringar
 modal-fixed-number-of-exposures-all = Dette diagrammet inkluderer det samla talet datalekkasjar som er løyst for alle e-postadresser du overvaker akkurat no. Når eksponeringar er merkte som løyste, blir dei lagt til i totalen her.
@@ -86,6 +87,7 @@ dashboard-top-banner-non-us-protect-your-data-description-line1 =
        *[other] Vi fann { $exposures_unresolved_num } eksponeringar av dataa dine.
     }
 dashboard-top-banner-no-exposures-found-title = Fann ingen eksponeringar
+dashboard-top-banner-non-us-no-exposures-found-description = Gode ​​nyheiter! Vi søkte i alle kjende datalekkasjar og fann ingen eksponeringar. Vi vil halde fram med å overvake e-postadressa di og varsle deg viss ein ny datalekkasje førekjem.
 dashboard-no-exposures-label = Fann ingen eksponeringar
 # Variables:
 # $exposures_resolved_num is the number of exposures the user has resolved.
@@ -98,6 +100,9 @@ dashboard-top-banner-monitor-more-cta = Overvak fleire e-postadresser
 
 # About Exposure Indicators Modal
 
+modal-exposure-status-description-all =
+    Vi søkjer etter eksponeringar i alle kjende datalekkasjar.
+    Eksponeringane dine vil ha ein av følgjande statusar:
 modal-exposure-indicator-title = Status for eksponeringar
 modal-exposure-indicator-action-needed = Avansert eller manuell handling er nødvendig for å fullføre ei handling.
 modal-exposure-indicator-fixed = Eksponeringa er løyst, og du treng ikkje å gjere noko.
