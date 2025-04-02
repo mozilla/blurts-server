@@ -50,7 +50,7 @@ export const EmailAddressAdderRedesign = () => {
   const [onAddEmailState, onAddEmailAction] = useActionState(onAddEmail, {});
 
   const handleOnDismiss = () => {
-    onAddEmailAction();
+    onAddEmailAction(new FormData());
     dialogState.close();
   };
 
