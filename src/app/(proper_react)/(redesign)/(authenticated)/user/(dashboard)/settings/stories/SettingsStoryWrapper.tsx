@@ -18,11 +18,8 @@ import { FeatureFlagName } from "../../../../../../../../db/tables/featureFlags"
 import { SubscriberEmailPreferencesOutput } from "../../../../../../../../db/tables/subscriber_email_preferences";
 import {
   mockedSubscriber,
-  mockedVerifiedEmailSecond,
-  mockedVerifiedEmailThird,
-  mockedVerifiedEmailFourth,
-  mockedVerifiedEmailFifth,
-} from "./sharedSettingsMockData";
+  breachCountByEmailAddress,
+} from "./settingsMockData";
 
 export type SettingsWrapperProps = {
   activeTab: TabType;
@@ -32,6 +29,7 @@ export type SettingsWrapperProps = {
   isMonthlySubscriber: boolean;
   isEligibleForPremium: boolean;
   subscriber: SubscriberRow;
+  breachCountByEmailAddress: Record<string, number>;
   emailAddresses?: EmailAddressRow[];
   profileData?: OnerepProfileRow;
   data?: SubscriberEmailPreferencesOutput;
@@ -61,13 +59,9 @@ export const SettingsWrapper = (props: SettingsWrapperProps) => {
             subscriber={props.subscriber ?? mockedSubscriber}
             data={props.data}
             emailAddresses={props.emailAddresses ?? []}
-            breachCountByEmailAddress={{
-              [mockedSubscriber.primary_email]: 12,
-              [mockedVerifiedEmailSecond.email]: 23,
-              [mockedVerifiedEmailThird.email]: 45,
-              [mockedVerifiedEmailFourth.email]: 56,
-              [mockedVerifiedEmailFifth.email]: 78,
-            }}
+            breachCountByEmailAddress={
+              props.breachCountByEmailAddress ?? breachCountByEmailAddress
+            }
             fxaSettingsUrl=""
             fxaSubscriptionsUrl=""
             monthlySubscriptionUrl=""

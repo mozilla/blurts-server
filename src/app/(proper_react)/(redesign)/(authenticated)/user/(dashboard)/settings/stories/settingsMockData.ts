@@ -2,53 +2,9 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { EmailAddressRow, SubscriberRow } from "knex/types/tables";
+import { SubscriberRow } from "knex/types/tables";
 
 const subscriberId = 7;
-
-export const mockedVerifiedEmailSecond: EmailAddressRow = {
-  id: 2,
-  email: "email2@example.com",
-  sha1: "arbitrary string",
-  subscriber_id: subscriberId,
-  verified: true,
-  created_at: new Date("1337-04-02T04:02:42.000Z"),
-  updated_at: new Date("1337-04-02T04:02:42.000Z"),
-  verification_token: "arbitrary_token",
-};
-
-export const mockedVerifiedEmailThird: EmailAddressRow = {
-  id: 3,
-  email: "email3@example.com",
-  sha1: "arbitrary string",
-  subscriber_id: subscriberId,
-  verified: true,
-  created_at: new Date("1337-04-02T04:02:42.000Z"),
-  updated_at: new Date("1337-04-02T04:02:42.000Z"),
-  verification_token: "arbitrary_token",
-};
-
-export const mockedVerifiedEmailFourth: EmailAddressRow = {
-  id: 4,
-  email: "email4@example.com",
-  sha1: "arbitrary string",
-  subscriber_id: subscriberId,
-  verified: false,
-  created_at: new Date("1337-04-02T04:02:42.000Z"),
-  updated_at: new Date("1337-04-02T04:02:42.000Z"),
-  verification_token: "arbitrary_token",
-};
-
-export const mockedVerifiedEmailFifth: EmailAddressRow = {
-  id: 5,
-  email: "email5@example.com",
-  sha1: "arbitrary string",
-  subscriber_id: subscriberId,
-  verified: false,
-  created_at: new Date("1337-04-02T04:02:42.000Z"),
-  updated_at: new Date("1337-04-02T04:02:42.000Z"),
-  verification_token: "arbitrary_token",
-};
 
 export const mockedSubscriber: SubscriberRow = {
   updated_at: new Date(),
@@ -59,7 +15,7 @@ export const mockedSubscriber: SubscriberRow = {
   id: subscriberId,
   created_at: new Date("2022-06-07 14:29:00.000-05"),
   primary_sha1: "abcabc",
-  primary_email: "primary@email.com",
+  primary_email: "example@example.com",
   primary_verification_token: "c165711a-69d1-42f1-9850-ce74754f36de",
   primary_verified: true,
   fxa_access_token:
@@ -92,4 +48,8 @@ export const mockedSubscriber: SubscriberRow = {
   sign_in_count: null,
   first_broker_removal_email_sent: false,
   churn_prevention_email_sent_at: null,
+};
+
+export const breachCountByEmailAddress = {
+  [mockedSubscriber.primary_email]: 12,
 };
