@@ -41,7 +41,6 @@
     ],
     "paths": {
       "#settings/*": [
-        "./src/app/(proper_react)/(redesign)/(authenticated)/user/(dashboard)/settings/*.mock.ts",
         "./src/app/(proper_react)/(redesign)/(authenticated)/user/(dashboard)/settings/*.ts",
       ],
     },                                                   /* Specify a set of entries that re-map imports to additional lookup locations. */
