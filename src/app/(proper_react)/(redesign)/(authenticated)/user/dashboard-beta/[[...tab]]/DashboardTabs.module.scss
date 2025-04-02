@@ -1,0 +1,53 @@
+@use "../../../../../../tokens";
+
+.tabList {
+  display: flex;
+  border-bottom: 1px solid tokens.$color-grey-10;
+
+  .tab {
+    font: tokens.$text-body-md;
+    font-weight: 600;
+    padding-block: tokens.$spacing-sm;
+    border-bottom: 2px solid transparent;
+
+    .label {
+      display: block;
+      padding: tokens.$spacing-sm tokens.$spacing-md;
+      border-radius: tokens.$border-radius-sm;
+      text-decoration: none;
+    }
+
+    &:hover .label {
+      background-color: tokens.$color-purple-05;
+      color: tokens.$color-purple-70;
+    }
+    &:focus-visible {
+      outline: none;
+      .label {
+        outline: 4px solid tokens.$color-purple-10;
+        outline-offset: -4px;
+        border-radius: tokens.$border-radius-md;
+      }
+    }
+
+    &[aria-selected="true"] {
+      border-bottom-color: tokens.$color-black;
+      &:hover {
+        border-bottom-color: tokens.$color-purple-70;
+      }
+      .label,
+      .label:visited {
+        color: tokens.$color-black;
+      }
+    }
+    &[aria-selected="false"] {
+      // This rule is less specific than the .label:visited in &[aria-selected="true"],
+      // but they're mutually exclusive, s that shouldn't matter::
+      /* stylelint-disable no-descending-specificity */
+      .label,
+      .label:visited {
+        color: tokens.$color-purple-70;
+      }
+    }
+  }
+}

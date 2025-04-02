@@ -1,0 +1,24 @@
+@use "../../../../../../tokens";
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: tokens.$spacing-xl;
+    gap: tokens.$spacing-lg;
+}
+
+.title {
+    font: tokens.$text-title-sm;
+    padding-block: tokens.$spacing-sm;
+}
+
+.heroPlaceholder {
+    border: 2px dashed tokens.$color-grey-30;
+    border-radius: tokens.$border-radius-sm;
+    height: tokens.$content-xs;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font: tokens.$text-title-md;
+    color: tokens.$color-grey-20;
+}

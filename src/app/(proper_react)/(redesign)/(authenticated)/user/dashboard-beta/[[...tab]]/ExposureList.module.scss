@@ -1,0 +1,15 @@
+@use "../../../../../../tokens";
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: tokens.$spacing-md;
+}
+
+.exposureList {
+    display: flex;
+    flex-direction: column;
+    gap: tokens.$spacing-md;
+    padding: 0;
+    list-style-type: none;
+}
