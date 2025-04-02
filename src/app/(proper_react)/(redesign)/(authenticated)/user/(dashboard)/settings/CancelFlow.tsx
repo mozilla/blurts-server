@@ -18,9 +18,12 @@ import { Button } from "../../../../../../components/client/Button";
 import { useL10n } from "../../../../../../hooks/l10n";
 import { TelemetryButton } from "../../../../../../components/client/TelemetryButton";
 import { ExperimentData } from "../../../../../../../telemetry/generated/nimbus/experiments";
-import { onApplyCouponCode, onCheckUserHasCurrentCouponSet } from "./actions";
 import { TelemetryLink } from "../../../../../../components/client/TelemetryLink";
 import { OpenInNew } from "../../../../../../components/server/Icons";
+import {
+  onApplyCouponCode,
+  onCheckUserHasCurrentCouponSet,
+} from "#settings/actions";
 
 export type Props = {
   fxaSubscriptionsUrl: string;

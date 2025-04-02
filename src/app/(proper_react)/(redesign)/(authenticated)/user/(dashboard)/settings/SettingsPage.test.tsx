@@ -16,7 +16,7 @@ import {
   onApplyCouponCode,
   onCheckUserHasCurrentCouponSet,
   onRemoveEmail,
-} from "./actions";
+} from "#settings/actions";
 
 const mockedSessionUpdate = jest.fn();
 const mockedRecordTelemetry = jest.fn();
