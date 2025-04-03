@@ -12,7 +12,6 @@ import { MonthlyActivityFreeEmail } from "../../emails/templates/monthlyActivity
 import { getCronjobL10n } from "../../app/functions/l10n/cronjobs";
 import { sanitizeSubscriberRow } from "../../app/functions/server/sanitize";
 import { getDashboardSummary } from "../../app/functions/server/dashboard";
-import { getSubscriberBreaches } from "../../app/functions/server/getSubscriberBreaches";
 import { refreshStoredScanResults } from "../../app/functions/server/refreshStoredScanResults";
 import { getSignupLocaleCountry } from "../../emails/functions/getSignupLocaleCountry";
 import createDbConnection from "../../db/connect";
@@ -20,6 +19,9 @@ import { logger } from "../../app/functions/server/logging";
 import { getMonthlyActivityFreeUnsubscribeLink } from "../../app/functions/cronjobs/unsubscribeLinks";
 import { hasPremium } from "../../app/functions/universal/user";
 import { getFeatureFlagData } from "../../db/tables/featureFlags";
+import { getSubBreaches } from "../../utils/subscriberBreaches";
+import { HibpLikeDbBreach } from "../../utils/hibp";
+import { getBreaches } from "../../app/functions/server/getBreaches";
 
 let sentEmails = 0;
 process.on("SIGINT", () => {
@@ -58,11 +60,16 @@ async function run() {
   );
   // Using `getFeatureFlagData` instead of `getEnabledFeatureFlags` here to prevent fetching them for every subscriber.
   const subPlatFeatureFlag = await getFeatureFlagData("SubPlat3");
+  const allBreaches = await getBreaches();
   await initEmail();
 
   for (const subscriber of subscribersToEmail) {
     try {
-      await sendMonthlyActivityEmail(subscriber, subPlatFeatureFlag);
+      await sendMonthlyActivityEmail(
+        subscriber,
+        subPlatFeatureFlag,
+        allBreaches,
+      );
       logger.info("send_monthly_activity_email_free_success", {
         subscriberId: subscriber.id,
       });
@@ -83,6 +90,7 @@ async function run() {
 async function sendMonthlyActivityEmail(
   subscriber: SubscriberRow,
   subPlatFeatureFlag: FeatureFlagViewRow | null,
+  allBreaches: HibpLikeDbBreach[],
 ) {
   const sanitizedSubscriber = sanitizeSubscriberRow(subscriber);
   const l10n = getCronjobL10n(sanitizedSubscriber);
@@ -104,10 +112,11 @@ async function sendMonthlyActivityEmail(
     subscriber.onerep_profile_id,
     hasPremium(subscriber),
   );
-  const subscriberBreaches = await getSubscriberBreaches({
-    fxaUid: subscriber.fxa_uid,
-    countryCode: countryCodeGuess,
-  });
+  const subscriberBreaches = await getSubBreaches(
+    subscriber,
+    allBreaches,
+    countryCodeGuess,
+  );
   const data = getDashboardSummary(latestScan.results, subscriberBreaches);
 
   const subject = l10n.getString("email-monthly-free-subject");
