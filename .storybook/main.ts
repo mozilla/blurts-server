@@ -37,6 +37,17 @@ const config: StorybookConfig = {
       type: "asset/source",
     });
 
+    // Defining `paths` in tsconfig.json breaks Storybook’s path resolution.
+    // Removing `TsconfigPathsPlugin` ensures that Storybook uses the default
+    // module resolution behavior.
+    config.resolve = {
+      ...config.resolve,
+      plugins:
+        config.resolve?.plugins?.filter(
+          (plugin) => plugin?.constructor.name !== "TsconfigPathsPlugin",
+        ) ?? [],
+    };
+
     return config;
   },
 
