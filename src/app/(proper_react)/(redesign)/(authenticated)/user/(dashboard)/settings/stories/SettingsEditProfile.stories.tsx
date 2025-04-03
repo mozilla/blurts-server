@@ -24,10 +24,11 @@ export default meta;
 type Story = StoryObj<typeof SettingsWrapper>;
 
 export const SettingsDetailsAboutYouMinDetails: Story = {
-  name: "Min details",
+  name: "Min number of details",
   args: {
     countryCode: "us",
     activeTab: "edit-scan-info",
+    hasPlus: true,
     enabledFeatureFlags: [
       "SidebarNavigationRedesign",
       "EditScanProfileDetails",
@@ -37,10 +38,11 @@ export const SettingsDetailsAboutYouMinDetails: Story = {
 };
 
 export const SettingsDetailsAboutYouMaxDetails: Story = {
-  name: "Max details",
+  name: "Max number of details",
   args: {
     countryCode: "us",
     activeTab: "edit-scan-info",
+    hasPlus: true,
     enabledFeatureFlags: [
       "SidebarNavigationRedesign",
       "EditScanProfileDetails",

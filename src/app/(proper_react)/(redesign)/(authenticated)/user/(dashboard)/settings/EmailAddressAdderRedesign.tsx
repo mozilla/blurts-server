@@ -15,12 +15,15 @@ import { Button } from "../../../../../../components/client/Button";
 import { useL10n } from "../../../../../../hooks/l10n";
 import { ModalOverlay } from "../../../../../../components/client/dialog/ModalOverlay";
 import { Dialog } from "../../../../../../components/client/dialog/Dialog";
-import { CONST_MAX_NUM_ADDRESSES } from "../../../../../../../constants";
 import { useTelemetry } from "../../../../../../hooks/useTelemetry";
 import { InputField } from "../../../../../../components/client/InputField";
 import { AddEmailFormState, onAddEmail } from "#settings/actions";
 
-export const EmailAddressAdderRedesign = () => {
+export const EmailAddressAdderRedesign = ({
+  maxNumEmailAddresses,
+}: {
+  maxNumEmailAddresses: number;
+}) => {
   const l10n = useL10n();
   const recordTelemetry = useTelemetry();
   const dialogState = useOverlayTriggerState({
@@ -61,7 +64,7 @@ export const EmailAddressAdderRedesign = () => {
       </Button>
       <p>
         {l10n.getString("settings-email-addresses-add-email-indicator-limit", {
-          limit: CONST_MAX_NUM_ADDRESSES,
+          limit: maxNumEmailAddresses,
         })}
       </p>
       {dialogState.isOpen && (
@@ -166,7 +169,7 @@ const EmailAddressAddForm = (props: {
         <Button
           type="submit"
           variant="primary"
-          disabled={!isEmailValid()}
+          disabled={email.length === 0}
           onPress={() => {
             if (isEmailValid()) {
               setHasPressedButton(true);

@@ -34,7 +34,7 @@ export const SettingsEditYourInfoNoPlus: Story = {
   },
 };
 
-export const SettingsEditYourInfo: Story = {
+export const SettingsEditYourInfoWithPlus: Story = {
   name: "Profile details and monitored emails with Plus",
   args: {
     countryCode: "us",
@@ -44,5 +44,6 @@ export const SettingsEditYourInfo: Story = {
       "EditScanProfileDetails",
     ],
     profileData: mockedProfileDataMin,
+    hasPlus: true,
   },
 };

@@ -23,7 +23,10 @@ import {
   getL10n,
 } from "../../../../../../functions/l10n/serverComponents";
 import { logger } from "../../../../../../functions/server/logging";
-import { CONST_MAX_NUM_ADDRESSES } from "../../../../../../../constants";
+import {
+  CONST_MAX_NUM_ADDRESSES,
+  CONST_MAX_NUM_ADDRESSES_PLUS,
+} from "../../../../../../../constants";
 import { SanitizedEmailAddressRow } from "../../../../../../functions/server/sanitize";
 import { deleteAccount } from "../../../../../../functions/server/deleteAccount";
 import { cookies } from "next/headers";
@@ -33,6 +36,7 @@ import {
 } from "../../../../../../functions/server/applyCoupon";
 import { validateEmailAddress } from "../../../../../../../utils/emailAddress";
 import updateDataBrokerScanProfile from "../../../../../../functions/server/updateDataBrokerScanProfile";
+import { hasPremium } from "src/app/functions/universal/user";
 
 export type AddEmailFormState =
   | { success?: never }
@@ -80,10 +84,13 @@ export async function onAddEmail(
     };
   }
 
+  const maxNumEmailAddresses = hasPremium(subscriber)
+    ? CONST_MAX_NUM_ADDRESSES_PLUS
+    : CONST_MAX_NUM_ADDRESSES;
   const existingAddresses = [session.user.email]
     .concat(subscriber.email_addresses.map((emailRow) => emailRow.email))
     .map((address) => address.toLowerCase());
-  if (existingAddresses.length >= CONST_MAX_NUM_ADDRESSES) {
+  if (existingAddresses.length >= maxNumEmailAddresses) {
     return {
       success: false,
       error: "too-many-emails",

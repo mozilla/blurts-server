@@ -81,7 +81,7 @@ export const mockedSubscriber: SubscriberRow = {
     avatarDefault: false,
     metricsEnabled: true,
     twoFactorAuthentication: false,
-    subscriptions: ["monitor"],
+    subscriptions: [],
   },
   breaches_last_shown: new Date("2022-07-08 14:19:00.000-05"),
   breaches_resolved: null,
@@ -96,6 +96,14 @@ export const mockedSubscriber: SubscriberRow = {
   sign_in_count: null,
   first_broker_removal_email_sent: false,
   churn_prevention_email_sent_at: null,
+};
+
+export const mockedSubscriberWithPlus = {
+  ...mockedSubscriber,
+  fxa_profile_json: {
+    ...mockedSubscriber.fxa_profile_json,
+    subscriptions: [],
+  },
 };
 
 export const mockedProfileDataMin: OnerepProfileRow = {

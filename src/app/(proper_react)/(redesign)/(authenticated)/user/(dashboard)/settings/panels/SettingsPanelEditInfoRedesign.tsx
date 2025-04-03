@@ -9,6 +9,7 @@ import Image from "next/image";
 import { OnerepProfileRow, SubscriberRow } from "knex/types/tables";
 import {
   CONST_MAX_NUM_ADDRESSES,
+  CONST_MAX_NUM_ADDRESSES_PLUS,
   CONST_URL_SUMO_EDIT_INFO_PERSONAL_INFO,
 } from "../../../../../../../../constants";
 import { SubscriberEmailPreferencesOutput } from "../../../../../../../../db/tables/subscriber_email_preferences";
@@ -25,6 +26,7 @@ import { useTelemetry } from "../../../../../../../hooks/useTelemetry";
 import { Button } from "../../../../../../../components/client/Button";
 import styles from "./SettingsPanelEditInfoRedesign.module.scss";
 import { getLocale } from "../../../../../../../functions/universal/getLocale";
+import { hasPremium } from "../../../../../../../functions/universal/user";
 import { TelemetryButton } from "../../../../../../../components/client/TelemetryButton";
 import { TelemetryLink } from "../../../../../../../components/client/TelemetryLink";
 import InfoShield from "../images/InfoShield.svg";
@@ -175,8 +177,11 @@ function MonitoredEmailAddressesSection(
   props: SettingsPanelEditInfoRedesignProps,
 ) {
   const l10n = useL10n();
+  const maxNumEmailAddresses = hasPremium(props.user)
+    ? CONST_MAX_NUM_ADDRESSES_PLUS
+    : CONST_MAX_NUM_ADDRESSES;
   const hasMaxEmailAddresses =
-    props.emailAddresses.length < CONST_MAX_NUM_ADDRESSES - 1;
+    props.emailAddresses.length < maxNumEmailAddresses - 1;
 
   return (
     <section className={styles.section}>
@@ -193,7 +198,11 @@ function MonitoredEmailAddressesSection(
         ))}
       </ul>
       <span className={styles.addButton}>
-        {hasMaxEmailAddresses && <EmailAddressAdderRedesign />}
+        {hasMaxEmailAddresses && (
+          <EmailAddressAdderRedesign
+            maxNumEmailAddresses={maxNumEmailAddresses}
+          />
+        )}
       </span>
     </section>
   );

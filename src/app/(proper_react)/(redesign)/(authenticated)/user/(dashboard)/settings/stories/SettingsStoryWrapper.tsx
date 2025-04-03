@@ -10,7 +10,6 @@ import {
 import { SettingsView, TabType } from "../View";
 import { Shell } from "../../../../../Shell/Shell";
 import { getL10n } from "../../../../../../../functions/l10n/storybookAndJest";
-import { createUserWithPremiumSubscription } from "../../../../../../../../apiMocks/mockData";
 import { defaultExperimentData } from "../../../../../../../../telemetry/generated/nimbus/experiments";
 import { CountryCodeProvider } from "../../../../../../../../contextProviders/country-code";
 import { SessionProvider } from "../../../../../../../../contextProviders/session";
@@ -18,11 +17,13 @@ import { FeatureFlagName } from "../../../../../../../../db/tables/featureFlags"
 import { SubscriberEmailPreferencesOutput } from "../../../../../../../../db/tables/subscriber_email_preferences";
 import {
   mockedSubscriber,
+  mockedSubscriberWithPlus,
   mockedVerifiedEmailSecond,
   mockedVerifiedEmailThird,
   mockedVerifiedEmailFourth,
   mockedVerifiedEmailFifth,
 } from "./settingsMockData";
+import { SerializedSubscriber } from "src/next-auth";
 
 export type SettingsWrapperProps = {
   activeTab: TabType;
@@ -35,14 +36,31 @@ export type SettingsWrapperProps = {
   emailAddresses?: EmailAddressRow[];
   profileData?: OnerepProfileRow;
   data?: SubscriberEmailPreferencesOutput;
+  hasPlus?: boolean;
 };
 
 export const SettingsWrapper = (props: SettingsWrapperProps) => {
-  const user = createUserWithPremiumSubscription();
+  const user = {
+    email: "example@example.com",
+    fxa: {
+      locale: "us",
+      twoFactorAuthentication: false,
+      metricsEnabled: false,
+      avatar: "https://profile.stage.mozaws.net/v1/avatar/e",
+      avatarDefault: true,
+      subscriptions: props.hasPlus ? ["monitor"] : [],
+    },
+    subscriber: {
+      id: 42,
+    } as SerializedSubscriber,
+  };
   const mockedSession = {
     expires: new Date().toISOString(),
     user,
   };
+  const subscriber = props.hasPlus
+    ? mockedSubscriberWithPlus
+    : mockedSubscriber;
 
   return (
     <SessionProvider session={mockedSession}>
@@ -58,11 +76,11 @@ export const SettingsWrapper = (props: SettingsWrapperProps) => {
           <SettingsView
             l10n={getL10n()}
             user={user}
-            subscriber={props.subscriber ?? mockedSubscriber}
+            subscriber={props.subscriber ?? subscriber}
             data={props.data}
             emailAddresses={props.emailAddresses ?? []}
             breachCountByEmailAddress={{
-              [mockedSubscriber.primary_email]: 12,
+              [subscriber.primary_email]: 12,
               [mockedVerifiedEmailSecond.email]: 23,
               [mockedVerifiedEmailThird.email]: 45,
               [mockedVerifiedEmailFourth.email]: 56,

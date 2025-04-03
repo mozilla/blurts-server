@@ -135,7 +135,7 @@ const EmailAddressAddForm = () => {
           type="submit"
           variant="primary"
           className={styles.btn}
-          disabled={!isEmailValid()}
+          disabled={email.length === 0}
           onPress={() => {
             if (isEmailValid()) {
               setHasPressedButton(true);

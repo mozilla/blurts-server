@@ -133,6 +133,7 @@ settings-edit-profile-info-form-input-label-other-phone-number = Other phone num
 settings-edit-profile-info-form-input-label-primary-location = City and state
 settings-edit-profile-info-form-input-label-other-location = Past location
 settings-edit-profile-info-form-input-error-first-name = First name is required
+settings-edit-profile-info-form-input-error-middle-name = First name is required
 settings-edit-profile-info-form-input-error-last-name = Last name is required
 settings-edit-profile-info-form-input-error-phone-number = Enter a valid phone number
 settings-edit-profile-info-form-input-error-current-location = A current location is required
