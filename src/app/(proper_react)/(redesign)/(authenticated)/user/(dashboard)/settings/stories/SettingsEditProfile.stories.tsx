@@ -27,7 +27,7 @@ export const SettingsDetailsAboutYouMinDetails: Story = {
   name: "Min details",
   args: {
     countryCode: "us",
-    activeTab: "edit-profile",
+    activeTab: "edit-scan-info",
     enabledFeatureFlags: [
       "SidebarNavigationRedesign",
       "EditScanProfileDetails",
@@ -40,7 +40,7 @@ export const SettingsDetailsAboutYouMaxDetails: Story = {
   name: "Max details",
   args: {
     countryCode: "us",
-    activeTab: "edit-profile",
+    activeTab: "edit-scan-info",
     enabledFeatureFlags: [
       "SidebarNavigationRedesign",
       "EditScanProfileDetails",

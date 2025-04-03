@@ -48,7 +48,7 @@ function Panel(props: SettingsProps) {
       return <SettingsPanelNotifications {...props} />;
     case "manage-account":
       return <SettingsPanelManageAccount {...props} />;
-    case "edit-profile":
+    case "edit-scan-info":
       if (props.enabledFeatureFlags.includes("EditScanProfileDetails")) {
         return <SettingsPanelEditProfile {...props} />;
       }

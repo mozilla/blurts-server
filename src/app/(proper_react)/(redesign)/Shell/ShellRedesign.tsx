@@ -64,7 +64,7 @@ export const NavbarList = (props: {
             hasTelemetry={{ link_id: "navigation_edit_info" }}
           >
             <ScanInfoIcon alt="" />
-            {props.l10n.getString("settings-tab-label-update-scan-info")}
+            {props.l10n.getString("settings-tab-label-edit-scan-info")}
           </PageLink>
         </li>
       )}

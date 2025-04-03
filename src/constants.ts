@@ -49,7 +49,7 @@ export const CONST_SETTINGS_TAB_SLUGS = [
   "edit-info",
   "notifications",
   "manage-account",
-  "edit-profile",
+  "edit-scan-info",
 ] as const;
 export const CONST_DATA_BROKER_PROFILE_DETAIL_ALLOW_LIST = [
   "first_name",
