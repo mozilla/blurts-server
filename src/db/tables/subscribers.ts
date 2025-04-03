@@ -7,7 +7,6 @@ import type { EmailAddressRow, SubscriberRow } from "knex/types/tables";
 import createDbConnection from "../connect";
 import { SerializedSubscriber } from "../../next-auth.js";
 import { getEnvVarsOrThrow } from "../../envVars";
-import { parseIso8601Datetime } from "../../utils/parse";
 
 const knex = createDbConnection();
 const { DELETE_UNVERIFIED_SUBSCRIBERS_TIMER } = getEnvVarsOrThrow([
@@ -405,11 +404,6 @@ async function getFreeSubscribersWaitingForMonthlyEmail(
   batchSize: number,
   countryCodes: string[],
 ): Promise<SubscriberRow[]> {
-  const accountCutOffDate = parseIso8601Datetime(
-    process.env.MONTHLY_ACTIVITY_FREE_EMAIL_ACCOUNT_CUTOFF_DATE ??
-      "2022-01-01T00:00:00.000Z",
-  );
-
   const query = knex("subscribers")
     .select<SubscriberRow[]>("subscribers.*")
     .select(
@@ -459,8 +453,6 @@ async function getFreeSubscribersWaitingForMonthlyEmail(
     )
     // ...whose account is older than 1 month...
     .andWhereRaw("subscribers.\"created_at\" < NOW() - INTERVAL '1 month'")
-    // ...but is no older than three years...
-    .andWhere("subscribers.created_at", ">=", accountCutOffDate)
     // ...and who do not have a Plus subscription.
     // Note: This will only match people of whom the Monitor database knows that
     //       they have a Plus subscription. SubPlat is the source of truth, but
@@ -478,7 +470,8 @@ async function getFreeSubscribersWaitingForMonthlyEmail(
           `NOT (subscribers.fxa_profile_json->'subscriptions')::jsonb \\? ?`,
           MONITOR_PREMIUM_CAPABILITY,
         ),
-    );
+    )
+    .orderBy("subscribers.created_at", "desc");
 
   const wrappedQuery = knex
     // @ts-ignore TODO MNTOR-3890 Move away from this approach and simplify query.
