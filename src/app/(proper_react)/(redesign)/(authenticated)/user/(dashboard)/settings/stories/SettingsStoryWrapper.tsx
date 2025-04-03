@@ -22,7 +22,7 @@ import {
   mockedVerifiedEmailThird,
   mockedVerifiedEmailFourth,
   mockedVerifiedEmailFifth,
-} from "./sharedSettingsMockData";
+} from "./settingsMockData";
 
 export type SettingsWrapperProps = {
   activeTab: TabType;

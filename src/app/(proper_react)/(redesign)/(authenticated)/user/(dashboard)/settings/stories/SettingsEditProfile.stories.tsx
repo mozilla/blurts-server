@@ -7,7 +7,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { faker, fakerEN_US } from "@faker-js/faker";
 import { SettingsWrapper } from "./SettingsStoryWrapper";
 import { CONST_SETTINGS_TAB_SLUGS } from "../../../../../../../../constants";
-import { mockedProfileDataMin } from "./sharedSettingsMockData";
+import { mockedProfileDataMin } from "./settingsMockData";
 import { OnerepProfileAddress } from "knex/types/tables";
 
 const meta: Meta<typeof SettingsWrapper> = {

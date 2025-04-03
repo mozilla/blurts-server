@@ -6,7 +6,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 import { SettingsWrapper } from "./SettingsStoryWrapper";
 import { CONST_SETTINGS_TAB_SLUGS } from "../../../../../../../../constants";
-import { mockedProfileDataMin } from "./sharedSettingsMockData";
+import { mockedProfileDataMin } from "./settingsMockData";
 
 const meta: Meta<typeof SettingsWrapper> = {
   title: "Pages/Logged in/Settings/Redesign/Edit info/US user",
