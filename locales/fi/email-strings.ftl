@@ -66,7 +66,9 @@ email-dashboard-cta = Siirry kojelaudalle
 ## Breach alert email
 
 email-breach-alert-all-subject = Uusi tietovuoto havaittu
+email-breach-alert-all-preview = Autamme sinua ratkaisemaan asian.
 email-breach-alert-all-hero-heading = Olet joutunut uuden tietovuodon joukkoon
+email-breach-alert-all-hero-subheading = Älä huoli, autamme sinua ratkaisemaan tämän altistumisen
 email-breach-alert-all-lead = { -brand-mozilla-monitor } havaitsi seuraavan tietovuodon, joka sisältää henkilökohtaisia tietojasi:
 email-breach-alert-all-source-title = Vuodon lähde:
 email-breach-alert-all-data-points-title = Altistuneet tietosi:
