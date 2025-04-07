@@ -4,11 +4,8 @@
 
 "use client";
 
-import { ReactNode } from "react";
 import { CookiesProvider as OriginalCookiesProvider } from "react-cookie";
 
-const CookiesProvider = ({ children }: { children: ReactNode }) => (
-  <OriginalCookiesProvider>{children}</OriginalCookiesProvider>
+export const CookiesProvider: typeof OriginalCookiesProvider = (props) => (
+  <OriginalCookiesProvider {...props} />
 );
-
-export default CookiesProvider;
