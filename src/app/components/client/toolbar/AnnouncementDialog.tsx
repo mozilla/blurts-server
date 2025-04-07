@@ -13,9 +13,10 @@ import { Popover } from "../Popover";
 import { AnnouncementsIcon, CloseBtn } from "../../server/Icons";
 import styles from "./AnnouncementDialog.module.scss";
 import { UserAnnouncementWithDetails } from "../../../../../src/db/tables/user_announcements";
-import { LocalizedAnnouncementString } from "../../../(proper_react)/(redesign)/(authenticated)/admin/announcements/AnnouncementsAdmin";
 import { TelemetryLink } from "../TelemetryLink";
 import { useTelemetry } from "../../../hooks/useTelemetry";
+import { AnnouncementRow } from "knex/types/tables";
+import { truncateDescription } from "../../../../utils/truncate";
 
 type AnnouncementDialogProps = {
   announcements: UserAnnouncementWithDetails[];
@@ -402,3 +403,45 @@ export const AnnouncementDialog = ({
     </>
   );
 };
+
+type LocalizedAnnouncementStringProps = {
+  announcement: AnnouncementRow;
+  type: "title" | "description" | "cta-label";
+  truncatedDescription?: boolean;
+};
+
+export const LocalizedAnnouncementString = (
+  props: LocalizedAnnouncementStringProps,
+) => {
+  const l10n = useL10n();
+
+  // Build the key based on the type (fluent IDs are named in this format)
+  const key = `announcement-${props.announcement.announcement_id}-${props.type}`;
+
+  // Get the localized string for the key
+  const localizedString = l10n.getString(key);
+
+  // If the key is not translated, use the fallback values from the announcements table
+  if (localizedString === key) {
+    console.warn(`${props.announcement.announcement_id} is not localized`);
+
+    if (props.type === "title") {
+      return props.announcement.title;
+    }
+    if (props.type === "description") {
+      return props.announcement.description;
+    }
+    if (props.type === "cta-label") {
+      return props.announcement.cta_label;
+    }
+  }
+
+  return (
+    <>
+      {props.truncatedDescription
+        ? truncateDescription(localizedString)
+        : localizedString}
+    </>
+  );
+};
+/* c8 ignore end */
