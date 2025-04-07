@@ -4,6 +4,7 @@
 
 import type { Meta, StoryObj } from "@storybook/react";
 import {
+  createRandomAnnouncement,
   createRandomBreach,
   createUserWithPremiumSubscription,
 } from "../../../../../../../../../../apiMocks/mockData";
@@ -18,6 +19,7 @@ import { BreachDataTypes } from "../../../../../../../../../functions/universal/
 import { StepDeterminationData } from "../../../../../../../../../functions/server/getRelevantGuidedSteps";
 import { OnerepScanRow } from "knex/types/tables";
 import { defaultExperimentData } from "../../../../../../../../../../telemetry/generated/nimbus/experiments";
+import { UserAnnouncementWithDetails } from "../../../../../../../../../../db/tables/user_announcements";
 
 const user = createUserWithPremiumSubscription();
 
@@ -102,6 +104,12 @@ const HighRiskBreachWrapper = (props: {
             user: mockedSession.user,
           };
 
+  const mockedAnnouncements: UserAnnouncementWithDetails[] = [
+    createRandomAnnouncement(),
+    createRandomAnnouncement(),
+    createRandomAnnouncement(),
+  ];
+
   return (
     <Shell
       l10n={getL10n()}
@@ -110,6 +118,7 @@ const HighRiskBreachWrapper = (props: {
       countryCode={data.countryCode}
       enabledFeatureFlags={[]}
       experimentData={defaultExperimentData["Features"]}
+      announcements={mockedAnnouncements}
     >
       <HighRiskBreachLayout
         subscriberEmails={[]}
