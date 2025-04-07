@@ -18,6 +18,7 @@ import { AnnouncementRow } from "knex/types/tables";
 import AnnouncementsModal from "./AnnouncementsModal";
 import { useL10n } from "../../../../../hooks/l10n";
 import { usePathname } from "next/navigation";
+import { truncateDescription } from "../../../../../../utils/truncate";
 
 type Props = {
   announcements: AnnouncementRow[];
@@ -430,12 +431,6 @@ type LocalizedAnnouncementStringProps = {
 export const LocalizedAnnouncementString = (
   props: LocalizedAnnouncementStringProps,
 ) => {
-  function truncateDescription(str: string): string {
-    const MAX_CHARACTERS = 80;
-    if (str.length <= MAX_CHARACTERS) return str;
-    return str.slice(0, MAX_CHARACTERS) + "…";
-  }
-
   const l10n = useL10n();
 
   // Build the key based on the type (fluent IDs are named in this format)
@@ -448,9 +443,6 @@ export const LocalizedAnnouncementString = (
   const missingLabel = pathname === "/admin/announcements" && (
     <span className={styles.missingLabel}>Missing fluent ID</span>
   );
-
-  const shouldTruncate =
-    props.type === "description" && props.truncatedDescription;
 
   // If the key is not translated, use the fallback values from the announcements table
   if (localizedString === key) {
@@ -484,7 +476,9 @@ export const LocalizedAnnouncementString = (
 
   return (
     <>
-      {shouldTruncate ? truncateDescription(localizedString) : localizedString}
+      {props.truncatedDescription
+        ? truncateDescription(localizedString)
+        : localizedString}
     </>
   );
 };

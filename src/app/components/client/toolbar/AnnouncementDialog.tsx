@@ -284,7 +284,7 @@ export const AnnouncementDialog = ({
                     className={styles.backBtn}
                     onClick={() => setAnnouncementDetailsView(false)}
                   >
-                    <span> {l10n.getString("announcement-dialog-back")}</span>
+                    <span>{l10n.getString("announcement-dialog-back")}</span>
                   </button>
                 </div>
               ) : (
