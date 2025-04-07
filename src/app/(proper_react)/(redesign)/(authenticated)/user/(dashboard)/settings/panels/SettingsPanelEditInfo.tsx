@@ -18,7 +18,7 @@ import {
 import { useTelemetry } from "../../../../../../../hooks/useTelemetry";
 import { Button } from "../../../../../../../components/client/Button";
 import styles from "./SettingsPanelEditInfo.module.scss";
-import { onRemoveEmail } from "#settings/actions";
+import { type onRemoveEmail, type onAddEmail } from "../actions";
 
 export type SettingsPanelEditInfoProps = {
   breachCountByEmailAddress: Record<string, number>;
@@ -26,11 +26,16 @@ export type SettingsPanelEditInfoProps = {
   emailAddresses: SanitizedEmailAddressRow[];
   subscriber: SubscriberRow;
   user: Session["user"];
+  actions: {
+    onAddEmail: typeof onAddEmail;
+    onRemoveEmail: typeof onRemoveEmail;
+  };
 };
 
 function MonitoredEmail(props: {
   emailAddress: SanitizedEmailAddressRow;
   breachCount: number;
+  onRemoveEmail: typeof onRemoveEmail;
 }) {
   const l10n = useL10n();
   const recordTelemetry = useTelemetry();
@@ -51,7 +56,7 @@ function MonitoredEmail(props: {
               recordTelemetry("button", "click", {
                 button_id: "removed_email_address",
               });
-              void onRemoveEmail(props.emailAddress);
+              void props.onRemoveEmail(props.emailAddress);
             }}
             variant="icon"
             small
@@ -136,12 +141,15 @@ function SettingsPanelEditInfo(props: SettingsPanelEditInfoProps) {
             <MonitoredEmail
               emailAddress={emailAddress}
               breachCount={props.breachCountByEmailAddress[emailAddress.email]}
+              onRemoveEmail={props.actions.onRemoveEmail}
             />
           </li>
         ))}
       </ul>
       <span className={styles.addEmailButton}>
-        {hasMaxEmailAddresses && <EmailAddressAdder />}
+        {hasMaxEmailAddresses && (
+          <EmailAddressAdder onAddEmail={props.actions.onAddEmail} />
+        )}
       </span>
     </>
   );

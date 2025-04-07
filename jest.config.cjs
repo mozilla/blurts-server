@@ -120,8 +120,6 @@ const customJestConfig = {
     "react-dom/server": "react-dom/server.edge",
     // Force module uuid to resolve with the CJS entry point, because Jest does not support package.json.exports. See https://github.com/uuidjs/uuid/issues/451
     uuid: require.resolve("uuid"),
-    // With `paths` defined in tsconfig.json, Jest requires explicit mapping.
-    "^\\.storybook/preview$": "<rootDir>/.storybook/preview.tsx",
   },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader

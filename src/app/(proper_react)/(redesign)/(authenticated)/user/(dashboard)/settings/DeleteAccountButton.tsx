@@ -4,11 +4,11 @@
 
 "use client";
 
-import { useState } from "react";
+import { ComponentProps, useState } from "react";
 import { signOut } from "next-auth/react";
 import { Button } from "../../../../../../components/client/Button";
+import { type onDeleteAccount } from "./actions";
 import { useTelemetry } from "../../../../../../hooks/useTelemetry";
-import { onDeleteAccount } from "#settings/actions";
 
 /**
  * Since <Button> is a client component, the `onDeleteAccount` handler can only
@@ -16,7 +16,11 @@ import { onDeleteAccount } from "#settings/actions";
  *
  * @param props
  */
-export const DeleteAccountButton: typeof Button = (props) => {
+export const DeleteAccountButton = (
+  props: ComponentProps<typeof Button> & {
+    onDeleteAccount: typeof onDeleteAccount;
+  },
+) => {
   const recordTelemetry = useTelemetry();
   const [isSubmitting, setIsSubmitting] = useState(false);
   return (
@@ -31,7 +35,8 @@ export const DeleteAccountButton: typeof Button = (props) => {
         setIsSubmitting(true);
         // It's currently unclear if and how we should mock our server action:
         /* c8 ignore next 7 */
-        void onDeleteAccount()
+        void props
+          .onDeleteAccount()
           .then(() => {
             void signOut({ callbackUrl: "/" });
           })
