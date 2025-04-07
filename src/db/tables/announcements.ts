@@ -26,12 +26,12 @@ export async function addAnnouncements(
       .returning("*");
 
     if (!addedAnnouncements) {
-      throw new Error("Failed to insert the notification");
+      throw new Error("Failed to insert the announcement");
     }
 
     return addedAnnouncements;
   } catch (error) {
-    logger.error("Error adding notification:", error);
+    logger.error("Error adding announcement:", error);
     throw error;
   }
 }

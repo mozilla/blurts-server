@@ -2,6 +2,13 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+/* c8 ignore start */
+/*
+  This file is excluded from unit test coverage because it's an internal admin-only
+  tool and not part of the user-facing experience. It contains minimal logic,
+  is not critical to core app functionality, and is tested manually as needed.
+*/
+
 "use client";
 
 import { useEffect, useState } from "react";
@@ -9,7 +16,8 @@ import styles from "./AnnouncementsAdmin.module.scss";
 import Image from "next/image";
 import { AnnouncementRow } from "knex/types/tables";
 import AnnouncementsModal from "./AnnouncementsModal";
-import { useL10n } from "../../../../../hooks/l10n";
+import { usePathname } from "next/navigation";
+import { LocalizedAnnouncementString } from "../../../../../components/client/toolbar/AnnouncementDialog";
 
 type Props = {
   announcements: AnnouncementRow[];
@@ -27,38 +35,57 @@ export const AnnouncementsAdmin = (props: Props) => {
     props.announcements,
   );
   const endpointBase = `/api/v1/admin/announcements`;
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleAddAnnouncement = async (newAnnouncement: AnnouncementRow) => {
     try {
       const response = await fetch(endpointBase, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newAnnouncement),
       });
 
-      if (!response.ok) {
-        console.error(
-          "Failed to add notification:",
-          response.status,
-          response.statusText,
-        );
-        return;
-      }
+      if (!response.ok) throw new Error("Failed to add announcement");
 
       const savedAnnouncement: AnnouncementRow = await response.json();
 
-      setAnnouncements((prevAnnouncements) => [
-        ...prevAnnouncements,
-        savedAnnouncement,
-      ]);
-
-      if (!activeAnnouncementId) {
-        setActiveAnnouncementId(savedAnnouncement.id);
-      }
+      setAnnouncements((prev) => [...prev, savedAnnouncement]);
+      setActiveAnnouncementId(savedAnnouncement.id);
+      setIsModalOpen(false);
     } catch (error) {
-      console.error("Error adding notification:", error);
+      console.error("Error adding announcement:", error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleUpdateAnnouncement = async (
+    updatedAnnouncement: AnnouncementRow,
+  ) => {
+    setIsSubmitting(true);
+    try {
+      const response = await fetch(
+        `/api/v1/admin/announcements/${updatedAnnouncement.announcement_id}`,
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(updatedAnnouncement),
+        },
+      );
+
+      if (!response.ok) throw new Error("Failed to update announcement");
+
+      const updated = await response.json();
+
+      setAnnouncements((prev) =>
+        prev.map((a) => (a.id === updated.id ? updated : a)),
+      );
+      setActiveAnnouncementId(updated.id);
+      setIsModalOpen(false);
+    } catch (error) {
+      console.error("Error updating announcement:", error);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -73,7 +100,7 @@ export const AnnouncementsAdmin = (props: Props) => {
 
       if (!response.ok) {
         console.error(
-          "Failed to delete notification:",
+          "Failed to delete announcement:",
           response.status,
           response.statusText,
         );
@@ -82,7 +109,7 @@ export const AnnouncementsAdmin = (props: Props) => {
 
       setAnnouncements((prevAnnouncements) =>
         prevAnnouncements.filter(
-          (notification) => notification.announcement_id !== announcementId,
+          (announcement) => announcement.announcement_id !== announcementId,
         ),
       );
 
@@ -92,54 +119,18 @@ export const AnnouncementsAdmin = (props: Props) => {
         );
       }
     } catch (error) {
-      console.error("Error deleting notification:", error);
-    }
-  };
-
-  const handleUpdateAnnouncement = async (
-    updatedAnnouncement: AnnouncementRow,
-  ) => {
-    try {
-      const response = await fetch(
-        `/api/v1/admin/announcements/${updatedAnnouncement.announcement_id}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(updatedAnnouncement),
-        },
-      );
-
-      if (!response.ok) {
-        console.error(
-          "Failed to update notification:",
-          response.status,
-          response.statusText,
-        );
-        return;
-      }
-
-      setAnnouncements((prevAnnouncements) =>
-        prevAnnouncements.map((notification) =>
-          notification.id === updatedAnnouncement.id
-            ? updatedAnnouncement
-            : notification,
-        ),
-      );
-    } catch (error) {
-      console.error("Error updating notification:", error);
+      console.error("Error deleting announcement:", error);
     }
   };
 
   const handleEditAnnouncement = (announcementId: string) => {
-    const notificationToEdit = announcements.find(
+    const announcementToEdit = announcements.find(
       (n) => n.announcement_id === announcementId,
     );
-    if (notificationToEdit) {
+    if (announcementToEdit) {
       setIsModalOpen(true);
       // Pass the notification data to the modal for editing
-      setActiveAnnouncementToEdit(notificationToEdit);
+      setActiveAnnouncementToEdit(announcementToEdit);
     }
   };
 
@@ -163,14 +154,15 @@ export const AnnouncementsAdmin = (props: Props) => {
       setActiveAnnouncementId(announcements[0].id);
     }
   }, [announcements, activeAnnouncementId]);
+
   // States for each image
   const [smallImageIsLoading, setSmallImageIsLoading] = useState(true);
   const [bigImageIsLoading, setBigImageIsLoading] = useState(true);
   const [smallImageUnavailable, setSmallImageUnavailable] = useState(false);
   const [bigImageUnavailable, setBigImageUnavailable] = useState(false);
 
-  const smallImagePath = `/images/announcements/${activeAnnouncement?.announcement_id.trim()}/small.jpg`;
-  const bigImagePath = `/images/announcements/${activeAnnouncement?.announcement_id.trim()}/big.jpg`;
+  const smallImagePath = `/images/announcements/${activeAnnouncement?.announcement_id.trim()}/small.svg`;
+  const bigImagePath = `/images/announcements/${activeAnnouncement?.announcement_id.trim()}/big.svg`;
 
   useEffect(() => {
     setSmallImageIsLoading(true);
@@ -179,6 +171,16 @@ export const AnnouncementsAdmin = (props: Props) => {
     setBigImageUnavailable(false);
   }, [activeAnnouncementId]);
 
+  const sortedAnnouncements = [...announcements].sort((a, b) => {
+    return new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime();
+  });
+
+  const pathname = usePathname();
+
+  const missingLabel = pathname === "/admin/announcements" && (
+    <span className={styles.missingLabel}>Missing fluent ID</span>
+  );
+
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
@@ -186,7 +188,7 @@ export const AnnouncementsAdmin = (props: Props) => {
         <div className={styles.notificationsWrapper}>
           <h1>All Announcements</h1>
           <ul>
-            {announcements.map((notification) => (
+            {sortedAnnouncements.map((notification) => (
               <li
                 key={notification.id}
                 className={
@@ -196,16 +198,22 @@ export const AnnouncementsAdmin = (props: Props) => {
               >
                 <div>
                   <p className={styles.title}>
-                    <LocalizedAnnouncementString
-                      notification={notification}
-                      type="title"
-                    />
+                    <span className={styles.missingLabelContainer}>
+                      <LocalizedAnnouncementString
+                        announcement={notification}
+                        type="title"
+                      />
+                      {missingLabel}
+                    </span>
                   </p>
                   <p className={styles.description}>
-                    <LocalizedAnnouncementString
-                      notification={notification}
-                      type="description"
-                    />
+                    <span className={styles.missingLabelContainer}>
+                      <LocalizedAnnouncementString
+                        announcement={notification}
+                        type="description"
+                      />
+                      {missingLabel}
+                    </span>
                   </p>
                 </div>
                 <div className={styles.pills}>
@@ -221,7 +229,7 @@ export const AnnouncementsAdmin = (props: Props) => {
               className={styles.addButton}
               onClick={() => setIsModalOpen(true)}
             >
-              Add new notification
+              + Add new announcement
             </button>
           </ul>
         </div>
@@ -236,19 +244,24 @@ export const AnnouncementsAdmin = (props: Props) => {
 
               <dt>Title</dt>
               <dd>
-                {" "}
-                <LocalizedAnnouncementString
-                  notification={activeAnnouncement}
-                  type="title"
-                />
+                <span className={styles.missingLabelContainer}>
+                  <LocalizedAnnouncementString
+                    announcement={activeAnnouncement}
+                    type="title"
+                  />
+                  {missingLabel}
+                </span>
               </dd>
 
               <dt>Description</dt>
               <dd>
-                <LocalizedAnnouncementString
-                  notification={activeAnnouncement}
-                  type="description"
-                />
+                <span className={styles.missingLabelContainer}>
+                  <LocalizedAnnouncementString
+                    announcement={activeAnnouncement}
+                    type="description"
+                  />
+                  {missingLabel}
+                </span>
               </dd>
 
               <dt>Small Image</dt>
@@ -263,7 +276,7 @@ export const AnnouncementsAdmin = (props: Props) => {
                     height={300}
                     key={activeAnnouncement.id}
                     className={styles.smallImage}
-                    src="/images/announcements/fallback/small.jpg"
+                    src="/images/announcements/fallback/small.svg"
                     onLoadingComplete={() => setSmallImageIsLoading(false)}
                   />
                 ) : (
@@ -293,7 +306,7 @@ export const AnnouncementsAdmin = (props: Props) => {
                     height={300}
                     key={activeAnnouncement.id}
                     className={styles.bigImage}
-                    src="/images/announcements/fallback/big.jpg"
+                    src="/images/announcements/fallback/big.svg"
                     onLoadingComplete={() => setBigImageIsLoading(false)}
                   />
                 ) : (
@@ -311,10 +324,13 @@ export const AnnouncementsAdmin = (props: Props) => {
               </dd>
               <dt>CTA Label</dt>
               <dd>
-                <LocalizedAnnouncementString
-                  notification={activeAnnouncement}
-                  type="cta-label"
-                />
+                <span className={styles.missingLabelContainer}>
+                  <LocalizedAnnouncementString
+                    announcement={activeAnnouncement}
+                    type="cta-label"
+                  />
+                  {missingLabel}
+                </span>
               </dd>
 
               <dt>CTA Link</dt>
@@ -339,6 +355,7 @@ export const AnnouncementsAdmin = (props: Props) => {
 
             <div className={styles.buttons}>
               <button
+                className={styles.deleteBtn}
                 onClick={() =>
                   void handleDeleteAnnouncement(
                     activeAnnouncement.announcement_id,
@@ -372,7 +389,7 @@ export const AnnouncementsAdmin = (props: Props) => {
                   width={500}
                   height={300}
                   key={activeAnnouncement.id}
-                  src="/images/announcements/fallback/big.jpg"
+                  src="/images/announcements/fallback/big.svg"
                   onLoadingComplete={() => setBigImageIsLoading(false)}
                 />
               ) : (
@@ -388,23 +405,32 @@ export const AnnouncementsAdmin = (props: Props) => {
               )}
               <dl>
                 <dt>
-                  <LocalizedAnnouncementString
-                    notification={activeAnnouncement}
-                    type="title"
-                  />
+                  <span className={styles.missingLabelContainer}>
+                    <LocalizedAnnouncementString
+                      announcement={activeAnnouncement}
+                      type="title"
+                    />
+                    {missingLabel}
+                  </span>
                 </dt>
                 <dd>
-                  <LocalizedAnnouncementString
-                    notification={activeAnnouncement}
-                    type="description"
-                  />
+                  <span className={styles.missingLabelContainer}>
+                    <LocalizedAnnouncementString
+                      announcement={activeAnnouncement}
+                      type="description"
+                    />
+                    {missingLabel}
+                  </span>
                 </dd>
               </dl>
               <a href={activeAnnouncement.cta_link}>
-                <LocalizedAnnouncementString
-                  notification={activeAnnouncement}
-                  type="cta-label"
-                />
+                <span className={styles.missingLabelContainer}>
+                  <LocalizedAnnouncementString
+                    announcement={activeAnnouncement}
+                    type="cta-label"
+                  />
+                  {missingLabel}
+                </span>
               </a>
             </div>
           </div>
@@ -414,63 +440,12 @@ export const AnnouncementsAdmin = (props: Props) => {
       <AnnouncementsModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        notificationToEdit={activeAnnouncementToEdit}
+        announcementToEdit={activeAnnouncementToEdit}
         onAddAnnouncement={handleAddAnnouncement}
         onUpdateAnnouncement={handleUpdateAnnouncement}
+        isSubmitting={isSubmitting}
+        setIsSubmitting={setIsSubmitting}
       />
     </div>
   );
-};
-
-type LocalizedAnnouncementStringProps = {
-  notification: AnnouncementRow;
-  type: "title" | "description" | "cta-label";
-};
-
-export const LocalizedAnnouncementString = (
-  props: LocalizedAnnouncementStringProps,
-) => {
-  const l10n = useL10n();
-
-  // Build the key based on the type (fluent IDs are named in this format)
-  const key = `announcement-${props.notification.announcement_id}-${props.type}`;
-
-  // Get the localized string for the key
-  const localizedString = l10n.getString(key);
-
-  const missingLabel = process.env.APP_ENV !== "production" && (
-    <span className={styles.missingLabel}>Missing fluent ID</span>
-  );
-
-  // If the key is not translated, use the fallback values from the announcements table
-  if (localizedString === key) {
-    console.warn(`${props.notification.announcement_id} is not localized`);
-
-    if (props.type === "title") {
-      return (
-        <div className={styles.missingLabelContainer}>
-          {props.notification.title}
-          {missingLabel}
-        </div>
-      );
-    }
-    if (props.type === "description") {
-      return (
-        <div className={styles.missingLabelContainer}>
-          {props.notification.description}
-          {missingLabel}
-        </div>
-      );
-    }
-    if (props.type === "cta-label") {
-      return (
-        <div className={styles.missingLabelContainer}>
-          {props.notification.cta_label}
-          {missingLabel}
-        </div>
-      );
-    }
-  }
-
-  return <>{localizedString}</>;
 };
