@@ -4,6 +4,15 @@
 
 import { createLogger, transports } from "winston";
 import { LoggingWinston } from "@google-cloud/logging-winston";
+import { NodeTracerProvider } from "@opentelemetry/sdk-trace-node";
+import {
+  ConsoleLogRecordExporter,
+  LoggerProvider,
+  SimpleLogRecordProcessor,
+} from "@opentelemetry/sdk-logs";
+import { logs } from "@opentelemetry/api-logs";
+import { WinstonInstrumentation } from "@opentelemetry/instrumentation-winston";
+import { registerInstrumentations } from "@opentelemetry/instrumentation";
 
 // Explicitly not run in tests (and other non-gcpdev environments)
 /* c8 ignore next 7 */
@@ -14,6 +23,23 @@ const getLoggingWinston = () =>
       version: "0.1.0",
     },
   });
+
+const tracerProvider = new NodeTracerProvider();
+tracerProvider.register();
+
+const loggerProvider = new LoggerProvider();
+loggerProvider.addLogRecordProcessor(
+  new SimpleLogRecordProcessor(new ConsoleLogRecordExporter()),
+);
+logs.setGlobalLoggerProvider(loggerProvider);
+
+registerInstrumentations({
+  instrumentations: [
+    new WinstonInstrumentation({
+      // See below for Winston instrumentation options.
+    }),
+  ],
+});
 
 export const logger = createLogger({
   level: "info",
