@@ -8,7 +8,7 @@ import { isAdmin } from "../../../../../api/utils/auth";
 import { getAllAnnouncements } from "../../../../../../db/tables/announcements";
 import { AnnouncementsAdmin } from "./AnnouncementsAdmin";
 
-export default async function DevPage() {
+export default async function AnnouncementsAdminPage() {
   const session = await getServerSession();
 
   if (!session?.user?.email || !session.user.subscriber?.id) {
