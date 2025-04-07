@@ -7,6 +7,7 @@ import {
   OnerepProfileRow,
   SubscriberRow,
 } from "knex/types/tables";
+import { fn } from "@storybook/test";
 import { SettingsView, TabType } from "../View";
 import { Shell } from "../../../../../Shell/Shell";
 import { getL10n } from "../../../../../../../functions/l10n/storybookAndJest";
@@ -75,6 +76,15 @@ export const SettingsWrapper = (props: SettingsWrapperProps) => {
             lastScanDate={new Date(Date.UTC(2024, 6, 31))}
             isMonthlySubscriber={props.isMonthlySubscriber}
             activeTab={props.activeTab ?? "action-needed"}
+            actions={{
+              onAddEmail: fn().mockName("onAddEmail"),
+              onRemoveEmail: fn().mockName("onRemoveEmail"),
+              onDeleteAccount: fn().mockName("onDeleteAccount"),
+              onApplyCouponCode: fn().mockName("onApplyCouponCode"),
+              onCheckUserHasCurrentCouponSet: fn().mockName(
+                "onCheckUserHasCurrentCouponSet",
+              ),
+            }}
           />
         </Shell>
       </CountryCodeProvider>
