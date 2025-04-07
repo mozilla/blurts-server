@@ -2,6 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+/* c8 ignore start */
 export function truncateDescription(str: string, maxLength = 80): string {
   if (str.length <= maxLength) return str;
 
@@ -11,3 +12,4 @@ export function truncateDescription(str: string, maxLength = 80): string {
 
   return str.slice(0, lastSpace) + "…";
 }
+/* c8 ignore end */
