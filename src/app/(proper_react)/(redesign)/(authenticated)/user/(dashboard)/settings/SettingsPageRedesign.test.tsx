@@ -15,7 +15,10 @@ import SettingsEditYourInfoMeta, {
   SettingsEditYourInfoNoPlus,
   SettingsEditYourInfoWithPlus,
 } from "./stories/SettingsEditInfoUsUsers.stories";
-import { SettingsDetailsAboutYouMinDetails } from "./stories/SettingsEditProfile.stories";
+import SettingsDetailsAboutYou, {
+  SettingsDetailsAboutYouMaxDetails,
+  SettingsDetailsAboutYouMinDetails,
+} from "./stories/SettingsEditProfile.stories";
 import {
   SettingsEditYourInfo,
   SettingsEditYourInfoAdditionalMonitoredEmails,
@@ -36,7 +39,11 @@ jest.mock("#settings/actions", () => require("./actions.mock.ts"));
 jest.mock("../../../../../../hooks/locationSuggestions");
 jest.mock("../../../../../../hooks/useTelemetry");
 
-import { onAddEmail, onRemoveEmail } from "./actions.mock";
+import {
+  onAddEmail,
+  onRemoveEmail,
+  onHandleUpdateProfileData,
+} from "./actions.mock";
 import { mockedVerifiedEmailFourth } from "./stories/settingsMockData";
 
 describe("Settings page redesign", () => {
@@ -77,7 +84,6 @@ describe("Settings page redesign", () => {
       const addEmailButton = screen.getByRole("button", {
         name: "Add email address",
       });
-
       await act(async () => {
         await user.click(addEmailButton);
         const dialog = screen.getByRole("dialog", {
@@ -96,6 +102,35 @@ describe("Settings page redesign", () => {
       });
     });
 
+    it("dismisses the “add email” dialog", async () => {
+      const user = userEvent.setup();
+      const ComposedStory = composeStory(
+        SettingsEditYourInfo,
+        SettingsEditYourInfoMeta,
+      );
+      render(<ComposedStory />);
+
+      const addEmailButton = screen.getByRole("button", {
+        name: "Add email address",
+      });
+      await act(async () => {
+        await user.click(addEmailButton);
+        const dialog = screen.getByRole("dialog", {
+          name: "Add an email address",
+        });
+        expect(dialog).toBeInTheDocument();
+        const dismissButton = screen.getByRole("button", {
+          name: "Close modal",
+        });
+        await user.click(dismissButton);
+        expect(
+          screen.queryByRole("dialog", {
+            name: "Add an email address",
+          }),
+        ).not.toBeInTheDocument();
+      });
+    });
+
     it("removes an email from the list of addresses to monitor for breaches", async () => {
       const user = userEvent.setup();
       const ComposedStory = composeStory(
@@ -104,12 +139,11 @@ describe("Settings page redesign", () => {
       );
       render(<ComposedStory />);
 
-      const removeEmailButton = screen.getAllByRole("button", {
+      const removeEmailButtons = screen.getAllByRole("button", {
         name: "Remove",
       });
-
       await act(async () => {
-        await user.click(removeEmailButton[0]);
+        await user.click(removeEmailButtons[0]);
       });
 
       expect(onRemoveEmail).toHaveBeenCalled();
@@ -141,7 +175,6 @@ describe("Settings page redesign", () => {
         name: "Resend verification link",
       });
       expect(resendButton).toBeInTheDocument();
-
       await act(async () => {
         await user.click(resendButton);
       });
@@ -279,10 +312,257 @@ describe("Settings page redesign", () => {
     it("passes the axe accessibility test suite", async () => {
       const ComposedStory = composeStory(
         SettingsDetailsAboutYouMinDetails,
-        SettingsEditYourInfoMeta,
+        SettingsDetailsAboutYou,
       );
       const { container } = render(<ComposedStory />);
       expect(await axe(container)).toHaveNoViolations();
+    });
+
+    it("shows the mandatory initial profile details", () => {
+      const ComposedStory = composeStory(
+        SettingsDetailsAboutYouMinDetails,
+        SettingsDetailsAboutYou,
+      );
+      render(<ComposedStory />);
+
+      const firstNameInput = screen.getByLabelText("Legal first name*");
+      expect(firstNameInput).toHaveValue("First01");
+
+      const lastNameInput = screen.getByLabelText("Legal last name*");
+      expect(lastNameInput).toHaveValue("Last01");
+
+      const locationInput = screen.getByLabelText("City and state*");
+      expect(locationInput).toHaveValue("Tulsa, OK, USA");
+    });
+
+    it("adds an input field to the form when clicking the “add” button", async () => {
+      const user = userEvent.setup();
+      const ComposedStory = composeStory(
+        SettingsDetailsAboutYouMinDetails,
+        SettingsDetailsAboutYou,
+      );
+      render(<ComposedStory />);
+
+      const otherfirstNamesTitle = screen.queryByText("Other first names");
+      expect(otherfirstNamesTitle).not.toBeInTheDocument();
+
+      const addFirstNameButton = screen.getByRole("button", {
+        name: "Add variations, aliases, deadnames you’ve gone by",
+      });
+      await act(async () => {
+        await user.click(addFirstNameButton);
+      });
+
+      const otherirstNameInput = screen.getByLabelText("Other first name");
+      expect(otherirstNameInput).toHaveValue("");
+    });
+
+    it("links to the SUMO article for the date of birth section", () => {
+      const ComposedStory = composeStory(
+        SettingsDetailsAboutYouMinDetails,
+        SettingsDetailsAboutYou,
+      );
+      render(<ComposedStory />);
+
+      const sumoLink = screen.getByRole("link", {
+        name: "Why?",
+      });
+      expect(sumoLink).toBeInTheDocument();
+    });
+
+    it("shows the confirmation dialog when clicking the “Cancel” button", async () => {
+      const user = userEvent.setup();
+      const ComposedStory = composeStory(
+        SettingsDetailsAboutYouMinDetails,
+        SettingsDetailsAboutYou,
+      );
+      render(<ComposedStory />);
+
+      const cancelButton = screen.getByRole("button", {
+        name: "Cancel",
+      });
+      await act(async () => {
+        await user.click(cancelButton);
+      });
+
+      const confirmationDialog = screen.getByText("Save info?");
+      expect(confirmationDialog).toBeInTheDocument();
+    });
+
+    it("attempts to save the profile info from the confirmation dialog", async () => {
+      onHandleUpdateProfileData.mockImplementationOnce(() => {});
+      const user = userEvent.setup();
+      const ComposedStory = composeStory(
+        SettingsDetailsAboutYouMinDetails,
+        SettingsDetailsAboutYou,
+      );
+      render(<ComposedStory />);
+
+      const cancelButton = screen.getByRole("button", {
+        name: "Cancel",
+      });
+      await act(async () => {
+        await user.click(cancelButton);
+      });
+
+      const confirmationDialog = screen.getByText("Save info?");
+      expect(confirmationDialog).toBeInTheDocument();
+
+      const modalSaveButton = screen.getByRole("button", {
+        name: "Save",
+      });
+      await act(async () => {
+        await user.click(modalSaveButton);
+      });
+      expect(onHandleUpdateProfileData).toHaveBeenCalled();
+    });
+
+    it("links back to “Edit your info” overview the from the confirmation dialog", async () => {
+      const user = userEvent.setup();
+      const ComposedStory = composeStory(
+        SettingsDetailsAboutYouMinDetails,
+        SettingsDetailsAboutYou,
+      );
+      render(<ComposedStory />);
+
+      const cancelButton = screen.getByRole("button", {
+        name: "Cancel",
+      });
+      await act(async () => {
+        await user.click(cancelButton);
+      });
+
+      const confirmationDialog = screen.getByText("Save info?");
+      expect(confirmationDialog).toBeInTheDocument();
+
+      const modalLeaveLink = screen.getByRole("link", {
+        name: "Leave without saving",
+      });
+      expect(modalLeaveLink).toHaveAttribute(
+        "href",
+        "/users/settings/edit-info",
+      );
+    });
+
+    it("closes the confirmation dialog profile", async () => {
+      const user = userEvent.setup();
+      const ComposedStory = composeStory(
+        SettingsDetailsAboutYouMinDetails,
+        SettingsDetailsAboutYou,
+      );
+      render(<ComposedStory />);
+
+      const cancelButton = screen.getByRole("button", {
+        name: "Cancel",
+      });
+      await act(async () => {
+        await user.click(cancelButton);
+      });
+
+      const confirmationDialog = screen.getByText("Save info?");
+      expect(confirmationDialog).toBeInTheDocument();
+
+      const closeButton = screen.getByLabelText("Close modal");
+
+      await act(async () => {
+        await user.click(closeButton);
+      });
+
+      expect(screen.queryByText("Save info?")).not.toBeInTheDocument();
+    });
+
+    it("shows the disabled save form button when profile details did not change", () => {
+      const ComposedStory = composeStory(
+        SettingsDetailsAboutYouMinDetails,
+        SettingsDetailsAboutYou,
+      );
+      render(<ComposedStory />);
+
+      const saveButton = screen.getByRole("button", {
+        name: "Save",
+      });
+      expect(saveButton).toBeDisabled();
+    });
+
+    it("attempts to save the profile info form", async () => {
+      const user = userEvent.setup();
+      const ComposedStory = composeStory(
+        SettingsDetailsAboutYouMinDetails,
+        SettingsDetailsAboutYou,
+      );
+      render(<ComposedStory />);
+
+      const addFirstNameButton = screen.getByRole("button", {
+        name: "Add variations, aliases, deadnames you’ve gone by",
+      });
+      await act(async () => {
+        await user.click(addFirstNameButton);
+        const firstNameInput = screen.getByLabelText("Legal first name*");
+        await user.type(firstNameInput, "2");
+      });
+      expect(screen.getByLabelText("Legal first name*")).toHaveValue(
+        "First012",
+      );
+
+      const saveButton = screen.getByRole("button", {
+        name: "Save",
+      });
+      expect(saveButton).toBeEnabled();
+
+      await act(async () => {
+        await user.click(saveButton);
+      });
+      expect(onHandleUpdateProfileData).toHaveBeenCalled();
+    });
+
+    it("shows an indicator that the maximum number of alternate details have been added", () => {
+      const ComposedStory = composeStory(
+        SettingsDetailsAboutYouMaxDetails,
+        SettingsDetailsAboutYou,
+      );
+      render(<ComposedStory />);
+
+      const maxItemsIndicator = screen.getByText(
+        "You’ve added the maximum number of last names.",
+      );
+      expect(maxItemsIndicator).toBeInTheDocument();
+    });
+
+    it("does not show the “add” button when the max number of inputs have been added", () => {
+      const ComposedStory = composeStory(
+        SettingsDetailsAboutYouMaxDetails,
+        SettingsDetailsAboutYou,
+      );
+      render(<ComposedStory />);
+
+      const addButton = screen.queryByRole("button", {
+        name: "Add variations or last names you’ve had",
+      });
+      expect(addButton).not.toBeInTheDocument();
+    });
+
+    it("removes an input field to the form when clicking the “remove” button", async () => {
+      const user = userEvent.setup();
+      const ComposedStory = composeStory(
+        SettingsDetailsAboutYouMaxDetails,
+        SettingsDetailsAboutYou,
+      );
+      render(<ComposedStory />);
+
+      const fieldset = screen.getByRole("group", {
+        name: "Middle name",
+      });
+      expect(fieldset).toBeInTheDocument();
+      const removeButtonsBefore =
+        within(fieldset).getAllByLabelText("Remove item");
+      expect(removeButtonsBefore.length).toBe(4);
+      await act(async () => {
+        await user.click(removeButtonsBefore[1]);
+      });
+
+      const removeButtonsAfter =
+        within(fieldset).getAllByLabelText("Remove item");
+      expect(removeButtonsAfter.length).toBe(3);
     });
   });
 

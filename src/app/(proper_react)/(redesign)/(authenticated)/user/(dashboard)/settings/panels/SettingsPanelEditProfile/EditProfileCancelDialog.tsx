@@ -16,7 +16,7 @@ import { Dialog } from "../../../../../../../../components/client/dialog/Dialog"
 import CancelDialogIllustration from "../../../../../../../images/monitor-logo-minimal.svg";
 import styles from "./EditProfileCancelDialog.module.scss";
 
-function EditProfileCancelDialog() {
+function EditProfileCancelDialog(props: { onSave: () => void }) {
   const l10n = useL10n();
   const recordTelemetry = useTelemetry();
   const dialogState = useOverlayTriggerState({
@@ -78,8 +78,8 @@ function EditProfileCancelDialog() {
                       link_id: "settings_edit_profile_form_cancel_dialog_save",
                     },
                   }}
+                  onPress={props.onSave}
                   variant="primary"
-                  href="/users/settings/edit-info"
                 >
                   {l10n.getString(
                     "settings-edit-profile-info-form-save-button-label",

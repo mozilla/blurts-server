@@ -4,7 +4,7 @@
 
 "use client";
 
-import { Fragment, useActionState, useState } from "react";
+import { Fragment, useActionState, useRef, useState } from "react";
 import { OnerepProfileRow } from "knex/types/tables";
 import { EditProfileCancelDialog } from "./EditProfileCancelDialog";
 import {
@@ -45,6 +45,7 @@ function EditProfileForm(props: { profileData: OnerepProfileRow }) {
   ] = useActionState(async () => {
     await onHandleUpdateProfileData(profileFormData);
   }, null);
+  const formRef = useRef<HTMLFormElement>(null);
 
   const hasProfileDataChanged =
     JSON.stringify(props.profileData) !== JSON.stringify(profileFormData);
@@ -87,7 +88,11 @@ function EditProfileForm(props: { profileData: OnerepProfileRow }) {
   };
 
   return (
-    <form className={styles.profileForm} action={updateProfileAction}>
+    <form
+      ref={formRef}
+      className={styles.profileForm}
+      action={updateProfileAction}
+    >
       {profileFields.map((profileDataKey, detailIndex) => {
         const label = l10n.getString(
           `settings-edit-profile-info-form-fieldset-label-${profileDataKey.replaceAll("_", "-")}`,
@@ -116,7 +121,11 @@ function EditProfileForm(props: { profileData: OnerepProfileRow }) {
         );
       })}
       <div className={styles.profileFormButtons}>
-        <EditProfileCancelDialog />
+        <EditProfileCancelDialog
+          onSave={() => {
+            formRef.current?.requestSubmit();
+          }}
+        />
         <Button
           type="submit"
           variant="primary"

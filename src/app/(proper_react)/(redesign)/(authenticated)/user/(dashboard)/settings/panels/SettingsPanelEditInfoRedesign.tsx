@@ -216,7 +216,7 @@ function SettingsPanelEditInfoRedesign(
     <>
       <div className={styles.header}>
         <div>
-          <h3>{l10n.getString("settings-tab-label-edit-scan-info")}</h3>
+          <h3>{l10n.getString("settings-tab-label-edit-profile")}</h3>
           {props.profileData && (
             <p>
               {l10n.getFragment("settings-update-scan-info-description", {
