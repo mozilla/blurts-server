@@ -20,11 +20,15 @@ import { Button } from "../../../../../../components/client/Button";
 import { useL10n } from "../../../../../../hooks/l10n";
 import { ModalOverlay } from "../../../../../../components/client/dialog/ModalOverlay";
 import { Dialog } from "../../../../../../components/client/dialog/Dialog";
-import { onAddEmail } from "./actions";
+import { type onAddEmail } from "./actions";
 import { CONST_MAX_NUM_ADDRESSES } from "../../../../../../../constants";
 import { useTelemetry } from "../../../../../../hooks/useTelemetry";
 
-export const EmailAddressAdder = () => {
+export type Props = {
+  onAddEmail: typeof onAddEmail;
+};
+
+export const EmailAddressAdder = (props: Props) => {
   const l10n = useL10n();
   const recordTelemetry = useTelemetry();
   const dialogState = useOverlayTriggerState({
@@ -73,7 +77,7 @@ export const EmailAddressAdder = () => {
             onDismiss={() => dialogState.close()}
           >
             <div className={styles.dialogContents}>
-              <EmailAddressAddForm />
+              <EmailAddressAddForm {...props} />
             </div>
           </Dialog>
         </ModalOverlay>
@@ -86,11 +90,14 @@ export const EmailAddressAdder = () => {
 // `useFormState`. See the comment for the test
 // "calls the 'add' action when adding another email address":
 /* c8 ignore start */
-const EmailAddressAddForm = () => {
+const EmailAddressAddForm = (props: Props) => {
   const l10n = useL10n();
   const recordTelemetry = useTelemetry();
   const formRef = useRef<HTMLFormElement>(null);
-  const [onAddEmailState, onAddEmailAction] = useActionState(onAddEmail, {});
+  const [onAddEmailState, onAddEmailAction] = useActionState(
+    props.onAddEmail,
+    {},
+  );
   const [hasPressedButton, setHasPressedButton] = useState(false);
   const [email, setEmail] = useState("");
 

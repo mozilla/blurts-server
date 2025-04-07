@@ -98,6 +98,7 @@ function SettingsContent(props: SettingsProps) {
           isMonthlySubscriber={props.isMonthlySubscriber}
           subscriber={props.subscriber}
           user={props.user}
+          actions={props.actions}
         />
       </div>
     </main>
