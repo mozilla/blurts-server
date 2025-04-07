@@ -4,13 +4,16 @@
 
 import jwt from "jsonwebtoken";
 import { redisClient, REDIS_JWT_KEY_PREFIX } from "../../../db/redis/client";
-import { getSubscriberByFxaUid } from "../../../db/tables/subscribers";
 import { isAdmin } from "../../api/utils/auth";
 import { logger } from "./logging";
 const rClient = redisClient();
 
-export async function getMoscaryJWT(fxaUid: string) {
+// We'll need a key ID to identify the key used for signing
+const KEY_ID = process.env.MOSCARY_JWT_KEY_ID || "moscary-jwt-key";
+
+export async function getMoscaryJWT(fxaUid: string, email: string) {
   const REDIS_KEY = `${REDIS_JWT_KEY_PREFIX}${fxaUid}`;
+
   // if token is already exists in redis, return it
   let token = await rClient.get(REDIS_KEY);
   if (token) {
@@ -18,35 +21,32 @@ export async function getMoscaryJWT(fxaUid: string) {
     return token;
   }
   // otherwise, generate new token
-  if (!process.env.MOSCARY_JWT_SECRET) {
+  // Use private key for signing instead of a secret
+  const privateKey = process.env.MOSCARY_JWT_PRIVATE_KEY;
+  if (!privateKey) {
     logger.error("generate_new_moscary_jwt_error", {
-      message: "MOSCARY_JWT_SECRET is not set",
-    });
-    return;
-  }
-  const subscriber = await getSubscriberByFxaUid(fxaUid);
-  if (!subscriber) {
-    logger.error("generate_new_moscary_jwt_error", {
-      message: "Subscriber not found",
-      fxaUid,
+      message: "MOSCARY_JWT_PRIVATE_KEY is not set",
     });
     return;
   }
   token = jwt.sign(
     {
-      sub: subscriber.fxa_uid,
-      email: subscriber.primary_email,
-      isAdmin: isAdmin(subscriber.primary_email),
+      sub: fxaUid,
+      email: email,
+      isAdmin: isAdmin(email),
     },
-    process.env.MOSCARY_JWT_SECRET,
+    privateKey, // Use the private key here
     {
       expiresIn: "1h",
-      algorithm: "HS256",
+      algorithm: "RS256", // Use RS256 algorithm
       issuer: process.env.SERVER_URL,
       audience: process.env.MOSCARY_URL || "",
+      keyid: KEY_ID, // Include the key ID in the header
     },
   );
-  await rClient.set(REDIS_KEY, token);
+  // Store the token with a TTL matching its expiration
+  // We'll parse '1h' to 3600 seconds for Redis TTL
+  await rClient.set(REDIS_KEY, token, "EX", 3600);
   logger.info("generate_new_moscary_jwt_success");
   return token;
 }

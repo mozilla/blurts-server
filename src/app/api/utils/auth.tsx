@@ -256,9 +256,10 @@ export const authOptions: AuthOptions = {
       }
       if (token.subscriber) {
         session.user.subscriber = token.subscriber;
-        if (token.subscriber.fxa_uid) {
+        if (token.subscriber.fxa_uid && token.subscriber.primary_email) {
           session.user.moscaryJWT = await getMoscaryJWT(
             token.subscriber.fxa_uid,
+            token.subscriber.primary_email,
           );
         }
         // refresh token
