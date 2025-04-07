@@ -66,15 +66,15 @@ export default async function Layout({ children }: { children: ReactNode }) {
   return (
     <L10nProvider bundleSources={l10nBundles}>
       <ReactAriaI18nProvider locale={getLocale(l10nBundles)}>
-        <CookiesProvider>
-          <CountryCodeProvider countryCode={countryCode}>
+        <CountryCodeProvider countryCode={countryCode}>
+          <CookiesProvider>
             {enabledFlags.includes("PromptNoneAuthFlow") && !session && (
               <PromptNoneAuth />
             )}
             {children}
             <PageLoadEvent />
-          </CountryCodeProvider>
-        </CookiesProvider>
+          </CookiesProvider>
+        </CountryCodeProvider>
       </ReactAriaI18nProvider>
     </L10nProvider>
   );

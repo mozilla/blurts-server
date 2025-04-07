@@ -14,13 +14,11 @@ const l10nBundles = getL10nBundles();
 export const TestComponentWrapper = (props: { children: ReactNode }) => {
   return (
     <L10nProvider bundleSources={l10nBundles}>
-      <CookiesProvider>
-        <SessionProvider session={null}>
-          <ReactAriaI18nProvider locale="en">
-            {props.children}
-          </ReactAriaI18nProvider>
-        </SessionProvider>
-      </CookiesProvider>
+      <SessionProvider session={null}>
+        <ReactAriaI18nProvider locale="en">
+          <CookiesProvider>{props.children}</CookiesProvider>
+        </ReactAriaI18nProvider>
+      </SessionProvider>
     </L10nProvider>
   );
 };
