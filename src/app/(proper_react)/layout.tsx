@@ -19,7 +19,7 @@ import { getEnabledFeatureFlags } from "../../db/tables/featureFlags";
 import { PromptNoneAuth } from "../components/client/PromptNoneAuth";
 import { addClientIdForSubscriber } from "../../db/tables/google_analytics_clients";
 import { logger } from "../functions/server/logging";
-import CookiesProvider from "../../contextProviders/cookies";
+import { CookiesProvider } from "../../contextProviders/cookies";
 
 export default async function Layout({ children }: { children: ReactNode }) {
   const l10nBundles = getL10nBundles(
