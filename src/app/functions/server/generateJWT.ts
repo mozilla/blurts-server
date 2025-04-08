@@ -10,6 +10,7 @@ const rClient = redisClient();
 
 // We'll need a key ID to identify the key used for signing
 const KEY_ID = process.env.MOSCARY_JWT_KEY_ID || "moscary-jwt-key";
+const EXPIRATION_TIME = 3600;
 
 export async function getMoscaryJWT(fxaUid: string, email: string) {
   const REDIS_KEY = `${REDIS_JWT_KEY_PREFIX}${fxaUid}`;
@@ -37,7 +38,7 @@ export async function getMoscaryJWT(fxaUid: string, email: string) {
     },
     privateKey, // Use the private key here
     {
-      expiresIn: "1h",
+      expiresIn: EXPIRATION_TIME,
       algorithm: "RS256", // Use RS256 algorithm
       issuer: process.env.SERVER_URL,
       audience: process.env.MOSCARY_URL || "",
@@ -45,8 +46,8 @@ export async function getMoscaryJWT(fxaUid: string, email: string) {
     },
   );
   // Store the token with a TTL matching its expiration
-  // We'll parse '1h' to 3600 seconds for Redis TTL
-  await rClient.set(REDIS_KEY, token, "EX", 3600);
+  // We'll parse '1h' to EXPIRATION_TIME seconds for Redis TTL
+  await rClient.set(REDIS_KEY, token, "EX", EXPIRATION_TIME);
   logger.info("generate_new_moscary_jwt_success");
   return token;
 }
