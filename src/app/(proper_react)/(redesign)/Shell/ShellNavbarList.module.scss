@@ -1,0 +1,58 @@
+@use "../../../tokens";
+
+.navbarList {
+  border-bottom: 1px solid tokens.$color-grey-10;
+  display: flex;
+  flex-direction: column;
+  gap: tokens.$spacing-xs;
+  list-style-type: none;
+  padding: tokens.$spacing-sm tokens.$spacing-md;
+
+  @media screen and (min-width: tokens.$screen-xl) {
+    border: none;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: tokens.$spacing-xs;
+  }
+
+  hr {
+    border: none;
+    background-color: tokens.$color-grey-10;
+    display: block;
+    height: 1px;
+    margin: tokens.$spacing-sm 0;
+    width: 100%;
+  }
+
+  strong {
+    color: tokens.$color-grey-40;
+    font-weight: 600;
+  }
+
+  a {
+    border-radius: calc(tokens.$border-radius-xs + tokens.$border-radius-sm);
+    color: tokens.$color-black;
+    display: flex;
+    font-weight: 600;
+    gap: tokens.$spacing-md;
+    padding: tokens.$spacing-sm tokens.$spacing-md tokens.$spacing-sm
+      tokens.$spacing-sm;
+    text-decoration: none;
+
+    &.isActive {
+      background-color: tokens.$color-grey-10;
+    }
+
+    &:hover {
+      background-color: tokens.$color-purple-05;
+      color: tokens.$color-purple-70;
+    }
+
+    &:focus {
+      outline: tokens.$border-focus-width solid tokens.$color-purple-10;
+    }
+  }
+}

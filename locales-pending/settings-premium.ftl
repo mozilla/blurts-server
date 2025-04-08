@@ -11,7 +11,7 @@ settings-cancel-plus-link-label = Cancel from your { -brand-mozilla-account }
 ## Sidebar navigation
 
 # Label for a navigation bar link to settings for updating the users scan profile info – “update” is used as a verb.
-settings-tab-label-edit-profile = Update scan info
+settings-tab-label-update-scan-info = Update scan info
 
 ## Cancel Plus subscription - flow with a cancellation survey
 

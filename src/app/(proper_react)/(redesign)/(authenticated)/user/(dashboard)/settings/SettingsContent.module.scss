@@ -1,6 +1,7 @@
 @use "../../../../../../tokens";
 
 .main {
+  align-items: center;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -41,6 +42,7 @@
   flex-direction: column;
   flex: 1 0 0;
   gap: tokens.$spacing-lg;
+  max-width: 800px;
 
   &.isCard {
     border-radius: tokens.$border-radius-lg;

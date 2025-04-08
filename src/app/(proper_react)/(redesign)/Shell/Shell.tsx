@@ -29,6 +29,7 @@ export type Props = {
   countryCode: string;
   enabledFeatureFlags: FeatureFlagName[];
   experimentData: ExperimentData["Features"];
+  hideSidebar?: boolean;
 };
 
 export const Shell = (props: Props) => {
@@ -60,6 +61,8 @@ export const Shell = (props: Props) => {
           enabledFeatureFlags={props.enabledFeatureFlags}
           experimentData={props.experimentData}
           l10n={props.l10n}
+          announcements={null}
+          hideSidebar={props.hideSidebar}
         >
           <div className={styles.page}>{props.children}</div>
         </ShellRedesign>

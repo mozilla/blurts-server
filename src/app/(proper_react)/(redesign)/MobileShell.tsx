@@ -23,7 +23,7 @@ import { SignInButton } from "../../components/client/SignInButton";
 import { TopNavBar } from "./(public)/TopNavBar";
 import { TopNavBar as RedesignedTopNavBar } from "./(public)/LandingViewRedesign/components/TopNavBar";
 import { ExperimentData } from "../../../telemetry/generated/nimbus/experiments";
-import { NavbarList as NavbarListAuthenticated } from "./Shell/ShellRedesign";
+import { NavbarList as NavbarListAuthenticated } from "./Shell/ShellNavbarList";
 
 export type Props = {
   countryCode: string;
@@ -44,13 +44,13 @@ export const MobileShell = (props: Props) => {
   const l10n = useL10n();
   const [isExpanded, setIsExpanded] = useState(false);
   const recordTelemetry = useTelemetry();
-  const pathName = usePathname();
+  const pathname = usePathname();
   const wrapperRef = useRef<HTMLDivElement>(null);
-  const isOnDashboard = pathName === "/user/dashboard";
+  const isOnDashboard = pathname === "/user/dashboard";
 
   useEffect(() => {
     setIsExpanded(false);
-  }, [pathName]);
+  }, [pathname]);
 
   useEffect(() => {
     // As we transition focus away from the navigation bar in deeper sections
@@ -130,7 +130,6 @@ export const MobileShell = (props: Props) => {
           props.enabledFeatureFlags.includes("SidebarNavigationRedesign") ? (
             <div className={styles.navbarListWrapper}>
               <NavbarListAuthenticated
-                l10n={l10n}
                 countryCode={props.countryCode}
                 enabledFeatureFlags={props.enabledFeatureFlags}
               />
@@ -189,7 +188,9 @@ export const MobileShell = (props: Props) => {
                         {l10n.getString("main-nav-link-settings-label")}
                       </PageLink>
                       <ul className={styles.subMenu}>
-                        {CONST_SETTINGS_TAB_SLUGS.map((submenuKey) => {
+                        {CONST_SETTINGS_TAB_SLUGS.filter(
+                          (submenuKey) => submenuKey !== "edit-profile",
+                        ).map((submenuKey) => {
                           return (
                             <li key={submenuKey}>
                               <PageLink

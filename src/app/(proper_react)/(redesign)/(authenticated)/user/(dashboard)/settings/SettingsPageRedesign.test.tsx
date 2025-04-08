@@ -383,6 +383,19 @@ describe("Settings page redesign", () => {
       expect(mockedRouterPush).toHaveBeenCalledWith("/user/settings/edit-info");
     });
 
+    it("does not show the navigation sidebar", async () => {
+      const ComposedStory = composeStory(
+        SettingsDetailsAboutYouMinDetails,
+        SettingsDetailsAboutYou,
+      );
+      render(<ComposedStory />);
+
+      const tabListItem = screen.queryByRole("tab", {
+        name: "Edit your info",
+      });
+      expect(tabListItem).not.toBeInTheDocument();
+    });
+
     it("shows the initial mandatory profile details", () => {
       const ComposedStory = composeStory(
         SettingsDetailsAboutYouMinDetails,
