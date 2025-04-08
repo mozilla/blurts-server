@@ -6,7 +6,12 @@
   flex-direction: column;
   flex-wrap: wrap;
   gap: tokens.$spacing-lg;
+  justify-content: center;
   padding: tokens.$layout-2xs;
+
+  @media screen and (min-width: tokens.$screen-xl) {
+    justify-content: flex-start;
+  }
 
   @media screen and (min-width: tokens.$screen-lg) {
     flex-direction: row;
