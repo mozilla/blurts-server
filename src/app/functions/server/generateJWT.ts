@@ -10,7 +10,7 @@ const rClient = redisClient();
 
 // We'll need a key ID to identify the key used for signing
 const KEY_ID = process.env.MOSCARY_JWT_KEY_ID || "moscary-jwt-key";
-const EXPIRATION_TIME = 3600;
+export const EXPIRATION_TIME = 3600;
 
 export async function getMoscaryJWT(
   fxaUid: string,

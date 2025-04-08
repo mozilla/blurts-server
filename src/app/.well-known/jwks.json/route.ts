@@ -5,6 +5,7 @@
 import { NextResponse } from "next/server";
 import crypto from "crypto";
 import { logger } from "../../functions/server/logging";
+import { EXPIRATION_TIME } from "../../functions/server/generateJWT";
 
 type Jwk = crypto.JsonWebKey & {
   kid: string;
@@ -35,15 +36,16 @@ function pemToJwk(pem: string, kid: string): Jwk | null {
 }
 
 export async function GET() {
+  const headers = {
+    "Content-Type": "application/json",
+    // Cache for 1 hour, matching JWT expiration (or longer if key rotation is infrequent)
+    "Cache-Control": `public, max-age=${EXPIRATION_TIME}, must-revalidate`,
+  };
   // Return cached JWK if available
   if (cachedJwk) {
     const jwks = { keys: [cachedJwk] };
     return NextResponse.json(jwks, {
-      headers: {
-        "Content-Type": "application/json",
-        // Cache for 1 hour, matching JWT expiration (or longer if key rotation is infrequent)
-        "Cache-Control": "public, max-age=3600, must-revalidate",
-      },
+      headers,
     });
   }
 
@@ -77,10 +79,6 @@ export async function GET() {
   };
 
   return NextResponse.json(jwks, {
-    headers: {
-      "Content-Type": "application/json",
-      // Cache for 1 hour, matching JWT expiration
-      "Cache-Control": "public, max-age=3600, must-revalidate",
-    },
+    headers,
   });
 }
