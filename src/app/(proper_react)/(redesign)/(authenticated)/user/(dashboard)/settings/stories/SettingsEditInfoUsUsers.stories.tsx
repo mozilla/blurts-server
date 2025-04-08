@@ -47,3 +47,17 @@ export const SettingsEditYourInfoWithPlus: Story = {
     hasPlus: true,
   },
 };
+
+export const SettingsEditYourInfoDetailsSaved: Story = {
+  name: "Profile details saved",
+  args: {
+    countryCode: "us",
+    activeTab: "edit-info",
+    enabledFeatureFlags: [
+      "SidebarNavigationRedesign",
+      "EditScanProfileDetails",
+    ],
+    profileData: mockedProfileDataMin,
+    hasPlus: true,
+  },
+};

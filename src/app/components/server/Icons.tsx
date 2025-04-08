@@ -689,6 +689,33 @@ export const CheckIcon = (props: SVGProps<SVGSVGElement> & { alt: string }) => {
   );
 };
 
+// Keywords: completed, tick, circle, circled
+export const CheckCircledIcon = (
+  props: SVGProps<SVGSVGElement> & { alt: string },
+) => {
+  return (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      role="img"
+      aria-label={props.alt}
+      aria-hidden={props.alt === ""}
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+      className={`${props.className ?? ""} ${styles.colorifyFill}`}
+    >
+      <title>{props.alt}</title>
+      <path d="M17.2803 9.78033C17.5732 9.48744 17.5732 9.01256 17.2803 8.71967C16.9874 8.42678 16.5126 8.42678 16.2197 8.71967L10.25 14.6893L7.78033 12.2197C7.48744 11.9268 7.01256 11.9268 6.71967 12.2197C6.42678 12.5126 6.42678 12.9874 6.71967 13.2803L9.71967 16.2803C10.0126 16.5732 10.4874 16.5732 10.7803 16.2803L17.2803 9.78033Z" />
+      <path
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M12 1.5C5.92487 1.5 1 6.42487 1 12.5C1 18.5751 5.92487 23.5 12 23.5C18.0751 23.5 23 18.5751 23 12.5C23 6.42487 18.0751 1.5 12 1.5ZM2.5 12.5C2.5 7.25329 6.75329 3 12 3C17.2467 3 21.5 7.25329 21.5 12.5C21.5 17.7467 17.2467 22 12 22C6.75329 22 2.5 17.7467 2.5 12.5Z"
+      />
+    </svg>
+  );
+};
+
 // Keywords: person, profile, face, head
 export const AvatarIcon = (
   props: SVGProps<SVGSVGElement> & { alt: string },

@@ -1,0 +1,16 @@
+@use "../../../../../../../tokens";
+
+.banner {
+  align-items: center;
+  background: tokens.$color-green-20;
+  border-radius: tokens.$border-radius-lg;
+  gap: tokens.$spacing-md;
+  padding: calc(tokens.$spacing-sm + tokens.$spacing-xs) tokens.$spacing-md;
+  display: flex;
+  width: 100%;
+}
+
+.closeButton {
+  align-self: flex-start;
+  margin-left: auto;
+}
