@@ -25,9 +25,11 @@ import {
   SettingsEditYourInfoMaxMonitoredEmails,
 } from "./stories/SettingsEditInfoNonUsUsers.stories";
 
+const mockedRouterPush = jest.fn();
+
 jest.mock("next/navigation", () => ({
   useRouter: () => ({
-    push: jest.fn(),
+    push: mockedRouterPush,
   }),
   usePathname: jest.fn(),
   useSearchParams: () => ({
@@ -44,7 +46,10 @@ import {
   onRemoveEmail,
   onHandleUpdateProfileData,
 } from "./actions.mock";
-import { mockedVerifiedEmailFourth } from "./stories/settingsMockData";
+import {
+  mockedProfileDataMin,
+  mockedVerifiedEmailFourth,
+} from "./stories/settingsMockData";
 
 describe("Settings page redesign", () => {
   describe("Edit your info (non-US users)", () => {
@@ -279,6 +284,19 @@ describe("Settings page redesign", () => {
       expect(profileDetailsHeader).toBeInTheDocument();
     });
 
+    it("shows the name field", () => {
+      const ComposedStory = composeStory(
+        SettingsEditYourInfoWithPlus,
+        SettingsEditYourInfoMeta,
+      );
+      render(<ComposedStory />);
+
+      const nameField = screen.getByText(
+        `${mockedProfileDataMin.first_name} ${mockedProfileDataMin.last_name}`,
+      );
+      expect(nameField).toBeInTheDocument();
+    });
+
     it("shows the “Add details” button", () => {
       const ComposedStory = composeStory(
         SettingsEditYourInfoWithPlus,
@@ -318,7 +336,17 @@ describe("Settings page redesign", () => {
       expect(await axe(container)).toHaveNoViolations();
     });
 
-    it("shows the mandatory initial profile details", () => {
+    it("does not show for users without Plus subscription", async () => {
+      const ComposedStory = composeStory(
+        SettingsDetailsAboutYouMinDetails,
+        SettingsDetailsAboutYou,
+      );
+      render(<ComposedStory hasPlus={false} />);
+
+      expect(mockedRouterPush).toHaveBeenCalledWith("/user/settings/edit-info");
+    });
+
+    it("shows the initial mandatory profile details", () => {
       const ComposedStory = composeStory(
         SettingsDetailsAboutYouMinDetails,
         SettingsDetailsAboutYou,
@@ -331,11 +359,32 @@ describe("Settings page redesign", () => {
       const lastNameInput = screen.getByLabelText("Legal last name*");
       expect(lastNameInput).toHaveValue("Last01");
 
+      const dobInput = screen.getByText(
+        mockedProfileDataMin.date_of_birth.toLocaleDateString("en", {
+          dateStyle: "short",
+          timeZone: "UTC",
+        }),
+      );
+      expect(dobInput).toBeInTheDocument();
+
       const locationInput = screen.getByLabelText("City and state*");
       expect(locationInput).toHaveValue("Tulsa, OK, USA");
     });
 
-    it("adds an input field to the form when clicking the “add” button", async () => {
+    it.each([
+      {
+        label: "Legal first name*",
+        value: "Last-updated",
+      },
+      {
+        label: "Legal last name*",
+        value: "Last-updated",
+      },
+      {
+        label: "City and state*",
+        value: "Tulsa, OK, USA",
+      },
+    ])("updates the primary mandatory field: %s", async (input) => {
       const user = userEvent.setup();
       const ComposedStory = composeStory(
         SettingsDetailsAboutYouMinDetails,
@@ -343,18 +392,178 @@ describe("Settings page redesign", () => {
       );
       render(<ComposedStory />);
 
-      const otherfirstNamesTitle = screen.queryByText("Other first names");
-      expect(otherfirstNamesTitle).not.toBeInTheDocument();
+      const inputField = screen.getByLabelText(input.label);
+      await act(async () => {
+        await user.clear(inputField);
+        await user.type(inputField, input.value);
+      });
+      expect(inputField).toHaveValue(input.value);
+    });
 
-      const addFirstNameButton = screen.getByRole("button", {
-        name: "Add variations, aliases, deadnames you’ve gone by",
+    it.each([
+      {
+        label: "Middle name",
+        value: "Middle01",
+      },
+      {
+        label: "Primary number",
+        value: "(555)555-1234",
+      },
+    ])("fills the primary optional field: %s", async (input) => {
+      const user = userEvent.setup();
+      const ComposedStory = composeStory(
+        SettingsDetailsAboutYouMinDetails,
+        SettingsDetailsAboutYou,
+      );
+      render(<ComposedStory />);
+
+      const inputField = screen.getByLabelText(input.label);
+      await act(async () => {
+        await user.type(inputField, input.value);
+      });
+      expect(inputField).toHaveValue(input.value);
+    });
+
+    it.each([
+      {
+        input: {
+          label: "Other first name",
+          value: "First02",
+        },
+        addButtonLabel: "Add variations, aliases, deadnames you’ve gone by",
+      },
+      {
+        input: {
+          label: "Other middle name",
+          value: "Middle02",
+        },
+        addButtonLabel: "Add variations or more middle names",
+      },
+      {
+        input: {
+          label: "Other last name",
+          value: "Last02",
+        },
+        addButtonLabel: "Add variations or last names you’ve had",
+      },
+      {
+        input: {
+          label: "Other phone number",
+          value: "Phone02",
+        },
+        addButtonLabel: "Add more numbers",
+      },
+      {
+        input: {
+          label: "Past location",
+          value: "Tulsa, OK, USA",
+        },
+        addButtonLabel: "Add past US locations",
+      },
+    ])("adds the alternate field: %s", async (item) => {
+      const user = userEvent.setup();
+      const ComposedStory = composeStory(
+        SettingsDetailsAboutYouMinDetails,
+        SettingsDetailsAboutYou,
+      );
+      render(<ComposedStory />);
+
+      const addButton = screen.getByRole("button", {
+        name: item.addButtonLabel,
       });
       await act(async () => {
-        await user.click(addFirstNameButton);
+        await user.click(addButton);
       });
 
-      const otherirstNameInput = screen.getByLabelText("Other first name");
-      expect(otherirstNameInput).toHaveValue("");
+      const input = screen.getByLabelText(item.input.label);
+      await act(async () => {
+        await user.clear(input);
+        await user.type(input, item.input.value);
+      });
+      expect(input).toHaveValue(item.input.value);
+    });
+
+    it.each([
+      {
+        fieldsetLabel: "First name",
+        itemLimit: 4,
+      },
+      {
+        fieldsetLabel: "Middle name",
+        itemLimit: 4,
+      },
+      {
+        fieldsetLabel: "Last name",
+        itemLimit: 4,
+      },
+      {
+        fieldsetLabel: "Phone numbers",
+        itemLimit: 9,
+      },
+      {
+        fieldsetLabel: "US locations",
+        itemLimit: 9,
+      },
+    ])("removes the alternate field: %s", async (item) => {
+      const user = userEvent.setup();
+      const ComposedStory = composeStory(
+        SettingsDetailsAboutYouMaxDetails,
+        SettingsDetailsAboutYou,
+      );
+      render(<ComposedStory />);
+
+      const fieldset = screen.getByRole("group", {
+        name: item.fieldsetLabel,
+      });
+      expect(fieldset).toBeInTheDocument();
+      const removeButtonsBefore =
+        within(fieldset).getAllByLabelText("Remove item");
+      expect(removeButtonsBefore.length).toBe(item.itemLimit);
+      await act(async () => {
+        await user.click(removeButtonsBefore[1]);
+      });
+
+      const removeButtonsAfter =
+        within(fieldset).getAllByLabelText("Remove item");
+      expect(removeButtonsAfter.length).toBe(item.itemLimit - 1);
+    });
+
+    it("updates the primary location using keyboard navigation", async () => {
+      const user = userEvent.setup();
+      const ComposedStory = composeStory(
+        SettingsDetailsAboutYouMinDetails,
+        SettingsDetailsAboutYou,
+      );
+      render(<ComposedStory />);
+
+      const input = screen.getByLabelText("City and state*");
+      await act(async () => {
+        await user.clear(input);
+        await user.keyboard("[Tab]Tu[ArrowDown][Enter][Tab]");
+      });
+      expect(input).toHaveValue("Tulsa, OK, USA");
+    });
+
+    it("adds an alternate location using keyboard navigation", async () => {
+      const user = userEvent.setup();
+      const ComposedStory = composeStory(
+        SettingsDetailsAboutYouMinDetails,
+        SettingsDetailsAboutYou,
+      );
+      render(<ComposedStory />);
+
+      const addLocationButton = screen.getByRole("button", {
+        name: "Add past US locations",
+      });
+      await act(async () => {
+        await user.click(addLocationButton);
+      });
+
+      const input = screen.getByLabelText("Past location");
+      await act(async () => {
+        await user.keyboard("[Tab]Tu[ArrowDown][Enter][Tab]");
+      });
+      expect(input).toHaveValue("Tulsa, OK, USA");
     });
 
     it("links to the SUMO article for the date of birth section", () => {
@@ -440,11 +649,11 @@ describe("Settings page redesign", () => {
       });
       expect(modalLeaveLink).toHaveAttribute(
         "href",
-        "/users/settings/edit-info",
+        "/user/settings/edit-info",
       );
     });
 
-    it("closes the confirmation dialog profile", async () => {
+    it("dismisses the confirmation dialog profile", async () => {
       const user = userEvent.setup();
       const ComposedStory = composeStory(
         SettingsDetailsAboutYouMinDetails,
@@ -471,7 +680,7 @@ describe("Settings page redesign", () => {
       expect(screen.queryByText("Save info?")).not.toBeInTheDocument();
     });
 
-    it("shows the disabled save form button when profile details did not change", () => {
+    it("shows the disabled “save” button when profile details did not change", () => {
       const ComposedStory = composeStory(
         SettingsDetailsAboutYouMinDetails,
         SettingsDetailsAboutYou,
@@ -484,7 +693,7 @@ describe("Settings page redesign", () => {
       expect(saveButton).toBeDisabled();
     });
 
-    it("attempts to save the profile info form", async () => {
+    it("attempts to save the updated profile details form", async () => {
       const user = userEvent.setup();
       const ComposedStory = composeStory(
         SettingsDetailsAboutYouMinDetails,
@@ -499,10 +708,8 @@ describe("Settings page redesign", () => {
         await user.click(addFirstNameButton);
         const firstNameInput = screen.getByLabelText("Legal first name*");
         await user.type(firstNameInput, "2");
+        expect(firstNameInput).toHaveValue("First012");
       });
-      expect(screen.getByLabelText("Legal first name*")).toHaveValue(
-        "First012",
-      );
 
       const saveButton = screen.getByRole("button", {
         name: "Save",
@@ -539,30 +746,6 @@ describe("Settings page redesign", () => {
         name: "Add variations or last names you’ve had",
       });
       expect(addButton).not.toBeInTheDocument();
-    });
-
-    it("removes an input field to the form when clicking the “remove” button", async () => {
-      const user = userEvent.setup();
-      const ComposedStory = composeStory(
-        SettingsDetailsAboutYouMaxDetails,
-        SettingsDetailsAboutYou,
-      );
-      render(<ComposedStory />);
-
-      const fieldset = screen.getByRole("group", {
-        name: "Middle name",
-      });
-      expect(fieldset).toBeInTheDocument();
-      const removeButtonsBefore =
-        within(fieldset).getAllByLabelText("Remove item");
-      expect(removeButtonsBefore.length).toBe(4);
-      await act(async () => {
-        await user.click(removeButtonsBefore[1]);
-      });
-
-      const removeButtonsAfter =
-        within(fieldset).getAllByLabelText("Remove item");
-      expect(removeButtonsAfter.length).toBe(3);
     });
   });
 

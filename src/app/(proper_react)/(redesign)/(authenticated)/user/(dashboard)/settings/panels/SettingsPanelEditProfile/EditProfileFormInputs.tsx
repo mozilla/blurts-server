@@ -136,7 +136,8 @@ function EditProfileFormInputs(props: {
           {secondaryNameData.length > 0 && (
             <div className={styles.secondaryInputs}>
               {secondaryNameData.map((item, itemIndex) => {
-                const inputKey = `${props.profileDataKey}s-${itemIndex}`;
+                const fieldType = `${props.profileDataKey}s`;
+                const inputKey = `${fieldType}-${itemIndex}`;
                 return (
                   <Fragment key={inputKey}>
                     {itemIndex === 0 && (
@@ -148,13 +149,13 @@ function EditProfileFormInputs(props: {
                     )}
                     <div className={styles.inputWrapper}>
                       <InputField
-                        onChange={(value) =>
+                        onChange={(value) => {
                           props.handleOnInputChange({
-                            key: props.profileDataKey as ProfileDataListKey,
+                            key: fieldType as ProfileDataListKey,
                             value,
                             index: itemIndex,
-                          })
-                        }
+                          });
+                        }}
                         name={inputKey}
                         value={item}
                         label={l10n.getString(
@@ -275,15 +276,9 @@ function EditProfileFormInputs(props: {
                         }
                         name={inputKey}
                         value={item}
-                        label={
-                          itemIndex === 0
-                            ? l10n.getString(
-                                `settings-edit-profile-info-form-input-label-primary-phone-number`,
-                              )
-                            : l10n.getString(
-                                `settings-edit-profile-info-form-input-label-other-phone-number`,
-                              )
-                        }
+                        label={l10n.getString(
+                          "settings-edit-profile-info-form-input-label-other-phone-number",
+                        )}
                         errorMessage={l10n.getString(
                           "settings-edit-profile-info-form-input-error-phone-number",
                         )}
@@ -426,8 +421,6 @@ function EditProfileFormInputs(props: {
           )}
         </>
       );
-    default:
-      return null;
   }
 }
 

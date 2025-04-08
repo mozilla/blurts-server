@@ -95,7 +95,7 @@ function EditProfileCancelDialog(props: { onSave: () => void }) {
                     },
                   }}
                   variant="secondary"
-                  href="/users/settings/edit-info"
+                  href="/user/settings/edit-info"
                 >
                   {l10n.getString(
                     "settings-edit-profile-info-form-cancel-dialog-confimation-button-label",
