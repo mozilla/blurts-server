@@ -6,6 +6,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { OnerepScanRow } from "knex/types/tables";
 import { WelcomeToPlusView } from "./WelcomeToPlusView";
 import {
+  createRandomAnnouncement,
   createRandomBreach,
   createRandomScanResult,
   createUserWithPremiumSubscription,
@@ -14,6 +15,7 @@ import { Shell } from "../../../../../../../Shell/Shell";
 import { getL10n } from "../../../../../../../../../functions/l10n/storybookAndJest";
 import { LatestOnerepScanData } from "../../../../../../../../../../db/tables/onerep_scans";
 import { defaultExperimentData } from "../../../../../../../../../../telemetry/generated/nimbus/experiments";
+import { UserAnnouncementWithDetails } from "../../../../../../../../../../db/tables/user_announcements";
 
 const mockedScan: OnerepScanRow = {
   created_at: new Date(1998, 2, 31),
@@ -57,6 +59,12 @@ const mockedSession = {
   user: user,
 };
 
+const mockedAnnouncements: UserAnnouncementWithDetails[] = [
+  createRandomAnnouncement({ audience: "premium_users" }),
+  createRandomAnnouncement({ audience: "premium_users" }),
+  createRandomAnnouncement({ audience: "premium_users" }),
+];
+
 const WelcomeToPlusViewWrapper = (props: { brokerScanCount: number }) => {
   return (
     <Shell
@@ -66,6 +74,7 @@ const WelcomeToPlusViewWrapper = (props: { brokerScanCount: number }) => {
       countryCode="us"
       enabledFeatureFlags={[]}
       experimentData={defaultExperimentData["Features"]}
+      announcements={mockedAnnouncements}
     >
       <WelcomeToPlusView
         data={{

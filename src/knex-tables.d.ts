@@ -413,6 +413,15 @@ declare module "knex/types/tables" {
     "id" | "created_at" | "modified_at"
   >;
 
+  type AudienceRow =
+    | "all_users"
+    | "premium_users"
+    | "free_users"
+    | "has_run_scan"
+    | "has_not_run_scan"
+    | "non_us"
+    | "us_only";
+
   interface AnnouncementRow {
     id: number;
     announcement_id: string;
@@ -422,7 +431,7 @@ declare module "knex/types/tables" {
     big_image_path: string;
     cta_label?: string;
     cta_link?: string;
-    audience: string;
+    audience: AudienceRow;
     created_at: Date;
     updated_at: Date;
     label: string;
