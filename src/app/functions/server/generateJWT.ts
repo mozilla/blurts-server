@@ -12,8 +12,12 @@ const rClient = redisClient();
 const KEY_ID = process.env.MOSCARY_JWT_KEY_ID || "moscary-jwt-key";
 const EXPIRATION_TIME = 3600;
 
-export async function getMoscaryJWT(fxaUid: string, email: string) {
-  const REDIS_KEY = `${REDIS_JWT_KEY_PREFIX}${fxaUid}`;
+export async function getMoscaryJWT(
+  fxaUid: string,
+  email: string,
+  sessionId: string,
+) {
+  const REDIS_KEY = `${REDIS_JWT_KEY_PREFIX}${fxaUid}:${sessionId}`;
 
   // if token is already exists in redis, return it
   let token = await rClient.get(REDIS_KEY);

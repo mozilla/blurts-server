@@ -256,10 +256,15 @@ export const authOptions: AuthOptions = {
       }
       if (token.subscriber) {
         session.user.subscriber = token.subscriber;
-        if (token.subscriber.fxa_uid && token.subscriber.primary_email) {
+        if (
+          token.subscriber.fxa_uid &&
+          token.subscriber.primary_email &&
+          token.jti
+        ) {
           session.user.moscaryJWT = await getMoscaryJWT(
             token.subscriber.fxa_uid,
             token.subscriber.primary_email,
+            token.jti,
           );
         }
         // refresh token
@@ -355,4 +360,11 @@ export function bearerToken(req: NextRequest) {
 export function isAdmin(email: string) {
   const admins = (process.env.ADMINS ?? "").split(",") ?? [];
   return admins.includes(email);
+}
+
+// Augment the JWT type to include jti
+declare module "next-auth/jwt" {
+  interface JWT {
+    jti?: string;
+  }
 }
