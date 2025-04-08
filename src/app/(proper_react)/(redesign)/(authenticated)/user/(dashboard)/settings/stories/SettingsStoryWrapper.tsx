@@ -29,7 +29,7 @@ export type SettingsWrapperProps = {
   activeTab: TabType;
   breaches: unknown;
   countryCode: string;
-  enabledFeatureFlags?: FeatureFlagName[];
+  enabledFeatureFlags: FeatureFlagName[];
   isMonthlySubscriber: boolean;
   isEligibleForPremium: boolean;
   subscriber: SubscriberRow;
@@ -70,7 +70,7 @@ export const SettingsWrapper = (props: SettingsWrapperProps) => {
           session={mockedSession}
           nonce=""
           countryCode={props.countryCode}
-          enabledFeatureFlags={props.enabledFeatureFlags ?? []}
+          enabledFeatureFlags={props.enabledFeatureFlags}
           experimentData={defaultExperimentData["Features"]}
         >
           <SettingsView
@@ -94,11 +94,11 @@ export const SettingsWrapper = (props: SettingsWrapperProps) => {
               yearly: 13.37,
               monthly: 42.42,
             }}
-            enabledFeatureFlags={props.enabledFeatureFlags ?? []}
+            enabledFeatureFlags={props.enabledFeatureFlags}
             experimentData={defaultExperimentData["Features"]}
             lastScanDate={new Date(Date.UTC(2024, 6, 31))}
             isMonthlySubscriber={props.isMonthlySubscriber}
-            activeTab={props.activeTab ?? "action-needed"}
+            activeTab={props.activeTab}
             isEligibleForPremium={props.isEligibleForPremium}
             profileData={props.profileData}
           />
