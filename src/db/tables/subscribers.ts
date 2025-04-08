@@ -7,7 +7,6 @@ import type { EmailAddressRow, SubscriberRow } from "knex/types/tables";
 import createDbConnection from "../connect";
 import { SerializedSubscriber } from "../../next-auth.js";
 import { getEnvVarsOrThrow } from "../../envVars";
-import { parseIso8601Datetime } from "../../utils/parse";
 
 const knex = createDbConnection();
 const { DELETE_UNVERIFIED_SUBSCRIBERS_TIMER } = getEnvVarsOrThrow([
@@ -358,18 +357,12 @@ async function getPlusSubscribersWaitingForMonthlyEmail(
   let query = knex("subscribers")
     .select()
     // Only send to users who haven't opted out of the monthly activity email...
-    // It looks like Knex's `.where` type definition doesn't accept Promise-returning
-    // functions, even though the code does; hence the `eslint-disable`)
-
     .where((builder) =>
       builder
         .whereNull("monthly_monitor_report")
         .orWhere("monthly_monitor_report", true),
     )
     // ...who haven't received the email in the last 1 month...
-    // It looks like Knex's `.where` type definition doesn't accept Promise-returning
-    // functions, even though the code does; hence the `eslint-disable`)
-
     .andWhere((builder) =>
       builder
         .whereNull("monthly_monitor_report_at")
@@ -405,11 +398,6 @@ async function getFreeSubscribersWaitingForMonthlyEmail(
   batchSize: number,
   countryCodes: string[],
 ): Promise<SubscriberRow[]> {
-  const accountCutOffDate = parseIso8601Datetime(
-    process.env.MONTHLY_ACTIVITY_FREE_EMAIL_ACCOUNT_CUTOFF_DATE ??
-      "2022-01-01T00:00:00.000Z",
-  );
-
   const query = knex("subscribers")
     .select<SubscriberRow[]>("subscribers.*")
     .select(
@@ -438,18 +426,12 @@ async function getFreeSubscribersWaitingForMonthlyEmail(
     // Only send to users who haven't opted out of the monthly activity email...
     // (Note that the `monthly_monitor_report` column is re-used for both the Plus
     // user activity email, and the free user activity email.)
-    // It looks like Knex's `.where` type definition doesn't accept Promise-returning
-    // functions, even though the code does; hence the `eslint-disable`)
-
     .where((builder) =>
       builder
         .whereNull("monthly_monitor_report_free")
         .orWhere("monthly_monitor_report_free", true),
     )
     // ...who haven't received the email in the last 1 month...
-    // It looks like Knex's `.where` type definition doesn't accept Promise-returning
-    // functions, even though the code does; hence the `eslint-disable`)
-
     .andWhere((builder) =>
       builder
         .whereNull("monthly_monitor_report_free_at")
@@ -459,16 +441,11 @@ async function getFreeSubscribersWaitingForMonthlyEmail(
     )
     // ...whose account is older than 1 month...
     .andWhereRaw("subscribers.\"created_at\" < NOW() - INTERVAL '1 month'")
-    // ...but is no older than three years...
-    .andWhere("subscribers.created_at", ">=", accountCutOffDate)
     // ...and who do not have a Plus subscription.
     // Note: This will only match people of whom the Monitor database knows that
     //       they have a Plus subscription. SubPlat is the source of truth, but
     //       our database is updated via a webhook and whenever the user logs
     //       in. Locally, you might want to set this via `/admin/dev/`.
-    // It looks like Knex's `.where` type definition doesn't accept Promise-returning
-    // functions, even though the code does; hence the `eslint-disable`)
-
     .andWhere((builder) =>
       builder
         .whereRaw(
@@ -478,7 +455,8 @@ async function getFreeSubscribersWaitingForMonthlyEmail(
           `NOT (subscribers.fxa_profile_json->'subscriptions')::jsonb \\? ?`,
           MONITOR_PREMIUM_CAPABILITY,
         ),
-    );
+    )
+    .orderBy("subscribers.created_at", "desc");
 
   const wrappedQuery = knex
     // @ts-ignore TODO MNTOR-3890 Move away from this approach and simplify query.

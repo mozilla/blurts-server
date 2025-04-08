@@ -2,16 +2,26 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+/* c8 ignore start */
+/*
+  This file is excluded from unit test coverage because it's an internal admin-only
+  tool and not part of the user-facing experience. It contains minimal logic,
+  is not critical to core app functionality, and is tested manually as needed.
+*/
+
 import React, { useEffect, useState } from "react";
 import styles from "./AnnouncementsModal.module.scss";
-import { AnnouncementRow } from "knex/types/tables";
+import { AnnouncementRow, AudienceRow } from "knex/types/tables";
+import { Button } from "../../../../../components/client/Button";
 
 type AnnouncementsModalProps = {
   isOpen: boolean;
   onClose: () => void;
-  onAddAnnouncement: (notification: AnnouncementRow) => void;
-  onUpdateAnnouncement: (notification: AnnouncementRow) => void; // Callback for updating
-  notificationToEdit: AnnouncementRow | null; // Receive notification to edit if available
+  onAddAnnouncement: (announcement: AnnouncementRow) => void;
+  onUpdateAnnouncement: (announcement: AnnouncementRow) => void;
+  announcementToEdit: AnnouncementRow | null;
+  isSubmitting: boolean;
+  setIsSubmitting: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 interface FormData {
@@ -22,7 +32,7 @@ interface FormData {
   big_image_path: string;
   cta_label: string;
   cta_link: string;
-  audience: string;
+  audience: AudienceRow;
   label: string;
 }
 
@@ -39,22 +49,22 @@ const AnnouncementsModal = (props: AnnouncementsModalProps) => {
     label: "draft",
   });
 
-  // Pre-fill form if editing an existing notification
+  // Pre-fill form if editing an existing announcement
   useEffect(() => {
-    if (props.notificationToEdit) {
+    if (props.announcementToEdit) {
       setFormData({
-        announcement_id: props.notificationToEdit.announcement_id,
-        title: props.notificationToEdit.title,
-        description: props.notificationToEdit.description,
-        small_image_path: props.notificationToEdit.small_image_path,
-        big_image_path: props.notificationToEdit.big_image_path,
-        cta_label: props.notificationToEdit.cta_label ?? "",
-        cta_link: props.notificationToEdit.cta_link ?? "",
-        audience: props.notificationToEdit.audience,
-        label: props.notificationToEdit.label,
+        announcement_id: props.announcementToEdit.announcement_id,
+        title: props.announcementToEdit.title,
+        description: props.announcementToEdit.description,
+        small_image_path: props.announcementToEdit.small_image_path,
+        big_image_path: props.announcementToEdit.big_image_path,
+        cta_label: props.announcementToEdit.cta_label ?? "",
+        cta_link: props.announcementToEdit.cta_link ?? "",
+        audience: props.announcementToEdit.audience,
+        label: props.announcementToEdit.label,
       });
     }
-  }, [props.notificationToEdit]);
+  }, [props.announcementToEdit]);
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -70,44 +80,42 @@ const AnnouncementsModal = (props: AnnouncementsModalProps) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    props.setIsSubmitting(true);
 
-    const notificationData = {
+    const announcementData = {
       created_at: new Date(),
       updated_at: new Date(),
-      ...formData, // Ensure no 'id' field is included here
+      ...formData,
     };
 
     try {
       let response;
 
-      if (props.notificationToEdit) {
-        // If editing an existing notification, update it
+      if (props.announcementToEdit) {
         response = await fetch(
-          `/api/v1/admin/announcements/${props.notificationToEdit.announcement_id}`,
+          `/api/v1/admin/announcements/${props.announcementToEdit.announcement_id}`,
           {
             method: "PUT",
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify(notificationData),
+            body: JSON.stringify(announcementData),
           },
         );
         const updatedAnnouncement = await response.json();
-        props.onUpdateAnnouncement(updatedAnnouncement); // Update in parent
+        props.onUpdateAnnouncement(updatedAnnouncement);
       } else {
-        // If adding a new notification
-
         response = await fetch("/api/v1/admin/announcements/", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(notificationData),
+          body: JSON.stringify(announcementData),
         });
-
         const addedAnnouncement = await response.json();
-        props.onAddAnnouncement(addedAnnouncement); // Update parent
+        props.onAddAnnouncement(addedAnnouncement);
       }
+
       setFormData({
         announcement_id: "",
         title: "",
@@ -119,9 +127,12 @@ const AnnouncementsModal = (props: AnnouncementsModalProps) => {
         audience: "all_users",
         label: "draft",
       });
-      props.onClose(); // Close the modal after submission
+
+      props.onClose();
     } catch (error) {
-      console.error("Error saving notification:", error);
+      console.error("Error saving announcement:", error);
+    } finally {
+      props.setIsSubmitting(false);
     }
   };
 
@@ -132,7 +143,7 @@ const AnnouncementsModal = (props: AnnouncementsModalProps) => {
       <div className={styles.modal}>
         <div className={styles.modalHeader}>
           <h2>
-            {props.notificationToEdit
+            {props.announcementToEdit
               ? "Edit Announcement"
               : "Add New Announcement"}
           </h2>
@@ -152,7 +163,7 @@ const AnnouncementsModal = (props: AnnouncementsModalProps) => {
               onChange={handleChange}
               required
               className={styles.input}
-              disabled={!!props.notificationToEdit} // Disable when editing
+              disabled={!!props.announcementToEdit} // Disable when editing
             />
           </div>
 
@@ -246,9 +257,12 @@ const AnnouncementsModal = (props: AnnouncementsModalProps) => {
               className={styles.select}
             >
               <option value="all_users">All Users</option>
-              <option value="premium_users">Premium Users</option>
-              <option value="free_users">Free Users</option>
-              <option value="new_users">New Users</option>
+              <option value="premium_users">Premium Users US</option>
+              <option value="free_users">Free Users US</option>
+              <option value="has_run_scan">Has Run Scan US</option>
+              <option value="has_not_run_scan">Has Not Run Scan US</option>
+              <option value="non_us">Non-US Users</option>
+              <option value="us_only">US Users Only</option>
             </select>
           </div>
 
@@ -275,11 +289,16 @@ const AnnouncementsModal = (props: AnnouncementsModalProps) => {
             >
               Cancel
             </button>
-            <button type="submit" className={styles.submitButton}>
-              {props.notificationToEdit
+            <Button
+              isLoading={props.isSubmitting}
+              variant="primary"
+              type="submit"
+              className={styles.submitButton}
+            >
+              {props.announcementToEdit
                 ? "Update Announcement"
                 : "Add Announcement"}
-            </button>
+            </Button>
           </div>
         </form>
       </div>
@@ -288,3 +307,4 @@ const AnnouncementsModal = (props: AnnouncementsModalProps) => {
 };
 
 export default AnnouncementsModal;
+/* c8 ignore end */

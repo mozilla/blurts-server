@@ -31,13 +31,18 @@ export default async function AutomaticRemovePage() {
     redirect("/user/dashboard");
   }
 
-  const additionalSubplatParams = await getAttributionsFromCookiesOrDb(
-    session.user.subscriber.id,
-  );
-
   const enabledFeatureFlags = await getEnabledFeatureFlags({
     email: session.user.email,
   });
+
+  const additionalSubplatParams = await getAttributionsFromCookiesOrDb(
+    session.user.subscriber.id,
+  );
+  const additionalSubplatParamsString =
+    additionalSubplatParams.size > 0
+      ? // SubPlat2 subscription links already have the UTM parameter `?plan` appended.
+        `${enabledFeatureFlags.includes("SubPlat3") ? "?" : "&"}${additionalSubplatParams.toString()}`
+      : "";
 
   const monthlySubscriptionUrl = getPremiumSubscriptionUrl({
     type: "monthly",
@@ -73,8 +78,8 @@ export default async function AutomaticRemovePage() {
       subscriberEmails={subscriberEmails}
       nextStep={getNextGuidedStep(data, enabledFeatureFlags, "Scan")}
       currentSection="data-broker-profiles"
-      monthlySubscriptionUrl={`${monthlySubscriptionUrl}&${additionalSubplatParams.toString()}`}
-      yearlySubscriptionUrl={`${yearlySubscriptionUrl}&${additionalSubplatParams.toString()}`}
+      monthlySubscriptionUrl={`${monthlySubscriptionUrl}${additionalSubplatParamsString}`}
+      yearlySubscriptionUrl={`${yearlySubscriptionUrl}${additionalSubplatParamsString}`}
       subscriptionBillingAmount={getSubscriptionBillingAmount()}
       enabledFeatureFlags={enabledFeatureFlags}
     />

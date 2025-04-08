@@ -19,6 +19,7 @@ import { getEnabledFeatureFlags } from "../../db/tables/featureFlags";
 import { PromptNoneAuth } from "../components/client/PromptNoneAuth";
 import { addClientIdForSubscriber } from "../../db/tables/google_analytics_clients";
 import { logger } from "../functions/server/logging";
+import { CookiesProvider } from "../../contextProviders/cookies";
 
 export default async function Layout({ children }: { children: ReactNode }) {
   const l10nBundles = getL10nBundles(
@@ -66,11 +67,13 @@ export default async function Layout({ children }: { children: ReactNode }) {
     <L10nProvider bundleSources={l10nBundles}>
       <ReactAriaI18nProvider locale={getLocale(l10nBundles)}>
         <CountryCodeProvider countryCode={countryCode}>
-          {enabledFlags.includes("PromptNoneAuthFlow") && !session && (
-            <PromptNoneAuth />
-          )}
-          {children}
-          <PageLoadEvent />
+          <CookiesProvider>
+            {enabledFlags.includes("PromptNoneAuthFlow") && !session && (
+              <PromptNoneAuth />
+            )}
+            {children}
+            <PageLoadEvent />
+          </CookiesProvider>
         </CountryCodeProvider>
       </ReactAriaI18nProvider>
     </L10nProvider>
