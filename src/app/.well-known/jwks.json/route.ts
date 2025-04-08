@@ -6,10 +6,17 @@ import { NextResponse } from "next/server";
 import crypto from "crypto";
 import { logger } from "../../functions/server/logging";
 
-// Convert PEM public key to JWK format
-// Note: This is a simplified conversion and might need adjustments
-// based on the exact PEM format. It expects a standard PKCS#8 PEM format.
-function pemToJwk(pem: string, kid: string) {
+type Jwk = crypto.JsonWebKey & {
+  kid: string;
+  alg: string;
+  use: string;
+};
+
+// In-memory cache for the JWK
+let cachedJwk: Jwk | null = null;
+
+// Convert PEM public key to JWK format, based on the exact PEM format. It expects a standard PKCS#8 PEM format.
+function pemToJwk(pem: string, kid: string): Jwk | null {
   try {
     const publicKey = crypto.createPublicKey(pem);
     const jwk = publicKey.export({ format: "jwk" });
@@ -28,6 +35,18 @@ function pemToJwk(pem: string, kid: string) {
 }
 
 export async function GET() {
+  // Return cached JWK if available
+  if (cachedJwk) {
+    const jwks = { keys: [cachedJwk] };
+    return NextResponse.json(jwks, {
+      headers: {
+        "Content-Type": "application/json",
+        // Cache for 1 hour, matching JWT expiration (or longer if key rotation is infrequent)
+        "Cache-Control": "public, max-age=3600, must-revalidate",
+      },
+    });
+  }
+
   const publicKeyPem = process.env.MOSCARY_JWT_PUBLIC_KEY;
   const keyId = process.env.MOSCARY_JWT_KEY_ID || "moscary-jwt-key"; // Ensure consistency
 
@@ -49,6 +68,9 @@ export async function GET() {
       { status: 500 },
     );
   }
+
+  // Cache the generated JWK
+  cachedJwk = jwk;
 
   const jwks = {
     keys: [jwk],
