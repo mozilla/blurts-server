@@ -7,7 +7,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { OnerepProfileRow, SubscriberRow } from "knex/types/tables";
-import { SettingsDetailsSavedBanner } from "./SettingsDetailsSavedBanner";
+import { SettingsDetailsSavedNotification } from "./SettingsDetailsSavedNotification";
 import {
   CONST_MAX_NUM_ADDRESSES,
   CONST_MAX_NUM_ADDRESSES_PLUS,
@@ -215,7 +215,7 @@ function SettingsPanelEditInfoRedesign(
   const l10n = useL10n();
   return (
     <>
-      <SettingsDetailsSavedBanner />
+      <SettingsDetailsSavedNotification />
       <div className={styles.header}>
         <div>
           <h3>{l10n.getString("settings-tab-label-update-scan-info")}</h3>

@@ -300,6 +300,12 @@ export async function onHandleUpdateProfileData(profileData: OnerepProfileRow) {
     });
 
     revalidatePath("/user/settings");
+
+    // Tell the /edit-info page to display an “details saved” notification:
+    (await cookies()).set("justSavedDetails", "justSavedDetails", {
+      expires: new Date(Date.now() + 5 * 60 * 1000),
+      httpOnly: false,
+    });
     redirect("/user/settings/edit-info");
   } catch (error) {
     console.error("Could not update profile details:", error);

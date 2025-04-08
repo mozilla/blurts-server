@@ -4,10 +4,15 @@
   align-items: center;
   background: tokens.$color-green-20;
   border-radius: tokens.$border-radius-lg;
-  gap: tokens.$spacing-md;
-  padding: calc(tokens.$spacing-sm + tokens.$spacing-xs) tokens.$spacing-md;
   display: flex;
+  gap: tokens.$spacing-md;
+  padding: tokens.$spacing-sm tokens.$spacing-sm tokens.$spacing-sm
+    tokens.$spacing-md;
   width: 100%;
+}
+
+.content {
+  padding: tokens.$spacing-sm 0;
 }
 
 .closeButton {
