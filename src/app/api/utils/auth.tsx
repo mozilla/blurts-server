@@ -361,10 +361,3 @@ export function isAdmin(email: string) {
   const admins = (process.env.ADMINS ?? "").split(",") ?? [];
   return admins.includes(email);
 }
-
-// Augment the JWT type to include jti
-declare module "next-auth/jwt" {
-  interface JWT {
-    jti?: string;
-  }
-}

@@ -66,6 +66,7 @@ declare module "next-auth" {
 declare module "next-auth/jwt" {
   /** Returned by the `jwt` callback and `getToken`, when using JWT sessions */
   interface JWT {
+    jti?: string;
     fxa?: {
       /** The value of the Accept-Language header when the user signed up for their Firefox Account */
       locale: string;
