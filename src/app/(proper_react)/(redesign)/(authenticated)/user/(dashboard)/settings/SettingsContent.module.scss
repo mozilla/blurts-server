@@ -47,7 +47,6 @@
     background-color: tokens.$color-white;
     box-shadow: tokens.$box-shadow-xs;
     padding: tokens.$spacing-lg;
-    overflow: hidden;
   }
 
   &:not(.isCard) section {

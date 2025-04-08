@@ -40,7 +40,12 @@
   .title {
     color: tokens.$color-grey-50;
     font: tokens.$text-title-2xs;
+    line-height: 1.5;
     text-align: center;
+
+    b {
+      color: tokens.$color-purple-70;
+    }
   }
 
   &.horizontal {

@@ -107,6 +107,43 @@ describe("Settings page redesign", () => {
       });
     });
 
+    it("shows the confirmation dialog after adding an email to the list of addresses to monitor for breaches", async () => {
+      onAddEmail.mockResolvedValue({
+        success: true,
+        submittedAddress: "mail@example.com",
+      });
+
+      const user = userEvent.setup();
+      const ComposedStory = composeStory(
+        SettingsEditYourInfo,
+        SettingsEditYourInfoMeta,
+      );
+      render(<ComposedStory />);
+
+      const addEmailButton = screen.getByRole("button", {
+        name: "Add email address",
+      });
+      await act(async () => {
+        await user.click(addEmailButton);
+        const dialog = screen.getByRole("dialog", {
+          name: "Add an email address",
+        });
+        expect(dialog).toBeInTheDocument();
+
+        const inputField = within(dialog).getByLabelText("Enter email address");
+        await user.type(inputField, "mail@example.com");
+        const sendVerificationButton = screen.getByRole("button", {
+          name: "Send verification link",
+        });
+        await user.click(sendVerificationButton);
+      });
+
+      const confirmationDialog = screen.getByRole("dialog", {
+        name: "Verification link sent to ⁨mail@example.com⁩",
+      });
+      expect(confirmationDialog).toBeInTheDocument();
+    });
+
     it("dismisses the “add email” dialog", async () => {
       const user = userEvent.setup();
       const ComposedStory = composeStory(

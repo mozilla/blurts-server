@@ -97,7 +97,7 @@ settings-email-addresses-initial-dialog-add-email-input-label = Enter email addr
 settings-email-addresses-initial-dialog-add-email-cta = Send verification link
 # Variables:
 #   $email (string) - Email address the confirmation has been sent to.
-settings-email-addresses-confirmation-dialog-header = Verification link sent to { $email }
+settings-email-addresses-confirmation-dialog-header = Verification link sent to <b>{ $email }</b>
 settings-email-addresses-confirmation-dialog-description = We’ll send a verification link for you to confirm you’d like to include in a future { -brand-monitor } scan.
 settings-email-addresses-confirmation-dialog-close-button = Close
 

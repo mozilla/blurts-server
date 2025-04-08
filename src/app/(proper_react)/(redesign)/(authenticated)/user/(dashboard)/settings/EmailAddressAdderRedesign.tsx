@@ -78,10 +78,15 @@ export const EmailAddressAdderRedesign = ({
                 ? l10n.getString(
                     "settings-email-addresses-initial-dialog-header",
                   )
-                : l10n.getString(
+                : l10n.getFragment(
                     "settings-email-addresses-confirmation-dialog-header",
                     {
-                      email: onAddEmailState.submittedAddress,
+                      elems: {
+                        b: <b />,
+                      },
+                      vars: {
+                        email: onAddEmailState.submittedAddress,
+                      },
                     },
                   )
             }
