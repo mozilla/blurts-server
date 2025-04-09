@@ -121,11 +121,30 @@ function EditProfileForm(props: { profileData: OnerepProfileRow }) {
         );
       })}
       <div className={styles.profileFormButtons}>
-        <EditProfileCancelDialog
-          onSave={() => {
-            formRef.current?.requestSubmit();
-          }}
-        />
+        {hasProfileDataChanged ? (
+          <EditProfileCancelDialog
+            isSaving={updateProfileActionIsPending}
+            onSave={() => {
+              formRef.current?.requestSubmit();
+            }}
+          />
+        ) : (
+          <TelemetryButton
+            variant="secondary"
+            href="/user/settings/edit-info"
+            event={{
+              module: "button",
+              name: "click",
+              data: {
+                button_id: "settings_edit_profile_form_cancel",
+              },
+            }}
+          >
+            {l10n.getString(
+              "settings-edit-profile-info-form-cancel-button-label",
+            )}
+          </TelemetryButton>
+        )}
         <TelemetryButton
           type="submit"
           variant="primary"

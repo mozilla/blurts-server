@@ -26,7 +26,12 @@ function SettingsDetailsSavedNotification() {
       removeCookie("justSavedDetails");
       setIsDismissed(false);
     }
-  }, [cookies.justSavedDetails, removeCookie, isDismissed]);
+    // Calling `removeCookie` appears to result in a new `cookies` object that
+    // still contains the removed cookie, leading to an eternal loop. Since we
+    // really only need to run the remove-cookie-and-show-notification code
+    // once, an empty dependencies array is OK in this case:
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   if (isDismissed) {
     return null;
@@ -52,9 +57,7 @@ function SettingsDetailsSavedNotification() {
             button_id: "dismiss_details_saved_banner",
           },
         }}
-        onPress={() => {
-          setIsDismissed(true);
-        }}
+        onPress={() => setIsDismissed(true)}
       >
         <CloseBtn
           alt={l10n.getString("survey-csat-survey-dismiss-label")}

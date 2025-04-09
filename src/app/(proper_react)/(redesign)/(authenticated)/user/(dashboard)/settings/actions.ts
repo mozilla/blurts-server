@@ -51,6 +51,12 @@ export async function onAddEmail(
   _prevState: AddEmailFormState,
   formData: FormData,
 ): Promise<AddEmailFormState> {
+  if (formData.get("_reset")) {
+    return {
+      success: false,
+    };
+  }
+
   const l10n = getL10n(await getAcceptLangHeaderInServerComponents());
   const session = await getServerSession();
   if (!session?.user.subscriber?.fxa_uid) {
@@ -282,6 +288,7 @@ export async function onHandleUpdateProfileData(profileData: OnerepProfileRow) {
   try {
     const {
       first_name,
+      middle_name,
       last_name,
       first_names,
       last_names,
@@ -297,16 +304,8 @@ export async function onHandleUpdateProfileData(profileData: OnerepProfileRow) {
       middle_names,
       phone_numbers,
       addresses,
+      ...(middle_name && { middle_name }),
     });
-
-    revalidatePath("/user/settings");
-
-    // Tell the /edit-info page to display an “details saved” notification:
-    (await cookies()).set("justSavedDetails", "justSavedDetails", {
-      expires: new Date(Date.now() + 5 * 60 * 1000),
-      httpOnly: false,
-    });
-    redirect("/user/settings/edit-info");
   } catch (error) {
     console.error("Could not update profile details:", error);
     return {
@@ -315,4 +314,13 @@ export async function onHandleUpdateProfileData(profileData: OnerepProfileRow) {
       errorMessage: `Updating profile failed.`,
     };
   }
+
+  // Tell the /edit-info page to display an “details saved” notification:
+  (await cookies()).set("justSavedDetails", "justSavedDetails", {
+    expires: new Date(Date.now() + 5 * 60 * 1000),
+    httpOnly: false,
+  });
+
+  revalidatePath("/user/settings");
+  redirect("/user/settings/edit-info");
 }

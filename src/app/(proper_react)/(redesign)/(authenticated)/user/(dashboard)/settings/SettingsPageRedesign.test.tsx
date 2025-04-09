@@ -160,20 +160,23 @@ describe("Settings page redesign", () => {
       });
       await act(async () => {
         await user.click(addEmailButton);
-        const dialog = screen.getByRole("dialog", {
-          name: "Add an email address",
-        });
-        expect(dialog).toBeInTheDocument();
-        const dismissButton = screen.getByRole("button", {
-          name: "Close modal",
-        });
-        await user.click(dismissButton);
-        expect(
-          screen.queryByRole("dialog", {
-            name: "Add an email address",
-          }),
-        ).not.toBeInTheDocument();
       });
+      const dialog = screen.getByRole("dialog", {
+        name: "Add an email address",
+      });
+      expect(dialog).toBeInTheDocument();
+      const dismissButton = screen.getByRole("button", {
+        name: "Close modal",
+      });
+      await act(async () => {
+        await user.click(dismissButton);
+      });
+
+      expect(
+        screen.queryByRole("dialog", {
+          name: "Add an email address",
+        }),
+      ).not.toBeInTheDocument();
     });
 
     it("removes an email from the list of addresses to monitor for breaches", async () => {
@@ -733,6 +736,19 @@ describe("Settings page redesign", () => {
       expect(sumoLink).toBeInTheDocument();
     });
 
+    it("links back to the “Edit your info” overview without showing the confirmation dialog", () => {
+      const ComposedStory = composeStory(
+        SettingsDetailsAboutYouMinDetails,
+        SettingsDetailsAboutYou,
+      );
+      render(<ComposedStory />);
+
+      const cancelButton = screen.getByRole("link", {
+        name: "Cancel",
+      });
+      expect(cancelButton).toHaveAttribute("href", "/user/settings/edit-info");
+    });
+
     it("shows the confirmation dialog when clicking the “Cancel” button", async () => {
       const user = userEvent.setup();
       const ComposedStory = composeStory(
@@ -740,6 +756,11 @@ describe("Settings page redesign", () => {
         SettingsDetailsAboutYou,
       );
       render(<ComposedStory />);
+
+      const firstNameInput = screen.getByLabelText("Legal first name*");
+      await act(async () => {
+        await user.type(firstNameInput, "2");
+      });
 
       const cancelButton = screen.getByRole("button", {
         name: "Cancel",
@@ -761,6 +782,11 @@ describe("Settings page redesign", () => {
       );
       render(<ComposedStory />);
 
+      const firstNameInput = screen.getByLabelText("Legal first name*");
+      await act(async () => {
+        await user.type(firstNameInput, "2");
+      });
+
       const cancelButton = screen.getByRole("button", {
         name: "Cancel",
       });
@@ -780,13 +806,18 @@ describe("Settings page redesign", () => {
       expect(onHandleUpdateProfileData).toHaveBeenCalled();
     });
 
-    it("links back to “Edit your info” overview the from the confirmation dialog", async () => {
+    it("links back to the “Edit your info” overview from the confirmation dialog", async () => {
       const user = userEvent.setup();
       const ComposedStory = composeStory(
         SettingsDetailsAboutYouMinDetails,
         SettingsDetailsAboutYou,
       );
       render(<ComposedStory />);
+
+      const firstNameInput = screen.getByLabelText("Legal first name*");
+      await act(async () => {
+        await user.type(firstNameInput, "2");
+      });
 
       const cancelButton = screen.getByRole("button", {
         name: "Cancel",
@@ -815,6 +846,11 @@ describe("Settings page redesign", () => {
       );
       render(<ComposedStory />);
 
+      const firstNameInput = screen.getByLabelText("Legal first name*");
+      await act(async () => {
+        await user.type(firstNameInput, "2");
+      });
+
       const cancelButton = screen.getByRole("button", {
         name: "Cancel",
       });
@@ -834,7 +870,7 @@ describe("Settings page redesign", () => {
       expect(screen.queryByText("Save info?")).not.toBeInTheDocument();
     });
 
-    it("shows the disabled “save” button when profile details did not change", () => {
+    it("shows the disabled “save” button when the profile details did not change", () => {
       const ComposedStory = composeStory(
         SettingsDetailsAboutYouMinDetails,
         SettingsDetailsAboutYou,

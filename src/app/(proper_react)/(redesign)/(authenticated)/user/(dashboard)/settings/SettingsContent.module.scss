@@ -9,17 +9,19 @@
   justify-content: center;
   padding: tokens.$layout-2xs;
 
-  @media screen and (min-width: tokens.$screen-xl) {
-    justify-content: flex-start;
+  @media screen and (min-width: tokens.$screen-sm) {
+    padding: tokens.$layout-sm;
   }
 
   @media screen and (min-width: tokens.$screen-lg) {
     flex-direction: row;
-    padding: tokens.$layout-lg;
+    padding: tokens.$layout-sm tokens.$layout-lg;
   }
 
-  @media screen and (min-width: tokens.$screen-sm) {
-    padding: tokens.$layout-sm;
+  @media screen and (min-width: tokens.$screen-xl) {
+    justify-content: flex-start;
+    padding: tokens.$layout-sm tokens.$layout-lg tokens.$layout-sm
+      tokens.$layout-xl;
   }
 }
 
@@ -47,7 +49,7 @@
   flex-direction: column;
   flex: 1 0 0;
   gap: tokens.$spacing-lg;
-  max-width: 800px;
+  max-width: tokens.$content-lg;
 
   &.isCard {
     border-radius: tokens.$border-radius-lg;

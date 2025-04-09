@@ -4,7 +4,13 @@
 
 "use client";
 
-import { useEffect, useRef, useState, useActionState } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  useActionState,
+  startTransition,
+} from "react";
 import { useOverlayTriggerState } from "react-stately";
 import { useOverlayTrigger } from "react-aria";
 import Image from "next/image";
@@ -53,6 +59,12 @@ export const EmailAddressAdderRedesign = ({
   const [onAddEmailState, onAddEmailAction] = useActionState(onAddEmail, {});
 
   const handleOnDismiss = () => {
+    const form = new FormData();
+    form.set("_reset", "true");
+    startTransition(() => {
+      onAddEmailAction(form);
+    });
+
     dialogState.close();
   };
 

@@ -17,9 +17,15 @@
   fieldset {
     border: 0;
     display: flex;
+    flex-direction: column;
+    gap: tokens.$spacing-sm;
     padding: 0;
     margin: 0;
     min-width: 0;
+
+    @media screen and (min-width: tokens.$screen-md) {
+      flex-direction: row;
+    }
   }
 
   strong,
@@ -47,6 +53,6 @@
   align-items: flex-start;
   display: flex;
   flex-direction: column;
-  gap: tokens.$spacing-md;
+  gap: tokens.$spacing-sm;
   width: 100%;
 }

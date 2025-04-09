@@ -8,6 +8,7 @@ import Image from "next/image";
 import { useOverlayTriggerState } from "react-stately";
 import { useOverlayTrigger } from "react-aria";
 import { useL10n } from "../../../../../../../../hooks/l10n";
+import { Button } from "../../../../../../../../components/client/Button";
 import { TelemetryButton } from "../../../../../../../../components/client/TelemetryButton";
 import { useTelemetry } from "../../../../../../../../hooks/useTelemetry";
 import { ModalOverlay } from "../../../../../../../../components/client/dialog/ModalOverlay";
@@ -15,7 +16,10 @@ import { Dialog } from "../../../../../../../../components/client/dialog/Dialog"
 import CancelDialogIllustration from "../../../../../../../images/monitor-logo-minimal.svg";
 import styles from "./EditProfileCancelDialog.module.scss";
 
-function EditProfileCancelDialog(props: { onSave: () => void }) {
+function EditProfileCancelDialog(props: {
+  isSaving: boolean;
+  onSave: () => void;
+}) {
   const l10n = useL10n();
   const recordTelemetry = useTelemetry();
   const dialogState = useOverlayTriggerState({
@@ -45,19 +49,9 @@ function EditProfileCancelDialog(props: { onSave: () => void }) {
 
   return (
     <>
-      <TelemetryButton
-        {...triggerProps}
-        variant="secondary"
-        event={{
-          module: "button",
-          name: "click",
-          data: {
-            button_id: "settings_edit_profile_form_cancel",
-          },
-        }}
-      >
+      <Button {...triggerProps} variant="secondary">
         {l10n.getString("settings-edit-profile-info-form-cancel-button-label")}
-      </TelemetryButton>
+      </Button>
       {dialogState.isOpen && (
         <ModalOverlay state={dialogState} {...overlayProps} isDismissable>
           <Dialog
@@ -89,6 +83,7 @@ function EditProfileCancelDialog(props: { onSave: () => void }) {
                   }}
                   onPress={props.onSave}
                   variant="primary"
+                  isLoading={props.isSaving}
                 >
                   {l10n.getString(
                     "settings-edit-profile-info-form-save-button-label",

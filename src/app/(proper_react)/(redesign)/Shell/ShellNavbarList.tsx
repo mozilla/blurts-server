@@ -69,7 +69,7 @@ export const NavbarList = (props: {
           )}
           <li key="settings-notifications">
             <PageLink
-              href="/user/settings/announcements"
+              href="/user/settings/notifications"
               activeClassName={styles.isActive}
               hasTelemetry={{
                 link_id: "navigation_settings_notifications",

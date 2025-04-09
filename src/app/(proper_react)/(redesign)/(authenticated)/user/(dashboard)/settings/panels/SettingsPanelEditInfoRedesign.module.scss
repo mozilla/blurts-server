@@ -27,7 +27,11 @@
       border-bottom: 1px solid tokens.$color-grey-10;
       display: flex;
       padding: calc(tokens.$spacing-sm + tokens.$spacing-xs) 0;
-      gap: tokens.$spacing-sm;
+      flex-wrap: wrap;
+
+      @media screen and (min-width: tokens.$screen-md) {
+        gap: tokens.$spacing-sm;
+      }
 
       &:last-of-type {
         border: none;
@@ -37,14 +41,25 @@
 
   .detail {
     &Label {
-      font-weight: 400;
-      min-width: calc(tokens.$content-xs * 0.5);
+      font: tokens.$text-body-sm;
+      font-weight: 500;
+
+      @media screen and (min-width: tokens.$screen-md) {
+        font: tokens.$text-body-md;
+        font-weight: 400;
+        min-width: calc(tokens.$content-xs * 0.5);
+      }
     }
 
-    &Value {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
+    &Content {
+      align-items: center;
+      display: flex;
+      flex: 1 0 100%;
+
+      @media screen and (min-width: tokens.$screen-md) {
+        justify-content: space-between;
+        flex: 1 0 auto;
+      }
     }
 
     &More {
@@ -53,6 +68,10 @@
       margin-left: auto;
       text-align: right;
       white-space: nowrap;
+
+      @media screen and (min-width: tokens.$screen-md) {
+        font: tokens.$text-body-md;
+      }
     }
   }
 }

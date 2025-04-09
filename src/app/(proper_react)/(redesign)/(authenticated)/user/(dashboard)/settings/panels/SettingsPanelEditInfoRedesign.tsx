@@ -145,55 +145,57 @@ function ProfileInfoSection({
       </div>
       <ul className="noList">
         <li>
-          <span className={styles.detailLabel}>
+          <div className={styles.detailLabel}>
             {l10n.getString("settings-details-about-you-name-label")}
-          </span>
-          <span
-            className={styles.detailValue}
-          >{`${first_name}${middle_name ? ` ${middle_name} ` : " "}${last_name}`}</span>
-          {nameMoreCount > 0 && (
-            <span className={styles.detailMore}>
-              {l10n.getString("settings-details-about-you-more-indicator", {
-                moreCount: nameMoreCount,
-              })}
-            </span>
-          )}
-        </li>
-        <li>
-          <span className={styles.detailLabel}>
-            {l10n.getString("settings-details-about-you-date-of-birth-label")}
-          </span>
-          <span className={styles.detailValue}>{dateOfBirthString}</span>
-        </li>
-        {phone_numbers.length > 0 && (
-          <li>
-            <span className={styles.detailLabel}>
-              {l10n.getString("settings-details-about-you-phone-label")}
-            </span>
-            <span className={styles.detailValue}>{phone_numbers[0]}</span>
-            {phone_numbers.length > 1 && (
+          </div>
+          <div className={styles.detailContent}>
+            {`${first_name}${middle_name ? ` ${middle_name} ` : " "}${last_name}`}
+            {nameMoreCount > 0 && (
               <span className={styles.detailMore}>
                 {l10n.getString("settings-details-about-you-more-indicator", {
-                  moreCount: phone_numbers.length - 1,
+                  moreCount: nameMoreCount,
                 })}
               </span>
             )}
+          </div>
+        </li>
+        <li>
+          <div className={styles.detailLabel}>
+            {l10n.getString("settings-details-about-you-date-of-birth-label")}
+          </div>
+          <div className={styles.detailContent}>{dateOfBirthString}</div>
+        </li>
+        {phone_numbers.length > 0 && (
+          <li>
+            <div className={styles.detailLabel}>
+              {l10n.getString("settings-details-about-you-phone-label")}
+            </div>
+            <div className={styles.detailContent}>
+              {phone_numbers[0]}
+              {phone_numbers.length > 1 && (
+                <span className={styles.detailMore}>
+                  {l10n.getString("settings-details-about-you-more-indicator", {
+                    moreCount: phone_numbers.length - 1,
+                  })}
+                </span>
+              )}
+            </div>
           </li>
         )}
         <li>
-          <span className={styles.detailLabel}>
+          <div className={styles.detailLabel}>
             {l10n.getString("settings-details-about-you-location-label")}
-          </span>
-          <span
-            className={styles.detailValue}
-          >{`${city_name}, ${state_code}`}</span>
-          {addresses.length > 1 && (
-            <span className={styles.detailMore}>
-              {l10n.getString("settings-details-about-you-more-indicator", {
-                moreCount: addresses.length - 1,
-              })}
-            </span>
-          )}
+          </div>
+          <div className={styles.detailContent}>
+            {`${city_name}, ${state_code}`}
+            {addresses.length > 1 && (
+              <span className={styles.detailMore}>
+                {l10n.getString("settings-details-about-you-more-indicator", {
+                  moreCount: addresses.length - 1,
+                })}
+              </span>
+            )}
+          </div>
         </li>
       </ul>
       <span className={styles.addButton}>
@@ -261,7 +263,7 @@ function SettingsPanelEditInfoRedesign(
       <div className={styles.header}>
         <div>
           <h3>{l10n.getString("settings-tab-label-update-scan-info")}</h3>
-          {props.profileData && (
+          {hasPremium(props.user) && (
             <p>
               {l10n.getFragment("settings-update-scan-info-description", {
                 elems: {
@@ -282,7 +284,7 @@ function SettingsPanelEditInfoRedesign(
         </div>
         <Image src={InfoShield} alt="" />
       </div>
-      {props.profileData && (
+      {hasPremium(props.user) && props.profileData && (
         <ProfileInfoSection profileData={props.profileData} />
       )}
       <MonitoredEmailAddressesSection {...props} />
