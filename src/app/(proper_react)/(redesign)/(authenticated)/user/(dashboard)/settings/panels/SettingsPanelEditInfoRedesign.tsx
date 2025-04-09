@@ -119,7 +119,12 @@ function ProfileInfoSection({
     first_name,
     middle_name,
     last_name,
+    first_names,
+    middle_names,
+    last_names,
     date_of_birth,
+    phone_numbers,
+    addresses,
     city_name,
     state_code,
   } = profileData;
@@ -130,6 +135,8 @@ function ProfileInfoSection({
       timeZone: "UTC",
     },
   );
+  const nameMoreCount =
+    first_names.length + middle_names.length + last_names.length;
   return (
     <section className={styles.section}>
       <div>
@@ -138,20 +145,55 @@ function ProfileInfoSection({
       </div>
       <ul className="noList">
         <li>
-          <span>{l10n.getString("settings-details-about-you-name-label")}</span>
-          {`${first_name} ${middle_name} ${last_name}`}
+          <span className={styles.detailLabel}>
+            {l10n.getString("settings-details-about-you-name-label")}
+          </span>
+          <span
+            className={styles.detailValue}
+          >{`${first_name}${middle_name ? ` ${middle_name} ` : " "}${last_name}`}</span>
+          {nameMoreCount > 0 && (
+            <span className={styles.detailMore}>
+              {l10n.getString("settings-details-about-you-more-indicator", {
+                moreCount: nameMoreCount,
+              })}
+            </span>
+          )}
         </li>
         <li>
-          <span>
+          <span className={styles.detailLabel}>
             {l10n.getString("settings-details-about-you-date-of-birth-label")}
           </span>
-          {dateOfBirthString}
+          <span className={styles.detailValue}>{dateOfBirthString}</span>
         </li>
+        {phone_numbers.length > 0 && (
+          <li>
+            <span className={styles.detailLabel}>
+              {l10n.getString("settings-details-about-you-phone-label")}
+            </span>
+            <span className={styles.detailValue}>{phone_numbers[0]}</span>
+            {phone_numbers.length > 1 && (
+              <span className={styles.detailMore}>
+                {l10n.getString("settings-details-about-you-more-indicator", {
+                  moreCount: phone_numbers.length - 1,
+                })}
+              </span>
+            )}
+          </li>
+        )}
         <li>
-          <span>
+          <span className={styles.detailLabel}>
             {l10n.getString("settings-details-about-you-location-label")}
           </span>
-          {`${city_name}, ${state_code}`}
+          <span
+            className={styles.detailValue}
+          >{`${city_name}, ${state_code}`}</span>
+          {addresses.length > 1 && (
+            <span className={styles.detailMore}>
+              {l10n.getString("settings-details-about-you-more-indicator", {
+                moreCount: addresses.length - 1,
+              })}
+            </span>
+          )}
         </li>
       </ul>
       <span className={styles.addButton}>
@@ -163,7 +205,7 @@ function ProfileInfoSection({
             module: "link",
             name: "click",
             data: {
-              link_id: "clicked_edit_info",
+              link_id: "settings_edit_info_add_details",
             },
           }}
         >

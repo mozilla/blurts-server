@@ -4,11 +4,9 @@
 
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { faker, fakerEN_US } from "@faker-js/faker";
 import { SettingsWrapper } from "./SettingsStoryWrapper";
 import { CONST_SETTINGS_TAB_SLUGS } from "../../../../../../../../constants";
-import { mockedProfileDataMin } from "./settingsMockData";
-import { OnerepProfileAddress } from "knex/types/tables";
+import { mockedProfileDataMax, mockedProfileDataMin } from "./settingsMockData";
 
 const meta: Meta<typeof SettingsWrapper> = {
   title: "Pages/Logged in/Settings/Redesign/Edit profile (Plus only)",
@@ -47,17 +45,6 @@ export const SettingsDetailsAboutYouMaxDetails: Story = {
       "SidebarNavigationRedesign",
       "EditScanProfileDetails",
     ],
-    profileData: {
-      ...mockedProfileDataMin,
-      middle_name: faker.person.middleName(),
-      first_names: Array.from({ length: 4 }, () => faker.person.firstName()),
-      middle_names: Array.from({ length: 4 }, () => faker.person.middleName()),
-      last_names: Array.from({ length: 4 }, () => faker.person.lastName()),
-      phone_numbers: Array.from({ length: 10 }, () => faker.phone.number()),
-      addresses: Array.from({ length: 10 }, () => ({
-        city: fakerEN_US.location.city(),
-        state: fakerEN_US.location.state({ abbreviated: true }),
-      })) as OnerepProfileAddress[],
-    },
+    profileData: mockedProfileDataMax,
   },
 };

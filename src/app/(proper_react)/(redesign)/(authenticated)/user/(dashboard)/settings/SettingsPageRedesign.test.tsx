@@ -14,7 +14,8 @@ import SettingsMeta, {
 import SettingsEditYourInfoMeta, {
   SettingsEditYourInfoDetailsSaved,
   SettingsEditYourInfoNoPlus,
-  SettingsEditYourInfoWithPlus,
+  SettingsEditYourInfoMinProfileDetailsWithPlus,
+  SettingsEditYourInfoMaxProfileDetailsWithPlus,
 } from "./stories/SettingsEditInfoUsUsers.stories";
 import SettingsDetailsAboutYou, {
   SettingsDetailsAboutYouMaxDetails,
@@ -48,6 +49,7 @@ import {
   onHandleUpdateProfileData,
 } from "./actions.mock";
 import {
+  mockedProfileDataMax,
   mockedProfileDataMin,
   mockedVerifiedEmailFourth,
 } from "./stories/settingsMockData";
@@ -252,7 +254,7 @@ describe("Settings page redesign", () => {
   describe("Edit your info (US users)", () => {
     it("passes the axe accessibility test suite", async () => {
       const ComposedDashboard = composeStory(
-        SettingsEditYourInfoWithPlus,
+        SettingsEditYourInfoMinProfileDetailsWithPlus,
         SettingsEditYourInfoMeta,
       );
       const { container } = render(<ComposedDashboard />);
@@ -285,7 +287,7 @@ describe("Settings page redesign", () => {
 
     it("shows a link to a SUMO article on profile details for scans", () => {
       const ComposedStory = composeStory(
-        SettingsEditYourInfoWithPlus,
+        SettingsEditYourInfoMinProfileDetailsWithPlus,
         SettingsEditYourInfoMeta,
       );
       render(<ComposedStory />);
@@ -298,7 +300,7 @@ describe("Settings page redesign", () => {
 
     it("does not show the Plus upsell link for users with Plus subscription", () => {
       const ComposedStory = composeStory(
-        SettingsEditYourInfoWithPlus,
+        SettingsEditYourInfoMinProfileDetailsWithPlus,
         SettingsEditYourInfoMeta,
       );
       render(<ComposedStory />);
@@ -311,7 +313,7 @@ describe("Settings page redesign", () => {
 
     it("shows the “Details about you” section with a preview of the scan profile info", () => {
       const ComposedStory = composeStory(
-        SettingsEditYourInfoWithPlus,
+        SettingsEditYourInfoMinProfileDetailsWithPlus,
         SettingsEditYourInfoMeta,
       );
       render(<ComposedStory />);
@@ -322,22 +324,9 @@ describe("Settings page redesign", () => {
       expect(profileDetailsHeader).toBeInTheDocument();
     });
 
-    it("shows the name field", () => {
-      const ComposedStory = composeStory(
-        SettingsEditYourInfoWithPlus,
-        SettingsEditYourInfoMeta,
-      );
-      render(<ComposedStory />);
-
-      const nameField = screen.getByText(
-        `${mockedProfileDataMin.first_name} ${mockedProfileDataMin.last_name}`,
-      );
-      expect(nameField).toBeInTheDocument();
-    });
-
     it("shows the “Add details” button", () => {
       const ComposedStory = composeStory(
-        SettingsEditYourInfoWithPlus,
+        SettingsEditYourInfoMinProfileDetailsWithPlus,
         SettingsEditYourInfoMeta,
       );
       render(<ComposedStory />);
@@ -354,7 +343,7 @@ describe("Settings page redesign", () => {
 
     it("shows the max number of emails that can be added to the list of addresses to monitor for breaches for subscribers with Plus", () => {
       const ComposedStory = composeStory(
-        SettingsEditYourInfoWithPlus,
+        SettingsEditYourInfoMinProfileDetailsWithPlus,
         SettingsEditYourInfoMeta,
       );
       render(<ComposedStory />);
@@ -365,7 +354,7 @@ describe("Settings page redesign", () => {
 
     it("does not show a notification if the user did not updated their profile details", () => {
       const ComposedStory = composeStory(
-        SettingsEditYourInfoWithPlus,
+        SettingsEditYourInfoMinProfileDetailsWithPlus,
         SettingsEditYourInfoMeta,
       );
       render(<ComposedStory />);
@@ -407,6 +396,74 @@ describe("Settings page redesign", () => {
       });
 
       expect(notification).not.toBeInTheDocument();
+    });
+
+    describe("Min profile details", () => {
+      it("shows the name field", () => {
+        const ComposedStory = composeStory(
+          SettingsEditYourInfoMinProfileDetailsWithPlus,
+          SettingsEditYourInfoMeta,
+        );
+        render(<ComposedStory />);
+
+        const nameField = screen.getByText(
+          `${mockedProfileDataMin.first_name} ${mockedProfileDataMin.last_name}`,
+        );
+        expect(nameField).toBeInTheDocument();
+      });
+
+      it("does not show any “more details” indicator on the name field", () => {
+        const ComposedStory = composeStory(
+          SettingsEditYourInfoMinProfileDetailsWithPlus,
+          SettingsEditYourInfoMeta,
+        );
+        render(<ComposedStory />);
+
+        const moreIndicator = screen.queryByText(/\+⁨\d⁩+\s+more/);
+        expect(moreIndicator).not.toBeInTheDocument();
+      });
+    });
+
+    describe("Max profile details", () => {
+      it("shows the name field", () => {
+        const ComposedStory = composeStory(
+          SettingsEditYourInfoMaxProfileDetailsWithPlus,
+          SettingsEditYourInfoMeta,
+        );
+        render(<ComposedStory />);
+
+        const nameField = screen.getByText(
+          `${mockedProfileDataMax.first_name} ${mockedProfileDataMax.middle_name} ${mockedProfileDataMax.last_name}`,
+        );
+        expect(nameField).toBeInTheDocument();
+      });
+
+      it.each([
+        {
+          fieldName: "Name",
+          moreCount: 12,
+        },
+        {
+          fieldName: "Phone number",
+          moreCount: 9,
+        },
+        {
+          fieldName: "Location",
+          moreCount: 9,
+        },
+      ])("shows the “more items” indicator on the field: %s", (item) => {
+        const ComposedStory = composeStory(
+          SettingsEditYourInfoMaxProfileDetailsWithPlus,
+          SettingsEditYourInfoMeta,
+        );
+        render(<ComposedStory />);
+
+        const detailField = screen.getByText(item.fieldName);
+        const moreIndicator = within(
+          detailField.parentElement as HTMLElement,
+        ).getByText(`+⁨${item.moreCount}⁩ more`);
+        expect(moreIndicator).toBeInTheDocument();
+      });
     });
   });
 

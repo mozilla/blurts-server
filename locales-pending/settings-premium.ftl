@@ -77,8 +77,12 @@ settings-details-about-you-header = Details about you
 settings-details-about-you-description = { -brand-monitor } will use this info for scans and data removal requests.
 settings-details-about-you-name-label = Name
 settings-details-about-you-date-of-birth-label = Date of birth
+settings-details-about-you-phone-label = Phone number
 settings-details-about-you-location-label = Location
 settings-details-about-you-cta-label = Add details
+# Variables:
+#   $moreCount (number) - The additional number of details for this
+settings-details-about-you-more-indicator = +{ $moreCount } more
 
 ## Email addresses
 

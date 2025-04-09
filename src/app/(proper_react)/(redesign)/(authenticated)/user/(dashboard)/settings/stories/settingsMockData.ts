@@ -2,11 +2,13 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import { faker, fakerEN_US } from "@faker-js/faker";
 import {
   EmailAddressRow,
   OnerepProfileRow,
   SubscriberRow,
 } from "knex/types/tables";
+import { OnerepProfileAddress } from "knex/types/tables";
 
 const subscriberId = 7;
 
@@ -123,4 +125,17 @@ export const mockedProfileDataMin: OnerepProfileRow = {
   date_of_birth: new Date(),
   created_at: new Date(),
   updated_at: new Date(),
+};
+
+export const mockedProfileDataMax: OnerepProfileRow = {
+  ...mockedProfileDataMin,
+  middle_name: faker.person.middleName(),
+  first_names: Array.from({ length: 4 }, () => faker.person.firstName()),
+  middle_names: Array.from({ length: 4 }, () => faker.person.middleName()),
+  last_names: Array.from({ length: 4 }, () => faker.person.lastName()),
+  phone_numbers: Array.from({ length: 10 }, () => faker.phone.number()),
+  addresses: Array.from({ length: 10 }, () => ({
+    city: fakerEN_US.location.city(),
+    state: fakerEN_US.location.state({ abbreviated: true }),
+  })) as OnerepProfileAddress[],
 };

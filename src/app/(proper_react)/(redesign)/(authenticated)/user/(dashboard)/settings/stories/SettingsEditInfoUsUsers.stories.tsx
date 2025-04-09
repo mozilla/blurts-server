@@ -7,7 +7,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Cookies } from "react-cookie";
 import { SettingsWrapper } from "./SettingsStoryWrapper";
 import { CONST_SETTINGS_TAB_SLUGS } from "../../../../../../../../constants";
-import { mockedProfileDataMin } from "./settingsMockData";
+import { mockedProfileDataMin, mockedProfileDataMax } from "./settingsMockData";
 
 const meta: Meta<typeof SettingsWrapper> = {
   title: "Pages/Logged in/Settings/Redesign/Edit info/US user",
@@ -35,8 +35,8 @@ export const SettingsEditYourInfoNoPlus: Story = {
   },
 };
 
-export const SettingsEditYourInfoWithPlus: Story = {
-  name: "Profile details and monitored emails with Plus",
+export const SettingsEditYourInfoMinProfileDetailsWithPlus: Story = {
+  name: "Profile with min profile details and monitored emails with Plus",
   args: {
     countryCode: "us",
     activeTab: "edit-info",
@@ -45,6 +45,20 @@ export const SettingsEditYourInfoWithPlus: Story = {
       "EditScanProfileDetails",
     ],
     profileData: mockedProfileDataMin,
+    hasPlus: true,
+  },
+};
+
+export const SettingsEditYourInfoMaxProfileDetailsWithPlus: Story = {
+  name: "Profile with max profile details and monitored emails with Plus",
+  args: {
+    countryCode: "us",
+    activeTab: "edit-info",
+    enabledFeatureFlags: [
+      "SidebarNavigationRedesign",
+      "EditScanProfileDetails",
+    ],
+    profileData: mockedProfileDataMax,
     hasPlus: true,
   },
 };

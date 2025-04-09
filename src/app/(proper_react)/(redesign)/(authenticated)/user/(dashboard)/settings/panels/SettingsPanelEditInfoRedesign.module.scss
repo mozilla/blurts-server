@@ -10,7 +10,6 @@
 
 .section {
   font: tokens.$text-body-md;
-  font-weight: 400;
 
   ul {
     background-color: tokens.$color-grey-05;
@@ -33,11 +32,27 @@
       &:last-of-type {
         border: none;
       }
+    }
+  }
 
-      & > span {
-        font-weight: 400;
-        min-width: calc(tokens.$content-xs * 0.5);
-      }
+  .detail {
+    &Label {
+      font-weight: 400;
+      min-width: calc(tokens.$content-xs * 0.5);
+    }
+
+    &Value {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    &More {
+      color: tokens.$color-grey-40;
+      font: tokens.$text-body-sm;
+      margin-left: auto;
+      text-align: right;
+      white-space: nowrap;
     }
   }
 }
