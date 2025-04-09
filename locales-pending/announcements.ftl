@@ -26,6 +26,7 @@ announcement-add-more-personal-details-cta-label = Add more details
 
 # id: add-up-to-20-emails-plus
 
+# "Monitor" here refers to the generic noun, not a brand name.
 announcement-add-up-to-20-emails-plus-title = Monitor more email addresses
 announcement-add-up-to-20-emails-plus-description = Get alerts for up to 20 emails as part of your { -brand-monitor-plus } subscription.
 announcement-add-up-to-20-emails-plus-cta-label = Add email addresses
