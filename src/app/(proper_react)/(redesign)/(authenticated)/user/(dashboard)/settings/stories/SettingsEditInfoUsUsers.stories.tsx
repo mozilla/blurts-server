@@ -4,6 +4,7 @@
 
 import type { Meta, StoryObj } from "@storybook/react";
 
+import { Cookies } from "react-cookie";
 import { SettingsWrapper } from "./SettingsStoryWrapper";
 import { CONST_SETTINGS_TAB_SLUGS } from "../../../../../../../../constants";
 import { mockedProfileDataMin } from "./settingsMockData";
@@ -60,4 +61,11 @@ export const SettingsEditYourInfoDetailsSaved: Story = {
     profileData: mockedProfileDataMin,
     hasPlus: true,
   },
+  decorators: [
+    (Story) => {
+      const cookies = new Cookies(null);
+      cookies.set("justSavedDetails", "justSavedDetails");
+      return <Story />;
+    },
+  ],
 };

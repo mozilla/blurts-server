@@ -68,6 +68,8 @@ settings-alert-preferences-allow-monthly-monitor-plus-report-title = Monthly { -
 
 settings-update-scan-info-description = { -brand-monitor } is most effective at protecting your info when you add specific details. Add any of your name variations, emails, or locations. <a>Why should I add details for my scan?</a>
 settings-update-scan-info-upsell-cta-label = Upgrade to { -brand-monitor-plus } to protect your personal info
+settings-details-saved-notification-title = Details saved
+settings-details-saved-notification-message = Thanks for helping Monitor protect you. We'll use this info in future scans.
 
 ## Details about you
 

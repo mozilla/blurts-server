@@ -22,16 +22,11 @@ function SettingsDetailsSavedNotification() {
   const [isDismissed, setIsDismissed] = useState(true);
 
   useEffect(() => {
-    if (cookies.savedDetailsNotification) {
+    if (cookies.justSavedDetails) {
       removeCookie("justSavedDetails");
       setIsDismissed(false);
     }
-    // Calling `removeCookie` appears to result in a new `cookies` object that
-    // still contains the removed cookie, leading to an eternal loop. Since we
-    // really only need to run the remove-cookie-and-show-notification code
-    // once, an empty dependencies array is OK in this case:
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isDismissed]);
+  }, [cookies.justSavedDetails, removeCookie, isDismissed]);
 
   if (isDismissed) {
     return null;
@@ -41,12 +36,10 @@ function SettingsDetailsSavedNotification() {
     <div role="alert" aria-live="assertive" className={styles.banner}>
       <CheckCircledIcon alt="" />
       <span className={styles.content}>
-        <strong>Details saved</strong>
-        <p>
-          {
-            "Thanks for helping Monitor protect you. We'll use this info in future scans."
-          }
-        </p>
+        <strong>
+          {l10n.getString("settings-details-saved-notification-title")}
+        </strong>
+        <p>{l10n.getString("settings-details-saved-notification-message")}</p>
       </span>
       <TelemetryButton
         className={styles.closeButton}

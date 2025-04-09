@@ -11,7 +11,7 @@ import {
   EditProfileFormInputs,
   EditProfileInputOnChangeReturnValue,
 } from "./EditProfileFormInputs";
-import { Button } from "../../../../../../../../components/client/Button";
+import { TelemetryButton } from "../../../../../../../../components/client/TelemetryButton";
 import { useL10n } from "../../../../../../../../hooks/l10n";
 import styles from "./EditProfileForm.module.scss";
 import { onHandleUpdateProfileData } from "#settings/actions";
@@ -126,14 +126,21 @@ function EditProfileForm(props: { profileData: OnerepProfileRow }) {
             formRef.current?.requestSubmit();
           }}
         />
-        <Button
+        <TelemetryButton
           type="submit"
           variant="primary"
           isLoading={updateProfileActionIsPending}
           disabled={!hasProfileDataChanged}
+          event={{
+            module: "ctaButton",
+            name: "click",
+            data: {
+              button_id: "settings_edit_profile_form_submitted",
+            },
+          }}
         >
           {l10n.getString("settings-edit-profile-info-form-save-button-label")}
-        </Button>
+        </TelemetryButton>
       </div>
     </form>
   );

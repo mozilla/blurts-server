@@ -12,6 +12,7 @@ import SettingsMeta, {
   SettingsEditNotifications,
 } from "./stories/SettingsRedesign.stories";
 import SettingsEditYourInfoMeta, {
+  SettingsEditYourInfoDetailsSaved,
   SettingsEditYourInfoNoPlus,
   SettingsEditYourInfoWithPlus,
 } from "./stories/SettingsEditInfoUsUsers.stories";
@@ -360,6 +361,52 @@ describe("Settings page redesign", () => {
 
       const maxEmailsIndicator = screen.getByText("Add up to ⁨20⁩");
       expect(maxEmailsIndicator).toBeInTheDocument();
+    });
+
+    it("does not show a notification if the user did not updated their profile details", () => {
+      const ComposedStory = composeStory(
+        SettingsEditYourInfoWithPlus,
+        SettingsEditYourInfoMeta,
+      );
+      render(<ComposedStory />);
+
+      const notification = screen.queryByRole("alert");
+      expect(notification).not.toBeInTheDocument();
+    });
+
+    it("shows a notification if the user just updated their profile details", () => {
+      const ComposedStory = composeStory(
+        SettingsEditYourInfoDetailsSaved,
+        SettingsEditYourInfoMeta,
+      );
+      render(<ComposedStory />);
+
+      const notification = screen.getByRole("alert");
+      expect(notification).toBeInTheDocument();
+
+      const confirmationTitle = within(notification).getByText("Details saved");
+      expect(confirmationTitle).toBeInTheDocument();
+    });
+
+    it("dismisses the “profile details saved” notification when the user dismisses it", async () => {
+      const user = userEvent.setup();
+      const ComposedStory = composeStory(
+        SettingsEditYourInfoDetailsSaved,
+        SettingsEditYourInfoMeta,
+      );
+      render(<ComposedStory />);
+
+      const notification = screen.getByRole("alert");
+      expect(notification).toBeInTheDocument();
+      const dismissButton = within(notification).getByRole("button", {
+        name: "Dismiss",
+      });
+
+      await act(async () => {
+        await user.click(dismissButton);
+      });
+
+      expect(notification).not.toBeInTheDocument();
     });
   });
 

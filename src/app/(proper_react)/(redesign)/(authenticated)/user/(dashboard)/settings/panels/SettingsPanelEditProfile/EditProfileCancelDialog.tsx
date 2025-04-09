@@ -8,7 +8,6 @@ import Image from "next/image";
 import { useOverlayTriggerState } from "react-stately";
 import { useOverlayTrigger } from "react-aria";
 import { useL10n } from "../../../../../../../../hooks/l10n";
-import { Button } from "../../../../../../../../components/client/Button";
 import { TelemetryButton } from "../../../../../../../../components/client/TelemetryButton";
 import { useTelemetry } from "../../../../../../../../hooks/useTelemetry";
 import { ModalOverlay } from "../../../../../../../../components/client/dialog/ModalOverlay";
@@ -46,9 +45,19 @@ function EditProfileCancelDialog(props: { onSave: () => void }) {
 
   return (
     <>
-      <Button {...triggerProps} variant="secondary">
+      <TelemetryButton
+        {...triggerProps}
+        variant="secondary"
+        event={{
+          module: "button",
+          name: "click",
+          data: {
+            button_id: "settings_edit_profile_form_cancel",
+          },
+        }}
+      >
         {l10n.getString("settings-edit-profile-info-form-cancel-button-label")}
-      </Button>
+      </TelemetryButton>
       {dialogState.isOpen && (
         <ModalOverlay state={dialogState} {...overlayProps} isDismissable>
           <Dialog
