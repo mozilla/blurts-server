@@ -203,7 +203,7 @@ function EditProfileFormInputs(props: {
         <div className={styles.itemDob}>
           <span className={styles.dobString}>
             {dateOfBirthString}
-            <LockIcon alt="" />
+            <LockIcon alt="" height="14" width="14" />
           </span>
           <p>
             {l10n.getFragment(
