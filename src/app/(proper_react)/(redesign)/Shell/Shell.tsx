@@ -20,6 +20,7 @@ import { FeatureFlagName } from "../../../../db/tables/featureFlags";
 import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 import MonitorLogo from "../../images/monitor-logo.svg";
 import styles from "./Shell.module.scss";
+import { UserAnnouncementWithDetails } from "../../../../db/tables/user_announcements";
 
 export type Props = {
   l10n: ExtendedReactLocalization;
@@ -29,6 +30,7 @@ export type Props = {
   countryCode: string;
   enabledFeatureFlags: FeatureFlagName[];
   experimentData: ExperimentData["Features"];
+  announcements: UserAnnouncementWithDetails[] | null;
   hideSidebar?: boolean;
 };
 
@@ -61,8 +63,7 @@ export const Shell = (props: Props) => {
           enabledFeatureFlags={props.enabledFeatureFlags}
           experimentData={props.experimentData}
           l10n={props.l10n}
-          announcements={null}
-          hideSidebar={props.hideSidebar}
+          announcements={props.announcements}
         >
           <div className={styles.page}>{props.children}</div>
         </ShellRedesign>
@@ -76,6 +77,7 @@ export const Shell = (props: Props) => {
           subscriptionBillingAmount={getSubscriptionBillingAmount()}
           enabledFeatureFlags={props.enabledFeatureFlags}
           experimentData={props.experimentData}
+          announcements={props.announcements}
         >
           <div className={styles.wrapper}>
             <nav

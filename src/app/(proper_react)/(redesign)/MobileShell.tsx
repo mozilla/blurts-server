@@ -24,6 +24,8 @@ import { TopNavBar } from "./(public)/TopNavBar";
 import { TopNavBar as RedesignedTopNavBar } from "./(public)/LandingViewRedesign/components/TopNavBar";
 import { ExperimentData } from "../../../telemetry/generated/nimbus/experiments";
 import { NavbarList as NavbarListAuthenticated } from "./Shell/ShellNavbarList";
+import { UserAnnouncementWithDetails } from "../../../db/tables/user_announcements";
+import { AnnouncementDialog } from "../../components/client/toolbar/AnnouncementDialog";
 
 export type Props = {
   countryCode: string;
@@ -38,6 +40,7 @@ export type Props = {
   children: ReactNode;
   enabledFeatureFlags: FeatureFlagName[];
   experimentData: ExperimentData["Features"];
+  announcements?: UserAnnouncementWithDetails[] | null;
 };
 
 export const MobileShell = (props: Props) => {
@@ -90,6 +93,11 @@ export const MobileShell = (props: Props) => {
           </Link>
         </div>
         <div className={styles.headerEnd}>
+          {/* c8 ignore next 3 */}
+          {props.enabledFeatureFlags.includes("Announcements") &&
+            props.announcements && (
+              <AnnouncementDialog announcements={props.announcements} />
+            )}
           {props.session ? (
             <UserMenu
               user={props.session?.user}

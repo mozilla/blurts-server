@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { getServerSession } from "../../../../../functions/server/getServerSession";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { isAdmin } from "../../../../../api/utils/auth";
 import { getAllAnnouncements } from "../../../../../../db/tables/announcements";
 import { AnnouncementsAdmin } from "./AnnouncementsAdmin";
@@ -11,13 +11,14 @@ import { AnnouncementsAdmin } from "./AnnouncementsAdmin";
 export default async function DevPage() {
   const session = await getServerSession();
 
-  if (
-    !session?.user?.email ||
-    !isAdmin(session.user.email) ||
-    process.env.APP_ENV !== "local"
-  ) {
+  if (!session?.user?.email || !session.user.subscriber?.id) {
+    return redirect("/");
+  }
+
+  if (!isAdmin(session.user.email)) {
     return notFound();
   }
+
   const announcements = await getAllAnnouncements();
 
   return <AnnouncementsAdmin announcements={announcements} />;

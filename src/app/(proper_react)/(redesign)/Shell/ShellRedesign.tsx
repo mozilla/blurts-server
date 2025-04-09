@@ -14,7 +14,7 @@ import { ExperimentData } from "../../../../telemetry/generated/nimbus/experimen
 import MonitorLogo from "../../images/monitor-logo.svg";
 import styles from "./ShellRedesign.module.scss";
 import { NavbarList } from "./ShellNavbarList";
-import { UserAnnouncementsRow } from "knex/types/tables";
+import { UserAnnouncementWithDetails } from "src/db/tables/user_announcements";
 
 export type Props = {
   l10n: ExtendedReactLocalization;
@@ -30,7 +30,7 @@ export type Props = {
     yearly: number;
     monthly: number;
   };
-  announcements: UserAnnouncementsRow[] | null;
+  announcements: UserAnnouncementWithDetails[] | null;
   hideSidebar?: boolean;
 };
 

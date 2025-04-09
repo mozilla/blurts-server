@@ -9,7 +9,7 @@
 .header {
   display: none;
 
-  @media screen and (max-width: tokens.$screen-xl) {
+  @media screen and (max-width: tokens.$screen-md) {
     position: sticky;
     background-color: tokens.$color-white;
     width: 100%;
@@ -32,9 +32,9 @@
     .headerEnd {
       align-self: flex-end;
       display: flex;
-      align-items: center;
-      gap: tokens.$spacing-sm;
+      gap: tokens.$spacing-md;
       justify-content: flex-end;
+      align-items: center;
     }
 
     .signInButton {
@@ -51,7 +51,6 @@
       justify-content: center;
       background-color: transparent;
       border-style: none;
-      padding: tokens.$spacing-md;
       cursor: pointer;
 
       svg {

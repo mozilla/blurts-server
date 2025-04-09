@@ -17,6 +17,7 @@ import { FeatureFlagName } from "../../../../../../../db/tables/featureFlags";
 import { ExperimentData } from "../../../../../../../telemetry/generated/nimbus/experiments";
 import { SubscriberEmailPreferencesOutput } from "../../../../../../../db/tables/subscriber_email_preferences";
 import { SettingsContent } from "./SettingsContent";
+import { UserAnnouncementWithDetails } from "../../../../../../../db/tables/user_announcements";
 
 export type TabType = (typeof CONST_SETTINGS_TAB_SLUGS)[number];
 
@@ -24,7 +25,6 @@ export type Props = {
   l10n: ExtendedReactLocalization;
   user: Session["user"];
   subscriber: SubscriberRow;
-  data?: SubscriberEmailPreferencesOutput;
   monthlySubscriptionUrl: string;
   yearlySubscriptionUrl: string;
   subscriptionBillingAmount: {
@@ -38,10 +38,12 @@ export type Props = {
   enabledFeatureFlags: FeatureFlagName[];
   experimentData: ExperimentData["Features"];
   isEligibleForPremium: boolean;
-  lastScanDate?: Date;
+  userAnnouncements: UserAnnouncementWithDetails[];
   isMonthlySubscriber: boolean;
-  activeTab?: TabType;
+  data?: SubscriberEmailPreferencesOutput;
   profileData?: OnerepProfileRow;
+  lastScanDate?: Date;
+  activeTab?: TabType;
 };
 
 export const SettingsView = (props: Props) => {
@@ -56,6 +58,7 @@ export const SettingsView = (props: Props) => {
         lastScanDate={props.lastScanDate ?? null}
         experimentData={props.experimentData}
         enabledFeatureFlags={props.enabledFeatureFlags}
+        announcements={props.userAnnouncements}
       />
       <SettingsContent
         activeTab={props.activeTab}

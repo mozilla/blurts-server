@@ -22,12 +22,17 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 ## Prompts the user for changes when there is a breach detected of password
 
 breach-checklist-pw-header-text = Oppdater passorda dine og slå på tofaktor-autentisering (2FA).
+# The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
+# Variables:
+#   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
+breach-checklist-pw-body-text = I dei fleste tilfelle vil vi tilrå at du endrar passordet ditt på nettsida til selskapet. Men <b>nettstaden dykkar kan vere nede eller innehalde skadeleg innhald</b>, så ver forsiktig viss du <breached-company-link>besøkjer nettstaden</breached-company-link>. For ekstra vern, sørg for at du bruker unike passord for alle kontoar, slik at eventuelle lekne passord ikkje kan brukast til å få tilgang til andre kontoar. { $passwordManagerLink } kan hjelpe deg med å halde oversikt over alle passorda dine på ein sikker måte.
 
 ## Prompts the user for changes when there is a breach detected of email
 
 # Variables:
 #   $firefoxRelayLink (string) - a link to Firefox Relay, with { -breach-checklist-link-firefox-relay } as the label
 breach-checklist-email-header-2 = Vern e-posten din med ei e-postmaskeringsteneste som { $firefoxRelayLink }.
+breach-checklist-email-body = Dette kan skjule den verkelege e-postadressa din medan du vidaresender e-postar til den verkelege innboksen din.
 
 ## Prompts the user for changes when there is a breach detected of social security number
 
@@ -85,6 +90,8 @@ breach-checklist-phone-header-2 = Vern telefonnummeret ditt med ei maskeringsten
 ## Prompts the user for changes when there is a breach detected of security questions
 
 breach-checklist-sq-header-text = Oppdater sikkerheitsspørsmåla dine.
+# The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
+breach-checklist-sq-body-text = I dei fleste tilfelle vil vi tilrå at du oppdaterer tryggingsspørsmåla dine på nettstaden til selskapet. Men <b>nettstaden dykkar kan vere nede eller innehalde skadeleg innhald</b>, så ver forsiktig viss du <breached-company-link>besøkjer nettstaden</breached-company-link>. For ekstra vern, oppdater desse tryggingsspørsmåla på alle viktige kontoar der du har brukt dei, og lag unike passord for alle kontoar.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 

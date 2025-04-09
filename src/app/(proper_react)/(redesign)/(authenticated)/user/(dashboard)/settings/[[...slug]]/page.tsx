@@ -32,6 +32,7 @@ import { getEmailPreferenceForPrimaryEmail } from "../../../../../../../../db/ta
 import { CONST_SETTINGS_TAB_SLUGS } from "../../../../../../../../constants";
 import getDataBrokerScanProfile from "../../../../../../../functions/server/getDataBrokerScanProfile";
 import { canSubscribeToPremium } from "../../../../../../../functions/universal/user";
+import { initializeUserAnnouncements } from "../../../../../../../../db/tables/user_announcements";
 
 type Props = {
   params: Promise<{
@@ -134,6 +135,10 @@ export default async function SettingsPage(props: Props) {
     countryCode,
   });
 
+  const userAnnouncements = await initializeUserAnnouncements(
+    session.user.subscriber,
+  );
+
   return (
     <SettingsView
       l10n={l10n}
@@ -153,6 +158,7 @@ export default async function SettingsPage(props: Props) {
       isMonthlySubscriber={isMonthlySubscriber}
       activeTab={activeTab}
       isEligibleForPremium={isEligibleForPremium}
+      userAnnouncements={userAnnouncements}
       {...(profileData && { profileData })}
     />
   );
