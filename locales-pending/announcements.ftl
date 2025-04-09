@@ -18,6 +18,26 @@ announcement-big-img-alt = Announcement image
 
 # between announcement- and -title or -description is the announcement_id.
 
+# id: add-more-personal-details
+
 announcement-add-more-personal-details-title = Add more personal details to improve scan accuracy
 announcement-add-more-personal-details-description = { -brand-monitor } is most effective at protecting your info when you add specific details. Add any of your name variations, emails, or locations.
 announcement-add-more-personal-details-cta-label = Add more details
+
+# id: add-up-to-20-emails-plus
+
+announcement-add-up-to-20-emails-plus-title = Monitor more email addresses
+announcement-add-up-to-20-emails-plus-description = Get alerts for up to 20 emails as part of your { -brand-monitor-plus } subscription.
+announcement-add-up-to-20-emails-plus-cta-label = Add email addresses
+
+# id: add-up-to-20-emails-free
+
+announcement-add-up-to-20-emails-free-title = Upgrade to { -brand-plus } and monitor up to 20 emails
+announcement-add-up-to-20-emails-free-description = { -brand-monitor-plus } gets you more protection. Upgrade to see if any of your email addresses were in a data breach.
+announcement-add-up-to-20-emails-free-cta-label = Upgrade
+
+# id: switch-to-yearly-sub
+
+announcement-switch-to-yearly-sub-title = { -brand-monitor-plus }, now with 35% yearly savings
+announcement-switch-to-yearly-sub-description = Switch to year-round protection with one easy payment.
+announcement-switch-to-yearly-sub-cta-label = Upgrade
