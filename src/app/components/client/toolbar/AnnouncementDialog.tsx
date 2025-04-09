@@ -418,7 +418,6 @@ export const LocalizedAnnouncementString = (
   // Build the key based on the type (fluent IDs are named in this format)
   const key = `announcement-${props.announcement.announcement_id}-${props.type}`;
 
-  // Get the localized string for the key
   const localizedString = l10n.getString(key);
 
   // If the key is not translated, use the fallback values from the announcements table
