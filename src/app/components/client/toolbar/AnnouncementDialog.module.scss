@@ -7,7 +7,6 @@
   margin: 0;
   font: inherit;
   cursor: pointer;
-
   align-items: center;
   justify-content: center;
   color: tokens.$color-violet-70;
@@ -72,7 +71,10 @@
     margin: 0 auto;
 
     button {
-      all: unset;
+      background: none;
+      border: none;
+      margin: 0;
+      font: inherit;
       cursor: pointer;
       border-radius: tokens.$border-radius-xl;
       padding: tokens.$spacing-xs tokens.$spacing-xl;
@@ -96,6 +98,13 @@
     overflow-y: auto;
 
     .announcementItem {
+      background: none;
+      background-color: none;
+      border: none;
+      text-align: start;
+      margin: 0;
+      font: inherit;
+      color: inherit;
       cursor: pointer;
       display: flex;
       flex-direction: row;
@@ -173,7 +182,10 @@
     }
 
     .backBtn {
-      all: unset;
+      background: none;
+      border: none;
+      margin: 0;
+      font: inherit;
       font-weight: 500;
       color: tokens.$color-purple-80;
       border-top: 1px solid tokens.$color-grey-20;
@@ -188,7 +200,10 @@
     }
 
     .clearAllBtn {
-      all: unset;
+      background: none;
+      border: none;
+      margin: 0;
+      font: inherit;
       margin-top: tokens.$spacing-sm;
       font-weight: 500;
       color: tokens.$color-purple-80;

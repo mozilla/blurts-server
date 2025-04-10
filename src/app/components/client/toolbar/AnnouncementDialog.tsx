@@ -317,11 +317,11 @@ export const AnnouncementDialog = ({
                     // List of announcements
 
                     filteredAnnouncements.map((announcement) => (
-                      <div
-                        role="button"
+                      <button
                         className={styles.announcementItem}
                         key={announcement.id}
-                        onClick={() => {
+                        onClick={(e) => {
+                          e.stopPropagation();
                           setRelevantAnnouncement(announcement);
                           setAnnouncementDetailsView(true);
                           handleMarkAsSeen(announcement);
@@ -369,7 +369,7 @@ export const AnnouncementDialog = ({
                             />
                           </dd>
                         </dl>
-                      </div>
+                      </button>
                     ))
                   )}
                   {activeTab === "new" &&
