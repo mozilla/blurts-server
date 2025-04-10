@@ -71,7 +71,7 @@ export const EmailAddressAdderRedesign = ({
   return (
     <>
       <Button {...triggerProps} variant="secondary">
-        {l10n.getString("settings-email-addresses-add-email-cta")}
+        {l10n.getString("settings-email-addresses-add-email-button")}
       </Button>
       <p>
         {l10n.getString("settings-email-addresses-add-email-indicator-limit", {
@@ -194,7 +194,7 @@ const EmailAddressAddForm = (props: {
           isLoading={hasPressedButton}
         >
           {l10n.getString(
-            "settings-email-addresses-initial-dialog-add-email-cta",
+            "settings-email-addresses-initial-dialog-add-email-button-label",
           )}
         </Button>
       </form>

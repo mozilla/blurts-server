@@ -563,7 +563,7 @@ describe("Settings page redesign", () => {
         value: "Middle01",
       },
       {
-        label: "Primary number",
+        label: "Primary phone number",
         value: "(555)555-1234",
       },
     ])("fills the primary optional field: %s", async (input) => {

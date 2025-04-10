@@ -67,7 +67,7 @@ settings-alert-preferences-allow-monthly-monitor-plus-report-title = Monthly { -
 ## Update scan info
 
 settings-update-scan-info-description = { -brand-monitor } is most effective at protecting your info when you add specific details. Add any of your name variations, emails, or locations. <a>Why should I add details for my scan?</a>
-settings-update-scan-info-upsell-cta-label = Upgrade to { -brand-monitor-plus } to protect your personal info
+settings-update-scan-info-upsell-button-label = Upgrade to { -brand-monitor-plus } to protect your personal info
 settings-details-saved-notification-title = Details saved
 settings-details-saved-notification-message = Thanks for helping { -brand-monitor } protect you. We’ll use this info in future scans.
 
@@ -79,7 +79,7 @@ settings-details-about-you-name-label = Name
 settings-details-about-you-date-of-birth-label = Date of birth
 settings-details-about-you-phone-label = Phone number
 settings-details-about-you-location-label = Location
-settings-details-about-you-cta-label = Add details
+settings-details-about-you-button-label = Add details
 # Variables:
 #   $moreCount (number) - The additional number of details for this
 settings-details-about-you-more-indicator = +{ $moreCount } more
@@ -88,7 +88,7 @@ settings-details-about-you-more-indicator = +{ $moreCount } more
 
 settings-email-addresses-header = Email addresses
 settings-email-addresses-description = { -brand-monitor } will alert you if these emails show up in known breaches.
-settings-email-addresses-add-email-cta = Add email address
+settings-email-addresses-add-email-button = Add email address
 # Variables:
 #   $limit (number) - Number of emails that can be added for monitoring.
 settings-email-addresses-add-email-indicator-limit = Add up to { $limit }
@@ -98,13 +98,13 @@ settings-email-addresses-add-email-remove-button-label = Remove
 ## Email address dialog
 
 settings-email-addresses-initial-dialog-header = Add an email address
-settings-email-addresses-initial-dialog-description = We’ll send a verification link for you to confirm you’d like to include in a future { -brand-monitor } scan.
+settings-email-addresses-initial-dialog-description = We’ll send a verification link for you to confirm you’d like to include it in a future { -brand-monitor } scan.
 settings-email-addresses-initial-dialog-add-email-input-label = Enter email address
-settings-email-addresses-initial-dialog-add-email-cta = Send verification link
+settings-email-addresses-initial-dialog-add-email-button-label = Send verification link
 # Variables:
 #   $email (string) - Email address the confirmation has been sent to.
 settings-email-addresses-confirmation-dialog-header = Verification link sent to <b>{ $email }</b>
-settings-email-addresses-confirmation-dialog-description = We’ll send a verification link for you to confirm you’d like to include in a future { -brand-monitor } scan.
+settings-email-addresses-confirmation-dialog-description = Open the link to add it to this account for future { -brand-monitor } scans.
 settings-email-addresses-confirmation-dialog-close-button = Close
 
 ## Edit profile info form
@@ -134,12 +134,12 @@ settings-edit-profile-info-form-input-label-primary-middle-name = Middle name
 settings-edit-profile-info-form-input-label-other-middle-name = Other middle name
 settings-edit-profile-info-form-input-label-primary-last-name = Legal last name
 settings-edit-profile-info-form-input-label-other-last-name = Other last name
-settings-edit-profile-info-form-input-label-primary-phone-number = Primary number
+settings-edit-profile-info-form-input-label-primary-phone-number = Primary phone number
 settings-edit-profile-info-form-input-label-other-phone-number = Other phone number
 settings-edit-profile-info-form-input-label-primary-location = City and state
 settings-edit-profile-info-form-input-label-other-location = Past location
 settings-edit-profile-info-form-input-error-first-name = First name is required
-settings-edit-profile-info-form-input-error-middle-name = First name is required
+settings-edit-profile-info-form-input-error-middle-name = Middle name is required
 settings-edit-profile-info-form-input-error-last-name = Last name is required
 settings-edit-profile-info-form-input-error-phone-number = Enter a valid phone number
 settings-edit-profile-info-form-input-error-current-location = A current location is required

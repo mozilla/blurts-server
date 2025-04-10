@@ -211,7 +211,7 @@ function ProfileInfoSection({
             },
           }}
         >
-          {l10n.getString("settings-details-about-you-cta-label")}
+          {l10n.getString("settings-details-about-you-button-label")}
         </TelemetryButton>
       </span>
     </section>
@@ -297,7 +297,7 @@ function SettingsPanelEditInfoRedesign(
               link_id: "settings_edit_info_upsell_cta",
             }}
           >
-            {l10n.getString("settings-update-scan-info-upsell-cta-label")}
+            {l10n.getString("settings-update-scan-info-upsell-button-label")}
           </TelemetryLink>
         </div>
       )}
