@@ -8,7 +8,7 @@
   },
   "type": "module",
   "scripts": {
-    "dev": "npm run build-nimbus && next dev --port=6060",
+    "dev": "npm run build-nimbus && next dev --turbo --port=6060",
     "dev:cron:first-data-broker-removal-fixed": "tsx --tsconfig tsconfig.cronjobs.json src/scripts/cronjobs/firstDataBrokerRemovalFixed.tsx",
     "dev:cron:monthly-activity-free": "tsx --tsconfig tsconfig.cronjobs.json src/scripts/cronjobs/monthlyActivityFree.tsx",
     "dev:cron:monthly-activity-plus": "tsx --tsconfig tsconfig.cronjobs.json src/scripts/cronjobs/monthlyActivityPlus.tsx",
@@ -106,6 +106,7 @@
     "pg": "^8.16.0",
     "react": "19.1.1",
     "react-aria": "^3.40.0",
+    "raw-loader": "^4.0.2",
     "react-cookie": "^8.0.1",
     "react-dom": "19.1.1",
     "react-intersection-observer": "^9.16.0",
