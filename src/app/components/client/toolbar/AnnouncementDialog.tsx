@@ -34,6 +34,11 @@ export const AnnouncementDialog = ({
         recordTelemetry("button", "click", {
           button_id: "opened_announcements",
         });
+      } else {
+        recordTelemetry("button", "click", {
+          button_id: "closed_announcements",
+        });
+        setActiveTab("new");
       }
     },
   });
