@@ -29,6 +29,7 @@ import { renderEmail } from "../../../emails/renderEmail";
 import { SignupReportEmail } from "../../../emails/templates/signupReport/SignupReportEmail";
 import { getEnvVarsOrThrow } from "../../../envVars";
 import { sanitizeSubscriberRow } from "../../functions/server/sanitize";
+import { getMoscaryJWT } from "../../functions/server/generateJWT";
 
 const envVars = getEnvVarsOrThrow([
   "OAUTH_AUTHORIZATION_URI",
@@ -255,7 +256,17 @@ export const authOptions: AuthOptions = {
       }
       if (token.subscriber) {
         session.user.subscriber = token.subscriber;
-
+        if (
+          token.subscriber.fxa_uid &&
+          token.subscriber.primary_email &&
+          token.jti
+        ) {
+          session.user.moscaryJWT = await getMoscaryJWT(
+            token.subscriber.fxa_uid,
+            token.subscriber.primary_email,
+            token.jti,
+          );
+        }
         // refresh token
         const dbFxATokens = await getFxATokens(token.subscriber.id);
         if (
