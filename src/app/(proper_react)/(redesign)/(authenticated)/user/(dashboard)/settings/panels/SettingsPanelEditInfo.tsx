@@ -18,7 +18,7 @@ import {
 import { useTelemetry } from "../../../../../../../hooks/useTelemetry";
 import { Button } from "../../../../../../../components/client/Button";
 import styles from "./SettingsPanelEditInfo.module.scss";
-import { onRemoveEmail } from "../actions";
+import { onRemoveEmail } from "#settings/actions";
 
 export type SettingsPanelEditInfoProps = {
   breachCountByEmailAddress: Record<string, number>;
