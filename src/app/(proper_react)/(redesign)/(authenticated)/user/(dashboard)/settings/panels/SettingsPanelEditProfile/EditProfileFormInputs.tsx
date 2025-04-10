@@ -318,10 +318,7 @@ function EditProfileFormInputs(props: {
       );
     case "addresses":
       const addressData = props.profileData[props.profileDataKey];
-      const primaryAddressItem =
-        addressData[0].city && addressData[0].state
-          ? `${addressData[0].city}, ${addressData[0].state}, USA`
-          : "";
+      const primaryAddressItem = `${addressData[0].city}, ${addressData[0].state}, USA`;
       const secondaryAddressItems = addressData.slice(1);
       return (
         <>
@@ -335,6 +332,9 @@ function EditProfileFormInputs(props: {
             label={l10n.getString(
               `settings-edit-profile-info-form-input-label-primary-location`,
             )}
+            // These lines show as not covered even though there are unit tests for updating
+            // the LocationAutocompleteInput in the test file `SettingsPageRedesign.test.tsx`.
+            /* c8 ignore next 7 */
             onChange={(value) =>
               props.handleOnInputChange({
                 key: props.profileDataKey as ProfileDataListKey,
@@ -375,6 +375,9 @@ function EditProfileFormInputs(props: {
                           label={l10n.getString(
                             "settings-edit-profile-info-form-input-label-other-location",
                           )}
+                          // These lines show as not covered even though there are unit tests for updating
+                          // the LocationAutocompleteInput in the test file `SettingsPageRedesign.test.tsx`.
+                          /* c8 ignore next 7 */
                           onChange={(value) =>
                             props.handleOnInputChange({
                               key: props.profileDataKey as ProfileDataListKey,
@@ -421,6 +424,12 @@ function EditProfileFormInputs(props: {
           )}
         </>
       );
+    // Adding the c8 ignore because it is not expected that we fallthrough
+    // and hit the default case.
+    // The last two closing lines are also showing as not covered.
+    /* c8 ignore next 4 */
+    default:
+      return null;
   }
 }
 

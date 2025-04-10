@@ -61,6 +61,9 @@ function EditProfileForm(props: { profileData: OnerepProfileRow }) {
     } else {
       const [city, state, _countryCode] = value.split(", ");
       formDataUpdated[key as ProfileDataListKey][index] =
+        // This line show as not covered even though there are unit tests for updating
+        // the LocationAutocompleteInput in the test file `SettingsPageRedesign.test.tsx`.
+        /* c8 ignore next */
         key === "addresses" ? { city, state } : value;
     }
     setProfileFormData(formDataUpdated);
