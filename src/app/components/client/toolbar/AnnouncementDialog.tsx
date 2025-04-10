@@ -27,7 +27,7 @@ export const AnnouncementDialog = ({
 }: AnnouncementDialogProps) => {
   const l10n = useL10n();
   const recordTelemetry = useTelemetry();
-  const triggerRef = useRef<HTMLButtonElement>(null);
+  const triggerRef = useRef<HTMLButtonElement | null>(null);
   const triggerState = useOverlayTriggerState({
     onOpenChange: (isOpen) => {
       if (isOpen) {
@@ -165,6 +165,7 @@ export const AnnouncementDialog = ({
         {...buttonProps}
         className={styles.announcementBtn}
         ref={triggerRef}
+        aria-haspopup={true}
         aria-label={l10n.getString("announcement-dialog-trigger-alt")}
       >
         <AnnouncementsIcon alt="" />

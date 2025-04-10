@@ -1,10 +1,15 @@
 @use "../../../tokens";
 
 .announcementBtn {
-  all: unset;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  cursor: pointer;
+
   align-items: center;
   justify-content: center;
-  cursor: pointer;
   color: tokens.$color-violet-70;
   position: relative;
 
