@@ -22,6 +22,7 @@ import Meta, {
 } from "./LandingViewRedesign.stories";
 import { useTelemetry } from "../../../../hooks/useTelemetry";
 import { deleteAllCookies } from "../../../../functions/client/deleteAllCookies";
+import { Cookies } from "react-cookie";
 
 jest.mock("next-auth/react", () => {
   return {
@@ -577,6 +578,130 @@ describe("Pricing plan", () => {
       expect.objectContaining({
         button_id: "clicked_free_pricing_card",
       }),
+    );
+  });
+
+  it("confirms that the pricing card yearly upsell has the correct link for SubPlat2", async () => {
+    const ComposedStory = composeStory(LandingRedesignUs, Meta);
+    render(<ComposedStory />);
+
+    const plusCard = screen.getByLabelText("Monitor Plus");
+    const upsellButton = getByRole(plusCard, "link", {
+      name: "Get ⁨Monitor Plus⁩",
+    });
+    expect(upsellButton).toHaveAttribute(
+      "href",
+      "https://accounts.stage.mozaws.net/subscriptions/products/prod_NErZh679W62lai?plan=price_1NvqawKb9q6OnNsLRTnYrtrV&entrypoint=monitor.mozilla.org-monitor-product-page&form_type=button&data_cta_position=pricing&utm_source=product&utm_medium=monitor&utm_campaign=pricing",
+    );
+  });
+
+  it("confirms that the pricing card monthly upsell has the correct link for SubPlat2", async () => {
+    const ComposedStory = composeStory(LandingRedesignUs, Meta);
+    render(<ComposedStory />);
+
+    const user = userEvent.setup();
+    const plusCard = screen.getByLabelText("Monitor Plus");
+    const upsellButton = getByRole(plusCard, "link", {
+      name: "Get ⁨Monitor Plus⁩",
+    });
+    const monthlyToggle = getByRole(plusCard, "radio", { name: "Monthly" });
+    // jsdom will complain about not being able to navigate to a different page
+    // after clicking the link; suppress that error, as it's not relevant to the
+    // test:
+    jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+    await user.click(monthlyToggle);
+
+    expect(upsellButton).toHaveAttribute(
+      "href",
+      "https://accounts.stage.mozaws.net/subscriptions/products/prod_NErZh679W62lai?plan=price_1MUNq0Kb9q6OnNsL4BoJgepf&entrypoint=monitor.mozilla.org-monitor-product-page&form_type=button&data_cta_position=pricing&utm_source=product&utm_medium=monitor&utm_campaign=pricing",
+    );
+  });
+
+  it("confirms that the pricing card yearly upsell has the correct link with UTM parameters for SubPlat2", async () => {
+    const cookies = new Cookies(null);
+    cookies.set("attributionsLastTouch", {
+      utm_source: "source_last_touch",
+      utm_medium: "medium_last_touch",
+      utm_campaign: "campaign_last_touch",
+    });
+    const ComposedStory = composeStory(LandingRedesignUs, Meta);
+    render(<ComposedStory />);
+
+    const plusCard = screen.getByLabelText("Monitor Plus");
+    const upsellButton = getByRole(plusCard, "link", {
+      name: "Get ⁨Monitor Plus⁩",
+    });
+    expect(upsellButton).toHaveAttribute(
+      "href",
+      "https://accounts.stage.mozaws.net/subscriptions/products/prod_NErZh679W62lai?plan=price_1NvqawKb9q6OnNsLRTnYrtrV&utm_source=source_last_touch&utm_medium=medium_last_touch&utm_campaign=campaign_last_touch&entrypoint=monitor.mozilla.org-monitor-product-page&form_type=button&data_cta_position=pricing",
+    );
+  });
+
+  it("confirms that the pricing card yearly upsell has the correct link for SubPlat3", async () => {
+    const ComposedStory = composeStory(LandingRedesignUs, Meta);
+    render(
+      <ComposedStory
+        enabledFeatureFlags={["LandingPageRedesign", "SubPlat3"]}
+      />,
+    );
+
+    const plusCard = screen.getByLabelText("Monitor Plus");
+    const upsellButton = getByRole(plusCard, "link", {
+      name: "Get ⁨Monitor Plus⁩",
+    });
+    expect(upsellButton).toHaveAttribute(
+      "href",
+      "https://payments-next.stage.fxa.nonprod.webservices.mozgcp.net/monitorplusstage/yearly/landing?entrypoint=monitor.mozilla.org-monitor-product-page&form_type=button&data_cta_position=pricing&utm_source=product&utm_medium=monitor&utm_campaign=pricing",
+    );
+  });
+
+  it("confirms that the pricing card monthly upsell has the correct link for SubPlat3", async () => {
+    const ComposedStory = composeStory(LandingRedesignUs, Meta);
+    render(
+      <ComposedStory
+        enabledFeatureFlags={["LandingPageRedesign", "SubPlat3"]}
+      />,
+    );
+
+    const user = userEvent.setup();
+    const plusCard = screen.getByLabelText("Monitor Plus");
+    const upsellButton = getByRole(plusCard, "link", {
+      name: "Get ⁨Monitor Plus⁩",
+    });
+    const monthlyToggle = getByRole(plusCard, "radio", { name: "Monthly" });
+    // jsdom will complain about not being able to navigate to a different page
+    // after clicking the link; suppress that error, as it's not relevant to the
+    // test:
+    jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+    await user.click(monthlyToggle);
+
+    expect(upsellButton).toHaveAttribute(
+      "href",
+      "https://payments-next.stage.fxa.nonprod.webservices.mozgcp.net/monitorplusstage/monthly/landing?entrypoint=monitor.mozilla.org-monitor-product-page&form_type=button&data_cta_position=pricing&utm_source=product&utm_medium=monitor&utm_campaign=pricing",
+    );
+  });
+
+  it("confirms that the pricing card yearly upsell has the correct link with UTM parameters for SubPlat3", async () => {
+    const cookies = new Cookies(null);
+    cookies.set("attributionsLastTouch", {
+      utm_source: "source_last_touch",
+      utm_medium: "medium_last_touch",
+      utm_campaign: "campaign_last_touch",
+    });
+    const ComposedStory = composeStory(LandingRedesignUs, Meta);
+    render(
+      <ComposedStory
+        enabledFeatureFlags={["LandingPageRedesign", "SubPlat3"]}
+      />,
+    );
+
+    const plusCard = screen.getByLabelText("Monitor Plus");
+    const upsellButton = getByRole(plusCard, "link", {
+      name: "Get ⁨Monitor Plus⁩",
+    });
+    expect(upsellButton).toHaveAttribute(
+      "href",
+      "https://payments-next.stage.fxa.nonprod.webservices.mozgcp.net/monitorplusstage/yearly/landing?utm_source=source_last_touch&utm_medium=medium_last_touch&utm_campaign=campaign_last_touch&entrypoint=monitor.mozilla.org-monitor-product-page&form_type=button&data_cta_position=pricing",
     );
   });
 });

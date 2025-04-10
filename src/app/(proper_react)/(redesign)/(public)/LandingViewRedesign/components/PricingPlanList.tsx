@@ -25,6 +25,7 @@ import { CheckIcon } from "../../../../../components/server/Icons";
 import { ScanLimit } from "../../ScanLimit";
 import { FreeScanCta } from "../../FreeScanCta";
 import { ExperimentData } from "../../../../../../telemetry/generated/nimbus/experiments";
+import { FeatureFlagName } from "../../../../../../db/tables/featureFlags";
 
 export type Props = {
   "aria-labelledby": string;
@@ -36,6 +37,7 @@ export type Props = {
     yearly: number;
     monthly: number;
   };
+  enabledFeatureFlags: FeatureFlagName[];
 };
 
 type ScanLimitProp = {
@@ -75,6 +77,8 @@ export const PricingPlanList = (props: Props & ScanLimitProp) => {
     },
   );
   const searchParam = useRef(newSearchParam);
+  // SubPlat2 subscription links already have the UTM parameter `?plan` appended.
+  const additionalSubplatParamsString = `${props.enabledFeatureFlags.includes("SubPlat3") ? "?" : "&"}${searchParam.current.toString()}`;
 
   const roundedPriceFormatter = new Intl.NumberFormat(getLocale(l10n), {
     style: "currency",
@@ -193,7 +197,7 @@ export const PricingPlanList = (props: Props & ScanLimitProp) => {
             aria-describedby="pricingPlansMonthlyOrYearly pricingPlansReassurancePlus"
             disabled={props.scanLimitReached}
             variant="primary"
-            href={`${props.premiumSubscriptionUrl[billingPeriod]}&${searchParam.current.toString()}`}
+            href={`${props.premiumSubscriptionUrl[billingPeriod]}${additionalSubplatParamsString}`}
             event={{
               module: "upgradeIntent",
               name: "click",

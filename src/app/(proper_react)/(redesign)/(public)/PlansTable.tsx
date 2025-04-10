@@ -62,6 +62,7 @@ import {
 import { useCookies } from "react-cookie";
 import { modifyAttributionsForUrlSearchParams } from "../../../functions/universal/attributions";
 import { TelemetryButton } from "../../../components/client/TelemetryButton";
+import { FeatureFlagName } from "../../../../db/tables/featureFlags";
 
 export type Props = {
   "aria-labelledby": string;
@@ -73,6 +74,7 @@ export type Props = {
     yearly: number;
     monthly: number;
   };
+  enabledFeatureFlags: FeatureFlagName[];
 };
 
 type ScanLimitProp = {
@@ -112,6 +114,9 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
     },
   );
   searchParam.current = newSearchParam;
+  // SubPlat2 subscription links already have the UTM parameter `?plan` appended.
+  const additionalSubplatParamsString = `${props.enabledFeatureFlags.includes("SubPlat3") ? "?" : "&"}${searchParam.current.toString()}`;
+
   const monthlyPriceAnnualBilling = props.subscriptionBillingAmount["yearly"];
   const monthlyPriceMonthlyBilling = props.subscriptionBillingAmount["monthly"];
 
@@ -208,7 +213,7 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
               aria-describedby="plansTableMonthlyOrYearly plansTableReassurancePlus"
               disabled={props.scanLimitReached}
               variant="primary"
-              href={`${props.premiumSubscriptionUrl[billingPeriod]}&${searchParam.current.toString()}`}
+              href={`${props.premiumSubscriptionUrl[billingPeriod]}${additionalSubplatParamsString}`}
               className={styles.cta}
               event={{
                 module: "upgradeIntent",
@@ -837,7 +842,7 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
                   aria-describedby="plansTableMonthlyOrYearly plansTableReassurancePlus"
                   disabled={props.scanLimitReached}
                   variant="primary"
-                  href={`${props.premiumSubscriptionUrl[billingPeriod]}&${searchParam.current.toString()}`}
+                  href={`${props.premiumSubscriptionUrl[billingPeriod]}${additionalSubplatParamsString}`}
                   event={{
                     module: "upgradeIntent",
                     name: "click",
