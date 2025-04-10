@@ -16,6 +16,7 @@ import {
   createRandomScanResult,
   createRandomBreach,
   createUserWithPremiumSubscription,
+  createRandomAnnouncement,
 } from "../../../../../../../apiMocks/mockData";
 import { SubscriberBreach } from "../../../../../../../utils/subscriberBreaches";
 import { LatestOnerepScanData } from "../../../../../../../db/tables/onerep_scans";
@@ -27,6 +28,7 @@ import {
   brokerOptions,
   DashboardWrapperProps,
 } from "./Dashboard.stories";
+import { UserAnnouncementWithDetails } from "../../../../../../../db/tables/user_announcements";
 
 const DashboardWrapper = (props: DashboardWrapperProps) => {
   const mockedResolvedBreach: SubscriberBreach = createRandomBreach({
@@ -162,6 +164,12 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
     }))
     .filter(() => Math.random() < 0.1);
 
+  const mockedAnnouncements: UserAnnouncementWithDetails[] = [
+    createRandomAnnouncement({ audience: "non_us" }),
+    createRandomAnnouncement({ audience: "non_us" }),
+    createRandomAnnouncement({ audience: "non_us" }),
+  ];
+
   return (
     <SessionProvider session={mockedSession}>
       <CountryCodeProvider countryCode={props.countryCode}>
@@ -179,6 +187,7 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
               },
             }
           }
+          announcements={mockedAnnouncements}
         >
           <DashboardEl
             user={user}
@@ -213,6 +222,7 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
             signInCount={props.signInCount ?? null}
             autoOpenUpsellDialog={props.autoOpenUpsellDialog ?? false}
             removalTimeEstimates={mockedRemovalTimeEstimates}
+            userAnnouncements={mockedAnnouncements}
           />
         </Shell>
       </CountryCodeProvider>
