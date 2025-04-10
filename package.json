@@ -112,7 +112,7 @@
     "react-stately": "^3.36.1",
     "react-toastify": "^11.0.5",
     "server-only": "^0.0.1",
-    "sharp": "^0.34.0",
+    "sharp": "^0.34.1",
     "uuid": "^11.1.0",
     "winston": "^3.17.0"
   },
