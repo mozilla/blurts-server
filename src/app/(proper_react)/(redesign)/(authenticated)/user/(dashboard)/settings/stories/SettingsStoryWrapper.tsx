@@ -73,6 +73,7 @@ export const SettingsWrapper = (props: SettingsWrapperProps) => {
           enabledFeatureFlags={props.enabledFeatureFlags}
           experimentData={defaultExperimentData["Features"]}
           hideSidebar={props.activeTab === "edit-profile"}
+          announcements={null}
         >
           <SettingsView
             l10n={getL10n()}
@@ -102,6 +103,7 @@ export const SettingsWrapper = (props: SettingsWrapperProps) => {
             activeTab={props.activeTab}
             isEligibleForPremium={props.isEligibleForPremium}
             profileData={props.profileData}
+            userAnnouncements={[]}
           />
         </Shell>
       </CountryCodeProvider>
