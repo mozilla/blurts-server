@@ -17,7 +17,7 @@ import {
   lookupFxaUid,
   getOnerepProfile,
   updateOnerepProfile,
-  triggerManualPaidProfileScanForTestingPurposes,
+  triggerManualProfileScan,
   getAllProfileScans,
 } from "./actions";
 import { OnerepProfileRow, OnerepScanRow } from "knex/types/tables";
@@ -136,8 +136,10 @@ const ProfileDataInputs = ({
 };
 
 export const UserAdmin = ({
+  isLocal,
   enabledFeatureFlags,
 }: {
+  isLocal: boolean;
   enabledFeatureFlags: FeatureFlagName[];
 }) => {
   const session = useSession();
@@ -271,9 +273,7 @@ export const UserAdmin = ({
 
     try {
       if (subscriberData?.onerepProfileId) {
-        await triggerManualPaidProfileScanForTestingPurposes(
-          subscriberData.onerepProfileId,
-        );
+        await triggerManualProfileScan(subscriberData.onerepProfileId);
         setProfileScans(subscriberData?.onerepProfileId);
         setStatus(`Running manual scan for [${emailInput}] succeeded.`);
       }
@@ -303,30 +303,32 @@ export const UserAdmin = ({
         <h2>Subscriber</h2>
         {subscriberData ? (
           <>
-            <div className={styles.actions}>
-              {subscriberData.subscriptions?.includes("monitor") ? (
+            {isLocal && (
+              <div className={styles.actions}>
+                {subscriberData.subscriptions?.includes("monitor") ? (
+                  <Button
+                    variant="secondary"
+                    onPress={() => void performAction("unsubscribe")}
+                  >
+                    Remove Plus subscription
+                  </Button>
+                ) : (
+                  <Button
+                    variant="secondary"
+                    onPress={() => void performAction("subscribe")}
+                  >
+                    Add Plus subscription
+                  </Button>
+                )}
                 <Button
                   variant="secondary"
-                  onPress={() => void performAction("unsubscribe")}
+                  destructive={true}
+                  onPress={() => void performAction("delete_subscriber")}
                 >
-                  Remove Plus subscription
+                  Delete subscriber
                 </Button>
-              ) : (
-                <Button
-                  variant="secondary"
-                  onPress={() => void performAction("subscribe")}
-                >
-                  Add Plus subscription
-                </Button>
-              )}
-              <Button
-                variant="secondary"
-                destructive={true}
-                onPress={() => void performAction("delete_subscriber")}
-              >
-                Delete subscriber
-              </Button>
-            </div>
+              </div>
+            )}
             <div className={styles.content}>
               <DataTable header="Subscriber data" data={subscriberData} open />
             </div>
@@ -341,43 +343,51 @@ export const UserAdmin = ({
             <h2>OneRep profile</h2>
             {onerepProfileData ? (
               <>
-                <div className={styles.actions}>
-                  <Button
-                    variant="secondary"
-                    destructive={true}
-                    onPress={() => void performAction("delete_onerep_profile")}
-                  >
-                    Delete profile
-                  </Button>
-                  <Button
-                    variant="secondary"
-                    destructive={true}
-                    onPress={() => void performAction("delete_onerep_scans")}
-                  >
-                    Delete scans
-                  </Button>
-                  <Button
-                    variant="secondary"
-                    destructive={true}
-                    onPress={() =>
-                      void performAction("delete_onerep_scan_results")
-                    }
-                  >
-                    Delete scan results
-                  </Button>
-                </div>
-                <ProfileDataInputs
-                  data={onerepProfileData.local}
-                  isEnabled={enabledFeatureFlags.includes(
-                    "EditScanProfileDetails",
-                  )}
-                  onChange={(updatedProfileData) => {
-                    void updateProfileAction(updatedProfileData);
-                  }}
-                  onError={(error) => {
-                    setStatus(`[Updating profile failed: [${error}].`);
-                  }}
-                />
+                {isLocal && (
+                  <>
+                    <div className={styles.actions}>
+                      <Button
+                        variant="secondary"
+                        destructive={true}
+                        onPress={() =>
+                          void performAction("delete_onerep_profile")
+                        }
+                      >
+                        Delete profile
+                      </Button>
+                      <Button
+                        variant="secondary"
+                        destructive={true}
+                        onPress={() =>
+                          void performAction("delete_onerep_scans")
+                        }
+                      >
+                        Delete scans
+                      </Button>
+                      <Button
+                        variant="secondary"
+                        destructive={true}
+                        onPress={() =>
+                          void performAction("delete_onerep_scan_results")
+                        }
+                      >
+                        Delete scan results
+                      </Button>
+                    </div>
+                    <ProfileDataInputs
+                      data={onerepProfileData.local}
+                      isEnabled={enabledFeatureFlags.includes(
+                        "EditScanProfileDetails",
+                      )}
+                      onChange={(updatedProfileData) => {
+                        void updateProfileAction(updatedProfileData);
+                      }}
+                      onError={(error) => {
+                        setStatus(`[Updating profile failed: [${error}].`);
+                      }}
+                    />
+                  </>
+                )}
                 <div className={styles.content}>
                   <DataTable
                     header="Current profile data (local)"
@@ -405,8 +415,7 @@ export const UserAdmin = ({
                   variant="primary"
                   onPress={() => void triggerScanAction()}
                 >
-                  Trigger manual scan (additional charge for production
-                  accounts)
+                  Trigger manual scan
                 </Button>
               </>
             ) : (

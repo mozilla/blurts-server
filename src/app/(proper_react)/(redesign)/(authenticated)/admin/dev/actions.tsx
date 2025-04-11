@@ -93,11 +93,7 @@ export async function getAllProfileScans(onerepProfileId: number) {
   }
 }
 
-// This function is only meant for testing purposes if we need to run a scan
-// before the next montly scan.
-export async function triggerManualPaidProfileScanForTestingPurposes(
-  onerepProfileId: number,
-) {
+export async function triggerManualProfileScan(onerepProfileId: number) {
   const session = await getServerSession();
   if (
     !session?.user?.email ||
