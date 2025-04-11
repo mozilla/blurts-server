@@ -33,6 +33,7 @@ announcement-add-up-to-20-emails-plus-cta-label = Add email addresses
 
 # id: add-up-to-20-emails-free
 
+-brand-plus = Plus
 announcement-add-up-to-20-emails-free-title = Upgrade to { -brand-plus } and monitor up to 20 emails
 announcement-add-up-to-20-emails-free-description = { -brand-monitor-plus } gets you more protection. Upgrade to see if any of your email addresses were in a data breach.
 announcement-add-up-to-20-emails-free-cta-label = Upgrade
