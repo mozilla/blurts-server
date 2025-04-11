@@ -19,8 +19,19 @@ interface ComboBoxProps extends ComboBoxStateOptions<object> {
   listPlaceholder?: ReactElement;
 }
 
-function ComboBox(props: ComboBoxProps) {
-  const { errorMessage, isInvalid, isRequired, label, listPlaceholder } = props;
+function ComboBox(
+  props: ComboBoxProps & {
+    hasFloatingLabel?: boolean;
+  },
+) {
+  const {
+    errorMessage,
+    isInvalid,
+    isRequired,
+    label,
+    listPlaceholder,
+    placeholder,
+  } = props;
   const inputRef = useRef(null);
   const listBoxRef = useRef(null);
   const popoverRef = useRef(null);
@@ -46,7 +57,14 @@ function ComboBox(props: ComboBoxProps) {
   return (
     <>
       <div className={inputFieldStyles.comboBox}>
-        <label {...labelProps} className={inputFieldStyles.inputLabel}>
+        <label
+          {...labelProps}
+          className={
+            props.hasFloatingLabel
+              ? inputFieldStyles.floatingLabel
+              : inputFieldStyles.inputLabel
+          }
+        >
           {label}
           {isRequired ? <span aria-hidden="true">*</span> : ""}
         </label>
@@ -56,6 +74,7 @@ function ComboBox(props: ComboBoxProps) {
           className={`${inputFieldStyles.inputField} ${
             !inputProps.value ? inputFieldStyles.noValue : ""
           } ${isInvalid ? /* c8 ignore next */ inputFieldStyles.hasError : ""}`}
+          placeholder={placeholder ?? ""}
         />
         {isInvalid && typeof errorMessage === "string" && (
           <div {...errorMessageProps} className={inputFieldStyles.inputMessage}>

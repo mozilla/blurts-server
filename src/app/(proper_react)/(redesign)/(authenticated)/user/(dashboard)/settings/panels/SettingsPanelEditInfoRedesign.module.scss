@@ -1,0 +1,150 @@
+@use "../../../../../../../tokens";
+
+.header {
+  align-items: center;
+  display: flex;
+  gap: tokens.$spacing-md;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.section {
+  font: tokens.$text-body-md;
+
+  ul {
+    background-color: tokens.$color-grey-05;
+    border: 1px solid tokens.$color-grey-10;
+    border-radius: tokens.$border-radius-md;
+    padding: 0 tokens.$spacing-sm;
+    width: 100%;
+
+    @media screen and (min-width: tokens.$screen-sm) {
+      padding: 0 tokens.$spacing-md;
+    }
+
+    li {
+      align-items: center;
+      border-bottom: 1px solid tokens.$color-grey-10;
+      display: flex;
+      padding: calc(tokens.$spacing-sm + tokens.$spacing-xs) 0;
+      flex-wrap: wrap;
+
+      @media screen and (min-width: tokens.$screen-md) {
+        gap: tokens.$spacing-sm;
+      }
+
+      &:last-of-type {
+        border: none;
+      }
+    }
+  }
+
+  .detail {
+    &Label {
+      font: tokens.$text-body-sm;
+      font-weight: 500;
+
+      @media screen and (min-width: tokens.$screen-md) {
+        font: tokens.$text-body-md;
+        font-weight: 400;
+        min-width: calc(tokens.$content-xs * 0.5);
+      }
+    }
+
+    &Content {
+      align-items: center;
+      display: flex;
+      flex: 1 0 100%;
+
+      @media screen and (min-width: tokens.$screen-md) {
+        justify-content: space-between;
+        flex: 1 0 auto;
+      }
+    }
+
+    &More {
+      color: tokens.$color-grey-40;
+      font: tokens.$text-body-sm;
+      margin-left: auto;
+      text-align: right;
+      white-space: nowrap;
+
+      @media screen and (min-width: tokens.$screen-md) {
+        font: tokens.$text-body-md;
+      }
+    }
+  }
+}
+
+.addButton {
+  display: flex;
+  flex-direction: column;
+  gap: tokens.$spacing-sm;
+  text-align: center;
+  width: 100%;
+
+  @media screen and (min-width: tokens.$screen-sm) {
+    align-items: center;
+    flex-direction: row;
+    gap: tokens.$spacing-md;
+  }
+}
+
+.email {
+  &Wrapper,
+  &Content {
+    align-items: flex-start;
+    display: flex;
+    flex: 1;
+    gap: tokens.$spacing-sm;
+  }
+
+  &Wrapper {
+    .button {
+      color: tokens.$color-purple-70;
+      gap: tokens.$spacing-xs;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    .removeButton {
+      font-size: 0;
+      overflow: hidden;
+      text-indent: 100%;
+      white-space: nowrap;
+
+      @media screen and (min-width: tokens.$screen-md) {
+        font: tokens.$text-body-md;
+        font-weight: 600;
+        text-indent: 0;
+      }
+    }
+  }
+
+  &Content {
+    flex-direction: column;
+    justify-content: space-between;
+
+    @media screen and (min-width: tokens.$screen-md) {
+      flex-direction: row;
+    }
+  }
+
+  &Address {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &Note {
+    color: tokens.$color-orange-70;
+    font: tokens.$text-body-sm;
+    font-weight: 400;
+  }
+}
+
+.upsellLinkContainer {
+  padding: tokens.$spacing-lg;
+}

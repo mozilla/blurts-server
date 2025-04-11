@@ -11,7 +11,7 @@ const currentProfileDetails: OnerepProfileRow = {
   onerep_profile_id: 5678,
   name_suffix: "",
   first_name: "First01",
-  last_name: "last01",
+  last_name: "Last01",
   middle_name: "",
   first_names: [],
   middle_names: [],
@@ -27,7 +27,7 @@ const currentProfileDetails: OnerepProfileRow = {
 
 const newProfileDetails: UpdateableProfileDetails = {
   first_name: "First01",
-  last_name: "last01",
+  last_name: "Last01",
   middle_name: "",
   first_names: [],
   middle_names: [],

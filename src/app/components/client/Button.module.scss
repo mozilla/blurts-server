@@ -147,7 +147,7 @@
     padding: tokens.$spacing-md;
 
     &:hover {
-      background-color: tokens.$color-grey-05;
+      background-color: rgba(tokens.$color-grey-30, 0.2);
     }
   }
 

@@ -30,6 +30,8 @@ import { checkSession } from "../../../../../../../functions/server/checkSession
 import { checkUserHasMonthlySubscription } from "../../../../../../../functions/server/user";
 import { getEmailPreferenceForPrimaryEmail } from "../../../../../../../../db/tables/subscriber_email_preferences";
 import { CONST_SETTINGS_TAB_SLUGS } from "../../../../../../../../constants";
+import getDataBrokerScanProfile from "../../../../../../../functions/server/getDataBrokerScanProfile";
+import { canSubscribeToPremium } from "../../../../../../../functions/universal/user";
 import { initializeUserAnnouncements } from "../../../../../../../../db/tables/user_announcements";
 
 type Props = {
@@ -125,6 +127,13 @@ export default async function SettingsPage(props: Props) {
   const settingsData = await getEmailPreferenceForPrimaryEmail(
     session.user.email,
   );
+  const profileData =
+    session.user.subscriber.onerep_profile_id &&
+    (await getDataBrokerScanProfile(session.user.subscriber.onerep_profile_id));
+  const isEligibleForPremium = canSubscribeToPremium({
+    user: session.user,
+    countryCode,
+  });
 
   const userAnnouncements = await initializeUserAnnouncements(
     session.user.subscriber,
@@ -148,7 +157,9 @@ export default async function SettingsPage(props: Props) {
       lastScanDate={lastOneRepScan?.created_at}
       isMonthlySubscriber={isMonthlySubscriber}
       activeTab={activeTab}
+      isEligibleForPremium={isEligibleForPremium}
       userAnnouncements={userAnnouncements}
+      {...(profileData && { profileData })}
     />
   );
 }

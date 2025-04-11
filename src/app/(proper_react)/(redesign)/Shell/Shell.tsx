@@ -31,6 +31,7 @@ export type Props = {
   enabledFeatureFlags: FeatureFlagName[];
   experimentData: ExperimentData["Features"];
   announcements: UserAnnouncementWithDetails[] | null;
+  hideSidebar?: boolean;
 };
 
 export const Shell = (props: Props) => {

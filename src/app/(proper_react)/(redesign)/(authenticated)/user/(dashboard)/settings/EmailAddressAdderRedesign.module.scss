@@ -1,0 +1,12 @@
+@use "../../../../../../tokens";
+
+.dialogContent,
+.newEmailAddressForm {
+  display: flex;
+  flex-direction: column;
+  gap: tokens.$spacing-lg;
+
+  p {
+    text-align: center;
+  }
+}

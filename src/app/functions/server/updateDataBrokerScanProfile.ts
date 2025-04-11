@@ -64,16 +64,37 @@ async function updateDataBrokerScanProfile(
     }
   }
 
+  const updatedProfileDataSanitized = {
+    first_name: updatedProfileData.first_name.trim(),
+    last_name: updatedProfileData.last_name.trim(),
+    first_names: updatedProfileData.first_names
+      .filter((value) => value.trim())
+      .map((first_name) => first_name.trim()),
+    last_names: updatedProfileData.last_names
+      .filter((value) => value.trim())
+      .map((last_name) => last_name.trim()),
+    middle_names: updatedProfileData.middle_names
+      .filter((value) => value.trim())
+      .map((middle_name) => middle_name.trim()),
+    phone_numbers: updatedProfileData.phone_numbers
+      .filter((value) => value.trim())
+      .map((phone_number) => phone_number.trim()),
+    addresses: updatedProfileData.addresses.filter(
+      (value) => value.city.trim() && value.state.trim(),
+    ),
+    middle_name: updatedProfileData.middle_name?.trim(),
+  };
+
   const {
     first_name,
     last_name,
-    addresses,
     first_names,
     last_names,
     middle_names,
     phone_numbers,
+    addresses,
     middle_name,
-  } = updatedProfileData;
+  } = updatedProfileDataSanitized;
 
   const optionalUpdatedProfileData = {
     ...(middle_name && { middle_name }),

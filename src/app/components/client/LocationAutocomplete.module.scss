@@ -1,5 +1,10 @@
 @use "../../tokens";
 
+.locationAutocomplete {
+  flex: 1;
+  width: 100%;
+}
+
 .locationItem {
   font: tokens.$text-body-sm;
   // Add a bit more vertical space: The next spacing step is too much.
