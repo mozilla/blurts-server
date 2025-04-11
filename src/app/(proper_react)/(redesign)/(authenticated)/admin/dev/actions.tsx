@@ -10,6 +10,7 @@ import { isAdmin } from "../../../../../api/utils/auth";
 import { getServerSession } from "../../../../../functions/server/getServerSession";
 import { getProfileDetails } from "../../../../../../db/tables/onerep_profiles";
 import {
+  createScan,
   getProfile,
   UpdateableProfileDetails,
 } from "../../../../../functions/server/onerep";
@@ -68,5 +69,29 @@ export async function updateOnerepProfile(
     await updateDataBrokerScanProfile(onerepProfileId, profileData);
   } catch (error) {
     console.error("Could not update profile details:", error);
+  }
+}
+
+// This function is only meant for testing purposes if we need to run a scan
+// before the next montly scan.
+export async function triggerManualPaidScanForTestingPurposes(
+  onerepProfileId: number,
+) {
+  const session = await getServerSession();
+  if (
+    !session?.user?.email ||
+    !isAdmin(session.user.email) ||
+    // only allow admins to trigger a scan for their own profile in production
+    (process.env.APP_ENV === "production" &&
+      session.user.subscriber?.onerep_profile_id !== onerepProfileId)
+  ) {
+    return notFound();
+  }
+  console.info("Manual scan initiated by admin for:", onerepProfileId);
+
+  try {
+    return await createScan(onerepProfileId);
+  } catch (error) {
+    console.error("Manual scan triggered by admin failed:", error);
   }
 }
