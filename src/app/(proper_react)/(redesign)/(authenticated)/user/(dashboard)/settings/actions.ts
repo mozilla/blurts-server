@@ -276,6 +276,15 @@ export async function onHandleUpdateProfileData(profileData: OnerepProfileRow) {
     };
   }
 
+  if (!hasPremium(session.user)) {
+    logger.error(`User does not have an active subscription.`);
+    return {
+      success: false,
+      error: "update-profile-data-without-active-subscription",
+      errorMessage: `User does not have an active subscription.`,
+    };
+  }
+
   if (!profileData.onerep_profile_id) {
     logger.error(`User does not have a OneRep profile.`);
     return {
