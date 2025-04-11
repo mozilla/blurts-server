@@ -13,8 +13,14 @@ import {
   type PutUserStateRequestBody,
   GetUserStateResponseBody,
 } from "../../../../../api/v1/admin/users/[fxaUid]/route";
-import { lookupFxaUid, getOnerepProfile, updateOnerepProfile } from "./actions";
-import { OnerepProfileRow } from "knex/types/tables";
+import {
+  lookupFxaUid,
+  getOnerepProfile,
+  updateOnerepProfile,
+  triggerManualPaidProfileScanForTestingPurposes,
+  getAllProfileScans,
+} from "./actions";
+import { OnerepProfileRow, OnerepScanRow } from "knex/types/tables";
 import {
   ShowProfileResponse,
   UpdateableProfileDetails,
@@ -81,26 +87,6 @@ const ProfileDataInputs = ({
 
   return (
     <>
-      <div className={styles.editInputs}>
-        {dataKeys.map((key) => {
-          const dataValue = editableProfileData[key];
-          return (
-            <InputField
-              key={key}
-              value={dataValue}
-              isDisabled={!isEnabled}
-              onChange={(value) => {
-                const updatedProfileData = {
-                  ...editableProfileData,
-                  [key]: value,
-                };
-                setEditableProfileData(updatedProfileData);
-              }}
-              label={key}
-            />
-          );
-        })}
-      </div>
       <Button
         variant="primary"
         disabled={
@@ -125,6 +111,26 @@ const ProfileDataInputs = ({
       >
         Update profile
       </Button>
+      <div className={styles.editInputs}>
+        {dataKeys.map((key) => {
+          const dataValue = editableProfileData[key];
+          return (
+            <InputField
+              key={key}
+              value={dataValue}
+              isDisabled={!isEnabled}
+              onChange={(value) => {
+                const updatedProfileData = {
+                  ...editableProfileData,
+                  [key]: value,
+                };
+                setEditableProfileData(updatedProfileData);
+              }}
+              label={key}
+            />
+          );
+        })}
+      </div>
     </>
   );
 };
@@ -144,11 +150,26 @@ export const UserAdmin = ({
     local: OnerepProfileRow;
     remote: ShowProfileResponse;
   } | null>(null);
+  const [oneRepProfileScans, setOneRepProfileScans] = useState<
+    OnerepScanRow[] | null
+  >(null);
 
   const setProfile = async (onerepProfileId: number) => {
     const profileData = await getOnerepProfile(onerepProfileId);
     if (profileData) {
       setOnerepProfileData(profileData);
+    }
+  };
+
+  const setProfileScans = async (onerepProfileId: number) => {
+    const profileScans = await getAllProfileScans(onerepProfileId);
+    if (profileScans) {
+      setOneRepProfileScans(
+        profileScans.sort(
+          (a, b) =>
+            new Date(a.created_at).getTime() - new Date(b.created_at).getTime(),
+        ),
+      );
     }
   };
 
@@ -172,6 +193,7 @@ export const UserAdmin = ({
       const data = await response.json();
       setSubscriberData(data);
       setProfile(data.onerepProfileId);
+      setProfileScans(data.onerepProfileId);
 
       setIsLoading(false);
     });
@@ -185,6 +207,7 @@ export const UserAdmin = ({
     setStatus(null);
     setSubscriberData(null);
     setOnerepProfileData(null);
+    setOneRepProfileScans(null);
     setEmailInput(email);
   };
 
@@ -238,6 +261,24 @@ export const UserAdmin = ({
       }
     } catch (error) {
       setStatus(`[Updating profile failed: [${error}].`);
+    }
+  };
+
+  const triggerScanAction = async () => {
+    if (!enabledFeatureFlags.includes("EditScanProfileDetails")) {
+      return;
+    }
+
+    try {
+      if (subscriberData?.onerepProfileId) {
+        await triggerManualPaidProfileScanForTestingPurposes(
+          subscriberData.onerepProfileId,
+        );
+        setProfileScans(subscriberData?.onerepProfileId);
+        setStatus(`Running manual scan for [${emailInput}] succeeded.`);
+      }
+    } catch (error) {
+      setStatus(`[Running manual scan failed: [${error}].`);
     }
   };
 
@@ -295,64 +336,84 @@ export const UserAdmin = ({
         )}
       </section>
       {subscriberData && (
-        <section>
-          <h2>OneRep profile</h2>
-          {onerepProfileData ? (
-            <>
-              <div className={styles.actions}>
-                <Button
-                  variant="secondary"
-                  destructive={true}
-                  onPress={() => void performAction("delete_onerep_profile")}
-                >
-                  Delete profile
-                </Button>
-                <Button
-                  variant="secondary"
-                  destructive={true}
-                  onPress={() => void performAction("delete_onerep_scans")}
-                >
-                  Delete scans
-                </Button>
-                <Button
-                  variant="secondary"
-                  destructive={true}
-                  onPress={() =>
-                    void performAction("delete_onerep_scan_results")
-                  }
-                >
-                  Delete scan results
-                </Button>
-              </div>
-              <ProfileDataInputs
-                data={onerepProfileData.local}
-                isEnabled={enabledFeatureFlags.includes(
-                  "EditScanProfileDetails",
-                )}
-                onChange={(updatedProfileData) => {
-                  void updateProfileAction(updatedProfileData);
-                }}
-                onError={(error) => {
-                  setStatus(`[Updating profile failed: [${error}].`);
-                }}
-              />
-              <div className={styles.content}>
-                <DataTable
-                  header="Current profile data (local)"
+        <>
+          <section>
+            <h2>OneRep profile</h2>
+            {onerepProfileData ? (
+              <>
+                <div className={styles.actions}>
+                  <Button
+                    variant="secondary"
+                    destructive={true}
+                    onPress={() => void performAction("delete_onerep_profile")}
+                  >
+                    Delete profile
+                  </Button>
+                  <Button
+                    variant="secondary"
+                    destructive={true}
+                    onPress={() => void performAction("delete_onerep_scans")}
+                  >
+                    Delete scans
+                  </Button>
+                  <Button
+                    variant="secondary"
+                    destructive={true}
+                    onPress={() =>
+                      void performAction("delete_onerep_scan_results")
+                    }
+                  >
+                    Delete scan results
+                  </Button>
+                </div>
+                <ProfileDataInputs
                   data={onerepProfileData.local}
-                  open
+                  isEnabled={enabledFeatureFlags.includes(
+                    "EditScanProfileDetails",
+                  )}
+                  onChange={(updatedProfileData) => {
+                    void updateProfileAction(updatedProfileData);
+                  }}
+                  onError={(error) => {
+                    setStatus(`[Updating profile failed: [${error}].`);
+                  }}
                 />
+                <div className={styles.content}>
+                  <DataTable
+                    header="Current profile data (local)"
+                    data={onerepProfileData.local}
+                    open
+                  />
+                  <DataTable
+                    header="Current profile data (remote)"
+                    data={onerepProfileData.remote}
+                    open
+                  />
+                </div>
+              </>
+            ) : (
+              "No profile found for subscriber"
+            )}
+            {oneRepProfileScans ? (
+              <>
                 <DataTable
-                  header="Current profile data (remote)"
-                  data={onerepProfileData.remote}
+                  header="Current profile scans"
+                  data={oneRepProfileScans}
                   open
                 />
-              </div>
-            </>
-          ) : (
-            "No profile found for subscriber"
-          )}
-        </section>
+                <Button
+                  variant="primary"
+                  onPress={() => void triggerScanAction()}
+                >
+                  Trigger manual scan (additional charge for production
+                  accounts)
+                </Button>
+              </>
+            ) : (
+              "No scans for profile found"
+            )}
+          </section>
+        </>
       )}
     </main>
   );
