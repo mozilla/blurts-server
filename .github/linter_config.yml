@@ -49,6 +49,7 @@ CO01:
             - rec-bank-acc-subhead
             - rec-cc-subhead
             - dashboard-top-banner-monitor-more-cta
+            - announcement-add-up-to-20-emails-plus-title
         files: []
 # Variable comments
 VC:

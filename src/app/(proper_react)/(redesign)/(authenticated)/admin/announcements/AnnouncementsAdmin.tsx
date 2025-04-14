@@ -18,6 +18,7 @@ import { AnnouncementRow } from "knex/types/tables";
 import AnnouncementsModal from "./AnnouncementsModal";
 import { usePathname } from "next/navigation";
 import { LocalizedAnnouncementString } from "../../../../../components/client/toolbar/AnnouncementDialog";
+import { useL10n } from "../../../../../hooks/l10n";
 
 type Props = {
   announcements: AnnouncementRow[];
@@ -175,12 +176,6 @@ export const AnnouncementsAdmin = (props: Props) => {
     return new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime();
   });
 
-  const pathname = usePathname();
-
-  const missingLabel = pathname === "/admin/announcements" && (
-    <span className={styles.missingLabel}>Missing fluent ID</span>
-  );
-
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
@@ -203,7 +198,10 @@ export const AnnouncementsAdmin = (props: Props) => {
                         announcement={notification}
                         type="title"
                       />
-                      {missingLabel}
+                      <MissingFluentId
+                        announcement={notification}
+                        type="title"
+                      />
                     </span>
                   </p>
                   <p className={styles.description}>
@@ -212,7 +210,10 @@ export const AnnouncementsAdmin = (props: Props) => {
                         announcement={notification}
                         type="description"
                       />
-                      {missingLabel}
+                      <MissingFluentId
+                        announcement={notification}
+                        type="description"
+                      />
                     </span>
                   </p>
                 </div>
@@ -249,7 +250,10 @@ export const AnnouncementsAdmin = (props: Props) => {
                     announcement={activeAnnouncement}
                     type="title"
                   />
-                  {missingLabel}
+                  <MissingFluentId
+                    announcement={activeAnnouncement}
+                    type="title"
+                  />
                 </span>
               </dd>
 
@@ -260,7 +264,10 @@ export const AnnouncementsAdmin = (props: Props) => {
                     announcement={activeAnnouncement}
                     type="description"
                   />
-                  {missingLabel}
+                  <MissingFluentId
+                    announcement={activeAnnouncement}
+                    type="description"
+                  />
                 </span>
               </dd>
 
@@ -329,7 +336,10 @@ export const AnnouncementsAdmin = (props: Props) => {
                     announcement={activeAnnouncement}
                     type="cta-label"
                   />
-                  {missingLabel}
+                  <MissingFluentId
+                    announcement={activeAnnouncement}
+                    type="cta-label"
+                  />
                 </span>
               </dd>
 
@@ -410,7 +420,10 @@ export const AnnouncementsAdmin = (props: Props) => {
                       announcement={activeAnnouncement}
                       type="title"
                     />
-                    {missingLabel}
+                    <MissingFluentId
+                      announcement={activeAnnouncement}
+                      type="title"
+                    />
                   </span>
                 </dt>
                 <dd>
@@ -419,7 +432,10 @@ export const AnnouncementsAdmin = (props: Props) => {
                       announcement={activeAnnouncement}
                       type="description"
                     />
-                    {missingLabel}
+                    <MissingFluentId
+                      announcement={activeAnnouncement}
+                      type="title"
+                    />
                   </span>
                 </dd>
               </dl>
@@ -429,7 +445,10 @@ export const AnnouncementsAdmin = (props: Props) => {
                     announcement={activeAnnouncement}
                     type="cta-label"
                   />
-                  {missingLabel}
+                  <MissingFluentId
+                    announcement={activeAnnouncement}
+                    type="cta-label"
+                  />
                 </span>
               </a>
             </div>
@@ -448,4 +467,19 @@ export const AnnouncementsAdmin = (props: Props) => {
       />
     </div>
   );
+};
+
+type LocalizedAnnouncementStringProps = {
+  announcement: AnnouncementRow;
+  type: "title" | "description" | "cta-label";
+};
+
+export const MissingFluentId = (props: LocalizedAnnouncementStringProps) => {
+  const key = `announcement-${props.announcement.announcement_id}-${props.type}`;
+  const l10n = useL10n();
+  const pathname = usePathname();
+
+  if (key === l10n.getString(key) && pathname === "/admin/announcements") {
+    return <span className={styles.missingLabel}>Missing fluent ID</span>;
+  }
 };
