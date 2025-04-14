@@ -19,7 +19,7 @@ export async function getMoscaryJWT(
 ) {
   const REDIS_KEY = `${REDIS_JWT_KEY_PREFIX}${fxaUid}:${sessionId}`;
 
-  // if token is already exists in redis, return it
+  // if token already exists in redis, return it
   let token = await rClient.get(REDIS_KEY);
   if (token) {
     logger.info("get_moscary_jwt_from_redis_success");
