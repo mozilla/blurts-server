@@ -23,7 +23,7 @@ export async function GET(req: NextRequest) {
     }
 
     await unsubscribeMonthlyMonitorReportForUnsubscribeToken(unsubToken);
-    logger.debug("unsubscribe_email_success");
+    logger.info("unsubscribe_email_success");
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (e) {
     logger.error("unsubscribe_email", {
