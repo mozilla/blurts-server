@@ -38,6 +38,7 @@ export const AnnouncementDialog = ({
         recordTelemetry("button", "click", {
           button_id: "closed_announcements",
         });
+        setAnnouncementDetailsView(false);
         setActiveTab("new");
       }
     },
