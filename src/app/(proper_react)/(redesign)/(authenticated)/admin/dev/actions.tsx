@@ -10,10 +10,13 @@ import { isAdmin } from "../../../../../api/utils/auth";
 import { getServerSession } from "../../../../../functions/server/getServerSession";
 import { getProfileDetails } from "../../../../../../db/tables/onerep_profiles";
 import {
+  createScan,
   getProfile,
   UpdateableProfileDetails,
 } from "../../../../../functions/server/onerep";
 import updateDataBrokerScanProfile from "../../../../../functions/server/updateDataBrokerScanProfile";
+import { getAllScansForProfile } from "../../../../../../db/tables/onerep_scans";
+import { refreshStoredScanResults } from "../../../../../functions/server/refreshStoredScanResults";
 
 export async function lookupFxaUid(emailHash: string) {
   const session = await getServerSession();
@@ -68,5 +71,46 @@ export async function updateOnerepProfile(
     await updateDataBrokerScanProfile(onerepProfileId, profileData);
   } catch (error) {
     console.error("Could not update profile details:", error);
+  }
+}
+
+export async function getAllProfileScans(onerepProfileId: number) {
+  const session = await getServerSession();
+  if (
+    !session?.user?.email ||
+    !isAdmin(session.user.email) ||
+    // only allow admins to trigger a scan for their own profile in production
+    (process.env.APP_ENV === "production" &&
+      session.user.subscriber?.onerep_profile_id !== onerepProfileId)
+  ) {
+    return notFound();
+  }
+
+  try {
+    return await getAllScansForProfile(onerepProfileId);
+  } catch (error) {
+    console.error("Getting all profile scans failed:", error);
+  }
+}
+
+export async function triggerManualProfileScan(onerepProfileId: number) {
+  const session = await getServerSession();
+  if (
+    !session?.user?.email ||
+    !isAdmin(session.user.email) ||
+    // only allow admins to trigger a scan for their own profile in production
+    (process.env.APP_ENV === "production" &&
+      session.user.subscriber?.onerep_profile_id !== onerepProfileId)
+  ) {
+    return notFound();
+  }
+  console.info("Manual scan initiated by admin for:", onerepProfileId);
+
+  try {
+    const scanResult = await createScan(onerepProfileId);
+    await refreshStoredScanResults(onerepProfileId);
+    return scanResult;
+  } catch (error) {
+    console.error("Manual scan triggered by admin failed:", error);
   }
 }
