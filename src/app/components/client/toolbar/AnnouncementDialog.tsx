@@ -27,13 +27,18 @@ export const AnnouncementDialog = ({
 }: AnnouncementDialogProps) => {
   const l10n = useL10n();
   const recordTelemetry = useTelemetry();
-  const triggerRef = useRef<HTMLButtonElement>(null);
+  const triggerRef = useRef<HTMLButtonElement | null>(null);
   const triggerState = useOverlayTriggerState({
     onOpenChange: (isOpen) => {
       if (isOpen) {
         recordTelemetry("button", "click", {
           button_id: "opened_announcements",
         });
+      } else {
+        recordTelemetry("button", "click", {
+          button_id: "closed_announcements",
+        });
+        setActiveTab("new");
       }
     },
   });
@@ -165,6 +170,7 @@ export const AnnouncementDialog = ({
         {...buttonProps}
         className={styles.announcementBtn}
         ref={triggerRef}
+        aria-haspopup={true}
         aria-label={l10n.getString("announcement-dialog-trigger-alt")}
       >
         <AnnouncementsIcon alt="" />
@@ -316,11 +322,11 @@ export const AnnouncementDialog = ({
                     // List of announcements
 
                     filteredAnnouncements.map((announcement) => (
-                      <div
-                        role="button"
+                      <button
                         className={styles.announcementItem}
                         key={announcement.id}
-                        onClick={() => {
+                        onClick={(e) => {
+                          e.stopPropagation();
                           setRelevantAnnouncement(announcement);
                           setAnnouncementDetailsView(true);
                           handleMarkAsSeen(announcement);
@@ -368,7 +374,7 @@ export const AnnouncementDialog = ({
                             />
                           </dd>
                         </dl>
-                      </div>
+                      </button>
                     ))
                   )}
                   {activeTab === "new" &&
