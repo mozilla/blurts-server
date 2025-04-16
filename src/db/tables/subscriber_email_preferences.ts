@@ -53,7 +53,10 @@ async function addEmailPreferenceForSubscriber(
           preference.monthly_monitor_report_free_at ?? knex.fn.now(),
       })
       .returning("*");
-    logger.debug("add_email_preference_for_subscriber_success");
+    logger.info("add_email_preference_for_subscriber_success", {
+      subscriberId,
+      preference,
+    });
   } catch (e) {
     logger.error("error_add_subscriber_email_preference", {
       message: (e as Error).message,
@@ -85,7 +88,10 @@ async function addUnsubscribeTokenForSubscriber(
         monthly_monitor_report_free_at: null,
       })
       .returning("*");
-    logger.debug("add_unsubscribe_token_for_subscriber_success");
+    logger.info("add_unsubscribe_token_for_subscriber_success", {
+      subscriberId,
+      token,
+    });
   } catch (e) {
     logger.error("error_add_subscriber_unsubscribe_token", {
       message: (e as Error).message,
@@ -121,6 +127,11 @@ async function updateEmailPreferenceForSubscriber(
           preference as SubscriberFreeEmailPreferencesInput,
         );
       } else {
+        logger.info("has_existing_unsubscribe_token", {
+          subscriberId,
+          preference,
+        });
+
         res = (
           await knex("subscriber_email_preferences")
             .where("subscriber_id", subscriberId)
@@ -198,7 +209,7 @@ async function getEmailPreferenceForSubscriber(subscriberId: number) {
         "subscriber_email_preferences.subscriber_id",
       )
       .returning(["*"]);
-    logger.debug("get_email_preference_for_subscriber_success");
+    logger.info("get_email_preference_for_subscriber_success");
     logger.debug(
       `getEmailPreferenceForSubscriber left join: ${JSON.stringify(res)}`,
     );
@@ -230,7 +241,7 @@ async function getEmailPreferenceForUnsubscribeToken(
     logger.debug(
       `get_email_preference_for_unsubscriber_token: ${JSON.stringify(res)}`,
     );
-    logger.debug("get_email_preference_for_unsubscriber_token_success");
+    logger.info("get_email_preference_for_unsubscriber_token_success");
   } catch (e) {
     logger.error(
       "error_get_subscriber_email_preference_for_unsubscribe_token",
