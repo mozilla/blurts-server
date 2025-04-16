@@ -25,11 +25,6 @@ const profileFields: (keyof OnerepProfileRow)[] = [
   "addresses",
 ] as const;
 
-type ProfileDataItemKey = keyof Pick<
-  OnerepProfileRow,
-  "first_name" | "middle_name" | "last_name"
->;
-
 export type ProfileDataListKey = keyof Pick<
   OnerepProfileRow,
   "first_names" | "middle_names" | "last_names" | "phone_numbers" | "addresses"
@@ -55,18 +50,25 @@ function EditProfileForm(props: { profileData: OnerepProfileRow }) {
     value,
     index,
   }: EditProfileInputOnChangeReturnValue) => {
-    const formDataUpdated = { ...profileFormData };
     if (typeof index === "undefined") {
-      formDataUpdated[key as ProfileDataItemKey] = value;
+      setProfileFormData({
+        ...profileFormData,
+        [key]: value,
+      });
     } else {
+      const formDataUpdated = {
+        ...profileFormData,
+        [key]: [...profileFormData[key as ProfileDataListKey]],
+      };
       const [city, state, _countryCode] = value.split(", ");
       formDataUpdated[key as ProfileDataListKey][index] =
         // This line show as not covered even though there are unit tests for updating
         // the LocationAutocompleteInput in the test file `SettingsPageRedesign.test.tsx`.
         /* c8 ignore next */
         key === "addresses" ? { city, state } : value;
+
+      setProfileFormData(formDataUpdated);
     }
-    setProfileFormData(formDataUpdated);
   };
 
   const handleOnAdd = (profileDataKey: ProfileDataListKey) => {
