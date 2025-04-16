@@ -10,11 +10,7 @@ import { UserAdmin } from "./UserAdmin";
 
 export default async function DevPage() {
   const session = await getServerSession();
-  if (
-    !session?.user?.email ||
-    !isAdmin(session.user.email) ||
-    process.env.APP_ENV === "production"
-  ) {
+  if (!session?.user?.email || !isAdmin(session.user.email)) {
     return notFound();
   }
 

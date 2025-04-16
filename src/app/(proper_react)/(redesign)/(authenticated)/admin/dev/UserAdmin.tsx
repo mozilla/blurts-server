@@ -19,7 +19,6 @@ import {
   updateOnerepProfile,
   triggerManualProfileScan,
   getAllProfileScans,
-  getSha1,
 } from "./actions";
 import { OnerepProfileRow, OnerepScanRow } from "knex/types/tables";
 import {
@@ -428,3 +427,13 @@ export const UserAdmin = ({
     </main>
   );
 };
+
+async function getSha1(source: string): Promise<string> {
+  const msgUint8 = new TextEncoder().encode(source);
+  const hashBuffer = await crypto.subtle.digest("SHA-1", msgUint8);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  const hashHex = hashArray
+    .map((b) => b.toString(16).padStart(2, "0"))
+    .join("");
+  return hashHex;
+}
