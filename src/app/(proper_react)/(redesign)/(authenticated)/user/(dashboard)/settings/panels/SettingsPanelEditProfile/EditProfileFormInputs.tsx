@@ -303,9 +303,16 @@ function EditProfileFormInputs(props: {
           CONST_DATA_BROKER_PROFILE_DETAIL_LIMITS[props.profileDataKey] ? (
             <AddItemButton
               itemKey={props.profileDataKey}
-              onAdd={() =>
-                props.onAdd(props.profileDataKey as ProfileDataListKey)
-              }
+              onAdd={() => {
+                if (typeof phoneData[0] === "undefined") {
+                  props.handleOnInputChange({
+                    key: props.profileDataKey as ProfileDataListKey,
+                    value: "",
+                    index: 0,
+                  });
+                }
+                props.onAdd(props.profileDataKey as ProfileDataListKey);
+              }}
             />
           ) : (
             <p>
