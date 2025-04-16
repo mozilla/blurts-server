@@ -96,13 +96,9 @@ async function updateDataBrokerScanProfile(
     middle_name,
   } = updatedProfileDataSanitized;
 
-  const optionalUpdatedProfileData = {
-    ...(middle_name && { middle_name }),
-  };
-
   // Update the remote profile details.
   const remoteProfileData = {
-    ...optionalUpdatedProfileData,
+    ...(middle_name && { middle_name }),
     first_name,
     last_name,
     first_names: first_names.map((first_name) => ({
@@ -124,8 +120,8 @@ async function updateDataBrokerScanProfile(
 
   // Apply the updates to the `onerep_profiles` table.
   await updateProfileDetails(onerepProfileId, {
-    ...optionalUpdatedProfileData,
     first_name,
+    middle_name: middle_name ?? "",
     last_name,
     first_names,
     last_names,
