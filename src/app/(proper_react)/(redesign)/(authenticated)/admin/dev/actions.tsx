@@ -23,7 +23,7 @@ export async function lookupFxaUid(emailHash: string) {
   if (
     !session?.user?.email ||
     !isAdmin(session.user.email) ||
-    process.env.APP_ENV !== "local"
+    process.env.APP_ENV === "production"
   ) {
     return notFound();
   }
@@ -39,7 +39,7 @@ export async function getOnerepProfile(onerepProfileId: number) {
   if (
     !session?.user?.email ||
     !isAdmin(session.user.email) ||
-    process.env.APP_ENV !== "local"
+    process.env.APP_ENV === "production"
   ) {
     return notFound();
   }
@@ -62,7 +62,7 @@ export async function updateOnerepProfile(
   if (
     !session?.user?.email ||
     !isAdmin(session.user.email) ||
-    process.env.APP_ENV !== "local"
+    process.env.APP_ENV === "production"
   ) {
     return notFound();
   }
@@ -79,9 +79,7 @@ export async function getAllProfileScans(onerepProfileId: number) {
   if (
     !session?.user?.email ||
     !isAdmin(session.user.email) ||
-    // only allow admins to trigger a scan for their own profile in production
-    (process.env.APP_ENV === "production" &&
-      session.user.subscriber?.onerep_profile_id !== onerepProfileId)
+    process.env.APP_ENV === "production"
   ) {
     return notFound();
   }
