@@ -34,7 +34,7 @@ async function addEmailPreferenceForSubscriber(
   subscriberId: number,
   preference: SubscriberFreeEmailPreferencesInput,
 ): Promise<SubscriberEmailPreferencesRow> {
-  logger.info("add_email_preference_for_subscriber", {
+  logger.info("adding_email_preference_for_subscriber", {
     subscriberId,
     preference,
   });
@@ -120,7 +120,12 @@ async function updateEmailPreferenceForSubscriber(
   try {
     if (isFree) {
       const getRes = await getEmailPreferenceForSubscriber(subscriberId);
+      logger.info("update_email_preference_success_internal", {
+        subscriberId,
+        res,
+      });
       if (!getRes.unsubscribe_token && !getRes.monthly_monitor_report_free_at) {
+        logger.info("inserting_new_free_pref", { subscriberId, res });
         // if new row has not been created before
         res = await addEmailPreferenceForSubscriber(
           subscriberId,
@@ -145,8 +150,11 @@ async function updateEmailPreferenceForSubscriber(
         )?.[0];
       }
       if (!res) {
+        logger.error(
+          `Updating free subscriber ${subscriberId} failed, response: ${JSON.stringify(res)}`,
+        );
         throw new Error(
-          `Update subscriber ${subscriberId} failed, response: ${JSON.stringify(res)}`,
+          `Updating free subscriber ${subscriberId} failed, response: ${JSON.stringify(res)}`,
         );
       }
     } else {
@@ -164,16 +172,26 @@ async function updateEmailPreferenceForSubscriber(
       )?.[0];
 
       if (!res) {
+        logger.error(
+          `Updating plus subscriber ${subscriberId} failed, response: ${JSON.stringify(res)}`,
+        );
         throw new Error(
-          `Update subscriber ${subscriberId} failed, response: ${JSON.stringify(res)}`,
+          `Update plus subscriber ${subscriberId} failed, response: ${JSON.stringify(res)}`,
         );
       }
     }
-    logger.debug("update_email_preference_for_subscriber_success");
+    logger.info("update_email_preference_success", {
+      subscriberId,
+      res,
+    });
   } catch (e) {
+    // TODO: Remove this comment
+    // Investigation: MNTOR-4326
+    // This is getting logged intermittenly
     logger.error("error_update_subscriber_email_preference", {
       message: (e as Error).message,
       stack_trace: (e as Error).stack,
+      subscriberId,
     });
 
     throw e;
@@ -238,7 +256,7 @@ async function getEmailPreferenceForUnsubscribeToken(
       .select("*")
       .where("unsubscribe_token", unsubscribeToken);
 
-    logger.debug(
+    logger.info(
       `get_email_preference_for_unsubscriber_token: ${JSON.stringify(res)}`,
     );
     logger.info("get_email_preference_for_unsubscriber_token_success");
@@ -262,7 +280,11 @@ async function unsubscribeMonthlyMonitorReportForUnsubscribeToken(
   unsubscribeToken: string,
 ) {
   try {
+    // TODO: Remove this comment
+    // Investigation: MNTOR-4326
     const sub = await getEmailPreferenceForUnsubscribeToken(unsubscribeToken);
+
+    logger.info("found_preference_for_token", { unsubscribeToken, sub });
 
     if (
       typeof sub?.id === "number" &&
@@ -270,22 +292,33 @@ async function unsubscribeMonthlyMonitorReportForUnsubscribeToken(
     ) {
       logger.info(
         "unsubscribe_monthly_monitor_report_for_unsubscribe_token_already_unsubscribed",
+        sub.id,
       );
     } else if (typeof sub?.id === "number") {
       await updateEmailPreferenceForSubscriber(sub.id, true, {
         monthly_monitor_report_free: false,
       });
     } else {
+      logger.error(
+        `cannot find subscriber with unsubscribe token: ${unsubscribeToken}`,
+        {
+          unsubscribeToken,
+        },
+      );
       throw new Error(
         `cannot find subscriber with unsubscribe token: ${unsubscribeToken}`,
       );
     }
   } catch (e) {
+    // TODO: Remove this comment
+    // Investigation: MNTOR-4326
+    // This is getting logged intermittenly
     logger.error(
       "error_unsubscribe_monthly_monitor_report_for_unsubscribe_token",
       {
         message: (e as Error).message,
         stack_trace: (e as Error).stack,
+        unsubscribeToken,
       },
     );
     captureException(e);
