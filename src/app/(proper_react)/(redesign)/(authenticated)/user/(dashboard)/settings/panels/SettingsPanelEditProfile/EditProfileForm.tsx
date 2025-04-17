@@ -4,7 +4,8 @@
 
 "use client";
 
-import { Fragment, useActionState, useRef, useState } from "react";
+import { FormEvent, Fragment, useRef, useState } from "react";
+import { captureException } from "@sentry/nextjs";
 import { OnerepProfileRow } from "knex/types/tables";
 import { EditProfileCancelDialog } from "./EditProfileCancelDialog";
 import {
@@ -33,13 +34,7 @@ export type ProfileDataListKey = keyof Pick<
 function EditProfileForm(props: { profileData: OnerepProfileRow }) {
   const l10n = useL10n();
   const [profileFormData, setProfileFormData] = useState(props.profileData);
-  const [
-    _updateProfileActionError,
-    updateProfileAction,
-    updateProfileActionIsPending,
-  ] = useActionState(async () => {
-    await onHandleUpdateProfileData(profileFormData);
-  }, null);
+  const [updatingForm, setUpdatingForm] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
 
   const hasProfileDataChanged =
@@ -92,11 +87,23 @@ function EditProfileForm(props: { profileData: OnerepProfileRow }) {
     setProfileFormData(formDataUpdated);
   };
 
+  const handleSubmitForm = async (event: FormEvent) => {
+    event.preventDefault();
+    setUpdatingForm(true);
+    try {
+      await onHandleUpdateProfileData(profileFormData);
+    } catch (error) {
+      captureException(error);
+    } finally {
+      setUpdatingForm(false);
+    }
+  };
+
   return (
     <form
       ref={formRef}
       className={styles.profileForm}
-      action={updateProfileAction}
+      onSubmit={handleSubmitForm}
     >
       {profileFields.map((profileDataKey, detailIndex) => {
         const label = l10n.getString(
@@ -104,10 +111,7 @@ function EditProfileForm(props: { profileData: OnerepProfileRow }) {
         );
         return (
           <Fragment key={profileDataKey}>
-            <fieldset
-              className="noList"
-              disabled={updateProfileActionIsPending}
-            >
+            <fieldset className="noList" disabled={updatingForm}>
               <legend>
                 <span>{label}</span>
               </legend>
@@ -128,7 +132,7 @@ function EditProfileForm(props: { profileData: OnerepProfileRow }) {
       <div className={styles.profileFormButtons}>
         {hasProfileDataChanged ? (
           <EditProfileCancelDialog
-            isSaving={updateProfileActionIsPending}
+            isSaving={updatingForm}
             onSave={() => {
               formRef.current?.requestSubmit();
             }}
@@ -153,7 +157,7 @@ function EditProfileForm(props: { profileData: OnerepProfileRow }) {
         <TelemetryButton
           type="submit"
           variant="primary"
-          isLoading={updateProfileActionIsPending}
+          isLoading={updatingForm}
           disabled={!hasProfileDataChanged}
           event={{
             module: "ctaButton",
