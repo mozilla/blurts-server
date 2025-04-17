@@ -38,7 +38,6 @@ export const AnnouncementDialog = ({
         recordTelemetry("button", "click", {
           button_id: "closed_announcements",
         });
-        setAnnouncementDetailsView(false);
         setActiveTab("new");
       }
     },
@@ -182,6 +181,7 @@ export const AnnouncementDialog = ({
           </span>
         )}
       </button>
+
       {triggerState.isOpen && (
         <Popover
           popoverRef={popoverRef}
