@@ -51,7 +51,10 @@ export async function GET(
 ) {
   const params = await props.params;
   const session = await getServerSession();
-  if (isAdmin(session?.user?.email || "")) {
+  if (
+    isAdmin(session?.user?.email || "") &&
+    process.env.APP_ENV !== "production"
+  ) {
     // Signed in as admin
     try {
       if (!params.fxaUid) {
@@ -126,7 +129,7 @@ export async function PUT(
 ) {
   const params = await props.params;
   const session = await getServerSession();
-  if (isAdmin(session?.user?.email || "")) {
+  if (isAdmin(session?.user?.email || "") && process.env.APP_ENV === "local") {
     // Signed in as admin
     try {
       const fxaUid = params.fxaUid;
