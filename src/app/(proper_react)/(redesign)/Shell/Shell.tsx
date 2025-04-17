@@ -21,6 +21,8 @@ import { ExperimentData } from "../../../../telemetry/generated/nimbus/experimen
 import MonitorLogo from "../../images/monitor-logo.svg";
 import styles from "./Shell.module.scss";
 import { UserAnnouncementWithDetails } from "../../../../db/tables/user_announcements";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export type Props = {
   l10n: ExtendedReactLocalization;
@@ -51,7 +53,7 @@ export const Shell = (props: Props) => {
       server session and is not being mounted when running unit tests. */}
       {/* c8 ignore next */}
       {process.env.NODE_ENV !== "test" && <SubscriptionCheck />}
-
+      <ToastContainer position="top-center" theme="colored" autoClose={false} />
       {props.enabledFeatureFlags.includes("SidebarNavigationRedesign") ? (
         <ShellRedesign
           countryCode={props.countryCode}

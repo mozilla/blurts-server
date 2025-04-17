@@ -6,6 +6,7 @@
 
 import { FormEvent, Fragment, useRef, useState } from "react";
 import { captureException } from "@sentry/nextjs";
+import { toast } from "react-toastify";
 import { OnerepProfileRow } from "knex/types/tables";
 import { EditProfileCancelDialog } from "./EditProfileCancelDialog";
 import {
@@ -90,13 +91,12 @@ function EditProfileForm(props: { profileData: OnerepProfileRow }) {
   const handleSubmitForm = async (event: FormEvent) => {
     event.preventDefault();
     setUpdatingForm(true);
-    try {
-      await onHandleUpdateProfileData(profileFormData);
-    } catch (error) {
-      captureException(error);
-    } finally {
-      setUpdatingForm(false);
+    const result = await onHandleUpdateProfileData(profileFormData);
+    if (!result.success) {
+      toast.error(result.errorMessage, { autoClose: 15000 });
+      captureException(result.error);
     }
+    setUpdatingForm(false);
   };
 
   return (
