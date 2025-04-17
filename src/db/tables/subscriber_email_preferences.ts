@@ -34,7 +34,7 @@ async function addEmailPreferenceForSubscriber(
   subscriberId: number,
   preference: SubscriberFreeEmailPreferencesInput,
 ): Promise<SubscriberEmailPreferencesRow> {
-  logger.info("add_email_preference_for_subscriber", {
+  logger.info("adding_email_preference_for_subscriber", {
     subscriberId,
     preference,
   });
@@ -53,7 +53,10 @@ async function addEmailPreferenceForSubscriber(
           preference.monthly_monitor_report_free_at ?? knex.fn.now(),
       })
       .returning("*");
-    logger.debug("add_email_preference_for_subscriber_success");
+    logger.info("add_email_preference_for_subscriber_success", {
+      subscriberId,
+      preference,
+    });
   } catch (e) {
     logger.error("error_add_subscriber_email_preference", {
       message: (e as Error).message,
@@ -85,7 +88,10 @@ async function addUnsubscribeTokenForSubscriber(
         monthly_monitor_report_free_at: null,
       })
       .returning("*");
-    logger.debug("add_unsubscribe_token_for_subscriber_success");
+    logger.info("add_unsubscribe_token_for_subscriber_success", {
+      subscriberId,
+      token,
+    });
   } catch (e) {
     logger.error("error_add_subscriber_unsubscribe_token", {
       message: (e as Error).message,
@@ -114,13 +120,23 @@ async function updateEmailPreferenceForSubscriber(
   try {
     if (isFree) {
       const getRes = await getEmailPreferenceForSubscriber(subscriberId);
+      logger.info("update_email_preference_success_internal", {
+        subscriberId,
+        res,
+      });
       if (!getRes.unsubscribe_token && !getRes.monthly_monitor_report_free_at) {
+        logger.info("inserting_new_free_pref", { subscriberId, res });
         // if new row has not been created before
         res = await addEmailPreferenceForSubscriber(
           subscriberId,
           preference as SubscriberFreeEmailPreferencesInput,
         );
       } else {
+        logger.info("has_existing_unsubscribe_token", {
+          subscriberId,
+          preference,
+        });
+
         res = (
           await knex("subscriber_email_preferences")
             .where("subscriber_id", subscriberId)
@@ -134,8 +150,11 @@ async function updateEmailPreferenceForSubscriber(
         )?.[0];
       }
       if (!res) {
+        logger.error(
+          `Updating free subscriber ${subscriberId} failed, response: ${JSON.stringify(res)}`,
+        );
         throw new Error(
-          `Update subscriber ${subscriberId} failed, response: ${JSON.stringify(res)}`,
+          `Updating free subscriber ${subscriberId} failed, response: ${JSON.stringify(res)}`,
         );
       }
     } else {
@@ -153,16 +172,26 @@ async function updateEmailPreferenceForSubscriber(
       )?.[0];
 
       if (!res) {
+        logger.error(
+          `Updating plus subscriber ${subscriberId} failed, response: ${JSON.stringify(res)}`,
+        );
         throw new Error(
-          `Update subscriber ${subscriberId} failed, response: ${JSON.stringify(res)}`,
+          `Update plus subscriber ${subscriberId} failed, response: ${JSON.stringify(res)}`,
         );
       }
     }
-    logger.debug("update_email_preference_for_subscriber_success");
+    logger.info("update_email_preference_success", {
+      subscriberId,
+      res,
+    });
   } catch (e) {
+    // TODO: Remove this comment
+    // Investigation: MNTOR-4326
+    // This is getting logged intermittenly
     logger.error("error_update_subscriber_email_preference", {
       message: (e as Error).message,
       stack_trace: (e as Error).stack,
+      subscriberId,
     });
 
     throw e;
@@ -198,7 +227,7 @@ async function getEmailPreferenceForSubscriber(subscriberId: number) {
         "subscriber_email_preferences.subscriber_id",
       )
       .returning(["*"]);
-    logger.debug("get_email_preference_for_subscriber_success");
+    logger.info("get_email_preference_for_subscriber_success");
     logger.debug(
       `getEmailPreferenceForSubscriber left join: ${JSON.stringify(res)}`,
     );
@@ -227,10 +256,10 @@ async function getEmailPreferenceForUnsubscribeToken(
       .select("*")
       .where("unsubscribe_token", unsubscribeToken);
 
-    logger.debug(
+    logger.info(
       `get_email_preference_for_unsubscriber_token: ${JSON.stringify(res)}`,
     );
-    logger.debug("get_email_preference_for_unsubscriber_token_success");
+    logger.info("get_email_preference_for_unsubscriber_token_success");
   } catch (e) {
     logger.error(
       "error_get_subscriber_email_preference_for_unsubscribe_token",
@@ -251,7 +280,11 @@ async function unsubscribeMonthlyMonitorReportForUnsubscribeToken(
   unsubscribeToken: string,
 ) {
   try {
+    // TODO: Remove this comment
+    // Investigation: MNTOR-4326
     const sub = await getEmailPreferenceForUnsubscribeToken(unsubscribeToken);
+
+    logger.info("found_preference_for_token", { unsubscribeToken, sub });
 
     if (
       typeof sub?.id === "number" &&
@@ -259,22 +292,33 @@ async function unsubscribeMonthlyMonitorReportForUnsubscribeToken(
     ) {
       logger.info(
         "unsubscribe_monthly_monitor_report_for_unsubscribe_token_already_unsubscribed",
+        sub.id,
       );
     } else if (typeof sub?.id === "number") {
       await updateEmailPreferenceForSubscriber(sub.id, true, {
         monthly_monitor_report_free: false,
       });
     } else {
+      logger.error(
+        `cannot find subscriber with unsubscribe token: ${unsubscribeToken}`,
+        {
+          unsubscribeToken,
+        },
+      );
       throw new Error(
         `cannot find subscriber with unsubscribe token: ${unsubscribeToken}`,
       );
     }
   } catch (e) {
+    // TODO: Remove this comment
+    // Investigation: MNTOR-4326
+    // This is getting logged intermittenly
     logger.error(
       "error_unsubscribe_monthly_monitor_report_for_unsubscribe_token",
       {
         message: (e as Error).message,
         stack_trace: (e as Error).stack,
+        unsubscribeToken,
       },
     );
     captureException(e);
