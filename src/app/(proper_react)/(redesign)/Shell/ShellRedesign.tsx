@@ -154,6 +154,7 @@ export const ShellRedesign = (props: Props) => {
       subscriptionBillingAmount={props.subscriptionBillingAmount}
       enabledFeatureFlags={props.enabledFeatureFlags}
       experimentData={props.experimentData}
+      announcements={props.announcements}
     >
       <div className={styles.wrapper}>
         <div className={styles.content}>

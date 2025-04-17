@@ -46,6 +46,7 @@ export const PricingPlans = (props: LandingPageProps) => {
         scanLimitReached={props.scanLimitReached}
         experimentData={props.experimentData}
         eligibleForPremium={props.eligibleForPremium}
+        enabledFeatureFlags={props.enabledFeatureFlags}
       />
     </div>
   );
