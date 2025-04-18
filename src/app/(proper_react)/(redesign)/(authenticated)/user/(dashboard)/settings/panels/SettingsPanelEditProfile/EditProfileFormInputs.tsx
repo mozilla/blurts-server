@@ -5,8 +5,12 @@
 "use client";
 
 import { Fragment } from "react";
-import { OnerepProfileAddress, OnerepProfileRow } from "knex/types/tables";
-import { ProfileDataListKey } from "./EditProfileForm";
+import { OnerepProfileRow } from "knex/types/tables";
+import {
+  FormDataValidated,
+  ProfileDataKeys,
+  ProfileDataListKey,
+} from "./EditProfileForm";
 import { InputField } from "../../../../../../../../components/client/InputField";
 import { TelemetryButton } from "../../../../../../../../components/client/TelemetryButton";
 import { TelemetryLink } from "../../../../../../../../components/client/TelemetryLink";
@@ -90,8 +94,8 @@ function RemoveItemButton(props: {
 }
 
 function EditProfileFormInputs(props: {
-  profileData: OnerepProfileRow;
-  profileDataKey: keyof OnerepProfileRow;
+  profileData: FormDataValidated;
+  profileDataKey: ProfileDataKeys;
   handleOnInputChange: ({
     key,
     value,
@@ -122,15 +126,15 @@ function EditProfileFormInputs(props: {
             }
             key={props.profileDataKey}
             name={props.profileDataKey}
-            value={nameData as string}
+            value={nameData.value ?? ""}
             label={l10n.getString(
               `settings-edit-profile-info-form-input-label-primary-${profileDataKeyParsed}`,
             )}
             hasFloatingLabel
-            isRequired={props.profileDataKey !== "middle_name"}
-            isInvalid={isRequired && (nameData as string).trim() === ""}
+            isRequired={isRequired}
+            isInvalid={!nameData.isValid}
             errorMessage={l10n.getString(
-              `settings-edit-profile-info-form-input-error-${profileDataKeyParsed}`,
+              `settings-edit-profile-info-form-input-error-invalid-${profileDataKeyParsed}`,
             )}
           />
           {secondaryNameData.length > 0 && (
@@ -157,10 +161,20 @@ function EditProfileFormInputs(props: {
                           });
                         }}
                         name={inputKey}
-                        value={item}
+                        value={item.value as string}
+                        isInvalid={!item.isValid || item.isDuplicate}
                         label={l10n.getString(
                           `settings-edit-profile-info-form-input-label-other-${profileDataKeyParsed}`,
                         )}
+                        errorMessage={
+                          item.isDuplicate
+                            ? l10n.getString(
+                                `settings-edit-profile-info-form-input-error-duplicate-${profileDataKeyParsed}`,
+                              )
+                            : l10n.getString(
+                                `settings-edit-profile-info-form-input-error-invalid-${profileDataKeyParsed}`,
+                              )
+                        }
                         hasFloatingLabel
                       />
                       <RemoveItemButton
@@ -192,13 +206,12 @@ function EditProfileFormInputs(props: {
       );
     case "date_of_birth":
       const dobData = props.profileData[props.profileDataKey];
-      const dateOfBirthString = new Date(dobData).toLocaleDateString(
-        getLocale(l10n),
-        {
+      const dateOfBirthString =
+        dobData.value &&
+        new Date(dobData.value).toLocaleDateString(getLocale(l10n), {
           dateStyle: "short",
           timeZone: "UTC",
-        },
-      );
+        });
       return (
         <div className={styles.itemDob}>
           <span className={styles.dobString}>
@@ -241,18 +254,25 @@ function EditProfileFormInputs(props: {
               })
             }
             name={`${props.profileDataKey}-0`}
-            value={primaryPhoneItem}
+            value={primaryPhoneItem.value}
+            isInvalid={!primaryPhoneItem.isValid}
             label={l10n.getString(
               `settings-edit-profile-info-form-input-label-primary-phone-number`,
             )}
-            errorMessage={l10n.getString(
-              "settings-edit-profile-info-form-input-error-phone-number",
-            )}
+            errorMessage={
+              primaryPhoneItem.isDuplicate
+                ? l10n.getString(
+                    `settings-edit-profile-info-form-input-error-duplicate-phone-number`,
+                  )
+                : l10n.getString(
+                    "settings-edit-profile-info-form-input-error-invalid-phone-number",
+                  )
+            }
             hasFloatingLabel
           />
           {secondaryPhoneItems.length > 0 && (
             <div className={styles.secondaryInputs}>
-              {(phoneData.slice(1) as string[]).map((item, itemIndex) => {
+              {phoneData.slice(1).map((item, itemIndex) => {
                 const currentItemIndex = itemIndex + 1;
                 const inputKey = `${props.profileDataKey}-${currentItemIndex}`;
                 return (
@@ -275,13 +295,20 @@ function EditProfileFormInputs(props: {
                           })
                         }
                         name={inputKey}
-                        value={item}
+                        value={item.value}
+                        isInvalid={!item.isValid || item.isDuplicate}
                         label={l10n.getString(
                           "settings-edit-profile-info-form-input-label-other-phone-number",
                         )}
-                        errorMessage={l10n.getString(
-                          "settings-edit-profile-info-form-input-error-phone-number",
-                        )}
+                        errorMessage={
+                          item.isDuplicate
+                            ? l10n.getString(
+                                `settings-edit-profile-info-form-input-error-duplicate-phone-number`,
+                              )
+                            : l10n.getString(
+                                "settings-edit-profile-info-form-input-error-invalid-phone-number",
+                              )
+                        }
                         hasFloatingLabel
                       />
                       <RemoveItemButton
@@ -289,7 +316,7 @@ function EditProfileFormInputs(props: {
                         onRemove={() =>
                           props.onRemove(
                             props.profileDataKey as ProfileDataListKey,
-                            itemIndex,
+                            currentItemIndex,
                           )
                         }
                       />
@@ -325,7 +352,7 @@ function EditProfileFormInputs(props: {
       );
     case "addresses":
       const addressData = props.profileData[props.profileDataKey];
-      const primaryAddressItem = `${addressData[0].city}, ${addressData[0].state}, USA`;
+      const primaryAddressItem = `${addressData[0]?.value?.city}, ${addressData[0]?.value?.state}, USA`;
       const secondaryAddressItems = addressData.slice(1);
       return (
         <>
@@ -351,67 +378,72 @@ function EditProfileFormInputs(props: {
             }
             defaultInputValue={primaryAddressItem}
             isRequired
+            isInvalid={!addressData[0].isValid || addressData[0].isDuplicate}
             errorMessage={l10n.getString(
-              "settings-edit-profile-info-form-input-error-current-location",
+              "settings-edit-profile-info-form-input-error-invalid-current-location",
             )}
-            isInvalid={!addressData[0].city || !addressData[0].state}
             hasFloatingLabel
           />
           {secondaryAddressItems.length > 0 && (
             <div className={styles.secondaryInputs}>
-              {(secondaryAddressItems as OnerepProfileAddress[]).map(
-                (item, itemIndex) => {
-                  const currentItemIndex = itemIndex + 1;
-                  const inputKey = `${props.profileDataKey}-${currentItemIndex}`;
-                  const inputValue =
-                    item.city && item.state
-                      ? `${item.city}, ${item.state}, USA`
-                      : "";
-                  return (
-                    <Fragment key={inputKey}>
-                      {itemIndex === 0 && (
-                        <strong>
-                          {l10n.getString(
-                            "settings-edit-profile-info-form-fieldset-section-other-label-addresses",
-                          )}
-                        </strong>
-                      )}
-                      <div className={styles.inputWrapper}>
-                        <LocationAutocompleteInput
-                          key={inputKey}
-                          label={l10n.getString(
-                            "settings-edit-profile-info-form-input-label-other-location",
-                          )}
-                          // These lines show as not covered even though there are unit tests for updating
-                          // the LocationAutocompleteInput in the test file `SettingsPageRedesign.test.tsx`.
-                          /* c8 ignore next 7 */
-                          onChange={(value) =>
-                            props.handleOnInputChange({
-                              key: props.profileDataKey as ProfileDataListKey,
-                              value,
-                              index: currentItemIndex,
-                            })
-                          }
-                          defaultInputValue={inputValue}
-                          errorMessage={l10n.getString(
-                            "onboarding-enter-details-input-error-message-location",
-                          )}
-                          hasFloatingLabel
-                        />
-                        <RemoveItemButton
-                          itemKey={props.profileDataKey}
-                          onRemove={() =>
-                            props.onRemove(
-                              props.profileDataKey as ProfileDataListKey,
-                              itemIndex,
-                            )
-                          }
-                        />
-                      </div>
-                    </Fragment>
-                  );
-                },
-              )}
+              {secondaryAddressItems.map((item, itemIndex) => {
+                const currentItemIndex = itemIndex + 1;
+                const inputKey = `${props.profileDataKey}-${currentItemIndex}`;
+                const inputValue =
+                  item.value?.city && item.value?.state
+                    ? `${item.value.city}, ${item.value.state}, USA`
+                    : "";
+                return (
+                  <Fragment key={inputKey}>
+                    {itemIndex === 0 && (
+                      <strong>
+                        {l10n.getString(
+                          "settings-edit-profile-info-form-fieldset-section-other-label-addresses",
+                        )}
+                      </strong>
+                    )}
+                    <div className={styles.inputWrapper}>
+                      <LocationAutocompleteInput
+                        key={inputKey}
+                        label={l10n.getString(
+                          "settings-edit-profile-info-form-input-label-other-location",
+                        )}
+                        // These lines show as not covered even though there are unit tests for updating
+                        // the LocationAutocompleteInput in the test file `SettingsPageRedesign.test.tsx`.
+                        /* c8 ignore next 7 */
+                        onChange={(value) =>
+                          props.handleOnInputChange({
+                            key: props.profileDataKey as ProfileDataListKey,
+                            value,
+                            index: currentItemIndex,
+                          })
+                        }
+                        defaultInputValue={inputValue}
+                        isInvalid={!item.isValid || item.isDuplicate}
+                        errorMessage={
+                          item.isDuplicate
+                            ? l10n.getString(
+                                "settings-edit-profile-info-form-input-error-duplicate-location",
+                              )
+                            : l10n.getString(
+                                "onboarding-enter-details-input-error-message-location",
+                              )
+                        }
+                        hasFloatingLabel
+                      />
+                      <RemoveItemButton
+                        itemKey={props.profileDataKey}
+                        onRemove={() =>
+                          props.onRemove(
+                            props.profileDataKey as ProfileDataListKey,
+                            currentItemIndex,
+                          )
+                        }
+                      />
+                    </div>
+                  </Fragment>
+                );
+              })}
             </div>
           )}
           {props.profileData[props.profileDataKey].length <

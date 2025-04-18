@@ -7,6 +7,7 @@
 import { FormEvent, Fragment, useRef, useState } from "react";
 import { captureException } from "@sentry/nextjs";
 import { toast } from "react-toastify";
+import isEqual from "lodash.isequal";
 import { OnerepProfileRow } from "knex/types/tables";
 import { EditProfileCancelDialog } from "./EditProfileCancelDialog";
 import {
@@ -14,11 +15,12 @@ import {
   EditProfileInputOnChangeReturnValue,
 } from "./EditProfileFormInputs";
 import { TelemetryButton } from "../../../../../../../../components/client/TelemetryButton";
+import { formatPhone } from "../../../../../../../../functions/universal/formatPhone";
 import { useL10n } from "../../../../../../../../hooks/l10n";
 import styles from "./EditProfileForm.module.scss";
 import { onHandleUpdateProfileData } from "#settings/actions";
 
-const profileFields: (keyof OnerepProfileRow)[] = [
+export const profileFields = [
   "first_name",
   "middle_name",
   "last_name",
@@ -27,19 +29,147 @@ const profileFields: (keyof OnerepProfileRow)[] = [
   "addresses",
 ] as const;
 
+export type ProfileDataKeys = (typeof profileFields)[number];
+
 export type ProfileDataListKey = keyof Pick<
   OnerepProfileRow,
   "first_names" | "middle_names" | "last_names" | "phone_numbers" | "addresses"
 >;
+
+type ProfileDataSingleKey = Exclude<ProfileDataKeys, ProfileDataListKey>;
+
+type FormDataItemValidated<T> = {
+  value: T | null;
+  isValid: boolean;
+  isDuplicate?: boolean;
+};
+
+export type FormDataValidated = {
+  [K in ProfileDataSingleKey]: FormDataItemValidated<OnerepProfileRow[K]>;
+} & {
+  [K in ProfileDataListKey]: FormDataItemValidated<
+    OnerepProfileRow[K][number]
+  >[];
+};
+
+const validateProfileFormData = (formData: OnerepProfileRow) => {
+  let formIsValid = true;
+  const data = Object.keys({ ...formData }).reduce(
+    (formDataValidated, formDataKey) => {
+      switch (formDataKey) {
+        case "first_name":
+        case "middle_name":
+        case "last_name": {
+          const isValid =
+            formData[formDataKey]?.trim() !== "" ||
+            formDataKey === "middle_name";
+          if (!isValid) {
+            formIsValid = false;
+          }
+          formDataValidated[formDataKey] = {
+            value: formData[formDataKey] ?? "",
+            isValid,
+          };
+          break;
+        }
+        case "first_names":
+        case "middle_names":
+        case "last_names": {
+          formDataValidated[formDataKey] = formData[formDataKey].map(
+            (value, valueIndex) => {
+              const isValid = value.trim() !== "";
+              const isDuplicate =
+                value.length > 0 &&
+                [
+                  formData[
+                    formDataKey.substring(
+                      0,
+                      formDataKey.length - 1,
+                    ) as keyof OnerepProfileRow
+                  ],
+                  ...formData[formDataKey].slice(0, valueIndex),
+                ].includes(value);
+              if (!isValid || isDuplicate) {
+                formIsValid = false;
+              }
+              return {
+                value,
+                isValid,
+                isDuplicate,
+              };
+            },
+          );
+          break;
+        }
+        case "date_of_birth": {
+          formDataValidated[formDataKey] = {
+            value: formData[formDataKey],
+            isValid: formData[formDataKey] instanceof Date,
+          };
+          break;
+        }
+        case "phone_numbers": {
+          formDataValidated[formDataKey] = formData[formDataKey].map(
+            (value, valueIndex) => {
+              const phoneNumberFormatted = formatPhone(value);
+              const isValid = phoneNumberFormatted.match(/\d/g)?.length === 10;
+              const isDuplicate =
+                phoneNumberFormatted.length > 0 &&
+                formData[formDataKey]
+                  .slice(0, valueIndex)
+                  .map((value) => formatPhone(value))
+                  .includes(phoneNumberFormatted);
+              if (!isValid || isDuplicate) {
+                formIsValid = false;
+              }
+              return {
+                value: phoneNumberFormatted,
+                isValid,
+                isDuplicate,
+              };
+            },
+          );
+          break;
+        }
+        case "addresses": {
+          formDataValidated[formDataKey] = formData[formDataKey].map(
+            (value, valueIndex) => {
+              const prevAddresses = formData[formDataKey].slice(0, valueIndex);
+              const isValid =
+                value.city?.trim() !== "" && value.state?.trim() !== "";
+              const isDuplicate = prevAddresses.some(
+                (item) =>
+                  item.city === value.city && item.state === value.state,
+              );
+              if (!isValid || isDuplicate) {
+                formIsValid = false;
+              }
+              return {
+                value,
+                isValid,
+                isDuplicate,
+              };
+            },
+          );
+          break;
+        }
+        default:
+          break;
+      }
+      return formDataValidated;
+    },
+    {} as FormDataValidated,
+  );
+  return { data, isValid: formIsValid };
+};
 
 function EditProfileForm(props: { profileData: OnerepProfileRow }) {
   const l10n = useL10n();
   const [profileFormData, setProfileFormData] = useState(props.profileData);
   const [updatingForm, setUpdatingForm] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
-
-  const hasProfileDataChanged =
-    JSON.stringify(props.profileData) !== JSON.stringify(profileFormData);
+  const hasProfileDataChanged = !isEqual(props.profileData, profileFormData);
+  const profileFormDataValidated = validateProfileFormData(profileFormData);
 
   const handleOnInputChange = ({
     key,
@@ -117,8 +247,8 @@ function EditProfileForm(props: { profileData: OnerepProfileRow }) {
               </legend>
               <div className={styles.formInputs}>
                 <EditProfileFormInputs
-                  profileData={profileFormData}
-                  profileDataKey={profileDataKey as keyof OnerepProfileRow}
+                  profileData={profileFormDataValidated.data}
+                  profileDataKey={profileDataKey}
                   handleOnInputChange={handleOnInputChange}
                   onAdd={handleOnAdd}
                   onRemove={handleOnRemove}
@@ -158,7 +288,7 @@ function EditProfileForm(props: { profileData: OnerepProfileRow }) {
           type="submit"
           variant="primary"
           isLoading={updatingForm}
-          disabled={!hasProfileDataChanged}
+          disabled={!profileFormDataValidated.isValid || !hasProfileDataChanged}
           event={{
             module: "ctaButton",
             name: "click",
