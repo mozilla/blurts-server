@@ -16,7 +16,7 @@ import {
   onApplyCouponCode,
   onCheckUserHasCurrentCouponSet,
   onRemoveEmail,
-} from "./actions";
+} from "#settings/actions";
 
 const mockedSessionUpdate = jest.fn();
 const mockedRecordTelemetry = jest.fn();
@@ -51,6 +51,7 @@ const mockedRouterRefresh = jest.fn();
 jest.mock("next/navigation", () => ({
   usePathname: () => "/user/settings",
   useRouter: () => ({
+    push: jest.fn(),
     refresh: mockedRouterRefresh,
   }),
 }));
@@ -307,6 +308,7 @@ describe("Settings page", () => {
           experimentData={defaultExperimentData["Features"]}
           isMonthlySubscriber={true}
           data={mockedPlusSubscriberEmailPreferences}
+          isEligibleForPremium={false}
           userAnnouncements={mockedAnnouncements}
         />
       </SettingsWrapper>,
@@ -345,6 +347,7 @@ describe("Settings page", () => {
           experimentData={defaultExperimentData["Features"]}
           isMonthlySubscriber={true}
           data={mockedPlusSubscriberEmailPreferences}
+          isEligibleForPremium={false}
           userAnnouncements={mockedAnnouncements}
         />
       </SettingsWrapper>,
@@ -383,6 +386,7 @@ describe("Settings page", () => {
             enabledFeatureFlags={[]}
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
+            isEligibleForPremium={false}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -419,6 +423,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -474,6 +479,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -521,6 +527,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -558,6 +565,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -598,6 +606,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -648,6 +657,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -694,6 +704,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -734,6 +745,7 @@ describe("Settings page", () => {
               experimentData={defaultExperimentData["Features"]}
               isMonthlySubscriber={true}
               data={mockedPlusSubscriberEmailPreferences}
+              isEligibleForPremium={false}
               userAnnouncements={mockedAnnouncements}
             />
           </SettingsWrapper>,
@@ -781,6 +793,7 @@ describe("Settings page", () => {
               experimentData={defaultExperimentData["Features"]}
               isMonthlySubscriber={true}
               data={mockedPlusSubscriberEmailPreferences}
+              isEligibleForPremium={false}
               userAnnouncements={mockedAnnouncements}
             />
           </SettingsWrapper>,
@@ -828,6 +841,7 @@ describe("Settings page", () => {
               experimentData={defaultExperimentData["Features"]}
               isMonthlySubscriber={true}
               data={mockedPlusSubscriberEmailPreferences}
+              isEligibleForPremium={false}
               userAnnouncements={mockedAnnouncements}
             />
           </SettingsWrapper>,
@@ -879,6 +893,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -917,6 +932,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -956,6 +972,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -1002,6 +1019,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -1083,6 +1101,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -1143,6 +1162,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -1196,6 +1216,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -1240,6 +1261,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -1286,6 +1308,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -1333,6 +1356,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -1377,6 +1401,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -1427,6 +1452,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -1474,6 +1500,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -1526,6 +1553,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -1574,6 +1602,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -1626,6 +1655,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -1673,6 +1703,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -1725,6 +1756,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -1789,6 +1821,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -1879,6 +1912,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -1947,6 +1981,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -1991,6 +2026,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -2038,6 +2074,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -2085,6 +2122,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -2148,6 +2186,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -2191,6 +2230,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -2253,6 +2293,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -2303,6 +2344,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -2363,6 +2405,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={false}
             data={mockedFreeSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -2407,6 +2450,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -2454,6 +2498,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -2511,6 +2556,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -2570,6 +2616,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -2606,6 +2653,7 @@ describe("Settings page", () => {
           experimentData={defaultExperimentData["Features"]}
           isMonthlySubscriber={true}
           data={undefined}
+          isEligibleForPremium={false}
           userAnnouncements={mockedAnnouncements}
         />
       </SettingsWrapper>

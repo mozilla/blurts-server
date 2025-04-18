@@ -16,7 +16,8 @@ export const InputField = (
     hasFloatingLabel?: boolean;
   },
 ) => {
-  const { isRequired, label, isInvalid, value, description } = props;
+  const { isRequired, label, isInvalid, value, description, placeholder } =
+    props;
   const inputRef = useRef(null);
   const {
     errorMessageProps,
@@ -46,6 +47,7 @@ export const InputField = (
         className={`${styles.inputField} ${!value ? styles.noValue : ""} ${
           isInvalid ? styles.hasError : ""
         }`}
+        placeholder={placeholder ?? ""}
       />
       {props.iconButton && (
         <div className={styles.buttonIcon}>{props.iconButton}</div>

@@ -4,6 +4,7 @@
 
 export const CONST_ONEREP_MAX_SCANS_THRESHOLD = 280000;
 export const CONST_MAX_NUM_ADDRESSES = 5;
+export const CONST_MAX_NUM_ADDRESSES_PLUS = 20;
 export const CONST_GA4_MEASUREMENT_ID = "G-CXG8K4KW4P";
 export const CONST_ONEREP_DATA_BROKER_COUNT = 190;
 export const CONST_URL_PLUS_CONTACT_SUPPORT =
@@ -22,6 +23,10 @@ export const CONST_URL_SUMO_MONITOR_REMOVAL =
   "https://support.mozilla.org/kb/how-does-monitor-plus-work#w_we-automatically-remove-your-information";
 export const CONST_URL_SUMO_MANUAL_REMOVAL =
   "https://support.mozilla.org/kb/general-questions-about-privacy-protection-scans#w_how-do-i-manually-remove-my-personal-information-from-data-broker-sites";
+export const CONST_URL_SUMO_EDIT_INFO_PERSONAL_INFO =
+  "https://support.mozilla.org/kb/mozilla-monitor-faq#w_why-do-you-need-my-personal-info";
+export const CONST_URL_SUMO_EDIT_PROFILE_DOB =
+  "https://support.mozilla.org/kb/add-edit-your-monitor-information#w_why-can-i-not-edit-my-birth-date";
 export const CONST_URL_WAITLIST =
   "https://www.mozilla.org/products/monitor/waitlist-scan/";
 export const CONST_URL_TERMS =
@@ -45,6 +50,7 @@ export const CONST_SETTINGS_TAB_SLUGS = [
   "edit-info",
   "notifications",
   "manage-account",
+  "edit-profile",
 ] as const;
 export const CONST_DATA_BROKER_PROFILE_DETAIL_ALLOW_LIST = [
   "first_name",

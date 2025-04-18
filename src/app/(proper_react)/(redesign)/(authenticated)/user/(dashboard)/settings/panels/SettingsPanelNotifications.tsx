@@ -134,13 +134,13 @@ export const NotificationsSettings = (props: NotificationSettingsProps) => {
   );
 
   return (
-    <section {...radioGroupProps} className={styles.wrapper}>
+    <section className={styles.wrapper}>
       <VisuallyHidden>
         <h3 {...labelProps}>
           {l10n.getString("settings-alert-email-preferences-title")}
         </h3>
       </VisuallyHidden>
-      <div className={styles.radioGroup}>
+      <div {...radioGroupProps} className={styles.radioGroup}>
         <SwitchInput
           className={styles.switchInput}
           isSelected={activateAlertEmail}

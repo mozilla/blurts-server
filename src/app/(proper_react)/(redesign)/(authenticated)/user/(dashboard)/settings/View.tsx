@@ -3,7 +3,11 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { Session } from "next-auth";
-import { EmailAddressRow, SubscriberRow } from "knex/types/tables";
+import {
+  EmailAddressRow,
+  OnerepProfileRow,
+  SubscriberRow,
+} from "knex/types/tables";
 import styles from "./View.module.scss";
 import { Toolbar } from "../../../../../../components/client/toolbar/Toolbar";
 import { ExtendedReactLocalization } from "../../../../../../functions/l10n";
@@ -21,7 +25,6 @@ export type Props = {
   l10n: ExtendedReactLocalization;
   user: Session["user"];
   subscriber: SubscriberRow;
-  data?: SubscriberEmailPreferencesOutput;
   monthlySubscriptionUrl: string;
   yearlySubscriptionUrl: string;
   subscriptionBillingAmount: {
@@ -34,10 +37,13 @@ export type Props = {
   breachCountByEmailAddress: Record<string, number>;
   enabledFeatureFlags: FeatureFlagName[];
   experimentData: ExperimentData["Features"];
-  lastScanDate?: Date;
-  isMonthlySubscriber: boolean;
-  activeTab?: TabType;
+  isEligibleForPremium: boolean;
   userAnnouncements: UserAnnouncementWithDetails[];
+  isMonthlySubscriber: boolean;
+  data?: SubscriberEmailPreferencesOutput;
+  profileData?: OnerepProfileRow;
+  lastScanDate?: Date;
+  activeTab?: TabType;
 };
 
 export const SettingsView = (props: Props) => {
@@ -65,6 +71,8 @@ export const SettingsView = (props: Props) => {
         isMonthlySubscriber={props.isMonthlySubscriber}
         subscriber={props.subscriber}
         user={props.user}
+        profileData={props.profileData}
+        isEligibleForPremium={props.isEligibleForPremium}
       />
     </div>
   );

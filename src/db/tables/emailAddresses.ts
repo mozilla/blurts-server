@@ -11,7 +11,11 @@ import { updateFxAData } from "./subscribers";
 import { ForbiddenError, UnauthorizedError } from "../../utils/error";
 import { EmailAddressRow, SubscriberRow } from "knex/types/tables";
 import { ReactLocalization } from "@fluent/react";
-import { CONST_MAX_NUM_ADDRESSES } from "../../constants";
+import {
+  CONST_MAX_NUM_ADDRESSES,
+  CONST_MAX_NUM_ADDRESSES_PLUS,
+} from "../../constants";
+import { hasPremium } from "src/app/functions/universal/user";
 
 const knex = createDbConnection();
 
@@ -44,6 +48,9 @@ async function addSubscriberUnverifiedEmailHash(
   email: string,
 ) {
   const lowerCaseEmail = email.toLowerCase();
+  const maxNumEmailAddresses = hasPremium(user)
+    ? CONST_MAX_NUM_ADDRESSES_PLUS
+    : CONST_MAX_NUM_ADDRESSES;
 
   const res = await knex.transaction(async (trx) => {
     await trx.raw("SET TRANSACTION ISOLATION LEVEL SERIALIZABLE");
@@ -52,7 +59,7 @@ async function addSubscriberUnverifiedEmailHash(
       .select()
       .where("subscriber_id", user.id)
       .then(async (rows) => {
-        if (rows.length < CONST_MAX_NUM_ADDRESSES - 1)
+        if (rows.length < maxNumEmailAddresses - 1)
           return trx("email_addresses")
             .insert({
               subscriber_id: user.id,
