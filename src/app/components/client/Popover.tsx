@@ -31,6 +31,7 @@ function Popover({ children, offset, state, ...props }: PopoverProps) {
   return (
     <Overlay>
       <div {...underlayProps} className={styles.underlay} />
+
       <div
         {...popoverProps}
         ref={props.popoverRef as React.RefObject<HTMLDivElement | null>}

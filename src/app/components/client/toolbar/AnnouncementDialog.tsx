@@ -5,7 +5,7 @@
 "use client";
 
 import Image from "next/image";
-import { useButton, useOverlayTrigger } from "react-aria";
+import { FocusScope, useButton, useOverlayTrigger } from "react-aria";
 import { useL10n } from "../../../hooks/l10n";
 import { useRef, useState } from "react";
 import { useOverlayTriggerState } from "react-stately";
@@ -38,6 +38,7 @@ export const AnnouncementDialog = ({
         recordTelemetry("button", "click", {
           button_id: "closed_announcements",
         });
+        setAnnouncementDetailsView(false);
         setActiveTab("new");
       }
     },
@@ -190,220 +191,222 @@ export const AnnouncementDialog = ({
           state={triggerState}
           {...overlayProps}
         >
-          <div
-            className={styles.announcementsWrapper}
-            role="dialog"
-            aria-label={l10n.getString("announcement-dialog-alt")}
-          >
-            <div className={styles.announcementsTabList} role="tablist">
-              <button
-                className={activeTab === "new" ? styles.active : ""}
-                role="tab"
-                aria-selected={activeTab === "new"}
-                onClick={() => {
-                  setActiveTab("new");
-                  setAnnouncementDetailsView(false);
-                  recordTelemetry("button", "click", {
-                    button_id: `view_new_announcements`,
-                  });
-                }}
-              >
-                {l10n.getString("announcement-dialog-default-tab")}
-              </button>
-              <button
-                className={activeTab === "all" ? styles.active : ""}
-                role="tab"
-                aria-selected={activeTab === "all"}
-                onClick={() => {
-                  setActiveTab("all");
-                  setAnnouncementDetailsView(false);
-                  recordTelemetry("button", "click", {
-                    button_id: `view_all_announcements`,
-                  });
-                }}
-              >
-                {l10n.getString("announcement-dialog-history-tab")}
-              </button>
-            </div>
-            <hr className={styles.horizontalLine} />
-            <div className={styles.announcementsContainer}>
-              {announcementDetailsView && relevantAnnouncement ? (
-                <div>
-                  <Image
-                    className={styles.bigImg}
-                    // The image rendering logic is skipped in coverage reports because
-                    // it relies on static imports of SVGs that are difficult to mock/test
-                    /* c8 ignore start */
-                    src={
-                      !bigImageUnavailableMap[
-                        relevantAnnouncement.announcement_id
-                      ]
-                        ? `/images/announcements/${relevantAnnouncement.announcement_id}/big.svg`
-                        : `/images/announcements/fallback/big.svg`
-                    }
-                    /* c8 ignore end */
-                    alt={l10n.getString("announcement-big-img-alt")}
-                    width={300}
-                    height={100}
-                    // The image rendering logic is skipped in coverage reports because
-                    // it relies on static imports of SVGs that are difficult to mock/test accurately in JSDOM
-                    /* c8 ignore start */
-                    onError={() =>
-                      setBigImageUnavailableMap((prev) => ({
-                        ...prev,
-                        [relevantAnnouncement.announcement_id]: true,
-                      }))
-                    }
-                    /* c8 ignore end */
-                  />
-                  <div className={styles.announcementWrapperOpen}>
-                    <dl className={styles.announcementItemOpen}>
-                      <dt>
-                        <LocalizedAnnouncementString
-                          announcement={relevantAnnouncement}
-                          type="title"
-                        />
-                      </dt>
-                      <dd>
-                        <LocalizedAnnouncementString
-                          announcement={relevantAnnouncement}
-                          type="description"
-                        />
-                      </dd>
-                    </dl>
-                    {relevantAnnouncement.cta_link && (
-                      <TelemetryLink
-                        href={relevantAnnouncement.cta_link}
-                        target="_blank"
-                        className={styles.announcementCta}
-                        eventData={{
-                          link_id: `${relevantAnnouncement.announcement_id}-cta`,
-                        }}
-                      >
-                        <LocalizedAnnouncementString
-                          announcement={relevantAnnouncement}
-                          type="cta-label"
-                        />
-                      </TelemetryLink>
-                    )}
-                  </div>
-                  <button
-                    className={styles.backBtn}
-                    onClick={() => setAnnouncementDetailsView(false)}
-                  >
-                    <span>{l10n.getString("announcement-dialog-back")}</span>
-                  </button>
-                </div>
-              ) : (
-                <div>
-                  {filteredAnnouncements.length === 0 ? (
-                    // Empty state
-                    <div className={styles.emptyState}>
-                      <Image
-                        width={300}
-                        height={100}
-                        alt=""
-                        src="/images/announcements/announcement-empty-come-back.svg"
-                      />
-                      <dl>
+          <FocusScope contain restoreFocus autoFocus>
+            <div
+              className={styles.announcementsWrapper}
+              role="dialog"
+              aria-label={l10n.getString("announcement-dialog-alt")}
+            >
+              <div className={styles.announcementsTabList} role="tablist">
+                <button
+                  className={activeTab === "new" ? styles.active : ""}
+                  role="tab"
+                  aria-selected={activeTab === "new"}
+                  onClick={() => {
+                    setActiveTab("new");
+                    setAnnouncementDetailsView(false);
+                    recordTelemetry("button", "click", {
+                      button_id: `view_new_announcements`,
+                    });
+                  }}
+                >
+                  {l10n.getString("announcement-dialog-default-tab")}
+                </button>
+                <button
+                  className={activeTab === "all" ? styles.active : ""}
+                  role="tab"
+                  aria-selected={activeTab === "all"}
+                  onClick={() => {
+                    setActiveTab("all");
+                    setAnnouncementDetailsView(false);
+                    recordTelemetry("button", "click", {
+                      button_id: `view_all_announcements`,
+                    });
+                  }}
+                >
+                  {l10n.getString("announcement-dialog-history-tab")}
+                </button>
+              </div>
+              <hr className={styles.horizontalLine} />
+              <div className={styles.announcementsContainer}>
+                {announcementDetailsView && relevantAnnouncement ? (
+                  <div>
+                    <Image
+                      className={styles.bigImg}
+                      // The image rendering logic is skipped in coverage reports because
+                      // it relies on static imports of SVGs that are difficult to mock/test
+                      /* c8 ignore start */
+                      src={
+                        !bigImageUnavailableMap[
+                          relevantAnnouncement.announcement_id
+                        ]
+                          ? `/images/announcements/${relevantAnnouncement.announcement_id}/big.svg`
+                          : `/images/announcements/fallback/big.svg`
+                      }
+                      /* c8 ignore end */
+                      alt={l10n.getString("announcement-big-img-alt")}
+                      width={300}
+                      height={100}
+                      // The image rendering logic is skipped in coverage reports because
+                      // it relies on static imports of SVGs that are difficult to mock/test accurately in JSDOM
+                      /* c8 ignore start */
+                      onError={() =>
+                        setBigImageUnavailableMap((prev) => ({
+                          ...prev,
+                          [relevantAnnouncement.announcement_id]: true,
+                        }))
+                      }
+                      /* c8 ignore end */
+                    />
+                    <div className={styles.announcementWrapperOpen}>
+                      <dl className={styles.announcementItemOpen}>
                         <dt>
-                          {l10n.getString(
-                            "announcement-dialog-empty-state-title",
-                          )}
+                          <LocalizedAnnouncementString
+                            announcement={relevantAnnouncement}
+                            type="title"
+                          />
                         </dt>
                         <dd>
-                          {l10n.getString(
-                            "announcement-dialog-empty-state-description",
-                          )}
+                          <LocalizedAnnouncementString
+                            announcement={relevantAnnouncement}
+                            type="description"
+                          />
                         </dd>
                       </dl>
+                      {relevantAnnouncement.cta_link && (
+                        <TelemetryLink
+                          href={relevantAnnouncement.cta_link}
+                          target="_blank"
+                          className={styles.announcementCta}
+                          eventData={{
+                            link_id: `${relevantAnnouncement.announcement_id}-cta`,
+                          }}
+                        >
+                          <LocalizedAnnouncementString
+                            announcement={relevantAnnouncement}
+                            type="cta-label"
+                          />
+                        </TelemetryLink>
+                      )}
                     </div>
-                  ) : (
-                    // List of announcements
-
-                    filteredAnnouncements.map((announcement) => (
-                      <button
-                        className={styles.announcementItem}
-                        key={announcement.id}
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setRelevantAnnouncement(announcement);
-                          setAnnouncementDetailsView(true);
-                          handleMarkAsSeen(announcement);
-                        }}
-                      >
+                    <button
+                      className={styles.backBtn}
+                      onClick={() => setAnnouncementDetailsView(false)}
+                    >
+                      <span>{l10n.getString("announcement-dialog-back")}</span>
+                    </button>
+                  </div>
+                ) : (
+                  <div>
+                    {filteredAnnouncements.length === 0 ? (
+                      // Empty state
+                      <div className={styles.emptyState}>
                         <Image
-                          className={styles.smallImg}
-                          // The image rendering logic is skipped in coverage reports because
-                          // it relies on static imports of SVGs that are difficult to mock/test
-                          /* c8 ignore start */
-                          src={
-                            !smallImageUnavailableMap[
-                              announcement.announcement_id
-                            ]
-                              ? `/images/announcements/${announcement.announcement_id}/small.svg`
-                              : `/images/announcements/fallback/small.svg`
-                          }
-                          /* c8 ignore end */
-                          alt={l10n.getString("announcement-small-img-alt")}
-                          width={48}
-                          height={48}
-                          // The image rendering logic is skipped in coverage reports because
-                          // it relies on static imports of SVGs that are difficult to mock/test accurately in JSDOM
-                          /* c8 ignore start */
-                          onError={() =>
-                            setSmallImageUnavailableMap((prev) => ({
-                              ...prev,
-                              [announcement.announcement_id]: true,
-                            }))
-                          }
-                          /* c8 ignore end */
+                          width={300}
+                          height={100}
+                          alt=""
+                          src="/images/announcements/announcement-empty-come-back.svg"
                         />
-                        <dl role="group">
+                        <dl>
                           <dt>
-                            <LocalizedAnnouncementString
-                              announcement={announcement}
-                              type="title"
-                            />
+                            {l10n.getString(
+                              "announcement-dialog-empty-state-title",
+                            )}
                           </dt>
                           <dd>
-                            <LocalizedAnnouncementString
-                              announcement={announcement}
-                              type="description"
-                              truncatedDescription
-                            />
+                            {l10n.getString(
+                              "announcement-dialog-empty-state-description",
+                            )}
                           </dd>
                         </dl>
-                      </button>
-                    ))
-                  )}
-                  {activeTab === "new" &&
-                    filteredAnnouncements.length !== 0 && (
-                      <button
-                        className={styles.clearAllBtn}
-                        onClick={handleClearAll}
-                      >
-                        <span>
-                          {l10n.getString("announcement-dialog-clear-all")}
-                        </span>
-                      </button>
+                      </div>
+                    ) : (
+                      // List of announcements
+
+                      filteredAnnouncements.map((announcement) => (
+                        <button
+                          className={styles.announcementItem}
+                          key={announcement.id}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setRelevantAnnouncement(announcement);
+                            setAnnouncementDetailsView(true);
+                            handleMarkAsSeen(announcement);
+                          }}
+                        >
+                          <Image
+                            className={styles.smallImg}
+                            // The image rendering logic is skipped in coverage reports because
+                            // it relies on static imports of SVGs that are difficult to mock/test
+                            /* c8 ignore start */
+                            src={
+                              !smallImageUnavailableMap[
+                                announcement.announcement_id
+                              ]
+                                ? `/images/announcements/${announcement.announcement_id}/small.svg`
+                                : `/images/announcements/fallback/small.svg`
+                            }
+                            /* c8 ignore end */
+                            alt={l10n.getString("announcement-small-img-alt")}
+                            width={48}
+                            height={48}
+                            // The image rendering logic is skipped in coverage reports because
+                            // it relies on static imports of SVGs that are difficult to mock/test accurately in JSDOM
+                            /* c8 ignore start */
+                            onError={() =>
+                              setSmallImageUnavailableMap((prev) => ({
+                                ...prev,
+                                [announcement.announcement_id]: true,
+                              }))
+                            }
+                            /* c8 ignore end */
+                          />
+                          <dl role="group">
+                            <dt>
+                              <LocalizedAnnouncementString
+                                announcement={announcement}
+                                type="title"
+                              />
+                            </dt>
+                            <dd>
+                              <LocalizedAnnouncementString
+                                announcement={announcement}
+                                type="description"
+                                truncatedDescription
+                              />
+                            </dd>
+                          </dl>
+                        </button>
+                      ))
                     )}
-                </div>
-              )}
+                    {activeTab === "new" &&
+                      filteredAnnouncements.length !== 0 && (
+                        <button
+                          className={styles.clearAllBtn}
+                          onClick={handleClearAll}
+                        >
+                          <span>
+                            {l10n.getString("announcement-dialog-clear-all")}
+                          </span>
+                        </button>
+                      )}
+                  </div>
+                )}
+              </div>
+              <button
+                {...dismissButtonProps}
+                ref={dismissButtonRef}
+                type="button"
+                className={styles.dismissButton}
+              >
+                <CloseBtn
+                  alt={l10n.getString("close-modal-alt")}
+                  width="14"
+                  height="14"
+                />
+              </button>
             </div>
-            <button
-              {...dismissButtonProps}
-              ref={dismissButtonRef}
-              type="button"
-              className={styles.dismissButton}
-            >
-              <CloseBtn
-                alt={l10n.getString("close-modal-alt")}
-                width="14"
-                height="14"
-              />
-            </button>
-          </div>
+          </FocusScope>
         </Popover>
       )}
     </>
