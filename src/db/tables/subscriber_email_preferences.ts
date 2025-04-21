@@ -4,11 +4,12 @@
 
 import createDbConnection from "../connect";
 import { logger } from "../../app/functions/server/logging";
-import { captureException } from "@sentry/node";
+import { captureException, captureMessage } from "@sentry/node";
 import {
   SubscriberEmailPreferencesRow,
   SubscriberRow,
 } from "knex/types/tables";
+import { getSubscriberById } from "./subscribers";
 
 const knex = createDbConnection();
 
@@ -295,6 +296,40 @@ async function unsubscribeMonthlyMonitorReportForUnsubscribeToken(
         sub.id,
       );
     } else if (typeof sub?.id === "number") {
+      // TODO: remove after MNTOR-4343
+      const subscriber = await getSubscriberById(sub.id);
+      if (!subscriber) {
+        logger.error(
+          "unsubscribe_monthly_monitor_report_for_unsubscribe_token_subscriber_not_found",
+          { subscriberId: sub.id },
+        );
+
+        // should throw a sentry error for further investigation
+        captureMessage(
+          `unsubscribe_monthly_monitor_report_for_unsubscribe_token_subscriber_not_found_updated: ${sub.id}`,
+        );
+
+        const res = (
+          await knex("subscriber_email_preferences")
+            .where("subscriber_id", sub.id)
+            .update({
+              monthly_monitor_report_free: false,
+              // @ts-ignore knex.fn.now() results in it being set to a date,
+              // even if it's not typed as a JS date object:
+              monthly_monitor_report_free_at: knex.fn.now(),
+            })
+            .returning("*")
+        )?.[0];
+
+        logger.info(
+          "unsubscribe_monthly_monitor_report_for_unsubscribe_token_subscriber_not_found_updated",
+          {
+            subscriberId: sub.id,
+            res,
+          },
+        );
+        return;
+      }
       await updateEmailPreferenceForSubscriber(sub.id, true, {
         monthly_monitor_report_free: false,
       });
