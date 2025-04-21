@@ -285,33 +285,31 @@ async function unsubscribeMonthlyMonitorReportForUnsubscribeToken(
     // Investigation: MNTOR-4326
     const sub = await getEmailPreferenceForUnsubscribeToken(unsubscribeToken);
 
-    logger.info("found_preference_for_token", { unsubscribeToken, sub });
-
     if (
-      typeof sub?.id === "number" &&
+      typeof sub?.subscriber_id === "number" &&
       sub.monthly_monitor_report_free === false
     ) {
       logger.info(
         "unsubscribe_monthly_monitor_report_for_unsubscribe_token_already_unsubscribed",
-        sub.id,
+        sub.subscriber_id,
       );
-    } else if (typeof sub?.id === "number") {
+    } else if (typeof sub?.subscriber_id === "number") {
       // TODO: remove after MNTOR-4343
-      const subscriber = await getSubscriberById(sub.id);
+      const subscriber = await getSubscriberById(sub.subscriber_id);
       if (!subscriber) {
         logger.error(
           "unsubscribe_monthly_monitor_report_for_unsubscribe_token_subscriber_not_found",
-          { subscriberId: sub.id },
+          { subscriberId: sub.subscriber_id },
         );
 
         // should throw a sentry error for further investigation
         captureMessage(
-          `unsubscribe_monthly_monitor_report_for_unsubscribe_token_subscriber_not_found_updated: ${sub.id}`,
+          `unsubscribe_monthly_monitor_report_for_unsubscribe_token_subscriber_not_found_updated: ${sub.subscriber_id}`,
         );
 
         const res = (
           await knex("subscriber_email_preferences")
-            .where("subscriber_id", sub.id)
+            .where("subscriber_id", sub.subscriber_id)
             .update({
               monthly_monitor_report_free: false,
               // @ts-ignore knex.fn.now() results in it being set to a date,
@@ -324,13 +322,13 @@ async function unsubscribeMonthlyMonitorReportForUnsubscribeToken(
         logger.info(
           "unsubscribe_monthly_monitor_report_for_unsubscribe_token_subscriber_not_found_updated",
           {
-            subscriberId: sub.id,
+            subscriberId: sub.subscriber_id,
             res,
           },
         );
         return;
       }
-      await updateEmailPreferenceForSubscriber(sub.id, true, {
+      await updateEmailPreferenceForSubscriber(sub.subscriber_id, true, {
         monthly_monitor_report_free: false,
       });
     } else {
