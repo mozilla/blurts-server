@@ -95,7 +95,7 @@
     "canvas-confetti": "^1.9.3",
     "dotenv-flow": "^4.1.0",
     "ioredis": "^5.6.1",
-    "jsdom": "^26.0.0",
+    "jsdom": "^26.1.0",
     "jsonwebtoken": "^9.0.2",
     "jwk-to-pem": "^2.0.7",
     "knex": "^3.1.0",
