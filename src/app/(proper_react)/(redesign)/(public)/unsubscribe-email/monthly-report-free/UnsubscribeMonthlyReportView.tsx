@@ -11,11 +11,9 @@ import Image from "next/image";
 import { useL10n } from "../../../../../hooks/l10n";
 import { toast, ToastOptions } from "react-toastify";
 import { TelemetryButton } from "../../../../../components/client/TelemetryButton";
-import { useTelemetry } from "../../../../../hooks/useTelemetry";
 import { signIn } from "next-auth/react";
 
 export const UnsubscribeMonthlyReportView = ({ token }: { token: string }) => {
-  const recordTelemetry = useTelemetry();
   const l10n = useL10n();
   const [unsubscribeSuccess, setUnsubscribeSuccess] = useState(false);
   const toastOptions: ToastOptions = {
@@ -49,42 +47,12 @@ export const UnsubscribeMonthlyReportView = ({ token }: { token: string }) => {
       );
 
       if (!response.ok) {
-        toast.error(
-          l10n.getFragment("unsubscription-failed", {
-            elems: {
-              try_again_link: (
-                <button
-                  className={styles.tryAgain}
-                  onClick={() => {
-                    recordTelemetry("button", "click", {
-                      button_id:
-                        "unsuccessful_unsubscribe_from_monthly_report_try_again",
-                    });
-                    void handleUnsubscription();
-                  }}
-                />
-              ),
-            },
-          }),
-          toastOptions,
-        );
+        toast.error(l10n.getString("unsubscription-failed-2"), toastOptions);
       } else {
         setUnsubscribeSuccess(true);
       }
     } catch (error) {
-      toast.error(
-        l10n.getFragment("unsubscription-failed", {
-          elems: {
-            try_again_link: (
-              <button
-                className={styles.tryAgain}
-                onClick={() => void handleUnsubscription()}
-              />
-            ),
-          },
-        }),
-        toastOptions,
-      );
+      toast.error(l10n.getString("unsubscription-failed-2"), toastOptions);
       console.error("Error unsubscribing from Monthly monitor report", error);
     }
   };
