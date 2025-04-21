@@ -307,23 +307,19 @@ async function unsubscribeMonthlyMonitorReportForUnsubscribeToken(
           `unsubscribe_monthly_monitor_report_for_unsubscribe_token_subscriber_not_found_updated: ${sub.subscriber_id}`,
         );
 
-        const res = (
-          await knex("subscriber_email_preferences")
-            .where("subscriber_id", sub.subscriber_id)
-            .update({
-              monthly_monitor_report_free: false,
-              // @ts-ignore knex.fn.now() results in it being set to a date,
-              // even if it's not typed as a JS date object:
-              monthly_monitor_report_free_at: knex.fn.now(),
-            })
-            .returning("*")
-        )?.[0];
+        await knex("subscriber_email_preferences")
+          .where("subscriber_id", sub.subscriber_id)
+          .update({
+            monthly_monitor_report_free: false,
+            // @ts-ignore knex.fn.now() results in it being set to a date,
+            // even if it's not typed as a JS date object:
+            monthly_monitor_report_free_at: knex.fn.now(),
+          });
 
         logger.info(
           "unsubscribe_monthly_monitor_report_for_unsubscribe_token_subscriber_not_found_updated",
           {
             subscriberId: sub.subscriber_id,
-            res,
           },
         );
         return;
