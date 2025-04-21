@@ -4,11 +4,12 @@
 
 import createDbConnection from "../connect";
 import { logger } from "../../app/functions/server/logging";
-import { captureException } from "@sentry/node";
+import { captureException, captureMessage } from "@sentry/node";
 import {
   SubscriberEmailPreferencesRow,
   SubscriberRow,
 } from "knex/types/tables";
+import { getSubscriberById } from "./subscribers";
 
 const knex = createDbConnection();
 
@@ -284,18 +285,46 @@ async function unsubscribeMonthlyMonitorReportForUnsubscribeToken(
     // Investigation: MNTOR-4326
     const sub = await getEmailPreferenceForUnsubscribeToken(unsubscribeToken);
 
-    logger.info("found_preference_for_token", { unsubscribeToken, sub });
-
     if (
-      typeof sub?.id === "number" &&
+      typeof sub?.subscriber_id === "number" &&
       sub.monthly_monitor_report_free === false
     ) {
       logger.info(
         "unsubscribe_monthly_monitor_report_for_unsubscribe_token_already_unsubscribed",
-        sub.id,
+        sub.subscriber_id,
       );
-    } else if (typeof sub?.id === "number") {
-      await updateEmailPreferenceForSubscriber(sub.id, true, {
+    } else if (typeof sub?.subscriber_id === "number") {
+      // TODO: remove after MNTOR-4343
+      const subscriber = await getSubscriberById(sub.subscriber_id);
+      if (!subscriber) {
+        logger.error(
+          "unsubscribe_monthly_monitor_report_for_unsubscribe_token_subscriber_not_found",
+          { subscriberId: sub.subscriber_id },
+        );
+
+        // should throw a sentry error for further investigation
+        captureMessage(
+          `unsubscribe_monthly_monitor_report_for_unsubscribe_token_subscriber_not_found_updated: ${sub.subscriber_id}`,
+        );
+
+        await knex("subscriber_email_preferences")
+          .where("subscriber_id", sub.subscriber_id)
+          .update({
+            monthly_monitor_report_free: false,
+            // @ts-ignore knex.fn.now() results in it being set to a date,
+            // even if it's not typed as a JS date object:
+            monthly_monitor_report_free_at: knex.fn.now(),
+          });
+
+        logger.info(
+          "unsubscribe_monthly_monitor_report_for_unsubscribe_token_subscriber_not_found_updated",
+          {
+            subscriberId: sub.subscriber_id,
+          },
+        );
+        return;
+      }
+      await updateEmailPreferenceForSubscriber(sub.subscriber_id, true, {
         monthly_monitor_report_free: false,
       });
     } else {
