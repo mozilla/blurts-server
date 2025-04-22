@@ -159,10 +159,6 @@ const EmailAddressAddForm = (props: {
     }
   }, [props.onAddEmailState, recordTelemetry]);
 
-  const handleInputChangeRedesign = (value: string) => {
-    setEmail(value);
-  };
-
   const isEmailValid = () => {
     return email.length > 0 && (formRef.current?.reportValidity() ?? false);
   };
@@ -183,7 +179,7 @@ const EmailAddressAddForm = (props: {
           label={l10n.getString(
             "settings-email-addresses-initial-dialog-add-email-input-label",
           )}
-          onChange={handleInputChangeRedesign}
+          onChange={(value: string) => setEmail(value)}
           type="email"
           value={email}
           hasFloatingLabel
