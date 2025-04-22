@@ -14,6 +14,11 @@ import { OpenInNew } from "../../../../../../../components/server/Icons";
 import { SettingsConfirmationDialog } from "../SettingsConfirmationDialog";
 import AddEmailDialogIllustration from "../images/DeleteAccountDialogIllustration.svg";
 import { DeleteAccountButton } from "../DeleteAccountButton";
+import {
+  type onDeleteAccount,
+  type onApplyCouponCode,
+  type onCheckUserHasCurrentCouponSet,
+} from "../actions";
 
 export type SettingsPanelManageAccountProps = {
   enabledFeatureFlags: FeatureFlagName[];
@@ -21,6 +26,11 @@ export type SettingsPanelManageAccountProps = {
   fxaSubscriptionsUrl: string;
   isMonthlySubscriber: boolean;
   user: Session["user"];
+  actions: {
+    onDeleteAccount: typeof onDeleteAccount;
+    onApplyCouponCode: typeof onApplyCouponCode;
+    onCheckUserHasCurrentCouponSet: typeof onCheckUserHasCurrentCouponSet;
+  };
 };
 
 function SettingsPanelManageAccount(props: SettingsPanelManageAccountProps) {
@@ -45,6 +55,7 @@ function SettingsPanelManageAccount(props: SettingsPanelManageAccountProps) {
                 fxaSubscriptionsUrl={props.fxaSubscriptionsUrl}
                 experimentData={props.experimentData}
                 isMonthlySubscriber={props.isMonthlySubscriber}
+                actions={props.actions}
               />
             ) : (
               <TelemetryLink
@@ -103,7 +114,10 @@ function SettingsPanelManageAccount(props: SettingsPanelManageAccountProps) {
                   )}
                 </p>
               </div>
-              <DeleteAccountButton variant="primary">
+              <DeleteAccountButton
+                variant="primary"
+                onDeleteAccount={props.actions.onDeleteAccount}
+              >
                 {l10n.getString(
                   "settings-delete-monitor-plus-account-dialog-cta-label",
                 )}
@@ -140,7 +154,10 @@ function SettingsPanelManageAccount(props: SettingsPanelManageAccountProps) {
                   )}
                 </p>
               </div>
-              <DeleteAccountButton variant="primary">
+              <DeleteAccountButton
+                variant="primary"
+                onDeleteAccount={props.actions.onDeleteAccount}
+              >
                 {l10n.getString(
                   "settings-delete-monitor-free-account-dialog-cta-label",
                 )}
