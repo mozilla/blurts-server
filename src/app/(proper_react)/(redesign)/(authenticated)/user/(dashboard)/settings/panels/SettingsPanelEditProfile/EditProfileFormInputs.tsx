@@ -126,7 +126,7 @@ function EditProfileFormInputs(props: {
             }
             key={props.profileDataKey}
             name={props.profileDataKey}
-            value={nameData.value ?? ""}
+            value={nameData.value}
             label={l10n.getString(
               `settings-edit-profile-info-form-input-label-primary-${profileDataKeyParsed}`,
             )}
@@ -239,10 +239,7 @@ function EditProfileFormInputs(props: {
       );
     case "phone_numbers":
       const phoneData = props.profileData[props.profileDataKey];
-      const primaryPhoneItem = phoneData[0] ?? {
-        value: "",
-        isValid: true,
-      };
+      const primaryPhoneItem = phoneData[0];
       const secondaryPhoneItems = phoneData.slice(1);
       return (
         <>
@@ -259,17 +256,11 @@ function EditProfileFormInputs(props: {
             value={primaryPhoneItem.value}
             isInvalid={!primaryPhoneItem.isValid}
             label={l10n.getString(
-              `settings-edit-profile-info-form-input-label-primary-phone-number`,
+              "settings-edit-profile-info-form-input-label-primary-phone-number",
             )}
-            errorMessage={
-              primaryPhoneItem?.isDuplicate
-                ? l10n.getString(
-                    `settings-edit-profile-info-form-input-error-duplicate-phone-number`,
-                  )
-                : l10n.getString(
-                    "settings-edit-profile-info-form-input-error-invalid-phone-number",
-                  )
-            }
+            errorMessage={l10n.getString(
+              "settings-edit-profile-info-form-input-error-invalid-phone-number",
+            )}
             hasFloatingLabel
           />
           {secondaryPhoneItems.length > 0 && (
@@ -305,7 +296,7 @@ function EditProfileFormInputs(props: {
                         errorMessage={
                           item.isDuplicate
                             ? l10n.getString(
-                                `settings-edit-profile-info-form-input-error-duplicate-phone-number`,
+                                "settings-edit-profile-info-form-input-error-duplicate-phone-number",
                               )
                             : l10n.getString(
                                 "settings-edit-profile-info-form-input-error-invalid-phone-number",
@@ -332,16 +323,9 @@ function EditProfileFormInputs(props: {
           CONST_DATA_BROKER_PROFILE_DETAIL_LIMITS[props.profileDataKey] ? (
             <AddItemButton
               itemKey={props.profileDataKey}
-              onAdd={() => {
-                if (typeof phoneData[0] === "undefined") {
-                  props.handleOnInputChange({
-                    key: props.profileDataKey as ProfileDataListKey,
-                    value: "",
-                    index: 0,
-                  });
-                }
-                props.onAdd(props.profileDataKey as ProfileDataListKey);
-              }}
+              onAdd={() =>
+                props.onAdd(props.profileDataKey as ProfileDataListKey)
+              }
             />
           ) : (
             <p>
@@ -366,7 +350,7 @@ function EditProfileFormInputs(props: {
           <LocationAutocompleteInput
             key={`${props.profileDataKey}-0`}
             label={l10n.getString(
-              `settings-edit-profile-info-form-input-label-primary-location`,
+              "settings-edit-profile-info-form-input-label-primary-location",
             )}
             // These lines show as not covered even though there are unit tests for updating
             // the LocationAutocompleteInput in the test file `SettingsPageRedesign.test.tsx`.

@@ -39,7 +39,7 @@ export type ProfileDataListKey = keyof Pick<
 type ProfileDataSingleKey = Exclude<ProfileDataKeys, ProfileDataListKey>;
 
 type FormDataItemValidated<T> = {
-  value: T | null;
+  value: T;
   isValid: boolean;
   isDuplicate?: boolean;
 };
@@ -54,7 +54,7 @@ export type FormDataValidated = {
 
 const validateProfileFormData = (formData: OnerepProfileRow) => {
   let formIsValid = true;
-  const data = Object.keys({ ...formData }).reduce(
+  const data = Object.keys(formData).reduce(
     (formDataValidated, formDataKey) => {
       switch (formDataKey) {
         case "first_name":
@@ -109,28 +109,28 @@ const validateProfileFormData = (formData: OnerepProfileRow) => {
           break;
         }
         case "phone_numbers": {
-          formDataValidated[formDataKey] = formData[formDataKey].map(
-            (value, valueIndex) => {
-              const phoneNumberFormatted = formatPhone(value);
-              const isValid =
-                (valueIndex === 0 && phoneNumberFormatted === "") ||
-                phoneNumberFormatted.match(/\d/g)?.length === 10;
-              const isDuplicate =
-                phoneNumberFormatted.length > 0 &&
-                formData[formDataKey]
-                  .slice(0, valueIndex)
-                  .map((value) => formatPhone(value))
-                  .includes(phoneNumberFormatted);
-              if (!isValid || isDuplicate) {
-                formIsValid = false;
-              }
-              return {
-                value: phoneNumberFormatted,
-                isValid,
-                isDuplicate,
-              };
-            },
-          );
+          formDataValidated[formDataKey] = (
+            formData[formDataKey].length === 0 ? [""] : formData[formDataKey]
+          ).map((value, valueIndex) => {
+            const phoneNumberFormatted = formatPhone(value);
+            const isValid =
+              (valueIndex === 0 && phoneNumberFormatted === "") ||
+              phoneNumberFormatted.match(/\d/g)?.length === 10;
+            const isDuplicate =
+              phoneNumberFormatted.length > 0 &&
+              formData[formDataKey]
+                .slice(0, valueIndex)
+                .map((value) => formatPhone(value))
+                .includes(phoneNumberFormatted);
+            if (!isValid || isDuplicate) {
+              formIsValid = false;
+            }
+            return {
+              value: phoneNumberFormatted,
+              isValid,
+              isDuplicate,
+            };
+          });
           break;
         }
         case "addresses": {

@@ -114,7 +114,7 @@ export const mockedProfileDataMin: OnerepProfileRow = {
   name_suffix: "",
   first_name: "First01",
   last_name: "Last01",
-  middle_name: "",
+  middle_name: null,
   first_names: [],
   middle_names: [],
   last_names: [],

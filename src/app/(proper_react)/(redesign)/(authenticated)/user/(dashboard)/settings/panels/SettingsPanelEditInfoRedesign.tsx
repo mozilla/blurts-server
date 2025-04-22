@@ -255,7 +255,7 @@ function MonitoredEmailAddressesSection(
         {hasMaxEmailAddresses && (
           <EmailAddressAdderRedesign
             maxNumEmailAddresses={maxNumEmailAddresses}
-            actions={props.actions}
+            onAddEmail={props.actions.onAddEmail}
           />
         )}
       </span>

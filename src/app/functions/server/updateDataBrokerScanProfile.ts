@@ -121,7 +121,7 @@ async function updateDataBrokerScanProfile(
   // Apply the updates to the `onerep_profiles` table.
   await updateProfileDetails(onerepProfileId, {
     first_name,
-    middle_name: middle_name ?? "",
+    middle_name,
     last_name,
     first_names,
     last_names,

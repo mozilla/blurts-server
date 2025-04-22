@@ -40,6 +40,17 @@ export type SettingsWrapperProps = {
   hasPlus?: boolean;
 };
 
+export const mockedActions = {
+  onAddEmail: fn().mockName("onAddEmail"),
+  onRemoveEmail: fn().mockName("onRemoveEmail"),
+  onDeleteAccount: fn().mockName("onDeleteAccount"),
+  onApplyCouponCode: fn().mockName("onApplyCouponCode"),
+  onCheckUserHasCurrentCouponSet: fn().mockName(
+    "onCheckUserHasCurrentCouponSet",
+  ),
+  onHandleUpdateProfileData: fn().mockName("onHandleUpdateProfileData"),
+};
+
 export const SettingsWrapper = (props: SettingsWrapperProps) => {
   const user = {
     email: "example@example.com",
@@ -103,19 +114,8 @@ export const SettingsWrapper = (props: SettingsWrapperProps) => {
             isMonthlySubscriber={props.isMonthlySubscriber}
             isEligibleForPremium={props.isEligibleForPremium}
             profileData={props.profileData}
-            activeTab={props.activeTab ?? "action-needed"}
-            actions={{
-              onAddEmail: fn().mockName("onAddEmail"),
-              onRemoveEmail: fn().mockName("onRemoveEmail"),
-              onDeleteAccount: fn().mockName("onDeleteAccount"),
-              onApplyCouponCode: fn().mockName("onApplyCouponCode"),
-              onCheckUserHasCurrentCouponSet: fn().mockName(
-                "onCheckUserHasCurrentCouponSet",
-              ),
-              onHandleUpdateProfileData: fn().mockName(
-                "onHandleUpdateProfileData",
-              ),
-            }}
+            activeTab={props.activeTab}
+            actions={mockedActions}
             userAnnouncements={[]}
           />
         </Shell>

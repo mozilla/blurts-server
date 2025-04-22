@@ -2,13 +2,11 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { ComponentProps } from "react";
 import { it, expect } from "@jest/globals";
 import { act, render, screen } from "@testing-library/react";
 import { composeStory } from "@storybook/react";
 import { userEvent, within } from "@storybook/test";
 import { axe } from "jest-axe";
-import { SettingsView } from "./View";
 import SettingsMeta, {
   SettingsEditManageAccount,
   SettingsEditNotifications,
@@ -28,6 +26,7 @@ import {
   SettingsEditYourInfoAdditionalMonitoredEmails,
   SettingsEditYourInfoMaxMonitoredEmails,
 } from "./stories/SettingsEditInfoNonUsUsers.stories";
+import { mockedActions } from "./stories/SettingsStoryWrapper";
 
 const mockedRouterPush = jest.fn();
 
@@ -48,15 +47,6 @@ import {
   mockedProfileDataMin,
   mockedVerifiedEmailFourth,
 } from "./stories/settingsMockData";
-
-const mockedActions: ComponentProps<typeof SettingsView>["actions"] = {
-  onRemoveEmail: jest.fn(),
-  onAddEmail: jest.fn(),
-  onDeleteAccount: () => new Promise(() => undefined),
-  onApplyCouponCode: jest.fn(),
-  onCheckUserHasCurrentCouponSet: jest.fn(),
-  onHandleUpdateProfileData: jest.fn(),
-};
 
 describe("Settings page redesign", () => {
   describe("Edit your info (non-US users)", () => {
@@ -81,12 +71,7 @@ describe("Settings page redesign", () => {
     });
 
     it("adds an email to the list of addresses to monitor for breaches", async () => {
-      (
-        mockedActions.onAddEmail as jest.Mock<
-          ReturnType<typeof mockedActions.onAddEmail>,
-          Parameters<typeof mockedActions.onAddEmail>
-        >
-      ).mockResolvedValue({
+      mockedActions.onAddEmail.mockResolvedValue({
         success: true,
         submittedAddress: "mail@example.com",
       });
@@ -119,12 +104,7 @@ describe("Settings page redesign", () => {
     });
 
     it("shows the confirmation dialog after adding an email to the list of addresses to monitor for breaches", async () => {
-      (
-        mockedActions.onAddEmail as jest.Mock<
-          ReturnType<typeof mockedActions.onAddEmail>,
-          Parameters<typeof mockedActions.onAddEmail>
-        >
-      ).mockResolvedValue({
+      mockedActions.onAddEmail.mockResolvedValue({
         success: true,
         submittedAddress: "mail@example.com",
       });
@@ -618,7 +598,7 @@ describe("Settings page redesign", () => {
       {
         input: {
           label: "Other phone number",
-          value: "Phone02",
+          value: "3838383882",
         },
         addButtonLabel: "Add more numbers",
       },
@@ -637,6 +617,13 @@ describe("Settings page redesign", () => {
       );
       render(<ComposedStory />);
 
+      if (item.addButtonLabel === "Add more numbers") {
+        const inputField = screen.getByLabelText("Primary phone number");
+        await act(async () => {
+          await user.type(inputField, "3838383883");
+        });
+      }
+
       const addButton = screen.getByRole("button", {
         name: item.addButtonLabel,
       });
@@ -649,7 +636,84 @@ describe("Settings page redesign", () => {
         await user.clear(input);
         await user.type(input, item.input.value);
       });
-      expect(input).toHaveValue(item.input.value);
+
+      expect(input).toHaveValue(
+        item.addButtonLabel === "Add more numbers"
+          ? "(383) 838 - 3882"
+          : item.input.value,
+      );
+    });
+
+    it.each([
+      {
+        input: {
+          label: "Other first name",
+          value: "First02",
+        },
+        addButtonLabel: "Add variations, aliases, deadnames you’ve gone by",
+      },
+      {
+        input: {
+          label: "Other middle name",
+          value: "Middle02",
+        },
+        addButtonLabel: "Add variations or more middle names",
+      },
+      {
+        input: {
+          label: "Other last name",
+          value: "Last02",
+        },
+        addButtonLabel: "Add variations or last names you’ve had",
+      },
+      {
+        input: {
+          label: "Other phone number",
+          value: "(383) 838 - 3883",
+        },
+        addButtonLabel: "Add more numbers",
+      },
+      {
+        input: {
+          label: "Past location",
+          value: "Tulsa, OK, USA",
+        },
+        addButtonLabel: "Add past US locations",
+      },
+    ])("shows an error for duplicate alternate fields: %s", async (item) => {
+      const user = userEvent.setup();
+      const ComposedStory = composeStory(
+        SettingsDetailsAboutYouMinDetails,
+        SettingsDetailsAboutYou,
+      );
+      render(<ComposedStory />);
+
+      if (item.addButtonLabel === "Add more numbers") {
+        const inputField = screen.getByLabelText("Primary phone number");
+        await act(async () => {
+          await user.type(inputField, item.input.value);
+        });
+      }
+
+      const addButton = screen.getByRole("button", {
+        name: item.addButtonLabel,
+      });
+      await act(async () => {
+        await user.click(addButton);
+        await user.click(addButton);
+      });
+
+      const inputs = screen.getAllByLabelText(item.input.label);
+      await act(async () => {
+        await user.clear(inputs[0]);
+        await user.type(inputs[0], item.input.value);
+        await user.type(inputs[1], item.input.value);
+      });
+
+      const duplicateErrorMessage = within(
+        inputs[1].parentElement as HTMLElement,
+      ).getByText(/Duplicate/);
+      expect(duplicateErrorMessage).toBeInTheDocument();
     });
 
     it.each([
@@ -786,6 +850,11 @@ describe("Settings page redesign", () => {
     });
 
     it("attempts to save the profile info from the confirmation dialog", async () => {
+      mockedActions.onHandleUpdateProfileData.mockResolvedValueOnce({
+        success: true,
+        error: "",
+        errorMessage: "",
+      });
       const user = userEvent.setup();
       const ComposedStory = composeStory(
         SettingsDetailsAboutYouMinDetails,
@@ -895,6 +964,11 @@ describe("Settings page redesign", () => {
     });
 
     it("attempts to save the updated profile details form", async () => {
+      mockedActions.onHandleUpdateProfileData.mockResolvedValueOnce({
+        success: true,
+        error: "",
+        errorMessage: "",
+      });
       const user = userEvent.setup();
       const ComposedStory = composeStory(
         SettingsDetailsAboutYouMinDetails,
@@ -917,6 +991,40 @@ describe("Settings page redesign", () => {
         await user.click(saveButton);
       });
       expect(mockedActions.onHandleUpdateProfileData).toHaveBeenCalled();
+    });
+
+    it("shows an error when an attempt to save the profile details form fails", async () => {
+      mockedActions.onHandleUpdateProfileData.mockResolvedValueOnce({
+        success: false,
+        error: "",
+        errorMessage: "",
+      });
+      const user = userEvent.setup();
+      const ComposedStory = composeStory(
+        SettingsDetailsAboutYouMinDetails,
+        SettingsDetailsAboutYou,
+      );
+      render(<ComposedStory />);
+
+      await act(async () => {
+        const firstNameInput = screen.getByLabelText("Legal first name*");
+        await user.type(firstNameInput, "2");
+        expect(firstNameInput).toHaveValue("First012");
+      });
+
+      const saveButton = screen.getByRole("button", {
+        name: "Save",
+      });
+      expect(saveButton).toBeEnabled();
+
+      await act(async () => {
+        await user.click(saveButton);
+      });
+      expect(
+        screen.getByText(
+          "Please make sure all fields contain valid information.",
+        ),
+      ).toBeInTheDocument();
     });
 
     it("shows an indicator that the maximum number of alternate details have been added", () => {

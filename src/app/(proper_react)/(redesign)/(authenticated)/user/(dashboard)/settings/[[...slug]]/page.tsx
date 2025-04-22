@@ -38,6 +38,7 @@ import {
   onRemoveEmail,
   onApplyCouponCode,
   onCheckUserHasCurrentCouponSet,
+  onHandleUpdateProfileData,
 } from "../actions";
 import { initializeUserAnnouncements } from "../../../../../../../../db/tables/user_announcements";
 
@@ -171,6 +172,7 @@ export default async function SettingsPage(props: Props) {
         onDeleteAccount,
         onApplyCouponCode,
         onCheckUserHasCurrentCouponSet,
+        onHandleUpdateProfileData,
       }}
       userAnnouncements={userAnnouncements}
       {...(profileData && { profileData })}

@@ -313,7 +313,7 @@ export async function onHandleUpdateProfileData(profileData: OnerepProfileRow) {
       middle_names,
       phone_numbers,
       addresses,
-      ...(middle_name && { middle_name }),
+      middle_name: middle_name ?? "",
     });
   } catch (error) {
     console.error("Could not update profile details:", error);
