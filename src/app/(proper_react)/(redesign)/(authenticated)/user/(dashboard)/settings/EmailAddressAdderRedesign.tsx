@@ -64,6 +64,8 @@ export const EmailAddressAdderRedesign = (props: Props) => {
 
   const handleOnDismiss = () => {
     const form = new FormData();
+    // Set a marker on the form that we can check in `onAddEmail` server action
+    // to reset the `onAddEmailAction` state.
     form.set("_reset", "true");
     startTransition(() => {
       onAddEmailAction(form);

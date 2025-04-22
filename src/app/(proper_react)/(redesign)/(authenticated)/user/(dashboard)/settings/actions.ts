@@ -51,6 +51,8 @@ export async function onAddEmail(
   _prevState: AddEmailFormState,
   formData: FormData,
 ): Promise<AddEmailFormState> {
+  // If `_reset` is set returning `success: false` resets the `useActionState`
+  // we are calling this server action from.
   if (formData.get("_reset")) {
     return {
       success: false,
