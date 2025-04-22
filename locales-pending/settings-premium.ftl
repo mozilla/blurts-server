@@ -148,6 +148,7 @@ settings-edit-profile-info-form-input-error-duplicate-middle-name = Duplicate mi
 settings-edit-profile-info-form-input-error-duplicate-last-name = Duplicate last name
 settings-edit-profile-info-form-input-error-duplicate-phone-number = Duplicate phone number
 settings-edit-profile-info-form-input-error-duplicate-location = Duplicate location
+settings-edit-profile-info-form-error-submission-failed = Please make sure all fields contain valid information.
 
 settings-edit-profile-info-form-date-of-birth-note = Date of birth cannot be changed for security reasons. <a>Why?</a>
 settings-edit-profile-info-form-add-item-first-names-button-label = Add variations, aliases, deadnames you’ve gone by

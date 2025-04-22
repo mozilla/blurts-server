@@ -223,7 +223,12 @@ function EditProfileForm(props: { profileData: OnerepProfileRow }) {
     setUpdatingForm(true);
     const result = await onHandleUpdateProfileData(profileFormData);
     if (!result.success) {
-      toast.error(result.errorMessage, { autoClose: 15000 });
+      toast.error(
+        l10n.getString(
+          "settings-edit-profile-info-form-error-submission-failed",
+        ),
+        { autoClose: 15000 },
+      );
       captureException(result.error);
     }
     setUpdatingForm(false);
