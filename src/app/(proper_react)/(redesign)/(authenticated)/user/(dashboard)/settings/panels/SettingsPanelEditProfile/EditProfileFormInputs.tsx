@@ -210,7 +210,6 @@ function EditProfileFormInputs(props: {
         dobData.value &&
         new Date(dobData.value).toLocaleDateString(getLocale(l10n), {
           dateStyle: "short",
-          timeZone: "UTC",
         });
       return (
         <div className={styles.itemDob}>

@@ -130,10 +130,7 @@ function ProfileInfoSection({
   } = profileData;
   const dateOfBirthString = new Date(date_of_birth).toLocaleDateString(
     getLocale(l10n),
-    {
-      dateStyle: "short",
-      timeZone: "UTC",
-    },
+    { dateStyle: "short" },
   );
   const nameMoreCount =
     first_names.length + middle_names.length + last_names.length;
