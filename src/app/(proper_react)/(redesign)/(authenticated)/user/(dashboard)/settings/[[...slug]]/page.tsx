@@ -135,9 +135,9 @@ export default async function SettingsPage(props: Props) {
   const settingsData = await getEmailPreferenceForPrimaryEmail(
     session.user.email,
   );
-  const profileData =
-    session.user.subscriber.onerep_profile_id &&
-    (await getDataBrokerScanProfile(session.user.subscriber.onerep_profile_id));
+  const profileData = session.user.subscriber.onerep_profile_id
+    ? await getDataBrokerScanProfile(session.user.subscriber.onerep_profile_id)
+    : undefined;
   const isEligibleForPremium = canSubscribeToPremium({
     user: session.user,
     countryCode,
@@ -175,7 +175,7 @@ export default async function SettingsPage(props: Props) {
         onHandleUpdateProfileData,
       }}
       userAnnouncements={userAnnouncements}
-      {...(profileData && { profileData })}
+      profileData={profileData}
     />
   );
 }
