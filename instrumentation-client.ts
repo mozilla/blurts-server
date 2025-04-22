@@ -65,3 +65,5 @@ function getEnvironment() {
 
   return "unknown";
 }
+
+export const onRouterTransitionStart = Sentry.captureRouterTransitionStart;

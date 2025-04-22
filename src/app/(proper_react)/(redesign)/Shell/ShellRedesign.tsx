@@ -22,6 +22,7 @@ import {
 } from "../../../components/server/Icons";
 import MonitorLogo from "../../images/monitor-logo.svg";
 import styles from "./ShellRedesign.module.scss";
+import { UserAnnouncementWithDetails } from "../../../../db/tables/user_announcements";
 
 export type Props = {
   l10n: ExtendedReactLocalization;
@@ -37,6 +38,7 @@ export type Props = {
     yearly: number;
     monthly: number;
   };
+  announcements: UserAnnouncementWithDetails[] | null;
 };
 
 export const NavbarList = (props: {
@@ -86,7 +88,7 @@ export const NavbarList = (props: {
       )}
       <li key="settings-notifications">
         <PageLink
-          href="/user/settings/announcements"
+          href="/user/settings/notifications"
           activeClassName={styles.isActive}
           hasTelemetry={{
             link_id: "navigation_settings_notifications",
@@ -152,6 +154,7 @@ export const ShellRedesign = (props: Props) => {
       subscriptionBillingAmount={props.subscriptionBillingAmount}
       enabledFeatureFlags={props.enabledFeatureFlags}
       experimentData={props.experimentData}
+      announcements={props.announcements}
     >
       <div className={styles.wrapper}>
         <div className={styles.content}>

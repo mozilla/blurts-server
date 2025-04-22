@@ -349,6 +349,7 @@ const Plans = (props: Props) => {
         }}
         subscriptionBillingAmount={getSubscriptionBillingAmount()}
         scanLimitReached={props.scanLimitReached}
+        enabledFeatureFlags={props.enabledFeatureFlags}
       />
     </div>
   );

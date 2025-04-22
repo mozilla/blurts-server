@@ -46,6 +46,8 @@ import { SubscriberEmailPreferencesOutput } from "../../../../../../../db/tables
 import { Shell } from "../../../../Shell/Shell";
 import { ComponentProps, ReactNode } from "react";
 import { FeatureFlagName } from "../../../../../../../db/tables/featureFlags";
+import { UserAnnouncementWithDetails } from "../../../../../../../db/tables/user_announcements";
+import { createRandomAnnouncement } from "../../../../../../../apiMocks/mockData";
 
 const subscriberId = 7;
 const mockedSerializedSubscriber: SerializedSubscriber = {
@@ -242,6 +244,11 @@ const mockedActions: ComponentProps<typeof SettingsView>["actions"] = {
   onApplyCouponCode: jest.fn(),
   onCheckUserHasCurrentCouponSet: jest.fn(),
 };
+const mockedAnnouncements: UserAnnouncementWithDetails[] = [
+  createRandomAnnouncement(),
+  createRandomAnnouncement(),
+  createRandomAnnouncement(),
+];
 
 const SettingsWrapper = (props: {
   children: ReactNode;
@@ -255,6 +262,7 @@ const SettingsWrapper = (props: {
       countryCode="en"
       enabledFeatureFlags={props.enabledFeatureFlags ?? []}
       experimentData={defaultExperimentData["Features"]}
+      announcements={mockedAnnouncements}
     >
       {props.children}
     </Shell>
@@ -291,6 +299,7 @@ describe("Settings page", () => {
           isMonthlySubscriber={true}
           data={mockedPlusSubscriberEmailPreferences}
           actions={mockedActions}
+          userAnnouncements={mockedAnnouncements}
         />
       </SettingsWrapper>,
     );
@@ -328,7 +337,7 @@ describe("Settings page", () => {
           experimentData={defaultExperimentData["Features"]}
           isMonthlySubscriber={true}
           data={mockedPlusSubscriberEmailPreferences}
-          actions={mockedActions}
+          userAnnouncements={mockedAnnouncements}
         />
       </SettingsWrapper>,
     );
@@ -367,6 +376,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             actions={mockedActions}
+            userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
       );
@@ -403,6 +413,7 @@ describe("Settings page", () => {
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
             actions={mockedActions}
+            userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
       );
@@ -458,6 +469,7 @@ describe("Settings page", () => {
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
             actions={mockedActions}
+            userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
       );
@@ -505,6 +517,7 @@ describe("Settings page", () => {
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
             actions={mockedActions}
+            userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
       );
@@ -542,6 +555,7 @@ describe("Settings page", () => {
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
             actions={mockedActions}
+            userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
       );
@@ -582,6 +596,7 @@ describe("Settings page", () => {
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
             actions={mockedActions}
+            userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
       );
@@ -632,6 +647,7 @@ describe("Settings page", () => {
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
             actions={mockedActions}
+            userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
       );
@@ -678,6 +694,7 @@ describe("Settings page", () => {
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
             actions={mockedActions}
+            userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
       );
@@ -718,6 +735,7 @@ describe("Settings page", () => {
               isMonthlySubscriber={true}
               data={mockedPlusSubscriberEmailPreferences}
               actions={mockedActions}
+              userAnnouncements={mockedAnnouncements}
             />
           </SettingsWrapper>,
         );
@@ -765,6 +783,7 @@ describe("Settings page", () => {
               isMonthlySubscriber={true}
               data={mockedPlusSubscriberEmailPreferences}
               actions={mockedActions}
+              userAnnouncements={mockedAnnouncements}
             />
           </SettingsWrapper>,
         );
@@ -812,6 +831,7 @@ describe("Settings page", () => {
               isMonthlySubscriber={true}
               data={mockedPlusSubscriberEmailPreferences}
               actions={mockedActions}
+              userAnnouncements={mockedAnnouncements}
             />
           </SettingsWrapper>,
         );
@@ -863,6 +883,7 @@ describe("Settings page", () => {
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
             actions={mockedActions}
+            userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
       );
@@ -901,6 +922,7 @@ describe("Settings page", () => {
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
             actions={mockedActions}
+            userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
       );
@@ -940,6 +962,7 @@ describe("Settings page", () => {
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
             actions={mockedActions}
+            userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
       );
@@ -990,6 +1013,7 @@ describe("Settings page", () => {
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
             actions={mockedActions}
+            userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
       );
@@ -1073,6 +1097,7 @@ describe("Settings page", () => {
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
             actions={mockedActions}
+            userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
       );
@@ -1135,6 +1160,7 @@ describe("Settings page", () => {
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
             actions={mockedActions}
+            userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
       );
@@ -1188,6 +1214,7 @@ describe("Settings page", () => {
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
             actions={mockedActions}
+            userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
       );
@@ -1232,6 +1259,7 @@ describe("Settings page", () => {
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
             actions={mockedActions}
+            userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
       );
@@ -1278,6 +1306,7 @@ describe("Settings page", () => {
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
             actions={mockedActions}
+            userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
       );
@@ -1325,6 +1354,7 @@ describe("Settings page", () => {
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
             actions={mockedActions}
+            userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
       );
@@ -1369,6 +1399,7 @@ describe("Settings page", () => {
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
             actions={mockedActions}
+            userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
       );
@@ -1419,6 +1450,7 @@ describe("Settings page", () => {
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
             actions={mockedActions}
+            userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
       );
@@ -1466,6 +1498,7 @@ describe("Settings page", () => {
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
             actions={mockedActions}
+            userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
       );
@@ -1518,6 +1551,7 @@ describe("Settings page", () => {
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
             actions={mockedActions}
+            userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
       );
@@ -1566,6 +1600,7 @@ describe("Settings page", () => {
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
             actions={mockedActions}
+            userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
       );
@@ -1618,6 +1653,7 @@ describe("Settings page", () => {
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
             actions={mockedActions}
+            userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
       );
@@ -1665,6 +1701,7 @@ describe("Settings page", () => {
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
             actions={mockedActions}
+            userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
       );
@@ -1717,6 +1754,7 @@ describe("Settings page", () => {
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
             actions={mockedActions}
+            userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
       );
@@ -1783,6 +1821,7 @@ describe("Settings page", () => {
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
             actions={mockedActions}
+            userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
       );
@@ -1875,6 +1914,7 @@ describe("Settings page", () => {
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
             actions={mockedActions}
+            userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
       );
@@ -1945,6 +1985,7 @@ describe("Settings page", () => {
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
             actions={mockedActions}
+            userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
       );
@@ -1989,6 +2030,7 @@ describe("Settings page", () => {
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
             actions={mockedActions}
+            userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
       );
@@ -2036,6 +2078,7 @@ describe("Settings page", () => {
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
             actions={mockedActions}
+            userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
       );
@@ -2083,6 +2126,7 @@ describe("Settings page", () => {
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
             actions={mockedActions}
+            userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
       );
@@ -2146,6 +2190,7 @@ describe("Settings page", () => {
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
             actions={mockedActions}
+            userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
       );
@@ -2189,6 +2234,7 @@ describe("Settings page", () => {
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
             actions={mockedActions}
+            userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
       );
@@ -2251,6 +2297,7 @@ describe("Settings page", () => {
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
             actions={mockedActions}
+            userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
       );
@@ -2301,6 +2348,7 @@ describe("Settings page", () => {
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
             actions={mockedActions}
+            userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
       );
@@ -2361,6 +2409,7 @@ describe("Settings page", () => {
             isMonthlySubscriber={false}
             data={mockedFreeSubscriberEmailPreferences}
             actions={mockedActions}
+            userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
       );
@@ -2405,6 +2454,7 @@ describe("Settings page", () => {
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
             actions={mockedActions}
+            userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
       );
@@ -2452,6 +2502,7 @@ describe("Settings page", () => {
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
             actions={mockedActions}
+            userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
       );
@@ -2509,6 +2560,7 @@ describe("Settings page", () => {
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
             actions={mockedActions}
+            userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
       );
@@ -2568,6 +2620,7 @@ describe("Settings page", () => {
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
             actions={mockedActions}
+            userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
       );
@@ -2604,6 +2657,7 @@ describe("Settings page", () => {
           isMonthlySubscriber={true}
           data={undefined}
           actions={mockedActions}
+          userAnnouncements={mockedAnnouncements}
         />
       </SettingsWrapper>
     );

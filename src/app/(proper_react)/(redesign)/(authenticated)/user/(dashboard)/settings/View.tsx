@@ -20,6 +20,7 @@ import {
   type onApplyCouponCode,
   type onCheckUserHasCurrentCouponSet,
 } from "./actions";
+import { UserAnnouncementWithDetails } from "../../../../../../../db/tables/user_announcements";
 
 export type TabType = (typeof CONST_SETTINGS_TAB_SLUGS)[number];
 
@@ -50,6 +51,7 @@ export type Props = {
     onCheckUserHasCurrentCouponSet: typeof onCheckUserHasCurrentCouponSet;
   };
   activeTab?: TabType;
+  userAnnouncements: UserAnnouncementWithDetails[];
 };
 
 export const SettingsView = (props: Props) => {
@@ -64,6 +66,7 @@ export const SettingsView = (props: Props) => {
         lastScanDate={props.lastScanDate ?? null}
         experimentData={props.experimentData}
         enabledFeatureFlags={props.enabledFeatureFlags}
+        announcements={props.userAnnouncements}
       />
       <SettingsContent
         activeTab={props.activeTab}
