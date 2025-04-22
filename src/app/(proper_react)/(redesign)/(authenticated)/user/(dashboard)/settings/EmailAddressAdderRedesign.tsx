@@ -23,13 +23,14 @@ import { ModalOverlay } from "../../../../../../components/client/dialog/ModalOv
 import { Dialog } from "../../../../../../components/client/dialog/Dialog";
 import { useTelemetry } from "../../../../../../hooks/useTelemetry";
 import { InputField } from "../../../../../../components/client/InputField";
-import { AddEmailFormState, onAddEmail } from "#settings/actions";
+import { type AddEmailFormState, type onAddEmail } from "./actions";
 
-export const EmailAddressAdderRedesign = ({
-  maxNumEmailAddresses,
-}: {
+type Props = {
   maxNumEmailAddresses: number;
-}) => {
+  onAddEmail: typeof onAddEmail;
+};
+
+export const EmailAddressAdderRedesign = (props: Props) => {
   const l10n = useL10n();
   const recordTelemetry = useTelemetry();
   const dialogState = useOverlayTriggerState({
@@ -56,7 +57,10 @@ export const EmailAddressAdderRedesign = ({
     { type: "dialog" },
     dialogState,
   );
-  const [onAddEmailState, onAddEmailAction] = useActionState(onAddEmail, {});
+  const [onAddEmailState, onAddEmailAction] = useActionState(
+    props.onAddEmail,
+    {},
+  );
 
   const handleOnDismiss = () => {
     const form = new FormData();
@@ -75,7 +79,7 @@ export const EmailAddressAdderRedesign = ({
       </Button>
       <p>
         {l10n.getString("settings-email-addresses-add-email-indicator-limit", {
-          limit: maxNumEmailAddresses,
+          limit: props.maxNumEmailAddresses,
         })}
       </p>
       {dialogState.isOpen && (

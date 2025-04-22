@@ -2,11 +2,13 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import { ComponentProps } from "react";
 import { it, expect } from "@jest/globals";
 import { act, render, screen } from "@testing-library/react";
 import { composeStory } from "@storybook/react";
 import { userEvent, within } from "@storybook/test";
 import { axe } from "jest-axe";
+import { SettingsView } from "./View";
 import SettingsMeta, {
   SettingsEditManageAccount,
   SettingsEditNotifications,
@@ -38,21 +40,23 @@ jest.mock("next/navigation", () => ({
     get: jest.fn(),
   }),
 }));
-// eslint-disable-next-line @typescript-eslint/no-require-imports
-jest.mock("#settings/actions", () => require("./actions.mock.ts"));
 jest.mock("../../../../../../hooks/locationSuggestions");
 jest.mock("../../../../../../hooks/useTelemetry");
 
-import {
-  onAddEmail,
-  onRemoveEmail,
-  onHandleUpdateProfileData,
-} from "./actions.mock";
 import {
   mockedProfileDataMax,
   mockedProfileDataMin,
   mockedVerifiedEmailFourth,
 } from "./stories/settingsMockData";
+
+const mockedActions: ComponentProps<typeof SettingsView>["actions"] = {
+  onRemoveEmail: jest.fn(),
+  onAddEmail: jest.fn(),
+  onDeleteAccount: () => new Promise(() => undefined),
+  onApplyCouponCode: jest.fn(),
+  onCheckUserHasCurrentCouponSet: jest.fn(),
+  onHandleUpdateProfileData: jest.fn(),
+};
 
 describe("Settings page redesign", () => {
   describe("Edit your info (non-US users)", () => {
@@ -77,11 +81,15 @@ describe("Settings page redesign", () => {
     });
 
     it("adds an email to the list of addresses to monitor for breaches", async () => {
-      onAddEmail.mockResolvedValue({
+      (
+        mockedActions.onAddEmail as jest.Mock<
+          ReturnType<typeof mockedActions.onAddEmail>,
+          Parameters<typeof mockedActions.onAddEmail>
+        >
+      ).mockResolvedValue({
         success: true,
         submittedAddress: "mail@example.com",
       });
-
       const user = userEvent.setup();
       const ComposedStory = composeStory(
         SettingsEditYourInfo,
@@ -106,16 +114,20 @@ describe("Settings page redesign", () => {
         });
         await user.click(sendVerificationButton);
 
-        expect(onAddEmail).toHaveBeenCalled();
+        expect(mockedActions.onAddEmail).toHaveBeenCalled();
       });
     });
 
     it("shows the confirmation dialog after adding an email to the list of addresses to monitor for breaches", async () => {
-      onAddEmail.mockResolvedValue({
+      (
+        mockedActions.onAddEmail as jest.Mock<
+          ReturnType<typeof mockedActions.onAddEmail>,
+          Parameters<typeof mockedActions.onAddEmail>
+        >
+      ).mockResolvedValue({
         success: true,
         submittedAddress: "mail@example.com",
       });
-
       const user = userEvent.setup();
       const ComposedStory = composeStory(
         SettingsEditYourInfo,
@@ -194,7 +206,7 @@ describe("Settings page redesign", () => {
         await user.click(removeEmailButtons[0]);
       });
 
-      expect(onRemoveEmail).toHaveBeenCalled();
+      expect(mockedActions.onRemoveEmail).toHaveBeenCalled();
     });
 
     it("shows the “verification required” indicator for unconfirmed email addresses", () => {
@@ -564,7 +576,7 @@ describe("Settings page redesign", () => {
       },
       {
         label: "Primary phone number",
-        value: "(555)555-1234",
+        value: "(555) 555 - 1234",
       },
     ])("fills the primary optional field: %s", async (input) => {
       const user = userEvent.setup();
@@ -774,7 +786,6 @@ describe("Settings page redesign", () => {
     });
 
     it("attempts to save the profile info from the confirmation dialog", async () => {
-      onHandleUpdateProfileData.mockImplementationOnce(() => {});
       const user = userEvent.setup();
       const ComposedStory = composeStory(
         SettingsDetailsAboutYouMinDetails,
@@ -803,7 +814,7 @@ describe("Settings page redesign", () => {
       await act(async () => {
         await user.click(modalSaveButton);
       });
-      expect(onHandleUpdateProfileData).toHaveBeenCalled();
+      expect(mockedActions.onHandleUpdateProfileData).toHaveBeenCalled();
     });
 
     it("links back to the “Edit your info” overview from the confirmation dialog", async () => {
@@ -891,11 +902,7 @@ describe("Settings page redesign", () => {
       );
       render(<ComposedStory />);
 
-      const addFirstNameButton = screen.getByRole("button", {
-        name: "Add variations, aliases, deadnames you’ve gone by",
-      });
       await act(async () => {
-        await user.click(addFirstNameButton);
         const firstNameInput = screen.getByLabelText("Legal first name*");
         await user.type(firstNameInput, "2");
         expect(firstNameInput).toHaveValue("First012");
@@ -909,7 +916,7 @@ describe("Settings page redesign", () => {
       await act(async () => {
         await user.click(saveButton);
       });
-      expect(onHandleUpdateProfileData).toHaveBeenCalled();
+      expect(mockedActions.onHandleUpdateProfileData).toHaveBeenCalled();
     });
 
     it("shows an indicator that the maximum number of alternate details have been added", () => {

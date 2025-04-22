@@ -101,7 +101,8 @@ function SettingsContent(props: SettingsProps) {
           subscriber={props.subscriber}
           user={props.user}
           isEligibleForPremium={props.isEligibleForPremium}
-          {...(props.profileData && { profileData: props.profileData })}
+          profileData={props.profileData}
+          actions={props.actions}
         />
       </div>
     </main>

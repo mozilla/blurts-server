@@ -32,6 +32,13 @@ import { getEmailPreferenceForPrimaryEmail } from "../../../../../../../../db/ta
 import { CONST_SETTINGS_TAB_SLUGS } from "../../../../../../../../constants";
 import getDataBrokerScanProfile from "../../../../../../../functions/server/getDataBrokerScanProfile";
 import { canSubscribeToPremium } from "../../../../../../../functions/universal/user";
+import {
+  onAddEmail,
+  onDeleteAccount,
+  onRemoveEmail,
+  onApplyCouponCode,
+  onCheckUserHasCurrentCouponSet,
+} from "../actions";
 import { initializeUserAnnouncements } from "../../../../../../../../db/tables/user_announcements";
 
 type Props = {
@@ -158,6 +165,13 @@ export default async function SettingsPage(props: Props) {
       isMonthlySubscriber={isMonthlySubscriber}
       activeTab={activeTab}
       isEligibleForPremium={isEligibleForPremium}
+      actions={{
+        onAddEmail,
+        onRemoveEmail,
+        onDeleteAccount,
+        onApplyCouponCode,
+        onCheckUserHasCurrentCouponSet,
+      }}
       userAnnouncements={userAnnouncements}
       {...(profileData && { profileData })}
     />

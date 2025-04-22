@@ -7,6 +7,7 @@ import {
   OnerepProfileRow,
   SubscriberRow,
 } from "knex/types/tables";
+import { fn } from "@storybook/test";
 import { SettingsView, TabType } from "../View";
 import { Shell } from "../../../../../Shell/Shell";
 import { getL10n } from "../../../../../../../functions/l10n/storybookAndJest";
@@ -23,7 +24,7 @@ import {
   mockedVerifiedEmailFourth,
   mockedVerifiedEmailFifth,
 } from "./settingsMockData";
-import { SerializedSubscriber } from "src/next-auth";
+import { SerializedSubscriber } from "../../../../../../../../next-auth";
 
 export type SettingsWrapperProps = {
   activeTab: TabType;
@@ -100,9 +101,21 @@ export const SettingsWrapper = (props: SettingsWrapperProps) => {
             experimentData={defaultExperimentData["Features"]}
             lastScanDate={new Date(Date.UTC(2024, 6, 31))}
             isMonthlySubscriber={props.isMonthlySubscriber}
-            activeTab={props.activeTab}
             isEligibleForPremium={props.isEligibleForPremium}
             profileData={props.profileData}
+            activeTab={props.activeTab ?? "action-needed"}
+            actions={{
+              onAddEmail: fn().mockName("onAddEmail"),
+              onRemoveEmail: fn().mockName("onRemoveEmail"),
+              onDeleteAccount: fn().mockName("onDeleteAccount"),
+              onApplyCouponCode: fn().mockName("onApplyCouponCode"),
+              onCheckUserHasCurrentCouponSet: fn().mockName(
+                "onCheckUserHasCurrentCouponSet",
+              ),
+              onHandleUpdateProfileData: fn().mockName(
+                "onHandleUpdateProfileData",
+              ),
+            }}
             userAnnouncements={[]}
           />
         </Shell>

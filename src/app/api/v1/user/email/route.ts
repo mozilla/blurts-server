@@ -20,7 +20,7 @@ import {
   CONST_MAX_NUM_ADDRESSES_PLUS,
 } from "../../../../../constants";
 import { validateEmailAddress } from "../../../../../utils/emailAddress";
-import { hasPremium } from "src/app/functions/universal/user";
+import { hasPremium } from "../../../../functions/universal/user";
 
 interface EmailAddRequest {
   email: string;

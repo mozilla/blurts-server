@@ -31,7 +31,7 @@ import { hasPremium } from "../../../../../../../functions/universal/user";
 import { TelemetryButton } from "../../../../../../../components/client/TelemetryButton";
 import { TelemetryLink } from "../../../../../../../components/client/TelemetryLink";
 import InfoShield from "../images/InfoShield.svg";
-import { onRemoveEmail } from "#settings/actions";
+import { type onAddEmail, type onRemoveEmail } from "../actions";
 
 export type SettingsPanelEditInfoRedesignProps = {
   breachCountByEmailAddress: Record<string, number>;
@@ -41,9 +41,18 @@ export type SettingsPanelEditInfoRedesignProps = {
   user: Session["user"];
   data?: SubscriberEmailPreferencesOutput;
   profileData?: OnerepProfileRow;
+  actions: {
+    onAddEmail: typeof onAddEmail;
+    onRemoveEmail: typeof onRemoveEmail;
+  };
 };
 
-function MonitoredEmail(props: { emailAddress: SanitizedEmailAddressRow }) {
+function MonitoredEmail(props: {
+  actions: {
+    onRemoveEmail: typeof onRemoveEmail;
+  };
+  emailAddress: SanitizedEmailAddressRow;
+}) {
   const l10n = useL10n();
   const recordTelemetry = useTelemetry();
   const [isVerificationEmailResent, setIsVerificationEmailResent] =
@@ -99,7 +108,7 @@ function MonitoredEmail(props: { emailAddress: SanitizedEmailAddressRow }) {
           recordTelemetry("button", "click", {
             button_id: "removed_email_address",
           });
-          void onRemoveEmail(props.emailAddress);
+          void props.actions.onRemoveEmail(props.emailAddress);
         }}
       >
         <MinusCircledIcon alt="" />
@@ -235,7 +244,10 @@ function MonitoredEmailAddressesSection(
         <li key="primary">{props.user.email}</li>
         {props.emailAddresses.map((emailAddress) => (
           <li key={emailAddress.email}>
-            <MonitoredEmail emailAddress={emailAddress} />
+            <MonitoredEmail
+              emailAddress={emailAddress}
+              actions={props.actions}
+            />
           </li>
         ))}
       </ul>
@@ -243,6 +255,7 @@ function MonitoredEmailAddressesSection(
         {hasMaxEmailAddresses && (
           <EmailAddressAdderRedesign
             maxNumEmailAddresses={maxNumEmailAddresses}
+            actions={props.actions}
           />
         )}
       </span>

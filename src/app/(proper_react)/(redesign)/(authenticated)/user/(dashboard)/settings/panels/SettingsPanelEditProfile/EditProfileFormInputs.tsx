@@ -239,7 +239,10 @@ function EditProfileFormInputs(props: {
       );
     case "phone_numbers":
       const phoneData = props.profileData[props.profileDataKey];
-      const primaryPhoneItem = phoneData[0] ?? "";
+      const primaryPhoneItem = phoneData[0] ?? {
+        value: "",
+        isValid: true,
+      };
       const secondaryPhoneItems = phoneData.slice(1);
       return (
         <>
@@ -259,7 +262,7 @@ function EditProfileFormInputs(props: {
               `settings-edit-profile-info-form-input-label-primary-phone-number`,
             )}
             errorMessage={
-              primaryPhoneItem.isDuplicate
+              primaryPhoneItem?.isDuplicate
                 ? l10n.getString(
                     `settings-edit-profile-info-form-input-error-duplicate-phone-number`,
                   )

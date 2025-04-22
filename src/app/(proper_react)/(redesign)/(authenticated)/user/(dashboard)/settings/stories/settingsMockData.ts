@@ -133,7 +133,9 @@ export const mockedProfileDataMax: OnerepProfileRow = {
   first_names: Array.from({ length: 4 }, () => faker.person.firstName()),
   middle_names: Array.from({ length: 4 }, () => faker.person.middleName()),
   last_names: Array.from({ length: 4 }, () => faker.person.lastName()),
-  phone_numbers: Array.from({ length: 10 }, () => faker.phone.number()),
+  phone_numbers: Array.from({ length: 10 }, () =>
+    faker.phone.number({ style: "national" }),
+  ),
   addresses: Array.from({ length: 10 }, () => ({
     city: fakerEN_US.location.city(),
     state: fakerEN_US.location.state({ abbreviated: true }),

@@ -12,6 +12,7 @@ import { SanitizedEmailAddressRow } from "../../../../../../../../functions/serv
 import { hasPremium } from "../../../../../../../../functions/universal/user";
 import { useL10n } from "../../../../../../../../hooks/l10n";
 import { SubscriberEmailPreferencesOutput } from "../../../../../../../../../db/tables/subscriber_email_preferences";
+import { type onHandleUpdateProfileData } from "../../actions";
 
 export type SettingsPanelEditProfileProps = {
   breachCountByEmailAddress: Record<string, number>;
@@ -20,6 +21,9 @@ export type SettingsPanelEditProfileProps = {
   subscriber: SubscriberRow;
   user: Session["user"];
   profileData?: OnerepProfileRow;
+  actions: {
+    onHandleUpdateProfileData: typeof onHandleUpdateProfileData;
+  };
 };
 
 function SettingsPanelEditProfile(props: SettingsPanelEditProfileProps) {
@@ -34,7 +38,12 @@ function SettingsPanelEditProfile(props: SettingsPanelEditProfileProps) {
     <>
       <h3>{l10n.getString("settings-details-about-you-header")}</h3>
       <section>
-        <EditProfileForm profileData={props.profileData} />
+        <EditProfileForm
+          profileData={props.profileData}
+          actions={{
+            onHandleUpdateProfileData: props.actions.onHandleUpdateProfileData,
+          }}
+        />
       </section>
     </>
   );

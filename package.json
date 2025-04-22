@@ -179,16 +179,5 @@
   "overrides": {
     "@types/react": "19.0.3",
     "@types/react-dom": "19.0.2"
-  },
-  "imports": {
-    "#settings/actions": {
-      "storybook": "./src/app/(proper_react)/(redesign)/(authenticated)/user/(dashboard)/settings/actions.mock.ts",
-      "default": "./src/app/(proper_react)/(redesign)/(authenticated)/user/(dashboard)/settings/actions.ts"
-    },
-    "#*": [
-      "./*",
-      "./*.ts",
-      "./*.tsx"
-    ]
   }
 }

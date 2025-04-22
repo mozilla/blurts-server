@@ -14,7 +14,7 @@ import { ExperimentData } from "../../../../telemetry/generated/nimbus/experimen
 import MonitorLogo from "../../images/monitor-logo.svg";
 import styles from "./ShellRedesign.module.scss";
 import { NavbarList } from "./ShellNavbarList";
-import { UserAnnouncementWithDetails } from "src/db/tables/user_announcements";
+import { UserAnnouncementWithDetails } from "../../../../db/tables/user_announcements";
 
 export type Props = {
   l10n: ExtendedReactLocalization;

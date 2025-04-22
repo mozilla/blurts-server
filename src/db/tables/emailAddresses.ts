@@ -15,7 +15,7 @@ import {
   CONST_MAX_NUM_ADDRESSES,
   CONST_MAX_NUM_ADDRESSES_PLUS,
 } from "../../constants";
-import { hasPremium } from "src/app/functions/universal/user";
+import { hasPremium } from "../../app/functions/universal/user";
 
 const knex = createDbConnection();
 

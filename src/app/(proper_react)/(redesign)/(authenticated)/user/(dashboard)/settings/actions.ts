@@ -36,7 +36,7 @@ import {
 } from "../../../../../../functions/server/applyCoupon";
 import { validateEmailAddress } from "../../../../../../../utils/emailAddress";
 import updateDataBrokerScanProfile from "../../../../../../functions/server/updateDataBrokerScanProfile";
-import { hasPremium } from "src/app/functions/universal/user";
+import { hasPremium } from "../../../../../../functions/universal/user";
 
 export type AddEmailFormState =
   | { success?: never }

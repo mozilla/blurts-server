@@ -46,13 +46,6 @@ const config: StorybookConfig = {
         ...(config.resolve?.alias ?? {}),
         "next/image": require.resolve("./NextImage.tsx"),
       },
-      // Defining `paths` in tsconfig.json breaks Storybook’s path resolution.
-      // Removing `TsconfigPathsPlugin` ensures that Storybook uses the default
-      // module resolution behavior.
-      plugins:
-        config.resolve?.plugins?.filter(
-          (plugin) => plugin?.constructor.name !== "TsconfigPathsPlugin",
-        ) ?? [],
     };
 
     return config;

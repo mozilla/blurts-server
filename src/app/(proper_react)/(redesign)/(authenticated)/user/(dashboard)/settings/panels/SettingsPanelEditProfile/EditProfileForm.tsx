@@ -18,7 +18,7 @@ import { TelemetryButton } from "../../../../../../../../components/client/Telem
 import { formatPhone } from "../../../../../../../../functions/universal/formatPhone";
 import { useL10n } from "../../../../../../../../hooks/l10n";
 import styles from "./EditProfileForm.module.scss";
-import { onHandleUpdateProfileData } from "#settings/actions";
+import { type onHandleUpdateProfileData } from "../../actions";
 
 export const profileFields = [
   "first_name",
@@ -112,7 +112,9 @@ const validateProfileFormData = (formData: OnerepProfileRow) => {
           formDataValidated[formDataKey] = formData[formDataKey].map(
             (value, valueIndex) => {
               const phoneNumberFormatted = formatPhone(value);
-              const isValid = phoneNumberFormatted.match(/\d/g)?.length === 10;
+              const isValid =
+                (valueIndex === 0 && phoneNumberFormatted === "") ||
+                phoneNumberFormatted.match(/\d/g)?.length === 10;
               const isDuplicate =
                 phoneNumberFormatted.length > 0 &&
                 formData[formDataKey]
@@ -163,7 +165,12 @@ const validateProfileFormData = (formData: OnerepProfileRow) => {
   return { data, isValid: formIsValid };
 };
 
-function EditProfileForm(props: { profileData: OnerepProfileRow }) {
+function EditProfileForm(props: {
+  actions: {
+    onHandleUpdateProfileData: typeof onHandleUpdateProfileData;
+  };
+  profileData: OnerepProfileRow;
+}) {
   const l10n = useL10n();
   const [profileFormData, setProfileFormData] = useState(props.profileData);
   const [updatingForm, setUpdatingForm] = useState(false);
@@ -221,7 +228,8 @@ function EditProfileForm(props: { profileData: OnerepProfileRow }) {
   const handleSubmitForm = async (event: FormEvent) => {
     event.preventDefault();
     setUpdatingForm(true);
-    const result = await onHandleUpdateProfileData(profileFormData);
+    const result =
+      await props.actions.onHandleUpdateProfileData(profileFormData);
     if (!result.success) {
       toast.error(
         l10n.getString(

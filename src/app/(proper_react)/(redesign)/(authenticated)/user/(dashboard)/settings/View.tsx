@@ -17,6 +17,14 @@ import { FeatureFlagName } from "../../../../../../../db/tables/featureFlags";
 import { ExperimentData } from "../../../../../../../telemetry/generated/nimbus/experiments";
 import { SubscriberEmailPreferencesOutput } from "../../../../../../../db/tables/subscriber_email_preferences";
 import { SettingsContent } from "./SettingsContent";
+import {
+  type onRemoveEmail,
+  type onAddEmail,
+  type onDeleteAccount,
+  type onApplyCouponCode,
+  type onCheckUserHasCurrentCouponSet,
+  onHandleUpdateProfileData,
+} from "./actions";
 import { UserAnnouncementWithDetails } from "../../../../../../../db/tables/user_announcements";
 
 export type TabType = (typeof CONST_SETTINGS_TAB_SLUGS)[number];
@@ -38,6 +46,14 @@ export type Props = {
   enabledFeatureFlags: FeatureFlagName[];
   experimentData: ExperimentData["Features"];
   isEligibleForPremium: boolean;
+  actions: {
+    onAddEmail: typeof onAddEmail;
+    onRemoveEmail: typeof onRemoveEmail;
+    onDeleteAccount: typeof onDeleteAccount;
+    onApplyCouponCode: typeof onApplyCouponCode;
+    onHandleUpdateProfileData: typeof onHandleUpdateProfileData;
+    onCheckUserHasCurrentCouponSet: typeof onCheckUserHasCurrentCouponSet;
+  };
   userAnnouncements: UserAnnouncementWithDetails[];
   isMonthlySubscriber: boolean;
   data?: SubscriberEmailPreferencesOutput;
@@ -73,6 +89,7 @@ export const SettingsView = (props: Props) => {
         user={props.user}
         profileData={props.profileData}
         isEligibleForPremium={props.isEligibleForPremium}
+        actions={props.actions}
       />
     </div>
   );
