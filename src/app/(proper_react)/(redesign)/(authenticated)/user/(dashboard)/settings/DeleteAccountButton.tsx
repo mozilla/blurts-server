@@ -34,7 +34,7 @@ export const DeleteAccountButton = (
         });
         setIsSubmitting(true);
         // It's currently unclear if and how we should mock our server action:
-        /* c8 ignore next 7 */
+        /* c8 ignore next 8 */
         void props
           .onDeleteAccount()
           .then(() => {

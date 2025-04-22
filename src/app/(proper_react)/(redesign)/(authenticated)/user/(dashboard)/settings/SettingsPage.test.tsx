@@ -338,6 +338,7 @@ describe("Settings page", () => {
           isMonthlySubscriber={true}
           data={mockedPlusSubscriberEmailPreferences}
           userAnnouncements={mockedAnnouncements}
+          actions={mockedActions}
         />
       </SettingsWrapper>,
     );

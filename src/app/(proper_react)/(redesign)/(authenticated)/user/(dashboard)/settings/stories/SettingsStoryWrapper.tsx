@@ -53,6 +53,7 @@ export const SettingsWrapper = (props: SettingsWrapperProps) => {
           countryCode={props.countryCode}
           enabledFeatureFlags={props.enabledFeatureFlags ?? []}
           experimentData={defaultExperimentData["Features"]}
+          announcements={null}
         >
           <SettingsView
             l10n={getL10n()}
@@ -85,6 +86,7 @@ export const SettingsWrapper = (props: SettingsWrapperProps) => {
                 "onCheckUserHasCurrentCouponSet",
               ),
             }}
+            userAnnouncements={[]}
           />
         </Shell>
       </CountryCodeProvider>
