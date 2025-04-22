@@ -32,7 +32,7 @@ jobs:
 
       - name: Create version.json
         run: |
-          echo "{\"commit\":\"$GITHUB_SHA\",\"version\":\"$GITHUB_REF\",\"source\":\"https://github.com/$GITHUB_REPOSITORY\",\"build\":\"$GITHUB_RUN_ID\"}" > version.json
+          echo "{\"commit\":\"$GITHUB_SHA\",\"version\":\"$GITHUB_REF_NAME\",\"source\":\"https://github.com/$GITHUB_REPOSITORY\",\"build\":\"$GITHUB_RUN_ID\"}" > version.json
 
       - name: Check Docker Version
         run: docker --version
