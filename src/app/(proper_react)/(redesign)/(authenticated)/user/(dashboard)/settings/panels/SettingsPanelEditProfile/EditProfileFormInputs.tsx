@@ -126,7 +126,7 @@ function EditProfileFormInputs(props: {
             }
             key={props.profileDataKey}
             name={props.profileDataKey}
-            value={nameData.value}
+            value={nameData.value ?? ""}
             label={l10n.getString(
               `settings-edit-profile-info-form-input-label-primary-${profileDataKeyParsed}`,
             )}

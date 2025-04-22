@@ -122,8 +122,6 @@ const customJestConfig = {
     uuid: require.resolve("uuid"),
   },
 
-  modulePaths: ["<rootDir>"],
-
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
   modulePathIgnorePatterns: ["e2e/"],
 

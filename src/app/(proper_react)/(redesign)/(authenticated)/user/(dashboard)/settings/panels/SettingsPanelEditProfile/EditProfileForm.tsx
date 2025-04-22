@@ -39,7 +39,7 @@ export type ProfileDataListKey = keyof Pick<
 type ProfileDataSingleKey = Exclude<ProfileDataKeys, ProfileDataListKey>;
 
 type FormDataItemValidated<T> = {
-  value: T;
+  value: T | null;
   isValid: boolean;
   isDuplicate?: boolean;
 };
@@ -67,7 +67,7 @@ const validateProfileFormData = (formData: OnerepProfileRow) => {
             formIsValid = false;
           }
           formDataValidated[formDataKey] = {
-            value: formData[formDataKey] ?? "",
+            value: formData[formDataKey],
             isValid,
           };
           break;
