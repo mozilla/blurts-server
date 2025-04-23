@@ -26,4 +26,5 @@ build({
   sourcemap: true,
   target: "node20.19",
   packages: "external",
+  external: ["next/headers"],
 });
