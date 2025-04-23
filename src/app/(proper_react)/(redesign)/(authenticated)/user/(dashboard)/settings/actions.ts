@@ -318,7 +318,7 @@ export async function onHandleUpdateProfileData(profileData: OnerepProfileRow) {
       middle_name: middle_name ?? "",
     });
   } catch (error) {
-    console.error("Could not update profile details:", error);
+    logger.error("Could not update profile details:", error);
     return {
       success: false,
       error: "update-profile-data-updating-profile-failed",
@@ -332,6 +332,6 @@ export async function onHandleUpdateProfileData(profileData: OnerepProfileRow) {
     httpOnly: false,
   });
 
-  revalidatePath("/user/settings");
+  revalidatePath("/user/settings/edit-info");
   redirect("/user/settings/edit-info");
 }
