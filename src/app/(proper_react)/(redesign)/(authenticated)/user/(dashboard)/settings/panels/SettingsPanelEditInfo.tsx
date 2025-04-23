@@ -95,6 +95,8 @@ function MonitoredEmail(props: {
                     setIsVerificationEmailResent(true);
                   }
                 })
+                // This catch block is only reporting an error to Sentry.
+                /* c8 ignore next 3 */
                 .catch((error) => {
                   captureException(error);
                 });
