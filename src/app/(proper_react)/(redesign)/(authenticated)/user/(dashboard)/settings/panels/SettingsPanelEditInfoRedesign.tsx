@@ -298,11 +298,10 @@ function SettingsPanelEditInfoRedesign(
         <ProfileInfoSection profileData={props.profileData} />
       )}
       <MonitoredEmailAddressesSection {...props} />
-      {props.isEligibleForPremium && (
+      {props.isEligibleForPremium && !hasPremium(props.user) && (
         <div className={styles.upsellLinkContainer}>
           <TelemetryLink
             href="/user/dashboard/action-needed?dialog=subscriptions"
-            target="_blank"
             eventData={{
               link_id: "settings_edit_info_upsell_cta",
             }}
