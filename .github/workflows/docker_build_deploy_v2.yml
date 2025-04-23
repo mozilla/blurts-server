@@ -1,8 +1,6 @@
 name: Build Docker image and publish to GAR
 
-permissions:
-  contents: "read" # Needed for checkout
-  id-token: "write" # Needed for GCP auth
+# Permissions moved to job level for least privilege
 
 on:
   push:
@@ -12,6 +10,10 @@ on:
 
 jobs:
   build_and_push_to_gar:
+    # Define permissions at the job level
+    permissions:
+      contents: "read" # Needed for checkout
+      id-token: "write" # Needed for GCP auth
     name: Build and Push Docker image to GAR
     runs-on: ubuntu-latest
     environment: build
