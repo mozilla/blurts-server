@@ -14,6 +14,7 @@ jobs:
   build_and_push_to_gar:
     name: Build and Push Docker image to GAR
     runs-on: ubuntu-latest
+    environment: build
     env:
       GAR_IMAGE_BASE: ${{ vars.GAR_REPO }}/blurts-server # Base name for GAR image
       GAR_REGISTRY: us-docker.pkg.dev
