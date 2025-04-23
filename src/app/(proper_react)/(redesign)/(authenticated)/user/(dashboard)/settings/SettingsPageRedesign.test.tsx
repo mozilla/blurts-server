@@ -579,7 +579,7 @@ describe("Settings page redesign", () => {
           label: "Other first name",
           value: "First02",
         },
-        addButtonLabel: "Add variations, aliases, deadnames you’ve gone by",
+        addButtonLabel: "Add any variations or previous names you’ve gone by",
       },
       {
         input: {
@@ -650,7 +650,7 @@ describe("Settings page redesign", () => {
           label: "Other first name",
           value: "First02",
         },
-        addButtonLabel: "Add variations, aliases, deadnames you’ve gone by",
+        addButtonLabel: "Add any variations or previous names you’ve gone by",
       },
       {
         input: {
@@ -712,7 +712,7 @@ describe("Settings page redesign", () => {
 
       const duplicateErrorMessage = within(
         inputs[1].parentElement as HTMLElement,
-      ).getByText(/Duplicate/);
+      ).getByText(/Remove duplicate/);
       expect(duplicateErrorMessage).toBeInTheDocument();
     });
 
@@ -1022,7 +1022,7 @@ describe("Settings page redesign", () => {
       });
       expect(
         screen.getByText(
-          "Please make sure all fields contain valid information.",
+          "Details couldn’t be saved right now. Try again later.",
         ),
       ).toBeInTheDocument();
     });
