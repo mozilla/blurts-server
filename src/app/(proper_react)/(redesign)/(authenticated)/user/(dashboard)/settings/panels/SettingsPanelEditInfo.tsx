@@ -3,6 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { useState } from "react";
+import { captureException } from "@sentry/nextjs";
 import { OnerepProfileRow, SubscriberRow } from "knex/types/tables";
 import { CONST_MAX_NUM_ADDRESSES } from "../../../../../../../../constants";
 import { SubscriberEmailPreferencesOutput } from "../../../../../../../../db/tables/subscriber_email_preferences";
@@ -88,11 +89,15 @@ function MonitoredEmail(props: {
                 mode: "same-origin",
                 method: "POST",
                 body: JSON.stringify({ emailId: props.emailAddress.id }),
-              }).then((response) => {
-                if (response.ok) {
-                  setIsVerificationEmailResent(true);
-                }
-              });
+              })
+                .then((response) => {
+                  if (response.ok) {
+                    setIsVerificationEmailResent(true);
+                  }
+                })
+                .catch((error) => {
+                  captureException(error);
+                });
             }}
           >
             {l10n.getString("settings-resend-email-verification-link")}
