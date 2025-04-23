@@ -4,13 +4,7 @@
 
 "use client";
 
-import {
-  useEffect,
-  useRef,
-  useState,
-  useActionState,
-  startTransition,
-} from "react";
+import { useRef, useState, useActionState, startTransition } from "react";
 import { useOverlayTriggerState } from "react-stately";
 import { useOverlayTrigger } from "react-aria";
 import Image from "next/image";
@@ -151,14 +145,6 @@ const EmailAddressAddForm = (props: {
   const [hasPressedButton, setHasPressedButton] = useState(false);
   const [email, setEmail] = useState("");
 
-  useEffect(() => {
-    if (typeof props.onAddEmailState.success !== "undefined") {
-      recordTelemetry("ctaButton", "click", {
-        button_id: "add_email_verification",
-      });
-    }
-  }, [props.onAddEmailState, recordTelemetry]);
-
   const isEmailValid = () => {
     return email.length > 0 && (formRef.current?.reportValidity() ?? false);
   };
@@ -189,6 +175,9 @@ const EmailAddressAddForm = (props: {
           variant="primary"
           disabled={email.length === 0}
           onPress={() => {
+            recordTelemetry("ctaButton", "click", {
+              button_id: "add_email_verification",
+            });
             if (isEmailValid()) {
               setHasPressedButton(true);
             }
