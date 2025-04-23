@@ -141,7 +141,7 @@ function ProfileInfoSection({
     getLocale(l10n),
     { dateStyle: "short" },
   );
-  const nameMoreCount =
+  const additionalNamesCount =
     first_names.length + middle_names.length + last_names.length;
   return (
     <section className={styles.section}>
@@ -156,10 +156,10 @@ function ProfileInfoSection({
           </div>
           <div className={styles.detailContent}>
             {`${first_name}${middle_name ? ` ${middle_name} ` : " "}${last_name}`}
-            {nameMoreCount > 0 && (
+            {additionalNamesCount > 0 && (
               <span className={styles.detailMore}>
                 {l10n.getString("settings-details-about-you-more-indicator", {
-                  moreCount: nameMoreCount,
+                  moreCount: additionalNamesCount,
                 })}
               </span>
             )}
