@@ -6,7 +6,6 @@ on:
   push:
     branches:
       - main
-      - MNTOR-4354
 
 jobs:
   build_and_push_to_gar:
