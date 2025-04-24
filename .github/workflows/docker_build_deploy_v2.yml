@@ -2,8 +2,6 @@ name: Build Docker image and publish to GAR
 
 permissions: {}
 
-# Permissions moved to job level for least privilege
-
 on:
   push:
     branches:
@@ -58,7 +56,7 @@ jobs:
       - name: Create version.json
         run: |
           # Use full sha here for version.json content
-          echo "{"commit":"${{ github.sha }}","version":"refs/heads/main","source":"https://github.com/${{ github.repository }}","build":"${{ github.run_id }}"}" > version.json
+          echo "{\"commit\":\"$GITHUB_SHA\",\"version\":\"$GITHUB_REF_NAME\",\"source\":\"https://github.com/$GITHUB_REPOSITORY\",\"build\":\"$GITHUB_RUN_ID\"}" > version.json
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
