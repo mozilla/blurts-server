@@ -32,6 +32,7 @@ import { TelemetryButton } from "../../../../../../../components/client/Telemetr
 import { TelemetryLink } from "../../../../../../../components/client/TelemetryLink";
 import InfoShield from "../images/InfoShield.svg";
 import { type onAddEmail, type onRemoveEmail } from "../actions";
+import { formatPhone } from "../../../../../../../functions/universal/formatPhone";
 
 export type SettingsPanelEditInfoRedesignProps = {
   breachCountByEmailAddress: Record<string, number>;
@@ -177,7 +178,7 @@ function ProfileInfoSection({
               {l10n.getString("settings-details-about-you-phone-label")}
             </div>
             <div className={styles.detailContent}>
-              {phone_numbers[0]}
+              {formatPhone(phone_numbers[0])}
               {phone_numbers.length > 1 && (
                 <span className={styles.detailMore}>
                   {l10n.getString("settings-details-about-you-more-indicator", {

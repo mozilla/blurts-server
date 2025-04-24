@@ -68,17 +68,17 @@ async function updateDataBrokerScanProfile(
     first_name: updatedProfileData.first_name.trim(),
     last_name: updatedProfileData.last_name.trim(),
     first_names: updatedProfileData.first_names
-      .filter((value) => value.trim())
-      .map((first_name) => first_name.trim()),
+      .map((first_name) => first_name.trim())
+      .filter((value) => value),
     last_names: updatedProfileData.last_names
-      .filter((value) => value.trim())
-      .map((last_name) => last_name.trim()),
+      .map((last_name) => last_name.trim())
+      .filter((value) => value),
     middle_names: updatedProfileData.middle_names
-      .filter((value) => value.trim())
-      .map((middle_name) => middle_name.trim()),
+      .map((middle_name) => middle_name.trim())
+      .filter((value) => value),
     phone_numbers: updatedProfileData.phone_numbers
-      .filter((value) => value.trim())
-      .map((phone_number) => phone_number.trim()),
+      .map((phone_number) => phone_number.match(/\d/g)?.join("") ?? "")
+      .filter((value) => value),
     addresses: updatedProfileData.addresses.filter(
       (value) => value.city.trim() && value.state.trim(),
     ),
