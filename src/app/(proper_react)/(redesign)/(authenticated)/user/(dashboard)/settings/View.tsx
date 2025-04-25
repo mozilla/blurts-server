@@ -13,6 +13,13 @@ import { FeatureFlagName } from "../../../../../../../db/tables/featureFlags";
 import { ExperimentData } from "../../../../../../../telemetry/generated/nimbus/experiments";
 import { SubscriberEmailPreferencesOutput } from "../../../../../../../db/tables/subscriber_email_preferences";
 import { SettingsContent } from "./SettingsContent";
+import {
+  type onRemoveEmail,
+  type onAddEmail,
+  type onDeleteAccount,
+  type onApplyCouponCode,
+  type onCheckUserHasCurrentCouponSet,
+} from "./actions";
 import { UserAnnouncementWithDetails } from "../../../../../../../db/tables/user_announcements";
 
 export type TabType = (typeof CONST_SETTINGS_TAB_SLUGS)[number];
@@ -36,6 +43,13 @@ export type Props = {
   experimentData: ExperimentData["Features"];
   lastScanDate?: Date;
   isMonthlySubscriber: boolean;
+  actions: {
+    onAddEmail: typeof onAddEmail;
+    onRemoveEmail: typeof onRemoveEmail;
+    onDeleteAccount: typeof onDeleteAccount;
+    onApplyCouponCode: typeof onApplyCouponCode;
+    onCheckUserHasCurrentCouponSet: typeof onCheckUserHasCurrentCouponSet;
+  };
   activeTab?: TabType;
   userAnnouncements: UserAnnouncementWithDetails[];
 };
@@ -65,6 +79,7 @@ export const SettingsView = (props: Props) => {
         isMonthlySubscriber={props.isMonthlySubscriber}
         subscriber={props.subscriber}
         user={props.user}
+        actions={props.actions}
       />
     </div>
   );

@@ -4,7 +4,7 @@
 
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useOverlayTriggerState } from "react-stately";
 import { useOverlayTrigger } from "react-aria";
 import Image from "next/image";
@@ -18,7 +18,10 @@ import { Button } from "../../../../../../components/client/Button";
 import { useL10n } from "../../../../../../hooks/l10n";
 import { TelemetryButton } from "../../../../../../components/client/TelemetryButton";
 import { ExperimentData } from "../../../../../../../telemetry/generated/nimbus/experiments";
-import { onApplyCouponCode, onCheckUserHasCurrentCouponSet } from "./actions";
+import {
+  type onApplyCouponCode,
+  type onCheckUserHasCurrentCouponSet,
+} from "./actions";
 import { TelemetryLink } from "../../../../../../components/client/TelemetryLink";
 import { OpenInNew } from "../../../../../../components/server/Icons";
 
@@ -27,6 +30,10 @@ export type Props = {
   enableDiscountCoupon: boolean;
   experimentData?: ExperimentData["Features"];
   isMonthlySubscriber: boolean;
+  actions: {
+    onApplyCouponCode: typeof onApplyCouponCode;
+    onCheckUserHasCurrentCouponSet: typeof onCheckUserHasCurrentCouponSet;
+  };
 };
 
 type DiscountData = {
@@ -76,7 +83,7 @@ export const CancelFlow = (props: Props) => {
   // Unless we mock out these functions, we can't test them at the moment
   /* c8 ignore start */
   const handleApplyCouponCode = async () => {
-    const result = await onApplyCouponCode();
+    const result = await props.actions.onApplyCouponCode();
     if (result?.success) {
       setCouponSuccess(true);
     } else {
@@ -84,19 +91,21 @@ export const CancelFlow = (props: Props) => {
     }
   };
 
-  const checkCouponCode = async () => {
-    const result = await onCheckUserHasCurrentCouponSet();
+  const checkCouponCode = useCallback(async () => {
+    const result = await props.actions.onCheckUserHasCurrentCouponSet();
     if (typeof result.success === "boolean") {
       setAlreadyHasCouponSet(result.success);
     } else {
       setAlreadyHasCouponSet(false);
     }
-  };
+  }, [props.actions]);
 
   useEffect(() => {
+    // TODO: Instead of calling this on the first render,
+    // check for the coupon code in `page.tsx` and pass it into the Client Components.
     void checkCouponCode();
     // Only called once upon initial render to check if a user had a coupon code previously set
-  }, []);
+  }, [checkCouponCode]);
 
   useEffect(() => {
     if (couponSuccess) {
