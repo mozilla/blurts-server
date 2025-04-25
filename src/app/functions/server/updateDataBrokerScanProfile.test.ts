@@ -71,6 +71,23 @@ describe("Update broker scan profile", () => {
     ).not.toThrow();
   });
 
+  it("filters invalid phone numbers", async () => {
+    jest.mock("../../../db/tables/onerep_profiles", () => ({
+      getProfileDetails: jest.fn(() => Promise.resolve(currentProfileDetails)),
+      updateProfileDetails: jest.fn(),
+    }));
+    const updateDataBrokerScanProfile = (
+      await import("./updateDataBrokerScanProfile")
+    ).default;
+
+    expect(() =>
+      updateDataBrokerScanProfile(5678, {
+        ...newProfileDetails,
+        phone_numbers: ["()/;"],
+      }),
+    ).not.toThrow();
+  });
+
   it("throws an error when the profile has no profile ID assigned", async () => {
     jest.mock("../../../db/tables/onerep_profiles", () => ({
       getProfileDetails: jest.fn(() =>

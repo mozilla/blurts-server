@@ -21,6 +21,7 @@ import {
 } from "../../../../../../../../components/server/Icons";
 import { LocationAutocompleteInput } from "../../../../../../../../components/client/LocationAutocompleteInput";
 import { getLocale } from "../../../../../../../../functions/universal/getLocale";
+import { formatPhone } from "../../../../../../../../functions/universal/formatPhone";
 import { useL10n } from "../../../../../../../../hooks/l10n";
 import styles from "./EditProfileFormInputs.module.scss";
 import {
@@ -248,7 +249,7 @@ function EditProfileFormInputs(props: {
             onChange={(value) =>
               props.handleOnInputChange({
                 key: props.profileDataKey as ProfileDataListKey,
-                value,
+                value: formatPhone(value),
                 index: 0,
               })
             }
