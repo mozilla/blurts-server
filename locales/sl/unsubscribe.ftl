@@ -18,3 +18,4 @@ unsubscribe-success-cta = Prijava v { -brand-monitor }
 # Error warning
 
 unsubscription-failed = Odjava ni uspela. <try_again_link>Poskusi znova.</try_again_link>
+unsubscription-failed-2 = Odjava ni uspela.

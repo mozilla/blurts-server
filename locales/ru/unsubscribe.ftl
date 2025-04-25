@@ -18,3 +18,4 @@ unsubscribe-success-cta = Войти в { -brand-monitor }
 # Error warning
 
 unsubscription-failed = Отписка не удалась. <try_again_link>Попробуйте снова.</try_again_link>
+unsubscription-failed-2 = Не удалось отписаться.
