@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: build
     env:
-      GAR_IMAGE_BASE: us-docker.pkg.dev/${{ vars.GCPV2_PROJECT_ID }}/${{ vars.GAR_REPO }}/blurts-server # Full base path for GAR image
+      GAR_IMAGE_BASE: ${{ vars.GAR_REPO }}/blurts-server
     steps:
     - name: Check out the repo
       uses: actions/checkout@v4
