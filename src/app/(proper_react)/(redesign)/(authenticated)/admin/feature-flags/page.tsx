@@ -20,14 +20,24 @@ import {
 import { defaultExperimentData } from "../../../../../../telemetry/generated/nimbus/experiments";
 import { ExistingFlagEditor, NewFlagEditor } from "./components/FlagEditor";
 
+export const metadata = {
+  title: "Monitor Feature Flags",
+};
+
 export default async function FeatureFlagPage() {
   const session = await getServerSession();
 
-  const monthlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "monthly" });
-  const yearlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "yearly" });
+  const monthlySubscriptionUrl = getPremiumSubscriptionUrl({
+    type: "monthly",
+    enabledFeatureFlags: [],
+  });
+  const yearlySubscriptionUrl = getPremiumSubscriptionUrl({
+    type: "yearly",
+    enabledFeatureFlags: [],
+  });
   const fxaSettingsUrl = process.env.FXA_SETTINGS_URL!;
 
-  if (!session?.user?.email) {
+  if (!session?.user?.email || !session.user.subscriber?.id) {
     return redirect("/");
   }
 
@@ -37,7 +47,7 @@ export default async function FeatureFlagPage() {
 
   const featureFlags =
     (await getAllFeatureFlags()).toSorted(
-      (flagA, flagB) => flagB.created_at.getTime() - flagA.created_at.getTime(),
+      (flagA, flagB) => flagB.updated_at.getTime() - flagA.updated_at.getTime(),
     ) ?? [];
 
   /**
@@ -70,6 +80,8 @@ export default async function FeatureFlagPage() {
             // We're not going to run experiments on the feature flag page (it's
             // not user-visible), so no need to fetch experiment data:
             experimentData={defaultExperimentData["Features"]}
+            enabledFeatureFlags={[]}
+            announcements={null}
           />
         </div>
       </nav>

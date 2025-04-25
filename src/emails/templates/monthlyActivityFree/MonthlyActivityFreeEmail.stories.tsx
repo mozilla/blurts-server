@@ -76,6 +76,7 @@ export const MonthlyReportFreeUserNoScanWithBreachesNothingResolved: Story = {
   name: "No Scan With Data Breaches, Nothing Resolved",
   args: {
     unsubscribeLink: "/",
+    enabledFeatureFlags: [],
     dataSummary: {
       ...mockedDataSummary,
       dataBreachUnresolvedNum: 10,
@@ -94,6 +95,7 @@ export const MonthlyReportFreeUserNoScanWithBreachesResolved: Story = {
   name: "No Scan With Data Breaches, Breaches Resolved",
   args: {
     unsubscribeLink: "/",
+    enabledFeatureFlags: [],
     dataSummary: {
       ...mockedDataSummary,
       dataBreachUnresolvedNum: 10,
@@ -114,6 +116,7 @@ export const MonthlyReportFreeUserWithScanWithExposuresNothingResolved: Story =
     name: "With Scan With Data Breaches and Brokers, Nothing Resolved",
     args: {
       unsubscribeLink: "/",
+      enabledFeatureFlags: [],
       dataSummary: {
         ...mockedDataSummary,
         unresolvedSanitizedDataPoints: [
@@ -136,6 +139,7 @@ export const MonthlyReportFreeUserWithScanWithExposuresResolved: Story = {
   name: "With Scan With Data Breaches and Data Brokers and Resolved Breaches",
   args: {
     unsubscribeLink: "/",
+    enabledFeatureFlags: [],
     dataSummary: {
       ...mockedDataSummary,
       unresolvedSanitizedDataPoints: [
@@ -159,6 +163,7 @@ export const MonthlyReportFreeUserWithScanNoRemainingExposures: Story = {
   name: "With Scan No Remaining Exposures",
   args: {
     unsubscribeLink: "/",
+    enabledFeatureFlags: [],
     dataSummary: {
       ...mockedDataSummary,
       unresolvedSanitizedDataPoints: [],
@@ -177,6 +182,7 @@ export const MonthlyReportFreeUserWithoutScanNoExposures: Story = {
   name: "No Scan No Remaining Exposures",
   args: {
     unsubscribeLink: "/",
+    enabledFeatureFlags: [],
     dataSummary: {
       ...mockedDataSummary,
       dataBreachResolvedNum: 0,
@@ -190,3 +196,24 @@ export const MonthlyReportFreeUserWithoutScanNoExposures: Story = {
     } as SanitizedSubscriberRow,
   },
 };
+
+export const MonthlyReportFreeUserWithScanExpiredSubscriptionWithPastExposures: Story =
+  {
+    name: "With Scan Expired Subscription With Previously Removed Exposures",
+    args: {
+      unsubscribeLink: "/",
+      enabledFeatureFlags: [],
+      dataSummary: {
+        ...mockedDataSummary,
+        dataBreachResolvedNum: 0,
+        dataBrokerAutoFixedDataPointsNum: 10,
+      },
+      subscriber: {
+        onerep_profile_id: 1,
+        fxa_profile_json: {
+          locale: "en-US",
+          subscriptions: ["not-monitor-plus"],
+        },
+      } as SanitizedSubscriberRow,
+    },
+  };

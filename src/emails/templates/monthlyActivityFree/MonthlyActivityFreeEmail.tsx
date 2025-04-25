@@ -15,12 +15,14 @@ import { HeaderStyles, MetaTags } from "../../components/HeaderStyles";
 import { SanitizedSubscriberRow } from "../../../app/functions/server/sanitize";
 import { sumSanitizedDataPoints } from "../../functions/reduceSanitizedDataPoints";
 import { modifyAttributionsForUrl } from "../../../app/functions/universal/attributions";
+import { FeatureFlagName } from "../../../db/tables/featureFlags";
 
 export type MonthlyActivityFreeEmailProps = {
   l10n: ExtendedReactLocalization;
   subscriber: SanitizedSubscriberRow;
   dataSummary: DashboardSummary;
   unsubscribeLink: string;
+  enabledFeatureFlags: FeatureFlagName[];
 };
 
 type UtmParams = {
@@ -76,7 +78,10 @@ export const MonthlyActivityFreeEmail = (
   };
 
   const unlockWithMonitorPlusCta = modifyAttributionsForUrl(
-    getPremiumSubscriptionUrl({ type: "yearly" }),
+    getPremiumSubscriptionUrl({
+      type: "yearly",
+      enabledFeatureFlags: props.enabledFeatureFlags,
+    }),
     {
       ...replaceValues,
       utm_content: `unlock-with-monitor-plus${utmContentSuffix}`,
@@ -110,8 +115,10 @@ export const MonthlyActivityFreeEmail = (
       ? "email-monthly-report-free-summary-auto-removed"
       : "email-monthly-report-free-broker-scan-available",
     // Show number of free scans if a scan hasn't been run
-    // If a free scan is run, show 0 auto-removed exposures
-    dataPointValue: hasRunFreeScan ? 0 : 1,
+    // If a free scan is run, show auto-removed exposures (should be 0, unless a user has an expired sub with previously removed exposures)
+    dataPointValue: hasRunFreeScan
+      ? props.dataSummary.dataBrokerAutoFixedDataPointsNum
+      : 1,
   };
 
   // Show the congratulatory banner if a user does not have any remaining exposures left to resolve

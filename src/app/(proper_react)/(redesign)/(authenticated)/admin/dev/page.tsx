@@ -5,18 +5,26 @@
 import { getServerSession } from "../../../../../functions/server/getServerSession";
 import { notFound } from "next/navigation";
 import { isAdmin } from "../../../../../api/utils/auth";
+import { getEnabledFeatureFlags } from "../../../../../../db/tables/featureFlags";
 import { UserAdmin } from "./UserAdmin";
 
 export default async function DevPage() {
   const session = await getServerSession();
-
   if (
     !session?.user?.email ||
     !isAdmin(session.user.email) ||
-    process.env.APP_ENV !== "local"
+    process.env.APP_ENV === "production"
   ) {
     return notFound();
   }
 
-  return <UserAdmin />;
+  const enabledFeatureFlags = await getEnabledFeatureFlags({
+    email: session.user.email,
+  });
+  return (
+    <UserAdmin
+      isLocal={process.env.APP_ENV === "local"}
+      enabledFeatureFlags={enabledFeatureFlags}
+    />
+  );
 }

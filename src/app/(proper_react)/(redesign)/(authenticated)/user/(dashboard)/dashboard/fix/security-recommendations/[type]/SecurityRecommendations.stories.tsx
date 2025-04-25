@@ -4,10 +4,11 @@
 
 import type { Meta, StoryObj } from "@storybook/react";
 import {
+  createRandomAnnouncement,
   createRandomBreach,
   createUserWithPremiumSubscription,
 } from "../../../../../../../../../../apiMocks/mockData";
-import { Shell } from "../../../../../../../Shell";
+import { Shell } from "../../../../../../../Shell/Shell";
 import { getL10n } from "../../../../../../../../../functions/l10n/storybookAndJest";
 import { SecurityRecommendationsLayout } from "../SecurityRecommendationsLayout";
 import {
@@ -16,6 +17,7 @@ import {
 } from "../securityRecommendationsData";
 import { BreachDataTypes } from "../../../../../../../../../functions/universal/breach";
 import { defaultExperimentData } from "../../../../../../../../../../telemetry/generated/nimbus/experiments";
+import { UserAnnouncementWithDetails } from "../../../../../../../../../../db/tables/user_announcements";
 
 const mockedBreaches = [...Array(5)].map(() => createRandomBreach());
 // Ensure all security recommendation data breaches are present in at least one breach:
@@ -39,6 +41,12 @@ const mockedSession = {
   user: user,
 };
 
+const mockedAnnouncements: UserAnnouncementWithDetails[] = [
+  createRandomAnnouncement(),
+  createRandomAnnouncement(),
+  createRandomAnnouncement(),
+];
+
 const SecurityRecommendationsWrapper = (props: {
   type: SecurityRecommendationTypes;
 }) => {
@@ -50,6 +58,7 @@ const SecurityRecommendationsWrapper = (props: {
       countryCode="nl"
       enabledFeatureFlags={[]}
       experimentData={defaultExperimentData["Features"]}
+      announcements={mockedAnnouncements}
     >
       <SecurityRecommendationsLayout
         subscriberEmails={[]}

@@ -58,6 +58,7 @@ import { ExperimentData } from "../../../../../../../telemetry/generated/nimbus/
 import { PetitionBanner } from "../../../../../../components/client/PetitionBanner";
 import { useLocalDismissal } from "../../../../../../hooks/useLocalDismissal";
 import { DataBrokerRemovalTime } from "../../../../../../functions/server/getDataBrokerRemovalTimeEstimates";
+import { UserAnnouncementWithDetails } from "../../../../../../../db/tables/user_announcements";
 
 export type TabType = "action-needed" | "fixed";
 
@@ -85,6 +86,7 @@ export type Props = {
   signInCount: number | null;
   autoOpenUpsellDialog: boolean;
   removalTimeEstimates: DataBrokerRemovalTime[];
+  userAnnouncements: UserAnnouncementWithDetails[];
 };
 
 export type TabData = {
@@ -103,7 +105,11 @@ export const View = (props: Props) => {
     `data_privacy_petition_banner-${props.user.subscriber?.id}`,
   );
 
+  const [announcements, setAnnouncements] = useState<
+    UserAnnouncementWithDetails[] | null
+  >(props.userAnnouncements);
   useEffect(() => {
+    setAnnouncements(props.userAnnouncements);
     const nextPathname = `/user/dashboard/${activeTab}`;
     if (pathname !== nextPathname) {
       // Directly interacting with the history API is recommended by Next.js to
@@ -111,7 +117,7 @@ export const View = (props: Props) => {
       // See https://github.com/vercel/next.js/discussions/48110#discussioncomment-7563979.
       window.history.replaceState(null, "", nextPathname);
     }
-  }, [pathname, activeTab]);
+  }, [pathname, activeTab, props.userAnnouncements]);
 
   const adjustedScanResults = props.userScanData.results.map((scanResult) => {
     if (scanResult.status === "new" && hasPremium(props.user)) {
@@ -461,6 +467,8 @@ export const View = (props: Props) => {
         lastScanDate={props.userScanData.scan?.created_at ?? null}
         experimentData={props.experimentData}
         autoOpenUpsellDialog={props.autoOpenUpsellDialog}
+        enabledFeatureFlags={props.enabledFeatureFlags}
+        announcements={announcements}
       >
         <TabList
           tabs={tabsData}

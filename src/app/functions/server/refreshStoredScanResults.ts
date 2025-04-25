@@ -18,6 +18,8 @@ import { logger } from "./logging";
  *
  * @param onerepProfileId {number} OneRep Profile ID to refresh.
  */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 export async function refreshStoredScanResults(onerepProfileId: number) {
   try {
     const remoteScans = (await listScans(onerepProfileId)).data;
@@ -53,3 +55,4 @@ export async function refreshStoredScanResults(onerepProfileId: number) {
     logger.warn("Could not fetch current OneRep results:", ex);
   }
 }
+/* c8 ignore stop */

@@ -17,10 +17,21 @@ import {
 } from "../../emails/templates/upcomingExpiration/UpcomingExpirationEmail";
 import { getFeatureFlagData } from "../../db/tables/featureFlags";
 
+process.on("SIGINT", () => {
+  logger.info("SIGINT received, exiting...");
+  tearDown();
+});
+
 await run();
-await createDbConnection().destroy();
+
+async function tearDown() {
+  closeEmailPool();
+  await createDbConnection().destroy();
+  process.exit(0);
+}
 
 async function run() {
+  // Using `getFeatureFlagData` instead of `getEnabledFeatureFlags` here to prevent fetching them for every subscriber.
   const churnFeatureFlag = await getFeatureFlagData("ExpirationNotification");
   const subscribersToEmail = (await getChurnsToEmail()).filter((subscriber) => {
     return (
@@ -46,7 +57,8 @@ async function run() {
     }
   }
 
-  closeEmailPool();
+  await tearDown();
+
   logger.info(
     `[${new Date(Date.now()).toISOString()}] Sent [${subscribersToEmail.length}] churn email to relevant subscribers.`,
   );

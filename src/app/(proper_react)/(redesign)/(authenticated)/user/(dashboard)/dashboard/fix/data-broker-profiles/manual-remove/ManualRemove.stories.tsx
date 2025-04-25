@@ -6,15 +6,17 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { OnerepScanRow } from "knex/types/tables";
 import { ManualRemoveView } from "./ManualRemoveView";
 import {
+  createRandomAnnouncement,
   createRandomBreach,
   createRandomScanResult,
   createUserWithPremiumSubscription,
 } from "../../../../../../../../../../apiMocks/mockData";
-import { Shell } from "../../../../../../../Shell";
+import { Shell } from "../../../../../../../Shell/Shell";
 import { getL10n } from "../../../../../../../../../functions/l10n/storybookAndJest";
 import { LatestOnerepScanData } from "../../../../../../../../../../db/tables/onerep_scans";
 import { hasPremium } from "../../../../../../../../../functions/universal/user";
 import { defaultExperimentData } from "../../../../../../../../../../telemetry/generated/nimbus/experiments";
+import { UserAnnouncementWithDetails } from "../../../../../../../../../../db/tables/user_announcements";
 
 const mockedScan: OnerepScanRow = {
   created_at: new Date(1998, 2, 31),
@@ -48,6 +50,12 @@ const meta: Meta<typeof ManualRemoveView> = {
 export default meta;
 type Story = StoryObj<typeof ManualRemoveView>;
 
+const mockedAnnouncements: UserAnnouncementWithDetails[] = [
+  createRandomAnnouncement({ audience: "us_only" }),
+  createRandomAnnouncement({ audience: "us_only" }),
+  createRandomAnnouncement({ audience: "us_only" }),
+];
+
 export const ManualRemoveViewStory: Story = {
   name: "1c. Manually resolve brokers",
   render: () => {
@@ -59,6 +67,7 @@ export const ManualRemoveViewStory: Story = {
         countryCode="us"
         enabledFeatureFlags={[]}
         experimentData={defaultExperimentData["Features"]}
+        announcements={mockedAnnouncements}
       >
         <ManualRemoveView
           scanData={mockedScanData}

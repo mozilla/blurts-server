@@ -70,6 +70,7 @@ declare module "knex/types/tables" {
     "id" | "subscriber_id" | "created_at" | "updated_at"
   >;
 
+  /** @deprecated MNTOR-4191 */
   interface FeatureFlagRow {
     name: string;
     is_enabled: boolean;
@@ -96,6 +97,40 @@ declare module "knex/types/tables" {
   type FeatureFlagAutoInsertedColumns = Extract<
     keyof FeatureFlagRow,
     "name" | "created_at" | "modified_at"
+  >;
+
+  interface FeatureFlagViewRow {
+    name: string;
+    is_enabled: boolean;
+    allow_list?: string[];
+    updated_at: Date;
+    last_updated_by_subscriber_id: SubscriberRow["id"];
+  }
+
+  type FeatureFlagViewOptionalColumns = Extract<
+    keyof FeatureFlagViewRow,
+    "allow_list"
+  >;
+  type FeatureFlagViewAutoInsertedColumns = Extract<
+    keyof FeatureFlagViewRow,
+    "created_at"
+  >;
+
+  interface FeatureFlagEventRow {
+    name: string;
+    is_enabled: boolean;
+    allow_list?: string[];
+    created_at: Date;
+    created_by_subscriber_id: SubscriberRow["id"];
+  }
+
+  type FeatureFlagEventOptionalColumns = Extract<
+    keyof FeatureFlagEventRow,
+    "allow_list"
+  >;
+  type FeatureFlagEventAutoInsertedColumns = Extract<
+    keyof FeatureFlagEventRow,
+    "created_at"
   >;
 
   interface SubscriberEmail {
@@ -378,22 +413,31 @@ declare module "knex/types/tables" {
     "id" | "created_at" | "modified_at"
   >;
 
-  interface NotificationRow {
+  type AudienceRow =
+    | "all_users"
+    | "premium_users"
+    | "free_users"
+    | "has_run_scan"
+    | "has_not_run_scan"
+    | "non_us"
+    | "us_only";
+
+  interface AnnouncementRow {
     id: number;
-    notification_id?: string;
-    label: string;
+    announcement_id: string;
     title: string;
     description: string;
     small_image_path: string;
     big_image_path: string;
     cta_label?: string;
     cta_link?: string;
-    audience: string;
+    audience: AudienceRow;
     created_at: Date;
     updated_at: Date;
+    label: string;
   }
 
-  type NotificationAutoInsertedColumns =
+  type AnnouncementRowInsertedColumns =
     | "id"
     | "created_at"
     | "updated_at"
@@ -402,10 +446,22 @@ declare module "knex/types/tables" {
     | "big_image_path"
     | "title"
     | "description";
-  type NotificationOptionalColumns =
-    | "notification_id"
+  type AnnouncementRowOptionalColumns =
+    | "announcement_id"
     | "cta_label"
     | "cta_link";
+
+  interface UserAnnouncementsRow {
+    id: number;
+    user_id: number;
+    announcement_id: string;
+    status: string;
+    seen_at: Date;
+    cleared_at: Date;
+    clicked_at: Date;
+    created_at: Date;
+    updated_at: Date;
+  }
 
   /**
    * This modifies row types to indicate that dates can also be inserted as ISO
@@ -436,21 +492,22 @@ declare module "knex/types/tables" {
     >;
 
     notifications: Knex.CompositeTableType<
-      NotificationRow,
+      AnnouncementRow,
       WritableDateColumns<
         Omit<
-          NotificationRow,
+          AnnouncementRow,
           NotificationAutoInsertedColumns | NotificationOptionalColumns
         > &
-          Partial<Pick<NotificationRow, NotificationOptionalColumns>>
+          Partial<Pick<AnnouncementRow, NotificationOptionalColumns>>
       >,
       // On updates, don't allow updating the ID and created date
       WritableDateColumns<
-        Partial<Omit<NotificationRow, "id" | "created_at">> &
-          Pick<NotificationRow, "updated_at">
+        Partial<Omit<AnnouncementRow, "id" | "created_at">> &
+          Pick<AnnouncementRow, "updated_at">
       >
     >;
 
+    /** @deprecated MNTOR-4191 */
     feature_flags: Knex.CompositeTableType<
       FeatureFlagRow,
       // On inserts, auto-generated columns cannot be set, and nullable columns are optional:
@@ -463,6 +520,36 @@ declare module "knex/types/tables" {
       >,
       // On updates, don't allow updating the ID and created date; all other fields are optional:
       WritableDateColumns<Partial<Omit<FeatureFlagRow, "name" | "created_at">>>
+    >;
+
+    feature_flag_view: Knex.CompositeTableType<
+      FeatureFlagViewRow,
+      // On inserts, auto-generated columns cannot be set, and nullable columns are optional:
+      WritableDateColumns<
+        Omit<
+          FeatureFlagViewRow,
+          FeatureFlagViewAutoInsertedColumns | FeatureFlagViewOptionalColumns
+        > &
+          Partial<Pick<FeatureFlagViewRow, FeatureFlagViewOptionalColumns>>
+      >,
+      // Don't allow updates; updating a flag requires adding a new event.
+      // This allows us to make sure all updates are auditable.
+      Record<string, never>
+    >;
+
+    feature_flag_events: Knex.CompositeTableType<
+      FeatureFlagEventRow,
+      // On inserts, auto-generated columns cannot be set, and nullable columns are optional:
+      WritableDateColumns<
+        Omit<
+          FeatureFlagEventRow,
+          FeatureFlagEventAutoInsertedColumns | FeatureFlagEventOptionalColumns
+        > &
+          Partial<Pick<FeatureFlagEventRow, FeatureFlagEventOptionalColumns>>
+      >,
+      // Don't allow updates; updating a flag requires adding a new event.
+      // This allows us to make sure all updates are auditable.
+      Record<string, never>
     >;
 
     subscribers: Knex.CompositeTableType<

@@ -25,16 +25,16 @@
     }
 
     &.requestedRemoval {
-      background: tokens.$color-violet-10;
+      background: tokens.$color-removal-status-requested;
     }
 
     &.inProgress {
-      background: tokens.$color-blue-05;
+      background: tokens.$color-removal-status-in-progress;
     }
 
     &.removed,
     &.fixed {
-      background: tokens.$color-green-20;
+      background: tokens.$color-removal-status-resolved;
     }
   }
 }

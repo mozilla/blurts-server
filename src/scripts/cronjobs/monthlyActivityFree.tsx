@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { SubscriberRow } from "knex/types/tables";
+import { FeatureFlagViewRow, SubscriberRow } from "knex/types/tables";
 import { getFreeSubscribersWaitingForMonthlyEmail } from "../../db/tables/subscribers";
 import { getScanResultsWithBroker } from "../../db/tables/onerep_scans";
 import { updateEmailPreferenceForSubscriber } from "../../db/tables/subscriber_email_preferences";
@@ -12,16 +12,34 @@ import { MonthlyActivityFreeEmail } from "../../emails/templates/monthlyActivity
 import { getCronjobL10n } from "../../app/functions/l10n/cronjobs";
 import { sanitizeSubscriberRow } from "../../app/functions/server/sanitize";
 import { getDashboardSummary } from "../../app/functions/server/dashboard";
-import { getSubscriberBreaches } from "../../app/functions/server/getSubscriberBreaches";
 import { refreshStoredScanResults } from "../../app/functions/server/refreshStoredScanResults";
 import { getSignupLocaleCountry } from "../../emails/functions/getSignupLocaleCountry";
 import createDbConnection from "../../db/connect";
 import { logger } from "../../app/functions/server/logging";
 import { getMonthlyActivityFreeUnsubscribeLink } from "../../app/functions/cronjobs/unsubscribeLinks";
 import { hasPremium } from "../../app/functions/universal/user";
+import { getFeatureFlagData } from "../../db/tables/featureFlags";
+import { getSubBreaches } from "../../utils/subscriberBreaches";
+import { HibpLikeDbBreach } from "../../utils/hibp";
+import { getBreaches } from "../../app/functions/server/getBreaches";
+
+let sentEmails = 0;
+process.on("SIGINT", () => {
+  logger.info(`SIGINT received, exiting ([${sentEmails}] emails sent)...`);
+  tearDown();
+});
+process.on("SIGTERM", () => {
+  logger.info(`SIGTERM received, exiting ([${sentEmails}] emails sent)...`);
+  tearDown();
+});
 
 await run();
-await createDbConnection().destroy();
+
+async function tearDown() {
+  closeEmailPool();
+  await createDbConnection().destroy();
+  process.exit(0);
+}
 
 async function run() {
   let batchSize = Number.parseInt(
@@ -40,11 +58,18 @@ async function run() {
     batchSize,
     ["US"],
   );
+  // Using `getFeatureFlagData` instead of `getEnabledFeatureFlags` here to prevent fetching them for every subscriber.
+  const subPlatFeatureFlag = await getFeatureFlagData("SubPlat3");
+  const allBreaches = await getBreaches();
   await initEmail();
 
   for (const subscriber of subscribersToEmail) {
     try {
-      await sendMonthlyActivityEmail(subscriber);
+      await sendMonthlyActivityEmail(
+        subscriber,
+        subPlatFeatureFlag,
+        allBreaches,
+      );
       logger.info("send_monthly_activity_email_free_success", {
         subscriberId: subscriber.id,
       });
@@ -56,13 +81,17 @@ async function run() {
     }
   }
 
-  closeEmailPool();
   console.log(
     `[${new Date(Date.now()).toISOString()}] Sent [${subscribersToEmail.length}] monthly activity emails to free users.`,
   );
+  await tearDown();
 }
 
-async function sendMonthlyActivityEmail(subscriber: SubscriberRow) {
+async function sendMonthlyActivityEmail(
+  subscriber: SubscriberRow,
+  subPlatFeatureFlag: FeatureFlagViewRow | null,
+  allBreaches: HibpLikeDbBreach[],
+) {
   const sanitizedSubscriber = sanitizeSubscriberRow(subscriber);
   const l10n = getCronjobL10n(sanitizedSubscriber);
   /**
@@ -83,10 +112,11 @@ async function sendMonthlyActivityEmail(subscriber: SubscriberRow) {
     subscriber.onerep_profile_id,
     hasPremium(subscriber),
   );
-  const subscriberBreaches = await getSubscriberBreaches({
-    fxaUid: subscriber.fxa_uid,
-    countryCode: countryCodeGuess,
-  });
+  const subscriberBreaches = await getSubBreaches(
+    subscriber,
+    allBreaches,
+    countryCodeGuess,
+  );
   const data = getDashboardSummary(latestScan.results, subscriberBreaches);
 
   const subject = l10n.getString("email-monthly-free-subject");
@@ -105,6 +135,10 @@ async function sendMonthlyActivityEmail(subscriber: SubscriberRow) {
     monthly_monitor_report_free_at: new Date(Date.now()),
   });
 
+  const subPlatFeatureFlagEnabled =
+    subPlatFeatureFlag?.is_enabled ||
+    subPlatFeatureFlag?.allow_list?.includes(subscriber.primary_email);
+
   try {
     await sendEmail(
       sanitizedSubscriber.primary_email,
@@ -115,9 +149,11 @@ async function sendMonthlyActivityEmail(subscriber: SubscriberRow) {
           dataSummary={data}
           l10n={l10n}
           unsubscribeLink={unsubscribeLink}
+          enabledFeatureFlags={subPlatFeatureFlagEnabled ? ["SubPlat3"] : []}
         />,
       ),
     );
+    sentEmails += 1;
   } catch (e) {
     logger.error("send_monthly_activity_email_free", {
       exception: e,

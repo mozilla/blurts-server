@@ -30,6 +30,14 @@ import { checkSession } from "../../../../../../../functions/server/checkSession
 import { checkUserHasMonthlySubscription } from "../../../../../../../functions/server/user";
 import { getEmailPreferenceForPrimaryEmail } from "../../../../../../../../db/tables/subscriber_email_preferences";
 import { CONST_SETTINGS_TAB_SLUGS } from "../../../../../../../../constants";
+import {
+  onAddEmail,
+  onDeleteAccount,
+  onRemoveEmail,
+  onApplyCouponCode,
+  onCheckUserHasCurrentCouponSet,
+} from "../actions";
+import { initializeUserAnnouncements } from "../../../../../../../../db/tables/user_announcements";
 
 type Props = {
   params: Promise<{
@@ -61,13 +69,8 @@ export default async function SettingsPage(props: Props) {
     session.user,
   );
 
-  const monthlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "monthly" });
-  const yearlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "yearly" });
   const fxaSettingsUrl = process.env.FXA_SETTINGS_URL!;
   const fxaSubscriptionsUrl = process.env.FXA_SUBSCRIPTIONS_URL!;
-  const additionalSubplatParams = await getAttributionsFromCookiesOrDb(
-    session.user.subscriber.id,
-  );
   const allBreaches = await getBreaches();
   const breachCountByEmailAddress: Record<string, number> = {};
   const emailAddressStrings = emailAddresses.map(
@@ -86,6 +89,24 @@ export default async function SettingsPage(props: Props) {
   const enabledFeatureFlags = await getEnabledFeatureFlags({
     isSignedOut: false,
     email: session.user.email,
+  });
+
+  const additionalSubplatParams = await getAttributionsFromCookiesOrDb(
+    session.user.subscriber.id,
+  );
+  const additionalSubplatParamsString =
+    additionalSubplatParams.size > 0
+      ? // SubPlat2 subscription links already have the UTM parameter `?plan` appended.
+        `${enabledFeatureFlags.includes("SubPlat3") ? "?" : "&"}${additionalSubplatParams.toString()}`
+      : "";
+
+  const monthlySubscriptionUrl = getPremiumSubscriptionUrl({
+    type: "monthly",
+    enabledFeatureFlags,
+  });
+  const yearlySubscriptionUrl = getPremiumSubscriptionUrl({
+    type: "yearly",
+    enabledFeatureFlags,
   });
 
   const headersList = await headers();
@@ -112,6 +133,10 @@ export default async function SettingsPage(props: Props) {
     session.user.email,
   );
 
+  const userAnnouncements = await initializeUserAnnouncements(
+    session.user.subscriber,
+  );
+
   return (
     <SettingsView
       l10n={l10n}
@@ -122,14 +147,22 @@ export default async function SettingsPage(props: Props) {
       breachCountByEmailAddress={breachCountByEmailAddress}
       fxaSettingsUrl={fxaSettingsUrl}
       fxaSubscriptionsUrl={fxaSubscriptionsUrl}
-      monthlySubscriptionUrl={`${monthlySubscriptionUrl}&${additionalSubplatParams.toString()}`}
-      yearlySubscriptionUrl={`${yearlySubscriptionUrl}&${additionalSubplatParams.toString()}`}
+      monthlySubscriptionUrl={`${monthlySubscriptionUrl}${additionalSubplatParamsString}`}
+      yearlySubscriptionUrl={`${yearlySubscriptionUrl}${additionalSubplatParamsString}`}
       subscriptionBillingAmount={getSubscriptionBillingAmount()}
       enabledFeatureFlags={enabledFeatureFlags}
       experimentData={experimentData["Features"]}
       lastScanDate={lastOneRepScan?.created_at}
       isMonthlySubscriber={isMonthlySubscriber}
       activeTab={activeTab}
+      actions={{
+        onAddEmail: onAddEmail,
+        onRemoveEmail: onRemoveEmail,
+        onDeleteAccount: onDeleteAccount,
+        onApplyCouponCode: onApplyCouponCode,
+        onCheckUserHasCurrentCouponSet: onCheckUserHasCurrentCouponSet,
+      }}
+      userAnnouncements={userAnnouncements}
     />
   );
 }

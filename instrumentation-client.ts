@@ -53,10 +53,7 @@ function getEnvironment() {
   ) {
     return "production";
   }
-  if (
-    document.location.origin ===
-    "https://stage.firefoxmonitor.nonprod.cloudops.mozgcp.net"
-  ) {
+  if (document.location.origin === "https://monitor-stage.allizom.org") {
     return "stage";
   }
   if (document.location.origin === "https://fx-breach-alerts.herokuapp.com") {
@@ -68,3 +65,5 @@ function getEnvironment() {
 
   return "unknown";
 }
+
+export const onRouterTransitionStart = Sentry.captureRouterTransitionStart;

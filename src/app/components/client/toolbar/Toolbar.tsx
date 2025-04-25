@@ -11,6 +11,9 @@ import { Session } from "next-auth";
 import { AppPicker } from "./AppPicker";
 import { UpsellBadge } from "./UpsellBadge";
 import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
+import { FeatureFlagName } from "../../../../db/tables/featureFlags";
+import { AnnouncementDialog } from "./AnnouncementDialog";
+import { UserAnnouncementWithDetails } from "../../../../db/tables/user_announcements";
 
 export type Props = {
   user: Session["user"];
@@ -23,13 +26,21 @@ export type Props = {
   fxaSettingsUrl: string;
   lastScanDate: Date | null;
   experimentData: ExperimentData["Features"];
+  enabledFeatureFlags: FeatureFlagName[];
   children?: ReactNode;
   autoOpenUpsellDialog?: boolean;
+  announcements: UserAnnouncementWithDetails[] | null;
 };
 
 export const Toolbar = (props: Props) => {
   return (
-    <nav className={styles.toolbar}>
+    <nav
+      // The class `.hasBackground` is only applying a background to the toolbar
+      // and the conditional flag will be removed together with:
+      // https://mozilla-hub.atlassian.net/browse/MNTOR-4192
+      /* c8 ignore next */
+      className={`${styles.toolbar} ${props.enabledFeatureFlags.includes("SidebarNavigationRedesign") ? styles.hasBackground : ""}`}
+    >
       <div className={styles.start}>{props.children}</div>
       <div className={styles.end}>
         <UpsellBadge
@@ -40,6 +51,11 @@ export const Toolbar = (props: Props) => {
           experimentData={props.experimentData}
           autoOpenUpsellDialog={props.autoOpenUpsellDialog}
         />
+        {/* c8 ignore next 3 */}
+        {props.enabledFeatureFlags.includes("Announcements") &&
+          props.announcements && (
+            <AnnouncementDialog announcements={props.announcements} />
+          )}
         <AppPicker />
         {props.user && (
           <UserMenu user={props.user} fxaSettingsUrl={props.fxaSettingsUrl} />

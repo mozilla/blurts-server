@@ -30,6 +30,7 @@ import { ExperimentData } from "../../../../telemetry/generated/nimbus/experimen
 import { FreeScanCta } from "./FreeScanCta";
 import { TopNavBar } from "./TopNavBar";
 import { AccountDeletionNotification } from "./AccountDeletionNotification";
+import { FeatureFlagName } from "../../../../db/tables/featureFlags";
 
 export type Props = {
   eligibleForPremium: boolean;
@@ -37,6 +38,7 @@ export type Props = {
   countryCode: string;
   scanLimitReached: boolean;
   experimentData: ExperimentData["Features"];
+  enabledFeatureFlags: FeatureFlagName[];
 };
 
 export const View = (props: Props) => {
@@ -336,11 +338,18 @@ const Plans = (props: Props) => {
       <PlansTable
         aria-labelledby={headingId}
         premiumSubscriptionUrl={{
-          monthly: getPremiumSubscriptionUrl({ type: "monthly" }),
-          yearly: getPremiumSubscriptionUrl({ type: "yearly" }),
+          monthly: getPremiumSubscriptionUrl({
+            type: "monthly",
+            enabledFeatureFlags: props.enabledFeatureFlags,
+          }),
+          yearly: getPremiumSubscriptionUrl({
+            type: "yearly",
+            enabledFeatureFlags: props.enabledFeatureFlags,
+          }),
         }}
         subscriptionBillingAmount={getSubscriptionBillingAmount()}
         scanLimitReached={props.scanLimitReached}
+        enabledFeatureFlags={props.enabledFeatureFlags}
       />
     </div>
   );

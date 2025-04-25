@@ -1,4 +1,7 @@
 name: Monitor E2E Test Suite (full)
+
+permissions: {}
+
 on:
   push:
     branches: [ main ]
@@ -30,9 +33,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
       - uses: actions/setup-node@v4
         with:
-          node-version: 20.18.x
+          node-version: 20.19.x
 
       - name: Install dependencies
         run: npm ci
@@ -58,7 +63,7 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run Playwright tests
-        if: github.actor != 'dependabot[bot]'
+        if: github.event.pull_request.user.login != 'dependabot[bot]'
         run: npm run e2e -- --update-snapshots
         timeout-minutes: 20
         env:

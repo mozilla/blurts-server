@@ -47,6 +47,7 @@ import {
   getL10n,
 } from "../../../../../../../functions/l10n/serverComponents";
 import { getDataBrokerRemovalTimeEstimates } from "../../../../../../../functions/server/getDataBrokerRemovalTimeEstimates";
+import { initializeUserAnnouncements } from "../../../../../../../../db/tables/user_announcements";
 
 const dashboardTabSlugs = ["action-needed", "fixed"];
 
@@ -113,7 +114,7 @@ export default async function DashboardPage(props: Props) {
 
   const useMockedScans =
     enabledFeatureFlags.includes("CustomDataBrokers") &&
-    process.env.NODE_ENV !== "production";
+    process.env.APP_ENV !== "production";
 
   const scanResults = useMockedScans
     ? await getMockedScanResults(profileId)
@@ -141,13 +142,24 @@ export default async function DashboardPage(props: Props) {
     locale: getLocale(getL10n(await getAcceptLangHeaderInServerComponents())),
   });
 
-  const monthlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "monthly" });
-  const yearlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "yearly" });
+  const monthlySubscriptionUrl = getPremiumSubscriptionUrl({
+    type: "monthly",
+    enabledFeatureFlags,
+  });
+  const yearlySubscriptionUrl = getPremiumSubscriptionUrl({
+    type: "yearly",
+    enabledFeatureFlags,
+  });
   const fxaSettingsUrl = process.env.FXA_SETTINGS_URL!;
   const profileStats = await getProfilesStats();
   const additionalSubplatParams = await getAttributionsFromCookiesOrDb(
     session.user.subscriber.id,
   );
+  const additionalSubplatParamsString =
+    additionalSubplatParams.size > 0
+      ? // SubPlat2 subscription links already have the UTM parameter `?plan` appended.
+        `${enabledFeatureFlags.includes("SubPlat3") ? "?" : "&"}${additionalSubplatParams.toString()}`
+      : "";
   const elapsedTimeInDaysSinceInitialScan =
     await getElapsedTimeInDaysSinceInitialScan(session.user);
 
@@ -159,6 +171,10 @@ export default async function DashboardPage(props: Props) {
     : false;
   const signInCount = await getSignInCount(session.user.subscriber.id);
 
+  const userAnnouncements = await initializeUserAnnouncements(
+    session.user.subscriber,
+  );
+
   return (
     <View
       user={session.user}
@@ -167,8 +183,8 @@ export default async function DashboardPage(props: Props) {
       userScanData={scanResults}
       userBreaches={subBreaches}
       enabledFeatureFlags={enabledFeatureFlags}
-      monthlySubscriptionUrl={`${monthlySubscriptionUrl}&${additionalSubplatParams.toString()}`}
-      yearlySubscriptionUrl={`${yearlySubscriptionUrl}&${additionalSubplatParams.toString()}`}
+      monthlySubscriptionUrl={`${monthlySubscriptionUrl}${additionalSubplatParamsString}`}
+      yearlySubscriptionUrl={`${yearlySubscriptionUrl}${additionalSubplatParamsString}`}
       subscriptionBillingAmount={getSubscriptionBillingAmount()}
       fxaSettingsUrl={fxaSettingsUrl}
       scanCount={scanCount}
@@ -181,6 +197,7 @@ export default async function DashboardPage(props: Props) {
       signInCount={signInCount}
       autoOpenUpsellDialog={searchParams.dialog === "subscriptions"}
       removalTimeEstimates={getDataBrokerRemovalTimeEstimates(scanResults)}
+      userAnnouncements={userAnnouncements}
     />
   );
 }

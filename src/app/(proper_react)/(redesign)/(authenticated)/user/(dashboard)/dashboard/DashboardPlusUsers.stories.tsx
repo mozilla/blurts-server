@@ -10,12 +10,13 @@ import {
 } from "knex/types/tables";
 import { faker } from "@faker-js/faker";
 import { View as DashboardEl } from "./View";
-import { Shell } from "../../../../Shell";
+import { Shell } from "../../../../Shell/Shell";
 import { getL10n } from "../../../../../../functions/l10n/storybookAndJest";
 import {
   createRandomScanResult,
   createRandomBreach,
   createUserWithPremiumSubscription,
+  createRandomAnnouncement,
 } from "../../../../../../../apiMocks/mockData";
 import { SubscriberBreach } from "../../../../../../../utils/subscriberBreaches";
 import { LatestOnerepScanData } from "../../../../../../../db/tables/onerep_scans";
@@ -27,6 +28,7 @@ import {
   brokerOptions,
   DashboardWrapperProps,
 } from "./Dashboard.stories";
+import { UserAnnouncementWithDetails } from "../../../../../../../db/tables/user_announcements";
 
 const DashboardWrapper = (props: DashboardWrapperProps) => {
   const mockedResolvedBreach: SubscriberBreach = createRandomBreach({
@@ -161,6 +163,12 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
     }))
     .filter(() => Math.random() < 0.1);
 
+  const mockedAnnouncements: UserAnnouncementWithDetails[] = [
+    createRandomAnnouncement({ audience: "premium_users" }),
+    createRandomAnnouncement({ audience: "premium_users" }),
+    createRandomAnnouncement({ audience: "premium_users" }),
+  ];
+
   return (
     <SessionProvider session={mockedSession}>
       <CountryCodeProvider countryCode={props.countryCode}>
@@ -178,6 +186,7 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
               },
             }
           }
+          announcements={mockedAnnouncements}
         >
           <DashboardEl
             user={user}
@@ -212,6 +221,7 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
             signInCount={props.signInCount ?? null}
             autoOpenUpsellDialog={props.autoOpenUpsellDialog ?? false}
             removalTimeEstimates={mockedRemovalTimeEstimates}
+            userAnnouncements={mockedAnnouncements}
           />
         </Shell>
       </CountryCodeProvider>

@@ -11,6 +11,9 @@ email-header-button-sign-in = Logg inn
 ## Email footers
 
 email-footer-support-heading = Spørsmål om { -brand-mozilla-monitor }?
+email-footer-support-content = Besøk <support-link>brukarstøttesenteret</support-link> vårt for å få hjelp
+email-footer-trigger-transactional = Du får denne e-posten fordi du abonnerer på { -brand-mozilla-monitor }.
+email-footer-source-hibp = Datalekkasjedata levert av <hibp-link>{ -brand-HIBP }</hibp-link>
 email-footer-logo-mozilla-alt = { -brand-mozilla }
 email-footer-meta-privacy-notice = Personvern
 # Firefox Relay is a product name and should not be translated.
@@ -63,4 +66,12 @@ email-dashboard-cta = Gå til oversynet
 ## Breach alert email
 
 email-breach-alert-all-subject = Ny datalekkasje oppdaga
+email-breach-alert-all-preview = Vi guidar deg gjennom stega for å løyse det.
+email-breach-alert-all-hero-heading = Du er ramma av ein ny datalekkasje
+email-breach-alert-all-hero-subheading = Ikkje bekymre deg, vi kan hjelpe deg med å løyse denne eksponeringa
+email-breach-alert-all-lead = { -brand-mozilla-monitor } oppdaga følgjande datalekkasje som inkluderer personlege informasjon om deg:
+email-breach-alert-all-source-title = Lekkasjekjelde:
+email-breach-alert-all-data-points-title = Dine eksponerte data:
+email-breach-alert-all-next-steps-lead = Vi guidar deg steg for steg om korleis du løyser denne datalekkasjen.
+email-breach-alert-all-next-steps-cta-label = La oss kome i gang
 email-breach-alert-all-next-steps-button-dashboard = Gå til oversynet
