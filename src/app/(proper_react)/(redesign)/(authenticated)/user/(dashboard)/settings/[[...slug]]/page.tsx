@@ -133,9 +133,7 @@ export default async function SettingsPage(props: Props) {
     session.user.email,
   );
 
-  const userAnnouncements = await initializeUserAnnouncements(
-    session.user.subscriber,
-  );
+  const userAnnouncements = await initializeUserAnnouncements(session.user);
 
   return (
     <SettingsView
