@@ -18,3 +18,4 @@ unsubscribe-success-cta = Iniciar sessão no { -brand-monitor }
 # Error warning
 
 unsubscription-failed = A anulação da subscrição falhou. <try_again_link>Tentar novamente.</try_again_link>
+unsubscription-failed-2 = A anulação da subscrição falhou.
