@@ -18,3 +18,4 @@ unsubscribe-success-cta = Accedi a { -brand-monitor }
 # Error warning
 
 unsubscription-failed = Annullamento iscrizione non riuscito. <try_again_link>Riprova.</try_again_link>
+unsubscription-failed-2 = Annullamento iscrizione non riuscito.

@@ -18,3 +18,4 @@ unsubscribe-success-cta = Jelentkezzen be a { -brand-monitor }ba
 # Error warning
 
 unsubscription-failed = A leiratkozás sikertelen. <try_again_link>Próbálja újra.</try_again_link>
+unsubscription-failed-2 = Leiratkozás sikertelen.
