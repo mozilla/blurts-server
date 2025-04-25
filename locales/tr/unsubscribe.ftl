@@ -18,3 +18,4 @@ unsubscribe-success-cta = { -brand-monitor }’e giriş yap
 # Error warning
 
 unsubscription-failed = Abonelikten ayrılma işlemi başarısız oldu. <try_again_link>Yeniden deneyin.</try_again_link>
+unsubscription-failed-2 = Abonelikten çıkılamadı.
