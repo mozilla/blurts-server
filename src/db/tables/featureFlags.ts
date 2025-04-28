@@ -75,6 +75,7 @@ export const featureFlagNames = [
   "SubPlat3",
   "MoscaryAuth",
   "Announcements",
+  "DisableOneRepScans",
 ] as const;
 
 export const adminOnlyFlags: FeatureFlagName[] = ["CustomDataBrokers"];
