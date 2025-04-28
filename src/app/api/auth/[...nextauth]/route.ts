@@ -10,6 +10,14 @@ import { authOptions } from "../../utils/auth";
 // There is currently no support for handling OAuth provider callback errors:
 // https://github.com/nextauthjs/next-auth/discussions/8209
 const handler = async (req: NextRequest, res: unknown) => {
+  // Temporary workaround for MNTOR-4381
+  if (
+    req.url?.endsWith("/api/auth/_log") &&
+    process.env.APP_ENV === "production"
+  ) {
+    return NextResponse.json({ error: "Not Found" }, { status: 404 });
+  }
+
   if (
     req.method === "GET" &&
     req.url?.startsWith(
