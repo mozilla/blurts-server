@@ -18,3 +18,4 @@ unsubscribe-success-cta = Iniciar sesión en { -brand-monitor }
 # Error warning
 
 unsubscription-failed = Falló la desuscripción. <try_again_link>Intentar nuevamente.</try_again_link>
+unsubscription-failed-2 = Falló la desuscripción.
