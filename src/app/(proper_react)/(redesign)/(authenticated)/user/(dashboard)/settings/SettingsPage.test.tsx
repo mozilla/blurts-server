@@ -35,6 +35,7 @@ const mockedRouterRefresh = jest.fn();
 jest.mock("next/navigation", () => ({
   usePathname: () => "/user/settings",
   useRouter: () => ({
+    push: jest.fn(),
     refresh: mockedRouterRefresh,
   }),
 }));
@@ -243,7 +244,9 @@ const mockedActions: ComponentProps<typeof SettingsView>["actions"] = {
   onDeleteAccount: () => new Promise(() => undefined),
   onApplyCouponCode: jest.fn(),
   onCheckUserHasCurrentCouponSet: jest.fn(),
+  onHandleUpdateProfileData: jest.fn(),
 };
+
 const mockedAnnouncements: UserAnnouncementWithDetails[] = [
   createRandomAnnouncement(),
   createRandomAnnouncement(),
@@ -298,6 +301,7 @@ describe("Settings page", () => {
           experimentData={defaultExperimentData["Features"]}
           isMonthlySubscriber={true}
           data={mockedPlusSubscriberEmailPreferences}
+          isEligibleForPremium={false}
           actions={mockedActions}
           userAnnouncements={mockedAnnouncements}
         />
@@ -337,6 +341,7 @@ describe("Settings page", () => {
           experimentData={defaultExperimentData["Features"]}
           isMonthlySubscriber={true}
           data={mockedPlusSubscriberEmailPreferences}
+          isEligibleForPremium={false}
           userAnnouncements={mockedAnnouncements}
           actions={mockedActions}
         />
@@ -376,6 +381,7 @@ describe("Settings page", () => {
             enabledFeatureFlags={[]}
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
+            isEligibleForPremium={false}
             actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
@@ -413,6 +419,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
@@ -469,6 +476,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
@@ -517,6 +525,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
@@ -555,6 +564,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
@@ -596,6 +606,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
@@ -647,6 +658,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
@@ -694,6 +706,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
@@ -735,6 +748,7 @@ describe("Settings page", () => {
               experimentData={defaultExperimentData["Features"]}
               isMonthlySubscriber={true}
               data={mockedPlusSubscriberEmailPreferences}
+              isEligibleForPremium={false}
               actions={mockedActions}
               userAnnouncements={mockedAnnouncements}
             />
@@ -783,6 +797,7 @@ describe("Settings page", () => {
               experimentData={defaultExperimentData["Features"]}
               isMonthlySubscriber={true}
               data={mockedPlusSubscriberEmailPreferences}
+              isEligibleForPremium={false}
               actions={mockedActions}
               userAnnouncements={mockedAnnouncements}
             />
@@ -831,6 +846,7 @@ describe("Settings page", () => {
               experimentData={defaultExperimentData["Features"]}
               isMonthlySubscriber={true}
               data={mockedPlusSubscriberEmailPreferences}
+              isEligibleForPremium={false}
               actions={mockedActions}
               userAnnouncements={mockedAnnouncements}
             />
@@ -883,6 +899,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
@@ -922,6 +939,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
@@ -962,6 +980,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
@@ -1013,6 +1032,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
@@ -1097,6 +1117,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
@@ -1160,6 +1181,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
@@ -1214,6 +1236,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
@@ -1259,6 +1282,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
@@ -1306,6 +1330,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
@@ -1354,6 +1379,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
@@ -1399,6 +1425,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
@@ -1450,6 +1477,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
@@ -1498,6 +1526,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
@@ -1551,6 +1580,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
@@ -1600,6 +1630,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
@@ -1653,6 +1684,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
@@ -1701,6 +1733,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
@@ -1754,6 +1787,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
@@ -1821,6 +1855,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
@@ -1914,6 +1949,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
@@ -1985,6 +2021,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
@@ -2030,6 +2067,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
@@ -2078,6 +2116,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
@@ -2126,6 +2165,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
@@ -2190,6 +2230,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
@@ -2234,6 +2275,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
@@ -2297,6 +2339,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
@@ -2348,6 +2391,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
@@ -2409,6 +2453,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={false}
             data={mockedFreeSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
@@ -2454,6 +2499,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
@@ -2502,6 +2548,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
@@ -2560,6 +2607,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
@@ -2620,6 +2668,7 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
             actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
@@ -2657,6 +2706,7 @@ describe("Settings page", () => {
           experimentData={defaultExperimentData["Features"]}
           isMonthlySubscriber={true}
           data={undefined}
+          isEligibleForPremium={false}
           actions={mockedActions}
           userAnnouncements={mockedAnnouncements}
         />

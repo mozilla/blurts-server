@@ -6,6 +6,7 @@
 
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
+import isEqual from "lodash.isequal";
 import styles from "./UserAdmin.module.scss";
 import { Button } from "../../../../../components/client/Button";
 import {
@@ -89,9 +90,7 @@ const ProfileDataInputs = ({
     <>
       <Button
         variant="primary"
-        disabled={
-          JSON.stringify(initialData) === JSON.stringify(editableProfileData)
-        }
+        disabled={isEqual(initialData, editableProfileData)}
         onPress={() => {
           try {
             const editableProfileDataParsed = Object.keys(

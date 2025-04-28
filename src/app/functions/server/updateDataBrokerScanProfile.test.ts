@@ -11,7 +11,7 @@ const currentProfileDetails: OnerepProfileRow = {
   onerep_profile_id: 5678,
   name_suffix: "",
   first_name: "First01",
-  last_name: "last01",
+  last_name: "Last01",
   middle_name: "",
   first_names: [],
   middle_names: [],
@@ -27,7 +27,7 @@ const currentProfileDetails: OnerepProfileRow = {
 
 const newProfileDetails: UpdateableProfileDetails = {
   first_name: "First01",
-  last_name: "last01",
+  last_name: "Last01",
   middle_name: "",
   first_names: [],
   middle_names: [],
@@ -67,6 +67,23 @@ describe("Update broker scan profile", () => {
         last_names: ["Last02"],
         middle_name: "Middle01",
         middle_names: ["Middle02", "Middle03"],
+      }),
+    ).not.toThrow();
+  });
+
+  it("filters invalid phone numbers", async () => {
+    jest.mock("../../../db/tables/onerep_profiles", () => ({
+      getProfileDetails: jest.fn(() => Promise.resolve(currentProfileDetails)),
+      updateProfileDetails: jest.fn(),
+    }));
+    const updateDataBrokerScanProfile = (
+      await import("./updateDataBrokerScanProfile")
+    ).default;
+
+    expect(() =>
+      updateDataBrokerScanProfile(5678, {
+        ...newProfileDetails,
+        phone_numbers: ["()/;"],
       }),
     ).not.toThrow();
   });

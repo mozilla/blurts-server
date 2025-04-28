@@ -2,9 +2,59 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { SubscriberRow } from "knex/types/tables";
+import { faker, fakerEN_US } from "@faker-js/faker";
+import {
+  EmailAddressRow,
+  OnerepProfileRow,
+  SubscriberRow,
+} from "knex/types/tables";
+import { OnerepProfileAddress } from "knex/types/tables";
 
 const subscriberId = 7;
+
+export const mockedVerifiedEmailSecond: EmailAddressRow = {
+  id: 2,
+  email: "email2@example.com",
+  sha1: "arbitrary string",
+  subscriber_id: subscriberId,
+  verified: true,
+  created_at: new Date("1337-04-02T04:02:42.000Z"),
+  updated_at: new Date("1337-04-02T04:02:42.000Z"),
+  verification_token: "arbitrary_token",
+};
+
+export const mockedVerifiedEmailThird: EmailAddressRow = {
+  id: 3,
+  email: "email3@example.com",
+  sha1: "arbitrary string",
+  subscriber_id: subscriberId,
+  verified: true,
+  created_at: new Date("1337-04-02T04:02:42.000Z"),
+  updated_at: new Date("1337-04-02T04:02:42.000Z"),
+  verification_token: "arbitrary_token",
+};
+
+export const mockedVerifiedEmailFourth: EmailAddressRow = {
+  id: 4,
+  email: "email4@example.com",
+  sha1: "arbitrary string",
+  subscriber_id: subscriberId,
+  verified: false,
+  created_at: new Date("1337-04-02T04:02:42.000Z"),
+  updated_at: new Date("1337-04-02T04:02:42.000Z"),
+  verification_token: "arbitrary_token",
+};
+
+export const mockedVerifiedEmailFifth: EmailAddressRow = {
+  id: 5,
+  email: "email5@example.com",
+  sha1: "arbitrary string",
+  subscriber_id: subscriberId,
+  verified: false,
+  created_at: new Date("1337-04-02T04:02:42.000Z"),
+  updated_at: new Date("1337-04-02T04:02:42.000Z"),
+  verification_token: "arbitrary_token",
+};
 
 export const mockedSubscriber: SubscriberRow = {
   updated_at: new Date(),
@@ -15,7 +65,7 @@ export const mockedSubscriber: SubscriberRow = {
   id: subscriberId,
   created_at: new Date("2022-06-07 14:29:00.000-05"),
   primary_sha1: "abcabc",
-  primary_email: "example@example.com",
+  primary_email: "primary@email.com",
   primary_verification_token: "c165711a-69d1-42f1-9850-ce74754f36de",
   primary_verified: true,
   fxa_access_token:
@@ -33,7 +83,7 @@ export const mockedSubscriber: SubscriberRow = {
     avatarDefault: false,
     metricsEnabled: true,
     twoFactorAuthentication: false,
-    subscriptions: ["monitor"],
+    subscriptions: [],
   },
   breaches_last_shown: new Date("2022-07-08 14:19:00.000-05"),
   breaches_resolved: null,
@@ -50,6 +100,44 @@ export const mockedSubscriber: SubscriberRow = {
   churn_prevention_email_sent_at: null,
 };
 
-export const breachCountByEmailAddress = {
-  [mockedSubscriber.primary_email]: 12,
+export const mockedSubscriberWithPlus = {
+  ...mockedSubscriber,
+  fxa_profile_json: {
+    ...mockedSubscriber.fxa_profile_json,
+    subscriptions: [],
+  },
+};
+
+export const mockedProfileDataMin: OnerepProfileRow = {
+  id: 1234,
+  onerep_profile_id: 5678,
+  name_suffix: "",
+  first_name: "First01",
+  last_name: "Last01",
+  middle_name: null,
+  first_names: [],
+  middle_names: [],
+  last_names: [],
+  city_name: "Tulsa",
+  state_code: "OK",
+  addresses: [{ city: "Tulsa", state: "OK" }],
+  phone_numbers: [],
+  date_of_birth: new Date(),
+  created_at: new Date(),
+  updated_at: new Date(),
+};
+
+export const mockedProfileDataMax: OnerepProfileRow = {
+  ...mockedProfileDataMin,
+  middle_name: faker.person.middleName(),
+  first_names: Array.from({ length: 4 }, () => faker.person.firstName()),
+  middle_names: Array.from({ length: 4 }, () => faker.person.middleName()),
+  last_names: Array.from({ length: 4 }, () => faker.person.lastName()),
+  phone_numbers: Array.from({ length: 10 }, () =>
+    faker.phone.number({ style: "national" }),
+  ),
+  addresses: Array.from({ length: 10 }, () => ({
+    city: fakerEN_US.location.city(),
+    state: fakerEN_US.location.state({ abbreviated: true }),
+  })) as OnerepProfileAddress[],
 };
