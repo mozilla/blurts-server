@@ -29,18 +29,20 @@ export default async function Page() {
   const eligibleForPremium = isEligibleForPremium(countryCode);
   const l10n = getL10n(await getAcceptLangHeaderInServerComponents());
 
+  const enabledFeatureFlags = await getEnabledFeatureFlags({
+    isSignedOut: true,
+  });
+
   // request the profile stats for the last 30 days
   const profileStats = await getProfilesStats(
     new Date(Date.now() - 30 * CONST_DAY_MILLISECONDS),
   );
   const oneRepActivations = profileStats?.total_active;
+
   const scanLimitReached =
     typeof oneRepActivations === "undefined" ||
-    oneRepActivations > monthlySubscribersQuota;
-
-  const enabledFeatureFlags = await getEnabledFeatureFlags({
-    isSignedOut: true,
-  });
+    oneRepActivations > monthlySubscribersQuota ||
+    enabledFeatureFlags.includes("DisableOneRepScans");
 
   return (
     <HowItWorksView
