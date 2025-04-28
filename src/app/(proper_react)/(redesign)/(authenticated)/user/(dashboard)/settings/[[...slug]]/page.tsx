@@ -30,12 +30,15 @@ import { checkSession } from "../../../../../../../functions/server/checkSession
 import { checkUserHasMonthlySubscription } from "../../../../../../../functions/server/user";
 import { getEmailPreferenceForPrimaryEmail } from "../../../../../../../../db/tables/subscriber_email_preferences";
 import { CONST_SETTINGS_TAB_SLUGS } from "../../../../../../../../constants";
+import getDataBrokerScanProfile from "../../../../../../../functions/server/getDataBrokerScanProfile";
+import { canSubscribeToPremium } from "../../../../../../../functions/universal/user";
 import {
   onAddEmail,
   onDeleteAccount,
   onRemoveEmail,
   onApplyCouponCode,
   onCheckUserHasCurrentCouponSet,
+  onHandleUpdateProfileData,
 } from "../actions";
 import { initializeUserAnnouncements } from "../../../../../../../../db/tables/user_announcements";
 
@@ -132,6 +135,13 @@ export default async function SettingsPage(props: Props) {
   const settingsData = await getEmailPreferenceForPrimaryEmail(
     session.user.email,
   );
+  const profileData = session.user.subscriber.onerep_profile_id
+    ? await getDataBrokerScanProfile(session.user.subscriber.onerep_profile_id)
+    : undefined;
+  const isEligibleForPremium = canSubscribeToPremium({
+    user: session.user,
+    countryCode,
+  });
 
   const userAnnouncements = await initializeUserAnnouncements(session.user);
 
@@ -153,14 +163,17 @@ export default async function SettingsPage(props: Props) {
       lastScanDate={lastOneRepScan?.created_at}
       isMonthlySubscriber={isMonthlySubscriber}
       activeTab={activeTab}
+      isEligibleForPremium={isEligibleForPremium}
       actions={{
-        onAddEmail: onAddEmail,
-        onRemoveEmail: onRemoveEmail,
-        onDeleteAccount: onDeleteAccount,
-        onApplyCouponCode: onApplyCouponCode,
-        onCheckUserHasCurrentCouponSet: onCheckUserHasCurrentCouponSet,
+        onAddEmail,
+        onRemoveEmail,
+        onDeleteAccount,
+        onApplyCouponCode,
+        onCheckUserHasCurrentCouponSet,
+        onHandleUpdateProfileData,
       }}
       userAnnouncements={userAnnouncements}
+      profileData={profileData}
     />
   );
 }

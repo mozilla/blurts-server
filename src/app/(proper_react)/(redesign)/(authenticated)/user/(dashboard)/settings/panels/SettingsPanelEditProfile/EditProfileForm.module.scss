@@ -1,0 +1,58 @@
+@use "../../../../../../../../tokens";
+
+.profileForm {
+  display: flex;
+  flex-direction: column;
+  gap: tokens.$spacing-lg;
+  width: 100%;
+
+  legend {
+    display: contents;
+
+    & > span {
+      min-width: calc(tokens.$content-xs * 0.5);
+    }
+  }
+
+  fieldset {
+    border: 0;
+    display: flex;
+    flex-direction: column;
+    gap: tokens.$spacing-sm;
+    padding: 0;
+    margin: 0;
+    min-width: 0;
+
+    @media screen and (min-width: tokens.$screen-md) {
+      flex-direction: row;
+    }
+  }
+
+  strong,
+  p {
+    font: tokens.$text-body-sm;
+  }
+
+  strong {
+    font-weight: 600;
+  }
+
+  p {
+    color: tokens.$color-grey-40;
+  }
+}
+
+.profileFormButtons {
+  align-items: flex-end;
+  display: flex;
+  gap: tokens.$spacing-md;
+  justify-content: flex-end;
+}
+
+.formInputs {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: tokens.$spacing-sm;
+  width: 100%;
+}

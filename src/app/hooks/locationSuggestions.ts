@@ -6,8 +6,9 @@ import { useAsyncList } from "react-stately";
 import { RelevantLocation } from "../api/v1/location-autocomplete/types";
 import { SearchLocationResults } from "../api/v1/location-autocomplete/route";
 
-export function useLocationSuggestions() {
+export function useLocationSuggestions(initialFilterText: string) {
   const locationSuggestions = useAsyncList<RelevantLocation>({
+    initialFilterText,
     async load({ signal, filterText }) {
       const searchParams = {
         searchQuery: filterText,

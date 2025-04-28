@@ -1,0 +1,14 @@
+@use "../../../../../../../../tokens";
+
+.cancelDialogContents,
+.cancelDialogButtons {
+  display: flex;
+  gap: tokens.$spacing-md;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.cancelDialogContents {
+  gap: tokens.$spacing-lg;
+}
