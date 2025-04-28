@@ -61,7 +61,14 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
             isPremiumUser={props.isPremiumUser}
             isShowFixed={isShowFixed}
             summary={props.bannerData}
-            totalNumberOfPerformedScans={props.totalNumberOfPerformedScans}
+            // Use the real scan count, or when DisableOneRepScans is enabled force it to 0
+            // (an undefined count would otherwise render the free-scan link)
+            totalNumberOfPerformedScans={
+              props.totalNumberOfPerformedScans ??
+              (props.enabledFeatureFlags.includes("DisableOneRepScans")
+                ? 0
+                : undefined)
+            }
           />
         </div>
       </div>

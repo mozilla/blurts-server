@@ -228,7 +228,8 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
             <div className={styles.cta}>
               {typeof props.totalNumberOfPerformedScans === "undefined" ||
               props.totalNumberOfPerformedScans <
-                CONST_ONEREP_MAX_SCANS_THRESHOLD ? (
+                CONST_ONEREP_MAX_SCANS_THRESHOLD ||
+              props.enabledFeatureFlags.includes("DisableOneRepScans") ? (
                 <Button
                   href="/user/welcome/free-scan?referrer=dashboard"
                   small
