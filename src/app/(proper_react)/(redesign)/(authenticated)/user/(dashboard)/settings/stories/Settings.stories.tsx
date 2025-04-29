@@ -8,7 +8,7 @@ import { SettingsWrapper } from "./SettingsStoryWrapper";
 import { CONST_SETTINGS_TAB_SLUGS } from "../../../../../../../../constants";
 
 const meta: Meta<typeof SettingsWrapper> = {
-  title: "Pages/Logged in/Settings",
+  title: "Pages/Logged in/Settings/Default",
   component: SettingsWrapper,
   argTypes: {
     activeTab: {
@@ -25,6 +25,7 @@ export const SettingsEditYourInfo: Story = {
   args: {
     countryCode: "us",
     activeTab: "edit-info",
+    enabledFeatureFlags: [],
   },
 };
 
@@ -33,6 +34,7 @@ export const SettingsEditManageAccount: Story = {
   args: {
     countryCode: "us",
     activeTab: "manage-account",
+    enabledFeatureFlags: [],
   },
 };
 
@@ -41,5 +43,6 @@ export const SettingsEditNotifications: Story = {
   args: {
     countryCode: "us",
     activeTab: "notifications",
+    enabledFeatureFlags: [],
   },
 };

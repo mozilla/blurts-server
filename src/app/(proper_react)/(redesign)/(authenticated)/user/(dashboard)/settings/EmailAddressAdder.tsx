@@ -100,6 +100,13 @@ const EmailAddressAddForm = (props: Props) => {
   );
   const [hasPressedButton, setHasPressedButton] = useState(false);
   const [email, setEmail] = useState("");
+  const [isEmailValid, setIsEmailValid] = useState(false);
+
+  useEffect(() => {
+    setIsEmailValid(
+      email.length > 0 && (formRef.current?.reportValidity() ?? false),
+    );
+  }, [email]);
 
   useEffect(() => {
     if (typeof onAddEmailState.success !== "undefined") {
@@ -111,10 +118,6 @@ const EmailAddressAddForm = (props: Props) => {
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
-  };
-
-  const isEmailValid = () => {
-    return email.length > 0 && (formRef.current?.reportValidity() ?? false);
   };
 
   return !onAddEmailState.success ? (
@@ -142,9 +145,9 @@ const EmailAddressAddForm = (props: Props) => {
           type="submit"
           variant="primary"
           className={styles.btn}
-          disabled={!isEmailValid()}
+          disabled={!isEmailValid}
           onPress={() => {
-            if (isEmailValid()) {
+            if (isEmailValid) {
               setHasPressedButton(true);
             }
           }}

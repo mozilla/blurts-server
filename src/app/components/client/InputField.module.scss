@@ -4,9 +4,11 @@
 .comboBox {
   border-radius: tokens.$border-radius-md;
   display: flex;
+  flex: 1;
   flex-direction: column;
   gap: tokens.$spacing-sm;
   position: relative;
+  width: 100%;
 
   .inputFieldWrapper {
     position: relative;
@@ -20,7 +22,7 @@
     font-weight: 400;
     // Add a bit more space: The next spacing step is too much.
     left: calc(tokens.$spacing-sm * 1.5);
-    line-height: 1em;
+    line-height: 1.2em;
     overflow: hidden;
     padding: 0 calc(tokens.$spacing-xs * 0.5);
     pointer-events: none;
@@ -88,7 +90,7 @@
     .floatingLabel {
       color: tokens.$color-grey-40;
       // Make the floating label visually align with the input value.
-      transform: translate(-0.05em, -150%) scale(0.85);
+      transform: translate(-0.1em, -110%) scale(0.75);
     }
   }
 
