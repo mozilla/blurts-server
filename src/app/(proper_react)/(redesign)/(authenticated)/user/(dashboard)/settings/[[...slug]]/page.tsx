@@ -143,7 +143,9 @@ export default async function SettingsPage(props: Props) {
     countryCode,
   });
 
-  const userAnnouncements = await initializeUserAnnouncements(session.user);
+  const userAnnouncements = await initializeUserAnnouncements(
+    session.user.subscriber,
+  );
 
   return (
     <SettingsView

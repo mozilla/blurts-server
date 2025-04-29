@@ -15,7 +15,9 @@ export async function GET() {
   }
 
   try {
-    const userAnnouncements = await initializeUserAnnouncements(session.user);
+    const userAnnouncements = await initializeUserAnnouncements(
+      session.user.subscriber,
+    );
 
     return NextResponse.json(userAnnouncements, { status: 200 });
   } catch (error) {
