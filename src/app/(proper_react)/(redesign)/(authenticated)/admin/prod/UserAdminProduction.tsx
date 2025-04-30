@@ -82,8 +82,6 @@ export const UserAdminProduction = ({
               const data = await response.json();
               setOnerepProfileId(data.onerepProfileId);
               setProfileScans(data.onerepProfileId);
-
-              setIsLoading(false);
             })
             .catch(() => {
               setOnerepProfileId(null);

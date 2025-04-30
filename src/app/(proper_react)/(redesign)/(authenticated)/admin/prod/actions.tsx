@@ -21,7 +21,9 @@ export async function lookupFxaUid(emailHash: string) {
 
   const subscriber = await getSubscribersByHashes([emailHash]);
   if (
-    process.env.APP_ENV === "production" &&
+    // On production, only allow looking up Mozilla email addresses
+    process.env.APP_ENV !== "stage" &&
+    process.env.APP_ENV !== "local" &&
     !isMozMail(subscriber[0].primary_email)
   ) {
     return notFound();
