@@ -8,79 +8,32 @@ import { notFound } from "next/navigation";
 import { getSubscribersByHashes } from "../../../../../../db/tables/subscribers";
 import { isAdmin } from "../../../../../api/utils/auth";
 import { getServerSession } from "../../../../../functions/server/getServerSession";
-import { getProfileDetails } from "../../../../../../db/tables/onerep_profiles";
-import {
-  createScan,
-  getProfile,
-  UpdateableProfileDetails,
-} from "../../../../../functions/server/onerep";
-import updateDataBrokerScanProfile from "../../../../../functions/server/updateDataBrokerScanProfile";
+import { createScan } from "../../../../../functions/server/onerep";
 import { getAllScansForProfile } from "../../../../../../db/tables/onerep_scans";
 import { refreshStoredScanResults } from "../../../../../functions/server/refreshStoredScanResults";
+import { isMozMail } from "../../../../../functions/universal/isMozMail";
 
 export async function lookupFxaUid(emailHash: string) {
   const session = await getServerSession();
-  if (
-    !session?.user?.email ||
-    !isAdmin(session.user.email) ||
-    process.env.APP_ENV === "production"
-  ) {
+  if (!session?.user?.email || !isAdmin(session.user.email)) {
     return notFound();
   }
 
   const subscriber = await getSubscribersByHashes([emailHash]);
+  if (
+    process.env.APP_ENV === "production" &&
+    !isMozMail(subscriber[0].primary_email)
+  ) {
+    return notFound();
+  }
   if (subscriber.length) {
     return subscriber[0].fxa_uid;
   }
 }
 
-export async function getOnerepProfile(onerepProfileId: number) {
-  const session = await getServerSession();
-  if (
-    !session?.user?.email ||
-    !isAdmin(session.user.email) ||
-    process.env.APP_ENV === "production"
-  ) {
-    return notFound();
-  }
-
-  try {
-    return {
-      local: await getProfileDetails(onerepProfileId),
-      remote: await getProfile(onerepProfileId),
-    };
-  } catch (error) {
-    console.error("Could not get profile details:", error);
-  }
-}
-
-export async function updateOnerepProfile(
-  onerepProfileId: number,
-  profileData: UpdateableProfileDetails,
-) {
-  const session = await getServerSession();
-  if (
-    !session?.user?.email ||
-    !isAdmin(session.user.email) ||
-    process.env.APP_ENV === "production"
-  ) {
-    return notFound();
-  }
-
-  try {
-    await updateDataBrokerScanProfile(onerepProfileId, profileData);
-  } catch (error) {
-    console.error("Could not update profile details:", error);
-  }
-}
-
 export async function getAllProfileScans(onerepProfileId: number) {
   const session = await getServerSession();
-  if (
-    !session?.user?.email ||
-    !isAdmin(session.user.email) ||
-    process.env.APP_ENV === "production"
-  ) {
+  if (!session?.user?.email || !isAdmin(session.user.email)) {
     return notFound();
   }
 
@@ -93,11 +46,7 @@ export async function getAllProfileScans(onerepProfileId: number) {
 
 export async function triggerManualProfileScan(onerepProfileId: number) {
   const session = await getServerSession();
-  if (
-    !session?.user?.email ||
-    !isAdmin(session.user.email) ||
-    process.env.APP_ENV === "production"
-  ) {
+  if (!session?.user?.email || !isAdmin(session.user.email)) {
     return notFound();
   }
   console.info("Manual scan initiated by admin for:", onerepProfileId);

@@ -6,17 +6,17 @@
 
 import { useState } from "react";
 import { useSession } from "next-auth/react";
-import styles from "./UserAdmin.module.scss";
-import { Button } from "../../../../../components/client/Button";
-import {
-  lookupFxaUid,
-  triggerManualProfileScan,
-  getAllProfileScans,
-} from "./actions";
 import { OnerepScanRow } from "knex/types/tables";
+import { Button } from "../../../../../components/client/Button";
 import { InputField } from "../../../../../components/client/InputField";
 import { FeatureFlagName } from "../../../../../../db/tables/featureFlags";
-import { DataTable, getSha1 } from "./UserAdmin";
+import { DataTable, getSha1 } from "../dev/UserAdmin";
+import styles from "../dev/UserAdmin.module.scss";
+import {
+  getAllProfileScans,
+  lookupFxaUid,
+  triggerManualProfileScan,
+} from "./actions";
 
 export const UserAdminProduction = ({
   enabledFeatureFlags,
