@@ -59,15 +59,11 @@ async function getSubscriberByFxaUid(
 /* c8 ignore start */
 async function getSubscriberByOnerepProfileId(
   onerep_profile_id: SubscriberRow["onerep_profile_id"],
-): Promise<undefined | (SubscriberRow & WithEmailAddresses)> {
+): Promise<undefined | SubscriberRow> {
   const [subscriber] = await knex("subscribers").where({
     onerep_profile_id,
   });
-  if (!subscriber) {
-    return;
-  }
-  const subscriberAndEmails = await joinEmailAddressesToSubscriber(subscriber);
-  return subscriberAndEmails;
+  return subscriber;
 }
 /* c8 ignore stop */
 
