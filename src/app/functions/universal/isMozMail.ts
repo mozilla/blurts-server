@@ -2,6 +2,10 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+/**
+ * @param email - The email address to check.
+ * @returns Returns `true` for emails containing `@mozilla.com`.
+ */
 export const isMozMail = (email: string) => {
   const emailParsed = email.trim().toLowerCase();
   return emailParsed.endsWith("@mozilla.com");
