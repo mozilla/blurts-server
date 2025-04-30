@@ -5,7 +5,10 @@
 "use server";
 
 import { notFound } from "next/navigation";
-import { getSubscribersByHashes } from "../../../../../../db/tables/subscribers";
+import {
+  getSubscriberByOnerepProfileId,
+  getSubscribersByHashes,
+} from "../../../../../../db/tables/subscribers";
 import { isAdmin } from "../../../../../api/utils/auth";
 import { getServerSession } from "../../../../../functions/server/getServerSession";
 import { createScan } from "../../../../../functions/server/onerep";
@@ -40,6 +43,16 @@ export async function getAllProfileScans(onerepProfileId: number) {
   }
 
   try {
+    const subscriber = await getSubscriberByOnerepProfileId(onerepProfileId);
+    if (
+      // On production, only allow looking up Mozilla email addresses
+      process.env.APP_ENV !== "stage" &&
+      process.env.APP_ENV !== "local" &&
+      !isMozMail(subscriber?.primary_email ?? "")
+    ) {
+      return notFound();
+    }
+
     return await getAllScansForProfile(onerepProfileId);
   } catch (error) {
     console.error("Getting all profile scans failed:", error);
@@ -54,6 +67,16 @@ export async function triggerManualProfileScan(onerepProfileId: number) {
   console.info("Manual scan initiated by admin for:", onerepProfileId);
 
   try {
+    const subscriber = await getSubscriberByOnerepProfileId(onerepProfileId);
+    if (
+      // On production, only allow looking up Mozilla email addresses
+      process.env.APP_ENV !== "stage" &&
+      process.env.APP_ENV !== "local" &&
+      !isMozMail(subscriber?.primary_email ?? "")
+    ) {
+      return notFound();
+    }
+
     const scanResult = await createScan(onerepProfileId);
     await refreshStoredScanResults(onerepProfileId);
     return scanResult;
