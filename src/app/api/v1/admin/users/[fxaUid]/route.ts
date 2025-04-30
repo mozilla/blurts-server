@@ -62,10 +62,14 @@ export async function GET(
       const fxaUid = params.fxaUid;
       const subscriber = await getSubscriberByFxaUid(fxaUid);
       if (
-        !subscriber ||
-        (process.env.APP_ENV === "production" &&
-          !isMozMail(subscriber.primary_email))
+        process.env.APP_ENV !== "local" &&
+        process.env.APP_ENV !== "stage" &&
+        !isMozMail(subscriber?.primary_email ?? "")
       ) {
+        return NextResponse.json({ success: false }, { status: 403 });
+      }
+
+      if (!subscriber) {
         logger.error("no_subscriber_found", { fxaUid });
         return NextResponse.json({ success: false }, { status: 404 });
       }
