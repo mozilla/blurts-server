@@ -55,6 +55,18 @@ async function getSubscriberByFxaUid(
 }
 /* c8 ignore stop */
 
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
+async function getSubscriberByOnerepProfileId(
+  onerep_profile_id: SubscriberRow["onerep_profile_id"],
+): Promise<undefined | SubscriberRow> {
+  const [subscriber] = await knex("subscribers").where({
+    onerep_profile_id,
+  });
+  return subscriber;
+}
+/* c8 ignore stop */
+
 /**
  * Update primary email for subscriber
  */
@@ -645,6 +657,7 @@ export {
   getSubscribersByHashes,
   getSubscriberById,
   getSubscriberByFxaUid,
+  getSubscriberByOnerepProfileId,
   updatePrimaryEmail,
   updateFxAData,
   updateFxATokens,
