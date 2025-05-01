@@ -300,6 +300,7 @@ export const DashboardUsNoPremiumNoScanResolvedBreaches: Story = {
     premium: false,
     breaches: "resolved",
     brokers: "no-scan",
+    totalNumberOfPerformedScans: undefined,
   },
 };
 
@@ -311,7 +312,6 @@ export const DashboardUsNoPremiumNoScanNoBreachesScanLimitReached: Story = {
     breaches: "empty",
     brokers: "no-scan",
     totalNumberOfPerformedScans: 280000,
-    enabledFeatureFlags: ["DisableOneRepScans"],
   },
 };
 
