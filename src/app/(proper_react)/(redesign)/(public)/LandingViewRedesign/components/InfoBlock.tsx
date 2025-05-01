@@ -72,7 +72,8 @@ export const InfoBlock = (props: LandingPageProps) => {
       {infoRowData.map((info, infoIndex) => (
         <InfoRow key={`info-${infoIndex}`} data={info} />
       ))}
-      {props.eligibleForPremium && props.scanLimitReached ? (
+      {props.enabledFeatureFlags.includes("DisableOneRepScans") ||
+      (props.eligibleForPremium && props.scanLimitReached) ? (
         <ScanLimit />
       ) : (
         <FreeScanCta
