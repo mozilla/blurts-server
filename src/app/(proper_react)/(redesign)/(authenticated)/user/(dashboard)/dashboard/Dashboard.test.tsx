@@ -135,6 +135,26 @@ it("does not show a 'Contact Us' link for non-Plus users", async () => {
   expect(contactUsEntry).not.toBeInTheDocument();
 });
 
+it("shows the waitlist dialog when a user selects 'Start a free scan' CTA if the DisableOneRepScans flag is enabled", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanNoBreachesDisabledScan,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  const ctaButton = screen.getByRole("button", {
+    name: "Start a free scan",
+  });
+  await user.click(ctaButton);
+
+  expect(
+    screen.getByRole("dialog", {
+      name: "⁨Monitor⁩ is currently at capacity",
+    }),
+  ).toBeInTheDocument();
+});
+
 it("shows a 'Contact Us' link for Plus users", async () => {
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(
