@@ -18,6 +18,7 @@ import { axe } from "jest-axe";
 import { signIn, useSession } from "next-auth/react";
 import Meta, {
   LandingRedesignUs,
+  LandingRedesignUsDisableOneRepScans,
   LandingRedesignUsScanLimit,
   LandingRedesignUsScanLimitWithPrivacyProductBundle,
   LandingRedesignUsWithPrivacyProductBundle,
@@ -1421,6 +1422,18 @@ describe("Scan limit reached", () => {
       expect(waitlistCta[0]).toBeInTheDocument();
     });
   });
+});
+
+it("shows the waitlist flow if the DisableOneRepScans flag is on", () => {
+  const ComposedDashboard = composeStory(
+    LandingRedesignUsDisableOneRepScans,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+  const waitlistCta = screen.getAllByRole("link", {
+    name: "Join waitlist",
+  });
+  expect(waitlistCta[0]).toBeInTheDocument();
 });
 
 describe("Account deletion confirmation", () => {

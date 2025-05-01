@@ -106,11 +106,14 @@ export const LandingRedesignUsScanLimit: Story = {
 
 export const LandingRedesignUsWithPrivacyProductBundle: Story = {
   name: "US visitors - With Privacy Product Bundle",
+}
+export const LandingRedesignUsDisableOneRepScans: Story = {
+  name: "US visitors - Disable OneRep Scans",
   args: {
     eligibleForPremium: true,
     countryCode: "us",
     scanLimitReached: false,
-    enabledFeatureFlags: ["LandingPageRedesign", "PrivacyProductsBundle"],
+    enabledFeatureFlags: ["LandingPageRedesign", "PrivacyProductsBundle", "DisableOneRepScans"],
   },
 };
 
