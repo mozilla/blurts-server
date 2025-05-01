@@ -25,6 +25,7 @@ import Meta, {
   LandingNonUsDe,
   LandingNonUsFr,
   LandingUs,
+  LandingUsDisableOneRepScans,
   LandingUsScanLimit,
 } from "./LandingView.stories";
 import { deleteAllCookies } from "../../../functions/client/deleteAllCookies";
@@ -784,6 +785,16 @@ describe("When Premium is available", () => {
 
   it("shows the scan limit and waitlist cta when it hits the threshold", () => {
     const ComposedDashboard = composeStory(LandingUsScanLimit, Meta);
+    render(<ComposedDashboard />);
+
+    const limitDescription = screen.getByText(
+      "We’ve reached the maximum scans for the month. Enter your email to get on our waitlist.",
+    );
+    expect(limitDescription).toBeInTheDocument();
+  });
+
+  it("shows the scan limit and waitlist cta when the DisableOneRepScans flag is on", () => {
+    const ComposedDashboard = composeStory(LandingUsDisableOneRepScans, Meta);
     render(<ComposedDashboard />);
 
     const limitDescription = screen.getByText(
