@@ -24,6 +24,7 @@ import {
   CONST_ONEREP_MAX_SCANS_THRESHOLD,
 } from "../../../constants";
 import { VisuallyHidden } from "../server/VisuallyHidden";
+import { FeatureFlagName } from "../../../db/tables/featureFlags";
 
 export type Props = {
   data: Array<[string, number]>;
@@ -34,6 +35,7 @@ export type Props = {
   isShowFixed: boolean;
   summary: DashboardSummary;
   totalNumberOfPerformedScans?: number;
+  enabledFeatureFlags: FeatureFlagName[];
 };
 
 export const DoughnutChart = (props: Props) => {
@@ -159,7 +161,8 @@ export const DoughnutChart = (props: Props) => {
           </p>
           {typeof props.totalNumberOfPerformedScans === "undefined" ||
           props.totalNumberOfPerformedScans <
-            CONST_ONEREP_MAX_SCANS_THRESHOLD ? (
+            CONST_ONEREP_MAX_SCANS_THRESHOLD ||
+          !props.enabledFeatureFlags.includes("DisableOneRepScans") ? (
             <Link
               href="/user/welcome/free-scan?referrer=dashboard"
               onClick={() => {
