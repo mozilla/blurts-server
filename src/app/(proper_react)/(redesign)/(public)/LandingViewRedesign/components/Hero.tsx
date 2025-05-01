@@ -25,7 +25,8 @@ export const Hero = (props: LandingPageProps) => {
           <p>{props.l10n.getString("landing-redesign-hero-lead")}</p>
         </div>
         <div className={styles.heroCta}>
-          {props.eligibleForPremium && props.scanLimitReached ? (
+          {props.enabledFeatureFlags.includes("DisableOneRepScans") ||
+          (props.eligibleForPremium && props.scanLimitReached) ? (
             <ScanLimit />
           ) : (
             <FreeScanCta
