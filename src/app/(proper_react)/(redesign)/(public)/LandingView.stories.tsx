@@ -80,7 +80,7 @@ export const LandingUsScanLimit: Story = {
 };
 
 export const LandingUsDisableOneRepScans: Story = {
-  name: "US visitors - Scan limit reached",
+  name: "US visitors - Disabled Scans",
   args: {
     eligibleForPremium: true,
     countryCode: "us",
