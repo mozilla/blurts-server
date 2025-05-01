@@ -40,7 +40,7 @@ export type Props = {
   children: ReactNode;
   enabledFeatureFlags: FeatureFlagName[];
   experimentData: ExperimentData["Features"];
-  announcements?: UserAnnouncementWithDetails[] | null;
+  announcements?: UserAnnouncementWithDetails[];
 };
 
 export const MobileShell = (props: Props) => {

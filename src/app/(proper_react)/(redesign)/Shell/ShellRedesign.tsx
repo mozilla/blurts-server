@@ -30,7 +30,7 @@ export type Props = {
     yearly: number;
     monthly: number;
   };
-  announcements: UserAnnouncementWithDetails[] | null;
+  announcements: UserAnnouncementWithDetails[];
   hideSidebar?: boolean;
 };
 

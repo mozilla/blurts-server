@@ -76,8 +76,9 @@ export const AnnouncementDialog = ({
   const [relevantAnnouncement, setRelevantAnnouncement] =
     useState<UserAnnouncementWithDetails | null>(null);
 
-  const [userAnnouncements, setUserAnnouncements] =
-    useState<UserAnnouncementWithDetails[]>(announcements);
+  const [userAnnouncements, setUserAnnouncements] = useState<
+    UserAnnouncementWithDetails[]
+  >(announcements ?? []);
 
   const sortedAnnouncements = [...userAnnouncements].sort((a, b) => {
     return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
