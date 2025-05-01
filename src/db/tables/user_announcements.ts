@@ -7,6 +7,7 @@ import createDbConnection from "../connect";
 import { logger } from "../../app/functions/server/logging";
 import { checkUserHasMonthlySubscription } from "../../app/functions/server/user";
 import { Session } from "next-auth";
+import { redirect } from "next/navigation";
 
 const knex = createDbConnection();
 
@@ -51,20 +52,24 @@ export async function markAnnouncementAsCleared(
 
 export async function initializeUserAnnouncements(
   user: Session["user"],
-): Promise<UserAnnouncementWithDetails[] | null> {
+): Promise<UserAnnouncementWithDetails[]> {
   try {
+    if (!user?.subscriber) {
+      return redirect("/auth/logout");
+    }
+
     // Determine audience eligibility
-    let isSubscribedMonthly = false;
-    const isUS = user.subscriber?.signup_language?.includes("en-US");
+    const isUS = user.subscriber?.signup_language?.includes("en-US") || false;
     const subscriptions =
       user.subscriber?.fxa_profile_json?.subscriptions ?? [];
     const isPremium = subscriptions.includes("monitor");
 
+    let isSubscribedMonthly = false;
     if (isPremium) {
       isSubscribedMonthly = await checkUserHasMonthlySubscription(user);
     }
 
-    const hasRunScan = user.subscriber?.onerep_profile_id !== null;
+    const hasRunScan = !!user.subscriber?.onerep_profile_id;
 
     // Get all current announcement IDs for the user
     const existingRows = await knex("user_announcements")
