@@ -79,6 +79,16 @@ export const LandingUsScanLimit: Story = {
   },
 };
 
+export const LandingUsDisableOneRepScans: Story = {
+  name: "US visitors - Scan limit reached",
+  args: {
+    eligibleForPremium: true,
+    countryCode: "us",
+    scanLimitReached: false,
+    enabledFeatureFlags: ["DisableOneRepScans"],
+  },
+};
+
 export const LandingNonUs: Story = {
   name: "Non-US visitors",
   args: {
