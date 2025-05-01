@@ -86,7 +86,7 @@ export type Props = {
   signInCount: number | null;
   autoOpenUpsellDialog: boolean;
   removalTimeEstimates: DataBrokerRemovalTime[];
-  userAnnouncements: UserAnnouncementWithDetails[];
+  userAnnouncements: UserAnnouncementWithDetails[] | null;
 };
 
 export type TabData = {

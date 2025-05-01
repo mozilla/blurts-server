@@ -51,14 +51,19 @@ export async function markAnnouncementAsCleared(
 
 export async function initializeUserAnnouncements(
   user: Session["user"],
-): Promise<UserAnnouncementWithDetails[]> {
+): Promise<UserAnnouncementWithDetails[] | null> {
   try {
     // Determine audience eligibility
-    const isSubscribedMonthly = await checkUserHasMonthlySubscription(user);
+    let isSubscribedMonthly = false;
     const isUS = user.subscriber?.signup_language?.includes("en-US");
     const subscriptions =
       user.subscriber?.fxa_profile_json?.subscriptions ?? [];
     const isPremium = subscriptions.includes("monitor");
+
+    if (isPremium) {
+      isSubscribedMonthly = await checkUserHasMonthlySubscription(user);
+    }
+
     const hasRunScan = user.subscriber?.onerep_profile_id !== null;
 
     // Get all current announcement IDs for the user
