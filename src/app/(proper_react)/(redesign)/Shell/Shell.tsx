@@ -32,7 +32,7 @@ export type Props = {
   countryCode: string;
   enabledFeatureFlags: FeatureFlagName[];
   experimentData: ExperimentData["Features"];
-  announcements: UserAnnouncementWithDetails[];
+  announcements: UserAnnouncementWithDetails[] | null;
   hideSidebar?: boolean;
 };
 
