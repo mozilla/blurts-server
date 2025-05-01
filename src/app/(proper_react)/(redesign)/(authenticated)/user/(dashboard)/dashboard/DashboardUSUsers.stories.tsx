@@ -311,6 +311,7 @@ export const DashboardUsNoPremiumNoScanNoBreachesScanLimitReached: Story = {
     breaches: "empty",
     brokers: "no-scan",
     totalNumberOfPerformedScans: 280000,
+    enabledFeatureFlags: ["DisableOneRepScans"],
   },
 };
 

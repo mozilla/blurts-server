@@ -395,7 +395,7 @@ export const View = (props: Props) => {
               typeof props.totalNumberOfPerformedScans === "undefined" ||
               props.totalNumberOfPerformedScans <
                 CONST_ONEREP_MAX_SCANS_THRESHOLD ||
-              props.enabledFeatureFlags.includes("DisableOneRepScans") ? (
+              !props.enabledFeatureFlags.includes("DisableOneRepScans") ? (
                 <Link
                   ref={waitlistTriggerRef}
                   href="/user/welcome/free-scan?referrer=dashboard"
