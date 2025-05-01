@@ -315,6 +315,17 @@ export const DashboardUsNoPremiumNoScanNoBreachesScanLimitReached: Story = {
   },
 };
 
+export const DashboardUsNoPremiumNoScanNoBreachesDisabledScan: Story = {
+  name: "US user, without Premium, without scan, with 0 breaches, Disabled Scans",
+  args: {
+    countryCode: "us",
+    premium: false,
+    breaches: "empty",
+    brokers: "no-scan",
+    enabledFeatureFlags: ["DisableOneRepScans"],
+  },
+};
+
 export const DashboardUsNoPremiumEmptyScanNoBreaches: Story = {
   name: "US user, without Premium, with 0 scan results, with 0 breaches",
   args: {

@@ -41,6 +41,7 @@ import {
   DashboardUsNoPremiumScanInProgressNoBreaches,
   DashboardUsNoPremiumScanInProgressUnresolvedBreaches,
   DashboardUsNoPremiumScanInProgressResolvedBreaches,
+  DashboardUsNoPremiumNoScanNoBreachesDisabledScan,
 } from "./DashboardUSUsers.stories";
 import {
   DashboardUsPremiumEmptyScanNoBreaches,
@@ -1022,6 +1023,37 @@ it("shows and skips a dialog that informs US users, without Premium, when we hit
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumNoScanNoBreachesScanLimitReached,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "button", {
+    name: "Get first scan free",
+  });
+  await user.click(dashboardTopBannerCta);
+  expect(
+    screen.getByRole("dialog", {
+      name: "⁨Monitor⁩ is currently at capacity",
+    }),
+  ).toBeInTheDocument();
+  const closeButton = screen.getByRole("button", {
+    name: "Skip for now",
+  });
+  await user.click(closeButton);
+  expect(
+    screen.queryByRole("dialog", {
+      name: "⁨Monitor⁩ is currently at capacity",
+    }),
+  ).not.toBeInTheDocument();
+});
+
+it("shows and skips a dialog that informs US users, without Premium, when we hit the broker scan limit if the DisableOneRepScans flag is on", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanNoBreachesDisabledScan,
     Meta,
   );
   render(<ComposedDashboard />);
