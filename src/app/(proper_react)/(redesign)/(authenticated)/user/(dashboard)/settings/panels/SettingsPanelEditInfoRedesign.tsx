@@ -135,8 +135,6 @@ function ProfileInfoSection({
     date_of_birth,
     phone_numbers,
     addresses,
-    city_name,
-    state_code,
   } = profileData;
   const dateOfBirthString = new Date(date_of_birth).toLocaleDateString(
     getLocale(l10n),
@@ -144,6 +142,7 @@ function ProfileInfoSection({
   );
   const additionalNamesCount =
     first_names.length + middle_names.length + last_names.length;
+  const { city, state } = addresses[0];
   return (
     <section className={styles.section}>
       <div>
@@ -194,7 +193,7 @@ function ProfileInfoSection({
             {l10n.getString("settings-details-about-you-location-label")}
           </div>
           <div className={styles.detailContent}>
-            {`${city_name}, ${state_code}`}
+            {`${city}, ${state}`}
             {addresses.length > 1 && (
               <span className={styles.detailMore}>
                 {l10n.getString("settings-details-about-you-more-indicator", {

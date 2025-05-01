@@ -30,7 +30,7 @@ import { InputField } from "../../../../../components/client/InputField";
 import { CONST_DATA_BROKER_PROFILE_DETAIL_ALLOW_LIST } from "../../../../../../constants";
 import { FeatureFlagName } from "../../../../../../db/tables/featureFlags";
 
-const DataTable = ({
+export const DataTable = ({
   header,
   data,
   open,
@@ -427,7 +427,7 @@ export const UserAdmin = ({
   );
 };
 
-async function getSha1(source: string): Promise<string> {
+export async function getSha1(source: string): Promise<string> {
   const msgUint8 = new TextEncoder().encode(source);
   const hashBuffer = await crypto.subtle.digest("SHA-1", msgUint8);
   const hashArray = Array.from(new Uint8Array(hashBuffer));

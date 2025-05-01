@@ -11,10 +11,8 @@ export async function GET(req: NextRequest) {
   try {
     const { searchParams } = new URL(req.url);
     const unsubToken = searchParams.get("token");
-    logger.info("unsubscribe_request_received", { unsubToken });
 
     if (!unsubToken) {
-      logger.error("unsubscribe token not found in url");
       return NextResponse.json(
         {
           success: false,
@@ -28,7 +26,7 @@ export async function GET(req: NextRequest) {
     logger.info("unsubscribe_email_success");
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (e) {
-    logger.error("unsubscribe_email_unsuccessful", {
+    logger.error("unsubscribe_email", {
       exception: e as string,
     });
     return NextResponse.json({ success: false }, { status: 500 });
