@@ -33,14 +33,7 @@ function Popover({ children, offset, state, ...props }: PopoverProps) {
     <Overlay>
       {/* FocusScope is a utility component that traps keyboard focus within its child elements.
       When used in a dialog, it ensures that focus never leaves the dialog until it’s closed. */}
-      <FocusScope
-        contain
-        restoreFocus
-        // autoFocus triggers a React state update on mount,
-        // which causes Jest to throw an "update not wrapped in act(...)" warning.
-        // Hence, we disable autoFocus during tests but keep it enabled otherwise.
-        autoFocus={process.env.NODE_ENV !== "test"}
-      >
+      <FocusScope contain restoreFocus autoFocus>
         <div {...underlayProps} className={styles.underlay} />
         <div
           {...popoverProps}
