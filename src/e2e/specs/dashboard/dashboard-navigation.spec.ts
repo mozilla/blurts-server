@@ -39,7 +39,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Navigation @sm
 
     //testrail's step 1
     await dashboardPage.goToDashboard();
-    await goToHrefOf(dashboardPage.settingsPageLink);
+    await goToHrefOf(dashboardPage.settingsPageNofificationsLink);
     await expect(page).toHaveURL(/.*\/settings.*/);
 
     //testrail's step 2
@@ -47,7 +47,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Navigation @sm
     await expect(page).toHaveURL(/.*\/dashboard.*/);
 
     // testrail's step 3
-    await dashboardPage.goToSettings();
+    await dashboardPage.goToNotificationsSettings();
     await goToHrefOf(dashboardPage.fireFoxMonitorLogoAtag);
     await expect(page).toHaveURL(/.*\/dashboard.*/);
 

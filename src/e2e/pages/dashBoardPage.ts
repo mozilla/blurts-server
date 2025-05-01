@@ -44,7 +44,8 @@ export class DashboardPage {
   readonly monthlyTab: Locator;
 
   readonly dashboardPageLink: Locator;
-  readonly settingsPageLink: Locator;
+  readonly settingsPageNofificationsLink: Locator;
+  readonly settingsPageManageAccountLink: Locator;
   readonly faqsPageLink: Locator;
 
   readonly servicesVpn: Locator;
@@ -236,7 +237,12 @@ export class DashboardPage {
     this.monthlyTab = page.getByText("Monthly", { exact: true });
 
     // nav menu
-    this.settingsPageLink = page.getByRole("link", { name: "Settings" });
+    this.settingsPageNofificationsLink = page.getByRole("link", {
+      name: "Set notifications",
+    });
+    this.settingsPageManageAccountLink = page.getByRole("link", {
+      name: "Manage account",
+    });
     this.dashboardPageLink = page.getByRole("link", { name: "Dashboard" });
 
     this.faqsPageLink = page.getByTitle("Frequently asked questions").first();
@@ -262,7 +268,7 @@ export class DashboardPage {
   dashboardLinks() {
     return {
       // identify expected URLs
-      settingsNavButtonLink: "/user/settings",
+      settingsNotificationNavButtonLink: "/user/settings/notifications",
       resolveDataBreachesNavButtonLink: "/user/dashboard",
       helpAndSupportNavButtonLink:
         "https://support.mozilla.org/kb/firefox-monitor-faq",
@@ -273,9 +279,14 @@ export class DashboardPage {
     await this.page.goto("/user/dashboard");
   }
 
-  async goToSettings() {
-    await this.settingsPageLink.click();
-    await this.page.waitForURL("**/settings");
+  async goToNotificationsSettings() {
+    await this.settingsPageNofificationsLink.click();
+    await this.page.waitForURL("**/settings/notifications");
+  }
+
+  async goToManageAccountSettings() {
+    await this.settingsPageManageAccountLink.click();
+    await this.page.waitForURL("**/settings/manage-account");
   }
 
   async goToDashboard() {
