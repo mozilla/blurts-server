@@ -16,6 +16,11 @@ import {
   UpcomingExpirationEmail,
 } from "../../emails/templates/upcomingExpiration/UpcomingExpirationEmail";
 
+process.on("SIGINT", () => {
+  logger.info("SIGINT received, exiting...");
+  tearDown();
+});
+
 await run();
 
 async function tearDown() {
