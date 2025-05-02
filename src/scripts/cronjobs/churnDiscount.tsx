@@ -15,12 +15,6 @@ import {
   getUnstyledUpcomingExpirationEmail,
   UpcomingExpirationEmail,
 } from "../../emails/templates/upcomingExpiration/UpcomingExpirationEmail";
-import { getFeatureFlagData } from "../../db/tables/featureFlags";
-
-process.on("SIGINT", () => {
-  logger.info("SIGINT received, exiting...");
-  tearDown();
-});
 
 await run();
 
@@ -31,14 +25,7 @@ async function tearDown() {
 }
 
 async function run() {
-  // Using `getFeatureFlagData` instead of `getEnabledFeatureFlags` here to prevent fetching them for every subscriber.
-  const churnFeatureFlag = await getFeatureFlagData("ExpirationNotification");
-  const subscribersToEmail = (await getChurnsToEmail()).filter((subscriber) => {
-    return (
-      churnFeatureFlag?.is_enabled ||
-      churnFeatureFlag?.allow_list?.includes(subscriber.primary_email)
-    );
-  });
+  const subscribersToEmail = await getChurnsToEmail();
 
   await initEmail();
 
