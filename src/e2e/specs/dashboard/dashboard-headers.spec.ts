@@ -71,7 +71,8 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Headers @smoke
     await expect(dashboardPage.fireFoxMonitorLogoImgButton).toBeVisible();
     await expect(dashboardPage.dashboardNavButton).toBeVisible();
     await expect(dashboardPage.exposuresHeading).toBeVisible();
-    await expect(dashboardPage.settingsPageLink).toBeVisible();
+    await expect(dashboardPage.settingsPageNofificationsLink).toBeVisible();
+    await expect(dashboardPage.settingsPageManageAccountLink).toBeVisible();
     await expect(dashboardPage.FAQsNavButton).toBeVisible();
 
     // verify the site header elements

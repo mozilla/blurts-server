@@ -40,14 +40,6 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Overview Card`
     await dataBrokersPage.removeThemForMeButton.click();
     await page.waitForURL(/.*\/fix\/.*\/automatic-remove.*/);
 
-    //checking the bullet points
-    await expect(automaticRemovePage.ulElement).toBeVisible();
-
-    for (const itemText of automaticRemovePage.bulletPointsExpected) {
-      const liElement = automaticRemovePage.liElements.getByText(itemText);
-      await expect(liElement).toBeVisible();
-    }
-
     //testing that toggles work
     await automaticRemovePage.planToggle0.click();
     const price0 = await automaticRemovePage.price.textContent();

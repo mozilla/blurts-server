@@ -44,6 +44,7 @@ export class DashboardPage {
   readonly monthlyTab: Locator;
 
   readonly dashboardPageLink: Locator;
+  readonly settingsPageLink: Locator;
   readonly settingsPageNofificationsLink: Locator;
   readonly settingsPageManageAccountLink: Locator;
   readonly faqsPageLink: Locator;
@@ -136,7 +137,7 @@ export class DashboardPage {
 
     // top nav
     this.fireFoxMonitorLogoImgButton = page.locator(
-      '//a[starts-with(@class, "Shell_homeLink_")]/img',
+      '//a[starts-with(@class, "ShellRedesign_homeLink_")]/img',
     );
     this.fireFoxMonitorLogoAtag = page.locator("nav a:has(> img)");
     this.actionNeededTab = page.getByRole("tab", { name: "Action needed" });
@@ -237,6 +238,9 @@ export class DashboardPage {
     this.monthlyTab = page.getByText("Monthly", { exact: true });
 
     // nav menu
+    this.settingsPageLink = page.getByRole("link", {
+      name: "Settings",
+    });
     this.settingsPageNofificationsLink = page.getByRole("link", {
       name: "Set notifications",
     });

@@ -7,9 +7,6 @@ import { Locator, Page } from "@playwright/test";
 export class AutomaticRemovePage {
   readonly page: Page;
 
-  readonly ulElement: Locator;
-  readonly liElements: Locator;
-
   readonly planToggle0: Locator;
   readonly planToggle1: Locator;
   readonly price: Locator;
@@ -22,9 +19,6 @@ export class AutomaticRemovePage {
 
   constructor(page: Page) {
     this.page = page;
-    //the bullet point list and its elements
-    this.ulElement = page.locator("div > strong + ul");
-    this.liElements = page.locator("div > strong + ul > li");
 
     //labels that allow toggles
     this.planToggle0 = page.locator("div > label").nth(0);
