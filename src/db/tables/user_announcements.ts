@@ -55,6 +55,9 @@ export async function initializeUserAnnouncements(
 ): Promise<UserAnnouncementWithDetails[]> {
   try {
     if (!user?.subscriber) {
+      logger.error(
+        "Failed to initialize announcements: missing or incomplete subscriber object for user",
+      );
       return redirect("/auth/logout");
     }
 
