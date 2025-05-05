@@ -10,15 +10,12 @@ import { redirect } from "next/navigation";
 export async function GET() {
   const session = await getServerSession();
 
-  if (!session?.user?.subscriber?.id) {
+  if (!session?.user?.subscriber) {
     return redirect("/auth/logout");
   }
 
   try {
-    const userAnnouncements = await initializeUserAnnouncements(
-      session.user.subscriber,
-    );
-
+    const userAnnouncements = await initializeUserAnnouncements(session.user);
     return NextResponse.json(userAnnouncements, { status: 200 });
   } catch (error) {
     console.error("Error initializing announcements:", error);

@@ -112,6 +112,7 @@
       align-items: center;
       border-radius: tokens.$border-radius-md;
       padding: tokens.$spacing-sm tokens.$spacing-sm;
+      width: 100%;
 
       &:hover {
         background-color: tokens.$color-purple-10;

@@ -171,9 +171,7 @@ export default async function DashboardPage(props: Props) {
     : false;
   const signInCount = await getSignInCount(session.user.subscriber.id);
 
-  const userAnnouncements = await initializeUserAnnouncements(
-    session.user.subscriber,
-  );
+  const userAnnouncements = await initializeUserAnnouncements(session.user);
 
   return (
     <View
