@@ -70,35 +70,6 @@ declare module "knex/types/tables" {
     "id" | "subscriber_id" | "created_at" | "updated_at"
   >;
 
-  /** @deprecated MNTOR-4191 */
-  interface FeatureFlagRow {
-    name: string;
-    is_enabled: boolean;
-    description?: string;
-    dependencies?: string[];
-    allow_list?: string[];
-    wait_list?: string[];
-    created_at: Date;
-    modified_at: Date;
-    expired_at?: Date;
-    deleted_at?: Date;
-    owner?: string;
-  }
-
-  type FeatureFlagOptionalColumns = Extract<
-    keyof FeatureFlagRow,
-    | "description"
-    | "dependencies"
-    | "allow_list"
-    | "wait_list"
-    | "expired_at"
-    | "owner"
-  >;
-  type FeatureFlagAutoInsertedColumns = Extract<
-    keyof FeatureFlagRow,
-    "name" | "created_at" | "modified_at"
-  >;
-
   interface FeatureFlagViewRow {
     name: string;
     is_enabled: boolean;
@@ -505,21 +476,6 @@ declare module "knex/types/tables" {
         Partial<Omit<AnnouncementRow, "id" | "created_at">> &
           Pick<AnnouncementRow, "updated_at">
       >
-    >;
-
-    /** @deprecated MNTOR-4191 */
-    feature_flags: Knex.CompositeTableType<
-      FeatureFlagRow,
-      // On inserts, auto-generated columns cannot be set, and nullable columns are optional:
-      WritableDateColumns<
-        Omit<
-          FeatureFlagRow,
-          FeatureFlagAutoInsertedColumns | FeatureFlagOptionalColumns
-        > &
-          Partial<Pick<FeatureFlagRow, FeatureFlagOptionalColumns>>
-      >,
-      // On updates, don't allow updating the ID and created date; all other fields are optional:
-      WritableDateColumns<Partial<Omit<FeatureFlagRow, "name" | "created_at">>>
     >;
 
     feature_flag_view: Knex.CompositeTableType<
