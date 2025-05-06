@@ -32,6 +32,14 @@ settings-email-number-of-breaches-info =
 
 settings-delete-monitor-free-account-title = Kkes amiḍan { -brand-monitor }
 settings-delete-monitor-free-account-cta-label = Kkes amiḍan
+settings-delete-monitor-free-account-dialog-title = Amiḍan-ik { -brand-monitor } ad yeettwakkes i lebda
 settings-delete-monitor-free-account-dialog-cta-label = Kkes amiḍan
 settings-delete-monitor-free-account-dialog-cancel-button-label = Beddleɣ ṛṛay, uɣal ɣer deffir
+settings-delete-monitor-account-confirmation-toast-label-2 = Amiḍan-ik { -brand-monitor } dayen yettwakkes.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Zgel
+
+## Monthly Monitor Report
+
+
+## Settings page redesign
+
