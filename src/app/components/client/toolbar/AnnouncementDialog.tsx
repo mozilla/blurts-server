@@ -185,7 +185,6 @@ export const AnnouncementDialog = ({
           </span>
         )}
       </button>
-
       {triggerState.isOpen && (
         <Popover
           popoverRef={popoverRef}

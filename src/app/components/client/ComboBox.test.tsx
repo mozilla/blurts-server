@@ -6,11 +6,20 @@ import { it, expect } from "@jest/globals";
 import { render, screen } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
 import { composeStory } from "@storybook/react";
+import { type ReactNode } from "react";
 import { axe } from "jest-axe";
 import Meta, {
   TextComboBoxEmpty,
   TextComboBoxRequired,
 } from "./stories/ComboBox.stories";
+
+jest.mock("react-aria", () => ({
+  ...jest.requireActual("react-aria"),
+  // FocusScope's autoFocus triggers a React state update on mount,
+  // which causes Jest to throw an "update not wrapped in act(...)" warning.
+  // Hence, we disable FocusScope behaviour during tests..
+  FocusScope: ({ children }: { children: ReactNode }) => <>{children}</>,
+}));
 
 it("passes the axe accessibility test suite if empty", async () => {
   const ComposedTextComboBox = composeStory(TextComboBoxEmpty, Meta);
