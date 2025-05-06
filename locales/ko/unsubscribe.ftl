@@ -18,3 +18,4 @@ unsubscribe-success-cta = { -brand-monitor }에 로그인
 # Error warning
 
 unsubscription-failed = 구독 취소에 실패했습니다. <try_again_link>다시 시도하세요.</try_again_link>
+unsubscription-failed-2 = 구독을 해지하지 못했습니다.
