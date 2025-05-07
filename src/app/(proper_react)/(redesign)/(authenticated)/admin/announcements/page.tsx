@@ -9,6 +9,7 @@ import { getAllAnnouncements } from "../../../../../../db/tables/announcements";
 import { AnnouncementsAdmin } from "./AnnouncementsAdmin";
 import { SubscriptionBillingProvider } from "../../../../../../contextProviders/subscription-billing-context";
 import { getSubscriptionBillingAmount } from "../../../../../functions/server/getPremiumSubscriptionInfo";
+import { getFluentStrings } from "./getFluentStrings";
 
 export default async function DevPage() {
   const session = await getServerSession();
@@ -23,10 +24,14 @@ export default async function DevPage() {
   }
 
   const announcements = await getAllAnnouncements();
+  const fluentStrings = await getFluentStrings();
 
   return (
     <SubscriptionBillingProvider value={billing}>
-      <AnnouncementsAdmin announcements={announcements} />
+       <AnnouncementsAdmin
+      announcements={announcements}
+      fluentStrings={fluentStrings}
+    />
     </SubscriptionBillingProvider>
   );
 }
