@@ -31,7 +31,7 @@ const PremiumDataClassDetails = (props: PremiumDataClassDetailsProps) => {
     return null;
   }
   if (dataBrokerDataType === "addresses") {
-    return exposure.addresses.map(
+    return (exposure.addresses ?? []).map(
       ({ city, state, street, zip }, index: number) => (
         <li key={`${props.dataBrokerDataType}-${index}`}>
           {street}, {city}, {String(state)}, {zip}
@@ -44,9 +44,11 @@ const PremiumDataClassDetails = (props: PremiumDataClassDetailsProps) => {
     dataBrokerDataType === "phones" ||
     dataBrokerDataType === "relatives"
   ) {
-    return exposure[dataBrokerDataType].map((item: string, index: number) => (
-      <li key={`${props.dataBrokerDataType}-${index}`}>{item}</li>
-    ));
+    return (exposure[dataBrokerDataType] ?? []).map(
+      (item: string, index: number) => (
+        <li key={`${props.dataBrokerDataType}-${index}`}>{item}</li>
+      ),
+    );
     // TODO: MNTOR-2617 Add unit test when changing this code:
     /* c8 ignore next 3 */
   } else {

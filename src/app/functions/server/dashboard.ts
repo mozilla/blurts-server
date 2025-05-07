@@ -8,6 +8,8 @@ import { RemovalStatusMap } from "../universal/scanResult";
 import { SubscriberBreach } from "../../../utils/subscriberBreaches";
 import { DataBrokerRemovalStatusMap } from "../universal/dataBroker";
 import { FeatureFlagName } from "../../../db/tables/featureFlags";
+import { ScanResult } from "./moscary";
+import { isOneRepScanResultDataBroker } from "../../functions/universal/onerep";
 
 export type DataPoints = {
   // shared
@@ -96,7 +98,7 @@ export const dataClassKeyMap: Record<keyof DataPoints, string> = {
 };
 
 export function getDashboardSummary(
-  scannedResults: OnerepScanResultDataBrokerRow[],
+  scannedResults: OnerepScanResultDataBrokerRow[] | ScanResult[],
   subscriberBreaches: SubscriberBreach[],
   enabledFeatureFlags?: FeatureFlagName[],
 ): DashboardSummary {
@@ -211,7 +213,8 @@ export function getDashboardSummary(
       // If the flag is disabled, include the data.
       // If the flag is enabled, include the data only if the broker status is not
       const isRemovalUnderMaintenance =
-        r.broker_status === DataBrokerRemovalStatusMap.RemovalUnderMaintenance;
+        (isOneRepScanResultDataBroker(r) ? r.broker_status : r.status) ===
+        DataBrokerRemovalStatusMap.RemovalUnderMaintenance;
 
       // The condition ensures that removal under maintenance is only considered when the flag is enabled.
       /* c8 ignore next 3 */
@@ -230,47 +233,55 @@ export function getDashboardSummary(
       }
       // total data points: add email, phones, addresses, relatives, full name (1)
       const dataPointsIncrement =
-        r.emails.length +
-        r.phones.length +
-        r.addresses.length +
-        r.relatives.length;
+        (r.emails ?? []).length +
+        (r.phones ?? []).length +
+        (r.addresses ?? []).length +
+        (r.relatives ?? []).length;
       summary.totalDataPointsNum += dataPointsIncrement;
       summary.dataBrokerTotalDataPointsNum += dataPointsIncrement;
 
       // for all data points: email, phones, addresses, relatives, full name (1)
-      summary.allDataPoints.emailAddresses += r.emails.length;
-      summary.allDataPoints.phoneNumbers += r.phones.length;
-      summary.allDataPoints.addresses += r.addresses.length;
-      summary.allDataPoints.familyMembers += r.relatives.length;
+      summary.allDataPoints.emailAddresses += (r.emails ?? []).length;
+      summary.allDataPoints.phoneNumbers += (r.phones ?? []).length;
+      summary.allDataPoints.addresses += (r.addresses ?? []).length;
+      summary.allDataPoints.familyMembers += (r.relatives ?? []).length;
 
       if (isInProgress) {
         if (countRemovalUnderMaintenanceData) {
-          summary.inProgressDataPoints.emailAddresses += r.emails.length;
-          summary.inProgressDataPoints.phoneNumbers += r.phones.length;
-          summary.inProgressDataPoints.addresses += r.addresses.length;
-          summary.inProgressDataPoints.familyMembers += r.relatives.length;
+          summary.inProgressDataPoints.emailAddresses += (
+            r.emails ?? []
+          ).length;
+          summary.inProgressDataPoints.phoneNumbers += (r.phones ?? []).length;
+          summary.inProgressDataPoints.addresses += (r.addresses ?? []).length;
+          summary.inProgressDataPoints.familyMembers += (
+            r.relatives ?? []
+          ).length;
           summary.dataBrokerInProgressDataPointsNum += dataPointsIncrement;
         }
       }
 
       // for fixed data points: email, phones, addresses, relatives, full name (1)
       if (isAutoFixed) {
-        summary.fixedDataPoints.emailAddresses += r.emails.length;
-        summary.fixedDataPoints.phoneNumbers += r.phones.length;
-        summary.fixedDataPoints.addresses += r.addresses.length;
-        summary.fixedDataPoints.familyMembers += r.relatives.length;
+        summary.fixedDataPoints.emailAddresses += (r.emails ?? []).length;
+        summary.fixedDataPoints.phoneNumbers += (r.phones ?? []).length;
+        summary.fixedDataPoints.addresses += (r.addresses ?? []).length;
+        summary.fixedDataPoints.familyMembers += (r.relatives ?? []).length;
         summary.dataBrokerAutoFixedDataPointsNum += dataPointsIncrement;
       }
 
       if (isManuallyResolved) {
-        summary.manuallyResolvedDataBrokerDataPoints.emailAddresses +=
-          r.emails.length;
-        summary.manuallyResolvedDataBrokerDataPoints.phoneNumbers +=
-          r.phones.length;
-        summary.manuallyResolvedDataBrokerDataPoints.addresses +=
-          r.addresses.length;
-        summary.manuallyResolvedDataBrokerDataPoints.familyMembers +=
-          r.relatives.length;
+        summary.manuallyResolvedDataBrokerDataPoints.emailAddresses += (
+          r.emails ?? []
+        ).length;
+        summary.manuallyResolvedDataBrokerDataPoints.phoneNumbers += (
+          r.phones ?? []
+        ).length;
+        summary.manuallyResolvedDataBrokerDataPoints.addresses += (
+          r.addresses ?? []
+        ).length;
+        summary.manuallyResolvedDataBrokerDataPoints.familyMembers += (
+          r.relatives ?? []
+        ).length;
         summary.dataBrokerManuallyResolvedDataPointsNum += dataPointsIncrement;
       }
     });

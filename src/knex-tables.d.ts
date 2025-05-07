@@ -164,7 +164,7 @@ declare module "knex/types/tables" {
     monthly_monitor_report_at: null | Date;
     monthly_monitor_report: boolean;
     breach_resolution: BreachResolution;
-    moscary_id: UUID;
+    moscary_id: null | UUID;
     onerep_profile_id: null | number;
     sign_in_count: null | number;
     email_addresses: SubscriberEmail[];
@@ -189,6 +189,7 @@ declare module "knex/types/tables" {
     | "monthly_monitor_report_at"
     | "monthly_monitor_report"
     | "breach_resolution"
+    | "moscary_id"
     | "onerep_profile_id"
     | "email_addresses"
     | "first_broker_removal_email_sent"
