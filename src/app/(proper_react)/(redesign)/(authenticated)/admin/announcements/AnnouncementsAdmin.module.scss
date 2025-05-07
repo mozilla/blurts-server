@@ -53,6 +53,13 @@
         border-bottom: 1px solid tokens.$color-grey-10;
         padding: 12px 0;
         margin-bottom: tokens.$spacing-sm;
+
+        &:first-child {
+          // dialog-empty-state is the fallback announcement,
+          // and should always be the first item in the
+          // announcement string list within the ftl file
+          opacity: 30%;
+        }
       }
 
       .stringId {
