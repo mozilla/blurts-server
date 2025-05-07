@@ -6,6 +6,7 @@
 
 .container {
   padding: tokens.$layout-xs;
+
   .tabBar {
     display: flex;
     margin-bottom: 16px;
@@ -14,38 +15,52 @@
   .tabButton {
     padding: 8px 16px;
     border: none;
-    background: #f0f0f0;
+    background: tokens.$color-grey-10;
     cursor: pointer;
     margin-right: 8px;
     border-radius: 4px 4px 0 0;
-  }
 
-  .tabButton:hover {
-    background: #e0e0e0;
+    &:hover {
+      background: tokens.$color-grey-20;
+    }
   }
 
   .activeTab {
-    background: #ffffff;
-    border-bottom: 2px solid #0070f3;
+    background: tokens.$color-white;
+    border-bottom: 2px solid tokens.$color-purple-70;
     font-weight: bold;
   }
 
   .stringsView {
     background: #ffffff;
     padding: 16px;
-    border: 1px solid #ddd;
+    border: 1px solid tokens.$color-grey-20;
     border-radius: 0 4px 4px 4px;
-  }
 
-  .stringCard {
-    border-bottom: 1px solid #eee;
-    padding: 12px 0;
-  }
+    .stringsViewHeader {
+      display: flex;
+      flex-direction: row;
+      gap: tokens.$spacing-md;
+    }
 
-  .stringId {
-    font-family: monospace;
-    color: #333;
-    margin-bottom: 4px;
+    ul {
+      list-style-type: none;
+      margin-top: tokens.$spacing-md;
+      margin-left: 0;
+      padding-left: 0;
+
+      .stringCard {
+        border-bottom: 1px solid tokens.$color-grey-10;
+        padding: 12px 0;
+        margin-bottom: tokens.$spacing-sm;
+      }
+
+      .stringId {
+        font-family: monospace;
+        font-weight: 700;
+        margin-bottom: 4px;
+      }
+    }
   }
 
   .wrapper {

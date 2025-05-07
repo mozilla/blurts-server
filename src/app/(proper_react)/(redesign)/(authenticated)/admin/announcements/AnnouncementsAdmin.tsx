@@ -182,6 +182,7 @@ export const AnnouncementsAdmin = (props: Props) => {
   const [activeTab, setActiveTab] = useState<"announcements" | "strings">(
     "announcements",
   );
+  const [searchQuery, setSearchQuery] = useState("");
   return (
     <div className={styles.container}>
       <div className={styles.tabBar}>
@@ -497,37 +498,57 @@ export const AnnouncementsAdmin = (props: Props) => {
       ) : (
         <>
           <div className={styles.stringsView}>
-            <h2>Fluent Strings</h2>
+            <span className={styles.stringsViewHeader}>
+              {" "}
+              <h2>Fluent Strings</h2>
+              <input
+                type="text"
+                className={styles.searchInput}
+                placeholder="Search strings..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+            </span>
             <ul>
-              {Object.entries(props.fluentStrings).map(([id, entry]) => {
-                const isUsed = props.announcements.some(
-                  (ann) => ann.announcement_id === id,
-                );
+              {Object.entries(props.fluentStrings)
+                .filter(([id, entry]) => {
+                  const q = searchQuery.toLowerCase();
+                  return (
+                    id.toLowerCase().includes(q) ||
+                    entry.title?.toLowerCase().includes(q) ||
+                    entry.description?.toLowerCase().includes(q) ||
+                    entry.ctaLabel?.toLowerCase().includes(q)
+                  );
+                })
+                .map(([id, entry]) => {
+                  const isUsed = props.announcements.some(
+                    (ann) => ann.announcement_id === id,
+                  );
 
-                return (
-                  <li key={id} className={styles.stringCard}>
-                    <h3 className={styles.stringId}>
-                      {id}{" "}
-                      {isUsed && <span className={styles.checkmark}>✅</span>}
-                    </h3>
-                    {entry.title && (
-                      <p>
-                        <strong>Title:</strong> {entry.title}
-                      </p>
-                    )}
-                    {entry.description && (
-                      <p>
-                        <strong>Description:</strong> {entry.description}
-                      </p>
-                    )}
-                    {entry.ctaLabel && (
-                      <p>
-                        <strong>CTA Label:</strong> {entry.ctaLabel}
-                      </p>
-                    )}
-                  </li>
-                );
-              })}
+                  return (
+                    <li key={id} className={styles.stringCard}>
+                      <h3 className={styles.stringId}>
+                        {id}{" "}
+                        {isUsed && <span className={styles.checkmark}>✅</span>}
+                      </h3>
+                      {entry.title && (
+                        <p>
+                          <strong>Title:</strong> {entry.title}
+                        </p>
+                      )}
+                      {entry.description && (
+                        <p>
+                          <strong>Description:</strong> {entry.description}
+                        </p>
+                      )}
+                      {entry.ctaLabel && (
+                        <p>
+                          <strong>CTA Label:</strong> {entry.ctaLabel}
+                        </p>
+                      )}
+                    </li>
+                  );
+                })}
             </ul>
           </div>
         </>

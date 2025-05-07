@@ -14,7 +14,6 @@ import type {
   Placeable,
 } from "@fluent/syntax";
 
-// Define the structure of each announcement group
 type AnnouncementGroup = {
   title?: string;
   description?: string;
@@ -25,7 +24,6 @@ export type GroupedFluentAnnouncements = {
   [announcementId: string]: AnnouncementGroup;
 };
 
-// This function runs server-side and returns all Fluent key-value pairs as grouped objects
 export async function getFluentStrings(): Promise<GroupedFluentAnnouncements> {
   const ftlPath = path.resolve("locales-pending/announcements.ftl");
   const raw = fs.readFileSync(ftlPath, "utf8");
