@@ -15,13 +15,17 @@ import { ScanResultCard } from "./ScanResultCard";
 import { SubscriberBreachCard } from "./SubscriberBreachCard";
 import { FeatureFlagName } from "../../../../db/tables/featureFlags";
 import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
+import { ScanResult } from "../../../functions/server/moscary";
 
-export type Exposure = OnerepScanResultDataBrokerRow | SubscriberBreach;
+export type Exposure =
+  | OnerepScanResultDataBrokerRow
+  | ScanResult
+  | SubscriberBreach;
 
 // Typeguard function
 export function isScanResult(
   obj: Exposure,
-): obj is OnerepScanResultDataBrokerRow {
+): obj is OnerepScanResultDataBrokerRow | ScanResult {
   return (obj as OnerepScanResultRow).data_broker !== undefined; // only ScanResult has an instance of data_broker
 }
 

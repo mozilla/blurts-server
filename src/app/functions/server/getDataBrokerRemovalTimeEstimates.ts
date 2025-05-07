@@ -5,6 +5,7 @@
 import { OnerepScanResultRow } from "knex/types/tables";
 import { LatestOnerepScanData } from "../../../db/tables/onerep_scans";
 import { logger } from "@sentry/utils";
+import { ScanData } from "./moscary";
 
 /**
  * @property {OnerepScanResultRow["data_broker"]} d - Data broker domain.
@@ -16,7 +17,7 @@ export interface DataBrokerRemovalTime {
 }
 
 export function getDataBrokerRemovalTimeEstimates(
-  scanData: LatestOnerepScanData,
+  scanData: LatestOnerepScanData | ScanData,
 ): DataBrokerRemovalTime[] {
   try {
     const removalTimeData = JSON.parse(
