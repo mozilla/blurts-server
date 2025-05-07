@@ -4,6 +4,7 @@
 
 import { Knex } from "knex";
 import { Profile } from "next-auth";
+import type { UUID } from "node:crypto";
 import { Scan } from "./app/functions/server/onerep";
 import { ISO8601DateString } from "./utils/parse";
 import { StateAbbr } from "./utils/states";
@@ -163,6 +164,7 @@ declare module "knex/types/tables" {
     monthly_monitor_report_at: null | Date;
     monthly_monitor_report: boolean;
     breach_resolution: BreachResolution;
+    moscary_id: UUID;
     onerep_profile_id: null | number;
     sign_in_count: null | number;
     email_addresses: SubscriberEmail[];
