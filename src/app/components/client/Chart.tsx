@@ -20,6 +20,7 @@ import { WaitlistDialog } from "./SubscriberWaitlistDialog";
 import { useTelemetry } from "../../hooks/useTelemetry";
 import {
   CONST_MAX_NUM_ADDRESSES,
+  CONST_MAX_NUM_ADDRESSES_PLUS,
   CONST_ONEREP_MAX_SCANS_THRESHOLD,
 } from "../../../constants";
 import { VisuallyHidden } from "../server/VisuallyHidden";
@@ -108,7 +109,9 @@ export const DoughnutChart = (props: Props) => {
             ? "modal-active-number-of-exposures-part-one-premium"
             : "modal-active-number-of-exposures-part-one-all",
           {
-            limit: CONST_MAX_NUM_ADDRESSES,
+            limit: props.isPremiumUser
+              ? CONST_MAX_NUM_ADDRESSES_PLUS
+              : CONST_MAX_NUM_ADDRESSES,
           },
         )}
       </p>
