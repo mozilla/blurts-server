@@ -28,7 +28,8 @@ export const CtaInputBanner = (props: LandingPageProps) => {
             )}
           </p>
         </div>
-        {props.enabledFeatureFlags.includes("DisableOneRepScans") ||
+        {(props.enabledFeatureFlags.includes("DisableOneRepScans") &&
+          props.eligibleForPremium) ||
         (props.eligibleForPremium && props.scanLimitReached) ? (
           <ScanLimit />
         ) : (

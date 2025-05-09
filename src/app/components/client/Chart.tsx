@@ -153,13 +153,14 @@ export const DoughnutChart = (props: Props) => {
   );
 
   const getPromptContent = () => {
-    if (!props.scanInProgress && props.isEligibleForFreeScan) {
+    if (!props.scanInProgress && props.isEligibleForPremium) {
       return (
         <>
           <p>
             {l10n.getString("exposure-chart-returning-user-upgrade-prompt")}
           </p>
           {!props.enabledFeatureFlags.includes("DisableOneRepScans") &&
+          props.isEligibleForPremium &&
           (typeof props.totalNumberOfPerformedScans === "undefined" ||
             props.totalNumberOfPerformedScans <
               CONST_ONEREP_MAX_SCANS_THRESHOLD) ? (

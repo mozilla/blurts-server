@@ -261,7 +261,8 @@ export const PricingPlanList = (props: Props & ScanLimitProp) => {
           <p>
             <strong>{roundedPriceFormatter.format(0)}</strong>
           </p>
-          {props.enabledFeatureFlags.includes("DisableOneRepScans") ||
+          {(props.enabledFeatureFlags.includes("DisableOneRepScans") &&
+            props.eligibleForPremium) ||
           props.scanLimitReached ? (
             <ScanLimit />
           ) : (
