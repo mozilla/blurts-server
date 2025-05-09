@@ -13,6 +13,7 @@ import { LogoBlock } from "./components/LogoBlock";
 import { Faq } from "./components/Faq";
 import { CtaInputBanner } from "./components/CtaInputBanner";
 import { PricingPlans } from "./components/PricingPlans";
+import { PricingPlansWithBundle } from "./components/PricingPlansWithBundle";
 import { FeatureFlagName } from "../../../../../db/tables/featureFlags";
 
 export type LandingPageProps = {
@@ -37,7 +38,11 @@ export const View = (props: LandingPageProps) => {
           <InfoBlock {...props} />
         </section>
         <section>
-          <PricingPlans {...props} />
+          {props.enabledFeatureFlags.includes("PrivacyProductsBundle") ? (
+            <PricingPlansWithBundle {...props} />
+          ) : (
+            <PricingPlans {...props} />
+          )}
         </section>
         <section className={styles.hasBackground}>
           <LogoBlock l10n={props.l10n} />

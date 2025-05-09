@@ -11,7 +11,12 @@ if (!process.env.STORYBOOK) {
   import("./notInClientComponent");
 }
 
-type SubscriptionPeriod = "monthly" | "yearly";
+type SubscriptionPeriod = "monthly" | "yearly" | "bundle";
+
+export type BundleBillingAmount = {
+  yearly: number;
+  individual: number;
+};
 
 interface GetPremiumSubscriptionUrlParams {
   type: SubscriptionPeriod;
@@ -39,7 +44,11 @@ export function getPremiumSubscriptionUrl({
   return `${subscriptionUrl}/products/${productId}?plan=${planId}`;
 }
 
-type SubscriptionBillingAmount = Record<SubscriptionPeriod, number>;
+type SubscriptionBillingAmount = Record<
+  Exclude<SubscriptionPeriod, "bundle">,
+  number
+> &
+  Record<"bundle", BundleBillingAmount>;
 
 export function getSubscriptionBillingAmount(): SubscriptionBillingAmount {
   return {
@@ -49,5 +58,13 @@ export function getSubscriptionBillingAmount(): SubscriptionBillingAmount {
     monthly: parseFloat(
       process.env.SUBSCRIPTION_BILLING_AMOUNT_MONTHLY_US as string,
     ),
+    bundle: {
+      individual: parseFloat(
+        process.env.SUBSCRIPTION_BILLING_AMOUNT_BUNDLE_INDIVIDUAL_US as string,
+      ),
+      yearly: parseFloat(
+        process.env.SUBSCRIPTION_BILLING_AMOUNT_BUNDLE_YEARLY_US as string,
+      ),
+    },
   };
 }

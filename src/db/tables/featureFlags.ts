@@ -74,6 +74,7 @@ export const featureFlagNames = [
   "EditScanProfileDetails",
   "SubPlat3",
   "Announcements",
+  "PrivacyProductsBundle",
 ] as const;
 
 export const adminOnlyFlags: FeatureFlagName[] = ["CustomDataBrokers"];

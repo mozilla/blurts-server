@@ -53,12 +53,34 @@ landing-redesign-info-block-cta-label = Get your free scan
 
 landing-redesign-pricing-plans-section-title = Choose your level of protection
 landing-redesign-pricing-plans-section-description = Your privacy is our priority, so data breach monitoring is always free. For more robust protection, { -brand-monitor-plus } includes continuous automatic removal of your personal information.
+landing-redesign-pricing-plans-bundle-section-description = 30-day money-back guarantee (first-time customers only)
 landing-redesign-pricing-plans-cards-title = Pricing plans
+
+#   $yearlyPrice (string) - annual plan’s price in total, including currency, e.g. "$13.37"
+landing-redesign-pricing-plans-card-cta-yearly-billing-sum = { $yearlyPrice } billed yearly
+# There is not much room in the UI for this string:
+# Abbreviating “month” with “mo”.
+# Variables:
+#   $monthlyPrice (string) - monthly plan’s price, including currency, e.g. "$13.37"
+landing-redesign-pricing-plans-card-cta-monthly = { $monthlyPrice }/mo
+landing-redesign-pricing-plans-card-cta-label = Get started
+
+landing-redesign-pricing-plans-card-bundle-label = Best value, save 45%
+landing-redesign-pricing-plans-card-bundle-title = { -product-name-privacy-products-bundle }
+landing-redesign-pricing-plans-card-bundle-subtitle = 3 privacy tools, 1 price
+landing-redesign-pricing-plans-bundle-item-mozilla-vpn-title = { -brand-mozilla-vpn }
+landing-redesign-pricing-plans-bundle-item-mozilla-vpn-description = Online activity protection
+landing-redesign-pricing-plans-bundle-item-monitor-plus-title = { -brand-monitor-plus }
+landing-redesign-pricing-plans-bundle-item-monitor-plus-description = Data broker protection
+landing-redesign-pricing-plans-bundle-item-relay-premium-title = { -brand-relay-premium }
+landing-redesign-pricing-plans-bundle-item-relay-premium-description = Unlimited email masks for spam protection
 
 landing-redesign-pricing-plans-card-plus-label = Recommended
 landing-redesign-pricing-plans-card-plus-title = { -brand-monitor-plus }
 landing-redesign-pricing-plans-card-plus-subtitle = Automatic data removal requests
 landing-redesign-pricing-plans-card-plus-cta-label = Get { -brand-monitor-plus }
+landing-redesign-pricing-plans-card-plus-included-features-label = Everything in Monitor
+
 # Variables:
 # $data_broker_sites_total_num is the total number of data broker sites available to scan. It will always be more than 1.
 landing-redesign-pricing-plans-card-plus-feature-item-one = {
@@ -74,19 +96,21 @@ landing-redesign-pricing-plans-card-plus-feature-item-five = <b>Save { $discount
 # There is not much room in the UI for this string:
 # Abbreviating “month” with “mo”.
 # Variables:
-#   $monthlyPrice (string) - annual plan's price per month, including currency, e.g. "$13.37"
+#   $monthlyPrice (string) - annual plan’s price per month, including currency, e.g. "$13.37"
 landing-redesign-pricing-plans-card-plus-cta-yearly = { $monthlyPrice }/mo
 # Variables:
-#   $yearlyPrice (string) - annual plan's price in total, including currency, e.g. "$13.37"
+#   $yearlyPrice (string) - annual plan’s price in total, including currency, e.g. "$13.37"
 landing-redesign-pricing-plans-card-plus-cta-yearly-sum = { $yearlyPrice } total
+# Variables:
 # There is not much room in the UI for this string:
 # Abbreviating “month” with “mo”.
 # Variables:
-#   $monthlyPrice (string) - monthly plan's price, including currency, e.g. "$13.37"
+#   $monthlyPrice (string) - monthly plan’s price, including currency, e.g. "$13.37"
 landing-redesign-pricing-plans-card-plus-cta-monthly = { $monthlyPrice }/mo
 
 landing-redesign-pricing-plans-card-free-title = { -brand-monitor }
 landing-redesign-pricing-plans-card-free-subtitle = Free breach alerts
+landing-redesign-pricing-plans-card-free-price-label = Free
 landing-redesign-pricing-plans-card-free-cta-label = Get { -brand-monitor } (Free)
 # Variables:
 # $data_broker_sites_total_num is the total number of data broker sites available to scan. It will always be more than 1.

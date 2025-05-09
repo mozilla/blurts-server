@@ -1,0 +1,18 @@
+@use "../../../../../tokens";
+
+.header,
+.content {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  max-width: tokens.$content-xl;
+}
+
+.header {
+  gap: tokens.$layout-xs;
+  text-align: center;
+}
+
+.content {
+  gap: tokens.$layout-lg;
+}
