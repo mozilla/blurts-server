@@ -80,3 +80,13 @@ export const LandingRedesignUsScanLimit: Story = {
     scanLimitReached: true,
   },
 };
+
+export const LandingRedesignUsDisableOneRepScans: Story = {
+  name: "US visitors - Disable OneRep Scans",
+  args: {
+    eligibleForPremium: true,
+    countryCode: "us",
+    scanLimitReached: false,
+    enabledFeatureFlags: ["DisableOneRepScans"],
+  },
+};
