@@ -88,6 +88,7 @@ export const Button = (props: ButtonProps) => {
       {...buttonProps}
       ref={buttonRef as RefObject<HTMLButtonElement | null>}
       className={classes}
+      disabled={disabled}
     >
       {
         /* c8 ignore next */

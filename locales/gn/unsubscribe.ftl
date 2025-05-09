@@ -17,3 +17,4 @@ unsubscribe-success-cta = Ejuaju { -brand-monitor } ndive
 # Error warning
 
 unsubscription-failed = Ndoikói nemboheraguapy’o. <try_again_link>Eha’ã jey.</try_again_link>
+unsubscription-failed-2 = Ndoikói ñemboheraguapy’o.

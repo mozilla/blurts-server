@@ -18,3 +18,4 @@ unsubscribe-success-cta = Logg inn på { -brand-monitor }
 # Error warning
 
 unsubscription-failed = Klarte ikkje å avslutte abonnementet. <try_again_link>Prøv på nytt.</try_again_link>
+unsubscription-failed-2 = Klarte ikkje å avslutte abonnementet.

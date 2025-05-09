@@ -72,22 +72,42 @@ menu = കുറിപ്പടിക്കട്ട
 
 ##
 
+# A status indicator that appears in the top right corner of new breach cards
+new-breach = പുതിയതു്
 
 ##
 
+# “account” can be localized, “Mozilla” must be treated as a brand,
+# and kept in English.
+-brand-mozilla-account = മോസില്ല അക്കൗണ്ടു്
+open-in-new-tab-alt = കണ്ണി പുതിയ ടാബില്‍ തുറക്കുക
 
 ## Search Engine Optimization
 
 
 ## Header
 
+# Deprecated
+brand-fx-monitor = { -brand-fx-monitor }
 sign-in = പ്രവേശിക്കുക
+brand-mozilla-monitor = { -brand-fx-monitor }
 
 ## Site navigation
 
+mobile-menu-label = പ്രധാന കുറിപ്പടിക്കട്ട
+main-nav-button-collapse-label = കുറിപ്പടി ചുരുക്കുക
+main-nav-button-collapse-tooltip = കുറിപ്പടി ചുരുക്കുക
+main-nav-button-expand-label = കുറിപ്പടി വലുതാക്കുക
+main-nav-button-expand-tooltip = കുറിപ്പടി വലുതാക്കുക
+main-nav-label = വഴിക്കാട്ടൽവ്യവസ്ഥ
+main-nav-link-home-label = പൂമുറ്റം
+main-nav-link-settings-label = ക്രമീകരണങ്ങൾ
+main-nav-link-faq-label = പലപ്പോഴും കണ്ടുവരുന്ന ചോദ്യങ്ങള്‍
+main-nav-link-faq-tooltip = പതിവു ചോദ്യങ്ങള്‍
 
 ## User menu
 
+user-menu-trigger-tooltip = രൂപരേഖ
 user-menu-settings-label = ക്രമീകരണങ്ങള്‍
 user-menu-help-label = തുണയും പിന്തുണയും
 user-menu-signout-label = പുറത്തുകടക്കുക
@@ -99,9 +119,14 @@ mozilla = { -brand-mozilla }
 terms-of-service = സേവന നിബന്ധനകള്‍
 privacy-notice = സ്വകാര്യതാ അറിയിപ്പു്
 github = { -brand-github }
+footer-external-link-faq-label = പലപ്പോഴും കണ്ടുവരുന്ന ചോദ്യങ്ങള്‍
+footer-external-link-faq-tooltip = പതിവു ചോദ്യങ്ങള്‍
 
 ## Error page
 
+# Variables:
+#   $errorCode (number) - "404"
+error-page-error-404-title = { $errorCode } താൾ കണ്ടെത്താൻ പറ്റിയില്ല
 error-page-error-404-cta-button = തിരിച്ചു്
 # Variables:
 #   $errorCode (number) - the status code of the error, e.g. 403

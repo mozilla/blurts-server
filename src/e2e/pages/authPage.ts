@@ -10,7 +10,6 @@ export class AuthPage {
   readonly page: Page;
   readonly emailInputField: Locator;
   readonly passwordInputField: Locator;
-  readonly passwordConfirmInputField: Locator;
   readonly continueButton: Locator;
   readonly ageInputField: Locator;
   readonly verifyCodeInputField: Locator;
@@ -20,7 +19,6 @@ export class AuthPage {
     this.page = page;
     this.emailInputField = page.locator('input[name="email"]');
     this.passwordInputField = page.locator('[type="password"]').nth(0);
-    this.passwordConfirmInputField = page.locator('[type="password"]').nth(1);
     this.ageInputField = page.getByLabel("How old are you?");
     this.continueButton = page.locator('[type="submit"]').first();
     this.verifyCodeInputField = page.locator("div.card input");
@@ -59,9 +57,6 @@ export class AuthPage {
   async signUp(email: string, page: Page) {
     await this.enterEmail(email);
     await this.passwordInputField.fill(
-      process.env.E2E_TEST_ACCOUNT_PASSWORD as string,
-    );
-    await this.passwordConfirmInputField.fill(
       process.env.E2E_TEST_ACCOUNT_PASSWORD as string,
     );
     await this.ageInputField.fill("31");

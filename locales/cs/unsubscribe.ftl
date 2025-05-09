@@ -18,3 +18,4 @@ unsubscribe-success-cta = Přihlásit se do { -brand-monitor(case: "gen") }
 # Error warning
 
 unsubscription-failed = Odhlášení se nezdařilo. <try_again_link>Zkuste to znovu.</try_again_link>
+unsubscription-failed-2 = Odhlášení se nezdařilo.

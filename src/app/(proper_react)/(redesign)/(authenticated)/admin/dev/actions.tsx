@@ -96,9 +96,7 @@ export async function triggerManualProfileScan(onerepProfileId: number) {
   if (
     !session?.user?.email ||
     !isAdmin(session.user.email) ||
-    // only allow admins to trigger a scan for their own profile in production
-    (process.env.APP_ENV === "production" &&
-      session.user.subscriber?.onerep_profile_id !== onerepProfileId)
+    process.env.APP_ENV === "production"
   ) {
     return notFound();
   }

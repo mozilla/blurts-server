@@ -61,3 +61,13 @@ settings-delete-monitor-account-confirmation-toast-dismiss-label = סגירה
 
 settings-alert-preferences-allow-monthly-monitor-report-title = הדו״ח החודשי של { -brand-monitor }
 settings-alert-preferences-allow-monthly-monitor-report-subtitle = עדכון חודשי על חשיפות חדשות, מה תוקן ומה צריך את תשומת לבך.
+
+## Settings page redesign
+
+settings-tab-label-edit-info = עריכת המידע שלך
+settings-tab-label-notifications = הגדרת התראות
+settings-tab-label-manage-account = ניהול חשבון
+settings-tab-subtitle-manage-account = ניהול חשבון ה־{ -product-name } שלך.
+settings-tab-notifications-marketing-title = תוכן שיווקי
+settings-tab-notifications-marketing-text = עדכונים תקופתיים על אודות { -brand-monitor }, ‏{ -brand-mozilla } ומוצרי האבטחה האחרים שלנו.
+settings-tab-notifications-marketing-link-label = מעבר אל הגדרות הדוא״ל של { -brand-mozilla }

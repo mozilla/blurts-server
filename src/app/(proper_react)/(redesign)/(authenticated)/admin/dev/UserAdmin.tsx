@@ -6,6 +6,7 @@
 
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
+import isEqual from "lodash.isequal";
 import styles from "./UserAdmin.module.scss";
 import { Button } from "../../../../../components/client/Button";
 import {
@@ -29,7 +30,7 @@ import { InputField } from "../../../../../components/client/InputField";
 import { CONST_DATA_BROKER_PROFILE_DETAIL_ALLOW_LIST } from "../../../../../../constants";
 import { FeatureFlagName } from "../../../../../../db/tables/featureFlags";
 
-const DataTable = ({
+export const DataTable = ({
   header,
   data,
   open,
@@ -89,9 +90,7 @@ const ProfileDataInputs = ({
     <>
       <Button
         variant="primary"
-        disabled={
-          JSON.stringify(initialData) === JSON.stringify(editableProfileData)
-        }
+        disabled={isEqual(initialData, editableProfileData)}
         onPress={() => {
           try {
             const editableProfileDataParsed = Object.keys(
@@ -428,7 +427,7 @@ export const UserAdmin = ({
   );
 };
 
-async function getSha1(source: string): Promise<string> {
+export async function getSha1(source: string): Promise<string> {
   const msgUint8 = new TextEncoder().encode(source);
   const hashBuffer = await crypto.subtle.digest("SHA-1", msgUint8);
   const hashArray = Array.from(new Uint8Array(hashBuffer));

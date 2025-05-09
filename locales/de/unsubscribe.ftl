@@ -18,3 +18,4 @@ unsubscribe-success-cta = Bei { -brand-monitor } anmelden
 # Error warning
 
 unsubscription-failed = Abbestellen fehlgeschlagen. <try_again_link>Versuchen Sie es erneut.</try_again_link>
+unsubscription-failed-2 = Abbestellen fehlgeschlagen.

@@ -18,3 +18,4 @@ unsubscribe-success-cta = Aanmelden bij { -brand-monitor }
 # Error warning
 
 unsubscription-failed = Afmelden mislukt. <try_again_link>Probeer het opnieuw.</try_again_link>
+unsubscription-failed-2 = Afmelden mislukt.

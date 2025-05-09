@@ -18,3 +18,4 @@ unsubscribe-success-cta = Σύνδεση στο { -brand-monitor }
 # Error warning
 
 unsubscription-failed = Η κατάργηση εγγραφής απέτυχε. <try_again_link>Δοκιμάστε ξανά.</try_again_link>
+unsubscription-failed-2 = Η κατάργηση της συνδρομής απέτυχε.

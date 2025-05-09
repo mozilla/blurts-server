@@ -52,9 +52,12 @@ export const AnnouncementDialog = ({
   const dismissButtonRef = useRef<HTMLButtonElement>(null);
   const dismissButtonProps = useButton(
     {
-      /* c8 ignore next 3 */
+      /* c8 ignore next 5 */
       onPress: () => {
         triggerState.close();
+        recordTelemetry("button", "click", {
+          button_id: "dismiss_announcement_popup",
+        });
       },
     },
     dismissButtonRef,
@@ -291,7 +294,12 @@ export const AnnouncementDialog = ({
                     </div>
                     <button
                       className={styles.backBtn}
-                      onClick={() => setAnnouncementDetailsView(false)}
+                      onClick={() => {
+                        setAnnouncementDetailsView(false);
+                        recordTelemetry("button", "click", {
+                          button_id: `back_btn_announcement_${relevantAnnouncement.announcement_id}`,
+                        });
+                      }}
                     >
                       <span>{l10n.getString("announcement-dialog-back")}</span>
                     </button>

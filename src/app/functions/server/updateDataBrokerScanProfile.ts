@@ -64,24 +64,41 @@ async function updateDataBrokerScanProfile(
     }
   }
 
+  const updatedProfileDataSanitized = {
+    first_name: updatedProfileData.first_name.trim(),
+    middle_name: updatedProfileData.middle_name?.trim(),
+    last_name: updatedProfileData.last_name.trim(),
+    first_names: updatedProfileData.first_names
+      .map((first_name) => first_name.trim())
+      .filter((value) => value),
+    middle_names: updatedProfileData.middle_names
+      .map((middle_name) => middle_name.trim())
+      .filter((value) => value),
+    last_names: updatedProfileData.last_names
+      .map((last_name) => last_name.trim())
+      .filter((value) => value),
+    phone_numbers: updatedProfileData.phone_numbers
+      .map((phone_number) => phone_number.match(/\d/g)?.join("") ?? "")
+      .filter((value) => value),
+    addresses: updatedProfileData.addresses.filter(
+      (value) => value.city.trim() && value.state.trim(),
+    ),
+  };
+
   const {
     first_name,
     last_name,
-    addresses,
     first_names,
     last_names,
     middle_names,
     phone_numbers,
+    addresses,
     middle_name,
-  } = updatedProfileData;
-
-  const optionalUpdatedProfileData = {
-    ...(middle_name && { middle_name }),
-  };
+  } = updatedProfileDataSanitized;
 
   // Update the remote profile details.
   const remoteProfileData = {
-    ...optionalUpdatedProfileData,
+    ...(middle_name && { middle_name }),
     first_name,
     last_name,
     first_names: first_names.map((first_name) => ({
@@ -103,8 +120,8 @@ async function updateDataBrokerScanProfile(
 
   // Apply the updates to the `onerep_profiles` table.
   await updateProfileDetails(onerepProfileId, {
-    ...optionalUpdatedProfileData,
     first_name,
+    middle_name,
     last_name,
     first_names,
     last_names,

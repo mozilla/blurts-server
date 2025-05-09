@@ -40,7 +40,12 @@
   .title {
     color: tokens.$color-grey-50;
     font: tokens.$text-title-2xs;
+    line-height: 1.5;
     text-align: center;
+
+    b {
+      color: tokens.$color-purple-70;
+    }
   }
 
   &.horizontal {
@@ -76,7 +81,7 @@
   .dismissButton {
     background: none;
     border: none;
-    color: tokens.$color-grey-40;
+    color: tokens.$color-grey-50;
     cursor: pointer;
     padding: tokens.$spacing-md;
     position: absolute;
@@ -84,7 +89,7 @@
     top: 0;
 
     &:hover {
-      color: tokens.$color-grey-30;
+      color: tokens.$color-grey-40;
     }
   }
 
@@ -100,5 +105,17 @@
     display: flex;
     flex-direction: column;
     gap: tokens.$spacing-sm;
+  }
+
+  &.fitContent {
+    max-width: tokens.$content-sm;
+    width: auto;
+
+    .header {
+      padding: tokens.$layout-sm tokens.$layout-sm tokens.$spacing-xs;
+    }
+    .content {
+      padding: tokens.$spacing-xs tokens.$layout-sm tokens.$layout-sm;
+    }
   }
 }

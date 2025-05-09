@@ -18,3 +18,4 @@ unsubscribe-success-cta = 登入 { -brand-monitor }
 # Error warning
 
 unsubscription-failed = 退訂失敗。<try_again_link>再試一次。</try_again_link>
+unsubscription-failed-2 = 取消訂閱失敗。

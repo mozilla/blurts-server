@@ -18,3 +18,4 @@ unsubscribe-success-cta = Oanmelde by { -brand-monitor }
 # Error warning
 
 unsubscription-failed = Ofmelden mislearre. <try_again_link>Probearje nochris.</try_again_link>
+unsubscription-failed-2 = Ofmelden mislearre.

@@ -22,7 +22,6 @@
 -brand-mozilla = Mozilla
 -brand-premium = Premium
 -brand-monitor-premium = Monitor Premium
--brand-mozilla-foundation = Mozilla Foundation
 -brand-github = GitHub
 -brand-mozilla-vpn = Mozilla VPN
 -brand-relay = Firefox Relay
@@ -77,26 +76,34 @@ breach-summary = קיצור הדליפה
 # your localization, because it would result in the number showing twice.
 passwords-exposed =
     { $passwords ->
-        [one] ססמה אחת נחשפה בכל הדליפות
-       *[other] ססמאות נחשפו בכל הדליפות
+        [one] ססמה אחת נחשפה בכל הדליפותbreach-added-label = דליפה נוספה:-brand-mozilla-foundation = Mozilla Foundation
+       *[other] ססמאות נחשפו בכל הדליפותbreach-added-label = דליפה נוספה:-brand-mozilla-foundation = Mozilla Foundation
     }
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that have exposed the user’s information. Don’t add $breaches to
 # your localization, because it would result in the number showing twice.
 known-data-breaches-exposed =
     { $breaches ->
-        [one] דליפת נתונים מוכרת אחת חשפה מידע עליך
-       *[other] דליפות נתונים מוכרות חשפו מידע עליך
+        [one] דליפת נתונים מוכרת אחת חשפה מידע עליךbrand-mozilla-monitor = { -brand-fx-monitor }
+       *[other] דליפות נתונים מוכרות חשפו מידע עליךbrand-mozilla-monitor = { -brand-fx-monitor }
     }
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = תפריט
+# This is part of a confirmation message that appears after a user has submitted
+# the form to add an additional email to Firefox Monitor.
+# Variables:
+#   $userEmail (String) - User email address
+verify-the-link = יש לאמת את הקישור שנשלח אל { $userEmail } כדי להוסיף אותו ל־{ -product-name }.
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
 
-# This string is a label for the calendar date a breach is added to the database
-# and is followed by that date.
-breach-added-label = דליפה נוספה:
+# Section headline
+rec-section-headline = מה לעשות עבור דליפה זו
+rec-section-subhead = אנו ממליצים לך לנקוט בצעדים הבאים כדי לשמור על המידע האישי שלך ולהגן על הזהות הדיגיטלית שלך.
+# Section headline
+rec-section-headline-no-pw = מה לעשות כדי להגן על המידע האישי שלך
+rec-section-subhead-no-pw = למרות שססמאות לא נחשפו בדליפה זו, עדיין ישנם צעדים שניתן לנקוט בהן כדי להגן יותר טוב על המידע האישי שלך.
 
 ##
 
@@ -122,7 +129,6 @@ open-in-new-tab-alt = פתיחת קישור בלשונית חדשה
 # Deprecated
 brand-fx-monitor = { -brand-fx-monitor }
 sign-in = התחברות
-brand-mozilla-monitor = { -brand-fx-monitor }
 
 ## Site navigation
 

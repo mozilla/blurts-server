@@ -12,32 +12,58 @@ export type VersionData = {
   commit: string;
   version: string;
   source: string;
+  build?: string;
 };
 
-const versionJsonPath = path.join(__dirname, "../../version.json");
+// Determine the correct path to version.json at the project root
+// process.cwd() should be /app due to WORKDIR in Dockerfile
+// Use path.resolve to ensure it's an absolute path based on CWD.
+const versionJsonPath = path.resolve(process.cwd(), "version.json");
 
-// If the version.json file already exists (e.g., created by circle + docker),
-// don't need to generate it
-if (!fs.existsSync(versionJsonPath)) {
-  const versionJson = {
+let versionData: VersionData | null = null;
+
+// Try reading the version.json created by the build process
+try {
+  if (fs.existsSync(versionJsonPath)) {
+    versionData = JSON.parse(
+      fs.readFileSync(versionJsonPath, "utf8"),
+    ) as VersionData;
+    console.log(`Successfully loaded version data from ${versionJsonPath}`);
+  } else {
+    // This is the expected case if the build process didn't create/copy the file correctly.
+    console.warn(
+      `version.json not found at expected path: ${versionJsonPath}. This might indicate a build/copy issue.`,
+    );
+  }
+} catch (error) {
+  // Log error if parsing fails (e.g., malformed JSON)
+  console.error(`Error reading or parsing ${versionJsonPath}:`, error);
+}
+
+// Fallback logic: Only if versionData couldn't be loaded from file
+if (!versionData) {
+  console.warn("Falling back to version data derived from package.json");
+  versionData = {
     source: packageJson.homepage,
-    version: packageJson.version,
-    NODE_ENV: process.env.NODE_ENV,
+    version: packageJson.version, // Use version from package.json as fallback
+    commit: "unknown",
+    build: "unknown",
   };
-
-  fs.writeFileSync(
-    versionJsonPath,
-    JSON.stringify(versionJson, null, 2) + "\n",
-  );
 }
 
 export function vers(): VersionData {
-  if (process.env.APP_ENV === "heroku") {
+  // Return the data loaded from version.json or the fallback data
+  if (!versionData) {
+    // This condition implies the initial loading and fallback both failed, which is highly unlikely.
+    console.error(
+      "versionData is unexpectedly null in vers(). Returning error state.",
+    );
     return {
-      commit: process.env.HEROKU_SLUG_COMMIT!,
-      version: process.env.HEROKU_SLUG_COMMIT!,
-      source: packageJson.homepage,
+      commit: "error",
+      version: "init_failed",
+      source: "error",
+      build: "unknown",
     };
   }
-  return JSON.parse(fs.readFileSync(versionJsonPath, "utf8")) as VersionData;
+  return versionData;
 }

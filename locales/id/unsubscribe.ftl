@@ -18,3 +18,4 @@ unsubscribe-success-cta = Masuk ke { -brand-monitor }
 # Error warning
 
 unsubscription-failed = Gagal berhenti berlangganan. <try_again_link>Coba lagi.</try_again_link>
+unsubscription-failed-2 = Gagal berhenti berlangganan.
