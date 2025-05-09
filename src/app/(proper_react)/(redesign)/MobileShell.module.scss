@@ -17,7 +17,7 @@
     align-items: center;
     justify-content: space-between;
     gap: tokens.$spacing-sm;
-    padding: tokens.$spacing-xs tokens.$spacing-sm;
+    padding: tokens.$spacing-sm;
     // Overlay `.nonHeader` so that the box-shadow of this element
     // is not covered.
     z-index: 1;
@@ -30,7 +30,6 @@
     }
 
     .headerEnd {
-      align-self: flex-end;
       display: flex;
       gap: tokens.$spacing-md;
       justify-content: flex-end;
