@@ -21,7 +21,8 @@ export const CtaBanner = (props: LandingPageProps) => {
         </h3>
         <p>{props.l10n.getString("landing-redesign-banner-cta-subheader")}</p>
       </div>
-      {props.enabledFeatureFlags.includes("DisableOneRepScans") ||
+      {(props.enabledFeatureFlags.includes("DisableOneRepScans") &&
+        props.eligibleForPremium) ||
       (props.eligibleForPremium && props.scanLimitReached) ? (
         <ScanLimit />
       ) : (

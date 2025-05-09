@@ -54,7 +54,7 @@ export default async function Page() {
   const scanLimitReached =
     typeof oneRepActivations === "undefined" ||
     oneRepActivations > monthlySubscribersQuota ||
-    enabledFeatureFlags.includes("DisableOneRepScans");
+    (enabledFeatureFlags.includes("DisableOneRepScans") && eligibleForPremium);
 
   return (
     <AccountsMetricsFlowProvider
