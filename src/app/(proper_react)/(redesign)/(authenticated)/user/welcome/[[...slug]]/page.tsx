@@ -19,6 +19,7 @@ import {
   getAcceptLangHeaderInServerComponents,
   getL10n,
 } from "../../../../../../functions/l10n/serverComponents";
+import { getEnabledFeatureFlags } from "../../../../../../../db/tables/featureFlags";
 
 const FreeScanSlug = "free-scan";
 
@@ -73,6 +74,10 @@ export default async function Onboarding(props: Props) {
     locale: getLocale(getL10n(await getAcceptLangHeaderInServerComponents())),
   });
 
+  const enabledFeatureFlags = await getEnabledFeatureFlags({
+    email: session.user.email,
+  });
+
   return (
     <View
       user={session.user}
@@ -81,6 +86,7 @@ export default async function Onboarding(props: Props) {
       stepId={firstSlug === FreeScanSlug ? "enterInfo" : "getStarted"}
       previousRoute={previousRoute}
       experimentData={experimentData["Features"]}
+      enabledFeatureFlags={enabledFeatureFlags}
     />
   );
 }

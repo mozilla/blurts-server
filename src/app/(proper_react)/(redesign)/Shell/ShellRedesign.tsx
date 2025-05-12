@@ -48,7 +48,9 @@ export const ShellRedesign = (props: Props) => {
       announcements={props.announcements}
     >
       <div className={styles.wrapper}>
-        <div className={styles.content}>
+        <div
+          className={`${styles.content} ${props.enabledFeatureFlags.includes("Moscary") ? styles.moscaryIndicator : ""}`}
+        >
           <nav
             className={styles.mainMenu}
             aria-label={props.l10n.getString("main-nav-label")}
