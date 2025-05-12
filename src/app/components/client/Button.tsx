@@ -18,6 +18,9 @@ export type ButtonVariants =
   | "link"
   | "icon";
 
+const buttonColorThemes = ["purple", "blue"] as const;
+export type ButtonThemes = (typeof buttonColorThemes)[number];
+
 export interface Props {
   variant: ButtonVariants;
   children?: ReactNode;
@@ -29,6 +32,7 @@ export interface Props {
   small?: boolean;
   wide?: boolean;
   buttonRef?: RefObject<HTMLButtonElement | HTMLAnchorElement | null>;
+  theme?: ButtonThemes;
 }
 
 export type ButtonProps = Props & Parameters<typeof useButton>[0]; // AriaButtonOptions
@@ -45,6 +49,7 @@ export const Button = (props: ButtonProps) => {
     small,
     target,
     wide,
+    theme = buttonColorThemes[0],
     ...otherProps
   } = props;
 
@@ -55,6 +60,7 @@ export const Button = (props: ButtonProps) => {
   const classes = [
     styles.button,
     styles[variant],
+    styles[theme],
     // Ignored for test coverage; not used in tested pages yet:
     /* c8 ignore next */
     destructive && styles.destructive,

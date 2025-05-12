@@ -36,8 +36,16 @@
     }
 
     &.secondary {
-      border: 4px solid tokens.$color-purple-70;
-      border-color: tokens.$color-purple-70 transparent transparent transparent;
+      border: 4px solid transparent;
+
+      &.purple {
+        border-color: tokens.$color-purple-70 transparent transparent
+          transparent;
+      }
+
+      &.blue {
+        border-color: tokens.$color-blue-50 transparent transparent transparent;
+      }
     }
   }
   .ldsRing div:nth-child(1) {
@@ -60,14 +68,29 @@
 
   &.primary {
     color: tokens.$color-white;
-    background-color: tokens.$color-purple-70;
 
-    &:hover {
-      background-color: tokens.$color-purple-80;
+    &.purple {
+      background-color: tokens.$color-purple-70;
+
+      &:hover {
+        background-color: tokens.$color-purple-80;
+      }
+
+      &:focus {
+        outline: tokens.$border-focus-width solid tokens.$color-purple-30;
+      }
     }
 
-    &:focus {
-      outline: tokens.$border-focus-width solid tokens.$color-purple-30;
+    &.blue {
+      background-color: tokens.$color-blue-50;
+
+      &:hover {
+        background-color: tokens.$color-blue-60;
+      }
+
+      &:focus {
+        outline: tokens.$border-focus-width solid tokens.$color-blue-30;
+      }
     }
 
     &.destructive {
@@ -90,14 +113,9 @@
   }
 
   &.secondary {
-    color: tokens.$color-purple-70;
-    box-shadow: inset 0 0 0 2px tokens.$color-purple-70;
     background-color: transparent;
 
     &:hover {
-      background-color: tokens.$color-purple-70;
-      color: tokens.$color-white;
-
       .ldsRing div {
         &.secondary {
           border: 4px solid tokens.$color-white;
@@ -122,23 +140,61 @@
       box-shadow: inset 0 0 0 2px tokens.$color-grey-20;
       pointer-events: none;
     }
+
+    &.purple {
+      color: tokens.$color-purple-70;
+      box-shadow: inset 0 0 0 2px tokens.$color-purple-70;
+
+      &:hover {
+        background-color: tokens.$color-purple-70;
+        color: tokens.$color-white;
+      }
+    }
+
+    &.blue {
+      color: tokens.$color-blue-50;
+      box-shadow: inset 0 0 0 2px tokens.$color-blue-50;
+
+      &:hover {
+        background-color: tokens.$color-blue-50;
+        color: tokens.$color-white;
+      }
+    }
   }
 
   &.tertiary {
     background: none;
-    color: tokens.$color-purple-70;
 
-    &:hover {
-      background-color: rgba(tokens.$color-purple-70, 0.2);
+    &.purple {
+      color: tokens.$color-purple-70;
+
+      &:hover {
+        background-color: rgba(tokens.$color-purple-70, 0.2);
+      }
+    }
+
+    &.blue {
+      color: tokens.$color-blue-50;
+
+      &:hover {
+        background-color: rgba(tokens.$color-blue-50, 0.2);
+      }
     }
   }
 
   &.link {
     background: none;
-    color: tokens.$color-purple-50;
     font: inherit;
     padding: 0;
     text-decoration: underline;
+
+    &.purple {
+      color: tokens.$color-purple-50;
+    }
+
+    &.blue {
+      color: tokens.$color-blue-50;
+    }
   }
 
   &.icon {

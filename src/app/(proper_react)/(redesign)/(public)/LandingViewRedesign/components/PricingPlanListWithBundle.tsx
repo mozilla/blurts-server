@@ -187,6 +187,7 @@ export const PricingPlanListWithBundle = (props: Props & ScanLimitProp) => {
             aria-describedby="pricingPlanBundle"
             disabled={props.scanLimitReached}
             variant="primary"
+            theme="blue"
             href={`${props.premiumSubscriptionUrl[billingPeriod]}${additionalSubplatParamsString}`}
             event={{
               module: "upgradeIntent",
@@ -322,6 +323,7 @@ export const PricingPlanListWithBundle = (props: Props & ScanLimitProp) => {
             aria-describedby="pricingPlansMonthlyOrYearly"
             disabled={props.scanLimitReached}
             variant="secondary"
+            theme="blue"
             href={`${props.premiumSubscriptionUrl[billingPeriod]}${additionalSubplatParamsString}`}
             event={{
               module: "upgradeIntent",
@@ -420,6 +422,7 @@ export const PricingPlanListWithBundle = (props: Props & ScanLimitProp) => {
               )}
               showCtaOnly
               ctaButtonVariant="secondary"
+              ctaButtonTheme="blue"
             />
           )}
         </>

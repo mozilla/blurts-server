@@ -16,13 +16,17 @@ import { AccountsMetricsFlowContext } from "../../../../contextProviders/account
 import { getFreeScanSearchParams } from "../../../functions/universal/getFreeScanSearchParams";
 import { CONST_URL_MONITOR_LANDING_PAGE_ID } from "../../../../constants";
 import { useViewTelemetry } from "../../../hooks/useViewTelemetry";
-import { ButtonVariants } from "../../../components/client/Button";
+import {
+  ButtonThemes,
+  ButtonVariants,
+} from "../../../components/client/Button";
 
 export const FreeScanCta = (
   props: Props & {
     experimentData: ExperimentData["Features"];
     showCtaOnly?: boolean;
     ctaButtonVariant?: ButtonVariants;
+    ctaButtonTheme?: ButtonThemes;
   },
 ) => {
   const l10n = useL10n();
@@ -66,6 +70,7 @@ export const FreeScanCta = (
       <TelemetryButton
         buttonRef={refViewTelemetry as RefObject<HTMLButtonElement | null>}
         variant={props.ctaButtonVariant ?? "primary"}
+        theme={props.ctaButtonTheme}
         event={{
           module: "ctaButton",
           name: "click",
