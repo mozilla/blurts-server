@@ -81,7 +81,7 @@
   dd {
     align-items: flex-start;
     display: flex;
-    gap: tokens.$spacing-md;
+    gap: tokens.$spacing-sm;
     padding: tokens.$spacing-sm 0;
 
     &:first-of-type {
@@ -118,11 +118,11 @@
     }
 
     svg {
-      color: tokens.$color-purple-70;
-      flex: 1 0 18px;
-      max-width: 18px;
+      stroke: tokens.$color-purple-70;
+      flex: 1 0 24px;
+      max-width: 24px;
       height: auto;
-      padding-top: tokens.$spacing-xs;
+      padding-top: calc(tokens.$spacing-xs * 0.5);
     }
   }
 
@@ -130,12 +130,12 @@
     border-bottom: 1px solid tokens.$color-grey-10;
     align-items: flex-start;
     display: flex;
-    gap: tokens.$spacing-md;
+    gap: tokens.$spacing-sm;
     padding-bottom: tokens.$spacing-md;
     width: 100%;
 
     svg {
-      stroke: tokens.$color-purple-70;
+      padding: 0;
     }
   }
 
@@ -155,7 +155,8 @@
 
     svg {
       color: tokens.$color-black;
-      padding: 0;
+      padding: calc(tokens.$spacing-xs * 0.5);
+      stroke: none;
     }
   }
 
