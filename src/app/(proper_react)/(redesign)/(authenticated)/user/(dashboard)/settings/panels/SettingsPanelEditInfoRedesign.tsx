@@ -136,10 +136,10 @@ function ProfileInfoSection({
     phone_numbers,
     addresses,
   } = profileData;
-  const dateOfBirthString = new Date(date_of_birth).toLocaleDateString(
-    getLocale(l10n),
-    { dateStyle: "short" },
-  );
+  const dateOfBirthString = date_of_birth.toLocaleDateString(getLocale(l10n), {
+    dateStyle: "short",
+    timeZone: "UTC",
+  });
   const additionalNamesCount =
     first_names.length + middle_names.length + last_names.length;
   const { city, state } = addresses[0];
