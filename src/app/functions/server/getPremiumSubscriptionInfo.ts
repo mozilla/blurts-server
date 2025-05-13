@@ -14,7 +14,7 @@ if (!process.env.STORYBOOK) {
 type SubscriptionPeriod = "monthly" | "yearly" | "bundle";
 
 export type BundleBillingAmount = {
-  yearly: number;
+  monthly: number;
   individual: number;
 };
 
@@ -60,10 +60,11 @@ export function getSubscriptionBillingAmount(): SubscriptionBillingAmount {
     ),
     bundle: {
       individual: parseFloat(
-        process.env.SUBSCRIPTION_BILLING_AMOUNT_BUNDLE_INDIVIDUAL_US as string,
+        process.env
+          .SUBSCRIPTION_BILLING_AMOUNT_BUNDLE_INDIVIDUAL_MONTHLY_US as string,
       ),
-      yearly: parseFloat(
-        process.env.SUBSCRIPTION_BILLING_AMOUNT_BUNDLE_YEARLY_US as string,
+      monthly: parseFloat(
+        process.env.SUBSCRIPTION_BILLING_AMOUNT_BUNDLE_MONTHLY_US as string,
       ),
     },
   };

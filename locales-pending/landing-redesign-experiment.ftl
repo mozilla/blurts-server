@@ -66,7 +66,9 @@ landing-redesign-pricing-plans-card-cta-yearly-billing-label = { $yearlyPrice } 
 landing-redesign-pricing-plans-card-cta-monthly = { $monthlyPrice }/mo
 landing-redesign-pricing-plans-card-cta-label = Get started
 
-landing-redesign-pricing-plans-card-bundle-label = Best value, save 45%
+# Variables:
+# $discountPercentage is the percentage you can save subscribing to the bundle plan
+landing-redesign-pricing-plans-card-bundle-label = Best value, save { $discountPercentage }%
 landing-redesign-pricing-plans-card-bundle-title = { -product-name-privacy-products-bundle }
 landing-redesign-pricing-plans-card-bundle-subtitle = 3 privacy tools, 1 price
 landing-redesign-pricing-plans-bundle-item-mozilla-vpn-title = { -brand-mozilla-vpn }

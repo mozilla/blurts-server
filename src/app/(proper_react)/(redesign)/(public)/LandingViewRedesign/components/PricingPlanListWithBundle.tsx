@@ -66,7 +66,7 @@ type PricingPlanData = {
   subtitle: ReactNode | string;
   features: ReactNode[];
   cta: ReactNode;
-  label?: string;
+  label?: ReactNode;
 };
 
 export const PricingPlanListWithBundle = (props: Props & ScanLimitProp) => {
@@ -102,12 +102,24 @@ export const PricingPlanListWithBundle = (props: Props & ScanLimitProp) => {
   const {
     yearly: monthlyPriceAnnualBilling,
     monthly: monthlyPriceMonthlyBilling,
+    bundle: bundlePriceBilling,
   } = props.subscriptionBillingAmount;
+
+  const bundleDiscountPercentage = Math.round(
+    (1 - bundlePriceBilling.monthly / bundlePriceBilling.individual) * 100,
+  );
 
   const pricingPlanData: PricingPlanData[] = [
     {
       type: "bundle",
-      label: l10n.getString("landing-redesign-pricing-plans-card-bundle-label"),
+      label: l10n.getFragment(
+        "landing-redesign-pricing-plans-card-bundle-label",
+        {
+          vars: {
+            discountPercentage: bundleDiscountPercentage,
+          },
+        },
+      ),
       title: l10n.getString("landing-redesign-pricing-plans-card-bundle-title"),
       subtitle: l10n.getString(
         "landing-redesign-pricing-plans-card-bundle-subtitle",
@@ -169,7 +181,7 @@ export const PricingPlanListWithBundle = (props: Props & ScanLimitProp) => {
                 "landing-redesign-pricing-plans-card-cta-yearly-billing-label",
                 {
                   yearlyPrice: priceFormatter.format(
-                    props.subscriptionBillingAmount.bundle.yearly,
+                    props.subscriptionBillingAmount.bundle.monthly * 12,
                   ),
                 },
               )}
@@ -177,14 +189,14 @@ export const PricingPlanListWithBundle = (props: Props & ScanLimitProp) => {
             <strong>
               <s>
                 {priceFormatter.format(
-                  props.subscriptionBillingAmount.bundle.individual / 12,
+                  props.subscriptionBillingAmount.bundle.individual,
                 )}
               </s>
               {l10n.getString(
                 "landing-redesign-pricing-plans-card-cta-monthly",
                 {
                   monthlyPrice: priceFormatter.format(
-                    props.subscriptionBillingAmount.bundle.yearly / 12,
+                    props.subscriptionBillingAmount.bundle.monthly,
                   ),
                 },
               )}
