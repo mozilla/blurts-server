@@ -13,8 +13,9 @@ import {
   getSubscriberByFxaUid,
 } from "../../../../../../db/tables/subscribers";
 
-import { getScanResultsWithBroker } from "../../../../../../db/tables/onerep_scans";
+import { getScanResultsWithBroker as getOnerepScanResultsWithBroker } from "../../../../../../db/tables/onerep_scans";
 import { hasPremium } from "../../../../../functions/universal/user";
+import { getScanAndResults } from "../../../../../functions/server/moscary";
 
 export type WelcomeScanResultResponse =
   | {
@@ -33,16 +34,25 @@ export async function GET() {
       if (!subscriber) {
         throw new Error("No subscriber found for current session.");
       }
-      const profileId = await getOnerepProfileId(subscriber.id);
 
-      const scanResults = await getScanResultsWithBroker(
-        profileId,
-        hasPremium(session.user),
-      );
-      return NextResponse.json(
-        { success: true, scan_results: scanResults },
-        { status: 200 },
-      );
+      if (subscriber.moscary_id !== null) {
+        const scanResults = await getScanAndResults(subscriber.moscary_id);
+        return NextResponse.json(
+          { success: true, scan_results: scanResults },
+          { status: 200 },
+        );
+      } else {
+        const profileId = await getOnerepProfileId(subscriber.id);
+
+        const scanResults = await getOnerepScanResultsWithBroker(
+          profileId,
+          hasPremium(session.user),
+        );
+        return NextResponse.json(
+          { success: true, scan_results: scanResults },
+          { status: 200 },
+        );
+      }
     } catch (e) {
       logger.error(e);
       return NextResponse.json({ success: false }, { status: 500 });

@@ -10,6 +10,7 @@ import { ProgressBar } from "../../../../../components/client/ProgressBar";
 import styles from "./FindExposures.module.scss";
 import { useL10n } from "../../../../../hooks/l10n";
 import { sendGAEvent } from "../../../../../components/client/GoogleAnalyticsWorkaround";
+import type { ScanProgressBody } from "../../../../../api/v1/user/welcome-scan/progress/route";
 
 export type Props = {
   dataBrokerCount: number;
@@ -110,7 +111,7 @@ export const FindExposures = ({
         setCheckingScanProgress(true);
         void fetch("/api/v1/user/welcome-scan/progress")
           .then((response) => response.json())
-          .then((result) => {
+          .then((result: ScanProgressBody) => {
             if (result.status && result.status === "finished") {
               setScanFinished(true);
               sendGAEvent(

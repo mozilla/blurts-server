@@ -2,12 +2,15 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import { UUID } from "node:crypto";
 import { SubscriberRow } from "knex/types/tables";
 import type {
   components as Components,
   paths as Paths,
 } from "./moscary_schema";
 import { logger } from "./logging";
+import { ISO8601DateString } from "../../../utils/parse";
+import { StateAbbr } from "../../../utils/states";
 
 export const monthlyScansQuota = parseInt(
   (process.env.MONTHLY_SCANS_QUOTA as string) ?? "0",
@@ -16,17 +19,17 @@ export const monthlySubscribersQuota = parseInt(
   (process.env.MONTHLY_SUBSCRIBERS_QUOTA as string) ?? "0",
 );
 
-// type CreateProfileRequest = {
-//   first_name: string;
-//   last_name: string;
-//   birth_date: ISO8601DateString;
-//   addresses: {
-//     city: string;
-//     state: StateAbbr;
-//   }[];
-//   name_suffix?: string;
-//   middle_name?: string;
-// };
+type CreateProfileRequest = {
+  first_name: string;
+  last_name: string;
+  birth_date: ISO8601DateString;
+  addresses: {
+    city: string;
+    state: StateAbbr;
+  }[];
+  name_suffix?: string;
+  middle_name?: string;
+};
 
 // type UpdateProfileRequest = CreateProfileRequest & {
 //   first_names: {
@@ -108,42 +111,41 @@ async function moscaryFetch(
   return fetch(url, { ...options, headers });
 }
 
-// export async function createProfile(profileData: CreateProfileRequest) {
-//   const requestBody = {
-//     first_name: profileData.first_name,
-//     ...(profileData.middle_name && { middle_name: profileData.middle_name }),
-//     last_name:
-//       `${profileData.last_name} ${profileData.name_suffix ?? ""}`.trim(),
-//     birth_date: profileData.birth_date,
-//     name_suffix: profileData.name_suffix ?? "",
-//     addresses: [
-//       {
-//         state: profileData.addresses[0].state,
-//         city: profileData.addresses[0].city,
-//       },
-//     ],
-//   };
-//   const response = await internalFetch("/api/v1/profiles", {
-//     method: "POST",
-//     body: JSON.stringify(requestBody),
-//   });
-//   if (!response.ok) {
-//     logger.error(
-//       `Failed to create profile: [${response.status}] [${
-//         response.statusText
-//       }] [${JSON.stringify(await response.json())}]`,
-//     );
-//     throw new Error(
-//       `Failed to create profile: [${response.status}] [${response.statusText}]`,
-//     );
-//   }
+export async function createProfile(profileData: CreateProfileRequest) {
+  const requestBody: Components["schemas"]["ProfileInput"] = {
+    first_name: profileData.first_name,
+    ...(profileData.middle_name && { middle_name: profileData.middle_name }),
+    last_name:
+      `${profileData.last_name} ${profileData.name_suffix ?? ""}`.trim(),
+    birth_date: profileData.birth_date,
+    addresses: [
+      {
+        state: profileData.addresses[0].state,
+        city: profileData.addresses[0].city,
+      },
+    ],
+  };
+  const response = await moscaryFetch("/api/v1/profiles", {
+    method: "POST",
+    body: JSON.stringify(requestBody),
+  });
+  if (!response.ok) {
+    logger.error(
+      `Failed to create profile: [${response.status}] [${
+        response.statusText
+      }] [${JSON.stringify(await response.json())}]`,
+    );
+    throw new Error(
+      `Failed to create profile: [${response.status}] [${response.statusText}]`,
+    );
+  }
 
-//   const savedProfile = await response.json();
+  const savedProfile: Components["schemas"]["Profile"] = await response.json();
 
-//   logger.info("profile_created", { savedProfile });
+  logger.info("profile_created", { savedProfile });
 
-//   return savedProfile.id;
-// }
+  return savedProfile.id as NonNullable<SubscriberRow["moscary_id"]>;
+}
 
 // export async function updateProfile(
 //   profileId: number,
@@ -287,21 +289,23 @@ async function moscaryFetch(
 //   }
 // }
 
-// export async function createScan(profileId: UUID): Promise<CreateScanResponse> {
-//   const response = await internalFetch(`/api/v1/profiles/${profileId}/scans`, {
-//     method: "POST",
-//   });
-//   if (!response.ok) {
-//     logger.error(
-//       `Failed to create a scan: [${response.status}] [${response.statusText}]`,
-//     );
-//     throw new Error(
-//       `Failed to create a scan: [${response.status}] [${response.statusText}]`,
-//     );
-//   }
+export async function createScan(
+  profileId: UUID,
+): Promise<Components["schemas"]["Scan"]> {
+  const response = await moscaryFetch(`/api/v1/profiles/${profileId}/scans`, {
+    method: "POST",
+  });
+  if (!response.ok) {
+    logger.error(
+      `Failed to create a scan: [${response.status}] [${response.statusText}]`,
+    );
+    throw new Error(
+      `Failed to create a scan: [${response.status}] [${response.statusText}]`,
+    );
+  }
 
-//   return response.json() as Promise<CreateScanResponse>;
-// }
+  return response.json() as Promise<Components["schemas"]["Scan"]>;
+}
 
 export async function listScans(
   profileId: SubscriberRow["moscary_id"],
