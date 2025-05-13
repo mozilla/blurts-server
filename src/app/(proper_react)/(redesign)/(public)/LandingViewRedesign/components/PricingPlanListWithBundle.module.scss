@@ -185,6 +185,10 @@
         color: tokens.$color-blue-50;
       }
     }
+
+    &[aria-disabled="true"] {
+      pointer-events: none;
+    }
   }
 
   .pricingCardSavings {

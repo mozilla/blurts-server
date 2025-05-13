@@ -36,6 +36,8 @@ import { ExperimentData } from "../../../../../../telemetry/generated/nimbus/exp
 import { FeatureFlagName } from "../../../../../../db/tables/featureFlags";
 import { BundleBillingAmount } from "../../../../../functions/server/getPremiumSubscriptionInfo";
 
+export type ProductBundleUrl = Record<"relay" | "vpn", string>;
+
 export type Props = {
   "aria-labelledby": string;
   premiumSubscriptionUrl: {
@@ -49,6 +51,7 @@ export type Props = {
     bundle: BundleBillingAmount;
   };
   enabledFeatureFlags: FeatureFlagName[];
+  productBundleUrl: ProductBundleUrl;
 };
 
 type ScanLimitProp = {
@@ -110,7 +113,11 @@ export const PricingPlanListWithBundle = (props: Props & ScanLimitProp) => {
         "landing-redesign-pricing-plans-card-bundle-subtitle",
       ),
       features: [
-        <a key="bundle-vpn" className={styles.bundleItem} href="">
+        <a
+          key="bundle-vpn"
+          className={styles.bundleItem}
+          href={`${props.productBundleUrl.vpn}?utm_medium=mozilla-websites&utm_source=monitor-product&utm_campaign=landing-page-pricing-grid&utm_content=landing-page-pricing-grid-us`}
+        >
           <div className={styles.bundleTitle}>
             <VpnIcon alt="" />
             <b>
@@ -123,7 +130,7 @@ export const PricingPlanListWithBundle = (props: Props & ScanLimitProp) => {
             "landing-redesign-pricing-plans-bundle-item-mozilla-vpn-description",
           )}
         </a>,
-        <a key="bundle-monitor" className={styles.bundleItem} href="">
+        <a key="bundle-monitor" className={styles.bundleItem} aria-disabled>
           <div className={styles.bundleTitle}>
             <MonitorIcon alt="" />
             <b>
@@ -136,7 +143,11 @@ export const PricingPlanListWithBundle = (props: Props & ScanLimitProp) => {
             "landing-redesign-pricing-plans-bundle-item-monitor-plus-description",
           )}
         </a>,
-        <a key="bundle-relay" className={styles.bundleItem} href="">
+        <a
+          key="bundle-relay"
+          className={styles.bundleItem}
+          href={`${props.productBundleUrl.relay}?utm_medium=mozilla-websites&utm_source=monitor-product&utm_campaign=landing-page-pricing-grid&utm_content=landing-page-pricing-grid-us`}
+        >
           <div className={styles.bundleTitle}>
             <RelayIcon alt="" />
             <b>
@@ -189,10 +200,7 @@ export const PricingPlanListWithBundle = (props: Props & ScanLimitProp) => {
               module: "upgradeIntent",
               name: "click",
               data: {
-                button_id:
-                  billingPeriod === "yearly"
-                    ? "purchase_yearly_landing_page"
-                    : "purchase_monthly_landing_page",
+                button_id: "purchase_bundle_landing_page",
               },
             }}
           >

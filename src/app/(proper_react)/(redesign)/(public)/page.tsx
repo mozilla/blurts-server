@@ -84,6 +84,10 @@ export default async function Page() {
           scanLimitReached={scanLimitReached}
           experimentData={experimentData["Features"]}
           enabledFeatureFlags={enabledFeatureFlags}
+          bundleProductUrl={{
+            relay: process.env.FIREFOX_RELAY_LANDING_URL ?? "",
+            vpn: process.env.MOZILLA_VPN_LANDING_URL ?? "",
+          }}
         />
       ) : (
         <LandingView

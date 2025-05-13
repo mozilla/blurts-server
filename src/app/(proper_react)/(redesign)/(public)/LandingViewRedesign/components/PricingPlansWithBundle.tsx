@@ -48,6 +48,7 @@ export const PricingPlansWithBundle = (props: LandingPageProps) => {
         experimentData={props.experimentData}
         eligibleForPremium={props.eligibleForPremium}
         enabledFeatureFlags={props.enabledFeatureFlags}
+        productBundleUrl={props.bundleProductUrl}
       />
     </div>
   );
