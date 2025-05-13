@@ -19,7 +19,7 @@ export type ButtonVariants =
   | "icon";
 
 const buttonColorThemes = ["purple", "blue"] as const;
-export type ButtonThemes = (typeof buttonColorThemes)[number];
+export type ButtonColorThemes = (typeof buttonColorThemes)[number];
 
 export interface Props {
   variant: ButtonVariants;
@@ -32,7 +32,7 @@ export interface Props {
   small?: boolean;
   wide?: boolean;
   buttonRef?: RefObject<HTMLButtonElement | HTMLAnchorElement | null>;
-  theme?: ButtonThemes;
+  theme?: ButtonColorThemes;
 }
 
 export type ButtonProps = Props & Parameters<typeof useButton>[0]; // AriaButtonOptions

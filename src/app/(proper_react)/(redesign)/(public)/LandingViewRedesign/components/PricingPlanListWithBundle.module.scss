@@ -6,7 +6,12 @@
   gap: tokens.$spacing-lg;
 
   @media screen and (min-width: tokens.$screen-md) {
+    flex-wrap: wrap;
     flex-direction: row-reverse;
+  }
+
+  @media screen and (min-width: tokens.$screen-lg) {
+    flex-wrap: nowrap;
   }
 }
 
@@ -16,7 +21,6 @@
   display: inline-flex;
   flex: 1;
   flex-direction: column;
-  max-width: tokens.$content-sm;
   padding: tokens.$layout-sm tokens.$spacing-lg;
   position: relative;
 
@@ -29,6 +33,14 @@
       #0090ed 100%
     );
     box-shadow: none;
+
+    @media screen and (min-width: tokens.$screen-md) {
+      min-width: 100%;
+    }
+
+    @media screen and (min-width: tokens.$screen-lg) {
+      min-width: auto;
+    }
 
     &::before {
       background: tokens.$color-white;
@@ -51,6 +63,7 @@
     position: absolute;
     top: tokens.$spacing-lg;
     transform: translate(-50%);
+    white-space: nowrap;
   }
 
   dt,
@@ -139,14 +152,6 @@
     }
   }
 
-  .bundleItem {
-    border: 2px solid tokens.$color-grey-10;
-    border-radius: calc(tokens.$border-radius-md + tokens.$border-radius-sm);
-    padding: tokens.$spacing-sm;
-    text-align: center;
-    width: 100%;
-  }
-
   .bundleTitle {
     align-items: center;
     display: flex;
@@ -157,6 +162,25 @@
       color: tokens.$color-black;
       padding: calc(tokens.$spacing-xs * 0.5);
       stroke: none;
+    }
+  }
+
+  .bundleItem {
+    border: 2px solid tokens.$color-grey-10;
+    border-radius: calc(tokens.$border-radius-md + tokens.$border-radius-sm);
+    color: tokens.$color-black;
+    padding: tokens.$spacing-sm;
+    text-align: center;
+    text-decoration: none;
+    width: 100%;
+
+    &:hover {
+      border: 2px solid tokens.$color-blue-50;
+      color: tokens.$color-blue-50;
+
+      svg {
+        color: tokens.$color-blue-50;
+      }
     }
   }
 

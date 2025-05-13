@@ -108,58 +108,52 @@ export const PricingPlanListWithBundle = (props: Props & ScanLimitProp) => {
         "landing-redesign-pricing-plans-card-bundle-subtitle",
       ),
       features: [
-        <>
-          <span className={styles.bundleItem}>
-            <div className={styles.bundleTitle}>
-              <VpnIcon alt="" />
-              <b>
-                {l10n.getString(
-                  "landing-redesign-pricing-plans-bundle-item-mozilla-vpn-title",
-                )}
-              </b>
-            </div>
-            {l10n.getString(
-              "landing-redesign-pricing-plans-bundle-item-mozilla-vpn-description",
-            )}
-          </span>
-        </>,
-        <>
-          <span className={styles.bundleItem}>
-            <div className={styles.bundleTitle}>
-              <MonitorIcon alt="" />
-              <b>
-                {l10n.getString(
-                  "landing-redesign-pricing-plans-bundle-item-monitor-plus-title",
-                )}
-              </b>
-            </div>
-            {l10n.getString(
-              "landing-redesign-pricing-plans-bundle-item-monitor-plus-description",
-            )}
-          </span>
-        </>,
-        <>
-          <span className={styles.bundleItem}>
-            <div className={styles.bundleTitle}>
-              <RelayIcon alt="" />
-              <b>
-                {l10n.getString(
-                  "landing-redesign-pricing-plans-bundle-item-relay-premium-title",
-                )}
-              </b>
-            </div>
-            {l10n.getString(
-              "landing-redesign-pricing-plans-bundle-item-relay-premium-description",
-            )}
-          </span>
-        </>,
+        <a key="bundle-vpn" className={styles.bundleItem} href="">
+          <div className={styles.bundleTitle}>
+            <VpnIcon alt="" />
+            <b>
+              {l10n.getString(
+                "landing-redesign-pricing-plans-bundle-item-mozilla-vpn-title",
+              )}
+            </b>
+          </div>
+          {l10n.getString(
+            "landing-redesign-pricing-plans-bundle-item-mozilla-vpn-description",
+          )}
+        </a>,
+        <a key="bundle-monitor" className={styles.bundleItem} href="">
+          <div className={styles.bundleTitle}>
+            <MonitorIcon alt="" />
+            <b>
+              {l10n.getString(
+                "landing-redesign-pricing-plans-bundle-item-monitor-plus-title",
+              )}
+            </b>
+          </div>
+          {l10n.getString(
+            "landing-redesign-pricing-plans-bundle-item-monitor-plus-description",
+          )}
+        </a>,
+        <a key="bundle-relay" className={styles.bundleItem} href="">
+          <div className={styles.bundleTitle}>
+            <RelayIcon alt="" />
+            <b>
+              {l10n.getString(
+                "landing-redesign-pricing-plans-bundle-item-relay-premium-title",
+              )}
+            </b>
+          </div>
+          {l10n.getString(
+            "landing-redesign-pricing-plans-bundle-item-relay-premium-description",
+          )}
+        </a>,
       ],
       cta: (
         <>
           <p id="pricingPlanBundle">
             <span className={styles.pricingCardSavings}>
               {l10n.getString(
-                "landing-redesign-pricing-plans-card-cta-yearly-billing-sum",
+                "landing-redesign-pricing-plans-card-cta-yearly-billing-label",
                 {
                   yearlyPrice: priceFormatter.format(
                     props.subscriptionBillingAmount.bundle.yearly,
@@ -276,6 +270,7 @@ export const PricingPlanListWithBundle = (props: Props & ScanLimitProp) => {
       cta: (
         <>
           <BillingPeriodToggle
+            buttonColorThemes="blue"
             onChange={(newValue) => {
               setBillingPeriod(newValue);
               recordTelemetry("button", "click", {
@@ -287,18 +282,20 @@ export const PricingPlanListWithBundle = (props: Props & ScanLimitProp) => {
             }}
           />
           <p aria-live="polite" id="pricingPlansMonthlyOrYearly">
-            {billingPeriod === "yearly" && (
-              <span className={styles.pricingCardSavings}>
-                {l10n.getString(
-                  "landing-redesign-pricing-plans-card-cta-yearly-billing-sum",
-                  {
-                    yearlyPrice: priceFormatter.format(
-                      12 * monthlyPriceAnnualBilling,
-                    ),
-                  },
-                )}
-              </span>
-            )}
+            <span className={styles.pricingCardSavings}>
+              {billingPeriod === "yearly"
+                ? l10n.getString(
+                    "landing-redesign-pricing-plans-card-cta-yearly-billing-label",
+                    {
+                      yearlyPrice: priceFormatter.format(
+                        12 * monthlyPriceAnnualBilling,
+                      ),
+                    },
+                  )
+                : l10n.getString(
+                    "landing-redesign-pricing-plans-card-cta-monthly-billing-label",
+                  )}
+            </span>
             <strong>
               {billingPeriod === "yearly"
                 ? l10n.getString(

@@ -21,11 +21,13 @@ import {
 import styles from "./BillingPeriod.module.scss";
 import { useL10n } from "../../hooks/l10n";
 import { VisuallyHidden } from "../server/VisuallyHidden";
+import { ButtonColorThemes } from "./Button";
 
 export type BillingPeriod = "yearly" | "monthly";
 
 export type Props = {
   defaultValue?: BillingPeriod;
+  buttonColorThemes?: ButtonColorThemes;
   onChange: (_selectedBillingPeriod: BillingPeriod) => void;
 };
 
@@ -40,6 +42,7 @@ export const BillingPeriodToggle = (props: Props) => {
         "landing-premium-plans-table-billing-plus-period-label",
       )}
       orientation="horizontal"
+      buttonColorThemes={props.buttonColorThemes}
     >
       <Radio value="yearly">
         {l10n.getString(
@@ -58,13 +61,20 @@ export const BillingPeriodToggle = (props: Props) => {
 const RadioContext = createContext<RadioGroupState | null>(null);
 
 const RadioGroup = (
-  props: RadioGroupProps & AriaRadioGroupProps & { children: ReactNode },
+  props: RadioGroupProps &
+    AriaRadioGroupProps & {
+      children: ReactNode;
+      buttonColorThemes?: ButtonColorThemes;
+    },
 ) => {
   const state = useRadioGroupState(props);
   const { radioGroupProps } = useRadioGroup(props, state);
 
   return (
-    <div {...radioGroupProps} className={styles.toggleContainer}>
+    <div
+      {...radioGroupProps}
+      className={`${styles.toggleContainer} ${styles[props.buttonColorThemes ?? "purple"]}`}
+    >
       <RadioContext.Provider value={state}>
         {props.children}
       </RadioContext.Provider>

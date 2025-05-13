@@ -57,7 +57,8 @@ landing-redesign-pricing-plans-bundle-section-description = 30-day money-back gu
 landing-redesign-pricing-plans-cards-title = Pricing plans
 
 #   $yearlyPrice (string) - annual plan’s price in total, including currency, e.g. "$13.37"
-landing-redesign-pricing-plans-card-cta-yearly-billing-sum = { $yearlyPrice } billed yearly
+landing-redesign-pricing-plans-card-cta-monthly-billing-label = Billed monthly
+landing-redesign-pricing-plans-card-cta-yearly-billing-label = { $yearlyPrice } billed yearly
 # There is not much room in the UI for this string:
 # Abbreviating “month” with “mo”.
 # Variables:
