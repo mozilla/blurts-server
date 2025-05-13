@@ -69,7 +69,6 @@ declare module "knex/types/tables" {
     keyof AttributionRow,
     "id" | "subscriber_id" | "created_at" | "updated_at"
   >;
-
   interface FeatureFlagViewRow {
     name: string;
     is_enabled: boolean;
