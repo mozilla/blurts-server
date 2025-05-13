@@ -389,6 +389,8 @@ declare module "knex/types/tables" {
     | "free_users"
     | "has_run_scan"
     | "has_not_run_scan"
+    | "monthly_user"
+    | "yearly_user"
     | "non_us"
     | "us_only";
 
