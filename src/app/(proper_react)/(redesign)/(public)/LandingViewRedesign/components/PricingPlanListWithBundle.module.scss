@@ -21,6 +21,7 @@
   display: inline-flex;
   flex: 1;
   flex-direction: column;
+  font: tokens.$text-body-sm;
   padding: tokens.$layout-sm tokens.$spacing-lg;
   position: relative;
 
@@ -59,6 +60,7 @@
 
   &Label {
     color: tokens.$color-purple-70;
+    font-weight: 700;
     left: 50%;
     position: absolute;
     top: tokens.$spacing-lg;
@@ -79,6 +81,7 @@
     text-align: center;
 
     b {
+      font: tokens.$text-title-2xs;
       font-weight: 700;
       padding: tokens.$spacing-xs 0;
     }
@@ -120,8 +123,13 @@
 
       strong {
         display: flex;
+        font: tokens.$text-title-2xs;
         gap: tokens.$spacing-sm;
         text-align: center;
+      }
+
+      s {
+        text-decoration-thickness: 0.1em;
       }
 
       button,
@@ -135,21 +143,16 @@
       flex: 1 0 24px;
       max-width: 24px;
       height: auto;
-      padding-top: calc(tokens.$spacing-xs * 0.5);
     }
   }
 
   .plusNote {
     border-bottom: 1px solid tokens.$color-grey-10;
-    align-items: flex-start;
+    align-items: center;
     display: flex;
     gap: tokens.$spacing-sm;
     padding-bottom: tokens.$spacing-md;
     width: 100%;
-
-    svg {
-      padding: 0;
-    }
   }
 
   .bundleTitle {
@@ -185,6 +188,6 @@
   }
 
   .pricingCardSavings {
-    color: tokens.$color-black;
+    color: tokens.$color-grey-50;
   }
 }
