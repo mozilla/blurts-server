@@ -9,10 +9,10 @@
 }
 
 .header {
-  gap: tokens.$layout-xs;
+  gap: tokens.$spacing-sm;
   text-align: center;
 }
 
 .content {
-  gap: tokens.$layout-lg;
+  gap: tokens.$layout-md;
 }

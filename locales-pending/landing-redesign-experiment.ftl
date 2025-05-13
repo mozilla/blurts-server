@@ -80,7 +80,28 @@ landing-redesign-pricing-plans-card-plus-label = Recommended
 landing-redesign-pricing-plans-card-plus-title = { -brand-monitor-plus }
 landing-redesign-pricing-plans-card-plus-subtitle = Automatic data removal requests
 landing-redesign-pricing-plans-card-plus-cta-label = Get { -brand-monitor-plus }
-landing-redesign-pricing-plans-card-plus-included-features-label = Everything in Monitor
+landing-redesign-pricing-plans-card-plus-with-bundle-included-features-label = Everything in Monitor
+
+landing-redesign-pricing-plans-card-plus-with-bundle-subtitle = Automatic personal info removal
+# Variables:
+# $data_broker_sites_total_num is the total number of data broker sites available to scan. It will always be more than 1.
+landing-redesign-pricing-plans-card-plus-with-bundle-feature-item-one = {
+  $data_broker_sites_total_num ->
+    *[other] <b>Monthly scans</b> of { $data_broker_sites_total_num }+ data brokers that may be selling your personal info
+}
+landing-redesign-pricing-plans-card-plus-with-bundle-feature-item-two = <b>Automatic removal</b> of personal info from data broker sites
+landing-redesign-pricing-plans-card-plus-with-bundle-feature-item-three = Receive <b>data broker exposure alerts</b>
+
+landing-redesign-pricing-plans-card-free-with-bundle-subtitle = Free data breach alerts
+# Variables:
+# $data_broker_sites_total_num is the total number of data broker sites available to scan. It will always be more than 1.
+landing-redesign-pricing-plans-card-free-with-bundle-feature-item-one = {
+  $data_broker_sites_total_num ->
+    *[other] <b>One-time scan</b> of { $data_broker_sites_total_num }+ data brokers that may be selling your personal info
+}
+landing-redesign-pricing-plans-card-free-with-bundle-feature-item-two = <b>Guided manual removal</b> of personal info from data broker sites
+landing-redesign-pricing-plans-card-free-with-bundle-feature-item-three = <b>Continuous monitoring</b> for data broker exposures and data breaches
+landing-redesign-pricing-plans-card-free-with-bundle-feature-item-four = Receive <b>data breach exposure alerts</b>
 
 # Variables:
 # $data_broker_sites_total_num is the total number of data broker sites available to scan. It will always be more than 1.

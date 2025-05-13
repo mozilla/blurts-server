@@ -203,7 +203,7 @@ export const PricingPlanListWithBundle = (props: Props & ScanLimitProp) => {
       type: "plus",
       title: l10n.getString("landing-redesign-pricing-plans-card-plus-title"),
       subtitle: l10n.getString(
-        "landing-redesign-pricing-plans-card-plus-subtitle",
+        "landing-redesign-pricing-plans-card-plus-with-bundle-subtitle",
       ),
       features: [
         <>
@@ -211,7 +211,7 @@ export const PricingPlanListWithBundle = (props: Props & ScanLimitProp) => {
             <PlusIcon alt="Includes" />
             <b>
               {l10n.getString(
-                "landing-redesign-pricing-plans-card-plus-included-features-label",
+                "landing-redesign-pricing-plans-card-plus-with-bundle-included-features-label",
               )}
             </b>
           </span>
@@ -220,7 +220,7 @@ export const PricingPlanListWithBundle = (props: Props & ScanLimitProp) => {
           <CheckIcon alt="Includes" />
           <span>
             {l10n.getFragment(
-              "landing-redesign-pricing-plans-card-plus-feature-item-one",
+              "landing-redesign-pricing-plans-card-plus-with-bundle-feature-item-one",
               {
                 vars: {
                   data_broker_sites_total_num: CONST_ONEREP_DATA_BROKER_COUNT,
@@ -234,21 +234,7 @@ export const PricingPlanListWithBundle = (props: Props & ScanLimitProp) => {
           <CheckIcon alt="Includes" />
           <span>
             {l10n.getFragment(
-              "landing-redesign-pricing-plans-card-plus-feature-item-one",
-              {
-                vars: {
-                  data_broker_sites_total_num: CONST_ONEREP_DATA_BROKER_COUNT,
-                },
-                elems: { b: <b /> },
-              },
-            )}
-          </span>
-        </>,
-        <>
-          <CheckIcon alt="Includes" />
-          <span>
-            {l10n.getFragment(
-              "landing-redesign-pricing-plans-card-plus-feature-item-two",
+              "landing-redesign-pricing-plans-card-plus-with-bundle-feature-item-two",
               {
                 elems: { b: <b /> },
               },
@@ -259,7 +245,7 @@ export const PricingPlanListWithBundle = (props: Props & ScanLimitProp) => {
           <CheckIcon alt="Includes" />
           <span>
             {l10n.getFragment(
-              "landing-redesign-pricing-plans-card-plus-feature-item-four",
+              "landing-redesign-pricing-plans-card-plus-with-bundle-feature-item-three",
               {
                 elems: { b: <b /> },
               },
@@ -342,14 +328,14 @@ export const PricingPlanListWithBundle = (props: Props & ScanLimitProp) => {
       type: "free",
       title: l10n.getString("landing-redesign-pricing-plans-card-free-title"),
       subtitle: l10n.getString(
-        "landing-redesign-pricing-plans-card-free-subtitle",
+        "landing-redesign-pricing-plans-card-free-with-bundle-subtitle",
       ),
       features: [
         <>
           <CheckIcon alt="Includes" />
           <span>
             {l10n.getFragment(
-              "landing-redesign-pricing-plans-card-free-feature-item-one",
+              "landing-redesign-pricing-plans-card-free-with-bundle-feature-item-one",
               {
                 vars: {
                   data_broker_sites_total_num: CONST_ONEREP_DATA_BROKER_COUNT,
@@ -363,7 +349,7 @@ export const PricingPlanListWithBundle = (props: Props & ScanLimitProp) => {
           <CheckIcon alt="Includes" />
           <span>
             {l10n.getFragment(
-              "landing-redesign-pricing-plans-card-free-feature-item-two",
+              "landing-redesign-pricing-plans-card-free-with-bundle-feature-item-two",
               {
                 elems: { b: <b /> },
               },
@@ -374,7 +360,7 @@ export const PricingPlanListWithBundle = (props: Props & ScanLimitProp) => {
           <CheckIcon alt="Includes" />
           <span>
             {l10n.getFragment(
-              "landing-redesign-pricing-plans-card-free-feature-item-three",
+              "landing-redesign-pricing-plans-card-free-with-bundle-feature-item-three",
               {
                 elems: { b: <b /> },
               },
@@ -385,7 +371,7 @@ export const PricingPlanListWithBundle = (props: Props & ScanLimitProp) => {
           <CheckIcon alt="Includes" />
           <span>
             {l10n.getFragment(
-              "landing-redesign-pricing-plans-card-free-feature-item-four",
+              "landing-redesign-pricing-plans-card-free-with-bundle-feature-item-four",
               {
                 elems: { b: <b /> },
               },
