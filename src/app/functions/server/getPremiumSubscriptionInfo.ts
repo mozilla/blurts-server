@@ -35,11 +35,18 @@ export function getPremiumSubscriptionUrl({
 
   const subscriptionUrl = process.env.FXA_SUBSCRIPTIONS_URL as string;
   const productId = process.env.PREMIUM_PRODUCT_ID as string;
-  const planId = (
-    type === "monthly"
-      ? process.env.PREMIUM_PLAN_ID_MONTHLY_US
-      : process.env.PREMIUM_PLAN_ID_YEARLY_US
-  ) as string;
+  let planId = "";
+  switch (type) {
+    case "monthly":
+      planId = process.env.PREMIUM_PLAN_ID_MONTHLY_US as string;
+      break;
+    case "yearly":
+      planId = process.env.PREMIUM_PLAN_ID_YEARLY_US as string;
+      break;
+    case "bundle":
+      planId = process.env.PREMIUM_PLAN_ID_BUNDLE_US as string;
+      break;
+  }
 
   return `${subscriptionUrl}/products/${productId}?plan=${planId}`;
 }

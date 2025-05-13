@@ -89,6 +89,7 @@ jobs:
           PREMIUM_PRODUCT_ID: ${{ secrets.STAGE_PREMIUM_PRODUCT_ID }}
           PREMIUM_PLAN_ID_MONTHLY_US: ${{ secrets.STAGE_PREMIUM_PLAN_ID_MONTHLY_US }}
           PREMIUM_PLAN_ID_YEARLY_US: ${{ secrets.STAGE_PREMIUM_PLAN_ID_YEARLY_US }}
+          PREMIUM_PLAN_ID_BUNDLE_US: ${{ secrets.STAGE_PREMIUM_PLAN_ID_BUNDLE_US }}
           REDIS_URL: "redis://redis.mock"
       - uses: actions/upload-artifact@v4
         if: always()

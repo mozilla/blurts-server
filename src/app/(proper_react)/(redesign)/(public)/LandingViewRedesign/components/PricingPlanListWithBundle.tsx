@@ -207,7 +207,7 @@ export const PricingPlanListWithBundle = (props: Props & ScanLimitProp) => {
             disabled={props.scanLimitReached}
             variant="primary"
             theme="blue"
-            href={`${props.premiumSubscriptionUrl[billingPeriod]}${additionalSubplatParamsString}`}
+            href={`${props.premiumSubscriptionUrl["bundle"]}${additionalSubplatParamsString}`}
             event={{
               module: "upgradeIntent",
               name: "click",

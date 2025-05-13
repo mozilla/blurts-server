@@ -41,7 +41,10 @@ export const PricingPlansWithBundle = (props: LandingPageProps) => {
             type: "yearly",
             enabledFeatureFlags: props.enabledFeatureFlags,
           }),
-          bundle: "",
+          bundle: getPremiumSubscriptionUrl({
+            type: "bundle",
+            enabledFeatureFlags: props.enabledFeatureFlags,
+          }),
         }}
         subscriptionBillingAmount={getSubscriptionBillingAmount()}
         scanLimitReached={props.scanLimitReached}
