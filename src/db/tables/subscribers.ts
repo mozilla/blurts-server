@@ -282,6 +282,22 @@ async function setBreachResolution(
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
+async function setMoscaryId(
+  user: SubscriberRow,
+  moscaryId: NonNullable<SubscriberRow["moscary_id"]>,
+): Promise<(SubscriberRow & WithEmailAddresses) | null> {
+  await knex("subscribers").where("id", user.id).update({
+    moscary_id: moscaryId,
+    // @ts-ignore knex.fn.now() results in it being set to a date,
+    // even if it's not typed as a JS date object:
+    updated_at: knex.fn.now(),
+  });
+  return (await getSubscriberByFxaUid(user.fxa_uid)) ?? null;
+}
+/* c8 ignore stop */
+
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function deleteUnverifiedSubscribers() {
   const expiredDateTime = new Date(
     Date.now() -
@@ -666,6 +682,7 @@ export {
   setAllEmailsToPrimary,
   setMonthlyMonitorReport,
   setBreachResolution,
+  setMoscaryId,
   getPotentialSubscribersWaitingForFirstDataBrokerRemovalFixedEmail,
   getFreeSubscribersWaitingForMonthlyEmail,
   getPlusSubscribersWaitingForMonthlyEmail,
