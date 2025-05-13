@@ -17,6 +17,8 @@ import { modifyAttributionsForUrlSearchParams } from "../../../../../functions/u
 import { TelemetryButton } from "../../../../../components/client/TelemetryButton";
 import { VisuallyHidden } from "../../../../../components/server/VisuallyHidden";
 import {
+  CONST_MAX_NUM_ADDRESSES,
+  CONST_MAX_NUM_ADDRESSES_PLUS,
   CONST_ONEREP_DATA_BROKER_COUNT,
   CONST_URL_MONITOR_LANDING_PAGE_ID,
 } from "../../../../../../constants";
@@ -252,6 +254,20 @@ export const PricingPlanListWithBundle = (props: Props & ScanLimitProp) => {
             )}
           </span>
         </>,
+        <>
+          <CheckIcon alt="Includes" />
+          <span>
+            {l10n.getFragment(
+              "landing-redesign-pricing-plans-card-plus-with-bundle-feature-item-four",
+              {
+                elems: { b: <b /> },
+                vars: {
+                  max_email_addresses: CONST_MAX_NUM_ADDRESSES_PLUS,
+                },
+              },
+            )}
+          </span>
+        </>,
       ],
       cta: (
         <>
@@ -374,6 +390,20 @@ export const PricingPlanListWithBundle = (props: Props & ScanLimitProp) => {
               "landing-redesign-pricing-plans-card-free-with-bundle-feature-item-four",
               {
                 elems: { b: <b /> },
+              },
+            )}
+          </span>
+        </>,
+        <>
+          <CheckIcon alt="Includes" />
+          <span>
+            {l10n.getFragment(
+              "landing-redesign-pricing-plans-card-free-with-bundle-feature-item-five",
+              {
+                elems: { b: <b /> },
+                vars: {
+                  max_email_addresses: CONST_MAX_NUM_ADDRESSES,
+                },
               },
             )}
           </span>

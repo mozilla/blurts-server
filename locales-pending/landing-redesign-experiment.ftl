@@ -91,6 +91,12 @@ landing-redesign-pricing-plans-card-plus-with-bundle-feature-item-one = {
 }
 landing-redesign-pricing-plans-card-plus-with-bundle-feature-item-two = <b>Automatic removal</b> of personal info from data broker sites
 landing-redesign-pricing-plans-card-plus-with-bundle-feature-item-three = Receive <b>data broker exposure alerts</b>
+# Variables:
+# $max_email_addresses is the max number of email addresses that can be monitored for breaches. It will always be more than 1.
+landing-redesign-pricing-plans-card-plus-with-bundle-feature-item-four = {
+  $max_email_addresses ->
+    *[other] Breach alert monitoring for <b>{ $max_email_addresses } email addresses</b>
+}
 
 landing-redesign-pricing-plans-card-free-with-bundle-subtitle = Free data breach alerts
 # Variables:
@@ -102,6 +108,12 @@ landing-redesign-pricing-plans-card-free-with-bundle-feature-item-one = {
 landing-redesign-pricing-plans-card-free-with-bundle-feature-item-two = <b>Guided manual removal</b> of personal info from data broker sites
 landing-redesign-pricing-plans-card-free-with-bundle-feature-item-three = <b>Continuous monitoring</b> for data broker exposures and data breaches
 landing-redesign-pricing-plans-card-free-with-bundle-feature-item-four = Receive <b>data breach exposure alerts</b>
+# Variables:
+# $max_email_addresses is the max number of email addresses that can be monitored for breaches. It will always be more than 1.
+landing-redesign-pricing-plans-card-free-with-bundle-feature-item-five = {
+  $max_email_addresses ->
+    *[other] Breach alert monitoring for <b>{ $max_email_addresses } email addresses</b>
+}
 
 # Variables:
 # $data_broker_sites_total_num is the total number of data broker sites available to scan. It will always be more than 1.
