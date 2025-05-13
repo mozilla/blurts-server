@@ -22,10 +22,10 @@ export const BundleOnboardingView = (props: Props) => {
         <p>{l10n.getString("bundle-onboarding-subtitle")}</p>
       </header>
 
-      <div className={styles.productList}>
+      <div className={styles.productsWrapper}>
         <article>
-          <h3>{l10n.getString("bundle-monitor-vpn-title")}</h3>
-          <p>{l10n.getString("bundle-monitor-vpn-description")}</p>
+          <h3>{l10n.getString("bundle-mozilla-vpn-title")}</h3>
+          <p>{l10n.getString("bundle-mozilla-vpn-description")}</p>
           <TelemetryButton
             event={{
               module: "upgradeIntent",
@@ -34,7 +34,7 @@ export const BundleOnboardingView = (props: Props) => {
             }}
             variant="primary"
           >
-            {l10n.getString("bundle-monitor-vpn-cta")}
+            {l10n.getString("bundle-mozilla-vpn-cta")}
           </TelemetryButton>
         </article>
 

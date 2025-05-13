@@ -1,8 +1,53 @@
 @use "../../../../../tokens";
 
 .header {
+  margin: tokens.$layout-md 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  gap: tokens.$spacing-lg;
+
   h1 {
     font: tokens.$text-title-md;
     font-family: var(--font-inter);
+  }
+
+  p {
+    font: tokens.$text-body-lg;
+    color: tokens.$color-grey-50;
+    font-weight: 500;
+  }
+}
+
+.productsWrapper {
+  display: flex;
+  flex-direction: row;
+  gap: tokens.$spacing-lg;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+
+  article {
+    background-color: tokens.$color-white;
+    border-radius: tokens.$border-radius-xl;
+    box-shadow: tokens.$box-shadow-md;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: tokens.$spacing-lg;
+    width: tokens.$content-sm;
+    gap: tokens.$spacing-md;
+
+    h3 {
+      font: tokens.$text-body-xl;
+      font-weight: 700;
+    }
+
+    button {
+      width: 100%;
+      background-color: tokens.$color-blue-50; // overwrite back to previous primary colour
+    }
   }
 }
