@@ -18,3 +18,4 @@ unsubscribe-success-cta = Đăng nhập vào { -brand-monitor }
 # Error warning
 
 unsubscription-failed = Hủy đăng ký không thành công. <try_again_link>Thử lại.</try_again_link>
+unsubscription-failed-2 = Hủy đăng ký không thành công.
