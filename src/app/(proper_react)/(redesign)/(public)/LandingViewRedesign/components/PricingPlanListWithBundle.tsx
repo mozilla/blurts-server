@@ -5,6 +5,8 @@
 "use client";
 
 import { ReactNode, useRef, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useCookies } from "react-cookie";
 import { useL10n } from "../../../../../hooks/l10n";
 import { useTelemetry } from "../../../../../hooks/useTelemetry";
@@ -72,6 +74,8 @@ type PricingPlanData = {
 export const PricingPlanListWithBundle = (props: Props & ScanLimitProp) => {
   const l10n = useL10n();
   const recordTelemetry = useTelemetry();
+  const pathname = usePathname();
+  const isLandingPage = pathname === "/";
   const [billingPeriod, setBillingPeriod] = useState<BillingPeriod>("yearly");
 
   // The cookie `attributionsLastTouch` is set in the component `PageLoadEvent`
@@ -129,7 +133,7 @@ export const PricingPlanListWithBundle = (props: Props & ScanLimitProp) => {
       features: [
         <a
           key="bundle-vpn"
-          className={styles.bundleItem}
+          className={styles.bundleItemLink}
           href={`${props.productBundleUrl.vpn}?utm_medium=mozilla-websites&utm_source=monitor-product&utm_campaign=landing-page-pricing-grid&utm_content=landing-page-pricing-grid-us`}
         >
           <div className={styles.bundleTitle}>
@@ -144,7 +148,12 @@ export const PricingPlanListWithBundle = (props: Props & ScanLimitProp) => {
             "landing-redesign-pricing-plans-bundle-item-mozilla-vpn-description",
           )}
         </a>,
-        <a key="bundle-monitor" className={styles.bundleItem} aria-disabled>
+        <Link
+          key="bundle-monitor"
+          className={styles.bundleItemLink}
+          href="/"
+          aria-disabled={isLandingPage}
+        >
           <div className={styles.bundleTitle}>
             <MonitorIcon alt="" />
             <b>
@@ -156,10 +165,10 @@ export const PricingPlanListWithBundle = (props: Props & ScanLimitProp) => {
           {l10n.getString(
             "landing-redesign-pricing-plans-bundle-item-monitor-plus-description",
           )}
-        </a>,
+        </Link>,
         <a
           key="bundle-relay"
-          className={styles.bundleItem}
+          className={styles.bundleItemLink}
           href={`${props.productBundleUrl.relay}?utm_medium=mozilla-websites&utm_source=monitor-product&utm_campaign=landing-page-pricing-grid&utm_content=landing-page-pricing-grid-us`}
         >
           <div className={styles.bundleTitle}>

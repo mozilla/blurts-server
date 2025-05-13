@@ -34,12 +34,15 @@ jest.mock("next-auth/react", () => {
     }),
   };
 });
-jest.mock("next/navigation", () => ({
-  useSearchParams: () => ({
-    toString: jest.fn(),
-  }),
-  usePathname: jest.fn(),
-}));
+
+jest.mock("next/navigation", () => {
+  return {
+    useSearchParams: () => ({
+      toString: jest.fn(),
+    }),
+    usePathname: () => "/",
+  };
+});
 
 jest.mock("../../../../hooks/useTelemetry");
 
@@ -844,7 +847,31 @@ describe("Pricing plan with bundle", () => {
     expect(plusSubscribeButton).toHaveFocus();
   });
 
-  it("can initiate sign in from the pricing plan", async () => {
+  it("links to the Mozilla privacy products from the bundle pricing plan", async () => {
+    const ComposedDashboard = composeStory(
+      LandingRedesignUsWithPrivacyProductBundle,
+      Meta,
+    );
+    render(<ComposedDashboard />);
+    const bundleCard = screen.getByLabelText("Privacy Protection Plan");
+
+    const mozillaVpnLink = getByRole(bundleCard, "link", {
+      name: /Mozilla VPN/,
+    });
+    const relayPremiumLink = getByRole(bundleCard, "link", {
+      name: /Relay Premium/,
+    });
+    const mozillaMonitorLink = getByRole(bundleCard, "link", {
+      name: /Monitor Plus/,
+    });
+
+    expect(mozillaVpnLink).not.toHaveAttribute("href", "");
+    expect(relayPremiumLink).not.toHaveAttribute("href", "");
+    expect(mozillaMonitorLink).toHaveAttribute("href", "/");
+    expect(mozillaMonitorLink).toHaveAttribute("aria-disabled", "true");
+  });
+
+  it("can initiate sign in from the Monitor Plus pricing plan", async () => {
     const user = userEvent.setup();
 
     const ComposedDashboard = composeStory(
@@ -863,7 +890,7 @@ describe("Pricing plan with bundle", () => {
     expect(signIn).toHaveBeenCalledTimes(1);
   });
 
-  it("can initiate sign in from the Monitor (Free) pricing card", async () => {
+  it("can initiate sign in from the Monitor (free) pricing card", async () => {
     const user = userEvent.setup();
 
     const ComposedDashboard = composeStory(
@@ -1013,7 +1040,38 @@ describe("Pricing plan with bundle", () => {
     );
   });
 
-  it("counts the number of clicks on the pricing card upsell button", async () => {
+  it("counts the number of clicks on the pricing card bundle upsell button", async () => {
+    const mockedRecord = useTelemetry();
+    const ComposedDashboard = composeStory(
+      LandingRedesignUsWithPrivacyProductBundle,
+      Meta,
+    );
+    render(<ComposedDashboard />);
+
+    const user = userEvent.setup();
+    const bundleCard = screen.getByLabelText("Privacy Protection Plan");
+    const upsellButton = getByRole(bundleCard, "link", {
+      name: "Get started",
+    });
+    // jsdom will complain about not being able to navigate to a different page
+    // after clicking the link; suppress that error, as it's not relevant to the
+    // test:
+    jest
+      .spyOn(console, "error")
+      .mockImplementationOnce(() => undefined)
+      .mockImplementationOnce(() => undefined);
+
+    await user.click(upsellButton);
+    expect(mockedRecord).toHaveBeenCalledWith(
+      "upgradeIntent",
+      "click",
+      expect.objectContaining({
+        button_id: "purchase_bundle_landing_page",
+      }),
+    );
+  });
+
+  it("counts the number of clicks on the pricing card Plus upsell button", async () => {
     const mockedRecord = useTelemetry();
     const ComposedDashboard = composeStory(
       LandingRedesignUsWithPrivacyProductBundle,
