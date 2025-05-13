@@ -6,6 +6,10 @@ import { FeatureFlagName } from "../../../../../../db/tables/featureFlags";
 import { TelemetryButton } from "../../../../../components/client/TelemetryButton";
 import { ExtendedReactLocalization } from "../../../../../functions/l10n";
 import styles from "./BundleOnboardingView.module.scss";
+import MozillaVpnLogo from "./images/bundle-mozilla-vpn-logo.svg";
+import RelayPremiumLogo from "./images/bundle-relay-premium-logo.svg";
+import MonitorPlusLogo from "./images/bundle-monitor-plus-logo.svg";
+import Image from "next/image";
 
 export type Props = {
   l10n: ExtendedReactLocalization;
@@ -18,56 +22,76 @@ export const BundleOnboardingView = (props: Props) => {
   return (
     <main>
       <header className={styles.header}>
-        <h1>{l10n.getString("bundle-onboarding-title")}</h1>
+        <h1>
+          {l10n.getFragment("bundle-onboarding-title", {
+            elems: {
+              gradient: <span className={styles.gradientTextFill} />,
+            },
+          })}
+        </h1>
         <p>{l10n.getString("bundle-onboarding-subtitle")}</p>
       </header>
 
-      <div className={styles.productsWrapper}>
-        <article>
-          <h3>{l10n.getString("bundle-mozilla-vpn-title")}</h3>
-          <p>{l10n.getString("bundle-mozilla-vpn-description")}</p>
-          <TelemetryButton
-            event={{
-              module: "upgradeIntent",
-              name: "click",
-              data: { button_id: "launch_vpn_download_page" },
-            }}
-            variant="primary"
-          >
-            {l10n.getString("bundle-mozilla-vpn-cta")}
-          </TelemetryButton>
-        </article>
+      <section className={styles.productsContainer}>
+        <div className={styles.productsWrapper}>
+          <article>
+            <div className={styles.logoWrapper}>
+              <Image src={MozillaVpnLogo} alt="" width="50" height="50" />
+            </div>
+            <h3>{l10n.getString("bundle-mozilla-vpn-title")}</h3>
+            <p>{l10n.getString("bundle-mozilla-vpn-description")}</p>
+            <TelemetryButton
+              className={styles.ctaBtn}
+              event={{
+                module: "upgradeIntent",
+                name: "click",
+                data: { button_id: "launch_vpn_download_page" },
+              }}
+              variant="primary"
+            >
+              {l10n.getString("bundle-mozilla-vpn-cta")}
+            </TelemetryButton>
+          </article>
 
-        <article>
-          <h3>{l10n.getString("bundle-monitor-plus-title")}</h3>
-          <p>{l10n.getString("bundle-monitor-plus-description")}</p>
-          <TelemetryButton
-            event={{
-              module: "upgradeIntent",
-              name: "click",
-              data: { button_id: "launch_monitor" },
-            }}
-            variant="primary"
-          >
-            {l10n.getString("bundle-monitor-plus-cta")}
-          </TelemetryButton>
-        </article>
+          <article>
+            <div className={styles.logoWrapper}>
+              <Image src={MonitorPlusLogo} alt="" width="50" height="50" />
+            </div>
+            <h3>{l10n.getString("bundle-monitor-plus-title")}</h3>
+            <p>{l10n.getString("bundle-monitor-plus-description")}</p>
+            <TelemetryButton
+              className={styles.ctaBtn}
+              event={{
+                module: "upgradeIntent",
+                name: "click",
+                data: { button_id: "launch_monitor" },
+              }}
+              variant="primary"
+            >
+              {l10n.getString("bundle-monitor-plus-cta")}
+            </TelemetryButton>
+          </article>
 
-        <article>
-          <h3>{l10n.getString("bundle-relay-premium-title")}</h3>
-          <p>{l10n.getString("bundle-relay-premium-description")}</p>
-          <TelemetryButton
-            event={{
-              module: "upgradeIntent",
-              name: "click",
-              data: { button_id: "launch_relay" },
-            }}
-            variant="primary"
-          >
-            {l10n.getString("bundle-monitor-plus-cta")}
-          </TelemetryButton>
-        </article>
-      </div>
+          <article>
+            <div className={styles.logoWrapper}>
+              <Image src={RelayPremiumLogo} alt="" width="50" height="50" />
+            </div>
+            <h3>{l10n.getString("bundle-relay-premium-title")}</h3>
+            <p>{l10n.getString("bundle-relay-premium-description")}</p>
+            <TelemetryButton
+              className={styles.ctaBtn}
+              event={{
+                module: "upgradeIntent",
+                name: "click",
+                data: { button_id: "launch_relay" },
+              }}
+              variant="primary"
+            >
+              {l10n.getString("bundle-monitor-plus-cta")}
+            </TelemetryButton>
+          </article>
+        </div>
+      </section>
     </main>
   );
 };

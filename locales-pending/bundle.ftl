@@ -2,7 +2,7 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-bundle-onboarding-title = You’re ready to protect your privacy.
+bundle-onboarding-title = You’re ready to <gradient>protect your privacy.</gradient>
 bundle-onboarding-subtitle = Go to each tool to get started.
 
 bundle-mozilla-vpn-title = { -brand-mozilla-vpn }
@@ -16,4 +16,3 @@ bundle-monitor-plus-cta = Go to Monitor
 bundle-relay-premium-title = { -brand-monitor-premium }
 bundle-relay-premium-description = Create an email mask to protect your real address from spam.
 bundle-relay-premium-CTA = Go to Relay
-

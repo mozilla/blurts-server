@@ -1,6 +1,7 @@
 @use "../../../../../tokens";
 
 .header {
+  padding: tokens.$spacing-md;
   margin: tokens.$layout-md 0;
   display: flex;
   flex-direction: column;
@@ -11,6 +12,19 @@
   h1 {
     font: tokens.$text-title-md;
     font-family: var(--font-inter);
+
+    .gradientTextFill {
+      background: linear-gradient(
+        180deg,
+        tokens.$color-blue-30 30%,
+        tokens.$color-purple-40 100%
+      );
+      // src: https://www.geeksforgeeks.org/how-to-create-linear-gradient-text-using-html-and-css/
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+    }
   }
 
   p {
@@ -20,34 +34,70 @@
   }
 }
 
-.productsWrapper {
-  display: flex;
-  flex-direction: row;
-  gap: tokens.$spacing-lg;
-  justify-content: center;
-  width: 100%;
-  text-align: center;
-
-  article {
-    background-color: tokens.$color-white;
-    border-radius: tokens.$border-radius-xl;
-    box-shadow: tokens.$box-shadow-md;
+.productsContainer {
+  @media screen and (max-width: tokens.$screen-lg) {
+    margin-bottom: tokens.$layout-md;
+  }
+  .productsWrapper {
+    padding: tokens.$spacing-md;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    gap: tokens.$spacing-lg;
     justify-content: center;
-    padding: tokens.$spacing-lg;
-    width: tokens.$content-sm;
-    gap: tokens.$spacing-md;
+    width: 100%;
+    text-align: center;
 
-    h3 {
-      font: tokens.$text-body-xl;
-      font-weight: 700;
+    @media screen and (min-width: tokens.$screen-md) {
+      flex-direction: row;
     }
 
-    button {
+    @media screen and (min-width: tokens.$screen-xl) {
+      padding: 0;
+    }
+
+    article {
+      background-color: tokens.$color-white;
+      border-radius: tokens.$border-radius-xl;
+      box-shadow: tokens.$box-shadow-md;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: tokens.$spacing-2xl tokens.$spacing-xl tokens.$spacing-xl;
       width: 100%;
-      background-color: tokens.$color-blue-50; // overwrite back to previous primary colour
+      gap: tokens.$spacing-lg;
+      margin: 0 auto;
+
+      @media screen and (min-width: tokens.$screen-sm) {
+        max-width: 380px;
+      }
+
+      @media screen and (min-width: tokens.$screen-lg) {
+        margin: 0;
+      }
+
+      .logoWrapper {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+          width: 100%;
+        }
+      }
+
+      h3 {
+        font: tokens.$text-body-xl;
+        font-weight: 700;
+        margin-bottom: tokens.$spacing-xl;
+      }
+
+      .ctaBtn {
+        width: 100%;
+        background-color: tokens.$color-blue-50; // overwrite back to previous primary colour
+      }
     }
   }
 }
