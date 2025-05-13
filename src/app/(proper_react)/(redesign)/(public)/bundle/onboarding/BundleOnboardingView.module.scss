@@ -1,0 +1,8 @@
+@use "../../../../../tokens";
+
+.header {
+  h1 {
+    font: tokens.$text-title-md;
+    font-family: var(--font-inter);
+  }
+}
