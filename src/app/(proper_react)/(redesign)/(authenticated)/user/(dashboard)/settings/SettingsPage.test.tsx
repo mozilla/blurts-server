@@ -11,12 +11,6 @@ import type { EmailAddressRow, SubscriberRow } from "knex/types/tables";
 import { getL10n } from "../../../../../../functions/l10n/storybookAndJest";
 import { TestComponentWrapper } from "../../../../../../../TestComponentWrapper";
 import { SerializedSubscriber } from "../../../../../../../next-auth";
-import {
-  onAddEmail,
-  onApplyCouponCode,
-  onCheckUserHasCurrentCouponSet,
-  onRemoveEmail,
-} from "./actions";
 
 const mockedSessionUpdate = jest.fn();
 const mockedRecordTelemetry = jest.fn();
@@ -36,21 +30,12 @@ jest.mock("../../../../../../hooks/useTelemetry", () => {
   };
 });
 
-jest.mock("./actions", () => {
-  return {
-    onRemoveEmail: jest.fn(),
-    onAddEmail: jest.fn(),
-    onDeleteAccount: () => new Promise(() => undefined),
-    onApplyCouponCode: jest.fn(),
-    onCheckUserHasCurrentCouponSet: jest.fn(),
-  };
-});
-
 const mockedRouterRefresh = jest.fn();
 
 jest.mock("next/navigation", () => ({
   usePathname: () => "/user/settings",
   useRouter: () => ({
+    push: jest.fn(),
     refresh: mockedRouterRefresh,
   }),
 }));
@@ -60,7 +45,7 @@ import { sanitizeEmailRow } from "../../../../../../functions/server/sanitize";
 import { defaultExperimentData } from "../../../../../../../telemetry/generated/nimbus/experiments";
 import { SubscriberEmailPreferencesOutput } from "../../../../../../../db/tables/subscriber_email_preferences";
 import { Shell } from "../../../../Shell/Shell";
-import { ReactNode } from "react";
+import { ComponentProps, ReactNode } from "react";
 import { FeatureFlagName } from "../../../../../../../db/tables/featureFlags";
 import { UserAnnouncementWithDetails } from "../../../../../../../db/tables/user_announcements";
 import { createRandomAnnouncement } from "../../../../../../../apiMocks/mockData";
@@ -253,6 +238,15 @@ const mockedSession = {
   user: mockedUser,
 };
 
+const mockedActions: ComponentProps<typeof SettingsView>["actions"] = {
+  onRemoveEmail: jest.fn(),
+  onAddEmail: jest.fn(),
+  onDeleteAccount: () => new Promise(() => undefined),
+  onApplyCouponCode: jest.fn(),
+  onCheckUserHasCurrentCouponSet: jest.fn(),
+  onHandleUpdateProfileData: jest.fn(),
+};
+
 const mockedAnnouncements: UserAnnouncementWithDetails[] = [
   createRandomAnnouncement(),
   createRandomAnnouncement(),
@@ -307,6 +301,8 @@ describe("Settings page", () => {
           experimentData={defaultExperimentData["Features"]}
           isMonthlySubscriber={true}
           data={mockedPlusSubscriberEmailPreferences}
+          isEligibleForPremium={false}
+          actions={mockedActions}
           userAnnouncements={mockedAnnouncements}
         />
       </SettingsWrapper>,
@@ -345,7 +341,9 @@ describe("Settings page", () => {
           experimentData={defaultExperimentData["Features"]}
           isMonthlySubscriber={true}
           data={mockedPlusSubscriberEmailPreferences}
+          isEligibleForPremium={false}
           userAnnouncements={mockedAnnouncements}
+          actions={mockedActions}
         />
       </SettingsWrapper>,
     );
@@ -383,6 +381,8 @@ describe("Settings page", () => {
             enabledFeatureFlags={[]}
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
+            isEligibleForPremium={false}
+            actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -419,6 +419,8 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
+            actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -474,6 +476,8 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
+            actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -521,6 +525,8 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
+            actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -558,6 +564,8 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
+            actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -598,6 +606,8 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
+            actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -648,6 +658,8 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
+            actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -656,7 +668,7 @@ describe("Settings page", () => {
       const removeButtons = screen.getAllByRole("button", { name: "Remove" });
       await user.click(removeButtons[0]);
 
-      expect(onRemoveEmail).toHaveBeenCalledWith(
+      expect(mockedActions.onRemoveEmail).toHaveBeenCalledWith(
         sanitizeEmailRow(mockedSecondaryVerifiedEmail),
       );
     });
@@ -694,6 +706,8 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
+            actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -707,7 +721,7 @@ describe("Settings page", () => {
       const emailAddressInput = screen.getByLabelText("Email address");
       await user.type(emailAddressInput, "new_address@example.com[Enter]");
 
-      expect(onAddEmail).toHaveBeenCalledWith({}, "TODO");
+      expect(mockedActions.onAddEmail).toHaveBeenCalledWith({}, "TODO");
     });
 
     describe("to learn about usage", () => {
@@ -734,6 +748,8 @@ describe("Settings page", () => {
               experimentData={defaultExperimentData["Features"]}
               isMonthlySubscriber={true}
               data={mockedPlusSubscriberEmailPreferences}
+              isEligibleForPremium={false}
+              actions={mockedActions}
               userAnnouncements={mockedAnnouncements}
             />
           </SettingsWrapper>,
@@ -781,6 +797,8 @@ describe("Settings page", () => {
               experimentData={defaultExperimentData["Features"]}
               isMonthlySubscriber={true}
               data={mockedPlusSubscriberEmailPreferences}
+              isEligibleForPremium={false}
+              actions={mockedActions}
               userAnnouncements={mockedAnnouncements}
             />
           </SettingsWrapper>,
@@ -828,6 +846,8 @@ describe("Settings page", () => {
               experimentData={defaultExperimentData["Features"]}
               isMonthlySubscriber={true}
               data={mockedPlusSubscriberEmailPreferences}
+              isEligibleForPremium={false}
+              actions={mockedActions}
               userAnnouncements={mockedAnnouncements}
             />
           </SettingsWrapper>,
@@ -879,6 +899,8 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
+            actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -917,6 +939,8 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
+            actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -956,6 +980,8 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
+            actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -971,10 +997,14 @@ describe("Settings page", () => {
     it("takes you through the cancellation dialog flow all the way to subplat", async () => {
       const user = userEvent.setup();
 
-      (onCheckUserHasCurrentCouponSet as jest.Mock).mockResolvedValueOnce({
+      (
+        mockedActions.onCheckUserHasCurrentCouponSet as jest.Mock
+      ).mockResolvedValueOnce({
         success: false,
       });
-      (onApplyCouponCode as jest.Mock).mockResolvedValueOnce({ success: true });
+      (mockedActions.onApplyCouponCode as jest.Mock).mockResolvedValueOnce({
+        success: true,
+      });
 
       render(
         <SettingsWrapper>
@@ -1002,6 +1032,8 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
+            actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -1053,7 +1085,9 @@ describe("Settings page", () => {
     it("closes the cancellation survey if the user selects nevermind, take me back", async () => {
       const user = userEvent.setup();
 
-      (onCheckUserHasCurrentCouponSet as jest.Mock).mockResolvedValueOnce({
+      (
+        mockedActions.onCheckUserHasCurrentCouponSet as jest.Mock
+      ).mockResolvedValueOnce({
         success: false,
       });
 
@@ -1083,6 +1117,8 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
+            actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -1113,7 +1149,9 @@ describe("Settings page", () => {
 
     it("closes the cancellation dialog", async () => {
       const user = userEvent.setup();
-      (onCheckUserHasCurrentCouponSet as jest.Mock).mockResolvedValueOnce({
+      (
+        mockedActions.onCheckUserHasCurrentCouponSet as jest.Mock
+      ).mockResolvedValueOnce({
         success: false,
       });
 
@@ -1143,6 +1181,8 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
+            actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -1196,6 +1236,8 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
+            actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -1240,6 +1282,8 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
+            actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -1286,6 +1330,8 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
+            actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -1333,6 +1379,8 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
+            actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -1377,6 +1425,8 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
+            actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -1427,6 +1477,8 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
+            actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -1474,6 +1526,8 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
+            actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -1526,6 +1580,8 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
+            actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -1574,6 +1630,8 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
+            actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -1626,6 +1684,8 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
+            actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -1673,6 +1733,8 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
+            actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -1725,6 +1787,8 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
+            actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -1753,10 +1817,12 @@ describe("Settings page", () => {
     it("selects the coupon code discount cta and shows the all-set dialog step", async () => {
       const user = userEvent.setup();
 
-      (onCheckUserHasCurrentCouponSet as jest.Mock).mockResolvedValueOnce({
+      (
+        mockedActions.onCheckUserHasCurrentCouponSet as jest.Mock
+      ).mockResolvedValueOnce({
         success: false,
       });
-      (onApplyCouponCode as jest.Mock).mockResolvedValueOnce({
+      (mockedActions.onApplyCouponCode as jest.Mock).mockResolvedValueOnce({
         success: true,
       });
 
@@ -1789,6 +1855,8 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
+            actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -1843,10 +1911,12 @@ describe("Settings page", () => {
     it("shows error message if the applying the coupon code function was unsuccessful", async () => {
       const user = userEvent.setup();
 
-      (onCheckUserHasCurrentCouponSet as jest.Mock).mockResolvedValueOnce({
+      (
+        mockedActions.onCheckUserHasCurrentCouponSet as jest.Mock
+      ).mockResolvedValueOnce({
         success: false,
       });
-      (onApplyCouponCode as jest.Mock).mockResolvedValueOnce({
+      (mockedActions.onApplyCouponCode as jest.Mock).mockResolvedValueOnce({
         success: false,
       });
 
@@ -1879,6 +1949,8 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
+            actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -1908,13 +1980,15 @@ describe("Settings page", () => {
 
       await user.click(tryAgainCta);
 
-      expect(onApplyCouponCode).toHaveBeenCalled();
+      expect(mockedActions.onApplyCouponCode).toHaveBeenCalled();
     });
 
     it("does not show the coupon code if a user already has a coupon set", async () => {
       const user = userEvent.setup();
 
-      (onCheckUserHasCurrentCouponSet as jest.Mock).mockResolvedValueOnce({
+      (
+        mockedActions.onCheckUserHasCurrentCouponSet as jest.Mock
+      ).mockResolvedValueOnce({
         success: true,
       });
 
@@ -1947,6 +2021,8 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
+            actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -1991,6 +2067,8 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
+            actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -2038,6 +2116,8 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
+            actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -2085,6 +2165,8 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
+            actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -2148,6 +2230,8 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
+            actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -2191,6 +2275,8 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
+            actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -2253,6 +2339,8 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
+            actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -2303,6 +2391,8 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
+            actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -2363,6 +2453,8 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={false}
             data={mockedFreeSubscriberEmailPreferences}
+            isEligibleForPremium={false}
+            actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -2407,6 +2499,8 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
+            actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -2454,6 +2548,8 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
+            actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -2511,6 +2607,8 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
+            actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -2570,6 +2668,8 @@ describe("Settings page", () => {
             experimentData={defaultExperimentData["Features"]}
             isMonthlySubscriber={true}
             data={mockedPlusSubscriberEmailPreferences}
+            isEligibleForPremium={false}
+            actions={mockedActions}
             userAnnouncements={mockedAnnouncements}
           />
         </SettingsWrapper>,
@@ -2606,6 +2706,8 @@ describe("Settings page", () => {
           experimentData={defaultExperimentData["Features"]}
           isMonthlySubscriber={true}
           data={undefined}
+          isEligibleForPremium={false}
+          actions={mockedActions}
           userAnnouncements={mockedAnnouncements}
         />
       </SettingsWrapper>

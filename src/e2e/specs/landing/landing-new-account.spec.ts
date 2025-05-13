@@ -42,10 +42,6 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page Functionali
     await authPage.passwordInputField.fill(
       process.env.E2E_TEST_ACCOUNT_PASSWORD as string,
     );
-    await authPage.passwordConfirmInputField.fill(
-      process.env.E2E_TEST_ACCOUNT_PASSWORD as string,
-    );
-    await authPage.ageInputField.fill("31");
     await authPage.continueButton.click();
 
     const verificationCode = await getVerificationCode(randomEmail, page);

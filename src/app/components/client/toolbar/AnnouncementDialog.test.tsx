@@ -9,6 +9,7 @@ import { composeStory } from "@storybook/react";
 import Meta, {
   AnnouncementDialogDefault,
   AnnouncementDialogSeenOrCleared,
+  AnnouncementsNoAnnouncements,
 } from "./AnnouncementDialog.stories";
 import { axe } from "jest-axe";
 
@@ -327,4 +328,26 @@ it("dismisses the popup", async () => {
     name: "List of announcements",
   });
   expect(dialogDismissed).not.toBeInTheDocument();
+});
+
+it("shows an empty state if announcements were not loaded", async () => {
+  // suppress fluent-id warning
+  jest.spyOn(console, "warn").mockImplementation(() => {});
+
+  const user = userEvent.setup();
+
+  const ComposedAnnouncementDialog = composeStory(
+    AnnouncementsNoAnnouncements,
+    Meta,
+  );
+  render(<ComposedAnnouncementDialog />);
+  const announcementTrigger = screen.getByRole("button", {
+    name: "Open announcements",
+  });
+
+  await user.click(announcementTrigger);
+
+  // Empty state in the new tab when there are no announcements
+  const noUpdates = screen.getByText("No updates");
+  expect(noUpdates).toBeInTheDocument();
 });

@@ -18,3 +18,4 @@ unsubscribe-success-cta = Accede a { -brand-monitor }
 # Error warning
 
 unsubscription-failed = Cancellation del subscription fallite. <try_again_link>Retenta.</try_again_link>
+unsubscription-failed-2 = Cancellation fallite

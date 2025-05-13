@@ -1,0 +1,74 @@
+name: Retag and Push GAR Image on Release v2
+
+permissions: {}
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  retag-and-push-gar:
+    permissions:
+      contents: "read" # Needed for checkout
+      id-token: "write" # Needed for GCP auth
+      packages: "none" # Explicitly disable package permissions
+    name: Retag and Push GAR image
+    runs-on: ubuntu-latest
+    environment: build
+    env:
+      GAR_IMAGE_BASE: ${{ vars.GAR_REPO }}/blurts-server
+    steps:
+    - name: Check out the repo
+      uses: actions/checkout@v4
+      with:
+        persist-credentials: false # Not strictly needed for retagging, but good practice
+
+    - name: Authenticate to Google Cloud
+      id: gcp-auth
+      uses: google-github-actions/auth@v2
+      with:
+        token_format: access_token
+        workload_identity_provider: ${{ vars.GCPV2_GITHUB_WORKLOAD_IDENTITY_PROVIDER }}
+        service_account: ${{ vars.GCP_GAR_SERVICE_ACCOUNT }}
+
+    - name: Login to Artifact Registry
+      id: gar-login
+      uses: docker/login-action@v3
+      with:
+        registry: us-docker.pkg.dev
+        username: oauth2accesstoken
+        password: ${{ steps.gcp-auth.outputs.access_token }}
+
+    - name: Extract metadata (tags, labels) for Docker
+      id: meta
+      uses: docker/metadata-action@v5
+      with:
+        # Use the GAR image base
+        images: ${{ env.GAR_IMAGE_BASE }}
+        tags: |
+          # Only generate the tag based on short commit SHA
+          type=sha,format=short,prefix=
+
+    - name: Determine Release-tagged image name
+      id: release_tag_info
+      run: echo "name=${{ env.GAR_IMAGE_BASE }}:${{ github.ref_name }}" >> $GITHUB_OUTPUT
+
+    - name: Pull Docker image with commit tag from GAR
+      run: |
+        echo "Pulling ${{ steps.meta.outputs.tags }}"
+        docker pull ${{ steps.meta.outputs.tags }}
+
+    - name: Tag Docker image with release tag
+      run: |
+        echo "Tagging ${{ steps.meta.outputs.tags }} as ${{ steps.release_tag_info.outputs.name }}"
+        docker tag ${{ steps.meta.outputs.tags }} ${{ steps.release_tag_info.outputs.name }}
+
+    - name: Push Docker image with release tag to GAR
+      run: |
+        echo "Pushing ${{ steps.release_tag_info.outputs.name }}"
+        docker push ${{ steps.release_tag_info.outputs.name }}
+
+    - name: Print Image URI
+      run: |
+        echo "Retagged and pushed GAR image: ${{ steps.release_tag_info.outputs.name }}" 
