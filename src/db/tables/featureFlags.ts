@@ -68,7 +68,6 @@ export const featureFlagNames = [
   "EnableRemovalUnderMaintenanceStep",
   "CirrusV2",
   "DataBrokerRemovalAttempts",
-  "ExpirationNotification",
   "CustomDataBrokers",
   "SidebarNavigationRedesign",
   "EditScanProfileDetails",

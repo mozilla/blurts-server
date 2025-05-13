@@ -84,7 +84,7 @@ jobs:
 
       - name: Send GitHub Action trigger data to Slack workflow
         id: slack
-        uses: slackapi/slack-github-action@v2.0.0
+        uses: slackapi/slack-github-action@v2.1.0
         if: failure() && github.ref == 'refs/heads/main'
         with:
           webhook: ${{ secrets.SLACK_GHA_FAILURES_WEBHOOK }}
