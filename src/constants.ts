@@ -69,3 +69,9 @@ export const CONST_DATA_BROKER_PROFILE_DETAIL_LIMITS = {
   phone_numbers: 10,
   addresses: 10,
 } as const;
+export const CONST_URL_BUNDLE_ONBOARDING_MOZILLA_MONITOR =
+  "/user/dashboard?utm_medium=mozilla-websites&utm_source=bundle&utm_campaign=onboarding-page&utm_content=launch-us";
+export const CONST_URL_BUNDLE_ONBOARDING_MOZILLA_VPN =
+  "https://www.mozilla.org/en-US/products/vpn/download/?utm_medium=referral&utm_source=bundle-onboarding-page&utm_campaign=evergreen";
+export const CONST_URL_BUNDLE_ONBOARDING_RELAY_PREMIUM =
+  "https://relay.firefox.com/accounts/fxa/login/?process=login&utm_source=monitor.mozilla.org&utm_medium=referral&utm_campaign=bento&auth_params=prompt%3Dnone";
