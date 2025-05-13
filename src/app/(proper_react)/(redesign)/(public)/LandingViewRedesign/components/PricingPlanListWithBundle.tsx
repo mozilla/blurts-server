@@ -98,6 +98,8 @@ export const PricingPlanListWithBundle = (props: Props & ScanLimitProp) => {
     style: "currency",
     currency: "USD",
     currencyDisplay: "narrowSymbol",
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 2,
   });
   const {
     yearly: monthlyPriceAnnualBilling,
@@ -105,7 +107,7 @@ export const PricingPlanListWithBundle = (props: Props & ScanLimitProp) => {
     bundle: bundlePriceBilling,
   } = props.subscriptionBillingAmount;
 
-  const bundleDiscountPercentage = Math.round(
+  const bundleDiscountPercentage = Math.floor(
     (1 - bundlePriceBilling.monthly / bundlePriceBilling.individual) * 100,
   );
 

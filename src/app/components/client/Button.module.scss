@@ -115,6 +115,26 @@
   &.secondary {
     background-color: transparent;
 
+    &.purple {
+      color: tokens.$color-purple-70;
+      box-shadow: inset 0 0 0 2px tokens.$color-purple-70;
+
+      &:hover {
+        background-color: tokens.$color-purple-70;
+        color: tokens.$color-white;
+      }
+    }
+
+    &.blue {
+      color: tokens.$color-blue-50;
+      box-shadow: inset 0 0 0 2px tokens.$color-blue-50;
+
+      &:hover {
+        background-color: tokens.$color-blue-50;
+        color: tokens.$color-white;
+      }
+    }
+
     &:hover {
       .ldsRing div {
         &.secondary {
@@ -139,26 +159,6 @@
       background: transparent;
       box-shadow: inset 0 0 0 2px tokens.$color-grey-20;
       pointer-events: none;
-    }
-
-    &.purple {
-      color: tokens.$color-purple-70;
-      box-shadow: inset 0 0 0 2px tokens.$color-purple-70;
-
-      &:hover {
-        background-color: tokens.$color-purple-70;
-        color: tokens.$color-white;
-      }
-    }
-
-    &.blue {
-      color: tokens.$color-blue-50;
-      box-shadow: inset 0 0 0 2px tokens.$color-blue-50;
-
-      &:hover {
-        background-color: tokens.$color-blue-50;
-        color: tokens.$color-white;
-      }
     }
   }
 

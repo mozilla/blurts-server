@@ -88,6 +88,10 @@ export const LandingRedesignUsWithPrivacyProductBundle: Story = {
     countryCode: "us",
     scanLimitReached: false,
     enabledFeatureFlags: ["LandingPageRedesign", "PrivacyProductsBundle"],
+    bundleProductUrl: {
+      relay: process.env.FIREFOX_RELAY_LANDING_URL ?? "",
+      vpn: process.env.MOZILLA_VPN_LANDING_URL ?? "",
+    },
   },
 };
 
@@ -98,5 +102,9 @@ export const LandingRedesignUsScanLimitWithPrivacyProductBundle: Story = {
     countryCode: "us",
     scanLimitReached: true,
     enabledFeatureFlags: ["LandingPageRedesign", "PrivacyProductsBundle"],
+    bundleProductUrl: {
+      relay: process.env.FIREFOX_RELAY_LANDING_URL ?? "",
+      vpn: process.env.MOZILLA_VPN_LANDING_URL ?? "",
+    },
   },
 };
