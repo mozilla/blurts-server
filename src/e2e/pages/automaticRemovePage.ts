@@ -6,7 +6,6 @@ import { Locator, Page } from "@playwright/test";
 
 export class AutomaticRemovePage {
   readonly page: Page;
-
   readonly planToggle0: Locator;
   readonly planToggle1: Locator;
   readonly price: Locator;

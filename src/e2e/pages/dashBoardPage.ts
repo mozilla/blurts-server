@@ -45,8 +45,7 @@ export class DashboardPage {
 
   readonly dashboardPageLink: Locator;
   readonly settingsPageLink: Locator;
-  readonly settingsPageNofificationsLink: Locator;
-  readonly settingsPageManageAccountLink: Locator;
+  readonly settingsPageNotificationsLink: Locator;
   readonly faqsPageLink: Locator;
 
   readonly servicesVpn: Locator;
@@ -241,11 +240,8 @@ export class DashboardPage {
     this.settingsPageLink = page.getByRole("link", {
       name: "Settings",
     });
-    this.settingsPageNofificationsLink = page.getByRole("link", {
+    this.settingsPageNotificationsLink = page.getByRole("link", {
       name: "Set notifications",
-    });
-    this.settingsPageManageAccountLink = page.getByRole("link", {
-      name: "Manage account",
     });
     this.dashboardPageLink = page.getByRole("link", { name: "Dashboard" });
 
@@ -272,6 +268,7 @@ export class DashboardPage {
   dashboardLinks() {
     return {
       // identify expected URLs
+      settingsNavButtonLink: "/user/settings",
       settingsNotificationNavButtonLink: "/user/settings/notifications",
       resolveDataBreachesNavButtonLink: "/user/dashboard",
       helpAndSupportNavButtonLink:
@@ -283,14 +280,14 @@ export class DashboardPage {
     await this.page.goto("/user/dashboard");
   }
 
-  async goToNotificationsSettings() {
-    await this.settingsPageNofificationsLink.click();
+  async goToNotificationSettings() {
+    await this.settingsPageNotificationsLink.click();
     await this.page.waitForURL("**/settings/notifications");
   }
 
-  async goToManageAccountSettings() {
-    await this.settingsPageManageAccountLink.click();
-    await this.page.waitForURL("**/settings/manage-account");
+  async goToSettings() {
+    await this.settingsPageLink.click();
+    await this.page.waitForURL("**/settings/*");
   }
 
   async goToDashboard() {

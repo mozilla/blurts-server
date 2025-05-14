@@ -41,6 +41,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Overview Card`
     await page.waitForURL(/.*\/fix\/.*\/automatic-remove.*/);
 
     //testing that toggles work
+    await expect(automaticRemovePage.planToggle0).toBeVisible();
     await automaticRemovePage.planToggle0.click();
     const price0 = await automaticRemovePage.price.textContent();
     const plan0 = await automaticRemovePage.plan.textContent();
