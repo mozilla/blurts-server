@@ -62,7 +62,6 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
             isShowFixed={isShowFixed}
             summary={props.bannerData}
             totalNumberOfPerformedScans={props.totalNumberOfPerformedScans}
-            enabledFeatureFlags={[]}
           />
         </div>
       </div>
