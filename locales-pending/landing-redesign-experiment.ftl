@@ -116,6 +116,7 @@ landing-redesign-pricing-plans-card-free-with-bundle-feature-item-five = {
   $max_email_addresses ->
     *[other] Breach alert monitoring for <b>{ $max_email_addresses } email addresses</b>
 }
+landing-redesign-pricing-plans-card-free-with-bundle-price-label = Free
 
 # Variables:
 # $data_broker_sites_total_num is the total number of data broker sites available to scan. It will always be more than 1.
@@ -132,21 +133,19 @@ landing-redesign-pricing-plans-card-plus-feature-item-five = <b>Save { $discount
 # There is not much room in the UI for this string:
 # Abbreviating “month” with “mo”.
 # Variables:
-#   $monthlyPrice (string) - annual plan’s price per month, including currency, e.g. "$13.37"
+#   $monthlyPrice (string) - annual plan's price per month, including currency, e.g. "$13.37"
 landing-redesign-pricing-plans-card-plus-cta-yearly = { $monthlyPrice }/mo
 # Variables:
-#   $yearlyPrice (string) - annual plan’s price in total, including currency, e.g. "$13.37"
+#   $yearlyPrice (string) - annual plan's price in total, including currency, e.g. "$13.37"
 landing-redesign-pricing-plans-card-plus-cta-yearly-sum = { $yearlyPrice } total
-# Variables:
 # There is not much room in the UI for this string:
 # Abbreviating “month” with “mo”.
 # Variables:
-#   $monthlyPrice (string) - monthly plan’s price, including currency, e.g. "$13.37"
+#   $monthlyPrice (string) - monthly plan's price, including currency, e.g. "$13.37"
 landing-redesign-pricing-plans-card-plus-cta-monthly = { $monthlyPrice }/mo
 
 landing-redesign-pricing-plans-card-free-title = { -brand-monitor }
 landing-redesign-pricing-plans-card-free-subtitle = Free breach alerts
-landing-redesign-pricing-plans-card-free-price-label = Free
 landing-redesign-pricing-plans-card-free-cta-label = Get { -brand-monitor } (Free)
 # Variables:
 # $data_broker_sites_total_num is the total number of data broker sites available to scan. It will always be more than 1.

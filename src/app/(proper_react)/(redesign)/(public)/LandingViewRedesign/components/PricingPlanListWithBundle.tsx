@@ -445,7 +445,7 @@ export const PricingPlanListWithBundle = (props: Props & ScanLimitProp) => {
           <p>
             <strong>
               {l10n.getString(
-                "landing-redesign-pricing-plans-card-free-price-label",
+                "landing-redesign-pricing-plans-card-free-with-bundle-price-label",
               )}
             </strong>
           </p>

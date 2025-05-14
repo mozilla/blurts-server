@@ -28,6 +28,8 @@ const mockedAnnouncementsWithSeenOrCleared: UserAnnouncementWithDetails[] = [
   createRandomAnnouncement({ status: "cleared" }),
 ];
 
+const noAnnouncements: UserAnnouncementWithDetails[] = [];
+
 export const AnnouncementDialogDefault: Story = {
   args: {
     announcements: mockedAnnouncementsAllUsers,
@@ -37,5 +39,11 @@ export const AnnouncementDialogDefault: Story = {
 export const AnnouncementDialogSeenOrCleared: Story = {
   args: {
     announcements: mockedAnnouncementsWithSeenOrCleared,
+  },
+};
+
+export const AnnouncementsNoAnnouncements: Story = {
+  args: {
+    announcements: noAnnouncements,
   },
 };
