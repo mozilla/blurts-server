@@ -24,10 +24,8 @@
 -brand-github = GitHub
 -brand-mozilla-vpn = Mozilla VPN
 -brand-relay = Firefox Relay
--brand-relay-premium = Relay Premium
 -brand-mozilla-monitor = Mozilla Monitor
 -brand-monitor-plus = Monitor Plus
--product-name-privacy-products-bundle = Privacy Protection Plan
 
 ##
 
