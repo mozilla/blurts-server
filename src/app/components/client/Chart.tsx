@@ -20,10 +20,10 @@ import { WaitlistDialog } from "./SubscriberWaitlistDialog";
 import { useTelemetry } from "../../hooks/useTelemetry";
 import {
   CONST_MAX_NUM_ADDRESSES,
+  CONST_MAX_NUM_ADDRESSES_PLUS,
   CONST_ONEREP_MAX_SCANS_THRESHOLD,
 } from "../../../constants";
 import { VisuallyHidden } from "../server/VisuallyHidden";
-import { FeatureFlagName } from "../../../db/tables/featureFlags";
 
 export type Props = {
   data: Array<[string, number]>;
@@ -34,7 +34,6 @@ export type Props = {
   isShowFixed: boolean;
   summary: DashboardSummary;
   totalNumberOfPerformedScans?: number;
-  enabledFeatureFlags: FeatureFlagName[];
 };
 
 export const DoughnutChart = (props: Props) => {
@@ -110,7 +109,9 @@ export const DoughnutChart = (props: Props) => {
             ? "modal-active-number-of-exposures-part-one-premium"
             : "modal-active-number-of-exposures-part-one-all",
           {
-            limit: CONST_MAX_NUM_ADDRESSES,
+            limit: props.isPremiumUser
+              ? CONST_MAX_NUM_ADDRESSES_PLUS
+              : CONST_MAX_NUM_ADDRESSES,
           },
         )}
       </p>
@@ -150,16 +151,15 @@ export const DoughnutChart = (props: Props) => {
   );
 
   const getPromptContent = () => {
-    if (!props.scanInProgress && props.isEligibleForPremium) {
+    if (!props.scanInProgress && props.isEligibleForFreeScan) {
       return (
         <>
           <p>
             {l10n.getString("exposure-chart-returning-user-upgrade-prompt")}
           </p>
-          {!props.enabledFeatureFlags.includes("DisableOneRepScans") &&
-          (typeof props.totalNumberOfPerformedScans === "undefined" ||
-            props.totalNumberOfPerformedScans <
-              CONST_ONEREP_MAX_SCANS_THRESHOLD) ? (
+          {typeof props.totalNumberOfPerformedScans === "undefined" ||
+          props.totalNumberOfPerformedScans <
+            CONST_ONEREP_MAX_SCANS_THRESHOLD ? (
             <Link
               href="/user/welcome/free-scan?referrer=dashboard"
               onClick={() => {
@@ -282,7 +282,7 @@ export const DoughnutChart = (props: Props) => {
               <thead>
                 <tr>
                   {/* The first column contains the chart colour,
-                      which is irrelevant to screen readers. */}
+                       which is irrelevant to screen readers. */}
                   <td aria-hidden={true} />
                   <th>
                     {l10n.getString("exposure-chart-legend-heading-type")}
