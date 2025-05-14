@@ -17,7 +17,7 @@ import { getFreeScanSearchParams } from "../../../functions/universal/getFreeSca
 import { CONST_URL_MONITOR_LANDING_PAGE_ID } from "../../../../constants";
 import { useViewTelemetry } from "../../../hooks/useViewTelemetry";
 import {
-  ButtonThemes,
+  ButtonColorThemes,
   ButtonVariants,
 } from "../../../components/client/Button";
 
@@ -26,7 +26,7 @@ export const FreeScanCta = (
     experimentData: ExperimentData["Features"];
     showCtaOnly?: boolean;
     ctaButtonVariant?: ButtonVariants;
-    ctaButtonTheme?: ButtonThemes;
+    ctaButtonTheme?: ButtonColorThemes;
   },
 ) => {
   const l10n = useL10n();

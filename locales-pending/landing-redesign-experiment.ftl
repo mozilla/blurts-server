@@ -56,8 +56,9 @@ landing-redesign-pricing-plans-section-description = Your privacy is our priorit
 landing-redesign-pricing-plans-bundle-section-description = 30-day money-back guarantee (first-time customers only)
 landing-redesign-pricing-plans-cards-title = Pricing plans
 
-#   $yearlyPrice (string) - annual plan’s price in total, including currency, e.g. "$13.37"
 landing-redesign-pricing-plans-card-cta-monthly-billing-label = Billed monthly
+# Variables:
+#   $yearlyPrice (string) - annual plan’s price in total, including currency, e.g. "$13.37"
 landing-redesign-pricing-plans-card-cta-yearly-billing-label = { $yearlyPrice } billed yearly
 # There is not much room in the UI for this string:
 # Abbreviating “month” with “mo”.
@@ -82,7 +83,7 @@ landing-redesign-pricing-plans-card-plus-label = Recommended
 landing-redesign-pricing-plans-card-plus-title = { -brand-monitor-plus }
 landing-redesign-pricing-plans-card-plus-subtitle = Automatic data removal requests
 landing-redesign-pricing-plans-card-plus-cta-label = Get { -brand-monitor-plus }
-landing-redesign-pricing-plans-card-plus-with-bundle-included-features-label = Everything in Monitor
+landing-redesign-pricing-plans-card-plus-with-bundle-included-features-label = Everything in { -brand-monitor }
 
 landing-redesign-pricing-plans-card-plus-with-bundle-subtitle = Automatic personal info removal
 # Variables:
