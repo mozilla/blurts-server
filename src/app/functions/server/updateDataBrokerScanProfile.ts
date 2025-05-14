@@ -2,27 +2,128 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import { SubscriberRow } from "knex/types/tables";
 import {
   UpdateableProfileDetails,
-  updateProfile,
+  updateProfile as updateOnerepProfile,
 } from "../../functions/server/onerep";
 import { logger } from "../../functions/server/logging";
 import { refreshStoredScanResults } from "../../functions/server/refreshStoredScanResults.ts";
 import {
-  getProfileDetails,
-  updateProfileDetails,
+  getProfileDetails as getOnerepDbProfileDetails,
+  updateProfileDetails as updateOnerepDbProfileDetails,
 } from "../../../db/tables/onerep_profiles";
 import {
   CONST_DATA_BROKER_PROFILE_DETAIL_ALLOW_LIST,
   CONST_DATA_BROKER_PROFILE_DETAIL_LIMITS,
 } from "../../../constants.ts";
+import { getProfile, updateProfile } from "./moscary.ts";
 
-async function updateDataBrokerScanProfile(
+export async function updateDataBrokerScanProfile(
+  moscaryId: NonNullable<SubscriberRow["moscary_id"]>,
+  profileDataToUpdate: UpdateableProfileDetails,
+) {
+  logger.info(`Attempt to update data broker scan profile: [${moscaryId}]`);
+
+  // NOTE: The type `UpdateableProfileDetails` only makes sure we don’t pass
+  // the expected profile details during compile time. We are checking the
+  // allow listed fields as an additional safeguard to make sure we don’t make
+  // any unexpected changes.
+  for (const profileDataKey in profileDataToUpdate) {
+    if (
+      !CONST_DATA_BROKER_PROFILE_DETAIL_ALLOW_LIST.includes(
+        profileDataKey as keyof typeof profileDataToUpdate,
+      )
+    ) {
+      throw new Error(`Passed invalid profile detail: [${profileDataKey}]`);
+    }
+  }
+
+  const currentProfileData = await getProfile(moscaryId);
+
+  const updatedProfileData = {
+    ...currentProfileData,
+    ...profileDataToUpdate,
+  };
+
+  for (const detailKey in CONST_DATA_BROKER_PROFILE_DETAIL_LIMITS) {
+    const profileDetailKey =
+      detailKey as keyof typeof CONST_DATA_BROKER_PROFILE_DETAIL_LIMITS;
+    const profileDataItem = updatedProfileData[profileDetailKey];
+    if (
+      profileDataItem &&
+      profileDataItem.length >
+        CONST_DATA_BROKER_PROFILE_DETAIL_LIMITS[profileDetailKey]
+    ) {
+      throw new Error(
+        `Profile detail [${profileDetailKey}] is exceeding limit: [${profileDataItem.length}]`,
+      );
+    }
+  }
+
+  const updatedProfileDataSanitized = {
+    first_name: updatedProfileData.first_name.trim(),
+    middle_name: updatedProfileData.middle_name?.trim(),
+    last_name: updatedProfileData.last_name.trim(),
+    first_names: updatedProfileData.first_names
+      .map((first_name) => first_name.trim())
+      .filter((value) => value),
+    middle_names: updatedProfileData.middle_names
+      .map((middle_name) => middle_name.trim())
+      .filter((value) => value),
+    last_names: updatedProfileData.last_names
+      .map((last_name) => last_name.trim())
+      .filter((value) => value),
+    phone_numbers: updatedProfileData.phone_numbers
+      .map((phone_number) => phone_number.match(/\d/g)?.join("") ?? "")
+      .filter((value) => value),
+    addresses: updatedProfileData.addresses.filter(
+      (value) => value.city.trim() && value.state.trim(),
+    ),
+  };
+
+  const {
+    first_name,
+    last_name,
+    first_names,
+    last_names,
+    middle_names,
+    phone_numbers,
+    addresses,
+    middle_name,
+  } = updatedProfileDataSanitized;
+
+  // Update the remote profile details.
+  const remoteProfileData = {
+    ...(middle_name && { middle_name }),
+    first_name,
+    last_name,
+    first_names: first_names.map((first_name) => ({
+      first_name,
+    })),
+    last_names: last_names.map((last_name) => ({
+      last_name,
+    })),
+    middle_names: middle_names.map((middle_name) => ({
+      middle_name,
+    })),
+    phone_numbers: phone_numbers.map((number) => ({
+      number,
+    })),
+    addresses,
+    birth_date: currentProfileData.birth_date?.split("T")[0],
+  };
+  await updateProfile(moscaryId, remoteProfileData);
+
+  logger.info(`Data broker scan profile updated successfully: [${moscaryId}]`);
+}
+
+export async function updateOnerepDataBrokerScanProfile(
   onerepProfileId: number,
   profileDataToUpdate: UpdateableProfileDetails,
 ) {
   logger.info(
-    `Attempt to update data broker scan profile: [${onerepProfileId}]`,
+    `Attempt to update OneRep data broker scan profile: [${onerepProfileId}]`,
   );
 
   // NOTE: The type `UpdateableProfileDetails` only makes sure we don’t pass
@@ -39,7 +140,7 @@ async function updateDataBrokerScanProfile(
     }
   }
 
-  const currentProfileData = await getProfileDetails(onerepProfileId);
+  const currentProfileData = await getOnerepDbProfileDetails(onerepProfileId);
   if (currentProfileData?.onerep_profile_id === null) {
     throw new Error(`No profile found for: [${onerepProfileId}]`);
   }
@@ -116,10 +217,10 @@ async function updateDataBrokerScanProfile(
     addresses,
     birth_date: currentProfileData.date_of_birth.toISOString().split("T")[0],
   };
-  await updateProfile(onerepProfileId, remoteProfileData);
+  await updateOnerepProfile(onerepProfileId, remoteProfileData);
 
   // Apply the updates to the `onerep_profiles` table.
-  await updateProfileDetails(onerepProfileId, {
+  await updateOnerepDbProfileDetails(onerepProfileId, {
     first_name,
     middle_name,
     last_name,
@@ -139,5 +240,3 @@ async function updateDataBrokerScanProfile(
     `Data broker scan profile updated successfully: [${onerepProfileId}]`,
   );
 }
-
-export default updateDataBrokerScanProfile;
