@@ -10,11 +10,6 @@ import MozillaVpnLogo from "./images/bundle-mozilla-vpn-logo.svg";
 import RelayPremiumLogo from "./images/bundle-relay-premium-logo.svg";
 import MonitorPlusLogo from "./images/bundle-monitor-plus-logo.svg";
 import Image from "next/image";
-import {
-  CONST_URL_BUNDLE_ONBOARDING_MOZILLA_MONITOR,
-  CONST_URL_BUNDLE_ONBOARDING_MOZILLA_VPN,
-  CONST_URL_BUNDLE_ONBOARDING_RELAY_PREMIUM,
-} from "../../../../../../constants";
 
 export type Props = {
   l10n: ExtendedReactLocalization;
@@ -53,7 +48,7 @@ export const BundleOnboardingView = (props: Props) => {
                 data: { button_id: "launch_vpn_download_page" },
               }}
               variant="primary"
-              href={CONST_URL_BUNDLE_ONBOARDING_MOZILLA_VPN}
+              href={process.env.MOZILLA_VPN_LANDING_URL}
             >
               {l10n.getString("bundle-mozilla-vpn-cta")}
             </TelemetryButton>
@@ -73,7 +68,7 @@ export const BundleOnboardingView = (props: Props) => {
                 data: { button_id: "launch_monitor" },
               }}
               variant="primary"
-              href={CONST_URL_BUNDLE_ONBOARDING_MOZILLA_MONITOR}
+              href="user/dashboard"
             >
               {l10n.getString("bundle-monitor-plus-cta")}
             </TelemetryButton>
@@ -93,7 +88,7 @@ export const BundleOnboardingView = (props: Props) => {
                 data: { button_id: "launch_relay" },
               }}
               variant="primary"
-              href={CONST_URL_BUNDLE_ONBOARDING_RELAY_PREMIUM}
+              href={process.env.FIREFOX_RELAY_LANDING_URL}
             >
               {l10n.getString("bundle-monitor-plus-cta")}
             </TelemetryButton>
