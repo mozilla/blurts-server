@@ -19,3 +19,6 @@ bundle-monitor-plus-cta = Go to { -brand-monitor }
 bundle-relay-premium-title = { -brand-monitor-premium }
 bundle-relay-premium-description = Create an email mask to protect your real address from spam.
 bundle-relay-premium-CTA = Go to { -brand-relay-new }
+
+bundle-onboarding-footer-privacy-notice = Website Privacy Notice
+bundle-onboarding-footer-terms-of-service = Terms of Service

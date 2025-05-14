@@ -22,9 +22,42 @@
   .footer {
     width: 100%;
     display: flex;
-    align-items: flex-start;
-    padding: tokens.$spacing-lg tokens.$spacing-2xl;
+    align-items: center;
     background-color: tokens.$color-white;
+    padding: tokens.$spacing-lg tokens.$spacing-md;
     margin-top: auto; /* keep sticky */
+    flex-direction: row-reverse;
+    justify-content: space-between;
+
+    @media screen and (min-width: tokens.$screen-md) {
+      flex-direction: row;
+      justify-content: flex-start;
+      padding: tokens.$spacing-lg tokens.$spacing-2xl;
+    }
+
+    ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+      gap: tokens.$spacing-md;
+
+      @media screen and (min-width: tokens.$screen-md) {
+        flex-direction: row;
+        margin-left: tokens.$layout-md;
+        gap: tokens.$spacing-lg;
+      }
+
+      li {
+        a {
+          text-decoration: none;
+          color: tokens.$color-grey-50;
+
+          &:hover {
+            color: tokens.$color-grey-30;
+          }
+        }
+      }
+    }
   }
 }
