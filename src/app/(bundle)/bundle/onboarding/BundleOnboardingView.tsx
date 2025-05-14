@@ -2,9 +2,9 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { FeatureFlagName } from "../../../../../../db/tables/featureFlags";
-import { TelemetryButton } from "../../../../../components/client/TelemetryButton";
-import { ExtendedReactLocalization } from "../../../../../functions/l10n";
+import { FeatureFlagName } from "../../../../db/tables/featureFlags";
+import { TelemetryButton } from "../../../components/client/TelemetryButton";
+import { ExtendedReactLocalization } from "../../../functions/l10n";
 import styles from "./BundleOnboardingView.module.scss";
 import MozillaVpnLogo from "./images/bundle-mozilla-vpn-logo.svg";
 import RelayPremiumLogo from "./images/bundle-relay-premium-logo.svg";

@@ -3,27 +3,31 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { headers } from "next/headers";
-import { getCountryCode } from "../../../../../functions/server/getCountryCode";
+import { getCountryCode } from "../../../functions/server/getCountryCode";
 import { redirect } from "next/navigation";
 import {
   getAcceptLangHeaderInServerComponents,
   getL10n,
-} from "../../../../../functions/l10n/serverComponents";
+} from "../../../functions/l10n/serverComponents";
 import { BundleOnboardingView } from "./BundleOnboardingView";
-import { getEnabledFeatureFlags } from "../../../../../../db/tables/featureFlags";
+import { getEnabledFeatureFlags } from "../../../../db/tables/featureFlags";
+import NotFound from "../../../not-found";
 
 export default async function Page() {
   const headersList = await headers();
   const countryCode = getCountryCode(headersList);
+  const l10n = getL10n(await getAcceptLangHeaderInServerComponents());
+  const enabledFeatureFlags = await getEnabledFeatureFlags({
+    isSignedOut: true,
+  });
 
   if (countryCode !== "us") {
     return redirect("/");
   }
 
-  const l10n = getL10n(await getAcceptLangHeaderInServerComponents());
-  const enabledFeatureFlags = await getEnabledFeatureFlags({
-    isSignedOut: true,
-  });
+  if (!enabledFeatureFlags.includes("PrivacyProductsBundle")) {
+    return NotFound();
+  }
 
   return (
     <BundleOnboardingView

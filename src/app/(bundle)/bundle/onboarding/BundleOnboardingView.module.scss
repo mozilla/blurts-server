@@ -1,8 +1,7 @@
-@use "../../../../../tokens";
+@use "../../../tokens";
 
 .header {
   padding: tokens.$spacing-md;
-  margin: tokens.$layout-md 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -46,6 +45,7 @@
     justify-content: center;
     width: 100%;
     text-align: center;
+    margin-top: tokens.$layout-xs;
 
     @media screen and (min-width: tokens.$screen-md) {
       flex-direction: row;

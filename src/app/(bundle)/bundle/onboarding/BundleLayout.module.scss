@@ -1,0 +1,30 @@
+@use "../../../tokens";
+
+.pageContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* makes sure the container takes up at least the full height of the viewport */
+
+  .contentContainer {
+    flex: 1;
+    background-color: tokens.$color-grey-05;
+    padding: tokens.$layout-lg 0;
+  }
+
+  .topBar {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    padding: tokens.$spacing-lg tokens.$spacing-2xl;
+    background-color: tokens.$color-white;
+  }
+
+  .footer {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    padding: tokens.$spacing-lg tokens.$spacing-2xl;
+    background-color: tokens.$color-white;
+    margin-top: auto; /* keep sticky */
+  }
+}

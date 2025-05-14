@@ -67,6 +67,7 @@ export const PublicShell = (props: Props) => {
       .enabled &&
     props.experimentData["landing-page-redesign-plus-eligible-experiment"]
       .variant === "redesign";
+
   return (
     <PublicMobileShell
       {...props}
