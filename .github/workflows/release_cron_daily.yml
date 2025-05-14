@@ -15,14 +15,14 @@ jobs:
     environment: build
     env:
       GAR_IMAGE_BASE: ${{ vars.GAR_REPO }}/blurts-server
-      GAR_REGISTRY: us-docker.pkg.dev # Define GAR registry hostname
+      GAR_REGISTRY: us-docker.pkg.dev
       DOCKERHUB_IMAGE: mozilla/blurts-server # Define Docker Hub image name
 
     steps:
     - name: Checkout main branch
       uses: actions/checkout@v4
       with:
-        ref: main # Ensure we are working with the main branch
+        ref: main
         persist-credentials: false
 
     - name: Get current date

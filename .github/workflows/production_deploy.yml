@@ -14,7 +14,7 @@ on:
           - stage
           - prod
       originalImageTag:
-        description: 'The original image tag that has been deployed to dockerhub/GAR'
+        description: 'The original image tag that has been deployed'
         required: true
         type: string
 jobs:
