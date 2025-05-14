@@ -28,10 +28,9 @@
   justify-content: space-between;
   padding: tokens.$spacing-lg tokens.$spacing-md;
   background-color: tokens.$color-white;
-  gap: tokens.$spacing-lg;
 
   @media screen and (min-width: tokens.$screen-md) {
-    padding-inline: tokens.$layout-xl;
+    padding-inline: tokens.$layout-lg;
   }
 
   h1 {
@@ -62,7 +61,12 @@
         color: tokens.$color-black;
         text-decoration: none;
         font-weight: 600;
-        padding: tokens.$spacing-sm tokens.$spacing-md;
+        padding: tokens.$spacing-sm;
+        white-space: nowrap;
+
+        @media screen and (min-width: tokens.$screen-lg) {
+          padding: tokens.$spacing-sm tokens.$spacing-md;
+        }
 
         &:hover {
           text-decoration: underline;
@@ -70,7 +74,7 @@
       }
     }
 
-    @media screen and (max-width: tokens.$screen-xl) {
+    @media screen and (max-width: tokens.$screen-md) {
       display: none;
     }
   }

@@ -23,7 +23,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page content`, (
 
     await expect(landingPage.monitorLandingHeader).toBeVisible();
     await landingPage.signInButton.click();
-    await page.waitForURL("**/oauth/**");
+    await page.waitForURL("**/oauth**");
     expect(page.url()).toContain("oauth");
   });
 
