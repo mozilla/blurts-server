@@ -14,7 +14,7 @@ import {
   getProfile,
   UpdateableProfileDetails,
 } from "../../../../../functions/server/onerep";
-import updateDataBrokerScanProfile from "../../../../../functions/server/updateDataBrokerScanProfile";
+import { updateOnerepDataBrokerScanProfile } from "../../../../../functions/server/updateDataBrokerScanProfile";
 import { getAllScansForProfile } from "../../../../../../db/tables/onerep_scans";
 import { refreshStoredScanResults } from "../../../../../functions/server/refreshStoredScanResults";
 
@@ -72,7 +72,7 @@ export async function updateOnerepProfile(
   }
 
   try {
-    await updateDataBrokerScanProfile(onerepProfileId, profileData);
+    await updateOnerepDataBrokerScanProfile(onerepProfileId, profileData);
   } catch (error) {
     console.error("Could not update profile details:", error);
   }

@@ -91,7 +91,7 @@ export type ScanResult = Components["schemas"]["ScanResult"];
 // }
 
 async function moscaryFetch(
-  path: string,
+  path: `/api/v1/${string}`,
   options: Parameters<typeof fetch>[1] = {},
 ) {
   const dataBrokerApiBase = process.env.SCAN_REMOVE_API_BASE;
@@ -147,71 +147,73 @@ export async function createProfile(profileData: CreateProfileRequest) {
   return savedProfile.id as NonNullable<SubscriberRow["moscary_id"]>;
 }
 
-// export async function updateProfile(
-//   profileId: number,
-//   profileData: UpdateProfileRequest,
-// ) {
-//   const {
-//     first_name,
-//     last_name,
-//     name_suffix,
-//     middle_name,
-//     first_names,
-//     last_names,
-//     middle_names,
-//     birth_date,
-//     addresses,
-//     phone_numbers,
-//   } = profileData;
-//   const response = await internalFetch(`/api/v1/profiles/${profileId}`, {
-//     method: "PUT",
-//     body: JSON.stringify({
-//       first_name,
-//       last_name,
-//       name_suffix,
-//       middle_name,
-//       first_names,
-//       last_names,
-//       middle_names,
-//       birth_date,
-//       addresses,
-//       phone_numbers,
-//     }),
-//   });
-//   if (!response.ok) {
-//     const responseJson = await response.json();
-//     logger.error(
-//       `Failed to update profile: [${response.status}] [${response.statusText}] [${JSON.stringify(responseJson)}]`,
-//     );
-//     throw new Error(
-//       `Failed to update profile: [${response.status}] [${response.statusText}]`,
-//     );
-//   }
+export async function updateProfile(
+  profileId: UUID,
+  profileData: Components["schemas"]["ProfileInput"],
+) {
+  const {
+    first_name,
+    last_name,
+    middle_name,
+    first_names,
+    last_names,
+    middle_names,
+    birth_date,
+    addresses,
+    phone_numbers,
+  } = profileData;
+  const requestBody: Paths["/profiles/{id}"]["put"]["requestBody"]["content"]["application/json"] =
+    {
+      first_name,
+      last_name,
+      middle_name,
+      first_names,
+      last_names,
+      middle_names,
+      birth_date,
+      addresses,
+      phone_numbers,
+    };
+  const response = await moscaryFetch(`/api/v1/profiles/${profileId}`, {
+    method: "PUT",
+    body: JSON.stringify(requestBody),
+  });
+  if (!response.ok) {
+    const responseJson: Paths["/profiles/{id}"]["put"]["responses"]["200"]["content"]["application/json"] =
+      await response.json();
+    logger.error(
+      `Failed to update profile: [${response.status}] [${response.statusText}] [${JSON.stringify(responseJson)}]`,
+    );
+    throw new Error(
+      `Failed to update profile: [${response.status}] [${response.statusText}]`,
+    );
+  }
 
-//   logger.info("profile_updated");
-// }
+  logger.info("profile_updated");
+}
 
-// export async function getProfile(
-//   profileId: UUID,
-// ): Promise<ShowProfileResponse> {
-//   const response: Response = await internalFetch(
-//     `/api/v1/profiles/${profileId}`,
-//     {
-//       method: "GET",
-//     },
-//   );
-//   if (!response.ok) {
-//     logger.error(
-//       `Failed to fetch profile: [${response.status}] [${response.statusText}]`,
-//     );
-//     throw new Error(
-//       `Failed to fetch profile: [${response.status}] [${response.statusText}]`,
-//     );
-//   }
+export async function getProfile(
+  profileId: UUID,
+): Promise<Components["schemas"]["Profile"]> {
+  const response: Response = await moscaryFetch(
+    `/api/v1/profiles/${profileId}`,
+    {
+      method: "GET",
+    },
+  );
+  if (!response.ok) {
+    logger.error(
+      `Failed to fetch profile: [${response.status}] [${response.statusText}]`,
+    );
+    throw new Error(
+      `Failed to fetch profile: [${response.status}] [${response.statusText}]`,
+    );
+  }
 
-//   const profile: ShowProfileResponse = await response.json();
-//   return profile;
-// }
+  const profile: Paths["/profiles/{id}"]["get"]["responses"]["200"]["content"]["application/json"] =
+    await response.json();
+  return profile;
+}
 
 // export async function activateProfile(profileId: UUID): Promise<void> {
 //   const response: Response = await internalFetch(
@@ -321,7 +323,7 @@ export async function listScans(
     queryParams.set("per_page", options.per_page.toString());
   }
   const response = await moscaryFetch(
-    `/api/v1/profiles/${profileId}/scans?` + queryParams.toString(),
+    `/api/v1/profiles/${profileId}/scans?${queryParams.toString()}`,
     {
       method: "GET",
     },
@@ -367,7 +369,7 @@ export async function listScanResults(
     });
   }
   const response = await moscaryFetch(
-    "/api/v1/scan-results/?" + queryParams.toString(),
+    `/api/v1/scan-results/?${queryParams.toString()}`,
     {
       method: "GET",
     },

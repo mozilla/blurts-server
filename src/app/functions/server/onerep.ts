@@ -167,6 +167,7 @@ async function onerepFetch(
   return fetch(url, { ...options, headers });
 }
 
+/** @deprecated */
 export async function createProfile(
   profileData: CreateProfileRequest,
 ): Promise<number> {
@@ -211,6 +212,7 @@ export async function createProfile(
   return savedProfile.id;
 }
 
+/** @deprecated */
 export async function updateProfile(
   profileId: number,
   profileData: UpdateProfileRequest,

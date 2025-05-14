@@ -35,8 +35,10 @@ import {
   checkCurrentCouponCode,
 } from "../../../../../../functions/server/applyCoupon";
 import { validateEmailAddress } from "../../../../../../../utils/emailAddress";
-import updateDataBrokerScanProfile from "../../../../../../functions/server/updateDataBrokerScanProfile";
+import { updateOnerepDataBrokerScanProfile } from "../../../../../../functions/server/updateDataBrokerScanProfile";
 import { hasPremium } from "../../../../../../functions/universal/user";
+import { getEnabledFeatureFlags } from "../../../../../../../db/tables/featureFlags";
+import { updateProfile } from "../../../../../../functions/server/moscary";
 
 export type AddEmailFormState =
   | { success?: never }
@@ -287,7 +289,60 @@ export async function onHandleUpdateProfileData(profileData: OnerepProfileRow) {
     };
   }
 
-  if (!profileData.onerep_profile_id) {
+  const enabledFeatureFlags = await getEnabledFeatureFlags({
+    email: session.user.email,
+  });
+  if (enabledFeatureFlags.includes("Moscary")) {
+    if (!session.user.subscriber.moscary_id) {
+      logger.error(`User does not have a Moscary profile.`);
+      return {
+        success: false,
+        error: "update-profile-data-without-moscary-profile",
+        errorMessage: `User does not have a Moscary profile.`,
+      };
+    }
+
+    try {
+      const {
+        first_name,
+        middle_name,
+        last_name,
+        first_names,
+        last_names,
+        middle_names,
+        phone_numbers,
+        addresses,
+      } = profileData;
+      await updateProfile(session.user.subscriber.moscary_id, {
+        first_name,
+        last_name,
+        first_names: first_names.map((first_name) => ({ first_name })),
+        last_names: last_names.map((last_name) => ({ last_name })),
+        middle_names: middle_names.map((middle_name) => ({ middle_name })),
+        phone_numbers,
+        addresses,
+        middle_name: middle_name ?? "",
+      });
+    } catch (error) {
+      logger.error("Could not update profile details:", error);
+      return {
+        success: false,
+        error: "update-profile-data-updating-profile-failed",
+        errorMessage: `Updating profile failed.`,
+      };
+    }
+
+    // Tell the /edit-info page to display an “details saved” notification:
+    (await cookies()).set("justSavedDetails", "justSavedDetails", {
+      expires: new Date(Date.now() + 5 * 60 * 1000),
+      httpOnly: false,
+    });
+
+    revalidatePath("/user/settings/edit-info");
+    redirect("/user/settings/edit-info");
+  }
+
+  if (!session.user.subscriber.onerep_profile_id) {
     logger.error(`User does not have a OneRep profile.`);
     return {
       success: false,
@@ -307,16 +362,19 @@ export async function onHandleUpdateProfileData(profileData: OnerepProfileRow) {
       phone_numbers,
       addresses,
     } = profileData;
-    await updateDataBrokerScanProfile(profileData.onerep_profile_id, {
-      first_name,
-      last_name,
-      first_names,
-      last_names,
-      middle_names,
-      phone_numbers,
-      addresses,
-      middle_name: middle_name ?? "",
-    });
+    await updateOnerepDataBrokerScanProfile(
+      session.user.subscriber.onerep_profile_id,
+      {
+        first_name,
+        last_name,
+        first_names,
+        last_names,
+        middle_names,
+        phone_numbers,
+        addresses,
+        middle_name: middle_name ?? "",
+      },
+    );
   } catch (error) {
     logger.error("Could not update profile details:", error);
     return {
