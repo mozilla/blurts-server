@@ -97,6 +97,11 @@
       .ctaBtn {
         width: 100%;
         background-color: tokens.$color-blue-50; // overwrite back to previous primary colour
+        transition: 0.3s;
+
+        &:hover {
+          background: tokens.$color-blue-60;
+        }
       }
     }
   }

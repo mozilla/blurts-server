@@ -8,26 +8,21 @@ import styles from "./BundleLayout.module.scss";
 import { BundleFooter } from "./BundleFooter";
 import {
   getAcceptLangHeaderInServerComponents,
-  getL10nBundles,
+  getL10n,
 } from "../../../functions/l10n/serverComponents";
-import { L10nProvider } from "../../../../contextProviders/localization";
 
 export default async function OnboardingLayout({
   children,
 }: {
   children: ReactNode;
 }) {
-  const l10nBundles = await getL10nBundles(
-    await getAcceptLangHeaderInServerComponents(),
-  );
+  const l10n = getL10n(await getAcceptLangHeaderInServerComponents());
 
   return (
-    <L10nProvider bundleSources={l10nBundles}>
-      <div className={styles.pageContainer}>
-        <BundleHeader />
-        <main className={styles.contentContainer}>{children}</main>
-        <BundleFooter />
-      </div>
-    </L10nProvider>
+    <div className={styles.pageContainer}>
+      <BundleHeader l10n={l10n} />
+      <main className={styles.contentContainer}>{children}</main>
+      <BundleFooter l10n={l10n} />
+    </div>
   );
 }

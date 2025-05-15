@@ -17,6 +17,10 @@
     align-items: flex-start;
     padding: tokens.$spacing-lg tokens.$spacing-2xl;
     background-color: tokens.$color-white;
+
+    img {
+      cursor: pointer;
+    }
   }
 
   .footer {

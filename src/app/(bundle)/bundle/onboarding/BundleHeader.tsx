@@ -2,16 +2,23 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-"use client";
-
 import Image from "next/image";
 import NewMonitorLogo from "./images/new-mozilla-logo.svg";
 import styles from "./BundleLayout.module.scss";
+import { MOZILLA_ORG } from "../../../../constants";
+import { ExtendedReactLocalization } from "../../../functions/l10n";
 
-export const BundleHeader = () => {
+export const BundleHeader = ({ l10n }: { l10n: ExtendedReactLocalization }) => {
   return (
     <nav className={styles.topBar}>
-      <Image src={NewMonitorLogo} alt="" width="100" />
+      <a href={MOZILLA_ORG}>
+        <Image
+          src={NewMonitorLogo}
+          alt={l10n.getString("bundle-header-image-alt")}
+          width="100"
+          height="30"
+        />
+      </a>
     </nav>
   );
 };

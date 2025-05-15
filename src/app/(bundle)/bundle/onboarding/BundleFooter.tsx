@@ -2,20 +2,16 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-"use client";
-
 import Image from "next/image";
 import NewMonitorIcon from "./images/new-mozilla-icon.svg";
 import styles from "./BundleLayout.module.scss";
-import { useL10n } from "../../../hooks/l10n";
 import {
   CONST_URL_PRIVACY_POLICY,
   CONST_URL_TERMS,
 } from "../../../../constants";
+import { ExtendedReactLocalization } from "../../../functions/l10n";
 
-export const BundleFooter = () => {
-  const l10n = useL10n();
-
+export const BundleFooter = ({ l10n }: { l10n: ExtendedReactLocalization }) => {
   return (
     <footer className={styles.footer}>
       <Image src={NewMonitorIcon} alt="" width="30" />
