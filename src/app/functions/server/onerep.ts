@@ -257,6 +257,7 @@ export async function updateProfile(
   logger.info("onerep_profile_updated");
 }
 
+/** @deprecated */
 export async function getProfile(
   profileId: number,
 ): Promise<ShowProfileResponse> {
@@ -352,6 +353,7 @@ export async function activateAndOptoutProfile({
   }
 }
 
+/** @deprecated */
 export async function createScan(
   profileId: number,
 ): Promise<CreateScanResponse> {
@@ -372,6 +374,7 @@ export async function createScan(
   return response.json() as Promise<CreateScanResponse>;
 }
 
+/** @deprecated */
 export async function listScans(
   profileId: number,
   options: Partial<{ page: number; per_page: number }> = {},
@@ -400,7 +403,7 @@ export async function listScans(
   return response.json() as Promise<ListScansResponse>;
 }
 
-export async function listScanResults(
+async function listScanResults(
   profileId: number,
   options: Partial<{
     page: number;
@@ -482,6 +485,7 @@ export async function isEligibleForFreeScan(
   return true;
 }
 
+/** @deprecated */
 export async function getScanDetails(
   profileId: number,
   scanId: number,
@@ -500,6 +504,7 @@ export async function getScanDetails(
   return response.json() as Promise<Scan>;
 }
 
+/** @deprecated */
 export async function getAllScanResults(
   profileId: number,
 ): Promise<ScanResult[]> {
@@ -530,7 +535,7 @@ export async function getAllDataBrokers() {
   });
 }
 
-export async function fetchAllPages<Data>(
+async function fetchAllPages<Data>(
   fetchFunction: (_page: number) => Promise<OneRepResponse<Data[]>>,
 ): Promise<Data[]> {
   const firstPage = await fetchFunction(1);
@@ -551,6 +556,7 @@ export async function fetchAllPages<Data>(
 // Local instance map to cache results to prevent excessive API requests
 // Would be nice to share this cache with other pod via Redis in the future
 const profileStatsCache = new Map<string, ProfileStats>();
+/** @deprecated Only used to check whether we've hit OneRep quota compared to env vars, so doesn't need Moscary equialent check whether we've hit OneRep quota compared to env vars, so doesn't need Moscary equialents. */
 export async function getProfilesStats(
   from?: Date,
   to?: Date,
