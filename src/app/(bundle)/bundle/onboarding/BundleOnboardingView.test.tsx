@@ -146,6 +146,7 @@ it("logo in the header takes you to main mozilla page in a separate tab", async 
   render(<ComposedBundleOnboardingHeader />);
 
   const mozillaLogo = screen.getByAltText("⁨Mozilla⁩ logo");
+  expect(mozillaLogo).toBeInTheDocument();
 
   await user.click(mozillaLogo);
   // jsdom will complain about not being able to navigate to a different page
