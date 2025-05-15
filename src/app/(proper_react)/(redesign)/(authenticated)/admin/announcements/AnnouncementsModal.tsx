@@ -259,10 +259,16 @@ const AnnouncementsModal = (props: AnnouncementsModalProps) => {
               <option value="all_users">All Users</option>
               <option value="premium_users">Premium Users US</option>
               <option value="free_users">Free Users US</option>
-              <option value="has_run_scan">Has Run Scan US</option>
-              <option value="has_not_run_scan">Has Not Run Scan US</option>
+              <option value="has_run_scan">Free: Has Run Scan US</option>
+              <option value="has_not_run_scan">
+                Free: Has Not Run Scan US
+              </option>
+              <option value="monthly_user">
+                Premium: User Monthly Subscriber US
+              </option>
+              <option value="yearly_user">Premium: Yearly Subscriber US</option>
+              <option value="us_only">Free: US Users Only</option>
               <option value="non_us">Non-US Users</option>
-              <option value="us_only">US Users Only</option>
             </select>
           </div>
 

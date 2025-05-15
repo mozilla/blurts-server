@@ -18,3 +18,4 @@ unsubscribe-success-cta = Mewngofnodwch i { -brand-monitor }
 # Error warning
 
 unsubscription-failed = Methodd y dad-danysgrifio. <try_again_link>Ceisiwch eto.</try_again_link>
+unsubscription-failed-2 = Methodd y dad-danysgrifio.

@@ -179,6 +179,7 @@ mozilla = { -brand-mozilla }
 terms-of-service = Tiwtilin n useqdec
 privacy-notice = Tasertit n tbaḍnit
 github = { -brand-github }
+footer-nav-recent-breaches = Tarewla tamaynut n yisefka
 footer-external-link-faq-label = Isteqsiyen FAQ
 footer-external-link-faq-tooltip = Isteqsiyen i d-yettuɣalen s waṭas.
 
@@ -188,9 +189,13 @@ footer-external-link-faq-tooltip = Isteqsiyen i d-yettuɣalen s waṭas.
 #   $errorCode (number) - "404"
 error-page-error-404-title = { $errorCode } - asebter ur yettwaf ara
 error-page-error-404-cta-button = Uɣal
+# Variables:
+#   $errorCode (number) - the status code of the error, e.g. 403
+error-page-error-other-title = { $errorCode } yella wayen ur nteddu ara
 
 ## Breach overview page
 
+all-breaches-headline-3 = Taffa n yisefka n trewla n yisefka
 search-breaches = Nadi tirewliwin n yisefka
 
 ## Public breach detail page
