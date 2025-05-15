@@ -65,6 +65,8 @@ it("opens a new tab when cta is selected", async () => {
   render(<ComposedBundlePage />);
 
   const monitorLink = screen.getByRole("link", { name: "Go to ⁨Monitor⁩" });
+  expect(monitorLink).toHaveAttribute("href", "user/dashboard");
+
   await user.click(monitorLink);
 
   // jsdom will complain about not being able to navigate to a different page
@@ -73,6 +75,8 @@ it("opens a new tab when cta is selected", async () => {
   jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
 
   const vpnLink = screen.getByRole("link", { name: "Get ⁨VPN⁩" });
+  expect(vpnLink).toHaveAttribute("href", process.env.MOZILLA_VPN_LANDING_URL);
+
   await user.click(vpnLink);
 
   // jsdom will complain about not being able to navigate to a different page
@@ -81,6 +85,11 @@ it("opens a new tab when cta is selected", async () => {
   jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
 
   const relayLink = screen.getByRole("link", { name: "Go to ⁨Relay⁩" });
+  expect(relayLink).toHaveAttribute(
+    "href",
+    process.env.FIREFOX_RELAY_LANDING_URL,
+  );
+
   await user.click(relayLink);
 
   // jsdom will complain about not being able to navigate to a different page
