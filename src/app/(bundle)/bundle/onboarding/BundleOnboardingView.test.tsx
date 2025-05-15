@@ -65,7 +65,7 @@ it("opens a new tab when cta is selected", async () => {
   render(<ComposedBundlePage />);
 
   const monitorLink = screen.getByRole("link", { name: "Go to ⁨Monitor⁩" });
-  expect(monitorLink).toHaveAttribute("href", "user/dashboard");
+  expect(monitorLink).toHaveAttribute("href", "/user/dashboard");
 
   await user.click(monitorLink);
 

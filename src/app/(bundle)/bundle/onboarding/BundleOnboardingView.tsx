@@ -70,7 +70,7 @@ export const BundleOnboardingView = (props: Props) => {
                 data: { button_id: "launch_monitor" },
               }}
               variant="primary"
-              href="user/dashboard"
+              href="/user/dashboard"
             >
               {l10n.getString("bundle-monitor-plus-cta")}
             </TelemetryButton>
