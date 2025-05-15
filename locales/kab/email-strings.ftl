@@ -10,6 +10,7 @@ email-header-button-sign-in = Kcem
 
 ## Email footers
 
+email-footer-support-heading = Isteqsiyen ɣef { -brand-mozilla-monitor }?
 email-footer-logo-mozilla-alt = { -brand-mozilla }
 email-footer-meta-privacy-notice = Tabaḍnit
 # Firefox Relay is a product name and should not be translated.
