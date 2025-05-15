@@ -8,12 +8,7 @@ import { getL10n } from "../../../functions/l10n/storybookAndJest";
 
 const meta: Meta<typeof BundleOnboardingView> = {
   title: "Pages/Public/Bundle Onboarding page",
-  component: () => (
-    <BundleOnboardingView
-      l10n={getL10n()}
-      enabledFeatureFlags={["PrivacyProductsBundle"]}
-    />
-  ),
+  component: BundleOnboardingView,
 };
 export default meta;
 
@@ -23,5 +18,6 @@ export const BundleOnboarding: Story = {
   name: "Bundle Onboarding",
   args: {
     l10n: getL10n(),
+    enabledFeatureFlags: ["PrivacyProductsBundle"],
   },
 };

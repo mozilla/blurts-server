@@ -38,9 +38,10 @@ export const BundleOnboardingView = (props: Props) => {
             <div className={styles.logoWrapper}>
               <Image src={MozillaVpnLogo} alt="" width="50" height="50" />
             </div>
-            <h3>{l10n.getString("bundle-mozilla-vpn-title")}</h3>
+            <h2>{l10n.getString("bundle-mozilla-vpn-title")}</h2>
             <p>{l10n.getString("bundle-mozilla-vpn-description")}</p>
             <TelemetryButton
+              target="_blank"
               className={styles.ctaBtn}
               event={{
                 module: "upgradeIntent",
@@ -58,9 +59,10 @@ export const BundleOnboardingView = (props: Props) => {
             <div className={styles.logoWrapper}>
               <Image src={MonitorPlusLogo} alt="" width="50" height="50" />
             </div>
-            <h3>{l10n.getString("bundle-monitor-plus-title")}</h3>
+            <h2>{l10n.getString("bundle-monitor-plus-title")}</h2>
             <p>{l10n.getString("bundle-monitor-plus-description")}</p>
             <TelemetryButton
+              target="_blank"
               className={styles.ctaBtn}
               event={{
                 module: "upgradeIntent",
@@ -78,9 +80,10 @@ export const BundleOnboardingView = (props: Props) => {
             <div className={styles.logoWrapper}>
               <Image src={RelayPremiumLogo} alt="" width="50" height="50" />
             </div>
-            <h3>{l10n.getString("bundle-relay-premium-title")}</h3>
+            <h2>{l10n.getString("bundle-relay-premium-title")}</h2>
             <p>{l10n.getString("bundle-relay-premium-description")}</p>
             <TelemetryButton
+              target="_blank"
               className={styles.ctaBtn}
               event={{
                 module: "upgradeIntent",
@@ -90,7 +93,7 @@ export const BundleOnboardingView = (props: Props) => {
               variant="primary"
               href={process.env.FIREFOX_RELAY_LANDING_URL}
             >
-              {l10n.getString("bundle-monitor-plus-cta")}
+              {l10n.getString("bundle-relay-premium-cta")}
             </TelemetryButton>
           </article>
         </div>
