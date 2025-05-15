@@ -11,7 +11,7 @@ import { ExtendedReactLocalization } from "../../../functions/l10n";
 export const BundleHeader = ({ l10n }: { l10n: ExtendedReactLocalization }) => {
   return (
     <nav className={styles.topBar}>
-      <a href={MOZILLA_ORG}>
+      <a href={MOZILLA_ORG} target="_blank">
         <Image
           src={NewMonitorLogo}
           alt={l10n.getString("bundle-header-image-alt")}

@@ -8,6 +8,8 @@ import Meta, { BundleOnboarding } from "./BundleOnboardingView.stories";
 import { axe } from "jest-axe";
 import { useTelemetry } from "../../../hooks/useTelemetry";
 import userEvent from "@testing-library/user-event";
+import FooterMeta, { BundleFooterDefault } from "./BundleFooter.stories";
+import HeaderMeta, { BundleHeaderDefault } from "./BundleHeader.stories";
 
 jest.mock("../../../hooks/useTelemetry");
 
@@ -81,6 +83,62 @@ it("opens a new tab when cta is selected", async () => {
   const relayLink = screen.getByRole("link", { name: "Go to ⁨Relay⁩" });
   await user.click(relayLink);
 
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+});
+
+it("has the right links in the footer and each link opens in a new tab", async () => {
+  const user = userEvent.setup();
+
+  const ComposedBundleOnboardingFooter = composeStory(
+    BundleFooterDefault,
+    FooterMeta,
+  );
+  render(<ComposedBundleOnboardingFooter />);
+
+  const privacyNoticeLink = screen.getByRole("link", {
+    name: "Website Privacy Notice",
+  });
+  expect(privacyNoticeLink).toHaveAttribute(
+    "href",
+    "https://www.mozilla.org/privacy/subscription-services/",
+  );
+
+  await user.click(privacyNoticeLink);
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+
+  const termsAndConditionsLink = screen.getByRole("link", {
+    name: "Terms of Service",
+  });
+  expect(termsAndConditionsLink).toHaveAttribute(
+    "href",
+    "https://www.mozilla.org/about/legal/terms/subscription-services/",
+  );
+
+  await user.click(termsAndConditionsLink);
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+});
+
+it("logo in the header takes you to main mozilla page in a separate tab", async () => {
+  const user = userEvent.setup();
+
+  const ComposedBundleOnboardingHeader = composeStory(
+    BundleHeaderDefault,
+    HeaderMeta,
+  );
+  render(<ComposedBundleOnboardingHeader />);
+
+  const mozillaLogo = screen.getByAltText("⁨Mozilla⁩ logo");
+
+  await user.click(mozillaLogo);
   // jsdom will complain about not being able to navigate to a different page
   // after clicking the link; suppress that error, as it's not relevant to the
   // test:

@@ -8,6 +8,7 @@
 
 bundle-onboarding-title = You’re ready to <gradient>protect your privacy.</gradient>
 bundle-onboarding-subtitle = Go to each tool to get started.
+bundle-header-image-alt = { -brand-mozilla } logo
 
 bundle-mozilla-vpn-title = { -brand-mozilla-vpn }
 bundle-mozilla-vpn-description = Download, install, and connect to VPN to protect your online activity.
