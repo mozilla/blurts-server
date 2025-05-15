@@ -10,6 +10,7 @@ import {
   getAcceptLangHeaderInServerComponents,
   getL10n,
 } from "../../../functions/l10n/serverComponents";
+import { BundlePageViewTelemetry } from "./BundleTelemetry";
 
 export default async function OnboardingLayout({
   children,
@@ -20,6 +21,7 @@ export default async function OnboardingLayout({
 
   return (
     <div className={styles.pageContainer}>
+      <BundlePageViewTelemetry />
       <BundleHeader l10n={l10n} />
       <main className={styles.contentContainer}>{children}</main>
       <BundleFooter l10n={l10n} />
