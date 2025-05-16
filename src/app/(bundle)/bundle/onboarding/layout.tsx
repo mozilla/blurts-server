@@ -25,8 +25,8 @@ export default async function OnboardingLayout({
       <div className={styles.pageContainer}>
         <BundleHeader l10n={l10n} />
         <main className={styles.contentContainer}>{children}</main>
-        <PageLoadEvent />
         <BundleFooter l10n={l10n} />
+        <PageLoadEvent />
       </div>
     </CookiesProvider>
   );
