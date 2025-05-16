@@ -282,7 +282,7 @@ export const DoughnutChart = (props: Props) => {
               <thead>
                 <tr>
                   {/* The first column contains the chart colour,
-                      which is irrelevant to screen readers. */}
+                       which is irrelevant to screen readers. */}
                   <td aria-hidden={true} />
                   <th>
                     {l10n.getString("exposure-chart-legend-heading-type")}
