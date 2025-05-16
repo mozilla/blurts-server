@@ -40,18 +40,25 @@
   .productsWrapper {
     padding: tokens.$spacing-md;
     display: flex;
+    width: 100%;
     flex-direction: column;
     gap: tokens.$spacing-lg;
     justify-content: center;
-    width: 100%;
+    margin: 0 auto;
     text-align: center;
     margin-top: tokens.$layout-xs;
 
-    @media screen and (min-width: tokens.$screen-md) {
+    @media screen and (min-width: tokens.$screen-md) and (max-width: tokens.$screen-lg) {
       flex-direction: row;
+      flex-wrap: wrap;
+      padding: tokens.$spacing-md tokens.$layout-xl;
     }
 
-    @media screen and (min-width: tokens.$screen-xl) {
+    @media screen and (min-width: tokens.$screen-lg) {
+      width: fit-content;
+      flex-wrap: nowrap;
+      flex-direction: row;
+      justify-content: flex-start;
       padding: 0;
     }
 
@@ -72,8 +79,29 @@
         max-width: 380px;
       }
 
-      @media screen and (min-width: tokens.$screen-lg) {
+      @media screen and (min-width: tokens.$screen-md) and (max-width: tokens.$screen-lg) {
         margin: 0;
+        max-width: auto;
+
+        &:first-child {
+          flex: 0 0 100%;
+          max-width: 100%;
+        }
+        &:nth-child(2),
+        &:nth-child(3) {
+          flex: 0 0 calc(50% - #{tokens.$spacing-lg}/ 2);
+          max-width: calc(50% - #{tokens.$spacing-lg}/ 2);
+        }
+      }
+
+      @media screen and (min-width: tokens.$screen-lg) and (max-width: tokens.$screen-xl) {
+        max-width: 300px;
+        flex: 0 0 auto;
+        justify-self: flex-start;
+      }
+
+      @media screen and (min-width: tokens.$screen-xl) {
+        max-width: 380px;
       }
 
       .logoWrapper {
