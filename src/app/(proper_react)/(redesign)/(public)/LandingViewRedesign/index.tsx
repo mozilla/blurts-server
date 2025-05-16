@@ -39,7 +39,7 @@ export const View = (props: LandingPageProps) => {
         </section>
         {props.enabledFeatureFlags.includes("PrivacyProductsBundle") && (
           <section>
-            <PrivacyProductBundleBanner />
+            <PrivacyProductBundleBanner l10n={props.l10n} />
           </section>
         )}
         <section>
