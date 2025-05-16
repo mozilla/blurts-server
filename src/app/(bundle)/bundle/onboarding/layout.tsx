@@ -10,7 +10,8 @@ import {
   getAcceptLangHeaderInServerComponents,
   getL10n,
 } from "../../../functions/l10n/serverComponents";
-import { BundlePageViewTelemetry } from "./BundleTelemetry";
+import { PageLoadEvent } from "../../../components/client/PageLoadEvent";
+import { CookiesProvider } from "../../../../contextProviders/cookies";
 
 export default async function OnboardingLayout({
   children,
@@ -20,11 +21,13 @@ export default async function OnboardingLayout({
   const l10n = getL10n(await getAcceptLangHeaderInServerComponents());
 
   return (
-    <div className={styles.pageContainer}>
-      <BundlePageViewTelemetry />
-      <BundleHeader l10n={l10n} />
-      <main className={styles.contentContainer}>{children}</main>
-      <BundleFooter l10n={l10n} />
-    </div>
+    <CookiesProvider>
+      <div className={styles.pageContainer}>
+        <BundleHeader l10n={l10n} />
+        <main className={styles.contentContainer}>{children}</main>
+        <PageLoadEvent />
+        <BundleFooter l10n={l10n} />
+      </div>
+    </CookiesProvider>
   );
 }
