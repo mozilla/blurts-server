@@ -1,0 +1,152 @@
+@use "../../../../../tokens";
+@use "sass:color";
+
+.banner {
+  align-items: center;
+  background: radial-gradient(
+    141.42% 141.42% at 100% 0%,
+    #b833e11a 0%,
+    #9059ff1a 37.1%,
+    #5b6df81a 61.4%,
+    #0090ed1a 100%
+  );
+  border-radius: tokens.$border-radius-xl;
+  display: flex;
+  flex-direction: column-reverse;
+  font: tokens.$text-body-md;
+  gap: tokens.$spacing-md;
+  justify-content: space-between;
+  overflow: hidden;
+  padding: tokens.$layout-xs;
+  position: relative;
+  width: 100%;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: tokens.$spacing-md;
+    max-width: calc(tokens.$content-xs * 1.5);
+  }
+
+  .title {
+    display: block;
+    font: tokens.$text-title-xs;
+    font-weight: 700;
+    text-align: center;
+    width: 100%;
+  }
+
+  .subtitle {
+    display: flex;
+    flex-direction: column;
+    font-weight: 600;
+    gap: tokens.$spacing-xs;
+  }
+
+  .description {
+    display: flex;
+    flex-direction: column;
+    gap: tokens.$spacing-xs;
+    width: 100%;
+  }
+
+  .tags {
+    display: flex;
+    gap: tokens.$spacing-xs;
+
+    .tag {
+      background: hsl(
+        color.hue(tokens.$color-blue-50),
+        color.saturation(tokens.$color-blue-50),
+        87%
+      );
+      border-radius: tokens.$border-radius-xl;
+      overflow: hidden;
+      padding: 0 tokens.$spacing-sm;
+    }
+  }
+
+  .billingInfo {
+    font: tokens.$text-body-xs;
+  }
+
+  .footer {
+    display: flex;
+    flex-direction: column;
+    gap: tokens.$spacing-xs;
+    text-align: center;
+    width: 100%;
+  }
+
+  .illustration {
+    // Ensure the illustration container provides enough space for the center
+    // shield to not get cut-off. Ratio taken from the design specs.
+    aspect-ratio: 107 / 128;
+    max-width: calc(tokens.$content-xs * 0.5);
+    position: relative;
+    width: 25vw;
+
+    img {
+      left: 50%;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%) scale(4);
+    }
+  }
+
+  @media screen and (min-width: tokens.$screen-md) {
+    align-items: flex-start;
+    font: tokens.$text-body-lg;
+    flex-direction: row;
+    padding: tokens.$layout-sm;
+
+    .title {
+      font: tokens.$text-title-sm;
+      font-weight: 700;
+      text-align: left;
+    }
+
+    .content {
+      max-width: calc(tokens.$content-sm * 1.5);
+    }
+
+    .footer {
+      align-items: flex-start;
+      gap: tokens.$spacing-sm;
+      text-align: left;
+    }
+  }
+
+  @media screen and (min-width: tokens.$screen-xl) {
+    justify-content: center;
+    padding: tokens.$layout-md;
+
+    .content {
+      max-width: tokens.$content-lg;
+    }
+
+    .title {
+      font: tokens.$text-title-xs;
+      font-weight: 700;
+    }
+
+    .subtitle {
+      align-items: center;
+      flex-direction: row;
+      gap: tokens.$spacing-sm;
+    }
+
+    .footer {
+      align-items: center;
+      flex-direction: row;
+    }
+
+    .illustration {
+      height: calc(100% - 2 * tokens.$spacing-md);
+      left: tokens.$layout-md;
+      position: absolute;
+      top: tokens.$spacing-md;
+      width: auto;
+    }
+  }
+}

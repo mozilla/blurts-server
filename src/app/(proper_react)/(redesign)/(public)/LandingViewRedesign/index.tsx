@@ -10,6 +10,7 @@ import { Hero } from "./components/Hero";
 import { CtaBanner } from "./components/CtaBanner";
 import { InfoBlock } from "./components/InfoBlock";
 import { LogoBlock } from "./components/LogoBlock";
+import { PrivacyProductBundleBanner } from "./components/PrivacyProductBundleBanner";
 import { Faq } from "./components/Faq";
 import { CtaInputBanner } from "./components/CtaInputBanner";
 import { PricingPlans } from "./components/PricingPlans";
@@ -36,6 +37,11 @@ export const View = (props: LandingPageProps) => {
         <section className={styles.hasBackground}>
           <InfoBlock {...props} />
         </section>
+        {props.enabledFeatureFlags.includes("PrivacyProductsBundle") && (
+          <section>
+            <PrivacyProductBundleBanner />
+          </section>
+        )}
         <section>
           <PricingPlans {...props} />
         </section>
