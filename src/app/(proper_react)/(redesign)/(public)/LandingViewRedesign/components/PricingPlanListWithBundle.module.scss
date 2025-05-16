@@ -70,8 +70,9 @@
 
   dt,
   dd {
-    // Ensure that the card content is not covered by the pseudo element that’s
-    // used for creating the border gradient of the bundle pricing card.
+    // Ensure that the card content is not covered by the pseudo element
+    // `.pricingCard::before` that’s used for creating the border gradient of
+    // the bundle pricing card.
     z-index: 1;
   }
 
