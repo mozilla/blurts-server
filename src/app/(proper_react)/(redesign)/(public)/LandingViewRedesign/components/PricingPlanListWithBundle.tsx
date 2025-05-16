@@ -6,7 +6,6 @@
 
 import { ReactNode, useRef, useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useCookies } from "react-cookie";
 import { useL10n } from "../../../../../hooks/l10n";
 import { useTelemetry } from "../../../../../hooks/useTelemetry";
@@ -74,8 +73,6 @@ type PricingPlanData = {
 export const PricingPlanListWithBundle = (props: Props & ScanLimitProp) => {
   const l10n = useL10n();
   const recordTelemetry = useTelemetry();
-  const pathname = usePathname();
-  const isLandingPage = pathname === "/";
   const [billingPeriod, setBillingPeriod] = useState<BillingPeriod>("yearly");
 
   // The cookie `attributionsLastTouch` is set in the component `PageLoadEvent`
@@ -148,12 +145,7 @@ export const PricingPlanListWithBundle = (props: Props & ScanLimitProp) => {
             "landing-redesign-pricing-plans-bundle-item-mozilla-vpn-description",
           )}
         </a>,
-        <Link
-          key="bundle-monitor"
-          className={styles.bundleItemLink}
-          href="/"
-          aria-disabled={isLandingPage}
-        >
+        <Link key="bundle-monitor" className={styles.bundleItemLink} href="/">
           <div className={styles.bundleTitle}>
             <MonitorIcon alt="" />
             <b>

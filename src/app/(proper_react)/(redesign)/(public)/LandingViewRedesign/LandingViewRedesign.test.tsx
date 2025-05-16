@@ -868,7 +868,6 @@ describe("Pricing plan with bundle", () => {
     expect(mozillaVpnLink).not.toHaveAttribute("href", "");
     expect(relayPremiumLink).not.toHaveAttribute("href", "");
     expect(mozillaMonitorLink).toHaveAttribute("href", "/");
-    expect(mozillaMonitorLink).toHaveAttribute("aria-disabled", "true");
   });
 
   it("can initiate sign in from the Monitor Plus pricing plan", async () => {
