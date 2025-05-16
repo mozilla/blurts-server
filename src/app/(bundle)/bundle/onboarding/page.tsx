@@ -14,19 +14,18 @@ import { getEnabledFeatureFlags } from "../../../../db/tables/featureFlags";
 import NotFound from "../../../not-found";
 
 export default async function Page() {
-  const headersList = await headers();
-  const countryCode = getCountryCode(headersList);
-  const l10n = getL10n(await getAcceptLangHeaderInServerComponents());
   const enabledFeatureFlags = await getEnabledFeatureFlags({
     isSignedOut: true,
   });
+  if (!enabledFeatureFlags.includes("PrivacyProductsBundle")) {
+    return NotFound();
+  }
+  const headersList = await headers();
+  const countryCode = getCountryCode(headersList);
+  const l10n = getL10n(await getAcceptLangHeaderInServerComponents());
 
   if (countryCode !== "us") {
     return redirect("/");
-  }
-
-  if (!enabledFeatureFlags.includes("PrivacyProductsBundle")) {
-    return NotFound();
   }
 
   return (
