@@ -86,6 +86,7 @@ landing-redesign-pricing-plans-card-plus-cta-label = Get { -brand-monitor-plus }
 landing-redesign-pricing-plans-card-plus-with-bundle-included-features-label = Everything in { -brand-monitor }
 
 landing-redesign-pricing-plans-card-plus-with-bundle-subtitle = Automatic personal info removal
+landing-redesign-pricing-plans-card-plus-with-bundle-feature-item-alt-label = Includes
 # Variables:
 # $data_broker_sites_total_num is the total number of data broker sites available to scan. It will always be more than 1.
 landing-redesign-pricing-plans-card-plus-with-bundle-feature-item-one = {

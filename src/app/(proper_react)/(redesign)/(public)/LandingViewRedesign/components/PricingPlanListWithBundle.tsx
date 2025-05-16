@@ -233,7 +233,11 @@ export const PricingPlanListWithBundle = (props: Props & ScanLimitProp) => {
       features: [
         <>
           <span className={styles.plusNote}>
-            <PlusIcon alt="Includes" />
+            <PlusIcon
+              alt={l10n.getString(
+                "landing-redesign-pricing-plans-card-plus-with-bundle-feature-item-alt-label",
+              )}
+            />
             <b>
               {l10n.getString(
                 "landing-redesign-pricing-plans-card-plus-with-bundle-included-features-label",
@@ -242,7 +246,11 @@ export const PricingPlanListWithBundle = (props: Props & ScanLimitProp) => {
           </span>
         </>,
         <>
-          <CheckIcon alt="Includes" />
+          <CheckIcon
+            alt={l10n.getString(
+              "landing-redesign-pricing-plans-card-plus-with-bundle-feature-item-alt-label",
+            )}
+          />
           <span>
             {l10n.getFragment(
               "landing-redesign-pricing-plans-card-plus-with-bundle-feature-item-one",
@@ -256,7 +264,11 @@ export const PricingPlanListWithBundle = (props: Props & ScanLimitProp) => {
           </span>
         </>,
         <>
-          <CheckIcon alt="Includes" />
+          <CheckIcon
+            alt={l10n.getString(
+              "landing-redesign-pricing-plans-card-plus-with-bundle-feature-item-alt-label",
+            )}
+          />
           <span>
             {l10n.getFragment(
               "landing-redesign-pricing-plans-card-plus-with-bundle-feature-item-two",
@@ -267,7 +279,11 @@ export const PricingPlanListWithBundle = (props: Props & ScanLimitProp) => {
           </span>
         </>,
         <>
-          <CheckIcon alt="Includes" />
+          <CheckIcon
+            alt={l10n.getString(
+              "landing-redesign-pricing-plans-card-plus-with-bundle-feature-item-alt-label",
+            )}
+          />
           <span>
             {l10n.getFragment(
               "landing-redesign-pricing-plans-card-plus-with-bundle-feature-item-three",
@@ -278,7 +294,11 @@ export const PricingPlanListWithBundle = (props: Props & ScanLimitProp) => {
           </span>
         </>,
         <>
-          <CheckIcon alt="Includes" />
+          <CheckIcon
+            alt={l10n.getString(
+              "landing-redesign-pricing-plans-card-plus-with-bundle-feature-item-alt-label",
+            )}
+          />
           <span>
             {l10n.getFragment(
               "landing-redesign-pricing-plans-card-plus-with-bundle-feature-item-four",
@@ -371,7 +391,11 @@ export const PricingPlanListWithBundle = (props: Props & ScanLimitProp) => {
       ),
       features: [
         <>
-          <CheckIcon alt="Includes" />
+          <CheckIcon
+            alt={l10n.getString(
+              "landing-redesign-pricing-plans-card-plus-with-bundle-feature-item-alt-label",
+            )}
+          />
           <span>
             {l10n.getFragment(
               "landing-redesign-pricing-plans-card-free-with-bundle-feature-item-one",
@@ -385,7 +409,11 @@ export const PricingPlanListWithBundle = (props: Props & ScanLimitProp) => {
           </span>
         </>,
         <>
-          <CheckIcon alt="Includes" />
+          <CheckIcon
+            alt={l10n.getString(
+              "landing-redesign-pricing-plans-card-plus-with-bundle-feature-item-alt-label",
+            )}
+          />
           <span>
             {l10n.getFragment(
               "landing-redesign-pricing-plans-card-free-with-bundle-feature-item-two",
@@ -396,7 +424,11 @@ export const PricingPlanListWithBundle = (props: Props & ScanLimitProp) => {
           </span>
         </>,
         <>
-          <CheckIcon alt="Includes" />
+          <CheckIcon
+            alt={l10n.getString(
+              "landing-redesign-pricing-plans-card-plus-with-bundle-feature-item-alt-label",
+            )}
+          />
           <span>
             {l10n.getFragment(
               "landing-redesign-pricing-plans-card-free-with-bundle-feature-item-three",
@@ -407,7 +439,11 @@ export const PricingPlanListWithBundle = (props: Props & ScanLimitProp) => {
           </span>
         </>,
         <>
-          <CheckIcon alt="Includes" />
+          <CheckIcon
+            alt={l10n.getString(
+              "landing-redesign-pricing-plans-card-plus-with-bundle-feature-item-alt-label",
+            )}
+          />
           <span>
             {l10n.getFragment(
               "landing-redesign-pricing-plans-card-free-with-bundle-feature-item-four",
@@ -418,7 +454,11 @@ export const PricingPlanListWithBundle = (props: Props & ScanLimitProp) => {
           </span>
         </>,
         <>
-          <CheckIcon alt="Includes" />
+          <CheckIcon
+            alt={l10n.getString(
+              "landing-redesign-pricing-plans-card-plus-with-bundle-feature-item-alt-label",
+            )}
+          />
           <span>
             {l10n.getFragment(
               "landing-redesign-pricing-plans-card-free-with-bundle-feature-item-five",

@@ -303,7 +303,11 @@ export const PricingPlanList = (props: Props & ScanLimitProp) => {
               </dt>
               {features.map((feature, featureIndex) => (
                 <dd key={`${type}-feature-${featureIndex}`}>
-                  <CheckIcon alt="Included" />
+                  <CheckIcon
+                    alt={l10n.getString(
+                      "landing-redesign-pricing-plans-card-plus-with-bundle-feature-item-alt-label",
+                    )}
+                  />
                   <span>{feature}</span>
                 </dd>
               ))}
