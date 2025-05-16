@@ -1,6 +1,6 @@
 {
-  "name": "monitor",
-  "version": "1.0.0",
+  "name": "@mozilla/monitor",
+  "private": true,
   "description": "Firefox Monitor",
   "engines": {
     "node": "20.19.x",

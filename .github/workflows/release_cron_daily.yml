@@ -12,17 +12,18 @@ jobs:
     permissions:
       contents: write
     runs-on: ubuntu-latest
+    environment: build
+    env:
+      GAR_IMAGE_BASE: ${{ vars.GAR_REPO }}/blurts-server
+      GAR_REGISTRY: us-docker.pkg.dev
+      DOCKERHUB_IMAGE: mozilla/blurts-server # Define Docker Hub image name
 
     steps:
     - name: Checkout main branch
       uses: actions/checkout@v4
       with:
-        ref: main # Ensure we are working with the main branch
+        ref: main
         persist-credentials: false
-
-    - name: Get latest commit hash
-      id: get_latest_commit
-      run: echo "COMMIT_SHA=$(git rev-parse HEAD)" >> $GITHUB_ENV
 
     - name: Get current date
       run: |
@@ -58,18 +59,40 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
+    - name: Authenticate to Google Cloud
+      id: gcp-auth
+      uses: google-github-actions/auth@v2
+      with:
+        token_format: access_token
+        workload_identity_provider: ${{ vars.GCPV2_GITHUB_WORKLOAD_IDENTITY_PROVIDER }}
+        service_account: ${{ vars.GCP_GAR_SERVICE_ACCOUNT }}
+
+    - name: Login to Artifact Registry
+      id: gar-login
+      uses: docker/login-action@v3
+      with:
+        registry: ${{ env.GAR_REGISTRY }}
+        username: oauth2accesstoken
+        password: ${{ steps.gcp-auth.outputs.access_token }}
+
     - name: Extract metadata (tags, labels) for Docker
       id: meta
       uses: docker/metadata-action@v5
       with:
-        images: mozilla/blurts-server
+        images: ${{ env.DOCKERHUB_IMAGE }}
         tags: type=sha,format=short,prefix=
 
-    - name: Pull Docker image with commit tag
-      run: docker pull ${{ steps.meta.outputs.tags }}
+    - name: Pull Docker image from GAR with commit tag
+      run: docker pull ${{ env.GAR_IMAGE_BASE }}:${{ steps.meta.outputs.version }}
 
-    - name: Tag Docker image with release tag
-      run: docker tag ${{ steps.meta.outputs.tags }} mozilla/blurts-server:${{ env.CURRENT_DATE }}
+    - name: Tag Docker image for Docker Hub with release tag
+      run: docker tag ${{ env.GAR_IMAGE_BASE }}:${{ steps.meta.outputs.version }} ${{ env.DOCKERHUB_IMAGE }}:${{ env.CURRENT_DATE }}
 
-    - name: Push Docker image with release tag
-      run: docker push mozilla/blurts-server:${{ env.CURRENT_DATE }}
+    - name: Push Docker image to Docker Hub with release tag
+      run: docker push ${{ env.DOCKERHUB_IMAGE }}:${{ env.CURRENT_DATE }}
+
+    - name: Tag Docker image for GAR with release tag
+      run: docker tag ${{ env.GAR_IMAGE_BASE }}:${{ steps.meta.outputs.version }} ${{ env.GAR_IMAGE_BASE }}:${{ env.CURRENT_DATE }}
+
+    - name: Push Docker image to GAR with release tag
+      run: docker push ${{ env.GAR_IMAGE_BASE }}:${{ env.CURRENT_DATE }}
