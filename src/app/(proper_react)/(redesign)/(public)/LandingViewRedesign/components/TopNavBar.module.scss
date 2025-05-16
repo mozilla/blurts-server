@@ -8,6 +8,14 @@
   padding-bottom: tokens.$spacing-md;
   width: 100%;
 
+  @media screen and (min-width: tokens.$screen-sm) {
+    padding: 0;
+  }
+
+  @media screen and (min-width: tokens.$screen-md) {
+    font: tokens.$text-body-md;
+  }
+
   .signInButton {
     display: block;
 

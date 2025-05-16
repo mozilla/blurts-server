@@ -45,7 +45,7 @@ if (!versionData) {
   console.warn("Falling back to version data derived from package.json");
   versionData = {
     source: packageJson.homepage,
-    version: packageJson.version, // Use version from package.json as fallback
+    version: "unknown",
     commit: "unknown",
     build: "unknown",
   };
