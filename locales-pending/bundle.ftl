@@ -5,6 +5,7 @@
 -brand-vpn = VPN
 -brand-relay-new = Relay
 -brand-relay-premium = Relay Premium
+-product-name-privacy-products-bundle = Privacy Protection Plan
 
 bundle-onboarding-title = You’re ready to <gradient>protect your privacy.</gradient>
 bundle-onboarding-subtitle = Go to each tool to get started.

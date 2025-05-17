@@ -1,9 +1,8 @@
 @use "../../tokens";
 
 .toggleContainer {
-  background-color: tokens.$color-grey-05;
+  border: none;
   border-radius: tokens.$border-radius-xl;
-  border: 2px solid tokens.$color-purple-70;
   padding: tokens.$spacing-xs;
   display: flex;
   align-items: center;
@@ -11,7 +10,8 @@
   gap: tokens.$spacing-xs;
 
   &:focus-within {
-    outline: tokens.$border-focus-width solid tokens.$color-purple-10;
+    outline-style: solid;
+    outline-width: 2px;
   }
 
   .option {
@@ -23,18 +23,57 @@
     color: tokens.$color-grey-50;
     cursor: pointer;
 
-    &.isFocused {
-      background-color: tokens.$color-purple-10;
-    }
-
-    &:hover {
-      background-color: tokens.$color-purple-20;
-    }
-
     &.isSelected {
-      background-color: tokens.$color-purple-40;
-      color: tokens.$color-white;
       font-weight: 600;
+    }
+  }
+
+  &.purple {
+    border: 2px solid tokens.$color-purple-70;
+    background-color: tokens.$color-grey-05;
+
+    &:focus-within {
+      outline-color: tokens.$color-purple-10;
+    }
+
+    .option {
+      &.isFocused {
+        background-color: tokens.$color-purple-10;
+      }
+
+      &:hover {
+        background-color: tokens.$color-purple-20;
+      }
+
+      &.isSelected {
+        background-color: tokens.$color-purple-40;
+        color: tokens.$color-white;
+        font-weight: 600;
+      }
+    }
+  }
+
+  &.blue {
+    background-color: tokens.$color-grey-05;
+
+    &:focus-within {
+      outline-color: tokens.$color-informational-focus;
+    }
+
+    .option {
+      &.isFocused {
+        background-color: tokens.$color-blue-20;
+      }
+
+      &:hover {
+        background-color: tokens.$color-grey-10;
+      }
+
+      &.isSelected {
+        background-color: tokens.$color-white;
+        color: tokens.$color-blue-50;
+        font-weight: 600;
+      }
     }
   }
 }

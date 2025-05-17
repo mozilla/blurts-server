@@ -11,7 +11,15 @@ import { useButton } from "react-aria";
 import { useL10n } from "../../hooks/l10n";
 import { VisuallyHidden } from "../server/VisuallyHidden";
 
-type ButtonVariants = "primary" | "secondary" | "tertiary" | "link" | "icon";
+export type ButtonVariants =
+  | "primary"
+  | "secondary"
+  | "tertiary"
+  | "link"
+  | "icon";
+
+const buttonColorThemes = ["purple", "blue"] as const;
+export type ButtonColorThemes = (typeof buttonColorThemes)[number];
 
 export interface Props {
   variant: ButtonVariants;
@@ -24,6 +32,7 @@ export interface Props {
   small?: boolean;
   wide?: boolean;
   buttonRef?: RefObject<HTMLButtonElement | HTMLAnchorElement | null>;
+  theme?: ButtonColorThemes;
 }
 
 export type ButtonProps = Props & Parameters<typeof useButton>[0]; // AriaButtonOptions
@@ -40,6 +49,7 @@ export const Button = (props: ButtonProps) => {
     small,
     target,
     wide,
+    theme = buttonColorThemes[0],
     ...otherProps
   } = props;
 
@@ -50,6 +60,7 @@ export const Button = (props: ButtonProps) => {
   const classes = [
     styles.button,
     styles[variant],
+    styles[theme],
     // Ignored for test coverage; not used in tested pages yet:
     /* c8 ignore next */
     destructive && styles.destructive,
