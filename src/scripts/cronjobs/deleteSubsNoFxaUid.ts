@@ -20,6 +20,9 @@ let BATCH_SIZE = 1000;
  */
 (async () => {
   try {
+    const args = process.argv.slice(2);
+    const dryRun = args.includes("--dry-run");
+
     console.log("Starting deletion of subscribers without fxa_uid...");
     const knex = createDbConnection();
 
@@ -50,6 +53,11 @@ let BATCH_SIZE = 1000;
     const toDeleteCount = parseInt(String(toDeleteCountResult?.count || 0), 10);
     log(`Subscribers to be deleted: ${toDeleteCount}`);
 
+    if (dryRun) {
+      log("Dry run mode enabled.  No deletions will be performed.");
+      process.exit(0);
+    }
+
     // Delete in batches
     let totalDeleted = 0;
     let deletedInBatch = 0;
@@ -77,13 +85,15 @@ let BATCH_SIZE = 1000;
         log(`Batch ${batchNumber}: Deleting ${idsToDelete.length} subscribers`);
 
         // Delete this batch
-        deletedInBatch = await knex("subscribers")
-          .transacting(trx)
-          .whereIn(
-            "id",
-            idsToDelete.map((row) => row.id),
-          )
-          .del();
+        if (!dryRun) {
+          deletedInBatch = await knex("subscribers")
+            .transacting(trx)
+            .whereIn(
+              "id",
+              idsToDelete.map((row) => row.id),
+            )
+            .del();
+        }
 
         await trx.commit();
 
