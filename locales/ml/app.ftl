@@ -108,6 +108,7 @@ main-nav-link-faq-tooltip = പതിവു ചോദ്യങ്ങള്‍
 ## User menu
 
 user-menu-trigger-tooltip = രൂപരേഖ
+user-menu-manage-fxa-label = താങ്ങളുടെ { -brand-mozilla-account } അക്കൗണ്ടു് കൈകാര്യം ചെയ്യുക
 user-menu-settings-label = ക്രമീകരണങ്ങള്‍
 user-menu-help-label = തുണയും പിന്തുണയും
 user-menu-signout-label = പുറത്തുകടക്കുക
