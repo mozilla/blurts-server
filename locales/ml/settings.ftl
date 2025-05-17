@@ -15,6 +15,7 @@ settings-alert-preferences-allow-breach-alerts-title = ഉടൻ ഇ-കയ്�
 
 ## Monitored email addresses
 
+settings-add-email-button = ഇതപാൽ വിലാസം ചേൎക്കുക
 
 ## Delete Monitor account
 

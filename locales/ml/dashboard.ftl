@@ -9,6 +9,7 @@ exposure-chart-legend-heading-nr = അക്കം
 # Variables:
 #   $nr (number) - Number of a particular type of exposure found for the user
 exposure-chart-legend-value-nr = { $nr } ×
+exposure-chart-returning-user-upgrade-prompt = മേൽവിലാസവും ചാൎച്ചക്കാരും കൂടുതൽ ഉൾപ്പെടുത്തിയിട്ടില്ല.
 modal-cta-ok = ശരി
 modal-cta-got-it = പിടിക്കിട്ടി
 # This is the label on a button that opens a popover menu, which shows a menu to adjust filters for the listed exposures.
