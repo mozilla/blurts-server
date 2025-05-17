@@ -14,15 +14,18 @@ on:
           - stage
           - prod
       originalImageTag:
-        description: 'The original image tag that has been deployed to dockerhub'
+        description: 'The original image tag that has been deployed'
         required: true
         type: string
-env:
-  DOCKER_IMAGE_NAME: mozilla/blurts-server
 jobs:
   pull_retag_push:
-    name: Push Docker image to Docker Hub
+    name: Pull, Retag, and Push Images
     runs-on: ubuntu-latest
+    environment: build
+    env:
+      GAR_IMAGE_BASE: ${{ vars.GAR_REPO }}/blurts-server
+      GAR_REGISTRY: us-docker.pkg.dev # Define GAR registry hostname
+      DOCKERHUB_IMAGE: mozilla/blurts-server # Define Docker Hub image name
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -34,12 +37,37 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
+      
+      - name: Authenticate to Google Cloud
+        id: gcp-auth
+        uses: google-github-actions/auth@v2
+        with:
+          token_format: access_token
+          workload_identity_provider: ${{ vars.GCPV2_GITHUB_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ vars.GCP_GAR_SERVICE_ACCOUNT }}
 
-      - name: Pull Docker image
-        run: docker pull ${{ env.DOCKER_IMAGE_NAME }}:${{ inputs.originalImageTag }}
+      - name: Login to Artifact Registry
+        id: gar-login
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.GAR_REGISTRY }}
+          username: oauth2accesstoken
+          password: ${{ steps.gcp-auth.outputs.access_token }}
 
-      - name: Retag image
-        run: docker tag ${{ env.DOCKER_IMAGE_NAME }}:${{ inputs.originalImageTag }} ${{ env.DOCKER_IMAGE_NAME }}:${{ inputs.environment }}-${{ inputs.originalImageTag }}
+      - name: Pull Docker Hub image
+        run: docker pull ${{ env.DOCKERHUB_IMAGE }}:${{ inputs.originalImageTag }}
 
-      - name: Redeploy image
-        run: docker push ${{ env.DOCKER_IMAGE_NAME }}:${{ inputs.environment }}-${{ inputs.originalImageTag }}
+      - name: Retag Docker Hub image
+        run: docker tag ${{ env.DOCKERHUB_IMAGE }}:${{ inputs.originalImageTag }} ${{ env.DOCKERHUB_IMAGE }}:${{ inputs.environment }}-${{ inputs.originalImageTag }}
+
+      - name: Push Docker Hub image
+        run: docker push ${{ env.DOCKERHUB_IMAGE }}:${{ inputs.environment }}-${{ inputs.originalImageTag }}
+
+      - name: Pull GAR image
+        run: docker pull ${{ env.GAR_IMAGE_BASE }}:${{ inputs.originalImageTag }}
+
+      - name: Retag GAR image
+        run: docker tag ${{ env.GAR_IMAGE_BASE }}:${{ inputs.originalImageTag }} ${{ env.GAR_IMAGE_BASE }}:${{ inputs.environment }}-${{ inputs.originalImageTag }}
+
+      - name: Push GAR image
+        run: docker push ${{ env.GAR_IMAGE_BASE }}:${{ inputs.environment }}-${{ inputs.originalImageTag }}
