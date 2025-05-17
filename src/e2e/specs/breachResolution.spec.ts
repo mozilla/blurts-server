@@ -114,9 +114,9 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Headers`, () =
 
     // verify the navigation within monitor
     // settings button redirects the user to "Settings" tab
-    await expect(dashboardPage.settingsPageLink).toHaveAttribute(
+    await expect(dashboardPage.settingsPageNotificationsLink).toHaveAttribute(
       "href",
-      links.settingsNavButtonLink,
+      links.settingsNotificationNavButtonLink,
     );
 
     // redirects the user to the "Resolve data breaches (dashboard)" tab

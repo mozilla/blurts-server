@@ -146,15 +146,6 @@ export const checkAuthState = async (page: Page) => {
       case checkIfTitleContains("Enter your password"):
         await enterYourPassword(page);
         break;
-      // case checkIfTitleContains('Set your password'):
-      //   await setYourPassword(page)
-      //   break
-      // case checkIfTitleContains('Enter confirmation code'):
-      //   await enterConfirmationCode(page)
-      //   break
-      // case checkIfTitleContains('Sign in'):
-      //   await signIn(page)
-      //   break
       default:
         break;
     }
