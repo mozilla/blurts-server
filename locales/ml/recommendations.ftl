@@ -6,3 +6,5 @@
 rec-pw-2-cta-fx = { -brand-name }-ൽ പ്രവേശനങ്ങൾ കാണുക
 # Link title
 rec-hist-pw-cta-fx = { -brand-name }-ൽ പ്രവേശനങ്ങൾ കാണുക
+# Recommendation subhead
+rec-address-subhead = രഹസ്യവാക്കുകളിൽ വിലാസങ്ങൾ ഉപയോഗിക്കാതിരിക്കുക
