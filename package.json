@@ -118,7 +118,7 @@
     "winston": "^3.17.0"
   },
   "devDependencies": {
-    "@faker-js/faker": "^9.7.0",
+    "@faker-js/faker": "^9.8.0",
     "@google-cloud/bigquery": "^7.9.4",
     "@playwright/test": "^1.52.0",
     "@storybook/addon-a11y": "^8.6.12",
