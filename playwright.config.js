@@ -75,6 +75,11 @@ export default defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: "on-first-retry",
+
+    /* Set feature flags for local E2E tests */
+    extraHTTPHeaders: {
+      "x-forced-feature-flags": "",
+    },
   },
 
   /* Configure projects for major browsers */
