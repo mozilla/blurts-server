@@ -29,7 +29,9 @@ describe("getPremiumSubscriptionInfo (SubPlat 2.0)", () => {
       type: "bundle",
       enabledFeatureFlags: [],
     });
-    expect(subscriptionUrl).toMatch(subplatUrlPattern);
+    expect(subscriptionUrl).toMatch(
+      /\/privacyprotectionplan\/yearly\/landing\?spVersion=2/,
+    );
   });
 });
 
@@ -55,6 +57,8 @@ describe("getPremiumSubscriptionInfo (SubPlat 3.0)", () => {
       type: "bundle",
       enabledFeatureFlags: ["SubPlat3"],
     });
-    expect(subscriptionUrl).toMatch(/\/monitorplusstage\/bundle\/landing/);
+    expect(subscriptionUrl).toMatch(
+      /\/privacyprotectionplan\/yearly\/landing\?spVersion=3/,
+    );
   });
 });
