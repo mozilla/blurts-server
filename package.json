@@ -163,7 +163,7 @@
     "jest-canvas-mock": "^2.5.2",
     "jest-environment-jsdom": "^29.7.0",
     "jest-fail-on-console": "^3.3.1",
-    "lint-staged": "^15.5.1",
+    "lint-staged": "^16.0.0",
     "mjml-browser": "^4.15.3",
     "patch-package": "^8.0.0",
     "prettier": "3.5.3",
