@@ -6,10 +6,6 @@ import { useId } from "react";
 import { PricingPlanListWithBundle } from "./PricingPlanListWithBundle";
 import type { LandingPageProps } from "..";
 import styles from "./PricingPlansWithBundle.module.scss";
-import {
-  getPremiumSubscriptionUrl,
-  getSubscriptionBillingAmount,
-} from "../../../../../functions/server/getPremiumSubscriptionInfo";
 
 export const PricingPlansWithBundle = (props: LandingPageProps) => {
   const headingId = useId();
@@ -32,21 +28,8 @@ export const PricingPlansWithBundle = (props: LandingPageProps) => {
       </div>
       <PricingPlanListWithBundle
         aria-labelledby={headingId}
-        premiumSubscriptionUrl={{
-          monthly: getPremiumSubscriptionUrl({
-            type: "monthly",
-            enabledFeatureFlags: props.enabledFeatureFlags,
-          }),
-          yearly: getPremiumSubscriptionUrl({
-            type: "yearly",
-            enabledFeatureFlags: props.enabledFeatureFlags,
-          }),
-          bundle: getPremiumSubscriptionUrl({
-            type: "bundle",
-            enabledFeatureFlags: props.enabledFeatureFlags,
-          }),
-        }}
-        subscriptionBillingAmount={getSubscriptionBillingAmount()}
+        premiumSubscriptionUrl={props.premiumSubscriptionUrl}
+        subscriptionBillingAmount={props.subscriptionBillingAmount}
         scanLimitReached={props.scanLimitReached}
         experimentData={props.experimentData}
         eligibleForPremium={props.eligibleForPremium}

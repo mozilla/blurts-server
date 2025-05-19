@@ -55,14 +55,17 @@
     gap: tokens.$spacing-xs;
 
     .tag {
+      align-items: center;
       background: hsl(
         color.hue(tokens.$color-blue-50),
         color.saturation(tokens.$color-blue-50),
         87%
       );
       border-radius: tokens.$border-radius-xl;
+      display: flex;
+      gap: tokens.$spacing-xs;
       overflow: hidden;
-      padding: 0 tokens.$spacing-sm;
+      padding: tokens.$spacing-xs calc(tokens.$spacing-sm + tokens.$spacing-xs);
     }
   }
 

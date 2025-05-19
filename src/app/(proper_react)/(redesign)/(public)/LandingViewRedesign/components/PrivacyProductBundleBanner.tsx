@@ -8,13 +8,21 @@ import { ExtendedReactLocalization } from "../../../../../functions/l10n";
 import { getLocale } from "../../../../../functions/universal/getLocale";
 import Illustration from "../images/shield-field-illustration.svg";
 import styles from "./PrivacyProductBundleBanner.module.scss";
+import {
+  MonitorIcon,
+  RelayIcon,
+  VpnIcon,
+} from "../../../../../components/server/Icons";
+import { BundleBillingAmount } from "../../../../../functions/server/getPremiumSubscriptionInfo";
 
-export const PrivacyProductBundleBanner = ({
-  l10n,
-}: {
+type Props = {
   l10n: ExtendedReactLocalization;
-}) => {
-  const priceFormatter = new Intl.NumberFormat(getLocale(l10n), {
+  premiumSubscriptionUrlBundle: string;
+  subscriptionBillingAmountBundle: BundleBillingAmount;
+};
+
+export const PrivacyProductBundleBanner = (props: Props) => {
+  const priceFormatter = new Intl.NumberFormat(getLocale(props.l10n), {
     style: "currency",
     currency: "USD",
     currencyDisplay: "narrowSymbol",
@@ -24,25 +32,46 @@ export const PrivacyProductBundleBanner = ({
     <div className={styles.banner}>
       <div className={styles.content}>
         <strong className={styles.title}>
-          {l10n.getString("landing-redesign-bundle-banner-title", {
-            monthlyPrice: priceFormatter.format(8.25),
+          {props.l10n.getString("landing-redesign-bundle-banner-title", {
+            monthlyPrice: priceFormatter.format(
+              props.subscriptionBillingAmountBundle.monthly,
+            ),
           })}
         </strong>
         <div className={styles.description}>
           <div className={styles.subtitle}>
-            <p>{l10n.getString("landing-redesign-bundle-banner-subtitle")}</p>
+            <p>
+              {props.l10n.getString("landing-redesign-bundle-banner-subtitle")}
+            </p>
             <div className={styles.tags}>
-              <span className={styles.tag}>VPN</span>
-              <span className={styles.tag}>Monitor</span>
-              <span className={styles.tag}>Relay</span>
+              <span className={styles.tag}>
+                <VpnIcon alt="" />
+                {props.l10n.getString(
+                  "landing-redesign-bundle-banner-label-vpn",
+                )}
+              </span>
+              <span className={styles.tag}>
+                <MonitorIcon alt="" />
+                {props.l10n.getString(
+                  "landing-redesign-bundle-banner-label-monitor",
+                )}
+              </span>
+              <span className={styles.tag}>
+                <RelayIcon alt="" />
+                {props.l10n.getString(
+                  "landing-redesign-bundle-banner-label-relay",
+                )}
+              </span>
             </div>
           </div>
-          <p>{l10n.getString("landing-redesign-bundle-banner-description")}</p>
+          <p>
+            {props.l10n.getString("landing-redesign-bundle-banner-description")}
+          </p>
         </div>
         <div className={styles.footer}>
           <TelemetryButton
             variant="primary"
-            href=""
+            href={props.premiumSubscriptionUrlBundle}
             event={{
               module: "upgradeIntent",
               name: "click",
@@ -51,17 +80,21 @@ export const PrivacyProductBundleBanner = ({
               },
             }}
           >
-            {l10n.getString("landing-redesign-bundle-banner-button-label")}
+            {props.l10n.getString(
+              "landing-redesign-bundle-banner-button-label",
+            )}
           </TelemetryButton>
           <p className={styles.billingInfo}>
-            {l10n.getString(
+            {props.l10n.getString(
               "landing-redesign-bundle-banner-pricing-plan-billing-info",
               {
-                yearlyPrice: priceFormatter.format(99),
+                yearlyPrice: priceFormatter.format(
+                  props.subscriptionBillingAmountBundle.monthly * 12,
+                ),
               },
             )}
             <br />
-            {l10n.getString(
+            {props.l10n.getString(
               "landing-redesign-bundle-banner-pricing-plan-billing-terms",
             )}
           </p>

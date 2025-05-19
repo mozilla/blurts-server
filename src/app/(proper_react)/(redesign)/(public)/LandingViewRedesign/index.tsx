@@ -16,7 +16,11 @@ import { CtaInputBanner } from "./components/CtaInputBanner";
 import { PricingPlans } from "./components/PricingPlans";
 import { PricingPlansWithBundle } from "./components/PricingPlansWithBundle";
 import { FeatureFlagName } from "../../../../../db/tables/featureFlags";
-import { ProductBundleUrl } from "./components/PricingPlanListWithBundle";
+import {
+  PremiumSubscriptionUrl,
+  ProductBundleUrl,
+  SubscriptionBillingAmount,
+} from "./components/PricingPlanListWithBundle";
 
 export type LandingPageProps = {
   countryCode: string;
@@ -26,6 +30,8 @@ export type LandingPageProps = {
   eligibleForPremium: boolean;
   scanLimitReached: boolean;
   bundleProductUrl: ProductBundleUrl;
+  premiumSubscriptionUrl: PremiumSubscriptionUrl;
+  subscriptionBillingAmount: SubscriptionBillingAmount;
 };
 
 export const View = (props: LandingPageProps) => {
@@ -42,7 +48,13 @@ export const View = (props: LandingPageProps) => {
         </section>
         {props.enabledFeatureFlags.includes("PrivacyProductsBundle") && (
           <section>
-            <PrivacyProductBundleBanner l10n={props.l10n} />
+            <PrivacyProductBundleBanner
+              l10n={props.l10n}
+              premiumSubscriptionUrlBundle={props.premiumSubscriptionUrl.bundle}
+              subscriptionBillingAmountBundle={
+                props.subscriptionBillingAmount.bundle
+              }
+            />
           </section>
         )}
         <section>
