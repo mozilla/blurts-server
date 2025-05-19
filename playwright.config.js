@@ -78,7 +78,8 @@ export default defineConfig({
 
     /* Set feature flags for local E2E tests */
     extraHTTPHeaders: {
-      "x-forced-feature-flags": "",
+      "x-forced-feature-flags":
+        "SidebarNavigationRedesign,EditScanProfileDetails",
     },
   },
 
