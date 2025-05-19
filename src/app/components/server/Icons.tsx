@@ -677,7 +677,7 @@ export const CheckIcon = (props: SVGProps<SVGSVGElement> & { alt: string }) => {
       aria-hidden={props.alt === ""}
       xmlns="http://www.w3.org/2000/svg"
       {...props}
-      className={`${props.className ?? ""} ${styles.colorifyFill}`}
+      className={`${props.className ?? ""} ${styles.colorifyStroke}`}
     >
       <title>{props.alt}</title>
       <path
@@ -1041,7 +1041,7 @@ export const PlusIcon = (props: SVGProps<SVGSVGElement> & { alt: string }) => {
       aria-hidden={props.alt === ""}
       xmlns="http://www.w3.org/2000/svg"
       {...props}
-      className={`${props.className ?? ""} ${styles.colorifyFill}`}
+      className={`${props.className ?? ""} ${styles.colorifyStroke}`}
     >
       <title>{props.alt}</title>
       <path
