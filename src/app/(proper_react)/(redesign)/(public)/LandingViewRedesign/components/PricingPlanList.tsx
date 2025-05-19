@@ -4,7 +4,7 @@
 
 "use client";
 
-import { ReactNode, useRef, useState } from "react";
+import { ReactNode, useState } from "react";
 import { useCookies } from "react-cookie";
 import { useL10n } from "../../../../../hooks/l10n";
 import { useTelemetry } from "../../../../../hooks/useTelemetry";
@@ -76,9 +76,8 @@ export const PricingPlanList = (props: Props & ScanLimitProp) => {
       utm_campaign: "pricing",
     },
   );
-  const searchParam = useRef(newSearchParam);
   // SubPlat2 subscription links already have the UTM parameter `?plan` appended.
-  const additionalSubplatParamsString = `${props.enabledFeatureFlags.includes("SubPlat3") ? "?" : "&"}${searchParam.current.toString()}`;
+  const additionalSubplatParamsString = `${props.enabledFeatureFlags.includes("SubPlat3") ? "?" : "&"}${newSearchParam.toString()}`;
 
   const roundedPriceFormatter = new Intl.NumberFormat(getLocale(l10n), {
     style: "currency",
@@ -303,7 +302,11 @@ export const PricingPlanList = (props: Props & ScanLimitProp) => {
               </dt>
               {features.map((feature, featureIndex) => (
                 <dd key={`${type}-feature-${featureIndex}`}>
-                  <CheckIcon alt="Included" />
+                  <CheckIcon
+                    alt={l10n.getString(
+                      "landing-redesign-pricing-plans-card-plus-with-bundle-feature-item-alt-label",
+                    )}
+                  />
                   <span>{feature}</span>
                 </dd>
               ))}

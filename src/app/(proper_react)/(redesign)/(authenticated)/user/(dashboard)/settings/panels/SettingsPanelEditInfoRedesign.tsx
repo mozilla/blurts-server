@@ -92,7 +92,7 @@ function MonitoredEmail(props: {
             }}
           >
             {isVerificationEmailResent ? (
-              <CheckIcon alt="" width={14} height={14} />
+              <CheckIcon alt="" width={24} height={24} />
             ) : (
               <LinkIcon alt="" />
             )}

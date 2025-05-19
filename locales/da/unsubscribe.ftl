@@ -18,3 +18,4 @@ unsubscribe-success-cta = Log in på { -brand-monitor }
 # Error warning
 
 unsubscription-failed = Afmelding mislykkedes. <try_again_link>Prøv igen.</try_again_link>
+unsubscription-failed-2 = Afmelding mislykkedes.
