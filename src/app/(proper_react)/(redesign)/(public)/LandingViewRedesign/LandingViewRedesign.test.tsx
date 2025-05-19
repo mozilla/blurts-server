@@ -724,7 +724,7 @@ describe("Privacy product bundle banner", () => {
     });
     expect(upsellLink).toHaveAttribute(
       "href",
-      "https://accounts.stage.mozaws.net/subscriptions/products/prod_NErZh679W62lai?plan=price_bundle&utm_medium=monitor&utm_source=monitor-product&utm_campaign=landing-page-banner&utm_content=banner-us",
+      "https://payments-next.stage.fxa.nonprod.webservices.mozgcp.net/privacyprotectionplan/yearly/landing?spVersion=2&utm_medium=monitor&utm_source=monitor-product&utm_campaign=landing-page-banner&utm_content=banner-us",
     );
   });
 
@@ -748,7 +748,7 @@ describe("Privacy product bundle banner", () => {
     });
     expect(upsellLink).toHaveAttribute(
       "href",
-      "https://payments-next.stage.fxa.nonprod.webservices.mozgcp.net/monitorplusstage/bundle/landing&utm_medium=monitor&utm_source=monitor-product&utm_campaign=landing-page-banner&utm_content=banner-us",
+      "https://payments-next.stage.fxa.nonprod.webservices.mozgcp.net/privacyprotectionplan/yearly/landing?spVersion=3&utm_medium=monitor&utm_source=monitor-product&utm_campaign=landing-page-banner&utm_content=banner-us",
     );
   });
 
