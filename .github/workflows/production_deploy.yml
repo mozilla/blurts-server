@@ -22,6 +22,10 @@ jobs:
     name: Pull, Retag, and Push Images
     runs-on: ubuntu-latest
     environment: build
+    permissions:
+      contents: "read" # Needed for checkout
+      id-token: "write" # Needed for GCP auth
+      packages: "none" # Explicitly disable package permissions
     env:
       GAR_IMAGE_BASE: ${{ vars.GAR_REPO }}/blurts-server
       GAR_REGISTRY: us-docker.pkg.dev # Define GAR registry hostname
