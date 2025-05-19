@@ -13,7 +13,9 @@ import { LogoBlock } from "./components/LogoBlock";
 import { Faq } from "./components/Faq";
 import { CtaInputBanner } from "./components/CtaInputBanner";
 import { PricingPlans } from "./components/PricingPlans";
+import { PricingPlansWithBundle } from "./components/PricingPlansWithBundle";
 import { FeatureFlagName } from "../../../../../db/tables/featureFlags";
+import { ProductBundleUrl } from "./components/PricingPlanListWithBundle";
 
 export type LandingPageProps = {
   countryCode: string;
@@ -22,6 +24,7 @@ export type LandingPageProps = {
   l10n: ExtendedReactLocalization;
   eligibleForPremium: boolean;
   scanLimitReached: boolean;
+  bundleProductUrl: ProductBundleUrl;
 };
 
 export const View = (props: LandingPageProps) => {
@@ -37,7 +40,11 @@ export const View = (props: LandingPageProps) => {
           <InfoBlock {...props} />
         </section>
         <section>
-          <PricingPlans {...props} />
+          {props.enabledFeatureFlags.includes("PrivacyProductsBundle") ? (
+            <PricingPlansWithBundle {...props} />
+          ) : (
+            <PricingPlans {...props} />
+          )}
         </section>
         <section className={styles.hasBackground}>
           <LogoBlock l10n={props.l10n} />
