@@ -24,7 +24,7 @@
   .content {
     display: flex;
     flex-direction: column;
-    gap: tokens.$spacing-md;
+    gap: tokens.$spacing-lg;
     max-width: calc(tokens.$content-xs * 1.5);
   }
 
@@ -46,13 +46,13 @@
   .description {
     display: flex;
     flex-direction: column;
-    gap: tokens.$spacing-xs;
+    gap: tokens.$spacing-sm;
     width: 100%;
   }
 
   .tags {
     display: flex;
-    gap: tokens.$spacing-xs;
+    gap: tokens.$spacing-sm;
 
     .tag {
       align-items: center;
@@ -76,7 +76,7 @@
   .footer {
     display: flex;
     flex-direction: column;
-    gap: tokens.$spacing-xs;
+    gap: tokens.$spacing-sm;
     text-align: center;
     width: 100%;
   }
@@ -115,7 +115,6 @@
 
     .footer {
       align-items: flex-start;
-      gap: tokens.$spacing-sm;
       text-align: left;
     }
   }
@@ -136,7 +135,7 @@
     .subtitle {
       align-items: center;
       flex-direction: row;
-      gap: tokens.$spacing-sm;
+      gap: tokens.$spacing-md;
     }
 
     .footer {

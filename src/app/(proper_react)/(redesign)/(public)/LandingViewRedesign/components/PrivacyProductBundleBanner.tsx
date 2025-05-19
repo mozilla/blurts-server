@@ -71,7 +71,8 @@ export const PrivacyProductBundleBanner = (props: Props) => {
         <div className={styles.footer}>
           <TelemetryButton
             variant="primary"
-            href={props.premiumSubscriptionUrlBundle}
+            theme="blue"
+            href={`${props.premiumSubscriptionUrlBundle}&utm_medium=monitor&utm_source=monitor-product&utm_campaign=landing-page-banner&utm_content=banner-us`}
             event={{
               module: "upgradeIntent",
               name: "click",
