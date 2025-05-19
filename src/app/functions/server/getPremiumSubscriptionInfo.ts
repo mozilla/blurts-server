@@ -11,7 +11,12 @@ if (!process.env.STORYBOOK) {
   import("./notInClientComponent");
 }
 
-type SubscriptionPeriod = "monthly" | "yearly";
+type SubscriptionPeriod = "monthly" | "yearly" | "bundle";
+
+export type BundleBillingAmount = {
+  monthly: number;
+  individual: number;
+};
 
 interface GetPremiumSubscriptionUrlParams {
   type: SubscriptionPeriod;
@@ -30,16 +35,27 @@ export function getPremiumSubscriptionUrl({
 
   const subscriptionUrl = process.env.FXA_SUBSCRIPTIONS_URL as string;
   const productId = process.env.PREMIUM_PRODUCT_ID as string;
-  const planId = (
-    type === "monthly"
-      ? process.env.PREMIUM_PLAN_ID_MONTHLY_US
-      : process.env.PREMIUM_PLAN_ID_YEARLY_US
-  ) as string;
+  let planId = "";
+  switch (type) {
+    case "monthly":
+      planId = process.env.PREMIUM_PLAN_ID_MONTHLY_US as string;
+      break;
+    case "yearly":
+      planId = process.env.PREMIUM_PLAN_ID_YEARLY_US as string;
+      break;
+    case "bundle":
+      planId = process.env.PREMIUM_PLAN_ID_BUNDLE_US as string;
+      break;
+  }
 
   return `${subscriptionUrl}/products/${productId}?plan=${planId}`;
 }
 
-type SubscriptionBillingAmount = Record<SubscriptionPeriod, number>;
+type SubscriptionBillingAmount = Record<
+  Exclude<SubscriptionPeriod, "bundle">,
+  number
+> &
+  Record<"bundle", BundleBillingAmount>;
 
 export function getSubscriptionBillingAmount(): SubscriptionBillingAmount {
   return {
@@ -49,5 +65,14 @@ export function getSubscriptionBillingAmount(): SubscriptionBillingAmount {
     monthly: parseFloat(
       process.env.SUBSCRIPTION_BILLING_AMOUNT_MONTHLY_US as string,
     ),
+    bundle: {
+      individual: parseFloat(
+        process.env
+          .SUBSCRIPTION_BILLING_AMOUNT_BUNDLE_INDIVIDUAL_MONTHLY_US as string,
+      ),
+      monthly: parseFloat(
+        process.env.SUBSCRIPTION_BILLING_AMOUNT_BUNDLE_MONTHLY_US as string,
+      ),
+    },
   };
 }

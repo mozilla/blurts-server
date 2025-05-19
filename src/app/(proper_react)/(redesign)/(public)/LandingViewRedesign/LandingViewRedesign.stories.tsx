@@ -80,3 +80,31 @@ export const LandingRedesignUsScanLimit: Story = {
     scanLimitReached: true,
   },
 };
+
+export const LandingRedesignUsWithPrivacyProductBundle: Story = {
+  name: "US visitors - With Privacy Product Bundle",
+  args: {
+    eligibleForPremium: true,
+    countryCode: "us",
+    scanLimitReached: false,
+    enabledFeatureFlags: ["LandingPageRedesign", "PrivacyProductsBundle"],
+    bundleProductUrl: {
+      relay: process.env.FIREFOX_RELAY_LANDING_URL ?? "",
+      vpn: process.env.MOZILLA_VPN_LANDING_URL ?? "",
+    },
+  },
+};
+
+export const LandingRedesignUsScanLimitWithPrivacyProductBundle: Story = {
+  name: "US visitors - Scan limit reached and with Privacy Product Bundle",
+  args: {
+    eligibleForPremium: true,
+    countryCode: "us",
+    scanLimitReached: true,
+    enabledFeatureFlags: ["LandingPageRedesign", "PrivacyProductsBundle"],
+    bundleProductUrl: {
+      relay: process.env.FIREFOX_RELAY_LANDING_URL ?? "",
+      vpn: process.env.MOZILLA_VPN_LANDING_URL ?? "",
+    },
+  },
+};
