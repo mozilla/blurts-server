@@ -28,7 +28,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page Functionali
     if (await emailInputShouldExist(landingPage)) {
       await landingPage.monitorHeroFormEmailInputField.fill(randomEmail);
       await landingPage.monitorHeroFormInputSubmitButton.click();
-      await page.waitForURL("**/oauth/**");
+      await page.waitForURL("**/oauth**");
     } else {
       await landingPage.monitorHeroFormInputSubmitButton.click();
       await authPage.emailInputField.waitFor({
