@@ -18,6 +18,20 @@ export type Props = {
 
 export const BundleOnboardingView = (props: Props) => {
   const l10n = props.l10n;
+  const queryParamsExternalProducts = new URLSearchParams({
+    utm_medium: "referral",
+    utm_source: "bundle-onboarding-page",
+    utm_campaign: "evergreen",
+  }).toString();
+
+  const queryParamsMonitor = new URLSearchParams({
+    utm_medium: "mozilla-websites",
+    utm_source: "bundle",
+    utm_campaign: "onboarding-page",
+    utm_content: "launch-us",
+  }).toString();
+
+  const authParams = new URLSearchParams({ prompt: "none" }).toString();
 
   return (
     <main>
@@ -49,7 +63,7 @@ export const BundleOnboardingView = (props: Props) => {
                 data: { button_id: "launch_vpn_download_page" },
               }}
               variant="primary"
-              href={process.env.MOZILLA_VPN_LANDING_URL}
+              href={`${process.env.MOZILLA_VPN_LANDING_URL}/download?${queryParamsExternalProducts}`}
             >
               {l10n.getString("bundle-mozilla-vpn-cta")}
             </TelemetryButton>
@@ -70,7 +84,7 @@ export const BundleOnboardingView = (props: Props) => {
                 data: { button_id: "launch_monitor" },
               }}
               variant="primary"
-              href="/user/dashboard"
+              href={`/user/dashboard?${queryParamsMonitor}`}
             >
               {l10n.getString("bundle-monitor-plus-cta")}
             </TelemetryButton>
@@ -91,7 +105,10 @@ export const BundleOnboardingView = (props: Props) => {
                 data: { button_id: "launch_relay" },
               }}
               variant="primary"
-              href={process.env.FIREFOX_RELAY_LANDING_URL}
+              // Relay's OAuth library accepts the url params in auth_params and passes them through to the FxA OAuth url
+              href={`
+                ${process.env.FIREFOX_RELAY_LANDING_URL}/accounts/fxa/login?process=login&${queryParamsExternalProducts}&auth_params=${encodeURIComponent(authParams)}
+              `}
             >
               {l10n.getString("bundle-relay-premium-cta")}
             </TelemetryButton>
