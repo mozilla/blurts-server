@@ -711,6 +711,76 @@ describe("Pricing plan", () => {
   });
 });
 
+describe("Privacy product bundle banner", () => {
+  it("confirms that the banner CTA has the correct link for SubPlat2", async () => {
+    const ComposedStory = composeStory(
+      LandingRedesignUsWithPrivacyProductBundle,
+      Meta,
+    );
+    render(<ComposedStory />);
+
+    const upsellLink = screen.getByRole("link", {
+      name: "Get year-round protection",
+    });
+    expect(upsellLink).toHaveAttribute(
+      "href",
+      "https://payments-next.stage.fxa.nonprod.webservices.mozgcp.net/privacyprotectionplan/yearly/landing?spVersion=2&utm_medium=monitor&utm_source=monitor-product&utm_campaign=landing-page-banner&utm_content=banner-us",
+    );
+  });
+
+  it("confirms that the banner CTA has the correct link for SubPlat3", async () => {
+    const ComposedStory = composeStory(
+      LandingRedesignUsWithPrivacyProductBundle,
+      Meta,
+    );
+    render(
+      <ComposedStory
+        enabledFeatureFlags={[
+          "LandingPageRedesign",
+          "PrivacyProductsBundle",
+          "SubPlat3",
+        ]}
+      />,
+    );
+
+    const upsellLink = screen.getByRole("link", {
+      name: "Get year-round protection",
+    });
+    expect(upsellLink).toHaveAttribute(
+      "href",
+      "https://payments-next.stage.fxa.nonprod.webservices.mozgcp.net/privacyprotectionplan/yearly/landing?spVersion=3&utm_medium=monitor&utm_source=monitor-product&utm_campaign=landing-page-banner&utm_content=banner-us",
+    );
+  });
+
+  it("counts the number of clicks on the banner CTA", async () => {
+    const mockedRecord = useTelemetry();
+    const ComposedDashboard = composeStory(
+      LandingRedesignUsWithPrivacyProductBundle,
+      Meta,
+    );
+    render(<ComposedDashboard />);
+
+    const user = userEvent.setup();
+    const upsellLink = screen.getByRole("link", {
+      name: "Get year-round protection",
+    });
+
+    // jsdom will complain about not being able to navigate to a different page
+    // after clicking the link; suppress that error, as it's not relevant to the
+    // test:
+    jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+
+    await user.click(upsellLink);
+    expect(mockedRecord).toHaveBeenCalledWith(
+      "upgradeIntent",
+      "click",
+      expect.objectContaining({
+        button_id: "purchase_bundle_banner_landing_page",
+      }),
+    );
+  });
+});
+
 describe("Pricing plan with bundle", () => {
   it("passes the axe accessibility test suite", async () => {
     const ComposedLanding = composeStory(

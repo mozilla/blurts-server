@@ -39,18 +39,22 @@ import { BundleBillingAmount } from "../../../../../functions/server/getPremiumS
 
 export type ProductBundleUrl = Record<"relay" | "vpn", string>;
 
+export type PremiumSubscriptionUrl = {
+  monthly: string;
+  yearly: string;
+  bundle: string;
+};
+
+export type SubscriptionBillingAmount = {
+  yearly: number;
+  monthly: number;
+  bundle: BundleBillingAmount;
+};
+
 export type Props = {
   "aria-labelledby": string;
-  premiumSubscriptionUrl: {
-    monthly: string;
-    yearly: string;
-    bundle: string;
-  };
-  subscriptionBillingAmount: {
-    yearly: number;
-    monthly: number;
-    bundle: BundleBillingAmount;
-  };
+  premiumSubscriptionUrl: PremiumSubscriptionUrl;
+  subscriptionBillingAmount: SubscriptionBillingAmount;
   enabledFeatureFlags: FeatureFlagName[];
   productBundleUrl: ProductBundleUrl;
 };

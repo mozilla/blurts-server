@@ -138,8 +138,8 @@ features:
         }
       - channel: staging
         value: {
-          "enabled": false,
-          "variant": default,
+          "enabled": true,
+          "variant": redesign,
         }
       - channel: production
         value: {

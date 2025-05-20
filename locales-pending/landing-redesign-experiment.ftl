@@ -49,6 +49,22 @@ landing-redesign-info-block-three-description = With { -brand-monitor }, you wil
 
 landing-redesign-info-block-cta-label = Get your free scan
 
+# Bundle banner
+
+# Variables:
+#   $monthlyPrice (string) - annual plan's price per month, including currency, e.g. "$13.37"
+landing-redesign-bundle-banner-title = Protect your online privacy for { $monthlyPrice }/month
+landing-redesign-bundle-banner-subtitle = Get 3 tools for 1 unbeatable price
+landing-redesign-bundle-banner-label-vpn = { -brand-vpn }
+landing-redesign-bundle-banner-label-monitor = { -brand-monitor }
+landing-redesign-bundle-banner-label-relay = { -brand-relay-new }
+landing-redesign-bundle-banner-description = Plan includes VPN, data broker protection, and unlimited email masks to prevent spam.
+landing-redesign-bundle-banner-button-label = Get year-round protection
+# Variables:
+#   $yearlyPrice (string) - annual plan's price in total, including currency, e.g. "$13.37"
+landing-redesign-bundle-banner-pricing-plan-billing-info = { $yearlyPrice }/year, billed annually.
+landing-redesign-bundle-banner-pricing-plan-billing-terms = 30-day, money-back guarantee.
+
 # Pricing plans
 
 landing-redesign-pricing-plans-section-title = Choose your level of protection
