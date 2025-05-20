@@ -42,11 +42,6 @@ export const CONST_URL_MONITOR_GITHUB =
 export const CONST_DAY_MILLISECONDS = 24 * 60 * 60 * 1000;
 export const CONST_URL_MONITOR_LANDING_PAGE_ID =
   "monitor.mozilla.org-monitor-product-page";
-export const CONST_MOZILLA_ACCOUNTS_SETTINGS_PROMO_SEARCH_PARAMS = {
-  utm_source: "moz-account",
-  utm_campaign: "settings-promo",
-  utm_content: "monitor-free",
-} as const;
 export const CONST_SETTINGS_TAB_SLUGS = [
   "edit-info",
   "notifications",
