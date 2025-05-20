@@ -63,7 +63,7 @@ landing-redesign-bundle-banner-button-label = Get year-round protection
 # Variables:
 #   $yearlyPrice (string) - annual plan's price in total, including currency, e.g. "$13.37"
 landing-redesign-bundle-banner-pricing-plan-billing-info = { $yearlyPrice }/year, billed annually.
-landing-redesign-bundle-banner-pricing-plan-billing-terms = 30-day, money-back guarantee.
+landing-redesign-bundle-banner-pricing-plan-billing-terms = 30-day money-back guarantee.
 
 # Pricing plans
 
