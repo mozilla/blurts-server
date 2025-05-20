@@ -6,6 +6,7 @@ import { Locator } from "@playwright/test";
 import { test, expect } from "../../fixtures/basePage.js";
 import { DashboardPage } from "../../pages/dashBoardPage.js";
 import { checkAuthState } from "../../utils/helpers.js";
+import "../../utils/setFeatureFlags";
 
 // bypass login
 test.use({ storageState: "./e2e/storageState.json" });
