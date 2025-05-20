@@ -264,7 +264,7 @@ export class DashboardPage {
   dashboardLinks() {
     return {
       // identify expected URLs
-      settingsNavButtonLink: "/user/settings",
+      settingsNavButtonLink: "/user/settings/notifications",
       resolveDataBreachesNavButtonLink: "/user/dashboard",
       helpAndSupportNavButtonLink:
         "https://support.mozilla.org/kb/firefox-monitor-faq",
