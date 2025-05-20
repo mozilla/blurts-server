@@ -29,46 +29,46 @@ export const PrivacyProductBundleBanner = (props: Props) => {
   });
 
   return (
-    <div className={styles.banner}>
+    <section className={styles.banner}>
       <div className={styles.content}>
-        <strong className={styles.title}>
+        <h3 className={styles.title}>
           {props.l10n.getString("landing-redesign-bundle-banner-title", {
             monthlyPrice: priceFormatter.format(
               props.subscriptionBillingAmountBundle.monthly,
             ),
           })}
-        </strong>
+        </h3>
         <div className={styles.description}>
           <div className={styles.subtitle}>
             <p>
               {props.l10n.getString("landing-redesign-bundle-banner-subtitle")}
             </p>
-            <div className={styles.tags}>
-              <span className={styles.tag}>
+            <ol className={`noList ${styles.tags}`}>
+              <li className={styles.tag}>
                 <VpnIcon alt="" />
                 {props.l10n.getString(
                   "landing-redesign-bundle-banner-label-vpn",
                 )}
-              </span>
-              <span className={styles.tag}>
+              </li>
+              <li className={styles.tag}>
                 <MonitorIcon alt="" />
                 {props.l10n.getString(
                   "landing-redesign-bundle-banner-label-monitor",
                 )}
-              </span>
-              <span className={styles.tag}>
+              </li>
+              <li className={styles.tag}>
                 <RelayIcon alt="" />
                 {props.l10n.getString(
                   "landing-redesign-bundle-banner-label-relay",
                 )}
-              </span>
-            </div>
+              </li>
+            </ol>
           </div>
           <p>
             {props.l10n.getString("landing-redesign-bundle-banner-description")}
           </p>
         </div>
-        <div className={styles.footer}>
+        <footer className={styles.footer}>
           <TelemetryButton
             variant="primary"
             theme="blue"
@@ -99,11 +99,11 @@ export const PrivacyProductBundleBanner = (props: Props) => {
               "landing-redesign-bundle-banner-pricing-plan-billing-terms",
             )}
           </p>
-        </div>
+        </footer>
       </div>
       <span className={styles.illustration}>
         <Image src={Illustration} alt="" />
       </span>
-    </div>
+    </section>
   );
 };

@@ -19,7 +19,7 @@
     padding: 0 tokens.$layout-md tokens.$layout-sm;
   }
 
-  section {
+  .section {
     align-items: center;
     border-radius: tokens.$border-radius-xl;
     display: flex;
@@ -36,13 +36,13 @@
         padding: tokens.$layout-sm;
       }
     }
-  }
 
-  h3 {
-    font: tokens.$text-title-xs;
-    font-family: var(--font-inter);
-    font-weight: 400;
-    line-height: 1.25em;
+    h3 {
+      font: tokens.$text-title-xs;
+      font-family: var(--font-inter);
+      font-weight: 400;
+      line-height: 1.25em;
+    }
   }
 
   b {

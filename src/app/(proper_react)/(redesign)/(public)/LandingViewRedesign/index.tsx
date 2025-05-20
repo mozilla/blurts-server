@@ -40,24 +40,22 @@ export const View = (props: LandingPageProps) => {
       <AccountDeletionNotification />
       <main className={styles.wrapper}>
         <Hero {...props} />
-        <section>
+        <section className={styles.section}>
           <CtaBanner {...props} />
         </section>
         <section className={styles.hasBackground}>
           <InfoBlock {...props} />
         </section>
         {props.enabledFeatureFlags.includes("PrivacyProductsBundle") && (
-          <section>
-            <PrivacyProductBundleBanner
-              l10n={props.l10n}
-              premiumSubscriptionUrlBundle={props.premiumSubscriptionUrl.bundle}
-              subscriptionBillingAmountBundle={
-                props.subscriptionBillingAmount.bundle
-              }
-            />
-          </section>
+          <PrivacyProductBundleBanner
+            l10n={props.l10n}
+            premiumSubscriptionUrlBundle={props.premiumSubscriptionUrl.bundle}
+            subscriptionBillingAmountBundle={
+              props.subscriptionBillingAmount.bundle
+            }
+          />
         )}
-        <section>
+        <section className={styles.section}>
           {props.enabledFeatureFlags.includes("PrivacyProductsBundle") ? (
             <PricingPlansWithBundle {...props} />
           ) : (
@@ -67,10 +65,10 @@ export const View = (props: LandingPageProps) => {
         <section className={styles.hasBackground}>
           <LogoBlock l10n={props.l10n} />
         </section>
-        <section>
+        <section className={styles.section}>
           <Faq />
         </section>
-        <section>
+        <section className={styles.section}>
           <CtaInputBanner {...props} />
         </section>
       </main>

@@ -64,7 +64,6 @@
       border-radius: tokens.$border-radius-xl;
       display: flex;
       gap: tokens.$spacing-xs;
-      overflow: hidden;
       padding: tokens.$spacing-xs calc(tokens.$spacing-sm + tokens.$spacing-xs);
     }
   }
