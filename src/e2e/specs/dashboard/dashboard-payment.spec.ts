@@ -4,6 +4,7 @@
 
 import { test } from "../../fixtures/basePage.js";
 import { checkAuthState } from "../../utils/helpers.js";
+import "../../utils/setFeatureFlags";
 
 // bypass login
 test.use({ storageState: "./e2e/storageState.json" });
