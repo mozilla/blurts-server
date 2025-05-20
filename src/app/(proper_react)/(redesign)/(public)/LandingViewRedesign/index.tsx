@@ -43,7 +43,7 @@ export const View = (props: LandingPageProps) => {
         <section className={styles.section}>
           <CtaBanner {...props} />
         </section>
-        <section className={styles.hasBackground}>
+        <section className={`${styles.section} ${styles.hasBackground}`}>
           <InfoBlock {...props} />
         </section>
         {props.enabledFeatureFlags.includes("PrivacyProductsBundle") && (
@@ -62,7 +62,7 @@ export const View = (props: LandingPageProps) => {
             <PricingPlans {...props} />
           )}
         </section>
-        <section className={styles.hasBackground}>
+        <section className={`${styles.section} ${styles.hasBackground}`}>
           <LogoBlock l10n={props.l10n} />
         </section>
         <section className={styles.section}>
