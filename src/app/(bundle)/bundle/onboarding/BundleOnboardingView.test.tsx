@@ -10,6 +10,11 @@ import { useTelemetry } from "../../../hooks/useTelemetry";
 import userEvent from "@testing-library/user-event";
 import FooterMeta, { BundleFooterDefault } from "./BundleFooter.stories";
 import HeaderMeta, { BundleHeaderDefault } from "./BundleHeader.stories";
+import {
+  bundleQueryParamsExternalProducts,
+  bundleQueryParamsMonitor,
+  promptNoneAuthParams,
+} from "./BundleOnboardingView";
 
 jest.mock("../../../hooks/useTelemetry");
 
@@ -65,7 +70,10 @@ it("opens a new tab when cta is selected", async () => {
   render(<ComposedBundlePage />);
 
   const monitorLink = screen.getByRole("link", { name: "Go to ⁨Monitor⁩" });
-  expect(monitorLink).toHaveAttribute("href", "/user/dashboard");
+  expect(monitorLink).toHaveAttribute(
+    "href",
+    "/user/dashboard?" + `${bundleQueryParamsMonitor}`,
+  );
 
   await user.click(monitorLink);
 
@@ -75,7 +83,11 @@ it("opens a new tab when cta is selected", async () => {
   jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
 
   const vpnLink = screen.getByRole("link", { name: "Get ⁨VPN⁩" });
-  expect(vpnLink).toHaveAttribute("href", process.env.MOZILLA_VPN_LANDING_URL);
+  const vpnHref =
+    process.env.MOZILLA_VPN_LANDING_URL +
+    "/download?" +
+    bundleQueryParamsExternalProducts;
+  expect(vpnLink).toHaveAttribute("href", vpnHref);
 
   await user.click(vpnLink);
 
@@ -85,10 +97,15 @@ it("opens a new tab when cta is selected", async () => {
   jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
 
   const relayLink = screen.getByRole("link", { name: "Go to ⁨Relay⁩" });
-  expect(relayLink).toHaveAttribute(
-    "href",
-    process.env.FIREFOX_RELAY_LANDING_URL,
-  );
+
+  const relayHref =
+    process.env.FIREFOX_RELAY_LANDING_URL +
+    "/accounts/fxa/login?process=login&" +
+    bundleQueryParamsExternalProducts +
+    "&auth_params=" +
+    encodeURIComponent(promptNoneAuthParams);
+
+  expect(relayLink).toHaveAttribute("href", relayHref);
 
   await user.click(relayLink);
 

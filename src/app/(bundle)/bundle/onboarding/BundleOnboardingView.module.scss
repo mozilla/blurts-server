@@ -14,9 +14,9 @@
 
     .gradientTextFill {
       background: linear-gradient(
-        180deg,
-        tokens.$color-blue-30 30%,
-        tokens.$color-purple-40 100%
+        45deg,
+        tokens.$color-purple-50 20%,
+        tokens.$color-blue-30 100%
       );
       // src: https://www.geeksforgeeks.org/how-to-create-linear-gradient-text-using-html-and-css/
       -webkit-background-clip: text;
