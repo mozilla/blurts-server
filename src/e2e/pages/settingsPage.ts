@@ -23,10 +23,10 @@ export class SettingsPage {
   constructor(page: Page) {
     this.page = page;
 
-    this.settingsHeader = page.locator("h2").first();
+    this.settingsHeader = page.locator("h3").first();
     this.emailPrefHeader = page.getByText(/Email preferences/);
-    this.emailHeader = page.getByText(/Monitored email addresses/);
-    this.tabNotifications = page.getByRole("tab", {
+    this.emailHeader = page.getByText(/Email addresses/);
+    this.tabNotifications = page.getByRole("link", {
       name: "Set notifications",
     });
     this.deleteHeader = page.getByText(/Delete ⁨Monitor⁩ account/);

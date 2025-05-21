@@ -7,6 +7,7 @@ import {
   emailInputShouldExist,
   getVerificationCode,
 } from "../../utils/helpers.js";
+import "../../utils/setFeatureFlags";
 
 test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page Functionality - new account`, () => {
   test.beforeEach(async ({ landingPage }) => {
@@ -28,7 +29,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page Functionali
     if (await emailInputShouldExist(landingPage)) {
       await landingPage.monitorHeroFormEmailInputField.fill(randomEmail);
       await landingPage.monitorHeroFormInputSubmitButton.click();
-      await page.waitForURL("**/oauth/**");
+      await page.waitForURL("**/oauth**");
     } else {
       await landingPage.monitorHeroFormInputSubmitButton.click();
       await authPage.emailInputField.waitFor({
