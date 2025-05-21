@@ -123,6 +123,9 @@
   }
 
   @media screen and (min-width: tokens.$screen-xl) {
+    align-items: center;
+    flex-direction: row-reverse;
+    gap: tokens.$layout-md;
     justify-content: center;
     padding: tokens.$layout-md;
 
@@ -148,14 +151,6 @@
     .footer {
       align-items: center;
       flex-direction: row;
-    }
-
-    .illustration {
-      height: calc(100% - 2 * tokens.$spacing-md);
-      left: tokens.$layout-md;
-      position: absolute;
-      top: tokens.$spacing-md;
-      width: auto;
     }
   }
 }
