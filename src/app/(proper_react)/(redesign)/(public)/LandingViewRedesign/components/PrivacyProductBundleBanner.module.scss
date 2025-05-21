@@ -25,14 +25,13 @@
     display: flex;
     flex-direction: column;
     gap: tokens.$spacing-lg;
-    max-width: calc(tokens.$content-xs * 1.5);
+    text-align: center;
   }
 
   .title {
     display: block;
     font: tokens.$text-title-xs;
     font-weight: 700;
-    text-align: center;
     width: 100%;
   }
 
@@ -44,9 +43,10 @@
   }
 
   .description {
+    align-items: center;
     display: flex;
     flex-direction: column;
-    gap: tokens.$spacing-sm;
+    gap: tokens.$spacing-md;
     width: 100%;
   }
 
@@ -76,7 +76,6 @@
     display: flex;
     flex-direction: column;
     gap: tokens.$spacing-sm;
-    text-align: center;
     width: 100%;
   }
 
@@ -105,16 +104,20 @@
     .title {
       font: tokens.$text-title-sm;
       font-weight: 700;
-      text-align: left;
+    }
+
+    .description {
+      align-items: flex-start;
     }
 
     .content {
       max-width: calc(tokens.$content-sm * 1.5);
+      text-align: left;
     }
 
     .footer {
       align-items: flex-start;
-      text-align: left;
+      gap: tokens.$spacing-md;
     }
   }
 
@@ -129,6 +132,10 @@
     .title {
       font: tokens.$text-title-xs;
       font-weight: 700;
+    }
+
+    .description {
+      gap: tokens.$spacing-sm;
     }
 
     .subtitle {
