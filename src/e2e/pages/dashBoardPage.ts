@@ -44,7 +44,7 @@ export class DashboardPage {
   readonly monthlyTab: Locator;
 
   readonly dashboardPageLink: Locator;
-  readonly settingsPageLink: Locator;
+  readonly notificationSettingsLink: Locator;
   readonly faqsPageLink: Locator;
 
   readonly servicesVpn: Locator;
@@ -59,6 +59,7 @@ export class DashboardPage {
   readonly profileSignOut: Locator;
   readonly profileEmail: Locator;
   readonly manageProfile: Locator;
+  readonly profileMenuSettingsLink: Locator;
   readonly helpAndSupport: Locator;
   readonly closeAppsAndServices: Locator;
   readonly signOut: Locator;
@@ -134,9 +135,7 @@ export class DashboardPage {
     this.githubFooter = page.locator("footer a", { hasText: "GitHub" });
 
     // top nav
-    this.fireFoxMonitorLogoImgButton = page.locator(
-      '//a[starts-with(@class, "Shell_homeLink_")]/img',
-    );
+    this.fireFoxMonitorLogoImgButton = page.getByRole("link", { name: "Home" });
     this.fireFoxMonitorLogoAtag = page.locator("nav a:has(> img)");
     this.actionNeededTab = page.getByRole("tab", { name: "Action needed" });
     this.fixedTab = page.getByRole("tab", { name: "Fixed" });
@@ -154,6 +153,7 @@ export class DashboardPage {
     this.manageProfile = page.getByRole("link", {
       name: "Manage your ⁨Mozilla account⁩",
     });
+    this.profileMenuSettingsLink = page.getByRole("link", { name: "Settings" });
     this.helpAndSupport = page.getByRole("link", { name: "Help and support" });
     this.signOut = page.getByRole("button", { name: "Sign out" });
     this.appsAndServices = page.getByRole("button", {
@@ -236,7 +236,9 @@ export class DashboardPage {
     this.monthlyTab = page.getByText("Monthly", { exact: true });
 
     // nav menu
-    this.settingsPageLink = page.getByRole("link", { name: "Settings" });
+    this.notificationSettingsLink = page.getByRole("link", {
+      name: "Set notifications",
+    });
     this.dashboardPageLink = page.getByRole("link", { name: "Dashboard" });
 
     this.faqsPageLink = page.getByTitle("Frequently asked questions").first();
@@ -262,7 +264,7 @@ export class DashboardPage {
   dashboardLinks() {
     return {
       // identify expected URLs
-      settingsNavButtonLink: "/user/settings",
+      settingsNavButtonLink: "/user/settings/notifications",
       resolveDataBreachesNavButtonLink: "/user/dashboard",
       helpAndSupportNavButtonLink:
         "https://support.mozilla.org/kb/firefox-monitor-faq",
@@ -274,8 +276,8 @@ export class DashboardPage {
   }
 
   async goToSettings() {
-    await this.settingsPageLink.click();
-    await this.page.waitForURL("**/settings");
+    await this.notificationSettingsLink.click();
+    await this.page.waitForURL("**/settings/*");
   }
 
   async goToDashboard() {
