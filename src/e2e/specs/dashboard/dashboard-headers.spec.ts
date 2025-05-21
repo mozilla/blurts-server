@@ -6,6 +6,7 @@ import { Locator } from "@playwright/test";
 import { test, expect } from "../../fixtures/basePage.js";
 import { DashboardPage } from "../../pages/dashBoardPage.js";
 import { checkAuthState } from "../../utils/helpers.js";
+import "../../utils/setFeatureFlags";
 
 // bypass login
 test.use({ storageState: "./e2e/storageState.json" });
@@ -71,7 +72,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Headers @smoke
     await expect(dashboardPage.fireFoxMonitorLogoImgButton).toBeVisible();
     await expect(dashboardPage.dashboardNavButton).toBeVisible();
     await expect(dashboardPage.exposuresHeading).toBeVisible();
-    await expect(dashboardPage.settingsPageLink).toBeVisible();
+    await expect(dashboardPage.notificationSettingsLink).toBeVisible();
     await expect(dashboardPage.FAQsNavButton).toBeVisible();
 
     // verify the site header elements
@@ -96,7 +97,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Headers @smoke
     await dashboardPage.profileButton.click();
     await expect(dashboardPage.profileEmail).toBeVisible();
     await expect(dashboardPage.manageProfile).toBeVisible();
-    await expect(dashboardPage.settingsPageLink).toBeVisible();
+    await expect(dashboardPage.profileMenuSettingsLink).toBeVisible();
     await expect(dashboardPage.helpAndSupport).toBeVisible();
     await expect(dashboardPage.signOut).toBeVisible();
   });

@@ -4,6 +4,7 @@
 
 import { test, expect } from "../fixtures/basePage.js";
 import { checkAuthState } from "../utils/helpers.js";
+import "../utils/setFeatureFlags";
 
 // bypass login
 test.use({ storageState: "./e2e/storageState.json" });
@@ -114,7 +115,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Headers`, () =
 
     // verify the navigation within monitor
     // settings button redirects the user to "Settings" tab
-    await expect(dashboardPage.settingsPageLink).toHaveAttribute(
+    await expect(dashboardPage.notificationSettingsLink).toHaveAttribute(
       "href",
       links.settingsNavButtonLink,
     );

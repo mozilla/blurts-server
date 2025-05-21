@@ -3,6 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { test, expect } from "../fixtures/basePage.js";
+import "../utils/setFeatureFlags";
 
 test.describe(`${process.env.E2E_TEST_ENV} - Authentication flow verification @smoke`, () => {
   test.beforeEach(async ({ landingPage }) => {
