@@ -517,7 +517,11 @@ export const PricingPlanListWithBundle = (props: Props & ScanLimitProp) => {
       <span className={styles.pricingPlans}>
         {pricingPlanData.map(
           ({ type, label, title, subtitle, features, cta }) => (
-            <dl key={type} className={styles.pricingCard} aria-label={title}>
+            <dl
+              key={type}
+              className={`${styles.pricingCard} ${styles[type]}`}
+              aria-label={title}
+            >
               <dt>
                 <b>{title}</b>
                 {label && (

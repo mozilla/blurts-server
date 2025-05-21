@@ -147,6 +147,14 @@
     }
   }
 
+  &.bundle dd {
+    &:first-of-type {
+      padding: tokens.$spacing-md 0 tokens.$spacing-sm;
+    }
+
+    padding: calc(tokens.$spacing-xs * 1.5) 0;
+  }
+
   .plusNote {
     border-bottom: 1px solid tokens.$color-grey-10;
     align-items: center;
