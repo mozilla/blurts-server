@@ -54,7 +54,7 @@
   }
 
   &.blue {
-    background-color: tokens.$color-grey-05;
+    background-color: #f0f0f4;
 
     &:focus-within {
       outline-color: tokens.$color-informational-focus;
@@ -66,7 +66,7 @@
       }
 
       &:hover {
-        background-color: tokens.$color-grey-10;
+        background-color: #e0e0e6;
       }
 
       &.isSelected {

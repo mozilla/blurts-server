@@ -134,6 +134,7 @@ export const PricingPlanListWithBundle = (props: Props & ScanLimitProp) => {
         <a
           key="bundle-vpn"
           className={styles.bundleItemLink}
+          target="_blank"
           href={`${props.productBundleUrl.vpn}?utm_medium=mozilla-websites&utm_source=monitor-product&utm_campaign=landing-page-pricing-grid&utm_content=landing-page-pricing-grid-us`}
         >
           <div className={styles.bundleTitle}>
@@ -148,7 +149,12 @@ export const PricingPlanListWithBundle = (props: Props & ScanLimitProp) => {
             "landing-redesign-pricing-plans-bundle-item-mozilla-vpn-description",
           )}
         </a>,
-        <Link key="bundle-monitor" className={styles.bundleItemLink} href="/">
+        <Link
+          key="bundle-monitor"
+          className={styles.bundleItemLink}
+          target="_blank"
+          href="/"
+        >
           <div className={styles.bundleTitle}>
             <MonitorIcon alt="" />
             <b>
@@ -164,6 +170,7 @@ export const PricingPlanListWithBundle = (props: Props & ScanLimitProp) => {
         <a
           key="bundle-relay"
           className={styles.bundleItemLink}
+          target="_blank"
           href={`${props.productBundleUrl.relay}?utm_medium=mozilla-websites&utm_source=monitor-product&utm_campaign=landing-page-pricing-grid&utm_content=landing-page-pricing-grid-us`}
         >
           <div className={styles.bundleTitle}>
@@ -517,7 +524,11 @@ export const PricingPlanListWithBundle = (props: Props & ScanLimitProp) => {
       <span className={styles.pricingPlans}>
         {pricingPlanData.map(
           ({ type, label, title, subtitle, features, cta }) => (
-            <dl key={type} className={styles.pricingCard} aria-label={title}>
+            <dl
+              key={type}
+              className={`${styles.pricingCard} ${styles[type]}`}
+              aria-label={title}
+            >
               <dt>
                 <b>{title}</b>
                 {label && (
