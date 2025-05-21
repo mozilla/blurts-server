@@ -25,14 +25,13 @@
     display: flex;
     flex-direction: column;
     gap: tokens.$spacing-lg;
-    max-width: calc(tokens.$content-xs * 1.5);
+    text-align: center;
   }
 
   .title {
     display: block;
     font: tokens.$text-title-xs;
     font-weight: 700;
-    text-align: center;
     width: 100%;
   }
 
@@ -44,9 +43,10 @@
   }
 
   .description {
+    align-items: center;
     display: flex;
     flex-direction: column;
-    gap: tokens.$spacing-sm;
+    gap: tokens.$spacing-md;
     width: 100%;
   }
 
@@ -76,7 +76,6 @@
     display: flex;
     flex-direction: column;
     gap: tokens.$spacing-sm;
-    text-align: center;
     width: 100%;
   }
 
@@ -86,6 +85,7 @@
     aspect-ratio: 107 / 128;
     max-width: calc(tokens.$content-xs * 0.5);
     position: relative;
+    pointer-events: none;
     width: 25vw;
 
     img {
@@ -105,20 +105,27 @@
     .title {
       font: tokens.$text-title-sm;
       font-weight: 700;
-      text-align: left;
+    }
+
+    .description {
+      align-items: flex-start;
     }
 
     .content {
       max-width: calc(tokens.$content-sm * 1.5);
+      text-align: left;
     }
 
     .footer {
       align-items: flex-start;
-      text-align: left;
+      gap: tokens.$spacing-md;
     }
   }
 
   @media screen and (min-width: tokens.$screen-xl) {
+    align-items: center;
+    flex-direction: row-reverse;
+    gap: tokens.$layout-md;
     justify-content: center;
     padding: tokens.$layout-md;
 
@@ -131,6 +138,10 @@
       font-weight: 700;
     }
 
+    .description {
+      gap: tokens.$spacing-sm;
+    }
+
     .subtitle {
       align-items: center;
       flex-direction: row;
@@ -140,14 +151,6 @@
     .footer {
       align-items: center;
       flex-direction: row;
-    }
-
-    .illustration {
-      height: calc(100% - 2 * tokens.$spacing-md);
-      left: tokens.$layout-md;
-      position: absolute;
-      top: tokens.$spacing-md;
-      width: auto;
     }
   }
 }
