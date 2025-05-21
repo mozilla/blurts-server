@@ -85,6 +85,7 @@
     aspect-ratio: 107 / 128;
     max-width: calc(tokens.$content-xs * 0.5);
     position: relative;
+    pointer-events: none;
     width: 25vw;
 
     img {
