@@ -4,7 +4,6 @@
 
 import { test, expect } from "../../fixtures/basePage.js";
 import { emailInputShouldExist } from "../../utils/helpers.js";
-import "../../utils/setFeatureFlags";
 
 test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page Functionality - existing account`, () => {
   test.beforeEach(async ({ landingPage }) => {
