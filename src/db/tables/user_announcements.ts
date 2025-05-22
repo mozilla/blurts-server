@@ -8,6 +8,9 @@ import { logger } from "../../app/functions/server/logging";
 import { checkUserHasMonthlySubscription } from "../../app/functions/server/user";
 import { Session } from "next-auth";
 import { redirect } from "next/navigation";
+import { getCountryCode } from "../../app/functions/server/getCountryCode";
+import { headers } from "next/headers";
+import { isEligibleForPremium } from "../../app/functions/universal/premium";
 
 const knex = createDbConnection();
 
@@ -62,10 +65,11 @@ export async function initializeUserAnnouncements(
     }
 
     // Determine audience eligibility
-    const isUS = user.subscriber?.signup_language?.includes("en-US") || false;
     const subscriptions =
       user.subscriber?.fxa_profile_json?.subscriptions ?? [];
     const isPremium = subscriptions.includes("monitor");
+    const countryCode = getCountryCode(await headers());
+    const isUS = isEligibleForPremium(countryCode);
 
     let isSubscribedMonthly = false;
     if (isPremium) {
@@ -138,6 +142,7 @@ export async function initializeUserAnnouncements(
     )
       .join("announcements as a", "ua.announcement_id", "a.announcement_id")
       .where("ua.user_id", user.subscriber?.id)
+      .andWhere("a.label", "published")
       .select(
         "a.*",
         "ua.status",
