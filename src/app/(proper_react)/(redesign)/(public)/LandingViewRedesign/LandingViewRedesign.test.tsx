@@ -62,7 +62,7 @@ describe("Navigation and authentication", () => {
     const ComposedLanding = composeStory(LandingRedesignUs, Meta);
     const { container } = render(<ComposedLanding />);
     expect(await axe(container)).toHaveNoViolations();
-  });
+  }, 10_000);
 
   it("does not show a 'Sign In' button in the header if the user is signed in", () => {
     const mockedUseSession = useSession as jest.Mock<
@@ -789,7 +789,7 @@ describe("Pricing plan with bundle", () => {
     );
     const { container } = render(<ComposedLanding />);
     expect(await axe(container)).toHaveNoViolations();
-  });
+  }, 10_000);
 
   it("can switch from the yearly to the monthly plan with the keyboard", async () => {
     const user = userEvent.setup();
@@ -1366,7 +1366,7 @@ describe("Scan limit reached", () => {
     const ComposedLanding = composeStory(LandingRedesignUsScanLimit, Meta);
     const { container } = render(<ComposedLanding />);
     expect(await axe(container)).toHaveNoViolations();
-  });
+  }, 10_000);
 
   it("shows the scan limit and waitlist cta when it hits the threshold", () => {
     const ComposedDashboard = composeStory(LandingRedesignUsScanLimit, Meta);

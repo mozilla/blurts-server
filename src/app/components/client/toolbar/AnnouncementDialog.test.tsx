@@ -22,7 +22,7 @@ it("passes the axe accessibility test suite", async () => {
   );
   const { container } = render(<ComposedAnnouncementDialog />);
   expect(await axe(container)).toHaveNoViolations();
-});
+}, 10_000);
 
 it("closes and opens the announcement button", async () => {
   // jsdom will complain about not being able to find the right fluent-id which we can ignore

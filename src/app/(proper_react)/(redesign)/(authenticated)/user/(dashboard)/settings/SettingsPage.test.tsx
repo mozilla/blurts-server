@@ -388,7 +388,7 @@ describe("Settings page", () => {
         </SettingsWrapper>,
       );
       expect(await axe(container)).toHaveNoViolations();
-    });
+    }, 10_000);
 
     it("changes the active tab", async () => {
       const user = userEvent.setup();

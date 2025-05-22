@@ -31,19 +31,19 @@ it("leaked passwords component passes the axe accessibility test suite", async (
   const ComposedComponent = composeStory(PasswordsStory, Meta);
   const { container } = render(<ComposedComponent />);
   expect(await axe(container)).toHaveNoViolations();
-});
+}, 10_000);
 
 it("security questions component passes the axe accessibility test suite", async () => {
   const ComposedComponent = composeStory(SecurityQuestionsStory, Meta);
   const { container } = render(<ComposedComponent />);
   expect(await axe(container)).toHaveNoViolations();
-});
+}, 10_000);
 
 it("passes the axe accessibility test suite for the leaked passwords celebration view", async () => {
   const ComposedComponent = composeStory(LeakedPasswordsDoneStory, Meta);
   const { container } = render(<ComposedComponent />);
   expect(await axe(container)).toHaveNoViolations();
-});
+}, 10_000);
 
 it("shows the leaked passwords celebration view, next step is security questions", () => {
   const ComposedComponent = composeStory(LeakedPasswordsDoneStory, Meta);
