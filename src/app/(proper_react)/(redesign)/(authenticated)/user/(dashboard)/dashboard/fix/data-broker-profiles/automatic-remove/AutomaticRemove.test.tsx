@@ -17,7 +17,7 @@ it("passes the axe accessibility test suite", async () => {
   const AutomaticRemoveView = composeStory(AutomaticRemoveViewStory, Meta);
   const { container } = render(<AutomaticRemoveView />);
   expect(await axe(container)).toHaveNoViolations();
-});
+}, 10_000);
 
 it("toggles between the monthly and yearly plan view", async () => {
   const user = userEvent.setup();

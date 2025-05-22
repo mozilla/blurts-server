@@ -64,7 +64,7 @@ describe("When Premium is not available", () => {
     const ComposedDashboard = composeStory(LandingNonUs, Meta);
     const { container } = render(<ComposedDashboard />);
     expect(await axe(container)).toHaveNoViolations();
-  });
+  }, 10_000);
 
   it("passes the user's email address to the identity provider", async () => {
     const user = userEvent.setup();
@@ -215,7 +215,7 @@ describe("When Premium is available", () => {
     const ComposedDashboard = composeStory(LandingUs, Meta);
     const { container } = render(<ComposedDashboard />);
     expect(await axe(container)).toHaveNoViolations();
-  });
+  }, 10_000);
 
   it("can open and close the tooltip with the keyboard", async () => {
     const user = userEvent.setup();

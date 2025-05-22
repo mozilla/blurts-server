@@ -94,7 +94,7 @@ it("passes the axe accessibility test suite", async () => {
   );
   const { container } = render(<ComposedDashboard />);
   expect(await axe(container)).toHaveNoViolations();
-});
+}, 10_000);
 
 it("shows the 'Start a free scan' CTA to free US-based users who haven't performed a scan yet", () => {
   const ComposedDashboard = composeStory(

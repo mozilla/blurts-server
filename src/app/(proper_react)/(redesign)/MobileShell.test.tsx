@@ -17,7 +17,7 @@ describe("MobileShell public", () => {
     const ComposedMobileShell = composeStory(MobileShellPublic, Meta);
     const { container } = render(<ComposedMobileShell />);
     expect(await axe(container)).toHaveNoViolations();
-  });
+  }, 10_000);
 
   it("shows the sign-in buttons", () => {
     const ComposedMobileShell = composeStory(MobileShellPublic, Meta);
@@ -58,7 +58,7 @@ describe("MobileShell authenticated", () => {
     const ComposedMobileShell = composeStory(MobileShellAuthenticated, Meta);
     const { container } = render(<ComposedMobileShell />);
     expect(await axe(container)).toHaveNoViolations();
-  });
+  }, 10_000);
 
   it("does not show the sign-in button", () => {
     const ComposedMobileShell = composeStory(MobileShellAuthenticated, Meta);

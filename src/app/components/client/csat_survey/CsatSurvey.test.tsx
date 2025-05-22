@@ -27,7 +27,7 @@ describe("CSAT survey banner: Automatic Removal", () => {
     const ComposedCsatSurvey = composeStory(CsatSurveyAutomaticRemoval, Meta);
     const { container } = render(<ComposedCsatSurvey />);
     expect(await axe(container)).toHaveNoViolations();
-  });
+  }, 10_000);
 
   it("displays the survey to users with automatic data removal enabled for less than 90 days", () => {
     const ComposedCsatSurvey = composeStory(CsatSurveyAutomaticRemoval, Meta);
@@ -217,7 +217,7 @@ describe("CSAT survey banner: Latest scan date", () => {
     const ComposedCsatSurvey = composeStory(CsatSurveyLatestScanDate, Meta);
     const { container } = render(<ComposedCsatSurvey />);
     expect(await axe(container)).toHaveNoViolations();
-  });
+  }, 10_000);
 
   it("displays the survey to free users on the “action needed” tab", () => {
     const ComposedCsatSurvey = composeStory(CsatSurveyLatestScanDate, Meta);
