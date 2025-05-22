@@ -1485,13 +1485,10 @@ describe("Show limit reached flow when the DisableOneRepScans flag is on", () =>
       Meta,
     );
     render(<ComposedDashboard />);
-
-    await waitFor(() => {
-      const waitlistCta = screen.getAllByRole("link", {
-        name: "Join waitlist",
-      });
-      expect(waitlistCta[0]).toBeInTheDocument();
+    const waitlistCta = screen.getAllByRole("link", {
+      name: "Join waitlist",
     });
+    expect(waitlistCta[0]).toBeInTheDocument();
   });
 });
 

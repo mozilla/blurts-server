@@ -23,6 +23,7 @@ import { useTelemetry } from "../../../hooks/useTelemetry";
 import Meta, {
   LandingNonUs,
   LandingNonUsDe,
+  LandingNonUsDisableOneRepScans,
   LandingNonUsFr,
   LandingUs,
   LandingUsDisableOneRepScans,
@@ -821,6 +822,18 @@ describe("When Premium is available", () => {
       "We’ve reached the maximum scans for the month. Enter your email to get on our waitlist.",
     );
     expect(limitDescription).toBeInTheDocument();
+  });
+
+  it("does not show the scan limit and waitlist cta when the DisableOneRepScans flag is on for non-US users", () => {
+    const ComposedDashboard = composeStory(
+      LandingNonUsDisableOneRepScans,
+      Meta,
+    );
+    render(<ComposedDashboard />);
+
+    const limitDescription =
+      "We’ve reached the maximum scans for the month. Enter your email to get on our waitlist.";
+    expect(screen.queryByText(limitDescription)).not.toBeInTheDocument();
   });
 
   it("opens the waitlist page when the join waitlist cta is selected when the DisableOneRepScans flag is on", async () => {
