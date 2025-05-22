@@ -1271,6 +1271,30 @@ describe("Pricing plan with bundle", () => {
     );
   });
 
+  it("confirms that the pricing card bundle upsell has the correct link with UTM parameters for SubPlat2", async () => {
+    const cookies = new Cookies(null);
+    cookies.set("attributionsLastTouch", {
+      utm_source: "monitor-product",
+      utm_medium: "monitor",
+      utm_campaign: "landing-page-pricing-grid",
+      utm_content: "pricing-grid-us",
+    });
+    const ComposedStory = composeStory(
+      LandingRedesignUsWithPrivacyProductBundle,
+      Meta,
+    );
+    render(<ComposedStory />);
+
+    const bundleCard = screen.getByLabelText("Privacy Protection Plan");
+    const upsellButton = getByRole(bundleCard, "link", {
+      name: "Get started",
+    });
+    expect(upsellButton).toHaveAttribute(
+      "href",
+      "https://payments-next.stage.fxa.nonprod.webservices.mozgcp.net/privacyprotectionplan/yearly/landing?spVersion=2&utm_source=monitor-product&utm_medium=monitor&utm_campaign=landing-page-pricing-grid&utm_content=pricing-grid-us&entrypoint=monitor.mozilla.org-monitor-product-page&form_type=button&data_cta_position=pricing",
+    );
+  });
+
   it("confirms that the pricing card yearly upsell has the correct link for SubPlat3", async () => {
     const ComposedStory = composeStory(
       LandingRedesignUsWithPrivacyProductBundle,
@@ -1357,6 +1381,38 @@ describe("Pricing plan with bundle", () => {
     expect(upsellButton).toHaveAttribute(
       "href",
       "https://payments-next.stage.fxa.nonprod.webservices.mozgcp.net/monitorplusstage/yearly/landing?utm_source=source_last_touch&utm_medium=medium_last_touch&utm_campaign=campaign_last_touch&entrypoint=monitor.mozilla.org-monitor-product-page&form_type=button&data_cta_position=pricing",
+    );
+  });
+
+  it("confirms that the pricing card bundle upsell has the correct link with UTM parameters for SubPlat3", async () => {
+    const cookies = new Cookies(null);
+    cookies.set("attributionsLastTouch", {
+      utm_source: "monitor-product",
+      utm_medium: "monitor",
+      utm_campaign: "landing-page-pricing-grid",
+      utm_content: "pricing-grid-us",
+    });
+    const ComposedStory = composeStory(
+      LandingRedesignUsWithPrivacyProductBundle,
+      Meta,
+    );
+    render(
+      <ComposedStory
+        enabledFeatureFlags={[
+          "LandingPageRedesign",
+          "PrivacyProductsBundle",
+          "SubPlat3",
+        ]}
+      />,
+    );
+
+    const bundleCard = screen.getByLabelText("Privacy Protection Plan");
+    const upsellButton = getByRole(bundleCard, "link", {
+      name: "Get started",
+    });
+    expect(upsellButton).toHaveAttribute(
+      "href",
+      "https://payments-next.stage.fxa.nonprod.webservices.mozgcp.net/privacyprotectionplan/yearly/landing?spVersion=3?utm_source=monitor-product&utm_medium=monitor&utm_campaign=landing-page-pricing-grid&utm_content=pricing-grid-us&entrypoint=monitor.mozilla.org-monitor-product-page&form_type=button&data_cta_position=pricing",
     );
   });
 });
