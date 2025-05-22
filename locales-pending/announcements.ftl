@@ -52,7 +52,7 @@ announcement-bundle-offering-free-user-title = Privacy and security, one superch
 announcement-bundle-offering-free-user-description = For { $bundleMonthlyPrice }/month, save on { -brand-vpn }, { -brand-monitor }’s data broker protection, and { -brand-relay-new }’s unlimited email masks.
 announcement-bundle-offering-free-user-cta-label = Get year-round protection
 
-# id: bundle-offering-free-user
+# id: bundle-offering-plus-user
 
 announcement-bundle-offering-plus-user-title = Privacy and security, one supercharged plan
 # Variables:
