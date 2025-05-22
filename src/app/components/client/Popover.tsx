@@ -7,6 +7,7 @@
 import {
   AriaPopoverProps,
   DismissButton,
+  FocusScope,
   Overlay,
   usePopover,
 } from "react-aria";
@@ -30,19 +31,23 @@ function Popover({ children, offset, state, ...props }: PopoverProps) {
   // to dismiss the popover easily.
   return (
     <Overlay>
-      <div {...underlayProps} className={styles.underlay} />
-      <div
-        {...popoverProps}
-        ref={props.popoverRef as React.RefObject<HTMLDivElement | null>}
-        className={`${styles.popover} ${state.isOpen ? styles.isVisible : ""}`}
-        style={{
-          ...popoverProps.style,
-        }}
-      >
-        <DismissButton onDismiss={() => state.close()} />
-        {children}
-        <DismissButton onDismiss={() => state.close()} />
-      </div>
+      {/* FocusScope is a utility component that traps keyboard focus within its child elements.
+      When used in a dialog, it ensures that focus never leaves the dialog until it’s closed. */}
+      <FocusScope contain restoreFocus autoFocus>
+        <div {...underlayProps} className={styles.underlay} />
+        <div
+          {...popoverProps}
+          ref={props.popoverRef as React.RefObject<HTMLDivElement | null>}
+          className={`${styles.popover} ${state.isOpen ? styles.isVisible : ""}`}
+          style={{
+            ...popoverProps.style,
+          }}
+        >
+          <DismissButton onDismiss={() => state.close()} />
+          {children}
+          <DismissButton onDismiss={() => state.close()} />
+        </div>
+      </FocusScope>
     </Overlay>
   );
 }
