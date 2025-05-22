@@ -79,11 +79,30 @@ export const LandingUsScanLimit: Story = {
   },
 };
 
+export const LandingUsDisableOneRepScans: Story = {
+  name: "US visitors - Disabled Scans",
+  args: {
+    eligibleForPremium: true,
+    countryCode: "us",
+    scanLimitReached: false,
+    enabledFeatureFlags: ["DisableOneRepScans"],
+  },
+};
+
 export const LandingNonUs: Story = {
   name: "Non-US visitors",
   args: {
     eligibleForPremium: false,
     countryCode: "nz",
+  },
+};
+
+export const LandingNonUsDisableOneRepScans: Story = {
+  name: "Non-US visitors - Disabled Scans",
+  args: {
+    eligibleForPremium: false,
+    countryCode: "nz",
+    enabledFeatureFlags: ["DisableOneRepScans"],
   },
 };
 

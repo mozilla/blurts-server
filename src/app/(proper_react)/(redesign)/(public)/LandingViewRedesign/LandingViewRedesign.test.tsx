@@ -18,6 +18,7 @@ import { axe } from "jest-axe";
 import { signIn, useSession } from "next-auth/react";
 import Meta, {
   LandingRedesignUs,
+  LandingRedesignUsDisableOneRepScans,
   LandingRedesignUsScanLimit,
   LandingRedesignUsScanLimitWithPrivacyProductBundle,
   LandingRedesignUsWithPrivacyProductBundle,
@@ -1420,6 +1421,74 @@ describe("Scan limit reached", () => {
       });
       expect(waitlistCta[0]).toBeInTheDocument();
     });
+  });
+});
+
+describe("Show limit reached flow when the DisableOneRepScans flag is on", () => {
+  it("passes the axe accessibility test suite", async () => {
+    const ComposedLanding = composeStory(
+      LandingRedesignUsDisableOneRepScans,
+      Meta,
+    );
+    const { container } = render(<ComposedLanding />);
+    expect(await axe(container)).toHaveNoViolations();
+  });
+
+  it("shows the scan limit and waitlist cta when it hits the threshold", () => {
+    const ComposedDashboard = composeStory(
+      LandingRedesignUsDisableOneRepScans,
+      Meta,
+    );
+    render(<ComposedDashboard />);
+
+    // In total there are fixe “free scan” CTAs on the landing page.
+    const limitDescriptions = screen.getAllByText(
+      "We’ve reached the maximum scans for the month. Enter your email to get on our waitlist.",
+    );
+    expect(limitDescriptions).toHaveLength(5);
+  });
+
+  it("opens the waitlist page when the join waitlist cta is selected", async () => {
+    const user = userEvent.setup();
+    const ComposedDashboard = composeStory(
+      LandingRedesignUsDisableOneRepScans,
+      Meta,
+    );
+    render(<ComposedDashboard />);
+    const waitlistCta = screen.getAllByRole("link", {
+      name: "Join waitlist",
+    });
+    // jsdom will complain about not being able to navigate to a different page
+    // after clicking the link; suppress that error, as it's not relevant to the
+    // test:
+    jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+
+    await user.click(waitlistCta[0]);
+
+    expect(waitlistCta[0]).toHaveAttribute(
+      "href",
+      "https://www.mozilla.org/products/monitor/waitlist-scan/",
+    );
+  });
+
+  it("shows the waitlist CTA when the scan limit is reached", async () => {
+    global.fetch = jest.fn().mockImplementation(() =>
+      Promise.resolve({
+        success: true,
+        json: jest.fn(() => ({
+          flowData: null,
+        })),
+      }),
+    );
+    const ComposedDashboard = composeStory(
+      LandingRedesignUsDisableOneRepScans,
+      Meta,
+    );
+    render(<ComposedDashboard />);
+    const waitlistCta = screen.getAllByRole("link", {
+      name: "Join waitlist",
+    });
+    expect(waitlistCta[0]).toBeInTheDocument();
   });
 });
 

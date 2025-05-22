@@ -61,7 +61,9 @@ export const View = (props: Props) => {
                   : "landing-all-hero-lead",
               )}
             </p>
-            {props.eligibleForPremium && props.scanLimitReached ? (
+            {(props.enabledFeatureFlags.includes("DisableOneRepScans") &&
+              props.eligibleForPremium) ||
+            (props.eligibleForPremium && props.scanLimitReached) ? (
               <ScanLimit />
             ) : (
               <FreeScanCta
