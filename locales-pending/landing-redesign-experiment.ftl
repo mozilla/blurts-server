@@ -49,16 +49,93 @@ landing-redesign-info-block-three-description = With { -brand-monitor }, you wil
 
 landing-redesign-info-block-cta-label = Get your free scan
 
+# Bundle banner
+
+# Variables:
+#   $monthlyPrice (string) - annual plan's price per month, including currency, e.g. "$13.37"
+landing-redesign-bundle-banner-title = Protect your online privacy for { $monthlyPrice }/month
+landing-redesign-bundle-banner-subtitle = Get 3 tools for 1 unbeatable price
+landing-redesign-bundle-banner-label-vpn = { -brand-vpn }
+landing-redesign-bundle-banner-label-monitor = { -brand-monitor }
+landing-redesign-bundle-banner-label-relay = { -brand-relay-new }
+landing-redesign-bundle-banner-description = Plan includes VPN, data broker protection, and unlimited email masks to prevent spam.
+landing-redesign-bundle-banner-button-label = Get year-round protection
+# Variables:
+#   $yearlyPrice (string) - annual plan's price in total, including currency, e.g. "$13.37"
+landing-redesign-bundle-banner-pricing-plan-billing-info = { $yearlyPrice }/year, billed annually.
+landing-redesign-bundle-banner-pricing-plan-billing-terms = 30-day money-back guarantee.
+
 # Pricing plans
 
 landing-redesign-pricing-plans-section-title = Choose your level of protection
 landing-redesign-pricing-plans-section-description = Your privacy is our priority, so data breach monitoring is always free. For more robust protection, { -brand-monitor-plus } includes continuous automatic removal of your personal information.
+landing-redesign-pricing-plans-bundle-section-description = 30-day money-back guarantee (first-time customers only)
 landing-redesign-pricing-plans-cards-title = Pricing plans
+
+landing-redesign-pricing-plans-card-cta-monthly-billing-label = Billed monthly
+# Variables:
+#   $yearlyPrice (string) - annual plan’s price in total, including currency, e.g. "$13.37"
+landing-redesign-pricing-plans-card-cta-yearly-billing-label = { $yearlyPrice } billed yearly
+# There is not much room in the UI for this string:
+# Abbreviating “month” with “mo”.
+# Variables:
+#   $monthlyPrice (string) - monthly plan’s price, including currency, e.g. "$13.37"
+landing-redesign-pricing-plans-card-cta-monthly = { $monthlyPrice }/mo
+landing-redesign-pricing-plans-card-cta-label = Get started
+
+# Variables:
+# $discountPercentage is the percentage you can save subscribing to the bundle plan
+landing-redesign-pricing-plans-card-bundle-label = Best value, save { $discountPercentage }%
+landing-redesign-pricing-plans-card-bundle-title = { -product-name-privacy-products-bundle }
+landing-redesign-pricing-plans-card-bundle-subtitle = 3 privacy tools, 1 price
+landing-redesign-pricing-plans-bundle-item-mozilla-vpn-title = { -brand-mozilla-vpn }
+landing-redesign-pricing-plans-bundle-item-mozilla-vpn-description = Online activity protection
+landing-redesign-pricing-plans-bundle-item-monitor-plus-title = { -brand-monitor-plus }
+landing-redesign-pricing-plans-bundle-item-monitor-plus-description = Data broker protection
+landing-redesign-pricing-plans-bundle-item-relay-premium-title = { -brand-relay-premium }
+landing-redesign-pricing-plans-bundle-item-relay-premium-description = Unlimited email masks for spam protection
 
 landing-redesign-pricing-plans-card-plus-label = Recommended
 landing-redesign-pricing-plans-card-plus-title = { -brand-monitor-plus }
 landing-redesign-pricing-plans-card-plus-subtitle = Automatic data removal requests
 landing-redesign-pricing-plans-card-plus-cta-label = Get { -brand-monitor-plus }
+landing-redesign-pricing-plans-card-plus-with-bundle-included-features-label = Everything in { -brand-monitor }
+
+landing-redesign-pricing-plans-card-plus-with-bundle-subtitle = Automatic personal info removal
+landing-redesign-pricing-plans-card-plus-with-bundle-feature-item-alt-label = Includes
+# Variables:
+# $data_broker_sites_total_num is the total number of data broker sites available to scan. It will always be more than 1.
+landing-redesign-pricing-plans-card-plus-with-bundle-feature-item-one = {
+  $data_broker_sites_total_num ->
+    *[other] <b>Monthly scans</b> of { $data_broker_sites_total_num }+ data brokers that may be selling your personal info
+}
+landing-redesign-pricing-plans-card-plus-with-bundle-feature-item-two = <b>Automatic removal</b> of personal info from data broker sites
+landing-redesign-pricing-plans-card-plus-with-bundle-feature-item-three = Receive <b>data broker exposure alerts</b>
+# Variables:
+# $max_email_addresses is the max number of email addresses that can be monitored for breaches. It will always be more than 1.
+landing-redesign-pricing-plans-card-plus-with-bundle-feature-item-four = {
+  $max_email_addresses ->
+    *[other] Breach alert monitoring for <b>{ $max_email_addresses } email addresses</b>
+}
+
+landing-redesign-pricing-plans-card-free-with-bundle-subtitle = Free data breach alerts
+# Variables:
+# $data_broker_sites_total_num is the total number of data broker sites available to scan. It will always be more than 1.
+landing-redesign-pricing-plans-card-free-with-bundle-feature-item-one = {
+  $data_broker_sites_total_num ->
+    *[other] <b>One-time scan</b> of { $data_broker_sites_total_num }+ data brokers that may be selling your personal info
+}
+landing-redesign-pricing-plans-card-free-with-bundle-feature-item-two = <b>Guided manual removal</b> of personal info from data broker sites
+landing-redesign-pricing-plans-card-free-with-bundle-feature-item-three = <b>Continuous monitoring</b> for data broker exposures and data breaches
+landing-redesign-pricing-plans-card-free-with-bundle-feature-item-four = Receive <b>data breach exposure alerts</b>
+# Variables:
+# $max_email_addresses is the max number of email addresses that can be monitored for breaches. It will always be more than 1.
+landing-redesign-pricing-plans-card-free-with-bundle-feature-item-five = {
+  $max_email_addresses ->
+    *[other] Breach alert monitoring for <b>{ $max_email_addresses } email addresses</b>
+}
+landing-redesign-pricing-plans-card-free-with-bundle-price-label = Free
+
 # Variables:
 # $data_broker_sites_total_num is the total number of data broker sites available to scan. It will always be more than 1.
 landing-redesign-pricing-plans-card-plus-feature-item-one = {

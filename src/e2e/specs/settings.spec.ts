@@ -3,6 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { test, expect } from "../fixtures/basePage.js";
+import "../utils/setFeatureFlags";
 
 // bypass login
 test.use({ storageState: "./e2e/storageState.json" });

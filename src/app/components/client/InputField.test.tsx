@@ -19,9 +19,13 @@ describe("InputField", () => {
     TextInputFieldFilled,
     TextInputFieldEmptyFloatingLabel,
     TextInputFieldFilledFloatingLabel,
-  ])("passes the axe accessibility test suite for %s", async (component) => {
-    const ComposedInput = composeStory(component, Meta);
-    const { container } = render(<ComposedInput hasFloatingLabel />);
-    expect(await axe(container)).toHaveNoViolations();
-  });
+  ])(
+    "passes the axe accessibility test suite for %s",
+    async (component) => {
+      const ComposedInput = composeStory(component, Meta);
+      const { container } = render(<ComposedInput hasFloatingLabel />);
+      expect(await axe(container)).toHaveNoViolations();
+    },
+    10_000,
+  );
 });

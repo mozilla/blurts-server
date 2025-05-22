@@ -3,6 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { test, expect } from "../fixtures/basePage.js";
+import "../utils/setFeatureFlags";
 
 test.describe(`${process.env.E2E_TEST_ENV} - Verify Error Pages Functionality`, () => {
   test("Verify that the 404 page shows up on non-existent pages @smoke", async ({

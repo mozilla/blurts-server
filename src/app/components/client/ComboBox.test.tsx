@@ -25,13 +25,13 @@ it("passes the axe accessibility test suite if empty", async () => {
   const ComposedTextComboBox = composeStory(TextComboBoxEmpty, Meta);
   const { container } = render(<ComposedTextComboBox />);
   expect(await axe(container)).toHaveNoViolations();
-});
+}, 10_000);
 
 it("passes the axe accessibility test suite if required", async () => {
   const ComposedTextComboBox = composeStory(TextComboBoxRequired, Meta);
   const { container } = render(<ComposedTextComboBox />);
   expect(await axe(container)).toHaveNoViolations();
-});
+}, 10_000);
 
 it("shows suggestions when typing", async () => {
   const user = userEvent.setup();

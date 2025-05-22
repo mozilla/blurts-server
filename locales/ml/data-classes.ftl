@@ -68,7 +68,11 @@ names = പേരുകൾ
 nationalities = ദേശീയതകള്‍
 net-worths = മൊത്തം മൂല്യങ്ങൾ
 nicknames = വട്ടപേരുകള്‍
+# no data classes found
+none-data-class = ഒരെണ്ണവുമല്ല
 occupations = തൊഴിലുകൾ
+# various data classes grouped together
+other-data-class = മറ്റുള്ളവ
 parenting-plans = രക്ഷാകർതൃ പദ്ധതികൾ
 partial-credit-card-data = ഭാഗിക ക്രെഡിറ്റ് കാർഡ് ഡാറ്റ
 passport-numbers = പാസ്പോർട്ട് നമ്പറുകൾ

@@ -10,10 +10,17 @@ import { Hero } from "./components/Hero";
 import { CtaBanner } from "./components/CtaBanner";
 import { InfoBlock } from "./components/InfoBlock";
 import { LogoBlock } from "./components/LogoBlock";
+import { PrivacyProductBundleBanner } from "./components/PrivacyProductBundleBanner";
 import { Faq } from "./components/Faq";
 import { CtaInputBanner } from "./components/CtaInputBanner";
 import { PricingPlans } from "./components/PricingPlans";
+import { PricingPlansWithBundle } from "./components/PricingPlansWithBundle";
 import { FeatureFlagName } from "../../../../../db/tables/featureFlags";
+import {
+  PremiumSubscriptionUrl,
+  ProductBundleUrl,
+  SubscriptionBillingAmount,
+} from "./components/PricingPlanListWithBundle";
 
 export type LandingPageProps = {
   countryCode: string;
@@ -22,6 +29,9 @@ export type LandingPageProps = {
   l10n: ExtendedReactLocalization;
   eligibleForPremium: boolean;
   scanLimitReached: boolean;
+  bundleProductUrl: ProductBundleUrl;
+  premiumSubscriptionUrl: PremiumSubscriptionUrl;
+  subscriptionBillingAmount: SubscriptionBillingAmount;
 };
 
 export const View = (props: LandingPageProps) => {
@@ -30,22 +40,35 @@ export const View = (props: LandingPageProps) => {
       <AccountDeletionNotification />
       <main className={styles.wrapper}>
         <Hero {...props} />
-        <section>
+        <section className={styles.section}>
           <CtaBanner {...props} />
         </section>
-        <section className={styles.hasBackground}>
+        <section className={`${styles.section} ${styles.hasBackground}`}>
           <InfoBlock {...props} />
         </section>
-        <section>
-          <PricingPlans {...props} />
+        {props.enabledFeatureFlags.includes("PrivacyProductsBundle") && (
+          <PrivacyProductBundleBanner
+            l10n={props.l10n}
+            premiumSubscriptionUrlBundle={props.premiumSubscriptionUrl.bundle}
+            subscriptionBillingAmountBundle={
+              props.subscriptionBillingAmount.bundle
+            }
+          />
+        )}
+        <section className={styles.section}>
+          {props.enabledFeatureFlags.includes("PrivacyProductsBundle") ? (
+            <PricingPlansWithBundle {...props} />
+          ) : (
+            <PricingPlans {...props} />
+          )}
         </section>
-        <section className={styles.hasBackground}>
+        <section className={`${styles.section} ${styles.hasBackground}`}>
           <LogoBlock l10n={props.l10n} />
         </section>
-        <section>
+        <section className={styles.section}>
           <Faq />
         </section>
-        <section>
+        <section className={styles.section}>
           <CtaInputBanner {...props} />
         </section>
       </main>

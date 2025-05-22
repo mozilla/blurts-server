@@ -9,6 +9,10 @@ import { getL10n } from "../../../../functions/l10n/storybookAndJest";
 import { defaultExperimentData } from "../../../../../telemetry/generated/nimbus/experiments";
 import { AccountsMetricsFlowProvider } from "../../../../../contextProviders/accounts-metrics-flow";
 import { CONST_URL_MONITOR_LANDING_PAGE_ID } from "../../../../../constants";
+import {
+  getPremiumSubscriptionUrl,
+  getSubscriptionBillingAmount,
+} from "../../../../functions/server/getPremiumSubscriptionInfo";
 
 const meta: Meta<typeof View> = {
   title: "Pages/Public/Landing page/Redesign",
@@ -50,6 +54,25 @@ const meta: Meta<typeof View> = {
             {...props}
             experimentData={experimentData}
             enabledFeatureFlags={enabledFeatureFlags}
+            bundleProductUrl={{
+              relay: process.env.FIREFOX_RELAY_LANDING_URL ?? "",
+              vpn: process.env.MOZILLA_VPN_LANDING_URL ?? "",
+            }}
+            premiumSubscriptionUrl={{
+              monthly: getPremiumSubscriptionUrl({
+                type: "monthly",
+                enabledFeatureFlags,
+              }),
+              yearly: getPremiumSubscriptionUrl({
+                type: "yearly",
+                enabledFeatureFlags,
+              }),
+              bundle: getPremiumSubscriptionUrl({
+                type: "bundle",
+                enabledFeatureFlags,
+              }),
+            }}
+            subscriptionBillingAmount={getSubscriptionBillingAmount()}
           />
         </PublicShell>
       </AccountsMetricsFlowProvider>
@@ -78,5 +101,25 @@ export const LandingRedesignUsScanLimit: Story = {
     eligibleForPremium: true,
     countryCode: "us",
     scanLimitReached: true,
+  },
+};
+
+export const LandingRedesignUsWithPrivacyProductBundle: Story = {
+  name: "US visitors - With Privacy Product Bundle",
+  args: {
+    eligibleForPremium: true,
+    countryCode: "us",
+    scanLimitReached: false,
+    enabledFeatureFlags: ["LandingPageRedesign", "PrivacyProductsBundle"],
+  },
+};
+
+export const LandingRedesignUsScanLimitWithPrivacyProductBundle: Story = {
+  name: "US visitors - Scan limit reached and with Privacy Product Bundle",
+  args: {
+    eligibleForPremium: true,
+    countryCode: "us",
+    scanLimitReached: true,
+    enabledFeatureFlags: ["LandingPageRedesign", "PrivacyProductsBundle"],
   },
 };

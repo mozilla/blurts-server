@@ -49,7 +49,7 @@ const RadioInput = (
           fill="none"
           strokeWidth={strokeWidth}
         />
-        {isSelected && <CheckIcon alt="" width={12} height={12} x={8} y={8} />}
+        {isSelected && <CheckIcon alt="" width={20} height={20} x={4} y={5} />}
         {isFocusVisible && (
           <rect
             x={1}

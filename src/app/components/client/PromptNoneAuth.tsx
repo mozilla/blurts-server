@@ -8,21 +8,21 @@ import { ReactNode, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { signIn } from "next-auth/react";
 import { containsExpectedSearchParams } from "../../functions/universal/attributions";
-import { CONST_MOZILLA_ACCOUNTS_SETTINGS_PROMO_SEARCH_PARAMS } from "../../../constants";
 
 export const PromptNoneAuth = (): ReactNode => {
   const searchParams = useSearchParams();
 
   useEffect(() => {
+    const authParams = { prompt: "none" };
     const isPromptNoneAuthAttempt = containsExpectedSearchParams(
-      CONST_MOZILLA_ACCOUNTS_SETTINGS_PROMO_SEARCH_PARAMS,
+      authParams,
       searchParams,
     );
     if (isPromptNoneAuthAttempt) {
       void signIn(
         "fxa",
         { callbackUrl: "/user/dashboard/action-needed?dialog=subscriptions" },
-        { prompt: "none" },
+        authParams,
       );
     }
     // This effect should only run once

@@ -23,6 +23,16 @@ describe("getPremiumSubscriptionInfo (SubPlat 2.0)", () => {
     });
     expect(subscriptionUrl).toMatch(subplatUrlPattern);
   });
+
+  it("returns the bundle subscription URL", () => {
+    const subscriptionUrl = getPremiumSubscriptionUrl({
+      type: "bundle",
+      enabledFeatureFlags: [],
+    });
+    expect(subscriptionUrl).toMatch(
+      /\/privacyprotectionplan\/yearly\/landing\?spVersion=2/,
+    );
+  });
 });
 
 describe("getPremiumSubscriptionInfo (SubPlat 3.0)", () => {
@@ -40,5 +50,15 @@ describe("getPremiumSubscriptionInfo (SubPlat 3.0)", () => {
       enabledFeatureFlags: ["SubPlat3"],
     });
     expect(subscriptionUrl).toMatch(/\/monitorplusstage\/yearly\/landing/);
+  });
+
+  it("returns the bundle subscription URL", () => {
+    const subscriptionUrl = getPremiumSubscriptionUrl({
+      type: "bundle",
+      enabledFeatureFlags: ["SubPlat3"],
+    });
+    expect(subscriptionUrl).toMatch(
+      /\/privacyprotectionplan\/yearly\/landing\?spVersion=3/,
+    );
   });
 });

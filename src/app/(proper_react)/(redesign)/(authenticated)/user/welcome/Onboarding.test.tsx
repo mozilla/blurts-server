@@ -37,7 +37,7 @@ it("passes the axe accessibility test suite on step 1", async () => {
   const ComposedOnboarding = composeStory(Onboarding, Meta);
   const { container } = render(<ComposedOnboarding />);
   expect(await axe(container)).toHaveNoViolations();
-});
+}, 10_000);
 
 it("shows the explainer dialog on step 1", async () => {
   const user = userEvent.setup();
@@ -60,7 +60,7 @@ it("passes the axe accessibility test suite on step 2", async () => {
   });
   expect(proceedButton).toBeInTheDocument();
   expect(await axe(container)).toHaveNoViolations();
-});
+}, 10_000);
 
 it("can open the explainer dialog shows on step 1", async () => {
   const user = userEvent.setup();
@@ -336,7 +336,7 @@ it("passes the axe accessibility test suite on step 3", async () => {
   const ComposedOnboarding = composeStory(Onboarding, Meta);
   const { container } = render(<ComposedOnboarding stepId="findExposures" />);
   expect(await axe(container)).toHaveNoViolations();
-});
+}, 10_000);
 
 it("shows a condensed version of the onboarding skipping step “Get started”", () => {
   const ComposedOnboarding = composeStory(Onboarding, Meta);

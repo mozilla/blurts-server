@@ -7,6 +7,7 @@ export const CONST_MAX_NUM_ADDRESSES = 5;
 export const CONST_MAX_NUM_ADDRESSES_PLUS = 20;
 export const CONST_GA4_MEASUREMENT_ID = "G-CXG8K4KW4P";
 export const CONST_ONEREP_DATA_BROKER_COUNT = 190;
+export const MOZILLA_ORG = "https://www.mozilla.org/";
 export const CONST_URL_PLUS_CONTACT_SUPPORT =
   "https://support.mozilla.org/questions/new/monitor/form";
 export const CONST_URL_SUMO_MONITOR_SUPPORT =
@@ -41,11 +42,6 @@ export const CONST_URL_MONITOR_GITHUB =
 export const CONST_DAY_MILLISECONDS = 24 * 60 * 60 * 1000;
 export const CONST_URL_MONITOR_LANDING_PAGE_ID =
   "monitor.mozilla.org-monitor-product-page";
-export const CONST_MOZILLA_ACCOUNTS_SETTINGS_PROMO_SEARCH_PARAMS = {
-  utm_source: "moz-account",
-  utm_campaign: "settings-promo",
-  utm_content: "monitor-free",
-} as const;
 export const CONST_SETTINGS_TAB_SLUGS = [
   "edit-info",
   "notifications",

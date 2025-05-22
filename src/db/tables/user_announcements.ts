@@ -127,7 +127,10 @@ export async function initializeUserAnnouncements(
         updated_at: new Date(),
       }));
 
-      await knex("user_announcements").insert(insertData);
+      await knex("user_announcements")
+        .insert(insertData)
+        .onConflict(["user_id", "announcement_id"])
+        .ignore(); // avoids inserting duplicates
     }
 
     const results: UserAnnouncementWithDetails[] = await knex(

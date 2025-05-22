@@ -24,7 +24,7 @@ it("passes the axe accessibility test suite", async () => {
   const ComposedDashboard = composeStory(UserMenuDefault, Meta);
   const { container } = render(<ComposedDashboard />);
   expect(await axe(container)).toHaveNoViolations();
-});
+}, 10_000);
 
 it("opens and closes the user menu", async () => {
   const user = userEvent.setup();

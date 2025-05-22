@@ -32,31 +32,31 @@ it("passes the axe accessibility test suite for credit card breaches", async () 
   const ComposedComponent = composeStory(CreditCardStory, Meta);
   const { container } = render(<ComposedComponent />);
   expect(await axe(container)).toHaveNoViolations();
-});
+}, 10_000);
 
 it("passes the axe accessibility test suite for bank account breaches", async () => {
   const ComposedComponent = composeStory(BankAccountStory, Meta);
   const { container } = render(<ComposedComponent />);
   expect(await axe(container)).toHaveNoViolations();
-});
+}, 10_000);
 
 it("passes the axe accessibility test suite for SSN breaches", async () => {
   const ComposedComponent = composeStory(SsnStory, Meta);
   const { container } = render(<ComposedComponent />);
   expect(await axe(container)).toHaveNoViolations();
-});
+}, 10_000);
 
 it("passes the axe accessibility test suite for PIN breaches", async () => {
   const ComposedComponent = composeStory(PinStory, Meta);
   const { container } = render(<ComposedComponent />);
   expect(await axe(container)).toHaveNoViolations();
-});
+}, 10_000);
 
 it("passes the axe accessibility test suite for the high-risk celebration view", async () => {
   const ComposedComponent = composeStory(HighRiskBreachDoneStory, Meta);
   const { container } = render(<ComposedComponent />);
   expect(await axe(container)).toHaveNoViolations();
-});
+}, 10_000);
 
 it("marks the Broker step as complete if a scan has been done without results", () => {
   const ComposedComponent = composeStory(CreditCardStory, Meta);

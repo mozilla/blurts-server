@@ -37,7 +37,7 @@ export class AuthPage {
 
   async enterEmail(email: string) {
     await this.emailInputField.fill(email);
-    await this.continue({ waitForURL: "**/oauth/**" });
+    await this.continue({ waitForURL: "**/oauth**" });
   }
 
   async enterPassword(optionalPassword?: string) {
@@ -57,7 +57,7 @@ export class AuthPage {
     await this.passwordInputField.fill(
       process.env.E2E_TEST_ACCOUNT_PASSWORD as string,
     );
-    await this.continue({ waitForURL: "**/oauth/**" });
+    await this.continue({ waitForURL: "**/confirm_signup_code**" });
 
     const verificationCode = await getVerificationCode(email, page);
     expect(verificationCode).toBeDefined();

@@ -26,6 +26,10 @@ import { getExperiments } from "../../../functions/server/getExperiments";
 import { getLocale } from "../../../functions/universal/getLocale";
 import { AccountsMetricsFlowProvider } from "../../../../contextProviders/accounts-metrics-flow";
 import { getEnabledFeatureFlags } from "../../../../db/tables/featureFlags";
+import {
+  getPremiumSubscriptionUrl,
+  getSubscriptionBillingAmount,
+} from "../../../functions/server/getPremiumSubscriptionInfo";
 
 export default async function Page() {
   const session = await getServerSession();
@@ -54,6 +58,7 @@ export default async function Page() {
   const scanLimitReached =
     typeof oneRepActivations === "undefined" ||
     oneRepActivations > monthlySubscribersQuota;
+
   return (
     <AccountsMetricsFlowProvider
       enabled={experimentData["Features"]["landing-page-free-scan-cta"].enabled}
@@ -84,6 +89,25 @@ export default async function Page() {
           scanLimitReached={scanLimitReached}
           experimentData={experimentData["Features"]}
           enabledFeatureFlags={enabledFeatureFlags}
+          bundleProductUrl={{
+            relay: process.env.FIREFOX_RELAY_LANDING_URL ?? "",
+            vpn: process.env.MOZILLA_VPN_LANDING_URL ?? "",
+          }}
+          premiumSubscriptionUrl={{
+            monthly: getPremiumSubscriptionUrl({
+              type: "monthly",
+              enabledFeatureFlags,
+            }),
+            yearly: getPremiumSubscriptionUrl({
+              type: "yearly",
+              enabledFeatureFlags,
+            }),
+            bundle: getPremiumSubscriptionUrl({
+              type: "bundle",
+              enabledFeatureFlags,
+            }),
+          }}
+          subscriptionBillingAmount={getSubscriptionBillingAmount()}
         />
       ) : (
         <LandingView

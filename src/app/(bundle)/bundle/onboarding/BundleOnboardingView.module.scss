@@ -1,0 +1,136 @@
+@use "../../../tokens";
+
+.header {
+  padding: tokens.$spacing-md;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  gap: tokens.$spacing-lg;
+
+  h1 {
+    font: tokens.$text-title-md;
+    font-family: var(--font-inter);
+
+    .gradientTextFill {
+      background: linear-gradient(
+        45deg,
+        tokens.$color-purple-50 20%,
+        tokens.$color-blue-30 100%
+      );
+      // src: https://www.geeksforgeeks.org/how-to-create-linear-gradient-text-using-html-and-css/
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+    }
+  }
+
+  p {
+    font: tokens.$text-body-lg;
+    color: tokens.$color-grey-50;
+    font-weight: 500;
+  }
+}
+
+.productsContainer {
+  @media screen and (max-width: tokens.$screen-lg) {
+    margin-bottom: tokens.$layout-md;
+  }
+  .productsWrapper {
+    padding: tokens.$spacing-md;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: tokens.$spacing-lg;
+    justify-content: center;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: tokens.$layout-xs;
+
+    @media screen and (min-width: tokens.$screen-md) and (max-width: tokens.$screen-lg) {
+      flex-direction: row;
+      flex-wrap: wrap;
+      padding: tokens.$spacing-md tokens.$layout-xl;
+    }
+
+    @media screen and (min-width: tokens.$screen-lg) {
+      width: fit-content;
+      flex-wrap: nowrap;
+      flex-direction: row;
+      justify-content: flex-start;
+      padding: 0;
+    }
+
+    article {
+      background-color: tokens.$color-white;
+      border-radius: tokens.$border-radius-xl;
+      box-shadow: tokens.$box-shadow-md;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: tokens.$spacing-2xl tokens.$spacing-xl tokens.$spacing-xl;
+      width: 100%;
+      gap: tokens.$spacing-lg;
+      margin: 0 auto;
+
+      @media screen and (min-width: tokens.$screen-sm) {
+        max-width: 380px;
+      }
+
+      @media screen and (min-width: tokens.$screen-md) and (max-width: tokens.$screen-lg) {
+        margin: 0;
+        max-width: auto;
+
+        &:first-child {
+          flex: 0 0 100%;
+          max-width: 100%;
+        }
+        &:nth-child(2),
+        &:nth-child(3) {
+          flex: 0 0 calc(50% - #{tokens.$spacing-lg}/ 2);
+          max-width: calc(50% - #{tokens.$spacing-lg}/ 2);
+        }
+      }
+
+      @media screen and (min-width: tokens.$screen-lg) and (max-width: tokens.$screen-xl) {
+        max-width: 300px;
+        flex: 0 0 auto;
+        justify-self: flex-start;
+      }
+
+      @media screen and (min-width: tokens.$screen-xl) {
+        max-width: 380px;
+      }
+
+      .logoWrapper {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+          width: 100%;
+        }
+      }
+
+      h2 {
+        font: tokens.$text-body-xl;
+        font-weight: 700;
+        margin-bottom: tokens.$spacing-xl;
+      }
+
+      .ctaBtn {
+        width: 100%;
+        background-color: tokens.$color-blue-50; // overwrite back to previous primary colour
+        transition: 0.3s;
+
+        &:hover {
+          background: tokens.$color-blue-60;
+        }
+      }
+    }
+  }
+}
