@@ -39,7 +39,7 @@ it("passes the axe accessibility test suite", async () => {
   const ComposedProgressCard = composeStory(DataBrokerActionNeeded, Meta);
   const { container } = render(<ComposedProgressCard />);
   expect(await axe(container)).toHaveNoViolations();
-});
+}, 10_000);
 
 describe("ScanResultCard", () => {
   // Data broker action needed

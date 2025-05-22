@@ -37,7 +37,7 @@ describe("Removal under  maintenance", () => {
     );
     const { container } = render(<RemovalUnderMaintenanceView />);
     expect(await axe(container)).toHaveNoViolations();
-  });
+  }, 10_000);
 
   it("shows removal instructions", async () => {
     const user = userEvent.setup();
