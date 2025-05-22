@@ -4,7 +4,6 @@
 
 import { test, expect } from "../fixtures/basePage.js";
 import { checkAuthState, setEnvVariables } from "../utils/helpers.js";
-import "../utils/setFeatureFlags";
 
 test.describe(`${process.env.E2E_TEST_ENV} - Breach Scan, Monitor Plus Purchase Flow`, () => {
   test.skip(
