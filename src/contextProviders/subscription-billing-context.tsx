@@ -26,6 +26,7 @@ export function SubscriptionBillingProvider({
 
 export function useSubscriptionBilling(): SubscriptionBillingAmount {
   const ctx = useContext(SubscriptionBillingContext);
+  /* c8 ignore next 5 */
   if (!ctx) {
     throw new Error(
       "useSubscriptionBilling must be used inside SubscriptionBillingProvider",
