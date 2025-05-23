@@ -43,3 +43,19 @@ announcement-add-up-to-20-emails-free-cta-label = Upgrade
 announcement-switch-to-yearly-sub-title = { -brand-monitor-plus }, now with 35% yearly savings
 announcement-switch-to-yearly-sub-description = Switch to year-round protection with one easy payment.
 announcement-switch-to-yearly-sub-cta-label = Upgrade
+
+# id: bundle-offering-free-user
+
+announcement-bundle-offering-free-user-title = Privacy and security, one supercharged plan
+# Variables:
+#   $bundleMonthlyPrice (string) - monthly bundle plan's price per month, including currency, e.g. "$13.37"
+announcement-bundle-offering-free-user-description = For { $bundleMonthlyPrice }/month, save on { -brand-vpn }, { -brand-monitor }’s data broker protection, and { -brand-relay-new }’s unlimited email masks.
+announcement-bundle-offering-free-user-cta-label = Get year-round protection
+
+# id: bundle-offering-plus-user
+
+announcement-bundle-offering-plus-user-title = Privacy and security, one supercharged plan
+# Variables:
+#   $bundleMonthlyPrice (string) - monthly bundle plan's price per month, including currency, e.g. "$13.37"
+announcement-bundle-offering-plus-user-description = For { $bundleMonthlyPrice }/month, get { -brand-vpn }’s online activity protection and { -brand-relay-new }’s unlimited email masks along with { -brand-monitor }.
+announcement-bundle-offering-plus-user-cta-label = Upgrade my protection
