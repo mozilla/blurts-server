@@ -250,7 +250,8 @@ export function AutomaticRemoveView(props: Props) {
                     )}
               </span>
               <Button
-                variant="secondary"
+                theme="blue"
+                variant="primary"
                 /* c8 ignore start */
                 onPress={() => {
                   if (selectedPlanIsYearly) {
