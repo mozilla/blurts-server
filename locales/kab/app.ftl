@@ -197,6 +197,8 @@ error-page-error-other-title = { $errorCode } yella wayen ur nteddu ara
 
 all-breaches-headline-3 = Taffa n yisefka n trewla n yisefka
 search-breaches = Nadi tirewliwin n yisefka
+# the kind of user data exposed to hackers in data breach.
+exposed-data = Isefka i irewlen:
 
 ## Public breach detail page
 
