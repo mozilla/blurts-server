@@ -7,16 +7,21 @@ import { NextRequest, NextResponse } from "next/server";
 import NextAuth from "next-auth";
 import { authOptions } from "../../utils/auth";
 
-// There is currently no support for handling OAuth provider callback errors:
-// https://github.com/nextauthjs/next-auth/discussions/8209
 const handler = async (req: NextRequest, res: unknown) => {
-  if (
-    req.method === "GET" &&
-    req.url?.startsWith(
-      `${process.env.SERVER_URL}/api/auth/callback/fxa?error=`,
-    )
-  ) {
-    return NextResponse.redirect(process.env.SERVER_URL as string);
+  // There is currently no support for handling OAuth provider callback errors:
+  // https://github.com/nextauthjs/next-auth/discussions/8209
+  if (req.method === "GET") {
+    const requestSearchParams = req.nextUrl.searchParams;
+    const requestErrorQuery = requestSearchParams.get("error");
+    // Check if login is required: If the callback URL is available redirect to
+    // the authentication flow and otherwise fallback to the base URL.
+    if (requestErrorQuery === "login_required") {
+      const cookieStore = req.cookies;
+      const redirectUrl =
+        cookieStore.get("next-auth.callback-url")?.value ??
+        (process.env.SERVER_URL as string);
+      return NextResponse.redirect(redirectUrl);
+    }
   }
 
   return NextAuth(
