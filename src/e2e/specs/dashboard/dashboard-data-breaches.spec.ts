@@ -8,7 +8,6 @@ import {
   isUsingMockHIBPEndpoint,
   isUsingMockONEREPEndpoint,
 } from "../../../app/functions/universal/mock.js";
-import "../../utils/setFeatureFlags";
 
 // bypass login
 test.use({ storageState: "./e2e/storageState.json" });
