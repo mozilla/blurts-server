@@ -82,7 +82,7 @@ export const PricingPlanListWithBundle = (props: Props & ScanLimitProp) => {
   // The cookie `attributionsLastTouch` is set in the component `PageLoadEvent`
   // to help with attributions.
   const [cookies] = useCookies(["attributionsLastTouch"]);
-  const newSearchParam = modifyAttributionsForUrlSearchParams(
+  const newSearchParamPlus = modifyAttributionsForUrlSearchParams(
     new URLSearchParams(cookies.attributionsLastTouch),
     {
       entrypoint: CONST_URL_MONITOR_LANDING_PAGE_ID,
@@ -95,8 +95,23 @@ export const PricingPlanListWithBundle = (props: Props & ScanLimitProp) => {
       utm_campaign: "pricing",
     },
   );
+  const newSearchParamBundle = modifyAttributionsForUrlSearchParams(
+    new URLSearchParams(cookies.attributionsLastTouch),
+    {
+      entrypoint: CONST_URL_MONITOR_LANDING_PAGE_ID,
+      form_type: "button",
+      data_cta_position: "pricing",
+    },
+    {
+      utm_source: "monitor-product",
+      utm_medium: "monitor",
+      utm_campaign: "landing-page-pricing-grid",
+      utm_content: "pricing-grid-us",
+    },
+  );
   // SubPlat2 subscription links already have the UTM parameter `?plan` appended.
-  const additionalSubplatParamsString = `${props.enabledFeatureFlags.includes("SubPlat3") ? "?" : "&"}${newSearchParam.toString()}`;
+  const additionalSubplatParamsStringPlus = `${props.enabledFeatureFlags.includes("SubPlat3") ? "?" : "&"}${newSearchParamPlus.toString()}`;
+  const additionalSubplatParamsStringBundle = `${props.enabledFeatureFlags.includes("SubPlat3") ? "?" : "&"}${newSearchParamBundle.toString()}`;
 
   const priceFormatter = new Intl.NumberFormat(getLocale(l10n), {
     style: "currency",
@@ -220,7 +235,7 @@ export const PricingPlanListWithBundle = (props: Props & ScanLimitProp) => {
             disabled={props.scanLimitReached}
             variant="primary"
             theme="blue"
-            href={`${props.premiumSubscriptionUrl["bundle"]}${additionalSubplatParamsString}`}
+            href={`${props.premiumSubscriptionUrl["bundle"]}${additionalSubplatParamsStringBundle}`}
             event={{
               module: "upgradeIntent",
               name: "click",
@@ -376,7 +391,7 @@ export const PricingPlanListWithBundle = (props: Props & ScanLimitProp) => {
             disabled={props.scanLimitReached}
             variant="secondary"
             theme="blue"
-            href={`${props.premiumSubscriptionUrl[billingPeriod]}${additionalSubplatParamsString}`}
+            href={`${props.premiumSubscriptionUrl[billingPeriod]}${additionalSubplatParamsStringPlus}`}
             event={{
               module: "upgradeIntent",
               name: "click",
