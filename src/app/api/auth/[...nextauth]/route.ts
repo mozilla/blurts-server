@@ -17,9 +17,12 @@ const handler = async (req: NextRequest, res: unknown) => {
     // the authentication flow and otherwise fallback to the base URL.
     if (requestErrorQuery === "login_required") {
       const cookieStore = req.cookies;
+      const callbackUrl = cookieStore.get("next-auth.callback-url")?.value;
       const redirectUrl =
-        cookieStore.get("next-auth.callback-url")?.value ??
-        (process.env.SERVER_URL as string);
+        callbackUrl && callbackUrl.startsWith(process.env.SERVER_URL as string)
+          ? callbackUrl
+          : (process.env.SERVER_URL as string);
+
       return NextResponse.redirect(redirectUrl);
     }
   }
