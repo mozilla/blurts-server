@@ -456,13 +456,3 @@ export const DashboardUsNoPremiumFirstScanRan: Story = {
     totalNumberOfPerformedScans: undefined,
   },
 };
-
-export const DashboardUsNoPremiumNoScan: Story = {
-  name: "US user, without Premium, first scan not ran",
-  args: {
-    countryCode: "us",
-    premium: false,
-    brokers: "no-scan",
-    totalNumberOfPerformedScans: 0,
-  },
-};
