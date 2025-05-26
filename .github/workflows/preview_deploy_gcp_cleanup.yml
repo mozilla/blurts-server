@@ -2,10 +2,15 @@ name: Deploy Preview Cleanup
 
 permissions: {}
 
-on:
-  # when pull request is merged or closed
-  pull_request:
-    types: [closed]
+# Disabled since we can't log in to the preview sites yet,
+# so they're not very useful, but take a long time to deploy.
+# We can re-enable once we migrate to Auth.js, which supports
+# redirect proxies for this use case:
+# https://authjs.dev/getting-started/deployment#securing-a-preview-deployment
+# on:
+#   # when pull request is merged or closed
+#   pull_request:
+#     types: [closed]
 
 env:
   PROJECT_ID: ${{ secrets.GCP_PROJECT }}
