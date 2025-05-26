@@ -33,7 +33,7 @@ function Popover({ children, offset, state, ...props }: PopoverProps) {
     <Overlay>
       {/* FocusScope is a utility component that traps keyboard focus within its child elements.
       When used in a dialog, it ensures that focus never leaves the dialog until it’s closed. */}
-      <FocusScope contain restoreFocus autoFocus>
+      <FocusScope contain restoreFocus autoFocus={false}>
         <div {...underlayProps} className={styles.underlay} />
         <div
           {...popoverProps}
