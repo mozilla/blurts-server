@@ -215,81 +215,39 @@ export async function getProfile(
   return profile;
 }
 
-// export async function activateProfile(profileId: UUID): Promise<void> {
-//   const response: Response = await internalFetch(
-//     `/api/v1/profiles/${profileId}/activate`,
-//     {
-//       method: "PUT",
-//     },
-//   );
-//   if (!response.ok) {
-//     logger.error(
-//       `Failed to activate profile: [${response.status}] [${response.statusText}]`,
-//     );
-//     throw new Error(
-//       `Failed to activate profile: [${response.status}] [${response.statusText}]`,
-//     );
-//   }
-// }
+export async function activateProfile(profileId: UUID): Promise<void> {
+  const response = await moscaryFetch(
+    `/api/v1/profiles/${profileId}/activate`,
+    {
+      method: "PUT",
+    },
+  );
+  if (!response.ok) {
+    logger.error(
+      `Failed to activate profile: [${response.status}] [${response.statusText}]`,
+    );
+    throw new Error(
+      `Failed to activate profile: [${response.status}] [${response.statusText}]`,
+    );
+  }
+}
 
-// export async function deactivateProfile(profileId: number): Promise<void> {
-//   const response: Response = await internalFetch(
-//     `/api/v1/profiles/${profileId}/deactivate`,
-//     {
-//       method: "PUT",
-//     },
-//   );
-//   if (!response.ok) {
-//     logger.error(
-//       `Failed to deactivate profile: [${response.status}] [${response.statusText}]`,
-//     );
-//     throw new Error(
-//       `Failed to deactivate profile: [${response.status}] [${response.statusText}]`,
-//     );
-//   }
-// }
-
-// export async function optoutProfile(profileId: UUID): Promise<void> {
-//   const response = await internalFetch(`/api/v1/profiles/${profileId}/optout`, {
-//     method: "POST",
-//   });
-//   if (!response.ok) {
-//     logger.error(
-//       `Failed to opt-out profile: [${response.status}] [${
-//         response.statusText
-//       }] [${JSON.stringify(await response.json())}]`,
-//     );
-//     throw new Error(
-//       `Failed to opt-out profile: [${response.status}] [${
-//         response.statusText
-//       }] [${JSON.stringify(await response.json())}]`,
-//     );
-//   }
-// }
-
-// export async function activateAndOptoutProfile({
-//   profileId,
-//   forceActivation = false,
-// }: {
-//   profileId: UUID;
-//   forceActivation?: boolean;
-// }): Promise<void> {
-//   try {
-//     const scan = await fetchLatestScanForProfile(profileId, "initial");
-//     if (scan && !forceActivation) {
-//       return;
-//     }
-
-//     const { status: profileStatus } = await getProfile(profileId);
-//     if (profileStatus === "inactive" && !forceActivation) {
-//       await activateProfile(profileId);
-//     }
-
-//     await optoutProfile(profileId);
-//   } catch (error) {
-//     logger.error("Failed to activate and optout profile:", error);
-//   }
-// }
+export async function deactivateProfile(profileId: UUID): Promise<void> {
+  const response = await moscaryFetch(
+    `/api/v1/profiles/${profileId}/deactivate`,
+    {
+      method: "PUT",
+    },
+  );
+  if (!response.ok) {
+    logger.error(
+      `Failed to deactivate profile: [${response.status}] [${response.statusText}]`,
+    );
+    throw new Error(
+      `Failed to deactivate profile: [${response.status}] [${response.statusText}]`,
+    );
+  }
+}
 
 export async function createScan(
   profileId: UUID,

@@ -15,9 +15,9 @@ import {
   getSubscriberByFxaUid,
 } from "../../../../../../db/tables/subscribers";
 import {
-  activateProfile,
-  deactivateProfile,
-  optoutProfile,
+  activateProfile as activateOnerepProfile,
+  deactivateProfile as deactivateOnerepProfile,
+  optoutProfile as optoutOnerepProfile,
 } from "../../../../../functions/server/onerep";
 import { deleteProfileDetails } from "../../../../../../db/tables/onerep_profiles";
 import {
@@ -26,6 +26,10 @@ import {
 } from "../../../../../../db/tables/onerep_scans";
 import { changeSubscription } from "../../../../../functions/server/changeSubscription";
 import { isMozMail } from "../../../../../functions/universal/isMozMail";
+import {
+  activateProfile,
+  deactivateProfile,
+} from "../../../../../functions/server/moscary";
 
 export type GetUserStateResponseBody = {
   subscriberId: SubscriberRow["id"];
@@ -168,9 +172,12 @@ export async function PUT(
             await changeSubscription(subscriber, true);
 
             // activate and opt out profiles, if any
+            if (subscriber.moscary_id) {
+              await activateProfile(subscriber.moscary_id);
+            }
             if (typeof onerepProfileId === "number") {
-              await activateProfile(onerepProfileId);
-              await optoutProfile(onerepProfileId);
+              await activateOnerepProfile(onerepProfileId);
+              await optoutOnerepProfile(onerepProfileId);
             }
             logger.info("force_user_subscribe", {
               onerepProfileId,
@@ -181,8 +188,11 @@ export async function PUT(
           case "unsubscribe": {
             await changeSubscription(subscriber, false);
 
+            if (subscriber.moscary_id) {
+              await deactivateProfile(subscriber.moscary_id);
+            }
             if (typeof onerepProfileId === "number") {
-              await deactivateProfile(onerepProfileId);
+              await deactivateOnerepProfile(onerepProfileId);
             }
             logger.info("force_user_unsubscribe", {
               onerepProfileId,
