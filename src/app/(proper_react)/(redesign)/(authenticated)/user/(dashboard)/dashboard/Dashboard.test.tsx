@@ -42,6 +42,7 @@ import {
   DashboardUsNoPremiumScanInProgressUnresolvedBreaches,
   DashboardUsNoPremiumScanInProgressResolvedBreaches,
   DashboardUsNoPremiumNoScanNoBreachesDisabledScan,
+  DashboardUsNoPremiumFirstScanRan,
 } from "./DashboardUSUsers.stories";
 import {
   DashboardUsPremiumEmptyScanNoBreaches,
@@ -3126,6 +3127,18 @@ it("send telemetry when users click on exposure chart free scan", async () => {
   );
 });
 
+it("shows the exposure chart free scan button if scan has not been performed", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanNoBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+  const ctaButton = screen.queryAllByRole("link", {
+    name: "Start a free scan",
+  });
+  expect(ctaButton[0]).toBeInTheDocument();
+});
+
 describe("CSAT survey banner", () => {
   it("does not display the “automatic removal” CSAT survey banner on the dashboard tab “action needed” to Plus users", () => {
     const ComposedDashboard = composeStory(
@@ -4090,5 +4103,17 @@ describe("Upsell badge", () => {
       "href",
       "https://payments-next.stage.fxa.nonprod.webservices.mozgcp.net/monitorplusstage/monthly/landing?form_type=button&entrypoint=monitor.mozilla.org-monitor-in-product-navigation-upsell&utm_source=product&utm_medium=monitor&utm_campaign=navigation-upsell",
     );
+  });
+
+  it("does not show the start free scan component if a user has already run a scan", () => {
+    const ComposedDashboard = composeStory(
+      DashboardUsNoPremiumFirstScanRan,
+      Meta,
+    );
+    render(<ComposedDashboard />);
+    const homeAddressString = screen.queryByText(
+      "Home address, family members and more are not yet included.",
+    );
+    expect(homeAddressString).not.toBeInTheDocument();
   });
 });
