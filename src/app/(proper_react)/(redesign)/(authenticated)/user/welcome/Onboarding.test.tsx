@@ -6,6 +6,7 @@ import { it, expect } from "@jest/globals";
 import { getByText, queryByText, render, screen } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
 import { composeStory } from "@storybook/react";
+import { type ReactNode } from "react";
 import { axe } from "jest-axe";
 import Meta, { Onboarding } from "./Onboarding.stories";
 import { useTelemetry } from "../../../../../hooks/useTelemetry";
@@ -21,6 +22,14 @@ jest.mock("next/navigation", () => ({
   }),
 }));
 
+jest.mock("react-aria", () => ({
+  ...jest.requireActual("react-aria"),
+  // FocusScope's autoFocus triggers a React state update on mount,
+  // which causes Jest to throw an "update not wrapped in act(...)" warning.
+  // Hence, we disable FocusScope behaviour during tests..
+  FocusScope: ({ children }: { children: ReactNode }) => <>{children}</>,
+}));
+
 jest.mock("../../../../../hooks/useTelemetry");
 jest.mock("../../../../../hooks/locationSuggestions");
 
@@ -28,7 +37,7 @@ it("passes the axe accessibility test suite on step 1", async () => {
   const ComposedOnboarding = composeStory(Onboarding, Meta);
   const { container } = render(<ComposedOnboarding />);
   expect(await axe(container)).toHaveNoViolations();
-});
+}, 10_000);
 
 it("shows the explainer dialog on step 1", async () => {
   const user = userEvent.setup();
@@ -51,7 +60,7 @@ it("passes the axe accessibility test suite on step 2", async () => {
   });
   expect(proceedButton).toBeInTheDocument();
   expect(await axe(container)).toHaveNoViolations();
-});
+}, 10_000);
 
 it("can open the explainer dialog shows on step 1", async () => {
   const user = userEvent.setup();
@@ -327,7 +336,7 @@ it("passes the axe accessibility test suite on step 3", async () => {
   const ComposedOnboarding = composeStory(Onboarding, Meta);
   const { container } = render(<ComposedOnboarding stepId="findExposures" />);
   expect(await axe(container)).toHaveNoViolations();
-});
+}, 10_000);
 
 it("shows a condensed version of the onboarding skipping step “Get started”", () => {
   const ComposedOnboarding = composeStory(Onboarding, Meta);

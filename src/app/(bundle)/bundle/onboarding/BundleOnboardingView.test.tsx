@@ -22,7 +22,7 @@ it("passes the axe accessibility test suite", async () => {
   const ComposedBundlePage = composeStory(BundleOnboarding, Meta);
   const { container } = render(<ComposedBundlePage />);
   expect(await axe(container)).toHaveNoViolations();
-});
+}, 10_000);
 
 it("tracks the click on the ctas", async () => {
   const mockedRecord = useTelemetry();

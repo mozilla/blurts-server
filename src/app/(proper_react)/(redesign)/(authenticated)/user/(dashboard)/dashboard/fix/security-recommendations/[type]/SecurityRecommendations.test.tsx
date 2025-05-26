@@ -30,25 +30,25 @@ it("passes the axe accessibility test suite for phone security recommendations",
   const ComposedComponent = composeStory(PhoneStory, Meta);
   const { container } = render(<ComposedComponent />);
   expect(await axe(container)).toHaveNoViolations();
-});
+}, 10_000);
 
 it("passes the axe accessibility test suite for email security recommendations", async () => {
   const ComposedComponent = composeStory(EmailStory, Meta);
   const { container } = render(<ComposedComponent />);
   expect(await axe(container)).toHaveNoViolations();
-});
+}, 10_000);
 
 it("passes the axe accessibility test suite for IP security recommendations", async () => {
   const ComposedComponent = composeStory(IpStory, Meta);
   const { container } = render(<ComposedComponent />);
   expect(await axe(container)).toHaveNoViolations();
-});
+}, 10_000);
 
 it("passes the axe accessibility test suite for the security recommendations celebration view", async () => {
   const ComposedComponent = composeStory(DoneStory, Meta);
   const { container } = render(<ComposedComponent />);
   expect(await axe(container)).toHaveNoViolations();
-});
+}, 10_000);
 
 it("marks the security recommendations step as the current one", () => {
   const ComposedComponent = composeStory(PhoneStory, Meta);

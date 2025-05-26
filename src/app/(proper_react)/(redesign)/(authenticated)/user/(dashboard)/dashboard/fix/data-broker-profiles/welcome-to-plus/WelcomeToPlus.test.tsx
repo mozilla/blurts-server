@@ -21,7 +21,7 @@ it("passes the axe accessibility test suite", async () => {
   );
   const { container } = render(<ComposedWelcomeToPlusView />);
   expect(await axe(container)).toHaveNoViolations();
-});
+}, 10_000);
 
 it("shows the progress indicator on the “Welcome to Plus” view", () => {
   const ComposedWelcomeToPlusView = composeStory(

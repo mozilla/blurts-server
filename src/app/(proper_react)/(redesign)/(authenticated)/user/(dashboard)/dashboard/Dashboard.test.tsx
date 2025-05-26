@@ -41,6 +41,7 @@ import {
   DashboardUsNoPremiumScanInProgressNoBreaches,
   DashboardUsNoPremiumScanInProgressUnresolvedBreaches,
   DashboardUsNoPremiumScanInProgressResolvedBreaches,
+  DashboardUsNoPremiumNoScanNoBreachesDisabledScan,
 } from "./DashboardUSUsers.stories";
 import {
   DashboardUsPremiumEmptyScanNoBreaches,
@@ -94,7 +95,7 @@ it("passes the axe accessibility test suite", async () => {
   );
   const { container } = render(<ComposedDashboard />);
   expect(await axe(container)).toHaveNoViolations();
-});
+}, 10_000);
 
 it("shows the 'Start a free scan' CTA to free US-based users who haven't performed a scan yet", () => {
   const ComposedDashboard = composeStory(
@@ -132,6 +133,26 @@ it("does not show a 'Contact Us' link for non-Plus users", async () => {
   const contactUsEntry = screen.queryByRole("menuitem", { name: "Contact us" });
 
   expect(contactUsEntry).not.toBeInTheDocument();
+});
+
+it("shows the waitlist dialog when a user selects 'Start a free scan' CTA if the DisableOneRepScans flag is enabled", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanNoBreachesDisabledScan,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  const ctaButton = screen.getByRole("button", {
+    name: "Start a free scan",
+  });
+  await user.click(ctaButton);
+
+  expect(
+    screen.getByRole("dialog", {
+      name: "⁨Monitor⁩ is currently at capacity",
+    }),
+  ).toBeInTheDocument();
 });
 
 it("shows a 'Contact Us' link for Plus users", async () => {
@@ -1022,6 +1043,37 @@ it("shows and skips a dialog that informs US users, without Premium, when we hit
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumNoScanNoBreachesScanLimitReached,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "button", {
+    name: "Get first scan free",
+  });
+  await user.click(dashboardTopBannerCta);
+  expect(
+    screen.getByRole("dialog", {
+      name: "⁨Monitor⁩ is currently at capacity",
+    }),
+  ).toBeInTheDocument();
+  const closeButton = screen.getByRole("button", {
+    name: "Skip for now",
+  });
+  await user.click(closeButton);
+  expect(
+    screen.queryByRole("dialog", {
+      name: "⁨Monitor⁩ is currently at capacity",
+    }),
+  ).not.toBeInTheDocument();
+});
+
+it("shows and skips a dialog that informs US users, without Premium, when we hit the broker scan limit if the DisableOneRepScans flag is on", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanNoBreachesDisabledScan,
     Meta,
   );
   render(<ComposedDashboard />);

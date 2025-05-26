@@ -27,11 +27,11 @@ export function getPremiumSubscriptionUrl({
   type,
   enabledFeatureFlags,
 }: GetPremiumSubscriptionUrlParams): string {
-  const bundleOfferingId = process.env.SUBPLAT_BUNDLE_OFFERING_ID as string;
-  const subscriptionUrlSp3 = process.env.SUBPLAT_SUBSCRIPTIONS_URL as string;
   if (enabledFeatureFlags.includes("SubPlat3")) {
+    const subscriptionUrlSp3 = process.env.SUBPLAT_SUBSCRIPTIONS_URL as string;
     if (type === "bundle") {
-      return `${subscriptionUrlSp3}/${bundleOfferingId}/landing?spVersion=3`;
+      const bundleOfferingId = process.env.SUBPLAT_BUNDLE_OFFERING_ID as string;
+      return `${subscriptionUrlSp3}/${bundleOfferingId}/landing`;
     }
     const monitorOfferingId = process.env.SUBPLAT_MONITOR_OFFERING_ID as string;
     return `${subscriptionUrlSp3}/${monitorOfferingId}/${type}/landing`;
@@ -41,14 +41,19 @@ export function getPremiumSubscriptionUrl({
   const productId = process.env.PREMIUM_PRODUCT_ID as string;
   let planId = "";
   switch (type) {
-    case "monthly":
+    case "monthly": {
       planId = process.env.PREMIUM_PLAN_ID_MONTHLY_US as string;
       break;
-    case "yearly":
+    }
+    case "yearly": {
       planId = process.env.PREMIUM_PLAN_ID_YEARLY_US as string;
       break;
-    case "bundle":
-      return `${subscriptionUrlSp3}/${bundleOfferingId}/landing?spVersion=2`;
+    }
+    case "bundle": {
+      const productId = process.env.SUBPLAT_BUNDLE_PRODUCT_ID as string;
+      const planId = process.env.SUBPLAT_BUNDLE_PRICE_ID as string;
+      return `${subscriptionUrlSp2}/products/${productId}?plan=${planId}`;
+    }
   }
 
   return `${subscriptionUrlSp2}/products/${productId}?plan=${planId}`;

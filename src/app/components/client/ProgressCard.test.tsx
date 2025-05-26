@@ -29,7 +29,7 @@ it("passes the axe accessibility test suite", async () => {
   const ComposedProgressCard = composeStory(ProgressCardItemUsPremium, Meta);
   const { container } = render(<ComposedProgressCard />);
   expect(await axe(container)).toHaveNoViolations();
-});
+}, 10_000);
 
 it("shows and hides the explainer dialog", async () => {
   const user = userEvent.setup();

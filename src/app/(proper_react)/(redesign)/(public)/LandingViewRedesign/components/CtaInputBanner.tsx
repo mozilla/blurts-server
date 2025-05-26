@@ -28,7 +28,9 @@ export const CtaInputBanner = (props: LandingPageProps) => {
             )}
           </p>
         </div>
-        {props.eligibleForPremium && props.scanLimitReached ? (
+        {(props.enabledFeatureFlags.includes("DisableOneRepScans") &&
+          props.eligibleForPremium) ||
+        (props.eligibleForPremium && props.scanLimitReached) ? (
           <ScanLimit />
         ) : (
           <FreeScanCta

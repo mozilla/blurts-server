@@ -4,6 +4,8 @@
 
 public-nav-name = { -brand-mozilla-monitor }
 landing-all-hero-emailform-input-placeholder = yourname@example.com
+# This is a label underneath a big number "14" - it's an image that demos Monitor.
+landing-all-hero-image-chart-label = tirewliwin
 
 # Value Proposition
 
