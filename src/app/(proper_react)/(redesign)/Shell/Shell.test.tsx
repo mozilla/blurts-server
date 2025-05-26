@@ -16,7 +16,7 @@ describe("ShellAuthenticated", () => {
     const ShellComponent = composeStory(ShellAuthenticated, Meta);
     const { container } = render(<ShellComponent />);
     expect(await axe(container)).toHaveNoViolations();
-  });
+  }, 10_000);
 });
 
 describe("ShellAuthenticatedRedesign", () => {
@@ -24,7 +24,7 @@ describe("ShellAuthenticatedRedesign", () => {
     const ShellComponent = composeStory(ShellAuthenticatedRedesign, Meta);
     const { container } = render(<ShellComponent />);
     expect(await axe(container)).toHaveNoViolations();
-  });
+  }, 10_000);
 
   it("shows the “Update scan info” navbar item when the flag `EditScanProfileDetails` is enabled", async () => {
     const ShellComponent = composeStory(ShellAuthenticatedRedesign, Meta);

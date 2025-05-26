@@ -49,6 +49,7 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
+breach-checklist-sq-header-text = Leqqem isteqsiyen-ik⋅im n tɣellist.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 

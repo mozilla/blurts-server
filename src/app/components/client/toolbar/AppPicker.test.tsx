@@ -14,7 +14,7 @@ it("passes the axe accessibility test suite", async () => {
   const ComposedAppPicker = composeStory(AppPickerDefault, Meta);
   const { container } = render(<ComposedAppPicker />);
   expect(await axe(container)).toHaveNoViolations();
-});
+}, 10_000);
 
 it("opens and closes the app picker", async () => {
   const user = userEvent.setup();

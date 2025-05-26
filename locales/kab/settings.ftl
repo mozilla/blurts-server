@@ -10,6 +10,7 @@ settings-page-title = Iɣewwaren n { -product-short-name }
 ## Breach alert preferences
 
 settings-alert-email-preferences-title = Ismenyifen n yimayl
+settings-alert-email-preferences-subtitle = Ini-aɣ-d anwi imaylen i tebɣiḍ ad teṭṭfeḍ.
 settings-alert-preferences-option-one = Azen ilɣa ɣer tensa imayl yettwaɛnan.
 
 ## Monitored email addresses
@@ -18,6 +19,9 @@ settings-email-verification-callout = Asenqed n yimayl ilaq
 settings-resend-email-verification-link = Ales tuzna n yimayl n usenqed
 settings-add-email-button = Rnu tansa imayl
 settings-remove-email-button-label = Kkes
+# Variables:
+#   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
+settings-remove-email-button-tooltip = Ḥbes taɛessast { $emailAddress }
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
@@ -40,6 +44,12 @@ settings-delete-monitor-account-confirmation-toast-dismiss-label = Zgel
 
 ## Monthly Monitor Report
 
+settings-alert-preferences-allow-monthly-monitor-report-title = Aneqqis { -brand-monitor } n wayyur
 
 ## Settings page redesign
 
+settings-tab-label-edit-info = Ẓreg talɣut-ik⋅im
+settings-tab-label-notifications = Sbadu ilɣa
+settings-tab-label-manage-account = Sefrek amiḍan
+settings-tab-subtitle-manage-account = Sefrek amiḍan-ik⋅im { -product-name }.
+settings-tab-notifications-marketing-link-label = Ddu ɣer yiɣewwaren n yimayl { -brand-mozilla }

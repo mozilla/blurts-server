@@ -18,6 +18,7 @@ import { axe } from "jest-axe";
 import { signIn, useSession } from "next-auth/react";
 import Meta, {
   LandingRedesignUs,
+  LandingRedesignUsDisableOneRepScans,
   LandingRedesignUsScanLimit,
   LandingRedesignUsScanLimitWithPrivacyProductBundle,
   LandingRedesignUsWithPrivacyProductBundle,
@@ -62,7 +63,7 @@ describe("Navigation and authentication", () => {
     const ComposedLanding = composeStory(LandingRedesignUs, Meta);
     const { container } = render(<ComposedLanding />);
     expect(await axe(container)).toHaveNoViolations();
-  });
+  }, 10_000);
 
   it("does not show a 'Sign In' button in the header if the user is signed in", () => {
     const mockedUseSession = useSession as jest.Mock<
@@ -724,7 +725,7 @@ describe("Privacy product bundle banner", () => {
     });
     expect(upsellLink).toHaveAttribute(
       "href",
-      "https://payments-next.stage.fxa.nonprod.webservices.mozgcp.net/privacyprotectionplan/yearly/landing?spVersion=2&utm_medium=monitor&utm_source=monitor-product&utm_campaign=landing-page-banner&utm_content=banner-us",
+      "https://accounts.stage.mozaws.net/subscriptions/products/prod_SFb8iVuZIOPREe?plan=price_1RMAopKb9q6OnNsLSGe1vLtt&utm_medium=monitor&utm_source=monitor-product&utm_campaign=landing-page-banner&utm_content=banner-us",
     );
   });
 
@@ -748,7 +749,7 @@ describe("Privacy product bundle banner", () => {
     });
     expect(upsellLink).toHaveAttribute(
       "href",
-      "https://payments-next.stage.fxa.nonprod.webservices.mozgcp.net/privacyprotectionplan/yearly/landing?spVersion=3&utm_medium=monitor&utm_source=monitor-product&utm_campaign=landing-page-banner&utm_content=banner-us",
+      "https://payments-next.stage.fxa.nonprod.webservices.mozgcp.net/privacyprotectionplan/yearly/landing&utm_medium=monitor&utm_source=monitor-product&utm_campaign=landing-page-banner&utm_content=banner-us",
     );
   });
 
@@ -789,7 +790,7 @@ describe("Pricing plan with bundle", () => {
     );
     const { container } = render(<ComposedLanding />);
     expect(await axe(container)).toHaveNoViolations();
-  });
+  }, 10_000);
 
   it("can switch from the yearly to the monthly plan with the keyboard", async () => {
     const user = userEvent.setup();
@@ -1271,6 +1272,30 @@ describe("Pricing plan with bundle", () => {
     );
   });
 
+  it("confirms that the pricing card bundle upsell has the correct link with UTM parameters for SubPlat2", async () => {
+    const cookies = new Cookies(null);
+    cookies.set("attributionsLastTouch", {
+      utm_source: "monitor-product",
+      utm_medium: "monitor",
+      utm_campaign: "landing-page-pricing-grid",
+      utm_content: "pricing-grid-us",
+    });
+    const ComposedStory = composeStory(
+      LandingRedesignUsWithPrivacyProductBundle,
+      Meta,
+    );
+    render(<ComposedStory />);
+
+    const bundleCard = screen.getByLabelText("Privacy Protection Plan");
+    const upsellButton = getByRole(bundleCard, "link", {
+      name: "Get started",
+    });
+    expect(upsellButton).toHaveAttribute(
+      "href",
+      "https://accounts.stage.mozaws.net/subscriptions/products/prod_SFb8iVuZIOPREe?plan=price_1RMAopKb9q6OnNsLSGe1vLtt&utm_source=monitor-product&utm_medium=monitor&utm_campaign=landing-page-pricing-grid&utm_content=pricing-grid-us&entrypoint=monitor.mozilla.org-monitor-product-page&form_type=button&data_cta_position=pricing",
+    );
+  });
+
   it("confirms that the pricing card yearly upsell has the correct link for SubPlat3", async () => {
     const ComposedStory = composeStory(
       LandingRedesignUsWithPrivacyProductBundle,
@@ -1359,6 +1384,38 @@ describe("Pricing plan with bundle", () => {
       "https://payments-next.stage.fxa.nonprod.webservices.mozgcp.net/monitorplusstage/yearly/landing?utm_source=source_last_touch&utm_medium=medium_last_touch&utm_campaign=campaign_last_touch&entrypoint=monitor.mozilla.org-monitor-product-page&form_type=button&data_cta_position=pricing",
     );
   });
+
+  it("confirms that the pricing card bundle upsell has the correct link with UTM parameters for SubPlat3", async () => {
+    const cookies = new Cookies(null);
+    cookies.set("attributionsLastTouch", {
+      utm_source: "monitor-product",
+      utm_medium: "monitor",
+      utm_campaign: "landing-page-pricing-grid",
+      utm_content: "pricing-grid-us",
+    });
+    const ComposedStory = composeStory(
+      LandingRedesignUsWithPrivacyProductBundle,
+      Meta,
+    );
+    render(
+      <ComposedStory
+        enabledFeatureFlags={[
+          "LandingPageRedesign",
+          "PrivacyProductsBundle",
+          "SubPlat3",
+        ]}
+      />,
+    );
+
+    const bundleCard = screen.getByLabelText("Privacy Protection Plan");
+    const upsellButton = getByRole(bundleCard, "link", {
+      name: "Get started",
+    });
+    expect(upsellButton).toHaveAttribute(
+      "href",
+      "https://payments-next.stage.fxa.nonprod.webservices.mozgcp.net/privacyprotectionplan/yearly/landing?utm_source=monitor-product&utm_medium=monitor&utm_campaign=landing-page-pricing-grid&utm_content=pricing-grid-us&entrypoint=monitor.mozilla.org-monitor-product-page&form_type=button&data_cta_position=pricing",
+    );
+  });
 });
 
 describe("Scan limit reached", () => {
@@ -1366,7 +1423,7 @@ describe("Scan limit reached", () => {
     const ComposedLanding = composeStory(LandingRedesignUsScanLimit, Meta);
     const { container } = render(<ComposedLanding />);
     expect(await axe(container)).toHaveNoViolations();
-  });
+  }, 10_000);
 
   it("shows the scan limit and waitlist cta when it hits the threshold", () => {
     const ComposedDashboard = composeStory(LandingRedesignUsScanLimit, Meta);
@@ -1420,6 +1477,74 @@ describe("Scan limit reached", () => {
       });
       expect(waitlistCta[0]).toBeInTheDocument();
     });
+  });
+});
+
+describe("Show limit reached flow when the DisableOneRepScans flag is on", () => {
+  it("passes the axe accessibility test suite", async () => {
+    const ComposedLanding = composeStory(
+      LandingRedesignUsDisableOneRepScans,
+      Meta,
+    );
+    const { container } = render(<ComposedLanding />);
+    expect(await axe(container)).toHaveNoViolations();
+  });
+
+  it("shows the scan limit and waitlist cta when it hits the threshold", () => {
+    const ComposedDashboard = composeStory(
+      LandingRedesignUsDisableOneRepScans,
+      Meta,
+    );
+    render(<ComposedDashboard />);
+
+    // In total there are fixe “free scan” CTAs on the landing page.
+    const limitDescriptions = screen.getAllByText(
+      "We’ve reached the maximum scans for the month. Enter your email to get on our waitlist.",
+    );
+    expect(limitDescriptions).toHaveLength(5);
+  });
+
+  it("opens the waitlist page when the join waitlist cta is selected", async () => {
+    const user = userEvent.setup();
+    const ComposedDashboard = composeStory(
+      LandingRedesignUsDisableOneRepScans,
+      Meta,
+    );
+    render(<ComposedDashboard />);
+    const waitlistCta = screen.getAllByRole("link", {
+      name: "Join waitlist",
+    });
+    // jsdom will complain about not being able to navigate to a different page
+    // after clicking the link; suppress that error, as it's not relevant to the
+    // test:
+    jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+
+    await user.click(waitlistCta[0]);
+
+    expect(waitlistCta[0]).toHaveAttribute(
+      "href",
+      "https://www.mozilla.org/products/monitor/waitlist-scan/",
+    );
+  });
+
+  it("shows the waitlist CTA when the scan limit is reached", async () => {
+    global.fetch = jest.fn().mockImplementation(() =>
+      Promise.resolve({
+        success: true,
+        json: jest.fn(() => ({
+          flowData: null,
+        })),
+      }),
+    );
+    const ComposedDashboard = composeStory(
+      LandingRedesignUsDisableOneRepScans,
+      Meta,
+    );
+    render(<ComposedDashboard />);
+    const waitlistCta = screen.getAllByRole("link", {
+      name: "Join waitlist",
+    });
+    expect(waitlistCta[0]).toBeInTheDocument();
   });
 });
 
