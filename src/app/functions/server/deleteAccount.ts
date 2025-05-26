@@ -8,9 +8,10 @@ import {
   deleteSubscriber,
   getOnerepProfileId,
 } from "../../../db/tables/subscribers";
-import { deactivateProfile } from "./onerep";
+import { deactivateProfile as deactivateOnerepProfile } from "./onerep";
 import { deleteSubscription } from "../../../utils/fxa";
 import { record } from "./glean";
+import { deactivateProfile } from "./moscary";
 
 export async function deleteAccount(subscriber: SubscriberRow) {
   logger.info("fxa_delete_user", {
@@ -23,12 +24,27 @@ export async function deleteAccount(subscriber: SubscriberRow) {
     },
   });
 
+  if (subscriber.moscary_id) {
+    try {
+      await deactivateProfile(subscriber.moscary_id);
+    } catch (ex) {
+      logger.error("on_deletion_profile_deactivation_error", {
+        subscriber_id: subscriber.id,
+        exception: ex,
+      });
+    }
+
+    logger.info("deactivated_moscary_profile", {
+      subscriber_id: subscriber.id,
+    });
+  }
+
   // get profile id
   const oneRepProfileId = await getOnerepProfileId(subscriber.id);
   if (oneRepProfileId) {
     // try to deactivate onerep profile
     try {
-      await deactivateProfile(oneRepProfileId);
+      await deactivateOnerepProfile(oneRepProfileId);
     } catch (ex) {
       if (
         (ex as Error).message ===
@@ -43,21 +59,21 @@ export async function deleteAccount(subscriber: SubscriberRow) {
     logger.info("deactivated_onerep_profile", {
       subscriber_id: subscriber.id,
     });
+  }
 
-    // try to unsubscribe from subplat
-    if (subscriber.fxa_access_token) {
-      try {
-        const isDeleted = await deleteSubscription(subscriber.fxa_access_token);
-        logger.info("unsubscribe_from_subplat", {
-          subscriber_id: subscriber.id,
-          success: isDeleted,
-        });
-      } catch (ex) {
-        logger.error("unsubscribe_from_subplat", {
-          subscriber_id: subscriber.id,
-          exception: ex,
-        });
-      }
+  // try to unsubscribe from subplat
+  if (subscriber.fxa_access_token) {
+    try {
+      const isDeleted = await deleteSubscription(subscriber.fxa_access_token);
+      logger.info("unsubscribe_from_subplat", {
+        subscriber_id: subscriber.id,
+        success: isDeleted,
+      });
+    } catch (ex) {
+      logger.error("unsubscribe_from_subplat", {
+        subscriber_id: subscriber.id,
+        exception: ex,
+      });
     }
   }
 

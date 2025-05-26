@@ -277,6 +277,7 @@ export async function getProfile(
   return profile;
 }
 
+/** @deprecated */
 export async function activateProfile(profileId: number): Promise<void> {
   const response: Response = await onerepFetch(
     `/profiles/${profileId}/activate`,
@@ -294,6 +295,7 @@ export async function activateProfile(profileId: number): Promise<void> {
   }
 }
 
+/** @deprecated */
 export async function deactivateProfile(profileId: number): Promise<void> {
   const response: Response = await onerepFetch(
     `/profiles/${profileId}/deactivate`,
@@ -311,6 +313,7 @@ export async function deactivateProfile(profileId: number): Promise<void> {
   }
 }
 
+/** @deprecated */
 export async function optoutProfile(profileId: number): Promise<void> {
   const response = await onerepFetch(`/profiles/${profileId}/optout`, {
     method: "POST",
@@ -329,6 +332,7 @@ export async function optoutProfile(profileId: number): Promise<void> {
   }
 }
 
+/** @deprecated */
 export async function activateAndOptoutProfile({
   profileId,
   forceActivation = false,
