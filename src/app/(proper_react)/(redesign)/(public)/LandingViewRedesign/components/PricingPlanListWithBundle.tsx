@@ -57,6 +57,7 @@ export type Props = {
   subscriptionBillingAmount: SubscriptionBillingAmount;
   enabledFeatureFlags: FeatureFlagName[];
   productBundleUrl: ProductBundleUrl;
+  hideFreeCard?: boolean;
 };
 
 type ScanLimitProp = {
@@ -522,8 +523,13 @@ export const PricingPlanListWithBundle = (props: Props & ScanLimitProp) => {
         <h3>{l10n.getString("landing-redesign-pricing-plans-cards-title")}</h3>
       </VisuallyHidden>
       <span className={styles.pricingPlans}>
-        {pricingPlanData.map(
-          ({ type, label, title, subtitle, features, cta }) => (
+        {pricingPlanData
+          .filter(
+            (pricingPlan) =>
+              !props.hideFreeCard ||
+              (props.hideFreeCard && pricingPlan.type !== "free"),
+          )
+          .map(({ type, label, title, subtitle, features, cta }) => (
             <dl
               key={type}
               className={`${styles.pricingCard} ${styles[type]}`}
@@ -541,8 +547,7 @@ export const PricingPlanListWithBundle = (props: Props & ScanLimitProp) => {
               ))}
               <dd className={styles.pricingCardCta}>{cta}</dd>
             </dl>
-          ),
-        )}
+          ))}
       </span>
     </>
   );

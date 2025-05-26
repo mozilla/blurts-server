@@ -22,6 +22,7 @@
   flex: 1;
   flex-direction: column;
   font: tokens.$text-body-sm;
+  max-width: tokens.$content-sm;
   padding: tokens.$layout-sm tokens.$spacing-lg;
   position: relative;
 
