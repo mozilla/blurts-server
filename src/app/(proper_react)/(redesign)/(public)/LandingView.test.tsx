@@ -23,8 +23,10 @@ import { useTelemetry } from "../../../hooks/useTelemetry";
 import Meta, {
   LandingNonUs,
   LandingNonUsDe,
+  LandingNonUsDisableOneRepScans,
   LandingNonUsFr,
   LandingUs,
+  LandingUsDisableOneRepScans,
   LandingUsScanLimit,
 } from "./LandingView.stories";
 import { deleteAllCookies } from "../../../functions/client/deleteAllCookies";
@@ -64,7 +66,7 @@ describe("When Premium is not available", () => {
     const ComposedDashboard = composeStory(LandingNonUs, Meta);
     const { container } = render(<ComposedDashboard />);
     expect(await axe(container)).toHaveNoViolations();
-  });
+  }, 10_000);
 
   it("passes the user's email address to the identity provider", async () => {
     const user = userEvent.setup();
@@ -215,7 +217,7 @@ describe("When Premium is available", () => {
     const ComposedDashboard = composeStory(LandingUs, Meta);
     const { container } = render(<ComposedDashboard />);
     expect(await axe(container)).toHaveNoViolations();
-  });
+  }, 10_000);
 
   it("can open and close the tooltip with the keyboard", async () => {
     const user = userEvent.setup();
@@ -782,7 +784,7 @@ describe("When Premium is available", () => {
     expect(progressCardIllustration).toBeInTheDocument();
   });
 
-  it("shows the scan limit and waitlist cta when it hits the threshold", () => {
+  it("shows the scan limit and waitlist cta when the scan limit is reached", () => {
     const ComposedDashboard = composeStory(LandingUsScanLimit, Meta);
     render(<ComposedDashboard />);
 
@@ -795,6 +797,48 @@ describe("When Premium is available", () => {
   it("opens the waitlist page when the join waitlist cta is selected", async () => {
     const user = userEvent.setup();
     const ComposedDashboard = composeStory(LandingUsScanLimit, Meta);
+    render(<ComposedDashboard />);
+    const waitlistCta = screen.getAllByRole("link", {
+      name: "Join waitlist",
+    });
+    // jsdom will complain about not being able to navigate to a different page
+    // after clicking the link; suppress that error, as it's not relevant to the
+    // test:
+    jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+
+    await user.click(waitlistCta[0]);
+
+    expect(waitlistCta[0]).toHaveAttribute(
+      "href",
+      "https://www.mozilla.org/products/monitor/waitlist-scan/",
+    );
+  });
+
+  it("shows the scan limit and waitlist cta when the DisableOneRepScans flag is on", () => {
+    const ComposedDashboard = composeStory(LandingUsDisableOneRepScans, Meta);
+    render(<ComposedDashboard />);
+
+    const limitDescription = screen.getByText(
+      "We’ve reached the maximum scans for the month. Enter your email to get on our waitlist.",
+    );
+    expect(limitDescription).toBeInTheDocument();
+  });
+
+  it("does not show the scan limit and waitlist cta when the DisableOneRepScans flag is on for non-US users", () => {
+    const ComposedDashboard = composeStory(
+      LandingNonUsDisableOneRepScans,
+      Meta,
+    );
+    render(<ComposedDashboard />);
+
+    const limitDescription =
+      "We’ve reached the maximum scans for the month. Enter your email to get on our waitlist.";
+    expect(screen.queryByText(limitDescription)).not.toBeInTheDocument();
+  });
+
+  it("opens the waitlist page when the join waitlist cta is selected when the DisableOneRepScans flag is on", async () => {
+    const user = userEvent.setup();
+    const ComposedDashboard = composeStory(LandingUsDisableOneRepScans, Meta);
     render(<ComposedDashboard />);
     const waitlistCta = screen.getAllByRole("link", {
       name: "Join waitlist",

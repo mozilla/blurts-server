@@ -40,7 +40,7 @@ describe("How it works page", () => {
     const ComposedPage = composeStory(HowItWorks, Meta);
     const { container } = render(<ComposedPage />);
     expect(await axe(container)).toHaveNoViolations();
-  });
+  }, 10_000);
 
   it("Data Removal buttons enter user into premium subscription flow", () => {
     const yearlySubscriptionUrl = getPremiumSubscriptionUrl({

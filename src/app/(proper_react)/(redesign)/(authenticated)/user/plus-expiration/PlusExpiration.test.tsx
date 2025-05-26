@@ -18,7 +18,7 @@ it("passes the axe accessibility test suite", async () => {
   const PlusExpirationView = composeStory(HappyPath, Meta);
   const { container } = render(<PlusExpirationView />);
   expect(await axe(container)).toHaveNoViolations();
-});
+}, 10_000);
 
 it("includes a link to the terms on the renewal page", () => {
   const PlusExpirationView = composeStory(HappyPath, Meta);

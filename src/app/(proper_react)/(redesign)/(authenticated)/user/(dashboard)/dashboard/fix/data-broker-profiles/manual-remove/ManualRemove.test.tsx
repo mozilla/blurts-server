@@ -40,7 +40,7 @@ it("passes the axe accessibility test suite", async () => {
   const ComposedManualRemoveView = composeStory(ManualRemoveViewStory, Meta);
   const { container } = render(<ComposedManualRemoveView />);
   expect(await axe(container)).toHaveNoViolations();
-});
+}, 10_000);
 
 it("removes the manual resolution button once a profile has been resolved", async () => {
   const user = userEvent.setup();

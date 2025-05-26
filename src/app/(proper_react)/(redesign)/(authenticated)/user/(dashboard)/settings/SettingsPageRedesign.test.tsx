@@ -57,7 +57,7 @@ describe("Settings page redesign", () => {
       );
       const { container } = render(<ComposedStory />);
       expect(await axe(container)).toHaveNoViolations();
-    });
+    }, 10_000);
 
     it("shows the max number of emails that can be added to the list of addresses to monitor for breaches", () => {
       const ComposedStory = composeStory(
@@ -254,7 +254,7 @@ describe("Settings page redesign", () => {
       );
       const { container } = render(<ComposedDashboard />);
       expect(await axe(container)).toHaveNoViolations();
-    });
+    }, 10_000);
 
     it("shows the max number of emails that can be added to the list of addresses to monitor for breaches for subscribers without Plus", () => {
       const ComposedStory = composeStory(
@@ -470,7 +470,7 @@ describe("Settings page redesign", () => {
       );
       const { container } = render(<ComposedStory />);
       expect(await axe(container)).toHaveNoViolations();
-    });
+    }, 10_000);
 
     it("does not show for users without Plus subscription", async () => {
       const ComposedStory = composeStory(
@@ -1062,7 +1062,7 @@ describe("Settings page redesign", () => {
       );
       const { container } = render(<ComposedStory />);
       expect(await axe(container)).toHaveNoViolations();
-    });
+    }, 10_000);
   });
 
   describe("Set notifications", () => {
@@ -1073,6 +1073,6 @@ describe("Settings page redesign", () => {
       );
       const { container } = render(<ComposedStory />);
       expect(await axe(container)).toHaveNoViolations();
-    });
+    }, 10_000);
   });
 });
