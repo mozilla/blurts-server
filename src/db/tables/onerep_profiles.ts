@@ -77,6 +77,7 @@ export async function updateProfileDetails(
   });
 }
 
+/** @deprecated */
 export async function deleteProfileDetails(onerepProfileId: number) {
   await knex("onerep_profiles").delete().where({
     onerep_profile_id: onerepProfileId,
