@@ -35,6 +35,8 @@ import { type onAddEmail, type onRemoveEmail } from "../actions";
 import { formatPhone } from "../../../../../../../functions/universal/formatPhone";
 import { FeatureFlagName } from "../../../../../../../../db/tables/featureFlags";
 import { UpsellLinkButton } from "../../../../../../../components/client/toolbar/UpsellBadge";
+import { MoscaryData } from "../../../../../../../functions/server/moscary";
+import { parseIso8601Datetime } from "../../../../../../../../utils/parse";
 
 export type SettingsPanelEditInfoRedesignProps = {
   breachCountByEmailAddress: Record<string, number>;
@@ -44,7 +46,7 @@ export type SettingsPanelEditInfoRedesignProps = {
   enabledFeatureFlags: FeatureFlagName[];
   user: Session["user"];
   data?: SubscriberEmailPreferencesOutput;
-  profileData?: OnerepProfileRow;
+  profileData?: OnerepProfileRow | MoscaryData["Profile"];
   actions: {
     onAddEmail: typeof onAddEmail;
     onRemoveEmail: typeof onRemoveEmail;
@@ -125,20 +127,20 @@ function MonitoredEmail(props: {
 function ProfileInfoSection({
   profileData,
 }: {
-  profileData: OnerepProfileRow;
+  profileData: OnerepProfileRow | MoscaryData["Profile"];
 }) {
   const l10n = useL10n();
-  const {
-    first_name,
-    middle_name,
-    last_name,
-    first_names,
-    middle_names,
-    last_names,
-    date_of_birth,
-    phone_numbers,
-    addresses,
-  } = profileData;
+  const { first_name, middle_name, last_name } = profileData;
+  const date_of_birth: Date | null =
+    (profileData as OnerepProfileRow).date_of_birth ??
+    (typeof (profileData as MoscaryData["Profile"]).birth_date === "string"
+      ? parseIso8601Datetime((profileData as MoscaryData["Profile"]).birth_date)
+      : null);
+  const first_names = profileData.first_names ?? [];
+  const middle_names = profileData.middle_names ?? [];
+  const last_names = profileData.last_names ?? [];
+  const phone_numbers = profileData.phone_numbers ?? [];
+  const addresses = profileData.addresses ?? [];
   const dateOfBirthString = date_of_birth.toLocaleDateString(getLocale(l10n), {
     dateStyle: "short",
     timeZone: "UTC",

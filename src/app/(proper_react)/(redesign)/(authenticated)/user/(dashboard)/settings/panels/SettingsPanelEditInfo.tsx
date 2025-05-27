@@ -20,6 +20,7 @@ import { useTelemetry } from "../../../../../../../hooks/useTelemetry";
 import { Button } from "../../../../../../../components/client/Button";
 import styles from "./SettingsPanelEditInfo.module.scss";
 import { type onRemoveEmail, type onAddEmail } from "../actions";
+import { MoscaryData } from "../../../../../../../functions/server/moscary";
 
 export type SettingsPanelEditInfoProps = {
   breachCountByEmailAddress: Record<string, number>;
@@ -27,7 +28,7 @@ export type SettingsPanelEditInfoProps = {
   emailAddresses: SanitizedEmailAddressRow[];
   subscriber: SubscriberRow;
   user: Session["user"];
-  profileData?: OnerepProfileRow;
+  profileData?: OnerepProfileRow | MoscaryData["Profile"];
   actions: {
     onAddEmail: typeof onAddEmail;
     onRemoveEmail: typeof onRemoveEmail;

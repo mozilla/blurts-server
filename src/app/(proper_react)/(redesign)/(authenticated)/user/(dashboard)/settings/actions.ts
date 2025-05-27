@@ -6,7 +6,7 @@
 
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
-import { OnerepProfileRow, SubscriberRow } from "knex/types/tables";
+import { SubscriberRow } from "knex/types/tables";
 import { getServerSession } from "../../../../../../functions/server/getServerSession";
 import {
   addSubscriberUnverifiedEmailHash,
@@ -39,6 +39,7 @@ import { updateOnerepDataBrokerScanProfile } from "../../../../../../functions/s
 import { hasPremium } from "../../../../../../functions/universal/user";
 import { getEnabledFeatureFlags } from "../../../../../../../db/tables/featureFlags";
 import { updateProfile } from "../../../../../../functions/server/moscary";
+import { type NormalizedProfileData } from "./panels/SettingsPanelEditProfile/EditProfileForm";
 
 export type AddEmailFormState =
   | { success?: never }
@@ -269,7 +270,9 @@ export async function onCheckUserHasCurrentCouponSet() {
   return result;
 }
 
-export async function onHandleUpdateProfileData(profileData: OnerepProfileRow) {
+export async function onHandleUpdateProfileData(
+  profileData: NormalizedProfileData,
+) {
   const session = await getServerSession();
   if (!session?.user.subscriber?.id) {
     logger.error(`User does not have an active session.`);
