@@ -35,6 +35,7 @@ export interface LatestOnerepScanDataOld {
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
+/** @deprecated */
 async function getAllScansForProfile(
   onerepProfileId: number,
 ): Promise<OnerepScanRow[]> {
@@ -48,6 +49,7 @@ async function getAllScansForProfile(
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
+/** @deprecated */
 async function getLatestScanForProfileByReason(
   onerepProfileId: number,
   oneRepScanReason: ScanReason,
