@@ -41,6 +41,8 @@ import {
   DashboardUsNoPremiumScanInProgressNoBreaches,
   DashboardUsNoPremiumScanInProgressUnresolvedBreaches,
   DashboardUsNoPremiumScanInProgressResolvedBreaches,
+  DashboardUsNoPremiumNoScanNoBreachesDisabledScan,
+  DashboardUsNoPremiumFirstScanRan,
 } from "./DashboardUSUsers.stories";
 import {
   DashboardUsPremiumEmptyScanNoBreaches,
@@ -132,6 +134,26 @@ it("does not show a 'Contact Us' link for non-Plus users", async () => {
   const contactUsEntry = screen.queryByRole("menuitem", { name: "Contact us" });
 
   expect(contactUsEntry).not.toBeInTheDocument();
+});
+
+it("shows the waitlist dialog when a user selects 'Start a free scan' CTA if the DisableOneRepScans flag is enabled", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanNoBreachesDisabledScan,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  const ctaButton = screen.getByRole("button", {
+    name: "Start a free scan",
+  });
+  await user.click(ctaButton);
+
+  expect(
+    screen.getByRole("dialog", {
+      name: "⁨Monitor⁩ is currently at capacity",
+    }),
+  ).toBeInTheDocument();
 });
 
 it("shows a 'Contact Us' link for Plus users", async () => {
@@ -1022,6 +1044,37 @@ it("shows and skips a dialog that informs US users, without Premium, when we hit
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumNoScanNoBreachesScanLimitReached,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "button", {
+    name: "Get first scan free",
+  });
+  await user.click(dashboardTopBannerCta);
+  expect(
+    screen.getByRole("dialog", {
+      name: "⁨Monitor⁩ is currently at capacity",
+    }),
+  ).toBeInTheDocument();
+  const closeButton = screen.getByRole("button", {
+    name: "Skip for now",
+  });
+  await user.click(closeButton);
+  expect(
+    screen.queryByRole("dialog", {
+      name: "⁨Monitor⁩ is currently at capacity",
+    }),
+  ).not.toBeInTheDocument();
+});
+
+it("shows and skips a dialog that informs US users, without Premium, when we hit the broker scan limit if the DisableOneRepScans flag is on", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanNoBreachesDisabledScan,
     Meta,
   );
   render(<ComposedDashboard />);
@@ -3074,6 +3127,18 @@ it("send telemetry when users click on exposure chart free scan", async () => {
   );
 });
 
+it("shows the exposure chart free scan button if scan has not been performed", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanNoBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+  const ctaButton = screen.queryAllByRole("link", {
+    name: "Start a free scan",
+  });
+  expect(ctaButton[0]).toBeInTheDocument();
+});
+
 describe("CSAT survey banner", () => {
   it("does not display the “automatic removal” CSAT survey banner on the dashboard tab “action needed” to Plus users", () => {
     const ComposedDashboard = composeStory(
@@ -4038,5 +4103,17 @@ describe("Upsell badge", () => {
       "href",
       "https://payments-next.stage.fxa.nonprod.webservices.mozgcp.net/monitorplusstage/monthly/landing?form_type=button&entrypoint=monitor.mozilla.org-monitor-in-product-navigation-upsell&utm_source=product&utm_medium=monitor&utm_campaign=navigation-upsell",
     );
+  });
+
+  it("does not show the start free scan component if a user has already run a scan", () => {
+    const ComposedDashboard = composeStory(
+      DashboardUsNoPremiumFirstScanRan,
+      Meta,
+    );
+    render(<ComposedDashboard />);
+    const homeAddressString = screen.queryByText(
+      "Home address, family members and more are not yet included.",
+    );
+    expect(homeAddressString).not.toBeInTheDocument();
   });
 });

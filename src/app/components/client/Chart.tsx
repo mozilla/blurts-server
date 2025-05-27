@@ -24,6 +24,7 @@ import {
   CONST_ONEREP_MAX_SCANS_THRESHOLD,
 } from "../../../constants";
 import { VisuallyHidden } from "../server/VisuallyHidden";
+import { FeatureFlagName } from "../../../db/tables/featureFlags";
 
 export type Props = {
   data: Array<[string, number]>;
@@ -34,6 +35,7 @@ export type Props = {
   isShowFixed: boolean;
   summary: DashboardSummary;
   totalNumberOfPerformedScans?: number;
+  enabledFeatureFlags: FeatureFlagName[];
 };
 
 export const DoughnutChart = (props: Props) => {
@@ -151,15 +153,21 @@ export const DoughnutChart = (props: Props) => {
   );
 
   const getPromptContent = () => {
-    if (!props.scanInProgress && props.isEligibleForFreeScan) {
+    if (
+      !props.scanInProgress &&
+      props.isEligibleForPremium &&
+      (props.totalNumberOfPerformedScans === undefined ||
+        props.totalNumberOfPerformedScans === 0)
+    ) {
       return (
         <>
           <p>
             {l10n.getString("exposure-chart-returning-user-upgrade-prompt")}
           </p>
-          {typeof props.totalNumberOfPerformedScans === "undefined" ||
-          props.totalNumberOfPerformedScans <
-            CONST_ONEREP_MAX_SCANS_THRESHOLD ? (
+          {!props.enabledFeatureFlags.includes("DisableOneRepScans") &&
+          (typeof props.totalNumberOfPerformedScans === "undefined" ||
+            props.totalNumberOfPerformedScans <
+              CONST_ONEREP_MAX_SCANS_THRESHOLD) ? (
             <Link
               href="/user/welcome/free-scan?referrer=dashboard"
               onClick={() => {

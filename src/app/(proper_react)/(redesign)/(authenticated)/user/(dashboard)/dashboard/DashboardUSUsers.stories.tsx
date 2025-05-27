@@ -280,6 +280,7 @@ export const DashboardUsNoPremiumNoScanNoBreaches: Story = {
     premium: false,
     breaches: "empty",
     brokers: "no-scan",
+    totalNumberOfPerformedScans: 0,
   },
 };
 
@@ -300,6 +301,7 @@ export const DashboardUsNoPremiumNoScanResolvedBreaches: Story = {
     premium: false,
     breaches: "resolved",
     brokers: "no-scan",
+    totalNumberOfPerformedScans: undefined,
   },
 };
 
@@ -311,6 +313,17 @@ export const DashboardUsNoPremiumNoScanNoBreachesScanLimitReached: Story = {
     breaches: "empty",
     brokers: "no-scan",
     totalNumberOfPerformedScans: 280000,
+  },
+};
+
+export const DashboardUsNoPremiumNoScanNoBreachesDisabledScan: Story = {
+  name: "US user, without Premium, without scan, with 0 breaches, Disabled Scans",
+  args: {
+    countryCode: "us",
+    premium: false,
+    breaches: "empty",
+    brokers: "no-scan",
+    enabledFeatureFlags: ["DisableOneRepScans"],
   },
 };
 
@@ -431,5 +444,15 @@ export const DashboardUsNoPremiumScanInProgressResolvedBreaches: Story = {
     premium: false,
     breaches: "resolved",
     brokers: "scan-in-progress",
+  },
+};
+
+export const DashboardUsNoPremiumFirstScanRan: Story = {
+  name: "US user, without Premium, first scan ran",
+  args: {
+    countryCode: "us",
+    premium: false,
+    brokers: "scan-in-progress",
+    totalNumberOfPerformedScans: undefined,
   },
 };
