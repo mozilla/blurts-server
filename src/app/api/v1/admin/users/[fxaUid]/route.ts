@@ -102,7 +102,9 @@ export type UserStateAction =
   | "subscribe"
   | "unsubscribe"
   | "delete_onerep_profile"
+  /** @deprecated */
   | "delete_onerep_scans"
+  /** @deprecated */
   | "delete_onerep_scan_results"
   | "delete_subscriber";
 export type PutUserStateRequestBody = {

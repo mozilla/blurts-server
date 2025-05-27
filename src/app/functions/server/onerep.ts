@@ -13,10 +13,10 @@ import {
 } from "../../../db/tables/onerep_scans";
 import { RemovalStatus } from "../universal/scanResult.js";
 import { logger } from "./logging";
-import { isUsingMockONEREPEndpoint } from "../universal/mock.ts";
 import { hasPremium } from "../universal/user.ts";
 import { OnerepProfileAddress } from "knex/types/tables";
 import { getScanAndResults } from "./moscary.ts";
+import { isUsingMockONEREPEndpoint } from "../universal/mock.ts";
 
 export const monthlyScansQuota = parseInt(
   (process.env.MONTHLY_SCANS_QUOTA as string) ?? "0",
@@ -407,6 +407,7 @@ export async function listScans(
   return response.json() as Promise<ListScansResponse>;
 }
 
+/** @deprecated */
 async function listScanResults(
   profileId: number,
   options: Partial<{

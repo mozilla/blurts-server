@@ -74,6 +74,7 @@ type CreateProfileRequest = {
 //   created_at: ISO8601DateString;
 //   updated_at: ISO8601DateString;
 // };
+// TODO MOSCARY: Replace references to these with MoscaryData["Scan"] and MoscaryData["ScanResult"]
 export type Scan = Components["schemas"]["Scan"];
 export type ScanResult = Components["schemas"]["ScanResult"];
 // type ProfileStats = {

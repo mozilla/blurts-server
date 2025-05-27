@@ -14,6 +14,7 @@ import { getCountryCode } from "../../../../../../../../functions/server/getCoun
 import { isEligibleForPremium } from "../../../../../../../../functions/universal/premium";
 import { hasPremium } from "../../../../../../../../functions/universal/user";
 import { getEnabledFeatureFlags } from "../../../../../../../../../db/tables/featureFlags";
+import { getScanAndResults } from "../../../../../../../../functions/server/moscary";
 
 export default async function HighRiskDataBreaches() {
   const session = await getServerSession();
@@ -32,10 +33,11 @@ export default async function HighRiskDataBreaches() {
   });
   const subscriberEmails = await getSubscriberEmails(session.user);
   const profileId = await getOnerepProfileId(session.user.subscriber.id);
-  const scanData = await getScanResultsWithBroker(
-    profileId,
-    hasPremium(session.user),
-  );
+  const scanData = enabledFeatureFlags.includes("Moscary")
+    ? session.user.subscriber.moscary_id
+      ? await getScanAndResults(session.user.subscriber.moscary_id)
+      : { scan: null, results: [] }
+    : await getScanResultsWithBroker(profileId, hasPremium(session.user));
 
   return (
     <div>
