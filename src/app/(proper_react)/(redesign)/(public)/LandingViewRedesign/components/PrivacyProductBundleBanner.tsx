@@ -14,11 +14,13 @@ import {
   VpnIcon,
 } from "../../../../../components/server/Icons";
 import { BundleBillingAmount } from "../../../../../functions/server/getPremiumSubscriptionInfo";
+import { FeatureFlagName } from "../../../../../../db/tables/featureFlags";
 
 type Props = {
   l10n: ExtendedReactLocalization;
   premiumSubscriptionUrlBundle: string;
   subscriptionBillingAmountBundle: BundleBillingAmount;
+  enabledFeatureFlags: FeatureFlagName[];
 };
 
 export const PrivacyProductBundleBanner = (props: Props) => {
@@ -27,6 +29,14 @@ export const PrivacyProductBundleBanner = (props: Props) => {
     currency: "USD",
     currencyDisplay: "narrowSymbol",
   });
+  const searchParams = new URLSearchParams({
+    utm_medium: "monitor",
+    utm_source: "monitor-product",
+    utm_campaign: "landing-page-banner",
+    utm_content: "banner-us",
+  });
+  // SubPlat2 subscription links already have the UTM parameter `?plan` appended.
+  const additionalSubplatParamsString = `${props.enabledFeatureFlags.includes("SubPlat3") ? "?" : "&"}${searchParams.toString()}`;
 
   return (
     <section className={styles.banner}>
@@ -72,7 +82,7 @@ export const PrivacyProductBundleBanner = (props: Props) => {
           <TelemetryButton
             variant="primary"
             theme="blue"
-            href={`${props.premiumSubscriptionUrlBundle}&utm_medium=monitor&utm_source=monitor-product&utm_campaign=landing-page-banner&utm_content=banner-us`}
+            href={`${props.premiumSubscriptionUrlBundle}${additionalSubplatParamsString}`}
             event={{
               module: "upgradeIntent",
               name: "click",
