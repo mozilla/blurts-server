@@ -47,6 +47,7 @@ export async function setProfileDetails(
   });
 }
 
+/** @deprecated */
 export async function getProfileDetails(onerepProfileId: number) {
   const profile = await knex("onerep_profiles").first("*").where({
     onerep_profile_id: onerepProfileId,
@@ -54,6 +55,7 @@ export async function getProfileDetails(onerepProfileId: number) {
   return profile;
 }
 
+/** @deprecated */
 export async function updateProfileDetails(
   onerepProfileId: number,
   profileDataToUpdate: UpdateableProfileDetails,
