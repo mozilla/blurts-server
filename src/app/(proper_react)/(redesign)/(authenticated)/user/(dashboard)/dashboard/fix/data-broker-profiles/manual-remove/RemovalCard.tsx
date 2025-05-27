@@ -15,6 +15,7 @@ import { ScanResultCard } from "../../../../../../../../../components/client/exp
 import { FeatureFlagName } from "../../../../../../../../../../db/tables/featureFlags";
 
 export type Props = {
+  // TODO MOSCARY: Implement manual resolution for Moscary
   scanResult: OnerepScanResultDataBrokerRow;
   isPremiumUser: boolean;
   isEligibleForPremium: boolean;

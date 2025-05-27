@@ -23,6 +23,7 @@ import {
 } from "../../../../../functions/server/onerep";
 import { hasPremium } from "../../../../../functions/universal/user";
 import { getScanAndResults } from "../../../../../functions/server/moscary";
+import { getEnabledFeatureFlags } from "../../../../../../db/tables/featureFlags";
 
 export interface ScanProgressBody {
   success: boolean;
@@ -37,6 +38,9 @@ export async function GET(
 ): Promise<NextResponse<ScanProgressBody>> {
   const session = await getServerSession();
   if (typeof session?.user?.subscriber?.fxa_uid === "string") {
+    const enabledFeatureFlags = await getEnabledFeatureFlags({
+      email: session.user.email,
+    });
     try {
       const subscriber = await getSubscriberByFxaUid(
         session.user.subscriber?.fxa_uid,
@@ -44,7 +48,15 @@ export async function GET(
       if (!subscriber) {
         throw new Error("No subscriber found for current session.");
       }
-      if (subscriber.moscary_id !== null) {
+      if (enabledFeatureFlags.includes("Moscary")) {
+        if (subscriber.moscary_id === null) {
+          return NextResponse.json(
+            { success: true } satisfies ScanProgressBody,
+            {
+              status: 200,
+            },
+          );
+        }
         const latestScan = await getScanAndResults(subscriber.moscary_id);
         const latestScanId = latestScan.scan?.id;
 
