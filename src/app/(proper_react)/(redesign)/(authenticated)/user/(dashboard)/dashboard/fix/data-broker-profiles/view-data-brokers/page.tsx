@@ -18,6 +18,7 @@ import {
 } from "../../../../../../../../../functions/l10n/serverComponents";
 import { hasPremium } from "../../../../../../../../../functions/universal/user";
 import { getEnabledFeatureFlags } from "../../../../../../../../../../db/tables/featureFlags";
+import { getScanAndResults } from "../../../../../../../../../functions/server/moscary";
 
 export default async function ViewDataBrokers() {
   const session = await getServerSession();
@@ -27,15 +28,17 @@ export default async function ViewDataBrokers() {
   }
 
   const countryCode = getCountryCode(await headers());
-  const profileId = await getOnerepProfileId(session.user.subscriber.id);
-  const latestScan = await getScanResultsWithBroker(
-    profileId,
-    hasPremium(session.user),
-  );
 
   const enabledFeatureFlags = await getEnabledFeatureFlags({
     email: session.user.email,
   });
+
+  const profileId = await getOnerepProfileId(session.user.subscriber.id);
+  const latestScan = enabledFeatureFlags.includes("Moscary")
+    ? session.user.subscriber.moscary_id
+      ? await getScanAndResults(session.user.subscriber.moscary_id)
+      : undefined
+    : await getScanResultsWithBroker(profileId, hasPremium(session.user));
 
   const data: StepDeterminationData = {
     countryCode,

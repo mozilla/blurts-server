@@ -338,6 +338,7 @@ async function setOnerepScanResultManualResolution(
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
+/** @deprecated */
 async function getScansCountForProfile(
   onerepProfileId: number,
 ): Promise<number> {
@@ -363,6 +364,7 @@ async function deleteScansForProfile(onerepProfileId: number): Promise<void> {
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
+/** @deprecated */
 async function deleteScanResultsForProfile(
   onerepProfileId: number,
 ): Promise<void> {
@@ -379,6 +381,7 @@ async function deleteScanResultsForProfile(
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
+/** @deprecated */
 async function deleteSomeScansForProfile(
   onerepProfileId: number,
   leaveOutAtMost: number = 0,
@@ -415,6 +418,7 @@ async function deleteSomeScansForProfile(
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
+/** @deprecated */
 async function getEmailForProfile(onerepProfileId: number) {
   const result = await knex("subscribers")
     .select("primary_email")
@@ -431,6 +435,7 @@ async function getEmailForProfile(onerepProfileId: number) {
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
+// TODO MOSCARY: Check whether we still need <RemovalUnderMaintenanceView>?
 async function getScanResultsWithBrokerUnderMaintenance(
   onerepProfileId: number | null,
 ): Promise<LatestOnerepScanData> {
@@ -469,6 +474,7 @@ async function getScanResultsWithBrokerUnderMaintenance(
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
+/** @deprecated */
 async function getScanResultsWithBroker(
   onerepProfileId: number | null,
   hasPremium: boolean | null,

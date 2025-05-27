@@ -355,9 +355,9 @@ async function deleteResolutionsWithEmail(id: number, email: string) {
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-async function getPotentialSubscribersWaitingForFirstDataBrokerRemovalFixedEmail(): Promise<
-  SubscriberRow[]
-> {
+async function getPotentialSubscribersWaitingForFirstDataBrokerRemovalFixedEmail(options: {
+  stillOnOnerep: boolean;
+}): Promise<SubscriberRow[]> {
   const rows = await knex("subscribers")
     .select()
     // Only send to Plus users...
@@ -366,7 +366,7 @@ async function getPotentialSubscribersWaitingForFirstDataBrokerRemovalFixedEmail
       MONITOR_PREMIUM_CAPABILITY,
     )
     // ...with an OneRep account...
-    .whereNotNull("onerep_profile_id")
+    .whereNotNull(options.stillOnOnerep ? "onerep_profile_id" : "moscary_id")
     // ...who haven't received the email...
     .andWhere("first_broker_removal_email_sent", false)
     // ...and signed up after the feature flag `FirstDataBrokerRemovalFixedEmail`

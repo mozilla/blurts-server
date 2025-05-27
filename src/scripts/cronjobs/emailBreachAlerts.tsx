@@ -47,6 +47,7 @@ import {
 import { getScanResultsWithBroker } from "../../db/tables/onerep_scans";
 import { logger } from "../../app/functions/server/logging";
 import { getFeatureFlagData } from "../../db/tables/featureFlags";
+import { getScanAndResults } from "../../app/functions/server/moscary";
 
 const SENTRY_SLUG = "cron-breach-alerts";
 
@@ -286,21 +287,28 @@ export async function poll(
             let dataSummary: DashboardSummary | undefined;
             if (
               isEligibleForPremium(assumedCountryCode) &&
-              !hasPremium(recipient) &&
-              typeof recipient.onerep_profile_id === "number"
+              !hasPremium(recipient)
             ) {
-              const scanData = await getScanResultsWithBroker(
-                recipient.onerep_profile_id,
-                hasPremium(recipient),
-              );
               const allSubscriberBreaches = await getSubscriberBreaches({
                 fxaUid: recipient.fxa_uid,
                 countryCode: assumedCountryCode,
               });
-              dataSummary = getDashboardSummary(
-                scanData.results,
-                allSubscriberBreaches,
-              );
+              if (recipient.moscary_id) {
+                const scanData = await getScanAndResults(recipient.moscary_id);
+                dataSummary = getDashboardSummary(
+                  scanData.results,
+                  allSubscriberBreaches,
+                );
+              } else if (typeof recipient.onerep_profile_id === "number") {
+                const scanData = await getScanResultsWithBroker(
+                  recipient.onerep_profile_id,
+                  hasPremium(recipient),
+                );
+                dataSummary = getDashboardSummary(
+                  scanData.results,
+                  allSubscriberBreaches,
+                );
+              }
             }
 
             const subject = l10n.getString("email-breach-alert-all-subject");

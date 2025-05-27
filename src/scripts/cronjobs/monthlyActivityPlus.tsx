@@ -20,6 +20,7 @@ import { getSignupLocaleCountry } from "../../emails/functions/getSignupLocaleCo
 import { hasPremium } from "../../app/functions/universal/user";
 import { getEnabledFeatureFlags } from "../../db/tables/featureFlags";
 import { logger } from "../../app/functions/server/logging";
+import { getScanAndResults } from "../../app/functions/server/moscary";
 
 process.on("SIGINT", () => {
   logger.info("SIGINT received, exiting...");
@@ -78,16 +79,20 @@ async function sendMonthlyActivityEmail(subscriber: SubscriberRow) {
     await refreshStoredScanResults(subscriber.onerep_profile_id);
   }
 
-  const latestScan = await getScanResultsWithBroker(
-    subscriber.onerep_profile_id,
-    hasPremium(subscriber),
-  );
+  const enabledFeatureFlags = await getEnabledFeatureFlags({
+    email: subscriber.primary_email,
+  });
+  const latestScan = enabledFeatureFlags.includes("Moscary")
+    ? subscriber.moscary_id
+      ? await getScanAndResults(subscriber.moscary_id)
+      : { scan: null, results: [] }
+    : await getScanResultsWithBroker(
+        subscriber.onerep_profile_id,
+        hasPremium(subscriber),
+      );
   const subscriberBreaches = await getSubscriberBreaches({
     fxaUid: subscriber.fxa_uid,
     countryCode: countryCodeGuess,
-  });
-  const enabledFeatureFlags = await getEnabledFeatureFlags({
-    email: subscriber.primary_email,
   });
   const data = getDashboardSummary(
     latestScan.results,
