@@ -53,6 +53,7 @@ export const View = (props: LandingPageProps) => {
             subscriptionBillingAmountBundle={
               props.subscriptionBillingAmount.bundle
             }
+            enabledFeatureFlags={props.enabledFeatureFlags}
           />
         )}
         <section className={styles.section}>
