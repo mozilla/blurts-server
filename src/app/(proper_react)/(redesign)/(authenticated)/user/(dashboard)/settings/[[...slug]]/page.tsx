@@ -41,6 +41,11 @@ import {
   onHandleUpdateProfileData,
 } from "../actions";
 import { initializeUserAnnouncements } from "../../../../../../../../db/tables/user_announcements";
+import {
+  fetchLatestScanForProfile,
+  getProfile,
+} from "../../../../../../../functions/server/moscary";
+import { parseIso8601Datetime } from "../../../../../../../../utils/parse";
 
 type Props = {
   params: Promise<{
@@ -122,10 +127,6 @@ export default async function SettingsPage(props: Props) {
     locale: getLocale(l10n),
   });
 
-  const lastOneRepScan = await getLatestOnerepScan(
-    session.user.subscriber.onerep_profile_id,
-  );
-
   const userData = await getSubscriberById(session.user.subscriber.id);
   if (!userData) {
     return redirect("/");
@@ -134,9 +135,26 @@ export default async function SettingsPage(props: Props) {
   const settingsData = await getEmailPreferenceForPrimaryEmail(
     session.user.email,
   );
-  const profileData = session.user.subscriber.onerep_profile_id
-    ? await getDataBrokerScanProfile(session.user.subscriber.onerep_profile_id)
-    : undefined;
+  const lastMoscaryScanDate =
+    (enabledFeatureFlags.includes("Moscary") &&
+      session.user.subscriber.moscary_id &&
+      (await fetchLatestScanForProfile(session.user.subscriber.moscary_id))
+        ?.created_at) ??
+    null;
+  const lastScanDate = lastMoscaryScanDate
+    ? parseIso8601Datetime(lastMoscaryScanDate)
+    : (await getLatestOnerepScan(session.user.subscriber.onerep_profile_id))
+        ?.created_at;
+
+  const profileData =
+    enabledFeatureFlags.includes("Moscary") &&
+    session.user.subscriber.moscary_id
+      ? await getProfile(session.user.subscriber.moscary_id)
+      : session.user.subscriber.onerep_profile_id
+        ? await getDataBrokerScanProfile(
+            session.user.subscriber.onerep_profile_id,
+          )
+        : undefined;
   const isEligibleForPremium = canSubscribeToPremium({
     user: session.user,
     countryCode,
@@ -159,7 +177,7 @@ export default async function SettingsPage(props: Props) {
       subscriptionBillingAmount={getSubscriptionBillingAmount()}
       enabledFeatureFlags={enabledFeatureFlags}
       experimentData={experimentData["Features"]}
-      lastScanDate={lastOneRepScan?.created_at}
+      lastScanDate={lastScanDate}
       isMonthlySubscriber={isMonthlySubscriber}
       activeTab={activeTab}
       isEligibleForPremium={isEligibleForPremium}

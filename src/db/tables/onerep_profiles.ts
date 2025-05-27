@@ -11,6 +11,7 @@ import { parseIso8601Datetime } from "../../utils/parse";
 
 const knex = createDbConnection();
 
+/** @deprecated */
 export async function setProfileDetails(
   onerepProfileId: number,
   profileData: CreateProfileRequest,

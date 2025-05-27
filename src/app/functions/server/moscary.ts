@@ -19,6 +19,8 @@ export const monthlySubscribersQuota = parseInt(
   (process.env.MONTHLY_SUBSCRIBERS_QUOTA as string) ?? "0",
 );
 
+export type MoscaryData = Components["schemas"];
+
 type CreateProfileRequest = {
   first_name: string;
   last_name: string;
@@ -401,7 +403,7 @@ export type ScanData = {
 export async function getScanAndResults(
   profileId: NonNullable<SubscriberRow["moscary_id"]>,
 ): Promise<ScanData> {
-  const scan = (await fetchLatestScanForProfile(profileId, "manual")) ?? null;
+  const scan = (await fetchLatestScanForProfile(profileId)) ?? null;
   const results = scan ? ((await getAllScanResults(profileId)) ?? []) : [];
 
   return { scan, results };
@@ -514,7 +516,7 @@ export async function fetchAllPages<Data>(
 
 export async function fetchLatestScanForProfile(
   profileId: SubscriberRow["moscary_id"],
-  reason: Scan["reason"],
+  reason?: Scan["reason"],
 ): Promise<
   | Paths["/profiles/{profile_id}/scans"]["get"]["responses"]["200"]["content"]["application/json"]["data"][0]
   | undefined

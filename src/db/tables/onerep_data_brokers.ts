@@ -8,6 +8,7 @@ import { OnerepDataBrokerRow } from "knex/types/tables";
 
 const knex = createDbConnection();
 
+/** @deprecated */
 async function upsertDataBrokers(
   databrokers: Array<{
     data_broker: string;
