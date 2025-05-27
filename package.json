@@ -78,7 +78,7 @@
     "@fluent/bundle": "^0.19.1",
     "@fluent/langneg": "^0.7.0",
     "@fluent/react": "^0.15.2",
-    "@google-cloud/logging-winston": "^6.0.0",
+    "@google-cloud/logging-winston": "^6.0.1",
     "@google-cloud/pubsub": "^5.0.0",
     "@grpc/grpc-js": "1.13.3",
     "@leeoniya/ufuzzy": "^1.0.18",
