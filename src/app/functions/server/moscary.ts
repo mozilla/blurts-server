@@ -251,6 +251,23 @@ export async function deactivateProfile(profileId: UUID): Promise<void> {
   }
 }
 
+export async function deleteProfile(profileId: UUID): Promise<void> {
+  const response = await moscaryFetch(
+    `/api/v1/profiles/${profileId}/deactivate`,
+    {
+      method: "DELETE",
+    },
+  );
+  if (!response.ok) {
+    logger.error(
+      `Failed to delete profile: [${response.status}] [${response.statusText}]`,
+    );
+    throw new Error(
+      `Failed to delete profile: [${response.status}] [${response.statusText}]`,
+    );
+  }
+}
+
 export async function createScan(
   profileId: UUID,
 ): Promise<Components["schemas"]["Scan"]> {

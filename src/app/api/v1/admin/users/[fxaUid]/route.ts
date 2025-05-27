@@ -9,6 +9,7 @@ import { getServerSession } from "../../../../../functions/server/getServerSessi
 import { logger } from "../../../../../functions/server/logging";
 import { isAdmin } from "../../../../utils/auth";
 import {
+  deleteMoscaryId,
   deleteOnerepProfileId,
   deleteSubscriber,
   getOnerepProfileId,
@@ -29,6 +30,7 @@ import { isMozMail } from "../../../../../functions/universal/isMozMail";
 import {
   activateProfile,
   deactivateProfile,
+  deleteProfile,
 } from "../../../../../functions/server/moscary";
 
 export type GetUserStateResponseBody = {
@@ -201,6 +203,12 @@ export async function PUT(
             break;
           }
           case "delete_onerep_profile": {
+            if (subscriber.moscary_id) {
+              await deactivateProfile(subscriber.moscary_id);
+              await deleteProfile(subscriber.moscary_id);
+              await deleteMoscaryId(subscriber.id);
+            }
+
             if (typeof onerepProfileId !== "number") {
               throw new Error(
                 `Could not force-delete the OneRep profile of subscriber [${fxaUid}], as they do not have a OneRep profile known to us.`,
