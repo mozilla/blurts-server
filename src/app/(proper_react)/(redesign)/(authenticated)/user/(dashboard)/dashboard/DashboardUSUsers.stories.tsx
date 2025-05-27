@@ -280,6 +280,7 @@ export const DashboardUsNoPremiumNoScanNoBreaches: Story = {
     premium: false,
     breaches: "empty",
     brokers: "no-scan",
+    totalNumberOfPerformedScans: 0,
   },
 };
 
@@ -443,5 +444,15 @@ export const DashboardUsNoPremiumScanInProgressResolvedBreaches: Story = {
     premium: false,
     breaches: "resolved",
     brokers: "scan-in-progress",
+  },
+};
+
+export const DashboardUsNoPremiumFirstScanRan: Story = {
+  name: "US user, without Premium, first scan ran",
+  args: {
+    countryCode: "us",
+    premium: false,
+    brokers: "scan-in-progress",
+    totalNumberOfPerformedScans: undefined,
   },
 };
