@@ -514,6 +514,7 @@ async function getScanResultsWithBroker(
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
+/** @deprecated */
 async function getMockedScanResults(
   onerepProfileId: number | null,
 ): Promise<LatestOnerepScanData> {
@@ -534,6 +535,7 @@ async function getMockedScanResults(
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
+/** @deprecated */
 async function getMockedScanResultsWithBrokerUnderMaintenance(
   onerepProfileId: number | null,
 ): Promise<LatestOnerepScanData> {
