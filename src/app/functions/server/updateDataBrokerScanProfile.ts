@@ -118,6 +118,7 @@ export async function updateDataBrokerScanProfile(
   logger.info(`Data broker scan profile updated successfully: [${moscaryId}]`);
 }
 
+/** @deprecated */
 export async function updateOnerepDataBrokerScanProfile(
   onerepProfileId: number,
   profileDataToUpdate: UpdateableProfileDetails,
