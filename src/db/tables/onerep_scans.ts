@@ -66,20 +66,7 @@ async function getLatestScanForProfileByReason(
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-async function getScanResults(
-  onerepScanId: number,
-): Promise<OnerepScanResultRow[]> {
-  const scanResults = await knex("onerep_scan_results").where(
-    "onerep_scan_id",
-    onerepScanId,
-  );
-
-  return scanResults;
-}
-/* c8 ignore stop */
-
-// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
-/* c8 ignore start */
+/** @deprecated */
 async function getAllScanResults(
   age: Date,
   statuses: RemovalStatus[],
@@ -149,6 +136,7 @@ async function getAllScanResults(
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
+/** @deprecated */
 async function getLatestOnerepScan(
   onerepProfileId: number | null,
 ): Promise<OnerepScanRow | null> {
@@ -174,6 +162,7 @@ Note: please, don't write the results of this function back to the database!
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
+/** @deprecated */
 async function getLatestOnerepScanResults(
   onerepProfileId: number | null,
 ): Promise<LatestOnerepScanDataOld> {
@@ -202,6 +191,7 @@ async function getLatestOnerepScanResults(
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
+/** @deprecated */
 async function setOnerepProfileId(
   subscriber: SubscriberRow,
   onerepProfileId: number,
@@ -217,6 +207,7 @@ async function setOnerepProfileId(
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
+/** @deprecated */
 async function setOnerepScan(
   onerepProfileId: number,
   onerepScanId: number,
@@ -243,6 +234,7 @@ async function setOnerepScan(
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
+/** @deprecated */
 async function addOnerepScanResults(
   onerepProfileId: number,
   onerepScanResults: Array<ScanResult>,
@@ -296,6 +288,7 @@ async function addOnerepScanResults(
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
+// TODO MOSCARY: Implement manual resolution for Moscary
 async function isOnerepScanResultForSubscriber(params: {
   onerepScanResultId: number;
   subscriberId: number;
@@ -324,6 +317,7 @@ async function isOnerepScanResultForSubscriber(params: {
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
+// TODO MOSCARY: Implement manual resolution for Moscary
 async function setOnerepScanResultManualResolution(
   onerepScanResultId: number,
   resolved: boolean,
@@ -344,20 +338,6 @@ async function setOnerepScanResultManualResolution(
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-async function getScansCount(
-  startDate: string,
-  endDate: string,
-  scanReason: Scan["reason"],
-) {
-  return await knex("onerep_scans")
-    .count("id")
-    .whereBetween("created_at", [startDate, endDate])
-    .andWhere("onerep_scan_reason", scanReason);
-}
-/* c8 ignore stop */
-
-// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
-/* c8 ignore start */
 async function getScansCountForProfile(
   onerepProfileId: number,
 ): Promise<number> {
@@ -373,6 +353,7 @@ async function getScansCountForProfile(
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
+/** @deprecated */
 async function deleteScansForProfile(onerepProfileId: number): Promise<void> {
   await knex("onerep_scans")
     .delete()
@@ -577,13 +558,11 @@ async function getMockedScanResultsWithBrokerUnderMaintenance(
 export {
   getAllScansForProfile,
   getLatestScanForProfileByReason,
-  getScanResults,
   getLatestOnerepScan,
   getAllScanResults,
   setOnerepProfileId,
   setOnerepScan,
   addOnerepScanResults,
-  getScansCount,
   isOnerepScanResultForSubscriber,
   setOnerepScanResultManualResolution,
   getScansCountForProfile,
