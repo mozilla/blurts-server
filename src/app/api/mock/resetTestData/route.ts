@@ -40,7 +40,7 @@ export async function GET(req: NextRequest) {
     await deleteScanResultsForProfile(onerepProfileId);
     await deleteSomeScansForProfile(onerepProfileId, 1);
   }
-  if (hibp) await unresolveAllBreaches(onerepProfileId);
+  if (hibp) await unresolveAllBreaches(subscriberId);
   logger.info(
     "Mock OneRep endpoint: attempted to delete all but 1 scans, attempted to unresolve all breaches",
   );

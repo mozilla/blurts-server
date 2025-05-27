@@ -57,6 +57,7 @@ async function getSubscriberByFxaUid(
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
+/** @deprecated */
 async function getSubscriberByOnerepProfileId(
   onerep_profile_id: SubscriberRow["onerep_profile_id"],
 ): Promise<undefined | SubscriberRow> {
@@ -578,6 +579,7 @@ async function markMonthlyActivityPlusEmailAsJustSent(
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
+/** @deprecated */
 async function getOnerepProfileId(subscriberId: SubscriberRow["id"]) {
   const res = await knex("subscribers")
     .select("onerep_profile_id")
@@ -641,7 +643,9 @@ async function incrementSignInCountForEligibleFreeUser(
 ) {
   return await knex("subscribers")
     .where("fxa_uid", fxaId)
-    .whereNotNull("onerep_profile_id")
+    .where((clause) =>
+      clause.whereNotNull("onerep_profile_id").orWhereNotNull("moscary_id"),
+    )
     .increment("sign_in_count", 1);
 }
 /* c8 ignore stop */
@@ -658,12 +662,10 @@ async function getSignInCount(subscriberId: SubscriberRow["id"]) {
 /* c8 ignore stop */
 
 /* c8 ignore start */
-async function unresolveAllBreaches(
-  oneRepProfileId: SubscriberRow["onerep_profile_id"],
-) {
+async function unresolveAllBreaches(subscriberId: SubscriberRow["id"]) {
   const currentDate = new Date();
   await knex("subscribers")
-    .where("onerep_profile_id", oneRepProfileId)
+    .where("id", subscriberId)
     .update({ breach_resolution: null, updated_at: currentDate });
 }
 /* c8 ignore stop */
