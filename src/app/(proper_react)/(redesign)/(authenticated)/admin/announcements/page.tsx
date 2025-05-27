@@ -7,6 +7,7 @@ import { notFound, redirect } from "next/navigation";
 import { isAdmin } from "../../../../../api/utils/auth";
 import { getAllAnnouncements } from "../../../../../../db/tables/announcements";
 import { AnnouncementsAdmin } from "./AnnouncementsAdmin";
+import { getFluentStrings } from "./getFluentStrings";
 
 export default async function DevPage() {
   const session = await getServerSession();
@@ -20,6 +21,12 @@ export default async function DevPage() {
   }
 
   const announcements = await getAllAnnouncements();
+  const fluentStrings = await getFluentStrings();
 
-  return <AnnouncementsAdmin announcements={announcements} />;
+  return (
+    <AnnouncementsAdmin
+      announcements={announcements}
+      fluentStrings={fluentStrings}
+    />
+  );
 }
