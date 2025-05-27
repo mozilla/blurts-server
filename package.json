@@ -167,7 +167,7 @@
     "mjml-browser": "^4.15.3",
     "patch-package": "^8.0.0",
     "prettier": "3.5.3",
-    "sass": "^1.87.0",
+    "sass": "^1.89.0",
     "storybook": "^8.4.6",
     "stylelint": "^16.19.1",
     "stylelint-config-recommended-scss": "^15.0.1",
