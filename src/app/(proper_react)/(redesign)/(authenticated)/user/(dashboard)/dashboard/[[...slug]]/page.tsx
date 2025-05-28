@@ -21,6 +21,7 @@ import {
 import {
   getOnerepProfileId,
   getSignInCount,
+  getSubscriberByFxaUid,
 } from "../../../../../../../../db/tables/subscribers";
 
 import {
@@ -72,8 +73,15 @@ export default async function DashboardPage(props: Props) {
   }
 
   const session = await getServerSession();
-  if (!checkSession(session) || !session?.user?.subscriber?.id) {
+  if (!checkSession(session) || !session?.user?.subscriber?.fxa_uid) {
     return redirect("/auth/logout");
+  }
+
+  const subscriber = await getSubscriberByFxaUid(
+    session.user.subscriber.fxa_uid,
+  );
+  if (!subscriber) {
+    redirect("/auth/logout");
   }
 
   const params = await props.params;
@@ -98,10 +106,10 @@ export default async function DashboardPage(props: Props) {
 
   let hasRunScan = false;
   let onerepProfileId: number | null = null;
-  if (typeof session.user.subscriber.moscary_id !== "undefined") {
+  if (typeof subscriber.moscary_id !== "undefined") {
     hasRunScan = true;
   } else if (!enabledFeatureFlags.includes("Moscary")) {
-    onerepProfileId = await getOnerepProfileId(session.user.subscriber.id);
+    onerepProfileId = await getOnerepProfileId(subscriber.id);
     if (typeof onerepProfileId === "number") {
       hasRunScan = true;
       await refreshStoredScanResults(onerepProfileId);
@@ -130,7 +138,7 @@ export default async function DashboardPage(props: Props) {
   }
 
   const subBreaches = await getSubscriberBreaches({
-    fxaUid: session.user.subscriber.fxa_uid,
+    fxaUid: subscriber.fxa_uid,
     countryCode,
   });
 
@@ -158,7 +166,7 @@ export default async function DashboardPage(props: Props) {
   const fxaSettingsUrl = process.env.FXA_SETTINGS_URL!;
   const profileStats = await getProfilesStats();
   const additionalSubplatParams = await getAttributionsFromCookiesOrDb(
-    session.user.subscriber.id,
+    subscriber.id,
   );
   const additionalSubplatParamsString =
     additionalSubplatParams.size > 0
@@ -173,16 +181,15 @@ export default async function DashboardPage(props: Props) {
 
   const userAnnouncements = await initializeUserAnnouncements(session.user);
 
-  const signInCount = await getSignInCount(session.user.subscriber.id);
+  const signInCount = await getSignInCount(subscriber.id);
 
   const useMockedScans =
     enabledFeatureFlags.includes("CustomDataBrokers") &&
     process.env.APP_ENV !== "production";
 
   const scanResults =
-    enabledFeatureFlags.includes("Moscary") &&
-    session.user.subscriber.moscary_id
-      ? await getScanAndResults(session.user.subscriber.moscary_id)
+    enabledFeatureFlags.includes("Moscary") && subscriber.moscary_id
+      ? await getScanAndResults(subscriber.moscary_id)
       : useMockedScans
         ? await getMockedScanResults(onerepProfileId)
         : await getScanResultsWithBroker(
@@ -191,18 +198,16 @@ export default async function DashboardPage(props: Props) {
           );
 
   const scanCount =
-    enabledFeatureFlags.includes("Moscary") &&
-    session.user.subscriber.moscary_id
-      ? await getScansCountForProfile(session.user.subscriber.moscary_id)
+    enabledFeatureFlags.includes("Moscary") && subscriber.moscary_id
+      ? await getScansCountForProfile(subscriber.moscary_id)
       : typeof onerepProfileId === "number"
         ? await getScansCountForOnerepProfile(onerepProfileId)
         : 0;
 
   const hasFirstMonitoringScan =
-    enabledFeatureFlags.includes("Moscary") &&
-    session.user.subscriber.moscary_id
+    enabledFeatureFlags.includes("Moscary") && subscriber.moscary_id
       ? typeof (await fetchLatestScanForProfile(
-          session.user.subscriber.moscary_id,
+          subscriber.moscary_id,
           "monitoring",
         )) !== "undefined"
       : onerepProfileId
