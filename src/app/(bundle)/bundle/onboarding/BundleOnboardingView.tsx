@@ -35,8 +35,7 @@ export const promptNoneAuthParams = new URLSearchParams({
 
 export const BundleOnboardingView = (props: Props) => {
   const l10n = props.l10n;
-  const monitorLink =
-    "/?" + promptNoneAuthParams + "&" + bundleQueryParamsMonitor;
+  const monitorLink = `/?${promptNoneAuthParams}&${bundleQueryParamsMonitor}`;
   const relayLink =
     process.env.FIREFOX_RELAY_LANDING_URL +
     "/accounts/fxa/login?process=login&" +
