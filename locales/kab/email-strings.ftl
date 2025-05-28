@@ -11,6 +11,9 @@ email-header-button-sign-in = Kcem
 ## Email footers
 
 email-footer-support-heading = Isteqsiyen ɣef { -brand-mozilla-monitor }?
+email-footer-support-content = Rzu ɣer <support-link>Agensu-nneɣ n tallalt</support-link> i tallalt
+email-footer-trigger-transactional = Tremseḍ imayl-a acku tmultɣeḍ ɣer { -brand-mozilla-monitor }.
+email-footer-source-hibp = Tarewla n yisefka tettwamudd-d sɣur <hibp-link>{ -brand-HIBP }</hibp-link>
 email-footer-logo-mozilla-alt = { -brand-mozilla }
 email-footer-meta-privacy-notice = Tabaḍnit
 # Firefox Relay is a product name and should not be translated.
@@ -41,15 +44,26 @@ email-breach-alert-blurb =
 
 ## 2022 email template. HTML tags should not be translated, e.g. `<a>`
 
+# Have I Been Pwned attribution
+# Variables:
+#   $hibp-link-attr (String) - Link to Have I Been Pwned
+email-2022-hibp-attribution = Tarewla n yisefka tettwamudd-d sɣur <a { $hibp-link-attr }>{ -brand-HIBP }</a>
 
 ## Verification email
 
+email-verify-subhead = Senqed imayl-ik⋅m i wakken ad tebduḍ ammesten n yiseka-k⋅m seld tarewla.
 
 ## Breach report
 
+email-breach-summary = Ha-t-a ugzul n trewliwin n yisefka
 email-dashboard-cta = Ddu ɣer tfelwit n usenqed
 
 ## Breach alert email
 
+email-breach-alert-all-subject = Tettwaf trewla tamaynut n yisefka
+email-breach-alert-all-hero-heading = Tarewla tamaynut n yisefka i k⋅kem-yeɛnan
+email-breach-alert-all-hero-subheading = Ur ttaggad, nezmer ad k⋅kem-nall deg uṣeggem n wugur-a
+email-breach-alert-all-source-title = Aɣbalu n trewla:
+email-breach-alert-all-data-points-title = Isefka-k⋅m i irewlen:
 email-breach-alert-all-next-steps-cta-label = Iya-d ad nebdu
 email-breach-alert-all-next-steps-button-dashboard = Ddu ɣer tfelwit n usenqed
