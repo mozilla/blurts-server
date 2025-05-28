@@ -8,6 +8,15 @@
   justify-content: center;
   padding: tokens.$layout-md tokens.$layout-xs;
 
+  h3 {
+    font: tokens.$text-title-xs;
+    padding: tokens.$spacing-xs 0;
+  }
+
+  dl:first-of-type {
+    min-width: auto;
+  }
+
   @media screen and (min-width: tokens.$screen-md) {
     padding: tokens.$layout-md tokens.$layout-sm;
   }

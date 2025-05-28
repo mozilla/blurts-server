@@ -8,6 +8,7 @@
   @media screen and (min-width: tokens.$screen-md) {
     flex-wrap: wrap;
     flex-direction: row-reverse;
+    justify-content: center;
   }
 
   @media screen and (min-width: tokens.$screen-lg) {
