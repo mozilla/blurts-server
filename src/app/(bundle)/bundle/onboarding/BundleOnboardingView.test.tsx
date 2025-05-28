@@ -72,7 +72,7 @@ it("opens a new tab when cta is selected", async () => {
   const monitorLink = screen.getByRole("link", { name: "Go to ⁨Monitor⁩" });
   expect(monitorLink).toHaveAttribute(
     "href",
-    "/user/dashboard?" + `${bundleQueryParamsMonitor}`,
+    "/?prompt=none&" + `${bundleQueryParamsMonitor}`,
   );
 
   await user.click(monitorLink);
