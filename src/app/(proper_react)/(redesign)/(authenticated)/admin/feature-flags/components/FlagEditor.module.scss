@@ -8,6 +8,10 @@
   padding: tokens.$spacing-lg;
   border-radius: tokens.$border-radius-md;
   max-width: tokens.$content-sm;
+
+  &.isActiveOnProd {
+    outline: 2px solid tokens.$color-purple-50;
+  }
 }
 
 .flagName {
