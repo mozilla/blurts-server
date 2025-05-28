@@ -35,6 +35,7 @@ import {
 
 export type GetUserStateResponseBody = {
   subscriberId: SubscriberRow["id"];
+  moscaryId: SubscriberRow["moscary_id"];
   onerepProfileId: SubscriberRow["onerep_profile_id"];
   createdAt: SubscriberRow["created_at"];
   updatedAt: SubscriberRow["updated_at"];
@@ -80,6 +81,7 @@ export async function GET(
 
       const responseBody: GetUserStateResponseBody = {
         subscriberId: subscriber.id,
+        moscaryId: subscriber.moscary_id,
         onerepProfileId: subscriber.onerep_profile_id,
         createdAt: subscriber.created_at,
         updatedAt: subscriber.updated_at,
