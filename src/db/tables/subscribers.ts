@@ -462,14 +462,10 @@ async function getFreeSubscribersWaitingForMonthlyEmail(
           `fxa_profile_json ->> 'locale' ~ '^..-(${countryCodes.join("|")})'`
         )
     )
-
-  const wrappedQuery = knex
-    // @ts-ignore TODO MNTOR-3890 Move away from this approach and simplify query.
-    .from({ base_query: query }) // Use the existing query as a subquery
-    .select("*")
     .limit(batchSize);
 
-  const rows = await wrappedQuery;
+  // @ts-ignore TODO MNTOR-3890 Move away from this approach and simplify query.
+  const rows = await query;
 
   return rows as SubscriberRow[];
 }
