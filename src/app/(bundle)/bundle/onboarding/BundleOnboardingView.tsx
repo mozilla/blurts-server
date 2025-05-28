@@ -35,6 +35,7 @@ export const promptNoneAuthParams = new URLSearchParams({
 
 export const BundleOnboardingView = (props: Props) => {
   const l10n = props.l10n;
+  const monitorLink = `/?${promptNoneAuthParams}&${bundleQueryParamsMonitor}`;
   const relayLink =
     process.env.FIREFOX_RELAY_LANDING_URL +
     "/accounts/fxa/login?process=login&" +
@@ -97,7 +98,7 @@ export const BundleOnboardingView = (props: Props) => {
                 data: { button_id: "launch_monitor" },
               }}
               variant="primary"
-              href={`/user/dashboard?${bundleQueryParamsMonitor}`}
+              href={monitorLink}
             >
               {l10n.getString("bundle-monitor-plus-cta")}
             </TelemetryButton>
