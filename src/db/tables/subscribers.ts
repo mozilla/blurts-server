@@ -411,7 +411,7 @@ async function getFreeSubscribersWaitingForMonthlyEmail(
   countryCodes: string[],
 ): Promise<SubscriberRow[]> {
   const query = knex("subscribers")
-    .select<SubscriberRow[]>("subscribers.*")
+    .select("subscribers.*")
     .select(
       knex.raw(
         `substring(fxa_profile_json ->> 'locale' from '^..-(..)') AS country_code`,
@@ -467,7 +467,7 @@ async function getFreeSubscribersWaitingForMonthlyEmail(
   // @ts-ignore TODO MNTOR-3890 Move away from this approach and simplify query.
   const rows = await query;
 
-  return rows as SubscriberRow[];
+  return rows;
 }
 /* c8 ignore stop */
 
