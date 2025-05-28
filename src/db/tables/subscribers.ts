@@ -468,7 +468,6 @@ async function getFreeSubscribersWaitingForMonthlyEmail(
           MONITOR_PREMIUM_CAPABILITY,
         ),
     )
-    .orderBy("subscribers.created_at", "desc");
 
   const wrappedQuery = knex
     // @ts-ignore TODO MNTOR-3890 Move away from this approach and simplify query.
