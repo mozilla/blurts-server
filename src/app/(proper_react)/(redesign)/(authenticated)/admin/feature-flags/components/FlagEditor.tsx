@@ -19,6 +19,7 @@ import { FeatureFlagName } from "../../../../../../../db/tables/featureFlags";
 export const NewFlagEditor = (props: {
   flagName: FeatureFlagName;
   adminOnly: boolean;
+  isActiveOnProd: boolean;
 }) => {
   return (
     <FlagEditor
@@ -45,6 +46,7 @@ export const NewFlagEditor = (props: {
           throw new Error(await createResponse.text());
         }
       }}
+      isActiveOnProd={props.isActiveOnProd}
     />
   );
 };
@@ -54,6 +56,7 @@ export const ExistingFlagEditor = (props: {
     last_updated_by_subscriber_email: SubscriberRow["primary_email"];
   };
   adminOnly: boolean;
+  isActiveOnProd: boolean;
 }) => {
   return (
     <FlagEditor
@@ -85,6 +88,7 @@ export const ExistingFlagEditor = (props: {
       }}
       lastUpdated={props.flag.updated_at}
       lastUpdatedBy={props.flag.last_updated_by_subscriber_email}
+      isActiveOnProd={props.isActiveOnProd}
     />
   );
 };
@@ -96,6 +100,7 @@ type Props = {
   allowList: string[];
   adminOnly: boolean;
   onUpdateAllowlist: (allowList: string[]) => Promise<void>;
+  isActiveOnProd: boolean;
   lastUpdated?: Date;
   lastUpdatedBy?: string;
 };
@@ -112,7 +117,9 @@ const FlagEditor = (props: Props) => {
   };
 
   return (
-    <div className={styles.flagWrapper}>
+    <div
+      className={`${styles.flagWrapper} ${props.isActiveOnProd ? styles.isActiveOnProd : ""}`}
+    >
       <h2 className={styles.flagName}>{props.flagName}</h2>
       <div className={styles.enabledControl}>
         {props.isEnabled ? (
