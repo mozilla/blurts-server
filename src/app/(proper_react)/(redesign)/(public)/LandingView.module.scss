@@ -364,9 +364,11 @@
   gap: tokens.$layout-xs;
 
   .info {
+    align-items: center;
     display: flex;
     flex-direction: column;
     gap: tokens.$spacing-md;
+    text-align: left;
 
     @media screen and (min-width: tokens.$screen-md) {
       flex-direction: row;

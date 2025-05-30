@@ -21,6 +21,7 @@ type Props = {
   premiumSubscriptionUrlBundle: string;
   subscriptionBillingAmountBundle: BundleBillingAmount;
   enabledFeatureFlags: FeatureFlagName[];
+  scanLimitReached: boolean;
 };
 
 export const PrivacyProductBundleBanner = (props: Props) => {
@@ -80,6 +81,7 @@ export const PrivacyProductBundleBanner = (props: Props) => {
         </div>
         <footer className={styles.footer}>
           <TelemetryButton
+            disabled={props.scanLimitReached}
             variant="primary"
             theme="blue"
             href={`${props.premiumSubscriptionUrlBundle}${additionalSubplatParamsString}`}

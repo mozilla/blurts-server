@@ -54,6 +54,7 @@ export const View = (props: LandingPageProps) => {
               props.subscriptionBillingAmount.bundle
             }
             enabledFeatureFlags={props.enabledFeatureFlags}
+            scanLimitReached={props.scanLimitReached}
           />
         )}
         <section className={styles.section}>
