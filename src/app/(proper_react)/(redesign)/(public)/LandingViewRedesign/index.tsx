@@ -46,16 +46,17 @@ export const View = (props: LandingPageProps) => {
         <section className={`${styles.section} ${styles.hasBackground}`}>
           <InfoBlock {...props} />
         </section>
-        {props.enabledFeatureFlags.includes("PrivacyProductsBundle") && (
-          <PrivacyProductBundleBanner
-            l10n={props.l10n}
-            premiumSubscriptionUrlBundle={props.premiumSubscriptionUrl.bundle}
-            subscriptionBillingAmountBundle={
-              props.subscriptionBillingAmount.bundle
-            }
-            enabledFeatureFlags={props.enabledFeatureFlags}
-          />
-        )}
+        {props.enabledFeatureFlags.includes("PrivacyProductsBundle") &&
+          !props.scanLimitReached && (
+            <PrivacyProductBundleBanner
+              l10n={props.l10n}
+              premiumSubscriptionUrlBundle={props.premiumSubscriptionUrl.bundle}
+              subscriptionBillingAmountBundle={
+                props.subscriptionBillingAmount.bundle
+              }
+              enabledFeatureFlags={props.enabledFeatureFlags}
+            />
+          )}
         <section className={styles.section}>
           {props.enabledFeatureFlags.includes("PrivacyProductsBundle") ? (
             <PricingPlansWithBundle {...props} />
