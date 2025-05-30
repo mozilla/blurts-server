@@ -361,9 +361,10 @@ async function applyCoupon(
     let subscriptionId;
     for (const sub of subs) {
       if (
-        sub &&
-        sub.productId &&
-        sub.productId === process.env.PREMIUM_PRODUCT_ID
+        (sub &&
+          sub.productId &&
+          sub.productId === process.env.PREMIUM_PRODUCT_ID) ||
+        sub.productId === process.env.SUBPLAT_BUNDLE_PRODUCT_ID
       ) {
         subscriptionId = sub.subscriptionId;
       }
