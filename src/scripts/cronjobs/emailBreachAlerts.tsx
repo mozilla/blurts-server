@@ -62,6 +62,7 @@ const checkInId = Sentry.captureCheckIn({
 });
 
 // Only process this many messages before exiting.
+// If set to 0, will poll for messages forever.
 /* c8 ignore start */
 const maxMessages = parseInt(
   process.env.EMAIL_BREACH_ALERT_MAX_MESSAGES ?? "10000",
@@ -364,7 +365,7 @@ export async function poll(
 }
 
 /* c8 ignore start */
-async function pullMessages() {
+function createPubSubClient() {
   let options = {};
   if (process.env.NODE_ENV === "development") {
     console.debug("Dev mode, connecting to local pubsub emulator");
@@ -392,15 +393,7 @@ async function pullMessages() {
     subscriptionName,
   );
 
-  // If there are no messages, this will wait until the default timeout for the pull API.
-  // @see https://cloud.google.com/pubsub/docs/pull
-  console.debug("polling pubsub...");
-  const [response] = await subClient.pull({
-    subscription: formattedSubscription,
-    maxMessages,
-  });
-
-  return [subClient, response.receivedMessages] as const;
+  return [subClient, formattedSubscription] as const;
 }
 async function init() {
   // By adding this event listener, the default behaviour (exiting) will be disabled.
@@ -411,8 +404,22 @@ async function init() {
   });
   await initEmail();
 
-  const [subClient, receivedMessages] = await pullMessages();
-  await poll(subClient, receivedMessages ?? []);
+  let messageCount = 0
+  const [subClient, formattedSubscription] = createPubSubClient();
+  while (maxMessages === 0 || messageCount < maxMessages) {
+    // If there are no messages, this will wait until the default timeout for the pull API.
+    // @see https://cloud.google.com/pubsub/docs/pull
+    console.debug("polling pubsub...");
+    const [response] = await subClient.pull({
+      subscription: formattedSubscription,
+      maxMessages: 10,
+    });
+    const receivedMessages = response.receivedMessages ?? []
+    messageCount = messageCount + receivedMessages.length
+    console.debug(`pulled ${receivedMessages.length} messages`)
+
+    await poll(subClient, receivedMessages);
+  }
 }
 
 if (process.env.NODE_ENV !== "test") {
