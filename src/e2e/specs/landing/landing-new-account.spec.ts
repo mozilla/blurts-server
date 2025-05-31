@@ -7,7 +7,6 @@ import {
   emailInputShouldExist,
   getVerificationCode,
 } from "../../utils/helpers.js";
-import "../../utils/setFeatureFlags";
 
 test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page Functionality - new account`, () => {
   test.beforeEach(async ({ landingPage }) => {
