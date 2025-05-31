@@ -363,7 +363,8 @@ async function applyCoupon(
       if (
         sub &&
         sub.productId &&
-        sub.productId === process.env.PREMIUM_PRODUCT_ID
+        (sub.productId === process.env.PREMIUM_PRODUCT_ID ||
+          sub.productId === process.env.SUBPLAT_BUNDLE_PRODUCT_ID)
       ) {
         subscriptionId = sub.subscriptionId;
       }
