@@ -153,7 +153,12 @@ export const DoughnutChart = (props: Props) => {
   );
 
   const getPromptContent = () => {
-    if (!props.scanInProgress && props.isEligibleForPremium) {
+    if (
+      !props.scanInProgress &&
+      props.isEligibleForPremium &&
+      (props.totalNumberOfPerformedScans === undefined ||
+        props.totalNumberOfPerformedScans === 0)
+    ) {
       return (
         <>
           <p>

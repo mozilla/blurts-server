@@ -2,8 +2,13 @@ name: Deploy Preview
 
 permissions: {}
 
-on:
-  pull_request:
+# Disabled since we can't log in to the preview sites yet,
+# so they're not very useful, but take a long time to deploy.
+# We can re-enable once we migrate to Auth.js, which supports
+# redirect proxies for this use case:
+# https://authjs.dev/getting-started/deployment#securing-a-preview-deployment
+# on:
+  # pull_request:
 
 env:
   PROJECT_ID: ${{ secrets.GCP_PROJECT }}

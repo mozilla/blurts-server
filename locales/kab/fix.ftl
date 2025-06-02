@@ -2,8 +2,11 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
+fix-flow-nav-leaked-passwords = Awalen uffiren i yettwammlen
+fix-flow-nav-security-recommendations = Iwellihen n tɣellist
 guided-resolution-flow-exit = Uɣal ɣer tfelwit n usenqed
 guided-resolution-flow-next-arrow = Ddu ɣer takkayt tuḍfirt
+guided-resolution-flow-next-arrow-sub-step = Ddu ɣer ugmuḍ i d-iteddun
 guided-resolution-flow-step-navigation-label = Takkayin yettwaḍefren
 
 # Celebration screens
@@ -39,6 +42,8 @@ high-risk-breach-skip = Suref akka tura
 
 # Credit Card Breaches
 
+high-risk-breach-credit-card-title = Uṭṭun-ik⋅im n tkarḍa n usmad yettban
+high-risk-breach-credit-card-step-two = Assuter n tkarḍa tamaynut s wuṭṭun amaynut.
 
 # Bank Account Breaches
 
@@ -53,6 +58,7 @@ ssn-modal-ok = IH
 
 # PIN Breaches
 
+high-risk-breach-pin-title = Tangalt-ik⋅im PIN tettban
 
 # No high risk breaches found
 
