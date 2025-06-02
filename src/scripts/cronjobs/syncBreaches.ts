@@ -42,8 +42,8 @@ export async function getBreachIcons(breaches: HibpGetBreachesResponse) {
   const existingLogos = await readdir(logoFolder);
 
   for (const breach of breaches) {
-    const breachDomain = breach.Domain
-    const breachName = breach.Name
+    const breachDomain = breach.Domain;
+    const breachName = breach.Name;
 
     if (!breachDomain || breachDomain.length === 0) {
       console.log("empty domain: ", breachName);
