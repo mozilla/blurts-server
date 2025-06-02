@@ -4,7 +4,7 @@
 
 "use client";
 
-import { FormEvent, Fragment, useRef, useState } from "react";
+import { FormEvent, Fragment, useMemo, useRef, useState } from "react";
 import { captureException } from "@sentry/nextjs";
 import { toast } from "react-toastify";
 import isEqual from "lodash.isequal";
@@ -178,12 +178,17 @@ function EditProfileForm(props: {
   profileData: OnerepProfileRow | MoscaryData["Profile"];
 }) {
   const l10n = useL10n();
-  const [profileFormData, setProfileFormData] = useState(
-    normalizeProfileData(props.profileData),
+  const normalizedProfileData = useMemo(
+    () => normalizeProfileData(props.profileData),
+    [props.profileData],
   );
+  const [profileFormData, setProfileFormData] = useState(normalizedProfileData);
   const [updatingForm, setUpdatingForm] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
-  const hasProfileDataChanged = !isEqual(props.profileData, profileFormData);
+  const hasProfileDataChanged = !isEqual(
+    normalizedProfileData,
+    profileFormData,
+  );
   const profileFormDataValidated = validateProfileFormData(profileFormData);
 
   const handleOnInputChange = ({
