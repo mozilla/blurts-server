@@ -7,9 +7,12 @@ import { notFound, redirect } from "next/navigation";
 import { isAdmin } from "../../../../../api/utils/auth";
 import { getAllAnnouncements } from "../../../../../../db/tables/announcements";
 import { AnnouncementsAdmin } from "./AnnouncementsAdmin";
+import { SubscriptionBillingProvider } from "../../../../../../contextProviders/subscription-billing-context";
+import { getSubscriptionBillingAmount } from "../../../../../functions/server/getPremiumSubscriptionInfo";
 
 export default async function DevPage() {
   const session = await getServerSession();
+  const billing = getSubscriptionBillingAmount();
 
   if (!session?.user?.email || !session.user.subscriber?.id) {
     return redirect("/");
@@ -21,5 +24,9 @@ export default async function DevPage() {
 
   const announcements = await getAllAnnouncements();
 
-  return <AnnouncementsAdmin announcements={announcements} />;
+  return (
+    <SubscriptionBillingProvider value={billing}>
+      <AnnouncementsAdmin announcements={announcements} />
+    </SubscriptionBillingProvider>
+  );
 }
