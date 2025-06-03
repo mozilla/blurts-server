@@ -789,7 +789,7 @@ describe("Privacy product bundle banner", () => {
     render(<ComposedDashboard />);
 
     expect(
-      screen.getByRole("heading", {
+      screen.queryByRole("heading", {
         name: "Protect your online privacy for ⁨$42.00⁩/month",
       }),
     ).not.toBeInTheDocument();
