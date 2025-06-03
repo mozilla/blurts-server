@@ -42,13 +42,13 @@ export async function getBreachIcons(breaches: HibpGetBreachesResponse) {
   const existingLogos = await readdir(logoFolder);
 
   for (const breach of breaches) {
-    const breachDomain = breach.Domain
-    const breachName = breach.Name
+    const breachDomain = breach.Domain;
+    const breachName = breach.Name;
 
     if (!breachDomain || breachDomain.length === 0) {
       console.log("empty domain: ", breachName);
       await updateBreachFaviconUrl(breachName, null);
-      return;
+      continue;
     }
     const logoFilename = breachDomain.toLowerCase() + ".ico";
     if (existingLogos.includes(logoFilename)) {
@@ -57,7 +57,7 @@ export async function getBreachIcons(breaches: HibpGetBreachesResponse) {
         breachName,
         `https://s3.amazonaws.com/${process.env.S3_BUCKET}/${logoFilename}`,
       );
-      return;
+      continue;
     }
     console.log(`fetching: ${logoFilename}`);
     const res = await fetch(
@@ -67,7 +67,7 @@ export async function getBreachIcons(breaches: HibpGetBreachesResponse) {
       // update logo path with null
       console.log(`Logo does not exist for: ${breachName} ${breachDomain}`);
       await updateBreachFaviconUrl(breachName, null);
-      return;
+      continue;
     }
 
     try {
@@ -78,7 +78,7 @@ export async function getBreachIcons(breaches: HibpGetBreachesResponse) {
       );
     } catch (e) {
       console.error(e);
-      return;
+      continue;
     }
   }
 }
