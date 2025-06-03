@@ -404,7 +404,7 @@ async function init() {
   });
   await initEmail();
 
-  let messageCount = 0
+  let messageCount = 0;
   const [subClient, formattedSubscription] = createPubSubClient();
   while (maxMessages === 0 || messageCount < maxMessages) {
     // If there are no messages, this will wait until the default timeout for the pull API.
@@ -414,9 +414,9 @@ async function init() {
       subscription: formattedSubscription,
       maxMessages: 10,
     });
-    const receivedMessages = response.receivedMessages ?? []
-    messageCount = messageCount + receivedMessages.length
-    console.debug(`pulled ${receivedMessages.length} messages`)
+    const receivedMessages = response.receivedMessages ?? [];
+    messageCount = messageCount + receivedMessages.length;
+    console.debug(`pulled ${receivedMessages.length} messages`);
 
     await poll(subClient, receivedMessages);
   }
