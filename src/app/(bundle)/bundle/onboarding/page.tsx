@@ -16,11 +16,14 @@ import { getServerSession } from "../../../functions/server/getServerSession";
 
 export default async function Page() {
   const session = await getServerSession();
-  const isAuthenticated = typeof session?.user.subscriber?.fxa_uid === "string";
-  const enabledFeatureFlags = await getEnabledFeatureFlags({
-    isSignedOut: !isAuthenticated,
-    email: session?.user?.email ?? "",
-  });
+  const enabledFeatureFlags = await getEnabledFeatureFlags(
+    typeof session?.user.subscriber?.fxa_uid === "string"
+      ? {
+          isSignedOut: false,
+          email: session.user.email,
+        }
+      : { isSignedOut: true },
+  );
   if (!enabledFeatureFlags.includes("PrivacyProductsBundle")) {
     return NotFound();
   }

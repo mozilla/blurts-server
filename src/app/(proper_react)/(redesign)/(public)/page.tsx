@@ -34,10 +34,14 @@ import {
 export default async function Page() {
   const session = await getServerSession();
   const isAuthenticated = typeof session?.user.subscriber?.fxa_uid === "string";
-  const enabledFeatureFlags = await getEnabledFeatureFlags({
-    isSignedOut: !isAuthenticated,
-    email: session?.user?.email ?? "",
-  });
+  const enabledFeatureFlags = await getEnabledFeatureFlags(
+    isAuthenticated
+      ? {
+          isSignedOut: false,
+          email: session.user.email,
+        }
+      : { isSignedOut: true },
+  );
 
   // The redirect for authenticated users from the landing page to
   // the dashboard can be disabled for QA purposes.
