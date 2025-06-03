@@ -4,6 +4,7 @@
 
 public-nav-name = { -brand-mozilla-monitor }
 landing-all-hero-emailform-input-placeholder = yourname@example.com
+landing-all-hero-emailform-submit-sign-up-label = Kcem i wawway n ufraḍ n baṭel
 # This is a label underneath a big number "14" - it's an image that demos Monitor.
 landing-all-hero-image-chart-label = tirewliwin
 
