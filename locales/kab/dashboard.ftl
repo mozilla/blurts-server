@@ -20,6 +20,7 @@ modal-cta-ok = IH
 modal-cta-got-it = Awi-t
 open-modal-alt = Ldi tabewwaḍt n udiwenni
 close-modal-alt = Mdel adiwenni
+progress-card-heres-what-we-fixed-headline-all = Ha-t-a wayen ara tṣeggmeḍ
 progress-card-manually-fixed-headline = Yettwaṣeggem s usfus
 dashboard-tab-label-action-needed = Tigawt-a tlaq
 dashboard-tab-label-fixed = Iṣeggem
