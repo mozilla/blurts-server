@@ -53,6 +53,11 @@ export async function GET(
   const params = await props.params;
   const session = await getServerSession();
   if (session?.user && isAdmin(session?.user?.email || "")) {
+    if (!isMozMail(session?.user?.email ?? "")) {
+      logger.info("admin_users_get: [GET] User is not authorized");
+      return NextResponse.json({ success: false }, { status: 403 });
+    }
+
     // Signed in as admin
     try {
       if (!params.fxaUid) {
@@ -61,13 +66,6 @@ export async function GET(
 
       const fxaUid = params.fxaUid;
       const subscriber = await getSubscriberByFxaUid(fxaUid);
-      if (
-        process.env.APP_ENV !== "local" &&
-        process.env.APP_ENV !== "stage" &&
-        !isMozMail(subscriber?.primary_email ?? "")
-      ) {
-        return NextResponse.json({ success: false }, { status: 403 });
-      }
 
       if (!subscriber) {
         logger.error("no_subscriber_found", { fxaUid });
@@ -135,7 +133,12 @@ export async function PUT(
 ) {
   const params = await props.params;
   const session = await getServerSession();
-  if (isAdmin(session?.user?.email || "") && process.env.APP_ENV === "local") {
+  if (session?.user && isAdmin(session?.user?.email || "")) {
+    if (!isMozMail(session?.user?.email ?? "")) {
+      logger.info("admin_users_get: [PUT] User is not authorized");
+      return NextResponse.json({ success: false }, { status: 403 });
+    }
+
     // Signed in as admin
     try {
       const fxaUid = params.fxaUid;
