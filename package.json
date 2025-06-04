@@ -143,7 +143,7 @@
     "@types/mjml": "^4.7.4",
     "@types/mjml-browser": "^4.15.0",
     "@types/nodemailer": "^6.4.17",
-    "@typescript-eslint/eslint-plugin": "^8.33.0",
+    "@typescript-eslint/eslint-plugin": "^8.33.1",
     "@typescript-eslint/parser": "^8.32.1",
     "adm-zip": "^0.5.16",
     "esbuild": "0.25.4",
