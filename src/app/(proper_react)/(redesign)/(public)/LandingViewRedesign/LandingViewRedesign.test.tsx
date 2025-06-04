@@ -780,6 +780,20 @@ describe("Privacy product bundle banner", () => {
       }),
     );
   });
+
+  it("hides the banner when the feature flag `DisableOneRepScans` is enabled", async () => {
+    const ComposedDashboard = composeStory(
+      LandingRedesignUsDisableOneRepScans,
+      Meta,
+    );
+    render(<ComposedDashboard />);
+
+    expect(
+      screen.queryByRole("heading", {
+        name: "Protect your online privacy for ⁨$42.00⁩/month",
+      }),
+    ).not.toBeInTheDocument();
+  });
 });
 
 describe("Pricing plan with bundle", () => {
