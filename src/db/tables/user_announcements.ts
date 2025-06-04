@@ -5,7 +5,7 @@
 import { AnnouncementRow } from "knex/types/tables";
 import createDbConnection from "../connect";
 import { logger } from "../../app/functions/server/logging";
-import { checkUserHasMonthlySubscription } from "../../app/functions/server/user";
+import { getUserSubscriptionType } from "../../app/functions/server/user";
 import { Session } from "next-auth";
 import { redirect } from "next/navigation";
 import { getCountryCode } from "../../app/functions/server/getCountryCode";
@@ -73,7 +73,7 @@ export async function initializeUserAnnouncements(
 
     let isSubscribedMonthly = false;
     if (isPremium) {
-      isSubscribedMonthly = await checkUserHasMonthlySubscription(user);
+      isSubscribedMonthly = (await getUserSubscriptionType(user)) === "monthly";
     }
 
     const hasRunScan = !!user.subscriber?.onerep_profile_id;
