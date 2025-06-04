@@ -82,6 +82,7 @@ security-recommendation-email-title = Mmesten tansa-k·m n yimayl
 
 # IP security recommendation
 
+security-recommendation-ip-title = Seqdec VPN i wugar n tbaḍnit
 
 # Leaked Passwords
 
