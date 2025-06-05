@@ -36,6 +36,7 @@ import { FreeScanCta } from "../../FreeScanCta";
 import { ExperimentData } from "../../../../../../telemetry/generated/nimbus/experiments";
 import { FeatureFlagName } from "../../../../../../db/tables/featureFlags";
 import { BundleBillingAmount } from "../../../../../functions/server/getPremiumSubscriptionInfo";
+import { usePathname } from "next/navigation";
 
 export type ProductBundleUrl = Record<"relay" | "vpn", string>;
 
@@ -79,36 +80,41 @@ export const PricingPlanListWithBundle = (props: Props & ScanLimitProp) => {
   const l10n = useL10n();
   const recordTelemetry = useTelemetry();
   const [billingPeriod, setBillingPeriod] = useState<BillingPeriod>("yearly");
+  const pathname = usePathname();
+  const isLandingPage = pathname === "/";
 
   // The cookie `attributionsLastTouch` is set in the component `PageLoadEvent`
   // to help with attributions.
   const [cookies] = useCookies(["attributionsLastTouch"]);
+  const landingPageSearchParams = {
+    utm_source: "monitor-product",
+    utm_medium: "monitor",
+    utm_campaign: "landing-page-pricing-grid",
+    utm_content: "pricing-grid-us",
+  };
+  const subscriptionPlansPageSearchParams = {
+    utm_source: "monitor-product",
+    utm_medium: "monitor",
+    utm_campaign: "in-product-pricing-grid",
+    utm_content: "get-started-us",
+  };
+  const initSearchParams = {
+    entrypoint: CONST_URL_MONITOR_LANDING_PAGE_ID,
+    form_type: "button",
+    data_cta_position: "pricing",
+  };
+  const searchParams = isLandingPage
+    ? landingPageSearchParams
+    : subscriptionPlansPageSearchParams;
   const newSearchParamPlus = modifyAttributionsForUrlSearchParams(
     new URLSearchParams(cookies.attributionsLastTouch),
-    {
-      entrypoint: CONST_URL_MONITOR_LANDING_PAGE_ID,
-      form_type: "button",
-      data_cta_position: "pricing",
-    },
-    {
-      utm_source: "product",
-      utm_medium: "monitor",
-      utm_campaign: "pricing",
-    },
+    initSearchParams,
+    searchParams,
   );
   const newSearchParamBundle = modifyAttributionsForUrlSearchParams(
     new URLSearchParams(cookies.attributionsLastTouch),
-    {
-      entrypoint: CONST_URL_MONITOR_LANDING_PAGE_ID,
-      form_type: "button",
-      data_cta_position: "pricing",
-    },
-    {
-      utm_source: "monitor-product",
-      utm_medium: "monitor",
-      utm_campaign: "landing-page-pricing-grid",
-      utm_content: "pricing-grid-us",
-    },
+    initSearchParams,
+    searchParams,
   );
   // SubPlat2 subscription links already have the UTM parameter `?plan` appended.
   const additionalSubplatParamsStringPlus = `${props.enabledFeatureFlags.includes("SubPlat3") ? "?" : "&"}${newSearchParamPlus.toString()}`;
