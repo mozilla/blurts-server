@@ -267,6 +267,12 @@ const AnnouncementsModal = (props: AnnouncementsModalProps) => {
               <option value="yearly_user">
                 Premium Users: Yearly Subscriber US Only
               </option>
+              <option value="bundle_user">
+                Premium Users: Bundle Subscriber US Only
+              </option>
+              <option value="premium_non_bundle">
+                Premium Users: Monthly or Yearly US Only, Non-Bundle
+              </option>
               <option value="premium_users">Premium Users: All Users</option>
               <option value="us_only">All US Users</option>
               <option value="non_us">Non-US Users</option>

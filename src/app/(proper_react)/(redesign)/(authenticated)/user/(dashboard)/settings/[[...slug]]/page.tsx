@@ -27,7 +27,7 @@ import { getLocale } from "../../../../../../../functions/universal/getLocale";
 import { getCountryCode } from "../../../../../../../functions/server/getCountryCode";
 import { getSubscriberById } from "../../../../../../../../db/tables/subscribers";
 import { checkSession } from "../../../../../../../functions/server/checkSession";
-import { checkUserHasMonthlySubscription } from "../../../../../../../functions/server/user";
+import { getUserSubscriptionType } from "../../../../../../../functions/server/user";
 import { getEmailPreferenceForPrimaryEmail } from "../../../../../../../../db/tables/subscriber_email_preferences";
 import { CONST_SETTINGS_TAB_SLUGS } from "../../../../../../../../constants";
 import getDataBrokerScanProfile from "../../../../../../../functions/server/getDataBrokerScanProfile";
@@ -68,9 +68,8 @@ export default async function SettingsPage(props: Props) {
   }
 
   const emailAddresses = await getUserEmails(session.user.subscriber.id);
-  const isMonthlySubscriber = await checkUserHasMonthlySubscription(
-    session.user,
-  );
+  const isMonthlySubscriber =
+    (await getUserSubscriptionType(session.user)) === "monthly";
 
   const fxaSettingsUrl = process.env.FXA_SETTINGS_URL!;
   const fxaSubscriptionsUrl = process.env.FXA_SUBSCRIPTIONS_URL!;
