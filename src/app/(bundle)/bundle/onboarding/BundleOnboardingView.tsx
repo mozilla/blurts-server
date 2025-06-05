@@ -42,7 +42,7 @@ export const BundleOnboardingView = (props: Props) => {
     bundleQueryParamsExternalProducts;
 
   return (
-    <main>
+    <main className={styles.bundleView}>
       <header className={styles.header}>
         <h1>
           {l10n.getFragment("bundle-onboarding-title", {
