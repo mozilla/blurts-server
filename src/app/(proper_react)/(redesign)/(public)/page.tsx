@@ -33,16 +33,28 @@ import {
 
 export default async function Page() {
   const session = await getServerSession();
-  if (typeof session?.user.subscriber?.fxa_uid === "string") {
+  const isAuthenticated = typeof session?.user.subscriber?.fxa_uid === "string";
+  const enabledFeatureFlags = await getEnabledFeatureFlags(
+    isAuthenticated
+      ? {
+          isSignedOut: false,
+          email: session.user.email,
+        }
+      : { isSignedOut: true },
+  );
+
+  // The redirect for authenticated users from the landing page to
+  // the dashboard can be disabled for QA purposes.
+  if (
+    isAuthenticated &&
+    !enabledFeatureFlags.includes("DisableLandingToDashboardRedirect")
+  ) {
     return redirect("/user/dashboard");
   }
   const l10n = getL10n(await getAcceptLangHeaderInServerComponents());
   const countryCode = getCountryCode(await headers());
   const eligibleForPremium = isEligibleForPremium(countryCode);
 
-  const enabledFeatureFlags = await getEnabledFeatureFlags({
-    isSignedOut: true,
-  });
   const experimentationId = await getExperimentationId(session?.user ?? null);
   const experimentData = await getExperiments({
     experimentationId,
