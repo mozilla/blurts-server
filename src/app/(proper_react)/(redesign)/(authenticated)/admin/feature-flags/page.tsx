@@ -50,6 +50,21 @@ export default async function FeatureFlagPage() {
       (flagA, flagB) => flagB.updated_at.getTime() - flagA.updated_at.getTime(),
     ) ?? [];
 
+  let productionFeatureFlags: string[] = [];
+  try {
+    if (process.env.APP_ENV !== "production") {
+      const productionFeatureFlagsResponse = await fetch(
+        "https://monitor.mozilla.org/api/v1/admin/feature-flags",
+      );
+      productionFeatureFlags =
+        (await productionFeatureFlagsResponse.json()) as FeatureFlagName[];
+    }
+  } catch (e) {
+    console.error("Failed to fetch production feature flags:", e);
+    // If fetching production feature flags fails, we just leave out the
+    // annotations indicating which flags are active in production.
+  }
+
   /**
    * Elements in this array are either existing flags that are disabled,
    * or names of flags that are not known in the database yet.
@@ -94,12 +109,16 @@ export default async function FeatureFlagPage() {
                 key={flagOrFlagName}
                 flagName={flagOrFlagName}
                 adminOnly={isFeatureFlagAdminOnly(flagOrFlagName)}
+                isActiveOnProd={productionFeatureFlags.includes(flagOrFlagName)}
               />
             ) : (
               <ExistingFlagEditor
                 key={flagOrFlagName.name}
                 flag={flagOrFlagName}
                 adminOnly={isFeatureFlagAdminOnly(flagOrFlagName.name)}
+                isActiveOnProd={productionFeatureFlags.includes(
+                  flagOrFlagName.name,
+                )}
               />
             );
           })}
@@ -117,6 +136,7 @@ export default async function FeatureFlagPage() {
                 key={flag.name}
                 flag={flag}
                 adminOnly={isFeatureFlagAdminOnly(flag.name)}
+                isActiveOnProd={productionFeatureFlags.includes(flag.name)}
               />
             ))}
         </div>
