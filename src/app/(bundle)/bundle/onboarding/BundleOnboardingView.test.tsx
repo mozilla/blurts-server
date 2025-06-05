@@ -13,7 +13,6 @@ import HeaderMeta, { BundleHeaderDefault } from "./BundleHeader.stories";
 import {
   bundleQueryParamsExternalProducts,
   bundleQueryParamsMonitor,
-  promptNoneAuthParams,
 } from "./BundleOnboardingView";
 
 jest.mock("../../../hooks/useTelemetry");
@@ -101,9 +100,7 @@ it("opens a new tab when cta is selected", async () => {
   const relayHref =
     process.env.FIREFOX_RELAY_LANDING_URL +
     "/accounts/fxa/login?process=login&" +
-    bundleQueryParamsExternalProducts +
-    "&auth_params=" +
-    encodeURIComponent(promptNoneAuthParams);
+    bundleQueryParamsExternalProducts;
 
   expect(relayLink).toHaveAttribute("href", relayHref);
 
