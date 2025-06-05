@@ -28,12 +28,16 @@ export default async function AutomaticRemovePage() {
   const session = await getServerSession();
 
   if (!session?.user?.subscriber?.id) {
-    redirect("/user/dashboard");
+    redirect("/subscription-plans");
   }
 
   const enabledFeatureFlags = await getEnabledFeatureFlags({
     email: session.user.email,
   });
+
+  if (enabledFeatureFlags.includes("SubPlat3")) {
+    redirect("/user/dashboard");
+  }
 
   const additionalSubplatParams = await getAttributionsFromCookiesOrDb(
     session.user.subscriber.id,

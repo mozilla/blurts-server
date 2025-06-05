@@ -33,12 +33,14 @@ import { TelemetryLink } from "../../../../../../../components/client/TelemetryL
 import InfoShield from "../images/InfoShield.svg";
 import { type onAddEmail, type onRemoveEmail } from "../actions";
 import { formatPhone } from "../../../../../../../functions/universal/formatPhone";
+import { FeatureFlagName } from "../../../../../../../../db/tables/featureFlags";
 
 export type SettingsPanelEditInfoRedesignProps = {
   breachCountByEmailAddress: Record<string, number>;
   emailAddresses: SanitizedEmailAddressRow[];
   isEligibleForPremium: boolean;
   subscriber: SubscriberRow;
+  enabledFeatureFlags: FeatureFlagName[];
   user: Session["user"];
   data?: SubscriberEmailPreferencesOutput;
   profileData?: OnerepProfileRow;
@@ -301,7 +303,11 @@ function SettingsPanelEditInfoRedesign(
       {props.isEligibleForPremium && !hasPremium(props.user) && (
         <div className={styles.upsellLinkContainer}>
           <TelemetryLink
-            href="/user/dashboard/action-needed?dialog=subscriptions"
+            href={
+              props.enabledFeatureFlags.includes("PrivacyProductsBundle")
+                ? "/subscription-plans"
+                : "/user/dashboard/action-needed?dialog=subscriptions"
+            }
             eventData={{
               link_id: "settings_edit_info_upsell_cta",
             }}

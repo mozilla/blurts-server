@@ -11,6 +11,7 @@ import { logger } from "../../../../../functions/server/logging";
 import { checkChurnCouponCode } from "../../../../../functions/server/applyCoupon";
 import { applyRenewalCoupon } from "./actions";
 import { getUpcomingChurns } from "../../../../../../db/tables/subscriber_churns";
+import { getEnabledFeatureFlags } from "../../../../../../db/tables/featureFlags";
 
 export default async function PlusExpirationPage() {
   const session = await getServerSession();
@@ -31,6 +32,10 @@ export default async function PlusExpirationPage() {
     return notFound();
   }
 
+  const enabledFeatureFlags = await getEnabledFeatureFlags({
+    email: session.user.email,
+  });
+
   const couponCheckResult = await checkChurnCouponCode(subscriber);
   const expiringSubscriptions = await getUpcomingChurns();
 
@@ -46,6 +51,7 @@ export default async function PlusExpirationPage() {
             expiringSubscription.userid === subscriber.fxa_uid,
         ) !== "undefined"
       }
+      enabledFeatureFlags={enabledFeatureFlags}
     />
   );
 }

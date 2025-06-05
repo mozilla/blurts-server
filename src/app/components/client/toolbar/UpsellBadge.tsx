@@ -4,8 +4,8 @@
 
 "use client";
 
-import { useContext, useRef } from "react";
-import { usePathname, useSearchParams } from "next/navigation";
+import { useContext, useEffect, useRef } from "react";
+import { redirect, usePathname, useSearchParams } from "next/navigation";
 import Image from "next/image";
 import { useOverlayTrigger, useToggleButton } from "react-aria";
 import { useOverlayTriggerState, useToggleState } from "react-stately";
@@ -24,6 +24,7 @@ import { useSession } from "next-auth/react";
 import { sendGAEvent } from "../GoogleAnalyticsWorkaround";
 import { getLocale } from "../../../functions/universal/getLocale";
 import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
+import { FeatureFlagName } from "../../../../db/tables/featureFlags";
 
 export type UpsellButtonProps = {
   monthlySubscriptionUrl: string;
@@ -91,9 +92,29 @@ function UpsellToggleButton(props: UpsellToggleButtonProps) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
+  useEffect(() => {
+    if (
+      props.enabledFeatureFlags.includes("PrivacyProductsBundle") &&
+      props.autoOpenUpsellDialog
+    ) {
+      return redirect("/subscription-plans");
+    }
+    // This effect should only run once
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const dialogState = useOverlayTriggerState({
-    defaultOpen: props.autoOpenUpsellDialog,
+    defaultOpen: props.enabledFeatureFlags.includes("PrivacyProductsBundle")
+      ? false
+      : props.autoOpenUpsellDialog,
     onOpenChange(isOpen) {
+      if (
+        props.enabledFeatureFlags.includes("PrivacyProductsBundle") &&
+        isOpen
+      ) {
+        return redirect("/subscription-plans");
+      }
+
       // Remove `dialog` from URLSearchParams on closing the upsell dialog
       // after it has been opened by linking to it.
       if (!isOpen && props.autoOpenUpsellDialog) {
@@ -147,21 +168,23 @@ function UpsellToggleButton(props: UpsellToggleButtonProps) {
             </span>
           )}
       </div>
-      {dialogState.isOpen && (
-        <UpsellDialog
-          {...overlayProps}
-          state={dialogState}
-          monthlySubscriptionUrl={props.monthlySubscriptionUrl}
-          yearlySubscriptionUrl={props.yearlySubscriptionUrl}
-          subscriptionBillingAmount={props.subscriptionBillingAmount}
-        />
-      )}
+      {!props.enabledFeatureFlags.includes("PrivacyProductsBundle") &&
+        dialogState.isOpen && (
+          <UpsellDialog
+            {...overlayProps}
+            state={dialogState}
+            monthlySubscriptionUrl={props.monthlySubscriptionUrl}
+            yearlySubscriptionUrl={props.yearlySubscriptionUrl}
+            subscriptionBillingAmount={props.subscriptionBillingAmount}
+          />
+        )}
     </>
   );
 }
 
 export type UpsellBadgeProps = UpsellButtonProps & {
   lastScanDate: Date | null;
+  enabledFeatureFlags: FeatureFlagName[];
   /**
    * Loading the experiment data for <MobileShell> was a bit too invasive for a
    * feature that has no visible effects on mobile, so this parameter is
@@ -188,6 +211,7 @@ export function UpsellBadge(props: UpsellBadgeProps) {
         {...props}
         autoOpenUpsellDialog={props.autoOpenUpsellDialog}
         hasPremium={userHasPremium}
+        enabledFeatureFlags={props.enabledFeatureFlags}
       />
     );
   }

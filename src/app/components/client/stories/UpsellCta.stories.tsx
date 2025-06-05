@@ -43,6 +43,7 @@ const UpsellCtaWrapper = (props: UpsellCtaWrapperProps) => {
                 enabled: true,
               },
             }}
+            enabledFeatureFlags={props.enabledFeatureFlags}
           />
         ) : (
           <UpsellButton

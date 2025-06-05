@@ -112,7 +112,11 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
       eventData={{
         link_id: "clicked_upsell",
       }}
-      href="/user/dashboard/fix/data-broker-profiles/automatic-remove"
+      href={
+        props.enabledFeatureFlags?.includes("PrivacyProductsBundle")
+          ? "/subscription-plans"
+          : "/user/dashboard/fix/data-broker-profiles/automatic-remove"
+      }
     />
   );
 
