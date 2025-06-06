@@ -16,6 +16,7 @@ import { CONST_URL_PLUS_CONTACT_SUPPORT } from "../../../../../../constants";
 import { CloseBtn, OpenInNew } from "../../../../../components/server/Icons";
 import type { applyRenewalCoupon } from "./actions";
 import { useL10n } from "../../../../../hooks/l10n";
+import { FeatureFlagName } from "../../../../../../db/tables/featureFlags";
 
 export type Props = {
   subscriber: SubscriberRow;
@@ -23,6 +24,7 @@ export type Props = {
   applyCouponAction: typeof applyRenewalCoupon;
   manageSubscriptionsUrl: string;
   isOnExpirationList: boolean;
+  enabledFeatureFlags: FeatureFlagName[];
 };
 
 export const View = (props: Props) => {
@@ -45,7 +47,11 @@ export const View = (props: Props) => {
           <p>{l10n.getString("plus-expiration-error-free-content")}</p>
           <Button
             variant="primary"
-            href="/user/dashboard/action-needed?dialog=subscriptions"
+            href={
+              props.enabledFeatureFlags.includes("SubscriptionPlansPage")
+                ? "/subscription-plans"
+                : "/user/dashboard/action-needed?dialog=subscriptions"
+            }
           >
             {l10n.getString("plus-expiration-error-free-cta-label")}
           </Button>

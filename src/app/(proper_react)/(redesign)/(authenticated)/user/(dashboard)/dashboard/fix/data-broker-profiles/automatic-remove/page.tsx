@@ -35,6 +35,10 @@ export default async function AutomaticRemovePage() {
     email: session.user.email,
   });
 
+  if (enabledFeatureFlags.includes("SubscriptionPlansPage")) {
+    redirect("/subscription-plans");
+  }
+
   const additionalSubplatParams = await getAttributionsFromCookiesOrDb(
     session.user.subscriber.id,
   );

@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { it, expect } from "@jest/globals";
-import { render, screen, within } from "@testing-library/react";
+import { getByRole, render, screen, within } from "@testing-library/react";
 import { composeStory } from "@storybook/react";
 import { axe } from "jest-axe";
 import Meta, {
@@ -52,6 +52,50 @@ describe("ScanResultCard", () => {
     );
 
     expect(innerDescription).toBeInTheDocument();
+  });
+
+  it("shows the right description for a scan result card where there is action needed on the removal page", () => {
+    const ComposedProgressCard = composeStory(DataBrokerActionNeeded, Meta);
+    render(<ComposedProgressCard isOnManualRemovePage />);
+    const innerDescription = screen.getByText("This site is selling", {
+      exact: false,
+    });
+
+    expect(innerDescription).toBeInTheDocument();
+  });
+
+  it("confirms the correct link to the subscription plans page with the feature flag SubscriptionPlansPage disabled", () => {
+    const ComposedProgressCard = composeStory(DataBrokerActionNeeded, Meta);
+    render(<ComposedProgressCard isOnManualRemovePage />);
+    const innerDescription = screen.getByText("This site is selling", {
+      exact: false,
+    });
+
+    const cta = getByRole(innerDescription, "link", {
+      name: "subscribe to ⁨Monitor Plus⁩",
+    });
+    expect(cta).toHaveAttribute(
+      "href",
+      "/user/dashboard/fix/data-broker-profiles/automatic-remove",
+    );
+  });
+
+  it("confirms the correct link to the subscription plans page with the feature flag SubscriptionPlansPage enabled", () => {
+    const ComposedProgressCard = composeStory(DataBrokerActionNeeded, Meta);
+    render(
+      <ComposedProgressCard
+        isOnManualRemovePage
+        enabledFeatureFlags={["SubscriptionPlansPage"]}
+      />,
+    );
+    const innerDescription = screen.getByText("This site is selling", {
+      exact: false,
+    });
+
+    const cta = getByRole(innerDescription, "link", {
+      name: "subscribe to ⁨Monitor Plus⁩",
+    });
+    expect(cta).toHaveAttribute("href", "/subscription-plans");
   });
 
   // Data broker removed

@@ -31,6 +31,7 @@ export const HappyPath: Story = {
         subscriptions: ["monitor"],
       },
     } as SubscriberRow,
+    enabledFeatureFlags: [],
   },
 };
 
@@ -54,6 +55,7 @@ export const ErrorWhenApplying: Story = {
         subscriptions: ["monitor"],
       },
     } as SubscriberRow,
+    enabledFeatureFlags: [],
   },
 };
 
@@ -68,6 +70,7 @@ export const NotExpiring: Story = {
         subscriptions: ["monitor"],
       },
     } as SubscriberRow,
+    enabledFeatureFlags: [],
   },
 };
 
@@ -82,6 +85,7 @@ export const CouponAlreadyApplied: Story = {
         subscriptions: ["monitor"],
       },
     } as SubscriberRow,
+    enabledFeatureFlags: [],
   },
 };
 
@@ -96,5 +100,6 @@ export const FreeUser: Story = {
         subscriptions: ["not-monitor"],
       },
     } as SubscriberRow,
+    enabledFeatureFlags: [],
   },
 };

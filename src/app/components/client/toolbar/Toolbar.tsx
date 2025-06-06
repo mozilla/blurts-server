@@ -50,6 +50,7 @@ export const Toolbar = (props: Props) => {
           lastScanDate={props.lastScanDate}
           experimentData={props.experimentData}
           autoOpenUpsellDialog={props.autoOpenUpsellDialog}
+          enabledFeatureFlags={props.enabledFeatureFlags}
         />
         {/* c8 ignore next 3 */}
         {props.enabledFeatureFlags.includes("Announcements") &&

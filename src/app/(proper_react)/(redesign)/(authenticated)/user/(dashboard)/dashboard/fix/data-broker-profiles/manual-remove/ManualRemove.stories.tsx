@@ -50,7 +50,7 @@ type Story = StoryObj<typeof ManualRemoveView>;
 
 export const ManualRemoveViewStory: Story = {
   name: "1c. Manually resolve brokers",
-  render: () => {
+  render: (props) => {
     return (
       <Shell
         l10n={getL10n()}
@@ -69,7 +69,7 @@ export const ManualRemoveViewStory: Story = {
           subscriberEmails={[]}
           isPremiumUser={hasPremium(user)}
           isEligibleForPremium={true}
-          enabledFeatureFlags={[]}
+          enabledFeatureFlags={props.enabledFeatureFlags ?? []}
         />
       </Shell>
     );
