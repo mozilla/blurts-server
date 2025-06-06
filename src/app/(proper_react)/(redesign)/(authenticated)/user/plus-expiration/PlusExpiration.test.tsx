@@ -179,7 +179,7 @@ it("tells free users that this is only available to existing Plus users", () => 
   expect(cta).toBeInTheDocument();
 });
 
-it("confirms the correct link to the subscription plans page with the feature flag PrivacyProductsBundle disabled", () => {
+it("confirms the correct link to the subscription plans page with the feature flag SubscriptionPlansPage disabled", () => {
   const PlusExpirationView = composeStory(FreeUser, Meta);
   render(<PlusExpirationView />);
 
@@ -192,10 +192,10 @@ it("confirms the correct link to the subscription plans page with the feature fl
   );
 });
 
-it("confirms the correct link to the subscription plans page with the feature flag PrivacyProductsBundle enabled", () => {
+it("confirms the correct link to the subscription plans page with the feature flag SubscriptionPlansPage enabled", () => {
   const PlusExpirationView = composeStory(FreeUser, Meta);
   render(
-    <PlusExpirationView enabledFeatureFlags={["PrivacyProductsBundle"]} />,
+    <PlusExpirationView enabledFeatureFlags={["SubscriptionPlansPage"]} />,
   );
 
   const cta = screen.getByRole("link", {

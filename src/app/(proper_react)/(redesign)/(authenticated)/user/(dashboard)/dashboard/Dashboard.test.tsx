@@ -3936,7 +3936,7 @@ describe("Upsell badge", () => {
     ).toBeInTheDocument();
   });
 
-  it("redirects to the subscription plans page on render when `autoOpenUpsellDialog={true}` and the feature flag PrivacyProductsBundle is enabled)", () => {
+  it("redirects to the subscription plans page on render when `autoOpenUpsellDialog={true}` and the feature flag SubscriptionPlansPage is enabled)", () => {
     const ComposedDashboard = composeStory(
       DashboardUsNoPremiumNoScanNoBreaches,
       Meta,
@@ -3944,21 +3944,21 @@ describe("Upsell badge", () => {
     render(
       <ComposedDashboard
         autoOpenUpsellDialog
-        enabledFeatureFlags={["PrivacyProductsBundle"]}
+        enabledFeatureFlags={["SubscriptionPlansPage"]}
       />,
     );
 
     expect(redirect).toHaveBeenCalledWith("/subscription-plans");
   });
 
-  it("redirects to the subscription plans page when the feature flag PrivacyProductsBundle is enabled when clicking the the upsell badge)", async () => {
+  it("redirects to the subscription plans page when the feature flag SubscriptionPlansPage is enabled when clicking the the upsell badge)", async () => {
     const user = userEvent.setup();
     const ComposedDashboard = composeStory(
       DashboardUsNoPremiumNoScanNoBreaches,
       Meta,
     );
     render(
-      <ComposedDashboard enabledFeatureFlags={["PrivacyProductsBundle"]} />,
+      <ComposedDashboard enabledFeatureFlags={["SubscriptionPlansPage"]} />,
     );
 
     // We show a CTA on desktop in the toolbar and in the mobile menu

@@ -280,7 +280,7 @@ describe("Settings page redesign", () => {
       expect(upsellLink).toBeInTheDocument();
     });
 
-    it("confirms the correct link for the Plus upsell link with the feature flag PrivacyProductsBundle disabled", () => {
+    it("confirms the correct link for the Plus upsell link with the feature flag SubscriptionPlansPage disabled", () => {
       const ComposeStory = composeStory(
         SettingsEditYourInfoNoPlus,
         SettingsEditYourInfoMeta,
@@ -296,7 +296,7 @@ describe("Settings page redesign", () => {
       );
     });
 
-    it("confirms the correct link for the Plus upsell link with the feature flag PrivacyProductsBundle enabled", () => {
+    it("confirms the correct link for the Plus upsell link with the feature flag SubscriptionPlansPage enabled", () => {
       const ComposeStory = composeStory(
         SettingsEditYourInfoNoPlus,
         SettingsEditYourInfoMeta,
@@ -306,7 +306,7 @@ describe("Settings page redesign", () => {
           enabledFeatureFlags={[
             "SidebarNavigationRedesign",
             "EditScanProfileDetails",
-            "PrivacyProductsBundle",
+            "SubscriptionPlansPage",
           ]}
         />,
       );

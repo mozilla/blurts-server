@@ -304,7 +304,7 @@ function SettingsPanelEditInfoRedesign(
         <div className={styles.upsellLinkContainer}>
           <TelemetryLink
             href={
-              props.enabledFeatureFlags.includes("PrivacyProductsBundle")
+              props.enabledFeatureFlags.includes("SubscriptionPlansPage")
                 ? "/subscription-plans"
                 : "/user/dashboard/action-needed?dialog=subscriptions"
             }

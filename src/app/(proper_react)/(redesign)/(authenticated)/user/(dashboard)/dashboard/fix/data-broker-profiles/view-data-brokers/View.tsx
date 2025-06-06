@@ -66,7 +66,7 @@ export const ViewDataBrokersView = (props: Props) => {
           <TelemetryButton
             variant="primary"
             href={
-              props.enabledFeatureFlags.includes("PrivacyProductsBundle")
+              props.enabledFeatureFlags.includes("SubscriptionPlansPage")
                 ? "/subscription-plans"
                 : "/user/dashboard/fix/data-broker-profiles/automatic-remove"
             }

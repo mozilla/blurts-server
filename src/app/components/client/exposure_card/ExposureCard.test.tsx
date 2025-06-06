@@ -64,7 +64,7 @@ describe("ScanResultCard", () => {
     expect(innerDescription).toBeInTheDocument();
   });
 
-  it("confirms the correct link to the subscription plans page with the feature flag PrivacyProductsBundle disabled", () => {
+  it("confirms the correct link to the subscription plans page with the feature flag SubscriptionPlansPage disabled", () => {
     const ComposedProgressCard = composeStory(DataBrokerActionNeeded, Meta);
     render(<ComposedProgressCard isOnManualRemovePage />);
     const innerDescription = screen.getByText("This site is selling", {
@@ -80,12 +80,12 @@ describe("ScanResultCard", () => {
     );
   });
 
-  it("confirms the correct link to the subscription plans page with the feature flag PrivacyProductsBundle enabled", () => {
+  it("confirms the correct link to the subscription plans page with the feature flag SubscriptionPlansPage enabled", () => {
     const ComposedProgressCard = composeStory(DataBrokerActionNeeded, Meta);
     render(
       <ComposedProgressCard
         isOnManualRemovePage
-        enabledFeatureFlags={["PrivacyProductsBundle"]}
+        enabledFeatureFlags={["SubscriptionPlansPage"]}
       />,
     );
     const innerDescription = screen.getByText("This site is selling", {

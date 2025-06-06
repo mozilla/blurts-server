@@ -147,7 +147,7 @@ it("closes previously active card onclick", async () => {
   expect(initialState[0]).toHaveAttribute("aria-expanded", "false");
 });
 
-it("confirms the correct link to the subscription plans page with the feature flag PrivacyProductsBundle disabled", () => {
+it("confirms the correct link to the subscription plans page with the feature flag SubscriptionPlansPage disabled", () => {
   const ComposedManualRemoveView = composeStory(ManualRemoveViewStory, Meta);
   render(<ComposedManualRemoveView />);
 
@@ -160,11 +160,11 @@ it("confirms the correct link to the subscription plans page with the feature fl
   );
 });
 
-it("confirms the correct link to the subscription plans page with the feature flag PrivacyProductsBundle enabled", () => {
+it("confirms the correct link to the subscription plans page with the feature flag SubscriptionPlansPage enabled", () => {
   const ComposedManualRemoveView = composeStory(ManualRemoveViewStory, Meta);
   render(
     <ComposedManualRemoveView
-      enabledFeatureFlags={["PrivacyProductsBundle"]}
+      enabledFeatureFlags={["SubscriptionPlansPage"]}
     />,
   );
 

@@ -48,7 +48,7 @@ export const View = (props: Props) => {
           <Button
             variant="primary"
             href={
-              props.enabledFeatureFlags.includes("PrivacyProductsBundle")
+              props.enabledFeatureFlags.includes("SubscriptionPlansPage")
                 ? "/subscription-plans"
                 : "/user/dashboard/action-needed?dialog=subscriptions"
             }

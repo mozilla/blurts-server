@@ -133,7 +133,7 @@ export function ManualRemoveView(props: Props) {
                         <TelemetryLink
                           href={
                             props.enabledFeatureFlags.includes(
-                              "PrivacyProductsBundle",
+                              "SubscriptionPlansPage",
                             )
                               ? "/subscription-plans"
                               : "/user/dashboard/fix/data-broker-profiles/automatic-remove"
@@ -188,7 +188,7 @@ export function ManualRemoveView(props: Props) {
               },
             }}
             href={
-              props.enabledFeatureFlags.includes("PrivacyProductsBundle")
+              props.enabledFeatureFlags.includes("SubscriptionPlansPage")
                 ? "/subscription-plans"
                 : "/user/dashboard/fix/data-broker-profiles/automatic-remove"
             }

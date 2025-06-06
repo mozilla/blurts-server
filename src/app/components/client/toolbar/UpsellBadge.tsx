@@ -94,7 +94,7 @@ function UpsellToggleButton(props: UpsellToggleButtonProps) {
 
   useEffect(() => {
     if (
-      props.enabledFeatureFlags.includes("PrivacyProductsBundle") &&
+      props.enabledFeatureFlags.includes("SubscriptionPlansPage") &&
       props.autoOpenUpsellDialog
     ) {
       return redirect("/subscription-plans");
@@ -104,12 +104,12 @@ function UpsellToggleButton(props: UpsellToggleButtonProps) {
   }, []);
 
   const dialogState = useOverlayTriggerState({
-    defaultOpen: props.enabledFeatureFlags.includes("PrivacyProductsBundle")
+    defaultOpen: props.enabledFeatureFlags.includes("SubscriptionPlansPage")
       ? false
       : props.autoOpenUpsellDialog,
     onOpenChange(isOpen) {
       if (
-        props.enabledFeatureFlags.includes("PrivacyProductsBundle") &&
+        props.enabledFeatureFlags.includes("SubscriptionPlansPage") &&
         isOpen
       ) {
         return redirect("/subscription-plans");
@@ -168,7 +168,7 @@ function UpsellToggleButton(props: UpsellToggleButtonProps) {
             </span>
           )}
       </div>
-      {!props.enabledFeatureFlags.includes("PrivacyProductsBundle") &&
+      {!props.enabledFeatureFlags.includes("SubscriptionPlansPage") &&
         dialogState.isOpen && (
           <UpsellDialog
             {...overlayProps}
