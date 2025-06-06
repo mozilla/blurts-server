@@ -7,6 +7,8 @@
 -brand-relay-premium = Relay Premium
 -product-name-privacy-products-bundle = Privacy Protection Plan
 
+bundle-subscription-plans-title = Subscription plans for { -brand-fx-monitor }
+
 bundle-onboarding-title = You’re ready to <gradient>protect your privacy.</gradient>
 bundle-onboarding-subtitle = Go to each tool to get started.
 bundle-header-image-alt = { -brand-mozilla } logo
