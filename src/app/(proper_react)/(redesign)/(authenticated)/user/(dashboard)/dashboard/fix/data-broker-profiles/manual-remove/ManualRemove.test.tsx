@@ -146,3 +146,30 @@ it("closes previously active card onclick", async () => {
   await user.click(initialState[0]);
   expect(initialState[0]).toHaveAttribute("aria-expanded", "false");
 });
+
+it("confirms the correct link to the subscription plans page with the feature flag PrivacyProductsBundle disabled", () => {
+  const ComposedManualRemoveView = composeStory(ManualRemoveViewStory, Meta);
+  render(<ComposedManualRemoveView />);
+
+  const cta = screen.getByRole("link", {
+    name: "Remove them for me",
+  });
+  expect(cta).toHaveAttribute(
+    "href",
+    "/user/dashboard/fix/data-broker-profiles/automatic-remove",
+  );
+});
+
+it("confirms the correct link to the subscription plans page with the feature flag PrivacyProductsBundle enabled", () => {
+  const ComposedManualRemoveView = composeStory(ManualRemoveViewStory, Meta);
+  render(
+    <ComposedManualRemoveView
+      enabledFeatureFlags={["PrivacyProductsBundle"]}
+    />,
+  );
+
+  const cta = screen.getByRole("link", {
+    name: "Remove them for me",
+  });
+  expect(cta).toHaveAttribute("href", "/subscription-plans");
+});

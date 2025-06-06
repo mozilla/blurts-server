@@ -280,6 +280,43 @@ describe("Settings page redesign", () => {
       expect(upsellLink).toBeInTheDocument();
     });
 
+    it("confirms the correct link for the Plus upsell link with the feature flag PrivacyProductsBundle disabled", () => {
+      const ComposeStory = composeStory(
+        SettingsEditYourInfoNoPlus,
+        SettingsEditYourInfoMeta,
+      );
+      render(<ComposeStory />);
+
+      const upsellLink = screen.getByRole("link", {
+        name: "Upgrade to ⁨Monitor Plus⁩ to protect your personal info",
+      });
+      expect(upsellLink).toHaveAttribute(
+        "href",
+        "/user/dashboard/action-needed?dialog=subscriptions",
+      );
+    });
+
+    it("confirms the correct link for the Plus upsell link with the feature flag PrivacyProductsBundle enabled", () => {
+      const ComposeStory = composeStory(
+        SettingsEditYourInfoNoPlus,
+        SettingsEditYourInfoMeta,
+      );
+      render(
+        <ComposeStory
+          enabledFeatureFlags={[
+            "SidebarNavigationRedesign",
+            "EditScanProfileDetails",
+            "PrivacyProductsBundle",
+          ]}
+        />,
+      );
+
+      const upsellLink = screen.getByRole("link", {
+        name: "Upgrade to ⁨Monitor Plus⁩ to protect your personal info",
+      });
+      expect(upsellLink).toHaveAttribute("href", "/subscription-plans");
+    });
+
     it("shows a link to a SUMO article on profile details for scans", () => {
       const ComposedStory = composeStory(
         SettingsEditYourInfoMinProfileDetailsWithPlus,

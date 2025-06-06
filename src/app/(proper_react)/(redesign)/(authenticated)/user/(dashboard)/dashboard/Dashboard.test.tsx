@@ -60,6 +60,7 @@ import {
   DashboardUsPremiumScanInProgressResolvedBreaches,
   DashboardUsPremiumScanInProgressUnresolvedBreaches,
 } from "./DashboardPlusUsers.stories";
+import { redirect } from "next/navigation";
 
 jest.mock("next/navigation", () => ({
   useRouter: jest.fn(),
@@ -67,6 +68,7 @@ jest.mock("next/navigation", () => ({
   useSearchParams: () => ({
     get: jest.fn(),
   }),
+  redirect: jest.fn(),
 }));
 jest.mock("../../../../../../hooks/useTelemetry");
 
@@ -3932,6 +3934,41 @@ describe("Upsell badge", () => {
     expect(
       screen.getByText("Turn on automatic data removal with ⁨Monitor Plus⁩"),
     ).toBeInTheDocument();
+  });
+
+  it("redirects to the subscription plans page on render when `autoOpenUpsellDialog={true}` and the feature flag PrivacyProductsBundle is enabled)", () => {
+    const ComposedDashboard = composeStory(
+      DashboardUsNoPremiumNoScanNoBreaches,
+      Meta,
+    );
+    render(
+      <ComposedDashboard
+        autoOpenUpsellDialog
+        enabledFeatureFlags={["PrivacyProductsBundle"]}
+      />,
+    );
+
+    expect(redirect).toHaveBeenCalledWith("/subscription-plans");
+  });
+
+  it("redirects to the subscription plans page when the feature flag PrivacyProductsBundle is enabled when clicking the the upsell badge)", async () => {
+    const user = userEvent.setup();
+    const ComposedDashboard = composeStory(
+      DashboardUsNoPremiumNoScanNoBreaches,
+      Meta,
+    );
+    render(
+      <ComposedDashboard enabledFeatureFlags={["PrivacyProductsBundle"]} />,
+    );
+
+    // We show a CTA on desktop in the toolbar and in the mobile menu
+    const premiumCtas = screen.queryAllByRole("button", {
+      name: "Automatic data removal: Off",
+    });
+    expect(premiumCtas.length).toBe(2);
+
+    await user.click(premiumCtas[0]);
+    expect(redirect).toHaveBeenCalledWith("/subscription-plans");
   });
 
   it("closes the premium upsell dialog of the Premium upsell badge after it opened by default)", async () => {

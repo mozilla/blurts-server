@@ -179,6 +179,31 @@ it("tells free users that this is only available to existing Plus users", () => 
   expect(cta).toBeInTheDocument();
 });
 
+it("confirms the correct link to the subscription plans page with the feature flag PrivacyProductsBundle disabled", () => {
+  const PlusExpirationView = composeStory(FreeUser, Meta);
+  render(<PlusExpirationView />);
+
+  const cta = screen.getByRole("link", {
+    name: "Subscribe to ⁨Monitor Plus⁩",
+  });
+  expect(cta).toHaveAttribute(
+    "href",
+    "/user/dashboard/action-needed?dialog=subscriptions",
+  );
+});
+
+it("confirms the correct link to the subscription plans page with the feature flag PrivacyProductsBundle enabled", () => {
+  const PlusExpirationView = composeStory(FreeUser, Meta);
+  render(
+    <PlusExpirationView enabledFeatureFlags={["PrivacyProductsBundle"]} />,
+  );
+
+  const cta = screen.getByRole("link", {
+    name: "Subscribe to ⁨Monitor Plus⁩",
+  });
+  expect(cta).toHaveAttribute("href", "/subscription-plans");
+});
+
 it("doesn't allow people to apply the coupon twice", () => {
   const PlusExpirationView = composeStory(CouponAlreadyApplied, Meta);
   render(<PlusExpirationView />);

@@ -184,25 +184,23 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
           },
         );
       case "new":
-        /* c8 ignore start */
         if (props.isOnManualRemovePage) {
           return l10n.getFragment(
             "exposure-card-description-info-for-sale-action-needed-manual-fix-page",
             {
               elems: {
                 data_broker_profile: dataBrokerProfileLink,
+                upsell_link: upsellLink,
               },
             },
           );
         }
 
-        /* c8 ignore stop */
         return l10n.getFragment(
           "exposure-card-description-info-for-sale-action-needed-dashboard",
           {
             elems: {
               data_broker_profile: dataBrokerProfileLink,
-              upsell_link: upsellLink,
             },
           },
         );
