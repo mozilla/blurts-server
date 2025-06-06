@@ -43,7 +43,7 @@ export default async function Page() {
 
   if (
     !eligibleForPremium ||
-    !enabledFeatureFlags.includes("PrivacyProductsBundle")
+    !enabledFeatureFlags.includes("SubscriptionPlansPage")
   ) {
     return redirect("/");
   }
