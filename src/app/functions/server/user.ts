@@ -33,12 +33,13 @@ export async function getUserSubscriptionType(
     return;
   }
 
-  const monthlyPlanId = process.env.PREMIUM_PLAN_ID_MONTHLY_US ?? "";
-  const yearlyPlanId = process.env.PREMIUM_PLAN_ID_YEARLY_US ?? "";
-  const bundlePlanId = process.env.SUBPLAT_BUNDLE_PRICE_ID ?? "";
+  const monthlyPlanId = process.env.PREMIUM_PLAN_ID_MONTHLY_US;
+  const yearlyPlanId = process.env.PREMIUM_PLAN_ID_YEARLY_US;
+  const bundlePlanId = process.env.SUBPLAT_BUNDLE_PRICE_ID;
 
   if (!monthlyPlanId || !yearlyPlanId || !bundlePlanId) {
     logger.error("One or more plan IDs are not set in environment variables");
+    return;
   }
 
   const planIds = billingAndSubscriptionInfo.subscriptions.map(
