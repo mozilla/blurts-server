@@ -5,6 +5,7 @@
 import { Session } from "next-auth";
 import { getBillingAndSubscriptions } from "../../../utils/fxa";
 import { getSubscriberByFxaUid } from "../../../db/tables/subscribers";
+import { logger } from "./logging";
 
 /* c8 ignore start */
 export type SubscriptionType = "yearly" | "monthly" | "bundle";
@@ -20,7 +21,7 @@ export async function getUserSubscriptionType(
 
   const subscriber = await getSubscriberByFxaUid(fxaUid);
   if (!subscriber?.fxa_access_token) {
-    console.error("FXA access token not set");
+    logger.error("FXA access token not set");
     return;
   }
 
@@ -28,7 +29,7 @@ export async function getUserSubscriptionType(
     subscriber.fxa_access_token,
   );
   if (!billingAndSubscriptionInfo) {
-    console.error("Billing and subscription info is null");
+    logger.error("Billing and subscription info is null");
     return;
   }
 
@@ -37,7 +38,7 @@ export async function getUserSubscriptionType(
   const bundlePlanId = process.env.SUBPLAT_BUNDLE_PRICE_ID ?? "";
 
   if (!monthlyPlanId || !yearlyPlanId || !bundlePlanId) {
-    console.error("One or more plan IDs are not set in environment variables");
+    logger.error("One or more plan IDs are not set in environment variables");
   }
 
   const planIds = billingAndSubscriptionInfo.subscriptions.map(
