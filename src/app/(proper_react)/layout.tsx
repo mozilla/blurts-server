@@ -20,6 +20,8 @@ import { PromptNoneAuth } from "../components/client/PromptNoneAuth";
 import { addClientIdForSubscriber } from "../../db/tables/google_analytics_clients";
 import { logger } from "../functions/server/logging";
 import { CookiesProvider } from "../../contextProviders/cookies";
+import { SubscriptionBillingProvider } from "../../contextProviders/subscription-billing-context";
+import { getSubscriptionBillingAmount } from "../functions/server/getPremiumSubscriptionInfo";
 
 export default async function Layout({ children }: { children: ReactNode }) {
   const l10nBundles = getL10nBundles(
@@ -35,6 +37,7 @@ export default async function Layout({ children }: { children: ReactNode }) {
           email: session.user.email,
         },
   );
+  const billing = getSubscriptionBillingAmount();
 
   const cookieStore = await cookies();
   // This expects the default Google Analytics cookie documented here: https://support.google.com/analytics/answer/11397207?hl=en
@@ -68,10 +71,12 @@ export default async function Layout({ children }: { children: ReactNode }) {
       <ReactAriaI18nProvider locale={getLocale(l10nBundles)}>
         <CountryCodeProvider countryCode={countryCode}>
           <CookiesProvider>
-            {enabledFlags.includes("PromptNoneAuthFlow") && !session && (
-              <PromptNoneAuth />
-            )}
-            {children}
+            <SubscriptionBillingProvider value={billing}>
+              {enabledFlags.includes("PromptNoneAuthFlow") && !session && (
+                <PromptNoneAuth />
+              )}
+              {children}
+            </SubscriptionBillingProvider>
             <PageLoadEvent />
           </CookiesProvider>
         </CountryCodeProvider>

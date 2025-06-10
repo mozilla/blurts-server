@@ -12,11 +12,18 @@ import {
 import { BundleOnboardingView } from "./BundleOnboardingView";
 import { getEnabledFeatureFlags } from "../../../../db/tables/featureFlags";
 import NotFound from "../../../not-found";
+import { getServerSession } from "../../../functions/server/getServerSession";
 
 export default async function Page() {
-  const enabledFeatureFlags = await getEnabledFeatureFlags({
-    isSignedOut: true,
-  });
+  const session = await getServerSession();
+  const enabledFeatureFlags = await getEnabledFeatureFlags(
+    typeof session?.user.subscriber?.fxa_uid === "string"
+      ? {
+          isSignedOut: false,
+          email: session.user.email,
+        }
+      : { isSignedOut: true },
+  );
   if (!enabledFeatureFlags.includes("PrivacyProductsBundle")) {
     return NotFound();
   }

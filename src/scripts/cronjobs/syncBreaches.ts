@@ -41,45 +41,46 @@ export async function getBreachIcons(breaches: HibpGetBreachesResponse) {
   // read existing logos
   const existingLogos = await readdir(logoFolder);
 
-  await Promise.allSettled(
-    breaches.map(async ({ Domain: breachDomain, Name: breachName }) => {
-      if (!breachDomain || breachDomain.length === 0) {
-        console.log("empty domain: ", breachName);
-        await updateBreachFaviconUrl(breachName, null);
-        return;
-      }
-      const logoFilename = breachDomain.toLowerCase() + ".ico";
-      if (existingLogos.includes(logoFilename)) {
-        console.log("skipping ", logoFilename);
-        await updateBreachFaviconUrl(
-          breachName,
-          `https://s3.amazonaws.com/${process.env.S3_BUCKET}/${logoFilename}`,
-        );
-        return;
-      }
-      console.log(`fetching: ${logoFilename}`);
-      const res = await fetch(
-        `https://icons.duckduckgo.com/ip3/${breachDomain}.ico`,
-      );
-      if (res.status !== 200) {
-        // update logo path with null
-        console.log(`Logo does not exist for: ${breachName} ${breachDomain}`);
-        await updateBreachFaviconUrl(breachName, null);
-        return;
-      }
+  for (const breach of breaches) {
+    const breachDomain = breach.Domain;
+    const breachName = breach.Name;
 
-      try {
-        await uploadToS3(logoFilename, Buffer.from(await res.arrayBuffer()));
-        await updateBreachFaviconUrl(
-          breachName,
-          `https://s3.amazonaws.com/${process.env.S3_BUCKET}/${logoFilename}`,
-        );
-      } catch (e) {
-        console.error(e);
-        return;
-      }
-    }),
-  );
+    if (!breachDomain || breachDomain.length === 0) {
+      console.log("empty domain: ", breachName);
+      await updateBreachFaviconUrl(breachName, null);
+      continue;
+    }
+    const logoFilename = breachDomain.toLowerCase() + ".ico";
+    if (existingLogos.includes(logoFilename)) {
+      console.log("skipping ", logoFilename);
+      await updateBreachFaviconUrl(
+        breachName,
+        `https://s3.amazonaws.com/${process.env.S3_BUCKET}/${logoFilename}`,
+      );
+      continue;
+    }
+    console.log(`fetching: ${logoFilename}`);
+    const res = await fetch(
+      `https://icons.duckduckgo.com/ip3/${breachDomain}.ico`,
+    );
+    if (res.status !== 200) {
+      // update logo path with null
+      console.log(`Logo does not exist for: ${breachName} ${breachDomain}`);
+      await updateBreachFaviconUrl(breachName, null);
+      continue;
+    }
+
+    try {
+      await uploadToS3(logoFilename, Buffer.from(await res.arrayBuffer()));
+      await updateBreachFaviconUrl(
+        breachName,
+        `https://s3.amazonaws.com/${process.env.S3_BUCKET}/${logoFilename}`,
+      );
+    } catch (e) {
+      console.error(e);
+      continue;
+    }
+  }
 }
 
 // Get breaches and upserts to DB
