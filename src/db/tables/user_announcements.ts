@@ -5,7 +5,10 @@
 import { AnnouncementRow } from "knex/types/tables";
 import createDbConnection from "../connect";
 import { logger } from "../../app/functions/server/logging";
-import { checkUserHasMonthlySubscription } from "../../app/functions/server/user";
+import {
+  getUserSubscriptionType,
+  SubscriptionType,
+} from "../../app/functions/server/user";
 import { Session } from "next-auth";
 import { redirect } from "next/navigation";
 import { getCountryCode } from "../../app/functions/server/getCountryCode";
@@ -71,10 +74,14 @@ export async function initializeUserAnnouncements(
     const countryCode = getCountryCode(await headers());
     const isUS = isEligibleForPremium(countryCode);
 
-    let isSubscribedMonthly = false;
+    let subscriptionType: SubscriptionType | undefined;
     if (isPremium) {
-      isSubscribedMonthly = await checkUserHasMonthlySubscription(user);
+      subscriptionType = await getUserSubscriptionType(user);
     }
+
+    const isMonthly = subscriptionType === "monthly";
+    const isYearly = subscriptionType === "yearly";
+    const isBundle = subscriptionType === "bundle";
 
     const hasRunScan = !!user.subscriber?.onerep_profile_id;
 
@@ -108,9 +115,13 @@ export async function initializeUserAnnouncements(
         case "non_us":
           return !isUS;
         case "monthly_user":
-          return isSubscribedMonthly && isPremium;
+          return isMonthly && isPremium;
         case "yearly_user":
-          return !isSubscribedMonthly && isPremium;
+          return isYearly && isPremium;
+        case "bundle_user":
+          return isBundle && isPremium;
+        case "premium_non_bundle":
+          return isYearly || isMonthly;
         case "all_users":
         default:
           return true;
