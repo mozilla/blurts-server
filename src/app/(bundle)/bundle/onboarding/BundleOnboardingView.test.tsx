@@ -13,6 +13,7 @@ import HeaderMeta, { BundleHeaderDefault } from "./BundleHeader.stories";
 import {
   bundleQueryParamsExternalProducts,
   bundleQueryParamsMonitor,
+  promptNoneAuthParams,
 } from "./BundleOnboardingView";
 
 jest.mock("../../../hooks/useTelemetry");
@@ -69,7 +70,10 @@ it("opens a new tab when cta is selected", async () => {
   render(<ComposedBundlePage />);
 
   const monitorLink = screen.getByRole("link", { name: "Go to ⁨Monitor⁩" });
-  expect(monitorLink).toHaveAttribute("href", `/?${bundleQueryParamsMonitor}`);
+  expect(monitorLink).toHaveAttribute(
+    "href",
+    `/?prompt=none&${bundleQueryParamsMonitor}`,
+  );
 
   await user.click(monitorLink);
 
@@ -97,7 +101,9 @@ it("opens a new tab when cta is selected", async () => {
   const relayHref =
     process.env.FIREFOX_RELAY_LANDING_URL +
     "/accounts/fxa/login?process=login&" +
-    bundleQueryParamsExternalProducts;
+    bundleQueryParamsExternalProducts +
+    "&auth_params=" +
+    encodeURIComponent(promptNoneAuthParams);
 
   expect(relayLink).toHaveAttribute("href", relayHref);
 

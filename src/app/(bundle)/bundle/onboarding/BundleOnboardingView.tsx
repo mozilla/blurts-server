@@ -29,13 +29,19 @@ export const bundleQueryParamsMonitor = new URLSearchParams({
   utm_content: "launch-us",
 }).toString();
 
+export const promptNoneAuthParams = new URLSearchParams({
+  prompt: "none",
+}).toString();
+
 export const BundleOnboardingView = (props: Props) => {
   const l10n = props.l10n;
-  const monitorLink = `/?${bundleQueryParamsMonitor}`;
+  const monitorLink = `/?${promptNoneAuthParams}&${bundleQueryParamsMonitor}`;
   const relayLink =
     process.env.FIREFOX_RELAY_LANDING_URL +
     "/accounts/fxa/login?process=login&" +
-    bundleQueryParamsExternalProducts;
+    bundleQueryParamsExternalProducts +
+    "&auth_params=" +
+    encodeURIComponent(promptNoneAuthParams);
   const vpnLink =
     process.env.MOZILLA_VPN_LANDING_URL +
     "/download?" +
