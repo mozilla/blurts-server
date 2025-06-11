@@ -8,6 +8,7 @@
   @media screen and (min-width: tokens.$screen-md) {
     flex-wrap: wrap;
     flex-direction: row-reverse;
+    justify-content: center;
   }
 
   @media screen and (min-width: tokens.$screen-lg) {
@@ -22,6 +23,7 @@
   flex: 1;
   flex-direction: column;
   font: tokens.$text-body-sm;
+  max-width: tokens.$content-sm;
   padding: tokens.$layout-sm tokens.$spacing-lg;
   position: relative;
 
