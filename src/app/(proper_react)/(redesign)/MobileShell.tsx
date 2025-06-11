@@ -153,6 +153,7 @@ export const MobileShell = (props: Props) => {
                   subscriptionBillingAmount={props.subscriptionBillingAmount}
                   // The last scan date is too noisy on mobile, so don't show it there:
                   lastScanDate={null}
+                  enabledFeatureFlags={props.enabledFeatureFlags}
                 />
               </div>
             </div>
@@ -232,6 +233,7 @@ export const MobileShell = (props: Props) => {
                       }
                       // The last scan date is too noisy on mobile, so don't show it there:
                       lastScanDate={null}
+                      enabledFeatureFlags={props.enabledFeatureFlags}
                     />
                   </div>
                 </>
