@@ -50,6 +50,7 @@ export const MobileShell = (props: Props) => {
   const pathname = usePathname();
   const wrapperRef = useRef<HTMLDivElement>(null);
   const isOnDashboard = pathname === "/user/dashboard";
+  const isOnSubscriptionPlans = pathname === "/subscription-plans";
 
   useEffect(() => {
     setIsExpanded(false);
@@ -92,42 +93,46 @@ export const MobileShell = (props: Props) => {
             />
           </Link>
         </div>
-        <div className={styles.headerEnd}>
-          {/* c8 ignore next 3 */}
-          {props.enabledFeatureFlags.includes("Announcements") &&
-            props.announcements && (
-              <AnnouncementDialog announcements={props.announcements} />
-            )}
-          {props.session ? (
-            <UserMenu
-              user={props.session?.user}
-              fxaSettingsUrl={props.fxaSettingsUrl}
-            />
-          ) : (
-            <SignInButton
-              className={styles.signInButton}
-              variant="secondary"
-              small
-            />
-          )}
-          <button
-            onClick={() => setIsExpanded(!isExpanded)}
-            className={styles.menuToggleButton}
-            title={l10n.getString(
-              isExpanded
-                ? "main-nav-button-collapse-tooltip"
-                : "main-nav-button-expand-tooltip",
-            )}
-          >
-            {isExpanded ? (
-              <CloseBigIcon
-                alt={l10n.getString("main-nav-button-collapse-label")}
+        {!isOnSubscriptionPlans && (
+          <div className={styles.headerEnd}>
+            {/* c8 ignore next 3 */}
+            {props.enabledFeatureFlags.includes("Announcements") &&
+              props.announcements && (
+                <AnnouncementDialog announcements={props.announcements} />
+              )}
+            {props.session ? (
+              <UserMenu
+                user={props.session?.user}
+                fxaSettingsUrl={props.fxaSettingsUrl}
               />
             ) : (
-              <ListIcon alt={l10n.getString("main-nav-button-expand-label")} />
+              <SignInButton
+                className={styles.signInButton}
+                variant="secondary"
+                small
+              />
             )}
-          </button>
-        </div>
+            <button
+              onClick={() => setIsExpanded(!isExpanded)}
+              className={styles.menuToggleButton}
+              title={l10n.getString(
+                isExpanded
+                  ? "main-nav-button-collapse-tooltip"
+                  : "main-nav-button-expand-tooltip",
+              )}
+            >
+              {isExpanded ? (
+                <CloseBigIcon
+                  alt={l10n.getString("main-nav-button-collapse-label")}
+                />
+              ) : (
+                <ListIcon
+                  alt={l10n.getString("main-nav-button-expand-label")}
+                />
+              )}
+            </button>
+          </div>
+        )}
       </header>
       <div className={styles.nonHeader}>
         <nav
