@@ -11,7 +11,9 @@ if (!process.env.STORYBOOK) {
   import("./notInClientComponent");
 }
 
-type SubscriptionPeriod = "monthly" | "yearly" | "bundle";
+export const subscriptionPlanIds = ["monthly", "yearly", "bundle"] as const;
+
+export type SubscriptionPeriod = (typeof subscriptionPlanIds)[number];
 
 export type BundleBillingAmount = {
   monthly: number;
