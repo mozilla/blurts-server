@@ -81,6 +81,7 @@
       padding: tokens.$spacing-2xl tokens.$spacing-xl tokens.$spacing-xl;
       width: 100%;
       margin: 0 auto;
+      gap: 12px; // hardcoding this because we currently don't have a 12px token. TODO: MNTOR-4552
 
       @media screen and (min-width: tokens.$screen-sm) {
         max-width: 380px;
@@ -125,14 +126,12 @@
       }
 
       h2 {
-        margin-top: 12px; // hardcoding this because we currently don't have a 12px token. TODO: MNTOR-4552
-        margin-bottom: tokens.$spacing-2xl;
+        margin-bottom: tokens.$spacing-xl;
         font: tokens.$text-body-xl;
         font-weight: 700;
       }
 
       .ctaBtn {
-        margin-top: 12px; // hardcoding this because we currently don't have a 12px token. TODO: MNTOR-4552
         width: 100%;
         background-color: tokens.$color-blue-50; // overwrite back to previous primary colour
         transition: 0.3s;
