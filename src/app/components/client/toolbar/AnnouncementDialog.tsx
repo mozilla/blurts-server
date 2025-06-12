@@ -460,7 +460,7 @@ export const LocalizedAnnouncementString = (
   // React rendering cost is unchanged: Passing unused variables doesn’t
   // trigger any additional render complexity.
   const parsedString = l10n.getString(key, {
-    bundleMonthlyPrice: `$${billingInfo.monthly}`,
+    bundleMonthlyPrice: `$${billingInfo.bundle.monthly}`,
   });
 
   return (
