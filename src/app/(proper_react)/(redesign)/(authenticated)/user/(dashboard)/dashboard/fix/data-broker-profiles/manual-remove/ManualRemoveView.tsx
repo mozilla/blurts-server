@@ -131,7 +131,13 @@ export function ManualRemoveView(props: Props) {
                     elems: {
                       subscribe_link: (
                         <TelemetryLink
-                          href="/user/dashboard/fix/data-broker-profiles/automatic-remove"
+                          href={
+                            props.enabledFeatureFlags.includes(
+                              "SubscriptionPlansPage",
+                            )
+                              ? "/subscription-plans"
+                              : "/user/dashboard/fix/data-broker-profiles/automatic-remove"
+                          }
                           eventData={{
                             link_id: "manual_removal_instructions_upsell",
                           }}
@@ -181,7 +187,11 @@ export function ManualRemoveView(props: Props) {
                 button_id: "manual_removal_upsell",
               },
             }}
-            href="/user/dashboard/fix/data-broker-profiles/automatic-remove"
+            href={
+              props.enabledFeatureFlags.includes("SubscriptionPlansPage")
+                ? "/subscription-plans"
+                : "/user/dashboard/fix/data-broker-profiles/automatic-remove"
+            }
           >
             {l10n.getString(
               "fix-flow-data-broker-profiles-manual-remove-button-remove-for-me",

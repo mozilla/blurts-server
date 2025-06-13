@@ -7,7 +7,11 @@ import { PricingPlanListWithBundle } from "./PricingPlanListWithBundle";
 import type { LandingPageProps } from "..";
 import styles from "./PricingPlansWithBundle.module.scss";
 
-export const PricingPlansWithBundle = (props: LandingPageProps) => {
+export const PricingPlansWithBundle = (
+  props: LandingPageProps & {
+    hideFreeCard?: boolean;
+  },
+) => {
   const headingId = useId();
 
   return (
@@ -35,6 +39,7 @@ export const PricingPlansWithBundle = (props: LandingPageProps) => {
         eligibleForPremium={props.eligibleForPremium}
         enabledFeatureFlags={props.enabledFeatureFlags}
         productBundleUrl={props.bundleProductUrl}
+        hideFreeCard={props.hideFreeCard}
       />
     </div>
   );

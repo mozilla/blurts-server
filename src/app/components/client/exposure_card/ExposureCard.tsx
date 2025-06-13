@@ -36,6 +36,7 @@ export type ExposureCardProps = {
   enabledFeatureFlags: FeatureFlagName[];
   experimentData: ExperimentData["Features"];
   removalTimeEstimate?: number;
+  isOnManualRemovePage?: boolean;
   onToggleExpanded: () => void;
 };
 

@@ -132,7 +132,7 @@ After you push the tag to GitHub, you should also
 
 1. After all the checks above look good, click "Publish release"
 2. Go to the `main` branch and make sure all the checks succeeded
-3. Go to [DockerHub][dockerhub] to ensure that a tag with today's date is present.
+3. Run the [V2 cron][v2] against stage and make sure it succeeded.
 4. Run [E2E cron][e2e] against stage (with the latest update)
    - if there are errors, make sure the cause is understood
    - fix the e2e errors or change the tests when appropriate before proceeding
@@ -196,6 +196,7 @@ After adding 1-click production deploy capability and broadly adopting [feature 
 [github-new-release]: https://github.com/mozilla/blurts-server/releases/new
 [grafana-dashboard]: https://earthangel-b40313e5.influxcloud.net/d/dEpkGp4Wz/fx-monitor?orgId=1&from=now-7d&to=now
 [e2e]: https://github.com/mozilla/blurts-server/actions/workflows/e2e_cron.yml
+[v2]: https://github.com/mozilla/blurts-server/actions/workflows/release_retag_v2.yaml
 [jira]: https://mozilla-hub.atlassian.net/jira/software/c/projects/MNTOR/boards/447
 [dockerhub]: https://hub.docker.com/r/mozilla/blurts-server/tags
 [1-click deploy]: https://github.com/mozilla/blurts-server/actions/workflows/production_deploy.yml

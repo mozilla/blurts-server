@@ -65,7 +65,11 @@ export const ViewDataBrokersView = (props: Props) => {
         <div className={styles.buttonsWrapper}>
           <TelemetryButton
             variant="primary"
-            href="/user/dashboard/fix/data-broker-profiles/automatic-remove"
+            href={
+              props.enabledFeatureFlags.includes("SubscriptionPlansPage")
+                ? "/subscription-plans"
+                : "/user/dashboard/fix/data-broker-profiles/automatic-remove"
+            }
             event={{
               module: "upgradeIntent",
               name: "click",

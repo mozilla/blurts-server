@@ -76,9 +76,13 @@ export const featureFlagNames = [
   "PrivacyProductsBundle",
   "DisableOneRepScans",
   "DisableLandingToDashboardRedirect",
+  "SubscriptionPlansPage",
 ] as const;
 
-export const adminOnlyFlags: FeatureFlagName[] = ["CustomDataBrokers"];
+export const adminOnlyFlags: FeatureFlagName[] = [
+  "CustomDataBrokers",
+  "DisableLandingToDashboardRedirect",
+];
 
 export type FeatureFlagName = (typeof featureFlagNames)[number];
 

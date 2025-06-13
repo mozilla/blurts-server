@@ -5,47 +5,51 @@
 import { Session } from "next-auth";
 import { getBillingAndSubscriptions } from "../../../utils/fxa";
 import { getSubscriberByFxaUid } from "../../../db/tables/subscribers";
+import { logger } from "./logging";
 
 /* c8 ignore start */
-export async function checkUserHasMonthlySubscription(user: Session["user"]) {
-  if (!user.subscriber?.fxa_uid) {
+export type SubscriptionType = "yearly" | "monthly" | "bundle";
+
+export async function getUserSubscriptionType(
+  user: Session["user"],
+): Promise<SubscriptionType | undefined> {
+  const fxaUid = user.subscriber?.fxa_uid;
+  if (!fxaUid) {
     console.error("FXA UID not set");
-    return false;
-  }
-  const subscriber = await getSubscriberByFxaUid(user.subscriber.fxa_uid);
-  if (!subscriber || !subscriber.fxa_access_token) {
-    console.error("FXA token not set");
-    return false;
+    return;
   }
 
-  if (!process.env.PREMIUM_PLAN_ID_MONTHLY_US) {
-    console.error("Monthly Plan ID not set");
-    return false;
+  const subscriber = await getSubscriberByFxaUid(fxaUid);
+  if (!subscriber?.fxa_access_token) {
+    logger.error("FXA access token not set");
+    return;
   }
 
   const billingAndSubscriptionInfo = await getBillingAndSubscriptions(
     subscriber.fxa_access_token,
   );
-
-  if (billingAndSubscriptionInfo === null) {
-    return false;
+  if (!billingAndSubscriptionInfo) {
+    logger.error("Billing and subscription info is null");
+    return;
   }
 
   const monthlyPlanId = process.env.PREMIUM_PLAN_ID_MONTHLY_US;
-  const yearlyPlanId = process.env.PREMIUM_PLAN_ID_YEARLY_US ?? "";
+  const yearlyPlanId = process.env.PREMIUM_PLAN_ID_YEARLY_US;
+  const bundlePlanId = process.env.SUBPLAT_BUNDLE_PRICE_ID;
 
-  const subscriptions = billingAndSubscriptionInfo.subscriptions;
-
-  const planIds: string[] = [];
-  subscriptions.forEach((subscription) => {
-    planIds.push(subscription.plan_id);
-  });
-
-  if (planIds.includes(yearlyPlanId)) {
-    console.error("User has yearly plan set");
-    return false;
+  if (!monthlyPlanId || !yearlyPlanId || !bundlePlanId) {
+    logger.error("One or more plan IDs are not set in environment variables");
+    return;
   }
 
-  return planIds.includes(monthlyPlanId);
+  const planIds = billingAndSubscriptionInfo.subscriptions.map(
+    (sub) => sub.plan_id,
+  );
+
+  if (planIds.includes(yearlyPlanId)) return "yearly";
+  if (planIds.includes(bundlePlanId)) return "bundle";
+  if (planIds.includes(monthlyPlanId)) return "monthly";
+
+  return;
 }
 /* c8 ignore stop */

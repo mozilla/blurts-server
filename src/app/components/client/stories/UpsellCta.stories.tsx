@@ -9,11 +9,13 @@ import { UpsellBadge, UpsellButton } from "../toolbar/UpsellBadge";
 import { createUserWithPremiumSubscription } from "../../../../apiMocks/mockData";
 import { CountryCodeProvider } from "../../../../contextProviders/country-code";
 import { defaultExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
+import { FeatureFlagName } from "../../../../db/tables/featureFlags";
 
 type UpsellCtaWrapperProps = {
   countryCode: string;
   isBadge: boolean;
   user: Session["user"];
+  enabledFeatureFlags: FeatureFlagName[];
 };
 
 const UpsellCtaWrapper = (props: UpsellCtaWrapperProps) => {
@@ -43,6 +45,7 @@ const UpsellCtaWrapper = (props: UpsellCtaWrapperProps) => {
                 enabled: true,
               },
             }}
+            enabledFeatureFlags={props.enabledFeatureFlags}
           />
         ) : (
           <UpsellButton
