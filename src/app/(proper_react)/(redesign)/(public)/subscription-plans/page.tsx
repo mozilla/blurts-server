@@ -37,9 +37,14 @@ export default async function Page() {
 
   const l10n = getL10n(await getAcceptLangHeaderInServerComponents());
   const eligibleForPremium = isEligibleForPremium(countryCode);
-  const enabledFeatureFlags = await getEnabledFeatureFlags({
-    isSignedOut: true,
-  });
+  const enabledFeatureFlags = await getEnabledFeatureFlags(
+    typeof session?.user.subscriber?.fxa_uid === "string"
+      ? {
+          isSignedOut: false,
+          email: session.user.email,
+        }
+      : { isSignedOut: true },
+  );
 
   if (
     !eligibleForPremium ||
