@@ -13,13 +13,13 @@
 
 import { useEffect, useState } from "react";
 import styles from "./AnnouncementsAdmin.module.scss";
-import Image from "next/image";
 import { AnnouncementRow } from "knex/types/tables";
 import AnnouncementsModal from "./AnnouncementsModal";
 import { usePathname } from "next/navigation";
 import { LocalizedAnnouncementString } from "../../../../../components/client/toolbar/AnnouncementDialog";
 import { useL10n } from "../../../../../hooks/l10n";
 import { GroupedFluentAnnouncements } from "./getFluentStrings";
+import { ImageWithFallback } from "./ImageWithFallback";
 
 type Props = {
   announcements: AnnouncementRow[];
@@ -157,21 +157,8 @@ export const AnnouncementsAdmin = (props: Props) => {
     }
   }, [announcements, activeAnnouncementId]);
 
-  // States for each image
-  const [smallImageIsLoading, setSmallImageIsLoading] = useState(true);
-  const [bigImageIsLoading, setBigImageIsLoading] = useState(true);
-  const [smallImageUnavailable, setSmallImageUnavailable] = useState(false);
-  const [bigImageUnavailable, setBigImageUnavailable] = useState(false);
-
   const smallImagePath = `/images/announcements/${activeAnnouncement?.announcement_id.trim()}/small.svg`;
   const bigImagePath = `/images/announcements/${activeAnnouncement?.announcement_id.trim()}/big.svg`;
-
-  useEffect(() => {
-    setSmallImageIsLoading(true);
-    setBigImageIsLoading(true);
-    setSmallImageUnavailable(false);
-    setBigImageUnavailable(false);
-  }, [activeAnnouncementId]);
 
   const sortedAnnouncements = [...announcements].sort((a, b) => {
     return new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime();
@@ -283,65 +270,27 @@ export const AnnouncementsAdmin = (props: Props) => {
 
                     <dt>Small Image</dt>
                     <dd>
-                      {smallImageIsLoading && !smallImageUnavailable && (
-                        <div className={styles.loader}>Loading...</div>
-                      )}
-                      {smallImageUnavailable ? (
-                        <Image
-                          alt="Fallback image"
-                          width={500}
-                          height={300}
-                          key={`${activeAnnouncement.id}-small-fallback`}
-                          className={styles.smallImage}
-                          src="/images/announcements/fallback/small.svg"
-                          onLoadingComplete={() =>
-                            setSmallImageIsLoading(false)
-                          }
-                        />
-                      ) : (
-                        <Image
-                          alt="Small Image"
-                          width={500}
-                          height={300}
-                          key={`${activeAnnouncement.id}-small`}
-                          src={smallImagePath}
-                          className={styles.smallImage}
-                          onLoadingComplete={() =>
-                            setSmallImageIsLoading(false)
-                          }
-                          onError={() => setSmallImageUnavailable(true)}
-                        />
-                      )}
+                      <ImageWithFallback
+                        src={smallImagePath}
+                        fallbackSrc="/images/announcements/fallback/small.svg"
+                        alt="Small Image"
+                        width={500}
+                        height={300}
+                        className={styles.smallImage}
+                      />
                     </dd>
 
                     {/* Big Image */}
                     <dt>Big Image</dt>
                     <dd>
-                      {bigImageIsLoading && !bigImageUnavailable && (
-                        <div className={styles.loader}>Loading...</div>
-                      )}
-                      {bigImageUnavailable ? (
-                        <Image
-                          alt="Fallback image"
-                          width={500}
-                          height={300}
-                          key={`${activeAnnouncement.id}-big-fallback`}
-                          className={styles.bigImage}
-                          src="/images/announcements/fallback/big.svg"
-                          onLoadingComplete={() => setBigImageIsLoading(false)}
-                        />
-                      ) : (
-                        <Image
-                          alt="Announcement preview"
-                          width={500}
-                          height={300}
-                          key={`${activeAnnouncement.id}-big`}
-                          src={bigImagePath}
-                          className={styles.bigImage}
-                          onLoadingComplete={() => setBigImageIsLoading(false)}
-                          onError={() => setBigImageUnavailable(true)}
-                        />
-                      )}
+                      <ImageWithFallback
+                        src={smallImagePath}
+                        fallbackSrc="/images/announcements/fallback/big.svg"
+                        alt="Big Image"
+                        width={500}
+                        height={300}
+                        className={styles.smallImage}
+                      />
                     </dd>
                     <dt>CTA Label</dt>
                     <dd>
@@ -404,29 +353,14 @@ export const AnnouncementsAdmin = (props: Props) => {
               {activeAnnouncement && (
                 <div className={styles.previewModalWrapper}>
                   <div className={styles.previewModal}>
-                    {bigImageIsLoading && (
-                      <div className={styles.loader}>Loading...</div>
-                    )}
-                    {bigImageUnavailable ? (
-                      <Image
-                        alt="Fallback image"
-                        width={500}
-                        height={300}
-                        key={activeAnnouncement.id}
-                        src="/images/announcements/fallback/big.svg"
-                        onLoadingComplete={() => setBigImageIsLoading(false)}
-                      />
-                    ) : (
-                      <Image
-                        alt="Announcement preview"
-                        width={500}
-                        height={300}
-                        key={activeAnnouncement.id}
-                        src={bigImagePath}
-                        onLoadingComplete={() => setBigImageIsLoading(false)}
-                        onError={() => setBigImageUnavailable(true)}
-                      />
-                    )}
+                    <ImageWithFallback
+                      src={bigImagePath}
+                      fallbackSrc="/images/announcements/fallback/big.svg"
+                      alt="Big Image"
+                      width={500}
+                      height={300}
+                      className={styles.bigImage}
+                    />
                     <dl>
                       <dt>
                         <span className={styles.missingLabelContainer}>
