@@ -540,11 +540,17 @@ export async function fetchLatestScanForProfile(
   | undefined
 > {
   const scans = await listScans(profileId);
-  // TODO MOSCARY: ensure we're getting the latest and check reason
-  const latestScan = scans.data[0];
-  if (latestScan.reason === reason) {
-    console.debug("reason matches:", reason);
-  }
+  const filteredScans =
+    typeof reason === "string"
+      ? scans.data.filter((scan) => scan.reason === reason)
+      : scans.data;
+  const sortedScans = filteredScans.toSorted((scanA, scanB) => {
+    return (
+      new Date(scanB.created_at).getTime() -
+      new Date(scanA.created_at).getTime()
+    );
+  });
+  const latestScan = sortedScans[0];
 
   return latestScan;
 }
