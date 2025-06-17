@@ -32,9 +32,6 @@ export const AnnouncementsAdmin = (props: Props) => {
   >(props.announcements[0]?.id || null);
   const [activeAnnouncementToEdit, setActiveAnnouncementToEdit] =
     useState<AnnouncementRow | null>(null);
-
-  console.log(props.fluentStrings);
-
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [announcements, setAnnouncements] = useState<AnnouncementRow[]>(
     props.announcements,
