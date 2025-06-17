@@ -32,66 +32,10 @@ type CreateProfileRequest = {
   name_suffix?: string;
   middle_name?: string;
 };
-
-// type UpdateProfileRequest = CreateProfileRequest & {
-//   first_names: {
-//     first_name: string;
-//   }[];
-//   last_names: {
-//     last_name: string;
-//   }[];
-//   middle_names: {
-//     middle_name: string;
-//   }[];
-//   phone_numbers: {
-//     number: string;
-//   }[];
-// };
-
-// interface UpdateableProfileDetails {
-//   first_name: string;
-//   last_name: string;
-//   first_names: string[];
-//   last_names: string[];
-//   middle_names: string[];
-//   phone_numbers: string[];
-//   addresses: ProfileAddress[];
-//   middle_name?: string;
-// }
-
-// type ShowProfileResponse = CreateProfileRequest & {
-//   id: number;
-//   status: "active" | "inactive";
-//   created_at: ISO8601DateString;
-//   updated_at: ISO8601DateString;
-//   url: `${string}/profiles/${number}`;
-// };
-// type CreateScanResponse = {
-//   id: number;
-//   profile_id: number;
-//   status: "in_progress";
-//   reason: "manual";
-//   created_at: ISO8601DateString;
-//   updated_at: ISO8601DateString;
-// };
+//
 // TODO MOSCARY: Replace references to these with MoscaryData["Scan"] and MoscaryData["ScanResult"]
 export type Scan = Components["schemas"]["Scan"];
 export type ScanResult = Components["schemas"]["ScanResult"];
-// type ProfileStats = {
-//   created: number;
-//   deleted: number;
-//   activated: number;
-//   reactivated: number;
-//   deactivated: number;
-//   total_active: number;
-//   total_inactive: number;
-//   total: number;
-// };
-
-// interface LatestBrokerScanData {
-//   scan: Scan;
-//   results: ScanResult[];
-// }
 
 async function moscaryFetch(
   path: `/api/v1/${string}`,
@@ -392,27 +336,6 @@ export async function listScanResults(
 //   return true;
 // }
 
-// export async function getScanDetails(
-//   profileId: number,
-//   scanId: number,
-// ): Promise<Scan> {
-//   const response = await internalFetch(
-//     `/api/v1/profiles/${profileId}/scans/${scanId}`,
-//     {
-//       method: "GET",
-//     },
-//   );
-//   if (!response.ok) {
-//     logger.error(
-//       `Failed to fetch scan details: [${response.status}] [${response.statusText}]`,
-//     );
-//     throw new Error(
-//       `Failed to fetch scan details: [${response.status}] [${response.statusText}]`,
-//     );
-//   }
-//   return response.json() as Promise<Scan>;
-// }
-
 export type ScanData = {
   scan: null | Components["schemas"]["Scan"];
   results: NonNullable<Components["schemas"]["ScanResult"][]>;
@@ -480,57 +403,6 @@ export async function fetchAllPages<Data>(
 
   return dataList.flat();
 }
-
-// // Local instance map to cache results to prevent excessive API requests
-// // Would be nice to share this cache with other pod via Redis in the future
-// const profileStatsCache = new Map<string, ProfileStats>();
-// export async function getProfilesStats(
-//   from?: Date,
-//   to?: Date,
-// ): Promise<ProfileStats | undefined> {
-//   const queryParams = new URLSearchParams();
-//   if (from) queryParams.set("from", from.toISOString().substring(0, 10));
-//   if (to) queryParams.set("to", to.toISOString().substring(0, 10));
-//   const queryParamsString = queryParams.toString();
-
-//   // check for cache map first
-//   if (profileStatsCache.has(queryParamsString))
-//     return profileStatsCache.get(queryParamsString);
-
-//   const response: Response = await internalFetch(
-//     `/api/v1/stats/profiles?${queryParamsString}`,
-//     {
-//       method: "GET",
-//     },
-//   );
-//   console.debug(response);
-//   if (!response.ok) {
-//     logger.error(
-//       `Failed to fetch profile stats: [${response.status}] [${response.statusText}]`,
-//     );
-//     // throw new Error(
-//     //   `Failed to fetch profile stats: [${response.status}] [${response.statusText}]`,
-//     // );
-//   }
-
-//   try {
-//     const profileStats: ProfileStats = await response.json();
-
-//     // cache results in map, with a flush hack to keep the size low
-//     if (profileStatsCache.size > 5) profileStatsCache.clear();
-//     profileStatsCache.set(queryParamsString, profileStats);
-//     return profileStats;
-//   } catch (e) {
-//     if (e instanceof Error) {
-//       logger.error("failed_fetching_stats", {
-//         stack: e.stack,
-//         message: e.message,
-//       });
-//     } else {
-//       logger.error("failed_fetching_stats", { e });
-//     }
-//   }
-// }
 
 export async function fetchLatestScanForProfile(
   profileId: SubscriberRow["moscary_id"],
