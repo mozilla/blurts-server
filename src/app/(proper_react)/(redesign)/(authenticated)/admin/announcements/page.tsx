@@ -28,10 +28,10 @@ export default async function DevPage() {
 
   return (
     <SubscriptionBillingProvider value={billing}>
-       <AnnouncementsAdmin
-      announcements={announcements}
-      fluentStrings={fluentStrings}
-    />
+      <AnnouncementsAdmin
+        announcements={announcements}
+        fluentStrings={fluentStrings}
+      />
     </SubscriptionBillingProvider>
   );
 }
