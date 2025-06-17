@@ -291,7 +291,7 @@ export const AnnouncementsAdmin = (props: Props) => {
                           alt="Fallback image"
                           width={500}
                           height={300}
-                          key={activeAnnouncement.id}
+                          key={`${activeAnnouncement.id}-small-fallback`}
                           className={styles.smallImage}
                           src="/images/announcements/fallback/small.svg"
                           onLoadingComplete={() =>
@@ -303,7 +303,7 @@ export const AnnouncementsAdmin = (props: Props) => {
                           alt="Small Image"
                           width={500}
                           height={300}
-                          key={activeAnnouncement.id}
+                          key={`${activeAnnouncement.id}-small`}
                           src={smallImagePath}
                           className={styles.smallImage}
                           onLoadingComplete={() =>
@@ -325,7 +325,7 @@ export const AnnouncementsAdmin = (props: Props) => {
                           alt="Fallback image"
                           width={500}
                           height={300}
-                          key={activeAnnouncement.id}
+                          key={`${activeAnnouncement.id}-big-fallback`}
                           className={styles.bigImage}
                           src="/images/announcements/fallback/big.svg"
                           onLoadingComplete={() => setBigImageIsLoading(false)}
@@ -335,7 +335,7 @@ export const AnnouncementsAdmin = (props: Props) => {
                           alt="Announcement preview"
                           width={500}
                           height={300}
-                          key={activeAnnouncement.id}
+                          key={`${activeAnnouncement.id}-big`}
                           src={bigImagePath}
                           className={styles.bigImage}
                           onLoadingComplete={() => setBigImageIsLoading(false)}
