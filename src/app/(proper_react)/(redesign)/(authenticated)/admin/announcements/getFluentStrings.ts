@@ -80,13 +80,13 @@ export async function getFluentStrings(): Promise<GroupedFluentAnnouncements> {
         result[id] = {};
       }
 
-      if (field === "title") {
-        result[id].title = value;
-      } else if (field === "description") {
-        result[id].description = value;
-      } else if (field === "cta-label") {
-        result[id].ctaLabel = value;
-      }
+      const map: Record<string, keyof AnnouncementGroup> = {
+        title: "title",
+        description: "description",
+        "cta-label": "ctaLabel",
+      };
+
+      result[id][map[field]] = value;
     }
   }
 
