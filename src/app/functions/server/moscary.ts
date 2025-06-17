@@ -4,6 +4,7 @@
 
 import { UUID } from "node:crypto";
 import { SubscriberRow } from "knex/types/tables";
+import { Session } from "next-auth";
 import type {
   components as Components,
   paths as Paths,
@@ -11,6 +12,7 @@ import type {
 import { logger } from "./logging";
 import { ISO8601DateString } from "../../../utils/parse";
 import { StateAbbr } from "../../../utils/states";
+import { getSubscriberByFxaUid } from "../../../db/tables/subscribers";
 
 export const monthlyScansQuota = parseInt(
   (process.env.MONTHLY_SCANS_QUOTA as string) ?? "0",
@@ -309,32 +311,35 @@ export async function listScanResults(
   >;
 }
 
-// export async function isEligibleForFreeScan(
-//   user: Session["user"],
-//   countryCode: string,
-// ) {
-//   if (countryCode !== "us") {
-//     return false;
-//   }
+export async function isEligibleForFreeScan(
+  user: Session["user"],
+  countryCode: string,
+) {
+  if (countryCode !== "us") {
+    return false;
+  }
 
-//   if (!user?.subscriber?.id) {
-//     throw new Error("No session with a known subscriber found");
-//   }
+  if (!user?.subscriber?.fxa_uid) {
+    throw new Error("No session with a known subscriber found");
+  }
+  const subscriber = await getSubscriberByFxaUid(user.subscriber.fxa_uid);
+  if (!subscriber) {
+    throw new Error("No subscriber found for current user.");
+  }
 
-//   const profileId = await getProfileId(user.subscriber.id);
-//   if (!profileId) {
-//     return true;
-//   }
+  if (!subscriber.moscary_id) {
+    return true;
+  }
 
-//   const scan = await fetchLatestScanForProfile(profileId, "manual");
+  const scan = await fetchLatestScanForProfile(subscriber.moscary_id, "manual");
 
-//   if (scan) {
-//     logger.warn("User has already used free scan");
-//     return false;
-//   }
+  if (scan) {
+    logger.warn("User has already used free scan");
+    return false;
+  }
 
-//   return true;
-// }
+  return true;
+}
 
 export type ScanData = {
   scan: null | Components["schemas"]["Scan"];

@@ -455,6 +455,7 @@ async function listScanResults(
   return response.json() as Promise<ListScanResultsResponse>;
 }
 
+/** @deprecated */
 export async function isEligibleForFreeScan(
   user: Session["user"],
   countryCode: string,

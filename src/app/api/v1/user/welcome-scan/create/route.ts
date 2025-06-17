@@ -10,7 +10,7 @@ import { getServerSession } from "../../../../../functions/server/getServerSessi
 import {
   createProfile as createOnerepProfile,
   createScan as createOnerepScan,
-  isEligibleForFreeScan,
+  isEligibleForFreeScan as isEligibleForFreeOnerepScan,
 } from "../../../../../functions/server/onerep";
 import type { CreateProfileRequest } from "../../../../../functions/server/onerep";
 import { meetsAgeRequirement } from "../../../../../functions/universal/user";
@@ -37,6 +37,7 @@ import { getEnabledFeatureFlags } from "../../../../../../db/tables/featureFlags
 import {
   createProfile,
   createScan,
+  isEligibleForFreeScan,
 } from "../../../../../functions/server/moscary";
 
 export interface WelcomeScanBody {
@@ -62,10 +63,14 @@ export async function POST(
     throw new Error("No fxa_uid found in session");
   }
 
-  const eligible = await isEligibleForFreeScan(
-    session.user,
-    getCountryCode(await headers()),
-  );
+  const enabledFeatureFlags = await getEnabledFeatureFlags({
+    email: session.user.email,
+  });
+
+  const countryCode = getCountryCode(await headers());
+  const eligible = enabledFeatureFlags.includes("Moscary")
+    ? await isEligibleForFreeScan(session.user, countryCode)
+    : await isEligibleForFreeOnerepScan(session.user, countryCode);
   if (!eligible) {
     logger.warn("scan_created_warn", {
       message: "User is not eligible for feature",
@@ -108,10 +113,6 @@ export async function POST(
   });
   const optionalInfoExperimentData =
     experimentData["Features"]["welcome-scan-optional-info"];
-
-  const enabledFeatureFlags = await getEnabledFeatureFlags({
-    email: session.user.email,
-  });
 
   const profileData: CreateProfileRequest = {
     first_name: firstName,
