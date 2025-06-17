@@ -4,7 +4,7 @@
 
 import { notFound, redirect } from "next/navigation";
 import { getServerSession } from "../../../../../../functions/server/getServerSession";
-import { isEligibleForFreeScan } from "../../../../../../functions/server/onerep";
+import { isEligibleForFreeScan as isEligibleForFreeOnerepScan } from "../../../../../../functions/server/onerep";
 import { View } from "../View";
 import { getAllBreachesCount } from "../../../../../../../db/tables/breaches";
 import { getCountryCode } from "../../../../../../functions/server/getCountryCode";
@@ -20,6 +20,7 @@ import {
   getL10n,
 } from "../../../../../../functions/l10n/serverComponents";
 import { getEnabledFeatureFlags } from "../../../../../../../db/tables/featureFlags";
+import { isEligibleForFreeScan } from "../../../../../../functions/server/moscary";
 
 const FreeScanSlug = "free-scan";
 
@@ -52,7 +53,13 @@ export default async function Onboarding(props: Props) {
 
   const headersList = await headers();
   const countryCode = getCountryCode(headersList);
-  const userIsEligible = await isEligibleForFreeScan(session.user, countryCode);
+  const enabledFeatureFlags = await getEnabledFeatureFlags({
+    email: session.user.email,
+  });
+
+  const userIsEligible = enabledFeatureFlags.includes("Moscary")
+    ? await isEligibleForFreeScan(session.user, countryCode)
+    : await isEligibleForFreeOnerepScan(session.user, countryCode);
 
   if (!userIsEligible) {
     console.error(
@@ -72,10 +79,6 @@ export default async function Onboarding(props: Props) {
     experimentationId,
     countryCode,
     locale: getLocale(getL10n(await getAcceptLangHeaderInServerComponents())),
-  });
-
-  const enabledFeatureFlags = await getEnabledFeatureFlags({
-    email: session.user.email,
   });
 
   return (

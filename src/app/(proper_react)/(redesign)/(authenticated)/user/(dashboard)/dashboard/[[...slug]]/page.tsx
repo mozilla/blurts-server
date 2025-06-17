@@ -27,7 +27,7 @@ import {
 import {
   activateAndOptoutProfile,
   getProfilesStats,
-  isEligibleForFreeScan,
+  isEligibleForFreeScan as isEligibleForFreeOnerepScan,
 } from "../../../../../../../functions/server/onerep";
 import { isEligibleForPremium } from "../../../../../../../functions/universal/premium";
 import {
@@ -53,6 +53,7 @@ import {
   fetchLatestScanForProfile,
   getScanAndResults,
   getScansCountForProfile,
+  isEligibleForFreeScan,
 } from "../../../../../../../functions/server/moscary";
 
 const dashboardTabSlugs = ["action-needed", "fixed"];
@@ -142,10 +143,9 @@ export default async function DashboardPage(props: Props) {
     countryCode,
   });
 
-  const userIsEligibleForFreeScan = await isEligibleForFreeScan(
-    session.user,
-    countryCode,
-  );
+  const userIsEligibleForFreeScan = enabledFeatureFlags.includes("Moscary")
+    ? await isEligibleForFreeScan(session.user, countryCode)
+    : await isEligibleForFreeOnerepScan(session.user, countryCode);
   const userIsEligibleForPremium = isEligibleForPremium(countryCode);
 
   const experimentationId = await getExperimentationId(session.user);
