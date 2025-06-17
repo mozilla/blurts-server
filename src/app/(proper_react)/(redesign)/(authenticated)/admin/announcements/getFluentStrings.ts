@@ -13,6 +13,7 @@ import type {
   PatternElement,
   Placeable,
 } from "@fluent/syntax";
+import { logger } from "../../../../../functions/server/logging";
 
 type AnnouncementGroup = {
   title?: string;
@@ -25,9 +26,16 @@ export type GroupedFluentAnnouncements = {
 };
 
 export async function getFluentStrings(): Promise<GroupedFluentAnnouncements> {
-  const ftlPath = path.resolve("locales-pending/announcements.ftl");
-  const raw = fs.readFileSync(ftlPath, "utf8");
-  const resource: Resource = parse(raw, { withSpans: false });
+  let resource: Resource | undefined;
+
+  try {
+    const ftlPath = path.resolve("locales-pending/announcements.ftl");
+    const raw = fs.readFileSync(ftlPath, "utf8");
+    resource = parse(raw, { withSpans: false });
+  } catch (error) {
+    logger.error("Could not parse announcements.ftl strings", error);
+    return {};
+  }
 
   const result: GroupedFluentAnnouncements = {};
 
