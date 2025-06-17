@@ -432,7 +432,7 @@ export const AnnouncementsAdmin = (props: Props) => {
                   }}
                 />
               </span>
-              <ul>
+              <ul className={styles.noList}>
                 {Object.entries(props.fluentStrings)
                   .filter(([id, entry]) => {
                     const q = searchQuery.toLowerCase();
