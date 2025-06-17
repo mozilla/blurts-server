@@ -38,7 +38,10 @@ import { validateEmailAddress } from "../../../../../../../utils/emailAddress";
 import { updateOnerepDataBrokerScanProfile } from "../../../../../../functions/server/updateDataBrokerScanProfile";
 import { hasPremium } from "../../../../../../functions/universal/user";
 import { getEnabledFeatureFlags } from "../../../../../../../db/tables/featureFlags";
-import { updateProfile } from "../../../../../../functions/server/moscary";
+import {
+  getProfile,
+  updateProfile,
+} from "../../../../../../functions/server/moscary";
 import { type NormalizedProfileData } from "./panels/SettingsPanelEditProfile/EditProfileForm";
 
 export type AddEmailFormState =
@@ -306,6 +309,9 @@ export async function onHandleUpdateProfileData(
     }
 
     try {
+      const existingProfile = await getProfile(
+        session.user.subscriber.moscary_id,
+      );
       const {
         first_name,
         middle_name,
@@ -325,6 +331,10 @@ export async function onHandleUpdateProfileData(
         phone_numbers,
         addresses,
         middle_name: middle_name ?? "",
+        // The user is not allowed to change their date of birth:
+        // https://support.mozilla.org/en-US/kb/add-edit-your-monitor-information#w_why-can-i-not-edit-my-birth-date
+        // Moscary could also consider blocking this.
+        birth_date: existingProfile.birth_date,
       });
     } catch (error) {
       logger.error("Could not update profile details:", error);
