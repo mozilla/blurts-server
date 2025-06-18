@@ -49,6 +49,8 @@ export const MobileShell = (props: Props) => {
   const recordTelemetry = useTelemetry();
   const pathname = usePathname();
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const isAuthenticated =
+    typeof props.session?.user.subscriber?.fxa_uid === "string";
   const isOnDashboard = pathname === "/user/dashboard";
   const isOnSubscriptionPlans = pathname === "/subscription-plans";
 
@@ -78,7 +80,7 @@ export const MobileShell = (props: Props) => {
       <header className={styles.header}>
         <div className={styles.headerStart}>
           <Link
-            href="/"
+            href={isAuthenticated ? "/user/dashboard" : "/"}
             className={styles.homeLink}
             onClick={() => {
               recordTelemetry("ctaButton", "click", {
