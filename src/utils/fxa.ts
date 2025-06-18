@@ -256,8 +256,7 @@ async function getBillingAndSubscriptions(
   } catch (e) {
     if (e instanceof Error) {
       logger.error("get_fxa_billing_subscriptions", {
-        stack: e.stack,
-        message: e.message,
+        message: JSON.stringify(e.message),
       });
     }
     return null;

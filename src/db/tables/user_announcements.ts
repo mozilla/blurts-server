@@ -109,9 +109,9 @@ export async function initializeUserAnnouncements(
         case "free_users":
           return !isPremium && isUS;
         case "has_run_scan":
-          return hasRunScan;
+          return hasRunScan && isUS;
         case "has_not_run_scan":
-          return !hasRunScan;
+          return !hasRunScan && isUS;
         case "non_us":
           return !isUS;
         case "monthly_user":
