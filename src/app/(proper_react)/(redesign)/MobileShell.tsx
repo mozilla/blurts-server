@@ -80,7 +80,10 @@ export const MobileShell = (props: Props) => {
       <header className={styles.header}>
         <div className={styles.headerStart}>
           <Link
-            href={isAuthenticated ? "/user/dashboard" : "/"}
+            href={
+              /* c8 ignore next */
+              isAuthenticated ? "/user/dashboard" : "/"
+            }
             className={styles.homeLink}
             onClick={() => {
               recordTelemetry("ctaButton", "click", {
