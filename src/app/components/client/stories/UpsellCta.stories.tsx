@@ -53,6 +53,7 @@ const UpsellCtaWrapper = (props: UpsellCtaWrapperProps) => {
             monthlySubscriptionUrl={monthlySubscriptionUrl}
             yearlySubscriptionUrl={yearlySubscriptionUrl}
             subscriptionBillingAmount={subscriptionBillingAmount}
+            enabledFeatureFlags={props.enabledFeatureFlags}
           />
         )}
       </CountryCodeProvider>
