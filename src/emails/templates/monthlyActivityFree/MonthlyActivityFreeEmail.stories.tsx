@@ -217,3 +217,22 @@ export const MonthlyReportFreeUserWithScanExpiredSubscriptionWithPastExposures: 
       } as SanitizedSubscriberRow,
     },
   };
+
+export const MonthlyReportFreeUserWithDisabledScans: Story = {
+  name: "With Disabled Scans",
+  args: {
+    enabledFeatureFlags: ["DisableOneRepScans"],
+    dataSummary: {
+      ...mockedDataSummary,
+      dataBreachResolvedNum: 0,
+      dataBrokerAutoFixedDataPointsNum: 10,
+    },
+    subscriber: {
+      onerep_profile_id: 1,
+      fxa_profile_json: {
+        locale: "en-US",
+        subscriptions: ["not-monitor-plus"],
+      },
+    } as SanitizedSubscriberRow,
+  },
+};

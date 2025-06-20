@@ -114,3 +114,19 @@ export const BreachAlertEmailUsPlusWithScanStory: Story = {
     ),
   },
 };
+
+export const BreachAlertEmailDisabledScans: Story = {
+  name: "Breach alert/US Free, Disabled Scans",
+  args: {
+    breach: createRandomHibpListing(),
+    breachedEmail: "example@example.com",
+    enabledFeatureFlags: ["DisableOneRepScans"],
+    subscriber: {
+      onerep_profile_id: 1,
+    } as SubscriberRow,
+    dataSummary: getDashboardSummary(
+      Array.from({ length: 5 }, () => createRandomScanResult()),
+      Array.from({ length: 5 }, () => createRandomBreach()),
+    ),
+  },
+};

@@ -18,6 +18,7 @@ import { EmailBanner } from "../../components/EmailBanner";
 import { DataPointCount } from "../../components/EmailDataPointCount";
 import { HeaderStyles, MetaTags } from "../../components/HeaderStyles";
 import { FeatureFlagName } from "../../../db/tables/featureFlags";
+import { CONST_URL_WAITLIST } from "../../../constants";
 
 export type BreachAlertEmailProps = {
   l10n: ExtendedReactLocalization;
@@ -243,10 +244,18 @@ export const BreachAlertEmail = (props: BreachAlertEmailProps) => {
               content={l10n.getString(
                 "email-breach-alert-plus-upgrade-banner-content",
               )}
-              ctaLabel={l10n.getString(
-                "email-breach-alert-plus-upgrade-banner-cta-label",
-              )}
-              ctaTarget={premiumSubscriptionUrlObject.href}
+              ctaLabel={
+                props.enabledFeatureFlags.includes("DisableOneRepScans")
+                  ? l10n.getString("landing-premium-max-scan-waitlist")
+                  : l10n.getString(
+                      "email-breach-alert-plus-upgrade-banner-cta-label",
+                    )
+              }
+              ctaTarget={
+                props.enabledFeatureFlags.includes("DisableOneRepScans")
+                  ? CONST_URL_WAITLIST
+                  : premiumSubscriptionUrlObject.href
+              }
             />
           ))}
         <RedesignedEmailFooter l10n={l10n} utm_campaign={utmCampaignId} />
