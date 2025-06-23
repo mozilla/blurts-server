@@ -8,7 +8,6 @@ import { EmailHero } from "../../components/EmailHero";
 import { DataPointCount } from "../../components/EmailDataPointCount";
 import { DashboardSummary } from "../../../app/functions/server/dashboard";
 import { EmailBanner } from "../../components/EmailBanner";
-import { getPremiumSubscriptionUrl } from "../../../app/functions/server/getPremiumSubscriptionInfo";
 import { isEligibleForPremium } from "../../../app/functions/universal/premium";
 import { getSignupLocaleCountry } from "../../functions/getSignupLocaleCountry";
 import { HeaderStyles, MetaTags } from "../../components/HeaderStyles";
@@ -79,10 +78,7 @@ export const MonthlyActivityFreeEmail = (
   };
 
   const unlockWithMonitorPlusCta = modifyAttributionsForUrl(
-    getPremiumSubscriptionUrl({
-      type: "yearly",
-      enabledFeatureFlags: props.enabledFeatureFlags,
-    }),
+    `${process.env.SERVER_URL}/link/subscribe/yearly`,
     {
       ...replaceValues,
       utm_content: `unlock-with-monitor-plus${utmContentSuffix}`,
