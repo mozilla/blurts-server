@@ -107,7 +107,10 @@ export default async function DashboardPage(props: Props) {
 
   let hasRunScan = false;
   let onerepProfileId: number | null = null;
-  if (typeof subscriber.moscary_id !== "undefined") {
+  if (
+    typeof subscriber.moscary_id !== "undefined" &&
+    subscriber.moscary_id !== null
+  ) {
     hasRunScan = true;
   } else if (!enabledFeatureFlags.includes("Moscary")) {
     onerepProfileId = await getOnerepProfileId(subscriber.id);
