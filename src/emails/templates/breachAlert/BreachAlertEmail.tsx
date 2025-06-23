@@ -11,7 +11,6 @@ import { getLocale } from "../../../app/functions/universal/getLocale";
 import { isEligibleForPremium } from "../../../app/functions/universal/premium";
 import { hasPremium } from "../../../app/functions/universal/user";
 import { getSignupLocaleCountry } from "../../functions/getSignupLocaleCountry";
-import { getPremiumSubscriptionUrl } from "../../../app/functions/server/getPremiumSubscriptionInfo";
 import { DashboardSummary } from "../../../app/functions/server/dashboard";
 import { ResolutionRelevantBreachDataTypes } from "../../../app/functions/universal/breach";
 import { EmailBanner } from "../../components/EmailBanner";
@@ -65,10 +64,7 @@ export const BreachAlertEmail = (props: BreachAlertEmailProps) => {
   }
 
   const premiumSubscriptionUrlObject = new URL(
-    getPremiumSubscriptionUrl({
-      type: "yearly",
-      enabledFeatureFlags: props.enabledFeatureFlags,
-    }),
+    `${process.env.SERVER_URL}/link/subscribe/yearly`,
   );
   premiumSubscriptionUrlObject.searchParams.set("utm_medium", "product-email");
   premiumSubscriptionUrlObject.searchParams.set(
