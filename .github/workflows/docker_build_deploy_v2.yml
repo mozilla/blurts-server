@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: build
     env:
-      GAR_IMAGE_BASE: ${{ vars.GAR_REPO }}/blurts-server # Base name for GAR image
+      GAR_IMAGE_BASE: ${{ vars.GAR_REPO }}/${{ github.event.repository.name }} # Base name for GAR image
       GAR_REGISTRY: us-docker.pkg.dev
     steps:
       - name: Check out the repo
