@@ -68,6 +68,8 @@ export function UpsellButton(
       <Button {...triggerProps} variant="primary" small>
         {props.label}
       </Button>
+      {/* Test already handled in Dashboard tests */
+      /* c8 ignore next 4 */}
       {dialogState.isOpen &&
         (props.enabledFeatureFlags.includes("DisableOneRepScans") ? (
           <WaitlistDialog dialogTriggerState={dialogState} {...overlayProps} />
