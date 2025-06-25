@@ -721,7 +721,10 @@ describe("Settings page", () => {
       const emailAddressInput = screen.getByLabelText("Email address");
       await user.type(emailAddressInput, "new_address@example.com[Enter]");
 
-      expect(mockedActions.onAddEmail).toHaveBeenCalledWith({}, "TODO");
+      expect(mockedActions.onAddEmail).toHaveBeenCalledWith(
+        {},
+        "TODO" as never,
+      );
     });
 
     describe("to learn about usage", () => {
