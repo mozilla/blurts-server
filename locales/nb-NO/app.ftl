@@ -208,13 +208,26 @@ footer-external-link-faq-tooltip = Ofte stilte spørsmål
 #   $errorCode (number) - "404"
 error-page-error-404-title = { $errorCode } Fant ikke siden
 error-page-error-404-copy = Beklager, siden du leter etter finnes ikke lenger.
+error-page-error-404-cta-button = Gå tilbake
+# Variables:
+#   $errorCode (number) - the status code of the error, e.g. 403
+error-page-error-other-title = { $errorCode } Noe gikk galt
 
 ## Breach overview page
 
+all-breaches-headline-3 = Database over datalekkasjer
+all-breaches-lead = Vi overvåker alle kjente datalekkasjer for å finne ut om dine personopplysninger har blitt kompromittert. Her er en komplett liste over alle datalekkasjene som er rapportert siden 2007.
 search-breaches = Søk etter datalekkasjer
+# the kind of user data exposed to hackers in data breach.
+exposed-data = Eksponerte data:
 
 ## Public breach detail page
 
+find-out-if-2 = Finn ut om du var involvert i denne datalekkasjen
+breach-detail-cta-signup = Se etter datalekkasjer
 
 ## Firefox Monitor -> Mozilla Monitor rebrand banner
 
+banner-monitor-rebrand-dismiss-button-label = OK
+banner-monitor-rebrand-dismiss-button-tooltip = Ignorer
+loading-accessibility = Laster
