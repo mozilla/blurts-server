@@ -23,7 +23,7 @@ import Meta, {
   LandingRedesignUsScanLimitWithPrivacyProductBundle,
   LandingRedesignUsWithPrivacyProductBundle,
 } from "./LandingViewRedesign.stories";
-import { useTelemetry } from "../../../../hooks/useTelemetry";
+import { useTelemetry as useTelemetryImported } from "../../../../hooks/useTelemetry";
 import { deleteAllCookies } from "../../../../functions/client/deleteAllCookies";
 import { Cookies } from "react-cookie";
 
@@ -46,6 +46,14 @@ jest.mock("next/navigation", () => {
 });
 
 jest.mock("../../../../hooks/useTelemetry");
+// We need to override the types of `useTelemetry` here, because otherwise
+// Jest infers incorrect types in `toHaveBeenCalledWith`, and throws an error.
+// See https://github.com/jestjs/jest/issues/15703
+const useTelemetry = useTelemetryImported as () => (
+  module: string,
+  eventName: string,
+  data: Record<string, string>,
+) => void;
 
 beforeEach(() => {
   // For reasons that are unclear to me, the mock implementation defind in the

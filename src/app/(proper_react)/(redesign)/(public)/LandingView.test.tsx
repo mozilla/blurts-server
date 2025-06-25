@@ -19,7 +19,7 @@ import {
 import { userEvent } from "@testing-library/user-event";
 import { axe } from "jest-axe";
 import { signIn, useSession } from "next-auth/react";
-import { useTelemetry } from "../../../hooks/useTelemetry";
+import { useTelemetry as useTelemetryImported } from "../../../hooks/useTelemetry";
 import Meta, {
   LandingNonUs,
   LandingNonUsDe,
@@ -49,6 +49,14 @@ jest.mock("next/navigation", () => ({
 }));
 
 jest.mock("../../../hooks/useTelemetry");
+// We need to override the types of `useTelemetry` here, because otherwise
+// Jest infers incorrect types in `toHaveBeenCalledWith`, and throws an error.
+// See https://github.com/jestjs/jest/issues/15703
+const useTelemetry = useTelemetryImported as () => (
+  module: string,
+  eventName: string,
+  data: Record<string, string>,
+) => void;
 
 beforeEach(() => {
   // For reasons that are unclear to me, the mock implementation defind in the
