@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { describe, it, expect } from "@jest/globals";
-import { faker } from "@faker-js/faker/.";
+import { faker } from "@faker-js/faker";
 import fetchWithDelay from "./fetchWithDelay";
 
 describe("fetchWithDelay", () => {

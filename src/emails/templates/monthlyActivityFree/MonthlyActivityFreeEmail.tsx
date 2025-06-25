@@ -8,7 +8,6 @@ import { EmailHero } from "../../components/EmailHero";
 import { DataPointCount } from "../../components/EmailDataPointCount";
 import { DashboardSummary } from "../../../app/functions/server/dashboard";
 import { EmailBanner } from "../../components/EmailBanner";
-import { getPremiumSubscriptionUrl } from "../../../app/functions/server/getPremiumSubscriptionInfo";
 import { isEligibleForPremium } from "../../../app/functions/universal/premium";
 import { getSignupLocaleCountry } from "../../functions/getSignupLocaleCountry";
 import { HeaderStyles, MetaTags } from "../../components/HeaderStyles";
@@ -16,6 +15,7 @@ import { SanitizedSubscriberRow } from "../../../app/functions/server/sanitize";
 import { sumSanitizedDataPoints } from "../../functions/reduceSanitizedDataPoints";
 import { modifyAttributionsForUrl } from "../../../app/functions/universal/attributions";
 import { FeatureFlagName } from "../../../db/tables/featureFlags";
+import { CONST_URL_WAITLIST } from "../../../constants";
 
 export type MonthlyActivityFreeEmailProps = {
   l10n: ExtendedReactLocalization;
@@ -78,10 +78,7 @@ export const MonthlyActivityFreeEmail = (
   };
 
   const unlockWithMonitorPlusCta = modifyAttributionsForUrl(
-    getPremiumSubscriptionUrl({
-      type: "yearly",
-      enabledFeatureFlags: props.enabledFeatureFlags,
-    }),
+    `${process.env.SERVER_URL}/link/subscribe/yearly`,
     {
       ...replaceValues,
       utm_content: `unlock-with-monitor-plus${utmContentSuffix}`,
@@ -269,21 +266,36 @@ export const MonthlyActivityFreeEmail = (
                   </mj-text>
                 </mj-column>
               </mj-group>
-              {hasRunFreeScan && (
-                <mj-column width="100%">
-                  <mj-button
-                    href={unlockWithMonitorPlusCta}
-                    background-color="transparent"
-                    color="#0060DF"
-                    text-decoration="underline"
-                    inner-padding="0"
-                    text-align="left"
-                  >
-                    {l10n.getString("email-monthly-report-free-upgrade-cta")}
-                  </mj-button>
-                </mj-column>
-              )}
-
+              {hasRunFreeScan &&
+                !props.enabledFeatureFlags.includes("DisableOneRepScans") && (
+                  <mj-column width="100%">
+                    <mj-button
+                      href={unlockWithMonitorPlusCta}
+                      background-color="transparent"
+                      color="#0060DF"
+                      text-decoration="underline"
+                      inner-padding="0"
+                      text-align="left"
+                    >
+                      {l10n.getString("email-monthly-report-free-upgrade-cta")}
+                    </mj-button>
+                  </mj-column>
+                )}
+              {hasRunFreeScan &&
+                props.enabledFeatureFlags.includes("DisableOneRepScans") && (
+                  <mj-column width="100%">
+                    <mj-button
+                      href={CONST_URL_WAITLIST}
+                      background-color="transparent"
+                      color="#0060DF"
+                      text-decoration="underline"
+                      inner-padding="0"
+                      text-align="left"
+                    >
+                      {l10n.getString("landing-premium-max-scan-waitlist")}
+                    </mj-button>
+                  </mj-column>
+                )}
               <mj-column width="100%" border-top="8px">
                 <mj-button
                   href={`${process.env.SERVER_URL}/user/dashboard/action-needed?utm_source=${utmValues.utmSource}&utm_medium=${utmValues.utmMedium}&utm_campaign=${utmValues.utmCampaign}&utm_content=view-details${utmContentSuffix}`}

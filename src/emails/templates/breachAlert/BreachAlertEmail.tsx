@@ -11,13 +11,13 @@ import { getLocale } from "../../../app/functions/universal/getLocale";
 import { isEligibleForPremium } from "../../../app/functions/universal/premium";
 import { hasPremium } from "../../../app/functions/universal/user";
 import { getSignupLocaleCountry } from "../../functions/getSignupLocaleCountry";
-import { getPremiumSubscriptionUrl } from "../../../app/functions/server/getPremiumSubscriptionInfo";
 import { DashboardSummary } from "../../../app/functions/server/dashboard";
 import { ResolutionRelevantBreachDataTypes } from "../../../app/functions/universal/breach";
 import { EmailBanner } from "../../components/EmailBanner";
 import { DataPointCount } from "../../components/EmailDataPointCount";
 import { HeaderStyles, MetaTags } from "../../components/HeaderStyles";
 import { FeatureFlagName } from "../../../db/tables/featureFlags";
+import { CONST_URL_WAITLIST } from "../../../constants";
 
 export type BreachAlertEmailProps = {
   l10n: ExtendedReactLocalization;
@@ -64,10 +64,7 @@ export const BreachAlertEmail = (props: BreachAlertEmailProps) => {
   }
 
   const premiumSubscriptionUrlObject = new URL(
-    getPremiumSubscriptionUrl({
-      type: "yearly",
-      enabledFeatureFlags: props.enabledFeatureFlags,
-    }),
+    `${process.env.SERVER_URL}/link/subscribe/yearly`,
   );
   premiumSubscriptionUrlObject.searchParams.set("utm_medium", "product-email");
   premiumSubscriptionUrlObject.searchParams.set(
@@ -243,10 +240,18 @@ export const BreachAlertEmail = (props: BreachAlertEmailProps) => {
               content={l10n.getString(
                 "email-breach-alert-plus-upgrade-banner-content",
               )}
-              ctaLabel={l10n.getString(
-                "email-breach-alert-plus-upgrade-banner-cta-label",
-              )}
-              ctaTarget={premiumSubscriptionUrlObject.href}
+              ctaLabel={
+                props.enabledFeatureFlags.includes("DisableOneRepScans")
+                  ? l10n.getString("landing-premium-max-scan-waitlist")
+                  : l10n.getString(
+                      "email-breach-alert-plus-upgrade-banner-cta-label",
+                    )
+              }
+              ctaTarget={
+                props.enabledFeatureFlags.includes("DisableOneRepScans")
+                  ? CONST_URL_WAITLIST
+                  : premiumSubscriptionUrlObject.href
+              }
             />
           ))}
         <RedesignedEmailFooter l10n={l10n} utm_campaign={utmCampaignId} />

@@ -28,8 +28,9 @@ export async function getUserSubscriptionType(
   const billingAndSubscriptionInfo = await getBillingAndSubscriptions(
     subscriber.fxa_access_token,
   );
+
   if (!billingAndSubscriptionInfo) {
-    logger.error("Billing and subscription info is null");
+    logger.error("Billing and subscription info is null", subscriber.id);
     return;
   }
 
