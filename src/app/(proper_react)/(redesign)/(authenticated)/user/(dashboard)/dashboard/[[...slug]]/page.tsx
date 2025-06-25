@@ -177,10 +177,7 @@ export default async function DashboardPage(props: Props) {
         `${enabledFeatureFlags.includes("SubPlat3") ? "?" : "&"}${additionalSubplatParams.toString()}`
       : "";
   const elapsedTimeInDaysSinceInitialScan =
-    await getElapsedTimeInDaysSinceInitialScan(
-      session.user,
-      enabledFeatureFlags,
-    );
+    await getElapsedTimeInDaysSinceInitialScan(subscriber, enabledFeatureFlags);
 
   const userAnnouncements = await initializeUserAnnouncements(session.user);
 
