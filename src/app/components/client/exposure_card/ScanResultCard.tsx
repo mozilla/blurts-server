@@ -25,8 +25,8 @@ export type ScanResultCardProps = {
   resolutionCta: ReactNode;
   isPremiumUser: boolean;
   isExpanded: boolean;
+  enabledFeatureFlags: FeatureFlagName[];
   isOnManualRemovePage?: boolean;
-  enabledFeatureFlags?: FeatureFlagName[];
   experimentData?: ExperimentData["Features"];
   removalTimeEstimate?: number;
   onToggleExpanded: () => void;
@@ -113,7 +113,7 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
         link_id: "clicked_upsell",
       }}
       href={
-        props.enabledFeatureFlags?.includes("SubscriptionPlansPage")
+        props.enabledFeatureFlags.includes("SubscriptionPlansPage")
           ? "/subscription-plans"
           : "/user/dashboard/fix/data-broker-profiles/automatic-remove"
       }
@@ -126,9 +126,7 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
 
     if (
       // TODO: MNTOR-3886 - Remove EnableRemovalUnderMaintenanceStep feature flag
-      props.enabledFeatureFlags?.includes(
-        "EnableRemovalUnderMaintenanceStep",
-      ) &&
+      props.enabledFeatureFlags.includes("EnableRemovalUnderMaintenanceStep") &&
       isDataBrokerUnderMaintenance(props.scanResult)
     ) {
       if (scanResult.manually_resolved) {
@@ -156,7 +154,7 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
     // if a data broker is not manually resolved
     switch (scanResult.status) {
       case "waiting_for_verification":
-        if (props.enabledFeatureFlags?.includes("AdditionalRemovalStatuses")) {
+        if (props.enabledFeatureFlags.includes("AdditionalRemovalStatuses")) {
           return l10n.getFragment(
             "exposure-card-description-info-for-sale-requested-removal-dashboard",
             {
@@ -218,8 +216,8 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
 
   const attemptCount = scanResult.optout_attempts ?? 0;
   const statusPillNote =
-    props.enabledFeatureFlags?.includes("AdditionalRemovalStatuses") &&
-    props.enabledFeatureFlags?.includes("DataBrokerRemovalAttempts") &&
+    props.enabledFeatureFlags.includes("AdditionalRemovalStatuses") &&
+    props.enabledFeatureFlags.includes("DataBrokerRemovalAttempts") &&
     !scanResult.manually_resolved &&
     scanResult.status === "waiting_for_verification" &&
     attemptCount >= 1 &&
@@ -264,9 +262,7 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
 
     if (
       // TODO: MNTOR-3886 - Remove EnableRemovalUnderMaintenanceStep feature flag
-      props.enabledFeatureFlags?.includes(
-        "EnableRemovalUnderMaintenanceStep",
-      ) &&
+      props.enabledFeatureFlags.includes("EnableRemovalUnderMaintenanceStep") &&
       isDataBrokerUnderMaintenance(props.scanResult)
     ) {
       return <span>{props.resolutionCta}</span>;
@@ -319,7 +315,7 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
               {dateFormatter.format(scanResult.created_at)}
             </dd>
             {props.isPremiumUser &&
-              props.enabledFeatureFlags?.includes(
+              props.enabledFeatureFlags.includes(
                 "DataBrokerRemovalTimeEstimateLabel",
               ) &&
               props.experimentData?.["data-broker-removal-time-estimates"]

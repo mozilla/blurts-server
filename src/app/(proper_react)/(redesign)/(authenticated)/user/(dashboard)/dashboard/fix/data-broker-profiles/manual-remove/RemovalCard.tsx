@@ -12,12 +12,14 @@ import { useState } from "react";
 import { getLocale } from "../../../../../../../../../functions/universal/getLocale";
 import { useTelemetry } from "../../../../../../../../../hooks/useTelemetry";
 import { ScanResultCard } from "../../../../../../../../../components/client/exposure_card/ScanResultCard";
+import { FeatureFlagName } from "../../../../../../../../../../db/tables/featureFlags";
 
 export type Props = {
   scanResult: OnerepScanResultDataBrokerRow;
   isPremiumUser: boolean;
   isEligibleForPremium: boolean;
   isExpanded: boolean;
+  enabledFeatureFlags: FeatureFlagName[];
   setExpanded: () => void;
 };
 
@@ -74,6 +76,7 @@ export const RemovalCard = (props: Props) => {
       }
       isExpanded={props.isExpanded}
       onToggleExpanded={props.setExpanded}
+      enabledFeatureFlags={props.enabledFeatureFlags}
     />
   );
 };
