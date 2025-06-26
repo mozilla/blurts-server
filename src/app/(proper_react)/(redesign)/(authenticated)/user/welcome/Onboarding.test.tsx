@@ -9,7 +9,7 @@ import { composeStory } from "@storybook/react";
 import { type ReactNode } from "react";
 import { axe } from "jest-axe";
 import Meta, { Onboarding } from "./Onboarding.stories";
-import { useTelemetry } from "../../../../../hooks/useTelemetry";
+import { useTelemetry as useTelemetryImported } from "../../../../../hooks/useTelemetry";
 
 jest.mock("next/navigation", () => ({
   useRouter: () => ({
@@ -31,6 +31,14 @@ jest.mock("react-aria", () => ({
 }));
 
 jest.mock("../../../../../hooks/useTelemetry");
+// We need to override the types of `useTelemetry` here, because otherwise
+// Jest infers incorrect types in `toHaveBeenCalledWith`, and throws an error.
+// See https://github.com/jestjs/jest/issues/15703
+const useTelemetry = useTelemetryImported as () => (
+  module: string,
+  eventName: string,
+  data: Record<string, string>,
+) => void;
 jest.mock("../../../../../hooks/locationSuggestions");
 
 it("passes the axe accessibility test suite on step 1", async () => {
