@@ -56,12 +56,12 @@ describe("Update broker scan profile", () => {
       getProfileDetails: jest.fn(() => Promise.resolve(currentProfileDetails)),
       updateProfileDetails: jest.fn(),
     }));
-    const updateDataBrokerScanProfile = (
-      await import("./updateDataBrokerScanProfile")
-    ).default;
+    const { updateOnerepDataBrokerScanProfile } = await import(
+      "./updateDataBrokerScanProfile"
+    );
 
     expect(() =>
-      updateDataBrokerScanProfile(5678, {
+      updateOnerepDataBrokerScanProfile(5678, {
         ...newProfileDetails,
         first_names: ["First02", "First03"],
         last_names: ["Last02"],
@@ -76,12 +76,12 @@ describe("Update broker scan profile", () => {
       getProfileDetails: jest.fn(() => Promise.resolve(currentProfileDetails)),
       updateProfileDetails: jest.fn(),
     }));
-    const updateDataBrokerScanProfile = (
-      await import("./updateDataBrokerScanProfile")
-    ).default;
+    const { updateOnerepDataBrokerScanProfile } = await import(
+      "./updateDataBrokerScanProfile"
+    );
 
     expect(() =>
-      updateDataBrokerScanProfile(5678, {
+      updateOnerepDataBrokerScanProfile(5678, {
         ...newProfileDetails,
         phone_numbers: ["()/;"],
       }),
@@ -98,12 +98,12 @@ describe("Update broker scan profile", () => {
       ),
       updateProfileDetails: jest.fn(),
     }));
-    const updateDataBrokerScanProfile = (
-      await import("./updateDataBrokerScanProfile")
-    ).default;
+    const { updateOnerepDataBrokerScanProfile } = await import(
+      "./updateDataBrokerScanProfile"
+    );
 
     await expect(() =>
-      updateDataBrokerScanProfile(5678, newProfileDetails),
+      updateOnerepDataBrokerScanProfile(5678, newProfileDetails),
     ).rejects.toThrow("No profile found for: [5678]");
   });
 
@@ -112,12 +112,12 @@ describe("Update broker scan profile", () => {
       getProfileDetails: jest.fn(() => Promise.resolve(currentProfileDetails)),
       updateProfileDetails: jest.fn(),
     }));
-    const updateDataBrokerScanProfile = (
-      await import("./updateDataBrokerScanProfile")
-    ).default;
+    const { updateOnerepDataBrokerScanProfile } = await import(
+      "./updateDataBrokerScanProfile"
+    );
 
     await expect(() =>
-      updateDataBrokerScanProfile(5678, {
+      updateOnerepDataBrokerScanProfile(5678, {
         ...newProfileDetails,
         first_names: ["First02", "First03", "First04", "First05", "First06"],
       }),
@@ -129,12 +129,12 @@ describe("Update broker scan profile", () => {
       getProfileDetails: jest.fn(() => Promise.resolve(currentProfileDetails)),
       updateProfileDetails: jest.fn(),
     }));
-    const updateDataBrokerScanProfile = (
-      await import("./updateDataBrokerScanProfile")
-    ).default;
+    const { updateOnerepDataBrokerScanProfile } = await import(
+      "./updateDataBrokerScanProfile"
+    );
 
     await expect(() =>
-      updateDataBrokerScanProfile(5678, {
+      updateOnerepDataBrokerScanProfile(5678, {
         ...newProfileDetails,
         addresses: [
           { city: "City01", state: "NY" },
@@ -158,12 +158,12 @@ describe("Update broker scan profile", () => {
       getProfileDetails: jest.fn(() => Promise.resolve(currentProfileDetails)),
       updateProfileDetails: jest.fn(),
     }));
-    const updateDataBrokerScanProfile = (
-      await import("./updateDataBrokerScanProfile")
-    ).default;
+    const { updateOnerepDataBrokerScanProfile } = await import(
+      "./updateDataBrokerScanProfile"
+    );
 
     await expect(() =>
-      updateDataBrokerScanProfile(5678, {
+      updateOnerepDataBrokerScanProfile(5678, {
         ...newProfileDetails,
         // @ts-ignore The entry `birth_date` is not part of the type
         // `UpdateableProfileDetails`. It is being passed here anyway in order
