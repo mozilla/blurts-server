@@ -9,7 +9,7 @@ import { BreachDataTypes, HighRiskDataTypes } from "../universal/breach";
 import { FeatureFlagName } from "../../../db/tables/featureFlags";
 import { ScanData } from "./moscary";
 import {
-  isOneRepScanResult,
+  isOneRepScan,
   isOneRepScanResultDataBroker,
 } from "../universal/onerep";
 
@@ -298,9 +298,9 @@ export function hasCompletedStep(
     const hasRunScan =
       typeof data.latestScanData?.scan === "object" &&
       data.latestScanData?.scan !== null;
-    const scanStatus = isOneRepScanResult(data.latestScanData?.scan)
+    const scanStatus = isOneRepScan(data.latestScanData?.scan)
       ? data.latestScanData.scan.onerep_scan_status
-      : (data.latestScanData as ScanData).scan?.status;
+      : (data.latestScanData as ScanData | null)?.scan?.status;
     const hasResolvedAllScanResults =
       (scanStatus === "finished" || scanStatus === "in_progress") &&
       (data.latestScanData!.results ?? []).every(
