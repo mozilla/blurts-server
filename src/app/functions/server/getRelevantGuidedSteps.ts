@@ -157,9 +157,9 @@ export function isEligibleForStep(
     return (
       data.latestScanData?.results?.some((result) => {
         return (
-          (isOneRepScanResultDataBroker(result)
-            ? result.broker_status
-            : result.status) === "removal_under_maintenance" &&
+          // "Removal under maintenance" isn't enabled (yet?) and therefore not supported on Moscary:
+          isOneRepScanResultDataBroker(result) &&
+          result.broker_status === "removal_under_maintenance" &&
           result.status !== "removed" &&
           !result.manually_resolved
         );
@@ -280,9 +280,11 @@ export function hasCompletedStep(
       data.latestScanData?.results?.every(
         (result) =>
           !(
-            (isOneRepScanResultDataBroker(result)
-              ? result.broker_status
-              : result.status) === "removal_under_maintenance"
+            // Removal under maintenance isn't enabled (yet?) and therefore not supported on Moscary:
+            (
+              isOneRepScanResultDataBroker(result) &&
+              result.broker_status === "removal_under_maintenance"
+            )
           ) ||
           result.status === "removed" ||
           result.manually_resolved,
