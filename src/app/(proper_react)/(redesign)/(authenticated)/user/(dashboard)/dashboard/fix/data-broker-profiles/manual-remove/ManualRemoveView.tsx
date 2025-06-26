@@ -172,6 +172,7 @@ export function ManualRemoveView(props: Props) {
                       setActiveExposureCardKey(index);
                     }
                   }}
+                  enabledFeatureFlags={props.enabledFeatureFlags}
                 />
               );
             })}
