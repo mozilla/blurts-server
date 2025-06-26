@@ -237,7 +237,7 @@ describe("ScanResultCard", () => {
       .replaceAll("⁩", "")
       .split(/\s/);
     const datePart = textContent?.[textContent.length - 1];
-    expect(Date.parse(datePart ?? "invalid date")).not.toBeNaN();
+    expect(datePart).toMatch(new Date(Date.now()).getFullYear().toString());
   });
 });
 
