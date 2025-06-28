@@ -53,6 +53,7 @@ const UpsellCtaWrapper = (props: UpsellCtaWrapperProps) => {
             monthlySubscriptionUrl={monthlySubscriptionUrl}
             yearlySubscriptionUrl={yearlySubscriptionUrl}
             subscriptionBillingAmount={subscriptionBillingAmount}
+            enabledFeatureFlags={props.enabledFeatureFlags}
           />
         )}
       </CountryCodeProvider>
@@ -71,6 +72,7 @@ export const UpsellCtaButton: Story = {
   args: {
     countryCode: "us",
     user: { email: "example@example.com" },
+    enabledFeatureFlags: [],
   },
 };
 
@@ -79,6 +81,7 @@ export const UpsellBadgeNonUsUser: Story = {
     countryCode: "nl",
     user: { email: "example@example.com" },
     isBadge: true,
+    enabledFeatureFlags: [],
   },
 };
 
@@ -87,6 +90,7 @@ export const UpsellBadgeUsUserNoSubscriber: Story = {
     countryCode: "us",
     user: { email: "example@example.com" },
     isBadge: true,
+    enabledFeatureFlags: [],
   },
 };
 
@@ -95,5 +99,6 @@ export const UpsellBadgeActiveSubscriber: Story = {
     countryCode: "us",
     user: createUserWithPremiumSubscription(),
     isBadge: true,
+    enabledFeatureFlags: [],
   },
 };

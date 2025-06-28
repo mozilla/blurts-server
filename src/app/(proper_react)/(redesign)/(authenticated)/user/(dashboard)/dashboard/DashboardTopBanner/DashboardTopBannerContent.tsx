@@ -309,6 +309,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
                 monthlySubscriptionUrl={monthlySubscriptionUrl}
                 yearlySubscriptionUrl={yearlySubscriptionUrl}
                 subscriptionBillingAmount={subscriptionBillingAmount}
+                enabledFeatureFlags={props.enabledFeatureFlags}
               />
             </div>
           </>
@@ -428,6 +429,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
                 monthlySubscriptionUrl={monthlySubscriptionUrl}
                 yearlySubscriptionUrl={yearlySubscriptionUrl}
                 subscriptionBillingAmount={subscriptionBillingAmount}
+                enabledFeatureFlags={props.enabledFeatureFlags}
               />
             </div>
           </>
