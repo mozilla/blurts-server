@@ -24,7 +24,33 @@ modal-active-number-of-exposures-part-one-all =
        *[other] Dette diagrammet inkluderer det samlede antallet ganger vi fant hver type data eksponert på tvers av alle datalekkasjer for opp til { $limit } e-postadresser du for tiden holder øye med.
     }
 modal-active-number-of-exposures-part-two = Hvis du for eksempel har 10 eksponeringer av telefonnummeret ditt, kan det bety at ett telefonnummer er eksponert på tvers av 10 forskjellige nettsteder, eller det kan bety at 2 forskjellige telefonnumre ble eksponert på tvers av 5 forskjellige nettsteder.
+modal-active-number-of-exposures-part-three-all = Når de er blitt løst, vil de bli lagt til ditt samlede antall løste eksponeringer på løst-siden.
+modal-fixed-number-of-exposures-title = Om ditt antall løste eksponeringer
+modal-fixed-number-of-exposures-all = Dette diagrammet inkluderer det samlede antallet datalekkasjer som er blitt løst for alle e-postadressene du for tiden holder øye med. Når en eksponering er markert som løst, vil den bli lagt til det samlede antallet her.
+modal-cta-ok = OK
+modal-cta-got-it = Forstått
+progress-card-heres-what-we-fixed-headline-all = Du har løst følgende
+progress-card-manually-fixed-headline = Løst manuelt
+dashboard-tab-label-action-needed = Krever handling
+dashboard-tab-label-fixed = Løst
+dashboard-exposures-all-fixed-label = Alt er løst!
 dashboard-exposures-area-headline = Vis alle nettsider hvor dine opplysninger er eksponert
+# Note: this line precedes dashboard-exposures-area-description-all-line2.
+# Variables:
+#   $exposures_unresolved_num (number) - the unresolved number of exposures the user has.
+dashboard-exposures-area-description-all-line1 =
+    { $exposures_unresolved_num ->
+        [one] Vi fant { $exposures_unresolved_num } eksponering av dine data.
+       *[other] Vi fant { $exposures_unresolved_num } eksponeringer av dine data.
+    }
+# Note: this line follows dashboard-exposures-area-description-all-line1.
+# Variables:
+#   $data_breach_unresolved_num (number) - the unresolved number of data breaches the user has.
+dashboard-exposures-area-description-all-line2 =
+    { $data_breach_unresolved_num ->
+        [one] De ble funnet i { $data_breach_unresolved_num } datalekkasje.
+       *[other] De ble funnet på tvers av { $data_breach_unresolved_num } datalekkasjer.
+    }
 dashboard-fixed-area-headline-all = Vis alle eksponeringer som er løst
 # This is the label on a button that opens a popover menu, which shows a menu to adjust filters for the listed exposures.
 dashboard-exposures-filter = Filter
@@ -41,6 +67,7 @@ dashboard-exposures-filter-reset = Tilbakestill
 
 ## Top banner on the dashboard
 
+dashboard-top-banner-section-label = Sammendrag av dashbordet
 dashboard-top-banner-scan-in-progress-title = Skanningen din pågår fortsatt
 dashboard-top-banner-your-data-is-protected-title = Dine data er beskyttet
 dashboard-top-banner-your-data-is-protected-cta = Se hva som er løst
@@ -72,6 +99,10 @@ dashboard-top-banner-non-us-protect-your-data-description-line2 =
        *[other] De ble funnet på tvers av { $data_breach_unresolved_num } datalekkasjer. Vi vil guide deg gjennom hvert steg av hvordan du kan få det løst.
     }
 dashboard-top-banner-no-exposures-found-title = Ingen eksponeringer funnet
+dashboard-top-banner-non-us-no-exposures-found-description = Gode nyheter! Vi gikk gjennom alle kjente datalekkasjer og fant ingen eksponeringer. Vi vil fortsette å holde øye med e-postadressen din og varsle deg om det skulle skje en ny lekkasje.
+dashboard-no-exposures-label = Ingen eksponeringer funnet
+dashboard-top-banner-monitor-more-cta = Overvåk flere e-postadresser
 
 # About Exposure Indicators Modal
 
+modal-exposure-indicator-title = Eksponeringsstatuser

@@ -36,7 +36,7 @@ rec-pw-3-non-fx =
     Bruk { -brand-lockwise } for å halde oversikt over alle dei ulike 
     passorda og få tilgang til dei sikkert frå telefonen eller nettbrettet.
 # Recommendation subhead
-rec-pw-4-subhead = Konfigurer tofaktorautentisering (2FA)
+rec-pw-4-subhead = Konfigurer tofaktor-autentisering (2FA)
 # Link title
 rec-pw-4-cta = Sjå nettstadar som tilbyr 2FA
 rec-pw-4 =
