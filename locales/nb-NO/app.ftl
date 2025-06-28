@@ -224,10 +224,12 @@ exposed-data = Eksponerte data:
 ## Public breach detail page
 
 find-out-if-2 = Finn ut om du var involvert i denne datalekkasjen
+find-out-if-description = Vi hjelper deg med å raskt se om e-postadressen din ble eksponert i denne datalekkasjen, og viser deg hva du skal gjøre videre.
 breach-detail-cta-signup = Se etter datalekkasjer
 
 ## Firefox Monitor -> Mozilla Monitor rebrand banner
 
+banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: Nytt navn, nytt utseende og enda flere måter å <b>ta tilbake personvernet ditt</b>.
 banner-monitor-rebrand-dismiss-button-label = OK
 banner-monitor-rebrand-dismiss-button-tooltip = Ignorer
 loading-accessibility = Laster
