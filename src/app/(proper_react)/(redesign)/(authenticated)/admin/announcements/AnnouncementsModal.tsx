@@ -120,8 +120,8 @@ const AnnouncementsModal = (props: AnnouncementsModalProps) => {
         announcement_id: "",
         title: "",
         description: "",
-        small_image_path: "",
-        big_image_path: "",
+        small_image_path: `/images/small/${formData.announcement_id}.svg`,
+        big_image_path: `/images/big/${formData.announcement_id}.svg`,
         cta_label: "",
         cta_link: "",
         audience: "all_users",
@@ -202,7 +202,6 @@ const AnnouncementsModal = (props: AnnouncementsModalProps) => {
               onChange={handleChange}
               required
               className={styles.input}
-              placeholder="/images/small/example.png"
             />
           </div>
 
@@ -216,7 +215,6 @@ const AnnouncementsModal = (props: AnnouncementsModalProps) => {
               onChange={handleChange}
               required
               className={styles.input}
-              placeholder="/images/large/example.png"
             />
           </div>
 
