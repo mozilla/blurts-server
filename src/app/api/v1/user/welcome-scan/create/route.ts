@@ -179,7 +179,11 @@ export async function POST(
 
       return NextResponse.json({ success: true }, { status: 200 });
     } catch (e) {
-      logger.error(e);
+      logger.error("Unhandled exception", {
+        message: e instanceof Error ? e.message : String(e),
+        stack: e instanceof Error ? e.stack : undefined,
+        name: e instanceof Error ? e.name : undefined,
+      });
       return NextResponse.json({ success: false }, { status: 500 });
     }
   } else {
