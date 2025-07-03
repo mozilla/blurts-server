@@ -145,6 +145,21 @@ export const View = (props: Props) => {
         status: "optout_in_progress",
       } as OnerepScanResultDataBrokerRow;
     }
+    if (
+      !isOneRepScanResult(scanResult) &&
+      scanResult.status === "new" &&
+      hasPremium(props.user)
+    ) {
+      // Even if the user has Plus, found exposures aren't marked as in progress
+      // until after the removal requests have been sent. Meanwhile, however,
+      // we're just waiting for the systems to do their thing, and there's no
+      // action for the user to take; hence, we also mark the exposures as being
+      // in progress:
+      return {
+        ...scanResult,
+        status: "optout_in_progress",
+      } as ScanResult;
+    }
     return scanResult;
   }) as OnerepScanResultDataBrokerRow[] | ScanResult[];
   const adjustedScanData = {
