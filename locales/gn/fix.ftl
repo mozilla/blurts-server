@@ -96,6 +96,7 @@ high-risk-breach-social-security-step-two = <link_to_info>Ehecha nde deveha mara
 
 ssn-modal-title = Ñemonge rehegua ha nde jedeverã jejoko
 ssn-modal-description-fraud-part-two = Emboheko hag̃ua, eñe’ẽ peteĩva umi mbohapy oporombodevéva ndive. Natekotevẽi eñe’ẽ mbohapyvéva ndive.
+ssn-modal-description-freeze-credit-part-two = Ejoko hag̃ua nde crédito, eñe’ẽ peteĩteĩva ko’ã agencia de crédito ndive: <equifax_link>Equifax</equifax_link>, <experian_link>Experian</experian_link> ha <transunion_link>TransUnion</transunion_link>.
 ssn-modal-learn-more = Eikuaave ñemonge rehegua ha nde jedeverã jejoko
 ssn-modal-ok = MONEĨ
 
