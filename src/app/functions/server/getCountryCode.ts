@@ -21,10 +21,17 @@ export function getCountryCode(
     const acceptedLocales = acceptLanguage.split(",");
     const primaryLocale = acceptedLocales[0];
     const [locale, _weight] = primaryLocale.split(";");
-    const [_language, country] = locale.split("-");
-    if (country) {
-      return country.toLowerCase();
+    const [language, region] = locale.split("-");
+
+    if (region) {
+      return region.toLowerCase();
+    }
+
+    // If there’s no region, fall back to the language locally
+    if (language && process.env.app_env === "local") {
+      return language.toLowerCase();
     }
   }
+
   return "us";
 }

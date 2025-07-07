@@ -88,6 +88,11 @@ export default async function Page() {
         service: process.env.OAUTH_CLIENT_ID as string,
       }}
     >
+      <ul data-testid="e2e-config">
+        <li>Country code: {countryCode}</li>
+        <li>Feature flags: {enabledFeatureFlags.join(", ")}</li>
+      </ul>
+
       {enabledFeatureFlags.includes("LandingPageRedesign") &&
       experimentData["Features"][
         "landing-page-redesign-plus-eligible-experiment"
