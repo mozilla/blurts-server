@@ -26,7 +26,10 @@ export async function GET(req: NextRequest, { params }: RequestParams) {
 
   if (!subscriptionPlanIds.includes(subscriptionPlanId as SubscriptionPeriod)) {
     logger.info("link_subscribe_fallback", { subscriptionPlanId });
-    return NextResponse.redirect("/subscription-plans", 302);
+    return NextResponse.redirect(
+      new URL("/subscription-plans", process.env.SERVER_URL),
+      302,
+    );
   }
 
   const enabledFeatureFlags = await getEnabledFeatureFlags({
