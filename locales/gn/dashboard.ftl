@@ -31,6 +31,13 @@ exposure-chart-returning-user-upgrade-prompt = Pe óga, pehẽnguekuéra ha ambu
 exposure-chart-returning-user-upgrade-prompt-cta = Emoha’ãnga reiete
 exposure-chart-scan-in-progress-prompt = <b>Oñemoha’ãngahína:</b> kundaharape, pehẽnguekuéra ha hetave ndoikéi gueteri.
 modal-active-number-of-exposures-title = Mboyjeýmapa ipapapy jehechauka hendýva
+# Variables:
+#   $limit (number) - Number of email addresses included in the plan
+modal-active-number-of-exposures-part-one-all =
+    { $limit ->
+        [one] Ko gráfico ogueroike mboy jeýpa rojuhu peteĩteĩva mba’ekuaarã osẽkuaáva opaite mba’ekuaarã { $limit }-pe g̃uarã ñanduti veve kundaharape emongu’éva ko’ág̃a.
+       *[other] Ko gráfico ogueroike mboy jeýpa rojuhu peteĩteĩva mba’ekuaarã osẽkuaáva opaite mba’ekuaarã { $limit }-pe g̃uarã ñanduti veve kundaharape emongu’éva ko’ág̃a.
+    }
 modal-active-number-of-exposures-part-three-all = Oñemoĩporã vove, oñembojuajúta nde papapy jehechapy oĩporãmava kuatiarogue Moĩporãhápe.
 modal-fixed-number-of-exposures-title = Mboyjeýmapa ipapapy jehechauka opytáva
 modal-cta-ok = MONEĨ
@@ -81,6 +88,13 @@ dashboard-top-banner-scan-in-progress-title = Ne ñemoha’ãnga oiko gueteri
 dashboard-top-banner-your-data-is-protected-title = Ne mba’ekuaarã oñemo’ã
 dashboard-top-banner-your-data-is-protected-cta = Ehecha oĩporãmava
 dashboard-top-banner-lets-keep-protecting-title = Romo’ãta gueteri ne mba’ekuaarã
+# Variables:
+# $exposures_unresolved_num is the remaining number of exposures the user has to resolve.
+dashboard-top-banner-lets-keep-protecting-description =
+    { $exposures_unresolved_num ->
+        [one] Ereko gueteri { $exposures_unresolved_num } techaukarã emyatyrõtava. Eku’ejey ha eñemo’ã. Rombohapéta eku’évo.
+       *[other] Ereko gueteri { $exposures_unresolved_num } techaukarã emyatyrõtava. Eku’ejey ha eñemo’ã. Rombohapéta eku’évo.
+    }
 dashboard-top-banner-lets-keep-protecting-cta = Jaku’ejeýke
 dashboard-top-banner-protect-your-data-title = Romo’ãta ne mba’ekuaarã
 dashboard-top-banner-protect-your-data-cta = Romoĩ porãta
@@ -91,6 +105,14 @@ dashboard-top-banner-non-us-protect-your-data-description-line1 =
     { $exposures_unresolved_num ->
         [one] Rojuhu { $exposures_unresolved_num } ne mba’ekuaarã jehechauka.
        *[other] Rojuhu { $exposures_unresolved_num } ne mba’ekuaarã jehechauka.
+    }
+# Note: this line is preceded by `dashboard-top-banner-non-us-protect-your-data-description-line1`.
+# Variables:
+#   $data_breach_unresolved_num (number) - the total number of data breaches the user has.
+dashboard-top-banner-non-us-protect-your-data-description-line2 =
+    { $data_breach_unresolved_num ->
+        [one] Nderupyty’imi { $data_breach_unresolved_num } mba’ekuaarã ñembogua. Rombohapéta eku’évo emoĩporã hag̃ua.
+       *[other] Nderupyty’imi { $data_breach_unresolved_num } mba’ekuaarã ñembogua. Rombohapéta eku’évo emoĩporã hag̃ua.
     }
 dashboard-top-banner-no-exposures-found-title = Ndojejuhúi máva jehechauka
 dashboard-top-banner-non-us-no-exposures-found-description = ¡Mba’éichapa! Roheka umi mba’ekuaarã ñembogua ojekuaáva ha ndorojuhúi mba’evairã. Rohapykuehóta ne ñanduti veve kundaharape ha romomarandúta oĩramo ñembogua.

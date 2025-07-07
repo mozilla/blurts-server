@@ -25,6 +25,7 @@ import { sendGAEvent } from "../GoogleAnalyticsWorkaround";
 import { getLocale } from "../../../functions/universal/getLocale";
 import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 import { FeatureFlagName } from "../../../../db/tables/featureFlags";
+import { WaitlistDialog } from "../SubscriberWaitlistDialog";
 
 export type UpsellButtonProps = {
   monthlySubscriptionUrl: string;
@@ -33,6 +34,7 @@ export type UpsellButtonProps = {
     yearly: number;
     monthly: number;
   };
+  enabledFeatureFlags: FeatureFlagName[];
 };
 
 export function UpsellButton(
@@ -66,15 +68,20 @@ export function UpsellButton(
       <Button {...triggerProps} variant="primary" small>
         {props.label}
       </Button>
-      {dialogState.isOpen && (
-        <UpsellDialog
-          {...overlayProps}
-          state={dialogState}
-          monthlySubscriptionUrl={props.monthlySubscriptionUrl}
-          yearlySubscriptionUrl={props.yearlySubscriptionUrl}
-          subscriptionBillingAmount={props.subscriptionBillingAmount}
-        />
-      )}
+      {/* Test already handled in Dashboard tests */
+      /* c8 ignore next 4 */}
+      {dialogState.isOpen &&
+        (props.enabledFeatureFlags.includes("DisableOneRepScans") ? (
+          <WaitlistDialog dialogTriggerState={dialogState} {...overlayProps} />
+        ) : (
+          <UpsellDialog
+            {...overlayProps}
+            state={dialogState}
+            monthlySubscriptionUrl={props.monthlySubscriptionUrl}
+            yearlySubscriptionUrl={props.yearlySubscriptionUrl}
+            subscriptionBillingAmount={props.subscriptionBillingAmount}
+          />
+        ))}
     </>
   );
 }
