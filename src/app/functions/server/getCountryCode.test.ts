@@ -6,6 +6,10 @@ import { it, expect, jest } from "@jest/globals";
 import { getCountryCode } from "./getCountryCode";
 import { ReadonlyHeaders } from "next/dist/server/web/spec-extension/adapters/headers";
 
+afterEach(() => {
+  delete process.env.app_env;
+});
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 it("returns the GCP-detected country", () => {
@@ -75,4 +79,19 @@ it("defaults to US", () => {
     }),
   };
   expect(getCountryCode(headers as any)).toBe("us");
+});
+
+it("falls back to language when region is missing and `app_env` is local", () => {
+  process.env.app_env = "local";
+
+  const headers: Partial<jest.Mocked<ReadonlyHeaders>> = {
+    get: jest.fn((header: string) => {
+      if (header === "Accept-Language") {
+        return "fr";
+      }
+      return null;
+    }),
+  };
+
+  expect(getCountryCode(headers as any)).toBe("fr");
 });

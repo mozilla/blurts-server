@@ -1,4 +1,4 @@
-name: Monitor E2E Playwright Test Suite (PR)
+name: Monitor E2E Test Suite (PR)
 
 permissions: {}
 
@@ -8,7 +8,7 @@ on:
   pull_request:
     branches: [ main ]
 jobs:
-  e2e-tests-full:
+  e2e-tests:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     # Service containers to run with `container-job`
@@ -100,5 +100,5 @@ jobs:
         if: always()
         with:
           name: test-results
-          path: src/e2e/test-results/
+          path: src/e2e-playwright/test-results/
           retention-days: 30

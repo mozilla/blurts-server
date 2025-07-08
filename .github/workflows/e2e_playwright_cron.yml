@@ -1,4 +1,4 @@
-name: Monitor E2E Playwright Test Suite (cron)
+name: Monitor E2E Test Suite (cron)
 
 permissions: {}
 

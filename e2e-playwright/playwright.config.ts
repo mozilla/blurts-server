@@ -23,7 +23,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const forceRebuild = true;
 
 const webServerConfig = {
-  command: `tsx ./build-and-run.ts --port=${port} ${forceRebuild ? "--forceRebuild" : ""}`,
+  command: `${forceRebuild ? "npm run build; " : ""}npm start`,
   // Building the app can take some time:
   timeout: 600_000,
   port,
