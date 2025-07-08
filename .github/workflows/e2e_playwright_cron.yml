@@ -49,25 +49,12 @@ jobs:
 
       - name: Run Playwright tests - ${{ inputs.environment != null && inputs.environment || 'stage' }}
         if: github.event.pull_request.user.login != 'dependabot[bot]'
-        run: npm run e2e-playwright -- --update-snapshots
+        run: npm run e2e-playwright
         timeout-minutes: 40
         env:
           E2E_TEST_ENV: ${{ inputs.environment != null && inputs.environment || 'stage' }}
-          E2E_TEST_BASE_URL: ${{ secrets.E2E_TEST_BASE_URL }}
           E2E_TEST_ACCOUNT_EMAIL: ${{ secrets.E2E_TEST_ACCOUNT_EMAIL }}
           E2E_TEST_ACCOUNT_PASSWORD: ${{ secrets.E2E_TEST_ACCOUNT_PASSWORD }}
-          E2E_TEST_ACCOUNT_EMAIL_ZERO_BREACHES: ${{ secrets.E2E_TEST_ACCOUNT_EMAIL_ZERO_BREACHES }}
-          E2E_TEST_ACCOUNT_EMAIL_EXPOSURES_STARTED: ${{ secrets.E2E_TEST_ACCOUNT_EMAIL_EXPOSURES_STARTED }}
-          E2E_TEST_PAYPAL_LOGIN:  ${{ secrets.E2E_TEST_PAYPAL_LOGIN }}
-          E2E_TEST_PAYPAL_PASSWORD: ${{ secrets.E2E_TEST_PAYPAL_PASSWORD }}
-          ADMINS: ${{ secrets.ADMINS }}
-          OAUTH_CLIENT_SECRET: ${{ secrets.OAUTH_CLIENT_SECRET }}
-          ONEREP_API_KEY: ${{ secrets.ONEREP_API_KEY }}
-          NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
-          NEXTAUTH_URL: ${{ secrets.NEXTAUTH_URL }}
-          HIBP_KANON_API_TOKEN: ${{ secrets.HIBP_KANON_API_TOKEN }}
-          HIBP_API_TOKEN: ${{ secrets.HIBP_API_TOKEN }}
-          REDIS_URL: "redis://redis.mock"
       - uses: actions/upload-artifact@v4
         if: always()
         with:

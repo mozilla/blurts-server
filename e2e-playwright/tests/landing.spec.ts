@@ -10,33 +10,22 @@ test.describe(`Verify landing page [${process.env.E2E_TEST_ENV}]`, () => {
     await page.goto(`${getBaseTestEnvUrl()}/`);
   });
 
-  test("landing config", async ({ page, enabledFeatureFlags }, testInfo) => {
-    const configList = await page.getByTestId("e2e-config");
-
-    if (testInfo.project.use.countryCode === "us") {
-      expect(configList.getByRole("listitem")).toHaveText([
-        "Country code: us",
-        `Feature flags: ${enabledFeatureFlags.join(", ")}`,
-      ]);
-    }
-
-    if (testInfo.project.use.countryCode === "nl") {
-      expect(configList.getByRole("listitem")).toHaveText([
-        "Country code: nl",
-        `Feature flags: ${enabledFeatureFlags.join(", ")}`,
-      ]);
-    }
+  test("matches locale from project config", async ({ page }, testInfo) => {
+    const htmlLang = await page.getAttribute("html", "lang");
+    const expectedLang = testInfo.project.use.locale;
+    expect(expectedLang).toContain(htmlLang);
   });
 
   test("landing page loads", async ({ page }, testInfo) => {
-    if (testInfo.project.use.countryCode === "us") {
-      const heading = page.locator("h2", {
-        hasText: "Find where your personal info is exposed — and take it back",
+    if (
+      process.env.E2E_TEST_ENV !== "local" &&
+      testInfo.project.use.countryCode === "nl"
+    ) {
+      const heading = page.locator("h1", {
+        hasText: "Ontdek waar uw privégegevens zijn gelekt – en neem ze terug",
       });
       await expect(heading).toBeVisible();
-    }
-
-    if (testInfo.project.use.countryCode === "nl") {
+    } else {
       const heading = page.locator("h2", {
         hasText: "Find where your personal info is exposed — and take it back",
       });

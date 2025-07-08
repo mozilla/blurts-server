@@ -55,7 +55,8 @@ const test = baseTest.extend<{
     await use(mergedFlags);
   },
   // See https://github.com/microsoft/playwright/issues/9468#issuecomment-943707670
-  // Sets the `x-forced-feature-flags` on every request to Monitor.
+  // Sets the `x-forced-feature-flags` and `x-nimbus-preview-mode` on every
+  // request to Monitor.
   sharedBeforeEach: [
     async ({ context, localForcedFeatureFlags }, use) => {
       await context.route("**/*", async (route) => {
@@ -64,6 +65,7 @@ const test = baseTest.extend<{
 
         if (new URL(requestUrl).origin === process.env.E2E_TEST_BASE_URL) {
           headers["x-forced-feature-flags"] = localForcedFeatureFlags.join(",");
+          headers["x-nimbus-preview-mode"] = "true";
         }
 
         await route.continue({ headers });

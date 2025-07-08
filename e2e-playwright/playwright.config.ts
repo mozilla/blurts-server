@@ -19,17 +19,16 @@ dotenvFlow.config();
 
 const port = parseInt(process.env.PORT || "6060", 10);
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-// Don’t rebuild application: Helpful for local debugging
-const forceRebuild = true;
 
+// Helpful for local debugging: Don’t build application if `false`
+const forceLocalRebuild = true;
+const shouldStartWebServer = process.env.E2E_TEST_ENV === "local";
 const webServerConfig = {
-  command: `${forceRebuild ? "npm run build; " : ""}npm start`,
+  command: `${forceLocalRebuild ? "npm run build; " : ""}npm start`,
   // Building the app can take some time:
   timeout: 600_000,
   port,
 };
-
-const shouldStartWebServer = process.env.E2E_TEST_ENV === "local";
 
 // Geo locations
 const locations = [
@@ -92,7 +91,10 @@ export const getEnabledFeatureFlags = () => {
     );
     enabledFeatureFlags = JSON.parse(enabledFeatureFlagsJson).data ?? [];
   } catch (error) {
-    console.warn("Could not load `enabledFeatureFlags`", error);
+    console.warn(
+      "Could not load `enabledFeatureFlags`",
+      error instanceof Error ? error.message : error,
+    );
   }
 
   return enabledFeatureFlags;
