@@ -78,7 +78,7 @@ jobs:
         if: always()
         with:
           name: test-results
-          path: src/e2e/test-results/
+          path: src/e2e-playwright/test-results/
           retention-days: 30
 
       - name: Send GitHub Action trigger data to Slack workflow

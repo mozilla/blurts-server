@@ -2,18 +2,15 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
 import {
   test,
   expect,
   defaultLocalForcedFeatureFlags,
 } from "../fixtures/baseTest";
+import { getEnabledFeatureFlags } from "../playwright.config";
 import { FeatureFlagName } from "../../src/db/tables/featureFlags";
 import { getBaseTestEnvUrl } from "../utils/helpers";
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const isLocal = process.env.E2E_TEST_ENV === "local";
 
 const extraFeatureFlags: FeatureFlagName[] = ["GA4SubscriptionEvents"];
@@ -48,17 +45,7 @@ test.describe(`Verify general setup [${process.env.E2E_TEST_ENV}]`, () => {
     localForcedFeatureFlags,
     enabledFeatureFlags,
   }) => {
-    let expectedFeatureFlags: FeatureFlagName[] = [];
-    try {
-      const enabledFeatureFlagsJson = fs.readFileSync(
-        path.resolve(__dirname, "../enabledFeatureFlags.json"),
-        "utf-8",
-      );
-      expectedFeatureFlags = JSON.parse(enabledFeatureFlagsJson).data ?? [];
-    } catch (error) {
-      console.warn("Could not load `enabledFeatureFlags`", error);
-    }
-
+    const expectedFeatureFlags = getEnabledFeatureFlags();
     const finalExpectedFeatureFlags = isLocal
       ? [...expectedFeatureFlags, ...localForcedFeatureFlags]
       : expectedFeatureFlags;

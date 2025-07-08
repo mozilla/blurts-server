@@ -83,16 +83,20 @@ const baseDevices = [
   },
 ];
 
-let enabledFeatureFlags: FeatureFlagName[] = [];
-try {
-  const enabledFeatureFlagsJson = fs.readFileSync(
-    path.resolve(__dirname, "./enabledFeatureFlags.json"),
-    "utf-8",
-  );
-  enabledFeatureFlags = JSON.parse(enabledFeatureFlagsJson).data ?? [];
-} catch (error) {
-  console.warn("Could not load `enabledFeatureFlags`", error);
-}
+export const getEnabledFeatureFlags = () => {
+  let enabledFeatureFlags: FeatureFlagName[] = [];
+  try {
+    const enabledFeatureFlagsJson = fs.readFileSync(
+      path.resolve(__dirname, "./enabledFeatureFlags.json"),
+      "utf-8",
+    );
+    enabledFeatureFlags = JSON.parse(enabledFeatureFlagsJson).data ?? [];
+  } catch (error) {
+    console.warn("Could not load `enabledFeatureFlags`", error);
+  }
+
+  return enabledFeatureFlags;
+};
 
 const projects: Project[] = locations.flatMap((geo) =>
   baseDevices.map((base) => ({
@@ -103,7 +107,7 @@ const projects: Project[] = locations.flatMap((geo) =>
       geolocation: geo.geolocation,
       locale: geo.locale,
       permissions: ["geolocation"],
-      enabledFeatureFlags,
+      enabledFeatureFlags: getEnabledFeatureFlags(),
       extraHTTPHeaders: {
         "X-Client-Region": geo.name.toLowerCase(),
         "Accept-Language": `${geo.locale},${geo.name.toLowerCase()};q=1.0`,
