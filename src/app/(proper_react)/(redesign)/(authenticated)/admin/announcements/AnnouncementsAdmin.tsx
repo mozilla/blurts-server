@@ -252,13 +252,13 @@ export const AnnouncementsAdmin = (props: Props) => {
                     </div>
                   </li>
                 ))}
-                <button
-                  className={styles.addButton}
-                  onClick={() => setIsModalOpen(true)}
-                >
-                  + Add new announcement
-                </button>
               </ul>
+              <button
+                className={styles.addButton}
+                onClick={() => setIsModalOpen(true)}
+              >
+                + Add new announcement
+              </button>
             </div>
 
             {/* Announcement Details */}
