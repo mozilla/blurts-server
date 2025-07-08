@@ -313,12 +313,12 @@ export const AnnouncementsAdmin = (props: Props) => {
                   <dt>Big Image</dt>
                   <dd>
                     <ImageWithFallback
-                      src={smallImagePath}
+                      src={bigImagePath}
                       fallbackSrc="/images/announcements/fallback/big.svg"
                       alt="Big Image"
                       width={500}
                       height={300}
-                      className={styles.smallImage}
+                      className={styles.bigImage}
                     />
                   </dd>
                   <dt>CTA Label</dt>
