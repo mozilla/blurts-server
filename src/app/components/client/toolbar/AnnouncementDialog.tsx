@@ -461,6 +461,8 @@ export const LocalizedAnnouncementString = (
   // trigger any additional render complexity.
   const parsedString = l10n.getString(key, {
     bundleMonthlyPrice: `$${billingInfo.bundle.monthly}`,
+    bundleYearlyPrice: `$${billingInfo.bundle.individual}`,
+    regularYearlyPrice: `$${billingInfo.yearly}`,
   });
 
   return (

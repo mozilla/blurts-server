@@ -59,3 +59,13 @@ announcement-bundle-offering-plus-user-title = Privacy and security, one superch
 #   $bundleMonthlyPrice (string) - monthly bundle plan's price per month, including currency, e.g. "$13.37"
 announcement-bundle-offering-plus-user-description = For { $bundleMonthlyPrice }/month, get { -brand-vpn }’s online activity protection and { -brand-relay-new }’s unlimited email masks along with { -brand-monitor }.
 announcement-bundle-offering-plus-user-cta-label = Upgrade my protection
+
+# id: bundle-offering-free-july
+
+announcement-bundle-offering-free-july-title = Save 45%. Cut the cost, not the protection.
+# Variables:
+#   $bundleMonthlyPrice (string) - monthly bundle plan's price per month, including currency, e.g. "$13.37"
+#   $bundleYearlyPrice (string) - yearly bundle plan's price, including currency, e.g. "$130.37"
+#   $regularYearlyPrice (string) - yearly Monitor premium's price, including currency, e.g. "$130.37"
+announcement-bundle-offering-free-july-description = Automated data removal, browse safely with { -brand-vpn }, and shield your inbox with { -brand-relay }, all for just { $bundleYearlyPrice }/year (Normally: { $regularYearlyPrice })
+announcement-bundle-offering-free-july-cta-label = Save now
