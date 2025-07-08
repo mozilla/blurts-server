@@ -1,0 +1,132 @@
+name: Monitor E2E Playwright Test Suite (cron)
+
+permissions: {}
+
+on:
+  schedule:
+    - cron: '0 8 * * *'
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to run the e2e against'
+        required: false
+        default: 'stage'
+        type: choice
+        options:
+          - stage
+          - prod
+jobs:
+  e2e-tests:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20.19.x
+
+      - name: Install dependencies
+        run: npm ci
+      - name: Store Playwright's Version
+        run: |
+          # Get the current Playwright version listed in package.json
+          PLAYWRIGHT_VERSION=$(npx playwright --version | sed 's/Version //')
+          echo "Playwright Version: $PLAYWRIGHT_VERSION"
+          echo "PLAYWRIGHT_VERSION=$PLAYWRIGHT_VERSION" >> $GITHUB_ENV
+
+      - name: Cache Playwright Browsers for Playwright's Version
+        id: cache-playwright-browsers
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-browsers-${{ env.PLAYWRIGHT_VERSION }}
+
+      - name: Setup Playwright Browser
+        if: steps.cache-playwright-browsers.outputs.cache-hit != 'true'
+        run: npx playwright install --with-deps
+
+      - name: Run Playwright tests - ${{ inputs.environment != null && inputs.environment || 'stage' }}
+        if: github.event.pull_request.user.login != 'dependabot[bot]'
+        run: npm run e2e-playwright -- --update-snapshots
+        timeout-minutes: 40
+        env:
+          E2E_TEST_ENV: ${{ inputs.environment != null && inputs.environment || 'stage' }}
+          E2E_TEST_BASE_URL: ${{ secrets.E2E_TEST_BASE_URL }}
+          E2E_TEST_ACCOUNT_EMAIL: ${{ secrets.E2E_TEST_ACCOUNT_EMAIL }}
+          E2E_TEST_ACCOUNT_PASSWORD: ${{ secrets.E2E_TEST_ACCOUNT_PASSWORD }}
+          E2E_TEST_ACCOUNT_EMAIL_ZERO_BREACHES: ${{ secrets.E2E_TEST_ACCOUNT_EMAIL_ZERO_BREACHES }}
+          E2E_TEST_ACCOUNT_EMAIL_EXPOSURES_STARTED: ${{ secrets.E2E_TEST_ACCOUNT_EMAIL_EXPOSURES_STARTED }}
+          E2E_TEST_PAYPAL_LOGIN:  ${{ secrets.E2E_TEST_PAYPAL_LOGIN }}
+          E2E_TEST_PAYPAL_PASSWORD: ${{ secrets.E2E_TEST_PAYPAL_PASSWORD }}
+          ADMINS: ${{ secrets.ADMINS }}
+          OAUTH_CLIENT_SECRET: ${{ secrets.OAUTH_CLIENT_SECRET }}
+          ONEREP_API_KEY: ${{ secrets.ONEREP_API_KEY }}
+          NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
+          NEXTAUTH_URL: ${{ secrets.NEXTAUTH_URL }}
+          HIBP_KANON_API_TOKEN: ${{ secrets.HIBP_KANON_API_TOKEN }}
+          HIBP_API_TOKEN: ${{ secrets.HIBP_API_TOKEN }}
+          REDIS_URL: "redis://redis.mock"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: test-results
+          path: src/e2e/test-results/
+          retention-days: 30
+
+      - name: Send GitHub Action trigger data to Slack workflow
+        id: slack
+        uses: slackapi/slack-github-action@v2.1.0
+        if: failure() && github.ref == 'refs/heads/main'
+        with:
+          webhook: ${{ secrets.SLACK_GHA_FAILURES_WEBHOOK }}
+          webhook-type: webhook-trigger
+          # For posting a message using Block Kit
+          payload: |
+            {
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*Link to job:* *<https://github.com/mozilla/blurts-server/actions/runs/${{ github.run_id }}|Monitor e2e tests>*"
+                  }
+                },
+                {
+                  "type": "divider"
+                },
+                {
+                  "type": "section",
+                  "fields": [
+                    {
+                      "type": "mrkdwn",
+                      "text": "*Workflow:* \n ${{ github.workflow }}"
+                    },
+                    {
+                      "type": "mrkdwn",
+                      "text": "*Status:*\n ${{ job.status }}  "
+                    }
+                  ]
+                },
+                {
+                  "type": "section",
+                  "fields": [
+                    {
+                      "type": "mrkdwn",
+                      "text": "*Ref:*\n ${{ github.ref }}  "
+                    },
+                    {
+                      "type": "mrkdwn",
+                      "text": "*Triggered by:*\n ${{ github.triggering_actor }}"
+                    }
+                  ]
+                }
+              ]
+            }
