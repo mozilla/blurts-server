@@ -24,6 +24,8 @@ export function SubscriptionBillingProvider({
   );
 }
 
+// Please validate that the right values are being used
+// by checking the env vars here:  https://github.com/mozilla/webservices-infra/blob/main/monitor/k8s/monitor-www/values-prod.yaml
 export function useSubscriptionBilling(): SubscriptionBillingAmount {
   const ctx = useContext(SubscriptionBillingContext);
   /* c8 ignore next 5 */
