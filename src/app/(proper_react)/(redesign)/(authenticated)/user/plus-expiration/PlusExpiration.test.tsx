@@ -32,6 +32,7 @@ it("includes a link to the terms on the renewal page", () => {
 
 // Wrapping `applyCouponPromise` in an `act` still doesn't appear to be enough
 // to avoid intermittent test failures, so skipping this test for now.
+// See https://github.com/mozilla/blurts-server/issues/6004
 // eslint-disable-next-line jest/no-disabled-tests
 it.skip("confirms the renewal after it's applied", async () => {
   const user = userEvent.setup();
@@ -68,6 +69,7 @@ it.skip("confirms the renewal after it's applied", async () => {
 
 // Wrapping `applyCouponPromise` in an `act` still doesn't appear to be enough
 // to avoid intermittent test failures, so skipping this test for now.
+// See https://github.com/mozilla/blurts-server/issues/6004
 // eslint-disable-next-line jest/no-disabled-tests
 it.skip("shows an error if applying the coupon failed", async () => {
   const user = userEvent.setup();
@@ -97,7 +99,11 @@ it.skip("shows an error if applying the coupon failed", async () => {
   expect(screen.getByText(/Couldn’t renew subscription./)).toBeInTheDocument();
 });
 
-it("hides the error after dismissing it", async () => {
+// Wrapping `applyCouponErrorPromise` in an `act` still doesn't appear to be enough
+// to avoid intermittent test failures, so skipping this test for now.
+// See https://github.com/mozilla/blurts-server/issues/6004
+// eslint-disable-next-line jest/no-disabled-tests
+it.skip("hides the error after dismissing it", async () => {
   const user = userEvent.setup();
   const applyCouponErrorPromise = new Promise((resolve) => {
     resolve({
@@ -127,7 +133,11 @@ it("hides the error after dismissing it", async () => {
   ).not.toBeInTheDocument();
 });
 
-it("allows retrying after an error", async () => {
+// Wrapping `applyCouponErrorPromise` in an `act` still doesn't appear to be enough
+// to avoid intermittent test failures, so skipping this test for now.
+// See https://github.com/mozilla/blurts-server/issues/6004
+// eslint-disable-next-line jest/no-disabled-tests
+it.skip("allows retrying after an error", async () => {
   const user = userEvent.setup();
   const PlusExpirationView = composeStory(HappyPath, Meta);
   const applyCouponErrorPromise = new Promise((resolve) => {

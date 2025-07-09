@@ -59,12 +59,27 @@ export async function markAnnouncementAsCleared(
 export async function initializeUserAnnouncements(
   user: Session["user"],
 ): Promise<UserAnnouncementWithDetails[]> {
+  const subscriberId = user.subscriber?.id;
+
   try {
-    if (!user?.subscriber) {
+    if (!subscriberId) {
       logger.error(
         "Failed to initialize announcements: missing or incomplete subscriber object for user",
       );
       return redirect("/auth/logout");
+    }
+
+    // Checking for foreign key constraint violations when inserting into the user_announcements table.
+    const subscriberExists = await knex("subscribers")
+      .where("id", subscriberId)
+      .first();
+    if (!subscriberExists) {
+      logger.error(
+        "Foreign key violation likely: subscriber ID does not exist in DB",
+        {
+          subscriberId,
+        },
+      );
     }
 
     // Determine audience eligibility
@@ -90,6 +105,12 @@ export async function initializeUserAnnouncements(
       .where("user_id", user.subscriber?.id)
       .select("announcement_id");
 
+    if (!existingRows || existingRows.length === 0) {
+      logger.info("No user_announcements found for user", {
+        subscriberId: subscriberId,
+      });
+    }
+
     const userAnnouncementIds = new Set(
       existingRows.map((row) => row.announcement_id),
     );
@@ -109,9 +130,9 @@ export async function initializeUserAnnouncements(
         case "free_users":
           return !isPremium && isUS;
         case "has_run_scan":
-          return hasRunScan && isUS;
+          return !isPremium && hasRunScan && isUS;
         case "has_not_run_scan":
-          return !hasRunScan && isUS;
+          return !isPremium && !hasRunScan && isUS;
         case "non_us":
           return !isUS;
         case "monthly_user":
@@ -134,7 +155,7 @@ export async function initializeUserAnnouncements(
 
     // Insert missing announcements
     if (newAnnouncements.length > 0) {
-      const insertData = newAnnouncements.map((a) => ({
+      const pendingAnnouncements = newAnnouncements.map((a) => ({
         user_id: user.subscriber?.id,
         announcement_id: a.announcement_id,
         status: "new",
@@ -142,10 +163,23 @@ export async function initializeUserAnnouncements(
         updated_at: new Date(),
       }));
 
-      await knex("user_announcements")
-        .insert(insertData)
-        .onConflict(["user_id", "announcement_id"])
-        .ignore(); // avoids inserting duplicates
+      logger.info("Attempting to insert user announcements", {
+        subscriberId: subscriberId,
+        announcementIds: pendingAnnouncements.map((a) => a.announcement_id),
+      });
+
+      try {
+        await knex("user_announcements")
+          .insert(pendingAnnouncements)
+          .onConflict(["user_id", "announcement_id"])
+          .ignore(); // avoids inserting duplicates
+      } catch (error) {
+        logger.error("Error inserting an announcement", {
+          subscriberId: subscriberId,
+          announcementData: JSON.stringify(pendingAnnouncements),
+          error,
+        });
+      }
     }
 
     const results: UserAnnouncementWithDetails[] = await knex(
