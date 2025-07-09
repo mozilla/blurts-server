@@ -13,7 +13,10 @@ import {
   isEligibleForFreeScan as isEligibleForFreeOnerepScan,
 } from "../../../../../functions/server/onerep";
 import type { CreateProfileRequest } from "../../../../../functions/server/onerep";
-import { meetsAgeRequirement } from "../../../../../functions/universal/user";
+import {
+  hasPremium,
+  meetsAgeRequirement,
+} from "../../../../../functions/universal/user";
 import {
   getSubscriberByFxaUid,
   setMoscaryId,
@@ -35,6 +38,7 @@ import {
 } from "../../../../../functions/l10n/serverComponents";
 import { getEnabledFeatureFlags } from "../../../../../../db/tables/featureFlags";
 import {
+  activateProfile,
   createProfile,
   createScan,
   isEligibleForFreeScan,
@@ -151,6 +155,10 @@ export async function POST(
             scanStatus: scan.status,
             scanReason: "manual",
           });
+
+          if (hasPremium(subscriber)) {
+            await activateProfile(profileId);
+          }
 
           return NextResponse.json({ success: true }, { status: 200 });
         }
