@@ -13,10 +13,12 @@ import { getLocale } from "../../../../../../../../../functions/universal/getLoc
 import { useTelemetry } from "../../../../../../../../../hooks/useTelemetry";
 import { ScanResultCard } from "../../../../../../../../../components/client/exposure_card/ScanResultCard";
 import { FeatureFlagName } from "../../../../../../../../../../db/tables/featureFlags";
+import { isOneRepScanResult } from "../../../../../../../../../functions/universal/onerep";
+import { resolveScanResult } from "./actions";
+import type { ScanResult } from "../../../../../../../../../functions/server/moscary";
 
 export type Props = {
-  // TODO MOSCARY: Implement manual resolution for Moscary
-  scanResult: OnerepScanResultDataBrokerRow;
+  scanResult: OnerepScanResultDataBrokerRow | ScanResult;
   isPremiumUser: boolean;
   isEligibleForPremium: boolean;
   isExpanded: boolean;
@@ -34,28 +36,39 @@ export const RemovalCard = (props: Props) => {
 
   async function resolve() {
     setIsResolved(true);
-    const response = await fetch(
-      `/api/v1/user/scan-result/${props.scanResult.onerep_scan_result_id}/resolution`,
-      {
-        method: "POST",
-        credentials: "same-origin",
-      },
-    );
+    if (!isOneRepScanResult(props.scanResult)) {
+      try {
+        await resolveScanResult(props.scanResult.id);
+      } catch {
+        setIsResolved(false);
+      }
+    } else {
+      const response = await fetch(
+        `/api/v1/user/scan-result/${props.scanResult.onerep_scan_result_id}/resolution`,
+        {
+          method: "POST",
+          credentials: "same-origin",
+        },
+      );
+
+      if (!response.ok) {
+        setIsResolved(false);
+      }
+    }
     // Ensure previously-visited pages that still have this scan result marked
     // as unfixed are removed from the cache. See
     // https://nextjs.org/docs/app/building-your-application/caching#invalidation-1
     router.refresh();
-    if (!response.ok) {
-      setIsResolved(false);
-    }
   }
 
   return (
     <ScanResultCard
-      scanResult={{
-        ...props.scanResult,
-        manually_resolved: isResolved,
-      }}
+      scanResult={
+        {
+          ...props.scanResult,
+          manually_resolved: isResolved,
+        } as OnerepScanResultDataBrokerRow | ScanResult
+      }
       isOnManualRemovePage={true}
       isPremiumUser={props.isPremiumUser}
       locale={getLocale(l10n)}
