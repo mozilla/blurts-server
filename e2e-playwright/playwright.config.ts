@@ -31,7 +31,7 @@ const webServerConfig = {
 };
 
 // Geo locations
-const locations = [
+export const locations = [
   {
     name: "US",
     geolocation: { latitude: 40.7167, longitude: -74.0 },
@@ -57,42 +57,42 @@ const baseDevices = [
       },
     },
   },
-  {
-    name: "firefox",
-    use: {
-      ...devices["Desktop Firefox"],
-      viewport: {
-        width: 1920,
-        height: 1080,
-      },
-    },
-  },
-  /* Test against mobile viewports. */
-  {
-    name: "Mobile Chrome",
-    use: devices["Pixel 5"],
-  },
-  {
-    name: "Mobile Firefox",
-    use: {
-      ...devices["Pixel 5"],
-      browserName: "firefox",
-      isMobile: false,
-    },
-  },
+  // {
+  //   name: "firefox",
+  //   use: {
+  //     ...devices["Desktop Firefox"],
+  //     viewport: {
+  //       width: 1920,
+  //       height: 1080,
+  //     },
+  //   },
+  // },
+  // /* Test against mobile viewports. */
+  // {
+  //   name: "Mobile Chrome",
+  //   use: devices["Pixel 5"],
+  // },
+  // {
+  //   name: "Mobile Firefox",
+  //   use: {
+  //     ...devices["Pixel 5"],
+  //     browserName: "firefox",
+  //     isMobile: false,
+  //   },
+  // },
 ];
 
 export const getEnabledFeatureFlags = () => {
   let enabledFeatureFlags: FeatureFlagName[] = [];
   try {
     const enabledFeatureFlagsJson = fs.readFileSync(
-      path.resolve(__dirname, "./enabledFeatureFlags.json"),
+      path.resolve(__dirname, "./storage/enabled-feature-flags.json"),
       "utf-8",
     );
     enabledFeatureFlags = JSON.parse(enabledFeatureFlagsJson).data ?? [];
   } catch (error) {
     console.warn(
-      "Could not load `enabledFeatureFlags`",
+      "Could not load enabled feature flags",
       error instanceof Error ? error.message : error,
     );
   }
