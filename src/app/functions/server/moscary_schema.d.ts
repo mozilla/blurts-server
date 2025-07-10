@@ -233,13 +233,50 @@ export interface paths {
      * @description Returns a specific Scan Result that was found on a data broker site based on the information in the Profile. Please note that a data broker may have more than one home address, phone number, email address, and relative of a user. The {id} path parameter can be a string (uuid) or an integer which corresponds to a OneRep ScanResult ID (legacy lookup).
      */
     get: operations["getScanResultById"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/scan-results/{id}/resolve": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
      * Update a Scan Result to mark it as manually resolved
      *
-     * @description Updates the specified Scan Result. All fields will be replaced by data in the request. Empty and absent fields will be deleted. This is currently only used to mark a Scan Result as manually resolved. The {id} path parameter can be a string (uuid) or an integer which corresponds to a OneRep ScanResult ID (legacy lookup).
+     * @description Updates the specified Scan Result to mark it as manually resolved. The {id} path parameter is a UUID.
      */
-    put: operations["updateScanResultById"];
-    post?: never;
+    post: operations["resolveScanResultById"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/scan-results/{id}/unresolve": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /**
+     * Update a Scan Result to unmark it as manually resolved
+     *
+     * @description Updates the specified Scan Result to unmark it as manually resolved. The {id} path parameter is a UUID.
+     */
+    post: operations["unresolveScanResultById"];
     delete?: never;
     options?: never;
     head?: never;
@@ -283,6 +320,162 @@ export interface paths {
     put?: never;
     post?: never;
     delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/admin/sandbox/profiles": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /**
+     * Create a mock profile (sandbox only)
+     *
+     * @description Create a mock profile for testing. Only available when APP_ENV !== 'production'.
+     */
+    post: operations["adminCreateProfile"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/admin/sandbox/profiles/{id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * Get mock profile (sandbox only)
+     *
+     * @description Retrieve a mock profile by UUID.
+     */
+    get: operations["adminGetProfile"];
+    /**
+     * Update mock profile (sandbox only)
+     *
+     * @description Update a mock profile by UUID.
+     */
+    put: operations["adminUpdateProfile"];
+    post?: never;
+    /**
+     * Delete mock profile (sandbox only)
+     *
+     * @description Delete a mock profile by UUID.
+     */
+    delete: operations["adminDeleteProfile"];
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/admin/sandbox/scans": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * List mock scans (sandbox only)
+     *
+     * @description List mock scans for a given profile ID.
+     */
+    get: operations["adminListScans"];
+    put?: never;
+    /**
+     * Create mock scan (sandbox only)
+     *
+     * @description Create a mock scan for a profile.
+     */
+    post: operations["adminCreateScan"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/admin/sandbox/scans/{scan_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * Get mock scan by ID (sandbox only)
+     *
+     * @description Retrieve a mock scan by scan ID.
+     */
+    get: operations["adminGetScan"];
+    put?: never;
+    post?: never;
+    /**
+     * Delete mock scan (sandbox only)
+     *
+     * @description Delete a mock scan by UUID.
+     */
+    delete: operations["adminDeleteScan"];
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/admin/sandbox/scan-results": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * List mock scan results (sandbox only)
+     *
+     * @description List mock scan results by profile_id and optionally status.
+     */
+    get: operations["adminListScanResults"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/admin/sandbox/scan-results/{id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * Get mock scan result by ID (sandbox only)
+     *
+     * @description Retrieve a mock scan result by ID.
+     */
+    get: operations["adminGetScanResult"];
+    /**
+     * Update mock scan result status (sandbox only)
+     *
+     * @description Update a mock scan result status by UUID.
+     */
+    put: operations["adminUpdateScanResultStatus"];
+    post?: never;
+    /**
+     * Delete mock scan result (sandbox only)
+     *
+     * @description Delete a mock scan result by UUID.
+     */
+    delete: operations["adminDeleteScanResult"];
     options?: never;
     head?: never;
     patch?: never;
@@ -388,6 +581,7 @@ export interface components {
       /** @enum {string} */
       status?: "active" | "inactive";
     };
+    ProfileAdminInput: components["schemas"]["ProfileInput"];
     /** @description A scan is a process of searching for Profiles on data brokers. */
     Scan: components["schemas"]["ObjectBase"] & {
       /** Format: uuid */
@@ -481,8 +675,13 @@ export interface components {
       manually_resolved?: boolean;
       source?: string;
     };
-    ScanResultInput: {
-      manually_resolved?: boolean;
+    ScanResultAdminInput: {
+      /** @enum {string} */
+      status:
+        | "new"
+        | "optout_in_progress"
+        | "waiting_for_verification"
+        | "removed";
     };
     /** @description Represents a data broker website/entity. */
     Broker: {
@@ -880,21 +1079,42 @@ export interface operations {
       422: components["responses"]["BadInputError"];
     };
   };
-  updateScanResultById: {
+  resolveScanResultById: {
     parameters: {
       query?: never;
       header?: never;
       path: {
-        /** @description ID of the scan result */
+        /** @description ID of the scan result (UUID only; OneRep numeric IDs not supported) */
         id: string;
       };
       cookie?: never;
     };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["ScanResultInput"];
+    requestBody?: never;
+    responses: {
+      /** @description The updated Scan Result */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ScanResult"];
+        };
       };
+      404: components["responses"]["404NotFound"];
+      422: components["responses"]["BadInputError"];
     };
+  };
+  unresolveScanResultById: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description ID of the scan result (UUID only; OneRep numeric IDs not supported) */
+        id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
     responses: {
       /** @description The updated Scan Result */
       200: {
@@ -957,6 +1177,296 @@ export interface operations {
         };
       };
       422: components["responses"]["BadInputError"];
+    };
+  };
+  adminCreateProfile: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["ProfileAdminInput"];
+      };
+    };
+    responses: {
+      /** @description Created */
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Profile"];
+        };
+      };
+    };
+  };
+  adminGetProfile: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description A single Profile */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Profile"];
+        };
+      };
+    };
+  };
+  adminUpdateProfile: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["ProfileAdminInput"];
+      };
+    };
+    responses: {
+      /** @description The updated Profile */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Profile"];
+        };
+      };
+    };
+  };
+  adminDeleteProfile: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Deleted */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  adminListScans: {
+    parameters: {
+      query: {
+        profile_id: string;
+        status?: "in_progress" | "finished";
+        /** @description The page offset for the response (starting at 1) */
+        page?: components["parameters"]["pageParam"];
+        /** @description The number of results to return per page */
+        per_page?: components["parameters"]["perPageParam"];
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description List of scans */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ScanPage"];
+        };
+      };
+    };
+  };
+  adminCreateScan: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": {
+          profile_id: string;
+        };
+      };
+    };
+    responses: {
+      /** @description Created scan */
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Scan"];
+        };
+      };
+    };
+  };
+  adminGetScan: {
+    parameters: {
+      query: {
+        profile_id: string;
+      };
+      header?: never;
+      path: {
+        scan_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description A scan object */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Scan"];
+        };
+      };
+    };
+  };
+  adminDeleteScan: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        scan_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Deleted */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  adminListScanResults: {
+    parameters: {
+      query: {
+        profile_id: string;
+        status?:
+          | "new"
+          | "optout_in_progress"
+          | "waiting_for_verification"
+          | "removed";
+        /** @description The page offset for the response (starting at 1) */
+        page?: components["parameters"]["pageParam"];
+        /** @description The number of results to return per page */
+        per_page?: components["parameters"]["perPageParam"];
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description A list of mock scan results */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": {
+            data?: components["schemas"]["ScanResult"][];
+            meta?: components["schemas"]["Meta"];
+            links?: components["schemas"]["Links"];
+          };
+        };
+      };
+    };
+  };
+  adminGetScanResult: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description A single mock scan result */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ScanResult"];
+        };
+      };
+    };
+  };
+  adminUpdateScanResultStatus: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["ScanResultAdminInput"];
+      };
+    };
+    responses: {
+      /** @description The updated ScanResult */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ScanResult"];
+        };
+      };
+    };
+  };
+  adminDeleteScanResult: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Deleted */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
     };
   };
 }
