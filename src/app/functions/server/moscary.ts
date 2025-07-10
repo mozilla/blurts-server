@@ -365,6 +365,54 @@ export async function getAllScanResults(
   );
 }
 
+export async function resolveScanResult(
+  scanResultId: NonNullable<Components["schemas"]["ScanResult"]["id"]>,
+): Promise<
+  Paths["/scan-results/{id}/resolve"]["post"]["responses"]["200"]["content"]["application/json"]
+> {
+  const response = await moscaryFetch(
+    `/api/v1/scan-results/${scanResultId}/resolve`,
+    {
+      method: "POST",
+    },
+  );
+  if (!response.ok) {
+    logger.error(
+      `Failed to resolve scan result [${scanResultId}]: [${response.status}] [${response.statusText}]`,
+    );
+    throw new Error(
+      `Failed to resolve scan result [${scanResultId}]: [${response.status}] [${response.statusText}]`,
+    );
+  }
+  return response.json() as Promise<
+    Paths["/scan-results/{id}/resolve"]["post"]["responses"]["200"]["content"]["application/json"]
+  >;
+}
+
+export async function unresolveScanResult(
+  scanResultId: NonNullable<Components["schemas"]["ScanResult"]["id"]>,
+): Promise<
+  Paths["/scan-results/{id}/unresolve"]["post"]["responses"]["200"]["content"]["application/json"]
+> {
+  const response = await moscaryFetch(
+    `/api/v1/scan-results/${scanResultId}/unresolve`,
+    {
+      method: "POST",
+    },
+  );
+  if (!response.ok) {
+    logger.error(
+      `Failed to unresolve scan result [${scanResultId}]: [${response.status}] [${response.statusText}]`,
+    );
+    throw new Error(
+      `Failed to unresolve scan result [${scanResultId}]: [${response.status}] [${response.statusText}]`,
+    );
+  }
+  return response.json() as Promise<
+    Paths["/scan-results/{id}/unresolve"]["post"]["responses"]["200"]["content"]["application/json"]
+  >;
+}
+
 // export async function getAllDataBrokers() {
 //   return fetchAllPages(async (page: number) => {
 //     const response = await internalFetch(

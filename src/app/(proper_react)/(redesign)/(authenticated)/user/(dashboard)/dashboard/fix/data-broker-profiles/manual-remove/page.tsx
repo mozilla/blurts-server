@@ -5,8 +5,14 @@
 import { redirect } from "next/navigation";
 import { headers } from "next/headers";
 import { getServerSession } from "../../../../../../../../../functions/server/getServerSession";
-import { getScanResultsWithBroker } from "../../../../../../../../../../db/tables/onerep_scans";
-import { getOnerepProfileId } from "../../../../../../../../../../db/tables/subscribers";
+import {
+  getScanResultsWithBroker,
+  LatestOnerepScanData,
+} from "../../../../../../../../../../db/tables/onerep_scans";
+import {
+  getOnerepProfileId,
+  getSubscriberByFxaUid,
+} from "../../../../../../../../../../db/tables/subscribers";
 import { getSubscriberBreaches } from "../../../../../../../../../functions/server/getSubscriberBreaches";
 import { ManualRemoveView } from "./ManualRemoveView";
 import { hasPremium } from "../../../../../../../../../functions/universal/user";
@@ -14,6 +20,10 @@ import { getCountryCode } from "../../../../../../../../../functions/server/getC
 import { getSubscriberEmails } from "../../../../../../../../../functions/server/getSubscriberEmails";
 import { isEligibleForPremium } from "../../../../../../../../../functions/universal/premium";
 import { getEnabledFeatureFlags } from "../../../../../../../../../../db/tables/featureFlags";
+import {
+  getScanAndResults,
+  ScanData,
+} from "../../../../../../../../../functions/server/moscary";
 
 export default async function ManualRemovePage() {
   const session = await getServerSession();
@@ -27,14 +37,26 @@ export default async function ManualRemovePage() {
   });
 
   const countryCode = getCountryCode(await headers());
-  // TODO MOSCARY: Implement manual resolution?
-  const profileId = await getOnerepProfileId(session.user.subscriber.id);
-  const scanData = await getScanResultsWithBroker(
-    profileId,
-    hasPremium(session.user),
+  const subscriber = await getSubscriberByFxaUid(
+    session.user.subscriber.fxa_uid,
   );
+  if (!subscriber) {
+    redirect("/user/dashboard");
+  }
+  let scanData: LatestOnerepScanData | ScanData;
+  if (enabledFeatureFlags.includes("Moscary")) {
+    scanData = subscriber.moscary_id
+      ? await getScanAndResults(subscriber.moscary_id)
+      : { scan: null, results: [] };
+  } else {
+    const profileId = await getOnerepProfileId(subscriber.id);
+    scanData = await getScanResultsWithBroker(
+      profileId,
+      hasPremium(session.user),
+    );
+  }
   const subBreaches = await getSubscriberBreaches({
-    fxaUid: session.user.subscriber.fxa_uid,
+    fxaUid: subscriber.fxa_uid,
     countryCode,
   });
   const subscriberEmails = await getSubscriberEmails(session.user);
