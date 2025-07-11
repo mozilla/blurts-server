@@ -6,7 +6,7 @@ import { test, expect } from "../fixtures/baseTest";
 import { test as authenticatedTest } from "../fixtures/authenticatedTest";
 import { getBaseTestEnvUrl } from "../utils/environment";
 import { goToFxA, signInUser } from "../utils/fxa";
-import { getTestUserEmail } from "../utils/user";
+import { getTestUserEmailByCountryCode } from "../utils/user";
 
 test.describe(`Verify authentication [${process.env.E2E_TEST_ENV}]`, () => {
   test.beforeEach(async ({ page }) => {
@@ -20,7 +20,9 @@ test.describe(`Verify authentication [${process.env.E2E_TEST_ENV}]`, () => {
 
   test("user sign-in flow from landing page", async ({ page }, testInfo) => {
     await goToFxA(page, testInfo.project.use.countryCode);
-    const userEmail = getTestUserEmail(testInfo.project.use.countryCode);
+    const userEmail = getTestUserEmailByCountryCode(
+      testInfo.project.use.countryCode,
+    );
     await signInUser(
       page,
       userEmail,

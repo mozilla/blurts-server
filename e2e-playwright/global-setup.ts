@@ -84,6 +84,10 @@ async function setupUserAccounts() {
 }
 
 const globalSetup = async () => {
+  // Ensure storage directory exists
+  const storageDir = path.resolve(__dirname, "./storage");
+  fs.mkdirSync(storageDir, { recursive: true });
+
   await setupFeatureFlags();
   await setupUserAccounts();
 };

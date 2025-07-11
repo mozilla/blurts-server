@@ -122,6 +122,8 @@ export default defineConfig({
   testDir: "./tests",
   /* Global setup */
   globalSetup: "./global-setup.ts",
+  /* Global teardown */
+  globalTeardown: "./global-teardown.ts",
   /* Maximum time one test can run for. */
   timeout: 60_000,
   /* Max time in milliseconds the whole test suite can run to prevent CI from hanging. */

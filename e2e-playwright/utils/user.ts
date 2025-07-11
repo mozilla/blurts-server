@@ -56,10 +56,10 @@ export const fetchRestmailVerificationCode = async (
   }
 };
 
-export function getTestUserEmail(countryCode?: string): string {
+export function getTestUserEmails(): Record<string, string> {
   const emailsStoragePath = path.resolve(
     __dirname,
-    "./storage/user-emails.json",
+    "../storage/user-emails.json",
   );
 
   if (!fs.existsSync(emailsStoragePath)) {
@@ -67,10 +67,32 @@ export function getTestUserEmail(countryCode?: string): string {
   }
 
   const emails = JSON.parse(fs.readFileSync(emailsStoragePath, "utf-8"));
+  if (!emails) {
+    throw new Error("No emails found");
+  }
+
+  return emails;
+}
+
+export function getTestUserEmailByCountryCode(countryCode?: string): string {
+  const emails = getTestUserEmails();
   const email = emails[countryCode ?? "us"];
   if (!email) {
     throw new Error(`No email found for [${countryCode}]`);
   }
 
   return email;
+}
+
+export function getTestUserSession(countryCode: string) {
+  const storagePath = path.resolve(
+    __dirname,
+    `../storage/user-session-${countryCode}.json`,
+  );
+
+  if (!fs.existsSync(storagePath)) {
+    throw new Error("User session storage not found");
+  }
+
+  return storagePath;
 }

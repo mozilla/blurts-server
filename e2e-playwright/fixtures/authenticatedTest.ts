@@ -3,11 +3,8 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
 import { test as baseTest, expect } from "./baseTest";
-
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+import { getTestUserSession } from "../utils/user";
 
 // The `use` function is no React hook and not linted correctly.
 // For more info see issue: https://github.com/facebook/react/issues/31237
@@ -15,11 +12,12 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const test = baseTest.extend<object, { storageState?: string }>({
   storageState: async ({}, use, testInfo) => {
     const countryCode = testInfo.project.use?.countryCode;
-    const storagePath = path.resolve(
-      __dirname,
-      `../storage/user-session-${countryCode}.json`,
-    );
+    if (!countryCode) {
+      await use(undefined);
+      return;
+    }
 
+    const storagePath = getTestUserSession(countryCode);
     const exists = fs.existsSync(storagePath);
     if (exists) {
       await use(storagePath);
