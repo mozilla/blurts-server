@@ -5,7 +5,7 @@
 "use client";
 
 import { useContext, useEffect, useRef } from "react";
-import { redirect, usePathname, useSearchParams } from "next/navigation";
+import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import Image from "next/image";
 import { useOverlayTrigger, useToggleButton } from "react-aria";
 import { useOverlayTriggerState, useToggleState } from "react-stately";
@@ -98,13 +98,15 @@ function UpsellToggleButton(props: UpsellToggleButtonProps) {
   });
   const pathname = usePathname();
   const searchParams = useSearchParams();
+  const router = useRouter();
 
   useEffect(() => {
     if (
       props.enabledFeatureFlags.includes("SubscriptionPlansPage") &&
       props.autoOpenUpsellDialog
     ) {
-      return redirect("/subscription-plans");
+      router.push("/subscription-plans");
+      return;
     }
     // This effect should only run once
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -119,7 +121,8 @@ function UpsellToggleButton(props: UpsellToggleButtonProps) {
         props.enabledFeatureFlags.includes("SubscriptionPlansPage") &&
         isOpen
       ) {
-        return redirect("/subscription-plans");
+        router.push("/subscription-plans");
+        return;
       }
 
       // Remove `dialog` from URLSearchParams on closing the upsell dialog
