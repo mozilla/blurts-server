@@ -38,8 +38,10 @@ modal-active-number-of-exposures-part-one-all =
         [one] Ko gráfico ogueroike mboy jeýpa rojuhu peteĩteĩva mba’ekuaarã osẽkuaáva opaite mba’ekuaarã { $limit }-pe g̃uarã ñanduti veve kundaharape emongu’éva ko’ág̃a.
        *[other] Ko gráfico ogueroike mboy jeýpa rojuhu peteĩteĩva mba’ekuaarã osẽkuaáva opaite mba’ekuaarã { $limit }-pe g̃uarã ñanduti veve kundaharape emongu’éva ko’ág̃a.
     }
+modal-active-number-of-exposures-part-two = Techapyrã, eguerekóramo 10 mba’evaikuaa ne pumbyry papapy rehegua, upéva ikatu he’ise peteĩ pumbyry papapy imarãkuaaha 10 tendápe térã ikatu he’ise 2 pumbyry papapy iñambuéva imarãkuaahague 5 tenda ambuévape.
 modal-active-number-of-exposures-part-three-all = Oñemoĩporã vove, oñembojuajúta nde papapy jehechapy oĩporãmava kuatiarogue Moĩporãhápe.
 modal-fixed-number-of-exposures-title = Mboyjeýmapa ipapapy jehechauka opytáva
+modal-fixed-number-of-exposures-all = Ko ta’ãnga’i ogueroikéta mboyete mba’ekuaarã ñemboguápa oñemoĩporã opaite ñanduti vevépe g̃uarã ehecháva ko’ág̃a peve. Oñemongurusupa rire ñemoĩporãmbyrévaramo, oñembojoajupaitéta ko’ápe.
 modal-cta-ok = MONEĨ
 modal-cta-got-it = Aikũmby
 open-modal-alt = Embojuruja modal
@@ -117,6 +119,13 @@ dashboard-top-banner-non-us-protect-your-data-description-line2 =
 dashboard-top-banner-no-exposures-found-title = Ndojejuhúi máva jehechauka
 dashboard-top-banner-non-us-no-exposures-found-description = ¡Mba’éichapa! Roheka umi mba’ekuaarã ñembogua ojekuaáva ha ndorojuhúi mba’evairã. Rohapykuehóta ne ñanduti veve kundaharape ha romomarandúta oĩramo ñembogua.
 dashboard-no-exposures-label = Ndojejuhúi máva jehechauka
+# Variables:
+# $exposures_resolved_num is the number of exposures the user has resolved.
+dashboard-top-banner-non-us-your-data-is-protected-description =
+    { $exposures_resolved_num ->
+        [one] ¡Tembiapo iporãva! ¡Oñemyatyrõma ne mba’ekuaarã rekomarã! Rohechameméta ha roikuaaukáta ndéve oimeraẽ tekomarã pyahu oĩvare.
+       *[other] ¡Tembiapo iporãva! ¡Oñemyatyrõma ne mba’ekuaarã { $exposures_resolved_num } rekomarã! Rohechameméta ha roikuaaukáta ndéve oimeraẽ tekomarã pyahu oĩvare.
+    }
 dashboard-top-banner-monitor-more-cta = Roma’ẽag̃uíta hetave ñanduti vevére
 
 # About Exposure Indicators Modal

@@ -95,7 +95,10 @@ high-risk-breach-social-security-step-two = <link_to_info>Ehecha nde deveha mara
 # Social Security Number Modal
 
 ssn-modal-title = Ñemonge rehegua ha nde jedeverã jejoko
+ssn-modal-description-fraud-part-one = <b>Peteĩ kyhyjerã</b> ojerure umi mba’apohaguasu tohecha nde reraite oiporuka mboyve viru nde rérape. Ha’e reigua, ipukukuaa peteĩ ary ha nombyaimo’ãi nde viru jeporurã tenondevépe.
 ssn-modal-description-fraud-part-two = Emboheko hag̃ua, eñe’ẽ peteĩva umi mbohapy oporombodevéva ndive. Natekotevẽi eñe’ẽ mbohapyvéva ndive.
+ssn-modal-description-freeze-credit-part-one = <b>Ejoko nde vitu ñeme’ẽ</b> omboyke ani avave ombojurujávo mba’ete pyahu nde rérape. Ha’e reigua ha nombyaimo’ãi nde viru jeporurãme, hákatu tekotevẽta ejora embojuruja mboyve ambue mba’ete pyahu.
+ssn-modal-description-freeze-credit-part-two = Ejoko hag̃ua nde crédito, eñe’ẽ peteĩteĩva ko’ã agencia de crédito ndive: <equifax_link>Equifax</equifax_link>, <experian_link>Experian</experian_link> ha <transunion_link>TransUnion</transunion_link>.
 ssn-modal-learn-more = Eikuaave ñemonge rehegua ha nde jedeverã jejoko
 ssn-modal-ok = MONEĨ
 
@@ -163,6 +166,7 @@ security-recommendation-ip-summary =
         [one] Ne IP kundaharape ojehecha { $num_breaches } mba’ekuaarã ñemboguápe:
        *[other] Ne IP kundaharape ojehecha { $num_breaches } mba’ekuaarã ñemboguápe:
     }
+security-recommendation-ip-description = Nde IP kundaharape ohechauka ne rendaite ha ñanduti me’ẽhára. Umi hacker ikatu oiporu ko marandu ojuhu hag̃ua ne rendaite térã oñeha’ã hag̃ua oike ne mba’e’okápe.
 security-recommendation-ip-step-one = Eiporu VPN (<link_to_info>{ -brand-mozilla-vpn }</link_to_info>) ramo emokañy hag̃ua nde IP kundaharape ha eiporu ñanduti ñemihápe.
 
 # Leaked Passwords
@@ -173,6 +177,7 @@ leaked-passwords-title = Ne ñe’ẽñemi { $breach_name } pegua ojehechakuaa
 # Variables
 # $breach_date is the date when the breach occurred.
 leaked-passwords-summary = Osẽ peteĩ mba’ekuaarã ñembogua { $breach_date }.
+leaked-passwords-description = Umi mba’evaiapoha ikatu oike ne mba’etépe ha oiméne oñeha’ãta oiporu ambue mba’etépe ohecha hag̃ua eiporujeýpa pe ñe’ẽñemi. Emoambue opaite tenda eiporu haguépe eñemo’ã hag̃ua.
 leaked-passwords-steps-title = Kóva pe rejapova’erã
 leaked-passwords-steps-subtitle = Kóva oikotevẽ ne mba’etépe jeike, ikatuhápe emoĩporã nde poite rupive.
 # Variables
@@ -200,9 +205,11 @@ leaked-security-questions-title = Ne porandu tekorosãrãva ojehechakakuaa
 # $breach_date is the date when the breach occurred.
 # An example of this string is Twitter on 13/09/18.
 leaked-security-questions-summary = Osẽ peteĩ mba’ekuaarã ñembogua { $breach_name }-pe { $breach_date }.
+leaked-security-questions-description = Umi mba’evaiapoha ikatukuaa oike ne mba’etépe ha oimeraẽva ambue tenda eiporu haguépe porandu tekorosãgua. Embohekopyahu ko’ág̃a emo’ã hag̃ua ne mba’ete.
 leaked-security-questions-steps-title = Kóva pe rejapova’erã
 leaked-security-questions-steps-subtitle = Kóva oikotevẽ ne mba’etépe jeike, ikatuhápe emoĩporã nde poite rupive.
 # Variables
 # $breach_name is the name of the breach where the security questions were found.
 # $email_affected is the email associated with the breach.
 leaked-security-questions-step-one = Embohekopyahu ne porandu tekorosãrã <b>{ $email_affected }</b> peg̃uarã <link_to_breach_site>{ $breach_name }</link_to_breach_site>-pe.
+leaked-security-questions-step-two = Embohekopyahu ambue tenda eipuru jey haguépe porandu tekorosãgua. Ejesareko eipuruha iñambuéva porandu tekorosãgua peteĩteĩva mba’etépe.

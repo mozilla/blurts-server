@@ -53,7 +53,7 @@ settings-delete-monitor-free-account-cta-label = Slett kontoen
 settings-delete-monitor-free-account-dialog-title = { -brand-monitor }-kontoen din vert permanent sletta
 settings-delete-monitor-free-account-dialog-lead-v2 = All { -brand-monitor }-kontoinformasjonen din vil bli sletta, og vi vil ikkje lenger overvake nye datalekkasjar. Dette vil ikkje slette { -brand-mozilla-account }en din.
 settings-delete-monitor-free-account-dialog-cta-label = Slett kontoen
-settings-delete-monitor-free-account-dialog-cancel-button-label = Gløym det, ta meg tillbake
+settings-delete-monitor-free-account-dialog-cancel-button-label = Gløym det, ta meg tilbake
 settings-delete-monitor-account-confirmation-toast-label-2 = { -brand-monitor }-kontoen din er no sletta.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Ignorer
 
