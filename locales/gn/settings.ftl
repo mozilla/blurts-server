@@ -53,6 +53,7 @@ settings-delete-monitor-free-account-title = Embogue { -brand-monitor } mba’et
 settings-delete-monitor-free-account-description = Kóva omboguepáta ne mba’ete { -brand-monitor } pegua ha omboykéta opaite marandu’ikuéra.
 settings-delete-monitor-free-account-cta-label = Emboguete mba’ete
 settings-delete-monitor-free-account-dialog-title = Ne mba’ete { -brand-monitor } pegua oñemboguetéta
+settings-delete-monitor-free-account-dialog-lead-v2 = Opaite ne marandu { -brand-monitor } mba’ete rehegua oguéta ha ndorojesarekomo’ãvéima mba’ekuaarãita ñembogua pyahu rehe. Kóva nomboguemo’ãi ne { -brand-mozilla-account }.
 settings-delete-monitor-free-account-dialog-cta-label = Emboguete mba’ete
 settings-delete-monitor-free-account-dialog-cancel-button-label = Marave ndoikói, jajevyjey
 settings-delete-monitor-account-confirmation-toast-label-2 = Ne mba’ete { -brand-monitor } pegua oguetéma.
