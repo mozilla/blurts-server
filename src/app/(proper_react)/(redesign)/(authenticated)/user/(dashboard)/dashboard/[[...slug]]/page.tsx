@@ -173,6 +173,10 @@ export default async function DashboardPage(props: Props) {
 
   const userAnnouncements = await initializeUserAnnouncements(session.user);
 
+  if (searchParams.dialog === "subscriptions") {
+    redirect("/subscription-plans");
+  }
+
   return (
     <View
       user={session.user}
@@ -193,7 +197,6 @@ export default async function DashboardPage(props: Props) {
       activeTab={activeTab}
       hasFirstMonitoringScan={hasFirstMonitoringScan}
       signInCount={signInCount}
-      autoOpenUpsellDialog={searchParams.dialog === "subscriptions"}
       removalTimeEstimates={getDataBrokerRemovalTimeEstimates(scanResults)}
       userAnnouncements={userAnnouncements}
     />

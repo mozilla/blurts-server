@@ -17,7 +17,7 @@ import {
 import { ProgressCard } from "../../../../../../../components/client/ProgressCard";
 import { Button } from "../../../../../../../components/client/Button";
 import { useL10n } from "../../../../../../../hooks/l10n";
-import { UpsellButton } from "../../../../../../../components/client/toolbar/UpsellBadge";
+import { UpsellLinkButton } from "../../../../../../../components/client/toolbar/UpsellBadge";
 import { WaitlistDialog } from "../../../../../../../components/client/SubscriberWaitlistDialog";
 import { useTelemetry } from "../../../../../../../hooks/useTelemetry";
 import {
@@ -54,9 +54,6 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
     isPremiumUser,
     scanInProgress,
     onShowFixed,
-    monthlySubscriptionUrl,
-    yearlySubscriptionUrl,
-    subscriptionBillingAmount,
   } = props;
 
   const waitlistDialogState = useOverlayTriggerState({});
@@ -302,15 +299,9 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               )}
             </p>
             <div className={styles.cta}>
-              <UpsellButton
-                label={l10n.getString(
-                  "dashboard-top-banner-no-exposures-found-cta",
-                )}
-                monthlySubscriptionUrl={monthlySubscriptionUrl}
-                yearlySubscriptionUrl={yearlySubscriptionUrl}
-                subscriptionBillingAmount={subscriptionBillingAmount}
-                enabledFeatureFlags={props.enabledFeatureFlags}
-              />
+              <UpsellLinkButton enabledFeatureFlags={props.enabledFeatureFlags}>
+                {l10n.getString("dashboard-top-banner-no-exposures-found-cta")}
+              </UpsellLinkButton>
             </div>
           </>
         );
@@ -422,15 +413,9 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               )}
             </p>
             <div className={styles.cta}>
-              <UpsellButton
-                label={l10n.getString(
-                  "dashboard-top-banner-no-exposures-found-cta",
-                )}
-                monthlySubscriptionUrl={monthlySubscriptionUrl}
-                yearlySubscriptionUrl={yearlySubscriptionUrl}
-                subscriptionBillingAmount={subscriptionBillingAmount}
-                enabledFeatureFlags={props.enabledFeatureFlags}
-              />
+              <UpsellLinkButton enabledFeatureFlags={props.enabledFeatureFlags}>
+                {l10n.getString("dashboard-top-banner-no-exposures-found-cta")}
+              </UpsellLinkButton>
             </div>
           </>
         );

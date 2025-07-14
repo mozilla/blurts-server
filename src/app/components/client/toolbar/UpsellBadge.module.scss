@@ -2,10 +2,8 @@
 
 .upsellBadge {
   align-items: center;
-  background: none;
   border-radius: tokens.$border-radius-xl;
   border: 1px solid tokens.$color-grey-40;
-  color: tokens.$color-black;
   cursor: pointer;
   display: flex;
   font: tokens.$text-body-md;
@@ -53,6 +51,15 @@
       }
     }
   }
+}
+
+// Override the background of the base button component
+a.upsellBadge,
+button.upsellBadge {
+  /* stylelint-disable-next-line declaration-no-important */
+  background: none !important;
+  /* stylelint-disable-next-line declaration-no-important */
+  color: tokens.$color-black !important;
 }
 
 .lastScanIndicator {

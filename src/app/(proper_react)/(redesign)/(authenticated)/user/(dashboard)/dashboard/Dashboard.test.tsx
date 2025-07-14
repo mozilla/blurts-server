@@ -3934,33 +3934,6 @@ describe("Upsell badge", () => {
     ).not.toBeInTheDocument();
   });
 
-  it("shows the premium upsell dialog of the Premium upsell badge open by default)", () => {
-    const ComposedDashboard = composeStory(
-      DashboardUsNoPremiumNoScanNoBreaches,
-      Meta,
-    );
-    render(<ComposedDashboard autoOpenUpsellDialog />);
-
-    expect(
-      screen.getByText("Turn on automatic data removal with ⁨Monitor Plus⁩"),
-    ).toBeInTheDocument();
-  });
-
-  it("navigates to the subscription plans page on render when `autoOpenUpsellDialog={true}` and the feature flag SubscriptionPlansPage is enabled)", () => {
-    const ComposedDashboard = composeStory(
-      DashboardUsNoPremiumNoScanNoBreaches,
-      Meta,
-    );
-    render(
-      <ComposedDashboard
-        autoOpenUpsellDialog
-        enabledFeatureFlags={["SubscriptionPlansPage"]}
-      />,
-    );
-
-    expect(routerPushMock).toHaveBeenCalledWith("/subscription-plans");
-  });
-
   it("navigates to the subscription plans page when the feature flag SubscriptionPlansPage is enabled when clicking the the upsell badge)", async () => {
     const user = userEvent.setup();
     const ComposedDashboard = composeStory(
@@ -3979,25 +3952,6 @@ describe("Upsell badge", () => {
 
     await user.click(premiumCtas[0]);
     expect(routerPushMock).toHaveBeenCalledWith("/subscription-plans");
-  });
-
-  it("closes the premium upsell dialog of the Premium upsell badge after it opened by default)", async () => {
-    const user = userEvent.setup();
-    const ComposedDashboard = composeStory(
-      DashboardUsNoPremiumNoScanNoBreaches,
-      Meta,
-    );
-    render(<ComposedDashboard autoOpenUpsellDialog />);
-
-    expect(
-      screen.getByText("Turn on automatic data removal with ⁨Monitor Plus⁩"),
-    ).toBeInTheDocument();
-
-    const closeButtonIcon1 = screen.getByLabelText("Close modal");
-    await user.click(closeButtonIcon1.parentElement as HTMLElement);
-    expect(
-      screen.queryByText("Turn on automatic data removal with ⁨Monitor Plus⁩"),
-    ).not.toBeInTheDocument();
   });
 
   it("opens and closes the premium upsell dialog via the Premium upsell button", async () => {
