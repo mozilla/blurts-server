@@ -60,15 +60,17 @@ import {
   DashboardUsPremiumScanInProgressResolvedBreaches,
   DashboardUsPremiumScanInProgressUnresolvedBreaches,
 } from "./DashboardPlusUsers.stories";
-import { redirect } from "next/navigation";
+
+const routerPushMock = jest.fn();
 
 jest.mock("next/navigation", () => ({
-  useRouter: jest.fn(),
+  useRouter: () => ({
+    push: routerPushMock,
+  }),
   usePathname: jest.fn(),
   useSearchParams: () => ({
     get: jest.fn(),
   }),
-  redirect: jest.fn(),
 }));
 jest.mock("../../../../../../hooks/useTelemetry");
 // We need to override the types of `useTelemetry` here, because otherwise
@@ -3944,7 +3946,7 @@ describe("Upsell badge", () => {
     ).toBeInTheDocument();
   });
 
-  it("redirects to the subscription plans page on render when `autoOpenUpsellDialog={true}` and the feature flag SubscriptionPlansPage is enabled)", () => {
+  it("navigates to the subscription plans page on render when `autoOpenUpsellDialog={true}` and the feature flag SubscriptionPlansPage is enabled)", () => {
     const ComposedDashboard = composeStory(
       DashboardUsNoPremiumNoScanNoBreaches,
       Meta,
@@ -3956,10 +3958,10 @@ describe("Upsell badge", () => {
       />,
     );
 
-    expect(redirect).toHaveBeenCalledWith("/subscription-plans");
+    expect(routerPushMock).toHaveBeenCalledWith("/subscription-plans");
   });
 
-  it("redirects to the subscription plans page when the feature flag SubscriptionPlansPage is enabled when clicking the the upsell badge)", async () => {
+  it("navigates to the subscription plans page when the feature flag SubscriptionPlansPage is enabled when clicking the the upsell badge)", async () => {
     const user = userEvent.setup();
     const ComposedDashboard = composeStory(
       DashboardUsNoPremiumNoScanNoBreaches,
@@ -3976,7 +3978,7 @@ describe("Upsell badge", () => {
     expect(premiumCtas.length).toBe(2);
 
     await user.click(premiumCtas[0]);
-    expect(redirect).toHaveBeenCalledWith("/subscription-plans");
+    expect(routerPushMock).toHaveBeenCalledWith("/subscription-plans");
   });
 
   it("closes the premium upsell dialog of the Premium upsell badge after it opened by default)", async () => {
