@@ -47,7 +47,7 @@ breach-checklist-ssn-header = Overvak kredittrapporten din for kontoar, lån ell
 #   $equifaxLink (string) - a link to the Equifax website
 #   $experianLink (string) - a link to the Experian website
 #   $transUnionLink (string) - a link to the TransUnion website
-breach-checklist-ssn-body-2 = Du kan òg vurdere å fryse kredittens din på { $equifaxLink }, { $experianLink } og { $transUnionLink } for å hindre svindlarar i å opne nye kontoar i ditt namn. Det er gratis og vil ikkje påverke kredittpoengsummen din.
+breach-checklist-ssn-body-2 = Du kan òg vurdere å fryse kreditten din på { $equifaxLink }, { $experianLink } og { $transUnionLink } for å hindre svindlarar i å opne nye kontoar i ditt namn. Det er gratis og vil ikkje påverke kredittpoengsummen din.
 
 ## Prompts the user for changes when there is a breach detected of credit card
 
