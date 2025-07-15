@@ -35,6 +35,15 @@ breach-checklist-email-body = Dette kan skjule din virkelige e-postadresse mens 
 # Credit reports list your bill payment history, loans, current debt, and other financial information.
 # They show where you work and live and whether you've been sued, arrested, or filed for bankruptcy.
 breach-checklist-ssn-header = Overvåk kredittrapporten din for kontoer, lån eller kredittkort du ikke kjenner igjen.
+# A security freeze prevents prospective creditors from accessing your credit file.
+# Creditors typically won't offer you credit if they can't access your credit reporting file,
+# so a security freeze, also called a credit freeze, prevents you or others from opening accounts in your name.
+# This will only be shown to users in the US.
+# Variables:
+#   $equifaxLink (string) - a link to the Equifax website
+#   $experianLink (string) - a link to the Experian website
+#   $transUnionLink (string) - a link to the TransUnion website
+breach-checklist-ssn-body-2 = Du kan også vurdere å fryse kreditten din på { $equifaxLink }, { $experianLink } og { $transUnionLink } for å hindre svindlere i å åpne nye kontoer i ditt navn. Det er gratis og vil ikke påvirke kredittscoren din.
 
 ## Prompts the user for changes when there is a breach detected of credit card
 
@@ -56,6 +65,7 @@ breach-checklist-pin-body = Sørg for at den nye PIN-koden din, eller andre PIN-
 # Variables:
 #   $mozillaVpnLink (string) - a link to the Mozilla VPN website, with { -breach-checklist-link-mozilla-vpn } as the label
 breach-checklist-ip-header-2 = Beskytt identiteten din på internett ved å bruke et VPN som { $mozillaVpnLink }.
+breach-checklist-ip-body = IP-adressen din (Internet Protocol-adresse) angir hvor du befinner deg og hvilken internettleverandør du bruker. En VPN kan skjule den virkelige IP-adressen din, slik at du kan bruke internett privat.
 
 ## Prompts the user for changes when there is a breach detected of physical address
 
@@ -75,9 +85,20 @@ breach-checklist-phone-header-2 = Beskytt telefonnummeret ditt med en maskerings
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
+breach-checklist-sq-header-text = Oppdater sikkerhetsspørsmålene dine.
+# The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
+breach-checklist-sq-body-text = I de fleste tilfeller anbefaler vi at du oppdaterer sikkerhetsspørsmålene dine på selskapets nettsted. Men <b>nettstedet deres kan være nede eller inneholde skadelig innhold</b>, så vær forsiktig hvis du <breached-company-link>besøker nettstedet</breached-company-link>. For ekstra beskyttelse, oppdater disse sikkerhetsspørsmålene på alle viktige kontoer der du har brukt dem, og opprett unike passord for alle kontoer.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
+breach-checklist-hp-header = Lag unike, sterke passord for alle kontoer der du har gjenbrukt passord.
+# Variables:
+#   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
+breach-checklist-hp-body-2 = En passordbehandler som { $passwordManagerLink } (som er gratis og innebygd i nettleseren { -brand-firefox }) kan hjelpe deg med å holde oversikt over alle passordene dine og få sikker tilgang til dem fra alle enhetene dine.
 
 ## Prompts the user for changes when there is a breach detected of other types
 
+# Variables:
+#   $breachDate (String) - Date of the breach
+#   $companyName (String) - Name of the company where the breach occurred
+breach-checklist-general-header = Kontakt { $companyName } for å informere dem om denne datalekkasjen og be om konkrete tiltak du kan iverksette.
