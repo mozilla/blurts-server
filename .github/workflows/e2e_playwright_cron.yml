@@ -14,7 +14,7 @@ on:
         type: choice
         options:
           - stage
-          - prod
+          - production
 jobs:
   e2e-tests:
     timeout-minutes: 60
