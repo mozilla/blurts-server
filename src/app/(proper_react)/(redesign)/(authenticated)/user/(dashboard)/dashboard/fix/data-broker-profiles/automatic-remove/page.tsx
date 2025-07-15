@@ -5,5 +5,6 @@
 import { redirect } from "next/navigation";
 
 export default async function AutomaticRemovePage() {
+  // Redirect to support existing external links
   return redirect("/subscription-plans");
 }
