@@ -19,7 +19,7 @@ test.describe(`Verify subscription flows [${process.env.E2E_TEST_ENV}]`, () => {
     });
   });
 
-  test("user can subscribe to Monitor Plus from the pricing grid on the landing page", async ({
+  test("user can initiate subscribing to Monitor Plus from the pricing grid on the landing page", async ({
     page,
   }, testInfo) => {
     await page.goto(`${getBaseTestEnvUrl()}/`);
@@ -36,7 +36,7 @@ test.describe(`Verify subscription flows [${process.env.E2E_TEST_ENV}]`, () => {
     }
   });
 
-  test("user can subscribe to the Privacy Protection Plan from the pricing grid on the landing page", async ({
+  test("user can initiate subscribing to the Privacy Protection Plan from the pricing grid on the landing page", async ({
     page,
   }, testInfo) => {
     await page.goto(`${getBaseTestEnvUrl()}/`);
@@ -55,7 +55,7 @@ test.describe(`Verify subscription flows [${process.env.E2E_TEST_ENV}]`, () => {
     }
   });
 
-  test("user can subscribe to Monitor Plus from the pricing grid on the subscription plans page", async ({
+  test("user can initiate subscribing to Monitor Plus from the pricing grid on the subscription plans page", async ({
     page,
   }, testInfo) => {
     await page.goto(`${getBaseTestEnvUrl()}/subscription-plans`);
@@ -70,7 +70,7 @@ test.describe(`Verify subscription flows [${process.env.E2E_TEST_ENV}]`, () => {
     }
   });
 
-  test("user can subscribe to the Privacy Protection Plan from the pricing grid on the subscription plans page", async ({
+  test("user can initiate subscribing to the Privacy Protection Plan from the pricing grid on the subscription plans page", async ({
     page,
   }, testInfo) => {
     await page.goto(`${getBaseTestEnvUrl()}/subscription-plans`);

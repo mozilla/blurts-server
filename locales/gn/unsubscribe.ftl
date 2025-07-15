@@ -6,6 +6,7 @@
 # Confirm Unsubscription State
 
 unsubscribe-from-monthly-report-header = ¿Eipe’a ne reraguapy ko ñanduti vevégui?
+unsubscribe-from-monthly-report-body = Nog̃uahẽmo’ãvéima marandu’i jasygua { -brand-monitor } rehegua, he’íva ndéve mboy mba’evaikuaa pyahu erekora’e jasy pukukue ha mboýpa oñemyatyrõra’e.
 unsubscribe-cta = Eheja ñemboheraguapy
 
 # Success Unsubscription State

@@ -57,29 +57,29 @@ const baseDevices = [
       },
     },
   },
-  // {
-  //   name: "firefox",
-  //   use: {
-  //     ...devices["Desktop Firefox"],
-  //     viewport: {
-  //       width: 1920,
-  //       height: 1080,
-  //     },
-  //   },
-  // },
-  // /* Test against mobile viewports. */
-  // {
-  //   name: "Mobile Chrome",
-  //   use: devices["Pixel 5"],
-  // },
-  // {
-  //   name: "Mobile Firefox",
-  //   use: {
-  //     ...devices["Pixel 5"],
-  //     browserName: "firefox",
-  //     isMobile: false,
-  //   },
-  // },
+  {
+    name: "firefox",
+    use: {
+      ...devices["Desktop Firefox"],
+      viewport: {
+        width: 1920,
+        height: 1080,
+      },
+    },
+  },
+  /* Test against mobile viewports. */
+  {
+    name: "Mobile Chrome",
+    use: devices["Pixel 5"],
+  },
+  {
+    name: "Mobile Firefox",
+    use: {
+      ...devices["Pixel 5"],
+      browserName: "firefox",
+      isMobile: false,
+    },
+  },
 ];
 
 export const getEnabledFeatureFlags = () => {
