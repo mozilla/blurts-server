@@ -104,7 +104,7 @@ export class DashboardPage {
     );
     this.markAsFixed = page.getByRole("button", { name: "Resolve exposures" });
     this.skipExposureRemoval = page.getByRole("link", { name: "Skip for now" });
-    this.continuousProtectionButton = page.getByRole("button", {
+    this.continuousProtectionButton = page.getByRole("link", {
       name: "Get continuous protection",
     });
 
