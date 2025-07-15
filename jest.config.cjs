@@ -123,7 +123,7 @@ const customJestConfig = {
   },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
-  modulePathIgnorePatterns: ["e2e/"],
+  modulePathIgnorePatterns: ["e2e/", "e2e-playwright/"],
 
   // Activates notifications for test results
   // notify: false,
