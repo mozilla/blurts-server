@@ -64,8 +64,8 @@ jobs:
         timeout-minutes: 40
         env:
           E2E_TEST_ENV: ${{ github.event_name == 'workflow_dispatch' && inputs.test_env || matrix.test_env }}
-          E2E_TEST_ACCOUNT_EMAIL: ${{ secrets.E2E_TEST_ACCOUNT_EMAIL }}
-          E2E_TEST_ACCOUNT_PASSWORD: ${{ secrets.E2E_TEST_ACCOUNT_PASSWORD }}
+          E2E_TEST_ACCOUNT_BASE_EMAIL: ${{ secrets.E2E_TEST_ACCOUNT_BASE_EMAIL }}
+          E2E_TEST_ACCOUNT_BASE_PASSWORD: ${{ secrets.E2E_TEST_ACCOUNT_BASE_PASSWORD }}
       - uses: actions/upload-artifact@v4
         if: always()
         with:

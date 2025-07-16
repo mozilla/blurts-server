@@ -72,14 +72,6 @@ const baseDevices = [
     name: "Mobile Chrome",
     use: devices["Pixel 5"],
   },
-  {
-    name: "Mobile Firefox",
-    use: {
-      ...devices["Pixel 5"],
-      browserName: "firefox",
-      isMobile: false,
-    },
-  },
 ];
 
 export const getEnabledFeatureFlags = () => {

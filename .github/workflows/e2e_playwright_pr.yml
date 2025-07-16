@@ -67,23 +67,24 @@ jobs:
         run: npm run e2e-playwright
         timeout-minutes: 20
         env:
-          E2E_TEST_ENV: local
-          E2E_TEST_BASE_URL: http://localhost:6060
-          E2E_TEST_ACCOUNT_EMAIL: ${{ secrets.E2E_TEST_ACCOUNT_EMAIL }}
           ADMINS: ${{ secrets.ADMINS }}
-          OAUTH_CLIENT_SECRET: ${{ secrets.OAUTH_CLIENT_SECRET_LOCAL }}
-          OAUTH_ACCOUNT_URI: ${{ secrets.OAUTH_ACCOUNT_URI }}
-          ONEREP_API_KEY: ${{ secrets.ONEREP_API_KEY }}
-          NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
-          NEXTAUTH_URL: ${{ secrets.NEXTAUTH_URL }}
           DATABASE_URL: postgres://postgres:postgres@localhost:5432/blurts
-          HIBP_KANON_API_TOKEN: ${{ secrets.HIBP_KANON_API_TOKEN }}
+          E2E_TEST_ACCOUNT_BASE_EMAIL: ${{ secrets.E2E_TEST_ACCOUNT_BASE_EMAIL }}
+          E2E_TEST_ACCOUNT_BASE_PASSWORD: ${{ secrets.E2E_TEST_ACCOUNT_BASE_PASSWORD }}
+          E2E_TEST_BASE_URL: http://localhost:6060
+          E2E_TEST_ENV: local
           HIBP_API_TOKEN: ${{ secrets.HIBP_API_TOKEN }}
           HIBP_KANON_API_ROOT: "http://localhost:6060/api/mock/hibp"
+          HIBP_KANON_API_TOKEN: ${{ secrets.HIBP_KANON_API_TOKEN }}
+          NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
+          NEXTAUTH_URL: ${{ secrets.NEXTAUTH_URL }}
+          OAUTH_ACCOUNT_URI: ${{ secrets.OAUTH_ACCOUNT_URI }}
+          OAUTH_CLIENT_SECRET: ${{ secrets.OAUTH_CLIENT_SECRET_LOCAL }}
           ONEREP_API_BASE: "http://localhost:6060/api/mock/onerep/"
-          PREMIUM_PRODUCT_ID: ${{ secrets.STAGE_PREMIUM_PRODUCT_ID }}
+          ONEREP_API_KEY: ${{ secrets.ONEREP_API_KEY }}
           PREMIUM_PLAN_ID_MONTHLY_US: ${{ secrets.STAGE_PREMIUM_PLAN_ID_MONTHLY_US }}
           PREMIUM_PLAN_ID_YEARLY_US: ${{ secrets.STAGE_PREMIUM_PLAN_ID_YEARLY_US }}
+          PREMIUM_PRODUCT_ID: ${{ secrets.STAGE_PREMIUM_PRODUCT_ID }}
           REDIS_URL: "redis://redis.mock"
       - uses: actions/upload-artifact@v4
         if: always()
