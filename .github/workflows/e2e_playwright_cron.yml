@@ -7,19 +7,30 @@ on:
     - cron: '0 8 * * *'
   workflow_dispatch:
     inputs:
-      environment:
-        description: 'Environment to run the e2e against'
+      test_env:
+        description: 'Environment to run the E2E test suite against'
         required: false
-        default: 'stage'
+        default: ''
         type: choice
         options:
+          - ''
           - stage
           - production
 jobs:
   e2e-tests:
+    name: E2E tests (${{ github.event_name == 'workflow_dispatch' && inputs.test_env || matrix.test_env }}) [${{ github.event_name }}]
     timeout-minutes: 60
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        test_env: ${{ github.event_name == 'schedule' && fromJson('["stage","production"]') || fromJson('["unset"]') }}
     steps:
+      - name: Fail manual run if environment is missing
+        if: github.event_name == 'workflow_dispatch' && inputs.test_env == ''
+        run: |
+          echo "Please select an environment for manual runs"
+          exit 1
+
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
@@ -47,24 +58,24 @@ jobs:
         if: steps.cache-playwright-browsers.outputs.cache-hit != 'true'
         run: npx playwright install --with-deps
 
-      - name: Run Playwright tests - ${{ inputs.environment != null && inputs.environment || 'stage' }}
+      - name: Run Playwright tests - ${{ github.event_name == 'workflow_dispatch' && inputs.test_env || matrix.test_env }}
         if: github.event.pull_request.user.login != 'dependabot[bot]'
         run: npm run e2e-playwright
         timeout-minutes: 40
         env:
-          E2E_TEST_ENV: ${{ inputs.environment != null && inputs.environment || 'stage' }}
+          E2E_TEST_ENV: ${{ github.event_name == 'workflow_dispatch' && inputs.test_env || matrix.test_env }}
           E2E_TEST_ACCOUNT_EMAIL: ${{ secrets.E2E_TEST_ACCOUNT_EMAIL }}
           E2E_TEST_ACCOUNT_PASSWORD: ${{ secrets.E2E_TEST_ACCOUNT_PASSWORD }}
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: playwright-report
+          name: playwright-report-${{ github.event_name == 'workflow_dispatch' && inputs.test_env || matrix.test_env }}
           path: playwright-report/
           retention-days: 30
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: test-results
+          name: test-results-${{ github.event_name == 'workflow_dispatch' && inputs.test_env || matrix.test_env }}
           path: src/e2e-playwright/test-results/
           retention-days: 30
 
