@@ -11,8 +11,18 @@ async function waitForFxa(page: Page) {
   await page.waitForURL("**/oauth**", { timeout: 60_000 });
 }
 
-async function goToFxA(page: Page, countryCode?: string) {
+async function goToFxA(page: Page, isMobile?: boolean, countryCode?: string) {
   await page.goto(`${getBaseTestEnvUrl()}/`);
+
+  if (isMobile) {
+    const mobileMenuButtonLabel =
+      countryCode === "nl" ? "Menu uitvouwen" : "Expand menu";
+    const mobileMenuButton = page.getByRole("button", {
+      name: mobileMenuButtonLabel,
+    });
+    await mobileMenuButton.click();
+  }
+
   const signInButtonLabel = countryCode === "nl" ? "Aanmelden" : "Sign In";
   await page.getByRole("button", { name: signInButtonLabel }).first().click();
   await waitForFxa(page);

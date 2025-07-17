@@ -19,7 +19,11 @@ test.describe(`Verify authentication [${process.env.E2E_TEST_ENV}]`, () => {
   });
 
   test("user sign-in flow from landing page", async ({ page }, testInfo) => {
-    await goToFxA(page, testInfo.project.use.countryCode);
+    await goToFxA(
+      page,
+      testInfo.project.use.isMobile,
+      testInfo.project.use.countryCode,
+    );
     const userEmail = getTestUserEmailByCountryCode(
       testInfo.project.use.countryCode,
     );
@@ -41,10 +45,7 @@ test.describe(`Verify authentication [${process.env.E2E_TEST_ENV}]`, () => {
   authenticatedTest(
     "new users are redirected to the expected page",
     async ({ page }, testInfo) => {
-      if (
-        process.env.E2E_TEST_ENV !== "local" &&
-        testInfo.project.use.countryCode === "nl"
-      ) {
+      if (testInfo.project.use.countryCode === "nl") {
         // shows the dashboard
         const heading = page.locator("h2", {
           hasText: "Alle websites waarop uw gegevens zijn gelekt bekijken",
