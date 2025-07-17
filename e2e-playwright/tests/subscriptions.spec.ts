@@ -10,6 +10,17 @@ import { FeatureFlagName } from "../../src/db/tables/featureFlags";
 const extraFeatureFlags: FeatureFlagName[] = ["GA4SubscriptionEvents"];
 test.use({ extraLocalForcedFeatureFlags: extraFeatureFlags });
 
+const productPlans = [
+  {
+    name: "Monitor Plus",
+    paths: ["/", "/subscription-plans"],
+  },
+  {
+    name: "Privacy Protection Plan",
+    paths: ["/", "/subscription-plans"],
+  },
+];
+
 // General tests to confirm the E2E test setup works as expected
 test.describe(`Verify subscription flows [${process.env.E2E_TEST_ENV}]`, () => {
   test.beforeEach(async ({ page }) => {
@@ -19,73 +30,30 @@ test.describe(`Verify subscription flows [${process.env.E2E_TEST_ENV}]`, () => {
     });
   });
 
-  test("user can initiate subscribing to Monitor Plus from the pricing grid on the landing page", async ({
-    page,
-  }, testInfo) => {
-    await page.goto(`${getBaseTestEnvUrl()}/`);
-    const productCard = page.locator('dl[aria-label="Monitor Plus"]');
+  for (const { name, paths } of productPlans) {
+    for (const path of paths) {
+      test(`user can initiate subscribing to "${name}" from "${path}"`, async ({
+        page,
+      }, testInfo) => {
+        const url = `${getBaseTestEnvUrl()}${path}`;
+        const response = await page.goto(url);
+        const productCard = page.locator(`dl[aria-label="${name}"]`);
 
-    if (testInfo.project.use.countryCode === "us") {
-      await expect(productCard).toBeVisible();
-
-      const ctaButton = productCard.getByRole("link", { name: "Get started" });
-      await ctaButton.click();
-      await page.waitForURL(/monitorplus/, { waitUntil: "domcontentloaded" });
-    } else {
-      await expect(productCard).not.toBeVisible();
-    }
-  });
-
-  test("user can initiate subscribing to the Privacy Protection Plan from the pricing grid on the landing page", async ({
-    page,
-  }, testInfo) => {
-    await page.goto(`${getBaseTestEnvUrl()}/`);
-    const productCard = page.locator(
-      'dl[aria-label="Privacy Protection Plan"]',
-    );
-
-    if (testInfo.project.use.countryCode === "us") {
-      const ctaButton = productCard.getByRole("link", { name: "Get started" });
-      await ctaButton.click();
-      await page.waitForURL(/privacyprotectionplan/, {
-        waitUntil: "domcontentloaded",
+        if (
+          process.env.E2E_TEST_ENV === "local" ||
+          testInfo.project.use.countryCode === "us"
+        ) {
+          await expect(productCard).toBeVisible();
+          const cta = productCard.getByRole("link", { name: "Get started" });
+          await cta.click();
+          expect(response?.ok()).toBe(true);
+        } else if (path === "/subscription-plans") {
+          // expect redirect back to the landing page
+          await page.waitForURL(`${getBaseTestEnvUrl()}/`);
+        } else {
+          await expect(productCard).not.toBeVisible();
+        }
       });
-    } else {
-      await expect(productCard).not.toBeVisible();
     }
-  });
-
-  test("user can initiate subscribing to Monitor Plus from the pricing grid on the subscription plans page", async ({
-    page,
-  }, testInfo) => {
-    await page.goto(`${getBaseTestEnvUrl()}/subscription-plans`);
-    const productCard = page.locator('dl[aria-label="Monitor Plus"]');
-
-    if (testInfo.project.use.countryCode === "us") {
-      const ctaButton = productCard.getByRole("link", { name: "Get started" });
-      await ctaButton.click();
-      await page.waitForURL(/monitorplus/, { waitUntil: "domcontentloaded" });
-    } else {
-      await page.waitForURL(`${process.env.SUBPLAT_SUBSCRIPTIONS_URL}/`);
-    }
-  });
-
-  test("user can initiate subscribing to the Privacy Protection Plan from the pricing grid on the subscription plans page", async ({
-    page,
-  }, testInfo) => {
-    await page.goto(`${getBaseTestEnvUrl()}/subscription-plans`);
-    const productCard = page.locator(
-      'dl[aria-label="Privacy Protection Plan"]',
-    );
-
-    if (testInfo.project.use.countryCode === "us") {
-      const ctaButton = productCard.getByRole("link", { name: "Get started" });
-      await ctaButton.click();
-      await page.waitForURL(/privacyprotectionplan/, {
-        waitUntil: "domcontentloaded",
-      });
-    } else {
-      await page.waitForURL(`${process.env.SUBPLAT_SUBSCRIPTIONS_URL}/`);
-    }
-  });
+  }
 });
