@@ -3,7 +3,40 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { it, expect } from "@jest/globals";
-import { containsExpectedSearchParams } from "./attributions";
+import {
+  modifyAttributionsForUrl,
+  containsExpectedSearchParams,
+} from "./attributions";
+
+it("adds attributions to an URL", () => {
+  expect(
+    modifyAttributionsForUrl(
+      "http://url.test/",
+      {
+        one: "1",
+        two: "2",
+      },
+      {
+        three: "3",
+      },
+    ),
+  ).toBe("http://url.test/?one=1&two=2&three=3");
+});
+
+it("modifies existing attributions of an URL", () => {
+  expect(
+    modifyAttributionsForUrl(
+      "http://url.test/?one=1",
+      {
+        one: "2",
+        two: "2",
+      },
+      {
+        three: "3",
+      },
+    ),
+  ).toBe("http://url.test/?one=2&two=2&three=3");
+});
 
 it("returns `true` when the actual search params are matching the expected params", () => {
   expect(

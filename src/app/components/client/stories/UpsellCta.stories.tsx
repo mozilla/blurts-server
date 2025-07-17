@@ -5,7 +5,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
-import { UpsellBadge, UpsellButton } from "../toolbar/UpsellBadge";
+import { UpsellBadge, UpsellLinkButton } from "../toolbar/UpsellBadge";
 import { createUserWithPremiumSubscription } from "../../../../apiMocks/mockData";
 import { CountryCodeProvider } from "../../../../contextProviders/country-code";
 import { defaultExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
@@ -19,12 +19,6 @@ type UpsellCtaWrapperProps = {
 };
 
 const UpsellCtaWrapper = (props: UpsellCtaWrapperProps) => {
-  const monthlySubscriptionUrl = "price_monthly";
-  const yearlySubscriptionUrl = "price_yearly";
-  const subscriptionBillingAmount = {
-    yearly: 13.37,
-    monthly: 42.42,
-  };
   const mockedSession = {
     expires: new Date().toISOString(),
     user: props.user,
@@ -35,9 +29,6 @@ const UpsellCtaWrapper = (props: UpsellCtaWrapperProps) => {
       <CountryCodeProvider countryCode={props.countryCode}>
         {props.isBadge ? (
           <UpsellBadge
-            monthlySubscriptionUrl={monthlySubscriptionUrl}
-            yearlySubscriptionUrl={yearlySubscriptionUrl}
-            subscriptionBillingAmount={subscriptionBillingAmount}
             lastScanDate={new Date(Date.UTC(1998, 2, 31))}
             experimentData={{
               ...defaultExperimentData["Features"],
@@ -48,13 +39,9 @@ const UpsellCtaWrapper = (props: UpsellCtaWrapperProps) => {
             enabledFeatureFlags={props.enabledFeatureFlags}
           />
         ) : (
-          <UpsellButton
-            label="Get continuous protection"
-            monthlySubscriptionUrl={monthlySubscriptionUrl}
-            yearlySubscriptionUrl={yearlySubscriptionUrl}
-            subscriptionBillingAmount={subscriptionBillingAmount}
-            enabledFeatureFlags={props.enabledFeatureFlags}
-          />
+          <UpsellLinkButton enabledFeatureFlags={props.enabledFeatureFlags}>
+            Get continuous protection
+          </UpsellLinkButton>
         )}
       </CountryCodeProvider>
     </SessionProvider>

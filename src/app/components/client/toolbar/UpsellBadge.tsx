@@ -4,12 +4,11 @@
 
 "use client";
 
-import { useContext, useEffect, useRef } from "react";
-import { usePathname, useSearchParams, useRouter } from "next/navigation";
+import { ReactNode, useContext, useRef } from "react";
+import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { useOverlayTrigger, useToggleButton } from "react-aria";
 import { useOverlayTriggerState, useToggleState } from "react-stately";
-import { UpsellDialog } from "./UpsellDialog";
 import { Button } from "../Button";
 import { useL10n } from "../../../hooks/l10n";
 import {
@@ -27,19 +26,14 @@ import { ExperimentData } from "../../../../telemetry/generated/nimbus/experimen
 import { FeatureFlagName } from "../../../../db/tables/featureFlags";
 import { WaitlistDialog } from "../SubscriberWaitlistDialog";
 
-export type UpsellButtonProps = {
-  monthlySubscriptionUrl: string;
-  yearlySubscriptionUrl: string;
-  subscriptionBillingAmount: {
-    yearly: number;
-    monthly: number;
-  };
+export type UpsellLinkButtonProps = {
   enabledFeatureFlags: FeatureFlagName[];
 };
 
-export function UpsellButton(
-  props: UpsellButtonProps & {
-    label: string;
+export function UpsellLinkButton(
+  props: UpsellLinkButtonProps & {
+    children: ReactNode;
+    className?: string;
   },
 ) {
   const recordTelemetry = useTelemetry();
@@ -48,103 +42,62 @@ export function UpsellButton(
   const dialogState = useOverlayTriggerState({
     defaultOpen: false,
     onOpenChange: (isOpen) => {
-      if (isOpen) {
-        recordTelemetry("upgradeIntent", "click", {
-          button_id: "nav_upsell",
-        });
-      }
-      sendGAEvent("event", "premium_upsell_modal", {
+      sendGAEvent("event", "premium_waitlist_modal", {
         action: isOpen ? "opened" : "closed",
         page_location: pathname,
       });
     },
   });
+
   const { triggerProps, overlayProps } = useOverlayTrigger(
     { type: "dialog" },
     dialogState,
   );
+
+  const showWaitlist = props.enabledFeatureFlags.includes("DisableOneRepScans");
+
   return (
     <>
-      <Button {...triggerProps} variant="primary" small>
-        {props.label}
+      <Button
+        {...triggerProps}
+        onPress={() => {
+          recordTelemetry("upgradeIntent", "click", {
+            button_id: "nav_upsell",
+          });
+
+          if (showWaitlist) {
+            dialogState.open();
+          }
+        }}
+        className={props.className}
+        variant="primary"
+        small
+        href={showWaitlist ? undefined : "/subscription-plans"}
+        target="_blank"
+      >
+        {props.children}
       </Button>
-      {/* Test already handled in Dashboard tests */
-      /* c8 ignore next 4 */}
-      {dialogState.isOpen &&
-        (props.enabledFeatureFlags.includes("DisableOneRepScans") ? (
-          <WaitlistDialog dialogTriggerState={dialogState} {...overlayProps} />
-        ) : (
-          <UpsellDialog
-            {...overlayProps}
-            state={dialogState}
-            monthlySubscriptionUrl={props.monthlySubscriptionUrl}
-            yearlySubscriptionUrl={props.yearlySubscriptionUrl}
-            subscriptionBillingAmount={props.subscriptionBillingAmount}
-          />
-        ))}
+      {dialogState.isOpen && (
+        <WaitlistDialog dialogTriggerState={dialogState} {...overlayProps} />
+      )}
     </>
   );
 }
 
-export type UpsellToggleButtonProps = UpsellBadgeProps & {
+export type UpsellToggleLinkButtonProps = UpsellBadgeProps & {
   hasPremium: boolean;
 };
-function UpsellToggleButton(props: UpsellToggleButtonProps) {
+
+function UpsellToggleLinkButton(props: UpsellToggleLinkButtonProps) {
   const l10n = useL10n();
   const ref = useRef<HTMLButtonElement>(null);
   const state = useToggleState({
     ...props,
     isSelected: props.hasPremium,
   });
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const router = useRouter();
 
-  useEffect(() => {
-    if (
-      props.enabledFeatureFlags.includes("SubscriptionPlansPage") &&
-      props.autoOpenUpsellDialog
-    ) {
-      router.push("/subscription-plans");
-      return;
-    }
-    // This effect should only run once
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const dialogState = useOverlayTriggerState({
-    defaultOpen: props.enabledFeatureFlags.includes("SubscriptionPlansPage")
-      ? false
-      : props.autoOpenUpsellDialog,
-    onOpenChange(isOpen) {
-      if (
-        props.enabledFeatureFlags.includes("SubscriptionPlansPage") &&
-        isOpen
-      ) {
-        router.push("/subscription-plans");
-        return;
-      }
-
-      // Remove `dialog` from URLSearchParams on closing the upsell dialog
-      // after it has been opened by linking to it.
-      if (!isOpen && props.autoOpenUpsellDialog) {
-        const nextSearchParams = new URLSearchParams(searchParams.toString());
-        nextSearchParams.delete("dialog");
-        const updatedPathname = `${pathname}?${nextSearchParams.toString()}`;
-        // Directly interacting with the history API is recommended by Next.js to
-        // avoid re-rendering on the server:
-        // See https://github.com/vercel/next.js/discussions/48110#discussioncomment-7563979.
-        window.history.replaceState(null, "", updatedPathname);
-      }
-    },
-  });
-  const { triggerProps, overlayProps } = useOverlayTrigger(
-    { type: "dialog" },
-    dialogState,
-  );
   const { buttonProps } = useToggleButton(
     {
-      ...triggerProps,
       isDisabled: state.isSelected,
     },
     state,
@@ -155,44 +108,32 @@ function UpsellToggleButton(props: UpsellToggleButtonProps) {
   });
 
   return (
-    <>
-      <div className={styles.upsellWrapper}>
-        <button
-          {...buttonProps}
-          className={`${styles.upsellBadge} ${
-            state.isSelected ? styles.isSelected : ""
-          }`}
-          ref={ref}
-        >
-          {state.isSelected
-            ? l10n.getString("plus-indicator-label-active")
-            : l10n.getString("plus-indicator-label-inactive")}
-          <span className={styles.toggleIndicator} />
-        </button>
-        {props.experimentData?.["last-scan-date"].enabled &&
-          props.lastScanDate !== null && (
-            <span className={styles.lastScanIndicator}>
-              <Image src={LastScanIcon} alt="" width={31} height={25} />
-              <b>{l10n.getString("plus-indicator-scan-date-label")}</b>&nbsp;
-              {scanDateFormatter.format(props.lastScanDate)}
-            </span>
-          )}
-      </div>
-      {!props.enabledFeatureFlags.includes("SubscriptionPlansPage") &&
-        dialogState.isOpen && (
-          <UpsellDialog
-            {...overlayProps}
-            state={dialogState}
-            monthlySubscriptionUrl={props.monthlySubscriptionUrl}
-            yearlySubscriptionUrl={props.yearlySubscriptionUrl}
-            subscriptionBillingAmount={props.subscriptionBillingAmount}
-          />
+    <div className={styles.upsellWrapper}>
+      <UpsellLinkButton
+        {...buttonProps}
+        className={`${styles.upsellBadge} ${
+          state.isSelected ? styles.isSelected : ""
+        }`}
+        enabledFeatureFlags={props.enabledFeatureFlags}
+      >
+        {state.isSelected
+          ? l10n.getString("plus-indicator-label-active")
+          : l10n.getString("plus-indicator-label-inactive")}
+        <span className={styles.toggleIndicator} />
+      </UpsellLinkButton>
+      {props.experimentData?.["last-scan-date"].enabled &&
+        props.lastScanDate !== null && (
+          <span className={styles.lastScanIndicator}>
+            <Image src={LastScanIcon} alt="" width={31} height={25} />
+            <b>{l10n.getString("plus-indicator-scan-date-label")}</b>&nbsp;
+            {scanDateFormatter.format(props.lastScanDate)}
+          </span>
         )}
-    </>
+    </div>
   );
 }
 
-export type UpsellBadgeProps = UpsellButtonProps & {
+export type UpsellBadgeProps = UpsellLinkButtonProps & {
   lastScanDate: Date | null;
   enabledFeatureFlags: FeatureFlagName[];
   /**
@@ -203,8 +144,8 @@ export type UpsellBadgeProps = UpsellButtonProps & {
    * they're actually passed everywhere.
    */
   experimentData?: ExperimentData["Features"];
-  autoOpenUpsellDialog?: boolean;
 };
+
 export function UpsellBadge(props: UpsellBadgeProps) {
   const countryCode = useContext(CountryCodeContext);
   const session = useSession();
@@ -216,14 +157,7 @@ export function UpsellBadge(props: UpsellBadgeProps) {
   const { user } = session.data;
   const userHasPremium = hasPremium(user);
   if (userHasPremium || canSubscribeToPremium({ user, countryCode })) {
-    return (
-      <UpsellToggleButton
-        {...props}
-        autoOpenUpsellDialog={props.autoOpenUpsellDialog}
-        hasPremium={userHasPremium}
-        enabledFeatureFlags={props.enabledFeatureFlags}
-      />
-    );
+    return <UpsellToggleLinkButton {...props} hasPremium={userHasPremium} />;
   }
 
   return <></>;

@@ -15,7 +15,6 @@ export type Props = {
   onDismiss?: () => void;
   title?: ReactNode;
   illustration?: ReactNode;
-  variant?: "vertical" | "horizontal";
   fitContent?: boolean;
 } & AriaDialogProps;
 
@@ -24,7 +23,6 @@ export const Dialog = ({
   onDismiss,
   title,
   illustration,
-  variant,
   fitContent,
   ...otherProps
 }: Props) => {
@@ -66,7 +64,7 @@ export const Dialog = ({
     <div
       {...dialogProps}
       ref={dialogRef}
-      className={`${styles.dialog} ${variant ? styles[variant] : ""} ${fitContent ? styles.fitContent : ""}`}
+      className={`${styles.dialog} ${fitContent ? styles.fitContent : ""}`}
     >
       {dismissButton}
       <div tabIndex={-1} ref={dialogTitleRef} className={styles.header}>

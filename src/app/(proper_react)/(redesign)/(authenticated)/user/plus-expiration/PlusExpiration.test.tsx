@@ -195,24 +195,9 @@ it("tells free users that this is only available to existing Plus users", () => 
   expect(cta).toBeInTheDocument();
 });
 
-it("confirms the correct link to the subscription plans page with the feature flag SubscriptionPlansPage disabled", () => {
+it("confirms the correct link to the subscription plans page", () => {
   const PlusExpirationView = composeStory(FreeUser, Meta);
   render(<PlusExpirationView />);
-
-  const cta = screen.getByRole("link", {
-    name: "Subscribe to ⁨Monitor Plus⁩",
-  });
-  expect(cta).toHaveAttribute(
-    "href",
-    "/user/dashboard/action-needed?dialog=subscriptions",
-  );
-});
-
-it("confirms the correct link to the subscription plans page with the feature flag SubscriptionPlansPage enabled", () => {
-  const PlusExpirationView = composeStory(FreeUser, Meta);
-  render(
-    <PlusExpirationView enabledFeatureFlags={["SubscriptionPlansPage"]} />,
-  );
 
   const cta = screen.getByRole("link", {
     name: "Subscribe to ⁨Monitor Plus⁩",

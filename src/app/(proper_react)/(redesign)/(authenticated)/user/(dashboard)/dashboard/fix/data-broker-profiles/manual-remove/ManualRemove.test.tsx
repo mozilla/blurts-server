@@ -20,6 +20,7 @@ jest.mock("next/navigation", () => {
 });
 
 import Meta, { ManualRemoveViewStory } from "./ManualRemove.stories";
+import { useTelemetry as useTelemetryImported } from "../../../../../../../../../hooks/useTelemetry";
 
 jest.mock("../../../../../../../../../hooks/useTelemetry");
 jest.mock(
@@ -35,6 +36,15 @@ jest.mock(
     };
   },
 );
+
+// We need to override the types of `useTelemetry` here, because otherwise
+// Jest infers incorrect types in `toHaveBeenCalledWith`, and throws an error.
+// See https://github.com/jestjs/jest/issues/15703
+const useTelemetry = useTelemetryImported as () => (
+  module: string,
+  eventName: string,
+  data: Record<string, string>,
+) => void;
 
 it("passes the axe accessibility test suite", async () => {
   const ComposedManualRemoveView = composeStory(ManualRemoveViewStory, Meta);
@@ -147,29 +157,48 @@ it("closes previously active card onclick", async () => {
   expect(initialState[0]).toHaveAttribute("aria-expanded", "false");
 });
 
-it("confirms the correct link to the subscription plans page with the feature flag SubscriptionPlansPage disabled", () => {
+it("confirms the correct link to the subscription plans page", () => {
   const ComposedManualRemoveView = composeStory(ManualRemoveViewStory, Meta);
   render(<ComposedManualRemoveView />);
 
   const cta = screen.getByRole("link", {
     name: "Remove them for me",
   });
-  expect(cta).toHaveAttribute(
-    "href",
-    "/user/dashboard/fix/data-broker-profiles/automatic-remove",
-  );
+  expect(cta).toHaveAttribute("href", "/subscription-plans");
 });
 
-it("confirms the correct link to the subscription plans page with the feature flag SubscriptionPlansPage enabled", () => {
-  const ComposedManualRemoveView = composeStory(ManualRemoveViewStory, Meta);
-  render(
-    <ComposedManualRemoveView
-      enabledFeatureFlags={["SubscriptionPlansPage"]}
-    />,
-  );
+it("counts how often users exit the guided flow", async () => {
+  const user = userEvent.setup();
+  const mockedRecord = useTelemetry();
+  const AutomaticRemoveView = composeStory(ManualRemoveViewStory, Meta);
+  render(<AutomaticRemoveView />);
 
-  const cta = screen.getByRole("link", {
-    name: "Remove them for me",
+  const exitLink = screen.getByRole("link", { name: "Return to dashboard" });
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+  await user.click(exitLink);
+
+  expect(mockedRecord).toHaveBeenCalledWith("button", "click", {
+    button_id: "exited_guided_experience",
   });
-  expect(cta).toHaveAttribute("href", "/subscription-plans");
+});
+
+it("counts how often users skip to the next section", async () => {
+  const user = userEvent.setup();
+  const mockedRecord = useTelemetry();
+  const AutomaticRemoveView = composeStory(ManualRemoveViewStory, Meta);
+  render(<AutomaticRemoveView />);
+
+  const skipArrowLink = screen.getByRole("link", { name: "Go to next step" });
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+  await user.click(skipArrowLink);
+
+  expect(mockedRecord).toHaveBeenCalledWith("button", "click", {
+    button_id: "next_arrow",
+  });
 });

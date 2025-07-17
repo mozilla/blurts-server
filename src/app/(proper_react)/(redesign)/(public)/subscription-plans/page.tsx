@@ -46,10 +46,7 @@ export default async function Page() {
       : { isSignedOut: true },
   );
 
-  if (
-    !eligibleForPremium ||
-    !enabledFeatureFlags.includes("SubscriptionPlansPage")
-  ) {
+  if (!eligibleForPremium) {
     return redirect("/");
   }
 

@@ -61,7 +61,6 @@ export type DashboardWrapperProps = (
   experimentData?: ExperimentData["Features"];
   hasFirstMonitoringScan?: boolean;
   signInCount?: number;
-  autoOpenUpsellDialog?: boolean;
 };
 const DashboardWrapper = (props: DashboardWrapperProps) => {
   const mockedResolvedBreach: SubscriberBreach = createRandomBreach({
@@ -253,7 +252,6 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
             activeTab={props.activeTab ?? "action-needed"}
             hasFirstMonitoringScan={props.hasFirstMonitoringScan ?? false}
             signInCount={props.signInCount ?? null}
-            autoOpenUpsellDialog={props.autoOpenUpsellDialog ?? false}
             removalTimeEstimates={mockedRemovalTimeEstimates}
             userAnnouncements={mockedAnnouncements}
           />

@@ -48,36 +48,6 @@
     }
   }
 
-  &.horizontal {
-    @media screen and (min-width: tokens.$screen-lg) {
-      flex-direction: row;
-    }
-
-    .header {
-      background-color: tokens.$color-grey-05;
-      flex-direction: column-reverse;
-      gap: tokens.$spacing-xl;
-      justify-content: center;
-      text-align: left;
-
-      @media screen and (min-width: tokens.$screen-lg) {
-        padding: tokens.$layout-md tokens.$layout-sm tokens.$layout-md
-          tokens.$layout-xl;
-      }
-    }
-
-    .content {
-      @media screen and (min-width: tokens.$screen-lg) {
-        padding: tokens.$layout-md tokens.$layout-xl tokens.$layout-md
-          tokens.$layout-sm;
-      }
-    }
-
-    .title {
-      text-align: left;
-    }
-  }
-
   .dismissButton {
     background: none;
     border: none;

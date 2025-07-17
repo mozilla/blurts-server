@@ -21,7 +21,6 @@ export const defaultLocalForcedFeatureFlags: FeatureFlagName[] = [
   "SubPlat3",
   "Announcements",
   "PrivacyProductsBundle",
-  "SubscriptionPlansPage",
 ];
 
 // The `use` function is no React hook and not linted correctly.

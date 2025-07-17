@@ -219,7 +219,6 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
             activeTab={props.activeTab ?? "action-needed"}
             hasFirstMonitoringScan={props.hasFirstMonitoringScan ?? false}
             signInCount={props.signInCount ?? null}
-            autoOpenUpsellDialog={props.autoOpenUpsellDialog ?? false}
             removalTimeEstimates={mockedRemovalTimeEstimates}
             userAnnouncements={mockedAnnouncements}
           />

@@ -84,7 +84,6 @@ export type Props = {
   totalNumberOfPerformedScans?: number;
   activeTab: TabType;
   signInCount: number | null;
-  autoOpenUpsellDialog: boolean;
   removalTimeEstimates: DataBrokerRemovalTime[];
   userAnnouncements: UserAnnouncementWithDetails[];
 };
@@ -467,7 +466,6 @@ export const View = (props: Props) => {
         fxaSettingsUrl={props.fxaSettingsUrl}
         lastScanDate={props.userScanData.scan?.created_at ?? null}
         experimentData={props.experimentData}
-        autoOpenUpsellDialog={props.autoOpenUpsellDialog}
         enabledFeatureFlags={props.enabledFeatureFlags}
         announcements={announcements}
       >

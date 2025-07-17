@@ -64,30 +64,9 @@ describe("ScanResultCard", () => {
     expect(innerDescription).toBeInTheDocument();
   });
 
-  it("confirms the correct link to the subscription plans page with the feature flag SubscriptionPlansPage disabled", () => {
+  it("confirms the correct link to the subscription plans page", () => {
     const ComposedProgressCard = composeStory(DataBrokerActionNeeded, Meta);
     render(<ComposedProgressCard isOnManualRemovePage />);
-    const innerDescription = screen.getByText("This site is selling", {
-      exact: false,
-    });
-
-    const cta = getByRole(innerDescription, "link", {
-      name: "subscribe to ⁨Monitor Plus⁩",
-    });
-    expect(cta).toHaveAttribute(
-      "href",
-      "/user/dashboard/fix/data-broker-profiles/automatic-remove",
-    );
-  });
-
-  it("confirms the correct link to the subscription plans page with the feature flag SubscriptionPlansPage enabled", () => {
-    const ComposedProgressCard = composeStory(DataBrokerActionNeeded, Meta);
-    render(
-      <ComposedProgressCard
-        isOnManualRemovePage
-        enabledFeatureFlags={["SubscriptionPlansPage"]}
-      />,
-    );
     const innerDescription = screen.getByText("This site is selling", {
       exact: false,
     });
