@@ -64,7 +64,7 @@ jobs:
 
       - name: Run Playwright tests
         if: github.event.pull_request.user.login != 'dependabot[bot]'
-        run: npm run e2e-playwright
+        run: npm run functional-tests
         timeout-minutes: 20
         env:
           ADMINS: ${{ secrets.ADMINS }}
@@ -96,5 +96,5 @@ jobs:
         if: always()
         with:
           name: test-results
-          path: src/e2e-playwright/test-results/
+          path: src/functional-tests/test-results/
           retention-days: 30
