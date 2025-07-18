@@ -1,4 +1,4 @@
-name: Monitor E2E Test Suite (PR)
+name: Functional Test Suite (PR)
 
 permissions: {}
 
@@ -8,7 +8,7 @@ on:
   pull_request:
     branches: [ main ]
 jobs:
-  e2e-tests:
+  functional-tests:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     # Service containers to run with `container-job`
@@ -45,7 +45,7 @@ jobs:
         run: npm run db:migrate
         env:
           DATABASE_URL: postgres://postgres:postgres@localhost:5432/blurts
-      - name: Store Playwright's Version
+      - name: Store Playwright’s Version
         run: |
           # Get the current Playwright version listed in package.json
           PLAYWRIGHT_VERSION=$(npx playwright --version | sed 's/Version //')

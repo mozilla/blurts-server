@@ -1,6 +1,6 @@
 # Firefox Monitor Server
 
-[![Monitor Cron e2e Tests](https://github.com/mozilla/blurts-server/actions/workflows/e2e_cron.yml/badge.svg)](https://github.com/mozilla/blurts-server/actions/workflows/e2e_cron.yml)
+[![Functional Test Suite](https://github.com/mozilla/blurts-server/actions/workflows/functional_tests_cron.yml/badge.svg)](https://github.com/mozilla/blurts-server/actions/workflows/functional_tests_cron.yml)
 
 ## Summary
 
@@ -192,7 +192,7 @@ At the beginning of a test suite run, the `test-blurts` database will be populat
 
 At the end of a test suite, coverage info will be sent to [Coveralls](https://coveralls.io/) to assess coverage changes and provide a neat badge. To upload coverage locally, you need a root `.coveralls.yml` which contains a token – get this from another member of the Monitor team.
 
-End-to-End tests use Playwright and can be run via `npm run e2e`. [E2E-How-To](https://github.com/mozilla/blurts-server/src/e2e) for more info.
+The [functional tests](https://github.com/mozilla/blurts-server/src/functional-tests) use Playwright and can be run via `npm run functional-tests`.
 
 #### Test Firefox Integration
 
