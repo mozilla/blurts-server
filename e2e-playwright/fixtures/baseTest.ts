@@ -24,9 +24,6 @@ export const defaultLocalForcedFeatureFlags: FeatureFlagName[] = [
   "SubscriptionPlansPage",
 ];
 
-// The `use` function is no React hook and not linted correctly.
-// For more info see issue: https://github.com/facebook/react/issues/31237
-/* eslint-disable react-hooks/rules-of-hooks */
 const test = baseTest.extend<{
   extraLocalForcedFeatureFlags: FeatureFlagName[];
   localForcedFeatureFlags: FeatureFlagName[];
@@ -75,6 +72,5 @@ const test = baseTest.extend<{
     { scope: "test", auto: true },
   ],
 });
-/* eslint-enable react-hooks/rules-of-hooks */
 
 export { test, expect };

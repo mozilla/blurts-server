@@ -6,9 +6,6 @@ import fs from "fs";
 import { test as baseTest, expect } from "./baseTest";
 import { getTestUserSession } from "../utils/user";
 
-// The `use` function is no React hook and not linted correctly.
-// For more info see issue: https://github.com/facebook/react/issues/31237
-/* eslint-disable react-hooks/rules-of-hooks */
 const test = baseTest.extend<object, { storageState?: string }>({
   storageState: async ({}, use, testInfo) => {
     const countryCode = testInfo.project.use?.countryCode;
@@ -27,6 +24,5 @@ const test = baseTest.extend<object, { storageState?: string }>({
     }
   },
 });
-/* eslint-enable react-hooks/rules-of-hooks */
 
 export { test, expect };
