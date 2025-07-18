@@ -56,11 +56,7 @@
 
     .tag {
       align-items: center;
-      background: hsl(
-        color.hue(tokens.$color-blue-50),
-        color.saturation(tokens.$color-blue-50),
-        87%
-      );
+      background: rgba(tokens.$color-blue-50, 0.12);
       border-radius: tokens.$border-radius-xl;
       display: flex;
       gap: tokens.$spacing-xs;

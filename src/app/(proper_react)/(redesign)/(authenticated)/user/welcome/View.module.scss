@@ -3,19 +3,7 @@
 .wrapper {
   --backgroundImageWidth: 400px;
   --sidebarWidth: 600px;
-  @media screen and (max-width: 1300px) {
-    --backgroundImageWidth: 300px;
-    --sidebarWidth: 400px;
-  }
-  @media screen and (max-width: 1000px) {
-    --backgroundImageWidth: 200px;
-    --sidebarWidth: 300px;
-  }
-  @media screen and (max-width: tokens.$screen-md) {
-    --sidebarWidth: 0;
-  }
 
-  min-height: 100%;
   background-image:
     url("./images/Scanning.svg"),
     linear-gradient(
@@ -31,10 +19,23 @@
   background-size:
     var(--backgroundImageWidth) auto,
     auto;
-  padding-inline-start: var(--sidebarWidth);
   display: flex;
   flex-direction: column;
   gap: tokens.$spacing-xl;
+  min-height: 100%;
+  padding-inline-start: var(--sidebarWidth);
+
+  @media screen and (max-width: 1300px) {
+    --backgroundImageWidth: 300px;
+    --sidebarWidth: 400px;
+  }
+  @media screen and (max-width: 1000px) {
+    --backgroundImageWidth: 200px;
+    --sidebarWidth: 300px;
+  }
+  @media screen and (max-width: tokens.$screen-md) {
+    --sidebarWidth: 0;
+  }
 
   .homeLink {
     margin-inline-start: calc(-1 * var(--sidebarWidth));
