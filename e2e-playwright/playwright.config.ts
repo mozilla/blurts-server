@@ -31,7 +31,7 @@ const webServerConfig = {
 };
 
 // Geo locations
-const locations = [
+export const locations = [
   {
     name: "US",
     geolocation: { latitude: 40.7167, longitude: -74.0 },
@@ -72,27 +72,19 @@ const baseDevices = [
     name: "Mobile Chrome",
     use: devices["Pixel 5"],
   },
-  {
-    name: "Mobile Firefox",
-    use: {
-      ...devices["Pixel 5"],
-      browserName: "firefox",
-      isMobile: false,
-    },
-  },
 ];
 
 export const getEnabledFeatureFlags = () => {
   let enabledFeatureFlags: FeatureFlagName[] = [];
   try {
     const enabledFeatureFlagsJson = fs.readFileSync(
-      path.resolve(__dirname, "./enabledFeatureFlags.json"),
+      path.resolve(__dirname, "./storage/enabled-feature-flags.json"),
       "utf-8",
     );
     enabledFeatureFlags = JSON.parse(enabledFeatureFlagsJson).data ?? [];
   } catch (error) {
     console.warn(
-      "Could not load `enabledFeatureFlags`",
+      "Could not load enabled feature flags",
       error instanceof Error ? error.message : error,
     );
   }
@@ -122,6 +114,8 @@ export default defineConfig({
   testDir: "./tests",
   /* Global setup */
   globalSetup: "./global-setup.ts",
+  /* Global teardown */
+  globalTeardown: "./global-teardown.ts",
   /* Maximum time one test can run for. */
   timeout: 60_000,
   /* Max time in milliseconds the whole test suite can run to prevent CI from hanging. */
