@@ -30,6 +30,8 @@ career-levels = Karrierenivå
 cellular-network-names = Navn på mobilnettverk
 charitable-donations = Donasjoner til veldedige formål
 chat-logs = Chat-logger
+citizenship-statuses = Status for statsborgerskap
+clothing-sizes = Klesstørrelser
 credit-card-cvv = CVV-koder for betalingskort
 credit-cards = Betalingskort
 credit-status-information = Informasjon om kredittverdighet
@@ -39,6 +41,9 @@ customer-interactions = Kundesamhandling
 dates-of-birth = Fødselsdatoer
 deceased-date = Dødsdato
 deceased-statuses = Status for avdøde
+# Instructions that you can set up in online shopping services to get your orders
+# delivered (e.g. deliver to a specific neighbor, entrance location, etc.).
+delivery-instructions = Leveringsinstruksjoner
 device-information = Enhetsinformasjon
 device-serial-numbers = Serienummer på enheter
 device-usage-tracking-data = Sporingsdata for bruk av enheter
@@ -79,7 +84,10 @@ job-titles = Jobbtitler
 # This string refers to vehicle license plates.
 licence-plates = Bilskilt
 living-costs = Levekostnader
+# This string refers to financial loans.
+loan-information = Låneinformasjon
 login-histories = Innloggingshistorikk
+loyalty-program-details = Detaljer om lojalitetsprogram
 mac-addresses = MAC-adresser
 marital-statuses = Sivilstand
 # Mnemonic phrases are a group of words used to access the content of cryptocurrency wallets.
@@ -89,10 +97,15 @@ names = Navn
 nationalities = Nasjonaliteter
 net-worths = Formue
 nicknames = Kallenavn
+# no data classes found
+none-data-class = Ingen
 occupations = Yrke
+# various data classes grouped together
+other-data-class = Annet
 parenting-plans = Foreldreplaner
 partial-credit-card-data = Delvis betalingskorts-data
 partial-dates-of-birth = Delvis fødselsdatoer
+partial-phone-numbers = Delvise telefonnumre
 passport-numbers = Passnummer
 password-hints = Passordhint
 password-strengths = Passordstyrke
@@ -135,6 +148,7 @@ spouses-names = Navn på ektefeller
 support-tickets = Support-spørsmål
 survey-results = Undersøkelsesresultater
 taxation-records = Skateopplysninger
+telecommunications-carrier = Teleoperatører
 time-zones = Tidssoner
 travel-habits = Reisevaner
 user-statuses = Brukerstatuser
@@ -142,6 +156,7 @@ user-website-urls = Adresser til brukernettsteder
 usernames = Brukernavn
 utility-bills = El-regninger
 vehicle-details = Informasjon om kjøretøy
+vehicle-identification-numbers-vins = Chassisnummer (VIN)
 website-activity = Nettstedsaktivitet
 work-habits = Arbeidsvaner
 years-of-birth = Fødselsår
