@@ -48,6 +48,7 @@ Before running the tests the `global-setup` script:
 - Fetches feature flags from `/api/v1/admin/feature-flags` and saves them to `./storage/enabled-feature-flags.json`
 - Signs up a unique test user account per country
 - Stores the login state per user in `./storage/user-session-<country>.json`
+- Stores the emails per user in `./storage/user-emails.json`
 
 ## Artifacts
 
