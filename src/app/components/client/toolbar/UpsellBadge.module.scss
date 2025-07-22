@@ -1,5 +1,21 @@
 @use "../../../tokens";
 
+.upsellWrapper {
+  // Override the background of the base button component
+  button.upsellBadge.upsellBadge,
+  a.upsellBadge.upsellBadge {
+    background: none;
+    background-color: transparent;
+    color: tokens.$color-black;
+
+    &:hover,
+    &:focus {
+      background: none;
+      background-color: tokens.$color-grey-05;
+    }
+  }
+}
+
 .upsellBadge {
   align-items: center;
   border-radius: tokens.$border-radius-xl;
@@ -51,15 +67,6 @@
       }
     }
   }
-}
-
-// Override the background of the base button component
-a.upsellBadge,
-button.upsellBadge {
-  /* stylelint-disable-next-line declaration-no-important */
-  background: none !important;
-  /* stylelint-disable-next-line declaration-no-important */
-  color: tokens.$color-black !important;
 }
 
 .lastScanIndicator {
