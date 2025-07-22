@@ -62,7 +62,7 @@ import {
 } from "./DashboardPlusUsers.stories";
 
 jest.mock("next/navigation", () => ({
-  useRouter: jest.fn,
+  useRouter: jest.fn(),
   usePathname: jest.fn(),
   useSearchParams: () => ({
     get: jest.fn(),
