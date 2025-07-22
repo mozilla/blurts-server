@@ -147,6 +147,10 @@ meta-desc-2 = Află dacă ai fost implicat(ă) într-o încălcare a securităț
 
 sign-in = Autentificare
 
+## Footer
+
+terms-of-service = Condiții de utilizare a serviciilor
+
 ## Breach overview page
 
 all-breaches-lead = Monitorizăm toate încălcările cunoscute ale securității datelor pentru a afla dacă au fost compromise datele tale cu caracter personal. Iată o listă completă a tuturor încălcărilor securității informațiilor care au fost raportate din 2007.
