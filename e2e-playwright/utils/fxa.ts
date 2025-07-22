@@ -13,8 +13,10 @@ async function waitForFxa(page: Page) {
 
 async function goToFxA(page: Page, isMobile?: boolean, countryCode?: string) {
   await page.goto(`${getBaseTestEnvUrl()}/`);
-
-  if (isMobile) {
+  if (
+    isMobile &&
+    (process.env.E2E_TEST_ENV === "local" || countryCode === "us")
+  ) {
     const mobileMenuButtonLabel =
       countryCode === "nl" ? "Menu uitvouwen" : "Expand menu";
     const mobileMenuButton = page.getByRole("button", {

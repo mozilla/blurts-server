@@ -51,22 +51,31 @@ const test = baseTest.extend<{
     );
     await use(mergedFlags);
   },
-  // See https://github.com/microsoft/playwright/issues/9468#issuecomment-943707670
-  // Sets the `x-forced-feature-flags` and `x-nimbus-preview-mode` on every
-  // request to Monitor.
   sharedBeforeEach: [
-    async ({ context, localForcedFeatureFlags }, use) => {
+    async ({ context, localForcedFeatureFlags }, use, testInfo) => {
       await context.route("**/*", async (route) => {
-        const requestUrl = route.request().url();
-        const headers = route.request().headers();
+        const request = route.request();
+        const requestUrl = request.url();
+        const headers = request.headers();
 
         if (new URL(requestUrl).origin === process.env.E2E_TEST_BASE_URL) {
+          // Ensure that the region and language headers persist.
+          const { countryCode, locale } = testInfo.project.use;
+          headers["X-Client-Region"] = countryCode ?? "";
+          headers["Accept-Language"] = `${locale},${countryCode};q=1.0`;
+
+          // See https://github.com/microsoft/playwright/issues/9468#issuecomment-943707670
+          // Sets the `x-forced-feature-flags` and `x-nimbus-preview-mode` on every
+          // request to Monitor.
           headers["x-forced-feature-flags"] = localForcedFeatureFlags.join(",");
           headers["x-nimbus-preview-mode"] = "true";
-        }
 
-        await route.continue({ headers });
+          await route.continue({ headers });
+        } else {
+          await route.continue();
+        }
       });
+
       await use();
     },
     { scope: "test", auto: true },

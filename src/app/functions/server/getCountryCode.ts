@@ -28,7 +28,7 @@ export function getCountryCode(
     }
 
     // If there’s no region, fall back to the language locally
-    if (language && process.env.app_env === "local") {
+    if (language && process.env.APP_ENV === "local") {
       return language.toLowerCase();
     }
   }
