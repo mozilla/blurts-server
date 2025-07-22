@@ -183,7 +183,7 @@ const config = [
   // Playwright’s `use` function is misinterpreted as a React hook.
   // For more info see issue: https://github.com/facebook/react/issues/31237
   {
-    files: ["e2e-playwright/**/*.ts"],
+    files: ["functional-tests/**/*.ts"],
     rules: {
       "react-hooks/rules-of-hooks": "off",
     },
