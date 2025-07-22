@@ -135,7 +135,6 @@ function UpsellToggleLinkButton(props: UpsellToggleLinkButtonProps) {
 
 export type UpsellBadgeProps = UpsellLinkButtonProps & {
   lastScanDate: Date | null;
-  enabledFeatureFlags: FeatureFlagName[];
   /**
    * Loading the experiment data for <MobileShell> was a bit too invasive for a
    * feature that has no visible effects on mobile, so this parameter is
