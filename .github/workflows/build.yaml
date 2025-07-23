@@ -8,6 +8,9 @@ on:
 
 jobs:
   npm-build:
+    # Define permissions at the job level
+    permissions:
+      contents: "read" # Needed for checkout
 
     runs-on: ubuntu-latest
 
@@ -18,7 +21,7 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20.19.x'
+          node-version: "20.19.x"
       - run: npm ci
       - run: npm run build-glean
       # Verify that the build (incl. type-checking) succeeds
