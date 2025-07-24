@@ -179,7 +179,10 @@ export default async function DashboardPage(props: Props) {
   const elapsedTimeInDaysSinceInitialScan =
     await getElapsedTimeInDaysSinceInitialScan(subscriber, enabledFeatureFlags);
 
-  const userAnnouncements = await initializeUserAnnouncements(session.user);
+  const userAnnouncements = await initializeUserAnnouncements(
+    session.user,
+    enabledFeatureFlags,
+  );
 
   const signInCount = await getSignInCount(subscriber.id);
 
