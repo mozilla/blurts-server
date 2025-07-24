@@ -24,6 +24,18 @@ it("returns the GCP-detected country", () => {
   expect(getCountryCode(headers as any)).toBe("nl");
 });
 
+it("returns the forced country for functional tests", () => {
+  const headers: Partial<jest.Mocked<ReadonlyHeaders>> = {
+    get: jest.fn((header: string) => {
+      if (header === "X-Test-Client-Region") {
+        return "NL";
+      }
+      return null;
+    }),
+  };
+  expect(getCountryCode(headers as any)).toBe("nl");
+});
+
 it("returns the single language from the Accept-Language if no GCP-detected country is available", () => {
   const headers: Partial<jest.Mocked<ReadonlyHeaders>> = {
     get: jest.fn((header: string) => {
@@ -79,19 +91,4 @@ it("defaults to US", () => {
     }),
   };
   expect(getCountryCode(headers as any)).toBe("us");
-});
-
-it("falls back to language when region is missing and `app_env` is local", () => {
-  process.env.app_env = "local";
-
-  const headers: Partial<jest.Mocked<ReadonlyHeaders>> = {
-    get: jest.fn((header: string) => {
-      if (header === "Accept-Language") {
-        return "fr";
-      }
-      return null;
-    }),
-  };
-
-  expect(getCountryCode(headers as any)).toBe("fr");
 });

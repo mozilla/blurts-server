@@ -153,9 +153,6 @@ export const MobileShell = (props: Props) => {
               />
               <div className={styles.premiumCta}>
                 <UpsellBadge
-                  monthlySubscriptionUrl={props.monthlySubscriptionUrl}
-                  yearlySubscriptionUrl={props.yearlySubscriptionUrl}
-                  subscriptionBillingAmount={props.subscriptionBillingAmount}
                   // The last scan date is too noisy on mobile, so don't show it there:
                   lastScanDate={null}
                   enabledFeatureFlags={props.enabledFeatureFlags}
@@ -231,11 +228,6 @@ export const MobileShell = (props: Props) => {
                   </ul>
                   <div className={styles.premiumCta}>
                     <UpsellBadge
-                      monthlySubscriptionUrl={props.monthlySubscriptionUrl}
-                      yearlySubscriptionUrl={props.yearlySubscriptionUrl}
-                      subscriptionBillingAmount={
-                        props.subscriptionBillingAmount
-                      }
                       // The last scan date is too noisy on mobile, so don't show it there:
                       lastScanDate={null}
                       enabledFeatureFlags={props.enabledFeatureFlags}

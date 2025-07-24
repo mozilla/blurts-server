@@ -21,7 +21,6 @@ export const defaultLocalForcedFeatureFlags: FeatureFlagName[] = [
   "SubPlat3",
   "Announcements",
   "PrivacyProductsBundle",
-  "SubscriptionPlansPage",
 ];
 
 const test = baseTest.extend<{
@@ -62,6 +61,7 @@ const test = baseTest.extend<{
           // Ensure that the region and language headers persist.
           const { countryCode, locale } = testInfo.project.use;
           headers["X-Client-Region"] = countryCode ?? "";
+          headers["X-Test-Client-Region"] = countryCode ?? "";
           headers["Accept-Language"] = `${locale},${countryCode};q=1.0`;
 
           // See https://github.com/microsoft/playwright/issues/9468#issuecomment-943707670

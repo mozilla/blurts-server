@@ -40,4 +40,23 @@ test.describe(`Verify authentication [${process.env.E2E_TEST_ENV}]`, () => {
       await page.waitForURL("**/user/**");
     },
   );
+
+  authenticatedTest(
+    "new users are redirected to the expected page",
+    async ({ page }, testInfo) => {
+      if (testInfo.project.use.countryCode === "us") {
+        // shows the onboarding flow
+        const heading = page.locator("h1", {
+          hasText: "Welcome to Monitor. Let’s find your exposed information.",
+        });
+        expect(heading).toBeVisible();
+      } else {
+        // shows the dashboard
+        const heading = page.locator("h2", {
+          hasText: "Alle websites waarop uw gegevens zijn gelekt bekijken",
+        });
+        expect(heading).toBeVisible();
+      }
+    },
+  );
 });

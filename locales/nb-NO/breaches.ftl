@@ -22,6 +22,10 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 ## Prompts the user for changes when there is a breach detected of password
 
 breach-checklist-pw-header-text = Oppdater passordene dine og aktiver tofaktorautentisering (2FA).
+# The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
+# Variables:
+#   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
+breach-checklist-pw-body-text = I de fleste tilfeller anbefaler vi at du endrer passordet ditt på selskapets nettsted. Men <b>nettstedet deres kan være nede eller inneholde skadelig innhold</b>, så vær forsiktig hvis du <breached-company-link>besøker nettstedet</breached-company-link>. For ekstra beskyttelse, sørg for at du bruker unike passord for alle kontoer, slik at eventuelle lekkede passord ikke kan brukes til å få tilgang til andre kontoer. { $passwordManagerLink } kan hjelpe deg med å holde oversikt over alle passordene dine på en sikker måte.
 
 ## Prompts the user for changes when there is a breach detected of email
 

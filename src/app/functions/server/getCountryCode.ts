@@ -7,6 +7,16 @@ import type { headers as headersGetter } from "next/headers";
 export function getCountryCode(
   headers: Awaited<ReturnType<typeof headersGetter>>,
 ): string {
+  // Force a region for functional tests:
+  const testRegion = headers.get("X-Test-Client-Region");
+  if (
+    testRegion &&
+    process.env.E2E_TEST_CLIENT_SECRET &&
+    process.env.E2E_TEST_CLIENT_SECRET === headers.get("X-Test-Client-Secret")
+  ) {
+    return testRegion.toLowerCase();
+  }
+
   // GCP can detect the user's country from their IP addresses, and pass it to
   // us through this header:
   const gcpDetectedRegion = headers.get("X-Client-Region");
@@ -21,15 +31,10 @@ export function getCountryCode(
     const acceptedLocales = acceptLanguage.split(",");
     const primaryLocale = acceptedLocales[0];
     const [locale, _weight] = primaryLocale.split(";");
-    const [language, region] = locale.split("-");
+    const [_language, region] = locale.split("-");
 
     if (region) {
       return region.toLowerCase();
-    }
-
-    // If there’s no region, fall back to the language locally
-    if (language && process.env.APP_ENV === "local") {
-      return language.toLowerCase();
     }
   }
 

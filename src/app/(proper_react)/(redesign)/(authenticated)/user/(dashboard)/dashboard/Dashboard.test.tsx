@@ -61,12 +61,8 @@ import {
   DashboardUsPremiumScanInProgressUnresolvedBreaches,
 } from "./DashboardPlusUsers.stories";
 
-const routerPushMock = jest.fn();
-
 jest.mock("next/navigation", () => ({
-  useRouter: () => ({
-    push: routerPushMock,
-  }),
+  useRouter: jest.fn(),
   usePathname: jest.fn(),
   useSearchParams: () => ({
     get: jest.fn(),
@@ -469,79 +465,7 @@ it("shows chart tooltip on the fixed tab, US user", async () => {
   expect(dialogContentPart).toBeInTheDocument();
 });
 
-it("counts in Glean how often people click the upgrade CTA to purchase the monthly plan", async () => {
-  const user = userEvent.setup();
-  const ComposedDashboard = composeStory(
-    DashboardUsNoPremiumNoScanNoBreaches,
-    Meta,
-  );
-  const mockedRecord = useTelemetry();
-  render(<ComposedDashboard />);
-
-  // We show a CTA on desktop in the toolbar and in the mobile menu
-  const premiumCtas = screen.queryAllByRole("button", {
-    name: "Automatic data removal: Off",
-  });
-  await user.click(premiumCtas[0]);
-  const productTabMonthly = screen.getByRole("radio", { name: "Monthly" });
-  await user.click(productTabMonthly);
-  const confirmButton = screen.getByRole("link", {
-    name: "Select monthly plan",
-  });
-  // jsdom will complain about not being able to navigate to a different page
-  // after clicking the link; suppress that error, as it's not relevant to the
-  // test:
-  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
-  await user.click(confirmButton);
-
-  expect(mockedRecord).toHaveBeenCalledWith(
-    "upgradeIntent",
-    "click",
-    expect.objectContaining({
-      button_id: "intent_to_purchase_monthly_plan_nav_modal",
-    }),
-  );
-});
-
-it("counts in Glean how often people click the upgrade CTA to purchase the yearly plan", async () => {
-  const user = userEvent.setup();
-  const ComposedDashboard = composeStory(
-    DashboardUsNoPremiumNoScanNoBreaches,
-    Meta,
-  );
-  const mockedRecord = useTelemetry();
-  render(<ComposedDashboard />);
-
-  // We show a CTA on desktop in the toolbar and in the mobile menu
-  const premiumCtas = screen.queryAllByRole("button", {
-    name: "Automatic data removal: Off",
-  });
-  await user.click(premiumCtas[0]);
-  // Switch to the monthly tab by clicking it...
-  const productTabMonthly = screen.getByRole("radio", { name: "Monthly" });
-  await user.click(productTabMonthly);
-  // ...then back to the yearly tab by pressing the left arrow on the keyboard.
-  await user.keyboard("[ArrowLeft]");
-  const confirmButton = screen.getByRole("link", {
-    name: "Select yearly plan",
-  });
-  // jsdom will complain about not being able to navigate to a different page
-  // after clicking the link; suppress that error, as it's not relevant to the
-  // test:
-  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
-  await user.click(confirmButton);
-
-  expect(mockedRecord).toHaveBeenCalledWith(
-    "upgradeIntent",
-    "click",
-    expect.objectContaining({
-      button_id: "intent_to_purchase_yearly_plan_nav_modal",
-    }),
-  );
-});
-
-it("shows returned free user who has resolved all tasks premium upsell and all fixed description", async () => {
-  const user = userEvent.setup();
+it("shows returned free user who has resolved all tasks premium upsell and all fixed description", () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumResolvedScanResolvedBreaches,
     Meta,
@@ -549,20 +473,18 @@ it("shows returned free user who has resolved all tasks premium upsell and all f
   render(<ComposedDashboard />);
 
   // We show a CTA on desktop in the toolbar and in the mobile menu
-  const premiumCtas = screen.queryAllByRole("button", {
+  const premiumCtas = screen.queryAllByRole("link", {
     name: "Automatic data removal: Off",
   });
   expect(premiumCtas.length).toBe(2);
 
   // show banner CTA premium upgrade
-  const bannerPremiumCta = screen.queryAllByRole("button", {
+  const bannerPremiumCta = screen.queryAllByRole("link", {
     name: "Get continuous protection",
   });
   expect(bannerPremiumCta.length).toBe(1);
 
-  // click on cta
-  await user.click(bannerPremiumCta[0]);
-  expect(screen.getByRole("dialog")).toBeInTheDocument();
+  expect(bannerPremiumCta[0]).toHaveAttribute("href", "/subscription-plans");
 });
 
 it("shows a user who has resolved all exposures a CTA to check out what was fixed", async () => {
@@ -1231,7 +1153,7 @@ it("shows the correct dashboard banner CTA for US users, without Premium, empty 
   const dashboardTopBanner = screen.getByRole("region", {
     name: "Dashboard summary",
   });
-  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "button", {
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "link", {
     name: "Get continuous protection",
   });
   expect(dashboardTopBannerCta).toBeInTheDocument();
@@ -1313,7 +1235,7 @@ it("shows the correct dashboard banner CTA for US users, without Premium, empty 
   const dashboardTopBanner = screen.getByRole("region", {
     name: "Dashboard summary",
   });
-  const dashboardTopBannerCta = queryByRole(dashboardTopBanner, "button", {
+  const dashboardTopBannerCta = queryByRole(dashboardTopBanner, "link", {
     name: "Get continuous protection",
   });
   expect(dashboardTopBannerCta).toBeInTheDocument();
@@ -1497,7 +1419,7 @@ it("shows the correct dashboard banner CTA and sends telemetry for US users, wit
   const dashboardTopBanner = screen.getByRole("region", {
     name: "Dashboard summary",
   });
-  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "button", {
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "link", {
     name: "Get continuous protection",
   });
   expect(dashboardTopBannerCta).toBeInTheDocument();
@@ -1593,7 +1515,7 @@ it("shows the correct dashboard banner CTA and sends telemetry for US users, wit
   const dashboardTopBanner = screen.getByRole("region", {
     name: "Dashboard summary",
   });
-  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "button", {
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "link", {
     name: "Get continuous protection",
   });
   await user.click(dashboardTopBannerCta);
@@ -3855,13 +3777,13 @@ describe("Upsell badge", () => {
     render(<ComposedDashboard />);
 
     // We show an upsell badge on desktop in the toolbar and in the mobile menu
-    const upsellBadges = screen.queryAllByRole("button", {
+    const upsellBadges = screen.queryAllByRole("link", {
       name: "Automatic data removal: On",
     });
     expect(upsellBadges.length).toBe(2);
   });
 
-  it("shows US users without Premium the upsell button", () => {
+  it("shows US users without Premium the upsell badge", () => {
     const ComposedDashboard = composeStory(
       DashboardUsNoPremiumEmptyScanNoBreaches,
       Meta,
@@ -3869,7 +3791,7 @@ describe("Upsell badge", () => {
     render(<ComposedDashboard />);
 
     // We show a CTA on desktop in the toolbar and in the mobile menu
-    const premiumCtas = screen.queryAllByRole("button", {
+    const premiumCtas = screen.queryAllByRole("link", {
       name: "Automatic data removal: Off",
     });
     expect(premiumCtas.length).toBe(2);
@@ -3880,7 +3802,7 @@ describe("Upsell badge", () => {
     render(<ComposedDashboard />);
 
     // We show an upsell badge on desktop in the toolbar and in the mobile menu
-    const upsellBadges = screen.queryAllByRole("button", {
+    const upsellBadges = screen.queryAllByRole("link", {
       name: "Automatic data removal: On",
     });
     expect(upsellBadges.length).toBe(0);
@@ -3891,14 +3813,13 @@ describe("Upsell badge", () => {
     render(<ComposedDashboard />);
 
     // We show a CTA on desktop in the toolbar and in the mobile menu
-    const premiumCtas = screen.queryAllByRole("button", {
+    const premiumCtas = screen.queryAllByRole("link", {
       name: "Automatic data removal: Off",
     });
     expect(premiumCtas.length).toBe(0);
   });
 
-  it("opens and closes the premium upsell dialog via the Premium upsell badge)", async () => {
-    const user = userEvent.setup();
+  it("navigates to the subscription plans page when clicking the upsell badge", () => {
     const ComposedDashboard = composeStory(
       DashboardUsNoPremiumNoScanNoBreaches,
       Meta,
@@ -3906,107 +3827,44 @@ describe("Upsell badge", () => {
     render(<ComposedDashboard />);
 
     // We show a CTA on desktop in the toolbar and in the mobile menu
-    const premiumCtas = screen.queryAllByRole("button", {
+    const premiumCtas = screen.getAllByRole("link", {
       name: "Automatic data removal: Off",
     });
     expect(premiumCtas.length).toBe(2);
 
-    // Shows the modal for the desktop layout
-    await user.click(premiumCtas[0]);
-    expect(
-      screen.getByText("Turn on automatic data removal with ⁨Monitor Plus⁩"),
-    ).toBeInTheDocument();
-    const closeButtonIcon1 = screen.getByLabelText("Close modal");
-    await user.click(closeButtonIcon1.parentElement as HTMLElement);
-    expect(
-      screen.queryByText("Turn on automatic data removal with ⁨Monitor Plus⁩"),
-    ).not.toBeInTheDocument();
-
-    // Shows the modal for the mobile layout
-    await user.click(premiumCtas[1]);
-    expect(
-      screen.getByText("Turn on automatic data removal with ⁨Monitor Plus⁩"),
-    ).toBeInTheDocument();
-    const closeButtonIcon2 = screen.getByLabelText("Close modal");
-    await user.click(closeButtonIcon2.parentElement as HTMLElement);
-    expect(
-      screen.queryByText("Turn on automatic data removal with ⁨Monitor Plus⁩"),
-    ).not.toBeInTheDocument();
+    expect(premiumCtas[0]).toHaveAttribute("href", "/subscription-plans");
+    expect(premiumCtas[1]).toHaveAttribute("href", "/subscription-plans");
   });
 
-  it("shows the premium upsell dialog of the Premium upsell badge open by default)", () => {
-    const ComposedDashboard = composeStory(
-      DashboardUsNoPremiumNoScanNoBreaches,
-      Meta,
-    );
-    render(<ComposedDashboard autoOpenUpsellDialog />);
-
-    expect(
-      screen.getByText("Turn on automatic data removal with ⁨Monitor Plus⁩"),
-    ).toBeInTheDocument();
-  });
-
-  it("navigates to the subscription plans page on render when `autoOpenUpsellDialog={true}` and the feature flag SubscriptionPlansPage is enabled)", () => {
-    const ComposedDashboard = composeStory(
-      DashboardUsNoPremiumNoScanNoBreaches,
-      Meta,
-    );
-    render(
-      <ComposedDashboard
-        autoOpenUpsellDialog
-        enabledFeatureFlags={["SubscriptionPlansPage"]}
-      />,
-    );
-
-    expect(routerPushMock).toHaveBeenCalledWith("/subscription-plans");
-  });
-
-  it("navigates to the subscription plans page when the feature flag SubscriptionPlansPage is enabled when clicking the the upsell badge)", async () => {
-    const user = userEvent.setup();
-    const ComposedDashboard = composeStory(
-      DashboardUsNoPremiumNoScanNoBreaches,
-      Meta,
-    );
-    render(
-      <ComposedDashboard enabledFeatureFlags={["SubscriptionPlansPage"]} />,
-    );
-
-    // We show a CTA on desktop in the toolbar and in the mobile menu
-    const premiumCtas = screen.queryAllByRole("button", {
-      name: "Automatic data removal: Off",
-    });
-    expect(premiumCtas.length).toBe(2);
-
-    await user.click(premiumCtas[0]);
-    expect(routerPushMock).toHaveBeenCalledWith("/subscription-plans");
-  });
-
-  it("closes the premium upsell dialog of the Premium upsell badge after it opened by default)", async () => {
-    const user = userEvent.setup();
-    const ComposedDashboard = composeStory(
-      DashboardUsNoPremiumNoScanNoBreaches,
-      Meta,
-    );
-    render(<ComposedDashboard autoOpenUpsellDialog />);
-
-    expect(
-      screen.getByText("Turn on automatic data removal with ⁨Monitor Plus⁩"),
-    ).toBeInTheDocument();
-
-    const closeButtonIcon1 = screen.getByLabelText("Close modal");
-    await user.click(closeButtonIcon1.parentElement as HTMLElement);
-    expect(
-      screen.queryByText("Turn on automatic data removal with ⁨Monitor Plus⁩"),
-    ).not.toBeInTheDocument();
-  });
-
-  it("opens and closes the premium upsell dialog via the Premium upsell button", async () => {
+  it("verifies the correct link to the waitlist page in the waitlist dialog", async () => {
     const user = userEvent.setup();
     const ComposedDashboard = composeStory(
       DashboardUsNoPremiumEmptyScanResolvedBreaches,
       Meta,
     );
-    render(<ComposedDashboard />);
+    render(<ComposedDashboard enabledFeatureFlags={["DisableOneRepScans"]} />);
+
+    const premiumCta = screen.getByRole("button", {
+      name: "Get continuous protection",
+    });
+    expect(premiumCta).toBeInTheDocument();
+    await user.click(premiumCta);
+    const waitlistLink = screen.getByRole("link", {
+      name: "Join the waitlist",
+    });
+    expect(waitlistLink).toHaveAttribute(
+      "href",
+      "https://www.mozilla.org/products/monitor/waitlist-scan/",
+    );
+  });
+
+  it("opens and closes the subscription waitlist dialog", async () => {
+    const user = userEvent.setup();
+    const ComposedDashboard = composeStory(
+      DashboardUsNoPremiumEmptyScanResolvedBreaches,
+      Meta,
+    );
+    render(<ComposedDashboard enabledFeatureFlags={["DisableOneRepScans"]} />);
 
     const premiumCta = screen.getByRole("button", {
       name: "Get continuous protection",
@@ -4015,140 +3873,38 @@ describe("Upsell badge", () => {
 
     await user.click(premiumCta);
     expect(
-      screen.getByText("Turn on automatic data removal with ⁨Monitor Plus⁩"),
+      screen.getByText("⁨Monitor⁩ is currently at capacity"),
     ).toBeInTheDocument();
-    const closeButtonIcon1 = screen.getByLabelText("Close modal");
-    await user.click(closeButtonIcon1.parentElement as HTMLElement);
+    const closeButton = screen.getByRole("button", {
+      name: "Skip for now",
+    });
+    await user.click(closeButton);
     expect(
-      screen.queryByText("Turn on automatic data removal with ⁨Monitor Plus⁩"),
+      screen.queryByText("⁨Monitor⁩ is currently at capacity"),
     ).not.toBeInTheDocument();
   });
 
-  it("toggles between the product offerings in the premium upsell dialog", async () => {
+  it("counts in Glean how often people click the upsell badge", async () => {
     const user = userEvent.setup();
     const ComposedDashboard = composeStory(
       DashboardUsNoPremiumNoScanNoBreaches,
       Meta,
     );
+    const mockedRecord = useTelemetry();
     render(<ComposedDashboard />);
 
     // We show a CTA on desktop in the toolbar and in the mobile menu
-    const premiumCtas = screen.queryAllByRole("button", {
-      name: "Automatic data removal: Off",
-    });
-    expect(premiumCtas.length).toBe(2);
-
-    await user.click(premiumCtas[0]);
-
-    const productTabMonthly = screen.getByRole("radio", { name: "Monthly" });
-    const productYearlyCta = screen.getByRole("link", {
-      name: "Select yearly plan",
-    });
-    expect(productYearlyCta).toBeInTheDocument();
-
-    await user.click(productTabMonthly);
-
-    const productMonthlyCta = screen.getByRole("link", {
-      name: "Select monthly plan",
-    });
-    expect(productMonthlyCta).toBeInTheDocument();
-  });
-
-  it("links to the yearly SubPlat2 subscription plan", async () => {
-    const user = userEvent.setup();
-    const ComposedDashboard = composeStory(
-      DashboardUsNoPremiumNoScanNoBreaches,
-      Meta,
-    );
-    render(<ComposedDashboard />);
-
-    // We show a CTA on desktop in the toolbar and in the mobile menu
-    const premiumCtas = screen.queryAllByRole("button", {
+    const premiumCtas = screen.queryAllByRole("link", {
       name: "Automatic data removal: Off",
     });
     await user.click(premiumCtas[0]);
 
-    const ctaLink = screen.getByRole("link", {
-      name: "Select yearly plan",
-    });
-    expect(ctaLink).toHaveAttribute(
-      "href",
-      "https://accounts.stage.mozaws.net/subscriptions/products/prod_NErZh679W62lai?plan=price_1NvqawKb9q6OnNsLRTnYrtrV&form_type=button&entrypoint=monitor.mozilla.org-monitor-in-product-navigation-upsell&utm_source=product&utm_medium=monitor&utm_campaign=navigation-upsell",
-    );
-  });
-
-  it("links to the monthly SubPlat2 subscription plan", async () => {
-    const user = userEvent.setup();
-    const ComposedDashboard = composeStory(
-      DashboardUsNoPremiumNoScanNoBreaches,
-      Meta,
-    );
-    render(<ComposedDashboard />);
-
-    // We show a CTA on desktop in the toolbar and in the mobile menu
-    const premiumCtas = screen.queryAllByRole("button", {
-      name: "Automatic data removal: Off",
-    });
-    await user.click(premiumCtas[0]);
-
-    const productTabMonthly = screen.getByRole("radio", { name: "Monthly" });
-    await user.click(productTabMonthly);
-
-    const ctaLink = screen.getByRole("link", {
-      name: "Select monthly plan",
-    });
-    expect(ctaLink).toHaveAttribute(
-      "href",
-      "https://accounts.stage.mozaws.net/subscriptions/products/prod_NErZh679W62lai?plan=price_1MUNq0Kb9q6OnNsL4BoJgepf&form_type=button&entrypoint=monitor.mozilla.org-monitor-in-product-navigation-upsell&utm_source=product&utm_medium=monitor&utm_campaign=navigation-upsell",
-    );
-  });
-
-  it("links to the yearly SubPlat3 subscription plan", async () => {
-    const user = userEvent.setup();
-    const ComposedDashboard = composeStory(
-      DashboardUsNoPremiumNoScanNoBreaches,
-      Meta,
-    );
-    render(<ComposedDashboard enabledFeatureFlags={["SubPlat3"]} />);
-
-    // We show a CTA on desktop in the toolbar and in the mobile menu
-    const premiumCtas = screen.queryAllByRole("button", {
-      name: "Automatic data removal: Off",
-    });
-    await user.click(premiumCtas[0]);
-
-    const ctaLink = screen.getByRole("link", {
-      name: "Select yearly plan",
-    });
-    expect(ctaLink).toHaveAttribute(
-      "href",
-      "https://payments-next.stage.fxa.nonprod.webservices.mozgcp.net/monitorplusstage/yearly/landing?form_type=button&entrypoint=monitor.mozilla.org-monitor-in-product-navigation-upsell&utm_source=product&utm_medium=monitor&utm_campaign=navigation-upsell",
-    );
-  });
-
-  it("links to the monthly SubPlat3 subscription plan", async () => {
-    const user = userEvent.setup();
-    const ComposedDashboard = composeStory(
-      DashboardUsNoPremiumNoScanNoBreaches,
-      Meta,
-    );
-    render(<ComposedDashboard enabledFeatureFlags={["SubPlat3"]} />);
-
-    // We show a CTA on desktop in the toolbar and in the mobile menu
-    const premiumCtas = screen.queryAllByRole("button", {
-      name: "Automatic data removal: Off",
-    });
-    await user.click(premiumCtas[0]);
-
-    const productTabMonthly = screen.getByRole("radio", { name: "Monthly" });
-    await user.click(productTabMonthly);
-
-    const ctaLink = screen.getByRole("link", {
-      name: "Select monthly plan",
-    });
-    expect(ctaLink).toHaveAttribute(
-      "href",
-      "https://payments-next.stage.fxa.nonprod.webservices.mozgcp.net/monitorplusstage/monthly/landing?form_type=button&entrypoint=monitor.mozilla.org-monitor-in-product-navigation-upsell&utm_source=product&utm_medium=monitor&utm_campaign=navigation-upsell",
+    expect(mockedRecord).toHaveBeenCalledWith(
+      "upgradeIntent",
+      "click",
+      expect.objectContaining({
+        button_id: "nav_upsell",
+      }),
     );
   });
 

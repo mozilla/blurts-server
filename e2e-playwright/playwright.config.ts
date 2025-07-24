@@ -104,6 +104,8 @@ const projects: Project[] = locations.flatMap((geo) =>
       enabledFeatureFlags: getEnabledFeatureFlags(),
       extraHTTPHeaders: {
         "X-Client-Region": geo.name.toLowerCase(),
+        "X-Test-Client-Region": geo.name.toLowerCase(),
+        "X-Test-Client-Secret": process.env.E2E_TEST_CLIENT_SECRET,
         "Accept-Language": `${geo.locale},${geo.name.toLowerCase()};q=1.0`,
       },
     },

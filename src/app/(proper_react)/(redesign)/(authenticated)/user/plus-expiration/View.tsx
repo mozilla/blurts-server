@@ -45,14 +45,7 @@ export const View = (props: Props) => {
         <div className={styles.wrapper}>
           <h1>{l10n.getString("plus-expiration-error-free-heading")}</h1>
           <p>{l10n.getString("plus-expiration-error-free-content")}</p>
-          <Button
-            variant="primary"
-            href={
-              props.enabledFeatureFlags.includes("SubscriptionPlansPage")
-                ? "/subscription-plans"
-                : "/user/dashboard/action-needed?dialog=subscriptions"
-            }
-          >
+          <Button variant="primary" href="/subscription-plans">
             {l10n.getString("plus-expiration-error-free-cta-label")}
           </Button>
         </div>
