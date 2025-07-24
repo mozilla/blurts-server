@@ -165,6 +165,7 @@ declare module "knex/types/tables" {
     monthly_monitor_report: boolean;
     breach_resolution: BreachResolution;
     moscary_id: null | UUID;
+    /** @deprecated */
     onerep_profile_id: null | number;
     sign_in_count: null | number;
     email_addresses: SubscriberEmail[];
