@@ -62,12 +62,16 @@ type Props = {
 
 export default async function DashboardPage(props: Props) {
   const searchParams = await props.searchParams;
-  const params = await props.params;
+  if (searchParams.dialog === "subscriptions") {
+    return redirect("/subscription-plans");
+  }
+
   const session = await getServerSession();
   if (!checkSession(session) || !session?.user?.subscriber?.id) {
     return redirect("/auth/logout");
   }
 
+  const params = await props.params;
   const { slug } = params;
   const isPremiumUser = hasPremium(session.user);
   const defaultTab = isPremiumUser ? "fixed" : "action-needed";
@@ -193,7 +197,6 @@ export default async function DashboardPage(props: Props) {
       activeTab={activeTab}
       hasFirstMonitoringScan={hasFirstMonitoringScan}
       signInCount={signInCount}
-      autoOpenUpsellDialog={searchParams.dialog === "subscriptions"}
       removalTimeEstimates={getDataBrokerRemovalTimeEstimates(scanResults)}
       userAnnouncements={userAnnouncements}
     />

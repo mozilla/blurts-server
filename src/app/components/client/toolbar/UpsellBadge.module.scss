@@ -1,11 +1,25 @@
 @use "../../../tokens";
 
+.upsellWrapper {
+  // Override the background of the base button component
+  button.upsellBadge.upsellBadge,
+  a.upsellBadge.upsellBadge {
+    background: none;
+    background-color: transparent;
+    color: tokens.$color-black;
+
+    &:hover,
+    &:focus {
+      background: none;
+      background-color: tokens.$color-grey-05;
+    }
+  }
+}
+
 .upsellBadge {
   align-items: center;
-  background: none;
   border-radius: tokens.$border-radius-xl;
   border: 1px solid tokens.$color-grey-40;
-  color: tokens.$color-black;
   cursor: pointer;
   display: flex;
   font: tokens.$text-body-md;

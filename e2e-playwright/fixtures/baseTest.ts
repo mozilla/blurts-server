@@ -21,7 +21,6 @@ export const defaultLocalForcedFeatureFlags: FeatureFlagName[] = [
   "SubPlat3",
   "Announcements",
   "PrivacyProductsBundle",
-  "SubscriptionPlansPage",
 ];
 
 const test = baseTest.extend<{
