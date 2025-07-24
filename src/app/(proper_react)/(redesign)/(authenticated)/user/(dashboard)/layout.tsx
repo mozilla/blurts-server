@@ -44,7 +44,10 @@ export default async function Layout({ children }: { children: ReactNode }) {
     locale: currentLocale,
   });
 
-  const userAnnouncements = await initializeUserAnnouncements(session.user);
+  const userAnnouncements = await initializeUserAnnouncements(
+    session.user,
+    enabledFeatureFlags,
+  );
 
   return (
     <Shell
