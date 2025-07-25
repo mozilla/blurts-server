@@ -18,11 +18,10 @@ test.describe(`Verify authentication [${process.env.E2E_TEST_ENV}]`, () => {
   });
 
   test("user sign-in flow from landing page", async ({ page }, testInfo) => {
-    await goToFxA(
-      page,
-      testInfo.project.use.isMobile,
-      testInfo.project.use.countryCode,
-    );
+    await goToFxA(page, {
+      countryCode: testInfo.project.use.countryCode,
+      isMobile: testInfo.project.use.isMobile,
+    });
     const userEmail = getTestUserEmailByCountryCode(
       testInfo.project.use.countryCode,
     );

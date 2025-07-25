@@ -11,7 +11,16 @@ async function waitForFxa(page: Page) {
   await page.waitForURL("**/oauth**", { timeout: 60_000 });
 }
 
-async function goToFxA(page: Page, isMobile?: boolean, countryCode?: string) {
+async function goToFxA(
+  page: Page,
+  {
+    countryCode,
+    isMobile,
+  }: {
+    countryCode?: string;
+    isMobile?: boolean;
+  },
+) {
   await page.goto(`${getBaseTestEnvUrl()}/`);
   if (
     isMobile &&

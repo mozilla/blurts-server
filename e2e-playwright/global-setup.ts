@@ -56,7 +56,10 @@ async function setupUserAccounts() {
     const email = `${process.env.E2E_TEST_ACCOUNT_BASE_EMAIL}_${countryCode}_${timestamp}@restmail.net`;
     emails[countryCode] = email;
 
-    await goToFxA(page, false, countryCode);
+    await goToFxA(page, {
+      countryCode,
+      isMobile: false,
+    });
     await signUpUser(
       page,
       email,
