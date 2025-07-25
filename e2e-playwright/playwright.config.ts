@@ -79,7 +79,10 @@ export const getEnabledFeatureFlags = () => {
   let enabledFeatureFlags: FeatureFlagName[] = [];
   try {
     const enabledFeatureFlagsJson = fs.readFileSync(
-      path.resolve(__dirname, "./storage/enabled-feature-flags.json"),
+      path.resolve(
+        __dirname,
+        "./functional-test-cache/enabled-feature-flags.json",
+      ),
       "utf-8",
     );
     enabledFeatureFlags = JSON.parse(enabledFeatureFlagsJson).data ?? [];

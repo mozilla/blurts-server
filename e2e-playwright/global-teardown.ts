@@ -12,11 +12,11 @@ import { getBaseTestEnvUrl } from "./utils/environment";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 function removeTestStorage() {
-  const storageDir = path.resolve(__dirname, "./storage");
+  const dir = path.resolve(__dirname, "./functional-test-cache");
 
-  if (fs.existsSync(storageDir)) {
-    fs.rmSync(storageDir, { force: true, recursive: true });
-    console.info("Removed storage directory after running tests");
+  if (fs.existsSync(dir)) {
+    fs.rmSync(dir, { force: true, recursive: true });
+    console.info("Deleted cache directory after running tests");
   }
 }
 
