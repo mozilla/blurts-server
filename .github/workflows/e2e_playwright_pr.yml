@@ -69,6 +69,7 @@ jobs:
         env:
           ADMINS: ${{ secrets.ADMINS }}
           DATABASE_URL: postgres://postgres:postgres@localhost:5432/blurts
+          E2E_TEST_SECRET: ${{ secrets.E2E_TEST_SECRET }}
           E2E_TEST_ACCOUNT_BASE_EMAIL: ${{ secrets.E2E_TEST_ACCOUNT_BASE_EMAIL }}
           E2E_TEST_ACCOUNT_BASE_PASSWORD: ${{ secrets.E2E_TEST_ACCOUNT_BASE_PASSWORD }}
           E2E_TEST_BASE_URL: http://localhost:6060
