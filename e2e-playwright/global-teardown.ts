@@ -6,7 +6,7 @@ import { chromium } from "@playwright/test";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import { getTestUserEmails, getTestUserSession } from "./utils/user";
+import { getTestUserEmails, getTestUserSessionFilePath } from "./utils/user";
 import { getBaseTestEnvUrl } from "./utils/environment";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -25,7 +25,7 @@ async function deleteTestUserAccounts() {
   const userEmails = getTestUserEmails();
 
   for (const userCountryCode in userEmails) {
-    const storageState = getTestUserSession(userCountryCode);
+    const storageState = getTestUserSessionFilePath(userCountryCode);
     const context = await browser.newContext({ storageState });
     const page = await context.newPage();
 

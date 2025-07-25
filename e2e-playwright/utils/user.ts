@@ -84,7 +84,7 @@ export function getTestUserEmailByCountryCode(countryCode?: string): string {
   return email;
 }
 
-export function getTestUserSession(countryCode: string) {
+export function getTestUserSessionFilePath(countryCode: string) {
   const storagePath = path.resolve(
     __dirname,
     `../functional-test-cache/user-session-${countryCode}.json`,

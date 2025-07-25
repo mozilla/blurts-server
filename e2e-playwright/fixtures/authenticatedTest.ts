@@ -4,7 +4,7 @@
 
 import fs from "fs";
 import { test as baseTest, expect } from "./baseTest";
-import { getTestUserSession } from "../utils/user";
+import { getTestUserSessionFilePath } from "../utils/user";
 
 const test = baseTest.extend<object, { storageState?: string }>({
   storageState: [
@@ -15,7 +15,7 @@ const test = baseTest.extend<object, { storageState?: string }>({
         return;
       }
 
-      const storagePath = getTestUserSession(countryCode);
+      const storagePath = getTestUserSessionFilePath(countryCode);
       const exists = fs.existsSync(storagePath);
       if (exists) {
         await use(storagePath);
