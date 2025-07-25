@@ -27,7 +27,7 @@ it("returns the GCP-detected country", () => {
 it("returns the forced country for functional tests", () => {
   const headers: Partial<jest.Mocked<ReadonlyHeaders>> = {
     get: jest.fn((header: string) => {
-      if (header === "X-Test-Client-Region") {
+      if (header === "x-forced-client-region-token") {
         return "NL";
       }
       return null;

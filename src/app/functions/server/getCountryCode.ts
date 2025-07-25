@@ -3,18 +3,19 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import type { headers as headersGetter } from "next/headers";
+import { getTestClientRegionFromToken } from "./testCountryCodeToken";
 
 export function getCountryCode(
   headers: Awaited<ReturnType<typeof headersGetter>>,
 ): string {
-  // Force a region for functional tests:
-  const testRegion = headers.get("X-Test-Client-Region");
-  if (
-    testRegion &&
-    process.env.E2E_TEST_CLIENT_SECRET &&
-    process.env.E2E_TEST_CLIENT_SECRET === headers.get("X-Test-Client-Secret")
-  ) {
-    return testRegion.toLowerCase();
+  // In functional tests we set the header `x-forced-client-region-token`,
+  // it is expected to be JWT token containing the client region:
+  const testClientRegionToken = headers.get("x-forced-client-region-token");
+  if (testClientRegionToken) {
+    const region = getTestClientRegionFromToken(testClientRegionToken);
+    if (region) {
+      return region.toLowerCase();
+    }
   }
 
   // GCP can detect the user's country from their IP addresses, and pass it to

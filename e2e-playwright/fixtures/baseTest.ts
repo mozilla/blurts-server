@@ -4,6 +4,7 @@
 
 import { test as baseTest, expect } from "@playwright/test";
 import { FeatureFlagName } from "../../src/db/tables/featureFlags";
+import { createTestClientRegionToken } from "../../src/app/functions/server/testCountryCodeToken";
 
 // Feature flags that are enabled by default locally
 export const defaultLocalForcedFeatureFlags: FeatureFlagName[] = [
@@ -60,9 +61,11 @@ const test = baseTest.extend<{
         if (new URL(requestUrl).origin === process.env.E2E_TEST_BASE_URL) {
           // Ensure that the region and language headers persist.
           const { countryCode, locale } = testInfo.project.use;
-          headers["X-Client-Region"] = countryCode ?? "";
-          headers["X-Test-Client-Region"] = countryCode ?? "";
           headers["Accept-Language"] = `${locale},${countryCode};q=1.0`;
+          headers["X-Client-Region"] = countryCode ?? "";
+          headers["x-forced-client-region-token"] = createTestClientRegionToken(
+            countryCode ?? "",
+          );
 
           // See https://github.com/microsoft/playwright/issues/9468#issuecomment-943707670
           // Sets the `x-forced-feature-flags` and `x-nimbus-preview-mode` on every

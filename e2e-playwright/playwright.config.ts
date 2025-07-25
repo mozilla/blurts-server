@@ -12,6 +12,7 @@ import { FeatureFlagName } from "../src/db/tables/featureFlags";
  * https://www.npmjs.com/package/dotenv-flow
  */
 import * as dotenvFlow from "dotenv-flow";
+import { createTestClientRegionToken } from "../src/app/functions/server/testCountryCodeToken";
 dotenvFlow.config();
 /**
  * @see https://playwright.dev/docs/test-configuration
@@ -103,10 +104,11 @@ const projects: Project[] = locations.flatMap((geo) =>
       permissions: ["geolocation"],
       enabledFeatureFlags: getEnabledFeatureFlags(),
       extraHTTPHeaders: {
-        "X-Client-Region": geo.name.toLowerCase(),
-        "X-Test-Client-Region": geo.name.toLowerCase(),
-        "X-Test-Client-Secret": process.env.E2E_TEST_CLIENT_SECRET,
         "Accept-Language": `${geo.locale},${geo.name.toLowerCase()};q=1.0`,
+        "X-Client-Region": geo.name.toLowerCase(),
+        "x-forced-client-region-token": createTestClientRegionToken(
+          geo.name.toLowerCase(),
+        ),
       },
     },
   })),
