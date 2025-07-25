@@ -23,7 +23,7 @@ src/e2e/specs/*-snapshots/**
 **/traces/
 
 # Playwright
-/e2e-playwright/*.json
+**/functional-test-cache/
 /test-results/
 /playwright-report/
 /blob-report/

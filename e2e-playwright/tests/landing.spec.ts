@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { test, expect } from "../fixtures/baseTest";
-import { getBaseTestEnvUrl } from "../utils/helpers";
+import { getBaseTestEnvUrl } from "../utils/environment";
 
 test.describe(`Verify landing page [${process.env.E2E_TEST_ENV}]`, () => {
   test.beforeEach(async ({ page }) => {

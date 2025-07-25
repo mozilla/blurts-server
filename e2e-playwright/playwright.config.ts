@@ -12,6 +12,7 @@ import { FeatureFlagName } from "../src/db/tables/featureFlags";
  * https://www.npmjs.com/package/dotenv-flow
  */
 import * as dotenvFlow from "dotenv-flow";
+import { createTestClientRegionToken } from "../src/app/functions/server/testCountryCodeToken";
 dotenvFlow.config();
 /**
  * @see https://playwright.dev/docs/test-configuration
@@ -31,7 +32,7 @@ const webServerConfig = {
 };
 
 // Geo locations
-const locations = [
+export const locations = [
   {
     name: "US",
     geolocation: { latitude: 40.7167, longitude: -74.0 },
@@ -72,27 +73,22 @@ const baseDevices = [
     name: "Mobile Chrome",
     use: devices["Pixel 5"],
   },
-  {
-    name: "Mobile Firefox",
-    use: {
-      ...devices["Pixel 5"],
-      browserName: "firefox",
-      isMobile: false,
-    },
-  },
 ];
 
 export const getEnabledFeatureFlags = () => {
   let enabledFeatureFlags: FeatureFlagName[] = [];
   try {
     const enabledFeatureFlagsJson = fs.readFileSync(
-      path.resolve(__dirname, "./enabledFeatureFlags.json"),
+      path.resolve(
+        __dirname,
+        "./functional-test-cache/enabled-feature-flags.json",
+      ),
       "utf-8",
     );
     enabledFeatureFlags = JSON.parse(enabledFeatureFlagsJson).data ?? [];
   } catch (error) {
     console.warn(
-      "Could not load `enabledFeatureFlags`",
+      "Could not load enabled feature flags",
       error instanceof Error ? error.message : error,
     );
   }
@@ -111,8 +107,11 @@ const projects: Project[] = locations.flatMap((geo) =>
       permissions: ["geolocation"],
       enabledFeatureFlags: getEnabledFeatureFlags(),
       extraHTTPHeaders: {
-        "X-Client-Region": geo.name.toLowerCase(),
         "Accept-Language": `${geo.locale},${geo.name.toLowerCase()};q=1.0`,
+        "X-Client-Region": geo.name.toLowerCase(),
+        "x-forced-client-region-token": createTestClientRegionToken(
+          geo.name.toLowerCase(),
+        ),
       },
     },
   })),
@@ -122,6 +121,8 @@ export default defineConfig({
   testDir: "./tests",
   /* Global setup */
   globalSetup: "./global-setup.ts",
+  /* Global teardown */
+  globalTeardown: "./global-teardown.ts",
   /* Maximum time one test can run for. */
   timeout: 60_000,
   /* Max time in milliseconds the whole test suite can run to prevent CI from hanging. */
