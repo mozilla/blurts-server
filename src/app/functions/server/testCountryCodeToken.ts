@@ -12,7 +12,7 @@ export function createTestClientRegionToken(region: string): string {
 
   const timestamp = Math.floor(Date.now() / 1000);
   const payload = {
-    region,
+    region: region.toLowerCase(),
     iat: timestamp,
     exp: timestamp + 60, // expires after 1 minute
   };
@@ -32,7 +32,7 @@ export function getTestClientRegionFromToken(
     if (typeof decoded.region === "string") {
       return decoded.region.toLowerCase();
     }
-  } catch (error) {
-    console.warn("Invalid or expired JWT token:", error);
+  } catch {
+    console.warn("Invalid or expired JWT token");
   }
 }

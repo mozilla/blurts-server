@@ -5,9 +5,10 @@
 import { it, expect, jest } from "@jest/globals";
 import { getCountryCode } from "./getCountryCode";
 import { ReadonlyHeaders } from "next/dist/server/web/spec-extension/adapters/headers";
+import { createTestClientRegionToken } from "./testCountryCodeToken";
 
 afterEach(() => {
-  delete process.env.app_env;
+  delete process.env.E2E_TEST_SECRET;
 });
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -25,15 +26,19 @@ it("returns the GCP-detected country", () => {
 });
 
 it("returns the forced country for functional tests", () => {
-  const headers: Partial<jest.Mocked<ReadonlyHeaders>> = {
-    get: jest.fn((header: string) => {
-      if (header === "x-forced-client-region-token") {
-        return "NL";
+  process.env.E2E_TEST_SECRET = "test-secret";
+  const token = createTestClientRegionToken("NL");
+  const headers: Partial<Headers> = {
+    get: (header: string) => {
+      if (header.toLowerCase() === "x-forced-client-region-token") {
+        return token;
       }
       return null;
-    }),
+    },
   };
-  expect(getCountryCode(headers as any)).toBe("nl");
+
+  const result = getCountryCode(headers as any);
+  expect(result).toBe("nl");
 });
 
 it("returns the single language from the Accept-Language if no GCP-detected country is available", () => {
