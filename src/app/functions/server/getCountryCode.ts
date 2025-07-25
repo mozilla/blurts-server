@@ -8,8 +8,8 @@ import { getTestClientRegionFromToken } from "./testCountryCodeToken";
 export function getCountryCode(
   headers: Awaited<ReturnType<typeof headersGetter>>,
 ): string {
-  // In functional tests we set the header `x-forced-client-region-token`,
-  // it is expected to be JWT token containing the client region:
+  // From the functional tests we set the header `x-forced-client-region-token`.
+  // It’s expected to be a JWT token containing the client region:
   const testClientRegionToken = headers.get("x-forced-client-region-token");
   if (testClientRegionToken) {
     const region = getTestClientRegionFromToken(testClientRegionToken);
