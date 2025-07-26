@@ -61,7 +61,7 @@ rec-email =
     finne passorda dine eller følgje deg på nettet. Ei teneste som { -brand-relay }
     gøymer den verkelege e-postadressa di mens du vidaresender e-post til den verkelege innboksen din.
 # Recommendation subhead
-rec-ip-subhead-2 = Bruk VPN dor å maskere IP-addressa di
+rec-ip-subhead-2 = Bruk eit VPN for å maskere IP-addressa di
 # Recommendation subhead
 rec-moz-vpn-cta = Prøv { -brand-mozilla-vpn }
 rec-moz-vpn-update-2 =

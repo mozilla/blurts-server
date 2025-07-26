@@ -69,7 +69,7 @@ breach-checklist-pin-body = Sørg for at den nye PIN-koden din, eller andre PIN-
 # Variables:
 #   $mozillaVpnLink (string) - a link to the Mozilla VPN website, with { -breach-checklist-link-mozilla-vpn } as the label
 breach-checklist-ip-header-2 = Beskytt identiteten din på internett ved å bruke et VPN som { $mozillaVpnLink }.
-breach-checklist-ip-body = IP-adressen din (Internet Protocol-adresse) angir hvor du befinner deg og hvilken internettleverandør du bruker. En VPN kan skjule den virkelige IP-adressen din, slik at du kan bruke internett privat.
+breach-checklist-ip-body = IP-adressen din (Internet Protocol-adresse) angir hvor du befinner deg og hvilken internettleverandør du bruker. Et VPN kan skjule den virkelige IP-adressen din, slik at du kan bruke internett privat.
 
 ## Prompts the user for changes when there is a breach detected of physical address
 

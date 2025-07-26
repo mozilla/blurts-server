@@ -158,7 +158,7 @@ security-recommendation-email-step-four = Bruk <link_to_info>{ -brand-relay } e-
 
 # IP security recommendation
 
-security-recommendation-ip-title = Bruk en VPN for ekstra personvern
+security-recommendation-ip-title = Bruk et VPN for ekstra personvern
 # $num_breaches is the number of breaches where the IP address was found.
 security-recommendation-ip-summary =
     { $num_breaches ->
@@ -166,7 +166,7 @@ security-recommendation-ip-summary =
        *[other] IP-adressen din ble eksponert i { $num_breaches } datalekkasjer:
     }
 security-recommendation-ip-description = IP-adressen din angir hvor du befinner deg og hvilken internettleverandør du har. Hackere kan bruke denne informasjonen til å finne hvor du befinner deg eller prøve å koble til enhetene dine.
-security-recommendation-ip-step-one = Bruk en VPN (som <link_to_info>{ -brand-mozilla-vpn }</link_to_info>) for å skjule din virkelige IP-adresse og bruke internett privat.
+security-recommendation-ip-step-one = Bruk et VPN (som <link_to_info>{ -brand-mozilla-vpn }</link_to_info>) for å skjule din virkelige IP-adresse og bruke internett privat.
 
 # Leaked Passwords
 
