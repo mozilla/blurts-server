@@ -110,7 +110,11 @@ jobs:
                     },
                     {
                       "type": "mrkdwn",
-                      "text": "*Status:*\n ${{ job.status }}  "
+                      "text": "*Environment:* \n ${{ github.event_name == 'workflow_dispatch' && inputs.test_env || matrix.test_env }}"
+                    },
+                    {
+                      "type": "mrkdwn",
+                      "text": "*Status:* \n ${{ job.status }}"
                     }
                   ]
                 },
