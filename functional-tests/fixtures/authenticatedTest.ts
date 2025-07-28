@@ -4,25 +4,28 @@
 
 import fs from "fs";
 import { test as baseTest, expect } from "./baseTest";
-import { getTestUserSession } from "../utils/user";
+import { getTestUserSessionFilePath } from "../utils/user";
 
 const test = baseTest.extend<object, { storageState?: string }>({
-  storageState: async ({}, use, testInfo) => {
-    const countryCode = testInfo.project.use?.countryCode;
-    if (!countryCode) {
-      await use(undefined);
-      return;
-    }
+  storageState: [
+    async ({}, use, testInfo) => {
+      const countryCode = testInfo.project.use?.countryCode;
+      if (!countryCode) {
+        await use(undefined);
+        return;
+      }
 
-    const storagePath = getTestUserSession(countryCode);
-    const exists = fs.existsSync(storagePath);
-    if (exists) {
-      await use(storagePath);
-    } else {
-      console.warn(`No user session file found for [${countryCode}]`);
-      await use(undefined);
-    }
-  },
+      const storagePath = getTestUserSessionFilePath(countryCode);
+      const exists = fs.existsSync(storagePath);
+      if (exists) {
+        await use(storagePath);
+      } else {
+        console.warn(`No user session file found for [${countryCode}]`);
+        await use(undefined);
+      }
+    },
+    { scope: "test" },
+  ],
 });
 
 export { test, expect };

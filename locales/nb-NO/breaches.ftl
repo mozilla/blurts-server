@@ -22,6 +22,10 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 ## Prompts the user for changes when there is a breach detected of password
 
 breach-checklist-pw-header-text = Oppdater passordene dine og aktiver tofaktorautentisering (2FA).
+# The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
+# Variables:
+#   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
+breach-checklist-pw-body-text = I de fleste tilfeller anbefaler vi at du endrer passordet ditt på selskapets nettsted. Men <b>nettstedet deres kan være nede eller inneholde skadelig innhold</b>, så vær forsiktig hvis du <breached-company-link>besøker nettstedet</breached-company-link>. For ekstra beskyttelse, sørg for at du bruker unike passord for alle kontoer, slik at eventuelle lekkede passord ikke kan brukes til å få tilgang til andre kontoer. { $passwordManagerLink } kan hjelpe deg med å holde oversikt over alle passordene dine på en sikker måte.
 
 ## Prompts the user for changes when there is a breach detected of email
 
@@ -65,7 +69,7 @@ breach-checklist-pin-body = Sørg for at den nye PIN-koden din, eller andre PIN-
 # Variables:
 #   $mozillaVpnLink (string) - a link to the Mozilla VPN website, with { -breach-checklist-link-mozilla-vpn } as the label
 breach-checklist-ip-header-2 = Beskytt identiteten din på internett ved å bruke et VPN som { $mozillaVpnLink }.
-breach-checklist-ip-body = IP-adressen din (Internet Protocol-adresse) angir hvor du befinner deg og hvilken internettleverandør du bruker. En VPN kan skjule den virkelige IP-adressen din, slik at du kan bruke internett privat.
+breach-checklist-ip-body = IP-adressen din (Internet Protocol-adresse) angir hvor du befinner deg og hvilken internettleverandør du bruker. Et VPN kan skjule den virkelige IP-adressen din, slik at du kan bruke internett privat.
 
 ## Prompts the user for changes when there is a breach detected of physical address
 

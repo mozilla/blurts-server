@@ -12,6 +12,7 @@ import { FeatureFlagName } from "../src/db/tables/featureFlags";
  * https://www.npmjs.com/package/dotenv-flow
  */
 import * as dotenvFlow from "dotenv-flow";
+import { createTestClientRegionToken } from "../src/app/functions/server/testCountryCodeToken";
 dotenvFlow.config();
 /**
  * @see https://playwright.dev/docs/test-configuration
@@ -78,7 +79,10 @@ export const getEnabledFeatureFlags = () => {
   let enabledFeatureFlags: FeatureFlagName[] = [];
   try {
     const enabledFeatureFlagsJson = fs.readFileSync(
-      path.resolve(__dirname, "./storage/enabled-feature-flags.json"),
+      path.resolve(
+        __dirname,
+        "./functional-test-cache/enabled-feature-flags.json",
+      ),
       "utf-8",
     );
     enabledFeatureFlags = JSON.parse(enabledFeatureFlagsJson).data ?? [];
@@ -103,8 +107,11 @@ const projects: Project[] = locations.flatMap((geo) =>
       permissions: ["geolocation"],
       enabledFeatureFlags: getEnabledFeatureFlags(),
       extraHTTPHeaders: {
-        "X-Client-Region": geo.name.toLowerCase(),
         "Accept-Language": `${geo.locale},${geo.name.toLowerCase()};q=1.0`,
+        "X-Client-Region": geo.name.toLowerCase(),
+        "x-forced-client-region-token": createTestClientRegionToken(
+          geo.name.toLowerCase(),
+        ),
       },
     },
   })),

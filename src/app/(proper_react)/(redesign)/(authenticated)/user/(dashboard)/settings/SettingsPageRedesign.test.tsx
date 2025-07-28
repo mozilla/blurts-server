@@ -280,23 +280,7 @@ describe("Settings page redesign", () => {
       expect(upsellLink).toBeInTheDocument();
     });
 
-    it("confirms the correct link for the Plus upsell link with the feature flag SubscriptionPlansPage disabled", () => {
-      const ComposeStory = composeStory(
-        SettingsEditYourInfoNoPlus,
-        SettingsEditYourInfoMeta,
-      );
-      render(<ComposeStory />);
-
-      const upsellLink = screen.getByRole("link", {
-        name: "Upgrade to ⁨Monitor Plus⁩ to protect your personal info",
-      });
-      expect(upsellLink).toHaveAttribute(
-        "href",
-        "/user/dashboard/action-needed?dialog=subscriptions",
-      );
-    });
-
-    it("confirms the correct link for the Plus upsell link with the feature flag SubscriptionPlansPage enabled", () => {
+    it("confirms the correct link for the Plus upsell link", () => {
       const ComposeStory = composeStory(
         SettingsEditYourInfoNoPlus,
         SettingsEditYourInfoMeta,
@@ -306,7 +290,6 @@ describe("Settings page redesign", () => {
           enabledFeatureFlags={[
             "SidebarNavigationRedesign",
             "EditScanProfileDetails",
-            "SubscriptionPlansPage",
           ]}
         />,
       );

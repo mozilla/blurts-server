@@ -59,7 +59,7 @@ export const fetchRestmailVerificationCode = async (
 export function getTestUserEmails(): Record<string, string> {
   const emailsStoragePath = path.resolve(
     __dirname,
-    "../storage/user-emails.json",
+    "../functional-test-cache/user-emails.json",
   );
 
   if (!fs.existsSync(emailsStoragePath)) {
@@ -84,10 +84,10 @@ export function getTestUserEmailByCountryCode(countryCode?: string): string {
   return email;
 }
 
-export function getTestUserSession(countryCode: string) {
+export function getTestUserSessionFilePath(countryCode: string) {
   const storagePath = path.resolve(
     __dirname,
-    `../storage/user-session-${countryCode}.json`,
+    `../functional-test-cache/user-session-${countryCode}.json`,
   );
 
   if (!fs.existsSync(storagePath)) {

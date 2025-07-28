@@ -10,20 +10,18 @@ import { getTestUserEmailByCountryCode } from "../utils/user";
 
 test.describe(`Verify authentication [${process.env.E2E_TEST_ENV}]`, () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto(`${getBaseTestEnvUrl()}/`);
-
     // speed up test by ignoring non necessary requests
     await page.route(/(analytics)/, async (route) => {
       await route.abort();
     });
+    await page.goto(`${getBaseTestEnvUrl()}/`);
   });
 
   test("user sign-in flow from landing page", async ({ page }, testInfo) => {
-    await goToFxA(
-      page,
-      testInfo.project.use.isMobile,
-      testInfo.project.use.countryCode,
-    );
+    await goToFxA(page, {
+      countryCode: testInfo.project.use.countryCode,
+      isMobile: testInfo.project.use.isMobile,
+    });
     const userEmail = getTestUserEmailByCountryCode(
       testInfo.project.use.countryCode,
     );
@@ -45,18 +43,18 @@ test.describe(`Verify authentication [${process.env.E2E_TEST_ENV}]`, () => {
   authenticatedTest(
     "new users are redirected to the expected page",
     async ({ page }, testInfo) => {
-      if (testInfo.project.use.countryCode === "nl") {
-        // shows the dashboard
-        const heading = page.locator("h2", {
-          hasText: "Alle websites waarop uw gegevens zijn gelekt bekijken",
-        });
-        await expect(heading).toBeVisible();
-      } else {
+      if (testInfo.project.use.countryCode === "us") {
         // shows the onboarding flow
         const heading = page.locator("h1", {
           hasText: "Welcome to ⁨Monitor⁩. Let’s find your exposed information.",
         });
-        await expect(heading).toBeVisible();
+        expect(heading).toBeVisible();
+      } else {
+        // shows the dashboard
+        const heading = page.locator("h2", {
+          hasText: "Alle websites waarop uw gegevens zijn gelekt bekijken",
+        });
+        expect(heading).toBeVisible();
       }
     },
   );

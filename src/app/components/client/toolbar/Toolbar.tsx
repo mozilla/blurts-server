@@ -28,7 +28,6 @@ export type Props = {
   experimentData: ExperimentData["Features"];
   enabledFeatureFlags: FeatureFlagName[];
   children?: ReactNode;
-  autoOpenUpsellDialog?: boolean;
   announcements: UserAnnouncementWithDetails[] | null;
 };
 
@@ -44,12 +43,8 @@ export const Toolbar = (props: Props) => {
       <div className={styles.start}>{props.children}</div>
       <div className={styles.end}>
         <UpsellBadge
-          monthlySubscriptionUrl={props.monthlySubscriptionUrl}
-          yearlySubscriptionUrl={props.yearlySubscriptionUrl}
-          subscriptionBillingAmount={props.subscriptionBillingAmount}
           lastScanDate={props.lastScanDate}
           experimentData={props.experimentData}
-          autoOpenUpsellDialog={props.autoOpenUpsellDialog}
           enabledFeatureFlags={props.enabledFeatureFlags}
         />
         {/* c8 ignore next 3 */}

@@ -6,17 +6,17 @@ import { chromium } from "@playwright/test";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import { getTestUserEmails, getTestUserSession } from "./utils/user";
+import { getTestUserEmails, getTestUserSessionFilePath } from "./utils/user";
 import { getBaseTestEnvUrl } from "./utils/environment";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 function removeTestStorage() {
-  const storageDir = path.resolve(__dirname, "./storage");
+  const dir = path.resolve(__dirname, "./functional-test-cache");
 
-  if (fs.existsSync(storageDir)) {
-    fs.rmSync(storageDir, { force: true, recursive: true });
-    console.info("Removed storage directory after running tests");
+  if (fs.existsSync(dir)) {
+    fs.rmSync(dir, { force: true, recursive: true });
+    console.info("Deleted cache directory after running tests");
   }
 }
 
@@ -25,7 +25,7 @@ async function deleteTestUserAccounts() {
   const userEmails = getTestUserEmails();
 
   for (const userCountryCode in userEmails) {
-    const storageState = getTestUserSession(userCountryCode);
+    const storageState = getTestUserSessionFilePath(userCountryCode);
     const context = await browser.newContext({ storageState });
     const page = await context.newPage();
 

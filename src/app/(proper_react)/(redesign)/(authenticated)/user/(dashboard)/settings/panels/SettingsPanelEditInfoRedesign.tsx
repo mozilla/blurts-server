@@ -303,11 +303,7 @@ function SettingsPanelEditInfoRedesign(
       {props.isEligibleForPremium && !hasPremium(props.user) && (
         <div className={styles.upsellLinkContainer}>
           <TelemetryLink
-            href={
-              props.enabledFeatureFlags.includes("SubscriptionPlansPage")
-                ? "/subscription-plans"
-                : "/user/dashboard/action-needed?dialog=subscriptions"
-            }
+            href="/subscription-plans"
             eventData={{
               link_id: "settings_edit_info_upsell_cta",
             }}

@@ -30,7 +30,10 @@ async function setupFeatureFlags() {
   }
 
   fs.writeFileSync(
-    path.resolve(__dirname, "./storage/enabled-feature-flags.json"),
+    path.resolve(
+      __dirname,
+      "./functional-test-cache/enabled-feature-flags.json",
+    ),
     JSON.stringify({ data: (await response.json()) ?? [] }),
   );
 }
@@ -53,7 +56,10 @@ async function setupUserAccounts() {
     const email = `${process.env.E2E_TEST_ACCOUNT_BASE_EMAIL}_${countryCode}_${timestamp}@restmail.net`;
     emails[countryCode] = email;
 
-    await goToFxA(page, false, countryCode);
+    await goToFxA(page, {
+      countryCode,
+      isMobile: false,
+    });
     await signUpUser(
       page,
       email,
@@ -67,7 +73,7 @@ async function setupUserAccounts() {
     await context.storageState({
       path: path.resolve(
         __dirname,
-        `./storage/user-session-${countryCode}.json`,
+        `./functional-test-cache/user-session-${countryCode}.json`,
       ),
     });
 
@@ -78,15 +84,15 @@ async function setupUserAccounts() {
 
   // Store test user emails
   fs.writeFileSync(
-    path.resolve(__dirname, "./storage/user-emails.json"),
+    path.resolve(__dirname, "./functional-test-cache/user-emails.json"),
     JSON.stringify(emails),
   );
 }
 
 const globalSetup = async () => {
   // Ensure storage directory exists
-  const storageDir = path.resolve(__dirname, "./storage");
-  fs.mkdirSync(storageDir, { recursive: true });
+  const dir = path.resolve(__dirname, "./functional-test-cache");
+  fs.mkdirSync(dir, { recursive: true });
 
   await setupFeatureFlags();
   await setupUserAccounts();

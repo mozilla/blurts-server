@@ -3,9 +3,6 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 
-# Strings for the main app
-
-
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
@@ -15,20 +12,20 @@
 -brand-HIBP = Have I Been Pwned
 -brand-fxa =
     { $case ->
-       *[indefinite-article]
-            { $capitalization ->
-               *[lower] cont Firefox
-                [upper] Cont Firefox
-            }
         [definite-article]
             { $capitalization ->
-               *[lower] contul Firefox
                 [upper] Contul Firefox
                 [upper-and-you] Contul tău Firefox
+               *[lower] contul Firefox
             }
         [genitive-or-dative]
             { $capitalization ->
                *[lower] contului Firefox
+            }
+       *[indefinite-article]
+            { $capitalization ->
+                [upper] Cont Firefox
+               *[lower] cont Firefox
             }
     }
 -brand-pocket = Pocket
@@ -142,34 +139,25 @@ rec-section-subhead-no-pw = Deși nu au fost expuse parole în această încălc
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Nou
 
-##
-
-
 ## Search Engine Optimization
 
+meta-desc-2 = Află dacă ai fost implicat(ă) într-o încălcare a securității datelor cu { -brand-fx-monitor }. Te vom ajuta să înțelegi ce să faci în continuare și să monitorizăm continuu orice încălcări noi ale securității datelor.
 
 ## Header
 
 sign-in = Autentificare
 
-## Site navigation
-
-
-## User menu
-
-
 ## Footer
 
-
-## Error page
-
+terms-of-service = Condiții de utilizare a serviciilor
 
 ## Breach overview page
 
+all-breaches-lead = Monitorizăm toate încălcările cunoscute ale securității datelor pentru a afla dacă au fost compromise datele tale cu caracter personal. Iată o listă completă a tuturor încălcărilor securității informațiilor care au fost raportate din 2007.
 search-breaches = Caută încălcări ale securității datelor
 
 ## Public breach detail page
 
-
-## Firefox Monitor -> Mozilla Monitor rebrand banner
-
+find-out-if-2 = Află dacă ai fost implicat în această încălcare a securității datelor
+find-out-if-description = Te vom ajuta să vezi rapid dacă adresa ta de e-mail a fost expusă în această încălcare a securității datelor și să înțelegi ce trebuie să faci în continuare.
+breach-detail-cta-signup = Caută încălcări ale securității datelor
