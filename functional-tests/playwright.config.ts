@@ -13,6 +13,7 @@ import { FeatureFlagName } from "../src/db/tables/featureFlags";
  */
 import * as dotenvFlow from "dotenv-flow";
 import { createTestClientRegionToken } from "../src/app/functions/server/testCountryCodeToken";
+import { getBaseTestEnvUrl } from "./utils/environment";
 dotenvFlow.config();
 /**
  * @see https://playwright.dev/docs/test-configuration
@@ -151,7 +152,7 @@ export default defineConfig({
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
     actionTimeout: 0,
     /* Base URL to use in actions like `await page.goto("/")`. */
-    baseURL: process.env.E2E_TEST_BASE_URL,
+    baseURL: getBaseTestEnvUrl(),
     /* Automatically take screenshot only on failures */
     screenshot: "only-on-failure",
     /* Automatically record video only on retries */
