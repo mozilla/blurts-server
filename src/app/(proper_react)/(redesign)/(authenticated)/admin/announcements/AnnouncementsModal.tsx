@@ -75,6 +75,8 @@ const AnnouncementsModal = (props: AnnouncementsModalProps) => {
     setFormData({
       ...formData,
       [name]: value,
+      small_image_path: `/images/${formData.announcement_id}/small.svg`,
+      big_image_path: `/images/${formData.announcement_id}/big.svg`,
     });
   };
 
@@ -120,8 +122,8 @@ const AnnouncementsModal = (props: AnnouncementsModalProps) => {
         announcement_id: "",
         title: "",
         description: "",
-        small_image_path: "",
-        big_image_path: "",
+        small_image_path: `/images/${formData.announcement_id}/small.svg`,
+        big_image_path: `/images/${formData.announcement_id}/big.svg`,
         cta_label: "",
         cta_link: "",
         audience: "all_users",
@@ -200,9 +202,9 @@ const AnnouncementsModal = (props: AnnouncementsModalProps) => {
               name="small_image_path"
               value={formData.small_image_path}
               onChange={handleChange}
-              required
               className={styles.input}
-              placeholder="/images/small/example.png"
+              disabled
+              placeholder={`/images/${formData.announcement_id}/small.svg`}
             />
           </div>
 
@@ -214,9 +216,9 @@ const AnnouncementsModal = (props: AnnouncementsModalProps) => {
               name="big_image_path"
               value={formData.big_image_path}
               onChange={handleChange}
-              required
+              disabled
               className={styles.input}
-              placeholder="/images/large/example.png"
+              placeholder={`/images/${formData.announcement_id}/small.svg`}
             />
           </div>
 
