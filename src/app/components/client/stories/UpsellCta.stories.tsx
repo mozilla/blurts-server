@@ -39,7 +39,12 @@ const UpsellCtaWrapper = (props: UpsellCtaWrapperProps) => {
             enabledFeatureFlags={props.enabledFeatureFlags}
           />
         ) : (
-          <UpsellLinkButton enabledFeatureFlags={props.enabledFeatureFlags}>
+          <UpsellLinkButton
+            enabledFeatureFlags={props.enabledFeatureFlags}
+            eventData={{
+              button_id: "upsell_cta_story",
+            }}
+          >
             Get continuous protection
           </UpsellLinkButton>
         )}

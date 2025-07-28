@@ -299,7 +299,12 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               )}
             </p>
             <div className={styles.cta}>
-              <UpsellLinkButton enabledFeatureFlags={props.enabledFeatureFlags}>
+              <UpsellLinkButton
+                enabledFeatureFlags={props.enabledFeatureFlags}
+                eventData={{
+                  button_id: "us_non_premium_no_exposures",
+                }}
+              >
                 {l10n.getString("dashboard-top-banner-no-exposures-found-cta")}
               </UpsellLinkButton>
             </div>
@@ -413,7 +418,12 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               )}
             </p>
             <div className={styles.cta}>
-              <UpsellLinkButton enabledFeatureFlags={props.enabledFeatureFlags}>
+              <UpsellLinkButton
+                enabledFeatureFlags={props.enabledFeatureFlags}
+                eventData={{
+                  button_id: "us_non_premium_scans_resolved",
+                }}
+              >
                 {l10n.getString("dashboard-top-banner-no-exposures-found-cta")}
               </UpsellLinkButton>
             </div>
