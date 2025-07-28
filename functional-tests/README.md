@@ -17,8 +17,10 @@ The following environment variables are required:
 
 ```
 E2E_TEST_ENV=<"local" | "stage" | "production">` # Enviroment to run the test suite against
-E2E_TEST_ACCOUNT_BASE_EMAIL=testaccount # Gets appended to the dynamically created email addresses
-E2E_TEST_ACCOUNT_BASE_PASSWORD=testpass # Password for the test accounts
+E2E_TEST_BASE_URL=http://localhost:6060 # Testing URL
+E2E_TEST_SECRET=test-secret # JWT token for validating requests
+E2E_TEST_ACCOUNT_BASE_EMAIL=test-account # Gets appended to the dynamically created email addresses
+E2E_TEST_ACCOUNT_BASE_PASSWORD=test-password # Password for the test accounts
 ```
 
 ## Running tests
@@ -45,10 +47,10 @@ All combinations are defined in [playwright.config.ts](https://github.com/mozill
 
 Before running the tests the `global-setup` script:
 
-- Fetches feature flags from `/api/v1/admin/feature-flags` and saves them to `./storage/enabled-feature-flags.json`
+- Fetches feature flags from `/api/v1/admin/feature-flags` and saves them to `./functional-test-cache/enabled-feature-flags.json`
 - Signs up a unique test user account per country
-- Stores the login state per user in `./storage/user-session-<country>.json`
-- Stores the emails per user in `./storage/user-emails.json`
+- Stores the login state per user in `./functional-test-cache/user-session-<country>.json`
+- Stores the emails per user in `./functional-test-cache/user-emails.json`
 
 ## Artifacts
 
