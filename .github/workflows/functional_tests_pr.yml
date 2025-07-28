@@ -72,7 +72,6 @@ jobs:
           E2E_TEST_SECRET: ${{ secrets.E2E_TEST_SECRET }}
           E2E_TEST_ACCOUNT_BASE_EMAIL: ${{ secrets.E2E_TEST_ACCOUNT_BASE_EMAIL }}
           E2E_TEST_ACCOUNT_BASE_PASSWORD: ${{ secrets.E2E_TEST_ACCOUNT_BASE_PASSWORD }}
-          E2E_TEST_BASE_URL: http://localhost:6060
           E2E_TEST_ENV: local
           HIBP_API_TOKEN: ${{ secrets.HIBP_API_TOKEN }}
           HIBP_KANON_API_ROOT: "http://localhost:6060/api/mock/hibp"

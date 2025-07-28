@@ -17,7 +17,6 @@ The following environment variables are required:
 
 ```
 E2E_TEST_ENV=<"local" | "stage" | "production">` # Enviroment to run the test suite against
-E2E_TEST_BASE_URL=http://localhost:6060 # Testing URL
 E2E_TEST_SECRET=test-secret # JWT token for validating requests
 E2E_TEST_ACCOUNT_BASE_EMAIL=test-account # Gets appended to the dynamically created email addresses
 E2E_TEST_ACCOUNT_BASE_PASSWORD=test-password # Password for the test accounts
