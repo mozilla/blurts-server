@@ -9,7 +9,7 @@ import {
 } from "../fixtures/baseTest";
 import { getEnabledFeatureFlags } from "../playwright.config";
 import { FeatureFlagName } from "../../src/db/tables/featureFlags";
-import { getBaseTestEnvUrl } from "../utils/helpers";
+import { getBaseTestEnvUrl } from "../utils/environment";
 
 const isLocal = process.env.E2E_TEST_ENV === "local";
 

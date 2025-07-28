@@ -180,6 +180,14 @@ const config = [
       parserOptions: { project: null },
     },
   },
+  // Playwright’s `use` function is misinterpreted as a React hook.
+  // For more info see issue: https://github.com/facebook/react/issues/31237
+  {
+    files: ["e2e-playwright/**/*.ts"],
+    rules: {
+      "react-hooks/rules-of-hooks": "off",
+    },
+  },
 ];
 
 export default config;
