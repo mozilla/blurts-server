@@ -5,6 +5,7 @@
 import { test as baseTest, expect } from "@playwright/test";
 import { FeatureFlagName } from "../../src/db/tables/featureFlags";
 import { createTestClientRegionToken } from "../../src/app/functions/server/testCountryCodeToken";
+import { getBaseTestEnvUrl } from "../utils/environment";
 
 // Feature flags that are enabled by default locally
 export const defaultLocalForcedFeatureFlags: FeatureFlagName[] = [
@@ -58,7 +59,7 @@ const test = baseTest.extend<{
         const requestUrl = request.url();
         const headers = request.headers();
 
-        if (new URL(requestUrl).origin === process.env.E2E_TEST_BASE_URL) {
+        if (new URL(requestUrl).origin === getBaseTestEnvUrl()) {
           // Ensure that the region and language headers persist.
           const { countryCode, locale } = testInfo.project.use;
           headers["Accept-Language"] = `${locale},${countryCode};q=1.0`;

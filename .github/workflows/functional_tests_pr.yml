@@ -1,4 +1,4 @@
-name: Monitor E2E Test Suite (PR)
+name: Functional Test Suite (PR)
 
 permissions: {}
 
@@ -8,7 +8,7 @@ on:
   pull_request:
     branches: [ main ]
 jobs:
-  e2e-tests:
+  functional-tests:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     # Service containers to run with `container-job`
@@ -45,7 +45,7 @@ jobs:
         run: npm run db:migrate
         env:
           DATABASE_URL: postgres://postgres:postgres@localhost:5432/blurts
-      - name: Store Playwright's Version
+      - name: Store Playwright’s Version
         run: |
           # Get the current Playwright version listed in package.json
           PLAYWRIGHT_VERSION=$(npx playwright --version | sed 's/Version //')
@@ -64,7 +64,7 @@ jobs:
 
       - name: Run Playwright tests
         if: github.event.pull_request.user.login != 'dependabot[bot]'
-        run: npm run e2e-playwright
+        run: npm run functional-tests
         timeout-minutes: 20
         env:
           ADMINS: ${{ secrets.ADMINS }}
@@ -72,7 +72,6 @@ jobs:
           E2E_TEST_SECRET: ${{ secrets.E2E_TEST_SECRET }}
           E2E_TEST_ACCOUNT_BASE_EMAIL: ${{ secrets.E2E_TEST_ACCOUNT_BASE_EMAIL }}
           E2E_TEST_ACCOUNT_BASE_PASSWORD: ${{ secrets.E2E_TEST_ACCOUNT_BASE_PASSWORD }}
-          E2E_TEST_BASE_URL: http://localhost:6060
           E2E_TEST_ENV: local
           HIBP_API_TOKEN: ${{ secrets.HIBP_API_TOKEN }}
           HIBP_KANON_API_ROOT: "http://localhost:6060/api/mock/hibp"
@@ -97,5 +96,5 @@ jobs:
         if: always()
         with:
           name: test-results
-          path: src/e2e-playwright/test-results/
+          path: src/functional-tests/test-results/
           retention-days: 30

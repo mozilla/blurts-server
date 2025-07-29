@@ -1,4 +1,4 @@
-name: Monitor E2E Test Suite (cron)
+name: Functional Test Suite (cron)
 
 permissions: {}
 
@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
     inputs:
       test_env:
-        description: 'Environment to run the E2E test suite against'
+        description: 'Environment to run the functional test suite against'
         required: false
         default: ''
         type: choice
@@ -17,8 +17,8 @@ on:
           - stage
           - production
 jobs:
-  e2e-tests:
-    name: E2E tests (${{ github.event_name == 'workflow_dispatch' && inputs.test_env || matrix.test_env }}) [${{ github.event_name }}]
+  functional-tests:
+    name: Functional tests (${{ github.event_name == 'workflow_dispatch' && inputs.test_env || matrix.test_env }}) [${{ github.event_name }}]
     timeout-minutes: 60
     runs-on: ubuntu-latest
     strategy:
@@ -40,7 +40,7 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
-      - name: Store Playwright's Version
+      - name: Store Playwright’s Version
         run: |
           # Get the current Playwright version listed in package.json
           PLAYWRIGHT_VERSION=$(npx playwright --version | sed 's/Version //')
@@ -60,7 +60,7 @@ jobs:
 
       - name: Run Playwright tests - ${{ github.event_name == 'workflow_dispatch' && inputs.test_env || matrix.test_env }}
         if: github.event.pull_request.user.login != 'dependabot[bot]'
-        run: npm run e2e-playwright
+        run: npm run functional-tests
         timeout-minutes: 40
         env:
           E2E_TEST_ENV: ${{ github.event_name == 'workflow_dispatch' && inputs.test_env || matrix.test_env }}
@@ -77,7 +77,7 @@ jobs:
         if: always()
         with:
           name: test-results-${{ github.event_name == 'workflow_dispatch' && inputs.test_env || matrix.test_env }}
-          path: src/e2e-playwright/test-results/
+          path: src/functional-tests/test-results/
           retention-days: 30
 
       - name: Send GitHub Action trigger data to Slack workflow
@@ -95,7 +95,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "*Link to job:* *<https://github.com/mozilla/blurts-server/actions/runs/${{ github.run_id }}|Monitor e2e tests>*"
+                    "text": "*Link to job:* *<https://github.com/mozilla/blurts-server/actions/runs/${{ github.run_id }}|Functional tests>*"
                   }
                 },
                 {
@@ -110,7 +110,11 @@ jobs:
                     },
                     {
                       "type": "mrkdwn",
-                      "text": "*Status:*\n ${{ job.status }}  "
+                      "text": "*Environment:* \n ${{ github.event_name == 'workflow_dispatch' && inputs.test_env || matrix.test_env }}"
+                    },
+                    {
+                      "type": "mrkdwn",
+                      "text": "*Status:* \n ${{ job.status }}"
                     }
                   ]
                 },
