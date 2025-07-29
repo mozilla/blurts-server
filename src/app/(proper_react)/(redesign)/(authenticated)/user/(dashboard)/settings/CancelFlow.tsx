@@ -187,14 +187,6 @@ export const CancelFlow = (props: Props) => {
                       "settings-cancel-plus-step-confirm-content",
                     )}
                   </p>
-                  {
-                    //FIXME debugging
-                    console.debug({
-                      enableDiscountCoupon: props.enableDiscountCoupon,
-                      alreadyHasCouponSet,
-                      isMonthlySubscriber: props.isMonthlySubscriber,
-                    })
-                  }
                   {props.enableDiscountCoupon &&
                   !alreadyHasCouponSet &&
                   props.isMonthlySubscriber ? (
