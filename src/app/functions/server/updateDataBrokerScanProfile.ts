@@ -179,9 +179,7 @@ export async function updateOnerepDataBrokerScanProfile(
     last_names: updatedProfileData.last_names
       .map((last_name) => last_name.trim())
       .filter((value) => value),
-    phone_numbers: updatedProfileData.phone_numbers
-      .map((phone_number) => phone_number.match(/\d/g)?.join("") ?? "")
-      .filter((value) => value),
+    phone_numbers: updatedProfileData.phone_numbers,
     addresses: updatedProfileData.addresses.filter(
       (value) => value.city.trim() && value.state.trim(),
     ),

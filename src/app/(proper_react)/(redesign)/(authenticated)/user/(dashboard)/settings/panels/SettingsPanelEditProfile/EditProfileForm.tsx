@@ -15,12 +15,16 @@ import {
   EditProfileInputOnChangeReturnValue,
 } from "./EditProfileFormInputs";
 import { TelemetryButton } from "../../../../../../../../components/client/TelemetryButton";
-import { formatPhone } from "../../../../../../../../functions/universal/formatPhone";
+import {
+  formatPhone,
+  FormattedPhoneNumber,
+} from "../../../../../../../../functions/universal/formatPhone";
 import { useL10n } from "../../../../../../../../hooks/l10n";
 import styles from "./EditProfileForm.module.scss";
 import { type onHandleUpdateProfileData } from "../../actions";
 import { MoscaryData } from "../../../../../../../../functions/server/moscary";
 import { parseIso8601Datetime } from "../../../../../../../../../utils/parse";
+import { StateAbbr } from "../../../../../../../../../utils/states";
 
 export const profileFields = [
   "first_name",
@@ -46,10 +50,10 @@ type FormDataItemValidated<T> = {
   isDuplicate?: boolean;
 };
 
-export type NormalizedProfileData = Pick<
-  OnerepProfileRow,
-  ProfileDataKeys | ProfileDataListKey
->;
+export type NormalizedProfileData = Omit<
+  Pick<OnerepProfileRow, ProfileDataKeys | ProfileDataListKey>,
+  "phone_numbers"
+> & { phone_numbers: FormattedPhoneNumber[] };
 export type FormDataValidated = {
   [K in ProfileDataSingleKey]: FormDataItemValidated<NormalizedProfileData[K]>;
 } & {
@@ -211,7 +215,7 @@ function EditProfileForm(props: {
         // This line show as not covered even though there are unit tests for updating
         // the LocationAutocompleteInput in the test file `SettingsPageRedesign.test.tsx`.
         /* c8 ignore next */
-        key === "addresses" ? { city, state } : value;
+        key === "addresses" ? { city, state: state as StateAbbr } : value;
 
       setProfileFormData(formDataUpdated);
     }
@@ -334,7 +338,12 @@ function normalizeProfileData(
   profileData: OnerepProfileRow | MoscaryData["Profile"],
 ): NormalizedProfileData {
   if (isOnerepProfileRow(profileData)) {
-    return profileData;
+    return {
+      ...profileData,
+      phone_numbers: profileData.phone_numbers.map((phone_number) =>
+        formatPhone(phone_number),
+      ),
+    };
   }
 
   return {
@@ -354,8 +363,8 @@ function normalizeProfileData(
     last_names: (profileData.last_names ?? []).map(
       (last_name) => last_name.last_name,
     ),
-    phone_numbers: (profileData.phone_numbers ?? []).map(
-      (phone_number) => phone_number.number,
+    phone_numbers: (profileData.phone_numbers ?? []).map((phone_number) =>
+      formatPhone(phone_number.number),
     ),
   };
 }

@@ -182,7 +182,11 @@ function ProfileInfoSection({
               {l10n.getString("settings-details-about-you-phone-label")}
             </div>
             <div className={styles.detailContent}>
-              {formatPhone(phone_numbers[0])}
+              {formatPhone(
+                typeof phone_numbers[0] === "string"
+                  ? phone_numbers[0]
+                  : phone_numbers[0].number,
+              )}
               {phone_numbers.length > 1 && (
                 <span className={styles.detailMore}>
                   {l10n.getString("settings-details-about-you-more-indicator", {

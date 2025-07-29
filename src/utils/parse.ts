@@ -16,6 +16,7 @@ export function parseE164PhoneNumber(
   if (
     typeof phoneNumber !== "string" ||
     phoneNumber.length > 16 ||
+    phoneNumber.length <= 2 ||
     !phoneNumber.startsWith("+")
   ) {
     return null;

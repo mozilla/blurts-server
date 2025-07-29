@@ -4,7 +4,7 @@
 
 import { it, expect, jest } from "@jest/globals";
 import { OnerepProfileRow } from "knex/types/tables";
-import { UpdateableProfileDetails } from "./onerep";
+import { OnerepUsPhoneNumber, UpdateableProfileDetails } from "./onerep";
 
 const currentProfileDetails: OnerepProfileRow = {
   id: 1234,
@@ -83,7 +83,7 @@ describe("Update broker scan profile", () => {
     expect(() =>
       updateOnerepDataBrokerScanProfile(5678, {
         ...newProfileDetails,
-        phone_numbers: ["()/;"],
+        phone_numbers: ["()/;" as OnerepUsPhoneNumber],
       }),
     ).not.toThrow();
   });

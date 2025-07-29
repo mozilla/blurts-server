@@ -43,6 +43,8 @@ import {
   updateProfile,
 } from "../../../../../../functions/server/moscary";
 import { type NormalizedProfileData } from "./panels/SettingsPanelEditProfile/EditProfileForm";
+import { OnerepUsPhoneNumber } from "../../../../../../functions/server/onerep";
+import { parseE164PhoneNumber } from "../../../../../../../utils/parse";
 
 export type AddEmailFormState =
   | { success?: never }
@@ -328,7 +330,12 @@ export async function onHandleUpdateProfileData(
         first_names: first_names.map((first_name) => ({ first_name })),
         last_names: last_names.map((last_name) => ({ last_name })),
         middle_names: middle_names.map((middle_name) => ({ middle_name })),
-        phone_numbers,
+        phone_numbers: phone_numbers
+          .map((phone_number) =>
+            parseE164PhoneNumber("+1" + phone_number.replace(/\D/g, "")),
+          )
+          .filter((phone_number) => phone_number !== null)
+          .map((phone_number) => ({ number: phone_number })),
         addresses,
         middle_name: middle_name ?? "",
         // The user is not allowed to change their date of birth:
@@ -383,7 +390,11 @@ export async function onHandleUpdateProfileData(
         first_names,
         last_names,
         middle_names,
-        phone_numbers,
+        phone_numbers: phone_numbers
+          .map((phone_number) => phone_number.match(/\d/g)?.join("") ?? "")
+          .filter(
+            (phone_number) => phone_number !== "",
+          ) as OnerepUsPhoneNumber[],
         addresses,
         middle_name: middle_name ?? "",
       },

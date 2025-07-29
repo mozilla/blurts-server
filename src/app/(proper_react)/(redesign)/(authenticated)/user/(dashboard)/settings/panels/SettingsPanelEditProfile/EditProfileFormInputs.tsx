@@ -255,7 +255,7 @@ function EditProfileFormInputs(props: {
               })
             }
             name={`${props.profileDataKey}-0`}
-            value={primaryPhoneItem.value}
+            value={primaryPhoneItem.value ?? ""}
             isInvalid={!primaryPhoneItem.isValid}
             label={l10n.getString(
               "settings-edit-profile-info-form-input-label-primary-phone-number",
@@ -290,7 +290,7 @@ function EditProfileFormInputs(props: {
                           })
                         }
                         name={inputKey}
-                        value={item.value}
+                        value={item.value ?? ""}
                         isInvalid={!item.isValid || item.isDuplicate}
                         label={l10n.getString(
                           "settings-edit-profile-info-form-input-label-other-phone-number",
