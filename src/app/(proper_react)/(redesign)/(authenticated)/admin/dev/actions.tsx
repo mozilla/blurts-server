@@ -10,13 +10,18 @@ import { isAdmin } from "../../../../../api/utils/auth";
 import { getServerSession } from "../../../../../functions/server/getServerSession";
 import { getProfileDetails } from "../../../../../../db/tables/onerep_profiles";
 import {
-  createScan,
-  getProfile,
+  createScan as onerep_createScan,
+  getProfile as onerep_getProfile,
   UpdateableProfileDetails,
 } from "../../../../../functions/server/onerep";
 import { updateOnerepDataBrokerScanProfile } from "../../../../../functions/server/updateDataBrokerScanProfile";
 import { getAllScansForProfile } from "../../../../../../db/tables/onerep_scans";
 import { refreshStoredScanResults } from "../../../../../functions/server/refreshStoredScanResults";
+import {
+  getProfile as moscary_getProfile,
+  createScan as moscary_createScan,
+} from "../../../../../functions/server/moscary";
+import { UUID } from "node:crypto";
 
 export async function lookupFxaUid(emailHash: string) {
   const session = await getServerSession();
@@ -49,8 +54,25 @@ export async function getOnerepProfile(onerepProfileId: number) {
   try {
     return {
       local: await getProfileDetails(onerepProfileId),
-      remote: await getProfile(onerepProfileId),
+      remote: await onerep_getProfile(onerepProfileId),
     };
+  } catch (error) {
+    console.error("Could not get profile details:", error);
+  }
+}
+
+export async function getMoscaryProfile(moscaryProfileId: UUID) {
+  const session = await getServerSession();
+  if (
+    !session?.user?.email ||
+    !isAdmin(session.user.email) ||
+    process.env.APP_ENV === "production"
+  ) {
+    return notFound();
+  }
+
+  try {
+    return await moscary_getProfile(moscaryProfileId);
   } catch (error) {
     console.error("Could not get profile details:", error);
   }
@@ -78,7 +100,7 @@ export async function updateOnerepProfile(
   }
 }
 
-export async function getAllProfileScans(onerepProfileId: number) {
+export async function getAllOnerepProfileScans(onerepProfileId: number) {
   const session = await getServerSession();
   if (
     !session?.user?.email ||
@@ -95,7 +117,7 @@ export async function getAllProfileScans(onerepProfileId: number) {
   }
 }
 
-export async function triggerManualProfileScan(onerepProfileId: number) {
+export async function triggerManualOnerepProfileScan(onerepProfileId: number) {
   const session = await getServerSession();
   if (
     !session?.user?.email ||
@@ -106,11 +128,30 @@ export async function triggerManualProfileScan(onerepProfileId: number) {
   ) {
     return notFound();
   }
-  console.info("Manual scan initiated by admin for:", onerepProfileId);
+  console.info("Manual OneRep scan initiated by admin for:", onerepProfileId);
 
   try {
-    const scanResult = await createScan(onerepProfileId);
+    const scanResult = await onerep_createScan(onerepProfileId);
     await refreshStoredScanResults(onerepProfileId);
+    return scanResult;
+  } catch (error) {
+    console.error("Manual scan triggered by admin failed:", error);
+  }
+}
+
+export async function triggerManualMoscaryProfileScan(moscaryProfileId: UUID) {
+  const session = await getServerSession();
+  if (
+    !session?.user?.email ||
+    !isAdmin(session.user.email) ||
+    process.env.APP_ENV === "production"
+  ) {
+    return notFound();
+  }
+  console.info("Manual Moscary scan initiated by admin for:", moscaryProfileId);
+
+  try {
+    const scanResult = await moscary_createScan(moscaryProfileId);
     return scanResult;
   } catch (error) {
     console.error("Manual scan triggered by admin failed:", error);
