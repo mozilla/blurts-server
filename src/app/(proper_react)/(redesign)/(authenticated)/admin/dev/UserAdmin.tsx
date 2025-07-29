@@ -18,8 +18,9 @@ import {
   lookupFxaUid,
   getOnerepProfile,
   updateOnerepProfile,
-  triggerManualProfileScan,
-  getAllProfileScans,
+  triggerManualOnerepProfileScan,
+  getAllOnerepProfileScans,
+  getMoscaryProfile,
 } from "./actions";
 import { OnerepProfileRow, OnerepScanRow } from "knex/types/tables";
 import {
@@ -29,6 +30,7 @@ import {
 import { InputField } from "../../../../../components/client/InputField";
 import { CONST_DATA_BROKER_PROFILE_DETAIL_ALLOW_LIST } from "../../../../../../constants";
 import { FeatureFlagName } from "../../../../../../db/tables/featureFlags";
+import { type MoscaryData } from "../../../../../functions/server/moscary";
 
 export const DataTable = ({
   header,
@@ -147,6 +149,9 @@ export const UserAdmin = ({
   const [status, setStatus] = useState<null | string>(null);
   const [subscriberData, setSubscriberData] =
     useState<GetUserStateResponseBody | null>(null);
+  const [moscaryProfileData, setMoscaryProfileData] = useState<
+    MoscaryData["Profile"] | null
+  >(null);
   const [onerepProfileData, setOnerepProfileData] = useState<{
     local: OnerepProfileRow;
     remote: ShowProfileResponse;
@@ -163,7 +168,7 @@ export const UserAdmin = ({
   };
 
   const setProfileScans = async (onerepProfileId: number) => {
-    const profileScans = await getAllProfileScans(onerepProfileId);
+    const profileScans = await getAllOnerepProfileScans(onerepProfileId);
     if (profileScans) {
       setOneRepProfileScans(
         profileScans.sort(
@@ -191,10 +196,22 @@ export const UserAdmin = ({
         setSubscriberData(null);
         return;
       }
-      const data = await response.json();
-      setSubscriberData(data);
-      setProfile(data.onerepProfileId);
-      setProfileScans(data.onerepProfileId);
+      const data: GetUserStateResponseBody = await response.json();
+      if (data.success) {
+        setSubscriberData(data);
+        if (data.onerepProfileId !== null) {
+          setProfile(data.onerepProfileId);
+          setProfileScans(data.onerepProfileId);
+        }
+        if (data.moscaryId !== null) {
+          getMoscaryProfile(data.moscaryId).then((moscaryProfile) => {
+            if (!moscaryProfile) {
+              return;
+            }
+            setMoscaryProfileData(moscaryProfile);
+          });
+        }
+      }
 
       setIsLoading(false);
     });
@@ -207,6 +224,7 @@ export const UserAdmin = ({
   const onChangeEmail = (email: string) => {
     setStatus(null);
     setSubscriberData(null);
+    setMoscaryProfileData(null);
     setOnerepProfileData(null);
     setOneRepProfileScans(null);
     setEmailInput(email);
@@ -272,7 +290,7 @@ export const UserAdmin = ({
 
     try {
       if (subscriberData?.onerepProfileId) {
-        await triggerManualProfileScan(subscriberData.onerepProfileId);
+        await triggerManualOnerepProfileScan(subscriberData.onerepProfileId);
         setProfileScans(subscriberData?.onerepProfileId);
         setStatus(`Running manual scan for [${emailInput}] succeeded.`);
       }
@@ -336,6 +354,18 @@ export const UserAdmin = ({
           "No subscriber found"
         )}
       </section>
+      {subscriberData && moscaryProfileData && (
+        <section>
+          <h2>Moscary profile</h2>
+          <div className={styles.content}>
+            <DataTable
+              header="Moscary profile data"
+              data={moscaryProfileData}
+              open
+            />
+          </div>
+        </section>
+      )}
       {subscriberData && (
         <>
           <section>

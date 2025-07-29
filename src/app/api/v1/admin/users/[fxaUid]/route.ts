@@ -34,6 +34,7 @@ import {
 } from "../../../../../functions/server/moscary";
 
 export type GetUserStateResponseBody = {
+  success: true;
   subscriberId: SubscriberRow["id"];
   moscaryId: SubscriberRow["moscary_id"];
   onerepProfileId: SubscriberRow["onerep_profile_id"];
@@ -56,7 +57,7 @@ export type GetUserStateResponseBody = {
 export async function GET(
   req: NextRequest,
   props: { params: Promise<{ fxaUid: string }> },
-) {
+): Promise<NextResponse<GetUserStateResponseBody | { success: false }>> {
   const params = await props.params;
   const session = await getServerSession();
   if (session?.user && isAdmin(session?.user?.email || "")) {
@@ -80,6 +81,7 @@ export async function GET(
       }
 
       const responseBody: GetUserStateResponseBody = {
+        success: true,
         subscriberId: subscriber.id,
         moscaryId: subscriber.moscary_id,
         onerepProfileId: subscriber.onerep_profile_id,
