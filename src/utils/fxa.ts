@@ -253,7 +253,7 @@ async function getBillingAndSubscriptions(
     if (!response.ok) throw new Error(responseJson);
     logger.info("get_fxa_billing_subscriptions_success");
     // FIXME debugging
-    logger.info({ responseJson });
+    logger.debug({ responseJson });
     return responseJson as FxaGetOauthMozillaSubscribptionsCustomerBillingAndSubscriptionsResponseSuccess;
   } catch (e) {
     if (e instanceof Error) {
