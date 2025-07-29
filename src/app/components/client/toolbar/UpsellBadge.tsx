@@ -25,17 +25,19 @@ import { FeatureFlagName } from "../../../../db/tables/featureFlags";
 import { WaitlistDialog } from "../SubscriberWaitlistDialog";
 import { GleanMetricMap } from "../../../../telemetry/generated/_map";
 import { TelemetryButton } from "../TelemetryButton";
+import { Props as ButtonProps } from "../Button";
 
 export type UpsellLinkButtonProps = {
   enabledFeatureFlags: FeatureFlagName[];
 };
 
 export function UpsellLinkButton(
-  props: UpsellLinkButtonProps & {
-    eventData: GleanMetricMap["upgradeIntent"]["click"];
-    children?: ReactNode;
-    className?: string;
-  },
+  props: ButtonProps &
+    UpsellLinkButtonProps & {
+      eventData: GleanMetricMap["upgradeIntent"]["click"];
+      children?: ReactNode;
+      className?: string;
+    },
 ) {
   const pathname = usePathname();
 
@@ -66,8 +68,8 @@ export function UpsellLinkButton(
           }
         }}
         className={props.className}
-        variant="primary"
-        small
+        variant={props.variant}
+        small={props.small}
         href={showWaitlist ? undefined : "/subscription-plans"}
         target="_blank"
         event={{
@@ -112,6 +114,8 @@ function UpsellToggleLinkButton(props: UpsellToggleLinkButtonProps) {
     <div className={styles.upsellWrapper}>
       <UpsellLinkButton
         {...buttonProps}
+        variant="primary"
+        small
         className={`${styles.upsellBadge} ${
           state.isSelected ? styles.isSelected : ""
         }`}

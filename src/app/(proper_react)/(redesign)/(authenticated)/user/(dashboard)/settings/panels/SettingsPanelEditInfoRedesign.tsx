@@ -34,6 +34,7 @@ import InfoShield from "../images/InfoShield.svg";
 import { type onAddEmail, type onRemoveEmail } from "../actions";
 import { formatPhone } from "../../../../../../../functions/universal/formatPhone";
 import { FeatureFlagName } from "../../../../../../../../db/tables/featureFlags";
+import { UpsellLinkButton } from "../../../../../../../components/client/toolbar/UpsellBadge";
 
 export type SettingsPanelEditInfoRedesignProps = {
   breachCountByEmailAddress: Record<string, number>;
@@ -302,14 +303,16 @@ function SettingsPanelEditInfoRedesign(
       <MonitoredEmailAddressesSection {...props} />
       {props.isEligibleForPremium && !hasPremium(props.user) && (
         <div className={styles.upsellLinkContainer}>
-          <TelemetryLink
-            href="/subscription-plans"
+          <UpsellLinkButton
+            variant="primary"
+            small
+            enabledFeatureFlags={props.enabledFeatureFlags}
             eventData={{
-              link_id: "settings_edit_info_upsell_cta",
+              button_id: "settings_edit_info_upsell_cta",
             }}
           >
             {l10n.getString("settings-update-scan-info-upsell-button-label")}
-          </TelemetryLink>
+          </UpsellLinkButton>
         </div>
       )}
     </>

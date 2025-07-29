@@ -300,6 +300,8 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
             </p>
             <div className={styles.cta}>
               <UpsellLinkButton
+                variant="primary"
+                small
                 enabledFeatureFlags={props.enabledFeatureFlags}
                 eventData={{
                   button_id: "us_non_premium_no_exposures",
@@ -419,6 +421,8 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
             </p>
             <div className={styles.cta}>
               <UpsellLinkButton
+                variant="primary"
+                small
                 enabledFeatureFlags={props.enabledFeatureFlags}
                 eventData={{
                   button_id: "us_non_premium_scans_resolved",

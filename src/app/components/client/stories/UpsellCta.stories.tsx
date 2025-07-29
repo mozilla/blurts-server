@@ -40,6 +40,8 @@ const UpsellCtaWrapper = (props: UpsellCtaWrapperProps) => {
           />
         ) : (
           <UpsellLinkButton
+            variant="primary"
+            small
             enabledFeatureFlags={props.enabledFeatureFlags}
             eventData={{
               button_id: "upsell_cta_story",
