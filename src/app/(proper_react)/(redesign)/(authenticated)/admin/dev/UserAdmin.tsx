@@ -4,6 +4,7 @@
 
 "use client";
 
+import type { UUID } from "node:crypto";
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import isEqual from "lodash.isequal";
@@ -22,6 +23,7 @@ import {
   getAllOnerepProfileScans,
   getMoscaryProfile,
   getAllMoscaryProfileScans,
+  triggerManualMoscaryProfileScan,
 } from "./actions";
 import { OnerepProfileRow, OnerepScanRow } from "knex/types/tables";
 import {
@@ -183,6 +185,19 @@ export const UserAdmin = ({
     }
   };
 
+  const refreshMoscaryScanData = async (moscaryId: UUID) => {
+    const scanData = await getAllMoscaryProfileScans(moscaryId);
+    if (!scanData) {
+      return;
+    }
+    setMoscaryScanData(
+      scanData.sort(
+        (a, b) =>
+          new Date(a.created_at).getTime() - new Date(b.created_at).getTime(),
+      ),
+    );
+  };
+
   useEffect(() => {
     if (emailInput.length <= 5) {
       return;
@@ -214,18 +229,7 @@ export const UserAdmin = ({
             }
             setMoscaryProfileData(moscaryProfile);
           });
-          getAllMoscaryProfileScans(data.moscaryId).then((scanData) => {
-            if (!scanData) {
-              return;
-            }
-            setMoscaryScanData(
-              scanData.sort(
-                (a, b) =>
-                  new Date(a.created_at).getTime() -
-                  new Date(b.created_at).getTime(),
-              ),
-            );
-          });
+          refreshMoscaryScanData(data.moscaryId);
         }
       }
 
@@ -382,7 +386,23 @@ export const UserAdmin = ({
             />
           </div>
           {moscaryScanData && (
-            <DataTable header="Moscary scans" data={moscaryScanData} open />
+            <>
+              <DataTable header="Moscary scans" data={moscaryScanData} open />
+              <Button
+                variant="primary"
+                onPress={async () => {
+                  if (subscriberData.moscaryId === null) {
+                    return;
+                  }
+                  await triggerManualMoscaryProfileScan(
+                    subscriberData.moscaryId,
+                  );
+                  refreshMoscaryScanData(subscriberData.moscaryId);
+                }}
+              >
+                Trigger manual scan
+              </Button>
+            </>
           )}
         </section>
       )}
