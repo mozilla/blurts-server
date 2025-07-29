@@ -1428,7 +1428,7 @@ it("shows the correct dashboard banner CTA and sends telemetry for US users, wit
     "upgradeIntent",
     "click",
     expect.objectContaining({
-      button_id: "nav_upsell",
+      button_id: "us_non_premium_scans_resolved",
     }),
   );
 });
@@ -1523,7 +1523,7 @@ it("shows the correct dashboard banner CTA and sends telemetry for US users, wit
     "upgradeIntent",
     "click",
     expect.objectContaining({
-      button_id: "nav_upsell",
+      button_id: "us_non_premium_scans_resolved",
     }),
   );
 });

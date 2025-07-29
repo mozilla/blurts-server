@@ -18,6 +18,7 @@ import { FeatureFlagName } from "../../../../db/tables/featureFlags";
 import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 import SparkleImage from "../assets/sparkle.png";
 import { isDataBrokerUnderMaintenance } from "../../../(proper_react)/(redesign)/(authenticated)/user/(dashboard)/dashboard/View";
+import { UpsellLinkButton } from "../toolbar/UpsellBadge";
 
 export type ScanResultCardProps = {
   scanResult: OnerepScanResultDataBrokerRow;
@@ -106,16 +107,6 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
     />
   );
 
-  const upsellLink = (
-    <TelemetryLink
-      upsell
-      eventData={{
-        link_id: "clicked_upsell",
-      }}
-      href="/subscription-plans"
-    />
-  );
-
   const dataBrokerDescription = () => {
     // Data broker cards manually resolved do not change their status to "removed";
     // instead, we track them using the "manually_resolved" property.
@@ -184,7 +175,18 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
             {
               elems: {
                 data_broker_profile: dataBrokerProfileLink,
-                upsell_link: upsellLink,
+                upsell_link: (
+                  <UpsellLinkButton
+                    variant="primary"
+                    small
+                    enabledFeatureFlags={props.enabledFeatureFlags}
+                    eventData={{
+                      button_id: "clicked_upsell",
+                    }}
+                  >
+                    {l10n.getString("plus-expiration-error-free-cta-label")}
+                  </UpsellLinkButton>
+                ),
               },
             },
           );

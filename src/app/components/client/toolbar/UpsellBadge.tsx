@@ -9,7 +9,6 @@ import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { useOverlayTrigger, useToggleButton } from "react-aria";
 import { useOverlayTriggerState, useToggleState } from "react-stately";
-import { Button } from "../Button";
 import { useL10n } from "../../../hooks/l10n";
 import {
   canSubscribeToPremium,
@@ -17,7 +16,6 @@ import {
 } from "../../../functions/universal/user";
 import styles from "./UpsellBadge.module.scss";
 import LastScanIcon from "./images/icon-last-scan.svg";
-import { useTelemetry } from "../../../hooks/useTelemetry";
 import { CountryCodeContext } from "../../../../contextProviders/country-code";
 import { useSession } from "next-auth/react";
 import { sendGAEvent } from "../GoogleAnalyticsWorkaround";
@@ -25,18 +23,22 @@ import { getLocale } from "../../../functions/universal/getLocale";
 import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 import { FeatureFlagName } from "../../../../db/tables/featureFlags";
 import { WaitlistDialog } from "../SubscriberWaitlistDialog";
+import { GleanMetricMap } from "../../../../telemetry/generated/_map";
+import { TelemetryButton } from "../TelemetryButton";
+import { Props as ButtonProps } from "../Button";
 
 export type UpsellLinkButtonProps = {
   enabledFeatureFlags: FeatureFlagName[];
 };
 
 export function UpsellLinkButton(
-  props: UpsellLinkButtonProps & {
-    children: ReactNode;
-    className?: string;
-  },
+  props: ButtonProps &
+    UpsellLinkButtonProps & {
+      eventData: GleanMetricMap["upgradeIntent"]["click"];
+      children?: ReactNode;
+      className?: string;
+    },
 ) {
-  const recordTelemetry = useTelemetry();
   const pathname = usePathname();
 
   const dialogState = useOverlayTriggerState({
@@ -58,25 +60,26 @@ export function UpsellLinkButton(
 
   return (
     <>
-      <Button
+      <TelemetryButton
         {...triggerProps}
         onPress={() => {
-          recordTelemetry("upgradeIntent", "click", {
-            button_id: "nav_upsell",
-          });
-
           if (showWaitlist) {
             dialogState.open();
           }
         }}
         className={props.className}
-        variant="primary"
-        small
+        variant={props.variant}
+        small={props.small}
         href={showWaitlist ? undefined : "/subscription-plans"}
         target="_blank"
+        event={{
+          module: "upgradeIntent",
+          name: "click",
+          data: props.eventData,
+        }}
       >
         {props.children}
-      </Button>
+      </TelemetryButton>
       {dialogState.isOpen && (
         <WaitlistDialog dialogTriggerState={dialogState} {...overlayProps} />
       )}
@@ -111,10 +114,15 @@ function UpsellToggleLinkButton(props: UpsellToggleLinkButtonProps) {
     <div className={styles.upsellWrapper}>
       <UpsellLinkButton
         {...buttonProps}
+        variant="primary"
+        small
         className={`${styles.upsellBadge} ${
           state.isSelected ? styles.isSelected : ""
         }`}
         enabledFeatureFlags={props.enabledFeatureFlags}
+        eventData={{
+          button_id: "nav_upsell",
+        }}
       >
         {state.isSelected
           ? l10n.getString("plus-indicator-label-active")
