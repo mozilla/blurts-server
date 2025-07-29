@@ -20,6 +20,7 @@ import { refreshStoredScanResults } from "../../../../../functions/server/refres
 import {
   getProfile as moscary_getProfile,
   createScan as moscary_createScan,
+  listScans,
 } from "../../../../../functions/server/moscary";
 import { UUID } from "node:crypto";
 
@@ -136,6 +137,23 @@ export async function triggerManualOnerepProfileScan(onerepProfileId: number) {
     return scanResult;
   } catch (error) {
     console.error("Manual scan triggered by admin failed:", error);
+  }
+}
+
+export async function getAllMoscaryProfileScans(moscaryProfileId: UUID) {
+  const session = await getServerSession();
+  if (
+    !session?.user?.email ||
+    !isAdmin(session.user.email) ||
+    process.env.APP_ENV === "production"
+  ) {
+    return notFound();
+  }
+
+  try {
+    return (await listScans(moscaryProfileId)).data;
+  } catch (error) {
+    console.error("Getting all profile scans failed:", error);
   }
 }
 

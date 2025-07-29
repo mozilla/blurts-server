@@ -21,6 +21,7 @@ import {
   triggerManualOnerepProfileScan,
   getAllOnerepProfileScans,
   getMoscaryProfile,
+  getAllMoscaryProfileScans,
 } from "./actions";
 import { OnerepProfileRow, OnerepScanRow } from "knex/types/tables";
 import {
@@ -152,6 +153,9 @@ export const UserAdmin = ({
   const [moscaryProfileData, setMoscaryProfileData] = useState<
     MoscaryData["Profile"] | null
   >(null);
+  const [moscaryScanData, setMoscaryScanData] = useState<
+    MoscaryData["Scan"][] | null
+  >(null);
   const [onerepProfileData, setOnerepProfileData] = useState<{
     local: OnerepProfileRow;
     remote: ShowProfileResponse;
@@ -210,6 +214,18 @@ export const UserAdmin = ({
             }
             setMoscaryProfileData(moscaryProfile);
           });
+          getAllMoscaryProfileScans(data.moscaryId).then((scanData) => {
+            if (!scanData) {
+              return;
+            }
+            setMoscaryScanData(
+              scanData.sort(
+                (a, b) =>
+                  new Date(a.created_at).getTime() -
+                  new Date(b.created_at).getTime(),
+              ),
+            );
+          });
         }
       }
 
@@ -225,6 +241,7 @@ export const UserAdmin = ({
     setStatus(null);
     setSubscriberData(null);
     setMoscaryProfileData(null);
+    setMoscaryScanData(null);
     setOnerepProfileData(null);
     setOneRepProfileScans(null);
     setEmailInput(email);
@@ -364,6 +381,9 @@ export const UserAdmin = ({
               open
             />
           </div>
+          {moscaryScanData && (
+            <DataTable header="Moscary scans" data={moscaryScanData} open />
+          )}
         </section>
       )}
       {subscriberData && (
