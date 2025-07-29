@@ -37,6 +37,8 @@ export type CreateProfileRequest = {
   middle_name?: string;
 };
 
+/** OneRep stores phone numbers without formatting, and without a country code, e.g. "8005553535" */
+export type OnerepUsPhoneNumber = `${number}`;
 export type UpdateProfileRequest = CreateProfileRequest & {
   first_names: {
     first_name: string;
@@ -48,7 +50,7 @@ export type UpdateProfileRequest = CreateProfileRequest & {
     middle_name: string;
   }[];
   phone_numbers: {
-    number: string;
+    number: OnerepUsPhoneNumber;
   }[];
 };
 
@@ -58,7 +60,7 @@ export interface UpdateableProfileDetails {
   first_names: string[];
   last_names: string[];
   middle_names: string[];
-  phone_numbers: string[];
+  phone_numbers: OnerepUsPhoneNumber[];
   addresses: OnerepProfileAddress[];
   middle_name?: string;
 }

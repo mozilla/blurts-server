@@ -5,7 +5,7 @@
 import { Knex } from "knex";
 import { Profile } from "next-auth";
 import type { UUID } from "node:crypto";
-import { Scan } from "./app/functions/server/onerep";
+import { OnerepUsPhoneNumber, Scan } from "./app/functions/server/onerep";
 import { ISO8601DateString } from "./utils/parse";
 import { StateAbbr } from "./utils/states";
 import { RemovalStatus } from "./app/functions/universal/scanResult";
@@ -337,7 +337,7 @@ declare module "knex/types/tables" {
     middle_names: string[];
     last_names: string[];
     addresses: OnerepProfileAddress[];
-    phone_numbers: E164PhoneNumberString[];
+    phone_numbers: OnerepUsPhoneNumber[];
     date_of_birth: Date;
     created_at: Date;
     updated_at: Date;
