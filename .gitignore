@@ -37,6 +37,9 @@ storybook-static/
 # testing
 /coverage
 
+# load testing
+/src/scripts/loadtest/reports/
+
 # next.js
 /.next/
 /out/
