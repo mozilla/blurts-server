@@ -177,7 +177,7 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
                 data_broker_profile: dataBrokerProfileLink,
                 upsell_link: (
                   <UpsellLinkButton
-                    variant="primary"
+                    variant="link"
                     small
                     enabledFeatureFlags={props.enabledFeatureFlags}
                     eventData={{
