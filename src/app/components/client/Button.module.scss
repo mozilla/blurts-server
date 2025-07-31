@@ -216,6 +216,10 @@
     line-height: 1.5;
     padding: tokens.$spacing-sm tokens.$spacing-md;
 
+    &.link {
+      padding: 0;
+    }
+
     &.icon {
       padding: tokens.$spacing-sm;
     }
