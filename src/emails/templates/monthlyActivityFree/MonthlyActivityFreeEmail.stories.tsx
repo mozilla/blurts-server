@@ -2,6 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import type { UUID } from "node:crypto";
 import type { Meta, StoryObj } from "@storybook/react";
 import { FC } from "react";
 import {
@@ -229,6 +230,29 @@ export const MonthlyReportFreeUserWithDisabledScans: Story = {
     },
     subscriber: {
       onerep_profile_id: 1,
+      fxa_profile_json: {
+        locale: "en-US",
+        subscriptions: ["not-monitor-plus"],
+      },
+    } as SanitizedSubscriberRow,
+  },
+};
+
+export const MonthlyReportFreeUserWithMoscaryEnabled: Story = {
+  name: "With Moscary Feature Flag Enabled",
+  args: {
+    enabledFeatureFlags: ["Moscary"],
+    dataSummary: {
+      ...mockedDataSummary,
+      unresolvedSanitizedDataPoints: [
+        { [dataClassKeyMap.passwords]: 10 },
+        { [dataClassKeyMap.familyMembers]: 10 },
+        { [dataClassKeyMap.phoneNumbers]: 5 },
+      ],
+    },
+    subscriber: {
+      onerep_profile_id: null,
+      moscary_id: "00000000-0000-0000-0000-000000000000" as UUID,
       fxa_profile_json: {
         locale: "en-US",
         subscriptions: ["not-monitor-plus"],
