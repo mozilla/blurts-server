@@ -7,8 +7,28 @@ import { NextRequest, NextResponse } from "next/server";
 import NextAuth from "next-auth";
 import { authOptions } from "../../utils/auth";
 
+type SafeOAuthClientError =
+  | "access_denied"
+  | "login_required"
+  | "interaction_required"
+  | "invalid_request"
+  | "invalid_scope"
+  | "unsupported_response_type";
+
+const safeClientErrors = new Set<SafeOAuthClientError>([
+  "access_denied",
+  "login_required",
+  "interaction_required",
+  "invalid_request",
+  "invalid_scope",
+  "unsupported_response_type",
+]);
+
+function isSafeClientError(error: string): error is SafeOAuthClientError {
+  return safeClientErrors.has(error as SafeOAuthClientError);
+}
+
 const handler = async (req: NextRequest, res: unknown) => {
-  // Intercept known OAuth errors before they reach NextAuth internals
   if (req.method === "GET") {
     const searchParams = req.nextUrl.searchParams;
     const pathname = req.nextUrl.pathname;
@@ -16,7 +36,6 @@ const handler = async (req: NextRequest, res: unknown) => {
     const error = searchParams.get("error");
     const errorDescription = searchParams.get("error_description");
 
-    // Handle known login-required case with redirect
     if (error === "login_required") {
       const cookieStore = req.cookies;
       const callbackUrl = cookieStore.get("next-auth.callback-url")?.value;
@@ -28,25 +47,25 @@ const handler = async (req: NextRequest, res: unknown) => {
       return NextResponse.redirect(redirectUrl);
     }
 
-    // Handle other OAuth callback errors explicitly
-    if (pathname.includes("/callback") && error && errorDescription) {
+    if (
+      pathname.includes("/callback") &&
+      error &&
+      errorDescription &&
+      isSafeClientError(error)
+    ) {
       return new NextResponse(
-        JSON.stringify({
-          error,
-          detail: errorDescription,
-        }),
+        JSON.stringify({ error, detail: errorDescription }),
         {
           status: 400,
           headers: {
             "Content-Type": "application/json",
-            "X-App-Error-Code": "oauth_callback_error",
+            "X-App-Error-Code": `oauth_callback_${error}`,
           },
         },
       );
     }
   }
 
-  // Fall back to default NextAuth handling
   return NextAuth(
     req as unknown as NextApiRequest,
     res as NextApiResponse,
