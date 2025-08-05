@@ -53,9 +53,9 @@ const handler = async (req: NextRequest, res: unknown) => {
       errorDescription &&
       isSafeClientError(error)
     ) {
-    // By default, Next-Auth handles OAuth callback exceptions internally,
-    // which results in HTTP 500 response and multi-line errors that are difficult to filter for.
-    // This turns it into a 400 response that can more easily be distinguished from actual internal server errors.
+      // By default, Next-Auth handles OAuth callback exceptions internally,
+      // which results in HTTP 500 response and multi-line errors that are difficult to filter for.
+      // This turns it into a 400 response that can more easily be distinguished from actual internal server errors.
       return new NextResponse(
         JSON.stringify({ error, detail: errorDescription }),
         {
