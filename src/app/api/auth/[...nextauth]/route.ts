@@ -36,8 +36,13 @@ const handler = async (req: NextRequest, res: unknown) => {
     const error = searchParams.get("error");
     const errorDescription = searchParams.get("error_description");
 
-    // Check if login is required: If the callback URL is available redirect to
-    // the authentication flow and otherwise fallback to the base URL.
+    // Handle the "login_required" error from the FxA OAuth callback.
+    // This error typically occurs during silent authentication (e.g. prompt=none) when no user session is present.
+    // In cases like clicking through the Relay Bento menu with no FxA login,
+    // the callback results in a failed silent sign-in. Instead of showing an error page,
+    // we redirect the user to the originally intended callback URL (if present) or to the base URL.
+    // This ensures the user sees the correct landing page and is guided to explicitly sign in if needed.
+    // See: FXA-11730 for upstream fix discussion.
     if (error === "login_required") {
       const cookieStore = req.cookies;
 
