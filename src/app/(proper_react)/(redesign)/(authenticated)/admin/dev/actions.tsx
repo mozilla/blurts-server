@@ -39,7 +39,9 @@ export async function getOnerepProfile(onerepProfileId: number) {
   if (
     !session?.user?.email ||
     !isAdmin(session.user.email) ||
-    process.env.APP_ENV === "production"
+    process.env.APP_ENV === "production" ||
+    typeof onerepProfileId !== "number" ||
+    !Number.isInteger(onerepProfileId)
   ) {
     return notFound();
   }
@@ -62,7 +64,9 @@ export async function updateOnerepProfile(
   if (
     !session?.user?.email ||
     !isAdmin(session.user.email) ||
-    process.env.APP_ENV === "production"
+    process.env.APP_ENV === "production" ||
+    typeof onerepProfileId !== "number" ||
+    !Number.isInteger(onerepProfileId)
   ) {
     return notFound();
   }
@@ -96,7 +100,9 @@ export async function triggerManualProfileScan(onerepProfileId: number) {
   if (
     !session?.user?.email ||
     !isAdmin(session.user.email) ||
-    process.env.APP_ENV === "production"
+    process.env.APP_ENV === "production" ||
+    typeof onerepProfileId !== "number" ||
+    !Number.isInteger(onerepProfileId)
   ) {
     return notFound();
   }

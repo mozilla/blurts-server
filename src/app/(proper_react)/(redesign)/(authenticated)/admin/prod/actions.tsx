@@ -61,7 +61,12 @@ export async function getAllProfileScans(onerepProfileId: number) {
 
 export async function triggerManualProfileScan(onerepProfileId: number) {
   const session = await getServerSession();
-  if (!session?.user?.email || !isAdmin(session.user.email)) {
+  if (
+    !session?.user?.email ||
+    !isAdmin(session.user.email) ||
+    typeof onerepProfileId !== "number" ||
+    !Number.isInteger(onerepProfileId)
+  ) {
     return notFound();
   }
   console.info("Manual scan initiated by admin for:", onerepProfileId);
