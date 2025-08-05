@@ -8,14 +8,16 @@ import NextAuth from "next-auth";
 import { authOptions } from "../../utils/auth";
 
 const handler = async (req: NextRequest, res: unknown) => {
-  // There is currently no support for handling OAuth provider callback errors:
-  // https://github.com/nextauthjs/next-auth/discussions/8209
+  // Intercept known OAuth errors before they reach NextAuth internals
   if (req.method === "GET") {
-    const requestSearchParams = req.nextUrl.searchParams;
-    const requestErrorQuery = requestSearchParams.get("error");
-    // Check if login is required: If the callback URL is available redirect to
-    // the authentication flow and otherwise fallback to the base URL.
-    if (requestErrorQuery === "login_required") {
+    const searchParams = req.nextUrl.searchParams;
+    const pathname = req.nextUrl.pathname;
+
+    const error = searchParams.get("error");
+    const errorDescription = searchParams.get("error_description");
+
+    // Handle known login-required case with redirect
+    if (error === "login_required") {
       const cookieStore = req.cookies;
       const callbackUrl = cookieStore.get("next-auth.callback-url")?.value;
       const redirectUrl =
@@ -25,8 +27,26 @@ const handler = async (req: NextRequest, res: unknown) => {
 
       return NextResponse.redirect(redirectUrl);
     }
+
+    // Handle other OAuth callback errors explicitly
+    if (pathname.includes("/callback") && error && errorDescription) {
+      return new NextResponse(
+        JSON.stringify({
+          error,
+          detail: errorDescription,
+        }),
+        {
+          status: 400,
+          headers: {
+            "Content-Type": "application/json",
+            "X-App-Error-Code": "oauth_callback_error",
+          },
+        },
+      );
+    }
   }
 
+  // Fall back to default NextAuth handling
   return NextAuth(
     req as unknown as NextApiRequest,
     res as NextApiResponse,
