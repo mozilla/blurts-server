@@ -36,8 +36,11 @@ const handler = async (req: NextRequest, res: unknown) => {
     const error = searchParams.get("error");
     const errorDescription = searchParams.get("error_description");
 
+    // Check if login is required: If the callback URL is available redirect to
+    // the authentication flow and otherwise fallback to the base URL.
     if (error === "login_required") {
       const cookieStore = req.cookies;
+
       const callbackUrl = cookieStore.get("next-auth.callback-url")?.value;
       const redirectUrl =
         callbackUrl && callbackUrl.startsWith(process.env.SERVER_URL as string)
