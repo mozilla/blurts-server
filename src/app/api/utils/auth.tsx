@@ -3,7 +3,12 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { NextRequest } from "next/server";
-import { AuthOptions, Profile as FxaProfile, User } from "next-auth";
+import {
+  AuthOptions,
+  Profile as FxaProfile,
+  LoggerInstance,
+  User,
+} from "next-auth";
 import { logger } from "../../functions/server/logging";
 
 import {
@@ -306,6 +311,17 @@ export const authOptions: AuthOptions = {
       logger.debug("logout", message.token.subscriber?.id ?? undefined);
     },
   },
+  logger: {
+    error(code: string, metadata: unknown) {
+      logger.error(code, metadata);
+    },
+    warn(code: string) {
+      logger.warn(code);
+    },
+    debug(code: string, metadata: unknown) {
+      logger.debug(code, metadata);
+    },
+  } satisfies LoggerInstance,
 };
 
 /**
