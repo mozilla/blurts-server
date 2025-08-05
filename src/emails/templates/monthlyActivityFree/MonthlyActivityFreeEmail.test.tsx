@@ -11,6 +11,7 @@ import Meta, {
   MonthlyReportFreeUserWithScanNoRemainingExposures,
   MonthlyReportFreeUserWithScanWithExposuresNothingResolved,
   MonthlyReportFreeUserWithScanWithExposuresResolved,
+  MonthlyReportFreeUserWithMoscaryEnabled,
 } from "./MonthlyActivityFreeEmail.stories";
 
 it("shows the right label in the right box if a scan hasn't been run", () => {
@@ -106,4 +107,17 @@ it("shows the congratulatory banner if no exposures remaining after scan", () =>
   const greatNewsHeader = screen.getByText("Great news!");
 
   expect(greatNewsHeader).toBeInTheDocument();
+});
+
+it("lists data exposures also for users who ran a scan through Moscary", () => {
+  const ComposedEmail = composeStory(
+    MonthlyReportFreeUserWithMoscaryEnabled,
+    Meta,
+  );
+  render(<ComposedEmail />);
+
+  const dataExposures = screen.getByText("Data exposures", { exact: true });
+
+  expect(screen.queryByText("Data breaches", { exact: true })).toBeNull();
+  expect(dataExposures).toBeInTheDocument();
 });
