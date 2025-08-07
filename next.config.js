@@ -169,11 +169,23 @@ const nextConfig = {
 
     return config;
   },
+  turbopack: {
+    rules: {
+      "*.ftl": {
+        loaders: ["raw-loader"],
+        as: "*.js",
+      },
+    },
+  },
   // Without adding MJML here, Next.js has Webpack trying and failing to load
   // uglify-js when compiling MJML email templates to HTML in `renderEmail.ts`:
   // commonjs and knex are needed to avoid errors about not being able to load
   // better-sqlite3, for some reason.
-  serverExternalPackages: ["mjml", "commonjs", "knex"],
+  // Without adding ioredis-mock here, we get the following error with Turbopack enabled:
+  //      ⨯ ./node_modules/fengari/src
+  //    Module not found: Can't resolve './ROOT' <dynamic>
+  //    server relative imports are not implemented yet. Please try an import relative to the file you are importing from.
+  serverExternalPackages: ["mjml", "commonjs", "knex", "ioredis-mock"],
 };
 
 const sentryOptions = {
