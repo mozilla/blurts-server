@@ -99,7 +99,14 @@ jest.mock("../../app/functions/server/moscary", () => ({
     Promise.resolve({
       scan: { id: "00000000-0000-0000-0000-000000000000", status: "finished" },
       results: [
-        { id: "11111111-1111-1111-1111-111111111111", source: "moscary" },
+        {
+          id: "11111111-1111-1111-1111-111111111111",
+          source: "moscary",
+          addresses: [],
+          emails: [],
+          phones: [],
+          relatives: [],
+        },
       ],
     }),
   ),

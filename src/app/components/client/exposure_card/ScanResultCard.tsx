@@ -46,7 +46,7 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
   const cardId = useId();
 
   // Scan Result Categories
-  if (scanResult.relatives && scanResult.relatives.length > 0) {
+  if (scanResult.relatives.length > 0) {
     exposureCategoriesArray.push(
       <ExposureCardDataClassLayout
         exposure={scanResult}
@@ -58,7 +58,7 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
       />,
     );
   }
-  if (scanResult.phones && scanResult.phones.length > 0) {
+  if (scanResult.phones.length > 0) {
     exposureCategoriesArray.push(
       <ExposureCardDataClassLayout
         exposure={scanResult}
@@ -70,7 +70,7 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
       />,
     );
   }
-  if (scanResult.emails && scanResult.emails.length > 0) {
+  if (scanResult.emails.length > 0) {
     exposureCategoriesArray.push(
       <ExposureCardDataClassLayout
         exposure={scanResult}
@@ -82,7 +82,7 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
       />,
     );
   }
-  if (scanResult.addresses && scanResult.addresses.length > 0) {
+  if (scanResult.addresses.length > 0) {
     exposureCategoriesArray.push(
       <ExposureCardDataClassLayout
         exposure={scanResult}

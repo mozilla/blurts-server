@@ -233,55 +233,47 @@ export function getDashboardSummary(
       }
       // total data points: add email, phones, addresses, relatives, full name (1)
       const dataPointsIncrement =
-        (r.emails ?? []).length +
-        (r.phones ?? []).length +
-        (r.addresses ?? []).length +
-        (r.relatives ?? []).length;
+        r.emails.length +
+        r.phones.length +
+        r.addresses.length +
+        r.relatives.length;
       summary.totalDataPointsNum += dataPointsIncrement;
       summary.dataBrokerTotalDataPointsNum += dataPointsIncrement;
 
       // for all data points: email, phones, addresses, relatives, full name (1)
-      summary.allDataPoints.emailAddresses += (r.emails ?? []).length;
-      summary.allDataPoints.phoneNumbers += (r.phones ?? []).length;
-      summary.allDataPoints.addresses += (r.addresses ?? []).length;
-      summary.allDataPoints.familyMembers += (r.relatives ?? []).length;
+      summary.allDataPoints.emailAddresses += r.emails.length;
+      summary.allDataPoints.phoneNumbers += r.phones.length;
+      summary.allDataPoints.addresses += r.addresses.length;
+      summary.allDataPoints.familyMembers += r.relatives.length;
 
       if (isInProgress) {
         if (countRemovalUnderMaintenanceData) {
-          summary.inProgressDataPoints.emailAddresses += (
-            r.emails ?? []
-          ).length;
-          summary.inProgressDataPoints.phoneNumbers += (r.phones ?? []).length;
-          summary.inProgressDataPoints.addresses += (r.addresses ?? []).length;
-          summary.inProgressDataPoints.familyMembers += (
-            r.relatives ?? []
-          ).length;
+          summary.inProgressDataPoints.emailAddresses += r.emails.length;
+          summary.inProgressDataPoints.phoneNumbers += r.phones.length;
+          summary.inProgressDataPoints.addresses += r.addresses.length;
+          summary.inProgressDataPoints.familyMembers += r.relatives.length;
           summary.dataBrokerInProgressDataPointsNum += dataPointsIncrement;
         }
       }
 
       // for fixed data points: email, phones, addresses, relatives, full name (1)
       if (isAutoFixed) {
-        summary.fixedDataPoints.emailAddresses += (r.emails ?? []).length;
-        summary.fixedDataPoints.phoneNumbers += (r.phones ?? []).length;
-        summary.fixedDataPoints.addresses += (r.addresses ?? []).length;
-        summary.fixedDataPoints.familyMembers += (r.relatives ?? []).length;
+        summary.fixedDataPoints.emailAddresses += r.emails.length;
+        summary.fixedDataPoints.phoneNumbers += r.phones.length;
+        summary.fixedDataPoints.addresses += r.addresses.length;
+        summary.fixedDataPoints.familyMembers += r.relatives.length;
         summary.dataBrokerAutoFixedDataPointsNum += dataPointsIncrement;
       }
 
       if (isManuallyResolved) {
-        summary.manuallyResolvedDataBrokerDataPoints.emailAddresses += (
-          r.emails ?? []
-        ).length;
-        summary.manuallyResolvedDataBrokerDataPoints.phoneNumbers += (
-          r.phones ?? []
-        ).length;
-        summary.manuallyResolvedDataBrokerDataPoints.addresses += (
-          r.addresses ?? []
-        ).length;
-        summary.manuallyResolvedDataBrokerDataPoints.familyMembers += (
-          r.relatives ?? []
-        ).length;
+        summary.manuallyResolvedDataBrokerDataPoints.emailAddresses +=
+          r.emails.length;
+        summary.manuallyResolvedDataBrokerDataPoints.phoneNumbers +=
+          r.phones.length;
+        summary.manuallyResolvedDataBrokerDataPoints.addresses +=
+          r.addresses.length;
+        summary.manuallyResolvedDataBrokerDataPoints.familyMembers +=
+          r.relatives.length;
         summary.dataBrokerManuallyResolvedDataPointsNum += dataPointsIncrement;
       }
     });

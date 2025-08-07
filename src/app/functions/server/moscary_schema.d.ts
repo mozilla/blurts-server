@@ -655,15 +655,15 @@ export interface components {
        * @description Timestamp of last verification attempt
        */
       last_verified_at?: string | null;
-      addresses?: {
+      addresses: {
         city?: string;
         state?: string;
         street?: string;
         zip?: string;
       }[];
-      phones?: string[];
-      emails?: string[];
-      relatives?: string[];
+      phones: string[];
+      emails: string[];
+      relatives: string[];
       screenshot?: string;
       optout_attempts?: number;
       /** Format: date-time */
