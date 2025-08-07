@@ -31,7 +31,7 @@ const PremiumDataClassDetails = (props: PremiumDataClassDetailsProps) => {
     return null;
   }
   if (dataBrokerDataType === "addresses") {
-    return (exposure.addresses ?? []).map(
+    return exposure.addresses.map(
       ({ city, state, street, zip }, index: number) => (
         <li key={`${props.dataBrokerDataType}-${index}`}>
           {street}, {city}, {String(state)}, {zip}
