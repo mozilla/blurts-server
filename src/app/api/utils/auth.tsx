@@ -312,17 +312,32 @@ export const authOptions: AuthOptions = {
     },
   },
   logger: {
-    error(code: string, metadata: unknown) {
-      logger.error(code, metadata);
+    error(code: string, metadata?: unknown) {
+      logger.error(code, ensureWinstonMetadata(metadata));
     },
-    warn(code: string) {
-      logger.warn(code);
+    warn(code: string, metadata?: unknown) {
+      logger.warn(code, ensureWinstonMetadata(metadata));
     },
-    debug(code: string, metadata: unknown) {
-      logger.debug(code, metadata);
+    debug(code: string, metadata?: unknown) {
+      logger.debug(code, ensureWinstonMetadata(metadata));
     },
   } satisfies LoggerInstance,
 };
+
+function ensureWinstonMetadata(metadata: unknown): Record<string, unknown> {
+  if (!metadata) return {};
+  if (metadata instanceof Error) {
+    return {
+      message: metadata.message,
+      name: metadata.name,
+      stack: metadata.stack,
+    };
+  }
+  if (typeof metadata === "object") {
+    return metadata as Record<string, unknown>;
+  }
+  return { value: metadata };
+}
 
 /**
  * Converts an FxAProfile to a Next-Auth user object
