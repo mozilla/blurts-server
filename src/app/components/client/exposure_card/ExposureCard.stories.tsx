@@ -8,7 +8,7 @@ import FamilyTreeImage from "../assets/familytree.png";
 import TwitterImage from "../assets/twitter-icon.png";
 import {
   createRandomBreach,
-  createRandomScanResult,
+  createRandomOnerepScanResult,
 } from "../../../../apiMocks/mockData";
 import { defaultExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 import { BreachDataTypes } from "../../../functions/universal/breach";
@@ -30,43 +30,42 @@ const meta: Meta<typeof ExposureCard> = {
 export default meta;
 type Story = StoryObj<typeof ExposureCard>;
 
-const ScanMockItemRemoved = createRandomScanResult({
+const ScanMockItemRemoved = createRandomOnerepScanResult({
   status: "removed",
   manually_resolved: false,
 });
-const ScanMockItemManualRemoved = createRandomScanResult({
+const ScanMockItemManualRemoved = createRandomOnerepScanResult({
   status: "new",
   manually_resolved: true,
 });
-const ScanMockItemRequestedRemoval = createRandomScanResult({
+const ScanMockItemRequestedRemoval = createRandomOnerepScanResult({
   status: "waiting_for_verification",
   manually_resolved: false,
 });
-const ScanMockItemNew = createRandomScanResult({
+const ScanMockItemNew = createRandomOnerepScanResult({
   status: "new",
   manually_resolved: false,
 });
-const ScanMockItemInProgress = createRandomScanResult({
+const ScanMockItemInProgress = createRandomOnerepScanResult({
   status: "optout_in_progress",
   manually_resolved: false,
 });
 
-const ScanMockItemRemovalUnderMaintenance = createRandomScanResult({
+const ScanMockItemRemovalUnderMaintenance = createRandomOnerepScanResult({
   status: "optout_in_progress",
   manually_resolved: false,
   broker_status: "removal_under_maintenance",
 });
 
-const ScanMockItemRemovalUnderMaintenanceManuallyFixed = createRandomScanResult(
-  {
+const ScanMockItemRemovalUnderMaintenanceManuallyFixed =
+  createRandomOnerepScanResult({
     status: "optout_in_progress",
     manually_resolved: true,
     broker_status: "removal_under_maintenance",
-  },
-);
+  });
 
 const ScanMockItemRemovalUnderMaintenanceAutomaticallyRemoved =
-  createRandomScanResult({
+  createRandomOnerepScanResult({
     status: "removed",
     manually_resolved: false,
     broker_status: "removal_under_maintenance",

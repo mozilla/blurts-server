@@ -8,7 +8,7 @@ import { WelcomeToPlusView } from "./WelcomeToPlusView";
 import {
   createRandomAnnouncement,
   createRandomBreach,
-  createRandomScanResult,
+  createRandomOnerepScanResult,
   createUserWithPremiumSubscription,
 } from "../../../../../../../../../../apiMocks/mockData";
 import { Shell } from "../../../../../../../Shell/Shell";
@@ -29,7 +29,7 @@ const mockedScan: OnerepScanRow = {
 
 function getMockedScanData(brokerScanCount: number): LatestOnerepScanData {
   const relevantResults = [...Array(brokerScanCount)].map(() =>
-    createRandomScanResult({
+    createRandomOnerepScanResult({
       status: "optout_in_progress",
       manually_resolved: false,
     }),
@@ -38,11 +38,11 @@ function getMockedScanData(brokerScanCount: number): LatestOnerepScanData {
     scan: mockedScan,
     results: [
       ...relevantResults,
-      createRandomScanResult({
+      createRandomOnerepScanResult({
         status: "new",
         manually_resolved: true,
       }),
-      createRandomScanResult({
+      createRandomOnerepScanResult({
         status: "removed",
         manually_resolved: false,
       }),

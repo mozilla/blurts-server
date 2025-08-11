@@ -4,22 +4,17 @@
 
 import type { Meta, StoryObj } from "@storybook/react";
 
-import {
-  OnerepScanResultDataBrokerRow,
-  OnerepScanRow,
-} from "knex/types/tables";
 import { faker } from "@faker-js/faker";
 import { View as DashboardEl } from "./View";
 import { Shell } from "../../../../Shell/Shell";
 import { getL10n } from "../../../../../../functions/l10n/storybookAndJest";
 import {
-  createRandomScanResult,
   createRandomBreach,
   createUserWithPremiumSubscription,
   createRandomAnnouncement,
+  createRandomMoscaryScanResult,
 } from "../../../../../../../apiMocks/mockData";
 import { SubscriberBreach } from "../../../../../../../utils/subscriberBreaches";
-import { LatestOnerepScanData } from "../../../../../../../db/tables/onerep_scans";
 import { CountryCodeProvider } from "../../../../../../../contextProviders/country-code";
 import { SessionProvider } from "../../../../../../../contextProviders/session";
 import { defaultExperimentData } from "../../../../../../../telemetry/generated/nimbus/experiments";
@@ -29,6 +24,10 @@ import {
   DashboardWrapperProps,
 } from "./Dashboard.stories";
 import { UserAnnouncementWithDetails } from "../../../../../../../db/tables/user_announcements";
+import {
+  MoscaryData,
+  ScanData,
+} from "../../../../../../functions/server/moscary";
 
 const DashboardWrapper = (props: DashboardWrapperProps) => {
   const mockedResolvedBreach: SubscriberBreach = createRandomBreach({
@@ -63,7 +62,7 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
   });
 
   let breaches: SubscriberBreach[] = [];
-  const scanData: LatestOnerepScanData = { scan: null, results: [] };
+  const scanData: ScanData = { scan: null, results: [] };
 
   if (props.breaches === "resolved") {
     breaches = [mockedResolvedBreach];
@@ -72,56 +71,67 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
     breaches = [mockedResolvedBreach, mockedUnresolvedBreach];
   }
 
-  const mockedScan: OnerepScanRow = {
-    created_at: new Date(Date.UTC(1998, 2, 31)),
-    updated_at: new Date(Date.UTC(1998, 2, 31)),
-    id: 0,
-    onerep_profile_id: 0,
-    onerep_scan_id: 0,
-    onerep_scan_reason: "initial",
-    onerep_scan_status: "finished",
+  const mockedScan: MoscaryData["Scan"] = {
+    created_at: "1998-03-31T00:00:00.000Z",
+    updated_at: "1998-03-31T00:00:00.000Z",
+    id: "11111111-1111-1111-1111-111111111111",
+    profile_id: "00000000-0000-0000-0000-000000000000",
+    reason: "initial",
+    status: "finished",
   };
 
-  const mockedScanInProgress: OnerepScanRow = {
+  const mockedScanInProgress: MoscaryData["Scan"] = {
     ...mockedScan,
-    onerep_scan_status: "in_progress",
+    status: "in_progress",
   };
 
-  const mockedInProgressScanResults: OnerepScanResultDataBrokerRow[] = [
-    createRandomScanResult({ status: "removed", manually_resolved: false }),
-    createRandomScanResult({
+  const mockedInProgressScanResults: MoscaryData["ScanResult"][] = [
+    createRandomMoscaryScanResult({
+      status: "removed",
+      manually_resolved: false,
+    }),
+    createRandomMoscaryScanResult({
       status: "waiting_for_verification",
       manually_resolved: false,
     }),
-    createRandomScanResult({
+    createRandomMoscaryScanResult({
       status: "optout_in_progress",
       manually_resolved: false,
     }),
   ];
 
-  const mockedAllResolvedScanResults: OnerepScanResultDataBrokerRow[] = [
-    createRandomScanResult({ status: "removed", manually_resolved: false }),
-    createRandomScanResult({ status: "removed", manually_resolved: false }),
+  const mockedAllResolvedScanResults: MoscaryData["ScanResult"][] = [
+    createRandomMoscaryScanResult({
+      status: "removed",
+      manually_resolved: false,
+    }),
+    createRandomMoscaryScanResult({
+      status: "removed",
+      manually_resolved: false,
+    }),
   ];
 
-  const mockedUnresolvedScanResults: OnerepScanResultDataBrokerRow[] = [
+  const mockedUnresolvedScanResults: MoscaryData["ScanResult"][] = [
     ...mockedInProgressScanResults,
-    createRandomScanResult({ status: "new", manually_resolved: false }),
-    createRandomScanResult({ status: "new", manually_resolved: false }),
-    createRandomScanResult({ status: "new", manually_resolved: true }),
+    createRandomMoscaryScanResult({ status: "new", manually_resolved: false }),
+    createRandomMoscaryScanResult({ status: "new", manually_resolved: false }),
+    createRandomMoscaryScanResult({ status: "new", manually_resolved: true }),
   ];
 
-  const mockedManuallyResolvedScanResults: OnerepScanResultDataBrokerRow[] = [
-    createRandomScanResult({ status: "new", manually_resolved: true }),
-    createRandomScanResult({
+  const mockedManuallyResolvedScanResults: MoscaryData["ScanResult"][] = [
+    createRandomMoscaryScanResult({ status: "new", manually_resolved: true }),
+    createRandomMoscaryScanResult({
       status: "waiting_for_verification",
       manually_resolved: true,
     }),
-    createRandomScanResult({
+    createRandomMoscaryScanResult({
       status: "optout_in_progress",
       manually_resolved: true,
     }),
-    createRandomScanResult({ status: "removed", manually_resolved: true }),
+    createRandomMoscaryScanResult({
+      status: "removed",
+      manually_resolved: true,
+    }),
   ];
 
   let scanCount = 0;
