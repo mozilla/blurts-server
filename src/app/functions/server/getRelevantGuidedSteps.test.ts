@@ -10,7 +10,7 @@ import {
 } from "./getRelevantGuidedSteps";
 import {
   createRandomBreach,
-  createRandomScanResult,
+  createRandomOnerepScanResult,
 } from "../../../apiMocks/mockData";
 import { BreachDataTypes } from "../universal/breach";
 import { LatestOnerepScanData } from "../../../db/tables/onerep_scans";
@@ -467,7 +467,7 @@ describe("getNextGuidedStep", () => {
                 onerep_scan_status: "in_progress",
               },
               results: [
-                createRandomScanResult({
+                createRandomOnerepScanResult({
                   status: "new",
                   manually_resolved: false,
                   broker_status: "active",
@@ -500,7 +500,7 @@ describe("getNextGuidedStep", () => {
                 onerep_scan_status: "finished",
               },
               results: [
-                createRandomScanResult({
+                createRandomOnerepScanResult({
                   status: "new",
                   manually_resolved: false,
                 }),
@@ -532,7 +532,7 @@ describe("getNextGuidedStep", () => {
                 onerep_scan_status: "finished",
               },
               results: [
-                createRandomScanResult({
+                createRandomOnerepScanResult({
                   status: "optout_in_progress",
                   manually_resolved: false,
                 }),
@@ -559,7 +559,7 @@ describe("getNextGuidedStep", () => {
                 onerep_scan_status: "finished",
               },
               results: [
-                createRandomScanResult({
+                createRandomOnerepScanResult({
                   status: "removed",
                   manually_resolved: false,
                 }),
@@ -586,7 +586,7 @@ describe("getNextGuidedStep", () => {
                 onerep_scan_status: "finished",
               },
               results: [
-                createRandomScanResult({
+                createRandomOnerepScanResult({
                   status: "waiting_for_verification",
                   manually_resolved: false,
                 }),
@@ -613,7 +613,7 @@ describe("getNextGuidedStep", () => {
                 onerep_scan_status: "finished",
               },
               results: [
-                createRandomScanResult({
+                createRandomOnerepScanResult({
                   status: "new",
                   manually_resolved: true,
                 }),
@@ -640,7 +640,7 @@ describe("getNextGuidedStep", () => {
                 onerep_scan_status: "finished",
               },
               results: [
-                createRandomScanResult({
+                createRandomOnerepScanResult({
                   status: "optout_in_progress",
                   manually_resolved: false,
                   broker_status: "removal_under_maintenance",
@@ -675,7 +675,7 @@ describe("getNextGuidedStep", () => {
                 onerep_scan_status: "finished",
               },
               results: [
-                createRandomScanResult({
+                createRandomOnerepScanResult({
                   status: "optout_in_progress",
                   manually_resolved: false,
                   broker_status: "removal_under_maintenance",
@@ -703,7 +703,7 @@ describe("getNextGuidedStep", () => {
                 onerep_scan_status: "finished",
               },
               results: [
-                createRandomScanResult({
+                createRandomOnerepScanResult({
                   manually_resolved: true,
                   status: "optout_in_progress",
                   broker_status: "removal_under_maintenance",
@@ -731,7 +731,7 @@ describe("getNextGuidedStep", () => {
                 onerep_scan_status: "finished",
               },
               results: [
-                createRandomScanResult({
+                createRandomOnerepScanResult({
                   manually_resolved: false,
                   status: "optout_in_progress",
                   broker_status: "removal_under_maintenance",
@@ -759,7 +759,7 @@ describe("getNextGuidedStep", () => {
                 onerep_scan_status: "finished",
               },
               results: [
-                createRandomScanResult({
+                createRandomOnerepScanResult({
                   manually_resolved: false,
                   status: "removed",
                   broker_status: "removal_under_maintenance",
@@ -788,7 +788,7 @@ describe("getNextGuidedStep", () => {
                 onerep_scan_status: "finished",
               },
               results: [
-                createRandomScanResult({
+                createRandomOnerepScanResult({
                   manually_resolved: true,
                   status: "optout_in_progress",
                   broker_status: "removal_under_maintenance",
@@ -815,7 +815,7 @@ describe("getNextGuidedStep", () => {
                 onerep_scan_status: "finished",
               },
               results: [
-                createRandomScanResult({
+                createRandomOnerepScanResult({
                   manually_resolved: false,
                   status: "removed",
                   broker_status: "removal_under_maintenance",
@@ -843,7 +843,7 @@ describe("getNextGuidedStep", () => {
                 onerep_scan_status: "finished",
               },
               results: [
-                createRandomScanResult({
+                createRandomOnerepScanResult({
                   manually_resolved: true,
                   status: "optout_in_progress",
                   broker_status: "removal_under_maintenance",
@@ -871,7 +871,7 @@ describe("getNextGuidedStep", () => {
                 onerep_scan_status: "finished",
               },
               results: [
-                createRandomScanResult({
+                createRandomOnerepScanResult({
                   manually_resolved: false,
                   status: "removed",
                   broker_status: "removal_under_maintenance",
@@ -899,17 +899,17 @@ describe("getNextGuidedStep", () => {
                 onerep_scan_status: "finished",
               },
               results: [
-                createRandomScanResult({
+                createRandomOnerepScanResult({
                   manually_resolved: true,
                   status: "optout_in_progress",
                   broker_status: "removal_under_maintenance",
                 }),
-                createRandomScanResult({
+                createRandomOnerepScanResult({
                   manually_resolved: false,
                   status: "removed",
                   broker_status: "removal_under_maintenance",
                 }),
-                createRandomScanResult({
+                createRandomOnerepScanResult({
                   manually_resolved: false,
                   status: "optout_in_progress",
                   broker_status: "removal_under_maintenance",

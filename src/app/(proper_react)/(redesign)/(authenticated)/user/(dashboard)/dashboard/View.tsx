@@ -129,6 +129,8 @@ export const View = (props: Props) => {
   }, [pathname, activeTab, props.userAnnouncements]);
 
   const adjustedScanResults = props.userScanData.results.map((scanResult) => {
+    // MNTOR-4531: OneRep code paths will be phased out:
+    /* c8 ignore next 16 */
     if (
       isOneRepScanResult(scanResult) &&
       scanResult.status === "new" &&
@@ -188,6 +190,8 @@ export const View = (props: Props) => {
 
   const breachesDataArray = props.userBreaches.flat();
   const initialScanInProgress =
+    // MNTOR-4531: OneRep code paths will be phased out:
+    /* c8 ignore next 2 */
     (isOneRepScan(adjustedScanData.scan)
       ? adjustedScanData.scan.onerep_scan_status === "in_progress"
       : adjustedScanData.scan?.status === "in_progress") &&
@@ -620,6 +624,8 @@ export function isDataBrokerUnderMaintenance(
 ): boolean {
   return (
     isScanResult(exposure) &&
+    // MNTOR-4531: OneRep code paths will be phased out:
+    /* c8 ignore next 4 */
     (isOneRepScanResultDataBroker(exposure)
       ? exposure.broker_status
       : exposure.status) === "removal_under_maintenance" &&
