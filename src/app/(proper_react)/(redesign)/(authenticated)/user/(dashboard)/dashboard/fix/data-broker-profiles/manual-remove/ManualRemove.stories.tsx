@@ -3,33 +3,34 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import type { Meta, StoryObj } from "@storybook/react";
-import { OnerepScanRow } from "knex/types/tables";
 import { ManualRemoveView } from "./ManualRemoveView";
 import {
   createRandomBreach,
-  createRandomOnerepScanResult,
+  createRandomMoscaryScanResult,
   createUserWithPremiumSubscription,
 } from "../../../../../../../../../../apiMocks/mockData";
 import { Shell } from "../../../../../../../Shell/Shell";
 import { getL10n } from "../../../../../../../../../functions/l10n/storybookAndJest";
-import { LatestOnerepScanData } from "../../../../../../../../../../db/tables/onerep_scans";
 import { hasPremium } from "../../../../../../../../../functions/universal/user";
 import { defaultExperimentData } from "../../../../../../../../../../telemetry/generated/nimbus/experiments";
+import {
+  MoscaryData,
+  ScanData,
+} from "../../../../../../../../../functions/server/moscary";
 
-const mockedScan: OnerepScanRow = {
-  created_at: new Date(1998, 2, 31),
-  updated_at: new Date(1998, 2, 31),
-  id: 0,
-  onerep_profile_id: 0,
-  onerep_scan_id: 0,
-  onerep_scan_reason: "initial",
-  onerep_scan_status: "finished",
+const mockedScan: MoscaryData["Scan"] = {
+  created_at: "1998-03-31T00:00:00.000Z",
+  updated_at: "1998-03-31T00:00:00.000Z",
+  id: "11111111-1111-1111-1111-111111111111",
+  profile_id: "00000000-0000-0000-0000-000000000000",
+  reason: "initial",
+  status: "finished",
 };
 
-const mockedScanData: LatestOnerepScanData = {
+const mockedScanData: ScanData = {
   scan: mockedScan,
   results: [...Array(5)].map(() =>
-    createRandomOnerepScanResult({ status: "new", manually_resolved: false }),
+    createRandomMoscaryScanResult({ status: "new", manually_resolved: false }),
   ),
 };
 const mockedBreaches = [...Array(5)].map(() => createRandomBreach());
