@@ -42,6 +42,8 @@ export const RemovalCard = (props: Props) => {
       } catch {
         setIsResolved(false);
       }
+      // MNTOR-4531: OneRep code paths will be phased out:
+      /* c8 ignore next 13 */
     } else {
       const response = await fetch(
         `/api/v1/user/scan-result/${props.scanResult.onerep_scan_result_id}/resolution`,
