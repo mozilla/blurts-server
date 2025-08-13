@@ -629,6 +629,27 @@ describe("getNextGuidedStep", () => {
       ).toBe("Done");
     });
 
+    it("does not link to the scan if the user already has a scan in progress, but there's nothing to resolve yet because no results have been found", () => {
+      expect(
+        getNextGuidedStep(
+          {
+            countryCode: "us",
+            latestScanData: {
+              scan: {
+                ...completedScan.scan!,
+                onerep_scan_status: "in_progress",
+              },
+            } as LatestOnerepScanData,
+            subscriberBreaches: [],
+            user: {
+              email: "arbitrary@example.com",
+            },
+          },
+          [],
+        ).id,
+      ).toBe("Done");
+    });
+
     it("links to the removal under maintenance step if a user has scan results with a data broker that has a removal under maintenance status", () => {
       expect(
         getNextGuidedStep(

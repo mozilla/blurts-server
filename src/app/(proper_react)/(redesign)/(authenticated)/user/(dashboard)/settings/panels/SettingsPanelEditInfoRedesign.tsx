@@ -181,6 +181,9 @@ function ProfileInfoSection({
             </div>
             <div className={styles.detailContent}>
               {formatPhone(
+                // MNTOR-4531: OneRep code paths will be phased out
+                // (OneRep has phone numbers as a string, Moscary as an object):
+                /* c8 ignore next 2 */
                 typeof phone_numbers[0] === "string"
                   ? phone_numbers[0]
                   : phone_numbers[0].number,
