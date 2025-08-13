@@ -2,7 +2,8 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-## Breach Data Classes
+
+# Breach Data Classes
 
 account-balances = solduri ale conturilor
 address-book-contacts = contacte din agendă
@@ -16,7 +17,7 @@ avatars = avataruri
 bank-account-numbers = numere de conturi bancare
 beauty-ratings = evaluări de frumusețe
 biometric-data = date biometrice
-# This string is the shortened version of "Biographies", and 
+# This string is the shortened version of "Biographies", and
 # refers to biographical data about a user.
 bios = date biografice
 browser-user-agent-details = detalii privind agentul utilizator din browser
@@ -70,6 +71,7 @@ ip-addresses = adrese IP
 job-applications = Cereri de angajare
 job-titles = profesii/meserii
 living-costs = Costuri de trai
+login-histories = Istoric de autentificări
 mac-addresses = adrese MAC
 marital-statuses = stare civilă
 # Mnemonic phrases are a group of words used to access the content of cryptocurrency wallets.
@@ -82,6 +84,7 @@ nicknames = pseudonime
 occupations = ocupații
 parenting-plans = planuri parentale
 partial-credit-card-data = date parțiale privind carduri de credit
+partial-dates-of-birth = Date parțiale de naștere
 passport-numbers = numere de pașaport
 password-hints = indicii pentru parole
 password-strengths = Puterea parolelor
