@@ -11,6 +11,10 @@ import { parseIso8601Datetime } from "../../utils/parse";
 
 const knex = createDbConnection();
 
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+// Also, deprecated.
+/* c8 ignore start */
+
 /** @deprecated */
 export async function setProfileDetails(
   onerepProfileId: number,
