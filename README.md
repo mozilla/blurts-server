@@ -216,6 +216,31 @@ To test this part of Monitor:
 
 k6 is used for load testing.
 
+See https://grafana.com/docs/k6/latest/get-started/running-k6/ for more information.
+
+##### Moscary
+
+Ensure your environment variable (can be set through `.env.local`)
+`SCAN_REMOVE_API_BASE` is set to the environment you want to test,
+and `SCAN_REMOVE_API_KEY` to a valid key. Then, run:
+
+```sh
+npm run loadtest:moscary
+```
+
+Note that by default, this only creates a new profile and deletes it again. If
+you also want to start a scan and/or activate the new profile, you can do so
+using the `LOAD_TEST_FEATURES` environment variable:
+
+```sh
+LOAD_TEST_FEATURES="scan,activate" npm run loadtest:moscary
+```
+
+If you run the tests against stage, you should be able to see the load coming in
+[in Grafana](https://yardstick.mozilla.org/d/aemrrye0kvrb4d/monitor-scan-remove-backend?orgId=1&from=now-3h&to=now&timezone=browser&var-env=nonprod&var-datasource=edq6thuke248we&refresh=auto).
+
+##### HIBP breach alerts
+
 To test the HIBP breach alerts endpoint, use:
 
 ```sh
@@ -232,8 +257,6 @@ environment variable (default 30s).
 
 You can also enforce the alert being sent for a specific email address via the
 `LOADTEST_BREACHED_EMAIL` environment variable.
-
-See https://grafana.com/docs/k6/latest/get-started/running-k6/ for more information.
 
 ## Localization
 
