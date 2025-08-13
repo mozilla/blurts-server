@@ -352,18 +352,16 @@ function normalizeProfileData(
     addresses: profileData.addresses as OnerepProfileRow["addresses"],
     date_of_birth: parseIso8601Datetime(profileData.birth_date),
     first_name: profileData.first_name,
-    first_names: (profileData.first_names ?? []).map(
+    first_names: profileData.first_names.map(
       (first_name) => first_name.first_name,
     ),
     middle_name: profileData.middle_name ?? null,
-    middle_names: (profileData.middle_names ?? []).map(
+    middle_names: profileData.middle_names.map(
       (middle_name) => middle_name.middle_name,
     ),
     last_name: profileData.last_name,
-    last_names: (profileData.last_names ?? []).map(
-      (last_name) => last_name.last_name,
-    ),
-    phone_numbers: (profileData.phone_numbers ?? []).map((phone_number) =>
+    last_names: profileData.last_names.map((last_name) => last_name.last_name),
+    phone_numbers: profileData.phone_numbers.map((phone_number) =>
       formatPhone(phone_number.number),
     ),
   };

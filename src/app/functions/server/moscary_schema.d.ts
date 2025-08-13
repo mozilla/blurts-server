@@ -523,20 +523,20 @@ export interface components {
       middle_name?: string;
       /** Format: date */
       birth_date: string;
-      first_names?: (components["schemas"]["ProfileLinkBase"] & {
+      first_names: (components["schemas"]["ProfileLinkBase"] & {
         first_name: string;
       })[];
-      last_names?: (components["schemas"]["ProfileLinkBase"] & {
+      last_names: (components["schemas"]["ProfileLinkBase"] & {
         last_name: string;
       })[];
-      middle_names?: (components["schemas"]["ProfileLinkBase"] & {
+      middle_names: (components["schemas"]["ProfileLinkBase"] & {
         middle_name: string;
       })[];
-      emails?: (components["schemas"]["ProfileLinkBase"] & {
+      emails: (components["schemas"]["ProfileLinkBase"] & {
         /** Format: email */
         email: string;
       })[];
-      phone_numbers?: (components["schemas"]["ProfileLinkBase"] & {
+      phone_numbers: (components["schemas"]["ProfileLinkBase"] & {
         number: string;
       })[];
       addresses: (components["schemas"]["ProfileLinkBase"] & {

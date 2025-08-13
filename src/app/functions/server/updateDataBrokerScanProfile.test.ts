@@ -57,6 +57,7 @@ const currentMoscaryProfileDetails: MoscaryData["Profile"] = {
       number: "8005553534",
     },
   ],
+  emails: [],
 };
 
 const newProfileDetails: UpdateableProfileDetails = {
