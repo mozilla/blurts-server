@@ -255,7 +255,13 @@ function EditProfileFormInputs(props: {
               })
             }
             name={`${props.profileDataKey}-0`}
-            value={primaryPhoneItem.value ?? ""}
+            value={
+              // `.value` is only `null` if the user entered an invalid phone number,
+              // but because it is first passed to `formatPhone`, all resulting phone
+              // numbers are valid, so this path shouldn't usually be hit:
+              /* c8 ignore next */
+              primaryPhoneItem.value ?? ""
+            }
             isInvalid={!primaryPhoneItem.isValid}
             label={l10n.getString(
               "settings-edit-profile-info-form-input-label-primary-phone-number",
@@ -290,7 +296,13 @@ function EditProfileFormInputs(props: {
                           })
                         }
                         name={inputKey}
-                        value={item.value ?? ""}
+                        value={
+                          // `.value` is only `null` if the user entered an invalid phone number,
+                          // but because it is first passed to `formatPhone`, all resulting phone
+                          // numbers are valid, so this path shouldn't usually be hit:
+                          /* c8 ignore next */
+                          item.value ?? ""
+                        }
                         isInvalid={!item.isValid || item.isDuplicate}
                         label={l10n.getString(
                           "settings-edit-profile-info-form-input-label-other-phone-number",

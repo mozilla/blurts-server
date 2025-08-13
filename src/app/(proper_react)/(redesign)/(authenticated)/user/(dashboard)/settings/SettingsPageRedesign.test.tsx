@@ -47,6 +47,7 @@ import {
   mockedProfileDataMin,
   mockedVerifiedEmailFourth,
 } from "./stories/settingsMockData";
+import { parseIso8601Datetime } from "../../../../../../../utils/parse";
 
 describe("Settings page redesign", () => {
   describe("Edit your info (non-US users)", () => {
@@ -529,7 +530,9 @@ describe("Settings page redesign", () => {
       expect(lastNameInput).toHaveValue("Last01");
 
       const dobInput = screen.getByText(
-        mockedProfileDataMin.date_of_birth.toLocaleDateString("en", {
+        parseIso8601Datetime(
+          mockedProfileDataMin.birth_date,
+        ).toLocaleDateString("en", {
           dateStyle: "short",
           timeZone: "UTC",
         }),
@@ -734,6 +737,39 @@ describe("Settings page redesign", () => {
         inputs[1].parentElement as HTMLElement,
       ).getByText(/Remove duplicate/);
       expect(duplicateErrorMessage).toBeInTheDocument();
+    });
+
+    it("hides non-number characters in phone number form fields", async () => {
+      const user = userEvent.setup();
+      const ComposedStory = composeStory(
+        SettingsDetailsAboutYouMinDetails,
+        SettingsDetailsAboutYou,
+      );
+      render(<ComposedStory />);
+
+      const primaryPhoneInputField = screen.getByLabelText(
+        "Primary phone number",
+      );
+      await act(async () => {
+        await user.type(primaryPhoneInputField, "aa]");
+      });
+      expect(primaryPhoneInputField).toHaveValue("");
+
+      const addButton = screen.getByRole("button", {
+        name: "Add more numbers",
+      });
+      await act(async () => {
+        await user.click(addButton);
+      });
+
+      const secondaryPhoneInputField =
+        screen.getByLabelText("Other phone number");
+      await act(async () => {
+        await user.clear(secondaryPhoneInputField);
+        await user.type(secondaryPhoneInputField, "aa5678]");
+      });
+
+      expect(secondaryPhoneInputField).toHaveValue("(567) 8");
     });
 
     it.each([

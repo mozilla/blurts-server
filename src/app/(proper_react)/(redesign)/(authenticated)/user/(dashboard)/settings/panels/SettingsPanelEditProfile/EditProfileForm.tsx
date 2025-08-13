@@ -165,8 +165,6 @@ const validateProfileFormData = (formData: NormalizedProfileData) => {
           );
           break;
         }
-        default:
-          break;
       }
       return formDataValidated;
     },
@@ -337,6 +335,8 @@ function EditProfileForm(props: {
 function normalizeProfileData(
   profileData: OnerepProfileRow | MoscaryData["Profile"],
 ): NormalizedProfileData {
+  // MNTOR-4531: OneRep code paths will be phased out:
+  /* c8 ignore next 8 */
   if (isOnerepProfileRow(profileData)) {
     return {
       ...profileData,
