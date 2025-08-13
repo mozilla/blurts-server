@@ -133,14 +133,12 @@ function ProfileInfoSection({
   const { first_name, middle_name, last_name } = profileData;
   const date_of_birth: Date | null =
     (profileData as OnerepProfileRow).date_of_birth ??
-    (typeof (profileData as MoscaryData["Profile"]).birth_date === "string"
-      ? parseIso8601Datetime((profileData as MoscaryData["Profile"]).birth_date)
-      : null);
-  const first_names = profileData.first_names ?? [];
-  const middle_names = profileData.middle_names ?? [];
-  const last_names = profileData.last_names ?? [];
-  const phone_numbers = profileData.phone_numbers ?? [];
-  const addresses = profileData.addresses ?? [];
+    parseIso8601Datetime((profileData as MoscaryData["Profile"]).birth_date);
+  const first_names = profileData.first_names;
+  const middle_names = profileData.middle_names;
+  const last_names = profileData.last_names;
+  const phone_numbers = profileData.phone_numbers;
+  const addresses = profileData.addresses;
   const dateOfBirthString = date_of_birth.toLocaleDateString(getLocale(l10n), {
     dateStyle: "short",
     timeZone: "UTC",
