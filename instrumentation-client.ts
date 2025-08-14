@@ -56,18 +56,6 @@ function getEnvironment() {
   if (document.location.origin === "https://monitor-stage.allizom.org") {
     return "stage";
   }
-  if (
-    document.location.origin ===
-    "https://private-stage.monitor.nonprod.webservices.mozgcp.net"
-  ) {
-    return "private-stage";
-  }
-  if (
-    document.location.origin ===
-    "https://private-dev.monitor.nonprod.webservices.mozgcp.net"
-  ) {
-    return "private-dev";
-  }
   if (document.location.origin === "https://fx-breach-alerts.herokuapp.com") {
     return "heroku";
   }
