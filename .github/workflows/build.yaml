@@ -8,10 +8,6 @@ on:
 
 jobs:
   npm-build:
-    # Define permissions at the job level
-    permissions:
-      contents: "read" # Needed for checkout
-
     runs-on: ubuntu-latest
 
     steps:
