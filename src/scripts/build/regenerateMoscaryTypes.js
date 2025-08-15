@@ -10,7 +10,7 @@ import { format, resolveConfig } from "prettier";
 
 const targetFilePath = "src/app/functions/server/moscary_schema.d.ts";
 const ast = await openapiTS(
-  new URL("/api/v1/spec", process.env.SCAN_REMOVE_API_BASE),
+  new URL("/api/v1/spec", process.env.MOSCARY_API_BASE),
 );
 const prettierConfig = await resolveConfig(targetFilePath);
 const contents = await format(astToString(ast), {

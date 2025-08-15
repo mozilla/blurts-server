@@ -221,8 +221,9 @@ See https://grafana.com/docs/k6/latest/get-started/running-k6/ for more informat
 ##### Moscary
 
 Ensure your environment variable (can be set through `.env.local`)
-`SCAN_REMOVE_API_BASE` is set to the environment you want to test,
-and `SCAN_REMOVE_API_KEY` to a valid key. Then, run:
+`MOSCARY_API_BASE` is set to the environment you want to test,
+and `MOSCARY_API_BEARER_TOKEN` and `MOSCARY_ADMIN_BEARER_TOKEN` to a valid key.
+Then, run:
 
 ```sh
 npm run loadtest:moscary
