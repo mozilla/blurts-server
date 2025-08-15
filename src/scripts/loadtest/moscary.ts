@@ -61,16 +61,22 @@ export const options: Options = {
         },
 };
 
-const apiOrigin = envVars.SCAN_REMOVE_API_BASE;
+const apiOrigin = envVars.MOSCARY_API_BASE;
 if (!apiOrigin) {
   throw new Error(
-    "Environment variable $SCAN_REMOVE_API_BASE is not set. Please set it to the Moscary origin, e.g. `http://localhost:3001`.",
+    "Environment variable $MOSCARY_API_BASE is not set. Please set it to the Moscary origin, e.g. `http://localhost:3001`.",
   );
 }
-const apiKey = envVars.SCAN_REMOVE_API_KEY;
-if (!apiKey) {
+const apiToken = envVars.MOSCARY_API_BEARER_TOKEN;
+if (!apiToken) {
   throw new Error(
-    "Environment variable $SCAN_REMOVE_API_KEY is not set. Please set it to the API key for the Moscary API, e.g. `1234567890abcdef`.",
+    "Environment variable $MOSCARY_API_BEARER_TOKEN is not set. Please set it to the API key for the Moscary API, e.g. `1234567890abcdef`.",
+  );
+}
+const adminApiToken = envVars.MOSCARY_ADMIN_BEARER_TOKEN;
+if (!adminApiToken) {
+  throw new Error(
+    "Environment variable $MOSCARY_ADMIN_BEARER_TOKEN is not set. Please set it to the admin API key for the Moscary API, e.g. `1234567890abcdef`.",
   );
 }
 
@@ -99,7 +105,7 @@ const virtualUserRun = () => {
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${apiKey}`,
+            Authorization: `Bearer ${apiToken}`,
           },
         },
       );
@@ -113,7 +119,7 @@ const virtualUserRun = () => {
           {
             tags: { name: "POST /api/v1/profiles/{{profile_id}}/scans/" },
             headers: {
-              Authorization: `Bearer ${apiKey}`,
+              Authorization: `Bearer ${apiToken}`,
             },
           },
         );
@@ -126,7 +132,7 @@ const virtualUserRun = () => {
           {
             tags: { name: "PUT /api/v1/profiles/{{profile_id}}/activate/" },
             headers: {
-              Authorization: `Bearer ${apiKey}`,
+              Authorization: `Bearer ${apiToken}`,
             },
           },
         );
@@ -138,7 +144,7 @@ const virtualUserRun = () => {
     http.del(`${apiOrigin}/api/v1/profiles/${createdProfile!.id}`, null, {
       tags: { name: "DELETE /api/v1/profiles/{{profile_id}}/" },
       headers: {
-        Authorization: `Bearer ${apiKey}`,
+        Authorization: `Bearer ${apiToken}`,
       },
     });
   });

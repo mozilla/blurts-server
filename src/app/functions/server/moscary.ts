@@ -43,13 +43,13 @@ async function moscaryFetch(
   path: `/api/v1/${string}`,
   options: Parameters<typeof fetch>[1] = {},
 ) {
-  const dataBrokerApiBase = process.env.SCAN_REMOVE_API_BASE;
+  const dataBrokerApiBase = process.env.MOSCARY_API_BASE;
   if (!dataBrokerApiBase) {
-    throw new Error("SCAN_REMOVE_API_BASE env var not set");
+    throw new Error("MOSCARY_API_BASE env var not set");
   }
-  const dataBrokerApiKey = process.env.SCAN_REMOVE_API_KEY;
+  const dataBrokerApiKey = process.env.MOSCARY_API_BEARER_TOKEN;
   if (!dataBrokerApiKey) {
-    throw new Error("SCAN_REMOVE_API_KEY env var not set");
+    throw new Error("MOSCARY_API_BEARER_TOKEN env var not set");
   }
 
   const url = new URL(path, dataBrokerApiBase);
