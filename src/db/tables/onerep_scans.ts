@@ -288,7 +288,6 @@ async function addOnerepScanResults(
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-// TODO MOSCARY: Implement manual resolution for Moscary
 async function isOnerepScanResultForSubscriber(params: {
   onerepScanResultId: number;
   subscriberId: number;
@@ -317,7 +316,6 @@ async function isOnerepScanResultForSubscriber(params: {
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-// TODO MOSCARY: Implement manual resolution for Moscary
 async function setOnerepScanResultManualResolution(
   onerepScanResultId: number,
   resolved: boolean,

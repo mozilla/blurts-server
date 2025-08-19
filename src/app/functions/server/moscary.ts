@@ -34,10 +34,6 @@ type CreateProfileRequest = {
   name_suffix?: string;
   middle_name?: string;
 };
-//
-// TODO MOSCARY: Replace references to these with MoscaryData["Scan"] and MoscaryData["ScanResult"]
-export type Scan = Components["schemas"]["Scan"];
-export type ScanResult = Components["schemas"]["ScanResult"];
 
 async function moscaryFetch(
   path: `/api/v1/${string}`,
@@ -61,7 +57,7 @@ async function moscaryFetch(
 }
 
 export async function createProfile(profileData: CreateProfileRequest) {
-  const requestBody: Components["schemas"]["ProfileInput"] = {
+  const requestBody: MoscaryData["ProfileInput"] = {
     first_name: profileData.first_name,
     ...(profileData.middle_name && { middle_name: profileData.middle_name }),
     last_name:
@@ -89,7 +85,7 @@ export async function createProfile(profileData: CreateProfileRequest) {
     );
   }
 
-  const savedProfile: Components["schemas"]["Profile"] = await response.json();
+  const savedProfile: MoscaryData["Profile"] = await response.json();
 
   logger.info("profile_created", { savedProfile });
 
@@ -98,7 +94,7 @@ export async function createProfile(profileData: CreateProfileRequest) {
 
 export async function updateProfile(
   profileId: UUID,
-  profileData: Components["schemas"]["ProfileInput"],
+  profileData: MoscaryData["ProfileInput"],
 ) {
   const {
     first_name,
@@ -143,7 +139,7 @@ export async function updateProfile(
 
 export async function getProfile(
   profileId: UUID,
-): Promise<Components["schemas"]["Profile"]> {
+): Promise<MoscaryData["Profile"]> {
   const response: Response = await moscaryFetch(
     `/api/v1/profiles/${profileId}`,
     {
@@ -217,7 +213,7 @@ export async function deleteProfile(profileId: UUID): Promise<void> {
 
 export async function createScan(
   profileId: UUID,
-): Promise<Components["schemas"]["Scan"]> {
+): Promise<MoscaryData["Scan"]> {
   const response = await moscaryFetch(`/api/v1/profiles/${profileId}/scans`, {
     method: "POST",
   });
@@ -230,7 +226,7 @@ export async function createScan(
     );
   }
 
-  return response.json() as Promise<Components["schemas"]["Scan"]>;
+  return response.json() as Promise<MoscaryData["Scan"]>;
 }
 
 export async function listScans(
@@ -270,7 +266,7 @@ export async function listScanResults(
   options: Partial<{
     page: number;
     per_page: number;
-    status: ScanResult["status"];
+    status: MoscaryData["ScanResult"]["status"];
   }> = {},
 ): Promise<
   Paths["/scan-results"]["get"]["responses"]["200"]["content"]["application/json"]
@@ -342,8 +338,8 @@ export async function isEligibleForFreeScan(
 }
 
 export type ScanData = {
-  scan: null | Components["schemas"]["Scan"];
-  results: NonNullable<Components["schemas"]["ScanResult"][]>;
+  scan: null | MoscaryData["Scan"];
+  results: NonNullable<MoscaryData["ScanResult"][]>;
 };
 
 export async function getScanAndResults(
@@ -366,7 +362,7 @@ export async function getAllScanResults(
 }
 
 export async function resolveScanResult(
-  scanResultId: NonNullable<Components["schemas"]["ScanResult"]["id"]>,
+  scanResultId: NonNullable<MoscaryData["ScanResult"]["id"]>,
 ): Promise<
   Paths["/scan-results/{id}/resolve"]["post"]["responses"]["200"]["content"]["application/json"]
 > {
@@ -390,7 +386,7 @@ export async function resolveScanResult(
 }
 
 export async function unresolveScanResult(
-  scanResultId: NonNullable<Components["schemas"]["ScanResult"]["id"]>,
+  scanResultId: NonNullable<MoscaryData["ScanResult"]["id"]>,
 ): Promise<
   Paths["/scan-results/{id}/unresolve"]["post"]["responses"]["200"]["content"]["application/json"]
 > {
@@ -438,7 +434,7 @@ export async function unresolveScanResult(
 export async function fetchAllPages<Data>(
   fetchFunction: (
     _page: number,
-  ) => Promise<{ data?: Data[]; meta?: Components["schemas"]["Meta"] }>,
+  ) => Promise<{ data?: Data[]; meta?: MoscaryData["Meta"] }>,
 ): Promise<Data[]> {
   const firstPage = await fetchFunction(1);
   const dataList: Data[][] = firstPage.data ? [firstPage.data] : [];
@@ -459,7 +455,7 @@ export async function fetchAllPages<Data>(
 
 export async function fetchLatestScanForProfile(
   profileId: SubscriberRow["moscary_id"],
-  reason?: Scan["reason"],
+  reason?: MoscaryData["Scan"]["reason"],
 ): Promise<
   | Paths["/profiles/{profile_id}/scans"]["get"]["responses"]["200"]["content"]["application/json"]["data"][0]
   | undefined
