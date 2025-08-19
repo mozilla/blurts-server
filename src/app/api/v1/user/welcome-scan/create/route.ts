@@ -148,7 +148,6 @@ export async function POST(
         if (subscriber.moscary_id === null) {
           const profileId = await createProfile(profileData);
           await setMoscaryId(subscriber, profileId);
-          //
           // Start exposure scan
           const scan = await createScan(profileId);
           logger.info("scan_created", {
