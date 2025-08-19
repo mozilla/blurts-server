@@ -19,11 +19,11 @@ import { ExperimentData } from "../../../../telemetry/generated/nimbus/experimen
 import SparkleImage from "../assets/sparkle.png";
 import { isDataBrokerUnderMaintenance } from "../../../(proper_react)/(redesign)/(authenticated)/user/(dashboard)/dashboard/View";
 import { UpsellLinkButton } from "../toolbar/UpsellBadge";
-import { ScanResult } from "../../../functions/server/moscary";
+import type { MoscaryData } from "../../../functions/server/moscary";
 import { parseIso8601Datetime } from "../../../../utils/parse";
 
 export type ScanResultCardProps = {
-  scanResult: OnerepScanResultDataBrokerRow | ScanResult;
+  scanResult: OnerepScanResultDataBrokerRow | MoscaryData["ScanResult"];
   locale: string;
   resolutionCta: ReactNode;
   isPremiumUser: boolean;

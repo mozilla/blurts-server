@@ -15,10 +15,10 @@ import { ScanResultCard } from "../../../../../../../../../components/client/exp
 import { FeatureFlagName } from "../../../../../../../../../../db/tables/featureFlags";
 import { isOneRepScanResult } from "../../../../../../../../../functions/universal/onerep";
 import { resolveScanResult } from "./actions";
-import type { ScanResult } from "../../../../../../../../../functions/server/moscary";
+import type { MoscaryData } from "../../../../../../../../../functions/server/moscary";
 
 export type Props = {
-  scanResult: OnerepScanResultDataBrokerRow | ScanResult;
+  scanResult: OnerepScanResultDataBrokerRow | MoscaryData["ScanResult"];
   isPremiumUser: boolean;
   isEligibleForPremium: boolean;
   isExpanded: boolean;
@@ -69,7 +69,7 @@ export const RemovalCard = (props: Props) => {
         {
           ...props.scanResult,
           manually_resolved: isResolved,
-        } as OnerepScanResultDataBrokerRow | ScanResult
+        } as OnerepScanResultDataBrokerRow | MoscaryData["ScanResult"]
       }
       isOnManualRemovePage={true}
       isPremiumUser={props.isPremiumUser}

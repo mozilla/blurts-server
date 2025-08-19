@@ -19,7 +19,6 @@ export type ResolveScanResultResponse =
     }
   | { success: false; message: string };
 
-// TODO MOSCARY: Implement manual resolution for Moscary
 export async function POST(
   req: NextRequest,
   props: { params: Promise<{ onerepScanResultId: string }> },

@@ -60,8 +60,8 @@ import { useLocalDismissal } from "../../../../../../hooks/useLocalDismissal";
 import { DataBrokerRemovalTime } from "../../../../../../functions/server/getDataBrokerRemovalTimeEstimates";
 import { UserAnnouncementWithDetails } from "../../../../../../../db/tables/user_announcements";
 import type {
+  MoscaryData,
   ScanData,
-  ScanResult,
 } from "../../../../../../functions/server/moscary";
 import { parseIso8601Datetime } from "../../../../../../../utils/parse";
 import {
@@ -160,10 +160,10 @@ export const View = (props: Props) => {
       return {
         ...scanResult,
         status: "optout_in_progress",
-      } as ScanResult;
+      } as MoscaryData["ScanResult"];
     }
     return scanResult;
-  }) as OnerepScanResultDataBrokerRow[] | ScanResult[];
+  }) as OnerepScanResultDataBrokerRow[] | MoscaryData["ScanResult"][];
   const adjustedScanData = {
     scan: props.userScanData.scan,
     results: adjustedScanResults,
@@ -204,10 +204,14 @@ export const View = (props: Props) => {
   const arraySortedByDate = combinedArray.sort((a, b) => {
     const dateA =
       (a as SubscriberBreach).addedDate ||
-      parseIso8601Datetime((a as OnerepScanResultRow | ScanResult).created_at);
+      parseIso8601Datetime(
+        (a as OnerepScanResultRow | MoscaryData["ScanResult"]).created_at,
+      );
     const dateB =
       (b as SubscriberBreach).addedDate ||
-      parseIso8601Datetime((b as OnerepScanResultRow | ScanResult).created_at);
+      parseIso8601Datetime(
+        (b as OnerepScanResultRow | MoscaryData["ScanResult"]).created_at,
+      );
 
     const timestampA = dateA.getTime();
     const timestampB = dateB.getTime();
