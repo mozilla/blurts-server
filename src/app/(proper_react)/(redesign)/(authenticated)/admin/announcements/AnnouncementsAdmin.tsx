@@ -4,7 +4,7 @@
 
 /* c8 ignore start */
 /*
-  This file is excluded from unit test coverage because it's an internal admin-only
+  This file is excluded from unit test coverage because it’s an internal admin-only
   tool and not part of the user-facing experience. It contains minimal logic,
   is not critical to core app functionality, and is tested manually as needed.
 */
@@ -13,15 +13,19 @@
 
 import { useEffect, useState } from "react";
 import styles from "./AnnouncementsAdmin.module.scss";
-import Image from "next/image";
 import { AnnouncementRow } from "knex/types/tables";
 import AnnouncementsModal from "./AnnouncementsModal";
 import { usePathname } from "next/navigation";
 import { LocalizedAnnouncementString } from "../../../../../components/client/toolbar/AnnouncementDialog";
 import { useL10n } from "../../../../../hooks/l10n";
+import { GroupedFluentAnnouncements } from "./getFluentStrings";
+import { ImageWithFallback } from "./ImageWithFallback";
+import { FluentStringsView } from "./FluentStringsView";
+import { AnnouncementsDocsView } from "./DocsView";
 
 type Props = {
   announcements: AnnouncementRow[];
+  fluentStrings: GroupedFluentAnnouncements;
 };
 
 export const AnnouncementsAdmin = (props: Props) => {
@@ -30,7 +34,6 @@ export const AnnouncementsAdmin = (props: Props) => {
   >(props.announcements[0]?.id || null);
   const [activeAnnouncementToEdit, setActiveAnnouncementToEdit] =
     useState<AnnouncementRow | null>(null);
-
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [announcements, setAnnouncements] = useState<AnnouncementRow[]>(
     props.announcements,
@@ -156,315 +159,299 @@ export const AnnouncementsAdmin = (props: Props) => {
     }
   }, [announcements, activeAnnouncementId]);
 
-  // States for each image
-  const [smallImageIsLoading, setSmallImageIsLoading] = useState(true);
-  const [bigImageIsLoading, setBigImageIsLoading] = useState(true);
-  const [smallImageUnavailable, setSmallImageUnavailable] = useState(false);
-  const [bigImageUnavailable, setBigImageUnavailable] = useState(false);
-
   const smallImagePath = `/images/announcements/${activeAnnouncement?.announcement_id.trim()}/small.svg`;
   const bigImagePath = `/images/announcements/${activeAnnouncement?.announcement_id.trim()}/big.svg`;
-
-  useEffect(() => {
-    setSmallImageIsLoading(true);
-    setBigImageIsLoading(true);
-    setSmallImageUnavailable(false);
-    setBigImageUnavailable(false);
-  }, [activeAnnouncementId]);
 
   const sortedAnnouncements = [...announcements].sort((a, b) => {
     return new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime();
   });
+  const [activeTab, setActiveTab] = useState<
+    "announcements" | "strings" | "docs"
+  >("announcements");
+  const [searchQuery, setSearchQuery] = useState("");
 
   return (
     <div className={styles.container}>
-      <div className={styles.wrapper}>
-        {/* List of announcements */}
-        <div className={styles.notificationsWrapper}>
-          <h1>All Announcements</h1>
-          <ul>
-            {sortedAnnouncements.map((notification) => (
-              <li
-                key={notification.id}
-                className={
-                  activeAnnouncementId === notification.id ? styles.active : ""
-                }
-                onClick={() => handleClick(notification.id)}
-              >
-                <div>
-                  <p className={styles.title}>
-                    <span className={styles.missingLabelContainer}>
-                      <LocalizedAnnouncementString
-                        announcement={notification}
-                        type="title"
-                      />
-                      <MissingFluentId
-                        announcement={notification}
-                        type="title"
-                      />
-                    </span>
-                  </p>
-                  <p className={styles.description}>
-                    <span className={styles.missingLabelContainer}>
-                      <LocalizedAnnouncementString
-                        announcement={notification}
-                        type="description"
-                      />
-                      <MissingFluentId
-                        announcement={notification}
-                        type="description"
-                      />
-                    </span>
-                  </p>
-                </div>
-                <div className={styles.pills}>
-                  <div
-                    className={`${styles.statusPill} ${styles[notification.label]}`}
-                  >
-                    {notification.label}
-                  </div>
-                </div>
-              </li>
-            ))}
-            <button
-              className={styles.addButton}
-              onClick={() => setIsModalOpen(true)}
-            >
-              + Add new announcement
-            </button>
-          </ul>
-        </div>
-
-        {/* Announcement Details */}
-        {activeAnnouncement && (
-          <div className={styles.notificationSettings}>
-            <h2>Details</h2>
-            <dl>
-              <dt>Announcement ID</dt>
-              <dd>{activeAnnouncement.announcement_id}</dd>
-
-              <dt>Title</dt>
-              <dd>
-                <span className={styles.missingLabelContainer}>
-                  <LocalizedAnnouncementString
-                    announcement={activeAnnouncement}
-                    type="title"
-                  />
-                  <MissingFluentId
-                    announcement={activeAnnouncement}
-                    type="title"
-                  />
-                </span>
-              </dd>
-
-              <dt>Description</dt>
-              <dd>
-                <span className={styles.missingLabelContainer}>
-                  <LocalizedAnnouncementString
-                    announcement={activeAnnouncement}
-                    type="description"
-                  />
-                  <MissingFluentId
-                    announcement={activeAnnouncement}
-                    type="description"
-                  />
-                </span>
-              </dd>
-
-              <dt>Small Image</dt>
-              <dd>
-                {smallImageIsLoading && !smallImageUnavailable && (
-                  <div className={styles.loader}>Loading...</div>
-                )}
-                {smallImageUnavailable ? (
-                  <Image
-                    alt="Fallback image"
-                    width={500}
-                    height={300}
-                    key={activeAnnouncement.id}
-                    className={styles.smallImage}
-                    src="/images/announcements/fallback/small.svg"
-                    onLoadingComplete={() => setSmallImageIsLoading(false)}
-                  />
-                ) : (
-                  <Image
-                    alt="Small Image"
-                    width={500}
-                    height={300}
-                    key={activeAnnouncement.id}
-                    src={smallImagePath}
-                    className={styles.smallImage}
-                    onLoadingComplete={() => setSmallImageIsLoading(false)}
-                    onError={() => setSmallImageUnavailable(true)}
-                  />
-                )}
-              </dd>
-
-              {/* Big Image */}
-              <dt>Big Image</dt>
-              <dd>
-                {bigImageIsLoading && !bigImageUnavailable && (
-                  <div className={styles.loader}>Loading...</div>
-                )}
-                {bigImageUnavailable ? (
-                  <Image
-                    alt="Fallback image"
-                    width={500}
-                    height={300}
-                    key={activeAnnouncement.id}
-                    className={styles.bigImage}
-                    src="/images/announcements/fallback/big.svg"
-                    onLoadingComplete={() => setBigImageIsLoading(false)}
-                  />
-                ) : (
-                  <Image
-                    alt="Announcement preview"
-                    width={500}
-                    height={300}
-                    key={activeAnnouncement.id}
-                    src={bigImagePath}
-                    className={styles.bigImage}
-                    onLoadingComplete={() => setBigImageIsLoading(false)}
-                    onError={() => setBigImageUnavailable(true)}
-                  />
-                )}
-              </dd>
-              <dt>CTA Label</dt>
-              <dd>
-                <span className={styles.missingLabelContainer}>
-                  <LocalizedAnnouncementString
-                    announcement={activeAnnouncement}
-                    type="cta-label"
-                  />
-                  <MissingFluentId
-                    announcement={activeAnnouncement}
-                    type="cta-label"
-                  />
-                </span>
-              </dd>
-
-              <dt>CTA Link</dt>
-              <dd>{activeAnnouncement.cta_link}</dd>
-
-              <dt>Status</dt>
-              <dd>{activeAnnouncement.label}</dd>
-
-              <dt>Audience</dt>
-              <dd>{activeAnnouncement.audience}</dd>
-
-              <dt>Created At</dt>
-              <dd>
-                {new Date(activeAnnouncement.created_at).toLocaleString()}
-              </dd>
-
-              <dt>Updated At</dt>
-              <dd>
-                {new Date(activeAnnouncement.updated_at).toLocaleString()}
-              </dd>
-            </dl>
-
-            <div className={styles.buttons}>
-              <button
-                className={styles.deleteBtn}
-                onClick={() =>
-                  void handleDeleteAnnouncement(
-                    activeAnnouncement.announcement_id,
-                  )
-                }
-              >
-                Delete
-              </button>
-              <button
-                onClick={() =>
-                  void handleEditAnnouncement(
-                    activeAnnouncement.announcement_id,
-                  )
-                }
-              >
-                Edit
-              </button>
-            </div>
-          </div>
-        )}
-        {/* Preview Modal */}
-        {activeAnnouncement && (
-          <div className={styles.previewModalWrapper}>
-            <div className={styles.previewModal}>
-              {bigImageIsLoading && (
-                <div className={styles.loader}>Loading...</div>
-              )}
-              {bigImageUnavailable ? (
-                <Image
-                  alt="Fallback image"
-                  width={500}
-                  height={300}
-                  key={activeAnnouncement.id}
-                  src="/images/announcements/fallback/big.svg"
-                  onLoadingComplete={() => setBigImageIsLoading(false)}
-                />
-              ) : (
-                <Image
-                  alt="Announcement preview"
-                  width={500}
-                  height={300}
-                  key={activeAnnouncement.id}
-                  src={bigImagePath}
-                  onLoadingComplete={() => setBigImageIsLoading(false)}
-                  onError={() => setBigImageUnavailable(true)}
-                />
-              )}
-              <dl>
-                <dt>
-                  <span className={styles.missingLabelContainer}>
-                    <LocalizedAnnouncementString
-                      announcement={activeAnnouncement}
-                      type="title"
-                    />
-                    <MissingFluentId
-                      announcement={activeAnnouncement}
-                      type="title"
-                    />
-                  </span>
-                </dt>
-                <dd>
-                  <span className={styles.missingLabelContainer}>
-                    <LocalizedAnnouncementString
-                      announcement={activeAnnouncement}
-                      type="description"
-                    />
-                    <MissingFluentId
-                      announcement={activeAnnouncement}
-                      type="title"
-                    />
-                  </span>
-                </dd>
-              </dl>
-              <a href={activeAnnouncement.cta_link}>
-                <span className={styles.missingLabelContainer}>
-                  <LocalizedAnnouncementString
-                    announcement={activeAnnouncement}
-                    type="cta-label"
-                  />
-                  <MissingFluentId
-                    announcement={activeAnnouncement}
-                    type="cta-label"
-                  />
-                </span>
-              </a>
-            </div>
-          </div>
-        )}
+      <div className={styles.tabBar}>
+        <button
+          className={`${styles.tabButton} ${
+            activeTab === "announcements" ? styles.activeTab : ""
+          }`}
+          onClick={() => setActiveTab("announcements")}
+        >
+          Announcements
+        </button>
+        <button
+          className={`${styles.tabButton} ${
+            activeTab === "strings" ? styles.activeTab : ""
+          }`}
+          onClick={() => setActiveTab("strings")}
+        >
+          Fluent Strings
+        </button>
+        <button
+          className={`${styles.tabButton} ${
+            activeTab === "docs" ? styles.activeTab : ""
+          }`}
+          onClick={() => setActiveTab("docs")}
+        >
+          Docs
+        </button>
       </div>
+      {/* <View /> */}
+      {activeTab === "announcements" && (
+        <>
+          {/* Announcements Block */}
+          <div className={styles.wrapper}>
+            {/* List of announcements */}
+            <div className={styles.notificationsWrapper}>
+              <h1>All Announcements</h1>
+              <ul>
+                {sortedAnnouncements.map((notification) => (
+                  <li
+                    key={notification.id}
+                    className={
+                      activeAnnouncementId === notification.id
+                        ? styles.active
+                        : ""
+                    }
+                    onClick={() => handleClick(notification.id)}
+                  >
+                    <div>
+                      <p className={styles.title}>
+                        <span className={styles.missingLabelContainer}>
+                          <LocalizedAnnouncementString
+                            announcement={notification}
+                            type="title"
+                          />
+                          <MissingFluentId
+                            announcement={notification}
+                            type="title"
+                          />
+                        </span>
+                      </p>
+                      <p className={styles.description}>
+                        <span className={styles.missingLabelContainer}>
+                          <LocalizedAnnouncementString
+                            announcement={notification}
+                            type="description"
+                          />
+                          <MissingFluentId
+                            announcement={notification}
+                            type="description"
+                          />
+                        </span>
+                      </p>
+                    </div>
+                    <div className={styles.pills}>
+                      <div
+                        className={`${styles.statusPill} ${styles[notification.label]}`}
+                      >
+                        {notification.label}
+                      </div>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+              <button
+                className={styles.addButton}
+                onClick={() => setIsModalOpen(true)}
+              >
+                + Add new announcement
+              </button>
+            </div>
 
-      <AnnouncementsModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        announcementToEdit={activeAnnouncementToEdit}
-        onAddAnnouncement={handleAddAnnouncement}
-        onUpdateAnnouncement={handleUpdateAnnouncement}
-        isSubmitting={isSubmitting}
-        setIsSubmitting={setIsSubmitting}
-      />
+            {/* Announcement Details */}
+            {activeAnnouncement && (
+              <div className={styles.notificationSettings}>
+                <h2>Details</h2>
+                <dl>
+                  <dt>Announcement ID</dt>
+                  <dd>{activeAnnouncement.announcement_id}</dd>
+
+                  <dt>Title</dt>
+                  <dd>
+                    <span className={styles.missingLabelContainer}>
+                      <LocalizedAnnouncementString
+                        announcement={activeAnnouncement}
+                        type="title"
+                      />
+                      <MissingFluentId
+                        announcement={activeAnnouncement}
+                        type="title"
+                      />
+                    </span>
+                  </dd>
+
+                  <dt>Description</dt>
+                  <dd>
+                    <span className={styles.missingLabelContainer}>
+                      <LocalizedAnnouncementString
+                        announcement={activeAnnouncement}
+                        type="description"
+                      />
+                      <MissingFluentId
+                        announcement={activeAnnouncement}
+                        type="description"
+                      />
+                    </span>
+                  </dd>
+
+                  <dt>Small Image</dt>
+                  <dd>
+                    <ImageWithFallback
+                      src={smallImagePath}
+                      fallbackSrc="/images/announcements/fallback/small.svg"
+                      alt="Small Image"
+                      width={500}
+                      height={300}
+                      className={styles.smallImage}
+                    />
+                  </dd>
+
+                  {/* Big Image */}
+                  <dt>Big Image</dt>
+                  <dd>
+                    <ImageWithFallback
+                      src={bigImagePath}
+                      fallbackSrc="/images/announcements/fallback/big.svg"
+                      alt="Big Image"
+                      width={500}
+                      height={300}
+                      className={styles.bigImage}
+                    />
+                  </dd>
+                  <dt>CTA Label</dt>
+                  <dd>
+                    <span className={styles.missingLabelContainer}>
+                      <LocalizedAnnouncementString
+                        announcement={activeAnnouncement}
+                        type="cta-label"
+                      />
+                      <MissingFluentId
+                        announcement={activeAnnouncement}
+                        type="cta-label"
+                      />
+                    </span>
+                  </dd>
+
+                  <dt>CTA Link</dt>
+                  <dd>{activeAnnouncement.cta_link}</dd>
+
+                  <dt>Status</dt>
+                  <dd>{activeAnnouncement.label}</dd>
+
+                  <dt>Audience</dt>
+                  <dd>{activeAnnouncement.audience}</dd>
+
+                  <dt>Created At</dt>
+                  <dd>
+                    {new Date(activeAnnouncement.created_at).toLocaleString()}
+                  </dd>
+
+                  <dt>Updated At</dt>
+                  <dd>
+                    {new Date(activeAnnouncement.updated_at).toLocaleString()}
+                  </dd>
+                </dl>
+
+                <div className={styles.buttons}>
+                  <button
+                    className={styles.deleteBtn}
+                    onClick={() =>
+                      void handleDeleteAnnouncement(
+                        activeAnnouncement.announcement_id,
+                      )
+                    }
+                  >
+                    Delete
+                  </button>
+                  <button
+                    onClick={() =>
+                      void handleEditAnnouncement(
+                        activeAnnouncement.announcement_id,
+                      )
+                    }
+                  >
+                    Edit
+                  </button>
+                </div>
+              </div>
+            )}
+            {/* Preview Modal */}
+            {activeAnnouncement && (
+              <div className={styles.previewModalWrapper}>
+                <div className={styles.previewModal}>
+                  <ImageWithFallback
+                    src={bigImagePath}
+                    fallbackSrc="/images/announcements/fallback/big.svg"
+                    alt="Big Image"
+                    width={500}
+                    height={300}
+                    className={styles.bigImage}
+                  />
+                  <dl>
+                    <dt>
+                      <span className={styles.missingLabelContainer}>
+                        <LocalizedAnnouncementString
+                          announcement={activeAnnouncement}
+                          type="title"
+                        />
+                        <MissingFluentId
+                          announcement={activeAnnouncement}
+                          type="title"
+                        />
+                      </span>
+                    </dt>
+                    <dd>
+                      <span className={styles.missingLabelContainer}>
+                        <LocalizedAnnouncementString
+                          announcement={activeAnnouncement}
+                          type="description"
+                        />
+                        <MissingFluentId
+                          announcement={activeAnnouncement}
+                          type="title"
+                        />
+                      </span>
+                    </dd>
+                  </dl>
+                  <a href={activeAnnouncement.cta_link}>
+                    <span className={styles.missingLabelContainer}>
+                      <LocalizedAnnouncementString
+                        announcement={activeAnnouncement}
+                        type="cta-label"
+                      />
+                      <MissingFluentId
+                        announcement={activeAnnouncement}
+                        type="cta-label"
+                      />
+                    </span>
+                  </a>
+                </div>
+              </div>
+            )}
+          </div>
+          <AnnouncementsModal
+            isOpen={isModalOpen}
+            onClose={() => setIsModalOpen(false)}
+            announcementToEdit={activeAnnouncementToEdit}
+            onAddAnnouncement={handleAddAnnouncement}
+            onUpdateAnnouncement={handleUpdateAnnouncement}
+            isSubmitting={isSubmitting}
+            setIsSubmitting={setIsSubmitting}
+          />
+        </>
+      )}
+      {activeTab === "strings" && (
+        <FluentStringsView
+          announcements={announcements}
+          fluentStrings={props.fluentStrings}
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+        />
+      )}
+      {activeTab === "docs" && <AnnouncementsDocsView />}
     </div>
   );
 };
