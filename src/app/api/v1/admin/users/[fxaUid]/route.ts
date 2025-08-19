@@ -37,6 +37,7 @@ export type GetUserStateResponseBody = {
   success: true;
   subscriberId: SubscriberRow["id"];
   moscaryId: SubscriberRow["moscary_id"];
+  /** @deprecated */
   onerepProfileId: SubscriberRow["onerep_profile_id"];
   createdAt: SubscriberRow["created_at"];
   updatedAt: SubscriberRow["updated_at"];
@@ -105,6 +106,7 @@ export async function GET(
 export type UserStateAction =
   | "subscribe"
   | "unsubscribe"
+  /** @deprecated */
   | "delete_onerep_profile"
   /** @deprecated */
   | "delete_onerep_scans"
