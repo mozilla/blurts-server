@@ -282,7 +282,6 @@ export async function POST(request: NextRequest) {
         });
 
         try {
-          // get profile id
           const enabledFeatureFlags = await getEnabledFeatureFlags({
             email: subscriber.primary_email,
           });
