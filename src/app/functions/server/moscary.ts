@@ -14,13 +14,6 @@ import { ISO8601DateString } from "../../../utils/parse";
 import { StateAbbr } from "../../../utils/states";
 import { getSubscriberByFxaUid } from "../../../db/tables/subscribers";
 
-export const monthlyScansQuota = parseInt(
-  (process.env.MONTHLY_SCANS_QUOTA as string) ?? "0",
-);
-export const monthlySubscribersQuota = parseInt(
-  (process.env.MONTHLY_SUBSCRIBERS_QUOTA as string) ?? "0",
-);
-
 export type MoscaryData = Components["schemas"];
 
 type CreateProfileRequest = {
