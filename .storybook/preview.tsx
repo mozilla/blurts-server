@@ -110,14 +110,6 @@ const preview: Preview = {
           }
 
           if (
-            path === "/user/dashboard/fix/data-broker-profiles/automatic-remove"
-          ) {
-            linkTo(
-              "Pages/Logged in/Guided resolution/1d. Automatically resolve brokers",
-            )();
-          }
-
-          if (
             path ===
             "/user/dashboard/fix/high-risk-data-breaches/social-security-number"
           ) {

@@ -24,9 +24,9 @@ import {
   getNextGuidedStep,
 } from "../../../../../../../../../functions/server/getRelevantGuidedSteps";
 import { FixView } from "../../FixView";
-import { TelemetryLink } from "../../../../../../../../../components/client/TelemetryLink";
 import { TelemetryButton } from "../../../../../../../../../components/client/TelemetryButton";
 import { FeatureFlagName } from "../../../../../../../../../../db/tables/featureFlags";
+import { UpsellLinkButton } from "../../../../../../../../../components/client/toolbar/UpsellBadge";
 
 export type Props = {
   scanData: LatestOnerepScanData;
@@ -130,16 +130,12 @@ export function ManualRemoveView(props: Props) {
                   {
                     elems: {
                       subscribe_link: (
-                        <TelemetryLink
-                          href={
-                            props.enabledFeatureFlags.includes(
-                              "SubscriptionPlansPage",
-                            )
-                              ? "/subscription-plans"
-                              : "/user/dashboard/fix/data-broker-profiles/automatic-remove"
-                          }
+                        <UpsellLinkButton
+                          variant="link"
+                          small
+                          enabledFeatureFlags={props.enabledFeatureFlags}
                           eventData={{
-                            link_id: "manual_removal_instructions_upsell",
+                            button_id: "manual_removal_instructions_upsell",
                           }}
                         />
                       ),
@@ -179,25 +175,18 @@ export function ManualRemoveView(props: Props) {
           </div>
         </div>
         <div className={styles.buttonsWrapper}>
-          <TelemetryButton
+          <UpsellLinkButton
             variant="primary"
-            event={{
-              module: "upgradeIntent",
-              name: "click",
-              data: {
-                button_id: "manual_removal_upsell",
-              },
+            small
+            enabledFeatureFlags={props.enabledFeatureFlags}
+            eventData={{
+              button_id: "manual_removal_upsell",
             }}
-            href={
-              props.enabledFeatureFlags.includes("SubscriptionPlansPage")
-                ? "/subscription-plans"
-                : "/user/dashboard/fix/data-broker-profiles/automatic-remove"
-            }
           >
             {l10n.getString(
               "fix-flow-data-broker-profiles-manual-remove-button-remove-for-me",
             )}
-          </TelemetryButton>
+          </UpsellLinkButton>
           <TelemetryButton
             variant="secondary"
             href={stepAfterSkip.href}

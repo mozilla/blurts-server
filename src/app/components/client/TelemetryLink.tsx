@@ -17,7 +17,6 @@ import { OpenInNew } from "../server/Icons";
 export const TelemetryLink = ({
   eventData,
   target,
-  upsell,
   showIcon,
   ...props
 }: {
@@ -25,7 +24,6 @@ export const TelemetryLink = ({
   href: string;
   showIcon?: boolean;
   target?: string;
-  upsell?: boolean;
 } & HTMLAttributes<HTMLAnchorElement>) => {
   const record = useTelemetry();
   const l10n = useL10n();
@@ -54,7 +52,7 @@ export const TelemetryLink = ({
     <Link
       {...props}
       onClick={(event) => {
-        record(upsell ? "upgradeIntent" : "link", "click", eventData);
+        record("link", "click", eventData);
         props.onClick?.(event);
       }}
     />

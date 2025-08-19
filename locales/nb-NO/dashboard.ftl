@@ -5,8 +5,23 @@
 
 # Chart summarizing total exposures
 
+# The number inside <nr> will be displayed in a large font,
+# the label inside <label> will be shown underneath, in a smaller font.
+# Variables:
+#   $nr (number) - Number of unresolved exposures for the user
+exposure-chart-heading =
+    { $nr ->
+        [one] <nr>{ $nr }</nr> <label>datalekkasje</label>
+       *[other] <nr>{ $nr }</nr> <label>datalekkasjer</label>
+    }
+# Variables:
+#   $nr (number) - Number of fixed exposures found for the user
+exposure-chart-heading-fixed = <nr>{ $nr }</nr> <label>løst</label>
 exposure-chart-legend-heading-type = Eksponering
 exposure-chart-legend-heading-nr = Antall
+# Variables:
+#   $nr (number) - Number of a particular type of exposure found for the user
+exposure-chart-legend-value-nr = { $nr }×
 exposure-chart-caption = Dette diagrammet viser hvor mange ganger dine opplysninger har blitt aktivt eksponert.
 # Variables:
 #   $total_fixed_exposures_num (number) - Number of fixed exposures
@@ -29,6 +44,9 @@ modal-fixed-number-of-exposures-title = Om ditt antall løste eksponeringer
 modal-fixed-number-of-exposures-all = Dette diagrammet inkluderer det samlede antallet datalekkasjer som er blitt løst for alle e-postadressene du for tiden holder øye med. Når en eksponering er markert som løst, vil den bli lagt til det samlede antallet her.
 modal-cta-ok = OK
 modal-cta-got-it = Forstått
+open-modal-alt = Åpne modal
+close-modal-alt = Lukk modal
+open-tooltip-alt = Åpne verktøytips
 progress-card-heres-what-we-fixed-headline-all = Du har løst følgende
 progress-card-manually-fixed-headline = Løst manuelt
 dashboard-tab-label-action-needed = Krever handling
@@ -101,8 +119,20 @@ dashboard-top-banner-non-us-protect-your-data-description-line2 =
 dashboard-top-banner-no-exposures-found-title = Ingen eksponeringer funnet
 dashboard-top-banner-non-us-no-exposures-found-description = Gode nyheter! Vi gikk gjennom alle kjente datalekkasjer og fant ingen eksponeringer. Vi vil fortsette å holde øye med e-postadressen din og varsle deg om det skulle skje en ny lekkasje.
 dashboard-no-exposures-label = Ingen eksponeringer funnet
+# Variables:
+# $exposures_resolved_num is the number of exposures the user has resolved.
+dashboard-top-banner-non-us-your-data-is-protected-description =
+    { $exposures_resolved_num ->
+        [one] Godt jobbet – datalekkasjen er løst! Vi fortsetter å overvåke og varsler deg om nye lekkasjer.
+       *[other] Godt jobbet – alle de { $exposures_resolved_num } datalekkasje­ne er løst! Vi fortsetter å overvåke og varsler deg om nye lekkasjer.
+    }
 dashboard-top-banner-monitor-more-cta = Overvåk flere e-postadresser
 
 # About Exposure Indicators Modal
 
+modal-exposure-status-description-all =
+    Vi søker etter eksponeringer i alle kjente datalekkasjer.  
+    Eksponeringene dine vil ha én av følgende statuser:
 modal-exposure-indicator-title = Eksponeringsstatuser
+modal-exposure-indicator-action-needed = Avansert eller manuell handling er nødvendig for å fullføre en handling.
+modal-exposure-indicator-fixed = Eksponeringen er løst, og du trenger ikke å gjøre noe.

@@ -13,6 +13,7 @@ import {
 import { ExtendedReactLocalization } from "../../../../../../../../../functions/l10n";
 import { TelemetryButton } from "../../../../../../../../../components/client/TelemetryButton";
 import { FeatureFlagName } from "../../../../../../../../../../db/tables/featureFlags";
+import { UpsellLinkButton } from "../../../../../../../../../components/client/toolbar/UpsellBadge";
 
 export type Props = {
   data: StepDeterminationData;
@@ -63,25 +64,17 @@ export const ViewDataBrokersView = (props: Props) => {
           <DataBrokerProfiles data={props.data.latestScanData?.results ?? []} />
         </div>
         <div className={styles.buttonsWrapper}>
-          <TelemetryButton
+          <UpsellLinkButton
             variant="primary"
-            href={
-              props.enabledFeatureFlags.includes("SubscriptionPlansPage")
-                ? "/subscription-plans"
-                : "/user/dashboard/fix/data-broker-profiles/automatic-remove"
-            }
-            event={{
-              module: "upgradeIntent",
-              name: "click",
-              data: {
-                button_id: "guided_experience_upsell",
-              },
+            enabledFeatureFlags={props.enabledFeatureFlags}
+            eventData={{
+              button_id: "guided_experience_upsell",
             }}
           >
             {l10n.getString(
               "fix-flow-data-broker-profiles-view-data-broker-profiles-button-remove-for-me",
             )}
-          </TelemetryButton>
+          </UpsellLinkButton>
           <TelemetryButton
             variant="secondary"
             href="/user/dashboard/fix/data-broker-profiles/manual-remove"

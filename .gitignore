@@ -13,14 +13,14 @@ dist
 public/logo_cache/
 src/client/images/logo_cache
 
-#e2e
+# Playwright
 **/test-results/
 **/playwright-report/
 **/playwright/.cache/
-**/storageState.json
-state.json
-src/e2e/specs/*-snapshots/**
+**/blob-report/
+**/functional-test-cache/
 **/traces/
+**/*-snapshots/
 
 # Storybook
 */storybook.log

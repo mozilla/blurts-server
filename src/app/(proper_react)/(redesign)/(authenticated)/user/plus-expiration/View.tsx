@@ -17,6 +17,7 @@ import { CloseBtn, OpenInNew } from "../../../../../components/server/Icons";
 import type { applyRenewalCoupon } from "./actions";
 import { useL10n } from "../../../../../hooks/l10n";
 import { FeatureFlagName } from "../../../../../../db/tables/featureFlags";
+import { UpsellLinkButton } from "../../../../../components/client/toolbar/UpsellBadge";
 
 export type Props = {
   subscriber: SubscriberRow;
@@ -45,16 +46,16 @@ export const View = (props: Props) => {
         <div className={styles.wrapper}>
           <h1>{l10n.getString("plus-expiration-error-free-heading")}</h1>
           <p>{l10n.getString("plus-expiration-error-free-content")}</p>
-          <Button
+          <UpsellLinkButton
             variant="primary"
-            href={
-              props.enabledFeatureFlags.includes("SubscriptionPlansPage")
-                ? "/subscription-plans"
-                : "/user/dashboard/action-needed?dialog=subscriptions"
-            }
+            small
+            enabledFeatureFlags={props.enabledFeatureFlags}
+            eventData={{
+              button_id: "plus_expiration_upsell_cta",
+            }}
           >
             {l10n.getString("plus-expiration-error-free-cta-label")}
-          </Button>
+          </UpsellLinkButton>
         </div>
       </RenewalShell>
     );

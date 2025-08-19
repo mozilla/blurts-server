@@ -3,7 +3,12 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { NextRequest } from "next/server";
-import { AuthOptions, Profile as FxaProfile, User } from "next-auth";
+import {
+  AuthOptions,
+  Profile as FxaProfile,
+  LoggerInstance,
+  User,
+} from "next-auth";
 import { logger } from "../../functions/server/logging";
 
 import {
@@ -306,7 +311,33 @@ export const authOptions: AuthOptions = {
       logger.debug("logout", message.token.subscriber?.id ?? undefined);
     },
   },
+  logger: {
+    error(code: string, metadata?: unknown) {
+      logger.error(code, ensureWinstonMetadata(metadata));
+    },
+    warn(code: string, metadata?: unknown) {
+      logger.warn(code, ensureWinstonMetadata(metadata));
+    },
+    debug(code: string, metadata?: unknown) {
+      logger.debug(code, ensureWinstonMetadata(metadata));
+    },
+  } satisfies LoggerInstance,
 };
+
+function ensureWinstonMetadata(metadata: unknown): Record<string, unknown> {
+  if (!metadata) return {};
+  if (metadata instanceof Error) {
+    return {
+      message: metadata.message,
+      name: metadata.name,
+      stack: metadata.stack,
+    };
+  }
+  if (typeof metadata === "object") {
+    return metadata as Record<string, unknown>;
+  }
+  return { value: metadata };
+}
 
 /**
  * Converts an FxAProfile to a Next-Auth user object
