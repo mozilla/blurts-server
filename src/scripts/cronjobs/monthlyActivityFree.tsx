@@ -23,7 +23,7 @@ import { getSubBreaches } from "../../utils/subscriberBreaches";
 import { HibpLikeDbBreach } from "../../utils/hibp";
 import { getBreaches } from "../../app/functions/server/getBreaches";
 import { getScanAndResults } from "../../app/functions/server/moscary";
-import { getExperimentationId } from "../../app/functions/server/getExperimentationId";
+import { getExperimentationIdFromSubscriber } from "../../app/functions/server/getExperimentationId";
 import { getExperiments } from "../../app/functions/server/getExperiments";
 import { getLocale } from "../../app/functions/universal/getLocale";
 
@@ -145,7 +145,8 @@ async function sendMonthlyActivityEmail(
     subPlatFeatureFlag?.is_enabled ||
     subPlatFeatureFlag?.allow_list?.includes(subscriber.primary_email);
 
-  const experimentationId = await getExperimentationId(subscriber);
+  const experimentationId =
+    await getExperimentationIdFromSubscriber(subscriber);
   const experimentData = await getExperiments({
     experimentationId,
     countryCode: countryCodeGuess,

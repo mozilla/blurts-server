@@ -31,7 +31,7 @@ import {
   activateProfile,
   deactivateProfile,
 } from "../../../functions/server/moscary";
-import { getExperimentationId } from "../../../functions/server/getExperimentationId";
+import { getExperimentationIdFromSubscriber } from "../../../functions/server/getExperimentationId";
 import { getExperiments } from "../../../functions/server/getExperiments";
 import { getLocale } from "../../../functions/universal/getLocale";
 import { getL10n } from "../../../functions/l10n/storybookAndJest";
@@ -291,7 +291,8 @@ export async function POST(request: NextRequest) {
           const enabledFeatureFlags = await getEnabledFeatureFlags({
             email: subscriber.primary_email,
           });
-          const experimentationId = await getExperimentationId(subscriber);
+          const experimentationId =
+            await getExperimentationIdFromSubscriber(subscriber);
           const assumedCountryCode = getSignupLocaleCountry(subscriber);
           const experimentData = await getExperiments({
             experimentationId,

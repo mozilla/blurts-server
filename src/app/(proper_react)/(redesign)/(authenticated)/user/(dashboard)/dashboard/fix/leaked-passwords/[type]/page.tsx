@@ -20,7 +20,7 @@ import { logger } from "../../../../../../../../../functions/server/logging";
 import { hasPremium } from "../../../../../../../../../functions/universal/user";
 import { getEnabledFeatureFlags } from "../../../../../../../../../../db/tables/featureFlags";
 import { getScanAndResults } from "../../../../../../../../../functions/server/moscary";
-import { getExperimentationId } from "../../../../../../../../../functions/server/getExperimentationId";
+import { getExperimentationIdFromUserSession } from "../../../../../../../../../functions/server/getExperimentationId";
 import { getExperiments } from "../../../../../../../../../functions/server/getExperiments";
 import { getLocale } from "../../../../../../../../../functions/universal/getLocale";
 import { getL10n } from "../../../../../../../../../functions/l10n/storybookAndJest";
@@ -56,7 +56,9 @@ export default async function LeakedPasswords(props: LeakedPasswordsProps) {
     redirect("/user/dashboard");
   }
 
-  const experimentationId = await getExperimentationId(session.user);
+  const experimentationId = await getExperimentationIdFromUserSession(
+    session.user,
+  );
   const experimentData = await getExperiments({
     experimentationId,
     countryCode,

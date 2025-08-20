@@ -21,7 +21,7 @@ import { getSha1 } from "../../../../../../../../utils/fxa";
 import { getAttributionsFromCookiesOrDb } from "../../../../../../../functions/server/attributions";
 import { getEnabledFeatureFlags } from "../../../../../../../../db/tables/featureFlags";
 import { getLatestOnerepScan } from "../../../../../../../../db/tables/onerep_scans";
-import { getExperimentationId } from "../../../../../../../functions/server/getExperimentationId";
+import { getExperimentationIdFromUserSession } from "../../../../../../../functions/server/getExperimentationId";
 import { getExperiments } from "../../../../../../../functions/server/getExperiments";
 import { getLocale } from "../../../../../../../functions/universal/getLocale";
 import { getCountryCode } from "../../../../../../../functions/server/getCountryCode";
@@ -119,7 +119,9 @@ export default async function SettingsPage(props: Props) {
   const headersList = await headers();
   const l10n = getL10n(await getAcceptLangHeaderInServerComponents());
   const countryCode = getCountryCode(headersList);
-  const experimentationId = await getExperimentationId(session.user);
+  const experimentationId = await getExperimentationIdFromUserSession(
+    session.user,
+  );
   const experimentData = await getExperiments({
     experimentationId,
     countryCode,

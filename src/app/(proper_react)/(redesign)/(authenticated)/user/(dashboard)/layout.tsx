@@ -14,7 +14,7 @@ import { headers } from "next/headers";
 import { AutoSignIn } from "../../../../../components/client/AutoSignIn";
 import { getCountryCode } from "../../../../../functions/server/getCountryCode";
 import { getEnabledFeatureFlags } from "../../../../../../db/tables/featureFlags";
-import { getExperimentationId } from "../../../../../functions/server/getExperimentationId";
+import { getExperimentationIdFromUserSession } from "../../../../../functions/server/getExperimentationId";
 import { getExperiments } from "../../../../../functions/server/getExperiments";
 import { getLocale } from "../../../../../functions/universal/getLocale";
 import { initializeUserAnnouncements } from "../../../../../../db/tables/user_announcements";
@@ -37,7 +37,9 @@ export default async function Layout({ children }: { children: ReactNode }) {
     email: session.user.email,
   });
   const currentLocale = getLocale(l10n);
-  const experimentationId = await getExperimentationId(session?.user ?? null);
+  const experimentationId = await getExperimentationIdFromUserSession(
+    session?.user ?? null,
+  );
   const experimentData = await getExperiments({
     experimentationId,
     countryCode,

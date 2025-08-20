@@ -29,7 +29,7 @@ import {
   getScanAndResults,
   ScanData,
 } from "../../../../../../../../../functions/server/moscary";
-import { getExperimentationId } from "../../../../../../../../../functions/server/getExperimentationId";
+import { getExperimentationIdFromUserSession } from "../../../../../../../../../functions/server/getExperimentationId";
 import { getExperiments } from "../../../../../../../../../functions/server/getExperiments";
 import { getLocale } from "../../../../../../../../../functions/universal/getLocale";
 
@@ -51,7 +51,9 @@ export default async function WelcomeToPlusPage() {
   const enabledFeatureFlags = await getEnabledFeatureFlags({
     email: session.user.email,
   });
-  const experimentationId = await getExperimentationId(session.user);
+  const experimentationId = await getExperimentationIdFromUserSession(
+    session.user,
+  );
   const countryCode = getCountryCode(await headers());
   const experimentData = await getExperiments({
     experimentationId,

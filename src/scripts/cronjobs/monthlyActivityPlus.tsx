@@ -21,7 +21,7 @@ import { hasPremium } from "../../app/functions/universal/user";
 import { getEnabledFeatureFlags } from "../../db/tables/featureFlags";
 import { logger } from "../../app/functions/server/logging";
 import { getScanAndResults } from "../../app/functions/server/moscary";
-import { getExperimentationId } from "../../app/functions/server/getExperimentationId";
+import { getExperimentationIdFromSubscriber } from "../../app/functions/server/getExperimentationId";
 import { getExperiments } from "../../app/functions/server/getExperiments";
 import { getLocale } from "../../app/functions/universal/getLocale";
 
@@ -82,7 +82,8 @@ async function sendMonthlyActivityEmail(subscriber: SubscriberRow) {
     await refreshStoredScanResults(subscriber.onerep_profile_id);
   }
 
-  const experimentationId = await getExperimentationId(subscriber);
+  const experimentationId =
+    await getExperimentationIdFromSubscriber(subscriber);
   const experimentData = await getExperiments({
     experimentationId,
     countryCode: countryCodeGuess,

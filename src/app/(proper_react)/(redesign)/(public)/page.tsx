@@ -21,7 +21,7 @@ import {
   CONST_DAY_MILLISECONDS,
   CONST_URL_MONITOR_LANDING_PAGE_ID,
 } from "../../../../constants";
-import { getExperimentationId } from "../../../functions/server/getExperimentationId";
+import { getExperimentationIdFromUserSession } from "../../../functions/server/getExperimentationId";
 import { getExperiments } from "../../../functions/server/getExperiments";
 import { getLocale } from "../../../functions/universal/getLocale";
 import { AccountsMetricsFlowProvider } from "../../../../contextProviders/accounts-metrics-flow";
@@ -55,7 +55,9 @@ export default async function Page() {
   const countryCode = getCountryCode(await headers());
   const eligibleForPremium = isEligibleForPremium(countryCode);
 
-  const experimentationId = await getExperimentationId(session?.user ?? null);
+  const experimentationId = await getExperimentationIdFromUserSession(
+    session?.user ?? null,
+  );
   const experimentData = await getExperiments({
     experimentationId,
     countryCode,

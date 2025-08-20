@@ -268,7 +268,7 @@ Used in places where a random identifier is needed:
 
 - as a `nonce` in `src/middleware.ts` for CSP
 - server-side Glean document IDs in `src/app/functions/server/glean.ts`
-- as an experimentation ID for Nimbus in `src/app/functions/server/getUserId.tsx` and `src/app/functions/server/getExperimentationId.ts`
+- as an experimentation ID for Nimbus in `src/app/functions/server/getUserId.tsx` and `src/app/functions/server/getExperimentationIdFromUserSession.ts`
 - for email verification tokens in `src/db/tables/emailAddresses.js`
 
 1. Check that `nonce` is present in `content-security-policy` header for HTTP responses.

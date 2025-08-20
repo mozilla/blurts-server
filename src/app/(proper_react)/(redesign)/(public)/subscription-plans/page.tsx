@@ -17,7 +17,7 @@ import {
   monthlySubscribersQuota,
 } from "../../../../functions/server/onerep";
 import { CONST_DAY_MILLISECONDS } from "../../../../../constants";
-import { getExperimentationId } from "../../../../functions/server/getExperimentationId";
+import { getExperimentationIdFromUserSession } from "../../../../functions/server/getExperimentationId";
 import { getExperiments } from "../../../../functions/server/getExperiments";
 import { getLocale } from "../../../../functions/universal/getLocale";
 import {
@@ -50,7 +50,9 @@ export default async function Page() {
     return redirect("/");
   }
 
-  const experimentationId = await getExperimentationId(session?.user ?? null);
+  const experimentationId = await getExperimentationIdFromUserSession(
+    session?.user ?? null,
+  );
   const experimentData = await getExperiments({
     experimentationId,
     countryCode,

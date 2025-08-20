@@ -29,7 +29,7 @@ import { setProfileDetails } from "../../../../../../db/tables/onerep_profiles";
 import { StateAbbr } from "../../../../../../utils/states";
 import { ISO8601DateString } from "../../../../../../utils/parse";
 import { getCountryCode } from "../../../../../functions/server/getCountryCode";
-import { getExperimentationId } from "../../../../../functions/server/getExperimentationId";
+import { getExperimentationIdFromUserSession } from "../../../../../functions/server/getExperimentationId";
 import { getExperiments } from "../../../../../functions/server/getExperiments";
 import { getLocale } from "../../../../../functions/universal/getLocale";
 import {
@@ -72,7 +72,9 @@ export async function POST(
   });
 
   const countryCode = getCountryCode(await headers());
-  const experimentationId = await getExperimentationId(session.user);
+  const experimentationId = await getExperimentationIdFromUserSession(
+    session.user,
+  );
   const experimentData = await getExperiments({
     experimentationId,
     countryCode,

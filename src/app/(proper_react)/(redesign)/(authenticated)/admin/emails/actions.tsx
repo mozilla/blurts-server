@@ -47,7 +47,7 @@ import {
 import { CONST_DAY_MILLISECONDS } from "../../../../../../constants";
 import { getEnabledFeatureFlags } from "../../../../../../db/tables/featureFlags";
 import { getScanAndResults } from "../../../../../functions/server/moscary";
-import { getExperimentationId } from "../../../../../functions/server/getExperimentationId";
+import { getExperimentationIdFromUserSession } from "../../../../../functions/server/getExperimentationId";
 import { getExperiments } from "../../../../../functions/server/getExperiments";
 import { getLocale } from "../../../../../functions/universal/getLocale";
 
@@ -160,7 +160,9 @@ export async function triggerMonthlyActivityFree(emailAddress: string) {
     email: subscriber.primary_email,
   });
   const countryCode = getCountryCode(await headers());
-  const experimentationId = await getExperimentationId(session.user);
+  const experimentationId = await getExperimentationIdFromUserSession(
+    session.user,
+  );
   const experimentData = await getExperiments({
     experimentationId,
     countryCode,
@@ -218,7 +220,9 @@ export async function triggerMonthlyActivityPlus(emailAddress: string) {
     email: subscriber.primary_email,
   });
   const countryCode = getCountryCode(await headers());
-  const experimentationId = await getExperimentationId(session.user);
+  const experimentationId = await getExperimentationIdFromUserSession(
+    session.user,
+  );
   const experimentData = await getExperiments({
     experimentationId,
     countryCode,
@@ -271,7 +275,9 @@ export async function triggerBreachAlert(emailAddress: string) {
   const enabledFeatureFlags = await getEnabledFeatureFlags({
     email: subscriber.primary_email,
   });
-  const experimentationId = await getExperimentationId(session.user);
+  const experimentationId = await getExperimentationIdFromUserSession(
+    session.user,
+  );
   const experimentData = await getExperiments({
     experimentationId,
     countryCode: assumedCountryCode,
@@ -307,6 +313,7 @@ export async function triggerBreachAlert(emailAddress: string) {
           : undefined
       }
       enabledFeatureFlags={enabledFeatureFlags}
+      experimentData={experimentData["Features"]}
     />,
   );
 }

@@ -45,7 +45,7 @@ import {
 import { type NormalizedProfileData } from "./panels/SettingsPanelEditProfile/EditProfileForm";
 import { OnerepUsPhoneNumber } from "../../../../../../functions/server/onerep";
 import { parseE164PhoneNumber } from "../../../../../../../utils/parse";
-import { getExperimentationId } from "../../../../../../functions/server/getExperimentationId";
+import { getExperimentationIdFromUserSession } from "../../../../../../functions/server/getExperimentationId";
 import { getExperiments } from "../../../../../../functions/server/getExperiments";
 import { getCountryCode } from "../../../../../../functions/server/getCountryCode";
 import { getLocale } from "../../../../../../functions/universal/getLocale";
@@ -305,7 +305,9 @@ export async function onHandleUpdateProfileData(
     email: session.user.email,
   });
   const l10n = getL10n(await getAcceptLangHeaderInServerComponents());
-  const experimentationId = await getExperimentationId(session?.user ?? null);
+  const experimentationId = await getExperimentationIdFromUserSession(
+    session?.user ?? null,
+  );
   const experimentData = await getExperiments({
     experimentationId,
     countryCode: getCountryCode(await headers()),

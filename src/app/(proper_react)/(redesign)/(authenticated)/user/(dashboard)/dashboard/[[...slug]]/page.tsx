@@ -39,7 +39,7 @@ import { getEnabledFeatureFlags } from "../../../../../../../../db/tables/featur
 import { getAttributionsFromCookiesOrDb } from "../../../../../../../functions/server/attributions";
 import { checkSession } from "../../../../../../../functions/server/checkSession";
 import { isPrePlusUser } from "../../../../../../../functions/server/isPrePlusUser";
-import { getExperimentationId } from "../../../../../../../functions/server/getExperimentationId";
+import { getExperimentationIdFromUserSession } from "../../../../../../../functions/server/getExperimentationId";
 import { getElapsedTimeInDaysSinceInitialScan } from "../../../../../../../functions/server/getElapsedTimeInDaysSinceInitialScan";
 import { getExperiments } from "../../../../../../../functions/server/getExperiments";
 import { getLocale } from "../../../../../../../functions/universal/getLocale";
@@ -105,7 +105,9 @@ export default async function DashboardPage(props: Props) {
     email: session.user.email,
   });
 
-  const experimentationId = await getExperimentationId(session.user);
+  const experimentationId = await getExperimentationIdFromUserSession(
+    session.user,
+  );
   const experimentData = await getExperiments({
     experimentationId,
     countryCode,

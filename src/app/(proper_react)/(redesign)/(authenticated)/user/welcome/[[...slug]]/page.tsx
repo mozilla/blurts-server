@@ -12,7 +12,7 @@ import { headers } from "next/headers";
 import { getReferrerUrl } from "../../../../../../functions/server/getReferrerUrl";
 import { CONST_ONEREP_DATA_BROKER_COUNT } from "../../../../../../../constants";
 import { AutoSignIn } from "../../../../../../components/client/AutoSignIn";
-import { getExperimentationId } from "../../../../../../functions/server/getExperimentationId";
+import { getExperimentationIdFromUserSession } from "../../../../../../functions/server/getExperimentationId";
 import { getExperiments } from "../../../../../../functions/server/getExperiments";
 import { getLocale } from "../../../../../../functions/universal/getLocale";
 import {
@@ -57,7 +57,9 @@ export default async function Onboarding(props: Props) {
     email: session.user.email,
   });
 
-  const experimentationId = await getExperimentationId(session.user);
+  const experimentationId = await getExperimentationIdFromUserSession(
+    session.user,
+  );
   const experimentData = await getExperiments({
     experimentationId,
     countryCode,

@@ -4,10 +4,11 @@
 
 import { headers } from "next/headers";
 import { UUID } from "crypto";
-import { Session } from "next-auth";
+import type { Session } from "next-auth";
 import { v5 as uuidv5 } from "uuid";
 import "./notInClientComponent";
 import { logger } from "./logging";
+import type { SubscriberRow } from "knex/types/tables";
 
 export type ExperimentationId = UUID | `guest-${UUID}`;
 
@@ -15,16 +16,15 @@ export type ExperimentationId = UUID | `guest-${UUID}`;
  * Create a stable ID used for Monitor experimentation, derived from the subscriber ID.
  * Instead of using the ID directly,
  *
- * @param user
+ * @param subscriberId
  * @returns v5 UUID, possibly with `guest-` prefix.
  */
-export async function getExperimentationId(
-  user: Session["user"] | null,
+async function getExperimentationId(
+  subscriberId?: number,
 ): Promise<ExperimentationId> {
-  const accountId = user?.subscriber?.id;
   let experimentationId: null | ExperimentationId;
 
-  if (accountId && typeof accountId === "number") {
+  if (subscriberId && typeof subscriberId === "number") {
     // If the user is logged in, use the Subscriber ID.
     const namespace = process.env.NIMBUS_UUID_NAMESPACE;
     if (!namespace) {
@@ -35,7 +35,7 @@ export async function getExperimentationId(
         "NIMBUS_UUID_NAMESPACE not set, cannot create experimentationId",
       );
     }
-    experimentationId = uuidv5(accountId.toString(), namespace) as UUID;
+    experimentationId = uuidv5(subscriberId.toString(), namespace) as UUID;
     return experimentationId;
   } else {
     // If the user is not logged in, use a cookie with a randomly-generated Nimbus user ID.
@@ -55,4 +55,17 @@ export async function getExperimentationId(
     });
     return experimentationId as ExperimentationId;
   }
+}
+
+export async function getExperimentationIdFromUserSession(
+  user: Session["user"] | null,
+) {
+  const subscriberId = user?.subscriber?.id;
+  return await getExperimentationId(subscriberId);
+}
+
+export async function getExperimentationIdFromSubscriber(
+  subscriber: SubscriberRow,
+) {
+  return await getExperimentationId(subscriber.id);
 }

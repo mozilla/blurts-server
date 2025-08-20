@@ -7,6 +7,7 @@ import { SerializedSubscriber } from "../../../../next-auth";
 import type { Meta, StoryObj } from "@storybook/react";
 import { Shell } from "./Shell";
 import { getL10n } from "../../../functions/l10n/storybookAndJest";
+import { defaultExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 
 const mockedSession = {
   expires: new Date().toISOString(),
@@ -33,6 +34,7 @@ const meta: Meta<typeof Shell> = {
     countryCode: "us",
     l10n: getL10n("en"),
     enabledFeatureFlags: [],
+    experimentData: defaultExperimentData["Features"],
     session: mockedSession,
   },
 };

@@ -26,7 +26,7 @@ import { getScanAndResults } from "../../../../../functions/server/moscary";
 import { getEnabledFeatureFlags } from "../../../../../../db/tables/featureFlags";
 import { getCountryCode } from "../../../../../functions/server/getCountryCode";
 import { headers } from "next/headers";
-import { getExperimentationId } from "../../../../../functions/server/getExperimentationId";
+import { getExperimentationIdFromUserSession } from "../../../../../functions/server/getExperimentationId";
 import { getExperiments } from "../../../../../functions/server/getExperiments";
 import { getLocale } from "../../../../../functions/universal/getLocale";
 import { getL10n } from "../../../../../functions/l10n/storybookAndJest";
@@ -56,7 +56,9 @@ export async function GET(
         throw new Error("No subscriber found for current session.");
       }
       const countryCode = getCountryCode(await headers());
-      const experimentationId = await getExperimentationId(session.user);
+      const experimentationId = await getExperimentationIdFromUserSession(
+        session.user,
+      );
       const experimentData = await getExperiments({
         experimentationId,
         countryCode,

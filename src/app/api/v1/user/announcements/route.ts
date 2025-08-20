@@ -8,7 +8,7 @@ import { initializeUserAnnouncements } from "../../../../../db/tables/user_annou
 import { redirect } from "next/navigation";
 import { getEnabledFeatureFlags } from "../../../../../db/tables/featureFlags";
 import { getLocale } from "../../../../functions/universal/getLocale";
-import { getExperimentationId } from "../../../../functions/server/getExperimentationId";
+import { getExperimentationIdFromUserSession } from "../../../../functions/server/getExperimentationId";
 import { getExperiments } from "../../../../functions/server/getExperiments";
 import { getCountryCode } from "../../../../functions/server/getCountryCode";
 import { headers } from "next/headers";
@@ -28,7 +28,9 @@ export async function GET() {
   const currentLocale = getLocale(
     getL10n(await getAcceptLangHeaderInServerComponents()),
   );
-  const experimentationId = await getExperimentationId(session?.user ?? null);
+  const experimentationId = await getExperimentationIdFromUserSession(
+    session?.user ?? null,
+  );
   const experimentData = await getExperiments({
     experimentationId,
     countryCode: getCountryCode(await headers()),
