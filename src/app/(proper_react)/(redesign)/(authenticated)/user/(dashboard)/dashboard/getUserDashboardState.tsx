@@ -426,7 +426,7 @@ export const getUserDashboardState = (
      * - US user
      * - Non-Premium
      * - No breaches
-     * - Scan: In progress (and no unresolved scan results yet)
+     * - Scan: In progress
      */
     isMatchingContent(contentProps, {
       isRelevantGuidedStep: relevantGuidedStep.id === "Done",
@@ -440,47 +440,15 @@ export const getUserDashboardState = (
     }) ||
     /**
      * - US user
-     * - Non-Premium
-     * - No breaches
-     * - Scan: In progress (although some unresolved scan results have already appeared)
-     */
-    isMatchingContent(contentProps, {
-      isRelevantGuidedStep: relevantGuidedStep.id === "Done",
-      hasExposures: true,
-      hasUnresolvedBreaches: false,
-      hasUnresolvedBrokers: true,
-      isEligibleForFreeScan: false,
-      isEligibleForPremium: true,
-      isPremiumUser: false,
-      scanInProgress: true,
-    }) ||
-    /**
-     * - US user
      * - Premium
      * - No breaches
-     * - Scan: In progress (and no unresolved scan results yet)
+     * - Scan: In progress
      */
     isMatchingContent(contentProps, {
       isRelevantGuidedStep: relevantGuidedStep.id === "Done",
       hasExposures: false,
       hasUnresolvedBreaches: false,
       hasUnresolvedBrokers: false,
-      isEligibleForFreeScan: false,
-      isEligibleForPremium: false,
-      isPremiumUser: true,
-      scanInProgress: true,
-    }) ||
-    /**
-     * - US user
-     * - Premium
-     * - No breaches
-     * - Scan: In progress (although some unresolved scan results have already appeared)
-     */
-    isMatchingContent(contentProps, {
-      isRelevantGuidedStep: relevantGuidedStep.id === "Done",
-      hasExposures: true,
-      hasUnresolvedBreaches: false,
-      hasUnresolvedBrokers: true,
       isEligibleForFreeScan: false,
       isEligibleForPremium: false,
       isPremiumUser: true,
@@ -495,7 +463,7 @@ export const getUserDashboardState = (
      * - US user
      * - Non-Premium
      * - Unresolved breaches
-     * - Scan: In progress (and no unresolved scan results yet)
+     * - Scan: In progress
      */
     isMatchingContent(contentProps, {
       isRelevantGuidedStep: true,
@@ -509,49 +477,16 @@ export const getUserDashboardState = (
     }) ||
     /**
      * - US user
-     * - Non-Premium
-     * - Unresolved breaches
-     * - Scan: In progress (although some unresolved scan results have already appeared)
-     */
-    isMatchingContent(contentProps, {
-      isRelevantGuidedStep: true,
-      hasExposures: true,
-      hasUnresolvedBreaches: true,
-      hasUnresolvedBrokers: true,
-      isEligibleForFreeScan: false,
-      isEligibleForPremium: true,
-      isPremiumUser: false,
-      scanInProgress: true,
-    }) ||
-    /**
-     * - US user
      * - Non premium
      * - No brokers
      * - Unresolved breaches
-     * - Scan: In progress (and no unresolved scan results yet)
+     * - Scan: In progress
      */
     isMatchingContent(contentProps, {
       isRelevantGuidedStep: isGuidedResolutionInProgress(relevantGuidedStep.id),
       hasExposures: true,
       hasUnresolvedBreaches: true,
       hasUnresolvedBrokers: false,
-      isEligibleForFreeScan: false,
-      isEligibleForPremium: false,
-      isPremiumUser: true,
-      scanInProgress: true,
-    }) ||
-    /**
-     * - US user
-     * - Non premium
-     * - No brokers
-     * - Unresolved breaches
-     * - Scan: In progress (although some unresolved scan results have already appeared)
-     */
-    isMatchingContent(contentProps, {
-      isRelevantGuidedStep: isGuidedResolutionInProgress(relevantGuidedStep.id),
-      hasExposures: true,
-      hasUnresolvedBreaches: true,
-      hasUnresolvedBrokers: true,
       isEligibleForFreeScan: false,
       isEligibleForPremium: false,
       isPremiumUser: true,
@@ -566,7 +501,7 @@ export const getUserDashboardState = (
      * - US user
      * - Non-Premium
      * - Resolved breaches
-     * - Scan: In progress (and no unresolved scan results yet)
+     * - Scan: In progress
      */
     isMatchingContent(contentProps, {
       isRelevantGuidedStep: relevantGuidedStep.id === "Done",
@@ -580,41 +515,9 @@ export const getUserDashboardState = (
     }) ||
     /**
      * - US user
-     * - Non-Premium
-     * - Resolved breaches
-     * - Scan: In progress (although some unresolved scan results have already appeared)
-     */
-    isMatchingContent(contentProps, {
-      isRelevantGuidedStep: relevantGuidedStep.id === "Done",
-      hasExposures: true,
-      hasUnresolvedBreaches: false,
-      hasUnresolvedBrokers: true,
-      isEligibleForFreeScan: false,
-      isEligibleForPremium: true,
-      isPremiumUser: false,
-      scanInProgress: true,
-    }) ||
-    /**
-     * - US user
      * - Premium
      * - Resolved breaches
-     * - Scan: In progress (and no unresolved scan results yet)
-     */
-    isMatchingContent(contentProps, {
-      isRelevantGuidedStep: relevantGuidedStep.id === "Done",
-      hasExposures: true,
-      hasUnresolvedBreaches: false,
-      hasUnresolvedBrokers: false,
-      isEligibleForFreeScan: false,
-      isEligibleForPremium: false,
-      isPremiumUser: true,
-      scanInProgress: true,
-    }) ||
-    /**
-     * - US user
-     * - Premium
-     * - Resolved breaches
-     * - Scan: In progress (although some unresolved scan results have already appeared)
+     * - Scan: In progress
      */
     isMatchingContent(contentProps, {
       isRelevantGuidedStep: relevantGuidedStep.id === "Done",
