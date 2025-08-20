@@ -120,7 +120,6 @@ export default async function SettingsPage(props: Props) {
   const l10n = getL10n(await getAcceptLangHeaderInServerComponents());
   const countryCode = getCountryCode(headersList);
   const experimentationId = await getExperimentationId(session.user);
-
   const experimentData = await getExperiments({
     experimentationId,
     countryCode,
@@ -136,7 +135,8 @@ export default async function SettingsPage(props: Props) {
     session.user.email,
   );
   const lastMoscaryScanDate =
-    (enabledFeatureFlags.includes("Moscary") &&
+    ((enabledFeatureFlags.includes("Moscary") ||
+      experimentData["Features"]["moscary"].enabled) &&
       session.user.subscriber.moscary_id &&
       (await fetchLatestScanForProfile(session.user.subscriber.moscary_id))
         ?.created_at) ??
@@ -147,7 +147,8 @@ export default async function SettingsPage(props: Props) {
         ?.created_at;
 
   const profileData =
-    enabledFeatureFlags.includes("Moscary") &&
+    (enabledFeatureFlags.includes("Moscary") ||
+      experimentData["Features"]["moscary"].enabled) &&
     session.user.subscriber.moscary_id
       ? await getProfile(session.user.subscriber.moscary_id)
       : session.user.subscriber.onerep_profile_id

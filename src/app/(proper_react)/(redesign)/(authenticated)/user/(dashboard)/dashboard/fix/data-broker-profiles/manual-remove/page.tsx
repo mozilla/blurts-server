@@ -24,6 +24,11 @@ import {
   getScanAndResults,
   ScanData,
 } from "../../../../../../../../../functions/server/moscary";
+import { getExperimentationId } from "../../../../../../../../../functions/server/getExperimentationId";
+import { getExperiments } from "../../../../../../../../../functions/server/getExperiments";
+import { getLocale } from "../../../../../../../../../functions/universal/getLocale";
+import { getL10n } from "../../../../../../../../../functions/l10n/storybookAndJest";
+import { getAcceptLangHeaderInServerComponents } from "../../../../../../../../../functions/l10n/serverComponents";
 
 export default async function ManualRemovePage() {
   const session = await getServerSession();
@@ -37,6 +42,13 @@ export default async function ManualRemovePage() {
   });
 
   const countryCode = getCountryCode(await headers());
+  const experimentationId = await getExperimentationId(session.user);
+  const experimentData = await getExperiments({
+    experimentationId,
+    countryCode,
+    locale: getLocale(getL10n(await getAcceptLangHeaderInServerComponents())),
+  });
+
   const subscriber = await getSubscriberByFxaUid(
     session.user.subscriber.fxa_uid,
   );
@@ -44,7 +56,10 @@ export default async function ManualRemovePage() {
     redirect("/user/dashboard");
   }
   let scanData: LatestOnerepScanData | ScanData;
-  if (enabledFeatureFlags.includes("Moscary")) {
+  if (
+    enabledFeatureFlags.includes("Moscary") ||
+    experimentData["Features"]["moscary"].enabled
+  ) {
     scanData = subscriber.moscary_id
       ? await getScanAndResults(subscriber.moscary_id)
       : { scan: null, results: [] };

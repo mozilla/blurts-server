@@ -72,9 +72,17 @@ export async function POST(
   });
 
   const countryCode = getCountryCode(await headers());
-  const eligible = enabledFeatureFlags.includes("Moscary")
-    ? await isEligibleForFreeScan(session.user, countryCode)
-    : await isEligibleForFreeOnerepScan(session.user, countryCode);
+  const experimentationId = await getExperimentationId(session.user);
+  const experimentData = await getExperiments({
+    experimentationId,
+    countryCode,
+    locale: getLocale(getL10n(await getAcceptLangHeaderInServerComponents())),
+  });
+  const eligible =
+    enabledFeatureFlags.includes("Moscary") ||
+    experimentData["Features"]["moscary"].enabled
+      ? await isEligibleForFreeScan(session.user, countryCode)
+      : await isEligibleForFreeOnerepScan(session.user, countryCode);
   if (!eligible) {
     logger.warn("scan_created_warn", {
       message: "User is not eligible for feature",
@@ -108,13 +116,6 @@ export async function POST(
   if (!meetsAgeRequirement(dateOfBirth)) {
     throw new Error(`User does not meet the age requirement: ${dateOfBirth}`);
   }
-
-  const experimentationId = await getExperimentationId(session.user);
-  const experimentData = await getExperiments({
-    experimentationId,
-    countryCode: getCountryCode(await headers()),
-    locale: getLocale(getL10n(await getAcceptLangHeaderInServerComponents())),
-  });
   const optionalInfoExperimentData =
     experimentData["Features"]["welcome-scan-optional-info"];
 
@@ -144,7 +145,10 @@ export async function POST(
       if (!subscriber) {
         throw new Error("No subscriber found for current session.");
       }
-      if (enabledFeatureFlags.includes("Moscary")) {
+      if (
+        enabledFeatureFlags.includes("Moscary") ||
+        experimentData["Features"]["moscary"].enabled
+      ) {
         if (subscriber.moscary_id === null) {
           const profileId = await createProfile(profileData);
           await setMoscaryId(subscriber, profileId);

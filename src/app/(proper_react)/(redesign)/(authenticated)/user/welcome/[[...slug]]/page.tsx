@@ -57,9 +57,18 @@ export default async function Onboarding(props: Props) {
     email: session.user.email,
   });
 
-  const userIsEligible = enabledFeatureFlags.includes("Moscary")
-    ? await isEligibleForFreeScan(session.user, countryCode)
-    : await isEligibleForFreeOnerepScan(session.user, countryCode);
+  const experimentationId = await getExperimentationId(session.user);
+  const experimentData = await getExperiments({
+    experimentationId,
+    countryCode,
+    locale: getLocale(getL10n(await getAcceptLangHeaderInServerComponents())),
+  });
+
+  const userIsEligible =
+    enabledFeatureFlags.includes("Moscary") ||
+    experimentData["Features"]["moscary"].enabled
+      ? await isEligibleForFreeScan(session.user, countryCode)
+      : await isEligibleForFreeOnerepScan(session.user, countryCode);
 
   if (!userIsEligible) {
     console.error(
@@ -72,13 +81,6 @@ export default async function Onboarding(props: Props) {
   const previousRoute = getReferrerUrl({
     headers: headersList,
     referrerParam: searchParams.referrer,
-  });
-
-  const experimentationId = await getExperimentationId(session.user);
-  const experimentData = await getExperiments({
-    experimentationId,
-    countryCode,
-    locale: getLocale(getL10n(await getAcceptLangHeaderInServerComponents())),
   });
 
   return (

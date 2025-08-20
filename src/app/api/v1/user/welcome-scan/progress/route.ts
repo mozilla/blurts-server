@@ -24,6 +24,13 @@ import {
 import { hasPremium } from "../../../../../functions/universal/user";
 import { getScanAndResults } from "../../../../../functions/server/moscary";
 import { getEnabledFeatureFlags } from "../../../../../../db/tables/featureFlags";
+import { getCountryCode } from "../../../../../functions/server/getCountryCode";
+import { headers } from "next/headers";
+import { getExperimentationId } from "../../../../../functions/server/getExperimentationId";
+import { getExperiments } from "../../../../../functions/server/getExperiments";
+import { getLocale } from "../../../../../functions/universal/getLocale";
+import { getL10n } from "../../../../../functions/l10n/storybookAndJest";
+import { getAcceptLangHeaderInServerComponents } from "../../../../../functions/l10n/serverComponents";
 
 export interface ScanProgressBody {
   success: boolean;
@@ -48,7 +55,19 @@ export async function GET(
       if (!subscriber) {
         throw new Error("No subscriber found for current session.");
       }
-      if (enabledFeatureFlags.includes("Moscary")) {
+      const countryCode = getCountryCode(await headers());
+      const experimentationId = await getExperimentationId(session.user);
+      const experimentData = await getExperiments({
+        experimentationId,
+        countryCode,
+        locale: getLocale(
+          getL10n(await getAcceptLangHeaderInServerComponents()),
+        ),
+      });
+      if (
+        enabledFeatureFlags.includes("Moscary") ||
+        experimentData["Features"]["moscary"].enabled
+      ) {
         if (subscriber.moscary_id === null) {
           return NextResponse.json(
             { success: true } satisfies ScanProgressBody,

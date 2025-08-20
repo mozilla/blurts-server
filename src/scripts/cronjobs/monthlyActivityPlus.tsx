@@ -21,6 +21,9 @@ import { hasPremium } from "../../app/functions/universal/user";
 import { getEnabledFeatureFlags } from "../../db/tables/featureFlags";
 import { logger } from "../../app/functions/server/logging";
 import { getScanAndResults } from "../../app/functions/server/moscary";
+import { getExperimentationId } from "../../app/functions/server/getExperimentationId";
+import { getExperiments } from "../../app/functions/server/getExperiments";
+import { getLocale } from "../../app/functions/universal/getLocale";
 
 process.on("SIGINT", () => {
   logger.info("SIGINT received, exiting...");
@@ -79,17 +82,25 @@ async function sendMonthlyActivityEmail(subscriber: SubscriberRow) {
     await refreshStoredScanResults(subscriber.onerep_profile_id);
   }
 
+  const experimentationId = await getExperimentationId(subscriber);
+  const experimentData = await getExperiments({
+    experimentationId,
+    countryCode: countryCodeGuess,
+    locale: getLocale(l10n),
+  });
   const enabledFeatureFlags = await getEnabledFeatureFlags({
     email: subscriber.primary_email,
   });
-  const latestScan = enabledFeatureFlags.includes("Moscary")
-    ? subscriber.moscary_id
-      ? await getScanAndResults(subscriber.moscary_id)
-      : { scan: null, results: [] }
-    : await getScanResultsWithBroker(
-        subscriber.onerep_profile_id,
-        hasPremium(subscriber),
-      );
+  const latestScan =
+    enabledFeatureFlags.includes("Moscary") ||
+    experimentData["Features"]["moscary"].enabled
+      ? subscriber.moscary_id
+        ? await getScanAndResults(subscriber.moscary_id)
+        : { scan: null, results: [] }
+      : await getScanResultsWithBroker(
+          subscriber.onerep_profile_id,
+          hasPremium(subscriber),
+        );
   const subscriberBreaches = await getSubscriberBreaches({
     fxaUid: subscriber.fxa_uid,
     countryCode: countryCodeGuess,

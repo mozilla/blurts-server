@@ -53,7 +53,8 @@ export const ShellRedesign = (props: Props) => {
             // MNTOR-4531: This is just for visual debugging of help requests
             // while customers can use either OneRep or Moscary, and doesn't need an explicit test:
             /* c8 ignore next 2 */
-            props.enabledFeatureFlags.includes("Moscary")
+            props.enabledFeatureFlags.includes("Moscary") ||
+            props.experimentData["moscary"].enabled
               ? styles.moscaryIndicator
               : ""
           }`}

@@ -15,6 +15,11 @@ import { StartFreeScanView } from "./StartFreeScanView";
 import { hasPremium } from "../../../../../../../../../functions/universal/user";
 import { getEnabledFeatureFlags } from "../../../../../../../../../../db/tables/featureFlags";
 import { getScanAndResults } from "../../../../../../../../../functions/server/moscary";
+import { getExperimentationId } from "../../../../../../../../../functions/server/getExperimentationId";
+import { getExperiments } from "../../../../../../../../../functions/server/getExperiments";
+import { getLocale } from "../../../../../../../../../functions/universal/getLocale";
+import { getL10n } from "../../../../../../../../../functions/l10n/storybookAndJest";
+import { getAcceptLangHeaderInServerComponents } from "../../../../../../../../../functions/l10n/serverComponents";
 
 export default async function StartFreeScanPage() {
   const countryCode = getCountryCode(await headers());
@@ -31,18 +36,27 @@ export default async function StartFreeScanPage() {
     email: session.user.email,
   });
 
+  const experimentationId = await getExperimentationId(session.user);
+  const experimentData = await getExperiments({
+    experimentationId,
+    countryCode,
+    locale: getLocale(getL10n(await getAcceptLangHeaderInServerComponents())),
+  });
+
   const onerepProfileId = await getOnerepProfileId(session.user.subscriber.id);
 
-  const latestScanData = enabledFeatureFlags.includes("Moscary")
-    ? session.user.subscriber.moscary_id
-      ? await getScanAndResults(session.user.subscriber.moscary_id)
-      : undefined
-    : typeof onerepProfileId === "number"
-      ? await getScanResultsWithBroker(
-          onerepProfileId,
-          hasPremium(session.user),
-        )
-      : undefined;
+  const latestScanData =
+    enabledFeatureFlags.includes("Moscary") ||
+    experimentData["Features"]["moscary"].enabled
+      ? session.user.subscriber.moscary_id
+        ? await getScanAndResults(session.user.subscriber.moscary_id)
+        : undefined
+      : typeof onerepProfileId === "number"
+        ? await getScanResultsWithBroker(
+            onerepProfileId,
+            hasPremium(session.user),
+          )
+        : undefined;
   if (latestScanData?.scan) {
     // If the user already has done a scan, let them view their results:
     return redirect(

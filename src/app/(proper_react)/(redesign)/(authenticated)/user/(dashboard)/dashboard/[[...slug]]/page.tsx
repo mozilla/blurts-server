@@ -105,6 +105,13 @@ export default async function DashboardPage(props: Props) {
     email: session.user.email,
   });
 
+  const experimentationId = await getExperimentationId(session.user);
+  const experimentData = await getExperiments({
+    experimentationId,
+    countryCode,
+    locale: getLocale(getL10n(await getAcceptLangHeaderInServerComponents())),
+  });
+
   let hasRunScan = false;
   let onerepProfileId: number | null = null;
   if (
@@ -112,7 +119,12 @@ export default async function DashboardPage(props: Props) {
     subscriber.moscary_id !== null
   ) {
     hasRunScan = true;
-  } else if (!enabledFeatureFlags.includes("Moscary")) {
+  } else if (
+    !(
+      enabledFeatureFlags.includes("Moscary") ||
+      experimentData["Features"]["moscary"].enabled
+    )
+  ) {
     onerepProfileId = await getOnerepProfileId(subscriber.id);
     if (typeof onerepProfileId === "number") {
       hasRunScan = true;
@@ -146,17 +158,12 @@ export default async function DashboardPage(props: Props) {
     countryCode,
   });
 
-  const userIsEligibleForFreeScan = enabledFeatureFlags.includes("Moscary")
-    ? await isEligibleForFreeScan(session.user, countryCode)
-    : await isEligibleForFreeOnerepScan(session.user, countryCode);
+  const userIsEligibleForFreeScan =
+    enabledFeatureFlags.includes("Moscary") ||
+    experimentData["Features"]["moscary"].enabled
+      ? await isEligibleForFreeScan(session.user, countryCode)
+      : await isEligibleForFreeOnerepScan(session.user, countryCode);
   const userIsEligibleForPremium = isEligibleForPremium(countryCode);
-
-  const experimentationId = await getExperimentationId(session.user);
-  const experimentData = await getExperiments({
-    experimentationId,
-    countryCode,
-    locale: getLocale(getL10n(await getAcceptLangHeaderInServerComponents())),
-  });
 
   const monthlySubscriptionUrl = getPremiumSubscriptionUrl({
     type: "monthly",
@@ -177,11 +184,16 @@ export default async function DashboardPage(props: Props) {
         `${enabledFeatureFlags.includes("SubPlat3") ? "?" : "&"}${additionalSubplatParams.toString()}`
       : "";
   const elapsedTimeInDaysSinceInitialScan =
-    await getElapsedTimeInDaysSinceInitialScan(subscriber, enabledFeatureFlags);
+    await getElapsedTimeInDaysSinceInitialScan(
+      subscriber,
+      enabledFeatureFlags,
+      experimentData["Features"],
+    );
 
   const userAnnouncements = await initializeUserAnnouncements(
     session.user,
     enabledFeatureFlags,
+    experimentData["Features"],
   );
 
   const signInCount = await getSignInCount(subscriber.id);
@@ -191,7 +203,9 @@ export default async function DashboardPage(props: Props) {
     process.env.APP_ENV !== "production";
 
   const scanResults =
-    enabledFeatureFlags.includes("Moscary") && subscriber.moscary_id
+    (enabledFeatureFlags.includes("Moscary") ||
+      experimentData["Features"]["moscary"].enabled) &&
+    subscriber.moscary_id
       ? await getScanAndResults(subscriber.moscary_id)
       : useMockedScans
         ? await getMockedScanResults(onerepProfileId)
@@ -201,14 +215,18 @@ export default async function DashboardPage(props: Props) {
           );
 
   const scanCount =
-    enabledFeatureFlags.includes("Moscary") && subscriber.moscary_id
+    (enabledFeatureFlags.includes("Moscary") ||
+      experimentData["Features"]["moscary"].enabled) &&
+    subscriber.moscary_id
       ? await getScansCountForProfile(subscriber.moscary_id)
       : typeof onerepProfileId === "number"
         ? await getScansCountForOnerepProfile(onerepProfileId)
         : 0;
 
   const hasFirstMonitoringScan =
-    enabledFeatureFlags.includes("Moscary") && subscriber.moscary_id
+    (enabledFeatureFlags.includes("Moscary") ||
+      experimentData["Features"]["moscary"].enabled) &&
+    subscriber.moscary_id
       ? typeof (await fetchLatestScanForProfile(
           subscriber.moscary_id,
           "monitoring",

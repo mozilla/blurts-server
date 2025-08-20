@@ -47,6 +47,7 @@ export default async function Layout({ children }: { children: ReactNode }) {
   const userAnnouncements = await initializeUserAnnouncements(
     session.user,
     enabledFeatureFlags,
+    experimentData["Features"],
   );
 
   return (

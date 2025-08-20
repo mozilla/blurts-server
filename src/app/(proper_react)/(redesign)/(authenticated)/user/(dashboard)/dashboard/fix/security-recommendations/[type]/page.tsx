@@ -19,6 +19,11 @@ import { isEligibleForPremium } from "../../../../../../../../../functions/unive
 import { hasPremium } from "../../../../../../../../../functions/universal/user";
 import { getEnabledFeatureFlags } from "../../../../../../../../../../db/tables/featureFlags";
 import { getScanAndResults } from "../../../../../../../../../functions/server/moscary";
+import { getExperimentationId } from "../../../../../../../../../functions/server/getExperimentationId";
+import { getExperiments } from "../../../../../../../../../functions/server/getExperiments";
+import { getLocale } from "../../../../../../../../../functions/universal/getLocale";
+import { getL10n } from "../../../../../../../../../functions/l10n/storybookAndJest";
+import { getAcceptLangHeaderInServerComponents } from "../../../../../../../../../functions/l10n/serverComponents";
 
 interface SecurityRecommendationsProps {
   params: Promise<{
@@ -49,12 +54,21 @@ export default async function SecurityRecommendations(
     redirect("/user/dashboard");
   }
 
+  const experimentationId = await getExperimentationId(session.user);
+  const experimentData = await getExperiments({
+    experimentationId,
+    countryCode,
+    locale: getLocale(getL10n(await getAcceptLangHeaderInServerComponents())),
+  });
+
   const profileId = await getOnerepProfileId(session.user.subscriber.id);
-  const scanData = enabledFeatureFlags.includes("Moscary")
-    ? session.user.subscriber.moscary_id
-      ? await getScanAndResults(session.user.subscriber.moscary_id)
-      : { scan: null, results: [] }
-    : await getScanResultsWithBroker(profileId, hasPremium(session.user));
+  const scanData =
+    enabledFeatureFlags.includes("Moscary") ||
+    experimentData["Features"]["moscary"].enabled
+      ? session.user.subscriber.moscary_id
+        ? await getScanAndResults(session.user.subscriber.moscary_id)
+        : { scan: null, results: [] }
+      : await getScanResultsWithBroker(profileId, hasPremium(session.user));
 
   return (
     <SecurityRecommendationsLayout

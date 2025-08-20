@@ -113,7 +113,8 @@ export const View = ({
             // MNTOR-4531: This is just for visual debugging of help requests
             // while customers can use either OneRep or Moscary, and doesn't need an explicit test:
             /* c8 ignore next 2 */
-            enabledFeatureFlags.includes("Moscary")
+            enabledFeatureFlags.includes("Moscary") ||
+            experimentData["moscary"].enabled
               ? styles.moscaryIndicator
               : ""
           }`}

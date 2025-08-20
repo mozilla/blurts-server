@@ -47,6 +47,9 @@ import {
 import { CONST_DAY_MILLISECONDS } from "../../../../../../constants";
 import { getEnabledFeatureFlags } from "../../../../../../db/tables/featureFlags";
 import { getScanAndResults } from "../../../../../functions/server/moscary";
+import { getExperimentationId } from "../../../../../functions/server/getExperimentationId";
+import { getExperiments } from "../../../../../functions/server/getExperiments";
+import { getLocale } from "../../../../../functions/universal/getLocale";
 
 async function getAdminSubscriber(): Promise<SubscriberRow | null> {
   const session = await getServerSession();
@@ -156,19 +159,28 @@ export async function triggerMonthlyActivityFree(emailAddress: string) {
   const enabledFeatureFlags = await getEnabledFeatureFlags({
     email: subscriber.primary_email,
   });
-  const latestScan = enabledFeatureFlags.includes("Moscary")
-    ? subscriber.moscary_id
-      ? await getScanAndResults(subscriber.moscary_id)
-      : { scan: null, results: [] }
-    : await getScanResultsWithBroker(
-        subscriber.onerep_profile_id,
-        hasPremium(session.user),
-      );
+  const countryCode = getCountryCode(await headers());
+  const experimentationId = await getExperimentationId(session.user);
+  const experimentData = await getExperiments({
+    experimentationId,
+    countryCode,
+    locale: getLocale(l10n),
+  });
+  const latestScan =
+    enabledFeatureFlags.includes("Moscary") ||
+    experimentData["Features"]["moscary"].enabled
+      ? subscriber.moscary_id
+        ? await getScanAndResults(subscriber.moscary_id)
+        : { scan: null, results: [] }
+      : await getScanResultsWithBroker(
+          subscriber.onerep_profile_id,
+          hasPremium(session.user),
+        );
   const data = getDashboardSummary(
     latestScan.results,
     await getSubscriberBreaches({
       fxaUid: session.user.subscriber?.fxa_uid,
-      countryCode: getCountryCode(await headers()),
+      countryCode,
     }),
   );
 
@@ -184,6 +196,7 @@ export async function triggerMonthlyActivityFree(emailAddress: string) {
       dataSummary={data}
       unsubscribeLink={unsubscribeLink as string}
       enabledFeatureFlags={enabledFeatureFlags}
+      experimentData={experimentData["Features"]}
     />,
   );
 }
@@ -204,19 +217,28 @@ export async function triggerMonthlyActivityPlus(emailAddress: string) {
   const enabledFeatureFlags = await getEnabledFeatureFlags({
     email: subscriber.primary_email,
   });
-  const latestScan = enabledFeatureFlags.includes("Moscary")
-    ? subscriber.moscary_id
-      ? await getScanAndResults(subscriber.moscary_id)
-      : { scan: null, results: [] }
-    : await getScanResultsWithBroker(
-        subscriber.onerep_profile_id,
-        hasPremium(session.user),
-      );
+  const countryCode = getCountryCode(await headers());
+  const experimentationId = await getExperimentationId(session.user);
+  const experimentData = await getExperiments({
+    experimentationId,
+    countryCode,
+    locale: getLocale(l10n),
+  });
+  const latestScan =
+    enabledFeatureFlags.includes("Moscary") ||
+    experimentData["Features"]["moscary"].enabled
+      ? subscriber.moscary_id
+        ? await getScanAndResults(subscriber.moscary_id)
+        : { scan: null, results: [] }
+      : await getScanResultsWithBroker(
+          subscriber.onerep_profile_id,
+          hasPremium(session.user),
+        );
   const data = getDashboardSummary(
     latestScan.results,
     await getSubscriberBreaches({
       fxaUid: session.user.subscriber?.fxa_uid,
-      countryCode: getCountryCode(await headers()),
+      countryCode,
     }),
   );
 
@@ -249,14 +271,22 @@ export async function triggerBreachAlert(emailAddress: string) {
   const enabledFeatureFlags = await getEnabledFeatureFlags({
     email: subscriber.primary_email,
   });
-  const scanData = enabledFeatureFlags.includes("Moscary")
-    ? subscriber.moscary_id
-      ? await getScanAndResults(subscriber.moscary_id)
-      : { scan: null, results: [] }
-    : await getScanResultsWithBroker(
-        subscriber.onerep_profile_id,
-        hasPremium(session.user),
-      );
+  const experimentationId = await getExperimentationId(session.user);
+  const experimentData = await getExperiments({
+    experimentationId,
+    countryCode: assumedCountryCode,
+    locale: getLocale(l10n),
+  });
+  const scanData =
+    enabledFeatureFlags.includes("Moscary") ||
+    experimentData["Features"]["moscary"].enabled
+      ? subscriber.moscary_id
+        ? await getScanAndResults(subscriber.moscary_id)
+        : { scan: null, results: [] }
+      : await getScanResultsWithBroker(
+          subscriber.onerep_profile_id,
+          hasPremium(session.user),
+        );
   const allSubscriberBreaches = await getSubscriberBreaches({
     fxaUid: subscriber.fxa_uid,
     countryCode: assumedCountryCode,

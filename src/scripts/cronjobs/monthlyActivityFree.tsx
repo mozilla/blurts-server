@@ -23,6 +23,9 @@ import { getSubBreaches } from "../../utils/subscriberBreaches";
 import { HibpLikeDbBreach } from "../../utils/hibp";
 import { getBreaches } from "../../app/functions/server/getBreaches";
 import { getScanAndResults } from "../../app/functions/server/moscary";
+import { getExperimentationId } from "../../app/functions/server/getExperimentationId";
+import { getExperiments } from "../../app/functions/server/getExperiments";
+import { getLocale } from "../../app/functions/universal/getLocale";
 
 let sentEmails = 0;
 process.on("SIGINT", () => {
@@ -142,6 +145,13 @@ async function sendMonthlyActivityEmail(
     subPlatFeatureFlag?.is_enabled ||
     subPlatFeatureFlag?.allow_list?.includes(subscriber.primary_email);
 
+  const experimentationId = await getExperimentationId(subscriber);
+  const experimentData = await getExperiments({
+    experimentationId,
+    countryCode: countryCodeGuess,
+    locale: getLocale(l10n),
+  });
+
   try {
     await sendEmail(
       sanitizedSubscriber.primary_email,
@@ -153,6 +163,7 @@ async function sendMonthlyActivityEmail(
           l10n={l10n}
           unsubscribeLink={unsubscribeLink}
           enabledFeatureFlags={subPlatFeatureFlagEnabled ? ["SubPlat3"] : []}
+          experimentData={experimentData["Features"]}
         />,
       ),
     );
