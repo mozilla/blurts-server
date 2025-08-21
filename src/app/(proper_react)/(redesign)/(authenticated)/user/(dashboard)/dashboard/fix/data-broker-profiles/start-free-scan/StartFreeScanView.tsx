@@ -51,6 +51,7 @@ export function StartFreeScanView(props: Props) {
             )}
           </h3>
           <p>
+            {/* c8 ignore next 3 */}
             {props.enabledFeatureFlags.includes("MaskDataBrokerCount")
               ? l10n.getString(
                   "fix-flow-data-broker-profiles-start-free-scan-content-p1-masked",

@@ -29,6 +29,7 @@ export const Onboarding: Story = {
           variant: "suffixAndMiddleName",
         },
       }}
+      enabledFeatureFlags={[]}
     />
   ),
 };

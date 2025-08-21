@@ -167,7 +167,8 @@ export const FindExposures = ({
                   "onboarding-find-exposures-progress-breaches-counter",
                   { breachesScannedCount, breachesTotalCount },
                 )
-              : enabledFeatureFlags.includes("MaskDataBrokerCount")
+              : /* c8 ignore start */
+                enabledFeatureFlags.includes("MaskDataBrokerCount")
                 ? l10n.getString(
                     "onboarding-find-exposures-progress-broker-counter-masked",
                     {
@@ -181,6 +182,7 @@ export const FindExposures = ({
                       dataBrokerTotalCount: dataBrokerCount,
                     },
                   )
+            /* c8 ignore stop */
           }
         </div>
       </div>

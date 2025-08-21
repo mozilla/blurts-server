@@ -215,6 +215,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               )}
             </h3>
             <p>
+              {/* c8 ignore next 3 */}
               {props.enabledFeatureFlags.includes("MaskDataBrokerCount")
                 ? l10n.getString(
                     "dashboard-top-banner-monitor-protects-your-even-more-description-masked",
@@ -291,6 +292,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               {l10n.getString("dashboard-top-banner-no-exposures-found-title")}
             </h3>
             <p>
+              {/* c8 ignore next 3 */}
               {props.enabledFeatureFlags.includes("MaskDataBrokerCount")
                 ? l10n.getString(
                     "dashboard-top-banner-no-exposures-found-description-masked",

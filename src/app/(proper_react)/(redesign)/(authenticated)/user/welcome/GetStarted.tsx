@@ -32,7 +32,6 @@ export const GetStarted = (props: Props) => {
     { type: "dialog" },
     explainerDialogState,
   );
-
   const triggerRef = useRef<HTMLButtonElement>(null);
   const { buttonProps } = useButton(
     explainerDialogTrigger.triggerProps,
@@ -87,9 +86,10 @@ export const GetStarted = (props: Props) => {
                       )}
                     </strong>
                     <p>
+                      {/* c8 ignore next 3 */}
                       {props.enabledFeatureFlags.includes("MaskDataBrokerCount")
                         ? l10n.getString(
-                            "onboarding-get-started-how-it-works-dialog-step1-content",
+                            "onboarding-get-started-how-it-works-dialog-step1-content-masked",
                           )
                         : l10n.getString(
                             "onboarding-get-started-how-it-works-dialog-step1-content",

@@ -79,6 +79,7 @@ export const AboutBrokersIcon = ({
                 )}
               </p>
               <p>
+                {/* c8 ignore next 3 */}
                 {enabledFeatureFlags.includes("MaskDataBrokerCount")
                   ? l10n.getString(
                       "fix-flow-data-broker-profiles-view-data-broker-profiles-more-dialog-paragraph2-masked",

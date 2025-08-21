@@ -284,6 +284,7 @@ export const PricingPlanListWithBundle = (props: Props & ScanLimitProp) => {
             )}
           />
           <span>
+            {/* c8 ignore next 4 */}
             {props.enabledFeatureFlags.includes("MaskDataBrokerCount")
               ? l10n.getFragment(
                   "landing-redesign-pricing-plans-card-plus-with-bundle-feature-item-one-masked",

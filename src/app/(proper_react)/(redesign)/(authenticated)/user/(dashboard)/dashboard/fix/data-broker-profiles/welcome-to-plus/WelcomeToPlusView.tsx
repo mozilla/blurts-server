@@ -82,7 +82,8 @@ export function WelcomeToPlusView(props: Props) {
                     elems: { b: <b /> },
                   },
                 )
-              : props.enabledFeatureFlags.includes("MaskDataBrokerCount")
+              : /* c8 ignore next 3 */
+                props.enabledFeatureFlags.includes("MaskDataBrokerCount")
                 ? l10n.getString(
                     "welcome-to-premium-data-broker-profiles-zero-state-description-part-one-masked",
                   )

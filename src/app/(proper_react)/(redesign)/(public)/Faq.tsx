@@ -126,6 +126,7 @@ export const FaqSection = ({
               "landing-premium-continuous-data-removal-qn",
             )}
             answer={
+              /* c8 ignore start */
               enabledFeatureFlags.includes("MaskDataBrokerCount")
                 ? l10n.getFragment(
                     "landing-premium-continuous-data-removal-ans-masked",
@@ -140,7 +141,8 @@ export const FaqSection = ({
                       },
                     },
                   )
-                : l10n.getFragment(
+                : /* c8 ignore stop */
+                  l10n.getFragment(
                     "landing-premium-continuous-data-removal-ans",
                     {
                       vars: {

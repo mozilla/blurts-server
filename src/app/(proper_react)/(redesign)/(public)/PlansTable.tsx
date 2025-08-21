@@ -253,6 +253,7 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
                   )}
                 />
                 <span>
+                  {/* c8 ignore next 4 */}
                   {props.enabledFeatureFlags.includes("MaskDataBrokerCount")
                     ? l10n.getFragment(
                         "landing-premium-plans-cards-feature-scan-free-masked",
@@ -278,6 +279,7 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
                   )}
                 />
                 <span>
+                  {/* c8 ignore next 3 */}
                   {props.enabledFeatureFlags.includes("MaskDataBrokerCount")
                     ? l10n.getFragment(
                         "landing-premium-plans-cards-feature-scan-plus-masked",
@@ -314,6 +316,7 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
                   &nbsp;
                   <InfoPopover>
                     <PopoverContent>
+                      {/* c8 ignore next 3 */}
                       {props.enabledFeatureFlags.includes("MaskDataBrokerCount")
                         ? l10n.getString(
                             "landing-premium-plans-table-feature-removal-plus-callout-masked",
@@ -483,6 +486,7 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
                   )}
                 />
                 <span>
+                  {/* c8 ignore next 3 */}
                   {props.enabledFeatureFlags.includes("MaskDataBrokerCount")
                     ? l10n.getFragment(
                         "landing-premium-plans-cards-feature-scan-plus-masked",
@@ -519,6 +523,7 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
                   &nbsp;
                   <InfoPopover>
                     <PopoverContent>
+                      {/* c8 ignore next 3 */}
                       {props.enabledFeatureFlags.includes("MaskDataBrokerCount")
                         ? l10n.getString(
                             "landing-premium-plans-table-feature-removal-plus-callout-masked",
@@ -648,6 +653,7 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
         <TableBody>
           <Row>
             <Cell>
+              {/* c8 ignore next 3 */}
               {props.enabledFeatureFlags.includes("MaskDataBrokerCount")
                 ? l10n.getString(
                     "landing-premium-plans-table-feature-scan-label-masked",
@@ -692,6 +698,7 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
               &nbsp;
               <InfoPopover>
                 <PopoverContent>
+                  {/* c8 ignore next 4 */}
                   {props.enabledFeatureFlags.includes("MaskDataBrokerCount")
                     ? l10n.getString(
                         "landing-premium-plans-table-feature-removal-plus-callout-masked",

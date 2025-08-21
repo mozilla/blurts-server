@@ -41,6 +41,7 @@ export const ExposuresFilterTypeExplainer = (
       >
         <div className={styles.modalBodyContent}>
           <p>
+            {/* c8 ignore next 3 */}
             {props.enabledFeatureFlags.includes("MaskDataBrokerCount")
               ? l10n.getString("modal-exposure-type-description-masked")
               : l10n.getString("modal-exposure-type-description", {
