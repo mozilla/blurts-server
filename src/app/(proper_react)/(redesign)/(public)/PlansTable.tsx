@@ -279,7 +279,7 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
                   )}
                 />
                 <span>
-                  {/* c8 ignore next 3 */}
+                  {/* c8 ignore next 8 */}
                   {props.enabledFeatureFlags.includes("MaskDataBrokerCount")
                     ? l10n.getFragment(
                         "landing-premium-plans-cards-feature-scan-plus-masked",
@@ -316,7 +316,7 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
                   &nbsp;
                   <InfoPopover>
                     <PopoverContent>
-                      {/* c8 ignore next 3 */}
+                      {/* c8 ignore next 8 */}
                       {props.enabledFeatureFlags.includes("MaskDataBrokerCount")
                         ? l10n.getString(
                             "landing-premium-plans-table-feature-removal-plus-callout-masked",
