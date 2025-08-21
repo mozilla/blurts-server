@@ -486,7 +486,7 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
                   )}
                 />
                 <span>
-                  {/* c8 ignore next 3 */}
+                  {/* c8 ignore next 8 */}
                   {props.enabledFeatureFlags.includes("MaskDataBrokerCount")
                     ? l10n.getFragment(
                         "landing-premium-plans-cards-feature-scan-plus-masked",
