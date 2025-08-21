@@ -21,6 +21,7 @@ import { useL10n } from "../../../../../hooks/l10n";
 import MonitorLogo from "../../../../images/monitor-logo.svg";
 import { useTelemetry } from "../../../../../hooks/useTelemetry";
 import { ExperimentData } from "../../../../../../telemetry/generated/nimbus/experiments";
+import { FeatureFlagName } from "../../../../../../db/tables/featureFlags";
 
 type StepId = "getStarted" | "enterInfo" | "findExposures";
 
@@ -31,6 +32,7 @@ export type Props = {
   stepId?: StepId;
   previousRoute: string | null;
   experimentData: ExperimentData["Features"];
+  enabledFeatureFlags: FeatureFlagName[];
 };
 
 export const View = ({
@@ -40,6 +42,7 @@ export const View = ({
   stepId = "getStarted",
   previousRoute,
   experimentData,
+  enabledFeatureFlags,
 }: Props) => {
   const l10n = useL10n();
   const skipInitialStep = stepId === "enterInfo";
