@@ -215,12 +215,17 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               )}
             </h3>
             <p>
-              {l10n.getString(
-                "dashboard-top-banner-monitor-protects-your-even-more-description",
-                {
-                  data_broker_sites_total_num: CONST_ONEREP_DATA_BROKER_COUNT,
-                },
-              )}
+              {props.enabledFeatureFlags.includes("MaskDataBrokerCount")
+                ? l10n.getString(
+                    "dashboard-top-banner-monitor-protects-your-even-more-description-masked",
+                  )
+                : l10n.getString(
+                    "dashboard-top-banner-monitor-protects-your-even-more-description",
+                    {
+                      data_broker_sites_total_num:
+                        CONST_ONEREP_DATA_BROKER_COUNT,
+                    },
+                  )}
             </p>
             <div className={styles.cta}>
               {!props.enabledFeatureFlags.includes("DisableOneRepScans") &&
@@ -286,12 +291,17 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               {l10n.getString("dashboard-top-banner-no-exposures-found-title")}
             </h3>
             <p>
-              {l10n.getString(
-                "dashboard-top-banner-no-exposures-found-description",
-                {
-                  data_broker_sites_total_num: CONST_ONEREP_DATA_BROKER_COUNT,
-                },
-              )}
+              {props.enabledFeatureFlags.includes("MaskDataBrokerCount")
+                ? l10n.getString(
+                    "dashboard-top-banner-no-exposures-found-description-masked",
+                  )
+                : l10n.getString(
+                    "dashboard-top-banner-no-exposures-found-description",
+                    {
+                      data_broker_sites_total_num:
+                        CONST_ONEREP_DATA_BROKER_COUNT,
+                    },
+                  )}
             </p>
             <p>
               {l10n.getString(

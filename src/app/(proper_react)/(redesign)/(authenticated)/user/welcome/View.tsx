@@ -67,6 +67,7 @@ export const View = ({
         dataBrokerCount={dataBrokerCount}
         breachesTotalCount={breachesTotalCount}
         previousRoute={previousRoute ?? "/user/dashboard"}
+        enabledFeatureFlags={enabledFeatureFlags}
       />
     ) : currentStep === "enterInfo" ? (
       <EnterInfo
@@ -98,6 +99,7 @@ export const View = ({
           });
           setCurrentStep("enterInfo");
         }}
+        enabledFeatureFlags={enabledFeatureFlags}
       />
     );
 

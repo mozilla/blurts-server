@@ -76,6 +76,8 @@ export const featureFlagNames = [
   "PrivacyProductsBundle",
   "DisableOneRepScans",
   "DisableLandingToDashboardRedirect",
+  "Moscary",
+  "MaskDataBrokerCount",
 ] as const;
 
 export const adminOnlyFlags: FeatureFlagName[] = [

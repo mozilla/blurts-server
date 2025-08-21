@@ -253,15 +253,21 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
                   )}
                 />
                 <span>
-                  {l10n.getFragment(
-                    "landing-premium-plans-cards-feature-scan-free",
-                    {
-                      elems: { b: <b /> },
-                      vars: {
-                        dataBrokerTotalCount: CONST_ONEREP_DATA_BROKER_COUNT,
-                      },
-                    },
-                  )}
+                  {props.enabledFeatureFlags.includes("MaskDataBrokerCount")
+                    ? l10n.getFragment(
+                        "landing-premium-plans-cards-feature-scan-free-masked",
+                        { elems: { b: <b /> } },
+                      )
+                    : l10n.getFragment(
+                        "landing-premium-plans-cards-feature-scan-free",
+                        {
+                          elems: { b: <b /> },
+                          vars: {
+                            dataBrokerTotalCount:
+                              CONST_ONEREP_DATA_BROKER_COUNT,
+                          },
+                        },
+                      )}
                 </span>
               </li>
               <li className={`${styles.feature} ${styles.included}`}>
@@ -272,15 +278,23 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
                   )}
                 />
                 <span>
-                  {l10n.getFragment(
-                    "landing-premium-plans-cards-feature-scan-plus",
-                    {
-                      elems: { b: <b /> },
-                      vars: {
-                        dataBrokerTotalCount: CONST_ONEREP_DATA_BROKER_COUNT,
-                      },
-                    },
-                  )}
+                  {props.enabledFeatureFlags.includes("MaskDataBrokerCount")
+                    ? l10n.getFragment(
+                        "landing-premium-plans-cards-feature-scan-plus-masked",
+                        {
+                          elems: { b: <b /> },
+                        },
+                      )
+                    : l10n.getFragment(
+                        "landing-premium-plans-cards-feature-scan-plus",
+                        {
+                          elems: { b: <b /> },
+                          vars: {
+                            dataBrokerTotalCount:
+                              CONST_ONEREP_DATA_BROKER_COUNT,
+                          },
+                        },
+                      )}
                 </span>
               </li>
               <li className={`${styles.feature} ${styles.included}`}>
@@ -300,12 +314,17 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
                   &nbsp;
                   <InfoPopover>
                     <PopoverContent>
-                      {l10n.getString(
-                        "landing-premium-plans-table-feature-removal-plus-callout",
-                        {
-                          dataBrokerTotalCount: CONST_ONEREP_DATA_BROKER_COUNT,
-                        },
-                      )}
+                      {props.enabledFeatureFlags.includes("MaskDataBrokerCount")
+                        ? l10n.getString(
+                            "landing-premium-plans-table-feature-removal-plus-callout-masked",
+                          )
+                        : l10n.getString(
+                            "landing-premium-plans-table-feature-removal-plus-callout",
+                            {
+                              dataBrokerTotalCount:
+                                CONST_ONEREP_DATA_BROKER_COUNT,
+                            },
+                          )}
                     </PopoverContent>
                   </InfoPopover>
                 </span>
@@ -464,15 +483,23 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
                   )}
                 />
                 <span>
-                  {l10n.getFragment(
-                    "landing-premium-plans-cards-feature-scan-plus",
-                    {
-                      elems: { b: <b /> },
-                      vars: {
-                        dataBrokerTotalCount: CONST_ONEREP_DATA_BROKER_COUNT,
-                      },
-                    },
-                  )}
+                  {props.enabledFeatureFlags.includes("MaskDataBrokerCount")
+                    ? l10n.getFragment(
+                        "landing-premium-plans-cards-feature-scan-plus-masked",
+                        {
+                          elems: { b: <b /> },
+                        },
+                      )
+                    : l10n.getFragment(
+                        "landing-premium-plans-cards-feature-scan-plus",
+                        {
+                          elems: { b: <b /> },
+                          vars: {
+                            dataBrokerTotalCount:
+                              CONST_ONEREP_DATA_BROKER_COUNT,
+                          },
+                        },
+                      )}
                 </span>
               </li>
               <li className={`${styles.feature} ${styles.notIncluded}`}>
@@ -492,12 +519,17 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
                   &nbsp;
                   <InfoPopover>
                     <PopoverContent>
-                      {l10n.getString(
-                        "landing-premium-plans-table-feature-removal-plus-callout",
-                        {
-                          dataBrokerTotalCount: CONST_ONEREP_DATA_BROKER_COUNT,
-                        },
-                      )}
+                      {props.enabledFeatureFlags.includes("MaskDataBrokerCount")
+                        ? l10n.getString(
+                            "landing-premium-plans-table-feature-removal-plus-callout-masked",
+                          )
+                        : l10n.getString(
+                            "landing-premium-plans-table-feature-removal-plus-callout",
+                            {
+                              dataBrokerTotalCount:
+                                CONST_ONEREP_DATA_BROKER_COUNT,
+                            },
+                          )}
                     </PopoverContent>
                   </InfoPopover>
                 </span>
@@ -616,12 +648,16 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
         <TableBody>
           <Row>
             <Cell>
-              {l10n.getString(
-                "landing-premium-plans-table-feature-scan-label",
-                {
-                  dataBrokerTotalCount: CONST_ONEREP_DATA_BROKER_COUNT,
-                },
-              )}
+              {props.enabledFeatureFlags.includes("MaskDataBrokerCount")
+                ? l10n.getString(
+                    "landing-premium-plans-table-feature-scan-label-masked",
+                  )
+                : l10n.getString(
+                    "landing-premium-plans-table-feature-scan-label",
+                    {
+                      dataBrokerTotalCount: CONST_ONEREP_DATA_BROKER_COUNT,
+                    },
+                  )}
             </Cell>
             <Cell>
               {l10n.getString("landing-premium-plans-table-feature-scan-free")}
@@ -656,12 +692,16 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
               &nbsp;
               <InfoPopover>
                 <PopoverContent>
-                  {l10n.getString(
-                    "landing-premium-plans-table-feature-removal-plus-callout",
-                    {
-                      dataBrokerTotalCount: CONST_ONEREP_DATA_BROKER_COUNT,
-                    },
-                  )}
+                  {props.enabledFeatureFlags.includes("MaskDataBrokerCount")
+                    ? l10n.getString(
+                        "landing-premium-plans-table-feature-removal-plus-callout-masked",
+                      )
+                    : l10n.getString(
+                        "landing-premium-plans-table-feature-removal-plus-callout",
+                        {
+                          dataBrokerTotalCount: CONST_ONEREP_DATA_BROKER_COUNT,
+                        },
+                      )}
                 </PopoverContent>
               </InfoPopover>
             </Cell>
