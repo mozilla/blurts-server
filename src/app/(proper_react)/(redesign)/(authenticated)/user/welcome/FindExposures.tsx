@@ -11,11 +11,13 @@ import styles from "./FindExposures.module.scss";
 import { useL10n } from "../../../../../hooks/l10n";
 import { sendGAEvent } from "../../../../../components/client/GoogleAnalyticsWorkaround";
 import type { ScanProgressBody } from "../../../../../api/v1/user/welcome-scan/progress/route";
+import { FeatureFlagName } from "../../../../../../db/tables/featureFlags";
 
 export type Props = {
   dataBrokerCount: number;
   breachesTotalCount: number;
   previousRoute: string;
+  enabledFeatureFlags: FeatureFlagName[];
 };
 
 export type FindExposuresTelemetryParams = {
@@ -58,6 +60,7 @@ export const FindExposures = ({
   dataBrokerCount,
   breachesTotalCount,
   previousRoute,
+  enabledFeatureFlags,
 }: Props) => {
   const [scanProgress, setScanProgress] = useState(0);
   const [scanFinished, setScanFinished] = useState(false);
@@ -165,13 +168,20 @@ export const FindExposures = ({
                   "onboarding-find-exposures-progress-breaches-counter",
                   { breachesScannedCount, breachesTotalCount },
                 )
-              : l10n.getString(
-                  "onboarding-find-exposures-progress-broker-counter",
-                  {
-                    dataBrokerScannedCount,
-                    dataBrokerTotalCount: dataBrokerCount,
-                  },
-                )
+              : enabledFeatureFlags.includes("MaskDataBrokerCount")
+                ? l10n.getString(
+                    "onboarding-find-exposures-progress-broker-counter-masked",
+                    {
+                      dataBrokerScannedCount,
+                    },
+                  )
+                : l10n.getString(
+                    "onboarding-find-exposures-progress-broker-counter",
+                    {
+                      dataBrokerScannedCount,
+                      dataBrokerTotalCount: dataBrokerCount,
+                    },
+                  )
           }
         </div>
       </div>
