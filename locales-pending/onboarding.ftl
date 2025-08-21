@@ -80,4 +80,6 @@ onboarding-find-exposures-progress-broker-counter = {
     $dataBrokerTotalCount ->
         *[other] { $dataBrokerScannedCount } of { $dataBrokerTotalCount } data broker sites
 }
+# Variables:
+#   $dataBrokerScannedCount (number) - number of the currently scanned data broker sites, e.g. between 0 and $dataBrokerTotalCount
 onboarding-find-exposures-progress-broker-counter-masked = { $dataBrokerScannedCount } of data brokers
