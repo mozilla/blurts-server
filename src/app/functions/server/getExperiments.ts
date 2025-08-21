@@ -32,10 +32,14 @@ export type ExperimentData_V2_Or_V2LikeV1 = Partial<ExperimentData> &
  * @returns
  */
 export async function getExperiments(params: {
-  experimentationId: ExperimentationId;
+  experimentationId?: ExperimentationId;
   locale: string;
   countryCode: string;
 }): Promise<ExperimentData_V2_Or_V2LikeV1> {
+  if (!params.experimentationId) {
+    return defaultExperimentData;
+  }
+
   if (["local"].includes(process.env.APP_ENV ?? "local")) {
     return localExperimentData;
   }
