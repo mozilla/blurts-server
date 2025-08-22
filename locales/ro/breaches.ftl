@@ -35,6 +35,53 @@ breach-checklist-email-body = Îți poate ascunde adresa adevărată de e-mail �
 # Credit reports list your bill payment history, loans, current debt, and other financial information.
 # They show where you work and live and whether you've been sued, arrested, or filed for bankruptcy.
 breach-checklist-ssn-header = Monitorizează-ți raportul de credit pentru conturi, împrumuturi sau carduri de credit pe care nu le recunoști.
+# A security freeze prevents prospective creditors from accessing your credit file.
+# Creditors typically won't offer you credit if they can't access your credit reporting file,
+# so a security freeze, also called a credit freeze, prevents you or others from opening accounts in your name.
+# This will only be shown to users in the US.
+# Variables:
+#   $equifaxLink (string) - a link to the Equifax website
+#   $experianLink (string) - a link to the Experian website
+#   $transUnionLink (string) - a link to the TransUnion website
+breach-checklist-ssn-body-2 = Poți lua în calcul și blocarea creditului pe { $equifaxLink }, { $experianLink } și { $transUnionLink } ca să împiedici escrocii să deschidă conturi noi în numele tău. E gratuit și nu îți va afecta scorul de credit.
+
+## Prompts the user for changes when there is a breach detected of credit card
+
+breach-checklist-cc-header = Raportează această încălcare a securității către emitentul cardului de credit și solicită un card nou cu un număr nou.
+breach-checklist-cc-body = De asemenea, ar trebui să verifici extrasele cardului de credit pentru debitări nerecunoscute.
+
+## Prompts the user for changes when there is a breach detected of bank account
+
+breach-checklist-bank-header = Anunță imediat banca despre compromiterea numărului de cont.
+breach-checklist-bank-body = Cu cât o faci mai rapid, cu atât vei putea beneficia de mai multe protecții legale care să te ajute să recuperezi orice pierderi. De asemenea, trebuie să îți verifici și conturile pentru orice debitări nerecunoscute.
+
+## Prompts the user for changes when there is a breach detected of pin
+
+breach-checklist-pin-header = Notifică emitentul cardului și schimbă imediat codul PIN.
+breach-checklist-pin-body = Asigură-te că noul PIN sau orice alt PIN nu include numere ușor de ghicit, cum ar fi data nașterii sau adresa.
+
+## Prompts the user for changes when there is a breach detected of IP address
+
+# Variables:
+#   $mozillaVpnLink (string) - a link to the Mozilla VPN website, with { -breach-checklist-link-mozilla-vpn } as the label
+breach-checklist-ip-header-2 = Folosește internetul în mod privat cu un VPN, cum ar fi { $mozillaVpnLink }.
+breach-checklist-ip-body = Adresa ta IP (Internet Protocol) indică locația ta și furnizorul de servicii de internet. Un VPN poate ascunde adresa IP reală, astfel încât să poți utiliza internetul în mod privat.
+
+## Prompts the user for changes when there is a breach detected of physical address
+
+breach-checklist-address-header = Schimbă orice parole sau coduri PIN care includ orice parte a adresei tale.
+breach-checklist-address-body = Adresele sunt ușor de găsit în registrele publice și pot face acele parole și coduri PIN ușor de ghicit.
+
+## Prompts the user for changes when there is a breach detected of date of birth
+
+breach-checklist-dob-header = Schimbă orice parole sau coduri PIN care includ data ta de naștere.
+breach-checklist-dob-body = Datele de naștere sunt ușor de găsit în registrele publice, iar cei care le găsesc ar putea ghici cu ușurință codul PIN.
+
+## Prompts the user for changes when there is a breach detected of phone number
+
+# Variables:
+#   $firefoxRelayLink (string) - a link to Firefox Relay, with { -breach-checklist-link-firefox-relay } as the label
+breach-checklist-phone-header-2 = Protejează-ți numărul de telefon cu un serviciu de mascare precum { $firefoxRelayLink }, care îți ascunde numărul real de telefon.
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
@@ -45,6 +92,9 @@ breach-checklist-sq-body-text = În cele mai multe cazuri, îți recomandăm să
 ## Prompts the user for changes when there is a breach detected of historical password
 
 breach-checklist-hp-header = Creează parole unice și puternice pentru orice cont în care ai reutilizat parolele.
+# Variables:
+#   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
+breach-checklist-hp-body-2 = Un manager de parole precum { $passwordManagerLink } (care este gratuit și încorporat în browserul { -brand-firefox }) te poate ajuta să îți urmărești toate parolele și să le accesezi în siguranță de pe toate dispozitivele tale.
 
 ## Prompts the user for changes when there is a breach detected of other types
 

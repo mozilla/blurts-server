@@ -15,6 +15,9 @@ exposure-chart-heading =
         [few] <nr>{ $nr }</nr> <label>expuneri</label>
        *[other] <nr>{ $nr }</nr> <label>de expuneri</label>
     }
+# Variables:
+#   $nr (number) - Number of fixed exposures found for the user
+exposure-chart-heading-fixed = <nr>{ $nr }</nr> <label>Remediate</label>
 exposure-chart-legend-heading-type = Expunere
 exposure-chart-legend-heading-nr = Număr
 # Variables:
@@ -29,6 +32,11 @@ exposure-chart-returning-user-upgrade-prompt = Adresa de domiciliu, membrii fami
 exposure-chart-returning-user-upgrade-prompt-cta = Începe o scanare gratuită
 exposure-chart-scan-in-progress-prompt = <b>Scanare în curs:</b> adresa, membrii familiei și altele nu sunt încă incluse.
 modal-active-number-of-exposures-title = Despre numărul tău de expuneri active
+modal-active-number-of-exposures-part-two = De exemplu, dacă ai 10 expuneri ale numărului de telefon, ar putea însemna că un număr de telefon este expus pe 10 site-uri diferite sau că 2 numere de telefon diferite au fost expuse pe 5 site-uri diferite.
+modal-active-number-of-exposures-part-three-all = Odată rezolvate, vor fi adăugate la numărul total de expuneri fixe de pe pagina de Remediate.
+modal-fixed-number-of-exposures-title = Despre numărul tău de expuneri remediate
+modal-fixed-number-of-exposures-all = Acest grafic include numărul total de încălcări ale securității datelor care au fost remediate pentru toate adresele de e-mail pe care le monitorizezi. Odată ce expunerile sunt marcate ca remediate, vor fi adăugate la totalul de aici.
+modal-cta-ok = OK
 progress-card-heres-what-we-fixed-headline-all = Iată ce ai remediat
 progress-card-manually-fixed-headline = Remediat manual
 dashboard-tab-label-action-needed = Necesită atenție
@@ -90,7 +98,7 @@ dashboard-top-banner-protect-your-data-cta = Să o remediem
 #   $exposures_unresolved_num (number) - the total number of exposures the user has.
 dashboard-top-banner-non-us-protect-your-data-description-line1 =
     { $exposures_unresolved_num ->
-        [one] Am găsit { $exposures_unresolved_num } expunere ale datelor tale.
+        [one] Am găsit { $exposures_unresolved_num } expunere a datelor tale.
         [few] Am găsit { $exposures_unresolved_num } expuneri ale datelor tale.
        *[other] Am găsit { $exposures_unresolved_num } de expuneri ale datelor tale.
     }
@@ -103,6 +111,24 @@ dashboard-top-banner-non-us-protect-your-data-description-line2 =
         [few] A apărut în { $data_breach_unresolved_num } încălcări ale securității datelor. Te vom ghida pas cu pas despre cum să le remediezi.
        *[other] A apărut în { $data_breach_unresolved_num } de încălcări ale securității datelor. Te vom ghida pas cu pas despre cum să le remediezi.
     }
+dashboard-top-banner-no-exposures-found-title = Nu s-au găsit expuneri
+dashboard-top-banner-non-us-no-exposures-found-description = Vesti bune! Am căutat toate încălcările cunoscute de securitate a datelor și nu am găsit nicio expunere. Vom continua să îți monitorizăm adresa de e-mail și te vom avertiza dacă apare o nouă încălcare.
+dashboard-no-exposures-label = Nu s-au găsit expuneri
+# Variables:
+# $exposures_resolved_num is the number of exposures the user has resolved.
+dashboard-top-banner-non-us-your-data-is-protected-description =
+    { $exposures_resolved_num ->
+        [one] Bine lucrat! Expunerea datelor tale a fost remediată! Vom continua monitorizarea și te vom anunța dacă apar orice expuneri noi.
+        [few] Bine lucrat! Toate cele { $exposures_resolved_num } expuneri ale datelor tale au fost remediate! Vom continua monitorizarea și te vom anunța dacă apar orice expuneri noi.
+       *[other] Bine lucrat! Toate cele { $exposures_resolved_num } de expuneri ale datelor tale au fost remediate! Vom continua monitorizarea și te vom anunța dacă apar orice expuneri noi.
+    }
+dashboard-top-banner-monitor-more-cta = Monitorizează mai multe adrese de e-mail
 
 # About Exposure Indicators Modal
 
+modal-exposure-status-description-all =
+    Căutăm expuneri în toate încălcările cunoscute de securitate a datelor.
+    Expunerile tale vor avea unul dintre următoarele stări:
+modal-exposure-indicator-title = Stări expuneri
+modal-exposure-indicator-action-needed = Necesită o acțiune avansată sau manuală din partea ta pentru finalizarea unei acțiuni.
+modal-exposure-indicator-fixed = Expunerea a fost remediată și nu mai ai nimic de făcut.
