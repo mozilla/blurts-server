@@ -38,6 +38,7 @@ dates-of-birth = date de naștere
 deceased-date = date de deces
 deceased-statuses = stări de deces
 device-information = informații despre dispozitive
+device-serial-numbers = Numere de serie ale dispozitivelor
 device-usage-tracking-data = date de urmărire a utilizării dispozitivelor
 drinking-habits = obiceiuri privind consumul de alcool
 drug-habits = obiceiuri privind consumul de droguri
