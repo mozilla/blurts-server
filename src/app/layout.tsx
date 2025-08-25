@@ -96,7 +96,7 @@ export default async function RootLayout({
       >
         <ExperimentsProvider
           experimentData={experimentData}
-          experimentationId={experimentationId}
+          experimentationId={experimentationId ?? ""}
         >
           <SessionProvider session={session}>{children}</SessionProvider>
         </ExperimentsProvider>
@@ -104,7 +104,7 @@ export default async function RootLayout({
       <StripeScript />
       <GleanScript
         channel={process.env.APP_ENV ?? ""}
-        experimentationId={experimentationId}
+        experimentationId={experimentationId ?? ""}
       />
       {(await headers()).get("DNT") !== "1" && (
         <GoogleAnalyticsWorkaround

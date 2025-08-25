@@ -166,6 +166,7 @@ export default async function SettingsPage(props: Props) {
   const userAnnouncements = await initializeUserAnnouncements(
     session.user,
     enabledFeatureFlags,
+    experimentData["Features"],
   );
 
   return (
