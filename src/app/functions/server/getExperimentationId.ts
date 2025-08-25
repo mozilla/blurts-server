@@ -45,6 +45,8 @@ async function getExperimentationId(
   // cookie if it doesn't exist yet.)
   // TODO: could we use client ID for this? There's no supported way to get it from GleanJS.
   try {
+    // The function `getExperimentationId` can be used outside of Next.js environments
+    // so we import `next/headers` dynamically to handle when it is not available.
     const nextHeaders = await loadNextHeaders();
     if (nextHeaders) {
       const experimentationId = (await nextHeaders.headers()).get(
