@@ -340,7 +340,7 @@ export async function onHandleUpdateProfileData(
         middle_name: middle_name ?? "",
         // The user is not allowed to change their date of birth:
         // https://support.mozilla.org/en-US/kb/add-edit-your-monitor-information#w_why-can-i-not-edit-my-birth-date
-        // Moscary could also consider blocking this.
+        // Moscary could also consider blocking this (MNTOR-4894).
         birth_date: existingProfile.birth_date,
       });
     } catch (error) {
