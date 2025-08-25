@@ -157,7 +157,7 @@ export function isEligibleForStep(
     return (
       data.latestScanData?.results?.some((result) => {
         return (
-          // "Removal under maintenance" isn't enabled (yet?) and therefore not supported on Moscary:
+          // MNTOR-4893: "Removal under maintenance" isn't enabled (yet?) and therefore not supported on Moscary:
           isOneRepScanResultDataBroker(result) &&
           result.broker_status === "removal_under_maintenance" &&
           result.status !== "removed" &&

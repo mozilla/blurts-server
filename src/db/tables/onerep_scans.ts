@@ -433,7 +433,7 @@ async function getEmailForProfile(onerepProfileId: number) {
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-// TODO MOSCARY: Check whether we still need <RemovalUnderMaintenanceView>?
+// MNTOR-4893: Re-implement <RemovalUnderMaintenanceView>?
 async function getScanResultsWithBrokerUnderMaintenance(
   onerepProfileId: number | null,
 ): Promise<LatestOnerepScanData> {
