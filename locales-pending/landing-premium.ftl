@@ -43,6 +43,7 @@ landing-premium-plans-table-feature-scan-label =
         [one] Scan { $dataBrokerTotalCount } data broker site that may be selling your personal info
        *[other] Scan { $dataBrokerTotalCount } data broker sites that may be selling your personal info
     }
+landing-premium-plans-table-feature-scan-label-masked = Scan data broker sites that may be selling your personal info
 landing-premium-plans-table-feature-scan-free = One-time
 landing-premium-plans-table-feature-scan-plus = Monthly
 landing-premium-plans-table-feature-removal-label = Remove personal info from sites that are selling it
@@ -56,6 +57,7 @@ landing-premium-plans-table-feature-removal-plus-callout =
         [one] We’ll automatically request removal of your private info across { $dataBrokerTotalCount } data broker site.
        *[other] We’ll automatically request removal of your private info across more than { $dataBrokerTotalCount } data broker sites.
     }
+landing-premium-plans-table-feature-removal-plus-callout-masked = We’ll automatically request removal of your private info across a number of data broker sites.
 landing-premium-plans-table-feature-alerts-label = Get alerts when your data has been breached
 landing-premium-plans-table-feature-alerts-free = Included
 landing-premium-plans-table-feature-alerts-plus = Included
@@ -102,6 +104,7 @@ landing-premium-plans-cards-feature-scan-free =
         [one] <b>One-time</b> scan of { $dataBrokerTotalCount } data broker site that may be selling your personal info
        *[other] <b>One-time</b> scan of { $dataBrokerTotalCount } data broker sites that may be selling your personal info
     }
+landing-premium-plans-cards-feature-scan-free-masked = <b>One-time</b> scan of data brokers that may be selling your personal info
 # Variables:
 #   $dataBrokerTotalCount (number) - number of scanned data broker sites, e.g. 190
 landing-premium-plans-cards-feature-scan-plus =
@@ -109,6 +112,7 @@ landing-premium-plans-cards-feature-scan-plus =
         [one] <b>Monthly</b> scan of { $dataBrokerTotalCount } data broker site that may be selling your personal info
        *[other] <b>Monthly</b> scan of { $dataBrokerTotalCount } data broker sites that may be selling your personal info
     }
+landing-premium-plans-cards-feature-scan-plus-masked = <b>Monthly</b> scan of data brokers that may be selling your personal info
 landing-premium-plans-cards-feature-removal-free = <b>Manual removal</b> of personal info from sites that are selling it
 landing-premium-plans-cards-feature-removal-plus = <b>Automatic data removal</b> from sites that are selling your personal info
 landing-premium-plans-cards-feature-alerts = Get alerts when your data has been breached
@@ -135,6 +139,7 @@ landing-premium-continuous-data-removal-qn = How does continuous data removal wo
 landing-premium-continuous-data-removal-ans = { $data_broker_sites_total_num ->
    *[other] Every month, we use the information you provided about yourself (name, location and birthdate) to search across { $data_broker_sites_total_num } data broker sites that sell people’s private information. If we find your data on any of these sites, we initiate the request for removal. This feature is available for { -brand-monitor-plus } users only. <learn_more_link>Learn more here.</learn_more_link>
 }
+landing-premium-continuous-data-removal-ans-masked = Every month, we use the information you provided about yourself (name, location and birthdate) to search across data brokers that sell people’s private information. If we find your data on any of these sites, we initiate the request for removal. This feature is available for { -brand-monitor-plus } users only. <learn_more_link>Learn more here.</learn_more_link>
 
 # Scan Limit
 

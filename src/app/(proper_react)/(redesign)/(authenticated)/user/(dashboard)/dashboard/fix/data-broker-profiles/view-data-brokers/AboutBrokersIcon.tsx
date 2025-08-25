@@ -18,8 +18,13 @@ import { Button } from "../../../../../../../../../components/client/Button";
 import { CONST_ONEREP_DATA_BROKER_COUNT } from "../../../../../../../../../../constants";
 import { useTelemetry } from "../../../../../../../../../hooks/useTelemetry";
 import { VisuallyHidden } from "../../../../../../../../../components/server/VisuallyHidden";
+import { FeatureFlagName } from "../../../../../../../../../../db/tables/featureFlags";
 
-export const AboutBrokersIcon = () => {
+export const AboutBrokersIcon = ({
+  enabledFeatureFlags,
+}: {
+  enabledFeatureFlags: FeatureFlagName[];
+}) => {
   const l10n = useL10n();
   const overlayTriggerState = useOverlayTriggerState({
     defaultOpen: false,
@@ -74,12 +79,17 @@ export const AboutBrokersIcon = () => {
                 )}
               </p>
               <p>
-                {l10n.getString(
-                  "fix-flow-data-broker-profiles-view-data-broker-profiles-more-dialog-paragraph2",
-                  {
-                    data_broker_sites_total_num: dataBrokerCount,
-                  },
-                )}
+                {/* c8 ignore next 3 */}
+                {enabledFeatureFlags.includes("MaskDataBrokerCount")
+                  ? l10n.getString(
+                      "fix-flow-data-broker-profiles-view-data-broker-profiles-more-dialog-paragraph2-masked",
+                    )
+                  : l10n.getString(
+                      "fix-flow-data-broker-profiles-view-data-broker-profiles-more-dialog-paragraph2",
+                      {
+                        data_broker_sites_total_num: dataBrokerCount,
+                      },
+                    )}
               </p>
               <div className={styles.confirmButtonWrapper}>
                 <Button

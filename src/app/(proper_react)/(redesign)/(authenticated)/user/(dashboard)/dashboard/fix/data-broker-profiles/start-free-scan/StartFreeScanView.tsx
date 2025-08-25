@@ -51,12 +51,17 @@ export function StartFreeScanView(props: Props) {
             )}
           </h3>
           <p>
-            {l10n.getString(
-              "fix-flow-data-broker-profiles-start-free-scan-content-p1",
-              {
-                data_broker_count: CONST_ONEREP_DATA_BROKER_COUNT,
-              },
-            )}
+            {/* c8 ignore next 3 */}
+            {props.enabledFeatureFlags.includes("MaskDataBrokerCount")
+              ? l10n.getString(
+                  "fix-flow-data-broker-profiles-start-free-scan-content-p1-masked",
+                )
+              : l10n.getString(
+                  "fix-flow-data-broker-profiles-start-free-scan-content-p1",
+                  {
+                    data_broker_count: CONST_ONEREP_DATA_BROKER_COUNT,
+                  },
+                )}
           </p>
           <p>
             {l10n.getString(

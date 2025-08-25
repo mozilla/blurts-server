@@ -58,6 +58,7 @@ modal-exposure-type-description = {
   $data_broker_sites_total_num ->
     *[other] We search for you in all known data breaches and { $data_broker_sites_total_num } data broker sites that sell your personal info. Here are the two types of exposures we find:
 }
+modal-exposure-type-description-masked = We search for you in all known data breaches and a number of data broker sites that sell your personal info. Here are the two types of exposures we find:
 modal-exposure-type-data-breach = <b>Data breach</b> means your information has been compromised in a breach and could be in the wrong hands.
   Resolving these typically requires accessing your accounts, so you’ll need to take manual steps to resolve each breach even if you’ve subscribed to { -brand-monitor-plus }.
 modal-exposure-type-data-broker-part-one = <b>Your info for sale</b> means a data broker site is publicly publishing and selling your personal info.
@@ -165,12 +166,14 @@ dashboard-top-banner-monitor-protects-your-even-more-description =
       [one] We can now find exposures of your personal info on { $data_broker_sites_total_num } data broker site that publish and sell your personal info for a profit.
       *[other] We can now find exposures of your personal info on { $data_broker_sites_total_num } data broker sites that publish and sell your personal info for a profit.
   }
+dashboard-top-banner-monitor-protects-your-even-more-description-masked = We can now find exposures of your personal info on data broker sites that publish and sell your personal info for a profit.
 dashboard-top-banner-monitor-protects-your-even-more-cta = Get first scan free
 dashboard-top-banner-monitor-protects-your-even-more-learn-more = Learn more
 
 # Variables:
 # $data_broker_sites_total_num is the total number of data broker sites available to scan. This will always be plural.
 dashboard-top-banner-no-exposures-found-description = Great news! We searched all known data breaches and { $data_broker_sites_total_num } data broker sites that sell personal info and found no exposures.
+dashboard-top-banner-no-exposures-found-description-masked = Great news! We searched all known data breaches and data broker sites that sell personal info and found no exposures.
 dashboard-top-banner-no-exposures-found-upsell-info = Subscribe to { -brand-monitor-plus } and we’ll scan for new exposures every month.
 dashboard-top-banner-no-exposures-found-cta = Get continuous protection
 

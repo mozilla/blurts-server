@@ -59,7 +59,7 @@ export const ViewDataBrokersView = (props: Props) => {
             {l10n.getString(
               "fix-flow-data-broker-profiles-view-data-broker-profiles-view-info-on-sites",
             )}
-            <AboutBrokersIcon />
+            <AboutBrokersIcon enabledFeatureFlags={props.enabledFeatureFlags} />
           </h4>
           <DataBrokerProfiles data={props.data.latestScanData?.results ?? []} />
         </div>
