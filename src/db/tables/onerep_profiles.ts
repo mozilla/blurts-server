@@ -11,6 +11,11 @@ import { parseIso8601Datetime } from "../../utils/parse";
 
 const knex = createDbConnection();
 
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+// Also, deprecated.
+/* c8 ignore start */
+
+/** @deprecated */
 export async function setProfileDetails(
   onerepProfileId: number,
   profileData: CreateProfileRequest,
@@ -46,6 +51,7 @@ export async function setProfileDetails(
   });
 }
 
+/** @deprecated */
 export async function getProfileDetails(onerepProfileId: number) {
   const profile = await knex("onerep_profiles").first("*").where({
     onerep_profile_id: onerepProfileId,
@@ -53,6 +59,7 @@ export async function getProfileDetails(onerepProfileId: number) {
   return profile;
 }
 
+/** @deprecated */
 export async function updateProfileDetails(
   onerepProfileId: number,
   profileDataToUpdate: UpdateableProfileDetails,
@@ -74,6 +81,7 @@ export async function updateProfileDetails(
   });
 }
 
+/** @deprecated */
 export async function deleteProfileDetails(onerepProfileId: number) {
   await knex("onerep_profiles").delete().where({
     onerep_profile_id: onerepProfileId,

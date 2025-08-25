@@ -16,6 +16,7 @@ import { getServerSession } from "../../../../../../../functions/server/getServe
 import { refreshStoredScanResults } from "../../../../../../../functions/server/refreshStoredScanResults";
 import { hasPremium } from "../../../../../../../functions/universal/user";
 import { getEnabledFeatureFlags } from "../../../../../../../../db/tables/featureFlags";
+import { getScanAndResults } from "../../../../../../../functions/server/moscary";
 
 export default async function FixPage() {
   const session = await getServerSession();
@@ -36,10 +37,11 @@ export default async function FixPage() {
     email: session.user.email,
   });
 
-  const scanData = await getScanResultsWithBroker(
-    profileId,
-    hasPremium(session.user),
-  );
+  const scanData = enabledFeatureFlags.includes("Moscary")
+    ? session.user.subscriber.moscary_id
+      ? await getScanAndResults(session.user.subscriber.moscary_id)
+      : { scan: null, results: [] }
+    : await getScanResultsWithBroker(profileId, hasPremium(session.user));
   const stepDeterminationData: StepDeterminationData = {
     countryCode,
     user: session.user,

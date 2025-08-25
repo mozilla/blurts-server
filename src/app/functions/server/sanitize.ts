@@ -61,6 +61,7 @@ export type SanitizedSubscriberRow = SanitizationMarker &
     | "waitlists_joined"
     | "breach_stats"
     | "monthly_monitor_report"
+    | "moscary_id"
     | "onerep_profile_id"
     | "email_addresses"
   >;
@@ -91,6 +92,7 @@ export function sanitizeSubscriberRow(
     waitlists_joined: subscriber.waitlists_joined,
     breach_stats: subscriber.breach_stats,
     monthly_monitor_report: subscriber.monthly_monitor_report,
+    moscary_id: subscriber.moscary_id,
     onerep_profile_id: subscriber.onerep_profile_id,
     email_addresses: subscriber.email_addresses,
     // If we want to avoid passing this property to the client-side, we can also

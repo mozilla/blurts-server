@@ -47,6 +47,7 @@ import {
 import { getScanResultsWithBroker } from "../../db/tables/onerep_scans";
 import { logger } from "../../app/functions/server/logging";
 import { getFeatureFlagData } from "../../db/tables/featureFlags";
+import { getScanAndResults } from "../../app/functions/server/moscary";
 
 const SENTRY_SLUG = "cron-breach-alerts";
 
@@ -283,25 +284,15 @@ export async function poll(
               await refreshStoredScanResults(recipient.onerep_profile_id);
             }
 
-            let dataSummary: DashboardSummary | undefined;
-            if (
-              isEligibleForPremium(assumedCountryCode) &&
-              !hasPremium(recipient) &&
-              typeof recipient.onerep_profile_id === "number"
-            ) {
-              const scanData = await getScanResultsWithBroker(
-                recipient.onerep_profile_id,
-                hasPremium(recipient),
-              );
-              const allSubscriberBreaches = await getSubscriberBreaches({
-                fxaUid: recipient.fxa_uid,
-                countryCode: assumedCountryCode,
-              });
-              dataSummary = getDashboardSummary(
-                scanData.results,
-                allSubscriberBreaches,
-              );
-            }
+            let dataSummary: DashboardSummary | undefined =
+              // We currently need the data summary for the `<DataPointCount>` in
+              // `<BreachAlertEmail>`, which is only shown for free users who are
+              // eligible for Plus (i.e. are in the US) who have run a scan.
+              // Since it's somewhat expensive to run the queries to fetch this data,
+              // we only do it for those users.
+              isEligibleForPremium(assumedCountryCode) && !hasPremium(recipient)
+                ? await getDataSummary(recipient, assumedCountryCode)
+                : undefined;
 
             const subject = l10n.getString("email-breach-alert-all-subject");
             const subPlatFeatureFlagEnabled =
@@ -362,6 +353,23 @@ export async function poll(
     }
     /* c8 ignore stop */
   }
+}
+
+async function getDataSummary(
+  recipient: SubscriberRow | (SubscriberRow & EmailAddressRow),
+  assumedCountryCode: string,
+): Promise<DashboardSummary> {
+  const allSubscriberBreaches = await getSubscriberBreaches({
+    fxaUid: recipient.fxa_uid,
+    countryCode: assumedCountryCode,
+  });
+  const scanData = recipient.moscary_id
+    ? await getScanAndResults(recipient.moscary_id)
+    : await getScanResultsWithBroker(
+        recipient.onerep_profile_id,
+        hasPremium(recipient),
+      );
+  return getDashboardSummary(scanData.results, allSubscriberBreaches);
 }
 
 /* c8 ignore start */

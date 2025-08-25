@@ -109,7 +109,17 @@ export const View = ({
   return (
     <div className={styles.wrapper}>
       <header>
-        <Link href="/" className={styles.homeLink}>
+        <Link
+          href="/"
+          className={`${styles.homeLink} ${
+            // MNTOR-4531: This is just for visual debugging of help requests
+            // while customers can use either OneRep or Moscary, and doesn't need an explicit test:
+            /* c8 ignore next 2 */
+            enabledFeatureFlags.includes("Moscary")
+              ? styles.moscaryIndicator
+              : ""
+          }`}
+        >
           <Image
             src={MonitorLogo}
             alt={l10n.getString("main-nav-link-home-label")}

@@ -11,11 +11,13 @@ import { getSignupLocaleCountry } from "../functions/getSignupLocaleCountry";
 import { isEligibleForPremium } from "../../app/functions/universal/premium";
 import { SanitizedSubscriberRow } from "../../app/functions/server/sanitize";
 import { sumSanitizedDataPoints } from "../functions/reduceSanitizedDataPoints";
+import { FeatureFlagName } from "../../db/tables/featureFlags";
 
 type Props = {
   l10n: ExtendedReactLocalization;
   dataSummary: DashboardSummary;
   subscriber: SanitizedSubscriberRow | SubscriberRow;
+  enabledFeatureFlags: FeatureFlagName[];
   utmCampaignId: string;
   utmSource: string;
   utmMedium: string;
@@ -25,7 +27,9 @@ export const DataPointCount = (props: Props) => {
   const assumedCountryCode = getSignupLocaleCountry(props.subscriber);
   const unresolvedDataBreaches = props.dataSummary.dataBreachUnresolvedNum;
 
-  const hasRunFreeScan = typeof props.subscriber.onerep_profile_id === "number";
+  const hasRunFreeScan = props.enabledFeatureFlags.includes("Moscary")
+    ? typeof props.subscriber.moscary_id === "string"
+    : typeof props.subscriber.onerep_profile_id === "number";
   const utmContentSuffix = isEligibleForPremium(assumedCountryCode)
     ? "-us"
     : "-global";

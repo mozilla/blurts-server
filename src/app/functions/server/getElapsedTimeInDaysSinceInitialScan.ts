@@ -4,14 +4,36 @@
 
 import "./notInClientComponent";
 
-import { Session } from "next-auth";
+import { SubscriberRow } from "knex/types/tables";
 import { getLatestScanForProfileByReason } from "../../../db/tables/onerep_scans";
 import { CONST_DAY_MILLISECONDS } from "../../../constants";
+import { FeatureFlagName } from "../../../db/tables/featureFlags";
+import { fetchLatestScanForProfile } from "./moscary";
+import { parseIso8601Datetime } from "../../../utils/parse";
 
 export async function getElapsedTimeInDaysSinceInitialScan(
-  user: Session["user"],
+  subscriber: SubscriberRow,
+  enabledFeatureFlags: FeatureFlagName[],
 ) {
-  const onerepProfileId = user.subscriber?.onerep_profile_id;
+  if (enabledFeatureFlags.includes("Moscary")) {
+    if (!subscriber.moscary_id) {
+      return;
+    }
+
+    const latestScan = await fetchLatestScanForProfile(
+      subscriber.moscary_id,
+      "initial",
+    );
+    if (!latestScan) {
+      return;
+    }
+
+    return Math.floor(
+      (Date.now() - parseIso8601Datetime(latestScan.created_at).getTime()) /
+        CONST_DAY_MILLISECONDS,
+    );
+  }
+  const onerepProfileId = subscriber.onerep_profile_id;
   if (!onerepProfileId) {
     return;
   }

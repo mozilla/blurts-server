@@ -8,7 +8,7 @@ import { StartFreeScanView } from "./StartFreeScanView";
 import {
   createRandomAnnouncement,
   createRandomBreach,
-  createRandomScanResult,
+  createRandomOnerepScanResult,
   createUserWithPremiumSubscription,
 } from "../../../../../../../../../../apiMocks/mockData";
 import { Shell } from "../../../../../../../Shell/Shell";
@@ -30,7 +30,7 @@ const mockedScan: OnerepScanRow = {
 const mockedScanData: LatestOnerepScanData = {
   scan: mockedScan,
   results: [...Array(5)].map(() =>
-    createRandomScanResult({ status: "new", manually_resolved: false }),
+    createRandomOnerepScanResult({ status: "new", manually_resolved: false }),
   ),
 };
 const mockedBreaches = [...Array(5)].map(() => createRandomBreach());

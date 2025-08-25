@@ -26,6 +26,7 @@ import {
   onHandleUpdateProfileData,
 } from "./actions";
 import { UserAnnouncementWithDetails } from "../../../../../../../db/tables/user_announcements";
+import { MoscaryData } from "../../../../../../functions/server/moscary";
 
 export type TabType = (typeof CONST_SETTINGS_TAB_SLUGS)[number];
 
@@ -57,7 +58,7 @@ export type Props = {
   userAnnouncements: UserAnnouncementWithDetails[];
   isMonthlySubscriber: boolean;
   data?: SubscriberEmailPreferencesOutput;
-  profileData?: OnerepProfileRow;
+  profileData?: OnerepProfileRow | MoscaryData["Profile"];
   lastScanDate?: Date;
   activeTab?: TabType;
 };

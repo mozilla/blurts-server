@@ -22,6 +22,7 @@ import { getFeatureFlagData } from "../../db/tables/featureFlags";
 import { getSubBreaches } from "../../utils/subscriberBreaches";
 import { HibpLikeDbBreach } from "../../utils/hibp";
 import { getBreaches } from "../../app/functions/server/getBreaches";
+import { getScanAndResults } from "../../app/functions/server/moscary";
 
 let sentEmails = 0;
 process.on("SIGINT", () => {
@@ -108,10 +109,12 @@ async function sendMonthlyActivityEmail(
     await refreshStoredScanResults(subscriber.onerep_profile_id);
   }
 
-  const latestScan = await getScanResultsWithBroker(
-    subscriber.onerep_profile_id,
-    hasPremium(subscriber),
-  );
+  const latestScan = subscriber.moscary_id
+    ? await getScanAndResults(subscriber.moscary_id)
+    : await getScanResultsWithBroker(
+        subscriber.onerep_profile_id,
+        hasPremium(subscriber),
+      );
   const subscriberBreaches = await getSubBreaches(
     subscriber,
     allBreaches,

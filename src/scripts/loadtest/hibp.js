@@ -13,10 +13,9 @@
 
 import { post } from "k6/http";
 import crypto from "k6/crypto";
+import { getEnvVars } from "./envvars.ts";
 
-// @ts-ignore: k6 exposes environment variables via the __ENV variable:
-// https://grafana.com/docs/k6/latest/using-k6/environment-variables/
-const envVars = __ENV;
+const envVars = getEnvVars();
 
 const HIBP_NOTIFY_TOKEN = envVars.HIBP_NOTIFY_TOKEN;
 if (typeof HIBP_NOTIFY_TOKEN !== "string") {
@@ -45,7 +44,7 @@ const mockedBreachedEmailHash =
     ? crypto.sha1(envVars.LOADTEST_BREACHED_EMAIL, "hex")
     : "1c48923da9f6f17165711712d11bc104087444cc";
 
-export const run = () => {
+export const virtualUserRun = () => {
   /** @type {import("../../app/api/v1/hibp/notify/route").PostHibpNotificationRequestBody} */
   const data = {
     breachName: "ApexSMS",
@@ -74,4 +73,4 @@ export const run = () => {
     throw new Error(`Failed to parse result: ${res.status}`);
   }
 };
-export default run;
+export default virtualUserRun;

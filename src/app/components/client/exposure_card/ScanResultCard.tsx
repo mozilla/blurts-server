@@ -19,9 +19,11 @@ import { ExperimentData } from "../../../../telemetry/generated/nimbus/experimen
 import SparkleImage from "../assets/sparkle.png";
 import { isDataBrokerUnderMaintenance } from "../../../(proper_react)/(redesign)/(authenticated)/user/(dashboard)/dashboard/View";
 import { UpsellLinkButton } from "../toolbar/UpsellBadge";
+import type { MoscaryData } from "../../../functions/server/moscary";
+import { parseIso8601Datetime } from "../../../../utils/parse";
 
 export type ScanResultCardProps = {
-  scanResult: OnerepScanResultDataBrokerRow;
+  scanResult: OnerepScanResultDataBrokerRow | MoscaryData["ScanResult"];
   locale: string;
   resolutionCta: ReactNode;
   isPremiumUser: boolean;
@@ -219,11 +221,12 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
     !scanResult.manually_resolved &&
     scanResult.status === "waiting_for_verification" &&
     attemptCount >= 1 &&
-    typeof scanResult.last_optout_at !== "undefined"
+    typeof scanResult.last_optout_at !== "undefined" &&
+    scanResult.last_optout_at !== null
       ? l10n.getString("status-pill-requested-removal-info", {
           attempt_count: attemptCount,
           last_attempt_date: new Intl.DateTimeFormat(locale).format(
-            scanResult.last_optout_at,
+            parseIso8601Datetime(scanResult.last_optout_at),
           ),
         })
       : "";
@@ -310,7 +313,9 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
               {l10n.getString("exposure-card-date-found")}
             </dt>
             <dd className={styles.hideOnMobile}>
-              {dateFormatter.format(scanResult.created_at)}
+              {dateFormatter.format(
+                parseIso8601Datetime(scanResult.created_at)!,
+              )}
             </dd>
             {props.isPremiumUser &&
               props.enabledFeatureFlags.includes(

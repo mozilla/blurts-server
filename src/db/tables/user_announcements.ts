@@ -14,6 +14,7 @@ import { redirect } from "next/navigation";
 import { getCountryCode } from "../../app/functions/server/getCountryCode";
 import { headers } from "next/headers";
 import { isEligibleForPremium } from "../../app/functions/universal/premium";
+import { FeatureFlagName } from "./featureFlags";
 
 const knex = createDbConnection();
 
@@ -58,6 +59,7 @@ export async function markAnnouncementAsCleared(
 
 export async function initializeUserAnnouncements(
   user: Session["user"],
+  enabledFeatureFlags: FeatureFlagName[],
 ): Promise<UserAnnouncementWithDetails[]> {
   const subscriberId = user.subscriber?.id;
 
@@ -98,7 +100,9 @@ export async function initializeUserAnnouncements(
     const isYearly = subscriptionType === "yearly";
     const isBundle = subscriptionType === "bundle";
 
-    const hasRunScan = !!user.subscriber?.onerep_profile_id;
+    const hasRunScan = enabledFeatureFlags.includes("Moscary")
+      ? typeof user.subscriber?.moscary_id === "string"
+      : typeof user.subscriber?.onerep_profile_id === "number";
 
     // Get all current announcement IDs for the user
     const existingRows = await knex("user_announcements")

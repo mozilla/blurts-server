@@ -8,13 +8,19 @@ import { headers } from "next/headers";
 import { logger } from "../../../../../functions/server/logging";
 import { getServerSession } from "../../../../../functions/server/getServerSession";
 import {
-  createProfile,
-  createScan,
-  isEligibleForFreeScan,
+  createProfile as createOnerepProfile,
+  createScan as createOnerepScan,
+  isEligibleForFreeScan as isEligibleForFreeOnerepScan,
 } from "../../../../../functions/server/onerep";
 import type { CreateProfileRequest } from "../../../../../functions/server/onerep";
-import { meetsAgeRequirement } from "../../../../../functions/universal/user";
-import { getSubscriberByFxaUid } from "../../../../../../db/tables/subscribers";
+import {
+  hasPremium,
+  meetsAgeRequirement,
+} from "../../../../../functions/universal/user";
+import {
+  getSubscriberByFxaUid,
+  setMoscaryId,
+} from "../../../../../../db/tables/subscribers";
 import {
   setOnerepProfileId,
   setOnerepScan,
@@ -30,6 +36,13 @@ import {
   getAcceptLangHeaderInServerComponents,
   getL10n,
 } from "../../../../../functions/l10n/serverComponents";
+import { getEnabledFeatureFlags } from "../../../../../../db/tables/featureFlags";
+import {
+  activateProfile,
+  createProfile,
+  createScan,
+  isEligibleForFreeScan,
+} from "../../../../../functions/server/moscary";
 
 export interface WelcomeScanBody {
   success: boolean;
@@ -54,10 +67,14 @@ export async function POST(
     throw new Error("No fxa_uid found in session");
   }
 
-  const eligible = await isEligibleForFreeScan(
-    session.user,
-    getCountryCode(await headers()),
-  );
+  const enabledFeatureFlags = await getEnabledFeatureFlags({
+    email: session.user.email,
+  });
+
+  const countryCode = getCountryCode(await headers());
+  const eligible = enabledFeatureFlags.includes("Moscary")
+    ? await isEligibleForFreeScan(session.user, countryCode)
+    : await isEligibleForFreeOnerepScan(session.user, countryCode);
   if (!eligible) {
     logger.warn("scan_created_warn", {
       message: "User is not eligible for feature",
@@ -127,29 +144,53 @@ export async function POST(
       if (!subscriber) {
         throw new Error("No subscriber found for current session.");
       }
-      if (!subscriber.onerep_profile_id) {
-        // Create OneRep profile
-        const profileId = await createProfile(profileData);
-        await setOnerepProfileId(subscriber, profileId);
-        await setProfileDetails(profileId, profileData);
+      if (enabledFeatureFlags.includes("Moscary")) {
+        if (subscriber.moscary_id === null) {
+          const profileId = await createProfile(profileData);
+          await setMoscaryId(subscriber, profileId);
+          // Start exposure scan
+          const scan = await createScan(profileId);
+          logger.info("scan_created", {
+            scanId: scan.id,
+            scanStatus: scan.status,
+            scanReason: "manual",
+          });
 
-        // Start exposure scan
-        const scan = await createScan(profileId);
-        const scanId = scan.id;
-        await setOnerepScan(profileId, scanId, scan.status, "manual");
-        // TODO MNTOR-2686 - refactor onerep.ts and centralize logging.
-        logger.info("scan_created", {
-          onerepScanId: scanId,
-          onerepScanStatus: scan.status,
-          onerepScanReason: "manual",
-        });
+          if (hasPremium(subscriber)) {
+            await activateProfile(profileId);
+          }
 
-        return NextResponse.json({ success: true }, { status: 200 });
+          return NextResponse.json({ success: true }, { status: 200 });
+        }
+      } else {
+        if (!subscriber.onerep_profile_id) {
+          // Create OneRep profile
+          const profileId = await createOnerepProfile(profileData);
+          await setOnerepProfileId(subscriber, profileId);
+          await setProfileDetails(profileId, profileData);
+
+          // Start exposure scan
+          const scan = await createOnerepScan(profileId);
+          const scanId = scan.id;
+          await setOnerepScan(profileId, scanId, scan.status, "manual");
+          // TODO MNTOR-2686 - refactor onerep.ts and centralize logging.
+          logger.info("scan_created", {
+            onerepScanId: scanId,
+            onerepScanStatus: scan.status,
+            onerepScanReason: "manual",
+          });
+
+          return NextResponse.json({ success: true }, { status: 200 });
+        }
       }
 
       return NextResponse.json({ success: true }, { status: 200 });
     } catch (e) {
-      logger.error(e);
+      logger.error("Unhandled exception", {
+        message: e instanceof Error ? e.message : String(e),
+        stack: e instanceof Error ? e.stack : undefined,
+        name: e instanceof Error ? e.name : undefined,
+      });
       return NextResponse.json({ success: false }, { status: 500 });
     }
   } else {

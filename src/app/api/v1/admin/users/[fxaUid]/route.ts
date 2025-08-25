@@ -9,15 +9,16 @@ import { getServerSession } from "../../../../../functions/server/getServerSessi
 import { logger } from "../../../../../functions/server/logging";
 import { isAdmin } from "../../../../utils/auth";
 import {
+  deleteMoscaryId,
   deleteOnerepProfileId,
   deleteSubscriber,
   getOnerepProfileId,
   getSubscriberByFxaUid,
 } from "../../../../../../db/tables/subscribers";
 import {
-  activateProfile,
-  deactivateProfile,
-  optoutProfile,
+  activateProfile as activateOnerepProfile,
+  deactivateProfile as deactivateOnerepProfile,
+  optoutProfile as optoutOnerepProfile,
 } from "../../../../../functions/server/onerep";
 import { deleteProfileDetails } from "../../../../../../db/tables/onerep_profiles";
 import {
@@ -26,9 +27,17 @@ import {
 } from "../../../../../../db/tables/onerep_scans";
 import { changeSubscription } from "../../../../../functions/server/changeSubscription";
 import { isMozMail } from "../../../../../functions/universal/isMozMail";
+import {
+  activateProfile,
+  deactivateProfile,
+  deleteProfile,
+} from "../../../../../functions/server/moscary";
 
 export type GetUserStateResponseBody = {
+  success: true;
   subscriberId: SubscriberRow["id"];
+  moscaryId: SubscriberRow["moscary_id"];
+  /** @deprecated */
   onerepProfileId: SubscriberRow["onerep_profile_id"];
   createdAt: SubscriberRow["created_at"];
   updatedAt: SubscriberRow["updated_at"];
@@ -49,7 +58,7 @@ export type GetUserStateResponseBody = {
 export async function GET(
   req: NextRequest,
   props: { params: Promise<{ fxaUid: string }> },
-) {
+): Promise<NextResponse<GetUserStateResponseBody | { success: false }>> {
   const params = await props.params;
   const session = await getServerSession();
   if (session?.user && isAdmin(session?.user?.email || "")) {
@@ -73,7 +82,9 @@ export async function GET(
       }
 
       const responseBody: GetUserStateResponseBody = {
+        success: true,
         subscriberId: subscriber.id,
+        moscaryId: subscriber.moscary_id,
         onerepProfileId: subscriber.onerep_profile_id,
         createdAt: subscriber.created_at,
         updatedAt: subscriber.updated_at,
@@ -95,8 +106,11 @@ export async function GET(
 export type UserStateAction =
   | "subscribe"
   | "unsubscribe"
+  /** @deprecated */
   | "delete_onerep_profile"
+  /** @deprecated */
   | "delete_onerep_scans"
+  /** @deprecated */
   | "delete_onerep_scan_results"
   | "delete_subscriber";
 export type PutUserStateRequestBody = {
@@ -168,9 +182,12 @@ export async function PUT(
             await changeSubscription(subscriber, true);
 
             // activate and opt out profiles, if any
+            if (subscriber.moscary_id) {
+              await activateProfile(subscriber.moscary_id);
+            }
             if (typeof onerepProfileId === "number") {
-              await activateProfile(onerepProfileId);
-              await optoutProfile(onerepProfileId);
+              await activateOnerepProfile(onerepProfileId);
+              await optoutOnerepProfile(onerepProfileId);
             }
             logger.info("force_user_subscribe", {
               onerepProfileId,
@@ -181,8 +198,11 @@ export async function PUT(
           case "unsubscribe": {
             await changeSubscription(subscriber, false);
 
+            if (subscriber.moscary_id) {
+              await deactivateProfile(subscriber.moscary_id);
+            }
             if (typeof onerepProfileId === "number") {
-              await deactivateProfile(onerepProfileId);
+              await deactivateOnerepProfile(onerepProfileId);
             }
             logger.info("force_user_unsubscribe", {
               onerepProfileId,
@@ -191,6 +211,12 @@ export async function PUT(
             break;
           }
           case "delete_onerep_profile": {
+            if (subscriber.moscary_id) {
+              await deactivateProfile(subscriber.moscary_id);
+              await deleteProfile(subscriber.moscary_id);
+              await deleteMoscaryId(subscriber.id);
+            }
+
             if (typeof onerepProfileId !== "number") {
               throw new Error(
                 `Could not force-delete the OneRep profile of subscriber [${fxaUid}], as they do not have a OneRep profile known to us.`,

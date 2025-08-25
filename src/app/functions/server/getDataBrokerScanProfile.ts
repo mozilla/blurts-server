@@ -6,6 +6,7 @@ import { captureException } from "@sentry/nextjs";
 import { logger } from "../../functions/server/logging";
 import { getProfileDetails } from "../../../db/tables/onerep_profiles";
 
+/** @deprecated */
 async function getDataBrokerScanProfile(onerepProfileId: number) {
   try {
     const profileData = await getProfileDetails(onerepProfileId);

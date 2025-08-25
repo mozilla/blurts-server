@@ -7,11 +7,16 @@ import { LatestOnerepScanData } from "../../../db/tables/onerep_scans";
 import { SubscriberBreach } from "../../../utils/subscriberBreaches";
 import { BreachDataTypes, HighRiskDataTypes } from "../universal/breach";
 import { FeatureFlagName } from "../../../db/tables/featureFlags";
+import { ScanData } from "./moscary";
+import {
+  isOneRepScan,
+  isOneRepScanResultDataBroker,
+} from "../universal/onerep";
 
 export type StepDeterminationData = {
   user: Session["user"];
   countryCode: string;
-  latestScanData: LatestOnerepScanData | null;
+  latestScanData: LatestOnerepScanData | ScanData | null;
   subscriberBreaches: SubscriberBreach[];
 };
 
@@ -152,6 +157,8 @@ export function isEligibleForStep(
     return (
       data.latestScanData?.results?.some((result) => {
         return (
+          // MNTOR-4893: "Removal under maintenance" isn't enabled (yet?) and therefore not supported on Moscary:
+          isOneRepScanResultDataBroker(result) &&
           result.broker_status === "removal_under_maintenance" &&
           result.status !== "removed" &&
           !result.manually_resolved
@@ -272,7 +279,13 @@ export function hasCompletedStep(
     return (
       data.latestScanData?.results?.every(
         (result) =>
-          !(result.broker_status === "removal_under_maintenance") ||
+          !(
+            // Removal under maintenance isn't enabled (yet?) and therefore not supported on Moscary:
+            (
+              isOneRepScanResultDataBroker(result) &&
+              result.broker_status === "removal_under_maintenance"
+            )
+          ) ||
           result.status === "removed" ||
           result.manually_resolved,
         // MNTOR-3892
@@ -285,10 +298,12 @@ export function hasCompletedStep(
     const hasRunScan =
       typeof data.latestScanData?.scan === "object" &&
       data.latestScanData?.scan !== null;
+    const scanStatus = isOneRepScan(data.latestScanData?.scan)
+      ? data.latestScanData.scan.onerep_scan_status
+      : (data.latestScanData as ScanData | null)?.scan?.status;
     const hasResolvedAllScanResults =
-      (data.latestScanData?.scan?.onerep_scan_status === "finished" ||
-        data.latestScanData?.scan?.onerep_scan_status === "in_progress") &&
-      data.latestScanData.results.every(
+      (scanStatus === "finished" || scanStatus === "in_progress") &&
+      (data.latestScanData!.results ?? []).every(
         (scanResult) =>
           scanResult.manually_resolved || scanResult.status !== "new",
       );

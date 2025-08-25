@@ -35,7 +35,7 @@ import {
   canSubscribeToPremium,
   hasPremium,
 } from "../../../../../../functions/universal/user";
-import { LatestOnerepScanData } from "../../../../../../../db/tables/onerep_scans";
+import type { LatestOnerepScanData } from "../../../../../../../db/tables/onerep_scans";
 import { getLocale } from "../../../../../../functions/universal/getLocale";
 import { Button } from "../../../../../../components/client/Button";
 
@@ -59,6 +59,16 @@ import { PetitionBanner } from "../../../../../../components/client/PetitionBann
 import { useLocalDismissal } from "../../../../../../hooks/useLocalDismissal";
 import { DataBrokerRemovalTime } from "../../../../../../functions/server/getDataBrokerRemovalTimeEstimates";
 import { UserAnnouncementWithDetails } from "../../../../../../../db/tables/user_announcements";
+import type {
+  MoscaryData,
+  ScanData,
+} from "../../../../../../functions/server/moscary";
+import { parseIso8601Datetime } from "../../../../../../../utils/parse";
+import {
+  isOneRepScan,
+  isOneRepScanResult,
+  isOneRepScanResultDataBroker,
+} from "../../../../../../functions/universal/onerep";
 
 export type TabType = "action-needed" | "fixed";
 
@@ -67,7 +77,7 @@ export type Props = {
   experimentData: ExperimentData["Features"];
   user: Session["user"];
   userBreaches: SubscriberBreach[];
-  userScanData: LatestOnerepScanData;
+  userScanData: LatestOnerepScanData | ScanData;
   isEligibleForFreeScan: boolean;
   isEligibleForPremium: boolean;
   monthlySubscriptionUrl: string;
@@ -119,7 +129,13 @@ export const View = (props: Props) => {
   }, [pathname, activeTab, props.userAnnouncements]);
 
   const adjustedScanResults = props.userScanData.results.map((scanResult) => {
-    if (scanResult.status === "new" && hasPremium(props.user)) {
+    // MNTOR-4531: OneRep code paths will be phased out:
+    /* c8 ignore next 16 */
+    if (
+      isOneRepScanResult(scanResult) &&
+      scanResult.status === "new" &&
+      hasPremium(props.user)
+    ) {
       // Even if the user has Plus, OneRep won't automatically start removing
       // found exposures; it first sends a request to our webhook, and then the
       // webhook sends an opt-out request to OneRep. Meanwhile, however, we're
@@ -131,12 +147,27 @@ export const View = (props: Props) => {
         status: "optout_in_progress",
       } as OnerepScanResultDataBrokerRow;
     }
+    if (
+      !isOneRepScanResult(scanResult) &&
+      scanResult.status === "new" &&
+      hasPremium(props.user)
+    ) {
+      // Even if the user has Plus, found exposures aren't marked as in progress
+      // until after the removal requests have been sent. Meanwhile, however,
+      // we're just waiting for the systems to do their thing, and there's no
+      // action for the user to take; hence, we also mark the exposures as being
+      // in progress:
+      return {
+        ...scanResult,
+        status: "optout_in_progress",
+      } as MoscaryData["ScanResult"];
+    }
     return scanResult;
-  });
-  const adjustedScanData: LatestOnerepScanData = {
+  }) as OnerepScanResultDataBrokerRow[] | MoscaryData["ScanResult"][];
+  const adjustedScanData = {
     scan: props.userScanData.scan,
     results: adjustedScanResults,
-  };
+  } as LatestOnerepScanData | ScanData;
 
   const initialFilterState: FilterState = {
     exposureType: "show-all-exposure-type",
@@ -159,7 +190,11 @@ export const View = (props: Props) => {
 
   const breachesDataArray = props.userBreaches.flat();
   const initialScanInProgress =
-    adjustedScanData.scan?.onerep_scan_status === "in_progress" &&
+    // MNTOR-4531: OneRep code paths will be phased out:
+    /* c8 ignore next 2 */
+    (isOneRepScan(adjustedScanData.scan)
+      ? adjustedScanData.scan.onerep_scan_status === "in_progress"
+      : adjustedScanData.scan?.status === "in_progress") &&
     props.scanCount === 1;
 
   // Merge exposure cards
@@ -169,10 +204,14 @@ export const View = (props: Props) => {
   const arraySortedByDate = combinedArray.sort((a, b) => {
     const dateA =
       (a as SubscriberBreach).addedDate ||
-      (a as OnerepScanResultRow).created_at;
+      parseIso8601Datetime(
+        (a as OnerepScanResultRow | MoscaryData["ScanResult"]).created_at,
+      );
     const dateB =
       (b as SubscriberBreach).addedDate ||
-      (b as OnerepScanResultRow).created_at;
+      parseIso8601Datetime(
+        (b as OnerepScanResultRow | MoscaryData["ScanResult"]).created_at,
+      );
 
     const timestampA = dateA.getTime();
     const timestampB = dateB.getTime();
@@ -198,7 +237,7 @@ export const View = (props: Props) => {
   const filteredExposures = filterExposures(tabSpecificExposures, filters);
   const exposureCardElems = filteredExposures.map((exposure: Exposure) => {
     const exposureCardKey = isScanResult(exposure)
-      ? "scan-" + exposure.onerep_scan_result_id
+      ? "scan-" + exposure.id
       : "breach-" + exposure.id;
 
     const removalTimeEstimate = isScanResult(exposure)
@@ -218,14 +257,14 @@ export const View = (props: Props) => {
               setActiveExposureCardKey(null);
               recordTelemetry("collapse", "click", {
                 button_id: isScanResult(exposure)
-                  ? `data_broker_card_${exposure.onerep_scan_result_id}`
+                  ? `data_broker_card_${exposure.id}`
                   : `data_breach_card_${exposure.id}`,
               });
             } else {
               setActiveExposureCardKey(exposureCardKey);
               recordTelemetry("expand", "click", {
                 button_id: isScanResult(exposure)
-                  ? `data_broker_card_${exposure.onerep_scan_result_id}`
+                  ? `data_broker_card_${exposure.id}`
                   : `data_breach_card_${exposure.id}`,
               });
             }
@@ -464,7 +503,11 @@ export const View = (props: Props) => {
         yearlySubscriptionUrl={props.yearlySubscriptionUrl}
         subscriptionBillingAmount={props.subscriptionBillingAmount}
         fxaSettingsUrl={props.fxaSettingsUrl}
-        lastScanDate={props.userScanData.scan?.created_at ?? null}
+        lastScanDate={
+          props.userScanData.scan
+            ? parseIso8601Datetime(props.userScanData.scan.created_at)
+            : null
+        }
         experimentData={props.experimentData}
         enabledFeatureFlags={props.enabledFeatureFlags}
         announcements={announcements}
@@ -501,7 +544,11 @@ export const View = (props: Props) => {
           dataSummary.dataBrokerAutoFixedDataPointsNum > 0
         }
         hasFirstMonitoringScan={props.hasFirstMonitoringScan}
-        lastScanDate={props.userScanData.scan?.created_at ?? null}
+        lastScanDate={
+          props.userScanData.scan
+            ? parseIso8601Datetime(props.userScanData.scan.created_at)
+            : null
+        }
         signInCount={props.signInCount}
         localDismissalPetitionBanner={localDismissalPetitionBanner}
         shouldShowPetitionBanner={shouldShowPetitionBanner}
@@ -581,7 +628,11 @@ export function isDataBrokerUnderMaintenance(
 ): boolean {
   return (
     isScanResult(exposure) &&
-    exposure.broker_status === "removal_under_maintenance" &&
+    // MNTOR-4531: OneRep code paths will be phased out:
+    /* c8 ignore next 4 */
+    (isOneRepScanResultDataBroker(exposure)
+      ? exposure.broker_status
+      : exposure.status) === "removal_under_maintenance" &&
     exposure.status !== "removed"
   );
 }

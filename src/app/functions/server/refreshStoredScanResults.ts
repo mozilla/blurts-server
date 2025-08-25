@@ -20,6 +20,7 @@ import { logger } from "./logging";
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
+/** @deprecated */
 export async function refreshStoredScanResults(onerepProfileId: number) {
   try {
     const remoteScans = (await listScans(onerepProfileId)).data;

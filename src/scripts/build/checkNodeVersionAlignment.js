@@ -67,7 +67,7 @@ const ghaVersions = ghaWorkflows.flatMap(([filename, contents]) => {
     .filter((line) => line.includes("node-version:"))
     .map((line) => [
       filename,
-      line.split("node-version: ")[1].replaceAll("'", ""),
+      line.split("node-version: ")[1].replaceAll("'", "").replaceAll('"', ""),
     ]);
 });
 

@@ -2,7 +2,10 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { getScanResultsWithBroker } from "../../../../../../../../../../db/tables/onerep_scans";
+import {
+  getScanResultsWithBroker,
+  LatestOnerepScanData,
+} from "../../../../../../../../../../db/tables/onerep_scans";
 import { headers } from "next/headers";
 import { getServerSession } from "../../../../../../../../../functions/server/getServerSession";
 import { getOnerepProfileId } from "../../../../../../../../../../db/tables/subscribers";
@@ -22,6 +25,10 @@ import { refreshStoredScanResults } from "../../../../../../../../../functions/s
 import { checkSession } from "../../../../../../../../../functions/server/checkSession";
 import { hasPremium } from "../../../../../../../../../functions/universal/user";
 import { getEnabledFeatureFlags } from "../../../../../../../../../../db/tables/featureFlags";
+import {
+  getScanAndResults,
+  ScanData,
+} from "../../../../../../../../../functions/server/moscary";
 
 export default async function WelcomeToPlusPage() {
   const session = await getServerSession();
@@ -42,16 +49,40 @@ export default async function WelcomeToPlusPage() {
     email: session.user.email,
   });
 
-  const profileId = await getOnerepProfileId(session.user.subscriber.id);
-  if (profileId === null) {
-    // If the user subscribed to Plus before running a scan, have them run one now:
-    redirect("/user/welcome");
+  let scanData: LatestOnerepScanData | ScanData;
+  if (enabledFeatureFlags.includes("Moscary")) {
+    if (!session.user.subscriber.moscary_id) {
+      // If the user subscribed to Plus before running a scan, have them run one now:
+      redirect("/user/welcome");
+    }
+
+    scanData = await getScanAndResults(session.user.subscriber.moscary_id);
+  } else {
+    const profileId = await getOnerepProfileId(session.user.subscriber.id);
+    if (profileId === null) {
+      // If the user subscribed to Plus before running a scan, have them run one now:
+      redirect("/user/welcome");
+    }
+
+    scanData = await getScanResultsWithBroker(
+      profileId,
+      hasPremium(session.user),
+    );
+    //
+    // If the current user is a subscriber and their OneRep profile is not
+    // activated: Most likely we were not able or failed to kick-off the
+    // auto-removal process.
+    // Let’s make sure the users OneRep profile is activated:
+    await activateAndOptoutProfile({ profileId, forceActivation: true });
+
+    // NOTE: This has been added in the hopes to fix MNTOR-2690 and needs to be
+    // verified in a live environment. If this issue persists or is solved
+    // otherwise this this line is safe to be removed.
+    // Make sure the current state of the stored scan results is being reflected
+    // after we just initiated automatic removal.
+    await refreshStoredScanResults(profileId);
   }
 
-  const scanData = await getScanResultsWithBroker(
-    profileId,
-    hasPremium(session.user),
-  );
   const countryCode = getCountryCode(await headers());
   const subBreaches = await getSubscriberBreaches({
     fxaUid: session.user.subscriber.fxa_uid,
@@ -65,19 +96,6 @@ export default async function WelcomeToPlusPage() {
     subscriberBreaches: subBreaches,
     user: session.user,
   };
-
-  // If the current user is a subscriber and their OneRep profile is not
-  // activated: Most likely we were not able or failed to kick-off the
-  // auto-removal process.
-  // Let’s make sure the users OneRep profile is activated:
-  await activateAndOptoutProfile({ profileId, forceActivation: true });
-
-  // NOTE: This has been added in the hopes to fix MNTOR-2690 and needs to be
-  // verified in a live environment. If this issue persists or is solved
-  // otherwise this this line is safe to be removed.
-  // Make sure the current state of the stored scan results is being reflected
-  // after we just initiated automatic removal.
-  await refreshStoredScanResults(profileId);
 
   return (
     <WelcomeToPlusView

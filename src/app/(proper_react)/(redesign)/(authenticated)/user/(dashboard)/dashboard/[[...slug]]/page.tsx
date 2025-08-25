@@ -16,17 +16,18 @@ import {
   getLatestScanForProfileByReason,
   getMockedScanResults,
   getScanResultsWithBroker,
-  getScansCountForProfile,
+  getScansCountForProfile as getScansCountForOnerepProfile,
 } from "../../../../../../../../db/tables/onerep_scans";
 import {
   getOnerepProfileId,
   getSignInCount,
+  getSubscriberByFxaUid,
 } from "../../../../../../../../db/tables/subscribers";
 
 import {
   activateAndOptoutProfile,
   getProfilesStats,
-  isEligibleForFreeScan,
+  isEligibleForFreeScan as isEligibleForFreeOnerepScan,
 } from "../../../../../../../functions/server/onerep";
 import { isEligibleForPremium } from "../../../../../../../functions/universal/premium";
 import {
@@ -48,6 +49,12 @@ import {
 } from "../../../../../../../functions/l10n/serverComponents";
 import { getDataBrokerRemovalTimeEstimates } from "../../../../../../../functions/server/getDataBrokerRemovalTimeEstimates";
 import { initializeUserAnnouncements } from "../../../../../../../../db/tables/user_announcements";
+import {
+  fetchLatestScanForProfile,
+  getScanAndResults,
+  getScansCountForProfile,
+  isEligibleForFreeScan,
+} from "../../../../../../../functions/server/moscary";
 
 const dashboardTabSlugs = ["action-needed", "fixed"];
 
@@ -67,8 +74,15 @@ export default async function DashboardPage(props: Props) {
   }
 
   const session = await getServerSession();
-  if (!checkSession(session) || !session?.user?.subscriber?.id) {
+  if (!checkSession(session) || !session?.user?.subscriber?.fxa_uid) {
     return redirect("/auth/logout");
+  }
+
+  const subscriber = await getSubscriberByFxaUid(
+    session.user.subscriber.fxa_uid,
+  );
+  if (!subscriber) {
+    redirect("/auth/logout");
   }
 
   const params = await props.params;
@@ -87,56 +101,54 @@ export default async function DashboardPage(props: Props) {
   const headersList = await headers();
   const countryCode = getCountryCode(headersList);
 
-  const profileId = await getOnerepProfileId(session.user.subscriber.id);
-  const hasRunScan = typeof profileId === "number";
-  const isNewUser = !isPrePlusUser(session.user);
-
-  if (hasRunScan) {
-    await refreshStoredScanResults(profileId);
-
-    // If the current user is a subscriber and their OneRep profile is not
-    // activated: Most likely we were not able or failed to kick-off the
-    // auto-removal process.
-    // Let’s make sure the users OneRep profile is activated:
-    if (isPremiumUser) {
-      await activateAndOptoutProfile({ profileId });
-    }
-  } else if (
-    isPremiumUser ||
-    (isNewUser &&
-      canSubscribeToPremium({
-        user: session.user,
-        countryCode,
-      }))
-  ) {
-    return redirect("/user/welcome");
-  }
-
   const enabledFeatureFlags = await getEnabledFeatureFlags({
     email: session.user.email,
   });
 
-  const useMockedScans =
-    enabledFeatureFlags.includes("CustomDataBrokers") &&
-    process.env.APP_ENV !== "production";
+  let hasRunScan = false;
+  let onerepProfileId: number | null = null;
+  if (
+    typeof subscriber.moscary_id !== "undefined" &&
+    subscriber.moscary_id !== null
+  ) {
+    hasRunScan = true;
+  } else if (!enabledFeatureFlags.includes("Moscary")) {
+    onerepProfileId = await getOnerepProfileId(subscriber.id);
+    if (typeof onerepProfileId === "number") {
+      hasRunScan = true;
+      await refreshStoredScanResults(onerepProfileId);
 
-  const scanResults = useMockedScans
-    ? await getMockedScanResults(profileId)
-    : await getScanResultsWithBroker(profileId, hasPremium(session.user));
+      // If the current user is a subscriber and their OneRep profile is not
+      // activated: Most likely we were not able or failed to kick-off the
+      // auto-removal process.
+      // Let’s make sure the users OneRep profile is activated:
+      if (isPremiumUser) {
+        await activateAndOptoutProfile({ profileId: onerepProfileId });
+      }
+    }
+  }
+  const isNewUser = !isPrePlusUser(session.user);
 
-  const scanCount =
-    typeof profileId === "number"
-      ? await getScansCountForProfile(profileId)
-      : 0;
+  if (
+    !hasRunScan &&
+    (isPremiumUser ||
+      (isNewUser &&
+        canSubscribeToPremium({
+          user: session.user,
+          countryCode,
+        })))
+  ) {
+    return redirect("/user/welcome");
+  }
+
   const subBreaches = await getSubscriberBreaches({
-    fxaUid: session.user.subscriber.fxa_uid,
+    fxaUid: subscriber.fxa_uid,
     countryCode,
   });
 
-  const userIsEligibleForFreeScan = await isEligibleForFreeScan(
-    session.user,
-    countryCode,
-  );
+  const userIsEligibleForFreeScan = enabledFeatureFlags.includes("Moscary")
+    ? await isEligibleForFreeScan(session.user, countryCode)
+    : await isEligibleForFreeOnerepScan(session.user, countryCode);
   const userIsEligibleForPremium = isEligibleForPremium(countryCode);
 
   const experimentationId = await getExperimentationId(session.user);
@@ -157,7 +169,7 @@ export default async function DashboardPage(props: Props) {
   const fxaSettingsUrl = process.env.FXA_SETTINGS_URL!;
   const profileStats = await getProfilesStats();
   const additionalSubplatParams = await getAttributionsFromCookiesOrDb(
-    session.user.subscriber.id,
+    subscriber.id,
   );
   const additionalSubplatParamsString =
     additionalSubplatParams.size > 0
@@ -165,17 +177,48 @@ export default async function DashboardPage(props: Props) {
         `${enabledFeatureFlags.includes("SubPlat3") ? "?" : "&"}${additionalSubplatParams.toString()}`
       : "";
   const elapsedTimeInDaysSinceInitialScan =
-    await getElapsedTimeInDaysSinceInitialScan(session.user);
+    await getElapsedTimeInDaysSinceInitialScan(subscriber, enabledFeatureFlags);
 
-  const hasFirstMonitoringScan = profileId
-    ? typeof (await getLatestScanForProfileByReason(
-        profileId,
-        "monitoring",
-      )) !== "undefined"
-    : false;
-  const signInCount = await getSignInCount(session.user.subscriber.id);
+  const userAnnouncements = await initializeUserAnnouncements(
+    session.user,
+    enabledFeatureFlags,
+  );
 
-  const userAnnouncements = await initializeUserAnnouncements(session.user);
+  const signInCount = await getSignInCount(subscriber.id);
+
+  const useMockedScans =
+    enabledFeatureFlags.includes("CustomDataBrokers") &&
+    process.env.APP_ENV !== "production";
+
+  const scanResults =
+    enabledFeatureFlags.includes("Moscary") && subscriber.moscary_id
+      ? await getScanAndResults(subscriber.moscary_id)
+      : useMockedScans
+        ? await getMockedScanResults(onerepProfileId)
+        : await getScanResultsWithBroker(
+            onerepProfileId,
+            hasPremium(session.user),
+          );
+
+  const scanCount =
+    enabledFeatureFlags.includes("Moscary") && subscriber.moscary_id
+      ? await getScansCountForProfile(subscriber.moscary_id)
+      : typeof onerepProfileId === "number"
+        ? await getScansCountForOnerepProfile(onerepProfileId)
+        : 0;
+
+  const hasFirstMonitoringScan =
+    enabledFeatureFlags.includes("Moscary") && subscriber.moscary_id
+      ? typeof (await fetchLatestScanForProfile(
+          subscriber.moscary_id,
+          "monitoring",
+        )) !== "undefined"
+      : onerepProfileId
+        ? typeof (await getLatestScanForProfileByReason(
+            onerepProfileId,
+            "monitoring",
+          )) !== "undefined"
+        : false;
 
   return (
     <View

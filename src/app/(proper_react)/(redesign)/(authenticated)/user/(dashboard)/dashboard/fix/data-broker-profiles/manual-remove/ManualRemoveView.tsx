@@ -25,11 +25,13 @@ import {
 } from "../../../../../../../../../functions/server/getRelevantGuidedSteps";
 import { FixView } from "../../FixView";
 import { TelemetryButton } from "../../../../../../../../../components/client/TelemetryButton";
-import { FeatureFlagName } from "../../../../../../../../../../db/tables/featureFlags";
 import { UpsellLinkButton } from "../../../../../../../../../components/client/toolbar/UpsellBadge";
+import type { FeatureFlagName } from "../../../../../../../../../../db/tables/featureFlags";
+import type { ScanData } from "../../../../../../../../../functions/server/moscary";
+import { isOneRepScanResult } from "../../../../../../../../../functions/universal/onerep";
 
 export type Props = {
-  scanData: LatestOnerepScanData;
+  scanData: LatestOnerepScanData | ScanData;
   breaches: SubscriberBreach[];
   isPremiumUser: boolean;
   isEligibleForPremium: boolean;
@@ -156,7 +158,13 @@ export function ManualRemoveView(props: Props) {
             {props.scanData.results.map((scanResult, index) => {
               return (
                 <RemovalCard
-                  key={scanResult.onerep_scan_result_id}
+                  key={
+                    // MNTOR-4531: OneRep code paths will be phased out:
+                    /* c8 ignore next 2 */
+                    isOneRepScanResult(scanResult)
+                      ? scanResult.onerep_scan_result_id
+                      : scanResult.id
+                  }
                   scanResult={scanResult}
                   isExpanded={index === activeExposureCardKey}
                   isPremiumUser={props.isPremiumUser}
