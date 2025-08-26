@@ -13,6 +13,7 @@ fix-flow-data-broker-profiles-start-free-scan-content-p1 =
     [one] Before you review your data breaches, would you like us to search for you on { $data_broker_count } data broker site that may be selling your personal information?
     *[other] Before you review your data breaches, would you like us to search for you on { $data_broker_count } data broker sites that may be selling your personal information?
   }
+fix-flow-data-broker-profiles-start-free-scan-content-p1-masked = Before you review your data breaches, would you like us to search for you on data broker sites that may be selling your personal information?
 fix-flow-data-broker-profiles-start-free-scan-content-p2 = Your first scan is free and only takes a few minutes.
 fix-flow-data-broker-profiles-start-free-scan-link-learn-more = Learn more
 fix-flow-data-broker-profiles-start-free-scan-button-start-scan = Start free scan
@@ -38,6 +39,7 @@ fix-flow-data-broker-profiles-view-data-broker-profiles-more-dialog-paragraph2 =
     [one] We found these profiles by searching { $data_broker_sites_total_num } data broker site for the name, location, and date of birth you provided. These profiles are currently live and available to anyone searching for you. { -brand-mozilla } is not associated with these data broker sites.
     *[other] We found these profiles by searching { $data_broker_sites_total_num } data broker sites for the name, location, and date of birth you provided. These profiles are currently live and available to anyone searching for you. { -brand-mozilla } is not associated with these data broker sites.
   }
+fix-flow-data-broker-profiles-view-data-broker-profiles-more-dialog-paragraph2-masked = We found these profiles by searching data broker sites for the name, location, and date of birth you provided. These profiles are currently live and available to anyone searching for you. { -brand-mozilla } is not associated with these data broker sites.
 fix-flow-data-broker-profiles-view-data-broker-profiles-more-dialog-confirm = OK
 fix-flow-data-broker-profiles-view-data-broker-profiles-view-profile = View your profile
 fix-flow-data-broker-profiles-view-data-broker-profiles-button-view-more = View more
@@ -131,6 +133,7 @@ welcome-to-premium-data-broker-profiles-zero-state-description-part-one =
     [one] Great news! We scanned { $data_broker_count } data broker site and didn’t find any sites selling your personal information. We’ll run a scan every month to make sure it stays that way.
     *[other] Great news! We scanned { $data_broker_count } data broker sites and didn’t find any sites selling your personal information. We’ll run a scan every month to make sure it stays that way.
   }
+welcome-to-premium-data-broker-profiles-zero-state-description-part-one-masked = Great news! We scanned a number of data broker sites and didn’t find any sites selling your personal information. We’ll run a scan every month to make sure it stays that way.
 welcome-to-premium-data-broker-profiles-zero-state-description-part-two = Data brokers are constantly adding new details to their sites. If we find yours, we’ll immediately start our auto-removal process to help keep you safe.
 welcome-to-premium-data-broker-profiles-zero-state-description-part-three = Next we’ll guide you through high risk data breaches that require manual steps.
 welcome-to-premium-data-broker-profiles-cta-label = Let’s keep going

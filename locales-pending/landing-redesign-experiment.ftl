@@ -109,6 +109,7 @@ landing-redesign-pricing-plans-card-plus-with-bundle-feature-item-one = {
   $data_broker_sites_total_num ->
     *[other] <b>Monthly scans</b> of { $data_broker_sites_total_num }+ data brokers that may be selling your personal info
 }
+landing-redesign-pricing-plans-card-plus-with-bundle-feature-item-one-masked = <b>Monthly scans</b> of data brokers that may be selling your personal info
 landing-redesign-pricing-plans-card-plus-with-bundle-feature-item-two = <b>Automatic removal</b> of personal info from data broker sites
 landing-redesign-pricing-plans-card-plus-with-bundle-feature-item-three = Receive <b>data broker exposure alerts</b>
 # Variables:
