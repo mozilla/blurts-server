@@ -34,8 +34,10 @@ import {
 import { getExperimentationIdFromSubscriber } from "../../../functions/server/getExperimentationId";
 import { getExperiments } from "../../../functions/server/getExperiments";
 import { getLocale } from "../../../functions/universal/getLocale";
-import { getL10n } from "../../../functions/l10n/storybookAndJest";
-import { getAcceptLangHeaderInServerComponents } from "../../../functions/l10n/serverComponents";
+import {
+  getAcceptLangHeaderInServerComponents,
+  getL10n,
+} from "../../../functions/l10n/serverComponents";
 import { getSignupLocaleCountry } from "../../../../emails/functions/getSignupLocaleCountry";
 
 const FXA_PROFILE_CHANGE_EVENT =

@@ -19,11 +19,11 @@ export function middleware(request: NextRequest) {
   const responseHeaders = new Headers();
   responseHeaders.set("Content-Security-Policy", cspHeader);
 
-  // If the user is not logged in, `getExperimentationIdFromUserSession` uses the value we
+  // If the user is not logged in, `getExperimentationId` uses the value we
   // set here to determine which experiments to show the user. We read it from
   // the `experimentationId` cookie, and initialise that cookie if it's unset.
   // (The reason we do this in middleware, is to ensure that every call to
-  // `getExperimentationIdFromUserSession` results in the same ID.)
+  // `getExperimentationId` results in the same ID.)
   const existingExperimentationId = request.cookies.get("experimentationId");
   const experimentationId =
     existingExperimentationId?.value ?? `guest-${crypto.randomUUID()}`;

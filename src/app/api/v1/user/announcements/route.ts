@@ -12,8 +12,10 @@ import { getExperimentationIdFromUserSession } from "../../../../functions/serve
 import { getExperiments } from "../../../../functions/server/getExperiments";
 import { getCountryCode } from "../../../../functions/server/getCountryCode";
 import { headers } from "next/headers";
-import { getL10n } from "../../../../functions/l10n/storybookAndJest";
-import { getAcceptLangHeaderInServerComponents } from "../../../../functions/l10n/serverComponents";
+import {
+  getAcceptLangHeaderInServerComponents,
+  getL10n,
+} from "../../../../functions/l10n/serverComponents";
 
 export async function GET() {
   const session = await getServerSession();

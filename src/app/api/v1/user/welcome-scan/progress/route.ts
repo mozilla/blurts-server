@@ -29,8 +29,10 @@ import { headers } from "next/headers";
 import { getExperimentationIdFromUserSession } from "../../../../../functions/server/getExperimentationId";
 import { getExperiments } from "../../../../../functions/server/getExperiments";
 import { getLocale } from "../../../../../functions/universal/getLocale";
-import { getL10n } from "../../../../../functions/l10n/storybookAndJest";
-import { getAcceptLangHeaderInServerComponents } from "../../../../../functions/l10n/serverComponents";
+import {
+  getAcceptLangHeaderInServerComponents,
+  getL10n,
+} from "../../../../../functions/l10n/serverComponents";
 
 export interface ScanProgressBody {
   success: boolean;
