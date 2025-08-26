@@ -14,6 +14,7 @@ import { getSubscriberEmails } from "../../../../../../../../../functions/server
 import { StartFreeScanView } from "./StartFreeScanView";
 import { hasPremium } from "../../../../../../../../../functions/universal/user";
 import { getEnabledFeatureFlags } from "../../../../../../../../../../db/tables/featureFlags";
+import { getScanAndResults } from "../../../../../../../../../functions/server/moscary";
 
 export default async function StartFreeScanPage() {
   const countryCode = getCountryCode(await headers());
@@ -32,8 +33,11 @@ export default async function StartFreeScanPage() {
 
   const onerepProfileId = await getOnerepProfileId(session.user.subscriber.id);
 
-  const latestScanData =
-    typeof onerepProfileId === "number"
+  const latestScanData = enabledFeatureFlags.includes("Moscary")
+    ? session.user.subscriber.moscary_id
+      ? await getScanAndResults(session.user.subscriber.moscary_id)
+      : undefined
+    : typeof onerepProfileId === "number"
       ? await getScanResultsWithBroker(
           onerepProfileId,
           hasPremium(session.user),

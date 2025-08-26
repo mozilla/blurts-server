@@ -50,7 +50,9 @@ const setUtmCampaign = (
 export const MonthlyActivityFreeEmail = (
   props: MonthlyActivityFreeEmailProps,
 ) => {
-  const hasRunFreeScan = typeof props.subscriber.onerep_profile_id === "number";
+  const hasRunFreeScan = props.enabledFeatureFlags.includes("Moscary")
+    ? typeof props.subscriber.moscary_id === "string"
+    : typeof props.subscriber.onerep_profile_id === "number";
 
   const l10n = props.l10n;
   const assumedCountryCode = getSignupLocaleCountry(props.subscriber);
@@ -172,6 +174,7 @@ export const MonthlyActivityFreeEmail = (
             subscriber={props.subscriber}
             l10n={l10n}
             dataSummary={props.dataSummary}
+            enabledFeatureFlags={props.enabledFeatureFlags}
             utmCampaignId={utmValues.utmCampaign}
             utmMedium={utmValues.utmMedium}
             utmSource={utmValues.utmSource}

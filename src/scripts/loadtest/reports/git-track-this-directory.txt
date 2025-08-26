@@ -1,0 +1,3 @@
+k6 errors when trying to write a report to a directory that does not exist.
+
+Thus, I've checked this file into Git, so that its containing directory exists.

@@ -6,6 +6,7 @@ import { NextResponse } from "next/server";
 import { getServerSession } from "../../../../functions/server/getServerSession";
 import { initializeUserAnnouncements } from "../../../../../db/tables/user_announcements";
 import { redirect } from "next/navigation";
+import { getEnabledFeatureFlags } from "../../../../../db/tables/featureFlags";
 
 export async function GET() {
   const session = await getServerSession();
@@ -14,8 +15,15 @@ export async function GET() {
     return redirect("/auth/logout");
   }
 
+  const enabledFeatureFlags = await getEnabledFeatureFlags({
+    email: session.user.email,
+  });
+
   try {
-    const userAnnouncements = await initializeUserAnnouncements(session.user);
+    const userAnnouncements = await initializeUserAnnouncements(
+      session.user,
+      enabledFeatureFlags,
+    );
     return NextResponse.json(userAnnouncements, { status: 200 });
   } catch (error) {
     console.error("Error initializing announcements:", error);

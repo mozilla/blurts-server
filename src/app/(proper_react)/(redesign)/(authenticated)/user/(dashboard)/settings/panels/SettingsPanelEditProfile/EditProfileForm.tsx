@@ -4,7 +4,7 @@
 
 "use client";
 
-import { FormEvent, Fragment, useRef, useState } from "react";
+import { FormEvent, Fragment, useMemo, useRef, useState } from "react";
 import { captureException } from "@sentry/nextjs";
 import { toast } from "react-toastify";
 import isEqual from "lodash.isequal";
@@ -15,10 +15,16 @@ import {
   EditProfileInputOnChangeReturnValue,
 } from "./EditProfileFormInputs";
 import { TelemetryButton } from "../../../../../../../../components/client/TelemetryButton";
-import { formatPhone } from "../../../../../../../../functions/universal/formatPhone";
+import {
+  formatPhone,
+  FormattedPhoneNumber,
+} from "../../../../../../../../functions/universal/formatPhone";
 import { useL10n } from "../../../../../../../../hooks/l10n";
 import styles from "./EditProfileForm.module.scss";
 import { type onHandleUpdateProfileData } from "../../actions";
+import { MoscaryData } from "../../../../../../../../functions/server/moscary";
+import { parseIso8601Datetime } from "../../../../../../../../../utils/parse";
+import { StateAbbr } from "../../../../../../../../../utils/states";
 
 export const profileFields = [
   "first_name",
@@ -27,7 +33,7 @@ export const profileFields = [
   "date_of_birth",
   "phone_numbers",
   "addresses",
-] as const;
+] as const satisfies Array<keyof OnerepProfileRow>;
 
 export type ProfileDataKeys = (typeof profileFields)[number];
 
@@ -44,15 +50,19 @@ type FormDataItemValidated<T> = {
   isDuplicate?: boolean;
 };
 
+export type NormalizedProfileData = Omit<
+  Pick<OnerepProfileRow, ProfileDataKeys | ProfileDataListKey>,
+  "phone_numbers"
+> & { phone_numbers: FormattedPhoneNumber[] };
 export type FormDataValidated = {
-  [K in ProfileDataSingleKey]: FormDataItemValidated<OnerepProfileRow[K]>;
+  [K in ProfileDataSingleKey]: FormDataItemValidated<NormalizedProfileData[K]>;
 } & {
   [K in ProfileDataListKey]: FormDataItemValidated<
-    OnerepProfileRow[K][number]
+    NormalizedProfileData[K][number]
   >[];
 };
 
-const validateProfileFormData = (formData: OnerepProfileRow) => {
+const validateProfileFormData = (formData: NormalizedProfileData) => {
   let formIsValid = true;
   const data = Object.keys(formData).reduce(
     (formDataValidated, formDataKey) => {
@@ -85,7 +95,7 @@ const validateProfileFormData = (formData: OnerepProfileRow) => {
                     formDataKey.substring(
                       0,
                       formDataKey.length - 1,
-                    ) as keyof OnerepProfileRow
+                    ) as keyof NormalizedProfileData
                   ],
                   ...formData[formDataKey].slice(0, valueIndex),
                 ].includes(value);
@@ -155,8 +165,6 @@ const validateProfileFormData = (formData: OnerepProfileRow) => {
           );
           break;
         }
-        default:
-          break;
       }
       return formDataValidated;
     },
@@ -169,13 +177,20 @@ function EditProfileForm(props: {
   actions: {
     onHandleUpdateProfileData: typeof onHandleUpdateProfileData;
   };
-  profileData: OnerepProfileRow;
+  profileData: OnerepProfileRow | MoscaryData["Profile"];
 }) {
   const l10n = useL10n();
-  const [profileFormData, setProfileFormData] = useState(props.profileData);
+  const normalizedProfileData = useMemo(
+    () => normalizeProfileData(props.profileData),
+    [props.profileData],
+  );
+  const [profileFormData, setProfileFormData] = useState(normalizedProfileData);
   const [updatingForm, setUpdatingForm] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
-  const hasProfileDataChanged = !isEqual(props.profileData, profileFormData);
+  const hasProfileDataChanged = !isEqual(
+    normalizedProfileData,
+    profileFormData,
+  );
   const profileFormDataValidated = validateProfileFormData(profileFormData);
 
   const handleOnInputChange = ({
@@ -198,7 +213,7 @@ function EditProfileForm(props: {
         // This line show as not covered even though there are unit tests for updating
         // the LocationAutocompleteInput in the test file `SettingsPageRedesign.test.tsx`.
         /* c8 ignore next */
-        key === "addresses" ? { city, state } : value;
+        key === "addresses" ? { city, state: state as StateAbbr } : value;
 
       setProfileFormData(formDataUpdated);
     }
@@ -315,6 +330,47 @@ function EditProfileForm(props: {
       </div>
     </form>
   );
+}
+
+function normalizeProfileData(
+  profileData: OnerepProfileRow | MoscaryData["Profile"],
+): NormalizedProfileData {
+  // MNTOR-4531: OneRep code paths will be phased out:
+  /* c8 ignore next 8 */
+  if (isOnerepProfileRow(profileData)) {
+    return {
+      ...profileData,
+      phone_numbers: profileData.phone_numbers.map((phone_number) =>
+        formatPhone(phone_number),
+      ),
+    };
+  }
+
+  return {
+    // Note: these addresses have the same structure, but the `state` field
+    //       is typed as an explicit `StateAbbr` in `OnerepProfileRow`.
+    addresses: profileData.addresses as OnerepProfileRow["addresses"],
+    date_of_birth: parseIso8601Datetime(profileData.birth_date),
+    first_name: profileData.first_name,
+    first_names: profileData.first_names.map(
+      (first_name) => first_name.first_name,
+    ),
+    middle_name: profileData.middle_name ?? null,
+    middle_names: profileData.middle_names.map(
+      (middle_name) => middle_name.middle_name,
+    ),
+    last_name: profileData.last_name,
+    last_names: profileData.last_names.map((last_name) => last_name.last_name),
+    phone_numbers: profileData.phone_numbers.map((phone_number) =>
+      formatPhone(phone_number.number),
+    ),
+  };
+}
+
+function isOnerepProfileRow(
+  profileData: OnerepProfileRow | MoscaryData["Profile"],
+): profileData is OnerepProfileRow {
+  return typeof (profileData as OnerepProfileRow).date_of_birth !== "undefined";
 }
 
 export { EditProfileForm };

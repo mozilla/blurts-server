@@ -16,6 +16,7 @@ export function parseE164PhoneNumber(
   if (
     typeof phoneNumber !== "string" ||
     phoneNumber.length > 16 ||
+    phoneNumber.length <= 2 ||
     !phoneNumber.startsWith("+")
   ) {
     return null;
@@ -33,9 +34,13 @@ export function parseE164PhoneNumber(
 // Tests are already submitted in https://github.com/mozilla/blurts-server/pull/3359:
 /* c8 ignore start */
 
-export function parseIso8601Datetime(datetime: ISO8601DateString): Date | null {
+export function parseIso8601Datetime(datetime: ISO8601DateString | Date): Date {
+  if (datetime instanceof Date) {
+    return datetime;
+  }
   if (typeof datetime !== "string") {
-    return null;
+    // This should never happen if the types are correct, hence the `as never`:
+    return null as never;
   }
 
   // Important caveat to keep in mind:
@@ -45,7 +50,8 @@ export function parseIso8601Datetime(datetime: ISO8601DateString): Date | null {
   const parsedDate = new Date(datetime);
 
   if (Number.isNaN(parsedDate.valueOf())) {
-    return null;
+    // This should never happen if the types are correct, hence the `as never`:
+    return null as never;
   }
 
   return parsedDate;

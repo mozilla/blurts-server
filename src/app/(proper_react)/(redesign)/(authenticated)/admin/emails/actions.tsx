@@ -26,7 +26,7 @@ import { headers } from "next/headers";
 import { FirstDataBrokerRemovalFixed } from "../../../../../../emails/templates/firstDataBrokerRemovalFixed/FirstDataBrokerRemovalFixed";
 import {
   createRandomHibpListing,
-  createRandomScanResult,
+  createRandomOnerepScanResult,
 } from "../../../../../../apiMocks/mockData";
 import { BreachAlertEmail } from "../../../../../../emails/templates/breachAlert/BreachAlertEmail";
 import { SignupReportEmail } from "../../../../../../emails/templates/signupReport/SignupReportEmail";
@@ -46,6 +46,7 @@ import {
 } from "../../../../../../emails/templates/upcomingExpiration/UpcomingExpirationEmail";
 import { CONST_DAY_MILLISECONDS } from "../../../../../../constants";
 import { getEnabledFeatureFlags } from "../../../../../../db/tables/featureFlags";
+import { getScanAndResults } from "../../../../../functions/server/moscary";
 
 async function getAdminSubscriber(): Promise<SubscriberRow | null> {
   const session = await getServerSession();
@@ -151,10 +152,18 @@ export async function triggerMonthlyActivityFree(emailAddress: string) {
   if (typeof subscriber.onerep_profile_id === "number") {
     await refreshStoredScanResults(subscriber.onerep_profile_id);
   }
-  const latestScan = await getScanResultsWithBroker(
-    subscriber.onerep_profile_id,
-    hasPremium(session.user),
-  );
+
+  const enabledFeatureFlags = await getEnabledFeatureFlags({
+    email: subscriber.primary_email,
+  });
+  const latestScan = enabledFeatureFlags.includes("Moscary")
+    ? subscriber.moscary_id
+      ? await getScanAndResults(subscriber.moscary_id)
+      : { scan: null, results: [] }
+    : await getScanResultsWithBroker(
+        subscriber.onerep_profile_id,
+        hasPremium(session.user),
+      );
   const data = getDashboardSummary(
     latestScan.results,
     await getSubscriberBreaches({
@@ -165,9 +174,6 @@ export async function triggerMonthlyActivityFree(emailAddress: string) {
 
   const unsubscribeLink =
     await getMonthlyActivityFreeUnsubscribeLink(subscriber);
-  const enabledFeatureFlags = await getEnabledFeatureFlags({
-    email: subscriber.primary_email,
-  });
 
   await send(
     emailAddress,
@@ -195,10 +201,17 @@ export async function triggerMonthlyActivityPlus(emailAddress: string) {
   if (typeof subscriber.onerep_profile_id === "number") {
     await refreshStoredScanResults(subscriber.onerep_profile_id);
   }
-  const latestScan = await getScanResultsWithBroker(
-    subscriber.onerep_profile_id,
-    hasPremium(session.user),
-  );
+  const enabledFeatureFlags = await getEnabledFeatureFlags({
+    email: subscriber.primary_email,
+  });
+  const latestScan = enabledFeatureFlags.includes("Moscary")
+    ? subscriber.moscary_id
+      ? await getScanAndResults(subscriber.moscary_id)
+      : { scan: null, results: [] }
+    : await getScanResultsWithBroker(
+        subscriber.onerep_profile_id,
+        hasPremium(session.user),
+      );
   const data = getDashboardSummary(
     latestScan.results,
     await getSubscriberBreaches({
@@ -233,16 +246,20 @@ export async function triggerBreachAlert(emailAddress: string) {
   if (typeof subscriber.onerep_profile_id === "number") {
     await refreshStoredScanResults(subscriber.onerep_profile_id);
   }
-  const scanData = await getScanResultsWithBroker(
-    subscriber.onerep_profile_id,
-    hasPremium(session.user),
-  );
+  const enabledFeatureFlags = await getEnabledFeatureFlags({
+    email: subscriber.primary_email,
+  });
+  const scanData = enabledFeatureFlags.includes("Moscary")
+    ? subscriber.moscary_id
+      ? await getScanAndResults(subscriber.moscary_id)
+      : { scan: null, results: [] }
+    : await getScanResultsWithBroker(
+        subscriber.onerep_profile_id,
+        hasPremium(session.user),
+      );
   const allSubscriberBreaches = await getSubscriberBreaches({
     fxaUid: subscriber.fxa_uid,
     countryCode: assumedCountryCode,
-  });
-  const enabledFeatureFlags = await getEnabledFeatureFlags({
-    email: subscriber.primary_email,
   });
 
   await send(
@@ -267,7 +284,7 @@ export async function triggerBreachAlert(emailAddress: string) {
 export async function triggerFirstDataBrokerRemovalFixed(emailAddress: string) {
   const acceptLangHeader = await getAcceptLangHeaderInServerComponents();
   const l10n = getL10n(acceptLangHeader);
-  const randomScanResult = createRandomScanResult({ status: "removed" });
+  const randomScanResult = createRandomOnerepScanResult({ status: "removed" });
 
   await send(
     emailAddress,

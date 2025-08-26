@@ -10,9 +10,11 @@ import {
 } from "./getRelevantGuidedSteps";
 import {
   createRandomBreach,
-  createRandomScanResult,
+  createRandomMoscaryScanResult,
+  createRandomOnerepScanResult,
 } from "../../../apiMocks/mockData";
 import { BreachDataTypes } from "../universal/breach";
+import { ScanData } from "./moscary";
 import { LatestOnerepScanData } from "../../../db/tables/onerep_scans";
 
 describe("getNextGuidedStep", () => {
@@ -398,16 +400,15 @@ describe("getNextGuidedStep", () => {
   });
 
   describe("for US users", () => {
-    const completedScan: LatestOnerepScanData = {
+    const completedScan: ScanData = {
       results: [],
       scan: {
-        created_at: new Date(),
-        updated_at: new Date(),
-        id: 42,
-        onerep_profile_id: 1337,
-        onerep_scan_id: 666,
-        onerep_scan_reason: "manual",
-        onerep_scan_status: "finished",
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
+        id: "11111111-1111-1111-1111-111111111111",
+        profile_id: "00000000-0000-0000-0000-000000000000",
+        reason: "manual",
+        status: "finished",
       },
     };
 
@@ -464,10 +465,10 @@ describe("getNextGuidedStep", () => {
             latestScanData: {
               scan: {
                 ...completedScan.scan!,
-                onerep_scan_status: "in_progress",
+                status: "in_progress",
               },
               results: [
-                createRandomScanResult({
+                createRandomMoscaryScanResult({
                   status: "new",
                   manually_resolved: false,
                   broker_status: "active",
@@ -497,10 +498,10 @@ describe("getNextGuidedStep", () => {
             latestScanData: {
               scan: {
                 ...completedScan.scan!,
-                onerep_scan_status: "finished",
+                status: "finished",
               },
               results: [
-                createRandomScanResult({
+                createRandomMoscaryScanResult({
                   status: "new",
                   manually_resolved: false,
                 }),
@@ -529,10 +530,10 @@ describe("getNextGuidedStep", () => {
             latestScanData: {
               scan: {
                 ...completedScan.scan!,
-                onerep_scan_status: "finished",
+                status: "finished",
               },
               results: [
-                createRandomScanResult({
+                createRandomMoscaryScanResult({
                   status: "optout_in_progress",
                   manually_resolved: false,
                 }),
@@ -556,10 +557,10 @@ describe("getNextGuidedStep", () => {
             latestScanData: {
               scan: {
                 ...completedScan.scan!,
-                onerep_scan_status: "finished",
+                status: "finished",
               },
               results: [
-                createRandomScanResult({
+                createRandomMoscaryScanResult({
                   status: "removed",
                   manually_resolved: false,
                 }),
@@ -583,10 +584,10 @@ describe("getNextGuidedStep", () => {
             latestScanData: {
               scan: {
                 ...completedScan.scan!,
-                onerep_scan_status: "finished",
+                status: "finished",
               },
               results: [
-                createRandomScanResult({
+                createRandomMoscaryScanResult({
                   status: "waiting_for_verification",
                   manually_resolved: false,
                 }),
@@ -610,10 +611,10 @@ describe("getNextGuidedStep", () => {
             latestScanData: {
               scan: {
                 ...completedScan.scan!,
-                onerep_scan_status: "finished",
+                status: "finished",
               },
               results: [
-                createRandomScanResult({
+                createRandomMoscaryScanResult({
                   status: "new",
                   manually_resolved: true,
                 }),
@@ -629,7 +630,7 @@ describe("getNextGuidedStep", () => {
       ).toBe("Done");
     });
 
-    it("links to the removal under maintenance step if a user has scan results with a data broker that has a removal under maintenance status", () => {
+    it("does not link to the scan if the user already has a scan in progress, but there's nothing to resolve yet because no results have been found", () => {
       expect(
         getNextGuidedStep(
           {
@@ -637,51 +638,9 @@ describe("getNextGuidedStep", () => {
             latestScanData: {
               scan: {
                 ...completedScan.scan!,
-                onerep_scan_status: "finished",
+                status: "in_progress",
               },
-              results: [
-                createRandomScanResult({
-                  status: "optout_in_progress",
-                  manually_resolved: false,
-                  broker_status: "removal_under_maintenance",
-                }),
-              ],
-            },
-            subscriberBreaches: [],
-            user: {
-              email: "arbitrary@example.com",
-            },
-          },
-          // TODO: MNTOR-3886 - Remove EnableRemovalUnderMaintenanceStep feature flag
-          ["EnableRemovalUnderMaintenanceStep"],
-        ),
-      ).toStrictEqual({
-        href: "/user/dashboard/fix/data-broker-profiles/removal-under-maintenance",
-        id: "DataBrokerManualRemoval",
-        completed: false,
-        eligible: true,
-      });
-    });
-
-    // TODO: MNTOR-3886 - Remove EnableRemovalUnderMaintenanceStep feature flag
-    it("does not link to the removal under maintenance step if the feature flag is off", () => {
-      expect(
-        getNextGuidedStep(
-          {
-            countryCode: "us",
-            latestScanData: {
-              scan: {
-                ...completedScan.scan!,
-                onerep_scan_status: "finished",
-              },
-              results: [
-                createRandomScanResult({
-                  status: "optout_in_progress",
-                  manually_resolved: false,
-                  broker_status: "removal_under_maintenance",
-                }),
-              ],
-            },
+            } as ScanData,
             subscriberBreaches: [],
             user: {
               email: "arbitrary@example.com",
@@ -692,237 +651,316 @@ describe("getNextGuidedStep", () => {
       ).toBe("Done");
     });
 
-    it("returns true when all data brokers that are removal under maintenance are resolved", () => {
-      expect(
-        hasCompletedStep(
-          {
-            countryCode: "us",
-            latestScanData: {
-              scan: {
-                ...completedScan.scan!,
-                onerep_scan_status: "finished",
-              },
-              results: [
-                createRandomScanResult({
-                  manually_resolved: true,
-                  status: "optout_in_progress",
-                  broker_status: "removal_under_maintenance",
-                }),
-              ],
-            },
-            subscriberBreaches: [],
-            user: { email: "arbitrary@example.com" },
-          },
-          "DataBrokerManualRemoval",
-          // TODO: MNTOR-3886 - Remove EnableRemovalUnderMaintenanceStep feature flag
-          ["EnableRemovalUnderMaintenanceStep"],
-        ),
-      ).toBe(true);
-    });
+    describe("with brokers under maintenance", () => {
+      // The "under maintenance" status is only supported by OneRep, not Moscary:
+      const completedOnerepScan: LatestOnerepScanData = {
+        results: [],
+        scan: {
+          created_at: new Date(),
+          updated_at: new Date(),
+          id: 42,
+          onerep_profile_id: 1337,
+          onerep_scan_id: 666,
+          onerep_scan_reason: "manual",
+          onerep_scan_status: "finished",
+        },
+      };
 
-    it("returns false when data brokers that are removal under maintenance are not resolved", () => {
-      expect(
-        hasCompletedStep(
-          {
-            countryCode: "us",
-            latestScanData: {
-              scan: {
-                ...completedScan.scan!,
-                onerep_scan_status: "finished",
+      it("links to the removal under maintenance step if a user has scan results with a data broker that has a removal under maintenance status", () => {
+        expect(
+          getNextGuidedStep(
+            {
+              countryCode: "us",
+              latestScanData: {
+                scan: {
+                  ...completedOnerepScan.scan!,
+                  onerep_scan_status: "finished",
+                },
+                results: [
+                  createRandomOnerepScanResult({
+                    status: "optout_in_progress",
+                    manually_resolved: false,
+                    broker_status: "removal_under_maintenance",
+                  }),
+                ],
               },
-              results: [
-                createRandomScanResult({
-                  manually_resolved: false,
-                  status: "optout_in_progress",
-                  broker_status: "removal_under_maintenance",
-                }),
-              ],
+              subscriberBreaches: [],
+              user: {
+                email: "arbitrary@example.com",
+              },
             },
-            subscriberBreaches: [],
-            user: { email: "arbitrary@example.com" },
-          },
-          "DataBrokerManualRemoval",
-          // TODO: MNTOR-3886 - Remove EnableRemovalUnderMaintenanceStep feature flag
-          ["EnableRemovalUnderMaintenanceStep"],
-        ),
-      ).toBe(false);
-    });
+            // TODO: MNTOR-3886 - Remove EnableRemovalUnderMaintenanceStep feature flag
+            ["EnableRemovalUnderMaintenanceStep"],
+          ),
+        ).toStrictEqual({
+          href: "/user/dashboard/fix/data-broker-profiles/removal-under-maintenance",
+          id: "DataBrokerManualRemoval",
+          completed: false,
+          eligible: true,
+        });
+      });
 
-    it("returns true when data brokers that are removal under maintenance are automatically resolved", () => {
-      expect(
-        hasCompletedStep(
-          {
-            countryCode: "us",
-            latestScanData: {
-              scan: {
-                ...completedScan.scan!,
-                onerep_scan_status: "finished",
+      // TODO: MNTOR-3886 - Remove EnableRemovalUnderMaintenanceStep feature flag
+      it("does not link to the removal under maintenance step if the feature flag is off", () => {
+        expect(
+          getNextGuidedStep(
+            {
+              countryCode: "us",
+              latestScanData: {
+                scan: {
+                  ...completedOnerepScan.scan!,
+                  onerep_scan_status: "finished",
+                },
+                results: [
+                  createRandomOnerepScanResult({
+                    status: "optout_in_progress",
+                    manually_resolved: false,
+                    broker_status: "removal_under_maintenance",
+                  }),
+                ],
               },
-              results: [
-                createRandomScanResult({
-                  manually_resolved: false,
-                  status: "removed",
-                  broker_status: "removal_under_maintenance",
-                }),
-              ],
+              subscriberBreaches: [],
+              user: {
+                email: "arbitrary@example.com",
+              },
             },
-            subscriberBreaches: [],
-            user: { email: "arbitrary@example.com" },
-          },
-          "DataBrokerManualRemoval",
-          // TODO: MNTOR-3886 - Remove EnableRemovalUnderMaintenanceStep feature flag
-          ["EnableRemovalUnderMaintenanceStep"],
-        ),
-      ).toBe(true);
-    });
+            [],
+          ).id,
+        ).toBe("Done");
+      });
 
-    // TODO: MNTOR-3886 - Remove EnableRemovalUnderMaintenanceStep feature flag
-    it("returns false when data brokers that are removal under maintenance are resolved, but the flag is off", () => {
-      expect(
-        hasCompletedStep(
-          {
-            countryCode: "us",
-            latestScanData: {
-              scan: {
-                ...completedScan.scan!,
-                onerep_scan_status: "finished",
+      it("returns true when all data brokers that are removal under maintenance are resolved", () => {
+        expect(
+          hasCompletedStep(
+            {
+              countryCode: "us",
+              latestScanData: {
+                scan: {
+                  ...completedOnerepScan.scan!,
+                  onerep_scan_status: "finished",
+                },
+                results: [
+                  createRandomOnerepScanResult({
+                    manually_resolved: true,
+                    status: "optout_in_progress",
+                    broker_status: "removal_under_maintenance",
+                  }),
+                ],
               },
-              results: [
-                createRandomScanResult({
-                  manually_resolved: true,
-                  status: "optout_in_progress",
-                  broker_status: "removal_under_maintenance",
-                }),
-              ],
+              subscriberBreaches: [],
+              user: { email: "arbitrary@example.com" },
             },
-            subscriberBreaches: [],
-            user: { email: "arbitrary@example.com" },
-          },
-          "DataBrokerManualRemoval",
-          [],
-        ),
-      ).toBe(false);
-    });
+            "DataBrokerManualRemoval",
+            // TODO: MNTOR-3886 - Remove EnableRemovalUnderMaintenanceStep feature flag
+            ["EnableRemovalUnderMaintenanceStep"],
+          ),
+        ).toBe(true);
+      });
 
-    it("is not eligible for step if the data brokers under maintenance is already removed", () => {
-      expect(
-        isEligibleForStep(
-          {
-            countryCode: "us",
-            latestScanData: {
-              scan: {
-                ...completedScan.scan!,
-                onerep_scan_status: "finished",
+      it("returns false when data brokers that are removal under maintenance are not resolved", () => {
+        expect(
+          hasCompletedStep(
+            {
+              countryCode: "us",
+              latestScanData: {
+                scan: {
+                  ...completedOnerepScan.scan!,
+                  onerep_scan_status: "finished",
+                },
+                results: [
+                  createRandomOnerepScanResult({
+                    manually_resolved: false,
+                    status: "optout_in_progress",
+                    broker_status: "removal_under_maintenance",
+                  }),
+                ],
               },
-              results: [
-                createRandomScanResult({
-                  manually_resolved: false,
-                  status: "removed",
-                  broker_status: "removal_under_maintenance",
-                }),
-              ],
+              subscriberBreaches: [],
+              user: { email: "arbitrary@example.com" },
             },
-            subscriberBreaches: [],
-            user: { email: "arbitrary@example.com" },
-          },
-          "DataBrokerManualRemoval",
-          // TODO: MNTOR-3886 - Remove EnableRemovalUnderMaintenanceStep feature flag
-          ["EnableRemovalUnderMaintenanceStep"],
-        ),
-      ).toBe(false);
-    });
+            "DataBrokerManualRemoval",
+            // TODO: MNTOR-3886 - Remove EnableRemovalUnderMaintenanceStep feature flag
+            ["EnableRemovalUnderMaintenanceStep"],
+          ),
+        ).toBe(false);
+      });
 
-    it("is not eligible for step if the data brokers under maintenance is already manually resolved", () => {
-      expect(
-        isEligibleForStep(
-          {
-            countryCode: "us",
-            latestScanData: {
-              scan: {
-                ...completedScan.scan!,
-                onerep_scan_status: "finished",
+      it("returns true when data brokers that are removal under maintenance are automatically resolved", () => {
+        expect(
+          hasCompletedStep(
+            {
+              countryCode: "us",
+              latestScanData: {
+                scan: {
+                  ...completedOnerepScan.scan!,
+                  onerep_scan_status: "finished",
+                },
+                results: [
+                  createRandomOnerepScanResult({
+                    manually_resolved: false,
+                    status: "removed",
+                    broker_status: "removal_under_maintenance",
+                  }),
+                ],
               },
-              results: [
-                createRandomScanResult({
-                  manually_resolved: true,
-                  status: "optout_in_progress",
-                  broker_status: "removal_under_maintenance",
-                }),
-              ],
+              subscriberBreaches: [],
+              user: { email: "arbitrary@example.com" },
             },
-            subscriberBreaches: [],
-            user: { email: "arbitrary@example.com" },
-          },
-          "DataBrokerManualRemoval",
-          // TODO: MNTOR-3886 - Remove EnableRemovalUnderMaintenanceStep feature flag
-          ["EnableRemovalUnderMaintenanceStep"],
-        ),
-      ).toBe(false);
-    });
+            "DataBrokerManualRemoval",
+            // TODO: MNTOR-3886 - Remove EnableRemovalUnderMaintenanceStep feature flag
+            ["EnableRemovalUnderMaintenanceStep"],
+          ),
+        ).toBe(true);
+      });
 
-    it("is not eligible for step if the data brokers under maintenance is already automatically resolved", () => {
-      expect(
-        isEligibleForStep(
-          {
-            countryCode: "us",
-            latestScanData: {
-              scan: {
-                ...completedScan.scan!,
-                onerep_scan_status: "finished",
+      // TODO: MNTOR-3886 - Remove EnableRemovalUnderMaintenanceStep feature flag
+      it("returns false when data brokers that are removal under maintenance are resolved, but the flag is off", () => {
+        expect(
+          hasCompletedStep(
+            {
+              countryCode: "us",
+              latestScanData: {
+                scan: {
+                  ...completedOnerepScan.scan!,
+                  onerep_scan_status: "finished",
+                },
+                results: [
+                  createRandomOnerepScanResult({
+                    manually_resolved: true,
+                    status: "optout_in_progress",
+                    broker_status: "removal_under_maintenance",
+                  }),
+                ],
               },
-              results: [
-                createRandomScanResult({
-                  manually_resolved: false,
-                  status: "removed",
-                  broker_status: "removal_under_maintenance",
-                }),
-              ],
+              subscriberBreaches: [],
+              user: { email: "arbitrary@example.com" },
             },
-            subscriberBreaches: [],
-            user: { email: "arbitrary@example.com" },
-          },
-          "DataBrokerManualRemoval",
-          // TODO: MNTOR-3886 - Remove EnableRemovalUnderMaintenanceStep feature flag
-          ["EnableRemovalUnderMaintenanceStep"],
-        ),
-      ).toBe(false);
-    });
+            "DataBrokerManualRemoval",
+            [],
+          ),
+        ).toBe(false);
+      });
 
-    it("is eligible for step if there are valid data brokers under maintenance", () => {
-      expect(
-        isEligibleForStep(
-          {
-            countryCode: "us",
-            latestScanData: {
-              scan: {
-                ...completedScan.scan!,
-                onerep_scan_status: "finished",
+      it("is not eligible for step if the data brokers under maintenance is already removed", () => {
+        expect(
+          isEligibleForStep(
+            {
+              countryCode: "us",
+              latestScanData: {
+                scan: {
+                  ...completedOnerepScan.scan!,
+                  onerep_scan_status: "finished",
+                },
+                results: [
+                  createRandomOnerepScanResult({
+                    manually_resolved: false,
+                    status: "removed",
+                    broker_status: "removal_under_maintenance",
+                  }),
+                ],
               },
-              results: [
-                createRandomScanResult({
-                  manually_resolved: true,
-                  status: "optout_in_progress",
-                  broker_status: "removal_under_maintenance",
-                }),
-                createRandomScanResult({
-                  manually_resolved: false,
-                  status: "removed",
-                  broker_status: "removal_under_maintenance",
-                }),
-                createRandomScanResult({
-                  manually_resolved: false,
-                  status: "optout_in_progress",
-                  broker_status: "removal_under_maintenance",
-                }),
-              ],
+              subscriberBreaches: [],
+              user: { email: "arbitrary@example.com" },
             },
-            subscriberBreaches: [],
-            user: { email: "arbitrary@example.com" },
-          },
-          "DataBrokerManualRemoval",
-          ["EnableRemovalUnderMaintenanceStep"],
-        ),
-      ).toBe(true);
+            "DataBrokerManualRemoval",
+            // TODO: MNTOR-3886 - Remove EnableRemovalUnderMaintenanceStep feature flag
+            ["EnableRemovalUnderMaintenanceStep"],
+          ),
+        ).toBe(false);
+      });
+
+      it("is not eligible for step if the data brokers under maintenance is already manually resolved", () => {
+        expect(
+          isEligibleForStep(
+            {
+              countryCode: "us",
+              latestScanData: {
+                scan: {
+                  ...completedOnerepScan.scan!,
+                  onerep_scan_status: "finished",
+                },
+                results: [
+                  createRandomOnerepScanResult({
+                    manually_resolved: true,
+                    status: "optout_in_progress",
+                    broker_status: "removal_under_maintenance",
+                  }),
+                ],
+              },
+              subscriberBreaches: [],
+              user: { email: "arbitrary@example.com" },
+            },
+            "DataBrokerManualRemoval",
+            // TODO: MNTOR-3886 - Remove EnableRemovalUnderMaintenanceStep feature flag
+            ["EnableRemovalUnderMaintenanceStep"],
+          ),
+        ).toBe(false);
+      });
+
+      it("is not eligible for step if the data brokers under maintenance is already automatically resolved", () => {
+        expect(
+          isEligibleForStep(
+            {
+              countryCode: "us",
+              latestScanData: {
+                scan: {
+                  ...completedOnerepScan.scan!,
+                  onerep_scan_status: "finished",
+                },
+                results: [
+                  createRandomOnerepScanResult({
+                    manually_resolved: false,
+                    status: "removed",
+                    broker_status: "removal_under_maintenance",
+                  }),
+                ],
+              },
+              subscriberBreaches: [],
+              user: { email: "arbitrary@example.com" },
+            },
+            "DataBrokerManualRemoval",
+            // TODO: MNTOR-3886 - Remove EnableRemovalUnderMaintenanceStep feature flag
+            ["EnableRemovalUnderMaintenanceStep"],
+          ),
+        ).toBe(false);
+      });
+
+      it("is eligible for step if there are valid data brokers under maintenance", () => {
+        expect(
+          isEligibleForStep(
+            {
+              countryCode: "us",
+              latestScanData: {
+                scan: {
+                  ...completedOnerepScan.scan!,
+                  onerep_scan_status: "finished",
+                },
+                results: [
+                  createRandomOnerepScanResult({
+                    manually_resolved: true,
+                    status: "optout_in_progress",
+                    broker_status: "removal_under_maintenance",
+                  }),
+                  createRandomOnerepScanResult({
+                    manually_resolved: false,
+                    status: "removed",
+                    broker_status: "removal_under_maintenance",
+                  }),
+                  createRandomOnerepScanResult({
+                    manually_resolved: false,
+                    status: "optout_in_progress",
+                    broker_status: "removal_under_maintenance",
+                  }),
+                ],
+              },
+              subscriberBreaches: [],
+              user: { email: "arbitrary@example.com" },
+            },
+            "DataBrokerManualRemoval",
+            ["EnableRemovalUnderMaintenanceStep"],
+          ),
+        ).toBe(true);
+      });
     });
 
     it("links to the Credit Card step if the user's credit card has been breached", () => {

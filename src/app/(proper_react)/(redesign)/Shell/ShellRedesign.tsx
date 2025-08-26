@@ -48,7 +48,16 @@ export const ShellRedesign = (props: Props) => {
       announcements={props.announcements}
     >
       <div className={styles.wrapper}>
-        <div className={styles.content}>
+        <div
+          className={`${styles.content} ${
+            // MNTOR-4531: This is just for visual debugging of help requests
+            // while customers can use either OneRep or Moscary, and doesn't need an explicit test:
+            /* c8 ignore next 2 */
+            props.enabledFeatureFlags.includes("Moscary")
+              ? styles.moscaryIndicator
+              : ""
+          }`}
+        >
           <nav
             className={styles.mainMenu}
             aria-label={props.l10n.getString("main-nav-label")}

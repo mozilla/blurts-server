@@ -53,7 +53,8 @@ export default async function RemovalUnderMaintenance() {
 
   const scanResults = useMockedScans
     ? await getMockedScanResults(profileId)
-    : await getScanResultsWithBroker(profileId, hasPremium(session.user));
+    : // MNTOR-4893: Implement removal under maintenance?
+      await getScanResultsWithBroker(profileId, hasPremium(session.user));
 
   const data: StepDeterminationData = {
     countryCode,

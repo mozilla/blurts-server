@@ -4,6 +4,7 @@
 
 "use client";
 
+import type { UUID } from "node:crypto";
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import isEqual from "lodash.isequal";
@@ -18,8 +19,11 @@ import {
   lookupFxaUid,
   getOnerepProfile,
   updateOnerepProfile,
-  triggerManualProfileScan,
-  getAllProfileScans,
+  triggerManualOnerepProfileScan,
+  getAllOnerepProfileScans,
+  getMoscaryProfile,
+  getAllMoscaryProfileScans,
+  triggerManualMoscaryProfileScan,
 } from "./actions";
 import { OnerepProfileRow, OnerepScanRow } from "knex/types/tables";
 import {
@@ -29,6 +33,7 @@ import {
 import { InputField } from "../../../../../components/client/InputField";
 import { CONST_DATA_BROKER_PROFILE_DETAIL_ALLOW_LIST } from "../../../../../../constants";
 import { FeatureFlagName } from "../../../../../../db/tables/featureFlags";
+import { type MoscaryData } from "../../../../../functions/server/moscary";
 
 export const DataTable = ({
   header,
@@ -147,6 +152,12 @@ export const UserAdmin = ({
   const [status, setStatus] = useState<null | string>(null);
   const [subscriberData, setSubscriberData] =
     useState<GetUserStateResponseBody | null>(null);
+  const [moscaryProfileData, setMoscaryProfileData] = useState<
+    MoscaryData["Profile"] | null
+  >(null);
+  const [moscaryScanData, setMoscaryScanData] = useState<
+    MoscaryData["Scan"][] | null
+  >(null);
   const [onerepProfileData, setOnerepProfileData] = useState<{
     local: OnerepProfileRow;
     remote: ShowProfileResponse;
@@ -163,7 +174,7 @@ export const UserAdmin = ({
   };
 
   const setProfileScans = async (onerepProfileId: number) => {
-    const profileScans = await getAllProfileScans(onerepProfileId);
+    const profileScans = await getAllOnerepProfileScans(onerepProfileId);
     if (profileScans) {
       setOneRepProfileScans(
         profileScans.sort(
@@ -172,6 +183,19 @@ export const UserAdmin = ({
         ),
       );
     }
+  };
+
+  const refreshMoscaryScanData = async (moscaryId: UUID) => {
+    const scanData = await getAllMoscaryProfileScans(moscaryId);
+    if (!scanData) {
+      return;
+    }
+    setMoscaryScanData(
+      scanData.sort(
+        (a, b) =>
+          new Date(a.created_at).getTime() - new Date(b.created_at).getTime(),
+      ),
+    );
   };
 
   useEffect(() => {
@@ -191,10 +215,23 @@ export const UserAdmin = ({
         setSubscriberData(null);
         return;
       }
-      const data = await response.json();
-      setSubscriberData(data);
-      setProfile(data.onerepProfileId);
-      setProfileScans(data.onerepProfileId);
+      const data: GetUserStateResponseBody = await response.json();
+      if (data.success) {
+        setSubscriberData(data);
+        if (data.onerepProfileId !== null) {
+          setProfile(data.onerepProfileId);
+          setProfileScans(data.onerepProfileId);
+        }
+        if (data.moscaryId !== null) {
+          getMoscaryProfile(data.moscaryId).then((moscaryProfile) => {
+            if (!moscaryProfile) {
+              return;
+            }
+            setMoscaryProfileData(moscaryProfile);
+          });
+          refreshMoscaryScanData(data.moscaryId);
+        }
+      }
 
       setIsLoading(false);
     });
@@ -207,6 +244,8 @@ export const UserAdmin = ({
   const onChangeEmail = (email: string) => {
     setStatus(null);
     setSubscriberData(null);
+    setMoscaryProfileData(null);
+    setMoscaryScanData(null);
     setOnerepProfileData(null);
     setOneRepProfileScans(null);
     setEmailInput(email);
@@ -272,7 +311,7 @@ export const UserAdmin = ({
 
     try {
       if (subscriberData?.onerepProfileId) {
-        await triggerManualProfileScan(subscriberData.onerepProfileId);
+        await triggerManualOnerepProfileScan(subscriberData.onerepProfileId);
         setProfileScans(subscriberData?.onerepProfileId);
         setStatus(`Running manual scan for [${emailInput}] succeeded.`);
       }
@@ -336,6 +375,37 @@ export const UserAdmin = ({
           "No subscriber found"
         )}
       </section>
+      {subscriberData && moscaryProfileData && (
+        <section>
+          <h2>Moscary profile</h2>
+          <div className={styles.content}>
+            <DataTable
+              header="Moscary profile data"
+              data={moscaryProfileData}
+              open
+            />
+          </div>
+          {moscaryScanData && (
+            <>
+              <DataTable header="Moscary scans" data={moscaryScanData} open />
+              <Button
+                variant="primary"
+                onPress={async () => {
+                  if (subscriberData.moscaryId === null) {
+                    return;
+                  }
+                  await triggerManualMoscaryProfileScan(
+                    subscriberData.moscaryId,
+                  );
+                  refreshMoscaryScanData(subscriberData.moscaryId);
+                }}
+              >
+                Trigger manual scan
+              </Button>
+            </>
+          )}
+        </section>
+      )}
       {subscriberData && (
         <>
           <section>

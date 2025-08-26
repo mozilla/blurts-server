@@ -35,6 +35,8 @@ import { type onAddEmail, type onRemoveEmail } from "../actions";
 import { formatPhone } from "../../../../../../../functions/universal/formatPhone";
 import { FeatureFlagName } from "../../../../../../../../db/tables/featureFlags";
 import { UpsellLinkButton } from "../../../../../../../components/client/toolbar/UpsellBadge";
+import { MoscaryData } from "../../../../../../../functions/server/moscary";
+import { parseIso8601Datetime } from "../../../../../../../../utils/parse";
 
 export type SettingsPanelEditInfoRedesignProps = {
   breachCountByEmailAddress: Record<string, number>;
@@ -44,7 +46,7 @@ export type SettingsPanelEditInfoRedesignProps = {
   enabledFeatureFlags: FeatureFlagName[];
   user: Session["user"];
   data?: SubscriberEmailPreferencesOutput;
-  profileData?: OnerepProfileRow;
+  profileData?: OnerepProfileRow | MoscaryData["Profile"];
   actions: {
     onAddEmail: typeof onAddEmail;
     onRemoveEmail: typeof onRemoveEmail;
@@ -125,20 +127,18 @@ function MonitoredEmail(props: {
 function ProfileInfoSection({
   profileData,
 }: {
-  profileData: OnerepProfileRow;
+  profileData: OnerepProfileRow | MoscaryData["Profile"];
 }) {
   const l10n = useL10n();
-  const {
-    first_name,
-    middle_name,
-    last_name,
-    first_names,
-    middle_names,
-    last_names,
-    date_of_birth,
-    phone_numbers,
-    addresses,
-  } = profileData;
+  const { first_name, middle_name, last_name } = profileData;
+  const date_of_birth: Date | null =
+    (profileData as OnerepProfileRow).date_of_birth ??
+    parseIso8601Datetime((profileData as MoscaryData["Profile"]).birth_date);
+  const first_names = profileData.first_names;
+  const middle_names = profileData.middle_names;
+  const last_names = profileData.last_names;
+  const phone_numbers = profileData.phone_numbers;
+  const addresses = profileData.addresses;
   const dateOfBirthString = date_of_birth.toLocaleDateString(getLocale(l10n), {
     dateStyle: "short",
     timeZone: "UTC",
@@ -180,7 +180,14 @@ function ProfileInfoSection({
               {l10n.getString("settings-details-about-you-phone-label")}
             </div>
             <div className={styles.detailContent}>
-              {formatPhone(phone_numbers[0])}
+              {formatPhone(
+                // MNTOR-4531: OneRep code paths will be phased out
+                // (OneRep has phone numbers as a string, Moscary as an object):
+                /* c8 ignore next 2 */
+                typeof phone_numbers[0] === "string"
+                  ? phone_numbers[0]
+                  : phone_numbers[0].number,
+              )}
               {phone_numbers.length > 1 && (
                 <span className={styles.detailMore}>
                   {l10n.getString("settings-details-about-you-more-indicator", {

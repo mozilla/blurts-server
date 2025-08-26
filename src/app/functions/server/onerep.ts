@@ -13,9 +13,10 @@ import {
 } from "../../../db/tables/onerep_scans";
 import { RemovalStatus } from "../universal/scanResult.js";
 import { logger } from "./logging";
-import { isUsingMockONEREPEndpoint } from "../universal/mock.ts";
 import { hasPremium } from "../universal/user.ts";
 import { OnerepProfileAddress } from "knex/types/tables";
+import { getScanAndResults } from "./moscary.ts";
+import { isUsingMockONEREPEndpoint } from "../universal/mock.ts";
 
 export const monthlyScansQuota = parseInt(
   (process.env.MONTHLY_SCANS_QUOTA as string) ?? "0",
@@ -36,6 +37,8 @@ export type CreateProfileRequest = {
   middle_name?: string;
 };
 
+/** OneRep stores phone numbers without formatting, and without a country code, e.g. "8005553535" */
+export type OnerepUsPhoneNumber = `${number}`;
 export type UpdateProfileRequest = CreateProfileRequest & {
   first_names: {
     first_name: string;
@@ -47,7 +50,7 @@ export type UpdateProfileRequest = CreateProfileRequest & {
     middle_name: string;
   }[];
   phone_numbers: {
-    number: string;
+    number: OnerepUsPhoneNumber;
   }[];
 };
 
@@ -57,7 +60,7 @@ export interface UpdateableProfileDetails {
   first_names: string[];
   last_names: string[];
   middle_names: string[];
-  phone_numbers: string[];
+  phone_numbers: OnerepUsPhoneNumber[];
   addresses: OnerepProfileAddress[];
   middle_name?: string;
 }
@@ -166,6 +169,7 @@ async function onerepFetch(
   return fetch(url, { ...options, headers });
 }
 
+/** @deprecated */
 export async function createProfile(
   profileData: CreateProfileRequest,
 ): Promise<number> {
@@ -210,6 +214,7 @@ export async function createProfile(
   return savedProfile.id;
 }
 
+/** @deprecated */
 export async function updateProfile(
   profileId: number,
   profileData: UpdateProfileRequest,
@@ -254,6 +259,7 @@ export async function updateProfile(
   logger.info("onerep_profile_updated");
 }
 
+/** @deprecated */
 export async function getProfile(
   profileId: number,
 ): Promise<ShowProfileResponse> {
@@ -273,6 +279,7 @@ export async function getProfile(
   return profile;
 }
 
+/** @deprecated */
 export async function activateProfile(profileId: number): Promise<void> {
   const response: Response = await onerepFetch(
     `/profiles/${profileId}/activate`,
@@ -290,6 +297,7 @@ export async function activateProfile(profileId: number): Promise<void> {
   }
 }
 
+/** @deprecated */
 export async function deactivateProfile(profileId: number): Promise<void> {
   const response: Response = await onerepFetch(
     `/profiles/${profileId}/deactivate`,
@@ -307,6 +315,7 @@ export async function deactivateProfile(profileId: number): Promise<void> {
   }
 }
 
+/** @deprecated */
 export async function optoutProfile(profileId: number): Promise<void> {
   const response = await onerepFetch(`/profiles/${profileId}/optout`, {
     method: "POST",
@@ -325,6 +334,7 @@ export async function optoutProfile(profileId: number): Promise<void> {
   }
 }
 
+/** @deprecated */
 export async function activateAndOptoutProfile({
   profileId,
   forceActivation = false,
@@ -349,6 +359,7 @@ export async function activateAndOptoutProfile({
   }
 }
 
+/** @deprecated */
 export async function createScan(
   profileId: number,
 ): Promise<CreateScanResponse> {
@@ -369,6 +380,7 @@ export async function createScan(
   return response.json() as Promise<CreateScanResponse>;
 }
 
+/** @deprecated */
 export async function listScans(
   profileId: number,
   options: Partial<{ page: number; per_page: number }> = {},
@@ -397,7 +409,8 @@ export async function listScans(
   return response.json() as Promise<ListScansResponse>;
 }
 
-export async function listScanResults(
+/** @deprecated */
+async function listScanResults(
   profileId: number,
   options: Partial<{
     page: number;
@@ -444,6 +457,7 @@ export async function listScanResults(
   return response.json() as Promise<ListScanResultsResponse>;
 }
 
+/** @deprecated */
 export async function isEligibleForFreeScan(
   user: Session["user"],
   countryCode: string,
@@ -456,20 +470,30 @@ export async function isEligibleForFreeScan(
     throw new Error("No session with a known subscriber found");
   }
 
-  const profileId = await getOnerepProfileId(user.subscriber.id);
-  const scanResult = await getScanResultsWithBroker(
-    profileId,
-    hasPremium(user),
-  );
+  if (user.subscriber.moscary_id) {
+    const scanResult = await getScanAndResults(user.subscriber.moscary_id);
 
-  if (scanResult.scan) {
-    logger.warn("User has already used free scan");
-    return false;
+    if (scanResult.scan) {
+      logger.warn("User has already used free scan");
+      return false;
+    }
+  } else {
+    const profileId = await getOnerepProfileId(user.subscriber.id);
+    const scanResult = await getScanResultsWithBroker(
+      profileId,
+      hasPremium(user),
+    );
+
+    if (scanResult.scan) {
+      logger.warn("User has already used free scan");
+      return false;
+    }
   }
 
   return true;
 }
 
+/** @deprecated */
 export async function getScanDetails(
   profileId: number,
   scanId: number,
@@ -488,6 +512,7 @@ export async function getScanDetails(
   return response.json() as Promise<Scan>;
 }
 
+/** @deprecated */
 export async function getAllScanResults(
   profileId: number,
 ): Promise<ScanResult[]> {
@@ -518,7 +543,7 @@ export async function getAllDataBrokers() {
   });
 }
 
-export async function fetchAllPages<Data>(
+async function fetchAllPages<Data>(
   fetchFunction: (_page: number) => Promise<OneRepResponse<Data[]>>,
 ): Promise<Data[]> {
   const firstPage = await fetchFunction(1);
@@ -539,6 +564,7 @@ export async function fetchAllPages<Data>(
 // Local instance map to cache results to prevent excessive API requests
 // Would be nice to share this cache with other pod via Redis in the future
 const profileStatsCache = new Map<string, ProfileStats>();
+/** @deprecated Only used to check whether we've hit OneRep quota compared to env vars, so doesn't need Moscary equialent check whether we've hit OneRep quota compared to env vars, so doesn't need Moscary equialents. */
 export async function getProfilesStats(
   from?: Date,
   to?: Date,
