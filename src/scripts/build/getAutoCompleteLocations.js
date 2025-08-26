@@ -5,8 +5,9 @@
 import { createWriteStream, existsSync } from "fs";
 import { Readable } from "stream";
 import { finished } from "stream/promises";
-import "dotenv-flow/config";
+import dotenvFlow from "dotenv-flow";
 
+dotenvFlow.config();
 const dataPath = "./locationAutocompleteData.json";
 
 if (!existsSync(dataPath)) {

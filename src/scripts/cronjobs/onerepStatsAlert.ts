@@ -2,10 +2,11 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import "dotenv-flow/config";
 import Sentry from "@sentry/nextjs";
 import { addOnerepStats, knexStats } from "../../db/tables/stats";
+import dotenvFlow from "dotenv-flow";
 
+dotenvFlow.config();
 const SENTRY_SLUG = "cron-onerep-stats-alerts";
 
 const parseEnvVarNr = (value: string | undefined) => parseInt(value ?? "0", 10);

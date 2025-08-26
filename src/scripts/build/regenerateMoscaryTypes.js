@@ -2,11 +2,13 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import "dotenv-flow/config";
+import dotenvFlow from "dotenv-flow";
 import { exec } from "node:child_process";
 import { writeFile } from "node:fs/promises";
 import openapiTS, { astToString } from "openapi-typescript";
 import { format, resolveConfig } from "prettier";
+
+dotenvFlow.config();
 
 const targetFilePath = "src/app/functions/server/moscary_schema.d.ts";
 const ast = await openapiTS(

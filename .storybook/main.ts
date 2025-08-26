@@ -46,6 +46,14 @@ const config: StorybookConfig = {
         ...(config.resolve?.alias ?? {}),
         "next/image": require.resolve("./NextImage.tsx"),
       },
+      fallback: {
+        ...(config.resolve?.fallback ?? {}),
+        fs: false,
+        net: false,
+        tls: false,
+        child_process: false,
+        async_hooks: false,
+      },
     };
 
     return config;

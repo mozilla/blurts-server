@@ -6,7 +6,8 @@
 // `pg-connection-string` works, triggering a false positive for this lint rule:
 
 import pgConnectionStr from "pg-connection-string";
-import "dotenv-flow/config";
+import dotenvFlow from "dotenv-flow";
+dotenvFlow.config();
 
 /**
  * @typedef {object} KnexConfig
