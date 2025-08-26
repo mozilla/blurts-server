@@ -83,12 +83,17 @@ export function WelcomeToPlusView(props: Props) {
                     elems: { b: <b /> },
                   },
                 )
-              : l10n.getString(
-                  "welcome-to-premium-data-broker-profiles-zero-state-description-part-one",
-                  {
-                    data_broker_count: CONST_ONEREP_DATA_BROKER_COUNT,
-                  },
-                )}
+              : /* c8 ignore next 3 */
+                props.enabledFeatureFlags.includes("MaskDataBrokerCount")
+                ? l10n.getString(
+                    "welcome-to-premium-data-broker-profiles-zero-state-description-part-one-masked",
+                  )
+                : l10n.getString(
+                    "welcome-to-premium-data-broker-profiles-zero-state-description-part-one",
+                    {
+                      data_broker_count: CONST_ONEREP_DATA_BROKER_COUNT,
+                    },
+                  )}
           </p>
           {!hasRelevantScanResults && (
             <p>
