@@ -16,10 +16,12 @@ import { Button } from "../../../../../components/client/Button";
 import styles from "./GetStarted.module.scss";
 import { useRef } from "react";
 import { useTelemetry } from "../../../../../hooks/useTelemetry";
+import { FeatureFlagName } from "../../../../../../db/tables/featureFlags";
 
 export type Props = {
   dataBrokerCount: number;
   onStart: () => void;
+  enabledFeatureFlags: FeatureFlagName[];
 };
 
 export const GetStarted = (props: Props) => {
@@ -30,7 +32,6 @@ export const GetStarted = (props: Props) => {
     { type: "dialog" },
     explainerDialogState,
   );
-
   const triggerRef = useRef<HTMLButtonElement>(null);
   const { buttonProps } = useButton(
     explainerDialogTrigger.triggerProps,
@@ -85,10 +86,15 @@ export const GetStarted = (props: Props) => {
                       )}
                     </strong>
                     <p>
-                      {l10n.getString(
-                        "onboarding-get-started-how-it-works-dialog-step1-content",
-                        { dataBrokerTotalCount: props.dataBrokerCount },
-                      )}
+                      {/* c8 ignore next 3 */}
+                      {props.enabledFeatureFlags.includes("MaskDataBrokerCount")
+                        ? l10n.getString(
+                            "onboarding-get-started-how-it-works-dialog-step1-content-masked",
+                          )
+                        : l10n.getString(
+                            "onboarding-get-started-how-it-works-dialog-step1-content",
+                            { dataBrokerTotalCount: props.dataBrokerCount },
+                          )}
                     </p>
                   </li>
                   <li>
