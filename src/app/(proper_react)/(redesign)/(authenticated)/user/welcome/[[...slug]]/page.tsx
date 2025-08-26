@@ -81,10 +81,6 @@ export default async function Onboarding(props: Props) {
     locale: getLocale(getL10n(await getAcceptLangHeaderInServerComponents())),
   });
 
-  const enabledFeatureFlags = await getEnabledFeatureFlags({
-    email: session.user.email,
-  });
-
   return (
     <View
       user={session.user}
