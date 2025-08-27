@@ -3,6 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import type { Meta, StoryObj } from "@storybook/react";
+import { fn } from "@storybook/test";
 import { ManualRemoveView } from "./ManualRemoveView";
 import {
   createRandomBreach,
@@ -70,6 +71,9 @@ export const ManualRemoveViewStory: Story = {
           subscriberEmails={[]}
           isPremiumUser={hasPremium(user)}
           isEligibleForPremium={true}
+          resolveScanResult={
+            props.resolveScanResult ?? fn().mockName("resolveScanResult")
+          }
           enabledFeatureFlags={props.enabledFeatureFlags ?? []}
         />
       </Shell>
