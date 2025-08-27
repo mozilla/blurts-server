@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { FC } from "react";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs";
 import { PublicShell } from "../PublicShell";
 import { SubscriptionPlansView } from "./SubscriptionPlansView";
 import { LandingPageProps } from "../LandingViewRedesign";
