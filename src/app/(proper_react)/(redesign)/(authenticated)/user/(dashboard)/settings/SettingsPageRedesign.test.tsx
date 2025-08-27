@@ -5,7 +5,7 @@
 import { it, expect } from "@jest/globals";
 import { act, render, screen } from "@testing-library/react";
 import { composeStory } from "@storybook/react";
-import { userEvent, within } from "@storybook/test";
+import { userEvent, within } from "storybook/test";
 import { axe } from "jest-axe";
 import SettingsMeta, {
   SettingsEditManageAccount,

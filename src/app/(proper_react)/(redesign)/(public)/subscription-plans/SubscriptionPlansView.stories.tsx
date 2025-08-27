@@ -14,7 +14,16 @@ import {
 } from "../../../../functions/server/getPremiumSubscriptionInfo";
 import { defaultExperimentData } from "../../../../../telemetry/generated/nimbus/experiments";
 
-const meta: Meta<FC<LandingPageProps>> = {
+const meta: Meta<
+  FC<
+    Omit<
+      LandingPageProps,
+      | "subscriptionBillingAmount"
+      | "premiumSubscriptionUrl"
+      | "bundleProductUrl"
+    >
+  >
+> = {
   title: "Pages/Public/Subscription plans",
   component: (props) => (
     <PublicShell
@@ -43,7 +52,6 @@ const meta: Meta<FC<LandingPageProps>> = {
           relay: process.env.FIREFOX_RELAY_LANDING_URL ?? "",
           vpn: process.env.MOZILLA_VPN_LANDING_URL ?? "",
         }}
-        enabledFeatureFlags={props.enabledFeatureFlags}
         {...props}
       />
     </PublicShell>

@@ -15,7 +15,6 @@ export default meta;
 type Story = StoryObj<typeof BundleOnboardingView>;
 
 export const BundleOnboarding: Story = {
-  name: "Bundle Onboarding",
   args: {
     l10n: getL10n(),
     enabledFeatureFlags: ["PrivacyProductsBundle"],
