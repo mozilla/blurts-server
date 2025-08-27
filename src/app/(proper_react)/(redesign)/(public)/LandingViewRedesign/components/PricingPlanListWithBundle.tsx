@@ -284,15 +284,22 @@ export const PricingPlanListWithBundle = (props: Props & ScanLimitProp) => {
             )}
           />
           <span>
-            {l10n.getFragment(
-              "landing-redesign-pricing-plans-card-plus-with-bundle-feature-item-one",
-              {
-                vars: {
-                  data_broker_sites_total_num: CONST_ONEREP_DATA_BROKER_COUNT,
-                },
-                elems: { b: <b /> },
-              },
-            )}
+            {/* c8 ignore next 4 */}
+            {props.enabledFeatureFlags.includes("MaskDataBrokerCount")
+              ? l10n.getFragment(
+                  "landing-redesign-pricing-plans-card-plus-with-bundle-feature-item-one-masked",
+                  { elems: { b: <b /> } },
+                )
+              : l10n.getFragment(
+                  "landing-redesign-pricing-plans-card-plus-with-bundle-feature-item-one",
+                  {
+                    vars: {
+                      data_broker_sites_total_num:
+                        CONST_ONEREP_DATA_BROKER_COUNT,
+                    },
+                    elems: { b: <b /> },
+                  },
+                )}
           </span>
         </>,
         <>
