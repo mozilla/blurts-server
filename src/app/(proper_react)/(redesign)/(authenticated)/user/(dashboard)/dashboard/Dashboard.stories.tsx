@@ -28,6 +28,9 @@ import {
   ScanData,
 } from "../../../../../../functions/server/moscary";
 
+// Exported values should be stories, but this was already there when
+// Storybook added this lint rule, so I guess it works?
+// eslint-disable-next-line storybook/prefer-pascal-case
 export const brokerOptions = {
   "no-scan": "No scan started",
   empty: "No scan results",
@@ -36,6 +39,9 @@ export const brokerOptions = {
   "scan-in-progress": "Scan is in progress",
   "manually-resolved": "Manually resolved",
 };
+// Exported values should be stories, but this was already there when
+// Storybook added this lint rule, so I guess it works?
+// eslint-disable-next-line storybook/prefer-pascal-case
 export const breachOptions = {
   empty: "No data breaches",
   unresolved: "With unresolved data breaches",

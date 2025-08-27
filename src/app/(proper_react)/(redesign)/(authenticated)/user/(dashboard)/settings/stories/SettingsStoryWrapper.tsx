@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { EmailAddressRow, SubscriberRow } from "knex/types/tables";
-import { fn } from "@storybook/test";
+import { fn } from "storybook/test";
 import { SettingsView, TabType } from "../View";
 import { Shell } from "../../../../../Shell/Shell";
 import { getL10n } from "../../../../../../../functions/l10n/storybookAndJest";
