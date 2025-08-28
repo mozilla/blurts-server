@@ -428,22 +428,10 @@ async function getFreeSubscribersWaitingForMonthlyEmail(
   countryCodes: string[],
 ): Promise<SubscriberRow[]> {
   const query = knex("subscribers")
-    .select<SubscriberRow[]>("subscribers.*")
+    .select("subscribers.*")
     .select(
       knex.raw(
-        `CASE
-        WHEN (fxa_profile_json->>'locale') ~ ',' THEN
-          CASE
-            WHEN split_part(fxa_profile_json->>'locale', ',', 1) ~ '-' THEN
-              split_part(split_part(fxa_profile_json->>'locale', ',', 1), '-', 2) -- Extract country code from first part
-            ELSE
-              split_part(fxa_profile_json->>'locale', ',', 1) -- Fallback to the language code
-          END
-        WHEN (fxa_profile_json->>'locale') ~ '-' THEN
-          split_part(fxa_profile_json->>'locale', '-', 2) -- Extract country code if present
-        ELSE
-          fxa_profile_json->>'locale' -- Fallback to the language code
-      END AS country_code`,
+        `substring(fxa_profile_json ->> 'locale' from '^..-(..)') AS country_code`,
       ),
     )
 
@@ -485,18 +473,18 @@ async function getFreeSubscribersWaitingForMonthlyEmail(
           MONITOR_PREMIUM_CAPABILITY,
         ),
     )
-    .orderBy("subscribers.created_at", "desc");
-
-  const wrappedQuery = knex
-    // @ts-ignore TODO MNTOR-3890 Move away from this approach and simplify query.
-    .from({ base_query: query }) // Use the existing query as a subquery
-    .select("*")
-    .whereIn("country_code", countryCodes)
+    .andWhere((builder) =>
+      builder
+        .whereRaw(
+          `fxa_profile_json ->> 'locale' ~ '^..-(${countryCodes.join("|")})'`
+        )
+    )
     .limit(batchSize);
 
-  const rows = await wrappedQuery;
+  // @ts-ignore TODO MNTOR-3890 Move away from this approach and simplify query.
+  const rows = await query;
 
-  return rows as SubscriberRow[];
+  return rows;
 }
 /* c8 ignore stop */
 
