@@ -7,6 +7,15 @@ import { getServerSession } from "../../../../functions/server/getServerSession"
 import { initializeUserAnnouncements } from "../../../../../db/tables/user_announcements";
 import { redirect } from "next/navigation";
 import { getEnabledFeatureFlags } from "../../../../../db/tables/featureFlags";
+import { getLocale } from "../../../../functions/universal/getLocale";
+import { getExperimentationIdFromUserSession } from "../../../../functions/server/getExperimentationId";
+import { getExperiments } from "../../../../functions/server/getExperiments";
+import { getCountryCode } from "../../../../functions/server/getCountryCode";
+import { headers } from "next/headers";
+import {
+  getAcceptLangHeaderInServerComponents,
+  getL10n,
+} from "../../../../functions/l10n/serverComponents";
 
 export async function GET() {
   const session = await getServerSession();
@@ -18,11 +27,23 @@ export async function GET() {
   const enabledFeatureFlags = await getEnabledFeatureFlags({
     email: session.user.email,
   });
+  const currentLocale = getLocale(
+    getL10n(await getAcceptLangHeaderInServerComponents()),
+  );
+  const experimentationId = await getExperimentationIdFromUserSession(
+    session?.user ?? null,
+  );
+  const experimentData = await getExperiments({
+    experimentationId,
+    countryCode: getCountryCode(await headers()),
+    locale: currentLocale,
+  });
 
   try {
     const userAnnouncements = await initializeUserAnnouncements(
       session.user,
       enabledFeatureFlags,
+      experimentData["Features"],
     );
     return NextResponse.json(userAnnouncements, { status: 200 });
   } catch (error) {

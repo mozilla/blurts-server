@@ -29,7 +29,7 @@ import {
 } from "../../../../../../../constants";
 import { SanitizedEmailAddressRow } from "../../../../../../functions/server/sanitize";
 import { deleteAccount } from "../../../../../../functions/server/deleteAccount";
-import { cookies } from "next/headers";
+import { cookies, headers } from "next/headers";
 import {
   applyCurrentCouponCode,
   checkCurrentCouponCode,
@@ -45,6 +45,10 @@ import {
 import { type NormalizedProfileData } from "./panels/SettingsPanelEditProfile/EditProfileForm";
 import { OnerepUsPhoneNumber } from "../../../../../../functions/server/onerep";
 import { parseE164PhoneNumber } from "../../../../../../../utils/parse";
+import { getExperimentationIdFromUserSession } from "../../../../../../functions/server/getExperimentationId";
+import { getExperiments } from "../../../../../../functions/server/getExperiments";
+import { getCountryCode } from "../../../../../../functions/server/getCountryCode";
+import { getLocale } from "../../../../../../functions/universal/getLocale";
 
 export type AddEmailFormState =
   | { success?: never }
@@ -300,7 +304,19 @@ export async function onHandleUpdateProfileData(
   const enabledFeatureFlags = await getEnabledFeatureFlags({
     email: session.user.email,
   });
-  if (enabledFeatureFlags.includes("Moscary")) {
+  const l10n = getL10n(await getAcceptLangHeaderInServerComponents());
+  const experimentationId = await getExperimentationIdFromUserSession(
+    session?.user ?? null,
+  );
+  const experimentData = await getExperiments({
+    experimentationId,
+    countryCode: getCountryCode(await headers()),
+    locale: getLocale(l10n),
+  });
+  if (
+    enabledFeatureFlags.includes("Moscary") ||
+    experimentData["Features"]["moscary"].enabled
+  ) {
     if (!session.user.subscriber.moscary_id) {
       logger.error(`User does not have a Moscary profile.`);
       return {

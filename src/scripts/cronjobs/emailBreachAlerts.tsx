@@ -48,6 +48,9 @@ import { getScanResultsWithBroker } from "../../db/tables/onerep_scans";
 import { logger } from "../../app/functions/server/logging";
 import { getFeatureFlagData } from "../../db/tables/featureFlags";
 import { getScanAndResults } from "../../app/functions/server/moscary";
+import { getExperimentationIdFromSubscriber } from "../../app/functions/server/getExperimentationId";
+import { getExperiments } from "../../app/functions/server/getExperiments";
+import { getLocale } from "../../app/functions/universal/getLocale";
 
 const SENTRY_SLUG = "cron-breach-alerts";
 
@@ -298,6 +301,13 @@ export async function poll(
             const subPlatFeatureFlagEnabled =
               subPlatFeatureFlag?.is_enabled ||
               subPlatFeatureFlag?.allow_list?.includes(recipient.primary_email);
+            const experimentationId =
+              await getExperimentationIdFromSubscriber(recipient);
+            const experimentData = await getExperiments({
+              experimentationId,
+              countryCode: assumedCountryCode,
+              locale: getLocale(l10n),
+            });
 
             await sendEmail(
               recipientEmail,
@@ -313,6 +323,7 @@ export async function poll(
                   enabledFeatureFlags={
                     subPlatFeatureFlagEnabled ? ["SubPlat3"] : []
                   }
+                  experimentData={experimentData["Features"]}
                 />,
               ),
             );

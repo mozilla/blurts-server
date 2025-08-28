@@ -2,12 +2,13 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { headers } from "next/headers";
 import { UUID } from "crypto";
-import { Session } from "next-auth";
 import { v5 as uuidv5 } from "uuid";
-import "./notInClientComponent";
+import type { Session } from "next-auth";
+import type { SubscriberRow } from "knex/types/tables";
 import { logger } from "./logging";
+import { loadNextHeaders } from "./loadNextHeaders";
+import "./notInClientComponent";
 
 export type ExperimentationId = UUID | `guest-${UUID}`;
 
@@ -15,16 +16,13 @@ export type ExperimentationId = UUID | `guest-${UUID}`;
  * Create a stable ID used for Monitor experimentation, derived from the subscriber ID.
  * Instead of using the ID directly,
  *
- * @param user
+ * @param subscriberId
  * @returns v5 UUID, possibly with `guest-` prefix.
  */
-export async function getExperimentationId(
-  user: Session["user"] | null,
-): Promise<ExperimentationId> {
-  const accountId = user?.subscriber?.id;
-  let experimentationId: null | ExperimentationId;
-
-  if (accountId && typeof accountId === "number") {
+async function getExperimentationId(
+  subscriberId?: number,
+): Promise<ExperimentationId | undefined> {
+  if (subscriberId && typeof subscriberId === "number") {
     // If the user is logged in, use the Subscriber ID.
     const namespace = process.env.NIMBUS_UUID_NAMESPACE;
     if (!namespace) {
@@ -35,24 +33,56 @@ export async function getExperimentationId(
         "NIMBUS_UUID_NAMESPACE not set, cannot create experimentationId",
       );
     }
-    experimentationId = uuidv5(accountId.toString(), namespace) as UUID;
+    const experimentationId = uuidv5(
+      subscriberId.toString(),
+      namespace,
+    ) as UUID;
     return experimentationId;
-  } else {
-    // If the user is not logged in, use a cookie with a randomly-generated Nimbus user ID.
-    // (This header is set in middleware.ts, which reads it from a cookie, and creates the
-    // cookie if it doesn't exist yet.)
-    // TODO: could we use client ID for this? There's no supported way to get it from GleanJS.
-    const experimentationId = (await headers()).get("x-experimentation-id");
-    if (!experimentationId) {
-      logger.error(
-        "get_experimentation_id_no_x-experimentation-id_header",
-        (await headers()).keys(),
-      );
-      return "guest-no-experimentation-id-set-by-monitor-middleware";
-    }
-    logger.info("Using experimentationId from header for guest user", {
-      experimentationId,
-    });
-    return experimentationId as ExperimentationId;
   }
+
+  // If the user is not logged in, use a cookie with a randomly-generated Nimbus user ID.
+  // (This header is set in middleware.ts, which reads it from a cookie, and creates the
+  // cookie if it doesn't exist yet.)
+  // TODO: could we use client ID for this? There's no supported way to get it from GleanJS.
+  try {
+    // The function `getExperimentationId` can be used outside of Next.js environments
+    // so we import `next/headers` dynamically to handle when it is not available.
+    const nextHeaders = await loadNextHeaders();
+    if (nextHeaders) {
+      const experimentationId = (await nextHeaders.headers()).get(
+        "x-experimentation-id",
+      );
+      if (!experimentationId) {
+        logger.error(
+          "get_experimentation_id_no_x-experimentation-id_header",
+          (await nextHeaders.headers()).keys(),
+        );
+        return "guest-no-experimentation-id-set-by-monitor-middleware";
+      }
+      logger.info("Using experimentationId from header for guest user", {
+        experimentationId,
+      });
+      return experimentationId as ExperimentationId;
+    } else {
+      throw new Error("Could not load next/headers");
+    }
+  } catch (error) {
+    logger.info(
+      "get_experimentation_id_get_x-experimentation-id_header_failed",
+      error,
+    );
+  }
+}
+
+export async function getExperimentationIdFromUserSession(
+  user: Session["user"] | null,
+) {
+  const subscriberId = user?.subscriber?.id;
+  return await getExperimentationId(subscriberId);
+}
+
+export async function getExperimentationIdFromSubscriber(
+  subscriber: SubscriberRow,
+) {
+  return await getExperimentationId(subscriber.id);
 }

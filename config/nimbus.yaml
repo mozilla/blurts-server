@@ -146,6 +146,20 @@ features:
           "enabled": false,
           "variant": default,
         }
+  moscary:
+    description: Use the Moscary API
+    variables:
+      enabled:
+        description: If the feature is enabled
+        type: Boolean
+        default: false
+    defaults:
+      - channel: local
+        value: { "enabled": true }
+      - channel: staging
+        value: { "enabled": false }
+      - channel: production
+        value: { "enabled": false }
 enums:
   OptionalBrokerScanInfoFields:
     description: An enum of optional broker scan info fields
