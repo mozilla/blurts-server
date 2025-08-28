@@ -13,6 +13,7 @@ on:
         options:
           - stage
           - prod
+          - dev
       originalImageTag:
         description: 'The original image tag that has been deployed'
         required: true
@@ -32,7 +33,7 @@ jobs:
       DOCKERHUB_IMAGE: mozilla/blurts-server # Define Docker Hub image name
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
         with:
           persist-credentials: false
 
