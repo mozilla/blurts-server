@@ -130,7 +130,7 @@ describe("getExperimentationId", () => {
     expect(loggerMock.error).toHaveBeenCalledTimes(1);
   });
 
-  it("logs info and returns fallback ID if loadNextHeaders returns null", async () => {
+  it("logs info and returns undefined if loadNextHeaders returns null", async () => {
     loadNextHeadersMock.mockResolvedValue(null);
 
     const { getExperimentationIdFromUserSession } = await import(
@@ -138,16 +138,14 @@ describe("getExperimentationId", () => {
     );
 
     const result = await getExperimentationIdFromUserSession(null);
-    expect(result).toBe(
-      "guest-no-experimentation-id-set-by-monitor-middleware",
-    );
+    expect(result).toBeUndefined();
     expect(loggerMock.info).toHaveBeenCalledWith(
       "get_experimentation_id_get_x-experimentation-id_header_failed",
       expect.any(Error),
     );
   });
 
-  it("logs info and returns fallback ID if next/headers throws", async () => {
+  it("logs info and returns undefined if next/headers throws", async () => {
     jest.mock("next/headers", () => {
       throw new Error("import failed");
     });
@@ -157,9 +155,7 @@ describe("getExperimentationId", () => {
     );
 
     const result = await getExperimentationIdFromUserSession(null);
-    expect(result).toBe(
-      "guest-no-experimentation-id-set-by-monitor-middleware",
-    );
+    expect(result).toBeUndefined();
     expect(loggerMock.info).toHaveBeenCalledWith(
       "get_experimentation_id_get_x-experimentation-id_header_failed",
       expect.any(Error),

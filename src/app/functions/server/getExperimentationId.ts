@@ -21,7 +21,7 @@ export type ExperimentationId = UUID | `guest-${UUID}`;
  */
 async function getExperimentationId(
   subscriberId?: number,
-): Promise<ExperimentationId> {
+): Promise<ExperimentationId | undefined> {
   if (subscriberId && typeof subscriberId === "number") {
     // If the user is logged in, use the Subscriber ID.
     const namespace = process.env.NIMBUS_UUID_NAMESPACE;
@@ -72,8 +72,6 @@ async function getExperimentationId(
       error,
     );
   }
-
-  return "guest-no-experimentation-id-set-by-monitor-middleware";
 }
 
 export async function getExperimentationIdFromUserSession(

@@ -31,6 +31,7 @@ import {
   getAcceptLangHeaderInServerComponents,
   getL10n,
 } from "../../../../../../../../../functions/l10n/serverComponents";
+import { resolveScanResult } from "./actions";
 
 export default async function ManualRemovePage() {
   const session = await getServerSession();
@@ -89,6 +90,7 @@ export default async function ManualRemovePage() {
       user={session.user}
       countryCode={countryCode}
       subscriberEmails={subscriberEmails}
+      resolveScanResult={resolveScanResult}
       enabledFeatureFlags={enabledFeatureFlags}
     />
   );

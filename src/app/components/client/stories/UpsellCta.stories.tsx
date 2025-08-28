@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs";
 import { Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
 import { UpsellBadge, UpsellLinkButton } from "../toolbar/UpsellBadge";

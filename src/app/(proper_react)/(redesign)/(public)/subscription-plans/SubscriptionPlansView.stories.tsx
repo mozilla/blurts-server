@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { FC } from "react";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs";
 import { PublicShell } from "../PublicShell";
 import { SubscriptionPlansView } from "./SubscriptionPlansView";
 import { LandingPageProps } from "../LandingViewRedesign";
@@ -14,7 +14,16 @@ import {
 } from "../../../../functions/server/getPremiumSubscriptionInfo";
 import { defaultExperimentData } from "../../../../../telemetry/generated/nimbus/experiments";
 
-const meta: Meta<FC<LandingPageProps>> = {
+const meta: Meta<
+  FC<
+    Omit<
+      LandingPageProps,
+      | "subscriptionBillingAmount"
+      | "premiumSubscriptionUrl"
+      | "bundleProductUrl"
+    >
+  >
+> = {
   title: "Pages/Public/Subscription plans",
   component: (props) => (
     <PublicShell
@@ -43,7 +52,6 @@ const meta: Meta<FC<LandingPageProps>> = {
           relay: process.env.FIREFOX_RELAY_LANDING_URL ?? "",
           vpn: process.env.MOZILLA_VPN_LANDING_URL ?? "",
         }}
-        enabledFeatureFlags={props.enabledFeatureFlags}
         {...props}
       />
     </PublicShell>

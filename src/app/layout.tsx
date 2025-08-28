@@ -96,7 +96,7 @@ export default async function RootLayout({
       >
         <ExperimentsProvider
           experimentData={experimentData}
-          experimentationId={experimentationId}
+          experimentationId={experimentationId ?? ""}
         >
           <SessionProvider session={session}>{children}</SessionProvider>
         </ExperimentsProvider>

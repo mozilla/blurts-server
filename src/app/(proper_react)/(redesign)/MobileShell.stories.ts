@@ -5,7 +5,7 @@
 import { Session } from "next-auth";
 import { SerializedSubscriber } from "../../../next-auth";
 
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs";
 import { MobileShell } from "./MobileShell";
 import { defaultExperimentData } from "../../../telemetry/generated/nimbus/experiments";
 

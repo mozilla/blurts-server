@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs";
 
 import { faker } from "@faker-js/faker";
 import { View as DashboardEl, TabType } from "./View";
@@ -28,6 +28,9 @@ import {
   ScanData,
 } from "../../../../../../functions/server/moscary";
 
+// Exported values should be stories, but this was already there when
+// Storybook added this lint rule, so I guess it works?
+// eslint-disable-next-line storybook/prefer-pascal-case
 export const brokerOptions = {
   "no-scan": "No scan started",
   empty: "No scan results",
@@ -36,6 +39,9 @@ export const brokerOptions = {
   "scan-in-progress": "Scan is in progress",
   "manually-resolved": "Manually resolved",
 };
+// Exported values should be stories, but this was already there when
+// Storybook added this lint rule, so I guess it works?
+// eslint-disable-next-line storybook/prefer-pascal-case
 export const breachOptions = {
   empty: "No data breaches",
   unresolved: "With unresolved data breaches",
