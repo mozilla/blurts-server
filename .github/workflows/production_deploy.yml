@@ -33,7 +33,7 @@ jobs:
       DOCKERHUB_IMAGE: mozilla/blurts-server # Define Docker Hub image name
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           persist-credentials: false
 
