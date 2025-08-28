@@ -29,6 +29,9 @@ import {
   getScanAndResults,
   ScanData,
 } from "../../../../../../../../../functions/server/moscary";
+import { getExperimentationIdFromUserSession } from "../../../../../../../../../functions/server/getExperimentationId";
+import { getExperiments } from "../../../../../../../../../functions/server/getExperiments";
+import { getLocale } from "../../../../../../../../../functions/universal/getLocale";
 
 export default async function WelcomeToPlusPage() {
   const session = await getServerSession();
@@ -48,9 +51,21 @@ export default async function WelcomeToPlusPage() {
   const enabledFeatureFlags = await getEnabledFeatureFlags({
     email: session.user.email,
   });
+  const experimentationId = await getExperimentationIdFromUserSession(
+    session.user,
+  );
+  const countryCode = getCountryCode(await headers());
+  const experimentData = await getExperiments({
+    experimentationId,
+    countryCode,
+    locale: getLocale(getL10n(await getAcceptLangHeaderInServerComponents())),
+  });
 
   let scanData: LatestOnerepScanData | ScanData;
-  if (enabledFeatureFlags.includes("Moscary")) {
+  if (
+    enabledFeatureFlags.includes("Moscary") ||
+    experimentData["Features"]["moscary"].enabled
+  ) {
     if (!session.user.subscriber.moscary_id) {
       // If the user subscribed to Plus before running a scan, have them run one now:
       redirect("/user/welcome");
@@ -83,7 +98,6 @@ export default async function WelcomeToPlusPage() {
     await refreshStoredScanResults(profileId);
   }
 
-  const countryCode = getCountryCode(await headers());
   const subBreaches = await getSubscriberBreaches({
     fxaUid: session.user.subscriber.fxa_uid,
     countryCode,
