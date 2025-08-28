@@ -12,7 +12,7 @@ import { headers } from "next/headers";
 import { getCountryCode } from "../../../functions/server/getCountryCode";
 import { getLocale } from "../../../functions/universal/getLocale";
 import { getExperiments } from "../../../functions/server/getExperiments";
-import { getExperimentationId } from "../../../functions/server/getExperimentationId";
+import { getExperimentationIdFromUserSession } from "../../../functions/server/getExperimentationId";
 import { getEnabledFeatureFlags } from "../../../../db/tables/featureFlags";
 import { getServerSession } from "../../../functions/server/getServerSession";
 import * as Sentry from "@sentry/nextjs";
@@ -27,7 +27,9 @@ export default async function Layout(props: { children: ReactNode }) {
   const headersList = await headers();
   const countryCode = getCountryCode(headersList);
 
-  const experimentationId = await getExperimentationId(session?.user ?? null);
+  const experimentationId = await getExperimentationIdFromUserSession(
+    session?.user ?? null,
+  );
   const experimentData = await getExperiments({
     experimentationId,
     countryCode,

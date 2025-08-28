@@ -18,6 +18,7 @@ import { DataPointCount } from "../../components/EmailDataPointCount";
 import { HeaderStyles, MetaTags } from "../../components/HeaderStyles";
 import { FeatureFlagName } from "../../../db/tables/featureFlags";
 import { CONST_URL_WAITLIST } from "../../../constants";
+import { ExperimentData } from "../../../telemetry/generated/nimbus/experiments";
 
 export type BreachAlertEmailProps = {
   l10n: ExtendedReactLocalization;
@@ -26,6 +27,7 @@ export type BreachAlertEmailProps = {
   utmCampaignId: string;
   subscriber: SubscriberRow;
   enabledFeatureFlags: FeatureFlagName[];
+  experimentData: ExperimentData["Features"];
   /**
    * We need to run a bunch of queries to collect this data,
    * so it's optional; however, make sure to pass it in for
@@ -41,9 +43,11 @@ export type BreachAlertEmailProps = {
 // `src/scripts/cronjobs/emailBreachAlerts.test.ts` tests are run:
 /* c8 ignore start */
 export const BreachAlertEmail = (props: BreachAlertEmailProps) => {
-  const hasRunFreeScan = props.enabledFeatureFlags.includes("Moscary")
-    ? typeof props.subscriber.moscary_id === "string"
-    : typeof props.subscriber.onerep_profile_id === "number";
+  const hasRunFreeScan =
+    props.enabledFeatureFlags.includes("Moscary") ||
+    props.experimentData["moscary"].enabled
+      ? typeof props.subscriber.moscary_id === "string"
+      : typeof props.subscriber.onerep_profile_id === "number";
   const l10n = props.l10n;
   const locale = getLocale(props.l10n);
   const listFormatter = new Intl.ListFormat(locale);
