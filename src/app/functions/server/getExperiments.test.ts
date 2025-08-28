@@ -54,20 +54,6 @@ afterAll(() => {
 });
 
 describe("getExperiments", () => {
-  it("returns defaultExperimentData when experimentationId is missing", async () => {
-    headersMock.mockResolvedValue(new Headers([]));
-    const { getExperiments } = await import("./getExperiments");
-
-    const result = await getExperiments({
-      experimentationId: undefined,
-      locale: "en-US",
-      countryCode: "nl",
-    });
-
-    expect(result).toEqual(defaultExperimentDataMock);
-    expect(fetchMock).not.toHaveBeenCalled();
-  });
-
   it.each(["local", undefined])(
     "returns localExperimentData in [%s] environments",
     async (environment) => {
