@@ -10,7 +10,6 @@ import { userEvent } from "@testing-library/user-event";
 
 import Meta, { ManualRemoveViewStory } from "./ManualRemove.stories";
 import { useTelemetry as useTelemetryImported } from "../../../../../../../../../hooks/useTelemetry";
-import { resolveScanResult } from "./actions";
 
 const mockedRouterRefresh = jest.fn();
 
@@ -23,11 +22,6 @@ jest.mock("next/navigation", () => {
   };
 });
 
-jest.mock("./actions", () => {
-  return {
-    resolveScanResult: jest.fn().mockResolvedValue({ ok: true }),
-  };
-});
 jest.mock("../../../../../../../../../hooks/useTelemetry");
 jest.mock(
   "../../../../../../../../../components/client/exposure_card/DataBrokerImage",
@@ -60,8 +54,9 @@ it("passes the axe accessibility test suite", async () => {
 
 it("removes the manual resolution button once a profile has been resolved", async () => {
   const user = userEvent.setup();
+  const resolveScanResult = jest.fn().mockResolvedValueOnce({ ok: true });
   const ComposedManualRemoveView = composeStory(ManualRemoveViewStory, Meta);
-  render(<ComposedManualRemoveView />);
+  render(<ComposedManualRemoveView resolveScanResult={resolveScanResult} />);
 
   const resolveButtonsBeforeResolving = screen.getAllByRole("button", {
     name: "Resolve exposures",
@@ -79,8 +74,9 @@ it("removes the manual resolution button once a profile has been resolved", asyn
 
 it("refreshes the client-side router cache after resolving a profile", async () => {
   const user = userEvent.setup();
+  const resolveScanResult = jest.fn().mockResolvedValueOnce({ ok: true });
   const ComposedManualRemoveView = composeStory(ManualRemoveViewStory, Meta);
-  render(<ComposedManualRemoveView />);
+  render(<ComposedManualRemoveView resolveScanResult={resolveScanResult} />);
 
   expect(mockedRouterRefresh).not.toHaveBeenCalled();
 
@@ -96,11 +92,11 @@ it("refreshes the client-side router cache after resolving a profile", async () 
 
 it("keeps the manual resolution button if resolving a profile failed", async () => {
   const user = userEvent.setup();
-  (resolveScanResult as jest.Mock).mockRejectedValueOnce(
-    new Error("Failed to resolve scan result"),
-  );
+  const resolveScanResult = jest
+    .fn()
+    .mockRejectedValueOnce(new Error("Failed to resolve scan result"));
   const ComposedManualRemoveView = composeStory(ManualRemoveViewStory, Meta);
-  render(<ComposedManualRemoveView />);
+  render(<ComposedManualRemoveView resolveScanResult={resolveScanResult} />);
 
   const resolveButtonsBeforeResolving = screen.getAllByRole("button", {
     name: "Resolve exposures",

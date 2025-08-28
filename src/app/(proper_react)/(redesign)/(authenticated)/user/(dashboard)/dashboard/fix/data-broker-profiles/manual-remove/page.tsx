@@ -24,6 +24,7 @@ import {
   getScanAndResults,
   ScanData,
 } from "../../../../../../../../../functions/server/moscary";
+import { resolveScanResult } from "./actions";
 
 export default async function ManualRemovePage() {
   const session = await getServerSession();
@@ -70,6 +71,7 @@ export default async function ManualRemovePage() {
       user={session.user}
       countryCode={countryCode}
       subscriberEmails={subscriberEmails}
+      resolveScanResult={resolveScanResult}
       enabledFeatureFlags={enabledFeatureFlags}
     />
   );
