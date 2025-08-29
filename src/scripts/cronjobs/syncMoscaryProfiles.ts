@@ -276,13 +276,18 @@ try {
     batchesProcessed: result.batchesProcessed,
   });
 
-  process.exit(0);
+  await tearDown();
 } catch (error) {
   const errorMessage = error instanceof Error ? error.message : String(error);
   logger.error("moscary_profile_sync_script_failed", {
     error: errorMessage,
   });
-  process.exit(1);
+  await tearDown();
+}
+
+async function tearDown() {
+  await knexSubscribers.destroy();
+  process.exit(0);
 }
 
 export { syncMoscaryProfiles, findMoscaryProfile };
