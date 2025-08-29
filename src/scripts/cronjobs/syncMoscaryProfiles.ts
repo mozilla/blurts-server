@@ -7,6 +7,7 @@ import { getProfile } from "../../app/functions/server/moscary";
 import { knexSubscribers, setMoscaryId } from "../../db/tables/subscribers";
 import type { SubscriberRow } from "knex/types/tables";
 import { UUID } from "crypto";
+import { validate as validateUuid } from "uuid";
 
 interface SyncResult {
   totalSubscribers: number;
@@ -103,6 +104,16 @@ async function updateSubscriberMoscaryId(
   subscriber: SubscriberRow,
   moscaryId: string,
 ): Promise<void> {
+  // Validate that moscaryId is a proper UUID
+  if (!validateUuid(moscaryId)) {
+    logger.error("invalid_uuid_format", {
+      subscriberId: subscriber.id,
+      onerepProfileId: subscriber.onerep_profile_id,
+      moscaryId,
+    });
+    throw new Error(`Invalid UUID format: ${moscaryId}`);
+  }
+
   await setMoscaryId(subscriber, moscaryId as UUID);
 
   logger.info("updated_subscriber_moscary_id", {
