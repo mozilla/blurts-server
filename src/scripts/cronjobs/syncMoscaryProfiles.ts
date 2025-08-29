@@ -345,8 +345,20 @@ try {
 }
 
 async function tearDown() {
-  await knexSubscribers.destroy();
-  process.exit(0);
+  try {
+    await knexSubscribers.destroy();
+    logger.info("database_connection_closed");
+  } catch (error) {
+    logger.error("error_closing_database_connection", {
+      error: error instanceof Error ? error.message : String(error),
+    });
+  }
+
+  // Graceful shutdown following pattern from other cronjob scripts
+  setTimeout(() => {
+    logger.info("script_shutdown_complete");
+    process.exit(0);
+  }, 1000);
 }
 
 export { syncMoscaryProfiles, findMoscaryProfile };
