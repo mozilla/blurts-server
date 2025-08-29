@@ -8,6 +8,7 @@ import { knexSubscribers, setMoscaryId } from "../../db/tables/subscribers";
 import type { SubscriberRow } from "knex/types/tables";
 import { UUID } from "crypto";
 import { validate as validateUuid } from "uuid";
+import pLimit from "p-limit";
 
 interface SyncResult {
   totalSubscribers: number;
@@ -23,6 +24,18 @@ if (Number.isNaN(BATCH_SIZE) || BATCH_SIZE <= 0) {
   BATCH_SIZE = 100;
   logger.warn(
     `Invalid MOSCARY_SYNC_BATCH_SIZE environment variable, using default: ${BATCH_SIZE}`,
+  );
+}
+
+// Configurable concurrency limit with environment variable support
+const CONCURRENCY_LIMIT = parseInt(
+  process.env.MOSCARY_SYNC_CONCURRENCY_LIMIT ?? "10",
+  10,
+);
+
+if (Number.isNaN(CONCURRENCY_LIMIT) || CONCURRENCY_LIMIT <= 0) {
+  logger.warn(
+    `Invalid MOSCARY_SYNC_CONCURRENCY_LIMIT environment variable, using default: 10`,
   );
 }
 
@@ -124,50 +137,77 @@ async function updateSubscriberMoscaryId(
 }
 
 /**
- * Process a single batch of subscribers
+ * Process a single subscriber
+ */
+async function processSubscriber(
+  subscriber: SubscriberRow,
+): Promise<{ success: boolean; error?: string }> {
+  try {
+    if (!subscriber.onerep_profile_id) {
+      logger.warn("subscriber_missing_onerep_profile_id", {
+        subscriberId: subscriber.id,
+      });
+      return { success: false };
+    }
+
+    const moscaryId = await findMoscaryProfile(subscriber.onerep_profile_id);
+
+    if (moscaryId) {
+      await updateSubscriberMoscaryId(subscriber, moscaryId);
+      return { success: true };
+    } else {
+      logger.info("no_moscary_profile_found_for_subscriber", {
+        subscriberId: subscriber.id,
+        onerepProfileId: subscriber.onerep_profile_id,
+      });
+      return { success: false };
+    }
+  } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : String(error);
+
+    logger.error("failed_to_sync_subscriber", {
+      subscriberId: subscriber.id,
+      onerepProfileId: subscriber.onerep_profile_id,
+      error: errorMessage,
+    });
+
+    return { success: false, error: errorMessage };
+  }
+}
+
+/**
+ * Process a single batch of subscribers with parallelization
  */
 async function processBatch(
   subscribers: SubscriberRow[],
   batchNumber: number,
 ): Promise<{ successful: number; failed: number }> {
-  let successful = 0;
-  let failed = 0;
-
   logger.info("processing_batch", {
     batchNumber,
     batchSize: subscribers.length,
+    concurrencyLimit: CONCURRENCY_LIMIT,
   });
 
-  for (const subscriber of subscribers) {
-    try {
-      if (!subscriber.onerep_profile_id) {
-        logger.warn("subscriber_missing_onerep_profile_id", {
-          subscriberId: subscriber.id,
-        });
-        continue;
-      }
+  // Create a concurrency limiter
+  const limit = pLimit(CONCURRENCY_LIMIT);
 
-      const moscaryId = await findMoscaryProfile(subscriber.onerep_profile_id);
+  // Process subscribers in parallel with concurrency control
+  const results = await Promise.allSettled(
+    subscribers.map((subscriber) => limit(() => processSubscriber(subscriber))),
+  );
 
-      if (moscaryId) {
-        await updateSubscriberMoscaryId(subscriber, moscaryId);
+  let successful = 0;
+  let failed = 0;
+
+  // Count results
+  for (const result of results) {
+    if (result.status === "fulfilled") {
+      if (result.value.success) {
         successful++;
       } else {
-        logger.info("no_moscary_profile_found_for_subscriber", {
-          subscriberId: subscriber.id,
-          onerepProfileId: subscriber.onerep_profile_id,
-        });
+        failed++;
       }
-    } catch (error) {
-      const errorMessage =
-        error instanceof Error ? error.message : String(error);
-
-      logger.error("failed_to_sync_subscriber", {
-        subscriberId: subscriber.id,
-        onerepProfileId: subscriber.onerep_profile_id,
-        error: errorMessage,
-      });
-
+    } else {
       failed++;
     }
   }
@@ -176,6 +216,7 @@ async function processBatch(
     batchNumber,
     successful,
     failed,
+    concurrencyLimit: CONCURRENCY_LIMIT,
   });
 
   return { successful, failed };
@@ -282,6 +323,7 @@ async function syncMoscaryProfiles(): Promise<SyncResult> {
 try {
   logger.info("starting_moscary_profile_sync_script", {
     batchSize: BATCH_SIZE,
+    concurrencyLimit: CONCURRENCY_LIMIT,
   });
 
   const result = await syncMoscaryProfiles();
