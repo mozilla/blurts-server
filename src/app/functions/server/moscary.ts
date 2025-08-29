@@ -131,7 +131,7 @@ export async function updateProfile(
 }
 
 export async function getProfile(
-  profileId: UUID,
+  profileId: UUID | number,
 ): Promise<MoscaryData["Profile"]> {
   const response: Response = await moscaryFetch(
     `/api/v1/profiles/${profileId}`,
