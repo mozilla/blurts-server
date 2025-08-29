@@ -28,23 +28,23 @@ if (Number.isNaN(BATCH_SIZE) || BATCH_SIZE <= 0) {
 
 /**
  * Get subscribers that have onerep_profile_id but no moscary_id
- * Uses pagination to handle large datasets efficiently
+ * Uses keyset pagination to handle large datasets efficiently
  */
 async function getSubscribersNeedingSync(
-  offset: number = 0,
+  lastProcessedId: number = 0,
   limit: number = BATCH_SIZE,
 ): Promise<SubscriberRow[]> {
   const subscribers = await knexSubscribers("subscribers")
     .select("*")
     .whereNotNull("onerep_profile_id")
     .whereNull("moscary_id")
+    .where("id", ">", lastProcessedId) // Keyset pagination using id as cursor
     .orderBy("id") // Consistent ordering for pagination
-    .offset(offset)
     .limit(limit);
 
   logger.info("found_subscribers_needing_sync_batch", {
     count: subscribers.length,
-    offset,
+    lastProcessedId,
     limit,
   });
 
@@ -207,16 +207,21 @@ async function syncMoscaryProfiles(): Promise<SyncResult> {
       batchSize: BATCH_SIZE,
     });
 
-    let offset = 0;
+    let lastProcessedId = 0;
     let batchNumber = 0;
+    let hasMoreData = true;
 
-    while (offset < totalSubscribers) {
+    while (hasMoreData) {
       batchNumber++;
 
       try {
-        const subscribers = await getSubscribersNeedingSync(offset, BATCH_SIZE);
+        const subscribers = await getSubscribersNeedingSync(
+          lastProcessedId,
+          BATCH_SIZE,
+        );
 
         if (subscribers.length === 0) {
+          hasMoreData = false;
           break;
         }
 
@@ -225,10 +230,11 @@ async function syncMoscaryProfiles(): Promise<SyncResult> {
         result.failedSyncs += batchResult.failed;
         result.batchesProcessed++;
 
-        offset += BATCH_SIZE;
+        // Update cursor to the last processed ID
+        lastProcessedId = subscribers[subscribers.length - 1].id;
 
         // Small delay between batches
-        if (offset < totalSubscribers) {
+        if (subscribers.length === BATCH_SIZE) {
           await new Promise((resolve) => setTimeout(resolve, 100));
         }
       } catch (error) {
@@ -236,7 +242,7 @@ async function syncMoscaryProfiles(): Promise<SyncResult> {
           error instanceof Error ? error.message : String(error);
         logger.error("batch_processing_error", {
           batchNumber,
-          offset,
+          lastProcessedId,
           error: errorMessage,
         });
 
@@ -248,9 +254,8 @@ async function syncMoscaryProfiles(): Promise<SyncResult> {
           );
           continue;
         } else {
-          // If batch size is already small, increment failed count and continue
-          result.failedSyncs += BATCH_SIZE;
-          offset += BATCH_SIZE;
+          // If batch size is already small, move cursor forward and continue
+          hasMoreData = false;
         }
       }
     }
@@ -260,6 +265,7 @@ async function syncMoscaryProfiles(): Promise<SyncResult> {
       successfulSyncs: result.successfulSyncs,
       failedSyncs: result.failedSyncs,
       batchesProcessed: result.batchesProcessed,
+      lastProcessedId,
     });
 
     return result;
