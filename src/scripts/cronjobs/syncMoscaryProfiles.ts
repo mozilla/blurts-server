@@ -12,22 +12,56 @@ interface SyncResult {
   totalSubscribers: number;
   successfulSyncs: number;
   failedSyncs: number;
+  batchesProcessed: number;
+}
+
+// Configurable batch size with environment variable support
+let BATCH_SIZE = parseInt(process.env.MOSCARY_SYNC_BATCH_SIZE ?? "100", 10);
+
+if (Number.isNaN(BATCH_SIZE) || BATCH_SIZE <= 0) {
+  BATCH_SIZE = 100;
+  logger.warn(
+    `Invalid MOSCARY_SYNC_BATCH_SIZE environment variable, using default: ${BATCH_SIZE}`,
+  );
 }
 
 /**
  * Get subscribers that have onerep_profile_id but no moscary_id
+ * Uses pagination to handle large datasets efficiently
  */
-async function getSubscribersNeedingSync(): Promise<SubscriberRow[]> {
+async function getSubscribersNeedingSync(
+  offset: number = 0,
+  limit: number = BATCH_SIZE,
+): Promise<SubscriberRow[]> {
   const subscribers = await knexSubscribers("subscribers")
     .select("*")
     .whereNotNull("onerep_profile_id")
-    .whereNull("moscary_id");
+    .whereNull("moscary_id")
+    .orderBy("id") // Consistent ordering for pagination
+    .offset(offset)
+    .limit(limit);
 
-  logger.info("found_subscribers_needing_sync", {
+  logger.info("found_subscribers_needing_sync_batch", {
     count: subscribers.length,
+    offset,
+    limit,
   });
 
   return subscribers;
+}
+
+/**
+ * Get total count of subscribers needing sync
+ */
+async function getTotalSubscribersNeedingSync(): Promise<number> {
+  const result = await knexSubscribers("subscribers")
+    .count("id as count")
+    .whereNotNull("onerep_profile_id")
+    .whereNull("moscary_id")
+    .first();
+
+  // @ts-ignore: count type
+  return parseInt(String(result?.count || 0), 10);
 }
 
 /**
@@ -79,61 +113,134 @@ async function updateSubscriberMoscaryId(
 }
 
 /**
- * Main sync function
+ * Process a single batch of subscribers
+ */
+async function processBatch(
+  subscribers: SubscriberRow[],
+  batchNumber: number,
+): Promise<{ successful: number; failed: number }> {
+  let successful = 0;
+  let failed = 0;
+
+  logger.info("processing_batch", {
+    batchNumber,
+    batchSize: subscribers.length,
+  });
+
+  for (const subscriber of subscribers) {
+    try {
+      if (!subscriber.onerep_profile_id) {
+        logger.warn("subscriber_missing_onerep_profile_id", {
+          subscriberId: subscriber.id,
+        });
+        continue;
+      }
+
+      const moscaryId = await findMoscaryProfile(subscriber.onerep_profile_id);
+
+      if (moscaryId) {
+        await updateSubscriberMoscaryId(subscriber, moscaryId);
+        successful++;
+      } else {
+        logger.info("no_moscary_profile_found_for_subscriber", {
+          subscriberId: subscriber.id,
+          onerepProfileId: subscriber.onerep_profile_id,
+        });
+      }
+    } catch (error) {
+      const errorMessage =
+        error instanceof Error ? error.message : String(error);
+
+      logger.error("failed_to_sync_subscriber", {
+        subscriberId: subscriber.id,
+        onerepProfileId: subscriber.onerep_profile_id,
+        error: errorMessage,
+      });
+
+      failed++;
+    }
+  }
+
+  logger.info("batch_completed", {
+    batchNumber,
+    successful,
+    failed,
+  });
+
+  return { successful, failed };
+}
+
+/**
+ * Main sync function with batching
  */
 async function syncMoscaryProfiles(): Promise<SyncResult> {
   const result: SyncResult = {
     totalSubscribers: 0,
     successfulSyncs: 0,
     failedSyncs: 0,
+    batchesProcessed: 0,
   };
 
   try {
-    const subscribers = await getSubscribersNeedingSync();
-    result.totalSubscribers = subscribers.length;
+    // Get total count first
+    const totalSubscribers = await getTotalSubscribersNeedingSync();
+    result.totalSubscribers = totalSubscribers;
 
-    if (subscribers.length === 0) {
+    if (totalSubscribers === 0) {
       logger.info("no_subscribers_needing_sync");
       return result;
     }
 
     logger.info("starting_moscary_profile_sync", {
-      totalSubscribers: subscribers.length,
+      totalSubscribers,
+      batchSize: BATCH_SIZE,
     });
 
-    for (const subscriber of subscribers) {
+    let offset = 0;
+    let batchNumber = 0;
+
+    while (offset < totalSubscribers) {
+      batchNumber++;
+
       try {
-        if (!subscriber.onerep_profile_id) {
-          logger.warn("subscriber_missing_onerep_profile_id", {
-            subscriberId: subscriber.id,
-          });
-          continue;
+        const subscribers = await getSubscribersNeedingSync(offset, BATCH_SIZE);
+
+        if (subscribers.length === 0) {
+          break;
         }
 
-        const moscaryId = await findMoscaryProfile(
-          subscriber.onerep_profile_id,
-        );
+        const batchResult = await processBatch(subscribers, batchNumber);
+        result.successfulSyncs += batchResult.successful;
+        result.failedSyncs += batchResult.failed;
+        result.batchesProcessed++;
 
-        if (moscaryId) {
-          await updateSubscriberMoscaryId(subscriber, moscaryId);
-          result.successfulSyncs++;
-        } else {
-          logger.info("no_moscary_profile_found_for_subscriber", {
-            subscriberId: subscriber.id,
-            onerepProfileId: subscriber.onerep_profile_id,
-          });
+        offset += BATCH_SIZE;
+
+        // Small delay between batches
+        if (offset < totalSubscribers) {
+          await new Promise((resolve) => setTimeout(resolve, 100));
         }
       } catch (error) {
         const errorMessage =
           error instanceof Error ? error.message : String(error);
-
-        logger.error("failed_to_sync_subscriber", {
-          subscriberId: subscriber.id,
-          onerepProfileId: subscriber.onerep_profile_id,
+        logger.error("batch_processing_error", {
+          batchNumber,
+          offset,
           error: errorMessage,
         });
 
-        result.failedSyncs++;
+        // If we encounter an error, retry with a smaller batch size
+        if (BATCH_SIZE > 50) {
+          BATCH_SIZE = Math.floor(BATCH_SIZE / 2);
+          logger.warn(
+            `Reducing batch size to ${BATCH_SIZE} and retrying batch ${batchNumber}...`,
+          );
+          continue;
+        } else {
+          // If batch size is already small, increment failed count and continue
+          result.failedSyncs += BATCH_SIZE;
+          offset += BATCH_SIZE;
+        }
       }
     }
 
@@ -141,6 +248,7 @@ async function syncMoscaryProfiles(): Promise<SyncResult> {
       totalSubscribers: result.totalSubscribers,
       successfulSyncs: result.successfulSyncs,
       failedSyncs: result.failedSyncs,
+      batchesProcessed: result.batchesProcessed,
     });
 
     return result;
@@ -153,37 +261,28 @@ async function syncMoscaryProfiles(): Promise<SyncResult> {
   }
 }
 
-/**
- * Script entry point
- */
-async function main() {
-  try {
-    logger.info("starting_moscary_profile_sync_script");
-
-    const result = await syncMoscaryProfiles();
-
-    logger.info("moscary_profile_sync_script_completed", {
-      totalSubscribers: result.totalSubscribers,
-      successfulSyncs: result.successfulSyncs,
-      failedSyncs: result.failedSyncs,
-    });
-
-    process.exit(0);
-  } catch (error) {
-    const errorMessage = error instanceof Error ? error.message : String(error);
-    logger.error("moscary_profile_sync_script_failed", {
-      error: errorMessage,
-    });
-    process.exit(1);
-  }
-}
-
-// Run the script if called directly
-if (require.main === module) {
-  main().catch((error) => {
-    console.error("Unhandled error:", error);
-    process.exit(1);
+// Run the script
+try {
+  logger.info("starting_moscary_profile_sync_script", {
+    batchSize: BATCH_SIZE,
   });
+
+  const result = await syncMoscaryProfiles();
+
+  logger.info("moscary_profile_sync_script_completed", {
+    totalSubscribers: result.totalSubscribers,
+    successfulSyncs: result.successfulSyncs,
+    failedSyncs: result.failedSyncs,
+    batchesProcessed: result.batchesProcessed,
+  });
+
+  process.exit(0);
+} catch (error) {
+  const errorMessage = error instanceof Error ? error.message : String(error);
+  logger.error("moscary_profile_sync_script_failed", {
+    error: errorMessage,
+  });
+  process.exit(1);
 }
 
 export { syncMoscaryProfiles, findMoscaryProfile };
