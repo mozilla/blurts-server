@@ -85,7 +85,7 @@ sensitive-sites-copy =
     singura persoană care poate vedea dacă informațiile tale au fost implicate în această încălcare a securității datelor 
     (dacă nu cumva și altcineva are acces la contul tău de e-mail).
 delayed-reporting-headline = De ce a durat atât de mult să se raporteze această încălcare a securității datelor?
-delayed-reporting-copy = Uneori, poate dura luni sau ani ca credențialele expuse într-o încălcare a securității datelor să apară pe dark web. Încălcările sunt adăugate în baza noastră de date imediat ce sunt descoperite și verificate.
+delayed-reporting-copy = Uneori, poate dura luni sau ani ca datele de autentificare expuse într-o încălcare a securității datelor să apară pe dark web. Încălcările securității datelor sunt adăugate în baza noastră de date imediat ce sunt descoperite și verificate.
 fxm-warns-you = { -product-name } te avertizează dacă adresa ta de e-mail a fost expusă într-o încălcare online a securității datelor. Vezi dacă ți-au fost expuse informațiile, află cum să îți protejezi mai bine conturile online și primește alerte în cazul în care adresa ta de e-mail apare într-o încălcare nouă.
 what-is-data-agg = Ce sunt agregatoarele de date?
 what-is-data-agg-blurb = Agregatoarele de date, denumite și brokeri de date, colectează informații din înregistrări publice și cumpără date de la alte companii. Compilează aceste date și le vând altor companii în scopuri de marketing. Probabilitatea ca victimele acestor încălcări ale securității datelor să devină victime ale fraudelor financiare este mică, dar hackerii pot folosi datele ca să le uzurpe identitatea sau pentru profilare.
