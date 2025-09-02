@@ -160,31 +160,29 @@ export const FindExposures = ({
       <div className={styles.progressLabel}>
         {l10n.getString("onboarding-find-exposures-progress-label")}
         <div className={styles.progressLabelIndicator}>
-          {
-            // TODO: Add unit test when changing this code:
-            /* c8 ignore next 12 */
-            scanProgress < labelSwitchThreshold
+          {/* c8 ignore next */}
+          {enabledFeatureFlags.includes("MaskDataBrokerCount")
+            ? scanProgress < labelSwitchThreshold
+              ? l10n.getString(
+                  "onboarding-find-exposures-progress-breaches-counter-masked",
+                )
+              : l10n.getString(
+                  "onboarding-find-exposures-progress-broker-counter-masked",
+                )
+            : // TODO: Add unit test when changing this code:
+              /* c8 ignore next 12 */
+              scanProgress < labelSwitchThreshold
               ? l10n.getString(
                   "onboarding-find-exposures-progress-breaches-counter",
                   { breachesScannedCount, breachesTotalCount },
                 )
-              : /* c8 ignore start */
-                enabledFeatureFlags.includes("MaskDataBrokerCount")
-                ? l10n.getString(
-                    "onboarding-find-exposures-progress-broker-counter-masked",
-                    {
-                      dataBrokerScannedCount,
-                    },
-                  )
-                : l10n.getString(
-                    "onboarding-find-exposures-progress-broker-counter",
-                    {
-                      dataBrokerScannedCount,
-                      dataBrokerTotalCount: dataBrokerCount,
-                    },
-                  )
-            /* c8 ignore stop */
-          }
+              : l10n.getString(
+                  "onboarding-find-exposures-progress-broker-counter",
+                  {
+                    dataBrokerScannedCount,
+                    dataBrokerTotalCount: dataBrokerCount,
+                  },
+                )}
         </div>
       </div>
     );

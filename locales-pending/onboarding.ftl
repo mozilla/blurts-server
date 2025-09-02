@@ -73,6 +73,7 @@ onboarding-find-exposures-progress-breaches-counter = {
     $breachesTotalCount ->
         *[other] { $breachesScannedCount } of { $breachesTotalCount } known data breaches
 }
+onboarding-find-exposures-progress-breaches-counter-masked = Scanning data breaches
 # Variables:
 #   $dataBrokerTotalCount (number) - number of scanned data broker sites, e.g. 190
 #   $dataBrokerScannedCount (number) - number of the currently scanned data broker sites, e.g. between 0 and $dataBrokerTotalCount
@@ -80,6 +81,4 @@ onboarding-find-exposures-progress-broker-counter = {
     $dataBrokerTotalCount ->
         *[other] { $dataBrokerScannedCount } of { $dataBrokerTotalCount } data broker sites
 }
-# Variables:
-#   $dataBrokerScannedCount (number) - number of the currently scanned data broker sites, e.g. between 0 and $dataBrokerTotalCount
-onboarding-find-exposures-progress-broker-counter-masked = { $dataBrokerScannedCount } of data brokers
+onboarding-find-exposures-progress-broker-counter-masked = Scanning data brokers
