@@ -160,29 +160,31 @@ export const FindExposures = ({
       <div className={styles.progressLabel}>
         {l10n.getString("onboarding-find-exposures-progress-label")}
         <div className={styles.progressLabelIndicator}>
-          {/* c8 ignore next */}
-          {enabledFeatureFlags.includes("MaskDataBrokerCount")
-            ? scanProgress < labelSwitchThreshold
-              ? l10n.getString(
-                  "onboarding-find-exposures-progress-breaches-counter-masked",
-                )
-              : l10n.getString(
-                  "onboarding-find-exposures-progress-broker-counter-masked",
-                )
-            : // TODO: Add unit test when changing this code:
-              /* c8 ignore next 12 */
-              scanProgress < labelSwitchThreshold
-              ? l10n.getString(
-                  "onboarding-find-exposures-progress-breaches-counter",
-                  { breachesScannedCount, breachesTotalCount },
-                )
-              : l10n.getString(
-                  "onboarding-find-exposures-progress-broker-counter",
-                  {
-                    dataBrokerScannedCount,
-                    dataBrokerTotalCount: dataBrokerCount,
-                  },
-                )}
+          {
+            /* c8 ignore next 10 */
+            enabledFeatureFlags.includes("MaskDataBrokerCount")
+              ? scanProgress < labelSwitchThreshold
+                ? l10n.getString(
+                    "onboarding-find-exposures-progress-breaches-counter-masked",
+                  )
+                : l10n.getString(
+                    "onboarding-find-exposures-progress-broker-counter-masked",
+                  )
+              : // TODO: Add unit test when changing this code:
+                /* c8 ignore next 12 */
+                scanProgress < labelSwitchThreshold
+                ? l10n.getString(
+                    "onboarding-find-exposures-progress-breaches-counter",
+                    { breachesScannedCount, breachesTotalCount },
+                  )
+                : l10n.getString(
+                    "onboarding-find-exposures-progress-broker-counter",
+                    {
+                      dataBrokerScannedCount,
+                      dataBrokerTotalCount: dataBrokerCount,
+                    },
+                  )
+          }
         </div>
       </div>
     );

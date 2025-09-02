@@ -436,24 +436,26 @@ export const PricingPlanListWithBundle = (props: Props & ScanLimitProp) => {
             )}
           />
           <span>
-            {/* c8 ignore next */}
-            {props.enabledFeatureFlags.includes("MaskDataBrokerCount")
-              ? l10n.getFragment(
-                  "landing-redesign-pricing-plans-card-free-with-bundle-feature-item-one-masked",
-                  {
-                    elems: { b: <b /> },
-                  },
-                )
-              : l10n.getFragment(
-                  "landing-redesign-pricing-plans-card-free-with-bundle-feature-item-one",
-                  {
-                    vars: {
-                      data_broker_sites_total_num:
-                        CONST_ONEREP_DATA_BROKER_COUNT,
+            {
+              /* c8 ignore next 8 */
+              props.enabledFeatureFlags.includes("MaskDataBrokerCount")
+                ? l10n.getFragment(
+                    "landing-redesign-pricing-plans-card-free-with-bundle-feature-item-one-masked",
+                    {
+                      elems: { b: <b /> },
                     },
-                    elems: { b: <b /> },
-                  },
-                )}
+                  )
+                : l10n.getFragment(
+                    "landing-redesign-pricing-plans-card-free-with-bundle-feature-item-one",
+                    {
+                      vars: {
+                        data_broker_sites_total_num:
+                          CONST_ONEREP_DATA_BROKER_COUNT,
+                      },
+                      elems: { b: <b /> },
+                    },
+                  )
+            }
           </span>
         </>,
         <>
