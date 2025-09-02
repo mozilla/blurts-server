@@ -18,22 +18,23 @@ interface SyncResult {
 }
 
 // Configurable batch size with environment variable support
-let BATCH_SIZE = parseInt(process.env.MOSCARY_SYNC_BATCH_SIZE ?? "100", 10);
+let BATCH_SIZE = parseInt(process.env.MOSCARY_SYNC_BATCH_SIZE ?? "20", 10);
 
 if (Number.isNaN(BATCH_SIZE) || BATCH_SIZE <= 0) {
-  BATCH_SIZE = 100;
+  BATCH_SIZE = 20;
   logger.warn(
     `Invalid MOSCARY_SYNC_BATCH_SIZE environment variable, using default: ${BATCH_SIZE}`,
   );
 }
 
 // Configurable concurrency limit with environment variable support
-const CONCURRENCY_LIMIT = parseInt(
+let CONCURRENCY_LIMIT = parseInt(
   process.env.MOSCARY_SYNC_CONCURRENCY_LIMIT ?? "10",
   10,
 );
 
 if (Number.isNaN(CONCURRENCY_LIMIT) || CONCURRENCY_LIMIT <= 0) {
+  CONCURRENCY_LIMIT = 10;
   logger.warn(
     `Invalid MOSCARY_SYNC_CONCURRENCY_LIMIT environment variable, using default: 10`,
   );
@@ -95,7 +96,7 @@ async function findMoscaryProfile(
       moscaryId: profile.id,
     });
 
-    return profile.id;
+    return profile.id as UUID;
   } catch (error) {
     // If profile doesn't exist, the API will return 404
     if (error instanceof Error && error.message.includes("404")) {
@@ -143,7 +144,10 @@ async function processSubscriber(
   subscriber: SubscriberRow,
 ): Promise<{ success: boolean; error?: string }> {
   try {
-    if (!subscriber.onerep_profile_id) {
+    if (
+      subscriber.onerep_profile_id === null ||
+      subscriber.onerep_profile_id === undefined
+    ) {
       logger.warn("subscriber_missing_onerep_profile_id", {
         subscriberId: subscriber.id,
       });
@@ -319,6 +323,16 @@ async function syncMoscaryProfiles(): Promise<SyncResult> {
   }
 }
 
+// Signal handling for graceful shutdown
+process.on("SIGINT", () => {
+  logger.info("SIGINT received, exiting...");
+  tearDown();
+});
+process.on("SIGTERM", () => {
+  logger.info("SIGTERM received, exiting...");
+  tearDown();
+});
+
 // Run the script
 try {
   logger.info("starting_moscary_profile_sync_script", {
@@ -354,11 +368,7 @@ async function tearDown() {
     });
   }
 
-  // Graceful shutdown following pattern from other cronjob scripts
-  setTimeout(() => {
-    logger.info("script_shutdown_complete");
-    process.exit(0);
-  }, 1000);
+  process.exit(0);
 }
 
 export { syncMoscaryProfiles, findMoscaryProfile };
