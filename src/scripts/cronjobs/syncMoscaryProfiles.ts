@@ -70,13 +70,12 @@ async function getSubscribersNeedingSync(
  */
 async function getTotalSubscribersNeedingSync(): Promise<number> {
   const result = await knexSubscribers("subscribers")
-    .count("id as count")
+    .count<Record<string, number>>("id as count")
     .whereNotNull("onerep_profile_id")
     .whereNull("moscary_id")
     .first();
 
-  // @ts-ignore: count type
-  return parseInt(String(result?.count || 0), 10);
+  return result?.count ?? 0;
 }
 
 /**
