@@ -240,6 +240,8 @@ LOAD_TEST_FEATURES="scan,activate" npm run loadtest:moscary
 If you run the tests against stage, you should be able to see the load coming in
 [in Grafana](https://yardstick.mozilla.org/d/aemrrye0kvrb4d/monitor-scan-remove-backend?orgId=1&from=now-3h&to=now&timezone=browser&var-env=nonprod&var-datasource=edq6thuke248we&refresh=auto).
 
+An HTML report of the test results will be saved in `src/scripts/loadtest/reports/`.
+
 ##### HIBP breach alerts
 
 To test the HIBP breach alerts endpoint, use:
