@@ -4,8 +4,8 @@
 
 import React, { useEffect } from "react";
 import { Inter } from "next/font/google";
-import type { Preview } from "@storybook/react";
-import { action } from "@storybook/addon-actions";
+import type { Preview } from "@storybook/nextjs";
+import { action } from "storybook/actions";
 import { linkTo } from "@storybook/addon-links";
 import "../src/app/globals.css";
 import { metropolis } from "../src/app/fonts/Metropolis/metropolis";

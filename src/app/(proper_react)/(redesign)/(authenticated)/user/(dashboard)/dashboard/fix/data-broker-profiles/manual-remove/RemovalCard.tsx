@@ -14,7 +14,7 @@ import { useTelemetry } from "../../../../../../../../../hooks/useTelemetry";
 import { ScanResultCard } from "../../../../../../../../../components/client/exposure_card/ScanResultCard";
 import { FeatureFlagName } from "../../../../../../../../../../db/tables/featureFlags";
 import { isOneRepScanResult } from "../../../../../../../../../functions/universal/onerep";
-import { resolveScanResult } from "./actions";
+import type { resolveScanResult } from "./actions";
 import type { MoscaryData } from "../../../../../../../../../functions/server/moscary";
 
 export type Props = {
@@ -24,6 +24,7 @@ export type Props = {
   isExpanded: boolean;
   enabledFeatureFlags: FeatureFlagName[];
   setExpanded: () => void;
+  resolveScanResult: typeof resolveScanResult;
 };
 
 export const RemovalCard = (props: Props) => {
@@ -38,7 +39,7 @@ export const RemovalCard = (props: Props) => {
     setIsResolved(true);
     if (!isOneRepScanResult(props.scanResult)) {
       try {
-        await resolveScanResult(props.scanResult.id);
+        await props.resolveScanResult(props.scanResult.id);
       } catch {
         setIsResolved(false);
       }

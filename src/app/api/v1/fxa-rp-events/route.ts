@@ -31,6 +31,14 @@ import {
   activateProfile,
   deactivateProfile,
 } from "../../../functions/server/moscary";
+import { getExperimentationIdFromSubscriber } from "../../../functions/server/getExperimentationId";
+import { getExperiments } from "../../../functions/server/getExperiments";
+import { getLocale } from "../../../functions/universal/getLocale";
+import {
+  getAcceptLangHeaderInServerComponents,
+  getL10n,
+} from "../../../functions/l10n/serverComponents";
+import { getSignupLocaleCountry } from "../../../../emails/functions/getSignupLocaleCountry";
 
 const FXA_PROFILE_CHANGE_EVENT =
   "https://schemas.accounts.firefox.com/event/profile-change";
@@ -285,6 +293,16 @@ export async function POST(request: NextRequest) {
           const enabledFeatureFlags = await getEnabledFeatureFlags({
             email: subscriber.primary_email,
           });
+          const experimentationId =
+            await getExperimentationIdFromSubscriber(subscriber);
+          const assumedCountryCode = getSignupLocaleCountry(subscriber);
+          const experimentData = await getExperiments({
+            experimentationId,
+            countryCode: assumedCountryCode,
+            locale: getLocale(
+              getL10n(await getAcceptLangHeaderInServerComponents()),
+            ),
+          });
 
           if (
             updatedSubscriptionFromEvent.isActive &&
@@ -300,7 +318,10 @@ export async function POST(request: NextRequest) {
             // Set monthly monitor report value back to true
             await setMonthlyMonitorReport(subscriber, true);
 
-            if (enabledFeatureFlags.includes("Moscary")) {
+            if (
+              enabledFeatureFlags.includes("Moscary") ||
+              experimentData["Features"]["moscary"].enabled
+            ) {
               if (!subscriber.moscary_id) {
                 logger.error("moscary_profile_not_found", {
                   subscriber_id: subscriber.id,
@@ -421,7 +442,10 @@ export async function POST(request: NextRequest) {
             // any problems with deactivation.
             await changeSubscription(subscriber, false);
 
-            if (enabledFeatureFlags.includes("Moscary")) {
+            if (
+              enabledFeatureFlags.includes("Moscary") ||
+              experimentData["Features"]["moscary"].enabled
+            ) {
               if (!subscriber.moscary_id) {
                 logger.error("moscary_profile_not_found", {
                   subscriber_id: subscriber.id,

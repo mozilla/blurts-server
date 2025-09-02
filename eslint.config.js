@@ -13,6 +13,8 @@ import js from "@eslint/js";
 import jsdoc from "eslint-plugin-jsdoc";
 import tsEslint from "@typescript-eslint/eslint-plugin";
 import tsParser from "@typescript-eslint/parser";
+// For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
+import storybook from "eslint-plugin-storybook";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const compat = new FlatCompat({
@@ -30,6 +32,7 @@ const config = [
   ...compat.config({
     extends: ["next"],
   }),
+  ...storybook.configs["flat/recommended"],
   {
     languageOptions: {
       ecmaVersion: "latest",
@@ -39,7 +42,7 @@ const config = [
         project: "tsconfig.json",
       },
     },
-    ignores: ["coverage", "dist"],
+    ignores: ["coverage", "dist", "!.storybook"],
     plugins: {
       jsdoc,
       "@typescript-eslint": tsEslint,

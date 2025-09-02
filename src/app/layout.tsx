@@ -20,7 +20,7 @@ import { headers } from "next/headers";
 import { GoogleAnalyticsWorkaround } from "./components/client/GoogleAnalyticsWorkaround";
 import StripeScript from "./components/client/StripeScript";
 import { GleanScript } from "./components/client/GleanScript";
-import { getExperimentationId } from "./functions/server/getExperimentationId";
+import { getExperimentationIdFromUserSession } from "./functions/server/getExperimentationId";
 import { getExperiments } from "./functions/server/getExperiments";
 import { getCountryCode } from "./functions/server/getCountryCode";
 import { ExperimentsProvider } from "../contextProviders/experiments";
@@ -67,7 +67,9 @@ export default async function RootLayout({
   const headersList = await headers();
   const countryCode = getCountryCode(headersList);
 
-  const experimentationId = await getExperimentationId(session?.user ?? null);
+  const experimentationId = await getExperimentationIdFromUserSession(
+    session?.user ?? null,
+  );
   const experimentData = await getExperiments({
     experimentationId,
     countryCode,
@@ -94,7 +96,7 @@ export default async function RootLayout({
       >
         <ExperimentsProvider
           experimentData={experimentData}
-          experimentationId={experimentationId}
+          experimentationId={experimentationId ?? ""}
         >
           <SessionProvider session={session}>{children}</SessionProvider>
         </ExperimentsProvider>
@@ -102,7 +104,7 @@ export default async function RootLayout({
       <StripeScript />
       <GleanScript
         channel={process.env.APP_ENV ?? ""}
-        experimentationId={experimentationId}
+        experimentationId={experimentationId ?? ""}
       />
       {(await headers()).get("DNT") !== "1" && (
         <GoogleAnalyticsWorkaround

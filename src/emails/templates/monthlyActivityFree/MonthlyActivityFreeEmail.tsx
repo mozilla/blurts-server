@@ -16,6 +16,7 @@ import { sumSanitizedDataPoints } from "../../functions/reduceSanitizedDataPoint
 import { modifyAttributionsForUrl } from "../../../app/functions/universal/attributions";
 import { FeatureFlagName } from "../../../db/tables/featureFlags";
 import { CONST_URL_WAITLIST } from "../../../constants";
+import { ExperimentData } from "../../../telemetry/generated/nimbus/experiments";
 
 export type MonthlyActivityFreeEmailProps = {
   l10n: ExtendedReactLocalization;
@@ -23,6 +24,7 @@ export type MonthlyActivityFreeEmailProps = {
   dataSummary: DashboardSummary;
   unsubscribeLink: string;
   enabledFeatureFlags: FeatureFlagName[];
+  experimentData: ExperimentData["Features"];
 };
 
 type UtmParams = {
@@ -50,9 +52,11 @@ const setUtmCampaign = (
 export const MonthlyActivityFreeEmail = (
   props: MonthlyActivityFreeEmailProps,
 ) => {
-  const hasRunFreeScan = props.enabledFeatureFlags.includes("Moscary")
-    ? typeof props.subscriber.moscary_id === "string"
-    : typeof props.subscriber.onerep_profile_id === "number";
+  const hasRunFreeScan =
+    props.enabledFeatureFlags.includes("Moscary") ||
+    props.experimentData["moscary"].enabled
+      ? typeof props.subscriber.moscary_id === "string"
+      : typeof props.subscriber.onerep_profile_id === "number";
 
   const l10n = props.l10n;
   const assumedCountryCode = getSignupLocaleCountry(props.subscriber);
@@ -175,6 +179,7 @@ export const MonthlyActivityFreeEmail = (
             l10n={l10n}
             dataSummary={props.dataSummary}
             enabledFeatureFlags={props.enabledFeatureFlags}
+            experimentData={props.experimentData}
             utmCampaignId={utmValues.utmCampaign}
             utmMedium={utmValues.utmMedium}
             utmSource={utmValues.utmSource}

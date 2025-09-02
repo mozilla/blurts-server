@@ -20,7 +20,7 @@ jobs:
       GAR_IMAGE_BASE: ${{ vars.GAR_REPO }}/${{ github.event.repository.name }}
     steps:
     - name: Check out the repo
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
       with:
         persist-credentials: false # Not strictly needed for retagging, but good practice
 
