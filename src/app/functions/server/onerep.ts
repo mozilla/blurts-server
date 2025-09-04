@@ -400,10 +400,10 @@ export async function listScans(
   );
   if (!response.ok) {
     logger.error(
-      `Failed to fetch scans: [${response.status}] [${response.statusText}]`,
+      `Failed to fetch OneRep scans: [${response.status}] [${response.statusText}]`,
     );
     throw new Error(
-      `Failed to fetch scans: [${response.status}] [${response.statusText}]`,
+      `Failed to fetch OneRep scans: [${response.status}] [${response.statusText}]`,
     );
   }
   return response.json() as Promise<ListScansResponse>;
