@@ -24,7 +24,7 @@ const VIRTUAL_USERS =
     ? parseInt(envVars.K6_VIRTUAL_USERS, 10)
     : typeof envVars.K6_VUS === "string"
       ? parseInt(envVars.K6_VUS, 10)
-      : 20;
+      : 10;
 const DURATION =
   typeof envVars.K6_DURATION === "string" ? envVars.K6_DURATION : "2m";
 
