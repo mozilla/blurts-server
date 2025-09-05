@@ -50,10 +50,13 @@ export async function getExperiments(params: {
 
   const serverUrl = new URL(process.env.NIMBUS_SIDECAR_URL);
   const flags = await getEnabledFeatureFlags({ isSignedOut: true });
+  if (serverUrl.pathname.endsWith("/")) {
+    serverUrl.pathname += "/";
+  }
   if (flags.includes("CirrusV2")) {
-    serverUrl.pathname = "/v2/features";
+    serverUrl.pathname += "v2/features";
   } else {
-    serverUrl.pathname = "/v1/features";
+    serverUrl.pathname += "v1/features";
   }
 
   const headersList = await headers();
