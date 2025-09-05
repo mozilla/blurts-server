@@ -138,7 +138,7 @@
     "@types/canvas-confetti": "^1.9.0",
     "@types/eslint": "^9.6.1",
     "@types/jest-axe": "^3.5.9",
-    "@types/jsonwebtoken": "^9.0.9",
+    "@types/jsonwebtoken": "^9.0.10",
     "@types/jwk-to-pem": "^2.0.3",
     "@types/k6": "^1.0.2",
     "@types/lodash.isequal": "^4.5.8",
