@@ -50,7 +50,7 @@ export async function getExperiments(params: {
 
   const serverUrl = new URL(process.env.NIMBUS_SIDECAR_URL);
   const flags = await getEnabledFeatureFlags({ isSignedOut: true });
-  if (serverUrl.pathname.endsWith("/")) {
+  if (!serverUrl.pathname.endsWith("/")) {
     serverUrl.pathname += "/";
   }
   if (flags.includes("CirrusV2")) {
