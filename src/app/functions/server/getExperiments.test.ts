@@ -174,7 +174,9 @@ describe("getExperiments", () => {
 
     expect(fetchMock).toHaveBeenCalledTimes(1);
     const [calledUrl] = fetchMock.mock.calls[0];
-    expect(calledUrl.toString()).toBe("https://cirrus.example/base/v1/features");
+    expect(calledUrl.toString()).toBe(
+      "https://cirrus.example/base/v1/features",
+    );
 
     expect(result).toEqual({ Features: featuresJson });
     expect(loggerMock.info).toHaveBeenCalledWith(
