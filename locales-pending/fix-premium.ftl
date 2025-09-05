@@ -26,6 +26,7 @@ fix-flow-data-broker-profiles-view-data-broker-profiles-headline =
     *[other] { $data_broker_sites_results_num } sites are selling your personal information
   }
 fix-flow-data-broker-profiles-view-data-broker-profiles-content = Data brokers make up a $240 billion industry of gathering your personal info and selling it to anyone searching for you. Remove these now to protect your privacy.
+fix-flow-data-broker-profiles-view-data-broker-profiles-content-masked = Data brokers make up a $240 billion industry of gathering your personal info and selling it to anyone searching for you. We checked a number of data broker sites and didn’t find your personal information.
 fix-flow-data-broker-profiles-view-data-broker-profiles-button-remove-for-me = Remove them for me
 fix-flow-data-broker-profiles-view-data-broker-profiles-button-remove-manually = I’ll remove them manually
 fix-flow-data-broker-profiles-view-data-broker-profiles-view-info-on-sites = View your info on these sites
