@@ -174,13 +174,15 @@ describe("getExperiments", () => {
 
     expect(fetchMock).toHaveBeenCalledTimes(1);
     const [calledUrl] = fetchMock.mock.calls[0];
-    expect(calledUrl.toString()).toBe("https://cirrus.example/v1/features");
+    expect(calledUrl.toString()).toBe(
+      "https://cirrus.example/base/v1/features",
+    );
 
     expect(result).toEqual({ Features: featuresJson });
     expect(loggerMock.info).toHaveBeenCalledWith(
       "Sending request to Cirrus",
       expect.objectContaining({
-        serverUrl: "https://cirrus.example/v1/features",
+        serverUrl: "https://cirrus.example/base/v1/features",
         previewMode: false,
       }),
     );
