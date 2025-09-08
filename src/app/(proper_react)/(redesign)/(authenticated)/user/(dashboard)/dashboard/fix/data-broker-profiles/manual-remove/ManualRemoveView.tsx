@@ -71,7 +71,7 @@ export function ManualRemoveView(props: Props) {
   );
 
   // freeze results at mount, so order never changes
-  const [initialResults] = useMemo(() => props.scanData.results, []);
+  const initialResults = useMemo(() => props.scanData.results, []);
 
   return (
     <FixView
