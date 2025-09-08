@@ -4,7 +4,7 @@
 
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Session } from "next-auth";
 import styles from "./ManualRemoveView.module.scss";
 import { useL10n } from "../../../../../../../../../hooks/l10n";
@@ -71,7 +71,7 @@ export function ManualRemoveView(props: Props) {
   );
 
   // freeze results at mount, so order never changes
-  const [initialResults] = useState(() => props.scanData.results);
+  const [initialResults] = useMemo(() => props.scanData.results, []);
 
   return (
     <FixView
