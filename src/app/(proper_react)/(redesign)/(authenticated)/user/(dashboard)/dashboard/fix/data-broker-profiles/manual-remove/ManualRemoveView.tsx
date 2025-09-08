@@ -71,6 +71,7 @@ export function ManualRemoveView(props: Props) {
   );
 
   // freeze results at mount, so order never changes
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const initialResults = useMemo(() => props.scanData.results, []);
 
   return (
