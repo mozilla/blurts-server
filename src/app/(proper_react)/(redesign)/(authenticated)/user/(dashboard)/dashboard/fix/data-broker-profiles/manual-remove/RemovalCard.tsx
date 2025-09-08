@@ -92,7 +92,9 @@ export const RemovalCard = (props: Props) => {
               });
             }}
           >
-            {l10n.getString("exposure-card-resolve-exposures-cta")}
+            {l10n.getString(
+              "fix-flow-data-broker-profiles-manual-remove-button-mark-fixed",
+            )}
           </Button>
         ) : null
       }
