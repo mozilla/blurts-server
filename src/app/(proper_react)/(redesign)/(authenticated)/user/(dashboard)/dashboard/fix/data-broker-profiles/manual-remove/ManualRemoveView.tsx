@@ -70,6 +70,9 @@ export function ManualRemoveView(props: Props) {
     "Scan",
   );
 
+  // freeze results at mount, so order never changes
+  const [initialResults] = useState(() => props.scanData.results);
+
   return (
     <FixView
       data={data}
@@ -157,7 +160,7 @@ export function ManualRemoveView(props: Props) {
             )}
           </h3>
           <div className={styles.exposureList}>
-            {props.scanData.results.map((scanResult, index) => {
+            {initialResults.map((scanResult, index) => {
               return (
                 <RemovalCard
                   key={
