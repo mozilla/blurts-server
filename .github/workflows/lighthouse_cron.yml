@@ -28,7 +28,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Use Node.js 20.19.x
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: 20.19.x
       - name: Run Lighthouse CI
