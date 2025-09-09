@@ -427,31 +427,37 @@ export const View = (props: Props) => {
         {
           /* c8 ignore start */
           props.enabledFeatureFlags.includes("MaskDataBrokerCount")
-            ? l10n.getFragment("dashboard-exposures-all-fixed-free-scan", {
-                elems: {
-                  a:
-                    !props.enabledFeatureFlags.includes("DisableOneRepScans") &&
-                    (typeof props.totalNumberOfPerformedScans === "undefined" ||
-                      props.totalNumberOfPerformedScans <
-                        CONST_ONEREP_MAX_SCANS_THRESHOLD) ? (
-                      <Link
-                        ref={waitlistTriggerRef}
-                        href="/user/welcome/free-scan?referrer=dashboard"
-                        onClick={() => {
-                          recordTelemetry("link", "click", {
-                            link_id: "exposures_all_fixed_free_scan",
-                          });
-                        }}
-                      />
-                    ) : (
-                      <Button
-                        variant="link"
-                        buttonRef={waitlistTriggerRef}
-                        {...overlayTrigger.triggerProps}
-                      />
-                    ),
+            ? l10n.getFragment(
+                "dashboard-exposures-all-fixed-free-scan-masked",
+                {
+                  elems: {
+                    a:
+                      !props.enabledFeatureFlags.includes(
+                        "DisableOneRepScans",
+                      ) &&
+                      (typeof props.totalNumberOfPerformedScans ===
+                        "undefined" ||
+                        props.totalNumberOfPerformedScans <
+                          CONST_ONEREP_MAX_SCANS_THRESHOLD) ? (
+                        <Link
+                          ref={waitlistTriggerRef}
+                          href="/user/welcome/free-scan?referrer=dashboard"
+                          onClick={() => {
+                            recordTelemetry("link", "click", {
+                              link_id: "exposures_all_fixed_free_scan",
+                            });
+                          }}
+                        />
+                      ) : (
+                        <Button
+                          variant="link"
+                          buttonRef={waitlistTriggerRef}
+                          {...overlayTrigger.triggerProps}
+                        />
+                      ),
+                  },
                 },
-              })
+              )
             : l10n.getFragment("dashboard-exposures-all-fixed-free-scan", {
                 vars: {
                   data_broker_total_num: CONST_ONEREP_DATA_BROKER_COUNT,
