@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import { OnerepScanResultDataBrokerRow } from "knex/types/tables";
 import { Button } from "../../../../../../../../../components/client/Button";
 import { useL10n } from "../../../../../../../../../hooks/l10n";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { getLocale } from "../../../../../../../../../functions/universal/getLocale";
 import { useTelemetry } from "../../../../../../../../../hooks/useTelemetry";
 import { ScanResultCard } from "../../../../../../../../../components/client/exposure_card/ScanResultCard";
@@ -34,6 +34,11 @@ export const RemovalCard = (props: Props) => {
   const [isResolved, setIsResolved] = useState(
     props.scanResult.manually_resolved,
   );
+
+  // Sync local state with props when the server updates
+  useEffect(() => {
+    setIsResolved(props.scanResult.manually_resolved);
+  }, [props.scanResult.manually_resolved]);
 
   async function resolve() {
     setIsResolved(true);
@@ -87,7 +92,9 @@ export const RemovalCard = (props: Props) => {
               });
             }}
           >
-            {l10n.getString("exposure-card-resolve-exposures-cta")}
+            {l10n.getString(
+              "fix-flow-data-broker-profiles-manual-remove-button-mark-fixed",
+            )}
           </Button>
         ) : null
       }
