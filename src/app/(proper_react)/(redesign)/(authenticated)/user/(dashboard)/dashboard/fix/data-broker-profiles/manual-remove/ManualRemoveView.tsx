@@ -4,7 +4,7 @@
 
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Session } from "next-auth";
 import styles from "./ManualRemoveView.module.scss";
 import { useL10n } from "../../../../../../../../../hooks/l10n";
@@ -69,6 +69,10 @@ export function ManualRemoveView(props: Props) {
     props.enabledFeatureFlags,
     "Scan",
   );
+
+  // freeze results at mount, so order never changes
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const initialResults = useMemo(() => props.scanData.results, []);
 
   return (
     <FixView
@@ -157,7 +161,7 @@ export function ManualRemoveView(props: Props) {
             )}
           </h3>
           <div className={styles.exposureList}>
-            {props.scanData.results.map((scanResult, index) => {
+            {initialResults.map((scanResult, index) => {
               return (
                 <RemovalCard
                   key={
