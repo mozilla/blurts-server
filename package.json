@@ -168,7 +168,7 @@
     "jest-fail-on-console": "^3.3.1",
     "lint-staged": "^16.0.0",
     "mjml-browser": "^4.15.3",
-    "openapi-typescript": "^7.7.1",
+    "openapi-typescript": "^7.9.1",
     "patch-package": "^8.0.0",
     "prettier": "3.5.3",
     "sass": "^1.89.0",
