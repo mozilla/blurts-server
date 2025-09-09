@@ -111,6 +111,7 @@ dashboard-exposures-all-fixed-free-scan = {
       [one] Next <a>start your free scan</a> of { $data_broker_total_num } site that may be selling your personal info.
      *[other] Next <a>start your free scan</a> of { $data_broker_total_num } sites that may be selling your personal info.
   }
+dashboard-exposures-all-fixed-free-scan-masked = Next <a>start your free scan</a> of sites that may be selling your personal info.
 
 # About Removal Time Indicators Modal
 
