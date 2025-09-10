@@ -2,16 +2,16 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { chromium, request } from "@playwright/test";
+import { test as setup, request, Browser } from "@playwright/test";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import {
   type E2E_TEST_ENV_VALUE,
   getBaseTestEnvUrl,
-} from "./utils/environment";
-import { locations } from "./playwright.config";
-import { goToFxA, signUpUser } from "./utils/fxa";
+} from "../utils/environment";
+import { goToFxA, signUpUser } from "../utils/fxa";
+import { locations } from "../playwright.config";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -32,14 +32,13 @@ async function setupFeatureFlags() {
   fs.writeFileSync(
     path.resolve(
       __dirname,
-      "./functional-test-cache/enabled-feature-flags.json",
+      "../functional-test-cache/enabled-feature-flags.json",
     ),
     JSON.stringify({ data: (await response.json()) ?? [] }),
   );
 }
 
-async function setupUserAccounts() {
-  const browser = await chromium.launch();
+async function setupUserAccount(browser: Browser) {
   const emails: Record<string, string> = {};
 
   for (const location of locations) {
@@ -80,22 +79,22 @@ async function setupUserAccounts() {
     await context.close();
   }
 
-  await browser.close();
-
   // Store test user emails
   fs.writeFileSync(
-    path.resolve(__dirname, "./functional-test-cache/user-emails.json"),
+    path.resolve(__dirname, "../functional-test-cache/user-emails.json"),
     JSON.stringify(emails),
   );
 }
 
-const globalSetup = async () => {
+setup("Set up feature flags and user accounts", async ({ browser }) => {
+  // Creating an account involves waiting for an email to arrive,
+  // before being able to insert the confirmation code. That takes
+  // longer than usual.
+  setup.slow();
   // Ensure storage directory exists
-  const dir = path.resolve(__dirname, "./functional-test-cache");
+  const dir = path.resolve(__dirname, "../functional-test-cache");
   fs.mkdirSync(dir, { recursive: true });
 
   await setupFeatureFlags();
-  await setupUserAccounts();
-};
-
-export default globalSetup;
+  await setupUserAccount(browser);
+});

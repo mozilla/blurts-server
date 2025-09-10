@@ -47,7 +47,7 @@ export const locations = [
 ];
 
 // Devices
-const baseDevices = [
+const baseDevices: Array<{ name: string; use: (typeof devices)[string] }> = [
   /* Test against desktop browsers */
   {
     name: "chromium",
@@ -120,10 +120,6 @@ const projects: Project[] = locations.flatMap((geo) =>
 
 export default defineConfig({
   testDir: "./tests",
-  /* Global setup */
-  globalSetup: "./global-setup.ts",
-  /* Global teardown */
-  globalTeardown: "./global-teardown.ts",
   /* Maximum time one test can run for. */
   timeout: 60_000,
   /* Max time in milliseconds the whole test suite can run to prevent CI from hanging. */
@@ -161,7 +157,21 @@ export default defineConfig({
     trace: "on-first-retry",
   },
   /* Configure projects for major browsers */
-  projects,
+  projects: [
+    {
+      name: "global-setup",
+      testMatch: /global\-setup/,
+      teardown: "global-teardown",
+    },
+    ...projects.map((project) => ({
+      ...project,
+      dependencies: ["global-setup"],
+    })),
+    {
+      name: "global-teardown",
+      testMatch: /global\-teardown/,
+    },
+  ],
   /* Folder for test artifacts such as screenshots, videos, traces, etc. */
   outputDir: "test-results",
   // Run your local dev server before starting the tests -- only on local environment
