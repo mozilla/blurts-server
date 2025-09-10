@@ -7,8 +7,9 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import { test as teardown } from "../fixtures/authenticatedTest";
-import { getTestUserEmails, getTestUserSessionFilePath } from "../utils/user";
+import { getTestUserSessionFilePath } from "../utils/user";
 import { getBaseTestEnvUrl } from "../utils/environment";
+import { projects } from "../playwright.config";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -22,10 +23,8 @@ function removeTestStorage() {
 }
 
 async function deleteTestUserAccounts(browser: Browser) {
-  const userEmails = getTestUserEmails();
-
-  for (const userCountryCode in userEmails) {
-    const storageState = getTestUserSessionFilePath(userCountryCode);
+  for (const project of projects) {
+    const storageState = getTestUserSessionFilePath(project.name);
     const context = await browser.newContext({ storageState });
     const page = await context.newPage();
 

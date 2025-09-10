@@ -11,7 +11,8 @@ import {
   getBaseTestEnvUrl,
 } from "../utils/environment";
 import { goToFxA, signUpUser } from "../utils/fxa";
-import { locations } from "../playwright.config";
+import { getTestUserSessionFilePath } from "../utils/user";
+import { projects } from "../playwright.config";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -41,22 +42,22 @@ async function setupFeatureFlags() {
 async function setupUserAccount(browser: Browser) {
   const emails: Record<string, string> = {};
 
-  for (const location of locations) {
-    const countryCode = location.name.toLowerCase();
+  for (const project of projects) {
+    const projectName = project.name!;
     const context = await browser.newContext({
-      geolocation: location.geolocation,
-      locale: location.locale,
+      geolocation: project.use.geolocation,
+      locale: project.use.locale,
       permissions: ["geolocation"],
     });
     const page = await context.newPage();
 
     // Sign up flow
     const timestamp = Date.now();
-    const email = `${process.env.E2E_TEST_ACCOUNT_BASE_EMAIL}_${countryCode}_${timestamp}@restmail.net`;
-    emails[countryCode] = email;
+    const email = `${process.env.E2E_TEST_ACCOUNT_BASE_EMAIL}_${projectName.toLowerCase().replaceAll(" ", "-").replaceAll("(", "").replaceAll(")", "")}_${timestamp}@restmail.net`;
+    emails[projectName] = email;
 
     await goToFxA(page, {
-      countryCode,
+      countryCode: project.use.countryCode,
       isMobile: false,
     });
     await signUpUser(
@@ -69,11 +70,9 @@ async function setupUserAccount(browser: Browser) {
     await page.waitForURL("**/user/**");
 
     // Store test user session
+    const storageStatePath = getTestUserSessionFilePath(project.name);
     await context.storageState({
-      path: path.resolve(
-        __dirname,
-        `./functional-test-cache/user-session-${countryCode}.json`,
-      ),
+      path: storageStatePath,
     });
 
     await context.close();

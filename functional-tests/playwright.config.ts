@@ -97,25 +97,28 @@ export const getEnabledFeatureFlags = () => {
   return enabledFeatureFlags;
 };
 
-const projects: Project[] = locations.flatMap((geo) =>
-  baseDevices.map((base) => ({
-    name: `${base.name} (${geo.name})`,
-    use: {
-      ...base.use,
-      countryCode: geo.name.toLowerCase(),
-      geolocation: geo.geolocation,
-      locale: geo.locale,
-      permissions: ["geolocation"],
-      enabledFeatureFlags: getEnabledFeatureFlags(),
-      extraHTTPHeaders: {
-        "Accept-Language": `${geo.locale},${geo.name.toLowerCase()};q=1.0`,
-        "X-Client-Region": geo.name.toLowerCase(),
-        "x-forced-client-region-token": createTestClientRegionToken(
-          geo.name.toLowerCase(),
-        ),
-      },
-    },
-  })),
+export const projects = locations.flatMap((geo) =>
+  baseDevices.map(
+    (base) =>
+      ({
+        name: `${base.name} (${geo.name})`,
+        use: {
+          ...base.use,
+          countryCode: geo.name.toLowerCase(),
+          geolocation: geo.geolocation,
+          locale: geo.locale,
+          permissions: ["geolocation"],
+          enabledFeatureFlags: getEnabledFeatureFlags(),
+          extraHTTPHeaders: {
+            "Accept-Language": `${geo.locale},${geo.name.toLowerCase()};q=1.0`,
+            "X-Client-Region": geo.name.toLowerCase(),
+            "x-forced-client-region-token": createTestClientRegionToken(
+              geo.name.toLowerCase(),
+            ),
+          },
+        },
+      }) as const satisfies Project,
+  ),
 );
 
 export default defineConfig({
@@ -163,10 +166,13 @@ export default defineConfig({
       testMatch: /global\-setup/,
       teardown: "global-teardown",
     },
-    ...projects.map((project) => ({
-      ...project,
-      dependencies: ["global-setup"],
-    })),
+    ...projects.map(
+      (project) =>
+        ({
+          ...project,
+          dependencies: ["global-setup"],
+        }) as Project,
+    ),
     {
       name: "global-teardown",
       testMatch: /global\-teardown/,
