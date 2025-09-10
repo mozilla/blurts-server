@@ -2,17 +2,18 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { chromium } from "@playwright/test";
+import { Browser } from "@playwright/test";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import { getTestUserEmails, getTestUserSessionFilePath } from "./utils/user";
-import { getBaseTestEnvUrl } from "./utils/environment";
+import { test as teardown } from "../fixtures/authenticatedTest";
+import { getTestUserEmails, getTestUserSessionFilePath } from "../utils/user";
+import { getBaseTestEnvUrl } from "../utils/environment";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 function removeTestStorage() {
-  const dir = path.resolve(__dirname, "./functional-test-cache");
+  const dir = path.resolve(__dirname, "../functional-test-cache");
 
   if (fs.existsSync(dir)) {
     fs.rmSync(dir, { force: true, recursive: true });
@@ -20,8 +21,7 @@ function removeTestStorage() {
   }
 }
 
-async function deleteTestUserAccounts() {
-  const browser = await chromium.launch();
+async function deleteTestUserAccounts(browser: Browser) {
   const userEmails = getTestUserEmails();
 
   for (const userCountryCode in userEmails) {
@@ -42,13 +42,9 @@ async function deleteTestUserAccounts() {
 
     await context.close();
   }
-
-  await browser.close();
 }
 
-const globalTeardown = async () => {
-  await deleteTestUserAccounts();
+teardown("Delete test user accounts", async ({ browser }) => {
+  await deleteTestUserAccounts(browser);
   removeTestStorage();
-};
-
-export default globalTeardown;
+});
