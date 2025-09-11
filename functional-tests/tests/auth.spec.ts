@@ -22,9 +22,7 @@ test.describe(`Verify authentication [${process.env.E2E_TEST_ENV}]`, () => {
       countryCode: testInfo.project.use.countryCode,
       isMobile: testInfo.project.use.isMobile,
     });
-    const userEmail = getTestUserEmailByCountryCode(
-      testInfo.project.use.countryCode,
-    );
+    const userEmail = getTestUserEmailByCountryCode(testInfo.project);
     await signInUser(
       page,
       userEmail,
