@@ -12,6 +12,7 @@ import {
 } from "../../../../apiMocks/mockData";
 import { defaultExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 import { BreachDataTypes } from "../../../functions/universal/breach";
+import { OnerepScanResultDataBrokerRow } from "knex/types/tables";
 
 const meta: Meta<typeof ExposureCard> = {
   title: "Dashboard/Exposures/Exposure Card",
@@ -50,12 +51,35 @@ const ScanMockItemInProgress = createRandomOnerepScanResult({
   status: "optout_in_progress",
   manually_resolved: false,
 });
-
 const ScanMockItemRemovalUnderMaintenance = createRandomOnerepScanResult({
   status: "optout_in_progress",
   manually_resolved: false,
   broker_status: "removal_under_maintenance",
 });
+const ScanMockItemNoExposureData: OnerepScanResultDataBrokerRow = {
+  id: 0,
+  onerep_scan_result_id: 123,
+  onerep_scan_id: 123,
+  first_name: "John",
+  last_name: "Doe",
+  middle_name: "",
+  age: 20,
+  status: "new",
+  manually_resolved: false,
+  phones: [],
+  emails: [],
+  relatives: [],
+  link: "link.com",
+  data_broker: "randomdatabroke.com",
+  data_broker_id: 100,
+  created_at: new Date(),
+  updated_at: new Date(),
+  optout_attempts: 0,
+  broker_status: "active",
+  scan_result_status: "new",
+  url: "url",
+  addresses: [],
+};
 
 const ScanMockItemRemovalUnderMaintenanceManuallyFixed =
   createRandomOnerepScanResult({
@@ -90,6 +114,13 @@ export const DataBrokerRequestedRemoval: Story = {
       "AdditionalRemovalStatuses",
       "DataBrokerRemovalAttempts",
     ],
+  },
+};
+
+export const DataBrokerActionNeededNoExposureResults: Story = {
+  args: {
+    exposureImg: FamilyTreeImage,
+    exposureData: ScanMockItemNoExposureData,
   },
 };
 

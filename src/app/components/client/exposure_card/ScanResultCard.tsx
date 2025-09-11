@@ -277,6 +277,12 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
     }
   })();
 
+  const noExposureDataFound =
+    scanResult.phones.length === 0 &&
+    scanResult.relatives.length === 0 &&
+    scanResult.addresses.length === 0 &&
+    scanResult.emails.length === 0;
+
   const exposureCard = (
     <div aria-label={props.scanResult.data_broker}>
       <div className={styles.exposureCard}>
@@ -379,13 +385,17 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
           </div>
           <div className={styles.exposureDetailsContent}>
             <p className={styles.exposedInfoTitle}>
-              {l10n.getString("exposure-card-found-the-following-data")}
+              {noExposureDataFound
+                ? l10n.getString("exposure-card-description-no-exposures-found")
+                : l10n.getString("exposure-card-found-the-following-data")}
             </p>
-            <div className={styles.exposedDataTypes}>
-              {exposureCategoriesArray.map((item) => (
-                <React.Fragment key={item.key}>{item}</React.Fragment>
-              ))}
-            </div>
+            {!noExposureDataFound && (
+              <div className={styles.exposedDataTypes}>
+                {exposureCategoriesArray.map((item) => (
+                  <React.Fragment key={item.key}>{item}</React.Fragment>
+                ))}
+              </div>
+            )}
           </div>
           <span className={styles.resolveExposuresCtaMobile}>
             {resolveExposuresCta}

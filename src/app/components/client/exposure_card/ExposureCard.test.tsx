@@ -18,6 +18,7 @@ import Meta, {
   DataBrokerRemovalUnderMaintenance,
   DataBrokerRemovalUnderMaintenanceFixed,
   DataBrokerRemovalUnderMaintenanceAutomaticallyRemoved,
+  DataBrokerActionNeededNoExposureResults,
 } from "./ExposureCard.stories";
 import { isDataBrokerUnderMaintenance } from "../../../(proper_react)/(redesign)/(authenticated)/user/(dashboard)/dashboard/View";
 import { createRandomOnerepScanResult } from "../../../../apiMocks/mockData";
@@ -42,6 +43,19 @@ it("passes the axe accessibility test suite", async () => {
 }, 10_000);
 
 describe("ScanResultCard", () => {
+  // No exposure results down
+  it("shows the alternative string for when exposure results are empty", () => {
+    const ComposedProgressCard = composeStory(
+      DataBrokerActionNeededNoExposureResults,
+      Meta,
+    );
+    render(<ComposedProgressCard />);
+    const innerDescription = screen.getByText(
+      "This site only exposed your name; no other personal information was found.",
+    );
+    expect(innerDescription).toBeInTheDocument();
+  });
+
   // Data broker action needed
   it("shows the right description for a scan result card where there is action needed", () => {
     const ComposedProgressCard = composeStory(DataBrokerActionNeeded, Meta);
