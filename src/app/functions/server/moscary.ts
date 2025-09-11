@@ -13,6 +13,7 @@ import { logger } from "./logging";
 import { ISO8601DateString } from "../../../utils/parse";
 import { StateAbbr } from "../../../utils/states";
 import { getSubscriberByFxaUid } from "../../../db/tables/subscribers";
+import { dedupeScanResults } from "../universal/dedupeScanResults";
 
 export type MoscaryData = Components["schemas"];
 
@@ -254,7 +255,11 @@ export async function listScans(
   >;
 }
 
-export async function listScanResults(
+// Note: this function is not exported on purpose.
+// `getAllScanResults` does some additional filtering to hide scan results
+// that are not relevant to the user, and we want that filter to be applied
+// consistently throughout the site, i.e. for that function to be used everywhere.
+async function listScanResults(
   profileId: NonNullable<SubscriberRow["moscary_id"]>,
   options: Partial<{
     page: number;
@@ -344,14 +349,15 @@ export async function getScanAndResults(
   return { scan, results };
 }
 
-export async function getAllScanResults(
+async function getAllScanResults(
   profileId: NonNullable<SubscriberRow["moscary_id"]>,
 ): Promise<
   Paths["/scan-results"]["get"]["responses"]["200"]["content"]["application/json"]["data"]
 > {
-  return fetchAllPages((page: number) =>
+  const allScanResults = await fetchAllPages((page: number) =>
     listScanResults(profileId, { per_page: 100, page: page }),
   );
+  return dedupeScanResults(allScanResults);
 }
 
 export async function resolveScanResult(
