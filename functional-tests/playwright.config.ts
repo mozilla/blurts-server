@@ -154,10 +154,10 @@ export default defineConfig({
     baseURL: getBaseTestEnvUrl(),
     /* Automatically take screenshot only on failures */
     screenshot: "only-on-failure",
-    /* Automatically record video only on retries */
-    video: "retry-with-video",
-    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: "on-first-retry",
+    /* Automatically record video when tests fail */
+    video: "retain-on-failure",
+    /* Collect trace when tests fail. See https://playwright.dev/docs/trace-viewer */
+    trace: "retain-on-failure",
   },
   /* Configure projects for major browsers */
   projects: [
