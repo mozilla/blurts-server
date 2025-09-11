@@ -33,6 +33,7 @@ import { TelemetryButton } from "../../../../../components/client/TelemetryButto
 import { redirect } from "next/navigation";
 import * as Sentry from "@sentry/nextjs";
 import { ExperimentData } from "../../../../../../telemetry/generated/nimbus/experiments";
+import { FeatureFlagName } from "../../../../../../db/tables/featureFlags";
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
@@ -64,6 +65,7 @@ export type Props = {
   skipInitialStep: boolean;
   previousRoute: string | null;
   experimentData: ExperimentData["Features"];
+  enabledFeatureFlags: FeatureFlagName[];
 };
 
 export const EnterInfo = ({
@@ -72,6 +74,7 @@ export const EnterInfo = ({
   skipInitialStep,
   previousRoute,
   experimentData,
+  enabledFeatureFlags,
 }: Props) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -201,7 +204,10 @@ export const EnterInfo = ({
 
     const optionalInfoExperimentData =
       experimentData["welcome-scan-optional-info"];
-    if (optionalInfoExperimentData.enabled) {
+    const moscaryIsEnabled =
+      enabledFeatureFlags.includes("Moscary") ||
+      experimentData["moscary"].enabled;
+    if (optionalInfoExperimentData.enabled && moscaryIsEnabled) {
       if (userDetail.key === "middle_name") {
         return (
           optionalInfoExperimentData.variant === "middleName" ||

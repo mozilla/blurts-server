@@ -37,6 +37,7 @@ modal-active-number-of-exposures-part-three-all = Odată rezolvate, vor fi adău
 modal-fixed-number-of-exposures-title = Despre numărul tău de expuneri remediate
 modal-fixed-number-of-exposures-all = Acest grafic include numărul total de încălcări ale securității datelor care au fost remediate pentru toate adresele de e-mail pe care le monitorizezi. Odată ce expunerile sunt marcate ca remediate, vor fi adăugate la totalul de aici.
 modal-cta-ok = OK
+modal-cta-got-it = Am înțeles
 progress-card-heres-what-we-fixed-headline-all = Iată ce ai remediat
 progress-card-manually-fixed-headline = Remediat manual
 dashboard-tab-label-action-needed = Necesită atenție

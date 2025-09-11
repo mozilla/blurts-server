@@ -126,6 +126,7 @@ landing-redesign-pricing-plans-card-free-with-bundle-feature-item-one = {
   $data_broker_sites_total_num ->
     *[other] <b>One-time scan</b> of { $data_broker_sites_total_num }+ data brokers that may be selling your personal info
 }
+landing-redesign-pricing-plans-card-free-with-bundle-feature-item-one-masked = <b>One-time scan</b> of data brokers that may be selling your personal info
 landing-redesign-pricing-plans-card-free-with-bundle-feature-item-two = <b>Guided manual removal</b> of personal info from data broker sites
 landing-redesign-pricing-plans-card-free-with-bundle-feature-item-three = <b>Continuous monitoring</b> for data broker exposures and data breaches
 landing-redesign-pricing-plans-card-free-with-bundle-feature-item-four = Receive <b>data breach exposure alerts</b>

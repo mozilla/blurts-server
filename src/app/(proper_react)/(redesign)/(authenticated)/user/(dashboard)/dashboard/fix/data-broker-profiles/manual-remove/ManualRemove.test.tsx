@@ -59,13 +59,13 @@ it("removes the manual resolution button once a profile has been resolved", asyn
   render(<ComposedManualRemoveView resolveScanResult={resolveScanResult} />);
 
   const resolveButtonsBeforeResolving = screen.getAllByRole("button", {
-    name: "Resolve exposures",
+    name: "Mark as fixed",
   });
 
   await user.click(resolveButtonsBeforeResolving[0]);
 
   const resolveButtonsAfterResolving = screen.getAllByRole("button", {
-    name: "Resolve exposures",
+    name: "Mark as fixed",
   });
   expect(resolveButtonsAfterResolving.length).toBeLessThan(
     resolveButtonsBeforeResolving.length,
@@ -81,7 +81,7 @@ it("refreshes the client-side router cache after resolving a profile", async () 
   expect(mockedRouterRefresh).not.toHaveBeenCalled();
 
   const resolveButtonsBeforeResolving = screen.getAllByRole("button", {
-    name: "Resolve exposures",
+    name: "Mark as fixed",
   });
 
   await user.click(resolveButtonsBeforeResolving[0]);
@@ -99,13 +99,13 @@ it("keeps the manual resolution button if resolving a profile failed", async () 
   render(<ComposedManualRemoveView resolveScanResult={resolveScanResult} />);
 
   const resolveButtonsBeforeResolving = screen.getAllByRole("button", {
-    name: "Resolve exposures",
+    name: "Mark as fixed",
   });
 
   await user.click(resolveButtonsBeforeResolving[0]);
 
   const resolveButtonsAfterResolving = screen.getAllByRole("button", {
-    name: "Resolve exposures",
+    name: "Mark as fixed",
   });
   expect(resolveButtonsAfterResolving.length).toBe(
     resolveButtonsBeforeResolving.length,

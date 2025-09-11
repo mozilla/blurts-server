@@ -220,6 +220,7 @@ error-page-error-other-title = { $errorCode } A apărut o eroare
 
 ## Breach overview page
 
+all-breaches-headline-3 = Baza de date cu încălcări ale securității datelor
 all-breaches-lead = Monitorizăm toate încălcările cunoscute ale securității datelor pentru a afla dacă au fost compromise datele tale cu caracter personal. Iată o listă completă a tuturor încălcărilor securității informațiilor care au fost raportate din 2007.
 search-breaches = Caută încălcări ale securității datelor
 # the kind of user data exposed to hackers in data breach.
@@ -236,3 +237,4 @@ breach-detail-cta-signup = Caută încălcări ale securității datelor
 banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: Nume nou, aspect și chiar mai multe modalități de a <b> relua controlul asupra vieții tale private</b>.
 banner-monitor-rebrand-dismiss-button-label = OK
 banner-monitor-rebrand-dismiss-button-tooltip = Respinge
+loading-accessibility = Se încarcă

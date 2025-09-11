@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { Page, request } from "@playwright/test";
+import { FullProject, Page, request } from "@playwright/test";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -74,25 +74,21 @@ export function getTestUserEmails(): Record<string, string> {
   return emails;
 }
 
-export function getTestUserEmailByCountryCode(countryCode?: string): string {
+export function getTestUserEmailByCountryCode(project: FullProject): string {
   const emails = getTestUserEmails();
-  const email = emails[countryCode ?? "us"];
+  const email = emails[project.name];
   if (!email) {
-    throw new Error(`No email found for [${countryCode}]`);
+    throw new Error(`No email found for [${project.name}]`);
   }
 
   return email;
 }
 
-export function getTestUserSessionFilePath(countryCode: string) {
+export function getTestUserSessionFilePath(projectName: string) {
   const storagePath = path.resolve(
     __dirname,
-    `../functional-test-cache/user-session-${countryCode}.json`,
+    `../functional-test-cache/user-session-${projectName.toLowerCase().replaceAll(" ", "-").replaceAll("(", "").replaceAll(")", "")}.json`,
   );
-
-  if (!fs.existsSync(storagePath)) {
-    throw new Error("User session storage not found");
-  }
 
   return storagePath;
 }

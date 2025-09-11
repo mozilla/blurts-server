@@ -120,6 +120,9 @@ export async function POST(
   }
   const optionalInfoExperimentData =
     experimentData["Features"]["welcome-scan-optional-info"];
+  const moscaryIsEnabled =
+    enabledFeatureFlags.includes("Moscary") ||
+    experimentData["Features"]["moscary"].enabled;
 
   const profileData: CreateProfileRequest = {
     first_name: firstName,
@@ -127,11 +130,13 @@ export async function POST(
     addresses: [{ city, state }],
     birth_date: dateOfBirth,
     ...(optionalInfoExperimentData.enabled &&
+      moscaryIsEnabled &&
       (optionalInfoExperimentData.variant === "middleName" ||
         optionalInfoExperimentData.variant === "suffixAndMiddleName") && {
         middle_name: middleName,
       }),
     ...(optionalInfoExperimentData.enabled &&
+      moscaryIsEnabled &&
       (optionalInfoExperimentData.variant === "suffix" ||
         optionalInfoExperimentData.variant === "suffixAndMiddleName") && {
         name_suffix: nameSuffix,
@@ -147,10 +152,7 @@ export async function POST(
       if (!subscriber) {
         throw new Error("No subscriber found for current session.");
       }
-      if (
-        enabledFeatureFlags.includes("Moscary") ||
-        experimentData["Features"]["moscary"].enabled
-      ) {
+      if (moscaryIsEnabled) {
         if (subscriber.moscary_id === null) {
           const profileId = await createProfile(profileData);
           await setMoscaryId(subscriber, profileId);

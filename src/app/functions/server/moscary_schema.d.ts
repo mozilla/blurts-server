@@ -642,8 +642,6 @@ export interface components {
         | "recheck_due"
         | "resurfaced"
         | null;
-      /** @description Response text from removal attempt */
-      removal_response?: string | null;
       /**
        * @description Number of verification attempts made
        * @default 0
@@ -673,7 +671,8 @@ export interface components {
       data_broker: string;
       data_broker_id?: number;
       manually_resolved?: boolean;
-      source?: string;
+      /** @enum {string} */
+      source?: "monitor" | "onerep";
     };
     ScanResultAdminInput: {
       /** @enum {string} */
@@ -693,7 +692,12 @@ export interface components {
        * @description The current operational status of the broker integration.
        * @enum {string}
        */
-      status: "active" | "on_hold" | "inactive";
+      status:
+        | "active"
+        | "ceased_operation"
+        | "scan_under_maintenance"
+        | "on_hold"
+        | "removal_under_maintenance";
       /**
        * Format: uri
        *
@@ -716,6 +720,10 @@ export interface components {
       opt_out_page?: string | null;
       /** @description Pattern or strategy used for searching this broker. */
       search_pattern?: string | null;
+      /** @description How to escape characters in user input passed to `search_pattern`. */
+      search_pattern_escape?:
+        | (string & ("spacesToDashes" | "spacesToPluses"))
+        | null;
     };
     /** @description A collection of Brokers */
     BrokerPage: {
