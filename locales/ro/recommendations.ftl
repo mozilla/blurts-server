@@ -50,6 +50,10 @@ rec-cc =
     Vezi dacă apar modificări ciudate pe cardul de credit. Poate vrei 
     să soliciți un card nou, cu un număr nou, de la emitentul de carduri de credit.
 rec-email-cta = Încearcă { -brand-relay }
+rec-email =
+    Oferirea adresei reale de e-mail face mai ușor accesul hackerilor sau al elementelor de urmărire la
+    găsească parole sau ca să te urmărească online. Un serviciu precum { -brand-relay }
+    ascunde adresa reală de e-mail și redirecționează mesajele de e-mail către căsuța de e-mail reală.
 # Recommendation subhead
 rec-moz-vpn-cta = Încearcă { -brand-mozilla-vpn }
 rec-hist-pw-subhead = Evită refolosirea parolelor
