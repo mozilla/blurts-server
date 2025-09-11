@@ -2,9 +2,6 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-export const dynamic = "force-dynamic";
-export const revalidate = 0;
-
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { getServerSession } from "../../../../../../../functions/server/getServerSession";
@@ -58,7 +55,6 @@ import {
   getScansCountForProfile,
   isEligibleForFreeScan,
 } from "../../../../../../../functions/server/moscary";
-import { connection } from "next/server";
 
 const dashboardTabSlugs = ["action-needed", "fixed"];
 
@@ -72,7 +68,6 @@ type Props = {
 };
 
 export default async function DashboardPage(props: Props) {
-  await connection();
   const searchParams = await props.searchParams;
   if (searchParams.dialog === "subscriptions") {
     return redirect("/subscription-plans");
