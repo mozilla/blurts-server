@@ -47,7 +47,7 @@ export const locations = [
 ];
 
 // Devices
-const baseDevices = [
+const baseDevices: Array<{ name: string; use: (typeof devices)[string] }> = [
   /* Test against desktop browsers */
   {
     name: "chromium",
@@ -97,33 +97,32 @@ export const getEnabledFeatureFlags = () => {
   return enabledFeatureFlags;
 };
 
-const projects: Project[] = locations.flatMap((geo) =>
-  baseDevices.map((base) => ({
-    name: `${base.name} (${geo.name})`,
-    use: {
-      ...base.use,
-      countryCode: geo.name.toLowerCase(),
-      geolocation: geo.geolocation,
-      locale: geo.locale,
-      permissions: ["geolocation"],
-      enabledFeatureFlags: getEnabledFeatureFlags(),
-      extraHTTPHeaders: {
-        "Accept-Language": `${geo.locale},${geo.name.toLowerCase()};q=1.0`,
-        "X-Client-Region": geo.name.toLowerCase(),
-        "x-forced-client-region-token": createTestClientRegionToken(
-          geo.name.toLowerCase(),
-        ),
-      },
-    },
-  })),
+export const projects = locations.flatMap((geo) =>
+  baseDevices.map(
+    (base) =>
+      ({
+        name: `${base.name} (${geo.name})`,
+        use: {
+          ...base.use,
+          countryCode: geo.name.toLowerCase(),
+          geolocation: geo.geolocation,
+          locale: geo.locale,
+          permissions: ["geolocation"],
+          enabledFeatureFlags: getEnabledFeatureFlags(),
+          extraHTTPHeaders: {
+            "Accept-Language": `${geo.locale},${geo.name.toLowerCase()};q=1.0`,
+            "X-Client-Region": geo.name.toLowerCase(),
+            "x-forced-client-region-token": createTestClientRegionToken(
+              geo.name.toLowerCase(),
+            ),
+          },
+        },
+      }) as const satisfies Project,
+  ),
 );
 
 export default defineConfig({
   testDir: "./tests",
-  /* Global setup */
-  globalSetup: "./global-setup.ts",
-  /* Global teardown */
-  globalTeardown: "./global-teardown.ts",
   /* Maximum time one test can run for. */
   timeout: 60_000,
   /* Max time in milliseconds the whole test suite can run to prevent CI from hanging. */
@@ -161,7 +160,24 @@ export default defineConfig({
     trace: "on-first-retry",
   },
   /* Configure projects for major browsers */
-  projects,
+  projects: [
+    {
+      name: "global-setup",
+      testMatch: /global\-setup/,
+      teardown: "global-teardown",
+    },
+    ...projects.map(
+      (project) =>
+        ({
+          ...project,
+          dependencies: ["global-setup"],
+        }) as Project,
+    ),
+    {
+      name: "global-teardown",
+      testMatch: /global\-teardown/,
+    },
+  ],
   /* Folder for test artifacts such as screenshots, videos, traces, etc. */
   outputDir: "test-results",
   // Run your local dev server before starting the tests -- only on local environment

@@ -85,7 +85,7 @@ sensitive-sites-copy =
     singura persoană care poate vedea dacă informațiile tale au fost implicate în această încălcare a securității datelor 
     (dacă nu cumva și altcineva are acces la contul tău de e-mail).
 delayed-reporting-headline = De ce a durat atât de mult să se raporteze această încălcare a securității datelor?
-delayed-reporting-copy = Uneori, poate dura luni sau ani ca credențialele expuse într-o încălcare a securității datelor să apară pe dark web. Încălcările sunt adăugate în baza noastră de date imediat ce sunt descoperite și verificate.
+delayed-reporting-copy = Uneori, poate dura luni sau ani ca datele de autentificare expuse într-o încălcare a securității datelor să apară pe dark web. Încălcările securității datelor sunt adăugate în baza noastră de date imediat ce sunt descoperite și verificate.
 fxm-warns-you = { -product-name } te avertizează dacă adresa ta de e-mail a fost expusă într-o încălcare online a securității datelor. Vezi dacă ți-au fost expuse informațiile, află cum să îți protejezi mai bine conturile online și primește alerte în cazul în care adresa ta de e-mail apare într-o încălcare nouă.
 what-is-data-agg = Ce sunt agregatoarele de date?
 what-is-data-agg-blurb = Agregatoarele de date, denumite și brokeri de date, colectează informații din înregistrări publice și cumpără date de la alte companii. Compilează aceste date și le vând altor companii în scopuri de marketing. Probabilitatea ca victimele acestor încălcări ale securității datelor să devină victime ale fraudelor financiare este mică, dar hackerii pot folosi datele ca să le uzurpe identitatea sau pentru profilare.
@@ -220,6 +220,7 @@ error-page-error-other-title = { $errorCode } A apărut o eroare
 
 ## Breach overview page
 
+all-breaches-headline-3 = Baza de date cu încălcări ale securității datelor
 all-breaches-lead = Monitorizăm toate încălcările cunoscute ale securității datelor pentru a afla dacă au fost compromise datele tale cu caracter personal. Iată o listă completă a tuturor încălcărilor securității informațiilor care au fost raportate din 2007.
 search-breaches = Caută încălcări ale securității datelor
 # the kind of user data exposed to hackers in data breach.
@@ -236,3 +237,4 @@ breach-detail-cta-signup = Caută încălcări ale securității datelor
 banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: Nume nou, aspect și chiar mai multe modalități de a <b> relua controlul asupra vieții tale private</b>.
 banner-monitor-rebrand-dismiss-button-label = OK
 banner-monitor-rebrand-dismiss-button-tooltip = Respinge
+loading-accessibility = Se încarcă

@@ -65,3 +65,4 @@ export const CONST_DATA_BROKER_PROFILE_DETAIL_LIMITS = {
   phone_numbers: 10,
   addresses: 10,
 } as const;
+export const CONST_MAX_SCAN_RESULTS_PER_BROKER = 3 as const;

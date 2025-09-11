@@ -15,12 +15,14 @@ const test = baseTest.extend<object, { storageState?: string }>({
         return;
       }
 
-      const storagePath = getTestUserSessionFilePath(countryCode);
+      const storagePath = getTestUserSessionFilePath(testInfo.project.name);
       const exists = fs.existsSync(storagePath);
       if (exists) {
         await use(storagePath);
       } else {
-        console.warn(`No user session file found for [${countryCode}]`);
+        console.warn(
+          `No user session file found for [${testInfo.project.name}]`,
+        );
         await use(undefined);
       }
     },

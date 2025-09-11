@@ -458,8 +458,7 @@ export const View = (props: Props) => {
                   },
                 },
               )
-            : /* c8 ignore stop */
-              l10n.getFragment("dashboard-exposures-all-fixed-free-scan", {
+            : l10n.getFragment("dashboard-exposures-all-fixed-free-scan", {
                 vars: {
                   data_broker_total_num: CONST_ONEREP_DATA_BROKER_COUNT,
                 },
@@ -487,6 +486,7 @@ export const View = (props: Props) => {
                     ),
                 },
               })
+          /* c8 ignore stop */
         }
       </p>
     </>

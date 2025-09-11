@@ -2,7 +2,6 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { headers } from "next/headers";
 import { captureException } from "@sentry/node";
 import { logger } from "./logging";
 import {
@@ -12,6 +11,7 @@ import {
 } from "../../../telemetry/generated/nimbus/experiments";
 import { ExperimentationId } from "./getExperimentationId";
 import { getEnabledFeatureFlags } from "../../../db/tables/featureFlags";
+import { loadNextHeaders } from "./loadNextHeaders";
 
 /**
  * After we removing the `CirrusV2` flag, we can return the full `ExperimentData`/
@@ -50,16 +50,25 @@ export async function getExperiments(params: {
 
   const serverUrl = new URL(process.env.NIMBUS_SIDECAR_URL);
   const flags = await getEnabledFeatureFlags({ isSignedOut: true });
+  if (!serverUrl.pathname.endsWith("/")) {
+    serverUrl.pathname += "/";
+  }
   if (flags.includes("CirrusV2")) {
-    serverUrl.pathname = "/v2/features";
+    serverUrl.pathname += "v2/features";
   } else {
-    serverUrl.pathname = "/v1/features";
+    serverUrl.pathname += "v1/features";
   }
 
-  const headersList = await headers();
-  // Check if the Nimbus preview mode has been set by the middleware.
-  const nimbusPreviewMode = headersList.get("x-nimbus-preview-mode");
-  const previewMode = nimbusPreviewMode === "true";
+  const nextHeaders = await loadNextHeaders();
+  let previewMode = false;
+  if (nextHeaders) {
+    const headersList = await nextHeaders.headers();
+    // Check if the Nimbus preview mode has been set by the middleware.
+    const nimbusPreviewMode = headersList.get("x-nimbus-preview-mode");
+    if (nimbusPreviewMode === "true") {
+      previewMode = true;
+    }
+  }
 
   try {
     if (previewMode === true) {
