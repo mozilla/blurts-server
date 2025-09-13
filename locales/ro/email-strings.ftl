@@ -3,8 +3,17 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 
+## Email headers
+
+email-header-logo-alt = { -brand-mozilla-monitor }
+email-header-button-sign-in = Intră în cont
+
 ## Email footers
 
+email-footer-support-heading = Întrebări despre { -brand-mozilla-monitor }?
+email-footer-support-content = Intră pe <support-link>Centrul nostru de asistență</support-link> pentru ajutor
+email-footer-trigger-transactional = Primești acest e-mail ca abonat la { -brand-mozilla-monitor }.
+email-footer-logo-mozilla-alt = { -brand-mozilla }
 email-footer-meta-privacy-notice = Confidențialitate
 # Firefox Relay is a product name and should not be translated.
 -product-name-relay = Firefox Relay
@@ -39,9 +48,22 @@ email-breach-alert-blurb =
 #   $hibp-link-attr (String) - Link to Have I Been Pwned
 email-2022-hibp-attribution = Datele privind încălcările securității datelor sunt furnizate de <a { $hibp-link-attr }>{ -brand-HIBP }</a>
 
+## Verification email
+
+email-verify-subhead = Verifică-ți adresa de e-mail pentru a începe să-ți protejezi datele după o încălcare a securității datelor.
+
 ## Breach report
 
+email-breach-summary = Iată rezumatul încălcării securității datelor
 # Variables:
 #   $email-address (string) - Email address, bolded
 email-breach-detected = Rezultatele căutării pentru contul { $email-address } au detectat că este posibil ca e-mailul tău să fi fost expus. Îți recomandăm să acționezi de îndată pentru a rezolva această încălcare a securității datelor.
 email-dashboard-cta = Mergi la tabloul de bord
+
+## Breach alert email
+
+email-breach-alert-all-subject = A fost detectată o nouă încălcare a securității datelor
+email-breach-alert-all-preview = Te vom ghida prin pașii necesari pentru a o rezolva.
+email-breach-alert-all-hero-heading = Ai fost implicat(ă) într-o nouă încălcare a securității datelor
+email-breach-alert-all-next-steps-cta-label = Să începem
+email-breach-alert-all-next-steps-button-dashboard = Mergi la tabloul de bord
