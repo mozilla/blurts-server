@@ -45,7 +45,7 @@ afterEach(() => {
   resetIntersectionMocking();
 });
 
-global.TextEncoder = TextEncoder;
+global.TextEncoder = TextEncoder as typeof global.TextEncoder;
 
 // Jest doesn't like the top-level await in envVars.ts, so we mock it.
 jest.mock("./src/envVars", () => {
