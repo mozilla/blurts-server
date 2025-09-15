@@ -19,7 +19,7 @@
         margin-left: 0;
         display: grid;
         grid-template-columns: 1fr;
-        grid-row-gap: tokens.$spacing-sm;
+        row-gap: tokens.$spacing-sm;
         transition: opacity 0.35s ease-in-out;
         opacity: 1;
 

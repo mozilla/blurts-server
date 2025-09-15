@@ -2,7 +2,7 @@
 
 .container {
   display: grid;
-  grid-gap: tokens.$layout-lg;
+  gap: tokens.$layout-lg;
   flex-direction: row;
 
   @media screen and (min-width: tokens.$screen-xl) {
