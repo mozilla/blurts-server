@@ -143,7 +143,7 @@ async function sendFirstDataBrokerRemovalFixedActivityEmail(
   const sanitizedSubscriber = sanitizeSubscriberRow(subscriber);
   const l10n = getCronjobL10n(sanitizedSubscriber);
 
-  let subject = l10n.getString("email-first-broker-removal-fixed-subject");
+  const subject = l10n.getString("email-first-broker-removal-fixed-subject");
 
   // Update the first-data-broker-removal-fixed-email date *first*,
   // so that if something goes wrong, we don't keep resending the email.

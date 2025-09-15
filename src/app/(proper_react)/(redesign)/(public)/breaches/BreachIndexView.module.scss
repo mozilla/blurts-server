@@ -69,7 +69,7 @@
   max-width: calc(100% - 2 * tokens.$spacing-2xl);
   display: grid;
   align-items: start;
-  grid-gap: tokens.$spacing-2xl;
+  gap: tokens.$spacing-2xl;
   list-style-type: none;
   margin: 0;
   padding: 0;

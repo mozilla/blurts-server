@@ -29,6 +29,20 @@ const compat = new FlatCompat({
 header.rules.header.meta.schema = false;
 
 const config = [
+  ...compat.extends("next/core-web-vitals", "next/typescript"),
+  {
+    ignores: [
+      "node_modules/**",
+      ".next/**",
+      "out/**",
+      "build/**",
+      "next-env.d.ts",
+      "storybook-static",
+      "dist",
+      "coverage",
+      "!.storybook",
+    ],
+  },
   ...compat.config({
     extends: ["next"],
   }),
@@ -42,7 +56,6 @@ const config = [
         project: "tsconfig.json",
       },
     },
-    ignores: ["coverage", "dist", "!.storybook"],
     plugins: {
       jsdoc,
       "@typescript-eslint": tsEslint,

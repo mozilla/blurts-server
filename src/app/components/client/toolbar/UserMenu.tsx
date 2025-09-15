@@ -64,18 +64,33 @@ export const UserMenu = (props: UserMenuProps) => {
   const handleOnAction = (menuItemKey: Key) => {
     switch (menuItemKey) {
       case itemKeys.fxa:
+        recordTelemetry("ctaButton", "click", {
+          button_id: "manage_account_user_menu",
+        });
         fxaItemRef.current?.click();
         break;
       case itemKeys.settings:
+        recordTelemetry("ctaButton", "click", {
+          button_id: "settings_user_menu",
+        });
         settingsItemRef.current?.click();
         break;
       case itemKeys.contact:
+        recordTelemetry("ctaButton", "click", {
+          button_id: "contact_us_user_menu",
+        });
         contactItemRef.current?.click();
         break;
       case itemKeys.help:
+        recordTelemetry("ctaButton", "click", {
+          button_id: "help_and_support_user_menu",
+        });
         helpItemRef.current?.click();
         break;
       case itemKeys.signout:
+        recordTelemetry("ctaButton", "click", {
+          button_id: "sign_out_user_menu",
+        });
         signOutItemRef.current?.click();
         break;
     }
@@ -255,21 +270,9 @@ type MenuItemProps = {
 function MenuItem({ item, state }: MenuItemProps) {
   const ref = useRef(null);
   const { menuItemProps } = useMenuItem({ key: item.key }, state, ref);
-  const recordTelemetry = useTelemetry();
 
   return (
-    <li
-      {...menuItemProps}
-      ref={ref}
-      className={`${styles.menuItemWrapper}`}
-      onClick={() => {
-        const buttonId =
-          item.textValue.replaceAll(" ", "_").toLowerCase() + "_user_menu";
-        recordTelemetry("ctaButton", "click", {
-          button_id: buttonId,
-        });
-      }}
-    >
+    <li {...menuItemProps} ref={ref} className={`${styles.menuItemWrapper}`}>
       {item.rendered}
     </li>
   );

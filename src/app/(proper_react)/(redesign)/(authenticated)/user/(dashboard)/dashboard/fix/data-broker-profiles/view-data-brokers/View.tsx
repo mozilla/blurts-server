@@ -49,9 +49,14 @@ export const ViewDataBrokersView = (props: Props) => {
             )}
           </h3>
           <p>
-            {l10n.getString(
-              "fix-flow-data-broker-profiles-view-data-broker-profiles-content",
-            )}
+            {/* c8 ignore next */}
+            {props.enabledFeatureFlags.includes("MaskDataBrokerCount")
+              ? l10n.getString(
+                  "fix-flow-data-broker-profiles-view-data-broker-profiles-content-masked",
+                )
+              : l10n.getString(
+                  "fix-flow-data-broker-profiles-view-data-broker-profiles-content",
+                )}
           </p>
         </div>
         <div className={styles.content}>

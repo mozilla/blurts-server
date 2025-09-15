@@ -161,20 +161,21 @@ export const FindExposures = ({
         {l10n.getString("onboarding-find-exposures-progress-label")}
         <div className={styles.progressLabelIndicator}>
           {
-            // TODO: Add unit test when changing this code:
-            /* c8 ignore next 12 */
-            scanProgress < labelSwitchThreshold
-              ? l10n.getString(
-                  "onboarding-find-exposures-progress-breaches-counter",
-                  { breachesScannedCount, breachesTotalCount },
-                )
-              : /* c8 ignore start */
-                enabledFeatureFlags.includes("MaskDataBrokerCount")
+            /* c8 ignore next 10 */
+            enabledFeatureFlags.includes("MaskDataBrokerCount")
+              ? scanProgress < labelSwitchThreshold
                 ? l10n.getString(
+                    "onboarding-find-exposures-progress-breaches-counter-masked",
+                  )
+                : l10n.getString(
                     "onboarding-find-exposures-progress-broker-counter-masked",
-                    {
-                      dataBrokerScannedCount,
-                    },
+                  )
+              : // TODO: Add unit test when changing this code:
+                /* c8 ignore next 12 */
+                scanProgress < labelSwitchThreshold
+                ? l10n.getString(
+                    "onboarding-find-exposures-progress-breaches-counter",
+                    { breachesScannedCount, breachesTotalCount },
                   )
                 : l10n.getString(
                     "onboarding-find-exposures-progress-broker-counter",
@@ -183,7 +184,6 @@ export const FindExposures = ({
                       dataBrokerTotalCount: dataBrokerCount,
                     },
                   )
-            /* c8 ignore stop */
           }
         </div>
       </div>

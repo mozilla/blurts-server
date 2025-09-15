@@ -7,13 +7,13 @@ import { errorIfProduction } from "../../../../../utils/errorThrower";
 
 export async function PUT(
   _: NextRequest,
-  props: { params: Promise<{ profileId: number }> },
+  props: { params: Promise<{ profileId: string }> },
 ) {
   const params = await props.params;
   const prodError = errorIfProduction();
   if (prodError) return prodError;
 
-  const profileId: number = params.profileId;
+  const profileId: number = Number.parseInt(params.profileId, 10);
 
   if (!profileId || isNaN(profileId)) {
     return NextResponse.json({ error: "Invalid profile ID" });
