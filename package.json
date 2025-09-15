@@ -126,7 +126,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
     "@faker-js/faker": "^9.8.0",
-    "@google-cloud/bigquery": "^7.9.4",
+    "@google-cloud/bigquery": "^8.1.1",
     "@playwright/test": "^1.52.0",
     "@storybook/addon-a11y": "^9.1.6",
     "@storybook/addon-docs": "^9.1.6",
