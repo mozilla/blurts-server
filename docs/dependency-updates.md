@@ -282,6 +282,12 @@ Used for S3, by the `npm run cron:db-pull-breaches` cron job.
 This job runs periodically on stage and production to download Favicon files from DuckDuckGo and re-uploads them to Monitor's S3 bucket.
 Check in the server logs that this job completed without errors.
 
+### `@google-cloud/bigquery`
+
+The Node.js client for Google Cloud BigQuery is used for uploading data.
+
+Currently, we use this dependency to upload the results of the [Lighthouse Report Cron](https://github.com/mozilla/blurts-server/actions/workflows/lighthouse_cron.yml) to BigQuery. To verify that the cron job is working as expected we can run the GitHub Action manually against `stage` after a dependency update.
+
 ### `@google-cloud/pubsub`
 
 GCP PubSub is used for email breach notifications from HIBP:
