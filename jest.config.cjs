@@ -118,8 +118,6 @@ const customJestConfig = {
     // > Uncaught ReferenceError: MessageChannel is not defined
     // See https://github.com/facebook/react/issues/31827#issuecomment-2563094822
     "react-dom/server": "react-dom/server.edge",
-    // Force module uuid to resolve with the CJS entry point, because Jest does not support package.json.exports. See https://github.com/uuidjs/uuid/issues/451
-    uuid: require.resolve("uuid"),
   },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
