@@ -48,7 +48,7 @@
     "build-storybook": "npm run build-glean && npm run build-nimbus && storybook build",
     "create-location-data": "node src/scripts/build/uploadAutoCompleteLocations.js",
     "get-location-data": "node src/scripts/build/getAutoCompleteLocations.js",
-    "build-cronjobs": "node esbuild.cronjobs.js",
+    "build-cronjobs": "npm run build-nimbus && node esbuild.cronjobs.js",
     "build-nimbus": "node src/scripts/build/nimbusTypes.js",
     "build-frontend-glean": "glean translate src/telemetry/metrics.yaml --format typescript --output src/telemetry/generated && npm run build-glean-types",
     "build-backend-glean": "glean translate src/telemetry/backend-metrics.yaml --format typescript --output src/telemetry/generated/backend && npm run build-glean-types",
