@@ -287,7 +287,7 @@ export async function poll(
               await refreshStoredScanResults(recipient.onerep_profile_id);
             }
 
-            let dataSummary: DashboardSummary | undefined =
+            const dataSummary: DashboardSummary | undefined =
               // We currently need the data summary for the `<DataPointCount>` in
               // `<BreachAlertEmail>`, which is only shown for free users who are
               // eligible for Plus (i.e. are in the US) who have run a scan.

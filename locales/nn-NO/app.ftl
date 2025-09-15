@@ -3,9 +3,6 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 
-# Strings for the main app
-
-
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
@@ -196,7 +193,7 @@ user-menu-signout-tooltip = Logg ut frå { -brand-mozilla-monitor }
 
 mozilla = { -brand-mozilla }
 terms-of-service = Tenestevilkår
-privacy-notice = Personvernerklæring
+privacy-notice = Personvernfråsegn
 github = { -brand-github }
 footer-nav-recent-breaches = Nylege datalekkasjar
 footer-external-link-faq-label = Vanlege spørsmål (FAQ)
