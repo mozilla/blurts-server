@@ -105,7 +105,7 @@
     "knex": "^3.1.0",
     "lodash.isequal": "^4.5.0",
     "mjml": "^4.15.3",
-    "next": "15.4.5",
+    "next": "15.5.3",
     "next-auth": "^4.24.11",
     "nodemailer": "^6.10.1",
     "p-limit": "^3.1.0",
