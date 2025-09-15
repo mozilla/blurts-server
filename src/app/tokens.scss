@@ -285,6 +285,8 @@ $width-first-column-filter-bar: 90px;
 
 @mixin company-name-area {
   @media screen and (min-width: $screen-lg) {
+    /* https://github.com/stylelint-scss/stylelint-config-recommended-scss/issues/369 */
+    /* stylelint-disable-next-line no-invalid-position-declaration */
     min-width: 200px;
   }
 }
@@ -320,6 +322,8 @@ $width-first-column-filter-bar: 90px;
   // They keep an element accessible to screen readers, while making them
   // invisible in the viewport.
   border: 0;
+  /* Redundancy is probably safest here, even if a property is deprecated (replaced by clip-path): */
+  /* stylelint-disable-next-line property-no-deprecated */
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
   height: 1px;
