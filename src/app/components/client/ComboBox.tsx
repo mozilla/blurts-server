@@ -91,6 +91,7 @@ function ComboBox(
           popoverRef={popoverRef}
           state={state}
           triggerRef={inputRef}
+          isNonModal={true}
           placement="bottom start"
         >
           <div className={comboBoxStyles.popoverList}>
