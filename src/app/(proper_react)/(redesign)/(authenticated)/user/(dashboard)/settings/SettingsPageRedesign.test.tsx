@@ -792,7 +792,7 @@ describe("Settings page redesign", () => {
       const input = screen.getByLabelText("City and state*");
       await act(async () => {
         await user.clear(input);
-        await user.keyboard("[Tab]Tu[ArrowDown][Enter][Tab]");
+        await user.keyboard("Tu[ArrowDown][Enter][Tab]");
       });
       expect(input).toHaveValue("Tulsa, OK, USA");
     });
@@ -814,7 +814,8 @@ describe("Settings page redesign", () => {
 
       const input = screen.getByLabelText("Past location");
       await act(async () => {
-        await user.keyboard("[Tab]Tu[ArrowDown][Enter][Tab]");
+        await user.click(input);
+        await user.keyboard("Tu[ArrowDown][Enter][Tab]");
       });
       expect(input).toHaveValue("Tulsa, OK, USA");
     });
