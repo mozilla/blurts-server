@@ -7,6 +7,7 @@ import { Inter } from "next/font/google";
 import type { Preview } from "@storybook/nextjs";
 import { action } from "storybook/actions";
 import { linkTo } from "@storybook/addon-links";
+import { sb } from "storybook/test";
 import "../src/app/globals.css";
 import { metropolis } from "../src/app/fonts/Metropolis/metropolis";
 import { TestComponentWrapper } from "../src/TestComponentWrapper";
@@ -26,6 +27,8 @@ const AppDecorator: Preview["decorators"] = (storyFn) => {
 
   return <TestComponentWrapper>{storyFn()}</TestComponentWrapper>;
 };
+
+sb.mock("../src/app/hooks/locationSuggestions.ts");
 
 // Arguments to the `storySort` callback, left as documentation.
 type _SortData = {
