@@ -45,6 +45,20 @@ it("shows suggestions when typing", async () => {
   expect(suggestions).toBeInTheDocument();
 });
 
+it("does not lose focus while typing", async () => {
+  const user = userEvent.setup();
+  const ComposedTextComboBox = composeStory(TextComboBoxRequired, Meta);
+  render(<ComposedTextComboBox />);
+
+  const comboBox = screen.getByRole("combobox");
+  await user.click(comboBox);
+  expect(comboBox).toHaveFocus();
+  await user.keyboard("T");
+  expect(comboBox).toHaveFocus();
+  await user.keyboard("u");
+  expect(comboBox).toHaveFocus();
+});
+
 it("hides suggestions when clearing the input field", async () => {
   const user = userEvent.setup();
   const ComposedTextComboBox = composeStory(TextComboBoxRequired, Meta);
