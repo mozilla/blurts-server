@@ -34,3 +34,22 @@ it("suggests locations after typing", async () => {
   expect(suggestions[1]).toHaveTextContent("Tucson AZ, USA");
   expect(inputField).toHaveValue("Tu");
 });
+
+it("does not lose focus while typing", async () => {
+  const user = userEvent.setup();
+  const LocationAutocompleteInput = composeStory(
+    LocationAutocompleteInputStory,
+    Meta,
+  );
+  render(<LocationAutocompleteInput />);
+
+  expect(screen.queryByRole("listbox")).toBeNull();
+
+  const inputField = screen.getByLabelText("Location (demo)");
+  await user.click(inputField);
+  expect(inputField).toHaveFocus();
+  await user.keyboard("T");
+  expect(inputField).toHaveFocus();
+  await user.keyboard("u");
+  expect(inputField).toHaveFocus();
+});
