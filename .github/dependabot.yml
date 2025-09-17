@@ -7,10 +7,14 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+    cooldown:
+      default-days: 8
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
       interval: "weekly"
+    cooldown:
+      default-days: 8
     open-pull-requests-limit: 10
     groups:
       eslint:
@@ -68,6 +72,8 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+    cooldown:
+      default-days: 8
     allow:
       - dependency-type: "all"
     ignore:
