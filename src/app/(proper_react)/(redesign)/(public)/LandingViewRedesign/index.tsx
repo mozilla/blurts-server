@@ -68,7 +68,7 @@ export const View = (props: LandingPageProps) => {
           <LogoBlock l10n={props.l10n} />
         </section>
         <section className={styles.section}>
-          <Faq />
+          <Faq enabledFeatureFlags={props.enabledFeatureFlags} />
         </section>
         <section className={styles.section}>
           <CtaInputBanner {...props} />
