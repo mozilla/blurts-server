@@ -55,6 +55,7 @@ import {
   getScansCountForProfile,
   isEligibleForFreeScan,
 } from "../../../../../../../functions/server/moscary";
+import { connection } from "next/server";
 
 const dashboardTabSlugs = ["action-needed", "fixed"];
 
@@ -68,6 +69,7 @@ type Props = {
 };
 
 export default async function DashboardPage(props: Props) {
+  await connection();
   const searchParams = await props.searchParams;
   if (searchParams.dialog === "subscriptions") {
     return redirect("/subscription-plans");
