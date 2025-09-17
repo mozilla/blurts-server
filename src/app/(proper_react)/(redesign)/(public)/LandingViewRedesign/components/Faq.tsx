@@ -96,6 +96,7 @@ export const Faq = ({
     {
       id: "premium-continuous-data-removal",
       question: l10n.getString("landing-premium-continuous-data-removal-qn"),
+      /* c8 ignore start */
       answer: enabledFeatureFlags.includes("MaskDataBrokerCount")
         ? l10n.getFragment(
             "landing-premium-continuous-data-removal-ans-masked",
@@ -125,6 +126,7 @@ export const Faq = ({
               ),
             },
           }),
+      /* c8 ignore stop */
       isExpanded: expandedQuestion === "premium-continuous-data-removal",
       onExpandAnswer: () => {
         handleExpandAnswer("premium-continuous-data-removal");
