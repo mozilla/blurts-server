@@ -42,6 +42,11 @@ export function middleware(request: NextRequest) {
     },
   });
 
+  const gcpDetectedRegion = request.headers.get("X-Client-Region");
+  if (gcpDetectedRegion && process.env.APP_ENV === "stage") {
+    response.headers.append("X-Client-Region", gcpDetectedRegion);
+  }
+
   if (!existingExperimentationId) {
     response.cookies.set({
       name: "experimentationId",
