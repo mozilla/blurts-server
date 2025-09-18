@@ -2,12 +2,15 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import { useState } from "react";
 import { RelevantLocation } from "../../api/v1/location-autocomplete/types";
 import type { useLocationSuggestions as ogUseLocationSuggestions } from "../locationSuggestions";
 
-const mockSetFilterText = jest.fn();
+export const useLocationSuggestions: typeof ogUseLocationSuggestions = (
+  initialFilterText,
+) => {
+  const [filterText, setFilterText] = useState(initialFilterText);
 
-export const useLocationSuggestions: typeof ogUseLocationSuggestions = () => {
   const mockedReturnValue: Partial<
     ReturnType<typeof ogUseLocationSuggestions>
   > = {
@@ -23,8 +26,8 @@ export const useLocationSuggestions: typeof ogUseLocationSuggestions = () => {
         s: "AZ",
       },
     ] as RelevantLocation[],
-    setFilterText: mockSetFilterText,
-    filterText: "Tulsa, OK, USA",
+    setFilterText: setFilterText,
+    filterText: filterText,
     isLoading: false,
     loadingState: "idle",
   };

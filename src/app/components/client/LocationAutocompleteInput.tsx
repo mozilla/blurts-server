@@ -91,7 +91,7 @@ export const LocationAutocompleteInput = ({
           return (
             <Item key={relevantLocation.id} textValue={textValue}>
               <div className={styles.locationItem}>
-                <strong>{city}</strong>
+                <strong>{city}</strong>&nbsp;
                 <span>{`${state}, ${countryCode}`}</span>
               </div>
             </Item>
