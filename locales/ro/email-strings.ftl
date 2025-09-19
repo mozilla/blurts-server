@@ -13,6 +13,7 @@ email-header-button-sign-in = Intră în cont
 email-footer-support-heading = Întrebări despre { -brand-mozilla-monitor }?
 email-footer-support-content = Intră pe <support-link>Centrul nostru de asistență</support-link> pentru ajutor
 email-footer-trigger-transactional = Primești acest e-mail ca abonat la { -brand-mozilla-monitor }.
+email-footer-source-hibp = Datele privind încălcarea securității furnizate de <hibp-link>{ -brand-HIBP }</hibp-link>
 email-footer-logo-mozilla-alt = { -brand-mozilla }
 email-footer-meta-privacy-notice = Confidențialitate
 # Firefox Relay is a product name and should not be translated.
@@ -50,7 +51,9 @@ email-2022-hibp-attribution = Datele privind încălcările securității datelo
 
 ## Verification email
 
+email-verify-heading = Protejează-ți datele, începând chiar acum
 email-verify-subhead = Verifică-ți adresa de e-mail pentru a începe să-ți protejezi datele după o încălcare a securității datelor.
+email-verify-simply-click = Pur și simplu dă clic pe linkul de mai jos pentru a finaliza verificarea contului.
 
 ## Breach report
 
@@ -65,5 +68,6 @@ email-dashboard-cta = Mergi la tabloul de bord
 email-breach-alert-all-subject = A fost detectată o nouă încălcare a securității datelor
 email-breach-alert-all-preview = Te vom ghida prin pașii necesari pentru a o rezolva.
 email-breach-alert-all-hero-heading = Ai fost implicat(ă) într-o nouă încălcare a securității datelor
+email-breach-alert-all-hero-subheading = Nu-ți face griji, te putem ajuta să rezolvi această expunere
 email-breach-alert-all-next-steps-cta-label = Să începem
 email-breach-alert-all-next-steps-button-dashboard = Mergi la tabloul de bord
