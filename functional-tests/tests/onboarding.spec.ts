@@ -5,6 +5,11 @@
 import { test, expect } from "../fixtures/baseTest";
 import { test as authenticatedTest } from "../fixtures/authenticatedTest";
 import { getBaseTestEnvUrl } from "../utils/environment";
+import { FeatureFlagName } from "../../src/db/tables/featureFlags";
+
+// extend enabled local feature flags for testing purposes
+const extraFeatureFlags: FeatureFlagName[] = ["Moscary"];
+test.use({ extraLocalForcedFeatureFlags: extraFeatureFlags });
 
 test.describe(`Verify authentication [${process.env.E2E_TEST_ENV}]`, () => {
   test.beforeEach(async ({ page }) => {
