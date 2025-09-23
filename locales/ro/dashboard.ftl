@@ -32,12 +32,23 @@ exposure-chart-returning-user-upgrade-prompt = Adresa de domiciliu, membrii fami
 exposure-chart-returning-user-upgrade-prompt-cta = Începe o scanare gratuită
 exposure-chart-scan-in-progress-prompt = <b>Scanare în curs:</b> adresa, membrii familiei și altele nu sunt încă incluse.
 modal-active-number-of-exposures-title = Despre numărul tău de expuneri active
+# Variables:
+#   $limit (number) - Number of email addresses included in the plan
+modal-active-number-of-exposures-part-one-all =
+    { $limit ->
+        [one] Acest grafic include numărul total de cazuri în care am descoperit fiecare tip de date expuse în toate încălcările de securitate a datelor pentru maxim { $limit } adresă de e-mail pe care o monitorizezi în prezent.
+        [few] Acest grafic include numărul total de cazuri în care am descoperit fiecare tip de date expuse în toate încălcările de securitate a datelor pentru maxim { $limit } adrese de e-mail pe care le monitorizezi în prezent.
+       *[other] Acest grafic include numărul total de cazuri în care am descoperit fiecare tip de date expuse în toate încălcările de securitate a datelor pentru maxim { $limit } de adrese de e-mail pe care le monitorizezi în prezent.
+    }
 modal-active-number-of-exposures-part-two = De exemplu, dacă ai 10 expuneri ale numărului de telefon, ar putea însemna că un număr de telefon este expus pe 10 site-uri diferite sau că 2 numere de telefon diferite au fost expuse pe 5 site-uri diferite.
 modal-active-number-of-exposures-part-three-all = Odată rezolvate, vor fi adăugate la numărul total de expuneri fixe de pe pagina de Remediate.
 modal-fixed-number-of-exposures-title = Despre numărul tău de expuneri remediate
 modal-fixed-number-of-exposures-all = Acest grafic include numărul total de încălcări ale securității datelor care au fost remediate pentru toate adresele de e-mail pe care le monitorizezi. Odată ce expunerile sunt marcate ca remediate, vor fi adăugate la totalul de aici.
 modal-cta-ok = OK
 modal-cta-got-it = Am înțeles
+open-modal-alt = Deschide fereastra de dialog
+close-modal-alt = Închide fereastra de dialog
+open-tooltip-alt = Deschide sugestii
 progress-card-heres-what-we-fixed-headline-all = Iată ce ai remediat
 progress-card-manually-fixed-headline = Remediat manual
 dashboard-tab-label-action-needed = Necesită atenție

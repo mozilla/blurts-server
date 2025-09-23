@@ -69,6 +69,10 @@ type Props = {
 };
 
 export default async function DashboardPage(props: Props) {
+  // Calling `connection` forces everything below it to be excluded from
+  // prerendering. Technically the page was already dynamic,
+  // but interestingly enough this change seemed to fix the cache-like
+  // behavior we saw in MNTOR-4908.
   await connection();
   const searchParams = await props.searchParams;
   if (searchParams.dialog === "subscriptions") {

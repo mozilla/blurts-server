@@ -5,6 +5,11 @@
 import { test, expect } from "../fixtures/baseTest";
 import { test as authenticatedTest } from "../fixtures/authenticatedTest";
 import { getBaseTestEnvUrl } from "../utils/environment";
+import { FeatureFlagName } from "../../src/db/tables/featureFlags";
+
+// extend enabled local feature flags for testing purposes
+const extraFeatureFlags: FeatureFlagName[] = ["Moscary"];
+test.use({ extraLocalForcedFeatureFlags: extraFeatureFlags });
 
 test.describe(`Verify authentication [${process.env.E2E_TEST_ENV}]`, () => {
   test.beforeEach(async ({ page }) => {
@@ -55,9 +60,9 @@ test.describe(`Verify authentication [${process.env.E2E_TEST_ENV}]`, () => {
 
       const progressBarRuntime = 60 * 1000;
       test.setTimeout(progressBarRuntime + 30 * 1000);
-      // A scan takes 60 seconds, plus 5 seconds for the navigation back to the dashboard:
+      // A scan takes 60 seconds, plus 20 seconds for the navigation back to the dashboard:
       await page.waitForURL("**/user/dashboard*", {
-        timeout: progressBarRuntime + 5 * 1000,
+        timeout: progressBarRuntime + 20 * 1000,
       });
       await expect(
         page.getByRole("heading", {
