@@ -11,7 +11,7 @@ import { getL10n } from "../../../app/functions/l10n/storybookAndJest";
 import {
   createRandomBreach,
   createRandomHibpListing,
-  createRandomOnerepScanResult,
+  createRandomScanResult,
 } from "../../../apiMocks/mockData";
 import { getDashboardSummary } from "../../../app/functions/server/dashboard";
 import { defaultExperimentData } from "../../../telemetry/generated/nimbus/experiments";
@@ -76,7 +76,7 @@ export const BreachAlertEmailUsFreeWithScanStory: Story = {
     enabledFeatureFlags: [],
     experimentData: defaultExperimentData["Features"],
     dataSummary: getDashboardSummary(
-      Array.from({ length: 5 }, () => createRandomOnerepScanResult()),
+      Array.from({ length: 5 }, () => createRandomScanResult()),
       Array.from({ length: 5 }, () => createRandomBreach()),
     ),
     subscriber: {
@@ -115,7 +115,7 @@ export const BreachAlertEmailUsPlusWithScanStory: Story = {
       },
     } as SubscriberRow,
     dataSummary: getDashboardSummary(
-      Array.from({ length: 5 }, () => createRandomOnerepScanResult()),
+      Array.from({ length: 5 }, () => createRandomScanResult()),
       Array.from({ length: 5 }, () => createRandomBreach()),
     ),
   },
@@ -131,7 +131,7 @@ export const BreachAlertEmailDisabledScans: Story = {
       onerep_profile_id: 1,
     } as SubscriberRow,
     dataSummary: getDashboardSummary(
-      Array.from({ length: 5 }, () => createRandomOnerepScanResult()),
+      Array.from({ length: 5 }, () => createRandomScanResult()),
       Array.from({ length: 5 }, () => createRandomBreach()),
     ),
   },

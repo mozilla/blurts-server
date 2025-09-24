@@ -15,10 +15,9 @@ import { ScanResultCard } from "../../../../../../../../../components/client/exp
 import { FeatureFlagName } from "../../../../../../../../../../db/tables/featureFlags";
 import { isOneRepScanResult } from "../../../../../../../../../functions/universal/onerep";
 import type { resolveScanResult } from "./actions";
-import type { MoscaryData } from "../../../../../../../../../functions/server/moscary";
 
 export type Props = {
-  scanResult: OnerepScanResultDataBrokerRow | MoscaryData["ScanResult"];
+  scanResult: OnerepScanResultDataBrokerRow;
   isPremiumUser: boolean;
   isEligibleForPremium: boolean;
   isExpanded: boolean;
@@ -48,8 +47,6 @@ export const RemovalCard = (props: Props) => {
       } catch {
         setIsResolved(false);
       }
-      // MNTOR-4531: OneRep code paths will be phased out:
-      /* c8 ignore next 13 */
     } else {
       const response = await fetch(
         `/api/v1/user/scan-result/${props.scanResult.onerep_scan_result_id}/resolution`,
@@ -75,7 +72,7 @@ export const RemovalCard = (props: Props) => {
         {
           ...props.scanResult,
           manually_resolved: isResolved,
-        } as OnerepScanResultDataBrokerRow | MoscaryData["ScanResult"]
+        } as OnerepScanResultDataBrokerRow
       }
       isOnManualRemovePage={true}
       isPremiumUser={props.isPremiumUser}

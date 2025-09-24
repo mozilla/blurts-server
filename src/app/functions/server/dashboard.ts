@@ -8,7 +8,6 @@ import { RemovalStatusMap } from "../universal/scanResult";
 import { SubscriberBreach } from "../../../utils/subscriberBreaches";
 import { DataBrokerRemovalStatusMap } from "../universal/dataBroker";
 import { FeatureFlagName } from "../../../db/tables/featureFlags";
-import type { MoscaryData } from "./moscary";
 import { isOneRepScanResultDataBroker } from "../../functions/universal/onerep";
 
 export type DataPoints = {
@@ -98,7 +97,7 @@ export const dataClassKeyMap: Record<keyof DataPoints, string> = {
 };
 
 export function getDashboardSummary(
-  scannedResults: OnerepScanResultDataBrokerRow[] | MoscaryData["ScanResult"][],
+  scannedResults: OnerepScanResultDataBrokerRow[],
   subscriberBreaches: SubscriberBreach[],
   enabledFeatureFlags?: FeatureFlagName[],
 ): DashboardSummary {

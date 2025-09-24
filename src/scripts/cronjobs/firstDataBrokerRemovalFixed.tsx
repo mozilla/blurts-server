@@ -20,17 +20,11 @@ import { refreshStoredScanResults } from "../../app/functions/server/refreshStor
 import { getScanResultsWithBroker } from "../../db/tables/onerep_scans";
 import { hasPremium } from "../../app/functions/universal/user";
 import { logger } from "../../app/functions/server/logging";
-import {
-  getScanAndResults,
-  MoscaryData,
-} from "../../app/functions/server/moscary";
 import { parseIso8601Datetime } from "../../utils/parse";
 
 type SubscriberFirstRemovedScanResult = {
   subscriber: SubscriberRow;
-  firstRemovedScanResult:
-    | OnerepScanResultDataBrokerRow
-    | MoscaryData["ScanResult"];
+  firstRemovedScanResult: OnerepScanResultDataBrokerRow;
 };
 
 process.on("SIGINT", () => {
@@ -74,12 +68,10 @@ async function run() {
           if (subscriber.onerep_profile_id !== null) {
             await refreshStoredScanResults(subscriber.onerep_profile_id);
           }
-          const latestScan = subscriber.moscary_id
-            ? await getScanAndResults(subscriber.moscary_id)
-            : await getScanResultsWithBroker(
-                subscriber.onerep_profile_id,
-                hasPremium(subscriber),
-              );
+          const latestScan = await getScanResultsWithBroker(
+            subscriber.onerep_profile_id,
+            hasPremium(subscriber),
+          );
 
           let firstRemovedScanResult = null;
           for (const scanResult of latestScan.results) {
@@ -138,7 +130,7 @@ async function run() {
 
 async function sendFirstDataBrokerRemovalFixedActivityEmail(
   subscriber: SubscriberRow,
-  scanResult: OnerepScanResultRow | MoscaryData["ScanResult"],
+  scanResult: OnerepScanResultRow,
 ) {
   const sanitizedSubscriber = sanitizeSubscriberRow(subscriber);
   const l10n = getCronjobL10n(sanitizedSubscriber);
