@@ -20,17 +20,6 @@ import { getCountryCode } from "../../../../../../../../../functions/server/getC
 import { getSubscriberEmails } from "../../../../../../../../../functions/server/getSubscriberEmails";
 import { isEligibleForPremium } from "../../../../../../../../../functions/universal/premium";
 import { getEnabledFeatureFlags } from "../../../../../../../../../../db/tables/featureFlags";
-import {
-  getScanAndResults,
-  ScanData,
-} from "../../../../../../../../../functions/server/moscary";
-import { getExperimentationIdFromUserSession } from "../../../../../../../../../functions/server/getExperimentationId";
-import { getExperiments } from "../../../../../../../../../functions/server/getExperiments";
-import { getLocale } from "../../../../../../../../../functions/universal/getLocale";
-import {
-  getAcceptLangHeaderInServerComponents,
-  getL10n,
-} from "../../../../../../../../../functions/l10n/serverComponents";
 import { resolveScanResult } from "./actions";
 
 export default async function ManualRemovePage() {
@@ -45,14 +34,6 @@ export default async function ManualRemovePage() {
   });
 
   const countryCode = getCountryCode(await headers());
-  const experimentationId = await getExperimentationIdFromUserSession(
-    session.user,
-  );
-  const experimentData = await getExperiments({
-    experimentationId,
-    countryCode,
-    locale: getLocale(getL10n(await getAcceptLangHeaderInServerComponents())),
-  });
 
   const subscriber = await getSubscriberByFxaUid(
     session.user.subscriber.fxa_uid,
@@ -60,21 +41,12 @@ export default async function ManualRemovePage() {
   if (!subscriber) {
     redirect("/user/dashboard");
   }
-  let scanData: LatestOnerepScanData | ScanData;
-  if (
-    enabledFeatureFlags.includes("Moscary") ||
-    experimentData["Features"]["moscary"].enabled
-  ) {
-    scanData = subscriber.moscary_id
-      ? await getScanAndResults(subscriber.moscary_id)
-      : { scan: null, results: [] };
-  } else {
-    const profileId = await getOnerepProfileId(subscriber.id);
-    scanData = await getScanResultsWithBroker(
-      profileId,
-      hasPremium(session.user),
-    );
-  }
+  const profileId = await getOnerepProfileId(subscriber.id);
+  const scanData: LatestOnerepScanData = await getScanResultsWithBroker(
+    profileId,
+    hasPremium(session.user),
+  );
+
   const subBreaches = await getSubscriberBreaches({
     fxaUid: subscriber.fxa_uid,
     countryCode,

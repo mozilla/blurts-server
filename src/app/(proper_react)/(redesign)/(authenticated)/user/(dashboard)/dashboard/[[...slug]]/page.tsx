@@ -49,12 +49,6 @@ import {
 } from "../../../../../../../functions/l10n/serverComponents";
 import { getDataBrokerRemovalTimeEstimates } from "../../../../../../../functions/server/getDataBrokerRemovalTimeEstimates";
 import { initializeUserAnnouncements } from "../../../../../../../../db/tables/user_announcements";
-import {
-  fetchLatestScanForProfile,
-  getScanAndResults,
-  getScansCountForProfile,
-  isEligibleForFreeScan,
-} from "../../../../../../../functions/server/moscary";
 import { connection } from "next/server";
 
 const dashboardTabSlugs = ["action-needed", "fixed"];
@@ -121,32 +115,22 @@ export default async function DashboardPage(props: Props) {
   });
 
   let hasRunScan = false;
-  let onerepProfileId: number | null = null;
-  if (
-    typeof subscriber.moscary_id !== "undefined" &&
-    subscriber.moscary_id !== null
-  ) {
+  const onerepProfileId: number | null = await getOnerepProfileId(
+    subscriber.id,
+  );
+  if (typeof onerepProfileId === "number") {
     hasRunScan = true;
-  } else if (
-    !(
-      enabledFeatureFlags.includes("Moscary") ||
-      experimentData["Features"]["moscary"].enabled
-    )
-  ) {
-    onerepProfileId = await getOnerepProfileId(subscriber.id);
-    if (typeof onerepProfileId === "number") {
-      hasRunScan = true;
-      await refreshStoredScanResults(onerepProfileId);
+    await refreshStoredScanResults(onerepProfileId);
 
-      // If the current user is a subscriber and their OneRep profile is not
-      // activated: Most likely we were not able or failed to kick-off the
-      // auto-removal process.
-      // Let’s make sure the users OneRep profile is activated:
-      if (isPremiumUser) {
-        await activateAndOptoutProfile({ profileId: onerepProfileId });
-      }
+    // If the current user is a subscriber and their OneRep profile is not
+    // activated: Most likely we were not able or failed to kick-off the
+    // auto-removal process.
+    // Let’s make sure the users OneRep profile is activated:
+    if (isPremiumUser) {
+      await activateAndOptoutProfile({ profileId: onerepProfileId });
     }
   }
+
   const isNewUser = !isPrePlusUser(session.user);
 
   if (
@@ -166,11 +150,10 @@ export default async function DashboardPage(props: Props) {
     countryCode,
   });
 
-  const userIsEligibleForFreeScan =
-    enabledFeatureFlags.includes("Moscary") ||
-    experimentData["Features"]["moscary"].enabled
-      ? await isEligibleForFreeScan(session.user, countryCode)
-      : await isEligibleForFreeOnerepScan(session.user, countryCode);
+  const userIsEligibleForFreeScan = await isEligibleForFreeOnerepScan(
+    session.user,
+    countryCode,
+  );
   const userIsEligibleForPremium = isEligibleForPremium(countryCode);
 
   const monthlySubscriptionUrl = getPremiumSubscriptionUrl({
@@ -192,17 +175,9 @@ export default async function DashboardPage(props: Props) {
         `${enabledFeatureFlags.includes("SubPlat3") ? "?" : "&"}${additionalSubplatParams.toString()}`
       : "";
   const elapsedTimeInDaysSinceInitialScan =
-    await getElapsedTimeInDaysSinceInitialScan(
-      subscriber,
-      enabledFeatureFlags,
-      experimentData["Features"],
-    );
+    await getElapsedTimeInDaysSinceInitialScan(subscriber);
 
-  const userAnnouncements = await initializeUserAnnouncements(
-    session.user,
-    enabledFeatureFlags,
-    experimentData["Features"],
-  );
+  const userAnnouncements = await initializeUserAnnouncements(session.user);
 
   const signInCount = await getSignInCount(subscriber.id);
 
@@ -210,41 +185,21 @@ export default async function DashboardPage(props: Props) {
     enabledFeatureFlags.includes("CustomDataBrokers") &&
     process.env.APP_ENV !== "production";
 
-  const scanResults =
-    (enabledFeatureFlags.includes("Moscary") ||
-      experimentData["Features"]["moscary"].enabled) &&
-    subscriber.moscary_id
-      ? await getScanAndResults(subscriber.moscary_id)
-      : useMockedScans
-        ? await getMockedScanResults(onerepProfileId)
-        : await getScanResultsWithBroker(
-            onerepProfileId,
-            hasPremium(session.user),
-          );
+  const scanResults = useMockedScans
+    ? await getMockedScanResults(onerepProfileId)
+    : await getScanResultsWithBroker(onerepProfileId, hasPremium(session.user));
 
   const scanCount =
-    (enabledFeatureFlags.includes("Moscary") ||
-      experimentData["Features"]["moscary"].enabled) &&
-    subscriber.moscary_id
-      ? await getScansCountForProfile(subscriber.moscary_id)
-      : typeof onerepProfileId === "number"
-        ? await getScansCountForOnerepProfile(onerepProfileId)
-        : 0;
+    typeof onerepProfileId === "number"
+      ? await getScansCountForOnerepProfile(onerepProfileId)
+      : 0;
 
-  const hasFirstMonitoringScan =
-    (enabledFeatureFlags.includes("Moscary") ||
-      experimentData["Features"]["moscary"].enabled) &&
-    subscriber.moscary_id
-      ? typeof (await fetchLatestScanForProfile(
-          subscriber.moscary_id,
-          "monitoring",
-        )) !== "undefined"
-      : onerepProfileId
-        ? typeof (await getLatestScanForProfileByReason(
-            onerepProfileId,
-            "monitoring",
-          )) !== "undefined"
-        : false;
+  const hasFirstMonitoringScan = onerepProfileId
+    ? typeof (await getLatestScanForProfileByReason(
+        onerepProfileId,
+        "monitoring",
+      )) !== "undefined"
+    : false;
 
   return (
     <View
