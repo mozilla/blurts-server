@@ -26,7 +26,7 @@ import { headers } from "next/headers";
 import { FirstDataBrokerRemovalFixed } from "../../../../../../emails/templates/firstDataBrokerRemovalFixed/FirstDataBrokerRemovalFixed";
 import {
   createRandomHibpListing,
-  createRandomOnerepScanResult,
+  createRandomScanResult,
 } from "../../../../../../apiMocks/mockData";
 import { BreachAlertEmail } from "../../../../../../emails/templates/breachAlert/BreachAlertEmail";
 import { SignupReportEmail } from "../../../../../../emails/templates/signupReport/SignupReportEmail";
@@ -291,7 +291,7 @@ export async function triggerBreachAlert(emailAddress: string) {
 export async function triggerFirstDataBrokerRemovalFixed(emailAddress: string) {
   const acceptLangHeader = await getAcceptLangHeaderInServerComponents();
   const l10n = getL10n(acceptLangHeader);
-  const randomScanResult = createRandomOnerepScanResult({ status: "removed" });
+  const randomScanResult = createRandomScanResult({ status: "removed" });
 
   await send(
     emailAddress,

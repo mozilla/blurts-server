@@ -124,6 +124,7 @@ it("shows the progress indicator on the manual resolution flow", () => {
 
 it("expands one card at a time", async () => {
   const user = userEvent.setup();
+  global.fetch = jest.fn().mockResolvedValueOnce({ ok: true });
   const ComposedManualRemoveView = composeStory(ManualRemoveViewStory, Meta);
   render(<ComposedManualRemoveView />);
   const expandButtons = screen.getAllByRole("button", {
@@ -145,6 +146,7 @@ it("expands one card at a time", async () => {
 
 it("closes previously active card onclick", async () => {
   const user = userEvent.setup();
+  global.fetch = jest.fn().mockResolvedValueOnce({ ok: true });
   const ComposedManualRemoveView = composeStory(ManualRemoveViewStory, Meta);
   render(<ComposedManualRemoveView />);
 

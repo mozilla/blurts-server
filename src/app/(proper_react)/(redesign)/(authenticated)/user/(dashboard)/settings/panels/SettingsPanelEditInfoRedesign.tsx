@@ -35,8 +35,6 @@ import { type onAddEmail, type onRemoveEmail } from "../actions";
 import { formatPhone } from "../../../../../../../functions/universal/formatPhone";
 import { FeatureFlagName } from "../../../../../../../../db/tables/featureFlags";
 import { UpsellLinkButton } from "../../../../../../../components/client/toolbar/UpsellBadge";
-import { MoscaryData } from "../../../../../../../functions/server/moscary";
-import { parseIso8601Datetime } from "../../../../../../../../utils/parse";
 
 export type SettingsPanelEditInfoRedesignProps = {
   breachCountByEmailAddress: Record<string, number>;
@@ -46,7 +44,7 @@ export type SettingsPanelEditInfoRedesignProps = {
   enabledFeatureFlags: FeatureFlagName[];
   user: Session["user"];
   data?: SubscriberEmailPreferencesOutput;
-  profileData?: OnerepProfileRow | MoscaryData["Profile"];
+  profileData?: OnerepProfileRow;
   actions: {
     onAddEmail: typeof onAddEmail;
     onRemoveEmail: typeof onRemoveEmail;
@@ -127,13 +125,11 @@ function MonitoredEmail(props: {
 function ProfileInfoSection({
   profileData,
 }: {
-  profileData: OnerepProfileRow | MoscaryData["Profile"];
+  profileData: OnerepProfileRow;
 }) {
   const l10n = useL10n();
   const { first_name, middle_name, last_name } = profileData;
-  const date_of_birth: Date | null =
-    (profileData as OnerepProfileRow).date_of_birth ??
-    parseIso8601Datetime((profileData as MoscaryData["Profile"]).birth_date);
+  const date_of_birth: Date = profileData.date_of_birth;
   const first_names = profileData.first_names;
   const middle_names = profileData.middle_names;
   const last_names = profileData.last_names;
@@ -180,14 +176,7 @@ function ProfileInfoSection({
               {l10n.getString("settings-details-about-you-phone-label")}
             </div>
             <div className={styles.detailContent}>
-              {formatPhone(
-                // MNTOR-4531: OneRep code paths will be phased out
-                // (OneRep has phone numbers as a string, Moscary as an object):
-                /* c8 ignore next 2 */
-                typeof phone_numbers[0] === "string"
-                  ? phone_numbers[0]
-                  : phone_numbers[0].number,
-              )}
+              {formatPhone(phone_numbers[0])}
               {phone_numbers.length > 1 && (
                 <span className={styles.detailMore}>
                   {l10n.getString("settings-details-about-you-more-indicator", {

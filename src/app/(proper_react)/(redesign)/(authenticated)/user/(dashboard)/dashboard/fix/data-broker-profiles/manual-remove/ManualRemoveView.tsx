@@ -165,8 +165,6 @@ export function ManualRemoveView(props: Props) {
               return (
                 <RemovalCard
                   key={
-                    // MNTOR-4531: OneRep code paths will be phased out:
-                    /* c8 ignore next 2 */
                     isOneRepScanResult(scanResult)
                       ? scanResult.onerep_scan_result_id
                       : scanResult.id

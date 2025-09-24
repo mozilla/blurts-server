@@ -13,7 +13,6 @@ import { hasPremium } from "../../../../../../../../functions/universal/user";
 import { useL10n } from "../../../../../../../../hooks/l10n";
 import { SubscriberEmailPreferencesOutput } from "../../../../../../../../../db/tables/subscriber_email_preferences";
 import { type onHandleUpdateProfileData } from "../../actions";
-import { MoscaryData } from "../../../../../../../../functions/server/moscary";
 
 export type SettingsPanelEditProfileProps = {
   breachCountByEmailAddress: Record<string, number>;
@@ -21,7 +20,7 @@ export type SettingsPanelEditProfileProps = {
   emailAddresses: SanitizedEmailAddressRow[];
   subscriber: SubscriberRow;
   user: Session["user"];
-  profileData?: OnerepProfileRow | MoscaryData["Profile"];
+  profileData?: OnerepProfileRow;
   actions: {
     onHandleUpdateProfileData: typeof onHandleUpdateProfileData;
   };
