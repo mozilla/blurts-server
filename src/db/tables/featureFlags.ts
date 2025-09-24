@@ -76,7 +76,6 @@ export const featureFlagNames = [
   "PrivacyProductsBundle",
   "DisableOneRepScans",
   "DisableLandingToDashboardRedirect",
-  "Moscary",
   "MaskDataBrokerCount",
 ] as const;
 
