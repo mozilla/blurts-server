@@ -28,9 +28,6 @@ export const Onboarding: Story = {
           enabled: true,
           variant: "suffixAndMiddleName",
         },
-        moscary: {
-          enabled: true,
-        },
       }}
       enabledFeatureFlags={[]}
     />
