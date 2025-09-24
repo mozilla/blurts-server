@@ -13,10 +13,9 @@ import { OnerepScanResultRow } from "knex/types/tables";
 import { getDataBrokerName } from "../../functions/universal/dataBrokerNames";
 import { OpenInNew } from "../server/Icons";
 import { useTelemetry } from "../../hooks/useTelemetry";
-import type { MoscaryData } from "../../functions/server/moscary";
 
 export type Props = {
-  data: OnerepScanResultRow[] | MoscaryData["ScanResult"][];
+  data: OnerepScanResultRow[];
 };
 
 export const DataBrokerProfiles = (props: Props) => {
@@ -80,7 +79,7 @@ export const DataBrokerProfiles = (props: Props) => {
 };
 
 export type DataBrokerProfileCardProps = {
-  data: OnerepScanResultRow | MoscaryData["ScanResult"];
+  data: OnerepScanResultRow;
 };
 
 export const DataBrokerProfileCard = (props: DataBrokerProfileCardProps) => {
