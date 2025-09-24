@@ -59,7 +59,6 @@
     "build-glean-backend-docs": "glean translate src/telemetry/backend-metrics.yaml --format markdown --output docs/telemetry/backend",
     "build-moscary-types": "node src/scripts/build/regenerateMoscaryTypes.js",
     "loadtest:hbibp-webhook": "echo 'Ensure k6 is installed; see:\n\thttps://grafana.com/docs/k6/latest/set-up/install-k6/\n' && k6 run src/scripts/loadtest/hibp.js",
-    "loadtest:moscary": "echo 'Ensure k6 is installed; see:\n\thttps://grafana.com/docs/k6/latest/set-up/install-k6/\n' && K6_WEB_DASHBOARD=true K6_WEB_DASHBOARD_EXPORT=src/scripts/loadtest/reports/$(date +'%Y-%m-%d')-moscary-report.html k6 run --out json=src/scripts/loadtest/reports/$(date +'%Y-%m-%d')-moscary-results.json src/scripts/loadtest/moscary.ts",
     "validate-nimbus": "sh src/scripts/build/validate-nimbus-file.sh",
     "lighthouse": "lhci autorun",
     "prepare": "husky",
