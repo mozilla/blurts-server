@@ -55,7 +55,6 @@
     "build-glean-docs": "npm run build-glean-frontend-docs && npm run build-glean-backend-docs",
     "build-glean-frontend-docs": "glean translate src/telemetry/metrics.yaml --format markdown --output docs/telemetry/frontent",
     "build-glean-backend-docs": "glean translate src/telemetry/backend-metrics.yaml --format markdown --output docs/telemetry/backend",
-    "build-moscary-types": "node src/scripts/build/regenerateMoscaryTypes.js",
     "loadtest:hibp-webhook": "echo 'Ensure k6 is installed; see:\n\thttps://grafana.com/docs/k6/latest/set-up/install-k6/\n' && K6_WEB_DASHBOARD=true K6_WEB_DASHBOARD_EXPORT=src/scripts/loadtest/reports/$(date +'%Y-%m-%d')-hibp-webhook-report.html k6 run --out json=src/scripts/loadtest/reports/$(date +'%Y-%m-%d')-hibp-webhook-results.json src/scripts/loadtest/hibp.js",
     "validate-nimbus": "sh src/scripts/build/validate-nimbus-file.sh",
     "lighthouse": "lhci autorun",
