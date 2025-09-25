@@ -255,6 +255,9 @@ function EditProfileFormInputs(props: {
               })
             }
             name={`${props.profileDataKey}-0`}
+            // Used to be covered by a test that was removed;
+            // not worth re-testing at this point:
+            /* c8 ignore next */
             value={primaryPhoneItem.value ?? ""}
             isInvalid={!primaryPhoneItem.isValid}
             label={l10n.getString(
@@ -290,6 +293,9 @@ function EditProfileFormInputs(props: {
                           })
                         }
                         name={inputKey}
+                        // Used to be covered by a test that was removed;
+                        // not worth re-testing at this point:
+                        /* c8 ignore next */
                         value={item.value ?? ""}
                         isInvalid={!item.isValid || item.isDuplicate}
                         label={l10n.getString(

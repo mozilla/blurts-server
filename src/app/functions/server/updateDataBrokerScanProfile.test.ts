@@ -50,11 +50,6 @@ jest.mock("./logging", () => {
   };
 });
 
-jest.mock("./moscary", () => ({
-  getProfile: jest.fn(),
-  updateProfile: jest.fn(),
-}));
-
 describe("Update broker scan profile (OneRep)", () => {
   it("does not throw errors when passing data to the relevant backends", async () => {
     jest.mock("../../../db/tables/onerep_profiles", () => ({
