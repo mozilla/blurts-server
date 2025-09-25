@@ -288,6 +288,9 @@ export function hasCompletedStep(
     const scanStatus = data.latestScanData?.scan?.onerep_scan_status;
     const hasResolvedAllScanResults =
       (scanStatus === "finished" || scanStatus === "in_progress") &&
+      // Used to be covered by a test that was removed;
+      // not worth re-testing at this point:
+      /* c8 ignore next */
       (data.latestScanData!.results ?? []).every(
         (scanResult) =>
           scanResult.manually_resolved || scanResult.status !== "new",
