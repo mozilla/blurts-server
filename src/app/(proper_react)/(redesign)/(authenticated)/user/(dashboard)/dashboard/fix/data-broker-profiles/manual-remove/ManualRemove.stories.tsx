@@ -3,7 +3,6 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import type { Meta, StoryObj } from "@storybook/nextjs";
-import { fn } from "storybook/test";
 import { OnerepScanRow } from "knex/types/tables";
 import { ManualRemoveView } from "./ManualRemoveView";
 import {
@@ -70,9 +69,6 @@ export const ManualRemoveViewStory: Story = {
           subscriberEmails={[]}
           isPremiumUser={hasPremium(user)}
           isEligibleForPremium={true}
-          resolveScanResult={
-            props.resolveScanResult ?? fn().mockName("resolveScanResult")
-          }
           enabledFeatureFlags={props.enabledFeatureFlags ?? []}
         />
       </Shell>
