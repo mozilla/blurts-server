@@ -7,7 +7,6 @@ import { LatestOnerepScanData } from "../../../db/tables/onerep_scans";
 import { SubscriberBreach } from "../../../utils/subscriberBreaches";
 import { BreachDataTypes, HighRiskDataTypes } from "../universal/breach";
 import { FeatureFlagName } from "../../../db/tables/featureFlags";
-import { isOneRepScanResultDataBroker } from "../universal/onerep";
 
 export type StepDeterminationData = {
   user: Session["user"];
@@ -153,8 +152,6 @@ export function isEligibleForStep(
     return (
       data.latestScanData?.results?.some((result) => {
         return (
-          // MNTOR-4893: "Removal under maintenance" isn't enabled (yet?) and therefore not supported on Moscary:
-          isOneRepScanResultDataBroker(result) &&
           result.broker_status === "removal_under_maintenance" &&
           result.status !== "removed" &&
           !result.manually_resolved
@@ -275,13 +272,7 @@ export function hasCompletedStep(
     return (
       data.latestScanData?.results?.every(
         (result) =>
-          !(
-            // Removal under maintenance isn't enabled (yet?) and therefore not supported on Moscary:
-            (
-              isOneRepScanResultDataBroker(result) &&
-              result.broker_status === "removal_under_maintenance"
-            )
-          ) ||
+          result.broker_status !== "removal_under_maintenance" ||
           result.status === "removed" ||
           result.manually_resolved,
         // MNTOR-3892
