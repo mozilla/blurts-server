@@ -7,7 +7,7 @@ import {
   OnerepProfileRow,
   SubscriberRow,
 } from "knex/types/tables";
-import { fn } from "@storybook/test";
+import { fn } from "storybook/test";
 import { SettingsView, TabType } from "../View";
 import { Shell } from "../../../../../Shell/Shell";
 import { defaultExperimentData } from "../../../../../../../../telemetry/generated/nimbus/experiments";

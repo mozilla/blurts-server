@@ -13,7 +13,6 @@ import { getLocale } from "../../../../../../../../../functions/universal/getLoc
 import { useTelemetry } from "../../../../../../../../../hooks/useTelemetry";
 import { ScanResultCard } from "../../../../../../../../../components/client/exposure_card/ScanResultCard";
 import { FeatureFlagName } from "../../../../../../../../../../db/tables/featureFlags";
-import { isOneRepScanResult } from "../../../../../../../../../functions/universal/onerep";
 import type { resolveScanResult } from "./actions";
 
 export type Props = {
@@ -41,24 +40,16 @@ export const RemovalCard = (props: Props) => {
 
   async function resolve() {
     setIsResolved(true);
-    if (!isOneRepScanResult(props.scanResult)) {
-      try {
-        await props.resolveScanResult(props.scanResult.id);
-      } catch {
-        setIsResolved(false);
-      }
-    } else {
-      const response = await fetch(
-        `/api/v1/user/scan-result/${props.scanResult.onerep_scan_result_id}/resolution`,
-        {
-          method: "POST",
-          credentials: "same-origin",
-        },
-      );
+    const response = await fetch(
+      `/api/v1/user/scan-result/${props.scanResult.onerep_scan_result_id}/resolution`,
+      {
+        method: "POST",
+        credentials: "same-origin",
+      },
+    );
 
-      if (!response.ok) {
-        setIsResolved(false);
-      }
+    if (!response.ok) {
+      setIsResolved(false);
     }
     // Ensure previously-visited pages that still have this scan result marked
     // as unfixed are removed from the cache. See
