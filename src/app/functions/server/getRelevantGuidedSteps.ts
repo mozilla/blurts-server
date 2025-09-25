@@ -7,16 +7,12 @@ import { LatestOnerepScanData } from "../../../db/tables/onerep_scans";
 import { SubscriberBreach } from "../../../utils/subscriberBreaches";
 import { BreachDataTypes, HighRiskDataTypes } from "../universal/breach";
 import { FeatureFlagName } from "../../../db/tables/featureFlags";
-import { ScanData } from "./moscary";
-import {
-  isOneRepScan,
-  isOneRepScanResultDataBroker,
-} from "../universal/onerep";
+import { isOneRepScanResultDataBroker } from "../universal/onerep";
 
 export type StepDeterminationData = {
   user: Session["user"];
   countryCode: string;
-  latestScanData: LatestOnerepScanData | ScanData | null;
+  latestScanData: LatestOnerepScanData | null;
   subscriberBreaches: SubscriberBreach[];
 };
 
@@ -298,9 +294,7 @@ export function hasCompletedStep(
     const hasRunScan =
       typeof data.latestScanData?.scan === "object" &&
       data.latestScanData?.scan !== null;
-    const scanStatus = isOneRepScan(data.latestScanData?.scan)
-      ? data.latestScanData.scan.onerep_scan_status
-      : (data.latestScanData as ScanData | null)?.scan?.status;
+    const scanStatus = data.latestScanData?.scan?.onerep_scan_status;
     const hasResolvedAllScanResults =
       (scanStatus === "finished" || scanStatus === "in_progress") &&
       (data.latestScanData!.results ?? []).every(

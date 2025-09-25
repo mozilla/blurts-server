@@ -60,7 +60,6 @@ import { useLocalDismissal } from "../../../../../../hooks/useLocalDismissal";
 import { DataBrokerRemovalTime } from "../../../../../../functions/server/getDataBrokerRemovalTimeEstimates";
 import { UserAnnouncementWithDetails } from "../../../../../../../db/tables/user_announcements";
 import { parseIso8601Datetime } from "../../../../../../../utils/parse";
-import { isOneRepScanResultDataBroker } from "../../../../../../functions/universal/onerep";
 
 export type TabType = "action-needed" | "fixed";
 
@@ -627,9 +626,7 @@ export function isDataBrokerUnderMaintenance(
 ): boolean {
   return (
     isScanResult(exposure) &&
-    (isOneRepScanResultDataBroker(exposure)
-      ? exposure.broker_status
-      : exposure.status) === "removal_under_maintenance" &&
+    exposure.broker_status === "removal_under_maintenance" &&
     exposure.status !== "removed"
   );
 }
