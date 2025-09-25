@@ -47,7 +47,6 @@ import {
 import { getScanResultsWithBroker } from "../../db/tables/onerep_scans";
 import { logger } from "../../app/functions/server/logging";
 import { getFeatureFlagData } from "../../db/tables/featureFlags";
-import { getScanAndResults } from "../../app/functions/server/moscary";
 import { getExperimentationIdFromSubscriber } from "../../app/functions/server/getExperimentationId";
 import { getExperiments } from "../../app/functions/server/getExperiments";
 import { getLocale } from "../../app/functions/universal/getLocale";
@@ -374,12 +373,10 @@ async function getDataSummary(
     fxaUid: recipient.fxa_uid,
     countryCode: assumedCountryCode,
   });
-  const scanData = recipient.moscary_id
-    ? await getScanAndResults(recipient.moscary_id)
-    : await getScanResultsWithBroker(
-        recipient.onerep_profile_id,
-        hasPremium(recipient),
-      );
+  const scanData = await getScanResultsWithBroker(
+    recipient.onerep_profile_id,
+    hasPremium(recipient),
+  );
   return getDashboardSummary(scanData.results, allSubscriberBreaches);
 }
 

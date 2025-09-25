@@ -8,7 +8,6 @@ import { RemovalStatusMap } from "../universal/scanResult";
 import { SubscriberBreach } from "../../../utils/subscriberBreaches";
 import { DataBrokerRemovalStatusMap } from "../universal/dataBroker";
 import { FeatureFlagName } from "../../../db/tables/featureFlags";
-import { isOneRepScanResultDataBroker } from "../../functions/universal/onerep";
 
 export type DataPoints = {
   // shared
@@ -212,8 +211,7 @@ export function getDashboardSummary(
       // If the flag is disabled, include the data.
       // If the flag is enabled, include the data only if the broker status is not
       const isRemovalUnderMaintenance =
-        (isOneRepScanResultDataBroker(r) ? r.broker_status : r.status) ===
-        DataBrokerRemovalStatusMap.RemovalUnderMaintenance;
+        r.broker_status === DataBrokerRemovalStatusMap.RemovalUnderMaintenance;
 
       // The condition ensures that removal under maintenance is only considered when the flag is enabled.
       /* c8 ignore next 3 */
