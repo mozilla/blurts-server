@@ -7,7 +7,6 @@
 import { ReactElement, ReactNode, RefObject, useRef } from "react";
 import { AriaListBoxOptions, useListBox, useOption } from "react-aria";
 import { ListState } from "react-stately";
-import { useElementWidth } from "../../hooks/useElementWidth";
 import styles from "./ListBox.module.scss";
 
 export interface OptionProps extends AriaListBoxOptions<unknown> {
@@ -45,27 +44,21 @@ function Option({ item, state }: OptionProps) {
 export interface ListBoxProps extends AriaListBoxOptions<unknown> {
   state: ListState<object>;
   listBoxRef: RefObject<HTMLUListElement | null>;
-  parentRef?: RefObject<HTMLInputElement | null>;
   listPlaceholder?: ReactElement;
 }
 
 // TODO: Add unit test when changing this code:
 /* c8 ignore start */
 function ListBox(props: ListBoxProps) {
-  const { listBoxRef, parentRef, state, listPlaceholder } = props;
+  const { listBoxRef, state, listPlaceholder } = props;
   const { listBoxProps } = useListBox(props, state, listBoxRef);
-
-  const parentWidth = useElementWidth(parentRef);
 
   return (
     <ul
       {...listBoxProps}
       ref={listBoxRef}
       className={styles.listBox}
-      style={{
-        ...listBoxProps.style,
-        ...(parentWidth && { width: `${parentWidth}px` }),
-      }}
+      style={listBoxProps.style}
     >
       {[...state.collection].map((item) => (
         <Option key={item.key} item={item} state={state} />
