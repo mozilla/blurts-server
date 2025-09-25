@@ -554,7 +554,7 @@ async function fetchAllPages<Data>(
 // Local instance map to cache results to prevent excessive API requests
 // Would be nice to share this cache with other pod via Redis in the future
 const profileStatsCache = new Map<string, ProfileStats>();
-/** @deprecated Only used to check whether we've hit OneRep quota compared to env vars, so doesn't need Moscary equialent check whether we've hit OneRep quota compared to env vars, so doesn't need Moscary equialents. */
+/** @deprecated Only used to check whether we've hit OneRep quota compared to env vars. */
 export async function getProfilesStats(
   from?: Date,
   to?: Date,

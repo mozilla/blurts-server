@@ -49,15 +49,8 @@ async function run() {
       `Could not send first data broker removal fixed emails, because the env var FIRST_DATA_BROKER_REMOVAL_FIXED_EMAIL_BATCH_SIZE has a non-numeric value: [${process.env.FIRST_DATA_BROKER_REMOVAL_FIXED_EMAIL_BATCH_SIZE}].`,
     );
   }
-  const potentialSubscribersToEmail = (
-    await getPotentialSubscribersWaitingForFirstDataBrokerRemovalFixedEmail({
-      stillOnOnerep: true,
-    })
-  ).concat(
-    await getPotentialSubscribersWaitingForFirstDataBrokerRemovalFixedEmail({
-      stillOnOnerep: false,
-    }),
-  );
+  const potentialSubscribersToEmail =
+    await getPotentialSubscribersWaitingForFirstDataBrokerRemovalFixedEmail();
 
   const subscribersToEmailWithData = (
     await Promise.allSettled(
