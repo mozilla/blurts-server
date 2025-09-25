@@ -13,7 +13,6 @@ import { getLocale } from "../../../../../../../../../functions/universal/getLoc
 import { useTelemetry } from "../../../../../../../../../hooks/useTelemetry";
 import { ScanResultCard } from "../../../../../../../../../components/client/exposure_card/ScanResultCard";
 import { FeatureFlagName } from "../../../../../../../../../../db/tables/featureFlags";
-import type { resolveScanResult } from "./actions";
 
 export type Props = {
   scanResult: OnerepScanResultDataBrokerRow;
@@ -22,7 +21,6 @@ export type Props = {
   isExpanded: boolean;
   enabledFeatureFlags: FeatureFlagName[];
   setExpanded: () => void;
-  resolveScanResult: typeof resolveScanResult;
 };
 
 export const RemovalCard = (props: Props) => {

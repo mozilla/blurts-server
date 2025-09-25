@@ -611,19 +611,6 @@ async function joinEmailAddressesToSubscriber(
 /* c8 ignore start */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-async function deleteMoscaryId(subscriberId: SubscriberRow["id"]) {
-  return await knex("subscribers").where("id", subscriberId).update({
-    moscary_id: null,
-    // @ts-ignore knex.fn.now() results in it being set to a date,
-    // even if it's not typed as a JS date object:
-    updated_at: knex.fn.now(),
-  });
-}
-/* c8 ignore stop */
-
-/* c8 ignore start */
-// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
-/* c8 ignore start */
 /** @deprecated */
 async function deleteOnerepProfileId(subscriberId: SubscriberRow["id"]) {
   return await knex("subscribers").where("id", subscriberId).update({
@@ -708,7 +695,6 @@ export {
   deleteUnverifiedSubscribers,
   deleteSubscriber,
   deleteResolutionsWithEmail,
-  deleteMoscaryId,
   deleteOnerepProfileId,
   incrementSignInCountForEligibleFreeUser,
   getSignInCount,

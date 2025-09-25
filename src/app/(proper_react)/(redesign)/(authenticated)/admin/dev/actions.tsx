@@ -17,12 +17,6 @@ import {
 import { updateOnerepDataBrokerScanProfile } from "../../../../../functions/server/updateDataBrokerScanProfile";
 import { getAllScansForProfile } from "../../../../../../db/tables/onerep_scans";
 import { refreshStoredScanResults } from "../../../../../functions/server/refreshStoredScanResults";
-import {
-  getProfile as moscary_getProfile,
-  createScan as moscary_createScan,
-  listScans,
-} from "../../../../../functions/server/moscary";
-import { UUID } from "node:crypto";
 
 export async function lookupFxaUid(emailHash: string) {
   const session = await getServerSession();
@@ -57,23 +51,6 @@ export async function getOnerepProfile(onerepProfileId: number) {
       local: await getProfileDetails(onerepProfileId),
       remote: await onerep_getProfile(onerepProfileId),
     };
-  } catch (error) {
-    console.error("Could not get profile details:", error);
-  }
-}
-
-export async function getMoscaryProfile(moscaryProfileId: UUID) {
-  const session = await getServerSession();
-  if (
-    !session?.user?.email ||
-    !isAdmin(session.user.email) ||
-    process.env.APP_ENV === "production"
-  ) {
-    return notFound();
-  }
-
-  try {
-    return await moscary_getProfile(moscaryProfileId);
   } catch (error) {
     console.error("Could not get profile details:", error);
   }
@@ -134,42 +111,6 @@ export async function triggerManualOnerepProfileScan(onerepProfileId: number) {
   try {
     const scanResult = await onerep_createScan(onerepProfileId);
     await refreshStoredScanResults(onerepProfileId);
-    return scanResult;
-  } catch (error) {
-    console.error("Manual scan triggered by admin failed:", error);
-  }
-}
-
-export async function getAllMoscaryProfileScans(moscaryProfileId: UUID) {
-  const session = await getServerSession();
-  if (
-    !session?.user?.email ||
-    !isAdmin(session.user.email) ||
-    process.env.APP_ENV === "production"
-  ) {
-    return notFound();
-  }
-
-  try {
-    return (await listScans(moscaryProfileId)).data;
-  } catch (error) {
-    console.error("Getting all profile scans failed:", error);
-  }
-}
-
-export async function triggerManualMoscaryProfileScan(moscaryProfileId: UUID) {
-  const session = await getServerSession();
-  if (
-    !session?.user?.email ||
-    !isAdmin(session.user.email) ||
-    process.env.APP_ENV === "production"
-  ) {
-    return notFound();
-  }
-  console.info("Manual Moscary scan initiated by admin for:", moscaryProfileId);
-
-  try {
-    const scanResult = await moscary_createScan(moscaryProfileId);
     return scanResult;
   } catch (error) {
     console.error("Manual scan triggered by admin failed:", error);

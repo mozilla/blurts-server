@@ -20,7 +20,6 @@ import { getCountryCode } from "../../../../../../../../../functions/server/getC
 import { getSubscriberEmails } from "../../../../../../../../../functions/server/getSubscriberEmails";
 import { isEligibleForPremium } from "../../../../../../../../../functions/universal/premium";
 import { getEnabledFeatureFlags } from "../../../../../../../../../../db/tables/featureFlags";
-import { resolveScanResult } from "./actions";
 
 export default async function ManualRemovePage() {
   const session = await getServerSession();
@@ -62,7 +61,6 @@ export default async function ManualRemovePage() {
       user={session.user}
       countryCode={countryCode}
       subscriberEmails={subscriberEmails}
-      resolveScanResult={resolveScanResult}
       enabledFeatureFlags={enabledFeatureFlags}
     />
   );

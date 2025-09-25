@@ -27,7 +27,6 @@ import { FixView } from "../../FixView";
 import { TelemetryButton } from "../../../../../../../../../components/client/TelemetryButton";
 import { UpsellLinkButton } from "../../../../../../../../../components/client/toolbar/UpsellBadge";
 import type { FeatureFlagName } from "../../../../../../../../../../db/tables/featureFlags";
-import type { resolveScanResult } from "./actions";
 
 export type Props = {
   scanData: LatestOnerepScanData;
@@ -37,7 +36,6 @@ export type Props = {
   user: Session["user"];
   countryCode: string;
   subscriberEmails: string[];
-  resolveScanResult: typeof resolveScanResult;
   enabledFeatureFlags: FeatureFlagName[];
 };
 
@@ -174,7 +172,6 @@ export function ManualRemoveView(props: Props) {
                       setActiveExposureCardKey(index);
                     }
                   }}
-                  resolveScanResult={props.resolveScanResult}
                   enabledFeatureFlags={props.enabledFeatureFlags}
                 />
               );

@@ -15,7 +15,6 @@ import { RemovalStatus } from "../universal/scanResult.js";
 import { logger } from "./logging";
 import { hasPremium } from "../universal/user.ts";
 import { OnerepProfileAddress } from "knex/types/tables";
-import { getScanAndResults } from "./moscary.ts";
 import { isUsingMockONEREPEndpoint } from "../universal/mock.ts";
 
 export const monthlyScansQuota = parseInt(
@@ -470,24 +469,15 @@ export async function isEligibleForFreeScan(
     throw new Error("No session with a known subscriber found");
   }
 
-  if (user.subscriber.moscary_id) {
-    const scanResult = await getScanAndResults(user.subscriber.moscary_id);
+  const profileId = await getOnerepProfileId(user.subscriber.id);
+  const scanResult = await getScanResultsWithBroker(
+    profileId,
+    hasPremium(user),
+  );
 
-    if (scanResult.scan) {
-      logger.warn("User has already used free scan");
-      return false;
-    }
-  } else {
-    const profileId = await getOnerepProfileId(user.subscriber.id);
-    const scanResult = await getScanResultsWithBroker(
-      profileId,
-      hasPremium(user),
-    );
-
-    if (scanResult.scan) {
-      logger.warn("User has already used free scan");
-      return false;
-    }
+  if (scanResult.scan) {
+    logger.warn("User has already used free scan");
+    return false;
   }
 
   return true;

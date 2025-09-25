@@ -9,7 +9,6 @@ import { getServerSession } from "../../../../../functions/server/getServerSessi
 import { logger } from "../../../../../functions/server/logging";
 import { isAdmin } from "../../../../utils/auth";
 import {
-  deleteMoscaryId,
   deleteOnerepProfileId,
   deleteSubscriber,
   getOnerepProfileId,
@@ -27,11 +26,6 @@ import {
 } from "../../../../../../db/tables/onerep_scans";
 import { changeSubscription } from "../../../../../functions/server/changeSubscription";
 import { isMozMail } from "../../../../../functions/universal/isMozMail";
-import {
-  activateProfile,
-  deactivateProfile,
-  deleteProfile,
-} from "../../../../../functions/server/moscary";
 
 export type GetUserStateResponseBody = {
   success: true;
@@ -182,9 +176,6 @@ export async function PUT(
             await changeSubscription(subscriber, true);
 
             // activate and opt out profiles, if any
-            if (subscriber.moscary_id) {
-              await activateProfile(subscriber.moscary_id);
-            }
             if (typeof onerepProfileId === "number") {
               await activateOnerepProfile(onerepProfileId);
               await optoutOnerepProfile(onerepProfileId);
@@ -198,9 +189,6 @@ export async function PUT(
           case "unsubscribe": {
             await changeSubscription(subscriber, false);
 
-            if (subscriber.moscary_id) {
-              await deactivateProfile(subscriber.moscary_id);
-            }
             if (typeof onerepProfileId === "number") {
               await deactivateOnerepProfile(onerepProfileId);
             }
@@ -211,12 +199,6 @@ export async function PUT(
             break;
           }
           case "delete_onerep_profile": {
-            if (subscriber.moscary_id) {
-              await deactivateProfile(subscriber.moscary_id);
-              await deleteProfile(subscriber.moscary_id);
-              await deleteMoscaryId(subscriber.id);
-            }
-
             if (typeof onerepProfileId !== "number") {
               throw new Error(
                 `Could not force-delete the OneRep profile of subscriber [${fxaUid}], as they do not have a OneRep profile known to us.`,
