@@ -84,7 +84,7 @@ export const MonthlyActivityFreeEmail = (
   };
 
   const unlockWithMonitorPlusCta = modifyAttributionsForUrl(
-    `${process.env.SERVER_URL}/link/subscribe/yearly`,
+    `${process.env.SERVER_URL}/link/subscribe/monthly`,
     {
       ...replaceValues,
       utm_content: `unlock-with-monitor-plus${utmContentSuffix}`,

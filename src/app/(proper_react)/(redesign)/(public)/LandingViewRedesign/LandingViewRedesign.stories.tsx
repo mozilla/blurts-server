@@ -63,10 +63,6 @@ const meta: Meta<typeof View> = {
                 type: "monthly",
                 enabledFeatureFlags,
               }),
-              yearly: getPremiumSubscriptionUrl({
-                type: "yearly",
-                enabledFeatureFlags,
-              }),
               bundle: getPremiumSubscriptionUrl({
                 type: "bundle",
                 enabledFeatureFlags,

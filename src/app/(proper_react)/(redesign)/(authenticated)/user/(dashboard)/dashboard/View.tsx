@@ -81,9 +81,7 @@ export type Props = {
   isEligibleForFreeScan: boolean;
   isEligibleForPremium: boolean;
   monthlySubscriptionUrl: string;
-  yearlySubscriptionUrl: string;
   subscriptionBillingAmount: {
-    yearly: number;
     monthly: number;
   };
   fxaSettingsUrl: string;
@@ -536,7 +534,6 @@ export const View = (props: Props) => {
       <Toolbar
         user={props.user}
         monthlySubscriptionUrl={props.monthlySubscriptionUrl}
-        yearlySubscriptionUrl={props.yearlySubscriptionUrl}
         subscriptionBillingAmount={props.subscriptionBillingAmount}
         fxaSettingsUrl={props.fxaSettingsUrl}
         lastScanDate={

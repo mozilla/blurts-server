@@ -37,10 +37,6 @@ export const PricingPlans = (props: LandingPageProps) => {
             type: "monthly",
             enabledFeatureFlags: props.enabledFeatureFlags,
           }),
-          yearly: getPremiumSubscriptionUrl({
-            type: "yearly",
-            enabledFeatureFlags: props.enabledFeatureFlags,
-          }),
         }}
         subscriptionBillingAmount={getSubscriptionBillingAmount()}
         scanLimitReached={props.scanLimitReached}

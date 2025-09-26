@@ -4,15 +4,10 @@
 
 "use client";
 
-import { ReactNode, useState } from "react";
+import { ReactNode } from "react";
 import { useCookies } from "react-cookie";
 import { useL10n } from "../../../../../hooks/l10n";
-import { useTelemetry } from "../../../../../hooks/useTelemetry";
 import { getLocale } from "../../../../../functions/universal/getLocale";
-import {
-  BillingPeriod,
-  BillingPeriodToggle,
-} from "../../../../../components/client/BillingPeriod";
 import { modifyAttributionsForUrlSearchParams } from "../../../../../functions/universal/attributions";
 import { TelemetryButton } from "../../../../../components/client/TelemetryButton";
 import { VisuallyHidden } from "../../../../../components/server/VisuallyHidden";
@@ -31,10 +26,8 @@ export type Props = {
   "aria-labelledby": string;
   premiumSubscriptionUrl: {
     monthly: string;
-    yearly: string;
   };
   subscriptionBillingAmount: {
-    yearly: number;
     monthly: number;
   };
   enabledFeatureFlags: FeatureFlagName[];
@@ -57,8 +50,6 @@ type PricingPlanData = {
 
 export const PricingPlanList = (props: Props & ScanLimitProp) => {
   const l10n = useL10n();
-  const recordTelemetry = useTelemetry();
-  const [billingPeriod, setBillingPeriod] = useState<BillingPeriod>("yearly");
 
   // The cookie `attributionsLastTouch` is set in the component `PageLoadEvent`
   // to help with attributions.
@@ -90,15 +81,8 @@ export const PricingPlanList = (props: Props & ScanLimitProp) => {
     currency: "USD",
     currencyDisplay: "narrowSymbol",
   });
-  const {
-    yearly: monthlyPriceAnnualBilling,
-    monthly: monthlyPriceMonthlyBilling,
-  } = props.subscriptionBillingAmount;
-
-  const yearlyDiscountPercentage = Math.floor(
-    ((monthlyPriceMonthlyBilling - monthlyPriceAnnualBilling) * 100) /
-      monthlyPriceMonthlyBilling,
-  );
+  const { monthly: monthlyPriceMonthlyBilling } =
+    props.subscriptionBillingAmount;
 
   const pricingPlanData: PricingPlanData[] = [
     {
@@ -136,75 +120,31 @@ export const PricingPlanList = (props: Props & ScanLimitProp) => {
             elems: { b: <b /> },
           },
         ),
-        l10n.getFragment(
-          "landing-redesign-pricing-plans-card-plus-feature-item-five",
-          {
-            vars: {
-              discountPercentage: yearlyDiscountPercentage,
-            },
-            elems: { b: <b /> },
-          },
-        ),
       ],
       cta: (
         <>
-          <BillingPeriodToggle
-            onChange={(newValue) => {
-              setBillingPeriod(newValue);
-              recordTelemetry("button", "click", {
-                button_id:
-                  newValue === "yearly"
-                    ? "selected_yearly_plan"
-                    : "selected_monthly_plan",
-              });
-            }}
-          />
           <p aria-live="polite">
-            <strong id="pricingPlansMonthlyOrYearly">
-              {billingPeriod === "yearly"
-                ? l10n.getString(
-                    "landing-redesign-pricing-plans-card-plus-cta-yearly",
-                    {
-                      monthlyPrice: priceFormatter.format(
-                        monthlyPriceAnnualBilling,
-                      ),
-                    },
-                  )
-                : l10n.getString(
-                    "landing-redesign-pricing-plans-card-plus-cta-monthly",
-                    {
-                      monthlyPrice: priceFormatter.format(
-                        monthlyPriceMonthlyBilling,
-                      ),
-                    },
-                  )}
-              {billingPeriod === "yearly" && (
-                <span className={styles.pricingCardSavings}>
-                  {l10n.getString(
-                    "landing-redesign-pricing-plans-card-plus-cta-yearly-sum",
-                    {
-                      yearlyPrice: priceFormatter.format(
-                        12 * monthlyPriceAnnualBilling,
-                      ),
-                    },
-                  )}
-                </span>
+            <strong id="pricingPlan">
+              {l10n.getString(
+                "landing-redesign-pricing-plans-card-plus-cta-monthly",
+                {
+                  monthlyPrice: priceFormatter.format(
+                    monthlyPriceMonthlyBilling,
+                  ),
+                },
               )}
             </strong>
           </p>
           <TelemetryButton
-            aria-describedby="pricingPlansMonthlyOrYearly pricingPlansReassurancePlus"
+            aria-describedby="pricingPlan pricingPlansReassurancePlus"
             disabled={props.scanLimitReached}
             variant="primary"
-            href={`${props.premiumSubscriptionUrl[billingPeriod]}${additionalSubplatParamsString}`}
+            href={`${props.premiumSubscriptionUrl["monthly"]}${additionalSubplatParamsString}`}
             event={{
               module: "upgradeIntent",
               name: "click",
               data: {
-                button_id:
-                  billingPeriod === "yearly"
-                    ? "purchase_yearly_landing_page"
-                    : "purchase_monthly_landing_page",
+                button_id: "purchase_monthly_landing_page",
               },
             }}
           >

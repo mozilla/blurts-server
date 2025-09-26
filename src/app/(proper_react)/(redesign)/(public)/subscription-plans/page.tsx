@@ -86,10 +86,6 @@ export default async function Page() {
           type: "monthly",
           enabledFeatureFlags,
         }),
-        yearly: getPremiumSubscriptionUrl({
-          type: "yearly",
-          enabledFeatureFlags,
-        }),
         bundle: getPremiumSubscriptionUrl({
           type: "bundle",
           enabledFeatureFlags,

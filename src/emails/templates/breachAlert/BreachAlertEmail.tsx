@@ -70,7 +70,7 @@ export const BreachAlertEmail = (props: BreachAlertEmailProps) => {
   }
 
   const premiumSubscriptionUrlObject = new URL(
-    `${process.env.SERVER_URL}/link/subscribe/yearly`,
+    `${process.env.SERVER_URL}/link/subscribe/monthly`,
   );
   premiumSubscriptionUrlObject.searchParams.set("utm_medium", "product-email");
   premiumSubscriptionUrlObject.searchParams.set(

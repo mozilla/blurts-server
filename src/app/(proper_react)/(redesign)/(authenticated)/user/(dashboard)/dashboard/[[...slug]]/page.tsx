@@ -177,10 +177,6 @@ export default async function DashboardPage(props: Props) {
     type: "monthly",
     enabledFeatureFlags,
   });
-  const yearlySubscriptionUrl = getPremiumSubscriptionUrl({
-    type: "yearly",
-    enabledFeatureFlags,
-  });
   const fxaSettingsUrl = process.env.FXA_SETTINGS_URL!;
   const profileStats = await getProfilesStats();
   const additionalSubplatParams = await getAttributionsFromCookiesOrDb(
@@ -255,7 +251,6 @@ export default async function DashboardPage(props: Props) {
       userBreaches={subBreaches}
       enabledFeatureFlags={enabledFeatureFlags}
       monthlySubscriptionUrl={`${monthlySubscriptionUrl}${additionalSubplatParamsString}`}
-      yearlySubscriptionUrl={`${yearlySubscriptionUrl}${additionalSubplatParamsString}`}
       subscriptionBillingAmount={getSubscriptionBillingAmount()}
       fxaSettingsUrl={fxaSettingsUrl}
       scanCount={scanCount}

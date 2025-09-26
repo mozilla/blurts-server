@@ -39,10 +39,6 @@ const meta: Meta<
             type: "monthly",
             enabledFeatureFlags: props.enabledFeatureFlags,
           }),
-          yearly: getPremiumSubscriptionUrl({
-            type: "yearly",
-            enabledFeatureFlags: props.enabledFeatureFlags,
-          }),
           bundle: getPremiumSubscriptionUrl({
             type: "bundle",
             enabledFeatureFlags: props.enabledFeatureFlags,

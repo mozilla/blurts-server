@@ -35,9 +35,7 @@ export type Props = {
   user: Session["user"];
   subscriber: SubscriberRow;
   monthlySubscriptionUrl: string;
-  yearlySubscriptionUrl: string;
   subscriptionBillingAmount: {
-    yearly: number;
     monthly: number;
   };
   fxaSettingsUrl: string;
