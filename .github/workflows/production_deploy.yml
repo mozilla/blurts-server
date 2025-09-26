@@ -18,6 +18,7 @@ on:
         description: 'The original image tag that has been deployed'
         required: true
         type: string
+        pattern: '^[a-f0-9]{7,12}$'
 jobs:
   pull_retag_push:
     name: Pull, Retag, and Push Images
@@ -31,39 +32,13 @@ jobs:
       GAR_IMAGE_BASE: ${{ vars.GAR_REPO }}/${{ github.event.repository.name }}
       GAR_REGISTRY: us-docker.pkg.dev # Define GAR registry hostname
       DOCKERHUB_IMAGE: mozilla/blurts-server # Define Docker Hub image name
+      SAFE_IMAGE_TAG: ${{ inputs.originalImageTag }}
+      SAFE_ENVIRONMENT: ${{ inputs.environment }}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v5
         with:
           persist-credentials: false
-
-      - name: Validate and sanitize inputs
-        id: validate-inputs
-        run: |
-          # Validate originalImageTag format - should be a short SHA (7-12 characters, alphanumeric)
-          if ! echo "${{ inputs.originalImageTag }}" | grep -E '^[a-f0-9]{7,12}$'; then
-            echo "Error: Invalid image tag format. Expected a short SHA (7-12 hexadecimal characters)."
-            echo "Provided tag: ${{ inputs.originalImageTag }}"
-            echo "Expected format: short commit SHA (e.g., a1b2c3d4)"
-            exit 1
-          fi
-          
-          # Validate environment input
-          if ! echo "${{ inputs.environment }}" | grep -E '^(stage|prod|dev)$'; then
-            echo "Error: Invalid environment. Must be one of: stage, prod, dev"
-            echo "Provided environment: ${{ inputs.environment }}"
-            exit 1
-          fi
-          
-          # Set sanitized values as outputs
-          echo "sanitized_tag=${{ inputs.originalImageTag }}" >> $GITHUB_OUTPUT
-          echo "sanitized_env=${{ inputs.environment }}" >> $GITHUB_OUTPUT
-          echo "Validation passed for tag: ${{ inputs.originalImageTag }}"
-
-      - name: Set safe environment variables
-        run: |
-          echo "SAFE_IMAGE_TAG=${{ steps.validate-inputs.outputs.sanitized_tag }}" >> $GITHUB_ENV
-          echo "SAFE_ENVIRONMENT=${{ steps.validate-inputs.outputs.sanitized_env }}" >> $GITHUB_ENV
 
       - name: Log in to Docker Hub
         uses: docker/login-action@v3
