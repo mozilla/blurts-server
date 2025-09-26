@@ -33,7 +33,6 @@ jobs:
       GAR_REGISTRY: us-docker.pkg.dev # Define GAR registry hostname
       DOCKERHUB_IMAGE: mozilla/blurts-server # Define Docker Hub image name
       SAFE_IMAGE_TAG: ${{ inputs.originalImageTag }}
-      SAFE_ENVIRONMENT: ${{ inputs.environment }}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v5
@@ -66,16 +65,16 @@ jobs:
         run: docker pull "${{ env.DOCKERHUB_IMAGE }}:${{ env.SAFE_IMAGE_TAG }}"
 
       - name: Retag Docker Hub image
-        run: docker tag "${{ env.DOCKERHUB_IMAGE }}:${{ env.SAFE_IMAGE_TAG }}" "${{ env.DOCKERHUB_IMAGE }}:${{ env.SAFE_ENVIRONMENT }}-${{ env.SAFE_IMAGE_TAG }}"
+        run: docker tag "${{ env.DOCKERHUB_IMAGE }}:${{ env.SAFE_IMAGE_TAG }}" "${{ env.DOCKERHUB_IMAGE }}:${{ inputs.environment }}-${{ env.SAFE_IMAGE_TAG }}"
 
       - name: Push Docker Hub image
-        run: docker push "${{ env.DOCKERHUB_IMAGE }}:${{ env.SAFE_ENVIRONMENT }}-${{ env.SAFE_IMAGE_TAG }}"
+        run: docker push "${{ env.DOCKERHUB_IMAGE }}:${{ inputs.environment }}-${{ env.SAFE_IMAGE_TAG }}"
 
       - name: Pull GAR image
         run: docker pull "${{ env.GAR_IMAGE_BASE }}:${{ env.SAFE_IMAGE_TAG }}"
 
       - name: Retag GAR image
-        run: docker tag "${{ env.GAR_IMAGE_BASE }}:${{ env.SAFE_IMAGE_TAG }}" "${{ env.GAR_IMAGE_BASE }}:${{ env.SAFE_ENVIRONMENT }}-${{ env.SAFE_IMAGE_TAG }}"
+        run: docker tag "${{ env.GAR_IMAGE_BASE }}:${{ env.SAFE_IMAGE_TAG }}" "${{ env.GAR_IMAGE_BASE }}:${{ inputs.environment }}-${{ env.SAFE_IMAGE_TAG }}"
 
       - name: Push GAR image
-        run: docker push "${{ env.GAR_IMAGE_BASE }}:${{ env.SAFE_ENVIRONMENT }}-${{ env.SAFE_IMAGE_TAG }}"
+        run: docker push "${{ env.GAR_IMAGE_BASE }}:${{ inputs.environment }}-${{ env.SAFE_IMAGE_TAG }}"
