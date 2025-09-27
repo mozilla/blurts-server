@@ -48,15 +48,6 @@
   display: flex;
   flex: 1 1 auto;
 
-  &.moscaryIndicator {
-    background-image: radial-gradient(
-      circle at top left,
-      tokens.$color-grey-20,
-      tokens.$color-grey-05 150px
-    );
-    background-position: top left;
-  }
-
   .page {
     flex: 1 1 auto;
     overflow: hidden;

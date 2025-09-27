@@ -25,13 +25,6 @@ import { refreshStoredScanResults } from "../../../../../../../../../functions/s
 import { checkSession } from "../../../../../../../../../functions/server/checkSession";
 import { hasPremium } from "../../../../../../../../../functions/universal/user";
 import { getEnabledFeatureFlags } from "../../../../../../../../../../db/tables/featureFlags";
-import {
-  getScanAndResults,
-  ScanData,
-} from "../../../../../../../../../functions/server/moscary";
-import { getExperimentationIdFromUserSession } from "../../../../../../../../../functions/server/getExperimentationId";
-import { getExperiments } from "../../../../../../../../../functions/server/getExperiments";
-import { getLocale } from "../../../../../../../../../functions/universal/getLocale";
 
 export default async function WelcomeToPlusPage() {
   const session = await getServerSession();
@@ -51,52 +44,31 @@ export default async function WelcomeToPlusPage() {
   const enabledFeatureFlags = await getEnabledFeatureFlags({
     email: session.user.email,
   });
-  const experimentationId = await getExperimentationIdFromUserSession(
-    session.user,
-  );
   const countryCode = getCountryCode(await headers());
-  const experimentData = await getExperiments({
-    experimentationId,
-    countryCode,
-    locale: getLocale(getL10n(await getAcceptLangHeaderInServerComponents())),
-  });
 
-  let scanData: LatestOnerepScanData | ScanData;
-  if (
-    enabledFeatureFlags.includes("Moscary") ||
-    experimentData["Features"]["moscary"].enabled
-  ) {
-    if (!session.user.subscriber.moscary_id) {
-      // If the user subscribed to Plus before running a scan, have them run one now:
-      redirect("/user/welcome");
-    }
-
-    scanData = await getScanAndResults(session.user.subscriber.moscary_id);
-  } else {
-    const profileId = await getOnerepProfileId(session.user.subscriber.id);
-    if (profileId === null) {
-      // If the user subscribed to Plus before running a scan, have them run one now:
-      redirect("/user/welcome");
-    }
-
-    scanData = await getScanResultsWithBroker(
-      profileId,
-      hasPremium(session.user),
-    );
-    //
-    // If the current user is a subscriber and their OneRep profile is not
-    // activated: Most likely we were not able or failed to kick-off the
-    // auto-removal process.
-    // Let’s make sure the users OneRep profile is activated:
-    await activateAndOptoutProfile({ profileId, forceActivation: true });
-
-    // NOTE: This has been added in the hopes to fix MNTOR-2690 and needs to be
-    // verified in a live environment. If this issue persists or is solved
-    // otherwise this this line is safe to be removed.
-    // Make sure the current state of the stored scan results is being reflected
-    // after we just initiated automatic removal.
-    await refreshStoredScanResults(profileId);
+  const profileId = await getOnerepProfileId(session.user.subscriber.id);
+  if (profileId === null) {
+    // If the user subscribed to Plus before running a scan, have them run one now:
+    redirect("/user/welcome");
   }
+
+  const scanData: LatestOnerepScanData = await getScanResultsWithBroker(
+    profileId,
+    hasPremium(session.user),
+  );
+  //
+  // If the current user is a subscriber and their OneRep profile is not
+  // activated: Most likely we were not able or failed to kick-off the
+  // auto-removal process.
+  // Let’s make sure the users OneRep profile is activated:
+  await activateAndOptoutProfile({ profileId, forceActivation: true });
+
+  // NOTE: This has been added in the hopes to fix MNTOR-2690 and needs to be
+  // verified in a live environment. If this issue persists or is solved
+  // otherwise this this line is safe to be removed.
+  // Make sure the current state of the stored scan results is being reflected
+  // after we just initiated automatic removal.
+  await refreshStoredScanResults(profileId);
 
   const subBreaches = await getSubscriberBreaches({
     fxaUid: session.user.subscriber.fxa_uid,

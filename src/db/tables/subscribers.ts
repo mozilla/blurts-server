@@ -283,22 +283,6 @@ async function setBreachResolution(
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-async function setMoscaryId(
-  user: SubscriberRow,
-  moscaryId: NonNullable<SubscriberRow["moscary_id"]>,
-): Promise<(SubscriberRow & WithEmailAddresses) | null> {
-  await knex("subscribers").where("id", user.id).update({
-    moscary_id: moscaryId,
-    // @ts-ignore knex.fn.now() results in it being set to a date,
-    // even if it's not typed as a JS date object:
-    updated_at: knex.fn.now(),
-  });
-  return (await getSubscriberByFxaUid(user.fxa_uid)) ?? null;
-}
-/* c8 ignore stop */
-
-// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
-/* c8 ignore start */
 async function deleteUnverifiedSubscribers() {
   const expiredDateTime = new Date(
     Date.now() -
@@ -356,9 +340,9 @@ async function deleteResolutionsWithEmail(id: number, email: string) {
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-async function getPotentialSubscribersWaitingForFirstDataBrokerRemovalFixedEmail(options: {
-  stillOnOnerep: boolean;
-}): Promise<SubscriberRow[]> {
+async function getPotentialSubscribersWaitingForFirstDataBrokerRemovalFixedEmail(): Promise<
+  SubscriberRow[]
+> {
   const rows = await knex("subscribers")
     .select()
     // Only send to Plus users...
@@ -367,7 +351,7 @@ async function getPotentialSubscribersWaitingForFirstDataBrokerRemovalFixedEmail
       MONITOR_PREMIUM_CAPABILITY,
     )
     // ...with an OneRep account...
-    .whereNotNull(options.stillOnOnerep ? "onerep_profile_id" : "moscary_id")
+    .whereNotNull("onerep_profile_id")
     // ...who haven't received the email...
     .andWhere("first_broker_removal_email_sent", false)
     // ...and signed up after the feature flag `FirstDataBrokerRemovalFixedEmail`
@@ -611,19 +595,6 @@ async function joinEmailAddressesToSubscriber(
 /* c8 ignore start */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-async function deleteMoscaryId(subscriberId: SubscriberRow["id"]) {
-  return await knex("subscribers").where("id", subscriberId).update({
-    moscary_id: null,
-    // @ts-ignore knex.fn.now() results in it being set to a date,
-    // even if it's not typed as a JS date object:
-    updated_at: knex.fn.now(),
-  });
-}
-/* c8 ignore stop */
-
-/* c8 ignore start */
-// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
-/* c8 ignore start */
 /** @deprecated */
 async function deleteOnerepProfileId(subscriberId: SubscriberRow["id"]) {
   return await knex("subscribers").where("id", subscriberId).update({
@@ -643,9 +614,7 @@ async function incrementSignInCountForEligibleFreeUser(
 ) {
   return await knex("subscribers")
     .where("fxa_uid", fxaId)
-    .where((clause) =>
-      clause.whereNotNull("onerep_profile_id").orWhereNotNull("moscary_id"),
-    )
+    .whereNotNull("onerep_profile_id")
     .increment("sign_in_count", 1);
 }
 /* c8 ignore stop */
@@ -698,7 +667,6 @@ export {
   setAllEmailsToPrimary,
   setMonthlyMonitorReport,
   setBreachResolution,
-  setMoscaryId,
   getPotentialSubscribersWaitingForFirstDataBrokerRemovalFixedEmail,
   getFreeSubscribersWaitingForMonthlyEmail,
   getPlusSubscribersWaitingForMonthlyEmail,
@@ -708,7 +676,6 @@ export {
   deleteUnverifiedSubscribers,
   deleteSubscriber,
   deleteResolutionsWithEmail,
-  deleteMoscaryId,
   deleteOnerepProfileId,
   incrementSignInCountForEligibleFreeUser,
   getSignInCount,

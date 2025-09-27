@@ -8,7 +8,7 @@ import FamilyTreeImage from "../assets/familytree.png";
 import TwitterImage from "../assets/twitter-icon.png";
 import {
   createRandomBreach,
-  createRandomOnerepScanResult,
+  createRandomScanResult,
 } from "../../../../apiMocks/mockData";
 import { defaultExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 import { BreachDataTypes } from "../../../functions/universal/breach";
@@ -31,27 +31,28 @@ const meta: Meta<typeof ExposureCard> = {
 export default meta;
 type Story = StoryObj<typeof ExposureCard>;
 
-const ScanMockItemRemoved = createRandomOnerepScanResult({
+const ScanMockItemRemoved = createRandomScanResult({
   status: "removed",
   manually_resolved: false,
 });
-const ScanMockItemManualRemoved = createRandomOnerepScanResult({
+const ScanMockItemManualRemoved = createRandomScanResult({
   status: "new",
   manually_resolved: true,
 });
-const ScanMockItemRequestedRemoval = createRandomOnerepScanResult({
+const ScanMockItemRequestedRemoval = createRandomScanResult({
   status: "waiting_for_verification",
   manually_resolved: false,
 });
-const ScanMockItemNew = createRandomOnerepScanResult({
+const ScanMockItemNew = createRandomScanResult({
   status: "new",
   manually_resolved: false,
 });
-const ScanMockItemInProgress = createRandomOnerepScanResult({
+const ScanMockItemInProgress = createRandomScanResult({
   status: "optout_in_progress",
   manually_resolved: false,
 });
-const ScanMockItemRemovalUnderMaintenance = createRandomOnerepScanResult({
+
+const ScanMockItemRemovalUnderMaintenance = createRandomScanResult({
   status: "optout_in_progress",
   manually_resolved: false,
   broker_status: "removal_under_maintenance",
@@ -81,15 +82,16 @@ const ScanMockItemNoExposureData: OnerepScanResultDataBrokerRow = {
   addresses: [],
 };
 
-const ScanMockItemRemovalUnderMaintenanceManuallyFixed =
-  createRandomOnerepScanResult({
+const ScanMockItemRemovalUnderMaintenanceManuallyFixed = createRandomScanResult(
+  {
     status: "optout_in_progress",
     manually_resolved: true,
     broker_status: "removal_under_maintenance",
-  });
+  },
+);
 
 const ScanMockItemRemovalUnderMaintenanceAutomaticallyRemoved =
-  createRandomOnerepScanResult({
+  createRandomScanResult({
     status: "removed",
     manually_resolved: false,
     broker_status: "removal_under_maintenance",

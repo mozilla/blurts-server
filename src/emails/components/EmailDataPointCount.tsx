@@ -29,11 +29,7 @@ export const DataPointCount = (props: Props) => {
   const assumedCountryCode = getSignupLocaleCountry(props.subscriber);
   const unresolvedDataBreaches = props.dataSummary.dataBreachUnresolvedNum;
 
-  const hasRunFreeScan =
-    props.enabledFeatureFlags.includes("Moscary") ||
-    props.experimentData["moscary"].enabled
-      ? typeof props.subscriber.moscary_id === "string"
-      : typeof props.subscriber.onerep_profile_id === "number";
+  const hasRunFreeScan = typeof props.subscriber.onerep_profile_id === "number";
   const utmContentSuffix = isEligibleForPremium(assumedCountryCode)
     ? "-us"
     : "-global";
