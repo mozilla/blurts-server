@@ -92,16 +92,6 @@ export const LandingRedesignUsScanLimit: Story = {
   },
 };
 
-export const LandingRedesignUsWithPrivacyProductBundle: Story = {
-  name: "US visitors - With Privacy Product Bundle",
-  args: {
-    eligibleForPremium: true,
-    countryCode: "us",
-    scanLimitReached: false,
-    enabledFeatureFlags: ["LandingPageRedesign", "PrivacyProductsBundle"],
-  },
-};
-
 export const LandingRedesignUsDisableOneRepScans: Story = {
   name: "US visitors - Disable OneRep Scans",
   args: {
@@ -109,15 +99,5 @@ export const LandingRedesignUsDisableOneRepScans: Story = {
     countryCode: "us",
     scanLimitReached: false,
     enabledFeatureFlags: ["DisableOneRepScans"],
-  },
-};
-
-export const LandingRedesignUsScanLimitWithPrivacyProductBundle: Story = {
-  name: "US visitors - Scan limit reached and with Privacy Product Bundle",
-  args: {
-    eligibleForPremium: true,
-    countryCode: "us",
-    scanLimitReached: true,
-    enabledFeatureFlags: ["LandingPageRedesign", "PrivacyProductsBundle"],
   },
 };

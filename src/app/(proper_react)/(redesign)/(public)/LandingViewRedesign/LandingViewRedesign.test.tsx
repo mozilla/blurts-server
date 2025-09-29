@@ -18,8 +18,6 @@ import Meta, {
   LandingRedesignUs,
   LandingRedesignUsDisableOneRepScans,
   LandingRedesignUsScanLimit,
-  LandingRedesignUsScanLimitWithPrivacyProductBundle,
-  LandingRedesignUsWithPrivacyProductBundle,
 } from "./LandingViewRedesign.stories";
 import { useTelemetry as useTelemetryImported } from "../../../../hooks/useTelemetry";
 import { deleteAllCookies } from "../../../../functions/client/deleteAllCookies";
@@ -260,10 +258,7 @@ describe("FAQ", () => {
 
 describe("Pricing plan", () => {
   it("passes the axe accessibility test suite", async () => {
-    const ComposedLanding = composeStory(
-      LandingRedesignUsWithPrivacyProductBundle,
-      Meta,
-    );
+    const ComposedLanding = composeStory(LandingRedesignUs, Meta);
     const { container } = render(<ComposedLanding />);
     expect(await axe(container)).toHaveNoViolations();
   }, 10_000);
@@ -271,10 +266,7 @@ describe("Pricing plan", () => {
   it("can initiate sign in from the Monitor (free) pricing card", async () => {
     const user = userEvent.setup();
 
-    const ComposedDashboard = composeStory(
-      LandingRedesignUsWithPrivacyProductBundle,
-      Meta,
-    );
+    const ComposedDashboard = composeStory(LandingRedesignUs, Meta);
     render(<ComposedDashboard />);
     const freeCard = screen.getByLabelText("Monitor");
 
@@ -290,10 +282,7 @@ describe("Pricing plan", () => {
 
   it("counts the number of clicks on the pricing plan free tier button", async () => {
     const mockedRecord = useTelemetry();
-    const ComposedDashboard = composeStory(
-      LandingRedesignUsWithPrivacyProductBundle,
-      Meta,
-    );
+    const ComposedDashboard = composeStory(LandingRedesignUs, Meta);
     render(<ComposedDashboard />);
 
     const user = userEvent.setup();
@@ -314,10 +303,7 @@ describe("Pricing plan", () => {
 
   it("counts the number of clicks on the pricing plan upsell button", async () => {
     const mockedRecord = useTelemetry();
-    const ComposedDashboard = composeStory(
-      LandingRedesignUsWithPrivacyProductBundle,
-      Meta,
-    );
+    const ComposedDashboard = composeStory(LandingRedesignUs, Meta);
     render(<ComposedDashboard />);
 
     const user = userEvent.setup();
@@ -342,10 +328,7 @@ describe("Pricing plan", () => {
 
   it("counts the number of clicks on the pricing card Plus upsell button", async () => {
     const mockedRecord = useTelemetry();
-    const ComposedDashboard = composeStory(
-      LandingRedesignUsWithPrivacyProductBundle,
-      Meta,
-    );
+    const ComposedDashboard = composeStory(LandingRedesignUs, Meta);
     render(<ComposedDashboard />);
 
     const user = userEvent.setup();
@@ -370,10 +353,7 @@ describe("Pricing plan", () => {
 
   it("counts the number of clicks on the pricing card free button", async () => {
     const mockedRecord = useTelemetry();
-    const ComposedDashboard = composeStory(
-      LandingRedesignUsWithPrivacyProductBundle,
-      Meta,
-    );
+    const ComposedDashboard = composeStory(LandingRedesignUs, Meta);
     render(<ComposedDashboard />);
 
     const user = userEvent.setup();
@@ -393,10 +373,7 @@ describe("Pricing plan", () => {
   });
 
   it("confirms that the pricing card monthly upsell has the correct link for SubPlat2", async () => {
-    const ComposedStory = composeStory(
-      LandingRedesignUsWithPrivacyProductBundle,
-      Meta,
-    );
+    const ComposedStory = composeStory(LandingRedesignUs, Meta);
     render(<ComposedStory />);
 
     const plusCard = screen.getByLabelText("Monitor Plus");
@@ -415,17 +392,10 @@ describe("Pricing plan", () => {
   });
 
   it("confirms that the pricing card monthly upsell has the correct link for SubPlat3", async () => {
-    const ComposedStory = composeStory(
-      LandingRedesignUsWithPrivacyProductBundle,
-      Meta,
-    );
+    const ComposedStory = composeStory(LandingRedesignUs, Meta);
     render(
       <ComposedStory
-        enabledFeatureFlags={[
-          "LandingPageRedesign",
-          "PrivacyProductsBundle",
-          "SubPlat3",
-        ]}
+        enabledFeatureFlags={["LandingPageRedesign", "SubPlat3"]}
       />,
     );
 
@@ -492,10 +462,7 @@ describe("Scan limit reached", () => {
         })),
       }),
     );
-    const ComposedDashboard = composeStory(
-      LandingRedesignUsScanLimitWithPrivacyProductBundle,
-      Meta,
-    );
+    const ComposedDashboard = composeStory(LandingRedesignUsScanLimit, Meta);
     render(<ComposedDashboard />);
 
     await waitFor(() => {
