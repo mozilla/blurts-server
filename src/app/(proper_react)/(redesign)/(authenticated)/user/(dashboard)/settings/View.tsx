@@ -67,7 +67,6 @@ export const SettingsView = (props: Props) => {
       <Toolbar
         user={props.user}
         monthlySubscriptionUrl={props.monthlySubscriptionUrl}
-        yearlySubscriptionUrl={props.yearlySubscriptionUrl}
         subscriptionBillingAmount={props.subscriptionBillingAmount}
         fxaSettingsUrl={props.fxaSettingsUrl}
         lastScanDate={props.lastScanDate ?? null}

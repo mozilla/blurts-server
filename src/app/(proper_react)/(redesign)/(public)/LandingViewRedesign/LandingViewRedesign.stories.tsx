@@ -54,17 +54,9 @@ const meta: Meta<typeof View> = {
             {...props}
             experimentData={experimentData}
             enabledFeatureFlags={enabledFeatureFlags}
-            bundleProductUrl={{
-              relay: process.env.FIREFOX_RELAY_LANDING_URL ?? "",
-              vpn: process.env.MOZILLA_VPN_LANDING_URL ?? "",
-            }}
             premiumSubscriptionUrl={{
               monthly: getPremiumSubscriptionUrl({
                 type: "monthly",
-                enabledFeatureFlags,
-              }),
-              bundle: getPremiumSubscriptionUrl({
-                type: "bundle",
                 enabledFeatureFlags,
               }),
             }}

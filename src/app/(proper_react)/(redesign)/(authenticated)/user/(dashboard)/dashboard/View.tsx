@@ -621,7 +621,6 @@ export const View = (props: Props) => {
             });
           }}
           monthlySubscriptionUrl={props.monthlySubscriptionUrl}
-          yearlySubscriptionUrl={props.yearlySubscriptionUrl}
           subscriptionBillingAmount={props.subscriptionBillingAmount}
           totalNumberOfPerformedScans={props.totalNumberOfPerformedScans}
           enabledFeatureFlags={props.enabledFeatureFlags}

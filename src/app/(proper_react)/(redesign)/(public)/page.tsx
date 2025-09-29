@@ -104,17 +104,9 @@ export default async function Page() {
           scanLimitReached={scanLimitReached}
           experimentData={experimentData["Features"]}
           enabledFeatureFlags={enabledFeatureFlags}
-          bundleProductUrl={{
-            relay: process.env.FIREFOX_RELAY_LANDING_URL ?? "",
-            vpn: process.env.MOZILLA_VPN_LANDING_URL ?? "",
-          }}
           premiumSubscriptionUrl={{
             monthly: getPremiumSubscriptionUrl({
               type: "monthly",
-              enabledFeatureFlags,
-            }),
-            bundle: getPremiumSubscriptionUrl({
-              type: "bundle",
               enabledFeatureFlags,
             }),
           }}

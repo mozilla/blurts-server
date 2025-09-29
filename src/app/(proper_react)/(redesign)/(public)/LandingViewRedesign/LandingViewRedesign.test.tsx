@@ -23,7 +23,6 @@ import Meta, {
 } from "./LandingViewRedesign.stories";
 import { useTelemetry as useTelemetryImported } from "../../../../hooks/useTelemetry";
 import { deleteAllCookies } from "../../../../functions/client/deleteAllCookies";
-import { Cookies } from "react-cookie";
 
 jest.mock("next-auth/react", () => {
   return {
@@ -260,273 +259,6 @@ describe("FAQ", () => {
 });
 
 describe("Pricing plan", () => {
-  it("can move to the subscribe button with the keyboard", async () => {
-    const ComposedDashboard = composeStory(LandingRedesignUs, Meta);
-    render(<ComposedDashboard />);
-    const plusCard = screen.getByLabelText("Monitor Plus");
-
-    const plusSubscribeButton = getByRole(plusCard, "link", {
-      name: "Get ⁨Monitor Plus⁩",
-    });
-    expect(plusSubscribeButton).not.toHaveFocus();
-  });
-
-  it("can initiate sign in from the pricing plan", async () => {
-    const user = userEvent.setup();
-
-    const ComposedDashboard = composeStory(LandingRedesignUs, Meta);
-    render(<ComposedDashboard />);
-    const plusCard = screen.getByLabelText("Monitor Plus");
-
-    expect(signIn).not.toHaveBeenCalled();
-
-    await user.click(plusCard);
-    await user.keyboard("[Tab][Tab][Space]");
-
-    expect(signIn).toHaveBeenCalledTimes(1);
-  });
-
-  it("can initiate sign in from the Monitor (Free) pricing card", async () => {
-    const user = userEvent.setup();
-
-    const ComposedDashboard = composeStory(LandingRedesignUs, Meta);
-    render(<ComposedDashboard />);
-    const freeCard = screen.getByLabelText("Monitor");
-
-    expect(signIn).not.toHaveBeenCalled();
-
-    // jsdom will complain about not being able to navigate to a different page
-    // after clicking the link; suppress that error, as it's not relevant to the
-    // test:
-    jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
-    const signInButton = getByRole(freeCard, "button", {
-      name: "Get ⁨Monitor⁩ (Free)",
-    });
-    await user.click(signInButton);
-
-    expect(signIn).toHaveBeenCalledTimes(1);
-  });
-
-  it("counts the number of clicks on the pricing plan free tier button", async () => {
-    const mockedRecord = useTelemetry();
-    const ComposedDashboard = composeStory(LandingRedesignUs, Meta);
-    render(<ComposedDashboard />);
-
-    const user = userEvent.setup();
-    const freeCard = screen.getByLabelText("Monitor");
-    const freeButton = getByRole(freeCard, "button", {
-      name: "Get ⁨Monitor⁩ (Free)",
-    });
-
-    await user.click(freeButton);
-    expect(mockedRecord).toHaveBeenCalledWith(
-      "ctaButton",
-      "click",
-      expect.objectContaining({
-        button_id: "clicked_free_pricing_card",
-      }),
-    );
-  });
-
-  it("counts the number of clicks on the pricing plan upsell button", async () => {
-    const mockedRecord = useTelemetry();
-    const ComposedDashboard = composeStory(LandingRedesignUs, Meta);
-    render(<ComposedDashboard />);
-
-    const user = userEvent.setup();
-    const plusCard = screen.getByLabelText("Monitor Plus");
-    const upsellButton = getByRole(plusCard, "link", {
-      name: "Get ⁨Monitor Plus⁩",
-    });
-    // jsdom will complain about not being able to navigate to a different page
-    // after clicking the link; suppress that error, as it's not relevant to the
-    // test:
-    jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
-
-    await user.click(upsellButton);
-    expect(mockedRecord).toHaveBeenCalledWith(
-      "upgradeIntent",
-      "click",
-      expect.objectContaining({
-        button_id: "purchase_monthly_landing_page",
-      }),
-    );
-  });
-
-  it("counts the number of clicks on the pricing card upsell button", async () => {
-    const mockedRecord = useTelemetry();
-    const ComposedDashboard = composeStory(LandingRedesignUs, Meta);
-    render(<ComposedDashboard />);
-
-    const user = userEvent.setup();
-    const plusCard = screen.getByLabelText("Monitor Plus");
-    const upsellButton = getByRole(plusCard, "link", {
-      name: "Get ⁨Monitor Plus⁩",
-    });
-    // jsdom will complain about not being able to navigate to a different page
-    // after clicking the link; suppress that error, as it's not relevant to the
-    // test:
-    jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
-
-    await user.click(upsellButton);
-    expect(mockedRecord).toHaveBeenCalledWith(
-      "upgradeIntent",
-      "click",
-      expect.objectContaining({
-        button_id: "purchase_monthly_landing_page",
-      }),
-    );
-  });
-
-  it("counts the number of clicks on the pricing card free button", async () => {
-    const mockedRecord = useTelemetry();
-    const ComposedDashboard = composeStory(LandingRedesignUs, Meta);
-    render(<ComposedDashboard />);
-
-    const user = userEvent.setup();
-    const freeCard = screen.getByLabelText("Monitor");
-    const freeButton = getByRole(freeCard, "button", {
-      name: "Get ⁨Monitor⁩ (Free)",
-    });
-
-    await user.click(freeButton);
-    expect(mockedRecord).toHaveBeenCalledWith(
-      "ctaButton",
-      "click",
-      expect.objectContaining({
-        button_id: "clicked_free_pricing_card",
-      }),
-    );
-  });
-
-  it("confirms that the pricing card monthly upsell has the correct link for SubPlat2", async () => {
-    const ComposedStory = composeStory(LandingRedesignUs, Meta);
-    render(<ComposedStory />);
-
-    const plusCard = screen.getByLabelText("Monitor Plus");
-    const upsellButton = getByRole(plusCard, "link", {
-      name: "Get ⁨Monitor Plus⁩",
-    });
-    // jsdom will complain about not being able to navigate to a different page
-    // after clicking the link; suppress that error, as it's not relevant to the
-    // test:
-    jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
-
-    expect(upsellButton).toHaveAttribute(
-      "href",
-      "https://accounts.stage.mozaws.net/subscriptions/products/prod_NErZh679W62lai?plan=price_1MUNq0Kb9q6OnNsL4BoJgepf&entrypoint=monitor.mozilla.org-monitor-product-page&form_type=button&data_cta_position=pricing&utm_source=product&utm_medium=monitor&utm_campaign=pricing",
-    );
-  });
-
-  it("confirms that the pricing card monthly upsell has the correct link for SubPlat3", async () => {
-    const ComposedStory = composeStory(LandingRedesignUs, Meta);
-    render(
-      <ComposedStory
-        enabledFeatureFlags={["LandingPageRedesign", "SubPlat3"]}
-      />,
-    );
-
-    const plusCard = screen.getByLabelText("Monitor Plus");
-    const upsellButton = getByRole(plusCard, "link", {
-      name: "Get ⁨Monitor Plus⁩",
-    });
-    // jsdom will complain about not being able to navigate to a different page
-    // after clicking the link; suppress that error, as it's not relevant to the
-    // test:
-    jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
-
-    expect(upsellButton).toHaveAttribute(
-      "href",
-      "https://payments-next.stage.fxa.nonprod.webservices.mozgcp.net/monitorplusstage/monthly/landing?entrypoint=monitor.mozilla.org-monitor-product-page&form_type=button&data_cta_position=pricing&utm_source=product&utm_medium=monitor&utm_campaign=pricing",
-    );
-  });
-});
-
-describe("Privacy product bundle banner", () => {
-  it("confirms that the banner CTA has the correct link for SubPlat2", async () => {
-    const ComposedStory = composeStory(
-      LandingRedesignUsWithPrivacyProductBundle,
-      Meta,
-    );
-    render(<ComposedStory />);
-
-    const upsellLink = screen.getByRole("link", {
-      name: "Get year-round protection",
-    });
-    expect(upsellLink).toHaveAttribute(
-      "href",
-      "https://accounts.stage.mozaws.net/subscriptions/products/prod_SFb8iVuZIOPREe?plan=price_1RMAopKb9q6OnNsLSGe1vLtt&utm_medium=monitor&utm_source=monitor-product&utm_campaign=landing-page-banner&utm_content=banner-us",
-    );
-  });
-
-  it("confirms that the banner CTA has the correct link for SubPlat3", async () => {
-    const ComposedStory = composeStory(
-      LandingRedesignUsWithPrivacyProductBundle,
-      Meta,
-    );
-    render(
-      <ComposedStory
-        enabledFeatureFlags={[
-          "LandingPageRedesign",
-          "PrivacyProductsBundle",
-          "SubPlat3",
-        ]}
-      />,
-    );
-
-    const upsellLink = screen.getByRole("link", {
-      name: "Get year-round protection",
-    });
-    expect(upsellLink).toHaveAttribute(
-      "href",
-      "https://payments-next.stage.fxa.nonprod.webservices.mozgcp.net/privacyprotectionplan/yearly/landing?utm_medium=monitor&utm_source=monitor-product&utm_campaign=landing-page-banner&utm_content=banner-us",
-    );
-  });
-
-  it("counts the number of clicks on the banner CTA", async () => {
-    const mockedRecord = useTelemetry();
-    const ComposedDashboard = composeStory(
-      LandingRedesignUsWithPrivacyProductBundle,
-      Meta,
-    );
-    render(<ComposedDashboard />);
-
-    const user = userEvent.setup();
-    const upsellLink = screen.getByRole("link", {
-      name: "Get year-round protection",
-    });
-
-    // jsdom will complain about not being able to navigate to a different page
-    // after clicking the link; suppress that error, as it's not relevant to the
-    // test:
-    jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
-
-    await user.click(upsellLink);
-    expect(mockedRecord).toHaveBeenCalledWith(
-      "upgradeIntent",
-      "click",
-      expect.objectContaining({
-        button_id: "purchase_bundle_banner_landing_page",
-      }),
-    );
-  });
-
-  it("hides the banner when the feature flag `DisableOneRepScans` is enabled", async () => {
-    const ComposedDashboard = composeStory(
-      LandingRedesignUsDisableOneRepScans,
-      Meta,
-    );
-    render(<ComposedDashboard />);
-
-    expect(
-      screen.queryByRole("heading", {
-        name: "Protect your online privacy for ⁨$42.00⁩/month",
-      }),
-    ).not.toBeInTheDocument();
-  });
-});
-
-describe("Pricing plan with bundle", () => {
   it("passes the axe accessibility test suite", async () => {
     const ComposedLanding = composeStory(
       LandingRedesignUsWithPrivacyProductBundle,
@@ -535,29 +267,6 @@ describe("Pricing plan with bundle", () => {
     const { container } = render(<ComposedLanding />);
     expect(await axe(container)).toHaveNoViolations();
   }, 10_000);
-
-  it("links to the Mozilla privacy products from the bundle pricing plan", async () => {
-    const ComposedDashboard = composeStory(
-      LandingRedesignUsWithPrivacyProductBundle,
-      Meta,
-    );
-    render(<ComposedDashboard />);
-    const bundleCard = screen.getByLabelText("Privacy Protection Plan");
-
-    const mozillaVpnLink = getByRole(bundleCard, "link", {
-      name: /Mozilla VPN/,
-    });
-    const relayPremiumLink = getByRole(bundleCard, "link", {
-      name: /Relay Premium/,
-    });
-    const mozillaMonitorLink = getByRole(bundleCard, "link", {
-      name: /Monitor Plus/,
-    });
-
-    expect(mozillaVpnLink).not.toHaveAttribute("href", "");
-    expect(relayPremiumLink).not.toHaveAttribute("href", "");
-    expect(mozillaMonitorLink).toHaveAttribute("href", "/");
-  });
 
   it("can initiate sign in from the Monitor (free) pricing card", async () => {
     const user = userEvent.setup();
@@ -627,37 +336,6 @@ describe("Pricing plan with bundle", () => {
       "click",
       expect.objectContaining({
         button_id: "purchase_monthly_landing_page",
-      }),
-    );
-  });
-
-  it("counts the number of clicks on the pricing card bundle upsell button", async () => {
-    const mockedRecord = useTelemetry();
-    const ComposedDashboard = composeStory(
-      LandingRedesignUsWithPrivacyProductBundle,
-      Meta,
-    );
-    render(<ComposedDashboard />);
-
-    const user = userEvent.setup();
-    const bundleCard = screen.getByLabelText("Privacy Protection Plan");
-    const upsellButton = getByRole(bundleCard, "link", {
-      name: "Get started",
-    });
-    // jsdom will complain about not being able to navigate to a different page
-    // after clicking the link; suppress that error, as it's not relevant to the
-    // test:
-    jest
-      .spyOn(console, "error")
-      .mockImplementationOnce(() => undefined)
-      .mockImplementationOnce(() => undefined);
-
-    await user.click(upsellButton);
-    expect(mockedRecord).toHaveBeenCalledWith(
-      "upgradeIntent",
-      "click",
-      expect.objectContaining({
-        button_id: "purchase_bundle_landing_page",
       }),
     );
   });
@@ -736,30 +414,6 @@ describe("Pricing plan with bundle", () => {
     );
   });
 
-  it("confirms that the pricing card bundle upsell has the correct link with UTM parameters for SubPlat2", async () => {
-    const cookies = new Cookies(null);
-    cookies.set("attributionsLastTouch", {
-      utm_source: "monitor-product",
-      utm_medium: "monitor",
-      utm_campaign: "landing-page-pricing-grid",
-      utm_content: "pricing-grid-us",
-    });
-    const ComposedStory = composeStory(
-      LandingRedesignUsWithPrivacyProductBundle,
-      Meta,
-    );
-    render(<ComposedStory />);
-
-    const bundleCard = screen.getByLabelText("Privacy Protection Plan");
-    const upsellButton = getByRole(bundleCard, "link", {
-      name: "Get started",
-    });
-    expect(upsellButton).toHaveAttribute(
-      "href",
-      "https://accounts.stage.mozaws.net/subscriptions/products/prod_SFb8iVuZIOPREe?plan=price_1RMAopKb9q6OnNsLSGe1vLtt&utm_source=monitor-product&utm_medium=monitor&utm_campaign=landing-page-pricing-grid&utm_content=pricing-grid-us&entrypoint=monitor.mozilla.org-monitor-product-page&form_type=button&data_cta_position=pricing",
-    );
-  });
-
   it("confirms that the pricing card monthly upsell has the correct link for SubPlat3", async () => {
     const ComposedStory = composeStory(
       LandingRedesignUsWithPrivacyProductBundle,
@@ -787,38 +441,6 @@ describe("Pricing plan with bundle", () => {
     expect(upsellButton).toHaveAttribute(
       "href",
       "https://payments-next.stage.fxa.nonprod.webservices.mozgcp.net/monitorplusstage/monthly/landing?entrypoint=monitor.mozilla.org-monitor-product-page&form_type=button&data_cta_position=pricing&utm_source=monitor-product&utm_medium=monitor&utm_campaign=landing-page-pricing-grid&utm_content=pricing-grid-us",
-    );
-  });
-
-  it("confirms that the pricing card bundle upsell has the correct link with UTM parameters for SubPlat3", async () => {
-    const cookies = new Cookies(null);
-    cookies.set("attributionsLastTouch", {
-      utm_source: "monitor-product",
-      utm_medium: "monitor",
-      utm_campaign: "landing-page-pricing-grid",
-      utm_content: "pricing-grid-us",
-    });
-    const ComposedStory = composeStory(
-      LandingRedesignUsWithPrivacyProductBundle,
-      Meta,
-    );
-    render(
-      <ComposedStory
-        enabledFeatureFlags={[
-          "LandingPageRedesign",
-          "PrivacyProductsBundle",
-          "SubPlat3",
-        ]}
-      />,
-    );
-
-    const bundleCard = screen.getByLabelText("Privacy Protection Plan");
-    const upsellButton = getByRole(bundleCard, "link", {
-      name: "Get started",
-    });
-    expect(upsellButton).toHaveAttribute(
-      "href",
-      "https://payments-next.stage.fxa.nonprod.webservices.mozgcp.net/privacyprotectionplan/yearly/landing?utm_source=monitor-product&utm_medium=monitor&utm_campaign=landing-page-pricing-grid&utm_content=pricing-grid-us&entrypoint=monitor.mozilla.org-monitor-product-page&form_type=button&data_cta_position=pricing",
     );
   });
 });
@@ -906,7 +528,7 @@ describe("Show limit reached flow when the DisableOneRepScans flag is on", () =>
     const limitDescriptions = screen.getAllByText(
       "We’ve reached the maximum scans for the month. Enter your email to get on our waitlist.",
     );
-    expect(limitDescriptions).toHaveLength(5);
+    expect(limitDescriptions).toHaveLength(4);
   });
 
   it("opens the waitlist page when the join waitlist cta is selected", async () => {

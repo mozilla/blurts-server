@@ -61,20 +61,6 @@ describe("Subscription plans", () => {
     );
   });
 
-  it("confirms that the pricing card bundle upsell has the correct link for SubPlat2", async () => {
-    const ComposedStory = composeStory(SubscriptionPlans, Meta);
-    render(<ComposedStory />);
-
-    const bundleCard = screen.getByLabelText("Privacy Protection Plan");
-    const upsellButton = getByRole(bundleCard, "link", {
-      name: "Get started",
-    });
-    expect(upsellButton).toHaveAttribute(
-      "href",
-      "https://accounts.stage.mozaws.net/subscriptions/products/prod_SFb8iVuZIOPREe?plan=price_1RMAopKb9q6OnNsLSGe1vLtt&entrypoint=monitor.mozilla.org-monitor-product-page&form_type=button&data_cta_position=pricing&utm_source=monitor-product&utm_medium=monitor&utm_campaign=in-product-pricing-grid&utm_content=get-started-us",
-    );
-  });
-
   it("confirms that the pricing card monthly upsell has the correct link for SubPlat3", async () => {
     const ComposedStory = composeStory(SubscriptionPlans, Meta);
     render(<ComposedStory enabledFeatureFlags={["SubPlat3"]} />);
@@ -91,20 +77,6 @@ describe("Subscription plans", () => {
     expect(upsellButton).toHaveAttribute(
       "href",
       "https://payments-next.stage.fxa.nonprod.webservices.mozgcp.net/monitorplusstage/monthly/landing?entrypoint=monitor.mozilla.org-monitor-product-page&form_type=button&data_cta_position=pricing&utm_source=monitor-product&utm_medium=monitor&utm_campaign=in-product-pricing-grid&utm_content=get-started-us",
-    );
-  });
-
-  it("confirms that the pricing card bundle upsell has the correct link for SubPlat3", async () => {
-    const ComposedStory = composeStory(SubscriptionPlans, Meta);
-    render(<ComposedStory enabledFeatureFlags={["SubPlat3"]} />);
-
-    const bundleCard = screen.getByLabelText("Privacy Protection Plan");
-    const upsellButton = getByRole(bundleCard, "link", {
-      name: "Get started",
-    });
-    expect(upsellButton).toHaveAttribute(
-      "href",
-      "https://payments-next.stage.fxa.nonprod.webservices.mozgcp.net/privacyprotectionplan/yearly/landing?entrypoint=monitor.mozilla.org-monitor-product-page&form_type=button&data_cta_position=pricing&utm_source=monitor-product&utm_medium=monitor&utm_campaign=in-product-pricing-grid&utm_content=get-started-us",
     );
   });
 

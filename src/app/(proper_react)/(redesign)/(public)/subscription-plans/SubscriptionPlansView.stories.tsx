@@ -39,14 +39,6 @@ const meta: Meta<
             type: "monthly",
             enabledFeatureFlags: props.enabledFeatureFlags,
           }),
-          bundle: getPremiumSubscriptionUrl({
-            type: "bundle",
-            enabledFeatureFlags: props.enabledFeatureFlags,
-          }),
-        }}
-        bundleProductUrl={{
-          relay: process.env.FIREFOX_RELAY_LANDING_URL ?? "",
-          vpn: process.env.MOZILLA_VPN_LANDING_URL ?? "",
         }}
         {...props}
       />

@@ -21,7 +21,7 @@ export type BundleBillingAmount = {
 };
 
 interface GetPremiumSubscriptionUrlParams {
-  type: Exclude<SubscriptionPeriod, "yearly">;
+  type: SubscriptionPeriod;
   enabledFeatureFlags: FeatureFlagName[];
 }
 
@@ -47,6 +47,10 @@ export function getPremiumSubscriptionUrl({
       planId = process.env.PREMIUM_PLAN_ID_MONTHLY_US as string;
       break;
     }
+    case "yearly": {
+      planId = process.env.PREMIUM_PLAN_ID_YEARLY_US as string;
+      break;
+    }
     case "bundle": {
       const productId = process.env.SUBPLAT_BUNDLE_PRODUCT_ID as string;
       const planId = process.env.SUBPLAT_BUNDLE_PRICE_ID as string;
@@ -58,13 +62,16 @@ export function getPremiumSubscriptionUrl({
 }
 
 type SubscriptionBillingAmount = Record<
-  Exclude<SubscriptionPeriod, "yearly" | "bundle">,
+  Exclude<SubscriptionPeriod, "bundle">,
   number
 > &
   Record<"bundle", BundleBillingAmount>;
 
 export function getSubscriptionBillingAmount(): SubscriptionBillingAmount {
   return {
+    yearly: parseFloat(
+      process.env.SUBSCRIPTION_BILLING_AMOUNT_YEARLY_US as string,
+    ),
     monthly: parseFloat(
       process.env.SUBSCRIPTION_BILLING_AMOUNT_MONTHLY_US as string,
     ),
