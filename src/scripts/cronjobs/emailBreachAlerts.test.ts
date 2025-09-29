@@ -390,7 +390,7 @@ test("that the rendered MJML-based template includes the correct subscription li
   expect(subClient.acknowledge).toHaveBeenCalledTimes(1);
   expect(sendEmail).toHaveBeenCalledTimes(1);
   const emailBody = sendEmail.mock.calls[0][2];
-  expect(emailBody).toMatch(/\/link\/subscribe\/yearly/);
+  expect(emailBody).toMatch(/\/link\/subscribe\/monthly/);
   expect(consoleLog).toHaveBeenCalledWith(
     'Received message: {"breachName":"test1","hashPrefix":"test-prefix1","hashSuffixes":["test-suffix1"]}',
   );
@@ -441,7 +441,7 @@ test("that the rendered MJML-based template includes the correct subscription li
   expect(subClient.acknowledge).toHaveBeenCalledTimes(1);
   expect(sendEmail).toHaveBeenCalledTimes(1);
   const emailBody = sendEmail.mock.calls[0][2];
-  expect(emailBody).toMatch(/\/link\/subscribe\/yearly/);
+  expect(emailBody).toMatch(/\/link\/subscribe\/monthly/);
   expect(consoleLog).toHaveBeenCalledWith(
     'Received message: {"breachName":"test1","hashPrefix":"test-prefix1","hashSuffixes":["test-suffix1"]}',
   );
@@ -504,7 +504,7 @@ test("that the rendered MJML-based template includes the correct subscription li
   expect(subClient.acknowledge).toHaveBeenCalledTimes(1);
   expect(sendEmail).toHaveBeenCalledTimes(1);
   const emailBody = sendEmail.mock.calls[0][2];
-  expect(emailBody).toMatch(/\/link\/subscribe\/yearly/);
+  expect(emailBody).toMatch(/\/link\/subscribe\/monthly/);
   expect(consoleLog).toHaveBeenCalledWith(
     'Received message: {"breachName":"test1","hashPrefix":"test-prefix1","hashSuffixes":["test-suffix1"]}',
   );
