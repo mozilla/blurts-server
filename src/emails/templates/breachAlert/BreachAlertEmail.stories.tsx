@@ -43,7 +43,6 @@ export const BreachAlertEmailNonUsStory: Story = {
   args: {
     breach: createRandomHibpListing(),
     breachedEmail: "example@example.com",
-    enabledFeatureFlags: [],
     experimentData: defaultExperimentData["Features"],
     subscriber: {
       fxa_profile_json: {
@@ -59,7 +58,6 @@ export const BreachAlertEmailUsFreeNoScanStory: Story = {
   args: {
     breach: createRandomHibpListing(),
     breachedEmail: "example@example.com",
-    enabledFeatureFlags: [],
     experimentData: defaultExperimentData["Features"],
     dataSummary: getDashboardSummary(
       [],
@@ -73,7 +71,6 @@ export const BreachAlertEmailUsFreeWithScanStory: Story = {
   args: {
     breach: createRandomHibpListing(),
     breachedEmail: "example@example.com",
-    enabledFeatureFlags: [],
     experimentData: defaultExperimentData["Features"],
     dataSummary: getDashboardSummary(
       Array.from({ length: 5 }, () => createRandomScanResult()),
@@ -90,7 +87,6 @@ export const BreachAlertEmailUsPlusNoScanStory: Story = {
   args: {
     breach: createRandomHibpListing(),
     breachedEmail: "example@example.com",
-    enabledFeatureFlags: [],
     experimentData: defaultExperimentData["Features"],
     subscriber: {
       onerep_profile_id: null,
@@ -106,29 +102,12 @@ export const BreachAlertEmailUsPlusWithScanStory: Story = {
   args: {
     breach: createRandomHibpListing(),
     breachedEmail: "example@example.com",
-    enabledFeatureFlags: [],
     experimentData: defaultExperimentData["Features"],
     subscriber: {
       onerep_profile_id: 1,
       fxa_profile_json: {
         subscriptions: ["monitor"],
       },
-    } as SubscriberRow,
-    dataSummary: getDashboardSummary(
-      Array.from({ length: 5 }, () => createRandomScanResult()),
-      Array.from({ length: 5 }, () => createRandomBreach()),
-    ),
-  },
-};
-
-export const BreachAlertEmailDisabledScans: Story = {
-  name: "Breach alert/US Free, Disabled Scans",
-  args: {
-    breach: createRandomHibpListing(),
-    breachedEmail: "example@example.com",
-    enabledFeatureFlags: ["DisableOneRepScans"],
-    subscriber: {
-      onerep_profile_id: 1,
     } as SubscriberRow,
     dataSummary: getDashboardSummary(
       Array.from({ length: 5 }, () => createRandomScanResult()),

@@ -46,7 +46,6 @@ import {
 } from "../../app/functions/server/dashboard";
 import { getScanResultsWithBroker } from "../../db/tables/onerep_scans";
 import { logger } from "../../app/functions/server/logging";
-import { getFeatureFlagData } from "../../db/tables/featureFlags";
 import { getExperimentationIdFromSubscriber } from "../../app/functions/server/getExperimentationId";
 import { getExperiments } from "../../app/functions/server/getExperiments";
 import { getLocale } from "../../app/functions/universal/getLocale";
@@ -113,8 +112,6 @@ export async function poll(
   );
 
   const breaches = await getAllBreachesFromDb();
-  // Using `getFeatureFlagData` instead of `getEnabledFeatureFlags` here to prevent fetching them for every subscriber.
-  const subPlatFeatureFlag = await getFeatureFlagData("SubPlat3");
 
   // Process the messages. Skip any that cannot be processed, and do not mark as acknowledged.
   for (const message of receivedMessages) {
@@ -297,9 +294,6 @@ export async function poll(
                 : undefined;
 
             const subject = l10n.getString("email-breach-alert-all-subject");
-            const subPlatFeatureFlagEnabled =
-              subPlatFeatureFlag?.is_enabled ||
-              subPlatFeatureFlag?.allow_list?.includes(recipient.primary_email);
             const experimentationId =
               await getExperimentationIdFromSubscriber(recipient);
             const experimentData = await getExperiments({
@@ -319,9 +313,6 @@ export async function poll(
                   utmCampaignId={utmCampaignId}
                   subscriber={recipient}
                   dataSummary={dataSummary}
-                  enabledFeatureFlags={
-                    subPlatFeatureFlagEnabled ? ["SubPlat3"] : []
-                  }
                   experimentData={experimentData["Features"]}
                 />,
               ),

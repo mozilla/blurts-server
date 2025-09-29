@@ -11,14 +11,12 @@ import { getSignupLocaleCountry } from "../functions/getSignupLocaleCountry";
 import { isEligibleForPremium } from "../../app/functions/universal/premium";
 import { SanitizedSubscriberRow } from "../../app/functions/server/sanitize";
 import { sumSanitizedDataPoints } from "../functions/reduceSanitizedDataPoints";
-import { FeatureFlagName } from "../../db/tables/featureFlags";
 import { ExperimentData } from "../../telemetry/generated/nimbus/experiments";
 
 type Props = {
   l10n: ExtendedReactLocalization;
   dataSummary: DashboardSummary;
   subscriber: SanitizedSubscriberRow | SubscriberRow;
-  enabledFeatureFlags: FeatureFlagName[];
   experimentData: ExperimentData["Features"];
   utmCampaignId: string;
   utmSource: string;
