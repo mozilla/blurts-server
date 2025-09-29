@@ -51,12 +51,6 @@ email-first-broker-removal-fixed-cta-label = View dashboard
 
 ## Redesigned breach alert email
 
-email-breach-alert-plus-scan-banner-heading = { -brand-monitor } now protects you even more
-email-breach-alert-plus-scan-banner-content = We can find your personal info on data broker sites that sell it for a profit.
-email-breach-alert-plus-scan-banner-cta-label = Get first scan free
-email-breach-alert-plus-upgrade-banner-heading = Upgrade for extra protection
-email-breach-alert-plus-upgrade-banner-content = { -brand-monitor-plus } can find and remove your phone number, home address, and other personal info from online databases.
-email-breach-alert-plus-upgrade-banner-cta-label = Get { -brand-monitor-plus }
 email-breach-alert-plus-scan-results-heading = Current exposures
 # Variables:
 #   $data_point_count (number) - The number of data exposures that were exposed

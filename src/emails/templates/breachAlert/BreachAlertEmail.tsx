@@ -13,11 +13,8 @@ import { hasPremium } from "../../../app/functions/universal/user";
 import { getSignupLocaleCountry } from "../../functions/getSignupLocaleCountry";
 import { DashboardSummary } from "../../../app/functions/server/dashboard";
 import { ResolutionRelevantBreachDataTypes } from "../../../app/functions/universal/breach";
-import { EmailBanner } from "../../components/EmailBanner";
 import { DataPointCount } from "../../components/EmailDataPointCount";
 import { HeaderStyles, MetaTags } from "../../components/HeaderStyles";
-import { FeatureFlagName } from "../../../db/tables/featureFlags";
-import { CONST_URL_WAITLIST } from "../../../constants";
 import { ExperimentData } from "../../../telemetry/generated/nimbus/experiments";
 
 export type BreachAlertEmailProps = {
@@ -26,7 +23,6 @@ export type BreachAlertEmailProps = {
   breachedEmail: string;
   utmCampaignId: string;
   subscriber: SubscriberRow;
-  enabledFeatureFlags: FeatureFlagName[];
   experimentData: ExperimentData["Features"];
   /**
    * We need to run a bunch of queries to collect this data,
@@ -217,45 +213,6 @@ export const BreachAlertEmail = (props: BreachAlertEmailProps) => {
               utmSource="monitor-product"
             />
           )}
-        {isEligibleForPremium(assumedCountryCode) &&
-          !hasPremium(props.subscriber) &&
-          (!hasRunFreeScan ? (
-            <EmailBanner
-              variant="dark"
-              heading={l10n.getString(
-                "email-breach-alert-plus-scan-banner-heading",
-              )}
-              content={l10n.getString(
-                "email-breach-alert-plus-scan-banner-content",
-              )}
-              ctaLabel={l10n.getString(
-                "email-breach-alert-plus-scan-banner-cta-label",
-              )}
-              ctaTarget={`${process.env.SERVER_URL}/user/dashboard/?utm_source=monitor-product&utm_medium=product-email&utm_campaign=${utmCampaignId}&utm_content=take-action${utmContentSuffix}`}
-            />
-          ) : (
-            <EmailBanner
-              variant="dark"
-              heading={l10n.getString(
-                "email-breach-alert-plus-upgrade-banner-heading",
-              )}
-              content={l10n.getString(
-                "email-breach-alert-plus-upgrade-banner-content",
-              )}
-              ctaLabel={
-                props.enabledFeatureFlags.includes("DisableOneRepScans")
-                  ? l10n.getString("landing-premium-max-scan-waitlist")
-                  : l10n.getString(
-                      "email-breach-alert-plus-upgrade-banner-cta-label",
-                    )
-              }
-              ctaTarget={
-                props.enabledFeatureFlags.includes("DisableOneRepScans")
-                  ? CONST_URL_WAITLIST
-                  : premiumSubscriptionUrlObject.href
-              }
-            />
-          ))}
         <RedesignedEmailFooter l10n={l10n} utm_campaign={utmCampaignId} />
       </mj-body>
     </mjml>

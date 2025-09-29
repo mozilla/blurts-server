@@ -248,9 +248,6 @@ export async function triggerBreachAlert(emailAddress: string) {
   if (typeof subscriber.onerep_profile_id === "number") {
     await refreshStoredScanResults(subscriber.onerep_profile_id);
   }
-  const enabledFeatureFlags = await getEnabledFeatureFlags({
-    email: subscriber.primary_email,
-  });
   const experimentationId = await getExperimentationIdFromUserSession(
     session.user,
   );
@@ -282,7 +279,6 @@ export async function triggerBreachAlert(emailAddress: string) {
           ? getDashboardSummary(scanData.results, allSubscriberBreaches)
           : undefined
       }
-      enabledFeatureFlags={enabledFeatureFlags}
       experimentData={experimentData["Features"]}
     />,
   );
