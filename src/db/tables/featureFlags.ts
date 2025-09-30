@@ -75,7 +75,6 @@ export const featureFlagNames = [
   "Announcements",
   "DisableOneRepScans",
   "DisableLandingToDashboardRedirect",
-  "Moscary",
   "MaskDataBrokerCount",
 ] as const;
 

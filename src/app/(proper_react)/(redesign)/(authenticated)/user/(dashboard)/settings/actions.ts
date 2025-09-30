@@ -29,7 +29,7 @@ import {
 } from "../../../../../../../constants";
 import { SanitizedEmailAddressRow } from "../../../../../../functions/server/sanitize";
 import { deleteAccount } from "../../../../../../functions/server/deleteAccount";
-import { cookies, headers } from "next/headers";
+import { cookies } from "next/headers";
 import {
   applyCurrentCouponCode,
   checkCurrentCouponCode,
@@ -37,18 +37,8 @@ import {
 import { validateEmailAddress } from "../../../../../../../utils/emailAddress";
 import { updateOnerepDataBrokerScanProfile } from "../../../../../../functions/server/updateDataBrokerScanProfile";
 import { hasPremium } from "../../../../../../functions/universal/user";
-import { getEnabledFeatureFlags } from "../../../../../../../db/tables/featureFlags";
-import {
-  getProfile,
-  updateProfile,
-} from "../../../../../../functions/server/moscary";
 import { type NormalizedProfileData } from "./panels/SettingsPanelEditProfile/EditProfileForm";
 import { OnerepUsPhoneNumber } from "../../../../../../functions/server/onerep";
-import { parseE164PhoneNumber } from "../../../../../../../utils/parse";
-import { getExperimentationIdFromUserSession } from "../../../../../../functions/server/getExperimentationId";
-import { getExperiments } from "../../../../../../functions/server/getExperiments";
-import { getCountryCode } from "../../../../../../functions/server/getCountryCode";
-import { getLocale } from "../../../../../../functions/universal/getLocale";
 
 export type AddEmailFormState =
   | { success?: never }
@@ -299,83 +289,6 @@ export async function onHandleUpdateProfileData(
       error: "update-profile-data-without-active-subscription",
       errorMessage: `User does not have an active subscription.`,
     };
-  }
-
-  const enabledFeatureFlags = await getEnabledFeatureFlags({
-    email: session.user.email,
-  });
-  const l10n = getL10n(await getAcceptLangHeaderInServerComponents());
-  const experimentationId = await getExperimentationIdFromUserSession(
-    session?.user ?? null,
-  );
-  const experimentData = await getExperiments({
-    experimentationId,
-    countryCode: getCountryCode(await headers()),
-    locale: getLocale(l10n),
-  });
-  if (
-    enabledFeatureFlags.includes("Moscary") ||
-    experimentData["Features"]["moscary"].enabled
-  ) {
-    if (!session.user.subscriber.moscary_id) {
-      logger.error(`User does not have a Moscary profile.`);
-      return {
-        success: false,
-        error: "update-profile-data-without-moscary-profile",
-        errorMessage: `User does not have a Moscary profile.`,
-      };
-    }
-
-    try {
-      const existingProfile = await getProfile(
-        session.user.subscriber.moscary_id,
-      );
-      const {
-        first_name,
-        middle_name,
-        last_name,
-        first_names,
-        last_names,
-        middle_names,
-        phone_numbers,
-        addresses,
-      } = profileData;
-      await updateProfile(session.user.subscriber.moscary_id, {
-        first_name,
-        last_name,
-        first_names: first_names.map((first_name) => ({ first_name })),
-        last_names: last_names.map((last_name) => ({ last_name })),
-        middle_names: middle_names.map((middle_name) => ({ middle_name })),
-        phone_numbers: phone_numbers
-          .map((phone_number) =>
-            parseE164PhoneNumber("+1" + phone_number.replace(/\D/g, "")),
-          )
-          .filter((phone_number) => phone_number !== null)
-          .map((phone_number) => ({ number: phone_number })),
-        addresses,
-        middle_name: middle_name ?? "",
-        // The user is not allowed to change their date of birth:
-        // https://support.mozilla.org/en-US/kb/add-edit-your-monitor-information#w_why-can-i-not-edit-my-birth-date
-        // Moscary could also consider blocking this (MNTOR-4894).
-        birth_date: existingProfile.birth_date,
-      });
-    } catch (error) {
-      logger.error("Could not update profile details:", error);
-      return {
-        success: false,
-        error: "update-profile-data-updating-profile-failed",
-        errorMessage: `Updating profile failed.`,
-      };
-    }
-
-    // Tell the /edit-info page to display an “details saved” notification:
-    (await cookies()).set("justSavedDetails", "justSavedDetails", {
-      expires: new Date(Date.now() + 5 * 60 * 1000),
-      httpOnly: false,
-    });
-
-    revalidatePath("/user/settings/edit-info");
-    redirect("/user/settings/edit-info");
   }
 
   if (!session.user.subscriber.onerep_profile_id) {

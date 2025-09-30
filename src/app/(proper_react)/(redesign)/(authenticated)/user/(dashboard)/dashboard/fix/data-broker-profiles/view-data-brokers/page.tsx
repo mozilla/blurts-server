@@ -18,10 +18,6 @@ import {
 } from "../../../../../../../../../functions/l10n/serverComponents";
 import { hasPremium } from "../../../../../../../../../functions/universal/user";
 import { getEnabledFeatureFlags } from "../../../../../../../../../../db/tables/featureFlags";
-import { getScanAndResults } from "../../../../../../../../../functions/server/moscary";
-import { getExperimentationIdFromUserSession } from "../../../../../../../../../functions/server/getExperimentationId";
-import { getExperiments } from "../../../../../../../../../functions/server/getExperiments";
-import { getLocale } from "../../../../../../../../../functions/universal/getLocale";
 
 export default async function ViewDataBrokers() {
   const session = await getServerSession();
@@ -36,23 +32,11 @@ export default async function ViewDataBrokers() {
     email: session.user.email,
   });
 
-  const experimentationId = await getExperimentationIdFromUserSession(
-    session.user,
-  );
-  const experimentData = await getExperiments({
-    experimentationId,
-    countryCode,
-    locale: getLocale(getL10n(await getAcceptLangHeaderInServerComponents())),
-  });
-
   const profileId = await getOnerepProfileId(session.user.subscriber.id);
-  const latestScan =
-    enabledFeatureFlags.includes("Moscary") ||
-    experimentData["Features"]["moscary"].enabled
-      ? session.user.subscriber.moscary_id
-        ? await getScanAndResults(session.user.subscriber.moscary_id)
-        : undefined
-      : await getScanResultsWithBroker(profileId, hasPremium(session.user));
+  const latestScan = await getScanResultsWithBroker(
+    profileId,
+    hasPremium(session.user),
+  );
 
   const data: StepDeterminationData = {
     countryCode,

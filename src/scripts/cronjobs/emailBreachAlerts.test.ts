@@ -94,24 +94,6 @@ jest.mock("../../app/functions/server/refreshStoredScanResults", () => {
   };
 });
 
-jest.mock("../../app/functions/server/moscary", () => ({
-  getScanAndResults: jest.fn(() =>
-    Promise.resolve({
-      scan: { id: "00000000-0000-0000-0000-000000000000", status: "finished" },
-      results: [
-        {
-          id: "11111111-1111-1111-1111-111111111111",
-          source: "moscary",
-          addresses: [],
-          emails: [],
-          phones: [],
-          relatives: [],
-        },
-      ],
-    }),
-  ),
-}));
-
 jest.mock("../../db/tables/featureFlags.ts", () => ({
   getFeatureFlagData: jest.fn(() => Promise.resolve(null)),
 }));
@@ -356,160 +338,6 @@ test("rendering the MJML-based template", async () => {
   );
 });
 
-test("that the rendered MJML-based template includes the correct subscription link to SubPlat 2", async () => {
-  const consoleLog = jest
-    .spyOn(console, "log")
-    .mockImplementation(() => undefined);
-  // It's not clear if the calls to console.info are important enough to remain,
-  // but since they were already there when adding the "no logs" rule in tests,
-  // I'm respecting Chesterton's Fence and leaving them in place for now:
-  jest.spyOn(console, "info").mockImplementation(() => undefined);
-  const emailMod = await import("../../utils/email");
-  const sendEmail = emailMod.sendEmail as jest.Mock<
-    (typeof emailMod)["sendEmail"]
-  >;
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const mockedUtilsHibp: any = jest.requireMock("../../utils/hibp");
-  mockedUtilsHibp.getBreachByName.mockReturnValue({
-    IsVerified: true,
-    Domain: "test1",
-    IsFabricated: false,
-    IsSpamList: false,
-  });
-
-  const receivedMessages = buildReceivedMessages({
-    breachName: "test1",
-    hashPrefix: "test-prefix1",
-    hashSuffixes: ["test-suffix1"],
-  });
-
-  const { poll } = await import("./emailBreachAlerts");
-
-  await poll(subClient, receivedMessages);
-  expect(subClient.acknowledge).toHaveBeenCalledTimes(1);
-  expect(sendEmail).toHaveBeenCalledTimes(1);
-  const emailBody = sendEmail.mock.calls[0][2];
-  expect(emailBody).toMatch(/\/link\/subscribe\/monthly/);
-  expect(consoleLog).toHaveBeenCalledWith(
-    'Received message: {"breachName":"test1","hashPrefix":"test-prefix1","hashSuffixes":["test-suffix1"]}',
-  );
-});
-
-test("that the rendered MJML-based template includes the correct subscription link to SubPlat 3 if the feature flag is enabled", async () => {
-  const consoleLog = jest
-    .spyOn(console, "log")
-    .mockImplementation(() => undefined);
-  // It's not clear if the calls to console.info are important enough to remain,
-  // but since they were already there when adding the "no logs" rule in tests,
-  // I'm respecting Chesterton's Fence and leaving them in place for now:
-  jest.spyOn(console, "info").mockImplementation(() => undefined);
-  const emailMod = await import("../../utils/email");
-  const sendEmail = emailMod.sendEmail as jest.Mock<
-    (typeof emailMod)["sendEmail"]
-  >;
-  jest.mock("../../db/tables/featureFlags.ts", () => ({
-    getFeatureFlagData: jest.fn(() =>
-      Promise.resolve({
-        name: "SubPlat3",
-        is_enabled: true,
-        allow_list: [],
-        updated_at: Date,
-        last_updated_by_subscriber_id: [],
-      }),
-    ),
-  }));
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const mockedUtilsHibp: any = jest.requireMock("../../utils/hibp");
-  mockedUtilsHibp.getBreachByName.mockReturnValue({
-    IsVerified: true,
-    Domain: "test1",
-    IsFabricated: false,
-    IsSpamList: false,
-  });
-
-  const receivedMessages = buildReceivedMessages({
-    breachName: "test1",
-    hashPrefix: "test-prefix1",
-    hashSuffixes: ["test-suffix1"],
-  });
-
-  const { poll } = await import("./emailBreachAlerts");
-
-  await poll(subClient, receivedMessages);
-  expect(subClient.acknowledge).toHaveBeenCalledTimes(1);
-  expect(sendEmail).toHaveBeenCalledTimes(1);
-  const emailBody = sendEmail.mock.calls[0][2];
-  expect(emailBody).toMatch(/\/link\/subscribe\/monthly/);
-  expect(consoleLog).toHaveBeenCalledWith(
-    'Received message: {"breachName":"test1","hashPrefix":"test-prefix1","hashSuffixes":["test-suffix1"]}',
-  );
-});
-
-test("that the rendered MJML-based template includes the correct subscription link to SubPlat 3 if the subscriber is included in the feature flags allow list", async () => {
-  const consoleLog = jest
-    .spyOn(console, "log")
-    .mockImplementation(() => undefined);
-  // It's not clear if the calls to console.info are important enough to remain,
-  // but since they were already there when adding the "no logs" rule in tests,
-  // I'm respecting Chesterton's Fence and leaving them in place for now:
-  jest.spyOn(console, "info").mockImplementation(() => undefined);
-  const emailMod = await import("../../utils/email");
-  const sendEmail = emailMod.sendEmail as jest.Mock<
-    (typeof emailMod)["sendEmail"]
-  >;
-
-  jest.mock("../../db/tables/subscribers", () => {
-    return {
-      getSubscribersByHashes: jest.fn(() => [
-        {
-          onerep_profile_id: 42,
-          primary_email: "recipient@email.com",
-        },
-      ]),
-    };
-  });
-
-  jest.mock("../../db/tables/featureFlags.ts", () => ({
-    getFeatureFlagData: jest.fn(() =>
-      Promise.resolve({
-        name: "SubPlat3",
-        is_enabled: false,
-        allow_list: ["recipient@email.com"],
-        updated_at: Date,
-        last_updated_by_subscriber_id: [],
-      }),
-    ),
-  }));
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const mockedUtilsHibp: any = jest.requireMock("../../utils/hibp");
-  mockedUtilsHibp.getBreachByName.mockReturnValue({
-    IsVerified: true,
-    Domain: "test1",
-    IsFabricated: false,
-    IsSpamList: false,
-  });
-
-  const receivedMessages = buildReceivedMessages({
-    breachName: "test1",
-    hashPrefix: "test-prefix1",
-    hashSuffixes: ["test-suffix1"],
-  });
-
-  const { poll } = await import("./emailBreachAlerts");
-
-  await poll(subClient, receivedMessages);
-  expect(subClient.acknowledge).toHaveBeenCalledTimes(1);
-  expect(sendEmail).toHaveBeenCalledTimes(1);
-  const emailBody = sendEmail.mock.calls[0][2];
-  expect(emailBody).toMatch(/\/link\/subscribe\/monthly/);
-  expect(consoleLog).toHaveBeenCalledWith(
-    'Received message: {"breachName":"test1","hashPrefix":"test-prefix1","hashSuffixes":["test-suffix1"]}',
-  );
-});
-
 test("new subject line for the redesigned breach email", async () => {
   jest.spyOn(console, "log").mockImplementation(() => undefined);
   // It's not clear if the calls to console.info are important enough to remain,
@@ -728,79 +556,6 @@ test("throws an error when markEmailAsNotified fails", async () => {
   expect(sendEmail).toHaveBeenCalledTimes(1);
 });
 
-test("processes valid messages for a user with a Moscary profile", async () => {
-  const consoleLog = jest
-    .spyOn(console, "log")
-    .mockImplementation(() => undefined);
-  // It's not clear if the calls to console.info are important enough to remain,
-  // but since they were already there when adding the "no logs" rule in tests,
-  // I'm respecting Chesterton's Fence and leaving them in place for now:
-  jest.spyOn(console, "info").mockImplementation(() => undefined);
-  const emailMod = await import("../../utils/email");
-  const sendEmail = emailMod.sendEmail as jest.Mock<
-    (typeof emailMod)["sendEmail"]
-  >;
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const mockedUtilsHibp: any = jest.requireMock("../../utils/hibp");
-  mockedUtilsHibp.getBreachByName.mockReturnValue({
-    IsVerified: true,
-    Domain: "test1",
-    IsFabricated: false,
-    IsSpamList: false,
-  });
-
-  jest.mock("../../db/tables/subscribers", () => {
-    return {
-      getSubscribersByHashes: jest.fn(() => [
-        {
-          moscary_id: "22222222-2222-2222-2222-222222222222",
-          onerep_profile_id: undefined,
-        },
-      ]),
-    };
-  });
-
-  jest.mock("../../db/tables/email_notifications", () => {
-    return {
-      getNotifiedSubscribersForBreach: jest.fn(() => []),
-      addEmailNotification: jest.fn(),
-      markEmailAsNotified: jest.fn(),
-    };
-  });
-
-  const receivedMessages = buildReceivedMessages({
-    breachName: "test1",
-    hashPrefix: "test-prefix1",
-    hashSuffixes: ["test-suffix1"],
-  });
-
-  const { poll } = await import("./emailBreachAlerts");
-
-  await poll(subClient, receivedMessages);
-
-  expect(subClient.acknowledge).toHaveBeenCalledTimes(1);
-  expect(sendEmail).toHaveBeenCalledTimes(1);
-
-  // The Moscary scan was used:
-  const { getScanAndResults } = await import(
-    "../../app/functions/server/moscary"
-  );
-  expect(getScanAndResults).toHaveBeenCalledWith(
-    "22222222-2222-2222-2222-222222222222",
-  );
-
-  // And OneRep wasn't called:
-  const { getScanResultsWithBroker } = await import(
-    "../../db/tables/onerep_scans"
-  );
-  expect(getScanResultsWithBroker).not.toHaveBeenCalled();
-
-  expect(consoleLog).toHaveBeenCalledWith(
-    'Received message: {"breachName":"test1","hashPrefix":"test-prefix1","hashSuffixes":["test-suffix1"]}',
-  );
-});
-
 test("processes valid messages for non-US users", async () => {
   const consoleLog = jest
     .spyOn(console, "log")
@@ -855,13 +610,7 @@ test("processes valid messages for non-US users", async () => {
   expect(subClient.acknowledge).toHaveBeenCalledTimes(1);
   expect(sendEmail).toHaveBeenCalledTimes(1);
 
-  // The Moscary scan was used:
-  const { getScanAndResults } = await import(
-    "../../app/functions/server/moscary"
-  );
-  expect(getScanAndResults).not.toHaveBeenCalled();
-
-  // And OneRep wasn't called:
+  // OneRep wasn't called:
   const { getScanResultsWithBroker } = await import(
     "../../db/tables/onerep_scans"
   );

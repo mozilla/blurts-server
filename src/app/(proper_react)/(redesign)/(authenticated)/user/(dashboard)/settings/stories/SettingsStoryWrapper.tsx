@@ -2,7 +2,11 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { EmailAddressRow, SubscriberRow } from "knex/types/tables";
+import {
+  EmailAddressRow,
+  OnerepProfileRow,
+  SubscriberRow,
+} from "knex/types/tables";
 import { fn } from "storybook/test";
 import { SettingsView, TabType } from "../View";
 import { Shell } from "../../../../../Shell/Shell";
@@ -20,7 +24,6 @@ import {
   mockedVerifiedEmailFifth,
 } from "./settingsMockData";
 import { SerializedSubscriber } from "../../../../../../../../next-auth";
-import { MoscaryData } from "../../../../../../../functions/server/moscary";
 import { getL10n } from "../../../../../../../functions/l10n/storybookAndJest";
 
 export type SettingsWrapperProps = {
@@ -32,7 +35,7 @@ export type SettingsWrapperProps = {
   isEligibleForPremium: boolean;
   subscriber: SubscriberRow;
   emailAddresses?: EmailAddressRow[];
-  profileData?: MoscaryData["Profile"];
+  profileData?: OnerepProfileRow;
   data?: SubscriberEmailPreferencesOutput;
   hasPlus?: boolean;
 };

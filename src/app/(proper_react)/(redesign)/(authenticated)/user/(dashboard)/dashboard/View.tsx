@@ -59,16 +59,7 @@ import { PetitionBanner } from "../../../../../../components/client/PetitionBann
 import { useLocalDismissal } from "../../../../../../hooks/useLocalDismissal";
 import { DataBrokerRemovalTime } from "../../../../../../functions/server/getDataBrokerRemovalTimeEstimates";
 import { UserAnnouncementWithDetails } from "../../../../../../../db/tables/user_announcements";
-import type {
-  MoscaryData,
-  ScanData,
-} from "../../../../../../functions/server/moscary";
 import { parseIso8601Datetime } from "../../../../../../../utils/parse";
-import {
-  isOneRepScan,
-  isOneRepScanResult,
-  isOneRepScanResultDataBroker,
-} from "../../../../../../functions/universal/onerep";
 
 export type TabType = "action-needed" | "fixed";
 
@@ -77,7 +68,7 @@ export type Props = {
   experimentData: ExperimentData["Features"];
   user: Session["user"];
   userBreaches: SubscriberBreach[];
-  userScanData: LatestOnerepScanData | ScanData;
+  userScanData: LatestOnerepScanData;
   isEligibleForFreeScan: boolean;
   isEligibleForPremium: boolean;
   monthlySubscriptionUrl: string;
@@ -127,13 +118,7 @@ export const View = (props: Props) => {
   }, [pathname, activeTab, props.userAnnouncements]);
 
   const adjustedScanResults = props.userScanData.results.map((scanResult) => {
-    // MNTOR-4531: OneRep code paths will be phased out:
-    /* c8 ignore next 16 */
-    if (
-      isOneRepScanResult(scanResult) &&
-      scanResult.status === "new" &&
-      hasPremium(props.user)
-    ) {
+    if (scanResult.status === "new" && hasPremium(props.user)) {
       // Even if the user has Plus, OneRep won't automatically start removing
       // found exposures; it first sends a request to our webhook, and then the
       // webhook sends an opt-out request to OneRep. Meanwhile, however, we're
@@ -145,27 +130,12 @@ export const View = (props: Props) => {
         status: "optout_in_progress",
       } as OnerepScanResultDataBrokerRow;
     }
-    if (
-      !isOneRepScanResult(scanResult) &&
-      scanResult.status === "new" &&
-      hasPremium(props.user)
-    ) {
-      // Even if the user has Plus, found exposures aren't marked as in progress
-      // until after the removal requests have been sent. Meanwhile, however,
-      // we're just waiting for the systems to do their thing, and there's no
-      // action for the user to take; hence, we also mark the exposures as being
-      // in progress:
-      return {
-        ...scanResult,
-        status: "optout_in_progress",
-      } as MoscaryData["ScanResult"];
-    }
     return scanResult;
-  }) as OnerepScanResultDataBrokerRow[] | MoscaryData["ScanResult"][];
+  }) as OnerepScanResultDataBrokerRow[];
   const adjustedScanData = {
     scan: props.userScanData.scan,
     results: adjustedScanResults,
-  } as LatestOnerepScanData | ScanData;
+  } as LatestOnerepScanData;
 
   const initialFilterState: FilterState = {
     exposureType: "show-all-exposure-type",
@@ -188,11 +158,7 @@ export const View = (props: Props) => {
 
   const breachesDataArray = props.userBreaches.flat();
   const initialScanInProgress =
-    // MNTOR-4531: OneRep code paths will be phased out:
-    /* c8 ignore next 2 */
-    (isOneRepScan(adjustedScanData.scan)
-      ? adjustedScanData.scan.onerep_scan_status === "in_progress"
-      : adjustedScanData.scan?.status === "in_progress") &&
+    adjustedScanData.scan?.onerep_scan_status === "in_progress" &&
     props.scanCount === 1;
 
   // Merge exposure cards
@@ -202,14 +168,10 @@ export const View = (props: Props) => {
   const arraySortedByDate = combinedArray.sort((a, b) => {
     const dateA =
       (a as SubscriberBreach).addedDate ||
-      parseIso8601Datetime(
-        (a as OnerepScanResultRow | MoscaryData["ScanResult"]).created_at,
-      );
+      parseIso8601Datetime((a as OnerepScanResultRow).created_at);
     const dateB =
       (b as SubscriberBreach).addedDate ||
-      parseIso8601Datetime(
-        (b as OnerepScanResultRow | MoscaryData["ScanResult"]).created_at,
-      );
+      parseIso8601Datetime((b as OnerepScanResultRow).created_at);
 
     const timestampA = dateA.getTime();
     const timestampB = dateB.getTime();
@@ -660,11 +622,7 @@ export function isDataBrokerUnderMaintenance(
 ): boolean {
   return (
     isScanResult(exposure) &&
-    // MNTOR-4531: OneRep code paths will be phased out:
-    /* c8 ignore next 4 */
-    (isOneRepScanResultDataBroker(exposure)
-      ? exposure.broker_status
-      : exposure.status) === "removal_under_maintenance" &&
+    exposure.broker_status === "removal_under_maintenance" &&
     exposure.status !== "removed"
   );
 }

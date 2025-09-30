@@ -7,7 +7,7 @@ import { OnerepScanRow } from "knex/types/tables";
 import {
   createRandomAnnouncement,
   createRandomBreach,
-  createRandomOnerepScanResult,
+  createRandomScanResult,
   createUserWithPremiumSubscription,
 } from "../../../../../../../../../../apiMocks/mockData";
 import { Shell } from "../../../../../../../Shell/Shell";
@@ -43,7 +43,7 @@ const mockedScan: OnerepScanRow = {
 const mockedScanData: LatestOnerepScanData = {
   scan: mockedScan,
   results: [...Array(5)].map(() =>
-    createRandomOnerepScanResult({ status: "new", manually_resolved: false }),
+    createRandomScanResult({ status: "new", manually_resolved: false }),
   ),
 };
 const mockedBreaches = [...Array(5)].map(() => createRandomBreach());
