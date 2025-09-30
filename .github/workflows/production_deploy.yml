@@ -18,7 +18,6 @@ on:
         description: 'The original image tag that has been deployed'
         required: true
         type: string
-        pattern: '^[a-f0-9]{7,12}$'
 jobs:
   pull_retag_push:
     name: Pull, Retag, and Push Images
@@ -32,7 +31,6 @@ jobs:
       GAR_IMAGE_BASE: ${{ vars.GAR_REPO }}/${{ github.event.repository.name }}
       GAR_REGISTRY: us-docker.pkg.dev # Define GAR registry hostname
       DOCKERHUB_IMAGE: mozilla/blurts-server # Define Docker Hub image name
-      SAFE_IMAGE_TAG: ${{ inputs.originalImageTag }}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v5
@@ -62,19 +60,19 @@ jobs:
           password: ${{ steps.gcp-auth.outputs.access_token }}
 
       - name: Pull Docker Hub image
-        run: docker pull "${{ env.DOCKERHUB_IMAGE }}:${{ env.SAFE_IMAGE_TAG }}"
+        run: docker pull ${{ env.DOCKERHUB_IMAGE }}:${{ inputs.originalImageTag }}
 
       - name: Retag Docker Hub image
-        run: docker tag "${{ env.DOCKERHUB_IMAGE }}:${{ env.SAFE_IMAGE_TAG }}" "${{ env.DOCKERHUB_IMAGE }}:${{ inputs.environment }}-${{ env.SAFE_IMAGE_TAG }}"
+        run: docker tag ${{ env.DOCKERHUB_IMAGE }}:${{ inputs.originalImageTag }} ${{ env.DOCKERHUB_IMAGE }}:${{ inputs.environment }}-${{ inputs.originalImageTag }}
 
       - name: Push Docker Hub image
-        run: docker push "${{ env.DOCKERHUB_IMAGE }}:${{ inputs.environment }}-${{ env.SAFE_IMAGE_TAG }}"
+        run: docker push ${{ env.DOCKERHUB_IMAGE }}:${{ inputs.environment }}-${{ inputs.originalImageTag }}
 
       - name: Pull GAR image
-        run: docker pull "${{ env.GAR_IMAGE_BASE }}:${{ env.SAFE_IMAGE_TAG }}"
+        run: docker pull ${{ env.GAR_IMAGE_BASE }}:${{ inputs.originalImageTag }}
 
       - name: Retag GAR image
-        run: docker tag "${{ env.GAR_IMAGE_BASE }}:${{ env.SAFE_IMAGE_TAG }}" "${{ env.GAR_IMAGE_BASE }}:${{ inputs.environment }}-${{ env.SAFE_IMAGE_TAG }}"
+        run: docker tag ${{ env.GAR_IMAGE_BASE }}:${{ inputs.originalImageTag }} ${{ env.GAR_IMAGE_BASE }}:${{ inputs.environment }}-${{ inputs.originalImageTag }}
 
       - name: Push GAR image
-        run: docker push "${{ env.GAR_IMAGE_BASE }}:${{ inputs.environment }}-${{ env.SAFE_IMAGE_TAG }}"
+        run: docker push ${{ env.GAR_IMAGE_BASE }}:${{ inputs.environment }}-${{ inputs.originalImageTag }}
