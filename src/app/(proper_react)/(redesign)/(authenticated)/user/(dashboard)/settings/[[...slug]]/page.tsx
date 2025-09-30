@@ -106,10 +106,6 @@ export default async function SettingsPage(props: Props) {
     type: "monthly",
     enabledFeatureFlags,
   });
-  const yearlySubscriptionUrl = getPremiumSubscriptionUrl({
-    type: "yearly",
-    enabledFeatureFlags,
-  });
 
   const headersList = await headers();
   const l10n = getL10n(await getAcceptLangHeaderInServerComponents());
@@ -156,7 +152,6 @@ export default async function SettingsPage(props: Props) {
       fxaSettingsUrl={fxaSettingsUrl}
       fxaSubscriptionsUrl={fxaSubscriptionsUrl}
       monthlySubscriptionUrl={`${monthlySubscriptionUrl}${additionalSubplatParamsString}`}
-      yearlySubscriptionUrl={`${yearlySubscriptionUrl}${additionalSubplatParamsString}`}
       subscriptionBillingAmount={getSubscriptionBillingAmount()}
       enabledFeatureFlags={enabledFeatureFlags}
       experimentData={experimentData["Features"]}

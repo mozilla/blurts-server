@@ -195,12 +195,10 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
             isEligibleForPremium={props.countryCode === "us"}
             isEligibleForFreeScan={props.countryCode === "us" && !scanData.scan}
             monthlySubscriptionUrl=""
-            yearlySubscriptionUrl=""
             fxaSettingsUrl=""
             scanCount={scanCount}
             totalNumberOfPerformedScans={props.totalNumberOfPerformedScans}
             subscriptionBillingAmount={{
-              yearly: 13.37,
               monthly: 42.42,
             }}
             isNewUser={true}

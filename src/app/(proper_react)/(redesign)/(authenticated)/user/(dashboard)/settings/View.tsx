@@ -34,9 +34,7 @@ export type Props = {
   user: Session["user"];
   subscriber: SubscriberRow;
   monthlySubscriptionUrl: string;
-  yearlySubscriptionUrl: string;
   subscriptionBillingAmount: {
-    yearly: number;
     monthly: number;
   };
   fxaSettingsUrl: string;
@@ -68,7 +66,6 @@ export const SettingsView = (props: Props) => {
       <Toolbar
         user={props.user}
         monthlySubscriptionUrl={props.monthlySubscriptionUrl}
-        yearlySubscriptionUrl={props.yearlySubscriptionUrl}
         subscriptionBillingAmount={props.subscriptionBillingAmount}
         fxaSettingsUrl={props.fxaSettingsUrl}
         lastScanDate={props.lastScanDate ?? null}

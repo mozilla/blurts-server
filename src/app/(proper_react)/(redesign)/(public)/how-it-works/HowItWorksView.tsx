@@ -21,14 +21,14 @@ export type Props = {
 export const HowItWorksView = (props: Props) => {
   const { l10n, eligibleForPremium, scanLimitReached } = props;
 
-  const yearlySubscriptionUrl = getPremiumSubscriptionUrl({
-    type: "yearly",
+  const monthlySubscriptionUrl = getPremiumSubscriptionUrl({
+    type: "monthly",
     enabledFeatureFlags: props.enabledFeatureFlags,
   });
   return (
     <main>
       <Header l10n={l10n} />
-      <DataBrokers yearlySubscriptionUrl={yearlySubscriptionUrl} />
+      <DataBrokers monthlySubscriptionUrl={monthlySubscriptionUrl} />
       <DataBreaches />
       <FooterSection
         l10n={l10n}

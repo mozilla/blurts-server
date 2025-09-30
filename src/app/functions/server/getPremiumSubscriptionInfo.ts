@@ -62,16 +62,13 @@ export function getPremiumSubscriptionUrl({
 }
 
 type SubscriptionBillingAmount = Record<
-  Exclude<SubscriptionPeriod, "bundle">,
+  Exclude<SubscriptionPeriod, "bundle" | "yearly">,
   number
 > &
   Record<"bundle", BundleBillingAmount>;
 
 export function getSubscriptionBillingAmount(): SubscriptionBillingAmount {
   return {
-    yearly: parseFloat(
-      process.env.SUBSCRIPTION_BILLING_AMOUNT_YEARLY_US as string,
-    ),
     monthly: parseFloat(
       process.env.SUBSCRIPTION_BILLING_AMOUNT_MONTHLY_US as string,
     ),

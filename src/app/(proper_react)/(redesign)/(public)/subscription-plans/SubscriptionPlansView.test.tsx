@@ -8,7 +8,6 @@ import { screen, render, getByRole } from "@testing-library/react";
 import { axe } from "jest-axe";
 import Meta, { SubscriptionPlans } from "./SubscriptionPlansView.stories";
 import { useSession } from "next-auth/react";
-import { userEvent } from "@testing-library/user-event";
 
 jest.mock("next-auth/react", () => {
   return {
@@ -43,22 +42,7 @@ describe("Subscription plans", () => {
     expect(await axe(container)).toHaveNoViolations();
   }, 10_000);
 
-  it("confirms that the pricing card yearly upsell has the correct link for SubPlat2", async () => {
-    const ComposedStory = composeStory(SubscriptionPlans, Meta);
-    render(<ComposedStory />);
-
-    const plusCard = screen.getByLabelText("Monitor Plus");
-    const upsellButton = getByRole(plusCard, "link", {
-      name: "Get started",
-    });
-    expect(upsellButton).toHaveAttribute(
-      "href",
-      "https://accounts.stage.mozaws.net/subscriptions/products/prod_NErZh679W62lai?plan=price_1NvqawKb9q6OnNsLRTnYrtrV&entrypoint=monitor.mozilla.org-monitor-product-page&form_type=button&data_cta_position=pricing&utm_source=monitor-product&utm_medium=monitor&utm_campaign=in-product-pricing-grid&utm_content=get-started-us",
-    );
-  });
-
   it("confirms that the pricing card monthly upsell has the correct link for SubPlat2", async () => {
-    const user = userEvent.setup();
     const ComposedStory = composeStory(SubscriptionPlans, Meta);
     render(<ComposedStory />);
 
@@ -66,12 +50,10 @@ describe("Subscription plans", () => {
     const upsellButton = getByRole(plusCard, "link", {
       name: "Get started",
     });
-    const monthlyToggle = getByRole(plusCard, "radio", { name: "Monthly" });
     // jsdom will complain about not being able to navigate to a different page
     // after clicking the link; suppress that error, as it's not relevant to the
     // test:
     jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
-    await user.click(monthlyToggle);
 
     expect(upsellButton).toHaveAttribute(
       "href",
@@ -79,36 +61,7 @@ describe("Subscription plans", () => {
     );
   });
 
-  it("confirms that the pricing card bundle upsell has the correct link for SubPlat2", async () => {
-    const ComposedStory = composeStory(SubscriptionPlans, Meta);
-    render(<ComposedStory />);
-
-    const bundleCard = screen.getByLabelText("Privacy Protection Plan");
-    const upsellButton = getByRole(bundleCard, "link", {
-      name: "Get started",
-    });
-    expect(upsellButton).toHaveAttribute(
-      "href",
-      "https://accounts.stage.mozaws.net/subscriptions/products/prod_SFb8iVuZIOPREe?plan=price_1RMAopKb9q6OnNsLSGe1vLtt&entrypoint=monitor.mozilla.org-monitor-product-page&form_type=button&data_cta_position=pricing&utm_source=monitor-product&utm_medium=monitor&utm_campaign=in-product-pricing-grid&utm_content=get-started-us",
-    );
-  });
-
-  it("confirms that the pricing card yearly upsell has the correct link for SubPlat3", async () => {
-    const ComposedStory = composeStory(SubscriptionPlans, Meta);
-    render(<ComposedStory enabledFeatureFlags={["SubPlat3"]} />);
-
-    const bundleCard = screen.getByLabelText("Privacy Protection Plan");
-    const upsellButton = getByRole(bundleCard, "link", {
-      name: "Get started",
-    });
-    expect(upsellButton).toHaveAttribute(
-      "href",
-      "https://payments-next.stage.fxa.nonprod.webservices.mozgcp.net/privacyprotectionplan/yearly/landing?entrypoint=monitor.mozilla.org-monitor-product-page&form_type=button&data_cta_position=pricing&utm_source=monitor-product&utm_medium=monitor&utm_campaign=in-product-pricing-grid&utm_content=get-started-us",
-    );
-  });
-
   it("confirms that the pricing card monthly upsell has the correct link for SubPlat3", async () => {
-    const user = userEvent.setup();
     const ComposedStory = composeStory(SubscriptionPlans, Meta);
     render(<ComposedStory enabledFeatureFlags={["SubPlat3"]} />);
 
@@ -116,30 +69,14 @@ describe("Subscription plans", () => {
     const upsellButton = getByRole(plusCard, "link", {
       name: "Get started",
     });
-    const monthlyToggle = getByRole(plusCard, "radio", { name: "Monthly" });
     // jsdom will complain about not being able to navigate to a different page
     // after clicking the link; suppress that error, as it's not relevant to the
     // test:
     jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
-    await user.click(monthlyToggle);
 
     expect(upsellButton).toHaveAttribute(
       "href",
       "https://payments-next.stage.fxa.nonprod.webservices.mozgcp.net/monitorplusstage/monthly/landing?entrypoint=monitor.mozilla.org-monitor-product-page&form_type=button&data_cta_position=pricing&utm_source=monitor-product&utm_medium=monitor&utm_campaign=in-product-pricing-grid&utm_content=get-started-us",
-    );
-  });
-
-  it("confirms that the pricing card bundle upsell has the correct link for SubPlat3", async () => {
-    const ComposedStory = composeStory(SubscriptionPlans, Meta);
-    render(<ComposedStory enabledFeatureFlags={["SubPlat3"]} />);
-
-    const bundleCard = screen.getByLabelText("Privacy Protection Plan");
-    const upsellButton = getByRole(bundleCard, "link", {
-      name: "Get started",
-    });
-    expect(upsellButton).toHaveAttribute(
-      "href",
-      "https://payments-next.stage.fxa.nonprod.webservices.mozgcp.net/privacyprotectionplan/yearly/landing?entrypoint=monitor.mozilla.org-monitor-product-page&form_type=button&data_cta_position=pricing&utm_source=monitor-product&utm_medium=monitor&utm_campaign=in-product-pricing-grid&utm_content=get-started-us",
     );
   });
 

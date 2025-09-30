@@ -20,7 +20,6 @@ export const TestComponentWrapper = (props: { children: ReactNode }) => {
           <CookiesProvider>
             <SubscriptionBillingProvider
               value={{
-                yearly: 0,
                 monthly: 0,
                 bundle: {
                   monthly: 0,

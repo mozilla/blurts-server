@@ -24,10 +24,8 @@ export type Props = {
   enabledFeatureFlags: FeatureFlagName[];
   experimentData: ExperimentData["Features"];
   monthlySubscriptionUrl: string;
-  yearlySubscriptionUrl: string;
   fxaSettingsUrl: string;
   subscriptionBillingAmount: {
-    yearly: number;
     monthly: number;
   };
   announcements: UserAnnouncementWithDetails[] | null;
@@ -40,7 +38,6 @@ export const ShellRedesign = (props: Props) => {
       countryCode={props.countryCode}
       session={props.session}
       monthlySubscriptionUrl={props.monthlySubscriptionUrl}
-      yearlySubscriptionUrl={props.yearlySubscriptionUrl}
       fxaSettingsUrl={props.fxaSettingsUrl}
       subscriptionBillingAmount={props.subscriptionBillingAmount}
       enabledFeatureFlags={props.enabledFeatureFlags}
