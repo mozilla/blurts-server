@@ -91,13 +91,14 @@ function ComboBox(
           popoverRef={popoverRef}
           state={state}
           triggerRef={inputRef}
+          isNonModal={true}
+          placement="bottom start"
         >
           <div className={comboBoxStyles.popoverList}>
             <ListBox
               {...listBoxProps}
               listBoxRef={listBoxRef}
               listPlaceholder={listPlaceholder}
-              parentRef={inputRef}
               state={state}
             />
           </div>

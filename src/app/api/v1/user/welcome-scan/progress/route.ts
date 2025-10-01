@@ -22,17 +22,6 @@ import {
   getAllScanResults as getAllOnerepScanResults,
 } from "../../../../../functions/server/onerep";
 import { hasPremium } from "../../../../../functions/universal/user";
-import { getScanAndResults } from "../../../../../functions/server/moscary";
-import { getEnabledFeatureFlags } from "../../../../../../db/tables/featureFlags";
-import { getCountryCode } from "../../../../../functions/server/getCountryCode";
-import { headers } from "next/headers";
-import { getExperimentationIdFromUserSession } from "../../../../../functions/server/getExperimentationId";
-import { getExperiments } from "../../../../../functions/server/getExperiments";
-import { getLocale } from "../../../../../functions/universal/getLocale";
-import {
-  getAcceptLangHeaderInServerComponents,
-  getL10n,
-} from "../../../../../functions/l10n/serverComponents";
 
 export interface ScanProgressBody {
   success: boolean;
@@ -47,9 +36,6 @@ export async function GET(
 ): Promise<NextResponse<ScanProgressBody>> {
   const session = await getServerSession();
   if (typeof session?.user?.subscriber?.fxa_uid === "string") {
-    const enabledFeatureFlags = await getEnabledFeatureFlags({
-      email: session.user.email,
-    });
     try {
       const subscriber = await getSubscriberByFxaUid(
         session.user.subscriber?.fxa_uid,
@@ -57,76 +43,35 @@ export async function GET(
       if (!subscriber) {
         throw new Error("No subscriber found for current session.");
       }
-      const countryCode = getCountryCode(await headers());
-      const experimentationId = await getExperimentationIdFromUserSession(
-        session.user,
+      const profileId = await getOnerepProfileId(subscriber.id);
+
+      const latestScan = await getOnerepScanResultsWithBroker(
+        profileId,
+        hasPremium(session.user),
       );
-      const experimentData = await getExperiments({
-        experimentationId,
-        countryCode,
-        locale: getLocale(
-          getL10n(await getAcceptLangHeaderInServerComponents()),
-        ),
-      });
+      const latestScanId = latestScan.scan?.onerep_scan_id;
+
       if (
-        enabledFeatureFlags.includes("Moscary") ||
-        experimentData["Features"]["moscary"].enabled
+        typeof latestScanId !== "undefined" &&
+        typeof profileId === "number"
       ) {
-        if (subscriber.moscary_id === null) {
-          return NextResponse.json(
-            { success: true } satisfies ScanProgressBody,
-            {
-              status: 200,
-            },
-          );
-        }
-        const latestScan = await getScanAndResults(subscriber.moscary_id);
-        const latestScanId = latestScan.scan?.id;
+        const scan = await getOnerepScanDetails(profileId, latestScanId);
 
-        if (typeof latestScanId !== "undefined") {
-          return NextResponse.json(
-            {
-              success: true,
-              status: latestScan.scan?.status,
-            } satisfies ScanProgressBody,
-            { status: 200 },
-          );
+        // Store scan results.
+        if (scan.status === "finished") {
+          const allScanResults = await getAllOnerepScanResults(profileId);
+          await addOnerepScanResults(profileId, allScanResults);
         }
 
-        return NextResponse.json({ success: true } satisfies ScanProgressBody, {
-          status: 200,
-        });
-      } else {
-        const profileId = await getOnerepProfileId(subscriber.id);
-
-        const latestScan = await getOnerepScanResultsWithBroker(
-          profileId,
-          hasPremium(session.user),
+        return NextResponse.json(
+          { success: true, status: scan.status } satisfies ScanProgressBody,
+          { status: 200 },
         );
-        const latestScanId = latestScan.scan?.onerep_scan_id;
-
-        if (
-          typeof latestScanId !== "undefined" &&
-          typeof profileId === "number"
-        ) {
-          const scan = await getOnerepScanDetails(profileId, latestScanId);
-
-          // Store scan results.
-          if (scan.status === "finished") {
-            const allScanResults = await getAllOnerepScanResults(profileId);
-            await addOnerepScanResults(profileId, allScanResults);
-          }
-
-          return NextResponse.json(
-            { success: true, status: scan.status } satisfies ScanProgressBody,
-            { status: 200 },
-          );
-        }
-
-        return NextResponse.json({ success: true } satisfies ScanProgressBody, {
-          status: 200,
-        });
       }
+
+      return NextResponse.json({ success: true } satisfies ScanProgressBody, {
+        status: 200,
+      });
     } catch (e) {
       logger.error(e);
       return NextResponse.json({ success: false } satisfies ScanProgressBody, {

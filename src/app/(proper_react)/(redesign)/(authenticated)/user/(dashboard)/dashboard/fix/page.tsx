@@ -16,14 +16,6 @@ import { getServerSession } from "../../../../../../../functions/server/getServe
 import { refreshStoredScanResults } from "../../../../../../../functions/server/refreshStoredScanResults";
 import { hasPremium } from "../../../../../../../functions/universal/user";
 import { getEnabledFeatureFlags } from "../../../../../../../../db/tables/featureFlags";
-import { getScanAndResults } from "../../../../../../../functions/server/moscary";
-import { getExperimentationIdFromUserSession } from "../../../../../../../functions/server/getExperimentationId";
-import { getExperiments } from "../../../../../../../functions/server/getExperiments";
-import { getLocale } from "../../../../../../../functions/universal/getLocale";
-import {
-  getAcceptLangHeaderInServerComponents,
-  getL10n,
-} from "../../../../../../../functions/l10n/serverComponents";
 
 export default async function FixPage() {
   const session = await getServerSession();
@@ -44,22 +36,10 @@ export default async function FixPage() {
     email: session.user.email,
   });
 
-  const experimentationId = await getExperimentationIdFromUserSession(
-    session.user,
+  const scanData = await getScanResultsWithBroker(
+    profileId,
+    hasPremium(session.user),
   );
-  const experimentData = await getExperiments({
-    experimentationId,
-    countryCode,
-    locale: getLocale(getL10n(await getAcceptLangHeaderInServerComponents())),
-  });
-
-  const scanData =
-    enabledFeatureFlags.includes("Moscary") ||
-    experimentData["Features"]["moscary"].enabled
-      ? session.user.subscriber.moscary_id
-        ? await getScanAndResults(session.user.subscriber.moscary_id)
-        : { scan: null, results: [] }
-      : await getScanResultsWithBroker(profileId, hasPremium(session.user));
   const stepDeterminationData: StepDeterminationData = {
     countryCode,
     user: session.user,
