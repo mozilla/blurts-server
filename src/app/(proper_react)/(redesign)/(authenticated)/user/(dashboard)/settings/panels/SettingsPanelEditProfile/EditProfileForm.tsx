@@ -22,8 +22,6 @@ import {
 import { useL10n } from "../../../../../../../../hooks/l10n";
 import styles from "./EditProfileForm.module.scss";
 import { type onHandleUpdateProfileData } from "../../actions";
-import { MoscaryData } from "../../../../../../../../functions/server/moscary";
-import { parseIso8601Datetime } from "../../../../../../../../../utils/parse";
 import { StateAbbr } from "../../../../../../../../../utils/states";
 
 export const profileFields = [
@@ -165,6 +163,8 @@ const validateProfileFormData = (formData: NormalizedProfileData) => {
           );
           break;
         }
+        default:
+          break;
       }
       return formDataValidated;
     },
@@ -177,7 +177,7 @@ function EditProfileForm(props: {
   actions: {
     onHandleUpdateProfileData: typeof onHandleUpdateProfileData;
   };
-  profileData: OnerepProfileRow | MoscaryData["Profile"];
+  profileData: OnerepProfileRow;
 }) {
   const l10n = useL10n();
   const normalizedProfileData = useMemo(
@@ -333,44 +333,14 @@ function EditProfileForm(props: {
 }
 
 function normalizeProfileData(
-  profileData: OnerepProfileRow | MoscaryData["Profile"],
+  profileData: OnerepProfileRow,
 ): NormalizedProfileData {
-  // MNTOR-4531: OneRep code paths will be phased out:
-  /* c8 ignore next 8 */
-  if (isOnerepProfileRow(profileData)) {
-    return {
-      ...profileData,
-      phone_numbers: profileData.phone_numbers.map((phone_number) =>
-        formatPhone(phone_number),
-      ),
-    };
-  }
-
   return {
-    // Note: these addresses have the same structure, but the `state` field
-    //       is typed as an explicit `StateAbbr` in `OnerepProfileRow`.
-    addresses: profileData.addresses as OnerepProfileRow["addresses"],
-    date_of_birth: parseIso8601Datetime(profileData.birth_date),
-    first_name: profileData.first_name,
-    first_names: profileData.first_names.map(
-      (first_name) => first_name.first_name,
-    ),
-    middle_name: profileData.middle_name ?? null,
-    middle_names: profileData.middle_names.map(
-      (middle_name) => middle_name.middle_name,
-    ),
-    last_name: profileData.last_name,
-    last_names: profileData.last_names.map((last_name) => last_name.last_name),
+    ...profileData,
     phone_numbers: profileData.phone_numbers.map((phone_number) =>
-      formatPhone(phone_number.number),
+      formatPhone(phone_number),
     ),
   };
-}
-
-function isOnerepProfileRow(
-  profileData: OnerepProfileRow | MoscaryData["Profile"],
-): profileData is OnerepProfileRow {
-  return typeof (profileData as OnerepProfileRow).date_of_birth !== "undefined";
 }
 
 export { EditProfileForm };

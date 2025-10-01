@@ -11,7 +11,6 @@ import {
 import { deactivateProfile as deactivateOnerepProfile } from "./onerep";
 import { deleteSubscription } from "../../../utils/fxa";
 import { record } from "./glean";
-import { deactivateProfile } from "./moscary";
 
 export async function deleteAccount(subscriber: SubscriberRow) {
   logger.info("fxa_delete_user", {
@@ -23,21 +22,6 @@ export async function deleteAccount(subscriber: SubscriberRow) {
       monitorUserId: subscriber.id.toString(),
     },
   });
-
-  if (subscriber.moscary_id) {
-    try {
-      await deactivateProfile(subscriber.moscary_id);
-
-      logger.info("deactivated_moscary_profile", {
-        subscriber_id: subscriber.id,
-      });
-    } catch (ex) {
-      logger.error("on_deletion_profile_deactivation_error", {
-        subscriber_id: subscriber.id,
-        exception: ex,
-      });
-    }
-  }
 
   // get profile id
   const oneRepProfileId = await getOnerepProfileId(subscriber.id);

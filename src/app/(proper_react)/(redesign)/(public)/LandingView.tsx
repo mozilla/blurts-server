@@ -347,10 +347,6 @@ const Plans = (props: Props) => {
             type: "monthly",
             enabledFeatureFlags: props.enabledFeatureFlags,
           }),
-          yearly: getPremiumSubscriptionUrl({
-            type: "yearly",
-            enabledFeatureFlags: props.enabledFeatureFlags,
-          }),
         }}
         subscriptionBillingAmount={getSubscriptionBillingAmount()}
         scanLimitReached={props.scanLimitReached}

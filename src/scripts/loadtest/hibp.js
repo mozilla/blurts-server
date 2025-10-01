@@ -36,6 +36,26 @@ const DURATION =
 export const options = {
   vus: VIRTUAL_USERS,
   duration: DURATION,
+  scenarios:
+    getDurationInMs(DURATION) > 60 * 1000
+      ? {
+          "ramp-up": {
+            executor: "ramping-vus",
+            startVUs: 0,
+            stages: [
+              { duration: "1m", target: VIRTUAL_USERS },
+              { duration: DURATION, target: VIRTUAL_USERS },
+              { duration: "1m", target: 0 },
+            ],
+          },
+        }
+      : {
+          constant: {
+            executor: "constant-vus",
+            vus: VIRTUAL_USERS,
+            duration: DURATION,
+          },
+        },
 };
 
 const url = `${envVars.SERVER_URL ?? "https://monitor-stage.allizom.org"}/api/v1/hibp/notify`;
@@ -73,4 +93,21 @@ export const virtualUserRun = () => {
     throw new Error(`Failed to parse result: ${res.status}`);
   }
 };
+
+/**
+ * @param {string} duration
+ */
+function getDurationInMs(duration) {
+  if (duration.endsWith("m")) {
+    return Number.parseInt(duration.slice(0, -1), 10) * 60 * 1000;
+  }
+  if (duration.endsWith("s")) {
+    return Number.parseInt(duration.slice(0, -1), 10) * 1000;
+  }
+  if (duration.endsWith("ms")) {
+    return Number.parseInt(duration.slice(0, -2), 10);
+  }
+  throw new Error(`Invalid duration format: [${duration}]`);
+}
+
 export default virtualUserRun;

@@ -10,7 +10,7 @@ import { FeatureFlagName } from "../../src/db/tables/featureFlags";
 const extraFeatureFlags: FeatureFlagName[] = ["GA4SubscriptionEvents"];
 test.use({ extraLocalForcedFeatureFlags: extraFeatureFlags });
 
-const productPlans = ["Monitor Plus", "Privacy Protection Plan"];
+const productPlans = ["Monitor Plus"];
 
 // General tests to confirm the E2E test setup works as expected
 test.describe(`Verify subscription flows [${process.env.E2E_TEST_ENV}]`, () => {

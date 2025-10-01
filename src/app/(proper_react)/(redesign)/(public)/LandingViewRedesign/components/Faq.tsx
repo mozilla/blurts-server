@@ -20,6 +20,7 @@ import {
   CloseBigIcon,
 } from "../../../../../components/server/Icons";
 import styles from "./Faq.module.scss";
+import { FeatureFlagName } from "../../../../../../db/tables/featureFlags";
 
 export type FaqItemProps = {
   question: string;
@@ -73,7 +74,11 @@ const FaqItem = (props: FaqItemProps) => {
   );
 };
 
-export const Faq = () => {
+export const Faq = ({
+  enabledFeatureFlags,
+}: {
+  enabledFeatureFlags: FeatureFlagName[];
+}) => {
   const l10n = useL10n();
   const recordTelemetry = useTelemetry();
   const [expandedQuestion, setExpandedQuestion] = useState<string | null>(null);
@@ -91,20 +96,37 @@ export const Faq = () => {
     {
       id: "premium-continuous-data-removal",
       question: l10n.getString("landing-premium-continuous-data-removal-qn"),
-      answer: l10n.getFragment("landing-premium-continuous-data-removal-ans", {
-        vars: {
-          data_broker_sites_total_num: CONST_ONEREP_DATA_BROKER_COUNT,
-        },
-        elems: {
-          learn_more_link: (
-            <Button
-              variant="link"
-              href={CONST_URL_SUMO_MONITOR_PLUS}
-              target="_blank"
-            />
-          ),
-        },
-      }),
+      /* c8 ignore start */
+      answer: enabledFeatureFlags.includes("MaskDataBrokerCount")
+        ? l10n.getFragment(
+            "landing-premium-continuous-data-removal-ans-masked",
+            {
+              elems: {
+                learn_more_link: (
+                  <Button
+                    variant="link"
+                    href={CONST_URL_SUMO_MONITOR_PLUS}
+                    target="_blank"
+                  />
+                ),
+              },
+            },
+          )
+        : l10n.getFragment("landing-premium-continuous-data-removal-ans", {
+            vars: {
+              data_broker_sites_total_num: CONST_ONEREP_DATA_BROKER_COUNT,
+            },
+            elems: {
+              learn_more_link: (
+                <Button
+                  variant="link"
+                  href={CONST_URL_SUMO_MONITOR_PLUS}
+                  target="_blank"
+                />
+              ),
+            },
+          }),
+      /* c8 ignore stop */
       isExpanded: expandedQuestion === "premium-continuous-data-removal",
       onExpandAnswer: () => {
         handleExpandAnswer("premium-continuous-data-removal");

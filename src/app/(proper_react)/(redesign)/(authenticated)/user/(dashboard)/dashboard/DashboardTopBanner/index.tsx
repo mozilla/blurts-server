@@ -24,9 +24,7 @@ export type DashboardTopBannerProps = {
   tabType: TabType;
   onShowFixed: () => void;
   monthlySubscriptionUrl: string;
-  yearlySubscriptionUrl: string;
   subscriptionBillingAmount: {
-    yearly: number;
     monthly: number;
   };
   totalNumberOfPerformedScans?: number;

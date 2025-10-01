@@ -31,10 +31,6 @@ export default async function FeatureFlagPage() {
     type: "monthly",
     enabledFeatureFlags: [],
   });
-  const yearlySubscriptionUrl = getPremiumSubscriptionUrl({
-    type: "yearly",
-    enabledFeatureFlags: [],
-  });
   const fxaSettingsUrl = process.env.FXA_SETTINGS_URL!;
 
   if (!session?.user?.email || !session.user.subscriber?.id) {
@@ -86,7 +82,6 @@ export default async function FeatureFlagPage() {
           <Toolbar
             user={session.user}
             monthlySubscriptionUrl={monthlySubscriptionUrl}
-            yearlySubscriptionUrl={yearlySubscriptionUrl}
             subscriptionBillingAmount={getSubscriptionBillingAmount()}
             fxaSettingsUrl={fxaSettingsUrl}
             // Since this page is only accessed by contributors, no need to load

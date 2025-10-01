@@ -8,9 +8,7 @@ import {
   act,
   getAllByRole,
   getByRole,
-  getByText,
   queryByRole,
-  queryByText,
   render,
   screen,
   waitFor,
@@ -250,179 +248,6 @@ describe("When Premium is available", () => {
     expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
   });
 
-  it("can switch from the yearly to the monthly plan with the keyboard", async () => {
-    const user = userEvent.setup();
-
-    const ComposedDashboard = composeStory(LandingUs, Meta);
-    render(<ComposedDashboard />);
-    // We limit our queries to the pricing table, so as not to match similar
-    // elements that are also present in the pricing _cards_, i.e. the elements
-    // shown on small screens:
-    const pricingTable = screen.getByRole("grid");
-
-    // Regular expression:
-    //
-    //   Save   Starts with the characters `Save `,
-    //
-    //   (.+?)  followed by one or more (`+`) arbitrary characters (`.`), until
-    //          the next part of the regular expression matches…
-    //
-    //   %      …which is a single `%` character.
-    //
-    // All that combines to a string like "Save 13.37%".
-    expect(getByText(pricingTable, /Save (.+?)%/)).toBeInTheDocument();
-
-    const yearlyToggle = getByRole(pricingTable, "radio", { name: "Yearly" });
-    await user.click(yearlyToggle);
-    await user.keyboard("[ArrowRight][Space]");
-
-    // Regular expression:
-    //
-    //   Save   Starts with the characters `Save `,
-    //
-    //   (.+?)  followed by one or more (`+`) arbitrary characters (`.`), until
-    //          the next part of the regular expression matches…
-    //
-    //   %      …which is a single `%` character.
-    //
-    // All that combines to a string like "Save 13.37%".
-    expect(queryByText(pricingTable, /Save (.+?)%/)).not.toBeInTheDocument();
-  });
-
-  it("can switch from the yearly to the monthly plan with the mouse", async () => {
-    const user = userEvent.setup();
-
-    const ComposedDashboard = composeStory(LandingUs, Meta);
-    render(<ComposedDashboard />);
-    // We limit our queries to the pricing table, so as not to match similar
-    // elements that are also present in the pricing _cards_, i.e. the elements
-    // shown on small screens:
-    const pricingTable = screen.getByRole("grid");
-
-    // Regular expression:
-    //
-    //   Save   Starts with the characters `Save `,
-    //
-    //   (.+?)  followed by one or more (`+`) arbitrary characters (`.`), until
-    //          the next part of the regular expression matches…
-    //
-    //   %      …which is a single `%` character.
-    //
-    // All that combines to a string like "Save 13.37%".
-    expect(getByText(pricingTable, /Save (.+?)%/)).toBeInTheDocument();
-
-    const monthlyToggle = getByRole(pricingTable, "radio", { name: "Monthly" });
-    await user.click(monthlyToggle);
-
-    // Regular expression:
-    //
-    //   Save   Starts with the characters `Save `,
-    //
-    //   (.+?)  followed by one or more (`+`) arbitrary characters (`.`), until
-    //          the next part of the regular expression matches…
-    //
-    //   %      …which is a single `%` character.
-    //
-    // All that combines to a string like "Save 13.37%".
-    expect(queryByText(pricingTable, /Save (.+?)%/)).not.toBeInTheDocument();
-  });
-
-  it("switching to the monthly plan in portrait mode is preserved when changing to landscape mode", async () => {
-    const user = userEvent.setup();
-
-    const ComposedDashboard = composeStory(LandingUs, Meta);
-    render(<ComposedDashboard />);
-    const pricingTable = screen.getByRole("grid");
-    const cards = screen.getAllByRole("group");
-    const plusCard = cards[0];
-
-    // Regular expression:
-    //
-    //   Save   Starts with the characters `Save `,
-    //
-    //   (.+?)  followed by one or more (`+`) arbitrary characters (`.`), until
-    //          the next part of the regular expression matches…
-    //
-    //   %      …which is a single `%` character.
-    //
-    // All that combines to a string like "Save 13.37%".
-    expect(getByText(plusCard, /Save (.+?)%/)).toBeInTheDocument();
-    expect(getByText(pricingTable, /Save (.+?)%/)).toBeInTheDocument();
-
-    const monthlyToggle = getByRole(plusCard, "radio", { name: "Monthly" });
-    await user.click(monthlyToggle);
-
-    // Regular expression:
-    //
-    //   Save   Starts with the characters `Save `,
-    //
-    //   (.+?)  followed by one or more (`+`) arbitrary characters (`.`), until
-    //          the next part of the regular expression matches…
-    //
-    //   %      …which is a single `%` character.
-    //
-    // All that combines to a string like "Save 13.37%".
-    expect(queryByText(plusCard, /Save (.+?)%/)).not.toBeInTheDocument();
-    expect(queryByText(pricingTable, /Save (.+?)%/)).not.toBeInTheDocument();
-  });
-
-  it("rounds the percentage savings of the yearly plan down (i.e. under- rather than overpromise) to whole numbers", async () => {
-    const user = userEvent.setup();
-
-    const ComposedDashboard = composeStory(LandingUs, Meta);
-    render(<ComposedDashboard />);
-    // We limit our queries to the pricing table, so as not to match similar
-    // elements that are also present in the pricing _cards_, i.e. the elements
-    // shown on small screens:
-    const pricingTable = screen.getByRole("grid");
-
-    // Regular expression:
-    //
-    //   Save   Starts with the characters `Save `,
-    //
-    //   (.+?)  followed by one or more (`+`) arbitrary characters (`.`), until
-    //          the next part of the regular expression matches…
-    //
-    //   %      …which is a single `%` character.
-    //
-    // All that combines to a string like "Save 13.37%".
-    const savingsEl = getByText(pricingTable, /Save (.+?)%/);
-    // Regular expressions:
-    //
-    //   \$     Starts with the character `$`,
-    //
-    //   (.+?)  followed by one or more (`+`) arbitrary characters (`.`), until
-    //          the next part of the regular expression matches…
-    //
-    //   \/mo.  …which consists of the characters `/mo.`.
-    //
-    // All that combines to a string like "$13.37/mo.".
-    const priceRegex = /\$(.+?)\/mo./;
-    const yearlyPriceEl = getByText(pricingTable, priceRegex);
-    const yearlyPrice = Number.parseFloat(
-      yearlyPriceEl.textContent!.split("$")[1].split("/")[0],
-    );
-    const monthlyToggle = getByRole(pricingTable, "radio", { name: "Monthly" });
-    await user.click(monthlyToggle);
-    const monthlyPriceEl = getByText(pricingTable, priceRegex);
-    const monthlyPrice = Number.parseFloat(
-      monthlyPriceEl.textContent!.split("$")[1].split("/")[0],
-    );
-
-    expect(savingsEl.textContent).not.toMatch(".");
-    expect(
-      Number.parseInt(
-        savingsEl
-          .textContent!.split("%")[0]
-          .split("Save ")[1]
-          // Replace the special characters Fluent inserts around variables:
-          .replace("⁨", "")
-          .replace("⁩", ""),
-        10,
-      ),
-    ).toBeLessThanOrEqual(((monthlyPrice - yearlyPrice) * 100) / monthlyPrice);
-  });
-
   it("can move to the subscribe button with the keyboard", async () => {
     const user = userEvent.setup();
 
@@ -438,9 +263,13 @@ describe("When Premium is available", () => {
     });
     expect(plusSubscribeButton).not.toHaveFocus();
 
-    const yearlyToggle = getByRole(pricingTable, "radio", { name: "Yearly" });
-    await user.click(yearlyToggle);
-    await user.keyboard("[ArrowRight][ArrowRight]");
+    const plusHeader = getByRole(pricingTable, "heading", {
+      name: /⁨Monitor⁩ Plus/,
+    });
+    await user.click(plusHeader);
+    await user.keyboard(
+      "[ArrowDown][ArrowDown][ArrowDown][ArrowDown][ArrowDown][ArrowDown]",
+    );
 
     expect(plusSubscribeButton).toHaveFocus();
   });
@@ -450,13 +279,15 @@ describe("When Premium is available", () => {
 
     const ComposedDashboard = composeStory(LandingUs, Meta);
     render(<ComposedDashboard />);
-    const pricingTable = screen.getByRole("grid");
 
     expect(signIn).not.toHaveBeenCalled();
 
-    const yearlyToggle = getByRole(pricingTable, "radio", { name: "Yearly" });
-    await user.click(yearlyToggle);
-    await user.keyboard("[ArrowLeft][Space]");
+    const cards = screen.getAllByRole("group");
+    const freeCard = cards[1];
+    const signInButton = getByRole(freeCard, "button", {
+      name: "Start free monitoring",
+    });
+    await user.click(signInButton);
 
     expect(signIn).toHaveBeenCalledTimes(1);
   });
@@ -479,36 +310,15 @@ describe("When Premium is available", () => {
     expect(signIn).toHaveBeenCalledTimes(1);
   });
 
-  it("confirms that the pricing card yearly upsell has the correct link for SubPlat2", async () => {
-    const ComposedStory = composeStory(LandingUs, Meta);
-    render(<ComposedStory />);
-
-    const pricingTable = screen.getByRole("grid");
-    const upsellButton = getByRole(pricingTable, "link", {
-      name: "Get data removal",
-    });
-    expect(upsellButton).toHaveAttribute(
-      "href",
-      "https://accounts.stage.mozaws.net/subscriptions/products/prod_NErZh679W62lai?plan=price_1NvqawKb9q6OnNsLRTnYrtrV&entrypoint=monitor.mozilla.org-monitor-product-page&form_type=button&data_cta_position=pricing&utm_source=product&utm_medium=monitor&utm_campaign=pricing",
-    );
-  });
-
   it("confirms that the pricing card monthly upsell has the correct link for SubPlat2", async () => {
     const ComposedStory = composeStory(LandingUs, Meta);
     render(<ComposedStory />);
 
-    const user = userEvent.setup();
     const cards = screen.getAllByRole("group");
     const premiumCard = cards[0];
     const upsellButton = getByRole(premiumCard, "link", {
       name: "Get data removal",
     });
-    const monthlyToggle = getByRole(premiumCard, "radio", { name: "Monthly" });
-    // jsdom will complain about not being able to navigate to a different page
-    // after clicking the link; suppress that error, as it's not relevant to the
-    // test:
-    jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
-    await user.click(monthlyToggle);
 
     expect(upsellButton).toHaveAttribute(
       "href",
@@ -516,110 +326,19 @@ describe("When Premium is available", () => {
     );
   });
 
-  it("confirms that the pricing card yearly upsell has the correct link with UTM parameters for SubPlat2", async () => {
-    const cookies = new Cookies();
-    cookies.set("attributionsLastTouch", {
-      utm_source: "source_last_touch",
-      utm_medium: "medium_last_touch",
-      utm_campaign: "campaign_last_touch",
-    });
-
-    const ComposedStory = composeStory(LandingUs, Meta);
-    render(<ComposedStory />);
-
-    const pricingTable = screen.getByRole("grid");
-    const upsellButton = getByRole(pricingTable, "link", {
-      name: "Get data removal",
-    });
-    expect(upsellButton).toHaveAttribute(
-      "href",
-      "https://accounts.stage.mozaws.net/subscriptions/products/prod_NErZh679W62lai?plan=price_1NvqawKb9q6OnNsLRTnYrtrV&utm_source=source_last_touch&utm_medium=medium_last_touch&utm_campaign=campaign_last_touch&entrypoint=monitor.mozilla.org-monitor-product-page&form_type=button&data_cta_position=pricing",
-    );
-  });
-
-  it("confirms that the pricing card yearly upsell has the correct link for SubPlat3", async () => {
-    const ComposedStory = composeStory(LandingUs, Meta);
-    render(<ComposedStory enabledFeatureFlags={["SubPlat3"]} />);
-
-    const pricingTable = screen.getByRole("grid");
-    const upsellButton = getByRole(pricingTable, "link", {
-      name: "Get data removal",
-    });
-    expect(upsellButton).toHaveAttribute(
-      "href",
-      "https://payments-next.stage.fxa.nonprod.webservices.mozgcp.net/monitorplusstage/yearly/landing?entrypoint=monitor.mozilla.org-monitor-product-page&form_type=button&data_cta_position=pricing&utm_source=product&utm_medium=monitor&utm_campaign=pricing",
-    );
-  });
-
   it("confirms that the pricing card monthly upsell has the correct link for SubPlat3", async () => {
     const ComposedStory = composeStory(LandingUs, Meta);
     render(<ComposedStory enabledFeatureFlags={["SubPlat3"]} />);
 
-    const user = userEvent.setup();
     const cards = screen.getAllByRole("group");
     const premiumCard = cards[0];
     const upsellButton = getByRole(premiumCard, "link", {
       name: "Get data removal",
     });
-    const monthlyToggle = getByRole(premiumCard, "radio", { name: "Monthly" });
-    // jsdom will complain about not being able to navigate to a different page
-    // after clicking the link; suppress that error, as it's not relevant to the
-    // test:
-    jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
-    await user.click(monthlyToggle);
 
     expect(upsellButton).toHaveAttribute(
       "href",
       "https://payments-next.stage.fxa.nonprod.webservices.mozgcp.net/monitorplusstage/monthly/landing?entrypoint=monitor.mozilla.org-monitor-product-page&form_type=button&data_cta_position=pricing&utm_source=product&utm_medium=monitor&utm_campaign=pricing",
-    );
-  });
-
-  it("confirms that the pricing card yearly upsell has the correct link with UTM parameters for SubPlat3", async () => {
-    const cookies = new Cookies();
-    cookies.set("attributionsLastTouch", {
-      utm_source: "source_last_touch",
-      utm_medium: "medium_last_touch",
-      utm_campaign: "campaign_last_touch",
-    });
-    const ComposedStory = composeStory(LandingUs, Meta);
-    render(<ComposedStory enabledFeatureFlags={["SubPlat3"]} />);
-
-    const pricingTable = screen.getByRole("grid");
-    const upsellButton = getByRole(pricingTable, "link", {
-      name: "Get data removal",
-    });
-    expect(upsellButton).toHaveAttribute(
-      "href",
-      "https://payments-next.stage.fxa.nonprod.webservices.mozgcp.net/monitorplusstage/yearly/landing?utm_source=source_last_touch&utm_medium=medium_last_touch&utm_campaign=campaign_last_touch&entrypoint=monitor.mozilla.org-monitor-product-page&form_type=button&data_cta_position=pricing",
-    );
-  });
-
-  it("counts the number of clicks on the pricing table billing period toggle", async () => {
-    const mockedRecord = useTelemetry();
-    const ComposedDashboard = composeStory(LandingUs, Meta);
-    render(<ComposedDashboard />);
-
-    const user = userEvent.setup();
-    const pricingTable = screen.getByRole("grid");
-    const monthlyToggle = getByRole(pricingTable, "radio", { name: "Monthly" });
-    const yearlyToggle = getByRole(pricingTable, "radio", { name: "Yearly" });
-
-    await user.click(monthlyToggle);
-    expect(mockedRecord).toHaveBeenCalledWith(
-      "button",
-      "click",
-      expect.objectContaining({
-        button_id: "selected_monthly_plan",
-      }),
-    );
-
-    await user.click(yearlyToggle);
-    expect(mockedRecord).toHaveBeenCalledWith(
-      "button",
-      "click",
-      expect.objectContaining({
-        button_id: "selected_yearly_plan",
-      }),
     );
   });
 
@@ -651,7 +370,6 @@ describe("When Premium is available", () => {
 
     const user = userEvent.setup();
     const pricingTable = screen.getByRole("grid");
-    const monthlyToggle = getByRole(pricingTable, "radio", { name: "Monthly" });
     const upsellButton = getByRole(pricingTable, "link", {
       name: "Get data removal",
     });
@@ -668,47 +386,7 @@ describe("When Premium is available", () => {
       "upgradeIntent",
       "click",
       expect.objectContaining({
-        button_id: "purchase_yearly_landing_page",
-      }),
-    );
-
-    await user.click(monthlyToggle);
-    await user.click(upsellButton);
-    expect(mockedRecord).toHaveBeenCalledWith(
-      "upgradeIntent",
-      "click",
-      expect.objectContaining({
         button_id: "purchase_monthly_landing_page",
-      }),
-    );
-  });
-
-  it("counts the number of clicks on the pricing card billing period toggle", async () => {
-    const mockedRecord = useTelemetry();
-    const ComposedDashboard = composeStory(LandingUs, Meta);
-    render(<ComposedDashboard />);
-
-    const user = userEvent.setup();
-    const cards = screen.getAllByRole("group");
-    const premiumCard = cards[0];
-    const monthlyToggle = getByRole(premiumCard, "radio", { name: "Monthly" });
-    const yearlyToggle = getByRole(premiumCard, "radio", { name: "Yearly" });
-
-    await user.click(monthlyToggle);
-    expect(mockedRecord).toHaveBeenCalledWith(
-      "button",
-      "click",
-      expect.objectContaining({
-        button_id: "selected_monthly_plan",
-      }),
-    );
-
-    await user.click(yearlyToggle);
-    expect(mockedRecord).toHaveBeenCalledWith(
-      "button",
-      "click",
-      expect.objectContaining({
-        button_id: "selected_yearly_plan",
       }),
     );
   });
@@ -724,25 +402,12 @@ describe("When Premium is available", () => {
     const upsellButton = getByRole(premiumCard, "link", {
       name: "Get data removal",
     });
-    const monthlyToggle = getByRole(premiumCard, "radio", { name: "Monthly" });
+
     // jsdom will complain about not being able to navigate to a different page
     // after clicking the link; suppress that error, as it's not relevant to the
     // test:
-    jest
-      .spyOn(console, "error")
-      .mockImplementationOnce(() => undefined)
-      .mockImplementationOnce(() => undefined);
+    jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
 
-    await user.click(upsellButton);
-    expect(mockedRecord).toHaveBeenCalledWith(
-      "upgradeIntent",
-      "click",
-      expect.objectContaining({
-        button_id: "purchase_yearly_landing_page",
-      }),
-    );
-
-    await user.click(monthlyToggle);
     await user.click(upsellButton);
     expect(mockedRecord).toHaveBeenCalledWith(
       "upgradeIntent",

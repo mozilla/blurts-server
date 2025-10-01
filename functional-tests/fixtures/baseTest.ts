@@ -22,7 +22,6 @@ export const defaultLocalForcedFeatureFlags: FeatureFlagName[] = [
   "EditScanProfileDetails",
   "SubPlat3",
   "Announcements",
-  "PrivacyProductsBundle",
 ];
 
 const test = baseTest.extend<{

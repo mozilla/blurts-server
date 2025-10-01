@@ -52,11 +52,7 @@ const setUtmCampaign = (
 export const MonthlyActivityFreeEmail = (
   props: MonthlyActivityFreeEmailProps,
 ) => {
-  const hasRunFreeScan =
-    props.enabledFeatureFlags.includes("Moscary") ||
-    props.experimentData["moscary"].enabled
-      ? typeof props.subscriber.moscary_id === "string"
-      : typeof props.subscriber.onerep_profile_id === "number";
+  const hasRunFreeScan = typeof props.subscriber.onerep_profile_id === "number";
 
   const l10n = props.l10n;
   const assumedCountryCode = getSignupLocaleCountry(props.subscriber);
@@ -84,7 +80,7 @@ export const MonthlyActivityFreeEmail = (
   };
 
   const unlockWithMonitorPlusCta = modifyAttributionsForUrl(
-    `${process.env.SERVER_URL}/link/subscribe/yearly`,
+    `${process.env.SERVER_URL}/link/subscribe/monthly`,
     {
       ...replaceValues,
       utm_content: `unlock-with-monitor-plus${utmContentSuffix}`,
@@ -178,7 +174,6 @@ export const MonthlyActivityFreeEmail = (
             subscriber={props.subscriber}
             l10n={l10n}
             dataSummary={props.dataSummary}
-            enabledFeatureFlags={props.enabledFeatureFlags}
             experimentData={props.experimentData}
             utmCampaignId={utmValues.utmCampaign}
             utmMedium={utmValues.utmMedium}

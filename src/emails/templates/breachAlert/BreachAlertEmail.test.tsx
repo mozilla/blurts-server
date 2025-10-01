@@ -67,16 +67,6 @@ it("does not show the 'Go to Dashboard' button for US users without Plus, who ha
   expect(goToDashboardButton).not.toBeInTheDocument();
 });
 
-it("encourages US users who haven't run a scan yet to run one", () => {
-  const ComposedEmail = composeStory(BreachAlertEmailUsFreeNoScanStory, Meta);
-  render(<ComposedEmail />);
-
-  const getScanButton = screen.getByRole("link", {
-    name: "Get first scan free",
-  });
-  expect(getScanButton).toBeInTheDocument();
-});
-
 it("helps free US users who have run a scan to take manual action", () => {
   const ComposedEmail = composeStory(BreachAlertEmailUsFreeWithScanStory, Meta);
   render(<ComposedEmail />);
@@ -85,26 +75,6 @@ it("helps free US users who have run a scan to take manual action", () => {
     name: "Resolve exposures",
   });
   expect(takeActionButton).toBeInTheDocument();
-});
-
-it("encourages free US users who have run a scan to have Monitor Plus resolve them for them", () => {
-  const ComposedEmail = composeStory(BreachAlertEmailUsFreeWithScanStory, Meta);
-  render(<ComposedEmail />);
-
-  const getPlusButton = screen.getByRole("link", {
-    name: "Get ⁨Monitor Plus⁩",
-  });
-  expect(getPlusButton).toBeInTheDocument();
-});
-
-it("does not tell users who already have Plus to upgrade", () => {
-  const ComposedEmail = composeStory(BreachAlertEmailUsPlusWithScanStory, Meta);
-  render(<ComposedEmail />);
-
-  const getPlusButton = screen.queryByRole("link", {
-    name: "Get ⁨Monitor Plus⁩",
-  });
-  expect(getPlusButton).not.toBeInTheDocument();
 });
 
 it("uses `product-email` as the utm_medium everywhere", () => {

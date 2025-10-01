@@ -17,6 +17,5 @@ type Story = StoryObj<typeof BundleOnboardingView>;
 export const BundleOnboarding: Story = {
   args: {
     l10n: getL10n(),
-    enabledFeatureFlags: ["PrivacyProductsBundle"],
   },
 };

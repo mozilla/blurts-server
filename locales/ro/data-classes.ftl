@@ -9,6 +9,8 @@ account-balances = solduri ale conturilor
 address-book-contacts = contacte din agendă
 age-groups = categorii de vârstă
 ages = vârste
+# Refers to medical appointments.
+appointments = Programări
 apps-installed-on-devices = aplicații instalate pe dispozitive
 astrological-signs = semne astrologice
 audio-recordings = înregistrări audio

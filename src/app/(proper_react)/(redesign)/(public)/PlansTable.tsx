@@ -4,7 +4,7 @@
 
 "use client";
 
-import { ReactNode, cloneElement, useRef, useState } from "react";
+import { ReactNode, cloneElement, useRef } from "react";
 import {
   AriaDialogProps,
   AriaPopoverProps,
@@ -48,13 +48,8 @@ import {
   QuestionMarkCircle,
 } from "../../../components/server/Icons";
 import { VisuallyHidden } from "../../../components/server/VisuallyHidden";
-import {
-  BillingPeriod,
-  BillingPeriodToggle,
-} from "../../../components/client/BillingPeriod";
 import { getLocale } from "../../../functions/universal/getLocale";
 import { signIn } from "next-auth/react";
-import { useTelemetry } from "../../../hooks/useTelemetry";
 import {
   CONST_ONEREP_DATA_BROKER_COUNT,
   CONST_URL_MONITOR_LANDING_PAGE_ID,
@@ -68,10 +63,8 @@ export type Props = {
   "aria-labelledby": string;
   premiumSubscriptionUrl: {
     monthly: string;
-    yearly: string;
   };
   subscriptionBillingAmount: {
-    yearly: number;
     monthly: number;
   };
   enabledFeatureFlags: FeatureFlagName[];
@@ -84,7 +77,6 @@ type ScanLimitProp = {
 export const PlansTable = (props: Props & ScanLimitProp) => {
   const l10n = useL10n();
   const [cookies] = useCookies(["attributionsLastTouch"]);
-  const recordTelemetry = useTelemetry();
   const roundedPriceFormatter = new Intl.NumberFormat(getLocale(l10n), {
     style: "currency",
     currency: "USD",
@@ -96,7 +88,6 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
     currency: "USD",
     currencyDisplay: "narrowSymbol",
   });
-  const [billingPeriod, setBillingPeriod] = useState<BillingPeriod>("yearly");
   const searchParam = useRef(new URLSearchParams());
 
   let newSearchParam = new URLSearchParams(cookies.attributionsLastTouch);
@@ -117,7 +108,6 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
   // SubPlat2 subscription links already have the UTM parameter `?plan` appended.
   const additionalSubplatParamsString = `${props.enabledFeatureFlags.includes("SubPlat3") ? "?" : "&"}${searchParam.current.toString()}`;
 
-  const monthlyPriceAnnualBilling = props.subscriptionBillingAmount["yearly"];
   const monthlyPriceMonthlyBilling = props.subscriptionBillingAmount["monthly"];
 
   return (
@@ -147,82 +137,29 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
           </div>
           <hr />
           <div className={styles.priceSection}>
-            <BillingPeriodToggle
-              onChange={(newValue) => {
-                setBillingPeriod(newValue);
-                recordTelemetry("button", "click", {
-                  button_id:
-                    newValue === "yearly"
-                      ? "selected_yearly_plan"
-                      : "selected_monthly_plan",
-                });
-              }}
-            />
             <p aria-live="polite" className={styles.cost}>
               <b className={styles.price}>
-                {billingPeriod === "yearly"
-                  ? l10n.getString(
-                      "landing-premium-plans-table-price-plus-yearly",
-                      {
-                        monthlyPrice: priceFormatter.format(
-                          monthlyPriceAnnualBilling,
-                        ),
-                      },
-                    )
-                  : l10n.getString(
-                      "landing-premium-plans-table-price-plus-monthly",
-                      {
-                        monthlyPrice: priceFormatter.format(
-                          monthlyPriceMonthlyBilling,
-                        ),
-                      },
-                    )}
-              </b>
-              <span className={styles.total}>
-                {billingPeriod === "yearly" && (
-                  <>
-                    <em className={styles.discount}>
-                      {l10n.getString(
-                        "landing-premium-plans-table-price-plus-yearly-discount",
-                        {
-                          discountPercentage: Math.floor(
-                            ((monthlyPriceMonthlyBilling -
-                              monthlyPriceAnnualBilling) *
-                              100) /
-                              monthlyPriceMonthlyBilling,
-                          ),
-                        },
-                      )}
-                    </em>
-                    &nbsp;•&nbsp;
-                    <span className={styles.sum}>
-                      {l10n.getString(
-                        "landing-premium-plans-table-price-plus-yearly-sum",
-                        {
-                          yearlyPrice: priceFormatter.format(
-                            12 * monthlyPriceAnnualBilling,
-                          ),
-                        },
-                      )}
-                    </span>
-                  </>
+                {l10n.getString(
+                  "landing-premium-plans-table-price-plus-monthly",
+                  {
+                    monthlyPrice: priceFormatter.format(
+                      monthlyPriceMonthlyBilling,
+                    ),
+                  },
                 )}
-              </span>
+              </b>
             </p>
             <TelemetryButton
               aria-describedby="plansTableMonthlyOrYearly plansTableReassurancePlus"
               disabled={props.scanLimitReached}
               variant="primary"
-              href={`${props.premiumSubscriptionUrl[billingPeriod]}${additionalSubplatParamsString}`}
+              href={`${props.premiumSubscriptionUrl["monthly"]}${additionalSubplatParamsString}`}
               className={styles.cta}
               event={{
                 module: "upgradeIntent",
                 name: "click",
                 data: {
-                  button_id:
-                    billingPeriod === "yearly"
-                      ? "purchase_yearly_landing_page"
-                      : "purchase_monthly_landing_page",
+                  button_id: "purchase_monthly_landing_page",
                 },
               }}
             >
@@ -821,83 +758,28 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
             </Cell>
             <Cell>
               <div className={styles.priceCell}>
-                <div className={styles.billingPeriod}>
-                  <BillingPeriodToggle
-                    onChange={(newValue) => {
-                      setBillingPeriod(newValue);
-                      recordTelemetry("button", "click", {
-                        button_id:
-                          newValue === "yearly"
-                            ? "selected_yearly_plan"
-                            : "selected_monthly_plan",
-                      });
-                    }}
-                  />
-                </div>
                 <p aria-live="polite" className={styles.cost}>
                   <b className={styles.price} id="plansTableMonthlyOrYearly">
-                    {billingPeriod === "yearly"
-                      ? l10n.getString(
-                          "landing-premium-plans-table-price-plus-yearly",
-                          {
-                            monthlyPrice: priceFormatter.format(
-                              monthlyPriceAnnualBilling,
-                            ),
-                          },
-                        )
-                      : l10n.getString(
-                          "landing-premium-plans-table-price-plus-monthly",
-                          {
-                            monthlyPrice: priceFormatter.format(
-                              monthlyPriceMonthlyBilling,
-                            ),
-                          },
-                        )}
-                  </b>
-                  <span className={styles.total}>
-                    {billingPeriod === "yearly" && (
-                      <>
-                        <em className={styles.discount}>
-                          {l10n.getString(
-                            "landing-premium-plans-table-price-plus-yearly-discount",
-                            {
-                              discountPercentage: Math.floor(
-                                ((monthlyPriceMonthlyBilling -
-                                  monthlyPriceAnnualBilling) *
-                                  100) /
-                                  monthlyPriceMonthlyBilling,
-                              ),
-                            },
-                          )}
-                        </em>
-                        <br />
-                        <span className={styles.sum}>
-                          {l10n.getString(
-                            "landing-premium-plans-table-price-plus-yearly-sum",
-                            {
-                              yearlyPrice: priceFormatter.format(
-                                12 * monthlyPriceAnnualBilling,
-                              ),
-                            },
-                          )}
-                        </span>
-                      </>
+                    {l10n.getString(
+                      "landing-premium-plans-table-price-plus-monthly",
+                      {
+                        monthlyPrice: priceFormatter.format(
+                          monthlyPriceMonthlyBilling,
+                        ),
+                      },
                     )}
-                  </span>
+                  </b>
                 </p>
                 <TelemetryButton
                   aria-describedby="plansTableMonthlyOrYearly plansTableReassurancePlus"
                   disabled={props.scanLimitReached}
                   variant="primary"
-                  href={`${props.premiumSubscriptionUrl[billingPeriod]}${additionalSubplatParamsString}`}
+                  href={`${props.premiumSubscriptionUrl["monthly"]}${additionalSubplatParamsString}`}
                   event={{
                     module: "upgradeIntent",
                     name: "click",
                     data: {
-                      button_id:
-                        billingPeriod === "yearly"
-                          ? "purchase_yearly_landing_page"
-                          : "purchase_monthly_landing_page",
+                      button_id: "purchase_monthly_landing_page",
                     },
                   }}
                 >

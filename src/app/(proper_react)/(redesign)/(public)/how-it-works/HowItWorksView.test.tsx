@@ -51,8 +51,8 @@ describe("How it works page", () => {
   }, 10_000);
 
   it("Data Removal buttons enter user into premium subscription flow", () => {
-    const yearlySubscriptionUrl = getPremiumSubscriptionUrl({
-      type: "yearly",
+    const monthlySubscriptionUrl = getPremiumSubscriptionUrl({
+      type: "monthly",
       enabledFeatureFlags: [],
     });
     const ComposedPage = composeStory(HowItWorks, Meta);
@@ -62,8 +62,8 @@ describe("How it works page", () => {
       name: "Get data removal",
     });
 
-    expect(dataRemovalBtn1).toHaveAttribute("href", yearlySubscriptionUrl);
-    expect(dataRemovalBtn2).toHaveAttribute("href", yearlySubscriptionUrl);
+    expect(dataRemovalBtn1).toHaveAttribute("href", monthlySubscriptionUrl);
+    expect(dataRemovalBtn2).toHaveAttribute("href", monthlySubscriptionUrl);
   });
 
   it("Free Scan button enters user into account.mozilla.com", async () => {

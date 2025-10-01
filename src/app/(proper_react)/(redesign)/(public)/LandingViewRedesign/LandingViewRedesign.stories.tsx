@@ -54,21 +54,9 @@ const meta: Meta<typeof View> = {
             {...props}
             experimentData={experimentData}
             enabledFeatureFlags={enabledFeatureFlags}
-            bundleProductUrl={{
-              relay: process.env.FIREFOX_RELAY_LANDING_URL ?? "",
-              vpn: process.env.MOZILLA_VPN_LANDING_URL ?? "",
-            }}
             premiumSubscriptionUrl={{
               monthly: getPremiumSubscriptionUrl({
                 type: "monthly",
-                enabledFeatureFlags,
-              }),
-              yearly: getPremiumSubscriptionUrl({
-                type: "yearly",
-                enabledFeatureFlags,
-              }),
-              bundle: getPremiumSubscriptionUrl({
-                type: "bundle",
                 enabledFeatureFlags,
               }),
             }}
@@ -104,16 +92,6 @@ export const LandingRedesignUsScanLimit: Story = {
   },
 };
 
-export const LandingRedesignUsWithPrivacyProductBundle: Story = {
-  name: "US visitors - With Privacy Product Bundle",
-  args: {
-    eligibleForPremium: true,
-    countryCode: "us",
-    scanLimitReached: false,
-    enabledFeatureFlags: ["LandingPageRedesign", "PrivacyProductsBundle"],
-  },
-};
-
 export const LandingRedesignUsDisableOneRepScans: Story = {
   name: "US visitors - Disable OneRep Scans",
   args: {
@@ -121,15 +99,5 @@ export const LandingRedesignUsDisableOneRepScans: Story = {
     countryCode: "us",
     scanLimitReached: false,
     enabledFeatureFlags: ["DisableOneRepScans"],
-  },
-};
-
-export const LandingRedesignUsScanLimitWithPrivacyProductBundle: Story = {
-  name: "US visitors - Scan limit reached and with Privacy Product Bundle",
-  args: {
-    eligibleForPremium: true,
-    countryCode: "us",
-    scanLimitReached: true,
-    enabledFeatureFlags: ["LandingPageRedesign", "PrivacyProductsBundle"],
   },
 };

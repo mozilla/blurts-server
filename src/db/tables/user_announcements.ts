@@ -14,8 +14,6 @@ import { redirect } from "next/navigation";
 import { getCountryCode } from "../../app/functions/server/getCountryCode";
 import { headers } from "next/headers";
 import { isEligibleForPremium } from "../../app/functions/universal/premium";
-import { FeatureFlagName } from "./featureFlags";
-import { ExperimentData } from "../../telemetry/generated/nimbus/experiments";
 
 const knex = createDbConnection();
 
@@ -60,8 +58,6 @@ export async function markAnnouncementAsCleared(
 
 export async function initializeUserAnnouncements(
   user: Session["user"],
-  enabledFeatureFlags: FeatureFlagName[],
-  experimentData: ExperimentData["Features"],
 ): Promise<UserAnnouncementWithDetails[]> {
   const subscriberId = user.subscriber?.id;
 
@@ -102,11 +98,7 @@ export async function initializeUserAnnouncements(
     const isYearly = subscriptionType === "yearly";
     const isBundle = subscriptionType === "bundle";
 
-    const hasRunScan =
-      enabledFeatureFlags.includes("Moscary") ||
-      experimentData["moscary"].enabled
-        ? typeof user.subscriber?.moscary_id === "string"
-        : typeof user.subscriber?.onerep_profile_id === "number";
+    const hasRunScan = typeof user.subscriber?.onerep_profile_id === "number";
 
     // Get all current announcement IDs for the user
     const existingRows = await knex("user_announcements")

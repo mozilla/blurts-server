@@ -31,9 +31,7 @@ export type Props = {
   countryCode: string;
   session: Session | null;
   monthlySubscriptionUrl: string;
-  yearlySubscriptionUrl: string;
   subscriptionBillingAmount: {
-    yearly: number;
     monthly: number;
   };
   fxaSettingsUrl: string;

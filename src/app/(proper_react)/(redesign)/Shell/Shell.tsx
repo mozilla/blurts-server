@@ -42,10 +42,6 @@ export const Shell = (props: Props) => {
     type: "monthly",
     enabledFeatureFlags: props.enabledFeatureFlags,
   });
-  const yearlySubscriptionUrl = getPremiumSubscriptionUrl({
-    type: "yearly",
-    enabledFeatureFlags: props.enabledFeatureFlags,
-  });
 
   return (
     <>
@@ -59,7 +55,6 @@ export const Shell = (props: Props) => {
           countryCode={props.countryCode}
           session={props.session}
           monthlySubscriptionUrl={monthlySubscriptionUrl}
-          yearlySubscriptionUrl={yearlySubscriptionUrl}
           fxaSettingsUrl={process.env.FXA_SETTINGS_URL!}
           subscriptionBillingAmount={getSubscriptionBillingAmount()}
           enabledFeatureFlags={props.enabledFeatureFlags}
@@ -74,7 +69,6 @@ export const Shell = (props: Props) => {
           countryCode={props.countryCode}
           session={props.session}
           monthlySubscriptionUrl={monthlySubscriptionUrl}
-          yearlySubscriptionUrl={yearlySubscriptionUrl}
           fxaSettingsUrl={process.env.FXA_SETTINGS_URL!}
           subscriptionBillingAmount={getSubscriptionBillingAmount()}
           enabledFeatureFlags={props.enabledFeatureFlags}

@@ -152,12 +152,18 @@ export default defineConfig({
     actionTimeout: 0,
     /* Base URL to use in actions like `await page.goto("/")`. */
     baseURL: getBaseTestEnvUrl(),
-    /* Automatically take screenshot only on failures */
-    screenshot: "only-on-failure",
+    /* Automatically take screenshot only on failures, or if it's a manually-triggered run */
+    screenshot:
+      process.env.GITHUB_EVENT_NAME === "workflow_dispatch"
+        ? "on"
+        : "only-on-failure",
     /* Automatically record video when tests fail */
     video: "retain-on-failure",
-    /* Collect trace when tests fail. See https://playwright.dev/docs/trace-viewer */
-    trace: "retain-on-failure",
+    /* Collect trace when tests fail, or if it's a manually-triggered run. See https://playwright.dev/docs/trace-viewer */
+    trace:
+      process.env.GITHUB_EVENT_NAME === "workflow_dispatch"
+        ? "on"
+        : "retain-on-failure",
   },
   /* Configure projects for major browsers */
   projects: [

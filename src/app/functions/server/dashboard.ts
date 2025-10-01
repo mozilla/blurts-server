@@ -8,8 +8,6 @@ import { RemovalStatusMap } from "../universal/scanResult";
 import { SubscriberBreach } from "../../../utils/subscriberBreaches";
 import { DataBrokerRemovalStatusMap } from "../universal/dataBroker";
 import { FeatureFlagName } from "../../../db/tables/featureFlags";
-import type { MoscaryData } from "./moscary";
-import { isOneRepScanResultDataBroker } from "../../functions/universal/onerep";
 
 export type DataPoints = {
   // shared
@@ -98,7 +96,7 @@ export const dataClassKeyMap: Record<keyof DataPoints, string> = {
 };
 
 export function getDashboardSummary(
-  scannedResults: OnerepScanResultDataBrokerRow[] | MoscaryData["ScanResult"][],
+  scannedResults: OnerepScanResultDataBrokerRow[],
   subscriberBreaches: SubscriberBreach[],
   enabledFeatureFlags?: FeatureFlagName[],
 ): DashboardSummary {
@@ -213,8 +211,7 @@ export function getDashboardSummary(
       // If the flag is disabled, include the data.
       // If the flag is enabled, include the data only if the broker status is not
       const isRemovalUnderMaintenance =
-        (isOneRepScanResultDataBroker(r) ? r.broker_status : r.status) ===
-        DataBrokerRemovalStatusMap.RemovalUnderMaintenance;
+        r.broker_status === DataBrokerRemovalStatusMap.RemovalUnderMaintenance;
 
       // The condition ensures that removal under maintenance is only considered when the flag is enabled.
       /* c8 ignore next 3 */

@@ -10,7 +10,7 @@ import {
 import { ViewDataBrokersView } from "./View";
 import {
   createRandomAnnouncement,
-  createRandomOnerepScanResult,
+  createRandomScanResult,
   createUserWithPremiumSubscription,
 } from "../../../../../../../../../../apiMocks/mockData";
 import { Shell } from "../../../../../../../Shell/Shell";
@@ -48,21 +48,21 @@ const ViewWrapper = (props: ViewWrapperProps) => {
   };
 
   const mockedResolvedScanResults: OnerepScanResultDataBrokerRow[] = [
-    createRandomOnerepScanResult({ status: "removed" }),
-    createRandomOnerepScanResult({ status: "waiting_for_verification" }),
-    createRandomOnerepScanResult({ status: "optout_in_progress" }),
+    createRandomScanResult({ status: "removed" }),
+    createRandomScanResult({ status: "waiting_for_verification" }),
+    createRandomScanResult({ status: "optout_in_progress" }),
   ];
 
   const mockedFewUnresolvedScanResults: OnerepScanResultDataBrokerRow[] = [
     ...mockedResolvedScanResults,
-    createRandomOnerepScanResult({ status: "new", manually_resolved: false }),
-    createRandomOnerepScanResult({ status: "new", manually_resolved: true }),
+    createRandomScanResult({ status: "new", manually_resolved: false }),
+    createRandomScanResult({ status: "new", manually_resolved: true }),
   ];
 
   const mockedManyUnresolvedScanResults: OnerepScanResultDataBrokerRow[] = [
     ...Array(42),
   ].map(() =>
-    createRandomOnerepScanResult({ status: "new", manually_resolved: false }),
+    createRandomScanResult({ status: "new", manually_resolved: false }),
   );
 
   const scanData: LatestOnerepScanData = { scan: null, results: [] };

@@ -20,17 +20,11 @@ import { refreshStoredScanResults } from "../../app/functions/server/refreshStor
 import { getScanResultsWithBroker } from "../../db/tables/onerep_scans";
 import { hasPremium } from "../../app/functions/universal/user";
 import { logger } from "../../app/functions/server/logging";
-import {
-  getScanAndResults,
-  MoscaryData,
-} from "../../app/functions/server/moscary";
 import { parseIso8601Datetime } from "../../utils/parse";
 
 type SubscriberFirstRemovedScanResult = {
   subscriber: SubscriberRow;
-  firstRemovedScanResult:
-    | OnerepScanResultDataBrokerRow
-    | MoscaryData["ScanResult"];
+  firstRemovedScanResult: OnerepScanResultDataBrokerRow;
 };
 
 process.on("SIGINT", () => {
@@ -55,15 +49,8 @@ async function run() {
       `Could not send first data broker removal fixed emails, because the env var FIRST_DATA_BROKER_REMOVAL_FIXED_EMAIL_BATCH_SIZE has a non-numeric value: [${process.env.FIRST_DATA_BROKER_REMOVAL_FIXED_EMAIL_BATCH_SIZE}].`,
     );
   }
-  const potentialSubscribersToEmail = (
-    await getPotentialSubscribersWaitingForFirstDataBrokerRemovalFixedEmail({
-      stillOnOnerep: true,
-    })
-  ).concat(
-    await getPotentialSubscribersWaitingForFirstDataBrokerRemovalFixedEmail({
-      stillOnOnerep: false,
-    }),
-  );
+  const potentialSubscribersToEmail =
+    await getPotentialSubscribersWaitingForFirstDataBrokerRemovalFixedEmail();
 
   const subscribersToEmailWithData = (
     await Promise.allSettled(
@@ -74,12 +61,10 @@ async function run() {
           if (subscriber.onerep_profile_id !== null) {
             await refreshStoredScanResults(subscriber.onerep_profile_id);
           }
-          const latestScan = subscriber.moscary_id
-            ? await getScanAndResults(subscriber.moscary_id)
-            : await getScanResultsWithBroker(
-                subscriber.onerep_profile_id,
-                hasPremium(subscriber),
-              );
+          const latestScan = await getScanResultsWithBroker(
+            subscriber.onerep_profile_id,
+            hasPremium(subscriber),
+          );
 
           let firstRemovedScanResult = null;
           for (const scanResult of latestScan.results) {
@@ -138,7 +123,7 @@ async function run() {
 
 async function sendFirstDataBrokerRemovalFixedActivityEmail(
   subscriber: SubscriberRow,
-  scanResult: OnerepScanResultRow | MoscaryData["ScanResult"],
+  scanResult: OnerepScanResultRow,
 ) {
   const sanitizedSubscriber = sanitizeSubscriberRow(subscriber);
   const l10n = getCronjobL10n(sanitizedSubscriber);

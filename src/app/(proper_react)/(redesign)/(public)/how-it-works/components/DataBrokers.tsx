@@ -18,9 +18,9 @@ import { TelemetryButton } from "../../../../../components/client/TelemetryButto
 import { useL10n } from "../../../../../hooks/l10n";
 
 export const DataBrokers = ({
-  yearlySubscriptionUrl,
+  monthlySubscriptionUrl,
 }: {
-  yearlySubscriptionUrl: string;
+  monthlySubscriptionUrl: string;
 }) => {
   const l10n = useL10n();
 
@@ -48,7 +48,7 @@ export const DataBrokers = ({
           <div className={styles.sectionCTAButton}>
             <TelemetryButton
               variant="primary"
-              href={yearlySubscriptionUrl}
+              href={monthlySubscriptionUrl}
               event={{
                 module: "ctaButton",
                 name: "click",
@@ -158,7 +158,7 @@ export const DataBrokers = ({
       <div className={styles.sectionCTAButton}>
         <TelemetryButton
           variant="primary"
-          href={yearlySubscriptionUrl}
+          href={monthlySubscriptionUrl}
           event={{
             module: "ctaButton",
             name: "click",

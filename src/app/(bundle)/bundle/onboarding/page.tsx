@@ -11,7 +11,6 @@ import {
 } from "../../../functions/l10n/serverComponents";
 import { BundleOnboardingView } from "./BundleOnboardingView";
 import { getEnabledFeatureFlags } from "../../../../db/tables/featureFlags";
-import NotFound from "../../../not-found";
 import { getServerSession } from "../../../functions/server/getServerSession";
 
 export default async function Page() {
@@ -24,9 +23,7 @@ export default async function Page() {
         }
       : { isSignedOut: true },
   );
-  if (!enabledFeatureFlags.includes("PrivacyProductsBundle")) {
-    return NotFound();
-  }
+
   const headersList = await headers();
   const countryCode = getCountryCode(headersList);
   const l10n = getL10n(await getAcceptLangHeaderInServerComponents());
