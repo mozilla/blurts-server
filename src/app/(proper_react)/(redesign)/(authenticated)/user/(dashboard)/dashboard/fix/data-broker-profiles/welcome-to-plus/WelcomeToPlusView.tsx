@@ -20,7 +20,6 @@ import noBreachesIllustration from "../../images/high-risk-breaches-none.svg";
 import { CONST_ONEREP_DATA_BROKER_COUNT } from "../../../../../../../../../../constants";
 import { TelemetryButton } from "../../../../../../../../../components/client/TelemetryButton";
 import { FeatureFlagName } from "../../../../../../../../../../db/tables/featureFlags";
-import type { MoscaryData } from "../../../../../../../../../functions/server/moscary";
 
 export type Props = {
   data: StepDeterminationData;
@@ -34,7 +33,7 @@ export function WelcomeToPlusView(props: Props) {
 
   const scanResultsInProgress = (props.data.latestScanData?.results.filter(
     (result) => !result.manually_resolved && result.status !== "removed",
-  ) ?? []) as OnerepScanResultDataBrokerRow[] | MoscaryData["ScanResult"][];
+  ) ?? []) as OnerepScanResultDataBrokerRow[];
   const scanResultsInProgressCount = scanResultsInProgress.length;
   const hasRelevantScanResults = scanResultsInProgressCount > 0;
   const summary = getDashboardSummary(

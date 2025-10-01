@@ -26,7 +26,6 @@ import {
   onHandleUpdateProfileData,
 } from "./actions";
 import { UserAnnouncementWithDetails } from "../../../../../../../db/tables/user_announcements";
-import { MoscaryData } from "../../../../../../functions/server/moscary";
 
 export type TabType = (typeof CONST_SETTINGS_TAB_SLUGS)[number];
 
@@ -35,9 +34,7 @@ export type Props = {
   user: Session["user"];
   subscriber: SubscriberRow;
   monthlySubscriptionUrl: string;
-  yearlySubscriptionUrl: string;
   subscriptionBillingAmount: {
-    yearly: number;
     monthly: number;
   };
   fxaSettingsUrl: string;
@@ -58,7 +55,7 @@ export type Props = {
   userAnnouncements: UserAnnouncementWithDetails[];
   isMonthlySubscriber: boolean;
   data?: SubscriberEmailPreferencesOutput;
-  profileData?: OnerepProfileRow | MoscaryData["Profile"];
+  profileData?: OnerepProfileRow;
   lastScanDate?: Date;
   activeTab?: TabType;
 };
@@ -69,7 +66,6 @@ export const SettingsView = (props: Props) => {
       <Toolbar
         user={props.user}
         monthlySubscriptionUrl={props.monthlySubscriptionUrl}
-        yearlySubscriptionUrl={props.yearlySubscriptionUrl}
         subscriptionBillingAmount={props.subscriptionBillingAmount}
         fxaSettingsUrl={props.fxaSettingsUrl}
         lastScanDate={props.lastScanDate ?? null}

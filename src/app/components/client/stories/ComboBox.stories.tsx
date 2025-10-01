@@ -3,6 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import type { Meta, StoryObj } from "@storybook/nextjs";
+import { useArgs } from "storybook/preview-api";
 
 import { ComboBox } from "../ComboBox";
 import { Item } from "react-stately";
@@ -22,6 +23,17 @@ const items: Array<ItemObject> = [
 const meta: Meta<typeof ComboBox> = {
   title: "Design Systems/Atoms/ComboBox",
   component: ComboBox,
+  render: (args) => {
+    const [{ inputValue }, updateArgs] = useArgs();
+
+    return (
+      <ComboBox
+        {...args}
+        inputValue={inputValue}
+        onInputChange={(newValue) => updateArgs({ inputValue: newValue })}
+      />
+    );
+  },
 };
 export default meta;
 type Story = StoryObj<typeof ComboBox>;

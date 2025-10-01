@@ -10,17 +10,14 @@ import { Hero } from "./components/Hero";
 import { CtaBanner } from "./components/CtaBanner";
 import { InfoBlock } from "./components/InfoBlock";
 import { LogoBlock } from "./components/LogoBlock";
-import { PrivacyProductBundleBanner } from "./components/PrivacyProductBundleBanner";
 import { Faq } from "./components/Faq";
 import { CtaInputBanner } from "./components/CtaInputBanner";
 import { PricingPlans } from "./components/PricingPlans";
-import { PricingPlansWithBundle } from "./components/PricingPlansWithBundle";
 import { FeatureFlagName } from "../../../../../db/tables/featureFlags";
 import {
   PremiumSubscriptionUrl,
-  ProductBundleUrl,
   SubscriptionBillingAmount,
-} from "./components/PricingPlanListWithBundle";
+} from "./components/PricingPlanList";
 
 export type LandingPageProps = {
   countryCode: string;
@@ -29,7 +26,6 @@ export type LandingPageProps = {
   l10n: ExtendedReactLocalization;
   eligibleForPremium: boolean;
   scanLimitReached: boolean;
-  bundleProductUrl: ProductBundleUrl;
   premiumSubscriptionUrl: PremiumSubscriptionUrl;
   subscriptionBillingAmount: SubscriptionBillingAmount;
 };
@@ -46,23 +42,8 @@ export const View = (props: LandingPageProps) => {
         <section className={`${styles.section} ${styles.hasBackground}`}>
           <InfoBlock {...props} />
         </section>
-        {props.enabledFeatureFlags.includes("PrivacyProductsBundle") &&
-          !props.scanLimitReached && (
-            <PrivacyProductBundleBanner
-              l10n={props.l10n}
-              premiumSubscriptionUrlBundle={props.premiumSubscriptionUrl.bundle}
-              subscriptionBillingAmountBundle={
-                props.subscriptionBillingAmount.bundle
-              }
-              enabledFeatureFlags={props.enabledFeatureFlags}
-            />
-          )}
         <section className={styles.section}>
-          {props.enabledFeatureFlags.includes("PrivacyProductsBundle") ? (
-            <PricingPlansWithBundle {...props} />
-          ) : (
-            <PricingPlans {...props} />
-          )}
+          <PricingPlans {...props} />
         </section>
         <section className={`${styles.section} ${styles.hasBackground}`}>
           <LogoBlock l10n={props.l10n} />

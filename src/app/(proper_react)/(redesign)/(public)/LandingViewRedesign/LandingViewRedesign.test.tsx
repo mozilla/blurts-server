@@ -6,8 +6,6 @@ import { it, expect } from "@jest/globals";
 import { composeStory } from "@storybook/react";
 import {
   getByRole,
-  getByText,
-  queryByText,
   render,
   screen,
   waitFor,
@@ -20,12 +18,9 @@ import Meta, {
   LandingRedesignUs,
   LandingRedesignUsDisableOneRepScans,
   LandingRedesignUsScanLimit,
-  LandingRedesignUsScanLimitWithPrivacyProductBundle,
-  LandingRedesignUsWithPrivacyProductBundle,
 } from "./LandingViewRedesign.stories";
 import { useTelemetry as useTelemetryImported } from "../../../../hooks/useTelemetry";
 import { deleteAllCookies } from "../../../../functions/client/deleteAllCookies";
-import { Cookies } from "react-cookie";
 
 jest.mock("next-auth/react", () => {
   return {
@@ -262,733 +257,16 @@ describe("FAQ", () => {
 });
 
 describe("Pricing plan", () => {
-  it("can switch from the yearly to the monthly plan with the keyboard", async () => {
-    const user = userEvent.setup();
-
-    const ComposedDashboard = composeStory(LandingRedesignUs, Meta);
-    render(<ComposedDashboard />);
-    const plusCard = screen.getByLabelText("Monitor Plus");
-
-    // Regular expressions:
-    //
-    //   \$     Starts with the character `$`,
-    //
-    //   (.+?)  followed by one or more (`+`) arbitrary characters (`.`), until
-    //          the next part of the regular expression matches…
-    //
-    // All that combines to a string like "$160.44 total".
-    const priceRegex = /\$(.+?) total/;
-    expect(getByText(plusCard, priceRegex)).toBeInTheDocument();
-
-    const yearlyToggle = getByRole(plusCard, "radio", { name: "Yearly" });
-    await user.click(yearlyToggle);
-    await user.keyboard("[ArrowRight][Space]");
-
-    expect(queryByText(plusCard, priceRegex)).not.toBeInTheDocument();
-  });
-
-  it("can switch from the yearly to the monthly plan with the mouse", async () => {
-    const user = userEvent.setup();
-
-    const ComposedDashboard = composeStory(LandingRedesignUs, Meta);
-    render(<ComposedDashboard />);
-    const plusCard = screen.getByLabelText("Monitor Plus");
-
-    // Regular expressions:
-    //
-    //   \$     Starts with the character `$`,
-    //
-    //   (.+?)  followed by one or more (`+`) arbitrary characters (`.`), until
-    //          the next part of the regular expression matches…
-    //
-    // All that combines to a string like "$160.44 total".
-    const priceRegex = /\$(.+?) total/;
-    expect(getByText(plusCard, priceRegex)).toBeInTheDocument();
-
-    const monthlyToggle = getByRole(plusCard, "radio", { name: "Monthly" });
-    await user.click(monthlyToggle);
-
-    expect(queryByText(plusCard, priceRegex)).not.toBeInTheDocument();
-  });
-
-  it("rounds the percentage savings of the yearly plan down (i.e. under- rather than overpromise) to whole numbers", async () => {
-    const user = userEvent.setup();
-
-    const ComposedDashboard = composeStory(LandingRedesignUs, Meta);
-    render(<ComposedDashboard />);
-    const plusCard = screen.getByLabelText("Monitor Plus");
-
-    // Regular expression:
-    //
-    //   Save   Starts with the characters `Save `,
-    //
-    //   (.+?)  followed by one or more (`+`) arbitrary characters (`.`), until
-    //          the next part of the regular expression matches…
-    //
-    //   %      …which is a single `%` character.
-    //
-    // All that combines to a string like "Save 68%".
-    const savingsEl = getByText(plusCard, /Save (.+?)%/);
-    // Regular expressions:
-    //
-    //   \$     Starts with the character `$`,
-    //
-    //   (.+?)  followed by one or more (`+`) arbitrary characters (`.`), until
-    //          the next part of the regular expression matches…
-    //
-    //  \/mo.  …which consists of the characters `/mo`.
-    //
-    // All that combines to a string like "Save 13.37%".
-    const priceRegex = /\$(.+?)\/mo/;
-    const yearlyPriceEl = getByText(plusCard, priceRegex);
-    const yearlyPrice = Number.parseFloat(
-      yearlyPriceEl.textContent!.split("$")[1].split("/")[0],
-    );
-    const monthlyToggle = getByRole(plusCard, "radio", { name: "Monthly" });
-    await user.click(monthlyToggle);
-    const monthlyPriceEl = getByText(plusCard, priceRegex);
-    const monthlyPrice = Number.parseFloat(
-      monthlyPriceEl.textContent!.split("$")[1].split("/")[0],
-    );
-
-    expect(savingsEl.textContent).not.toMatch(".");
-    expect(
-      Number.parseInt(
-        savingsEl
-          .textContent!.split("%")[0]
-          .split("Save ")[1]
-          // Replace the special characters Fluent inserts around variables:
-          .replace("⁨", "")
-          .replace("⁩", ""),
-        10,
-      ),
-    ).toBeLessThanOrEqual(((monthlyPrice - yearlyPrice) * 100) / monthlyPrice);
-  });
-
-  it("can move to the subscribe button with the keyboard", async () => {
-    const user = userEvent.setup();
-
-    const ComposedDashboard = composeStory(LandingRedesignUs, Meta);
-    render(<ComposedDashboard />);
-    const plusCard = screen.getByLabelText("Monitor Plus");
-
-    const plusSubscribeButton = getByRole(plusCard, "link", {
-      name: "Get ⁨Monitor Plus⁩",
-    });
-    expect(plusSubscribeButton).not.toHaveFocus();
-
-    const yearlyToggle = getByRole(plusCard, "radio", { name: "Yearly" });
-    await user.click(yearlyToggle);
-    await user.keyboard("[Tab]");
-
-    expect(plusSubscribeButton).toHaveFocus();
-  });
-
-  it("can initiate sign in from the pricing plan", async () => {
-    const user = userEvent.setup();
-
-    const ComposedDashboard = composeStory(LandingRedesignUs, Meta);
-    render(<ComposedDashboard />);
-    const plusCard = screen.getByLabelText("Monitor Plus");
-
-    expect(signIn).not.toHaveBeenCalled();
-
-    const yearlyToggle = getByRole(plusCard, "radio", { name: "Yearly" });
-    await user.click(yearlyToggle);
-    await user.keyboard("[Tab][Tab][Space]");
-
-    expect(signIn).toHaveBeenCalledTimes(1);
-  });
-
-  it("can initiate sign in from the Monitor (Free) pricing card", async () => {
-    const user = userEvent.setup();
-
-    const ComposedDashboard = composeStory(LandingRedesignUs, Meta);
-    render(<ComposedDashboard />);
-    const freeCard = screen.getByLabelText("Monitor");
-
-    expect(signIn).not.toHaveBeenCalled();
-
-    const signInButton = getByRole(freeCard, "button", {
-      name: "Get ⁨Monitor⁩ (Free)",
-    });
-    await user.click(signInButton);
-
-    expect(signIn).toHaveBeenCalledTimes(1);
-  });
-
-  it("counts the number of clicks on the pricing plan billing period toggle", async () => {
-    const mockedRecord = useTelemetry();
-    const ComposedDashboard = composeStory(LandingRedesignUs, Meta);
-    render(<ComposedDashboard />);
-
-    const user = userEvent.setup();
-    const plusCard = screen.getByLabelText("Monitor Plus");
-    const monthlyToggle = getByRole(plusCard, "radio", { name: "Monthly" });
-    const yearlyToggle = getByRole(plusCard, "radio", { name: "Yearly" });
-
-    await user.click(monthlyToggle);
-    expect(mockedRecord).toHaveBeenCalledWith(
-      "button",
-      "click",
-      expect.objectContaining({
-        button_id: "selected_monthly_plan",
-      }),
-    );
-
-    await user.click(yearlyToggle);
-    expect(mockedRecord).toHaveBeenCalledWith(
-      "button",
-      "click",
-      expect.objectContaining({
-        button_id: "selected_yearly_plan",
-      }),
-    );
-  });
-
-  it("counts the number of clicks on the pricing plan free tier button", async () => {
-    const mockedRecord = useTelemetry();
-    const ComposedDashboard = composeStory(LandingRedesignUs, Meta);
-    render(<ComposedDashboard />);
-
-    const user = userEvent.setup();
-    const freeCard = screen.getByLabelText("Monitor");
-    const freeButton = getByRole(freeCard, "button", {
-      name: "Get ⁨Monitor⁩ (Free)",
-    });
-
-    await user.click(freeButton);
-    expect(mockedRecord).toHaveBeenCalledWith(
-      "ctaButton",
-      "click",
-      expect.objectContaining({
-        button_id: "clicked_free_pricing_card",
-      }),
-    );
-  });
-
-  it("counts the number of clicks on the pricing plan upsell button", async () => {
-    const mockedRecord = useTelemetry();
-    const ComposedDashboard = composeStory(LandingRedesignUs, Meta);
-    render(<ComposedDashboard />);
-
-    const user = userEvent.setup();
-    const plusCard = screen.getByLabelText("Monitor Plus");
-    const monthlyToggle = getByRole(plusCard, "radio", { name: "Monthly" });
-    const upsellButton = getByRole(plusCard, "link", {
-      name: "Get ⁨Monitor Plus⁩",
-    });
-    // jsdom will complain about not being able to navigate to a different page
-    // after clicking the link; suppress that error, as it's not relevant to the
-    // test:
-    jest
-      .spyOn(console, "error")
-      .mockImplementationOnce(() => undefined)
-      .mockImplementationOnce(() => undefined);
-
-    await user.click(upsellButton);
-    expect(mockedRecord).toHaveBeenCalledWith(
-      "upgradeIntent",
-      "click",
-      expect.objectContaining({
-        button_id: "purchase_yearly_landing_page",
-      }),
-    );
-
-    await user.click(monthlyToggle);
-    await user.click(upsellButton);
-    expect(mockedRecord).toHaveBeenCalledWith(
-      "upgradeIntent",
-      "click",
-      expect.objectContaining({
-        button_id: "purchase_monthly_landing_page",
-      }),
-    );
-  });
-
-  it("counts the number of clicks on the pricing card billing period toggle", async () => {
-    const mockedRecord = useTelemetry();
-    const ComposedDashboard = composeStory(LandingRedesignUs, Meta);
-    render(<ComposedDashboard />);
-
-    const user = userEvent.setup();
-    const plusCard = screen.getByLabelText("Monitor Plus");
-    const monthlyToggle = getByRole(plusCard, "radio", { name: "Monthly" });
-    const yearlyToggle = getByRole(plusCard, "radio", { name: "Yearly" });
-
-    await user.click(monthlyToggle);
-    expect(mockedRecord).toHaveBeenCalledWith(
-      "button",
-      "click",
-      expect.objectContaining({
-        button_id: "selected_monthly_plan",
-      }),
-    );
-
-    await user.click(yearlyToggle);
-    expect(mockedRecord).toHaveBeenCalledWith(
-      "button",
-      "click",
-      expect.objectContaining({
-        button_id: "selected_yearly_plan",
-      }),
-    );
-  });
-
-  it("counts the number of clicks on the pricing card upsell button", async () => {
-    const mockedRecord = useTelemetry();
-    const ComposedDashboard = composeStory(LandingRedesignUs, Meta);
-    render(<ComposedDashboard />);
-
-    const user = userEvent.setup();
-    const plusCard = screen.getByLabelText("Monitor Plus");
-    const upsellButton = getByRole(plusCard, "link", {
-      name: "Get ⁨Monitor Plus⁩",
-    });
-    const monthlyToggle = getByRole(plusCard, "radio", { name: "Monthly" });
-    // jsdom will complain about not being able to navigate to a different page
-    // after clicking the link; suppress that error, as it's not relevant to the
-    // test:
-    jest
-      .spyOn(console, "error")
-      .mockImplementationOnce(() => undefined)
-      .mockImplementationOnce(() => undefined);
-
-    await user.click(upsellButton);
-    expect(mockedRecord).toHaveBeenCalledWith(
-      "upgradeIntent",
-      "click",
-      expect.objectContaining({
-        button_id: "purchase_yearly_landing_page",
-      }),
-    );
-
-    await user.click(monthlyToggle);
-    await user.click(upsellButton);
-    expect(mockedRecord).toHaveBeenCalledWith(
-      "upgradeIntent",
-      "click",
-      expect.objectContaining({
-        button_id: "purchase_monthly_landing_page",
-      }),
-    );
-  });
-
-  it("counts the number of clicks on the pricing card free button", async () => {
-    const mockedRecord = useTelemetry();
-    const ComposedDashboard = composeStory(LandingRedesignUs, Meta);
-    render(<ComposedDashboard />);
-
-    const user = userEvent.setup();
-    const freeCard = screen.getByLabelText("Monitor");
-    const freeButton = getByRole(freeCard, "button", {
-      name: "Get ⁨Monitor⁩ (Free)",
-    });
-
-    await user.click(freeButton);
-    expect(mockedRecord).toHaveBeenCalledWith(
-      "ctaButton",
-      "click",
-      expect.objectContaining({
-        button_id: "clicked_free_pricing_card",
-      }),
-    );
-  });
-
-  it("confirms that the pricing card yearly upsell has the correct link for SubPlat2", async () => {
-    const ComposedStory = composeStory(LandingRedesignUs, Meta);
-    render(<ComposedStory />);
-
-    const plusCard = screen.getByLabelText("Monitor Plus");
-    const upsellButton = getByRole(plusCard, "link", {
-      name: "Get ⁨Monitor Plus⁩",
-    });
-    expect(upsellButton).toHaveAttribute(
-      "href",
-      "https://accounts.stage.mozaws.net/subscriptions/products/prod_NErZh679W62lai?plan=price_1NvqawKb9q6OnNsLRTnYrtrV&entrypoint=monitor.mozilla.org-monitor-product-page&form_type=button&data_cta_position=pricing&utm_source=product&utm_medium=monitor&utm_campaign=pricing",
-    );
-  });
-
-  it("confirms that the pricing card monthly upsell has the correct link for SubPlat2", async () => {
-    const ComposedStory = composeStory(LandingRedesignUs, Meta);
-    render(<ComposedStory />);
-
-    const user = userEvent.setup();
-    const plusCard = screen.getByLabelText("Monitor Plus");
-    const upsellButton = getByRole(plusCard, "link", {
-      name: "Get ⁨Monitor Plus⁩",
-    });
-    const monthlyToggle = getByRole(plusCard, "radio", { name: "Monthly" });
-    // jsdom will complain about not being able to navigate to a different page
-    // after clicking the link; suppress that error, as it's not relevant to the
-    // test:
-    jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
-    await user.click(monthlyToggle);
-
-    expect(upsellButton).toHaveAttribute(
-      "href",
-      "https://accounts.stage.mozaws.net/subscriptions/products/prod_NErZh679W62lai?plan=price_1MUNq0Kb9q6OnNsL4BoJgepf&entrypoint=monitor.mozilla.org-monitor-product-page&form_type=button&data_cta_position=pricing&utm_source=product&utm_medium=monitor&utm_campaign=pricing",
-    );
-  });
-
-  it("confirms that the pricing card yearly upsell has the correct link with UTM parameters for SubPlat2", async () => {
-    const cookies = new Cookies(null);
-    cookies.set("attributionsLastTouch", {
-      utm_source: "source_last_touch",
-      utm_medium: "medium_last_touch",
-      utm_campaign: "campaign_last_touch",
-    });
-    const ComposedStory = composeStory(LandingRedesignUs, Meta);
-    render(<ComposedStory />);
-
-    const plusCard = screen.getByLabelText("Monitor Plus");
-    const upsellButton = getByRole(plusCard, "link", {
-      name: "Get ⁨Monitor Plus⁩",
-    });
-    expect(upsellButton).toHaveAttribute(
-      "href",
-      "https://accounts.stage.mozaws.net/subscriptions/products/prod_NErZh679W62lai?plan=price_1NvqawKb9q6OnNsLRTnYrtrV&utm_source=source_last_touch&utm_medium=medium_last_touch&utm_campaign=campaign_last_touch&entrypoint=monitor.mozilla.org-monitor-product-page&form_type=button&data_cta_position=pricing",
-    );
-  });
-
-  it("confirms that the pricing card yearly upsell has the correct link for SubPlat3", async () => {
-    const ComposedStory = composeStory(LandingRedesignUs, Meta);
-    render(
-      <ComposedStory
-        enabledFeatureFlags={["LandingPageRedesign", "SubPlat3"]}
-      />,
-    );
-
-    const plusCard = screen.getByLabelText("Monitor Plus");
-    const upsellButton = getByRole(plusCard, "link", {
-      name: "Get ⁨Monitor Plus⁩",
-    });
-    expect(upsellButton).toHaveAttribute(
-      "href",
-      "https://payments-next.stage.fxa.nonprod.webservices.mozgcp.net/monitorplusstage/yearly/landing?entrypoint=monitor.mozilla.org-monitor-product-page&form_type=button&data_cta_position=pricing&utm_source=product&utm_medium=monitor&utm_campaign=pricing",
-    );
-  });
-
-  it("confirms that the pricing card monthly upsell has the correct link for SubPlat3", async () => {
-    const ComposedStory = composeStory(LandingRedesignUs, Meta);
-    render(
-      <ComposedStory
-        enabledFeatureFlags={["LandingPageRedesign", "SubPlat3"]}
-      />,
-    );
-
-    const user = userEvent.setup();
-    const plusCard = screen.getByLabelText("Monitor Plus");
-    const upsellButton = getByRole(plusCard, "link", {
-      name: "Get ⁨Monitor Plus⁩",
-    });
-    const monthlyToggle = getByRole(plusCard, "radio", { name: "Monthly" });
-    // jsdom will complain about not being able to navigate to a different page
-    // after clicking the link; suppress that error, as it's not relevant to the
-    // test:
-    jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
-    await user.click(monthlyToggle);
-
-    expect(upsellButton).toHaveAttribute(
-      "href",
-      "https://payments-next.stage.fxa.nonprod.webservices.mozgcp.net/monitorplusstage/monthly/landing?entrypoint=monitor.mozilla.org-monitor-product-page&form_type=button&data_cta_position=pricing&utm_source=product&utm_medium=monitor&utm_campaign=pricing",
-    );
-  });
-
-  it("confirms that the pricing card yearly upsell has the correct link with UTM parameters for SubPlat3", async () => {
-    const cookies = new Cookies(null);
-    cookies.set("attributionsLastTouch", {
-      utm_source: "source_last_touch",
-      utm_medium: "medium_last_touch",
-      utm_campaign: "campaign_last_touch",
-    });
-    const ComposedStory = composeStory(LandingRedesignUs, Meta);
-    render(
-      <ComposedStory
-        enabledFeatureFlags={["LandingPageRedesign", "SubPlat3"]}
-      />,
-    );
-
-    const plusCard = screen.getByLabelText("Monitor Plus");
-    const upsellButton = getByRole(plusCard, "link", {
-      name: "Get ⁨Monitor Plus⁩",
-    });
-    expect(upsellButton).toHaveAttribute(
-      "href",
-      "https://payments-next.stage.fxa.nonprod.webservices.mozgcp.net/monitorplusstage/yearly/landing?utm_source=source_last_touch&utm_medium=medium_last_touch&utm_campaign=campaign_last_touch&entrypoint=monitor.mozilla.org-monitor-product-page&form_type=button&data_cta_position=pricing",
-    );
-  });
-});
-
-describe("Privacy product bundle banner", () => {
-  it("confirms that the banner CTA has the correct link for SubPlat2", async () => {
-    const ComposedStory = composeStory(
-      LandingRedesignUsWithPrivacyProductBundle,
-      Meta,
-    );
-    render(<ComposedStory />);
-
-    const upsellLink = screen.getByRole("link", {
-      name: "Get year-round protection",
-    });
-    expect(upsellLink).toHaveAttribute(
-      "href",
-      "https://accounts.stage.mozaws.net/subscriptions/products/prod_SFb8iVuZIOPREe?plan=price_1RMAopKb9q6OnNsLSGe1vLtt&utm_medium=monitor&utm_source=monitor-product&utm_campaign=landing-page-banner&utm_content=banner-us",
-    );
-  });
-
-  it("confirms that the banner CTA has the correct link for SubPlat3", async () => {
-    const ComposedStory = composeStory(
-      LandingRedesignUsWithPrivacyProductBundle,
-      Meta,
-    );
-    render(
-      <ComposedStory
-        enabledFeatureFlags={[
-          "LandingPageRedesign",
-          "PrivacyProductsBundle",
-          "SubPlat3",
-        ]}
-      />,
-    );
-
-    const upsellLink = screen.getByRole("link", {
-      name: "Get year-round protection",
-    });
-    expect(upsellLink).toHaveAttribute(
-      "href",
-      "https://payments-next.stage.fxa.nonprod.webservices.mozgcp.net/privacyprotectionplan/yearly/landing?utm_medium=monitor&utm_source=monitor-product&utm_campaign=landing-page-banner&utm_content=banner-us",
-    );
-  });
-
-  it("counts the number of clicks on the banner CTA", async () => {
-    const mockedRecord = useTelemetry();
-    const ComposedDashboard = composeStory(
-      LandingRedesignUsWithPrivacyProductBundle,
-      Meta,
-    );
-    render(<ComposedDashboard />);
-
-    const user = userEvent.setup();
-    const upsellLink = screen.getByRole("link", {
-      name: "Get year-round protection",
-    });
-
-    // jsdom will complain about not being able to navigate to a different page
-    // after clicking the link; suppress that error, as it's not relevant to the
-    // test:
-    jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
-
-    await user.click(upsellLink);
-    expect(mockedRecord).toHaveBeenCalledWith(
-      "upgradeIntent",
-      "click",
-      expect.objectContaining({
-        button_id: "purchase_bundle_banner_landing_page",
-      }),
-    );
-  });
-
-  it("hides the banner when the feature flag `DisableOneRepScans` is enabled", async () => {
-    const ComposedDashboard = composeStory(
-      LandingRedesignUsDisableOneRepScans,
-      Meta,
-    );
-    render(<ComposedDashboard />);
-
-    expect(
-      screen.queryByRole("heading", {
-        name: "Protect your online privacy for ⁨$42.00⁩/month",
-      }),
-    ).not.toBeInTheDocument();
-  });
-});
-
-describe("Pricing plan with bundle", () => {
   it("passes the axe accessibility test suite", async () => {
-    const ComposedLanding = composeStory(
-      LandingRedesignUsWithPrivacyProductBundle,
-      Meta,
-    );
+    const ComposedLanding = composeStory(LandingRedesignUs, Meta);
     const { container } = render(<ComposedLanding />);
     expect(await axe(container)).toHaveNoViolations();
   }, 10_000);
 
-  it("can switch from the yearly to the monthly plan with the keyboard", async () => {
-    const user = userEvent.setup();
-
-    const ComposedDashboard = composeStory(
-      LandingRedesignUsWithPrivacyProductBundle,
-      Meta,
-    );
-    render(<ComposedDashboard />);
-    const plusCard = screen.getByLabelText("Monitor Plus");
-
-    // Regular expressions:
-    //
-    //   \$     Starts with the character `$`,
-    //
-    //   (.+?)  followed by one or more (`+`) arbitrary characters (`.`), until
-    //          the next part of the regular expression matches…
-    //
-    // All that combines to a string like "$160.44 billed yearly".
-    const yearlyPriceRegex = /\$(.+?) billed yearly/;
-    const monthlyLabel = "Billed monthly";
-    expect(getByText(plusCard, yearlyPriceRegex)).toBeInTheDocument();
-    expect(queryByText(plusCard, monthlyLabel)).not.toBeInTheDocument();
-
-    const yearlyToggle = getByRole(plusCard, "radio", { name: "Yearly" });
-    await user.click(yearlyToggle);
-    await user.keyboard("[ArrowRight][Space]");
-
-    expect(queryByText(plusCard, yearlyPriceRegex)).not.toBeInTheDocument();
-    expect(getByText(plusCard, monthlyLabel)).toBeInTheDocument();
-  });
-
-  it("can switch from the yearly to the monthly plan with the mouse", async () => {
-    const user = userEvent.setup();
-
-    const ComposedDashboard = composeStory(
-      LandingRedesignUsWithPrivacyProductBundle,
-      Meta,
-    );
-    render(<ComposedDashboard />);
-    const plusCard = screen.getByLabelText("Monitor Plus");
-
-    // Regular expressions:
-    //
-    //   \$     Starts with the character `$`,
-    //
-    //   (.+?)  followed by one or more (`+`) arbitrary characters (`.`), until
-    //          the next part of the regular expression matches…
-    //
-    // All that combines to a string like "$160.44 billed yearly".
-    const yearlyPriceRegex = /\$(.+?) billed yearly/;
-    const monthlyLabel = "Billed monthly";
-    expect(getByText(plusCard, yearlyPriceRegex)).toBeInTheDocument();
-    expect(queryByText(plusCard, monthlyLabel)).not.toBeInTheDocument();
-
-    const monthlyToggle = getByRole(plusCard, "radio", { name: "Monthly" });
-    await user.click(monthlyToggle);
-
-    expect(queryByText(plusCard, yearlyPriceRegex)).not.toBeInTheDocument();
-    expect(getByText(plusCard, monthlyLabel)).toBeInTheDocument();
-  });
-
-  it("rounds the percentage savings of the bundle plan down (i.e. under- rather than overpromise) to whole numbers", async () => {
-    const ComposedDashboard = composeStory(
-      LandingRedesignUsWithPrivacyProductBundle,
-      Meta,
-    );
-    render(<ComposedDashboard />);
-    const bundleCard = screen.getByLabelText("Privacy Protection Plan");
-
-    // Regular expression:
-    //
-    //   Save   Starts with the characters `Save `,
-    //
-    //   (.+?)  followed by one or more (`+`) arbitrary characters (`.`), until
-    //          the next part of the regular expression matches…
-    //
-    //   %      …which is a single `%` character.
-    //
-    // All that combines to a string like "Best value, save 68%".
-    const savingsEl = getByText(bundleCard, /Best value, save (.+?)%/);
-    const priceEl = getByText(bundleCard, /\$(.+?)\/mo/);
-    const individualPrice = Number.parseFloat(
-      priceEl.textContent!.split("$")[1],
-    );
-    const bundlePrice = Number.parseFloat(
-      priceEl.textContent!.split("$")[2].replace("/mo", ""),
-    );
-
-    expect(savingsEl.textContent).not.toMatch(".");
-    expect(
-      Number.parseInt(
-        savingsEl
-          .textContent!.split("%")[0]
-          .split("Best value, save ")[1]
-          // Replace the special characters Fluent inserts around variables:
-          .replace("⁨", "")
-          .replace("⁩", ""),
-        10,
-      ),
-    ).toBeLessThanOrEqual(
-      ((individualPrice - bundlePrice) * 100) / individualPrice,
-    );
-  });
-
-  it("can move to the subscribe button with the keyboard", async () => {
-    const user = userEvent.setup();
-
-    const ComposedDashboard = composeStory(
-      LandingRedesignUsWithPrivacyProductBundle,
-      Meta,
-    );
-    render(<ComposedDashboard />);
-    const plusCard = screen.getByLabelText("Monitor Plus");
-
-    const plusSubscribeButton = getByRole(plusCard, "link", {
-      name: "Get started",
-    });
-    expect(plusSubscribeButton).not.toHaveFocus();
-
-    const yearlyToggle = getByRole(plusCard, "radio", { name: "Yearly" });
-    await user.click(yearlyToggle);
-    await user.keyboard("[Tab]");
-
-    expect(plusSubscribeButton).toHaveFocus();
-  });
-
-  it("links to the Mozilla privacy products from the bundle pricing plan", async () => {
-    const ComposedDashboard = composeStory(
-      LandingRedesignUsWithPrivacyProductBundle,
-      Meta,
-    );
-    render(<ComposedDashboard />);
-    const bundleCard = screen.getByLabelText("Privacy Protection Plan");
-
-    const mozillaVpnLink = getByRole(bundleCard, "link", {
-      name: /Mozilla VPN/,
-    });
-    const relayPremiumLink = getByRole(bundleCard, "link", {
-      name: /Relay Premium/,
-    });
-    const mozillaMonitorLink = getByRole(bundleCard, "link", {
-      name: /Monitor Plus/,
-    });
-
-    expect(mozillaVpnLink).not.toHaveAttribute("href", "");
-    expect(relayPremiumLink).not.toHaveAttribute("href", "");
-    expect(mozillaMonitorLink).toHaveAttribute("href", "/");
-  });
-
-  it("can initiate sign in from the Monitor Plus pricing plan", async () => {
-    const user = userEvent.setup();
-
-    const ComposedDashboard = composeStory(
-      LandingRedesignUsWithPrivacyProductBundle,
-      Meta,
-    );
-    render(<ComposedDashboard />);
-    const plusCard = screen.getByLabelText("Monitor Plus");
-
-    expect(signIn).not.toHaveBeenCalled();
-
-    const yearlyToggle = getByRole(plusCard, "radio", { name: "Yearly" });
-    await user.click(yearlyToggle);
-    await user.keyboard("[Tab][Tab][Space]");
-
-    expect(signIn).toHaveBeenCalledTimes(1);
-  });
-
   it("can initiate sign in from the Monitor (free) pricing card", async () => {
     const user = userEvent.setup();
 
-    const ComposedDashboard = composeStory(
-      LandingRedesignUsWithPrivacyProductBundle,
-      Meta,
-    );
+    const ComposedDashboard = composeStory(LandingRedesignUs, Meta);
     render(<ComposedDashboard />);
     const freeCard = screen.getByLabelText("Monitor");
 
@@ -1002,44 +280,9 @@ describe("Pricing plan with bundle", () => {
     expect(signIn).toHaveBeenCalledTimes(1);
   });
 
-  it("counts the number of clicks on the pricing plan billing period toggle", async () => {
-    const mockedRecord = useTelemetry();
-    const ComposedDashboard = composeStory(
-      LandingRedesignUsWithPrivacyProductBundle,
-      Meta,
-    );
-    render(<ComposedDashboard />);
-
-    const user = userEvent.setup();
-    const plusCard = screen.getByLabelText("Monitor Plus");
-    const monthlyToggle = getByRole(plusCard, "radio", { name: "Monthly" });
-    const yearlyToggle = getByRole(plusCard, "radio", { name: "Yearly" });
-
-    await user.click(monthlyToggle);
-    expect(mockedRecord).toHaveBeenCalledWith(
-      "button",
-      "click",
-      expect.objectContaining({
-        button_id: "selected_monthly_plan",
-      }),
-    );
-
-    await user.click(yearlyToggle);
-    expect(mockedRecord).toHaveBeenCalledWith(
-      "button",
-      "click",
-      expect.objectContaining({
-        button_id: "selected_yearly_plan",
-      }),
-    );
-  });
-
   it("counts the number of clicks on the pricing plan free tier button", async () => {
     const mockedRecord = useTelemetry();
-    const ComposedDashboard = composeStory(
-      LandingRedesignUsWithPrivacyProductBundle,
-      Meta,
-    );
+    const ComposedDashboard = composeStory(LandingRedesignUs, Meta);
     render(<ComposedDashboard />);
 
     const user = userEvent.setup();
@@ -1060,115 +303,32 @@ describe("Pricing plan with bundle", () => {
 
   it("counts the number of clicks on the pricing plan upsell button", async () => {
     const mockedRecord = useTelemetry();
-    const ComposedDashboard = composeStory(
-      LandingRedesignUsWithPrivacyProductBundle,
-      Meta,
-    );
+    const ComposedDashboard = composeStory(LandingRedesignUs, Meta);
     render(<ComposedDashboard />);
 
     const user = userEvent.setup();
     const plusCard = screen.getByLabelText("Monitor Plus");
-    const monthlyToggle = getByRole(plusCard, "radio", { name: "Monthly" });
     const upsellButton = getByRole(plusCard, "link", {
       name: "Get started",
     });
     // jsdom will complain about not being able to navigate to a different page
     // after clicking the link; suppress that error, as it's not relevant to the
     // test:
-    jest
-      .spyOn(console, "error")
-      .mockImplementationOnce(() => undefined)
-      .mockImplementationOnce(() => undefined);
+    jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
 
-    await user.click(upsellButton);
-    expect(mockedRecord).toHaveBeenCalledWith(
-      "upgradeIntent",
-      "click",
-      expect.objectContaining({
-        button_id: "purchase_yearly_landing_page",
-      }),
-    );
-
-    await user.click(monthlyToggle);
     await user.click(upsellButton);
     expect(mockedRecord).toHaveBeenCalledWith(
       "upgradeIntent",
       "click",
       expect.objectContaining({
         button_id: "purchase_monthly_landing_page",
-      }),
-    );
-  });
-
-  it("counts the number of clicks on the pricing card billing period toggle", async () => {
-    const mockedRecord = useTelemetry();
-    const ComposedDashboard = composeStory(
-      LandingRedesignUsWithPrivacyProductBundle,
-      Meta,
-    );
-    render(<ComposedDashboard />);
-
-    const user = userEvent.setup();
-    const plusCard = screen.getByLabelText("Monitor Plus");
-    const monthlyToggle = getByRole(plusCard, "radio", { name: "Monthly" });
-    const yearlyToggle = getByRole(plusCard, "radio", { name: "Yearly" });
-
-    await user.click(monthlyToggle);
-    expect(mockedRecord).toHaveBeenCalledWith(
-      "button",
-      "click",
-      expect.objectContaining({
-        button_id: "selected_monthly_plan",
-      }),
-    );
-
-    await user.click(yearlyToggle);
-    expect(mockedRecord).toHaveBeenCalledWith(
-      "button",
-      "click",
-      expect.objectContaining({
-        button_id: "selected_yearly_plan",
-      }),
-    );
-  });
-
-  it("counts the number of clicks on the pricing card bundle upsell button", async () => {
-    const mockedRecord = useTelemetry();
-    const ComposedDashboard = composeStory(
-      LandingRedesignUsWithPrivacyProductBundle,
-      Meta,
-    );
-    render(<ComposedDashboard />);
-
-    const user = userEvent.setup();
-    const bundleCard = screen.getByLabelText("Privacy Protection Plan");
-    const upsellButton = getByRole(bundleCard, "link", {
-      name: "Get started",
-    });
-    // jsdom will complain about not being able to navigate to a different page
-    // after clicking the link; suppress that error, as it's not relevant to the
-    // test:
-    jest
-      .spyOn(console, "error")
-      .mockImplementationOnce(() => undefined)
-      .mockImplementationOnce(() => undefined);
-
-    await user.click(upsellButton);
-    expect(mockedRecord).toHaveBeenCalledWith(
-      "upgradeIntent",
-      "click",
-      expect.objectContaining({
-        button_id: "purchase_bundle_landing_page",
       }),
     );
   });
 
   it("counts the number of clicks on the pricing card Plus upsell button", async () => {
     const mockedRecord = useTelemetry();
-    const ComposedDashboard = composeStory(
-      LandingRedesignUsWithPrivacyProductBundle,
-      Meta,
-    );
+    const ComposedDashboard = composeStory(LandingRedesignUs, Meta);
     render(<ComposedDashboard />);
 
     const user = userEvent.setup();
@@ -1176,25 +336,11 @@ describe("Pricing plan with bundle", () => {
     const upsellButton = getByRole(plusCard, "link", {
       name: "Get started",
     });
-    const monthlyToggle = getByRole(plusCard, "radio", { name: "Monthly" });
     // jsdom will complain about not being able to navigate to a different page
     // after clicking the link; suppress that error, as it's not relevant to the
     // test:
-    jest
-      .spyOn(console, "error")
-      .mockImplementationOnce(() => undefined)
-      .mockImplementationOnce(() => undefined);
+    jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
 
-    await user.click(upsellButton);
-    expect(mockedRecord).toHaveBeenCalledWith(
-      "upgradeIntent",
-      "click",
-      expect.objectContaining({
-        button_id: "purchase_yearly_landing_page",
-      }),
-    );
-
-    await user.click(monthlyToggle);
     await user.click(upsellButton);
     expect(mockedRecord).toHaveBeenCalledWith(
       "upgradeIntent",
@@ -1207,10 +353,7 @@ describe("Pricing plan with bundle", () => {
 
   it("counts the number of clicks on the pricing card free button", async () => {
     const mockedRecord = useTelemetry();
-    const ComposedDashboard = composeStory(
-      LandingRedesignUsWithPrivacyProductBundle,
-      Meta,
-    );
+    const ComposedDashboard = composeStory(LandingRedesignUs, Meta);
     render(<ComposedDashboard />);
 
     const user = userEvent.setup();
@@ -1229,41 +372,18 @@ describe("Pricing plan with bundle", () => {
     );
   });
 
-  it("confirms that the pricing card yearly upsell has the correct link for SubPlat2", async () => {
-    const ComposedStory = composeStory(
-      LandingRedesignUsWithPrivacyProductBundle,
-      Meta,
-    );
-    render(<ComposedStory />);
-
-    const plusCard = screen.getByLabelText("Monitor Plus");
-    const upsellButton = getByRole(plusCard, "link", {
-      name: "Get started",
-    });
-    expect(upsellButton).toHaveAttribute(
-      "href",
-      "https://accounts.stage.mozaws.net/subscriptions/products/prod_NErZh679W62lai?plan=price_1NvqawKb9q6OnNsLRTnYrtrV&entrypoint=monitor.mozilla.org-monitor-product-page&form_type=button&data_cta_position=pricing&utm_source=monitor-product&utm_medium=monitor&utm_campaign=landing-page-pricing-grid&utm_content=pricing-grid-us",
-    );
-  });
-
   it("confirms that the pricing card monthly upsell has the correct link for SubPlat2", async () => {
-    const ComposedStory = composeStory(
-      LandingRedesignUsWithPrivacyProductBundle,
-      Meta,
-    );
+    const ComposedStory = composeStory(LandingRedesignUs, Meta);
     render(<ComposedStory />);
 
-    const user = userEvent.setup();
     const plusCard = screen.getByLabelText("Monitor Plus");
     const upsellButton = getByRole(plusCard, "link", {
       name: "Get started",
     });
-    const monthlyToggle = getByRole(plusCard, "radio", { name: "Monthly" });
     // jsdom will complain about not being able to navigate to a different page
     // after clicking the link; suppress that error, as it's not relevant to the
     // test:
     jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
-    await user.click(monthlyToggle);
 
     expect(upsellButton).toHaveAttribute(
       "href",
@@ -1271,171 +391,26 @@ describe("Pricing plan with bundle", () => {
     );
   });
 
-  it("confirms that the pricing card yearly upsell has the correct link with UTM parameters for SubPlat2", async () => {
-    const cookies = new Cookies(null);
-    cookies.set("attributionsLastTouch", {
-      utm_source: "source_last_touch",
-      utm_medium: "medium_last_touch",
-      utm_campaign: "campaign_last_touch",
-    });
-    const ComposedStory = composeStory(
-      LandingRedesignUsWithPrivacyProductBundle,
-      Meta,
-    );
-    render(<ComposedStory />);
-
-    const plusCard = screen.getByLabelText("Monitor Plus");
-    const upsellButton = getByRole(plusCard, "link", {
-      name: "Get started",
-    });
-    expect(upsellButton).toHaveAttribute(
-      "href",
-      "https://accounts.stage.mozaws.net/subscriptions/products/prod_NErZh679W62lai?plan=price_1NvqawKb9q6OnNsLRTnYrtrV&utm_source=source_last_touch&utm_medium=medium_last_touch&utm_campaign=campaign_last_touch&entrypoint=monitor.mozilla.org-monitor-product-page&form_type=button&data_cta_position=pricing&utm_content=pricing-grid-us",
-    );
-  });
-
-  it("confirms that the pricing card bundle upsell has the correct link with UTM parameters for SubPlat2", async () => {
-    const cookies = new Cookies(null);
-    cookies.set("attributionsLastTouch", {
-      utm_source: "monitor-product",
-      utm_medium: "monitor",
-      utm_campaign: "landing-page-pricing-grid",
-      utm_content: "pricing-grid-us",
-    });
-    const ComposedStory = composeStory(
-      LandingRedesignUsWithPrivacyProductBundle,
-      Meta,
-    );
-    render(<ComposedStory />);
-
-    const bundleCard = screen.getByLabelText("Privacy Protection Plan");
-    const upsellButton = getByRole(bundleCard, "link", {
-      name: "Get started",
-    });
-    expect(upsellButton).toHaveAttribute(
-      "href",
-      "https://accounts.stage.mozaws.net/subscriptions/products/prod_SFb8iVuZIOPREe?plan=price_1RMAopKb9q6OnNsLSGe1vLtt&utm_source=monitor-product&utm_medium=monitor&utm_campaign=landing-page-pricing-grid&utm_content=pricing-grid-us&entrypoint=monitor.mozilla.org-monitor-product-page&form_type=button&data_cta_position=pricing",
-    );
-  });
-
-  it("confirms that the pricing card yearly upsell has the correct link for SubPlat3", async () => {
-    const ComposedStory = composeStory(
-      LandingRedesignUsWithPrivacyProductBundle,
-      Meta,
-    );
-    render(
-      <ComposedStory
-        enabledFeatureFlags={[
-          "LandingPageRedesign",
-          "PrivacyProductsBundle",
-          "SubPlat3",
-        ]}
-      />,
-    );
-
-    const plusCard = screen.getByLabelText("Monitor Plus");
-    const upsellButton = getByRole(plusCard, "link", {
-      name: "Get started",
-    });
-    expect(upsellButton).toHaveAttribute(
-      "href",
-      "https://payments-next.stage.fxa.nonprod.webservices.mozgcp.net/monitorplusstage/yearly/landing?entrypoint=monitor.mozilla.org-monitor-product-page&form_type=button&data_cta_position=pricing&utm_source=monitor-product&utm_medium=monitor&utm_campaign=landing-page-pricing-grid&utm_content=pricing-grid-us",
-    );
-  });
-
   it("confirms that the pricing card monthly upsell has the correct link for SubPlat3", async () => {
-    const ComposedStory = composeStory(
-      LandingRedesignUsWithPrivacyProductBundle,
-      Meta,
-    );
+    const ComposedStory = composeStory(LandingRedesignUs, Meta);
     render(
       <ComposedStory
-        enabledFeatureFlags={[
-          "LandingPageRedesign",
-          "PrivacyProductsBundle",
-          "SubPlat3",
-        ]}
+        enabledFeatureFlags={["LandingPageRedesign", "SubPlat3"]}
       />,
     );
 
-    const user = userEvent.setup();
     const plusCard = screen.getByLabelText("Monitor Plus");
     const upsellButton = getByRole(plusCard, "link", {
       name: "Get started",
     });
-    const monthlyToggle = getByRole(plusCard, "radio", { name: "Monthly" });
     // jsdom will complain about not being able to navigate to a different page
     // after clicking the link; suppress that error, as it's not relevant to the
     // test:
     jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
-    await user.click(monthlyToggle);
 
     expect(upsellButton).toHaveAttribute(
       "href",
       "https://payments-next.stage.fxa.nonprod.webservices.mozgcp.net/monitorplusstage/monthly/landing?entrypoint=monitor.mozilla.org-monitor-product-page&form_type=button&data_cta_position=pricing&utm_source=monitor-product&utm_medium=monitor&utm_campaign=landing-page-pricing-grid&utm_content=pricing-grid-us",
-    );
-  });
-
-  it("confirms that the pricing card yearly upsell has the correct link with UTM parameters for SubPlat3", async () => {
-    const cookies = new Cookies(null);
-    cookies.set("attributionsLastTouch", {
-      utm_source: "source_last_touch",
-      utm_medium: "medium_last_touch",
-      utm_campaign: "campaign_last_touch",
-    });
-    const ComposedStory = composeStory(
-      LandingRedesignUsWithPrivacyProductBundle,
-      Meta,
-    );
-    render(
-      <ComposedStory
-        enabledFeatureFlags={[
-          "LandingPageRedesign",
-          "PrivacyProductsBundle",
-          "SubPlat3",
-        ]}
-      />,
-    );
-
-    const plusCard = screen.getByLabelText("Monitor Plus");
-    const upsellButton = getByRole(plusCard, "link", {
-      name: "Get started",
-    });
-    expect(upsellButton).toHaveAttribute(
-      "href",
-      "https://payments-next.stage.fxa.nonprod.webservices.mozgcp.net/monitorplusstage/yearly/landing?utm_source=source_last_touch&utm_medium=medium_last_touch&utm_campaign=campaign_last_touch&entrypoint=monitor.mozilla.org-monitor-product-page&form_type=button&data_cta_position=pricing&utm_content=pricing-grid-us",
-    );
-  });
-
-  it("confirms that the pricing card bundle upsell has the correct link with UTM parameters for SubPlat3", async () => {
-    const cookies = new Cookies(null);
-    cookies.set("attributionsLastTouch", {
-      utm_source: "monitor-product",
-      utm_medium: "monitor",
-      utm_campaign: "landing-page-pricing-grid",
-      utm_content: "pricing-grid-us",
-    });
-    const ComposedStory = composeStory(
-      LandingRedesignUsWithPrivacyProductBundle,
-      Meta,
-    );
-    render(
-      <ComposedStory
-        enabledFeatureFlags={[
-          "LandingPageRedesign",
-          "PrivacyProductsBundle",
-          "SubPlat3",
-        ]}
-      />,
-    );
-
-    const bundleCard = screen.getByLabelText("Privacy Protection Plan");
-    const upsellButton = getByRole(bundleCard, "link", {
-      name: "Get started",
-    });
-    expect(upsellButton).toHaveAttribute(
-      "href",
-      "https://payments-next.stage.fxa.nonprod.webservices.mozgcp.net/privacyprotectionplan/yearly/landing?utm_source=monitor-product&utm_medium=monitor&utm_campaign=landing-page-pricing-grid&utm_content=pricing-grid-us&entrypoint=monitor.mozilla.org-monitor-product-page&form_type=button&data_cta_position=pricing",
     );
   });
 });
@@ -1487,10 +462,7 @@ describe("Scan limit reached", () => {
         })),
       }),
     );
-    const ComposedDashboard = composeStory(
-      LandingRedesignUsScanLimitWithPrivacyProductBundle,
-      Meta,
-    );
+    const ComposedDashboard = composeStory(LandingRedesignUsScanLimit, Meta);
     render(<ComposedDashboard />);
 
     await waitFor(() => {
@@ -1523,7 +495,7 @@ describe("Show limit reached flow when the DisableOneRepScans flag is on", () =>
     const limitDescriptions = screen.getAllByText(
       "We’ve reached the maximum scans for the month. Enter your email to get on our waitlist.",
     );
-    expect(limitDescriptions).toHaveLength(5);
+    expect(limitDescriptions).toHaveLength(4);
   });
 
   it("opens the waitlist page when the join waitlist cta is selected", async () => {

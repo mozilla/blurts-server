@@ -8,9 +8,6 @@ import { composeStory } from "@storybook/react";
 import { axe } from "jest-axe";
 import { userEvent } from "@testing-library/user-event";
 
-import Meta, { ManualRemoveViewStory } from "./ManualRemove.stories";
-import { useTelemetry as useTelemetryImported } from "../../../../../../../../../hooks/useTelemetry";
-
 const mockedRouterRefresh = jest.fn();
 
 jest.mock("next/navigation", () => {
@@ -21,6 +18,9 @@ jest.mock("next/navigation", () => {
     usePathname: jest.fn(),
   };
 });
+
+import Meta, { ManualRemoveViewStory } from "./ManualRemove.stories";
+import { useTelemetry as useTelemetryImported } from "../../../../../../../../../hooks/useTelemetry";
 
 jest.mock("../../../../../../../../../hooks/useTelemetry");
 jest.mock(
@@ -54,9 +54,9 @@ it("passes the axe accessibility test suite", async () => {
 
 it("removes the manual resolution button once a profile has been resolved", async () => {
   const user = userEvent.setup();
-  const resolveScanResult = jest.fn().mockResolvedValueOnce({ ok: true });
+  global.fetch = jest.fn().mockResolvedValueOnce({ ok: true });
   const ComposedManualRemoveView = composeStory(ManualRemoveViewStory, Meta);
-  render(<ComposedManualRemoveView resolveScanResult={resolveScanResult} />);
+  render(<ComposedManualRemoveView />);
 
   const resolveButtonsBeforeResolving = screen.getAllByRole("button", {
     name: "Mark as fixed",
@@ -74,9 +74,9 @@ it("removes the manual resolution button once a profile has been resolved", asyn
 
 it("refreshes the client-side router cache after resolving a profile", async () => {
   const user = userEvent.setup();
-  const resolveScanResult = jest.fn().mockResolvedValueOnce({ ok: true });
+  global.fetch = jest.fn().mockResolvedValueOnce({ ok: true });
   const ComposedManualRemoveView = composeStory(ManualRemoveViewStory, Meta);
-  render(<ComposedManualRemoveView resolveScanResult={resolveScanResult} />);
+  render(<ComposedManualRemoveView />);
 
   expect(mockedRouterRefresh).not.toHaveBeenCalled();
 
@@ -92,11 +92,9 @@ it("refreshes the client-side router cache after resolving a profile", async () 
 
 it("keeps the manual resolution button if resolving a profile failed", async () => {
   const user = userEvent.setup();
-  const resolveScanResult = jest
-    .fn()
-    .mockRejectedValueOnce(new Error("Failed to resolve scan result"));
+  global.fetch = jest.fn().mockResolvedValueOnce({ ok: false });
   const ComposedManualRemoveView = composeStory(ManualRemoveViewStory, Meta);
-  render(<ComposedManualRemoveView resolveScanResult={resolveScanResult} />);
+  render(<ComposedManualRemoveView />);
 
   const resolveButtonsBeforeResolving = screen.getAllByRole("button", {
     name: "Mark as fixed",
@@ -124,6 +122,7 @@ it("shows the progress indicator on the manual resolution flow", () => {
 
 it("expands one card at a time", async () => {
   const user = userEvent.setup();
+  global.fetch = jest.fn().mockResolvedValueOnce({ ok: true });
   const ComposedManualRemoveView = composeStory(ManualRemoveViewStory, Meta);
   render(<ComposedManualRemoveView />);
   const expandButtons = screen.getAllByRole("button", {
@@ -145,6 +144,7 @@ it("expands one card at a time", async () => {
 
 it("closes previously active card onclick", async () => {
   const user = userEvent.setup();
+  global.fetch = jest.fn().mockResolvedValueOnce({ ok: true });
   const ComposedManualRemoveView = composeStory(ManualRemoveViewStory, Meta);
   render(<ComposedManualRemoveView />);
 

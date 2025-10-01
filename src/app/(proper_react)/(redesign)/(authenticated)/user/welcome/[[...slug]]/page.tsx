@@ -20,7 +20,6 @@ import {
   getL10n,
 } from "../../../../../../functions/l10n/serverComponents";
 import { getEnabledFeatureFlags } from "../../../../../../../db/tables/featureFlags";
-import { isEligibleForFreeScan } from "../../../../../../functions/server/moscary";
 
 const FreeScanSlug = "free-scan";
 
@@ -66,11 +65,10 @@ export default async function Onboarding(props: Props) {
     locale: getLocale(getL10n(await getAcceptLangHeaderInServerComponents())),
   });
 
-  const userIsEligible =
-    enabledFeatureFlags.includes("Moscary") ||
-    experimentData["Features"]["moscary"].enabled
-      ? await isEligibleForFreeScan(session.user, countryCode)
-      : await isEligibleForFreeOnerepScan(session.user, countryCode);
+  const userIsEligible = await isEligibleForFreeOnerepScan(
+    session.user,
+    countryCode,
+  );
 
   if (!userIsEligible) {
     console.error(
