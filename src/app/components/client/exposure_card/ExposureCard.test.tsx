@@ -21,7 +21,7 @@ import Meta, {
   DataBrokerActionNeededNoExposureResults,
 } from "./ExposureCard.stories";
 import { isDataBrokerUnderMaintenance } from "../../../(proper_react)/(redesign)/(authenticated)/user/(dashboard)/dashboard/View";
-import { createRandomOnerepScanResult } from "../../../../apiMocks/mockData";
+import { createRandomScanResult } from "../../../../apiMocks/mockData";
 
 jest.mock("../../../hooks/useTelemetry");
 
@@ -235,7 +235,7 @@ describe("ScanResultCard", () => {
           "AdditionalRemovalStatuses",
           "DataBrokerRemovalAttempts",
         ]}
-        exposureData={createRandomOnerepScanResult({
+        exposureData={createRandomScanResult({
           // `createRandomScanResult` explicitly sets the last opt-out date
           // for scan results that are waiting for verification:
           status: "waiting_for_verification",
@@ -376,7 +376,7 @@ describe("DataBreachCard", () => {
 
 it("returns false for brokers not under maintenance", () => {
   const result = isDataBrokerUnderMaintenance(
-    createRandomOnerepScanResult({
+    createRandomScanResult({
       broker_status: "active",
       status: "optout_in_progress",
     }),
@@ -387,7 +387,7 @@ it("returns false for brokers not under maintenance", () => {
 
 it("returns false for brokers under maintenance that are removed", () => {
   const result = isDataBrokerUnderMaintenance(
-    createRandomOnerepScanResult({
+    createRandomScanResult({
       broker_status: "removal_under_maintenance",
       status: "removed",
     }),

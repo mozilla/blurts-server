@@ -3,9 +3,13 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { faker, fakerEN_US } from "@faker-js/faker";
-import { EmailAddressRow, SubscriberRow } from "knex/types/tables";
+import {
+  EmailAddressRow,
+  OnerepProfileRow,
+  SubscriberRow,
+} from "knex/types/tables";
+import { OnerepProfileAddress } from "knex/types/tables";
 import { OnerepUsPhoneNumber } from "../../../../../../../functions/server/onerep";
-import { MoscaryData } from "../../../../../../../functions/server/moscary";
 
 const subscriberId = 7;
 
@@ -89,7 +93,6 @@ export const mockedSubscriber: SubscriberRow = {
   monthly_email_at: "2022-08-07 14:22:00.000-05",
   monthly_email_optout: false,
   signup_language: "fr-CH, fr;q=0.9, en;q=0.8, de;q=0.7,*;q=0.5",
-  moscary_id: null,
   onerep_profile_id: null,
   monthly_monitor_report_at: null,
   monthly_monitor_report: false,
@@ -106,71 +109,40 @@ export const mockedSubscriberWithPlus = {
   },
 };
 
-export const mockedProfileDataMin: MoscaryData["Profile"] = {
-  id: "00000000-0000-0000-0000-000000000000",
+export const mockedProfileDataMin: OnerepProfileRow = {
+  id: 1234,
+  onerep_profile_id: 5678,
+  name_suffix: "",
   first_name: "First01",
   last_name: "Last01",
-  middle_name: undefined,
+  middle_name: null,
   first_names: [],
   middle_names: [],
   last_names: [],
-  addresses: [
-    {
-      city: "Tulsa",
-      state: "OK",
-      created_at: new Date().toISOString(),
-      updated_at: new Date().toISOString(),
-      profile_id: "00000000-0000-0000-0000-000000000000",
-      id: "44444444-4444-4444-4444-444444444444",
-    },
-  ],
+  city_name: "Tulsa",
+  state_code: "OK",
+  addresses: [{ city: "Tulsa", state: "OK" }],
   phone_numbers: [],
-  birth_date: new Date().toISOString(),
-  created_at: new Date().toISOString(),
-  updated_at: new Date().toISOString(),
-  emails: [],
-  status: "active",
+  date_of_birth: new Date(),
+  created_at: new Date(),
+  updated_at: new Date(),
 };
 
-export const mockedProfileDataMax: MoscaryData["Profile"] = {
+export const mockedProfileDataMax: OnerepProfileRow = {
   ...mockedProfileDataMin,
   middle_name: faker.person.middleName(),
-  first_names: Array.from({ length: 4 }, () => ({
-    first_name: faker.person.firstName(),
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
-    profile_id: "00000000-0000-0000-0000-000000000000",
-    id: faker.string.uuid(),
-  })),
-  middle_names: Array.from({ length: 4 }, () => ({
-    middle_name: faker.person.middleName(),
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
-    profile_id: "00000000-0000-0000-0000-000000000000",
-    id: faker.string.uuid(),
-  })),
-  last_names: Array.from({ length: 4 }, () => ({
-    last_name: faker.person.lastName(),
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
-    profile_id: "00000000-0000-0000-0000-000000000000",
-    id: faker.string.uuid(),
-  })),
-  phone_numbers: Array.from({ length: 10 }, () => ({
-    number: faker.phone
-      .number({ style: "international" })
-      .replace("+1", "") as OnerepUsPhoneNumber,
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
-    profile_id: "00000000-0000-0000-0000-000000000000",
-    id: faker.string.uuid(),
-  })),
+  first_names: Array.from({ length: 4 }, () => faker.person.firstName()),
+  middle_names: Array.from({ length: 4 }, () => faker.person.middleName()),
+  last_names: Array.from({ length: 4 }, () => faker.person.lastName()),
+  phone_numbers: Array.from(
+    { length: 10 },
+    () =>
+      faker.phone
+        .number({ style: "international" })
+        .replace("+1", "") as OnerepUsPhoneNumber,
+  ),
   addresses: Array.from({ length: 10 }, () => ({
     city: fakerEN_US.location.city(),
     state: fakerEN_US.location.state({ abbreviated: true }),
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
-    profile_id: "00000000-0000-0000-0000-000000000000",
-    id: faker.string.uuid(),
-  })),
+  })) as OnerepProfileAddress[],
 };

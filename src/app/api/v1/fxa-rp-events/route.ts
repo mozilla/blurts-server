@@ -27,18 +27,6 @@ import { deleteAccount } from "../../../functions/server/deleteAccount";
 import { record } from "../../../functions/server/glean";
 import { sendPingToGA } from "../../../functions/server/googleAnalytics";
 import { getEnabledFeatureFlags } from "../../../../db/tables/featureFlags";
-import {
-  activateProfile,
-  deactivateProfile,
-} from "../../../functions/server/moscary";
-import { getExperimentationIdFromSubscriber } from "../../../functions/server/getExperimentationId";
-import { getExperiments } from "../../../functions/server/getExperiments";
-import { getLocale } from "../../../functions/universal/getLocale";
-import {
-  getAcceptLangHeaderInServerComponents,
-  getL10n,
-} from "../../../functions/l10n/serverComponents";
-import { getSignupLocaleCountry } from "../../../../emails/functions/getSignupLocaleCountry";
 
 const FXA_PROFILE_CHANGE_EVENT =
   "https://schemas.accounts.firefox.com/event/profile-change";
@@ -293,16 +281,6 @@ export async function POST(request: NextRequest) {
           const enabledFeatureFlags = await getEnabledFeatureFlags({
             email: subscriber.primary_email,
           });
-          const experimentationId =
-            await getExperimentationIdFromSubscriber(subscriber);
-          const assumedCountryCode = getSignupLocaleCountry(subscriber);
-          const experimentData = await getExperiments({
-            experimentationId,
-            countryCode: assumedCountryCode,
-            locale: getLocale(
-              getL10n(await getAcceptLangHeaderInServerComponents()),
-            ),
-          });
 
           if (
             updatedSubscriptionFromEvent.isActive &&
@@ -318,109 +296,66 @@ export async function POST(request: NextRequest) {
             // Set monthly monitor report value back to true
             await setMonthlyMonitorReport(subscriber, true);
 
-            if (
-              enabledFeatureFlags.includes("Moscary") ||
-              experimentData["Features"]["moscary"].enabled
-            ) {
-              if (!subscriber.moscary_id) {
-                logger.error("moscary_profile_not_found", {
-                  subscriber_id: subscriber.id,
-                });
+            const oneRepProfileId = await getOnerepProfileId(subscriber.id);
 
-                captureMessage(
-                  `User subscribed but no Moscary profile Id found, user: ${
-                    subscriber.id
-                  }\n
+            logger.info("get_onerep_profile", {
+              subscriber_id: subscriber.id,
+              oneRepProfileId,
+            });
+
+            // MNTOR-2103: if one rep profile id doesn't exist in the db, fail immediately
+            if (!oneRepProfileId) {
+              logger.error("onerep_profile_not_found", {
+                subscriber_id: subscriber.id,
+              });
+
+              captureMessage(
+                `User subscribed but no OneRep profile Id found, user: ${
+                  subscriber.id
+                }\n
               Event: ${event}\n
               updateFromEvent: ${JSON.stringify(updatedSubscriptionFromEvent)}`,
-                );
+              );
 
-                return NextResponse.json(
-                  {
-                    success: true,
-                    message:
-                      "failed_activating_subscription_profile_id_missing",
-                  },
-                  { status: 200 },
-                );
-              }
+              return NextResponse.json(
+                {
+                  success: true,
+                  message: "failed_activating_subscription_profile_id_missing",
+                },
+                { status: 200 },
+              );
+            }
 
-              // activate profile
-              try {
-                await activateProfile(subscriber.moscary_id);
-              } catch (ex) {
-                logger.error("profile_activation_error", {
+            // activate and opt out profiles
+            try {
+              await activateOnerepProfile(oneRepProfileId);
+            } catch (ex) {
+              if (
+                (ex as Error).message ===
+                "Failed to activate OneRep profile: [403] [Forbidden]"
+              )
+                logger.error("profile_already_activated", {
                   subscriber_id: subscriber.id,
                   exception: ex,
                 });
-              }
-
-              logger.info("activated_moscary_profile", {
-                subscriber_id: subscriber.id,
-              });
-            } else {
-              const oneRepProfileId = await getOnerepProfileId(subscriber.id);
-
-              logger.info("get_onerep_profile", {
-                subscriber_id: subscriber.id,
-                oneRepProfileId,
-              });
-
-              // MNTOR-2103: if one rep profile id doesn't exist in the db, fail immediately
-              if (!oneRepProfileId) {
-                logger.error("onerep_profile_not_found", {
-                  subscriber_id: subscriber.id,
-                });
-
-                captureMessage(
-                  `User subscribed but no OneRep profile Id found, user: ${
-                    subscriber.id
-                  }\n
-              Event: ${event}\n
-              updateFromEvent: ${JSON.stringify(updatedSubscriptionFromEvent)}`,
-                );
-
-                return NextResponse.json(
-                  {
-                    success: true,
-                    message:
-                      "failed_activating_subscription_profile_id_missing",
-                  },
-                  { status: 200 },
-                );
-              }
-
-              // activate and opt out profiles
-              try {
-                await activateOnerepProfile(oneRepProfileId);
-              } catch (ex) {
-                if (
-                  (ex as Error).message ===
-                  "Failed to activate OneRep profile: [403] [Forbidden]"
-                )
-                  logger.error("profile_already_activated", {
-                    subscriber_id: subscriber.id,
-                    exception: ex,
-                  });
-              }
-
-              try {
-                await optoutOnerepProfile(oneRepProfileId);
-              } catch (ex) {
-                if (
-                  (ex as Error).message ===
-                  "Failed to opt-out OneRep profile: [403] [Forbidden]"
-                )
-                  logger.error("profile_already_opted_out", {
-                    subscriber_id: subscriber.id,
-                    exception: ex,
-                  });
-              }
-
-              logger.info("activated_onerep_profile", {
-                subscriber_id: subscriber.id,
-              });
             }
+
+            try {
+              await optoutOnerepProfile(oneRepProfileId);
+            } catch (ex) {
+              if (
+                (ex as Error).message ===
+                "Failed to opt-out OneRep profile: [403] [Forbidden]"
+              )
+                logger.error("profile_already_opted_out", {
+                  subscriber_id: subscriber.id,
+                  exception: ex,
+                });
+            }
+
+            logger.info("activated_onerep_profile", {
+              subscriber_id: subscriber.id,
+            });
 
             record("subscription", "activate", {
               string: {
@@ -442,86 +377,46 @@ export async function POST(request: NextRequest) {
             // any problems with deactivation.
             await changeSubscription(subscriber, false);
 
-            if (
-              enabledFeatureFlags.includes("Moscary") ||
-              experimentData["Features"]["moscary"].enabled
-            ) {
-              if (!subscriber.moscary_id) {
-                logger.error("moscary_profile_not_found", {
-                  subscriber_id: subscriber.id,
-                });
+            // MNTOR-2103: if one rep profile id doesn't exist in the db, fail immediately
+            const oneRepProfileId = await getOnerepProfileId(subscriber.id);
+            if (!oneRepProfileId) {
+              logger.error("onerep_profile_not_found", {
+                subscriber_id: subscriber.id,
+              });
 
-                captureMessage(
-                  `No Moscary profile Id found, subscriber: ${subscriber.id}\n
+              captureMessage(
+                `No OneRep profile Id found, subscriber: ${subscriber.id}\n
                           Event: ${event}\n
                           updateFromEvent: ${JSON.stringify(
                             updatedSubscriptionFromEvent,
                           )}`,
-                );
-                return NextResponse.json(
-                  {
-                    success: true,
-                    message: "failed_deactivating_subscription",
-                  },
-                  { status: 200 },
-                );
-              }
+              );
+              return NextResponse.json(
+                {
+                  success: true,
+                  message: "failed_deactivating_subscription",
+                },
+                { status: 200 },
+              );
+            }
 
-              // deactivation stops opt out process
-              try {
-                await deactivateProfile(subscriber.moscary_id);
-              } catch (ex) {
-                logger.error("profile_deactivation_error", {
+            // deactivation stops opt out process
+            try {
+              await deactivateOnerepProfile(oneRepProfileId);
+            } catch (ex) {
+              if (
+                (ex as Error).message ===
+                "Failed to deactivate OneRep profile: [403] [Forbidden]"
+              )
+                logger.error("profile_already_opted_out", {
                   subscriber_id: subscriber.id,
                   exception: ex,
                 });
-              }
-
-              logger.info("deactivated_moscary_profile", {
-                subscriber_id: subscriber.id,
-              });
-            } else {
-              // MNTOR-2103: if one rep profile id doesn't exist in the db, fail immediately
-              const oneRepProfileId = await getOnerepProfileId(subscriber.id);
-              if (!oneRepProfileId) {
-                logger.error("onerep_profile_not_found", {
-                  subscriber_id: subscriber.id,
-                });
-
-                captureMessage(
-                  `No OneRep profile Id found, subscriber: ${subscriber.id}\n
-                          Event: ${event}\n
-                          updateFromEvent: ${JSON.stringify(
-                            updatedSubscriptionFromEvent,
-                          )}`,
-                );
-                return NextResponse.json(
-                  {
-                    success: true,
-                    message: "failed_deactivating_subscription",
-                  },
-                  { status: 200 },
-                );
-              }
-
-              // deactivation stops opt out process
-              try {
-                await deactivateOnerepProfile(oneRepProfileId);
-              } catch (ex) {
-                if (
-                  (ex as Error).message ===
-                  "Failed to deactivate OneRep profile: [403] [Forbidden]"
-                )
-                  logger.error("profile_already_opted_out", {
-                    subscriber_id: subscriber.id,
-                    exception: ex,
-                  });
-              }
-
-              logger.info("deactivated_onerep_profile", {
-                subscriber_id: subscriber.id,
-              });
             }
+
+            logger.info("deactivated_onerep_profile", {
+              subscriber_id: subscriber.id,
+            });
 
             record("subscription", "cancel", {
               string: {

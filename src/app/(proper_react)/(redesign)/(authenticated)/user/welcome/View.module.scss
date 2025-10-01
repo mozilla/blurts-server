@@ -45,15 +45,6 @@
     @media screen and (min-width: tokens.$screen-md) {
       padding-inline: tokens.$spacing-xl;
     }
-
-    &.moscaryIndicator {
-      background-image: radial-gradient(
-        circle at top left,
-        tokens.$color-grey-20,
-        tokens.$color-grey-05 20px
-      );
-      background-position: top left;
-    }
   }
 
   .stepsWrapper {

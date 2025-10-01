@@ -47,10 +47,6 @@ const PublicMobileShell = (
         })}
         session={null}
         subscriptionBillingAmount={getSubscriptionBillingAmount()}
-        yearlySubscriptionUrl={getPremiumSubscriptionUrl({
-          type: "yearly",
-          enabledFeatureFlags: props.enabledFeatureFlags,
-        })}
       >
         {props.children}
       </MobileShell>
