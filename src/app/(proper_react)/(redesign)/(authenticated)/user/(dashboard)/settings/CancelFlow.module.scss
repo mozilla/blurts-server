@@ -57,17 +57,6 @@
     }
   }
 
-  .errorApplyingCoupon {
-    padding-top: tokens.$spacing-sm;
-    color: tokens.$color-red-60;
-    font-weight: 500;
-
-    button {
-      color: tokens.$color-red-60;
-      font-weight: 500;
-    }
-  }
-
   small {
     color: tokens.$color-grey-30;
     font-weight: 400;

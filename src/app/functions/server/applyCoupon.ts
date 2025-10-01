@@ -11,24 +11,6 @@ import {
 } from "../../../db/tables/subscriber_coupons";
 import { applyCoupon } from "../../../utils/fxa";
 
-export async function applyCurrentCouponCode(subscriber: SubscriberRow) {
-  logger.info("fxa_apply_current_coupon_code", {
-    subscriber: subscriber.id,
-  });
-
-  const currentCouponCode = process.env.CURRENT_COUPON_CODE_ID;
-  if (!currentCouponCode) {
-    logger.error(
-      "fxa_apply_current_coupon_code_failed",
-      "Coupon code ID is not set. Please set the env var: CURRENT_COUPON_CODE_ID",
-    );
-    return {
-      success: false,
-      message: "Current coupon code not set",
-    };
-  }
-  return await applyCouponWithCode(subscriber, currentCouponCode);
-}
 export async function applyChurnCouponCode(subscriber: SubscriberRow) {
   logger.info("fxa_apply_churn_coupon_code", {
     subscriber: subscriber.id,
