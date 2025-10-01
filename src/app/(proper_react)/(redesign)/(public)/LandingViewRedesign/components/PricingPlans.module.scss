@@ -5,14 +5,15 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  max-width: tokens.$content-lg;
+  max-width: tokens.$content-xl;
 }
 
 .header {
-  gap: tokens.$layout-xs;
+  gap: tokens.$spacing-sm;
+  padding: 0 tokens.$layout-sm;
   text-align: center;
 }
 
 .content {
-  gap: tokens.$layout-lg;
+  gap: tokens.$layout-md;
 }

@@ -5,7 +5,7 @@
 "use client";
 
 import React, { createContext, useContext } from "react";
-import { SubscriptionBillingAmount } from "../app/(proper_react)/(redesign)/(public)/LandingViewRedesign/components/PricingPlanListWithBundle";
+import { SubscriptionBillingAmount } from "../app/(proper_react)/(redesign)/(public)/LandingViewRedesign/components/PricingPlanList";
 
 const SubscriptionBillingContext =
   createContext<SubscriptionBillingAmount | null>(null);

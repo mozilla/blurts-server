@@ -18,9 +18,7 @@ import { UserAnnouncementWithDetails } from "../../../../db/tables/user_announce
 export type Props = {
   user: Session["user"];
   monthlySubscriptionUrl: string;
-  yearlySubscriptionUrl: string;
   subscriptionBillingAmount: {
-    yearly: number;
     monthly: number;
   };
   fxaSettingsUrl: string;

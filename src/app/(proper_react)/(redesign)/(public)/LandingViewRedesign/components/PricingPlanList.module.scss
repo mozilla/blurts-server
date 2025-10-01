@@ -6,60 +6,106 @@
   gap: tokens.$spacing-lg;
 
   @media screen and (min-width: tokens.$screen-md) {
+    flex-wrap: wrap;
     flex-direction: row-reverse;
+    justify-content: center;
+  }
+
+  @media screen and (min-width: tokens.$screen-lg) {
+    flex-wrap: nowrap;
   }
 }
 
 .pricingCard {
-  box-shadow: inset 0 0 0 6px tokens.$color-grey-10;
-  border-radius: tokens.$border-radius-xl;
+  box-shadow: inset 0 0 0 2px tokens.$color-grey-10;
+  border-radius: calc(tokens.$border-radius-lg + tokens.$border-radius-md);
   display: inline-flex;
   flex: 1;
   flex-direction: column;
+  font: tokens.$text-body-sm;
   max-width: tokens.$content-sm;
   padding: tokens.$layout-sm tokens.$spacing-lg;
   position: relative;
 
   &:first-of-type {
-    box-shadow: inset 0 0 0 6px tokens.$color-purple-70;
+    background: linear-gradient(
+      75deg,
+      tokens.$color-violet-50 0%,
+      tokens.$color-purple-50 37.1%,
+      tokens.$color-blue-40 61.4%,
+      #0090ed 100%
+    );
+    box-shadow: none;
+
+    @media screen and (min-width: tokens.$screen-md) {
+      min-width: 100%;
+    }
+
+    @media screen and (min-width: tokens.$screen-lg) {
+      min-width: auto;
+    }
+
+    &::before {
+      background: tokens.$color-white;
+      border-radius: calc(
+        tokens.$border-radius-lg + tokens.$border-radius-md - 2px
+      );
+      content: "";
+      display: block;
+      height: calc(100% - 4px);
+      left: 2px;
+      position: absolute;
+      top: 2px;
+      width: calc(100% - 4px);
+    }
   }
 
   &Label {
-    background-color: tokens.$color-white;
-    border-radius: tokens.$border-radius-md;
-    box-shadow: 0 0 0 4px tokens.$color-purple-70;
     color: tokens.$color-purple-70;
     font-weight: 700;
     left: 50%;
-    // Add a bit more space: The next spacing step is too much.
-    padding: calc(tokens.$spacing-sm * 1.1) calc(tokens.$spacing-sm * 1.5)
-      tokens.$spacing-sm;
-    line-height: 1em;
     position: absolute;
-    top: calc(tokens.$spacing-xs * 0.5);
-    transform: translate(-50%, -50%);
+    top: tokens.$spacing-lg;
+    transform: translate(-50%);
+    white-space: nowrap;
+  }
+
+  dt,
+  dd {
+    // Ensure that the card content is not covered by the pseudo element
+    // `.pricingCard::before` that’s used for creating the border gradient of
+    // the bundle pricing card.
+    z-index: 1;
   }
 
   dt {
     border-bottom: 1px solid tokens.$color-grey-10;
-    padding: tokens.$spacing-md tokens.$spacing-xs tokens.$spacing-lg;
+    padding: tokens.$spacing-md 0;
     text-align: center;
 
     b {
-      font: tokens.$text-title-xs;
-      font-family: var(--font-inter);
+      font: tokens.$text-title-2xs;
       font-weight: 700;
       padding: tokens.$spacing-xs 0;
+    }
+
+    hr {
+      border-style: none;
+      border-top: 1px solid tokens.$color-grey-10;
+      margin: tokens.$spacing-md 0;
+      width: 100%;
     }
   }
 
   dd {
-    border-bottom: 1px solid tokens.$color-grey-10;
-    align-items: center;
+    align-items: flex-start;
     display: flex;
-    gap: tokens.$spacing-md;
-    // Add a bit more space: The next spacing step is too much.
-    padding: calc(tokens.$spacing-sm * 1.5) tokens.$spacing-sm;
+    gap: tokens.$spacing-sm;
+    padding: tokens.$spacing-sm 0;
+
+    &:first-of-type {
+      padding: tokens.$spacing-md 0 tokens.$spacing-sm;
+    }
 
     &.pricingCardCta {
       align-items: normal;
@@ -79,13 +125,14 @@
       }
 
       strong {
-        color: tokens.$color-purple-70;
         display: flex;
-        flex-direction: column-reverse;
-        font: tokens.$text-title-sm;
-        font-weight: 500;
+        font: tokens.$text-title-2xs;
         gap: tokens.$spacing-sm;
         text-align: center;
+      }
+
+      s {
+        text-decoration-thickness: 0.1em;
       }
 
       button,
@@ -95,15 +142,63 @@
     }
 
     svg {
-      color: tokens.$color-purple-70;
-      flex: 1 0 18px;
-      max-width: 18px;
+      stroke: tokens.$color-purple-70;
+      flex: 1 0 24px;
+      max-width: 24px;
       height: auto;
     }
   }
 
-  .pricingCardSavings {
+  &.bundle dd {
+    &:first-of-type {
+      padding: tokens.$spacing-md 0 tokens.$spacing-sm;
+    }
+
+    padding: calc(tokens.$spacing-xs * 1.5) 0;
+  }
+
+  .plusNote {
+    border-bottom: 1px solid tokens.$color-grey-10;
+    align-items: center;
+    display: flex;
+    gap: tokens.$spacing-sm;
+    padding-bottom: tokens.$spacing-md;
+    width: 100%;
+  }
+
+  .bundleTitle {
+    align-items: center;
+    display: flex;
+    gap: tokens.$spacing-xs;
+    justify-content: center;
+
+    svg {
+      color: tokens.$color-black;
+      padding: calc(tokens.$spacing-xs * 0.5);
+      stroke: none;
+    }
+  }
+
+  .bundleItemLink {
+    border: 2px solid tokens.$color-grey-10;
+    border-radius: calc(tokens.$border-radius-md + tokens.$border-radius-sm);
     color: tokens.$color-black;
-    font: tokens.$text-body-md;
+    padding: tokens.$spacing-sm;
+    text-align: center;
+    text-decoration: none;
+    width: 100%;
+
+    &:hover {
+      border: 2px solid tokens.$color-blue-50;
+      color: tokens.$color-blue-50;
+
+      svg {
+        color: tokens.$color-blue-50;
+      }
+    }
+  }
+
+  .pricingCardSavings {
+    color: tokens.$color-grey-50;
   }
 }

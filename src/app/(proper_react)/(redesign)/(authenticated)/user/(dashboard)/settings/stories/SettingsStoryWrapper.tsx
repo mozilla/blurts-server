@@ -103,9 +103,7 @@ export const SettingsWrapper = (props: SettingsWrapperProps) => {
             fxaSettingsUrl=""
             fxaSubscriptionsUrl=""
             monthlySubscriptionUrl=""
-            yearlySubscriptionUrl=""
             subscriptionBillingAmount={{
-              yearly: 13.37,
               monthly: 42.42,
             }}
             enabledFeatureFlags={props.enabledFeatureFlags}

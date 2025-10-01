@@ -73,7 +73,6 @@ export const featureFlagNames = [
   "EditScanProfileDetails",
   "SubPlat3",
   "Announcements",
-  "PrivacyProductsBundle",
   "DisableOneRepScans",
   "DisableLandingToDashboardRedirect",
   "MaskDataBrokerCount",
