@@ -14,7 +14,11 @@ import { OpenInNew } from "../../../../../../../components/server/Icons";
 import { SettingsConfirmationDialog } from "../SettingsConfirmationDialog";
 import AddEmailDialogIllustration from "../images/DeleteAccountDialogIllustration.svg";
 import { DeleteAccountButton } from "../DeleteAccountButton";
-import { onDeleteAccount } from "../actions";
+import {
+  type onDeleteAccount,
+  type onApplyCouponCode,
+  type onCheckUserHasCurrentCouponSet,
+} from "../actions";
 
 export type SettingsPanelManageAccountProps = {
   enabledFeatureFlags: FeatureFlagName[];
@@ -24,6 +28,8 @@ export type SettingsPanelManageAccountProps = {
   user: Session["user"];
   actions: {
     onDeleteAccount: typeof onDeleteAccount;
+    onApplyCouponCode: typeof onApplyCouponCode;
+    onCheckUserHasCurrentCouponSet: typeof onCheckUserHasCurrentCouponSet;
   };
 };
 
@@ -43,8 +49,13 @@ function SettingsPanelManageAccount(props: SettingsPanelManageAccountProps) {
             <p>{l10n.getString("settings-cancel-plus-details")}</p>
             {props.enabledFeatureFlags.includes("CancellationFlow") ? (
               <CancelFlow
+                enableDiscountCoupon={props.enabledFeatureFlags.includes(
+                  "DiscountCouponNextThreeMonths",
+                )}
                 fxaSubscriptionsUrl={props.fxaSubscriptionsUrl}
                 experimentData={props.experimentData}
+                isMonthlySubscriber={props.isMonthlySubscriber}
+                actions={props.actions}
               />
             ) : (
               <TelemetryLink

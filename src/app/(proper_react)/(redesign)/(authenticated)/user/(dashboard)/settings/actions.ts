@@ -30,6 +30,10 @@ import {
 import { SanitizedEmailAddressRow } from "../../../../../../functions/server/sanitize";
 import { deleteAccount } from "../../../../../../functions/server/deleteAccount";
 import { cookies } from "next/headers";
+import {
+  applyCurrentCouponCode,
+  checkCurrentCouponCode,
+} from "../../../../../../functions/server/applyCoupon";
 import { validateEmailAddress } from "../../../../../../../utils/emailAddress";
 import { updateOnerepDataBrokerScanProfile } from "../../../../../../functions/server/updateDataBrokerScanProfile";
 import { hasPremium } from "../../../../../../functions/universal/user";
@@ -220,6 +224,49 @@ export async function onDeleteAccount() {
   // possibile, so instead the sign-out and redirect needs to happen on the
   // client side after this action completes.
   // See https://github.com/nextauthjs/next-auth/discussions/5334.
+}
+
+export async function onApplyCouponCode() {
+  const session = await getServerSession();
+  if (!session?.user.subscriber?.id) {
+    logger.error(`Tried to apply a coupon code without an active session.`);
+    return {
+      success: false,
+      error: "apply-coupon-code-without-active-session",
+      errorMessage: `User tried to apply a coupon code without an active session.`,
+    };
+  }
+
+  const subscriber = await getSubscriberByFxaUid(
+    session.user.subscriber.fxa_uid,
+  );
+  if (!subscriber) {
+    logger.error(
+      `Tried to apply a coupon code with a session that could not be linked to a subscriber.`,
+    );
+    return {
+      success: false,
+      error: "apply-coupon-code-with-invalid-session",
+      errorMessage: `User tried to apply a coupon code, but we could not find their account.`,
+    };
+  }
+  const result = await applyCurrentCouponCode(subscriber);
+  return result;
+}
+
+export async function onCheckUserHasCurrentCouponSet() {
+  const session = await getServerSession();
+  if (!session?.user.subscriber?.id) {
+    logger.error(`User does not have an active session.`);
+    return {
+      success: false,
+      error: "apply-coupon-code-without-active-session",
+      errorMessage: `User does not have an active session.`,
+    };
+  }
+
+  const result = await checkCurrentCouponCode(session.user.subscriber);
+  return result;
 }
 
 export async function onHandleUpdateProfileData(

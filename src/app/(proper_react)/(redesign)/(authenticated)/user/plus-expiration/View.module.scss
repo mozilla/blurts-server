@@ -1,0 +1,80 @@
+@use "../../../../../tokens";
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  gap: tokens.$spacing-xl;
+  padding-block-start: tokens.$spacing-xl;
+  padding-block-end: tokens.$spacing-md;
+  text-align: center;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: tokens.$spacing-sm;
+
+    h1 {
+      font: tokens.$text-title-xs;
+
+      b {
+        color: tokens.$color-purple-70;
+      }
+    }
+  }
+
+  .error {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: tokens.$color-red-60;
+    color: tokens.$color-white;
+    text-align: center;
+    padding-block: tokens.$spacing-sm;
+    $dismissIconWidth: 18px;
+    padding-inline: tokens.$spacing-md + $dismissIconWidth;
+    border-radius: tokens.$border-radius-sm;
+    position: relative;
+
+    .retryButton {
+      background-color: transparent;
+      border-style: none;
+      text-decoration: underline;
+      color: tokens.$color-white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .dismissButton {
+      position: absolute;
+      inset-inline-end: tokens.$spacing-sm;
+      width: $dismissIconWidth;
+      height: $dismissIconWidth;
+      background-color: transparent;
+      border-style: none;
+      color: tokens.$color-white;
+      cursor: pointer;
+    }
+  }
+
+  .ctas {
+    display: flex;
+    flex-direction: column;
+    gap: tokens.$spacing-md;
+    justify-content: stretch;
+  }
+
+  p a {
+    color: inherit;
+    text-decoration: underline;
+  }
+
+  .terms a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: tokens.$spacing-xs;
+    color: tokens.$color-grey-40;
+  }
+}

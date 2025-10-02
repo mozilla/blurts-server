@@ -231,8 +231,6 @@ export const RedesignedEmailFooter = (props: Props) => {
   );
 };
 
-// The unstyled footer is currently not used in any email.
-/* c8 ignore start */
 export const getUnstyledRedesignedEmailFooter = (props: Props): string => {
   const l10n = props.l10n;
   const supportLinkUrlObject = new URL(CONST_URL_SUMO_MONITOR_SUPPORT_CENTER);
@@ -275,4 +273,3 @@ ${l10n.getString("email-footer-meta-privacy-notice")}:
 ${CONST_URL_PRIVACY_POLICY}
 `;
 };
-/* c8 ignore stop */

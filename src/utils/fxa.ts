@@ -305,6 +305,98 @@ async function deleteSubscription(bearerToken: string): Promise<boolean> {
 }
 /* c8 ignore stop */
 
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
+async function reactivate(bearerToken: string): Promise<void> {
+  try {
+    const subs = (await getSubscriptions(bearerToken)) ?? [];
+    let subscriptionId;
+    for (const sub of subs) {
+      if (
+        sub &&
+        sub.productId &&
+        sub.productId === process.env.PREMIUM_PRODUCT_ID
+      ) {
+        subscriptionId = sub.subscriptionId;
+      }
+    }
+    if (subscriptionId) {
+      const reactivateSubscriptionUrl = `${envVars.OAUTH_ACCOUNT_URI}/oauth/subscriptions/reactivate`;
+      const response = await fetch(reactivateSubscriptionUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          Authorization: `Bearer ${bearerToken}`,
+        },
+        body: JSON.stringify({
+          subscriptionId,
+        }),
+      });
+      const responseJson = await response.json();
+      if (!response.ok) throw new Error(responseJson);
+      logger.info("reactivate_fxa_subscription_success");
+    }
+  } catch (e) {
+    if (e instanceof Error) {
+      logger.error("reactivate_fxa_subscription", {
+        stack: e.stack,
+        message: e.message,
+      });
+    }
+    throw e;
+  }
+}
+/* c8 ignore stop */
+
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
+async function applyCoupon(
+  bearerToken: string,
+  couponCodeId: string,
+): Promise<void> {
+  try {
+    const subs = (await getSubscriptions(bearerToken)) ?? [];
+    let subscriptionId;
+    for (const sub of subs) {
+      if (
+        sub &&
+        sub.productId &&
+        sub.productId === process.env.PREMIUM_PRODUCT_ID
+      ) {
+        subscriptionId = sub.subscriptionId;
+      }
+    }
+    if (subscriptionId) {
+      const applyCouponUrl = `${envVars.OAUTH_ACCOUNT_URI}/oauth/subscriptions/coupon/apply`;
+      const response = await fetch(applyCouponUrl, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          Authorization: `Bearer ${bearerToken}`,
+        },
+        body: JSON.stringify({
+          promotionId: couponCodeId,
+          subscriptionId,
+        }),
+      });
+      const responseJson = await response.json();
+      if (!response.ok) throw new Error(responseJson);
+      logger.info("apply_fxa_coupon_success");
+    }
+  } catch (e) {
+    if (e instanceof Error) {
+      logger.error(
+        "apply_fxa_coupon",
+        JSON.stringify({ stack: e.stack, message: e.message }),
+      );
+    }
+    throw e;
+  }
+}
+/* c8 ignore stop */
+
 /**
  * @see https://mozilla.github.io/ecosystem-platform/api#tag/Devices-and-Sessions/operation/getAccountAttached_clients
  */
@@ -374,5 +466,7 @@ export {
   getSubscriptions,
   getBillingAndSubscriptions,
   deleteSubscription,
+  reactivate,
+  applyCoupon,
   getAttachedClients,
 };

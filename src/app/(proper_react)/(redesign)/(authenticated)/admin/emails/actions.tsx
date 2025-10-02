@@ -40,6 +40,11 @@ import { isEligibleForPremium } from "../../../../../functions/universal/premium
 import { MonthlyActivityFreeEmail } from "../../../../../../emails/templates/monthlyActivityFree/MonthlyActivityFreeEmail";
 import { getMonthlyActivityFreeUnsubscribeLink } from "../../../../../../app/functions/cronjobs/unsubscribeLinks";
 import { getScanResultsWithBroker } from "../../../../../../db/tables/onerep_scans";
+import {
+  getUnstyledUpcomingExpirationEmail,
+  UpcomingExpirationEmail,
+} from "../../../../../../emails/templates/upcomingExpiration/UpcomingExpirationEmail";
+import { CONST_DAY_MILLISECONDS } from "../../../../../../constants";
 import { getEnabledFeatureFlags } from "../../../../../../db/tables/featureFlags";
 import { getExperimentationIdFromUserSession } from "../../../../../functions/server/getExperimentationId";
 import { getExperiments } from "../../../../../functions/server/getExperiments";
@@ -295,5 +300,30 @@ export async function triggerFirstDataBrokerRemovalFixed(emailAddress: string) {
       }}
       l10n={l10n}
     />,
+  );
+}
+
+export async function triggerPlusExpirationEmail(emailAddress: string) {
+  const subscriber = await getAdminSubscriber();
+  if (!subscriber) {
+    return false;
+  }
+
+  const acceptLangHeader = await getAcceptLangHeaderInServerComponents();
+  const l10n = getL10n(acceptLangHeader);
+  await send(
+    emailAddress,
+    l10n.getString("email-plus-expiration-subject"),
+    <UpcomingExpirationEmail
+      subscriber={sanitizeSubscriberRow(subscriber)}
+      // Always pretend that the user's account expires in 7 days for the test email:
+      expirationDate={new Date(Date.now() + 7 * CONST_DAY_MILLISECONDS)}
+      l10n={l10n}
+    />,
+    getUnstyledUpcomingExpirationEmail({
+      subscriber: sanitizeSubscriberRow(subscriber),
+      expirationDate: new Date(Date.now() + 7 * CONST_DAY_MILLISECONDS),
+      l10n: l10n,
+    }),
   );
 }
