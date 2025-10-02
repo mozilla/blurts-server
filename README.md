@@ -225,7 +225,7 @@ To test the HIBP breach alerts endpoint, use:
 ```sh
 export SERVER_URL=...
 export HIBP_NOTIFY_TOKEN=...
-npm run loadtest:hbibp-webhook
+npm run loadtest:hibp-webhook
 ```
 
 You can customise the number of requests to send in parallel ("virtual users") by setting the
