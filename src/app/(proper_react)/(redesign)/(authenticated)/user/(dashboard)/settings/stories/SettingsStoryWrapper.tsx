@@ -44,10 +44,6 @@ export const mockedActions = {
   onAddEmail: fn().mockName("onAddEmail"),
   onRemoveEmail: fn().mockName("onRemoveEmail"),
   onDeleteAccount: fn().mockName("onDeleteAccount"),
-  onApplyCouponCode: fn().mockName("onApplyCouponCode"),
-  onCheckUserHasCurrentCouponSet: fn().mockName(
-    "onCheckUserHasCurrentCouponSet",
-  ),
   onHandleUpdateProfileData: fn().mockName("onHandleUpdateProfileData"),
 };
 

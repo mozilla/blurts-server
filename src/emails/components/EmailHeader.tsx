@@ -49,6 +49,8 @@ export const EmailHeader = (props: Props) => {
   );
 };
 
+// The unstyled header is currently not used in any email.
+/* c8 ignore start */
 export const getUnstyledEmailHeader = (props: Props) => {
   const l10n = props.l10n;
 
@@ -57,3 +59,4 @@ ${l10n.getString("public-nav-name")}
 ${"-".repeat(30)}
   `;
 };
+/* c8 ignore stop */
