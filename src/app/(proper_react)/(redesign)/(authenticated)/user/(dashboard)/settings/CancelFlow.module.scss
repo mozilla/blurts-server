@@ -19,19 +19,6 @@
       font-weight: 600;
     }
 
-    &.discountCta {
-      background-color: tokens.$color-purple-60;
-      width: 100%;
-
-      @media screen and (min-width: tokens.$screen-sm) {
-        width: tokens.$content-sm;
-      }
-
-      &:hover {
-        background-color: tokens.$color-purple-70;
-      }
-    }
-
     &.tertiaryCta {
       margin-top: tokens.$spacing-lg;
       font-weight: 500;
