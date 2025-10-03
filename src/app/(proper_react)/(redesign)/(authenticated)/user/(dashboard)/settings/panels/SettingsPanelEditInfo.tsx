@@ -5,7 +5,7 @@
 import { useState } from "react";
 import { captureException } from "@sentry/nextjs";
 import { OnerepProfileRow, SubscriberRow } from "knex/types/tables";
-import { CONST_MAX_NUM_ADDRESSES } from "../../../../../../../../constants";
+import { CONST_MAX_NUM_ADDRESSES, CONST_MAX_NUM_ADDRESSES_PLUS } from "../../../../../../../../constants";
 import { SubscriberEmailPreferencesOutput } from "../../../../../../../../db/tables/subscriber_email_preferences";
 import { useL10n } from "../../../../../../../hooks/l10n";
 import { EmailAddressAdder } from "../EmailAddressAdder";
@@ -20,6 +20,7 @@ import { useTelemetry } from "../../../../../../../hooks/useTelemetry";
 import { Button } from "../../../../../../../components/client/Button";
 import styles from "./SettingsPanelEditInfo.module.scss";
 import { type onRemoveEmail, type onAddEmail } from "../actions";
+import { FeatureFlagName } from "../../../../../../../../db/tables/featureFlags";
 
 export type SettingsPanelEditInfoProps = {
   breachCountByEmailAddress: Record<string, number>;
@@ -32,6 +33,7 @@ export type SettingsPanelEditInfoProps = {
     onAddEmail: typeof onAddEmail;
     onRemoveEmail: typeof onRemoveEmail;
   };
+  enabledFeatureFlags: FeatureFlagName[];
 };
 
 function MonitoredEmail(props: {
@@ -115,8 +117,9 @@ function MonitoredEmail(props: {
 
 function SettingsPanelEditInfo(props: SettingsPanelEditInfoProps) {
   const l10n = useL10n();
+  const maxEmailAddressesNum = props.enabledFeatureFlags.includes("FreeBreachEmailAddresses") ? CONST_MAX_NUM_ADDRESSES_PLUS : CONST_MAX_NUM_ADDRESSES
   const hasMaxEmailAddresses =
-    props.emailAddresses.length < CONST_MAX_NUM_ADDRESSES - 1;
+    props.emailAddresses.length < maxEmailAddressesNum - 1;
 
   return (
     <>
@@ -124,7 +127,7 @@ function SettingsPanelEditInfo(props: SettingsPanelEditInfoProps) {
         <h3>{l10n.getString("settings-email-list-title")}</h3>
         <p>
           {l10n.getString("settings-email-limit-info", {
-            limit: CONST_MAX_NUM_ADDRESSES,
+            limit: maxEmailAddressesNum,
           })}
         </p>
       </div>
@@ -156,7 +159,10 @@ function SettingsPanelEditInfo(props: SettingsPanelEditInfoProps) {
       </ul>
       <span className={styles.addEmailButton}>
         {hasMaxEmailAddresses && (
-          <EmailAddressAdder onAddEmail={props.actions.onAddEmail} />
+          <EmailAddressAdder
+            onAddEmail={props.actions.onAddEmail}
+            enabledFeatureFlags={props.enabledFeatureFlags}
+          />
         )}
       </span>
     </>

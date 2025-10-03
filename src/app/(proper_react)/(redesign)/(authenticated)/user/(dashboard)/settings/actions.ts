@@ -90,9 +90,9 @@ export async function onAddEmail(
     };
   }
 
-  const maxNumEmailAddresses = hasPremium(subscriber)
+  const maxNumEmailAddresses = enabledFeatureFlags.includes("FreeBreachEmailAddresses")
     ? CONST_MAX_NUM_ADDRESSES_PLUS
-    : CONST_MAX_NUM_ADDRESSES;
+    : hasPremium(subscriber) ? CONST_MAX_NUM_ADDRESSES_PLUS : CONST_MAX_NUM_ADDRESSES;
   const existingAddresses = [session.user.email]
     .concat(subscriber.email_addresses.map((emailRow) => emailRow.email))
     .map((address) => address.toLowerCase());

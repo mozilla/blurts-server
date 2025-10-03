@@ -21,11 +21,13 @@ import { useL10n } from "../../../../../../hooks/l10n";
 import { ModalOverlay } from "../../../../../../components/client/dialog/ModalOverlay";
 import { Dialog } from "../../../../../../components/client/dialog/Dialog";
 import { type onAddEmail } from "./actions";
-import { CONST_MAX_NUM_ADDRESSES } from "../../../../../../../constants";
+import { CONST_MAX_NUM_ADDRESSES, CONST_MAX_NUM_ADDRESSES_PLUS } from "../../../../../../../constants";
 import { useTelemetry } from "../../../../../../hooks/useTelemetry";
+import { FeatureFlagName } from "../../../../../../../db/tables/featureFlags";
 
 export type Props = {
   onAddEmail: typeof onAddEmail;
+  enabledFeatureFlags: FeatureFlagName[];
 };
 
 export const EmailAddressAdder = (props: Props) => {
@@ -124,7 +126,7 @@ const EmailAddressAddForm = (props: Props) => {
     <>
       <p>
         {l10n.getString("add-email-your-account-includes", {
-          total: CONST_MAX_NUM_ADDRESSES,
+          total: props.enabledFeatureFlags.includes("FreeBreachEmailAddresses") ? CONST_MAX_NUM_ADDRESSES_PLUS : CONST_MAX_NUM_ADDRESSES,
         })}
       </p>
       <form

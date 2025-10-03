@@ -16,6 +16,7 @@ import {
   CONST_MAX_NUM_ADDRESSES_PLUS,
 } from "../../constants";
 import { hasPremium } from "../../app/functions/universal/user";
+import { FeatureFlagName } from "./featureFlags";
 
 const knex = createDbConnection();
 
@@ -46,11 +47,12 @@ async function getEmailById(emailAddressId: number) {
 async function addSubscriberUnverifiedEmailHash(
   user: SubscriberRow,
   email: string,
+  enabledFeatureFlags: FeatureFlagName[],
 ) {
   const lowerCaseEmail = email.toLowerCase();
-  const maxNumEmailAddresses = hasPremium(user)
+  const maxNumEmailAddresses = enabledFeatureFlags.includes("FreeBreachEmailAddresses")
     ? CONST_MAX_NUM_ADDRESSES_PLUS
-    : CONST_MAX_NUM_ADDRESSES;
+    : hasPremium(user) ? CONST_MAX_NUM_ADDRESSES_PLUS : CONST_MAX_NUM_ADDRESSES;
 
   const res = await knex.transaction(async (trx) => {
     await trx.raw("SET TRANSACTION ISOLATION LEVEL SERIALIZABLE");

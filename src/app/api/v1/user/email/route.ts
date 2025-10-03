@@ -50,9 +50,9 @@ export async function POST(req: NextRequest) {
         );
       }
 
-      const maxNumEmailAddresses = hasPremium(subscriber)
+      const maxNumEmailAddresses = enabledFeatureFlags.includes("FreeBreachEmailAddresses")
         ? CONST_MAX_NUM_ADDRESSES_PLUS
-        : CONST_MAX_NUM_ADDRESSES;
+        : hasPremium(subscriber) ? CONST_MAX_NUM_ADDRESSES_PLUS : CONST_MAX_NUM_ADDRESSES;
       if (emailCount >= maxNumEmailAddresses) {
         return NextResponse.json(
           {
