@@ -47,7 +47,9 @@ We track commits that are largely style/formatting via `.git-blame-ignore-revs`.
 
 ### Database
 
-To create the database tables ...
+To create the database tables you have two options: manually, or using docker-compose
+
+#### Manual setup
 
 1. Create the `blurts` database:
 
@@ -67,6 +69,28 @@ To create the database tables ...
 
    ```
    npm run db:migrate
+   ```
+
+#### Via docker-compose
+
+This will automatically provision the databases 'blurts' and 'test-blurts', and a user 'blurts' with password 'blurts'. The connection string in your .env.local file should be: "postgres://blurts:blurts@localhost:5432/blurts"
+
+1. Ensure that you have an up-to-date .env.local file.
+
+   ```$sh
+   cp .env.local.example .env.local
+   ```
+
+2. Start docker containers (this will stand up all services defined, including pubsub)
+
+   ```sh
+   docker compose --env-file .env.local up -d
+   ```
+
+3. To tear down (this will delete stored data):
+
+   ```sh
+   docker compose --env-file .env.local down
    ```
 
 ### Install
@@ -140,9 +164,13 @@ To create the database tables ...
 
 ### PubSub
 
-Monitor uses GCP PubSub for processing incoming breach data, this can be tested locally using an emulator: https://cloud.google.com/pubsub/docs/emulator
+Monitor uses GCP PubSub for processing incoming breach data, this can be tested locally using an emulator: <https://cloud.google.com/pubsub/docs/emulator>
 
-#### Run the GCP PubSub emulator:
+You can run the emulator manually or via docker-compose.
+
+#### Manual Setup
+
+##### Run the GCP PubSub emulator
 
 ```sh
 gcloud beta emulators pubsub start --project=your-project-name
@@ -150,14 +178,30 @@ gcloud beta emulators pubsub start --project=your-project-name
 
 (Set `your-project-name` as the value for `GCP_PUBSUB_PROJECT_ID` in your `.env.local`.)
 
-### In a different shell, set the environment to point at the emulator and run Monitor in dev mode:
+#### Docker Compose Setup
+
+This will automatically provision a pubsub topic named 'hibp-breaches' with a subscription named 'hibp-cron'.
+
+1. Ensure that you have an up-to-date .env.local file.
+
+   ```$sh
+   cp .env.local.example .env.local
+   ```
+
+2. Start docker containers (this will stand up all services defined, including postgres)
+
+   ```sh
+   docker compose --env-file .env.local up -d
+   ```
+
+### In a different shell, set the environment to point at the emulator and run Monitor in dev mode
 
 ```sh
 $(gcloud beta emulators pubsub env-init)
 npm run dev
 ```
 
-### Incoming WebHook requests from HIBP will be of the form:
+### Incoming WebHook requests from HIBP will be of the form
 
 ```sh
 curl -d '{ "breachName": "000webhost", "hashPrefix": "test", "hashSuffixes": ["test"] }' \
@@ -168,7 +212,7 @@ curl -d '{ "breachName": "000webhost", "hashPrefix": "test", "hashSuffixes": ["t
 This emulates HIBP notifying our API that a new breach was found. Our API will
 then add it to the (emulated) pubsub queue.
 
-### This pubsub queue will be consumed by this cron job, which is responsible for looking up and emailing impacted users:
+### This pubsub queue will be consumed by this cron job, which is responsible for looking up and emailing impacted users
 
 ```sh
 NODE_ENV="development" npm run dev:cron:breach-alerts
@@ -181,7 +225,7 @@ Monitor generates multiple emails that get sent to subscribers. To preview or te
 ### Mozilla accounts ("FxA", formerly known as Firefox accounts)
 
 The repo comes with a development FxA oauth app pre-configured in `.env`, which
-should work fine running the app on http://localhost:6060. You'll need to get
+should work fine running the app on <http://localhost:6060>. You'll need to get
 the `OAUTH_CLIENT_SECRET` value from a team member or someone in #fxmonitor-engineering.
 
 ## Testing
@@ -216,7 +260,7 @@ To test this part of Monitor:
 
 k6 is used for load testing.
 
-See https://grafana.com/docs/k6/latest/get-started/running-k6/ for more information.
+See <https://grafana.com/docs/k6/latest/get-started/running-k6/> for more information.
 
 ##### HIBP breach alerts
 
