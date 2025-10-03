@@ -26,7 +26,7 @@ import { headers } from "next/headers";
 import { FirstDataBrokerRemovalFixed } from "../../../../../../emails/templates/firstDataBrokerRemovalFixed/FirstDataBrokerRemovalFixed";
 import {
   createRandomHibpListing,
-  createRandomOnerepScanResult,
+  createRandomScanResult,
 } from "../../../../../../apiMocks/mockData";
 import { BreachAlertEmail } from "../../../../../../emails/templates/breachAlert/BreachAlertEmail";
 import { SignupReportEmail } from "../../../../../../emails/templates/signupReport/SignupReportEmail";
@@ -40,13 +40,7 @@ import { isEligibleForPremium } from "../../../../../functions/universal/premium
 import { MonthlyActivityFreeEmail } from "../../../../../../emails/templates/monthlyActivityFree/MonthlyActivityFreeEmail";
 import { getMonthlyActivityFreeUnsubscribeLink } from "../../../../../../app/functions/cronjobs/unsubscribeLinks";
 import { getScanResultsWithBroker } from "../../../../../../db/tables/onerep_scans";
-import {
-  getUnstyledUpcomingExpirationEmail,
-  UpcomingExpirationEmail,
-} from "../../../../../../emails/templates/upcomingExpiration/UpcomingExpirationEmail";
-import { CONST_DAY_MILLISECONDS } from "../../../../../../constants";
 import { getEnabledFeatureFlags } from "../../../../../../db/tables/featureFlags";
-import { getScanAndResults } from "../../../../../functions/server/moscary";
 import { getExperimentationIdFromUserSession } from "../../../../../functions/server/getExperimentationId";
 import { getExperiments } from "../../../../../functions/server/getExperiments";
 import { getLocale } from "../../../../../functions/universal/getLocale";
@@ -168,16 +162,10 @@ export async function triggerMonthlyActivityFree(emailAddress: string) {
     countryCode,
     locale: getLocale(l10n),
   });
-  const latestScan =
-    enabledFeatureFlags.includes("Moscary") ||
-    experimentData["Features"]["moscary"].enabled
-      ? subscriber.moscary_id
-        ? await getScanAndResults(subscriber.moscary_id)
-        : { scan: null, results: [] }
-      : await getScanResultsWithBroker(
-          subscriber.onerep_profile_id,
-          hasPremium(session.user),
-        );
+  const latestScan = await getScanResultsWithBroker(
+    subscriber.onerep_profile_id,
+    hasPremium(session.user),
+  );
   const data = getDashboardSummary(
     latestScan.results,
     await getSubscriberBreaches({
@@ -216,28 +204,11 @@ export async function triggerMonthlyActivityPlus(emailAddress: string) {
   if (typeof subscriber.onerep_profile_id === "number") {
     await refreshStoredScanResults(subscriber.onerep_profile_id);
   }
-  const enabledFeatureFlags = await getEnabledFeatureFlags({
-    email: subscriber.primary_email,
-  });
   const countryCode = getCountryCode(await headers());
-  const experimentationId = await getExperimentationIdFromUserSession(
-    session.user,
+  const latestScan = await getScanResultsWithBroker(
+    subscriber.onerep_profile_id,
+    hasPremium(session.user),
   );
-  const experimentData = await getExperiments({
-    experimentationId,
-    countryCode,
-    locale: getLocale(l10n),
-  });
-  const latestScan =
-    enabledFeatureFlags.includes("Moscary") ||
-    experimentData["Features"]["moscary"].enabled
-      ? subscriber.moscary_id
-        ? await getScanAndResults(subscriber.moscary_id)
-        : { scan: null, results: [] }
-      : await getScanResultsWithBroker(
-          subscriber.onerep_profile_id,
-          hasPremium(session.user),
-        );
   const data = getDashboardSummary(
     latestScan.results,
     await getSubscriberBreaches({
@@ -272,9 +243,6 @@ export async function triggerBreachAlert(emailAddress: string) {
   if (typeof subscriber.onerep_profile_id === "number") {
     await refreshStoredScanResults(subscriber.onerep_profile_id);
   }
-  const enabledFeatureFlags = await getEnabledFeatureFlags({
-    email: subscriber.primary_email,
-  });
   const experimentationId = await getExperimentationIdFromUserSession(
     session.user,
   );
@@ -283,16 +251,10 @@ export async function triggerBreachAlert(emailAddress: string) {
     countryCode: assumedCountryCode,
     locale: getLocale(l10n),
   });
-  const scanData =
-    enabledFeatureFlags.includes("Moscary") ||
-    experimentData["Features"]["moscary"].enabled
-      ? subscriber.moscary_id
-        ? await getScanAndResults(subscriber.moscary_id)
-        : { scan: null, results: [] }
-      : await getScanResultsWithBroker(
-          subscriber.onerep_profile_id,
-          hasPremium(session.user),
-        );
+  const scanData = await getScanResultsWithBroker(
+    subscriber.onerep_profile_id,
+    hasPremium(session.user),
+  );
   const allSubscriberBreaches = await getSubscriberBreaches({
     fxaUid: subscriber.fxa_uid,
     countryCode: assumedCountryCode,
@@ -312,7 +274,6 @@ export async function triggerBreachAlert(emailAddress: string) {
           ? getDashboardSummary(scanData.results, allSubscriberBreaches)
           : undefined
       }
-      enabledFeatureFlags={enabledFeatureFlags}
       experimentData={experimentData["Features"]}
     />,
   );
@@ -321,7 +282,7 @@ export async function triggerBreachAlert(emailAddress: string) {
 export async function triggerFirstDataBrokerRemovalFixed(emailAddress: string) {
   const acceptLangHeader = await getAcceptLangHeaderInServerComponents();
   const l10n = getL10n(acceptLangHeader);
-  const randomScanResult = createRandomOnerepScanResult({ status: "removed" });
+  const randomScanResult = createRandomScanResult({ status: "removed" });
 
   await send(
     emailAddress,
@@ -334,30 +295,5 @@ export async function triggerFirstDataBrokerRemovalFixed(emailAddress: string) {
       }}
       l10n={l10n}
     />,
-  );
-}
-
-export async function triggerPlusExpirationEmail(emailAddress: string) {
-  const subscriber = await getAdminSubscriber();
-  if (!subscriber) {
-    return false;
-  }
-
-  const acceptLangHeader = await getAcceptLangHeaderInServerComponents();
-  const l10n = getL10n(acceptLangHeader);
-  await send(
-    emailAddress,
-    l10n.getString("email-plus-expiration-subject"),
-    <UpcomingExpirationEmail
-      subscriber={sanitizeSubscriberRow(subscriber)}
-      // Always pretend that the user's account expires in 7 days for the test email:
-      expirationDate={new Date(Date.now() + 7 * CONST_DAY_MILLISECONDS)}
-      l10n={l10n}
-    />,
-    getUnstyledUpcomingExpirationEmail({
-      subscriber: sanitizeSubscriberRow(subscriber),
-      expirationDate: new Date(Date.now() + 7 * CONST_DAY_MILLISECONDS),
-      l10n: l10n,
-    }),
   );
 }

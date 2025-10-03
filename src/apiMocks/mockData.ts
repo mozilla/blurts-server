@@ -22,7 +22,6 @@ import { HibpLikeDbBreach } from "../utils/hibp";
 import { SerializedSubscriber } from "../next-auth";
 import { DataBrokerRemovalStatus } from "../app/functions/universal/dataBroker";
 import { UserAnnouncementWithDetails } from "../db/tables/user_announcements";
-import { MoscaryData } from "../app/functions/server/moscary";
 
 // Setting this to a constant value produces the same result when the same methods
 // with the same version of faker are called.
@@ -34,7 +33,7 @@ const fakerSeed = 123;
 export function mockedOneRepScanResults() {
   faker.seed(fakerSeed);
   return {
-    data: Array.from({ length: 3 }, () => createRandomOnerepScanResult()),
+    data: Array.from({ length: 3 }, () => createRandomScanResult()),
   };
 }
 
@@ -45,8 +44,7 @@ export type RandomScanResultOptions = Partial<{
   manually_resolved: boolean;
   broker_status: DataBrokerRemovalStatus;
   data_broker: string;
-  source: MoscaryData["ScanResult"]["source"];
-  url: MoscaryData["ScanResult"]["url"];
+  url: OnerepScanResultDataBrokerRow["url"];
   updated_at: Date;
 }>;
 
@@ -56,7 +54,7 @@ export type RandomScanResultOptions = Partial<{
  * @param options
  * @returns A single scan result.
  */
-export function createRandomOnerepScanResult(
+export function createRandomScanResult(
   options: RandomScanResultOptions = {},
 ): OnerepScanResultDataBrokerRow {
   faker.seed(options.fakerSeed);
@@ -103,62 +101,6 @@ export function createRandomOnerepScanResult(
       Object.values(RemovalStatusMap),
     ) as RemovalStatus,
     url: url,
-  };
-}
-
-/**
- * Generates scan result with randomly-generated mock data.
- *
- * @param options
- * @returns A single scan result.
- */
-export function createRandomMoscaryScanResult(
-  options: RandomScanResultOptions = {},
-): MoscaryData["ScanResult"] {
-  faker.seed(options.fakerSeed);
-  const optout_attempts =
-    options.status === "waiting_for_verification"
-      ? faker.number.int({ min: 1, max: 42 })
-      : undefined;
-  const url = options.url ?? faker.internet.url();
-  return {
-    id: faker.string.uuid(),
-    scan_id: faker.string.uuid(),
-    first_name: faker.person.firstName(),
-    last_name: faker.person.lastName(),
-    middle_name: faker.person.middleName(),
-    age: faker.number.int({ min: 14, max: 120 }),
-    status:
-      options.status ??
-      (faker.helpers.arrayElement(
-        Object.values(RemovalStatusMap),
-      ) as RemovalStatus),
-    manually_resolved: options.manually_resolved ?? faker.datatype.boolean(),
-    addresses: Array.from({ length: 3 }, () => ({
-      zip: faker.location.zipCode(),
-      city: faker.location.city(),
-      state: faker.location.state({ abbreviated: true }) as StateAbbr,
-      street: faker.location.street(),
-    })),
-    phones: [faker.phone.number()],
-    emails: [faker.internet.exampleEmail()],
-    relatives: Array.from({ length: 3 }, () => faker.person.fullName()),
-    link: url,
-    data_broker: options.data_broker ?? new URL(url).hostname,
-    data_broker_id: faker.number.int(),
-    created_at: (
-      options.createdDate ?? faker.date.recent({ days: 2 })
-    ).toISOString(),
-    updated_at:
-      options.updated_at?.toISOString() ??
-      faker.date.recent({ days: 1 }).toISOString(),
-    optout_attempts,
-    last_optout_at:
-      typeof optout_attempts === "number" && optout_attempts > 0
-        ? faker.date.recent({ days: 3 }).toISOString()
-        : undefined,
-    source: options.source ?? faker.helpers.arrayElement(["monitor", "onerep"]),
-    verification_attempts: 0,
   };
 }
 

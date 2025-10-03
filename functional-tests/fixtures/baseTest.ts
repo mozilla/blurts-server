@@ -10,7 +10,6 @@ import { getBaseTestEnvUrl } from "../utils/environment";
 // Feature flags that are enabled by default locally
 export const defaultLocalForcedFeatureFlags: FeatureFlagName[] = [
   "CancellationFlow",
-  "DiscountCouponNextThreeMonths",
   "AutomaticRemovalCsatSurvey",
   "AdditionalRemovalStatuses",
   "PromptNoneAuthFlow",
@@ -22,7 +21,6 @@ export const defaultLocalForcedFeatureFlags: FeatureFlagName[] = [
   "EditScanProfileDetails",
   "SubPlat3",
   "Announcements",
-  "PrivacyProductsBundle",
 ];
 
 const test = baseTest.extend<{

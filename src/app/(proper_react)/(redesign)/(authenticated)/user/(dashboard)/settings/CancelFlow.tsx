@@ -4,13 +4,12 @@
 
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useState } from "react";
 import { useOverlayTriggerState } from "react-stately";
 import { useOverlayTrigger } from "react-aria";
 import Image from "next/image";
 import styles from "./CancelFlow.module.scss";
 import CancellationFlowStaticImage from "./images/CancellationFlowIllustration.svg";
-import CancellationFlowDiscountAppliedStaticImage from "./images/CancellationFlowDiscountAppliedStaticImage.svg";
 import { useTelemetry } from "../../../../../../hooks/useTelemetry";
 import { ModalOverlay } from "../../../../../../components/client/dialog/ModalOverlay";
 import { Dialog } from "../../../../../../components/client/dialog/Dialog";
@@ -18,30 +17,13 @@ import { Button } from "../../../../../../components/client/Button";
 import { useL10n } from "../../../../../../hooks/l10n";
 import { TelemetryButton } from "../../../../../../components/client/TelemetryButton";
 import { ExperimentData } from "../../../../../../../telemetry/generated/nimbus/experiments";
-import {
-  type onApplyCouponCode,
-  type onCheckUserHasCurrentCouponSet,
-} from "./actions";
-import { TelemetryLink } from "../../../../../../components/client/TelemetryLink";
-import { OpenInNew } from "../../../../../../components/server/Icons";
 
 export type Props = {
   fxaSubscriptionsUrl: string;
-  enableDiscountCoupon: boolean;
   experimentData?: ExperimentData["Features"];
-  isMonthlySubscriber: boolean;
-  actions: {
-    onApplyCouponCode: typeof onApplyCouponCode;
-    onCheckUserHasCurrentCouponSet: typeof onCheckUserHasCurrentCouponSet;
-  };
 };
 
-type DiscountData = {
-  headline: string;
-  successDescription: string;
-  subtitle: string;
-};
-type Step = "confirm" | "survey" | "all-set" | "redirecting";
+type Step = "confirm" | "survey" | "redirecting";
 
 export const CancelFlow = (props: Props) => {
   const l10n = useL10n();
@@ -59,97 +41,18 @@ export const CancelFlow = (props: Props) => {
     },
   });
 
-  const [couponSuccess, setCouponSuccess] = useState<boolean | null>(null);
-  const [alreadyHasCouponSet, setAlreadyHasCouponSet] =
-    useState<boolean>(false);
-
-  const discountedNext3Months: DiscountData = {
-    headline: l10n.getString("settings-unsubscribe-dialog-promotion-cta", {
-      discount_percentage_num: "30%",
-      discount_duration: 3,
-    }),
-    successDescription: l10n.getString(
-      "settings-unsubscribe-dialog-promotion-description",
-      {
-        discount_percentage_num: "30%",
-        discount_duration: 3,
-      },
-    ),
-    subtitle: l10n.getString(
-      "settings-unsubscribe-dialog-promotion-limitations-apply",
-    ),
-  };
-
-  // Unless we mock out these functions, we can't test them at the moment
-  /* c8 ignore start */
-  const handleApplyCouponCode = async () => {
-    const result = await props.actions.onApplyCouponCode();
-    if (result?.success) {
-      setCouponSuccess(true);
-    } else {
-      setCouponSuccess(false);
-    }
-  };
-
-  const checkCouponCode = useCallback(async () => {
-    const result = await props.actions.onCheckUserHasCurrentCouponSet();
-    if (typeof result.success === "boolean") {
-      setAlreadyHasCouponSet(result.success);
-    } else {
-      setAlreadyHasCouponSet(false);
-    }
-  }, [props.actions]);
-
-  useEffect(() => {
-    // TODO: Instead of calling this on the first render,
-    // check for the coupon code in `page.tsx` and pass it into the Client Components.
-    void checkCouponCode();
-    // Only called once upon initial render to check if a user had a coupon code previously set
-  }, [checkCouponCode]);
-
-  useEffect(() => {
-    if (couponSuccess) {
-      setCurrentStep("all-set");
-    }
-  }, [couponSuccess]);
-  /* c8 ignore stop */
-
   const dialogTrigger = useOverlayTrigger({ type: "dialog" }, dialogState);
 
   const dialogTitle = () => {
     switch (step) {
       case "confirm":
         return "settings-cancel-plus-step-confirm-heading";
-      case "all-set":
-        return "settings-unsubscribe-dialog-promotion-complete";
       case "redirecting":
         return "settings-unsubscribe-dialog-confirmation-redirect-title";
       case "survey":
         return "settings-cancel-plus-step-survey-heading";
     }
   };
-
-  const errorApplyingCoupon = (
-    <p className={styles.errorApplyingCoupon}>
-      {l10n.getFragment("settings-unsubscribe-dialog-promotion-unsuccessful", {
-        elems: {
-          try_again_link: (
-            <TelemetryButton
-              variant="link"
-              event={{
-                module: "button",
-                name: "click",
-                data: {
-                  button_id: "coupon_cta_unsuccessful_try_again",
-                },
-              }}
-              onPress={() => void handleApplyCouponCode()}
-            />
-          ),
-        },
-      })}
-    </p>
-  );
 
   return (
     <>
@@ -168,13 +71,10 @@ export const CancelFlow = (props: Props) => {
         >
           <Dialog
             title={l10n.getString(dialogTitle())}
-            illustration={<Animation step={step} />}
+            illustration={<Animation />}
             onDismiss={() => {
               recordTelemetry("popup", "exit", {
-                popup_id:
-                  step === "all-set"
-                    ? "exited_youre_all_set"
-                    : "exited_cancel_flow",
+                popup_id: "exited_cancel_flow",
               });
               dialogState.close();
             }}
@@ -187,58 +87,22 @@ export const CancelFlow = (props: Props) => {
                       "settings-cancel-plus-step-confirm-content",
                     )}
                   </p>
-                  {props.enableDiscountCoupon &&
-                  !alreadyHasCouponSet &&
-                  props.isMonthlySubscriber ? (
-                    <>
-                      <TelemetryButton
-                        event={{
-                          module: "ctaButton",
-                          name: "click",
-                          data: {
-                            button_id: "stay_get_30_off",
-                          },
-                        }}
-                        variant="primary"
-                        onPress={() => void handleApplyCouponCode()}
-                        className={`${couponSuccess === false && styles.hidden} ${styles.discountCta} ${styles.primaryCta}`}
-                      >
-                        {discountedNext3Months.headline}
-                      </TelemetryButton>
-                      <TelemetryLink
-                        eventData={{
-                          link_id: "limitations_apply",
-                        }}
-                        href="/limitations-apply"
-                        target="_blank"
-                        className={`${couponSuccess === false && styles.hidden} ${styles.limitationsApplyLink}`}
-                      >
-                        <small className={styles.limitationsApplyText}>
-                          {discountedNext3Months.subtitle}
-                          <OpenInNew alt="" />
-                        </small>
-                      </TelemetryLink>
-                      {couponSuccess === false && errorApplyingCoupon}
-                    </>
-                  ) : (
-                    <TelemetryButton
-                      event={{
-                        module: "popup",
-                        name: "exit",
-                        data: {
-                          popup_id: "never_mind_take_me_back",
-                        },
-                      }}
-                      variant="primary"
-                      onPress={() => dialogState.close()}
-                      className={styles.primaryCta}
-                    >
-                      {l10n.getString(
-                        "settings-cancel-plus-step-confirm-cancel-label",
-                      )}
-                    </TelemetryButton>
-                  )}
-
+                  <TelemetryButton
+                    event={{
+                      module: "popup",
+                      name: "exit",
+                      data: {
+                        popup_id: "never_mind_take_me_back",
+                      },
+                    }}
+                    variant="primary"
+                    onPress={() => dialogState.close()}
+                    className={styles.primaryCta}
+                  >
+                    {l10n.getString(
+                      "settings-cancel-plus-step-confirm-cancel-label",
+                    )}
+                  </TelemetryButton>
                   <TelemetryButton
                     event={{
                       module: "button",
@@ -318,30 +182,6 @@ export const CancelFlow = (props: Props) => {
                   </p>
                 </>
               )}
-              {step === "all-set" && (
-                <>
-                  <p>
-                    {l10n.getString(
-                      "settings-unsubscribe-dialog-promotion-description",
-                      {
-                        discount_duration: 3,
-                        discount_percentage_num: "30%",
-                      },
-                    )}
-                  </p>
-                  <TelemetryLink
-                    href="/user/dashboard"
-                    eventData={{
-                      link_id: "go_to_dashboard",
-                    }}
-                    className={styles.goToDashboardCta}
-                  >
-                    {l10n.getString(
-                      "settings-unsubscribe-dialog-promotion-back-to-dashboard-cta",
-                    )}
-                  </TelemetryLink>
-                </>
-              )}
             </div>
           </Dialog>
         </ModalOverlay>
@@ -350,7 +190,7 @@ export const CancelFlow = (props: Props) => {
   );
 };
 
-const Animation = (props: { step: Step }) => {
+const Animation = () => {
   return (
     <>
       <video
@@ -366,31 +206,16 @@ const Animation = (props: { step: Step }) => {
           // sure these files are present in /public. See
           // https://github.com/vercel/next.js/issues/35248
           type="video/mp4"
-          src={
-            props.step === "all-set"
-              ? /* c8 ignore next */
-                "/animations/CancellationFlowDiscountAppliedAnimation.mp4"
-              : "/animations/CancellationFlowAnimation.mp4"
-          }
+          src="/animations/CancellationFlowAnimation.mp4"
         />
         <source
           type="video/webm"
-          src={
-            props.step === "all-set"
-              ? /* c8 ignore next */
-                "/animations/CancellationFlowDiscountAppliedAnimation.webm"
-              : "/animations/CancellationFlowAnimation.webm"
-          }
+          src="/animations/CancellationFlowAnimation.webm"
         />
         {/* Fall back to the image if the video formats are not supported: */}
         <Image
           className={styles.cancellationIllustrationWrapper}
-          src={
-            /* c8 ignore next */
-            props.step === "all-set"
-              ? CancellationFlowDiscountAppliedStaticImage
-              : CancellationFlowStaticImage
-          }
+          src={CancellationFlowStaticImage}
           alt=""
         />
       </video>
@@ -401,11 +226,7 @@ const Animation = (props: { step: Step }) => {
 ${styles.cancellationIllustrationWrapper}
 ${styles.staticAlternative}
 `}
-        src={
-          props.step === "all-set"
-            ? CancellationFlowDiscountAppliedStaticImage
-            : CancellationFlowStaticImage
-        }
+        src={CancellationFlowStaticImage}
         alt=""
       />
     </>

@@ -55,7 +55,6 @@ export async function getDeletedFeatureFlags() {
 
 export const featureFlagNames = [
   "CancellationFlow",
-  "DiscountCouponNextThreeMonths",
   "LatestScanDateCsatSurvey",
   "AutomaticRemovalCsatSurvey",
   "AdditionalRemovalStatuses",
@@ -73,10 +72,8 @@ export const featureFlagNames = [
   "EditScanProfileDetails",
   "SubPlat3",
   "Announcements",
-  "PrivacyProductsBundle",
   "DisableOneRepScans",
   "DisableLandingToDashboardRedirect",
-  "Moscary",
   "MaskDataBrokerCount",
 ] as const;
 

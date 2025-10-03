@@ -36,16 +36,9 @@ import {
   onAddEmail,
   onDeleteAccount,
   onRemoveEmail,
-  onApplyCouponCode,
-  onCheckUserHasCurrentCouponSet,
   onHandleUpdateProfileData,
 } from "../actions";
 import { initializeUserAnnouncements } from "../../../../../../../../db/tables/user_announcements";
-import {
-  fetchLatestScanForProfile,
-  getProfile,
-} from "../../../../../../../functions/server/moscary";
-import { parseIso8601Datetime } from "../../../../../../../../utils/parse";
 
 type Props = {
   params: Promise<{
@@ -111,10 +104,6 @@ export default async function SettingsPage(props: Props) {
     type: "monthly",
     enabledFeatureFlags,
   });
-  const yearlySubscriptionUrl = getPremiumSubscriptionUrl({
-    type: "yearly",
-    enabledFeatureFlags,
-  });
 
   const headersList = await headers();
   const l10n = getL10n(await getAcceptLangHeaderInServerComponents());
@@ -136,38 +125,19 @@ export default async function SettingsPage(props: Props) {
   const settingsData = await getEmailPreferenceForPrimaryEmail(
     session.user.email,
   );
-  const lastMoscaryScanDate =
-    ((enabledFeatureFlags.includes("Moscary") ||
-      experimentData["Features"]["moscary"].enabled) &&
-      session.user.subscriber.moscary_id &&
-      (await fetchLatestScanForProfile(session.user.subscriber.moscary_id))
-        ?.created_at) ??
-    null;
-  const lastScanDate = lastMoscaryScanDate
-    ? parseIso8601Datetime(lastMoscaryScanDate)
-    : (await getLatestOnerepScan(session.user.subscriber.onerep_profile_id))
-        ?.created_at;
+  const lastScanDate = (
+    await getLatestOnerepScan(session.user.subscriber.onerep_profile_id)
+  )?.created_at;
 
-  const profileData =
-    (enabledFeatureFlags.includes("Moscary") ||
-      experimentData["Features"]["moscary"].enabled) &&
-    session.user.subscriber.moscary_id
-      ? await getProfile(session.user.subscriber.moscary_id)
-      : session.user.subscriber.onerep_profile_id
-        ? await getDataBrokerScanProfile(
-            session.user.subscriber.onerep_profile_id,
-          )
-        : undefined;
+  const profileData = session.user.subscriber.onerep_profile_id
+    ? await getDataBrokerScanProfile(session.user.subscriber.onerep_profile_id)
+    : undefined;
   const isEligibleForPremium = canSubscribeToPremium({
     user: session.user,
     countryCode,
   });
 
-  const userAnnouncements = await initializeUserAnnouncements(
-    session.user,
-    enabledFeatureFlags,
-    experimentData["Features"],
-  );
+  const userAnnouncements = await initializeUserAnnouncements(session.user);
 
   return (
     <SettingsView
@@ -180,7 +150,6 @@ export default async function SettingsPage(props: Props) {
       fxaSettingsUrl={fxaSettingsUrl}
       fxaSubscriptionsUrl={fxaSubscriptionsUrl}
       monthlySubscriptionUrl={`${monthlySubscriptionUrl}${additionalSubplatParamsString}`}
-      yearlySubscriptionUrl={`${yearlySubscriptionUrl}${additionalSubplatParamsString}`}
       subscriptionBillingAmount={getSubscriptionBillingAmount()}
       enabledFeatureFlags={enabledFeatureFlags}
       experimentData={experimentData["Features"]}
@@ -192,8 +161,6 @@ export default async function SettingsPage(props: Props) {
         onAddEmail,
         onRemoveEmail,
         onDeleteAccount,
-        onApplyCouponCode,
-        onCheckUserHasCurrentCouponSet,
         onHandleUpdateProfileData,
       }}
       userAnnouncements={userAnnouncements}
