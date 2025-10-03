@@ -21,6 +21,9 @@ import { SwitchInput } from "../../../../../../../components/client/SwitchInput"
 import { RadioInput } from "../../../../../../../components/client/RadioInput";
 import { CONST_URL_MOZILLA_BASKET } from "../../../../../../../../constants";
 
+// The monthly email for free users is currently disabled; see MNTOR-4970.
+const isFreeMonthlyMonitorReportDisabledSeeMNTOR4970 = true;
+
 export type SettingsPanelNotificationsProps = {
   data?: SubscriberEmailPreferencesOutput;
   subscriber: SubscriberRow;
@@ -170,30 +173,36 @@ export const NotificationsSettings = (props: NotificationSettingsProps) => {
               </RadioInput>
             </span>
           )}
-          <hr />
+          {(hasPremium(props.user) ||
+            !isFreeMonthlyMonitorReportDisabledSeeMNTOR4970) && <hr />}
         </AlertAddressContext.Provider>
-        <SwitchInput
-          className={styles.switchInput}
-          isSelected={activateMonthlyMonitorReport}
-          onChange={handleMonthlyMonitorReportToggle}
-        >
-          <div>
-            <h4>
-              {hasPremium(props.user)
-                ? l10n.getString(
-                    "settings-alert-preferences-allow-monthly-monitor-plus-report-title",
-                  )
-                : l10n.getString(
-                    "settings-alert-preferences-allow-monthly-monitor-report-title",
-                  )}
-            </h4>
-            <p>
-              {l10n.getString(
-                "settings-alert-preferences-allow-monthly-monitor-report-subtitle",
-              )}
-            </p>
-          </div>
-        </SwitchInput>
+        {(hasPremium(props.user) ||
+          !isFreeMonthlyMonitorReportDisabledSeeMNTOR4970) && (
+          <SwitchInput
+            className={styles.switchInput}
+            isSelected={activateMonthlyMonitorReport}
+            onChange={handleMonthlyMonitorReportToggle}
+          >
+            <div>
+              <h4>
+                {hasPremium(props.user)
+                  ? // The monthly email for free users is currently disabled; see MNTOR-4970.
+                    /* c8 ignore next 6 */
+                    l10n.getString(
+                      "settings-alert-preferences-allow-monthly-monitor-plus-report-title",
+                    )
+                  : l10n.getString(
+                      "settings-alert-preferences-allow-monthly-monitor-report-title",
+                    )}
+              </h4>
+              <p>
+                {l10n.getString(
+                  "settings-alert-preferences-allow-monthly-monitor-report-subtitle",
+                )}
+              </p>
+            </div>
+          </SwitchInput>
+        )}
       </div>
     </section>
   );

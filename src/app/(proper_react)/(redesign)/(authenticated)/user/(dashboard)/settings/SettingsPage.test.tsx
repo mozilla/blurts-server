@@ -2147,7 +2147,7 @@ describe("Settings page", () => {
       );
     });
 
-    it("checks that monthly monitor report is available to free users", () => {
+    it("checks that the monthly monitor report is disabled for free users", () => {
       render(
         <SettingsWrapper>
           <SettingsView
@@ -2179,11 +2179,13 @@ describe("Settings page", () => {
         </SettingsWrapper>,
       );
 
-      const monthlyMonitorReportBtn = screen.getByLabelText(
+      const monthlyMonitorReportBtn = screen.queryByLabelText(
         "Monthly ⁨Monitor⁩ report",
         { exact: false },
       );
-      expect(monthlyMonitorReportBtn).toHaveAttribute("aria-checked", "true");
+      // The monthly email for free users is currently disabled; see MNTOR-4970.
+      // expect(monthlyMonitorReportBtn).toHaveAttribute("aria-checked", "true");
+      expect(monthlyMonitorReportBtn).not.toBeInTheDocument();
     });
 
     it("checks that monthly monitor report is enabled", () => {

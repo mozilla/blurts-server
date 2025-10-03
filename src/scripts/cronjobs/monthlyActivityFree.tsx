@@ -2,6 +2,22 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+/*
+ * Heads-up: this cron job is currently not running. (See MNTOR-4970.)
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ */
+
 import { FeatureFlagViewRow, SubscriberRow } from "knex/types/tables";
 import { getFreeSubscribersWaitingForMonthlyEmail } from "../../db/tables/subscribers";
 import { getScanResultsWithBroker } from "../../db/tables/onerep_scans";
