@@ -26,16 +26,6 @@ declare module "knex/types/tables" {
     updated_at: Date;
   }
 
-  interface SubscriberChurnRow {
-    userid: string;
-    customer: string;
-    nickname: string;
-    intervl: string;
-    plan_id: string;
-    product_id: string;
-    current_period_end: Date;
-  }
-
   interface OnerepScanResultDataBrokerRow extends OnerepScanResultRow {
     scan_result_status: RemovalStatus;
     broker_status: DataBrokerRemovalStatus;
@@ -211,17 +201,6 @@ declare module "knex/types/tables" {
   type EmailAddressAutoInsertedColumns = Extract<
     keyof EmailAddressRow,
     "id" | "created_at" | "updated_at"
-  >;
-
-  interface SubscriberCouponRow {
-    id: number;
-    subscriber_id: number;
-    coupon_code: string;
-    created_at: Date;
-  }
-  type SubscriberCouponAutoInsertedColumns = Extract<
-    keyof SubscriberCouponRow,
-    "id" | "subscriber_id" | "created_at"
   >;
 
   interface SubscriberEmailPreferencesRow {
@@ -529,18 +508,6 @@ declare module "knex/types/tables" {
           Pick<SubscriberRow, "updated_at">
       >
     >;
-
-    subscriber_coupons: Knex.CompositeTableType<
-      SubscriberCouponRow,
-      // On inserts, auto-generated columns cannot be set, and nullable columns are optional:
-      WritableDateColumns<
-        Omit<SubscriberCouponRow, SubscriberAutoInsertedColumns>
-      >,
-      // On updates, don't allow updating the ID; all other fields are optional:
-      WritableDateColumns<Partial<Omit<SubscriberCouponRow, "id">>>
-    >;
-
-    subscriber_churns: SubscriberChurnRow;
 
     subscriber_email_preferences: Knex.CompositeTableType<
       SubscriberEmailPreferencesRow,
