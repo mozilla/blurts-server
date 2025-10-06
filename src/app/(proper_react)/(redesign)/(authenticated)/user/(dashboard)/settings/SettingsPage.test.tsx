@@ -242,8 +242,6 @@ const mockedActions: ComponentProps<typeof SettingsView>["actions"] = {
   onRemoveEmail: jest.fn(),
   onAddEmail: jest.fn(),
   onDeleteAccount: () => new Promise(() => undefined),
-  onApplyCouponCode: jest.fn(),
-  onCheckUserHasCurrentCouponSet: jest.fn(),
   onHandleUpdateProfileData: jest.fn(),
 };
 
@@ -984,15 +982,6 @@ describe("Settings page", () => {
     it("takes you through the cancellation dialog flow all the way to subplat", async () => {
       const user = userEvent.setup();
 
-      (
-        mockedActions.onCheckUserHasCurrentCouponSet as jest.Mock
-      ).mockResolvedValueOnce({
-        success: false,
-      });
-      (mockedActions.onApplyCouponCode as jest.Mock).mockResolvedValueOnce({
-        success: true,
-      });
-
       render(
         <SettingsWrapper>
           <SettingsView
@@ -1071,12 +1060,6 @@ describe("Settings page", () => {
     it("closes the cancellation survey if the user selects nevermind, take me back", async () => {
       const user = userEvent.setup();
 
-      (
-        mockedActions.onCheckUserHasCurrentCouponSet as jest.Mock
-      ).mockResolvedValueOnce({
-        success: false,
-      });
-
       render(
         <SettingsWrapper>
           <SettingsView
@@ -1134,11 +1117,6 @@ describe("Settings page", () => {
 
     it("closes the cancellation dialog", async () => {
       const user = userEvent.setup();
-      (
-        mockedActions.onCheckUserHasCurrentCouponSet as jest.Mock
-      ).mockResolvedValueOnce({
-        success: false,
-      });
 
       render(
         <SettingsWrapper>
@@ -1784,226 +1762,6 @@ describe("Settings page", () => {
           button_id: "confirm_delete_account",
         }),
       );
-    });
-
-    it("selects the coupon code discount cta and shows the all-set dialog step", async () => {
-      const user = userEvent.setup();
-
-      (
-        mockedActions.onCheckUserHasCurrentCouponSet as jest.Mock
-      ).mockResolvedValueOnce({
-        success: false,
-      });
-      (mockedActions.onApplyCouponCode as jest.Mock).mockResolvedValueOnce({
-        success: true,
-      });
-
-      render(
-        <SettingsWrapper>
-          <SettingsView
-            activeTab="manage-account"
-            l10n={getL10n()}
-            user={{
-              ...mockedUser,
-              fxa: {
-                ...mockedUser.fxa,
-                subscriptions: ["monitor"],
-              } as Session["user"]["fxa"],
-            }}
-            subscriber={mockedSubscriber}
-            breachCountByEmailAddress={{
-              [mockedUser.email]: 42,
-            }}
-            emailAddresses={[]}
-            fxaSettingsUrl=""
-            fxaSubscriptionsUrl=""
-            monthlySubscriptionUrl=""
-            subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-            enabledFeatureFlags={[
-              "CancellationFlow",
-              "DiscountCouponNextThreeMonths",
-            ]}
-            experimentData={defaultExperimentData["Features"]}
-            isMonthlySubscriber={true}
-            data={mockedPlusSubscriberEmailPreferences}
-            isEligibleForPremium={false}
-            actions={mockedActions}
-            userAnnouncements={mockedAnnouncements}
-          />
-        </SettingsWrapper>,
-      );
-
-      const cancellationButton = screen.getByRole("button", {
-        name: "Cancel your subscription",
-      });
-      await user.click(cancellationButton);
-
-      const discountCta = screen.getByRole("button", {
-        name: "Stay and get ⁨30%⁩ off ⁨3⁩ months",
-      });
-
-      expect(mockedRecordTelemetry).toHaveBeenCalledWith(
-        "popup",
-        "view",
-        expect.objectContaining({
-          popup_id: "settings-cancel-monitor-plus-dialog",
-        }),
-      );
-      expect(discountCta).toBeInTheDocument();
-
-      await user.click(discountCta);
-
-      expect(mockedRecordTelemetry).toHaveBeenCalledWith(
-        "ctaButton",
-        "click",
-        expect.objectContaining({
-          button_id: "stay_get_30_off",
-        }),
-      );
-
-      const allSetHeader = await screen.findByText("You’re all set!");
-      expect(allSetHeader).toBeInTheDocument();
-
-      const cancellationDialogCloseBtn = screen.getByRole("button", {
-        name: "Close modal",
-      });
-
-      await user.click(cancellationDialogCloseBtn);
-
-      expect(mockedRecordTelemetry).toHaveBeenCalledWith(
-        "popup",
-        "exit",
-        expect.objectContaining({
-          popup_id: "exited_youre_all_set",
-        }),
-      );
-    });
-
-    it("shows error message if the applying the coupon code function was unsuccessful", async () => {
-      const user = userEvent.setup();
-
-      (
-        mockedActions.onCheckUserHasCurrentCouponSet as jest.Mock
-      ).mockResolvedValueOnce({
-        success: false,
-      });
-      (mockedActions.onApplyCouponCode as jest.Mock).mockResolvedValueOnce({
-        success: false,
-      });
-
-      render(
-        <SettingsWrapper>
-          <SettingsView
-            activeTab="manage-account"
-            l10n={getL10n()}
-            user={{
-              ...mockedUser,
-              fxa: {
-                ...mockedUser.fxa,
-                subscriptions: ["monitor"],
-              } as Session["user"]["fxa"],
-            }}
-            subscriber={mockedSubscriber}
-            breachCountByEmailAddress={{
-              [mockedUser.email]: 42,
-            }}
-            emailAddresses={[]}
-            fxaSettingsUrl=""
-            fxaSubscriptionsUrl=""
-            monthlySubscriptionUrl=""
-            subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-            enabledFeatureFlags={[
-              "CancellationFlow",
-              "DiscountCouponNextThreeMonths",
-            ]}
-            experimentData={defaultExperimentData["Features"]}
-            isMonthlySubscriber={true}
-            data={mockedPlusSubscriberEmailPreferences}
-            isEligibleForPremium={false}
-            actions={mockedActions}
-            userAnnouncements={mockedAnnouncements}
-          />
-        </SettingsWrapper>,
-      );
-
-      const cancellationButton = screen.getByRole("button", {
-        name: "Cancel your subscription",
-      });
-      await user.click(cancellationButton);
-
-      const discountCta = screen.getByRole("button", {
-        name: "Stay and get ⁨30%⁩ off ⁨3⁩ months",
-      });
-
-      await user.click(discountCta);
-
-      const errorMessage = await screen.findByText(
-        "There was a problem applying your discount",
-        { exact: false },
-      );
-
-      expect(errorMessage).toBeInTheDocument();
-
-      const tryAgainCta = screen.getByRole("button", {
-        name: "Please try again.",
-      });
-
-      await user.click(tryAgainCta);
-
-      expect(mockedActions.onApplyCouponCode).toHaveBeenCalled();
-    });
-
-    it("does not show the coupon code if a user already has a coupon set", async () => {
-      const user = userEvent.setup();
-
-      (
-        mockedActions.onCheckUserHasCurrentCouponSet as jest.Mock
-      ).mockResolvedValueOnce({
-        success: true,
-      });
-
-      render(
-        <SettingsWrapper>
-          <SettingsView
-            activeTab="manage-account"
-            l10n={getL10n()}
-            user={{
-              ...mockedUser,
-              fxa: {
-                ...mockedUser.fxa,
-                subscriptions: ["monitor"],
-              } as Session["user"]["fxa"],
-            }}
-            subscriber={mockedSubscriber}
-            breachCountByEmailAddress={{
-              [mockedUser.email]: 42,
-            }}
-            emailAddresses={[]}
-            fxaSettingsUrl=""
-            fxaSubscriptionsUrl=""
-            monthlySubscriptionUrl=""
-            subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-            enabledFeatureFlags={[
-              "CancellationFlow",
-              "DiscountCouponNextThreeMonths",
-            ]}
-            experimentData={defaultExperimentData["Features"]}
-            isMonthlySubscriber={true}
-            data={mockedPlusSubscriberEmailPreferences}
-            isEligibleForPremium={false}
-            actions={mockedActions}
-            userAnnouncements={mockedAnnouncements}
-          />
-        </SettingsWrapper>,
-      );
-      const cancellationButton = screen.getByRole("button", {
-        name: "Cancel your subscription",
-      });
-      await user.click(cancellationButton);
-      const takeMeBackButton = screen.getByRole("button", {
-        name: "Never mind, take me back",
-      });
-      expect(takeMeBackButton).toBeInTheDocument();
     });
   });
 

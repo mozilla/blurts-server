@@ -21,8 +21,6 @@ import {
   type onRemoveEmail,
   type onAddEmail,
   type onDeleteAccount,
-  type onApplyCouponCode,
-  type onCheckUserHasCurrentCouponSet,
   onHandleUpdateProfileData,
 } from "./actions";
 import { UserAnnouncementWithDetails } from "../../../../../../../db/tables/user_announcements";
@@ -48,9 +46,7 @@ export type Props = {
     onAddEmail: typeof onAddEmail;
     onRemoveEmail: typeof onRemoveEmail;
     onDeleteAccount: typeof onDeleteAccount;
-    onApplyCouponCode: typeof onApplyCouponCode;
     onHandleUpdateProfileData: typeof onHandleUpdateProfileData;
-    onCheckUserHasCurrentCouponSet: typeof onCheckUserHasCurrentCouponSet;
   };
   userAnnouncements: UserAnnouncementWithDetails[];
   isMonthlySubscriber: boolean;
