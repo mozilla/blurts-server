@@ -70,8 +70,8 @@
     "npm": "10.1.0"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.894.0",
-    "@aws-sdk/lib-storage": "^3.894.0",
+    "@aws-sdk/client-s3": "^3.896.0",
+    "@aws-sdk/lib-storage": "^3.895.0",
     "@fluent/bundle": "^0.19.1",
     "@fluent/langneg": "^0.7.0",
     "@fluent/react": "^0.15.2",
