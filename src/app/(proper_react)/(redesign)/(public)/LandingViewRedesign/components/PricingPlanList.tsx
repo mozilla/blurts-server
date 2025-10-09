@@ -331,7 +331,7 @@ export const PricingPlanList = (props: Props & ScanLimitProp) => {
               {
                 elems: { b: <b /> },
                 vars: {
-                  /* c8 ignore next */
+                  /* c8 ignore next 5 */
                   max_email_addresses: props.enabledFeatureFlags.includes(
                     "IncreasedFreeMaxBreachEmails",
                   )

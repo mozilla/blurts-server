@@ -98,7 +98,7 @@ export async function POST(req: NextRequest) {
       const unverifiedSubscriber = await addSubscriberUnverifiedEmailHash(
         subscriber,
         validatedEmail.email,
-        getEnabledFeatureFlags,
+        enabledFeatureFlags,
       );
 
       await initEmail();

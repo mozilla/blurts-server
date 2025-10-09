@@ -1,0 +1,46 @@
+services:
+  postgres:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    volumes:
+      - "./.docker/postgres:/docker-entrypoint-initdb.d:delegated,z"
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: postgres
+      PGUSER: postgres
+      POSTGRES_DB: postgres
+    command: ["-c", "log_statement=all"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready"]
+      interval: 1s
+      timeout: 5s
+      retries: 10
+      start_period: 80s
+    networks:
+      - shared
+
+  pubsub:
+    image: google/cloud-sdk:529.0.0
+    platform: linux/amd64
+    entrypoint: ["/bin/bash", "-c"]
+    command:
+      - |
+        /pubsub-init/setup_pubsub.sh ${PUBSUB_HOST} ${PUBSUB_PORT} ${GCP_PUBSUB_PROJECT_ID}
+    ports:
+      - "${PUBSUB_PORT}:${PUBSUB_PORT}"
+    volumes:
+      - "./.docker/pubsub:/pubsub-init:delegated,z"
+    healthcheck:
+      test: ["CMD-SHELL", "test -f /tmp/startup.done"]
+      interval: 15s
+      timeout: 10s
+      retries: 20
+      start_period: 30s
+      start_interval: 10s
+    networks:
+      - shared
+
+networks:
+  shared:
+    name: shared
