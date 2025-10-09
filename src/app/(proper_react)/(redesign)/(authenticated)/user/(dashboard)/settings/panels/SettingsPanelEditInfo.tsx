@@ -20,6 +20,7 @@ import { useTelemetry } from "../../../../../../../hooks/useTelemetry";
 import { Button } from "../../../../../../../components/client/Button";
 import styles from "./SettingsPanelEditInfo.module.scss";
 import { type onRemoveEmail, type onAddEmail } from "../actions";
+import { FeatureFlagName } from "../../../../../../../../db/tables/featureFlags";
 
 export type SettingsPanelEditInfoProps = {
   breachCountByEmailAddress: Record<string, number>;
@@ -32,6 +33,7 @@ export type SettingsPanelEditInfoProps = {
     onAddEmail: typeof onAddEmail;
     onRemoveEmail: typeof onRemoveEmail;
   };
+  enabledFeatureFlags: FeatureFlagName[];
 };
 
 function MonitoredEmail(props: {
@@ -156,7 +158,10 @@ function SettingsPanelEditInfo(props: SettingsPanelEditInfoProps) {
       </ul>
       <span className={styles.addEmailButton}>
         {hasMaxEmailAddresses && (
-          <EmailAddressAdder onAddEmail={props.actions.onAddEmail} />
+          <EmailAddressAdder
+            onAddEmail={props.actions.onAddEmail}
+            enabledFeatureFlags={props.enabledFeatureFlags}
+          />
         )}
       </span>
     </>

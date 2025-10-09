@@ -111,9 +111,13 @@ export const DoughnutChart = (props: Props) => {
             ? "modal-active-number-of-exposures-part-one-premium"
             : "modal-active-number-of-exposures-part-one-all",
           {
-            limit: props.isPremiumUser
+            limit: props.enabledFeatureFlags.includes(
+              "IncreasedFreeMaxBreachEmails",
+            )
               ? CONST_MAX_NUM_ADDRESSES_PLUS
-              : CONST_MAX_NUM_ADDRESSES,
+              : props.isPremiumUser
+                ? CONST_MAX_NUM_ADDRESSES_PLUS
+                : CONST_MAX_NUM_ADDRESSES,
           },
         )}
       </p>
