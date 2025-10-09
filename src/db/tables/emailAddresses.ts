@@ -50,9 +50,13 @@ async function addSubscriberUnverifiedEmailHash(
   enabledFeatureFlags: FeatureFlagName[],
 ) {
   const lowerCaseEmail = email.toLowerCase();
-  const maxNumEmailAddresses = enabledFeatureFlags.includes("FreeBreachEmailAddresses")
+  const maxNumEmailAddresses = enabledFeatureFlags.includes(
+    "IncreasedFreeMaxBreachEmails",
+  )
     ? CONST_MAX_NUM_ADDRESSES_PLUS
-    : hasPremium(user) ? CONST_MAX_NUM_ADDRESSES_PLUS : CONST_MAX_NUM_ADDRESSES;
+    : hasPremium(user)
+      ? CONST_MAX_NUM_ADDRESSES_PLUS
+      : CONST_MAX_NUM_ADDRESSES;
 
   const res = await knex.transaction(async (trx) => {
     await trx.raw("SET TRANSACTION ISOLATION LEVEL SERIALIZABLE");

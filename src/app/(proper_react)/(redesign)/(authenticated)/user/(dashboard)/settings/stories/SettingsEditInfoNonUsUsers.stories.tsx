@@ -3,6 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import type { Meta, StoryObj } from "@storybook/nextjs";
+import { faker } from "@faker-js/faker";
 
 import { SettingsWrapper } from "./SettingsStoryWrapper";
 import { CONST_SETTINGS_TAB_SLUGS } from "../../../../../../../../constants";
@@ -66,5 +67,22 @@ export const SettingsEditYourInfoMaxMonitoredEmails: Story = {
       mockedVerifiedEmailFourth,
       mockedVerifiedEmailFifth,
     ],
+  },
+};
+
+export const SettingsEditYourInfoMaxMonitoredEmailsIncreased: Story = {
+  name: "Max monitored emails increased",
+  args: {
+    countryCode: "nl",
+    activeTab: "edit-info",
+    enabledFeatureFlags: [
+      "SidebarNavigationRedesign",
+      "EditScanProfileDetails",
+      "IncreasedFreeMaxBreachEmails",
+    ],
+    emailAddresses: [...Array(19)].map(() => ({
+      ...mockedVerifiedEmailSecond,
+      email: faker.internet.email(),
+    })),
   },
 };

@@ -227,9 +227,13 @@ function MonitoredEmailAddressesSection(
   props: SettingsPanelEditInfoRedesignProps,
 ) {
   const l10n = useL10n();
-  const maxNumEmailAddresses = props.enabledFeatureFlags.includes("FreeBreachEmailAddresses")
+  const maxNumEmailAddresses = props.enabledFeatureFlags.includes(
+    "IncreasedFreeMaxBreachEmails",
+  )
     ? CONST_MAX_NUM_ADDRESSES_PLUS
-    : hasPremium(props.user) ? CONST_MAX_NUM_ADDRESSES_PLUS : CONST_MAX_NUM_ADDRESSES;
+    : hasPremium(props.user)
+      ? CONST_MAX_NUM_ADDRESSES_PLUS
+      : CONST_MAX_NUM_ADDRESSES;
   const hasMaxEmailAddresses =
     props.emailAddresses.length < maxNumEmailAddresses - 1;
 
