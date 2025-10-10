@@ -22,6 +22,10 @@ exposure-card-credit-card = Card de credit
 exposure-card-password = Parolă
 exposure-card-ip-address = Adresă IP
 exposure-card-other = Altele
+# Variables:
+# $data_breach_company is the company associated with the data breach.
+# $data_breach_date is the date of the data breach.
+exposure-card-description-data-breach-action-needed = Informațiile tale au fost expuse în încălcarea de securitate a datelor<data_breach_link>{ $data_breach_company } de la data de { $data_breach_date }.</data_breach_link> Te vom ghida prin pașii pentru rezolvare.
 exposure-card-your-exposed-info = Informații expuse:
 exposure-card-exposure-type-data-broker = Informații de vânzare
 exposure-card-exposure-type-data-breach = Încălcare a securității datelor
