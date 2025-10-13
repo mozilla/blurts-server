@@ -28,15 +28,6 @@ export function canSubscribeToPremium(params: {
   return !hasPremium(params.user) && params.countryCode.toLowerCase() === "us";
 }
 
-// TODO: Add unit test when changing this code:
-/* c8 ignore start */
-export function hasSetupOnerep(
-  user?: Session["user"],
-): user is Session["user"] & { subscriber: { onerep_profile_id: number } } {
-  return typeof user?.subscriber?.onerep_profile_id === "number";
-}
-/* c8 ignore stop */
-
 // Users need to be at least 13 years or older.
 const USER_MIN_AGE = 13;
 export function meetsAgeRequirement(dateOfBirth: ISO8601DateString): boolean {
