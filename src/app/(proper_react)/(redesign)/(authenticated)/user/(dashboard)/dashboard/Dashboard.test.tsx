@@ -372,6 +372,37 @@ it("shows chart tooltip on the action needed tab, non-US user", async () => {
   expect(dialogContentPart).toBeInTheDocument();
 });
 
+it("shows chart tooltip on the action needed tab, non-US user (feature flag IncreasedFreeMaxBreachEmails)", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(DashboardNonUsNoBreaches, Meta);
+  render(
+    <ComposedDashboard
+      enabledFeatureFlags={["IncreasedFreeMaxBreachEmails"]}
+    />,
+  );
+
+  const chartCaption = screen.getByText(
+    "This chart shows how many times your info is actively exposed.",
+  );
+  expect(chartCaption).toBeInTheDocument();
+  const chartTooltip = within(chartCaption).getByRole("button", {
+    name: "Open modal",
+  });
+  expect(chartTooltip).toBeInTheDocument();
+  await user.click(chartTooltip);
+
+  expect(
+    screen.getByRole("dialog", {
+      name: "About your number of active exposures",
+    }),
+  ).toBeInTheDocument();
+
+  const dialogContentPart = screen.getByText(
+    "This chart includes the total number of times we found each type of data exposed across all data breaches for up to ⁨20⁩ email addresses that you are currently monitoring.",
+  );
+  expect(dialogContentPart).toBeInTheDocument();
+});
+
 it("shows chart tooltip on the fixed tab, non-US user", async () => {
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(DashboardNonUsNoBreaches, Meta);
