@@ -25,6 +25,7 @@ import {
   SettingsEditYourInfo,
   SettingsEditYourInfoAdditionalMonitoredEmails,
   SettingsEditYourInfoMaxMonitoredEmails,
+  SettingsEditYourInfoMaxMonitoredEmailsIncreased,
 } from "./stories/SettingsEditInfoNonUsUsers.stories";
 import { mockedActions } from "./stories/SettingsStoryWrapper";
 
@@ -67,6 +68,25 @@ describe("Settings page redesign", () => {
       render(<ComposedStory />);
 
       const maxEmailsIndicator = screen.getByText("Add up to ⁨5⁩");
+      expect(maxEmailsIndicator).toBeInTheDocument();
+    });
+
+    it("shows the max increased number of emails that can be added to the list of addresses to monitor for breaches", () => {
+      const ComposedStory = composeStory(
+        SettingsEditYourInfo,
+        SettingsEditYourInfoMeta,
+      );
+      render(
+        <ComposedStory
+          enabledFeatureFlags={[
+            "SidebarNavigationRedesign",
+            "EditScanProfileDetails",
+            "IncreasedFreeMaxBreachEmails",
+          ]}
+        />,
+      );
+
+      const maxEmailsIndicator = screen.getByText("Add up to ⁨20⁩");
       expect(maxEmailsIndicator).toBeInTheDocument();
     });
 
@@ -235,6 +255,19 @@ describe("Settings page redesign", () => {
     it("does not show the option to add email addresses when the max number of email addresses have been added", () => {
       const ComposedStory = composeStory(
         SettingsEditYourInfoMaxMonitoredEmails,
+        SettingsEditYourInfoMeta,
+      );
+      render(<ComposedStory />);
+
+      const addEmailButton = screen.queryByRole("button", {
+        name: "Add email address",
+      });
+      expect(addEmailButton).not.toBeInTheDocument();
+    });
+
+    it("does not show the option to add email addresses when the max increased number of email addresses have been added", () => {
+      const ComposedStory = composeStory(
+        SettingsEditYourInfoMaxMonitoredEmailsIncreased,
         SettingsEditYourInfoMeta,
       );
       render(<ComposedStory />);
