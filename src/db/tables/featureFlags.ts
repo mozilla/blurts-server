@@ -58,7 +58,6 @@ export const featureFlagNames = [
   "LatestScanDateCsatSurvey",
   "AutomaticRemovalCsatSurvey",
   "AdditionalRemovalStatuses",
-  "PetitionBannerCsatSurvey",
   "PromptNoneAuthFlow",
   "GA4SubscriptionEvents",
   "DataBrokerRemovalTimeEstimateLabel",
