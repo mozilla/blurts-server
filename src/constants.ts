@@ -35,8 +35,6 @@ export const CONST_URL_TERMS =
 export const CONST_URL_PRIVACY_POLICY =
   "https://www.mozilla.org/privacy/subscription-services/";
 export const CONST_URL_MOZILLA_BASKET = "https://basket.mozilla.org";
-export const CONST_URL_DATA_PRIVACY_PETITION_BANNER =
-  "https://foundation.mozilla.org/campaigns/demand-privacy-for-all-support-a-us-data-privacy-law-v1/?utm_source=monitor&utm_medium=in-product&utm_campaign=24-pfa";
 export const CONST_URL_MONITOR_GITHUB =
   "https://github.com/mozilla/blurts-server";
 export const CONST_DAY_MILLISECONDS = 24 * 60 * 60 * 1000;
