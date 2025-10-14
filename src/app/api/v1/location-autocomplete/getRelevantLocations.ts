@@ -5,10 +5,26 @@
 import uFuzzy from "@leeoniya/ufuzzy";
 import { RelevantLocation } from "./types";
 
+// Guard against pathological inputs that would make ufuzzy's regex generation hang.
+export const MAX_SEARCH_QUERY_LENGTH = 128;
+
 export function getRelevantLocations(
   searchQuery: string,
   knownLocations: RelevantLocation[],
 ): RelevantLocation[] {
+  if (typeof searchQuery !== "string") {
+    return [];
+  }
+
+  const normalizedSearchQuery = searchQuery.trim();
+
+  if (
+    normalizedSearchQuery.length === 0 ||
+    normalizedSearchQuery.length > MAX_SEARCH_QUERY_LENGTH
+  ) {
+    return [];
+  }
+
   /**
    * Fully spelled-out names of locations in the US
    *
@@ -55,7 +71,7 @@ export function getRelevantLocations(
 
   const nameIndexes = fuzzySearch.filter(
     locationNamesAndAlternateNames,
-    searchQuery,
+    normalizedSearchQuery,
   );
   if (!nameIndexes) {
     return [];
@@ -64,12 +80,12 @@ export function getRelevantLocations(
   const info = fuzzySearch.info(
     nameIndexes,
     locationNamesAndAlternateNames,
-    searchQuery,
+    normalizedSearchQuery,
   );
   const order = fuzzySearch.sort(
     info,
     locationNamesAndAlternateNames,
-    searchQuery,
+    normalizedSearchQuery,
   );
   // Since `order` contains a ranked array of indexes to the indexes of the most
   // closely matching names, we can retrieve the associated location data from

@@ -2,7 +2,10 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { getRelevantLocations } from "./getRelevantLocations";
+import {
+  getRelevantLocations,
+  MAX_SEARCH_QUERY_LENGTH,
+} from "./getRelevantLocations";
 import { RelevantLocation } from "./types";
 
 describe("getRelevantLocations", () => {
@@ -45,6 +48,26 @@ describe("getRelevantLocations", () => {
 
     // Act:
     const results = getRelevantLocations("", availableLocations);
+
+    // Assert:
+    expect(results).toStrictEqual([]);
+  });
+
+  it("ignores search terms that exceed the maximum supported length", () => {
+    // Arrange:
+    const availableLocations: RelevantLocation[] = [
+      {
+        id: "42",
+        n: "Tulsa",
+        s: "OK",
+      },
+    ];
+
+    // Act:
+    const results = getRelevantLocations(
+      "a".repeat(MAX_SEARCH_QUERY_LENGTH + 1),
+      availableLocations,
+    );
 
     // Assert:
     expect(results).toStrictEqual([]);

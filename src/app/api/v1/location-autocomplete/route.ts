@@ -6,9 +6,14 @@ import { NextResponse, NextRequest } from "next/server";
 
 import { RelevantLocation } from "./types";
 // The location autocomplete data will be created during the build step.
-// @ts-ignore-next-line
-import locationData from "../../../../../locationAutocompleteData.json";
+import locationDataJson from "../../../../../locationAutocompleteData.json";
 import { getRelevantLocations } from "./getRelevantLocations";
+
+type LocationDataFile = {
+  data: RelevantLocation[];
+};
+
+const locationData = locationDataJson as LocationDataFile | undefined;
 
 export type MatchingLocations = Array<RelevantLocation> | [];
 
@@ -32,7 +37,7 @@ function getLocationsResults({
     maxResults: 5,
   },
 }: SearchLocationParams): SearchLocationResults {
-  if (!locationData) {
+  if (!locationData?.data) {
     throw new Error(
       "No location data available: You may need to run `npm run create-location-data`.",
     );
@@ -40,16 +45,21 @@ function getLocationsResults({
 
   const { minQueryLength, maxResults } = config;
 
+  const normalizedSearchQuery =
+    typeof searchQuery === "string" ? searchQuery.trim() : "";
+
+  const { data: knownLocations } = locationData;
+
   const matchingLocations =
-    searchQuery && searchQuery.length >= minQueryLength
-      ? getRelevantLocations(searchQuery, locationData.data)
+    normalizedSearchQuery.length >= minQueryLength
+      ? getRelevantLocations(normalizedSearchQuery, knownLocations)
       : [];
 
   const locationsResults =
     maxResults > 0 ? matchingLocations.slice(0, maxResults) : matchingLocations;
 
   return {
-    searchQuery,
+    searchQuery: normalizedSearchQuery,
     results: locationsResults as MatchingLocations,
   };
 }
