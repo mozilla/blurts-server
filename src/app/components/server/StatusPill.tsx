@@ -53,12 +53,6 @@ export const StatusPill = (props: Props) => {
               exposure: props.exposure,
               pillType,
               l10n,
-              // TODO: MNTOR-3886 - Remove EnableRemovalUnderMaintenanceStep feature flag
-              isDataBrokerUnderMaintenance: props.enabledFeatureFlags?.includes(
-                "EnableRemovalUnderMaintenanceStep",
-              )
-                ? props.isRemovalUnderMaintenance
-                : undefined,
             })
           : getStatusLabel({
               pillType,
@@ -78,7 +72,6 @@ type StatusLabelProps = {
   exposure?: Exposure;
   pillType: string;
   l10n: ExtendedReactLocalization;
-  isDataBrokerUnderMaintenance?: boolean;
 };
 
 const getStatusLabel = (props: StatusLabelProps): string => {
@@ -89,10 +82,6 @@ const getStatusLabel = (props: StatusLabelProps): string => {
 
   if (manuallyRemoved) {
     return props.l10n.getString("status-pill-removed");
-  }
-
-  if (props.isDataBrokerUnderMaintenance) {
-    return props.l10n.getString("status-pill-action-needed");
   }
 
   switch (props.pillType) {
@@ -119,17 +108,9 @@ export const getExposureStatus = (
     const additionalRemovalStatusesEnabled = enabledFeatureFlags.includes(
       "AdditionalRemovalStatuses",
     );
-    // TODO: MNTOR-3886 - Remove EnableRemovalUnderMaintenanceStep feature flag
-    const manualRemovalEnabled = enabledFeatureFlags.includes(
-      "EnableRemovalUnderMaintenanceStep",
-    );
 
     if (exposure.manually_resolved) {
       return "fixed";
-    }
-
-    if (manualRemovalEnabled && isRemovalUnderMaintenance) {
-      return "actionNeeded";
     }
 
     switch (exposure.status) {
