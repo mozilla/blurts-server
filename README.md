@@ -87,7 +87,13 @@ This will automatically provision the databases 'blurts' and 'test-blurts', and 
    docker compose --env-file .env.local up -d
    ```
 
-3. To tear down (this will delete stored data):
+3. Run migrations
+
+   ```sh
+   npm run db:migrate
+   ```
+
+4. To tear down (this will delete stored data):
 
    ```sh
    docker compose --env-file .env.local down
@@ -143,6 +149,13 @@ This will automatically provision the databases 'blurts' and 'test-blurts', and 
    ```
 
 8. Ensure that you have the right `env` variables/keys set in your `.env.local` file. You can retrieve the variables from the Firefox Monitor 1Password Vault, or through [Magic-Wormhole](https://magic-wormhole.readthedocs.io/en/latest/), by asking one of the our engineers.
+
+### Set up required environment variables
+
+The following variables must be set in `.env.local` and can be found in the Firefox Monitor 1Password vault.
+
+- `OAUTH_CLIENT_SECRET`: set to the dev environment secret key
+- `ONEREP_API_KEY`: set to the onerep "sandbox" key (fake data)
 
 ### Run
 
