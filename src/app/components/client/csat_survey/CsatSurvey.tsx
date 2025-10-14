@@ -10,13 +10,9 @@ import { CsatSurveyBanner } from "./CsatSurveyBanner";
 import { TabType } from "../../../(proper_react)/(redesign)/(authenticated)/user/(dashboard)/dashboard/View";
 import { getAutomaticRemovalCsatSurvey } from "./surveys/automaticRemovalCsatSurvey";
 import { getLatestScanDateCsatSurvey } from "./surveys/latestScanDateCsatSurvey";
-import {
-  COOKIE_DISMISSAL_MAX_AGE_IN_SECONDS,
-  DismissalData,
-} from "../../../hooks/useLocalDismissal";
+import { COOKIE_DISMISSAL_MAX_AGE_IN_SECONDS } from "../../../hooks/useLocalDismissal";
 import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 import { FeatureFlagName } from "../../../../db/tables/featureFlags";
-import { getPetitionBannerCsatSurvey } from "./surveys/petitionBannerCsatSurvey";
 import { getRemovalTimeEstimatesCsatSurvey } from "./surveys/removalTimeEstimates";
 
 export type CsatSurveyProps = {
@@ -29,8 +25,6 @@ export type CsatSurveyProps = {
   elapsedTimeInDaysSinceInitialScan: number | null;
   lastScanDate: Date | null;
   signInCount: number | null;
-  shouldShowPetitionBanner: boolean;
-  localDismissalPetitionBanner: DismissalData;
   isEligibleForPremium: boolean;
 };
 
@@ -59,9 +53,6 @@ export const CsatSurvey = (props: CsatSurveyProps) => {
         hasFirstMonitoringScan: props.hasFirstMonitoringScan,
         lastScanDate: props.lastScanDate,
       }),
-    props.enabledFeatureFlags.includes("PetitionBannerCsatSurvey") &&
-      props.isEligibleForPremium &&
-      getPetitionBannerCsatSurvey(surveyOptions),
     props.enabledFeatureFlags.includes("DataBrokerRemovalTimeEstimateCsat") &&
       getRemovalTimeEstimatesCsatSurvey(surveyOptions),
   ];
@@ -92,16 +83,6 @@ export const CsatSurvey = (props: CsatSurveyProps) => {
       });
     }
   });
-
-  // Only show the petition CSAT banner for users that are part of
-  // the `data-privacy-petition-banner` experiment if the petition has
-  // already been interacted with.
-  if (
-    props.shouldShowPetitionBanner &&
-    !props.localDismissalPetitionBanner.isDismissed
-  ) {
-    return;
-  }
 
   return (
     <CsatSurveyBanner

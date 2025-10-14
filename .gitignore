@@ -75,3 +75,6 @@ next-env.d.ts
 
 # Lighthouse CI
 .lighthouseci
+
+# vscode debugger
+.vscode/launch.json
