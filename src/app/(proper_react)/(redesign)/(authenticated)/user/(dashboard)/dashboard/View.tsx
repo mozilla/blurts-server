@@ -178,7 +178,6 @@ export const View = (props: Props) => {
     arraySortedByDate.filter((exposure: Exposure) => {
       const exposureStatus = getExposureStatus(
         exposure,
-        isDataBrokerUnderMaintenance(exposure),
         props.enabledFeatureFlags,
       );
 
@@ -597,13 +596,3 @@ export const View = (props: Props) => {
     </div>
   );
 };
-
-export function isDataBrokerUnderMaintenance(
-  exposure: Exposure | OnerepScanResultDataBrokerRow,
-): boolean {
-  return (
-    isScanResult(exposure) &&
-    exposure.broker_status === "removal_under_maintenance" &&
-    exposure.status !== "removed"
-  );
-}
