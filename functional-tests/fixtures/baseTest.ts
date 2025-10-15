@@ -12,7 +12,6 @@ export const defaultLocalForcedFeatureFlags: FeatureFlagName[] = [
   "CancellationFlow",
   "AutomaticRemovalCsatSurvey",
   "AdditionalRemovalStatuses",
-  "PromptNoneAuthFlow",
   "DataBrokerRemovalTimeEstimateLabel",
   "LandingPageRedesign",
   "CirrusV2",
