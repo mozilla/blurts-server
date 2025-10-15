@@ -24,7 +24,7 @@ const handler = async (req: NextRequest, res: unknown) => {
       const cookieStore = req.cookies;
       const callbackUrl = cookieStore.get("next-auth.callback-url")?.value;
       const redirectUrl =
-        callbackUrl && callbackUrl.startsWith(process.env.SERVER_URL as string)
+        callbackUrl && isValidCallbackUrl(callbackUrl)
           ? callbackUrl
           : (process.env.SERVER_URL as string);
 
@@ -38,5 +38,11 @@ const handler = async (req: NextRequest, res: unknown) => {
     authOptions,
   ) as Promise<Response>;
 };
+
+function isValidCallbackUrl(callbackUrlString: string): boolean {
+  const serverUrl = new URL(process.env.SERVER_URL!);
+  const callbackUrl = new URL(callbackUrlString);
+  return serverUrl.origin === callbackUrl.origin;
+}
 
 export { handler as GET, handler as POST };
