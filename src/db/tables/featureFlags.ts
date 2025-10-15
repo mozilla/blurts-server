@@ -93,16 +93,23 @@ export async function getEnabledFeatureFlags(
 ): Promise<FeatureFlagName[]> {
   // Force feature flags for E2E tests via URL query params
   if (process.env.E2E_TEST_ENV === "local") {
-    const { headers } = await import("next/headers");
-    const forcedFeatureFlags = (await headers()).get("x-forced-feature-flags");
+    try {
+      const { headers } = await import("next/headers");
+      const forcedFeatureFlags = (await headers()).get(
+        "x-forced-feature-flags",
+      );
 
-    if (forcedFeatureFlags) {
-      const forcedFeatureFlagsFiltered = forcedFeatureFlags
-        .split(",")
-        .filter((forcedFeatureFlag) =>
-          featureFlagNames.includes(forcedFeatureFlag as FeatureFlagName),
-        );
-      return [...new Set(forcedFeatureFlagsFiltered)] as FeatureFlagName[];
+      if (forcedFeatureFlags) {
+        const forcedFeatureFlagsFiltered = forcedFeatureFlags
+          .split(",")
+          .filter((forcedFeatureFlag) =>
+            featureFlagNames.includes(forcedFeatureFlag as FeatureFlagName),
+          );
+        return [...new Set(forcedFeatureFlagsFiltered)] as FeatureFlagName[];
+      }
+    } catch (error) {
+      // next/headers not available (e.g., running in cronjob context)
+      console.debug(`next/headers not available: ${JSON.stringify(error)}`);
     }
   }
 
