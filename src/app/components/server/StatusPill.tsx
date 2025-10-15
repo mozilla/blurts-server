@@ -30,7 +30,6 @@ type ExposureProps = { exposure: Exposure };
 export type Props = (DirectTypeProps | ExposureProps) & {
   enabledFeatureFlags?: FeatureFlagName[];
   note?: string;
-  isRemovalUnderMaintenance?: boolean; // is only set in ScanResultCard
 };
 
 // This component just renders HTML without business logic:
@@ -39,11 +38,7 @@ export const StatusPill = (props: Props) => {
 
   const pillType = hasDirectType(props)
     ? props.type
-    : getExposureStatus(
-        props.exposure,
-        props.isRemovalUnderMaintenance || false,
-        props.enabledFeatureFlags ?? [],
-      );
+    : getExposureStatus(props.exposure, props.enabledFeatureFlags ?? []);
 
   return (
     <div className={styles.pillWrapper}>
@@ -101,7 +96,6 @@ const getStatusLabel = (props: StatusLabelProps): string => {
 
 export const getExposureStatus = (
   exposure: Exposure,
-  isRemovalUnderMaintenance: boolean,
   enabledFeatureFlags: FeatureFlagName[],
 ): StatusPillType => {
   if (isScanResult(exposure)) {
