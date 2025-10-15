@@ -109,7 +109,7 @@ export async function getEnabledFeatureFlags(
       }
     } catch (error) {
       // next/headers not available (e.g., running in cronjob context)
-      console.debug(`next/headers not available: ${JSON.stringify(error)}`);
+      console.info(`next/headers not available: ${JSON.stringify(error)}`);
     }
   }
 
