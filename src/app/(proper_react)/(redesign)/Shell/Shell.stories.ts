@@ -41,10 +41,4 @@ const meta: Meta<typeof Shell> = {
 export default meta;
 type Story = StoryObj<typeof Shell>;
 
-export const ShellAuthenticated: Story = {};
-
-export const ShellAuthenticatedRedesign: Story = {
-  args: {
-    enabledFeatureFlags: ["SidebarNavigationRedesign"],
-  },
-};
+export const ShellAuthenticatedRedesign: Story = {};
