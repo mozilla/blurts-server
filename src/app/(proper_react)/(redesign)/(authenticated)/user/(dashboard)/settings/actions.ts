@@ -37,6 +37,8 @@ import { type NormalizedProfileData } from "./panels/SettingsPanelEditProfile/Ed
 import { OnerepUsPhoneNumber } from "../../../../../../functions/server/onerep";
 import { getEnabledFeatureFlags } from "../../../../../../../db/tables/featureFlags";
 
+const RECENT_AUTH_WINDOW_MS = 60 * 60 * 1000;
+
 export type AddEmailFormState =
   | { success?: never }
   | { success: true; submittedAddress: string }
@@ -192,6 +194,17 @@ export async function onRemoveEmail(email: SanitizedEmailAddressRow) {
   }
 }
 
+const createRecentAuthErrorResponse = async () => {
+  const l10n = getL10n(await getAcceptLangHeaderInServerComponents());
+  return {
+    success: false,
+    error: "delete-account-auth-too-old",
+    errorMessage: l10n.getString(
+      "settings-delete-account-recent-auth-required",
+    ),
+  } as const;
+};
+
 export async function onDeleteAccount() {
   const session = await getServerSession();
   if (!session?.user.subscriber?.fxa_uid) {
@@ -201,6 +214,22 @@ export async function onDeleteAccount() {
       error: "delete-account-without-active-session",
       errorMessage: `User tried to delete their account without an active session.`,
     };
+  }
+
+  const authenticatedAt = session.authenticatedAt
+    ? Date.parse(session.authenticatedAt)
+    : NaN;
+  if (!Number.isFinite(authenticatedAt)) {
+    logger.warn("delete-account-missing-authenticated-at", {
+      subscriber_id: session.user.subscriber.id,
+    });
+    return createRecentAuthErrorResponse();
+  }
+  if (Date.now() - authenticatedAt > RECENT_AUTH_WINDOW_MS) {
+    logger.warn("delete-account-authenticated-at-too-old", {
+      subscriber_id: session.user.subscriber.id,
+    });
+    return createRecentAuthErrorResponse();
   }
 
   const subscriber = await getSubscriberByFxaUid(
@@ -229,6 +258,7 @@ export async function onDeleteAccount() {
   // possibile, so instead the sign-out and redirect needs to happen on the
   // client side after this action completes.
   // See https://github.com/nextauthjs/next-auth/discussions/5334.
+  return { success: true } as const;
 }
 
 export async function onHandleUpdateProfileData(

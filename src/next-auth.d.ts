@@ -46,6 +46,7 @@ declare module "next-auth" {
   /** Session data available after deserialising the JWT */
   interface Session {
     error?: "RefreshAccessTokenError";
+    authenticatedAt?: ISO8601DateString;
     user: {
       fxa?: {
         /** The value of the Accept-Language header when the user signed up for their Firefox Account */
@@ -76,5 +77,6 @@ declare module "next-auth/jwt" {
       subscriptions: Array<string>;
     };
     subscriber?: SerializedSubscriber;
+    authenticatedAt?: number;
   }
 }

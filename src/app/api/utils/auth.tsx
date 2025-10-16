@@ -118,6 +118,9 @@ export const authOptions: AuthOptions = {
     },
     // Unused arguments also listed to show what's available:
     async jwt({ token, account, profile, trigger }) {
+      if (account) {
+        token.authenticatedAt = Date.now();
+      }
       if (trigger === "update") {
         // Refresh the user data from FxA, in case e.g. new subscriptions got added:
         const subscriberFromDb = await getSubscriberByFxaUid(
@@ -297,6 +300,9 @@ export const authOptions: AuthOptions = {
             session.error = "RefreshAccessTokenError";
           }
         }
+      }
+      if (token.authenticatedAt) {
+        session.authenticatedAt = new Date(token.authenticatedAt).toISOString();
       }
 
       return session;
