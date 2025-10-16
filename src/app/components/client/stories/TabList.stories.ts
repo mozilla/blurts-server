@@ -34,7 +34,7 @@ const tabsData = [
 export const TabListItemDefault: Story = {
   args: {
     tabs: tabsData,
-    onSelectionChange: (selectedKey) => console.log(selectedKey),
+    onSelectionChange: () => {},
   },
 };
 
@@ -42,6 +42,6 @@ export const TabListItemDefaultSelection: Story = {
   args: {
     tabs: tabsData,
     defaultSelectedKey: "second",
-    onSelectionChange: (selectedKey) => console.log(selectedKey),
+    onSelectionChange: () => {},
   },
 };
