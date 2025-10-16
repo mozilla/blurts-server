@@ -10,14 +10,8 @@ import * as grpc from "@grpc/grpc-js";
 import type { SubscriberClient } from "@google-cloud/pubsub/build/src/v1/subscriber_client.js";
 import type { EmailAddressRow, SubscriberRow } from "knex/types/tables";
 
-import {
-  getSubscribersByHashes,
-  knexSubscribers,
-} from "../../db/tables/subscribers";
-import {
-  getEmailAddressesByHashes,
-  knexEmailAddresses,
-} from "../../db/tables/emailAddresses";
+import { getSubscribersByHashes } from "../../db/tables/subscribers";
+import { getEmailAddressesByHashes } from "../../db/tables/emailAddresses";
 import {
   getNotifiedSubscribersForBreach,
   addEmailNotification,
@@ -29,7 +23,6 @@ import {
   getAddressesAndLanguageForEmail,
   getBreachByName,
   getAllBreachesFromDb,
-  knexHibp,
 } from "../../utils/hibp";
 import { renderEmail } from "../../emails/renderEmail";
 import { BreachAlertEmail } from "../../emails/templates/breachAlert/BreachAlertEmail";
@@ -49,6 +42,7 @@ import { logger } from "../../app/functions/server/logging";
 import { getExperimentationIdFromSubscriber } from "../../app/functions/server/getExperimentationId";
 import { getExperiments } from "../../app/functions/server/getExperiments";
 import { getLocale } from "../../app/functions/universal/getLocale";
+import createDbConnection from "../../db/connect";
 
 const SENTRY_SLUG = "cron-breach-alerts";
 
@@ -209,7 +203,7 @@ export async function poll(
       const hashes = hashSuffixes.map(
         (suffix) => reqHashPrefix + suffix.toLowerCase(),
       );
-
+      // TODO - Don't load all of monitor's users for each message
       const subscribers = await getSubscribersByHashes(hashes);
       const emailAddresses = await getEmailAddressesByHashes(hashes);
       const recipients: Array<
@@ -223,6 +217,7 @@ export async function poll(
 
       const utmCampaignId = "breach-alert";
       const notifiedRecipients: string[] = [];
+      const errorRecipients: string[] = [];
 
       for (const recipient of recipients) {
         logger.info(
@@ -317,40 +312,54 @@ export async function poll(
                 />,
               ),
             );
-          } catch (e) {
-            console.error("Failed to add email notification to table: ", e);
-            setTimeout(process.exit, 1000);
-          }
-
-          // mark email as notified in database
-          // if this call ever fails, stop stop the script with an error
-          try {
             await markEmailAsNotified(subscriberId, breachId, recipientEmail);
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          } catch (e: any) {
-            console.error("Failed to mark email as notified: ", e);
-            throw new Error(e);
+            notifiedRecipients.push(breachedEmail);
+          } catch (e) {
+            logger.error("Failed to notify user of breach: ", e);
+            // TODO - need to ensure that properly handle termination signal
+            // in between sending the email and marking as notified, otherwise
+            // there is an unlikely edge case of sending multiple emails
+            errorRecipients.push(breachedEmail);
+            Sentry.captureException(e, {
+              tags: {
+                breach_name: breachAlert.Name,
+                notification_stage: "email_send",
+              },
+              extra: {
+                subscriber_id: subscriberId,
+                breach_id: breachId,
+              },
+            });
           }
-          notifiedRecipients.push(breachedEmail);
         }
       }
-
       console.info("notified", { length: notifiedRecipients.length });
-
-      subClient.acknowledge({
-        subscription: formattedSubscription,
-        ackIds:
-          typeof message.ackId === "string"
-            ? [message.ackId]
-            : /* c8 ignore next 4 */
-              // When porting this code to TypeScript, the undefined/null case
-              // wasn't dealt with, so presumably our messages always have an
-              // ackId:
-              message.ackId,
-      });
+      // Only acknowledge for full success; allow partial failures to reprocess
+      if (errorRecipients.length === 0) {
+        subClient.acknowledge({
+          subscription: formattedSubscription,
+          ackIds:
+            typeof message.ackId === "string"
+              ? [message.ackId]
+              : /* c8 ignore next 4 */
+                // When porting this code to TypeScript, the undefined/null case
+                // wasn't dealt with, so presumably our messages always have an
+                // ackId:
+                message.ackId,
+        });
+      }
       /* c8 ignore start */
     } catch (error) {
       console.error(`Notifying subscribers of breach failed: ${error}`);
+      Sentry.captureException(error, {
+        tags: {
+          breach_name: breachAlert.Name,
+          notification_stage: "initial_processing",
+        },
+        extra: {
+          breach_id: breachId,
+        },
+      });
     }
     /* c8 ignore stop */
   }
@@ -440,10 +449,8 @@ if (process.env.NODE_ENV !== "test") {
     })
     .catch((err) => console.error("breach-alerts ended with an error:", err))
     .finally(async () => {
-      // Tear down knex connection pools
-      await knexSubscribers.destroy();
-      await knexEmailAddresses.destroy();
-      await knexHibp.destroy();
+      // Tear down cached connection pool
+      await createDbConnection().destroy();
       closeEmailPool();
       Sentry.captureCheckIn({
         checkInId,
