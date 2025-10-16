@@ -1,0 +1,13 @@
+@use "../../../../../../tokens";
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: tokens.$spacing-xs;
+}
+
+.guardMessage {
+  color: tokens.$color-text-secondary;
+  font: tokens.$text-body-sm;
+  margin: 0;
+}
