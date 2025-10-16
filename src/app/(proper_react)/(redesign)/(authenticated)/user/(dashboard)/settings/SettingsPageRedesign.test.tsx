@@ -1129,6 +1129,6 @@ describe("SettingsContent activeTab handling", () => {
     const ComposedStory = composeStory(SettingsNoDefaultTab, SettingsMeta);
     render(<ComposedStory />);
     const editYourInfoHeader = screen.queryAllByText("Update scan info");
-    expect(editYourInfoHeader[0]).toBeInTheDocument();
+    expect(editYourInfoHeader[1]).toBeInTheDocument();
   });
 });
