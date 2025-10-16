@@ -15,7 +15,6 @@ import { ReactAriaI18nProvider } from "../../contextProviders/react-aria";
 import { CountryCodeProvider } from "../../contextProviders/country-code";
 import { getCountryCode } from "../functions/server/getCountryCode";
 import { PageLoadEvent } from "../components/client/PageLoadEvent";
-import { getEnabledFeatureFlags } from "../../db/tables/featureFlags";
 import { PromptNoneAuth } from "../components/client/PromptNoneAuth";
 import { addClientIdForSubscriber } from "../../db/tables/google_analytics_clients";
 import { logger } from "../functions/server/logging";
@@ -30,13 +29,6 @@ export default async function Layout({ children }: { children: ReactNode }) {
   const headersList = await headers();
   const countryCode = getCountryCode(headersList);
   const session = await getServerSession();
-  const enabledFlags = await getEnabledFeatureFlags(
-    session === null
-      ? { isSignedOut: true }
-      : {
-          email: session.user.email,
-        },
-  );
   const billing = getSubscriptionBillingAmount();
 
   const cookieStore = await cookies();
@@ -72,9 +64,7 @@ export default async function Layout({ children }: { children: ReactNode }) {
         <CountryCodeProvider countryCode={countryCode}>
           <CookiesProvider>
             <SubscriptionBillingProvider value={billing}>
-              {enabledFlags.includes("PromptNoneAuthFlow") && !session && (
-                <PromptNoneAuth />
-              )}
+              {!session && <PromptNoneAuth />}
               {children}
             </SubscriptionBillingProvider>
             <PageLoadEvent />
