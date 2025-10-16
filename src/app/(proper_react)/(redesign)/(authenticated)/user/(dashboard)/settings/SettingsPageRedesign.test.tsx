@@ -10,6 +10,7 @@ import { axe } from "jest-axe";
 import SettingsMeta, {
   SettingsEditManageAccount,
   SettingsEditNotifications,
+  SettingsNoDefaultTab,
 } from "./stories/SettingsRedesign.stories";
 import SettingsEditYourInfoMeta, {
   SettingsEditYourInfoDetailsSaved,
@@ -1120,5 +1121,14 @@ describe("Settings page redesign", () => {
       const { container } = render(<ComposedStory />);
       expect(await axe(container)).toHaveNoViolations();
     }, 10_000);
+  });
+});
+
+describe("SettingsContent activeTab handling", () => {
+  it("defaults to the first tab (edit your info) when activeTab is not provided", () => {
+    const ComposedStory = composeStory(SettingsNoDefaultTab, SettingsMeta);
+    render(<ComposedStory />);
+    const editYourInfoHeader = screen.queryAllByText("Update scan info");
+    expect(editYourInfoHeader[0]).toBeInTheDocument();
   });
 });
