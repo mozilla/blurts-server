@@ -879,7 +879,7 @@ it("shows How It Works navbar link to US users, without Premium, no scan, no bre
   render(<ComposedDashboard />);
 
   const howItWorksLink = screen.queryAllByRole("link", {
-    name: "How It Works",
+    name: "How it works",
   });
 
   expect(howItWorksLink.length).toBe(2);
