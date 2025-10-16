@@ -320,6 +320,16 @@ export async function poll(
             // in between sending the email and marking as notified, otherwise
             // there is an unlikely edge case of sending multiple emails
             errorRecipients.push(breachedEmail);
+            Sentry.captureException(e, {
+              tags: {
+                breach_name: breachAlert.Name,
+                notification_stage: "email_send",
+              },
+              extra: {
+                subscriber_id: subscriberId,
+                breach_id: breachId,
+              },
+            });
           }
         }
       }
@@ -341,6 +351,15 @@ export async function poll(
       /* c8 ignore start */
     } catch (error) {
       console.error(`Notifying subscribers of breach failed: ${error}`);
+      Sentry.captureException(error, {
+        tags: {
+          breach_name: breachAlert.Name,
+          notification_stage: "initial_processing",
+        },
+        extra: {
+          breach_id: breachId,
+        },
+      });
     }
     /* c8 ignore stop */
   }
