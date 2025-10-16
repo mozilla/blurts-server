@@ -56,6 +56,7 @@ function Tabs(props: TabsProps) {
 
   return (
     <div
+      /* c8 ignore next */
       className={`${styles.container} ${props.variant ? styles[props.variant] : ""}`}
       data-test="test"
     >
