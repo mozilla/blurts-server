@@ -19,7 +19,6 @@ export const defaultLocalForcedFeatureFlags: FeatureFlagName[] = [
   "SidebarNavigationRedesign",
   "EditScanProfileDetails",
   "SubPlat3",
-  "Announcements",
 ];
 
 const test = baseTest.extend<{
