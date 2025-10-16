@@ -25,10 +25,7 @@ export const SettingsEditManageAccount: Story = {
   args: {
     countryCode: "us",
     activeTab: "manage-account",
-    enabledFeatureFlags: [
-      "SidebarNavigationRedesign",
-      "EditScanProfileDetails",
-    ],
+    enabledFeatureFlags: ["EditScanProfileDetails"],
   },
 };
 
@@ -37,9 +34,6 @@ export const SettingsEditNotifications: Story = {
   args: {
     countryCode: "us",
     activeTab: "notifications",
-    enabledFeatureFlags: [
-      "SidebarNavigationRedesign",
-      "EditScanProfileDetails",
-    ],
+    enabledFeatureFlags: ["EditScanProfileDetails"],
   },
 };

@@ -4,10 +4,9 @@
 
 "use client";
 
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { useL10n } from "../../../../../../hooks/l10n";
-import { TabList } from "../../../../../../components/client/TabList";
 import styles from "./SettingsContent.module.scss";
 import { SettingsPanel, SettingsProps } from "./panels";
 import { TabType } from "./View";
@@ -54,9 +53,7 @@ function SettingsContent(props: SettingsProps) {
       key: "manage-account",
     },
   ];
-  const [activeTab, setActiveTab] = useState<TabType>(
-    props.activeTab ?? tabsData[0].key,
-  );
+  const activeTab = props.activeTab ?? tabsData[0].key;
 
   // Update the URL pathname when navigating through the panels
   // without causing the page to reload.
@@ -72,20 +69,6 @@ function SettingsContent(props: SettingsProps) {
 
   return (
     <main className={styles.main}>
-      {!props.enabledFeatureFlags.includes("SidebarNavigationRedesign") && (
-        <header className={styles.header}>
-          <h2>{l10n.getString("settings-page-title")}</h2>
-          <TabList
-            selectedKey={activeTab}
-            tabs={tabsData}
-            orientation="vertical"
-            onSelectionChange={(selectedKey) => {
-              setActiveTab(selectedKey as TabType);
-            }}
-            variant="secondary"
-          />
-        </header>
-      )}
       <div
         className={`${styles.content} ${props.enabledFeatureFlags.includes("EditScanProfileDetails") && (activeTab === "edit-info" || activeTab === "edit-profile") ? "" : styles.isCard}`}
       >

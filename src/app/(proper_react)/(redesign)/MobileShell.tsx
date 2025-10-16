@@ -141,8 +141,7 @@ export const MobileShell = (props: Props) => {
           className={styles.mainMenuLayer}
           aria-label={l10n.getString("mobile-menu-label")}
         >
-          {props.session &&
-          props.enabledFeatureFlags.includes("SidebarNavigationRedesign") ? (
+          {props.session ? (
             <div className={styles.navbarListWrapper}>
               <NavbarListAuthenticated
                 countryCode={props.countryCode}
