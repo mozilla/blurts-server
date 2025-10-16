@@ -3,6 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { test, expect, jest } from "@jest/globals";
+import { setTimeout } from "timers/promises";
 
 process.env.GCP_PUBSUB_PROJECT_ID = "arbitrary-id";
 process.env.GCP_PUBSUB_SUBSCRIPTION_NAME = "arbitrary-name";
@@ -11,6 +12,8 @@ jest.mock("@sentry/nextjs", () => {
   return {
     init: jest.fn(),
     captureCheckIn: jest.fn(),
+    captureException: jest.fn(),
+    captureMessage: jest.fn(),
   };
 });
 
@@ -79,6 +82,12 @@ jest.mock("../../app/functions/server/logging", () => {
   class Logging {
     info(message: string, details: object) {
       console.info(message, details);
+    }
+    error(message: string, details: object) {
+      console.error(message, details);
+    }
+    debug(message: string, details: object) {
+      console.debug(message, details);
     }
   }
 
@@ -432,7 +441,7 @@ test("skipping email when subscriber id exists in email_notifications table", as
   );
 });
 
-test("throws an error when addEmailNotification fails", async () => {
+test("Does not attempt to send an email if addEmailNotification fails and does not acknowledge message", async () => {
   const consoleLog = jest
     .spyOn(console, "log")
     .mockImplementation(() => undefined);
@@ -459,7 +468,7 @@ test("throws an error when addEmailNotification fails", async () => {
 
   jest.mock("../../db/tables/emailAddresses", () => {
     return {
-      getEmailAddressesByHashes: jest.fn(() => [""]),
+      getEmailAddressesByHashes: jest.fn(() => []),
     };
   });
 
@@ -479,81 +488,13 @@ test("throws an error when addEmailNotification fails", async () => {
 
   const { poll } = await import("./emailBreachAlerts");
 
-  try {
-    await poll(subClient, receivedMessages);
-  } catch (e: unknown) {
-    // eslint-disable-next-line jest/no-conditional-expect
-    expect(console.error).toHaveBeenCalled();
-    // eslint-disable-next-line jest/no-conditional-expect
-    expect((e as Error).message).toBe("add failed");
-  }
+  await poll(subClient, receivedMessages);
 
   expect(consoleLog).toHaveBeenCalledWith(
     'Received message: {"breachName":"test1","hashPrefix":"test-prefix1","hashSuffixes":["test-suffix1"]}',
   );
   expect(sendEmail).toHaveBeenCalledTimes(0);
-});
-
-test("throws an error when markEmailAsNotified fails", async () => {
-  const consoleLog = jest
-    .spyOn(console, "log")
-    .mockImplementation(() => undefined);
-  // It's not clear if the calls to console.info are important enough to remain,
-  // but since they were already there when adding the "no logs" rule in tests,
-  // I'm respecting Chesterton's Fence and leaving them in place for now:
-  jest.spyOn(console, "info").mockImplementation(() => undefined);
-  const { sendEmail } = await import("../../utils/email");
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const mockedUtilsHibp: any = jest.requireMock("../../utils/hibp");
-  mockedUtilsHibp.getBreachByName.mockReturnValue({
-    IsVerified: true,
-    Domain: "test1",
-    IsFabricated: false,
-    IsSpamList: false,
-    Id: 1,
-  });
-
-  jest.mock("../../db/tables/subscribers", () => {
-    return {
-      getSubscribersByHashes: jest.fn(() => [{ id: 1 }]),
-    };
-  });
-
-  jest.mock("../../db/tables/emailAddresses", () => {
-    return {
-      getEmailAddressesByHashes: jest.fn(() => [""]),
-    };
-  });
-
-  jest.mock("../../db/tables/email_notifications", () => {
-    return {
-      getNotifiedSubscribersForBreach: jest.fn(() => [2]),
-      addEmailNotification: jest.fn(),
-      markEmailAsNotified: jest.fn().mockImplementationOnce(() => {
-        throw new Error("mark failed");
-      }),
-    };
-  });
-  const receivedMessages = buildReceivedMessages({
-    breachName: "test1",
-    hashPrefix: "test-prefix1",
-    hashSuffixes: ["test-suffix1"],
-  });
-
-  const { poll } = await import("./emailBreachAlerts");
-
-  try {
-    await poll(subClient, receivedMessages);
-  } catch (e: unknown) {
-    // eslint-disable-next-line jest/no-conditional-expect
-    expect(console.error).toHaveBeenCalled();
-    // eslint-disable-next-line jest/no-conditional-expect
-    expect((e as Error).message).toBe("mark failed");
-  }
-  expect(consoleLog).toHaveBeenCalledWith(
-    'Received message: {"breachName":"test1","hashPrefix":"test-prefix1","hashSuffixes":["test-suffix1"]}',
-  );
-  expect(sendEmail).toHaveBeenCalledTimes(1);
+  expect(subClient.acknowledge).not.toHaveBeenCalled();
 });
 
 test("processes valid messages for non-US users", async () => {
@@ -619,4 +560,115 @@ test("processes valid messages for non-US users", async () => {
   expect(consoleLog).toHaveBeenCalledWith(
     'Received message: {"breachName":"test1","hashPrefix":"test-prefix1","hashSuffixes":["test-suffix1"]}',
   );
+});
+test("does not mark as notified if email failed to send", async () => {
+  // Silence logs
+  jest.spyOn(console, "log").mockImplementation(() => undefined);
+  jest.spyOn(console, "info").mockImplementation(() => undefined);
+  jest.spyOn(console, "error").mockImplementation(() => undefined);
+  // force sendEmail failure
+  const emailMod = await import("../../utils/email");
+  const sendEmail = emailMod.sendEmail as jest.Mock;
+  sendEmail.mockImplementationOnce(async () => {
+    throw new Error("send failed");
+  });
+
+  // Seed a valid breach
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const mockedUtilsHibp: any = jest.requireMock("../../utils/hibp");
+  mockedUtilsHibp.getBreachByName.mockReturnValue({
+    IsVerified: true,
+    Domain: "test1",
+    IsFabricated: false,
+    IsSpamList: false,
+    Id: 1,
+  });
+
+  // Seed subscriber and additional spies
+  jest.mock("../../db/tables/subscribers", () => {
+    return { getSubscribersByHashes: jest.fn(() => [{ id: 1 }]) };
+  });
+  jest.mock("../../db/tables/emailAddresses", () => {
+    return { getEmailAddressesByHashes: jest.fn(() => []) };
+  });
+  jest.mock("../../db/tables/email_notifications", () => {
+    return {
+      getNotifiedSubscribersForBreach: jest.fn(() => []),
+      addEmailNotification: jest.fn(),
+      markEmailAsNotified: jest.fn(),
+    };
+  });
+
+  const receivedMessages = buildReceivedMessages({
+    breachName: "test1",
+    hashPrefix: "test-prefix1",
+    hashSuffixes: ["test-suffix1"],
+  });
+
+  const { poll } = await import("./emailBreachAlerts");
+  const notifMod = await import("../../db/tables/email_notifications");
+  const markEmailAsNotified = notifMod.markEmailAsNotified as jest.Mock;
+  // Run
+  await poll(subClient, receivedMessages);
+
+  // Small await to reproduce the original issue
+  await setTimeout(100);
+  expect(markEmailAsNotified).not.toHaveBeenCalled();
+});
+
+test("partial success: does not acknowledge message if an error occurred during notify process, but marks successful as notified", async () => {
+  // Silence logs
+  jest.spyOn(console, "log").mockImplementation(() => undefined);
+  jest.spyOn(console, "info").mockImplementation(() => undefined);
+  jest.spyOn(console, "error").mockImplementation(() => undefined);
+  // force sendEmail failure
+  const emailMod = await import("../../utils/email");
+  const sendEmail = emailMod.sendEmail as jest.Mock;
+  // Unsuccessful once only
+  sendEmail.mockImplementationOnce(async () => {
+    throw new Error("send failed");
+  });
+
+  // Seed a valid breach
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const mockedUtilsHibp: any = jest.requireMock("../../utils/hibp");
+  mockedUtilsHibp.getBreachByName.mockReturnValue({
+    IsVerified: true,
+    Domain: "test1",
+    IsFabricated: false,
+    IsSpamList: false,
+    Id: 1,
+  });
+
+  // Seed subscriber and additional spies
+  jest.mock("../../db/tables/subscribers", () => {
+    return { getSubscribersByHashes: jest.fn(() => [{ id: 1 }]) };
+  });
+  jest.mock("../../db/tables/emailAddresses", () => {
+    return { getEmailAddressesByHashes: jest.fn(() => ["test@example.com"]) };
+  });
+  jest.mock("../../db/tables/email_notifications", () => {
+    return {
+      getNotifiedSubscribersForBreach: jest.fn(() => []),
+      addEmailNotification: jest.fn(),
+      markEmailAsNotified: jest.fn(),
+    };
+  });
+
+  const receivedMessages = buildReceivedMessages({
+    breachName: "test1",
+    hashPrefix: "test-prefix1",
+    hashSuffixes: ["test-suffix1"],
+  });
+
+  const { poll } = await import("./emailBreachAlerts");
+  const notifMod = await import("../../db/tables/email_notifications");
+  const markEmailAsNotified = notifMod.markEmailAsNotified as jest.Mock;
+  // Run
+  await poll(subClient, receivedMessages);
+
+  // Small await to reproduce the original issue
+  await setTimeout(100);
+  expect(markEmailAsNotified).toHaveBeenCalledTimes(1);
+  expect(subClient.acknowledge).not.toHaveBeenCalled();
 });
