@@ -271,85 +271,6 @@ const SettingsWrapper = (props: {
 );
 
 describe("Settings page", () => {
-  it("shows the settings page", () => {
-    render(
-      <SettingsWrapper>
-        <SettingsView
-          activeTab="edit-info"
-          l10n={getL10n()}
-          user={{
-            ...mockedUser,
-            subscriber: {
-              ...mockedUser.subscriber!,
-              all_emails_to_primary: true,
-            },
-          }}
-          subscriber={mockedSubscriber}
-          breachCountByEmailAddress={{
-            [mockedUser.email]: 42,
-            [mockedSecondaryVerifiedEmail.email]: 42,
-          }}
-          emailAddresses={[mockedSecondaryVerifiedEmail]}
-          fxaSettingsUrl=""
-          fxaSubscriptionsUrl=""
-          monthlySubscriptionUrl=""
-          subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-          enabledFeatureFlags={[]}
-          experimentData={defaultExperimentData["Features"]}
-          isMonthlySubscriber={true}
-          data={mockedPlusSubscriberEmailPreferences}
-          isEligibleForPremium={false}
-          actions={mockedActions}
-          userAnnouncements={mockedAnnouncements}
-        />
-      </SettingsWrapper>,
-    );
-
-    const tabListItem = screen.getByRole("tab", {
-      name: "Edit your info",
-    });
-    expect(tabListItem).toBeInTheDocument();
-  });
-
-  it("defaults to the “Edit your info view” if no active tab is provided", () => {
-    render(
-      <SettingsWrapper>
-        <SettingsView
-          l10n={getL10n()}
-          user={{
-            ...mockedUser,
-            subscriber: {
-              ...mockedUser.subscriber!,
-              all_emails_to_primary: true,
-            },
-          }}
-          subscriber={mockedSubscriber}
-          breachCountByEmailAddress={{
-            [mockedUser.email]: 42,
-            [mockedSecondaryVerifiedEmail.email]: 42,
-          }}
-          emailAddresses={[mockedSecondaryVerifiedEmail]}
-          fxaSettingsUrl=""
-          fxaSubscriptionsUrl=""
-          monthlySubscriptionUrl=""
-          subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-          enabledFeatureFlags={[]}
-          experimentData={defaultExperimentData["Features"]}
-          isMonthlySubscriber={true}
-          data={mockedPlusSubscriberEmailPreferences}
-          isEligibleForPremium={false}
-          userAnnouncements={mockedAnnouncements}
-          actions={mockedActions}
-        />
-      </SettingsWrapper>,
-    );
-
-    const tabListItem = screen.getByRole("tab", {
-      name: "Edit your info",
-    });
-    expect(tabListItem).toBeInTheDocument();
-  });
-
   describe("Edit your info", () => {
     it("passes the axe accessibility audit", async () => {
       const { container } = render(
@@ -384,54 +305,6 @@ describe("Settings page", () => {
       );
       expect(await axe(container)).toHaveNoViolations();
     }, 10_000);
-
-    it("changes the active tab", async () => {
-      const user = userEvent.setup();
-      render(
-        <SettingsWrapper>
-          <SettingsView
-            activeTab="edit-info"
-            l10n={getL10n()}
-            user={{
-              ...mockedUser,
-              subscriber: {
-                ...mockedUser.subscriber!,
-                all_emails_to_primary: true,
-              },
-            }}
-            subscriber={mockedSubscriber}
-            breachCountByEmailAddress={{
-              [mockedUser.email]: 42,
-              [mockedSecondaryVerifiedEmail.email]: 42,
-            }}
-            emailAddresses={[mockedSecondaryVerifiedEmail]}
-            fxaSettingsUrl=""
-            fxaSubscriptionsUrl=""
-            monthlySubscriptionUrl=""
-            subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-            enabledFeatureFlags={[]}
-            experimentData={defaultExperimentData["Features"]}
-            isMonthlySubscriber={true}
-            data={mockedPlusSubscriberEmailPreferences}
-            isEligibleForPremium={false}
-            actions={mockedActions}
-            userAnnouncements={mockedAnnouncements}
-          />
-        </SettingsWrapper>,
-      );
-
-      const tabListItemInitial = screen.getByRole("tab", {
-        name: "Edit your info",
-      });
-      expect(tabListItemInitial.getAttribute("aria-selected")).toBe("true");
-
-      const tabListItemNext = screen.getByRole("tab", {
-        name: "Set notifications",
-      });
-      await user.click(tabListItemNext);
-      expect(tabListItemInitial.getAttribute("aria-selected")).toBe("false");
-      expect(tabListItemNext.getAttribute("aria-selected")).toBe("true");
-    });
 
     it("Add email address button is not shown when email limit of five reached", () => {
       // jsdom will complain about not being able to navigate to a different page
@@ -859,46 +732,6 @@ describe("Settings page", () => {
   });
 
   describe("Manage account", () => {
-    it("shows the “Manage account” as active tab", () => {
-      render(
-        <SettingsWrapper>
-          <SettingsView
-            activeTab="manage-account"
-            l10n={getL10n()}
-            user={{
-              ...mockedUser,
-              subscriber: {
-                ...mockedUser.subscriber!,
-                all_emails_to_primary: true,
-              },
-            }}
-            subscriber={mockedSubscriber}
-            breachCountByEmailAddress={{
-              [mockedUser.email]: 42,
-              [mockedSecondaryVerifiedEmail.email]: 42,
-            }}
-            emailAddresses={[mockedSecondaryVerifiedEmail]}
-            fxaSettingsUrl=""
-            fxaSubscriptionsUrl=""
-            monthlySubscriptionUrl=""
-            subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-            enabledFeatureFlags={[]}
-            experimentData={defaultExperimentData["Features"]}
-            isMonthlySubscriber={true}
-            data={mockedPlusSubscriberEmailPreferences}
-            isEligibleForPremium={false}
-            actions={mockedActions}
-            userAnnouncements={mockedAnnouncements}
-          />
-        </SettingsWrapper>,
-      );
-
-      const tabListItem = screen.getByRole("tab", {
-        name: "Manage account",
-      });
-      expect(tabListItem.getAttribute("aria-selected")).toBe("true");
-    });
-
     it("hides the Plus cancellation link if the user doesn't have Plus", () => {
       render(
         <SettingsWrapper>
