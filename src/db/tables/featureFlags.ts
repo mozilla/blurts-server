@@ -92,7 +92,16 @@ export async function getEnabledFeatureFlags(
   options: { isSignedOut?: false; email: string } | { isSignedOut: true },
 ): Promise<FeatureFlagName[]> {
   // Force feature flags for E2E tests via URL query params
-  if (process.env.E2E_TEST_ENV === "local") {
+  if (
+    // Check that we're running under Next.js; in cronjobs
+    // there's no request to inspect. We're not force-enabling
+    // feature flags in that environment anyway.
+    typeof process.env.NEXT_RUNTIME === "string" &&
+    // When running end-to-end tests locally or in a PR,
+    // we can force-enable feature flags that haven't been enabled
+    // yet on stage or on prod:
+    process.env.E2E_TEST_ENV === "local"
+  ) {
     const { headers } = await import("next/headers");
     const forcedFeatureFlags = (await headers()).get("x-forced-feature-flags");
 
