@@ -3,9 +3,6 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 
-# Strings for the main app
-
-
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
@@ -52,7 +49,7 @@ sign-out = 退出
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = 管理 { -brand-fxa }
 # Link title
-preferences = 偏好设置
+preferences = 首选项
 # Link title
 home = 主页
 # Link title

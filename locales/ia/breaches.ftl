@@ -57,7 +57,7 @@ breach-checklist-cc-body = Tu deberea alsi revider le transactiones de tu carta 
 ## Prompts the user for changes when there is a breach detected of bank account
 
 breach-checklist-bank-header = Notifica tu banca immediatemente que tu numero de conto ha essite compromittite.
-breach-checklist-bank-body = Facer lo plus velocemente poterea dar te plus protectiones legal pro adjutar te a recuperar ulle perditas.
+breach-checklist-bank-body = Facer lo plus velocemente poterea dar te plus protectiones legal pro adjutar te a recuperar ulle perdita. Tu alsi deberea verificar tu contos pro ulle debitos incognite.
 
 ## Prompts the user for changes when there is a breach detected of pin
 
