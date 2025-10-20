@@ -34,7 +34,9 @@ type NewNotification = {
 };
 
 async function addEmailNotification(newNotification: NewNotification) {
-  console.info(`addEmailNotification: ${JSON.stringify(newNotification)}`);
+  console.info(
+    `addEmailNotification: ${newNotification.subscriberId}, ${newNotification.breachId}, ${newNotification.notificationType}`,
+  );
   const emailNotificationDb = {
     subscriber_id: newNotification.subscriberId,
     breach_id: newNotification.breachId,
