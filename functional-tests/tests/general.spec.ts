@@ -14,7 +14,7 @@ import { getBaseTestEnvUrl } from "../utils/environment";
 const isLocal = process.env.E2E_TEST_ENV === "local";
 
 // extend enabled local feature flags for testing purposes
-const extraFeatureFlags: FeatureFlagName[] = ["GA4SubscriptionEvents"];
+const extraFeatureFlags: FeatureFlagName[] = [];
 test.use({ extraLocalForcedFeatureFlags: extraFeatureFlags });
 
 // General tests to confirm the E2E test setup works as expected
