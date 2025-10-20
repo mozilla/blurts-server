@@ -62,7 +62,6 @@ export const featureFlagNames = [
   "DataBrokerRemovalTimeEstimateCsat",
   "LandingPageRedesign",
   "EnableRemovalUnderMaintenanceStep",
-  "CirrusV2",
   "DataBrokerRemovalAttempts",
   "CustomDataBrokers",
   "SidebarNavigationRedesign",

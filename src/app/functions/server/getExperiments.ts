@@ -14,14 +14,6 @@ import { getEnabledFeatureFlags } from "../../../db/tables/featureFlags";
 import { loadNextHeaders } from "./loadNextHeaders";
 
 /**
- * After we removing the `CirrusV2` flag, we can return the full `ExperimentData`/
- * But until then, we can make the old experiment data object look like the new one,
- * but we can't backfill the `Enrollments` property.
- */
-export type ExperimentData_V2_Or_V2LikeV1 = Partial<ExperimentData> &
-  Required<Pick<ExperimentData, "Features">>;
-
-/**
  * Call the Cirrus sidecar, which returns a list of eligible experiments for the current user.
  *
  * @see https://github.com/mozilla/experimenter/tree/main/cirrus
@@ -35,7 +27,7 @@ export async function getExperiments(params: {
   experimentationId?: ExperimentationId;
   locale: string;
   countryCode: string;
-}): Promise<ExperimentData_V2_Or_V2LikeV1> {
+}): Promise<ExperimentData> {
   if (!params.experimentationId) {
     return defaultExperimentData;
   }
@@ -53,11 +45,7 @@ export async function getExperiments(params: {
   if (!serverUrl.pathname.endsWith("/")) {
     serverUrl.pathname += "/";
   }
-  if (flags.includes("CirrusV2")) {
-    serverUrl.pathname += "v2/features";
-  } else {
-    serverUrl.pathname += "v1/features";
-  }
+  serverUrl.pathname += "v2/features";
 
   const nextHeaders = await loadNextHeaders();
   let previewMode = false;
@@ -103,20 +91,8 @@ export async function getExperiments(params: {
       throw new Error(`Cirrus request failed: ${response.statusText}`);
     }
 
-    // With the `CirrusV2` flag enabled, the response is `ExperimentData`,
-    // otherwise, it's just `ExperimentData["Features"]`.
-    const json = (await response.json()) as
-      | ExperimentData
-      | ExperimentData["Features"];
-
-    let experimentData: ExperimentData_V2_Or_V2LikeV1;
-    if (flags.includes("CirrusV2")) {
-      experimentData = json as ExperimentData;
-    } else {
-      experimentData = {
-        Features: json as ExperimentData["Features"],
-      };
-    }
+    const json = (await response.json()) as ExperimentData;
+    const experimentData = json;
 
     return (experimentData as ExperimentData) ?? defaultExperimentData;
   } catch (ex) {
