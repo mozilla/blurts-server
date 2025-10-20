@@ -99,10 +99,9 @@ export const MobileShell = (props: Props) => {
         {!isOnSubscriptionPlans && (
           <div className={styles.headerEnd}>
             {/* c8 ignore next 3 */}
-            {props.enabledFeatureFlags.includes("Announcements") &&
-              props.announcements && (
-                <AnnouncementDialog announcements={props.announcements} />
-              )}
+            {props.announcements && (
+              <AnnouncementDialog announcements={props.announcements} />
+            )}
             {props.session ? (
               <UserMenu
                 user={props.session?.user}

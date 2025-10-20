@@ -69,7 +69,6 @@ export const featureFlagNames = [
   "SidebarNavigationRedesign",
   "EditScanProfileDetails",
   "SubPlat3",
-  "Announcements",
   "DisableOneRepScans",
   "DisableLandingToDashboardRedirect",
   "MaskDataBrokerCount",
