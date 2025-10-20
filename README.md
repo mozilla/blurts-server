@@ -212,6 +212,8 @@ curl -d '{ "breachName": "000webhost", "hashPrefix": "test", "hashSuffixes": ["t
 This emulates HIBP notifying our API that a new breach was found. Our API will
 then add it to the (emulated) pubsub queue.
 
+You can also use this request with staging credentials and endpoint to manually trigger alerts in the staging environment. For instructions on how to generate the hashPrefix and hashSuffix values, see [instructions below](#testing-the-breach-alerts-cron-job-locally).
+
 ### This pubsub queue will be consumed by this cron job, which is responsible for looking up and emailing impacted users
 
 ```sh
@@ -280,6 +282,29 @@ environment variable (default 30s).
 
 You can also enforce the alert being sent for a specific email address via the
 `LOADTEST_BREACHED_EMAIL` environment variable.
+
+#### Testing the Breach Alerts cron job locally
+
+1. Ensure SMTP_URL environment variable is unset; this will log to JSON instead of attempting to send an email
+1. Follow instructions to start blurts server locally, including the database and emulated GCP PubSub topic
+1. Create a new account, and note the email address you used for the next step
+1. Update the email address below and paste into your terminal
+
+```sh
+# Replace with whatever email address you used above, or omit and
+# export env var first to persist between runs
+# `export HIBP_TEST_EAMIL=replace-me-email@example.com`
+HIBP_TEST_EMAIL="replace-me-email@example.com"; \
+HASH=$(echo -n "$HIBP_TEST_EMAIL" | sha1sum | awk '{print toupper($1)}'); \
+PREFIX=${HASH:0:7}; \
+SUFFIX=${HASH:7}; \
+curl -d "{\"breachName\": \"000webhost\", \"hashPrefix\": \"$PREFIX\", \"hashSuffixes\": [\"$SUFFIX\"]}" \
+  -H "Authorization: Bearer unsafe-default-token-for-dev" \
+  -H "Content-Type: application/json" \
+  http://localhost:6060/api/v1/hibp/notify
+```
+
+Note that the database must be seeded with breaches or else this request will not trigger emails due to validation error. The breachName must match the name of a breach in the database. Query the `breaches` table in the database for additional breach names to test more than once for the same email address (a user will be notified for a breach only once). Alternatively you can delete the record that was created in the `email_notifications` table to retest.
 
 ## Localization
 
