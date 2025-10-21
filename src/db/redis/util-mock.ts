@@ -5,5 +5,6 @@
 import Redis from "ioredis-mock";
 
 export function createRedisMockInstance() {
+  /* @c8 ignore next */
   return new Redis();
 }

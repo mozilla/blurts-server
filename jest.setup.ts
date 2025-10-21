@@ -5,7 +5,7 @@
 import "@testing-library/jest-dom";
 import "@testing-library/jest-dom/jest-globals";
 import "jest-axe/extend-expect";
-import { TextEncoder } from "util";
+import { TextEncoder, TextDecoder } from "util";
 import { setProjectAnnotations } from "@storybook/react";
 import { defaultFallbackInView } from "react-intersection-observer";
 import {
@@ -46,6 +46,9 @@ afterEach(() => {
 });
 
 global.TextEncoder = TextEncoder as typeof global.TextEncoder;
+if (typeof global.TextDecoder === "undefined") {
+  global.TextDecoder = TextDecoder as typeof global.TextDecoder;
+}
 
 // Jest doesn't like the top-level await in envVars.ts, so we mock it.
 jest.mock("./src/envVars", () => {
