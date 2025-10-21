@@ -21,7 +21,7 @@ import {
   AriaMenuProps,
   AriaMenuTriggerProps,
 } from "react-aria";
-import { Key, useRef, RefObject } from "react";
+import { useRef } from "react";
 import Image from "next/image";
 import { ReactLocalization } from "@fluent/react";
 import styles from "./AppPicker.module.scss";
@@ -45,12 +45,14 @@ const getProducts = (referringHost: string, l10n: ReactLocalization) => ({
     )}&utm_medium=referral&utm_campaign=bento&utm_content=desktop`,
     title: l10n.getString("toolbar-app-picker-product-relay"),
     gaLabel: "fx-relay",
+    imgSrc: RelayLogo,
   },
   pocket: {
     id: "pocket",
     url: "https://app.adjust.com/hr2n0yz?engagement_type=fallback_click&fallback=https%3A%2F%2Fgetpocket.com%2Ffirefox_learnmore%3Fsrc%3Dff_bento&fallback_lp=https%3A%2F%2Fapps.apple.com%2Fapp%2Fpocket-save-read-grow%2Fid309601447",
     title: l10n.getString("toolbar-app-picker-product-pocket"),
     gaLabel: "pocket",
+    imgSrc: PocketLogo,
   },
   fxDesktop: {
     id: "fxDesktop",
@@ -59,6 +61,7 @@ const getProducts = (referringHost: string, l10n: ReactLocalization) => ({
     )}&utm_medium=referral&utm_campaign=bento&utm_content=desktop`,
     title: l10n.getString("toolbar-app-picker-product-fx-desktop"),
     gaLabel: "fx-desktop",
+    imgSrc: FxDesktopLogo,
   },
   fxMobile: {
     id: "fxMobile",
@@ -67,6 +70,7 @@ const getProducts = (referringHost: string, l10n: ReactLocalization) => ({
     )}&utm_medium=referral&utm_campaign=bento&utm_content=desktop`,
     title: l10n.getString("toolbar-app-picker-product-fx-mobile"),
     gaLabel: "fx-mobile",
+    imgSrc: FxMobileLogo,
   },
   vpn: {
     id: "vpn",
@@ -75,6 +79,7 @@ const getProducts = (referringHost: string, l10n: ReactLocalization) => ({
     )}&utm_medium=referral&utm_campaign=bento&utm_content=desktop`,
     title: l10n.getString("toolbar-app-picker-product-vpn"),
     gaLabel: "vpn",
+    imgSrc: VpnLogo,
   },
 });
 
@@ -91,121 +96,53 @@ export const AppPicker = () => {
       ? document.location.host
       : "monitor.mozilla.org";
   const products = getProducts(referringHost, l10n);
-  const linkRefs: Record<
-    keyof typeof products,
-    RefObject<HTMLAnchorElement | null>
-  > = {
-    relay: useRef<HTMLAnchorElement>(null),
-    pocket: useRef<HTMLAnchorElement>(null),
-    fxDesktop: useRef<HTMLAnchorElement>(null),
-    fxMobile: useRef<HTMLAnchorElement>(null),
-    vpn: useRef<HTMLAnchorElement>(null),
-  };
-  const mozillaLinkRef = useRef<HTMLAnchorElement>(null);
-
-  // TODO: Add unit test when changing this code:
-  /* c8 ignore start */
-  const onSelect = (itemKey: Key) => {
-    Object.entries(products).forEach(([key, productData]) => {
-      if (itemKey === productData.id) {
-        linkRefs[key as keyof typeof products].current?.click();
-        gaEvent({
-          category: "bento",
-          action: "bento-app-link-click",
-          label: productData.gaLabel,
-        });
-      }
-    });
-    if (itemKey === "mozilla") {
-      mozillaLinkRef.current?.click();
-      gaEvent({
-        category: "bento",
-        action: "bento-app-link-click",
-        label: "Mozilla",
-      });
-    }
-  };
-  /* c8 ignore stop */
 
   return (
     <AppPickerTrigger
       label={l10n.getString("toolbar-app-picker-trigger-title")}
-      onAction={onSelect}
       referringHost={referringHost}
     >
-      <Item key={products.vpn.id} textValue={products.vpn.title}>
-        <a
-          ref={linkRefs.vpn}
-          href={products.vpn.url}
-          className={`${styles["menuLink"]} ${styles.vpnLink}`}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image src={VpnLogo} alt="" width={16} height={16} />
-          {products.vpn.title}
-        </a>
-      </Item>
-      <Item key={products.relay.id} textValue={products.relay.title}>
-        <a
-          ref={linkRefs.relay}
-          href={products.relay.url}
-          className={`${styles["menuLink"]} ${styles.relayLink}`}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image src={RelayLogo} alt="" width={16} height={16} />
-          {products.relay.title}
-        </a>
-      </Item>
-      <Item key={products.pocket.id} textValue={products.pocket.title}>
-        <a
-          ref={linkRefs.pocket}
-          href={products.pocket.url}
-          className={`${styles["menuLink"]} ${styles.pocketLink}`}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image src={PocketLogo} alt="" width={16} height={16} />
-          {products.pocket.title}
-        </a>
-      </Item>
-      <Item key={products.fxDesktop.id} textValue={products.fxDesktop.title}>
-        <a
-          ref={linkRefs.fxDesktop}
-          href={products.fxDesktop.url}
-          className={`${styles["menuLink"]} ${styles.fxDesktopLink}`}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image src={FxDesktopLogo} alt="" width={16} height={16} />
-          {products.fxDesktop.title}
-        </a>
-      </Item>
-      <Item key={products.fxMobile.id} textValue={products.fxMobile.title}>
-        <a
-          ref={linkRefs.fxMobile}
-          href={products.fxMobile.url}
-          className={`${styles["menuLink"]} ${styles.fxMobileLink}`}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image src={FxMobileLogo} alt="" width={12} height={16} />
-          {products.fxMobile.title}
-        </a>
-      </Item>
+      <>
+        {Object.values(products).map((p) => (
+          <Item key={p.id} textValue={p.title}>
+            <a
+              href={p.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`${styles.menuLink} ${styles[`${p.id}Link`]}`}
+              onClick={() => {
+                gaEvent({
+                  category: "bento",
+                  action: "bento-app-link-click",
+                  label: p.gaLabel,
+                });
+              }}
+            >
+              <Image src={p.imgSrc} alt="" width={16} height={16} />
+              {p.title}
+            </a>
+          </Item>
+        ))}
+      </>
 
       <Item
         key="mozilla"
         textValue={l10n.getString("toolbar-app-picker-by-mozilla")}
       >
         <a
-          ref={mozillaLinkRef}
           href={`https://www.mozilla.org/?utm_source=${encodeURIComponent(
             referringHost,
           )}&utm_medium=referral&utm_campaign=bento&utm_content=desktop`}
-          className={`${styles["menuLink"]} ${styles["mozillaLink"]}`}
           target="_blank"
           rel="noopener noreferrer"
+          className={`${styles.menuLink} ${styles.mozillaLink}`}
+          onClick={() =>
+            gaEvent({
+              category: "bento",
+              action: "bento-app-link-click",
+              label: "Mozilla",
+            })
+          }
         >
           {l10n.getString("toolbar-app-picker-by-mozilla")}
         </a>
