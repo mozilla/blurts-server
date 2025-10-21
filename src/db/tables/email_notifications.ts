@@ -50,6 +50,8 @@ async function addEmailNotification(newNotification: NewNotification) {
     return trx("email_notifications")
       .forUpdate()
       .insert(emailNotificationDb)
+      .onConflict(["subscriber_id", "breach_id", "email"])
+      .ignore()
       .returning("*");
   });
   return res[0];
