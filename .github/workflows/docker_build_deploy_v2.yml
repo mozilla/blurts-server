@@ -87,5 +87,7 @@ jobs:
           cache-to: type=gha,mode=max
 
       - name: Print Image URI
+        env:
+          TAGS: ${{ steps.meta.outputs.tags }}
         run: |
-          echo "Pushed GAR image: ${{ steps.meta.outputs.tags }}" 
+          echo "Pushed GAR image: $TAGS"

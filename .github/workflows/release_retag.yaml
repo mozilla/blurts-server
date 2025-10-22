@@ -32,10 +32,14 @@ jobs:
         tags: type=sha,format=short,prefix=
 
     - name: Pull Docker image with commit tag
-      run: docker pull ${{ steps.meta.outputs.tags }}
+      env:
+        TAGS: ${{ steps.meta.outputs.tags }}
+      run: docker pull $TAGS
 
     - name: Tag Docker image with release tag
-      run: docker tag ${{ steps.meta.outputs.tags }} mozilla/blurts-server:${{ github.ref_name }}
+      env:
+        TAGS: ${{ steps.meta.outputs.tags }}
+      run: docker tag $TAGS mozilla/blurts-server:${{ github.ref_name }}
 
     - name: Push Docker image with release tag
       run: docker push mozilla/blurts-server:${{ github.ref_name }}
