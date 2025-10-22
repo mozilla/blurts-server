@@ -64,20 +64,20 @@ jobs:
     - name: Tag Docker image with release tag
       env:
         TAGS: ${{ steps.meta.outputs.tags }}
-        NAME: ${{ steps.release_tag_info.outputs.name }}"
+        NAME: ${{ steps.release_tag_info.outputs.name }}
       run: |
         echo "Tagging $TAGS as $NAME"
         docker tag $TAGS $NAME
 
     - name: Push Docker image with release tag to GAR
       env:
-        NAME: ${{ steps.release_tag_info.outputs.name }}"
+        NAME: ${{ steps.release_tag_info.outputs.name }}
       run: |
         echo "Pushing $NAME"
         docker push $NAME
 
     - name: Print Image URI
       env:
-        NAME: ${{ steps.release_tag_info.outputs.name }}"
+        NAME: ${{ steps.release_tag_info.outputs.name }}
       run: |
         echo "Retagged and pushed GAR image: $NAME"
