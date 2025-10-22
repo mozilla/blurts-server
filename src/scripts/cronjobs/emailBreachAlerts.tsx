@@ -384,6 +384,7 @@ async function getDataSummary(
 function createPubSubClient() {
   let options = {};
   // TODO - Consolidate configuration logic for this and other clients
+  // https://mozilla-hub.atlassian.net/browse/MNTOR-5089
   if (
     process.env.NODE_ENV === "development" ||
     process.env.NODE_ENV === "test"
