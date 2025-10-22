@@ -383,7 +383,11 @@ async function getDataSummary(
 /* c8 ignore start */
 function createPubSubClient() {
   let options = {};
-  if (process.env.NODE_ENV === "development") {
+  // TODO - Consolidate configuration logic for this and other clients
+  if (
+    process.env.NODE_ENV === "development" ||
+    process.env.NODE_ENV === "test"
+  ) {
     console.debug("Dev mode, connecting to local pubsub emulator");
     options = {
       servicePath: "localhost",
