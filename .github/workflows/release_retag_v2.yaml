@@ -55,20 +55,29 @@ jobs:
       run: echo "name=${{ env.GAR_IMAGE_BASE }}:${{ github.ref_name }}" >> $GITHUB_OUTPUT
 
     - name: Pull Docker image with commit tag from GAR
+      env:
+        TAGS: ${{ steps.meta.outputs.tags }}
       run: |
-        echo "Pulling ${{ steps.meta.outputs.tags }}"
-        docker pull ${{ steps.meta.outputs.tags }}
+        echo "Pulling $TAGS"
+        docker pull $TAGS
 
     - name: Tag Docker image with release tag
+      env:
+        TAGS: ${{ steps.meta.outputs.tags }}
+        NAME: ${{ steps.release_tag_info.outputs.name }}"
       run: |
-        echo "Tagging ${{ steps.meta.outputs.tags }} as ${{ steps.release_tag_info.outputs.name }}"
-        docker tag ${{ steps.meta.outputs.tags }} ${{ steps.release_tag_info.outputs.name }}
+        echo "Tagging $TAGS as $NAME"
+        docker tag $TAGS $NAME
 
     - name: Push Docker image with release tag to GAR
+      env:
+        NAME: ${{ steps.release_tag_info.outputs.name }}"
       run: |
-        echo "Pushing ${{ steps.release_tag_info.outputs.name }}"
-        docker push ${{ steps.release_tag_info.outputs.name }}
+        echo "Pushing $NAME"
+        docker push $NAME
 
     - name: Print Image URI
+      env:
+        NAME: ${{ steps.release_tag_info.outputs.name }}"
       run: |
-        echo "Retagged and pushed GAR image: ${{ steps.release_tag_info.outputs.name }}" 
+        echo "Retagged and pushed GAR image: $NAME"

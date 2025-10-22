@@ -84,16 +84,22 @@ jobs:
         tags: type=sha,format=short,prefix=
 
     - name: Pull Docker image from GAR with commit tag
-      run: docker pull ${{ env.GAR_IMAGE_BASE }}:${{ steps.meta.outputs.version }}
+      env:
+        VERSION: ${{ steps.meta.outputs.version }}
+      run: docker pull ${{ env.GAR_IMAGE_BASE }}:$VERSION
 
     - name: Tag Docker image for Docker Hub with release tag
-      run: docker tag ${{ env.GAR_IMAGE_BASE }}:${{ steps.meta.outputs.version }} ${{ env.DOCKERHUB_IMAGE }}:${{ env.CURRENT_DATE }}
+      env:
+        VERSION: ${{ steps.meta.outputs.version }}
+      run: docker tag ${{ env.GAR_IMAGE_BASE }}:$VERSION ${{ env.DOCKERHUB_IMAGE }}:${{ env.CURRENT_DATE }}
 
     - name: Push Docker image to Docker Hub with release tag
       run: docker push ${{ env.DOCKERHUB_IMAGE }}:${{ env.CURRENT_DATE }}
 
     - name: Tag Docker image for GAR with release tag
-      run: docker tag ${{ env.GAR_IMAGE_BASE }}:${{ steps.meta.outputs.version }} ${{ env.GAR_IMAGE_BASE }}:${{ env.CURRENT_DATE }}
+      env:
+        VERSION: ${{ steps.meta.outputs.version }}
+      run: docker tag ${{ env.GAR_IMAGE_BASE }}:$VERSION ${{ env.GAR_IMAGE_BASE }}:${{ env.CURRENT_DATE }}
 
     - name: Push Docker image to GAR with release tag
       run: docker push ${{ env.GAR_IMAGE_BASE }}:${{ env.CURRENT_DATE }}
