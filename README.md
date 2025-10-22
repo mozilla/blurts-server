@@ -295,7 +295,7 @@ You can also enforce the alert being sent for a specific email address via the
 # export env var first to persist between runs
 # `export HIBP_TEST_EAMIL=replace-me-email@example.com`
 HIBP_TEST_EMAIL="replace-me-email@example.com"; \
-HASH=$(echo -n "$HIBP_TEST_EMAIL" | sha1sum | awk '{print toupper($1)}'); \
+HASH=$(echo -n "$HIBP_TEST_EMAIL" | sha1sum | awk '{print $1}'); \
 PREFIX=${HASH:0:7}; \
 SUFFIX=${HASH:7}; \
 curl -d "{\"breachName\": \"000webhost\", \"hashPrefix\": \"$PREFIX\", \"hashSuffixes\": [\"$SUFFIX\"]}" \
