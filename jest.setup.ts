@@ -55,3 +55,7 @@ jest.mock("./src/envVars", () => {
     getEnvVarsOrThrow: () => process.env,
   };
 });
+
+// Avoiding putting in the env file in case this gets loaded into prod
+// TODO: Centralize and streamline configuration for environments
+process.env.PUBSUB_EMULATOR_HOST = "localhost:8085";
