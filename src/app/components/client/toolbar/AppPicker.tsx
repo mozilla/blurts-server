@@ -254,7 +254,15 @@ const AppPickerItem = <T extends object>(props: AppPickerItemProps<T>) => {
     props.state,
     menuItemRef,
   );
-
+  const onKeyDown = (e: React.KeyboardEvent) => {
+    if ((e.key === "Enter" || e.key === " ") && menuItemRef.current) {
+      const link = menuItemRef.current.querySelector(
+        "a",
+      ) as HTMLAnchorElement | null;
+      link?.click();
+      e.preventDefault();
+    }
+  };
   return (
     <li
       {...menuItemProps}
@@ -262,6 +270,7 @@ const AppPickerItem = <T extends object>(props: AppPickerItemProps<T>) => {
       className={`${styles.menuItemWrapper} ${
         isFocused ? styles.isFocused : ""
       }`}
+      onKeyDown={onKeyDown}
     >
       {props.item.rendered}
     </li>

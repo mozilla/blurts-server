@@ -86,3 +86,38 @@ it("fires a GA event when the 'By Mozilla' link is clicked", async () => {
     label: "Mozilla",
   });
 });
+
+it("activates a link with Enter or Space via keyboard navigation", async () => {
+  const user = userEvent.setup();
+  const ComposedAppPicker = composeStory(AppPickerDefault, Meta);
+  render(<ComposedAppPicker />);
+
+  const trigger = screen.getByRole("button", {
+    name: "⁨Mozilla⁩ apps and services",
+  });
+  await user.click(trigger);
+
+  const vpnLink = screen.getByRole("link", { name: /vpn/i });
+
+  vpnLink.focus();
+  expect(vpnLink).toHaveFocus();
+
+  // press Enter
+  await user.keyboard("{Enter}");
+  expect(gaEvent).toHaveBeenCalledWith({
+    category: "bento",
+    action: "bento-app-link-click",
+    label: "vpn",
+  });
+
+  await user.click(trigger);
+  vpnLink.focus();
+
+  // press Space
+  await user.keyboard(" ");
+  expect(gaEvent).toHaveBeenCalledWith({
+    category: "bento",
+    action: "bento-app-link-click",
+    label: "vpn",
+  });
+});
