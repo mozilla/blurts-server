@@ -55,7 +55,7 @@ it("fires a GA event when an app link is clicked", async () => {
   });
   await user.click(trigger);
 
-  const vpnLink = screen.getByRole("link", { name: /vpn/i });
+  const vpnLink = screen.getByRole("menuitem", { name: /vpn/i });
   await user.click(vpnLink);
 
   expect(gaEvent).toHaveBeenCalledWith({
@@ -75,7 +75,7 @@ it("fires a GA event when the 'By Mozilla' link is clicked", async () => {
   });
   await user.click(trigger);
 
-  const mozillaLink = screen.getByRole("link", {
+  const mozillaLink = screen.getByRole("menuitem", {
     name: "Made by ⁨Mozilla⁩",
   });
   await user.click(mozillaLink);
@@ -97,9 +97,10 @@ it("activates a link with Enter or Space via keyboard navigation", async () => {
   });
   await user.click(trigger);
 
-  const vpnLink = screen.getByRole("link", { name: /vpn/i });
+  // Navigate to the VPN item using the keyboard
+  await user.keyboard("{ArrowDown}");
 
-  vpnLink.focus();
+  const vpnLink = screen.getByRole("menuitem", { name: /vpn/i });
   expect(vpnLink).toHaveFocus();
 
   // press Enter
@@ -111,7 +112,9 @@ it("activates a link with Enter or Space via keyboard navigation", async () => {
   });
 
   await user.click(trigger);
-  vpnLink.focus();
+
+  // Navigate to VPN item again
+  await user.keyboard("{ArrowDown}");
 
   // press Space
   await user.keyboard(" ");
