@@ -10,6 +10,7 @@ import { axe } from "jest-axe";
 import SettingsMeta, {
   SettingsEditManageAccount,
   SettingsEditNotifications,
+  SettingsNoDefaultTab,
 } from "./stories/SettingsRedesign.stories";
 import SettingsEditYourInfoMeta, {
   SettingsEditYourInfoDetailsSaved,
@@ -79,7 +80,6 @@ describe("Settings page redesign", () => {
       render(
         <ComposedStory
           enabledFeatureFlags={[
-            "SidebarNavigationRedesign",
             "EditScanProfileDetails",
             "IncreasedFreeMaxBreachEmails",
           ]}
@@ -318,14 +318,7 @@ describe("Settings page redesign", () => {
         SettingsEditYourInfoNoPlus,
         SettingsEditYourInfoMeta,
       );
-      render(
-        <ComposeStory
-          enabledFeatureFlags={[
-            "SidebarNavigationRedesign",
-            "EditScanProfileDetails",
-          ]}
-        />,
-      );
+      render(<ComposeStory enabledFeatureFlags={["EditScanProfileDetails"]} />);
 
       const upsellLink = screen.getByRole("link", {
         name: "Upgrade to ⁨Monitor Plus⁩ to protect your personal info",
@@ -1128,5 +1121,14 @@ describe("Settings page redesign", () => {
       const { container } = render(<ComposedStory />);
       expect(await axe(container)).toHaveNoViolations();
     }, 10_000);
+  });
+});
+
+describe("SettingsContent activeTab handling", () => {
+  it("defaults to the first tab (edit your info) when activeTab is not provided", () => {
+    const ComposedStory = composeStory(SettingsNoDefaultTab, SettingsMeta);
+    render(<ComposedStory />);
+    const editYourInfoHeader = screen.queryAllByText("Update scan info");
+    expect(editYourInfoHeader[1]).toBeInTheDocument();
   });
 });

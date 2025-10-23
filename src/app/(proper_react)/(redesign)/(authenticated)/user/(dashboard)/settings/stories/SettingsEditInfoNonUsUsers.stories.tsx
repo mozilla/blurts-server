@@ -32,10 +32,7 @@ export const SettingsEditYourInfo: Story = {
   args: {
     countryCode: "nl",
     activeTab: "edit-info",
-    enabledFeatureFlags: [
-      "SidebarNavigationRedesign",
-      "EditScanProfileDetails",
-    ],
+    enabledFeatureFlags: ["EditScanProfileDetails"],
   },
 };
 
@@ -44,10 +41,7 @@ export const SettingsEditYourInfoAdditionalMonitoredEmails: Story = {
   args: {
     countryCode: "nl",
     activeTab: "edit-info",
-    enabledFeatureFlags: [
-      "SidebarNavigationRedesign",
-      "EditScanProfileDetails",
-    ],
+    enabledFeatureFlags: ["EditScanProfileDetails"],
     emailAddresses: [mockedVerifiedEmailSecond, mockedVerifiedEmailFourth],
   },
 };
@@ -57,10 +51,7 @@ export const SettingsEditYourInfoMaxMonitoredEmails: Story = {
   args: {
     countryCode: "nl",
     activeTab: "edit-info",
-    enabledFeatureFlags: [
-      "SidebarNavigationRedesign",
-      "EditScanProfileDetails",
-    ],
+    enabledFeatureFlags: ["EditScanProfileDetails"],
     emailAddresses: [
       mockedVerifiedEmailSecond,
       mockedVerifiedEmailThird,
@@ -76,7 +67,6 @@ export const SettingsEditYourInfoMaxMonitoredEmailsIncreased: Story = {
     countryCode: "nl",
     activeTab: "edit-info",
     enabledFeatureFlags: [
-      "SidebarNavigationRedesign",
       "EditScanProfileDetails",
       "IncreasedFreeMaxBreachEmails",
     ],
