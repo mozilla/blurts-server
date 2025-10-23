@@ -22,16 +22,16 @@ export default async function Page() {
   const headersList = await headers();
   const countryCode = getCountryCode(headersList);
 
-  if (countryCode !== "us") {
+  const enabledFeatureFlags = await getEnabledFeatureFlags({
+    isSignedOut: true,
+  });
+
+  if (countryCode !== "us" || enabledFeatureFlags.includes("FreeOnly")) {
     return redirect("/");
   }
 
   const eligibleForPremium = isEligibleForPremium(countryCode);
   const l10n = getL10n(await getAcceptLangHeaderInServerComponents());
-
-  const enabledFeatureFlags = await getEnabledFeatureFlags({
-    isSignedOut: true,
-  });
 
   // request the profile stats for the last 30 days
   const profileStats = await getProfilesStats(

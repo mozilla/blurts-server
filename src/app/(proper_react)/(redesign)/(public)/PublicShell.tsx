@@ -91,7 +91,11 @@ export const PublicShell = (props: Props) => {
           <SignInButton variant="secondary" />
         </nav>
         <div className={styles.content}>{props.children}</div>
-        <Footer l10n={props.l10n} countryCode={props.countryCode} />
+        <Footer
+          l10n={props.l10n}
+          countryCode={props.countryCode}
+          enabledFeatureFlags={props.enabledFeatureFlags}
+        />
       </div>
     </PublicMobileShell>
   );
