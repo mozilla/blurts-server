@@ -196,6 +196,7 @@ describe("email breach alerts integrations", () => {
     expect(() => pubsub.subscription(subscriptionName)).not.toThrow();
   });
 
+  // FIXME https://mozilla-hub.atlassian.net/browse/MNTOR-5087
   test.failing(
     "primary-only subscriber receives notifications for each breached email",
     async () => {
@@ -288,9 +289,7 @@ describe("email breach alerts integrations", () => {
     expect(notifications[0].notified).toBe(true);
   });
 
-  // FIXME this looks like a legit bug...
-  // Because secondary addresses share the same subscriber_id as the primary,
-  // the new notifiedSubs.includes(subscriberId) check skips those addresses entirely.
+  // FIXME https://mozilla-hub.atlassian.net/browse/MNTOR-5093
   test.failing(
     "sends to affected addresses when subscriber prefers individual notifications",
     async () => {
