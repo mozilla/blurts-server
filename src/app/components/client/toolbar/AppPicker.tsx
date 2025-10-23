@@ -38,6 +38,15 @@ import { useTelemetry } from "../../../hooks/useTelemetry";
 import { Popover } from "../Popover";
 
 const getProducts = (referringHost: string, l10n: ReactLocalization) => ({
+  vpn: {
+    id: "vpn",
+    url: `https://www.mozilla.org/products/vpn/?utm_source=${encodeURIComponent(
+      referringHost,
+    )}&utm_medium=referral&utm_campaign=bento&utm_content=desktop`,
+    title: l10n.getString("toolbar-app-picker-product-vpn"),
+    gaLabel: "vpn",
+    imgSrc: VpnLogo,
+  },
   relay: {
     id: "relay",
     url: `https://relay.firefox.com/?utm_source=${encodeURIComponent(
@@ -72,15 +81,6 @@ const getProducts = (referringHost: string, l10n: ReactLocalization) => ({
     gaLabel: "fx-mobile",
     imgSrc: FxMobileLogo,
   },
-  vpn: {
-    id: "vpn",
-    url: `https://www.mozilla.org/products/vpn/?utm_source=${encodeURIComponent(
-      referringHost,
-    )}&utm_medium=referral&utm_campaign=bento&utm_content=desktop`,
-    title: l10n.getString("toolbar-app-picker-product-vpn"),
-    gaLabel: "vpn",
-    imgSrc: VpnLogo,
-  },
 });
 
 /**
@@ -97,30 +97,44 @@ export const AppPicker = () => {
       : "monitor.mozilla.org";
   const products = getProducts(referringHost, l10n);
 
+  const handleAction = (key: React.Key) => {
+    if (key === "mozilla") {
+      gaEvent({
+        category: "bento",
+        action: "bento-app-link-click",
+        label: "Mozilla",
+      });
+    } else {
+      const product = Object.values(products).find((p) => p.id === key);
+      if (product) {
+        gaEvent({
+          category: "bento",
+          action: "bento-app-link-click",
+          label: product.gaLabel,
+        });
+      }
+    }
+  };
+
   return (
     <AppPickerTrigger
       label={l10n.getString("toolbar-app-picker-trigger-title")}
       referringHost={referringHost}
+      onAction={handleAction}
     >
       <>
         {Object.values(products).map((p) => (
-          <Item key={p.id} textValue={p.title}>
-            <a
-              href={p.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`${styles.menuLink} ${styles[`${p.id}Link`]}`}
-              onClick={() => {
-                gaEvent({
-                  category: "bento",
-                  action: "bento-app-link-click",
-                  label: p.gaLabel,
-                });
-              }}
-            >
+          <Item
+            key={p.id}
+            textValue={p.title}
+            href={p.url}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span className={`${styles.menuLink} ${styles[`${p.id}Link`]}`}>
               <Image src={p.imgSrc} alt="" width={16} height={16} />
               {p.title}
-            </a>
+            </span>
           </Item>
         ))}
       </>
@@ -128,24 +142,15 @@ export const AppPicker = () => {
       <Item
         key="mozilla"
         textValue={l10n.getString("toolbar-app-picker-by-mozilla")}
+        href={`https://www.mozilla.org/?utm_source=${encodeURIComponent(
+          referringHost,
+        )}&utm_medium=referral&utm_campaign=bento&utm_content=desktop`}
+        target="_blank"
+        rel="noopener noreferrer"
       >
-        <a
-          href={`https://www.mozilla.org/?utm_source=${encodeURIComponent(
-            referringHost,
-          )}&utm_medium=referral&utm_campaign=bento&utm_content=desktop`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={`${styles.menuLink} ${styles.mozillaLink}`}
-          onClick={() =>
-            gaEvent({
-              category: "bento",
-              action: "bento-app-link-click",
-              label: "Mozilla",
-            })
-          }
-        >
+        <span className={`${styles.menuLink} ${styles.mozillaLink}`}>
           {l10n.getString("toolbar-app-picker-by-mozilla")}
-        </a>
+        </span>
       </Item>
     </AppPickerTrigger>
   );
@@ -218,7 +223,7 @@ const AppPickerMenu = <T extends object>(props: AppPickerMenuProps<T>) => {
 
   const menuState = useTreeState({ ...props });
 
-  const menuRef = useRef<HTMLUListElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
   const menuProps = useMenu(props, menuState, menuRef).menuProps;
 
   return (
@@ -227,11 +232,11 @@ const AppPickerMenu = <T extends object>(props: AppPickerMenuProps<T>) => {
         <Image src={FirefoxLogo} alt="" width={32} height={32} />
         <h2>{l10n.getString("fx-makes-tech")}</h2>
       </div>
-      <ul {...menuProps} ref={menuRef}>
+      <div {...menuProps} ref={menuRef} className={styles.menuWrapper}>
         {Array.from(menuState.collection).map((item) => (
           <AppPickerItem key={item.key} item={item} state={menuState} />
         ))}
-      </ul>
+      </div>
     </div>
   );
 };
@@ -246,34 +251,42 @@ type AppPickerItemProps<T> = {
 // TODO: Add unit test when changing this code:
 /* c8 ignore start */
 const AppPickerItem = <T extends object>(props: AppPickerItemProps<T>) => {
-  const menuItemRef = useRef<HTMLLIElement>(null);
+  const isLink = !!props.item.props?.href;
+  const anchorRef = useRef<HTMLAnchorElement>(null);
+  const divRef = useRef<HTMLDivElement>(null);
+  const ref = isLink ? anchorRef : divRef;
+
   const { menuItemProps, isFocused } = useMenuItem(
     {
       key: props.item.key,
     },
     props.state,
-    menuItemRef,
+    ref,
   );
-  const onKeyDown = (e: React.KeyboardEvent) => {
-    if ((e.key === "Enter" || e.key === " ") && menuItemRef.current) {
-      const link = menuItemRef.current.querySelector(
-        "a",
-      ) as HTMLAnchorElement | null;
-      link?.click();
-      e.preventDefault();
-    }
+
+  const commonProps = {
+    ...menuItemProps,
+    className: `${styles.menuItemWrapper} ${isFocused ? styles.isFocused : ""}`,
   };
+
+  if (isLink) {
+    return (
+      <a
+        {...commonProps}
+        ref={anchorRef}
+        href={props.item.props?.href}
+        target={props.item.props?.target}
+        rel={props.item.props?.rel}
+      >
+        {props.item.rendered}
+      </a>
+    );
+  }
+
   return (
-    <li
-      {...menuItemProps}
-      ref={menuItemRef}
-      className={`${styles.menuItemWrapper} ${
-        isFocused ? styles.isFocused : ""
-      }`}
-      onKeyDown={onKeyDown}
-    >
+    <div {...commonProps} ref={divRef}>
       {props.item.rendered}
-    </li>
+    </div>
   );
 };
 /* c8 ignore stop */
