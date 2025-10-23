@@ -70,6 +70,7 @@ export const ShellRedesign = (props: Props) => {
           l10n={props.l10n}
           session={props.session}
           countryCode={props.countryCode}
+          enabledFeatureFlags={props.enabledFeatureFlags}
         />
       </div>
     </MobileShell>
