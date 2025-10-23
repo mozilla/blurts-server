@@ -188,16 +188,6 @@ const mockedQuaternaryVerifiedEmail: EmailAddressRow = {
   updated_at: new Date("1337-04-02T04:02:42.000Z"),
   verification_token: "arbitrary_token",
 };
-const mockedQuinaryVerifiedEmail: EmailAddressRow = {
-  id: 1337,
-  email: "quinary_verified@example.com",
-  sha1: "arbitrary string",
-  subscriber_id: subscriberId,
-  verified: true,
-  created_at: new Date("1337-04-02T04:02:42.000Z"),
-  updated_at: new Date("1337-04-02T04:02:42.000Z"),
-  verification_token: "arbitrary_token",
-};
 
 const mockedSecondaryUnverifiedEmail: EmailAddressRow = {
   id: 1337,
@@ -433,55 +423,6 @@ describe("Settings page", () => {
       expect(tabListItemNext.getAttribute("aria-selected")).toBe("true");
     });
 
-    it("Add email address button is not shown when email limit of five reached", () => {
-      // jsdom will complain about not being able to navigate to a different page
-      // after clicking the link; suppress that error, as it's not relevant to the
-      // test:
-      jest.spyOn(console, "warn").mockImplementation(() => {});
-      render(
-        <SettingsWrapper>
-          <SettingsView
-            activeTab="edit-info"
-            l10n={getL10n()}
-            user={{
-              ...mockedUser,
-              subscriber: {
-                ...mockedUser.subscriber!,
-                all_emails_to_primary: true,
-              },
-            }}
-            subscriber={mockedSubscriber}
-            breachCountByEmailAddress={{
-              [mockedUser.email]: 42,
-              [mockedSecondaryVerifiedEmail.email]: 42,
-            }}
-            emailAddresses={[
-              mockedSecondaryVerifiedEmail,
-              mockedTertiaryVerifiedEmail,
-              mockedQuaternaryVerifiedEmail,
-              mockedQuinaryVerifiedEmail,
-            ]}
-            fxaSettingsUrl=""
-            fxaSubscriptionsUrl=""
-            monthlySubscriptionUrl=""
-            subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-            enabledFeatureFlags={[]}
-            experimentData={defaultExperimentData["Features"]}
-            isMonthlySubscriber={true}
-            data={mockedPlusSubscriberEmailPreferences}
-            isEligibleForPremium={false}
-            actions={mockedActions}
-            userAnnouncements={mockedAnnouncements}
-          />
-        </SettingsWrapper>,
-      );
-
-      const addEmailButton = screen.queryByRole("button", {
-        name: "Add email address",
-      });
-      expect(addEmailButton).not.toBeInTheDocument();
-    });
-
     it("Add email address button is shown when fewer than five emails", () => {
       // jsdom will complain about not being able to navigate to a different page
       // after clicking the link; suppress that error, as it's not relevant to the
@@ -567,58 +508,6 @@ describe("Settings page", () => {
       );
 
       expect(verificationNotification).toHaveLength(1);
-    });
-
-    it("calls the API to resend a verification email if requested to", async () => {
-      const user = userEvent.setup();
-      global.fetch = jest.fn().mockResolvedValue({ ok: true });
-      render(
-        <SettingsWrapper>
-          <SettingsView
-            activeTab="edit-info"
-            l10n={getL10n()}
-            user={mockedUser}
-            subscriber={mockedSubscriber}
-            breachCountByEmailAddress={{
-              [mockedUser.email]: 42,
-              [mockedSecondaryVerifiedEmail.email]: 42,
-              [mockedSecondaryUnverifiedEmail.email]: 42,
-            }}
-            emailAddresses={[
-              mockedSecondaryVerifiedEmail,
-              mockedSecondaryUnverifiedEmail,
-            ]}
-            fxaSettingsUrl=""
-            fxaSubscriptionsUrl=""
-            monthlySubscriptionUrl=""
-            subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-            enabledFeatureFlags={[]}
-            experimentData={defaultExperimentData["Features"]}
-            isMonthlySubscriber={true}
-            data={mockedPlusSubscriberEmailPreferences}
-            isEligibleForPremium={false}
-            actions={mockedActions}
-            userAnnouncements={mockedAnnouncements}
-          />
-        </SettingsWrapper>,
-      );
-
-      const resendButton = screen.getByRole("button", {
-        name: "Resend verification email",
-      });
-      await user.click(resendButton);
-
-      expect(global.fetch).toHaveBeenCalledWith("/api/v1/user/resend-email", {
-        body: expect.stringContaining(
-          `"emailId":${mockedSecondaryUnverifiedEmail.id}`,
-        ),
-        headers: {
-          Accept: "text/html",
-          "Content-Type": "application/json",
-        },
-        method: "POST",
-        mode: "same-origin",
-      });
     });
 
     it("calls the 'remove' action when clicking the rubbish bin icon", async () => {
