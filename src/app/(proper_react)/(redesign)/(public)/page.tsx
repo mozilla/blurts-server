@@ -114,7 +114,9 @@ export default async function Page() {
         />
       ) : (
         <LandingView
-          eligibleForPremium={eligibleForPremium}
+          eligibleForPremium={
+            eligibleForPremium && !enabledFeatureFlags.includes("FreeOnly")
+          }
           l10n={l10n}
           countryCode={countryCode}
           scanLimitReached={scanLimitReached}
