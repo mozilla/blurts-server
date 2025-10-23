@@ -43,7 +43,7 @@ const TESTS_CONFIG = {
   connection: testConnectionObj,
 };
 
-let exportConfig = NODE_ENV === "tests" ? TESTS_CONFIG : RUNTIME_CONFIG;
+let exportConfig = NODE_ENV === "test" ? TESTS_CONFIG : RUNTIME_CONFIG;
 
 if (APP_ENV === "cloudrun") {
   // @ts-ignore TODO: Check if this typing error is correct, or if the types are wrong?

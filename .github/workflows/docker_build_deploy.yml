@@ -59,7 +59,8 @@ jobs:
       - name: Deploy to Dockerhub
         env:
           DOCKERHUB_REPO: ${{ env.DOCKERHUB_REPO }}
+          TAGS: ${{ steps.meta.outputs.tags }}
         run: |
           # deploy main
-          docker tag blurts-server ${{ steps.meta.outputs.tags }}
-          docker push ${{ steps.meta.outputs.tags }}
+          docker tag blurts-server $TAGS
+          docker push $TAGS
