@@ -44,6 +44,20 @@ export const SettingsEditManageAccount: Story = {
   },
 };
 
+export const SettingsEditManageAccountPlus: Story = {
+  name: "Manage account (Plus)",
+  args: {
+    hasPlus: true,
+    countryCode: "us",
+    activeTab: "manage-account",
+    enabledFeatureFlags: [
+      "SidebarNavigationRedesign",
+      "EditScanProfileDetails",
+      "CancellationFlow",
+    ],
+  },
+};
+
 export const SettingsEditNotifications: Story = {
   name: "Notifications",
   args: {

@@ -9,6 +9,7 @@ import { userEvent, within } from "storybook/test";
 import { axe } from "jest-axe";
 import SettingsMeta, {
   SettingsEditManageAccount,
+  SettingsEditManageAccountPlus,
   SettingsEditNotifications,
   SettingsNoDefaultTab,
 } from "./stories/SettingsRedesign.stories";
@@ -83,7 +84,7 @@ const SettingsWrapper = (props: {
   </TestComponentWrapper>
 );
 
-describe("Tests that require the SettingsWrapper", () => {
+describe("Tests from Old settings page", () => {
   it("changes the active tab", async () => {
     const user = userEvent.setup();
     render(
@@ -1213,6 +1214,221 @@ describe("Settings page redesign", () => {
       const { container } = render(<ComposedStory />);
       expect(await axe(container)).toHaveNoViolations();
     }, 10_000);
+    it("renders the cancellation section for Plus users", () => {
+      const ComposedStory = composeStory(
+        SettingsEditManageAccountPlus,
+        SettingsMeta,
+      );
+      render(<ComposedStory />);
+
+      expect(
+        screen.getByRole("heading", {
+          name: /Cancel ⁨Monitor Plus⁩ subscription/i,
+        }),
+      ).toBeInTheDocument();
+
+      expect(
+        screen.getByRole("button", { name: /Cancel your subscription/i }),
+      ).toBeInTheDocument();
+    });
+
+    it("opens the cancellation dialog flow when 'Cancel your subscription' is clicked", async () => {
+      const user = userEvent.setup();
+      const ComposedStory = composeStory(
+        SettingsEditManageAccountPlus,
+        SettingsMeta,
+      );
+      render(<ComposedStory />);
+
+      const cancelButton = screen.getByRole("button", {
+        name: /Cancel your subscription/i,
+      });
+
+      await act(async () => {
+        await user.click(cancelButton);
+      });
+
+      expect(
+        screen.getByRole("dialog", { name: /Hey, before you go/i }),
+      ).toBeInTheDocument();
+    });
+
+    it("advances to the next step when 'Continue to cancellation' is clicked", async () => {
+      const user = userEvent.setup();
+      const ComposedStory = composeStory(
+        SettingsEditManageAccountPlus,
+        SettingsMeta,
+      );
+      render(<ComposedStory />);
+
+      await act(async () => {
+        await user.click(
+          screen.getByRole("button", { name: /Cancel your subscription/i }),
+        );
+      });
+
+      const continueButton = screen.getByRole("button", {
+        name: /Continue to cancellation/i,
+      });
+
+      await act(async () => {
+        await user.click(continueButton);
+      });
+
+      expect(
+        screen.getByRole("dialog", {
+          name: /We’re sorry to see you go/i,
+        }),
+      ).toBeInTheDocument();
+    });
+
+    it("closes the dialog if 'Never mind, take me back' is clicked", async () => {
+      const user = userEvent.setup();
+      const ComposedStory = composeStory(
+        SettingsEditManageAccountPlus,
+        SettingsMeta,
+      );
+      render(<ComposedStory />);
+
+      await act(async () => {
+        await user.click(
+          screen.getByRole("button", { name: /Cancel your subscription/i }),
+        );
+      });
+
+      const backButton = screen.getByRole("button", {
+        name: /Never mind, take me back/i,
+      });
+      await act(async () => {
+        await user.click(backButton);
+      });
+
+      expect(
+        screen.queryByRole("dialog", { name: /Hey, before you go/i }),
+      ).not.toBeInTheDocument();
+    });
+
+    it("can close the cancellation dialog via the close button", async () => {
+      const user = userEvent.setup();
+      const ComposedStory = composeStory(
+        SettingsEditManageAccountPlus,
+        SettingsMeta,
+      );
+      render(<ComposedStory />);
+
+      await act(async () => {
+        await user.click(
+          screen.getByRole("button", { name: /Cancel your subscription/i }),
+        );
+      });
+
+      const closeButton = screen.getByRole("button", { name: /Close modal/i });
+
+      await act(async () => {
+        await user.click(closeButton);
+      });
+
+      expect(
+        screen.queryByRole("dialog", { name: /Hey, before you go/i }),
+      ).not.toBeInTheDocument();
+    });
+
+    it("reaches the redirecting step after confirmation", async () => {
+      const user = userEvent.setup();
+      const ComposedStory = composeStory(
+        SettingsEditManageAccountPlus,
+        SettingsMeta,
+      );
+      render(<ComposedStory />);
+      await act(async () => {
+        await user.click(
+          screen.getByRole("button", { name: /Cancel your subscription/i }),
+        );
+        await user.click(
+          screen.getByRole("button", { name: /Continue to cancellation/i }),
+        );
+        await user.click(
+          screen.getByRole("button", { name: /Continue to cancellation/i }),
+        );
+      });
+      const redirectTitle = screen.getByText(
+        "Directing you to your ⁨Mozilla account⁩ to cancel",
+      );
+      expect(redirectTitle).toBeInTheDocument();
+    });
+
+    it("shows the account deletion button if the user does not have Plus", () => {
+      const ComposedStory = composeStory(
+        SettingsEditManageAccount,
+        SettingsMeta,
+      );
+      render(<ComposedStory />);
+      expect(
+        screen.getByRole("heading", { name: /Delete ⁨Monitor⁩ account/i }),
+      ).toBeInTheDocument();
+      expect(
+        screen.getByText(
+          /This will permanently delete your ⁨Monitor⁩ account and turn off all notifications/i,
+        ),
+      ).toBeInTheDocument();
+    });
+
+    it("warns about the consequences before deleting a free user's account", async () => {
+      const user = userEvent.setup();
+
+      const ComposedStory = composeStory(
+        SettingsEditManageAccount,
+        SettingsMeta,
+      );
+      render(<ComposedStory />);
+      await act(async () => {
+        await user.click(
+          screen.getByRole("button", { name: /Delete account/i }),
+        );
+      });
+      const dialog = screen.getByRole("dialog");
+      expect(
+        within(dialog).getByText(
+          /All of your ⁨Monitor⁩ account information will be deleted and we’ll no longer monitor for new data breaches/i,
+        ),
+      ).toBeInTheDocument();
+    });
+
+    it("shows a loading state while account deletion is in progress", async () => {
+      const user = userEvent.setup();
+      const ComposedStory = composeStory(
+        SettingsEditManageAccount,
+        SettingsMeta,
+      );
+      jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+      const mockDeleteAccount = jest.fn(() => Promise.resolve());
+      render(
+        <ComposedStory
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          {...(ComposedStory.args as any)}
+          actions={{ onDeleteAccount: mockDeleteAccount }}
+        />,
+      );
+
+      // Open dialog
+      await act(async () => {
+        await user.click(
+          screen.getByRole("button", { name: /Delete account/i }),
+        );
+      });
+
+      // Confirm
+      const dialog = screen.getByRole("dialog");
+      const confirmButton = within(dialog).getByRole("button", {
+        name: /Delete account/i,
+      });
+      await act(async () => {
+        await user.click(confirmButton);
+      });
+
+      expect(confirmButton).toHaveClass("isLoading");
+      expect(confirmButton).toHaveAttribute("aria-live", "polite");
+    });
   });
 
   describe("Set notifications", () => {
