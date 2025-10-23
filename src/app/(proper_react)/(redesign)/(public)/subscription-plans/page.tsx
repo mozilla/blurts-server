@@ -30,13 +30,6 @@ export default async function Page() {
   const session = await getServerSession();
   const headersList = await headers();
   const countryCode = getCountryCode(headersList);
-
-  if (countryCode !== "us") {
-    return redirect("/");
-  }
-
-  const l10n = getL10n(await getAcceptLangHeaderInServerComponents());
-  const eligibleForPremium = isEligibleForPremium(countryCode);
   const enabledFeatureFlags = await getEnabledFeatureFlags(
     typeof session?.user.subscriber?.fxa_uid === "string"
       ? {
@@ -45,6 +38,13 @@ export default async function Page() {
         }
       : { isSignedOut: true },
   );
+
+  if (countryCode !== "us" || enabledFeatureFlags.includes("FreeOnly")) {
+    return redirect("/");
+  }
+
+  const l10n = getL10n(await getAcceptLangHeaderInServerComponents());
+  const eligibleForPremium = isEligibleForPremium(countryCode);
 
   if (!eligibleForPremium) {
     return redirect("/");
