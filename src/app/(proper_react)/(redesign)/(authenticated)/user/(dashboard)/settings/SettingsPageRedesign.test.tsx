@@ -10,6 +10,7 @@ import { axe } from "jest-axe";
 import SettingsMeta, {
   SettingsEditManageAccount,
   SettingsEditNotifications,
+  SettingsNoDefaultTab,
 } from "./stories/SettingsRedesign.stories";
 import SettingsEditYourInfoMeta, {
   SettingsEditYourInfoDetailsSaved,
@@ -44,10 +45,96 @@ jest.mock("../../../../../../hooks/locationSuggestions");
 jest.mock("../../../../../../hooks/useTelemetry");
 
 import {
+  mockedAnnouncements,
+  mockedPlusSubscriberEmailPreferences,
   mockedProfileDataMax,
   mockedProfileDataMin,
+  mockedSecondaryVerifiedEmail,
+  mockedSession,
+  mockedSubscriber,
+  mockedSubscriptionBillingAmount,
+  mockedUser,
   mockedVerifiedEmailFourth,
 } from "./stories/settingsMockData";
+import { TestComponentWrapper } from "../../../../../../../TestComponentWrapper";
+import { Shell } from "../../../../Shell/Shell";
+import { ReactNode } from "react";
+import { FeatureFlagName } from "../../../../../../../db/tables/featureFlags";
+import { getL10n } from "../../../../../../functions/l10n/storybookAndJest";
+import { defaultExperimentData } from "../../../../../../../telemetry/generated/nimbus/experiments";
+import { SettingsView } from "./View";
+
+const SettingsWrapper = (props: {
+  children: ReactNode;
+  enabledFeatureFlags?: FeatureFlagName[];
+}) => (
+  <TestComponentWrapper>
+    <Shell
+      l10n={getL10n()}
+      session={mockedSession}
+      nonce=""
+      countryCode="en"
+      enabledFeatureFlags={props.enabledFeatureFlags ?? []}
+      experimentData={defaultExperimentData["Features"]}
+      announcements={mockedAnnouncements}
+    >
+      {props.children}
+    </Shell>
+  </TestComponentWrapper>
+);
+
+describe("Tests that require the SettingsWrapper", () => {
+  it("changes the active tab", async () => {
+    const user = userEvent.setup();
+    render(
+      <SettingsWrapper>
+        <SettingsView
+          activeTab="edit-info"
+          l10n={getL10n()}
+          user={{
+            ...mockedUser,
+            subscriber: {
+              ...mockedUser.subscriber!,
+              all_emails_to_primary: true,
+            },
+          }}
+          subscriber={mockedSubscriber}
+          breachCountByEmailAddress={{
+            [mockedUser.email]: 42,
+            [mockedSecondaryVerifiedEmail.email]: 42,
+          }}
+          emailAddresses={[mockedSecondaryVerifiedEmail]}
+          fxaSettingsUrl=""
+          fxaSubscriptionsUrl=""
+          monthlySubscriptionUrl=""
+          subscriptionBillingAmount={mockedSubscriptionBillingAmount}
+          enabledFeatureFlags={[]}
+          experimentData={defaultExperimentData["Features"]}
+          isMonthlySubscriber={true}
+          data={mockedPlusSubscriberEmailPreferences}
+          isEligibleForPremium={false}
+          actions={mockedActions}
+          userAnnouncements={mockedAnnouncements}
+        />
+      </SettingsWrapper>,
+    );
+
+    const tabListItemInitial = screen.getByRole("tab", {
+      name: "Edit your info",
+    });
+    expect(tabListItemInitial.getAttribute("aria-selected")).toBe("true");
+
+    const tabListItemNext = screen.getByRole("tab", {
+      name: "Set notifications",
+    });
+    // Wrap the click (state update) in act()
+    await act(async () => {
+      await user.click(tabListItemNext);
+    });
+    expect(tabListItemInitial.getAttribute("aria-selected")).toBe("false");
+    expect(tabListItemNext.getAttribute("aria-selected")).toBe("true");
+  });
+});
 
 describe("Settings page redesign", () => {
   describe("Edit your info (non-US users)", () => {
@@ -59,6 +146,15 @@ describe("Settings page redesign", () => {
       const { container } = render(<ComposedStory />);
       expect(await axe(container)).toHaveNoViolations();
     }, 10_000);
+
+    describe("SettingsContent activeTab handling", () => {
+      it("defaults to the first tab (edit your info) when activeTab is not provided", () => {
+        const ComposedStory = composeStory(SettingsNoDefaultTab, SettingsMeta);
+        render(<ComposedStory />);
+        const editYourInfoHeader = screen.queryAllByText("Update scan info");
+        expect(editYourInfoHeader[1]).toBeInTheDocument();
+      });
+    });
 
     it("shows the max number of emails that can be added to the list of addresses to monitor for breaches", () => {
       const ComposedStory = composeStory(
