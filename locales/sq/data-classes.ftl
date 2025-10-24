@@ -102,6 +102,7 @@ none-data-class = Asnjë
 occupations = Punësime
 # various data classes grouped together
 other-data-class = Të tjera
+parenting-plans = Shpajtimi dështoi
 partial-credit-card-data = Të dhëna të pjesshme karte krediti
 partial-dates-of-birth = Datëlindje të pjesshme
 partial-phone-numbers = Numra telefoni të pjesshëm

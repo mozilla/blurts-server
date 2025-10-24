@@ -102,9 +102,15 @@ ssn-modal-ok = OK
 
 # PIN Breaches
 
+high-risk-breach-pin-title = PIN-ul tău a fost expus
+high-risk-breach-pin-description = Ia măsuri cât mai curând posibil pentru mai multă protecție legală ca să îți recuperezi orice pierderi.
+high-risk-breach-pin-step-one = Anunță imediat banca despre compromiterea PIN-ului.
+high-risk-breach-pin-step-two = Schimbă-ți codul PIN oriunde l-ai refolosit.
+high-risk-breach-pin-step-three = Verifică-ți conturile pentru debitări neautorizate.
 
 # No high risk breaches found
 
+high-risk-breach-none-title = Vești bune! Nu am găsit nicio încălcare a securității datelor de risc ridicat.
 high-risk-breach-none-sub-description-part-one = Încălcările securității datelor cu risc ridicat includ:
 high-risk-breach-none-sub-description-ssn = Codul numeric personal
 high-risk-breach-none-sub-description-bank-account = Date despre contul bancar
