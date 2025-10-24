@@ -36,8 +36,8 @@ export const DeleteAccountButton = (
         // It's currently unclear if and how we should mock our server action:
         /* c8 ignore next 8 */
         void props
-          .onDeleteAccount()
-          .then(() => {
+          ?.onDeleteAccount?.()
+          ?.then?.(() => {
             void signOut({ callbackUrl: "/" });
           })
           .catch(() => {

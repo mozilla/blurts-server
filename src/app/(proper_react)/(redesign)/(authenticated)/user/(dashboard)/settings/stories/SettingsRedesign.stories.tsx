@@ -20,6 +20,18 @@ const meta: Meta<typeof SettingsWrapper> = {
 export default meta;
 type Story = StoryObj<typeof SettingsWrapper>;
 
+export const SettingsNoDefaultTab: Story = {
+  name: "Settings default no tab",
+  args: {
+    countryCode: "us",
+    activeTab: undefined,
+    enabledFeatureFlags: [
+      "EditScanProfileDetails",
+      "SidebarNavigationRedesign",
+    ],
+  },
+};
+
 export const SettingsEditManageAccount: Story = {
   name: "Manage account",
   args: {
@@ -28,6 +40,20 @@ export const SettingsEditManageAccount: Story = {
     enabledFeatureFlags: [
       "SidebarNavigationRedesign",
       "EditScanProfileDetails",
+    ],
+  },
+};
+
+export const SettingsEditManageAccountPlus: Story = {
+  name: "Manage account (Plus)",
+  args: {
+    hasPlus: true,
+    countryCode: "us",
+    activeTab: "manage-account",
+    enabledFeatureFlags: [
+      "SidebarNavigationRedesign",
+      "EditScanProfileDetails",
+      "CancellationFlow",
     ],
   },
 };

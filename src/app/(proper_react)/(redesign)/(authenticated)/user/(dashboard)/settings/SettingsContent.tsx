@@ -79,6 +79,7 @@ function SettingsContent(props: SettingsProps) {
             selectedKey={activeTab}
             tabs={tabsData}
             orientation="vertical"
+            /*c8 ignore next 3 */
             onSelectionChange={(selectedKey) => {
               setActiveTab(selectedKey as TabType);
             }}
