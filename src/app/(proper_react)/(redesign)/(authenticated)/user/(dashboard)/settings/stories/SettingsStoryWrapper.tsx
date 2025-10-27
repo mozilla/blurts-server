@@ -43,7 +43,7 @@ export type SettingsWrapperProps = {
 export const mockedActions = {
   onAddEmail: fn().mockName("onAddEmail"),
   onRemoveEmail: fn().mockName("onRemoveEmail"),
-  onDeleteAccount: fn().mockName("onDeleteAccount"),
+  onDeleteAccount: () => new Promise(() => undefined),
   onHandleUpdateProfileData: fn().mockName("onHandleUpdateProfileData"),
 };
 

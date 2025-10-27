@@ -32,6 +32,12 @@ import {
 import { mockedActions } from "./stories/SettingsStoryWrapper";
 
 const mockedRouterPush = jest.fn();
+const mockedRecordTelemetry = jest.fn();
+jest.mock("../../../../../../hooks/useTelemetry", () => {
+  return {
+    useTelemetry: () => mockedRecordTelemetry,
+  };
+});
 
 jest.mock("next/navigation", () => ({
   useRouter: () => ({
@@ -59,7 +65,7 @@ import {
 } from "./stories/settingsMockData";
 import { TestComponentWrapper } from "../../../../../../../TestComponentWrapper";
 import { Shell } from "../../../../Shell/Shell";
-import { ReactNode } from "react";
+import { ComponentProps, ReactNode } from "react";
 import { FeatureFlagName } from "../../../../../../../db/tables/featureFlags";
 import { getL10n } from "../../../../../../functions/l10n/storybookAndJest";
 import { defaultExperimentData } from "../../../../../../../telemetry/generated/nimbus/experiments";
@@ -85,6 +91,13 @@ const SettingsWrapper = (props: {
 );
 
 describe("Tests from Old settings page", () => {
+  const mockedActions: ComponentProps<typeof SettingsView>["actions"] = {
+    onRemoveEmail: jest.fn(),
+    onAddEmail: jest.fn(),
+    onDeleteAccount: () => new Promise(() => undefined),
+    onHandleUpdateProfileData: jest.fn(),
+  };
+
   it("changes the active tab", async () => {
     const user = userEvent.setup();
     render(
@@ -1248,9 +1261,33 @@ describe("Settings page redesign", () => {
         await user.click(cancelButton);
       });
 
+      expect(mockedRecordTelemetry).toHaveBeenCalledWith(
+        "popup",
+        "view",
+        expect.objectContaining({
+          popup_id: "settings-cancel-monitor-plus-dialog",
+        }),
+      );
+
       expect(
         screen.getByRole("dialog", { name: /Hey, before you go/i }),
       ).toBeInTheDocument();
+
+      const dismissBtn = screen.getByRole("button", {
+        name: /Close modal/i,
+      });
+
+      await act(async () => {
+        await user.click(dismissBtn);
+      });
+
+      expect(mockedRecordTelemetry).toHaveBeenCalledWith(
+        "popup",
+        "exit",
+        expect.objectContaining({
+          popup_id: "exited_cancel_flow",
+        }),
+      );
     });
 
     it("advances to the next step when 'Continue to cancellation' is clicked", async () => {
@@ -1302,6 +1339,13 @@ describe("Settings page redesign", () => {
       await act(async () => {
         await user.click(backButton);
       });
+      expect(mockedRecordTelemetry).toHaveBeenCalledWith(
+        "popup",
+        "exit",
+        expect.objectContaining({
+          popup_id: "never_mind_take_me_back",
+        }),
+      );
 
       expect(
         screen.queryByRole("dialog", { name: /Hey, before you go/i }),
@@ -1381,17 +1425,59 @@ describe("Settings page redesign", () => {
         SettingsMeta,
       );
       render(<ComposedStory />);
-      await act(async () => {
-        await user.click(
-          screen.getByRole("button", { name: /Delete account/i }),
-        );
+
+      const deleteAccBtn = screen.getByRole("button", {
+        name: /Delete account/i,
       });
+
+      await act(async () => {
+        await user.click(deleteAccBtn);
+      });
+      expect(mockedRecordTelemetry).toHaveBeenCalledWith(
+        "popup",
+        "view",
+        expect.objectContaining({
+          popup_id: "settings-delete-monitor-free-dialog",
+        }),
+      );
       const dialog = screen.getByRole("dialog");
       expect(
         within(dialog).getByText(
           /All of your ⁨Monitor⁩ account information will be deleted and we’ll no longer monitor for new data breaches/i,
         ),
       ).toBeInTheDocument();
+
+      const closeButton = screen.getByRole("button", { name: /Close modal/i });
+
+      await act(async () => {
+        await user.click(closeButton);
+      });
+
+      expect(mockedRecordTelemetry).toHaveBeenCalledWith(
+        "popup",
+        "exit",
+        expect.objectContaining({
+          popup_id: "settings-delete-monitor-free-dialog",
+        }),
+      );
+
+      // Also closes the modal with the "never mind, take me back" button
+      await act(async () => {
+        await user.click(deleteAccBtn);
+      });
+      const backButton = screen.getByRole("button", {
+        name: /Never mind, take me back/i,
+      });
+      await act(async () => {
+        await user.click(backButton);
+      });
+      expect(mockedRecordTelemetry).toHaveBeenCalledWith(
+        "popup",
+        "exit",
+        expect.objectContaining({
+          popup_id: "never_mind_take_me_back",
+        }),
+      );
     });
 
     it("shows a loading state while account deletion is in progress", async () => {
