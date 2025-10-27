@@ -69,3 +69,16 @@ export const SettingsEditNotifications: Story = {
     ],
   },
 };
+
+export const SettingsEditNotificationsPlus: Story = {
+  name: "Notifications (Plus)",
+  args: {
+    countryCode: "us",
+    hasPlus: true,
+    activeTab: "notifications",
+    enabledFeatureFlags: [
+      "SidebarNavigationRedesign",
+      "EditScanProfileDetails",
+    ],
+  },
+};

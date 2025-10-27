@@ -33,15 +33,28 @@ import { mockedActions } from "./stories/SettingsStoryWrapper";
 
 const mockedRouterPush = jest.fn();
 const mockedRecordTelemetry = jest.fn();
+const mockedRouterRefresh = jest.fn();
+
 jest.mock("../../../../../../hooks/useTelemetry", () => {
   return {
     useTelemetry: () => mockedRecordTelemetry,
   };
 });
 
+const mockedSessionUpdate = jest.fn();
+
+jest.mock("next-auth/react", () => ({
+  ...jest.requireActual("next-auth/react"),
+  useSession: () => ({
+    data: { user: mockedUser },
+    update: mockedSessionUpdate,
+  }),
+}));
+
 jest.mock("next/navigation", () => ({
   useRouter: () => ({
     push: mockedRouterPush,
+    refresh: mockedRouterRefresh,
   }),
   usePathname: jest.fn(),
   useSearchParams: () => ({
@@ -1526,5 +1539,104 @@ describe("Settings page redesign", () => {
       const { container } = render(<ComposedStory />);
       expect(await axe(container)).toHaveNoViolations();
     }, 10_000);
+
+    it("preselects 'Send all breach alerts to the primary email address' if that's the user's current preference", () => {
+      const ComposedStory = composeStory(
+        SettingsEditNotifications,
+        SettingsMeta,
+      );
+      render(<ComposedStory />);
+
+      const affectedRadioButton = screen.getByLabelText(
+        "Send breach alerts to the affected email address",
+      );
+      const primaryRadioButton = screen.getByLabelText(
+        "Send all breach alerts to the primary email address",
+      );
+
+      expect(affectedRadioButton).not.toHaveAttribute("checked");
+      expect(primaryRadioButton).toHaveAttribute("checked");
+    });
+
+    it("disables breach alert notification options if a user opts out of breach alerts", async () => {
+      global.fetch = jest.fn().mockResolvedValue({ ok: true });
+      const user = userEvent.setup();
+      const ComposedStory = composeStory(
+        SettingsEditNotifications,
+        SettingsMeta,
+      );
+      render(<ComposedStory />);
+
+      const activateBreachAlertsCheckbox = screen.getByLabelText(
+        "Instant breach alerts",
+        { exact: false },
+      );
+      const affectedRadioButton = screen.getByLabelText(
+        "Send breach alerts to the affected email address",
+      );
+      const primaryRadioButton = screen.getByLabelText(
+        "Send all breach alerts to the primary email address",
+      );
+
+      await act(async () => {
+        await user.click(activateBreachAlertsCheckbox);
+      });
+
+      jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+
+      expect(global.fetch).toHaveBeenCalledWith(
+        "/api/v1/user/update-comm-option",
+        {
+          body: JSON.stringify({
+            instantBreachAlerts: "null",
+          }),
+          method: "POST",
+        },
+      );
+
+      expect(activateBreachAlertsCheckbox).toHaveAttribute(
+        "aria-checked",
+        "false",
+      );
+      expect(primaryRadioButton).not.toBeInTheDocument();
+      expect(affectedRadioButton).not.toBeInTheDocument();
+    });
+
+    it("unselects the breach alerts checkbox and sends a null value to the API", async () => {
+      global.fetch = jest.fn().mockResolvedValue({ ok: true });
+
+      const user = userEvent.setup();
+      const ComposedStory = composeStory(
+        SettingsEditNotifications,
+        SettingsMeta,
+      );
+      render(<ComposedStory />);
+
+      const primaryRadioButton = screen.getByLabelText(
+        "Send all breach alerts to the primary email address",
+      );
+      const activateBreachAlertsCheckbox = screen.getByLabelText(
+        "Instant breach alerts",
+        { exact: false },
+      );
+
+      expect(primaryRadioButton).toHaveAttribute("aria-checked", "true");
+
+      await act(async () => {
+        await user.click(activateBreachAlertsCheckbox);
+      });
+
+      jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+
+      expect(global.fetch).toHaveBeenCalledWith(
+        "/api/v1/user/update-comm-option",
+        {
+          body: JSON.stringify({
+            instantBreachAlerts: "null",
+          }),
+          method: "POST",
+        },
+      );
+    });
   });
 });

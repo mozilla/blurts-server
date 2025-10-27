@@ -94,6 +94,7 @@ export const NotificationsSettings = (props: NotificationSettingsProps) => {
         // Fetch a new token with up-to-date subscriber info - specifically,
         // with this setting updated.
         void session.update();
+        /* c8 ignore next */
         router.refresh();
       });
     },
