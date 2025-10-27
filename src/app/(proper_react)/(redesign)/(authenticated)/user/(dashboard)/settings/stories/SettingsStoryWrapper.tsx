@@ -41,10 +41,6 @@ export type SettingsWrapperProps = {
   hasPlus?: boolean;
 };
 
-// const mockedOnDeleteAccount: typeof onDeleteAccount = fn()
-//   .mockName("onDeleteAccount")
-//   .mockReturnValue(new Promise<ReturnType<typeof onDeleteAccount> extends Promise<infer T> ? T : never>(() => {}));
-
 export const mockedActions = {
   onAddEmail: fn().mockName("onAddEmail"),
   onRemoveEmail: fn().mockName("onRemoveEmail"),
