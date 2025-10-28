@@ -57,7 +57,7 @@ jest.mock("next/navigation", () => ({
     push: mockedRouterPush,
     refresh: mockedRouterRefresh,
   }),
-  usePathname: jest.fn(),
+  usePathname: () => "/user/settings",
   useSearchParams: () => ({
     get: jest.fn(),
   }),
@@ -162,6 +162,37 @@ describe("Tests from Old settings page", () => {
     });
     expect(tabListItemInitial.getAttribute("aria-selected")).toBe("false");
     expect(tabListItemNext.getAttribute("aria-selected")).toBe("true");
+  });
+
+  it("does not crash if no email preferences were found for the current user", () => {
+    const component = (
+      <SettingsWrapper>
+        <SettingsView
+          activeTab="notifications"
+          l10n={getL10n()}
+          user={mockedUser}
+          subscriber={mockedSubscriber}
+          breachCountByEmailAddress={{
+            [mockedUser.email]: 42,
+            [mockedSecondaryVerifiedEmail.email]: 42,
+          }}
+          emailAddresses={[mockedSecondaryVerifiedEmail]}
+          fxaSettingsUrl=""
+          fxaSubscriptionsUrl=""
+          monthlySubscriptionUrl=""
+          subscriptionBillingAmount={mockedSubscriptionBillingAmount}
+          enabledFeatureFlags={[]}
+          experimentData={defaultExperimentData["Features"]}
+          isMonthlySubscriber={true}
+          data={undefined}
+          isEligibleForPremium={false}
+          actions={mockedActions}
+          userAnnouncements={mockedAnnouncements}
+        />
+      </SettingsWrapper>
+    );
+
+    expect(() => render(component)).not.toThrow();
   });
 });
 
