@@ -11,6 +11,7 @@ import SettingsMeta, {
   SettingsEditManageAccount,
   SettingsEditManageAccountPlus,
   SettingsEditNotifications,
+  SettingsEditNotificationsPlus,
   SettingsNoDefaultTab,
 } from "./stories/SettingsRedesign.stories";
 import SettingsEditYourInfoMeta, {
@@ -66,6 +67,7 @@ jest.mock("../../../../../../hooks/useTelemetry");
 
 import {
   mockedAnnouncements,
+  mockedFreeSubscriberEmailPreferences,
   mockedPlusSubscriberEmailPreferences,
   mockedProfileDataMax,
   mockedProfileDataMin,
@@ -1602,6 +1604,46 @@ describe("Settings page redesign", () => {
       expect(affectedRadioButton).not.toBeInTheDocument();
     });
 
+    it("renders affected option by default when all_emails_to_primary is false", () => {
+      const ComposedStory = composeStory(
+        SettingsEditNotificationsPlus,
+        SettingsMeta,
+      );
+
+      render(
+        <ComposedStory
+          subscriber={{
+            ...mockedSubscriber,
+            all_emails_to_primary: false,
+          }}
+        />,
+      );
+
+      const affectedRadioButton = screen.getByLabelText(
+        "Send breach alerts to the affected email address",
+      );
+      expect(affectedRadioButton).toHaveAttribute("aria-checked", "true");
+    });
+
+    it("hides radio options when all_emails_to_primary = null", () => {
+      const ComposedStory = composeStory(
+        SettingsEditNotificationsPlus,
+        SettingsMeta,
+      );
+
+      render(
+        <ComposedStory
+          subscriber={{ ...mockedSubscriber, all_emails_to_primary: null }}
+        />,
+      );
+
+      expect(
+        screen.queryByLabelText(
+          "Send all breach alerts to the primary email address",
+        ),
+      ).not.toBeInTheDocument();
+    });
+
     it("unselects the breach alerts checkbox and sends a null value to the API", async () => {
       global.fetch = jest.fn().mockResolvedValue({ ok: true });
 
@@ -1637,6 +1679,247 @@ describe("Settings page redesign", () => {
           method: "POST",
         },
       );
+    });
+
+    it("sends a call to the API to change the email alert preferences when changing the radio button values", async () => {
+      global.fetch = jest.fn().mockResolvedValue({ ok: true });
+      const user = userEvent.setup();
+      const ComposedStory = composeStory(
+        SettingsEditNotificationsPlus,
+        SettingsMeta,
+      );
+      render(<ComposedStory />);
+
+      const affectedRadioButton = screen.getByLabelText(
+        "Send breach alerts to the affected email address",
+      );
+      await act(async () => {
+        await user.click(affectedRadioButton);
+      });
+
+      expect(global.fetch).toHaveBeenCalledWith(
+        "/api/v1/user/update-comm-option",
+        {
+          body: JSON.stringify({
+            instantBreachAlerts: "affected",
+          }),
+          method: "POST",
+        },
+      );
+      const primaryRadioButton = screen.getByLabelText(
+        "Send all breach alerts to the primary email address",
+      );
+      await act(async () => {
+        await user.click(primaryRadioButton);
+      });
+
+      expect(global.fetch).toHaveBeenCalledWith(
+        "/api/v1/user/update-comm-option",
+        {
+          body: JSON.stringify({
+            instantBreachAlerts: "primary",
+          }),
+          method: "POST",
+        },
+      );
+    });
+
+    it("checks that the monthly monitor report is disabled for free users", () => {
+      const ComposedStory = composeStory(
+        SettingsEditNotifications,
+        SettingsMeta,
+      );
+      render(<ComposedStory />);
+      const monthlyMonitorReportBtn = screen.queryByLabelText(
+        "Monthly ⁨Monitor⁩ report",
+        { exact: false },
+      );
+      // The monthly email for free users is currently disabled; see MNTOR-4970.
+      // expect(monthlyMonitorReportBtn).toHaveAttribute("aria-checked", "true");
+      expect(monthlyMonitorReportBtn).not.toBeInTheDocument();
+    });
+
+    it("extracts monthly monitor report preference for free users (monthly_monitor_report_free field)", () => {
+      const ComposedStory = composeStory(
+        SettingsEditNotificationsPlus,
+        SettingsMeta,
+      );
+
+      render(
+        <ComposedStory
+          data={{
+            ...mockedFreeSubscriberEmailPreferences,
+            monthly_monitor_report_free: true,
+          }}
+        />,
+      );
+
+      const toggleInput = screen.getByLabelText("Instant breach alerts", {
+        exact: false,
+      });
+
+      expect(toggleInput).toBeInTheDocument();
+    });
+
+    it("checks that monthly monitor report is enabled", () => {
+      const ComposedStory = composeStory(
+        SettingsEditNotificationsPlus,
+        SettingsMeta,
+      );
+      render(
+        <ComposedStory
+          subscriber={{
+            ...mockedSubscriber,
+            all_emails_to_primary: true,
+            monthly_monitor_report: true,
+          }}
+        />,
+      );
+      const monthlyMonitorReportBtn = screen.getByLabelText(
+        "Monthly ⁨Monitor Plus⁩ report",
+        { exact: false },
+      );
+      expect(monthlyMonitorReportBtn).toHaveAttribute("aria-checked", "true");
+    });
+
+    it("sends an API call to disable monthly monitor reports", async () => {
+      global.fetch = jest.fn().mockResolvedValue({ ok: true });
+      const user = userEvent.setup();
+      const ComposedStory = composeStory(
+        SettingsEditNotificationsPlus,
+        SettingsMeta,
+      );
+
+      render(
+        <ComposedStory
+          subscriber={{
+            ...mockedSubscriber,
+            all_emails_to_primary: true,
+            monthly_monitor_report: true,
+          }}
+        />,
+      );
+      const monthlyMonitorReportBtn = screen.getByLabelText(
+        "Monthly ⁨Monitor Plus⁩ report",
+        { exact: false },
+      );
+      await act(async () => {
+        await user.click(monthlyMonitorReportBtn);
+      });
+
+      expect(global.fetch).toHaveBeenCalledWith(
+        "/api/v1/user/update-comm-option",
+        {
+          body: JSON.stringify({
+            monthlyMonitorReport: false,
+          }),
+          method: "POST",
+        },
+      );
+    });
+
+    it("calls the right telemetry event if a user opts out of monthly report", async () => {
+      global.fetch = jest.fn().mockResolvedValue({ ok: true });
+      const user = userEvent.setup();
+      const ComposedStory = composeStory(
+        SettingsEditNotificationsPlus,
+        SettingsMeta,
+      );
+      render(<ComposedStory />);
+
+      const monthlyMonitorReportBtn = screen.getByLabelText(
+        "Monthly ⁨Monitor Plus⁩ report",
+        { exact: false },
+      );
+
+      await act(async () => {
+        await user.click(monthlyMonitorReportBtn);
+      });
+
+      expect(mockedRecordTelemetry).toHaveBeenCalledWith(
+        "button",
+        "click",
+        expect.objectContaining({
+          button_id: "monthly_report_opt_out",
+        }),
+      );
+      await act(async () => {
+        await user.click(monthlyMonitorReportBtn);
+      });
+      expect(mockedRecordTelemetry).toHaveBeenCalledWith(
+        "button",
+        "click",
+        expect.objectContaining({
+          button_id: "monthly_report_opt_in",
+        }),
+      );
+    });
+
+    it("preselects primary email alert option", () => {
+      global.fetch = jest.fn().mockResolvedValue({ ok: true });
+      const ComposedStory = composeStory(
+        SettingsEditNotificationsPlus,
+        SettingsMeta,
+      );
+      render(<ComposedStory />);
+      const primaryRadioButton = screen.getByLabelText(
+        "Send all breach alerts to the primary email address",
+      );
+
+      expect(primaryRadioButton).toHaveAttribute("aria-checked", "true");
+    });
+
+    it("preselects the affected email comms option after a user decides to enable breach alerts", async () => {
+      global.fetch = jest.fn().mockResolvedValue({ ok: true });
+      const user = userEvent.setup();
+      const ComposedStory = composeStory(
+        SettingsEditNotificationsPlus,
+        SettingsMeta,
+      );
+      render(<ComposedStory />);
+
+      const activateBreachAlertsCheckbox = screen.getByLabelText(
+        "Instant breach alerts",
+        { exact: false },
+      );
+      await act(async () => {
+        await user.click(activateBreachAlertsCheckbox);
+      });
+
+      expect(
+        screen.queryByLabelText(
+          "Send breach alerts to the affected email address",
+        ),
+      ).not.toBeInTheDocument();
+
+      await act(async () => {
+        await user.click(activateBreachAlertsCheckbox);
+      });
+
+      const affectedRadioButton = screen.getByLabelText(
+        "Send breach alerts to the affected email address",
+      );
+
+      expect(affectedRadioButton).toBeInTheDocument();
+      expect(affectedRadioButton).toHaveAttribute("aria-checked", "true");
+    });
+
+    it("refreshes the session token after changing email alert preferences, to ensure the latest pref is available in it", async () => {
+      global.fetch = jest.fn().mockResolvedValueOnce({ ok: true });
+      const user = userEvent.setup();
+      const ComposedStory = composeStory(
+        SettingsEditNotificationsPlus,
+        SettingsMeta,
+      );
+      render(<ComposedStory />);
+      const affectedRadioButton = screen.getByLabelText(
+        "Send breach alerts to the affected email address",
+      );
+      await act(async () => {
+        await user.click(affectedRadioButton);
+      });
+
+      expect(mockedSessionUpdate).toHaveBeenCalledTimes(1);
     });
   });
 });
