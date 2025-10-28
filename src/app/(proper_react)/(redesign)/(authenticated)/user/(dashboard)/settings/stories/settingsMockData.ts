@@ -166,6 +166,16 @@ export const mockedPlusSubscriberEmailPreferences = {
   monthly_monitor_report_at: new Date("1337-04-02T04:02:42.000Z"),
 } as SubscriberEmailPreferencesOutput;
 
+export const mockedFreeSubscriberEmailPreferences = {
+  id: 1337,
+  primary_email: "primary@example.com",
+  unsubscribe_token: "495398jfjvjfdj",
+  monthly_monitor_report_free: true,
+  monthly_monitor_report_free_at: new Date("1337-04-02T04:02:42.000Z"),
+  monthly_monitor_report: false,
+  monthly_monitor_report_at: new Date("1337-04-02T04:02:42.000Z"),
+} as SubscriberEmailPreferencesOutput;
+
 export const mockedSecondaryVerifiedEmail: EmailAddressRow = {
   id: 1337,
   email: "secondary_verified@example.com",
@@ -194,6 +204,20 @@ export const mockedUser: Session["user"] = {
     twoFactorAuthentication: false,
   },
 };
+
+export const mockedFreeUser: Session["user"] = {
+  email: "primary@example.com",
+  subscriber: undefined,
+  fxa: {
+    subscriptions: [],
+    avatar: "",
+    avatarDefault: false,
+    locale: "en-GB",
+    metricsEnabled: false,
+    twoFactorAuthentication: false,
+  },
+};
+
 export const mockedSession = {
   expires: new Date().toISOString(),
   user: mockedUser,
