@@ -1282,12 +1282,12 @@ describe("Settings page redesign", () => {
 
       expect(
         screen.getByRole("heading", {
-          name: /Cancel ⁨Monitor Plus⁩ subscription/i,
+          name: "Cancel ⁨Monitor Plus⁩ subscription",
         }),
       ).toBeInTheDocument();
 
       expect(
-        screen.getByRole("button", { name: /Cancel your subscription/i }),
+        screen.getByRole("button", { name: "Cancel your subscription" }),
       ).toBeInTheDocument();
     });
 
@@ -1300,7 +1300,7 @@ describe("Settings page redesign", () => {
       render(<ComposedStory />);
 
       const cancelButton = screen.getByRole("button", {
-        name: /Cancel your subscription/i,
+        name: "Cancel your subscription",
       });
 
       await act(async () => {
@@ -1316,11 +1316,11 @@ describe("Settings page redesign", () => {
       );
 
       expect(
-        screen.getByRole("dialog", { name: /Hey, before you go/i }),
+        screen.getByRole("dialog", { name: "Hey, before you go…" }),
       ).toBeInTheDocument();
 
       const dismissBtn = screen.getByRole("button", {
-        name: /Close modal/i,
+        name: "Close modal",
       });
 
       await act(async () => {
@@ -1346,12 +1346,12 @@ describe("Settings page redesign", () => {
 
       await act(async () => {
         await user.click(
-          screen.getByRole("button", { name: /Cancel your subscription/i }),
+          screen.getByRole("button", { name: "Cancel your subscription" }),
         );
       });
 
       const continueButton = screen.getByRole("button", {
-        name: /Continue to cancellation/i,
+        name: "Continue to cancellation",
       });
 
       await act(async () => {
@@ -1360,7 +1360,7 @@ describe("Settings page redesign", () => {
 
       expect(
         screen.getByRole("dialog", {
-          name: /We’re sorry to see you go/i,
+          name: "We’re sorry to see you go. Will you tell us why you’re leaving?",
         }),
       ).toBeInTheDocument();
     });
@@ -1375,12 +1375,12 @@ describe("Settings page redesign", () => {
 
       await act(async () => {
         await user.click(
-          screen.getByRole("button", { name: /Cancel your subscription/i }),
+          screen.getByRole("button", { name: "Cancel your subscription" }),
         );
       });
 
       const backButton = screen.getByRole("button", {
-        name: /Never mind, take me back/i,
+        name: "Never mind, take me back",
       });
       await act(async () => {
         await user.click(backButton);
@@ -1394,7 +1394,7 @@ describe("Settings page redesign", () => {
       );
 
       expect(
-        screen.queryByRole("dialog", { name: /Hey, before you go/i }),
+        screen.queryByRole("dialog", { name: "Hey, before you go…" }),
       ).not.toBeInTheDocument();
     });
 
@@ -1408,18 +1408,18 @@ describe("Settings page redesign", () => {
 
       await act(async () => {
         await user.click(
-          screen.getByRole("button", { name: /Cancel your subscription/i }),
+          screen.getByRole("button", { name: "Cancel your subscription" }),
         );
       });
 
-      const closeButton = screen.getByRole("button", { name: /Close modal/i });
+      const closeButton = screen.getByRole("button", { name: "Close modal" });
 
       await act(async () => {
         await user.click(closeButton);
       });
 
       expect(
-        screen.queryByRole("dialog", { name: /Hey, before you go/i }),
+        screen.queryByRole("dialog", { name: "Hey, before you go…" }),
       ).not.toBeInTheDocument();
     });
 
@@ -1432,13 +1432,13 @@ describe("Settings page redesign", () => {
       render(<ComposedStory />);
       await act(async () => {
         await user.click(
-          screen.getByRole("button", { name: /Cancel your subscription/i }),
+          screen.getByRole("button", { name: "Cancel your subscription" }),
         );
         await user.click(
-          screen.getByRole("button", { name: /Continue to cancellation/i }),
+          screen.getByRole("button", { name: "Continue to cancellation" }),
         );
         await user.click(
-          screen.getByRole("button", { name: /Continue to cancellation/i }),
+          screen.getByRole("button", { name: "Continue to cancellation" }),
         );
       });
       const redirectTitle = screen.getByText(
@@ -1454,11 +1454,11 @@ describe("Settings page redesign", () => {
       );
       render(<ComposedStory />);
       expect(
-        screen.getByRole("heading", { name: /Delete ⁨Monitor⁩ account/i }),
+        screen.getByRole("heading", { name: "Delete ⁨Monitor⁩ account" }),
       ).toBeInTheDocument();
       expect(
         screen.getByText(
-          /This will permanently delete your ⁨Monitor⁩ account and turn off all notifications/i,
+          "This will permanently delete your ⁨Monitor⁩ account and turn off all notifications.",
         ),
       ).toBeInTheDocument();
     });
@@ -1473,7 +1473,7 @@ describe("Settings page redesign", () => {
       render(<ComposedStory />);
 
       const deleteAccBtn = screen.getByRole("button", {
-        name: /Delete account/i,
+        name: "Delete account",
       });
 
       await act(async () => {
@@ -1489,11 +1489,11 @@ describe("Settings page redesign", () => {
       const dialog = screen.getByRole("dialog");
       expect(
         within(dialog).getByText(
-          /All of your ⁨Monitor⁩ account information will be deleted and we’ll no longer monitor for new data breaches/i,
+          "All of your ⁨Monitor⁩ account information will be deleted and we’ll no longer monitor for new data breaches. This will not delete your ⁨Mozilla account⁩.",
         ),
       ).toBeInTheDocument();
 
-      const closeButton = screen.getByRole("button", { name: /Close modal/i });
+      const closeButton = screen.getByRole("button", { name: "Close modal" });
 
       await act(async () => {
         await user.click(closeButton);
@@ -1512,7 +1512,7 @@ describe("Settings page redesign", () => {
         await user.click(deleteAccBtn);
       });
       const backButton = screen.getByRole("button", {
-        name: /Never mind, take me back/i,
+        name: "Never mind, take me back",
       });
       await act(async () => {
         await user.click(backButton);
@@ -1545,14 +1545,14 @@ describe("Settings page redesign", () => {
       // Open dialog
       await act(async () => {
         await user.click(
-          screen.getByRole("button", { name: /Delete account/i }),
+          screen.getByRole("button", { name: "Delete account" }),
         );
       });
 
       // Confirm
       const dialog = screen.getByRole("dialog");
       const confirmButton = within(dialog).getByRole("button", {
-        name: /Delete account/i,
+        name: "Delete account",
       });
       await act(async () => {
         await user.click(confirmButton);
