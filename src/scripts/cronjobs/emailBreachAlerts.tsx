@@ -52,10 +52,17 @@ Sentry.init({
   tracesSampleRate: 1.0,
 });
 
-const checkInId = Sentry.captureCheckIn({
-  monitorSlug: SENTRY_SLUG,
-  status: "in_progress",
-});
+const captureCheckIn =
+  typeof Sentry.captureCheckIn === "function"
+    ? Sentry.captureCheckIn.bind(Sentry)
+    : undefined;
+
+const checkInId = captureCheckIn
+  ? captureCheckIn({
+      monitorSlug: SENTRY_SLUG,
+      status: "in_progress",
+    })
+  : undefined;
 
 // Only process this many messages before exiting.
 // If set to 0, will poll for messages forever.
@@ -245,6 +252,12 @@ export async function poll(
           console.info("Subscriber already notified, skipping: ", subscriberId);
           continue;
         }
+        if (recipient.all_emails_to_primary === null) {
+          logger.info("Instant breach alerts disabled, skipping subscriber", {
+            subscriber_id: subscriberId,
+          });
+          continue;
+        }
         const { recipientEmail, breachedEmail } =
           getAddressesAndLanguageForEmail(recipient);
 
@@ -381,7 +394,7 @@ async function getDataSummary(
 }
 
 /* c8 ignore start */
-function createPubSubClient() {
+export function createPubSubClient() {
   let options = {};
   // TODO - Consolidate configuration logic for this and other clients
   // https://mozilla-hub.atlassian.net/browse/MNTOR-5089
@@ -457,11 +470,13 @@ if (process.env.NODE_ENV !== "test") {
       // Tear down cached connection pool
       await createDbConnection().destroy();
       closeEmailPool();
-      Sentry.captureCheckIn({
-        checkInId,
-        monitorSlug: SENTRY_SLUG,
-        status: "ok",
-      });
+      if (captureCheckIn && typeof checkInId !== "undefined") {
+        captureCheckIn({
+          checkInId,
+          monitorSlug: SENTRY_SLUG,
+          status: "ok",
+        });
+      }
       setTimeout(() => process.exit(0), 1000);
     });
 }
