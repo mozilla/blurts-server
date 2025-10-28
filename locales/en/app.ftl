@@ -12,7 +12,6 @@
 -brand-name = Firefox
 -brand-HIBP = Have I Been Pwned
 -brand-fxa = Firefox Account
--brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
 -brand-firefox = Firefox
 -brand-monitor = Monitor
