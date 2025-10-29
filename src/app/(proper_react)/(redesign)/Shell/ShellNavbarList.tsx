@@ -39,23 +39,25 @@ export const NavbarList = (props: {
               {l10n.getString("main-nav-link-dashboard-label")}
             </PageLink>
           </li>
-          {props.enabledFeatureFlags.includes("EditScanProfileDetails") && (
-            <li key="settings-edit-info">
-              <PageLink
-                href="/user/settings/edit-info"
-                activeClassName={styles.isActive}
-                hasTelemetry={{ link_id: "navigation_edit_info" }}
-              >
-                <ScanInfoIcon alt="" />
-                {l10n.getString("settings-tab-label-update-scan-info")}
-              </PageLink>
-            </li>
-          )}
+          {props.enabledFeatureFlags.includes("EditScanProfileDetails") &&
+            !props.enabledFeatureFlags.includes("FreeOnly") && (
+              <li key="settings-edit-info">
+                <PageLink
+                  href="/user/settings/edit-info"
+                  activeClassName={styles.isActive}
+                  hasTelemetry={{ link_id: "navigation_edit_info" }}
+                >
+                  <ScanInfoIcon alt="" />
+                  {l10n.getString("settings-tab-label-update-scan-info")}
+                </PageLink>
+              </li>
+            )}
         </ul>
         <hr />
         <strong>{l10n.getString("main-nav-link-settings-label")}</strong>
         <ul className="noList">
-          {!props.enabledFeatureFlags.includes("EditScanProfileDetails") && (
+          {(!props.enabledFeatureFlags.includes("EditScanProfileDetails") ||
+            props.enabledFeatureFlags.includes("FreeOnly")) && (
             <li key="settings-edit-info">
               <PageLink
                 href="/user/settings/edit-info"
