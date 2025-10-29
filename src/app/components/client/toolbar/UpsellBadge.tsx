@@ -163,7 +163,14 @@ export function UpsellBadge(props: UpsellBadgeProps) {
 
   const { user } = session.data;
   const userHasPremium = hasPremium(user);
-  if (userHasPremium || canSubscribeToPremium({ user, countryCode })) {
+  if (
+    userHasPremium ||
+    canSubscribeToPremium({
+      user,
+      countryCode,
+      enabledFeatureFlags: props.enabledFeatureFlags,
+    })
+  ) {
     return <UpsellToggleLinkButton {...props} hasPremium={userHasPremium} />;
   }
 

@@ -135,6 +135,7 @@ export default async function SettingsPage(props: Props) {
   const isEligibleForPremium = canSubscribeToPremium({
     user: session.user,
     countryCode,
+    enabledFeatureFlags,
   });
 
   const userAnnouncements = await initializeUserAnnouncements(session.user);

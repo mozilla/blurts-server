@@ -7,6 +7,7 @@ import { LatestOnerepScanData } from "../../../db/tables/onerep_scans";
 import { SubscriberBreach } from "../../../utils/subscriberBreaches";
 import { BreachDataTypes, HighRiskDataTypes } from "../universal/breach";
 import { FeatureFlagName } from "../../../db/tables/featureFlags";
+import { hasPremium } from "../universal/user";
 
 export type StepDeterminationData = {
   user: Session["user"];
@@ -164,7 +165,10 @@ export function isEligibleForStep(
   /* c8 ignore stop */
 
   if (stepId === "Scan") {
-    return data.countryCode === "us";
+    return (
+      data.countryCode === "us" &&
+      (!enabledFeatureFlags?.includes("FreeOnly") || hasPremium(data.user))
+    );
   }
 
   if (stepId === "HighRiskSsn") {

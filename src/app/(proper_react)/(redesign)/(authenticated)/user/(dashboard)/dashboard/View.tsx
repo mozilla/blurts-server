@@ -538,6 +538,7 @@ export const View = (props: Props) => {
           isEligibleForPremium={canSubscribeToPremium({
             user: props.user,
             countryCode,
+            enabledFeatureFlags: props.enabledFeatureFlags,
           })}
           isEligibleForFreeScan={props.isEligibleForFreeScan}
           hasExposures={hasExposures}
