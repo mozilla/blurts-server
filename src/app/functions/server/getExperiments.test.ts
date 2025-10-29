@@ -100,9 +100,6 @@ describe("getExperiments", () => {
 
   it("calls Cirrus V2 when feature flag is enabled with preview param", async () => {
     process.env.NIMBUS_SIDECAR_URL = "https://cirrus.example";
-    getEnabledFeatureFlagsMock.mockReturnValue([
-      "CirrusV2",
-    ] as FeatureFlagName[]);
     headersMock.mockResolvedValue(
       new Headers([["x-nimbus-preview-mode", "true"]]),
     );
@@ -190,9 +187,6 @@ describe("getExperiments", () => {
 
   it("fallsback to defaultExperimentData when not experiment data is returned by Cirrus", async () => {
     process.env.NIMBUS_SIDECAR_URL = "https://cirrus.example";
-    getEnabledFeatureFlagsMock.mockReturnValue([
-      "CirrusV2",
-    ] as FeatureFlagName[]);
     headersMock.mockResolvedValue(
       new Headers([["x-nimbus-preview-mode", "true"]]),
     );
@@ -239,9 +233,6 @@ describe("getExperiments", () => {
 
   it("logs error, captures exception, and returns defaultExperimentData on error response", async () => {
     process.env.NIMBUS_SIDECAR_URL = "https://cirrus.example/";
-    getEnabledFeatureFlagsMock.mockReturnValue([
-      "CirrusV2",
-    ] as FeatureFlagName[]);
     headersMock.mockResolvedValue(new Headers([]));
 
     global.fetch = jest.fn<typeof global.fetch>().mockResolvedValue({
@@ -270,7 +261,6 @@ describe("getExperiments", () => {
       expect.objectContaining({
         serverUrl: new URL("https://cirrus.example/v2/features"),
         previewMode: false,
-        flags: ["CirrusV2"],
       }),
     );
     expect(captureExceptionMock).toHaveBeenCalledTimes(1);
