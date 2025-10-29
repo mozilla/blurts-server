@@ -2,6 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import { logger } from "../../../functions/server/logging";
 import {
   getRelevantLocations,
   MAX_SEARCH_QUERY_LENGTH,
@@ -9,6 +10,20 @@ import {
 import { RelevantLocation } from "./types";
 
 describe("getRelevantLocations", () => {
+  let loggerWarnSpy: jest.SpiedFunction<typeof logger.warn>;
+  beforeAll(async () => {
+    loggerWarnSpy = jest.spyOn(logger, "warn");
+  });
+  afterAll(async () => {
+    loggerWarnSpy.mockRestore();
+  });
+  beforeEach(async () => {
+    loggerWarnSpy.mockImplementation((..._args: unknown[]) => logger);
+  });
+  afterEach(async () => {
+    loggerWarnSpy.mockClear();
+  });
+
   it("returns an empty list if the search term is not a string", () => {
     // Arrange:
     const availableLocations: RelevantLocation[] = [
@@ -71,6 +86,13 @@ describe("getRelevantLocations", () => {
 
     // Assert:
     expect(results).toStrictEqual([]);
+
+    expect(loggerWarnSpy.mock.calls).toEqual([
+      [
+        "location autocomplete query over max length",
+        { length: 0, maxLength: 128 },
+      ],
+    ]);
   });
 
   it("returns an empty list if fuzzy search cannot find matches", () => {

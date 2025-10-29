@@ -4,6 +4,7 @@
 
 import uFuzzy from "@leeoniya/ufuzzy";
 import { RelevantLocation } from "./types";
+import { logger } from "../../../functions/server/logging";
 
 // Guard against pathological inputs that would make ufuzzy's regex generation hang.
 export const MAX_SEARCH_QUERY_LENGTH = 128;
@@ -22,6 +23,10 @@ export function getRelevantLocations(
     normalizedSearchQuery.length === 0 ||
     normalizedSearchQuery.length > MAX_SEARCH_QUERY_LENGTH
   ) {
+    logger.warn("location autocomplete query over max length", {
+      length: normalizedSearchQuery.length,
+      maxLength: MAX_SEARCH_QUERY_LENGTH,
+    });
     return [];
   }
 
