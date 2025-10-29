@@ -48,7 +48,7 @@ function getLocationsResults({
   const normalizedSearchQuery =
     typeof searchQuery === "string" ? searchQuery.trim() : "";
 
-  const { data: knownLocations } = locationData;
+  const knownLocations = locationData.data;
 
   const matchingLocations =
     normalizedSearchQuery.length >= minQueryLength
