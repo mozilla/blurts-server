@@ -9,6 +9,26 @@ import {
 import { RelevantLocation } from "./types";
 
 describe("getRelevantLocations", () => {
+  it("returns an empty list if the search term is not a string", () => {
+    // Arrange:
+    const availableLocations: RelevantLocation[] = [
+      {
+        id: "42",
+        n: "Tulsa",
+        s: "OK",
+      },
+    ];
+
+    // Act:
+    const results = getRelevantLocations(
+      null as unknown as string,
+      availableLocations,
+    );
+
+    // Assert:
+    expect(results).toStrictEqual([]);
+  });
+
   it("filters out locations that don't match the search term", () => {
     // Arrange:
     const availableLocations: RelevantLocation[] = [
@@ -48,6 +68,23 @@ describe("getRelevantLocations", () => {
 
     // Act:
     const results = getRelevantLocations("", availableLocations);
+
+    // Assert:
+    expect(results).toStrictEqual([]);
+  });
+
+  it("returns an empty list if fuzzy search cannot find matches", () => {
+    // Arrange:
+    const availableLocations: RelevantLocation[] = [
+      {
+        id: "42",
+        n: "Tulsa",
+        s: "OK",
+      },
+    ];
+
+    // Act:
+    const results = getRelevantLocations("😺", availableLocations);
 
     // Assert:
     expect(results).toStrictEqual([]);
