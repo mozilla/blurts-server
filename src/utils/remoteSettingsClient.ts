@@ -40,9 +40,12 @@ export class RemoteSettingsClient {
   private logger: Logger;
   private breachesCollectionPath: string;
   private fetch: typeof fetch;
+
   /**
+   * Configuration for accessing remote settings server.
+   * Uses DI pattern for external logger and fetch dependencies
    *
-   * @param opts
+   * @param opts RemoteSettingsClientOpts
    */
   constructor(opts: RemoteSettingsClientOpts) {
     this.Authorization = `Basic ${Buffer.from(opts.user + ":" + opts.password).toString("base64")}`;

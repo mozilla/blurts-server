@@ -26,7 +26,7 @@ const makeClient = (logger: Logger, fetch: typeof globalThis.fetch) =>
     fetch,
   });
 
-describe("RemoteSettingsClient (mock fetch)", () => {
+describe("RemoteSettingsClient", () => {
   afterEach(() => {
     jest.clearAllMocks();
   });

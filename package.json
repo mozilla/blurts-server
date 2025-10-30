@@ -101,7 +101,7 @@
     "lodash.isequal": "^4.5.0",
     "mjml": "^4.15.3",
     "next": "15.5.4",
-    "next-auth": "4.24.11",
+    "next-auth": "^4.24.11",
     "nodemailer": "^6.10.1",
     "p-limit": "^7.1.1",
     "pg": "^8.16.3",
