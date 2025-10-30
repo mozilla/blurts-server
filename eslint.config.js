@@ -41,6 +41,7 @@ const config = [
       "dist",
       "coverage",
       "!.storybook",
+      "playwright-report/**",
     ],
   },
   ...compat.config({

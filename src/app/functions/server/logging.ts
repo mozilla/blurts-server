@@ -2,8 +2,10 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { createLogger, transports } from "winston";
+import { createLogger, transports, LoggerOptions } from "winston";
+import Transport from "winston-transport";
 import { LoggingWinston } from "@google-cloud/logging-winston";
+import * as Sentry from "@sentry/node";
 
 // Explicitly not run in tests (and other non-gcpdev environments)
 /* c8 ignore next 7 */
@@ -23,4 +25,23 @@ export const logger = createLogger({
   transports: ["gcpdev"].includes(process.env.APP_ENV ?? "local")
     ? [getLoggingWinston()]
     : [new transports.Console()],
+});
+
+// Automatically capture logger error, warn and forward to Sentry
+// Avoids double-logging
+const SentryWinstonTransport = Sentry.createSentryWinstonTransport(Transport, {
+  levels: ["error", "warn"],
+});
+const sentryTransports: LoggerOptions["transports"] = [
+  ["gcpdev"].includes(process.env.APP_ENV ?? "local")
+    ? getLoggingWinston()
+    : new transports.Console(),
+];
+if (Sentry.isInitialized()) {
+  sentryTransports.push(new SentryWinstonTransport());
+}
+
+export const sentryLogger = createLogger({
+  level: "info",
+  transports: sentryTransports,
 });
