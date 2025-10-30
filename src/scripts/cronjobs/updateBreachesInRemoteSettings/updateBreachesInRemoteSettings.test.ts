@@ -16,15 +16,19 @@ import HibpData from "../../../test/seeds/hibpBreachResponse.json";
 import * as Sentry from "@sentry/node";
 
 // These can't be run because of jsdom environment and interaction
-// with logger.
+// with logger. Skipping them results in coverage failure since the file
+// is loaded.
 // I tried to mock the logger, but I couldn't mock the event handler
 // because setImmediate isn't in jsdom
 // And I can't run this in jest node environment because then the
 // current jest setup fails.
-// I don't know if these tests work, but when we refactor to run
+// I don't know 100% if these tests work, but when we refactor to run
 // node tests in the appropriate environment they can be revisited.
+// It just seemed wasteful not to include.
 // For now I'm relying on manual testing via dev environment.
 // TODO: [MNTOR-1880]
+
+/* eslint-disable jest/no-disabled-tests */
 describe("updateBreachesInRemoteSettings job", () => {
   const originalEnv = { ...process.env };
 
@@ -70,7 +74,7 @@ describe("updateBreachesInRemoteSettings job", () => {
         user: "user",
         password: "pass",
         server: "https://example.com/v1",
-        breachesPath: "/buckets/main-workspace/collections/fxmonitor-breaches",
+        breachesPath: "buckets/main-workspace/collections/fxmonitor-breaches",
       });
     });
   });

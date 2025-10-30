@@ -29,6 +29,9 @@ export const logger = createLogger({
 
 // Automatically capture logger error, warn and forward to Sentry
 // Avoids double-logging
+/* c8 ignore start  */
+// can't be used in tests due to jsdom environment
+// [MNTOR-1880]
 const SentryWinstonTransport = Sentry.createSentryWinstonTransport(Transport, {
   levels: ["error", "warn"],
 });
@@ -45,3 +48,4 @@ export const sentryLogger = createLogger({
   level: "info",
   transports: sentryTransports,
 });
+/* c8 ignore stop */

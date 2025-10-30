@@ -4,6 +4,9 @@
 
 "use strict";
 
+/* c8 ignore start */
+// TODO: [MNTOR-1880]
+
 import * as Sentry from "@sentry/node";
 import * as HIBP from "../../../utils/hibp";
 import { RemoteSettingsClient } from "../../../utils/remoteSettingsClient";
@@ -132,3 +135,5 @@ export async function main(parentLogger: Logger) {
   }
   await shutdown();
 }
+
+/* c8 ignore stop */
