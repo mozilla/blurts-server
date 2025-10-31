@@ -7,7 +7,7 @@ import { getBaseTestEnvUrl } from "../utils/environment";
 import { FeatureFlagName } from "../../src/db/tables/featureFlags";
 
 // extend enabled local feature flags for testing purposes
-const extraFeatureFlags: FeatureFlagName[] = ["GA4SubscriptionEvents"];
+const extraFeatureFlags: FeatureFlagName[] = [];
 test.use({ extraLocalForcedFeatureFlags: extraFeatureFlags });
 
 const productPlans = ["Monitor Plus"];
