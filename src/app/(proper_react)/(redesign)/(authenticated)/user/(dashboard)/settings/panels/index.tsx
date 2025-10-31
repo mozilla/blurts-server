@@ -3,10 +3,6 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import {
-  SettingsPanelEditInfo,
-  SettingsPanelEditInfoProps,
-} from "./SettingsPanelEditInfo";
-import {
   SettingsPanelEditInfoRedesign,
   SettingsPanelEditInfoRedesignProps,
 } from "./SettingsPanelEditInfoRedesign";
@@ -25,10 +21,7 @@ import {
 import styles from "./Panel.module.scss";
 import { TabType } from "../View";
 
-export type SettingsProps = (
-  | SettingsPanelEditInfoProps
-  | SettingsPanelEditInfoRedesignProps
-) &
+export type SettingsProps = SettingsPanelEditInfoRedesignProps &
   SettingsPanelNotificationsProps &
   SettingsPanelManageAccountProps &
   SettingsPanelEditProfileProps & {
@@ -39,11 +32,7 @@ export type SettingsProps = (
 function Panel(props: SettingsProps) {
   switch (props.activeTab) {
     case "edit-info":
-      return props.enabledFeatureFlags.includes("EditScanProfileDetails") ? (
-        <SettingsPanelEditInfoRedesign {...props} />
-      ) : (
-        <SettingsPanelEditInfo {...props} />
-      );
+      return <SettingsPanelEditInfoRedesign {...props} />;
     case "notifications":
       return <SettingsPanelNotifications {...props} />;
     case "manage-account":
@@ -53,7 +42,7 @@ function Panel(props: SettingsProps) {
         return <SettingsPanelEditProfile {...props} />;
       }
     default:
-      return <SettingsPanelEditInfo {...props} />;
+      return <SettingsPanelEditInfoRedesign {...props} />;
   }
 }
 

@@ -56,9 +56,7 @@ export const NotificationsSettings = (props: NotificationSettingsProps) => {
 
   // Extract monthly report preference from the right column
   const monitorReportAllowed =
-    (hasPremium(props.user)
-      ? props.data?.monthly_monitor_report
-      : props.data?.monthly_monitor_report_free) ?? true;
+    hasPremium(props.user) && props.data?.monthly_monitor_report !== false;
 
   const defaultActivateAlertEmail =
     typeof breachAlertsEmailsAllowed === "boolean";

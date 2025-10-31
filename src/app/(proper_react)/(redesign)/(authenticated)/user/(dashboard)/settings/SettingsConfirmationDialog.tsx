@@ -39,7 +39,6 @@ export const SettingsConfirmationDialog = (props: Props) => {
     },
   });
   const dialogTrigger = useOverlayTrigger({ type: "dialog" }, dialogState);
-
   return (
     <>
       <TelemetryButton
