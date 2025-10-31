@@ -44,6 +44,7 @@ const customJestConfig = {
     "<rootDir>/src/apiMocks/mockData.ts",
     "<rootDir>/src/(.+).stories.(ts|tsx)",
     "<rootDir>/.storybook/",
+    "<rootDir>/src/test/",
   ],
 
   // Indicates which provider should be used to instrument code for coverage
