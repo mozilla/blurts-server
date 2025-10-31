@@ -10,7 +10,7 @@ export function mockLogger() {
   return {
     info: jest.fn(),
     error: jest.fn(),
-    wran: jest.fn(),
+    warn: jest.fn(),
     debug: jest.fn(),
   } as unknown as Logger;
 }

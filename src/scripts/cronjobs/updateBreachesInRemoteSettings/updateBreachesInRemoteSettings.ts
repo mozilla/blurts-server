@@ -59,15 +59,13 @@ export async function main(parentLogger: Logger) {
 
   // Add handlers for ensuring all logs are sent before shutdown
   async function shutdown() {
-    return new Promise<void>(async (resolve) => {
-      logger.on("finish", () => {
-        resolve();
-      });
+    await new Promise<void>((resolve) => {
+      logger.on("finish", () => resolve());
       logger.end();
-      if (Sentry.isInitialized()) {
-        await Sentry.flush();
-      }
     });
+    if (Sentry.isInitialized()) {
+      await Sentry.flush();
+    }
   }
 
   process.on("SIGTERM", async () => {
