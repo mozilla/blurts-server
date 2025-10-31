@@ -99,6 +99,7 @@ describe("getExperiments", () => {
   });
 
   it("calls Cirrus V2 when feature flag is enabled with preview param", async () => {
+    process.env.NEXT_RUNTIME = "test";
     process.env.NIMBUS_SIDECAR_URL = "https://cirrus.example";
     getEnabledFeatureFlagsMock.mockReturnValue([
       "CirrusV2",
@@ -150,6 +151,8 @@ describe("getExperiments", () => {
         previewMode: true,
       }),
     );
+
+    delete process.env.NEXT_RUNTIME;
   });
 
   it("calls Cirrus V1 when featurn flag is disabled", async () => {
@@ -188,7 +191,8 @@ describe("getExperiments", () => {
     );
   });
 
-  it("fallsback to defaultExperimentData when not experiment data is returned by Cirrus", async () => {
+  it("fallsback to defaultExperimentData when no experiment data is returned by Cirrus", async () => {
+    process.env.NEXT_RUNTIME = "test";
     process.env.NIMBUS_SIDECAR_URL = "https://cirrus.example";
     getEnabledFeatureFlagsMock.mockReturnValue([
       "CirrusV2",
@@ -235,6 +239,7 @@ describe("getExperiments", () => {
         previewMode: true,
       }),
     );
+    delete process.env.NEXT_RUNTIME;
   });
 
   it("logs error, captures exception, and returns defaultExperimentData on error response", async () => {

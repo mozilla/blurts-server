@@ -59,7 +59,13 @@ export async function getExperiments(params: {
     serverUrl.pathname += "v1/features";
   }
 
-  const nextHeaders = await loadNextHeaders();
+  const nextHeaders =
+    // We also check for experiments in cron jobs, where there are
+    // no HTTP requests. Skip the headers there; we don't need to
+    // force-enable experiments in cronjobs.
+    typeof process.env.NEXT_RUNTIME === "string"
+      ? await loadNextHeaders()
+      : null;
   let previewMode = false;
   if (nextHeaders) {
     const headersList = await nextHeaders.headers();
