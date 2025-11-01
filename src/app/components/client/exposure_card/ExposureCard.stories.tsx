@@ -52,11 +52,6 @@ const ScanMockItemInProgress = createRandomScanResult({
   manually_resolved: false,
 });
 
-const ScanMockItemRemovalUnderMaintenance = createRandomScanResult({
-  status: "optout_in_progress",
-  manually_resolved: false,
-  broker_status: "removal_under_maintenance",
-});
 const ScanMockItemNoExposureData: OnerepScanResultDataBrokerRow = {
   id: 0,
   onerep_scan_result_id: 123,
@@ -81,21 +76,6 @@ const ScanMockItemNoExposureData: OnerepScanResultDataBrokerRow = {
   url: "url",
   addresses: [],
 };
-
-const ScanMockItemRemovalUnderMaintenanceManuallyFixed = createRandomScanResult(
-  {
-    status: "optout_in_progress",
-    manually_resolved: true,
-    broker_status: "removal_under_maintenance",
-  },
-);
-
-const ScanMockItemRemovalUnderMaintenanceAutomaticallyRemoved =
-  createRandomScanResult({
-    status: "removed",
-    manually_resolved: false,
-    broker_status: "removal_under_maintenance",
-  });
 
 const BreachMockItemRemoved = createRandomBreach({
   isResolved: true,
@@ -158,33 +138,6 @@ export const DataBreachActionNeeded: Story = {
   args: {
     exposureImg: TwitterImage,
     exposureData: BreachMockItemNew,
-  },
-};
-
-export const DataBrokerRemovalUnderMaintenance: Story = {
-  args: {
-    exposureImg: FamilyTreeImage,
-    exposureData: ScanMockItemRemovalUnderMaintenance,
-    isPremiumUser: true,
-    enabledFeatureFlags: ["EnableRemovalUnderMaintenanceStep"],
-  },
-};
-
-export const DataBrokerRemovalUnderMaintenanceFixed: Story = {
-  args: {
-    exposureImg: FamilyTreeImage,
-    exposureData: ScanMockItemRemovalUnderMaintenanceManuallyFixed,
-    isPremiumUser: true,
-    enabledFeatureFlags: ["EnableRemovalUnderMaintenanceStep"],
-  },
-};
-
-export const DataBrokerRemovalUnderMaintenanceAutomaticallyRemoved: Story = {
-  args: {
-    exposureImg: FamilyTreeImage,
-    exposureData: ScanMockItemRemovalUnderMaintenanceAutomaticallyRemoved,
-    isPremiumUser: true,
-    enabledFeatureFlags: ["EnableRemovalUnderMaintenanceStep"],
   },
 };
 
