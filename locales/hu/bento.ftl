@@ -5,10 +5,8 @@
 toolbar-app-picker-trigger-title = { -brand-mozilla } alkalmazások és szolgáltatások
 toolbar-app-picker-product-vpn = { -brand-mozilla-vpn }
 toolbar-app-picker-product-relay = { -brand-relay }
-toolbar-app-picker-product-pocket = { -brand-pocket }
 toolbar-app-picker-product-fx-desktop = { -brand-firefox } számítógépre
 toolbar-app-picker-product-fx-mobile = { -brand-firefox } mobilra
 toolbar-app-picker-by-mozilla = A { -brand-mozilla } készítette
-
 # Bento headline
 fx-makes-tech = A { -brand-name } olyan technológia, amely az Ön online adatvédelméért harcol.

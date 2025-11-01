@@ -3,9 +3,6 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 
-# Strings for the main app
-
-
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
@@ -19,46 +16,38 @@
        *[imenovalnik] Firefox
     }
 -brand-HIBP = Have I Been Pwned
--brand-fxa =
-    { $sklon ->
-       *[imenovalnik] Firefox Račun
-        [rodilnik] Firefox Računa
-        [dajalnik] Firefox Računu
-        [orodnik] Firefox Računom
-    }
--brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
 -brand-firefox =
     { $sklon ->
-       *[imenovalnik] Firefox
         [rodilnik] Firefoxa
         [dajalnik] Firefoxu
         [tozilnik] Firefox
         [mestnik] Firefoxu
         [orodnik] Firefoxom
+       *[imenovalnik] Firefox
     }
 -brand-monitor = Monitor
 -brand-fx-monitor = Mozilla Monitor
 -brand-mozilla =
     { $sklon ->
-       *[imenovalnik] Mozilla
         [rodilnik] Mozille
         [dajalnik] Mozilli
         [tozilnik] Mozillo
         [mestnik] Mozilli
         [orodnik] Mozillo
+       *[imenovalnik] Mozilla
     }
 -brand-premium = Premium
 -brand-monitor-premium = Monitor Premium
 -brand-mozilla-foundation = Mozilla Foundation
 -brand-github =
     { $sklon ->
-       *[imenovalnik] GitHub
         [rodilnik] GitHuba
         [dajalnik] GitHubu
         [tozilnik] GitHub
         [mestnik] GitHubu
         [orodnik] GitHubom
+       *[imenovalnik] GitHub
     }
 -brand-mozilla-vpn = Mozilla VPN
 -brand-relay = Firefox Relay
@@ -101,8 +90,6 @@ compromised-data = Ogroženi podatki:
 hibp-attribution = Podatke o krajah podatkov omogoča { $hibp-link }
 show-all = Prikaži vse
 sign-out = Odjava
-# Manage Firefox Account, link to page where account holders can change their account settings.
-manage-fxa = Upravljaj { -brand-fxa }
 # Link title
 preferences = Nastavitve
 # Link title

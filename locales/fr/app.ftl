@@ -3,9 +3,6 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 
-# Strings for the main app
-
-
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
@@ -13,12 +10,6 @@
 -product-short-name = Monitor
 -brand-name = Firefox
 -brand-HIBP = Have I Been Pwned
--brand-fxa =
-    { $capitalization ->
-       *[lowercase] compte Firefox
-        [uppercase] Compte Firefox
-    }
--brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
 -brand-firefox = Firefox
 -brand-monitor = Monitor
@@ -53,8 +44,6 @@ compromised-data = Données compromises :
 hibp-attribution = Données des différentes fuites fournies par { $hibp-link }
 show-all = Tout afficher
 sign-out = Se déconnecter
-# Manage Firefox Account, link to page where account holders can change their account settings.
-manage-fxa = Gérer le { -brand-fxa }
 # Link title
 preferences = Préférences
 # Link title
