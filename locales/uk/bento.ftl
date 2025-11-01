@@ -5,7 +5,6 @@
 toolbar-app-picker-trigger-title = Програми й служби { -brand-mozilla }
 toolbar-app-picker-product-vpn = { -brand-mozilla-vpn }
 toolbar-app-picker-product-relay = { -brand-relay }
-toolbar-app-picker-product-pocket = { -brand-pocket }
 toolbar-app-picker-product-fx-desktop = { -brand-firefox } для комп'ютера
 toolbar-app-picker-product-fx-mobile = { -brand-firefox } для мобільних пристроїв
 toolbar-app-picker-by-mozilla = Створено в { -brand-mozilla }

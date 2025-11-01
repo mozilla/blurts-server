@@ -27,7 +27,7 @@ exposure-chart-caption = Acest grafic arată de câte ori informațiile tale sun
 # Variables:
 #   $total_fixed_exposures_num (number) - Number of fixed exposures
 #   $total_exposures_num (number) - Number of total exposures
-exposure-chart-caption-fixed = Acest grafic arată expunerile totale care sunt fixe ({ $total_fixed_exposures_num } din { $total_exposures_num })
+exposure-chart-caption-fixed = Acest grafic arată expunerile totale care sunt remediate ({ $total_fixed_exposures_num } din { $total_exposures_num })
 exposure-chart-returning-user-upgrade-prompt = Adresa de domiciliu, membrii familiei și altele nu sunt încă incluse.
 exposure-chart-returning-user-upgrade-prompt-cta = Începe o scanare gratuită
 exposure-chart-scan-in-progress-prompt = <b>Scanare în curs:</b> adresa, membrii familiei și altele nu sunt încă incluse.

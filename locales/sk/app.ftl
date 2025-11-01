@@ -3,9 +3,6 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 
-# Strings for the main app
-
-
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
@@ -20,42 +17,32 @@
     }
 -product-short-name =
     { $case ->
-       *[nom] Monitor
         [gen] Monitora
         [dat] Monitoru
         [acc] Monitor
         [loc] Monitore
         [ins] Monitorom
+       *[nom] Monitor
     }
 -brand-name =
     { $case ->
-       *[nom] Firefox
         [gen] Firefoxu
         [dat] Firefoxu
         [acc] Firefox
         [loc] Firefoxe
         [ins] Firefoxom
+       *[nom] Firefox
     }
 -brand-HIBP = Have I Been Pwned
--brand-fxa =
-    { $case ->
-       *[nom] Účet Firefox
-        [gen] Účtu Firefox
-        [dat] Účtu Firefox
-        [acc] Účet Firefox
-        [loc] Účte Firefox
-        [ins] Účtom Firefox
-    }
--brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
 -brand-firefox =
     { $case ->
-       *[nom] Firefox
         [gen] Firefoxu
         [dat] Firefoxu
         [acc] Firefox
         [loc] Firefoxe
         [ins] Firefoxom
+       *[nom] Firefox
     }
 -brand-monitor =
     { $case ->
@@ -77,12 +64,12 @@
     }
 -brand-mozilla =
     { $case ->
-       *[nom] Mozilla
         [gen] Mozilly
         [dat] Mozille
         [acc] Mozillu
         [loc] Mozille
         [ins] Mozillou
+       *[nom] Mozilla
     }
 -brand-premium = Premium
 -brand-monitor-premium = Monitor Premium
@@ -121,8 +108,6 @@ compromised-data = Kompromitované údaje:
 hibp-attribution = Údaje o únikoch poskytuje { $hibp-link }
 show-all = Zobraziť všetko
 sign-out = Odhlásiť sa
-# Manage Firefox Account, link to page where account holders can change their account settings.
-manage-fxa = Spravovať { -brand-fxa(case: "acc") }
 # Link title
 preferences = Nastavenia
 # Link title

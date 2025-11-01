@@ -3,9 +3,6 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 
-# Strings for the main app
-
-
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
@@ -13,8 +10,6 @@
 -product-short-name = Monitor
 -brand-name = Firefox
 -brand-HIBP = Have I Been Pwned
--brand-fxa = Firefox Taqoya'l
--brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
 -brand-firefox = Firefox
 -brand-fx-monitor = Mozilla Monitor
@@ -41,8 +36,6 @@ compromised-data = Tz'ilan taq tzij:
 hibp-attribution = Kitz'ilanik tzij ya'on ruma { $hibp-link }
 show-all = Tik'ut ronojel
 sign-out = Katel pa Molojri'ïl
-# Manage Firefox Account, link to page where account holders can change their account settings.
-manage-fxa = Tinuk'samajïx { -brand-fxa }
 # Link title
 preferences = Taq ajowab'äl
 # Link title
@@ -142,23 +135,11 @@ rec-section-subhead-no-pw = Estape' man xetz'iläx ta re ta ewan tzij re', k'o r
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = K'ak'a'
 
-##
-
-
-## Search Engine Optimization
-
-
 ## Header
 
 # Deprecated
 brand-fx-monitor = { -brand-fx-monitor }
 sign-in = Tatikirisaj molojri'ïl
-
-## Site navigation
-
-
-## User menu
-
 
 ## Footer
 
@@ -172,9 +153,3 @@ error-page-error-404-cta-button = Titzolin
 ## Breach overview page
 
 search-breaches = Kekanöx taq Tz'ilanem
-
-## Public breach detail page
-
-
-## Firefox Monitor -> Mozilla Monitor rebrand banner
-

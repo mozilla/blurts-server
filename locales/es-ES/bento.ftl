@@ -5,10 +5,8 @@
 toolbar-app-picker-trigger-title = Aplicaciones y servicios de { -brand-mozilla }
 toolbar-app-picker-product-vpn = { -brand-mozilla-vpn }
 toolbar-app-picker-product-relay = { -brand-relay }
-toolbar-app-picker-product-pocket = { -brand-pocket }
 toolbar-app-picker-product-fx-desktop = { -brand-firefox } para escritorio
 toolbar-app-picker-product-fx-mobile = { -brand-firefox } para móviles
 toolbar-app-picker-by-mozilla = Creado por { -brand-mozilla }
-
 # Bento headline
 fx-makes-tech = La tecnología de { -brand-name } lucha por tu privacidad en la red.

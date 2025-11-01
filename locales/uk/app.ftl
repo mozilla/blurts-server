@@ -3,9 +3,6 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 
-# Strings for the main app
-
-
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
@@ -13,40 +10,6 @@
 -product-short-name = Monitor
 -brand-name = Firefox
 -brand-HIBP = Have I Been Pwned
--brand-fxa =
-    { $case ->
-        [gen]
-            { $capitalization ->
-                [lower] облікового запису Firefox
-               *[upper] Облікового запису Firefox
-            }
-        [dat]
-            { $capitalization ->
-                [lower] обліковому запису Firefox
-               *[upper] Обліковому запису Firefox
-            }
-        [acc]
-            { $capitalization ->
-                [lower] обліковий запис Firefox
-               *[upper] Обліковий запис Firefox
-            }
-        [abl]
-            { $capitalization ->
-                [lower] обліковим записом Firefox
-               *[upper] Обліковим записом Firefox
-            }
-        [loc]
-            { $capitalization ->
-                [lower] обліковому записі Firefox
-               *[upper] Обліковому записі Firefox
-            }
-       *[nom]
-            { $capitalization ->
-                [lower] обліковий запис Firefox
-               *[upper] Обліковий запис Firefox
-            }
-    }
--brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
 -brand-firefox = Firefox
 -brand-monitor = Monitor
@@ -81,8 +44,6 @@ compromised-data = Скомпрометовані дані:
 hibp-attribution = Дані про загрози надано { $hibp-link }
 show-all = Показати все
 sign-out = Вийти
-# Manage Firefox Account, link to page where account holders can change their account settings.
-manage-fxa = Керувати { -brand-fxa(case: "abl") }
 # Link title
 preferences = Налаштування
 # Link title

@@ -3,9 +3,6 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 
-# Strings for the main app
-
-
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
@@ -13,8 +10,6 @@
 -product-short-name = Monitor
 -brand-name = Firefox
 -brand-HIBP = 데이터 유출 여부 보기
--brand-fxa = Firefox Account
--brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
 -brand-firefox = Firefox
 -brand-monitor = 모니터
@@ -49,8 +44,6 @@ compromised-data = 유출 데이터 :
 hibp-attribution = { $hibp-link }에서 제공한 침해 데이터
 show-all = 모두 보기
 sign-out = 로그아웃
-# Manage Firefox Account, link to page where account holders can change their account settings.
-manage-fxa = { -brand-fxa } 관리
 # Link title
 preferences = 환경 설정
 # Link title

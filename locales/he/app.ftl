@@ -3,9 +3,6 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 
-# Strings for the main app
-
-
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
@@ -13,8 +10,6 @@
 -product-short-name = Monitor
 -brand-name = Firefox
 -brand-HIBP = האם עקצו אותי
--brand-fxa = חשבון Firefox
--brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
 -brand-firefox = Firefox
 -brand-monitor = Monitor
@@ -22,6 +17,7 @@
 -brand-mozilla = Mozilla
 -brand-premium = Premium
 -brand-monitor-premium = Monitor Premium
+-brand-mozilla-foundation = Mozilla Foundation
 -brand-github = GitHub
 -brand-mozilla-vpn = Mozilla VPN
 -brand-relay = Firefox Relay
@@ -48,8 +44,6 @@ compromised-data = מידע שנחשף:
 hibp-attribution = נתוני הדליפה מסופקים על־ידי { $hibp-link }
 show-all = הצגת הכל
 sign-out = התנתקות
-# Manage Firefox Account, link to page where account holders can change their account settings.
-manage-fxa = ניהול { -brand-fxa }
 # Link title
 preferences = העדפות
 # Link title
@@ -76,16 +70,16 @@ breach-summary = קיצור הדליפה
 # your localization, because it would result in the number showing twice.
 passwords-exposed =
     { $passwords ->
-        [one] ססמה אחת נחשפה בכל הדליפותbreach-added-label = דליפה נוספה:-brand-mozilla-foundation = Mozilla Foundation
-       *[other] ססמאות נחשפו בכל הדליפותbreach-added-label = דליפה נוספה:-brand-mozilla-foundation = Mozilla Foundation
+        [one] ססמה אחת נחשפה בכל הדליפות
+       *[other] ססמאות נחשפו בכל הדליפות
     }
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that have exposed the user’s information. Don’t add $breaches to
 # your localization, because it would result in the number showing twice.
 known-data-breaches-exposed =
     { $breaches ->
-        [one] דליפת נתונים מוכרת אחת חשפה מידע עליךbrand-mozilla-monitor = { -brand-fx-monitor }
-       *[other] דליפות נתונים מוכרות חשפו מידע עליךbrand-mozilla-monitor = { -brand-fx-monitor }
+        [one] דליפת נתונים מוכרת אחת חשפה מידע עליך
+       *[other] דליפות נתונים מוכרות חשפו מידע עליך
     }
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = תפריט
@@ -98,6 +92,9 @@ verify-the-link = יש לאמת את הקישור שנשלח אל { $userEmail }
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
 
+# This string is a label for the calendar date a breach is added to the database
+# and is followed by that date.
+breach-added-label = דליפה נוספה:
 # Section headline
 rec-section-headline = מה לעשות עבור דליפה זו
 rec-section-subhead = אנו ממליצים לך לנקוט בצעדים הבאים כדי לשמור על המידע האישי שלך ולהגן על הזהות הדיגיטלית שלך.
@@ -121,14 +118,12 @@ new-breach = חדש
     }
 open-in-new-tab-alt = פתיחת קישור בלשונית חדשה
 
-## Search Engine Optimization
-
-
 ## Header
 
 # Deprecated
 brand-fx-monitor = { -brand-fx-monitor }
 sign-in = התחברות
+brand-mozilla-monitor = { -brand-fx-monitor }
 
 ## Site navigation
 
@@ -180,9 +175,6 @@ error-page-error-other-title = { $errorCode } משהו השתבש
 ## Breach overview page
 
 search-breaches = חיפוש בדליפות
-
-## Public breach detail page
-
 
 ## Firefox Monitor -> Mozilla Monitor rebrand banner
 

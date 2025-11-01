@@ -17,3 +17,5 @@ unsubscribe-success-cta = Intră în contul { -brand-monitor }
 
 # Error warning
 
+unsubscription-failed = Dezabonarea a eșuat. <try_again_link>Încearcă din nou.</try_again_link>
+unsubscription-failed-2 = Dezabonarea a eșuat.

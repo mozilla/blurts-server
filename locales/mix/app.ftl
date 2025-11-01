@@ -3,9 +3,6 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 
-# Strings for the main app
-
-
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
@@ -13,8 +10,6 @@
 -product-short-name = Monitor
 -brand-name = Firefox
 -brand-HIBP = Have I Been Pwned
--brand-fxa = Firefox Account
--brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
 -brand-mozilla-vpn = Mozilla VPN
 
@@ -35,8 +30,6 @@ compromised-data = Datos comprometidos:
 hibp-attribution = Filtración de datos proporcionada por { $hibp-link }
 show-all = Snaa ntia
 sign-out = Kee
-# Manage Firefox Account, link to page where account holders can change their account settings.
-manage-fxa = Sama { -brand-fxa }
 # Link title
 preferences = Preferencias
 # Link title
@@ -99,34 +92,10 @@ rec-section-headline = Ntyi sau tsi filtración
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Tsa'a
 
-##
-
-
-## Search Engine Optimization
-
-
 ## Header
 
 sign-in = Kitsa
 
-## Site navigation
-
-
-## User menu
-
-
-## Footer
-
-
-## Error page
-
-
 ## Breach overview page
 
 search-breaches = Nduku filtración
-
-## Public breach detail page
-
-
-## Firefox Monitor -> Mozilla Monitor rebrand banner
-
