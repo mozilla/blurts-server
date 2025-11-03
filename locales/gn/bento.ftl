@@ -5,10 +5,8 @@
 toolbar-app-picker-trigger-title = { -brand-mozilla } rembiporu’i ha mba’eporurã
 toolbar-app-picker-product-vpn = { -brand-mozilla-vpn }
 toolbar-app-picker-product-relay = { -brand-relay }
-toolbar-app-picker-product-pocket = { -brand-pocket }
 toolbar-app-picker-product-fx-desktop = { -brand-firefox } mesa arigua
 toolbar-app-picker-product-fx-mobile = { -brand-firefox } pumbyrygua
 toolbar-app-picker-by-mozilla = { -brand-mozilla } moheñoimby
-
 # Bento headline
 fx-makes-tech = { -brand-name } tembiporupyahu oñeha’ãha ne ñemigua ñandutípe.

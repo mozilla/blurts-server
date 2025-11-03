@@ -3,9 +3,6 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 
-# Strings for the main app
-
-
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
@@ -32,63 +29,24 @@
     }
 -brand-name =
     { $case ->
-       *[nom] Firefox
         [gen] Firefoxu
         [dat] Firefoxu
         [acc] Firefox
         [voc] Firefoxe
         [loc] Firefoxu
         [ins] Firefoxem
+       *[nom] Firefox
     }
 -brand-HIBP = Have I Been Pwned
--brand-fxa =
-    { $case ->
-       *[nom]
-            { $capitalization ->
-               *[upper] Účet Firefoxu
-                [lower] účet Firefoxu
-            }
-        [gen]
-            { $capitalization ->
-               *[upper] Účtu Firefoxu
-                [lower] účtu Firefoxu
-            }
-        [dat]
-            { $capitalization ->
-               *[upper] Účtu Firefoxu
-                [lower] účtu Firefoxu
-            }
-        [acc]
-            { $capitalization ->
-               *[upper] Účet Firefoxu
-                [lower] účet Firefoxu
-            }
-        [voc]
-            { $capitalization ->
-               *[upper] Účte Firefoxu
-                [lower] účte Firefoxu
-            }
-        [loc]
-            { $capitalization ->
-               *[upper] Účtu Firefoxu
-                [lower] účtu Firefoxu
-            }
-        [ins]
-            { $capitalization ->
-               *[upper] Účtem Firefoxu
-                [lower] účtem Firefoxu
-            }
-    }
--brand-pocket = Pocket
 -brand-lockwise =
     { $case ->
-       *[nom] Firefox Lockwise
         [gen] Firefoxu Lockwise
         [dat] Firefoxu Lockwise
         [acc] Firefox Lockwise
         [voc] Firefoxe Lockwise
         [loc] Firefoxu Lockwise
         [ins] Firefoxem Lockwise
+       *[nom] Firefox Lockwise
     }
     .gender = masculine
 -brand-firefox =
@@ -174,8 +132,6 @@ compromised-data = Kompromitovaná data:
 hibp-attribution = Data o únicích poskytuje { $hibp-link }
 show-all = Zobrazit vše
 sign-out = Odhlášení
-# Manage Firefox Account, link to page where account holders can change their account settings.
-manage-fxa = Správa { -brand-fxa(case: "gen", capitalization: "lower") }
 # Link title
 preferences = Předvolby
 # Link title

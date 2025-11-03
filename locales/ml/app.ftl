@@ -3,9 +3,6 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 
-# Strings for the main app
-
-
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
@@ -13,8 +10,6 @@
 -product-short-name = മോണിറ്റർ
 -brand-name = ഫയർഫോക്സ്
 -brand-HIBP = ഹാവ് ഐ ബീൻ പൗൺഡ്
--brand-fxa = ഫയർഫോക്സ് അക്കൗണ്ട്
--brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
 -brand-firefox = Firefox
 -brand-monitor = Monitor
@@ -44,8 +39,6 @@ compromised-data = അപഹരിക്കപ്പെട്ട വിവരങ
 hibp-attribution = { $hibp-link } നല്‍കിയ ചോര്‍ച്ചാ വിവരങ്ങള്‍
 show-all = എല്ലാം കാണിക്കുക
 sign-out = പുറത്തിറങ്ങുക
-# Manage Firefox Account, link to page where account holders can change their account settings.
-manage-fxa = { -brand-fxa } നിയന്ത്രിക്കുക
 # Link title
 preferences = മുൻഗണനകൾ
 # Link title
@@ -66,10 +59,6 @@ breach-overview-title = അവലോകനം
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = കുറിപ്പടിക്കട്ട
 
-## These are part of a confirmation page that appears after a user has verified
-## an additional email to Firefox Monitor.
-
-
 ##
 
 # A status indicator that appears in the top right corner of new breach cards
@@ -81,9 +70,6 @@ new-breach = പുതിയതു്
 # and kept in English.
 -brand-mozilla-account = മോസില്ല അക്കൗണ്ടു്
 open-in-new-tab-alt = കണ്ണി പുതിയ ടാബില്‍ തുറക്കുക
-
-## Search Engine Optimization
-
 
 ## Header
 
@@ -132,12 +118,6 @@ error-page-error-404-cta-button = തിരിച്ചു്
 # Variables:
 #   $errorCode (number) - the status code of the error, e.g. 403
 error-page-error-other-title = { $errorCode } എന്തോ കുഴപ്പമുണ്ടായി
-
-## Breach overview page
-
-
-## Public breach detail page
-
 
 ## Firefox Monitor -> Mozilla Monitor rebrand banner
 

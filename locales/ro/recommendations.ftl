@@ -14,6 +14,10 @@ rec-ssn =
 rec-pw-1-subhead = Schimbă-ți parola
 # Link title
 rec-pw-1-cta = Schimbă parola pentru acest site
+rec-pw-1-2 =
+    Fă această parolă unică și diferită de toate celelalte pe care le folosești. 
+    O strategie bună e să combini două sau mai multe cuvinte 
+    care nu au nicio legătură unul cu altul ca să creezi o parolă. Include și numere și simboluri.
 # Recommendation subhead
 rec-pw-2-subhead = Actualizează-ți alte date de autentificare folosind aceeași parolă
 # Link title
@@ -49,13 +53,21 @@ rec-cc-subhead = Monitorizează-ți extrasele bancare pentru cardurile de credit
 rec-cc =
     Vezi dacă apar modificări ciudate pe cardul de credit. Poate vrei 
     să soliciți un card nou, cu un număr nou, de la emitentul de carduri de credit.
+# Recommendation subhead
+rec-email-mask-subhead = Folosește o mască de e-mail
 rec-email-cta = Încearcă { -brand-relay }
 rec-email =
     Oferirea adresei reale de e-mail face mai ușor accesul hackerilor sau al elementelor de urmărire la
     găsească parole sau ca să te urmărească online. Un serviciu precum { -brand-relay }
     ascunde adresa reală de e-mail și redirecționează mesajele de e-mail către căsuța de e-mail reală.
 # Recommendation subhead
+rec-ip-subhead-2 = Folosește un VPN pentru a-ți masca adresa IP
+# Recommendation subhead
 rec-moz-vpn-cta = Încearcă { -brand-mozilla-vpn }
+rec-moz-vpn-update-2 =
+    Adresa ta de protocol Internet (adresa IP) îți indică locația 
+    și furnizorul de servicii de Internet. Un serviciu precum { -brand-mozilla-vpn }
+    îți maschează adresa IP pentru a-ți ascunde locația.
 rec-hist-pw-subhead = Evită refolosirea parolelor
 # Link title
 rec-hist-pw-cta-fx = Vezi datele de autentificare în { -brand-name }
