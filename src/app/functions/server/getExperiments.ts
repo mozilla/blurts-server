@@ -42,9 +42,6 @@ export async function getExperiments(params: {
 
   const serverUrl = new URL(process.env.NIMBUS_SIDECAR_URL);
   const flags = await getEnabledFeatureFlags({ isSignedOut: true });
-  if (!serverUrl.pathname.endsWith("/")) {
-    serverUrl.pathname += "/";
-  }
   serverUrl.pathname += "v2/features";
 
   const nextHeaders = await loadNextHeaders();
