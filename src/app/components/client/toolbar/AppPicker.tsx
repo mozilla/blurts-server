@@ -27,7 +27,6 @@ import { ReactLocalization } from "@fluent/react";
 import styles from "./AppPicker.module.scss";
 import FirefoxLogo from "./images/fx.png";
 import RelayLogo from "./images/relay-logo.svg";
-import PocketLogo from "./images/pocket-logo.svg";
 import VpnLogo from "./images/vpn.svg";
 import FxDesktopLogo from "./images/fx-logo.svg";
 import FxMobileLogo from "./images/fx-mobile.png";
@@ -55,13 +54,6 @@ const getProducts = (referringHost: string, l10n: ReactLocalization) => ({
     title: l10n.getString("toolbar-app-picker-product-relay"),
     gaLabel: "fx-relay",
     imgSrc: RelayLogo,
-  },
-  pocket: {
-    id: "pocket",
-    url: "https://app.adjust.com/hr2n0yz?engagement_type=fallback_click&fallback=https%3A%2F%2Fgetpocket.com%2Ffirefox_learnmore%3Fsrc%3Dff_bento&fallback_lp=https%3A%2F%2Fapps.apple.com%2Fapp%2Fpocket-save-read-grow%2Fid309601447",
-    title: l10n.getString("toolbar-app-picker-product-pocket"),
-    gaLabel: "pocket",
-    imgSrc: PocketLogo,
   },
   fxDesktop: {
     id: "fxDesktop",

@@ -3,9 +3,6 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 
-# Strings for the main app
-
-
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
@@ -13,8 +10,6 @@
 -product-short-name = مانیٹر
 -brand-name = Firefox
 -brand-HIBP = Have I Been Pwned
--brand-fxa = Firefox اکاؤنٹ
--brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
 -brand-mozilla-vpn = Mozilla VPN
 -brand-relay = Firefox Relay
@@ -30,8 +25,6 @@ user-verify-token-error = توثیق کی ٹوکن درکار ہے۔
 compromised-data = سمجھوتہ ہوا ڈیٹا:
 show-all = تمام دکھائیں
 sign-out = سائن آؤٹ کریں
-# Manage Firefox Account, link to page where account holders can change their account settings.
-manage-fxa = { -brand-fxa } بندرست کریں
 # Link title
 preferences = ترجیحات
 # Link title
@@ -69,34 +62,10 @@ rec-section-headline-no-pw = اپنی ذاتی معلومات کی حفاظت ک
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = نیا
 
-##
-
-
-## Search Engine Optimization
-
-
 ## Header
 
 sign-in = سائن ان کریں
 
-## Site navigation
-
-
-## User menu
-
-
-## Footer
-
-
-## Error page
-
-
 ## Breach overview page
 
 search-breaches = خلاف ورزیوں کو تلاش کریں
-
-## Public breach detail page
-
-
-## Firefox Monitor -> Mozilla Monitor rebrand banner
-

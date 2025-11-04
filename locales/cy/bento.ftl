@@ -5,10 +5,8 @@
 toolbar-app-picker-trigger-title = Apiau a gwasanaethau { -brand-mozilla }
 toolbar-app-picker-product-vpn = { -brand-mozilla-vpn }
 toolbar-app-picker-product-relay = { -brand-relay }
-toolbar-app-picker-product-pocket = { -brand-pocket }
 toolbar-app-picker-product-fx-desktop = { -brand-firefox } ar gyfer y Bwrdd Gwaith
 toolbar-app-picker-product-fx-mobile = { -brand-firefox } ar gyfer Symudol
 toolbar-app-picker-by-mozilla = Wedi'i wneud gan { -brand-mozilla }
-
 # Bento headline
 fx-makes-tech = Mae { -brand-name } yn dechnoleg sy'n ymladd dros eich preifatrwydd ar-lein.

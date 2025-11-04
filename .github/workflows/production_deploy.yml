@@ -63,19 +63,19 @@ jobs:
           password: ${{ steps.gcp-auth.outputs.access_token }}
 
       - name: Pull Docker Hub image
-        run: docker pull "${{ env.DOCKERHUB_IMAGE }}:${{ env.SAFE_IMAGE_TAG }}"
+        run: docker pull "$DOCKERHUB_IMAGE:$SAFE_IMAGE_TAG"
 
       - name: Retag Docker Hub image
-        run: docker tag "${{ env.DOCKERHUB_IMAGE }}:${{ env.SAFE_IMAGE_TAG }}" "${{ env.DOCKERHUB_IMAGE }}:${{ env.SAFE_ENVIRONMENT }}-${{ env.SAFE_IMAGE_TAG }}"
+        run: docker tag "$DOCKERHUB_IMAGE:$SAFE_IMAGE_TAG" "$DOCKERHUB_IMAGE:$SAFE_ENVIRONMENT-$SAFE_IMAGE_TAG"
 
       - name: Push Docker Hub image
-        run: docker push "${{ env.DOCKERHUB_IMAGE }}:${{ env.SAFE_ENVIRONMENT }}-${{ env.SAFE_IMAGE_TAG }}"
+        run: docker push "$DOCKERHUB_IMAGE:$SAFE_ENVIRONMENT-$SAFE_IMAGE_TAG"
 
       - name: Pull GAR image
-        run: docker pull "${{ env.GAR_IMAGE_BASE }}:${{ env.SAFE_IMAGE_TAG }}"
+        run: docker pull "$GAR_IMAGE_BASE:$SAFE_IMAGE_TAG"
 
       - name: Retag GAR image
-        run: docker tag "${{ env.GAR_IMAGE_BASE }}:${{ env.SAFE_IMAGE_TAG }}" "${{ env.GAR_IMAGE_BASE }}:${{ env.SAFE_ENVIRONMENT }}-${{ env.SAFE_IMAGE_TAG }}"
+        run: docker tag "$GAR_IMAGE_BASE:$SAFE_IMAGE_TAG" "$GAR_IMAGE_BASE:$SAFE_ENVIRONMENT-$SAFE_IMAGE_TAG"
 
       - name: Push GAR image
-        run: docker push "${{ env.GAR_IMAGE_BASE }}:${{ env.SAFE_ENVIRONMENT }}-${{ env.SAFE_IMAGE_TAG }}"
+        run: docker push "$GAR_IMAGE_BASE:$SAFE_ENVIRONMENT-$SAFE_IMAGE_TAG"

@@ -5,7 +5,6 @@
 toolbar-app-picker-trigger-title = Aplicaciones y servicios de { -brand-mozilla }
 toolbar-app-picker-product-vpn = { -brand-mozilla-vpn }
 toolbar-app-picker-product-relay = { -brand-relay }
-toolbar-app-picker-product-pocket = { -brand-pocket }
 toolbar-app-picker-product-fx-desktop = { -brand-firefox } para escritorio
 toolbar-app-picker-product-fx-mobile = { -brand-firefox } para dispositivos móviles
 toolbar-app-picker-by-mozilla = Hecho por { -brand-mozilla }

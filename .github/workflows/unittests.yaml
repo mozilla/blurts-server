@@ -18,7 +18,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Use Node.js
-        uses: actions/setup-node@v5
+        uses: actions/setup-node@v6
         with:
           node-version: '20.19.x'
       - run: npm ci
@@ -33,7 +33,7 @@ jobs:
       # (and set an arbitrary coverage threshold for that "true" coverage):
       - run: npm test -- --coverageThreshold='{"global":{"branches":80,"functions":80,"lines":80,"statements":80}}'
         if: github.event_name == 'schedule'
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v5
         if: always()
         with:
           name: coverage-report

@@ -11,8 +11,6 @@
 -product-short-name = Monitor
 -brand-name = Firefox
 -brand-HIBP = Have I Been Pwned
--brand-fxa = Firefox Account
--brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
 -brand-firefox = Firefox
 -brand-monitor = Monitor
@@ -53,9 +51,6 @@ hibp-attribution = Breach data provided by { $hibp-link }
 show-all = Show All
 
 sign-out = Sign Out
-
-# Manage Firefox Account, link to page where account holders can change their account settings.
-manage-fxa = Manage { -brand-fxa }
 
 # Link title
 preferences = Preferences
