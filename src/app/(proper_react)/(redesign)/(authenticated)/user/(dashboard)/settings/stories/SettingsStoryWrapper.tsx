@@ -25,6 +25,7 @@ import {
 } from "./settingsMockData";
 import { SerializedSubscriber } from "../../../../../../../../next-auth";
 import { getL10n } from "../../../../../../../functions/l10n/storybookAndJest";
+import { onDeleteAccount } from "../actions";
 
 export type SettingsWrapperProps = {
   activeTab: TabType;
@@ -43,7 +44,9 @@ export type SettingsWrapperProps = {
 export const mockedActions = {
   onAddEmail: fn().mockName("onAddEmail"),
   onRemoveEmail: fn().mockName("onRemoveEmail"),
-  onDeleteAccount: fn().mockName("onDeleteAccount"),
+  onDeleteAccount: fn<typeof onDeleteAccount>()
+    .mockName("onDeleteAccount")
+    .mockReturnValue(new Promise(() => {})),
   onHandleUpdateProfileData: fn().mockName("onHandleUpdateProfileData"),
 };
 
