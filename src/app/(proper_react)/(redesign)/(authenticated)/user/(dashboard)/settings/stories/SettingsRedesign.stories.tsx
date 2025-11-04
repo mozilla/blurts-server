@@ -34,7 +34,7 @@ export const SettingsEditManageAccount: Story = {
   args: {
     countryCode: "us",
     activeTab: "manage-account",
-    hasPlus: true,
+    hasPlus: false,
     enabledFeatureFlags: ["EditScanProfileDetails"],
   },
 };

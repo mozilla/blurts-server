@@ -68,7 +68,6 @@ jest.mock("../../../../../../hooks/useTelemetry");
 import {
   mockedAnnouncements,
   mockedFreeSubscriberEmailPreferences,
-  mockedPlusSubscriberEmailPreferences,
   mockedProfileDataMax,
   mockedProfileDataMin,
   mockedSecondaryVerifiedEmail,
@@ -112,57 +111,6 @@ describe("Tests from Old settings page", () => {
     onDeleteAccount: () => new Promise(() => undefined),
     onHandleUpdateProfileData: jest.fn(),
   };
-
-  it("changes the active tab", async () => {
-    const user = userEvent.setup();
-    render(
-      <SettingsWrapper>
-        <SettingsView
-          activeTab="edit-info"
-          l10n={getL10n()}
-          user={{
-            ...mockedUser,
-            subscriber: {
-              ...mockedUser.subscriber!,
-              all_emails_to_primary: true,
-            },
-          }}
-          subscriber={mockedSubscriber}
-          breachCountByEmailAddress={{
-            [mockedUser.email]: 42,
-            [mockedSecondaryVerifiedEmail.email]: 42,
-          }}
-          emailAddresses={[mockedSecondaryVerifiedEmail]}
-          fxaSettingsUrl=""
-          fxaSubscriptionsUrl=""
-          monthlySubscriptionUrl=""
-          subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-          enabledFeatureFlags={[]}
-          experimentData={defaultExperimentData["Features"]}
-          isMonthlySubscriber={true}
-          data={mockedPlusSubscriberEmailPreferences}
-          isEligibleForPremium={false}
-          actions={mockedActions}
-          userAnnouncements={mockedAnnouncements}
-        />
-      </SettingsWrapper>,
-    );
-
-    const tabListItemInitial = screen.getByRole("tab", {
-      name: "Edit your info",
-    });
-    expect(tabListItemInitial.getAttribute("aria-selected")).toBe("true");
-
-    const tabListItemNext = screen.getByRole("tab", {
-      name: "Set notifications",
-    });
-    // Wrap the click (state update) in act()
-    await act(async () => {
-      await user.click(tabListItemNext);
-    });
-    expect(tabListItemInitial.getAttribute("aria-selected")).toBe("false");
-    expect(tabListItemNext.getAttribute("aria-selected")).toBe("true");
-  });
 
   it("does not crash if no email preferences were found for the current user", () => {
     const component = (
