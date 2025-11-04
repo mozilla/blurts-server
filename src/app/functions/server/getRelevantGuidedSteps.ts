@@ -141,7 +141,7 @@ function getStepWithStatus(
 export function isEligibleForStep(
   data: StepDeterminationData,
   stepId: StepLink["id"],
-  _enabledFeatureFlags?: FeatureFlagName[],
+  enabledFeatureFlags?: FeatureFlagName[],
 ): boolean {
   // Only premium users can see the manual data broker removal flow, once they have run a scan
   if (stepId === "Scan") {
