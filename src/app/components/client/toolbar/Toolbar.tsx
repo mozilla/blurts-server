@@ -31,13 +31,7 @@ export type Props = {
 
 export const Toolbar = (props: Props) => {
   return (
-    <nav
-      // The class `.hasBackground` is only applying a background to the toolbar
-      // and the conditional flag will be removed together with:
-      // https://mozilla-hub.atlassian.net/browse/MNTOR-4192
-      /* c8 ignore next */
-      className={`${styles.toolbar} ${styles.hasBackground}`}
-    >
+    <nav className={`${styles.toolbar} ${styles.hasBackground}`}>
       <div className={styles.start}>{props.children}</div>
       <div className={styles.end}>
         <UpsellBadge
