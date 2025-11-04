@@ -220,6 +220,12 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
             signInCount={props.signInCount ?? null}
             removalTimeEstimates={mockedRemovalTimeEstimates}
             userAnnouncements={mockedAnnouncements}
+            countryCode={props.countryCode}
+            shutdownState={{
+              currentMoment: "ye-olden-days",
+              hasPremium: props.countryCode === "us" && props.premium,
+              ranScan: scanCount > 0,
+            }}
           />
         </Shell>
       </CountryCodeProvider>
