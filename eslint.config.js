@@ -2,25 +2,19 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { dirname } from "node:path";
-import { fileURLToPath } from "node:url";
-import { FlatCompat } from "@eslint/eslintrc";
+ import { defineConfig, globalIgnores } from 'eslint/config';
+ import nextVitals from 'eslint-config-next/core-web-vitals';
+ import nextTs from 'eslint-config-next/typescript';
+
 import checkFile from "eslint-plugin-check-file";
 import header from "eslint-plugin-header";
 import importPlugin from "eslint-plugin-import";
 import jestPlugin from "eslint-plugin-jest";
-import js from "@eslint/js";
 import jsdoc from "eslint-plugin-jsdoc";
 import tsEslint from "@typescript-eslint/eslint-plugin";
 import tsParser from "@typescript-eslint/parser";
 // For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
 import storybook from "eslint-plugin-storybook";
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-  recommendedConfig: js.configs.recommended,
-});
 
 // Workaround for a compatibility issue between eslint-plugin-header and ESLint v9:
 // See https://github.com/Stuk/eslint-plugin-header/issues/59
@@ -28,10 +22,10 @@ const compat = new FlatCompat({
 // again after the aforementioned issue has been fixed.
 header.rules.header.meta.schema = false;
 
-const config = [
-  ...compat.extends("next/core-web-vitals", "next/typescript"),
-  {
-    ignores: [
+const config = defineConfig([
+  ...nextVitals,
+  ...nextTs,
+    globalIgnores([
       "node_modules/**",
       ".next/**",
       "out/**",
@@ -42,11 +36,7 @@ const config = [
       "coverage",
       "!.storybook",
       "playwright-report/**",
-    ],
-  },
-  ...compat.config({
-    extends: ["next"],
-  }),
+  ]),
   ...storybook.configs["flat/recommended"],
   {
     languageOptions: {
@@ -205,6 +195,6 @@ const config = [
       "react-hooks/rules-of-hooks": "off",
     },
   },
-];
+]);
 
 export default config;
