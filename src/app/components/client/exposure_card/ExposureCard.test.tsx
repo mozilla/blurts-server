@@ -15,12 +15,8 @@ import Meta, {
   DataBrokerManualRemoved,
   DataBrokerRemoved,
   DataBrokerRequestedRemoval,
-  DataBrokerRemovalUnderMaintenance,
-  DataBrokerRemovalUnderMaintenanceFixed,
-  DataBrokerRemovalUnderMaintenanceAutomaticallyRemoved,
   DataBrokerActionNeededNoExposureResults,
 } from "./ExposureCard.stories";
-import { isDataBrokerUnderMaintenance } from "../../../(proper_react)/(redesign)/(authenticated)/user/(dashboard)/dashboard/View";
 import { createRandomScanResult } from "../../../../apiMocks/mockData";
 
 jest.mock("../../../hooks/useTelemetry");
@@ -115,72 +111,12 @@ describe("ScanResultCard", () => {
     expect(innerDescription).toBeInTheDocument();
   });
 
-  // Data broker removal under maintenance unresolved
-  it("shows the right description for a scan result card with removal under maintenance status", () => {
-    const ComposedProgressCard = composeStory(
-      DataBrokerRemovalUnderMaintenance,
-      Meta,
-    );
-    render(<ComposedProgressCard />);
-    const innerDescription = screen.getByText(
-      "We’ve asked this data broker to remove your profile but they haven’t done it.",
-      { exact: false },
-    );
-
-    expect(innerDescription).toBeInTheDocument();
-  });
-
-  // Data broker removal under maintenance manually removed
-  it("shows the right description for a scan result card with removal under maintenance status that's been manually resolved", () => {
-    const ComposedProgressCard = composeStory(
-      DataBrokerRemovalUnderMaintenanceFixed,
-      Meta,
-    );
-    render(<ComposedProgressCard />);
-    const innerDescription = screen.getByText(
-      "You could be added back in the future, so ⁨Monitor⁩ will continue to scan data broker sites for new exposures.",
-      { exact: false },
-    );
-
-    expect(innerDescription).toBeInTheDocument();
-  });
-
-  // Data broker removal under maintenance automatically removed
-  it("shows the right description for a scan result card with removal under maintenance status that's been automatically resolved", () => {
-    const ComposedProgressCard = composeStory(
-      DataBrokerRemovalUnderMaintenanceAutomaticallyRemoved,
-      Meta,
-    );
-
-    render(<ComposedProgressCard />);
-    const innerDescription = screen.getByText(
-      "will continually monitor to make sure they don’t add you back",
-      { exact: false },
-    );
-
-    expect(innerDescription).toBeInTheDocument();
-  });
-
   // Data broker removal in progress
   it("shows the right description for a scan result card where removal is in progress", () => {
     const ComposedProgressCard = composeStory(DataBrokerInProgress, Meta);
     render(<ComposedProgressCard />);
     const innerDescription = screen.getByText(
       "As a ⁨Monitor Plus⁩ member, we’ve removed",
-      { exact: false },
-    );
-
-    expect(innerDescription).toBeInTheDocument();
-  });
-
-  it("shows the right description for a scan result card where removal is under maintenance", () => {
-    const ComposedProgressCard = composeStory(
-      DataBrokerRemovalUnderMaintenance,
-      Meta,
-    );
-    render(<ComposedProgressCard />);
-    const innerDescription = screen.getByText(
-      "We’ve asked this data broker to remove your profile but they haven’t done it.",
       { exact: false },
     );
 
@@ -372,26 +308,4 @@ describe("DataBreachCard", () => {
     const removalTimeLabel = screen.getByText("N/A");
     expect(removalTimeLabel).toBeInTheDocument();
   });
-});
-
-it("returns false for brokers not under maintenance", () => {
-  const result = isDataBrokerUnderMaintenance(
-    createRandomScanResult({
-      broker_status: "active",
-      status: "optout_in_progress",
-    }),
-  );
-
-  expect(result).toBe(false);
-});
-
-it("returns false for brokers under maintenance that are removed", () => {
-  const result = isDataBrokerUnderMaintenance(
-    createRandomScanResult({
-      broker_status: "removal_under_maintenance",
-      status: "removed",
-    }),
-  );
-
-  expect(result).toBe(false);
 });
