@@ -26,10 +26,6 @@ export const SettingsNoDefaultTab: Story = {
     countryCode: "us",
     activeTab: undefined,
     enabledFeatureFlags: ["EditScanProfileDetails"],
-    enabledFeatureFlags: [
-      "EditScanProfileDetails",
-      "SidebarNavigationRedesign",
-    ],
   },
 };
 
@@ -49,11 +45,7 @@ export const SettingsEditManageAccountPlus: Story = {
     hasPlus: true,
     countryCode: "us",
     activeTab: "manage-account",
-    enabledFeatureFlags: [
-      "SidebarNavigationRedesign",
-      "EditScanProfileDetails",
-      "CancellationFlow",
-    ],
+    enabledFeatureFlags: ["EditScanProfileDetails", "CancellationFlow"],
   },
 };
 
@@ -72,9 +64,6 @@ export const SettingsEditNotificationsPlus: Story = {
     countryCode: "us",
     hasPlus: true,
     activeTab: "notifications",
-    enabledFeatureFlags: [
-      "SidebarNavigationRedesign",
-      "EditScanProfileDetails",
-    ],
+    enabledFeatureFlags: ["EditScanProfileDetails"],
   },
 };
