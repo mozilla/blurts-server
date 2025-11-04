@@ -5,7 +5,6 @@
 toolbar-app-picker-trigger-title = יישומונים ושירותים של { -brand-mozilla }
 toolbar-app-picker-product-vpn = { -brand-mozilla-vpn }
 toolbar-app-picker-product-relay = { -brand-relay }
-toolbar-app-picker-product-pocket = { -brand-pocket }
 toolbar-app-picker-product-fx-desktop = ‏{ -brand-firefox } למחשבים שולחניים
 toolbar-app-picker-product-fx-mobile = ‏{ -brand-firefox } לנייד
 toolbar-app-picker-by-mozilla = נוצר על־ידי { -brand-mozilla }

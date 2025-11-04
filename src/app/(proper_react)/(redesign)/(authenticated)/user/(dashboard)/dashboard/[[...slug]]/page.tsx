@@ -140,6 +140,7 @@ export default async function DashboardPage(props: Props) {
         canSubscribeToPremium({
           user: session.user,
           countryCode,
+          enabledFeatureFlags,
         })))
   ) {
     return redirect("/user/welcome");
@@ -153,8 +154,11 @@ export default async function DashboardPage(props: Props) {
   const userIsEligibleForFreeScan = await isEligibleForFreeOnerepScan(
     session.user,
     countryCode,
+    enabledFeatureFlags,
   );
-  const userIsEligibleForPremium = isEligibleForPremium(countryCode);
+  const userIsEligibleForPremium =
+    isEligibleForPremium(countryCode) &&
+    (!enabledFeatureFlags.includes("FreeOnly") || isPremiumUser);
 
   const monthlySubscriptionUrl = getPremiumSubscriptionUrl({
     type: "monthly",

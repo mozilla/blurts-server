@@ -5,10 +5,8 @@
 toolbar-app-picker-trigger-title = { -brand-mozilla }-sovellukset ja -palvelut
 toolbar-app-picker-product-vpn = { -brand-mozilla-vpn }
 toolbar-app-picker-product-relay = { -brand-relay }
-toolbar-app-picker-product-pocket = { -brand-pocket }
 toolbar-app-picker-product-fx-desktop = { -brand-firefox } työpöydälle
 toolbar-app-picker-product-fx-mobile = { -brand-firefox } mobiililaitteille
 toolbar-app-picker-by-mozilla = { -brand-mozilla }lta
-
 # Bento headline
 fx-makes-tech = { -brand-name } on teknologiaa, joka taistelee yksityisyytesi puolesta.

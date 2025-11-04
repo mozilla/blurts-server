@@ -58,7 +58,6 @@ export const featureFlagNames = [
   "LatestScanDateCsatSurvey",
   "AutomaticRemovalCsatSurvey",
   "AdditionalRemovalStatuses",
-  "GA4SubscriptionEvents",
   "DataBrokerRemovalTimeEstimateLabel",
   "DataBrokerRemovalTimeEstimateCsat",
   "LandingPageRedesign",
@@ -68,11 +67,11 @@ export const featureFlagNames = [
   "SidebarNavigationRedesign",
   "EditScanProfileDetails",
   "SubPlat3",
-  "Announcements",
   "DisableOneRepScans",
   "DisableLandingToDashboardRedirect",
   "MaskDataBrokerCount",
   "IncreasedFreeMaxBreachEmails",
+  "FreeOnly",
 ] as const;
 
 export const adminOnlyFlags: FeatureFlagName[] = [

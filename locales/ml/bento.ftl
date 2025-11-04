@@ -4,7 +4,6 @@
 
 toolbar-app-picker-product-vpn = { -brand-mozilla-vpn }
 toolbar-app-picker-product-relay = { -brand-relay }
-toolbar-app-picker-product-pocket = { -brand-pocket }
 toolbar-app-picker-product-fx-desktop = ഉപരിഫലകത്തിനു് { -brand-firefox }
 toolbar-app-picker-product-fx-mobile = മൊബൈലിനു് { -brand-firefox }
 toolbar-app-picker-by-mozilla = { -brand-mozilla } ഉണ്ടാക്കിയവ

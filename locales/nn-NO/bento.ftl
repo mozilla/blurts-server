@@ -5,10 +5,8 @@
 toolbar-app-picker-trigger-title = { -brand-mozilla }-appar og tenenster
 toolbar-app-picker-product-vpn = { -brand-mozilla-vpn }
 toolbar-app-picker-product-relay = { -brand-relay }
-toolbar-app-picker-product-pocket = { -brand-pocket }
 toolbar-app-picker-product-fx-desktop = { -brand-firefox } for datamaskiner
 toolbar-app-picker-product-fx-mobile = { -brand-firefox } for mobil
 toolbar-app-picker-by-mozilla = Laga av { -brand-mozilla }
-
 # Bento headline
 fx-makes-tech = { -brand-name } er teknologi som jobbar for å ta vare på personvernet ditt på nettet.

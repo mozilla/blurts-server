@@ -10,25 +10,6 @@
 -product-short-name = Monitor
 -brand-name = Firefox
 -brand-HIBP = Have I Been Pwned
--brand-fxa =
-    { $case ->
-        [definite-article]
-            { $capitalization ->
-                [upper] Contul Firefox
-                [upper-and-you] Contul tău Firefox
-               *[lower] contul Firefox
-            }
-        [genitive-or-dative]
-            { $capitalization ->
-               *[lower] contului Firefox
-            }
-       *[indefinite-article]
-            { $capitalization ->
-                [upper] Cont Firefox
-               *[lower] cont Firefox
-            }
-    }
--brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
 -brand-firefox = Firefox
 -brand-monitor = Monitor
@@ -63,8 +44,6 @@ compromised-data = Date compromise:
 hibp-attribution = Datele privind încălcările securității datelor sunt furnizate de { $hibp-link }
 show-all = Afișează toate
 sign-out = Deconectare
-# Manage Firefox Account, link to page where account holders can change their account settings.
-manage-fxa = Gestionează { -brand-fxa(case: "definite-article") }.
 # Link title
 preferences = Preferințe
 # Link title

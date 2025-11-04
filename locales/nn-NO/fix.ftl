@@ -139,7 +139,7 @@ security-recommendation-phone-summary =
        *[other] Telefonnummeret ditt vart eksponert i { $num_breaches } datalekkasjar:
     }
 security-recommendation-phone-description = Dessverre kan du ikkje ta det tilbake. Men det finst ting du kan gjere for å verne deg sjølv.
-security-recommendation-phone-step-one = Blokker spamnummer for å unngå uønskte samtalar
+security-recommendation-phone-step-one = Blokker søppelpostnummer for å unngå uønskte samtalar
 security-recommendation-phone-step-two = Ikkje klikk på lenker i SMS-meldingar frå ukjende avsendarar; viss det ser ut til å vere frå ei påliteleg kjelde, ring direkte for å stadfeste
 
 # Email security recommendation
@@ -154,7 +154,7 @@ security-recommendation-email-summary =
 security-recommendation-email-description = Dessverre kan du ikkje løyse dette. Men det finst ting du kan gjere for å verne deg sjølv.
 security-recommendation-email-step-one = Ikkje klikk på lenker i e-postar frå ukjende avsendarar; viss det ser ut til å vere frå ei påliteleg kjelde, ring direkte for å stadfeste
 security-recommendation-email-step-two = Ver merksam på <link_to_info>phishing-svindel</link_to_info>
-security-recommendation-email-step-three = Merk mistenkjelege e-postar som spam og blokker avsendaren
+security-recommendation-email-step-three = Merk mistenkjelege e-postar som søppelpost og blokker avsendaren
 security-recommendation-email-step-four = Bruk <link_to_info>{ -brand-relay } e-postalias</link_to_info> for å verne e-postadressa di i framtida
 
 # IP security recommendation

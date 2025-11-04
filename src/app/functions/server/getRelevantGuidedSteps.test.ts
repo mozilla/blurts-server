@@ -452,6 +452,27 @@ describe("getNextGuidedStep", () => {
       });
     });
 
+    it("does not link to the scan even if the user has not run a scan yet, if the `FreeOnly` flag is enabled", () => {
+      expect(
+        getNextGuidedStep(
+          {
+            countryCode: "us",
+            latestScanData: {
+              scan: null,
+              results: [],
+            },
+            subscriberBreaches: [],
+            user: {
+              email: "arbitrary@example.com",
+            },
+          },
+          ["FreeOnly"],
+        ),
+      ).not.toMatchObject({
+        id: "Scan",
+      });
+    });
+
     it("links to the scan if the user has a scan in progress and not all scan results are resolved", () => {
       expect(
         getNextGuidedStep(

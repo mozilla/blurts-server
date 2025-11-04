@@ -5,7 +5,6 @@
 toolbar-app-picker-trigger-title = { -brand-mozilla } アプリとサービス
 toolbar-app-picker-product-vpn = { -brand-mozilla-vpn }
 toolbar-app-picker-product-relay = { -brand-relay }
-toolbar-app-picker-product-pocket = { -brand-pocket }
 toolbar-app-picker-product-fx-desktop = デスクトップ版 { -brand-firefox }
 toolbar-app-picker-product-fx-mobile = モバイル版 { -brand-firefox }
 toolbar-app-picker-by-mozilla = Made by { -brand-mozilla }

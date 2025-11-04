@@ -1,0 +1,52 @@
+name: "Test Integrations"
+permissions: {}
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test-integrations:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+
+      # Log into Docker Hub to avoid getting rate-limited
+      - name: Login to Docker Hub
+        # Not giving dependabot secrets access, so continue if login fails
+        # and accept rate limit possibility
+        continue-on-error: true
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      # Kick off starting docker compose first, since it can take a bit and can run in the background
+      - name: Start Docker Compose services
+        run: docker compose --env-file=./.env.ci up -d
+
+      # While we wait for docker compose to be healthy we install node and needed packages for this service
+      - name: Set up node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 20.19.x
+
+      - name: Install dependencies
+        run: npm ci
+      
+      # Wait for the docker services we started earlier to all be healthy
+      - name: Wait for services to be healthy
+        run: docker compose --env-file=./.env.ci up --wait
+      
+      - name: Set up postgres
+        run: npm run db:migrate
+        env:
+          DATABASE_URL: postgres://blurts:blurts@localhost:5432/test-blurts
+
+      # Let's run those integration tests!
+      - name: Run service integration tests
+        run: npm run test-integrations
