@@ -83,6 +83,7 @@ export const Steps = (props: {
       {label} {count > 0 && `(${count})`}
     </div>
   );
+
   const dataBrokerStepCompleted = hasCompletedStepSection(props.data, "Scan");
 
   return (
