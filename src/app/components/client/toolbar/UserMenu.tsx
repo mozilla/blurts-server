@@ -21,7 +21,7 @@ import {
 import type { AriaMenuOptions, AriaMenuTriggerProps } from "react-aria";
 import type { MenuTriggerProps, TreeState } from "react-stately";
 import type { Node } from "@react-types/shared";
-import type { ReactNode, Key } from "react";
+import type { ReactNode } from "react";
 
 import { Popover } from "../Popover";
 import { useL10n } from "../../../hooks/l10n";
@@ -61,43 +61,8 @@ export const UserMenu = (props: UserMenuProps) => {
     signout: "signout",
   };
 
-  const handleOnAction = (menuItemKey: Key) => {
-    switch (menuItemKey) {
-      case itemKeys.fxa:
-        recordTelemetry("ctaButton", "click", {
-          button_id: "manage_account_user_menu",
-        });
-        fxaItemRef.current?.click();
-        break;
-      case itemKeys.settings:
-        recordTelemetry("ctaButton", "click", {
-          button_id: "settings_user_menu",
-        });
-        settingsItemRef.current?.click();
-        break;
-      case itemKeys.contact:
-        recordTelemetry("ctaButton", "click", {
-          button_id: "contact_us_user_menu",
-        });
-        contactItemRef.current?.click();
-        break;
-      case itemKeys.help:
-        recordTelemetry("ctaButton", "click", {
-          button_id: "help_and_support_user_menu",
-        });
-        helpItemRef.current?.click();
-        break;
-      case itemKeys.signout:
-        recordTelemetry("ctaButton", "click", {
-          button_id: "sign_out_user_menu",
-        });
-        signOutItemRef.current?.click();
-        break;
-    }
-  };
-
   return (
-    <MenuTrigger user={props.user} onAction={handleOnAction}>
+    <MenuTrigger user={props.user}>
       <Item
         key={itemKeys.fxa}
         textValue={l10n.getString("user-menu-manage-fxa-label")}
@@ -128,6 +93,11 @@ export const UserMenu = (props: UserMenuProps) => {
           href="/user/settings"
           ref={settingsItemRef}
           title={l10n.getString("user-menu-settings-tooltip")}
+          onClick={() =>
+            recordTelemetry("ctaButton", "click", {
+              button_id: "settings_user_menu",
+            })
+          }
         >
           <Image src={SettingsIcon} alt="" height={24} width={24} />
           {l10n.getString("user-menu-settings-label")}
@@ -145,6 +115,11 @@ export const UserMenu = (props: UserMenuProps) => {
             rel="noopener noreferrer"
             target="_blank"
             title={l10n.getString("user-menu-contact-tooltip")}
+            onClick={() =>
+              recordTelemetry("ctaButton", "click", {
+                button_id: "contact_us_user_menu",
+              })
+            }
           >
             <Image src={ContactIcon} alt="" height={24} width={24} />
             {l10n.getString("user-menu-contact-label")}
@@ -162,6 +137,11 @@ export const UserMenu = (props: UserMenuProps) => {
           rel="noopener noreferrer"
           target="_blank"
           title={l10n.getString("user-menu-help-tooltip")}
+          onClick={() =>
+            recordTelemetry("ctaButton", "click", {
+              button_id: "help_and_support_user_menu",
+            })
+          }
         >
           <Image src={HelpIcon} alt="" height={24} width={24} />
           {l10n.getString("user-menu-help-label")}
@@ -175,7 +155,12 @@ export const UserMenu = (props: UserMenuProps) => {
           className={styles.menuItemCta}
           ref={signOutItemRef}
           title={l10n.getString("user-menu-signout-tooltip")}
-          onClick={() => void signOut({ callbackUrl: "/" })}
+          onClick={() => {
+            recordTelemetry("ctaButton", "click", {
+              button_id: "sign_out_user_menu",
+            });
+            void signOut({ callbackUrl: "/" });
+          }}
         >
           <Image src={SignOutIcon} alt="" height={24} width={24} />
           {l10n.getString("user-menu-signout-label")}
