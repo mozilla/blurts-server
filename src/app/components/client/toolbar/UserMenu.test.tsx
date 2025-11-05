@@ -53,40 +53,33 @@ it("checks if the user menu items are interactive", async () => {
   expect(menuItems.length).toBe(4);
 
   // FxA link
-  const fxaItem = screen.getByText("Manage your ⁨Mozilla account⁩");
+  const fxaItem = screen.getByRole("link", {
+    name: /Manage your ⁨Mozilla account⁩/i,
+  });
   expect(fxaItem).toBeInTheDocument();
-  const fxaItemWrapper = fxaItem.parentElement;
-  const clickFxAItemSpy = jest.spyOn(fxaItem, "click");
-  await user.click(fxaItemWrapper as HTMLElement);
-  expect(clickFxAItemSpy).toHaveBeenCalled();
+  await user.click(fxaItem);
+  expect(fxaItem).toHaveAttribute("href");
 
   // Settings link
   await user.click(menuTrigger);
-  const settingsItem = screen.getByText("Settings");
+  const settingsItem = screen.getByRole("link", { name: /Settings/ });
   expect(settingsItem).toBeInTheDocument();
-  const settingsItemWrapper = settingsItem.parentElement;
-  const clickSettingsItemSpy = jest.spyOn(settingsItem, "click");
-  // Prevent the click from actually executing; otherwise we'll get a warning
-  // that JSDOM doesn't know how to mock switching from one page to another:
-  clickSettingsItemSpy.mockImplementationOnce(() => undefined);
-  await user.click(settingsItemWrapper as HTMLElement);
-  expect(clickSettingsItemSpy).toHaveBeenCalled();
+  await user.click(settingsItem);
+  expect(settingsItem).toHaveAttribute("href");
 
   // Help and support link
   await user.click(menuTrigger);
-  const helpAndSupportItem = screen.getByText("Help and support");
+  const helpAndSupportItem = screen.getByRole("link", {
+    name: /Help and support/i,
+  });
   expect(helpAndSupportItem).toBeInTheDocument();
-  const helpAndSupportItemWrapper = helpAndSupportItem.parentElement;
-  const clickHelpAndSupportItemSpy = jest.spyOn(helpAndSupportItem, "click");
-  await user.click(helpAndSupportItemWrapper as HTMLElement);
-  expect(clickHelpAndSupportItemSpy).toHaveBeenCalled();
+  await user.click(helpAndSupportItem);
+  expect(helpAndSupportItem).toHaveAttribute("href");
 
   // Sign out button
   await user.click(menuTrigger);
-  const signOutItem = screen.getByText("Sign out");
+  const signOutItem = screen.getByRole("button", { name: /Sign out/ });
   expect(signOutItem).toBeInTheDocument();
-  const signOutItemWrapper = signOutItem.parentElement;
-  const signOutItemSpy = jest.spyOn(signOutItem, "click");
-  await user.click(signOutItemWrapper as HTMLElement);
-  expect(signOutItemSpy).toHaveBeenCalled();
+  await user.click(signOutItem);
+  expect(signOutItem).toHaveBeenCalledWith({ callbackUrl: "/" });
 });

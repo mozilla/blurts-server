@@ -115,11 +115,11 @@ export const UserMenu = (props: UserMenuProps) => {
             rel="noopener noreferrer"
             target="_blank"
             title={l10n.getString("user-menu-contact-tooltip")}
-            onClick={() =>
+            onMouseDown={() => {
               recordTelemetry("ctaButton", "click", {
                 button_id: "contact_us_user_menu",
-              })
-            }
+              });
+            }}
           >
             <Image src={ContactIcon} alt="" height={24} width={24} />
             {l10n.getString("user-menu-contact-label")}
