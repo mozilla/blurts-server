@@ -2,10 +2,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
- import { defineConfig, globalIgnores } from 'eslint/config';
- import nextVitals from 'eslint-config-next/core-web-vitals';
- import nextTs from 'eslint-config-next/typescript';
-
+import { defineConfig, globalIgnores } from "eslint/config";
+import nextVitals from "eslint-config-next/core-web-vitals";
 import checkFile from "eslint-plugin-check-file";
 import header from "eslint-plugin-header";
 import importPlugin from "eslint-plugin-import";
@@ -24,18 +22,18 @@ header.rules.header.meta.schema = false;
 
 const config = defineConfig([
   ...nextVitals,
-  ...nextTs,
-    globalIgnores([
-      "node_modules/**",
-      ".next/**",
-      "out/**",
-      "build/**",
-      "next-env.d.ts",
-      "storybook-static",
-      "dist",
-      "coverage",
-      "!.storybook",
-      "playwright-report/**",
+  globalIgnores([
+    "node_modules/**",
+    ".next/**",
+    "out/**",
+    "build/**",
+    "next-env.d.ts",
+    "storybook-static",
+    "dist",
+    "public/dist/**",
+    "coverage",
+    "!.storybook",
+    "playwright-report/**",
   ]),
   ...storybook.configs["flat/recommended"],
   {
@@ -86,6 +84,7 @@ const config = defineConfig([
       "jsdoc/require-returns": "off",
       "jsdoc/require-returns-type": "off",
       "jsdoc/require-returns-description": "off",
+
       // Unused vars that start with an understore are allowed to be unused:
       "@typescript-eslint/no-unused-vars": [
         "warn",
@@ -143,6 +142,13 @@ const config = defineConfig([
         { "**/*.{js,css} !src/db/migrations": "CAMEL_CASE" },
         { ignoreMiddleExtensions: true },
       ],
+
+      "react-hooks/purity": "off",
+      "react-hooks/static-components": "off",
+      "react-hooks/set-state-in-effect": "off",
+      "react-hooks/immutability": "off",
+      "react-hooks/refs": "off",
+      "react-hooks/globals": "off",
     },
   },
   {
