@@ -27,6 +27,6 @@ const dummyUserData = {
 export const UserMenuDefault: Story = {
   args: {
     user: dummyUserData,
-    fxaSettingsUrl: "",
+    fxaSettingsUrl: "https://mock-fxa-settings-url.com",
   },
 };

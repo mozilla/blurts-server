@@ -8,6 +8,7 @@ import { userEvent } from "@testing-library/user-event";
 import { composeStory } from "@storybook/react";
 import { axe } from "jest-axe";
 import Meta, { UserMenuDefault } from "./UserMenu.stories";
+import { signOut } from "next-auth/react";
 
 jest.mock("next/navigation", () => ({
   useRouter: jest.fn(),
@@ -15,7 +16,7 @@ jest.mock("next/navigation", () => ({
 }));
 
 jest.mock("next-auth/react", () => ({
-  signOut: jest.fn(),
+  signOut: jest.fn().mockResolvedValue(undefined),
 }));
 
 jest.mock("../../../hooks/useTelemetry");
@@ -41,6 +42,8 @@ it("opens and closes the user menu", async () => {
 });
 
 it("checks if the user menu items are interactive", async () => {
+  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(UserMenuDefault, Meta);
   render(<ComposedDashboard />);
@@ -62,7 +65,7 @@ it("checks if the user menu items are interactive", async () => {
 
   // Settings link
   await user.click(menuTrigger);
-  const settingsItem = screen.getByRole("link", { name: /Settings/ });
+  const settingsItem = screen.getByRole("link", { name: /Settings/i });
   expect(settingsItem).toBeInTheDocument();
   await user.click(settingsItem);
   expect(settingsItem).toHaveAttribute("href");
@@ -78,8 +81,8 @@ it("checks if the user menu items are interactive", async () => {
 
   // Sign out button
   await user.click(menuTrigger);
-  const signOutItem = screen.getByRole("button", { name: /Sign out/ });
+  const signOutItem = screen.getByRole("button", { name: /Sign out/i });
   expect(signOutItem).toBeInTheDocument();
   await user.click(signOutItem);
-  expect(signOutItem).toHaveBeenCalledWith({ callbackUrl: "/" });
+  expect(signOut).toHaveBeenCalledWith({ callbackUrl: "/" });
 });
