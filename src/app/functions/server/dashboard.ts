@@ -6,6 +6,7 @@ import { OnerepScanResultDataBrokerRow } from "knex/types/tables";
 import { BreachDataTypes } from "../universal/breach";
 import { RemovalStatusMap } from "../universal/scanResult";
 import { SubscriberBreach } from "../../../utils/subscriberBreaches";
+import { DataBrokerRemovalStatusMap } from "../universal/dataBroker";
 import { FeatureFlagName } from "../../../db/tables/featureFlags";
 
 export type DataPoints = {
@@ -97,7 +98,7 @@ export const dataClassKeyMap: Record<keyof DataPoints, string> = {
 export function getDashboardSummary(
   scannedResults: OnerepScanResultDataBrokerRow[],
   subscriberBreaches: SubscriberBreach[],
-  _enabledFeatureFlags?: FeatureFlagName[],
+  enabledFeatureFlags?: FeatureFlagName[],
 ): DashboardSummary {
   const summary: DashboardSummary = {
     dataBreachTotalNum: 0,
@@ -206,8 +207,22 @@ export function getDashboardSummary(
           r.status === RemovalStatusMap.WaitingForVerification) &&
         !isManuallyResolved;
 
+      // TODO: MNTOR-3886 - Remove EnableRemovalUnderMaintenanceStep feature flag
+      // If the flag is disabled, include the data.
+      // If the flag is enabled, include the data only if the broker status is not
+      const isRemovalUnderMaintenance =
+        r.broker_status === DataBrokerRemovalStatusMap.RemovalUnderMaintenance;
+
+      // The condition ensures that removal under maintenance is only considered when the flag is enabled.
+      /* c8 ignore next 3 */
+      const countRemovalUnderMaintenanceData =
+        !enabledFeatureFlags?.includes("EnableRemovalUnderMaintenanceStep") ||
+        !isRemovalUnderMaintenance;
+
       if (isInProgress) {
-        summary.dataBrokerInProgressNum++;
+        if (countRemovalUnderMaintenanceData) {
+          summary.dataBrokerInProgressNum++;
+        }
       } else if (isAutoFixed) {
         summary.dataBrokerAutoFixedNum++;
       } else if (isManuallyResolved) {
@@ -229,11 +244,13 @@ export function getDashboardSummary(
       summary.allDataPoints.familyMembers += r.relatives.length;
 
       if (isInProgress) {
-        summary.inProgressDataPoints.emailAddresses += r.emails.length;
-        summary.inProgressDataPoints.phoneNumbers += r.phones.length;
-        summary.inProgressDataPoints.addresses += r.addresses.length;
-        summary.inProgressDataPoints.familyMembers += r.relatives.length;
-        summary.dataBrokerInProgressDataPointsNum += dataPointsIncrement;
+        if (countRemovalUnderMaintenanceData) {
+          summary.inProgressDataPoints.emailAddresses += r.emails.length;
+          summary.inProgressDataPoints.phoneNumbers += r.phones.length;
+          summary.inProgressDataPoints.addresses += r.addresses.length;
+          summary.inProgressDataPoints.familyMembers += r.relatives.length;
+          summary.dataBrokerInProgressDataPointsNum += dataPointsIncrement;
+        }
       }
 
       // for fixed data points: email, phones, addresses, relatives, full name (1)

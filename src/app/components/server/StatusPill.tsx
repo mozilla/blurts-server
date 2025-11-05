@@ -30,6 +30,7 @@ type ExposureProps = { exposure: Exposure };
 export type Props = (DirectTypeProps | ExposureProps) & {
   enabledFeatureFlags?: FeatureFlagName[];
   note?: string;
+  isRemovalUnderMaintenance?: boolean; // is only set in ScanResultCard
 };
 
 // This component just renders HTML without business logic:
@@ -38,7 +39,11 @@ export const StatusPill = (props: Props) => {
 
   const pillType = hasDirectType(props)
     ? props.type
-    : getExposureStatus(props.exposure, props.enabledFeatureFlags ?? []);
+    : getExposureStatus(
+        props.exposure,
+        props.isRemovalUnderMaintenance || false,
+        props.enabledFeatureFlags ?? [],
+      );
 
   return (
     <div className={styles.pillWrapper}>
@@ -48,6 +53,12 @@ export const StatusPill = (props: Props) => {
               exposure: props.exposure,
               pillType,
               l10n,
+              // TODO: MNTOR-3886 - Remove EnableRemovalUnderMaintenanceStep feature flag
+              isDataBrokerUnderMaintenance: props.enabledFeatureFlags?.includes(
+                "EnableRemovalUnderMaintenanceStep",
+              )
+                ? props.isRemovalUnderMaintenance
+                : undefined,
             })
           : getStatusLabel({
               pillType,
@@ -67,6 +78,7 @@ type StatusLabelProps = {
   exposure?: Exposure;
   pillType: string;
   l10n: ExtendedReactLocalization;
+  isDataBrokerUnderMaintenance?: boolean;
 };
 
 const getStatusLabel = (props: StatusLabelProps): string => {
@@ -77,6 +89,10 @@ const getStatusLabel = (props: StatusLabelProps): string => {
 
   if (manuallyRemoved) {
     return props.l10n.getString("status-pill-removed");
+  }
+
+  if (props.isDataBrokerUnderMaintenance) {
+    return props.l10n.getString("status-pill-action-needed");
   }
 
   switch (props.pillType) {
@@ -96,15 +112,24 @@ const getStatusLabel = (props: StatusLabelProps): string => {
 
 export const getExposureStatus = (
   exposure: Exposure,
+  isRemovalUnderMaintenance: boolean,
   enabledFeatureFlags: FeatureFlagName[],
 ): StatusPillType => {
   if (isScanResult(exposure)) {
     const additionalRemovalStatusesEnabled = enabledFeatureFlags.includes(
       "AdditionalRemovalStatuses",
     );
+    // TODO: MNTOR-3886 - Remove EnableRemovalUnderMaintenanceStep feature flag
+    const manualRemovalEnabled = enabledFeatureFlags.includes(
+      "EnableRemovalUnderMaintenanceStep",
+    );
 
     if (exposure.manually_resolved) {
       return "fixed";
+    }
+
+    if (manualRemovalEnabled && isRemovalUnderMaintenance) {
+      return "actionNeeded";
     }
 
     switch (exposure.status) {
