@@ -68,3 +68,25 @@ announcement-bundle-offering-free-july-title = Save 45%. Cut the cost, not the p
 #   $regularYearlyPrice (string) - yearly Monitor premium's price, including currency, e.g. "$130.37"
 announcement-bundle-offering-free-july-description = Automated data removal, browse safely with { -brand-vpn }, and shield your inbox with { -brand-relay }, all for just { $bundleYearlyPrice }/year (Normally: { $regularYearlyPrice })
 announcement-bundle-offering-free-july-cta-label = Save now
+
+# Variables:
+# $emailAddressesCount (string) - number of email addresses allowed for data breach monitoring
+announcement-free-data-breach-monitoring-title = Get free data breach monitoring for up to { $emailAddressesCount } email addresses.
+announcement-free-data-breach-monitoring-description = Help keep your info safe with data breach monitoring. { -brand-monitor } will alert you if your info appears in a data breach.
+announcement-free-data-breach-monitoring-cta-label = Learn more
+
+# Variables:
+# $date (string) - deadline for viewing data broker results
+announcement-view-data-broker-results-title = View your data broker scan results by { $date }
+# Variables:
+# $emailAddressesCount (string) - number of email addresses allowed for data breach monitoring
+announcement-view-data-broker-results-description = After that, you’ll have access to free data breach monitoring for up to { $emailAddressesCount } email addresses with { -brand-monitor }.
+announcement-view-data-broker-results-cta-label = Learn more
+
+# Variables:
+# $date (string) - deadline for viewing data broker results and in-progress removals
+announcement-view-data-broker-results-and-in-progress-removals-title = View your data broker scan results and in-progress removals by { $date }
+# Variables:
+# $emailAddressesCount (string) - number of email addresses allowed for data breach monitoring
+announcement-view-data-broker-results-and-in-progress-removals-description = After that, you’ll have access to free data breach monitoring for up to { $emailAddressesCount } email addresses with { -brand-monitor }.
+announcement-view-data-broker-results-and-in-progress-removals-cta-label = Learn more
