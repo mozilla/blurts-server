@@ -98,7 +98,7 @@ describe("getExperiments", () => {
     expect(fetchMock).not.toHaveBeenCalled();
   });
 
-  it("calls Cirrus V2 when feature flag is enabled with preview param", async () => {
+  it("calls Cirrus V2 with preview param", async () => {
     process.env.NIMBUS_SIDECAR_URL = "https://cirrus.example";
     headersMock.mockResolvedValue(
       new Headers([["x-nimbus-preview-mode", "true"]]),
