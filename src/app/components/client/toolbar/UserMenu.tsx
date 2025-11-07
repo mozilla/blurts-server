@@ -6,7 +6,6 @@
 
 import { useRef } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { Session } from "next-auth";
 import { signOut } from "next-auth/react";
 import { Item, useMenuTriggerState, useTreeState } from "react-stately";
@@ -47,12 +46,6 @@ export const UserMenu = (props: UserMenuProps) => {
   const l10n = useL10n();
   const recordTelemetry = useTelemetry();
 
-  const fxaItemRef = useRef<HTMLAnchorElement>(null);
-  const settingsItemRef = useRef<HTMLAnchorElement>(null);
-  const contactItemRef = useRef<HTMLAnchorElement>(null);
-  const helpItemRef = useRef<HTMLAnchorElement>(null);
-  const signOutItemRef = useRef<HTMLButtonElement>(null);
-
   const itemKeys = {
     fxa: "fxa",
     settings: "settings",
@@ -61,110 +54,90 @@ export const UserMenu = (props: UserMenuProps) => {
     signout: "signout",
   };
 
+  const handleAction = (key: React.Key) => {
+    switch (key) {
+      case itemKeys.fxa:
+        recordTelemetry("ctaButton", "click", {
+          button_id: "manage_account_user_menu",
+        });
+        break;
+      case itemKeys.settings:
+        recordTelemetry("ctaButton", "click", {
+          button_id: "settings_user_menu",
+        });
+        break;
+      case itemKeys.contact:
+        recordTelemetry("ctaButton", "click", {
+          button_id: "contact_us_user_menu",
+        });
+        break;
+      case itemKeys.help:
+        recordTelemetry("ctaButton", "click", {
+          button_id: "help_and_support_user_menu",
+        });
+        break;
+      case itemKeys.signout:
+        recordTelemetry("ctaButton", "click", {
+          button_id: "sign_out_user_menu",
+        });
+        void signOut({ callbackUrl: "/" });
+        break;
+    }
+  };
+
   return (
-    <MenuTrigger user={props.user}>
+    <MenuTrigger user={props.user} onAction={handleAction}>
       <Item
         key={itemKeys.fxa}
         textValue={l10n.getString("user-menu-manage-fxa-label")}
+        href={props.fxaSettingsUrl}
+        rel="noopener noreferrer"
+        target="_blank"
       >
-        <b>{props.user.email}</b>
-        <a
-          className={styles.menuItemCta}
-          href={props.fxaSettingsUrl}
-          ref={fxaItemRef}
-          rel="noopener noreferrer"
-          target="_blank"
-          onClick={() =>
-            recordTelemetry("ctaButton", "click", {
-              button_id: "manage_account_user_menu",
-            })
-          }
-        >
-          {l10n.getString("user-menu-manage-fxa-label")}
-          <Image src={OpenInIcon} alt="" height={24} width={24} />
-        </a>
+        <div className={styles.manageFXAItem}>
+          <b>{props.user.email}</b>
+          <span className={styles.menuItemCta}>
+            {l10n.getString("user-menu-manage-fxa-label")}
+            <Image src={OpenInIcon} alt="" height={24} width={24} />
+          </span>
+        </div>
       </Item>
       <Item
         key={itemKeys.settings}
         textValue={l10n.getString("user-menu-settings-label")}
+        href="/user/settings"
       >
-        <Link
-          className={styles.menuItemCta}
-          href="/user/settings"
-          ref={settingsItemRef}
-          title={l10n.getString("user-menu-settings-tooltip")}
-          onClick={() =>
-            recordTelemetry("ctaButton", "click", {
-              button_id: "settings_user_menu",
-            })
-          }
-        >
-          <Image src={SettingsIcon} alt="" height={24} width={24} />
-          {l10n.getString("user-menu-settings-label")}
-        </Link>
+        <Image src={SettingsIcon} alt="" height={24} width={24} />
+        {l10n.getString("user-menu-settings-label")}
       </Item>
       {hasPremium(props.user) && (
         <Item
           key={itemKeys.contact}
           textValue={l10n.getString("user-menu-contact-label")}
+          href={CONST_URL_PLUS_CONTACT_SUPPORT}
+          rel="noopener noreferrer"
+          target="_blank"
         >
-          <a
-            className={styles.menuItemCta}
-            href={CONST_URL_PLUS_CONTACT_SUPPORT}
-            ref={contactItemRef}
-            rel="noopener noreferrer"
-            target="_blank"
-            title={l10n.getString("user-menu-contact-tooltip")}
-            onMouseDown={() => {
-              recordTelemetry("ctaButton", "click", {
-                button_id: "contact_us_user_menu",
-              });
-            }}
-          >
-            <Image src={ContactIcon} alt="" height={24} width={24} />
-            {l10n.getString("user-menu-contact-label")}
-          </a>
+          <Image src={ContactIcon} alt="" height={24} width={24} />
+          {l10n.getString("user-menu-contact-label")}
         </Item>
       )}
       <Item
         key={itemKeys.help}
         textValue={l10n.getString("user-menu-help-label")}
+        href={CONST_URL_SUMO_MONITOR_SUPPORT}
+        rel="noopener noreferrer"
+        target="_blank"
       >
-        <a
-          className={styles.menuItemCta}
-          href={CONST_URL_SUMO_MONITOR_SUPPORT}
-          ref={helpItemRef}
-          rel="noopener noreferrer"
-          target="_blank"
-          title={l10n.getString("user-menu-help-tooltip")}
-          onClick={() =>
-            recordTelemetry("ctaButton", "click", {
-              button_id: "help_and_support_user_menu",
-            })
-          }
-        >
-          <Image src={HelpIcon} alt="" height={24} width={24} />
-          {l10n.getString("user-menu-help-label")}
-        </a>
+        <Image src={HelpIcon} alt="" height={24} width={24} />
+        {l10n.getString("user-menu-help-label")}
       </Item>
       <Item
         key={itemKeys.signout}
         textValue={l10n.getString("user-menu-signout-label")}
       >
-        <button
-          className={styles.menuItemCta}
-          ref={signOutItemRef}
-          title={l10n.getString("user-menu-signout-tooltip")}
-          onClick={() => {
-            recordTelemetry("ctaButton", "click", {
-              button_id: "sign_out_user_menu",
-            });
-            void signOut({ callbackUrl: "/" });
-          }}
-        >
-          <Image src={SignOutIcon} alt="" height={24} width={24} />
-          {l10n.getString("user-menu-signout-label")}
-        </button>
+        <Image src={SignOutIcon} alt="" height={24} width={24} />
+        {l10n.getString("user-menu-signout-label")}
       </Item>
     </MenuTrigger>
   );
@@ -253,12 +226,42 @@ type MenuItemProps = {
 };
 
 function MenuItem({ item, state }: MenuItemProps) {
-  const ref = useRef(null);
-  const { menuItemProps } = useMenuItem({ key: item.key }, state, ref);
+  const isLink = !!item.props.href;
+  const ref = useRef<HTMLElement>(null);
+
+  const { menuItemProps } = useMenuItem(
+    {
+      key: item.key,
+      ...(isLink ? { elementType: "a" } : {}),
+    },
+    state,
+    ref,
+  );
 
   return (
-    <li {...menuItemProps} ref={ref} className={`${styles.menuItemWrapper}`}>
-      {item.rendered}
+    <li role="none" className={styles.menuItemWrapper}>
+      {isLink ? (
+        <a
+          {...menuItemProps}
+          ref={ref as React.RefObject<HTMLAnchorElement>}
+          href={item.props.href}
+          target={item.props.target}
+          rel={item.props.rel}
+          title={item.props.title}
+          className={styles.menuItemCta}
+        >
+          {item.rendered}
+        </a>
+      ) : (
+        <button
+          {...menuItemProps}
+          ref={ref as React.RefObject<HTMLButtonElement>}
+          title={item.props.title}
+          className={styles.menuItemCta}
+        >
+          {item.rendered}
+        </button>
+      )}
     </li>
   );
 }
