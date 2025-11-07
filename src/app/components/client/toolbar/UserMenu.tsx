@@ -94,54 +94,67 @@ export const UserMenu = (props: UserMenuProps) => {
         rel="noopener noreferrer"
         target="_blank"
       >
-        <div className={styles.manageFXAItem}>
+        <span className={styles.manageFXAItem}>
           <b>{props.user.email}</b>
-          <span className={styles.menuItemCta}>
+          <span>
             {l10n.getString("user-menu-manage-fxa-label")}
             <Image src={OpenInIcon} alt="" height={24} width={24} />
           </span>
-        </div>
+        </span>
       </Item>
       <Item
-        title={l10n.getString("user-menu-settings-tooltip")}
         key={itemKeys.settings}
         textValue={l10n.getString("user-menu-settings-label")}
         href="/user/settings"
       >
-        <Image src={SettingsIcon} alt="" height={24} width={24} />
-        {l10n.getString("user-menu-settings-label")}
+        <span
+          className={styles.menuItemCta}
+          title={l10n.getString("user-menu-settings-tooltip")}
+        >
+          <Image src={SettingsIcon} alt="" height={24} width={24} />
+          {l10n.getString("user-menu-settings-label")}
+        </span>
       </Item>
       {hasPremium(props.user) && (
         <Item
-          title={l10n.getString("user-menu-contact-tooltip")}
           key={itemKeys.contact}
           textValue={l10n.getString("user-menu-contact-label")}
           href={CONST_URL_PLUS_CONTACT_SUPPORT}
           rel="noopener noreferrer"
           target="_blank"
         >
-          <Image src={ContactIcon} alt="" height={24} width={24} />
-          {l10n.getString("user-menu-contact-label")}
+          <span title={l10n.getString("user-menu-contact-tooltip")}>
+            <Image src={ContactIcon} alt="" height={24} width={24} />
+            {l10n.getString("user-menu-contact-label")}
+          </span>
         </Item>
       )}
       <Item
-        title={l10n.getString("user-menu-help-tooltip")}
         key={itemKeys.help}
         textValue={l10n.getString("user-menu-help-label")}
         href={CONST_URL_SUMO_MONITOR_SUPPORT}
         rel="noopener noreferrer"
         target="_blank"
       >
-        <Image src={HelpIcon} alt="" height={24} width={24} />
-        {l10n.getString("user-menu-help-label")}
+        <span
+          className={styles.menuItemCta}
+          title={l10n.getString("user-menu-help-tooltip")}
+        >
+          <Image src={HelpIcon} alt="" height={24} width={24} />
+          {l10n.getString("user-menu-help-label")}
+        </span>
       </Item>
       <Item
-        title={l10n.getString("user-menu-signout-tooltip")}
         key={itemKeys.signout}
         textValue={l10n.getString("user-menu-signout-label")}
       >
-        <Image src={SignOutIcon} alt="" height={24} width={24} />
-        {l10n.getString("user-menu-signout-label")}
+        <span
+          className={styles.menuItemCta}
+          title={l10n.getString("user-menu-signout-tooltip")}
+        >
+          <Image src={SignOutIcon} alt="" height={24} width={24} />
+          {l10n.getString("user-menu-signout-label")}
+        </span>
       </Item>
     </MenuTrigger>
   );
@@ -251,17 +264,17 @@ function MenuItem({ item, state }: MenuItemProps) {
           href={item.props.href}
           target={item.props.target}
           rel={item.props.rel}
-          title={item.props.title}
           className={styles.menuItemCta}
+          aria-describedby={item.props.title}
         >
           {item.rendered}
         </a>
       ) : (
         <button
           {...menuItemProps}
-          ref={ref as React.RefObject<HTMLButtonElement>}
-          title={item.props.title}
           className={styles.menuItemCta}
+          ref={ref as React.RefObject<HTMLButtonElement>}
+          aria-describedby={item.props.title}
         >
           {item.rendered}
         </button>

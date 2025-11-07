@@ -81,13 +81,16 @@ $button-size: 42px;
   margin: 0;
   padding: 0;
   text-decoration: none;
-  display: flex;
-  flex-direction: row;
-  gap: tokens.$spacing-sm;
   align-items: center;
   background: none;
   border: 0;
-  width: 100%;
+  gap: tokens.$spacing-sm;
+
+  span {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
 
   .manageFXAItem {
     display: flex;
