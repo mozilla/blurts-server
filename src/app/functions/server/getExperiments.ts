@@ -12,7 +12,7 @@ import {
 import { ExperimentationId } from "./getExperimentationId";
 import { getEnabledFeatureFlags } from "../../../db/tables/featureFlags";
 import { loadNextHeaders } from "./loadNextHeaders";
-import { CONST_CIRUS_V2_PATHNAME } from "../../../constants";
+import { CONST_CIRRUS_V2_PATHNAME } from "../../../constants";
 
 /**
  * Call the Cirrus sidecar, which returns a list of eligible experiments for the current user.
@@ -43,7 +43,7 @@ export async function getExperiments(params: {
 
   const serverUrl = new URL(process.env.NIMBUS_SIDECAR_URL);
   const flags = await getEnabledFeatureFlags({ isSignedOut: true });
-  serverUrl.pathname += CONST_CIRUS_V2_PATHNAME;
+  serverUrl.pathname += CONST_CIRRUS_V2_PATHNAME;
 
   const nextHeaders = await loadNextHeaders();
   let previewMode = false;
