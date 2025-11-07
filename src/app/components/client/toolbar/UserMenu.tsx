@@ -103,6 +103,7 @@ export const UserMenu = (props: UserMenuProps) => {
         </div>
       </Item>
       <Item
+        title={l10n.getString("user-menu-settings-tooltip")}
         key={itemKeys.settings}
         textValue={l10n.getString("user-menu-settings-label")}
         href="/user/settings"
@@ -112,6 +113,7 @@ export const UserMenu = (props: UserMenuProps) => {
       </Item>
       {hasPremium(props.user) && (
         <Item
+          title={l10n.getString("user-menu-contact-tooltip")}
           key={itemKeys.contact}
           textValue={l10n.getString("user-menu-contact-label")}
           href={CONST_URL_PLUS_CONTACT_SUPPORT}
@@ -123,6 +125,7 @@ export const UserMenu = (props: UserMenuProps) => {
         </Item>
       )}
       <Item
+        title={l10n.getString("user-menu-help-tooltip")}
         key={itemKeys.help}
         textValue={l10n.getString("user-menu-help-label")}
         href={CONST_URL_SUMO_MONITOR_SUPPORT}
@@ -133,6 +136,7 @@ export const UserMenu = (props: UserMenuProps) => {
         {l10n.getString("user-menu-help-label")}
       </Item>
       <Item
+        title={l10n.getString("user-menu-signout-tooltip")}
         key={itemKeys.signout}
         textValue={l10n.getString("user-menu-signout-label")}
       >
