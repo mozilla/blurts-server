@@ -56,7 +56,7 @@ it("checks if the user menu items are interactive", async () => {
   expect(menuItems.length).toBe(4);
 
   // FxA link
-  const fxaItem = screen.getByRole("link", {
+  const fxaItem = screen.getByRole("menuitem", {
     name: /Manage your ⁨Mozilla account⁩/i,
   });
   expect(fxaItem).toBeInTheDocument();
@@ -65,14 +65,14 @@ it("checks if the user menu items are interactive", async () => {
 
   // Settings link
   await user.click(menuTrigger);
-  const settingsItem = screen.getByRole("link", { name: /Settings/i });
+  const settingsItem = screen.getByRole("menuitem", { name: /Settings/i });
   expect(settingsItem).toBeInTheDocument();
   await user.click(settingsItem);
   expect(settingsItem).toHaveAttribute("href");
 
   // Help and support link
   await user.click(menuTrigger);
-  const helpAndSupportItem = screen.getByRole("link", {
+  const helpAndSupportItem = screen.getByRole("menuitem", {
     name: /Help and support/i,
   });
   expect(helpAndSupportItem).toBeInTheDocument();
@@ -81,7 +81,7 @@ it("checks if the user menu items are interactive", async () => {
 
   // Sign out button
   await user.click(menuTrigger);
-  const signOutItem = screen.getByRole("button", { name: /Sign out/i });
+  const signOutItem = screen.getByRole("menuitem", { name: /Sign out/i });
   expect(signOutItem).toBeInTheDocument();
   await user.click(signOutItem);
   expect(signOut).toHaveBeenCalledWith({ callbackUrl: "/" });
