@@ -71,7 +71,10 @@ announcement-bundle-offering-free-july-cta-label = Save now
 
 # Variables:
 # $emailAddressesCount (string) - number of email addresses allowed for data breach monitoring
-announcement-free-data-breach-monitoring-title = Get free data breach monitoring for up to { $emailAddressesCount } email addresses.
+announcement-free-data-breach-monitoring-title =
+  { $emailAddressesCount ->
+      *[other] Get free data breach monitoring for up to { $emailAddressesCount } email addresses.
+  }
 announcement-free-data-breach-monitoring-description = Help keep your info safe with data breach monitoring. { -brand-monitor } will alert you if your info appears in a data breach.
 announcement-free-data-breach-monitoring-cta-label = Learn more
 
@@ -80,7 +83,10 @@ announcement-free-data-breach-monitoring-cta-label = Learn more
 announcement-view-data-broker-results-title = View your data broker scan results by { $date }
 # Variables:
 # $emailAddressesCount (string) - number of email addresses allowed for data breach monitoring
-announcement-view-data-broker-results-description = After that, you’ll have access to free data breach monitoring for up to { $emailAddressesCount } email addresses with { -brand-monitor }.
+announcement-view-data-broker-results-description =
+  { $emailAddressesCount ->
+      *[other] After that, you’ll have access to free data breach monitoring for up to { $emailAddressesCount } email addresses with { -brand-monitor }.
+  }
 announcement-view-data-broker-results-cta-label = Learn more
 
 # Variables:
@@ -88,5 +94,8 @@ announcement-view-data-broker-results-cta-label = Learn more
 announcement-view-data-broker-results-and-in-progress-removals-title = View your data broker scan results and in-progress removals by { $date }
 # Variables:
 # $emailAddressesCount (string) - number of email addresses allowed for data breach monitoring
-announcement-view-data-broker-results-and-in-progress-removals-description = After that, you’ll have access to free data breach monitoring for up to { $emailAddressesCount } email addresses with { -brand-monitor }.
+announcement-view-data-broker-results-and-in-progress-removals-description =
+  { $emailAddressesCount ->
+      *[other] After that, you’ll have access to free data breach monitoring for up to { $emailAddressesCount } email addresses with { -brand-monitor }.
+  }
 announcement-view-data-broker-results-and-in-progress-removals-cta-label = Learn more
