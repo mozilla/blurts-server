@@ -256,7 +256,7 @@ function MenuItem({ item, state }: MenuItemProps) {
   );
 
   return (
-    <li role="none" className={styles.menuItemWrapper}>
+    <li className={styles.menuItemWrapper}>
       {isLink ? (
         <a
           {...menuItemProps}
@@ -265,7 +265,6 @@ function MenuItem({ item, state }: MenuItemProps) {
           target={item.props.target}
           rel={item.props.rel}
           className={styles.menuItemCta}
-          aria-describedby={item.props.title}
         >
           {item.rendered}
         </a>
@@ -274,7 +273,6 @@ function MenuItem({ item, state }: MenuItemProps) {
           {...menuItemProps}
           className={styles.menuItemCta}
           ref={ref as React.RefObject<HTMLButtonElement>}
-          aria-describedby={item.props.title}
         >
           {item.rendered}
         </button>
