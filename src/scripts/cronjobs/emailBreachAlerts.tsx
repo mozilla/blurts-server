@@ -283,17 +283,12 @@ export async function poll(
             const assumedCountryCode = getSignupLocaleCountry(recipient);
 
             const upSell =
-              // double eq checks both null and undefined
-              // eslint-disable-next-line eqeqeq
-              recipient.fxa_uid != null &&
+              recipient.fxa_uid &&
               isEligibleForPremium(assumedCountryCode) &&
               !hasPremium(recipient);
             let dataSummary: DashboardSummary | undefined = undefined;
             if (upSell) {
-              // The unit tests are currently too complex for me to write
-              // a proper test for this, and I need to understand the code
-              // better to be able to refactor it to make it more amenable
-              // to simple tests. Hence, I don't have a test for this yet:
+              // https://mozilla-hub.atlassian.net/browse/MNTOR-5108
               /* c8 ignore next 3 */
               if (typeof recipient.onerep_profile_id === "number") {
                 await refreshStoredScanResults(recipient.onerep_profile_id);
