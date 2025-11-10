@@ -42,6 +42,9 @@ it("opens and closes the user menu", async () => {
 });
 
 it("checks if the user menu items are interactive", async () => {
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
   jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
 
   const user = userEvent.setup();
