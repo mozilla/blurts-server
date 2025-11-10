@@ -284,25 +284,28 @@ export async function poll(
              */
             const assumedCountryCode = getSignupLocaleCountry(recipient);
 
-            // The unit tests are currently too complex for me to write
-            // a proper test for this, and I need to understand the code
-            // better to be able to refactor it to make it more amenable
-            // to simple tests. Hence, I don't have a test for this yet:
-            /* c8 ignore next 3 */
-            if (typeof recipient.onerep_profile_id === "number") {
-              await refreshStoredScanResults(recipient.onerep_profile_id);
+            const upSell =
+              recipient.fxa_uid &&
+              isEligibleForPremium(assumedCountryCode) &&
+              !hasPremium(recipient);
+            let dataSummary: DashboardSummary | undefined = undefined;
+            if (upSell) {
+              // https://mozilla-hub.atlassian.net/browse/MNTOR-5108
+              /* c8 ignore next 3 */
+              if (typeof recipient.onerep_profile_id === "number") {
+                await refreshStoredScanResults(recipient.onerep_profile_id);
+
+                // We currently need the data summary for the `<DataPointCount>` in
+                // `<BreachAlertEmail>`, which is only shown for free users who are
+                // eligible for Plus (i.e. are in the US) who have run a scan.
+                // Since it's somewhat expensive to run the queries to fetch this data,
+                // we only do it for those users.
+                dataSummary = await getDataSummary(
+                  recipient,
+                  assumedCountryCode,
+                );
+              }
             }
-
-            const dataSummary: DashboardSummary | undefined =
-              // We currently need the data summary for the `<DataPointCount>` in
-              // `<BreachAlertEmail>`, which is only shown for free users who are
-              // eligible for Plus (i.e. are in the US) who have run a scan.
-              // Since it's somewhat expensive to run the queries to fetch this data,
-              // we only do it for those users.
-              isEligibleForPremium(assumedCountryCode) && !hasPremium(recipient)
-                ? await getDataSummary(recipient, assumedCountryCode)
-                : undefined;
-
             const subject = l10n.getString("email-breach-alert-all-subject");
             const experimentationId =
               await getExperimentationIdFromSubscriber(recipient);
