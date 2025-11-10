@@ -260,20 +260,14 @@ function MenuItem({ item, state }: MenuItemProps) {
       {isLink ? (
         <a
           {...menuItemProps}
-          ref={ref as React.RefObject<HTMLAnchorElement>}
           href={item.props.href}
           target={item.props.target}
-          rel={item.props.rel}
           className={styles.menuItemCta}
         >
           {item.rendered}
         </a>
       ) : (
-        <button
-          {...menuItemProps}
-          className={styles.menuItemCta}
-          ref={ref as React.RefObject<HTMLButtonElement>}
-        >
+        <button {...menuItemProps} className={styles.menuItemCta}>
           {item.rendered}
         </button>
       )}
