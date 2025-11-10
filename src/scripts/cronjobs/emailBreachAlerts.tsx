@@ -52,6 +52,8 @@ Sentry.init({
   tracesSampleRate: 1.0,
 });
 
+Sentry.setTag("job", "emailBreachAlerts");
+
 const captureCheckIn =
   typeof Sentry.captureCheckIn === "function"
     ? Sentry.captureCheckIn.bind(Sentry)
