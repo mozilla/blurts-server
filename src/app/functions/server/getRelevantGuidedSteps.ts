@@ -20,12 +20,12 @@ export type StepDeterminationData = {
 //       guided through the pages.
 export const stepLinks = [
   {
-    href: "/user/dashboard/fix/data-broker-profiles/removal-under-maintenance",
-    id: "DataBrokerManualRemoval",
-  },
-  {
     href: "/user/dashboard/fix/data-broker-profiles/start-free-scan",
     id: "Scan",
+  },
+  {
+    href: "/user/dashboard/fix/data-broker-profiles/manual-remove",
+    id: "DataBrokerManualRemoval",
   },
   {
     href: "/user/dashboard/fix/high-risk-data-breaches/social-security-number",
@@ -151,6 +151,14 @@ export function isEligibleForStep(
     );
   }
 
+  if (stepId === "DataBrokerManualRemoval") {
+    return (
+      Array.isArray(data.latestScanData?.results) &&
+      data.latestScanData.results.length > 0 &&
+      (enabledFeatureFlags?.includes("FreeOnly") || !hasPremium(data.user))
+    );
+  }
+
   if (stepId === "HighRiskSsn") {
     // Our social security number-related mitigations aren't possible outside of the US:
     return data.countryCode === "us";
@@ -196,14 +204,17 @@ export function hasCompletedStepSection(
   data: StepDeterminationData,
   section:
     | "Scan"
+    | "DataBrokerManualRemoval"
     | "HighRisk"
     | "LeakedPasswords"
-    | "SecurityTips"
-    | "DataBrokerManualRemoval",
+    | "SecurityTips",
   _enabledFeatureFlags?: FeatureFlagName[],
 ): boolean {
   if (section === "Scan") {
-    return hasCompletedStep(data, "Scan");
+    return (
+      hasCompletedStep(data, "Scan") &&
+      hasCompletedStep(data, "DataBrokerManualRemoval")
+    );
   }
   if (section === "HighRisk") {
     return (
@@ -242,6 +253,10 @@ export function hasCompletedStep(
     const hasRunScan =
       typeof data.latestScanData?.scan === "object" &&
       data.latestScanData?.scan !== null;
+    return hasRunScan;
+  }
+
+  if (stepId === "DataBrokerManualRemoval") {
     const scanStatus = data.latestScanData?.scan?.onerep_scan_status;
     const hasResolvedAllScanResults =
       (scanStatus === "finished" || scanStatus === "in_progress") &&
@@ -252,7 +267,7 @@ export function hasCompletedStep(
         (scanResult) =>
           scanResult.manually_resolved || scanResult.status !== "new",
       );
-    return hasRunScan && hasResolvedAllScanResults;
+    return hasResolvedAllScanResults;
   }
 
   function isBreachResolved(

@@ -473,7 +473,7 @@ describe("getNextGuidedStep", () => {
       });
     });
 
-    it("links to the scan if the user has a scan in progress and not all scan results are resolved", () => {
+    it("links to the manual resolution step if the user has a scan in progress and not all scan results are resolved", () => {
       expect(
         getNextGuidedStep(
           {
@@ -499,14 +499,14 @@ describe("getNextGuidedStep", () => {
           [],
         ),
       ).toStrictEqual({
-        href: "/user/dashboard/fix/data-broker-profiles/start-free-scan",
-        id: "Scan",
+        href: "/user/dashboard/fix/data-broker-profiles/manual-remove",
+        id: "DataBrokerManualRemoval",
         completed: false,
         eligible: true,
       });
     });
 
-    it("links to the scan if the user has a completed scan and not all scan results are resolved", () => {
+    it("links to the manual resolution step if the user has a completed scan and not all scan results are resolved", () => {
       expect(
         getNextGuidedStep(
           {
@@ -531,8 +531,8 @@ describe("getNextGuidedStep", () => {
           [],
         ),
       ).toStrictEqual({
-        href: "/user/dashboard/fix/data-broker-profiles/start-free-scan",
-        id: "Scan",
+        href: "/user/dashboard/fix/data-broker-profiles/manual-remove",
+        id: "DataBrokerManualRemoval",
         completed: false,
         eligible: true,
       });
@@ -674,7 +674,7 @@ describe("getNextGuidedStep", () => {
       ).toBe("Done");
     });
 
-    it("returns false when data brokers that are removal under maintenance are resolved", () => {
+    it("returns true when data brokers that are removal under maintenance are resolved", () => {
       expect(
         hasCompletedStep(
           {
@@ -698,7 +698,7 @@ describe("getNextGuidedStep", () => {
           "DataBrokerManualRemoval",
           [],
         ),
-      ).toBe(false);
+      ).toBe(true);
     });
 
     it("links to the Credit Card step if the user's credit card has been breached", () => {
