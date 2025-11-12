@@ -58,6 +58,8 @@ import { ExperimentData } from "../../../../../../../telemetry/generated/nimbus/
 import { DataBrokerRemovalTime } from "../../../../../../functions/server/getDataBrokerRemovalTimeEstimates";
 import { UserAnnouncementWithDetails } from "../../../../../../../db/tables/user_announcements";
 import { parseIso8601Datetime } from "../../../../../../../utils/parse";
+import { PlusShutdownBanner } from "../../../../../../components/client/PlusShutdownBanner";
+import { ShutdownState } from "../../../../../../functions/server/getPlusShutdownState";
 
 export type TabType = "action-needed" | "fixed";
 
@@ -67,12 +69,14 @@ export type Props = {
   user: Session["user"];
   userBreaches: SubscriberBreach[];
   userScanData: LatestOnerepScanData;
+  countryCode: string;
   isEligibleForFreeScan: boolean;
   isEligibleForPremium: boolean;
   monthlySubscriptionUrl: string;
   subscriptionBillingAmount: {
     monthly: number;
   };
+  shutdownState: ShutdownState;
   fxaSettingsUrl: string;
   scanCount: number;
   isNewUser: boolean;
@@ -509,6 +513,11 @@ export const View = (props: Props) => {
           selectedKey={activeTab}
         />
       </Toolbar>
+      <PlusShutdownBanner
+        countryCode={props.countryCode}
+        shutdownState={props.shutdownState}
+        enabledFeatureFlags={props.enabledFeatureFlags}
+      />
       <CsatSurvey
         user={props.user}
         activeTab={activeTab}

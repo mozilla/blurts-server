@@ -58,6 +58,16 @@ export function UpsellLinkButton(
 
   const showWaitlist = props.enabledFeatureFlags.includes("DisableOneRepScans");
 
+  // No automated test since this is set to be removed again shortly:
+  /* c8 ignore next 7 */
+  if (props.enabledFeatureFlags.includes("FreeOnly")) {
+    return (
+      <>
+        <span className={props.className}>{props.children}</span>
+      </>
+    );
+  }
+
   return (
     <>
       <TelemetryButton
