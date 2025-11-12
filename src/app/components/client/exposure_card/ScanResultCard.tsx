@@ -148,7 +148,10 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
           },
         );
       case "new":
-        if (props.isOnManualRemovePage) {
+        if (
+          props.isOnManualRemovePage &&
+          !props.enabledFeatureFlags.includes("FreeOnly")
+        ) {
           return l10n.getFragment(
             "exposure-card-description-info-for-sale-action-needed-manual-fix-page",
             {
