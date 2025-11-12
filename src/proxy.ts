@@ -7,7 +7,7 @@ import type { NextRequest } from "next/server";
 import nextConfig from "../next.config";
 
 // This function can be marked `async` if using `await` inside
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const { nonce, cspHeader } = generateCspData();
 
   const requestHeaders = new Headers(request.headers);
