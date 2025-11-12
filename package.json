@@ -174,7 +174,7 @@
     "stylelint-config-recommended-scss": "^16.0.2",
     "stylelint-scss": "^6.11.1",
     "tsx": "^4.20.5",
-    "typescript": "^5.9.2",
+    "typescript": "^5.9.3",
     "yaml": "^2.8.0"
   },
   "overrides": {
