@@ -14,7 +14,6 @@ export const defaultLocalForcedFeatureFlags: FeatureFlagName[] = [
   "AdditionalRemovalStatuses",
   "DataBrokerRemovalTimeEstimateLabel",
   "LandingPageRedesign",
-  "CirrusV2",
   "DataBrokerRemovalAttempts",
   "EditScanProfileDetails",
   "SubPlat3",

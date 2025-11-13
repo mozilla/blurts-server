@@ -30,6 +30,7 @@ import {
   getAcceptLangHeaderInServerComponents,
   getL10n,
 } from "../../../../../functions/l10n/serverComponents";
+import { getEnabledFeatureFlags } from "../../../../../../db/tables/featureFlags";
 
 export interface WelcomeScanBody {
   success: boolean;
@@ -63,7 +64,15 @@ export async function POST(
     countryCode,
     locale: getLocale(getL10n(await getAcceptLangHeaderInServerComponents())),
   });
-  const eligible = await isEligibleForFreeOnerepScan(session.user, countryCode);
+  const enabledFeatureFlags = await getEnabledFeatureFlags({
+    isSignedOut: false,
+    email: session.user.email,
+  });
+  const eligible = await isEligibleForFreeOnerepScan(
+    session.user,
+    countryCode,
+    enabledFeatureFlags,
+  );
   if (!eligible) {
     logger.warn("scan_created_warn", {
       message: "User is not eligible for feature",

@@ -62,7 +62,6 @@ export const featureFlagNames = [
   "DataBrokerRemovalTimeEstimateCsat",
   "LandingPageRedesign",
   "EnableRemovalUnderMaintenanceStep",
-  "CirrusV2",
   "DataBrokerRemovalAttempts",
   "CustomDataBrokers",
   "EditScanProfileDetails",
@@ -71,6 +70,8 @@ export const featureFlagNames = [
   "DisableLandingToDashboardRedirect",
   "MaskDataBrokerCount",
   "IncreasedFreeMaxBreachEmails",
+  "FreeOnly",
+  "ShutdownBanner",
 ] as const;
 
 export const adminOnlyFlags: FeatureFlagName[] = [

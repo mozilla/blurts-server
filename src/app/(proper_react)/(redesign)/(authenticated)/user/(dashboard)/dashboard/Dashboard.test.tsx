@@ -198,7 +198,7 @@ it("counts how often people click the 'Contact us' link", async () => {
   })[0];
   await user.click(userMenuTrigger);
 
-  const contactUsEntry = screen.getByRole("menuitem", { name: "Contact us" });
+  const contactUsEntry = screen.getByRole("menuitem", { name: /Contact us/i });
   await user.click(contactUsEntry);
 
   expect(mockedRecord).toHaveBeenCalledWith(

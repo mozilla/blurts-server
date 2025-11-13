@@ -16,6 +16,7 @@ import { logger } from "./logging";
 import { hasPremium } from "../universal/user.ts";
 import { OnerepProfileAddress } from "knex/types/tables";
 import { isUsingMockONEREPEndpoint } from "../universal/mock.ts";
+import type { FeatureFlagName } from "../../../db/tables/featureFlags";
 
 export const monthlyScansQuota = parseInt(
   (process.env.MONTHLY_SCANS_QUOTA as string) ?? "0",
@@ -460,9 +461,15 @@ async function listScanResults(
 export async function isEligibleForFreeScan(
   user: Session["user"],
   countryCode: string,
+  enabledFeatureFlags: FeatureFlagName[],
 ) {
-  if (countryCode !== "us") {
-    return false;
+  if (!hasPremium(user)) {
+    if (countryCode !== "us") {
+      return false;
+    }
+    if (enabledFeatureFlags.includes("FreeOnly")) {
+      return false;
+    }
   }
 
   if (!user?.subscriber?.id) {

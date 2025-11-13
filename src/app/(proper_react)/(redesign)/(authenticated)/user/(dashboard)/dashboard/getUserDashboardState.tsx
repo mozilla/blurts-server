@@ -201,7 +201,7 @@ export const getUserDashboardState = (
      * - Scan: Unresolved and removal not started
      */
     isMatchingContent(contentProps, {
-      isRelevantGuidedStep: relevantGuidedStep.id === "Scan",
+      isRelevantGuidedStep: relevantGuidedStep.id === "DataBrokerManualRemoval",
       hasExposures: true,
       hasUnresolvedBreaches: false,
       hasUnresolvedBrokers: true,
@@ -217,7 +217,7 @@ export const getUserDashboardState = (
      * - Scan: Unresolved
      */
     isMatchingContent(contentProps, {
-      isRelevantGuidedStep: relevantGuidedStep.id === "Scan",
+      isRelevantGuidedStep: relevantGuidedStep.id === "DataBrokerManualRemoval",
       hasExposures: true,
       hasUnresolvedBreaches: true,
       hasUnresolvedBrokers: false,
@@ -296,7 +296,9 @@ export const getUserDashboardState = (
      * - Scan: Unresolved
      */
     isMatchingContent(contentProps, {
-      isRelevantGuidedStep: relevantGuidedStep.id === "Scan",
+      isRelevantGuidedStep:
+        relevantGuidedStep.id === "Scan" ||
+        relevantGuidedStep.id === "DataBrokerManualRemoval",
       hasExposures: true,
       hasUnresolvedBreaches: true,
       hasUnresolvedBrokers: true,
@@ -319,6 +321,38 @@ export const getUserDashboardState = (
       isEligibleForFreeScan: false,
       isEligibleForPremium: false,
       isPremiumUser: true,
+      scanInProgress: false,
+    }) ||
+    /**
+     * - US or non-US user
+     * - Non-Premium
+     * - Unresolved breaches
+     * - Scan: Unresolved
+     */
+    isMatchingContent(contentProps, {
+      isRelevantGuidedStep: relevantGuidedStep.id === "DataBrokerManualRemoval",
+      hasExposures: true,
+      hasUnresolvedBreaches: true,
+      hasUnresolvedBrokers: true,
+      isEligibleForFreeScan: false,
+      isEligibleForPremium: false,
+      isPremiumUser: false,
+      scanInProgress: false,
+    }) ||
+    /**
+     * - US or non-US user
+     * - Non-Premium
+     * - Resolved breaches
+     * - Scan: Unresolved
+     */
+    isMatchingContent(contentProps, {
+      isRelevantGuidedStep: relevantGuidedStep.id === "DataBrokerManualRemoval",
+      hasExposures: true,
+      hasUnresolvedBreaches: false,
+      hasUnresolvedBrokers: true,
+      isEligibleForFreeScan: false,
+      isEligibleForPremium: false,
+      isPremiumUser: false,
       scanInProgress: false,
     }) ||
     /**

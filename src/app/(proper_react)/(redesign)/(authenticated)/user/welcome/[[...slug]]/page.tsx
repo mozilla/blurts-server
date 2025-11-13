@@ -68,6 +68,7 @@ export default async function Onboarding(props: Props) {
   const userIsEligible = await isEligibleForFreeOnerepScan(
     session.user,
     countryCode,
+    enabledFeatureFlags,
   );
 
   if (!userIsEligible) {

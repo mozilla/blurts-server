@@ -1,0 +1,53 @@
+@use "../../tokens";
+
+.wrapper {
+  align-items: flex-start;
+  background: linear-gradient(
+    90deg,
+    tokens.$color-purple-90 50%,
+    tokens.$color-purple-60
+  );
+  color: tokens.$color-white;
+  display: flex;
+  padding: tokens.$layout-sm tokens.$layout-xl;
+  position: relative;
+  flex-direction: column;
+  gap: tokens.$spacing-lg;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: tokens.$spacing-sm;
+  color: tokens.$color-white;
+
+  h2 {
+    font: tokens.$text-title-2xs;
+    font-weight: 500;
+  }
+}
+
+.buttons {
+  align-items: center;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  gap: tokens.$spacing-sm;
+
+  & > button.button[type="button"] {
+    color: tokens.$color-white;
+  }
+}
+
+.closeButton {
+  background-color: transparent;
+  border-radius: tokens.$border-radius-sm;
+  border-style: none;
+  color: tokens.$color-white;
+  cursor: pointer;
+  padding: tokens.$spacing-md;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
