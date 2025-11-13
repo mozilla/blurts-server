@@ -88,7 +88,7 @@ function SettingsContent(props: SettingsProps) {
         </header>
       )}
       <div
-        className={`${styles.content} ${props.enabledFeatureFlags.includes("EditScanProfileDetails") && (activeTab === "edit-info" || activeTab === "edit-profile") ? "" : styles.isCard}`}
+        className={`${styles.content} ${activeTab === "edit-info" || activeTab === "edit-profile" ? "" : styles.isCard}`}
       >
         <SettingsPanel
           activeTab={activeTab}

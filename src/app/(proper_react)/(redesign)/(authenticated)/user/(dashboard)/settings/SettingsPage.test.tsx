@@ -236,7 +236,6 @@ describe("Settings page redesign", () => {
         <ComposedStory
           enabledFeatureFlags={[
             "SidebarNavigationRedesign",
-            "EditScanProfileDetails",
             "IncreasedFreeMaxBreachEmails",
           ]}
         />,
@@ -475,12 +474,7 @@ describe("Settings page redesign", () => {
         SettingsEditYourInfoMeta,
       );
       render(
-        <ComposeStory
-          enabledFeatureFlags={[
-            "SidebarNavigationRedesign",
-            "EditScanProfileDetails",
-          ]}
-        />,
+        <ComposeStory enabledFeatureFlags={["SidebarNavigationRedesign"]} />,
       );
 
       const upsellLink = screen.getByRole("link", {

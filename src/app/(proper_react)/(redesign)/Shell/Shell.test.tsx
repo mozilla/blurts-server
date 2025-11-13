@@ -26,16 +26,9 @@ describe("ShellAuthenticatedRedesign", () => {
     expect(await axe(container)).toHaveNoViolations();
   }, 10_000);
 
-  it("shows the “Update scan info” navbar item when the flag `EditScanProfileDetails` is enabled", async () => {
+  it("shows the “Update scan info” navbar item", async () => {
     const ShellComponent = composeStory(ShellAuthenticatedRedesign, Meta);
-    render(
-      <ShellComponent
-        enabledFeatureFlags={[
-          "SidebarNavigationRedesign",
-          "EditScanProfileDetails",
-        ]}
-      />,
-    );
+    render(<ShellComponent />);
 
     // Note: there are two user menus, for both small and wide screens:
     const updateScanInfoItems = screen.getAllByRole("link", {
@@ -48,24 +41,5 @@ describe("ShellAuthenticatedRedesign", () => {
       name: "Edit your info",
     });
     expect(editYourInfoItems).toHaveLength(0);
-  });
-
-  it("shows the “Edit your info” navbar item when the flag `EditScanProfileDetails` is not enabled", async () => {
-    const ShellComponent = composeStory(ShellAuthenticatedRedesign, Meta);
-    render(
-      <ShellComponent enabledFeatureFlags={["SidebarNavigationRedesign"]} />,
-    );
-
-    // Note: there are two user menus, for both small and wide screens:
-    const editYourInfoItems = screen.getAllByRole("link", {
-      name: "Edit your info",
-    });
-    expect(editYourInfoItems[0]).toBeInTheDocument();
-    expect(editYourInfoItems[1]).toBeInTheDocument();
-
-    const updateScanInfoItems = screen.queryAllByRole("link", {
-      name: "Update scan info",
-    });
-    expect(updateScanInfoItems).toHaveLength(0);
   });
 });

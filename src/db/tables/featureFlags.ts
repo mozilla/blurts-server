@@ -65,7 +65,6 @@ export const featureFlagNames = [
   "DataBrokerRemovalAttempts",
   "CustomDataBrokers",
   "SidebarNavigationRedesign",
-  "EditScanProfileDetails",
   "SubPlat3",
   "DisableOneRepScans",
   "DisableLandingToDashboardRedirect",

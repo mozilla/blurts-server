@@ -9,7 +9,6 @@ import { useSession } from "next-auth/react";
 import { OnerepScanRow } from "knex/types/tables";
 import { Button } from "../../../../../components/client/Button";
 import { InputField } from "../../../../../components/client/InputField";
-import { FeatureFlagName } from "../../../../../../db/tables/featureFlags";
 import { DataTable, getSha1 } from "../dev/UserAdmin";
 import styles from "../dev/UserAdmin.module.scss";
 import {
@@ -18,11 +17,7 @@ import {
   triggerManualProfileScan,
 } from "./actions";
 
-export const UserAdminProduction = ({
-  enabledFeatureFlags,
-}: {
-  enabledFeatureFlags: FeatureFlagName[];
-}) => {
+export const UserAdminProduction = () => {
   const session = useSession();
   const [isLoading, setIsLoading] = useState(false);
   const [emailInput, setEmailInput] = useState("");
@@ -45,10 +40,6 @@ export const UserAdminProduction = ({
   };
 
   const triggerScanAction = async () => {
-    if (!enabledFeatureFlags.includes("EditScanProfileDetails")) {
-      return;
-    }
-
     try {
       if (onerepProfileId) {
         await triggerManualProfileScan(onerepProfileId);
