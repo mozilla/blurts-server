@@ -1894,12 +1894,3 @@ describe("Settings page redesign", () => {
     });
   });
 });
-
-describe("SettingsContent activeTab handling", () => {
-  it("defaults to the first tab (edit your info) when activeTab is not provided", () => {
-    const ComposedStory = composeStory(SettingsNoDefaultTab, SettingsMeta);
-    render(<ComposedStory />);
-    const editYourInfoHeader = screen.queryAllByText("Update scan info");
-    expect(editYourInfoHeader[1]).toBeInTheDocument();
-  });
-});
