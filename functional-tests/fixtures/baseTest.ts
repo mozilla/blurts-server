@@ -16,7 +16,6 @@ export const defaultLocalForcedFeatureFlags: FeatureFlagName[] = [
   "LandingPageRedesign",
   "DataBrokerRemovalAttempts",
   "SidebarNavigationRedesign",
-  "EditScanProfileDetails",
   "SubPlat3",
 ];
 
