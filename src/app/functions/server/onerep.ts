@@ -463,11 +463,13 @@ export async function isEligibleForFreeScan(
   countryCode: string,
   enabledFeatureFlags: FeatureFlagName[],
 ) {
-  if (countryCode !== "us") {
-    return false;
-  }
-  if (enabledFeatureFlags.includes("FreeOnly") && !hasPremium(user)) {
-    return false;
+  if (!hasPremium(user)) {
+    if (countryCode !== "us") {
+      return false;
+    }
+    if (enabledFeatureFlags.includes("FreeOnly")) {
+      return false;
+    }
   }
 
   if (!user?.subscriber?.id) {
