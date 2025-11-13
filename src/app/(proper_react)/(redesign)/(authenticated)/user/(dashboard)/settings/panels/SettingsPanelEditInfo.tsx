@@ -15,7 +15,7 @@ import {
 } from "../../../../../../../../constants";
 import { SubscriberEmailPreferencesOutput } from "../../../../../../../../db/tables/subscriber_email_preferences";
 import { useL10n } from "../../../../../../../hooks/l10n";
-import { EmailAddressAdderRedesign } from "../EmailAddressAdderRedesign";
+import { EmailAddressAdder } from "../EmailAddressAdder";
 import { Session } from "next-auth";
 import { SanitizedEmailAddressRow } from "../../../../../../../functions/server/sanitize";
 import {
@@ -254,7 +254,7 @@ function MonitoredEmailAddressesSection(props: SettingsPanelEditInfoProps) {
       </ul>
       <span className={styles.addButton}>
         {hasMaxEmailAddresses && (
-          <EmailAddressAdderRedesign
+          <EmailAddressAdder
             maxNumEmailAddresses={maxNumEmailAddresses}
             onAddEmail={props.actions.onAddEmail}
           />
