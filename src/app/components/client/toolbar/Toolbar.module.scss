@@ -5,11 +5,8 @@
   border-bottom: 1px solid tokens.$color-grey-20;
   display: flex;
   align-items: center;
-
-  &.hasBackground {
-    background: tokens.$color-white;
-    box-shadow: tokens.$box-shadow-xs;
-  }
+  background: tokens.$color-white;
+  box-shadow: tokens.$box-shadow-xs;
 
   .start {
     flex: 1 0 auto;

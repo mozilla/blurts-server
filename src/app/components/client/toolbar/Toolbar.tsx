@@ -31,7 +31,7 @@ export type Props = {
 
 export const Toolbar = (props: Props) => {
   return (
-    <nav className={`${styles.toolbar} ${styles.hasBackground}`}>
+    <nav className={`${styles.toolbar}`}>
       <div className={styles.start}>{props.children}</div>
       <div className={styles.end}>
         <UpsellBadge
