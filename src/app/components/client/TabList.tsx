@@ -16,9 +16,7 @@ import { TabListState, TabListStateOptions } from "@react-stately/tabs";
 export type TabsProps = (
   | TabListStateOptions<object>
   | AriaTabListOptions<object>
-) & {
-  variant?: "primary" | "secondary";
-};
+) & {};
 
 export type TabListProps = TabsProps & {
   tabs: Array<{
@@ -55,11 +53,7 @@ function Tabs(props: TabsProps) {
   const { collection, selectedItem } = state;
 
   return (
-    <div
-      /* c8 ignore next */
-      className={`${styles.container} ${props.variant ? styles[props.variant] : ""}`}
-      data-test="test"
-    >
+    <div className={`${styles.container}`} data-test="test">
       <div {...tabListProps} ref={ref} className={styles.tabs}>
         {[...collection].map((item) => (
           <Tab key={item.key} item={item} state={state} />
