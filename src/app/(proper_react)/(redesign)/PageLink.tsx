@@ -18,6 +18,7 @@ export type Props = ComponentProps<typeof Link> & {
 export const PageLink = (props: Props) => {
   const { activeClassName, hasTelemetry, ...otherProps } = props;
   const pathName = usePathname();
+  // TODO: activeClassSuffix to be removed after MNTOR-5101 is picked up
   /* c8 ignore next 2 */
   const activeClassSuffix = pathName?.startsWith(otherProps.href as string)
     ? activeClassName
