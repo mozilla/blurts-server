@@ -13,7 +13,7 @@ import SettingsMeta, {
   SettingsEditNotifications,
   SettingsEditNotificationsPlus,
   SettingsNoDefaultTab,
-} from "./stories/SettingsRedesign.stories";
+} from "./stories/Settings.stories";
 import SettingsEditYourInfoMeta, {
   SettingsEditYourInfoDetailsSaved,
   SettingsEditYourInfoNoPlus,

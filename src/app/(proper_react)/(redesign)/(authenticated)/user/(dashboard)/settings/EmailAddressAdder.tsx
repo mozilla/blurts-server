@@ -14,7 +14,7 @@ import {
 import { useOverlayTriggerState } from "react-stately";
 import { useOverlayTrigger } from "react-aria";
 import Image from "next/image";
-import styles from "./EmailAddressAdderRedesign.module.scss";
+import styles from "./EmailAddressAdder.module.scss";
 import IllustrationInitial from "./images/AddEmailIllustration.svg";
 import IllustrationConfirmation from "./images/AddEmailIllustrationConfirmation.svg";
 import { Button } from "../../../../../../components/client/Button";
@@ -30,7 +30,7 @@ type Props = {
   onAddEmail: typeof onAddEmail;
 };
 
-export const EmailAddressAdderRedesign = (props: Props) => {
+export const EmailAddressAdder = (props: Props) => {
   const l10n = useL10n();
   const recordTelemetry = useTelemetry();
   const dialogState = useOverlayTriggerState({

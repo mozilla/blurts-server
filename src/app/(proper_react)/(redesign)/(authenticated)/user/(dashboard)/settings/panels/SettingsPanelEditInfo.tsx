@@ -15,7 +15,7 @@ import {
 } from "../../../../../../../../constants";
 import { SubscriberEmailPreferencesOutput } from "../../../../../../../../db/tables/subscriber_email_preferences";
 import { useL10n } from "../../../../../../../hooks/l10n";
-import { EmailAddressAdderRedesign } from "../EmailAddressAdderRedesign";
+import { EmailAddressAdder } from "../EmailAddressAdder";
 import { Session } from "next-auth";
 import { SanitizedEmailAddressRow } from "../../../../../../../functions/server/sanitize";
 import {
@@ -25,7 +25,7 @@ import {
 } from "../../../../../../../components/server/Icons";
 import { useTelemetry } from "../../../../../../../hooks/useTelemetry";
 import { Button } from "../../../../../../../components/client/Button";
-import styles from "./SettingsPanelEditInfoRedesign.module.scss";
+import styles from "./SettingsPanelEditInfo.module.scss";
 import { getLocale } from "../../../../../../../functions/universal/getLocale";
 import { hasPremium } from "../../../../../../../functions/universal/user";
 import { TelemetryButton } from "../../../../../../../components/client/TelemetryButton";
@@ -36,7 +36,7 @@ import { formatPhone } from "../../../../../../../functions/universal/formatPhon
 import { FeatureFlagName } from "../../../../../../../../db/tables/featureFlags";
 import { UpsellLinkButton } from "../../../../../../../components/client/toolbar/UpsellBadge";
 
-export type SettingsPanelEditInfoRedesignProps = {
+export type SettingsPanelEditInfoProps = {
   breachCountByEmailAddress: Record<string, number>;
   emailAddresses: SanitizedEmailAddressRow[];
   isEligibleForPremium: boolean;
@@ -223,9 +223,7 @@ function ProfileInfoSection({
   );
 }
 
-function MonitoredEmailAddressesSection(
-  props: SettingsPanelEditInfoRedesignProps,
-) {
+function MonitoredEmailAddressesSection(props: SettingsPanelEditInfoProps) {
   const l10n = useL10n();
   const maxNumEmailAddresses = props.enabledFeatureFlags.includes(
     "IncreasedFreeMaxBreachEmails",
@@ -256,7 +254,7 @@ function MonitoredEmailAddressesSection(
       </ul>
       <span className={styles.addButton}>
         {hasMaxEmailAddresses && (
-          <EmailAddressAdderRedesign
+          <EmailAddressAdder
             maxNumEmailAddresses={maxNumEmailAddresses}
             onAddEmail={props.actions.onAddEmail}
           />
@@ -266,9 +264,7 @@ function MonitoredEmailAddressesSection(
   );
 }
 
-function SettingsPanelEditInfoRedesign(
-  props: SettingsPanelEditInfoRedesignProps,
-) {
+function SettingsPanelEditInfo(props: SettingsPanelEditInfoProps) {
   const l10n = useL10n();
   return (
     <>
@@ -319,4 +315,4 @@ function SettingsPanelEditInfoRedesign(
   );
 }
 
-export { SettingsPanelEditInfoRedesign };
+export { SettingsPanelEditInfo };

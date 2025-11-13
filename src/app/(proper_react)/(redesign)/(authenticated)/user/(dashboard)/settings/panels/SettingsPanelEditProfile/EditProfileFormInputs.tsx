@@ -361,7 +361,7 @@ function EditProfileFormInputs(props: {
               "settings-edit-profile-info-form-input-label-primary-location",
             )}
             // These lines show as not covered even though there are unit tests for updating
-            // the LocationAutocompleteInput in the test file `SettingsPageRedesign.test.tsx`.
+            // the LocationAutocompleteInput in the test file `SettingsPage.test.tsx`.
             /* c8 ignore next 7 */
             onChange={(value) =>
               props.handleOnInputChange({
@@ -403,7 +403,7 @@ function EditProfileFormInputs(props: {
                           "settings-edit-profile-info-form-input-label-other-location",
                         )}
                         // These lines show as not covered even though there are unit tests for updating
-                        // the LocationAutocompleteInput in the test file `SettingsPageRedesign.test.tsx`.
+                        // the LocationAutocompleteInput in the test file `SettingsPage.test.tsx`.
                         /* c8 ignore next 7 */
                         onChange={(value) =>
                           props.handleOnInputChange({

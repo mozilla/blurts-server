@@ -211,7 +211,7 @@ function EditProfileForm(props: {
       const [city, state, _countryCode] = value.split(", ");
       formDataUpdated[key as ProfileDataListKey][index] =
         // This line show as not covered even though there are unit tests for updating
-        // the LocationAutocompleteInput in the test file `SettingsPageRedesign.test.tsx`.
+        // the LocationAutocompleteInput in the test file `SettingsPage.test.tsx`.
         /* c8 ignore next */
         key === "addresses" ? { city, state: state as StateAbbr } : value;
 
