@@ -63,7 +63,7 @@ export function ManualRemoveView(props: Props) {
   const stepAfterSkip = getNextGuidedStep(
     data,
     props.enabledFeatureFlags,
-    "Scan",
+    "DataBrokerManualRemoval",
   );
 
   // freeze results at mount, so order never changes
@@ -129,22 +129,8 @@ export function ManualRemoveView(props: Props) {
                 )}
               </strong>
               <span>
-                {l10n.getFragment(
+                {l10n.getString(
                   "fix-flow-data-broker-profiles-manual-remove-how-to-remove-step-4-content",
-                  {
-                    elems: {
-                      subscribe_link: (
-                        <UpsellLinkButton
-                          variant="link"
-                          small
-                          enabledFeatureFlags={props.enabledFeatureFlags}
-                          eventData={{
-                            button_id: "manual_removal_instructions_upsell",
-                          }}
-                        />
-                      ),
-                    },
-                  },
                 )}
               </span>
             </li>
@@ -179,18 +165,20 @@ export function ManualRemoveView(props: Props) {
           </div>
         </div>
         <div className={styles.buttonsWrapper}>
-          <UpsellLinkButton
-            variant="primary"
-            small
-            enabledFeatureFlags={props.enabledFeatureFlags}
-            eventData={{
-              button_id: "manual_removal_upsell",
-            }}
-          >
-            {l10n.getString(
-              "fix-flow-data-broker-profiles-manual-remove-button-remove-for-me",
-            )}
-          </UpsellLinkButton>
+          {!props.enabledFeatureFlags.includes("FreeOnly") && (
+            <UpsellLinkButton
+              variant="primary"
+              small
+              enabledFeatureFlags={props.enabledFeatureFlags}
+              eventData={{
+                button_id: "manual_removal_upsell",
+              }}
+            >
+              {l10n.getString(
+                "fix-flow-data-broker-profiles-manual-remove-button-remove-for-me",
+              )}
+            </UpsellLinkButton>
+          )}
           <TelemetryButton
             variant="secondary"
             href={stepAfterSkip.href}

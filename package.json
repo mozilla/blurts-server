@@ -71,8 +71,8 @@
     "npm": "10.1.0"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.917.0",
-    "@aws-sdk/lib-storage": "^3.917.0",
+    "@aws-sdk/client-s3": "^3.919.0",
+    "@aws-sdk/lib-storage": "^3.919.0",
     "@fluent/bundle": "^0.19.1",
     "@fluent/langneg": "^0.7.0",
     "@fluent/react": "^0.15.2",
@@ -86,7 +86,7 @@
     "@sentry/nextjs": "^10.22.0",
     "@sentry/node": "^10.1.0",
     "@sentry/utils": "^8.55.0",
-    "@stripe/stripe-js": "^7.9.0",
+    "@stripe/stripe-js": "^8.2.0",
     "@types/jsdom": "^21.1.7",
     "@types/node": "^24.4.0",
     "@types/react": "19.1.9",
@@ -163,7 +163,7 @@
     "jest-canvas-mock": "^2.5.2",
     "jest-environment-jsdom": "^30.2.0",
     "jest-fail-on-console": "^3.3.1",
-    "lint-staged": "^16.2.2",
+    "lint-staged": "^16.2.6",
     "mjml-browser": "^4.15.3",
     "openapi-typescript": "^7.9.1",
     "patch-package": "^8.0.0",
@@ -173,8 +173,8 @@
     "stylelint": "^16.25.0",
     "stylelint-config-recommended-scss": "^16.0.2",
     "stylelint-scss": "^6.11.1",
-    "tsx": "^4.20.5",
-    "typescript": "^5.9.2",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3",
     "yaml": "^2.8.0"
   },
   "overrides": {
