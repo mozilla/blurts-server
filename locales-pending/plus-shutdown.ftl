@@ -4,7 +4,7 @@
 
 plus-shutdown-banner-button-learn-more = Learn more
 plus-shutdown-banner-button-close = Close
-plus-shutdown-banner-free-runup-heading = Update: { -brand-monitor } data broker scan results will be deleted in 30 days
+plus-shutdown-banner-free-runup-heading = { -brand-monitor } data broker scan results will be deleted on December 17
 plus-shutdown-banner-free-runup-subheading = View your results ahead of the the { -brand-monitor-plus } shutdown.
 plus-shutdown-banner-free-shutdown-heading = Data broker scan results have been deleted, but { -brand-monitor } lives on
 plus-shutdown-banner-free-shutdown-subheading = You can still continue to access data breach monitoring to help keep your info safe online.
