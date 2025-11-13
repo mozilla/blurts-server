@@ -41,4 +41,5 @@ const meta: Meta<typeof Shell> = {
 export default meta;
 type Story = StoryObj<typeof Shell>;
 
+// TODO: Rename this when MNTOR-5101 is picked up
 export const ShellAuthenticatedRedesign: Story = {};
