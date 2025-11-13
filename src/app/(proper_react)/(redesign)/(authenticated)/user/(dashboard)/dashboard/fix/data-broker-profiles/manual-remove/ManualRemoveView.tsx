@@ -129,22 +129,8 @@ export function ManualRemoveView(props: Props) {
                 )}
               </strong>
               <span>
-                {l10n.getFragment(
+                {l10n.getString(
                   "fix-flow-data-broker-profiles-manual-remove-how-to-remove-step-4-content",
-                  {
-                    elems: {
-                      subscribe_link: (
-                        <UpsellLinkButton
-                          variant="link"
-                          small
-                          enabledFeatureFlags={props.enabledFeatureFlags}
-                          eventData={{
-                            button_id: "manual_removal_instructions_upsell",
-                          }}
-                        />
-                      ),
-                    },
-                  },
                 )}
               </span>
             </li>
