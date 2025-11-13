@@ -25,10 +25,7 @@ export const SettingsNoDefaultTab: Story = {
   args: {
     countryCode: "us",
     activeTab: undefined,
-    enabledFeatureFlags: [
-      "EditScanProfileDetails",
-      "SidebarNavigationRedesign",
-    ],
+    enabledFeatureFlags: ["EditScanProfileDetails"],
   },
 };
 
@@ -37,10 +34,8 @@ export const SettingsEditManageAccount: Story = {
   args: {
     countryCode: "us",
     activeTab: "manage-account",
-    enabledFeatureFlags: [
-      "SidebarNavigationRedesign",
-      "EditScanProfileDetails",
-    ],
+    hasPlus: false,
+    enabledFeatureFlags: ["EditScanProfileDetails"],
   },
 };
 
@@ -50,11 +45,7 @@ export const SettingsEditManageAccountPlus: Story = {
     hasPlus: true,
     countryCode: "us",
     activeTab: "manage-account",
-    enabledFeatureFlags: [
-      "SidebarNavigationRedesign",
-      "EditScanProfileDetails",
-      "CancellationFlow",
-    ],
+    enabledFeatureFlags: ["EditScanProfileDetails", "CancellationFlow"],
   },
 };
 
@@ -63,10 +54,7 @@ export const SettingsEditNotifications: Story = {
   args: {
     countryCode: "us",
     activeTab: "notifications",
-    enabledFeatureFlags: [
-      "SidebarNavigationRedesign",
-      "EditScanProfileDetails",
-    ],
+    enabledFeatureFlags: ["EditScanProfileDetails"],
   },
 };
 
@@ -76,9 +64,6 @@ export const SettingsEditNotificationsPlus: Story = {
     countryCode: "us",
     hasPlus: true,
     activeTab: "notifications",
-    enabledFeatureFlags: [
-      "SidebarNavigationRedesign",
-      "EditScanProfileDetails",
-    ],
+    enabledFeatureFlags: ["EditScanProfileDetails"],
   },
 };

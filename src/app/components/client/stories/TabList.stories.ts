@@ -37,11 +37,3 @@ export const TabListItemDefault: Story = {
     onSelectionChange: (selectedKey) => console.log(selectedKey),
   },
 };
-
-export const TabListItemDefaultSelection: Story = {
-  args: {
-    tabs: tabsData,
-    defaultSelectedKey: "second",
-    onSelectionChange: (selectedKey) => console.log(selectedKey),
-  },
-};
