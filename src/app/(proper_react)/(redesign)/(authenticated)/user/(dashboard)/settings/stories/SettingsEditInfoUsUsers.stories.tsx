@@ -27,7 +27,6 @@ export const SettingsEditYourInfoNoPlus: Story = {
   args: {
     countryCode: "us",
     activeTab: "edit-info",
-    enabledFeatureFlags: ["EditScanProfileDetails"],
     isEligibleForPremium: true,
   },
 };
@@ -37,7 +36,6 @@ export const SettingsEditYourInfoMinProfileDetailsWithPlus: Story = {
   args: {
     countryCode: "us",
     activeTab: "edit-info",
-    enabledFeatureFlags: ["EditScanProfileDetails"],
     profileData: mockedProfileDataMin,
     hasPlus: true,
   },
@@ -48,7 +46,6 @@ export const SettingsEditYourInfoMaxProfileDetailsWithPlus: Story = {
   args: {
     countryCode: "us",
     activeTab: "edit-info",
-    enabledFeatureFlags: ["EditScanProfileDetails"],
     profileData: mockedProfileDataMax,
     hasPlus: true,
   },
@@ -59,7 +56,6 @@ export const SettingsEditYourInfoDetailsSaved: Story = {
   args: {
     countryCode: "us",
     activeTab: "edit-info",
-    enabledFeatureFlags: ["EditScanProfileDetails"],
     profileData: mockedProfileDataMin,
     hasPlus: true,
   },

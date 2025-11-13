@@ -32,7 +32,6 @@ export const SettingsEditYourInfo: Story = {
   args: {
     countryCode: "nl",
     activeTab: "edit-info",
-    enabledFeatureFlags: ["EditScanProfileDetails"],
   },
 };
 
@@ -41,7 +40,6 @@ export const SettingsEditYourInfoAdditionalMonitoredEmails: Story = {
   args: {
     countryCode: "nl",
     activeTab: "edit-info",
-    enabledFeatureFlags: ["EditScanProfileDetails"],
     emailAddresses: [mockedVerifiedEmailSecond, mockedVerifiedEmailFourth],
   },
 };
@@ -51,7 +49,6 @@ export const SettingsEditYourInfoMaxMonitoredEmails: Story = {
   args: {
     countryCode: "nl",
     activeTab: "edit-info",
-    enabledFeatureFlags: ["EditScanProfileDetails"],
     emailAddresses: [
       mockedVerifiedEmailSecond,
       mockedVerifiedEmailThird,
@@ -66,10 +63,7 @@ export const SettingsEditYourInfoMaxMonitoredEmailsIncreased: Story = {
   args: {
     countryCode: "nl",
     activeTab: "edit-info",
-    enabledFeatureFlags: [
-      "EditScanProfileDetails",
-      "IncreasedFreeMaxBreachEmails",
-    ],
+    enabledFeatureFlags: ["IncreasedFreeMaxBreachEmails"],
     emailAddresses: [...Array(19)].map(() => ({
       ...mockedVerifiedEmailSecond,
       email: faker.internet.email(),

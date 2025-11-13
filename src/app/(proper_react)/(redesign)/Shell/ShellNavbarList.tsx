@@ -39,25 +39,7 @@ export const NavbarList = (props: {
               {l10n.getString("main-nav-link-dashboard-label")}
             </PageLink>
           </li>
-          {props.enabledFeatureFlags.includes("EditScanProfileDetails") &&
-            !props.enabledFeatureFlags.includes("FreeOnly") && (
-              <li key="settings-edit-info">
-                <PageLink
-                  href="/user/settings/edit-info"
-                  activeClassName={styles.isActive}
-                  hasTelemetry={{ link_id: "navigation_edit_info" }}
-                >
-                  <ScanInfoIcon alt="" />
-                  {l10n.getString("settings-tab-label-update-scan-info")}
-                </PageLink>
-              </li>
-            )}
-        </ul>
-        <hr />
-        <strong>{l10n.getString("main-nav-link-settings-label")}</strong>
-        <ul className="noList">
-          {(!props.enabledFeatureFlags.includes("EditScanProfileDetails") ||
-            props.enabledFeatureFlags.includes("FreeOnly")) && (
+          {!props.enabledFeatureFlags.includes("FreeOnly") && (
             <li key="settings-edit-info">
               <PageLink
                 href="/user/settings/edit-info"
@@ -65,10 +47,14 @@ export const NavbarList = (props: {
                 hasTelemetry={{ link_id: "navigation_edit_info" }}
               >
                 <ScanInfoIcon alt="" />
-                {l10n.getString("settings-tab-label-edit-info")}
+                {l10n.getString("settings-tab-label-update-scan-info")}
               </PageLink>
             </li>
           )}
+        </ul>
+        <hr />
+        <strong>{l10n.getString("main-nav-link-settings-label")}</strong>
+        <ul className="noList">
           <li key="settings-notifications">
             <PageLink
               href="/user/settings/notifications"
