@@ -81,7 +81,7 @@ export const SettingsWrapper = (props: SettingsWrapperProps) => {
           session={mockedSession}
           nonce=""
           countryCode={props.countryCode}
-          enabledFeatureFlags={props.enabledFeatureFlags}
+          enabledFeatureFlags={props.enabledFeatureFlags ?? []}
           experimentData={defaultExperimentData["Features"]}
           hideSidebar={props.activeTab === "edit-profile"}
           announcements={null}
@@ -105,7 +105,7 @@ export const SettingsWrapper = (props: SettingsWrapperProps) => {
             subscriptionBillingAmount={{
               monthly: 42.42,
             }}
-            enabledFeatureFlags={props.enabledFeatureFlags}
+            enabledFeatureFlags={props.enabledFeatureFlags ?? []}
             experimentData={defaultExperimentData["Features"]}
             lastScanDate={new Date(Date.UTC(2024, 6, 31))}
             isMonthlySubscriber={props.isMonthlySubscriber}
