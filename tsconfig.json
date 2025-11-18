@@ -10,7 +10,7 @@
     "src/db/migrations/*.js",
     "src/scripts/build/*.js",
     "src/scripts/loadtest/hibp.js"
-  ],
+, "src/scripts/cronjobs/emailBreachAlerts/emailBreachAlerts.tsx"  ],
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig to read more about this file */
     /* Projects */

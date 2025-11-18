@@ -233,7 +233,7 @@ export function createRandomHibpListing(
     >,
     Description: faker.lorem.sentence(),
     Domain: faker.internet.domainName(),
-    Id: faker.number.int(),
+    Id: faker.number.int({ max: 2147483647 }),
     IsFabricated: faker.datatype.boolean(),
     IsMalware: faker.datatype.boolean(),
     IsRetired: faker.datatype.boolean(),
@@ -243,7 +243,7 @@ export function createRandomHibpListing(
     LogoPath: "unused",
     ModifiedDate: faker.date.between({ from: addedDate, to: Date.now() }),
     Name: name,
-    PwnCount: faker.number.int(),
+    PwnCount: faker.number.int({ max: 2147483647 }),
     Title: title,
     FaviconUrl: faker.helpers.maybe(() => {
       const dimension = faker.number.int({ min: 20, max: 36 });

@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { BreachRow } from "knex/types/tables";
+import { BreachRow, EmailNotificationRow } from "knex/types/tables";
 import createDbConnection from "../connect";
 
 const knex = createDbConnection();
@@ -23,6 +23,19 @@ async function getNotifiedSubscribersForBreach(
   });
 
   return res.map((row) => row.subscriber_id);
+}
+
+export async function subscriberNotifiedForBreach(
+  breachId: EmailNotificationRow["breach_id"],
+  subscriber_id: EmailNotificationRow["subscriber_id"],
+) {
+  const res = await knex("email_notifications")
+    .select("subscriber_id")
+    .where("notified", true)
+    .andWhere("subscriber_id", subscriber_id)
+    .andWhere("breach_id", breachId)
+    .first();
+  return res !== undefined;
 }
 
 type NewNotification = {
