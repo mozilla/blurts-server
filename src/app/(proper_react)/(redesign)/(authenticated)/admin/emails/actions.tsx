@@ -243,14 +243,6 @@ export async function triggerBreachAlert(emailAddress: string) {
   if (typeof subscriber.onerep_profile_id === "number") {
     await refreshStoredScanResults(subscriber.onerep_profile_id);
   }
-  const experimentationId = await getExperimentationIdFromUserSession(
-    session.user,
-  );
-  const experimentData = await getExperiments({
-    experimentationId,
-    countryCode: assumedCountryCode,
-    locale: getLocale(l10n),
-  });
   const scanData = await getScanResultsWithBroker(
     subscriber.onerep_profile_id,
     hasPremium(session.user),
@@ -266,15 +258,12 @@ export async function triggerBreachAlert(emailAddress: string) {
     <BreachAlertEmail
       subscriber={subscriber}
       breach={createRandomHibpListing()}
-      breachedEmail={emailAddress}
-      utmCampaignId="breach-alert"
       l10n={l10n}
       dataSummary={
         isEligibleForPremium(assumedCountryCode) && !hasPremium(subscriber)
           ? getDashboardSummary(scanData.results, allSubscriberBreaches)
           : undefined
       }
-      experimentData={experimentData["Features"]}
     />,
   );
 }

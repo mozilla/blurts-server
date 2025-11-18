@@ -32,7 +32,7 @@
     "cron:first-data-broker-removal-fixed": "node dist/scripts/cronjobs/firstDataBrokerRemovalFixed.js",
     "cron:monthly-activity-free": "node dist/scripts/cronjobs/monthlyActivityFree.js",
     "cron:monthly-activity-plus": "node dist/scripts/cronjobs/monthlyActivityPlus.js",
-    "cron:breach-alerts": "node dist/scripts/cronjobs/emailBreachAlerts.js",
+    "cron:breach-alerts": "node dist/scripts/cronjobs/emailBreachAlerts/index.js",
     "cron:db-delete-unverified-subscribers": "node dist/scripts/cronjobs/deleteUnverifiedSubscribers.js",
     "cron:db-pull-breaches": "node dist/scripts/cronjobs/syncBreaches.js",
     "cron:db-pull-data-brokers": "node dist/scripts/cronjobs/syncOnerepDataBrokers.js",
