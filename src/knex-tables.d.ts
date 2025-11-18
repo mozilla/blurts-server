@@ -148,8 +148,6 @@ declare module "knex/types/tables" {
       };
       monitoredEmails: { count: number };
     };
-    monthly_email_at: ISO8601DateString;
-    monthly_email_optout: boolean;
     monthly_monitor_report_at: null | Date;
     monthly_monitor_report: boolean;
     breach_resolution: BreachResolution;
@@ -173,8 +171,6 @@ declare module "knex/types/tables" {
     | "breaches_resolved"
     | "waitlists_joined"
     | "breach_stats"
-    | "monthly_email_at"
-    | "monthly_email_optout"
     | "monthly_monitor_report_at"
     | "monthly_monitor_report"
     | "breach_resolution"
