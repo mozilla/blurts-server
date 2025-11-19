@@ -73,6 +73,7 @@ export const featureFlagNames = [
   "IncreasedFreeMaxBreachEmails",
   "FreeOnly",
   "ShutdownBanner",
+  "PostShutdownBanner",
 ] as const;
 
 export const adminOnlyFlags: FeatureFlagName[] = [
