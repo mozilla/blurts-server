@@ -81,7 +81,7 @@
     "@google-cloud/pubsub": "^5.2.0",
     "@grpc/grpc-js": "1.14.0",
     "@leeoniya/ufuzzy": "^1.0.19",
-    "@mozilla/glean": "^5.0.5",
+    "@mozilla/glean": "^5.0.7",
     "@next/third-parties": "16.0.1",
     "@sentry/nextjs": "^10.25.0",
     "@sentry/node": "^10.1.0",
