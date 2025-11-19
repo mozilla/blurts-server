@@ -26,7 +26,7 @@ import { getAllBreachesFromDb } from "../../../utils/hibp";
 import { sendEmail, initEmail } from "../../../utils/email";
 import { breachNotificationSubscribersByHashes } from "../../../db/models/BreachNotificationSubscriber";
 import * as NotificationsRepo from "../../../db/tables/email_notifications";
-import { main } from "./emailBreachAlerts";
+import { job } from "./emailBreachAlerts";
 
 start();
 
@@ -48,7 +48,7 @@ async function start() {
   }
   // Transport must be initialized before sendEmail can be called
   await initEmail();
-  main({
+  job({
     gcp: {
       projectId,
       subscription,

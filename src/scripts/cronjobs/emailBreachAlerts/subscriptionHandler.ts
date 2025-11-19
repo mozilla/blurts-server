@@ -22,6 +22,26 @@ type SubscriptionHandlerOpts = {
 
 type SubscriptionState = "draining" | "ready";
 
+/**
+ * Generic manager for handling PubSub pull subscriptions.
+ * It will invoke the messageFn on every message received
+ * by the injected subscription object.
+ * The subscription is closed by a SIGTERM/SIGINT event
+ * by the `process` emitter, and the handler is set to a
+ * draining state. This prevents further messages from
+ * being received. If somehow a message is received in
+ * the draining state, it is immediately nacked for redelivery
+ * to another available pubsub client.
+ *
+ * If the messageFn response includes {success: true}, the
+ * mesage is acked. Otherwise, it is nacked for retry.
+ * Errors are logged via the injected logger (which can
+ * include a Sentry transport, etc.)
+ *
+ * The consumer should ensure that the grace
+ * period before the process is killed is long enough
+ * for any in-flight messages to finish processing.
+ */
 export class SubscriptionHandler {
   subscription: Subscription;
   logger: Logger;

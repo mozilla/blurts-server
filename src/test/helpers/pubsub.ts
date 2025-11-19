@@ -18,7 +18,10 @@ type MockSubscriptionEventMap = {
   error: [err: unknown];
 };
 
-// Handles the message and error hooks
+/**
+ * Minimal PubSub Subscription mock for testing.
+ * More methods can be added as needed.
+ */
 export class MockSubscription extends EventEmitter<MockSubscriptionEventMap> {
   private _isOpen: boolean;
 

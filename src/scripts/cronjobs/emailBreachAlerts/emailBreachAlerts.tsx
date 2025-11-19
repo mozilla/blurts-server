@@ -30,16 +30,19 @@ type BreachMessagePayload = {
   hashSuffixes: string[];
 };
 
+/** Minimal external dependencies re-exported here for type inference */
 export const SubscribersRepo = {
   findByHashes: breachNotificationSubscribersByHashes,
 };
-
 export const NotificationsRepo = {
   addEmailNotification,
   markEmailAsNotified,
   subscriberNotifiedForBreach,
 };
 
+/**
+ * Validates breach payload conforms to expected schema
+ */
 function validateBreachPayload(
   obj: unknown,
 ): asserts obj is BreachMessagePayload {
@@ -61,8 +64,8 @@ function validateBreachPayload(
 }
 
 /**
- *
- * @param breach
+ * Returns true if breach passes rules to be included in
+ * breach notification emails, false otherwise.
  */
 function breachIsNotifiable(
   breach: HibpLikeDbBreach,
@@ -170,7 +173,7 @@ export async function breachMessageHandler(
     }
     // Skip if user has been notified already for this breach
     // (regardless of which email address specifically)
-    // TODO:
+    // TODO: MNTOR-5807
     const alreadyNotifiedOnce = await notifications.subscriberNotifiedForBreach(
       breachAlert.Id,
       recipient.subscriber_id,
@@ -249,11 +252,13 @@ type EmailBreachAlertsJobConfig = {
   Sentry: typeof Sentry;
 };
 
+// Main entry for breach alerts email consumer
+// Initializes required pubsub client and kicks off subscription handler
 // This can be covered by integration tests but only in node
 // (not jsdom) environment, due to pubsub requiring setImmediate etc.
 // TODO: [MNTOR-1880]
 /* c8 ignore start */
-export function main(config: EmailBreachAlertsJobConfig) {
+export function job(config: EmailBreachAlertsJobConfig) {
   const localConfig = process.env.PUBSUB_EMULATOR_HOST
     ? {
         apiEndpoint: process.env.PUBSUB_EMULATOR_HOST,
