@@ -70,8 +70,8 @@ export default async function Page() {
   );
   const oneRepActivations = profileStats?.total_active;
   const scanLimitReached =
-    typeof oneRepActivations === "undefined" ||
-    oneRepActivations > monthlySubscribersQuota ||
+    (typeof oneRepActivations !== "undefined" &&
+      oneRepActivations > monthlySubscribersQuota) ||
     (enabledFeatureFlags.includes("DisableOneRepScans") && eligibleForPremium);
 
   return (
@@ -114,7 +114,9 @@ export default async function Page() {
         />
       ) : (
         <LandingView
-          eligibleForPremium={eligibleForPremium}
+          eligibleForPremium={
+            eligibleForPremium && !enabledFeatureFlags.includes("FreeOnly")
+          }
           l10n={l10n}
           countryCode={countryCode}
           scanLimitReached={scanLimitReached}

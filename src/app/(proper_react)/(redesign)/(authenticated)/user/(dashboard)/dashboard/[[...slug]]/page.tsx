@@ -50,6 +50,7 @@ import {
 import { getDataBrokerRemovalTimeEstimates } from "../../../../../../../functions/server/getDataBrokerRemovalTimeEstimates";
 import { initializeUserAnnouncements } from "../../../../../../../../db/tables/user_announcements";
 import { connection } from "next/server";
+import { getPlusShutdownState } from "../../../../../../../functions/server/getPlusShutdownState";
 
 const dashboardTabSlugs = ["action-needed", "fixed"];
 
@@ -140,6 +141,7 @@ export default async function DashboardPage(props: Props) {
         canSubscribeToPremium({
           user: session.user,
           countryCode,
+          enabledFeatureFlags,
         })))
   ) {
     return redirect("/user/welcome");
@@ -153,8 +155,11 @@ export default async function DashboardPage(props: Props) {
   const userIsEligibleForFreeScan = await isEligibleForFreeOnerepScan(
     session.user,
     countryCode,
+    enabledFeatureFlags,
   );
-  const userIsEligibleForPremium = isEligibleForPremium(countryCode);
+  const userIsEligibleForPremium =
+    isEligibleForPremium(countryCode) &&
+    (!enabledFeatureFlags.includes("FreeOnly") || isPremiumUser);
 
   const monthlySubscriptionUrl = getPremiumSubscriptionUrl({
     type: "monthly",
@@ -197,11 +202,15 @@ export default async function DashboardPage(props: Props) {
       )) !== "undefined"
     : false;
 
+  const shutdownState = getPlusShutdownState(subscriber);
+
   return (
     <View
       user={session.user}
       isEligibleForPremium={userIsEligibleForPremium}
       isEligibleForFreeScan={userIsEligibleForFreeScan}
+      countryCode={countryCode}
+      shutdownState={shutdownState}
       userScanData={scanResults}
       userBreaches={subBreaches}
       enabledFeatureFlags={enabledFeatureFlags}

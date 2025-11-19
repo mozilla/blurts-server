@@ -8,6 +8,7 @@ import { userEvent } from "@testing-library/user-event";
 import { composeStory } from "@storybook/react";
 import { axe } from "jest-axe";
 import Meta, { UserMenuDefault } from "./UserMenu.stories";
+import { signOut } from "next-auth/react";
 
 jest.mock("next/navigation", () => ({
   useRouter: jest.fn(),
@@ -15,7 +16,7 @@ jest.mock("next/navigation", () => ({
 }));
 
 jest.mock("next-auth/react", () => ({
-  signOut: jest.fn(),
+  signOut: jest.fn().mockResolvedValue(undefined),
 }));
 
 jest.mock("../../../hooks/useTelemetry");
@@ -41,6 +42,11 @@ it("opens and closes the user menu", async () => {
 });
 
 it("checks if the user menu items are interactive", async () => {
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(UserMenuDefault, Meta);
   render(<ComposedDashboard />);
@@ -53,40 +59,33 @@ it("checks if the user menu items are interactive", async () => {
   expect(menuItems.length).toBe(4);
 
   // FxA link
-  const fxaItem = screen.getByText("Manage your ⁨Mozilla account⁩");
+  const fxaItem = screen.getByRole("menuitem", {
+    name: /Manage your ⁨Mozilla account⁩/i,
+  });
   expect(fxaItem).toBeInTheDocument();
-  const fxaItemWrapper = fxaItem.parentElement;
-  const clickFxAItemSpy = jest.spyOn(fxaItem, "click");
-  await user.click(fxaItemWrapper as HTMLElement);
-  expect(clickFxAItemSpy).toHaveBeenCalled();
+  await user.click(fxaItem);
+  expect(fxaItem).toHaveAttribute("href");
 
   // Settings link
   await user.click(menuTrigger);
-  const settingsItem = screen.getByText("Settings");
+  const settingsItem = screen.getByRole("menuitem", { name: /Settings/i });
   expect(settingsItem).toBeInTheDocument();
-  const settingsItemWrapper = settingsItem.parentElement;
-  const clickSettingsItemSpy = jest.spyOn(settingsItem, "click");
-  // Prevent the click from actually executing; otherwise we'll get a warning
-  // that JSDOM doesn't know how to mock switching from one page to another:
-  clickSettingsItemSpy.mockImplementationOnce(() => undefined);
-  await user.click(settingsItemWrapper as HTMLElement);
-  expect(clickSettingsItemSpy).toHaveBeenCalled();
+  await user.click(settingsItem);
+  expect(settingsItem).toHaveAttribute("href");
 
   // Help and support link
   await user.click(menuTrigger);
-  const helpAndSupportItem = screen.getByText("Help and support");
+  const helpAndSupportItem = screen.getByRole("menuitem", {
+    name: /Help and support/i,
+  });
   expect(helpAndSupportItem).toBeInTheDocument();
-  const helpAndSupportItemWrapper = helpAndSupportItem.parentElement;
-  const clickHelpAndSupportItemSpy = jest.spyOn(helpAndSupportItem, "click");
-  await user.click(helpAndSupportItemWrapper as HTMLElement);
-  expect(clickHelpAndSupportItemSpy).toHaveBeenCalled();
+  await user.click(helpAndSupportItem);
+  expect(helpAndSupportItem).toHaveAttribute("href");
 
   // Sign out button
   await user.click(menuTrigger);
-  const signOutItem = screen.getByText("Sign out");
+  const signOutItem = screen.getByRole("menuitem", { name: /Sign out/i });
   expect(signOutItem).toBeInTheDocument();
-  const signOutItemWrapper = signOutItem.parentElement;
-  const signOutItemSpy = jest.spyOn(signOutItem, "click");
-  await user.click(signOutItemWrapper as HTMLElement);
-  expect(signOutItemSpy).toHaveBeenCalled();
+  await user.click(signOutItem);
+  expect(signOut).toHaveBeenCalledWith({ callbackUrl: "/" });
 });

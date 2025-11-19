@@ -76,14 +76,24 @@ $button-size: 42px;
 }
 
 .menuItemCta {
-  align-items: center;
-  background: none;
-  border: 0;
   color: tokens.$color-black;
   cursor: pointer;
-  display: flex;
-  gap: tokens.$spacing-sm;
   margin: 0;
   padding: 0;
   text-decoration: none;
+  align-items: center;
+  background: none;
+  border: 0;
+  gap: tokens.$spacing-sm;
+
+  span {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+
+  .manageFXAItem {
+    display: flex;
+    flex-direction: column;
+  }
 }

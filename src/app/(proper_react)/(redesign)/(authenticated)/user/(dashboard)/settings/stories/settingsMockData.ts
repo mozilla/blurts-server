@@ -10,6 +10,11 @@ import {
 } from "knex/types/tables";
 import { OnerepProfileAddress } from "knex/types/tables";
 import { OnerepUsPhoneNumber } from "../../../../../../../functions/server/onerep";
+import { SerializedSubscriber } from "../../../../../../../../next-auth";
+import { Session } from "next-auth";
+import { UserAnnouncementWithDetails } from "../../../../../../../../db/tables/user_announcements";
+import { createRandomAnnouncement } from "../../../../../../../../apiMocks/mockData";
+import { SubscriberEmailPreferencesOutput } from "../../../../../../../../db/tables/subscriber_email_preferences";
 
 const subscriberId = 7;
 
@@ -146,3 +151,79 @@ export const mockedProfileDataMax: OnerepProfileRow = {
     state: fakerEN_US.location.state({ abbreviated: true }),
   })) as OnerepProfileAddress[],
 };
+
+export const mockedSubscriptionBillingAmount = {
+  yearly: 13.37,
+  monthly: 42.42,
+};
+export const mockedPlusSubscriberEmailPreferences = {
+  id: 1337,
+  primary_email: "primary@example.com",
+  unsubscribe_token: "495398jfjvjfdj",
+  monthly_monitor_report_free: false,
+  monthly_monitor_report_free_at: new Date("1337-04-02T04:02:42.000Z"),
+  monthly_monitor_report: true,
+  monthly_monitor_report_at: new Date("1337-04-02T04:02:42.000Z"),
+} as SubscriberEmailPreferencesOutput;
+
+export const mockedFreeSubscriberEmailPreferences = {
+  id: 1337,
+  primary_email: "primary@example.com",
+  unsubscribe_token: "495398jfjvjfdj",
+  monthly_monitor_report_free: true,
+  monthly_monitor_report_free_at: new Date("1337-04-02T04:02:42.000Z"),
+  monthly_monitor_report: false,
+  monthly_monitor_report_at: new Date("1337-04-02T04:02:42.000Z"),
+} as SubscriberEmailPreferencesOutput;
+
+export const mockedSecondaryVerifiedEmail: EmailAddressRow = {
+  id: 1337,
+  email: "secondary_verified@example.com",
+  sha1: "arbitrary string",
+  subscriber_id: subscriberId,
+  verified: true,
+  created_at: new Date("1337-04-02T04:02:42.000Z"),
+  updated_at: new Date("1337-04-02T04:02:42.000Z"),
+  verification_token: "arbitrary_token",
+};
+
+export const mockedSerializedSubscriber: SerializedSubscriber = {
+  id: subscriberId,
+  all_emails_to_primary: true,
+} as SerializedSubscriber;
+
+export const mockedUser: Session["user"] = {
+  email: "primary@example.com",
+  subscriber: mockedSerializedSubscriber,
+  fxa: {
+    subscriptions: ["monitor"],
+    avatar: "",
+    avatarDefault: false,
+    locale: "en-GB",
+    metricsEnabled: false,
+    twoFactorAuthentication: false,
+  },
+};
+
+export const mockedFreeUser: Session["user"] = {
+  email: "primary@example.com",
+  subscriber: undefined,
+  fxa: {
+    subscriptions: [],
+    avatar: "",
+    avatarDefault: false,
+    locale: "en-GB",
+    metricsEnabled: false,
+    twoFactorAuthentication: false,
+  },
+};
+
+export const mockedSession = {
+  expires: new Date().toISOString(),
+  user: mockedUser,
+};
+export const mockedAnnouncements: UserAnnouncementWithDetails[] = [
+  createRandomAnnouncement(),
+  createRandomAnnouncement(),
+  createRandomAnnouncement(),
+];

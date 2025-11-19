@@ -98,11 +98,8 @@ describe("getExperiments", () => {
     expect(fetchMock).not.toHaveBeenCalled();
   });
 
-  it("calls Cirrus V2 when feature flag is enabled with preview param", async () => {
+  it("calls Cirrus V2 with preview param", async () => {
     process.env.NIMBUS_SIDECAR_URL = "https://cirrus.example";
-    getEnabledFeatureFlagsMock.mockReturnValue([
-      "CirrusV2",
-    ] as FeatureFlagName[]);
     headersMock.mockResolvedValue(
       new Headers([["x-nimbus-preview-mode", "true"]]),
     );
@@ -152,47 +149,8 @@ describe("getExperiments", () => {
     );
   });
 
-  it("calls Cirrus V1 when featurn flag is disabled", async () => {
-    process.env.NIMBUS_SIDECAR_URL = "https://cirrus.example/base";
-    getEnabledFeatureFlagsMock.mockReturnValue([] as FeatureFlagName[]);
-    headersMock.mockResolvedValue(new Headers([]));
-
-    const featuresJson = { bar: { enabled: false } };
-    fetchMock.mockResolvedValue({
-      ok: true,
-      status: 200,
-      json: () => Promise.resolve(featuresJson),
-    } as Response);
-
-    const { getExperiments } = await import("./getExperiments");
-
-    const result = await getExperiments({
-      experimentationId: "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
-      locale: "en-US",
-      countryCode: "us",
-    });
-
-    expect(fetchMock).toHaveBeenCalledTimes(1);
-    const [calledUrl] = fetchMock.mock.calls[0];
-    expect(calledUrl.toString()).toBe(
-      "https://cirrus.example/base/v1/features",
-    );
-
-    expect(result).toEqual({ Features: featuresJson });
-    expect(loggerMock.info).toHaveBeenCalledWith(
-      "Sending request to Cirrus",
-      expect.objectContaining({
-        serverUrl: "https://cirrus.example/base/v1/features",
-        previewMode: false,
-      }),
-    );
-  });
-
   it("fallsback to defaultExperimentData when not experiment data is returned by Cirrus", async () => {
     process.env.NIMBUS_SIDECAR_URL = "https://cirrus.example";
-    getEnabledFeatureFlagsMock.mockReturnValue([
-      "CirrusV2",
-    ] as FeatureFlagName[]);
     headersMock.mockResolvedValue(
       new Headers([["x-nimbus-preview-mode", "true"]]),
     );
@@ -239,9 +197,6 @@ describe("getExperiments", () => {
 
   it("logs error, captures exception, and returns defaultExperimentData on error response", async () => {
     process.env.NIMBUS_SIDECAR_URL = "https://cirrus.example/";
-    getEnabledFeatureFlagsMock.mockReturnValue([
-      "CirrusV2",
-    ] as FeatureFlagName[]);
     headersMock.mockResolvedValue(new Headers([]));
 
     global.fetch = jest.fn<typeof global.fetch>().mockResolvedValue({
@@ -270,34 +225,6 @@ describe("getExperiments", () => {
       expect.objectContaining({
         serverUrl: new URL("https://cirrus.example/v2/features"),
         previewMode: false,
-        flags: ["CirrusV2"],
-      }),
-    );
-    expect(captureExceptionMock).toHaveBeenCalledTimes(1);
-    expect(result).toEqual(defaultExperimentDataMock);
-  });
-
-  it("logs error, captures exception, and returns defaultExperimentData on fetch throw", async () => {
-    process.env.NIMBUS_SIDECAR_URL = "https://cirrus.example/";
-    getEnabledFeatureFlagsMock.mockReturnValue([] as FeatureFlagName[]);
-    headersMock.mockResolvedValue(new Headers([]));
-
-    fetchMock.mockRejectedValue(new Error("error"));
-
-    const { getExperiments } = await import("./getExperiments");
-
-    const result = await getExperiments({
-      experimentationId: "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
-      locale: "nl-NL",
-      countryCode: "nl",
-    });
-
-    expect(loggerMock.error).toHaveBeenCalledWith(
-      "Could not connect to Cirrus",
-      expect.objectContaining({
-        serverUrl: new URL("https://cirrus.example/v1/features"),
-        previewMode: false,
-        flags: [],
       }),
     );
     expect(captureExceptionMock).toHaveBeenCalledTimes(1);

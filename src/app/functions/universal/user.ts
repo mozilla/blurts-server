@@ -5,6 +5,7 @@
 import { Session } from "next-auth";
 import { ISO8601DateString } from "../../../utils/parse";
 import { SubscriberRow } from "knex/types/tables";
+import type { FeatureFlagName } from "../../../db/tables/featureFlags";
 
 export function hasPremium(user?: Session["user"] | SubscriberRow): boolean {
   const subscriptions =
@@ -24,8 +25,13 @@ export function hasPremium(user?: Session["user"] | SubscriberRow): boolean {
 export function canSubscribeToPremium(params: {
   user?: Session["user"];
   countryCode: string;
+  enabledFeatureFlags: FeatureFlagName[];
 }): boolean {
-  return !hasPremium(params.user) && params.countryCode.toLowerCase() === "us";
+  return (
+    !hasPremium(params.user) &&
+    params.countryCode.toLowerCase() === "us" &&
+    !params.enabledFeatureFlags.includes("FreeOnly")
+  );
 }
 
 // TODO: Add unit test when changing this code:
