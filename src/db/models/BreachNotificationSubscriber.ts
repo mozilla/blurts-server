@@ -6,6 +6,9 @@ import { SubscriberRow } from "knex/types/tables";
 import { getEmailAddressesByHashes } from "../tables/emailAddresses";
 import { getSubscribersByHashes } from "../tables/subscribers";
 
+// Covered by integration tests but report is not combined
+// TODO: MNTOR-5117
+/* c8 ignore start */
 export type BreachNotificationSubscriber = {
   subscriber_id: SubscriberRow["id"];
   all_emails_to_primary: SubscriberRow["all_emails_to_primary"];
@@ -51,3 +54,4 @@ export async function breachNotificationSubscribersByHashes(
   }));
   return primary.concat(secondary);
 }
+/* c8 ignore stop */

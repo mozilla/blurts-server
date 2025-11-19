@@ -21,6 +21,9 @@ export function getCronjobL10n(
 ): ExtendedReactLocalization {
   // We don't have a runtime language when we email people, so use their
   // language setting from when they signed up for their Mozilla account:
+  // Low priority for unit testing as it just calls a different function
+  // with a default value provided if the input argument is undefined
+  /* c8 ignore next */
   return getL10n(subscriber.signup_language ?? "en");
 }
 

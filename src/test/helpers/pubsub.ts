@@ -20,8 +20,20 @@ type MockSubscriptionEventMap = {
 
 // Handles the message and error hooks
 export class MockSubscription extends EventEmitter<MockSubscriptionEventMap> {
+  private _isOpen: boolean;
+
+  constructor() {
+    super();
+    this._isOpen = true;
+  }
   close() {
-    return;
+    this._isOpen = false;
+  }
+  open() {
+    this._isOpen = true;
+  }
+  get isOpen() {
+    return this._isOpen;
   }
   emitMessage(msg: Message) {
     this.emit("message", msg);

@@ -116,9 +116,27 @@ function emailSeed(
     subscriber_id: subscriberId,
     email,
     sha1: getSha1(email),
-    verification_token: faker.string.alphanumeric(),
+    verification_token: faker.string.alphanumeric({ length: 20 }),
     verified: faker.datatype.boolean(),
     ...(overrides ?? {}),
+  };
+}
+
+function emailNotificationSeed(
+  subscriberId: number,
+  breachId: number,
+  overrides?: Partial<
+    Omit<InsertType<"email_notifications">, "subscriber_id" | "breach_id">
+  >,
+): InsertType<"email_notifications"> {
+  return {
+    subscriber_id: subscriberId,
+    breach_id: breachId,
+    appeared: true,
+    notified: faker.datatype.boolean(),
+    email: faker.internet.exampleEmail(),
+    notification_type: "incident",
+    ...overrides,
   };
 }
 
@@ -126,4 +144,5 @@ export const seeds = {
   subscribers: subscriberSeed,
   breaches: breachSeed,
   emails: emailSeed,
+  emailNotifications: emailNotificationSeed,
 };

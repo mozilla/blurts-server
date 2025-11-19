@@ -9,6 +9,7 @@ import { mockMessage } from "../../../test/helpers/pubsub";
 import { breachMessageHandler } from "./emailBreachAlerts";
 import { mockBreachNotificationSubscriber as mockSubscriber } from "../../../test/db";
 import { createRandomHibpListing as mockBreach } from "../../../apiMocks/mockData";
+import { HibpLikeDbBreach } from "../../../utils/hibp";
 
 const defaultBreachName = "ExampleBreach";
 
@@ -16,6 +17,14 @@ const validMsgPayload = {
   breachName: defaultBreachName,
   hashPrefix: "AA",
   hashSuffixes: ["11"],
+};
+
+const validBreachDefaults: Partial<HibpLikeDbBreach> = {
+  Name: defaultBreachName,
+  IsFabricated: false,
+  IsSpamList: false,
+  IsVerified: true,
+  Domain: "http://example.com",
 };
 
 describe("breachMessageHandler", () => {
@@ -36,9 +45,7 @@ describe("breachMessageHandler", () => {
     const recipients = [false, true, null].map((override) =>
       mockSubscriber({ all_emails_to_primary: override }),
     );
-    const breachProvider = async () => [
-      mockBreach({ Name: defaultBreachName }),
-    ];
+    const breachProvider = async () => [mockBreach(validBreachDefaults)];
     // Set up mocked injected dependencies
     const subs = { findByHashes: jest.fn().mockResolvedValue(recipients) };
     const notifications = {
@@ -100,9 +107,7 @@ describe("breachMessageHandler", () => {
   });
 
   it("skips recipients already notified", async () => {
-    const breachProvider = async () => [
-      mockBreach({ Name: defaultBreachName }),
-    ];
+    const breachProvider = async () => [mockBreach(validBreachDefaults)];
     const subs = {
       findByHashes: jest
         .fn()
@@ -165,9 +170,7 @@ describe("breachMessageHandler", () => {
   });
 
   it("returns success:false when sending fails (and adds breadcrumb)", async () => {
-    const breachProvider = async () => [
-      mockBreach({ Name: defaultBreachName }),
-    ];
+    const breachProvider = async () => [mockBreach(validBreachDefaults)];
     const subs = {
       findByHashes: jest
         .fn()
@@ -224,9 +227,7 @@ describe("breachMessageHandler", () => {
   });
 
   it("sets the Sentry tag with breachName", async () => {
-    const breachProvider = async () => [
-      mockBreach({ Name: defaultBreachName }),
-    ];
+    const breachProvider = async () => [mockBreach(validBreachDefaults)];
     const subs = { findByHashes: jest.fn().mockResolvedValue([]) };
     const notifications = {
       subscriberNotifiedForBreach: jest.fn(),
