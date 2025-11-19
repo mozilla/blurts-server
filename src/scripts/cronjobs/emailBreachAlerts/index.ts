@@ -23,16 +23,21 @@ Sentry.setTag("job", "emailBreachAlerts");
 import "dotenv-flow/config";
 import { sentryLogger } from "../../../app/functions/server/logging";
 import { getAllBreachesFromDb } from "../../../utils/hibp";
-import { sendEmail } from "../../../utils/email";
+import { sendEmail, initEmail } from "../../../utils/email";
 import { breachNotificationSubscribersByHashes } from "../../../db/models/BreachNotificationSubscriber";
 import * as NotificationsRepo from "../../../db/tables/email_notifications";
 import { main } from "./emailBreachAlerts";
 
 start();
 
-function start() {
+async function start() {
   const projectId = process.env.GCP_PUBSUB_PROJECT_ID;
   const subscription = process.env.GCP_PUBSUB_SUBSCRIPTION_NAME;
+  sentryLogger.info("Info", {
+    projectId,
+    subscription,
+    emulator: process.env.PUBSUB_EMUlATOR_HOST,
+  });
   if (!projectId) {
     throw new Error("Environment variable [$GCP_PUBSUB_PROJECT_ID] not set.");
   }
@@ -41,6 +46,8 @@ function start() {
       "Environment variable [$GCP_PUBSUB_SUBSCRIPTION_NAME] not set.",
     );
   }
+  // Transport must be initialized before sendEmail can be called
+  await initEmail();
   main({
     gcp: {
       projectId,

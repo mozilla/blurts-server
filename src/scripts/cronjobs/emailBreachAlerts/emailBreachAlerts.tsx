@@ -17,6 +17,7 @@ import { getCronjobL10n } from "../../../app/functions/l10n/cronjobs";
 import { renderEmail } from "../../../emails/renderEmail";
 import { BreachAlertEmail } from "../../../emails/templates/breachAlert/BreachAlertEmail";
 import { MessageSummary, SubscriptionHandler } from "./subscriptionHandler";
+import * as grpc from "@grpc/grpc-js";
 
 type BreachNotifiableResponse = {
   shouldNotify: boolean;
@@ -248,8 +249,21 @@ type EmailBreachAlertsJobConfig = {
   Sentry: typeof Sentry;
 };
 
+// This can be covered by integration tests but only in node
+// (not jsdom) environment, due to pubsub requiring setImmediate etc.
+// TODO: [MNTOR-1880]
+/* c8 ignore start */
 export function main(config: EmailBreachAlertsJobConfig) {
-  const pubsub = new PubSub({ projectId: config.gcp.projectId });
+  const localConfig = process.env.PUBSUB_EMULATOR_HOST
+    ? {
+        apiEndpoint: process.env.PUBSUB_EMULATOR_HOST,
+        sslCreds: grpc.credentials.createInsecure(),
+      }
+    : {};
+  const pubsub = new PubSub({
+    projectId: config.gcp.projectId,
+    ...localConfig,
+  });
   const subscription = pubsub.subscription(config.gcp.subscription, {
     flowControl: {
       // Maximum messages that may be in progress at once
@@ -271,3 +285,4 @@ export function main(config: EmailBreachAlertsJobConfig) {
     process: process,
   });
 }
+/* c8 ignore end */

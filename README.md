@@ -294,7 +294,7 @@ You can also enforce the alert being sent for a specific email address via the
 # Replace with whatever email address you used above, or omit and
 # export env var first to persist between runs
 # `export HIBP_TEST_EAMIL=replace-me-email@example.com`
-HIBP_TEST_EMAIL="replace-me-email@example.com"; \
+HIBP_TEST_EMAIL="kschelonka+dev4@mozilla.com"; \
 HASH=$(echo -n "$HIBP_TEST_EMAIL" | sha1sum | awk '{print $1}'); \
 PREFIX=${HASH:0:7}; \
 SUFFIX=${HASH:7}; \

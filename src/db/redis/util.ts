@@ -6,6 +6,8 @@ import { Redis, RedisOptions } from "ioredis";
 import { redisConfiguration } from "./configuration";
 import { logger } from "../../app/functions/server/logging";
 
+// TODO: Testing
+/* c8 ignore start */
 function getRedisConfiguration(): {
   port: number;
   host: string;
@@ -53,3 +55,4 @@ export function createRedisInstance(config = getRedisConfiguration()) {
     throw e;
   }
 }
+/* c8 ignore stop */

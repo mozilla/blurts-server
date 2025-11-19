@@ -27,10 +27,12 @@ export class SubscriptionHandler {
   logger: Logger;
   state: SubscriptionState;
 
-  private startDrain(signal: string) {
+  private async startDrain(signal: string) {
     this.logger.info(`Received ${signal}. Draining...`);
     this.state = "draining";
-    this.subscription.close();
+    if (this.subscription.isOpen) {
+      await this.subscription.close();
+    }
   }
 
   constructor(opts: SubscriptionHandlerOpts) {
@@ -38,11 +40,11 @@ export class SubscriptionHandler {
     this.subscription = opts.subscription;
     this.logger = opts.logger;
 
-    opts.process.on("SIGTERM", () => {
-      this.startDrain("SIGTERM");
+    opts.process.on("SIGTERM", async () => {
+      await this.startDrain("SIGTERM");
     });
-    opts.process.on("SIGINT", () => {
-      this.startDrain("SIGINT");
+    opts.process.on("SIGINT", async () => {
+      await this.startDrain("SIGINT");
     });
 
     this.logger.info("Attaching handler to subscription", {
@@ -50,6 +52,7 @@ export class SubscriptionHandler {
     });
 
     this.subscription.on("message", async (message: Message) => {
+      this.logger.info("Received message");
       // Don't accept new messages if in 'draining' state
       // Unlikely, but just in case
       if (this.state === "draining") {

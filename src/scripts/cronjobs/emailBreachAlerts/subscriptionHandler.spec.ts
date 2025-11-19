@@ -18,9 +18,9 @@ describe("SubscriptionHandler", () => {
 
   beforeEach(() => {
     logger = mockLogger();
+    subCloseSpy = jest.spyOn(MockSubscription.prototype, "close");
     sub = new MockSubscription();
     proc = new MockProcess();
-    subCloseSpy = jest.spyOn(MockSubscription.prototype, "close");
     jest.clearAllMocks();
   });
 
