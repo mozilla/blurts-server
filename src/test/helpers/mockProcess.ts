@@ -9,6 +9,7 @@ type MockProcessSignalEventMap = {
   SIGINT: [];
 };
 
+/** Minimal NodeJs process mock for testing termination signals */
 export class MockProcess extends EventEmitter<MockProcessSignalEventMap> {
   emitSignal(signal: keyof MockProcessSignalEventMap) {
     this.emit(signal);

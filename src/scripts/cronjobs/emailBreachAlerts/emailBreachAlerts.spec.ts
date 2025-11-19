@@ -7,9 +7,11 @@ import * as Sentry from "@sentry/node";
 import { mockLogger } from "../../../test/helpers/mockLogger";
 import { mockMessage } from "../../../test/helpers/pubsub";
 import { breachMessageHandler } from "./emailBreachAlerts";
-import { mockBreachNotificationSubscriber as mockSubscriber } from "../../../test/db";
+import { seeds } from "../../../test/db";
 import { createRandomHibpListing as mockBreach } from "../../../apiMocks/mockData";
 import { HibpLikeDbBreach } from "../../../utils/hibp";
+
+const mockSubscriber = seeds.breachNotificationSubscriber;
 
 const defaultBreachName = "ExampleBreach";
 

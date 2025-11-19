@@ -9,7 +9,8 @@ import { createRandomHibpListing } from "../apiMocks/mockData";
 import { Knex } from "knex";
 import { getSha1 } from "../utils/fxa";
 
-export function mockBreachNotificationSubscriber(
+/** Fake for BreachNotificationSubscriber */
+function mockBreachNotificationSubscriber(
   overrides: Partial<BreachNotificationSubscriber> = {},
 ): BreachNotificationSubscriber {
   return {
@@ -31,6 +32,7 @@ type InsertType<T extends keyof Tables> =
     ? I
     : never;
 
+/** Insertable fake for subscribers table */
 function subscriberSeed(
   overrides?: Partial<InsertType<"subscribers">>,
 ): InsertType<"subscribers"> {
@@ -79,6 +81,7 @@ function subscriberSeed(
   return base;
 }
 
+/** Insertable fake for breaches table */
 function breachSeed(
   overrides?: Partial<InsertType<"breaches">>,
 ): InsertType<"breaches"> {
@@ -106,7 +109,7 @@ function breachSeed(
     ...(overrides ?? {}),
   };
 }
-
+/** Insertable fake for email_addresses table */
 function emailSeed(
   subscriberId: number,
   overrides?: Partial<Omit<InsertType<"email_addresses">, "subscriber_id">>,
@@ -122,6 +125,7 @@ function emailSeed(
   };
 }
 
+/** Insertable fake for email_notifications table */
 function emailNotificationSeed(
   subscriberId: number,
   breachId: number,
@@ -145,4 +149,5 @@ export const seeds = {
   breaches: breachSeed,
   emails: emailSeed,
   emailNotifications: emailNotificationSeed,
+  breachNotificationSubscriber: mockBreachNotificationSubscriber,
 };
