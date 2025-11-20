@@ -4,6 +4,8 @@
 
 import { it, expect } from "@jest/globals";
 import { SubscriberRow } from "knex/types/tables";
+import { getPlusShutdownState } from "./getPlusShutdownState";
+import { FeatureFlagName } from "../../../db/tables/featureFlags";
 
 const mockedNormalSubscriber = {
   fxa_profile_json: {
@@ -16,71 +18,48 @@ const mockedPlusSubscriber = {
   },
 } as unknown as SubscriberRow;
 
-beforeEach(() => {
-  process.env.BROKER_SCAN_SHUTDOWN_DATE = "2025-12-17";
-  delete process.env.BROKER_SCAN_SHUTDOWN_RUNUP_DAYS;
-});
-
-it("does not mark today as a runup day if we're exactly BROKER_SCAN_SHUTDOWN_RUNUP_DAYS away from shutdown", async () => {
-  const shutdownDate = new Date(Date.now() + 42 * 24 * 60 * 60 * 1000);
-  process.env.BROKER_SCAN_SHUTDOWN_DATE = shutdownDate
-    .toISOString()
-    .split("T")[0];
-  process.env.BROKER_SCAN_SHUTDOWN_RUNUP_DAYS = "42";
-  // Note: we import this function dynamically so it picks up the new env vars:
-  const getPlusShutdownState = (await import("./getPlusShutdownState"))
-    .getPlusShutdownState;
-
-  const state = getPlusShutdownState(mockedNormalSubscriber);
+it("does not mark today as a runup day if both shutdown feature flags are disabled", async () => {
+  const state = getPlusShutdownState(mockedNormalSubscriber, [
+    "NotShutdownBanner" as FeatureFlagName,
+    "NotPostShutdownBanner" as FeatureFlagName,
+  ]);
 
   expect(state.currentMoment).toBe("ye-olden-days");
 });
 
-it("marks today as a runup day if we're less than BROKER_SCAN_SHUTDOWN_RUNUP_DAYS away from shutdown", async () => {
-  const shutdownDate = new Date(Date.now() + (42 - 1) * 24 * 60 * 60 * 1000);
-  process.env.BROKER_SCAN_SHUTDOWN_DATE = shutdownDate
-    .toISOString()
-    .split("T")[0];
-  process.env.BROKER_SCAN_SHUTDOWN_RUNUP_DAYS = "42";
-  // Note: we import this function dynamically so it picks up the new env vars:
-  const getPlusShutdownState = (await import("./getPlusShutdownState"))
-    .getPlusShutdownState;
-
-  const state = getPlusShutdownState(mockedNormalSubscriber);
+it("marks today as a runup day if the ShutdownBanner feature flag is enabled and the PostShutdownBanner feature flag is not", async () => {
+  const state = getPlusShutdownState(mockedNormalSubscriber, [
+    "ShutdownBanner",
+  ]);
 
   expect(state.currentMoment).toBe("runup");
 });
 
-it("marks today as a post-shutdown day if BROKER_SCAN_SHUTDOWN_DATE is in the past", async () => {
-  const shutdownDate = new Date(Date.now() - 1 * 24 * 60 * 60 * 1000);
-  process.env.BROKER_SCAN_SHUTDOWN_DATE = shutdownDate
-    .toISOString()
-    .split("T")[0];
-  // Note: we import this function dynamically so it picks up the new env vars:
-  const getPlusShutdownState = (await import("./getPlusShutdownState"))
-    .getPlusShutdownState;
+it("marks today as a post-shutdown day if the PostShutdownBanner feature flag is set", async () => {
+  const state = getPlusShutdownState(mockedNormalSubscriber, [
+    "PostShutdownBanner",
+  ]);
 
-  const state = getPlusShutdownState(mockedNormalSubscriber);
+  expect(state.currentMoment).toBe("shutdown");
+});
+
+it("marks today as a post-shutdown day if both the PostShutdownBanner *and* the ShutdownBanner feature flags are set", async () => {
+  const state = getPlusShutdownState(mockedNormalSubscriber, [
+    "PostShutdownBanner",
+    "ShutdownBanner",
+  ]);
 
   expect(state.currentMoment).toBe("shutdown");
 });
 
 it("recognises a free user", async () => {
-  // Note: we import this function dynamically so it picks up the new env vars:
-  const getPlusShutdownState = (await import("./getPlusShutdownState"))
-    .getPlusShutdownState;
-
-  const state = getPlusShutdownState(mockedNormalSubscriber);
+  const state = getPlusShutdownState(mockedNormalSubscriber, []);
 
   expect(state.hasPremium).toBe(false);
 });
 
 it("recognises a Plus user", async () => {
-  // Note: we import this function dynamically so it picks up the new env vars:
-  const getPlusShutdownState = (await import("./getPlusShutdownState"))
-    .getPlusShutdownState;
-
-  const state = getPlusShutdownState(mockedPlusSubscriber);
+  const state = getPlusShutdownState(mockedPlusSubscriber, []);
 
   expect(state.hasPremium).toBe(true);
 });
