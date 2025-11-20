@@ -174,7 +174,6 @@ export const MonthlyActivityFreeEmail = (
             subscriber={props.subscriber}
             l10n={l10n}
             dataSummary={props.dataSummary}
-            experimentData={props.experimentData}
             utmCampaignId={utmValues.utmCampaign}
             utmMedium={utmValues.utmMedium}
             utmSource={utmValues.utmSource}
