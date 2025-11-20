@@ -41,6 +41,6 @@ export function getPlusShutdownState(user: SubscriberRow): ShutdownState {
   return {
     currentMoment: currentMoment,
     hasPremium: hasPremium(user),
-    ranScan: typeof user.onerep_profile_id !== "undefined",
+    ranScan: user.onerep_profile_id !== null,
   };
 }
