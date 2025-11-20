@@ -7,7 +7,9 @@ import type { SubscriberRow } from "knex/types/tables";
 import { SanitizedSubscriberRow } from "../../app/functions/server/sanitize";
 
 export function getSignupLocaleCountry(
-  subscriber: SubscriberRow | SanitizedSubscriberRow,
+  subscriber:
+    | Pick<SubscriberRow, "fxa_profile_json">
+    | Pick<SanitizedSubscriberRow, "fxa_profile_json">,
 ) {
   const signupAcceptLanguages = acceptedLanguages(
     // This line is covered by the getSignupLocaleCountry test,

@@ -70,7 +70,10 @@ export async function POST(req: NextRequest) {
   try {
     const topic = pubsub.topic(topicName);
     await topic.publishMessage({ json });
-    logger.info("queued_breach_notification_success", { json });
+    logger.info("queued_breach_notification_success", {
+      json,
+      topic: topicName,
+    });
     return NextResponse.json({ success: true }, { status: 200 });
   } catch {
     if (process.env.NODE_ENV === "development") {

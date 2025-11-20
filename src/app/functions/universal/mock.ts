@@ -3,11 +3,11 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 export function isUsingMockHIBPEndpoint() {
-  return process.env.HIBP_KANON_API_ROOT?.includes("api/mock") as boolean;
+  return !!process.env.HIBP_KANON_API_ROOT?.includes("api/mock");
 }
 
 export function isUsingMockONEREPEndpoint() {
-  return process.env.ONEREP_API_BASE?.includes("api/mock") as boolean;
+  return !!process.env.ONEREP_API_BASE?.includes("api/mock");
 }
 
 export const ONEREP_API_BASE = process.env.ONEREP_API_BASE;

@@ -4,7 +4,7 @@
 
 import { getAllBreaches, knex } from "../db/tables/breaches";
 import { isUsingMockHIBPEndpoint } from "../app/functions/universal/mock.ts";
-import { BreachRow, EmailAddressRow, SubscriberRow } from "knex/types/tables";
+import { BreachRow } from "knex/types/tables";
 import { ISO8601DateString } from "./parse.js";
 import { HibpBreachDataTypes } from "../app/functions/universal/breach.ts";
 import { logger } from "../app/functions/server/logging";
@@ -130,6 +130,9 @@ export type HibpGetBreachesResponse = Array<{
   PwnCount: number;
 }>;
 
+// This is purely a wrapper to avoid passing
+// an argument and does not require unit tests itself
+/* c8 ignore next 3 */
 export async function fetchHibpBreaches(): Promise<HibpGetBreachesResponse> {
   return (await hibpApiFetch("/breaches")) as HibpGetBreachesResponse;
 }
@@ -286,32 +289,6 @@ async function getAllBreachesFromDb(): Promise<HibpLikeDbBreach[]> {
 /* c8 ignore stop */
 
 /**
- * Get addresses and language from either subscribers or email_addresses fields:
- */
-// TODO: Add unit test when changing this code:
-/* c8 ignore start */
-function getAddressesAndLanguageForEmail(
-  recipient: SubscriberRow | (SubscriberRow & EmailAddressRow),
-) {
-  if (hasEmailAddressAttached(recipient)) {
-    return {
-      breachedEmail: recipient.email,
-      recipientEmail: recipient.all_emails_to_primary
-        ? recipient.primary_email
-        : recipient.email,
-      signupLanguage: recipient.signup_language,
-    };
-  }
-
-  return {
-    breachedEmail: recipient.primary_email,
-    recipientEmail: recipient.primary_email,
-    signupLanguage: recipient.signup_language,
-  };
-}
-/* c8 ignore stop */
-
-/**
  * Filter breaches that we would not like to show.
  */
 // TODO: Add unit test when changing this code:
@@ -459,17 +436,8 @@ async function subscribeHash(sha1: string) {
 }
 /* c8 ignore stop */
 
-function hasEmailAddressAttached(
-  subscriberRow: SubscriberRow,
-): subscriberRow is SubscriberRow & EmailAddressRow {
-  return (
-    typeof (subscriberRow as SubscriberRow & EmailAddressRow).email === "string"
-  );
-}
-
 export {
   formatDataClassesArray,
-  getAddressesAndLanguageForEmail,
   getBreachesForEmail,
   getBreachByName,
   getAllBreachesFromDb,

@@ -17,10 +17,13 @@ import type { SanitizedSubscriberRow } from "../server/sanitize";
 import { parseMarkup } from "./parseMarkup";
 
 export function getCronjobL10n(
-  subscriber: SanitizedSubscriberRow,
+  subscriber: Pick<SanitizedSubscriberRow, "signup_language">,
 ): ExtendedReactLocalization {
   // We don't have a runtime language when we email people, so use their
   // language setting from when they signed up for their Mozilla account:
+  // Low priority for unit testing as it just calls a different function
+  // with a default value provided if the input argument is undefined
+  /* c8 ignore next */
   return getL10n(subscriber.signup_language ?? "en");
 }
 
