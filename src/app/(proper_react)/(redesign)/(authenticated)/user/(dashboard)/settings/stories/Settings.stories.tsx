@@ -8,7 +8,7 @@ import { SettingsWrapper } from "./SettingsStoryWrapper";
 import { CONST_SETTINGS_TAB_SLUGS } from "../../../../../../../../constants";
 
 const meta: Meta<typeof SettingsWrapper> = {
-  title: "Pages/Logged in/Settings/Redesign",
+  title: "Pages/Logged in/Settings",
   component: SettingsWrapper,
   argTypes: {
     activeTab: {
