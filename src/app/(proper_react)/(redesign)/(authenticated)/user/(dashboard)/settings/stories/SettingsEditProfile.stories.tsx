@@ -9,7 +9,7 @@ import { CONST_SETTINGS_TAB_SLUGS } from "../../../../../../../../constants";
 import { mockedProfileDataMax, mockedProfileDataMin } from "./settingsMockData";
 
 const meta: Meta<typeof SettingsWrapper> = {
-  title: "Pages/Logged in/Settings/Redesign/Edit profile (Plus only)",
+  title: "Pages/Logged in/Settings/Edit profile (Plus only)",
   component: SettingsWrapper,
   argTypes: {
     activeTab: {

@@ -202,7 +202,7 @@ export default async function DashboardPage(props: Props) {
       )) !== "undefined"
     : false;
 
-  const shutdownState = getPlusShutdownState(subscriber);
+  const shutdownState = getPlusShutdownState(subscriber, enabledFeatureFlags);
 
   return (
     <View

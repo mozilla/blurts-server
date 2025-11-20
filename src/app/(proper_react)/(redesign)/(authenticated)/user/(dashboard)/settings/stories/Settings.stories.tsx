@@ -8,7 +8,7 @@ import { SettingsWrapper } from "./SettingsStoryWrapper";
 import { CONST_SETTINGS_TAB_SLUGS } from "../../../../../../../../constants";
 
 const meta: Meta<typeof SettingsWrapper> = {
-  title: "Pages/Logged in/Settings/Redesign",
+  title: "Pages/Logged in/Settings",
   component: SettingsWrapper,
   argTypes: {
     activeTab: {
@@ -25,6 +25,10 @@ export const SettingsNoDefaultTab: Story = {
   args: {
     countryCode: "us",
     activeTab: undefined,
+    enabledFeatureFlags: [
+      "EditScanProfileDetails",
+      "SidebarNavigationRedesign",
+    ],
   },
 };
 
@@ -33,7 +37,10 @@ export const SettingsEditManageAccount: Story = {
   args: {
     countryCode: "us",
     activeTab: "manage-account",
-    hasPlus: false,
+    enabledFeatureFlags: [
+      "SidebarNavigationRedesign",
+      "EditScanProfileDetails",
+    ],
   },
 };
 
@@ -43,7 +50,11 @@ export const SettingsEditManageAccountPlus: Story = {
     hasPlus: true,
     countryCode: "us",
     activeTab: "manage-account",
-    enabledFeatureFlags: ["CancellationFlow"],
+    enabledFeatureFlags: [
+      "SidebarNavigationRedesign",
+      "EditScanProfileDetails",
+      "CancellationFlow",
+    ],
   },
 };
 
@@ -52,6 +63,10 @@ export const SettingsEditNotifications: Story = {
   args: {
     countryCode: "us",
     activeTab: "notifications",
+    enabledFeatureFlags: [
+      "SidebarNavigationRedesign",
+      "EditScanProfileDetails",
+    ],
   },
 };
 
@@ -61,5 +76,9 @@ export const SettingsEditNotificationsPlus: Story = {
     countryCode: "us",
     hasPlus: true,
     activeTab: "notifications",
+    enabledFeatureFlags: [
+      "SidebarNavigationRedesign",
+      "EditScanProfileDetails",
+    ],
   },
 };

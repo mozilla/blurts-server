@@ -3,9 +3,9 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import {
-  SettingsPanelEditInfoRedesign,
-  SettingsPanelEditInfoRedesignProps,
-} from "./SettingsPanelEditInfoRedesign";
+  SettingsPanelEditInfo,
+  SettingsPanelEditInfoProps,
+} from "./SettingsPanelEditInfo";
 import {
   SettingsPanelNotifications,
   SettingsPanelNotificationsProps,
@@ -21,7 +21,7 @@ import {
 import styles from "./Panel.module.scss";
 import { TabType } from "../View";
 
-export type SettingsProps = SettingsPanelEditInfoRedesignProps &
+export type SettingsProps = SettingsPanelEditInfoProps &
   SettingsPanelNotificationsProps &
   SettingsPanelManageAccountProps &
   SettingsPanelEditProfileProps & {
@@ -32,7 +32,7 @@ export type SettingsProps = SettingsPanelEditInfoRedesignProps &
 function Panel(props: SettingsProps) {
   switch (props.activeTab) {
     case "edit-info":
-      return <SettingsPanelEditInfoRedesign {...props} />;
+      return <SettingsPanelEditInfo {...props} />;
     case "notifications":
       return <SettingsPanelNotifications {...props} />;
     case "manage-account":
@@ -40,7 +40,7 @@ function Panel(props: SettingsProps) {
     case "edit-profile":
       return <SettingsPanelEditProfile {...props} />;
     default:
-      return <SettingsPanelEditInfoRedesign {...props} />;
+      return <SettingsPanelEditInfo {...props} />;
   }
 }
 
