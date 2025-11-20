@@ -19,6 +19,8 @@ type Props = {
     | Pick<SanitizedSubscriberRow, "fxa_profile_json" | "onerep_profile_id">
     | Pick<SubscriberRow, "fxa_profile_json" | "onerep_profile_id">;
   utmCampaignId: string;
+  utmSource: string;
+  utmMedium: string;
 };
 
 export const DataPointCount = (props: Props) => {

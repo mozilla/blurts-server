@@ -24,6 +24,7 @@ const meta: Meta<FC<BreachAlertEmailProps>> = {
   ),
   args: {
     l10n: getL10n("en"),
+    utmCampaignId: "breach-alert",
     subscriber: {
       fxa_profile_json: {
         locale: "en-US",
@@ -40,6 +41,7 @@ export const BreachAlertEmailNonUsStory: Story = {
   name: "Breach alert/Non-US",
   args: {
     breach: createRandomHibpListing(),
+    breachedEmail: "example@example.com",
     subscriber: {
       fxa_profile_json: {
         locale: "en-CA",
@@ -53,6 +55,7 @@ export const BreachAlertEmailUsFreeNoScanStory: Story = {
   name: "Breach alert/US free, no scan yet",
   args: {
     breach: createRandomHibpListing(),
+    breachedEmail: "example@example.com",
     dataSummary: getDashboardSummary(
       [],
       Array.from({ length: 5 }, () => createRandomBreach()),
@@ -64,6 +67,7 @@ export const BreachAlertEmailUsFreeWithScanStory: Story = {
   name: "Breach alert/US free, scan has run",
   args: {
     breach: createRandomHibpListing(),
+    breachedEmail: "example@example.com",
     dataSummary: getDashboardSummary(
       Array.from({ length: 5 }, () => createRandomScanResult()),
       Array.from({ length: 5 }, () => createRandomBreach()),
@@ -78,6 +82,7 @@ export const BreachAlertEmailUsPlusNoScanStory: Story = {
   name: "Breach alert/US Plus, no scan yet",
   args: {
     breach: createRandomHibpListing(),
+    breachedEmail: "example@example.com",
     subscriber: {
       onerep_profile_id: null,
       fxa_profile_json: {
@@ -91,6 +96,7 @@ export const BreachAlertEmailUsPlusWithScanStory: Story = {
   name: "Breach alert/US Plus, scan has run",
   args: {
     breach: createRandomHibpListing(),
+    breachedEmail: "example@example.com",
     subscriber: {
       onerep_profile_id: 1,
       fxa_profile_json: {

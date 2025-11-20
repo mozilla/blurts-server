@@ -44,6 +44,7 @@ import { getEnabledFeatureFlags } from "../../../../../../db/tables/featureFlags
 import { getExperimentationIdFromUserSession } from "../../../../../functions/server/getExperimentationId";
 import { getExperiments } from "../../../../../functions/server/getExperiments";
 import { getLocale } from "../../../../../functions/universal/getLocale";
+import { BREACH_ALERT_UTM_CAMPAIGN_ID } from "../../../../../../constants";
 
 async function getAdminSubscriber(): Promise<SubscriberRow | null> {
   const session = await getServerSession();
@@ -257,7 +258,9 @@ export async function triggerBreachAlert(emailAddress: string) {
     l10n.getString("email-breach-alert-all-subject"),
     <BreachAlertEmail
       subscriber={subscriber}
+      breachedEmail={emailAddress}
       breach={createRandomHibpListing()}
+      utmCampaignId={BREACH_ALERT_UTM_CAMPAIGN_ID}
       l10n={l10n}
       dataSummary={
         isEligibleForPremium(assumedCountryCode) && !hasPremium(subscriber)

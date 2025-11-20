@@ -18,6 +18,7 @@ import { renderEmail } from "../../../emails/renderEmail";
 import { BreachAlertEmail } from "../../../emails/templates/breachAlert/BreachAlertEmail";
 import { MessageSummary, SubscriptionHandler } from "./subscriptionHandler";
 import * as grpc from "@grpc/grpc-js";
+import { BREACH_ALERT_UTM_CAMPAIGN_ID } from "../../../constants";
 
 type BreachNotifiableResponse = {
   shouldNotify: boolean;
@@ -204,6 +205,8 @@ export async function breachMessageHandler(
           <BreachAlertEmail
             l10n={l10n}
             breach={breachAlert}
+            breachedEmail={recipient.breached_email}
+            utmCampaignId={BREACH_ALERT_UTM_CAMPAIGN_ID}
             subscriber={recipient}
             dataSummary={undefined}
           />,

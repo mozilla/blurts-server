@@ -19,6 +19,8 @@ import { HeaderStyles, MetaTags } from "../../components/HeaderStyles";
 export type BreachAlertEmailProps = {
   l10n: ExtendedReactLocalization;
   breach: HibpLikeDbBreach;
+  breachedEmail: string;
+  utmCampaignId: string;
   subscriber: Pick<
     SubscriberRow,
     "fxa_profile_json" | "onerep_profile_id" | "fxa_profile_json"
@@ -208,6 +210,8 @@ export const BreachAlertEmail = (props: BreachAlertEmailProps) => {
               {...props}
               dataSummary={props.dataSummary}
               utmCampaignId={utmCampaignId}
+              utmMedium="email"
+              utmSource="monitor-product"
             />
           )}
         <RedesignedEmailFooter l10n={l10n} utm_campaign={utmCampaignId} />
