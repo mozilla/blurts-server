@@ -68,6 +68,7 @@ jest.mock("../../../../../../hooks/useTelemetry");
 import {
   mockedAnnouncements,
   mockedFreeSubscriberEmailPreferences,
+  mockedPlusSubscriberEmailPreferences,
   mockedProfileDataMax,
   mockedProfileDataMin,
   mockedSecondaryVerifiedEmail,
