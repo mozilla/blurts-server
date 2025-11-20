@@ -12,7 +12,6 @@ import { StorybookEmailRenderer } from "../../StorybookEmailRenderer";
 import { getL10n } from "../../../app/functions/l10n/storybookAndJest";
 import { SanitizedSubscriberRow } from "../../../app/functions/server/sanitize";
 import { dataClassKeyMap } from "../../../app/functions/server/dashboard";
-import { defaultExperimentData } from "../../../telemetry/generated/nimbus/experiments";
 
 const meta: Meta<FC<MonthlyActivityFreeEmailProps>> = {
   title: "Emails/Monthly activity (free user)",
@@ -78,7 +77,6 @@ export const MonthlyReportFreeUserNoScanWithBreachesNothingResolved: Story = {
   args: {
     unsubscribeLink: "/",
     enabledFeatureFlags: [],
-    experimentData: defaultExperimentData["Features"],
     dataSummary: {
       ...mockedDataSummary,
       dataBreachUnresolvedNum: 10,
@@ -98,7 +96,6 @@ export const MonthlyReportFreeUserNoScanWithBreachesResolved: Story = {
   args: {
     unsubscribeLink: "/",
     enabledFeatureFlags: [],
-    experimentData: defaultExperimentData["Features"],
     dataSummary: {
       ...mockedDataSummary,
       dataBreachUnresolvedNum: 10,
@@ -120,7 +117,6 @@ export const MonthlyReportFreeUserWithScanWithExposuresNothingResolved: Story =
     args: {
       unsubscribeLink: "/",
       enabledFeatureFlags: [],
-      experimentData: defaultExperimentData["Features"],
       dataSummary: {
         ...mockedDataSummary,
         unresolvedSanitizedDataPoints: [
@@ -144,7 +140,6 @@ export const MonthlyReportFreeUserWithScanWithExposuresResolved: Story = {
   args: {
     unsubscribeLink: "/",
     enabledFeatureFlags: [],
-    experimentData: defaultExperimentData["Features"],
     dataSummary: {
       ...mockedDataSummary,
       unresolvedSanitizedDataPoints: [
@@ -169,7 +164,6 @@ export const MonthlyReportFreeUserWithScanNoRemainingExposures: Story = {
   args: {
     unsubscribeLink: "/",
     enabledFeatureFlags: [],
-    experimentData: defaultExperimentData["Features"],
     dataSummary: {
       ...mockedDataSummary,
       unresolvedSanitizedDataPoints: [],
@@ -189,7 +183,6 @@ export const MonthlyReportFreeUserWithoutScanNoExposures: Story = {
   args: {
     unsubscribeLink: "/",
     enabledFeatureFlags: [],
-    experimentData: defaultExperimentData["Features"],
     dataSummary: {
       ...mockedDataSummary,
       dataBreachResolvedNum: 0,
@@ -210,7 +203,6 @@ export const MonthlyReportFreeUserWithScanExpiredSubscriptionWithPastExposures: 
     args: {
       unsubscribeLink: "/",
       enabledFeatureFlags: [],
-      experimentData: defaultExperimentData["Features"],
       dataSummary: {
         ...mockedDataSummary,
         dataBreachResolvedNum: 0,
