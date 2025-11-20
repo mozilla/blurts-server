@@ -234,11 +234,7 @@ describe("Settings page redesign", () => {
       );
       render(
         <ComposedStory
-          enabledFeatureFlags={[
-            "SidebarNavigationRedesign",
-            "EditScanProfileDetails",
-            "IncreasedFreeMaxBreachEmails",
-          ]}
+          enabledFeatureFlags={["IncreasedFreeMaxBreachEmails"]}
         />,
       );
 
@@ -474,14 +470,7 @@ describe("Settings page redesign", () => {
         SettingsEditYourInfoNoPlus,
         SettingsEditYourInfoMeta,
       );
-      render(
-        <ComposeStory
-          enabledFeatureFlags={[
-            "SidebarNavigationRedesign",
-            "EditScanProfileDetails",
-          ]}
-        />,
-      );
+      render(<ComposeStory />);
 
       const upsellLink = screen.getByRole("link", {
         name: "Upgrade to ⁨Monitor Plus⁩ to protect your personal info",

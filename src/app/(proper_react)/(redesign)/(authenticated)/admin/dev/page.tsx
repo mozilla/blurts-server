@@ -5,7 +5,6 @@
 import { getServerSession } from "../../../../../functions/server/getServerSession";
 import { notFound } from "next/navigation";
 import { isAdmin } from "../../../../../api/utils/auth";
-import { getEnabledFeatureFlags } from "../../../../../../db/tables/featureFlags";
 import { UserAdmin } from "./UserAdmin";
 
 export default async function DevPage() {
@@ -18,13 +17,5 @@ export default async function DevPage() {
     return notFound();
   }
 
-  const enabledFeatureFlags = await getEnabledFeatureFlags({
-    email: session.user.email,
-  });
-  return (
-    <UserAdmin
-      isLocal={process.env.APP_ENV === "local"}
-      enabledFeatureFlags={enabledFeatureFlags}
-    />
-  );
+  return <UserAdmin isLocal={process.env.APP_ENV === "local"} />;
 }

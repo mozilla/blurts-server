@@ -27,10 +27,6 @@ export const SettingsDetailsAboutYouMinDetails: Story = {
     countryCode: "us",
     activeTab: "edit-profile",
     hasPlus: true,
-    enabledFeatureFlags: [
-      "SidebarNavigationRedesign",
-      "EditScanProfileDetails",
-    ],
     profileData: mockedProfileDataMin,
   },
 };
@@ -41,10 +37,6 @@ export const SettingsDetailsAboutYouMaxDetails: Story = {
     countryCode: "us",
     activeTab: "edit-profile",
     hasPlus: true,
-    enabledFeatureFlags: [
-      "SidebarNavigationRedesign",
-      "EditScanProfileDetails",
-    ],
     profileData: mockedProfileDataMax,
   },
 };

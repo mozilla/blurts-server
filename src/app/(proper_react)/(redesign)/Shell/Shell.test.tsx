@@ -6,18 +6,7 @@ import { it, expect } from "@jest/globals";
 import { render, screen } from "@testing-library/react";
 import { composeStory } from "@storybook/react";
 import { axe } from "jest-axe";
-import Meta, {
-  ShellAuthenticated,
-  ShellAuthenticatedRedesign,
-} from "./Shell.stories";
-
-describe("ShellAuthenticated", () => {
-  it("passes the axe accessibility test suite", async () => {
-    const ShellComponent = composeStory(ShellAuthenticated, Meta);
-    const { container } = render(<ShellComponent />);
-    expect(await axe(container)).toHaveNoViolations();
-  }, 10_000);
-});
+import Meta, { ShellAuthenticatedRedesign } from "./Shell.stories";
 
 describe("ShellAuthenticatedRedesign", () => {
   it("passes the axe accessibility test suite", async () => {
@@ -26,16 +15,9 @@ describe("ShellAuthenticatedRedesign", () => {
     expect(await axe(container)).toHaveNoViolations();
   }, 10_000);
 
-  it("shows the “Update scan info” navbar item when the flag `EditScanProfileDetails` is enabled", async () => {
+  it("shows the “Update scan info” navbar item", async () => {
     const ShellComponent = composeStory(ShellAuthenticatedRedesign, Meta);
-    render(
-      <ShellComponent
-        enabledFeatureFlags={[
-          "SidebarNavigationRedesign",
-          "EditScanProfileDetails",
-        ]}
-      />,
-    );
+    render(<ShellComponent />);
 
     // Note: there are two user menus, for both small and wide screens:
     const updateScanInfoItems = screen.getAllByRole("link", {
@@ -50,13 +32,32 @@ describe("ShellAuthenticatedRedesign", () => {
     expect(editYourInfoItems).toHaveLength(0);
   });
 
-  it("shows the “Edit your info” navbar item when the flag `EditScanProfileDetails` is not enabled", async () => {
+  it("shows the 'Update scan info' navbar item for non-Free users", () => {
     const ShellComponent = composeStory(ShellAuthenticatedRedesign, Meta);
-    render(
-      <ShellComponent enabledFeatureFlags={["SidebarNavigationRedesign"]} />,
-    );
 
-    // Note: there are two user menus, for both small and wide screens:
+    // Non-Free user: no "FreeOnly" flag
+    render(<ShellComponent enabledFeatureFlags={[]} />);
+
+    // Note: there are two nav menus (small and wide screens)
+    const updateScanInfoItems = screen.getAllByRole("link", {
+      name: "Update scan info",
+    });
+    expect(updateScanInfoItems[0]).toBeInTheDocument();
+    expect(updateScanInfoItems[1]).toBeInTheDocument();
+
+    const editYourInfoItems = screen.queryAllByRole("link", {
+      name: "Edit your info",
+    });
+    expect(editYourInfoItems).toHaveLength(0);
+  });
+
+  it("shows the 'Edit your info' navbar item for FreeOnly users", () => {
+    const ShellComponent = composeStory(ShellAuthenticatedRedesign, Meta);
+
+    // Free user: has "FreeOnly" flag
+    render(<ShellComponent enabledFeatureFlags={["FreeOnly"]} />);
+
+    // Note: there are two nav menus (small and wide screens)
     const editYourInfoItems = screen.getAllByRole("link", {
       name: "Edit your info",
     });
