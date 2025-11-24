@@ -1290,6 +1290,24 @@ it("shows the correct dashboard banner title for US users, without Premium, unre
   expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
+it("should show a call to the manual resolution flow for US users, without Premium, unresolved scan, no breaches, when the `FreeOnly` flag is enabled", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumUnresolvedScanNoBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard enabledFeatureFlags={["FreeOnly"]} />);
+
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const cta = getByRole(dashboardTopBanner, "link", {
+    name: "Let’s keep going",
+  });
+  expect(cta.getAttribute("href")).toBe(
+    "/user/dashboard/fix/data-broker-profiles/manual-remove",
+  );
+});
+
 it("shows the correct dashboard banner CTA and sends telemetry for US users, without Premium, unresolved scan, no breaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumUnresolvedScanNoBreaches,
@@ -1718,6 +1736,22 @@ it("shows the correct dashboard banner title for US user, with Premium, unresolv
     "Your data is protected",
   );
   expect(dashboardTopBannerTitle).toBeInTheDocument();
+});
+
+it("tells US user, with Premium, unresolved scan, no breaches, that there's nothing left to do but to see what's happened when the `FreeOnly` flag is enabled", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumUnresolvedScanNoBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard enabledFeatureFlags={["FreeOnly"]} />);
+
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const cta = getByRole(dashboardTopBanner, "button", {
+    name: "See what’s fixed",
+  });
+  expect(cta).toBeInTheDocument();
 });
 
 it("tells the user that they don't need to do anything now if they have Premium and have no breaches, even if there are still new scan results (for which opt-out requests will be sent later)", () => {
