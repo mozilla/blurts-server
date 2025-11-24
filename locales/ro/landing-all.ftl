@@ -15,7 +15,7 @@ landing-all-hero-image-chart-label = expuneri
 # Value Proposition
 
 landing-all-value-prop-fix-exposures = Te vom ajuta să îți remediezi expunerile
-landing-all-value-prop-fix-exposures-description = Misiunea noastră este să îți readucem controlul asupra datelor tale personale. Te vom ajuta să rezolvi încălcările de securitate a datelor și să îți păstrăm informațiile private — și îți vom <privacy_link>respecta confidențialitatea</privacy_link> în acest proces.
+landing-all-value-prop-fix-exposures-description = Misiunea noastră este să îți redăm controlul asupra datelor tale personale. Te vom ajuta să rezolvi încălcările de securitate a datelor și să îți păstrezi informațiile private — și îți vom <privacy_link>respecta confidențialitatea</privacy_link> în acest proces.
 landing-all-value-prop-info-at-risk = Ce informații ar putea fi în pericol?
 landing-all-value-prop-info-at-risk-description = Scurgerile de date fac, din păcate, parte din viața noastră digitală. Parolele, datele de contact, informațiile financiare și alte informații personale pot fi expuse, punându-ne în pericol de furt de identitate.
 
