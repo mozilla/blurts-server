@@ -227,6 +227,13 @@ influence behaviour, so updates should generally be safe.
 We use Knex.js (which builds on `pg`) to interact with the database, so if you
 can load your data and change your settings, nothing broke.
 
+### `sharp`
+
+This is an optional dependency that we don't use directly, but is used by Next.js's `<Image>` component if it is installed.
+See https://nextjs.org/docs/messages/install-sharp
+
+You can probably assume that it works correctly if `<Image>` components render correctly, e.g. the `i` shield icon in the top right-hand corner of `user/settings/edit-info`.
+
 ### `mjml` and `mjml-browser`
 
 MJML is a templating language that outputs HTML that works well across the
