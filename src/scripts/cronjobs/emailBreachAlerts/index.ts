@@ -5,9 +5,8 @@
 "use strict";
 
 /**
- * Cron: Daily
- * From all the HIBP breaches, we parse out the new breaches that are not already present
- * in firefox remote settings, and update the data source accordingly
+ * Process messages in the breach alerts topic, emailing
+ * affected subscribers to notify them of breach topic.
  */
 
 import * as Sentry from "@sentry/node";
