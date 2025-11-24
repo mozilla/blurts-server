@@ -114,7 +114,7 @@
     "react-stately": "^3.42.0",
     "react-toastify": "^11.0.5",
     "server-only": "^0.0.1",
-    "sharp": "^0.34.2",
+    "sharp": "^0.34.5",
     "uuid": "^11.1.0",
     "winston": "^3.18.3",
     "winston-transport": "^4.9.0"
