@@ -145,7 +145,7 @@
     "@typescript-eslint/eslint-plugin": "^8.46.4",
     "@typescript-eslint/parser": "^8.32.1",
     "adm-zip": "^0.5.16",
-    "esbuild": "0.25.11",
+    "esbuild": "0.27.0",
     "eslint": "^9.39.1",
     "eslint-config-next": "15.5.4",
     "eslint-import-resolver-typescript": "^4.4.4",
