@@ -128,7 +128,7 @@
     "@storybook/addon-docs": "^9.1.15",
     "@storybook/addon-links": "^9.1.15",
     "@storybook/nextjs": "^9.1.15",
-    "@testing-library/jest-dom": "^6.8.0",
+    "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.0",
     "@types/adm-zip": "^0.5.7",
