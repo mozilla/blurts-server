@@ -11,12 +11,10 @@ import { useL10n } from "../../hooks/l10n";
 import { useLocalDismissal } from "../../hooks/useLocalDismissal";
 import { useHasRenderedClientSide } from "../../hooks/useHasRenderedClientSide";
 import { type ShutdownState } from "../../functions/server/getPlusShutdownState";
-import { FeatureFlagName } from "../../../db/tables/featureFlags";
 
 type Props = {
   shutdownState: ShutdownState;
   countryCode: string;
-  enabledFeatureFlags: FeatureFlagName[];
 };
 
 export const PlusShutdownBanner = (props: Props) => {
@@ -29,7 +27,6 @@ export const PlusShutdownBanner = (props: Props) => {
 
   if (
     !hasRenderedClientSide ||
-    !props.enabledFeatureFlags.includes("ShutdownBanner") ||
     // Free users who haven't run a scan have no data that would be lost:
     (!props.shutdownState.ranScan && !props.shutdownState.hasPremium) ||
     props.shutdownState.currentMoment === "ye-olden-days" ||
