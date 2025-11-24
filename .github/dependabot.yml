@@ -24,6 +24,7 @@ updates:
           - "eslint-*"
         exclude-patterns:
           - "eslint-config-next"
+          - "eslint-plugin-storybook"
       jest:
         patterns:
           - "babel-jest"
@@ -49,6 +50,7 @@ updates:
         patterns:
           - "storybook"
           - "@storybook/*"
+          - "eslint-plugin-storybook"
         exclude-patterns:
           - "eslint-config-next"
       fluent:
