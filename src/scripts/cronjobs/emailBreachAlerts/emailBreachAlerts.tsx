@@ -4,7 +4,7 @@
 
 import { Message, PubSub } from "@google-cloud/pubsub";
 import type { Logger } from "winston";
-import { getBreachByName, type HibpLikeDbBreach } from "../../../utils/hibp";
+import { type HibpLikeDbBreach } from "../../../utils/hibp";
 import { sendEmail as sendEmailFn } from "../../../utils/email";
 import * as Sentry from "@sentry/node";
 import { breachNotificationSubscribersByHashes } from "../../../db/models/BreachNotificationSubscriber";
@@ -19,6 +19,7 @@ import { BreachAlertEmail } from "../../../emails/templates/breachAlert/BreachAl
 import { MessageSummary, SubscriptionHandler } from "./subscriptionHandler";
 import * as grpc from "@grpc/grpc-js";
 import { BREACH_ALERT_UTM_CAMPAIGN_ID } from "../../../constants";
+import { BreachDataService } from "../../../services/BreachDataService";
 
 type BreachNotifiableResponse = {
   shouldNotify: boolean;
@@ -110,7 +111,7 @@ function breachIsNotifiable(
 export async function breachMessageHandler(
   message: Message,
   logger: Logger,
-  breachProvider: () => Promise<HibpLikeDbBreach[]>,
+  breachService: BreachDataService,
   subs: typeof SubscribersRepo,
   notifications: typeof NotificationsRepo,
   sendEmail: typeof sendEmailFn,
@@ -123,8 +124,7 @@ export async function breachMessageHandler(
   // Hydrate breach data
   // Ensure that the breach data exists in the db,
   // and it matches our rules for email notifications
-  const breaches = await breachProvider();
-  const breachAlert = getBreachByName(breaches, data.breachName);
+  const breachAlert = await breachService.getBreach(data.breachName);
   sentry?.setTag("breachName", data.breachName);
   if (!breachAlert) {
     throw new Error(

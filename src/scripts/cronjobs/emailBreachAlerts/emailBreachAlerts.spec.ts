@@ -10,6 +10,7 @@ import { breachMessageHandler } from "./emailBreachAlerts";
 import { seeds } from "../../../test/db";
 import { createRandomHibpListing as mockBreach } from "../../../apiMocks/mockData";
 import { HibpLikeDbBreach } from "../../../utils/hibp";
+import { BreachDataService } from "../../../services/BreachDataService";
 
 const mockSubscriber = seeds.breachNotificationSubscriber;
 
@@ -33,6 +34,7 @@ describe("breachMessageHandler", () => {
   let logger: Logger;
   const breadcrumbSpy = jest.spyOn(Sentry, "addBreadcrumb").mockReturnValue();
   const setTagSpy = jest.spyOn(Sentry, "setTag").mockReturnValue();
+  const breachSpy = jest.spyOn(BreachDataService.prototype, "getBreach");
 
   beforeEach(() => {
     logger = mockLogger() as unknown as Logger;
@@ -47,7 +49,7 @@ describe("breachMessageHandler", () => {
     const recipients = [false, true, null].map((override) =>
       mockSubscriber({ all_emails_to_primary: override }),
     );
-    const breachProvider = async () => [mockBreach(validBreachDefaults)];
+    breachSpy.mockResolvedValueOnce(mockBreach(validBreachDefaults));
     // Set up mocked injected dependencies
     const subs = { findByHashes: jest.fn().mockResolvedValue(recipients) };
     const notifications = {
@@ -62,7 +64,7 @@ describe("breachMessageHandler", () => {
     const res = await breachMessageHandler(
       message,
       logger,
-      breachProvider,
+      { getBreach: breachSpy } as unknown as BreachDataService,
       subs,
       notifications,
       sendEmail,
@@ -77,7 +79,7 @@ describe("breachMessageHandler", () => {
 
   it("skips if breach is not notifiable", async () => {
     const breach = mockBreach({ Name: defaultBreachName, IsVerified: false }); // not notifiable
-    const breachProvider = async () => [breach];
+    breachSpy.mockResolvedValueOnce(breach);
     const subs = { findByHashes: jest.fn() };
     // Doesn't really matter here as it shouldn't reach this far
     const notifications = {
@@ -92,7 +94,7 @@ describe("breachMessageHandler", () => {
     const res = await breachMessageHandler(
       message,
       logger,
-      breachProvider,
+      { getBreach: breachSpy } as unknown as BreachDataService,
       subs,
       notifications,
       sendEmail,
@@ -109,7 +111,7 @@ describe("breachMessageHandler", () => {
   });
 
   it("skips recipients already notified", async () => {
-    const breachProvider = async () => [mockBreach(validBreachDefaults)];
+    breachSpy.mockResolvedValueOnce(mockBreach(validBreachDefaults));
     const subs = {
       findByHashes: jest
         .fn()
@@ -128,7 +130,7 @@ describe("breachMessageHandler", () => {
     const res = await breachMessageHandler(
       message,
       logger,
-      breachProvider,
+      { getBreach: breachSpy } as unknown as BreachDataService,
       subs,
       notifications,
       sendEmail,
@@ -139,9 +141,7 @@ describe("breachMessageHandler", () => {
     expect(notifications.addEmailNotification).not.toHaveBeenCalled();
   });
   it("throws if breach is not in database", async () => {
-    const breachProvider = async () => [
-      mockBreach({ Name: "Breach that is not in the message payload" }),
-    ];
+    breachSpy.mockResolvedValueOnce(undefined);
     const subs = {
       findByHashes: jest
         .fn()
@@ -161,7 +161,7 @@ describe("breachMessageHandler", () => {
       breachMessageHandler(
         message,
         logger,
-        breachProvider,
+        { getBreach: breachSpy } as unknown as BreachDataService,
         subs,
         notifications,
         sendEmail,
@@ -172,7 +172,7 @@ describe("breachMessageHandler", () => {
   });
 
   it("returns success:false when sending fails (and adds breadcrumb)", async () => {
-    const breachProvider = async () => [mockBreach(validBreachDefaults)];
+    breachSpy.mockResolvedValueOnce(mockBreach(validBreachDefaults));
     const subs = {
       findByHashes: jest
         .fn()
@@ -190,7 +190,7 @@ describe("breachMessageHandler", () => {
     const res = await breachMessageHandler(
       message,
       logger,
-      breachProvider,
+      { getBreach: breachSpy } as unknown as BreachDataService,
       subs,
       notifications,
       sendEmail,
@@ -212,11 +212,12 @@ describe("breachMessageHandler", () => {
     { breachName: "Name", hashPrefix: "AA", hashSuffix: "11" },
   ])("throws on invalid payload", async (payload) => {
     const invalid = mockMessage(payload);
+    breachSpy.mockResolvedValueOnce(mockBreach(validBreachDefaults));
     await expect(
       breachMessageHandler(
         invalid,
         logger,
-        async () => [],
+        { getBreach: breachSpy } as unknown as BreachDataService,
         { findByHashes: jest.fn().mockResolvedValue([mockSubscriber()]) },
         {
           subscriberNotifiedForBreach: jest.fn().mockResolvedValue(false),
@@ -229,7 +230,7 @@ describe("breachMessageHandler", () => {
   });
 
   it("sets the Sentry tag with breachName", async () => {
-    const breachProvider = async () => [mockBreach(validBreachDefaults)];
+    breachSpy.mockResolvedValueOnce(mockBreach(validBreachDefaults));
     const subs = { findByHashes: jest.fn().mockResolvedValue([]) };
     const notifications = {
       subscriberNotifiedForBreach: jest.fn(),
@@ -242,7 +243,7 @@ describe("breachMessageHandler", () => {
     await breachMessageHandler(
       msg,
       logger,
-      breachProvider,
+      { getBreach: breachSpy } as unknown as BreachDataService,
       subs,
       notifications,
       sendEmail,

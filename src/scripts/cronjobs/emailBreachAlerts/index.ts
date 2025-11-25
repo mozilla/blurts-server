@@ -21,11 +21,18 @@ Sentry.setTag("job", "emailBreachAlerts");
 
 import "dotenv-flow/config";
 import { sentryLogger } from "../../../app/functions/server/logging";
-import { getAllBreachesFromDb } from "../../../utils/hibp";
+import { fetchHibpBreaches } from "../../../utils/hibp";
 import { sendEmail, initEmail } from "../../../utils/email";
 import { breachNotificationSubscribersByHashes } from "../../../db/models/BreachNotificationSubscriber";
 import * as NotificationsRepo from "../../../db/tables/email_notifications";
 import { job } from "./emailBreachAlerts";
+import { BreachDataService } from "../../../services/BreachDataService";
+import { redisClient } from "../../../db/redis/client";
+import { BreachSyncService } from "../../../services/BreachSyncService";
+import {
+  getAllBreaches as getBreaches,
+  upsertBreaches,
+} from "../../../db/tables/breaches";
 
 start();
 
@@ -47,6 +54,11 @@ async function start() {
   }
   // Transport must be initialized before sendEmail can be called
   await initEmail();
+  const redis = redisClient();
+  const syncService = new BreachSyncService(redis, fetchHibpBreaches, {
+    upsertBreaches,
+    getBreaches,
+  });
   job({
     gcp: {
       projectId,
@@ -54,7 +66,7 @@ async function start() {
     },
     messageFnOpts: [
       sentryLogger,
-      getAllBreachesFromDb,
+      new BreachDataService(redis, syncService, { getBreaches }, sentryLogger),
       { findByHashes: breachNotificationSubscribersByHashes },
       NotificationsRepo,
       sendEmail,
