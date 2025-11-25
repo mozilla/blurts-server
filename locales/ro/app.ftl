@@ -43,7 +43,7 @@ compromised-data = Date compromise:
 #   $hibp-link (String) - Link to Have I Been Pwned
 hibp-attribution = Datele privind încălcările securității datelor sunt furnizate de { $hibp-link }
 show-all = Afișează toate
-sign-out = Deconectare
+sign-out = Ieși din cont
 # Link title
 preferences = Preferințe
 # Link title
