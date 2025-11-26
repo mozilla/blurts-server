@@ -39,7 +39,6 @@ import { hasPremium } from "../../../../../functions/universal/user";
 import { isEligibleForPremium } from "../../../../../functions/universal/premium";
 import { MonthlyActivityFreeEmail } from "../../../../../../emails/templates/monthlyActivityFree/MonthlyActivityFreeEmail";
 import { getMonthlyActivityFreeUnsubscribeLink } from "../../../../../../app/functions/cronjobs/unsubscribeLinks";
-import { getScanResultsWithBroker } from "../../../../../../db/tables/onerep_scans";
 import { getEnabledFeatureFlags } from "../../../../../../db/tables/featureFlags";
 import { getExperimentationIdFromUserSession } from "../../../../../functions/server/getExperimentationId";
 import { getExperiments } from "../../../../../functions/server/getExperiments";
@@ -163,12 +162,7 @@ export async function triggerMonthlyActivityFree(emailAddress: string) {
     countryCode,
     locale: getLocale(l10n),
   });
-  const latestScan = await getScanResultsWithBroker(
-    subscriber.onerep_profile_id,
-    hasPremium(session.user),
-  );
   const data = getDashboardSummary(
-    latestScan.results,
     await getSubscriberBreaches({
       fxaUid: session.user.subscriber?.fxa_uid,
       countryCode,
@@ -206,12 +200,7 @@ export async function triggerMonthlyActivityPlus(emailAddress: string) {
     await refreshStoredScanResults(subscriber.onerep_profile_id);
   }
   const countryCode = getCountryCode(await headers());
-  const latestScan = await getScanResultsWithBroker(
-    subscriber.onerep_profile_id,
-    hasPremium(session.user),
-  );
   const data = getDashboardSummary(
-    latestScan.results,
     await getSubscriberBreaches({
       fxaUid: session.user.subscriber?.fxa_uid,
       countryCode,
@@ -244,10 +233,14 @@ export async function triggerBreachAlert(emailAddress: string) {
   if (typeof subscriber.onerep_profile_id === "number") {
     await refreshStoredScanResults(subscriber.onerep_profile_id);
   }
-  const scanData = await getScanResultsWithBroker(
-    subscriber.onerep_profile_id,
-    hasPremium(session.user),
+  const experimentationId = await getExperimentationIdFromUserSession(
+    session.user,
   );
+  const experimentData = await getExperiments({
+    experimentationId,
+    countryCode: assumedCountryCode,
+    locale: getLocale(l10n),
+  });
   const allSubscriberBreaches = await getSubscriberBreaches({
     fxaUid: subscriber.fxa_uid,
     countryCode: assumedCountryCode,
@@ -264,7 +257,7 @@ export async function triggerBreachAlert(emailAddress: string) {
       l10n={l10n}
       dataSummary={
         isEligibleForPremium(assumedCountryCode) && !hasPremium(subscriber)
-          ? getDashboardSummary(scanData.results, allSubscriberBreaches)
+          ? getDashboardSummary(allSubscriberBreaches)
           : undefined
       }
     />,
