@@ -15,24 +15,12 @@ async function goToFxA(
   page: Page,
   {
     countryCode,
-    isMobile,
   }: {
     countryCode?: string;
     isMobile?: boolean;
   },
 ) {
   await page.goto(`${getBaseTestEnvUrl()}/`);
-  if (
-    isMobile &&
-    (process.env.E2E_TEST_ENV === "local" || countryCode === "us")
-  ) {
-    const mobileMenuButtonLabel =
-      countryCode === "nl" ? "Menu uitvouwen" : "Expand menu";
-    const mobileMenuButton = page.getByRole("button", {
-      name: mobileMenuButtonLabel,
-    });
-    await mobileMenuButton.click();
-  }
 
   const signInButtonLabel = countryCode === "nl" ? "Aanmelden" : "Sign In";
   await page.getByRole("button", { name: signInButtonLabel }).first().click();

@@ -18,16 +18,15 @@ test.describe(`Verify landing page [${process.env.E2E_TEST_ENV}]`, () => {
 
   test("landing page loads", async ({ page }, testInfo) => {
     if (
-      process.env.E2E_TEST_ENV !== "local" &&
       testInfo.project.use.countryCode === "nl"
     ) {
-      const heading = page.locator("h1", {
-        hasText: "Ontdek waar uw privégegevens zijn gelekt – en neem ze terug",
+      const heading = page.getByRole("heading", {
+        name: "Ontdek waar uw privégegevens zijn gelekt – en neem ze terug",
       });
       await expect(heading).toBeVisible();
     } else {
-      const heading = page.locator("h2", {
-        hasText: "Find where your personal info is exposed — and take it back",
+      const heading = page.getByRole("heading", {
+        name: "Find where your private info is exposed — and take it back",
       });
       await expect(heading).toBeVisible();
     }
