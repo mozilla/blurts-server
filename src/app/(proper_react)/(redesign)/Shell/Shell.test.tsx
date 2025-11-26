@@ -6,14 +6,11 @@ import { it, expect } from "@jest/globals";
 import { render, screen } from "@testing-library/react";
 import { composeStory } from "@storybook/react";
 import { axe } from "jest-axe";
-import Meta, {
-  ShellAuthenticated,
-  ShellAuthenticatedRedesign,
-} from "./Shell.stories";
+import Meta, { ShellAuthenticatedRedesign } from "./Shell.stories";
 
 describe("ShellAuthenticated", () => {
   it("passes the axe accessibility test suite", async () => {
-    const ShellComponent = composeStory(ShellAuthenticated, Meta);
+    const ShellComponent = composeStory(ShellAuthenticatedRedesign, Meta);
     const { container } = render(<ShellComponent />);
     expect(await axe(container)).toHaveNoViolations();
   }, 10_000);
