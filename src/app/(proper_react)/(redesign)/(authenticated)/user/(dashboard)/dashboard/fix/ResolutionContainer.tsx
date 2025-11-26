@@ -37,7 +37,6 @@ export const ResolutionContainer = (props: ResolutionContainerProps) => {
       : "high-risk-breach-estimated-time";
 
   const resolutionSummary = getDashboardSummary(
-    props.data.latestScanData?.results ?? [],
     props.data.subscriberBreaches,
     props.enabledFeatureFlags,
   );
@@ -58,12 +57,7 @@ export const ResolutionContainer = (props: ResolutionContainerProps) => {
             <ProgressCard
               isPremiumUser={props.isPremiumUser}
               isEligibleForPremium={props.isEligibleForPremium}
-              resolvedByYou={
-                resolutionSummary.dataBrokerManuallyResolvedDataPointsNum +
-                resolutionSummary.dataBreachFixedDataPointsNum
-              }
-              autoRemoved={resolutionSummary.dataBrokerAutoFixedDataPointsNum}
-              inProgress={resolutionSummary.dataBrokerInProgressDataPointsNum}
+              resolvedByYou={resolutionSummary.dataBreachFixedDataPointsNum}
             />
           </div>
         ) : (
