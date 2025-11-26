@@ -117,7 +117,7 @@ const getAutomaticRemovalCsatSurvey = (
     surveys.filter(isAutomaticRemovalSurvey).findLast((survey) => {
       // Show the initial survey only to users who have automatically fixed
       // data broker results.
-      if (survey.id === "initial" && !props.hasAutoFixedDataBrokers) {
+      if (survey.id === "initial") {
         return;
       }
 
