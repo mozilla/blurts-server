@@ -17,7 +17,6 @@ import {
 } from "../highRiskBreachData";
 import { BreachDataTypes } from "../../../../../../../../../functions/universal/breach";
 import { StepDeterminationData } from "../../../../../../../../../functions/server/getRelevantGuidedSteps";
-import { OnerepScanRow } from "knex/types/tables";
 import { defaultExperimentData } from "../../../../../../../../../../telemetry/generated/nimbus/experiments";
 import { UserAnnouncementWithDetails } from "../../../../../../../../../../db/tables/user_announcements";
 
@@ -72,34 +71,21 @@ const HighRiskBreachWrapper = (props: {
     );
   }
 
-  const mockedScan: OnerepScanRow = {
-    created_at: new Date(1998, 2, 31),
-    updated_at: new Date(1998, 2, 31),
-    id: 0,
-    onerep_profile_id: 0,
-    onerep_scan_id: 0,
-    onerep_scan_reason: "initial",
-    onerep_scan_status: "finished",
-  };
-
   const data: StepDeterminationData =
     props.scanStatus === "empty"
       ? {
           countryCode: "us",
-          latestScanData: { results: [], scan: mockedScan },
           subscriberBreaches: mockedBreaches,
           user: mockedSession.user,
         }
       : props.scanStatus === "not_started"
         ? {
             countryCode: "us",
-            latestScanData: { results: [], scan: null },
             subscriberBreaches: mockedBreaches,
             user: mockedSession.user,
           }
         : {
             countryCode: "nl",
-            latestScanData: null,
             subscriberBreaches: mockedBreaches,
             user: mockedSession.user,
           };
