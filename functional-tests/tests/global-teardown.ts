@@ -31,7 +31,7 @@ async function deleteTestUserAccounts(browser: Browser) {
     await page.goto(`${getBaseTestEnvUrl()}/user/settings/manage-account`);
 
     await page.getByRole("button", { name: "Open user menu" }).click();
-    const manageAccountLink = page.getByRole("link", {
+    const manageAccountLink = page.getByRole("menuitem", {
       name: "Manage your ⁨Mozilla account⁩",
       exact: false,
     });

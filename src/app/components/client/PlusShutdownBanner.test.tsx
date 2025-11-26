@@ -129,7 +129,7 @@ it("mentions deletion of scan data to free users before launch", () => {
 
   expect(screen.getByRole("complementary")).toBeInTheDocument();
   expect(screen.getByRole("heading")).toHaveTextContent(
-    "Update: ⁨Monitor⁩ data broker scan results will be deleted in 30 days",
+    "Monitor⁩ data broker scan results will be deleted on December 17",
   );
 });
 
