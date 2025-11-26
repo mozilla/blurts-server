@@ -22,8 +22,6 @@ import { VisuallyHidden } from "../server/VisuallyHidden";
 
 export type Props = {
   resolvedByYou: number;
-  autoRemoved: number;
-  inProgress: number;
   isPremiumUser: boolean;
   isEligibleForPremium: boolean;
 };
@@ -118,7 +116,6 @@ export const ProgressCard = (props: Props) => {
           >
             <div className={styles.progressStat}>
               <Image src={ExploringLaptopMinus} alt="" width="50" height="50" />
-              <span>{props.autoRemoved}</span>
             </div>
             <p>
               {!props.isPremiumUser && (
@@ -143,7 +140,6 @@ export const ProgressCard = (props: Props) => {
                 width="50"
                 height="50"
               />
-              <span>{props.inProgress}</span>
             </div>
             <p>{l10n.getString("progress-card-in-progress-headline")}</p>
           </div>
