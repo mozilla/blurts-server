@@ -20,7 +20,6 @@ import { useL10n } from "../../../../../../hooks/l10n";
 import {
   Exposure,
   ExposureCard,
-  isScanResult,
 } from "../../../../../../components/client/exposure_card/ExposureCard";
 import {
   ExposuresFilter,
@@ -214,16 +213,12 @@ export const View = (props: Props) => {
             if (exposureCardKey === activeExposureCardKey) {
               setActiveExposureCardKey(null);
               recordTelemetry("collapse", "click", {
-                button_id: isScanResult(exposure)
-                  ? `data_broker_card_${exposure.id}`
-                  : `data_breach_card_${exposure.id}`,
+                button_id: `data_breach_card_${exposure.id}`,
               });
             } else {
               setActiveExposureCardKey(exposureCardKey);
               recordTelemetry("expand", "click", {
-                button_id: isScanResult(exposure)
-                  ? `data_broker_card_${exposure.id}`
-                  : `data_breach_card_${exposure.id}`,
+                button_id: `data_breach_card_${exposure.id}`,
               });
             }
           }}
