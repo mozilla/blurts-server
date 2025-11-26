@@ -107,7 +107,6 @@ const surveyData: SurveyData = {
 const getAutomaticRemovalCsatSurvey = (
   props: CsatSurveyProps & {
     elapsedTimeInDaysSinceInitialScan: number;
-    hasAutoFixedDataBrokers: boolean;
   },
 ): RelevantSurveyWithMetric | null => {
   const surveys = getRelevantSurveys({ ...surveyData, ...props });

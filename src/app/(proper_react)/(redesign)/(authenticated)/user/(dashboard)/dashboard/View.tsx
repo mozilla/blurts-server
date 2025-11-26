@@ -9,18 +9,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { Session } from "next-auth";
-import {
-  OnerepScanResultDataBrokerRow,
-  OnerepScanResultRow,
-} from "knex/types/tables";
 import styles from "./View.module.scss";
 import { Toolbar } from "../../../../../../components/client/toolbar/Toolbar";
 import { DashboardTopBanner } from "./DashboardTopBanner";
 import { useL10n } from "../../../../../../hooks/l10n";
-import {
-  Exposure,
-  ExposureCard,
-} from "../../../../../../components/client/exposure_card/ExposureCard";
+import { ExposureCard } from "../../../../../../components/client/exposure_card/ExposureCard";
 import {
   ExposuresFilter,
   FilterState,
@@ -38,9 +31,7 @@ import type { LatestOnerepScanData } from "../../../../../../../db/tables/onerep
 import { getLocale } from "../../../../../../functions/universal/getLocale";
 import { Button } from "../../../../../../components/client/Button";
 
-import AllFixedIllustration from "./images/dashboard-all-fixed.svg";
 import NoExposuresIllustration from "./images/dashboard-no-exposures.svg";
-import ScanProgressIllustration from "./images/scan-illustration.svg";
 import { CountryCodeContext } from "../../../../../../../contextProviders/country-code";
 import { FeatureFlagName } from "../../../../../../../db/tables/featureFlags";
 import { getNextGuidedStep } from "../../../../../../functions/server/getRelevantGuidedSteps";
@@ -115,26 +106,6 @@ export const View = (props: Props) => {
     }
   }, [pathname, activeTab, props.userAnnouncements]);
 
-  const adjustedScanResults = props.userScanData.results.map((scanResult) => {
-    if (scanResult.status === "new" && hasPremium(props.user)) {
-      // Even if the user has Plus, OneRep won't automatically start removing
-      // found exposures; it first sends a request to our webhook, and then the
-      // webhook sends an opt-out request to OneRep. Meanwhile, however, we're
-      // just waiting for the systems to do their thing, and there's no action
-      // for the user to take; hence, we also mark the exposures as being in
-      // progress:
-      return {
-        ...scanResult,
-        status: "optout_in_progress",
-      } as OnerepScanResultDataBrokerRow;
-    }
-    return scanResult;
-  }) as OnerepScanResultDataBrokerRow[];
-  const adjustedScanData = {
-    scan: props.userScanData.scan,
-    results: adjustedScanResults,
-  } as LatestOnerepScanData;
-
   const initialFilterState: FilterState = {
     exposureType: "show-all-exposure-type",
     dateFound: "show-all-date-found",
@@ -155,21 +126,13 @@ export const View = (props: Props) => {
   ];
 
   const breachesDataArray = props.userBreaches.flat();
-  const initialScanInProgress =
-    adjustedScanData.scan?.onerep_scan_status === "in_progress" &&
-    props.scanCount === 1;
 
   // Merge exposure cards
-  const combinedArray = [...breachesDataArray, ...adjustedScanResults];
 
   // Sort in descending order
-  const arraySortedByDate = combinedArray.sort((a, b) => {
-    const dateA =
-      (a as SubscriberBreach).addedDate ||
-      parseIso8601Datetime((a as OnerepScanResultRow).created_at);
-    const dateB =
-      (b as SubscriberBreach).addedDate ||
-      parseIso8601Datetime((b as OnerepScanResultRow).created_at);
+  const arraySortedByDate = breachesDataArray.sort((a, b) => {
+    const dateA = a.addedDate;
+    const dateB = b.addedDate;
 
     const timestampA = dateA.getTime();
     const timestampB = dateB.getTime();
@@ -178,11 +141,8 @@ export const View = (props: Props) => {
   });
 
   const getTabSpecificExposures = (tabKey: TabType) =>
-    arraySortedByDate.filter((exposure: Exposure) => {
-      const exposureStatus = getExposureStatus(
-        exposure,
-        props.enabledFeatureFlags,
-      );
+    arraySortedByDate.filter((exposure: SubscriberBreach) => {
+      const exposureStatus = getExposureStatus(exposure);
 
       return (
         (tabKey === "action-needed" && exposureStatus === "actionNeeded") ||
@@ -192,148 +152,84 @@ export const View = (props: Props) => {
 
   const tabSpecificExposures = getTabSpecificExposures(activeTab);
   const filteredExposures = filterExposures(tabSpecificExposures, filters);
-  const exposureCardElems = filteredExposures.map((exposure: Exposure) => {
-    const exposureCardKey = isScanResult(exposure)
-      ? "scan-" + exposure.id
-      : "breach-" + exposure.id;
+  const exposureCardElems = filteredExposures.map(
+    (exposure: SubscriberBreach) => {
+      const exposureCardKey = "breach-" + exposure.id;
 
-    const removalTimeEstimate = isScanResult(exposure)
-      ? props.removalTimeEstimates.find(({ d }) => d === exposure.data_broker)
-      : undefined;
-
-    return (
-      <li key={exposureCardKey} className={styles.exposureListItem}>
-        <ExposureCard
-          experimentData={props.experimentData}
-          enabledFeatureFlags={props.enabledFeatureFlags}
-          removalTimeEstimate={removalTimeEstimate?.t}
-          exposureData={exposure}
-          isExpanded={exposureCardKey === activeExposureCardKey}
-          onToggleExpanded={() => {
-            if (exposureCardKey === activeExposureCardKey) {
-              setActiveExposureCardKey(null);
-              recordTelemetry("collapse", "click", {
-                button_id: `data_breach_card_${exposure.id}`,
-              });
-            } else {
-              setActiveExposureCardKey(exposureCardKey);
-              recordTelemetry("expand", "click", {
-                button_id: `data_breach_card_${exposure.id}`,
-              });
-            }
-          }}
-          locale={getLocale(l10n)}
-          isPremiumUser={hasPremium(props.user)}
-          isEligibleForPremium={props.isEligibleForPremium}
-          resolutionCta={
-            <Button
-              variant="primary"
-              wide
-              href={
-                getNextGuidedStep(
-                  {
-                    user: props.user,
-                    countryCode,
-                    latestScanData: adjustedScanData,
-                    subscriberBreaches: props.userBreaches,
-                  },
-                  props.enabledFeatureFlags,
-                ).href
+      return (
+        <li key={exposureCardKey} className={styles.exposureListItem}>
+          <ExposureCard
+            experimentData={props.experimentData}
+            enabledFeatureFlags={props.enabledFeatureFlags}
+            exposureData={exposure}
+            isExpanded={exposureCardKey === activeExposureCardKey}
+            onToggleExpanded={() => {
+              if (exposureCardKey === activeExposureCardKey) {
+                setActiveExposureCardKey(null);
+                recordTelemetry("collapse", "click", {
+                  button_id: `data_breach_card_${exposure.id}`,
+                });
+              } else {
+                setActiveExposureCardKey(exposureCardKey);
+                recordTelemetry("expand", "click", {
+                  button_id: `data_breach_card_${exposure.id}`,
+                });
               }
-            >
-              {l10n.getString("exposure-card-resolve-exposures-cta")}
-            </Button>
-          }
-        />
-      </li>
-    );
-  });
+            }}
+            locale={getLocale(l10n)}
+            isPremiumUser={hasPremium(props.user)}
+            isEligibleForPremium={props.isEligibleForPremium}
+            resolutionCta={
+              <Button
+                variant="primary"
+                wide
+                href={
+                  getNextGuidedStep(
+                    {
+                      user: props.user,
+                      countryCode,
+                      subscriberBreaches: props.userBreaches,
+                    },
+                    props.enabledFeatureFlags,
+                  ).href
+                }
+              >
+                {l10n.getString("exposure-card-resolve-exposures-cta")}
+              </Button>
+            }
+          />
+        </li>
+      );
+    },
+  );
   const noUnresolvedExposures = exposureCardElems.length === 0;
   const dataSummary = getDashboardSummary(
-    adjustedScanResults,
     props.userBreaches,
     props.enabledFeatureFlags,
   );
 
-  const hasExposures = combinedArray.length > 0;
-  const hasUnresolvedBreaches =
-    tabSpecificExposures.filter((exposure) => !isScanResult(exposure)).length >
-    0;
-  const hasUnresolvedBrokers =
-    tabSpecificExposures.filter(isScanResult).length > 0;
-
-  const hasUnresolvedExposures = hasUnresolvedBreaches || hasUnresolvedBrokers;
-  const hasFixedExposures = hasExposures && !hasUnresolvedExposures;
+  const hasExposures = breachesDataArray.length > 0;
+  const hasUnresolvedBreaches = tabSpecificExposures.length > 0;
 
   const TabContentActionNeeded = () => {
     const {
       dataBreachUnresolvedNum,
-      dataBrokerTotalNum,
-      dataBrokerAutoFixedNum,
-      dataBrokerManuallyResolvedNum,
-      dataBrokerInProgressNum,
       dataBreachFixedDataPointsNum,
-      dataBrokerAutoFixedDataPointsNum,
-      dataBrokerInProgressDataPointsNum,
-      dataBrokerManuallyResolvedDataPointsNum,
       totalDataPointsNum,
     } = dataSummary;
 
     let exposuresAreaDescription;
 
-    if (hasUnresolvedExposures) {
-      if (props.isEligibleForPremium) {
-        exposuresAreaDescription = l10n.getString(
-          "dashboard-exposures-area-description-premium",
-          {
-            exposures_unresolved_num:
-              totalDataPointsNum -
-              dataBrokerAutoFixedDataPointsNum -
-              dataBreachFixedDataPointsNum -
-              dataBrokerInProgressDataPointsNum -
-              dataBrokerManuallyResolvedDataPointsNum,
-            data_breach_unresolved_num: dataBreachUnresolvedNum,
-            data_broker_unresolved_num:
-              dataBrokerTotalNum -
-              dataBrokerAutoFixedNum -
-              dataBrokerManuallyResolvedNum -
-              dataBrokerInProgressNum,
-          },
-        );
-      } else {
-        exposuresAreaDescription =
-          l10n.getString("dashboard-exposures-area-description-all-line1", {
-            exposures_unresolved_num:
-              totalDataPointsNum -
-              dataBrokerAutoFixedDataPointsNum -
-              dataBreachFixedDataPointsNum -
-              dataBrokerInProgressDataPointsNum -
-              dataBrokerManuallyResolvedDataPointsNum,
-          }) +
-          " " +
-          l10n.getString("dashboard-exposures-area-description-all-line2", {
-            data_breach_unresolved_num: dataBreachUnresolvedNum,
-          });
-      }
-    }
-
-    if (initialScanInProgress && !noUnresolvedExposures) {
-      exposuresAreaDescription = l10n.getString(
-        "dashboard-exposures-breaches-scan-progress-description",
-        {
+    if (hasUnresolvedBreaches) {
+      exposuresAreaDescription =
+        l10n.getString("dashboard-exposures-area-description-all-line1", {
           exposures_unresolved_num:
-            totalDataPointsNum -
-            dataBrokerAutoFixedDataPointsNum -
-            dataBreachFixedDataPointsNum -
-            dataBrokerInProgressDataPointsNum -
-            dataBrokerManuallyResolvedDataPointsNum,
+            totalDataPointsNum - dataBreachFixedDataPointsNum,
+        }) +
+        " " +
+        l10n.getString("dashboard-exposures-area-description-all-line2", {
           data_breach_unresolved_num: dataBreachUnresolvedNum,
-        },
-      );
-    } else if (initialScanInProgress) {
-      exposuresAreaDescription = l10n.getString(
-        "dashboard-exposures-no-breaches-scan-progress-description",
-      );
+        });
     }
 
     return (
@@ -446,29 +342,6 @@ export const View = (props: Props) => {
   );
 
   const getZeroStateIndicator = () => {
-    if (initialScanInProgress) {
-      return (
-        <>
-          <Image src={ScanProgressIllustration} alt="" />
-          <strong>
-            {l10n.getString("dashboard-exposures-scan-progress-label")}
-          </strong>
-        </>
-      );
-    }
-
-    if (!hasUnresolvedExposures && hasFixedExposures) {
-      return (
-        <>
-          <Image src={AllFixedIllustration} alt="" />
-          <strong>
-            {l10n.getString("dashboard-exposures-all-fixed-label")}
-          </strong>
-          {freeScanCta}
-        </>
-      );
-    }
-
     return (
       <>
         <Image src={NoExposuresIllustration} alt="" />
@@ -502,7 +375,6 @@ export const View = (props: Props) => {
               dashboard_tab: selectedKey as TabType,
               legacy_user: !props.isNewUser,
               breach_count: breachesDataArray.length,
-              broker_count: adjustedScanResults.length,
             });
           }}
           selectedKey={activeTab}
@@ -520,9 +392,6 @@ export const View = (props: Props) => {
         elapsedTimeInDaysSinceInitialScan={
           props.elapsedTimeInDaysSinceInitialScan ?? null
         }
-        hasAutoFixedDataBrokers={
-          dataSummary.dataBrokerAutoFixedDataPointsNum > 0
-        }
         hasFirstMonitoringScan={props.hasFirstMonitoringScan}
         lastScanDate={
           props.userScanData.scan
@@ -535,7 +404,6 @@ export const View = (props: Props) => {
       <div className={styles.dashboardContent}>
         <DashboardTopBanner
           tabType={activeTab}
-          scanInProgress={initialScanInProgress}
           isPremiumUser={hasPremium(props.user)}
           isEligibleForPremium={canSubscribeToPremium({
             user: props.user,
@@ -545,15 +413,12 @@ export const View = (props: Props) => {
           isEligibleForFreeScan={props.isEligibleForFreeScan}
           hasExposures={hasExposures}
           hasUnresolvedBreaches={hasUnresolvedBreaches}
-          hasUnresolvedBrokers={hasUnresolvedBrokers}
           bannerData={getDashboardSummary(
-            adjustedScanResults,
             props.userBreaches,
             props.enabledFeatureFlags,
           )}
           stepDeterminationData={{
             countryCode,
-            latestScanData: adjustedScanData,
             subscriberBreaches: props.userBreaches,
             user: props.user,
           }}
@@ -563,7 +428,6 @@ export const View = (props: Props) => {
               dashboard_tab: "fixed",
               legacy_user: !props.isNewUser,
               breach_count: breachesDataArray.length,
-              broker_count: adjustedScanResults.length,
             });
           }}
           monthlySubscriptionUrl={props.monthlySubscriptionUrl}

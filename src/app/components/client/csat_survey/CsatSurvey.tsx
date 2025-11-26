@@ -20,7 +20,6 @@ export type CsatSurveyProps = {
   user: Session["user"];
   experimentData: ExperimentData["Features"];
   enabledFeatureFlags: FeatureFlagName[];
-  hasAutoFixedDataBrokers: boolean;
   hasFirstMonitoringScan: boolean;
   elapsedTimeInDaysSinceInitialScan: number | null;
   lastScanDate: Date | null;
@@ -43,7 +42,6 @@ export const CsatSurvey = (props: CsatSurveyProps) => {
         ...surveyOptions,
         elapsedTimeInDaysSinceInitialScan:
           props.elapsedTimeInDaysSinceInitialScan,
-        hasAutoFixedDataBrokers: props.hasAutoFixedDataBrokers,
       }),
     props.enabledFeatureFlags.includes("LatestScanDateCsatSurvey") &&
       props.lastScanDate !== null &&
