@@ -3,10 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { it, expect } from "@jest/globals";
-import {
-  createRandomBreach,
-  createRandomScanResult,
-} from "../../../../../../../apiMocks/mockData";
+import { createRandomBreach } from "../../../../../../../apiMocks/mockData";
 import { filterExposures } from "./filterExposures";
 import { CONST_DAY_MILLISECONDS } from "../../../../../../../constants";
 jest.mock("../../../../../../hooks/useTelemetry");
@@ -30,33 +27,12 @@ const breachOld = createRandomBreach({
   addedDate: getDateDaysAgo(1000),
 });
 
-const scanResultThisWeek = createRandomScanResult({
-  fakerSeed: 1234,
-  createdDate: getDateDaysAgo(2),
-});
-const scanResultThisMonth = createRandomScanResult({
-  fakerSeed: 1234,
-  createdDate: getDateDaysAgo(10),
-});
-const scanResultThisYear = createRandomScanResult({
-  fakerSeed: 1234,
-  createdDate: getDateDaysAgo(100),
-});
-const scanResultOld = createRandomScanResult({
-  fakerSeed: 1234,
-  createdDate: getDateDaysAgo(1000),
-});
-
 it("doesn't filter out anything by default", () => {
   const exposures = [
     breachThisWeek,
-    scanResultThisWeek,
     breachThisMonth,
-    scanResultThisMonth,
     breachThisYear,
-    scanResultThisYear,
     breachOld,
-    scanResultOld,
   ];
 
   expect(
@@ -70,13 +46,9 @@ it("doesn't filter out anything by default", () => {
 it("can filter out breaches", () => {
   const exposures = [
     breachThisWeek,
-    scanResultThisWeek,
     breachThisMonth,
-    scanResultThisMonth,
     breachThisYear,
-    scanResultThisYear,
     breachOld,
-    scanResultOld,
   ];
 
   expect(
@@ -84,24 +56,15 @@ it("can filter out breaches", () => {
       dateFound: "show-all-date-found",
       exposureType: "data-broker",
     }),
-  ).toStrictEqual([
-    scanResultThisWeek,
-    scanResultThisMonth,
-    scanResultThisYear,
-    scanResultOld,
-  ]);
+  ).toStrictEqual([]);
 });
 
 it("can filter out data brokers", () => {
   const exposures = [
     breachThisWeek,
-    scanResultThisWeek,
     breachThisMonth,
-    scanResultThisMonth,
     breachThisYear,
-    scanResultThisYear,
     breachOld,
-    scanResultOld,
   ];
 
   expect(
@@ -115,13 +78,9 @@ it("can filter out data brokers", () => {
 it("can filter out exposures older than a year", () => {
   const exposures = [
     breachThisWeek,
-    scanResultThisWeek,
     breachThisMonth,
-    scanResultThisMonth,
     breachThisYear,
-    scanResultThisYear,
     breachOld,
-    scanResultOld,
   ];
 
   expect(
@@ -129,26 +88,15 @@ it("can filter out exposures older than a year", () => {
       dateFound: "last-year",
       exposureType: "show-all-exposure-type",
     }),
-  ).toStrictEqual([
-    breachThisWeek,
-    scanResultThisWeek,
-    breachThisMonth,
-    scanResultThisMonth,
-    breachThisYear,
-    scanResultThisYear,
-  ]);
+  ).toStrictEqual([breachThisWeek, breachThisMonth, breachThisYear]);
 });
 
 it("can filter out exposures older than a month", () => {
   const exposures = [
     breachThisWeek,
-    scanResultThisWeek,
     breachThisMonth,
-    scanResultThisMonth,
     breachThisYear,
-    scanResultThisYear,
     breachOld,
-    scanResultOld,
   ];
 
   expect(
@@ -156,24 +104,15 @@ it("can filter out exposures older than a month", () => {
       dateFound: "thirty-days",
       exposureType: "show-all-exposure-type",
     }),
-  ).toStrictEqual([
-    breachThisWeek,
-    scanResultThisWeek,
-    breachThisMonth,
-    scanResultThisMonth,
-  ]);
+  ).toStrictEqual([breachThisWeek, breachThisMonth]);
 });
 
 it("can filter out exposures older than a week", () => {
   const exposures = [
     breachThisWeek,
-    scanResultThisWeek,
     breachThisMonth,
-    scanResultThisMonth,
     breachThisYear,
-    scanResultThisYear,
     breachOld,
-    scanResultOld,
   ];
 
   expect(
@@ -181,19 +120,15 @@ it("can filter out exposures older than a week", () => {
       dateFound: "seven-days",
       exposureType: "show-all-exposure-type",
     }),
-  ).toStrictEqual([breachThisWeek, scanResultThisWeek]);
+  ).toStrictEqual([breachThisWeek]);
 });
 
 it("filters out anything that doesn't match *all* filters", () => {
   const exposures = [
     breachThisWeek,
-    scanResultThisWeek,
     breachThisMonth,
-    scanResultThisMonth,
     breachThisYear,
-    scanResultThisYear,
     breachOld,
-    scanResultOld,
   ];
 
   expect(
