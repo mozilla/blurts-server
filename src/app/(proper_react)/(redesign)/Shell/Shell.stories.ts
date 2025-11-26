@@ -41,10 +41,5 @@ const meta: Meta<typeof Shell> = {
 export default meta;
 type Story = StoryObj<typeof Shell>;
 
-export const ShellAuthenticated: Story = {};
-
-export const ShellAuthenticatedRedesign: Story = {
-  args: {
-    enabledFeatureFlags: ["SidebarNavigationRedesign"],
-  },
-};
+// TODO: Rename this when MNTOR-5101 is picked up
+export const ShellAuthenticatedRedesign: Story = {};
