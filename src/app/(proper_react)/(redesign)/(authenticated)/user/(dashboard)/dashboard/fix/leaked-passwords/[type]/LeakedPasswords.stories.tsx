@@ -86,7 +86,6 @@ const LeakedPasswordsWrapper = (props: {
         type={props.type}
         data={{
           countryCode: "nl",
-          latestScanData: { results: [], scan: null },
           subscriberBreaches: mockedBreaches,
           user: mockedSession.user,
         }}
