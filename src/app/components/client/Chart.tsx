@@ -31,7 +31,6 @@ export type Props = {
   isEligibleForFreeScan: boolean;
   isEligibleForPremium: boolean;
   isPremiumUser: boolean;
-  scanInProgress: boolean;
   isShowFixed: boolean;
   summary: DashboardSummary;
   totalNumberOfPerformedScans?: number;
@@ -158,7 +157,6 @@ export const DoughnutChart = (props: Props) => {
 
   const getPromptContent = () => {
     if (
-      !props.scanInProgress &&
       props.isEligibleForPremium &&
       (props.totalNumberOfPerformedScans === undefined ||
         props.totalNumberOfPerformedScans === 0)
@@ -198,16 +196,6 @@ export const DoughnutChart = (props: Props) => {
             </>
           )}
         </>
-      );
-    }
-
-    if (props.scanInProgress) {
-      return (
-        <p>
-          {l10n.getFragment("exposure-chart-scan-in-progress-prompt", {
-            elems: { b: <strong /> },
-          })}
-        </p>
       );
     }
   };

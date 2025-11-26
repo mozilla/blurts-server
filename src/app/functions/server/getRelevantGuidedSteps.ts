@@ -3,30 +3,19 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { Session } from "next-auth";
-import { LatestOnerepScanData } from "../../../db/tables/onerep_scans";
 import { SubscriberBreach } from "../../../utils/subscriberBreaches";
 import { BreachDataTypes, HighRiskDataTypes } from "../universal/breach";
 import { FeatureFlagName } from "../../../db/tables/featureFlags";
-import { hasPremium } from "../universal/user";
 
 export type StepDeterminationData = {
   user: Session["user"];
   countryCode: string;
-  latestScanData: LatestOnerepScanData | null;
   subscriberBreaches: SubscriberBreach[];
 };
 
 // Note: the order is important; it determines in which order the user will be
 //       guided through the pages.
 export const stepLinks = [
-  {
-    href: "/user/dashboard/fix/data-broker-profiles/start-free-scan",
-    id: "Scan",
-  },
-  {
-    href: "/user/dashboard/fix/data-broker-profiles/manual-remove",
-    id: "DataBrokerManualRemoval",
-  },
   {
     href: "/user/dashboard/fix/high-risk-data-breaches/social-security-number",
     id: "HighRiskSsn",
@@ -77,7 +66,7 @@ export type StepLinkWithStatus = (typeof stepLinks)[number] & {
 
 export function isGuidedResolutionInProgress(stepId: StepLink["id"]) {
   const inProgressStepIds = stepLinks
-    .filter((step) => step.id !== "Scan" && step.id !== "Done")
+    .filter((step) => step.id !== "Done")
     .map(({ id }) => id);
   return (inProgressStepIds as string[]).includes(stepId);
 }
@@ -107,10 +96,8 @@ export function getNextGuidedStep(
         afterStep ?? "Not skipping any steps"
       }]. Is \`data.user\` defined: [${!!data.user}]. Country code: [${
         data.countryCode
-      }]. Is \`data.latestScanData.scan\` defined: [${!!data.latestScanData
-        ?.scan}]. Number of scan results: [${
-        data.latestScanData?.results.length
-      }]. Number of breaches: [${data.subscriberBreaches.length}].`,
+      }].
+      Number of breaches: [${data.subscriberBreaches.length}].`,
     );
     return { id: "InvalidStep" } as never;
   }
@@ -129,11 +116,11 @@ export function getGuidedStepStatuses(
 function getStepWithStatus(
   data: StepDeterminationData,
   stepLink: StepLink,
-  enabledFeatureFlags?: FeatureFlagName[],
+  _enabledFeatureFlags?: FeatureFlagName[],
 ): StepLinkWithStatus {
   return {
     ...stepLink,
-    eligible: isEligibleForStep(data, stepLink.id, enabledFeatureFlags),
+    eligible: isEligibleForStep(data, stepLink.id),
     completed: hasCompletedStep(data, stepLink.id),
   };
 }
@@ -141,24 +128,7 @@ function getStepWithStatus(
 export function isEligibleForStep(
   data: StepDeterminationData,
   stepId: StepLink["id"],
-  enabledFeatureFlags?: FeatureFlagName[],
 ): boolean {
-  // Only premium users can see the manual data broker removal flow, once they have run a scan
-  if (stepId === "Scan") {
-    return (
-      data.countryCode === "us" &&
-      (!enabledFeatureFlags?.includes("FreeOnly") || hasPremium(data.user))
-    );
-  }
-
-  if (stepId === "DataBrokerManualRemoval") {
-    return (
-      Array.isArray(data.latestScanData?.results) &&
-      data.latestScanData.results.length > 0 &&
-      (enabledFeatureFlags?.includes("FreeOnly") || !hasPremium(data.user))
-    );
-  }
-
   if (stepId === "HighRiskSsn") {
     // Our social security number-related mitigations aren't possible outside of the US:
     return data.countryCode === "us";
@@ -210,12 +180,6 @@ export function hasCompletedStepSection(
     | "SecurityTips",
   _enabledFeatureFlags?: FeatureFlagName[],
 ): boolean {
-  if (section === "Scan") {
-    return (
-      hasCompletedStep(data, "Scan") &&
-      hasCompletedStep(data, "DataBrokerManualRemoval")
-    );
-  }
   if (section === "HighRisk") {
     return (
       hasCompletedStep(data, "HighRiskSsn") &&
@@ -249,27 +213,6 @@ export function hasCompletedStep(
   stepId: StepLink["id"],
   _enabledFeatureFlags?: FeatureFlagName[],
 ): boolean {
-  if (stepId === "Scan") {
-    const hasRunScan =
-      typeof data.latestScanData?.scan === "object" &&
-      data.latestScanData?.scan !== null;
-    return hasRunScan;
-  }
-
-  if (stepId === "DataBrokerManualRemoval") {
-    const scanStatus = data.latestScanData?.scan?.onerep_scan_status;
-    const hasResolvedAllScanResults =
-      (scanStatus === "finished" || scanStatus === "in_progress") &&
-      // Used to be covered by a test that was removed;
-      // not worth re-testing at this point:
-      /* c8 ignore next */
-      (data.latestScanData!.results ?? []).every(
-        (scanResult) =>
-          scanResult.manually_resolved || scanResult.status !== "new",
-      );
-    return hasResolvedAllScanResults;
-  }
-
   function isBreachResolved(
     dataClass: (typeof BreachDataTypes)[keyof typeof BreachDataTypes],
   ): boolean {
