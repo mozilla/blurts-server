@@ -23,14 +23,10 @@ describe("MobileShell public", () => {
     const ComposedMobileShell = composeStory(MobileShellPublic, Meta);
     render(<ComposedMobileShell />);
 
-    // Depending on the viewport size we are showing a sign-in button in
-    // the top navbar or collapsable menu.
-    const signInButtons = screen.getAllByRole("button", {
+    const signInButton = screen.getByRole("button", {
       name: "Sign In",
     });
-    expect(signInButtons.length).toBe(2);
-    expect(signInButtons[0]).toBeInTheDocument();
-    expect(signInButtons[1]).toBeInTheDocument();
+    expect(signInButton).toBeInTheDocument();
   });
 
   it("opens and closes the menu", async () => {

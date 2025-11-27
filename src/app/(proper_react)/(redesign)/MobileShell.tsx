@@ -21,7 +21,6 @@ import { CONST_SETTINGS_TAB_SLUGS } from "../../../constants";
 import { FeatureFlagName } from "../../../db/tables/featureFlags";
 import { SignInButton } from "../../components/client/SignInButton";
 import { TopNavBar } from "./(public)/TopNavBar";
-import { TopNavBar as RedesignedTopNavBar } from "./(public)/LandingViewRedesign/components/TopNavBar";
 import { ExperimentData } from "../../../telemetry/generated/nimbus/experiments";
 import { NavbarList as NavbarListAuthenticated } from "./Shell/ShellNavbarList";
 import { UserAnnouncementWithDetails } from "../../../db/tables/user_announcements";
@@ -231,19 +230,6 @@ export const MobileShell = (props: Props) => {
                     />
                   </div>
                 </>
-              ) : props.enabledFeatureFlags.includes("LandingPageRedesign") &&
-                props.experimentData[
-                  "landing-page-redesign-plus-eligible-experiment"
-                ].enabled &&
-                props.experimentData[
-                  "landing-page-redesign-plus-eligible-experiment"
-                ].variant === "redesign" ? (
-                // The old <TopNavBar /> component is no longer hit by unit tests
-                // that have already enabled the experiment, so ignore that for now:
-                // (But c8 is weird so just pretend that this ignore comment is
-                // two lines lower.)
-                /* c8 ignore next 4 */
-                <RedesignedTopNavBar />
               ) : (
                 <TopNavBar />
               )}

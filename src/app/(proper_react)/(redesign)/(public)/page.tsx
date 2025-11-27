@@ -16,7 +16,6 @@ import {
   getL10n,
 } from "../../../functions/l10n/serverComponents";
 import { View as LandingView } from "./LandingView";
-import { View as LandingViewRedesign } from "./LandingViewRedesign";
 import {
   CONST_DAY_MILLISECONDS,
   CONST_URL_MONITOR_LANDING_PAGE_ID,
@@ -26,10 +25,6 @@ import { getExperiments } from "../../../functions/server/getExperiments";
 import { getLocale } from "../../../functions/universal/getLocale";
 import { AccountsMetricsFlowProvider } from "../../../../contextProviders/accounts-metrics-flow";
 import { getEnabledFeatureFlags } from "../../../../db/tables/featureFlags";
-import {
-  getPremiumSubscriptionUrl,
-  getSubscriptionBillingAmount,
-} from "../../../functions/server/getPremiumSubscriptionInfo";
 
 export default async function Page() {
   const session = await getServerSession();
@@ -90,40 +85,16 @@ export default async function Page() {
         service: process.env.OAUTH_CLIENT_ID as string,
       }}
     >
-      {enabledFeatureFlags.includes("LandingPageRedesign") &&
-      experimentData["Features"][
-        "landing-page-redesign-plus-eligible-experiment"
-      ].enabled &&
-      experimentData["Features"][
-        "landing-page-redesign-plus-eligible-experiment"
-      ].variant === "redesign" ? (
-        <LandingViewRedesign
-          eligibleForPremium={eligibleForPremium}
-          l10n={l10n}
-          countryCode={countryCode}
-          scanLimitReached={scanLimitReached}
-          experimentData={experimentData["Features"]}
-          enabledFeatureFlags={enabledFeatureFlags}
-          premiumSubscriptionUrl={{
-            monthly: getPremiumSubscriptionUrl({
-              type: "monthly",
-              enabledFeatureFlags,
-            }),
-          }}
-          subscriptionBillingAmount={getSubscriptionBillingAmount()}
-        />
-      ) : (
-        <LandingView
-          eligibleForPremium={
-            eligibleForPremium && !enabledFeatureFlags.includes("FreeOnly")
-          }
-          l10n={l10n}
-          countryCode={countryCode}
-          scanLimitReached={scanLimitReached}
-          experimentData={experimentData["Features"]}
-          enabledFeatureFlags={enabledFeatureFlags}
-        />
-      )}
+      <LandingView
+        eligibleForPremium={
+          eligibleForPremium && !enabledFeatureFlags.includes("FreeOnly")
+        }
+        l10n={l10n}
+        countryCode={countryCode}
+        scanLimitReached={scanLimitReached}
+        experimentData={experimentData["Features"]}
+        enabledFeatureFlags={enabledFeatureFlags}
+      />
     </AccountsMetricsFlowProvider>
   );
 }
