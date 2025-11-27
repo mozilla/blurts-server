@@ -105,33 +105,6 @@ features:
         value: { "enabled": true }
       - channel: production
         value: { "enabled": true }
-  landing-page-redesign-plus-eligible-experiment:
-    description: Landing page redesign
-    variables:
-      enabled:
-        description: If the feature is enabled
-        type: Boolean
-        default: false
-      variant:
-        description: The landing page variant to show
-        type: LandingPageVariant
-        default: default
-    defaults:
-      - channel: local
-        value: {
-          "enabled": true,
-          "variant": redesign,
-        }
-      - channel: staging
-        value: {
-          "enabled": false,
-          "variant": default,
-        }
-      - channel: production
-        value: {
-          "enabled": false,
-          "variant": default,
-        }
 enums:
   OptionalBrokerScanInfoFields:
     description: An enum of optional broker scan info fields
@@ -153,10 +126,3 @@ enums:
         description: Only show a CTA button with the label “Get free scan”
       ctaOnlyAlternativeLabel:
         description: Only show a CTA button with the label “Sign up to get free scan”
-  LandingPageVariant:
-    description: An enum of landing page variants
-    variants:
-      default:
-        description: Show the default landing page
-      redesign:
-        description: Show the redesigned landing page
