@@ -3,8 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 export const CONST_ONEREP_MAX_SCANS_THRESHOLD = 280000;
-export const CONST_MAX_NUM_ADDRESSES = 5;
-export const CONST_MAX_NUM_ADDRESSES_PLUS = 20;
+export const CONST_MAX_NUM_ADDRESSES = 20;
 export const CONST_GA4_MEASUREMENT_ID = "G-CXG8K4KW4P";
 export const CONST_ONEREP_DATA_BROKER_COUNT = 190;
 export const MOZILLA_ORG = "https://www.mozilla.org/";

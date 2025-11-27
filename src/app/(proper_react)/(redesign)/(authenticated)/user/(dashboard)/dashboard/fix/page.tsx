@@ -11,10 +11,8 @@ import {
 import { getCountryCode } from "../../../../../../../functions/server/getCountryCode";
 import { getSubscriberBreaches } from "../../../../../../../functions/server/getSubscriberBreaches";
 import { getOnerepProfileId } from "../../../../../../../../db/tables/subscribers";
-import { getScanResultsWithBroker } from "../../../../../../../../db/tables/onerep_scans";
 import { getServerSession } from "../../../../../../../functions/server/getServerSession";
 import { refreshStoredScanResults } from "../../../../../../../functions/server/refreshStoredScanResults";
-import { hasPremium } from "../../../../../../../functions/universal/user";
 import { getEnabledFeatureFlags } from "../../../../../../../../db/tables/featureFlags";
 
 export default async function FixPage() {
@@ -36,15 +34,10 @@ export default async function FixPage() {
     email: session.user.email,
   });
 
-  const scanData = await getScanResultsWithBroker(
-    profileId,
-    hasPremium(session.user),
-  );
   const stepDeterminationData: StepDeterminationData = {
     countryCode,
     user: session.user,
     subscriberBreaches: breaches,
-    latestScanData: scanData,
   };
 
   const nextStep = getNextGuidedStep(

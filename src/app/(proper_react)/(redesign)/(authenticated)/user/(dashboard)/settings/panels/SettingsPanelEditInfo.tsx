@@ -10,7 +10,6 @@ import { OnerepProfileRow, SubscriberRow } from "knex/types/tables";
 import { SettingsDetailsSavedNotification } from "./SettingsDetailsSavedNotification";
 import {
   CONST_MAX_NUM_ADDRESSES,
-  CONST_MAX_NUM_ADDRESSES_PLUS,
   CONST_URL_SUMO_EDIT_INFO_PERSONAL_INFO,
 } from "../../../../../../../../constants";
 import { SubscriberEmailPreferencesOutput } from "../../../../../../../../db/tables/subscriber_email_preferences";
@@ -225,13 +224,7 @@ function ProfileInfoSection({
 
 function MonitoredEmailAddressesSection(props: SettingsPanelEditInfoProps) {
   const l10n = useL10n();
-  const maxNumEmailAddresses = props.enabledFeatureFlags.includes(
-    "IncreasedFreeMaxBreachEmails",
-  )
-    ? CONST_MAX_NUM_ADDRESSES_PLUS
-    : hasPremium(props.user)
-      ? CONST_MAX_NUM_ADDRESSES_PLUS
-      : CONST_MAX_NUM_ADDRESSES;
+  const maxNumEmailAddresses = CONST_MAX_NUM_ADDRESSES;
   const hasMaxEmailAddresses =
     props.emailAddresses.length < maxNumEmailAddresses - 1;
 
