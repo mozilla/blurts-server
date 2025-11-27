@@ -18,7 +18,7 @@ import { useTelemetry } from "../../../hooks/useTelemetry";
 import { AnnouncementRow } from "knex/types/tables";
 import { truncateDescription } from "../../../../utils/truncate";
 import { useSubscriptionBilling } from "../../../../contextProviders/subscription-billing-context";
-import { CONST_MAX_NUM_ADDRESSES_PLUS } from "../../../../constants";
+import { CONST_MAX_NUM_ADDRESSES } from "../../../../constants";
 
 type AnnouncementDialogProps = {
   announcements: UserAnnouncementWithDetails[];
@@ -464,7 +464,7 @@ export const LocalizedAnnouncementString = (
     bundleMonthlyPrice: `$${billingInfo.bundle.monthly}`,
     bundleYearlyPrice: `$${billingInfo.bundle.monthly * 12}`,
     regularYearlyPrice: `$${billingInfo.bundle.individual * 12}`,
-    emailAddressesCount: CONST_MAX_NUM_ADDRESSES_PLUS,
+    emailAddressesCount: CONST_MAX_NUM_ADDRESSES,
     date: "Dec. 17", // deadline for viewing data broker results and in-progress removals
   });
 

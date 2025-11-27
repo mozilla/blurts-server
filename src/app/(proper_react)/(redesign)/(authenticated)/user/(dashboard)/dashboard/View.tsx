@@ -23,10 +23,7 @@ import { getExposureStatus } from "../../../../../../components/server/StatusPil
 import { TabList } from "../../../../../../components/client/TabList";
 import { filterExposures } from "./filterExposures";
 import { SubscriberBreach } from "../../../../../../../utils/subscriberBreaches";
-import {
-  canSubscribeToPremium,
-  hasPremium,
-} from "../../../../../../functions/universal/user";
+import { hasPremium } from "../../../../../../functions/universal/user";
 import type { LatestOnerepScanData } from "../../../../../../../db/tables/onerep_scans";
 import { getLocale } from "../../../../../../functions/universal/getLocale";
 import { Button } from "../../../../../../components/client/Button";
@@ -405,12 +402,6 @@ export const View = (props: Props) => {
         <DashboardTopBanner
           tabType={activeTab}
           isPremiumUser={hasPremium(props.user)}
-          isEligibleForPremium={canSubscribeToPremium({
-            user: props.user,
-            countryCode,
-            enabledFeatureFlags: props.enabledFeatureFlags,
-          })}
-          isEligibleForFreeScan={props.isEligibleForFreeScan}
           hasExposures={hasExposures}
           hasUnresolvedBreaches={hasUnresolvedBreaches}
           bannerData={getDashboardSummary(
@@ -430,9 +421,6 @@ export const View = (props: Props) => {
               breach_count: breachesDataArray.length,
             });
           }}
-          monthlySubscriptionUrl={props.monthlySubscriptionUrl}
-          subscriptionBillingAmount={props.subscriptionBillingAmount}
-          totalNumberOfPerformedScans={props.totalNumberOfPerformedScans}
           enabledFeatureFlags={props.enabledFeatureFlags}
         />
         <section className={styles.exposuresArea}>

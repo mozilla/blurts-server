@@ -34,7 +34,6 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
     stepDeterminationData,
     hasExposures,
     hasUnresolvedBreaches,
-    isEligibleForPremium,
     isPremiumUser,
     onShowFixed,
   } = props;
@@ -43,7 +42,6 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
     return (
       <ProgressCard
         isPremiumUser={isPremiumUser}
-        isEligibleForPremium={isEligibleForPremium}
         resolvedByYou={bannerData.dataBreachFixedDataPointsNum}
       />
     );

@@ -15,12 +15,8 @@ import {
   getL10n,
 } from "../../../../functions/l10n/serverComponents";
 import { initEmail } from "../../../../../utils/email";
-import {
-  CONST_MAX_NUM_ADDRESSES,
-  CONST_MAX_NUM_ADDRESSES_PLUS,
-} from "../../../../../constants";
+import { CONST_MAX_NUM_ADDRESSES } from "../../../../../constants";
 import { validateEmailAddress } from "../../../../../utils/emailAddress";
-import { hasPremium } from "../../../../functions/universal/user";
 import { getEnabledFeatureFlags } from "../../../../../db/tables/featureFlags";
 
 interface EmailAddRequest {
@@ -54,13 +50,7 @@ export async function POST(req: NextRequest) {
       const enabledFeatureFlags = await getEnabledFeatureFlags({
         email: subscriber.primary_email,
       });
-      const maxNumEmailAddresses = enabledFeatureFlags.includes(
-        "IncreasedFreeMaxBreachEmails",
-      )
-        ? CONST_MAX_NUM_ADDRESSES_PLUS
-        : hasPremium(subscriber)
-          ? CONST_MAX_NUM_ADDRESSES_PLUS
-          : CONST_MAX_NUM_ADDRESSES;
+      const maxNumEmailAddresses = CONST_MAX_NUM_ADDRESSES;
       if (emailCount >= maxNumEmailAddresses) {
         return NextResponse.json(
           {

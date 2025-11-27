@@ -56,7 +56,6 @@ export const ResolutionContainer = (props: ResolutionContainerProps) => {
             <div className={styles.doneContent}>{props.children}</div>
             <ProgressCard
               isPremiumUser={props.isPremiumUser}
-              isEligibleForPremium={props.isEligibleForPremium}
               resolvedByYou={resolutionSummary.dataBreachFixedDataPointsNum}
             />
           </div>
