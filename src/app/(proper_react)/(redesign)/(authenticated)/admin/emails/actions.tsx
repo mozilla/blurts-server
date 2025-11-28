@@ -18,11 +18,8 @@ import { getSubscriberByFxaUid } from "../../../../../../db/tables/subscribers";
 import { ReactNode } from "react";
 import { SubscriberRow } from "knex/types/tables";
 import { getUserEmails } from "../../../../../../db/tables/emailAddresses";
-import { MonthlyActivityPlusEmail } from "../../../../../../emails/templates/monthlyActivityPlus/MonthlyActivityPlusEmail";
 import { getDashboardSummary } from "../../../../../functions/server/dashboard";
 import { getSubscriberBreaches } from "../../../../../functions/server/getSubscriberBreaches";
-import { getCountryCode } from "../../../../../functions/server/getCountryCode";
-import { headers } from "next/headers";
 import { FirstDataBrokerRemovalFixed } from "../../../../../../emails/templates/firstDataBrokerRemovalFixed/FirstDataBrokerRemovalFixed";
 import {
   createRandomHibpListing,
@@ -37,9 +34,6 @@ import { getSignupLocaleCountry } from "../../../../../../emails/functions/getSi
 import { refreshStoredScanResults } from "../../../../../functions/server/refreshStoredScanResults";
 import { hasPremium } from "../../../../../functions/universal/user";
 import { isEligibleForPremium } from "../../../../../functions/universal/premium";
-import { MonthlyActivityFreeEmail } from "../../../../../../emails/templates/monthlyActivityFree/MonthlyActivityFreeEmail";
-import { getMonthlyActivityFreeUnsubscribeLink } from "../../../../../../app/functions/cronjobs/unsubscribeLinks";
-import { getEnabledFeatureFlags } from "../../../../../../db/tables/featureFlags";
 import { getExperimentationIdFromUserSession } from "../../../../../functions/server/getExperimentationId";
 import { getExperiments } from "../../../../../functions/server/getExperiments";
 import { getLocale } from "../../../../../functions/universal/getLocale";
@@ -132,88 +126,6 @@ export async function triggerVerificationEmail(emailAddress: string) {
       subscriber={sanitizeSubscriberRow(subscriber)}
       l10n={l10n}
       utmCampaignId="verified-subscribers"
-    />,
-  );
-}
-
-export async function triggerMonthlyActivityFree(emailAddress: string) {
-  const session = await getServerSession();
-  const subscriber = await getAdminSubscriber();
-  if (!subscriber || !session?.user) {
-    return false;
-  }
-
-  const acceptLangHeader = await getAcceptLangHeaderInServerComponents();
-  const l10n = getL10n(acceptLangHeader);
-
-  if (typeof subscriber.onerep_profile_id === "number") {
-    await refreshStoredScanResults(subscriber.onerep_profile_id);
-  }
-
-  const enabledFeatureFlags = await getEnabledFeatureFlags({
-    email: subscriber.primary_email,
-  });
-  const countryCode = getCountryCode(await headers());
-  const experimentationId = await getExperimentationIdFromUserSession(
-    session.user,
-  );
-  const experimentData = await getExperiments({
-    experimentationId,
-    countryCode,
-    locale: getLocale(l10n),
-  });
-  const data = getDashboardSummary(
-    await getSubscriberBreaches({
-      fxaUid: session.user.subscriber?.fxa_uid,
-      countryCode,
-    }),
-  );
-
-  const unsubscribeLink =
-    await getMonthlyActivityFreeUnsubscribeLink(subscriber);
-
-  await send(
-    emailAddress,
-    l10n.getString("email-monthly-free-subject"),
-    <MonthlyActivityFreeEmail
-      subscriber={sanitizeSubscriberRow(subscriber)}
-      l10n={l10n}
-      dataSummary={data}
-      unsubscribeLink={unsubscribeLink as string}
-      enabledFeatureFlags={enabledFeatureFlags}
-      experimentData={experimentData["Features"]}
-    />,
-  );
-}
-
-export async function triggerMonthlyActivityPlus(emailAddress: string) {
-  const session = await getServerSession();
-  const subscriber = await getAdminSubscriber();
-  if (!subscriber || !session?.user) {
-    return false;
-  }
-
-  const acceptLangHeader = await getAcceptLangHeaderInServerComponents();
-  const l10n = getL10n(acceptLangHeader);
-
-  if (typeof subscriber.onerep_profile_id === "number") {
-    await refreshStoredScanResults(subscriber.onerep_profile_id);
-  }
-  const countryCode = getCountryCode(await headers());
-  const data = getDashboardSummary(
-    await getSubscriberBreaches({
-      fxaUid: session.user.subscriber?.fxa_uid,
-      countryCode,
-    }),
-  );
-
-  await send(
-    emailAddress,
-    l10n.getString("email-monthly-plus-auto-subject"),
-    <MonthlyActivityPlusEmail
-      subscriber={sanitizeSubscriberRow(subscriber)}
-      l10n={l10n}
-      data={data}
     />,
   );
 }
