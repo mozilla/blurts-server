@@ -23,13 +23,9 @@ export type Props = {
   countryCode: string;
   enabledFeatureFlags: FeatureFlagName[];
   experimentData: ExperimentData["Features"];
-  monthlySubscriptionUrl: string;
-  fxaSettingsUrl: string;
-  subscriptionBillingAmount: {
-    monthly: number;
-  };
   announcements: UserAnnouncementWithDetails[] | null;
   hideSidebar?: boolean;
+  fxaSettingsUrl: string;
 };
 
 export const ShellRedesign = (props: Props) => {
@@ -37,9 +33,7 @@ export const ShellRedesign = (props: Props) => {
     <MobileShell
       countryCode={props.countryCode}
       session={props.session}
-      monthlySubscriptionUrl={props.monthlySubscriptionUrl}
       fxaSettingsUrl={props.fxaSettingsUrl}
-      subscriptionBillingAmount={props.subscriptionBillingAmount}
       enabledFeatureFlags={props.enabledFeatureFlags}
       experimentData={props.experimentData}
       announcements={props.announcements}

@@ -13,10 +13,6 @@ import {
 import { isAdmin } from "../../../../../api/utils/auth";
 import { Toolbar } from "../../../../../components/client/toolbar/Toolbar";
 import styles from "./page.module.scss";
-import {
-  getSubscriptionBillingAmount,
-  getPremiumSubscriptionUrl,
-} from "../../../../../functions/server/getPremiumSubscriptionInfo";
 import { defaultExperimentData } from "../../../../../../telemetry/generated/nimbus/experiments";
 import { ExistingFlagEditor, NewFlagEditor } from "./components/FlagEditor";
 
@@ -26,11 +22,6 @@ export const metadata = {
 
 export default async function FeatureFlagPage() {
   const session = await getServerSession();
-
-  const monthlySubscriptionUrl = getPremiumSubscriptionUrl({
-    type: "monthly",
-    enabledFeatureFlags: [],
-  });
   const fxaSettingsUrl = process.env.FXA_SETTINGS_URL!;
 
   if (!session?.user?.email || !session.user.subscriber?.id) {
@@ -81,8 +72,6 @@ export default async function FeatureFlagPage() {
         <div className={styles.end}>
           <Toolbar
             user={session.user}
-            monthlySubscriptionUrl={monthlySubscriptionUrl}
-            subscriptionBillingAmount={getSubscriptionBillingAmount()}
             fxaSettingsUrl={fxaSettingsUrl}
             // Since this page is only accessed by contributors, no need to load
             // their latest scan date from the DB:

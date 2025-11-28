@@ -41,7 +41,6 @@ import {
 import { Popover } from "./Popover";
 import { VisuallyHidden } from "../server/VisuallyHidden";
 import { FeatureFlagName } from "../../../db/tables/featureFlags";
-import { ExperimentData } from "../../../telemetry/generated/nimbus/experiments";
 
 export type FilterState = {
   exposureType: "show-all-exposure-type" | "data-broker" | "data-breach";
@@ -50,22 +49,16 @@ export type FilterState = {
 
 type ExposuresFilterProps = {
   enabledFeatureFlags: FeatureFlagName[];
-  experimentData: ExperimentData["Features"];
   initialFilterValues: FilterState;
   filterValues: FilterState;
   setFilterValues: React.Dispatch<React.SetStateAction<FilterState>>;
-  isEligibleForPremium: boolean;
-  isPlusSubscriber: boolean;
 };
 
 export const ExposuresFilter = ({
   enabledFeatureFlags,
-  experimentData,
   initialFilterValues,
   filterValues,
   setFilterValues,
-  isEligibleForPremium,
-  isPlusSubscriber,
 }: ExposuresFilterProps) => {
   const l10n = useL10n();
   const recordTelemetry = useTelemetry();
@@ -82,11 +75,6 @@ export const ExposuresFilter = ({
     { type: "dialog" },
     exposureTypeExplainerDialogState,
   );
-  const exposureTypeExplainerTriggerRef = useRef<HTMLButtonElement>(null);
-  const exposureTypeExplainerTriggerProps = useButton(
-    exposureTypeExplainerDialogTrigger.triggerProps,
-    exposureTypeExplainerTriggerRef,
-  ).buttonProps;
 
   // Removal time explainer dialog
   const exposureRemovalTimeExplainerDialogState = useOverlayTriggerState({
@@ -100,13 +88,6 @@ export const ExposuresFilter = ({
     { type: "dialog" },
     exposureRemovalTimeExplainerDialogState,
   );
-  const exposureRemovalTimeExplainerTriggerRef =
-    useRef<HTMLButtonElement>(null);
-  const exposureRemovalTimeExplainerTriggerProps = useButton(
-    exposureRemovalTimeExplainerDialogTrigger.triggerProps,
-    exposureRemovalTimeExplainerTriggerRef,
-  ).buttonProps;
-
   // Status filter explainer dialog
   const exposureStatusExplainerDialogState = useOverlayTriggerState({
     onOpenChange: (isOpen) => {
@@ -173,30 +154,6 @@ export const ExposuresFilter = ({
   const ExposuresFilterContent = (
     <form onSubmit={handleSaveButtonClick}>
       <div className={styles.exposuresFilterRadioButtons}>
-        {isEligibleForPremium && (
-          <FilterRadioGroup
-            type="exposure-type"
-            value={filterState.exposureType}
-            // TODO: Add unit test when changing this code:
-            /* c8 ignore next */
-            onChange={(value) => handleRadioChange("exposureType", value)}
-            label={l10n.getString("dashboard-exposures-filter-exposure-type")}
-          >
-            <Radio value="show-all-exposure-type">
-              {l10n.getString("dashboard-exposures-filter-show-all")}
-            </Radio>
-            <Radio value="data-broker">
-              {l10n.getString(
-                "dashboard-exposures-filter-exposure-type-info-for-sale",
-              )}
-            </Radio>
-            <Radio value="data-breach">
-              {l10n.getString(
-                "dashboard-exposures-filter-exposure-type-data-breach",
-              )}
-            </Radio>
-          </FilterRadioGroup>
-        )}
         <FilterRadioGroup
           value={filterState.dateFound}
           // TODO: Add unit test when changing this code:
@@ -278,49 +235,10 @@ export const ExposuresFilter = ({
           <li className={`${styles.hideOnMobile} ${styles.companyNameArea}`}>
             {l10n.getString("dashboard-exposures-filter-company")}
           </li>
-          {isEligibleForPremium && (
-            <li className={styles.hideOnMobile}>
-              {l10n.getString("dashboard-exposures-filter-exposure-type")}
-              {isEligibleForPremium && (
-                <button
-                  {...exposureTypeExplainerTriggerProps}
-                  ref={exposureTypeExplainerTriggerRef}
-                  aria-label={l10n.getString("open-modal-alt")}
-                  aria-describedby="filterExposureTypeInfo"
-                >
-                  <VisuallyHidden id="filterExposureTypeInfo">
-                    {l10n.getString("modal-exposure-type-title")}
-                  </VisuallyHidden>
-                  <QuestionMarkCircle width="15" height="15" alt="" />
-                </button>
-              )}
-            </li>
-          )}
+
           <li className={styles.hideOnMobile}>
             {l10n.getString("dashboard-exposures-filter-date-found")}
           </li>
-          {isPlusSubscriber &&
-            enabledFeatureFlags.includes(
-              "DataBrokerRemovalTimeEstimateLabel",
-            ) &&
-            experimentData["data-broker-removal-time-estimates"].enabled && (
-              <li className={styles.hideOnMobile}>
-                {l10n.getString(
-                  "dashboard-exposures-filter-exposure-removal-time-title",
-                )}
-                <button
-                  {...exposureRemovalTimeExplainerTriggerProps}
-                  ref={exposureRemovalTimeExplainerTriggerRef}
-                  aria-label={l10n.getString("open-modal-alt")}
-                  aria-describedby="filterRemovalTime"
-                >
-                  <VisuallyHidden id="filterRemovalTime">
-                    {l10n.getString("modal-exposure-removal-time-title")}
-                  </VisuallyHidden>
-                  <QuestionMarkCircle width="15" height="15" alt="" />
-                </button>
-              </li>
-            )}
           <li className={styles.hideOnMobile}>
             {l10n.getString("dashboard-exposures-filter-status")}
             <button
@@ -355,7 +273,6 @@ export const ExposuresFilter = ({
         <ExposuresFilterStatusExplainer
           explainerDialogProps={exposureStatusExplainerDialogTrigger}
           explainerDialogState={exposureStatusExplainerDialogState}
-          isPlusSubscriber={isPlusSubscriber}
           enabledFeatureFlags={enabledFeatureFlags}
         />
       )}

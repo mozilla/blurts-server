@@ -113,7 +113,6 @@ type ExposuresFilterStatusExplainerProps = {
   enabledFeatureFlags: FeatureFlagName[];
   explainerDialogState: OverlayTriggerState;
   explainerDialogProps: OverlayTriggerAria;
-  isPlusSubscriber: boolean;
 };
 
 export const ExposuresFilterStatusExplainer = (
@@ -135,28 +134,6 @@ export const ExposuresFilterStatusExplainer = (
       >
         <div className={styles.modalBodyContent}>
           <ul className={`${styles.statusList} noList`}>
-            {props.isPlusSubscriber && (
-              <>
-                {props.enabledFeatureFlags.includes(
-                  "AdditionalRemovalStatuses",
-                ) && (
-                  <li className={styles.statusListItem}>
-                    <StatusPill type={StatusPillTypeMap.RequestedRemoval} />
-                    {l10n.getString(
-                      "modal-exposure-indicator-requested-removal",
-                    )}
-                  </li>
-                )}
-                <li className={styles.statusListItem}>
-                  <StatusPill type={StatusPillTypeMap.InProgress} />
-                  {l10n.getString("modal-exposure-indicator-in-progress")}
-                </li>
-                <li className={styles.statusListItem}>
-                  <StatusPill type={StatusPillTypeMap.Removed} />
-                  {l10n.getString("modal-exposure-indicator-removed")}
-                </li>
-              </>
-            )}
             <li className={styles.statusListItem}>
               <StatusPill type={StatusPillTypeMap.Fixed} />
               {l10n.getString("modal-exposure-indicator-fixed")}
