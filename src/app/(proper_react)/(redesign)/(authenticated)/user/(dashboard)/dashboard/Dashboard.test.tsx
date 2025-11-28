@@ -24,42 +24,6 @@ import Meta, {
 import { useTelemetry as useTelemetryImported } from "../../../../../../hooks/useTelemetry";
 import { deleteAllCookies } from "../../../../../../functions/client/deleteAllCookies";
 import { defaultExperimentData } from "../../../../../../../telemetry/generated/nimbus/experiments";
-import {
-  DashboardUsNoPremiumNoScanNoBreaches,
-  DashboardUsNoPremiumNoScanUnresolvedBreaches,
-  DashboardUsNoPremiumNoScanResolvedBreaches,
-  DashboardUsNoPremiumNoScanNoBreachesScanLimitReached,
-  DashboardUsNoPremiumEmptyScanNoBreaches,
-  DashboardUsNoPremiumEmptyScanUnresolvedBreaches,
-  DashboardUsNoPremiumEmptyScanResolvedBreaches,
-  DashboardUsNoPremiumUnresolvedScanNoBreaches,
-  DashboardUsNoPremiumUnresolvedScanUnresolvedBreaches,
-  DashboardUsNoPremiumUnresolvedScanResolvedBreaches,
-  DashboardUsNoPremiumResolvedScanNoBreaches,
-  DashboardUsNoPremiumResolvedScanUnresolvedBreaches,
-  DashboardUsNoPremiumResolvedScanResolvedBreaches,
-  DashboardUsNoPremiumScanInProgressNoBreaches,
-  DashboardUsNoPremiumScanInProgressUnresolvedBreaches,
-  DashboardUsNoPremiumScanInProgressResolvedBreaches,
-  DashboardUsNoPremiumNoScanNoBreachesDisabledScan,
-  DashboardUsNoPremiumFirstScanRan,
-} from "./DashboardUSUsers.stories";
-import {
-  DashboardUsPremiumEmptyScanNoBreaches,
-  DashboardUsPremiumEmptyScanUnresolvedBreaches,
-  DashboardUsPremiumEmptyScanResolvedBreaches,
-  DashboardUsPremiumUnresolvedScanNoBreaches,
-  DashboardUsPremiumUnresolvedScanUnresolvedBreaches,
-  DashboardUsPremiumUnresolvedScanResolvedBreaches,
-  DashboardUsPremiumResolvedScanNoBreaches,
-  DashboardUsPremiumResolvedScanUnresolvedBreaches,
-  DashboardUsPremiumResolvedScanResolvedBreaches,
-  DashboardInvalidPremiumUserNoScanResolvedBreaches,
-  DashboardUsPremiumManuallyResolvedScansNoBreaches,
-  DashboardUsPremiumScanInProgressNoBreaches,
-  DashboardUsPremiumScanInProgressResolvedBreaches,
-  DashboardUsPremiumScanInProgressUnresolvedBreaches,
-} from "./DashboardPlusUsers.stories";
 
 jest.mock("next/navigation", () => ({
   useRouter: jest.fn(),
@@ -98,123 +62,13 @@ afterEach(() => {
 });
 
 it("passes the axe accessibility test suite", async () => {
-  const ComposedDashboard = composeStory(
-    DashboardUsPremiumUnresolvedScanUnresolvedBreaches,
-    Meta,
-  );
+  const ComposedDashboard = composeStory(DashboardNonUsNoBreaches, Meta);
   const { container } = render(<ComposedDashboard />);
   expect(await axe(container)).toHaveNoViolations();
 }, 10_000);
 
-it("shows the 'Start a free scan' CTA to free US-based users who haven't performed a scan yet", () => {
-  const ComposedDashboard = composeStory(
-    DashboardUsNoPremiumNoScanNoBreaches,
-    Meta,
-  );
-  render(<ComposedDashboard />);
-
-  const freeScanCta = screen.getByRole("link", { name: "Start a free scan" });
-  expect(freeScanCta).toBeInTheDocument();
-});
-
-it("does not show the 'Start a free scan' CTA for non-US users", () => {
-  const ComposedDashboard = composeStory(DashboardNonUsNoBreaches, Meta);
-  render(<ComposedDashboard />);
-
-  const freeScanCta = screen.queryByRole("link", { name: "Start a free scan" });
-  expect(freeScanCta).not.toBeInTheDocument();
-});
-
-it("does not show a 'Contact Us' link for non-Plus users", async () => {
-  const user = userEvent.setup();
-  const ComposedDashboard = composeStory(
-    DashboardUsNoPremiumEmptyScanNoBreaches,
-    Meta,
-  );
-  render(<ComposedDashboard />);
-
-  // Note: there are two user menus, for both small and wide screens:
-  const userMenuTrigger = screen.getAllByRole("button", {
-    name: "Open user menu",
-  })[0];
-  await user.click(userMenuTrigger);
-
-  const contactUsEntry = screen.queryByRole("menuitem", { name: "Contact us" });
-
-  expect(contactUsEntry).not.toBeInTheDocument();
-});
-
-it("shows the waitlist dialog when a user selects 'Start a free scan' CTA if the DisableOneRepScans flag is enabled", async () => {
-  const user = userEvent.setup();
-  const ComposedDashboard = composeStory(
-    DashboardUsNoPremiumNoScanNoBreachesDisabledScan,
-    Meta,
-  );
-  render(<ComposedDashboard />);
-
-  const ctaButton = screen.getByRole("button", {
-    name: "Start a free scan",
-  });
-  await user.click(ctaButton);
-
-  expect(
-    screen.getByRole("dialog", {
-      name: "⁨Monitor⁩ is currently at capacity",
-    }),
-  ).toBeInTheDocument();
-});
-
-it("shows a 'Contact Us' link for Plus users", async () => {
-  const user = userEvent.setup();
-  const ComposedDashboard = composeStory(
-    DashboardUsPremiumEmptyScanNoBreaches,
-    Meta,
-  );
-  render(<ComposedDashboard />);
-
-  // Note: there are two user menus, for both small and wide screens:
-  const userMenuTrigger = screen.getAllByRole("button", {
-    name: "Open user menu",
-  })[0];
-  await user.click(userMenuTrigger);
-
-  const contactUsEntry = screen.getByRole("menuitem", { name: "Contact us" });
-
-  expect(contactUsEntry).toBeInTheDocument();
-});
-
-it("counts how often people click the 'Contact us' link", async () => {
-  const mockedRecord = useTelemetry();
-  const user = userEvent.setup();
-  const ComposedDashboard = composeStory(
-    DashboardUsPremiumEmptyScanNoBreaches,
-    Meta,
-  );
-  render(<ComposedDashboard />);
-
-  // Note: there are two user menus, for both small and wide screens:
-  const userMenuTrigger = screen.getAllByRole("button", {
-    name: "Open user menu",
-  })[0];
-  await user.click(userMenuTrigger);
-
-  const contactUsEntry = screen.getByRole("menuitem", { name: /Contact us/i });
-  await user.click(contactUsEntry);
-
-  expect(mockedRecord).toHaveBeenCalledWith(
-    "ctaButton",
-    "click",
-    expect.objectContaining({
-      button_id: "contact_us_user_menu",
-    }),
-  );
-});
-
 it("renders the dashboard with the action needed tab selected when requested", () => {
-  const ComposedDashboard = composeStory(
-    DashboardUsNoPremiumNoScanNoBreaches,
-    Meta,
-  );
+  const ComposedDashboard = composeStory(DashboardNonUsResolvedBreaches, Meta);
   render(<ComposedDashboard activeTab="action-needed" />);
 
   const tabActionNeededTrigger = screen.getByRole("tab", {
@@ -223,26 +77,9 @@ it("renders the dashboard with the action needed tab selected when requested", (
   expect(tabActionNeededTrigger.getAttribute("aria-selected")).toBe("true");
 });
 
-it("renders the dashboard with the fixed tab selected when requested", () => {
-  const ComposedDashboard = composeStory(
-    DashboardUsNoPremiumNoScanNoBreaches,
-    Meta,
-  );
-  render(<ComposedDashboard activeTab="fixed" />);
-
-  const tabFixedTrigger = screen.getByRole("tab", {
-    name: "Fixed",
-  });
-  tabFixedTrigger.getAttribute("aria-selected");
-  expect(tabFixedTrigger.getAttribute("aria-selected")).toBe("true");
-});
-
 it("switches between tab panels", async () => {
   const user = userEvent.setup();
-  const ComposedDashboard = composeStory(
-    DashboardUsNoPremiumNoScanNoBreaches,
-    Meta,
-  );
+  const ComposedDashboard = composeStory(DashboardNonUsResolvedBreaches, Meta);
   render(<ComposedDashboard />);
 
   const tabActionNeededTrigger = screen.getByRole("tab", {
@@ -259,33 +96,9 @@ it("switches between tab panels", async () => {
   expect(tabActionNeededTrigger.getAttribute("aria-selected")).toBe("false");
 });
 
-it("shows consistent counts in the chart on the active tab", () => {
-  const ComposedDashboard = composeStory(
-    DashboardUsNoPremiumUnresolvedScanUnresolvedBreaches,
-    Meta,
-  );
-  render(<ComposedDashboard />);
-
-  const exposureCounter = 25;
-  const chartElement = screen.getByRole("img", {
-    name: `⁨${exposureCounter}⁩ exposures`,
-  });
-  expect(chartElement).toBeInTheDocument();
-
-  const listSubheading = screen.getByText(
-    new RegExp(
-      `We found your information exposed ⁨${exposureCounter}⁩ times over (.*?) data breaches and ⁨2⁩ data broker sites that are selling your personal info.`,
-    ),
-  );
-  expect(listSubheading).toBeInTheDocument();
-});
-
 it("shows consistent counts in the chart on the fixed tab", async () => {
   const user = userEvent.setup();
-  const ComposedDashboard = composeStory(
-    DashboardUsNoPremiumUnresolvedScanUnresolvedBreaches,
-    Meta,
-  );
+  const ComposedDashboard = composeStory(DashboardNonUsResolvedBreaches, Meta);
   render(<ComposedDashboard />);
 
   const tabFixedTrigger = screen.getByRole("tab", {
@@ -302,17 +115,6 @@ it("shows consistent counts in the chart on the fixed tab", async () => {
     `This chart shows the total exposures that are fixed (⁨${fixedCounter}⁩ out of ⁨81⁩)`,
   );
   expect(chartCaption).toBeInTheDocument();
-});
-
-it("shows US users with Premium the date of their last scan", () => {
-  const ComposedDashboard = composeStory(
-    DashboardUsPremiumEmptyScanNoBreaches,
-    Meta,
-  );
-  render(<ComposedDashboard />);
-
-  const lastScanIndicator = screen.getByText("Last scan:");
-  expect(lastScanIndicator).toBeInTheDocument();
 });
 
 it("does not shows US users without Premium who have not done a scan the date of their last scan", () => {

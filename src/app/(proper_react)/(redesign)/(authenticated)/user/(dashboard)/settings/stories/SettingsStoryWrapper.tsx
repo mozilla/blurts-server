@@ -33,7 +33,6 @@ export type SettingsWrapperProps = {
   countryCode: string;
   enabledFeatureFlags: FeatureFlagName[];
   isMonthlySubscriber: boolean;
-  isEligibleForPremium: boolean;
   subscriber: SubscriberRow;
   emailAddresses?: EmailAddressRow[];
   profileData?: OnerepProfileRow;
@@ -100,17 +99,9 @@ export const SettingsWrapper = (props: SettingsWrapperProps) => {
               [mockedVerifiedEmailFifth.email]: 78,
             }}
             fxaSettingsUrl=""
-            fxaSubscriptionsUrl=""
-            monthlySubscriptionUrl=""
-            subscriptionBillingAmount={{
-              monthly: 42.42,
-            }}
             enabledFeatureFlags={props.enabledFeatureFlags}
             experimentData={defaultExperimentData["Features"]}
             lastScanDate={new Date(Date.UTC(2024, 6, 31))}
-            isMonthlySubscriber={props.isMonthlySubscriber}
-            isEligibleForPremium={props.isEligibleForPremium}
-            profileData={props.profileData}
             activeTab={props.activeTab}
             actions={mockedActions}
             userAnnouncements={[]}

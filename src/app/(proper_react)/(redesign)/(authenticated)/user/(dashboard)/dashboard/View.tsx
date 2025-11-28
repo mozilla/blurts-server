@@ -294,7 +294,6 @@ export const View = (props: Props) => {
         </section>
         <div className={styles.exposuresFilterWrapper}>
           <ExposuresFilter
-            experimentData={props.experimentData}
             enabledFeatureFlags={props.enabledFeatureFlags}
             initialFilterValues={initialFilterState}
             filterValues={filters}

@@ -74,7 +74,6 @@ import {
   mockedSecondaryVerifiedEmail,
   mockedSession,
   mockedSubscriber,
-  mockedSubscriptionBillingAmount,
   mockedUser,
   mockedVerifiedEmailFourth,
 } from "./stories/settingsMockData";
@@ -172,13 +171,9 @@ describe("Tests from Old settings page", () => {
           }}
           emailAddresses={[mockedSecondaryVerifiedEmail]}
           fxaSettingsUrl=""
-          monthlySubscriptionUrl=""
-          subscriptionBillingAmount={mockedSubscriptionBillingAmount}
           enabledFeatureFlags={[]}
           experimentData={defaultExperimentData["Features"]}
-          isMonthlySubscriber={true}
           data={undefined}
-          isEligibleForPremium={false}
           actions={mockedActions}
           userAnnouncements={mockedAnnouncements}
         />

@@ -24,7 +24,6 @@ import {
 } from "../../../../../../../../functions/server/getRelevantGuidedSteps";
 import { FixView } from "../FixView";
 import { getGuidedExperienceBreaches } from "../../../../../../../../functions/universal/guidedExperienceBreaches";
-import { hasPremium } from "../../../../../../../../functions/universal/user";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { LeakedPasswordsDataTypes } from "../../../../../../../../functions/universal/breach";
@@ -35,7 +34,6 @@ export interface LeakedPasswordsLayoutProps {
   type: LeakedPasswordsTypes;
   subscriberEmails: string[];
   data: StepDeterminationData;
-  isEligibleForPremium: boolean;
   enabledFeatureFlags: FeatureFlagName[];
 }
 
@@ -210,7 +208,6 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
         type="leakedPasswords"
         title={title}
         illustration={illustration}
-        isPremiumUser={hasPremium(props.data.user)}
         enabledFeatureFlags={props.enabledFeatureFlags}
         cta={
           !isStepDone && (
@@ -255,7 +252,6 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
         estimatedTime={!isStepDone ? 4 : undefined}
         isStepDone={isStepDone}
         data={props.data}
-        isEligibleForPremium={props.isEligibleForPremium}
       >
         <ResolutionContent content={content} locale={getLocale(l10n)} />
       </ResolutionContainer>
