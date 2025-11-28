@@ -32,7 +32,6 @@ import { updateOnerepDataBrokerScanProfile } from "../../../../../../functions/s
 import { hasPremium } from "../../../../../../functions/universal/user";
 import { type NormalizedProfileData } from "./panels/SettingsPanelEditProfile/EditProfileForm";
 import { OnerepUsPhoneNumber } from "../../../../../../functions/server/onerep";
-import { getEnabledFeatureFlags } from "../../../../../../../db/tables/featureFlags";
 
 export type AddEmailFormState =
   | { success?: never }
@@ -87,10 +86,6 @@ export async function onAddEmail(
       errorMessage: l10n.getString("user-add-invalid-email"),
     };
   }
-
-  const enabledFeatureFlags = await getEnabledFeatureFlags({
-    email: subscriber.primary_email,
-  });
   const maxNumEmailAddresses = CONST_MAX_NUM_ADDRESSES;
   const existingAddresses = [session.user.email]
     .concat(subscriber.email_addresses.map((emailRow) => emailRow.email))
@@ -115,7 +110,6 @@ export async function onAddEmail(
     const unverifiedSubscriber = await addSubscriberUnverifiedEmailHash(
       subscriber,
       validatedEmailAddress.email,
-      enabledFeatureFlags,
     );
 
     await initEmail();

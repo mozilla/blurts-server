@@ -7,8 +7,6 @@
 import { SubscriberRow } from "knex/types/tables";
 import { ExtendedReactLocalization } from "../../app/functions/l10n";
 import { DashboardSummary } from "../../app/functions/server/dashboard";
-import { getSignupLocaleCountry } from "../functions/getSignupLocaleCountry";
-import { isEligibleForPremium } from "../../app/functions/universal/premium";
 import { SanitizedSubscriberRow } from "../../app/functions/server/sanitize";
 import { sumSanitizedDataPoints } from "../functions/reduceSanitizedDataPoints";
 
@@ -24,13 +22,10 @@ type Props = {
 };
 
 export const DataPointCount = (props: Props) => {
-  const assumedCountryCode = getSignupLocaleCountry(props.subscriber);
   const unresolvedDataBreaches = props.dataSummary.dataBreachUnresolvedNum;
 
   const hasRunFreeScan = typeof props.subscriber.onerep_profile_id === "number";
-  const utmContentSuffix = isEligibleForPremium(assumedCountryCode)
-    ? "-us"
-    : "-global";
+  const utmContentSuffix = "-global";
   return (
     <mj-wrapper padding="24px 16px">
       <mj-section
@@ -72,27 +67,6 @@ export const DataPointCount = (props: Props) => {
                   props.dataSummary.unresolvedSanitizedDataPoints,
                 )
               : unresolvedDataBreaches}
-          </mj-text>
-          <mj-text
-            align="center"
-            font-size="14px"
-            line-height="21px"
-            padding="0"
-          >
-            <p>
-              {props.l10n.getString(
-                isEligibleForPremium(assumedCountryCode) && hasRunFreeScan
-                  ? "email-breach-alert-plus-scan-results-data-points-label"
-                  : "email-monthly-report-no-scan-results-data-points-label",
-                {
-                  data_point_count: hasRunFreeScan
-                    ? sumSanitizedDataPoints(
-                        props.dataSummary.unresolvedSanitizedDataPoints,
-                      )
-                    : unresolvedDataBreaches,
-                },
-              )}
-            </p>
           </mj-text>
         </mj-column>
       </mj-section>

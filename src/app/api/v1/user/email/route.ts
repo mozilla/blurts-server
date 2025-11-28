@@ -17,7 +17,6 @@ import {
 import { initEmail } from "../../../../../utils/email";
 import { CONST_MAX_NUM_ADDRESSES } from "../../../../../constants";
 import { validateEmailAddress } from "../../../../../utils/emailAddress";
-import { getEnabledFeatureFlags } from "../../../../../db/tables/featureFlags";
 
 interface EmailAddRequest {
   email: string;
@@ -46,10 +45,6 @@ export async function POST(req: NextRequest) {
           { status: 400 },
         );
       }
-
-      const enabledFeatureFlags = await getEnabledFeatureFlags({
-        email: subscriber.primary_email,
-      });
       const maxNumEmailAddresses = CONST_MAX_NUM_ADDRESSES;
       if (emailCount >= maxNumEmailAddresses) {
         return NextResponse.json(
@@ -88,7 +83,6 @@ export async function POST(req: NextRequest) {
       const unverifiedSubscriber = await addSubscriberUnverifiedEmailHash(
         subscriber,
         validatedEmail.email,
-        enabledFeatureFlags,
       );
 
       await initEmail();
