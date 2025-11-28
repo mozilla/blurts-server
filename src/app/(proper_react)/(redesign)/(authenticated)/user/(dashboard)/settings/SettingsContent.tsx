@@ -97,12 +97,8 @@ function SettingsContent(props: SettingsProps) {
           emailAddresses={props.emailAddresses}
           enabledFeatureFlags={props.enabledFeatureFlags}
           experimentData={props.experimentData}
-          fxaSubscriptionsUrl={props.fxaSubscriptionsUrl}
-          isMonthlySubscriber={props.isMonthlySubscriber}
           subscriber={props.subscriber}
           user={props.user}
-          isEligibleForPremium={props.isEligibleForPremium}
-          profileData={props.profileData}
           actions={props.actions}
         />
       </div>

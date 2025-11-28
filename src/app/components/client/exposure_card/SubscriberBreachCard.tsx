@@ -26,8 +26,6 @@ export type SubscriberBreachCardProps = {
   subscriberBreach: SubscriberBreach;
   locale: string;
   resolutionCta: ReactNode;
-  isEligibleForPremium: boolean;
-  isPremiumUser: boolean;
   isExpanded: boolean;
   enabledFeatureFlags: FeatureFlagName[];
   experimentData: ExperimentData["Features"];
@@ -182,45 +180,13 @@ export const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
                 {subscriberBreach.title}
               </span>
             </dd>
-            {props.isEligibleForPremium && (
-              <>
-                <dt
-                  className={`${styles.hideOnMobile} ${styles.visuallyHidden}`}
-                >
-                  {l10n.getString("exposure-card-exposure-type")}
-                </dt>
-                <dd className={styles.hideOnMobile}>
-                  {l10n.getString("exposure-card-exposure-type-data-breach")}
-                </dd>
-              </>
-            )}
+
             <dt className={`${styles.hideOnMobile} ${styles.visuallyHidden}`}>
               {l10n.getString("exposure-card-date-found")}
             </dt>
             <dd className={styles.hideOnMobile}>
               {dateFormatter.format(subscriberBreach.addedDate)}
             </dd>
-            {props.isPremiumUser &&
-              props.enabledFeatureFlags.includes(
-                "DataBrokerRemovalTimeEstimateLabel",
-              ) &&
-              props.experimentData["data-broker-removal-time-estimates"]
-                .enabled && (
-                <>
-                  <dt
-                    className={`${styles.hideOnMobile} ${styles.visuallyHidden}`}
-                  >
-                    {l10n.getString(
-                      "dashboard-exposures-filter-exposure-removal-time-title",
-                    )}
-                  </dt>
-                  <dd className={styles.hideOnMobile}>
-                    {l10n.getString(
-                      "dashboard-exposures-filter-exposure-removal-time-label-na",
-                    )}
-                  </dd>
-                </>
-              )}
             <dt className={styles.visuallyHidden}>
               {l10n.getString("exposure-card-label-status")}
             </dt>

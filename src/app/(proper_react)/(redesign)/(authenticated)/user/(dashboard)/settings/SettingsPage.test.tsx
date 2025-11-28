@@ -110,7 +110,6 @@ describe("Tests from Old settings page", () => {
     onRemoveEmail: jest.fn(),
     onAddEmail: jest.fn(),
     onDeleteAccount: () => new Promise(() => undefined),
-    onHandleUpdateProfileData: jest.fn(),
   };
 
   it("changes the active tab", async () => {
@@ -134,14 +133,9 @@ describe("Tests from Old settings page", () => {
           }}
           emailAddresses={[mockedSecondaryVerifiedEmail]}
           fxaSettingsUrl=""
-          fxaSubscriptionsUrl=""
-          monthlySubscriptionUrl=""
-          subscriptionBillingAmount={mockedSubscriptionBillingAmount}
           enabledFeatureFlags={[]}
           experimentData={defaultExperimentData["Features"]}
-          isMonthlySubscriber={true}
           data={mockedPlusSubscriberEmailPreferences}
-          isEligibleForPremium={false}
           actions={mockedActions}
           userAnnouncements={mockedAnnouncements}
         />
@@ -178,7 +172,6 @@ describe("Tests from Old settings page", () => {
           }}
           emailAddresses={[mockedSecondaryVerifiedEmail]}
           fxaSettingsUrl=""
-          fxaSubscriptionsUrl=""
           monthlySubscriptionUrl=""
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
           enabledFeatureFlags={[]}

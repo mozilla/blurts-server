@@ -4,8 +4,7 @@
 
 "use client";
 
-import { useContext, useEffect, useRef, useState } from "react";
-import Link from "next/link";
+import { useContext, useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { Session } from "next-auth";
@@ -24,7 +23,6 @@ import { TabList } from "../../../../../../components/client/TabList";
 import { filterExposures } from "./filterExposures";
 import { SubscriberBreach } from "../../../../../../../utils/subscriberBreaches";
 import { hasPremium } from "../../../../../../functions/universal/user";
-import type { LatestOnerepScanData } from "../../../../../../../db/tables/onerep_scans";
 import { getLocale } from "../../../../../../functions/universal/getLocale";
 import { Button } from "../../../../../../components/client/Button";
 
@@ -32,47 +30,25 @@ import NoExposuresIllustration from "./images/dashboard-no-exposures.svg";
 import { CountryCodeContext } from "../../../../../../../contextProviders/country-code";
 import { FeatureFlagName } from "../../../../../../../db/tables/featureFlags";
 import { getNextGuidedStep } from "../../../../../../functions/server/getRelevantGuidedSteps";
-import { CsatSurvey } from "../../../../../../components/client/csat_survey/CsatSurvey";
-import { WaitlistDialog } from "../../../../../../components/client/SubscriberWaitlistDialog";
-import { useOverlayTriggerState } from "react-stately";
-import { useOverlayTrigger } from "react-aria";
 import { useTelemetry } from "../../../../../../hooks/useTelemetry";
-import {
-  CONST_ONEREP_DATA_BROKER_COUNT,
-  CONST_ONEREP_MAX_SCANS_THRESHOLD,
-} from "../../../../../../../constants";
 import { ExperimentData } from "../../../../../../../telemetry/generated/nimbus/experiments";
-import { DataBrokerRemovalTime } from "../../../../../../functions/server/getDataBrokerRemovalTimeEstimates";
 import { UserAnnouncementWithDetails } from "../../../../../../../db/tables/user_announcements";
-import { parseIso8601Datetime } from "../../../../../../../utils/parse";
 import { PlusShutdownBanner } from "../../../../../../components/client/PlusShutdownBanner";
 import { ShutdownState } from "../../../../../../functions/server/getPlusShutdownState";
 
 export type TabType = "action-needed" | "fixed";
 
 export type Props = {
+  shutdownState: ShutdownState;
   enabledFeatureFlags: FeatureFlagName[];
   experimentData: ExperimentData["Features"];
   user: Session["user"];
   userBreaches: SubscriberBreach[];
-  userScanData: LatestOnerepScanData;
   countryCode: string;
-  isEligibleForFreeScan: boolean;
-  isEligibleForPremium: boolean;
-  monthlySubscriptionUrl: string;
-  subscriptionBillingAmount: {
-    monthly: number;
-  };
-  shutdownState: ShutdownState;
   fxaSettingsUrl: string;
-  scanCount: number;
   isNewUser: boolean;
-  hasFirstMonitoringScan: boolean;
-  elapsedTimeInDaysSinceInitialScan?: number;
-  totalNumberOfPerformedScans?: number;
   activeTab: TabType;
   signInCount: number | null;
-  removalTimeEstimates: DataBrokerRemovalTime[];
   userAnnouncements: UserAnnouncementWithDetails[];
 };
 
@@ -174,8 +150,6 @@ export const View = (props: Props) => {
               }
             }}
             locale={getLocale(l10n)}
-            isPremiumUser={hasPremium(props.user)}
-            isEligibleForPremium={props.isEligibleForPremium}
             resolutionCta={
               <Button
                 variant="primary"
@@ -246,104 +220,15 @@ export const View = (props: Props) => {
   const TabContentFixed = () => (
     <>
       <h2 className={styles.exposuresAreaHeadline}>
-        {l10n.getString(
-          props.isEligibleForPremium
-            ? "dashboard-fixed-area-headline-premium"
-            : "dashboard-fixed-area-headline-all",
-        )}
+        {l10n.getString("dashboard-fixed-area-headline-all")}
       </h2>
     </>
   );
-
-  const waitlistTriggerRef = useRef<HTMLAnchorElement>(null);
-  const dialogTriggerState = useOverlayTriggerState({});
-  const overlayTrigger = useOverlayTrigger(
-    { type: "dialog" },
-    dialogTriggerState,
-    waitlistTriggerRef,
-  );
-
-  const freeScanCta = props.isEligibleForFreeScan && (
-    <>
-      <WaitlistDialog
-        dialogTriggerState={dialogTriggerState}
-        {...overlayTrigger.overlayProps}
-      />
-      <p>
-        {
-          /* c8 ignore start */
-          props.enabledFeatureFlags.includes("MaskDataBrokerCount")
-            ? l10n.getFragment(
-                "dashboard-exposures-all-fixed-free-scan-masked",
-                {
-                  elems: {
-                    a:
-                      !props.enabledFeatureFlags.includes(
-                        "DisableOneRepScans",
-                      ) &&
-                      (typeof props.totalNumberOfPerformedScans ===
-                        "undefined" ||
-                        props.totalNumberOfPerformedScans <
-                          CONST_ONEREP_MAX_SCANS_THRESHOLD) ? (
-                        <Link
-                          ref={waitlistTriggerRef}
-                          href="/user/welcome/free-scan?referrer=dashboard"
-                          onClick={() => {
-                            recordTelemetry("link", "click", {
-                              link_id: "exposures_all_fixed_free_scan",
-                            });
-                          }}
-                        />
-                      ) : (
-                        <Button
-                          variant="link"
-                          buttonRef={waitlistTriggerRef}
-                          {...overlayTrigger.triggerProps}
-                        />
-                      ),
-                  },
-                },
-              )
-            : l10n.getFragment("dashboard-exposures-all-fixed-free-scan", {
-                vars: {
-                  data_broker_total_num: CONST_ONEREP_DATA_BROKER_COUNT,
-                },
-                elems: {
-                  a:
-                    !props.enabledFeatureFlags.includes("DisableOneRepScans") &&
-                    (typeof props.totalNumberOfPerformedScans === "undefined" ||
-                      props.totalNumberOfPerformedScans <
-                        CONST_ONEREP_MAX_SCANS_THRESHOLD) ? (
-                      <Link
-                        ref={waitlistTriggerRef}
-                        href="/user/welcome/free-scan?referrer=dashboard"
-                        onClick={() => {
-                          recordTelemetry("link", "click", {
-                            link_id: "exposures_all_fixed_free_scan",
-                          });
-                        }}
-                      />
-                    ) : (
-                      <Button
-                        variant="link"
-                        buttonRef={waitlistTriggerRef}
-                        {...overlayTrigger.triggerProps}
-                      />
-                    ),
-                },
-              })
-          /* c8 ignore stop */
-        }
-      </p>
-    </>
-  );
-
   const getZeroStateIndicator = () => {
     return (
       <>
         <Image src={NoExposuresIllustration} alt="" />
         <strong>{l10n.getString("dashboard-no-exposures-label")}</strong>
-        {freeScanCta}
       </>
     );
   };
@@ -352,14 +237,7 @@ export const View = (props: Props) => {
     <div className={styles.wrapper}>
       <Toolbar
         user={props.user}
-        monthlySubscriptionUrl={props.monthlySubscriptionUrl}
-        subscriptionBillingAmount={props.subscriptionBillingAmount}
         fxaSettingsUrl={props.fxaSettingsUrl}
-        lastScanDate={
-          props.userScanData.scan
-            ? parseIso8601Datetime(props.userScanData.scan.created_at)
-            : null
-        }
         experimentData={props.experimentData}
         enabledFeatureFlags={props.enabledFeatureFlags}
         announcements={announcements}
@@ -381,23 +259,7 @@ export const View = (props: Props) => {
         countryCode={props.countryCode}
         shutdownState={props.shutdownState}
       />
-      <CsatSurvey
-        user={props.user}
-        activeTab={activeTab}
-        enabledFeatureFlags={props.enabledFeatureFlags}
-        experimentData={props.experimentData}
-        elapsedTimeInDaysSinceInitialScan={
-          props.elapsedTimeInDaysSinceInitialScan ?? null
-        }
-        hasFirstMonitoringScan={props.hasFirstMonitoringScan}
-        lastScanDate={
-          props.userScanData.scan
-            ? parseIso8601Datetime(props.userScanData.scan.created_at)
-            : null
-        }
-        signInCount={props.signInCount}
-        isEligibleForPremium={props.isEligibleForPremium}
-      />
+
       <div className={styles.dashboardContent}>
         <DashboardTopBanner
           tabType={activeTab}
@@ -437,8 +299,6 @@ export const View = (props: Props) => {
             initialFilterValues={initialFilterState}
             filterValues={filters}
             setFilterValues={setFilters}
-            isEligibleForPremium={props.isEligibleForPremium}
-            isPlusSubscriber={hasPremium(props.user)}
           />
         </div>
         {noUnresolvedExposures ? (

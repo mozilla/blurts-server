@@ -12,10 +12,6 @@ import { PageLink } from "../PageLink";
 import { Footer } from "../Footer";
 import { SubscriptionCheck } from "../../../components/client/SubscriptionCheck";
 import { ExtendedReactLocalization } from "../../../functions/l10n";
-import {
-  getSubscriptionBillingAmount,
-  getPremiumSubscriptionUrl,
-} from "../../../functions/server/getPremiumSubscriptionInfo";
 import { FeatureFlagName } from "../../../../db/tables/featureFlags";
 import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 import MonitorLogo from "../../images/monitor-logo.svg";
@@ -38,10 +34,6 @@ export type Props = {
 
 export const Shell = (props: Props) => {
   const l10n = props.l10n;
-  const monthlySubscriptionUrl = getPremiumSubscriptionUrl({
-    type: "monthly",
-    enabledFeatureFlags: props.enabledFeatureFlags,
-  });
 
   return (
     <>
@@ -54,13 +46,11 @@ export const Shell = (props: Props) => {
         <ShellRedesign
           countryCode={props.countryCode}
           session={props.session}
-          monthlySubscriptionUrl={monthlySubscriptionUrl}
-          fxaSettingsUrl={process.env.FXA_SETTINGS_URL!}
-          subscriptionBillingAmount={getSubscriptionBillingAmount()}
           enabledFeatureFlags={props.enabledFeatureFlags}
           experimentData={props.experimentData}
           l10n={props.l10n}
           announcements={props.announcements}
+          fxaSettingsUrl={process.env.FXA_SETTINGS_URL!}
         >
           <div className={styles.page}>{props.children}</div>
         </ShellRedesign>
@@ -68,9 +58,7 @@ export const Shell = (props: Props) => {
         <MobileShell
           countryCode={props.countryCode}
           session={props.session}
-          monthlySubscriptionUrl={monthlySubscriptionUrl}
           fxaSettingsUrl={process.env.FXA_SETTINGS_URL!}
-          subscriptionBillingAmount={getSubscriptionBillingAmount()}
           enabledFeatureFlags={props.enabledFeatureFlags}
           experimentData={props.experimentData}
           announcements={props.announcements}
