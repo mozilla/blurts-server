@@ -89,7 +89,6 @@ const LeakedPasswordsWrapper = (props: {
           subscriberBreaches: mockedBreaches,
           user: mockedSession.user,
         }}
-        isEligibleForPremium={true}
         enabledFeatureFlags={[]}
       />
     </Shell>

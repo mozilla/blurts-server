@@ -13,7 +13,6 @@ import {
 } from "../leakedPasswordsData";
 import { getSubscriberEmails } from "../../../../../../../../../functions/server/getSubscriberEmails";
 import { getCountryCode } from "../../../../../../../../../functions/server/getCountryCode";
-import { isEligibleForPremium } from "../../../../../../../../../functions/universal/premium";
 import { logger } from "../../../../../../../../../functions/server/logging";
 import { getEnabledFeatureFlags } from "../../../../../../../../../../db/tables/featureFlags";
 
@@ -55,7 +54,6 @@ export default async function LeakedPasswords(props: LeakedPasswordsProps) {
         subscriberBreaches: breaches,
         user: session.user,
       }}
-      isEligibleForPremium={isEligibleForPremium(countryCode)}
       enabledFeatureFlags={enabledFeatureFlags}
     />
   );

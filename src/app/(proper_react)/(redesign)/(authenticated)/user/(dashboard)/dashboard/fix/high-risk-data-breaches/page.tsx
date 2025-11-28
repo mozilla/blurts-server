@@ -9,7 +9,6 @@ import { HighRiskBreachLayout } from "./HighRiskBreachLayout";
 import { getSubscriberEmails } from "../../../../../../../../functions/server/getSubscriberEmails";
 import { getSubscriberBreaches } from "../../../../../../../../functions/server/getSubscriberBreaches";
 import { getCountryCode } from "../../../../../../../../functions/server/getCountryCode";
-import { isEligibleForPremium } from "../../../../../../../../functions/universal/premium";
 import { getEnabledFeatureFlags } from "../../../../../../../../../db/tables/featureFlags";
 
 export default async function HighRiskDataBreaches() {
@@ -40,7 +39,6 @@ export default async function HighRiskDataBreaches() {
           subscriberBreaches: breaches,
           user: session.user,
         }}
-        isEligibleForPremium={isEligibleForPremium(countryCode)}
         enabledFeatureFlags={enabledFeatureFlags}
       />
     </div>

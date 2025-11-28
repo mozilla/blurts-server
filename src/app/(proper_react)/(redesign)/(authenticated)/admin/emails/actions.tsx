@@ -32,8 +32,6 @@ import { getSha1 } from "../../../../../../utils/fxa";
 import { getBreaches } from "../../../../../functions/server/getBreaches";
 import { getSignupLocaleCountry } from "../../../../../../emails/functions/getSignupLocaleCountry";
 import { refreshStoredScanResults } from "../../../../../functions/server/refreshStoredScanResults";
-import { hasPremium } from "../../../../../functions/universal/user";
-import { isEligibleForPremium } from "../../../../../functions/universal/premium";
 import { getExperimentationIdFromUserSession } from "../../../../../functions/server/getExperimentationId";
 import { getExperiments } from "../../../../../functions/server/getExperiments";
 import { getLocale } from "../../../../../functions/universal/getLocale";
@@ -167,11 +165,8 @@ export async function triggerBreachAlert(emailAddress: string) {
       breach={createRandomHibpListing()}
       utmCampaignId={UTM_CAMPAIGN_ID_BREACH_ALERT}
       l10n={l10n}
-      dataSummary={
-        isEligibleForPremium(assumedCountryCode) && !hasPremium(subscriber)
-          ? getDashboardSummary(allSubscriberBreaches)
-          : undefined
-      }
+      dataSummary={getDashboardSummary(allSubscriberBreaches)}
+      experimentData={experimentData["Features"]}
     />,
   );
 }

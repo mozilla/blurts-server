@@ -17,7 +17,6 @@ import ModalImage from "../client/assets/modal-default-img.svg";
 
 export type Props = {
   resolvedByYou: number;
-  isPremiumUser: boolean;
 };
 
 export const ProgressCard = (props: Props) => {
@@ -61,11 +60,7 @@ export const ProgressCard = (props: Props) => {
   return (
     <div className={styles.progressCard}>
       <div className={styles.header}>
-        {l10n.getString(
-          props.isPremiumUser
-            ? "progress-card-heres-what-we-fixed-headline-premium"
-            : "progress-card-heres-what-we-fixed-headline-all",
-        )}
+        {l10n.getString("progress-card-heres-what-we-fixed-headline-all")}
       </div>
       <div className={styles.progressStatsWrapper}>
         {/* Manually fixed */}

@@ -8,7 +8,6 @@ import {
   OnerepScanResultDataBrokerRow,
   OnerepScanRow,
 } from "knex/types/tables";
-import { faker } from "@faker-js/faker";
 import { View as DashboardEl, TabType } from "./View";
 import { Shell } from "../../../../Shell/Shell";
 import { getL10n } from "../../../../../../functions/l10n/storybookAndJest";
@@ -201,13 +200,6 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
     user: user,
   };
 
-  const mockedRemovalTimeEstimates = scanData.results
-    .map((scan) => ({
-      d: scan.data_broker,
-      t: faker.number.float({ min: 0, max: 200 }),
-    }))
-    .filter(() => Math.random() < 0.1);
-
   return (
     <SessionProvider session={mockedSession}>
       <CountryCodeProvider countryCode={props.countryCode}>
@@ -230,20 +222,8 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
           <DashboardEl
             user={user}
             userBreaches={breaches}
-            userScanData={scanData}
-            isEligibleForPremium={props.countryCode === "us"}
-            isEligibleForFreeScan={props.countryCode === "us" && !scanData.scan}
-            monthlySubscriptionUrl=""
             fxaSettingsUrl=""
-            scanCount={scanCount}
-            totalNumberOfPerformedScans={props.totalNumberOfPerformedScans}
-            subscriptionBillingAmount={{
-              monthly: 42.42,
-            }}
             isNewUser={true}
-            elapsedTimeInDaysSinceInitialScan={
-              props.elapsedTimeInDaysSinceInitialScan
-            }
             enabledFeatureFlags={props.enabledFeatureFlags ?? []}
             experimentData={
               props.experimentData ?? {
@@ -254,9 +234,7 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
               }
             }
             activeTab={props.activeTab ?? "action-needed"}
-            hasFirstMonitoringScan={props.hasFirstMonitoringScan ?? false}
             signInCount={props.signInCount ?? null}
-            removalTimeEstimates={mockedRemovalTimeEstimates}
             userAnnouncements={mockedAnnouncements}
             countryCode={props.countryCode}
             shutdownState={{

@@ -13,7 +13,6 @@ import {
   highRiskBreachTypes,
 } from "../highRiskBreachData";
 import { getCountryCode } from "../../../../../../../../../functions/server/getCountryCode";
-import { isEligibleForPremium } from "../../../../../../../../../functions/universal/premium";
 import { getEnabledFeatureFlags } from "../../../../../../../../../../db/tables/featureFlags";
 
 interface SecurityRecommendationsProps {
@@ -54,7 +53,6 @@ export default async function SecurityRecommendations(
         subscriberBreaches: breaches,
         user: session.user,
       }}
-      isEligibleForPremium={isEligibleForPremium(countryCode)}
       enabledFeatureFlags={enabledFeatureFlags}
     />
   );
