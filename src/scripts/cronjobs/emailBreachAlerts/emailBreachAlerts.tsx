@@ -7,18 +7,18 @@ import type { Logger } from "winston";
 import { getBreachByName, type HibpLikeDbBreach } from "../../../utils/hibp";
 import { sendEmail as sendEmailFn } from "../../../utils/email";
 import * as Sentry from "@sentry/node";
-import { breachNotificationSubscribersByHashes } from "../../../db/models/BreachNotificationSubscriber";
+import { getBreachNotificationSubscribersByHashes } from "../../../db/models/BreachNotificationSubscriber";
 import {
   addEmailNotification,
   markEmailAsNotified,
-  subscriberNotifiedForBreach,
+  isSubscriberNotifiedForBreach,
 } from "../../../db/tables/email_notifications";
 import { getCronjobL10n } from "../../../app/functions/l10n/cronjobs";
 import { renderEmail } from "../../../emails/renderEmail";
 import { BreachAlertEmail } from "../../../emails/templates/breachAlert/BreachAlertEmail";
 import { MessageSummary, SubscriptionHandler } from "./subscriptionHandler";
 import * as grpc from "@grpc/grpc-js";
-import { BREACH_ALERT_UTM_CAMPAIGN_ID } from "../../../constants";
+import { UTM_CAMPAIGN_ID_BREACH_ALERT } from "../../../constants";
 
 type BreachNotifiableResponse = {
   shouldNotify: boolean;
@@ -33,12 +33,12 @@ type BreachMessagePayload = {
 
 /** Minimal external dependencies re-exported here for type inference */
 export const SubscribersRepo = {
-  findByHashes: breachNotificationSubscribersByHashes,
+  findByHashes: getBreachNotificationSubscribersByHashes,
 };
 export const NotificationsRepo = {
   addEmailNotification,
   markEmailAsNotified,
-  subscriberNotifiedForBreach,
+  isSubscriberNotifiedForBreach: isSubscriberNotifiedForBreach,
 };
 
 /**
@@ -101,11 +101,12 @@ function breachIsNotifiable(
  * @param message PubSub Message
  * @param logger Logger instance
  * @param breachProvider fetches list of breaches (from db/redis)
+ *   In practice, use `getAllBreachesFromDb` from '../../../utils/hibp'
  * @param subs DB Repository for subscribers
  * @param notifications DB Repository for email_notifications
  * @param sendEmail send email method
  * @param sentry optional initialized Sentry object
- * @returns Promise<MessageS
+ * @returns Promise<MessageSummary>
  */
 export async function breachMessageHandler(
   message: Message,
@@ -165,6 +166,7 @@ export async function breachMessageHandler(
   let notified = 0;
   for (const recipient of recipients) {
     // Skip if user does not want to be notified
+    // (this is the case if this value is null)
     if (recipient.all_emails_to_primary === null) {
       logger.info("Instant breach alerts disabled, skipping subscriber", {
         subscriber_id: recipient.subscriber_id,
@@ -175,10 +177,11 @@ export async function breachMessageHandler(
     // Skip if user has been notified already for this breach
     // (regardless of which email address specifically)
     // TODO: MNTOR-5807
-    const alreadyNotifiedOnce = await notifications.subscriberNotifiedForBreach(
-      breachAlert.Id,
-      recipient.subscriber_id,
-    );
+    const alreadyNotifiedOnce =
+      await notifications.isSubscriberNotifiedForBreach(
+        breachAlert.Id,
+        recipient.subscriber_id,
+      );
     if (alreadyNotifiedOnce) {
       logger.info("Subscriber already notified, skipping", {
         subscriber_id: recipient.subscriber_id,
@@ -206,7 +209,7 @@ export async function breachMessageHandler(
             l10n={l10n}
             breach={breachAlert}
             breachedEmail={recipient.breached_email}
-            utmCampaignId={BREACH_ALERT_UTM_CAMPAIGN_ID}
+            utmCampaignId={UTM_CAMPAIGN_ID_BREACH_ALERT}
             subscriber={recipient}
             dataSummary={undefined}
           />,
@@ -261,7 +264,7 @@ type EmailBreachAlertsJobConfig = {
 // (not jsdom) environment, due to pubsub requiring setImmediate etc.
 // TODO: [MNTOR-1880]
 /* c8 ignore start */
-export function job(config: EmailBreachAlertsJobConfig) {
+export function runJob(config: EmailBreachAlertsJobConfig) {
   const localConfig = process.env.PUBSUB_EMULATOR_HOST
     ? {
         apiEndpoint: process.env.PUBSUB_EMULATOR_HOST,

@@ -27,7 +27,6 @@ describe("getExperimentationId", () => {
 
   beforeEach(() => {
     jest.resetModules();
-    jest.clearAllMocks();
 
     process.env = { ...originalEnv };
     delete process.env.NIMBUS_UUID_NAMESPACE;

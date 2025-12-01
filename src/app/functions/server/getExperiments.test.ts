@@ -40,7 +40,6 @@ const fetchMock: jest.MockedFunction<typeof fetch> = jest.fn();
 
 beforeEach(() => {
   jest.resetModules();
-  jest.clearAllMocks();
   process.env = { ...ORIGINAL_ENV };
 
   process.env.APP_ENV = "production";

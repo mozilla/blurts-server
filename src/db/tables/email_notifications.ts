@@ -10,7 +10,7 @@ import createDbConnection from "../connect";
 /* c8 ignore start */
 const knex = createDbConnection();
 
-export async function subscriberNotifiedForBreach(
+export async function isSubscriberNotifiedForBreach(
   breachId: EmailNotificationRow["breach_id"],
   subscriber_id: EmailNotificationRow["subscriber_id"],
 ) {

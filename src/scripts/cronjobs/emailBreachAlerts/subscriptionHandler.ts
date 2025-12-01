@@ -12,10 +12,10 @@ export type MessageSummary = {
   errors: number;
 };
 
-type messageFn = (message: Message) => Promise<MessageSummary>;
+type MessageFn = (message: Message) => Promise<MessageSummary>;
 type SubscriptionHandlerOpts = {
   subscription: Subscription;
-  messageFn: messageFn;
+  messageFn: MessageFn;
   logger: Logger;
   process: NodeJS.Process;
 };

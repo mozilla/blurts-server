@@ -46,7 +46,6 @@ describe("updateBreachesInRemoteSettings job", () => {
   );
 
   beforeEach(() => {
-    jest.clearAllMocks();
     jest.resetAllMocks();
     process.env = { ...originalEnv };
 

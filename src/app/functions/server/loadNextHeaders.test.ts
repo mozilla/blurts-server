@@ -7,7 +7,6 @@ import { it, expect, jest } from "@jest/globals";
 describe("loadNextHeaders", () => {
   beforeEach(() => {
     jest.resetModules();
-    jest.clearAllMocks();
     jest.unmock("next/headers");
   });
 

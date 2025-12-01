@@ -74,8 +74,12 @@ describe("breachMessageHandler", () => {
     expect(notifications.markEmailAsNotified).toHaveBeenCalledTimes(2);
   });
 
-  it("skips if breach is not notifiable", async () => {
-    const breach = mockBreach({ Name: defaultBreachName, IsVerified: false }); // not notifiable
+  it.each([
+    mockBreach({ Name: defaultBreachName, IsVerified: false }),
+    mockBreach({ Name: defaultBreachName, IsFabricated: true }),
+    mockBreach({ Name: defaultBreachName, IsSpamList: true }),
+    mockBreach({ Name: defaultBreachName, Domain: "" }),
+  ])("skips if breach is not notifiable", async (breach) => {
     const breachProvider = async () => [breach];
     const subs = { findByHashes: jest.fn() };
     // Doesn't really matter here as it shouldn't reach this far
@@ -99,14 +103,18 @@ describe("breachMessageHandler", () => {
 
     // skipped equals number of suffixes in payload (estimate here is ok,
     // maybe not all suffixes will map to a user)
-    expect(res).toEqual({ success: true, errors: 0, notified: 0, skipped: 1 });
+    expect(res).toEqual({
+      success: true,
+      errors: 0,
+      notified: 0,
+      skipped: 1,
+    });
     expect(subs.findByHashes).not.toHaveBeenCalled();
     Object.values(notifications).forEach((fn) => {
       expect(fn).not.toHaveBeenCalled();
     });
     expect(sendEmail).not.toHaveBeenCalled();
   });
-
   it("skips recipients already notified", async () => {
     const breachProvider = async () => [mockBreach(validBreachDefaults)];
     const subs = {
@@ -133,7 +141,12 @@ describe("breachMessageHandler", () => {
       sendEmail,
     );
 
-    expect(res).toEqual({ success: true, errors: 0, notified: 0, skipped: 1 });
+    expect(res).toEqual({
+      success: true,
+      errors: 0,
+      notified: 0,
+      skipped: 1,
+    });
     expect(sendEmail).not.toHaveBeenCalled();
     expect(notifications.addEmailNotification).not.toHaveBeenCalled();
   });
