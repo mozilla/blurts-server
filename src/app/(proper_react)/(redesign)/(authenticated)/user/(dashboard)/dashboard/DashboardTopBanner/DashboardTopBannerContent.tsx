@@ -34,16 +34,12 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
     stepDeterminationData,
     hasExposures,
     hasUnresolvedBreaches,
-    isPremiumUser,
     onShowFixed,
   } = props;
 
   if (tabType === "fixed") {
     return (
-      <ProgressCard
-        isPremiumUser={isPremiumUser}
-        resolvedByYou={bannerData.dataBreachFixedDataPointsNum}
-      />
+      <ProgressCard resolvedByYou={bannerData.dataBreachFixedDataPointsNum} />
     );
   }
 

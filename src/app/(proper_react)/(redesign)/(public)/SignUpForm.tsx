@@ -17,7 +17,6 @@ import { Button } from "../../../components/client/Button";
 import styles from "./SignUpForm.module.scss";
 import { useTelemetry } from "../../../hooks/useTelemetry";
 import { useViewTelemetry } from "../../../hooks/useViewTelemetry";
-import { WaitlistCta } from "./ScanLimit";
 import { useCookies } from "react-cookie";
 import { CONST_URL_MONITOR_LANDING_PAGE_ID } from "../../../../constants";
 import { getFreeScanSearchParams } from "../../../functions/universal/getFreeScanSearchParams";
@@ -26,12 +25,10 @@ import { ExperimentData } from "../../../../telemetry/generated/nimbus/experimen
 import { InputField } from "../../../components/client/InputField";
 
 export type Props = {
-  eligibleForPremium: boolean;
   eventId: {
     cta: string;
     field?: string;
   };
-  scanLimitReached: boolean;
   signUpCallbackUrl: string;
   label?: string;
   experimentData?: ExperimentData["Features"];
@@ -68,16 +65,9 @@ export const SignUpForm = (props: Props) => {
   };
 
   const label =
-    props.label ??
-    l10n.getString(
-      props.eligibleForPremium
-        ? "landing-premium-hero-emailform-input-label"
-        : "landing-all-hero-emailform-input-label",
-    );
+    props.label ?? l10n.getString("landing-all-hero-emailform-input-label");
 
-  return props.scanLimitReached ? (
-    <WaitlistCta />
-  ) : (
+  return (
     <form
       ref={refViewTelemetry as RefObject<HTMLFormElement | null>}
       className={`${styles.form} ${props.labelPosition ? styles[props.labelPosition] : ""}`}

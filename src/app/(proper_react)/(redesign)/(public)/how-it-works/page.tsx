@@ -10,12 +10,6 @@ import {
   getAcceptLangHeaderInServerComponents,
   getL10n,
 } from "../../../../functions/l10n/serverComponents";
-import {
-  getProfilesStats,
-  monthlySubscribersQuota,
-} from "../../../../functions/server/onerep";
-import { isEligibleForPremium } from "../../../../functions/universal/premium";
-import { CONST_DAY_MILLISECONDS } from "../../../../../constants";
 import { getEnabledFeatureFlags } from "../../../../../db/tables/featureFlags";
 
 export default async function Page() {
@@ -30,26 +24,9 @@ export default async function Page() {
     return redirect("/");
   }
 
-  const eligibleForPremium = isEligibleForPremium(countryCode);
   const l10n = getL10n(await getAcceptLangHeaderInServerComponents());
 
-  // request the profile stats for the last 30 days
-  const profileStats = await getProfilesStats(
-    new Date(Date.now() - 30 * CONST_DAY_MILLISECONDS),
-  );
-  const oneRepActivations = profileStats?.total_active;
-
-  const scanLimitReached =
-    typeof oneRepActivations === "undefined" ||
-    oneRepActivations > monthlySubscribersQuota ||
-    (enabledFeatureFlags.includes("DisableOneRepScans") && eligibleForPremium);
-
   return (
-    <HowItWorksView
-      l10n={l10n}
-      eligibleForPremium={eligibleForPremium}
-      scanLimitReached={scanLimitReached}
-      enabledFeatureFlags={enabledFeatureFlags}
-    />
+    <HowItWorksView l10n={l10n} enabledFeatureFlags={enabledFeatureFlags} />
   );
 }
