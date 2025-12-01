@@ -24,7 +24,7 @@ jobs:
       GAR_REGISTRY: us-docker.pkg.dev
     steps:
       - name: Check out the repo
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           persist-credentials: false
 
