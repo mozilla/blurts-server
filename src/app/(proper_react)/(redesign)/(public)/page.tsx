@@ -6,10 +6,7 @@ import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { getServerSession } from "../../../functions/server/getServerSession";
 import { getCountryCode } from "../../../functions/server/getCountryCode";
-import {
-  getProfilesStats,
-  monthlySubscribersQuota,
-} from "../../../functions/server/onerep";
+import { monthlySubscribersQuota } from "../../../functions/server/onerep";
 import { isEligibleForPremium } from "../../../functions/universal/premium";
 import {
   getAcceptLangHeaderInServerComponents,
