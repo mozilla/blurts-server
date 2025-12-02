@@ -15,15 +15,16 @@ import { DashboardSummary } from "../../../app/functions/server/dashboard";
 import { ResolutionRelevantBreachDataTypes } from "../../../app/functions/universal/breach";
 import { DataPointCount } from "../../components/EmailDataPointCount";
 import { HeaderStyles, MetaTags } from "../../components/HeaderStyles";
-import { ExperimentData } from "../../../telemetry/generated/nimbus/experiments";
 
 export type BreachAlertEmailProps = {
   l10n: ExtendedReactLocalization;
   breach: HibpLikeDbBreach;
   breachedEmail: string;
   utmCampaignId: string;
-  subscriber: SubscriberRow;
-  experimentData: ExperimentData["Features"];
+  subscriber: Pick<
+    SubscriberRow,
+    "fxa_profile_json" | "onerep_profile_id" | "fxa_profile_json"
+  >;
   /**
    * We need to run a bunch of queries to collect this data,
    * so it's optional; however, make sure to pass it in for

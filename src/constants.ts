@@ -65,3 +65,4 @@ export const CONST_DATA_BROKER_PROFILE_DETAIL_LIMITS = {
 } as const;
 export const CONST_MAX_SCAN_RESULTS_PER_BROKER = 3 as const;
 export const CONST_CIRRUS_V2_PATHNAME = "v2/features";
+export const UTM_CAMPAIGN_ID_BREACH_ALERT = "breach-alert";

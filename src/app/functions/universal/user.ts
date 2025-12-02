@@ -7,7 +7,9 @@ import { ISO8601DateString } from "../../../utils/parse";
 import { SubscriberRow } from "knex/types/tables";
 import type { FeatureFlagName } from "../../../db/tables/featureFlags";
 
-export function hasPremium(user?: Session["user"] | SubscriberRow): boolean {
+export function hasPremium(
+  user?: Pick<Session["user"], "fxa"> | Pick<SubscriberRow, "fxa_profile_json">,
+): boolean {
   const subscriptions =
     // Simulating subscribers with incomplete FxA profile data
     // is a bit too much effort for too little gain, hence:

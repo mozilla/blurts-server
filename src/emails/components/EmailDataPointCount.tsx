@@ -11,13 +11,13 @@ import { getSignupLocaleCountry } from "../functions/getSignupLocaleCountry";
 import { isEligibleForPremium } from "../../app/functions/universal/premium";
 import { SanitizedSubscriberRow } from "../../app/functions/server/sanitize";
 import { sumSanitizedDataPoints } from "../functions/reduceSanitizedDataPoints";
-import { ExperimentData } from "../../telemetry/generated/nimbus/experiments";
 
 type Props = {
   l10n: ExtendedReactLocalization;
   dataSummary: DashboardSummary;
-  subscriber: SanitizedSubscriberRow | SubscriberRow;
-  experimentData: ExperimentData["Features"];
+  subscriber:
+    | Pick<SanitizedSubscriberRow, "fxa_profile_json" | "onerep_profile_id">
+    | Pick<SubscriberRow, "fxa_profile_json" | "onerep_profile_id">;
   utmCampaignId: string;
   utmSource: string;
   utmMedium: string;
