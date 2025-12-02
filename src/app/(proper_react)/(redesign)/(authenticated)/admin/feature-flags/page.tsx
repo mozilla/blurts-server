@@ -13,7 +13,6 @@ import {
 import { isAdmin } from "../../../../../api/utils/auth";
 import { Toolbar } from "../../../../../components/client/toolbar/Toolbar";
 import styles from "./page.module.scss";
-import { defaultExperimentData } from "../../../../../../telemetry/generated/nimbus/experiments";
 import { ExistingFlagEditor, NewFlagEditor } from "./components/FlagEditor";
 
 export const metadata = {
@@ -73,12 +72,6 @@ export default async function FeatureFlagPage() {
           <Toolbar
             user={session.user}
             fxaSettingsUrl={fxaSettingsUrl}
-            // Since this page is only accessed by contributors, no need to load
-            // their latest scan date from the DB:
-            lastScanDate={null}
-            // We're not going to run experiments on the feature flag page (it's
-            // not user-visible), so no need to fetch experiment data:
-            experimentData={defaultExperimentData["Features"]}
             enabledFeatureFlags={[]}
             announcements={null}
           />

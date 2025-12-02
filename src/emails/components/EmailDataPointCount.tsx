@@ -8,7 +8,6 @@ import { SubscriberRow } from "knex/types/tables";
 import { ExtendedReactLocalization } from "../../app/functions/l10n";
 import { DashboardSummary } from "../../app/functions/server/dashboard";
 import { SanitizedSubscriberRow } from "../../app/functions/server/sanitize";
-import { sumSanitizedDataPoints } from "../functions/reduceSanitizedDataPoints";
 
 type Props = {
   l10n: ExtendedReactLocalization;
@@ -23,8 +22,6 @@ type Props = {
 
 export const DataPointCount = (props: Props) => {
   const unresolvedDataBreaches = props.dataSummary.dataBreachUnresolvedNum;
-
-  const hasRunFreeScan = typeof props.subscriber.onerep_profile_id === "number";
   const utmContentSuffix = "-global";
   return (
     <mj-wrapper padding="24px 16px">
@@ -62,11 +59,7 @@ export const DataPointCount = (props: Props) => {
             font-size="60px"
             line-height="68px"
           >
-            {hasRunFreeScan
-              ? sumSanitizedDataPoints(
-                  props.dataSummary.unresolvedSanitizedDataPoints,
-                )
-              : unresolvedDataBreaches}
+            {unresolvedDataBreaches}
           </mj-text>
         </mj-column>
       </mj-section>

@@ -27,9 +27,6 @@ import { getBreachesForEmail } from "../../../../../../utils/hibp";
 import { getSha1 } from "../../../../../../utils/fxa";
 import { getBreaches } from "../../../../../functions/server/getBreaches";
 import { getSignupLocaleCountry } from "../../../../../../emails/functions/getSignupLocaleCountry";
-import { getExperimentationIdFromUserSession } from "../../../../../functions/server/getExperimentationId";
-import { getExperiments } from "../../../../../functions/server/getExperiments";
-import { getLocale } from "../../../../../functions/universal/getLocale";
 import { UTM_CAMPAIGN_ID_BREACH_ALERT } from "../../../../../../constants";
 
 async function getAdminSubscriber(): Promise<SubscriberRow | null> {
@@ -135,14 +132,6 @@ export async function triggerBreachAlert(emailAddress: string) {
 
   const assumedCountryCode = getSignupLocaleCountry(subscriber);
 
-  const experimentationId = await getExperimentationIdFromUserSession(
-    session.user,
-  );
-  const experimentData = await getExperiments({
-    experimentationId,
-    countryCode: assumedCountryCode,
-    locale: getLocale(l10n),
-  });
   const allSubscriberBreaches = await getSubscriberBreaches({
     fxaUid: subscriber.fxa_uid,
     countryCode: assumedCountryCode,
@@ -158,7 +147,6 @@ export async function triggerBreachAlert(emailAddress: string) {
       utmCampaignId={UTM_CAMPAIGN_ID_BREACH_ALERT}
       l10n={l10n}
       dataSummary={getDashboardSummary(allSubscriberBreaches)}
-      experimentData={experimentData["Features"]}
     />,
   );
 }

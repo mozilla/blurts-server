@@ -9,7 +9,6 @@ import { BreachAlertEmailProps, BreachAlertEmail } from "./BreachAlertEmail";
 import { StorybookEmailRenderer } from "../../StorybookEmailRenderer";
 import { getL10n } from "../../../app/functions/l10n/storybookAndJest";
 import { createRandomHibpListing } from "../../../apiMocks/mockData";
-import { defaultExperimentData } from "../../../telemetry/generated/nimbus/experiments";
 
 const meta: Meta<FC<BreachAlertEmailProps>> = {
   title: "Emails/Breach alert",

@@ -7,7 +7,6 @@ import { SerializedSubscriber } from "../../../next-auth";
 
 import type { Meta, StoryObj } from "@storybook/nextjs";
 import { MobileShell } from "./MobileShell";
-import { defaultExperimentData } from "../../../telemetry/generated/nimbus/experiments";
 
 function createUser(): Session["user"] {
   return {
@@ -36,7 +35,6 @@ const meta: Meta<typeof MobileShell> = {
   component: MobileShell,
   args: {
     enabledFeatureFlags: [],
-    experimentData: defaultExperimentData["Features"],
   },
 };
 export default meta;
