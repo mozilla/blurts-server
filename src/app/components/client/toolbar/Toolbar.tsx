@@ -9,7 +9,6 @@ import styles from "./Toolbar.module.scss";
 import { UserMenu } from "./UserMenu";
 import { Session } from "next-auth";
 import { AppPicker } from "./AppPicker";
-import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 import { FeatureFlagName } from "../../../../db/tables/featureFlags";
 import { AnnouncementDialog } from "./AnnouncementDialog";
 import { UserAnnouncementWithDetails } from "../../../../db/tables/user_announcements";
@@ -17,7 +16,6 @@ import { UserAnnouncementWithDetails } from "../../../../db/tables/user_announce
 export type Props = {
   user: Session["user"];
   fxaSettingsUrl: string;
-  experimentData: ExperimentData["Features"];
   enabledFeatureFlags: FeatureFlagName[];
   children?: ReactNode;
   announcements: UserAnnouncementWithDetails[] | null;

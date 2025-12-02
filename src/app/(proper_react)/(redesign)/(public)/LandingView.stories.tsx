@@ -58,27 +58,21 @@ type Story = StoryObj<typeof View>;
 export const LandingUs: Story = {
   name: "US visitors",
   args: {
-    eligibleForPremium: true,
     countryCode: "us",
-    scanLimitReached: false,
   },
 };
 
 export const LandingUsScanLimit: Story = {
   name: "US visitors - Scan limit reached",
   args: {
-    eligibleForPremium: true,
     countryCode: "us",
-    scanLimitReached: true,
   },
 };
 
 export const LandingUsDisableOneRepScans: Story = {
   name: "US visitors - Disabled Scans",
   args: {
-    eligibleForPremium: true,
     countryCode: "us",
-    scanLimitReached: false,
     enabledFeatureFlags: ["DisableOneRepScans"],
   },
 };
@@ -86,7 +80,6 @@ export const LandingUsDisableOneRepScans: Story = {
 export const LandingNonUs: Story = {
   name: "Non-US visitors",
   args: {
-    eligibleForPremium: false,
     countryCode: "nz",
   },
 };
@@ -94,7 +87,6 @@ export const LandingNonUs: Story = {
 export const LandingNonUsDisableOneRepScans: Story = {
   name: "Non-US visitors - Disabled Scans",
   args: {
-    eligibleForPremium: false,
     countryCode: "nz",
     enabledFeatureFlags: ["DisableOneRepScans"],
   },
@@ -103,7 +95,6 @@ export const LandingNonUsDisableOneRepScans: Story = {
 export const LandingNonUsDe: Story = {
   name: "German",
   args: {
-    eligibleForPremium: false,
     countryCode: "de",
     l10n: getL10n("de"),
   },
@@ -112,7 +103,6 @@ export const LandingNonUsDe: Story = {
 export const LandingNonUsFr: Story = {
   name: "French",
   args: {
-    eligibleForPremium: false,
     countryCode: "fr",
     l10n: getL10n("fr"),
   },

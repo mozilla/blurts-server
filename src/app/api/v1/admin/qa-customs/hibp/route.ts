@@ -11,7 +11,6 @@ import {
 } from "../../../../utils/errorThrower";
 import {
   addQaCustomBreach,
-  getAllQaCustomBreaches,
   QaBreachData,
   deleteQaCustomBreach,
 } from "../../../../../../db/tables/qa_customs";
@@ -84,8 +83,6 @@ export async function GET(req: NextRequest) {
       { status: 400 },
     );
   }
-
-  return NextResponse.json(await getAllQaCustomBreaches(emailHashPrefix));
 }
 
 export async function POST(req: NextRequest) {

@@ -5,11 +5,9 @@
 import { Session } from "next-auth";
 import { ISO8601DateString } from "../../../utils/parse";
 import { SubscriberRow } from "knex/types/tables";
-import type { FeatureFlagName } from "../../../db/tables/featureFlags";
 
-export function hasPremium(
-  user?: Pick<Session["user"], "fxa"> | Pick<SubscriberRow, "fxa_profile_json">,
-): boolean {
+// TODO: Keep this until after Dec 31, 2024, then remove Plus entirely.
+export function hasPremium(user?: Session["user"] | SubscriberRow): boolean {
   const subscriptions =
     // Simulating subscribers with incomplete FxA profile data
     // is a bit too much effort for too little gain, hence:
@@ -22,28 +20,6 @@ export function hasPremium(
   /* c8 ignore next */
   return subscriptions?.includes("monitor") ?? false;
 }
-
-// TODO: Add unit test when changing this code:
-export function canSubscribeToPremium(params: {
-  user?: Session["user"];
-  countryCode: string;
-  enabledFeatureFlags: FeatureFlagName[];
-}): boolean {
-  return (
-    !hasPremium(params.user) &&
-    params.countryCode.toLowerCase() === "us" &&
-    !params.enabledFeatureFlags.includes("FreeOnly")
-  );
-}
-
-// TODO: Add unit test when changing this code:
-/* c8 ignore start */
-export function hasSetupOnerep(
-  user?: Session["user"],
-): user is Session["user"] & { subscriber: { onerep_profile_id: number } } {
-  return typeof user?.subscriber?.onerep_profile_id === "number";
-}
-/* c8 ignore stop */
 
 // Users need to be at least 13 years or older.
 const USER_MIN_AGE = 13;

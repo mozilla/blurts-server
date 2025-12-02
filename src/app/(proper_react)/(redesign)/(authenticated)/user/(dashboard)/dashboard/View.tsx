@@ -22,16 +22,13 @@ import { getExposureStatus } from "../../../../../../components/server/StatusPil
 import { TabList } from "../../../../../../components/client/TabList";
 import { filterExposures } from "./filterExposures";
 import { SubscriberBreach } from "../../../../../../../utils/subscriberBreaches";
-import { hasPremium } from "../../../../../../functions/universal/user";
 import { getLocale } from "../../../../../../functions/universal/getLocale";
 import { Button } from "../../../../../../components/client/Button";
-
 import NoExposuresIllustration from "./images/dashboard-no-exposures.svg";
 import { CountryCodeContext } from "../../../../../../../contextProviders/country-code";
 import { FeatureFlagName } from "../../../../../../../db/tables/featureFlags";
 import { getNextGuidedStep } from "../../../../../../functions/server/getRelevantGuidedSteps";
 import { useTelemetry } from "../../../../../../hooks/useTelemetry";
-import { ExperimentData } from "../../../../../../../telemetry/generated/nimbus/experiments";
 import { UserAnnouncementWithDetails } from "../../../../../../../db/tables/user_announcements";
 import { PlusShutdownBanner } from "../../../../../../components/client/PlusShutdownBanner";
 import { ShutdownState } from "../../../../../../functions/server/getPlusShutdownState";
@@ -41,7 +38,6 @@ export type TabType = "action-needed" | "fixed";
 export type Props = {
   shutdownState: ShutdownState;
   enabledFeatureFlags: FeatureFlagName[];
-  experimentData: ExperimentData["Features"];
   user: Session["user"];
   userBreaches: SubscriberBreach[];
   countryCode: string;
@@ -132,7 +128,6 @@ export const View = (props: Props) => {
       return (
         <li key={exposureCardKey} className={styles.exposureListItem}>
           <ExposureCard
-            experimentData={props.experimentData}
             enabledFeatureFlags={props.enabledFeatureFlags}
             exposureData={exposure}
             isExpanded={exposureCardKey === activeExposureCardKey}
@@ -238,7 +233,6 @@ export const View = (props: Props) => {
       <Toolbar
         user={props.user}
         fxaSettingsUrl={props.fxaSettingsUrl}
-        experimentData={props.experimentData}
         enabledFeatureFlags={props.enabledFeatureFlags}
         announcements={announcements}
       >
@@ -263,7 +257,6 @@ export const View = (props: Props) => {
       <div className={styles.dashboardContent}>
         <DashboardTopBanner
           tabType={activeTab}
-          isPremiumUser={hasPremium(props.user)}
           hasExposures={hasExposures}
           hasUnresolvedBreaches={hasUnresolvedBreaches}
           bannerData={getDashboardSummary(

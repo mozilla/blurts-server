@@ -19,7 +19,6 @@ import { FallbackLogo } from "../../server/BreachLogo";
 import { ExposureCardDataClassLayout } from "./ExposureCardDataClass";
 import { useTelemetry } from "../../../hooks/useTelemetry";
 import { FeatureFlagName } from "../../../../db/tables/featureFlags";
-import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 
 export type SubscriberBreachCardProps = {
   exposureImg?: StaticImageData;
@@ -28,7 +27,6 @@ export type SubscriberBreachCardProps = {
   resolutionCta: ReactNode;
   isExpanded: boolean;
   enabledFeatureFlags: FeatureFlagName[];
-  experimentData: ExperimentData["Features"];
   onToggleExpanded: () => void;
 };
 

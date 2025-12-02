@@ -6,7 +6,7 @@ import type { Meta, StoryObj } from "@storybook/nextjs";
 import {
   createRandomAnnouncement,
   createRandomBreach,
-  createUserWithPremiumSubscription,
+  createRandomUser,
 } from "../../../../../../../../../../apiMocks/mockData";
 import { Shell } from "../../../../../../../Shell/Shell";
 import { getL10n } from "../../../../../../../../../functions/l10n/storybookAndJest";
@@ -17,10 +17,9 @@ import {
 } from "../highRiskBreachData";
 import { BreachDataTypes } from "../../../../../../../../../functions/universal/breach";
 import { StepDeterminationData } from "../../../../../../../../../functions/server/getRelevantGuidedSteps";
-import { defaultExperimentData } from "../../../../../../../../../../telemetry/generated/nimbus/experiments";
 import { UserAnnouncementWithDetails } from "../../../../../../../../../../db/tables/user_announcements";
 
-const user = createUserWithPremiumSubscription();
+const user = createRandomUser();
 
 const mockedSession = {
   expires: new Date().toISOString(),
@@ -103,7 +102,6 @@ const HighRiskBreachWrapper = (props: {
       nonce=""
       countryCode={data.countryCode}
       enabledFeatureFlags={[]}
-      experimentData={defaultExperimentData["Features"]}
       announcements={mockedAnnouncements}
     >
       <HighRiskBreachLayout

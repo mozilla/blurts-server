@@ -20,7 +20,6 @@ import { CONST_SETTINGS_TAB_SLUGS } from "../../../constants";
 import { FeatureFlagName } from "../../../db/tables/featureFlags";
 import { SignInButton } from "../../components/client/SignInButton";
 import { TopNavBar } from "./(public)/TopNavBar";
-import { ExperimentData } from "../../../telemetry/generated/nimbus/experiments";
 import { NavbarList as NavbarListAuthenticated } from "./Shell/ShellNavbarList";
 import { UserAnnouncementWithDetails } from "../../../db/tables/user_announcements";
 import { AnnouncementDialog } from "../../components/client/toolbar/AnnouncementDialog";
@@ -30,7 +29,6 @@ export type Props = {
   session: Session | null;
   children: ReactNode;
   enabledFeatureFlags: FeatureFlagName[];
-  experimentData: ExperimentData["Features"];
   announcements?: UserAnnouncementWithDetails[] | null;
   fxaSettingsUrl: string;
 };

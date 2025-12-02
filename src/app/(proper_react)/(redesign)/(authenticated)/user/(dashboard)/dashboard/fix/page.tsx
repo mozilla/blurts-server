@@ -10,9 +10,7 @@ import {
 } from "../../../../../../../functions/server/getRelevantGuidedSteps";
 import { getCountryCode } from "../../../../../../../functions/server/getCountryCode";
 import { getSubscriberBreaches } from "../../../../../../../functions/server/getSubscriberBreaches";
-import { getOnerepProfileId } from "../../../../../../../../db/tables/subscribers";
 import { getServerSession } from "../../../../../../../functions/server/getServerSession";
-import { refreshStoredScanResults } from "../../../../../../../functions/server/refreshStoredScanResults";
 import { getEnabledFeatureFlags } from "../../../../../../../../db/tables/featureFlags";
 
 export default async function FixPage() {
@@ -26,10 +24,7 @@ export default async function FixPage() {
     fxaUid: session.user.subscriber.fxa_uid,
     countryCode,
   });
-  const profileId = await getOnerepProfileId(session.user.subscriber.id);
-  if (typeof profileId === "number") {
-    await refreshStoredScanResults(profileId);
-  }
+
   const enabledFeatureFlags = await getEnabledFeatureFlags({
     email: session.user.email,
   });

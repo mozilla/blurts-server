@@ -15,7 +15,6 @@ export type DashboardTopBannerProps = {
   bannerData: DashboardSummary;
   hasExposures: boolean;
   hasUnresolvedBreaches: boolean;
-  isPremiumUser: boolean;
   stepDeterminationData: StepDeterminationData;
   tabType: TabType;
   onShowFixed: () => void;

@@ -2,34 +2,10 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import {
-  OnerepScanResultDataBrokerRow,
-  OnerepScanResultRow,
-} from "knex/types/tables";
-import { logger } from "../../app/functions/server/logging";
 import createDbConnection from "../connect";
-import { getOnerepProfileId } from "./subscribers";
 import { HibpLikeDbBreach } from "../../utils/hibp";
 
 const knex = createDbConnection();
-
-interface QaBrokerData {
-  onerep_profile_id: number;
-  link: string;
-  age?: number;
-  data_broker: string;
-  emails: string[];
-  phones: string[];
-  addresses: { [key: string]: string }[];
-  relatives: string[];
-  first_name: string;
-  middle_name?: string;
-  last_name: string;
-  status: string;
-  manually_resolved: boolean;
-  optout_attempts: number;
-  last_optout_at: string;
-}
 
 interface QaBreachData {
   emailHashPrefix: string;
@@ -55,146 +31,15 @@ interface QaBreachData {
 
 interface QaToggleRow {
   email_hash: string;
-  onerep_profile_id: number;
   show_real_breaches: boolean;
   show_custom_breaches: boolean;
-  show_real_brokers: boolean;
-  show_custom_brokers: boolean;
 }
 
 enum AllowedToggleColumns {
   ShowRealBreaches = "show_real_breaches",
   ShowCustomBreaches = "show_custom_breaches",
-  ShowRealBrokers = "show_real_brokers",
-  ShowCustomBrokers = "show_custom_brokers",
 }
 
-// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
-/* c8 ignore start */
-async function getQaCustomBrokers(
-  onerepProfileId: number | null,
-  onerepScanId: number | undefined | null,
-) {
-  if (!onerepProfileId) {
-    logger.info("getQaCustomBrokers: onerepProfileId was not provided!");
-    return [];
-  }
-  if (!onerepScanId) {
-    logger.info("getQaCustomBrokers: onerepScanId was not provided!");
-    return [];
-  }
-
-  let results: OnerepScanResultRow[] = [];
-
-  // Fetch all results from qa_custom_brokers
-  const brokerResults = await knex("qa_custom_brokers")
-    .select("*")
-    .where("onerep_profile_id", onerepProfileId);
-
-  if (brokerResults.length > 0) {
-    /*
-      Since these are fake records, their corresponding scanId will be some
-      existing id, and broker_id will match onerep_scan_result_id for uniqueness
-    */
-    brokerResults.forEach((brokerResult) => {
-      brokerResult.onerep_scan_id = onerepScanId;
-      brokerResult.data_broker_id = brokerResult.onerep_scan_result_id;
-    });
-
-    results = [...results, ...brokerResults];
-  }
-  return results;
-}
-/* c8 ignore stop */
-
-/**
- * Inserts a new row into the qa_custom_brokers table.
- *
- * @param brokerData This object conforms to QaBrokerData, which is the same as
- * OnerepScanResulsRow with some fields omitted due to them being automaticallty set.
- */
-// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
-/* c8 ignore start */
-async function addQaCustomBroker(
-  brokerData: OnerepScanResultDataBrokerRow,
-): Promise<void> {
-  try {
-    await knex("qa_custom_brokers").insert({
-      ...brokerData,
-      emails: JSON.stringify(brokerData.emails),
-      phones: JSON.stringify(brokerData.phones),
-      addresses: JSON.stringify(brokerData.addresses),
-      relatives: JSON.stringify(brokerData.relatives),
-    });
-
-    logger.info(`Created a custom broker: ${brokerData.data_broker}`);
-  } catch {
-    logger.error(`Error creating custom broker: ${brokerData.data_broker}`);
-    throw new Error(
-      `Failed to insert broker data for ${brokerData.data_broker}`,
-    );
-  }
-}
-/* c8 ignore stop */
-
-// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
-/* c8 ignore start */
-async function getAllMockedScanResults(
-  onerepProfileId: number | null,
-): Promise<OnerepScanResultDataBrokerRow[]> {
-  if (onerepProfileId === null) {
-    logger.error(`onerepProfileId not set`);
-  }
-
-  // TODO: MNTOR-4153 use onerep_profile_id instead
-  // Using the onerep_scan_id  as a placeholder for the profile ID
-  const res = (await knex("qa_custom_brokers")
-    .select("*")
-    .where(
-      "onerep_scan_id",
-      onerepProfileId,
-    )) as OnerepScanResultDataBrokerRow[];
-
-  return res;
-}
-/* c8 ignore stop */
-
-// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
-/* c8 ignore start */
-async function deleteQaCustomBrokerRow(onerep_scan_result_id: number) {
-  await knex("qa_custom_brokers")
-    .where("onerep_scan_result_id", onerep_scan_result_id)
-    .del();
-}
-/* c8 ignore stop */
-
-// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
-/* c8 ignore start */
-async function setQaCustomBrokerStatus(
-  onerep_scan_result_id: number,
-  newStatus: string,
-) {
-  await knex("qa_custom_brokers")
-    .where("onerep_scan_result_id", onerep_scan_result_id)
-    .update({ status: newStatus });
-}
-/* c8 ignore stop */
-
-// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
-/* c8 ignore start */
-async function markQaCustomBrokerAsResolved(onerepScanResultId: number) {
-  const rowsAffected = await knex("qa_custom_brokers")
-    .update({
-      manually_resolved: true,
-      updated_at: knex.fn.now(),
-    })
-    .where("onerep_scan_result_id", onerepScanResultId);
-  return rowsAffected;
-}
-/* c8 ignore stop */
-
-// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
-/* c8 ignore start */
 async function getAllQaCustomBreaches(emailHashPrefix: string) {
   const res = (
     await knex("qa_custom_breaches")
@@ -207,7 +52,6 @@ async function getAllQaCustomBreaches(emailHashPrefix: string) {
   });
   return res;
 }
-/* c8 ignore stop */
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
@@ -238,19 +82,13 @@ async function deleteQaCustomBreach(
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-async function getQaToggleRow(emailHashOrOneRepId: string | number | null) {
-  if (emailHashOrOneRepId === null || process.env.APP_ENV === "production") {
+async function getQaToggleRow(emailHash: string | null) {
+  if (emailHash === null || process.env.APP_ENV === "production") {
     return null;
-  }
-  if (typeof emailHashOrOneRepId === "string") {
+  } else if (typeof emailHash === "string") {
     return (await knex("qa_custom_toggles")
       .select("*")
-      .where("email_hash", emailHashOrOneRepId)
-      .first()) as QaToggleRow;
-  } else if (typeof emailHashOrOneRepId === "number") {
-    return (await knex("qa_custom_toggles")
-      .select("*")
-      .where("onerep_profile_id", emailHashOrOneRepId)
+      .where("email_hash", emailHash)
       .first()) as QaToggleRow;
   }
   return null;
@@ -265,12 +103,7 @@ async function setQaToggle(
   emailHash: string,
 ): Promise<void> {
   // List of allowed columns to toggle
-  const allowedColumns = [
-    "show_real_breaches",
-    "show_custom_breaches",
-    "show_real_brokers",
-    "show_custom_brokers",
-  ];
+  const allowedColumns = ["show_real_breaches", "show_custom_breaches"];
 
   if (!allowedColumns.includes(columnName)) {
     throw new Error(`Invalid column name: ${columnName}`);
@@ -296,20 +129,11 @@ async function setQaToggle(
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-async function createQaTogglesRow(
-  emailHash: string,
-  subscriberId: number,
-): Promise<QaToggleRow> {
-  const onerep_profile_id = await getOnerepProfileId(subscriberId);
-  if (onerep_profile_id === null) throw new Error("OneRep profile ID missing!");
-
+async function createQaTogglesRow(emailHash: string): Promise<QaToggleRow> {
   const row = {
     email_hash: emailHash,
-    onerep_profile_id,
     show_real_breaches: true,
     show_custom_breaches: true,
-    show_real_brokers: true,
-    show_custom_brokers: true,
   };
 
   // Try to insert the row
@@ -327,26 +151,12 @@ async function createQaTogglesRow(
       .where({ email_hash: emailHash })
       .first();
 
-    // If an account was deleted and recreated, it has another
-    // `onerep_profile_id`. Let’s make sure to update it!
-    if (existingRow && existingRow.onerep_profile_id !== onerep_profile_id) {
-      await knex("qa_custom_toggles").where({ email_hash: emailHash }).update({
-        onerep_profile_id,
-      });
-    }
-
     return existingRow as QaToggleRow;
   }
 }
 /* c8 ignore stop */
 
 export {
-  getQaCustomBrokers,
-  addQaCustomBroker,
-  getAllMockedScanResults,
-  deleteQaCustomBrokerRow,
-  setQaCustomBrokerStatus,
-  markQaCustomBrokerAsResolved,
   getAllQaCustomBreaches,
   addQaCustomBreach,
   deleteQaCustomBreach,
@@ -356,4 +166,4 @@ export {
   formatQaBreach,
   AllowedToggleColumns,
 };
-export type { QaBrokerData, QaBreachData, QaToggleRow };
+export type { QaBreachData, QaToggleRow };
