@@ -8,6 +8,7 @@ import { createLogger, transports, LoggerOptions } from "winston";
 import Transport from "winston-transport";
 import { LoggingWinston } from "@google-cloud/logging-winston";
 import * as Sentry from "@sentry/node";
+import { config } from "../../../config";
 
 // Explicitly not run in tests (and other non-gcpdev environments)
 /* c8 ignore next 7 */
@@ -28,7 +29,7 @@ const SentryWinstonTransport = Sentry.createSentryWinstonTransport(Transport, {
   levels: ["error", "warn"],
 });
 const logTransports: LoggerOptions["transports"] = [
-  ["gcpdev"].includes(process.env.APP_ENV ?? "local")
+  ["gcpdev"].includes(config.appEnv)
     ? getLoggingWinston()
     : new transports.Console(),
 ];

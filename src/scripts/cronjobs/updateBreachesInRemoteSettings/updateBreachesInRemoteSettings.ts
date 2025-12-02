@@ -11,6 +11,7 @@ import * as Sentry from "@sentry/node";
 import * as HIBP from "../../../utils/hibp";
 import { RemoteSettingsClient } from "../../../utils/remoteSettingsClient";
 import { type Logger } from "winston";
+import { config } from "../../../config";
 
 type RemoteSettingsBreach = Pick<
   HIBP.HibpGetBreachesResponse[number],
@@ -29,26 +30,19 @@ export type UpdateBreachesJobConfig = {
  * @throws if config is invalid
  */
 export function validateConfig(): UpdateBreachesJobConfig {
-  const FX_REMOTE_SETTINGS_WRITER_USER =
-    process.env.FX_REMOTE_SETTINGS_WRITER_USER;
-  const FX_REMOTE_SETTINGS_WRITER_PASS =
-    process.env.FX_REMOTE_SETTINGS_WRITER_PASS;
-  const FX_REMOTE_SETTINGS_WRITER_SERVER =
-    process.env.FX_REMOTE_SETTINGS_WRITER_SERVER;
-
   if (
-    !FX_REMOTE_SETTINGS_WRITER_USER ||
-    !FX_REMOTE_SETTINGS_WRITER_PASS ||
-    !FX_REMOTE_SETTINGS_WRITER_SERVER
+    !config.fxRemoteSettingsWriterUser ||
+    !config.fxRemoteSettingsWriterPass ||
+    !config.fxRemoteSettingsWriterServer
   ) {
     throw new Error(
       "updatebreaches requires FX_REMOTE_SETTINGS_WRITER_SERVER, FX_REMOTE_SETTINGS_WRITER_USER, FX_REMOTE_SETTINGS_WRITER_PASS.",
     );
   } else {
     return {
-      user: FX_REMOTE_SETTINGS_WRITER_USER,
-      password: FX_REMOTE_SETTINGS_WRITER_PASS,
-      server: FX_REMOTE_SETTINGS_WRITER_SERVER,
+      user: config.fxRemoteSettingsWriterUser,
+      password: config.fxRemoteSettingsWriterPass,
+      server: config.fxRemoteSettingsWriterServer,
       breachesPath: "buckets/main-workspace/collections/fxmonitor-breaches",
     };
   }
