@@ -15,13 +15,6 @@ import {
 import { getEnabledFeatureFlags } from "../../../../../../../../db/tables/featureFlags";
 import { checkSession } from "../../../../../../../functions/server/checkSession";
 import { isPrePlusUser } from "../../../../../../../functions/server/isPrePlusUser";
-import { getExperimentationIdFromUserSession } from "../../../../../../../functions/server/getExperimentationId";
-import { getExperiments } from "../../../../../../../functions/server/getExperiments";
-import { getLocale } from "../../../../../../../functions/universal/getLocale";
-import {
-  getAcceptLangHeaderInServerComponents,
-  getL10n,
-} from "../../../../../../../functions/l10n/serverComponents";
 import { initializeUserAnnouncements } from "../../../../../../../../db/tables/user_announcements";
 import { connection } from "next/server";
 import { getPlusShutdownState } from "../../../../../../../functions/server/getPlusShutdownState";
@@ -79,15 +72,6 @@ export default async function DashboardPage(props: Props) {
     email: session.user.email,
   });
 
-  const experimentationId = await getExperimentationIdFromUserSession(
-    session.user,
-  );
-  const experimentData = await getExperiments({
-    experimentationId,
-    countryCode,
-    locale: getLocale(getL10n(await getAcceptLangHeaderInServerComponents())),
-  });
-
   const isNewUser = !isPrePlusUser(session.user);
 
   const subBreaches = await getSubscriberBreaches({
@@ -109,7 +93,6 @@ export default async function DashboardPage(props: Props) {
       enabledFeatureFlags={enabledFeatureFlags}
       fxaSettingsUrl={fxaSettingsUrl}
       isNewUser={isNewUser}
-      experimentData={experimentData["Features"]}
       activeTab={activeTab}
       signInCount={signInCount}
       userAnnouncements={userAnnouncements}

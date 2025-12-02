@@ -3,40 +3,20 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { NextRequest, NextResponse } from "next/server";
-import { Profile } from "next-auth";
 import { SubscriberRow } from "knex/types/tables";
 import { getServerSession } from "../../../../../functions/server/getServerSession";
 import { logger } from "../../../../../functions/server/logging";
 import { isAdmin } from "../../../../utils/auth";
-import {
-  deleteOnerepProfileId,
-  deleteSubscriber,
-  getOnerepProfileId,
-  getSubscriberByFxaUid,
-} from "../../../../../../db/tables/subscribers";
-import {
-  activateProfile as activateOnerepProfile,
-  deactivateProfile as deactivateOnerepProfile,
-  optoutProfile as optoutOnerepProfile,
-} from "../../../../../functions/server/onerep";
-import { deleteProfileDetails } from "../../../../../../db/tables/onerep_profiles";
-import {
-  deleteScanResultsForProfile,
-  deleteScansForProfile,
-} from "../../../../../../db/tables/onerep_scans";
-import { changeSubscription } from "../../../../../functions/server/changeSubscription";
+import { getSubscriberByFxaUid } from "../../../../../../db/tables/subscribers";
 import { isMozMail } from "../../../../../functions/universal/isMozMail";
 
 export type GetUserStateResponseBody = {
   success: true;
   subscriberId: SubscriberRow["id"];
-  /** @deprecated */
-  onerepProfileId: SubscriberRow["onerep_profile_id"];
   createdAt: SubscriberRow["created_at"];
   updatedAt: SubscriberRow["updated_at"];
   signupLanguage: SubscriberRow["signup_language"];
   all_emails_to_primary: SubscriberRow["all_emails_to_primary"];
-  subscriptions: Profile["subscriptions"];
 };
 
 /**
@@ -77,12 +57,10 @@ export async function GET(
       const responseBody: GetUserStateResponseBody = {
         success: true,
         subscriberId: subscriber.id,
-        onerepProfileId: subscriber.onerep_profile_id,
         createdAt: subscriber.created_at,
         updatedAt: subscriber.updated_at,
         signupLanguage: subscriber.signup_language,
         all_emails_to_primary: subscriber.all_emails_to_primary,
-        subscriptions: subscriber.fxa_profile_json?.subscriptions,
       };
       return NextResponse.json(responseBody);
     } catch (e) {
@@ -95,16 +73,7 @@ export async function GET(
   }
 }
 
-export type UserStateAction =
-  | "subscribe"
-  | "unsubscribe"
-  /** @deprecated */
-  | "delete_onerep_profile"
-  /** @deprecated */
-  | "delete_onerep_scans"
-  /** @deprecated */
-  | "delete_onerep_scan_results"
-  | "delete_subscriber";
+export type UserStateAction = "subscribe" | "unsubscribe" | "delete_subscriber";
 export type PutUserStateRequestBody = {
   actions: UserStateAction[];
 };
@@ -117,9 +86,6 @@ export type PutUserStateRequestBody = {
  *   "actions":[
  *     "subscribe",
  *     "unsubscribe",
- *     "delete_onerep_profile",
- *     "delete_onerep_scans",
- *     "delete_onerep_scan_results",
  *     "delete_subscriber"
  *   ]
  * }
@@ -161,95 +127,10 @@ export async function PUT(
         return NextResponse.json({ success: false }, { status: 404 });
       }
 
-      const onerepProfileId = await getOnerepProfileId(subscriber.id);
-
       logger.info("admin_subscription_change", {
         actions,
         subscriberId: subscriber.id,
       });
-
-      for (const action of actions) {
-        switch (action) {
-          case "subscribe": {
-            await changeSubscription(subscriber, true);
-
-            // activate and opt out profiles, if any
-            if (typeof onerepProfileId === "number") {
-              await activateOnerepProfile(onerepProfileId);
-              await optoutOnerepProfile(onerepProfileId);
-            }
-            logger.info("force_user_subscribe", {
-              onerepProfileId,
-              fxaUid,
-            });
-            break;
-          }
-          case "unsubscribe": {
-            await changeSubscription(subscriber, false);
-
-            if (typeof onerepProfileId === "number") {
-              await deactivateOnerepProfile(onerepProfileId);
-            }
-            logger.info("force_user_unsubscribe", {
-              onerepProfileId,
-              fxaUid,
-            });
-            break;
-          }
-          case "delete_onerep_profile": {
-            if (typeof onerepProfileId !== "number") {
-              throw new Error(
-                `Could not force-delete the OneRep profile of subscriber [${fxaUid}], as they do not have a OneRep profile known to us.`,
-              );
-            }
-            await deleteProfileDetails(onerepProfileId);
-            await deleteOnerepProfileId(subscriber.id);
-            logger.info("delete_onerep_profile", {
-              onerepProfileId,
-              fxaUid,
-            });
-            break;
-          }
-          case "delete_onerep_scans": {
-            if (typeof onerepProfileId !== "number") {
-              throw new Error(
-                `Could not force-delete OneRep scans for subscriber [${fxaUid}], as they do not have a OneRep profile known to us.`,
-              );
-            }
-            await deleteScansForProfile(onerepProfileId);
-            logger.info("delete_onerep_scans", {
-              onerepProfileId,
-              fxaUid,
-            });
-            break;
-          }
-          case "delete_onerep_scan_results": {
-            if (typeof onerepProfileId !== "number") {
-              throw new Error(
-                `Could not force-delete OneRep scan results for subscriber [${fxaUid}], as they do not have a OneRep profile known to us.`,
-              );
-            }
-            await deleteScanResultsForProfile(onerepProfileId);
-            logger.info("delete_onerep_scan_results", {
-              onerepProfileId,
-              fxaUid,
-            });
-            break;
-          }
-          case "delete_subscriber": {
-            await deleteSubscriber(subscriber);
-            logger.info("delete_subscriber", {
-              onerepProfileId,
-              fxaUid,
-            });
-            break;
-          }
-          default: {
-            logger.error("unknown_action", action);
-            return NextResponse.json({ success: false }, { status: 500 });
-          }
-        }
-      }
     } catch (e) {
       if (e instanceof Error) {
         logger.error("error_processing_actions", {

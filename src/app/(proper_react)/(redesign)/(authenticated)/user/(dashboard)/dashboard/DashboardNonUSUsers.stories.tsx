@@ -3,30 +3,18 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import type { Meta, StoryObj } from "@storybook/nextjs";
-
-import {
-  OnerepScanResultDataBrokerRow,
-  OnerepScanRow,
-} from "knex/types/tables";
 import { View as DashboardEl } from "./View";
 import { Shell } from "../../../../Shell/Shell";
 import { getL10n } from "../../../../../../functions/l10n/storybookAndJest";
 import {
-  createRandomScanResult,
   createRandomBreach,
-  createUserWithPremiumSubscription,
   createRandomAnnouncement,
+  createRandomUser,
 } from "../../../../../../../apiMocks/mockData";
 import { SubscriberBreach } from "../../../../../../../utils/subscriberBreaches";
-import { LatestOnerepScanData } from "../../../../../../../db/tables/onerep_scans";
 import { CountryCodeProvider } from "../../../../../../../contextProviders/country-code";
 import { SessionProvider } from "../../../../../../../contextProviders/session";
-import { defaultExperimentData } from "../../../../../../../telemetry/generated/nimbus/experiments";
-import {
-  breachOptions,
-  brokerOptions,
-  DashboardWrapperProps,
-} from "./Dashboard.stories";
+import { breachOptions, DashboardWrapperProps } from "./Dashboard.stories";
 import { UserAnnouncementWithDetails } from "../../../../../../../db/tables/user_announcements";
 
 const DashboardWrapper = (props: DashboardWrapperProps) => {
@@ -62,7 +50,6 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
   });
 
   let breaches: SubscriberBreach[] = [];
-  const scanData: LatestOnerepScanData = { scan: null, results: [] };
 
   if (props.breaches === "resolved") {
     breaches = [mockedResolvedBreach];
@@ -71,85 +58,9 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
     breaches = [mockedResolvedBreach, mockedUnresolvedBreach];
   }
 
-  const mockedScan: OnerepScanRow = {
-    created_at: new Date(Date.UTC(1998, 2, 31)),
-    updated_at: new Date(Date.UTC(1998, 2, 31)),
-    id: 0,
-    onerep_profile_id: 0,
-    onerep_scan_id: 0,
-    onerep_scan_reason: "initial",
-    onerep_scan_status: "finished",
-  };
+  const scanCount = 0;
 
-  const mockedScanInProgress: OnerepScanRow = {
-    ...mockedScan,
-    onerep_scan_status: "in_progress",
-  };
-
-  const mockedInProgressScanResults: OnerepScanResultDataBrokerRow[] = [
-    createRandomScanResult({ status: "removed", manually_resolved: false }),
-    createRandomScanResult({
-      status: "waiting_for_verification",
-      manually_resolved: false,
-    }),
-    createRandomScanResult({
-      status: "optout_in_progress",
-      manually_resolved: false,
-    }),
-  ];
-
-  const mockedAllResolvedScanResults: OnerepScanResultDataBrokerRow[] = [
-    createRandomScanResult({ status: "removed", manually_resolved: false }),
-    createRandomScanResult({ status: "removed", manually_resolved: false }),
-  ];
-
-  const mockedUnresolvedScanResults: OnerepScanResultDataBrokerRow[] = [
-    ...mockedInProgressScanResults,
-    createRandomScanResult({ status: "new", manually_resolved: false }),
-    createRandomScanResult({ status: "new", manually_resolved: false }),
-    createRandomScanResult({ status: "new", manually_resolved: true }),
-  ];
-
-  const mockedManuallyResolvedScanResults: OnerepScanResultDataBrokerRow[] = [
-    createRandomScanResult({ status: "new", manually_resolved: true }),
-    createRandomScanResult({
-      status: "waiting_for_verification",
-      manually_resolved: true,
-    }),
-    createRandomScanResult({
-      status: "optout_in_progress",
-      manually_resolved: true,
-    }),
-    createRandomScanResult({ status: "removed", manually_resolved: true }),
-  ];
-
-  let scanCount = 0;
-
-  if (props.countryCode === "us") {
-    if (props.brokers && props.brokers !== "no-scan") {
-      const scanInProgress = props.brokers === "scan-in-progress";
-      scanData.scan = scanInProgress ? mockedScanInProgress : mockedScan;
-
-      if (scanInProgress) {
-        scanCount = 1;
-      }
-      if (props.brokers === "resolved") {
-        scanData.results = mockedAllResolvedScanResults;
-      }
-      if (props.brokers === "unresolved") {
-        scanData.results = mockedUnresolvedScanResults;
-      }
-
-      if (props.brokers === "manually-resolved") {
-        scanData.results = mockedManuallyResolvedScanResults;
-      }
-    }
-  }
-
-  const user = createUserWithPremiumSubscription();
-  if ((props.countryCode !== "us" || !props.premium) && user.fxa) {
-    user.fxa.subscriptions = [];
-  }
+  const user = createRandomUser();
 
   const mockedSession = {
     expires: new Date().toISOString(),
@@ -171,14 +82,6 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
           nonce=""
           countryCode={props.countryCode}
           enabledFeatureFlags={props.enabledFeatureFlags ?? []}
-          experimentData={
-            props.experimentData ?? {
-              ...defaultExperimentData["Features"],
-              "last-scan-date": {
-                enabled: true,
-              },
-            }
-          }
           announcements={mockedAnnouncements}
         >
           <DashboardEl
@@ -187,14 +90,6 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
             fxaSettingsUrl=""
             isNewUser={true}
             enabledFeatureFlags={props.enabledFeatureFlags ?? []}
-            experimentData={
-              props.experimentData ?? {
-                ...defaultExperimentData["Features"],
-                "last-scan-date": {
-                  enabled: true,
-                },
-              }
-            }
             activeTab={props.activeTab ?? "action-needed"}
             signInCount={props.signInCount ?? null}
             userAnnouncements={mockedAnnouncements}
@@ -215,31 +110,11 @@ const meta: Meta<typeof DashboardWrapper> = {
   title: "Pages/Logged in/Dashboard/Non US User",
   component: DashboardWrapper,
   argTypes: {
-    brokers: {
-      options: Object.keys(brokerOptions),
-      description: "Scan results",
-      control: {
-        type: "radio",
-        labels: brokerOptions,
-      },
-    },
     breaches: {
       options: Object.keys(breachOptions),
       control: {
         type: "radio",
         labels: breachOptions,
-      },
-    },
-    elapsedTimeInDaysSinceInitialScan: {
-      name: "Days since initial scan",
-      control: {
-        type: "number",
-      },
-    },
-    hasFirstMonitoringScan: {
-      name: "Has first monitoring scan",
-      control: {
-        type: "boolean",
       },
     },
     signInCount: {

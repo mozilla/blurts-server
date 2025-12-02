@@ -20,18 +20,13 @@ import { SubscriberRow } from "knex/types/tables";
 import { getUserEmails } from "../../../../../../db/tables/emailAddresses";
 import { getDashboardSummary } from "../../../../../functions/server/dashboard";
 import { getSubscriberBreaches } from "../../../../../functions/server/getSubscriberBreaches";
-import { FirstDataBrokerRemovalFixed } from "../../../../../../emails/templates/firstDataBrokerRemovalFixed/FirstDataBrokerRemovalFixed";
-import {
-  createRandomHibpListing,
-  createRandomScanResult,
-} from "../../../../../../apiMocks/mockData";
+import { createRandomHibpListing } from "../../../../../../apiMocks/mockData";
 import { BreachAlertEmail } from "../../../../../../emails/templates/breachAlert/BreachAlertEmail";
 import { SignupReportEmail } from "../../../../../../emails/templates/signupReport/SignupReportEmail";
 import { getBreachesForEmail } from "../../../../../../utils/hibp";
 import { getSha1 } from "../../../../../../utils/fxa";
 import { getBreaches } from "../../../../../functions/server/getBreaches";
 import { getSignupLocaleCountry } from "../../../../../../emails/functions/getSignupLocaleCountry";
-import { refreshStoredScanResults } from "../../../../../functions/server/refreshStoredScanResults";
 import { getExperimentationIdFromUserSession } from "../../../../../functions/server/getExperimentationId";
 import { getExperiments } from "../../../../../functions/server/getExperiments";
 import { getLocale } from "../../../../../functions/universal/getLocale";
@@ -140,9 +135,6 @@ export async function triggerBreachAlert(emailAddress: string) {
 
   const assumedCountryCode = getSignupLocaleCountry(subscriber);
 
-  if (typeof subscriber.onerep_profile_id === "number") {
-    await refreshStoredScanResults(subscriber.onerep_profile_id);
-  }
   const experimentationId = await getExperimentationIdFromUserSession(
     session.user,
   );
@@ -167,25 +159,6 @@ export async function triggerBreachAlert(emailAddress: string) {
       l10n={l10n}
       dataSummary={getDashboardSummary(allSubscriberBreaches)}
       experimentData={experimentData["Features"]}
-    />,
-  );
-}
-
-export async function triggerFirstDataBrokerRemovalFixed(emailAddress: string) {
-  const acceptLangHeader = await getAcceptLangHeaderInServerComponents();
-  const l10n = getL10n(acceptLangHeader);
-  const randomScanResult = createRandomScanResult({ status: "removed" });
-
-  await send(
-    emailAddress,
-    l10n.getString("email-first-broker-removal-fixed-subject"),
-    <FirstDataBrokerRemovalFixed
-      data={{
-        dataBrokerName: randomScanResult.data_broker,
-        dataBrokerLink: `${process.env.SERVER_URL}/user/dashboard/fixed`,
-        removalDate: randomScanResult.updated_at,
-      }}
-      l10n={l10n}
     />,
   );
 }

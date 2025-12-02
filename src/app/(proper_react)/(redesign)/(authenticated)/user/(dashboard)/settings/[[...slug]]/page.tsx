@@ -15,7 +15,6 @@ import { getBreaches } from "../../../../../../../functions/server/getBreaches";
 import { getBreachesForEmail } from "../../../../../../../../utils/hibp";
 import { getSha1 } from "../../../../../../../../utils/fxa";
 import { getEnabledFeatureFlags } from "../../../../../../../../db/tables/featureFlags";
-import { getLatestOnerepScan } from "../../../../../../../../db/tables/onerep_scans";
 import { getExperimentationIdFromUserSession } from "../../../../../../../functions/server/getExperimentationId";
 import { getExperiments } from "../../../../../../../functions/server/getExperiments";
 import { getLocale } from "../../../../../../../functions/universal/getLocale";
@@ -94,9 +93,7 @@ export default async function SettingsPage(props: Props) {
   const settingsData = await getEmailPreferenceForPrimaryEmail(
     session.user.email,
   );
-  const lastScanDate = (
-    await getLatestOnerepScan(session.user.subscriber.onerep_profile_id)
-  )?.created_at;
+
   const userAnnouncements = await initializeUserAnnouncements(session.user);
 
   return (
@@ -110,7 +107,6 @@ export default async function SettingsPage(props: Props) {
       fxaSettingsUrl={fxaSettingsUrl}
       enabledFeatureFlags={enabledFeatureFlags}
       experimentData={experimentData["Features"]}
-      lastScanDate={lastScanDate}
       activeTab={activeTab}
       actions={{
         onAddEmail,

@@ -9,17 +9,14 @@ import { StaticImageData } from "next/image";
 import { SubscriberBreach } from "../../../../utils/subscriberBreaches";
 import { SubscriberBreachCard } from "./SubscriberBreachCard";
 import { FeatureFlagName } from "../../../../db/tables/featureFlags";
-import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 
 export type ExposureCardProps = {
   exposureImg?: StaticImageData;
   exposureData: SubscriberBreach;
   locale: string;
-  isPremiumUser: boolean;
   resolutionCta: ReactNode;
   isExpanded: boolean;
   enabledFeatureFlags: FeatureFlagName[];
-  experimentData: ExperimentData["Features"];
   onToggleExpanded: () => void;
 };
 

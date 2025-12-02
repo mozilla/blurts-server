@@ -6,7 +6,7 @@ import type { Meta, StoryObj } from "@storybook/nextjs";
 import {
   createRandomAnnouncement,
   createRandomBreach,
-  createUserWithPremiumSubscription,
+  createRandomUser,
 } from "../../../../../../../../../../apiMocks/mockData";
 import { Shell } from "../../../../../../../Shell/Shell";
 import { getL10n } from "../../../../../../../../../functions/l10n/storybookAndJest";
@@ -16,7 +16,6 @@ import {
   securityRecommendationTypes,
 } from "../securityRecommendationsData";
 import { BreachDataTypes } from "../../../../../../../../../functions/universal/breach";
-import { defaultExperimentData } from "../../../../../../../../../../telemetry/generated/nimbus/experiments";
 import { UserAnnouncementWithDetails } from "../../../../../../../../../../db/tables/user_announcements";
 
 const mockedBreaches = [...Array(5)].map(() => createRandomBreach());
@@ -34,7 +33,7 @@ mockedBreaches.push(
   }),
 );
 
-const user = createUserWithPremiumSubscription();
+const user = createRandomUser();
 
 const mockedSession = {
   expires: new Date().toISOString(),
@@ -57,7 +56,6 @@ const SecurityRecommendationsWrapper = (props: {
       nonce=""
       countryCode="nl"
       enabledFeatureFlags={[]}
-      experimentData={defaultExperimentData["Features"]}
       announcements={mockedAnnouncements}
     >
       <SecurityRecommendationsLayout

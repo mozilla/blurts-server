@@ -6,7 +6,6 @@ import type { Meta, StoryObj } from "@storybook/nextjs";
 import { ExposureCard } from "./ExposureCard";
 import TwitterImage from "../assets/twitter-icon.png";
 import { createRandomBreach } from "../../../../apiMocks/mockData";
-import { defaultExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 import { BreachDataTypes } from "../../../functions/universal/breach";
 
 const meta: Meta<typeof ExposureCard> = {
@@ -15,12 +14,6 @@ const meta: Meta<typeof ExposureCard> = {
   tags: ["autodocs"],
   args: {
     enabledFeatureFlags: [],
-    experimentData: {
-      ...defaultExperimentData["Features"],
-      "data-broker-removal-time-estimates": {
-        enabled: true,
-      },
-    },
   },
 };
 export default meta;

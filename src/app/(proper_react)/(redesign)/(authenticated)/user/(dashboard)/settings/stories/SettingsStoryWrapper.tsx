@@ -17,7 +17,6 @@ import { FeatureFlagName } from "../../../../../../../../db/tables/featureFlags"
 import { SubscriberEmailPreferencesOutput } from "../../../../../../../../db/tables/subscriber_email_preferences";
 import {
   mockedSubscriber,
-  mockedSubscriberWithPlus,
   mockedVerifiedEmailSecond,
   mockedVerifiedEmailThird,
   mockedVerifiedEmailFourth,
@@ -68,9 +67,7 @@ export const SettingsWrapper = (props: SettingsWrapperProps) => {
     expires: new Date().toISOString(),
     user,
   };
-  const subscriber = props.hasPlus
-    ? mockedSubscriberWithPlus
-    : mockedSubscriber;
+  const subscriber = mockedSubscriber;
 
   return (
     <SessionProvider session={mockedSession}>
@@ -81,7 +78,6 @@ export const SettingsWrapper = (props: SettingsWrapperProps) => {
           nonce=""
           countryCode={props.countryCode}
           enabledFeatureFlags={props.enabledFeatureFlags}
-          experimentData={defaultExperimentData["Features"]}
           hideSidebar={props.activeTab === "edit-profile"}
           announcements={null}
         >
