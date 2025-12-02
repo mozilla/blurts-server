@@ -6,11 +6,9 @@ import type { Profile } from "next-auth";
 import type { EmailAddressRow, SubscriberRow } from "knex/types/tables";
 import createDbConnection from "../connect";
 import { SerializedSubscriber } from "../../next-auth.js";
-import { getEnvVarsOrThrow } from "../../envVars";
+import { config } from "../../config";
+
 const knex = createDbConnection();
-const { DELETE_UNVERIFIED_SUBSCRIBERS_TIMER } = getEnvVarsOrThrow([
-  "DELETE_UNVERIFIED_SUBSCRIBERS_TIMER",
-]);
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
@@ -250,8 +248,7 @@ async function setBreachResolution(
 /* c8 ignore start */
 async function deleteUnverifiedSubscribers() {
   const expiredDateTime = new Date(
-    Date.now() -
-      Number.parseInt(DELETE_UNVERIFIED_SUBSCRIBERS_TIMER, 10) * 1000,
+    Date.now() - config.deleteUnverifiedSubscribersTimer * 1000,
   );
   const expiredTimeStamp = expiredDateTime.toISOString();
   const numDeleted = await knex("subscribers")

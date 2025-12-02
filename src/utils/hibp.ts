@@ -13,20 +13,7 @@ import {
   getQaToggleRow,
 } from "../db/tables/qa_customs.ts";
 import { redisClient, REDIS_ALL_BREACHES_KEY } from "../db/redis/client.ts";
-import { getEnvVarsOrThrow } from "../envVars.ts";
-const {
-  HIBP_THROTTLE_MAX_TRIES,
-  HIBP_THROTTLE_DELAY,
-  HIBP_API_ROOT,
-  HIBP_KANON_API_ROOT,
-  HIBP_KANON_API_TOKEN,
-} = getEnvVarsOrThrow([
-  "HIBP_THROTTLE_MAX_TRIES",
-  "HIBP_THROTTLE_DELAY",
-  "HIBP_API_ROOT",
-  "HIBP_KANON_API_ROOT",
-  "HIBP_KANON_API_TOKEN",
-]);
+import { config } from "../config.ts";
 
 // TODO: fix hardcode
 const HIBP_USER_AGENT = "monitor/1.0.0";
@@ -90,10 +77,7 @@ async function _throttledFetch(
         } else {
           tryCount++;
           await new Promise((resolve) =>
-            setTimeout(
-              resolve,
-              Number.parseInt(HIBP_THROTTLE_DELAY, 10) * tryCount,
-            ),
+            setTimeout(resolve, config.hibpThrottleDelay * tryCount),
           );
           return await _throttledFetch(url, reqOptions, tryCount);
         }
@@ -112,7 +96,7 @@ async function _throttledFetch(
 // TODO: Add unit test when changing this code:
 /* c8 ignore start */
 async function hibpApiFetch(path: string, options = {}) {
-  const url = `${HIBP_API_ROOT}${path}`;
+  const url = `${config.hibpApiRoot}${path}`;
   const reqOptions = _addStandardOptions(options);
   try {
     return await _throttledFetch(url, reqOptions);
@@ -152,12 +136,12 @@ export async function fetchHibpBreaches(): Promise<HibpGetBreachesResponse> {
 /* c8 ignore start */
 async function kAnonReq(path: string, options = {}) {
   // Construct HIBP url and standard headers
-  const url = `${HIBP_KANON_API_ROOT}${path}`;
+  const url = `${config.hibpKanonApiRoot}${path}`;
   options = {
     headers: {
       "Content-Type": "application/json",
       Accept: "*/*",
-      "Hibp-Enterprise-Api-Key": HIBP_KANON_API_TOKEN,
+      "Hibp-Enterprise-Api-Key": config.hibpKanonApiToken,
     },
     ...options,
   };

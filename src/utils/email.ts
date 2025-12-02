@@ -6,16 +6,14 @@ import { createTransport, Transporter, SendMailOptions } from "nodemailer";
 import crypto from "crypto";
 
 import { SentMessageInfo } from "nodemailer/lib/smtp-transport/index.js";
-import { getEnvVarsOrThrow } from "../envVars";
+import { config } from "../config";
 import { logger } from "../app/functions/server/logging";
 
 // The SMTP transport object. This is initialized to a nodemailer transport
 // object while reading SMTP credentials, or to a dummy function in debug mode.
 let gTransporter: Transporter<SentMessageInfo>;
 
-const envVars = getEnvVarsOrThrow(["SMTP_URL", "EMAIL_FROM", "SES_CONFIG_SET"]);
-
-export async function initEmail(smtpUrl = envVars.SMTP_URL) {
+export async function initEmail(smtpUrl = config.smtpUrl) {
   // Allow a debug mode that will log JSON instead of sending emails.
   if (!smtpUrl) {
     logger.info("smtpUrl-empty", {
@@ -59,15 +57,14 @@ export async function sendEmail(
     throw new Error("SMTP transport not initialized");
   }
 
-  const emailFrom = envVars.EMAIL_FROM;
   const mailOptions: SendMailOptions = {
-    from: emailFrom,
+    from: config.emailFrom,
     to: recipient,
     subject,
     html,
     text: plaintext,
     headers: {
-      "x-ses-configuration-set": envVars.SES_CONFIG_SET,
+      "x-ses-configuration-set": config.sesConfigSet,
     },
   };
 

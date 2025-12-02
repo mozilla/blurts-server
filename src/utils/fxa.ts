@@ -5,14 +5,7 @@
 import crypto from "crypto";
 import { URL } from "url";
 import { logger } from "../app/functions/server/logging";
-
-import { getEnvVarsOrThrow } from "../envVars";
-const envVars = getEnvVarsOrThrow([
-  "OAUTH_CLIENT_ID",
-  "OAUTH_CLIENT_SECRET",
-  "OAUTH_TOKEN_URI",
-  "OAUTH_ACCOUNT_URI",
-]);
+import { config } from "../config";
 
 /**
  * @see https://mozilla.github.io/ecosystem-platform/api#tag/Oauth/operation/postOauthDestroy
@@ -37,11 +30,11 @@ async function destroyOAuthToken(
 ) {
   const tokenBody: FxaPostOauthDestroyRequestBody = {
     ...tokenData,
-    client_id: envVars.OAUTH_CLIENT_ID,
-    client_secret: envVars.OAUTH_CLIENT_SECRET,
+    client_id: config.oauthClientId,
+    client_secret: config.oauthClientSecret,
   };
 
-  const fxaTokenOrigin = new URL(envVars.OAUTH_TOKEN_URI).origin;
+  const fxaTokenOrigin = new URL(config.oauthTokenUri).origin;
   const tokenUrl = `${fxaTokenOrigin}/v1/oauth/destroy`;
   const tokenOptions = {
     method: "POST",
@@ -143,10 +136,10 @@ type FxaPostOauthTokenResponseSuccessRefreshToken = {
 async function refreshOAuthTokens(
   refreshToken: string,
 ): Promise<FxaPostOauthTokenResponseSuccessRefreshToken> {
-  const subscriptionIdUrl = `${envVars.OAUTH_ACCOUNT_URI}/oauth/token`;
+  const subscriptionIdUrl = `${config.oauthAccountUri}/oauth/token`;
   const body: FxaPostOauthTokenRequestBody = {
-    client_id: envVars.OAUTH_CLIENT_ID,
-    client_secret: envVars.OAUTH_CLIENT_SECRET,
+    client_id: config.oauthClientId,
+    client_secret: config.oauthClientSecret,
     grant_type: "refresh_token",
     refresh_token: refreshToken,
     ttl: 604800, // request 7 days ttl
@@ -191,7 +184,7 @@ type FxaGetOauthSubscribptionsActiveResponseSuccess = Array<{
 async function getSubscriptions(
   bearerToken: string,
 ): Promise<FxaGetOauthSubscribptionsActiveResponseSuccess | null> {
-  const subscriptionIdUrl = `${envVars.OAUTH_ACCOUNT_URI}/oauth/subscriptions/active`;
+  const subscriptionIdUrl = `${config.oauthAccountUri}/oauth/subscriptions/active`;
   try {
     const response = await fetch(subscriptionIdUrl, {
       headers: {
@@ -240,7 +233,7 @@ type FxaGetOauthMozillaSubscribptionsCustomerBillingAndSubscriptionsResponseSucc
 async function getBillingAndSubscriptions(
   bearerToken: string,
 ): Promise<FxaGetOauthMozillaSubscribptionsCustomerBillingAndSubscriptionsResponseSuccess | null> {
-  const subscriptionIdUrl = `${envVars.OAUTH_ACCOUNT_URI}/oauth/mozilla-subscriptions/customer/billing-and-subscriptions`;
+  const subscriptionIdUrl = `${config.oauthAccountUri}/oauth/mozilla-subscriptions/customer/billing-and-subscriptions`;
 
   try {
     const response = await fetch(subscriptionIdUrl, {
@@ -280,7 +273,7 @@ async function deleteSubscription(bearerToken: string): Promise<boolean> {
       }
     }
     if (subscriptionId) {
-      const deleteUrl = `${envVars.OAUTH_ACCOUNT_URI}/oauth/subscriptions/active/${subscriptionId}`;
+      const deleteUrl = `${config.oauthAccountUri}/oauth/subscriptions/active/${subscriptionId}`;
       const response = await fetch(deleteUrl, {
         method: "DELETE",
         headers: {
@@ -336,7 +329,7 @@ export type FxaGetAccountAttachedClients = {
 async function getAttachedClients(
   bearerToken: string,
 ): Promise<FxaGetAccountAttachedClients[]> {
-  const endpointUrl = `${envVars.OAUTH_ACCOUNT_URI}/account/attached_clients`;
+  const endpointUrl = `${config.oauthAccountUri}/account/attached_clients`;
   try {
     const response = await fetch(endpointUrl, {
       headers: {

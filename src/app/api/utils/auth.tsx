@@ -32,16 +32,8 @@ import { SerializedSubscriber } from "../../../next-auth";
 import { record } from "../../functions/server/glean";
 import { renderEmail } from "../../../emails/renderEmail";
 import { SignupReportEmail } from "../../../emails/templates/signupReport/SignupReportEmail";
-import { getEnvVarsOrThrow } from "../../../envVars";
+import { config } from "../../../config";
 import { sanitizeSubscriberRow } from "../../functions/server/sanitize";
-
-const envVars = getEnvVarsOrThrow([
-  "OAUTH_AUTHORIZATION_URI",
-  "OAUTH_TOKEN_URI",
-  "OAUTH_CLIENT_ID",
-  "OAUTH_CLIENT_SECRET",
-  "OAUTH_PROFILE_URI",
-]);
 
 const fxaProviderConfig: OAuthConfig<FxaProfile> = {
   // As per https://mozilla.slack.com/archives/C4D36CAJW/p1683642497940629?thread_ts=1683642325.465929&cid=C4D36CAJW,
@@ -52,7 +44,7 @@ const fxaProviderConfig: OAuthConfig<FxaProfile> = {
   name: "Mozilla accounts",
   type: "oauth",
   authorization: {
-    url: envVars.OAUTH_AUTHORIZATION_URI,
+    url: config.oauthAuthorizationUri,
     params: {
       scope: "profile https://identity.mozilla.com/account/subscriptions",
       access_type: "offline",
@@ -61,11 +53,11 @@ const fxaProviderConfig: OAuthConfig<FxaProfile> = {
       max_age: 0,
     },
   },
-  token: envVars.OAUTH_TOKEN_URI,
-  // userinfo: envVars.OAUTH_PROFILE_URI,
+  token: config.oauthTokenUri,
+  // userinfo: config.oauthProfileUri,
   userinfo: {
     request: async (context) => {
-      const response = await fetch(envVars.OAUTH_PROFILE_URI, {
+      const response = await fetch(config.oauthProfileUri, {
         headers: {
           Authorization: `Bearer ${context.tokens.access_token ?? ""}`,
         },
@@ -73,8 +65,8 @@ const fxaProviderConfig: OAuthConfig<FxaProfile> = {
       return (await response.json()) as FxaProfile;
     },
   },
-  clientId: envVars.OAUTH_CLIENT_ID,
-  clientSecret: envVars.OAUTH_CLIENT_SECRET,
+  clientId: config.oauthClientId,
+  clientSecret: config.oauthClientSecret,
   // Parse data returned by FxA's /userinfo/
   profile: (profile) => {
     return convertFxaProfile(profile);
@@ -82,8 +74,8 @@ const fxaProviderConfig: OAuthConfig<FxaProfile> = {
 };
 
 export const authOptions: AuthOptions = {
-  debug: process.env.NODE_ENV !== "production",
-  secret: process.env.NEXTAUTH_SECRET,
+  debug: config.nodeEnv !== "production",
+  secret: config.nextAuthSecret,
   session: {
     strategy: "jwt",
   },
@@ -217,7 +209,7 @@ export const authOptions: AuthOptions = {
             },
           });
 
-          await initEmail(process.env.SMTP_URL);
+          await initEmail(config.smtpUrl);
           await sendEmail(
             profile.email,
             subject,
