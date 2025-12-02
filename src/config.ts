@@ -7,10 +7,14 @@ import "./app/functions/server/notInClientComponent";
 import { resolve } from "node:path";
 import { loadEnvConfig } from "@next/env";
 
-if (typeof process.env.NEXT_RUNTIME !== "string") {
+if (
+  typeof process.env.NEXT_RUNTIME !== "string" &&
+  process.env.NODE_ENV !== "test"
+) {
   // If we're in Next.js, our `.env` files are already set up to be loaded.
   // Outside of Next.js (e.g. in cron jobs), however, we need to explicitly load them.
-  loadEnvConfig(resolve(__filename, "../"));
+  // (In unit tests, `next/jest` takes care of this, so no need to run this there.)
+  loadEnvConfig(resolve(__filename, "../../"));
 }
 
 /**
@@ -24,14 +28,42 @@ if (typeof process.env.NEXT_RUNTIME !== "string") {
  * falling back to sensible values (for running locally) if not.
  */
 export const config = {
-  appEnv: getEnvEnum("APP_ENV", ["local", "stage", "production"], {
+  nodeEnv: getEnvEnum("NODE_ENV", ["production", "development", "test"]),
+  appEnv: getEnvEnum("APP_ENV", ["local", "stage", "production", "cloudrun"], {
     fallbackValue: "local",
   }),
+
+  oauthAuthorizationUri: getEnvString("OAUTH_AUTHORIZATION_URI"),
+  oauthTokenUri: getEnvString("OAUTH_TOKEN_URI"),
+  oauthClientId: getEnvString("OAUTH_CLIENT_ID"),
+  oauthClientSecret: getEnvString("OAUTH_CLIENT_SECRET"),
+  oauthProfileUri: getEnvString("OAUTH_PROFILE_URI"),
+  oauthAccountUri: getEnvString("OAUTH_ACCOUNT_URI"),
+  nextAuthSecret: getEnvString("NEXTAUTH_SECRET"),
+
+  // If set to an empty string, emails will be logged instead of sent,
+  // which is fine for local development:
+  smtpUrl: getEnvString("SMTP_URL", { fallbackValue: "" }),
+  emailFrom: getEnvString("EMAIL_FROM"),
+  // https://docs.aws.amazon.com/ses/latest/dg/using-configuration-sets.html
+  sesConfigSet: getEnvString("SES_CONFIG_SET", { fallbackValue: "" }),
+
+  hibpThrottleMaxTries: getEnvInt("HIBP_THROTTLE_MAX_TRIES"),
+  hibpThrottleDelay: getEnvInt("HIBP_THROTTLE_DELAY"),
+  hibpApiRoot: getEnvString("HIBP_API_ROOT"),
+  hibpKanonApiRoot: getEnvString("HIBP_KANON_API_ROOT"),
+  hibpKanonApiToken: getEnvString("HIBP_KANON_API_TOKEN"),
+
+  deleteUnverifiedSubscribersTimer: getEnvInt(
+    "DELETE_UNVERIFIED_SUBSCRIBERS_TIMER",
+    { fallbackValue: 24 * 60 * 60 },
+  ),
+
   monthlyActivityFreeEmailBatchSize: getEnvInt(
     "MONTHLY_ACTIVITY_FREE_EMAIL_BATCH_SIZE",
     { fallbackValue: 10 },
   ),
-};
+} as const;
 
 /**
  * Like {@link getEnvString}, but also ensures the value is a valid integer
