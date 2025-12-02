@@ -15,7 +15,6 @@ import { useL10n } from "../../hooks/l10n";
 import {
   StepDeterminationData,
   hasCompletedStepSection,
-  isEligibleForStep,
 } from "../../functions/server/getRelevantGuidedSteps";
 import { getGuidedExperienceBreaches } from "../../functions/universal/guidedExperienceBreaches";
 import { CheckIcon } from "../server/Icons";
@@ -61,8 +60,6 @@ export const Steps = (props: {
   const totalHighRiskBreaches = Object.values(
     breachesByClassification.highRisk,
   ).reduce((acc, array) => acc + array.length, 0);
-  const totalDataBrokerProfiles =
-    props.data.latestScanData?.results.length ?? 0;
   const totalPasswordBreaches = Object.values(
     breachesByClassification.passwordBreaches,
   ).reduce((acc, array) => acc + array.length, 0);
@@ -84,28 +81,8 @@ export const Steps = (props: {
     </div>
   );
 
-  const dataBrokerStepCompleted = hasCompletedStepSection(props.data, "Scan");
-
   return (
     <ul className={styles.steps}>
-      {isEligibleForStep(props.data, "Scan") && (
-        <li
-          aria-current={
-            props.currentSection === "data-broker-profiles" ? "step" : undefined
-          }
-          className={`${styles.navigationItem} ${
-            props.currentSection === "data-broker-profiles" ? styles.active : ""
-          } ${dataBrokerStepCompleted ? styles.isCompleted : ""}`}
-        >
-          <div className={styles.stepIcon}>
-            <StepImage data={props.data} section="Scan" />
-          </div>
-          <StepLabel
-            label={l10n.getString("fix-flow-nav-data-broker-profiles")}
-            count={totalDataBrokerProfiles}
-          />
-        </li>
-      )}
       <li
         aria-current={
           props.currentSection === "high-risk-data-breach" ? "step" : undefined
@@ -176,9 +153,7 @@ export const Steps = (props: {
             className={`${
               styles.activeProgressBarLine
             } ${calculateActiveProgressBarPosition(props.currentSection)} ${
-              isEligibleForStep(props.data, "Scan")
-                ? styles.hasFourSteps
-                : styles.hasThreeSteps
+              styles.hasThreeSteps
             }`}
           ></div>
         </div>
