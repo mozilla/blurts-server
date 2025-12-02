@@ -21,7 +21,7 @@ landing-all-value-prop-info-at-risk-description = Datalekkasjar er diverre ein d
 
 # Quote
 
-landing-all-quote = <data_breaches>Datalekkasjar</data_breaches> skjer kvart 11. minutt og avslører din privata informasjon — men ta det med ro, vi kan hjelpe deg.
+landing-all-quote = <data_breaches>Datalekkasjar</data_breaches> skjer kvart 11. minutt og avslører din private informasjon — men ta det med ro, vi kan hjelpe deg.
 
 # Non-US FAQ
 

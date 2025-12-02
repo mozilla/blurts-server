@@ -5,7 +5,7 @@
 import { seeds } from "../../test/db";
 import createDbConnection from "../connect";
 import { faker } from "@faker-js/faker";
-import { breachNotificationSubscribersByHashes } from "./BreachNotificationSubscriber";
+import { getBreachNotificationSubscribersByHashes } from "./BreachNotificationSubscriber";
 import type { SubscriberRow } from "knex/types/tables";
 
 describe("BreachNotificationSubscriber", () => {
@@ -46,7 +46,7 @@ describe("BreachNotificationSubscriber", () => {
       ])
       .returning("*");
     const hashes = [insertedEmails[0].sha1, subscriber.primary_sha1];
-    const actual = await breachNotificationSubscribersByHashes(hashes);
+    const actual = await getBreachNotificationSubscribersByHashes(hashes);
     expect(actual.length).toEqual(2);
     expect(actual).toEqual(
       expect.arrayContaining([
@@ -71,7 +71,7 @@ describe("BreachNotificationSubscriber", () => {
       ])
       .returning("*");
     const hashes = ["0000000000000", subscriber.primary_sha1];
-    const actual = await breachNotificationSubscribersByHashes(hashes);
+    const actual = await getBreachNotificationSubscribersByHashes(hashes);
     expect(actual.length).toEqual(1);
     expect(actual).toEqual(
       expect.arrayContaining([
@@ -91,7 +91,7 @@ describe("BreachNotificationSubscriber", () => {
       ])
       .returning("*");
     const hashes = ["0000000000000", insertedEmails[0].sha1];
-    const actual = await breachNotificationSubscribersByHashes(hashes);
+    const actual = await getBreachNotificationSubscribersByHashes(hashes);
     expect(actual.length).toEqual(1);
     expect(actual).toEqual(
       expect.arrayContaining([
@@ -121,7 +121,7 @@ describe("BreachNotificationSubscriber", () => {
       ])
       .returning("*");
     const hashes = ["0000000000000", insertedEmails[0].sha1];
-    const actual = await breachNotificationSubscribersByHashes(hashes);
+    const actual = await getBreachNotificationSubscribersByHashes(hashes);
     expect(actual.length).toEqual(1);
     expect(actual).toEqual(
       expect.arrayContaining([
@@ -152,7 +152,7 @@ describe("BreachNotificationSubscriber", () => {
       ])
       .returning("*");
     const hashes = ["0000000000000", insertedEmails[0].sha1];
-    const actual = await breachNotificationSubscribersByHashes(hashes);
+    const actual = await getBreachNotificationSubscribersByHashes(hashes);
     expect(actual.length).toEqual(1);
     expect(actual).toEqual(
       expect.arrayContaining([

@@ -38,7 +38,6 @@ describe("breachMessageHandler", () => {
 
   beforeEach(() => {
     logger = mockLogger() as unknown as Logger;
-    jest.clearAllMocks();
   });
   afterAll(() => {
     jest.restoreAllMocks();
@@ -53,7 +52,7 @@ describe("breachMessageHandler", () => {
     // Set up mocked injected dependencies
     const subs = { findByHashes: jest.fn().mockResolvedValue(recipients) };
     const notifications = {
-      subscriberNotifiedForBreach: jest.fn().mockResolvedValue(false),
+      isSubscriberNotifiedForBreach: jest.fn().mockResolvedValue(false),
       addEmailNotification: jest.fn().mockResolvedValue(undefined),
       markEmailAsNotified: jest.fn().mockResolvedValue(undefined),
     };
@@ -83,7 +82,7 @@ describe("breachMessageHandler", () => {
     const subs = { findByHashes: jest.fn() };
     // Doesn't really matter here as it shouldn't reach this far
     const notifications = {
-      subscriberNotifiedForBreach: jest.fn().mockResolvedValue(false),
+      isSubscriberNotifiedForBreach: jest.fn().mockResolvedValue(false),
       addEmailNotification: jest.fn().mockResolvedValue(undefined),
       markEmailAsNotified: jest.fn().mockResolvedValue(undefined),
     };
@@ -119,7 +118,7 @@ describe("breachMessageHandler", () => {
     };
     const notifications = {
       // Already notified
-      subscriberNotifiedForBreach: jest.fn().mockResolvedValue(true),
+      isSubscriberNotifiedForBreach: jest.fn().mockResolvedValue(true),
       addEmailNotification: jest.fn(),
       markEmailAsNotified: jest.fn(),
     };
@@ -149,7 +148,7 @@ describe("breachMessageHandler", () => {
     };
     const notifications = {
       // Already notified
-      subscriberNotifiedForBreach: jest.fn().mockResolvedValue(true),
+      isSubscriberNotifiedForBreach: jest.fn().mockResolvedValue(true),
       addEmailNotification: jest.fn(),
       markEmailAsNotified: jest.fn(),
     };
@@ -179,7 +178,7 @@ describe("breachMessageHandler", () => {
         .mockResolvedValue([mockSubscriber({ all_emails_to_primary: true })]),
     };
     const notifications = {
-      subscriberNotifiedForBreach: jest.fn().mockResolvedValue(false),
+      isSubscriberNotifiedForBreach: jest.fn().mockResolvedValue(false),
       addEmailNotification: jest.fn().mockResolvedValue(undefined),
       markEmailAsNotified: jest.fn(),
     };
@@ -220,7 +219,7 @@ describe("breachMessageHandler", () => {
         { getBreach: breachSpy } as unknown as BreachDataService,
         { findByHashes: jest.fn().mockResolvedValue([mockSubscriber()]) },
         {
-          subscriberNotifiedForBreach: jest.fn().mockResolvedValue(false),
+          isSubscriberNotifiedForBreach: jest.fn().mockResolvedValue(false),
           addEmailNotification: jest.fn().mockResolvedValue(undefined),
           markEmailAsNotified: jest.fn(),
         },
@@ -233,7 +232,7 @@ describe("breachMessageHandler", () => {
     breachSpy.mockResolvedValueOnce(mockBreach(validBreachDefaults));
     const subs = { findByHashes: jest.fn().mockResolvedValue([]) };
     const notifications = {
-      subscriberNotifiedForBreach: jest.fn(),
+      isSubscriberNotifiedForBreach: jest.fn(),
       addEmailNotification: jest.fn(),
       markEmailAsNotified: jest.fn(),
     };

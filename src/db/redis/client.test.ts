@@ -19,7 +19,6 @@ jest.mock("./util", () => ({
 describe("redisClient", () => {
   const originalEnv = process.env;
   beforeEach(() => {
-    jest.clearAllMocks();
     process.env = { ...originalEnv };
   });
 

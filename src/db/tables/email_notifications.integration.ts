@@ -8,7 +8,7 @@ import { BreachRow } from "knex/types/tables";
 import {
   addEmailNotification,
   markEmailAsNotified,
-  subscriberNotifiedForBreach,
+  isSubscriberNotifiedForBreach,
 } from "./email_notifications";
 
 describe("email_notifications repository", () => {
@@ -27,7 +27,7 @@ describe("email_notifications repository", () => {
   afterAll(async () => {
     await conn.destroy();
   });
-  describe("subscriberNotifiedForBreach", () => {
+  describe("isSubscriberNotifiedForBreach", () => {
     it("returns true if subscriber notified for breach", async () => {
       const subscriber = (
         await conn("subscribers").insert(seeds.subscribers()).returning("*")
@@ -37,14 +37,14 @@ describe("email_notifications repository", () => {
           notified: true,
         }),
       );
-      const actual = await subscriberNotifiedForBreach(
+      const actual = await isSubscriberNotifiedForBreach(
         insertedBreach.id,
         subscriber.id,
       );
       expect(actual).toBe(true);
     });
     it("returns false if subscriber not notified for breach (no record)", async () => {
-      const actual = await subscriberNotifiedForBreach(
+      const actual = await isSubscriberNotifiedForBreach(
         insertedBreach.id,
         939349911,
       );
@@ -59,7 +59,7 @@ describe("email_notifications repository", () => {
           notified: false,
         }),
       );
-      const actual = await subscriberNotifiedForBreach(
+      const actual = await isSubscriberNotifiedForBreach(
         insertedBreach.id,
         subscriber.id,
       );
@@ -88,7 +88,7 @@ describe("email_notifications repository", () => {
         notification_type: data.notificationType,
       });
     });
-    it("does nothing and does not throw if row already exists", async () => {
+    it("does nothing and returns undefined if row already exists", async () => {
       jest.spyOn(console, "info").mockReturnValue();
       const email = "test@example.com";
       const subscriber = (
@@ -138,7 +138,7 @@ describe("email_notifications repository", () => {
         .first();
       expect(roundTrip).toMatchObject({ notified: true });
     });
-    it("does not throw error if row does not exist", async () => {
+    it("returns 0 if the row does not exist", async () => {
       jest.spyOn(console, "info").mockReturnValue();
       const res = await markEmailAsNotified(
         1212121212,

@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { SubscriberRow } from "knex/types/tables";
+import { EmailAddressRow, SubscriberRow } from "knex/types/tables";
 import { getEmailAddressesByHashes } from "../tables/emailAddresses";
 import { getSubscribersByHashes } from "../tables/subscribers";
 
@@ -13,15 +13,15 @@ export type BreachNotificationSubscriber = {
   subscriber_id: SubscriberRow["id"];
   all_emails_to_primary: SubscriberRow["all_emails_to_primary"];
   primary_email: SubscriberRow["primary_email"];
-  breached_email: string;
-  notification_email: string;
+  breached_email: SubscriberRow["primary_email"] | EmailAddressRow["email"];
+  notification_email: SubscriberRow["primary_email"] | EmailAddressRow["email"];
   signup_language: SubscriberRow["signup_language"];
   fxa_profile_json: SubscriberRow["fxa_profile_json"];
   fxa_uid: SubscriberRow["fxa_uid"];
   onerep_profile_id: SubscriberRow["onerep_profile_id"];
 };
 
-export async function breachNotificationSubscribersByHashes(
+export async function getBreachNotificationSubscribersByHashes(
   hashes: string[],
 ): Promise<BreachNotificationSubscriber[]> {
   // 2 sources of email address - the subscribers table and

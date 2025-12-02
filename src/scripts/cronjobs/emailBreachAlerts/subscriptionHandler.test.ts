@@ -6,7 +6,7 @@ import type { Logger } from "winston";
 import { MockProcess } from "../../../test/helpers/mockProcess";
 import { mockMessage, MockSubscription } from "../../../test/helpers/pubsub";
 import { mockLogger } from "../../../test/helpers/mockLogger";
-import { MessageSummary, SubscriptionHandler } from "./subscriptionHandler"; // <-- adjust the path
+import { MessageSummary, SubscriptionHandler } from "./subscriptionHandler";
 import { setTimeout } from "timers/promises";
 import { Message, Subscription } from "@google-cloud/pubsub";
 
@@ -21,7 +21,6 @@ describe("SubscriptionHandler", () => {
     subCloseSpy = jest.spyOn(MockSubscription.prototype, "close");
     sub = new MockSubscription();
     proc = new MockProcess();
-    jest.clearAllMocks();
   });
 
   afterAll(() => jest.restoreAllMocks());
@@ -51,9 +50,8 @@ describe("SubscriptionHandler", () => {
     sub.emitMessage(msg);
 
     // allow event loop to flush
-    // no setImmediate in jsdom, so just wait
-    // a short while instead
-    await setTimeout(50);
+    // no setImmediate in jsdom
+    await setTimeout(0);
 
     expect(msg.ack).toHaveBeenCalled();
     expect(msg.nack).not.toHaveBeenCalled();
@@ -73,7 +71,7 @@ describe("SubscriptionHandler", () => {
     });
 
     sub.emitMessage(msg);
-    await setTimeout(50);
+    await setTimeout(0);
 
     expect(msg.nack).toHaveBeenCalled();
     expect(msg.ack).not.toHaveBeenCalled();
@@ -90,7 +88,7 @@ describe("SubscriptionHandler", () => {
     });
 
     sub.emitMessage(msg);
-    await setTimeout(50);
+    await setTimeout(0);
 
     expect(msg.nack).toHaveBeenCalled();
   });
@@ -113,7 +111,7 @@ describe("SubscriptionHandler", () => {
       // Send signal to drain
       proc.emitSignal(signal);
       sub.emitMessage(msg);
-      await setTimeout(50);
+      await setTimeout(0);
 
       expect(msg.nack).toHaveBeenCalled();
       expect(handlerSpy).not.toHaveBeenCalled();
@@ -133,7 +131,7 @@ describe("SubscriptionHandler", () => {
       // Send signal to drain
       proc.emitSignal(signal);
       expect(subCloseSpy).toHaveBeenCalled();
-      await setTimeout(50);
+      await setTimeout(0);
     },
   );
   it("logs error thrown by subscription object", async () => {
@@ -144,7 +142,7 @@ describe("SubscriptionHandler", () => {
       skipped: 0,
     }));
     sub.emitError(new Error("nope"));
-    await setTimeout(50);
-    expect(logger.error).toHaveBeenCalled();
+    await setTimeout(0);
+    expect(logger.error).toHaveBeenCalledWith(new Error("nope"));
   });
 });

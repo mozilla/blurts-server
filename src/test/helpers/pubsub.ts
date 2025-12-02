@@ -5,7 +5,7 @@
 import { EventEmitter } from "events";
 import type { Message } from "@google-cloud/pubsub";
 
-export function mockMessage<T extends object>(payload: T) {
+export function mockMessage(payload: object) {
   return {
     data: Buffer.from(JSON.stringify(payload)),
     ack: jest.fn(),

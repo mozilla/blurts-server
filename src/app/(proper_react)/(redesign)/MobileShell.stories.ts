@@ -35,14 +35,8 @@ const meta: Meta<typeof MobileShell> = {
   title: "Layout/Mobile Shell",
   component: MobileShell,
   args: {
-    enabledFeatureFlags: ["LandingPageRedesign"],
-    experimentData: {
-      ...defaultExperimentData["Features"],
-      "landing-page-redesign-plus-eligible-experiment": {
-        enabled: true,
-        variant: "redesign",
-      },
-    },
+    enabledFeatureFlags: [],
+    experimentData: defaultExperimentData["Features"],
   },
 };
 export default meta;
