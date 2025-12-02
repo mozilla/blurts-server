@@ -9,9 +9,6 @@ import Link from "next/link";
 import styles from "./EmailTrigger.module.scss";
 import {
   triggerBreachAlert,
-  triggerFirstDataBrokerRemovalFixed,
-  triggerMonthlyActivityFree,
-  triggerMonthlyActivityPlus,
   triggerSignupReportEmail,
   triggerVerificationEmail,
 } from "./actions";
@@ -28,16 +25,6 @@ export const EmailTrigger = (props: Props) => {
   const [isSendingSignupReport, setIsSendingSignupReport] = useState(false);
   const [isSendingVerification, setIsSendingVerification] = useState(false);
   const [isSendingBreachAlert, setIsSendingBreachAlert] = useState(false);
-  const [
-    isSendingMonthlyActivityFreeOverview,
-    setIsSendingMonthlyActivityFreeOverview,
-  ] = useState(false);
-  const [
-    isSendingMonthlyActivityPlusOverview,
-    setIsSendingMonthlyActivityPlusOverview,
-  ] = useState(false);
-  const [firstDataBrokerRemovalFixed, setFirstDataBrokerRemovalFixed] =
-    useState(false);
 
   return (
     <main className={styles.wrapper}>
@@ -91,30 +78,6 @@ export const EmailTrigger = (props: Props) => {
         </Button>
         <Button
           variant="primary"
-          isLoading={isSendingMonthlyActivityFreeOverview}
-          onPress={() => {
-            setIsSendingMonthlyActivityFreeOverview(true);
-            void triggerMonthlyActivityFree(selectedEmailAddress).then(() => {
-              setIsSendingMonthlyActivityFreeOverview(false);
-            });
-          }}
-        >
-          Monthly activity overview (free)
-        </Button>
-        <Button
-          variant="primary"
-          isLoading={isSendingMonthlyActivityPlusOverview}
-          onPress={() => {
-            setIsSendingMonthlyActivityPlusOverview(true);
-            void triggerMonthlyActivityPlus(selectedEmailAddress).then(() => {
-              setIsSendingMonthlyActivityPlusOverview(false);
-            });
-          }}
-        >
-          Monthly activity overview (Plus)
-        </Button>
-        <Button
-          variant="primary"
           isLoading={isSendingBreachAlert}
           onPress={() => {
             setIsSendingBreachAlert(true);
@@ -124,20 +87,6 @@ export const EmailTrigger = (props: Props) => {
           }}
         >
           Breach alert
-        </Button>
-        <Button
-          variant="primary"
-          isLoading={firstDataBrokerRemovalFixed}
-          onPress={() => {
-            setFirstDataBrokerRemovalFixed(true);
-            void triggerFirstDataBrokerRemovalFixed(selectedEmailAddress).then(
-              () => {
-                setFirstDataBrokerRemovalFixed(false);
-              },
-            );
-          }}
-        >
-          First data broker removal fixed
         </Button>
       </div>
     </main>
