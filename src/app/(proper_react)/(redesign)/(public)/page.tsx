@@ -6,17 +6,12 @@ import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { getServerSession } from "../../../functions/server/getServerSession";
 import { getCountryCode } from "../../../functions/server/getCountryCode";
-import { monthlySubscribersQuota } from "../../../functions/server/onerep";
-import { isEligibleForPremium } from "../../../functions/universal/premium";
 import {
   getAcceptLangHeaderInServerComponents,
   getL10n,
 } from "../../../functions/l10n/serverComponents";
 import { View as LandingView } from "./LandingView";
-import {
-  CONST_DAY_MILLISECONDS,
-  CONST_URL_MONITOR_LANDING_PAGE_ID,
-} from "../../../../constants";
+import { CONST_URL_MONITOR_LANDING_PAGE_ID } from "../../../../constants";
 import { getExperimentationIdFromUserSession } from "../../../functions/server/getExperimentationId";
 import { getExperiments } from "../../../functions/server/getExperiments";
 import { getLocale } from "../../../functions/universal/getLocale";
@@ -45,7 +40,6 @@ export default async function Page() {
   }
   const l10n = getL10n(await getAcceptLangHeaderInServerComponents());
   const countryCode = getCountryCode(await headers());
-  const eligibleForPremium = isEligibleForPremium(countryCode);
 
   const experimentationId = await getExperimentationIdFromUserSession(
     session?.user ?? null,
@@ -55,16 +49,6 @@ export default async function Page() {
     countryCode,
     locale: getLocale(l10n),
   });
-
-  // request the profile stats for the last 30 days
-  const profileStats = await getProfilesStats(
-    new Date(Date.now() - 30 * CONST_DAY_MILLISECONDS),
-  );
-  const oneRepActivations = profileStats?.total_active;
-  const scanLimitReached =
-    (typeof oneRepActivations !== "undefined" &&
-      oneRepActivations > monthlySubscribersQuota) ||
-    (enabledFeatureFlags.includes("DisableOneRepScans") && eligibleForPremium);
 
   return (
     <AccountsMetricsFlowProvider
@@ -83,12 +67,8 @@ export default async function Page() {
       }}
     >
       <LandingView
-        eligibleForPremium={
-          eligibleForPremium && !enabledFeatureFlags.includes("FreeOnly")
-        }
         l10n={l10n}
         countryCode={countryCode}
-        scanLimitReached={scanLimitReached}
         experimentData={experimentData["Features"]}
         enabledFeatureFlags={enabledFeatureFlags}
       />
