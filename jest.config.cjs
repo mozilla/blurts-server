@@ -40,7 +40,7 @@ const customJestConfig = {
   // An array of regexp pattern strings used to skip coverage collection
   coveragePathIgnorePatterns: [
     "/node_modules/",
-    "<rootDir>/src/db/knexfile.js",
+    "<rootDir>/src/db/knexfile.ts",
     "<rootDir>/src/apiMocks/mockData.ts",
     "<rootDir>/src/(.+).stories.(ts|tsx)",
     "<rootDir>/.storybook/",
