@@ -3,13 +3,13 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import knex from "knex";
-import knexConfig from "./knexfile.js";
+import knexConfig from "./knexfile";
 
 let connection: knex.Knex;
 export default function createDbConnection(): knex.Knex {
   /* c8 ignore start */
   if (process.env.NODE_ENV === "development") {
-    const { client } = knexConfig;
+    const client = knexConfig.client as string;
     if (!(client in global)) {
       (global as unknown as Record<string, knex.Knex>)[client] = knex(
         knexConfig as knex.Knex.Config,

@@ -5,7 +5,8 @@
 // Only process.env variables starting with `NEXT_PUBLIC_` will be shipped to the client:
 import "./app/functions/server/notInClientComponent";
 import { resolve } from "node:path";
-import { loadEnvConfig } from "@next/env";
+import { fileURLToPath } from "node:url";
+import env from "@next/env";
 
 if (
   typeof process.env.NEXT_RUNTIME !== "string" &&
@@ -14,7 +15,7 @@ if (
   // If we're in Next.js, our `.env` files are already set up to be loaded.
   // Outside of Next.js (e.g. in cron jobs), however, we need to explicitly load them.
   // (In unit tests, `next/jest` takes care of this, so no need to run this there.)
-  loadEnvConfig(resolve(__filename, "../../"));
+  env.loadEnvConfig(resolve(fileURLToPath(import.meta.url), "../../"));
 }
 
 /**
@@ -28,10 +29,18 @@ if (
  * falling back to sensible values (for running locally) if not.
  */
 export const config = {
-  nodeEnv: getEnvEnum("NODE_ENV", ["production", "development", "test"]),
-  appEnv: getEnvEnum("APP_ENV", ["local", "stage", "production", "cloudrun"], {
-    fallbackValue: "local",
+  nodeEnv: getEnvEnum("NODE_ENV", ["production", "development", "test"], {
+    fallbackValue: "development",
   }),
+  appEnv: getEnvEnum(
+    "APP_ENV",
+    ["local", "heroku", "stage", "production", "cloudrun"],
+    {
+      fallbackValue: "local",
+    },
+  ),
+
+  databaseUrl: getEnvString("DATABASE_URL"),
 
   oauthAuthorizationUri: getEnvString("OAUTH_AUTHORIZATION_URI"),
   oauthTokenUri: getEnvString("OAUTH_TOKEN_URI"),

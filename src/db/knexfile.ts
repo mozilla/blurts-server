@@ -5,25 +5,14 @@
 // It looks like the type definitions don't perfectly match how
 // `pg-connection-string` works, triggering a false positive for this lint rule:
 
+import { type Knex } from "knex";
 import pgConnectionStr from "pg-connection-string";
-import "dotenv-flow/config";
+import { config } from "../config";
 
-/**
- * @typedef {object} KnexConfig
- * @property {string} client
- * @property {import("pg-connection-string").ConnectionOptions} connection
- */
-
-const DATABASE_URL = process.env.DATABASE_URL ?? "";
-const APP_ENV = process.env.APP_ENV ?? "production";
-/** @type {string} */
-const NODE_ENV = process.env.NODE_ENV ?? "production";
-const connectionObj = pgConnectionStr.parse(DATABASE_URL);
-if (
-  typeof process.env.APP_ENV === "string" &&
-  process.env.APP_ENV === "heroku"
-) {
-  // @ts-ignore TODO: Check if this typing error is correct, or if the types are wrong?
+const connectionObj = pgConnectionStr.parse(
+  config.databaseUrl,
+) as Knex.PgConnectionConfig;
+if (config.appEnv === "heroku") {
   connectionObj.ssl = { rejectUnauthorized: false };
 }
 
@@ -36,19 +25,19 @@ const RUNTIME_CONFIG = {
 
 // For tests, use test-DATABASE
 const testConnectionObj = pgConnectionStr.parse(
-  DATABASE_URL.replace(/\/(\w*)$/, "/test-$1"),
-);
-const TESTS_CONFIG = {
+  config.databaseUrl.replace(/\/(\w*)$/, "/test-$1"),
+) as Knex.PgConnectionConfig;
+const TESTS_CONFIG: Knex.Config = {
   client: "postgresql",
   connection: testConnectionObj,
 };
 
-let exportConfig = NODE_ENV === "test" ? TESTS_CONFIG : RUNTIME_CONFIG;
+let exportConfig = config.nodeEnv === "test" ? TESTS_CONFIG : RUNTIME_CONFIG;
 
-if (APP_ENV === "cloudrun") {
+if (config.appEnv === "cloudrun") {
   // @ts-ignore TODO: Check if this typing error is correct, or if the types are wrong?
   connectionObj.ssl = false;
-  connectionObj.host = /** @type {string} */ (process.env.PG_HOST);
+  connectionObj.host = /** @type {string} */ process.env.PG_HOST;
   exportConfig = {
     client: "pg",
     connection: connectionObj,
