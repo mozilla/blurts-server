@@ -17,9 +17,7 @@ test.describe(`Verify landing page [${process.env.E2E_TEST_ENV}]`, () => {
   });
 
   test("landing page loads", async ({ page }, testInfo) => {
-    if (
-      testInfo.project.use.countryCode === "nl"
-    ) {
+    if (testInfo.project.use.countryCode === "nl") {
       const heading = page.getByRole("heading", {
         name: "Ontdek waar uw privégegevens zijn gelekt – en neem ze terug",
       });
