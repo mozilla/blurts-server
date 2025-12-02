@@ -4,19 +4,7 @@
 
 // Only process.env variables starting with `NEXT_PUBLIC_` will be shipped to the client:
 import "./app/functions/server/notInClientComponent";
-import { resolve } from "node:path";
-import { fileURLToPath } from "node:url";
-import env from "@next/env";
-
-if (
-  typeof process.env.NEXT_RUNTIME !== "string" &&
-  process.env.NODE_ENV !== "test"
-) {
-  // If we're in Next.js, our `.env` files are already set up to be loaded.
-  // Outside of Next.js (e.g. in cron jobs), however, we need to explicitly load them.
-  // (In unit tests, `next/jest` takes care of this, so no need to run this there.)
-  env.loadEnvConfig(resolve(fileURLToPath(import.meta.url), "../../"));
-}
+import "./initializeEnvVars";
 
 /**
  * Environment-specific values
@@ -34,7 +22,7 @@ export const config = {
   }),
   appEnv: getEnvEnum(
     "APP_ENV",
-    ["local", "heroku", "stage", "production", "cloudrun"],
+    ["local", "gcpdev", "heroku", "stage", "production", "cloudrun"],
     {
       fallbackValue: "local",
     },
@@ -57,6 +45,8 @@ export const config = {
   // https://docs.aws.amazon.com/ses/latest/dg/using-configuration-sets.html
   sesConfigSet: getEnvString("SES_CONFIG_SET", { fallbackValue: "" }),
 
+  sentryDsn: getEnvString("SENTRY_DSN"),
+
   hibpThrottleMaxTries: getEnvInt("HIBP_THROTTLE_MAX_TRIES"),
   hibpThrottleDelay: getEnvInt("HIBP_THROTTLE_DELAY"),
   hibpApiRoot: getEnvString("HIBP_API_ROOT"),
@@ -67,11 +57,26 @@ export const config = {
     "DELETE_UNVERIFIED_SUBSCRIBERS_TIMER",
     { fallbackValue: 24 * 60 * 60 },
   ),
+  s3Bucket: getEnvString("S3_BUCKET"),
 
   monthlyActivityFreeEmailBatchSize: getEnvInt(
     "MONTHLY_ACTIVITY_FREE_EMAIL_BATCH_SIZE",
     { fallbackValue: 10 },
   ),
+
+  // These can be left undefined locally if you're not working on code
+  // that references these values; check whether these values are defined on use.
+  fxRemoteSettingsWriterUser: process.env.FX_REMOTE_SETTINGS_WRITER_USER,
+  fxRemoteSettingsWriterPass: process.env.FX_REMOTE_SETTINGS_WRITER_PASS,
+  fxRemoteSettingsWriterServer: process.env.FX_REMOTE_SETTINGS_WRITER_SERVER,
+
+  // TODO: Remove as we remove OneRep-related code:
+  maxManualScans: getEnvInt("MAX_MANUAL_SCANS"),
+  maxInitialScans: getEnvInt("MAX_INITIAL_SCANS"),
+  maxProfilesActivated: getEnvInt("MAX_PROFILES_ACTIVATED"),
+  maxProfilesCreated: getEnvInt("MAX_PROFILES_CREATED"),
+  onerepApiBase: getEnvString("ONEREP_API_BASE"),
+  onerepApiKey: getEnvString("ONEREP_API_KEY"),
 } as const;
 
 /**
