@@ -13,11 +13,11 @@ export const defaultLocalForcedFeatureFlags: FeatureFlagName[] = [
   "AutomaticRemovalCsatSurvey",
   "AdditionalRemovalStatuses",
   "DataBrokerRemovalTimeEstimateLabel",
-  "LandingPageRedesign",
   "DataBrokerRemovalAttempts",
   "SidebarNavigationRedesign",
   "EditScanProfileDetails",
   "SubPlat3",
+  "FreeOnly",
 ];
 
 const test = baseTest.extend<{

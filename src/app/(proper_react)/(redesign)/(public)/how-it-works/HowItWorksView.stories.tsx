@@ -15,13 +15,7 @@ const meta: Meta<typeof HowItWorksView> = {
       l10n={getL10n("en")}
       countryCode="us"
       enabledFeatureFlags={[]}
-      experimentData={{
-        ...defaultExperimentData["Features"],
-        "landing-page-redesign-plus-eligible-experiment": {
-          enabled: false,
-          variant: "default",
-        },
-      }}
+      experimentData={defaultExperimentData["Features"]}
     >
       <HowItWorksView
         l10n={getL10n()}

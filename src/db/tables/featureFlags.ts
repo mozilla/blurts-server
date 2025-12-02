@@ -60,7 +60,6 @@ export const featureFlagNames = [
   "AdditionalRemovalStatuses",
   "DataBrokerRemovalTimeEstimateLabel",
   "DataBrokerRemovalTimeEstimateCsat",
-  "LandingPageRedesign",
   "EnableRemovalUnderMaintenanceStep",
   "DataBrokerRemovalAttempts",
   "CustomDataBrokers",

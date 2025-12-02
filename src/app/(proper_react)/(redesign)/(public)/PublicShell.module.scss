@@ -46,38 +46,6 @@
   button {
     flex-shrink: 0;
   }
-
-  &.navDesktop {
-    justify-content: flex-end;
-
-    h1 {
-      margin-right: auto;
-    }
-
-    ul {
-      display: flex;
-
-      a {
-        color: tokens.$color-black;
-        text-decoration: none;
-        font-weight: 600;
-        padding: tokens.$spacing-sm;
-        white-space: nowrap;
-
-        @media screen and (min-width: tokens.$screen-lg) {
-          padding: tokens.$spacing-sm tokens.$spacing-md;
-        }
-
-        &:hover {
-          text-decoration: underline;
-        }
-      }
-    }
-
-    @media screen and (max-width: tokens.$screen-md) {
-      display: none;
-    }
-  }
 }
 
 .content {

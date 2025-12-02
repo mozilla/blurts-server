@@ -8,13 +8,15 @@ import { signIn, useSession } from "next-auth/react";
 import { useL10n } from "../../hooks/l10n";
 import { Button, ButtonProps } from "./Button";
 import { useTelemetry } from "../../hooks/useTelemetry";
+import { useHasRenderedClientSide } from "../../hooks/useHasRenderedClientSide";
 
 export const SignInButton = (props: ButtonProps) => {
   const l10n = useL10n();
   const session = useSession();
   const recordTelemetry = useTelemetry();
+  const hasRenderedClientSide = useHasRenderedClientSide();
 
-  if (typeof session.data?.user.email === "string") {
+  if (typeof session.data?.user.email === "string" || !hasRenderedClientSide) {
     return null;
   }
 

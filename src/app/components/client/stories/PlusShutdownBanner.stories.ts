@@ -9,9 +9,6 @@ import { PlusShutdownBanner } from "../PlusShutdownBanner";
 const meta: Meta<typeof PlusShutdownBanner> = {
   title: "Design Systems/Molecules/Plus shutdown banner",
   component: PlusShutdownBanner,
-  args: {
-    enabledFeatureFlags: ["ShutdownBanner"],
-  },
 };
 export default meta;
 type Story = StoryObj<typeof PlusShutdownBanner>;

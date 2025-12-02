@@ -516,7 +516,6 @@ export const View = (props: Props) => {
       <PlusShutdownBanner
         countryCode={props.countryCode}
         shutdownState={props.shutdownState}
-        enabledFeatureFlags={props.enabledFeatureFlags}
       />
       <CsatSurvey
         user={props.user}

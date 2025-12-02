@@ -5,8 +5,12 @@
 "use client";
 
 import React, { createContext, useContext } from "react";
-import { SubscriptionBillingAmount } from "../app/(proper_react)/(redesign)/(public)/LandingViewRedesign/components/PricingPlanList";
+import type { BundleBillingAmount } from "../app/functions/server/getPremiumSubscriptionInfo";
 
+export type SubscriptionBillingAmount = {
+  monthly: number;
+  bundle: BundleBillingAmount;
+};
 const SubscriptionBillingContext =
   createContext<SubscriptionBillingAmount | null>(null);
 
