@@ -5,7 +5,6 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { captureException } from "@sentry/node";
-import { MetricFlowData } from "../../../functions/universal/getFreeScanSearchParams";
 import { logger } from "../../../functions/server/logging";
 
 async function fetchMetricsFlowParams(searchParams: URLSearchParams) {

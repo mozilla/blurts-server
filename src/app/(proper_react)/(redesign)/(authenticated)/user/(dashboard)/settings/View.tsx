@@ -48,7 +48,6 @@ export const SettingsView = (props: Props) => {
       <Toolbar
         user={props.user}
         fxaSettingsUrl={props.fxaSettingsUrl}
-        experimentData={props.experimentData}
         enabledFeatureFlags={props.enabledFeatureFlags}
         announcements={props.userAnnouncements}
       />
