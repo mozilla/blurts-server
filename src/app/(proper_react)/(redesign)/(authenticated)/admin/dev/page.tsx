@@ -7,13 +7,14 @@ import { notFound } from "next/navigation";
 import { isAdmin } from "../../../../../api/utils/auth";
 import { getEnabledFeatureFlags } from "../../../../../../db/tables/featureFlags";
 import { UserAdmin } from "./UserAdmin";
+import { config } from "../../../../../../config";
 
 export default async function DevPage() {
   const session = await getServerSession();
   if (
     !session?.user?.email ||
     !isAdmin(session.user.email) ||
-    process.env.APP_ENV === "production"
+    config.appEnv === "production"
   ) {
     return notFound();
   }
