@@ -77,6 +77,17 @@ export class BreachSyncService implements IBreachSyncService {
     return !!lastSynced && Date.now() - lastSynced < this.opts.minFreshMs;
   }
 
+  /**
+   * Request a data sync from remote data source (HIBP).
+   * Uses redis lock to avoid multiple concurrent
+   * sync requests.
+   * Breaches are pulled from HIBP, validated, and saved
+   * into the database and redis cache.
+   * If a sync is already in progress, it will block until
+   * the waiter is awakened, or the process times out (lockTtlMs),
+   * after which point the caller can fetch the new data and/or
+   * attempt to sync again.
+   */
   async syncBreaches() {
     // Debounce if data is still fresh
     if (await this.isFresh()) {

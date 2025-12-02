@@ -465,6 +465,7 @@ function isValidBreach(breach: HibpGetBreachesResponse[number]) {
 }
 
 /**
+ * Validate breach list, ensuring required fields are defined and non-null
  *
  * @param breaches
  */

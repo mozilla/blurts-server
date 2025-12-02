@@ -101,8 +101,7 @@ function breachIsNotifiable(
  *
  * @param message PubSub Message
  * @param logger Logger instance
- * @param breachProvider fetches list of breaches (from db/redis)
- *   In practice, use `getAllBreachesFromDb` from '../../../utils/hibp'
+ * @param breachService breach data provider
  * @param subs DB Repository for subscribers
  * @param notifications DB Repository for email_notifications
  * @param sendEmail send email method
