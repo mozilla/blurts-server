@@ -25,6 +25,7 @@ import { getEmailPreferenceForPrimaryEmail } from "../../../../../../../../db/ta
 import { CONST_SETTINGS_TAB_SLUGS } from "../../../../../../../../constants";
 import { onAddEmail, onDeleteAccount, onRemoveEmail } from "../actions";
 import { initializeUserAnnouncements } from "../../../../../../../../db/tables/user_announcements";
+import { config } from "../../../../../../../../config";
 
 type Props = {
   params: Promise<{
@@ -53,7 +54,7 @@ export default async function SettingsPage(props: Props) {
 
   const emailAddresses = await getUserEmails(session.user.subscriber.id);
 
-  const fxaSettingsUrl = process.env.FXA_SETTINGS_URL!;
+  const fxaSettingsUrl = config.fxaSettingsUrl;
   const allBreaches = await getBreaches();
   const breachCountByEmailAddress: Record<string, number> = {};
   const emailAddressStrings = emailAddresses.map(

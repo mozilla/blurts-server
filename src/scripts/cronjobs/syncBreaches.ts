@@ -20,11 +20,12 @@ import {
 } from "../../db/tables/breaches";
 import { redisClient, REDIS_ALL_BREACHES_KEY } from "../../db/redis/client.js";
 import { uploadToS3 } from "../../utils/s3.js";
+import { config } from "../../config";
 
 const SENTRY_SLUG = "cron-sync-breaches";
 
 Sentry.init({
-  dsn: process.env.SENTRY_DSN,
+  dsn: config.sentryDsn,
   tracesSampleRate: 1.0,
 });
 
@@ -55,7 +56,7 @@ export async function getBreachIcons(breaches: HibpGetBreachesResponse) {
       console.log("skipping ", logoFilename);
       await updateBreachFaviconUrl(
         breachName,
-        `https://s3.amazonaws.com/${process.env.S3_BUCKET}/${logoFilename}`,
+        `https://s3.amazonaws.com/${config.s3Bucket}/${logoFilename}`,
       );
       continue;
     }
@@ -74,7 +75,7 @@ export async function getBreachIcons(breaches: HibpGetBreachesResponse) {
       await uploadToS3(logoFilename, Buffer.from(await res.arrayBuffer()));
       await updateBreachFaviconUrl(
         breachName,
-        `https://s3.amazonaws.com/${process.env.S3_BUCKET}/${logoFilename}`,
+        `https://s3.amazonaws.com/${config.s3Bucket}/${logoFilename}`,
       );
     } catch (e) {
       console.error(e);

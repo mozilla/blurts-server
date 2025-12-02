@@ -9,6 +9,7 @@ import { getSubscribersByHashes } from "../../../../../../db/tables/subscribers"
 import { isAdmin } from "../../../../../api/utils/auth";
 import { getServerSession } from "../../../../../functions/server/getServerSession";
 import { isMozMail } from "../../../../../functions/universal/isMozMail";
+import { config } from "../../../../../../config";
 
 export async function lookupFxaUid(emailHash: string) {
   const session = await getServerSession();
@@ -19,8 +20,8 @@ export async function lookupFxaUid(emailHash: string) {
   const subscriber = await getSubscribersByHashes([emailHash]);
   if (
     // On production, only allow looking up Mozilla email addresses
-    process.env.APP_ENV !== "stage" &&
-    process.env.APP_ENV !== "local" &&
+    config.appEnv !== "stage" &&
+    config.appEnv !== "local" &&
     !isMozMail(subscriber[0].primary_email)
   ) {
     return notFound();

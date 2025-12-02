@@ -10,6 +10,7 @@ import { EmailHero } from "../../components/EmailHero";
 import { getLocale } from "../../../app/functions/universal/getLocale";
 import { ResolutionRelevantBreachDataTypes } from "../../../app/functions/universal/breach";
 import { HeaderStyles, MetaTags } from "../../components/HeaderStyles";
+import { config } from "../../../config";
 
 export type BreachAlertEmailProps = {
   l10n: ExtendedReactLocalization;
@@ -34,7 +35,7 @@ export const BreachAlertEmail = (props: BreachAlertEmailProps) => {
   const utmCampaignId = "breach-alert-global";
 
   const premiumSubscriptionUrlObject = new URL(
-    `${process.env.SERVER_URL}/link/subscribe/monthly`,
+    `${config.serverUrl}/link/subscribe/monthly`,
   );
   premiumSubscriptionUrlObject.searchParams.set("utm_medium", "product-email");
   premiumSubscriptionUrlObject.searchParams.set(
@@ -132,7 +133,7 @@ export const BreachAlertEmail = (props: BreachAlertEmailProps) => {
         <mj-section padding="12px 0 24px 52px" text-align="left">
           <mj-column padding="0" padding-left="24px" width="250px">
             <mj-button
-              href={`${process.env.SERVER_URL}/user/dashboard/action-needed/?utm_source=monitor-product&utm_medium=product-email&utm_campaign=${utmCampaignId}&utm_content=lets-get-started${utmContentSuffix}`}
+              href={`${config.serverUrl}/user/dashboard/action-needed/?utm_source=monitor-product&utm_medium=product-email&utm_campaign=${utmCampaignId}&utm_content=lets-get-started${utmContentSuffix}`}
               background-color="#0060DF"
               border="2px solid #0060DF"
               font-weight={600}
@@ -148,7 +149,7 @@ export const BreachAlertEmail = (props: BreachAlertEmailProps) => {
           </mj-column>
           <mj-column padding="0" padding-left="24px" width="250px">
             <mj-button
-              href={`${process.env.SERVER_URL}/user/dashboard/?utm_source=monitor-product&utm_medium=product-email&utm_campaign=${utmCampaignId}&utm_content=dashboard${utmContentSuffix}`}
+              href={`${config.serverUrl}/user/dashboard/?utm_source=monitor-product&utm_medium=product-email&utm_campaign=${utmCampaignId}&utm_content=dashboard${utmContentSuffix}`}
               background-color="white"
               border="2px solid #0060DF"
               color="#0060DF"

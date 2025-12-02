@@ -11,6 +11,7 @@ import { isAdmin } from "../../../../../api/utils/auth";
 import { logger } from "@sentry/core";
 import { captureException } from "@sentry/node";
 import { getSubscriberByFxaUid } from "../../../../../../db/tables/subscribers";
+import { config } from "../../../../../../config";
 
 export async function getAttachedClientsAction() {
   const session = await getServerSession();
@@ -18,7 +19,7 @@ export async function getAttachedClientsAction() {
   if (
     !session?.user?.email ||
     !isAdmin(session.user.email) ||
-    process.env.APP_ENV === "production" ||
+    config.appEnv === "production" ||
     typeof session?.user?.subscriber?.fxa_uid !== "string"
   ) {
     return notFound();

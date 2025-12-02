@@ -3,6 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { ExtendedReactLocalization } from "../../app/functions/l10n";
+import { config } from "../../config";
 import {
   CONST_URL_PRIVACY_POLICY,
   CONST_URL_SUMO_MONITOR_SUPPORT,
@@ -25,7 +26,7 @@ export const EmailFooter = (props: Props) => {
         <mj-column>
           <mj-image
             alt=""
-            src={`${process.env.SERVER_URL}/images/email/icons/question-mark-circle-with-bg.png`}
+            src={`${config.serverUrl}/images/email/icons/question-mark-circle-with-bg.png`}
             width="36px"
             height="36px"
             align="center"
@@ -84,7 +85,7 @@ export const EmailFooter = (props: Props) => {
           </mj-text>
           <mj-image
             alt={l10n.getString("email-footer-logo-mozilla-alt")}
-            src={`${process.env.SERVER_URL}/images/email/mozilla-logo-bw.png`}
+            src={`${config.serverUrl}/images/email/mozilla-logo-bw.png`}
             href={`https://www.mozilla.org/?utm_source=monitor-product&utm_medium=email&utm_campaign=${props.utm_campaign}&utm_content=header-logo`}
             width="150px"
             align="center"
@@ -125,7 +126,7 @@ export const RedesignedEmailFooter = (props: Props) => {
         <mj-column>
           <mj-image
             alt=""
-            src={`${process.env.SERVER_URL}/images/email/icons/question-mark-circle-with-bg.png`}
+            src={`${config.serverUrl}/images/email/icons/question-mark-circle-with-bg.png`}
             width="36px"
             height="36px"
             align="center"
@@ -151,7 +152,7 @@ export const RedesignedEmailFooter = (props: Props) => {
         <mj-column>
           <mj-image
             alt={l10n.getString("email-footer-logo-mozilla-alt")}
-            src={`${process.env.SERVER_URL}/images/email/mozilla-logo-bw.png`}
+            src={`${config.serverUrl}/images/email/mozilla-logo-bw.png`}
             href={`https://www.mozilla.org/?utm_source=monitor-product&utm_medium=product-email&utm_campaign=${props.utm_campaign}&utm_content=header-logo`}
             width="150px"
             align="center"

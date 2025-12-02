@@ -12,6 +12,7 @@ import styles from "./Shell.module.scss";
 import { UserAnnouncementWithDetails } from "../../../../db/tables/user_announcements";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { config } from "../../../../config";
 
 export type Props = {
   l10n: ExtendedReactLocalization;
@@ -30,7 +31,7 @@ export const Shell = (props: Props) => {
       {/* This component ensures that the client session is synced with the
       server session and is not being mounted when running unit tests. */}
       {/* c8 ignore next */}
-      {process.env.NODE_ENV !== "test" && <SubscriptionCheck />}
+      {config.nodeEnv !== "test" && <SubscriptionCheck />}
       <ToastContainer position="top-center" theme="colored" autoClose={false} />
       <ShellRedesign
         countryCode={props.countryCode}
@@ -38,7 +39,7 @@ export const Shell = (props: Props) => {
         enabledFeatureFlags={props.enabledFeatureFlags}
         l10n={props.l10n}
         announcements={props.announcements}
-        fxaSettingsUrl={process.env.FXA_SETTINGS_URL!}
+        fxaSettingsUrl={config.fxaSettingsUrl}
       >
         <div className={styles.page}>{props.children}</div>
       </ShellRedesign>

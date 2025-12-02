@@ -10,6 +10,7 @@ import {
   getL10n,
 } from "../../../../../functions/l10n/serverComponents";
 import { BreachDetailsView } from "./BreachDetailView";
+import { config } from "../../../../../../config";
 
 export async function generateMetadata(props: {
   params: Promise<{ breachName: string }>;
@@ -42,7 +43,7 @@ export async function generateMetadata(props: {
       siteName: l10n.getString("brand-mozilla-monitor"),
       type: "website",
       // The `.replace` removes a potential trailing slash:
-      url: `${process.env.SERVER_URL?.replace(/\/$/, "")}/breach-details/${breach.Name}`,
+      url: `${config.serverUrl.replace(/\/$/, "")}/breach-details/${breach.Name}`,
       images: ["/images/og-image.webp"],
     },
   };

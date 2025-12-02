@@ -88,6 +88,7 @@ const LeakedPasswordsWrapper = (props: {
           user: mockedSession.user,
         }}
         enabledFeatureFlags={[]}
+        blockdHibpBreachDomains={[]}
       />
     </Shell>
   );

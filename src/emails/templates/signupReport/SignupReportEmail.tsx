@@ -9,6 +9,7 @@ import { EmailHeader } from "../../components/EmailHeader";
 import { HibpLikeDbBreach } from "../../../utils/hibp";
 import { BreachCard } from "../../components/BreachCard";
 import { HeaderStyles, MetaTags } from "../../components/HeaderStyles";
+import { config } from "../../../config";
 
 export type Props = {
   l10n: ExtendedReactLocalization;
@@ -57,7 +58,7 @@ export const SignupReportEmail = (props: Props) => {
         <mj-section padding="20px">
           <mj-column>
             <mj-button
-              href={`${process.env.SERVER_URL}/user/dashboard/action-needed?utm_source=monitor-product&utm_medium=email&utm_campaign=${utmCampaign}&utm_content=view-your-dashboard-us`}
+              href={`${config.serverUrl}/user/dashboard/action-needed?utm_source=monitor-product&utm_medium=email&utm_campaign=${utmCampaign}&utm_content=view-your-dashboard-us`}
               background-color="#0060DF"
               font-weight={600}
               font-size="15px"

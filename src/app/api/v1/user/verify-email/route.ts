@@ -6,6 +6,8 @@ import { NextRequest, NextResponse } from "next/server";
 
 import { logger } from "../../../../functions/server/logging";
 import { verifyEmailHash } from "../../../../../db/tables/emailAddresses";
+import { config } from "../../../../../config";
+
 export async function GET(req: NextRequest) {
   try {
     const query = req.nextUrl.searchParams;
@@ -14,10 +16,7 @@ export async function GET(req: NextRequest) {
       throw new Error("No token given.");
     }
     await verifyEmailHash(token);
-    return NextResponse.redirect(
-      (process.env.SERVER_URL ?? "") + "/user/settings",
-      301,
-    );
+    return NextResponse.redirect(config.serverUrl + "/user/settings", 301);
   } catch (e) {
     logger.error(e);
     return NextResponse.json({ success: false }, { status: 500 });

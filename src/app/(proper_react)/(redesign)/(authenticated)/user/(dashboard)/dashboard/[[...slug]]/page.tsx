@@ -17,6 +17,7 @@ import { checkSession } from "../../../../../../../functions/server/checkSession
 import { isPrePlusUser } from "../../../../../../../functions/server/isPrePlusUser";
 import { initializeUserAnnouncements } from "../../../../../../../../db/tables/user_announcements";
 import { connection } from "next/server";
+import { config } from "../../../../../../../../config";
 
 const dashboardTabSlugs = ["action-needed", "fixed"];
 
@@ -78,7 +79,7 @@ export default async function DashboardPage(props: Props) {
     countryCode,
   });
 
-  const fxaSettingsUrl = process.env.FXA_SETTINGS_URL!;
+  const fxaSettingsUrl = config.fxaSettingsUrl;
   const userAnnouncements = await initializeUserAnnouncements(session.user);
   const signInCount = await getSignInCount(subscriber.id);
 

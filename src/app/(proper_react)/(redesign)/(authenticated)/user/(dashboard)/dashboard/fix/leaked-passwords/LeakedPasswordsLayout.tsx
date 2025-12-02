@@ -35,6 +35,7 @@ export interface LeakedPasswordsLayoutProps {
   subscriberEmails: string[];
   data: StepDeterminationData;
   enabledFeatureFlags: FeatureFlagName[];
+  blockdHibpBreachDomains: string[];
 }
 
 export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
@@ -97,6 +98,7 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
     l10n,
     emailsAffected,
     nextStep,
+    blockedHibpBreachDomains: props.blockdHibpBreachDomains,
   });
 
   // The non-null assertion here should be safe since we already did this check

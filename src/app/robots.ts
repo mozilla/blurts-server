@@ -3,6 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import type { MetadataRoute } from "next";
+import { config } from "../config";
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -11,6 +12,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/user/dashboard/", "/user/settings/", "/user/welcome/"],
     },
-    sitemap: `${process.env.SERVER_URL}/sitemap.xml`,
+    sitemap: `${config.serverUrl}/sitemap.xml`,
   };
 }

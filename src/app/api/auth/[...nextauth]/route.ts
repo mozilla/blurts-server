@@ -6,6 +6,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { NextRequest, NextResponse } from "next/server";
 import NextAuth from "next-auth";
 import { authOptions } from "../../utils/auth";
+import { config } from "../../../../config";
 
 const handler = async (req: NextRequest, res: unknown) => {
   // There is currently no support for handling OAuth provider callback errors:
@@ -26,7 +27,7 @@ const handler = async (req: NextRequest, res: unknown) => {
       const redirectUrl =
         callbackUrl && isValidCallbackUrl(callbackUrl)
           ? callbackUrl
-          : (process.env.SERVER_URL as string);
+          : config.serverUrl;
 
       return NextResponse.redirect(redirectUrl);
     }
@@ -40,7 +41,7 @@ const handler = async (req: NextRequest, res: unknown) => {
 };
 
 function isValidCallbackUrl(callbackUrlString: string): boolean {
-  const serverUrl = new URL(process.env.SERVER_URL!);
+  const serverUrl = new URL(config.serverUrl);
   const callbackUrl = new URL(callbackUrlString);
   return serverUrl.origin === callbackUrl.origin;
 }

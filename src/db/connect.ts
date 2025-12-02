@@ -4,11 +4,12 @@
 
 import knex from "knex";
 import knexConfig from "./knexfile";
+import { config } from "../config";
 
 let connection: knex.Knex;
 export default function createDbConnection(): knex.Knex {
   /* c8 ignore start */
-  if (process.env.NODE_ENV === "development") {
+  if (config.nodeEnv === "development") {
     const client = knexConfig.client as string;
     if (!(client in global)) {
       (global as unknown as Record<string, knex.Knex>)[client] = knex(

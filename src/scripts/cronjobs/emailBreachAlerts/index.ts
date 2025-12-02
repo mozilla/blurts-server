@@ -10,16 +10,16 @@
  */
 
 import * as Sentry from "@sentry/node";
+import { config } from "../../../config";
 
 Sentry.init({
-  environment: process.env.APP_ENV,
-  dsn: process.env.SENTRY_DSN,
+  environment: config.appEnv,
+  dsn: config.sentryDsn,
   tracesSampleRate: 1.0,
 });
 
 Sentry.setTag("job", "emailBreachAlerts");
 
-import "dotenv-flow/config";
 import { logger } from "../../../app/functions/server/logging";
 import { getAllBreachesFromDb } from "../../../utils/hibp";
 import { sendEmail, initEmail } from "../../../utils/email";

@@ -2,19 +2,18 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import {
-  describe,
-  it,
-  expect,
-  jest,
-  beforeEach,
-  afterAll,
-} from "@jest/globals";
+import { describe, it, expect, jest, beforeEach } from "@jest/globals";
 import { captureException } from "@sentry/node";
 import { FeatureFlagName } from "../../../db/tables/featureFlags";
 
 const headersMock: jest.Mock<() => Promise<Headers>> = jest.fn();
 jest.mock("next/headers", () => ({ headers: headersMock }));
+
+jest.mock("../../../config", () => {
+  return {
+    config: {},
+  };
+});
 
 const captureExceptionMock: jest.MockedFunction<typeof captureException> =
   jest.fn();
@@ -35,21 +34,17 @@ jest.mock("../../../telemetry/generated/nimbus/experiments", () => ({
   localExperimentData: localExperimentDataMock,
 }));
 
-const ORIGINAL_ENV = process.env;
 const fetchMock: jest.MockedFunction<typeof fetch> = jest.fn();
 
 beforeEach(() => {
   jest.resetModules();
-  process.env = { ...ORIGINAL_ENV };
 
-  process.env.APP_ENV = "production";
-  delete process.env.NIMBUS_SIDECAR_URL;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const configModule = jest.requireMock("../../../config") as any;
+  configModule.config.appEnv = "production";
+  delete configModule.config.nimbusSidecarUrl;
 
   global.fetch = fetchMock;
-});
-
-afterAll(() => {
-  process.env = ORIGINAL_ENV;
 });
 
 describe("getExperiments", () => {
@@ -66,39 +61,26 @@ describe("getExperiments", () => {
     expect(fetchMock).not.toHaveBeenCalled();
   });
 
-  it.each(["local", undefined])(
-    "returns localExperimentData in [%s] environments",
-    async (environment) => {
-      process.env.APP_ENV = environment;
-      const { getExperiments } = await import("./getExperiments");
-
-      const result = await getExperiments({
-        experimentationId: "11111111-2222-3333-4444-555555555555",
-        locale: "en-US",
-        countryCode: "nl",
-      });
-
-      expect(result).toEqual(localExperimentDataMock);
-      expect(fetchMock).not.toHaveBeenCalled();
-    },
-  );
-
-  it("throws if NIMBUS_SIDECAR_URL is missing", async () => {
-    headersMock.mockResolvedValue(new Headers([]));
+  it("returns localExperimentData in local environments", async () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const configModule = jest.requireMock("../../../config") as any;
+    configModule.config.appEnv = "local";
     const { getExperiments } = await import("./getExperiments");
 
-    await expect(
-      getExperiments({
-        experimentationId: "11111111-2222-3333-4444-555555555555",
-        locale: "en-US",
-        countryCode: "us",
-      }),
-    ).rejects.toThrow("env var NIMBUS_SIDECAR_URL not set");
+    const result = await getExperiments({
+      experimentationId: "11111111-2222-3333-4444-555555555555",
+      locale: "en-US",
+      countryCode: "nl",
+    });
+
+    expect(result).toEqual(localExperimentDataMock);
     expect(fetchMock).not.toHaveBeenCalled();
   });
 
   it("calls Cirrus V2 with preview param", async () => {
-    process.env.NIMBUS_SIDECAR_URL = "https://cirrus.example";
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const configModule = jest.requireMock("../../../config") as any;
+    configModule.config.nimbusSidecarUrl = "https://cirrus.example";
     headersMock.mockResolvedValue(
       new Headers([["x-nimbus-preview-mode", "true"]]),
     );
@@ -149,7 +131,9 @@ describe("getExperiments", () => {
   });
 
   it("fallsback to defaultExperimentData when not experiment data is returned by Cirrus", async () => {
-    process.env.NIMBUS_SIDECAR_URL = "https://cirrus.example";
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const configModule = jest.requireMock("../../../config") as any;
+    configModule.config.nimbusSidecarUrl = "https://cirrus.example";
     headersMock.mockResolvedValue(
       new Headers([["x-nimbus-preview-mode", "true"]]),
     );
@@ -195,7 +179,9 @@ describe("getExperiments", () => {
   });
 
   it("logs error, captures exception, and returns defaultExperimentData on error response", async () => {
-    process.env.NIMBUS_SIDECAR_URL = "https://cirrus.example/";
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const configModule = jest.requireMock("../../../config") as any;
+    configModule.config.nimbusSidecarUrl = "https://cirrus.example";
     headersMock.mockResolvedValue(new Headers([]));
 
     global.fetch = jest.fn<typeof global.fetch>().mockResolvedValue({

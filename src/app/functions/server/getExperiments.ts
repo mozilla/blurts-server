@@ -13,6 +13,7 @@ import { ExperimentationId } from "./getExperimentationId";
 import { getEnabledFeatureFlags } from "../../../db/tables/featureFlags";
 import { loadNextHeaders } from "./loadNextHeaders";
 import { CONST_CIRRUS_V2_PATHNAME } from "../../../constants";
+import { config } from "../../../config";
 
 /**
  * Call the Cirrus sidecar, which returns a list of eligible experiments for the current user.
@@ -33,15 +34,11 @@ export async function getExperiments(params: {
     return defaultExperimentData;
   }
 
-  if (["local"].includes(process.env.APP_ENV ?? "local")) {
+  if (["local"].includes(config.appEnv)) {
     return localExperimentData;
   }
 
-  if (!process.env.NIMBUS_SIDECAR_URL) {
-    throw new Error("env var NIMBUS_SIDECAR_URL not set");
-  }
-
-  const serverUrl = new URL(process.env.NIMBUS_SIDECAR_URL);
+  const serverUrl = new URL(config.nimbusSidecarUrl);
   const flags = await getEnabledFeatureFlags({ isSignedOut: true });
   serverUrl.pathname += CONST_CIRRUS_V2_PATHNAME;
 

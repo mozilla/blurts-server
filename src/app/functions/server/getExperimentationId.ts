@@ -9,6 +9,7 @@ import type { SubscriberRow } from "knex/types/tables";
 import { logger } from "./logging";
 import { loadNextHeaders } from "./loadNextHeaders";
 import "./notInClientComponent";
+import { config } from "../../../config";
 
 export type ExperimentationId = UUID | `guest-${UUID}`;
 
@@ -24,15 +25,7 @@ async function getExperimentationId(
 ): Promise<ExperimentationId | undefined> {
   if (subscriberId && typeof subscriberId === "number") {
     // If the user is logged in, use the Subscriber ID.
-    const namespace = process.env.NIMBUS_UUID_NAMESPACE;
-    if (!namespace) {
-      logger.error(
-        "NIMBUS_UUID_NAMESPACE environment variable is missing. Cannot generate experimentationId.",
-      );
-      throw new Error(
-        "NIMBUS_UUID_NAMESPACE not set, cannot create experimentationId",
-      );
-    }
+    const namespace = config.nimbusUuidNamespace;
     const experimentationId = uuidv5(
       subscriberId.toString(),
       namespace,

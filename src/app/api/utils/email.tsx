@@ -13,6 +13,7 @@ import {
   getL10n,
 } from "../../functions/l10n/serverComponents";
 import { BadRequestError } from "../../../utils/error";
+import { config } from "../../../config";
 
 export async function sendVerificationEmail(
   user: SubscriberRow,
@@ -36,7 +37,7 @@ export async function sendVerificationEmail(
 
   const utmCampaign = "verified-subscribers";
   const verificationUrl = new URL(
-    `${process.env.SERVER_URL}/api/v1/user/verify-email`,
+    `${config.serverUrl}/api/v1/user/verify-email`,
   );
   verificationUrl.searchParams.set(
     "token",
