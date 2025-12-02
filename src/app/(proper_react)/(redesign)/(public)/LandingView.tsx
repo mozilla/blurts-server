@@ -22,6 +22,7 @@ import { ExperimentData } from "../../../../telemetry/generated/nimbus/experimen
 import { AccountDeletionNotification } from "./AccountDeletionNotification";
 import { FeatureFlagName } from "../../../../db/tables/featureFlags";
 import { SignUpForm } from "./SignUpForm";
+import { config } from "../../../../config";
 
 export type Props = {
   l10n: ExtendedReactLocalization;
@@ -41,7 +42,7 @@ export const View = (props: Props) => {
             <p>{props.l10n.getString("landing-all-hero-lead")}</p>
             <SignUpForm
               isHero
-              signUpCallbackUrl={`${process.env.SERVER_URL}/user/dashboard`}
+              signUpCallbackUrl={`${config.serverUrl}/user/dashboard`}
               eventId={{
                 cta: "clicked_get_scan_header",
                 field: "entered_email_address_header",
@@ -90,7 +91,7 @@ export const View = (props: Props) => {
                 )}
               </p>
               <SignUpForm
-                signUpCallbackUrl={`${process.env.SERVER_URL}/user/dashboard`}
+                signUpCallbackUrl={`${config.serverUrl}/user/dashboard`}
                 eventId={{
                   cta: "clicked_get_scan_second",
                   field: "entered_email_address_second",
@@ -115,7 +116,7 @@ export const View = (props: Props) => {
                 )}
               </p>
               <SignUpForm
-                signUpCallbackUrl={`${process.env.SERVER_URL}/user/dashboard`}
+                signUpCallbackUrl={`${config.serverUrl}/user/dashboard`}
                 eventId={{
                   cta: "clicked_get_scan_third",
                   field: "entered_email_address_third",
@@ -135,7 +136,7 @@ export const View = (props: Props) => {
             {props.l10n.getString("landing-all-get-started")}
           </p>
           <SignUpForm
-            signUpCallbackUrl={`${process.env.SERVER_URL}/user/dashboard`}
+            signUpCallbackUrl={`${config.serverUrl}/user/dashboard`}
             eventId={{
               cta: "clicked_get_scan_fourth",
               field: "entered_email_address_fourth",
@@ -177,7 +178,7 @@ export const View = (props: Props) => {
             {props.l10n.getString("landing-all-take-back-data")}
           </p>
           <SignUpForm
-            signUpCallbackUrl={`${process.env.SERVER_URL}/user/dashboard`}
+            signUpCallbackUrl={`${config.serverUrl}/user/dashboard`}
             eventId={{
               cta: "clicked_get_scan_last",
               field: "entered_email_address_last",

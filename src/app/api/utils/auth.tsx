@@ -370,6 +370,6 @@ export function bearerToken(req: NextRequest) {
 }
 
 export function isAdmin(email: string) {
-  const admins = (process.env.ADMINS ?? "").split(",") ?? [];
+  const admins = config.admins.split(",") ?? [];
   return admins.includes(email);
 }

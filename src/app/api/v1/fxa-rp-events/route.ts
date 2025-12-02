@@ -17,6 +17,7 @@ import { bearerToken } from "../../utils/auth";
 import { revokeOAuthTokens } from "../../../../utils/fxa";
 import { deleteAccount } from "../../../functions/server/deleteAccount";
 import { record } from "../../../functions/server/glean";
+import { config } from "../../../../config";
 
 const FXA_PROFILE_CHANGE_EVENT =
   "https://schemas.accounts.firefox.com/event/profile-change";
@@ -31,7 +32,7 @@ const FXA_DELETE_USER_EVENT =
  * @returns {Promise<Array<jwt.JwtPayload> | undefined>} keys an array of FxA JWT keys
  */
 const getJwtPubKey = async () => {
-  const jwtKeyUri = `${process.env.OAUTH_ACCOUNT_URI}/jwks`;
+  const jwtKeyUri = `${config.oauthAccountUri}/jwks`;
   try {
     const response = await fetch(jwtKeyUri, {
       headers: {

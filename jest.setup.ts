@@ -52,5 +52,5 @@ if (typeof global.TextDecoder === "undefined") {
 
 // Avoiding putting in the env file in case this gets loaded into prod
 // TODO: Centralize and streamline configuration for environments
-// mozilla-hub.atlassian.net/browse/MNTOR-5089
+// https://mozilla-hub.atlassian.net/browse/MNTOR-5089
 process.env.PUBSUB_EMULATOR_HOST = "localhost:8085";

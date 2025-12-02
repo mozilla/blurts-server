@@ -11,13 +11,14 @@ import {
   createQaTogglesRow,
   AllowedToggleColumns,
 } from "../../../../../../db/tables/qa_customs";
+import { config } from "../../../../../../config";
 
 export default async function DevPage() {
   const session = await getServerSession();
   let existingRow = null;
 
   if (
-    process.env.APP_ENV === "production" ||
+    config.appEnv === "production" ||
     !session?.user?.email ||
     !isAdmin(session.user.email) ||
     !session?.user?.subscriber?.primary_sha1

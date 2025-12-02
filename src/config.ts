@@ -27,7 +27,10 @@ export const config = {
       fallbackValue: "local",
     },
   ),
+  admins: getEnvString("ADMINS", { fallbackValue: "" }),
+  supportedLocales: getEnvString("SUPPORTED_LOCALES"),
 
+  serverUrl: getEnvString("SERVER_URL"),
   databaseUrl: getEnvString("DATABASE_URL"),
 
   oauthAuthorizationUri: getEnvString("OAUTH_AUTHORIZATION_URI"),
@@ -37,6 +40,8 @@ export const config = {
   oauthProfileUri: getEnvString("OAUTH_PROFILE_URI"),
   oauthAccountUri: getEnvString("OAUTH_ACCOUNT_URI"),
   nextAuthSecret: getEnvString("NEXTAUTH_SECRET"),
+  fxaSettingsUrl: getEnvString("FXA_SETTINGS_URL"),
+  fxaSubscriptionsUrl: getEnvString("FXA_SUBSCRIPTIONS_URL"),
 
   // If set to an empty string, emails will be logged instead of sent,
   // which is fine for local development:
@@ -50,19 +55,30 @@ export const config = {
   hibpThrottleMaxTries: getEnvInt("HIBP_THROTTLE_MAX_TRIES"),
   hibpThrottleDelay: getEnvInt("HIBP_THROTTLE_DELAY"),
   hibpApiRoot: getEnvString("HIBP_API_ROOT"),
+  hibpNotifyToken: getEnvString("HIBP_NOTIFY_TOKEN"),
   hibpKanonApiRoot: getEnvString("HIBP_KANON_API_ROOT"),
   hibpKanonApiToken: getEnvString("HIBP_KANON_API_TOKEN"),
+  hibpBreachDomainBlocklist: getEnvString("HIBP_BREACH_DOMAIN_BLOCKLIST", {
+    fallbackValue: "",
+  }),
+
+  s3Bucket: getEnvString("S3_BUCKET"),
+
+  firefoxRelayLandingUrl: getEnvString("FIREFOX_RELAY_LANDING_URL"),
+  mozillaVpnLandingUrl: getEnvString("MOZILLA_VPN_LANDING_URL"),
 
   deleteUnverifiedSubscribersTimer: getEnvInt(
     "DELETE_UNVERIFIED_SUBSCRIBERS_TIMER",
     { fallbackValue: 24 * 60 * 60 },
   ),
-  s3Bucket: getEnvString("S3_BUCKET"),
 
   monthlyActivityFreeEmailBatchSize: getEnvInt(
     "MONTHLY_ACTIVITY_FREE_EMAIL_BATCH_SIZE",
     { fallbackValue: 10 },
   ),
+
+  nimbusUuidNamespace: getEnvString("NIMBUS_UUID_NAMESPACE"),
+  nimbusSidecarUrl: getEnvString("NIMBUS_SIDECAR_URL"),
 
   // These can be left undefined locally if you're not working on code
   // that references these values; check whether these values are defined on use.

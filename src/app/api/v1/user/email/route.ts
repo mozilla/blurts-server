@@ -17,6 +17,7 @@ import {
 import { initEmail } from "../../../../../utils/email";
 import { CONST_MAX_NUM_ADDRESSES } from "../../../../../constants";
 import { validateEmailAddress } from "../../../../../utils/emailAddress";
+import { config } from "../../../../../config";
 
 interface EmailAddRequest {
   email: string;
@@ -110,6 +111,6 @@ export async function POST(req: NextRequest) {
     }
   } else {
     // Not Signed in, redirect to home
-    return NextResponse.redirect(process.env.SERVER_URL ?? "/", 301);
+    return NextResponse.redirect(config.serverUrl, 301);
   }
 }

@@ -15,6 +15,7 @@ import { getSubscriberEmails } from "../../../../../../../../../functions/server
 import { getCountryCode } from "../../../../../../../../../functions/server/getCountryCode";
 import { logger } from "../../../../../../../../../functions/server/logging";
 import { getEnabledFeatureFlags } from "../../../../../../../../../../db/tables/featureFlags";
+import { config } from "../../../../../../../../../../config";
 
 interface LeakedPasswordsProps {
   params: Promise<{
@@ -55,6 +56,7 @@ export default async function LeakedPasswords(props: LeakedPasswordsProps) {
         user: session.user,
       }}
       enabledFeatureFlags={enabledFeatureFlags}
+      blockdHibpBreachDomains={config.hibpBreachDomainBlocklist.split(",")}
     />
   );
 }

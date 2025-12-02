@@ -35,7 +35,6 @@ const TESTS_CONFIG: Knex.Config = {
 let exportConfig = config.nodeEnv === "test" ? TESTS_CONFIG : RUNTIME_CONFIG;
 
 if (config.appEnv === "cloudrun") {
-  // @ts-ignore TODO: Check if this typing error is correct, or if the types are wrong?
   connectionObj.ssl = false;
   connectionObj.host = /** @type {string} */ process.env.PG_HOST;
   exportConfig = {

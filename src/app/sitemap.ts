@@ -4,6 +4,7 @@
 
 import type { MetadataRoute } from "next";
 import { getBreaches } from "./functions/server/getBreaches";
+import { config } from "../config";
 
 // See https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#dynamic
 // This ensures that we're not generating the sitemap at build time,
@@ -11,20 +12,19 @@ import { getBreaches } from "./functions/server/getBreaches";
 export const dynamic = "force-dynamic";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const serverUrl = process.env.SERVER_URL!;
   const allBreaches = await getBreaches();
   return [
     {
-      url: serverUrl,
+      url: config.serverUrl,
     },
     {
-      url: `${serverUrl}/how-it-works`,
+      url: `${config.serverUrl}/how-it-works`,
     },
     {
-      url: `${serverUrl}/breaches`,
+      url: `${config.serverUrl}/breaches`,
     },
     ...allBreaches.map((breach) => ({
-      url: `${serverUrl}/breach-details/${breach.Name}`,
+      url: `${config.serverUrl}/breach-details/${breach.Name}`,
     })),
   ];
 }

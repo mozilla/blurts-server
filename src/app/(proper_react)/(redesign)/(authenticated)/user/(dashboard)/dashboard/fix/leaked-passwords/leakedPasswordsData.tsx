@@ -49,6 +49,7 @@ export type LeakedPasswordLayout = {
   l10n: ExtendedReactLocalization;
   nextStep: StepLink;
   emailsAffected: string[];
+  blockedHibpBreachDomains: string[];
 };
 
 function getDoneStepContent(
@@ -165,7 +166,6 @@ function getLeakedPasswords(props: LeakedPasswordLayout) {
   const { dataType, breaches, l10n, nextStep, emailsAffected } = props;
   const unresolvedBreach = findFirstUnresolvedBreach(breaches, props.dataType);
   /* c8 ignore next */
-  const blockList = (process.env.HIBP_BREACH_DOMAIN_BLOCKLIST ?? "").split(",");
 
   const getBreachInfo = (breach?: SubscriberBreach) => ({
     // Old code without tests for the case where `breach` is `undefined`
@@ -174,9 +174,9 @@ function getLeakedPasswords(props: LeakedPasswordLayout) {
     name: breach ? breach.name : "",
     breachDate: breach ? breach.breachDate : "",
     breachSite:
-      breach && !blockList.includes(breach.domain)
+      breach && !props.blockedHibpBreachDomains.includes(breach.domain)
         ? `https://${breach.domain}`
-        : "",
+        : null,
   });
 
   const {
@@ -210,16 +210,19 @@ function getLeakedPasswords(props: LeakedPasswordLayout) {
                 {l10n.getFragment("leaked-passwords-step-one", {
                   elems: {
                     // TODO: Find a way to go to the actual breach site
-                    link_to_breach_site: (
-                      <TelemetryLink
-                        href={breachSite}
-                        target="_blank"
-                        eventData={{
-                          link_id: "changed_password",
-                        }}
-                        showIcon
-                      />
-                    ),
+                    link_to_breach_site:
+                      typeof breachSite === "string" ? (
+                        <TelemetryLink
+                          href={breachSite}
+                          target="_blank"
+                          eventData={{
+                            link_id: "changed_password",
+                          }}
+                          showIcon
+                        />
+                      ) : (
+                        <span />
+                      ),
                     b: <strong />,
                   },
                   vars: {
@@ -260,21 +263,24 @@ function getLeakedPasswords(props: LeakedPasswordLayout) {
                 {l10n.getFragment("leaked-security-questions-step-one", {
                   elems: {
                     // TODO: Find a way to go to the actual breach site
-                    link_to_breach_site: (
-                      <TelemetryButton
-                        href={breachSite}
-                        variant="link"
-                        event={{
-                          module: "link",
-                          name: "click",
-                          data: {
-                            link_id: "changed_security_question",
-                            // TODO: Enable after the parameter has been added to metrics.yaml.
-                            // link_name: `changed_security_question_${breachName}`,
-                          },
-                        }}
-                      />
-                    ),
+                    link_to_breach_site:
+                      typeof breachSite === "string" ? (
+                        <TelemetryButton
+                          href={breachSite}
+                          variant="link"
+                          event={{
+                            module: "link",
+                            name: "click",
+                            data: {
+                              link_id: "changed_security_question",
+                              // TODO: Enable after the parameter has been added to metrics.yaml.
+                              // link_name: `changed_security_question_${breachName}`,
+                            },
+                          }}
+                        />
+                      ) : (
+                        <span />
+                      ),
                     b: <strong />,
                   },
                   vars: {

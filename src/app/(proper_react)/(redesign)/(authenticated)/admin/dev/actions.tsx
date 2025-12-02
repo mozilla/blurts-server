@@ -8,13 +8,14 @@ import { notFound } from "next/navigation";
 import { getSubscribersByHashes } from "../../../../../../db/tables/subscribers";
 import { isAdmin } from "../../../../../api/utils/auth";
 import { getServerSession } from "../../../../../functions/server/getServerSession";
+import { config } from "../../../../../../config";
 
 export async function lookupFxaUid(emailHash: string) {
   const session = await getServerSession();
   if (
     !session?.user?.email ||
     !isAdmin(session.user.email) ||
-    process.env.APP_ENV === "production"
+    config.appEnv === "production"
   ) {
     return notFound();
   }

@@ -5,6 +5,7 @@
 import { createLogger, transports } from "winston";
 import { LoggingWinston } from "@google-cloud/logging-winston";
 import { v4 as uuidv4 } from "uuid";
+import { config } from "../../../config";
 
 const GLEAN_EVENT_MOZLOG_TYPE = "glean-server-event";
 
@@ -26,7 +27,7 @@ export function record(
     level: "info",
     // In GCP environments, use cloud logging instead of stdout.
     // FIXME https://mozilla-hub.atlassian.net/browse/MNTOR-2401 - enable for stage and production
-    transports: ["gcpdev"].includes(process.env.APP_ENV ?? "local")
+    transports: ["gcpdev"].includes(config.appEnv)
       ? [getLoggingWinston()]
       : [new transports.Console()],
   });
@@ -73,7 +74,7 @@ export function constructPayload(event, metrics) {
       architecture: "Unknown",
       app_build: "Unknown",
       app_display_version: "0.1", // TODO get current version.
-      app_channel: process.env.APP_ENV,
+      app_channel: config.appEnv,
     },
   };
 

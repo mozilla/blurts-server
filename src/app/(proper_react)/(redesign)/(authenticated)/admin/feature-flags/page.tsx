@@ -14,6 +14,7 @@ import { isAdmin } from "../../../../../api/utils/auth";
 import { Toolbar } from "../../../../../components/client/toolbar/Toolbar";
 import styles from "./page.module.scss";
 import { ExistingFlagEditor, NewFlagEditor } from "./components/FlagEditor";
+import { config } from "../../../../../../config";
 
 export const metadata = {
   title: "Monitor Feature Flags",
@@ -21,7 +22,7 @@ export const metadata = {
 
 export default async function FeatureFlagPage() {
   const session = await getServerSession();
-  const fxaSettingsUrl = process.env.FXA_SETTINGS_URL!;
+  const fxaSettingsUrl = config.fxaSettingsUrl;
 
   if (!session?.user?.email || !session.user.subscriber?.id) {
     return redirect("/");
@@ -38,7 +39,7 @@ export default async function FeatureFlagPage() {
 
   let productionFeatureFlags: string[] = [];
   try {
-    if (process.env.APP_ENV !== "production") {
+    if (config.appEnv !== "production") {
       const productionFeatureFlagsResponse = await fetch(
         "https://monitor.mozilla.org/api/v1/admin/feature-flags",
       );
