@@ -16,7 +16,6 @@ export type ExposureCardProps = {
   exposureData: SubscriberBreach;
   locale: string;
   isPremiumUser: boolean;
-  isEligibleForPremium: boolean;
   resolutionCta: ReactNode;
   isExpanded: boolean;
   enabledFeatureFlags: FeatureFlagName[];

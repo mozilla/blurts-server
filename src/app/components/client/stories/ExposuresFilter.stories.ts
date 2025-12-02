@@ -22,6 +22,5 @@ export const ExposuresFilterDefault: Story = {
   args: {
     initialFilterValues: initialFilterState,
     filterValues: initialFilterState,
-    isEligibleForPremium: true,
   },
 };
