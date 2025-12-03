@@ -219,6 +219,29 @@ export type HibpLikeDbBreach = {
   NewBreach?: boolean;
 };
 
+function dbToHibp(breach: BreachRow): HibpLikeDbBreach {
+  return {
+    Id: breach.id,
+    Name: breach.name,
+    Title: breach.title,
+    Domain: breach.domain,
+    BreachDate: breach.breach_date,
+    AddedDate: breach.added_date,
+    ModifiedDate: breach.modified_date,
+    PwnCount: breach.pwn_count,
+    Description: breach.description,
+    LogoPath: breach.logo_path,
+    DataClasses: breach.data_classes,
+    IsVerified: breach.is_verified,
+    IsFabricated: breach.is_fabricated,
+    IsSensitive: breach.is_sensitive,
+    IsRetired: breach.is_retired,
+    IsSpamList: breach.is_spam_list,
+    IsMalware: breach.is_malware,
+    FaviconUrl: breach.favicon_url,
+  } as HibpLikeDbBreach;
+}
+
 /**
  * Fetch stored breaches using read-through Redis cache.
  * All breaches are stored in a single cache key as a list,
@@ -274,29 +297,7 @@ async function getAllBreachesFromDb(): Promise<HibpLikeDbBreach[]> {
 
   // TODO: we can do some filtering here for the most commonly used fields
   // TODO: change field names to camel case
-  return dbBreaches.map(
-    (breach) =>
-      ({
-        Id: breach.id,
-        Name: breach.name,
-        Title: breach.title,
-        Domain: breach.domain,
-        BreachDate: breach.breach_date,
-        AddedDate: breach.added_date,
-        ModifiedDate: breach.modified_date,
-        PwnCount: breach.pwn_count,
-        Description: breach.description,
-        LogoPath: breach.logo_path,
-        DataClasses: breach.data_classes,
-        IsVerified: breach.is_verified,
-        IsFabricated: breach.is_fabricated,
-        IsSensitive: breach.is_sensitive,
-        IsRetired: breach.is_retired,
-        IsSpamList: breach.is_spam_list,
-        IsMalware: breach.is_malware,
-        FaviconUrl: breach.favicon_url,
-      }) as HibpLikeDbBreach,
-  );
+  return dbBreaches.map(dbToHibp);
 }
 /* c8 ignore stop */
 
@@ -489,4 +490,5 @@ export {
   subscribeHash,
   knex as knexHibp,
   validateBreaches,
+  dbToHibp,
 };

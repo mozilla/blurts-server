@@ -24,15 +24,36 @@ type SyncOptions = {
   waiterTimeoutSec: number;
 };
 
-const DefaultSyncOptions: SyncOptions = {
+const defaultSyncOptions: SyncOptions = {
+  // How long the data is considered fresh after it's written
+  // (will not sync if it is still fresh)
   minFreshMs: 5 * 60 * 1000, // 5 min
+  // When to timeout the lock if it's not manually released
+  // (avoid deadlock on failed processes)
   lockTtlMs: 10 * 60 * 1000, // 10 min
+  // How long until the waiters give up waiting on the lock, if they
+  // aren't manually awakened
+  // This should be longer than we expect the fetch to take
   waiterTimeoutSec: 10,
 };
 
-export interface IBreachSyncService {
+type BreachSyncServiceDeps = {
+  // Redis connection
+  redis: Redis;
+  // Fetch all breaches from remote (HIBP)
+  fetchBreaches: () => Promise<HibpGetBreachesResponse>;
+  // Repository functions for updating breaches in database
+  repo: BreachRepo;
+  // Winston logger
+  logger: Logger;
+  // Additional sync options (with defaults)
+  opts?: Partial<SyncOptions>;
+};
+
+export type BreachSyncService = {
   syncBreaches: () => Promise<void>;
-}
+};
+
 /**
  * Sync coordinator for HIBP breaches.
  * Ensures that we don't spam HIBP with many concurrent
@@ -46,37 +67,33 @@ export interface IBreachSyncService {
  * Enforces a small debounce to prevent syncs if the data
  * is fresh enough (deafult 5 minutes).
  */
-export class BreachSyncService implements IBreachSyncService {
-  private lockKey = `${REDIS_ALL_BREACHES_KEY}:refresh:lock`;
-  private lastSyncKey = `${REDIS_ALL_BREACHES_KEY}:last_synced`;
-  readonly opts: SyncOptions;
+export function createBreachSyncService({
+  redis,
+  fetchBreaches,
+  repo,
+  logger,
+  opts: originalOpts = defaultSyncOptions,
+}: BreachSyncServiceDeps): BreachSyncService {
+  const lockKey = `${REDIS_ALL_BREACHES_KEY}:refresh:lock`;
+  const lastSyncKey = `${REDIS_ALL_BREACHES_KEY}:last_synced`;
 
-  constructor(
-    private readonly redis: Redis,
-    private readonly fetchBreaches: () => Promise<HibpGetBreachesResponse>,
-    private readonly repo: BreachRepo,
-    private readonly logger: Logger,
-    opts?: Partial<SyncOptions>,
-  ) {
-    const optsWithDefault = {
-      ...DefaultSyncOptions,
-      ...opts,
-    };
-    if (BREACHES_EXPIRY_SECONDS * 1000 < optsWithDefault.minFreshMs) {
-      throw new Error(
-        "Cache expiry should not be shorter than freshness expiry",
-      );
-    }
-    this.opts = optsWithDefault;
+  const opts: Readonly<SyncOptions> = {
+    ...defaultSyncOptions,
+    ...originalOpts,
+  };
+  if (BREACHES_EXPIRY_SECONDS * 1000 < opts.minFreshMs) {
+    throw new Error("Cache expiry should not be shorter than freshness expiry");
   }
 
-  private waitKey(syncId: string) {
+  /** Lock for sync processes */
+  function waitKey(syncId: string) {
     return `${REDIS_ALL_BREACHES_KEY}:refresh:wait:${syncId}`;
   }
 
-  private async isFresh(): Promise<boolean> {
-    const lastSynced = Number((await this.redis.get(this.lastSyncKey)) || 0);
-    return !!lastSynced && Date.now() - lastSynced < this.opts.minFreshMs;
+  /** Freshness check for debounce */
+  async function isFresh(): Promise<boolean> {
+    const lastSynced = Number((await redis.get(lastSyncKey)) ?? 0);
+    return !!lastSynced && Date.now() - lastSynced < opts.minFreshMs;
   }
 
   /**
@@ -90,42 +107,33 @@ export class BreachSyncService implements IBreachSyncService {
    * after which point the caller can fetch the new data and/or
    * attempt to sync again.
    */
-  async syncBreaches() {
+  async function syncBreaches() {
     // Debounce if data is still fresh
-    if (await this.isFresh()) {
-      this.logger.debug("Debouncing sync request; data is still fresh");
+    if (await isFresh()) {
+      logger.debug("Debouncing sync request; data is still fresh");
       return;
     }
     // Attempt to refresh
     const syncId = uuidv4();
-    const ok = await this.redis.set(
-      this.lockKey,
-      syncId,
-      "PX",
-      this.opts.lockTtlMs,
-      "NX",
-    );
+    const ok = await redis.set(lockKey, syncId, "PX", opts.lockTtlMs, "NX");
     // Another refresh already in progress
     if (ok !== "OK") {
-      this.logger.info("Refresh is already in progress; waiting");
-      const syncInProgress = await this.redis.get(this.lockKey);
+      logger.info("Refresh is already in progress; waiting");
+      const syncInProgress = await redis.get(lockKey);
       if (syncInProgress) {
-        await this.redis.brpop(
-          this.waitKey(syncInProgress),
-          this.opts.waiterTimeoutSec,
-        );
+        await redis.brpop(waitKey(syncInProgress), opts.waiterTimeoutSec);
       }
       return;
     }
     // Stale and unblocked, ok to refresh
     try {
-      this.logger.info("Syncing breaches with HIBP");
+      logger.info("Syncing breaches with HIBP");
       // Fetch breaches, save to DB, and update cache
-      const breaches = await this.fetchBreaches();
+      const breaches = await fetchBreaches();
       validateBreaches(breaches);
-      await this.repo.upsertBreaches(breaches);
-      const savedBreaches = await this.repo.getBreaches();
-      await this.redis.set(
+      await repo.upsertBreaches(breaches);
+      const savedBreaches = await repo.getBreaches();
+      await redis.set(
         REDIS_ALL_BREACHES_KEY,
         JSON.stringify(savedBreaches),
         "EX",
@@ -133,20 +141,21 @@ export class BreachSyncService implements IBreachSyncService {
       );
 
       // Update the time breaches were last synced for debounce checks
-      await this.redis.setex(
-        this.lastSyncKey,
+      await redis.setex(
+        lastSyncKey,
         BREACHES_EXPIRY_SECONDS,
         String(Date.now()),
       );
       // Wake up a waiting worker (other waiters retry after time out)
-      await this.redis.rpush(this.waitKey(syncId), "ok");
-      await this.redis.expire(this.waitKey(syncId), 60);
+      await redis.rpush(waitKey(syncId), "ok");
+      await redis.expire(waitKey(syncId), 60);
     } finally {
-      this.logger.info("Breaches synced; releasing lock");
-      const lockedSyncId = await this.redis.get(this.lockKey);
+      logger.info("Breaches synced; releasing lock");
+      const lockedSyncId = await redis.get(lockKey);
       if (lockedSyncId === syncId) {
-        await this.redis.del(this.lockKey);
+        await redis.del(lockKey);
       }
     }
   }
+  return { syncBreaches };
 }

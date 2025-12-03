@@ -4,7 +4,7 @@
 
 import MockRedis from "ioredis-mock";
 import { type Redis } from "ioredis";
-import { BreachSyncService } from "./BreachSyncService";
+import { createBreachSyncService } from "./BreachSyncService";
 import { HibpGetBreachesResponse } from "../utils/hibp";
 import breachData from "../test/seeds/hibpBreachResponse.json";
 import {
@@ -12,10 +12,12 @@ import {
   REDIS_ALL_BREACHES_KEY,
 } from "../db/redis/client";
 import { seeds } from "../test/db";
+import { mockLogger } from "../test/helpers/mockLogger";
 
-describe("BreachSyncService", () => {
+describe("BreachSyncService factory", () => {
   const redis = new MockRedis() as unknown as Redis;
   let fetchBreaches: jest.Mock<Promise<HibpGetBreachesResponse>, []>;
+  const logger = mockLogger();
 
   beforeEach(() => {
     fetchBreaches = jest.fn().mockResolvedValue(breachData);
@@ -24,17 +26,22 @@ describe("BreachSyncService", () => {
     await redis.flushall();
   });
   afterAll(() => jest.restoreAllMocks());
-  describe("constructor validation", () => {
+  describe("validation", () => {
     it("throws if minFreshMs is longer than cache expiry", () => {
       const repo = {
         upsertBreaches: jest.fn().mockResolvedValue(1),
         getBreaches: jest.fn().mockResolvedValue([]),
       };
-      expect(
-        () =>
-          new BreachSyncService(redis, fetchBreaches, repo, {
+      expect(() =>
+        createBreachSyncService({
+          redis,
+          fetchBreaches,
+          repo,
+          logger,
+          opts: {
             minFreshMs: (BREACHES_EXPIRY_SECONDS + 1) * 1000,
-          }),
+          },
+        }),
       ).toThrow("Cache expiry should not be shorter than freshness expiry");
     });
 
@@ -43,23 +50,9 @@ describe("BreachSyncService", () => {
         upsertBreaches: jest.fn().mockResolvedValue(1),
         getBreaches: jest.fn().mockResolvedValue([]),
       };
-      expect(
-        () => new BreachSyncService(redis, fetchBreaches, repo, {}),
+      expect(() =>
+        createBreachSyncService({ redis, fetchBreaches, repo, logger }),
       ).not.toThrow();
-    });
-    it("fills default values if missing", () => {
-      const repo = {
-        upsertBreaches: jest.fn().mockResolvedValue(1),
-        getBreaches: jest.fn().mockResolvedValue([]),
-      };
-      const service = new BreachSyncService(redis, fetchBreaches, repo, {
-        waiterTimeoutSec: 39,
-      });
-      expect(service.opts).toMatchObject({
-        waiterTimeoutSec: 39,
-        minFreshMs: 5 * 60 * 1000,
-        lockTtlMs: 10 * 60 * 1000,
-      });
     });
   });
   describe("syncBreaches", () => {
@@ -74,7 +67,12 @@ describe("BreachSyncService", () => {
         upsertBreaches: jest.fn().mockResolvedValue(1),
         getBreaches: jest.fn().mockResolvedValue([]),
       };
-      const sync = new BreachSyncService(redis, fetchBreaches, repo);
+      const sync = createBreachSyncService({
+        redis,
+        fetchBreaches,
+        repo,
+        logger,
+      });
 
       // Seed lastSyncKey to now so isFresh returns true (5min expiry by default)
       await redis.set(lastSyncKey, String(Date.now()));
@@ -89,7 +87,12 @@ describe("BreachSyncService", () => {
         upsertBreaches: jest.fn().mockResolvedValue(1),
         getBreaches: jest.fn().mockResolvedValue([mockInsertedBreach]),
       };
-      const sync = new BreachSyncService(redis, fetchBreaches, repo);
+      const sync = createBreachSyncService({
+        redis,
+        fetchBreaches,
+        repo,
+        logger,
+      });
       await sync.syncBreaches();
       // Remote fetch
       expect(fetchBreaches).toHaveBeenCalledTimes(1);
@@ -118,8 +121,14 @@ describe("BreachSyncService", () => {
         upsertBreaches: jest.fn().mockResolvedValue(1),
         getBreaches: jest.fn().mockResolvedValue([]),
       };
-      const sync = new BreachSyncService(redis, fetchBreaches, repo, {
-        waiterTimeoutSec: 1,
+      const sync = createBreachSyncService({
+        redis,
+        fetchBreaches,
+        repo,
+        logger,
+        opts: {
+          waiterTimeoutSec: 1,
+        },
       });
 
       const existingId = "existing-sync-id";
@@ -141,7 +150,12 @@ describe("BreachSyncService", () => {
         upsertBreaches: jest.fn().mockResolvedValue(1),
         getBreaches: jest.fn().mockResolvedValue([]),
       };
-      const sync = new BreachSyncService(redis, fetchBreaches, repo);
+      const sync = createBreachSyncService({
+        redis,
+        fetchBreaches,
+        repo,
+        logger,
+      });
       // Simulate concurrent calls
       await Promise.all([sync.syncBreaches(), sync.syncBreaches()]);
 
@@ -166,7 +180,12 @@ describe("BreachSyncService", () => {
         upsertBreaches: jest.fn().mockResolvedValue(1),
         getBreaches: jest.fn().mockResolvedValue([]),
       };
-      const sync = new BreachSyncService(redis, fetchBreaches, repo);
+      const sync = createBreachSyncService({
+        redis,
+        fetchBreaches,
+        repo,
+        logger,
+      });
       await expect(sync.syncBreaches()).rejects.toThrow(
         "Breach data structure is not valid",
       );
