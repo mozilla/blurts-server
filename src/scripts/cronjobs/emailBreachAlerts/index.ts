@@ -24,9 +24,9 @@ import { sentryLogger } from "../../../app/functions/server/logging";
 import { fetchHibpBreaches } from "../../../utils/hibp";
 import { sendEmail, initEmail } from "../../../utils/email";
 import * as NotificationsRepo from "../../../db/tables/email_notifications";
-import { BreachDataService } from "../../../services/BreachDataService";
+import { createBreachDataService } from "../../../services/BreachDataService";
 import { redisClient } from "../../../db/redis/client";
-import { BreachSyncService } from "../../../services/BreachSyncService";
+import { createBreachSyncService } from "../../../services/BreachSyncService";
 import {
   getAllBreaches as getBreaches,
   upsertBreaches,
@@ -50,9 +50,14 @@ async function start() {
   // Transport must be initialized before sendEmail can be called
   await initEmail();
   const redis = redisClient();
-  const syncService = new BreachSyncService(redis, fetchHibpBreaches, {
-    upsertBreaches,
-    getBreaches,
+  const sync = createBreachSyncService({
+    redis,
+    fetchBreaches: fetchHibpBreaches,
+    repo: {
+      upsertBreaches,
+      getBreaches,
+    },
+    logger: sentryLogger,
   });
   runJob({
     gcp: {
@@ -61,7 +66,12 @@ async function start() {
     },
     messageFnOpts: [
       sentryLogger,
-      new BreachDataService(redis, syncService, { getBreaches }, sentryLogger),
+      createBreachDataService({
+        redis,
+        sync,
+        getBreachesFromDb: getBreaches,
+        logger: sentryLogger,
+      }),
       { findByHashes: getBreachNotificationSubscribersByHashes },
       NotificationsRepo,
       sendEmail,
