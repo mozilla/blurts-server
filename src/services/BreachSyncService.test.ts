@@ -21,7 +21,6 @@ describe("BreachSyncService", () => {
     fetchBreaches = jest.fn().mockResolvedValue(breachData);
   });
   afterEach(async () => {
-    jest.clearAllMocks();
     await redis.flushall();
   });
   afterAll(() => jest.restoreAllMocks());
