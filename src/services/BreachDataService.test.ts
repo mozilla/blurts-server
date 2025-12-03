@@ -18,7 +18,6 @@ describe("BreachService", () => {
     await redis.flushall();
   });
   afterEach(async () => {
-    jest.clearAllMocks();
     await redis.flushall();
   });
   describe("constructor", () => {
