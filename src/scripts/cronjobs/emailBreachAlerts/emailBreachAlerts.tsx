@@ -18,7 +18,7 @@ import { renderEmail } from "../../../emails/renderEmail";
 import { BreachAlertEmail } from "../../../emails/templates/breachAlert/BreachAlertEmail";
 import { MessageSummary, SubscriptionHandler } from "./subscriptionHandler";
 import * as grpc from "@grpc/grpc-js";
-import { BreachDataService } from "../../../services/BreachDataService";
+import { type BreachDataService } from "../../../services/BreachDataService";
 import { UTM_CAMPAIGN_ID_BREACH_ALERT } from "../../../constants";
 
 type BreachNotifiableResponse = {

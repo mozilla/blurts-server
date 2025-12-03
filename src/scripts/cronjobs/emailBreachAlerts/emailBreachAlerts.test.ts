@@ -10,7 +10,7 @@ import { breachMessageHandler } from "./emailBreachAlerts";
 import { seeds } from "../../../test/db";
 import { createRandomHibpListing as mockBreach } from "../../../apiMocks/mockData";
 import { HibpLikeDbBreach } from "../../../utils/hibp";
-import { BreachDataService } from "../../../services/BreachDataService";
+import { type BreachDataService } from "../../../services/BreachDataService";
 
 const mockSubscriber = seeds.breachNotificationSubscriber;
 
@@ -34,7 +34,7 @@ describe("breachMessageHandler", () => {
   let logger: Logger;
   const breadcrumbSpy = jest.spyOn(Sentry, "addBreadcrumb").mockReturnValue();
   const setTagSpy = jest.spyOn(Sentry, "setTag").mockReturnValue();
-  const breachSpy = jest.spyOn(BreachDataService.prototype, "getBreach");
+  const breachSpy = jest.fn();
 
   beforeEach(() => {
     logger = mockLogger() as unknown as Logger;
