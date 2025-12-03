@@ -76,8 +76,12 @@ describe("breachMessageHandler", () => {
     expect(notifications.markEmailAsNotified).toHaveBeenCalledTimes(2);
   });
 
-  it("skips if breach is not notifiable", async () => {
-    const breach = mockBreach({ Name: defaultBreachName, IsVerified: false }); // not notifiable
+  it.each([
+    mockBreach({ Name: defaultBreachName, IsVerified: false }),
+    mockBreach({ Name: defaultBreachName, IsFabricated: true }),
+    mockBreach({ Name: defaultBreachName, IsSpamList: true }),
+    mockBreach({ Name: defaultBreachName, Domain: "" }),
+  ])("skips if breach is not notifiable", async (breach) => {
     breachSpy.mockResolvedValueOnce(breach);
     const subs = { findByHashes: jest.fn() };
     // Doesn't really matter here as it shouldn't reach this far
