@@ -11,6 +11,7 @@ import { v4 as uuidv4 } from "uuid";
 import { HibpGetBreachesResponse } from "../utils/hibp";
 import { validateBreaches } from "../utils/hibp";
 import { BreachRow } from "knex/types/tables";
+import { Logger } from "winston";
 
 interface BreachRepo {
   upsertBreaches(breaches: HibpGetBreachesResponse): Promise<number>;
@@ -54,6 +55,7 @@ export class BreachSyncService implements IBreachSyncService {
     private readonly redis: Redis,
     private readonly fetchBreaches: () => Promise<HibpGetBreachesResponse>,
     private readonly repo: BreachRepo,
+    private readonly logger: Logger,
     opts?: Partial<SyncOptions>,
   ) {
     const optsWithDefault = {
@@ -91,6 +93,7 @@ export class BreachSyncService implements IBreachSyncService {
   async syncBreaches() {
     // Debounce if data is still fresh
     if (await this.isFresh()) {
+      this.logger.debug("Debouncing sync request; data is still fresh");
       return;
     }
     // Attempt to refresh
@@ -104,6 +107,7 @@ export class BreachSyncService implements IBreachSyncService {
     );
     // Another refresh already in progress
     if (ok !== "OK") {
+      this.logger.info("Refresh is already in progress; waiting");
       const syncInProgress = await this.redis.get(this.lockKey);
       if (syncInProgress) {
         await this.redis.brpop(
@@ -115,6 +119,7 @@ export class BreachSyncService implements IBreachSyncService {
     }
     // Stale and unblocked, ok to refresh
     try {
+      this.logger.info("Syncing breaches with HIBP");
       // Fetch breaches, save to DB, and update cache
       const breaches = await this.fetchBreaches();
       validateBreaches(breaches);
@@ -137,6 +142,7 @@ export class BreachSyncService implements IBreachSyncService {
       await this.redis.rpush(this.waitKey(syncId), "ok");
       await this.redis.expire(this.waitKey(syncId), 60);
     } finally {
+      this.logger.info("Breaches synced; releasing lock");
       const lockedSyncId = await this.redis.get(this.lockKey);
       if (lockedSyncId === syncId) {
         await this.redis.del(this.lockKey);
