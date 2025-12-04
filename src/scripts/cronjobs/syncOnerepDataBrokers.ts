@@ -15,6 +15,7 @@ import { upsertDataBrokers } from "../../db/tables/onerep_data_brokers.js";
 import {
   redisClient,
   REDIS_ALL_DATA_BROKERS_KEY,
+  BREACHES_EXPIRY_SECONDS,
 } from "../../db/redis/client.js";
 
 const SENTRY_SLUG = "cron-sync-onerep-data-brokers";
@@ -41,8 +42,9 @@ try {
   await rClient.set(
     REDIS_ALL_DATA_BROKERS_KEY,
     JSON.stringify(insertedBrokers),
+    "EX",
+    BREACHES_EXPIRY_SECONDS, // 12 hours
   );
-  await rClient.expire(REDIS_ALL_DATA_BROKERS_KEY, 3600 * 12); // 12 hour expiration
 } catch (e) {
   Sentry.captureMessage(
     `Update Redis failed for syncOnerepDataBrokers.ts: ${e as string}`,
