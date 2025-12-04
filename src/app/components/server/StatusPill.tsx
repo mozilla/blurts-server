@@ -9,18 +9,10 @@ import { ExtendedReactLocalization } from "../../functions/l10n";
 import { FeatureFlagName } from "../../../db/tables/featureFlags";
 import { SubscriberBreach } from "../../../utils/subscriberBreaches";
 
-type StatusPillType =
-  | "actionNeeded"
-  | "requestedRemoval"
-  | "inProgress"
-  | "removed"
-  | "fixed";
+type StatusPillType = "actionNeeded" | "fixed";
 
 export const StatusPillTypeMap: Record<string, StatusPillType> = {
   ActionNeeded: "actionNeeded",
-  RequestedRemoval: "requestedRemoval",
-  InProgress: "inProgress",
-  Removed: "removed",
   Fixed: "fixed",
 };
 
@@ -71,12 +63,6 @@ type StatusLabelProps = {
 
 const getStatusLabel = (props: StatusLabelProps): string => {
   switch (props.pillType) {
-    case StatusPillTypeMap.RequestedRemoval:
-      return props.l10n.getString("status-pill-requested-removal");
-    case StatusPillTypeMap.InProgress:
-      return props.l10n.getString("status-pill-progress");
-    case StatusPillTypeMap.Removed:
-      return props.l10n.getString("status-pill-removed");
     case StatusPillTypeMap.Fixed:
       return props.l10n.getString("status-pill-fixed");
     case StatusPillTypeMap.ActionNeeded:

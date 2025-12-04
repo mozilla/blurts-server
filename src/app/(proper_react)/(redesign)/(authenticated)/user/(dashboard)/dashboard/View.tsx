@@ -76,7 +76,6 @@ export const View = (props: Props) => {
   }, [pathname, activeTab, props.userAnnouncements]);
 
   const initialFilterState: FilterState = {
-    exposureType: "show-all-exposure-type",
     dateFound: "show-all-date-found",
   };
   const [filters, setFilters] = useState<FilterState>(initialFilterState);

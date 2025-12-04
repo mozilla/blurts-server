@@ -51,14 +51,6 @@ export const LandingNonUs: Story = {
   },
 };
 
-export const LandingNonUsDisableOneRepScans: Story = {
-  name: "Non-US visitors - Disabled Scans",
-  args: {
-    countryCode: "nz",
-    enabledFeatureFlags: ["DisableOneRepScans"],
-  },
-};
-
 export const LandingNonUsDe: Story = {
   name: "German",
   args: {

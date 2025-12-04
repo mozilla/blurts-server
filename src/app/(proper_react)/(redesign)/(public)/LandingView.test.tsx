@@ -51,155 +51,153 @@ beforeEach(() => {
   deleteAllCookies();
 });
 
-describe("When Premium is not available", () => {
-  it("passes the axe accessibility test suite", async () => {
-    const ComposedDashboard = composeStory(LandingNonUs, Meta);
-    const { container } = render(<ComposedDashboard />);
-    expect(await axe(container)).toHaveNoViolations();
-  }, 10_000);
+it("passes the axe accessibility test suite", async () => {
+  const ComposedDashboard = composeStory(LandingNonUs, Meta);
+  const { container } = render(<ComposedDashboard />);
+  expect(await axe(container)).toHaveNoViolations();
+}, 10_000);
 
-  it("passes the user's email address to the identity provider", async () => {
-    const user = userEvent.setup();
+it("passes the user's email address to the identity provider", async () => {
+  const user = userEvent.setup();
 
-    const ComposedDashboard = composeStory(LandingNonUs, Meta);
-    render(<ComposedDashboard />);
+  const ComposedDashboard = composeStory(LandingNonUs, Meta);
+  render(<ComposedDashboard />);
 
-    const inputField = screen.getAllByLabelText(
-      "Enter your email address to check for data breach exposures.",
-    );
-    await user.type(inputField[0], "mail@example.com");
+  const inputField = screen.getAllByLabelText(
+    "Enter your email address to check for data breach exposures.",
+  );
+  await user.type(inputField[0], "mail@example.com");
 
-    const submitButton = screen.getAllByRole("button", {
-      name: "Get free scan",
-    });
-    await user.click(submitButton[0]);
-
-    expect(signIn).toHaveBeenCalledTimes(1);
-    expect(signIn).toHaveBeenCalledWith(
-      "fxa",
-      expect.any(Object),
-      expect.stringContaining(`email=mail%40example.com`),
-    );
+  const submitButton = screen.getAllByRole("button", {
+    name: "Get free scan",
   });
+  await user.click(submitButton[0]);
 
-  it("does not show a 'Sign In' button in the header if the user is signed in", () => {
-    const mockedUseSession = useSession as jest.Mock<
-      ReturnType<typeof useSession>,
-      Parameters<typeof useSession>
-    >;
-    mockedUseSession.mockReturnValue({
-      data: {
-        user: {
-          email: "arbitrary@example.com",
-        },
-        expires: "2023-06-18T14:48:00.000Z",
+  expect(signIn).toHaveBeenCalledTimes(1);
+  expect(signIn).toHaveBeenCalledWith(
+    "fxa",
+    expect.any(Object),
+    expect.stringContaining(`email=mail%40example.com`),
+  );
+});
+
+it("does not show a 'Sign In' button in the header if the user is signed in", () => {
+  const mockedUseSession = useSession as jest.Mock<
+    ReturnType<typeof useSession>,
+    Parameters<typeof useSession>
+  >;
+  mockedUseSession.mockReturnValue({
+    data: {
+      user: {
+        email: "arbitrary@example.com",
       },
-      status: "authenticated",
-      update: () => Promise.resolve(null),
-    });
-
-    const ComposedDashboard = composeStory(LandingNonUs, Meta);
-    render(<ComposedDashboard />);
-
-    const signInButton = screen.queryByRole("button", {
-      name: "Sign In",
-    });
-
-    expect(signInButton).not.toBeInTheDocument();
+      expires: "2023-06-18T14:48:00.000Z",
+    },
+    status: "authenticated",
+    update: () => Promise.resolve(null),
   });
 
-  it("shows a 'Sign In' button in the header if the user is not signed in", async () => {
-    const ComposedDashboard = composeStory(LandingNonUs, Meta);
-    render(<ComposedDashboard />);
+  const ComposedDashboard = composeStory(LandingNonUs, Meta);
+  render(<ComposedDashboard />);
 
-    const user = userEvent.setup();
-
-    const signInButton = screen.getByRole("button", {
-      name: "Sign In",
-    });
-    await user.click(signInButton);
-
-    expect(signInButton).toBeInTheDocument();
-    expect(signIn).toHaveBeenCalledTimes(1);
+  const signInButton = screen.queryByRole("button", {
+    name: "Sign In",
   });
 
-  it("counts the number of clicks on the sign-in button at the top", async () => {
-    const mockedRecord = useTelemetry();
-    const ComposedDashboard = composeStory(LandingNonUs, Meta);
-    render(<ComposedDashboard />);
+  expect(signInButton).not.toBeInTheDocument();
+});
 
-    const user = userEvent.setup();
+it("shows a 'Sign In' button in the header if the user is not signed in", async () => {
+  const ComposedDashboard = composeStory(LandingNonUs, Meta);
+  render(<ComposedDashboard />);
 
-    const signInButton = screen.getByRole("button", {
-      name: "Sign In",
-    });
-    await user.click(signInButton);
+  const user = userEvent.setup();
 
-    expect(mockedRecord).toHaveBeenCalledWith(
-      "ctaButton",
-      "click",
-      expect.objectContaining({
-        button_id: "sign_in",
-      }),
-    );
+  const signInButton = screen.getByRole("button", {
+    name: "Sign In",
   });
+  await user.click(signInButton);
 
-  it("shows the data breaches quote", () => {
-    const ComposedDashboard = composeStory(LandingNonUs, Meta);
-    render(<ComposedDashboard />);
-    const quote = screen.getByText(
-      "Data breaches happen every 11 minutes, exposing your private information — but don’t worry, we can help.",
-    );
-    expect(quote).toBeInTheDocument();
+  expect(signInButton).toBeInTheDocument();
+  expect(signIn).toHaveBeenCalledTimes(1);
+});
+
+it("counts the number of clicks on the sign-in button at the top", async () => {
+  const mockedRecord = useTelemetry();
+  const ComposedDashboard = composeStory(LandingNonUs, Meta);
+  render(<ComposedDashboard />);
+
+  const user = userEvent.setup();
+
+  const signInButton = screen.getByRole("button", {
+    name: "Sign In",
   });
+  await user.click(signInButton);
 
-  it("shows the scanning for exposures illustration in the fix your exposures section", () => {
-    const ComposedDashboard = composeStory(LandingNonUs, Meta);
-    render(<ComposedDashboard />);
+  expect(mockedRecord).toHaveBeenCalledWith(
+    "ctaButton",
+    "click",
+    expect.objectContaining({
+      button_id: "sign_in",
+    }),
+  );
+});
 
-    const scanningForExposuresIllustration = screen.getByTestId(
-      "scanning-for-exposures-image",
-    );
-    expect(scanningForExposuresIllustration).toBeInTheDocument();
+it("shows the data breaches quote", () => {
+  const ComposedDashboard = composeStory(LandingNonUs, Meta);
+  render(<ComposedDashboard />);
+  const quote = screen.getByText(
+    "Data breaches happen every 11 minutes, exposing your private information — but don’t worry, we can help.",
+  );
+  expect(quote).toBeInTheDocument();
+});
+
+it("shows the scanning for exposures illustration in the fix your exposures section", () => {
+  const ComposedDashboard = composeStory(LandingNonUs, Meta);
+  render(<ComposedDashboard />);
+
+  const scanningForExposuresIllustration = screen.getByTestId(
+    "scanning-for-exposures-image",
+  );
+  expect(scanningForExposuresIllustration).toBeInTheDocument();
+});
+
+it("can initiate sign in from the Here's How We Help section", async () => {
+  const ComposedDashboard = composeStory(LandingNonUs, Meta);
+  render(<ComposedDashboard />);
+
+  const user = userEvent.setup();
+
+  const signInButton = screen.getByRole("button", {
+    name: "Sign up for breach alerts",
   });
+  await user.click(signInButton);
 
-  it("can initiate sign in from the Here's How We Help section", async () => {
-    const ComposedDashboard = composeStory(LandingNonUs, Meta);
-    render(<ComposedDashboard />);
+  expect(signIn).toHaveBeenCalledTimes(1);
+});
 
-    const user = userEvent.setup();
+it("shows the german scanning for exposures illustration", () => {
+  const ComposedDashboard = composeStory(LandingNonUsDe, Meta);
+  render(<ComposedDashboard />);
+  const scanningForExposuresIllustration = screen.getByTestId(
+    "scanning-for-exposures-image",
+  );
+  expect(scanningForExposuresIllustration).toHaveAttribute(
+    "data-country-code",
+    "de",
+  );
+});
 
-    const signInButton = screen.getByRole("button", {
-      name: "Sign up for breach alerts",
-    });
-    await user.click(signInButton);
-
-    expect(signIn).toHaveBeenCalledTimes(1);
-  });
-
-  it("shows the german scanning for exposures illustration", () => {
-    const ComposedDashboard = composeStory(LandingNonUsDe, Meta);
-    render(<ComposedDashboard />);
-    const scanningForExposuresIllustration = screen.getByTestId(
-      "scanning-for-exposures-image",
-    );
-    expect(scanningForExposuresIllustration).toHaveAttribute(
-      "data-country-code",
-      "de",
-    );
-  });
-
-  it("shows the french scanning for exposures illustration", () => {
-    const ComposedDashboard = composeStory(LandingNonUsFr, Meta);
-    render(<ComposedDashboard />);
-    const scanningForExposuresIllustration = screen.getByTestId(
-      "scanning-for-exposures-image",
-    );
-    expect(scanningForExposuresIllustration).toHaveAttribute(
-      "data-country-code",
-      "fr",
-    );
-  });
+it("shows the french scanning for exposures illustration", () => {
+  const ComposedDashboard = composeStory(LandingNonUsFr, Meta);
+  render(<ComposedDashboard />);
+  const scanningForExposuresIllustration = screen.getByTestId(
+    "scanning-for-exposures-image",
+  );
+  expect(scanningForExposuresIllustration).toHaveAttribute(
+    "data-country-code",
+    "fr",
+  );
 });
 
 it("does not show a confirmaton message if the user has just deleted their account", () => {
@@ -264,4 +262,60 @@ it("hides the 'account deletion' confirmation message when the user dismisses it
   await user.click(dismissButton);
 
   expect(alert).not.toBeInTheDocument();
+});
+
+it("opens and closes an FAQ accordion item", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(LandingNonUs, Meta);
+  render(<ComposedDashboard />);
+  const faqQuestion = screen.getByRole("button", {
+    name: new RegExp("What exactly is a data breach?"),
+  });
+  await user.click(faqQuestion);
+  const faqAnswer = screen.getByText(
+    "A data breach happens when personal or private information gets exposed, stolen or copied without permission.",
+    { exact: false },
+  );
+  expect(faqAnswer).toHaveAttribute("aria-hidden", "false");
+  await user.click(faqQuestion);
+  expect(faqAnswer).toHaveAttribute("aria-hidden", "true");
+});
+
+it("only opens one FAQ at a time", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(LandingNonUs, Meta);
+  render(<ComposedDashboard />);
+  const faqQuestion1 = screen.getByRole("button", {
+    // Partial match to avoid the CloseIcon svg
+    name: new RegExp("What exactly is a data breach?"),
+  });
+  await user.click(faqQuestion1);
+  const faqAnswer1 = screen.getByText(
+    "A data breach happens when personal or private information gets exposed, stolen or copied without permission.",
+    { exact: false },
+  );
+  expect(faqAnswer1).toHaveAttribute("aria-hidden", "false");
+  const faqQuestion2 = screen.getByRole("button", {
+    // Partial match to avoid the CloseIcon svg
+    name: new RegExp(
+      "I just found out I’m in a data breach. What do I do next?",
+    ),
+  });
+  await user.click(faqQuestion2);
+  expect(faqAnswer1).toHaveAttribute("aria-hidden", "true");
+});
+
+it("opens the see all FAQ link into a new page", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(LandingNonUs, Meta);
+  render(<ComposedDashboard />);
+
+  const seeAllFaqBtn = screen.getByRole("link", { name: "See all FAQs" });
+  await user.click(seeAllFaqBtn);
+  expect(seeAllFaqBtn).toHaveAttribute("target", "_blank");
+
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
 });

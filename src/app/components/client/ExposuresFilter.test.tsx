@@ -10,6 +10,7 @@ import { axe } from "jest-axe";
 import Meta, {
   ExposuresFilterDefault,
 } from "./stories/ExposuresFilter.stories";
+import { useTelemetry as useTelemetryImported } from "../../hooks/useTelemetry";
 
 jest.mock("next/navigation", () => ({
   useRouter: jest.fn(),
@@ -17,6 +18,14 @@ jest.mock("next/navigation", () => ({
 }));
 
 jest.mock("../../hooks/useTelemetry");
+// We need to override the types of `useTelemetry` here, because otherwise
+// Jest infers incorrect types in `toHaveBeenCalledWith`, and throws an error.
+// See https://github.com/jestjs/jest/issues/15703
+const useTelemetry = useTelemetryImported as () => (
+  module: string,
+  eventName: string,
+  data: Record<string, string>,
+) => void;
 
 it("passes the axe accessibility test suite", async () => {
   const ExposuresFilter = composeStory(ExposuresFilterDefault, Meta);
@@ -25,6 +34,7 @@ it("passes the axe accessibility test suite", async () => {
 }, 10_000);
 
 it("shows and hides the status explainer", async () => {
+  const mockedRecord = useTelemetry();
   const user = userEvent.setup();
   const ExposuresFilter = composeStory(ExposuresFilterDefault, Meta);
   render(<ExposuresFilter enabledFeatureFlags={[]} />);
@@ -34,6 +44,13 @@ it("shows and hides the status explainer", async () => {
     name: "Open modal",
   });
   await user.click(explainerTrigger);
+  expect(mockedRecord).toHaveBeenCalledWith(
+    "popup",
+    "view",
+    expect.objectContaining({
+      popup_id: "exposure_status_info",
+    }),
+  );
 
   const explainerDialog = screen.getByRole("dialog");
   expect(explainerDialog).toBeInTheDocument();

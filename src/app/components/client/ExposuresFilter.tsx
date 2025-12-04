@@ -33,17 +33,12 @@ import { useTelemetry } from "../../hooks/useTelemetry";
 import { Button } from "../client/Button";
 import NoteIcon from "./assets/note.svg";
 import CalendarIcon from "./assets/calendar.svg";
-import {
-  ExposuresFilterStatusExplainer,
-  ExposuresFilterRemovalTimeExplainer,
-  ExposuresFilterTypeExplainer,
-} from "./ExposuresFilterExplainer";
+import { ExposuresFilterStatusExplainer } from "./ExposuresFilterExplainer";
 import { Popover } from "./Popover";
 import { VisuallyHidden } from "../server/VisuallyHidden";
 import { FeatureFlagName } from "../../../db/tables/featureFlags";
 
 export type FilterState = {
-  exposureType: "show-all-exposure-type" | "data-broker" | "data-breach";
   dateFound: "show-all-date-found" | "seven-days" | "thirty-days" | "last-year";
 };
 
@@ -63,31 +58,6 @@ export const ExposuresFilter = ({
   const l10n = useL10n();
   const recordTelemetry = useTelemetry();
 
-  // Type filter explainer dialog
-  const exposureTypeExplainerDialogState = useOverlayTriggerState({
-    onOpenChange: (isOpen) => {
-      recordTelemetry("popup", isOpen ? "view" : "exit", {
-        popup_id: "exposure_type_info",
-      });
-    },
-  });
-  const exposureTypeExplainerDialogTrigger = useOverlayTrigger(
-    { type: "dialog" },
-    exposureTypeExplainerDialogState,
-  );
-
-  // Removal time explainer dialog
-  const exposureRemovalTimeExplainerDialogState = useOverlayTriggerState({
-    onOpenChange: (isOpen) => {
-      recordTelemetry("popup", isOpen ? "view" : "exit", {
-        popup_id: "exposure_removal_time_info",
-      });
-    },
-  });
-  const exposureRemovalTimeExplainerDialogTrigger = useOverlayTrigger(
-    { type: "dialog" },
-    exposureRemovalTimeExplainerDialogState,
-  );
   // Status filter explainer dialog
   const exposureStatusExplainerDialogState = useOverlayTriggerState({
     onOpenChange: (isOpen) => {
@@ -256,19 +226,6 @@ export const ExposuresFilter = ({
         </ul>
         <div className={styles.rightSpace}></div>
       </div>
-      {exposureTypeExplainerDialogState.isOpen && (
-        <ExposuresFilterTypeExplainer
-          explainerDialogProps={exposureTypeExplainerDialogTrigger}
-          explainerDialogState={exposureTypeExplainerDialogState}
-          enabledFeatureFlags={enabledFeatureFlags}
-        />
-      )}
-      {exposureRemovalTimeExplainerDialogState.isOpen && (
-        <ExposuresFilterRemovalTimeExplainer
-          explainerDialogProps={exposureRemovalTimeExplainerDialogTrigger}
-          explainerDialogState={exposureRemovalTimeExplainerDialogState}
-        />
-      )}
       {exposureStatusExplainerDialogState.isOpen && (
         <ExposuresFilterStatusExplainer
           explainerDialogProps={exposureStatusExplainerDialogTrigger}
