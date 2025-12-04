@@ -38,7 +38,6 @@ it("doesn't filter out anything by default", () => {
   expect(
     filterExposures(exposures, {
       dateFound: "show-all-date-found",
-      exposureType: "show-all-exposure-type",
     }),
   ).toStrictEqual(exposures);
 });
@@ -54,7 +53,6 @@ it("can filter out exposures older than a year", () => {
   expect(
     filterExposures(exposures, {
       dateFound: "last-year",
-      exposureType: "show-all-exposure-type",
     }),
   ).toStrictEqual([breachThisWeek, breachThisMonth, breachThisYear]);
 });
@@ -70,7 +68,6 @@ it("can filter out exposures older than a month", () => {
   expect(
     filterExposures(exposures, {
       dateFound: "thirty-days",
-      exposureType: "show-all-exposure-type",
     }),
   ).toStrictEqual([breachThisWeek, breachThisMonth]);
 });
@@ -86,7 +83,6 @@ it("can filter out exposures older than a week", () => {
   expect(
     filterExposures(exposures, {
       dateFound: "seven-days",
-      exposureType: "show-all-exposure-type",
     }),
   ).toStrictEqual([breachThisWeek]);
 });
@@ -102,7 +98,6 @@ it("filters out anything that doesn't match *all* filters", () => {
   expect(
     filterExposures(exposures, {
       dateFound: "last-year",
-      exposureType: "data-breach",
     }),
   ).toStrictEqual([breachThisWeek, breachThisMonth, breachThisYear]);
 });

@@ -39,7 +39,6 @@ export const View = (props: Props) => {
           <div className={styles.heroContent}>
             <h1>{props.l10n.getString("landing-all-hero-title")}</h1>
             <p>{props.l10n.getString("landing-all-hero-lead")}</p>
-
             <SignUpForm
               isHero
               signUpCallbackUrl={`${process.env.SERVER_URL}/user/dashboard`}

@@ -188,7 +188,5 @@ function calculateActiveProgressBarPosition(section: Props["currentSection"]) {
     return styles.beginLeakedPasswords;
   } else if (section === "security-recommendations") {
     return styles.beginSecurityRecommendations;
-  } else {
-    return "";
   }
 }

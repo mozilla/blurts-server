@@ -36,9 +36,14 @@ export const SignUpForm = (props: Props) => {
   const refViewTelemetry = useViewTelemetry("ctaButton", {
     button_id: props.eventId.cta,
   });
+
   const onSubmit: FormEventHandler = (event) => {
     event.preventDefault();
-    void signIn("fxa", { callbackUrl: props.signUpCallbackUrl });
+    void signIn(
+      "fxa",
+      { callbackUrl: props.signUpCallbackUrl },
+      `email=${encodeURIComponent(emailInput)}`,
+    );
   };
 
   const label =
