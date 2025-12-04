@@ -7,7 +7,6 @@
 import { useState } from "react";
 import Image from "next/image";
 import { SubscriberRow } from "knex/types/tables";
-import { SettingsDetailsSavedNotification } from "./SettingsDetailsSavedNotification";
 import { CONST_MAX_NUM_ADDRESSES } from "../../../../../../../../constants";
 import { SubscriberEmailPreferencesOutput } from "../../../../../../../../db/tables/subscriber_email_preferences";
 import { useL10n } from "../../../../../../../hooks/l10n";
@@ -149,7 +148,6 @@ function SettingsPanelEditInfo(props: SettingsPanelEditInfoProps) {
   const l10n = useL10n();
   return (
     <>
-      <SettingsDetailsSavedNotification />
       <div className={styles.header}>
         <div>
           <h3>{l10n.getString("settings-tab-label-update-scan-info")}</h3>
