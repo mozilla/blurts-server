@@ -24,8 +24,6 @@ export function getReferrerUrl({
   switch (referrerParam) {
     case "dashboard":
       return "/user/dashboard";
-    case "fix":
-      return "/user/dashboard/fix/data-broker-profiles/start-free-scan";
     default:
       return null;
   }

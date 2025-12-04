@@ -210,7 +210,6 @@ describe("Settings page redesign", () => {
         <ComposedStory
           enabledFeatureFlags={[
             "SidebarNavigationRedesign",
-            "EditScanProfileDetails",
             "IncreasedFreeMaxBreachEmails",
           ]}
         />,

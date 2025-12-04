@@ -7,7 +7,6 @@
 import { ReactNode } from "react";
 import Image from "next/image";
 import styles from "./FixNavigation.module.scss";
-import stepDataBrokerProfilesIcon from "../../(proper_react)/(redesign)/(authenticated)/user/(dashboard)/dashboard/fix/images/step-counter-data-broker-profiles.svg";
 import stepHighRiskDataBreachesIcon from "../../(proper_react)/(redesign)/(authenticated)/user/(dashboard)/dashboard/fix/images/step-counter-high-risk.svg";
 import stepLeakedPasswordsIcon from "../../(proper_react)/(redesign)/(authenticated)/user/(dashboard)/dashboard/fix/images/step-counter-leaked-passwords.svg";
 import stepSecurityRecommendationsIcon from "../../(proper_react)/(redesign)/(authenticated)/user/(dashboard)/dashboard/fix/images/step-counter-security-recommendations.svg";
@@ -173,13 +172,11 @@ const StepImage = (props: {
   }
 
   const src =
-    props.section === "Scan"
-      ? stepDataBrokerProfilesIcon
-      : props.section === "HighRisk"
-        ? stepHighRiskDataBreachesIcon
-        : props.section === "LeakedPasswords"
-          ? stepLeakedPasswordsIcon
-          : stepSecurityRecommendationsIcon;
+    props.section === "HighRisk"
+      ? stepHighRiskDataBreachesIcon
+      : props.section === "LeakedPasswords"
+        ? stepLeakedPasswordsIcon
+        : stepSecurityRecommendationsIcon;
 
   return <Image src={src} alt="" width={22} height={22} />;
 };

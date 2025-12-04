@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { it, expect } from "@jest/globals";
-import { getAllByRole, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { composeStory } from "@storybook/react";
 import { axe } from "jest-axe";
 import { setupJestCanvasMock } from "jest-canvas-mock";
@@ -57,52 +57,6 @@ it("passes the axe accessibility test suite for the high-risk celebration view",
   const { container } = render(<ComposedComponent />);
   expect(await axe(container)).toHaveNoViolations();
 }, 10_000);
-
-it("marks the Broker step as complete if a scan has been done without results", () => {
-  const ComposedComponent = composeStory(CreditCardStory, Meta);
-
-  render(<ComposedComponent scanStatus="empty" />);
-
-  const stepIndicator = screen.getByRole("navigation", {
-    name: "Guided steps",
-  });
-  // Unfortunately, it looks like testing-library doesn't correctly calculate
-  // the accessible name for `listitem`, so we can't select that using its name
-  // `Data broker profiles (0)` — hence the query selector:
-  const firstStep = stepIndicator.querySelector(
-    "li.navigationItem:first-child",
-  );
-  expect(firstStep?.classList.contains("isCompleted")).toBe(true);
-});
-
-it("does not mark the Broker step as complete if no scan has been done yet", () => {
-  const ComposedComponent = composeStory(CreditCardStory, Meta);
-
-  render(<ComposedComponent scanStatus="not_started" />);
-
-  const stepIndicator = screen.getByRole("navigation", {
-    name: "Guided steps",
-  });
-  // Unfortunately, it looks like testing-library doesn't correctly calculate
-  // the accessible name for `listitem`, so we can't select that using its name
-  // `Data broker profiles (0)` — hence the query selector:
-  const firstStep = stepIndicator.querySelector(
-    "li.navigationItem:first-child",
-  );
-  expect(firstStep?.classList.contains("isCompleted")).toBe(false);
-});
-
-it("does not show the Broker step if the user is in a country where the data broker scan is not available", () => {
-  const ComposedComponent = composeStory(CreditCardStory, Meta);
-
-  render(<ComposedComponent scanStatus="unavailable" />);
-
-  const stepIndicator = screen.getByRole("navigation", {
-    name: "Guided steps",
-  });
-  const steps = getAllByRole(stepIndicator, "listitem");
-  expect(steps).toHaveLength(3);
-});
 
 it("shows the high-risk celebration view, next step is passwords", () => {
   const ComposedComponent = composeStory(HighRiskBreachDoneStory, Meta);

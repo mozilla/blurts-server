@@ -28,7 +28,6 @@ const mockedSession = {
 
 const HighRiskBreachWrapper = (props: {
   type: HighRiskBreachTypes;
-  scanStatus?: "empty" | "not_started" | "unavailable";
   nextUnresolvedBreachType?: keyof typeof BreachDataTypes | "None";
 }) => {
   const hasNextUnresolvedBreach = props.nextUnresolvedBreachType !== null;
@@ -70,24 +69,11 @@ const HighRiskBreachWrapper = (props: {
     );
   }
 
-  const data: StepDeterminationData =
-    props.scanStatus === "empty"
-      ? {
-          countryCode: "us",
-          subscriberBreaches: mockedBreaches,
-          user: mockedSession.user,
-        }
-      : props.scanStatus === "not_started"
-        ? {
-            countryCode: "us",
-            subscriberBreaches: mockedBreaches,
-            user: mockedSession.user,
-          }
-        : {
-            countryCode: "nl",
-            subscriberBreaches: mockedBreaches,
-            user: mockedSession.user,
-          };
+  const data: StepDeterminationData = {
+    countryCode: "nl",
+    subscriberBreaches: mockedBreaches,
+    user: mockedSession.user,
+  };
 
   const mockedAnnouncements: UserAnnouncementWithDetails[] = [
     createRandomAnnouncement(),

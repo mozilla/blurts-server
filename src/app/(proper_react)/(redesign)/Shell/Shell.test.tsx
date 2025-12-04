@@ -26,12 +26,7 @@ describe("ShellAuthenticatedRedesign", () => {
   it("shows the “Update scan info” navbar item when the flag `EditScanProfileDetails` is enabled", async () => {
     const ShellComponent = composeStory(ShellAuthenticatedRedesign, Meta);
     render(
-      <ShellComponent
-        enabledFeatureFlags={[
-          "SidebarNavigationRedesign",
-          "EditScanProfileDetails",
-        ]}
-      />,
+      <ShellComponent enabledFeatureFlags={["SidebarNavigationRedesign"]} />,
     );
 
     // Note: there are two user menus, for both small and wide screens:

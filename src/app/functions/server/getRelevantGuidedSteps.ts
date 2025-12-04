@@ -173,7 +173,6 @@ export function isEligibleForStep(
 export function hasCompletedStepSection(
   data: StepDeterminationData,
   section:
-    | "Scan"
     | "DataBrokerManualRemoval"
     | "HighRisk"
     | "LeakedPasswords"
