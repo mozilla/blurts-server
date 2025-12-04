@@ -15,7 +15,7 @@ import {
 } from "./settingsMockData";
 
 const meta: Meta<typeof SettingsWrapper> = {
-  title: "Pages/Logged in/Settings/Edit info/Non US User",
+  title: "Pages/Logged in/Settings/Edit info",
   component: SettingsWrapper,
   argTypes: {
     activeTab: {
