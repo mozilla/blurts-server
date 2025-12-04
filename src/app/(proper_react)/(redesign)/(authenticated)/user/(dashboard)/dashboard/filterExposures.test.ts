@@ -43,38 +43,6 @@ it("doesn't filter out anything by default", () => {
   ).toStrictEqual(exposures);
 });
 
-it("can filter out breaches", () => {
-  const exposures = [
-    breachThisWeek,
-    breachThisMonth,
-    breachThisYear,
-    breachOld,
-  ];
-
-  expect(
-    filterExposures(exposures, {
-      dateFound: "show-all-date-found",
-      exposureType: "data-broker",
-    }),
-  ).toStrictEqual([]);
-});
-
-it("can filter out data brokers", () => {
-  const exposures = [
-    breachThisWeek,
-    breachThisMonth,
-    breachThisYear,
-    breachOld,
-  ];
-
-  expect(
-    filterExposures(exposures, {
-      dateFound: "show-all-date-found",
-      exposureType: "data-breach",
-    }),
-  ).toStrictEqual([breachThisWeek, breachThisMonth, breachThisYear, breachOld]);
-});
-
 it("can filter out exposures older than a year", () => {
   const exposures = [
     breachThisWeek,

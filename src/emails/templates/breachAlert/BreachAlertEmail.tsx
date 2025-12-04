@@ -8,7 +8,6 @@ import { RedesignedEmailFooter } from "../../components/EmailFooter";
 import { HibpLikeDbBreach } from "../../../utils/hibp";
 import { EmailHero } from "../../components/EmailHero";
 import { getLocale } from "../../../app/functions/universal/getLocale";
-import { DashboardSummary } from "../../../app/functions/server/dashboard";
 import { ResolutionRelevantBreachDataTypes } from "../../../app/functions/universal/breach";
 import { HeaderStyles, MetaTags } from "../../components/HeaderStyles";
 
@@ -21,14 +20,6 @@ export type BreachAlertEmailProps = {
     SubscriberRow,
     "fxa_profile_json" | "onerep_profile_id" | "fxa_profile_json"
   >;
-  /**
-   * We need to run a bunch of queries to collect this data,
-   * so it's optional; however, make sure to pass it in for
-   * free users who are eligible for Plus (i.e. in the US),
-   * who have run a scan — those are the ones we show a
-   * <DataPointCount> for at the moment.
-   */
-  dataSummary?: DashboardSummary;
 };
 
 // These components are fully covered by the BreachAlertEmail test,

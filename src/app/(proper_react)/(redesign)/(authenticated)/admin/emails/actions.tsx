@@ -18,15 +18,12 @@ import { getSubscriberByFxaUid } from "../../../../../../db/tables/subscribers";
 import { ReactNode } from "react";
 import { SubscriberRow } from "knex/types/tables";
 import { getUserEmails } from "../../../../../../db/tables/emailAddresses";
-import { getDashboardSummary } from "../../../../../functions/server/dashboard";
-import { getSubscriberBreaches } from "../../../../../functions/server/getSubscriberBreaches";
 import { createRandomHibpListing } from "../../../../../../apiMocks/mockData";
 import { BreachAlertEmail } from "../../../../../../emails/templates/breachAlert/BreachAlertEmail";
 import { SignupReportEmail } from "../../../../../../emails/templates/signupReport/SignupReportEmail";
 import { getBreachesForEmail } from "../../../../../../utils/hibp";
 import { getSha1 } from "../../../../../../utils/fxa";
 import { getBreaches } from "../../../../../functions/server/getBreaches";
-import { getSignupLocaleCountry } from "../../../../../../emails/functions/getSignupLocaleCountry";
 import { UTM_CAMPAIGN_ID_BREACH_ALERT } from "../../../../../../constants";
 
 async function getAdminSubscriber(): Promise<SubscriberRow | null> {
@@ -130,13 +127,6 @@ export async function triggerBreachAlert(emailAddress: string) {
   const acceptLangHeader = await getAcceptLangHeaderInServerComponents();
   const l10n = getL10n(acceptLangHeader);
 
-  const assumedCountryCode = getSignupLocaleCountry(subscriber);
-
-  const allSubscriberBreaches = await getSubscriberBreaches({
-    fxaUid: subscriber.fxa_uid,
-    countryCode: assumedCountryCode,
-  });
-
   await send(
     emailAddress,
     l10n.getString("email-breach-alert-all-subject"),
@@ -146,7 +136,6 @@ export async function triggerBreachAlert(emailAddress: string) {
       breach={createRandomHibpListing()}
       utmCampaignId={UTM_CAMPAIGN_ID_BREACH_ALERT}
       l10n={l10n}
-      dataSummary={getDashboardSummary(allSubscriberBreaches)}
     />,
   );
 }

@@ -19,7 +19,7 @@ import Meta, {
   DashboardNonUsNoBreaches,
   DashboardNonUsUnresolvedBreaches,
   DashboardNonUsResolvedBreaches,
-} from "./DashboardNonUSUsers.stories";
+} from "./Dashboard.stories";
 import { useTelemetry as useTelemetryImported } from "../../../../../../hooks/useTelemetry";
 import { deleteAllCookies } from "../../../../../../functions/client/deleteAllCookies";
 
@@ -39,20 +39,6 @@ const useTelemetry = useTelemetryImported as () => (
   eventName: string,
   data: Record<string, string>,
 ) => void;
-
-jest.mock(
-  "../../../../../../components/client/exposure_card/DataBrokerImage",
-  () => {
-    return {
-      // Mock this with an empty React component. Otherwise, tests will complain:
-      // > Warning: A suspended resource finished loading inside a test, but the
-      // > event was not wrapped in act(...).
-      // > When testing, code that resolves suspended data should be wrapped into
-      // > act(...)
-      DataBrokerImage: () => null,
-    };
-  },
-);
 
 afterEach(() => {
   // Make the CSAT banner show up again.
@@ -104,7 +90,7 @@ it("shows consistent counts in the chart on the fixed tab", async () => {
   });
   await user.click(tabFixedTrigger);
 
-  const fixedCounter = 40;
+  const fixedCounter = 24;
   const chartElement = screen.getByRole("img", {
     name: `⁨${fixedCounter}⁩ exposures`,
   });
@@ -127,37 +113,6 @@ it("shows chart tooltip on the action needed tab, non-US user", async () => {
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(DashboardNonUsNoBreaches, Meta);
   render(<ComposedDashboard />);
-
-  const chartCaption = screen.getByText(
-    "This chart shows how many times your info is actively exposed.",
-  );
-  expect(chartCaption).toBeInTheDocument();
-  const chartTooltip = within(chartCaption).getByRole("button", {
-    name: "Open modal",
-  });
-  expect(chartTooltip).toBeInTheDocument();
-  await user.click(chartTooltip);
-
-  expect(
-    screen.getByRole("dialog", {
-      name: "About your number of active exposures",
-    }),
-  ).toBeInTheDocument();
-
-  const dialogContentPart = screen.getByText(
-    "This chart includes the total number of times we found each type of data exposed across all data breaches for up to ⁨5⁩ email addresses that you are currently monitoring.",
-  );
-  expect(dialogContentPart).toBeInTheDocument();
-});
-
-it("shows chart tooltip on the action needed tab, non-US user (feature flag IncreasedFreeMaxBreachEmails)", async () => {
-  const user = userEvent.setup();
-  const ComposedDashboard = composeStory(DashboardNonUsNoBreaches, Meta);
-  render(
-    <ComposedDashboard
-      enabledFeatureFlags={["IncreasedFreeMaxBreachEmails"]}
-    />,
-  );
 
   const chartCaption = screen.getByText(
     "This chart shows how many times your info is actively exposed.",

@@ -38,30 +38,10 @@ export const SettingsEditManageAccount: Story = {
   },
 };
 
-export const SettingsEditManageAccountPlus: Story = {
-  name: "Manage account (Plus)",
-  args: {
-    hasPlus: true,
-    countryCode: "us",
-    activeTab: "manage-account",
-    enabledFeatureFlags: ["SidebarNavigationRedesign", "CancellationFlow"],
-  },
-};
-
 export const SettingsEditNotifications: Story = {
   name: "Notifications",
   args: {
     countryCode: "us",
-    activeTab: "notifications",
-    enabledFeatureFlags: ["SidebarNavigationRedesign"],
-  },
-};
-
-export const SettingsEditNotificationsPlus: Story = {
-  name: "Notifications (Plus)",
-  args: {
-    countryCode: "us",
-    hasPlus: true,
     activeTab: "notifications",
     enabledFeatureFlags: ["SidebarNavigationRedesign"],
   },

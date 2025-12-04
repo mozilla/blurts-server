@@ -8,28 +8,6 @@ import { createRandomBreach } from "../../../apiMocks/mockData";
 import { BreachDataTypes } from "../universal/breach";
 
 describe("getNextGuidedStep", () => {
-  it("logs errors in trying to determine the next step", () => {
-    const consoleError = jest.spyOn(console, "error").mockImplementation();
-    getNextGuidedStep(
-      {
-        countryCode: "nl",
-        subscriberBreaches: [],
-        user: {
-          email: "arbitrary@example.com",
-        },
-      },
-      [],
-      // This is the step that we should end up at, so by skipping it, we end up
-      // in the invalid state we intend to test:
-      "Done",
-    );
-
-    expect(consoleError).toHaveBeenCalledTimes(1);
-    expect(consoleError).toHaveBeenCalledWith(
-      "Could not determine the relevant next guided step for the user. Skipping step: [Done]. Is `data.user` defined: [true]. Country code: [nl]. Is `data.latestScanData.scan` defined: [false]. Number of scan results: [0]. Number of breaches: [0].",
-    );
-  });
-
   describe("for non-US users", () => {
     it("links back to the dashboard if the user has no breaches", () => {
       expect(

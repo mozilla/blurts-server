@@ -118,6 +118,19 @@ export const mockedSecondaryVerifiedEmail: EmailAddressRow = {
   verification_token: "arbitrary_token",
 };
 
+export function mockRandomEmail(id: number) {
+  return {
+    id,
+    email: `email${id}@example.com`,
+    sha1: "arbitrary string",
+    subscriber_id: subscriberId,
+    verified: true,
+    created_at: new Date("1337-04-02T04:02:42.000Z"),
+    updated_at: new Date("1337-04-02T04:02:42.000Z"),
+    verification_token: "arbitrary_token",
+  } as EmailAddressRow;
+}
+
 export const mockedSerializedSubscriber: SerializedSubscriber = {
   id: subscriberId,
   all_emails_to_primary: true,
