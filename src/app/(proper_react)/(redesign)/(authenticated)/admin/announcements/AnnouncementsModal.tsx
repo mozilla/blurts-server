@@ -258,26 +258,6 @@ const AnnouncementsModal = (props: AnnouncementsModalProps) => {
               required
               className={styles.select}
             >
-              <option value="free_users">Free Users: US</option>
-              <option value="has_run_scan">Free Users: Has Run Scan US</option>
-              <option value="has_not_run_scan">
-                Free: Has Not Run Scan US
-              </option>
-              <option value="monthly_user">
-                Premium Users: Monthly Subscriber US Only
-              </option>
-              <option value="yearly_user">
-                Premium Users: Yearly Subscriber US Only
-              </option>
-              <option value="bundle_user">
-                Premium Users: Bundle Subscriber US Only
-              </option>
-              <option value="premium_non_bundle">
-                Premium Users: Monthly or Yearly US Only, Non-Bundle
-              </option>
-              <option value="premium_users">Premium Users: All Users</option>
-              <option value="us_only">All US Users</option>
-              <option value="non_us">Non-US Users</option>
               <option value="all_users">All Users</option>
             </select>
           </div>

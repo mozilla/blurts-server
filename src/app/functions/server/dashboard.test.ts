@@ -346,67 +346,45 @@ describe("getDashboardSummary", () => {
               ]),
             ) as DataPoints;
 
-          function countTotalDataPoints(
-            counts: DataPoints,
-            type: "breach" | "scan-result",
-          ): number {
-            return type === "scan-result"
-              ? counts.emailAddresses +
-                  counts.phoneNumbers +
-                  counts.addresses +
-                  counts.familyMembers
-              : counts.socialSecurityNumbers +
-                  counts.ipAddresses +
-                  counts.passwords +
-                  counts.creditCardNumbers +
-                  counts.pins +
-                  counts.securityQuestions +
-                  counts.bankAccountNumbers;
+          function countTotalDataPoints(counts: DataPoints): number {
+            return (
+              counts.socialSecurityNumbers +
+              counts.ipAddresses +
+              counts.passwords +
+              counts.creditCardNumbers +
+              counts.pins +
+              counts.securityQuestions +
+              counts.bankAccountNumbers
+            );
           }
 
-          function countTotalExposures(
-            counts: DataPoints,
-            type: "breach" | "scan-result",
-          ): number {
-            const pointCounts =
-              type === "scan-result"
-                ? [
-                    counts.emailAddresses,
-                    counts.phoneNumbers,
-                    counts.addresses,
-                    counts.familyMembers,
-                  ]
-                : [
-                    counts.socialSecurityNumbers,
-                    counts.ipAddresses,
-                    counts.passwords,
-                    counts.creditCardNumbers,
-                    counts.pins,
-                    counts.securityQuestions,
-                    counts.bankAccountNumbers,
-                  ];
+          function countTotalExposures(counts: DataPoints): number {
+            const pointCounts = [
+              counts.socialSecurityNumbers,
+              counts.ipAddresses,
+              counts.passwords,
+              counts.creditCardNumbers,
+              counts.pins,
+              counts.securityQuestions,
+              counts.bankAccountNumbers,
+            ];
 
             return pointCounts.filter((count) => count > 0).length;
           }
 
           const dataBreachResolvedNum = countTotalExposures(
             resolvedDataPointCounts,
-            "breach",
           );
           const dataBreachUnresolvedNum = countTotalExposures(
             unresolvedDataPointCounts,
-            "breach",
           );
           const dataBreachTotalNum =
             dataBreachResolvedNum + dataBreachUnresolvedNum;
           const dataBreachFixedDataPointsNum = countTotalDataPoints(
             resolvedDataPointCounts,
-            "breach",
           );
-          const dataBreachTotalDataPointsNum = countTotalDataPoints(
-            allDataPointCounts,
-            "breach",
-          );
+          const dataBreachTotalDataPointsNum =
+            countTotalDataPoints(allDataPointCounts);
           const totalDataPointsNum = dataBreachTotalDataPointsNum;
 
           const expectedSummary: Omit<

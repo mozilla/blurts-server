@@ -8,11 +8,9 @@ import { Session } from "next-auth";
 import { useL10n } from "../../../../../../../hooks/l10n";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { hasPremium } from "../../../../../../../functions/universal/user";
 import { createContext, useState } from "react";
 import { RadioGroupState, useRadioGroupState } from "react-stately";
 import { EmailUpdateCommOptionRequest } from "../../../../../../../api/v1/user/update-comm-option/route";
-import { useTelemetry } from "../../../../../../../hooks/useTelemetry";
 import { useRadioGroup } from "react-aria";
 import { VisuallyHidden } from "../../../../../../../components/server/VisuallyHidden";
 import { TelemetryButton } from "../../../../../../../components/client/TelemetryButton";
@@ -20,9 +18,6 @@ import styles from "./SettingsPanelNotifications.module.scss";
 import { SwitchInput } from "../../../../../../../components/client/SwitchInput";
 import { RadioInput } from "../../../../../../../components/client/RadioInput";
 import { CONST_URL_MOZILLA_BASKET } from "../../../../../../../../constants";
-
-// The monthly email for free users is currently disabled; see MNTOR-4970.
-const isFreeMonthlyMonitorReportDisabledSeeMNTOR4970 = true;
 
 export type SettingsPanelNotificationsProps = {
   data?: SubscriberEmailPreferencesOutput;
@@ -51,21 +46,12 @@ export const NotificationsSettings = (props: NotificationSettingsProps) => {
   const l10n = useL10n();
   const session = useSession();
   const router = useRouter();
-
   const breachAlertsEmailsAllowed = props.subscriber.all_emails_to_primary;
-
-  // Extract monthly report preference from the right column
-  const monitorReportAllowed =
-    hasPremium(props.user) && props.data?.monthly_monitor_report !== false;
-
   const defaultActivateAlertEmail =
     typeof breachAlertsEmailsAllowed === "boolean";
   const [activateAlertEmail, setActivateAlertEmail] = useState<boolean>(
     defaultActivateAlertEmail,
   );
-
-  const [activateMonthlyMonitorReport, setActivateMonthlyMonitorReport] =
-    useState(monitorReportAllowed);
 
   const commsValue = (): EmailUpdateCommTypeOfOptions => {
     switch (breachAlertsEmailsAllowed) {
@@ -96,26 +82,6 @@ export const NotificationsSettings = (props: NotificationSettingsProps) => {
       });
     },
   });
-
-  const recordTelemetry = useTelemetry();
-
-  const handleMonthlyMonitorReportToggle = () => {
-    const newValue = !activateMonthlyMonitorReport;
-    setActivateMonthlyMonitorReport(newValue);
-    recordTelemetry("button", "click", {
-      button_id: newValue ? "monthly_report_opt_in" : "monthly_report_opt_out",
-    });
-    const body: EmailUpdateCommOptionRequest = {
-      monthlyMonitorReport: newValue,
-    };
-    void fetch("/api/v1/user/update-comm-option", {
-      method: "POST",
-      body: JSON.stringify(body),
-    }).then(() => {
-      void session.update();
-      router.refresh();
-    });
-  };
 
   const handleActivateToggle = () => {
     setActivateAlertEmail((prevActivateAlertEmail) => {
@@ -171,36 +137,7 @@ export const NotificationsSettings = (props: NotificationSettingsProps) => {
               </RadioInput>
             </span>
           )}
-          {(hasPremium(props.user) ||
-            !isFreeMonthlyMonitorReportDisabledSeeMNTOR4970) && <hr />}
         </AlertAddressContext.Provider>
-        {(hasPremium(props.user) ||
-          !isFreeMonthlyMonitorReportDisabledSeeMNTOR4970) && (
-          <SwitchInput
-            className={styles.switchInput}
-            isSelected={activateMonthlyMonitorReport}
-            onChange={handleMonthlyMonitorReportToggle}
-          >
-            <div>
-              <h4>
-                {hasPremium(props.user)
-                  ? // The monthly email for free users is currently disabled; see MNTOR-4970.
-                    /* c8 ignore next 6 */
-                    l10n.getString(
-                      "settings-alert-preferences-allow-monthly-monitor-plus-report-title",
-                    )
-                  : l10n.getString(
-                      "settings-alert-preferences-allow-monthly-monitor-report-title",
-                    )}
-              </h4>
-              <p>
-                {l10n.getString(
-                  "settings-alert-preferences-allow-monthly-monitor-report-subtitle",
-                )}
-              </p>
-            </div>
-          </SwitchInput>
-        )}
       </div>
     </section>
   );

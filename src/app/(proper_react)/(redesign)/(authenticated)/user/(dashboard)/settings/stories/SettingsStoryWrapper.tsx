@@ -97,7 +97,6 @@ export const SettingsWrapper = (props: SettingsWrapperProps) => {
             fxaSettingsUrl=""
             enabledFeatureFlags={props.enabledFeatureFlags}
             experimentData={defaultExperimentData["Features"]}
-            lastScanDate={new Date(Date.UTC(2024, 6, 31))}
             activeTab={props.activeTab}
             actions={mockedActions}
             userAnnouncements={[]}

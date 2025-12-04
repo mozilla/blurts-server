@@ -6,6 +6,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { captureException } from "@sentry/node";
 import { logger } from "../../../functions/server/logging";
+import { MetricFlowData } from "../../../functions/universal/getFreeScanSearchParams";
 
 async function fetchMetricsFlowParams(searchParams: URLSearchParams) {
   const endpoint = new URL(process.env.OAUTH_METRICS_FLOW_URI as string);

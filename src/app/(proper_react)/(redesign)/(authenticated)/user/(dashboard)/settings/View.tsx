@@ -38,7 +38,6 @@ export type Props = {
   };
   userAnnouncements: UserAnnouncementWithDetails[];
   data?: SubscriberEmailPreferencesOutput;
-  lastScanDate?: Date;
   activeTab?: TabType;
 };
 

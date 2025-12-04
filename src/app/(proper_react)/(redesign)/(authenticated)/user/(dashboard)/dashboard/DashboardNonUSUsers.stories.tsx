@@ -68,9 +68,9 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
   };
 
   const mockedAnnouncements: UserAnnouncementWithDetails[] = [
-    createRandomAnnouncement({ audience: "non_us" }),
-    createRandomAnnouncement({ audience: "non_us" }),
-    createRandomAnnouncement({ audience: "non_us" }),
+    createRandomAnnouncement(),
+    createRandomAnnouncement(),
+    createRandomAnnouncement(),
   ];
 
   return (
