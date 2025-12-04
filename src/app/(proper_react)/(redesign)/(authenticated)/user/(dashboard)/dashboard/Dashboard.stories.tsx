@@ -20,17 +20,6 @@ import { UserAnnouncementWithDetails } from "../../../../../../../db/tables/user
 // Exported values should be stories, but this was already there when
 // Storybook added this lint rule, so I guess it works?
 // eslint-disable-next-line storybook/prefer-pascal-case
-export const brokerOptions = {
-  "no-scan": "No scan started",
-  empty: "No scan results",
-  unresolved: "With unresolved scan results",
-  resolved: "All scan results resolved",
-  "scan-in-progress": "Scan is in progress",
-  "manually-resolved": "Manually resolved",
-};
-// Exported values should be stories, but this was already there when
-// Storybook added this lint rule, so I guess it works?
-// eslint-disable-next-line storybook/prefer-pascal-case
 export const breachOptions = {
   empty: "No data breaches",
   unresolved: "With unresolved data breaches",
@@ -39,7 +28,6 @@ export const breachOptions = {
 export type DashboardWrapperProps = (
   | {
       countryCode: "us";
-      brokers: keyof typeof brokerOptions;
       premium: boolean;
     }
   | {
@@ -78,8 +66,15 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
     dataClasses: ["email-addresses", "ip-addresses", "phone-numbers"],
     addedDate: new Date("2023-06-18T14:48:00.000Z"),
     dataClassesEffected: [
-      { "email-addresses": ["email1@gmail.com", "email2@gmail.com"] },
+      {
+        "email-addresses": [
+          "email1@gmail.com",
+          "email2@gmail.com",
+          "email3@gmail.com",
+        ],
+      },
       { "ip-addresses": 1 },
+      { "phone-numbers": 1 },
     ],
     isResolved: false,
   });
@@ -149,14 +144,6 @@ const meta: Meta<typeof DashboardWrapper> = {
   title: "Pages/Logged in/Dashboard",
   component: DashboardWrapper,
   argTypes: {
-    brokers: {
-      options: Object.keys(brokerOptions),
-      description: "Scan results",
-      control: {
-        type: "radio",
-        labels: brokerOptions,
-      },
-    },
     breaches: {
       options: Object.keys(breachOptions),
       control: {
@@ -187,6 +174,29 @@ export const DashboardInvalidPremiumUserNoScanResolvedBreaches: Story = {
     countryCode: "us",
     premium: true,
     breaches: "resolved",
-    brokers: "no-scan",
+  },
+};
+
+export const DashboardNonUsNoBreaches: Story = {
+  name: "Non-US user, with 0 breaches",
+  args: {
+    countryCode: "nl",
+    breaches: "empty",
+  },
+};
+
+export const DashboardNonUsUnresolvedBreaches: Story = {
+  name: "Non-US user, with unresolved breaches",
+  args: {
+    countryCode: "nl",
+    breaches: "unresolved",
+  },
+};
+
+export const DashboardNonUsResolvedBreaches: Story = {
+  name: "Non-US user, with all breaches resolved",
+  args: {
+    countryCode: "nl",
+    breaches: "resolved",
   },
 };

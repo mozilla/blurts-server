@@ -10,11 +10,6 @@ export type DataPoints = {
   // shared
   emailAddresses: number;
   phoneNumbers: number;
-
-  // data brokers
-  addresses: number;
-  familyMembers: number;
-
   // data breaches
   socialSecurityNumbers: number;
   ipAddresses: number;
@@ -56,11 +51,6 @@ export interface DashboardSummary {
 export const dataClassKeyMap: Record<keyof DataPoints, string> = {
   emailAddresses: "email-addresses",
   phoneNumbers: "phone-numbers",
-
-  // data brokers
-  addresses: "physical-addresses",
-  familyMembers: "family-members-names",
-
   // data breaches
   socialSecurityNumbers: "social-security-numbers",
   ipAddresses: "ip-addresses",
@@ -85,8 +75,6 @@ export function getDashboardSummary(
     allDataPoints: {
       emailAddresses: 0,
       phoneNumbers: 0,
-      addresses: 0,
-      familyMembers: 0,
 
       // data breaches
       socialSecurityNumbers: 0,
@@ -100,8 +88,6 @@ export function getDashboardSummary(
     unresolvedDataPoints: {
       emailAddresses: 0,
       phoneNumbers: 0,
-      addresses: 0,
-      familyMembers: 0,
 
       // data breaches
       socialSecurityNumbers: 0,
@@ -115,8 +101,6 @@ export function getDashboardSummary(
     inProgressDataPoints: {
       emailAddresses: 0,
       phoneNumbers: 0,
-      addresses: 0,
-      familyMembers: 0,
 
       // data breaches
       socialSecurityNumbers: 0,
@@ -130,8 +114,6 @@ export function getDashboardSummary(
     fixedDataPoints: {
       emailAddresses: 0,
       phoneNumbers: 0,
-      addresses: 0,
-      familyMembers: 0,
 
       // data breaches
       socialSecurityNumbers: 0,

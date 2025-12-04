@@ -9,16 +9,12 @@ import { userEvent, within } from "storybook/test";
 import { axe } from "jest-axe";
 import SettingsMeta, {
   SettingsEditManageAccount,
-  SettingsEditManageAccountPlus,
   SettingsEditNotifications,
-  SettingsEditNotificationsPlus,
-  SettingsNoDefaultTab,
 } from "./stories/Settings.stories";
 import SettingsEditYourInfoMeta, {
   SettingsEditYourInfo,
   SettingsEditYourInfoAdditionalMonitoredEmails,
   SettingsEditYourInfoMaxMonitoredEmails,
-  SettingsEditYourInfoMaxMonitoredEmailsIncreased,
 } from "./stories/SettingsEditInfoNonUsUsers.stories";
 import { mockedActions } from "./stories/SettingsStoryWrapper";
 
@@ -52,7 +48,6 @@ jest.mock("next/navigation", () => ({
     get: jest.fn(),
   }),
 }));
-jest.mock("../../../../../../hooks/locationSuggestions");
 jest.mock("../../../../../../hooks/useTelemetry");
 
 import {
@@ -181,15 +176,6 @@ describe("Settings page redesign", () => {
       expect(await axe(container)).toHaveNoViolations();
     }, 10_000);
 
-    describe("SettingsContent activeTab handling", () => {
-      it("defaults to the first tab (edit your info) when activeTab is not provided", () => {
-        const ComposedStory = composeStory(SettingsNoDefaultTab, SettingsMeta);
-        render(<ComposedStory />);
-        const editYourInfoHeader = screen.queryAllByText("Update scan info");
-        expect(editYourInfoHeader[1]).toBeInTheDocument();
-      });
-    });
-
     it("shows the max number of emails that can be added to the list of addresses to monitor for breaches", () => {
       const ComposedStory = composeStory(
         SettingsEditYourInfo,
@@ -197,7 +183,7 @@ describe("Settings page redesign", () => {
       );
       render(<ComposedStory />);
 
-      const maxEmailsIndicator = screen.getByText("Add up to ⁨5⁩");
+      const maxEmailsIndicator = screen.getByText("Add up to ⁨20⁩");
       expect(maxEmailsIndicator).toBeInTheDocument();
     });
 
@@ -393,19 +379,6 @@ describe("Settings page redesign", () => {
       });
       expect(addEmailButton).not.toBeInTheDocument();
     });
-
-    it("does not show the option to add email addresses when the max increased number of email addresses have been added", () => {
-      const ComposedStory = composeStory(
-        SettingsEditYourInfoMaxMonitoredEmailsIncreased,
-        SettingsEditYourInfoMeta,
-      );
-      render(<ComposedStory />);
-
-      const addEmailButton = screen.queryByRole("button", {
-        name: "Add email address",
-      });
-      expect(addEmailButton).not.toBeInTheDocument();
-    });
   });
 
   describe("Manage account", () => {
@@ -417,179 +390,6 @@ describe("Settings page redesign", () => {
       const { container } = render(<ComposedStory />);
       expect(await axe(container)).toHaveNoViolations();
     }, 10_000);
-    it("renders the cancellation section for Plus users", () => {
-      const ComposedStory = composeStory(
-        SettingsEditManageAccountPlus,
-        SettingsMeta,
-      );
-      render(<ComposedStory />);
-
-      expect(
-        screen.getByRole("heading", {
-          name: "Cancel ⁨Monitor Plus⁩ subscription",
-        }),
-      ).toBeInTheDocument();
-
-      expect(
-        screen.getByRole("button", { name: "Cancel your subscription" }),
-      ).toBeInTheDocument();
-    });
-
-    it("opens the cancellation dialog flow when 'Cancel your subscription' is clicked", async () => {
-      const user = userEvent.setup();
-      const ComposedStory = composeStory(
-        SettingsEditManageAccountPlus,
-        SettingsMeta,
-      );
-      render(<ComposedStory />);
-
-      const cancelButton = screen.getByRole("button", {
-        name: "Cancel your subscription",
-      });
-
-      await act(async () => {
-        await user.click(cancelButton);
-      });
-
-      expect(mockedRecordTelemetry).toHaveBeenCalledWith(
-        "popup",
-        "view",
-        expect.objectContaining({
-          popup_id: "settings-cancel-monitor-plus-dialog",
-        }),
-      );
-
-      expect(
-        screen.getByRole("dialog", { name: "Hey, before you go…" }),
-      ).toBeInTheDocument();
-
-      const dismissBtn = screen.getByRole("button", {
-        name: "Close modal",
-      });
-
-      await act(async () => {
-        await user.click(dismissBtn);
-      });
-
-      expect(mockedRecordTelemetry).toHaveBeenCalledWith(
-        "popup",
-        "exit",
-        expect.objectContaining({
-          popup_id: "exited_cancel_flow",
-        }),
-      );
-    });
-
-    it("advances to the next step when 'Continue to cancellation' is clicked", async () => {
-      const user = userEvent.setup();
-      const ComposedStory = composeStory(
-        SettingsEditManageAccountPlus,
-        SettingsMeta,
-      );
-      render(<ComposedStory />);
-
-      await act(async () => {
-        await user.click(
-          screen.getByRole("button", { name: "Cancel your subscription" }),
-        );
-      });
-
-      const continueButton = screen.getByRole("button", {
-        name: "Continue to cancellation",
-      });
-
-      await act(async () => {
-        await user.click(continueButton);
-      });
-
-      expect(
-        screen.getByRole("dialog", {
-          name: "We’re sorry to see you go. Will you tell us why you’re leaving?",
-        }),
-      ).toBeInTheDocument();
-    });
-
-    it("closes the dialog if 'Never mind, take me back' is clicked", async () => {
-      const user = userEvent.setup();
-      const ComposedStory = composeStory(
-        SettingsEditManageAccountPlus,
-        SettingsMeta,
-      );
-      render(<ComposedStory />);
-
-      await act(async () => {
-        await user.click(
-          screen.getByRole("button", { name: "Cancel your subscription" }),
-        );
-      });
-
-      const backButton = screen.getByRole("button", {
-        name: "Never mind, take me back",
-      });
-      await act(async () => {
-        await user.click(backButton);
-      });
-      expect(mockedRecordTelemetry).toHaveBeenCalledWith(
-        "popup",
-        "exit",
-        expect.objectContaining({
-          popup_id: "never_mind_take_me_back",
-        }),
-      );
-
-      expect(
-        screen.queryByRole("dialog", { name: "Hey, before you go…" }),
-      ).not.toBeInTheDocument();
-    });
-
-    it("can close the cancellation dialog via the close button", async () => {
-      const user = userEvent.setup();
-      const ComposedStory = composeStory(
-        SettingsEditManageAccountPlus,
-        SettingsMeta,
-      );
-      render(<ComposedStory />);
-
-      await act(async () => {
-        await user.click(
-          screen.getByRole("button", { name: "Cancel your subscription" }),
-        );
-      });
-
-      const closeButton = screen.getByRole("button", { name: "Close modal" });
-
-      await act(async () => {
-        await user.click(closeButton);
-      });
-
-      expect(
-        screen.queryByRole("dialog", { name: "Hey, before you go…" }),
-      ).not.toBeInTheDocument();
-    });
-
-    it("reaches the redirecting step after confirmation", async () => {
-      const user = userEvent.setup();
-      const ComposedStory = composeStory(
-        SettingsEditManageAccountPlus,
-        SettingsMeta,
-      );
-      render(<ComposedStory />);
-      await act(async () => {
-        await user.click(
-          screen.getByRole("button", { name: "Cancel your subscription" }),
-        );
-        await user.click(
-          screen.getByRole("button", { name: "Continue to cancellation" }),
-        );
-        await user.click(
-          screen.getByRole("button", { name: "Continue to cancellation" }),
-        );
-      });
-      const redirectTitle = screen.getByText(
-        "Directing you to your ⁨Mozilla account⁩ to cancel",
-      );
-      expect(redirectTitle).toBeInTheDocument();
-    });
 
     it("shows the account deletion button if the user does not have Plus", () => {
       const ComposedStory = composeStory(
@@ -781,7 +581,7 @@ describe("Settings page redesign", () => {
 
     it("renders affected option by default when all_emails_to_primary is false", () => {
       const ComposedStory = composeStory(
-        SettingsEditNotificationsPlus,
+        SettingsEditNotifications,
         SettingsMeta,
       );
 
@@ -802,7 +602,7 @@ describe("Settings page redesign", () => {
 
     it("hides radio options when all_emails_to_primary = null", () => {
       const ComposedStory = composeStory(
-        SettingsEditNotificationsPlus,
+        SettingsEditNotifications,
         SettingsMeta,
       );
 
@@ -860,7 +660,7 @@ describe("Settings page redesign", () => {
       global.fetch = jest.fn().mockResolvedValue({ ok: true });
       const user = userEvent.setup();
       const ComposedStory = composeStory(
-        SettingsEditNotificationsPlus,
+        SettingsEditNotifications,
         SettingsMeta,
       );
       render(<ComposedStory />);
@@ -899,141 +699,10 @@ describe("Settings page redesign", () => {
       );
     });
 
-    it("checks that the monthly monitor report is disabled for free users", () => {
-      const ComposedStory = composeStory(
-        SettingsEditNotifications,
-        SettingsMeta,
-      );
-      render(<ComposedStory />);
-      const monthlyMonitorReportBtn = screen.queryByLabelText(
-        "Monthly ⁨Monitor⁩ report",
-        { exact: false },
-      );
-      // The monthly email for free users is currently disabled; see MNTOR-4970.
-      // expect(monthlyMonitorReportBtn).toHaveAttribute("aria-checked", "true");
-      expect(monthlyMonitorReportBtn).not.toBeInTheDocument();
-    });
-
-    it("extracts monthly monitor report preference for free users (monthly_monitor_report_free field)", () => {
-      const ComposedStory = composeStory(
-        SettingsEditNotificationsPlus,
-        SettingsMeta,
-      );
-
-      render(
-        <ComposedStory
-          data={{
-            ...mockedFreeSubscriberEmailPreferences,
-            monthly_monitor_report_free: true,
-          }}
-        />,
-      );
-
-      const toggleInput = screen.getByLabelText("Instant breach alerts", {
-        exact: false,
-      });
-
-      expect(toggleInput).toBeInTheDocument();
-    });
-
-    it("checks that monthly monitor report is enabled", () => {
-      const ComposedStory = composeStory(
-        SettingsEditNotificationsPlus,
-        SettingsMeta,
-      );
-      render(
-        <ComposedStory
-          subscriber={{
-            ...mockedSubscriber,
-            all_emails_to_primary: true,
-            monthly_monitor_report: true,
-          }}
-        />,
-      );
-      const monthlyMonitorReportBtn = screen.getByLabelText(
-        "Monthly ⁨Monitor Plus⁩ report",
-        { exact: false },
-      );
-      expect(monthlyMonitorReportBtn).toHaveAttribute("aria-checked", "true");
-    });
-
-    it("sends an API call to disable monthly monitor reports", async () => {
-      global.fetch = jest.fn().mockResolvedValue({ ok: true });
-      const user = userEvent.setup();
-      const ComposedStory = composeStory(
-        SettingsEditNotificationsPlus,
-        SettingsMeta,
-      );
-
-      render(
-        <ComposedStory
-          subscriber={{
-            ...mockedSubscriber,
-            all_emails_to_primary: true,
-            monthly_monitor_report: true,
-          }}
-        />,
-      );
-      const monthlyMonitorReportBtn = screen.getByLabelText(
-        "Monthly ⁨Monitor Plus⁩ report",
-        { exact: false },
-      );
-      await act(async () => {
-        await user.click(monthlyMonitorReportBtn);
-      });
-
-      expect(global.fetch).toHaveBeenCalledWith(
-        "/api/v1/user/update-comm-option",
-        {
-          body: JSON.stringify({
-            monthlyMonitorReport: false,
-          }),
-          method: "POST",
-        },
-      );
-    });
-
-    it("calls the right telemetry event if a user opts out of monthly report", async () => {
-      global.fetch = jest.fn().mockResolvedValue({ ok: true });
-      const user = userEvent.setup();
-      const ComposedStory = composeStory(
-        SettingsEditNotificationsPlus,
-        SettingsMeta,
-      );
-      render(<ComposedStory />);
-
-      const monthlyMonitorReportBtn = screen.getByLabelText(
-        "Monthly ⁨Monitor Plus⁩ report",
-        { exact: false },
-      );
-
-      await act(async () => {
-        await user.click(monthlyMonitorReportBtn);
-      });
-
-      expect(mockedRecordTelemetry).toHaveBeenCalledWith(
-        "button",
-        "click",
-        expect.objectContaining({
-          button_id: "monthly_report_opt_out",
-        }),
-      );
-      await act(async () => {
-        await user.click(monthlyMonitorReportBtn);
-      });
-      expect(mockedRecordTelemetry).toHaveBeenCalledWith(
-        "button",
-        "click",
-        expect.objectContaining({
-          button_id: "monthly_report_opt_in",
-        }),
-      );
-    });
-
     it("preselects primary email alert option", () => {
       global.fetch = jest.fn().mockResolvedValue({ ok: true });
       const ComposedStory = composeStory(
-        SettingsEditNotificationsPlus,
+        SettingsEditNotifications,
         SettingsMeta,
       );
       render(<ComposedStory />);
@@ -1048,7 +717,7 @@ describe("Settings page redesign", () => {
       global.fetch = jest.fn().mockResolvedValue({ ok: true });
       const user = userEvent.setup();
       const ComposedStory = composeStory(
-        SettingsEditNotificationsPlus,
+        SettingsEditNotifications,
         SettingsMeta,
       );
       render(<ComposedStory />);
@@ -1083,7 +752,7 @@ describe("Settings page redesign", () => {
       global.fetch = jest.fn().mockResolvedValueOnce({ ok: true });
       const user = userEvent.setup();
       const ComposedStory = composeStory(
-        SettingsEditNotificationsPlus,
+        SettingsEditNotifications,
         SettingsMeta,
       );
       render(<ComposedStory />);

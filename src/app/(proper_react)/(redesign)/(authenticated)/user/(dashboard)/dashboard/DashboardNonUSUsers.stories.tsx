@@ -14,7 +14,7 @@ import {
 import { SubscriberBreach } from "../../../../../../../utils/subscriberBreaches";
 import { CountryCodeProvider } from "../../../../../../../contextProviders/country-code";
 import { SessionProvider } from "../../../../../../../contextProviders/session";
-import { breachOptions, DashboardWrapperProps } from "./Dashboard.stories";
+import { DashboardWrapperProps } from "./Dashboard.stories";
 import { UserAnnouncementWithDetails } from "../../../../../../../db/tables/user_announcements";
 
 const DashboardWrapper = (props: DashboardWrapperProps) => {
@@ -49,13 +49,27 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
     isResolved: false,
   });
 
+  const mockedUnresolvedBreach2: SubscriberBreach = createRandomBreach({
+    dataClasses: ["email-addresses", "ip-addresses", "phone-numbers"],
+    addedDate: new Date("2023-06-19T14:48:00.000Z"),
+    dataClassesEffected: [
+      { "email-addresses": ["email3@gmail.com"] },
+      { "ip-addresses": 1 },
+    ],
+    isResolved: false,
+  });
+
   let breaches: SubscriberBreach[] = [];
 
   if (props.breaches === "resolved") {
     breaches = [mockedResolvedBreach];
   }
   if (props.breaches === "unresolved") {
-    breaches = [mockedResolvedBreach, mockedUnresolvedBreach];
+    breaches = [
+      mockedResolvedBreach,
+      mockedUnresolvedBreach,
+      mockedUnresolvedBreach2,
+    ];
   }
 
   const scanCount = 0;
@@ -110,13 +124,6 @@ const meta: Meta<typeof DashboardWrapper> = {
   title: "Pages/Logged in/Dashboard/Non US User",
   component: DashboardWrapper,
   argTypes: {
-    breaches: {
-      options: Object.keys(breachOptions),
-      control: {
-        type: "radio",
-        labels: breachOptions,
-      },
-    },
     signInCount: {
       name: "Sign-in count",
       control: {

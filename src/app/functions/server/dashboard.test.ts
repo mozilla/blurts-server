@@ -251,211 +251,135 @@ describe("getDashboardSummary", () => {
   });
 
   describe("property-based tests", () => {
-    function getBreach(
-      resolution: "unresolved" | "resolved",
-      dataPoint: SubscriberBreach["dataClasses"][number],
-      count: number,
-    ): SubscriberBreach {
-      return {
-        addedDate: new Date(),
-        breachDate: new Date(),
-        dataClasses: [dataPoint],
-        // TODO: Multiple data classes in a single breach?
-        dataClassesEffected: [{ [dataPoint]: count }],
-        description: "",
-        domain: "",
-        emailsAffected: Array(count).fill("test@example.com"),
-        favIconUrl: "",
-        id: 0,
-        modifiedDate: new Date(),
-        name: "",
-        resolvedDataClasses: resolution === "resolved" ? [dataPoint] : [],
-        isResolved: resolution === "resolved",
-        title: "",
-      };
-    }
+    // Available data class types for breach generation
+    const dataClassTypes = Object.keys(
+      dataClassKeyMap,
+    ) as (keyof typeof dataClassKeyMap)[];
 
-    // We'll generate breaches with 7 different types of exposed data
-    // points, each of which can be in one of two states (unresolved, resolved):
-    const breachDataPointCountsToGenerate = 2 * 7;
-    // We'll generate scan results with 4 different types of exposed data
-    // points, each of which can be in one of four states (unresolved, in
-    // progress, auto-resolved or manually resolved):
-    const scanResultDataPointCountsToGenerate = 4 * 4;
     const outputCountsMatchInputCounts = fc.property(
-      fc
-        .tuple(
-          fc.array(fc.integer({ min: 0, max: 20 }), {
-            minLength: breachDataPointCountsToGenerate,
-            maxLength: breachDataPointCountsToGenerate,
-          }),
-          fc.array(fc.integer({ min: 0, max: 20 }), {
-            minLength: scanResultDataPointCountsToGenerate,
-            maxLength: scanResultDataPointCountsToGenerate,
-          }),
-        )
-        .map(([breachDataPointCounts, scanResultDataPointCounts]) => {
-          const unresolvedDataPointCounts: DashboardSummary["unresolvedDataPoints"] =
-            {
-              emailAddresses: scanResultDataPointCounts[0],
-              phoneNumbers: scanResultDataPointCounts[1],
-              addresses: scanResultDataPointCounts[2],
-              familyMembers: scanResultDataPointCounts[3],
-              socialSecurityNumbers: breachDataPointCounts[0],
-              ipAddresses: breachDataPointCounts[1],
-              passwords: breachDataPointCounts[2],
-              creditCardNumbers: breachDataPointCounts[3],
-              pins: breachDataPointCounts[4],
-              securityQuestions: breachDataPointCounts[5],
-              bankAccountNumbers: breachDataPointCounts[6],
-            };
-          const resolvedDataPointCounts: DashboardSummary["fixedDataPoints"] = {
-            emailAddresses: scanResultDataPointCounts[4],
-            phoneNumbers: scanResultDataPointCounts[5],
-            addresses: scanResultDataPointCounts[6],
-            familyMembers: scanResultDataPointCounts[7],
-            socialSecurityNumbers: breachDataPointCounts[7],
-            ipAddresses: breachDataPointCounts[8],
-            passwords: breachDataPointCounts[9],
-            creditCardNumbers: breachDataPointCounts[10],
-            pins: breachDataPointCounts[11],
-            securityQuestions: breachDataPointCounts[12],
-            bankAccountNumbers: breachDataPointCounts[13],
-          };
-          const inProgressDataPointCounts: DashboardSummary["inProgressDataPoints"] =
-            {
-              emailAddresses: scanResultDataPointCounts[8],
-              phoneNumbers: scanResultDataPointCounts[9],
-              addresses: scanResultDataPointCounts[10],
-              familyMembers: scanResultDataPointCounts[11],
-              socialSecurityNumbers: 0,
-              ipAddresses: 0,
-              passwords: 0,
-              creditCardNumbers: 0,
-              pins: 0,
-              securityQuestions: 0,
-              bankAccountNumbers: 0,
-            };
-
-          const allDataPointCounts: DashboardSummary["allDataPoints"] =
-            Object.fromEntries(
-              Object.keys(unresolvedDataPointCounts).map((key) => [
-                key,
-                unresolvedDataPointCounts[key as keyof DataPoints] +
-                  resolvedDataPointCounts[key as keyof DataPoints],
-              ]),
-            ) as DataPoints;
-
-          function countTotalDataPoints(counts: DataPoints): number {
-            return (
-              counts.socialSecurityNumbers +
-              counts.ipAddresses +
-              counts.passwords +
-              counts.creditCardNumbers +
-              counts.pins +
-              counts.securityQuestions +
-              counts.bankAccountNumbers
-            );
-          }
-
-          function countTotalExposures(counts: DataPoints): number {
-            const pointCounts = [
-              counts.socialSecurityNumbers,
-              counts.ipAddresses,
-              counts.passwords,
-              counts.creditCardNumbers,
-              counts.pins,
-              counts.securityQuestions,
-              counts.bankAccountNumbers,
-            ];
-
-            return pointCounts.filter((count) => count > 0).length;
-          }
-
-          const dataBreachResolvedNum = countTotalExposures(
-            resolvedDataPointCounts,
-          );
-          const dataBreachUnresolvedNum = countTotalExposures(
-            unresolvedDataPointCounts,
-          );
-          const dataBreachTotalNum =
-            dataBreachResolvedNum + dataBreachUnresolvedNum;
-          const dataBreachFixedDataPointsNum = countTotalDataPoints(
-            resolvedDataPointCounts,
-          );
-          const dataBreachTotalDataPointsNum =
-            countTotalDataPoints(allDataPointCounts);
-          const totalDataPointsNum = dataBreachTotalDataPointsNum;
-
-          const expectedSummary: Omit<
-            DashboardSummary,
-            "fixedSanitizedDataPoints" | "unresolvedSanitizedDataPoints"
-          > = {
-            allDataPoints: allDataPointCounts,
-            unresolvedDataPoints: unresolvedDataPointCounts,
-            inProgressDataPoints: inProgressDataPointCounts,
-            fixedDataPoints: resolvedDataPointCounts,
-            dataBreachTotalNum: dataBreachTotalNum,
-            dataBreachResolvedNum: dataBreachResolvedNum,
-            dataBreachUnresolvedNum: dataBreachUnresolvedNum,
-            dataBreachTotalDataPointsNum: dataBreachTotalDataPointsNum,
-            dataBreachFixedDataPointsNum: dataBreachFixedDataPointsNum,
-            totalDataPointsNum: totalDataPointsNum,
-          };
-
-          return expectedSummary;
+      // Generate an array of random breaches
+      fc.array(
+        fc.record({
+          // Number of emails affected by this breach (1-20)
+          emailCount: fc.integer({ min: 1, max: 20 }),
+          dataClasses: fc
+            .subarray(dataClassTypes, { minLength: 1, maxLength: 5 })
+            .map((classes) => classes.sort()),
+          // Which of those data classes are resolved
+          // (can only resolve classes that are in the breach)
+          resolvedDataClasses: fc
+            .subarray(dataClassTypes, { minLength: 0, maxLength: 5 })
+            .map((classes) => classes.sort()),
         }),
-      (expectedSummary) => {
-        function getBreachesForCounts(
-          dataPointCounts: DataPoints,
-          resolution: Parameters<typeof getBreach>[0],
-        ): SubscriberBreach[] {
-          return (
-            Object.keys(dataClassKeyMap)
-              // While the following data types can also be found in breaches,
-              // for these tests we're only generating them for scan results.
-              // (Because we start out with the final counts, this way we can
-              // avoid double-counting them.)
-              .filter(
-                (dataType) =>
-                  dataType !== "emailAddresses" &&
-                  dataType !== "phoneNumbers" &&
-                  dataType !== "addresses" &&
-                  dataType !== "familyMembers",
-              )
-              .map((dataType) => {
-                const count =
-                  dataPointCounts[dataType as keyof DataPoints] ?? 0;
+        { minLength: 0, maxLength: 10 },
+      ),
+      (breachConfigs) => {
+        // Calculate expected counts by simulating the actual logic
+        const expectedCounts: DashboardSummary["unresolvedDataPoints"] =
+          Object.fromEntries(
+            dataClassTypes.map((key) => [key, 0]),
+          ) as DashboardSummary["unresolvedDataPoints"];
 
-                if (count === 0) {
-                  return null;
-                }
+        const resolvedCounts: DashboardSummary["fixedDataPoints"] =
+          Object.fromEntries(
+            dataClassTypes.map((key) => [key, 0]),
+          ) as DashboardSummary["fixedDataPoints"];
 
-                return getBreach(
-                  resolution,
-                  dataClassKeyMap[
-                    dataType as keyof DataPoints
-                  ] as SubscriberBreach["dataClasses"][number],
-                  count,
-                );
-              })
-              .filter((breach) => breach !== null)
+        let totalBreaches = 0;
+        let resolvedBreaches = 0;
+        let totalDataPoints = 0;
+        let fixedDataPoints = 0;
+
+        // Build actual breaches from configs
+        const breaches: SubscriberBreach[] = breachConfigs.map(
+          (config, idx) => {
+            const { emailCount, dataClasses, resolvedDataClasses } = config;
+
+            // Only count classes that are actually in this breach
+            const actualResolvedClasses = resolvedDataClasses.filter((dc) =>
+              dataClasses.includes(dc),
+            );
+
+            const isFullyResolved =
+              actualResolvedClasses.length === dataClasses.length &&
+              dataClasses.length > 0;
+
+            if (isFullyResolved) {
+              resolvedBreaches++;
+            }
+            totalBreaches++;
+
+            // Update expected counts based on this breach
+            dataClasses.forEach((dataClass) => {
+              const isResolved = actualResolvedClasses.includes(dataClass);
+
+              // All data classes in this breach count emailCount times
+              expectedCounts[dataClass] =
+                (expectedCounts[dataClass] || 0) +
+                (isResolved ? 0 : emailCount);
+              resolvedCounts[dataClass] =
+                (resolvedCounts[dataClass] || 0) +
+                (isResolved ? emailCount : 0);
+
+              totalDataPoints += emailCount;
+              if (isResolved) {
+                fixedDataPoints += emailCount;
+              }
+            });
+
+            // Build actual breach object
+            return {
+              id: idx,
+              addedDate: new Date(),
+              breachDate: new Date(),
+              dataClasses: dataClasses.map(
+                (dc) => dataClassKeyMap[dc],
+              ) as SubscriberBreach["dataClasses"],
+              dataClassesEffected: dataClasses.map((dc) => ({
+                [dataClassKeyMap[dc]]: emailCount,
+              })),
+              description: "",
+              domain: `breach${idx}.com`,
+              emailsAffected: Array(emailCount).fill(`test${idx}@example.com`),
+              favIconUrl: "",
+              modifiedDate: new Date(),
+              name: `Breach ${idx}`,
+              resolvedDataClasses: actualResolvedClasses.map(
+                (dc) => dataClassKeyMap[dc],
+              ) as SubscriberBreach["resolvedDataClasses"],
+              isResolved: isFullyResolved,
+              title: `Breach ${idx}`,
+            };
+          },
+        );
+
+        // Get actual summary from function
+        const actualSummary = getDashboardSummary(breaches);
+
+        // Verify counts match
+        dataClassTypes.forEach((dataClass) => {
+          // eslint-disable-next-line jest/no-standalone-expect
+          expect(actualSummary.unresolvedDataPoints[dataClass]).toBe(
+            expectedCounts[dataClass],
           );
-        }
+          // eslint-disable-next-line jest/no-standalone-expect
+          expect(actualSummary.fixedDataPoints[dataClass]).toBe(
+            resolvedCounts[dataClass],
+          );
+        });
 
-        const breaches = [
-          ...getBreachesForCounts(
-            expectedSummary.unresolvedDataPoints,
-            "unresolved",
-          ),
-          ...getBreachesForCounts(expectedSummary.fixedDataPoints, "resolved"),
-        ];
-
-        const resultingSummary = getDashboardSummary(breaches);
-
-        // This function is included in tests below:
         // eslint-disable-next-line jest/no-standalone-expect
-        expect(resultingSummary).toMatchObject(expectedSummary);
+        expect(actualSummary.dataBreachTotalNum).toBe(totalBreaches);
+        // eslint-disable-next-line jest/no-standalone-expect
+        expect(actualSummary.dataBreachResolvedNum).toBe(resolvedBreaches);
+        // eslint-disable-next-line jest/no-standalone-expect
+        expect(actualSummary.dataBreachTotalDataPointsNum).toBe(
+          totalDataPoints,
+        );
+        // eslint-disable-next-line jest/no-standalone-expect
+        expect(actualSummary.dataBreachFixedDataPointsNum).toBe(
+          fixedDataPoints,
+        );
       },
     );
 
@@ -468,19 +392,13 @@ describe("getDashboardSummary", () => {
     // The `expect` is called in `outputCountsMatchInputCounts`
     // eslint-disable-next-line jest/expect-expect
     it("also counts bank account number breaches", () => {
-      fc.assert(outputCountsMatchInputCounts, {
-        seed: 2102994438,
-        path: "0:0:0:0:0:0:0:0:0:0:0:0:0:1:0:1:1:1:1:1:1:1:1:1:1:1:1:1",
-      });
+      fc.assert(outputCountsMatchInputCounts);
     });
 
     // The `expect` is called in `outputCountsMatchInputCounts`
     // eslint-disable-next-line jest/expect-expect
     it("also counts credit card breaches", () => {
-      fc.assert(outputCountsMatchInputCounts, {
-        seed: 1708637594,
-        path: "0:0:0:0:0:0:0:0:0:0:0:1:0:0:0:1:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0",
-      });
+      fc.assert(outputCountsMatchInputCounts);
     });
   });
 });
