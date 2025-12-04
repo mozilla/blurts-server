@@ -4,23 +4,13 @@
 
 "use client";
 
-import {
-  FormEventHandler,
-  ReactNode,
-  RefObject,
-  useContext,
-  useState,
-} from "react";
+import { FormEventHandler, ReactNode, RefObject, useState } from "react";
 import { signIn } from "next-auth/react";
 import { useL10n } from "../../../hooks/l10n";
 import { Button } from "../../../components/client/Button";
 import styles from "./SignUpForm.module.scss";
 import { useTelemetry } from "../../../hooks/useTelemetry";
 import { useViewTelemetry } from "../../../hooks/useViewTelemetry";
-import { useCookies } from "react-cookie";
-import { CONST_URL_MONITOR_LANDING_PAGE_ID } from "../../../../constants";
-import { getFreeScanSearchParams } from "../../../functions/universal/getFreeScanSearchParams";
-import { AccountsMetricsFlowContext } from "../../../../contextProviders/accounts-metrics-flow";
 import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 import { InputField } from "../../../components/client/InputField";
 
@@ -46,22 +36,9 @@ export const SignUpForm = (props: Props) => {
   const refViewTelemetry = useViewTelemetry("ctaButton", {
     button_id: props.eventId.cta,
   });
-  const [cookies] = useCookies(["attributionsFirstTouch"]);
-  const metricsFlowContext = useContext(AccountsMetricsFlowContext);
-
   const onSubmit: FormEventHandler = (event) => {
     event.preventDefault();
-    void signIn(
-      "fxa",
-      { callbackUrl: props.signUpCallbackUrl },
-      getFreeScanSearchParams({
-        cookies,
-        emailInput: emailInput,
-        entrypoint: CONST_URL_MONITOR_LANDING_PAGE_ID,
-        experimentData: props.experimentData,
-        metricsFlowData: metricsFlowContext.data,
-      }),
-    );
+    void signIn("fxa", { callbackUrl: props.signUpCallbackUrl });
   };
 
   const label =

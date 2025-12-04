@@ -11,11 +11,9 @@ import {
   getL10n,
 } from "../../../functions/l10n/serverComponents";
 import { View as LandingView } from "./LandingView";
-import { CONST_URL_MONITOR_LANDING_PAGE_ID } from "../../../../constants";
 import { getExperimentationIdFromUserSession } from "../../../functions/server/getExperimentationId";
 import { getExperiments } from "../../../functions/server/getExperiments";
 import { getLocale } from "../../../functions/universal/getLocale";
-import { AccountsMetricsFlowProvider } from "../../../../contextProviders/accounts-metrics-flow";
 import { getEnabledFeatureFlags } from "../../../../db/tables/featureFlags";
 
 export default async function Page() {
@@ -51,27 +49,11 @@ export default async function Page() {
   });
 
   return (
-    <AccountsMetricsFlowProvider
-      enabled={experimentData["Features"]["landing-page-free-scan-cta"].enabled}
-      metricsFlowParams={{
-        entrypoint: CONST_URL_MONITOR_LANDING_PAGE_ID,
-        entrypoint_experiment: "landing-page-free-scan-cta",
-        entrypoint_variation:
-          experimentData["Features"]["landing-page-free-scan-cta"].variant,
-        form_type:
-          experimentData["Features"]["landing-page-free-scan-cta"].variant ===
-          "ctaWithEmail"
-            ? "email"
-            : "button",
-        service: process.env.OAUTH_CLIENT_ID as string,
-      }}
-    >
-      <LandingView
-        l10n={l10n}
-        countryCode={countryCode}
-        experimentData={experimentData["Features"]}
-        enabledFeatureFlags={enabledFeatureFlags}
-      />
-    </AccountsMetricsFlowProvider>
+    <LandingView
+      l10n={l10n}
+      countryCode={countryCode}
+      experimentData={experimentData["Features"]}
+      enabledFeatureFlags={enabledFeatureFlags}
+    />
   );
 }
