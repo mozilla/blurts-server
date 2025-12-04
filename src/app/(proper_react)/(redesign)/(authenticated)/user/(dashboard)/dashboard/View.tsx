@@ -96,8 +96,6 @@ export const View = (props: Props) => {
 
   const breachesDataArray = props.userBreaches.flat();
 
-  // Merge exposure cards
-
   // Sort in descending order
   const arraySortedByDate = breachesDataArray.sort((a, b) => {
     const dateA = a.addedDate;

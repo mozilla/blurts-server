@@ -19,6 +19,7 @@ import Meta, {
   DashboardNonUsNoBreaches,
   DashboardNonUsUnresolvedBreaches,
   DashboardNonUsResolvedBreaches,
+  DashboardInvalidState,
 } from "./Dashboard.stories";
 import { useTelemetry as useTelemetryImported } from "../../../../../../hooks/useTelemetry";
 import { deleteAllCookies } from "../../../../../../functions/client/deleteAllCookies";
@@ -82,7 +83,10 @@ it("switches between tab panels", async () => {
 
 it("shows consistent counts in the chart on the fixed tab", async () => {
   const user = userEvent.setup();
-  const ComposedDashboard = composeStory(DashboardNonUsResolvedBreaches, Meta);
+  const ComposedDashboard = composeStory(
+    DashboardNonUsUnresolvedBreaches,
+    Meta,
+  );
   render(<ComposedDashboard />);
 
   const tabFixedTrigger = screen.getByRole("tab", {
@@ -96,7 +100,7 @@ it("shows consistent counts in the chart on the fixed tab", async () => {
   });
   expect(chartElement).toBeInTheDocument();
   const chartCaption = screen.getByText(
-    `This chart shows the total exposures that are fixed (⁨${fixedCounter}⁩ out of ⁨81⁩)`,
+    `This chart shows the total exposures that are fixed (⁨${fixedCounter}⁩ out of ⁨42⁩)`,
   );
   expect(chartCaption).toBeInTheDocument();
 });
@@ -635,4 +639,20 @@ it("send telemetry when users click on data breach link", async () => {
   // collapses first row
   await user.click(expandButtons[0]);
   expect(expandButtons[0]).toHaveAttribute("aria-expanded", "false");
+});
+
+it("logs a warning and error in the story for an invalid user state", () => {
+  const ComposedDashboard = composeStory(DashboardInvalidState, Meta);
+
+  const errorLogSpy = jest.spyOn(global.console, "error").mockImplementation();
+  const warnLogSpy = jest.spyOn(global.console, "warn").mockImplementation();
+  render(<ComposedDashboard />);
+
+  expect(errorLogSpy).toHaveBeenCalledWith(
+    `InvalidUserState: {"relevantGuidedStep":{"href":"/user/dashboard","id":"Done","eligible":true,"completed":false},"hasExposures":true,"hasUnresolvedBreaches":true}`,
+  );
+  expect(warnLogSpy).toHaveBeenCalledWith(
+    "No matching condition for dashboard state found.",
+  );
+  warnLogSpy.mockReset();
 });

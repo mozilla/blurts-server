@@ -24,6 +24,7 @@ export const breachOptions = {
   empty: "No data breaches",
   unresolved: "With unresolved data breaches",
   resolved: "All data breaches resolved",
+  invalid: "Invalid state (error case)",
 };
 export type DashboardWrapperProps = (
   | {
@@ -79,13 +80,39 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
     isResolved: false,
   });
 
+  const mockedUnresolvedBreach2: SubscriberBreach = createRandomBreach({
+    dataClasses: ["email-addresses", "ip-addresses", "phone-numbers"],
+    addedDate: new Date("2023-06-18T14:48:00.000Z"),
+    dataClassesEffected: [
+      {
+        "email-addresses": [
+          "email1@gmail.com",
+          "email2@gmail.com",
+          "email3@gmail.com",
+        ],
+      },
+      { "ip-addresses": 1 },
+      { "phone-numbers": 1 },
+    ],
+    isResolved: false,
+  });
+
   let breaches: SubscriberBreach[] = [];
 
   if (props.breaches === "resolved") {
     breaches = [mockedResolvedBreach];
   }
   if (props.breaches === "unresolved") {
-    breaches = [mockedResolvedBreach, mockedUnresolvedBreach];
+    breaches = [
+      mockedResolvedBreach,
+      mockedUnresolvedBreach,
+      mockedUnresolvedBreach2,
+    ];
+  }
+
+  if (props.breaches === "invalid") {
+    // Invalid state since it does not have data classes effected
+    breaches = [createRandomBreach({ isResolved: false })];
   }
 
   const mockedAnnouncements: UserAnnouncementWithDetails[] = [
@@ -168,15 +195,6 @@ const meta: Meta<typeof DashboardWrapper> = {
 export default meta;
 type Story = StoryObj<typeof DashboardWrapper>;
 
-export const DashboardInvalidPremiumUserNoScanResolvedBreaches: Story = {
-  name: "Invalid state: US user, with Premium, with no scan, with resolved breaches",
-  args: {
-    countryCode: "us",
-    premium: true,
-    breaches: "resolved",
-  },
-};
-
 export const DashboardNonUsNoBreaches: Story = {
   name: "Non-US user, with 0 breaches",
   args: {
@@ -198,5 +216,13 @@ export const DashboardNonUsResolvedBreaches: Story = {
   args: {
     countryCode: "nl",
     breaches: "resolved",
+  },
+};
+
+export const DashboardInvalidState: Story = {
+  name: "Invalid state",
+  args: {
+    countryCode: "nl",
+    breaches: "invalid",
   },
 };
