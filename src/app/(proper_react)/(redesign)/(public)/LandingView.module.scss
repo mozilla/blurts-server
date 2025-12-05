@@ -358,46 +358,6 @@
   }
 }
 
-.scanLimitWrapper {
-  display: flex;
-  flex-direction: column;
-  gap: tokens.$layout-xs;
-
-  .info {
-    display: flex;
-    flex-direction: column;
-    gap: tokens.$spacing-md;
-
-    @media screen and (min-width: tokens.$screen-md) {
-      flex-direction: row;
-    }
-
-    b {
-      @include tokens.uppercase-only-english;
-      white-space: nowrap;
-      align-self: flex-start;
-      border-radius: tokens.$border-radius-sm;
-      font: tokens.$text-body-sm;
-      font-weight: 600;
-      background: tokens.$color-purple-70;
-      color: tokens.$color-white;
-      padding: tokens.$spacing-sm tokens.$spacing-md;
-
-      @media screen and (min-width: tokens.$screen-md) {
-        align-self: center;
-      }
-    }
-  }
-}
-
-.waitlistCta {
-  align-self: flex-start;
-
-  @media screen and (min-width: tokens.$screen-md) {
-    min-width: 200px; // width of waitlist button
-  }
-}
-
 .signUpEncouragementWrapper {
   display: flex;
   flex-direction: column;

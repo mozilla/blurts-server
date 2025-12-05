@@ -24,26 +24,6 @@ export function modifyAttributionsForUrl(
   return `${originalUrl.href.split("?")[0]}?${searchParams.toString()}`;
 }
 
-export function modifyAttributionsForUrlSearchParams(
-  searchParams: URLSearchParams,
-  replaceValues: Record<string, string>,
-  defaultValues: Record<string, string>,
-) {
-  // overwrite the three params below
-  for (const k in replaceValues) {
-    searchParams.set(k, replaceValues[k]);
-  }
-
-  // placeholder utms if acquisition source is unknown
-  for (const k in defaultValues) {
-    if (!searchParams.has(k)) {
-      searchParams.append(k, defaultValues[k]);
-    }
-  }
-
-  return searchParams;
-}
-
 export const containsExpectedSearchParams = (
   expectedSearchParams: Record<string, string>,
   searchParams: URLSearchParams,

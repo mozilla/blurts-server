@@ -10,7 +10,6 @@ import Image from "next/image";
 import { Session } from "next-auth";
 import styles from "./MobileShell.module.scss";
 import MonitorLogo from "../images/monitor-logo.svg";
-import { UpsellBadge } from "../../components/client/toolbar/UpsellBadge";
 import { CloseBigIcon, ListIcon } from "../../components/server/Icons";
 import { UserMenu } from "../../components/client/toolbar/UserMenu";
 import { useL10n } from "../../hooks/l10n";
@@ -21,7 +20,6 @@ import { CONST_SETTINGS_TAB_SLUGS } from "../../../constants";
 import { FeatureFlagName } from "../../../db/tables/featureFlags";
 import { SignInButton } from "../../components/client/SignInButton";
 import { TopNavBar } from "./(public)/TopNavBar";
-import { ExperimentData } from "../../../telemetry/generated/nimbus/experiments";
 import { NavbarList as NavbarListAuthenticated } from "./Shell/ShellNavbarList";
 import { UserAnnouncementWithDetails } from "../../../db/tables/user_announcements";
 import { AnnouncementDialog } from "../../components/client/toolbar/AnnouncementDialog";
@@ -29,15 +27,10 @@ import { AnnouncementDialog } from "../../components/client/toolbar/Announcement
 export type Props = {
   countryCode: string;
   session: Session | null;
-  monthlySubscriptionUrl: string;
-  subscriptionBillingAmount: {
-    monthly: number;
-  };
-  fxaSettingsUrl: string;
   children: ReactNode;
   enabledFeatureFlags: FeatureFlagName[];
-  experimentData: ExperimentData["Features"];
   announcements?: UserAnnouncementWithDetails[] | null;
+  fxaSettingsUrl: string;
 };
 
 export const MobileShell = (props: Props) => {
@@ -49,7 +42,6 @@ export const MobileShell = (props: Props) => {
   const isAuthenticated =
     typeof props.session?.user.subscriber?.fxa_uid === "string";
   const isOnDashboard = pathname === "/user/dashboard";
-  const isOnSubscriptionPlans = pathname === "/subscription-plans";
 
   useEffect(() => {
     setIsExpanded(false);
@@ -95,45 +87,42 @@ export const MobileShell = (props: Props) => {
             />
           </Link>
         </div>
-        {!isOnSubscriptionPlans && (
-          <div className={styles.headerEnd}>
-            {/* c8 ignore next 3 */}
-            {props.announcements && (
-              <AnnouncementDialog announcements={props.announcements} />
+
+        <div className={styles.headerEnd}>
+          {/* c8 ignore next 3 */}
+          {props.announcements && (
+            <AnnouncementDialog announcements={props.announcements} />
+          )}
+          {props.session ? (
+            <UserMenu
+              user={props.session?.user}
+              fxaSettingsUrl={props.fxaSettingsUrl}
+            />
+          ) : (
+            <SignInButton
+              className={styles.signInButton}
+              variant="secondary"
+              small
+            />
+          )}
+          <button
+            onClick={() => setIsExpanded(!isExpanded)}
+            className={styles.menuToggleButton}
+            title={l10n.getString(
+              isExpanded
+                ? "main-nav-button-collapse-tooltip"
+                : "main-nav-button-expand-tooltip",
             )}
-            {props.session ? (
-              <UserMenu
-                user={props.session?.user}
-                fxaSettingsUrl={props.fxaSettingsUrl}
+          >
+            {isExpanded ? (
+              <CloseBigIcon
+                alt={l10n.getString("main-nav-button-collapse-label")}
               />
             ) : (
-              <SignInButton
-                className={styles.signInButton}
-                variant="secondary"
-                small
-              />
+              <ListIcon alt={l10n.getString("main-nav-button-expand-label")} />
             )}
-            <button
-              onClick={() => setIsExpanded(!isExpanded)}
-              className={styles.menuToggleButton}
-              title={l10n.getString(
-                isExpanded
-                  ? "main-nav-button-collapse-tooltip"
-                  : "main-nav-button-expand-tooltip",
-              )}
-            >
-              {isExpanded ? (
-                <CloseBigIcon
-                  alt={l10n.getString("main-nav-button-collapse-label")}
-                />
-              ) : (
-                <ListIcon
-                  alt={l10n.getString("main-nav-button-expand-label")}
-                />
-              )}
-            </button>
-          </div>
-        )}
+          </button>
+        </div>
       </header>
       <div className={styles.nonHeader}>
         <nav
@@ -147,13 +136,6 @@ export const MobileShell = (props: Props) => {
                 countryCode={props.countryCode}
                 enabledFeatureFlags={props.enabledFeatureFlags}
               />
-              <div className={styles.premiumCta}>
-                <UpsellBadge
-                  // The last scan date is too noisy on mobile, so don't show it there:
-                  lastScanDate={null}
-                  enabledFeatureFlags={props.enabledFeatureFlags}
-                />
-              </div>
             </div>
           ) : (
             <div className={styles.mainMenu}>
@@ -222,13 +204,6 @@ export const MobileShell = (props: Props) => {
                       </ul>
                     </li>
                   </ul>
-                  <div className={styles.premiumCta}>
-                    <UpsellBadge
-                      // The last scan date is too noisy on mobile, so don't show it there:
-                      lastScanDate={null}
-                      enabledFeatureFlags={props.enabledFeatureFlags}
-                    />
-                  </div>
                 </>
               ) : (
                 <TopNavBar />

@@ -10,7 +10,7 @@ import { axe } from "jest-axe";
 import Meta, {
   ExposuresFilterDefault,
 } from "./stories/ExposuresFilter.stories";
-import { defaultExperimentData } from "../../../telemetry/generated/nimbus/experiments";
+import { useTelemetry as useTelemetryImported } from "../../hooks/useTelemetry";
 
 jest.mock("next/navigation", () => ({
   useRouter: jest.fn(),
@@ -18,6 +18,14 @@ jest.mock("next/navigation", () => ({
 }));
 
 jest.mock("../../hooks/useTelemetry");
+// We need to override the types of `useTelemetry` here, because otherwise
+// Jest infers incorrect types in `toHaveBeenCalledWith`, and throws an error.
+// See https://github.com/jestjs/jest/issues/15703
+const useTelemetry = useTelemetryImported as () => (
+  module: string,
+  eventName: string,
+  data: Record<string, string>,
+) => void;
 
 it("passes the axe accessibility test suite", async () => {
   const ExposuresFilter = composeStory(ExposuresFilterDefault, Meta);
@@ -25,89 +33,8 @@ it("passes the axe accessibility test suite", async () => {
   expect(await axe(container)).toHaveNoViolations();
 }, 10_000);
 
-it("shows and hides the exposure type explainer", async () => {
-  const user = userEvent.setup();
-  const ExposuresFilter = composeStory(ExposuresFilterDefault, Meta);
-  render(<ExposuresFilter enabledFeatureFlags={[]} />);
-
-  const exposureTypeHeader = screen.getByText("Exposure type");
-  const explainerTrigger = within(exposureTypeHeader).getByRole("button", {
-    name: "Open modal",
-  });
-  await user.click(explainerTrigger);
-
-  const explainerDialog = screen.getByRole("dialog");
-  expect(explainerDialog).toBeInTheDocument();
-  const explainerCloseButton = within(explainerDialog).getByRole("button", {
-    name: "OK",
-  });
-  await user.click(explainerCloseButton);
-  expect(explainerDialog).not.toBeInTheDocument();
-});
-
-it("shows and hides the removal time explainer dialog by clicking the “Got it” button to Plus subscribers", async () => {
-  const user = userEvent.setup();
-  const ExposuresFilter = composeStory(ExposuresFilterDefault, Meta);
-  render(
-    <ExposuresFilter
-      isPlusSubscriber
-      enabledFeatureFlags={["DataBrokerRemovalTimeEstimateLabel"]}
-      experimentData={{
-        ...defaultExperimentData["Features"],
-        "data-broker-removal-time-estimates": {
-          enabled: true,
-        },
-      }}
-    />,
-  );
-
-  const exposureTypeHeader = screen.getByText("Removal time");
-  const explainerTrigger = within(exposureTypeHeader).getByRole("button", {
-    name: "Open modal",
-  });
-  await user.click(explainerTrigger);
-
-  const explainerDialog = screen.getByRole("dialog");
-  expect(explainerDialog).toBeInTheDocument();
-  const explainerCloseButton = within(explainerDialog).getByRole("button", {
-    name: "Got it",
-  });
-  await user.click(explainerCloseButton);
-  expect(explainerDialog).not.toBeInTheDocument();
-});
-
-it("shows and hides the removal time explainer dialog by clicking the close button to Plus subscribers", async () => {
-  const user = userEvent.setup();
-  const ExposuresFilter = composeStory(ExposuresFilterDefault, Meta);
-  render(
-    <ExposuresFilter
-      isPlusSubscriber
-      enabledFeatureFlags={["DataBrokerRemovalTimeEstimateLabel"]}
-      experimentData={{
-        ...defaultExperimentData["Features"],
-        "data-broker-removal-time-estimates": {
-          enabled: true,
-        },
-      }}
-    />,
-  );
-
-  const exposureTypeHeader = screen.getByText("Removal time");
-  const explainerTrigger = within(exposureTypeHeader).getByRole("button", {
-    name: "Open modal",
-  });
-  await user.click(explainerTrigger);
-
-  const explainerDialog = screen.getByRole("dialog");
-  expect(explainerDialog).toBeInTheDocument();
-  const explainerCloseButton = screen.getByRole("button", {
-    name: "Close modal",
-  });
-  await user.click(explainerCloseButton);
-  expect(explainerDialog).not.toBeInTheDocument();
-});
-
 it("shows and hides the status explainer", async () => {
+  const mockedRecord = useTelemetry();
   const user = userEvent.setup();
   const ExposuresFilter = composeStory(ExposuresFilterDefault, Meta);
   render(<ExposuresFilter enabledFeatureFlags={[]} />);
@@ -117,6 +44,13 @@ it("shows and hides the status explainer", async () => {
     name: "Open modal",
   });
   await user.click(explainerTrigger);
+  expect(mockedRecord).toHaveBeenCalledWith(
+    "popup",
+    "view",
+    expect.objectContaining({
+      popup_id: "exposure_status_info",
+    }),
+  );
 
   const explainerDialog = screen.getByRole("dialog");
   expect(explainerDialog).toBeInTheDocument();

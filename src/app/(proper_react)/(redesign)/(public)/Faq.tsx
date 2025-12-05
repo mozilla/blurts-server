@@ -10,11 +10,7 @@ import styles from "./Faq.module.scss";
 import { CloseBigIcon } from "../../../components/server/Icons";
 import { useTelemetry } from "../../../hooks/useTelemetry";
 import { useButton, useFocusRing } from "react-aria";
-import {
-  CONST_URL_SUMO_MONITOR_FAQ,
-  CONST_ONEREP_DATA_BROKER_COUNT,
-  CONST_URL_SUMO_MONITOR_PLUS,
-} from "../../../../constants";
+import { CONST_URL_SUMO_MONITOR_FAQ } from "../../../../constants";
 import { FeatureFlagName } from "../../../../db/tables/featureFlags";
 
 export type FaqItemProps = {
@@ -64,13 +60,7 @@ const FaqItem = (props: FaqItemProps) => {
   );
 };
 
-export const FaqSection = ({
-  isEligibleForPremium,
-  enabledFeatureFlags,
-}: {
-  isEligibleForPremium: boolean;
-  enabledFeatureFlags: FeatureFlagName[];
-}) => {
+export const FaqSection = ({}: { enabledFeatureFlags: FeatureFlagName[] }) => {
   const l10n = useL10n();
   const recordTelemetry = useTelemetry();
   const [expandedQuestion, setExpandedQuestion] = useState<string | null>(null);
@@ -105,68 +95,6 @@ export const FaqSection = ({
         {l10n.getString("landing-all-faq-see-all")}
       </a>
       <dl>
-        {isEligibleForPremium && (
-          <FaqItem
-            question={l10n.getString(
-              "landing-premium-what-websites-sell-info-qn",
-            )}
-            answer={l10n.getString(
-              "landing-premium-what-websites-sell-info-ans",
-            )}
-            isExpanded={expandedQuestion === "premium-what-websites-sell-info"}
-            onExpandAnswer={() =>
-              handleExpandAnswer("premium-what-websites-sell-info")
-            }
-            id="premium-what-websites-sell-info"
-          />
-        )}
-        {isEligibleForPremium && (
-          <FaqItem
-            question={l10n.getString(
-              "landing-premium-continuous-data-removal-qn",
-            )}
-            answer={
-              /* c8 ignore start */
-              enabledFeatureFlags.includes("MaskDataBrokerCount")
-                ? l10n.getFragment(
-                    "landing-premium-continuous-data-removal-ans-masked",
-                    {
-                      elems: {
-                        learn_more_link: (
-                          <a
-                            href={CONST_URL_SUMO_MONITOR_PLUS}
-                            target="_blank"
-                          />
-                        ),
-                      },
-                    },
-                  )
-                : /* c8 ignore stop */
-                  l10n.getFragment(
-                    "landing-premium-continuous-data-removal-ans",
-                    {
-                      vars: {
-                        data_broker_sites_total_num:
-                          CONST_ONEREP_DATA_BROKER_COUNT,
-                      },
-                      elems: {
-                        learn_more_link: (
-                          <a
-                            href={CONST_URL_SUMO_MONITOR_PLUS}
-                            target="_blank"
-                          />
-                        ),
-                      },
-                    },
-                  )
-            }
-            isExpanded={expandedQuestion === "premium-continuous-data-removal"}
-            onExpandAnswer={() =>
-              handleExpandAnswer("premium-continuous-data-removal")
-            }
-            id="premium-continuous-data-removal"
-          />
-        )}
         {/* Ignore the remaining tests as testing the first two FAQ questions are sufficient */}
         {/* c8 ignore start */}
         <FaqItem

@@ -14,7 +14,6 @@ export default meta;
 type Story = StoryObj<typeof ExposuresFilter>;
 
 const initialFilterState: FilterState = {
-  exposureType: "show-all-exposure-type",
   dateFound: "show-all-date-found",
 };
 
@@ -22,6 +21,5 @@ export const ExposuresFilterDefault: Story = {
   args: {
     initialFilterValues: initialFilterState,
     filterValues: initialFilterState,
-    isEligibleForPremium: true,
   },
 };

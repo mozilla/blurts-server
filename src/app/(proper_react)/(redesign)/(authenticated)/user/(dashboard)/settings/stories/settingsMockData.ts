@@ -2,14 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { faker, fakerEN_US } from "@faker-js/faker";
-import {
-  EmailAddressRow,
-  OnerepProfileRow,
-  SubscriberRow,
-} from "knex/types/tables";
-import { OnerepProfileAddress } from "knex/types/tables";
-import { OnerepUsPhoneNumber } from "../../../../../../../functions/server/onerep";
+import { EmailAddressRow, SubscriberRow } from "knex/types/tables";
 import { SerializedSubscriber } from "../../../../../../../../next-auth";
 import { Session } from "next-auth";
 import { UserAnnouncementWithDetails } from "../../../../../../../../db/tables/user_announcements";
@@ -104,66 +97,6 @@ export const mockedSubscriber: SubscriberRow = {
   churn_prevention_email_sent_at: null,
 };
 
-export const mockedSubscriberWithPlus = {
-  ...mockedSubscriber,
-  fxa_profile_json: {
-    ...mockedSubscriber.fxa_profile_json,
-    subscriptions: [],
-  },
-};
-
-export const mockedProfileDataMin: OnerepProfileRow = {
-  id: 1234,
-  onerep_profile_id: 5678,
-  name_suffix: "",
-  first_name: "First01",
-  last_name: "Last01",
-  middle_name: null,
-  first_names: [],
-  middle_names: [],
-  last_names: [],
-  city_name: "Tulsa",
-  state_code: "OK",
-  addresses: [{ city: "Tulsa", state: "OK" }],
-  phone_numbers: [],
-  date_of_birth: new Date(),
-  created_at: new Date(),
-  updated_at: new Date(),
-};
-
-export const mockedProfileDataMax: OnerepProfileRow = {
-  ...mockedProfileDataMin,
-  middle_name: faker.person.middleName(),
-  first_names: Array.from({ length: 4 }, () => faker.person.firstName()),
-  middle_names: Array.from({ length: 4 }, () => faker.person.middleName()),
-  last_names: Array.from({ length: 4 }, () => faker.person.lastName()),
-  phone_numbers: Array.from(
-    { length: 10 },
-    () =>
-      faker.phone
-        .number({ style: "international" })
-        .replace("+1", "") as OnerepUsPhoneNumber,
-  ),
-  addresses: Array.from({ length: 10 }, () => ({
-    city: fakerEN_US.location.city(),
-    state: fakerEN_US.location.state({ abbreviated: true }),
-  })) as OnerepProfileAddress[],
-};
-
-export const mockedSubscriptionBillingAmount = {
-  yearly: 13.37,
-  monthly: 42.42,
-};
-export const mockedPlusSubscriberEmailPreferences = {
-  id: 1337,
-  primary_email: "primary@example.com",
-  unsubscribe_token: "495398jfjvjfdj",
-  monthly_monitor_report_free: false,
-  monthly_monitor_report_free_at: new Date("1337-04-02T04:02:42.000Z"),
-  monthly_monitor_report: true,
-  monthly_monitor_report_at: new Date("1337-04-02T04:02:42.000Z"),
-} as SubscriberEmailPreferencesOutput;
-
 export const mockedFreeSubscriberEmailPreferences = {
   id: 1337,
   primary_email: "primary@example.com",
@@ -184,6 +117,19 @@ export const mockedSecondaryVerifiedEmail: EmailAddressRow = {
   updated_at: new Date("1337-04-02T04:02:42.000Z"),
   verification_token: "arbitrary_token",
 };
+
+export function mockRandomEmail(id: number) {
+  return {
+    id,
+    email: `email${id}@example.com`,
+    sha1: "arbitrary string",
+    subscriber_id: subscriberId,
+    verified: true,
+    created_at: new Date("1337-04-02T04:02:42.000Z"),
+    updated_at: new Date("1337-04-02T04:02:42.000Z"),
+    verification_token: "arbitrary_token",
+  } as EmailAddressRow;
+}
 
 export const mockedSerializedSubscriber: SerializedSubscriber = {
   id: subscriberId,
