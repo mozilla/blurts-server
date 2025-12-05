@@ -747,22 +747,6 @@ describe("Settings page redesign", () => {
       expect(affectedRadioButton).toBeInTheDocument();
       expect(affectedRadioButton).toHaveAttribute("aria-checked", "true");
     });
-
-    it("refreshes the session token after changing email alert preferences, to ensure the latest pref is available in it", async () => {
-      global.fetch = jest.fn().mockResolvedValueOnce({ ok: true });
-      const user = userEvent.setup();
-      const ComposedStory = composeStory(
-        SettingsEditNotifications,
-        SettingsMeta,
-      );
-      render(<ComposedStory />);
-      const affectedRadioButton = screen.getByLabelText(
-        "Send breach alerts to the affected email address",
-      );
-      await act(async () => {
-        await user.click(affectedRadioButton);
-      });
-    });
   });
 
   describe("activeTab prop fallback", () => {
