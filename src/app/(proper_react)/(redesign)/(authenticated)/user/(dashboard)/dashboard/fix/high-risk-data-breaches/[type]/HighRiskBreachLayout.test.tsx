@@ -3,7 +3,8 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { it, expect } from "@jest/globals";
-import { render, screen } from "@testing-library/react";
+import { act, render, screen } from "@testing-library/react";
+import { userEvent } from "@testing-library/user-event";
 import { composeStory } from "@storybook/react";
 import { axe } from "jest-axe";
 import { setupJestCanvasMock } from "jest-canvas-mock";
@@ -129,4 +130,50 @@ it("shows the high-risk celebration view, next step is passwords, no next step",
     name: "Go to your Dashboard",
   });
   expect(buttonLink).toHaveAttribute("href", "/user/dashboard");
+});
+
+it("opens the fraud alert modal when Open modal button is clicked", async () => {
+  const user = userEvent.setup();
+  const ComposedComponent = composeStory(SsnStory, Meta);
+  // Suppress navigation errors from jsdom
+  jest.spyOn(console, "error").mockImplementation(() => undefined);
+  render(<ComposedComponent />);
+
+  // The FraudAlertModal is only rendered for SSN breach type
+  // The button has aria-label="Open modal" and aria-describedby="ssnModalTitle"
+  const learnMoreButton = screen.getByLabelText("Open modal");
+  await act(async () => {
+    await user.click(learnMoreButton);
+  });
+
+  const dialog = screen.getByRole("dialog");
+  expect(dialog).toBeInTheDocument();
+  // Verify the dialog contains a title element
+  expect(dialog).toHaveAttribute("aria-labelledby");
+});
+
+it("closes the fraud alert modal when close button is clicked", async () => {
+  const user = userEvent.setup();
+  const ComposedComponent = composeStory(SsnStory, Meta);
+  // Suppress navigation errors from jsdom
+  jest.spyOn(console, "error").mockImplementation(() => undefined);
+  render(<ComposedComponent />);
+
+  // Open the modal first
+  const learnMoreButton = screen.getByLabelText("Open modal");
+  await act(async () => {
+    await user.click(learnMoreButton);
+  });
+
+  expect(screen.getByRole("dialog")).toBeInTheDocument();
+
+  // Close the modal
+  const closeButton = screen.getByRole("button", {
+    name: "Close modal",
+  });
+  await act(async () => {
+    await user.click(closeButton);
+  });
+
+  expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
 });

@@ -2,11 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import {
-  EmailAddressRow,
-  OnerepProfileRow,
-  SubscriberRow,
-} from "knex/types/tables";
+import { EmailAddressRow, SubscriberRow } from "knex/types/tables";
 import { fn } from "storybook/test";
 import { SettingsView, TabType } from "../View";
 import { Shell } from "../../../../../Shell/Shell";
@@ -34,9 +30,7 @@ export type SettingsWrapperProps = {
   isMonthlySubscriber: boolean;
   subscriber: SubscriberRow;
   emailAddresses?: EmailAddressRow[];
-  profileData?: OnerepProfileRow;
   data?: SubscriberEmailPreferencesOutput;
-  hasPlus?: boolean;
 };
 
 export const mockedActions = {
@@ -57,7 +51,7 @@ export const SettingsWrapper = (props: SettingsWrapperProps) => {
       metricsEnabled: false,
       avatar: "https://profile.stage.mozaws.net/v1/avatar/e",
       avatarDefault: true,
-      subscriptions: props.hasPlus ? ["monitor"] : [],
+      subscriptions: [],
     },
     subscriber: {
       id: 42,
