@@ -4,7 +4,7 @@
 
 import { it, expect } from "@jest/globals";
 import { composeStory } from "@storybook/react";
-import { render, screen, within } from "@testing-library/react";
+import { act, render, screen, within } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
 import { axe } from "jest-axe";
 import { signIn, useSession } from "next-auth/react";
@@ -15,6 +15,7 @@ import Meta, {
   LandingNonUsFr,
 } from "./LandingView.stories";
 import { deleteAllCookies } from "../../../functions/client/deleteAllCookies";
+import { mockIsIntersecting } from "react-intersection-observer/test-utils";
 
 jest.mock("next-auth/react", () => {
   return {
@@ -78,6 +79,34 @@ it("passes the user's email address to the identity provider", async () => {
     "fxa",
     expect.any(Object),
     expect.stringContaining(`email=mail%40example.com`),
+  );
+});
+
+it("sends telemetry when a free scan CTA is shown in the viewport", async () => {
+  const mockedRecord = useTelemetry();
+  const ComposedDashboard = composeStory(LandingNonUs, Meta);
+  render(<ComposedDashboard />);
+
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the test:
+  jest.spyOn(console, "error").mockImplementation(() => undefined);
+
+  // The useViewTelemetry ref is attached to the form, not the button
+  const submitButton = screen.getAllByRole("button", {
+    name: "Get free scan",
+  });
+  const form = submitButton[0].closest("form");
+  expect(form).toBeInTheDocument();
+
+  // Trigger intersection on the form element
+  await act(async () => {
+    mockIsIntersecting(form!, true);
+  });
+
+  expect(mockedRecord).toHaveBeenCalledWith(
+    "ctaButton",
+    "view",
+    expect.objectContaining({ button_id: "clicked_get_scan_header" }),
   );
 });
 
