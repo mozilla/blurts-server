@@ -39,7 +39,8 @@ enum AllowedToggleColumns {
   ShowRealBreaches = "show_real_breaches",
   ShowCustomBreaches = "show_custom_breaches",
 }
-
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function getAllQaCustomBreaches(emailHashPrefix: string) {
   const res = (
     await knex("qa_custom_breaches")
@@ -53,8 +54,6 @@ async function getAllQaCustomBreaches(emailHashPrefix: string) {
   return res;
 }
 
-// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
-/* c8 ignore start */
 function formatQaBreach(breach: QaBreachData) {
   const { emailHashPrefix: _, ...rest } = breach;
   return rest as HibpLikeDbBreach;
