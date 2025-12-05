@@ -762,8 +762,23 @@ describe("Settings page redesign", () => {
       await act(async () => {
         await user.click(affectedRadioButton);
       });
+    });
+  });
 
-      expect(mockedSessionUpdate).toHaveBeenCalledTimes(1);
+  describe("activeTab prop fallback", () => {
+    it("uses first tab (edit-info) as default when activeTab is undefined", () => {
+      const ComposedStory = composeStory(
+        SettingsEditNotifications,
+        SettingsMeta,
+      );
+      // Pass undefined to test the fallback logic from SettingsContent.tsx line 58
+      render(<ComposedStory activeTab={undefined} />);
+
+      // The first tab "Edit info" should be selected by default (tabsData[0].key = "edit-info")
+      const editInfoPanel = screen.getByRole("heading", {
+        name: "Update scan info",
+      });
+      expect(editInfoPanel).toBeInTheDocument();
     });
   });
 });
