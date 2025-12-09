@@ -41,6 +41,7 @@ import { getBreaches } from "../../app/functions/server/getBreaches";
 import { getExperimentationIdFromSubscriber } from "../../app/functions/server/getExperimentationId";
 import { getExperiments } from "../../app/functions/server/getExperiments";
 import { getLocale } from "../../app/functions/universal/getLocale";
+import { config } from "../../config";
 
 let sentEmails = 0;
 process.on("SIGINT", () => {
@@ -61,20 +62,11 @@ async function tearDown() {
 }
 
 async function run() {
-  let batchSize = Number.parseInt(
-    process.env.MONTHLY_ACTIVITY_FREE_EMAIL_BATCH_SIZE ?? "10",
-    10,
+  logger.info(
+    `Getting free subscribers with batch size: ${config.monthlyActivityFreeEmailBatchSize}`,
   );
-  if (Number.isNaN(batchSize)) {
-    batchSize = 10;
-    logger.warn(
-      `Could not send monthly activity emails, because the env var MONTHLY_ACTIVITY_FREE_EMAIL_BATCH_SIZE has a non-numeric value: [${process.env.MONTHLY_ACTIVITY_FREE_EMAIL_BATCH_SIZE}].`,
-    );
-  }
-
-  logger.info(`Getting free subscribers with batch size: ${batchSize}`);
   const subscribersToEmail = await getFreeSubscribersWaitingForMonthlyEmail(
-    batchSize,
+    config.monthlyActivityFreeEmailBatchSize,
     ["US"],
   );
   // Using `getFeatureFlagData` instead of `getEnabledFeatureFlags` here to prevent fetching them for every subscriber.
