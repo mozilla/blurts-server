@@ -4,12 +4,13 @@
 
 // Only process.env variables starting with `NEXT_PUBLIC_` will be shipped to the client:
 import "./app/functions/server/notInClientComponent";
-import * as dotenvFlow from "dotenv-flow";
+import { resolve } from "node:path";
+import { loadEnvConfig } from "@next/env";
 
 if (typeof process.env.NEXT_RUNTIME !== "string") {
   // If we're in Next.js, our `.env` files are already set up to be loaded.
   // Outside of Next.js (e.g. in cron jobs), however, we need to explicitly load them.
-  dotenvFlow.config();
+  loadEnvConfig(resolve(__filename, "../"));
 }
 
 /**

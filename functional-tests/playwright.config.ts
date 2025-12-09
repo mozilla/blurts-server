@@ -9,12 +9,11 @@ import { defineConfig, devices, type Project } from "@playwright/test";
 import { FeatureFlagName } from "../src/db/tables/featureFlags";
 /**
  * Read environment variables from file.
- * https://www.npmjs.com/package/dotenv-flow
  */
-import * as dotenvFlow from "dotenv-flow";
+import "../src/config";
 import { createTestClientRegionToken } from "../src/app/functions/server/testCountryCodeToken";
 import { getBaseTestEnvUrl } from "./utils/environment";
-dotenvFlow.config();
+
 /**
  * @see https://playwright.dev/docs/test-configuration
  */
