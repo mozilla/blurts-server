@@ -70,6 +70,7 @@
     "@grpc/grpc-js": "1.14.1",
     "@leeoniya/ufuzzy": "^1.0.19",
     "@mozilla/glean": "^5.0.6",
+    "@next/env": "^16.0.6",
     "@next/third-parties": "15.5.4",
     "@sentry/core": "^10.30.0",
     "@sentry/nextjs": "^10.30.0",
