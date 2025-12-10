@@ -17,6 +17,7 @@ import {
   ExposuresFilter,
   FilterState,
 } from "../../../../../../components/client/ExposuresFilter";
+import AllFixedIllustration from "./images/dashboard-all-fixed.svg";
 import { getDashboardSummary } from "../../../../../../functions/server/dashboard";
 import { getExposureStatus } from "../../../../../../components/server/StatusPill";
 import { TabList } from "../../../../../../components/client/TabList";
@@ -166,6 +167,7 @@ export const View = (props: Props) => {
     },
   );
   const noUnresolvedExposures = exposureCardElems.length === 0;
+
   const dataSummary = getDashboardSummary(
     props.userBreaches,
     props.enabledFeatureFlags,
@@ -208,7 +210,6 @@ export const View = (props: Props) => {
       </>
     );
   };
-
   const TabContentFixed = () => (
     <>
       <h2 className={styles.exposuresAreaHeadline}>
@@ -217,6 +218,16 @@ export const View = (props: Props) => {
     </>
   );
   const getZeroStateIndicator = () => {
+    if (!hasUnresolvedBreaches && hasExposures) {
+      return (
+        <>
+          <Image src={AllFixedIllustration} alt="" />
+          <strong>
+            {l10n.getString("dashboard-exposures-all-fixed-label")}
+          </strong>
+        </>
+      );
+    }
     return (
       <>
         <Image src={NoExposuresIllustration} alt="" />
