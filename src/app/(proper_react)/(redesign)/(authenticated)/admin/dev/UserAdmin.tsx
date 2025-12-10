@@ -7,12 +7,6 @@
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import styles from "./UserAdmin.module.scss";
-import { Button } from "../../../../../components/client/Button";
-import {
-  type UserStateAction,
-  type PutUserStateRequestBody,
-  GetUserStateResponseBody,
-} from "../../../../../api/v1/admin/users/[fxaUid]/route";
 import { InputField } from "../../../../../components/client/InputField";
 import { lookupFxaUid } from "./actions";
 
@@ -43,13 +37,11 @@ export const DataTable = ({
   );
 };
 
-export const UserAdmin = ({ isLocal }: { isLocal: boolean }) => {
+export const UserAdmin = () => {
   const session = useSession();
   const [isLoading, setIsLoading] = useState(false);
   const [emailInput, setEmailInput] = useState("");
   const [status, setStatus] = useState<null | string>(null);
-  const [subscriberData, setSubscriberData] =
-    useState<GetUserStateResponseBody | null>(null);
 
   useEffect(() => {
     if (emailInput.length <= 5) {
@@ -65,14 +57,8 @@ export const UserAdmin = ({ isLocal }: { isLocal: boolean }) => {
       });
       if (!response.ok) {
         setIsLoading(false);
-        setSubscriberData(null);
         return;
       }
-      const data: GetUserStateResponseBody = await response.json();
-      if (data.success) {
-        setSubscriberData(data);
-      }
-
       setIsLoading(false);
     });
 
@@ -83,37 +69,7 @@ export const UserAdmin = ({ isLocal }: { isLocal: boolean }) => {
 
   const onChangeEmail = (email: string) => {
     setStatus(null);
-    setSubscriberData(null);
     setEmailInput(email);
-  };
-
-  const performAction = async (action: UserStateAction) => {
-    setStatus(null);
-
-    const emailHash = await getSha1(emailInput);
-    const fxaUid = await lookupFxaUid(emailHash);
-
-    const requestBody: PutUserStateRequestBody = {
-      actions: [action],
-    };
-    const response = await fetch(`/api/v1/admin/users/${fxaUid}`, {
-      method: "PUT",
-      body: JSON.stringify(requestBody),
-    });
-
-    if (!response.ok) {
-      setStatus(
-        `[${action}] failed: [${response.status}] [${response.statusText}].`,
-      );
-      return;
-    }
-
-    setStatus(`[${action}] succeeded for email address [${emailInput}].`);
-    const refreshResponse = await fetch(`/api/v1/admin/users/${fxaUid}`);
-    if (refreshResponse.ok) {
-      const refreshData = await refreshResponse.json();
-      setSubscriberData(refreshData);
-    }
   };
 
   return (
@@ -133,29 +89,6 @@ export const UserAdmin = ({ isLocal }: { isLocal: boolean }) => {
         </div>
       </form>
       {status && <p className={styles.status}>{status}</p>}
-      <section>
-        <h2>Subscriber</h2>
-        {subscriberData ? (
-          <>
-            {isLocal && (
-              <div className={styles.actions}>
-                <Button
-                  variant="secondary"
-                  destructive={true}
-                  onPress={() => void performAction("delete_subscriber")}
-                >
-                  Delete subscriber
-                </Button>
-              </div>
-            )}
-            <div className={styles.content}>
-              <DataTable header="Subscriber data" data={subscriberData} open />
-            </div>
-          </>
-        ) : (
-          "No subscriber found"
-        )}
-      </section>
     </main>
   );
 };

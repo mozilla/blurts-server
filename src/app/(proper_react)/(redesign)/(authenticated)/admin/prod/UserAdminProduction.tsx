@@ -26,7 +26,6 @@ export const UserAdminProduction = () => {
         className={styles.form}
         onSubmit={(event) => {
           event.preventDefault();
-
           void getSha1(emailInput)
             .then(async (emailHash) => {
               setIsLoading(true);

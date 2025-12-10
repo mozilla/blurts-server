@@ -12,5 +12,5 @@ export default async function DevPage() {
     return notFound();
   }
 
-  return <UserAdmin isLocal={process.env.APP_ENV === "local"} />;
+  return <UserAdmin />;
 }
