@@ -4,7 +4,6 @@
 
 import { notFound } from "next/navigation";
 import { UserAdminProduction } from "./UserAdminProduction";
-import { getEnabledFeatureFlags } from "../../../../../../db/tables/featureFlags";
 import { getServerSession } from "../../../../../functions/server/getServerSession";
 import { isAdmin } from "../../../../../api/utils/auth";
 
@@ -17,9 +16,5 @@ export default async function DevPage() {
   ) {
     return notFound();
   }
-
-  const enabledFeatureFlags = await getEnabledFeatureFlags({
-    email: session.user.email,
-  });
-  return <UserAdminProduction enabledFeatureFlags={enabledFeatureFlags} />;
+  return <UserAdminProduction />;
 }

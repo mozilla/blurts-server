@@ -4,11 +4,7 @@
 
 import { SubscriberRow } from "knex/types/tables";
 import { logger } from "./logging";
-import {
-  deleteSubscriber,
-  getOnerepProfileId,
-} from "../../../db/tables/subscribers";
-import { deactivateProfile as deactivateOnerepProfile } from "./onerep";
+import { deleteSubscriber } from "../../../db/tables/subscribers";
 import { deleteSubscription } from "../../../utils/fxa";
 import { record } from "./glean";
 
@@ -22,29 +18,6 @@ export async function deleteAccount(subscriber: SubscriberRow) {
       monitorUserId: subscriber.id.toString(),
     },
   });
-
-  // get profile id
-  const oneRepProfileId = await getOnerepProfileId(subscriber.id);
-  if (oneRepProfileId) {
-    // try to deactivate onerep profile
-    try {
-      await deactivateOnerepProfile(oneRepProfileId);
-    } catch (ex) {
-      if (
-        (ex as Error).message ===
-        "Failed to deactivate OneRep profile: [403] [Forbidden]"
-      )
-        logger.error("profile_already_opted_out", {
-          subscriber_id: subscriber.id,
-          exception: ex,
-        });
-    }
-
-    logger.info("deactivated_onerep_profile", {
-      subscriber_id: subscriber.id,
-    });
-  }
-
   // try to unsubscribe from subplat
   if (subscriber.fxa_access_token) {
     try {
