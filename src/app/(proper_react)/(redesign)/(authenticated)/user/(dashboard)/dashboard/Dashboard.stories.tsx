@@ -147,7 +147,6 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
             user={user}
             userBreaches={breaches}
             fxaSettingsUrl=""
-            isNewUser={true}
             enabledFeatureFlags={props.enabledFeatureFlags ?? []}
             activeTab={props.activeTab ?? "action-needed"}
             signInCount={props.signInCount ?? null}

@@ -41,7 +41,6 @@ export type Props = {
   userBreaches: SubscriberBreach[];
   countryCode: string;
   fxaSettingsUrl: string;
-  isNewUser: boolean;
   activeTab: TabType;
   signInCount: number | null;
   userAnnouncements: UserAnnouncementWithDetails[];
@@ -245,7 +244,6 @@ export const View = (props: Props) => {
             setActiveTab(selectedKey as TabType);
             recordTelemetry("dashboard", "view", {
               dashboard_tab: selectedKey as TabType,
-              legacy_user: !props.isNewUser,
               breach_count: breachesDataArray.length,
             });
           }}
@@ -272,7 +270,6 @@ export const View = (props: Props) => {
             setActiveTab("fixed");
             recordTelemetry("dashboard", "view", {
               dashboard_tab: "fixed",
-              legacy_user: !props.isNewUser,
               breach_count: breachesDataArray.length,
             });
           }}

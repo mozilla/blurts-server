@@ -14,7 +14,6 @@ import {
 } from "../../../../../../../../db/tables/subscribers";
 import { getEnabledFeatureFlags } from "../../../../../../../../db/tables/featureFlags";
 import { checkSession } from "../../../../../../../functions/server/checkSession";
-import { isPrePlusUser } from "../../../../../../../functions/server/isPrePlusUser";
 import { initializeUserAnnouncements } from "../../../../../../../../db/tables/user_announcements";
 import { connection } from "next/server";
 import { config } from "../../../../../../../../config";
@@ -72,8 +71,6 @@ export default async function DashboardPage(props: Props) {
     email: session.user.email,
   });
 
-  const isNewUser = !isPrePlusUser(session.user);
-
   const subBreaches = await getSubscriberBreaches({
     fxaUid: subscriber.fxa_uid,
     countryCode,
@@ -90,7 +87,6 @@ export default async function DashboardPage(props: Props) {
       userBreaches={subBreaches}
       enabledFeatureFlags={enabledFeatureFlags}
       fxaSettingsUrl={fxaSettingsUrl}
-      isNewUser={isNewUser}
       activeTab={activeTab}
       signInCount={signInCount}
       userAnnouncements={userAnnouncements}
