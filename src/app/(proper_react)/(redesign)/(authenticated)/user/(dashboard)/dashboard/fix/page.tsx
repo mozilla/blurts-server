@@ -11,7 +11,6 @@ import {
 import { getCountryCode } from "../../../../../../../functions/server/getCountryCode";
 import { getSubscriberBreaches } from "../../../../../../../functions/server/getSubscriberBreaches";
 import { getServerSession } from "../../../../../../../functions/server/getServerSession";
-import { getEnabledFeatureFlags } from "../../../../../../../../db/tables/featureFlags";
 
 export default async function FixPage() {
   const session = await getServerSession();
@@ -25,19 +24,12 @@ export default async function FixPage() {
     countryCode,
   });
 
-  const enabledFeatureFlags = await getEnabledFeatureFlags({
-    email: session.user.email,
-  });
-
   const stepDeterminationData: StepDeterminationData = {
     countryCode,
     user: session.user,
     subscriberBreaches: breaches,
   };
 
-  const nextStep = getNextGuidedStep(
-    stepDeterminationData,
-    enabledFeatureFlags,
-  );
+  const nextStep = getNextGuidedStep(stepDeterminationData);
   redirect(nextStep.href);
 }

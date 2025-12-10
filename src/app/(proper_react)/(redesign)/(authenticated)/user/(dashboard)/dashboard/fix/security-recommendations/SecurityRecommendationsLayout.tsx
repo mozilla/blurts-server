@@ -56,11 +56,7 @@ export function SecurityRecommendationsLayout(
     props.subscriberEmails,
   );
 
-  const nextStep = getNextGuidedStep(
-    props.data,
-    props.enabledFeatureFlags,
-    stepMap[props.type],
-  );
+  const nextStep = getNextGuidedStep(props.data, stepMap[props.type]);
   const pageData = getSecurityRecommendationsByType({
     dataType: props.type,
     breaches: guidedExperienceBreaches,

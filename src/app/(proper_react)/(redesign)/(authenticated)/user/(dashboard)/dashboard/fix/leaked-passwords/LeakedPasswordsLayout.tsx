@@ -68,11 +68,7 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
   // TODO: Write unit tests MNTOR-2560
   /* c8 ignore start */
   const emailsAffected = unresolvedPasswordBreach?.emailsAffected ?? [];
-  const nextStep = getNextGuidedStep(
-    props.data,
-    props.enabledFeatureFlags,
-    stepMap[props.type],
-  );
+  const nextStep = getNextGuidedStep(props.data, stepMap[props.type]);
 
   // If there are no unresolved breaches for the ”leaked passwords” step:
   // Go to the next step in the guided resolution or back to the dashboard.

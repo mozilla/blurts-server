@@ -55,11 +55,7 @@ export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
     props.subscriberEmails,
   );
 
-  const nextStep = getNextGuidedStep(
-    props.data,
-    props.enabledFeatureFlags,
-    stepMap[props.type],
-  );
+  const nextStep = getNextGuidedStep(props.data, stepMap[props.type]);
   const pageData = getHighRiskBreachesByType({
     dataType: props.type,
     breaches: guidedExperienceBreaches,

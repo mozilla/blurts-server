@@ -73,11 +73,10 @@ export function isGuidedResolutionInProgress(stepId: StepLink["id"]) {
 
 export function getNextGuidedStep(
   data: StepDeterminationData,
-  enabledFeatureFlags: FeatureFlagName[],
   afterStep?: StepLink["id"],
 ): StepLink {
   // Resisting the urge to add a state machine... ^.^
-  const stepLinkStatuses = getGuidedStepStatuses(data, enabledFeatureFlags);
+  const stepLinkStatuses = getGuidedStepStatuses(data);
   const fromIndex =
     stepLinkStatuses.findIndex((step) => step.id === afterStep) + 1;
   const nextStep = stepLinkStatuses.slice(fromIndex).find((stepLink) => {
@@ -106,17 +105,13 @@ export function getNextGuidedStep(
 
 export function getGuidedStepStatuses(
   data: StepDeterminationData,
-  enabledFeatureFlags?: FeatureFlagName[],
 ): StepLinkWithStatus[] {
-  return stepLinks.map((stepLink) =>
-    getStepWithStatus(data, stepLink, enabledFeatureFlags),
-  );
+  return stepLinks.map((stepLink) => getStepWithStatus(data, stepLink));
 }
 
 function getStepWithStatus(
   data: StepDeterminationData,
   stepLink: StepLink,
-  _enabledFeatureFlags?: FeatureFlagName[],
 ): StepLinkWithStatus {
   return {
     ...stepLink,

@@ -148,14 +148,11 @@ export const View = (props: Props) => {
                 variant="primary"
                 wide
                 href={
-                  getNextGuidedStep(
-                    {
-                      user: props.user,
-                      countryCode,
-                      subscriberBreaches: props.userBreaches,
-                    },
-                    props.enabledFeatureFlags,
-                  ).href
+                  getNextGuidedStep({
+                    user: props.user,
+                    countryCode,
+                    subscriberBreaches: props.userBreaches,
+                  }).href
                 }
               >
                 {l10n.getString("exposure-card-resolve-exposures-cta")}
