@@ -27,7 +27,6 @@ export type SettingsWrapperProps = {
   breaches: unknown;
   countryCode: string;
   enabledFeatureFlags: FeatureFlagName[];
-  isMonthlySubscriber: boolean;
   subscriber: SubscriberRow;
   emailAddresses?: EmailAddressRow[];
   data?: SubscriberEmailPreferencesOutput;
