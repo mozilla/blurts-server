@@ -268,7 +268,7 @@ export function getDashboardSummary(
     isBreachesOnly,
   );
 
-  // count fixed and manually resolved (data brokers) data points
+  // count fixed data points
   const dataBrokerFixedManuallyResolved = Object.keys(
     summary.fixedDataPoints,
   ).reduce((a, k) => {
