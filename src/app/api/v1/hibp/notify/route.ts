@@ -9,6 +9,7 @@ import { bearerToken } from "../../../utils/auth";
 import { logger } from "../../../../functions/server/logging";
 
 import { PubSub } from "@google-cloud/pubsub";
+import { isValidBearer } from "../../../../../utils/hibp";
 
 const projectId = process.env.GCP_PUBSUB_PROJECT_ID;
 const topicName = process.env.GCP_PUBSUB_TOPIC_NAME;
@@ -29,7 +30,7 @@ export type PostHibpNotificationRequestBody = {
 export async function POST(req: NextRequest) {
   let pubsub: PubSub;
   let json: PostHibpNotificationRequestBody;
-
+  const hibpNotifyToken = process.env.HIBP_NOTIFY_TOKEN;
   try {
     if (!projectId) {
       throw new Error("GCP_PUBSUB_PROJECT_ID env var not set");
@@ -37,9 +38,12 @@ export async function POST(req: NextRequest) {
     if (!topicName) {
       throw new Error("GCP_PUBSUB_TOPIC_NAME env var not set");
     }
+    if (!hibpNotifyToken) {
+      throw new Error("HIBP_NOTIFY_TOKEN env var not set");
+    }
 
     const headerToken = bearerToken(req);
-    if (headerToken !== process.env.HIBP_NOTIFY_TOKEN) {
+    if (!isValidBearer(headerToken, hibpNotifyToken)) {
       logger.error(`Received invalid header token: [${headerToken}]`);
       return NextResponse.json({ success: false }, { status: 401 });
     }
