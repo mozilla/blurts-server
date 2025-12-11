@@ -44,8 +44,8 @@ const RENAMED_BREACHES_MAP = {
  * @param validTokens token string, comma-separated for old vs. new
  */
 export function isValidBearer(token: string, validTokens: string): boolean {
-  const tokenArray = validTokens.split(",");
-  return tokenArray.indexOf(token) > -1 ? true : false;
+  const tokenArray = validTokens.split(",").map((_) => _.trim());
+  return tokenArray.includes(token) ? true : false;
 }
 
 // TODO: Add unit test when changing this code:
