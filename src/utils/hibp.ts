@@ -37,6 +37,17 @@ const RENAMED_BREACHES_MAP = {
   covve: "db8151dd",
 };
 
+/**
+ * Returns true if token matches our secret tokens
+ *
+ * @param token token extracted from request
+ * @param validTokens token string, comma-separated for old vs. new
+ */
+export function isValidBearer(token: string, validTokens: string): boolean {
+  const tokenArray = validTokens.split(",").map((_) => _.trim());
+  return tokenArray.includes(token) ? true : false;
+}
+
 // TODO: Add unit test when changing this code:
 /* c8 ignore start */
 function _addStandardOptions(options = {}) {
