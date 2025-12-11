@@ -11,9 +11,9 @@ import {
 } from "../../../../utils/errorThrower";
 import {
   addQaCustomBreach,
+  getAllQaCustomBreaches,
   QaBreachData,
   deleteQaCustomBreach,
-  getAllQaCustomBreaches,
 } from "../../../../../../db/tables/qa_customs";
 import { getServerSession } from "../../../../../functions/server/getServerSession";
 import { randomInt } from "crypto";
@@ -84,6 +84,7 @@ export async function GET(req: NextRequest) {
       { status: 400 },
     );
   }
+
   return NextResponse.json(await getAllQaCustomBreaches(emailHashPrefix));
 }
 

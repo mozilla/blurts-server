@@ -18,12 +18,32 @@ import { getSubscriberByFxaUid } from "../../../../../../db/tables/subscribers";
 import { ReactNode } from "react";
 import { SubscriberRow } from "knex/types/tables";
 import { getUserEmails } from "../../../../../../db/tables/emailAddresses";
-import { createRandomHibpListing } from "../../../../../../apiMocks/mockData";
+import { MonthlyActivityPlusEmail } from "../../../../../../emails/templates/monthlyActivityPlus/MonthlyActivityPlusEmail";
+import { getDashboardSummary } from "../../../../../functions/server/dashboard";
+import { getSubscriberBreaches } from "../../../../../functions/server/getSubscriberBreaches";
+import { getCountryCode } from "../../../../../functions/server/getCountryCode";
+import { headers } from "next/headers";
+import { FirstDataBrokerRemovalFixed } from "../../../../../../emails/templates/firstDataBrokerRemovalFixed/FirstDataBrokerRemovalFixed";
+import {
+  createRandomHibpListing,
+  createRandomScanResult,
+} from "../../../../../../apiMocks/mockData";
 import { BreachAlertEmail } from "../../../../../../emails/templates/breachAlert/BreachAlertEmail";
 import { SignupReportEmail } from "../../../../../../emails/templates/signupReport/SignupReportEmail";
 import { getBreachesForEmail } from "../../../../../../utils/hibp";
 import { getSha1 } from "../../../../../../utils/fxa";
 import { getBreaches } from "../../../../../functions/server/getBreaches";
+import { getSignupLocaleCountry } from "../../../../../../emails/functions/getSignupLocaleCountry";
+import { refreshStoredScanResults } from "../../../../../functions/server/refreshStoredScanResults";
+import { hasPremium } from "../../../../../functions/universal/user";
+import { isEligibleForPremium } from "../../../../../functions/universal/premium";
+import { MonthlyActivityFreeEmail } from "../../../../../../emails/templates/monthlyActivityFree/MonthlyActivityFreeEmail";
+import { getMonthlyActivityFreeUnsubscribeLink } from "../../../../../../app/functions/cronjobs/unsubscribeLinks";
+import { getScanResultsWithBroker } from "../../../../../../db/tables/onerep_scans";
+import { getEnabledFeatureFlags } from "../../../../../../db/tables/featureFlags";
+import { getExperimentationIdFromUserSession } from "../../../../../functions/server/getExperimentationId";
+import { getExperiments } from "../../../../../functions/server/getExperiments";
+import { getLocale } from "../../../../../functions/universal/getLocale";
 import { UTM_CAMPAIGN_ID_BREACH_ALERT } from "../../../../../../constants";
 
 async function getAdminSubscriber(): Promise<SubscriberRow | null> {
@@ -117,6 +137,98 @@ export async function triggerVerificationEmail(emailAddress: string) {
   );
 }
 
+export async function triggerMonthlyActivityFree(emailAddress: string) {
+  const session = await getServerSession();
+  const subscriber = await getAdminSubscriber();
+  if (!subscriber || !session?.user) {
+    return false;
+  }
+
+  const acceptLangHeader = await getAcceptLangHeaderInServerComponents();
+  const l10n = getL10n(acceptLangHeader);
+
+  if (typeof subscriber.onerep_profile_id === "number") {
+    await refreshStoredScanResults(subscriber.onerep_profile_id);
+  }
+
+  const enabledFeatureFlags = await getEnabledFeatureFlags({
+    email: subscriber.primary_email,
+  });
+  const countryCode = getCountryCode(await headers());
+  const experimentationId = await getExperimentationIdFromUserSession(
+    session.user,
+  );
+  const experimentData = await getExperiments({
+    experimentationId,
+    countryCode,
+    locale: getLocale(l10n),
+  });
+  const latestScan = await getScanResultsWithBroker(
+    subscriber.onerep_profile_id,
+    hasPremium(session.user),
+  );
+  const data = getDashboardSummary(
+    latestScan.results,
+    await getSubscriberBreaches({
+      fxaUid: session.user.subscriber?.fxa_uid,
+      countryCode,
+    }),
+  );
+
+  const unsubscribeLink =
+    await getMonthlyActivityFreeUnsubscribeLink(subscriber);
+
+  await send(
+    emailAddress,
+    l10n.getString("email-monthly-free-subject"),
+    <MonthlyActivityFreeEmail
+      subscriber={sanitizeSubscriberRow(subscriber)}
+      l10n={l10n}
+      dataSummary={data}
+      unsubscribeLink={unsubscribeLink as string}
+      enabledFeatureFlags={enabledFeatureFlags}
+      experimentData={experimentData["Features"]}
+    />,
+  );
+}
+
+export async function triggerMonthlyActivityPlus(emailAddress: string) {
+  const session = await getServerSession();
+  const subscriber = await getAdminSubscriber();
+  if (!subscriber || !session?.user) {
+    return false;
+  }
+
+  const acceptLangHeader = await getAcceptLangHeaderInServerComponents();
+  const l10n = getL10n(acceptLangHeader);
+
+  if (typeof subscriber.onerep_profile_id === "number") {
+    await refreshStoredScanResults(subscriber.onerep_profile_id);
+  }
+  const countryCode = getCountryCode(await headers());
+  const latestScan = await getScanResultsWithBroker(
+    subscriber.onerep_profile_id,
+    hasPremium(session.user),
+  );
+  const data = getDashboardSummary(
+    latestScan.results,
+    await getSubscriberBreaches({
+      fxaUid: session.user.subscriber?.fxa_uid,
+      countryCode,
+    }),
+  );
+
+  await send(
+    emailAddress,
+    l10n.getString("email-monthly-plus-auto-subject"),
+    <MonthlyActivityPlusEmail
+      subscriber={sanitizeSubscriberRow(subscriber)}
+      l10n={l10n}
+      data={data}
+    />,
+  );
+}
+
 export async function triggerBreachAlert(emailAddress: string) {
   const session = await getServerSession();
   const subscriber = await getAdminSubscriber();
@@ -127,6 +239,20 @@ export async function triggerBreachAlert(emailAddress: string) {
   const acceptLangHeader = await getAcceptLangHeaderInServerComponents();
   const l10n = getL10n(acceptLangHeader);
 
+  const assumedCountryCode = getSignupLocaleCountry(subscriber);
+
+  if (typeof subscriber.onerep_profile_id === "number") {
+    await refreshStoredScanResults(subscriber.onerep_profile_id);
+  }
+  const scanData = await getScanResultsWithBroker(
+    subscriber.onerep_profile_id,
+    hasPremium(session.user),
+  );
+  const allSubscriberBreaches = await getSubscriberBreaches({
+    fxaUid: subscriber.fxa_uid,
+    countryCode: assumedCountryCode,
+  });
+
   await send(
     emailAddress,
     l10n.getString("email-breach-alert-all-subject"),
@@ -135,6 +261,30 @@ export async function triggerBreachAlert(emailAddress: string) {
       breachedEmail={emailAddress}
       breach={createRandomHibpListing()}
       utmCampaignId={UTM_CAMPAIGN_ID_BREACH_ALERT}
+      l10n={l10n}
+      dataSummary={
+        isEligibleForPremium(assumedCountryCode) && !hasPremium(subscriber)
+          ? getDashboardSummary(scanData.results, allSubscriberBreaches)
+          : undefined
+      }
+    />,
+  );
+}
+
+export async function triggerFirstDataBrokerRemovalFixed(emailAddress: string) {
+  const acceptLangHeader = await getAcceptLangHeaderInServerComponents();
+  const l10n = getL10n(acceptLangHeader);
+  const randomScanResult = createRandomScanResult({ status: "removed" });
+
+  await send(
+    emailAddress,
+    l10n.getString("email-first-broker-removal-fixed-subject"),
+    <FirstDataBrokerRemovalFixed
+      data={{
+        dataBrokerName: randomScanResult.data_broker,
+        dataBrokerLink: `${process.env.SERVER_URL}/user/dashboard/fixed`,
+        removalDate: randomScanResult.updated_at,
+      }}
       l10n={l10n}
     />,
   );

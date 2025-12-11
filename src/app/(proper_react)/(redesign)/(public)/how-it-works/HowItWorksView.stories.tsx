@@ -17,7 +17,12 @@ const meta: Meta<typeof HowItWorksView> = {
       enabledFeatureFlags={[]}
       experimentData={defaultExperimentData["Features"]}
     >
-      <HowItWorksView l10n={getL10n()} enabledFeatureFlags={[]} />
+      <HowItWorksView
+        l10n={getL10n()}
+        eligibleForPremium={true}
+        scanLimitReached={false}
+        enabledFeatureFlags={[]}
+      />
     </PublicShell>
   ),
   args: {

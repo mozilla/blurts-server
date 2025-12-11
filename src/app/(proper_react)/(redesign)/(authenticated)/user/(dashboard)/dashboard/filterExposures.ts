@@ -2,16 +2,28 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import {
+  Exposure,
+  isScanResult,
+} from "../../../../../../components/client/exposure_card/ExposureCard";
 import { FilterState } from "../../../../../../components/client/ExposuresFilter";
 import { CONST_DAY_MILLISECONDS } from "../../../../../../../constants";
-import { SubscriberBreach } from "../../../../../../../utils/subscriberBreaches";
 
 export function filterExposures(
-  exposures: SubscriberBreach[],
+  exposures: Exposure[],
   filters: FilterState,
-): SubscriberBreach[] {
+): Exposure[] {
   return exposures.filter((exposure) => {
-    const exposureDate = new Date(exposure.addedDate);
+    if (filters.exposureType === "data-breach" && isScanResult(exposure)) {
+      return false;
+    }
+    if (filters.exposureType === "data-broker" && !isScanResult(exposure)) {
+      return false;
+    }
+
+    const exposureDate = isScanResult(exposure)
+      ? new Date(exposure.created_at)
+      : new Date(exposure.addedDate);
 
     if (
       filters.dateFound === "seven-days" &&

@@ -8,7 +8,12 @@ import { RedesignedEmailFooter } from "../../components/EmailFooter";
 import { HibpLikeDbBreach } from "../../../utils/hibp";
 import { EmailHero } from "../../components/EmailHero";
 import { getLocale } from "../../../app/functions/universal/getLocale";
+import { isEligibleForPremium } from "../../../app/functions/universal/premium";
+import { hasPremium } from "../../../app/functions/universal/user";
+import { getSignupLocaleCountry } from "../../functions/getSignupLocaleCountry";
+import { DashboardSummary } from "../../../app/functions/server/dashboard";
 import { ResolutionRelevantBreachDataTypes } from "../../../app/functions/universal/breach";
+import { DataPointCount } from "../../components/EmailDataPointCount";
 import { HeaderStyles, MetaTags } from "../../components/HeaderStyles";
 
 export type BreachAlertEmailProps = {
@@ -20,6 +25,14 @@ export type BreachAlertEmailProps = {
     SubscriberRow,
     "fxa_profile_json" | "onerep_profile_id" | "fxa_profile_json"
   >;
+  /**
+   * We need to run a bunch of queries to collect this data,
+   * so it's optional; however, make sure to pass it in for
+   * free users who are eligible for Plus (i.e. in the US),
+   * who have run a scan — those are the ones we show a
+   * <DataPointCount> for at the moment.
+   */
+  dataSummary?: DashboardSummary;
 };
 
 // These components are fully covered by the BreachAlertEmail test,
@@ -27,11 +40,27 @@ export type BreachAlertEmailProps = {
 // `src/scripts/cronjobs/emailBreachAlerts.test.ts` tests are run:
 /* c8 ignore start */
 export const BreachAlertEmail = (props: BreachAlertEmailProps) => {
+  const hasRunFreeScan = typeof props.subscriber.onerep_profile_id === "number";
   const l10n = props.l10n;
   const locale = getLocale(props.l10n);
   const listFormatter = new Intl.ListFormat(locale);
-  const utmContentSuffix = "-global";
-  const utmCampaignId = "breach-alert-global";
+
+  const assumedCountryCode = getSignupLocaleCountry(props.subscriber);
+  const utmContentSuffix = isEligibleForPremium(assumedCountryCode)
+    ? "-us"
+    : "-global";
+  let utmCampaignId = "breach-alert-global";
+  if (isEligibleForPremium(assumedCountryCode)) {
+    if (hasPremium(props.subscriber)) {
+      utmCampaignId = "breach-alert-plus";
+    } else {
+      if (!hasRunFreeScan) {
+        utmCampaignId = "breach-alert-free-us-no-scan";
+      } else {
+        utmCampaignId = "breach-alert-free-us-scanned";
+      }
+    }
+  }
 
   const premiumSubscriptionUrlObject = new URL(
     `${process.env.SERVER_URL}/link/subscribe/monthly`,
@@ -146,27 +175,45 @@ export const BreachAlertEmail = (props: BreachAlertEmailProps) => {
               {l10n.getString("email-breach-alert-all-next-steps-cta-label")}
             </mj-button>
           </mj-column>
-          <mj-column padding="0" padding-left="24px" width="250px">
-            <mj-button
-              href={`${process.env.SERVER_URL}/user/dashboard/?utm_source=monitor-product&utm_medium=product-email&utm_campaign=${utmCampaignId}&utm_content=dashboard${utmContentSuffix}`}
-              background-color="white"
-              border="2px solid #0060DF"
-              color="#0060DF"
-              font-weight={600}
-              padding="0"
-              border-radius="8px"
-              font-size="16px"
-              line-height="24px"
-              align="left"
-              width="240px"
-            >
-              {l10n.getString(
-                "email-breach-alert-all-next-steps-button-dashboard",
-              )}
-            </mj-button>
-          </mj-column>
+          {
+            // Don't show the "Go to Dashboard" button if the user is in the US,
+            // and does not have Plus yet; those users already get quite a few
+            // buttons, so we leave this one out so as not to overwhelm them:
+            (!isEligibleForPremium(assumedCountryCode) ||
+              hasPremium(props.subscriber)) && (
+              <mj-column padding="0" padding-left="24px" width="250px">
+                <mj-button
+                  href={`${process.env.SERVER_URL}/user/dashboard/?utm_source=monitor-product&utm_medium=product-email&utm_campaign=${utmCampaignId}&utm_content=dashboard${utmContentSuffix}`}
+                  background-color="white"
+                  border="2px solid #0060DF"
+                  color="#0060DF"
+                  font-weight={600}
+                  padding="0"
+                  border-radius="8px"
+                  font-size="16px"
+                  line-height="24px"
+                  align="left"
+                  width="240px"
+                >
+                  {l10n.getString(
+                    "email-breach-alert-all-next-steps-button-dashboard",
+                  )}
+                </mj-button>
+              </mj-column>
+            )
+          }
         </mj-section>
-
+        {hasRunFreeScan &&
+          props.dataSummary &&
+          !hasPremium(props.subscriber) && (
+            <DataPointCount
+              {...props}
+              dataSummary={props.dataSummary}
+              utmCampaignId={utmCampaignId}
+              utmMedium="email"
+              utmSource="monitor-product"
+            />
+          )}
         <RedesignedEmailFooter l10n={l10n} utm_campaign={utmCampaignId} />
       </mj-body>
     </mjml>

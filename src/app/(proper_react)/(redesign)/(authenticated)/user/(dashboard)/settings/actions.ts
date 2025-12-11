@@ -4,6 +4,7 @@
 
 "use server";
 
+import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { SubscriberRow } from "knex/types/tables";
 import { getServerSession } from "../../../../../../functions/server/getServerSession";
@@ -22,11 +23,19 @@ import {
   getL10n,
 } from "../../../../../../functions/l10n/serverComponents";
 import { logger } from "../../../../../../functions/server/logging";
-import { CONST_MAX_NUM_ADDRESSES } from "../../../../../../../constants";
+import {
+  CONST_MAX_NUM_ADDRESSES,
+  CONST_MAX_NUM_ADDRESSES_PLUS,
+} from "../../../../../../../constants";
 import { SanitizedEmailAddressRow } from "../../../../../../functions/server/sanitize";
 import { deleteAccount } from "../../../../../../functions/server/deleteAccount";
 import { cookies } from "next/headers";
 import { validateEmailAddress } from "../../../../../../../utils/emailAddress";
+import { updateOnerepDataBrokerScanProfile } from "../../../../../../functions/server/updateDataBrokerScanProfile";
+import { hasPremium } from "../../../../../../functions/universal/user";
+import { type NormalizedProfileData } from "./panels/SettingsPanelEditProfile/EditProfileForm";
+import { OnerepUsPhoneNumber } from "../../../../../../functions/server/onerep";
+import { getEnabledFeatureFlags } from "../../../../../../../db/tables/featureFlags";
 
 export type AddEmailFormState =
   | { success?: never }
@@ -81,7 +90,17 @@ export async function onAddEmail(
       errorMessage: l10n.getString("user-add-invalid-email"),
     };
   }
-  const maxNumEmailAddresses = CONST_MAX_NUM_ADDRESSES;
+
+  const enabledFeatureFlags = await getEnabledFeatureFlags({
+    email: subscriber.primary_email,
+  });
+  const maxNumEmailAddresses = enabledFeatureFlags.includes(
+    "IncreasedFreeMaxBreachEmails",
+  )
+    ? CONST_MAX_NUM_ADDRESSES_PLUS
+    : hasPremium(subscriber)
+      ? CONST_MAX_NUM_ADDRESSES_PLUS
+      : CONST_MAX_NUM_ADDRESSES;
   const existingAddresses = [session.user.email]
     .concat(subscriber.email_addresses.map((emailRow) => emailRow.email))
     .map((address) => address.toLowerCase());
@@ -105,6 +124,7 @@ export async function onAddEmail(
     const unverifiedSubscriber = await addSubscriberUnverifiedEmailHash(
       subscriber,
       validatedEmailAddress.email,
+      enabledFeatureFlags,
     );
 
     await initEmail();
@@ -209,4 +229,82 @@ export async function onDeleteAccount() {
   // possibile, so instead the sign-out and redirect needs to happen on the
   // client side after this action completes.
   // See https://github.com/nextauthjs/next-auth/discussions/5334.
+}
+
+export async function onHandleUpdateProfileData(
+  profileData: NormalizedProfileData,
+) {
+  const session = await getServerSession();
+  if (!session?.user.subscriber?.id) {
+    logger.error(`User does not have an active session.`);
+    return {
+      success: false,
+      error: "update-profile-data-without-active-session",
+      errorMessage: `User does not have an active session.`,
+    };
+  }
+
+  if (!hasPremium(session.user)) {
+    logger.error(`User does not have an active subscription.`);
+    return {
+      success: false,
+      error: "update-profile-data-without-active-subscription",
+      errorMessage: `User does not have an active subscription.`,
+    };
+  }
+
+  if (!session.user.subscriber.onerep_profile_id) {
+    logger.error(`User does not have a OneRep profile.`);
+    return {
+      success: false,
+      error: "update-profile-data-without-onerep-profile",
+      errorMessage: `User does not have a OneRep profile.`,
+    };
+  }
+
+  try {
+    const {
+      first_name,
+      middle_name,
+      last_name,
+      first_names,
+      last_names,
+      middle_names,
+      phone_numbers,
+      addresses,
+    } = profileData;
+    await updateOnerepDataBrokerScanProfile(
+      session.user.subscriber.onerep_profile_id,
+      {
+        first_name,
+        last_name,
+        first_names,
+        last_names,
+        middle_names,
+        phone_numbers: phone_numbers
+          .map((phone_number) => phone_number.match(/\d/g)?.join("") ?? "")
+          .filter(
+            (phone_number) => phone_number !== "",
+          ) as OnerepUsPhoneNumber[],
+        addresses,
+        middle_name: middle_name ?? "",
+      },
+    );
+  } catch (error) {
+    logger.error("Could not update profile details:", error);
+    return {
+      success: false,
+      error: "update-profile-data-updating-profile-failed",
+      errorMessage: `Updating profile failed.`,
+    };
+  }
+
+  // Tell the /edit-info page to display an “details saved” notification:
+  (await cookies()).set("justSavedDetails", "justSavedDetails", {
+    expires: new Date(Date.now() + 5 * 60 * 1000),
+    httpOnly: false,
+  });
+
+  revalidatePath("/user/settings/edit-info");
+  redirect("/user/settings/edit-info");
 }

@@ -4,21 +4,34 @@
 
 "use client";
 
-import { FormEventHandler, ReactNode, RefObject, useState } from "react";
+import {
+  FormEventHandler,
+  ReactNode,
+  RefObject,
+  useContext,
+  useState,
+} from "react";
 import { signIn } from "next-auth/react";
 import { useL10n } from "../../../hooks/l10n";
 import { Button } from "../../../components/client/Button";
 import styles from "./SignUpForm.module.scss";
 import { useTelemetry } from "../../../hooks/useTelemetry";
 import { useViewTelemetry } from "../../../hooks/useViewTelemetry";
+import { WaitlistCta } from "./ScanLimit";
+import { useCookies } from "react-cookie";
+import { CONST_URL_MONITOR_LANDING_PAGE_ID } from "../../../../constants";
+import { getFreeScanSearchParams } from "../../../functions/universal/getFreeScanSearchParams";
+import { AccountsMetricsFlowContext } from "../../../../contextProviders/accounts-metrics-flow";
 import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 import { InputField } from "../../../components/client/InputField";
 
 export type Props = {
+  eligibleForPremium: boolean;
   eventId: {
     cta: string;
     field?: string;
   };
+  scanLimitReached: boolean;
   signUpCallbackUrl: string;
   label?: string;
   experimentData?: ExperimentData["Features"];
@@ -36,20 +49,35 @@ export const SignUpForm = (props: Props) => {
   const refViewTelemetry = useViewTelemetry("ctaButton", {
     button_id: props.eventId.cta,
   });
+  const [cookies] = useCookies(["attributionsFirstTouch"]);
+  const metricsFlowContext = useContext(AccountsMetricsFlowContext);
 
   const onSubmit: FormEventHandler = (event) => {
     event.preventDefault();
     void signIn(
       "fxa",
       { callbackUrl: props.signUpCallbackUrl },
-      `email=${encodeURIComponent(emailInput)}`,
+      getFreeScanSearchParams({
+        cookies,
+        emailInput: emailInput,
+        entrypoint: CONST_URL_MONITOR_LANDING_PAGE_ID,
+        experimentData: props.experimentData,
+        metricsFlowData: metricsFlowContext.data,
+      }),
     );
   };
 
   const label =
-    props.label ?? l10n.getString("landing-all-hero-emailform-input-label");
+    props.label ??
+    l10n.getString(
+      props.eligibleForPremium
+        ? "landing-premium-hero-emailform-input-label"
+        : "landing-all-hero-emailform-input-label",
+    );
 
-  return (
+  return props.scanLimitReached ? (
+    <WaitlistCta />
+  ) : (
     <form
       ref={refViewTelemetry as RefObject<HTMLFormElement | null>}
       className={`${styles.form} ${props.labelPosition ? styles[props.labelPosition] : ""}`}

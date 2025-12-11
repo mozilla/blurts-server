@@ -11,7 +11,12 @@ import { updateFxAData } from "./subscribers";
 import { ForbiddenError, UnauthorizedError } from "../../utils/error";
 import { EmailAddressRow, SubscriberRow } from "knex/types/tables";
 import { ReactLocalization } from "@fluent/react";
-import { CONST_MAX_NUM_ADDRESSES } from "../../constants";
+import {
+  CONST_MAX_NUM_ADDRESSES,
+  CONST_MAX_NUM_ADDRESSES_PLUS,
+} from "../../constants";
+import { hasPremium } from "../../app/functions/universal/user";
+import { FeatureFlagName } from "./featureFlags";
 
 const knex = createDbConnection();
 
@@ -42,9 +47,16 @@ async function getEmailById(emailAddressId: number) {
 async function addSubscriberUnverifiedEmailHash(
   user: SubscriberRow,
   email: string,
+  enabledFeatureFlags: FeatureFlagName[],
 ) {
   const lowerCaseEmail = email.toLowerCase();
-  const maxNumEmailAddresses = CONST_MAX_NUM_ADDRESSES;
+  const maxNumEmailAddresses = enabledFeatureFlags.includes(
+    "IncreasedFreeMaxBreachEmails",
+  )
+    ? CONST_MAX_NUM_ADDRESSES_PLUS
+    : hasPremium(user)
+      ? CONST_MAX_NUM_ADDRESSES_PLUS
+      : CONST_MAX_NUM_ADDRESSES;
 
   const res = await knex.transaction(async (trx) => {
     await trx.raw("SET TRANSACTION ISOLATION LEVEL SERIALIZABLE");

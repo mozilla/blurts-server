@@ -1,0 +1,24 @@
+@use "../../../../../../../../../tokens";
+
+.triggerButton {
+  border-style: none;
+  background-color: transparent;
+  color: tokens.$color-purple-70;
+  aspect-ratio: 1 / 1;
+  cursor: pointer;
+}
+
+.dialogContents {
+  display: flex;
+  flex-direction: column;
+  gap: tokens.$spacing-lg;
+  color: tokens.$color-grey-50;
+
+  .confirmButtonWrapper {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    min-width: tokens.$content-xs;
+    padding-block-start: tokens.$spacing-md;
+  }
+}

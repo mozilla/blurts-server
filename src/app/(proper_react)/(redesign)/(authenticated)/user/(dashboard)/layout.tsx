@@ -14,6 +14,9 @@ import { headers } from "next/headers";
 import { AutoSignIn } from "../../../../../components/client/AutoSignIn";
 import { getCountryCode } from "../../../../../functions/server/getCountryCode";
 import { getEnabledFeatureFlags } from "../../../../../../db/tables/featureFlags";
+import { getExperimentationIdFromUserSession } from "../../../../../functions/server/getExperimentationId";
+import { getExperiments } from "../../../../../functions/server/getExperiments";
+import { getLocale } from "../../../../../functions/universal/getLocale";
 import { initializeUserAnnouncements } from "../../../../../../db/tables/user_announcements";
 
 export default async function Layout({ children }: { children: ReactNode }) {
@@ -33,6 +36,15 @@ export default async function Layout({ children }: { children: ReactNode }) {
   const enabledFeatureFlags = await getEnabledFeatureFlags({
     email: session.user.email,
   });
+  const currentLocale = getLocale(l10n);
+  const experimentationId = await getExperimentationIdFromUserSession(
+    session?.user ?? null,
+  );
+  const experimentData = await getExperiments({
+    experimentationId,
+    countryCode,
+    locale: currentLocale,
+  });
 
   const userAnnouncements = await initializeUserAnnouncements(session.user);
 
@@ -43,6 +55,7 @@ export default async function Layout({ children }: { children: ReactNode }) {
       nonce={nonce}
       countryCode={countryCode}
       enabledFeatureFlags={enabledFeatureFlags}
+      experimentData={experimentData["Features"]}
       announcements={userAnnouncements}
     >
       {children}

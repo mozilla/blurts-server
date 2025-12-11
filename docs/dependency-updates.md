@@ -209,7 +209,7 @@ resolution flow. This can be seen in action in Storybook, in the story
 
 Used to display toast notifications, e.g. the error message when you try to
 unsubscribe via the following page, which uses an invalid unsubscription
-token: http://localhost:6060/unsubscribe-email/monthly-report-free?token=wrong (DEPRECATED)
+token: http://localhost:6060/unsubscribe-email/monthly-report-free?token=wrong
 
 ### `husky` and `lint-staged`
 

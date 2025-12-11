@@ -5,6 +5,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useL10n } from "../../hooks/l10n";
 import styles from "./Chart.module.scss";
 import { QuestionMarkCircle } from "../server/Icons";
@@ -15,15 +16,25 @@ import { ModalOverlay } from "./dialog/ModalOverlay";
 import { Dialog } from "./dialog/Dialog";
 import ModalImage from "../client/assets/modal-default-img.svg";
 import { DashboardSummary } from "../../functions/server/dashboard";
+import { WaitlistDialog } from "./SubscriberWaitlistDialog";
 import { useTelemetry } from "../../hooks/useTelemetry";
-import { CONST_MAX_NUM_ADDRESSES } from "../../../constants";
+import {
+  CONST_MAX_NUM_ADDRESSES,
+  CONST_MAX_NUM_ADDRESSES_PLUS,
+  CONST_ONEREP_MAX_SCANS_THRESHOLD,
+} from "../../../constants";
 import { VisuallyHidden } from "../server/VisuallyHidden";
 import { FeatureFlagName } from "../../../db/tables/featureFlags";
 
 export type Props = {
   data: Array<[string, number]>;
+  isEligibleForFreeScan: boolean;
+  isEligibleForPremium: boolean;
+  isPremiumUser: boolean;
+  scanInProgress: boolean;
   isShowFixed: boolean;
   summary: DashboardSummary;
+  totalNumberOfPerformedScans?: number;
   enabledFeatureFlags: FeatureFlagName[];
 };
 
@@ -41,6 +52,11 @@ export const DoughnutChart = (props: Props) => {
   const explainerDialogTrigger = useOverlayTrigger(
     { type: "dialog" },
     explainerDialogState,
+  );
+  const waitlistDialogState = useOverlayTriggerState({});
+  const waitlistDialogTrigger = useOverlayTrigger(
+    { type: "dialog" },
+    waitlistDialogState,
   );
   const sumOfFixedExposures = props.data.reduce(
     (total, [_label, num]) => total + num,
@@ -86,15 +102,33 @@ export const DoughnutChart = (props: Props) => {
     );
   });
 
+  const includesDataBrokers = props.isEligibleForPremium || props.isPremiumUser;
   const modalContentActionNeeded = (
     <div className={styles.modalBodyContent}>
       <p>
-        {l10n.getString("modal-active-number-of-exposures-part-one-all", {
-          limit: CONST_MAX_NUM_ADDRESSES,
-        })}
+        {l10n.getString(
+          includesDataBrokers
+            ? "modal-active-number-of-exposures-part-one-premium"
+            : "modal-active-number-of-exposures-part-one-all",
+          {
+            limit: props.enabledFeatureFlags.includes(
+              "IncreasedFreeMaxBreachEmails",
+            )
+              ? CONST_MAX_NUM_ADDRESSES_PLUS
+              : props.isPremiumUser
+                ? CONST_MAX_NUM_ADDRESSES_PLUS
+                : CONST_MAX_NUM_ADDRESSES,
+          },
+        )}
       </p>
       <p>{l10n.getString("modal-active-number-of-exposures-part-two")}</p>
-      <p>{l10n.getString("modal-active-number-of-exposures-part-three-all")}</p>
+      <p>
+        {l10n.getString(
+          includesDataBrokers
+            ? "modal-active-number-of-exposures-part-three-premium"
+            : "modal-active-number-of-exposures-part-three-all",
+        )}
+      </p>
       <div className={styles.confirmButtonWrapper}>
         <Button
           variant="primary"
@@ -112,9 +146,73 @@ export const DoughnutChart = (props: Props) => {
 
   const modalContentFixed = (
     <div className={styles.modalBodyContent}>
-      {l10n.getString("modal-fixed-number-of-exposures-all")}
+      {l10n.getString(
+        includesDataBrokers
+          ? "modal-fixed-number-of-exposures-part-one"
+          : "modal-fixed-number-of-exposures-all",
+      )}
+      {includesDataBrokers &&
+        l10n.getString("modal-fixed-number-of-exposures-part-two")}
     </div>
   );
+
+  const getPromptContent = () => {
+    if (
+      !props.scanInProgress &&
+      props.isEligibleForPremium &&
+      (props.totalNumberOfPerformedScans === undefined ||
+        props.totalNumberOfPerformedScans === 0)
+    ) {
+      return (
+        <>
+          <p>
+            {l10n.getString("exposure-chart-returning-user-upgrade-prompt")}
+          </p>
+          {!props.enabledFeatureFlags.includes("DisableOneRepScans") &&
+          (typeof props.totalNumberOfPerformedScans === "undefined" ||
+            props.totalNumberOfPerformedScans <
+              CONST_ONEREP_MAX_SCANS_THRESHOLD) ? (
+            <Link
+              href="/user/welcome/free-scan?referrer=dashboard"
+              onClick={() => {
+                recordTelemetry("link", "click", {
+                  link_id: "exposures_chart_free_scan",
+                });
+              }}
+            >
+              {l10n.getString(
+                "exposure-chart-returning-user-upgrade-prompt-cta",
+              )}
+            </Link>
+          ) : (
+            <>
+              <Button variant="link" {...waitlistDialogTrigger.triggerProps}>
+                {l10n.getString(
+                  "exposure-chart-returning-user-upgrade-prompt-cta",
+                )}
+              </Button>
+              <WaitlistDialog
+                dialogTriggerState={waitlistDialogState}
+                {...waitlistDialogTrigger.overlayProps}
+              />
+            </>
+          )}
+        </>
+      );
+    }
+
+    if (props.scanInProgress) {
+      return (
+        <p>
+          {l10n.getFragment("exposure-chart-scan-in-progress-prompt", {
+            elems: { b: <strong /> },
+          })}
+        </p>
+      );
+    }
+  };
+
+  const promptContent = getPromptContent();
 
   return (
     <>
@@ -222,6 +320,9 @@ export const DoughnutChart = (props: Props) => {
                 ))}
               </tbody>
             </table>
+            {promptContent && (
+              <div className={styles.prompt}>{promptContent}</div>
+            )}
           </div>
         </div>
         <figcaption>
@@ -229,7 +330,9 @@ export const DoughnutChart = (props: Props) => {
             ? l10n.getFragment("exposure-chart-caption-fixed", {
                 vars: {
                   total_fixed_exposures_num:
-                    props.summary.dataBreachFixedDataPointsNum,
+                    props.summary.dataBreachFixedDataPointsNum +
+                    props.summary.dataBrokerAutoFixedDataPointsNum +
+                    props.summary.dataBrokerManuallyResolvedDataPointsNum,
                   total_exposures_num: props.summary.totalDataPointsNum,
                 },
               })

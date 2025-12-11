@@ -5,8 +5,15 @@
 import { AnnouncementRow } from "knex/types/tables";
 import createDbConnection from "../connect";
 import { logger } from "../../app/functions/server/logging";
+import {
+  getUserSubscriptionType,
+  SubscriptionType,
+} from "../../app/functions/server/user";
 import { Session } from "next-auth";
 import { redirect } from "next/navigation";
+import { getCountryCode } from "../../app/functions/server/getCountryCode";
+import { headers } from "next/headers";
+import { isEligibleForPremium } from "../../app/functions/universal/premium";
 
 const knex = createDbConnection();
 
@@ -75,6 +82,24 @@ export async function initializeUserAnnouncements(
       );
     }
 
+    // Determine audience eligibility
+    const subscriptions =
+      user.subscriber?.fxa_profile_json?.subscriptions ?? [];
+    const isPremium = subscriptions.includes("monitor");
+    const countryCode = getCountryCode(await headers());
+    const isUS = isEligibleForPremium(countryCode);
+
+    let subscriptionType: SubscriptionType | undefined;
+    if (isPremium) {
+      subscriptionType = await getUserSubscriptionType(user);
+    }
+
+    const isMonthly = subscriptionType === "monthly";
+    const isYearly = subscriptionType === "yearly";
+    const isBundle = subscriptionType === "bundle";
+
+    const hasRunScan = typeof user.subscriber?.onerep_profile_id === "number";
+
     // Get all current announcement IDs for the user
     const existingRows = await knex("user_announcements")
       .where("user_id", user.subscriber?.id)
@@ -98,6 +123,26 @@ export async function initializeUserAnnouncements(
     // Filter announcements by audience
     const eligibleAnnouncements = publishedAnnouncements.filter((a) => {
       switch (a.audience) {
+        case "us_only":
+          return isUS;
+        case "premium_users":
+          return isPremium;
+        case "free_users":
+          return !isPremium && isUS;
+        case "has_run_scan":
+          return !isPremium && hasRunScan;
+        case "has_not_run_scan":
+          return !isPremium && !hasRunScan && isUS;
+        case "non_us":
+          return !isUS;
+        case "monthly_user":
+          return isMonthly && isPremium;
+        case "yearly_user":
+          return isYearly && isPremium;
+        case "bundle_user":
+          return isBundle && isPremium;
+        case "premium_non_bundle":
+          return isYearly || isMonthly;
         case "all_users":
         default:
           return true;

@@ -6,6 +6,8 @@ import { getServerSession } from "../../../../../functions/server/getServerSessi
 import { notFound } from "next/navigation";
 import { isAdmin } from "../../../../../api/utils/auth";
 import HibpConfigPage from "./hibpConfig";
+import OnerepConfigPage from "./onerepConfig";
+import { getOnerepProfileId } from "../../../../../../db/tables/subscribers";
 import styles from "./ConfigPage.module.scss";
 import {
   createQaTogglesRow,
@@ -14,18 +16,28 @@ import {
 
 export default async function DevPage() {
   const session = await getServerSession();
+  let onerepProfileId = -1;
   let existingRow = null;
+
+  const profileIdNonExistent = async () => {
+    if (!session?.user.subscriber) return true;
+    const profileId = await getOnerepProfileId(session.user.subscriber.id);
+    if (!profileId) return true;
+    onerepProfileId = profileId;
+    return false;
+  };
 
   if (
     process.env.APP_ENV === "production" ||
     !session?.user?.email ||
     !isAdmin(session.user.email) ||
-    !session?.user?.subscriber?.primary_sha1
+    !session?.user?.subscriber?.primary_sha1 ||
+    (await profileIdNonExistent())
   ) {
     return notFound();
   } else {
-    const { primary_sha1 } = session.user.subscriber;
-    existingRow = await createQaTogglesRow(primary_sha1);
+    const { primary_sha1, id: subscriberId } = session.user.subscriber;
+    existingRow = await createQaTogglesRow(primary_sha1, subscriberId);
   }
 
   return (
@@ -36,6 +48,13 @@ export default async function DevPage() {
         showQaBreaches={existingRow.show_custom_breaches}
         showApiParamEnum={AllowedToggleColumns.ShowRealBreaches}
         showQaParamEnum={AllowedToggleColumns.ShowCustomBreaches}
+      />
+      <OnerepConfigPage
+        onerepProfileId={onerepProfileId}
+        showApiBrokers={existingRow.show_real_brokers}
+        showQaBrokers={existingRow.show_custom_brokers}
+        showApiParamEnum={AllowedToggleColumns.ShowRealBrokers}
+        showQaParamEnum={AllowedToggleColumns.ShowCustomBrokers}
       />
       ;
     </div>

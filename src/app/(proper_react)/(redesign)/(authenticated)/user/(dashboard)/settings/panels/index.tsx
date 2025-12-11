@@ -14,12 +14,18 @@ import {
   SettingsPanelManageAccount,
   SettingsPanelManageAccountProps,
 } from "./SettingsPanelManageAccount";
+import {
+  SettingsPanelEditProfile,
+  SettingsPanelEditProfileProps,
+} from "./SettingsPanelEditProfile/SettingsPanelEditProfile";
 import styles from "./Panel.module.scss";
 import { TabType } from "../View";
 
 export type SettingsProps = SettingsPanelEditInfoProps &
   SettingsPanelNotificationsProps &
-  SettingsPanelManageAccountProps & {
+  SettingsPanelManageAccountProps &
+  SettingsPanelEditProfileProps & {
+    isEligibleForPremium: boolean;
     activeTab?: TabType;
   };
 
@@ -31,6 +37,10 @@ function Panel(props: SettingsProps) {
       return <SettingsPanelNotifications {...props} />;
     case "manage-account":
       return <SettingsPanelManageAccount {...props} />;
+    case "edit-profile":
+      if (props.enabledFeatureFlags.includes("EditScanProfileDetails")) {
+        return <SettingsPanelEditProfile {...props} />;
+      }
     default:
       return <SettingsPanelEditInfo {...props} />;
   }

@@ -14,9 +14,32 @@ const meta: Meta<typeof ProgressCard> = {
 export default meta;
 type Story = StoryObj<typeof ProgressCard>;
 
+export const ProgressCardItemUsPremium: Story = {
+  name: "Has Premium",
+  args: {
+    resolvedByYou: 3,
+    inProgress: 7,
+    autoRemoved: 5,
+    isPremiumUser: true,
+    isEligibleForPremium: true,
+  },
+};
+
+export const ProgressCardItemUsNonPremium: Story = {
+  name: "Eligible for Premium",
+  args: {
+    resolvedByYou: 3,
+    autoRemoved: 5,
+    isEligibleForPremium: true,
+    isPremiumUser: false,
+  },
+};
+
 export const ProgressCardItemNonUs: Story = {
   name: "Not eligible for Premium",
   args: {
     resolvedByYou: 3,
+    autoRemoved: 0,
+    isEligibleForPremium: false,
   },
 };

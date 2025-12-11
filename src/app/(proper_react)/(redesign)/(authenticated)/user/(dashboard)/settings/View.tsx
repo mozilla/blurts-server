@@ -3,7 +3,11 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { Session } from "next-auth";
-import { EmailAddressRow, SubscriberRow } from "knex/types/tables";
+import {
+  EmailAddressRow,
+  OnerepProfileRow,
+  SubscriberRow,
+} from "knex/types/tables";
 import styles from "./View.module.scss";
 import { Toolbar } from "../../../../../../components/client/toolbar/Toolbar";
 import { ExtendedReactLocalization } from "../../../../../../functions/l10n";
@@ -17,6 +21,7 @@ import {
   type onRemoveEmail,
   type onAddEmail,
   type onDeleteAccount,
+  onHandleUpdateProfileData,
 } from "./actions";
 import { UserAnnouncementWithDetails } from "../../../../../../../db/tables/user_announcements";
 
@@ -26,18 +31,28 @@ export type Props = {
   l10n: ExtendedReactLocalization;
   user: Session["user"];
   subscriber: SubscriberRow;
+  monthlySubscriptionUrl: string;
+  subscriptionBillingAmount: {
+    monthly: number;
+  };
   fxaSettingsUrl: string;
+  fxaSubscriptionsUrl: string;
   emailAddresses: EmailAddressRow[];
   breachCountByEmailAddress: Record<string, number>;
   enabledFeatureFlags: FeatureFlagName[];
   experimentData: ExperimentData["Features"];
+  isEligibleForPremium: boolean;
   actions: {
     onAddEmail: typeof onAddEmail;
     onRemoveEmail: typeof onRemoveEmail;
     onDeleteAccount: typeof onDeleteAccount;
+    onHandleUpdateProfileData: typeof onHandleUpdateProfileData;
   };
   userAnnouncements: UserAnnouncementWithDetails[];
+  isMonthlySubscriber: boolean;
   data?: SubscriberEmailPreferencesOutput;
+  profileData?: OnerepProfileRow;
+  lastScanDate?: Date;
   activeTab?: TabType;
 };
 
@@ -46,7 +61,11 @@ export const SettingsView = (props: Props) => {
     <div className={styles.wrapper}>
       <Toolbar
         user={props.user}
+        monthlySubscriptionUrl={props.monthlySubscriptionUrl}
+        subscriptionBillingAmount={props.subscriptionBillingAmount}
         fxaSettingsUrl={props.fxaSettingsUrl}
+        lastScanDate={props.lastScanDate ?? null}
+        experimentData={props.experimentData}
         enabledFeatureFlags={props.enabledFeatureFlags}
         announcements={props.userAnnouncements}
       />
@@ -57,8 +76,12 @@ export const SettingsView = (props: Props) => {
         emailAddresses={props.emailAddresses.map(sanitizeEmailRow)}
         enabledFeatureFlags={props.enabledFeatureFlags}
         experimentData={props.experimentData}
+        fxaSubscriptionsUrl={props.fxaSubscriptionsUrl}
+        isMonthlySubscriber={props.isMonthlySubscriber}
         subscriber={props.subscriber}
         user={props.user}
+        profileData={props.profileData}
+        isEligibleForPremium={props.isEligibleForPremium}
         actions={props.actions}
       />
     </div>

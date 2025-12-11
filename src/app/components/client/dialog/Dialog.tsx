@@ -12,7 +12,7 @@ import { useL10n } from "../../../hooks/l10n";
 
 export type Props = {
   children: ReactNode;
-  onDismiss: () => void;
+  onDismiss?: () => void;
   title?: ReactNode;
   illustration?: ReactNode;
   fitContent?: boolean;
@@ -40,24 +40,25 @@ export const Dialog = ({
     dialogTitleRef.current?.focus();
   }, []);
 
-  const dismissButton = (
-    <button
-      {...dismissButtonProps}
-      ref={dismissButtonRef}
-      className={styles.dismissButton}
-      /* c8 ignore start */
-      onClick={() => {
-        onDismiss();
-      }}
-      /* c8 ignore stop */
-    >
-      <CloseBtn
-        alt={l10n.getString("close-modal-alt")}
-        width="14"
-        height="14"
-      />
-    </button>
-  );
+  const dismissButton =
+    typeof onDismiss === "function" ? (
+      <button
+        {...dismissButtonProps}
+        ref={dismissButtonRef}
+        className={styles.dismissButton}
+        /* c8 ignore start */
+        onClick={() => {
+          onDismiss();
+        }}
+        /* c8 ignore stop */
+      >
+        <CloseBtn
+          alt={l10n.getString("close-modal-alt")}
+          width="14"
+          height="14"
+        />
+      </button>
+    ) : null;
 
   return (
     <div

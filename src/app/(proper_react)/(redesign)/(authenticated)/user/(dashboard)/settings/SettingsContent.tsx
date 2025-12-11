@@ -87,7 +87,9 @@ function SettingsContent(props: SettingsProps) {
           />
         </header>
       )}
-      <div className={`${styles.content} ${styles.isCard}`}>
+      <div
+        className={`${styles.content} ${props.enabledFeatureFlags.includes("EditScanProfileDetails") && (activeTab === "edit-info" || activeTab === "edit-profile") ? "" : styles.isCard}`}
+      >
         <SettingsPanel
           activeTab={activeTab}
           breachCountByEmailAddress={props.breachCountByEmailAddress}
@@ -95,8 +97,12 @@ function SettingsContent(props: SettingsProps) {
           emailAddresses={props.emailAddresses}
           enabledFeatureFlags={props.enabledFeatureFlags}
           experimentData={props.experimentData}
+          fxaSubscriptionsUrl={props.fxaSubscriptionsUrl}
+          isMonthlySubscriber={props.isMonthlySubscriber}
           subscriber={props.subscriber}
           user={props.user}
+          isEligibleForPremium={props.isEligibleForPremium}
+          profileData={props.profileData}
           actions={props.actions}
         />
       </div>

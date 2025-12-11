@@ -2,7 +2,9 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import { OnerepScanResultDataBrokerRow } from "knex/types/tables";
 import { BreachDataTypes } from "../universal/breach";
+import { RemovalStatusMap } from "../universal/scanResult";
 import { SubscriberBreach } from "../../../utils/subscriberBreaches";
 import { FeatureFlagName } from "../../../db/tables/featureFlags";
 
@@ -10,6 +12,11 @@ export type DataPoints = {
   // shared
   emailAddresses: number;
   phoneNumbers: number;
+
+  // data brokers
+  addresses: number;
+  familyMembers: number;
+
   // data breaches
   socialSecurityNumbers: number;
   ipAddresses: number;
@@ -32,6 +39,23 @@ export interface DashboardSummary {
   dataBreachTotalDataPointsNum: number;
   /** total number of fixed data points from user breaches */
   dataBreachFixedDataPointsNum: number;
+  /** total number of user data broker scans */
+  dataBrokerTotalNum: number;
+  /** total number of data points from user data broker scanned results */
+  dataBrokerTotalDataPointsNum: number;
+  /** total number of auto-fixed scans from user data broker scanned results */
+  dataBrokerAutoFixedNum: number;
+  /** total number of manually fixed scans from user data broker scanned results */
+  dataBrokerManuallyResolvedNum: number;
+  /** total number of fixed data points from user data broker scanned results */
+  dataBrokerAutoFixedDataPointsNum: number;
+  /** total number of in-progress scans from user data broker scanned results */
+  dataBrokerInProgressNum: number;
+  /** total number of in-progress data points from user data broker scanned results */
+  dataBrokerInProgressDataPointsNum: number;
+  /** total number of data points resolved manually */
+  dataBrokerManuallyResolvedDataPointsNum: number;
+
   /** total number of data points: sum of data breaches & data broker data points */
   totalDataPointsNum: number;
   /** all data points separated by data classes */
@@ -42,6 +66,10 @@ export interface DashboardSummary {
   inProgressDataPoints: DataPoints;
   /** resolved/removed data points separated by data classes */
   fixedDataPoints: DataPoints;
+  /** manually resolved data broker data points separated by data classes */
+  manuallyResolvedDataBrokerDataPoints: DataPoints;
+  /** total number of data brokers with removal under maintenance broker status */
+  dataBrokerRemovalUnderMaintenance: number;
   /** sanitized all data points for frontend display */
   unresolvedSanitizedDataPoints: SanitizedDataPoints;
   /** sanitized resolved and removed data points for frontend display */
@@ -51,6 +79,11 @@ export interface DashboardSummary {
 export const dataClassKeyMap: Record<keyof DataPoints, string> = {
   emailAddresses: "email-addresses",
   phoneNumbers: "phone-numbers",
+
+  // data brokers
+  addresses: "physical-addresses",
+  familyMembers: "family-members-names",
+
   // data breaches
   socialSecurityNumbers: "social-security-numbers",
   ipAddresses: "ip-addresses",
@@ -62,6 +95,7 @@ export const dataClassKeyMap: Record<keyof DataPoints, string> = {
 };
 
 export function getDashboardSummary(
+  scannedResults: OnerepScanResultDataBrokerRow[],
   subscriberBreaches: SubscriberBreach[],
   _enabledFeatureFlags?: FeatureFlagName[],
 ): DashboardSummary {
@@ -71,10 +105,21 @@ export function getDashboardSummary(
     dataBreachUnresolvedNum: 0,
     dataBreachTotalDataPointsNum: 0,
     dataBreachFixedDataPointsNum: 0,
+    dataBrokerTotalNum: scannedResults.length,
+    dataBrokerTotalDataPointsNum: 0,
+    dataBrokerAutoFixedNum: 0,
+    dataBrokerRemovalUnderMaintenance: 0,
+    dataBrokerAutoFixedDataPointsNum: 0,
+    dataBrokerInProgressNum: 0,
+    dataBrokerInProgressDataPointsNum: 0,
+    dataBrokerManuallyResolvedNum: 0,
+    dataBrokerManuallyResolvedDataPointsNum: 0,
     totalDataPointsNum: 0,
     allDataPoints: {
       emailAddresses: 0,
       phoneNumbers: 0,
+      addresses: 0,
+      familyMembers: 0,
 
       // data breaches
       socialSecurityNumbers: 0,
@@ -88,6 +133,8 @@ export function getDashboardSummary(
     unresolvedDataPoints: {
       emailAddresses: 0,
       phoneNumbers: 0,
+      addresses: 0,
+      familyMembers: 0,
 
       // data breaches
       socialSecurityNumbers: 0,
@@ -101,6 +148,8 @@ export function getDashboardSummary(
     inProgressDataPoints: {
       emailAddresses: 0,
       phoneNumbers: 0,
+      addresses: 0,
+      familyMembers: 0,
 
       // data breaches
       socialSecurityNumbers: 0,
@@ -114,6 +163,23 @@ export function getDashboardSummary(
     fixedDataPoints: {
       emailAddresses: 0,
       phoneNumbers: 0,
+      addresses: 0,
+      familyMembers: 0,
+
+      // data breaches
+      socialSecurityNumbers: 0,
+      ipAddresses: 0,
+      passwords: 0,
+      creditCardNumbers: 0,
+      pins: 0,
+      securityQuestions: 0,
+      bankAccountNumbers: 0,
+    },
+    manuallyResolvedDataBrokerDataPoints: {
+      emailAddresses: 0,
+      phoneNumbers: 0,
+      addresses: 0,
+      familyMembers: 0,
 
       // data breaches
       socialSecurityNumbers: 0,
@@ -127,6 +193,71 @@ export function getDashboardSummary(
     unresolvedSanitizedDataPoints: [],
     fixedSanitizedDataPoints: [],
   };
+
+  // calculate broker summary from scanned results
+  if (scannedResults) {
+    scannedResults.forEach((r) => {
+      // check removal status
+      const isManuallyResolved = r.manually_resolved;
+      const isAutoFixed =
+        r.status === RemovalStatusMap.Removed && !isManuallyResolved;
+      const isInProgress =
+        (r.status === RemovalStatusMap.OptOutInProgress ||
+          r.status === RemovalStatusMap.WaitingForVerification) &&
+        !isManuallyResolved;
+
+      if (isInProgress) {
+        summary.dataBrokerInProgressNum++;
+      } else if (isAutoFixed) {
+        summary.dataBrokerAutoFixedNum++;
+      } else if (isManuallyResolved) {
+        summary.dataBrokerManuallyResolvedNum++;
+      }
+      // total data points: add email, phones, addresses, relatives, full name (1)
+      const dataPointsIncrement =
+        r.emails.length +
+        r.phones.length +
+        r.addresses.length +
+        r.relatives.length;
+      summary.totalDataPointsNum += dataPointsIncrement;
+      summary.dataBrokerTotalDataPointsNum += dataPointsIncrement;
+
+      // for all data points: email, phones, addresses, relatives, full name (1)
+      summary.allDataPoints.emailAddresses += r.emails.length;
+      summary.allDataPoints.phoneNumbers += r.phones.length;
+      summary.allDataPoints.addresses += r.addresses.length;
+      summary.allDataPoints.familyMembers += r.relatives.length;
+
+      if (isInProgress) {
+        summary.inProgressDataPoints.emailAddresses += r.emails.length;
+        summary.inProgressDataPoints.phoneNumbers += r.phones.length;
+        summary.inProgressDataPoints.addresses += r.addresses.length;
+        summary.inProgressDataPoints.familyMembers += r.relatives.length;
+        summary.dataBrokerInProgressDataPointsNum += dataPointsIncrement;
+      }
+
+      // for fixed data points: email, phones, addresses, relatives, full name (1)
+      if (isAutoFixed) {
+        summary.fixedDataPoints.emailAddresses += r.emails.length;
+        summary.fixedDataPoints.phoneNumbers += r.phones.length;
+        summary.fixedDataPoints.addresses += r.addresses.length;
+        summary.fixedDataPoints.familyMembers += r.relatives.length;
+        summary.dataBrokerAutoFixedDataPointsNum += dataPointsIncrement;
+      }
+
+      if (isManuallyResolved) {
+        summary.manuallyResolvedDataBrokerDataPoints.emailAddresses +=
+          r.emails.length;
+        summary.manuallyResolvedDataBrokerDataPoints.phoneNumbers +=
+          r.phones.length;
+        summary.manuallyResolvedDataBrokerDataPoints.addresses +=
+          r.addresses.length;
+        summary.manuallyResolvedDataBrokerDataPoints.familyMembers +=
+          r.relatives.length;
+        summary.dataBrokerManuallyResolvedDataPointsNum += dataPointsIncrement;
+      }
+    });
+  }
 
   // calculate breaches summary from breaches data
   // TODO: Modify after MNTOR-1947: Refactor user breaches object
@@ -248,14 +379,16 @@ export function getDashboardSummary(
   summary.dataBreachTotalNum = subscriberBreaches.length;
   summary.dataBreachUnresolvedNum =
     summary.dataBreachTotalNum - summary.dataBreachResolvedNum;
-  const isBreachesOnly = true;
+  const isBreachesOnly = summary.dataBrokerTotalNum === 0;
 
   // count unresolved data points
   summary.unresolvedDataPoints = Object.keys(summary.allDataPoints).reduce(
     (a, k) => {
       a[k as keyof DataPoints] =
         summary.allDataPoints[k as keyof DataPoints] -
-        summary.fixedDataPoints[k as keyof DataPoints];
+        summary.fixedDataPoints[k as keyof DataPoints] -
+        summary.inProgressDataPoints[k as keyof DataPoints] -
+        summary.manuallyResolvedDataBrokerDataPoints[k as keyof DataPoints];
       return a;
     },
     {} as DataPoints,
@@ -264,22 +397,30 @@ export function getDashboardSummary(
   // sanitize unresolved data points
   summary.unresolvedSanitizedDataPoints = sanitizeDataPoints(
     summary.unresolvedDataPoints,
-    summary.totalDataPointsNum - summary.dataBreachFixedDataPointsNum,
+    summary.totalDataPointsNum -
+      summary.dataBreachFixedDataPointsNum -
+      summary.dataBrokerAutoFixedDataPointsNum -
+      summary.dataBrokerInProgressDataPointsNum -
+      summary.dataBrokerManuallyResolvedDataPointsNum,
     isBreachesOnly,
   );
 
-  // count fixed data points
+  // count fixed and manually resolved (data brokers) data points
   const dataBrokerFixedManuallyResolved = Object.keys(
     summary.fixedDataPoints,
   ).reduce((a, k) => {
-    a[k as keyof DataPoints] = summary.fixedDataPoints[k as keyof DataPoints];
+    a[k as keyof DataPoints] =
+      summary.fixedDataPoints[k as keyof DataPoints] +
+      summary.manuallyResolvedDataBrokerDataPoints[k as keyof DataPoints];
     return a;
   }, {} as DataPoints);
 
   // sanitize fixed and removed data points
   summary.fixedSanitizedDataPoints = sanitizeDataPoints(
     dataBrokerFixedManuallyResolved,
-    summary.dataBreachFixedDataPointsNum,
+    summary.dataBreachFixedDataPointsNum +
+      summary.dataBrokerAutoFixedDataPointsNum +
+      summary.dataBrokerManuallyResolvedDataPointsNum,
     isBreachesOnly,
   );
 
@@ -317,4 +458,11 @@ function sanitizeDataPoints(
   const sanitizedDataPoints = [...sanitizedTopDataPoints];
   sanitizedDataPoints.push({ "other-data-class": otherCount });
   return sanitizedDataPoints;
+}
+
+export function getDataPointReduction(summary: DashboardSummary): number {
+  if (summary.totalDataPointsNum <= 0) return 100;
+  return Math.round(
+    (summary.dataBrokerTotalDataPointsNum / summary.totalDataPointsNum) * 100,
+  );
 }

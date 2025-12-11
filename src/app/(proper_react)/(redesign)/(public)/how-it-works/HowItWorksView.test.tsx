@@ -11,6 +11,7 @@ import { userEvent } from "@testing-library/user-event";
 import { useSession } from "next-auth/react";
 import { deleteAllCookies } from "../../../../functions/client/deleteAllCookies";
 import { useTelemetry as useTelemetryImported } from "../../../../hooks/useTelemetry";
+import { getPremiumSubscriptionUrl } from "../../../../functions/server/getPremiumSubscriptionInfo";
 
 jest.mock("next-auth/react", () => {
   return {
@@ -48,6 +49,22 @@ describe("How it works page", () => {
     const { container } = render(<ComposedPage />);
     expect(await axe(container)).toHaveNoViolations();
   }, 10_000);
+
+  it("Data Removal buttons enter user into premium subscription flow", () => {
+    const monthlySubscriptionUrl = getPremiumSubscriptionUrl({
+      type: "monthly",
+      enabledFeatureFlags: [],
+    });
+    const ComposedPage = composeStory(HowItWorks, Meta);
+    render(<ComposedPage />);
+
+    const [dataRemovalBtn1, dataRemovalBtn2] = screen.getAllByRole("link", {
+      name: "Get data removal",
+    });
+
+    expect(dataRemovalBtn1).toHaveAttribute("href", monthlySubscriptionUrl);
+    expect(dataRemovalBtn2).toHaveAttribute("href", monthlySubscriptionUrl);
+  });
 
   it("Free Scan button enters user into account.mozilla.com", async () => {
     const mockedRecord = useTelemetry();

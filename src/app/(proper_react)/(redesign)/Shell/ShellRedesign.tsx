@@ -10,6 +10,7 @@ import { MobileShell } from "../MobileShell";
 import { Footer } from "../Footer";
 import { ExtendedReactLocalization } from "../../../functions/l10n";
 import { FeatureFlagName } from "../../../../db/tables/featureFlags";
+import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 import MonitorLogo from "../../images/monitor-logo.svg";
 import styles from "./ShellRedesign.module.scss";
 import { NavbarList } from "./ShellNavbarList";
@@ -21,9 +22,14 @@ export type Props = {
   children: ReactNode;
   countryCode: string;
   enabledFeatureFlags: FeatureFlagName[];
+  experimentData: ExperimentData["Features"];
+  monthlySubscriptionUrl: string;
+  fxaSettingsUrl: string;
+  subscriptionBillingAmount: {
+    monthly: number;
+  };
   announcements: UserAnnouncementWithDetails[] | null;
   hideSidebar?: boolean;
-  fxaSettingsUrl: string;
 };
 
 export const ShellRedesign = (props: Props) => {
@@ -31,8 +37,11 @@ export const ShellRedesign = (props: Props) => {
     <MobileShell
       countryCode={props.countryCode}
       session={props.session}
+      monthlySubscriptionUrl={props.monthlySubscriptionUrl}
       fxaSettingsUrl={props.fxaSettingsUrl}
+      subscriptionBillingAmount={props.subscriptionBillingAmount}
       enabledFeatureFlags={props.enabledFeatureFlags}
+      experimentData={props.experimentData}
       announcements={props.announcements}
     >
       <div className={styles.wrapper}>

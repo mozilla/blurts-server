@@ -17,7 +17,8 @@ import { TelemetryLink } from "../TelemetryLink";
 import { useTelemetry } from "../../../hooks/useTelemetry";
 import { AnnouncementRow } from "knex/types/tables";
 import { truncateDescription } from "../../../../utils/truncate";
-import { CONST_MAX_NUM_ADDRESSES } from "../../../../constants";
+import { useSubscriptionBilling } from "../../../../contextProviders/subscription-billing-context";
+import { CONST_MAX_NUM_ADDRESSES_PLUS } from "../../../../constants";
 
 type AnnouncementDialogProps = {
   announcements: UserAnnouncementWithDetails[];
@@ -429,6 +430,7 @@ export const LocalizedAnnouncementString = (
   props: LocalizedAnnouncementStringProps,
 ) => {
   const l10n = useL10n();
+  const billingInfo = useSubscriptionBilling();
 
   // Build the key based on the type (fluent IDs are named in this format)
   const key = `announcement-${props.announcement.announcement_id}-${props.type}`;
@@ -459,7 +461,10 @@ export const LocalizedAnnouncementString = (
   // React rendering cost is unchanged: Passing unused variables doesn’t
   // trigger any additional render complexity.
   const parsedString = l10n.getString(key, {
-    emailAddressesCount: CONST_MAX_NUM_ADDRESSES,
+    bundleMonthlyPrice: `$${billingInfo.bundle.monthly}`,
+    bundleYearlyPrice: `$${billingInfo.bundle.monthly * 12}`,
+    regularYearlyPrice: `$${billingInfo.bundle.individual * 12}`,
+    emailAddressesCount: CONST_MAX_NUM_ADDRESSES_PLUS,
     date: "Dec. 17", // deadline for viewing data broker results and in-progress removals
   });
 

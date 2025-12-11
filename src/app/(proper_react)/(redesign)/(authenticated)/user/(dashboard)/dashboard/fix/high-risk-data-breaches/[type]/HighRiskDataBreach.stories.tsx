@@ -6,7 +6,7 @@ import type { Meta, StoryObj } from "@storybook/nextjs";
 import {
   createRandomAnnouncement,
   createRandomBreach,
-  createRandomUser,
+  createUserWithPremiumSubscription,
 } from "../../../../../../../../../../apiMocks/mockData";
 import { Shell } from "../../../../../../../Shell/Shell";
 import { getL10n } from "../../../../../../../../../functions/l10n/storybookAndJest";
@@ -17,9 +17,11 @@ import {
 } from "../highRiskBreachData";
 import { BreachDataTypes } from "../../../../../../../../../functions/universal/breach";
 import { StepDeterminationData } from "../../../../../../../../../functions/server/getRelevantGuidedSteps";
+import { OnerepScanRow } from "knex/types/tables";
+import { defaultExperimentData } from "../../../../../../../../../../telemetry/generated/nimbus/experiments";
 import { UserAnnouncementWithDetails } from "../../../../../../../../../../db/tables/user_announcements";
 
-const user = createRandomUser();
+const user = createUserWithPremiumSubscription();
 
 const mockedSession = {
   expires: new Date().toISOString(),
@@ -28,6 +30,7 @@ const mockedSession = {
 
 const HighRiskBreachWrapper = (props: {
   type: HighRiskBreachTypes;
+  scanStatus?: "empty" | "not_started" | "unavailable";
   nextUnresolvedBreachType?: keyof typeof BreachDataTypes | "None";
 }) => {
   const hasNextUnresolvedBreach = props.nextUnresolvedBreachType !== null;
@@ -69,11 +72,37 @@ const HighRiskBreachWrapper = (props: {
     );
   }
 
-  const data: StepDeterminationData = {
-    countryCode: "nl",
-    subscriberBreaches: mockedBreaches,
-    user: mockedSession.user,
+  const mockedScan: OnerepScanRow = {
+    created_at: new Date(1998, 2, 31),
+    updated_at: new Date(1998, 2, 31),
+    id: 0,
+    onerep_profile_id: 0,
+    onerep_scan_id: 0,
+    onerep_scan_reason: "initial",
+    onerep_scan_status: "finished",
   };
+
+  const data: StepDeterminationData =
+    props.scanStatus === "empty"
+      ? {
+          countryCode: "us",
+          latestScanData: { results: [], scan: mockedScan },
+          subscriberBreaches: mockedBreaches,
+          user: mockedSession.user,
+        }
+      : props.scanStatus === "not_started"
+        ? {
+            countryCode: "us",
+            latestScanData: { results: [], scan: null },
+            subscriberBreaches: mockedBreaches,
+            user: mockedSession.user,
+          }
+        : {
+            countryCode: "nl",
+            latestScanData: null,
+            subscriberBreaches: mockedBreaches,
+            user: mockedSession.user,
+          };
 
   const mockedAnnouncements: UserAnnouncementWithDetails[] = [
     createRandomAnnouncement(),
@@ -88,12 +117,14 @@ const HighRiskBreachWrapper = (props: {
       nonce=""
       countryCode={data.countryCode}
       enabledFeatureFlags={[]}
+      experimentData={defaultExperimentData["Features"]}
       announcements={mockedAnnouncements}
     >
       <HighRiskBreachLayout
         subscriberEmails={[]}
         type={props.type}
         data={data}
+        isEligibleForPremium={true}
         enabledFeatureFlags={[]}
       />
     </Shell>

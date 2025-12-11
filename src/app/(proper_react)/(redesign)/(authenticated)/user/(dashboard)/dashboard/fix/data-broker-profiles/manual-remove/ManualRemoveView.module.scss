@@ -1,0 +1,115 @@
+@use "../../../../../../../../../tokens";
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: tokens.$spacing-lg;
+}
+
+.buttonsWrapper {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: tokens.$spacing-md;
+
+  a {
+    display: block;
+  }
+
+  @media screen and (min-width: tokens.$screen-sm) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.removalStepsList {
+  font: tokens.$text-body-md;
+  text-align: left;
+
+  li {
+    margin-bottom: tokens.$spacing-md;
+
+    > strong {
+      display: block;
+      margin-bottom: tokens.$spacing-xs;
+      font-weight: 700;
+    }
+
+    // The subhead/bullet content is wrapped in a span to style to OL marker (1.)
+    > span {
+      font: tokens.$text-body-sm;
+      font-weight: normal;
+    }
+  }
+}
+
+.content {
+  max-width: tokens.$content-md;
+
+  h3 {
+    font: tokens.$text-title-2xs;
+    text-align: center;
+  }
+
+  h4 {
+    font: tokens.$text-title-3xs;
+  }
+
+  p,
+  h3 {
+    margin-block-end: tokens.$spacing-md;
+  }
+
+  > a {
+    color: tokens.$color-blue-60;
+    display: inline-block;
+    margin-inline-start: tokens.$spacing-sm;
+  }
+}
+
+.exposureListing {
+  display: flex;
+  flex-direction: column;
+  gap: tokens.$spacing-lg;
+
+  h3 {
+    font: tokens.$text-title-2xs;
+  }
+
+  .exposureList {
+    display: flex;
+    flex-direction: column;
+    gap: tokens.$spacing-md;
+
+    @media screen and (min-width: tokens.$screen-md) {
+      padding-inline: tokens.$spacing-lg;
+    }
+  }
+}
+
+.questionTooltipWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: tokens.$spacing-xs;
+  font: tokens.$text-title-3xs;
+}
+
+.dataBrokerResolutionStats {
+  display: flex;
+  flex-direction: column;
+  gap: tokens.$spacing-md;
+  justify-content: center;
+  padding-top: tokens.$layout-sm;
+
+  @media screen and (min-width: tokens.$screen-md) {
+    flex-direction: row;
+  }
+  div {
+    @include tokens.estimated-time;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,760 @@
+{
+  "MAGIC_NUM_0": 18744,
+  "TIME": "2024-06-19T01:37:02+0000",
+  "FIRSTNAME": "John",
+  "LASTNAME": "Doe",
+  "BIRTHDATE": "2000-01-01",
+  "EMAILS": ["JohnDoe@JohnDoe.com"],
+  "STATUS": "active",
+  "ADDRESSES": [
+    {
+      "zip": "93386",
+      "city": "Berkeley",
+      "state": "CA",
+      "street": "Von Meadows"
+    }
+  ],
+  "PHONES": ["00000000"],
+  "RELATIVES": ["Bob Doe"],
+  "BROKERS_LIST": {
+    "default": [
+      {
+        "age": 28,
+        "addresses": [
+          {
+            "street": "456 Oak St",
+            "city": "Othertown",
+            "state": "TX",
+            "zip": "67890"
+          },
+          {
+            "street": "1 World Way",
+            "city": "Los Angeles",
+            "state": "CA",
+            "zip": "90045"
+          },
+          {
+            "street": "University Avenue and, Oxford St",
+            "city": "Berkeley",
+            "state": "CA",
+            "zip": "94720"
+          }
+        ],
+        "phones": ["555-5678", "69-420", "314159"],
+        "emails": [
+          "islam.makhachev@example.com",
+          "Jon.Jones@example.com",
+          "khabib.nurmagomedov@dag.com"
+        ],
+        "relatives": ["John Smith", "Bob Smith", "Amy Smith"],
+        "link": "https://arivify.com",
+        "data_broker": "arivify.com",
+        "data_broker_id": 13,
+        "created_at": "2024-01-01T00:00:00Z",
+        "updated_at": "2024-01-01T00:00:00Z"
+      },
+      {
+        "age": 40,
+        "addresses": [
+          {
+            "street": "456 Oak St",
+            "city": "Othertown",
+            "state": "TX",
+            "zip": "67890"
+          },
+          {
+            "street": "1 World Way",
+            "city": "Los Angeles",
+            "state": "CA",
+            "zip": "90045"
+          },
+          {
+            "street": "University Avenue and, Oxford St",
+            "city": "Berkeley",
+            "state": "CA",
+            "zip": "94720"
+          }
+        ],
+        "phones": ["555-5678", "69-420", "314159"],
+        "emails": [
+          "islam.makhachev@example.com",
+          "Jon.Jones@example.com",
+          "khabib.nurmagomedov@dag.com"
+        ],
+        "relatives": ["John Smith", "Bob Smith", "Amy Smith"],
+        "link": "https://beenverified.com",
+        "data_broker": "beenverified.com",
+        "data_broker_id": 1,
+        "created_at": "2024-01-01T00:00:00Z",
+        "updated_at": "2024-01-01T00:00:00Z"
+      },
+      {
+        "age": 50,
+        "addresses": [
+          {
+            "street": "456 Oak St",
+            "city": "Othertown",
+            "state": "TX",
+            "zip": "67890"
+          },
+          {
+            "street": "1 World Way",
+            "city": "Los Angeles",
+            "state": "CA",
+            "zip": "90045"
+          },
+          {
+            "street": "University Avenue and, Oxford St",
+            "city": "Berkeley",
+            "state": "CA",
+            "zip": "94720"
+          }
+        ],
+        "phones": ["555-5678", "69-420", "314159"],
+        "emails": [
+          "islam.makhachev@example.com",
+          "Jon.Jones@example.com",
+          "khabib.nurmagomedov@dag.com"
+        ],
+        "relatives": ["John Smith", "Bob Smith", "Amy Smith"],
+        "link": "https://instantcheckmate.com",
+        "data_broker": "instantcheckmate.com",
+        "data_broker_id": 11,
+        "created_at": "2024-01-01T00:00:00Z",
+        "updated_at": "2024-01-01T00:00:00Z"
+      },
+      {
+        "age": 30,
+        "addresses": [
+          {
+            "street": "456 Oak St",
+            "city": "Othertown",
+            "state": "TX",
+            "zip": "67890"
+          },
+          {
+            "street": "1 World Way",
+            "city": "Los Angeles",
+            "state": "CA",
+            "zip": "90045"
+          },
+          {
+            "street": "University Avenue and, Oxford St",
+            "city": "Berkeley",
+            "state": "CA",
+            "zip": "94720"
+          }
+        ],
+        "phones": ["555-5678", "69-420", "314159"],
+        "emails": [
+          "islam.makhachev@example.com",
+          "Jon.Jones@example.com",
+          "khabib.nurmagomedov@dag.com"
+        ],
+        "relatives": ["John Smith", "Bob Smith", "Amy Smith"],
+        "link": "https://open-public-records.com",
+        "data_broker": "open-public-records.com",
+        "data_broker_id": 3,
+        "created_at": "2024-01-01T00:00:00Z",
+        "updated_at": "2024-01-01T00:00:00Z"
+      },
+      {
+        "age": 45,
+        "addresses": [
+          {
+            "street": "456 Oak St",
+            "city": "Othertown",
+            "state": "TX",
+            "zip": "67890"
+          },
+          {
+            "street": "1 World Way",
+            "city": "Los Angeles",
+            "state": "CA",
+            "zip": "90045"
+          },
+          {
+            "street": "University Avenue and, Oxford St",
+            "city": "Berkeley",
+            "state": "CA",
+            "zip": "94720"
+          }
+        ],
+        "phones": ["555-5678", "69-420", "314159"],
+        "emails": [
+          "islam.makhachev@example.com",
+          "Jon.Jones@example.com",
+          "khabib.nurmagomedov@dag.com"
+        ],
+        "relatives": ["John Smith", "Bob Smith", "Amy Smith"],
+        "link": "https://peoplefinders.com",
+        "data_broker": "peoplefinders.com",
+        "data_broker_id": 4,
+        "created_at": "2024-01-01T00:00:00Z",
+        "updated_at": "2024-01-01T00:00:00Z"
+      },
+      {
+        "age": 55,
+        "addresses": [
+          {
+            "street": "456 Oak St",
+            "city": "Othertown",
+            "state": "TX",
+            "zip": "67890"
+          },
+          {
+            "street": "1 World Way",
+            "city": "Los Angeles",
+            "state": "CA",
+            "zip": "90045"
+          },
+          {
+            "street": "University Avenue and, Oxford St",
+            "city": "Berkeley",
+            "state": "CA",
+            "zip": "94720"
+          }
+        ],
+        "phones": ["555-5678", "69-420", "314159"],
+        "emails": [
+          "islam.makhachev@example.com",
+          "Jon.Jones@example.com",
+          "khabib.nurmagomedov@dag.com"
+        ],
+        "relatives": ["John Smith", "Bob Smith", "Amy Smith"],
+        "link": "https://peoplesmart.com",
+        "data_broker": "peoplesmart.com",
+        "data_broker_id": 2,
+        "created_at": "2024-01-01T00:00:00Z",
+        "updated_at": "2024-01-01T00:00:00Z"
+      },
+      {
+        "age": 60,
+        "addresses": [
+          {
+            "street": "456 Oak St",
+            "city": "Othertown",
+            "state": "TX",
+            "zip": "67890"
+          },
+          {
+            "street": "1 World Way",
+            "city": "Los Angeles",
+            "state": "CA",
+            "zip": "90045"
+          },
+          {
+            "street": "University Avenue and, Oxford St",
+            "city": "Berkeley",
+            "state": "CA",
+            "zip": "94720"
+          }
+        ],
+        "phones": ["555-5678", "69-420", "314159"],
+        "emails": [
+          "islam.makhachev@example.com",
+          "Jon.Jones@example.com",
+          "khabib.nurmagomedov@dag.com"
+        ],
+        "relatives": ["John Smith", "Bob Smith", "Amy Smith"],
+        "link": "https://privateeye.com",
+        "data_broker": "privateeye.com",
+        "data_broker_id": 5,
+        "created_at": "2024-01-01T00:00:00Z",
+        "updated_at": "2024-01-01T00:00:00Z"
+      },
+      {
+        "age": 65,
+        "addresses": [
+          {
+            "street": "456 Oak St",
+            "city": "Othertown",
+            "state": "TX",
+            "zip": "67890"
+          },
+          {
+            "street": "1 World Way",
+            "city": "Los Angeles",
+            "state": "CA",
+            "zip": "90045"
+          },
+          {
+            "street": "University Avenue and, Oxford St",
+            "city": "Berkeley",
+            "state": "CA",
+            "zip": "94720"
+          }
+        ],
+        "phones": ["555-5678", "69-420", "314159"],
+        "emails": [
+          "islam.makhachev@example.com",
+          "Jon.Jones@example.com",
+          "khabib.nurmagomedov@dag.com"
+        ],
+        "relatives": ["John Smith", "Bob Smith", "Amy Smith"],
+        "link": "https://smartbackgroundchecks.com",
+        "data_broker": "smartbackgroundchecks.com",
+        "data_broker_id": 6,
+        "created_at": "2024-01-01T00:00:00Z",
+        "updated_at": "2024-01-01T00:00:00Z"
+      },
+      {
+        "age": 70,
+        "addresses": [
+          {
+            "street": "456 Oak St",
+            "city": "Othertown",
+            "state": "TX",
+            "zip": "67890"
+          },
+          {
+            "street": "1 World Way",
+            "city": "Los Angeles",
+            "state": "CA",
+            "zip": "90045"
+          },
+          {
+            "street": "University Avenue and, Oxford St",
+            "city": "Berkeley",
+            "state": "CA",
+            "zip": "94720"
+          }
+        ],
+        "phones": ["555-5678", "69-420", "314159"],
+        "emails": [
+          "islam.makhachev@example.com",
+          "Jon.Jones@example.com",
+          "khabib.nurmagomedov@dag.com"
+        ],
+        "relatives": ["John Smith", "Bob Smith", "Amy Smith"],
+        "link": "https://truthfinder.com",
+        "data_broker": "truthfinder.com",
+        "data_broker_id": 10,
+        "created_at": "2024-01-01T00:00:00Z",
+        "updated_at": "2024-01-01T00:00:00Z"
+      },
+      {
+        "age": 75,
+        "addresses": [
+          {
+            "street": "456 Oak St",
+            "city": "Othertown",
+            "state": "TX",
+            "zip": "67890"
+          },
+          {
+            "street": "1 World Way",
+            "city": "Los Angeles",
+            "state": "CA",
+            "zip": "90045"
+          },
+          {
+            "street": "University Avenue and, Oxford St",
+            "city": "Berkeley",
+            "state": "CA",
+            "zip": "94720"
+          }
+        ],
+        "phones": ["555-5678", "69-420", "314159"],
+        "emails": [
+          "islam.makhachev@example.com",
+          "Jon.Jones@example.com",
+          "khabib.nurmagomedov@dag.com"
+        ],
+        "relatives": ["John Smith", "Bob Smith", "Amy Smith"],
+        "link": "https://ussearch.com",
+        "data_broker": "ussearch.com",
+        "data_broker_id": 12,
+        "created_at": "2024-01-01T00:00:00Z",
+        "updated_at": "2024-01-01T00:00:00Z"
+      }
+    ],
+    "E2E_TEST_ACCOUNT_EMAIL_ZERO_BROKERS": [],
+    "E2E_TEST_ACCOUNT_EMAIL_ZERO_BREACHES_ZERO_BROKERS": [],
+    "E2E_TEST_ACCOUNT_EMAIL": [
+      {
+        "age": 28,
+        "addresses": [
+          {
+            "street": "456 Oak St",
+            "city": "Othertown",
+            "state": "TX",
+            "zip": "67890"
+          },
+          {
+            "street": "1 World Way",
+            "city": "Los Angeles",
+            "state": "CA",
+            "zip": "90045"
+          },
+          {
+            "street": "University Avenue and, Oxford St",
+            "city": "Berkeley",
+            "state": "CA",
+            "zip": "94720"
+          }
+        ],
+        "phones": ["555-5678", "69-420", "314159"],
+        "emails": [
+          "islam.makhachev@example.com",
+          "Jon.Jones@example.com",
+          "khabib.nurmagomedov@dag.com"
+        ],
+        "relatives": ["John Smith", "Bob Smith", "Amy Smith"],
+        "link": "https://arivify.com",
+        "data_broker": "arivify.com",
+        "data_broker_id": 13,
+        "created_at": "2024-01-01T00:00:00Z",
+        "updated_at": "2024-01-01T00:00:00Z"
+      },
+      {
+        "age": 40,
+        "addresses": [
+          {
+            "street": "456 Oak St",
+            "city": "Othertown",
+            "state": "TX",
+            "zip": "67890"
+          },
+          {
+            "street": "1 World Way",
+            "city": "Los Angeles",
+            "state": "CA",
+            "zip": "90045"
+          },
+          {
+            "street": "University Avenue and, Oxford St",
+            "city": "Berkeley",
+            "state": "CA",
+            "zip": "94720"
+          }
+        ],
+        "phones": ["555-5678", "69-420", "314159"],
+        "emails": [
+          "islam.makhachev@example.com",
+          "Jon.Jones@example.com",
+          "khabib.nurmagomedov@dag.com"
+        ],
+        "relatives": ["John Smith", "Bob Smith", "Amy Smith"],
+        "link": "https://beenverified.com",
+        "data_broker": "beenverified.com",
+        "data_broker_id": 1,
+        "created_at": "2024-01-01T00:00:00Z",
+        "updated_at": "2024-01-01T00:00:00Z"
+      },
+      {
+        "age": 50,
+        "addresses": [
+          {
+            "street": "456 Oak St",
+            "city": "Othertown",
+            "state": "TX",
+            "zip": "67890"
+          },
+          {
+            "street": "1 World Way",
+            "city": "Los Angeles",
+            "state": "CA",
+            "zip": "90045"
+          },
+          {
+            "street": "University Avenue and, Oxford St",
+            "city": "Berkeley",
+            "state": "CA",
+            "zip": "94720"
+          }
+        ],
+        "phones": ["555-5678", "69-420", "314159"],
+        "emails": [
+          "islam.makhachev@example.com",
+          "Jon.Jones@example.com",
+          "khabib.nurmagomedov@dag.com"
+        ],
+        "relatives": ["John Smith", "Bob Smith", "Amy Smith"],
+        "link": "https://instantcheckmate.com",
+        "data_broker": "instantcheckmate.com",
+        "data_broker_id": 11,
+        "created_at": "2024-01-01T00:00:00Z",
+        "updated_at": "2024-01-01T00:00:00Z"
+      },
+      {
+        "age": 30,
+        "addresses": [
+          {
+            "street": "456 Oak St",
+            "city": "Othertown",
+            "state": "TX",
+            "zip": "67890"
+          },
+          {
+            "street": "1 World Way",
+            "city": "Los Angeles",
+            "state": "CA",
+            "zip": "90045"
+          },
+          {
+            "street": "University Avenue and, Oxford St",
+            "city": "Berkeley",
+            "state": "CA",
+            "zip": "94720"
+          }
+        ],
+        "phones": ["555-5678", "69-420", "314159"],
+        "emails": [
+          "islam.makhachev@example.com",
+          "Jon.Jones@example.com",
+          "khabib.nurmagomedov@dag.com"
+        ],
+        "relatives": ["John Smith", "Bob Smith", "Amy Smith"],
+        "link": "https://open-public-records.com",
+        "data_broker": "open-public-records.com",
+        "data_broker_id": 3,
+        "created_at": "2024-01-01T00:00:00Z",
+        "updated_at": "2024-01-01T00:00:00Z"
+      },
+      {
+        "age": 45,
+        "addresses": [
+          {
+            "street": "456 Oak St",
+            "city": "Othertown",
+            "state": "TX",
+            "zip": "67890"
+          },
+          {
+            "street": "1 World Way",
+            "city": "Los Angeles",
+            "state": "CA",
+            "zip": "90045"
+          },
+          {
+            "street": "University Avenue and, Oxford St",
+            "city": "Berkeley",
+            "state": "CA",
+            "zip": "94720"
+          }
+        ],
+        "phones": ["555-5678", "69-420", "314159"],
+        "emails": [
+          "islam.makhachev@example.com",
+          "Jon.Jones@example.com",
+          "khabib.nurmagomedov@dag.com"
+        ],
+        "relatives": ["John Smith", "Bob Smith", "Amy Smith"],
+        "link": "https://peoplefinders.com",
+        "data_broker": "peoplefinders.com",
+        "data_broker_id": 4,
+        "created_at": "2024-01-01T00:00:00Z",
+        "updated_at": "2024-01-01T00:00:00Z"
+      },
+      {
+        "age": 55,
+        "addresses": [
+          {
+            "street": "456 Oak St",
+            "city": "Othertown",
+            "state": "TX",
+            "zip": "67890"
+          },
+          {
+            "street": "1 World Way",
+            "city": "Los Angeles",
+            "state": "CA",
+            "zip": "90045"
+          },
+          {
+            "street": "University Avenue and, Oxford St",
+            "city": "Berkeley",
+            "state": "CA",
+            "zip": "94720"
+          }
+        ],
+        "phones": ["555-5678", "69-420", "314159"],
+        "emails": [
+          "islam.makhachev@example.com",
+          "Jon.Jones@example.com",
+          "khabib.nurmagomedov@dag.com"
+        ],
+        "relatives": ["John Smith", "Bob Smith", "Amy Smith"],
+        "link": "https://peoplesmart.com",
+        "data_broker": "peoplesmart.com",
+        "data_broker_id": 2,
+        "created_at": "2024-01-01T00:00:00Z",
+        "updated_at": "2024-01-01T00:00:00Z"
+      },
+      {
+        "age": 60,
+        "addresses": [
+          {
+            "street": "456 Oak St",
+            "city": "Othertown",
+            "state": "TX",
+            "zip": "67890"
+          },
+          {
+            "street": "1 World Way",
+            "city": "Los Angeles",
+            "state": "CA",
+            "zip": "90045"
+          },
+          {
+            "street": "University Avenue and, Oxford St",
+            "city": "Berkeley",
+            "state": "CA",
+            "zip": "94720"
+          }
+        ],
+        "phones": ["555-5678", "69-420", "314159"],
+        "emails": [
+          "islam.makhachev@example.com",
+          "Jon.Jones@example.com",
+          "khabib.nurmagomedov@dag.com"
+        ],
+        "relatives": ["John Smith", "Bob Smith", "Amy Smith"],
+        "link": "https://privateeye.com",
+        "data_broker": "privateeye.com",
+        "data_broker_id": 5,
+        "created_at": "2024-01-01T00:00:00Z",
+        "updated_at": "2024-01-01T00:00:00Z"
+      },
+      {
+        "age": 65,
+        "addresses": [
+          {
+            "street": "456 Oak St",
+            "city": "Othertown",
+            "state": "TX",
+            "zip": "67890"
+          },
+          {
+            "street": "1 World Way",
+            "city": "Los Angeles",
+            "state": "CA",
+            "zip": "90045"
+          },
+          {
+            "street": "University Avenue and, Oxford St",
+            "city": "Berkeley",
+            "state": "CA",
+            "zip": "94720"
+          }
+        ],
+        "phones": ["555-5678", "69-420", "314159"],
+        "emails": [
+          "islam.makhachev@example.com",
+          "Jon.Jones@example.com",
+          "khabib.nurmagomedov@dag.com"
+        ],
+        "relatives": ["John Smith", "Bob Smith", "Amy Smith"],
+        "link": "https://smartbackgroundchecks.com",
+        "data_broker": "smartbackgroundchecks.com",
+        "data_broker_id": 6,
+        "created_at": "2024-01-01T00:00:00Z",
+        "updated_at": "2024-01-01T00:00:00Z"
+      },
+      {
+        "age": 70,
+        "addresses": [
+          {
+            "street": "456 Oak St",
+            "city": "Othertown",
+            "state": "TX",
+            "zip": "67890"
+          },
+          {
+            "street": "1 World Way",
+            "city": "Los Angeles",
+            "state": "CA",
+            "zip": "90045"
+          },
+          {
+            "street": "University Avenue and, Oxford St",
+            "city": "Berkeley",
+            "state": "CA",
+            "zip": "94720"
+          }
+        ],
+        "phones": ["555-5678", "69-420", "314159"],
+        "emails": [
+          "islam.makhachev@example.com",
+          "Jon.Jones@example.com",
+          "khabib.nurmagomedov@dag.com"
+        ],
+        "relatives": ["John Smith", "Bob Smith", "Amy Smith"],
+        "link": "https://truthfinder.com",
+        "data_broker": "truthfinder.com",
+        "data_broker_id": 10,
+        "created_at": "2024-01-01T00:00:00Z",
+        "updated_at": "2024-01-01T00:00:00Z"
+      },
+      {
+        "age": 75,
+        "addresses": [
+          {
+            "street": "456 Oak St",
+            "city": "Othertown",
+            "state": "TX",
+            "zip": "67890"
+          },
+          {
+            "street": "1 World Way",
+            "city": "Los Angeles",
+            "state": "CA",
+            "zip": "90045"
+          },
+          {
+            "street": "University Avenue and, Oxford St",
+            "city": "Berkeley",
+            "state": "CA",
+            "zip": "94720"
+          }
+        ],
+        "phones": ["555-5678", "69-420", "314159"],
+        "emails": [
+          "islam.makhachev@example.com",
+          "Jon.Jones@example.com",
+          "khabib.nurmagomedov@dag.com"
+        ],
+        "relatives": ["John Smith", "Bob Smith", "Amy Smith"],
+        "link": "https://ussearch.com",
+        "data_broker": "ussearch.com",
+        "data_broker_id": 12,
+        "created_at": "2024-01-01T00:00:00Z",
+        "updated_at": "2024-01-01T00:00:00Z"
+      }
+    ],
+    "E2E_TEST_ACCOUNT_EMAIL_EXPOSURES_STARTED": [{}, {}, {}],
+    "E2E_TEST_ACCOUNT_EMAIL_UNUSED": [
+      {},
+      {},
+      {},
+      {},
+      {},
+      {
+        "addresses": [
+          {
+            "zip": 77777,
+            "city": "Hogwarts",
+            "state": "CA"
+          }
+        ],
+        "phones": ["00000000", "00000001"],
+        "link": "https://mockexample.com/link-to-databroker-e2e-test-0",
+        "data_broker": "mockexample-e2e-test-0.com"
+      },
+      {
+        "relatives": ["Jon Jones"],
+        "link": "https://mockexample.com/link-to-databroker-e2e-test-1",
+        "data_broker": "mockexample-e2e-test-1.com"
+      }
+    ]
+  },
+  "SCANS_LIST": {
+    "default": [{}],
+    "E2E_TEST_ACCOUNT_EMAIL": [{}],
+    "E2E_TEST_ACCOUNT_EMAIL_UNUSED": [{}],
+    "E2E_TEST_ACCOUNT_EMAIL_EXPOSURES_STARTED": [{}],
+    "E2E_TEST_ACCOUNT_EMAIL_ZERO_BROKERS": [{}],
+    "E2E_TEST_ACCOUNT_EMAIL_ZERO_BREACHES_ZERO_BROKERS": [{}]
+  }
+}

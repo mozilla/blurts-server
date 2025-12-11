@@ -25,7 +25,10 @@ export const SettingsNoDefaultTab: Story = {
   args: {
     countryCode: "us",
     activeTab: undefined,
-    enabledFeatureFlags: ["SidebarNavigationRedesign"],
+    enabledFeatureFlags: [
+      "EditScanProfileDetails",
+      "SidebarNavigationRedesign",
+    ],
   },
 };
 
@@ -34,7 +37,24 @@ export const SettingsEditManageAccount: Story = {
   args: {
     countryCode: "us",
     activeTab: "manage-account",
-    enabledFeatureFlags: ["SidebarNavigationRedesign"],
+    enabledFeatureFlags: [
+      "SidebarNavigationRedesign",
+      "EditScanProfileDetails",
+    ],
+  },
+};
+
+export const SettingsEditManageAccountPlus: Story = {
+  name: "Manage account (Plus)",
+  args: {
+    hasPlus: true,
+    countryCode: "us",
+    activeTab: "manage-account",
+    enabledFeatureFlags: [
+      "SidebarNavigationRedesign",
+      "EditScanProfileDetails",
+      "CancellationFlow",
+    ],
   },
 };
 
@@ -43,6 +63,22 @@ export const SettingsEditNotifications: Story = {
   args: {
     countryCode: "us",
     activeTab: "notifications",
-    enabledFeatureFlags: ["SidebarNavigationRedesign"],
+    enabledFeatureFlags: [
+      "SidebarNavigationRedesign",
+      "EditScanProfileDetails",
+    ],
+  },
+};
+
+export const SettingsEditNotificationsPlus: Story = {
+  name: "Notifications (Plus)",
+  args: {
+    countryCode: "us",
+    hasPlus: true,
+    activeTab: "notifications",
+    enabledFeatureFlags: [
+      "SidebarNavigationRedesign",
+      "EditScanProfileDetails",
+    ],
   },
 };

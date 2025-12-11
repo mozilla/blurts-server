@@ -2,7 +2,11 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { EmailAddressRow, SubscriberRow } from "knex/types/tables";
+import {
+  EmailAddressRow,
+  OnerepProfileRow,
+  SubscriberRow,
+} from "knex/types/tables";
 import { fn } from "storybook/test";
 import { SettingsView, TabType } from "../View";
 import { Shell } from "../../../../../Shell/Shell";
@@ -13,6 +17,7 @@ import { FeatureFlagName } from "../../../../../../../../db/tables/featureFlags"
 import { SubscriberEmailPreferencesOutput } from "../../../../../../../../db/tables/subscriber_email_preferences";
 import {
   mockedSubscriber,
+  mockedSubscriberWithPlus,
   mockedVerifiedEmailSecond,
   mockedVerifiedEmailThird,
   mockedVerifiedEmailFourth,
@@ -27,9 +32,13 @@ export type SettingsWrapperProps = {
   breaches: unknown;
   countryCode: string;
   enabledFeatureFlags: FeatureFlagName[];
+  isMonthlySubscriber: boolean;
+  isEligibleForPremium: boolean;
   subscriber: SubscriberRow;
   emailAddresses?: EmailAddressRow[];
+  profileData?: OnerepProfileRow;
   data?: SubscriberEmailPreferencesOutput;
+  hasPlus?: boolean;
 };
 
 export const mockedActions = {
@@ -50,7 +59,7 @@ export const SettingsWrapper = (props: SettingsWrapperProps) => {
       metricsEnabled: false,
       avatar: "https://profile.stage.mozaws.net/v1/avatar/e",
       avatarDefault: true,
-      subscriptions: [],
+      subscriptions: props.hasPlus ? ["monitor"] : [],
     },
     subscriber: {
       id: 42,
@@ -60,7 +69,9 @@ export const SettingsWrapper = (props: SettingsWrapperProps) => {
     expires: new Date().toISOString(),
     user,
   };
-  const subscriber = mockedSubscriber;
+  const subscriber = props.hasPlus
+    ? mockedSubscriberWithPlus
+    : mockedSubscriber;
 
   return (
     <SessionProvider session={mockedSession}>
@@ -71,6 +82,7 @@ export const SettingsWrapper = (props: SettingsWrapperProps) => {
           nonce=""
           countryCode={props.countryCode}
           enabledFeatureFlags={props.enabledFeatureFlags}
+          experimentData={defaultExperimentData["Features"]}
           hideSidebar={props.activeTab === "edit-profile"}
           announcements={null}
         >
@@ -88,8 +100,17 @@ export const SettingsWrapper = (props: SettingsWrapperProps) => {
               [mockedVerifiedEmailFifth.email]: 78,
             }}
             fxaSettingsUrl=""
+            fxaSubscriptionsUrl=""
+            monthlySubscriptionUrl=""
+            subscriptionBillingAmount={{
+              monthly: 42.42,
+            }}
             enabledFeatureFlags={props.enabledFeatureFlags}
             experimentData={defaultExperimentData["Features"]}
+            lastScanDate={new Date(Date.UTC(2024, 6, 31))}
+            isMonthlySubscriber={props.isMonthlySubscriber}
+            isEligibleForPremium={props.isEligibleForPremium}
+            profileData={props.profileData}
             activeTab={props.activeTab}
             actions={mockedActions}
             userAnnouncements={[]}

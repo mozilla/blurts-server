@@ -1,0 +1,242 @@
+@use "../../../../../tokens";
+
+.wrapper {
+  --backgroundImageWidth: 400px;
+  --sidebarWidth: 600px;
+
+  background-image:
+    url("./images/Scanning.svg"),
+    linear-gradient(
+      to right,
+      tokens.$color-grey-05,
+      tokens.$color-grey-05 var(--sidebarWidth),
+      tokens.$color-white calc(var(--sidebarWidth) + 1px)
+    );
+  background-repeat: no-repeat;
+  background-position-y: center;
+  background-position-x:
+    calc(var(--sidebarWidth) / 2 - var(--backgroundImageWidth) / 2), center;
+  background-size:
+    var(--backgroundImageWidth) auto,
+    auto;
+  display: flex;
+  flex-direction: column;
+  gap: tokens.$spacing-xl;
+  min-height: 100%;
+  padding-inline-start: var(--sidebarWidth);
+
+  @media screen and (max-width: 1300px) {
+    --backgroundImageWidth: 300px;
+    --sidebarWidth: 400px;
+  }
+  @media screen and (max-width: 1000px) {
+    --backgroundImageWidth: 200px;
+    --sidebarWidth: 300px;
+  }
+  @media screen and (max-width: tokens.$screen-md) {
+    --sidebarWidth: 0;
+  }
+
+  .homeLink {
+    margin-inline-start: calc(-1 * var(--sidebarWidth));
+    display: block;
+    padding: tokens.$spacing-md;
+
+    @media screen and (min-width: tokens.$screen-md) {
+      padding-inline: tokens.$spacing-xl;
+    }
+  }
+
+  .stepsWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media screen and (min-width: tokens.$screen-md) {
+      // Gives the steps indicator some extra white-space to match the designs
+      // on desktop
+      height: 20vh;
+    }
+
+    .steps {
+      @include tokens.no-focus-outline;
+    }
+  }
+
+  .stepsWrapper,
+  .contentWrapper {
+    padding-inline: tokens.$spacing-lg;
+
+    @media screen and (min-width: tokens.$screen-md) {
+      padding-inline: tokens.$spacing-2xl;
+    }
+
+    @media screen and (min-width: tokens.$screen-lg) {
+      padding-inline: tokens.$layout-xl;
+    }
+  }
+
+  @media screen and (max-width: tokens.$screen-md) {
+    .contentWrapper {
+      $backgroundImageHeight: 200px;
+      padding-top: $backgroundImageHeight + tokens.$spacing-lg;
+      background-image: url("./images/Scanning.svg");
+      background-repeat: no-repeat;
+      background-position-x: center;
+      background-size: auto $backgroundImageHeight;
+    }
+  }
+}
+
+@media screen and (min-width: tokens.$screen-md) {
+  .steps {
+    $stepGap: tokens.$spacing-2xl;
+    padding-inline-start: 0;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-evenly;
+    gap: $stepGap;
+    max-width: tokens.$content-sm;
+    position: relative;
+
+    li {
+      $iconDiameter: 27px;
+      $iconBorderWidth: 4px;
+      $connectingLineHeight: 4px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: tokens.$spacing-xs;
+      text-align: center;
+      font: tokens.$text-body-xs;
+      font-weight: 600;
+      color: tokens.$color-grey-30;
+
+      img {
+        background-color: tokens.$color-grey-30;
+        padding: 5px;
+        margin-block: $iconBorderWidth;
+        width: $iconDiameter;
+        height: $iconDiameter;
+        border-radius: 100%;
+        box-sizing: content-box;
+        pointer-events: none;
+        user-select: none;
+        // Overlap the `::before` (the horizontal line)
+        z-index: 1;
+      }
+
+      // This is the horizontal line preceding every step indicator on desktop.
+      // It starts with `+ 2` because the lines are only between indicators, so
+      // the first one doesn't have a line preceding it, and nth-child is
+      // 1-indexed, i.e. it doesn't start at 0.
+      &:nth-child(n + 2)::before {
+        content: "";
+        background-color: tokens.$color-grey-30;
+        // Since the step indicators are justified using space-evenly above, and
+        // since there are three of them, they are positioned at 25%, 50% and
+        // 75% of the width of the container. So to draw a line between two of
+        // them, that line needs to be 25% wide.
+        width: calc(25% + $stepGap);
+        display: block;
+        height: $connectingLineHeight;
+        position: absolute;
+        top: calc(
+          ($iconDiameter + $connectingLineHeight) / 2 + $iconBorderWidth
+        );
+      }
+      &:nth-child(2)::before {
+        // Since the step indicators are justified using space-evenly above, and
+        // since there are three of them, they are positioned at 25%, 50% and
+        // 75% of the width of the container. So to draw a line between the
+        // first and the second (`nth-child(2)`) indicator, we need to start at
+        // 25% of the container.
+        left: calc(25% - $iconDiameter / 2 - $stepGap / 2);
+      }
+      &:nth-child(3)::before {
+        // Since the step indicators are justified using space-evenly above, and
+        // since there are three of them, they are positioned at 25%, 50% and
+        // 75% of the width of the container. So to draw a line between the
+        // second (`nth-child(2)`) and the third (`nth-child(3)`) indicator, we
+        // need to start at 50% of the container.
+        left: 50%;
+      }
+
+      &[aria-current="step"] {
+        img {
+          margin-block: 0;
+          border: $iconBorderWidth solid tokens.$color-purple-10;
+        }
+      }
+
+      &.isCompleted,
+      &[aria-current="step"] {
+        color: tokens.$color-purple-70;
+
+        &::before {
+          background-color: tokens.$color-purple-10;
+        }
+
+        img {
+          background-color: tokens.$color-purple-70;
+        }
+      }
+    }
+
+    &.getStartedHidden {
+      li {
+        // If the first step indicator is hidden the space between the other two
+        // indicators grows. We’ll need to increase the length of the line that
+        // connects them:
+        &:nth-child(2)::before {
+          width: calc(50% + $stepGap);
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: calc(tokens.$screen-md - 1px)) {
+  .steps {
+    padding-inline-start: 0;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-evenly;
+    gap: tokens.$spacing-sm;
+
+    li {
+      img {
+        // On mobile, the actual step images aren't actually shown; instead, we
+        // display flat horizontal lines, which we simulate by giving the images
+        // a 0 height and a border. The images are <1kB in size, so that
+        // shouldn't matter too much.
+        height: 0;
+        border: 3px solid tokens.$color-grey-30;
+        border-radius: 3px;
+        min-width: tokens.$layout-sm;
+        width: 100%;
+        pointer-events: none;
+        user-select: none;
+      }
+
+      &[aria-current="step"] img {
+        border-color: tokens.$color-purple-10;
+      }
+
+      &.isCompleted img {
+        border-color: tokens.$color-purple-70;
+      }
+
+      .stepLabel {
+        padding-block: tokens.$spacing-sm;
+        padding-inline: tokens.$spacing-md;
+        color: tokens.$color-purple-70;
+        font: tokens.$text-body-xs;
+        font-weight: 600;
+      }
+
+      &:not([aria-current="step"]) .stepLabel {
+        @include tokens.visually-hidden;
+      }
+    }
+  }
+}

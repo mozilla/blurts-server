@@ -12,6 +12,24 @@ export const Header = ({ l10n }: { l10n: ExtendedReactLocalization }) => {
         <h1 className={styles.title}>
           {l10n.getString("how-it-works-banner-title")}
         </h1>
+        <p>
+          {l10n.getFragment("how-it-works-banner-text", {
+            elems: {
+              data_brokers_link: (
+                <a
+                  href="#data-brokers-section"
+                  className={styles.brokersEmphasis}
+                ></a>
+              ),
+              data_breaches_link: (
+                <a
+                  href="#data-breach-section"
+                  className={styles.breachesEmphasis}
+                ></a>
+              ),
+            },
+          })}
+        </p>
       </span>
     </header>
   );

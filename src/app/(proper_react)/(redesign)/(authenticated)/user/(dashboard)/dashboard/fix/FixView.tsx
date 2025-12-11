@@ -40,6 +40,11 @@ export type FixViewProps = {
 export const FixView = (props: FixViewProps) => {
   const l10n = useL10n();
   const recordTelemetry = useTelemetry();
+  const isResolutionLayout = [
+    "high-risk-data-breach",
+    "leaked-passwords",
+    "security-recommendations",
+  ].includes(props.currentSection);
 
   const fixContainerRef = useRef<HTMLDivElement>(null);
 
@@ -68,7 +73,11 @@ export const FixView = (props: FixViewProps) => {
   return (
     <div className={styles.fixContainer} tabIndex={-1} ref={fixContainerRef}>
       {props.showConfetti && <Confetti />}
-      <div className={`${styles.fixWrapper}`}>
+      <div
+        className={`${styles.fixWrapper} ${
+          isResolutionLayout ? styles.highRiskDataBreachContentBg : ""
+        }`}
+      >
         {!props.hideProgressIndicator && (
           <FixNavigation
             currentSection={props.currentSection}

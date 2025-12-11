@@ -7,10 +7,12 @@ import type { EmailAddressRow, SubscriberRow } from "knex/types/tables";
 import createDbConnection from "../connect";
 import { SerializedSubscriber } from "../../next-auth.js";
 import { getEnvVarsOrThrow } from "../../envVars";
+
 const knex = createDbConnection();
 const { DELETE_UNVERIFIED_SUBSCRIBERS_TIMER } = getEnvVarsOrThrow([
   "DELETE_UNVERIFIED_SUBSCRIBERS_TIMER",
 ]);
+const MONITOR_PREMIUM_CAPABILITY = "monitor";
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
@@ -50,6 +52,19 @@ async function getSubscriberByFxaUid(
   }
   const subscriberAndEmails = await joinEmailAddressesToSubscriber(subscriber);
   return subscriberAndEmails;
+}
+/* c8 ignore stop */
+
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
+/** @deprecated */
+async function getSubscriberByOnerepProfileId(
+  onerep_profile_id: SubscriberRow["onerep_profile_id"],
+): Promise<undefined | SubscriberRow> {
+  const [subscriber] = await knex("subscribers").where({
+    onerep_profile_id,
+  });
+  return subscriber;
 }
 /* c8 ignore stop */
 
@@ -227,6 +242,26 @@ async function setAllEmailsToPrimary(
 }
 /* c8 ignore stop */
 
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
+async function setMonthlyMonitorReport(
+  subscriber: SubscriberRow,
+  monthlyMonitorReport: SubscriberRow["monthly_monitor_report"],
+) {
+  const updated = await knex("subscribers")
+    .where("id", subscriber.id)
+    .update({
+      monthly_monitor_report: monthlyMonitorReport,
+      // @ts-ignore knex.fn.now() results in it being set to a date,
+      // even if it's not typed as a JS date object:
+      updated_at: knex.fn.now(),
+    })
+    .returning("*");
+  const updatedSubscriber = Array.isArray(updated) ? updated[0] : null;
+  return updatedSubscriber;
+}
+/* c8 ignore stop */
+
 /**
  * Set "breach_resolution" column with the latest breach resolution object.
  */
@@ -305,6 +340,214 @@ async function deleteResolutionsWithEmail(id: number, email: string) {
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
+async function getPotentialSubscribersWaitingForFirstDataBrokerRemovalFixedEmail(): Promise<
+  SubscriberRow[]
+> {
+  const rows = await knex("subscribers")
+    .select()
+    // Only send to Plus users...
+    .whereRaw(
+      `(fxa_profile_json->'subscriptions')::jsonb \\? ?`,
+      MONITOR_PREMIUM_CAPABILITY,
+    )
+    // ...with an OneRep account...
+    .whereNotNull("onerep_profile_id")
+    // ...who haven't received the email...
+    .andWhere("first_broker_removal_email_sent", false)
+    // ...and signed up after the feature flag `FirstDataBrokerRemovalFixedEmail`
+    // has been enabled (which happened on 2024-07-10).
+    .andWhere("created_at", ">=", "2024-07-10T00:00:00.000Z");
+
+  return rows;
+}
+/* c8 ignore stop */
+
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
+async function getPlusSubscribersWaitingForMonthlyEmail(
+  options: Partial<{ limit: number }> = {},
+): Promise<SubscriberRow[]> {
+  let query = knex("subscribers")
+    .select()
+    // Only send to users who haven't opted out of the monthly activity email...
+    .where((builder) =>
+      builder
+        .whereNull("monthly_monitor_report")
+        .orWhere("monthly_monitor_report", true),
+    )
+    // ...who haven't received the email in the last 1 month...
+    .andWhere((builder) =>
+      builder
+        .whereNull("monthly_monitor_report_at")
+        .orWhereRaw(
+          "\"monthly_monitor_report_at\" < NOW() - INTERVAL '1 month'",
+        ),
+    )
+    // ...whose account is older than 1 month...
+    .andWhereRaw("\"created_at\" < NOW() - INTERVAL '1 month'")
+    // ...and who have a Plus subscription.
+    // Note: This will only match people of whom the Monitor database knows that
+    //       they have a Plus subscription. SubPlat is the source of truth, but
+    //       our database is updated via a webhook and whenever the user logs
+    //       in. Locally, you might want to set this via `/admin/dev/`.
+    .andWhereRaw(
+      `(fxa_profile_json->'subscriptions')::jsonb \\? ?`,
+      MONITOR_PREMIUM_CAPABILITY,
+    );
+
+  if (typeof options.limit === "number") {
+    query = query.limit(options.limit);
+  }
+
+  const rows = await query;
+
+  return rows;
+}
+/* c8 ignore stop */
+
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
+async function getFreeSubscribersWaitingForMonthlyEmail(
+  batchSize: number,
+  countryCodes: string[],
+): Promise<SubscriberRow[]> {
+  const query = knex("subscribers")
+    .select<SubscriberRow[]>("subscribers.*")
+    .select(
+      knex.raw(
+        `CASE
+        WHEN (fxa_profile_json->>'locale') ~ ',' THEN
+          CASE
+            WHEN split_part(fxa_profile_json->>'locale', ',', 1) ~ '-' THEN
+              split_part(split_part(fxa_profile_json->>'locale', ',', 1), '-', 2) -- Extract country code from first part
+            ELSE
+              split_part(fxa_profile_json->>'locale', ',', 1) -- Fallback to the language code
+          END
+        WHEN (fxa_profile_json->>'locale') ~ '-' THEN
+          split_part(fxa_profile_json->>'locale', '-', 2) -- Extract country code if present
+        ELSE
+          fxa_profile_json->>'locale' -- Fallback to the language code
+      END AS country_code`,
+      ),
+    )
+
+    .leftJoin(
+      "subscriber_email_preferences",
+      "subscribers.id",
+      "subscriber_email_preferences.subscriber_id",
+    )
+    // Only send to users who haven't opted out of the monthly activity email...
+    // (Note that the `monthly_monitor_report` column is re-used for both the Plus
+    // user activity email, and the free user activity email.)
+    .where((builder) =>
+      builder
+        .whereNull("monthly_monitor_report_free")
+        .orWhere("monthly_monitor_report_free", true),
+    )
+    // ...who haven't received the email in the last 1 month...
+    .andWhere((builder) =>
+      builder
+        .whereNull("monthly_monitor_report_free_at")
+        .orWhereRaw(
+          "\"monthly_monitor_report_free_at\" < NOW() - INTERVAL '1 month'",
+        ),
+    )
+    // ...whose account is older than 1 month...
+    .andWhereRaw("subscribers.\"created_at\" < NOW() - INTERVAL '1 month'")
+    // ...and who do not have a Plus subscription.
+    // Note: This will only match people of whom the Monitor database knows that
+    //       they have a Plus subscription. SubPlat is the source of truth, but
+    //       our database is updated via a webhook and whenever the user logs
+    //       in. Locally, you might want to set this via `/admin/dev/`.
+    .andWhere((builder) =>
+      builder
+        .whereRaw(
+          `NOT (subscribers.fxa_profile_json)::jsonb \\? 'subscriptions'`,
+        )
+        .orWhereRaw(
+          `NOT (subscribers.fxa_profile_json->'subscriptions')::jsonb \\? ?`,
+          MONITOR_PREMIUM_CAPABILITY,
+        ),
+    )
+    .orderBy("subscribers.created_at", "desc");
+
+  const wrappedQuery = knex
+    // @ts-ignore TODO MNTOR-3890 Move away from this approach and simplify query.
+    .from({ base_query: query }) // Use the existing query as a subquery
+    .select("*")
+    .whereIn("country_code", countryCodes)
+    .limit(batchSize);
+
+  const rows = await wrappedQuery;
+
+  return rows as SubscriberRow[];
+}
+/* c8 ignore stop */
+
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
+async function markFirstDataBrokerRemovalFixedEmailAsJustSent(
+  subscriber: SubscriberRow,
+) {
+  const affectedSubscribers = await knex("subscribers")
+    .update({
+      first_broker_removal_email_sent: true,
+      // @ts-ignore knex.fn.now() results in it being set to a date,
+      // even if it's not typed as a JS date object:
+      updated_at: knex.fn.now(),
+    })
+    .where("primary_email", subscriber.primary_email)
+    .andWhere("id", subscriber.id)
+    .returning("*");
+
+  if (affectedSubscribers.length !== 1) {
+    throw new Error(
+      `Attempted to mark 1 user as having just been sent the first data broker removal fixed email, but instead found [${affectedSubscribers.length}] matching its ID and email address.`,
+    );
+  }
+}
+
+/* c8 ignore stop */
+
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
+async function markMonthlyActivityPlusEmailAsJustSent(
+  subscriber: SubscriberRow,
+) {
+  const affectedSubscribers = await knex("subscribers")
+    .update({
+      // @ts-ignore knex.fn.now() results in it being set to a date,
+      // even if it's not typed as a JS date object:
+      monthly_monitor_report_at: knex.fn.now(),
+      // @ts-ignore knex.fn.now() results in it being set to a date,
+      // even if it's not typed as a JS date object:
+      updated_at: knex.fn.now(),
+    })
+    .where("primary_email", subscriber.primary_email)
+    .andWhere("id", subscriber.id)
+    .returning("*");
+
+  if (affectedSubscribers.length !== 1) {
+    throw new Error(
+      `Attempted to mark 1 user as having just been sent the monthly activity email, but instead found [${affectedSubscribers.length}] matching its ID and email address.`,
+    );
+  }
+}
+/* c8 ignore stop */
+
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
+/** @deprecated */
+async function getOnerepProfileId(subscriberId: SubscriberRow["id"]) {
+  const res = await knex("subscribers")
+    .select("onerep_profile_id")
+    .where("id", subscriberId);
+  return res?.[0]?.["onerep_profile_id"] ?? null;
+}
+/* c8 ignore stop */
+
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 
 type WithEmailAddresses = SubscriberRow & {
   email_addresses: EmailAddressRow[];
@@ -320,6 +563,20 @@ async function joinEmailAddressesToSubscriber(
     email: emailAddress.email,
   }));
   return subscriber as SubscriberRow & WithEmailAddresses;
+}
+/* c8 ignore stop */
+
+/* c8 ignore start */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
+/** @deprecated */
+async function deleteOnerepProfileId(subscriberId: SubscriberRow["id"]) {
+  return await knex("subscribers").where("id", subscriberId).update({
+    onerep_profile_id: null,
+    // @ts-ignore knex.fn.now() results in it being set to a date,
+    // even if it's not typed as a JS date object:
+    updated_at: knex.fn.now(),
+  });
 }
 /* c8 ignore stop */
 
@@ -356,22 +613,46 @@ async function unresolveAllBreaches(subscriberId: SubscriberRow["id"]) {
 }
 /* c8 ignore stop */
 
+/* c8 ignore start */
+async function isSubscriberPlus(subscriberId: SubscriberRow["id"]) {
+  const res = await knex("subscribers")
+    .select("fxa_profile_json")
+    .where("id", subscriberId)
+    .first();
+
+  return !!(
+    res &&
+    res.fxa_profile_json?.subscriptions?.includes(MONITOR_PREMIUM_CAPABILITY)
+  );
+}
+/* c8 ignore stop */
+
 export {
+  getOnerepProfileId,
   getSubscribersByHashes,
   getSubscriberById,
   getSubscriberByFxaUid,
+  getSubscriberByOnerepProfileId,
   updatePrimaryEmail,
   updateFxAData,
   updateFxATokens,
   getFxATokens,
   updateFxAProfileData,
   setAllEmailsToPrimary,
+  setMonthlyMonitorReport,
   setBreachResolution,
+  getPotentialSubscribersWaitingForFirstDataBrokerRemovalFixedEmail,
+  getFreeSubscribersWaitingForMonthlyEmail,
+  getPlusSubscribersWaitingForMonthlyEmail,
+  markFirstDataBrokerRemovalFixedEmailAsJustSent,
+  markMonthlyActivityPlusEmailAsJustSent,
   deleteUnverifiedSubscribers,
   deleteSubscriber,
   deleteResolutionsWithEmail,
+  deleteOnerepProfileId,
   incrementSignInCountForEligibleFreeUser,
   getSignInCount,
   unresolveAllBreaches,
+  isSubscriberPlus,
   knex as knexSubscribers,
 };

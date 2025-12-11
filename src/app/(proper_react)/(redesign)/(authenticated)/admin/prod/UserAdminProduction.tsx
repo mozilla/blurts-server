@@ -6,16 +6,59 @@
 
 import { useState } from "react";
 import { useSession } from "next-auth/react";
+import { OnerepScanRow } from "knex/types/tables";
 import { Button } from "../../../../../components/client/Button";
 import { InputField } from "../../../../../components/client/InputField";
-import { getSha1 } from "../dev/UserAdmin";
+import { FeatureFlagName } from "../../../../../../db/tables/featureFlags";
+import { DataTable, getSha1 } from "../dev/UserAdmin";
 import styles from "../dev/UserAdmin.module.scss";
-import { lookupFxaUid } from "./actions";
+import {
+  getAllProfileScans,
+  lookupFxaUid,
+  triggerManualProfileScan,
+} from "./actions";
 
-export const UserAdminProduction = () => {
+export const UserAdminProduction = ({
+  enabledFeatureFlags,
+}: {
+  enabledFeatureFlags: FeatureFlagName[];
+}) => {
   const session = useSession();
   const [isLoading, setIsLoading] = useState(false);
   const [emailInput, setEmailInput] = useState("");
+  const [status, setStatus] = useState<null | string>(null);
+  const [onerepProfileId, setOnerepProfileId] = useState(null);
+  const [oneRepProfileScans, setOneRepProfileScans] = useState<
+    OnerepScanRow[] | null
+  >(null);
+
+  const setProfileScans = async (onerepProfileId: number) => {
+    const profileScans = await getAllProfileScans(onerepProfileId);
+    if (profileScans) {
+      setOneRepProfileScans(
+        profileScans.sort(
+          (a, b) =>
+            new Date(a.created_at).getTime() - new Date(b.created_at).getTime(),
+        ),
+      );
+    }
+  };
+
+  const triggerScanAction = async () => {
+    if (!enabledFeatureFlags.includes("EditScanProfileDetails")) {
+      return;
+    }
+
+    try {
+      if (onerepProfileId) {
+        await triggerManualProfileScan(onerepProfileId);
+        setProfileScans(onerepProfileId);
+        setStatus(`Running manual scan for [${emailInput}] succeeded.`);
+      }
+    } catch (error) {
+      setStatus(`[Running manual scan failed: [${error}].`);
+    }
+  };
 
   return (
     <main className={styles.wrapper}>
@@ -26,6 +69,7 @@ export const UserAdminProduction = () => {
         className={styles.form}
         onSubmit={(event) => {
           event.preventDefault();
+
           void getSha1(emailInput)
             .then(async (emailHash) => {
               setIsLoading(true);
@@ -35,6 +79,13 @@ export const UserAdminProduction = () => {
                 setIsLoading(false);
                 return;
               }
+              const data = await response.json();
+              setOnerepProfileId(data.onerepProfileId);
+              setProfileScans(data.onerepProfileId);
+            })
+            .catch(() => {
+              setOnerepProfileId(null);
+              setOneRepProfileScans(null);
             })
             .finally(() => {
               setIsLoading(false);
@@ -46,6 +97,8 @@ export const UserAdminProduction = () => {
             type="email"
             value={emailInput}
             onChange={(email) => {
+              setOnerepProfileId(null);
+              setOneRepProfileScans(null);
               setEmailInput(email);
             }}
             placeholder="Subscriber email"
@@ -57,6 +110,24 @@ export const UserAdminProduction = () => {
           Lookup email
         </Button>
       </form>
+      {status && <p className={styles.status}>{status}</p>}
+      <section>
+        <h2>OneRep profile</h2>
+        {oneRepProfileScans ? (
+          <>
+            <DataTable
+              header="Current profile scans"
+              data={oneRepProfileScans}
+              open
+            />
+            <Button variant="primary" onPress={() => void triggerScanAction()}>
+              Trigger manual scan
+            </Button>
+          </>
+        ) : (
+          "No scans for profile found"
+        )}
+      </section>
     </main>
   );
 };

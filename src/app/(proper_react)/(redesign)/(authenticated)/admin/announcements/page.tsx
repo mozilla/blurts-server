@@ -7,10 +7,13 @@ import { notFound, redirect } from "next/navigation";
 import { isAdmin } from "../../../../../api/utils/auth";
 import { getAllAnnouncements } from "../../../../../../db/tables/announcements";
 import { AnnouncementsAdmin } from "./AnnouncementsAdmin";
+import { SubscriptionBillingProvider } from "../../../../../../contextProviders/subscription-billing-context";
+import { getSubscriptionBillingAmount } from "../../../../../functions/server/getPremiumSubscriptionInfo";
 import { getFluentStrings } from "./getFluentStrings";
 
 export default async function DevPage() {
   const session = await getServerSession();
+  const billing = getSubscriptionBillingAmount();
 
   if (!session?.user?.email || !session.user.subscriber?.id) {
     return redirect("/");
@@ -24,9 +27,11 @@ export default async function DevPage() {
   const fluentStrings = await getFluentStrings();
 
   return (
-    <AnnouncementsAdmin
-      announcements={announcements}
-      fluentStrings={fluentStrings}
-    />
+    <SubscriptionBillingProvider value={billing}>
+      <AnnouncementsAdmin
+        announcements={announcements}
+        fluentStrings={fluentStrings}
+      />
+    </SubscriptionBillingProvider>
   );
 }
