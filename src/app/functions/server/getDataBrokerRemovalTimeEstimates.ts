@@ -4,7 +4,7 @@
 
 import { OnerepScanResultRow } from "knex/types/tables";
 import { LatestOnerepScanData } from "../../../db/tables/onerep_scans";
-import { logger } from "@sentry/utils";
+import { logger } from "@sentry/core";
 
 /**
  * @property {OnerepScanResultRow["data_broker"]} d - Data broker domain.
