@@ -20,18 +20,6 @@ export const ActionNeeded: Story = {
   },
 };
 
-export const InProgress: Story = {
-  args: {
-    type: "inProgress",
-  },
-};
-
-export const Removed: Story = {
-  args: {
-    type: "removed",
-  },
-};
-
 export const Fixed: Story = {
   args: {
     type: "fixed",

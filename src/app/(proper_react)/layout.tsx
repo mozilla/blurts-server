@@ -17,8 +17,6 @@ import { getCountryCode } from "../functions/server/getCountryCode";
 import { PageLoadEvent } from "../components/client/PageLoadEvent";
 import { PromptNoneAuth } from "../components/client/PromptNoneAuth";
 import { CookiesProvider } from "../../contextProviders/cookies";
-import { SubscriptionBillingProvider } from "../../contextProviders/subscription-billing-context";
-import { getSubscriptionBillingAmount } from "../functions/server/getPremiumSubscriptionInfo";
 
 export default async function Layout({ children }: { children: ReactNode }) {
   const l10nBundles = getL10nBundles(
@@ -27,17 +25,14 @@ export default async function Layout({ children }: { children: ReactNode }) {
   const headersList = await headers();
   const countryCode = getCountryCode(headersList);
   const session = await getServerSession();
-  const billing = getSubscriptionBillingAmount();
 
   return (
     <L10nProvider bundleSources={l10nBundles}>
       <ReactAriaI18nProvider locale={getLocale(l10nBundles)}>
         <CountryCodeProvider countryCode={countryCode}>
           <CookiesProvider>
-            <SubscriptionBillingProvider value={billing}>
-              {!session && <PromptNoneAuth />}
-              {children}
-            </SubscriptionBillingProvider>
+            {!session && <PromptNoneAuth />}
+            {children}
             <PageLoadEvent />
           </CookiesProvider>
         </CountryCodeProvider>

@@ -4,88 +4,48 @@
 
 "use client";
 
-import { useContext, useEffect, useRef, useState } from "react";
-import Link from "next/link";
+import { useContext, useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { Session } from "next-auth";
-import {
-  OnerepScanResultDataBrokerRow,
-  OnerepScanResultRow,
-} from "knex/types/tables";
 import styles from "./View.module.scss";
 import { Toolbar } from "../../../../../../components/client/toolbar/Toolbar";
 import { DashboardTopBanner } from "./DashboardTopBanner";
 import { useL10n } from "../../../../../../hooks/l10n";
-import {
-  Exposure,
-  ExposureCard,
-  isScanResult,
-} from "../../../../../../components/client/exposure_card/ExposureCard";
+import { ExposureCard } from "../../../../../../components/client/exposure_card/ExposureCard";
 import {
   ExposuresFilter,
   FilterState,
 } from "../../../../../../components/client/ExposuresFilter";
+import AllFixedIllustration from "./images/dashboard-all-fixed.svg";
 import { getDashboardSummary } from "../../../../../../functions/server/dashboard";
 import { getExposureStatus } from "../../../../../../components/server/StatusPill";
 import { TabList } from "../../../../../../components/client/TabList";
 import { filterExposures } from "./filterExposures";
 import { SubscriberBreach } from "../../../../../../../utils/subscriberBreaches";
-import {
-  canSubscribeToPremium,
-  hasPremium,
-} from "../../../../../../functions/universal/user";
-import type { LatestOnerepScanData } from "../../../../../../../db/tables/onerep_scans";
 import { getLocale } from "../../../../../../functions/universal/getLocale";
 import { Button } from "../../../../../../components/client/Button";
-
-import AllFixedIllustration from "./images/dashboard-all-fixed.svg";
 import NoExposuresIllustration from "./images/dashboard-no-exposures.svg";
-import ScanProgressIllustration from "./images/scan-illustration.svg";
 import { CountryCodeContext } from "../../../../../../../contextProviders/country-code";
 import { FeatureFlagName } from "../../../../../../../db/tables/featureFlags";
 import { getNextGuidedStep } from "../../../../../../functions/server/getRelevantGuidedSteps";
-import { CsatSurvey } from "../../../../../../components/client/csat_survey/CsatSurvey";
-import { WaitlistDialog } from "../../../../../../components/client/SubscriberWaitlistDialog";
-import { useOverlayTriggerState } from "react-stately";
-import { useOverlayTrigger } from "react-aria";
 import { useTelemetry } from "../../../../../../hooks/useTelemetry";
-import {
-  CONST_ONEREP_DATA_BROKER_COUNT,
-  CONST_ONEREP_MAX_SCANS_THRESHOLD,
-} from "../../../../../../../constants";
-import { ExperimentData } from "../../../../../../../telemetry/generated/nimbus/experiments";
-import { DataBrokerRemovalTime } from "../../../../../../functions/server/getDataBrokerRemovalTimeEstimates";
 import { UserAnnouncementWithDetails } from "../../../../../../../db/tables/user_announcements";
-import { parseIso8601Datetime } from "../../../../../../../utils/parse";
 import { PlusShutdownBanner } from "../../../../../../components/client/PlusShutdownBanner";
 import { ShutdownState } from "../../../../../../functions/server/getPlusShutdownState";
 
 export type TabType = "action-needed" | "fixed";
 
 export type Props = {
+  shutdownState: ShutdownState;
   enabledFeatureFlags: FeatureFlagName[];
-  experimentData: ExperimentData["Features"];
   user: Session["user"];
   userBreaches: SubscriberBreach[];
-  userScanData: LatestOnerepScanData;
   countryCode: string;
-  isEligibleForFreeScan: boolean;
-  isEligibleForPremium: boolean;
-  monthlySubscriptionUrl: string;
-  subscriptionBillingAmount: {
-    monthly: number;
-  };
-  shutdownState: ShutdownState;
   fxaSettingsUrl: string;
-  scanCount: number;
   isNewUser: boolean;
-  hasFirstMonitoringScan: boolean;
-  elapsedTimeInDaysSinceInitialScan?: number;
-  totalNumberOfPerformedScans?: number;
   activeTab: TabType;
   signInCount: number | null;
-  removalTimeEstimates: DataBrokerRemovalTime[];
   userAnnouncements: UserAnnouncementWithDetails[];
 };
 
@@ -116,28 +76,7 @@ export const View = (props: Props) => {
     }
   }, [pathname, activeTab, props.userAnnouncements]);
 
-  const adjustedScanResults = props.userScanData.results.map((scanResult) => {
-    if (scanResult.status === "new" && hasPremium(props.user)) {
-      // Even if the user has Plus, OneRep won't automatically start removing
-      // found exposures; it first sends a request to our webhook, and then the
-      // webhook sends an opt-out request to OneRep. Meanwhile, however, we're
-      // just waiting for the systems to do their thing, and there's no action
-      // for the user to take; hence, we also mark the exposures as being in
-      // progress:
-      return {
-        ...scanResult,
-        status: "optout_in_progress",
-      } as OnerepScanResultDataBrokerRow;
-    }
-    return scanResult;
-  }) as OnerepScanResultDataBrokerRow[];
-  const adjustedScanData = {
-    scan: props.userScanData.scan,
-    results: adjustedScanResults,
-  } as LatestOnerepScanData;
-
   const initialFilterState: FilterState = {
-    exposureType: "show-all-exposure-type",
     dateFound: "show-all-date-found",
   };
   const [filters, setFilters] = useState<FilterState>(initialFilterState);
@@ -156,21 +95,11 @@ export const View = (props: Props) => {
   ];
 
   const breachesDataArray = props.userBreaches.flat();
-  const initialScanInProgress =
-    adjustedScanData.scan?.onerep_scan_status === "in_progress" &&
-    props.scanCount === 1;
-
-  // Merge exposure cards
-  const combinedArray = [...breachesDataArray, ...adjustedScanResults];
 
   // Sort in descending order
-  const arraySortedByDate = combinedArray.sort((a, b) => {
-    const dateA =
-      (a as SubscriberBreach).addedDate ||
-      parseIso8601Datetime((a as OnerepScanResultRow).created_at);
-    const dateB =
-      (b as SubscriberBreach).addedDate ||
-      parseIso8601Datetime((b as OnerepScanResultRow).created_at);
+  const arraySortedByDate = breachesDataArray.sort((a, b) => {
+    const dateA = a.addedDate;
+    const dateB = b.addedDate;
 
     const timestampA = dateA.getTime();
     const timestampB = dateB.getTime();
@@ -179,11 +108,8 @@ export const View = (props: Props) => {
   });
 
   const getTabSpecificExposures = (tabKey: TabType) =>
-    arraySortedByDate.filter((exposure: Exposure) => {
-      const exposureStatus = getExposureStatus(
-        exposure,
-        props.enabledFeatureFlags,
-      );
+    arraySortedByDate.filter((exposure: SubscriberBreach) => {
+      const exposureStatus = getExposureStatus(exposure);
 
       return (
         (tabKey === "action-needed" && exposureStatus === "actionNeeded") ||
@@ -193,152 +119,79 @@ export const View = (props: Props) => {
 
   const tabSpecificExposures = getTabSpecificExposures(activeTab);
   const filteredExposures = filterExposures(tabSpecificExposures, filters);
-  const exposureCardElems = filteredExposures.map((exposure: Exposure) => {
-    const exposureCardKey = isScanResult(exposure)
-      ? "scan-" + exposure.id
-      : "breach-" + exposure.id;
+  const exposureCardElems = filteredExposures.map(
+    (exposure: SubscriberBreach) => {
+      const exposureCardKey = "breach-" + exposure.id;
 
-    const removalTimeEstimate = isScanResult(exposure)
-      ? props.removalTimeEstimates.find(({ d }) => d === exposure.data_broker)
-      : undefined;
-
-    return (
-      <li key={exposureCardKey} className={styles.exposureListItem}>
-        <ExposureCard
-          experimentData={props.experimentData}
-          enabledFeatureFlags={props.enabledFeatureFlags}
-          removalTimeEstimate={removalTimeEstimate?.t}
-          exposureData={exposure}
-          isExpanded={exposureCardKey === activeExposureCardKey}
-          onToggleExpanded={() => {
-            if (exposureCardKey === activeExposureCardKey) {
-              setActiveExposureCardKey(null);
-              recordTelemetry("collapse", "click", {
-                button_id: isScanResult(exposure)
-                  ? `data_broker_card_${exposure.id}`
-                  : `data_breach_card_${exposure.id}`,
-              });
-            } else {
-              setActiveExposureCardKey(exposureCardKey);
-              recordTelemetry("expand", "click", {
-                button_id: isScanResult(exposure)
-                  ? `data_broker_card_${exposure.id}`
-                  : `data_breach_card_${exposure.id}`,
-              });
-            }
-          }}
-          locale={getLocale(l10n)}
-          isPremiumUser={hasPremium(props.user)}
-          isEligibleForPremium={props.isEligibleForPremium}
-          resolutionCta={
-            <Button
-              variant="primary"
-              wide
-              href={
-                getNextGuidedStep(
-                  {
+      return (
+        <li key={exposureCardKey} className={styles.exposureListItem}>
+          <ExposureCard
+            enabledFeatureFlags={props.enabledFeatureFlags}
+            exposureData={exposure}
+            isExpanded={exposureCardKey === activeExposureCardKey}
+            onToggleExpanded={() => {
+              if (exposureCardKey === activeExposureCardKey) {
+                setActiveExposureCardKey(null);
+                recordTelemetry("collapse", "click", {
+                  button_id: `data_breach_card_${exposure.id}`,
+                });
+              } else {
+                setActiveExposureCardKey(exposureCardKey);
+                recordTelemetry("expand", "click", {
+                  button_id: `data_breach_card_${exposure.id}`,
+                });
+              }
+            }}
+            locale={getLocale(l10n)}
+            resolutionCta={
+              <Button
+                variant="primary"
+                wide
+                href={
+                  getNextGuidedStep({
                     user: props.user,
                     countryCode,
-                    latestScanData: adjustedScanData,
                     subscriberBreaches: props.userBreaches,
-                  },
-                  props.enabledFeatureFlags,
-                ).href
-              }
-            >
-              {l10n.getString("exposure-card-resolve-exposures-cta")}
-            </Button>
-          }
-        />
-      </li>
-    );
-  });
+                  }).href
+                }
+              >
+                {l10n.getString("exposure-card-resolve-exposures-cta")}
+              </Button>
+            }
+          />
+        </li>
+      );
+    },
+  );
   const noUnresolvedExposures = exposureCardElems.length === 0;
+
   const dataSummary = getDashboardSummary(
-    adjustedScanResults,
     props.userBreaches,
     props.enabledFeatureFlags,
   );
 
-  const hasExposures = combinedArray.length > 0;
-  const hasUnresolvedBreaches =
-    tabSpecificExposures.filter((exposure) => !isScanResult(exposure)).length >
-    0;
-  const hasUnresolvedBrokers =
-    tabSpecificExposures.filter(isScanResult).length > 0;
-
-  const hasUnresolvedExposures = hasUnresolvedBreaches || hasUnresolvedBrokers;
-  const hasFixedExposures = hasExposures && !hasUnresolvedExposures;
+  const hasExposures = breachesDataArray.length > 0;
+  const hasUnresolvedBreaches = tabSpecificExposures.length > 0;
 
   const TabContentActionNeeded = () => {
     const {
       dataBreachUnresolvedNum,
-      dataBrokerTotalNum,
-      dataBrokerAutoFixedNum,
-      dataBrokerManuallyResolvedNum,
-      dataBrokerInProgressNum,
       dataBreachFixedDataPointsNum,
-      dataBrokerAutoFixedDataPointsNum,
-      dataBrokerInProgressDataPointsNum,
-      dataBrokerManuallyResolvedDataPointsNum,
       totalDataPointsNum,
     } = dataSummary;
 
     let exposuresAreaDescription;
 
-    if (hasUnresolvedExposures) {
-      if (props.isEligibleForPremium) {
-        exposuresAreaDescription = l10n.getString(
-          "dashboard-exposures-area-description-premium",
-          {
-            exposures_unresolved_num:
-              totalDataPointsNum -
-              dataBrokerAutoFixedDataPointsNum -
-              dataBreachFixedDataPointsNum -
-              dataBrokerInProgressDataPointsNum -
-              dataBrokerManuallyResolvedDataPointsNum,
-            data_breach_unresolved_num: dataBreachUnresolvedNum,
-            data_broker_unresolved_num:
-              dataBrokerTotalNum -
-              dataBrokerAutoFixedNum -
-              dataBrokerManuallyResolvedNum -
-              dataBrokerInProgressNum,
-          },
-        );
-      } else {
-        exposuresAreaDescription =
-          l10n.getString("dashboard-exposures-area-description-all-line1", {
-            exposures_unresolved_num:
-              totalDataPointsNum -
-              dataBrokerAutoFixedDataPointsNum -
-              dataBreachFixedDataPointsNum -
-              dataBrokerInProgressDataPointsNum -
-              dataBrokerManuallyResolvedDataPointsNum,
-          }) +
-          " " +
-          l10n.getString("dashboard-exposures-area-description-all-line2", {
-            data_breach_unresolved_num: dataBreachUnresolvedNum,
-          });
-      }
-    }
-
-    if (initialScanInProgress && !noUnresolvedExposures) {
-      exposuresAreaDescription = l10n.getString(
-        "dashboard-exposures-breaches-scan-progress-description",
-        {
+    if (hasUnresolvedBreaches) {
+      exposuresAreaDescription =
+        l10n.getString("dashboard-exposures-area-description-all-line1", {
           exposures_unresolved_num:
-            totalDataPointsNum -
-            dataBrokerAutoFixedDataPointsNum -
-            dataBreachFixedDataPointsNum -
-            dataBrokerInProgressDataPointsNum -
-            dataBrokerManuallyResolvedDataPointsNum,
+            totalDataPointsNum - dataBreachFixedDataPointsNum,
+        }) +
+        " " +
+        l10n.getString("dashboard-exposures-area-description-all-line2", {
           data_breach_unresolved_num: dataBreachUnresolvedNum,
-        },
-      );
-    } else if (initialScanInProgress) {
-      exposuresAreaDescription = l10n.getString(
-        "dashboard-exposures-no-breaches-scan-progress-description",
-      );
+        });
     }
 
     return (
@@ -354,131 +207,28 @@ export const View = (props: Props) => {
       </>
     );
   };
-
   const TabContentFixed = () => (
     <>
       <h2 className={styles.exposuresAreaHeadline}>
-        {l10n.getString(
-          props.isEligibleForPremium
-            ? "dashboard-fixed-area-headline-premium"
-            : "dashboard-fixed-area-headline-all",
-        )}
+        {l10n.getString("dashboard-fixed-area-headline-all")}
       </h2>
     </>
   );
-
-  const waitlistTriggerRef = useRef<HTMLAnchorElement>(null);
-  const dialogTriggerState = useOverlayTriggerState({});
-  const overlayTrigger = useOverlayTrigger(
-    { type: "dialog" },
-    dialogTriggerState,
-    waitlistTriggerRef,
-  );
-
-  const freeScanCta = props.isEligibleForFreeScan && (
-    <>
-      <WaitlistDialog
-        dialogTriggerState={dialogTriggerState}
-        {...overlayTrigger.overlayProps}
-      />
-      <p>
-        {
-          /* c8 ignore start */
-          props.enabledFeatureFlags.includes("MaskDataBrokerCount")
-            ? l10n.getFragment(
-                "dashboard-exposures-all-fixed-free-scan-masked",
-                {
-                  elems: {
-                    a:
-                      !props.enabledFeatureFlags.includes(
-                        "DisableOneRepScans",
-                      ) &&
-                      (typeof props.totalNumberOfPerformedScans ===
-                        "undefined" ||
-                        props.totalNumberOfPerformedScans <
-                          CONST_ONEREP_MAX_SCANS_THRESHOLD) ? (
-                        <Link
-                          ref={waitlistTriggerRef}
-                          href="/user/welcome/free-scan?referrer=dashboard"
-                          onClick={() => {
-                            recordTelemetry("link", "click", {
-                              link_id: "exposures_all_fixed_free_scan",
-                            });
-                          }}
-                        />
-                      ) : (
-                        <Button
-                          variant="link"
-                          buttonRef={waitlistTriggerRef}
-                          {...overlayTrigger.triggerProps}
-                        />
-                      ),
-                  },
-                },
-              )
-            : l10n.getFragment("dashboard-exposures-all-fixed-free-scan", {
-                vars: {
-                  data_broker_total_num: CONST_ONEREP_DATA_BROKER_COUNT,
-                },
-                elems: {
-                  a:
-                    !props.enabledFeatureFlags.includes("DisableOneRepScans") &&
-                    (typeof props.totalNumberOfPerformedScans === "undefined" ||
-                      props.totalNumberOfPerformedScans <
-                        CONST_ONEREP_MAX_SCANS_THRESHOLD) ? (
-                      <Link
-                        ref={waitlistTriggerRef}
-                        href="/user/welcome/free-scan?referrer=dashboard"
-                        onClick={() => {
-                          recordTelemetry("link", "click", {
-                            link_id: "exposures_all_fixed_free_scan",
-                          });
-                        }}
-                      />
-                    ) : (
-                      <Button
-                        variant="link"
-                        buttonRef={waitlistTriggerRef}
-                        {...overlayTrigger.triggerProps}
-                      />
-                    ),
-                },
-              })
-          /* c8 ignore stop */
-        }
-      </p>
-    </>
-  );
-
   const getZeroStateIndicator = () => {
-    if (initialScanInProgress) {
-      return (
-        <>
-          <Image src={ScanProgressIllustration} alt="" />
-          <strong>
-            {l10n.getString("dashboard-exposures-scan-progress-label")}
-          </strong>
-        </>
-      );
-    }
-
-    if (!hasUnresolvedExposures && hasFixedExposures) {
+    if (!hasUnresolvedBreaches && hasExposures) {
       return (
         <>
           <Image src={AllFixedIllustration} alt="" />
           <strong>
             {l10n.getString("dashboard-exposures-all-fixed-label")}
           </strong>
-          {freeScanCta}
         </>
       );
     }
-
     return (
       <>
         <Image src={NoExposuresIllustration} alt="" />
         <strong>{l10n.getString("dashboard-no-exposures-label")}</strong>
-        {freeScanCta}
       </>
     );
   };
@@ -487,15 +237,7 @@ export const View = (props: Props) => {
     <div className={styles.wrapper}>
       <Toolbar
         user={props.user}
-        monthlySubscriptionUrl={props.monthlySubscriptionUrl}
-        subscriptionBillingAmount={props.subscriptionBillingAmount}
         fxaSettingsUrl={props.fxaSettingsUrl}
-        lastScanDate={
-          props.userScanData.scan
-            ? parseIso8601Datetime(props.userScanData.scan.created_at)
-            : null
-        }
-        experimentData={props.experimentData}
         enabledFeatureFlags={props.enabledFeatureFlags}
         announcements={announcements}
       >
@@ -507,7 +249,6 @@ export const View = (props: Props) => {
               dashboard_tab: selectedKey as TabType,
               legacy_user: !props.isNewUser,
               breach_count: breachesDataArray.length,
-              broker_count: adjustedScanResults.length,
             });
           }}
           selectedKey={activeTab}
@@ -517,48 +258,18 @@ export const View = (props: Props) => {
         countryCode={props.countryCode}
         shutdownState={props.shutdownState}
       />
-      <CsatSurvey
-        user={props.user}
-        activeTab={activeTab}
-        enabledFeatureFlags={props.enabledFeatureFlags}
-        experimentData={props.experimentData}
-        elapsedTimeInDaysSinceInitialScan={
-          props.elapsedTimeInDaysSinceInitialScan ?? null
-        }
-        hasAutoFixedDataBrokers={
-          dataSummary.dataBrokerAutoFixedDataPointsNum > 0
-        }
-        hasFirstMonitoringScan={props.hasFirstMonitoringScan}
-        lastScanDate={
-          props.userScanData.scan
-            ? parseIso8601Datetime(props.userScanData.scan.created_at)
-            : null
-        }
-        signInCount={props.signInCount}
-        isEligibleForPremium={props.isEligibleForPremium}
-      />
+
       <div className={styles.dashboardContent}>
         <DashboardTopBanner
           tabType={activeTab}
-          scanInProgress={initialScanInProgress}
-          isPremiumUser={hasPremium(props.user)}
-          isEligibleForPremium={canSubscribeToPremium({
-            user: props.user,
-            countryCode,
-            enabledFeatureFlags: props.enabledFeatureFlags,
-          })}
-          isEligibleForFreeScan={props.isEligibleForFreeScan}
           hasExposures={hasExposures}
           hasUnresolvedBreaches={hasUnresolvedBreaches}
-          hasUnresolvedBrokers={hasUnresolvedBrokers}
           bannerData={getDashboardSummary(
-            adjustedScanResults,
             props.userBreaches,
             props.enabledFeatureFlags,
           )}
           stepDeterminationData={{
             countryCode,
-            latestScanData: adjustedScanData,
             subscriberBreaches: props.userBreaches,
             user: props.user,
           }}
@@ -568,12 +279,8 @@ export const View = (props: Props) => {
               dashboard_tab: "fixed",
               legacy_user: !props.isNewUser,
               breach_count: breachesDataArray.length,
-              broker_count: adjustedScanResults.length,
             });
           }}
-          monthlySubscriptionUrl={props.monthlySubscriptionUrl}
-          subscriptionBillingAmount={props.subscriptionBillingAmount}
-          totalNumberOfPerformedScans={props.totalNumberOfPerformedScans}
           enabledFeatureFlags={props.enabledFeatureFlags}
         />
         <section className={styles.exposuresArea}>
@@ -585,13 +292,10 @@ export const View = (props: Props) => {
         </section>
         <div className={styles.exposuresFilterWrapper}>
           <ExposuresFilter
-            experimentData={props.experimentData}
             enabledFeatureFlags={props.enabledFeatureFlags}
             initialFilterValues={initialFilterState}
             filterValues={filters}
             setFilterValues={setFilters}
-            isEligibleForPremium={props.isEligibleForPremium}
-            isPlusSubscriber={hasPremium(props.user)}
           />
         </div>
         {noUnresolvedExposures ? (

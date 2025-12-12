@@ -3,43 +3,20 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import type { Meta, StoryObj } from "@storybook/nextjs";
-
-import {
-  OnerepScanResultDataBrokerRow,
-  OnerepScanRow,
-} from "knex/types/tables";
-import { faker } from "@faker-js/faker";
 import { View as DashboardEl, TabType } from "./View";
 import { Shell } from "../../../../Shell/Shell";
 import { getL10n } from "../../../../../../functions/l10n/storybookAndJest";
 import {
-  createRandomScanResult,
   createRandomBreach,
-  createUserWithPremiumSubscription,
   createRandomAnnouncement,
+  createRandomUser,
 } from "../../../../../../../apiMocks/mockData";
 import { SubscriberBreach } from "../../../../../../../utils/subscriberBreaches";
-import { LatestOnerepScanData } from "../../../../../../../db/tables/onerep_scans";
 import { CountryCodeProvider } from "../../../../../../../contextProviders/country-code";
 import { SessionProvider } from "../../../../../../../contextProviders/session";
-import {
-  ExperimentData,
-  defaultExperimentData,
-} from "../../../../../../../telemetry/generated/nimbus/experiments";
 import { FeatureFlagName } from "../../../../../../../db/tables/featureFlags";
 import { UserAnnouncementWithDetails } from "../../../../../../../db/tables/user_announcements";
 
-// Exported values should be stories, but this was already there when
-// Storybook added this lint rule, so I guess it works?
-// eslint-disable-next-line storybook/prefer-pascal-case
-export const brokerOptions = {
-  "no-scan": "No scan started",
-  empty: "No scan results",
-  unresolved: "With unresolved scan results",
-  resolved: "All scan results resolved",
-  "scan-in-progress": "Scan is in progress",
-  "manually-resolved": "Manually resolved",
-};
 // Exported values should be stories, but this was already there when
 // Storybook added this lint rule, so I guess it works?
 // eslint-disable-next-line storybook/prefer-pascal-case
@@ -47,25 +24,21 @@ export const breachOptions = {
   empty: "No data breaches",
   unresolved: "With unresolved data breaches",
   resolved: "All data breaches resolved",
+  invalid: "Invalid state (error case)",
 };
 export type DashboardWrapperProps = (
   | {
       countryCode: "us";
-      brokers: keyof typeof brokerOptions;
       premium: boolean;
     }
   | {
       countryCode: "nl";
     }
 ) & {
-  brokers: keyof typeof brokerOptions;
   breaches: keyof typeof breachOptions;
   elapsedTimeInDaysSinceInitialScan?: number;
-  totalNumberOfPerformedScans?: number;
   activeTab?: TabType;
   enabledFeatureFlags?: FeatureFlagName[];
-  experimentData?: ExperimentData["Features"];
-  hasFirstMonitoringScan?: boolean;
   signInCount?: number;
 };
 const DashboardWrapper = (props: DashboardWrapperProps) => {
@@ -94,73 +67,53 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
     dataClasses: ["email-addresses", "ip-addresses", "phone-numbers"],
     addedDate: new Date("2023-06-18T14:48:00.000Z"),
     dataClassesEffected: [
-      { "email-addresses": ["email1@gmail.com", "email2@gmail.com"] },
+      {
+        "email-addresses": [
+          "email1@gmail.com",
+          "email2@gmail.com",
+          "email3@gmail.com",
+        ],
+      },
       { "ip-addresses": 1 },
+      { "phone-numbers": 1 },
+    ],
+    isResolved: false,
+  });
+
+  const mockedUnresolvedBreach2: SubscriberBreach = createRandomBreach({
+    dataClasses: ["email-addresses", "ip-addresses", "phone-numbers"],
+    addedDate: new Date("2023-06-18T14:48:00.000Z"),
+    dataClassesEffected: [
+      {
+        "email-addresses": [
+          "email1@gmail.com",
+          "email2@gmail.com",
+          "email3@gmail.com",
+        ],
+      },
+      { "ip-addresses": 1 },
+      { "phone-numbers": 1 },
     ],
     isResolved: false,
   });
 
   let breaches: SubscriberBreach[] = [];
-  const scanData: LatestOnerepScanData = { scan: null, results: [] };
 
   if (props.breaches === "resolved") {
     breaches = [mockedResolvedBreach];
   }
   if (props.breaches === "unresolved") {
-    breaches = [mockedResolvedBreach, mockedUnresolvedBreach];
+    breaches = [
+      mockedResolvedBreach,
+      mockedUnresolvedBreach,
+      mockedUnresolvedBreach2,
+    ];
   }
 
-  const mockedScan: OnerepScanRow = {
-    created_at: new Date(Date.UTC(1998, 2, 31)),
-    updated_at: new Date(Date.UTC(1998, 2, 31)),
-    id: 0,
-    onerep_profile_id: 0,
-    onerep_scan_id: 0,
-    onerep_scan_reason: "initial",
-    onerep_scan_status: "finished",
-  };
-
-  const mockedScanInProgress: OnerepScanRow = {
-    ...mockedScan,
-    onerep_scan_status: "in_progress",
-  };
-
-  const mockedInProgressScanResults: OnerepScanResultDataBrokerRow[] = [
-    createRandomScanResult({ status: "removed", manually_resolved: false }),
-    createRandomScanResult({
-      status: "waiting_for_verification",
-      manually_resolved: false,
-    }),
-    createRandomScanResult({
-      status: "optout_in_progress",
-      manually_resolved: false,
-    }),
-  ];
-
-  const mockedAllResolvedScanResults: OnerepScanResultDataBrokerRow[] = [
-    createRandomScanResult({ status: "removed", manually_resolved: false }),
-    createRandomScanResult({ status: "removed", manually_resolved: false }),
-  ];
-
-  const mockedUnresolvedScanResults: OnerepScanResultDataBrokerRow[] = [
-    ...mockedInProgressScanResults,
-    createRandomScanResult({ status: "new", manually_resolved: false }),
-    createRandomScanResult({ status: "new", manually_resolved: false }),
-    createRandomScanResult({ status: "new", manually_resolved: true }),
-  ];
-
-  const mockedManuallyResolvedScanResults: OnerepScanResultDataBrokerRow[] = [
-    createRandomScanResult({ status: "new", manually_resolved: true }),
-    createRandomScanResult({
-      status: "waiting_for_verification",
-      manually_resolved: true,
-    }),
-    createRandomScanResult({
-      status: "optout_in_progress",
-      manually_resolved: true,
-    }),
-    createRandomScanResult({ status: "removed", manually_resolved: true }),
-  ];
+  if (props.breaches === "invalid") {
+    // Invalid state since it does not have data classes effected
+    breaches = [createRandomBreach({ isResolved: false })];
+  }
 
   const mockedAnnouncements: UserAnnouncementWithDetails[] = [
     createRandomAnnouncement(),
@@ -168,30 +121,10 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
     createRandomAnnouncement(),
   ];
 
-  let scanCount = 0;
+  const scanCount = 0;
 
-  if (props.countryCode === "us") {
-    if (props.brokers && props.brokers !== "no-scan") {
-      const scanInProgress = props.brokers === "scan-in-progress";
-      scanData.scan = scanInProgress ? mockedScanInProgress : mockedScan;
+  const user = createRandomUser();
 
-      if (scanInProgress) {
-        scanCount = 1;
-      }
-      if (props.brokers === "resolved") {
-        scanData.results = mockedAllResolvedScanResults;
-      }
-      if (props.brokers === "unresolved") {
-        scanData.results = mockedUnresolvedScanResults;
-      }
-
-      if (props.brokers === "manually-resolved") {
-        scanData.results = mockedManuallyResolvedScanResults;
-      }
-    }
-  }
-
-  const user = createUserWithPremiumSubscription();
   if ((props.countryCode !== "us" || !props.premium) && user.fxa) {
     user.fxa.subscriptions = [];
   }
@@ -200,13 +133,6 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
     expires: new Date().toISOString(),
     user: user,
   };
-
-  const mockedRemovalTimeEstimates = scanData.results
-    .map((scan) => ({
-      d: scan.data_broker,
-      t: faker.number.float({ min: 0, max: 200 }),
-    }))
-    .filter(() => Math.random() < 0.1);
 
   return (
     <SessionProvider session={mockedSession}>
@@ -217,46 +143,16 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
           nonce=""
           countryCode={props.countryCode}
           enabledFeatureFlags={props.enabledFeatureFlags ?? []}
-          experimentData={
-            props.experimentData ?? {
-              ...defaultExperimentData["Features"],
-              "last-scan-date": {
-                enabled: true,
-              },
-            }
-          }
           announcements={mockedAnnouncements}
         >
           <DashboardEl
             user={user}
             userBreaches={breaches}
-            userScanData={scanData}
-            isEligibleForPremium={props.countryCode === "us"}
-            isEligibleForFreeScan={props.countryCode === "us" && !scanData.scan}
-            monthlySubscriptionUrl=""
             fxaSettingsUrl=""
-            scanCount={scanCount}
-            totalNumberOfPerformedScans={props.totalNumberOfPerformedScans}
-            subscriptionBillingAmount={{
-              monthly: 42.42,
-            }}
             isNewUser={true}
-            elapsedTimeInDaysSinceInitialScan={
-              props.elapsedTimeInDaysSinceInitialScan
-            }
             enabledFeatureFlags={props.enabledFeatureFlags ?? []}
-            experimentData={
-              props.experimentData ?? {
-                ...defaultExperimentData["Features"],
-                "last-scan-date": {
-                  enabled: true,
-                },
-              }
-            }
             activeTab={props.activeTab ?? "action-needed"}
-            hasFirstMonitoringScan={props.hasFirstMonitoringScan ?? false}
             signInCount={props.signInCount ?? null}
-            removalTimeEstimates={mockedRemovalTimeEstimates}
             userAnnouncements={mockedAnnouncements}
             countryCode={props.countryCode}
             shutdownState={{
@@ -275,14 +171,6 @@ const meta: Meta<typeof DashboardWrapper> = {
   title: "Pages/Logged in/Dashboard",
   component: DashboardWrapper,
   argTypes: {
-    brokers: {
-      options: Object.keys(brokerOptions),
-      description: "Scan results",
-      control: {
-        type: "radio",
-        labels: brokerOptions,
-      },
-    },
     breaches: {
       options: Object.keys(breachOptions),
       control: {
@@ -296,12 +184,6 @@ const meta: Meta<typeof DashboardWrapper> = {
         type: "number",
       },
     },
-    hasFirstMonitoringScan: {
-      name: "Has first monitoring scan",
-      control: {
-        type: "boolean",
-      },
-    },
     signInCount: {
       name: "Sign-in count",
       control: {
@@ -313,12 +195,34 @@ const meta: Meta<typeof DashboardWrapper> = {
 export default meta;
 type Story = StoryObj<typeof DashboardWrapper>;
 
-export const DashboardInvalidPremiumUserNoScanResolvedBreaches: Story = {
-  name: "Invalid state: US user, with Premium, with no scan, with resolved breaches",
+export const DashboardNonUsNoBreaches: Story = {
+  name: "Non-US user, with 0 breaches",
   args: {
-    countryCode: "us",
-    premium: true,
+    countryCode: "nl",
+    breaches: "empty",
+  },
+};
+
+export const DashboardNonUsUnresolvedBreaches: Story = {
+  name: "Non-US user, with unresolved breaches",
+  args: {
+    countryCode: "nl",
+    breaches: "unresolved",
+  },
+};
+
+export const DashboardNonUsResolvedBreaches: Story = {
+  name: "Non-US user, with all breaches resolved",
+  args: {
+    countryCode: "nl",
     breaches: "resolved",
-    brokers: "no-scan",
+  },
+};
+
+export const DashboardInvalidState: Story = {
+  name: "Invalid state",
+  args: {
+    countryCode: "nl",
+    breaches: "invalid",
   },
 };

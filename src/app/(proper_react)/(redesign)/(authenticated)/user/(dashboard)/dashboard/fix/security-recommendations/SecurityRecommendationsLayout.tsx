@@ -22,7 +22,6 @@ import {
   getNextGuidedStep,
 } from "../../../../../../../../functions/server/getRelevantGuidedSteps";
 import { getGuidedExperienceBreaches } from "../../../../../../../../functions/universal/guidedExperienceBreaches";
-import { hasPremium } from "../../../../../../../../functions/universal/user";
 import {
   BreachBulkResolutionRequest,
   SecurityRecommendationDataTypes,
@@ -33,7 +32,6 @@ export interface SecurityRecommendationsLayoutProps {
   type: SecurityRecommendationTypes;
   subscriberEmails: string[];
   data: StepDeterminationData;
-  isEligibleForPremium: boolean;
   enabledFeatureFlags: FeatureFlagName[];
 }
 
@@ -58,11 +56,7 @@ export function SecurityRecommendationsLayout(
     props.subscriberEmails,
   );
 
-  const nextStep = getNextGuidedStep(
-    props.data,
-    props.enabledFeatureFlags,
-    stepMap[props.type],
-  );
+  const nextStep = getNextGuidedStep(props.data, stepMap[props.type]);
   const pageData = getSecurityRecommendationsByType({
     dataType: props.type,
     breaches: guidedExperienceBreaches,
@@ -163,7 +157,6 @@ export function SecurityRecommendationsLayout(
         type="securityRecommendations"
         title={title}
         illustration={illustration}
-        isPremiumUser={hasPremium(props.data.user)}
         enabledFeatureFlags={props.enabledFeatureFlags}
         cta={
           !isStepDone && (
@@ -181,7 +174,6 @@ export function SecurityRecommendationsLayout(
         }
         isStepDone={isStepDone}
         data={props.data}
-        isEligibleForPremium={props.isEligibleForPremium}
       >
         <ResolutionContent
           content={content}

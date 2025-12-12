@@ -17,12 +17,15 @@ import { getEnvVars } from "./envvars.ts";
 
 const envVars = getEnvVars();
 
-const HIBP_NOTIFY_TOKEN = envVars.HIBP_NOTIFY_TOKEN;
-if (typeof HIBP_NOTIFY_TOKEN !== "string") {
+const HIBP_NOTIFY_TOKEN_RAW = envVars.HIBP_NOTIFY_TOKEN;
+if (typeof HIBP_NOTIFY_TOKEN_RAW !== "string") {
   throw new Error(
     "Make sure to set the following environment variable: HIBP_NOTIFY_TOKEN",
   );
 }
+const HIBP_NOTIFY_TOKEN = HIBP_NOTIFY_TOKEN_RAW.split(",").map((_) =>
+  _.trim(),
+)[0];
 
 const VIRTUAL_USERS =
   typeof envVars.K6_VIRTUAL_USERS === "string"

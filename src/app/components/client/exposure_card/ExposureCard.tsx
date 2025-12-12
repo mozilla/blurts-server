@@ -5,45 +5,21 @@
 "use client";
 
 import React, { ReactNode } from "react";
-import {
-  OnerepScanResultDataBrokerRow,
-  OnerepScanResultRow,
-} from "knex/types/tables";
 import { StaticImageData } from "next/image";
 import { SubscriberBreach } from "../../../../utils/subscriberBreaches";
-import { ScanResultCard } from "./ScanResultCard";
 import { SubscriberBreachCard } from "./SubscriberBreachCard";
 import { FeatureFlagName } from "../../../../db/tables/featureFlags";
-import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
-
-export type Exposure = OnerepScanResultDataBrokerRow | SubscriberBreach;
-
-// Typeguard function
-export function isScanResult(
-  obj: Exposure,
-): obj is OnerepScanResultDataBrokerRow {
-  return (obj as OnerepScanResultRow).data_broker !== undefined;
-}
 
 export type ExposureCardProps = {
   exposureImg?: StaticImageData;
-  exposureData: Exposure;
+  exposureData: SubscriberBreach;
   locale: string;
-  isPremiumUser: boolean;
-  isEligibleForPremium: boolean;
   resolutionCta: ReactNode;
   isExpanded: boolean;
   enabledFeatureFlags: FeatureFlagName[];
-  experimentData: ExperimentData["Features"];
-  removalTimeEstimate?: number;
-  isOnManualRemovePage?: boolean;
   onToggleExpanded: () => void;
 };
 
 export const ExposureCard = ({ exposureData, ...props }: ExposureCardProps) => {
-  return isScanResult(exposureData) ? (
-    <ScanResultCard {...props} scanResult={exposureData} />
-  ) : (
-    <SubscriberBreachCard {...props} subscriberBreach={exposureData} />
-  );
+  return <SubscriberBreachCard {...props} subscriberBreach={exposureData} />;
 };

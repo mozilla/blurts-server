@@ -4,15 +4,9 @@
 
 import type { Meta, StoryObj } from "@storybook/nextjs";
 import { ExposureCard } from "./ExposureCard";
-import FamilyTreeImage from "../assets/familytree.png";
 import TwitterImage from "../assets/twitter-icon.png";
-import {
-  createRandomBreach,
-  createRandomScanResult,
-} from "../../../../apiMocks/mockData";
-import { defaultExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
+import { createRandomBreach } from "../../../../apiMocks/mockData";
 import { BreachDataTypes } from "../../../functions/universal/breach";
-import { OnerepScanResultDataBrokerRow } from "knex/types/tables";
 
 const meta: Meta<typeof ExposureCard> = {
   title: "Dashboard/Exposures/Exposure Card",
@@ -20,62 +14,10 @@ const meta: Meta<typeof ExposureCard> = {
   tags: ["autodocs"],
   args: {
     enabledFeatureFlags: [],
-    experimentData: {
-      ...defaultExperimentData["Features"],
-      "data-broker-removal-time-estimates": {
-        enabled: true,
-      },
-    },
   },
 };
 export default meta;
 type Story = StoryObj<typeof ExposureCard>;
-
-const ScanMockItemRemoved = createRandomScanResult({
-  status: "removed",
-  manually_resolved: false,
-});
-const ScanMockItemManualRemoved = createRandomScanResult({
-  status: "new",
-  manually_resolved: true,
-});
-const ScanMockItemRequestedRemoval = createRandomScanResult({
-  status: "waiting_for_verification",
-  manually_resolved: false,
-});
-const ScanMockItemNew = createRandomScanResult({
-  status: "new",
-  manually_resolved: false,
-});
-const ScanMockItemInProgress = createRandomScanResult({
-  status: "optout_in_progress",
-  manually_resolved: false,
-});
-
-const ScanMockItemNoExposureData: OnerepScanResultDataBrokerRow = {
-  id: 0,
-  onerep_scan_result_id: 123,
-  onerep_scan_id: 123,
-  first_name: "John",
-  last_name: "Doe",
-  middle_name: "",
-  age: 20,
-  status: "new",
-  manually_resolved: false,
-  phones: [],
-  emails: [],
-  relatives: [],
-  link: "link.com",
-  data_broker: "randomdatabroke.com",
-  data_broker_id: 100,
-  created_at: new Date(),
-  updated_at: new Date(),
-  optout_attempts: 0,
-  broker_status: "active",
-  scan_result_status: "new",
-  url: "url",
-  addresses: [],
-};
 
 const BreachMockItemRemoved = createRandomBreach({
   isResolved: true,
@@ -88,52 +30,6 @@ const BreachMockItemRemoved = createRandomBreach({
 });
 const BreachMockItemNew = createRandomBreach({ isResolved: false });
 
-export const DataBrokerRequestedRemoval: Story = {
-  args: {
-    exposureImg: FamilyTreeImage,
-    exposureData: ScanMockItemRequestedRemoval,
-    enabledFeatureFlags: [
-      "AdditionalRemovalStatuses",
-      "DataBrokerRemovalAttempts",
-    ],
-  },
-};
-
-export const DataBrokerActionNeededNoExposureResults: Story = {
-  args: {
-    exposureImg: FamilyTreeImage,
-    exposureData: ScanMockItemNoExposureData,
-  },
-};
-
-export const DataBrokerActionNeeded: Story = {
-  args: {
-    exposureImg: FamilyTreeImage,
-    exposureData: ScanMockItemNew,
-  },
-};
-
-export const DataBrokerRemoved: Story = {
-  args: {
-    exposureImg: FamilyTreeImage,
-    exposureData: ScanMockItemRemoved,
-  },
-};
-
-export const DataBrokerManualRemoved: Story = {
-  args: {
-    exposureImg: FamilyTreeImage,
-    exposureData: ScanMockItemManualRemoved,
-  },
-};
-
-export const DataBrokerInProgress: Story = {
-  args: {
-    exposureImg: FamilyTreeImage,
-    exposureData: ScanMockItemInProgress,
-  },
-};
-
 export const DataBreachActionNeeded: Story = {
   args: {
     exposureImg: TwitterImage,
@@ -145,13 +41,5 @@ export const DataBreachFixed: Story = {
   args: {
     exposureImg: TwitterImage,
     exposureData: BreachMockItemRemoved,
-  },
-};
-
-export const DataBreachFixedEligibleForPremium: Story = {
-  args: {
-    exposureImg: TwitterImage,
-    exposureData: BreachMockItemRemoved,
-    isEligibleForPremium: true,
   },
 };

@@ -359,18 +359,7 @@ declare module "knex/types/tables" {
     "id" | "created_at" | "modified_at"
   >;
 
-  type AudienceRow =
-    | "all_users"
-    | "premium_users"
-    | "free_users"
-    | "has_run_scan"
-    | "has_not_run_scan"
-    | "monthly_user"
-    | "yearly_user"
-    | "bundle_user"
-    | "premium_non_bundle"
-    | "non_us"
-    | "us_only";
+  type AudienceRow = "all_users";
 
   interface AnnouncementRow {
     id: number;
