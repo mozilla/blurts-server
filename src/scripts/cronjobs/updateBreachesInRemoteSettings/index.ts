@@ -21,7 +21,7 @@ Sentry.init({
 Sentry.setTag("job", "updateBreachesInRemoteSettings");
 
 import "dotenv-flow/config";
-import { sentryLogger } from "../../../app/functions/server/logging";
+import { logger } from "../../../app/functions/server/logging";
 import { main } from "./updateBreachesInRemoteSettings";
 
-await main(sentryLogger);
+await main(logger);

@@ -8,7 +8,7 @@ import { notFound } from "next/navigation";
 import { getAttachedClients } from "../../../../../../utils/fxa";
 import { getServerSession } from "../../../../../functions/server/getServerSession";
 import { isAdmin } from "../../../../../api/utils/auth";
-import { logger } from "@sentry/utils";
+import { logger } from "@sentry/core";
 import { captureException } from "@sentry/node";
 import { getSubscriberByFxaUid } from "../../../../../../db/tables/subscribers";
 
