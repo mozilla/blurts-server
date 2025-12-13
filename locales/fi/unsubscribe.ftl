@@ -18,3 +18,4 @@ unsubscribe-success-cta = Kirjaudu sisään { -brand-monitor }iin
 # Error warning
 
 unsubscription-failed = Tilauksen peruminen epäonnistui. <try_again_link>Yritä uudelleen.</try_again_link>
+unsubscription-failed-2 = Tilauksen peruminen epäonnistui.
