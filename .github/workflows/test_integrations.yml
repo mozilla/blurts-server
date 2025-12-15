@@ -37,15 +37,25 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
-      
+
       # Wait for the docker services we started earlier to all be healthy
       - name: Wait for services to be healthy
         run: docker compose --env-file=./.env.ci up --wait
-      
+
       - name: Set up postgres
         run: npm run db:migrate
         env:
           DATABASE_URL: postgres://blurts:blurts@localhost:5432/test-blurts
+          NEXTAUTH_SECRET: "Unused for migrations, but required to be present when loading env vars"
+          SENTRY_DSN: "Unused for migrations, but required to be present when loading env vars"
+          EMAIL_FROM: "Unused for migrations, but required to be present when loading env vars"
+          HIBP_KANON_API_TOKEN: "Unused for migrations, but required to be present when loading env vars"
+          S3_BUCKET: "Unused for migrations, but required to be present when loading env vars"
+          FX_REMOTE_SETTINGS_WRITER_SERVER: "Unused for migrations, but required to be present when loading env vars"
+          FX_REMOTE_SETTINGS_WRITER_USER: "Unused for migrations, but required to be present when loading env vars"
+          FX_REMOTE_SETTINGS_WRITER_PASS: "Unused for migrations, but required to be present when loading env vars"
+          NIMBUS_UUID_NAMESPACE: "Unused for migrations, but required to be present when loading env vars"
+          NIMBUS_SIDECAR_URL: "Unused for migrations, but required to be present when loading env vars"
 
       # Let's run those integration tests!
       - name: Run service integration tests

@@ -86,6 +86,9 @@ jobs:
           PREMIUM_PLAN_ID_YEARLY_US: ${{ secrets.STAGE_PREMIUM_PLAN_ID_YEARLY_US }}
           PREMIUM_PRODUCT_ID: ${{ secrets.STAGE_PREMIUM_PRODUCT_ID }}
           REDIS_URL: "redis://redis.mock"
+          SENTRY_DSN: "Unused for the test run, but required to be present when loading env vars"
+          EMAIL_FROM: "Unused for the test run, but required to be present when loading env vars"
+          S3_BUCKET: "Unused for the test run, but required to be present when loading env vars"
       - uses: actions/upload-artifact@v5
         if: always()
         with:
