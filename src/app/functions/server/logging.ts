@@ -27,23 +27,20 @@ const getLoggingWinston = () =>
 const SentryWinstonTransport = Sentry.createSentryWinstonTransport(Transport, {
   levels: ["error", "warn"],
 });
-const sentryTransports: LoggerOptions["transports"] = [
+const logTransports: LoggerOptions["transports"] = [
   ["gcpdev"].includes(process.env.APP_ENV ?? "local")
     ? getLoggingWinston()
     : new transports.Console(),
 ];
 if (Sentry.isInitialized()) {
-  sentryTransports.push(new SentryWinstonTransport());
+  logTransports.push(new SentryWinstonTransport());
 }
 
 export const logger = createLogger({
   level: "info",
   // In GCP environments, use cloud logging instead of stdout.
   // FIXME https://mozilla-hub.atlassian.net/browse/MNTOR-2401 - enable for stage and production
-  /* c8 ignore next 3 - cannot test this outside of GCP currently */
-  transports: ["gcpdev"].includes(process.env.APP_ENV ?? "local")
-    ? [getLoggingWinston()]
-    : sentryTransports,
+  transports: logTransports,
 });
 
 /* c8 ignore stop */
