@@ -29,6 +29,9 @@ const webServerConfig = {
   // Building the app can take some time:
   timeout: 600_000,
   port,
+  env: {
+    PLAYWRIGHT: "true",
+  },
 };
 
 // Geo locations
