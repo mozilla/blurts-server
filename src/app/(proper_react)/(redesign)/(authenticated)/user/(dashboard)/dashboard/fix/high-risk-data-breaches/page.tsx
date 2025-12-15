@@ -8,11 +8,7 @@ import { getServerSession } from "../../../../../../../../functions/server/getSe
 import { HighRiskBreachLayout } from "./HighRiskBreachLayout";
 import { getSubscriberEmails } from "../../../../../../../../functions/server/getSubscriberEmails";
 import { getSubscriberBreaches } from "../../../../../../../../functions/server/getSubscriberBreaches";
-import { getOnerepProfileId } from "../../../../../../../../../db/tables/subscribers";
-import { getScanResultsWithBroker } from "../../../../../../../../../db/tables/onerep_scans";
 import { getCountryCode } from "../../../../../../../../functions/server/getCountryCode";
-import { isEligibleForPremium } from "../../../../../../../../functions/universal/premium";
-import { hasPremium } from "../../../../../../../../functions/universal/user";
 import { getEnabledFeatureFlags } from "../../../../../../../../../db/tables/featureFlags";
 
 export default async function HighRiskDataBreaches() {
@@ -31,11 +27,6 @@ export default async function HighRiskDataBreaches() {
     countryCode,
   });
   const subscriberEmails = await getSubscriberEmails(session.user);
-  const profileId = await getOnerepProfileId(session.user.subscriber.id);
-  const scanData = await getScanResultsWithBroker(
-    profileId,
-    hasPremium(session.user),
-  );
 
   return (
     <div>
@@ -47,9 +38,7 @@ export default async function HighRiskDataBreaches() {
           countryCode,
           subscriberBreaches: breaches,
           user: session.user,
-          latestScanData: scanData,
         }}
-        isEligibleForPremium={isEligibleForPremium(countryCode)}
         enabledFeatureFlags={enabledFeatureFlags}
       />
     </div>

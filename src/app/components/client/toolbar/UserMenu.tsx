@@ -28,14 +28,9 @@ import { useTelemetry } from "../../../hooks/useTelemetry";
 import styles from "./UserMenu.module.scss";
 import OpenInIcon from "./images/menu-icon-open-in.svg";
 import SettingsIcon from "./images/menu-icon-settings.svg";
-import ContactIcon from "./images/menu-icon-contact.svg";
 import HelpIcon from "./images/menu-icon-help.svg";
 import SignOutIcon from "./images/menu-icon-signout.svg";
-import {
-  CONST_URL_PLUS_CONTACT_SUPPORT,
-  CONST_URL_SUMO_MONITOR_SUPPORT,
-} from "../../../../constants";
-import { hasPremium } from "../../../functions/universal/user";
+import { CONST_URL_SUMO_MONITOR_SUPPORT } from "../../../../constants";
 
 export type UserMenuProps = {
   user: Session["user"];
@@ -49,7 +44,6 @@ export const UserMenu = (props: UserMenuProps) => {
   const itemKeys = {
     fxa: "fxa",
     settings: "settings",
-    contact: "contact",
     help: "help",
     signout: "signout",
   };
@@ -64,11 +58,6 @@ export const UserMenu = (props: UserMenuProps) => {
       case itemKeys.settings:
         recordTelemetry("ctaButton", "click", {
           button_id: "settings_user_menu",
-        });
-        break;
-      case itemKeys.contact:
-        recordTelemetry("ctaButton", "click", {
-          button_id: "contact_us_user_menu",
         });
         break;
       case itemKeys.help:
@@ -115,20 +104,6 @@ export const UserMenu = (props: UserMenuProps) => {
           {l10n.getString("user-menu-settings-label")}
         </span>
       </Item>
-      {hasPremium(props.user) && (
-        <Item
-          key={itemKeys.contact}
-          textValue={l10n.getString("user-menu-contact-label")}
-          href={CONST_URL_PLUS_CONTACT_SUPPORT}
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          <span title={l10n.getString("user-menu-contact-tooltip")}>
-            <Image src={ContactIcon} alt="" height={24} width={24} />
-            {l10n.getString("user-menu-contact-label")}
-          </span>
-        </Item>
-      )}
       <Item
         key={itemKeys.help}
         textValue={l10n.getString("user-menu-help-label")}

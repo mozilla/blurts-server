@@ -3,19 +3,19 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import type { Meta, StoryObj } from "@storybook/nextjs";
-import { faker } from "@faker-js/faker";
-
 import { SettingsWrapper } from "./SettingsStoryWrapper";
-import { CONST_SETTINGS_TAB_SLUGS } from "../../../../../../../../constants";
+import {
+  CONST_MAX_NUM_ADDRESSES,
+  CONST_SETTINGS_TAB_SLUGS,
+} from "../../../../../../../../constants";
 import {
   mockedVerifiedEmailSecond,
-  mockedVerifiedEmailThird,
   mockedVerifiedEmailFourth,
-  mockedVerifiedEmailFifth,
+  mockRandomEmail,
 } from "./settingsMockData";
 
 const meta: Meta<typeof SettingsWrapper> = {
-  title: "Pages/Logged in/Settings/Edit info/Non US User",
+  title: "Pages/Logged in/Settings/Edit info",
   component: SettingsWrapper,
   argTypes: {
     activeTab: {
@@ -25,6 +25,16 @@ const meta: Meta<typeof SettingsWrapper> = {
   },
 };
 export default meta;
+
+const maxEmails = () => {
+  const emails = [];
+  for (let i = 1; i <= CONST_MAX_NUM_ADDRESSES; i++) {
+    emails.push(mockRandomEmail(i));
+  }
+
+  return emails;
+};
+
 type Story = StoryObj<typeof SettingsWrapper>;
 
 export const SettingsEditYourInfo: Story = {
@@ -32,10 +42,7 @@ export const SettingsEditYourInfo: Story = {
   args: {
     countryCode: "nl",
     activeTab: "edit-info",
-    enabledFeatureFlags: [
-      "SidebarNavigationRedesign",
-      "EditScanProfileDetails",
-    ],
+    enabledFeatureFlags: ["SidebarNavigationRedesign"],
   },
 };
 
@@ -44,10 +51,7 @@ export const SettingsEditYourInfoAdditionalMonitoredEmails: Story = {
   args: {
     countryCode: "nl",
     activeTab: "edit-info",
-    enabledFeatureFlags: [
-      "SidebarNavigationRedesign",
-      "EditScanProfileDetails",
-    ],
+    enabledFeatureFlags: ["SidebarNavigationRedesign"],
     emailAddresses: [mockedVerifiedEmailSecond, mockedVerifiedEmailFourth],
   },
 };
@@ -57,32 +61,7 @@ export const SettingsEditYourInfoMaxMonitoredEmails: Story = {
   args: {
     countryCode: "nl",
     activeTab: "edit-info",
-    enabledFeatureFlags: [
-      "SidebarNavigationRedesign",
-      "EditScanProfileDetails",
-    ],
-    emailAddresses: [
-      mockedVerifiedEmailSecond,
-      mockedVerifiedEmailThird,
-      mockedVerifiedEmailFourth,
-      mockedVerifiedEmailFifth,
-    ],
-  },
-};
-
-export const SettingsEditYourInfoMaxMonitoredEmailsIncreased: Story = {
-  name: "Max monitored emails increased",
-  args: {
-    countryCode: "nl",
-    activeTab: "edit-info",
-    enabledFeatureFlags: [
-      "SidebarNavigationRedesign",
-      "EditScanProfileDetails",
-      "IncreasedFreeMaxBreachEmails",
-    ],
-    emailAddresses: [...Array(19)].map(() => ({
-      ...mockedVerifiedEmailSecond,
-      email: faker.internet.email(),
-    })),
+    enabledFeatureFlags: ["SidebarNavigationRedesign"],
+    emailAddresses: maxEmails(),
   },
 };

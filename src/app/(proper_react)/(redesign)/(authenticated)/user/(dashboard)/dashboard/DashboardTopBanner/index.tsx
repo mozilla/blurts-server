@@ -15,19 +15,9 @@ export type DashboardTopBannerProps = {
   bannerData: DashboardSummary;
   hasExposures: boolean;
   hasUnresolvedBreaches: boolean;
-  hasUnresolvedBrokers: boolean;
-  isEligibleForFreeScan: boolean;
-  isEligibleForPremium: boolean;
-  isPremiumUser: boolean;
-  scanInProgress: boolean;
   stepDeterminationData: StepDeterminationData;
   tabType: TabType;
   onShowFixed: () => void;
-  monthlySubscriptionUrl: string;
-  subscriptionBillingAmount: {
-    monthly: number;
-  };
-  totalNumberOfPerformedScans?: number;
   enabledFeatureFlags: FeatureFlagName[];
 };
 
@@ -52,14 +42,9 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
         <DashboardTopBannerContent {...props} />
         <div className={styles.chart}>
           <Chart
-            scanInProgress={props.scanInProgress}
             data={chartData}
-            isEligibleForFreeScan={props.isEligibleForFreeScan}
-            isEligibleForPremium={props.isEligibleForPremium}
-            isPremiumUser={props.isPremiumUser}
             isShowFixed={isShowFixed}
             summary={props.bannerData}
-            totalNumberOfPerformedScans={props.totalNumberOfPerformedScans}
             enabledFeatureFlags={props.enabledFeatureFlags}
           />
         </div>
