@@ -21,7 +21,6 @@ import {
   getNextGuidedStep,
 } from "../../../../../../../../functions/server/getRelevantGuidedSteps";
 import { getGuidedExperienceBreaches } from "../../../../../../../../functions/universal/guidedExperienceBreaches";
-import { hasPremium } from "../../../../../../../../functions/universal/user";
 import {
   BreachBulkResolutionRequest,
   HighRiskDataTypes,
@@ -34,7 +33,6 @@ export type HighRiskBreachLayoutProps = {
   type: HighRiskBreachTypes;
   subscriberEmails: string[];
   data: StepDeterminationData;
-  isEligibleForPremium: boolean;
   enabledFeatureFlags: FeatureFlagName[];
 };
 
@@ -57,11 +55,7 @@ export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
     props.subscriberEmails,
   );
 
-  const nextStep = getNextGuidedStep(
-    props.data,
-    props.enabledFeatureFlags,
-    stepMap[props.type],
-  );
+  const nextStep = getNextGuidedStep(props.data, stepMap[props.type]);
   const pageData = getHighRiskBreachesByType({
     dataType: props.type,
     breaches: guidedExperienceBreaches,
@@ -169,8 +163,6 @@ export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
         type="securityRecommendations"
         title={title}
         illustration={illustration}
-        isPremiumUser={hasPremium(props.data.user)}
-        isEligibleForPremium={props.isEligibleForPremium}
         enabledFeatureFlags={props.enabledFeatureFlags}
         cta={
           !isStepDone && (

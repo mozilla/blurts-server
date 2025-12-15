@@ -13,10 +13,6 @@ import {
 import { getSubscriberBreaches } from "../../../../../../../../../functions/server/getSubscriberBreaches";
 import { getSubscriberEmails } from "../../../../../../../../../functions/server/getSubscriberEmails";
 import { getCountryCode } from "../../../../../../../../../functions/server/getCountryCode";
-import { getOnerepProfileId } from "../../../../../../../../../../db/tables/subscribers";
-import { getScanResultsWithBroker } from "../../../../../../../../../../db/tables/onerep_scans";
-import { isEligibleForPremium } from "../../../../../../../../../functions/universal/premium";
-import { hasPremium } from "../../../../../../../../../functions/universal/user";
 import { getEnabledFeatureFlags } from "../../../../../../../../../../db/tables/featureFlags";
 
 interface SecurityRecommendationsProps {
@@ -48,12 +44,6 @@ export default async function SecurityRecommendations(
     redirect("/user/dashboard");
   }
 
-  const profileId = await getOnerepProfileId(session.user.subscriber.id);
-  const scanData = await getScanResultsWithBroker(
-    profileId,
-    hasPremium(session.user),
-  );
-
   return (
     <SecurityRecommendationsLayout
       subscriberEmails={subscriberEmails}
@@ -62,9 +52,7 @@ export default async function SecurityRecommendations(
         countryCode,
         subscriberBreaches: breaches,
         user: session.user,
-        latestScanData: scanData,
       }}
-      isEligibleForPremium={isEligibleForPremium(countryCode)}
       enabledFeatureFlags={enabledFeatureFlags}
     />
   );
