@@ -6,6 +6,7 @@ import { FluentBundle, FluentResource } from "@fluent/bundle";
 import { acceptedLanguages, negotiateLanguages } from "@fluent/langneg";
 import type { MarkupParser, ReactLocalization } from "@fluent/react";
 import { Fragment, createElement } from "react";
+import { config } from "../../../config";
 
 /**
  * Equivalent to ReactLocalization.getString, but returns a React Fragment.
@@ -68,7 +69,7 @@ export function createGetL10nBundles<
   : GetL10nBundlesForLocales {
   return (acceptLangHeader = options.getAcceptLangHeader?.()) => {
     const languages = acceptedLanguages(acceptLangHeader);
-    const supportedLocales = process.env.SUPPORTED_LOCALES?.split(",");
+    const supportedLocales = config.supportedLocales.split(",");
     const filteredLocales =
       // `SUPPORTED_LOCALES` is set in the `.env` file, so it'll always
       // be available when running tests.
