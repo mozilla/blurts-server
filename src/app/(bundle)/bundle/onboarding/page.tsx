@@ -3,7 +3,8 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { redirect } from "next/navigation";
+import { CONST_URL_SUMO_MONITOR_SHUTDOWN } from "../../../../constants";
 
 export default async function Page() {
-  return redirect("https://support.mozilla.org/kb/monitor-plus-shutting-down");
+  return redirect(CONST_URL_SUMO_MONITOR_SHUTDOWN);
 }
