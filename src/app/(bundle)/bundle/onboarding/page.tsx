@@ -2,40 +2,9 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { headers } from "next/headers";
-import { getCountryCode } from "../../../functions/server/getCountryCode";
 import { redirect } from "next/navigation";
-import {
-  getAcceptLangHeaderInServerComponents,
-  getL10n,
-} from "../../../functions/l10n/serverComponents";
-import { BundleOnboardingView } from "./BundleOnboardingView";
-import { getEnabledFeatureFlags } from "../../../../db/tables/featureFlags";
-import { getServerSession } from "../../../functions/server/getServerSession";
+import { CONST_URL_SUMO_MONITOR_SHUTDOWN } from "../../../../constants";
 
 export default async function Page() {
-  const session = await getServerSession();
-  const enabledFeatureFlags = await getEnabledFeatureFlags(
-    typeof session?.user.subscriber?.fxa_uid === "string"
-      ? {
-          isSignedOut: false,
-          email: session.user.email,
-        }
-      : { isSignedOut: true },
-  );
-
-  const headersList = await headers();
-  const countryCode = getCountryCode(headersList);
-  const l10n = getL10n(await getAcceptLangHeaderInServerComponents());
-
-  if (countryCode !== "us") {
-    return redirect("/");
-  }
-
-  return (
-    <BundleOnboardingView
-      l10n={l10n}
-      enabledFeatureFlags={enabledFeatureFlags}
-    />
-  );
+  return redirect(CONST_URL_SUMO_MONITOR_SHUTDOWN);
 }
