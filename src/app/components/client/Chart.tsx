@@ -14,7 +14,7 @@ import { Button } from "../client/Button";
 import { ModalOverlay } from "./dialog/ModalOverlay";
 import { Dialog } from "./dialog/Dialog";
 import ModalImage from "../client/assets/modal-default-img.svg";
-import { DashboardSummary } from "../../functions/server/dashboard";
+import type { DashboardSummary } from "../../functions/server/dashboard";
 import { useTelemetry } from "../../hooks/useTelemetry";
 import { CONST_MAX_NUM_ADDRESSES } from "../../../constants";
 import { VisuallyHidden } from "../server/VisuallyHidden";

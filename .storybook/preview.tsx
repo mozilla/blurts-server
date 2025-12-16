@@ -7,11 +7,15 @@ import { Inter } from "next/font/google";
 import type { Preview } from "@storybook/nextjs";
 import { action } from "storybook/actions";
 import { linkTo } from "@storybook/addon-links";
+import { sb } from "storybook/test";
 import "../src/app/globals.css";
 import { metropolis } from "../src/app/fonts/Metropolis/metropolis";
 import { TestComponentWrapper } from "../src/TestComponentWrapper";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+
+sb.mock("../src/initializeEnvVars", { spy: false });
+sb.mock("../src/config", { spy: false });
 
 const AppDecorator: Preview["decorators"] = (storyFn) => {
   useEffect(() => {
