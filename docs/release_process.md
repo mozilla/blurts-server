@@ -61,7 +61,7 @@ The standard release interval for Monitor is one week, meaning there should be a
 
 ## Release to Stage
 
-Every commit to `main` is automatically deployed to the [Stage][stage] server via Github Actions. The image is built and uploaded to Github Artifact Registry. ArgoCD scans the registry and detects whenever a new image uploaded with a tag that is a short commit SHA. When one is detected, it triggers a new deployment.
+Every commit to `main` is automatically deployed to the [Stage][stage] server via Github Actions. The image is built and uploaded to Google Artifact Registry. ArgoCD scans the registry and detects whenever a new image uploaded with a tag that is a short commit SHA. When one is detected, it triggers a new deployment. This is configured via the [Monitor tenant definition](https://github.com/mozilla/global-platform-admin/blob/main/tenants/monitor.yaml).
 
 ### PR Merges
 
@@ -76,8 +76,8 @@ A PR also needs at least one approval from an ENGR team member to be merged into
 
 Once a PR is successfully merged:
 
-1. Ensure that the merge commit in `main` branch passes all checks and a docker image is successfully deployed to GAR.
-2. A webhook will send status messages into the `#fx-monitor-engineering` channel when the deployment is completed.
+1. Ensure that the merge commit in `main` branch passes all checks and a docker image is successfully deployed to [GAR](https://console.cloud.google.com/artifacts/docker/moz-fx-monitor-prod/us/monitor-prod/blurts-server?project=moz-fx-monitor-prod).
+2. A webhook will send status messages into the `#fx-monitor-engineering` channel when the deployment is completed. If after a few minutes you don't see a deployment notification, check [ArgoCD](https://webservices.argocd.global.mozgcp.net/applications?search=monitor&showFavorites=false&proj=&sync=&autoSync=&health=&namespace=&cluster=&labels=) to ensure that there aren't errors preventing deployment. You may also attempt to manually sync through the UI.
 
 ## Release to Production
 
@@ -104,11 +104,11 @@ Before deploying to production, we need to assess the current state of our work 
 
 ### Update Production Environment Variables
 
-Environment variables are configured in 2 places:
+Environment variables are configured in 3 places:
 
 - Secret env vars via [Secret Manager](https://console.cloud.google.com/security/secret-manager)
-- Non-secret env vars via Helm [ConfigMap](https://github.com/mozilla/webservices-infra/blob/e8301f4b257550787098a25b078da99765e7a81a/monitor/k8s/monitor-www)
-- Terraform-generated secrets
+- Non-secret env vars via Helm [ConfigMap](https://github.com/mozilla/webservices-infra/tree/main/monitor/k8s/monitor-www)
+- Terraform-generated secrets in [terraform folder](https://github.com/mozilla/webservices-infra/tree/main/monitor/tf)
 
 Any changes directly to production should be done as a pairing session with another engineer. By default, engineers do not have access to production-level secrets. In order to make changes:
 
@@ -118,9 +118,9 @@ Any changes directly to production should be done as a pairing session with anot
 - Update the necessary variables
 - Review with your pairing partner before accepting
 
-New secrets are discovered automatically by ArgoCD every 5 minutes. You can also use annotations to force the discovery. However, new secrets will _not_ be automatically pulled into currently running pods. They will only be updated when the pods are restarted or the service redeployed (this includes new cron job instances).
+New secrets are discovered automatically by ArgoCD every 5 minutes. That means they are synced to the infrastructure and will be used when a new pod created. However, new secrets will _not_ be automatically pulled into currently running pods. They will only be updated when the pods are restarted or the service redeployed (this includes new cron job instances). If you want to use updated secrets in currently running pods, you must restart them manually.
 
-To restart the pods for the monitor web application, navigate to [ArgoCD](https://webservices.argocd.global.mozgcp.net/applications?search=monitor) and select the project for the appropriate environment. Find the rollout resources `monitor-api-deployment` and `monitor-www`. On each node, click the hamburger menu and select "restart pods". ArgoCD will spin up new pods and terminate the existing ones. The new pods will have the updated environment variables.
+To restart the pods for the monitor web application, navigate to [ArgoCD](https://webservices.argocd.global.mozgcp.net/applications?search=monitor) and select the project for the appropriate environment. Find the rollout resources `monitor-api-deployment` and `monitor-www`. On each node, click the hamburger menu and select "restart pods". ArgoCD will spin up new pods and terminate the existing ones. This could take up to several minutes in production; you can keep an eye on the progress by clicking on the node, then switching to the "Rollout" tab. The new pods will have the updated environment variables.
 
 ### 1-click Production Release
 
@@ -139,7 +139,7 @@ After you push the tag to GitHub, you should also
    - `Branch:main` is selected
    - `prod` is selected for environment
    - Input the tag created earlier (today's date, e.g., `2024.09.01`)
-   - Click on `Run workflow` when ready
+   - Click on `Run workflow` when ready. This will add a new tag like `<environment-prefix>-<selected-tag>`, e.g. `prod-2024.09.1` or `dev-abc123d`. The tagged image will be picked up and deployed by ArgoCD automatically.
 7. A webhook will send status messages into the `#fx-monitor-engineering` channel.
 8. After successful deploy, conduct some basic sanity check:
    - Check sentry prod project for a spike in any new issues
@@ -150,12 +150,14 @@ Note the following caveats:
 
 - All production releases must follow the date tag naming scheme or else they will not be deployed. The regex for image deployments is in the [monitor tenant definition file](https://github.com/mozilla/global-platform-admin/blob/main/tenants/monitor.yaml).
   - Example: `2024.09.01`; also can include additional numeric suffix preceded by a period, e.g. `2024.09.01.1` (for manually created deployments, typically hotfixes)
-- All dev releases must use the short commit SHA as the tag or else they will not be deployed
+- You can deploy to dev with this flow. Select "dev" from the environment dropdown menu and ensure the tag you input is a (previously deployed) short commit SHA, not one of the date tags.
 - Only commits which have already been deployed to staging can be released to development or production environments. In practice this means that you cannot and should not attempt to deploy from a tag created on a release branch
 <!-- 
 Note: The reason that this is the case currently is due to a race condition with the on-push triggered jobs release_retag_v2 and docker_build_deploy_v2. The release_retag_v2 action attempts to pull an image uploaded by docker_build_deploy_v2 immediately, even though the job is not complete. However, the new tag _will_ create a staging release (tagged by the short commit SHA) that will override the current staging environment. This could result in confusion about the state of staging environment and commit verification by QA.
 
-A prod release could be forced by re-running the failed release_retag_v2 job after docker_build_deploy_v2 completes, but this is not recommended. If the changes in this release branch are not merged into main and included in subsequent releases, then they could be unintentionally reverted.
+A prod release could be forced by re-running the failed release_retag_v2 job after docker_build_deploy_v2 completes, but this should be the exception, and you should make sure to merge the release branch back into `main` afterwards to prevent it from being unintentionally reverted.
+
+Also note that any migrations already in `main` should also be included in your release branch.
 -->
 
 ### Update Jira
