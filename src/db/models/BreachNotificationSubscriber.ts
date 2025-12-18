@@ -18,7 +18,6 @@ export type BreachNotificationSubscriber = {
   signup_language: SubscriberRow["signup_language"];
   fxa_profile_json: SubscriberRow["fxa_profile_json"];
   fxa_uid: SubscriberRow["fxa_uid"];
-  onerep_profile_id: SubscriberRow["onerep_profile_id"];
 };
 
 export async function getBreachNotificationSubscribersByHashes(
@@ -36,7 +35,6 @@ export async function getBreachNotificationSubscribersByHashes(
     signup_language: row.signup_language,
     fxa_profile_json: row.fxa_profile_json,
     fxa_uid: row.fxa_uid,
-    onerep_profile_id: row.onerep_profile_id,
   }));
   // Second for secondary emails (joined to subscriber record)
   const secondary = (await getEmailAddressesByHashes(hashes)).map((row) => ({
@@ -50,7 +48,6 @@ export async function getBreachNotificationSubscribersByHashes(
     signup_language: row.signup_language,
     fxa_profile_json: row.fxa_profile_json,
     fxa_uid: row.fxa_uid,
-    onerep_profile_id: row.onerep_profile_id,
   }));
   return primary.concat(secondary);
 }

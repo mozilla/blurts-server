@@ -322,13 +322,13 @@ async function joinEmailAddressesToSubscriber(
 
 /* c8 ignore start */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+// TODO: Is this needed?
 /* c8 ignore start */
 async function incrementSignInCountForEligibleFreeUser(
   fxaId: SubscriberRow["fxa_uid"],
 ) {
   return await knex("subscribers")
     .where("fxa_uid", fxaId)
-    .whereNotNull("onerep_profile_id")
     .increment("sign_in_count", 1);
 }
 /* c8 ignore stop */
