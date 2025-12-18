@@ -4,7 +4,7 @@
 
 import Image from "next/image";
 import styles from "./not-found.module.scss";
-import Illustration from "./(proper_react)/images/404.svg";
+import Illustration from "./[locale]/images/404.svg";
 import {
   getAcceptLangHeaderInServerComponents,
   getL10n,

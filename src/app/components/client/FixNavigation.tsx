@@ -7,9 +7,9 @@
 import { ReactNode } from "react";
 import Image from "next/image";
 import styles from "./FixNavigation.module.scss";
-import stepHighRiskDataBreachesIcon from "../../(proper_react)/(redesign)/(authenticated)/user/(dashboard)/dashboard/fix/images/step-counter-high-risk.svg";
-import stepLeakedPasswordsIcon from "../../(proper_react)/(redesign)/(authenticated)/user/(dashboard)/dashboard/fix/images/step-counter-leaked-passwords.svg";
-import stepSecurityRecommendationsIcon from "../../(proper_react)/(redesign)/(authenticated)/user/(dashboard)/dashboard/fix/images/step-counter-security-recommendations.svg";
+import stepHighRiskDataBreachesIcon from "../../[locale]/(redesign)/(authenticated)/user/(dashboard)/dashboard/fix/images/step-counter-high-risk.svg";
+import stepLeakedPasswordsIcon from "../../[locale]/(redesign)/(authenticated)/user/(dashboard)/dashboard/fix/images/step-counter-leaked-passwords.svg";
+import stepSecurityRecommendationsIcon from "../../[locale]/(redesign)/(authenticated)/user/(dashboard)/dashboard/fix/images/step-counter-security-recommendations.svg";
 import { useL10n } from "../../hooks/l10n";
 import {
   StepDeterminationData,

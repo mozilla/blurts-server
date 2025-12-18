@@ -101,10 +101,10 @@ export const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
     }
   });
 
-  const DataBreachLink = (props: { children?: ReactNode }) => (
+  const DataBreachLink = (props: { locale: string; children?: ReactNode }) => (
     <Link
       className={styles.exposureBreachLink}
-      href={`/breach-details/${subscriberBreach.name}`}
+      href={`/${props.locale}/breach-details/${subscriberBreach.name}`}
       target="_blank"
       onClick={() => {
         recordTelemetry("link", "click", {
@@ -125,7 +125,7 @@ export const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
     return subscriberBreach.isResolved
       ? l10n.getFragment("exposure-card-description-data-breach-fixed", {
           elems: {
-            data_breach_link: <DataBreachLink />,
+            data_breach_link: <DataBreachLink locale={locale} />,
           },
         })
       : l10n.getFragment(
@@ -136,7 +136,7 @@ export const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
               data_breach_date: subscriberBreach.breachDate,
             },
             elems: {
-              data_breach_link: <DataBreachLink />,
+              data_breach_link: <DataBreachLink locale={locale} />,
             },
           },
         );

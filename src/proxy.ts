@@ -5,12 +5,36 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import nextConfig from "../next.config";
+import { usableLocales } from "./app/functions/server/generateStaticLocaleParam";
+import { getLocale } from "./app/functions/universal/getLocale";
+import { getL10nBundles } from "./app/functions/l10n/serverComponents";
 
 // This function can be marked `async` if using `await` inside
 export function proxy(request: NextRequest) {
   const { nonce, cspHeader } = generateCspData();
-
   const requestHeaders = new Headers(request.headers);
+
+  const localeParam = request.nextUrl.pathname.split("/")[1];
+  const acceptLang = requestHeaders.get("Accept-Language");
+  if (
+    !usableLocales.includes(localeParam) &&
+    !["/sitemap.xml", "/robots.txt"].includes(request.nextUrl.pathname)
+  ) {
+    const targetLocale =
+      typeof acceptLang === "string"
+        ? getLocale(getL10nBundles(acceptLang))
+        : "en";
+    const searchParamsString = new URLSearchParams(
+      request.nextUrl.searchParams,
+    ).toString();
+    return NextResponse.redirect(
+      new URL(
+        `/${targetLocale}${request.nextUrl.pathname}?${searchParamsString}`,
+        request.url,
+      ),
+    );
+  }
+
   requestHeaders.set("x-nonce", nonce);
   // Add the CSP to the request headers - that will make Next.js detect it and
   // add it to the inline `<script>` tags that it injects itself, as per
