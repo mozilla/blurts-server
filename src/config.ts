@@ -85,14 +85,6 @@ export const config = {
   fxRemoteSettingsWriterUser: process.env.FX_REMOTE_SETTINGS_WRITER_USER,
   fxRemoteSettingsWriterPass: process.env.FX_REMOTE_SETTINGS_WRITER_PASS,
   fxRemoteSettingsWriterServer: process.env.FX_REMOTE_SETTINGS_WRITER_SERVER,
-
-  // TODO: Remove as we remove OneRep-related code:
-  maxManualScans: getEnvInt("MAX_MANUAL_SCANS"),
-  maxInitialScans: getEnvInt("MAX_INITIAL_SCANS"),
-  maxProfilesActivated: getEnvInt("MAX_PROFILES_ACTIVATED"),
-  maxProfilesCreated: getEnvInt("MAX_PROFILES_CREATED"),
-  onerepApiBase: getEnvString("ONEREP_API_BASE"),
-  onerepApiKey: getEnvString("ONEREP_API_KEY"),
 } as const;
 
 /**

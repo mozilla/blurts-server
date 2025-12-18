@@ -32,5 +32,4 @@ jobs:
           SENTRY_DSN: "Unused, like the build result — we're just verifying that a build can succeed."
           EMAIL_FROM: "Unused, like the build result — we're just verifying that a build can succeed."
           HIBP_KANON_API_TOKEN: "Unused, like the build result — we're just verifying that a build can succeed."
-          ONEREP_API_KEY: "Unused, like the build result — we're just verifying that a build can succeed."
           S3_BUCKET: "Unused, like the build result — we're just verifying that a build can succeed."
