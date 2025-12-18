@@ -34,20 +34,6 @@ export const BreachAlertEmail = (props: BreachAlertEmailProps) => {
   const utmContentSuffix = "-global";
   const utmCampaignId = "breach-alert-global";
 
-  const premiumSubscriptionUrlObject = new URL(
-    `${config.serverUrl}/link/subscribe/monthly`,
-  );
-  premiumSubscriptionUrlObject.searchParams.set("utm_medium", "product-email");
-  premiumSubscriptionUrlObject.searchParams.set(
-    "utm_source",
-    "monitor-product",
-  );
-  premiumSubscriptionUrlObject.searchParams.set("utm_campaign", utmCampaignId);
-  premiumSubscriptionUrlObject.searchParams.set(
-    "utm_content",
-    `get-monitor-plus${utmContentSuffix}`,
-  );
-
   return (
     <mjml>
       <mj-head>
