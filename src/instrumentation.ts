@@ -9,6 +9,9 @@ export function register() {
     Sentry.init({
       environment: process.env.APP_ENV,
       dsn: process.env.SENTRY_DSN,
+      // Enables sending logs through winston transport,
+      // to send errors to Sentry and GCP without duplicate calls
+      enableLogs: true,
 
       // Adjust this value in production, or use tracesSampler for greater control
       tracesSampleRate: ["local", "heroku"].includes(process.env.NODE_ENV)
