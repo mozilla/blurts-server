@@ -20,7 +20,7 @@ Sentry.init({
 Sentry.setTag("job", "emailBreachAlerts");
 
 import "dotenv-flow/config";
-import { sentryLogger } from "../../../app/functions/server/logging";
+import { logger } from "../../../app/functions/server/logging";
 import { getAllBreachesFromDb } from "../../../utils/hibp";
 import { sendEmail, initEmail } from "../../../utils/email";
 import { getBreachNotificationSubscribersByHashes } from "../../../db/models/BreachNotificationSubscriber";
@@ -48,14 +48,14 @@ async function start() {
       subscription,
     },
     messageFnOpts: [
-      sentryLogger,
+      logger,
       getAllBreachesFromDb,
       { findByHashes: getBreachNotificationSubscribersByHashes },
       NotificationsRepo,
       sendEmail,
       Sentry,
     ],
-    jobLogger: sentryLogger,
+    jobLogger: logger,
     Sentry,
   });
 }

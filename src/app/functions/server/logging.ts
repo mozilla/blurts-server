@@ -2,6 +2,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import "./notInClientComponent";
+
 import { createLogger, transports, LoggerOptions } from "winston";
 import Transport from "winston-transport";
 import { LoggingWinston } from "@google-cloud/logging-winston";
@@ -17,16 +19,6 @@ const getLoggingWinston = () =>
     },
   });
 
-export const logger = createLogger({
-  level: "info",
-  // In GCP environments, use cloud logging instead of stdout.
-  // FIXME https://mozilla-hub.atlassian.net/browse/MNTOR-2401 - enable for stage and production
-  /* c8 ignore next 3 - cannot test this outside of GCP currently */
-  transports: ["gcpdev"].includes(process.env.APP_ENV ?? "local")
-    ? [getLoggingWinston()]
-    : [new transports.Console()],
-});
-
 // Automatically capture logger error, warn and forward to Sentry
 // Avoids double-logging
 /* c8 ignore start  */
@@ -35,17 +27,20 @@ export const logger = createLogger({
 const SentryWinstonTransport = Sentry.createSentryWinstonTransport(Transport, {
   levels: ["error", "warn"],
 });
-const sentryTransports: LoggerOptions["transports"] = [
+const logTransports: LoggerOptions["transports"] = [
   ["gcpdev"].includes(process.env.APP_ENV ?? "local")
     ? getLoggingWinston()
     : new transports.Console(),
 ];
 if (Sentry.isInitialized()) {
-  sentryTransports.push(new SentryWinstonTransport());
+  logTransports.push(new SentryWinstonTransport());
 }
 
-export const sentryLogger = createLogger({
+export const logger = createLogger({
   level: "info",
-  transports: sentryTransports,
+  // In GCP environments, use cloud logging instead of stdout.
+  // FIXME https://mozilla-hub.atlassian.net/browse/MNTOR-2401 - enable for stage and production
+  transports: logTransports,
 });
+
 /* c8 ignore stop */
