@@ -56,7 +56,7 @@ breach-checklist-cc-body = Вам также следует просмотрет
 
 ## Prompts the user for changes when there is a breach detected of bank account
 
-breach-checklist-bank-header = Немедленно сообщите в свой банк, что номер вашего счета был скомпрометирован.
+breach-checklist-bank-header = Немедленно сообщите в свой банк, что номер вашего счёта был скомпрометирован.
 breach-checklist-bank-body = Если вы сделаете это быстрее, у вас будет больше правовой защиты, которая поможет вам возместить любые убытки. Вы также захотите проверить свои счета на наличие неопознанных списаний.
 
 ## Prompts the user for changes when there is a breach detected of pin
