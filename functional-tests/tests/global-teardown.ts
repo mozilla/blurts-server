@@ -47,7 +47,7 @@ async function deleteTestUserAccounts(browser: Browser) {
       name: "Delete account",
     });
     await deleteButtonConfirm.click();
-    await page.waitForURL(`${getBaseTestEnvUrl()}/`);
+    await page.waitForURL(`${getBaseTestEnvUrl()}/en`);
 
     await page.goto(manageFxaAccountUrl!);
     await page.getByRole("link", { name: "Delete Account" }).click();
