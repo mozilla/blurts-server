@@ -17,7 +17,6 @@ import { checkSession } from "../../../../../../../functions/server/checkSession
 import { isPrePlusUser } from "../../../../../../../functions/server/isPrePlusUser";
 import { initializeUserAnnouncements } from "../../../../../../../../db/tables/user_announcements";
 import { connection } from "next/server";
-import { getPlusShutdownState } from "../../../../../../../functions/server/getPlusShutdownState";
 
 const dashboardTabSlugs = ["action-needed", "fixed"];
 
@@ -82,13 +81,11 @@ export default async function DashboardPage(props: Props) {
   const fxaSettingsUrl = process.env.FXA_SETTINGS_URL!;
   const userAnnouncements = await initializeUserAnnouncements(session.user);
   const signInCount = await getSignInCount(subscriber.id);
-  const shutdownState = getPlusShutdownState(subscriber, enabledFeatureFlags);
 
   return (
     <View
       user={session.user}
       countryCode={countryCode}
-      shutdownState={shutdownState}
       userBreaches={subBreaches}
       enabledFeatureFlags={enabledFeatureFlags}
       fxaSettingsUrl={fxaSettingsUrl}
