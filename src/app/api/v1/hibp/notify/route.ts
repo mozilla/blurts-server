@@ -2,6 +2,12 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+export const runtime = "nodejs";
+
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
 import { NextRequest, NextResponse } from "next/server";
 import { captureMessage } from "@sentry/node";
 
@@ -11,6 +17,10 @@ import { logger } from "../../../../functions/server/logging";
 import { PubSub } from "@google-cloud/pubsub";
 import { isValidBearer } from "../../../../../utils/hibp";
 import { config } from "../../../../../config";
+import {
+  hibpNotifyRequestsTotal,
+  incHibpNotifyFailure,
+} from "../../../../../metrics";
 
 const projectId = process.env.GCP_PUBSUB_PROJECT_ID;
 const topicName = process.env.GCP_PUBSUB_TOPIC_NAME;
@@ -29,6 +39,8 @@ export type PostHibpNotificationRequestBody = {
  * @param req
  */
 export async function POST(req: NextRequest) {
+  hibpNotifyRequestsTotal.inc();
+
   let pubsub: PubSub;
   let json: PostHibpNotificationRequestBody;
   const hibpNotifyToken = process.env.HIBP_NOTIFY_TOKEN;
@@ -46,6 +58,7 @@ export async function POST(req: NextRequest) {
     const headerToken = bearerToken(req);
     if (!isValidBearer(headerToken, hibpNotifyToken)) {
       logger.error(`Received invalid header token: [${headerToken}]`);
+      incHibpNotifyFailure("unauthorized");
       return NextResponse.json({ success: false }, { status: 401 });
     }
 
@@ -55,12 +68,14 @@ export async function POST(req: NextRequest) {
       logger.error(
         "HIBP breach notification: requires breachName, hashPrefix, and hashSuffixes.",
       );
+      incHibpNotifyFailure("bad-request");
       return NextResponse.json({ success: false }, { status: 400 });
     }
   } catch (ex) {
     logger.error("error_processing_breach_alert_request:", {
       exception: ex as string,
     });
+    incHibpNotifyFailure("server-error");
     return NextResponse.json({ success: false }, { status: 500 });
   }
 
@@ -69,6 +84,7 @@ export async function POST(req: NextRequest) {
   } catch (ex) {
     logger.error("error_connecting_to_pubsub:", { exception: ex as string });
     captureMessage(`error_connecting_to_pubsub:  ${ex as string}`);
+    incHibpNotifyFailure("pubsub-error");
     return NextResponse.json({ success: false }, { status: 429 });
   }
 
@@ -90,9 +106,11 @@ export async function POST(req: NextRequest) {
     } else {
       logger.error("pubsub_topic_not_found:", { topicName });
       captureMessage(`pubsub_topic_not_found:  ${topicName}`);
+      incHibpNotifyFailure("invalid-config");
       return NextResponse.json({ success: false }, { status: 429 });
     }
     logger.error("error_queuing_hibp_breach:", { topicName });
+    incHibpNotifyFailure("pubsub-error");
     return NextResponse.json({ success: false }, { status: 429 });
   }
 }
