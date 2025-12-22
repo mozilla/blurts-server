@@ -1,0 +1,32 @@
+# This documents custom metrics that are implemented in the app
+---
+version: 1.0
+
+service: Monitor
+
+hibp:
+  hibp_notify_requests_total:
+    description: |
+      Metric to instrument the number of requests from HIBP notifying of breaches
+    type: counter
+    scope: |
+      The "/hibp/notify" endpoint
+    # No alerting
+    alert_policy: []
+
+  hibp_notify_request_failures_total:
+    description: |
+      Metric to instrument the number of failed requests on HIBP notify endpoint
+    type: counter
+    labels:
+      - name: error
+        description: |
+          Record the error. Any of "server-error", "pubsub-error", "bad-request",
+          "rate-limited", "unauthorized", "invalid-config"
+    scope: |
+      The "/hibp/notify" endpoint
+    alert_policy:
+      - severity_level: S1
+        trigger_condition: |
+          Trigger when the aggregate failure rate is greater than
+          20 req/sec.
