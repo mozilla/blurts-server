@@ -4,22 +4,6 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-
-  // See https://fkhadra.github.io/react-toastify/how-to-style#override-css-variabless
-  --toastify-color-light: #{tokens.$color-white};
-  --toastify-color-dark: #{tokens.$color-grey-50};
-  --toastify-color-info: #{tokens.$color-blue-50};
-  --toastify-color-success: #{tokens.$color-green-50};
-  --toastify-color-warning: #{tokens.$color-yellow-50};
-  --toastify-color-error: #{tokens.$color-red-60};
-
-  --toastify-text-color-info: #{tokens.$color-white};
-  --toastify-text-color-success: #{tokens.$color-grey-50};
-  --toastify-text-color-warning: #{tokens.$color-grey-50};
-  --toastify-text-color-error: #{tokens.$color-white};
-
-  --toastify-toast-min-height: $layout-md;
-  --toastify-toast-max-height: $layout-md;
 }
 
 .nav {
