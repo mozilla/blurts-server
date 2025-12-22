@@ -18,7 +18,7 @@ beforeEach(() => {
   }
 });
 
-it("does not render for users outside the US (because they haven't run a scan and do not have Plus)", () => {
+it("does not render for users outside the US", () => {
   const Banner = composeStory(Story, Meta);
   render(<Banner countryCode="nl" />);
 
