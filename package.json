@@ -107,7 +107,7 @@
     "winston-transport": "^4.9.0"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3.3.1",
+    "@eslint/eslintrc": "^3.3.3",
     "@faker-js/faker": "^9.8.0",
     "@google-cloud/bigquery": "^8.1.1",
     "@playwright/test": "^1.56.1",
