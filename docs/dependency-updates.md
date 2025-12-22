@@ -205,12 +205,6 @@ This is used for the small confetti animation when completing the guided
 resolution flow. This can be seen in action in Storybook, in the story
 `Logged in / Guided resolution / 4. Security recommendations / 4d. Done`.
 
-### `react-toastify`
-
-Used to display toast notifications, e.g. the error message when you try to
-unsubscribe via the following page, which uses an invalid unsubscription
-token: http://localhost:6060/unsubscribe-email/monthly-report-free?token=wrong (DEPRECATED)
-
 ### `husky` and `lint-staged`
 
 Used to run basic code formatting when committing. You can verify that these

@@ -10,8 +10,6 @@ import { ExtendedReactLocalization } from "../../../functions/l10n";
 import { FeatureFlagName } from "../../../../db/tables/featureFlags";
 import styles from "./Shell.module.scss";
 import { UserAnnouncementWithDetails } from "../../../../db/tables/user_announcements";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { config } from "../../../../config";
 
 export type Props = {
@@ -32,7 +30,6 @@ export const Shell = (props: Props) => {
       server session and is not being mounted when running unit tests. */}
       {/* c8 ignore next */}
       {config.nodeEnv !== "test" && <SubscriptionCheck />}
-      <ToastContainer position="top-center" theme="colored" autoClose={false} />
       <ShellRedesign
         countryCode={props.countryCode}
         session={props.session}
