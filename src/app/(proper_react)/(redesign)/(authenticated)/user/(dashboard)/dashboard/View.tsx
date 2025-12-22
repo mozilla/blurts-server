@@ -32,12 +32,10 @@ import { getNextGuidedStep } from "../../../../../../functions/server/getRelevan
 import { useTelemetry } from "../../../../../../hooks/useTelemetry";
 import { UserAnnouncementWithDetails } from "../../../../../../../db/tables/user_announcements";
 import { PlusShutdownBanner } from "../../../../../../components/client/PlusShutdownBanner";
-import { ShutdownState } from "../../../../../../functions/server/getPlusShutdownState";
 
 export type TabType = "action-needed" | "fixed";
 
 export type Props = {
-  shutdownState: ShutdownState;
   enabledFeatureFlags: FeatureFlagName[];
   user: Session["user"];
   userBreaches: SubscriberBreach[];
@@ -254,10 +252,7 @@ export const View = (props: Props) => {
           selectedKey={activeTab}
         />
       </Toolbar>
-      <PlusShutdownBanner
-        countryCode={props.countryCode}
-        shutdownState={props.shutdownState}
-      />
+      <PlusShutdownBanner countryCode={props.countryCode} />
 
       <div className={styles.dashboardContent}>
         <DashboardTopBanner

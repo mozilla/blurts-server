@@ -10,10 +10,8 @@ import { CloseBtn } from "../server/Icons";
 import { useL10n } from "../../hooks/l10n";
 import { useLocalDismissal } from "../../hooks/useLocalDismissal";
 import { useHasRenderedClientSide } from "../../hooks/useHasRenderedClientSide";
-import { type ShutdownState } from "../../functions/server/getPlusShutdownState";
 
 type Props = {
-  shutdownState: ShutdownState;
   countryCode: string;
 };
 
@@ -21,42 +19,20 @@ export const PlusShutdownBanner = (props: Props) => {
   const l10n = useL10n();
 
   const hasRenderedClientSide = useHasRenderedClientSide();
-  const localDismissal = useLocalDismissal(
-    `shutdown-banner-${props.shutdownState.hasPremium ? "plus" : "free"}-${props.shutdownState.currentMoment}`,
-  );
+  const localDismissal = useLocalDismissal(`shutdown-banner-shutdown`);
 
   if (
     !hasRenderedClientSide ||
-    // Free users who haven't run a scan have no data that would be lost:
-    (!props.shutdownState.ranScan && !props.shutdownState.hasPremium) ||
-    props.shutdownState.currentMoment === "ye-olden-days" ||
+    props.countryCode !== "us" ||
     localDismissal.isDismissed
   ) {
     return null;
   }
 
-  let heading, subheading;
-  if (!props.shutdownState.hasPremium) {
-    if (props.shutdownState.currentMoment === "runup") {
-      heading = l10n.getString("plus-shutdown-banner-free-runup-heading");
-      subheading = l10n.getString("plus-shutdown-banner-free-runup-subheading");
-    } else {
-      heading = l10n.getString("plus-shutdown-banner-free-shutdown-heading");
-      subheading = l10n.getString(
-        "plus-shutdown-banner-free-shutdown-subheading",
-      );
-    }
-  } else {
-    if (props.shutdownState.currentMoment === "runup") {
-      heading = l10n.getString("plus-shutdown-banner-plus-runup-heading");
-      subheading = l10n.getString("plus-shutdown-banner-plus-runup-subheading");
-    } else {
-      heading = l10n.getString("plus-shutdown-banner-plus-shutdown-heading");
-      subheading = l10n.getString(
-        "plus-shutdown-banner-plus-shutdown-subheading",
-      );
-    }
-  }
+  const heading = l10n.getString("plus-shutdown-banner-plus-shutdown-heading");
+  const subheading = l10n.getString(
+    "plus-shutdown-banner-plus-shutdown-subheading",
+  );
 
   return (
     <aside className={styles.wrapper}>
