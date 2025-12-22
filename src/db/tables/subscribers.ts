@@ -322,19 +322,8 @@ async function joinEmailAddressesToSubscriber(
 
 /* c8 ignore start */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
-// TODO: Is this needed?
-/* c8 ignore start */
-async function incrementSignInCountForEligibleFreeUser(
-  fxaId: SubscriberRow["fxa_uid"],
-) {
-  return await knex("subscribers")
-    .where("fxa_uid", fxaId)
-    .increment("sign_in_count", 1);
-}
-/* c8 ignore stop */
-
-/* c8 ignore start */
-// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+// TODO(MNTOR-5160): Determine if this is still needed
+// https://mozilla-hub.atlassian.net/browse/MNTOR-5160
 /* c8 ignore start */
 async function getSignInCount(subscriberId: SubscriberRow["id"]) {
   const res = await knex("subscribers")
@@ -367,7 +356,6 @@ export {
   deleteUnverifiedSubscribers,
   deleteSubscriber,
   deleteResolutionsWithEmail,
-  incrementSignInCountForEligibleFreeUser,
   getSignInCount,
   unresolveAllBreaches,
   knex as knexSubscribers,
