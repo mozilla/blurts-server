@@ -121,8 +121,6 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
     createRandomAnnouncement(),
   ];
 
-  const scanCount = 0;
-
   const user = createRandomUser();
 
   if ((props.countryCode !== "us" || !props.premium) && user.fxa) {
@@ -155,11 +153,6 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
             signInCount={props.signInCount ?? null}
             userAnnouncements={mockedAnnouncements}
             countryCode={props.countryCode}
-            shutdownState={{
-              currentMoment: "ye-olden-days",
-              hasPremium: props.countryCode === "us" && props.premium,
-              ranScan: scanCount > 0,
-            }}
           />
         </Shell>
       </CountryCodeProvider>
