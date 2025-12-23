@@ -21,6 +21,14 @@ export const useL10n = (): ExtendedReactLocalization => {
 
   const extendedL10n: ExtendedReactLocalization =
     l10n as ExtendedReactLocalization;
+  // "Modifying a value returned from a hook is not allowed.
+  // Consider moving the modification into the hook where
+  // the value is constructed."
+  // Unfortunately we don't own that hook, and it's a class
+  // so we can't just spread the properties on a new object.
+  // Maybe we should look into if it's possible to extend the
+  // class in the future:
+  // eslint-disable-next-line react-hooks/immutability
   extendedL10n.getFragment = getFragment;
 
   return extendedL10n;

@@ -8,7 +8,7 @@ import { getTestUserSessionFilePath } from "../utils/user";
 
 const test = baseTest.extend<object, { storageState?: string }>({
   storageState: [
-    async ({}, use, testInfo) => {
+    async (_, use, testInfo) => {
       const countryCode = testInfo.project.use?.countryCode;
       if (!countryCode) {
         await use(undefined);
