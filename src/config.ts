@@ -41,7 +41,6 @@ export const config = {
   oauthAccountUri: getEnvString("OAUTH_ACCOUNT_URI"),
   nextAuthSecret: getEnvString("NEXTAUTH_SECRET"),
   fxaSettingsUrl: getEnvString("FXA_SETTINGS_URL"),
-  fxaSubscriptionsUrl: getEnvString("FXA_SUBSCRIPTIONS_URL"),
 
   // If set to an empty string, emails will be logged instead of sent,
   // which is fine for local development:
