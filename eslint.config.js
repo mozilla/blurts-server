@@ -2,25 +2,16 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { dirname } from "node:path";
-import { fileURLToPath } from "node:url";
-import { FlatCompat } from "@eslint/eslintrc";
+import { defineConfig, globalIgnores } from "eslint/config";
 import checkFile from "eslint-plugin-check-file";
 import header from "eslint-plugin-header";
 import importPlugin from "eslint-plugin-import";
 import jestPlugin from "eslint-plugin-jest";
 import js from "@eslint/js";
 import jsdoc from "eslint-plugin-jsdoc";
-import tsEslint from "@typescript-eslint/eslint-plugin";
-import tsParser from "@typescript-eslint/parser";
-// For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
 import storybook from "eslint-plugin-storybook";
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-  recommendedConfig: js.configs.recommended,
-});
+import nextVitals from "eslint-config-next/core-web-vitals";
+import nextTs from "eslint-config-next/typescript";
 
 // Workaround for a compatibility issue between eslint-plugin-header and ESLint v9:
 // See https://github.com/Stuk/eslint-plugin-header/issues/59
@@ -28,82 +19,16 @@ const compat = new FlatCompat({
 // again after the aforementioned issue has been fixed.
 header.rules.header.meta.schema = false;
 
-const config = [
-  ...compat.extends("next/core-web-vitals", "next/typescript"),
-  {
-    ignores: [
-      "node_modules/**",
-      ".next/**",
-      "out/**",
-      "build/**",
-      "next-env.d.ts",
-      "storybook-static",
-      "dist",
-      "coverage",
-      "!.storybook",
-      "playwright-report/**",
-    ],
-  },
-  ...compat.config({
-    extends: ["next"],
-  }),
+const estlintConfig = defineConfig([
+  js.configs.recommended,
+  ...nextVitals,
+  ...nextTs,
   ...storybook.configs["flat/recommended"],
   {
-    languageOptions: {
-      ecmaVersion: "latest",
-      sourceType: "module",
-      parser: tsParser,
-      parserOptions: {
-        project: "tsconfig.json",
-      },
-    },
-    plugins: {
-      jsdoc,
-      "@typescript-eslint": tsEslint,
-      import: importPlugin,
-      header,
-      "check-file": checkFile,
-      jest: jestPlugin,
-    },
-    settings: {
-      "import/parsers": {
-        "@typescript-eslint/parser": [".ts", ".tsx"],
-      },
-      "import/resolver": {
-        typescript: true,
-        node: true,
-      },
-    },
     rules: {
-      "header/header": [
-        "warn",
-        "block",
-        [
-          " This Source Code Form is subject to the terms of the Mozilla Public",
-          " * License, v. 2.0. If a copy of the MPL was not distributed with this",
-          " * file, You can obtain one at http://mozilla.org/MPL/2.0/. ",
-        ],
-        2,
-      ],
       // For some reason `eqeqeq` is not in the recommended set, but we try to
-      // avoid implicit type casting, cause that’s where bugs lurk:
+      // avoid implicit type casting, cause that's where bugs lurk:
       eqeqeq: ["error", "always", { null: "ignore" }],
-      "jsdoc/tag-lines": ["error", "any", { startLines: 1 }],
-      "jsdoc/require-jsdoc": "off",
-      "jsdoc/require-param-type": "off",
-      "jsdoc/require-param-description": "off",
-      "jsdoc/require-property-description": "off",
-      "jsdoc/require-returns": "off",
-      "jsdoc/require-returns-type": "off",
-      "jsdoc/require-returns-description": "off",
-      // Unused vars that start with an understore are allowed to be unused:
-      "@typescript-eslint/no-unused-vars": [
-        "warn",
-        {
-          argsIgnorePattern: "^_",
-          varsIgnorePattern: "^_",
-        },
-      ],
       "no-restricted-imports": [
         "error",
         {
@@ -120,19 +45,19 @@ const config = [
               name: "react-aria",
               importNames: ["VisuallyHidden"],
               message:
-                "Please use the <VisuallyHidden> component from `/src/app/components/server/VisuallyHidden.tsx` instead of the one from react-aria, since the latter’s (inline) styles will be stripped by our Content Security Policy.",
+                "Please use the <VisuallyHidden> component from `/src/app/components/server/VisuallyHidden.tsx` instead of the one from react-aria, since the latter's (inline) styles will be stripped by our Content Security Policy.",
             },
             {
               name: "next-auth",
               importNames: ["getServerSession"],
               message:
-                "Please use the `getServerSession` wrapper function from `/src/app/functions/server/getServerSession.ts` instead of the one from next-auth, since the latter’s doesn’t enforce passing the auth configuration object, resulting in broken sessions.",
+                "Please use the `getServerSession` wrapper function from `/src/app/functions/server/getServerSession.ts` instead of the one from next-auth, since the latter's doesn't enforce passing the auth configuration object, resulting in broken sessions.",
             },
             {
               name: "next-auth/next",
               importNames: ["getServerSession"],
               message:
-                "Please use the `getServerSession` wrapper function from `/src/app/functions/server/getServerSession.ts` instead of the one from next-auth, since the latter’s doesn’t enforce passing the auth configuration object, resulting in broken sessions.",
+                "Please use the `getServerSession` wrapper function from `/src/app/functions/server/getServerSession.ts` instead of the one from next-auth, since the latter's doesn't enforce passing the auth configuration object, resulting in broken sessions.",
             },
             {
               name: "server-only",
@@ -142,12 +67,54 @@ const config = [
           ],
         },
       ],
-      "@typescript-eslint/ban-ts-comment": [
-        "error",
-        {
-          "ts-ignore": "allow-with-description",
-        },
+    },
+  },
+
+  // Storybook configurations
+  ...storybook.configs["flat/recommended"],
+
+  // JSDoc plugin configuration
+  {
+    plugins: {
+      jsdoc,
+    },
+    rules: {
+      "jsdoc/tag-lines": ["error", "any", { startLines: 1 }],
+      "jsdoc/require-jsdoc": "off",
+      "jsdoc/require-param-type": "off",
+      "jsdoc/require-param-description": "off",
+      "jsdoc/require-property-description": "off",
+      "jsdoc/require-returns": "off",
+      "jsdoc/require-returns-type": "off",
+      "jsdoc/require-returns-description": "off",
+    },
+  },
+
+  // Header plugin configuration
+  {
+    plugins: {
+      header,
+    },
+    rules: {
+      "header/header": [
+        "warn",
+        "block",
+        [
+          " This Source Code Form is subject to the terms of the Mozilla Public",
+          " * License, v. 2.0. If a copy of the MPL was not distributed with this",
+          " * file, You can obtain one at http://mozilla.org/MPL/2.0/. ",
+        ],
+        2,
       ],
+    },
+  },
+
+  // Check-file plugin configuration
+  {
+    plugins: {
+      "check-file": checkFile,
+    },
+    rules: {
       "check-file/filename-naming-convention": [
         "error",
         { "**/*.{js,css} !src/db/migrations": "CAMEL_CASE" },
@@ -155,37 +122,61 @@ const config = [
       ],
     },
   },
+
+  // Import plugin configuration
   {
-    files: ["next-env.d.ts"],
-    rules: { "header/header": "off" },
-  },
-  {
-    files: ["**/*.test.{ts,tsx,js}"],
-    plugins: { jest: jestPlugin },
-    rules: jestPlugin.configs.recommended.rules,
-  },
-  {
-    // Only enable rules that depend on type checking on TS files.
-    files: ["**/*.{ts,tsx}"],
-    languageOptions: {
-      // See https://typescript-eslint.io/linting/typed-linting/#specifying-tsconfigs
-      // Needed for `plugin:@typescript-eslint/recommended-requiring-type-checking`
-      // to avoid this error:
-      // > You have used a rule which requires parserServices to be generated.
-      // > You must therefore provide a value for the "parserOptions.project"
-      // > property for @typescript-eslint/parser.
-      parser: tsParser,
-      parserOptions: { project: "tsconfig.json" },
+    plugins: {
+      import: importPlugin,
     },
-    plugins: { "@typescript-eslint": tsEslint },
+    settings: {
+      "import/parsers": {
+        "@typescript-eslint/parser": [".ts", ".tsx"],
+      },
+      "import/resolver": {
+        typescript: true,
+        node: true,
+      },
+    },
+  },
+
+  // TypeScript ESLint configuration
+  {
     rules: {
-      ...tsEslint.configs["recommended"].rules,
+      // Unused vars that start with an underscore are allowed to be unused:
+      "@typescript-eslint/no-unused-vars": [
+        "warn",
+        {
+          argsIgnorePattern: "^_",
+          varsIgnorePattern: "^_",
+        },
+      ],
+      "@typescript-eslint/ban-ts-comment": [
+        "error",
+        {
+          "ts-ignore": "allow-with-description",
+        },
+      ],
       "@typescript-eslint/no-unsafe-argument": "off",
       "@typescript-eslint/no-unsafe-assignment": "off",
       "@typescript-eslint/no-unsafe-member-access": "off",
       "@typescript-eslint/no-unsafe-call": "off",
+      "@typescript-eslint/no-require-imports": "off",
     },
   },
+
+  // next-env.d.ts is autogenerated by Next.js, so doesn't need our licence header
+  {
+    files: ["next-env.d.ts"],
+    rules: { "header/header": "off" },
+  },
+
+  // Jest configuration for test files
+  {
+    files: ["**/*.{test,spec}.{ts,tsx,js}", "jest.setup.ts"],
+    plugins: { jest: jestPlugin },
+    rules: jestPlugin.configs.recommended.rules,
+  },
+
   // Next is not running ESLint on root files by default. The only way to
   // include those would be to explicitly add them one by one. Instead, we
   // run ESLint directly in addition to next lint on just the root files.
@@ -197,14 +188,35 @@ const config = [
       parserOptions: { project: null },
     },
   },
-  // Playwright’s `use` function is misinterpreted as a React hook.
+
+  // Playwright configuration
+  // Playwright's `use` function is misinterpreted as a React hook.
   // For more info see issue: https://github.com/facebook/react/issues/31237
   {
     files: ["functional-tests/**/*.ts"],
+    languageOptions: {
+      globals: {
+        navigator: "readonly",
+      },
+    },
     rules: {
       "react-hooks/rules-of-hooks": "off",
     },
   },
-];
+  // Override default ignores of eslint-config-next.
+  globalIgnores([
+    "node_modules/**",
+    "storybook-static",
+    "dist",
+    "coverage",
+    "!.storybook",
+    "playwright-report/**",
+    // Default ignores of eslint-config-next:
+    ".next/**",
+    "out/**",
+    "build/**",
+    "next-env.d.ts",
+  ]),
+]);
 
-export default config;
+export default estlintConfig;
