@@ -63,17 +63,9 @@ export const config = {
 
   s3Bucket: getEnvString("S3_BUCKET"),
 
-  firefoxRelayLandingUrl: getEnvString("FIREFOX_RELAY_LANDING_URL"),
-  mozillaVpnLandingUrl: getEnvString("MOZILLA_VPN_LANDING_URL"),
-
   deleteUnverifiedSubscribersTimer: getEnvInt(
     "DELETE_UNVERIFIED_SUBSCRIBERS_TIMER",
     { fallbackValue: 24 * 60 * 60 },
-  ),
-
-  monthlyActivityFreeEmailBatchSize: getEnvInt(
-    "MONTHLY_ACTIVITY_FREE_EMAIL_BATCH_SIZE",
-    { fallbackValue: 10 },
   ),
 
   nimbusUuidNamespace: getEnvString("NIMBUS_UUID_NAMESPACE"),
