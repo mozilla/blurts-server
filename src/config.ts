@@ -50,7 +50,7 @@ export const config = {
   // https://docs.aws.amazon.com/ses/latest/dg/using-configuration-sets.html
   sesConfigSet: getEnvString("SES_CONFIG_SET", { fallbackValue: "" }),
 
-  sentryDsn: getEnvString("SENTRY_DSN"),
+  sentryDsn: getEnvString("SENTRY_DSN", { fallbackValue: "" }),
 
   hibpThrottleMaxTries: getEnvInt("HIBP_THROTTLE_MAX_TRIES"),
   hibpThrottleDelay: getEnvInt("HIBP_THROTTLE_DELAY"),
