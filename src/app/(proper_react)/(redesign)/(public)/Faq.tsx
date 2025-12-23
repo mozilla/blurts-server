@@ -11,7 +11,6 @@ import { CloseBigIcon } from "../../../components/server/Icons";
 import { useTelemetry } from "../../../hooks/useTelemetry";
 import { useButton, useFocusRing } from "react-aria";
 import { CONST_URL_SUMO_MONITOR_FAQ } from "../../../../constants";
-import { FeatureFlagName } from "../../../../db/tables/featureFlags";
 
 export type FaqItemProps = {
   question: string;
@@ -60,7 +59,7 @@ const FaqItem = (props: FaqItemProps) => {
   );
 };
 
-export const FaqSection = ({}: { enabledFeatureFlags: FeatureFlagName[] }) => {
+export const FaqSection = () => {
   const l10n = useL10n();
   const recordTelemetry = useTelemetry();
   const [expandedQuestion, setExpandedQuestion] = useState<string | null>(null);
