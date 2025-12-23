@@ -171,7 +171,7 @@ export const View = (props: Props) => {
 
         <HeresHowWeHelp />
 
-        <FaqSection enabledFeatureFlags={props.enabledFeatureFlags} />
+        <FaqSection />
 
         <div className={styles.signUpEncouragementWrapper}>
           <p className={styles.title}>

@@ -139,6 +139,7 @@
     "eslint-plugin-jsdoc": "^61.5.0",
     "eslint-plugin-storybook": "9.1.15",
     "fast-check": "^4.5.3",
+    "globals": "^16.5.0",
     "husky": "^9.1.7",
     "ioredis-mock": "^8.13.1",
     "jest": "^30.2.0",

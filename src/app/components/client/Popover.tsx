@@ -39,6 +39,11 @@ function Popover({ children, offset, state, ...props }: PopoverProps) {
         <div {...underlayProps} className={styles.underlay} />
         <div
           {...popoverProps}
+          // TODO The `react-hooks` ESLint rules didn't apply correctly
+          // for a while, and apparently this line breaks it. To enable the
+          // rule, I've suppressed the warning here for now, but we should
+          // look into fixing it:
+          // eslint-disable-next-line react-hooks/refs
           ref={props.popoverRef as React.RefObject<HTMLDivElement | null>}
           className={`${styles.popover} ${state.isOpen ? styles.isVisible : ""}`}
           style={{

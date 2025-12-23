@@ -3,6 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { defineConfig, globalIgnores } from "eslint/config";
+import globals from "globals";
 import checkFile from "eslint-plugin-check-file";
 import header from "eslint-plugin-header";
 import importPlugin from "eslint-plugin-import";
@@ -203,6 +204,17 @@ const estlintConfig = defineConfig([
       "react-hooks/rules-of-hooks": "off",
     },
   },
+
+  // Files that run in a Node environment.
+  {
+    files: ["lighthouserc.cjs", "jest.config.cjs"],
+    languageOptions: {
+      globals: {
+        ...globals.node,
+      },
+    },
+  },
+
   // Override default ignores of eslint-config-next.
   globalIgnores([
     "node_modules/**",
