@@ -15,18 +15,12 @@ import {
 } from "../../../constants";
 import { Session } from "next-auth";
 import { TelemetryLink } from "../../components/client/TelemetryLink";
-import { FeatureFlagName } from "../../../db/tables/featureFlags";
 
 export const Footer = ({
   l10n,
-  session,
-  countryCode,
-  enabledFeatureFlags,
 }: {
   l10n: ExtendedReactLocalization;
   session?: Session;
-  countryCode: string;
-  enabledFeatureFlags: FeatureFlagName[];
 }) => {
   return (
     <footer className={styles.footer}>
@@ -48,21 +42,17 @@ export const Footer = ({
             {l10n.getString("footer-nav-recent-breaches")}
           </TelemetryLink>
         </li>
-        {countryCode === "us" &&
-          !enabledFeatureFlags.includes("FreeOnly") &&
-          !session && (
-            <li>
-              <TelemetryLink
-                href="/how-it-works"
-                target="_blank"
-                eventData={{
-                  link_id: "how_it_works_footer",
-                }}
-              >
-                {l10n.getString("footer-external-link-how-it-works-label")}
-              </TelemetryLink>
-            </li>
-          )}
+        <li>
+          <TelemetryLink
+            href="/how-it-works"
+            target="_blank"
+            eventData={{
+              link_id: "how_it_works_footer",
+            }}
+          >
+            {l10n.getString("footer-external-link-how-it-works-label")}
+          </TelemetryLink>
+        </li>
         <li>
           <TelemetryLink
             href={CONST_URL_SUMO_MONITOR_FAQ}
