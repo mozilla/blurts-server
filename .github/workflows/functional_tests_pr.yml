@@ -90,6 +90,9 @@ jobs:
           NEXTAUTH_URL: ${{ secrets.NEXTAUTH_URL }}
           OAUTH_ACCOUNT_URI: ${{ secrets.OAUTH_ACCOUNT_URI }}
           OAUTH_CLIENT_SECRET: ${{ secrets.OAUTH_CLIENT_SECRET_LOCAL }}
+          PREMIUM_PLAN_ID_MONTHLY_US: ${{ secrets.STAGE_PREMIUM_PLAN_ID_MONTHLY_US }}
+          PREMIUM_PLAN_ID_YEARLY_US: ${{ secrets.STAGE_PREMIUM_PLAN_ID_YEARLY_US }}
+          PREMIUM_PRODUCT_ID: ${{ secrets.STAGE_PREMIUM_PRODUCT_ID }}
           REDIS_URL: "redis://redis.mock"
           SENTRY_DSN: "Unused for the test run, but required to be present when loading env vars"
           EMAIL_FROM: "Unused for the test run, but required to be present when loading env vars"
