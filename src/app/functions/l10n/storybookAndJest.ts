@@ -81,18 +81,8 @@ if (process.env.STORYBOOK === "true") {
   }: {
     readdirSync: typeof readdirSync;
     readFileSync: typeof readFileSync;
-    // This code only runs in a Node context, and we explicitly adjust the
-    // modules we import based on that, without going async - so we need
-    // `require`.
-    // eslint-disable-next-line @typescript-eslint/no-require-imports
   } = require("fs");
-  const {
-    resolve: resolvePath,
-    // This code only runs in a Node context, and we explicitly adjust the
-    // modules we import based on that, without going async - so we need
-    // `require`.
-    // eslint-disable-next-line @typescript-eslint/no-require-imports
-  }: { resolve: typeof resolve } = require("path");
+  const { resolve: resolvePath }: { resolve: typeof resolve } = require("path");
 
   const ftlRoot = resolvePath(__dirname, `../../../../locales/`);
 
