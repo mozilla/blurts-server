@@ -47,23 +47,14 @@ jobs:
         env:
           UPLOAD_SENTRY_SOURCEMAPS: true
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
-          NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
           SENTRY_RELEASE: ${{ github.ref_name }}
           NEXT_PUBLIC_SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
-          SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
-          EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
-          HIBP_KANON_API_TOKEN: ${{ secrets.HIBP_KANON_API_TOKEN }}
           S3_BUCKET: ${{ secrets.S3_BUCKET }}
         run: |
           docker build --tag blurts-server \
             --build-arg SENTRY_RELEASE="$SENTRY_RELEASE" \
             --build-arg NEXT_PUBLIC_SENTRY_DSN="$NEXT_PUBLIC_SENTRY_DSN" \
-            --build-arg EMAIL_FROM="$EMAIL_FROM" \
-            --build-arg SENTRY_DSN="$SENTRY_DSN" \
-            --build-arg S3_BUCKET="$S3_BUCKET" \
             --secret id=SENTRY_AUTH_TOKEN \
-            --secret id=NEXTAUTH_SECRET \
-            --secret id=HIBP_KANON_API_TOKEN \
             .
 
       - name: Deploy to Dockerhub
