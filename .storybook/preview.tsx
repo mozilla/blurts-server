@@ -14,6 +14,9 @@ import { TestComponentWrapper } from "../src/TestComponentWrapper";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
+sb.mock("../src/initializeEnvVars", { spy: false });
+sb.mock("../src/config", { spy: false });
+
 const AppDecorator: Preview["decorators"] = (storyFn) => {
   useEffect(() => {
     // We have to add these classes to the body, rather than simply wrapping the
@@ -27,8 +30,6 @@ const AppDecorator: Preview["decorators"] = (storyFn) => {
 
   return <TestComponentWrapper>{storyFn()}</TestComponentWrapper>;
 };
-
-sb.mock("../src/app/hooks/locationSuggestions.ts");
 
 // Arguments to the `storySort` callback, left as documentation.
 type _SortData = {

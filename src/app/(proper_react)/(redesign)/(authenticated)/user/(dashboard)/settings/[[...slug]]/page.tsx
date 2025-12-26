@@ -7,10 +7,6 @@ import { headers } from "next/headers";
 import { getServerSession } from "../../../../../../../functions/server/getServerSession";
 import { SettingsView, TabType } from "../View";
 import {
-  getSubscriptionBillingAmount,
-  getPremiumSubscriptionUrl,
-} from "../../../../../../../functions/server/getPremiumSubscriptionInfo";
-import {
   getAcceptLangHeaderInServerComponents,
   getL10n,
 } from "../../../../../../../functions/l10n/serverComponents";
@@ -18,27 +14,18 @@ import { getUserEmails } from "../../../../../../../../db/tables/emailAddresses"
 import { getBreaches } from "../../../../../../../functions/server/getBreaches";
 import { getBreachesForEmail } from "../../../../../../../../utils/hibp";
 import { getSha1 } from "../../../../../../../../utils/fxa";
-import { getAttributionsFromCookiesOrDb } from "../../../../../../../functions/server/attributions";
 import { getEnabledFeatureFlags } from "../../../../../../../../db/tables/featureFlags";
-import { getLatestOnerepScan } from "../../../../../../../../db/tables/onerep_scans";
 import { getExperimentationIdFromUserSession } from "../../../../../../../functions/server/getExperimentationId";
 import { getExperiments } from "../../../../../../../functions/server/getExperiments";
 import { getLocale } from "../../../../../../../functions/universal/getLocale";
 import { getCountryCode } from "../../../../../../../functions/server/getCountryCode";
 import { getSubscriberById } from "../../../../../../../../db/tables/subscribers";
 import { checkSession } from "../../../../../../../functions/server/checkSession";
-import { getUserSubscriptionType } from "../../../../../../../functions/server/user";
 import { getEmailPreferenceForPrimaryEmail } from "../../../../../../../../db/tables/subscriber_email_preferences";
 import { CONST_SETTINGS_TAB_SLUGS } from "../../../../../../../../constants";
-import getDataBrokerScanProfile from "../../../../../../../functions/server/getDataBrokerScanProfile";
-import { canSubscribeToPremium } from "../../../../../../../functions/universal/user";
-import {
-  onAddEmail,
-  onDeleteAccount,
-  onRemoveEmail,
-  onHandleUpdateProfileData,
-} from "../actions";
+import { onAddEmail, onDeleteAccount, onRemoveEmail } from "../actions";
 import { initializeUserAnnouncements } from "../../../../../../../../db/tables/user_announcements";
+import { config } from "../../../../../../../../config";
 
 type Props = {
   params: Promise<{
@@ -66,11 +53,8 @@ export default async function SettingsPage(props: Props) {
   }
 
   const emailAddresses = await getUserEmails(session.user.subscriber.id);
-  const isMonthlySubscriber =
-    (await getUserSubscriptionType(session.user)) === "monthly";
 
-  const fxaSettingsUrl = process.env.FXA_SETTINGS_URL!;
-  const fxaSubscriptionsUrl = process.env.FXA_SUBSCRIPTIONS_URL!;
+  const fxaSettingsUrl = config.fxaSettingsUrl;
   const allBreaches = await getBreaches();
   const breachCountByEmailAddress: Record<string, number> = {};
   const emailAddressStrings = emailAddresses.map(
@@ -90,21 +74,6 @@ export default async function SettingsPage(props: Props) {
     isSignedOut: false,
     email: session.user.email,
   });
-
-  const additionalSubplatParams = await getAttributionsFromCookiesOrDb(
-    session.user.subscriber.id,
-  );
-  const additionalSubplatParamsString =
-    additionalSubplatParams.size > 0
-      ? // SubPlat2 subscription links already have the UTM parameter `?plan` appended.
-        `${enabledFeatureFlags.includes("SubPlat3") ? "?" : "&"}${additionalSubplatParams.toString()}`
-      : "";
-
-  const monthlySubscriptionUrl = getPremiumSubscriptionUrl({
-    type: "monthly",
-    enabledFeatureFlags,
-  });
-
   const headersList = await headers();
   const l10n = getL10n(await getAcceptLangHeaderInServerComponents());
   const countryCode = getCountryCode(headersList);
@@ -125,18 +94,6 @@ export default async function SettingsPage(props: Props) {
   const settingsData = await getEmailPreferenceForPrimaryEmail(
     session.user.email,
   );
-  const lastScanDate = (
-    await getLatestOnerepScan(session.user.subscriber.onerep_profile_id)
-  )?.created_at;
-
-  const profileData = session.user.subscriber.onerep_profile_id
-    ? await getDataBrokerScanProfile(session.user.subscriber.onerep_profile_id)
-    : undefined;
-  const isEligibleForPremium = canSubscribeToPremium({
-    user: session.user,
-    countryCode,
-    enabledFeatureFlags,
-  });
 
   const userAnnouncements = await initializeUserAnnouncements(session.user);
 
@@ -149,23 +106,15 @@ export default async function SettingsPage(props: Props) {
       emailAddresses={emailAddresses}
       breachCountByEmailAddress={breachCountByEmailAddress}
       fxaSettingsUrl={fxaSettingsUrl}
-      fxaSubscriptionsUrl={fxaSubscriptionsUrl}
-      monthlySubscriptionUrl={`${monthlySubscriptionUrl}${additionalSubplatParamsString}`}
-      subscriptionBillingAmount={getSubscriptionBillingAmount()}
       enabledFeatureFlags={enabledFeatureFlags}
       experimentData={experimentData["Features"]}
-      lastScanDate={lastScanDate}
-      isMonthlySubscriber={isMonthlySubscriber}
       activeTab={activeTab}
-      isEligibleForPremium={isEligibleForPremium}
       actions={{
         onAddEmail,
         onRemoveEmail,
         onDeleteAccount,
-        onHandleUpdateProfileData,
       }}
       userAnnouncements={userAnnouncements}
-      profileData={profileData}
     />
   );
 }

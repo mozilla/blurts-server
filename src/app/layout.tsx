@@ -25,6 +25,7 @@ import { getExperiments } from "./functions/server/getExperiments";
 import { getCountryCode } from "./functions/server/getCountryCode";
 import { ExperimentsProvider } from "../contextProviders/experiments";
 import * as Sentry from "@sentry/nextjs";
+import { config } from "../config";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -33,10 +34,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: l10n.getString("brand-mozilla-monitor"),
     description: l10n.getString("meta-desc-2"),
-    metadataBase:
-      typeof process.env.SERVER_URL === "string"
-        ? new URL(process.env.SERVER_URL)
-        : undefined,
+    metadataBase: new URL(config.serverUrl),
     twitter: {
       card: "summary_large_image",
       title: l10n.getString("brand-mozilla-monitor"),
@@ -48,7 +46,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description: l10n.getString("meta-desc-2"),
       siteName: l10n.getString("brand-mozilla-monitor"),
       type: "website",
-      url: process.env.SERVER_URL,
+      url: config.serverUrl,
       images: ["/images/og-image.webp"],
     },
   };
@@ -92,7 +90,7 @@ export default async function RootLayout({
         // DO NOT ADD SECRETS HERE: The following data attributes expose
         // variables that are being used in the public analytics scripts
         data-ga4-measurement-id={CONST_GA4_MEASUREMENT_ID}
-        data-node-env={process.env.NODE_ENV}
+        data-node-env={config.nodeEnv}
       >
         <ExperimentsProvider
           experimentData={experimentData}
@@ -103,7 +101,7 @@ export default async function RootLayout({
       </body>
       <StripeScript />
       <GleanScript
-        channel={process.env.APP_ENV ?? ""}
+        channel={config.appEnv}
         experimentationId={experimentationId ?? ""}
       />
       {(await headers()).get("DNT") !== "1" && (
@@ -112,7 +110,7 @@ export default async function RootLayout({
           nonce={nonce}
           debugMode={
             process.env.NEXT_PUBLIC_GA4_DEBUG_MODE === "true" &&
-            process.env.NODE_ENV !== "test"
+            config.nodeEnv !== "test"
           }
         />
       )}

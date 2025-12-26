@@ -79,8 +79,9 @@ jobs:
           tags: ${{ env.TAGS }}
           # Pass build arguments
           build-args: |
-            SENTRY_RELEASE=${{ github.sha }} # Use full SHA for Sentry release clarity
+            SENTRY_RELEASE=${{ github.sha }}
             NEXT_PUBLIC_SENTRY_DSN=${{ secrets.SENTRY_DSN }}
+            SENTRY_DSN=${{ secrets.SENTRY_DSN }}
           # Pass secrets securely to the build
           secrets: |
             SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }}

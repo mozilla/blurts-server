@@ -8,7 +8,7 @@
  * In particular, k6 supports JS but is not a Node package: https://k6.io/docs/get-started/installation/
  * This is why import/no-unresolved and no-undef are ignored.
  *
- * Since k6 does not support dotenv-flow, we manually emulate its behaviour;
+ * Since k6 does not support @next/env, we manually emulate its behaviour;
  * this is good enough for our load tests.
  *
  * @see https://grafana.com/docs/k6/latest/get-started/running-k6

@@ -9,21 +9,13 @@ import styles from "./Toolbar.module.scss";
 import { UserMenu } from "./UserMenu";
 import { Session } from "next-auth";
 import { AppPicker } from "./AppPicker";
-import { UpsellBadge } from "./UpsellBadge";
-import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 import { FeatureFlagName } from "../../../../db/tables/featureFlags";
 import { AnnouncementDialog } from "./AnnouncementDialog";
 import { UserAnnouncementWithDetails } from "../../../../db/tables/user_announcements";
 
 export type Props = {
   user: Session["user"];
-  monthlySubscriptionUrl: string;
-  subscriptionBillingAmount: {
-    monthly: number;
-  };
   fxaSettingsUrl: string;
-  lastScanDate: Date | null;
-  experimentData: ExperimentData["Features"];
   enabledFeatureFlags: FeatureFlagName[];
   children?: ReactNode;
   announcements: UserAnnouncementWithDetails[] | null;
@@ -40,11 +32,6 @@ export const Toolbar = (props: Props) => {
     >
       <div className={styles.start}>{props.children}</div>
       <div className={styles.end}>
-        <UpsellBadge
-          lastScanDate={props.lastScanDate}
-          experimentData={props.experimentData}
-          enabledFeatureFlags={props.enabledFeatureFlags}
-        />
         {/* c8 ignore next 3 */}
         {props.announcements && (
           <AnnouncementDialog announcements={props.announcements} />

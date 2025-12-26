@@ -5,9 +5,3 @@
 export function isUsingMockHIBPEndpoint() {
   return !!process.env.HIBP_KANON_API_ROOT?.includes("api/mock");
 }
-
-export function isUsingMockONEREPEndpoint() {
-  return !!process.env.ONEREP_API_BASE?.includes("api/mock");
-}
-
-export const ONEREP_API_BASE = process.env.ONEREP_API_BASE;

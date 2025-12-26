@@ -210,7 +210,6 @@ export async function breachMessageHandler(
             breachedEmail={recipient.breached_email}
             utmCampaignId={UTM_CAMPAIGN_ID_BREACH_ALERT}
             subscriber={recipient}
-            dataSummary={undefined}
           />,
         ),
       );

@@ -2,6 +2,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import { config } from "../../config";
+
 /* c8 ignore start */
 export const EmailBanner = (props: {
   heading: string;
@@ -50,7 +52,7 @@ export const EmailBanner = (props: {
           <mj-column width="30%" padding-right="16px">
             <mj-image
               alt=""
-              src={`${process.env.SERVER_URL}/images/email/monthly-activity/thumbs-up.png`}
+              src={`${config.serverUrl}/images/email/monthly-activity/thumbs-up.png`}
               padding="0"
               align="left"
             />

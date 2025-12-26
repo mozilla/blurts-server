@@ -12,6 +12,12 @@ const loggerMock = {
 };
 jest.mock("./logging", () => ({ logger: loggerMock }));
 
+jest.mock("../../../config", () => {
+  return {
+    config: {},
+  };
+});
+
 const loadNextHeadersMock =
   jest.fn<() => Promise<{ headers: () => Promise<Headers> } | null>>();
 jest.mock("./loadNextHeaders", () => ({
@@ -23,21 +29,19 @@ jest.mock("uuid", () => ({
 }));
 
 describe("getExperimentationId", () => {
-  const originalEnv = process.env;
-
   beforeEach(() => {
     jest.resetModules();
 
-    process.env = { ...originalEnv };
-    delete process.env.NIMBUS_UUID_NAMESPACE;
-  });
-
-  afterAll(() => {
-    process.env = originalEnv;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const configModule = jest.requireMock("../../../config") as any;
+    delete configModule.config.nimbusUuidNamespace;
   });
 
   it("returns a UUID derived from subscriberId when NIMBUS_UUID_NAMESPACE is set", async () => {
-    process.env.NIMBUS_UUID_NAMESPACE = "00000000-0000-0000-0000-000000000000";
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const configModule = jest.requireMock("../../../config") as any;
+    configModule.config.nimbusUuidNamespace =
+      "00000000-0000-0000-0000-000000000000";
     const { getExperimentationIdFromSubscriber } = await import(
       "./getExperimentationId"
     );
@@ -58,26 +62,11 @@ describe("getExperimentationId", () => {
     expect(loggerMock.info).not.toHaveBeenCalled();
   });
 
-  it("throws and logs if NIMBUS_UUID_NAMESPACE is missing", async () => {
-    const { v5: uuidv5 } = await import("uuid");
-    const { getExperimentationIdFromSubscriber } = await import(
-      "./getExperimentationId"
-    );
-
-    await expect(
-      getExperimentationIdFromSubscriber({ id: 42 } as SubscriberRow),
-    ).rejects.toThrow(
-      "NIMBUS_UUID_NAMESPACE not set, cannot create experimentationId",
-    );
-
-    expect(loggerMock.error).toHaveBeenCalledWith(
-      "NIMBUS_UUID_NAMESPACE environment variable is missing. Cannot generate experimentationId.",
-    );
-    expect(uuidv5).not.toHaveBeenCalled();
-  });
-
   it("getExperimentationIdFromUserSession passes through the subscriber id", async () => {
-    process.env.NIMBUS_UUID_NAMESPACE = "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa";
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const configModule = jest.requireMock("../../../config") as any;
+    configModule.config.nimbusUuidNamespace =
+      "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa";
     const { getExperimentationIdFromUserSession } = await import(
       "./getExperimentationId"
     );

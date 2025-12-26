@@ -15,13 +15,9 @@ import {
   getL10n,
 } from "../../../../functions/l10n/serverComponents";
 import { initEmail } from "../../../../../utils/email";
-import {
-  CONST_MAX_NUM_ADDRESSES,
-  CONST_MAX_NUM_ADDRESSES_PLUS,
-} from "../../../../../constants";
+import { CONST_MAX_NUM_ADDRESSES } from "../../../../../constants";
 import { validateEmailAddress } from "../../../../../utils/emailAddress";
-import { hasPremium } from "../../../../functions/universal/user";
-import { getEnabledFeatureFlags } from "../../../../../db/tables/featureFlags";
+import { config } from "../../../../../config";
 
 interface EmailAddRequest {
   email: string;
@@ -50,17 +46,7 @@ export async function POST(req: NextRequest) {
           { status: 400 },
         );
       }
-
-      const enabledFeatureFlags = await getEnabledFeatureFlags({
-        email: subscriber.primary_email,
-      });
-      const maxNumEmailAddresses = enabledFeatureFlags.includes(
-        "IncreasedFreeMaxBreachEmails",
-      )
-        ? CONST_MAX_NUM_ADDRESSES_PLUS
-        : hasPremium(subscriber)
-          ? CONST_MAX_NUM_ADDRESSES_PLUS
-          : CONST_MAX_NUM_ADDRESSES;
+      const maxNumEmailAddresses = CONST_MAX_NUM_ADDRESSES;
       if (emailCount >= maxNumEmailAddresses) {
         return NextResponse.json(
           {
@@ -98,7 +84,6 @@ export async function POST(req: NextRequest) {
       const unverifiedSubscriber = await addSubscriberUnverifiedEmailHash(
         subscriber,
         validatedEmail.email,
-        enabledFeatureFlags,
       );
 
       await initEmail();
@@ -126,6 +111,6 @@ export async function POST(req: NextRequest) {
     }
   } else {
     // Not Signed in, redirect to home
-    return NextResponse.redirect(process.env.SERVER_URL ?? "/", 301);
+    return NextResponse.redirect(config.serverUrl, 301);
   }
 }

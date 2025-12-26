@@ -7,7 +7,6 @@
 import { ReactNode } from "react";
 import Image from "next/image";
 import styles from "./FixNavigation.module.scss";
-import stepDataBrokerProfilesIcon from "../../(proper_react)/(redesign)/(authenticated)/user/(dashboard)/dashboard/fix/images/step-counter-data-broker-profiles.svg";
 import stepHighRiskDataBreachesIcon from "../../(proper_react)/(redesign)/(authenticated)/user/(dashboard)/dashboard/fix/images/step-counter-high-risk.svg";
 import stepLeakedPasswordsIcon from "../../(proper_react)/(redesign)/(authenticated)/user/(dashboard)/dashboard/fix/images/step-counter-leaked-passwords.svg";
 import stepSecurityRecommendationsIcon from "../../(proper_react)/(redesign)/(authenticated)/user/(dashboard)/dashboard/fix/images/step-counter-security-recommendations.svg";
@@ -15,7 +14,6 @@ import { useL10n } from "../../hooks/l10n";
 import {
   StepDeterminationData,
   hasCompletedStepSection,
-  isEligibleForStep,
 } from "../../functions/server/getRelevantGuidedSteps";
 import { getGuidedExperienceBreaches } from "../../functions/universal/guidedExperienceBreaches";
 import { CheckIcon } from "../server/Icons";
@@ -61,8 +59,6 @@ export const Steps = (props: {
   const totalHighRiskBreaches = Object.values(
     breachesByClassification.highRisk,
   ).reduce((acc, array) => acc + array.length, 0);
-  const totalDataBrokerProfiles =
-    props.data.latestScanData?.results.length ?? 0;
   const totalPasswordBreaches = Object.values(
     breachesByClassification.passwordBreaches,
   ).reduce((acc, array) => acc + array.length, 0);
@@ -84,28 +80,8 @@ export const Steps = (props: {
     </div>
   );
 
-  const dataBrokerStepCompleted = hasCompletedStepSection(props.data, "Scan");
-
   return (
     <ul className={styles.steps}>
-      {isEligibleForStep(props.data, "Scan") && (
-        <li
-          aria-current={
-            props.currentSection === "data-broker-profiles" ? "step" : undefined
-          }
-          className={`${styles.navigationItem} ${
-            props.currentSection === "data-broker-profiles" ? styles.active : ""
-          } ${dataBrokerStepCompleted ? styles.isCompleted : ""}`}
-        >
-          <div className={styles.stepIcon}>
-            <StepImage data={props.data} section="Scan" />
-          </div>
-          <StepLabel
-            label={l10n.getString("fix-flow-nav-data-broker-profiles")}
-            count={totalDataBrokerProfiles}
-          />
-        </li>
-      )}
       <li
         aria-current={
           props.currentSection === "high-risk-data-breach" ? "step" : undefined
@@ -176,9 +152,7 @@ export const Steps = (props: {
             className={`${
               styles.activeProgressBarLine
             } ${calculateActiveProgressBarPosition(props.currentSection)} ${
-              isEligibleForStep(props.data, "Scan")
-                ? styles.hasFourSteps
-                : styles.hasThreeSteps
+              styles.hasThreeSteps
             }`}
           ></div>
         </div>
@@ -198,13 +172,11 @@ const StepImage = (props: {
   }
 
   const src =
-    props.section === "Scan"
-      ? stepDataBrokerProfilesIcon
-      : props.section === "HighRisk"
-        ? stepHighRiskDataBreachesIcon
-        : props.section === "LeakedPasswords"
-          ? stepLeakedPasswordsIcon
-          : stepSecurityRecommendationsIcon;
+    props.section === "HighRisk"
+      ? stepHighRiskDataBreachesIcon
+      : props.section === "LeakedPasswords"
+        ? stepLeakedPasswordsIcon
+        : stepSecurityRecommendationsIcon;
 
   return <Image src={src} alt="" width={22} height={22} />;
 };
@@ -216,7 +188,5 @@ function calculateActiveProgressBarPosition(section: Props["currentSection"]) {
     return styles.beginLeakedPasswords;
   } else if (section === "security-recommendations") {
     return styles.beginSecurityRecommendations;
-  } else {
-    return "";
   }
 }

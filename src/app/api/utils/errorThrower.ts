@@ -3,10 +3,11 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { NextResponse } from "next/server";
+import { config } from "../../../config";
 
 export function errorIfProduction() {
   //checks that the environment isnt production
-  if (process.env.APP_ENV === "production") {
+  if (config.appEnv === "production") {
     return error403("Endpoint not available in prod environment");
   }
   return null;
@@ -14,14 +15,14 @@ export function errorIfProduction() {
 
 export function errorIfStage() {
   //checks that the environment isnt stage
-  if (process.env.APP_ENV === "stage") {
+  if (config.appEnv === "stage") {
     return error403("Endpoint not available in stage environment");
   }
   return null;
 }
 
 export function errorIfNotLocal() {
-  if (process.env.APP_ENV !== "local") {
+  if (config.appEnv !== "local") {
     return error403("Endpoint not available in non-local environment");
   }
   return null;

@@ -13,12 +13,8 @@ import {
 import { isAdmin } from "../../../../../api/utils/auth";
 import { Toolbar } from "../../../../../components/client/toolbar/Toolbar";
 import styles from "./page.module.scss";
-import {
-  getSubscriptionBillingAmount,
-  getPremiumSubscriptionUrl,
-} from "../../../../../functions/server/getPremiumSubscriptionInfo";
-import { defaultExperimentData } from "../../../../../../telemetry/generated/nimbus/experiments";
 import { ExistingFlagEditor, NewFlagEditor } from "./components/FlagEditor";
+import { config } from "../../../../../../config";
 
 export const metadata = {
   title: "Monitor Feature Flags",
@@ -26,12 +22,7 @@ export const metadata = {
 
 export default async function FeatureFlagPage() {
   const session = await getServerSession();
-
-  const monthlySubscriptionUrl = getPremiumSubscriptionUrl({
-    type: "monthly",
-    enabledFeatureFlags: [],
-  });
-  const fxaSettingsUrl = process.env.FXA_SETTINGS_URL!;
+  const fxaSettingsUrl = config.fxaSettingsUrl;
 
   if (!session?.user?.email || !session.user.subscriber?.id) {
     return redirect("/");
@@ -48,7 +39,7 @@ export default async function FeatureFlagPage() {
 
   let productionFeatureFlags: string[] = [];
   try {
-    if (process.env.APP_ENV !== "production") {
+    if (config.appEnv !== "production") {
       const productionFeatureFlagsResponse = await fetch(
         "https://monitor.mozilla.org/api/v1/admin/feature-flags",
       );
@@ -81,15 +72,7 @@ export default async function FeatureFlagPage() {
         <div className={styles.end}>
           <Toolbar
             user={session.user}
-            monthlySubscriptionUrl={monthlySubscriptionUrl}
-            subscriptionBillingAmount={getSubscriptionBillingAmount()}
             fxaSettingsUrl={fxaSettingsUrl}
-            // Since this page is only accessed by contributors, no need to load
-            // their latest scan date from the DB:
-            lastScanDate={null}
-            // We're not going to run experiments on the feature flag page (it's
-            // not user-visible), so no need to fetch experiment data:
-            experimentData={defaultExperimentData["Features"]}
             enabledFeatureFlags={[]}
             announcements={null}
           />

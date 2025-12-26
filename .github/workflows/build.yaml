@@ -25,3 +25,13 @@ jobs:
       - run: npm run build
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          NEXTAUTH_SECRET: "Unused, like the build result — we're just verifying that a build can succeed."
+          SENTRY_DSN: "Unused, like the build result — we're just verifying that a build can succeed."
+          EMAIL_FROM: "Unused, like the build result — we're just verifying that a build can succeed."
+          HIBP_KANON_API_TOKEN: "Unused, like the build result — we're just verifying that a build can succeed."
+          S3_BUCKET: "Unused, like the build result — we're just verifying that a build can succeed."
+          FX_REMOTE_SETTINGS_WRITER_SERVER: "Unused, like the build result — we're just verifying that a build can succeed."
+          FX_REMOTE_SETTINGS_WRITER_USER: "Unused, like the build result — we're just verifying that a build can succeed."
+          FX_REMOTE_SETTINGS_WRITER_PASS: "Unused, like the build result — we're just verifying that a build can succeed."
+          NIMBUS_UUID_NAMESPACE: "Unused, like the build result — we're just verifying that a build can succeed."
+          NIMBUS_SIDECAR_URL: "Unused, like the build result — we're just verifying that a build can succeed."

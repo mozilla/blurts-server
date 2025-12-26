@@ -4,34 +4,15 @@
 
 import { Knex } from "knex";
 import { Profile } from "next-auth";
-import { OnerepUsPhoneNumber, Scan } from "./app/functions/server/onerep";
 import { ISO8601DateString } from "./utils/parse";
-import { StateAbbr } from "./utils/states";
-import { RemovalStatus } from "./app/functions/universal/scanResult";
 import { BreachDataTypes } from "./app/functions/universal/breach";
 import type {
   formatDataClassesArray,
   HibpGetBreachesResponse,
 } from "./utils/hibp";
-import { DataBrokerRemovalStatus } from "./app/functions/universal/dataBroker";
 
 // See https://knexjs.org/guide/#typescript
 declare module "knex/types/tables" {
-  interface OnerepDataBrokerRow {
-    id: number;
-    data_broker: string;
-    status: string;
-    url: string;
-    created_at: Date;
-    updated_at: Date;
-  }
-
-  interface OnerepScanResultDataBrokerRow extends OnerepScanResultRow {
-    scan_result_status: RemovalStatus;
-    broker_status: DataBrokerRemovalStatus;
-    url: string;
-  }
-
   interface AttributionRow {
     id: number;
     subscriber_id: number;
@@ -151,8 +132,6 @@ declare module "knex/types/tables" {
     monthly_monitor_report_at: null | Date;
     monthly_monitor_report: boolean;
     breach_resolution: BreachResolution;
-    /** @deprecated */
-    onerep_profile_id: null | number;
     sign_in_count: null | number;
     email_addresses: SubscriberEmail[];
     first_broker_removal_email_sent: boolean;
@@ -174,7 +153,6 @@ declare module "knex/types/tables" {
     | "monthly_monitor_report_at"
     | "monthly_monitor_report"
     | "breach_resolution"
-    | "onerep_profile_id"
     | "email_addresses"
     | "first_broker_removal_email_sent"
     | "churn_prevention_email_sent_at"
@@ -235,100 +213,6 @@ declare module "knex/types/tables" {
   >;
   type BreachAutoInsertedColumns = Extract<keyof BreachRow, "id">;
 
-  interface OnerepScanRow {
-    id: number;
-    onerep_profile_id: number;
-    onerep_scan_id: number;
-    onerep_scan_reason: Scan["reason"];
-    onerep_scan_status: Scan["status"];
-    created_at: Date;
-    updated_at: Date;
-  }
-  type OnerepScanOptionalColumns = Extract<
-    keyof OnerepScanRow,
-    "onerep_profile_id"
-  >;
-  type OnerepScanAutoInsertedColumns = Extract<
-    keyof OnerepScanRow,
-    "id" | "created_at" | "updated_at"
-  >;
-
-  interface OnerepScanResultRow {
-    id: number;
-    onerep_scan_result_id: number;
-    onerep_scan_id: OnerepScanRow["onerep_scan_id"];
-    link: string;
-    age?: number;
-    data_broker: string;
-    data_broker_id: number;
-    emails: string[];
-    phones: string[];
-    addresses: Array<{
-      city: string;
-      state: StateAbbr;
-      street?: string;
-      zip?: string;
-    }>;
-    relatives: string[];
-    first_name: string;
-    middle_name?: string;
-    last_name: string;
-    status: RemovalStatus;
-    optout_attempts?: number;
-    last_optout_at?: Date;
-    manually_resolved: boolean;
-    created_at: Date;
-    updated_at: Date;
-  }
-  type OnerepScanResultOptionalColumns = Extract<
-    keyof OnerepScanResultRow,
-    "manually_resolved" | "middle_name" | "optout_attempts" | "last_optout_at"
-  >;
-  type OnerepScanResultSerializedColumns = Extract<
-    keyof OnerepScanResultRow,
-    "emails" | "phones" | "addresses" | "relatives"
-  >;
-  type OnerepScanResultAutoInsertedColumns = Extract<
-    keyof OnerepScanResultRow,
-    "id" | "created_at" | "updated_at"
-  >;
-
-  type OnerepProfileAddress = {
-    city: string;
-    state: StateAbbr;
-  };
-
-  interface OnerepProfileRow {
-    id: number;
-    onerep_profile_id: null | number;
-    name_suffix: null | string;
-    first_name: string;
-    middle_name: null | string;
-    last_name: string;
-    first_names: string[];
-    middle_names: string[];
-    last_names: string[];
-    addresses: OnerepProfileAddress[];
-    phone_numbers: OnerepUsPhoneNumber[];
-    date_of_birth: Date;
-    created_at: Date;
-    updated_at: Date;
-    // For backwards compatibility reasons we are keeping `city_name` and
-    // `state_code` until MNTOR-3567 is implemented and enabled by default.
-    /** @deprecated Please use `addresses` instead. */
-    city_name: string;
-    /** @deprecated Please use `addresses` instead. */
-    state_code: StateAbbr;
-  }
-  type OnerepProfileOptionalColumns = Extract<
-    keyof OnerepProfileRow,
-    "onerep_profile_id"
-  >;
-  type OnerepProfileAutoInsertedColumns = Extract<
-    keyof OnerepProfileRow,
-    "id" | "created_at" | "updated_at"
-  >;
-
   interface EmailNotificationRow {
     id: number;
     subscriber_id: number;
@@ -359,18 +243,7 @@ declare module "knex/types/tables" {
     "id" | "created_at" | "modified_at"
   >;
 
-  type AudienceRow =
-    | "all_users"
-    | "premium_users"
-    | "free_users"
-    | "has_run_scan"
-    | "has_not_run_scan"
-    | "monthly_user"
-    | "yearly_user"
-    | "bundle_user"
-    | "premium_non_bundle"
-    | "non_us"
-    | "us_only";
+  type AudienceRow = "all_users";
 
   interface AnnouncementRow {
     id: number;
@@ -537,61 +410,6 @@ declare module "knex/types/tables" {
       WritableDateColumns<Partial<Omit<BreachRow, "id">>>
     >;
 
-    onerep_scans: Knex.CompositeTableType<
-      OnerepScanRow,
-      // On inserts, auto-generated columns cannot be set, and nullable columns are optional:
-      WritableDateColumns<
-        Omit<
-          OnerepScanRow,
-          OnerepScanAutoInsertedColumns | OnerepScanOptionalColumns
-        > &
-          Partial<Pick<OnerepScanRow, OnerepScanOptionalColumns>>
-      >,
-      // On updates, don't allow updating the ID and created date; all other fields are optional, except updated_at:
-      WritableDateColumns<
-        Partial<Omit<OnerepScanRow, "id" | "created_at">> &
-          Pick<OnerepScanRow, "updated_at">
-      >
-    >;
-
-    onerep_scan_results: Knex.CompositeTableType<
-      OnerepScanResultRow,
-      // On inserts, auto-generated columns cannot be set, and nullable columns are optional:
-      WritableDateColumns<
-        Omit<
-          OnerepScanResultRow,
-          | OnerepScanResultAutoInsertedColumns
-          | OnerepScanResultOptionalColumns
-          | OnerepScanResultSerializedColumns
-        > &
-          Partial<Pick<OnerepScanResultRow, OnerepScanResultOptionalColumns>> &
-          Record<OnerepScanResultSerializedColumns, string>
-      >,
-      // On updates, don't allow updating the ID and created date; all other fields are optional, except updated_at:
-      WritableDateColumns<
-        Partial<Omit<OnerepScanResultRow, "id" | "created_at">> &
-          Pick<OnerepScanResultRow, "updated_at"> &
-          Record<OnerepScanResultSerializedColumns, string>
-      >
-    >;
-
-    onerep_profiles: Knex.CompositeTableType<
-      OnerepProfileRow,
-      // On inserts, auto-generated columns cannot be set, and nullable columns are optional:
-      WritableDateColumns<
-        Omit<
-          OnerepProfileRow,
-          OnerepProfileAutoInsertedColumns | OnerepProfileOptionalColumns
-        > &
-          Partial<Pick<OnerepProfileRow, OnerepProfileOptionalColumns>>
-      >,
-      // On updates, don't allow updating the ID and created date; all other fields are optional, except updated_at:
-      WritableDateColumns<
-        Partial<Omit<OnerepProfileRow, "id" | "created_at">> &
-          Pick<OnerepProfileRow, "updated_at">
-      >
-    >;
-
     email_notifications: Knex.CompositeTableType<
       EmailNotificationRow,
       // On inserts, auto-generated columns cannot be set:
@@ -616,32 +434,6 @@ declare module "knex/types/tables" {
       WritableDateColumns<
         Partial<Omit<StatsRow, "id" | "created_at">> &
           Pick<StatsRow, "modified_at">
-      >
-    >;
-
-    onerep_data_brokers: Knex.CompositeTableType<
-      OnerepDataBrokerRow,
-      // On inserts, auto-generated columns cannot be set
-      WritableDateColumns<
-        Omit<OnerepDataBrokerRow, DataBrokerAutoInsertedColumns>
-      >,
-      // On updates, don't allow updating the ID and created date; all other fields are optional, except updated_at
-      WritableDateColumns<
-        Partial<Omit<OnerepDataBrokerRow, "id" | "created_at">> &
-          Pick<OnerepDataBrokerRow, "updated_at">
-      >
-    >;
-
-    onerep_scan_results_data_brokers: Knex.CompositeTableType<
-      OnerepScanResultDataBrokerRow,
-      // On inserts, auto-generated columns cannot be set
-      WritableDateColumns<
-        Omit<OnerepScanResultDataBrokerRow, OnerepScanResultAutoInsertedColumns>
-      >,
-      // On updates, don't allow updating the ID and created date; all other fields are optional, except updated_at
-      WritableDateColumns<
-        Partial<Omit<OnerepScanResultDataBrokerRow, "id" | "created_at">> &
-          Pick<OnerepScanResultDataBrokerRow, "updated_at">
       >
     >;
   }

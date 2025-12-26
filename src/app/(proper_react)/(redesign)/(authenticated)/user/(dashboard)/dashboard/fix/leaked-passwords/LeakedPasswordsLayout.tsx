@@ -24,7 +24,6 @@ import {
 } from "../../../../../../../../functions/server/getRelevantGuidedSteps";
 import { FixView } from "../FixView";
 import { getGuidedExperienceBreaches } from "../../../../../../../../functions/universal/guidedExperienceBreaches";
-import { hasPremium } from "../../../../../../../../functions/universal/user";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { LeakedPasswordsDataTypes } from "../../../../../../../../functions/universal/breach";
@@ -35,8 +34,8 @@ export interface LeakedPasswordsLayoutProps {
   type: LeakedPasswordsTypes;
   subscriberEmails: string[];
   data: StepDeterminationData;
-  isEligibleForPremium: boolean;
   enabledFeatureFlags: FeatureFlagName[];
+  blockdHibpBreachDomains: string[];
 }
 
 export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
@@ -70,11 +69,7 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
   // TODO: Write unit tests MNTOR-2560
   /* c8 ignore start */
   const emailsAffected = unresolvedPasswordBreach?.emailsAffected ?? [];
-  const nextStep = getNextGuidedStep(
-    props.data,
-    props.enabledFeatureFlags,
-    stepMap[props.type],
-  );
+  const nextStep = getNextGuidedStep(props.data, stepMap[props.type]);
 
   // If there are no unresolved breaches for the ”leaked passwords” step:
   // Go to the next step in the guided resolution or back to the dashboard.
@@ -103,6 +98,7 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
     l10n,
     emailsAffected,
     nextStep,
+    blockedHibpBreachDomains: props.blockdHibpBreachDomains,
   });
 
   // The non-null assertion here should be safe since we already did this check
@@ -210,7 +206,6 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
         type="leakedPasswords"
         title={title}
         illustration={illustration}
-        isPremiumUser={hasPremium(props.data.user)}
         enabledFeatureFlags={props.enabledFeatureFlags}
         cta={
           !isStepDone && (
@@ -255,7 +250,6 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
         estimatedTime={!isStepDone ? 4 : undefined}
         isStepDone={isStepDone}
         data={props.data}
-        isEligibleForPremium={props.isEligibleForPremium}
       >
         <ResolutionContent content={content} locale={getLocale(l10n)} />
       </ResolutionContainer>

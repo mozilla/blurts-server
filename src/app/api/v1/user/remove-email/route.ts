@@ -18,6 +18,7 @@ import {
   getAcceptLangHeaderInServerComponents,
   getL10n,
 } from "../../../../functions/l10n/serverComponents";
+import { config } from "../../../../../config";
 
 interface EmailDeleteRequest {
   emailId: number;
@@ -51,10 +52,7 @@ export async function POST(req: NextRequest) {
         existingEmail.subscriber_id,
         existingEmail.email,
       );
-      return NextResponse.redirect(
-        process.env.SERVER_URL + "/user/settings",
-        301,
-      );
+      return NextResponse.redirect(config.serverUrl + "/user/settings", 301);
     } catch (e) {
       logger.error(e);
       return NextResponse.json({ success: false }, { status: 500 });

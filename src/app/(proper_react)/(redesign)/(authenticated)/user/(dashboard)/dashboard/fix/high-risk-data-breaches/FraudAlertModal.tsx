@@ -58,6 +58,7 @@ export const FraudAlertModal = () => {
           isDismissable={true}
         >
           <Dialog
+            onDismiss={() => overlayTriggerState.close()}
             title={l10n.getString("ssn-modal-title")}
             illustration={<Image src={FraudAlertDialogIllustration} alt="" />}
           >

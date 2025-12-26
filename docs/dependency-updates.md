@@ -111,7 +111,7 @@ scan" buttons on the landing page.
 We're also using a test utility from this package (see the comments in
 `/jest.setup.ts`), so if the tests pass as well, that part is probably fine.
 
-### `@playwright/test` and `dotenv-flow`
+### `@playwright/test`
 
 Our Playwright tests run as two GitHub Actions Workflows: [PR e2e tests][] and
 [cron e2e tests][]: the former runs a small subset of the end-to-end tests for PRs, the latter runs a more extensive suite once a day from the `main` branch.
@@ -204,12 +204,6 @@ address during the free data broker scan, so if that works, the update was fine.
 This is used for the small confetti animation when completing the guided
 resolution flow. This can be seen in action in Storybook, in the story
 `Logged in / Guided resolution / 4. Security recommendations / 4d. Done`.
-
-### `react-toastify`
-
-Used to display toast notifications, e.g. the error message when you try to
-unsubscribe via the following page, which uses an invalid unsubscription
-token: http://localhost:6060/unsubscribe-email/monthly-report-free?token=wrong
 
 ### `husky` and `lint-staged`
 

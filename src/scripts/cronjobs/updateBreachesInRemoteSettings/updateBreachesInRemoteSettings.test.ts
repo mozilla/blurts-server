@@ -8,11 +8,18 @@ jest.mock("../../../utils/hibp", () => {
   };
 });
 
+jest.mock("../../../config", () => {
+  return {
+    config: {},
+  };
+});
+
 import * as HIBP from "../../../utils/hibp";
 import { logger } from "../../../app/functions/server/logging";
 import { RemoteSettingsClient } from "../../../utils/remoteSettingsClient";
 import { validateConfig, main } from "./updateBreachesInRemoteSettings";
 import HibpData from "../../../test/seeds/hibpBreachResponse.json";
+import * as configModule from "../../../config";
 import * as Sentry from "@sentry/node";
 
 // These can't be run because of jsdom environment and interaction
@@ -30,8 +37,6 @@ import * as Sentry from "@sentry/node";
 
 /* eslint-disable jest/no-disabled-tests */
 describe("updateBreachesInRemoteSettings job", () => {
-  const originalEnv = { ...process.env };
-
   const fetchBreachesSpy = jest.spyOn(
     RemoteSettingsClient.prototype,
     "fetchRemoteBreachNames",
@@ -45,23 +50,30 @@ describe("updateBreachesInRemoteSettings job", () => {
     "requestBreachesReview",
   );
 
-  beforeEach(() => {
+  beforeEach(async () => {
     jest.resetAllMocks();
-    process.env = { ...originalEnv };
 
-    process.env.FX_REMOTE_SETTINGS_WRITER_USER = "user";
-    process.env.FX_REMOTE_SETTINGS_WRITER_PASS = "pass";
-    process.env.FX_REMOTE_SETTINGS_WRITER_SERVER = "https://example.com/v1";
-    process.env.APP_ENV = "local";
-  });
-  afterAll(() => {
-    process.env = originalEnv;
+    // The `config` object is typed as readonly, because in normal code,
+    // we don't want to write to it. We're fine overriding them in tests though,
+    // hence the `as any`:
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (configModule.config as any).fxRemoteSettingsWriterUser = "user";
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (configModule.config as any).fxRemoteSettingsWriterPass = "pass";
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (configModule.config as any).fxRemoteSettingsWriterServer =
+      "https://example.com/v1";
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (configModule.config as any).appEnv = "local";
   });
   describe("validation", () => {
     it("throws if environment variables are missing", () => {
-      delete process.env.FX_REMOTE_SETTINGS_WRITER_USER;
-      delete process.env.FX_REMOTE_SETTINGS_WRITER_PASS;
-      delete process.env.FX_REMOTE_SETTINGS_WRITER_SERVER;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      delete (configModule as any).config.fxRemoteSettingsWriterUser;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      delete (configModule as any).config.fxRemoteSettingsWriterPass;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      delete (configModule as any).config.fxRemoteSettingsWriterServer;
 
       expect(() => validateConfig()).toThrow(
         /requires FX_REMOTE_SETTINGS_WRITER_SERVER/i,

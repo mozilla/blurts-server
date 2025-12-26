@@ -8,6 +8,7 @@ import {
   getL10n,
 } from "../../../../functions/l10n/serverComponents";
 import { BreachIndexView } from "./BreachIndexView";
+import { config } from "../../../../../config";
 
 export async function generateMetadata() {
   const l10n = getL10n(await getAcceptLangHeaderInServerComponents());
@@ -25,7 +26,7 @@ export async function generateMetadata() {
       siteName: l10n.getString("brand-fx-monitor"),
       type: "website",
       // The `.replace` removes a potential trailing slash:
-      url: `${process.env.SERVER_URL?.replace(/\/$/, "")}/breaches`,
+      url: `${config.serverUrl.replace(/\/$/, "")}/breaches`,
       images: ["/images/og-image.webp"],
     },
   };

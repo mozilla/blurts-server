@@ -4,21 +4,16 @@
 
 import { getToken } from "next-auth/jwt";
 import { NextRequest, NextResponse } from "next/server";
-
 import { logger } from "../../../../functions/server/logging";
-
 import {
   getSubscriberByFxaUid,
   setAllEmailsToPrimary,
-  isSubscriberPlus,
 } from "../../../../../db/tables/subscribers";
-import { updateEmailPreferenceForSubscriber } from "../../../../../db/tables/subscriber_email_preferences";
 
 export type EmailUpdateCommTypeOfOptions = "null" | "affected" | "primary";
 
 export interface EmailUpdateCommOptionRequest {
   instantBreachAlerts?: EmailUpdateCommTypeOfOptions;
-  monthlyMonitorReport?: boolean;
 }
 
 export async function POST(req: NextRequest) {
@@ -26,10 +21,8 @@ export async function POST(req: NextRequest) {
 
   if (typeof token?.subscriber?.fxa_uid === "string") {
     try {
-      const {
-        instantBreachAlerts,
-        monthlyMonitorReport,
-      }: EmailUpdateCommOptionRequest = await req.json();
+      const { instantBreachAlerts }: EmailUpdateCommOptionRequest =
+        await req.json();
       const subscriber = await getSubscriberByFxaUid(token.subscriber?.fxa_uid);
 
       if (!subscriber) {
@@ -53,17 +46,6 @@ export async function POST(req: NextRequest) {
 
       if (typeof instantBreachAlerts !== "undefined") {
         await setAllEmailsToPrimary(subscriber, allEmailsToPrimary);
-      }
-      if (typeof monthlyMonitorReport === "boolean") {
-        const isFree = !(await isSubscriberPlus(subscriber.id));
-        const preference = isFree
-          ? { monthly_monitor_report_free: monthlyMonitorReport }
-          : { monthly_monitor_report: monthlyMonitorReport };
-        await updateEmailPreferenceForSubscriber(
-          subscriber.id,
-          isFree,
-          preference,
-        );
       }
 
       return NextResponse.json({

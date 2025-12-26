@@ -3,6 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { ExtendedReactLocalization } from "../../app/functions/l10n";
+import { config } from "../../config";
 import {
   CONST_URL_PRIVACY_POLICY,
   CONST_URL_SUMO_MONITOR_SUPPORT,
@@ -14,7 +15,6 @@ export type Props = {
   l10n: ExtendedReactLocalization;
   utm_campaign: string;
   isOneTimeEmail?: boolean;
-  unsubscribeLink?: string;
 };
 
 export const EmailFooter = (props: Props) => {
@@ -26,7 +26,7 @@ export const EmailFooter = (props: Props) => {
         <mj-column>
           <mj-image
             alt=""
-            src={`${process.env.SERVER_URL}/images/email/icons/question-mark-circle-with-bg.png`}
+            src={`${config.serverUrl}/images/email/icons/question-mark-circle-with-bg.png`}
             width="36px"
             height="36px"
             align="center"
@@ -85,7 +85,7 @@ export const EmailFooter = (props: Props) => {
           </mj-text>
           <mj-image
             alt={l10n.getString("email-footer-logo-mozilla-alt")}
-            src={`${process.env.SERVER_URL}/images/email/mozilla-logo-bw.png`}
+            src={`${config.serverUrl}/images/email/mozilla-logo-bw.png`}
             href={`https://www.mozilla.org/?utm_source=monitor-product&utm_medium=email&utm_campaign=${props.utm_campaign}&utm_content=header-logo`}
             width="150px"
             align="center"
@@ -126,7 +126,7 @@ export const RedesignedEmailFooter = (props: Props) => {
         <mj-column>
           <mj-image
             alt=""
-            src={`${process.env.SERVER_URL}/images/email/icons/question-mark-circle-with-bg.png`}
+            src={`${config.serverUrl}/images/email/icons/question-mark-circle-with-bg.png`}
             width="36px"
             height="36px"
             align="center"
@@ -152,7 +152,7 @@ export const RedesignedEmailFooter = (props: Props) => {
         <mj-column>
           <mj-image
             alt={l10n.getString("email-footer-logo-mozilla-alt")}
-            src={`${process.env.SERVER_URL}/images/email/mozilla-logo-bw.png`}
+            src={`${config.serverUrl}/images/email/mozilla-logo-bw.png`}
             href={`https://www.mozilla.org/?utm_source=monitor-product&utm_medium=product-email&utm_campaign=${props.utm_campaign}&utm_content=header-logo`}
             width="150px"
             align="center"
@@ -175,25 +175,6 @@ export const RedesignedEmailFooter = (props: Props) => {
           >
             {l10n.getString("email-footer-trigger-transactional")}
           </mj-text>
-          {props.unsubscribeLink && (
-            <mj-text
-              font-size="14px"
-              line-height="21px"
-              font-weight="400"
-              align="center"
-            >
-              {l10n.getFragment("email-unsubscribe-link", {
-                elems: {
-                  link_to_unsub: (
-                    <a
-                      href={props.unsubscribeLink}
-                      style={{ color: "#0060DF" }}
-                    />
-                  ),
-                },
-              })}
-            </mj-text>
-          )}
           <mj-text
             font-size="14px"
             line-height="21px"
@@ -255,17 +236,7 @@ Mozilla Corporation
 149 New Montgomery St, 4th Floor, San Francisco, CA 94105
 
 ${l10n.getString("email-footer-trigger-transactional")}
-${
-  // We don't have emails yet that send both a plaintext version and an unsubscribe link:
-  /* c8 ignore next 7 */
-  typeof props.unsubscribeLink !== "undefined"
-    ? "\n" +
-      l10n.getString("email-unsubscribe-link-plain", {
-        unsub_link: props.unsubscribeLink,
-      }) +
-      "\n"
-    : ""
-}
+
 ${l10n.getString("email-footer-source-hibp-plain", { hibp_link: "https://haveibeenpwned.com" })}
 
 ${l10n.getString("terms-of-service")}:

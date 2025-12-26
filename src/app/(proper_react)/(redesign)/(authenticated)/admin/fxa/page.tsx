@@ -6,6 +6,7 @@ import { getServerSession } from "../../../../../functions/server/getServerSessi
 import { notFound } from "next/navigation";
 import { isAdmin } from "../../../../../api/utils/auth";
 import { AttachedClients } from "./AttachedClients";
+import { config } from "../../../../../../config";
 
 export default async function DevPage() {
   const session = await getServerSession();
@@ -13,7 +14,7 @@ export default async function DevPage() {
   if (
     !session?.user?.email ||
     !isAdmin(session.user.email) ||
-    process.env.APP_ENV === "productions"
+    config.appEnv === "production"
   ) {
     return notFound();
   }

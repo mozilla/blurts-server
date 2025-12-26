@@ -5,14 +5,7 @@
 import crypto from "crypto";
 import { URL } from "url";
 import { logger } from "../app/functions/server/logging";
-
-import { getEnvVarsOrThrow } from "../envVars";
-const envVars = getEnvVarsOrThrow([
-  "OAUTH_CLIENT_ID",
-  "OAUTH_CLIENT_SECRET",
-  "OAUTH_TOKEN_URI",
-  "OAUTH_ACCOUNT_URI",
-]);
+import { config } from "../config";
 
 /**
  * @see https://mozilla.github.io/ecosystem-platform/api#tag/Oauth/operation/postOauthDestroy
@@ -37,11 +30,11 @@ async function destroyOAuthToken(
 ) {
   const tokenBody: FxaPostOauthDestroyRequestBody = {
     ...tokenData,
-    client_id: envVars.OAUTH_CLIENT_ID,
-    client_secret: envVars.OAUTH_CLIENT_SECRET,
+    client_id: config.oauthClientId,
+    client_secret: config.oauthClientSecret,
   };
 
-  const fxaTokenOrigin = new URL(envVars.OAUTH_TOKEN_URI).origin;
+  const fxaTokenOrigin = new URL(config.oauthTokenUri).origin;
   const tokenUrl = `${fxaTokenOrigin}/v1/oauth/destroy`;
   const tokenOptions = {
     method: "POST",
@@ -143,10 +136,10 @@ type FxaPostOauthTokenResponseSuccessRefreshToken = {
 async function refreshOAuthTokens(
   refreshToken: string,
 ): Promise<FxaPostOauthTokenResponseSuccessRefreshToken> {
-  const subscriptionIdUrl = `${envVars.OAUTH_ACCOUNT_URI}/oauth/token`;
+  const subscriptionIdUrl = `${config.oauthAccountUri}/oauth/token`;
   const body: FxaPostOauthTokenRequestBody = {
-    client_id: envVars.OAUTH_CLIENT_ID,
-    client_secret: envVars.OAUTH_CLIENT_SECRET,
+    client_id: config.oauthClientId,
+    client_secret: config.oauthClientSecret,
     grant_type: "refresh_token",
     refresh_token: refreshToken,
     ttl: 604800, // request 7 days ttl
@@ -172,135 +165,6 @@ async function refreshOAuthTokens(
       });
     }
     throw e;
-  }
-}
-/* c8 ignore stop */
-
-/**
- * @see https://mozilla.github.io/ecosystem-platform/api#tag/Subscriptions
- */
-type FxaGetOauthSubscribptionsActiveResponseSuccess = Array<{
-  uid: string;
-  subscriptionId: string;
-  productId: string;
-  createdAt: number;
-  cancelledAt?: number;
-}>;
-// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
-/* c8 ignore start */
-async function getSubscriptions(
-  bearerToken: string,
-): Promise<FxaGetOauthSubscribptionsActiveResponseSuccess | null> {
-  const subscriptionIdUrl = `${envVars.OAUTH_ACCOUNT_URI}/oauth/subscriptions/active`;
-  try {
-    const response = await fetch(subscriptionIdUrl, {
-      headers: {
-        Accept: "application/json",
-        Authorization: `Bearer ${bearerToken}`,
-      },
-    });
-    const responseJson = await response.json();
-    if (!response.ok) throw new Error(responseJson);
-    logger.info("get_fxa_subscriptions_success");
-    return responseJson as FxaGetOauthSubscribptionsActiveResponseSuccess;
-  } catch (e) {
-    if (e instanceof Error) {
-      logger.error("get_fxa_subscriptions", {
-        stack: e.stack,
-        message: e.message,
-      });
-    }
-    return null;
-  }
-}
-
-/**
- * @see https://mozilla.github.io/ecosystem-platform/api#tag/Subscriptions
- * This type is incomplete, only describing the fields we actually use so far.
- */
-type FxaGetOauthMozillaSubscribptionsCustomerBillingAndSubscriptionsResponseSuccess =
-  {
-    subscriptions: Array<{
-      plan_id: string;
-      product_id: string;
-      current_period_end: number;
-      cancel_at_period_end: boolean;
-      status: "active" | "canceled" | "trialing" | "unpaid";
-    }>;
-  };
-
-/**
- * Calls https://mozilla.github.io/ecosystem-platform/api#tag/Subscriptions/operation/getOauthMozillasubscriptionsCustomerBillingandsubscriptions
- *
- * Note that we currently only look at the subscriptions and their plan IDs, so
- * the return type definition isn't exhaustive yet. If you need more data, look
- * at the above docs to expand the return type definition.
- */
-
-async function getBillingAndSubscriptions(
-  bearerToken: string,
-): Promise<FxaGetOauthMozillaSubscribptionsCustomerBillingAndSubscriptionsResponseSuccess | null> {
-  const subscriptionIdUrl = `${envVars.OAUTH_ACCOUNT_URI}/oauth/mozilla-subscriptions/customer/billing-and-subscriptions`;
-
-  try {
-    const response = await fetch(subscriptionIdUrl, {
-      headers: {
-        Accept: "application/json",
-        Authorization: `Bearer ${bearerToken}`,
-      },
-    });
-    const responseJson = await response.json();
-    if (!response.ok) throw new Error(responseJson);
-    logger.info("get_fxa_billing_subscriptions_success");
-    return responseJson as FxaGetOauthMozillaSubscribptionsCustomerBillingAndSubscriptionsResponseSuccess;
-  } catch (e) {
-    if (e instanceof Error) {
-      logger.error("get_fxa_billing_subscriptions", {
-        message: JSON.stringify(e.message),
-      });
-    }
-    return null;
-  }
-}
-/* c8 ignore stop */
-
-// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
-/* c8 ignore start */
-async function deleteSubscription(bearerToken: string): Promise<boolean> {
-  try {
-    const subs = (await getSubscriptions(bearerToken)) ?? [];
-    let subscriptionId;
-    for (const sub of subs) {
-      if (
-        sub &&
-        sub.productId &&
-        sub.productId === process.env.PREMIUM_PRODUCT_ID
-      ) {
-        subscriptionId = sub.subscriptionId;
-      }
-    }
-    if (subscriptionId) {
-      const deleteUrl = `${envVars.OAUTH_ACCOUNT_URI}/oauth/subscriptions/active/${subscriptionId}`;
-      const response = await fetch(deleteUrl, {
-        method: "DELETE",
-        headers: {
-          Accept: "application/json",
-          Authorization: `Bearer ${bearerToken}`,
-        },
-      });
-      const responseJson = await response.json();
-      if (!response.ok) throw new Error(responseJson);
-      logger.info("delete_fxa_subscription_success");
-    }
-    return true;
-  } catch (e) {
-    if (e instanceof Error) {
-      logger.error("delete_fxa_subscription", {
-        stack: e.stack,
-        message: e.message,
-      });
-    }
-    return false;
   }
 }
 /* c8 ignore stop */
@@ -336,7 +200,7 @@ export type FxaGetAccountAttachedClients = {
 async function getAttachedClients(
   bearerToken: string,
 ): Promise<FxaGetAccountAttachedClients[]> {
-  const endpointUrl = `${envVars.OAUTH_ACCOUNT_URI}/account/attached_clients`;
+  const endpointUrl = `${config.oauthAccountUri}/account/attached_clients`;
   try {
     const response = await fetch(endpointUrl, {
       headers: {
@@ -371,8 +235,5 @@ export {
   destroyOAuthToken,
   revokeOAuthTokens,
   getSha1,
-  getSubscriptions,
-  getBillingAndSubscriptions,
-  deleteSubscription,
   getAttachedClients,
 };

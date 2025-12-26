@@ -11,17 +11,17 @@
  */
 
 import * as Sentry from "@sentry/node";
+import { config } from "../../../config";
 
 Sentry.init({
-  environment: process.env.APP_ENV,
-  dsn: process.env.SENTRY_DSN,
+  environment: config.appEnv,
+  dsn: config.sentryDsn,
   tracesSampleRate: 1.0,
 });
 
 Sentry.setTag("job", "updateBreachesInRemoteSettings");
 
-import "dotenv-flow/config";
-import { sentryLogger } from "../../../app/functions/server/logging";
+import { logger } from "../../../app/functions/server/logging";
 import { main } from "./updateBreachesInRemoteSettings";
 
-await main(sentryLogger);
+await main(logger);

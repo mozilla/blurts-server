@@ -66,9 +66,9 @@ high-risk-breach-skip = Пока пропустить
 # An example of this string is Your estimated time: 15+ minutes.
 high-risk-breach-estimated-time =
     { $estimated_time ->
-        [one] Ваше расчетное время: { $estimated_time }+ минута
-        [few] Ваше расчетное время: { $estimated_time }+ минуты
-       *[many] Ваше расчетное время: { $estimated_time }+ минут
+        [one] Ваше расчётное время: { $estimated_time }+ минута
+        [few] Ваше расчётное время: { $estimated_time }+ минуты
+       *[many] Ваше расчётное время: { $estimated_time }+ минут
     }
 
 # Credit Card Breaches
@@ -81,9 +81,9 @@ high-risk-breach-credit-card-step-three = Проверьте свои счета
 
 # Bank Account Breaches
 
-high-risk-breach-bank-account-title = Ваш банковский счет был раскрыт
+high-risk-breach-bank-account-title = Ваш банковский счёт был раскрыт
 high-risk-breach-bank-account-description = Скорейшее принятие мер может дать вам больше законной защиты, которая поможет вам возместить любые потери.
-high-risk-breach-bank-account-step-one = Немедленно сообщите в свой банк, что номер вашего счета был скомпрометирован.
+high-risk-breach-bank-account-step-one = Немедленно сообщите в свой банк, что номер вашего счёта был скомпрометирован.
 high-risk-breach-bank-account-step-two = Смените свой номер счёта.
 high-risk-breach-bank-account-step-three = Проверьте свои счета на наличие несанкционированных списаний.
 

@@ -4,6 +4,7 @@
 
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { config } from "../../../../config";
 
 export function GET(req: NextRequest) {
   try {
@@ -14,10 +15,7 @@ export function GET(req: NextRequest) {
     const { searchParams } = new URL(req.url);
     const _email = searchParams.get("email");
 
-    return NextResponse.redirect(
-      `${process.env.SERVER_URL ?? ""}/user/breaches`,
-      302,
-    );
+    return NextResponse.redirect(`${config.serverUrl}/user/breaches`, 302);
   } catch {
     return NextResponse.json({ success: false }, { status: 500 });
   }

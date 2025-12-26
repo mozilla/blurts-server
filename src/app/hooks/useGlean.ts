@@ -7,17 +7,13 @@
 import { useCallback } from "react";
 import EventMetricType from "@mozilla/glean/private/metrics/event";
 import type { GleanMetricMap } from "../../telemetry/generated/_map";
-import { useSession } from "next-auth/react";
-import { hasPremium } from "../functions/universal/user";
 import { useExperiments } from "../../contextProviders/experiments";
 
 export const useGlean = () => {
-  const session = useSession();
   const experiments = useExperiments();
   // Telemetry recording is mocked in our unit tests, therefore we
   // do not have test coverage for this method.
   /* c8 ignore start */
-  const isPremiumUser = hasPremium(session.data?.user);
   const record = useCallback(
     async <
       EventModule extends keyof GleanMetricMap,
@@ -34,13 +30,6 @@ export const useGlean = () => {
       // `build-glean-types`, Glean takes a non-specific "ExtraArgs" type as
       // parameter to `record`.
 
-      // Record the `plan_tier` key on all events.
-      // `plan_tier` is set on every metric, but it's too much work for TypeScript
-      // to infer that — hence the type assertion.
-      (data as GleanMetricMap["button"]["click"]).plan_tier = isPremiumUser
-        ? "Plus"
-        : "Free";
-
       // Record the `nimbus_*` keys on all events.
       // `nimbus_*` is set on every metric, but it's too much work for TypeScript
       // to infer that — hence the type assertion.
@@ -56,7 +45,7 @@ export const useGlean = () => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       mod[event].record(data as any);
     },
-    [isPremiumUser, experiments],
+    [experiments],
   );
   /* c8 ignore end */
 
