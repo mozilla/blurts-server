@@ -450,16 +450,21 @@ async function subscribeHash(sha1: string) {
 /* c8 ignore stop */
 
 /**
- * Null check for some required fields
+ * Null check for some required fields (for
+ * emailing breach alerts).
  *
  * @param breach breach object from HIBP
  * @returns Boolean is it a valid breach
+ * for email notification
  */
-function isValidBreach(breach: HibpGetBreachesResponse[number]) {
+function isEmailNotifiableBreach(breach: HibpGetBreachesResponse[number]) {
   return (
     breach.Name != null &&
     breach.BreachDate != null &&
     breach.Title != null &&
+    // Note: Domain may be empty/null from source, e.g.
+    // stealer logs containing breached data from multiple
+    // sources
     breach.Domain != null &&
     breach.DataClasses != null
   );
@@ -470,10 +475,10 @@ function isValidBreach(breach: HibpGetBreachesResponse[number]) {
  *
  * @param breaches
  */
-function validateBreaches(breaches: HibpGetBreachesResponse) {
+function validateBreachesEmailNotifiable(breaches: HibpGetBreachesResponse) {
   breaches.forEach((breach) => {
     // sanity check: corrupt data structure
-    if (!isValidBreach(breach)) {
+    if (!isEmailNotifiableBreach(breach)) {
       throw new Error(
         "Breach data structure is not valid: " + JSON.stringify(breach),
       );
@@ -489,6 +494,6 @@ export {
   getFilteredBreaches,
   subscribeHash,
   knex as knexHibp,
-  validateBreaches,
+  validateBreachesEmailNotifiable,
   dbToHibp,
 };

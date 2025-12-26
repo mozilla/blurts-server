@@ -9,7 +9,7 @@ import {
 } from "../db/redis/client";
 import { v4 as uuidv4 } from "uuid";
 import { HibpGetBreachesResponse } from "../utils/hibp";
-import { validateBreaches } from "../utils/hibp";
+import { validateBreachesEmailNotifiable } from "../utils/hibp";
 import { BreachRow } from "knex/types/tables";
 import { Logger } from "winston";
 
@@ -130,7 +130,7 @@ export function createBreachSyncService({
       logger.info("Syncing breaches with HIBP");
       // Fetch breaches, save to DB, and update cache
       const breaches = await fetchBreaches();
-      validateBreaches(breaches);
+      validateBreachesEmailNotifiable(breaches);
       await repo.upsertBreaches(breaches);
       const savedBreaches = await repo.getBreaches();
       await redis.set(
