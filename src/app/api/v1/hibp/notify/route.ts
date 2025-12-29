@@ -20,7 +20,7 @@ import { config } from "../../../../../config";
 import {
   hibpNotifyRequestsTotal,
   incHibpNotifyFailure,
-} from "../../../../../metrics";
+} from "../../../../../instrumentation.node";
 
 const projectId = process.env.GCP_PUBSUB_PROJECT_ID;
 const topicName = process.env.GCP_PUBSUB_TOPIC_NAME;

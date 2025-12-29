@@ -4,7 +4,7 @@
 
 import * as Sentry from "@sentry/nextjs";
 
-export function register() {
+export async function register() {
   if (process.env.NEXT_RUNTIME === "nodejs") {
     Sentry.init({
       environment: process.env.APP_ENV,
@@ -21,6 +21,7 @@ export function register() {
       // Setting this option to true will print useful information to the console while you're setting up Sentry.
       debug: false,
     });
+    await import("./instrumentation.node");
   }
 }
 

@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { NextResponse } from "next/server";
-import { registry } from "../../../../metrics";
+import { registry } from "../../../../instrumentation.node";
 
 export async function GET() {
   const metrics = await registry.metrics();
