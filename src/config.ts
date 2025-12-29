@@ -6,6 +6,9 @@
 import "./app/functions/server/notInClientComponent";
 import "./initializeEnvVars";
 
+const isLocalOrTest =
+  process.env.NODE_ENV === "test" || process.env.APP_ENV === "local";
+
 /**
  * Environment-specific values
  *
@@ -76,6 +79,17 @@ export const config = {
   fxRemoteSettingsWriterUser: process.env.FX_REMOTE_SETTINGS_WRITER_USER,
   fxRemoteSettingsWriterPass: process.env.FX_REMOTE_SETTINGS_WRITER_PASS,
   fxRemoteSettingsWriterServer: process.env.FX_REMOTE_SETTINGS_WRITER_SERVER,
+
+  gcp: {
+    projectId: getEnvString("GCP_PROJECT_ID", {
+      fallbackValue: isLocalOrTest ? "your-project-name" : undefined,
+    }),
+    pubsub: {
+      hibpTopic: getEnvString("GCP_PROJECT_ID", {
+        fallbackValue: isLocalOrTest ? "hibp-breaches" : undefined,
+      }),
+    },
+  },
 } as const;
 
 /**
