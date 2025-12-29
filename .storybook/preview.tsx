@@ -78,10 +78,6 @@ const preview: Preview = {
             linkTo("Pages/Public/Breach listing")();
           }
 
-          if (path === "/terms/expiration-offer") {
-            linkTo("Pages/Public/Terms/Plus expiration offer")();
-          }
-
           if (path === "/user/dashboard") {
             linkTo(
               "Pages/Logged in/Dashboard",

@@ -22,7 +22,6 @@ function mockBreachNotificationSubscriber(
     signup_language: "en-US",
     fxa_profile_json: null,
     fxa_uid: null,
-    onerep_profile_id: faker.number.int({ min: 0 }),
     ...overrides,
   };
 }
@@ -73,7 +72,6 @@ function subscriberSeed(
     monthly_monitor_report_at: null,
     monthly_monitor_report: faker.datatype.boolean(),
     breach_resolution: null,
-    onerep_profile_id: null,
     first_broker_removal_email_sent: faker.datatype.boolean(),
     churn_prevention_email_sent_at: null,
     ...(overrides ?? {}),

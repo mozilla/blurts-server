@@ -25,7 +25,7 @@ breach-checklist-pw-header-text = Обновите свои пароли и вк
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
-breach-checklist-pw-body-text = В большинстве случаев мы рекомендуем вам сменить пароль на веб-сайте компании. Но <b>веб-сайт может быть недоступен или содержать вредоносный контент</b>, поэтому будьте осторожны, если вы <breached-company-link>посетите его</breached-company-link>. Для дополнительной защиты убедитесь, что вы используете уникальные пароли для всех учётных записей, чтобы любые утекшие пароли нельзя было использовать для доступа к другим учётным записям. { $passwordManagerLink } поможет вам надежно отслеживать все ваши пароли.
+breach-checklist-pw-body-text = В большинстве случаев мы рекомендуем вам сменить пароль на веб-сайте компании. Но <b>веб-сайт может быть недоступен или содержать вредоносный контент</b>, поэтому будьте осторожны, если вы <breached-company-link>посетите его</breached-company-link>. Для дополнительной защиты убедитесь, что вы используете уникальные пароли для всех учётных записей, чтобы любые утёкшие пароли нельзя было использовать для доступа к другим учётным записям. { $passwordManagerLink } поможет вам надёжно отслеживать все ваши пароли.
 
 ## Prompts the user for changes when there is a breach detected of email
 
@@ -95,7 +95,7 @@ breach-checklist-sq-body-text = В большинстве случаев мы р
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
-breach-checklist-hp-header = Создавайте уникальные надежные пароли для любой учетной записи, в которой вы повторно использовали пароли.
+breach-checklist-hp-header = Создавайте уникальные надёжные пароли для любого аккаунта, в котором вы повторно использовали пароли.
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
 breach-checklist-hp-body-2 = Менеджер паролей, например, { $passwordManagerLink } (бесплатный и встроенный в браузер { -brand-firefox }), может помочь вам отслеживать все ваши пароли и безопасно получать к ним доступ со всех ваших устройств.

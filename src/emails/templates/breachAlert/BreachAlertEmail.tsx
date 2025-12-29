@@ -17,10 +17,7 @@ export type BreachAlertEmailProps = {
   breach: HibpLikeDbBreach;
   breachedEmail: string;
   utmCampaignId: string;
-  subscriber: Pick<
-    SubscriberRow,
-    "fxa_profile_json" | "onerep_profile_id" | "fxa_profile_json"
-  >;
+  subscriber: Pick<SubscriberRow, "fxa_profile_json" | "fxa_profile_json">;
 };
 
 // These components are fully covered by the BreachAlertEmail test,

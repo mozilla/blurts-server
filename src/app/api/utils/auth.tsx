@@ -14,7 +14,6 @@ import { logger } from "../../functions/server/logging";
 import {
   getSubscriberByFxaUid,
   updateFxAData,
-  incrementSignInCountForEligibleFreeUser,
   getFxATokens,
   updateFxATokens,
 } from "../../../db/tables/subscribers";
@@ -297,7 +296,6 @@ export const authOptions: AuthOptions = {
   events: {
     async signIn(message) {
       logger.debug("fxa-confirmed-profile-data", message.user.id);
-      await incrementSignInCountForEligibleFreeUser(message.user.id);
     },
     signOut(message) {
       logger.debug("logout", message.token.subscriber?.id ?? undefined);

@@ -89,7 +89,6 @@ export const mockedSubscriber: SubscriberRow = {
   breach_stats: null,
   breach_resolution: null,
   signup_language: "fr-CH, fr;q=0.9, en;q=0.8, de;q=0.7,*;q=0.5",
-  onerep_profile_id: null,
   monthly_monitor_report_at: null,
   monthly_monitor_report: false,
   sign_in_count: null,

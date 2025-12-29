@@ -57,7 +57,8 @@ export async function up(knex) {
       return (
         scan.onerep_scan_results?.data.map(
           (
-            /** @type {import("knex/types/tables").OnerepScanResultRow} */ scanResult,
+            // @ts-ignore OK to use any since type no longer exists
+            scanResult,
           ) => {
             const rowToInsert = {
               onerep_scan_result_id: scanResult.id,

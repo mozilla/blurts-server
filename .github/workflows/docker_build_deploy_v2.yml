@@ -81,14 +81,10 @@ jobs:
           build-args: |
             SENTRY_RELEASE=${{ github.sha }}
             NEXT_PUBLIC_SENTRY_DSN=${{ secrets.SENTRY_DSN }}
-            EMAIL_FROM=${{ secrets.EMAIL_FROM }}
             SENTRY_DSN=${{ secrets.SENTRY_DSN }}
-            S3_BUCKET=${{ secrets.S3_BUCKET }}
           # Pass secrets securely to the build
           secrets: |
             SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }}
-            NEXTAUTH_SECRET=${{ secrets.NEXTAUTH_SECRET }}
-            HIBP_KANON_API_TOKEN=${{ secrets.HIBP_KANON_API_TOKEN }}
           # Enable build cache for faster builds (optional but recommended)
           cache-from: type=gha
           cache-to: type=gha,mode=max

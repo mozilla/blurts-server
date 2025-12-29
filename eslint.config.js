@@ -87,7 +87,7 @@ const config = [
       ],
       // For some reason `eqeqeq` is not in the recommended set, but we try to
       // avoid implicit type casting, cause that’s where bugs lurk:
-      eqeqeq: "error",
+      eqeqeq: ["error", "always", { null: "ignore" }],
       "jsdoc/tag-lines": ["error", "any", { startLines: 1 }],
       "jsdoc/require-jsdoc": "off",
       "jsdoc/require-param-type": "off",
