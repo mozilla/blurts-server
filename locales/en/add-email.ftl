@@ -23,3 +23,5 @@ add-email-verify-the-link = Verify the link sent to { $email } to add it to { -b
 # Variables:
 #   $email (string) - An email address submitted by the user for monitoring, e.g. `example@example.com`
 add-email-verify-the-link-2 = Verify the link sent to <b>{ $email }</b> to add it to { -brand-mozilla-monitor }.
+
+input-error-alt = Error

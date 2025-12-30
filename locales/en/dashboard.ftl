@@ -141,6 +141,18 @@ dashboard-top-banner-non-us-your-data-is-protected-description =
 
 dashboard-top-banner-monitor-more-cta = Monitor more emails
 
+# Exposure reduction chart
+
+# Variables:
+#   $nr (number) - % of exposures reduced for the user
+exposure-reduction-chart-heading = <nr>{ $nr }</nr><percent>%</percent>
+# The number inside <nr> will be displayed in a large font,
+# the label inside <label_line_1> will be shown in a smaller font. First line of the label
+# the label inside <label_line_2> will be shown in smaller font. Second line of the label
+# Variables:
+#   $nr (number) - % of exposures reduced for the user
+exposure-reduction-chart-explanation = <label_line_1>exposures may</label_line_1><label_line_2>be reduced</label_line_2>
+
 # About Exposure Indicators Modal
 
 modal-exposure-status-description-all = We search for exposures in all known data breaches.
