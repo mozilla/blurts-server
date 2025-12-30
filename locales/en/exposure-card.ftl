@@ -4,13 +4,11 @@
 
 chevron-alt = Exposure details
 
-exposure-card-exposure-type = Exposure type
 exposure-card-date-found = Date of the exposure
 
 # Status Pill
 
 status-pill-action-needed = Action needed
-status-pill-progress = In progress
 status-pill-fixed = Fixed
 
 # Exposure Card
@@ -30,12 +28,10 @@ exposure-card-description-data-breach-action-needed = Your information was expos
 exposure-card-description-data-breach-fixed = You’ve taken the steps needed to fix <data_breach_link>this breach</data_breach_link>. We’ll continually monitor for data breaches and alert you of any new exposures.
 exposure-card-your-exposed-info = Your exposed info:
 exposure-card-found-the-following-data = { -brand-monitor } found the following exposed data:
-exposure-card-exposure-type-data-broker = Info for sale
-exposure-card-exposure-type-data-breach = Data breach
 exposure-card-resolve-exposures-cta = Resolve exposures
 exposure-card-label-company-logo = Company logo
 exposure-card-label-company = Company
-# Status of the exposure card, could be In Progress, Fixed or Action Needed
+# Status of the exposure card, could be Fixed or Action Needed
 exposure-card-label-status = Status
 # Variables:
 # $category_label is the data breach exposure type that was leaked. Eg. Email, IP Address.

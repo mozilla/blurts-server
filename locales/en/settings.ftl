@@ -17,35 +17,7 @@ settings-alert-preferences-option-two = Send all breach alerts to the primary em
 
 ## Monitored email addresses
 
-# Variables:
-#   $email (string) - Email address
-settings-email-list-title = Monitored email addresses
-# Variables:
-#   $limit (number) - Number of email addresses included in the plan
-settings-email-limit-info =
-  {
-    $limit ->
-        [one] Your account includes monitoring of up to { $limit } email.
-       *[other] Your account includes monitoring of up to { $limit } emails.
-  }
 settings-email-verification-callout = Email verification required
-settings-resend-email-verification-link = Resend verification email
-settings-add-email-button = Add email address
-settings-remove-email-button-label = Remove
-# Variables:
-#   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
-settings-remove-email-button-tooltip = Stop monitoring { $emailAddress }
-
-# This string is shown beneath each of the user’s email addresses to indicate
-# how many known breaches that email address was found in.
-# Variables:
-#   $breachCount (number) - Number of breaches
-settings-email-number-of-breaches-info =
-  {
-    $breachCount ->
-        [one] Appears in { $breachCount } known breach.
-       *[other] Appears in { $breachCount } known breaches.
-  }
 
 settings-email-addresses-header = Email addresses
 settings-email-addresses-description = { -brand-monitor } will alert you if these emails show up in known breaches.
@@ -54,7 +26,8 @@ settings-email-addresses-add-email-button = Add email address
 #   $limit (number) - Number of emails that can be added for monitoring.
 settings-email-addresses-add-email-indicator-limit = Add up to { $limit }
 settings-email-addresses-add-email-resend-button-label = Resend verification link
-settings-email-addresses-add-email-remove-button-label = Remove
+
+input-error-alt = Error
 
 ## Email address dialog
 
@@ -79,11 +52,6 @@ settings-delete-monitor-free-account-dialog-cta-label = Delete account
 settings-delete-monitor-free-account-dialog-cancel-button-label = Never mind, take me back
 settings-delete-monitor-account-confirmation-toast-label-2 = Your { -brand-monitor } account is now deleted.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Dismiss
-
-## Monthly Monitor Report
-
-settings-alert-preferences-allow-monthly-monitor-report-title = Monthly { -brand-monitor } report
-settings-alert-preferences-allow-monthly-monitor-report-subtitle = A monthly update of new exposures, what’s been fixed, and what needs your attention.
 
 ## Settings page redesign
 
