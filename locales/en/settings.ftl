@@ -47,6 +47,27 @@ settings-email-number-of-breaches-info =
        *[other] Appears in { $breachCount } known breaches.
   }
 
+settings-email-addresses-header = Email addresses
+settings-email-addresses-description = { -brand-monitor } will alert you if these emails show up in known breaches.
+settings-email-addresses-add-email-button = Add email address
+# Variables:
+#   $limit (number) - Number of emails that can be added for monitoring.
+settings-email-addresses-add-email-indicator-limit = Add up to { $limit }
+settings-email-addresses-add-email-resend-button-label = Resend verification link
+settings-email-addresses-add-email-remove-button-label = Remove
+
+## Email address dialog
+
+settings-email-addresses-initial-dialog-header = Add an email address
+settings-email-addresses-initial-dialog-description = We’ll send a verification link for you to confirm you’d like to include it in a future { -brand-monitor } scan.
+settings-email-addresses-initial-dialog-add-email-input-label = Enter email address
+settings-email-addresses-initial-dialog-add-email-button-label = Send verification link
+# Variables:
+#   $email (string) - Email address the confirmation has been sent to.
+settings-email-addresses-confirmation-dialog-header = Verification link sent to <b>{ $email }</b>
+settings-email-addresses-confirmation-dialog-description = Open the link to add it to this account for future { -brand-monitor } scans.
+settings-email-addresses-confirmation-dialog-close-button = Close
+
 ## Delete Monitor account
 
 settings-delete-monitor-free-account-title = Delete { -brand-monitor } account
@@ -66,6 +87,8 @@ settings-alert-preferences-allow-monthly-monitor-report-subtitle = A monthly upd
 
 ## Settings page redesign
 
+# Label for a navigation bar link to settings for updating the users scan profile info – “update” is used as a verb.
+settings-tab-label-update-scan-info = Update scan info
 settings-tab-label-edit-info = Edit your info
 settings-tab-label-notifications = Set notifications
 settings-tab-label-manage-account = Manage account

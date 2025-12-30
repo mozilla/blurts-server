@@ -54,9 +54,7 @@ export const InputField = (
       )}
       {isInvalid && (
         <div {...errorMessageProps} className={styles.inputMessage}>
-          <ErrorIcon
-            alt={l10n.getString("onboarding-enter-details-input-error-alt")}
-          />
+          <ErrorIcon alt={l10n.getString("input-error-alt")} />
           {
             // We always pass in a string at the time of writing, so we can't
             // hit the "else" path with tests:
