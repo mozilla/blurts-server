@@ -101,7 +101,7 @@ async function resetUnverifiedEmailAddress(
       ? emailAddressId
       : parseInt(emailAddressId, 10))
   ) {
-    throw new ForbiddenError(l10n.getString("error-email-validation-pending"));
+    throw new ForbiddenError("error-email-validation-pending");
   }
 
   const res = await knex("email_addresses")
