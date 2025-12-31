@@ -56,7 +56,6 @@ export async function getDeletedFeatureFlags() {
 export const featureFlagNames = [
   "SidebarNavigationRedesign",
   "DisableLandingToDashboardRedirect",
-  "FreeOnly",
 ] as const;
 
 export const adminOnlyFlags: FeatureFlagName[] = [
