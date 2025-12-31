@@ -54,29 +54,12 @@ export async function getDeletedFeatureFlags() {
 /* c8 ignore stop */
 
 export const featureFlagNames = [
-  "CancellationFlow",
-  "LatestScanDateCsatSurvey",
-  "AutomaticRemovalCsatSurvey",
-  "AdditionalRemovalStatuses",
-  "DataBrokerRemovalTimeEstimateLabel",
-  "DataBrokerRemovalTimeEstimateCsat",
-  "EnableRemovalUnderMaintenanceStep",
-  "DataBrokerRemovalAttempts",
-  "CustomDataBrokers",
   "SidebarNavigationRedesign",
-  "EditScanProfileDetails",
-  "SubPlat3",
-  "DisableOneRepScans",
   "DisableLandingToDashboardRedirect",
-  "MaskDataBrokerCount",
-  "IncreasedFreeMaxBreachEmails",
   "FreeOnly",
-  "ShutdownBanner",
-  "PostShutdownBanner",
 ] as const;
 
 export const adminOnlyFlags: FeatureFlagName[] = [
-  "CustomDataBrokers",
   "DisableLandingToDashboardRedirect",
 ];
 
