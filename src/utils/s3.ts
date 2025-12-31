@@ -4,7 +4,8 @@
 
 import { Upload } from "@aws-sdk/lib-storage";
 import { S3 } from "@aws-sdk/client-s3";
-import "../initializeEnvVars.js";
+import "../initializeEnvVars";
+import { logger } from "../app/functions/server/logging";
 
 const accessKeyId = process.env.AWS_ACCESS_KEY_ID;
 const secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY;
@@ -12,7 +13,7 @@ const region = process.env.AWS_REGION;
 const Bucket = process.env.S3_BUCKET;
 
 if (!accessKeyId || !secretAccessKey || !region || !Bucket) {
-  console.error("Environment vars for s3 upload are not set correctly");
+  logger.error("Environment vars for s3 upload are not set correctly");
   process.exit();
 }
 
@@ -25,11 +26,15 @@ const s3 = new S3({
 });
 
 /**
- * @param {string} fileName
- * @param {Buffer} fileStream
+ * Multi-part upload a provided buffer to S3,
+ * to the bucket defined in S3_BUCKET environment variable.
+ * Log but do not throw if fail to upload.
+ *
+ * @param fileName S3 file key
+ * @param fileStream file buffer
  */
-export async function uploadToS3(fileName, fileStream) {
-  console.log("Attempt to upload to s3: ", fileName);
+export async function uploadToS3(fileName: string, fileStream: Buffer) {
+  logger.info("Attempt to upload to s3", { fileName, bucket: Bucket });
   const uploadParams = {
     Bucket,
     Key: fileName,
@@ -40,8 +45,15 @@ export async function uploadToS3(fileName, fileStream) {
       client: s3,
       params: uploadParams,
     }).done();
-    console.log("Successfully uploaded data to " + Bucket + "/" + fileName);
-  } catch (/** @type {any} */ err) {
-    console.error(err, err.stack);
+    logger.info("Successfully uploaded data to s3", {
+      bucket: Bucket,
+      fileName,
+    });
+  } catch (err) {
+    logger.error("Failure uploading to s3", {
+      err,
+      fileName,
+      bucket: Bucket,
+    });
   }
 }
