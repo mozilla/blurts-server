@@ -18,13 +18,6 @@ announcement-big-img-alt = Announcement image
 
 # between announcement- and -title or -description is the announcement_id.
 
-# id: add-up-to-20-emails-free
-
--brand-plus = Plus
-announcement-add-up-to-20-emails-free-title = Upgrade to { -brand-plus } and monitor up to 20 emails
-announcement-add-up-to-20-emails-free-description = { -brand-monitor-plus } gets you more protection. Upgrade to see if any of your email addresses were in a data breach.
-announcement-add-up-to-20-emails-free-cta-label = Upgrade
-
 # Variables:
 # $emailAddressesCount (string) - number of email addresses allowed for data breach monitoring
 announcement-free-data-breach-monitoring-title =
