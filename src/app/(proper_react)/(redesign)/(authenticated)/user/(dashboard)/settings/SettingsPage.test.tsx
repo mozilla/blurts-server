@@ -193,12 +193,7 @@ describe("Settings page redesign", () => {
         SettingsEditYourInfoMeta,
       );
       render(
-        <ComposedStory
-          enabledFeatureFlags={[
-            "SidebarNavigationRedesign",
-            "IncreasedFreeMaxBreachEmails",
-          ]}
-        />,
+        <ComposedStory enabledFeatureFlags={["SidebarNavigationRedesign"]} />,
       );
 
       const maxEmailsIndicator = screen.getByText("Add up to ⁨20⁩");
