@@ -15,8 +15,9 @@ email-footer-reason-subscriber = You’re receiving this automated email as a su
 email-footer-reason-subscriber-one-time = You’ve received this one-time automated email because you are subscribed to { -brand-monitor-plus }. You won’t receive any further emails like this. For more information, please visit <support-link>{ -brand-mozilla } Support</support-link>.
 # Variables:
 #    $support_link (string) - The URL the user can visit for support, e.g. "https://support.mozilla.org"
-email-footer-support-content-plain = Visit our Support Center for help:
-{ $support_link }
+email-footer-support-content-plain =
+    Visit our Support Center for help:
+    { $support_link }
 # Variables:
 #   $hibp_link (string) - URL to Have I Been Pwned, e.g. "https://haveibeenpwned.com".
 email-footer-source-hibp-plain = Breach data provided by { -brand-HIBP }: { $hibp_link }
