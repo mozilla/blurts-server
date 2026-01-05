@@ -5,7 +5,6 @@
 ## Banner
 
 how-it-works-banner-title = How it works
-how-it-works-banner-text = We help fix exposures of your information from two different sources: <data_brokers_link>data brokers</data_brokers_link> and <data_breaches_link>data breaches</data_breaches_link>.
 
 ## Intro
 
