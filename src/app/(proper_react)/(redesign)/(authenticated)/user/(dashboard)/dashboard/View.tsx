@@ -69,7 +69,7 @@ export const View = (props: Props) => {
     // TODO The `react-hooks` ESLint rules didn't apply correctly
     // for a while, and apparently this line breaks it. To enable the
     // rule, I've suppressed the warning here for now, but we should
-    // look into fixing it:
+    // look into fixing it (MNTOR-5167):
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setAnnouncements(props.userAnnouncements);
     const nextPathname = `/user/dashboard/${activeTab}`;
