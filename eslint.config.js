@@ -20,7 +20,7 @@ import nextTs from "eslint-config-next/typescript";
 // again after the aforementioned issue has been fixed.
 header.rules.header.meta.schema = false;
 
-const estlingConfig = defineConfig([
+const estlintConfig = defineConfig([
   js.configs.recommended,
   ...nextVitals,
   ...nextTs,
@@ -231,4 +231,4 @@ const estlingConfig = defineConfig([
   ]),
 ]);
 
-export default estlingConfig;
+export default estlintConfig;
