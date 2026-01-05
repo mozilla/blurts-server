@@ -4,7 +4,24 @@
 
 // Only process.env variables starting with `NEXT_PUBLIC_` will be shipped to the client:
 import "./app/functions/server/notInClientComponent";
-import "./initializeEnvVars";
+
+import { resolve } from "node:path";
+import { fileURLToPath } from "node:url";
+import env from "@next/env";
+
+// Initialize variables from env file if appropriate
+// Doesn't run in tests by design, so ignore for coverage:
+/* c8 ignore start */
+if (
+  typeof process.env.NEXT_RUNTIME !== "string" &&
+  (process.env.NODE_ENV !== "test" || process.env.PLAYWRIGHT === "true")
+) {
+  // If we're in Next.js, our `.env` files are already set up to be loaded.
+  // Outside of Next.js (e.g. in cron jobs), however, we need to explicitly load them.
+  // (In unit tests, `next/jest` takes care of this, so no need to run this there.)
+  env.loadEnvConfig(resolve(fileURLToPath(import.meta.url), "../../"));
+}
+/* c8 ignore end */
 
 // Don't need to have coverage on config object
 /* c8 ignore start */
@@ -90,6 +107,16 @@ export const config = {
       hibpTopic: getEnvString("GCP_PUBSUB_TOPIC_NAME", {
         fallbackValue: isLocalOrTest ? "hibp-breaches" : undefined,
       }),
+    },
+  },
+  aws: {
+    accessKeyId: getEnvString("AWS_ACCESS_KEY_ID", { fallbackValue: "" }),
+    secretAccessKey: getEnvString("AWS_SECRET_ACCESS_KEY", {
+      fallbackValue: "",
+    }),
+    region: getEnvString("AWS_REGION", { fallbackValue: "us-west-1" }),
+    s3: {
+      logoBucket: getEnvString("S3_BUCKET", { fallbackValue: "" }),
     },
   },
 } as const;

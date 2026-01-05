@@ -4,13 +4,11 @@
 
 import { Upload } from "@aws-sdk/lib-storage";
 import { S3 } from "@aws-sdk/client-s3";
-import "../initializeEnvVars";
+import { config } from "../config";
 import { logger } from "../app/functions/server/logging";
 
-const accessKeyId = process.env.AWS_ACCESS_KEY_ID;
-const secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY;
-const region = process.env.AWS_REGION;
-const Bucket = process.env.S3_BUCKET;
+const { accessKeyId, secretAccessKey, region, s3: s3Config } = config.aws;
+const Bucket = s3Config.logoBucket;
 
 if (!accessKeyId || !secretAccessKey || !region || !Bucket) {
   logger.error("Environment vars for s3 upload are not set correctly");
