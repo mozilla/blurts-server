@@ -67,13 +67,13 @@ e.g.
 git clone dependabot/docker/node-22.6-alpine
 ```
 
-2. Run the Node version alignment script and fix any problems it finds
+1. Run the Node version alignment script and fix any problems it finds
 
 ```sh
 node ./src/scripts/build/checkNodeVersionAlignment.js
 ```
 
-3. Commit and push to branch Dependabot opened
+1. Commit and push to branch Dependabot opened
 
 e.g.
 
@@ -224,7 +224,7 @@ can load your data and change your settings, nothing broke.
 ### `sharp`
 
 This is an optional dependency that we don't use directly, but is used by Next.js's `<Image>` component if it is installed.
-See https://nextjs.org/docs/messages/install-sharp
+See <https://nextjs.org/docs/messages/install-sharp>
 
 You can probably assume that it works correctly if `<Image>` components render correctly, e.g. the `i` shield icon in the top right-hand corner of `user/settings/edit-info`.
 
@@ -283,12 +283,6 @@ Used for S3, by the `npm run cron:db-pull-breaches` cron job.
 This job runs periodically on stage and production to download Favicon files from DuckDuckGo and re-uploads them to Monitor's S3 bucket.
 Check in the server logs that this job completed without errors.
 
-### `@google-cloud/bigquery`
-
-The Node.js client for Google Cloud BigQuery is used for uploading data.
-
-Currently, we use this dependency to upload the results of the [Lighthouse Report Cron](https://github.com/mozilla/blurts-server/actions/workflows/lighthouse_cron.yml) to BigQuery. To verify that the cron job is working as expected we can run the GitHub Action manually against `stage` after a dependency update.
-
 ### `@google-cloud/pubsub`
 
 GCP PubSub is used for email breach notifications from HIBP:
@@ -318,7 +312,7 @@ being written as [structured
 logs](https://cloud.google.com/logging/docs/structured-logging).
 
 For example, if you are logged in with a non-Plus user, then visit
-http://localhost:6060/user/dashboard/fix/data-broker-profiles/welcome-to-plus,
+<http://localhost:6060/user/dashboard/fix/data-broker-profiles/welcome-to-plus>,
 you should see the following in the server-side logs:
 
     {"level":"error","message":"user_not_subscribed","page":"welcome-to-premium"}
