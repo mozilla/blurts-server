@@ -13,7 +13,6 @@
     "dev:cron:db-delete-unverified-subscribers": "tsx --tsconfig tsconfig.cronjobs.json src/scripts/cronjobs/deleteUnverifiedSubscribers.ts",
     "dev:cron:db-pull-breaches": "tsx --tsconfig tsconfig.cronjobs.json src/scripts/cronjobs/syncBreaches.ts",
     "dev:cron:remote-settings-pull-breaches": "tsx --tsconfig tsconfig.cronjobs.json src/scripts/cronjobs/updateBreachesInRemoteSettings/index.ts",
-    "dev:cron:report-lighthouse-results": "tsx --tsconfig tsconfig.cronjobs.json src/scripts/cronjobs/reportLighthouseResults.ts",
     "dev:nimbus": "node --watch-path config/nimbus.yaml src/scripts/build/nimbusTypes.js",
     "build": "npm run build-glean && npm run build-nimbus && next build && npm run build-cronjobs",
     "cloudrun": "npm run db:migrate && npm start",
@@ -28,7 +27,6 @@
     "cron:db-delete-unverified-subscribers": "node dist/scripts/cronjobs/deleteUnverifiedSubscribers.js",
     "cron:db-pull-breaches": "node dist/scripts/cronjobs/syncBreaches.js",
     "cron:remote-settings-pull-breaches": "node dist/scripts/cronjobs/updateBreachesInRemoteSettings/index.js",
-    "cron:report-lighthouse-results": "node dist/scripts/cronjobs/reportLighthouseResults.js",
     "db:migrate": "tsx node_modules/knex/bin/cli.js migrate:latest --knexfile src/db/knexfile.js",
     "db:rollback": "tsx node_modules/knex/bin/cli.js migrate:rollback --knexfile src/db/knexfile.js",
     "storybook": "storybook dev -p 6006",
@@ -44,7 +42,6 @@
     "build-glean-backend-docs": "glean translate src/telemetry/backend-metrics.yaml --format markdown --output docs/telemetry/backend",
     "loadtest:hibp-webhook": "echo 'Ensure k6 is installed; see:\n\thttps://grafana.com/docs/k6/latest/set-up/install-k6/\n' && K6_WEB_DASHBOARD=true K6_WEB_DASHBOARD_EXPORT=src/scripts/loadtest/reports/$(date +'%Y-%m-%d')-hibp-webhook-report.html k6 run --out json=src/scripts/loadtest/reports/$(date +'%Y-%m-%d')-hibp-webhook-results.json src/scripts/loadtest/hibp.js",
     "validate-nimbus": "sh src/scripts/build/validate-nimbus-file.sh",
-    "lighthouse": "lhci autorun",
     "prepare": "husky",
     "postinstall": "patch-package"
   },
@@ -109,7 +106,6 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.3",
     "@faker-js/faker": "^9.8.0",
-    "@google-cloud/bigquery": "^8.1.1",
     "@playwright/test": "^1.56.1",
     "@storybook/addon-a11y": "^9.1.15",
     "@storybook/addon-docs": "^9.1.15",
