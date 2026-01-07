@@ -15,8 +15,6 @@ const meta: Meta<typeof BreachIndexView> = {
   component: (props: ViewProps) => (
     <PublicShell
       l10n={getL10n("en")}
-      countryCode="us"
-      enabledFeatureFlags={[]}
       experimentData={defaultExperimentData["Features"]}
     >
       <BreachIndexView {...props} />

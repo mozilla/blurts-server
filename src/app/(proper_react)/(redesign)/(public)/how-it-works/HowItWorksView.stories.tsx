@@ -13,11 +13,9 @@ const meta: Meta<typeof HowItWorksView> = {
   component: () => (
     <PublicShell
       l10n={getL10n("en")}
-      countryCode="us"
-      enabledFeatureFlags={[]}
       experimentData={defaultExperimentData["Features"]}
     >
-      <HowItWorksView l10n={getL10n()} enabledFeatureFlags={[]} />
+      <HowItWorksView l10n={getL10n()} />
     </PublicShell>
   ),
   args: {

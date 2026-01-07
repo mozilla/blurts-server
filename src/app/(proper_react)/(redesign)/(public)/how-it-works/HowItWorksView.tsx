@@ -7,11 +7,9 @@ import { ExtendedReactLocalization } from "../../../../functions/l10n";
 import { Header } from "./components/Header";
 import { DataBreaches } from "./components/DataBreaches";
 import { FooterSection } from "./components/FooterSection";
-import { FeatureFlagName } from "../../../../../db/tables/featureFlags";
 
 export type Props = {
   l10n: ExtendedReactLocalization;
-  enabledFeatureFlags: FeatureFlagName[];
 };
 
 export const HowItWorksView = (props: Props) => {
