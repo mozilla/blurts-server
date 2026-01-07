@@ -112,7 +112,10 @@ async function run() {
     }
   });
 
-  logger.info("Breaches found", { total: length, unique: seen.size });
+  logger.info("Breaches found", {
+    total: breachesResponse.length,
+    unique: seen.size,
+  });
 
   // sanity check: no duplicate breaches with Name + BreachDate
   if (seen.size !== breachesResponse.length) {
