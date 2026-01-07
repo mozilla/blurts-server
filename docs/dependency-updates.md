@@ -67,13 +67,13 @@ e.g.
 git clone dependabot/docker/node-22.6-alpine
 ```
 
-1. Run the Node version alignment script and fix any problems it finds
+2. Run the Node version alignment script and fix any problems it finds
 
 ```sh
 node ./src/scripts/build/checkNodeVersionAlignment.js
 ```
 
-1. Commit and push to branch Dependabot opened
+3. Commit and push to branch Dependabot opened
 
 e.g.
 
