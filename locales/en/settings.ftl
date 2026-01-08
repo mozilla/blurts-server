@@ -17,35 +17,29 @@ settings-alert-preferences-option-two = Send all breach alerts to the primary em
 
 ## Monitored email addresses
 
-# Variables:
-#   $email (string) - Email address
-settings-email-list-title = Monitored email addresses
-# Variables:
-#   $limit (number) - Number of email addresses included in the plan
-settings-email-limit-info =
-  {
-    $limit ->
-        [one] Your account includes monitoring of up to { $limit } email.
-       *[other] Your account includes monitoring of up to { $limit } emails.
-  }
 settings-email-verification-callout = Email verification required
-settings-resend-email-verification-link = Resend verification email
-settings-add-email-button = Add email address
-settings-remove-email-button-label = Remove
-# Variables:
-#   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
-settings-remove-email-button-tooltip = Stop monitoring { $emailAddress }
 
-# This string is shown beneath each of the user’s email addresses to indicate
-# how many known breaches that email address was found in.
+settings-email-addresses-header = Email addresses
+settings-email-addresses-description = { -brand-monitor } will alert you if these emails show up in known breaches.
+settings-email-addresses-add-email-button = Add email address
 # Variables:
-#   $breachCount (number) - Number of breaches
-settings-email-number-of-breaches-info =
-  {
-    $breachCount ->
-        [one] Appears in { $breachCount } known breach.
-       *[other] Appears in { $breachCount } known breaches.
-  }
+#   $limit (number) - Number of emails that can be added for monitoring.
+settings-email-addresses-add-email-indicator-limit = Add up to { $limit }
+settings-email-addresses-add-email-resend-button-label = Resend verification link
+
+input-error-alt = Error
+
+## Email address dialog
+
+settings-email-addresses-initial-dialog-header = Add an email address
+settings-email-addresses-initial-dialog-description = We’ll send a verification link for you to confirm you’d like to include it in a future { -brand-monitor } scan.
+settings-email-addresses-initial-dialog-add-email-input-label = Enter email address
+settings-email-addresses-initial-dialog-add-email-button-label = Send verification link
+# Variables:
+#   $email (string) - Email address the confirmation has been sent to.
+settings-email-addresses-confirmation-dialog-header = Verification link sent to <b>{ $email }</b>
+settings-email-addresses-confirmation-dialog-description = Open the link to add it to this account for future { -brand-monitor } scans.
+settings-email-addresses-confirmation-dialog-close-button = Close
 
 ## Delete Monitor account
 
@@ -59,13 +53,10 @@ settings-delete-monitor-free-account-dialog-cancel-button-label = Never mind, ta
 settings-delete-monitor-account-confirmation-toast-label-2 = Your { -brand-monitor } account is now deleted.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Dismiss
 
-## Monthly Monitor Report
-
-settings-alert-preferences-allow-monthly-monitor-report-title = Monthly { -brand-monitor } report
-settings-alert-preferences-allow-monthly-monitor-report-subtitle = A monthly update of new exposures, what’s been fixed, and what needs your attention.
-
 ## Settings page redesign
 
+# Label for a navigation bar link to settings for updating the users scan profile info – “update” is used as a verb.
+settings-tab-label-update-scan-info = Update scan info
 settings-tab-label-edit-info = Edit your info
 settings-tab-label-notifications = Set notifications
 settings-tab-label-manage-account = Manage account
