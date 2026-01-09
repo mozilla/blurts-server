@@ -5,7 +5,7 @@
 public-nav-name = { -brand-mozilla-monitor }
 landing-all-hero-title = Найдите, где находится ваша личная информация, и верните обратно
 landing-all-hero-lead = Мы сканируем утечки данных, чтобы определить, не произошла ли утечка ваших данных, и даем вам инструкции по исправлению.
-landing-all-hero-emailform-input-placeholder = вашлогин@example.com
+landing-all-hero-emailform-input-placeholder = иван_иванов@домен.ru
 landing-all-hero-emailform-input-label = Введите свой адрес электронной почты, чтобы проверить наличие утечки данных.
 landing-all-hero-emailform-submit-label = Получить бесплатное сканирование
 landing-all-hero-emailform-submit-sign-up-label = Зарегистрируйтесь, чтобы получить бесплатное сканирование

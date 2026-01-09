@@ -81,6 +81,9 @@ known-data-breaches-exposed =
         [one] דליפת נתונים מוכרת אחת חשפה מידע עליך
        *[other] דליפות נתונים מוכרות חשפו מידע עליך
     }
+# This is a section headline on the breach detail page that appears above
+# a short summary about the breach.
+breach-overview-title = סקירה כוללת
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = תפריט
 # This is part of a confirmation message that appears after a user has submitted
