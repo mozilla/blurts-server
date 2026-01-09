@@ -87,7 +87,7 @@ dashboard-exposures-filter-reset = Tilbakestill
 
 dashboard-top-banner-section-label = Oversynsoppsummering
 dashboard-top-banner-scan-in-progress-title = Skanninga held framleis på
-dashboard-top-banner-your-data-is-protected-title = Dine data er verna
+dashboard-top-banner-your-data-is-protected-title = Dataa dine er verna
 dashboard-top-banner-your-data-is-protected-cta = Sjå kva som er løyst
 dashboard-top-banner-lets-keep-protecting-title = La oss halde fram med å verne dataa dine
 # Variables:
