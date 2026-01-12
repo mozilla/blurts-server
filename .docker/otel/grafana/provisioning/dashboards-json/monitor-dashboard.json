@@ -1,0 +1,79 @@
+{
+  "uid": "monitor-dashboard",
+  "title": "Monitor",
+  "timezone": "browser",
+  "schemaVersion": 39,
+  "version": 1,
+  "refresh": "10s",
+  "panels": [
+    {
+      "id": 1,
+      "type": "timeseries",
+      "title": "HIBP notify total requests (rate)",
+      "gridPos": { "x": 0, "y": 0, "w": 24, "h": 8 },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "sum(rate(hibp_notify_requests_total[1m]))",
+          "legendFormat": "requests/s"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "type": "timeseries",
+      "title": "HIBP notify failures (rate)",
+      "gridPos": { "x": 0, "y": 8, "w": 24, "h": 8 },
+      "targets": [
+        {
+          "refId": "B",
+          "expr": "sum(rate(hibp_notify_request_failures_total[1m]))",
+          "legendFormat": "failures/s"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "type": "timeseries",
+      "title": "HIBP notify failures by error (rate)",
+      "gridPos": { "x": 0, "y": 16, "w": 24, "h": 10 },
+      "targets": [
+        {
+          "refId": "C",
+          "expr": "sum by (error) (rate(hibp_notify_request_failures_total[1m]))",
+          "legendFormat": "{{error}}"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "type": "barchart",
+      "title": "Failures by error (increase, last 15m)",
+      "gridPos": { "x": 0, "y": 26, "w": 12, "h": 8 },
+      "targets": [
+        {
+          "refId": "D",
+          "expr": "sum by (error) (increase(hibp_notify_request_failures_total[15m]))",
+          "legendFormat": "{{error}}"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "type": "stat",
+      "title": "Failure rate %",
+      "gridPos": { "x": 12, "y": 26, "w": 12, "h": 8 },
+      "targets": [
+        {
+          "refId": "E",
+          "expr": "100 * (sum(rate(hibp_notify_request_failures_total[5m])) / clamp_min(sum(rate(hibp_notify_requests_total[5m])), 1e-9))"
+        }
+      ],
+      "options": {
+        "reduceOptions": { "calcs": ["lastNotNull"], "fields": "", "values": false },
+        "orientation": "horizontal",
+        "textMode": "auto"
+      }
+    }
+  ]
+}

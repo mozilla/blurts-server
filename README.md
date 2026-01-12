@@ -194,6 +194,19 @@ This will automatically provision a pubsub topic named 'hibp-breaches' with a su
    docker compose --env-file .env.local up -d
    ```
 
+### Observability
+
+We use opentelemetry for manual and auto-instrumentation of app code. We use Sentry for error tracking and some alerting; other alerts are configured on metrics through Grafana ([Yardstick](https://yardstick.mozilla.org/)). Error-level logs are automatically captured and sent to Sentry. Trace IDs are forwarded to Sentry. They can be searched in [Yardstick](https://yardstick.mozilla.org/) for more detailed trace data.
+
+The infrastructure for viewing traces and metrics locally is automatically set up when you follow #docker-compose-setup instructions. It starts 4 services:
+
+- Otel collector (collects metrics, traces, and logs using OTLP)
+- Tempo (scrapes traces for grafana; in GCP environment we use Cloud Trace)
+- Prometheus (scrapes metrics for grafana; in GCP environment we use Google-Managed Prometheus)
+- Grafana (visualization)
+
+To view metrics locally, visit [Grafana](http://localhost:3000/d/monitor-dashboard/monitor?orgId=1). Some default dashboard panels are seeded. To see traces, navigate to the [Explore] pane in Grafana and select the Tempo datasource. Note that the data won't propagate immediately, so wait a minute if you're not seeing expected activity show up.
+
 ### In a different shell, set the environment to point at the emulator and run Monitor in dev mode
 
 ```sh
