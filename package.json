@@ -74,7 +74,7 @@
     "@sentry/node": "^10.27.0",
     "@stripe/stripe-js": "^8.5.3",
     "@types/jsdom": "^21.1.7",
-    "@types/node": "^24.10.1",
+    "@types/node": "^25.0.3",
     "@types/react": "19.1.9",
     "@types/react-dom": "19.1.7",
     "canvas-confetti": "^1.9.4",
