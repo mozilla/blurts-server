@@ -119,6 +119,22 @@ export const config = {
       logoBucket: getEnvString("S3_BUCKET", { fallbackValue: "" }),
     },
   },
+  otel: {
+    // If empty will export to console instead
+    endpoint: process.env.OTEL_EXPORTER_OTLP_ENDPOINT,
+    // Must be aligned with endpoint, e.g. http/protobuf and port 4318
+    // For now just HTTP, can enable GRPC later if needed
+    exporterProtocol: getEnvEnum(
+      "OTEL_EXPORTER_OTLP_PROTOCOL",
+      ["http/protobuf"],
+      {
+        fallbackValue: "http/protobuf",
+      },
+    ),
+    serviceName: getEnvString("OTEL_SERVICE_NAME", {
+      fallbackValue: "monitor",
+    }),
+  },
 } as const;
 /* c8 ignore end */
 

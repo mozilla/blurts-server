@@ -40,6 +40,60 @@ services:
       start_interval: 10s
     networks:
       - shared
+  
+  otel-collector:
+    image: otel/opentelemetry-collector:0.142.0
+    restart: always
+    command: ["--config=/etc/otel-collector-config.yaml"]
+    volumes:
+      - ./.docker/otel/otel-collector-config.yaml:/etc/otel-collector-config.yaml
+    networks:
+      - shared
+    ports:
+      - "4318:4318"   # OTLP HTTP receiver
+      - "9464:9464"   # Prometheus scrape endpoint
+  
+  tempo:
+    image: grafana/tempo:2.4.1
+    command: ["-config.file=/etc/tempo.yaml"]
+    volumes:
+      - ./.docker/otel/tempo.yaml:/etc/tempo.yaml:ro
+    ports:
+      - "3200:3200"   # Tempo query endpoint
+    networks:
+      - shared
+  
+
+  prometheus:
+    image: prom/prometheus:v2.49.1
+    command: ["--config.file=/etc/prometheus/prometheus.yaml"]
+    volumes:
+      - ./.docker/otel/prometheus.yaml:/etc/prometheus/prometheus.yaml:ro
+    ports:
+      - "9090:9090"
+    networks:
+      - shared
+    depends_on:
+      - otel-collector
+
+  grafana:
+    image: grafana/grafana:10.3.3
+    environment:
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
+      # Skip the initial admin password change UI
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    volumes:
+      - ./.docker/otel/grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./.docker/otel/grafana/provisioning/dashboards-json:/etc/grafana/provisioning/dashboards-json:ro
+    ports:
+      - "3000:3000"
+    networks:
+      - shared
+    depends_on:
+      - tempo
+      - prometheus
 
 networks:
   shared:

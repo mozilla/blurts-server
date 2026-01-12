@@ -3,9 +3,18 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import * as Sentry from "@sentry/nextjs";
+import { config } from "./config";
 
 export async function register() {
+  console.log(
+    "[INSTRUMENTATION] register() called, runtime:",
+    process.env.NEXT_RUNTIME,
+  );
   if (process.env.NEXT_RUNTIME === "nodejs") {
+    // NOTE: Sentry MUST be initialized first (with skipOpenTelemetrySetup = true)
+    // If not, then there will be issues with otel and sentry registering duplicate
+    // providers
+    console.log("[INSTRUMENTATION] Initializing Sentry...");
     Sentry.init({
       environment: process.env.APP_ENV,
       dsn: process.env.SENTRY_DSN,
@@ -20,8 +29,16 @@ export async function register() {
 
       // Setting this option to true will print useful information to the console while you're setting up Sentry.
       debug: false,
+
+      // Disable Sentry's automatic OTEL instrumentation since we're managing it ourselves
+      skipOpenTelemetrySetup: true,
     });
-    await import("./instrumentation.node");
+    const { nodeSDKBuilder } = await import("./instrumentation.node");
+    console.log("[INSTRUMENTATION] Initializing OTEL...");
+    await nodeSDKBuilder({
+      collectorUrl: config.otel.endpoint,
+      protocol: config.otel.exporterProtocol,
+    });
   }
 }
 
