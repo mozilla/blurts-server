@@ -14,7 +14,6 @@ import { TestComponentWrapper } from "../src/TestComponentWrapper";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
-sb.mock("../src/initializeEnvVars", { spy: false });
 sb.mock("../src/config", { spy: false });
 
 const AppDecorator: Preview["decorators"] = (storyFn) => {
@@ -76,10 +75,6 @@ const preview: Preview = {
 
           if (path.startsWith("/breach-details/")) {
             linkTo("Pages/Public/Breach listing")();
-          }
-
-          if (path === "/terms/expiration-offer") {
-            linkTo("Pages/Public/Terms/Plus expiration offer")();
           }
 
           if (path === "/user/dashboard") {

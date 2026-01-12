@@ -5,7 +5,6 @@
 import { SubscriberRow } from "knex/types/tables";
 import { logger } from "./logging";
 import { deleteSubscriber } from "../../../db/tables/subscribers";
-import { deleteSubscription } from "../../../utils/fxa";
 import { record } from "./glean";
 
 export async function deleteAccount(subscriber: SubscriberRow) {
@@ -18,21 +17,6 @@ export async function deleteAccount(subscriber: SubscriberRow) {
       monitorUserId: subscriber.id.toString(),
     },
   });
-  // try to unsubscribe from subplat
-  if (subscriber.fxa_access_token) {
-    try {
-      const isDeleted = await deleteSubscription(subscriber.fxa_access_token);
-      logger.info("unsubscribe_from_subplat", {
-        subscriber_id: subscriber.id,
-        success: isDeleted,
-      });
-    } catch (ex) {
-      logger.error("unsubscribe_from_subplat", {
-        subscriber_id: subscriber.id,
-        exception: ex,
-      });
-    }
-  }
 
   // delete user events only have keys. Keys point to empty objects
   await deleteSubscriber(subscriber);

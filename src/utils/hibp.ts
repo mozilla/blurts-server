@@ -12,7 +12,11 @@ import {
   getAllQaCustomBreaches,
   getQaToggleRow,
 } from "../db/tables/qa_customs.ts";
-import { redisClient, REDIS_ALL_BREACHES_KEY } from "../db/redis/client.ts";
+import {
+  redisClient,
+  REDIS_ALL_BREACHES_KEY,
+  BREACHES_EXPIRY_SECONDS,
+} from "../db/redis/client.ts";
 import { config } from "../config.ts";
 
 // TODO: fix hardcode
@@ -210,7 +214,34 @@ export type HibpLikeDbBreach = {
   NewBreach?: boolean;
 };
 
+function dbToHibp(breach: BreachRow): HibpLikeDbBreach {
+  return {
+    Id: breach.id,
+    Name: breach.name,
+    Title: breach.title,
+    Domain: breach.domain,
+    BreachDate: breach.breach_date,
+    AddedDate: breach.added_date,
+    ModifiedDate: breach.modified_date,
+    PwnCount: breach.pwn_count,
+    Description: breach.description,
+    LogoPath: breach.logo_path,
+    DataClasses: breach.data_classes,
+    IsVerified: breach.is_verified,
+    IsFabricated: breach.is_fabricated,
+    IsSensitive: breach.is_sensitive,
+    IsRetired: breach.is_retired,
+    IsSpamList: breach.is_spam_list,
+    IsMalware: breach.is_malware,
+    FaviconUrl: breach.favicon_url,
+  } as HibpLikeDbBreach;
+}
+
 /**
+ * Fetch stored breaches using read-through Redis cache.
+ * All breaches are stored in a single cache key as a list,
+ * and the cache is updated on first read after the record
+ * expires (12 hr).
  * Get all breaches from the database table "breaches",
  * sanitize it, and return a javascript array
  */
@@ -239,8 +270,12 @@ async function getAllBreachesFromDb(): Promise<HibpLikeDbBreach[]> {
       logger.info("get_all_breaches_from_db_successful", {
         numOfBreaches: dbBreaches.length,
       });
-      await rClient.set(REDIS_ALL_BREACHES_KEY, JSON.stringify(dbBreaches));
-      await rClient.expire(REDIS_ALL_BREACHES_KEY, 3600 * 12); // 12 hour expiration
+      await rClient.set(
+        REDIS_ALL_BREACHES_KEY,
+        JSON.stringify(dbBreaches),
+        "EX",
+        BREACHES_EXPIRY_SECONDS, // 12 hours
+      );
       logger.info("set_breaches_in_redis_successful");
     } else {
       dbBreaches = redisBreaches;
@@ -257,29 +292,7 @@ async function getAllBreachesFromDb(): Promise<HibpLikeDbBreach[]> {
 
   // TODO: we can do some filtering here for the most commonly used fields
   // TODO: change field names to camel case
-  return dbBreaches.map(
-    (breach) =>
-      ({
-        Id: breach.id,
-        Name: breach.name,
-        Title: breach.title,
-        Domain: breach.domain,
-        BreachDate: breach.breach_date,
-        AddedDate: breach.added_date,
-        ModifiedDate: breach.modified_date,
-        PwnCount: breach.pwn_count,
-        Description: breach.description,
-        LogoPath: breach.logo_path,
-        DataClasses: breach.data_classes,
-        IsVerified: breach.is_verified,
-        IsFabricated: breach.is_fabricated,
-        IsSensitive: breach.is_sensitive,
-        IsRetired: breach.is_retired,
-        IsSpamList: breach.is_spam_list,
-        IsMalware: breach.is_malware,
-        FaviconUrl: breach.favicon_url,
-      }) as HibpLikeDbBreach,
-  );
+  return dbBreaches.map(dbToHibp);
 }
 /* c8 ignore stop */
 
@@ -431,6 +444,43 @@ async function subscribeHash(sha1: string) {
 }
 /* c8 ignore stop */
 
+/**
+ * Null check for some required fields (for
+ * emailing breach alerts).
+ *
+ * @param breach breach object from HIBP
+ * @returns Boolean is it a valid breach
+ * for email notification
+ */
+function isEmailNotifiableBreach(breach: HibpGetBreachesResponse[number]) {
+  return (
+    breach.Name != null &&
+    breach.BreachDate != null &&
+    breach.Title != null &&
+    // Note: Domain may be empty/null from source, e.g.
+    // stealer logs containing breached data from multiple
+    // sources
+    breach.Domain != null &&
+    breach.DataClasses != null
+  );
+}
+
+/**
+ * Validate breach list, ensuring required fields are defined and non-null
+ *
+ * @param breaches
+ */
+function validateBreachesEmailNotifiable(breaches: HibpGetBreachesResponse) {
+  breaches.forEach((breach) => {
+    // sanity check: corrupt data structure
+    if (!isEmailNotifiableBreach(breach)) {
+      throw new Error(
+        "Breach data structure is not valid: " + JSON.stringify(breach),
+      );
+    }
+  });
+}
+
 export {
   formatDataClassesArray,
   getBreachesForEmail,
@@ -439,4 +489,6 @@ export {
   getFilteredBreaches,
   subscribeHash,
   knex as knexHibp,
+  validateBreachesEmailNotifiable,
+  dbToHibp,
 };

@@ -9,6 +9,7 @@ import MockRedis from "ioredis-mock";
 
 export const REDIS_ALL_BREACHES_KEY = "breaches";
 export const REDIS_ALL_DATA_BROKERS_KEY = "dataBrokers";
+export const BREACHES_EXPIRY_SECONDS = 3600 * 12; // 12 hour
 
 let singleton: Redis;
 export const redisClient = () => {

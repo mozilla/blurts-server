@@ -4,7 +4,29 @@
 
 // Only process.env variables starting with `NEXT_PUBLIC_` will be shipped to the client:
 import "./app/functions/server/notInClientComponent";
-import "./initializeEnvVars";
+
+import { resolve } from "node:path";
+import { fileURLToPath } from "node:url";
+import env from "@next/env";
+
+// Initialize variables from env file if appropriate
+// Doesn't run in tests by design, so ignore for coverage:
+/* c8 ignore start */
+if (
+  typeof process.env.NEXT_RUNTIME !== "string" &&
+  (process.env.NODE_ENV !== "test" || process.env.PLAYWRIGHT === "true")
+) {
+  // If we're in Next.js, our `.env` files are already set up to be loaded.
+  // Outside of Next.js (e.g. in cron jobs), however, we need to explicitly load them.
+  // (In unit tests, `next/jest` takes care of this, so no need to run this there.)
+  env.loadEnvConfig(resolve(fileURLToPath(import.meta.url), "../../"));
+}
+/* c8 ignore end */
+
+// Don't need to have coverage on config object
+/* c8 ignore start */
+const isLocalOrTest =
+  process.env.NODE_ENV === "test" || process.env.APP_ENV === "local";
 
 /**
  * Environment-specific values
@@ -41,7 +63,6 @@ export const config = {
   oauthAccountUri: getEnvString("OAUTH_ACCOUNT_URI"),
   nextAuthSecret: getEnvString("NEXTAUTH_SECRET"),
   fxaSettingsUrl: getEnvString("FXA_SETTINGS_URL"),
-  fxaSubscriptionsUrl: getEnvString("FXA_SUBSCRIPTIONS_URL"),
 
   // If set to an empty string, emails will be logged instead of sent,
   // which is fine for local development:
@@ -50,7 +71,7 @@ export const config = {
   // https://docs.aws.amazon.com/ses/latest/dg/using-configuration-sets.html
   sesConfigSet: getEnvString("SES_CONFIG_SET", { fallbackValue: "" }),
 
-  sentryDsn: getEnvString("SENTRY_DSN"),
+  sentryDsn: getEnvString("SENTRY_DSN", { fallbackValue: "" }),
 
   hibpThrottleMaxTries: getEnvInt("HIBP_THROTTLE_MAX_TRIES"),
   hibpThrottleDelay: getEnvInt("HIBP_THROTTLE_DELAY"),
@@ -64,17 +85,9 @@ export const config = {
 
   s3Bucket: getEnvString("S3_BUCKET"),
 
-  firefoxRelayLandingUrl: getEnvString("FIREFOX_RELAY_LANDING_URL"),
-  mozillaVpnLandingUrl: getEnvString("MOZILLA_VPN_LANDING_URL"),
-
   deleteUnverifiedSubscribersTimer: getEnvInt(
     "DELETE_UNVERIFIED_SUBSCRIBERS_TIMER",
     { fallbackValue: 24 * 60 * 60 },
-  ),
-
-  monthlyActivityFreeEmailBatchSize: getEnvInt(
-    "MONTHLY_ACTIVITY_FREE_EMAIL_BATCH_SIZE",
-    { fallbackValue: 10 },
   ),
 
   nimbusUuidNamespace: getEnvString("NIMBUS_UUID_NAMESPACE"),
@@ -85,7 +98,29 @@ export const config = {
   fxRemoteSettingsWriterUser: process.env.FX_REMOTE_SETTINGS_WRITER_USER,
   fxRemoteSettingsWriterPass: process.env.FX_REMOTE_SETTINGS_WRITER_PASS,
   fxRemoteSettingsWriterServer: process.env.FX_REMOTE_SETTINGS_WRITER_SERVER,
+
+  gcp: {
+    projectId: getEnvString("GCP_PUBSUB_PROJECT_ID", {
+      fallbackValue: isLocalOrTest ? "your-project-name" : undefined,
+    }),
+    pubsub: {
+      hibpTopic: getEnvString("GCP_PUBSUB_TOPIC_NAME", {
+        fallbackValue: isLocalOrTest ? "hibp-breaches" : undefined,
+      }),
+    },
+  },
+  aws: {
+    accessKeyId: getEnvString("AWS_ACCESS_KEY_ID", { fallbackValue: "" }),
+    secretAccessKey: getEnvString("AWS_SECRET_ACCESS_KEY", {
+      fallbackValue: "",
+    }),
+    region: getEnvString("AWS_REGION", { fallbackValue: "us-west-1" }),
+    s3: {
+      logoBucket: getEnvString("S3_BUCKET", { fallbackValue: "" }),
+    },
+  },
 } as const;
+/* c8 ignore end */
 
 /**
  * Like {@link getEnvString}, but also ensures the value is a valid integer

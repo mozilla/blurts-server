@@ -9,35 +9,45 @@
  * node src/scripts/syncBreaches.js
  */
 
-import { readdir } from "node:fs/promises";
-import os from "node:os";
-import Sentry from "@sentry/nextjs";
-import { fetchHibpBreaches, HibpGetBreachesResponse } from "../../utils/hibp";
-import {
-  getAllBreaches,
-  upsertBreaches,
-  updateBreachFaviconUrl,
-} from "../../db/tables/breaches";
-import { redisClient, REDIS_ALL_BREACHES_KEY } from "../../db/redis/client.js";
-import { uploadToS3 } from "../../utils/s3.js";
-import { config } from "../../config";
-
-const SENTRY_SLUG = "cron-sync-breaches";
+import * as Sentry from "@sentry/node";
 
 Sentry.init({
   dsn: config.sentryDsn,
   tracesSampleRate: 1.0,
 });
 
+import { readdir } from "node:fs/promises";
+import os from "node:os";
+import { fetchHibpBreaches, HibpGetBreachesResponse } from "../../utils/hibp";
+import {
+  getAllBreaches,
+  upsertBreaches,
+  updateBreachFaviconUrl,
+} from "../../db/tables/breaches";
+import {
+  redisClient,
+  REDIS_ALL_BREACHES_KEY,
+  BREACHES_EXPIRY_SECONDS,
+} from "../../db/redis/client.js";
+import { uploadToS3 } from "../../utils/s3.js";
+import { config } from "../../config";
+import { logger as baseLogger } from "../../app/functions/server/logging";
+
+const SENTRY_SLUG = "cron-sync-breaches";
+
 const checkInId = Sentry.captureCheckIn({
   monitorSlug: SENTRY_SLUG,
   status: "in_progress",
 });
 
+const logger = baseLogger.child({ module: "syncBreaches" });
+
 export async function getBreachIcons(breaches: HibpGetBreachesResponse) {
   // make logofolder if it doesn't exist
+  // TODO: clean up unused folder and existing logo logic
+  // MNTOR-5166
   const logoFolder = os.tmpdir();
-  console.log(`Logo folder: ${logoFolder}`);
+  logger.debug(`Logo folder: ${logoFolder}`);
 
   // read existing logos
   const existingLogos = await readdir(logoFolder);
@@ -47,95 +57,115 @@ export async function getBreachIcons(breaches: HibpGetBreachesResponse) {
     const breachName = breach.Name;
 
     if (!breachDomain || breachDomain.length === 0) {
-      console.log("empty domain: ", breachName);
+      logger.info("Breach has empty domain", { breachName });
       await updateBreachFaviconUrl(breachName, null);
       continue;
     }
     const logoFilename = breachDomain.toLowerCase() + ".ico";
+    // TODO: Check S3 bucket, not file system, for existing logos
+    // MNTOR-5166
     if (existingLogos.includes(logoFilename)) {
-      console.log("skipping ", logoFilename);
+      logger.info("skipping ", logoFilename);
       await updateBreachFaviconUrl(
         breachName,
         `https://s3.amazonaws.com/${config.s3Bucket}/${logoFilename}`,
       );
       continue;
     }
-    console.log(`fetching: ${logoFilename}`);
+    logger.info("Fetching logo", { logoFilename });
     const res = await fetch(
       `https://icons.duckduckgo.com/ip3/${breachDomain}.ico`,
     );
     if (res.status !== 200) {
       // update logo path with null
-      console.log(`Logo does not exist for: ${breachName} ${breachDomain}`);
+      logger.info("Logo does not exist", { breachName, breachDomain });
       await updateBreachFaviconUrl(breachName, null);
       continue;
     }
 
     try {
+      // TODO: Do not reupload to S3 if logo already exists
+      // MNTOR-5166
       await uploadToS3(logoFilename, Buffer.from(await res.arrayBuffer()));
       await updateBreachFaviconUrl(
         breachName,
         `https://s3.amazonaws.com/${config.s3Bucket}/${logoFilename}`,
       );
     } catch (e) {
-      console.error(e);
+      logger.error(e);
       continue;
     }
   }
 }
+async function run() {
+  // Get breaches and upserts to DB
+  const breachesResponse = await fetchHibpBreaches();
+  const seen = new Set();
+  breachesResponse.forEach((breach) => {
+    seen.add(breach.Name + breach.BreachDate);
 
-// Get breaches and upserts to DB
-const breachesResponse = await fetchHibpBreaches();
-const seen = new Set();
-breachesResponse.forEach((breach) => {
-  seen.add(breach.Name + breach.BreachDate);
+    // sanity check: corrupt data structure
+    if (!isValidBreach(breach)) {
+      const invalidMsg = "Breach data structure is not valid";
+      logger.error(invalidMsg, { breach });
+      throw new Error(`${invalidMsg}: ` + JSON.stringify(breach));
+    }
+  });
 
-  // sanity check: corrupt data structure
-  if (!isValidBreach(breach)) {
-    throw new Error(
-      "Breach data structure is not valid: " + JSON.stringify(breach),
+  logger.info("Breaches found", {
+    total: breachesResponse.length,
+    unique: seen.size,
+  });
+
+  // sanity check: no duplicate breaches with Name + BreachDate
+  if (seen.size !== breachesResponse.length) {
+    const dupeMsg = "Breaches contain duplicates";
+    logger.error(dupeMsg, {
+      unique: seen.size,
+      total: breachesResponse.length,
+    });
+    throw new Error(`${dupeMsg}. Stopping script...`);
+  } else {
+    await upsertBreaches(breachesResponse);
+
+    // get
+    const result = await getAllBreaches();
+    logger.info(
+      "Number of breaches in the database after upsert:",
+      result.length,
     );
+
+    // try to refresh Redis cache of all breaches
+    try {
+      const rClient = redisClient();
+      await rClient.set(
+        REDIS_ALL_BREACHES_KEY,
+        JSON.stringify(result),
+        "EX",
+        BREACHES_EXPIRY_SECONDS,
+      );
+    } catch (e) {
+      logger.error("Update Redis failed for syncBreaches.ts", { error: e });
+    }
   }
-});
-
-console.log("Breaches found: ", breachesResponse.length);
-console.log("Unique breaches based on Name + BreachDate", seen.size);
-
-// sanity check: no duplicate breaches with Name + BreachDate
-if (seen.size !== breachesResponse.length) {
-  throw new Error("Breaches contain duplicates. Stopping script...");
-} else {
-  await upsertBreaches(breachesResponse);
-
-  // get
-  const result = await getAllBreaches();
-  console.log(
-    "Number of breaches in the database after upsert:",
-    result.length,
-  );
-
-  // try to refresh Redis cache of all breaches
-  try {
-    const rClient = redisClient();
-    await rClient.set(REDIS_ALL_BREACHES_KEY, JSON.stringify(result));
-    await rClient.expire(REDIS_ALL_BREACHES_KEY, 3600 * 12); // 12 hour expiration
-  } catch (e) {
-    Sentry.captureMessage(
-      `Update Redis failed for syncBreaches.ts: ${e as string}`,
-    );
-    console.error(
-      `Update Redis failed for syncBreaches.ts: ${(e as Error).stack}`,
-    );
-  }
+  await getBreachIcons(breachesResponse);
 }
 
-await getBreachIcons(breachesResponse);
-
-Sentry.captureCheckIn({
-  checkInId,
-  monitorSlug: SENTRY_SLUG,
-  status: "ok",
-});
+try {
+  await run();
+  Sentry.captureCheckIn({
+    checkInId,
+    monitorSlug: SENTRY_SLUG,
+    status: "ok",
+  });
+} catch (error) {
+  Sentry.captureCheckIn({
+    checkInId,
+    monitorSlug: SENTRY_SLUG,
+    status: "error",
+  });
+  throw error;
+}
 setTimeout(process.exit, 1000);
 
 /**

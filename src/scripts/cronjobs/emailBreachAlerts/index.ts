@@ -20,12 +20,19 @@ Sentry.init({
 
 Sentry.setTag("job", "emailBreachAlerts");
 
+import { fetchHibpBreaches } from "../../../utils/hibp";
 import { logger } from "../../../app/functions/server/logging";
-import { getAllBreachesFromDb } from "../../../utils/hibp";
 import { sendEmail, initEmail } from "../../../utils/email";
-import { getBreachNotificationSubscribersByHashes } from "../../../db/models/BreachNotificationSubscriber";
 import * as NotificationsRepo from "../../../db/tables/email_notifications";
+import { createBreachDataService } from "../../../services/BreachDataService";
+import { redisClient } from "../../../db/redis/client";
+import { createBreachSyncService } from "../../../services/BreachSyncService";
+import {
+  getAllBreaches as getBreaches,
+  upsertBreaches,
+} from "../../../db/tables/breaches";
 import { runJob } from "./emailBreachAlerts";
+import { getBreachNotificationSubscribersByHashes } from "../../../db/models/BreachNotificationSubscriber";
 
 start();
 
@@ -42,6 +49,16 @@ async function start() {
   }
   // Transport must be initialized before sendEmail can be called
   await initEmail();
+  const redis = redisClient();
+  const sync = createBreachSyncService({
+    redis,
+    fetchBreaches: fetchHibpBreaches,
+    repo: {
+      upsertBreaches,
+      getBreaches,
+    },
+    logger,
+  });
   runJob({
     gcp: {
       projectId,
@@ -49,7 +66,12 @@ async function start() {
     },
     messageFnOpts: [
       logger,
-      getAllBreachesFromDb,
+      createBreachDataService({
+        redis,
+        sync,
+        getBreachesFromDb: getBreaches,
+        logger,
+      }),
       { findByHashes: getBreachNotificationSubscribersByHashes },
       NotificationsRepo,
       sendEmail,

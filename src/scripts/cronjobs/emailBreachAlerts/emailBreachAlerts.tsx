@@ -4,7 +4,7 @@
 
 import { Message, PubSub } from "@google-cloud/pubsub";
 import type { Logger } from "winston";
-import { getBreachByName, type HibpLikeDbBreach } from "../../../utils/hibp";
+import { type HibpLikeDbBreach } from "../../../utils/hibp";
 import { sendEmail as sendEmailFn } from "../../../utils/email";
 import * as Sentry from "@sentry/node";
 import { getBreachNotificationSubscribersByHashes } from "../../../db/models/BreachNotificationSubscriber";
@@ -18,6 +18,7 @@ import { renderEmail } from "../../../emails/renderEmail";
 import { BreachAlertEmail } from "../../../emails/templates/breachAlert/BreachAlertEmail";
 import { MessageSummary, SubscriptionHandler } from "./subscriptionHandler";
 import * as grpc from "@grpc/grpc-js";
+import { type BreachDataService } from "../../../services/BreachDataService";
 import { UTM_CAMPAIGN_ID_BREACH_ALERT } from "../../../constants";
 
 type BreachNotifiableResponse = {
@@ -100,8 +101,7 @@ function breachIsNotifiable(
  *
  * @param message PubSub Message
  * @param logger Logger instance
- * @param breachProvider fetches list of breaches (from db/redis)
- *   In practice, use `getAllBreachesFromDb` from '../../../utils/hibp'
+ * @param breachService breach data provider
  * @param subs DB Repository for subscribers
  * @param notifications DB Repository for email_notifications
  * @param sendEmail send email method
@@ -111,7 +111,7 @@ function breachIsNotifiable(
 export async function breachMessageHandler(
   message: Message,
   logger: Logger,
-  breachProvider: () => Promise<HibpLikeDbBreach[]>,
+  breachService: BreachDataService,
   subs: typeof SubscribersRepo,
   notifications: typeof NotificationsRepo,
   sendEmail: typeof sendEmailFn,
@@ -124,8 +124,7 @@ export async function breachMessageHandler(
   // Hydrate breach data
   // Ensure that the breach data exists in the db,
   // and it matches our rules for email notifications
-  const breaches = await breachProvider();
-  const breachAlert = getBreachByName(breaches, data.breachName);
+  const breachAlert = await breachService.getBreach(data.breachName);
   sentry?.setTag("breachName", data.breachName);
   if (!breachAlert) {
     throw new Error(
