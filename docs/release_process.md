@@ -4,6 +4,7 @@
 
 - [Production][prod] - Run manually by ENGR team (unless we need Env Var or other infrastructure changes)
 - [Stage][stage] - Run automatically on PR merges
+- [Dev][dev] - Run automatically on push to `dev` branch (restricted to ENGR team)
 - Locals: Run by ENGRs on their own devices. (See [README][readme] and other [`docs/`][docs].)
 
 ## Development
@@ -62,6 +63,16 @@ The standard release interval for Monitor is one week, meaning there should be a
 ## Release to Stage
 
 Every commit to `main` is automatically deployed to the [Stage][stage] server via Github Actions. The image is built and uploaded to Google Artifact Registry. ArgoCD scans the registry and detects whenever a new image uploaded with a tag that is a short commit SHA. When one is detected, it triggers a new deployment. This is configured via the [Monitor tenant definition](https://github.com/mozilla/global-platform-admin/blob/main/tenants/monitor.yaml).
+
+## Release to Dev
+
+Every commit to `dev` branch is automatically deployed to the [Dev][dev] server via Github Actions. The image is built and uploaded to Google Artifact Registry. ArgoCD scans the registry and detects whenever a new image uploaded with a tag that is a short commit SHA prefixed by `dev-`. When one is detected, it triggers a new deployment. This is configured via the [Monitor tenant definition](https://github.com/mozilla/global-platform-admin/blob/main/tenants/monitor.yaml).
+
+Before committing to `dev`, it's good practice to notify the team in slack in case someone is actively testing with the dev deployment.
+
+Pushing to this branch is restricted to internal contributors.
+
+Note that the dev deployment is protected by IAP and requires Mozilla credentials to access.
 
 ### PR Merges
 
@@ -150,8 +161,8 @@ Note the following caveats:
 
 - All production releases must follow the date tag naming scheme or else they will not be deployed. The regex for image deployments is in the [monitor tenant definition file](https://github.com/mozilla/global-platform-admin/blob/main/tenants/monitor.yaml).
   - Example: `2024.09.01`; also can include additional numeric suffix preceded by a period, e.g. `2024.09.01.1` (for manually created deployments, typically hotfixes)
-- You can deploy to dev with this flow. Select "dev" from the environment dropdown menu and ensure the tag you input is a (previously deployed) short commit SHA, not one of the date tags.
-- Only commits which have already been deployed to staging can be released to development or production environments. In practice this means that you cannot and should not attempt to deploy from a tag created on a release branch
+- You can deploy to dev with this flow, but it's recommended to use the `dev` branch instead (see [Release To Dev](#release-to-dev)). Select "dev" from the environment dropdown menu and ensure the tag you input is a (previously deployed) short commit SHA, not one of the date tags.
+- Only commits which have already been deployed to staging can be released to development or production environments with this flow. In practice this means that you cannot and should not attempt to deploy from a tag created on a release branch.
 <!-- 
 Note: The reason that this is the case currently is due to a race condition with the on-push triggered jobs release_retag_v2 and docker_build_deploy_v2. The release_retag_v2 action attempts to pull an image uploaded by docker_build_deploy_v2 immediately, even though the job is not complete. However, the new tag _will_ create a staging release (tagged by the short commit SHA) that will override the current staging environment. This could result in confusion about the state of staging environment and commit verification by QA.
 
@@ -205,6 +216,7 @@ After adding 1-click production deploy capability and broadly adopting [feature 
 
 [prod]: https://monitor.firefox.com/
 [stage]: https://stage.firefoxmonitor.nonprod.cloudops.mozgcp.net/
+[dev]: https://dev.monitor.nonprod.webservices.mozgcp.net/
 [readme]: https://github.com/mozilla/blurts-server/blob/main/README.md
 [docs]: https://github.com/mozilla/blurts-server/tree/main/docs
 [github-flow]: https://docs.github.com/en/get-started/quickstart/github-flow
