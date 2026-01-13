@@ -10,7 +10,6 @@ import { getSha1 } from "../../utils/fxa";
 import { updateFxAData } from "./subscribers";
 import { ForbiddenError, UnauthorizedError } from "../../utils/error";
 import { EmailAddressRow, SubscriberRow } from "knex/types/tables";
-import { ReactLocalization } from "@fluent/react";
 import { CONST_MAX_NUM_ADDRESSES } from "../../constants";
 
 const knex = createDbConnection();
@@ -79,7 +78,6 @@ async function addSubscriberUnverifiedEmailHash(
 async function resetUnverifiedEmailAddress(
   emailAddressId: EmailAddressRow["id"],
   subscriber: SubscriberRow,
-  l10n: ReactLocalization,
 ) {
   const newVerificationToken = uuidv4();
 
@@ -101,7 +99,7 @@ async function resetUnverifiedEmailAddress(
       ? emailAddressId
       : parseInt(emailAddressId, 10))
   ) {
-    throw new ForbiddenError(l10n.getString("error-email-validation-pending"));
+    throw new ForbiddenError("error-email-validation-pending");
   }
 
   const res = await knex("email_addresses")

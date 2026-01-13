@@ -27,7 +27,6 @@ export async function sendVerificationEmail(
   const unverifiedEmailAddressRecord = await resetUnverifiedEmailAddress(
     emailId,
     user,
-    l10n,
   );
   const recipientEmail = unverifiedEmailAddressRecord.email;
 
