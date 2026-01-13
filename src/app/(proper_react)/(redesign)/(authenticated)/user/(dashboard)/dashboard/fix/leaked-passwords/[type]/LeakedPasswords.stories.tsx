@@ -95,7 +95,7 @@ const LeakedPasswordsWrapper = (props: {
 };
 
 const meta: Meta<typeof LeakedPasswordsWrapper> = {
-  title: "Pages/Logged in/Guided resolution/3. Leaked passwords",
+  title: "Pages/Logged in/Guided resolution/2. Leaked passwords",
   component: LeakedPasswordsWrapper,
   argTypes: {
     type: {
@@ -118,21 +118,21 @@ export default meta;
 type Story = StoryObj<typeof LeakedPasswordsWrapper>;
 
 export const PasswordsStory: Story = {
-  name: "3a. Passwords",
+  name: "2a. Passwords",
   args: {
     type: "passwords",
   },
 };
 
 export const SecurityQuestionsStory: Story = {
-  name: "3b. Security questions",
+  name: "2b. Security questions",
   args: {
     type: "security-questions",
   },
 };
 
 export const LeakedPasswordsDoneStory: Story = {
-  name: "3c. Done",
+  name: "Completed Step",
   args: {
     type: "passwords-done",
     nextUnresolvedBreachType: "None",

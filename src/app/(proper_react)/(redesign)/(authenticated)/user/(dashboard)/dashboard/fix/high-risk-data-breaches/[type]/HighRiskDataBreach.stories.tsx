@@ -101,7 +101,7 @@ const HighRiskBreachWrapper = (props: {
 };
 
 const meta: Meta<typeof HighRiskBreachWrapper> = {
-  title: "Pages/Logged in/Guided resolution/2. High-risk data breaches",
+  title: "Pages/Logged in/Guided resolution/1. High-risk data breaches",
   component: HighRiskBreachWrapper,
   argTypes: {
     type: {
@@ -131,35 +131,35 @@ export default meta;
 type Story = StoryObj<typeof HighRiskBreachWrapper>;
 
 export const SsnStory: Story = {
-  name: "2a. Social Security Number",
+  name: "1a. Social Security Number",
   args: {
     type: "social-security-number",
   },
 };
 
 export const CreditCardStory: Story = {
-  name: "2b. Credit card",
+  name: "1b. Credit card",
   args: {
     type: "credit-card",
   },
 };
 
 export const BankAccountStory: Story = {
-  name: "2c. Bank account",
+  name: "1c. Bank account",
   args: {
     type: "bank-account",
   },
 };
 
 export const PinStory: Story = {
-  name: "2d. PIN",
+  name: "1d. PIN",
   args: {
     type: "pin",
   },
 };
 
 export const HighRiskBreachDoneStory: Story = {
-  name: "2e. Done",
+  name: "Completed Step",
   args: {
     type: "done",
     nextUnresolvedBreachType: "None",
