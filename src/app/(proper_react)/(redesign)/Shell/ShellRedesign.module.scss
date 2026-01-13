@@ -24,9 +24,6 @@
 
   @media screen and (min-width: tokens.$screen-md) {
     align-items: center;
-    // background: tokens.$color-white;
-    // border-bottom: 1px solid tokens.$color-grey-20;
-    // box-shadow: tokens.$box-shadow-xs;
     display: flex;
     height: tokens.$tab-bar-height;
     padding: 0 tokens.$spacing-lg;
