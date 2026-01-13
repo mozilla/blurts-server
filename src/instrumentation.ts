@@ -3,8 +3,6 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import * as Sentry from "@sentry/nextjs";
-import { config } from "./config";
-
 export async function register() {
   console.log(
     "[INSTRUMENTATION] register() called, runtime:",
@@ -34,6 +32,7 @@ export async function register() {
       skipOpenTelemetrySetup: true,
     });
     const { nodeSDKBuilder } = await import("./instrumentation.node");
+    const { config } = await import("./config");
     console.log("[INSTRUMENTATION] Initializing OTEL...");
     await nodeSDKBuilder({
       collectorUrl: config.otel.endpoint,
