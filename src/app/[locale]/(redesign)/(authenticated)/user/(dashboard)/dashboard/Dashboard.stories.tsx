@@ -19,7 +19,7 @@ import { UserAnnouncementWithDetails } from "../../../../../../../db/tables/user
 
 // Exported values should be stories, but this was already there when
 // Storybook added this lint rule, so I guess it works?
- 
+
 const breachOptions = {
   empty: "No data breaches",
   unresolved: "With unresolved data breaches",
