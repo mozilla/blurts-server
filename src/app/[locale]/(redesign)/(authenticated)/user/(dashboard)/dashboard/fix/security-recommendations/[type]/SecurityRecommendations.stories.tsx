@@ -73,7 +73,7 @@ const SecurityRecommendationsWrapper = (props: {
 };
 
 const meta: Meta<typeof SecurityRecommendationsWrapper> = {
-  title: "Pages/Logged in/Guided resolution/4. Security recommendations",
+  title: "Pages/Logged in/Guided resolution/3. Security recommendations",
   component: SecurityRecommendationsWrapper,
   argTypes: {
     type: {
@@ -89,7 +89,7 @@ export default meta;
 type Story = StoryObj<typeof SecurityRecommendationsWrapper>;
 
 export const PhoneStory: Story = {
-  name: "4a. Phone number",
+  name: "3a. Phone number",
   args: {
     type: "phone",
   },
@@ -103,7 +103,7 @@ export const PhoneStory: Story = {
 };
 
 export const EmailStory: Story = {
-  name: "4b. Email address",
+  name: "3b. Email address",
   args: {
     type: "email",
   },
@@ -117,7 +117,7 @@ export const EmailStory: Story = {
 };
 
 export const IpStory: Story = {
-  name: "4c. IP address",
+  name: "3c. IP address",
   args: {
     type: "ip",
   },
@@ -131,7 +131,7 @@ export const IpStory: Story = {
 };
 
 export const DoneStory: Story = {
-  name: "4d. Done",
+  name: "Completed Step",
   args: {
     type: "done",
   },
