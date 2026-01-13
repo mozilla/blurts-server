@@ -38,3 +38,19 @@ type Story = StoryObj<typeof View>;
 export const Landing: Story = {
   name: "Default",
 };
+
+export const LandingDe: Story = {
+  name: "German",
+  args: {
+    countryCode: "de",
+    l10n: getL10n("de"),
+  },
+};
+
+export const LandingFr: Story = {
+  name: "French",
+  args: {
+    countryCode: "fr",
+    l10n: getL10n("fr"),
+  },
+};
