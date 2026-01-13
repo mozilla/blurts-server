@@ -19,13 +19,14 @@ import { UserAnnouncementWithDetails } from "../../../../../../../db/tables/user
 
 // Exported values should be stories, but this was already there when
 // Storybook added this lint rule, so I guess it works?
-// eslint-disable-next-line storybook/prefer-pascal-case
-export const breachOptions = {
+ 
+const breachOptions = {
   empty: "No data breaches",
   unresolved: "With unresolved data breaches",
   resolved: "All data breaches resolved",
   invalid: "Invalid state (error case)",
 };
+
 export type DashboardWrapperProps = (
   | {
       countryCode: "us";
@@ -188,25 +189,22 @@ export default meta;
 type Story = StoryObj<typeof DashboardWrapper>;
 
 export const DashboardNonUsNoBreaches: Story = {
-  name: "Non-US user, with 0 breaches",
+  name: "No breaches",
   args: {
-    countryCode: "nl",
     breaches: "empty",
   },
 };
 
 export const DashboardNonUsUnresolvedBreaches: Story = {
-  name: "Non-US user, with unresolved breaches",
+  name: "Some breaches unresolved",
   args: {
-    countryCode: "nl",
     breaches: "unresolved",
   },
 };
 
 export const DashboardNonUsResolvedBreaches: Story = {
-  name: "Non-US user, with all breaches resolved",
+  name: "All breaches resolved",
   args: {
-    countryCode: "nl",
     breaches: "resolved",
   },
 };
@@ -214,7 +212,6 @@ export const DashboardNonUsResolvedBreaches: Story = {
 export const DashboardInvalidState: Story = {
   name: "Invalid state",
   args: {
-    countryCode: "nl",
     breaches: "invalid",
   },
 };

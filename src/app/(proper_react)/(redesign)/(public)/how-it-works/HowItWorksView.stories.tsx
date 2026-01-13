@@ -9,7 +9,7 @@ import { PublicShell } from "../PublicShell";
 import { defaultExperimentData } from "../../../../../telemetry/generated/nimbus/experiments";
 
 const meta: Meta<typeof HowItWorksView> = {
-  title: "Pages/Public/HowItWorks page",
+  title: "Pages/Public/How It Works",
   component: () => (
     <PublicShell
       l10n={getL10n("en")}
@@ -29,6 +29,5 @@ export default meta;
 type Story = StoryObj<typeof HowItWorksView>;
 
 export const HowItWorks: Story = {
-  name: "How it works",
   args: {},
 };
