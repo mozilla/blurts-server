@@ -32,12 +32,8 @@ export async function register() {
       skipOpenTelemetrySetup: true,
     });
     const { nodeSDKBuilder } = await import("./instrumentation.node");
-    const { config } = await import("./config");
     console.log("[INSTRUMENTATION] Initializing OTEL...");
-    await nodeSDKBuilder({
-      collectorUrl: config.otel.endpoint,
-      protocol: config.otel.exporterProtocol,
-    });
+    await nodeSDKBuilder();
   }
 }
 

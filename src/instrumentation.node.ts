@@ -42,15 +42,12 @@ import {
 } from "@sentry/opentelemetry";
 import * as Sentry from "@sentry/nextjs";
 import { AsyncLocalStorageContextManager } from "@opentelemetry/context-async-hooks";
-import { config as appConfig } from "./config";
+import { config as appConfig, parseKVList } from "./config";
 
 // Note: console.log use is intentional because this step is done as early
 // as possible, before setting up winston logging
-export async function nodeSDKBuilder(config: {
-  collectorUrl?: string;
-  protocol?: string;
-}) {
-  const { collectorUrl } = config;
+export async function nodeSDKBuilder() {
+  const collectorUrl = appConfig.otel.endpoint;
   const hasUrl = collectorUrl !== undefined && collectorUrl.length > 0;
   if (!hasUrl) {
     console.log(
@@ -109,6 +106,7 @@ export async function nodeSDKBuilder(config: {
   const sdk = new NodeSDK({
     resource: resourceFromAttributes({
       [ATTR_SERVICE_NAME]: appConfig.otel.serviceName,
+      ...parseKVList(appConfig.otel.resourceAttributes),
     }).merge(detectedResource),
     metricReaders: [
       new PeriodicExportingMetricReader({
