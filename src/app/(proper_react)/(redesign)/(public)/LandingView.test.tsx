@@ -9,11 +9,7 @@ import { userEvent } from "@testing-library/user-event";
 import { axe } from "jest-axe";
 import { signIn, useSession } from "next-auth/react";
 import { useTelemetry as useTelemetryImported } from "../../../hooks/useTelemetry";
-import Meta, {
-  LandingNonUs,
-  LandingNonUsDe,
-  LandingNonUsFr,
-} from "./LandingView.stories";
+import Meta, { Landing, LandingFr, LandingDe } from "./LandingView.stories";
 import { deleteAllCookies } from "../../../functions/client/deleteAllCookies";
 import { mockIsIntersecting } from "react-intersection-observer/test-utils";
 
@@ -53,7 +49,7 @@ beforeEach(() => {
 });
 
 it("passes the axe accessibility test suite", async () => {
-  const ComposedDashboard = composeStory(LandingNonUs, Meta);
+  const ComposedDashboard = composeStory(Landing, Meta);
   const { container } = render(<ComposedDashboard />);
   expect(await axe(container)).toHaveNoViolations();
 }, 10_000);
@@ -61,7 +57,7 @@ it("passes the axe accessibility test suite", async () => {
 it("passes the user's email address to the identity provider", async () => {
   const user = userEvent.setup();
 
-  const ComposedDashboard = composeStory(LandingNonUs, Meta);
+  const ComposedDashboard = composeStory(Landing, Meta);
   render(<ComposedDashboard />);
 
   const inputField = screen.getAllByLabelText(
@@ -84,7 +80,7 @@ it("passes the user's email address to the identity provider", async () => {
 
 it("sends telemetry when a free scan CTA is shown in the viewport", async () => {
   const mockedRecord = useTelemetry();
-  const ComposedDashboard = composeStory(LandingNonUs, Meta);
+  const ComposedDashboard = composeStory(Landing, Meta);
   render(<ComposedDashboard />);
 
   // jsdom will complain about not being able to navigate to a different page
@@ -126,7 +122,7 @@ it("does not show a 'Sign In' button in the header if the user is signed in", ()
     update: () => Promise.resolve(null),
   });
 
-  const ComposedDashboard = composeStory(LandingNonUs, Meta);
+  const ComposedDashboard = composeStory(Landing, Meta);
   render(<ComposedDashboard />);
 
   const signInButton = screen.queryByRole("button", {
@@ -137,7 +133,7 @@ it("does not show a 'Sign In' button in the header if the user is signed in", ()
 });
 
 it("shows a 'Sign In' button in the header if the user is not signed in", async () => {
-  const ComposedDashboard = composeStory(LandingNonUs, Meta);
+  const ComposedDashboard = composeStory(Landing, Meta);
   render(<ComposedDashboard />);
 
   const user = userEvent.setup();
@@ -153,7 +149,7 @@ it("shows a 'Sign In' button in the header if the user is not signed in", async 
 
 it("counts the number of clicks on the sign-in button at the top", async () => {
   const mockedRecord = useTelemetry();
-  const ComposedDashboard = composeStory(LandingNonUs, Meta);
+  const ComposedDashboard = composeStory(Landing, Meta);
   render(<ComposedDashboard />);
 
   const user = userEvent.setup();
@@ -173,7 +169,7 @@ it("counts the number of clicks on the sign-in button at the top", async () => {
 });
 
 it("shows the data breaches quote", () => {
-  const ComposedDashboard = composeStory(LandingNonUs, Meta);
+  const ComposedDashboard = composeStory(Landing, Meta);
   render(<ComposedDashboard />);
   const quote = screen.getByText(
     "Data breaches happen every 11 minutes, exposing your private information — but don’t worry, we can help.",
@@ -182,7 +178,7 @@ it("shows the data breaches quote", () => {
 });
 
 it("shows the scanning for exposures illustration in the fix your exposures section", () => {
-  const ComposedDashboard = composeStory(LandingNonUs, Meta);
+  const ComposedDashboard = composeStory(Landing, Meta);
   render(<ComposedDashboard />);
 
   const scanningForExposuresIllustration = screen.getByTestId(
@@ -192,7 +188,7 @@ it("shows the scanning for exposures illustration in the fix your exposures sect
 });
 
 it("can initiate sign in from the Here's How We Help section", async () => {
-  const ComposedDashboard = composeStory(LandingNonUs, Meta);
+  const ComposedDashboard = composeStory(Landing, Meta);
   render(<ComposedDashboard />);
 
   const user = userEvent.setup();
@@ -206,7 +202,7 @@ it("can initiate sign in from the Here's How We Help section", async () => {
 });
 
 it("shows the german scanning for exposures illustration", () => {
-  const ComposedDashboard = composeStory(LandingNonUsDe, Meta);
+  const ComposedDashboard = composeStory(LandingDe, Meta);
   render(<ComposedDashboard />);
   const scanningForExposuresIllustration = screen.getByTestId(
     "scanning-for-exposures-image",
@@ -218,7 +214,7 @@ it("shows the german scanning for exposures illustration", () => {
 });
 
 it("shows the french scanning for exposures illustration", () => {
-  const ComposedDashboard = composeStory(LandingNonUsFr, Meta);
+  const ComposedDashboard = composeStory(LandingFr, Meta);
   render(<ComposedDashboard />);
   const scanningForExposuresIllustration = screen.getByTestId(
     "scanning-for-exposures-image",
@@ -240,7 +236,7 @@ it("does not show a confirmaton message if the user has just deleted their accou
   );
   document.cookie = "justDeletedAccount=justDeletedAccount; max-age=0";
 
-  const ComposedDashboard = composeStory(LandingNonUs, Meta);
+  const ComposedDashboard = composeStory(Landing, Meta);
   render(<ComposedDashboard />);
 
   const alert = screen.queryByRole("alert");
@@ -259,7 +255,7 @@ it("shows a confirmaton message if the user has just deleted their account", () 
   );
   document.cookie = "justDeletedAccount=justDeletedAccount";
 
-  const ComposedDashboard = composeStory(LandingNonUs, Meta);
+  const ComposedDashboard = composeStory(Landing, Meta);
   render(<ComposedDashboard />);
 
   const alert = screen.getByRole("alert");
@@ -283,7 +279,7 @@ it("hides the 'account deletion' confirmation message when the user dismisses it
   const user = userEvent.setup();
   document.cookie = "justDeletedAccount=justDeletedAccount";
 
-  const ComposedDashboard = composeStory(LandingNonUs, Meta);
+  const ComposedDashboard = composeStory(Landing, Meta);
   render(<ComposedDashboard />);
 
   const alert = screen.getByRole("alert");
@@ -295,7 +291,7 @@ it("hides the 'account deletion' confirmation message when the user dismisses it
 
 it("opens and closes an FAQ accordion item", async () => {
   const user = userEvent.setup();
-  const ComposedDashboard = composeStory(LandingNonUs, Meta);
+  const ComposedDashboard = composeStory(Landing, Meta);
   render(<ComposedDashboard />);
   const faqQuestion = screen.getByRole("button", {
     name: new RegExp("What exactly is a data breach?"),
@@ -312,7 +308,7 @@ it("opens and closes an FAQ accordion item", async () => {
 
 it("only opens one FAQ at a time", async () => {
   const user = userEvent.setup();
-  const ComposedDashboard = composeStory(LandingNonUs, Meta);
+  const ComposedDashboard = composeStory(Landing, Meta);
   render(<ComposedDashboard />);
   const faqQuestion1 = screen.getByRole("button", {
     // Partial match to avoid the CloseIcon svg
@@ -336,7 +332,7 @@ it("only opens one FAQ at a time", async () => {
 
 it("opens the see all FAQ link into a new page", async () => {
   const user = userEvent.setup();
-  const ComposedDashboard = composeStory(LandingNonUs, Meta);
+  const ComposedDashboard = composeStory(Landing, Meta);
   render(<ComposedDashboard />);
 
   const seeAllFaqBtn = screen.getByRole("link", { name: "See all FAQs" });
