@@ -134,6 +134,10 @@ export async function nodeSDKBuilder() {
           enabled: false,
           requireParentSpan: true,
         },
+        "@opentelemetry/instrumentation-pg": {
+          // Disable because we're using @opentelemetry/instrumentation-knex
+          enabled: false,
+        },
         // Node native fetch instrumentation
         "@opentelemetry/instrumentation-undici": {
           // Ignore sending anonymous telemetry to next.js
