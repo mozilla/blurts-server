@@ -70,6 +70,9 @@ updates:
           - "stylelint"
           - "stylelint-scss"
           - "stylelint-config-recommended-scss"
+      otel:
+        patterns:
+          - "@opentelemetry/*"
   - package-ecosystem: "docker"
     directory: "/"
     schedule:
