@@ -28,6 +28,7 @@ jobs:
         run: docker build .
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          NEXT_SERVER_ACTIONS_ENCRYPTION_KEY: "Unused, like the build result — we're just verifying that a build can succeed."
           NEXTAUTH_SECRET: "Unused, like the build result — we're just verifying that a build can succeed."
           SENTRY_DSN: "Unused, like the build result — we're just verifying that a build can succeed."
           EMAIL_FROM: "Unused, like the build result — we're just verifying that a build can succeed."
