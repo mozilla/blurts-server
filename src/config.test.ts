@@ -143,7 +143,7 @@ describe("parseKVList", () => {
     ).toEqual({
       "k8s.namespace.name": "monitor-stage",
       "k8s.pod.name": "pod-123",
-      "service.version": "9d1fac7",
+      "service.version": "123abcd",
     });
   });
 
