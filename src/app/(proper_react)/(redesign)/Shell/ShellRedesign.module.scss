@@ -10,7 +10,7 @@
   display: none;
   overflow: hidden;
 
-  @media screen and (min-width: tokens.$screen-md) {
+  @media screen and (min-width: tokens.$screen-xl) {
     display: flex;
     gap: tokens.$layout-sm;
     flex-direction: column;
@@ -22,8 +22,11 @@
 .homeLink {
   display: none;
 
-  @media screen and (min-width: tokens.$screen-md) {
+  @media screen and (min-width: calc(tokens.$screen-xl + 1px)) {
     align-items: center;
+    background: tokens.$color-white;
+    border-bottom: 1px solid tokens.$color-grey-20;
+    box-shadow: tokens.$box-shadow-xs;
     display: flex;
     height: tokens.$tab-bar-height;
     padding: 0 tokens.$spacing-lg;
