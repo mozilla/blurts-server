@@ -33,13 +33,20 @@
     "moduleDetection": "force" /* Control what method is used to detect module-format JS files. */ /* Modules */,
     "module": "esnext" /* Specify what module code is generated. */,
     // "rootDir": "./src/" /* Specify the root folder within your source files. */,
-    "moduleResolution": "node" /* Specify how TypeScript looks up a file from a given module specifier. */, // "baseUrl": "./",                                  /* Specify the base directory to resolve non-relative module names. */
+    "moduleResolution": "bundler" /* Specify how TypeScript looks up a file from a given module specifier. */,
+    "baseUrl": "./",                                  /* Specify the base directory to resolve non-relative module names. */
     "plugins": [
       {
         "name": "next"
       }
     ],
-    // "paths": {},                                      /* Specify a set of entries that re-map imports to additional lookup locations. */
+    "paths": {
+      "@mozilla/glean/web": ["node_modules/@mozilla/glean/dist/types/entry/web"],
+      "@mozilla/glean/metrics": ["node_modules/@mozilla/glean/dist/types/core/glean_metrics"],
+      "@mozilla/glean/metrics/event": ["node_modules/@mozilla/glean/dist/types/core/metrics/types/event"],
+      "@mozilla/glean/private/metrics/event": ["node_modules/@mozilla/glean/dist/types/core/metrics/types/event"],
+      "@mozilla/glean/private/metrics/string": ["node_modules/@mozilla/glean/dist/types/core/metrics/types/string"]
+    },                                      /* Specify a set of entries that re-map imports to additional lookup locations. */
     // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */
     // "typeRoots": [],                                  /* Specify multiple folders that act like './node_modules/@types'. */
     // "types": [],                                      /* Specify type package names to be included without being referenced in a source file. */

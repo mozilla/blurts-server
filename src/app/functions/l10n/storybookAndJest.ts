@@ -3,8 +3,8 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { MarkupParser, ReactLocalization } from "@fluent/react";
-import type { readdirSync, readFileSync } from "node:fs";
-import type { resolve } from "node:path";
+import type { readdirSync, readFileSync } from "fs";
+import type { resolve } from "path";
 import { createGetL10n, createGetL10nBundles } from ".";
 import type { GetL10nBundles } from "./index";
 
