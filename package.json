@@ -105,7 +105,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.3",
-    "@faker-js/faker": "^9.8.0",
+    "@faker-js/faker": "^10.2.0",
     "@playwright/test": "^1.56.1",
     "@storybook/addon-a11y": "^9.1.15",
     "@storybook/addon-docs": "^9.1.15",
