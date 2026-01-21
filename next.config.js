@@ -186,6 +186,15 @@ const nextConfig = {
   //    Module not found: Can't resolve './ROOT' <dynamic>
   //    server relative imports are not implemented yet. Please try an import relative to the file you are importing from.
   serverExternalPackages: ["mjml", "commonjs", "knex", "ioredis-mock"],
+  transpilePackages: [
+    "@storybook/react",
+    "@storybook/nextjs",
+    "@storybook/addon-links",
+    "@storybook/addon-essentials",
+    "@storybook/addon-interactions",
+    "storybook",
+    "react-intersection-observer",
+  ],
 };
 
 const sentryOptions = {
