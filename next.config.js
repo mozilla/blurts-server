@@ -186,19 +186,23 @@ const nextConfig = {
   //    Module not found: Can't resolve './ROOT' <dynamic>
   //    server relative imports are not implemented yet. Please try an import relative to the file you are importing from.
   serverExternalPackages: ["mjml", "commonjs", "knex", "ioredis-mock"],
-  // transpilePackages is required for Jest (via next/jest) to correctly
-  // transform ESM-only dependencies in node_modules. Without this,
-  // tests importing Storybook logic or components will fail with:
-  // "SyntaxError: Cannot use import statement outside a module"
-  transpilePackages: [
+};
+
+if (process.env.NODE_ENV === "test") {
+  nextConfig.transpilePackages = [
+    ...(nextConfig.transpilePackages ?? []),
+    // transpilePackages is required for Jest (via next/jest) to correctly
+    // transform ESM-only dependencies in node_modules. Without this,
+    // tests importing Storybook logic or components will fail with:
+    // "SyntaxError: Cannot use import statement outside a module"
     "@storybook/react",
     "@storybook/nextjs",
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@storybook/addon-interactions",
     "storybook",
-  ],
-};
+  ];
+}
 
 const sentryOptions = {
   // Additional config options for the Sentry Webpack plugin. Keep in mind that
