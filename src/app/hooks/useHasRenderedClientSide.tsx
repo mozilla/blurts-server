@@ -26,6 +26,15 @@ export function useHasRenderedClientSide() {
   const [hasRenderedClientSide, setHasRenderedClientSide] = useState(false);
 
   useEffect(() => {
+    // Usually, you don't want to set state in effects, because
+    // in essence, it causes duplicate work. In this case, however,
+    // we do need two renders: one that's equal to the server-side
+    // render, and one where we depend on the client-side environment.
+    // In other words, we cannot use the approach suggested at the
+    // following docs, because that would skip the first render,
+    // and we need that to align with what happens on the server-side:
+    // https://react.dev/learn/you-might-not-need-an-effect#initializing-the-application
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setHasRenderedClientSide(true);
   }, []);
 
