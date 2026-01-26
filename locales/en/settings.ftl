@@ -52,6 +52,8 @@ settings-delete-monitor-free-account-dialog-cta-label = Delete account
 settings-delete-monitor-free-account-dialog-cancel-button-label = Never mind, take me back
 settings-delete-monitor-account-confirmation-toast-label-2 = Your { -brand-monitor } account is now deleted.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Dismiss
+settings-delete-account-recent-auth-required = For your safety, please sign in again (within the last hour) before deleting your account.
+settings-delete-account-error-generic = Something went wrong while trying to delete your account. Try again.
 
 ## Settings page redesign
 
