@@ -98,16 +98,11 @@ export async function nodeSDKBuilder() {
       ? new SentrySampler(sentryClient)
       : undefined;
 
-  const detectedResource = detectResources({
-    detectors: [gcpDetector],
-  });
-  await detectedResource.waitForAsyncAttributes?.();
-
   const sdk = new NodeSDK({
     resource: resourceFromAttributes({
       [ATTR_SERVICE_NAME]: appConfig.otel.serviceName,
       ...parseKVList(appConfig.otel.resourceAttributes),
-    }).merge(detectedResource),
+    }),
     metricReaders: [
       new PeriodicExportingMetricReader({
         exporter: metricExporter,
