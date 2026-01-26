@@ -119,6 +119,23 @@ export const config = {
       logoBucket: getEnvString("S3_BUCKET", { fallbackValue: "" }),
     },
   },
+  otel: {
+    // If empty will export to console instead
+    endpoint: process.env.OTEL_EXPORTER_OTLP_ENDPOINT,
+    // Must be aligned with endpoint, e.g. http/protobuf and port 4318
+    // For now just HTTP, can enable GRPC later if needed
+    exporterProtocol: getEnvEnum(
+      "OTEL_EXPORTER_OTLP_PROTOCOL",
+      ["http/protobuf"],
+      {
+        fallbackValue: "http/protobuf",
+      },
+    ),
+    resourceAttributes: process.env.OTEL_RESOURCE_ATTRIBUTES,
+    serviceName: getEnvString("OTEL_SERVICE_NAME", {
+      fallbackValue: "monitor",
+    }),
+  },
 } as const;
 /* c8 ignore end */
 
@@ -210,4 +227,30 @@ export function getEnvString(
   }
 
   return value;
+}
+
+/**
+ * Parse comma-separated key=value list into dictionary.
+ * Segments without '=' are ignored (a=1,b,c=2 -> {a: 1, c: 2}
+ * (e.g. used by OTEL_RESOURCE_ATTRIBUTES env var:
+ * 'k8s.container.name=monitor-api-endpoint,k8s.namespace.name=monitor-stage...')
+ * */
+export function parseKVList(str?: string): Record<string, string> {
+  if (str === undefined) return {};
+  return str
+    .split(",")
+    .map((entry) => entry.trim())
+    .filter(Boolean)
+    .reduce(
+      (keyvs, entry) => {
+        const sep = entry.indexOf("=");
+        // Ignore missing or empty keys and values
+        const value = entry.slice(sep + 1);
+        if (sep > 0 && value.length) {
+          keyvs[entry.slice(0, sep)] = value;
+        }
+        return keyvs;
+      },
+      {} as Record<string, string>,
+    );
 }

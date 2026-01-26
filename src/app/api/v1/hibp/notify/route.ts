@@ -17,7 +17,7 @@ import { PubSub } from "@google-cloud/pubsub";
 import { isValidBearer } from "../../../../../utils/hibp";
 import { config } from "../../../../../config";
 import {
-  hibpNotifyRequestsTotal,
+  incHibpNotifyRequest,
   incHibpNotifyFailure,
 } from "../../../../../instrumentation.node";
 
@@ -34,7 +34,7 @@ export type PostHibpNotificationRequestBody = {
  * @param req
  */
 export async function POST(req: NextRequest) {
-  hibpNotifyRequestsTotal.inc();
+  incHibpNotifyRequest();
 
   let pubsub: PubSub;
   let json: PostHibpNotificationRequestBody;
@@ -67,7 +67,7 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    pubsub = new PubSub({ projectId });
+    pubsub = new PubSub({ projectId, enableOpenTelemetryTracing: true });
   } catch (ex) {
     logger.error("error_connecting_to_pubsub:", { exception: ex as string });
     incHibpNotifyFailure("pubsub-error");
