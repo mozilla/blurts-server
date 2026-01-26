@@ -124,7 +124,7 @@
     "@types/lodash.isequal": "^4.5.8",
     "@types/mjml": "^4.7.4",
     "@types/mjml-browser": "^4.15.0",
-    "@types/nodemailer": "^7.0.4",
+    "@types/nodemailer": "^7.0.5",
     "@typescript-eslint/eslint-plugin": "^8.52.0",
     "@typescript-eslint/parser": "^8.32.1",
     "adm-zip": "^0.5.16",
