@@ -3,7 +3,6 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { ReactNode } from "react";
-import Link from "next/link";
 import { Session } from "next-auth";
 import { MobileShell } from "../MobileShell";
 import { Footer } from "../Footer";

@@ -18,7 +18,6 @@ import {
 import { BreachDataTypes } from "../../../../../../../../../functions/universal/breach";
 import { StepDeterminationData } from "../../../../../../../../../functions/server/getRelevantGuidedSteps";
 import { UserAnnouncementWithDetails } from "../../../../../../../../../../db/tables/user_announcements";
-import path from "path";
 
 const user = createRandomUser();
 
