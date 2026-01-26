@@ -77,11 +77,11 @@ export default async function RootLayout({
   const enrollmentWithConflictingUserId = (
     experimentData.Enrollments ?? []
   ).find((enrollment) => enrollment.nimbus_user_id !== experimentationId);
-  if (typeof enrollmentWithConflictingUserId !== "undefined") {
-    Sentry.captureMessage(
-      `Nimbus user ID from Cirrus: [${enrollmentWithConflictingUserId.nimbus_user_id}] did not match experimentationId: [${experimentationId}]`,
-    );
-  }
+  // if (typeof enrollmentWithConflictingUserId !== "undefined") {
+  //   Sentry.captureMessage(
+  //     `Nimbus user ID from Cirrus: [${enrollmentWithConflictingUserId.nimbus_user_id}] did not match experimentationId: [${experimentationId}]`,
+  //   );
+  // }
 
   return (
     <html lang={currentLocale}>
