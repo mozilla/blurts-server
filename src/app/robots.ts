@@ -4,13 +4,24 @@
 
 import type { MetadataRoute } from "next";
 import { config } from "../config";
+import { usableLocales } from "./functions/server/generateStaticLocaleParam";
 
 export default function robots(): MetadataRoute.Robots {
+  const localeUserPages = usableLocales.flatMap((locale) => [
+    `/${locale}/user/dashboard/`,
+    `/${locale}/user/settings/`,
+    `/${locale}/user/welcome/`,
+  ]);
   return {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: ["/user/dashboard/", "/user/settings/", "/user/welcome/"],
+      disallow: [
+        "/user/dashboard/",
+        "/user/settings/",
+        "/user/welcome/",
+        ...localeUserPages,
+      ],
     },
     sitemap: `${config.serverUrl}/sitemap.xml`,
   };

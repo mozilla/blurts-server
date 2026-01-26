@@ -17,7 +17,7 @@
     "build": "npm run build-glean && npm run build-nimbus && next build && npm run build-cronjobs",
     "cloudrun": "npm run db:migrate && npm start",
     "start": "next start",
-    "lint": "stylelint '**/*.scss' && prettier --check './src' && eslint --max-warnings=0 . && tsc -p tsconfig.json --noEmit && npm run validate-nimbus",
+    "lint": "stylelint '**/*.scss' && prettier --check './src' && eslint --max-warnings=0 . && next typegen && tsc -p tsconfig.json --noEmit && npm run validate-nimbus",
     "fix": "prettier --write './src' && eslint --fix . && stylelint --fix '**/*.scss'",
     "test": "npm run build-nimbus && jest \"\\.(spec|test)\\.ts\"",
     "test-integrations": "npm run build-nimbus && jest \"\\.integration\\.ts\" --coverage=false --runInBand",
