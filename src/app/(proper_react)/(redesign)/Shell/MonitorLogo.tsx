@@ -13,7 +13,9 @@ import Link from "next/link";
 
 export const MonitorLogo = () => {
   const l10n = useL10n();
-  const isResolutionFlow = usePathname().includes("/fix/");
+  const pathname = usePathname();
+  const isResolutionFlow =
+    typeof pathname === "string" && pathname.includes("/fix/");
   return (
     <Link
       href="/user/dashboard"
