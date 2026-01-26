@@ -18,6 +18,7 @@ import {
 import { BreachDataTypes } from "../../../../../../../../../functions/universal/breach";
 import { StepDeterminationData } from "../../../../../../../../../functions/server/getRelevantGuidedSteps";
 import { UserAnnouncementWithDetails } from "../../../../../../../../../../db/tables/user_announcements";
+import path from "path";
 
 const user = createRandomUser();
 
@@ -135,12 +136,26 @@ export const SsnStory: Story = {
   args: {
     type: "social-security-number",
   },
+  parameters: {
+    nextjs: {
+      navigation: {
+        pathname: "/fix/high-risk-data-breaches/social-security-number",
+      },
+    },
+  },
 };
 
 export const CreditCardStory: Story = {
   name: "2b. Credit card",
   args: {
     type: "credit-card",
+  },
+  parameters: {
+    nextjs: {
+      navigation: {
+        pathname: "/fix/high-risk-data-breaches/credit-card",
+      },
+    },
   },
 };
 
@@ -149,12 +164,26 @@ export const BankAccountStory: Story = {
   args: {
     type: "bank-account",
   },
+  parameters: {
+    nextjs: {
+      navigation: {
+        pathname: "/fix/high-risk-data-breaches/bank-account",
+      },
+    },
+  },
 };
 
 export const PinStory: Story = {
   name: "2d. PIN",
   args: {
     type: "pin",
+  },
+  parameters: {
+    nextjs: {
+      navigation: {
+        pathname: "/fix/high-risk-data-breaches/pin",
+      },
+    },
   },
 };
 
@@ -163,5 +192,12 @@ export const HighRiskBreachDoneStory: Story = {
   args: {
     type: "done",
     nextUnresolvedBreachType: "None",
+  },
+  parameters: {
+    nextjs: {
+      navigation: {
+        pathname: "/fix/high-risk-data-breaches/done",
+      },
+    },
   },
 };
