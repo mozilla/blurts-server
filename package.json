@@ -153,9 +153,9 @@
     "prettier": "3.6.2",
     "sass": "^1.97.2",
     "storybook": "^10.1.11",
-    "stylelint": "^16.26.1",
-    "stylelint-config-recommended-scss": "^16.0.2",
-    "stylelint-scss": "^6.14.0",
+    "stylelint": "^17.0.0",
+    "stylelint-config-recommended-scss": "^17.0.0",
+    "stylelint-scss": "^7.0.0",
     "tsx": "^4.20.6",
     "typescript": "^5.9.3",
     "yaml": "^2.8.2"
