@@ -18,32 +18,27 @@ settings-alert-preferences-option-two = Envoyer toutes les alertes de fuites de 
 
 ## Monitored email addresses
 
-# Variables:
-#   $email (string) - Email address
-settings-email-list-title = Adresses e-mail surveillées
-# Variables:
-#   $limit (number) - Number of email addresses included in the plan
-settings-email-limit-info =
-    { $limit ->
-        [one] Votre compte permet de surveiller jusqu’à { $limit } adresse e-mail.
-       *[other] Votre compte permet de surveiller jusqu’à { $limit } adresses e-mail.
-    }
 settings-email-verification-callout = Vérification de l’adresse e-mail nécessaire
-settings-resend-email-verification-link = Renvoyer l’e-mail de vérification
-settings-add-email-button = Ajouter une adresse e-mail
-settings-remove-email-button-label = Supprimer
+settings-email-addresses-header = Adresses e-mail
+settings-email-addresses-description = { -brand-monitor } vous alertera si ces adresses e-mail apparaissent dans des fuites de données connues.
+settings-email-addresses-add-email-button = Ajouter une adresse e-mail
 # Variables:
-#   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
-settings-remove-email-button-tooltip = Arrêter de surveiller { $emailAddress }
-# This string is shown beneath each of the user’s email addresses to indicate
-# how many known breaches that email address was found in.
+#   $limit (number) - Number of emails that can be added for monitoring.
+settings-email-addresses-add-email-indicator-limit = Ajoutez jusqu’à { $limit } adresses e-mail
+settings-email-addresses-add-email-resend-button-label = Renvoyer le lien de vérification
+input-error-alt = Erreur
+
+## Email address dialog
+
+settings-email-addresses-initial-dialog-header = Ajouter une adresse e-mail
+settings-email-addresses-initial-dialog-description = Nous vous enverrons un lien de vérification pour que vous confirmiez que vous souhaitez l’inclure dans une prochaine analyse de { -brand-monitor }.
+settings-email-addresses-initial-dialog-add-email-input-label = Saisissez votre adresse e-mail
+settings-email-addresses-initial-dialog-add-email-button-label = Envoyer le lien de vérification
 # Variables:
-#   $breachCount (number) - Number of breaches
-settings-email-number-of-breaches-info =
-    { $breachCount ->
-        [one] Apparaît dans { $breachCount } fuite de données connue.
-       *[other] Apparaît dans { $breachCount } fuites de données connues.
-    }
+#   $email (string) - Email address the confirmation has been sent to.
+settings-email-addresses-confirmation-dialog-header = Lien de vérification envoyé à <b>{ $email }</b>
+settings-email-addresses-confirmation-dialog-description = Ouvrez le lien pour l’ajouter à ce compte lors des prochaines analyses de { -brand-monitor }.
+settings-email-addresses-confirmation-dialog-close-button = Fermer
 
 ## Delete Monitor account
 
@@ -57,13 +52,10 @@ settings-delete-monitor-free-account-dialog-cancel-button-label = J’ai changé
 settings-delete-monitor-account-confirmation-toast-label-2 = Votre compte { -brand-monitor } a été supprimé.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Fermer
 
-## Monthly Monitor Report
-
-settings-alert-preferences-allow-monthly-monitor-report-title = Rapport { -brand-monitor } mensuel
-settings-alert-preferences-allow-monthly-monitor-report-subtitle = Un récapitulatif mensuel des nouvelles fuites de données, celles qui ont été résolues et celles qui nécessitent votre attention.
-
 ## Settings page redesign
 
+# Label for a navigation bar link to settings for updating the users scan profile info – “update” is used as a verb.
+settings-tab-label-update-scan-info = Mettre à jour les informations d’analyse
 settings-tab-label-edit-info = Modifier vos informations
 settings-tab-label-notifications = Configurer les notifications
 settings-tab-label-manage-account = Gérer le compte

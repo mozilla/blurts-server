@@ -5,7 +5,6 @@
 
 ## Email headers
 
-email-header-logo-alt = { -brand-mozilla-monitor }
 email-header-button-sign-in = Prihlásiť sa
 
 ## Email footers
@@ -13,6 +12,16 @@ email-header-button-sign-in = Prihlásiť sa
 email-footer-support-heading = Máte otázky týkajúce sa { -brand-mozilla-monitor(case: "gen") }?
 email-footer-support-content = Ak potrebujete pomoc, navštívte naše <support-link>Centrum podpory</support-link>
 email-footer-trigger-transactional = Tento e‑mail ste dostali ako odberateľ služby { -brand-mozilla-monitor }.
+email-footer-reason-subscriber = Tento automatický e‑mail dostávate ako odberateľ služby { -brand-mozilla-monitor }. Ak ste ho dostali omylom, nie je potrebné podniknúť žiadne kroky. Ďalšie informácie nájdete na stránke <support-link>Podpora { -brand-mozilla(case: "gen") }</support-link>.
+email-footer-reason-subscriber-one-time = Tento jednorazový automatický e‑mail ste dostali, pretože ste prihlásený/á na odber služby { -brand-monitor-plus }. Už nebudete dostávať žiadne ďalšie podobné e‑maily. Ďalšie informácie nájdete na stránke <support-link>Podpora { -brand-mozilla(case: "gen") }</support-link>.
+# Variables:
+#    $support_link (string) - The URL the user can visit for support, e.g. "https://support.mozilla.org"
+email-footer-support-content-plain =
+    Navštívte naše Centrum podpory, kde vám pomôžu:
+    { $support_link }
+# Variables:
+#   $hibp_link (string) - URL to Have I Been Pwned, e.g. "https://haveibeenpwned.com".
+email-footer-source-hibp-plain = Údaje o úniku poskytol { -brand-HIBP }: { $hibp_link }
 email-footer-source-hibp = Údaje o úniku poskytuje <hibp-link>{ -brand-HIBP }</hibp-link>
 email-footer-logo-mozilla-alt = { -brand-mozilla }
 email-footer-meta-privacy-notice = Súkromie
@@ -20,8 +29,6 @@ email-footer-meta-privacy-notice = Súkromie
 -product-name-relay = Firefox Relay
 # Mozilla VPN is a product name and should not be translated.
 -product-name-vpn = Mozilla VPN
-# A link to legal information about mozilla products.
-legal = Právne informácie
 # Button text
 verify-email-cta = Overiť e‑mailovú adresu
 # Headline of verification email
@@ -38,9 +45,6 @@ email-subject-verify = Overte svoju e‑mailovú adresu pre { -product-name }
 fxm-warns-you-no-breaches =
     Služba { -product-name } vás upozorňuje na úniky údajov, ktorých súčasťou boli aj vaše údaje.
     Zatiaľ ste sa neobjavili v žiadnom úniku. Ak sa vaša e‑mailová adresa objaví v novom úniku, budeme vás o tom informovať.
-email-breach-alert-blurb =
-    Služba { -product-name } vás upozorňuje na úniky údajov, ktorých súčasťou boli aj vaše údaje.
-    Práve sme dostali informácie o ďalšom úniku údajov.
 
 ## 2022 email template. HTML tags should not be translated, e.g. `<a>`
 
@@ -52,7 +56,6 @@ email-2022-hibp-attribution = Údaje o úniku poskytuje <a { $hibp-link-attr }>{
 ## Verification email
 
 email-verify-heading = Chráňte svoje údaje, začnite hneď teraz
-email-verify-subhead = Overte svoj e‑mail a začnite chrániť svoje údaje po úniku údajov.
 email-verify-simply-click = Overenie účtu dokončíte kliknutím na odkaz nižšie.
 
 ## Breach report

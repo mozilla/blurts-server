@@ -18,32 +18,27 @@ settings-alert-preferences-option-two = Skicka alla intrångsvarningar till den 
 
 ## Monitored email addresses
 
-# Variables:
-#   $email (string) - Email address
-settings-email-list-title = Övervakade e-postadresser
-# Variables:
-#   $limit (number) - Number of email addresses included in the plan
-settings-email-limit-info =
-    { $limit ->
-        [one] Ditt konto inkluderar övervakning av { $limit } e-postadress.
-       *[other] Ditt konto inkluderar övervakning av upp till { $limit } e-postadresser.
-    }
 settings-email-verification-callout = E-postverifiering krävs
-settings-resend-email-verification-link = Skicka e-postverifiering igen
-settings-add-email-button = Lägg till e-postadress
-settings-remove-email-button-label = Ta bort
+settings-email-addresses-header = E-postadresser
+settings-email-addresses-description = { -brand-monitor } varnar dig om dessa e-postadresser dyker upp i kända intrång.
+settings-email-addresses-add-email-button = Lägg till e-postadress
 # Variables:
-#   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
-settings-remove-email-button-tooltip = Sluta övervaka { $emailAddress }
-# This string is shown beneath each of the user’s email addresses to indicate
-# how many known breaches that email address was found in.
+#   $limit (number) - Number of emails that can be added for monitoring.
+settings-email-addresses-add-email-indicator-limit = Lägg till upp till { $limit }
+settings-email-addresses-add-email-resend-button-label = Skicka verifieringslänk igen
+input-error-alt = Fel
+
+## Email address dialog
+
+settings-email-addresses-initial-dialog-header = Lägg till en e-postadress
+settings-email-addresses-initial-dialog-description = Vi skickar en verifieringslänk för att bekräfta att du vill inkludera den i en framtida { -brand-monitor }-skanning.
+settings-email-addresses-initial-dialog-add-email-input-label = Ange e-postadress
+settings-email-addresses-initial-dialog-add-email-button-label = Skicka verifieringslänk
 # Variables:
-#   $breachCount (number) - Number of breaches
-settings-email-number-of-breaches-info =
-    { $breachCount ->
-        [one] Förekommer i { $breachCount } känt intrång.
-       *[other] Förekommer i { $breachCount } kända intrång.
-    }
+#   $email (string) - Email address the confirmation has been sent to.
+settings-email-addresses-confirmation-dialog-header = Verifieringslänk skickad till <b>{ $email }</b>
+settings-email-addresses-confirmation-dialog-description = Öppna länken för att lägga till den på det här kontot för framtida { -brand-monitor }-skanningar.
+settings-email-addresses-confirmation-dialog-close-button = Stäng
 
 ## Delete Monitor account
 
@@ -57,13 +52,10 @@ settings-delete-monitor-free-account-dialog-cancel-button-label = Glöm det, ta 
 settings-delete-monitor-account-confirmation-toast-label-2 = Ditt { -brand-monitor }-konto är nu raderat.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Ignorera
 
-## Monthly Monitor Report
-
-settings-alert-preferences-allow-monthly-monitor-report-title = Månatlig { -brand-monitor }-rapport
-settings-alert-preferences-allow-monthly-monitor-report-subtitle = En månatlig uppdatering av nya exponeringar, vad som har fixats och vad som behöver din åtgärd.
-
 ## Settings page redesign
 
+# Label for a navigation bar link to settings for updating the users scan profile info – “update” is used as a verb.
+settings-tab-label-update-scan-info = Uppdatera skanningsinfo
 settings-tab-label-edit-info = Redigera din info
 settings-tab-label-notifications = Ställ in aviseringar
 settings-tab-label-manage-account = Hantera konto

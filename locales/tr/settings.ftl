@@ -18,32 +18,24 @@ settings-alert-preferences-option-two = Tüm ihlal uyarılarını birinci e-post
 
 ## Monitored email addresses
 
-# Variables:
-#   $email (string) - Email address
-settings-email-list-title = İzlenen e-posta adresleri
-# Variables:
-#   $limit (number) - Number of email addresses included in the plan
-settings-email-limit-info =
-    { $limit ->
-        [one] Hesabınız toplam { $limit } e-posta adresini izlemenize olanak veriyor.
-       *[other] Hesabınız toplam { $limit } e-posta adresini izlemenize olanak veriyor.
-    }
 settings-email-verification-callout = E-posta doğrulaması gerekiyor
-settings-resend-email-verification-link = Doğrulama e-postasını yeniden gönder
-settings-add-email-button = E-posta adresi ekle
-settings-remove-email-button-label = Kaldır
+settings-email-addresses-header = E-posta adresleri
+settings-email-addresses-description = Bu e-postalar bilinen veri ihlallerinde yer alırsa { -brand-monitor } sizi uyaracaktır.
+settings-email-addresses-add-email-button = E-posta adresi ekle
+settings-email-addresses-add-email-resend-button-label = Doğrulama bağlantısını yeniden gönder
+input-error-alt = Hata
+
+## Email address dialog
+
+settings-email-addresses-initial-dialog-header = E-posta adresi ekle
+settings-email-addresses-initial-dialog-description = Bu adresi gelecekteki { -brand-monitor } taramalarınıza eklemeyi onaylamanız için bir doğrulama bağlantısı göndereceğiz.
+settings-email-addresses-initial-dialog-add-email-input-label = E-posta adresinizi yazın
+settings-email-addresses-initial-dialog-add-email-button-label = Doğrulama bağlantısını gönder
 # Variables:
-#   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
-settings-remove-email-button-tooltip = { $emailAddress } adresini izlemeyi durdur
-# This string is shown beneath each of the user’s email addresses to indicate
-# how many known breaches that email address was found in.
-# Variables:
-#   $breachCount (number) - Number of breaches
-settings-email-number-of-breaches-info =
-    { $breachCount ->
-        [one] Bilinen { $breachCount } ihlalde yer alıyor.
-       *[other] Bilinen { $breachCount } ihlalde yer alıyor.
-    }
+#   $email (string) - Email address the confirmation has been sent to.
+settings-email-addresses-confirmation-dialog-header = Doğrulama bağlantısı <b>{ $email }</b> adresine gönderildi
+settings-email-addresses-confirmation-dialog-description = Gelecekteki { -brand-monitor } taramalarında kullanmak üzere adresi bu hesaba eklemek isterseniz bağlantıya tıklayın.
+settings-email-addresses-confirmation-dialog-close-button = Kapat
 
 ## Delete Monitor account
 
@@ -57,13 +49,10 @@ settings-delete-monitor-free-account-dialog-cancel-button-label = Vazgeçtim, ge
 settings-delete-monitor-account-confirmation-toast-label-2 = { -brand-monitor } hesabınız silindi.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Kapat
 
-## Monthly Monitor Report
-
-settings-alert-preferences-allow-monthly-monitor-report-title = Aylık { -brand-monitor } raporu
-settings-alert-preferences-allow-monthly-monitor-report-subtitle = Yeni riskler, çözülen sorunlar ve ilgilenmeniz gereken sorunlara dair aylık bir rapor.
-
 ## Settings page redesign
 
+# Label for a navigation bar link to settings for updating the users scan profile info – “update” is used as a verb.
+settings-tab-label-update-scan-info = Tarama bilgilerini güncelle
 settings-tab-label-edit-info = Bilgilerinizi düzenleyin
 settings-tab-label-notifications = Bildirimleri ayarla
 settings-tab-label-manage-account = Hesabı yönet

@@ -18,24 +18,27 @@ settings-alert-preferences-option-two = Gửi tất cả cảnh báo rò rỉ d�
 
 ## Monitored email addresses
 
-# Variables:
-#   $email (string) - Email address
-settings-email-list-title = Địa chỉ email được giám sát
-# Variables:
-#   $limit (number) - Number of email addresses included in the plan
-settings-email-limit-info = Tài khoản của bạn bao gồm việc giám sát tối đa { $limit } email.
 settings-email-verification-callout = Yêu cầu xác minh email
-settings-resend-email-verification-link = Gửi lại email xác minh
-settings-add-email-button = Thêm địa chỉ email
-settings-remove-email-button-label = Xóa
+settings-email-addresses-header = Địa chỉ email
+settings-email-addresses-description = { -brand-monitor } Sẽ thông báo cho bạn nếu những email này xuất hiện trong các vụ rò rỉ thông tin đã biết.
+settings-email-addresses-add-email-button = Thêm địa chỉ email
 # Variables:
-#   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
-settings-remove-email-button-tooltip = Dừng giám sát { $emailAddress }
-# This string is shown beneath each of the user’s email addresses to indicate
-# how many known breaches that email address was found in.
+#   $limit (number) - Number of emails that can be added for monitoring.
+settings-email-addresses-add-email-indicator-limit = Tối đa { $limit }
+settings-email-addresses-add-email-resend-button-label = Gửi lại liên kết xác minh
+input-error-alt = Lỗi
+
+## Email address dialog
+
+settings-email-addresses-initial-dialog-header = Thêm một địa chỉ email
+settings-email-addresses-initial-dialog-description = Chúng tôi sẽ gửi cho bạn một liên kết xác minh để bạn xác nhận rằng bạn muốn đưa nó vào lần quét { -brand-monitor } tiếp theo.
+settings-email-addresses-initial-dialog-add-email-input-label = Nhập địa chỉ email
+settings-email-addresses-initial-dialog-add-email-button-label = Gửi liên kết xác minh
 # Variables:
-#   $breachCount (number) - Number of breaches
-settings-email-number-of-breaches-info = Xuất hiện trong { $breachCount } rò rỉ dữ liệu đã biết.
+#   $email (string) - Email address the confirmation has been sent to.
+settings-email-addresses-confirmation-dialog-header = Liên kết xác minh đã được gửi đến <b>{ $email }</b>
+settings-email-addresses-confirmation-dialog-description = Mở liên kết để thêm nó vào tài khoản này cho các lần quét { -brand-monitor } trong tương lai.
+settings-email-addresses-confirmation-dialog-close-button = Đóng
 
 ## Delete Monitor account
 
@@ -49,13 +52,10 @@ settings-delete-monitor-free-account-dialog-cancel-button-label = Nghĩ lại r�
 settings-delete-monitor-account-confirmation-toast-label-2 = Tài khoản { -brand-monitor } của bạn đã bị xóa.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Bỏ qua
 
-## Monthly Monitor Report
-
-settings-alert-preferences-allow-monthly-monitor-report-title = Báo cáo hàng tháng { -brand-monitor }
-settings-alert-preferences-allow-monthly-monitor-report-subtitle = Bản cập nhật hàng tháng về số lần lộ dữ liệu mới, những gì đã được sửa và những gì bạn cần chú ý.
-
 ## Settings page redesign
 
+# Label for a navigation bar link to settings for updating the users scan profile info – “update” is used as a verb.
+settings-tab-label-update-scan-info = Cập nhật thông tin quét
 settings-tab-label-edit-info = Chỉnh sửa thông tin của bạn
 settings-tab-label-notifications = Đặt thông báo
 settings-tab-label-manage-account = Quản lý tài khoản

@@ -50,7 +50,6 @@ modal-cta-ok = OK
 modal-cta-got-it = J’ai compris
 open-modal-alt = Ouvrir la boîte de dialogue
 close-modal-alt = Fermer la boîte de dialogue
-open-tooltip-alt = Ouvrir l’infobulle
 progress-card-heres-what-we-fixed-headline-all = Voici les fuites que vous avez résolues
 progress-card-manually-fixed-headline = Résolue manuellement
 dashboard-tab-label-action-needed = Action nécessaire
@@ -86,18 +85,8 @@ dashboard-exposures-filter-reset = Réinitialiser
 ## Top banner on the dashboard
 
 dashboard-top-banner-section-label = Résumé du tableau de bord
-dashboard-top-banner-scan-in-progress-title = L’analyse est toujours en cours
 dashboard-top-banner-your-data-is-protected-title = Vos données sont protégées
 dashboard-top-banner-your-data-is-protected-cta = Voir les fuites résolues
-dashboard-top-banner-lets-keep-protecting-title = Continuons à protéger vos données
-# Variables:
-# $exposures_unresolved_num is the remaining number of exposures the user has to resolve.
-dashboard-top-banner-lets-keep-protecting-description =
-    { $exposures_unresolved_num ->
-        [one] Il vous reste { $exposures_unresolved_num } fuite à résoudre. Continuez et protégez-vous. Nous vous guiderons pas à pas.
-       *[other] Il vous reste { $exposures_unresolved_num } fuites à résoudre. Continuez et protégez-vous. Nous vous guiderons pas à pas.
-    }
-dashboard-top-banner-lets-keep-protecting-cta = Continuons
 dashboard-top-banner-protect-your-data-title = Protégeons vos données
 dashboard-top-banner-protect-your-data-cta = Résoudre
 # Note: this line is followed by `dashboard-top-banner-non-us-protect-your-data-description-line1`.

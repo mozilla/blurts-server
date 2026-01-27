@@ -5,7 +5,6 @@
 
 ## Email headers
 
-email-header-logo-alt = { -brand-mozilla-monitor }
 email-header-button-sign-in = Kcem
 
 ## Email footers
@@ -20,8 +19,6 @@ email-footer-meta-privacy-notice = Tabaḍnit
 -product-name-relay = Firefox Relay
 # Mozilla VPN is a product name and should not be translated.
 -product-name-vpn = Mozilla VPN
-# A link to legal information about mozilla products.
-legal = Usḍif
 # Button text
 verify-email-cta = Senqed tansa imayl
 # Headline of verification email
@@ -38,9 +35,6 @@ email-subject-verify = Senqed tansa imayl-ik/im i { -product-name }
 fxm-warns-you-no-breaches =
     { -product-name } ad d-id-yelɣu ɣef trewliwin n yisefka i yeḥuzan talɣut-ik tudmawant
     Akka tura, ulac tarewla n yisefka yettwafen. Ad ak-d-nazen alɣu ma yella tansa-ik imayl tban-d deg trewla tamaynut n yisefka.
-email-breach-alert-blurb =
-    { -product-name } ad d-id-yelɣu ɣef trewliwin n yisefka i yeḥuzan talɣut-ik tudmawant
-    Akken kan i d-nermes talqut ɣef trewla n yisefka i yeḥuzan takebbanit-nniḍen.
 
 ## 2022 email template. HTML tags should not be translated, e.g. `<a>`
 
@@ -48,10 +42,6 @@ email-breach-alert-blurb =
 # Variables:
 #   $hibp-link-attr (String) - Link to Have I Been Pwned
 email-2022-hibp-attribution = Tarewla n yisefka tettwamudd-d sɣur <a { $hibp-link-attr }>{ -brand-HIBP }</a>
-
-## Verification email
-
-email-verify-subhead = Senqed imayl-ik⋅m i wakken ad tebduḍ ammesten n yiseka-k⋅m seld tarewla.
 
 ## Breach report
 

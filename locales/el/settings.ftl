@@ -18,32 +18,27 @@ settings-alert-preferences-option-two = Αποστολή όλων των ειδ�
 
 ## Monitored email addresses
 
-# Variables:
-#   $email (string) - Email address
-settings-email-list-title = Διευθύνσεις email υπό εποπτεία
-# Variables:
-#   $limit (number) - Number of email addresses included in the plan
-settings-email-limit-info =
-    { $limit ->
-        [one] Ο λογαριασμός σας παρέχει εποπτεία για έως και { $limit } διεύθυνση email.
-       *[other] Ο λογαριασμός σας παρέχει εποπτεία για έως και { $limit } διευθύνσεις email.
-    }
 settings-email-verification-callout = Απαιτείται επαλήθευση email
-settings-resend-email-verification-link = Εκ νέου αποστολή email επαλήθευσης
-settings-add-email-button = Προσθήκη διεύθυνσης email
-settings-remove-email-button-label = Αφαίρεση
+settings-email-addresses-header = Διευθύνσεις email
+settings-email-addresses-description = Το { -brand-monitor } θα σας ειδοποιήσει αν αυτά τα email εμφανιστούν σε γνωστές παραβιάσεις.
+settings-email-addresses-add-email-button = Προσθήκη διεύθυνσης email
 # Variables:
-#   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
-settings-remove-email-button-tooltip = Διακοπή εποπτείας του { $emailAddress }
-# This string is shown beneath each of the user’s email addresses to indicate
-# how many known breaches that email address was found in.
+#   $limit (number) - Number of emails that can be added for monitoring.
+settings-email-addresses-add-email-indicator-limit = Προσθήκη έως { $limit }
+settings-email-addresses-add-email-resend-button-label = Εκ νέου αποστολή συνδέσμου επαλήθευσης
+input-error-alt = Σφάλμα
+
+## Email address dialog
+
+settings-email-addresses-initial-dialog-header = Προσθέστε μια διεύθυνση email
+settings-email-addresses-initial-dialog-description = Θα σας στείλουμε έναν σύνδεσμο επαλήθευσης για να επιβεβαιώσουμε ότι θέλετε να τον συμπεριλάβετε σε μια μελλοντική σάρωση { -brand-monitor }.
+settings-email-addresses-initial-dialog-add-email-input-label = Εισαγάγετε διεύθυνση email
+settings-email-addresses-initial-dialog-add-email-button-label = Αποστολή συνδέσμου επαλήθευσης
 # Variables:
-#   $breachCount (number) - Number of breaches
-settings-email-number-of-breaches-info =
-    { $breachCount ->
-        [one] Εμφανίζεται σε { $breachCount } γνωστή παραβίαση.
-       *[other] Εμφανίζεται σε { $breachCount } γνωστές παραβιάσεις.
-    }
+#   $email (string) - Email address the confirmation has been sent to.
+settings-email-addresses-confirmation-dialog-header = Απεστάλη σύνδεσμος επαλήθευσης στη διεύθυνση <b>{ $email }</b>
+settings-email-addresses-confirmation-dialog-description = Ανοίξτε το σύνδεσμο για να το προσθέσετε σε αυτόν τον λογαριασμό για μελλοντικές σαρώσεις { -brand-monitor }.
+settings-email-addresses-confirmation-dialog-close-button = Κλείσιμο
 
 ## Delete Monitor account
 
@@ -57,13 +52,10 @@ settings-delete-monitor-free-account-dialog-cancel-button-label = Άλλαξα �
 settings-delete-monitor-account-confirmation-toast-label-2 = Ο λογαριασμός σας στο { -brand-monitor } έχει πλέον διαγραφεί.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Απόρριψη
 
-## Monthly Monitor Report
-
-settings-alert-preferences-allow-monthly-monitor-report-title = Μηνιαία αναφορά { -brand-monitor }
-settings-alert-preferences-allow-monthly-monitor-report-subtitle = Μια μηνιαία ενημέρωση για τις νέες εκθέσεις, το τι έχει διορθωθεί και τι χρειάζεται την προσοχή σας.
-
 ## Settings page redesign
 
+# Label for a navigation bar link to settings for updating the users scan profile info – “update” is used as a verb.
+settings-tab-label-update-scan-info = Ενημέρωση πληροφοριών σάρωσης
 settings-tab-label-edit-info = Επεξεργασία πληροφοριών
 settings-tab-label-notifications = Ορισμός ειδοποιήσεων
 settings-tab-label-manage-account = Διαχείριση λογαριασμού

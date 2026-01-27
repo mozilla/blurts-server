@@ -3,17 +3,9 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 fix-flow-nav-leaked-passwords = പുറത്തുവന്ന ഒളിവാക്കുകൾ
+guided-resolution-flow-next-arrow-sub-step = അടുത്ത ഫലത്തിലേക്കു്
 
 # Celebration screens
-
-
-## Shared CTA labels
-
-
-## High-risk flow
-
-
-## Leaked passwords and security questions flow
 
 
 ## Security recommendations flow

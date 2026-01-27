@@ -18,24 +18,27 @@ settings-alert-preferences-option-two = 傳送資料外洩警報到主要電子�
 
 ## Monitored email addresses
 
-# Variables:
-#   $email (string) - Email address
-settings-email-list-title = 監控中的電子郵件信箱
-# Variables:
-#   $limit (number) - Number of email addresses included in the plan
-settings-email-limit-info = 您的帳號可監控最多 { $limit } 組信箱。
 settings-email-verification-callout = 需要驗證信箱
-settings-resend-email-verification-link = 重寄驗證信
-settings-add-email-button = 新增電子郵件地址
-settings-remove-email-button-label = 移除
+settings-email-addresses-header = 電子郵件地址
+settings-email-addresses-description = { -brand-monitor } 會在得知資料外洩事件包含這些信箱時通知您。
+settings-email-addresses-add-email-button = 新增電子郵件地址
 # Variables:
-#   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
-settings-remove-email-button-tooltip = 停止監控 { $emailAddress }
-# This string is shown beneath each of the user’s email addresses to indicate
-# how many known breaches that email address was found in.
+#   $limit (number) - Number of emails that can be added for monitoring.
+settings-email-addresses-add-email-indicator-limit = 新增最多 { $limit } 組
+settings-email-addresses-add-email-resend-button-label = 重寄驗證鏈結
+input-error-alt = 錯誤
+
+## Email address dialog
+
+settings-email-addresses-initial-dialog-header = 新增電子郵件地址
+settings-email-addresses-initial-dialog-description = 我們會寄出驗證鏈結，以確認您是否願意將該信箱列入 { -brand-monitor } 未來的掃描清單中。
+settings-email-addresses-initial-dialog-add-email-input-label = 輸入電子郵件地址
+settings-email-addresses-initial-dialog-add-email-button-label = 寄送驗證鏈結
 # Variables:
-#   $breachCount (number) - Number of breaches
-settings-email-number-of-breaches-info = 出現在 { $breachCount } 場已知的外洩事件中。
+#   $email (string) - Email address the confirmation has been sent to.
+settings-email-addresses-confirmation-dialog-header = 已將驗證鏈結寄送到 <b>{ $email }</b>
+settings-email-addresses-confirmation-dialog-description = 請開啟鏈結，即可將此地址加入帳戶中，讓 { -brand-monitor } 在未來進行掃描。
+settings-email-addresses-confirmation-dialog-close-button = 關閉
 
 ## Delete Monitor account
 
@@ -49,13 +52,10 @@ settings-delete-monitor-free-account-dialog-cancel-button-label = 算了，帶�
 settings-delete-monitor-account-confirmation-toast-label-2 = 已刪除您的 { -brand-monitor } 帳號。
 settings-delete-monitor-account-confirmation-toast-dismiss-label = 知道了！
 
-## Monthly Monitor Report
-
-settings-alert-preferences-allow-monthly-monitor-report-title = { -brand-monitor } 月報
-settings-alert-preferences-allow-monthly-monitor-report-subtitle = 每月通知您有哪些新的外洩事件、修正了哪些問題，以及哪些問題需要您注意。
-
 ## Settings page redesign
 
+# Label for a navigation bar link to settings for updating the users scan profile info – “update” is used as a verb.
+settings-tab-label-update-scan-info = 更新掃描資訊
 settings-tab-label-edit-info = 編輯您的資訊
 settings-tab-label-notifications = 設定通知
 settings-tab-label-manage-account = 管理帳號

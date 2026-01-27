@@ -38,7 +38,6 @@ modal-cta-ok = OK
 modal-cta-got-it = Đã hiểu
 open-modal-alt = Mở modal
 close-modal-alt = Đóng modal
-open-tooltip-alt = Mở tooltip
 progress-card-heres-what-we-fixed-headline-all = Đây là những gì bạn đã giải quyết
 progress-card-manually-fixed-headline = Đã giải quyết thủ công
 dashboard-tab-label-action-needed = Cần hành động
@@ -70,14 +69,8 @@ dashboard-exposures-filter-reset = Đặt lại
 ## Top banner on the dashboard
 
 dashboard-top-banner-section-label = Trang tổng quan tóm tắt
-dashboard-top-banner-scan-in-progress-title = Quá trình quét của bạn vẫn đang được tiến hành
 dashboard-top-banner-your-data-is-protected-title = Dữ liệu của bạn được bảo vệ
 dashboard-top-banner-your-data-is-protected-cta = Xem những gì đã được giải quyết
-dashboard-top-banner-lets-keep-protecting-title = Hãy tiếp tục bảo vệ dữ liệu của bạn
-# Variables:
-# $exposures_unresolved_num is the remaining number of exposures the user has to resolve.
-dashboard-top-banner-lets-keep-protecting-description = Bạn vẫn còn { $exposures_unresolved_num } dữ liệu bị lộ chưa được giải quyết. Hãy tiếp tục và bảo vệ chính mình. Chúng tôi sẽ hướng dẫn bạn từng bước.
-dashboard-top-banner-lets-keep-protecting-cta = Hãy tiếp tục
 dashboard-top-banner-protect-your-data-title = Hãy bảo vệ dữ liệu của bạn
 dashboard-top-banner-protect-your-data-cta = Hãy giải quyết nó
 # Note: this line is followed by `dashboard-top-banner-non-us-protect-your-data-description-line1`.
