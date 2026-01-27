@@ -8,16 +8,9 @@ import {
   getAcceptLangHeaderInServerComponents,
   getL10n,
 } from "../../../../functions/l10n/serverComponents";
-import { getEnabledFeatureFlags } from "../../../../../db/tables/featureFlags";
 
 export default async function Page() {
-  const enabledFeatureFlags = await getEnabledFeatureFlags({
-    isSignedOut: true,
-  });
-
   const l10n = getL10n(await getAcceptLangHeaderInServerComponents());
 
-  return (
-    <HowItWorksView l10n={l10n} enabledFeatureFlags={enabledFeatureFlags} />
-  );
+  return <HowItWorksView l10n={l10n} />;
 }

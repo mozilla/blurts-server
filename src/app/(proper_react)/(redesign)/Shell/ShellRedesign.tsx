@@ -40,21 +40,11 @@ export const ShellRedesign = (props: Props) => {
             aria-label={props.l10n.getString("main-nav-label")}
           >
             <MonitorLogo />
-            {!props.hideSidebar && (
-              <NavbarList
-                countryCode={props.countryCode}
-                enabledFeatureFlags={props.enabledFeatureFlags}
-              />
-            )}
+            {!props.hideSidebar && <NavbarList />}
           </nav>
           <div className={styles.page}>{props.children}</div>
         </div>
-        <Footer
-          l10n={props.l10n}
-          session={props.session}
-          countryCode={props.countryCode}
-          enabledFeatureFlags={props.enabledFeatureFlags}
-        />
+        <Footer l10n={props.l10n} />
       </div>
     </MobileShell>
   );

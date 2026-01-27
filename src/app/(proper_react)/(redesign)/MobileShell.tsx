@@ -139,10 +139,7 @@ export const MobileShell = (props: Props) => {
           {props.session &&
           props.enabledFeatureFlags.includes("SidebarNavigationRedesign") ? (
             <div className={styles.navbarListWrapper}>
-              <NavbarListAuthenticated
-                countryCode={props.countryCode}
-                enabledFeatureFlags={props.enabledFeatureFlags}
-              />
+              <NavbarListAuthenticated />
             </div>
           ) : (
             <div className={styles.mainMenu}>
