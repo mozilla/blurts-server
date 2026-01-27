@@ -122,12 +122,26 @@ export const PasswordsStory: Story = {
   args: {
     type: "passwords",
   },
+  parameters: {
+    nextjs: {
+      navigation: {
+        pathname: "/fix/leaked-passwords/passwords",
+      },
+    },
+  },
 };
 
 export const SecurityQuestionsStory: Story = {
   name: "3b. Security questions",
   args: {
     type: "security-questions",
+  },
+  parameters: {
+    nextjs: {
+      navigation: {
+        pathname: "/fix/leaked-passwords/security-questions",
+      },
+    },
   },
 };
 
@@ -136,5 +150,12 @@ export const LeakedPasswordsDoneStory: Story = {
   args: {
     type: "passwords-done",
     nextUnresolvedBreachType: "None",
+  },
+  parameters: {
+    nextjs: {
+      navigation: {
+        pathname: "/fix/leaked-passwords/done",
+      },
+    },
   },
 };
