@@ -15,15 +15,12 @@ import {
 } from "../../../constants";
 import { Session } from "next-auth";
 import { TelemetryLink } from "../../components/client/TelemetryLink";
-import { FeatureFlagName } from "../../../db/tables/featureFlags";
 
 export const Footer = ({
   l10n,
 }: {
   l10n: ExtendedReactLocalization;
   session?: Session;
-  countryCode: string;
-  enabledFeatureFlags: FeatureFlagName[];
 }) => {
   return (
     <footer className={styles.footer}>

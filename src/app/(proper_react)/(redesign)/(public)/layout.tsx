@@ -13,14 +13,10 @@ import { getCountryCode } from "../../../functions/server/getCountryCode";
 import { getLocale } from "../../../functions/universal/getLocale";
 import { getExperiments } from "../../../functions/server/getExperiments";
 import { getExperimentationIdFromUserSession } from "../../../functions/server/getExperimentationId";
-import { getEnabledFeatureFlags } from "../../../../db/tables/featureFlags";
 import { getServerSession } from "../../../functions/server/getServerSession";
 import * as Sentry from "@sentry/nextjs";
 
 export default async function Layout(props: { children: ReactNode }) {
-  const enabledFeatureFlags = await getEnabledFeatureFlags({
-    isSignedOut: true,
-  });
   const l10n = getL10n(await getAcceptLangHeaderInServerComponents());
   const currentLocale = getLocale(l10n);
   const session = await getServerSession();
@@ -52,12 +48,7 @@ export default async function Layout(props: { children: ReactNode }) {
   }
 
   return (
-    <PublicShell
-      l10n={l10n}
-      countryCode={countryCode}
-      enabledFeatureFlags={enabledFeatureFlags}
-      experimentData={experimentData["Features"]}
-    >
+    <PublicShell l10n={l10n} experimentData={experimentData["Features"]}>
       {props.children}
     </PublicShell>
   );

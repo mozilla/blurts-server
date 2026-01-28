@@ -5,7 +5,6 @@
 "use client";
 
 import { PageLink } from "../PageLink";
-import { FeatureFlagName } from "../../../../db/tables/featureFlags";
 import {
   DashboardIcon,
   NotificationIcon,
@@ -18,10 +17,7 @@ import styles from "./ShellNavbarList.module.scss";
 import { usePathname } from "next/navigation";
 import { useL10n } from "../../../hooks/l10n";
 
-export const NavbarList = (props: {
-  countryCode: string;
-  enabledFeatureFlags: FeatureFlagName[];
-}) => {
+export const NavbarList = () => {
   const l10n = useL10n();
   const pathname = usePathname();
   const hideSidebar = pathname === "/user/settings/edit-profile";
@@ -80,19 +76,17 @@ export const NavbarList = (props: {
         </ul>
         <hr />
         <ul className="noList">
-          {props.countryCode === "us" && (
-            <li key="how-it-works">
-              <PageLink
-                href="/how-it-works"
-                activeClassName={styles.isActive}
-                target="_blank"
-                hasTelemetry={{ link_id: "navigation_how_it_works" }}
-              >
-                <TipIcon alt="" />
-                {l10n.getString("landing-all-hero-navbar-link-how-it-works")}
-              </PageLink>
-            </li>
-          )}
+          <li key="how-it-works">
+            <PageLink
+              href="/how-it-works"
+              activeClassName={styles.isActive}
+              target="_blank"
+              hasTelemetry={{ link_id: "navigation_how_it_works" }}
+            >
+              <TipIcon alt="" />
+              {l10n.getString("landing-all-hero-navbar-link-how-it-works")}
+            </PageLink>
+          </li>
           <li key="faq">
             <PageLink
               href="https://support.mozilla.org/kb/firefox-monitor-faq"
