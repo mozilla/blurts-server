@@ -88,7 +88,7 @@ export const virtualUserRun = () => {
 
   try {
     const result = res.json();
-    // @ts-ignore TODO: Add `PostHibpNotificationResponseBody` type to `src/app/api/v1/hibp/notify/route`, and use it.
+    // @ts-expect-error TODO: Add `PostHibpNotificationResponseBody` type to `src/app/api/v1/hibp/notify/route`, and use it.
     if (result.success !== true) {
       throw new Error(`Non-success result: ${JSON.stringify(result)}`);
     }

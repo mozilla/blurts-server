@@ -30,6 +30,7 @@ import RelayLogo from "./images/relay-logo.svg";
 import VpnLogo from "./images/vpn.svg";
 import FxDesktopLogo from "./images/fx-logo.svg";
 import FxMobileLogo from "./images/fx-mobile.png";
+import SoloLogo from "./images/solo-logo.svg";
 import { useL10n } from "../../../hooks/l10n";
 import { BentoIcon } from "../../server/Icons";
 import { gaEvent } from "../../../functions/client/gaEvent";

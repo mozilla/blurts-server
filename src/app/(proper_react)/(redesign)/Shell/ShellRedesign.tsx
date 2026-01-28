@@ -3,17 +3,15 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { ReactNode } from "react";
-import Link from "next/link";
-import Image from "next/image";
 import { Session } from "next-auth";
 import { MobileShell } from "../MobileShell";
 import { Footer } from "../Footer";
 import { ExtendedReactLocalization } from "../../../functions/l10n";
 import { FeatureFlagName } from "../../../../db/tables/featureFlags";
-import MonitorLogo from "../../images/monitor-logo.svg";
 import styles from "./ShellRedesign.module.scss";
 import { NavbarList } from "./ShellNavbarList";
 import { UserAnnouncementWithDetails } from "../../../../db/tables/user_announcements";
+import { MonitorLogo } from "./MonitorLogo";
 
 export type Props = {
   l10n: ExtendedReactLocalization;
@@ -41,28 +39,12 @@ export const ShellRedesign = (props: Props) => {
             className={styles.mainMenu}
             aria-label={props.l10n.getString("main-nav-label")}
           >
-            <Link href="/user/dashboard" className={styles.homeLink}>
-              <Image
-                src={MonitorLogo}
-                alt={props.l10n.getString("main-nav-link-home-label")}
-                width={170}
-              />
-            </Link>
-            {!props.hideSidebar && (
-              <NavbarList
-                countryCode={props.countryCode}
-                enabledFeatureFlags={props.enabledFeatureFlags}
-              />
-            )}
+            <MonitorLogo />
+            {!props.hideSidebar && <NavbarList />}
           </nav>
           <div className={styles.page}>{props.children}</div>
         </div>
-        <Footer
-          l10n={props.l10n}
-          session={props.session}
-          countryCode={props.countryCode}
-          enabledFeatureFlags={props.enabledFeatureFlags}
-        />
+        <Footer l10n={props.l10n} />
       </div>
     </MobileShell>
   );

@@ -4,13 +4,7 @@
 
 "use client";
 
-import {
-  useRef,
-  useState,
-  useActionState,
-  startTransition,
-  useEffect,
-} from "react";
+import { useRef, useState, useActionState, startTransition } from "react";
 import { useOverlayTriggerState } from "react-stately";
 import { useOverlayTrigger } from "react-aria";
 import Image from "next/image";
@@ -152,12 +146,6 @@ const EmailAddressAddForm = (props: {
   const [email, setEmail] = useState("");
   const [isEmailValid, setIsEmailValid] = useState(false);
 
-  useEffect(() => {
-    setIsEmailValid(
-      email.length > 0 && (formRef.current?.reportValidity() ?? false),
-    );
-  }, [email]);
-
   return !props.onAddEmailState.success ? (
     <>
       <p>
@@ -174,7 +162,12 @@ const EmailAddressAddForm = (props: {
           label={l10n.getString(
             "settings-email-addresses-initial-dialog-add-email-input-label",
           )}
-          onChange={(value: string) => setEmail(value)}
+          onChange={(value: string) => {
+            setEmail(value);
+            setIsEmailValid(
+              value.length > 0 && (formRef.current?.reportValidity() ?? false),
+            );
+          }}
           type="email"
           value={email}
           hasFloatingLabel

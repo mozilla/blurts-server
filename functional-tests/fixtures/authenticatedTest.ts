@@ -8,6 +8,10 @@ import { getTestUserSessionFilePath } from "../utils/user";
 
 const test = baseTest.extend<object, { storageState?: string }>({
   storageState: [
+    // Playwright requires the first argument to be destructured,
+    // so we can't adhere to this lint rule. See:
+    // https://github.com/microsoft/playwright/issues/21566#issuecomment-1464858235
+    // eslint-disable-next-line no-empty-pattern
     async ({}, use, testInfo) => {
       const countryCode = testInfo.project.use?.countryCode;
       if (!countryCode) {
