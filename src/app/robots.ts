@@ -10,7 +10,6 @@ export default function robots(): MetadataRoute.Robots {
   const localeUserPages = usableLocales.flatMap((locale) => [
     `/${locale}/user/dashboard/`,
     `/${locale}/user/settings/`,
-    `/${locale}/user/welcome/`,
   ]);
   return {
     rules: {
@@ -19,7 +18,6 @@ export default function robots(): MetadataRoute.Robots {
       disallow: [
         "/user/dashboard/",
         "/user/settings/",
-        "/user/welcome/",
         ...localeUserPages,
       ],
     },
