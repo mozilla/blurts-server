@@ -4,6 +4,8 @@
 
 export function getLangString(locale: string): string {
   // Load strings in `locale`, but also the English strings to fall back to
-  // for strings that aren't localised to that locale yet:
+  // for strings that aren't localised to that locale yet
+  // (for details about the q value, see
+  // https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Accept-Language#q):
   return `${locale}, en;q=0.1`;
 }
