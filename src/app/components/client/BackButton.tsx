@@ -4,9 +4,10 @@
 
 "use client";
 
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useHasRenderedClientSide } from "../../hooks/useHasRenderedClientSide";
 
 export type Props = {
   children: ReactNode;
@@ -14,11 +15,8 @@ export type Props = {
 
 export const BackButton = (props: Props) => {
   const router = useRouter();
-  const [hasHistory, setHasHistory] = useState(false);
-
-  useEffect(() => {
-    setHasHistory(window.history.length > 0);
-  }, []);
+  const hasRenderedClientSide = useHasRenderedClientSide();
+  const hasHistory = hasRenderedClientSide && window.history.length > 0;
 
   if (!hasHistory) {
     return <Link href={"/"}>{props.children}</Link>;

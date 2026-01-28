@@ -5,8 +5,8 @@
 // Only process.env variables starting with `NEXT_PUBLIC_` will be shipped to the client:
 import "./app/functions/server/notInClientComponent";
 
-import { resolve } from "node:path";
-import { fileURLToPath } from "node:url";
+import { resolve } from "path";
+import { fileURLToPath } from "url";
 import env from "@next/env";
 
 // Initialize variables from env file if appropriate

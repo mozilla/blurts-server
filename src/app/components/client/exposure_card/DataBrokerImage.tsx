@@ -8,6 +8,12 @@ import Image from "next/image";
 import { FallbackLogo } from "../../server/BreachLogo";
 
 export const DataBrokerImage = (props: { name: string }) => {
+  // Usually this warning makes sense, because we components created
+  // during render will reset their state each time they are created.
+  // In this case, however, the component does not have internal state,
+  // and since we want to create the component based on a prop,
+  // we'll have to create it during render:
+  /* eslint-disable react-hooks/static-components */
   const LazyLoadedImage = useMemo(
     () => lazy(() => getDataBrokerImage(props.name)),
     [props.name],
@@ -18,6 +24,7 @@ export const DataBrokerImage = (props: { name: string }) => {
       <LazyLoadedImage />
     </Suspense>
   );
+  /* eslint-enable react-hooks/static-components */
 };
 
 async function getDataBrokerImage(name: string) {

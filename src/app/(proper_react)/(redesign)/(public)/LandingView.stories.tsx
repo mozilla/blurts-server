@@ -17,8 +17,6 @@ const meta: Meta<typeof View> = {
     return (
       <PublicShell
         l10n={getL10n("en")}
-        countryCode={props.countryCode}
-        enabledFeatureFlags={enabledFeatureFlags}
         experimentData={defaultExperimentData["Features"]}
       >
         <View

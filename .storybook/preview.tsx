@@ -14,7 +14,7 @@ import { TestComponentWrapper } from "../src/TestComponentWrapper";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
-sb.mock("../src/config", { spy: false });
+sb.mock("../src/config.ts", { spy: false });
 
 const AppDecorator: Preview["decorators"] = (storyFn) => {
   useEffect(() => {

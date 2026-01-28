@@ -18,7 +18,10 @@ import {
   FilterState,
 } from "../../../../../../components/client/ExposuresFilter";
 import AllFixedIllustration from "./images/dashboard-all-fixed.svg";
-import { getDashboardSummary } from "../../../../../../functions/server/dashboard";
+import {
+  getDashboardSummary,
+  DashboardSummary,
+} from "../../../../../../functions/server/dashboard";
 import { getExposureStatus } from "../../../../../../components/server/StatusPill";
 import { TabList } from "../../../../../../components/client/TabList";
 import { filterExposures } from "./filterExposures";
@@ -63,6 +66,11 @@ export const View = (props: Props) => {
     UserAnnouncementWithDetails[] | null
   >(props.userAnnouncements);
   useEffect(() => {
+    // TODO The `react-hooks` ESLint rules didn't apply correctly
+    // for a while, and apparently this line breaks it. To enable the
+    // rule, I've suppressed the warning here for now, but we should
+    // look into fixing it (MNTOR-5167):
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setAnnouncements(props.userAnnouncements);
     const nextPathname = `/user/dashboard/${activeTab}`;
     if (pathname !== nextPathname) {
@@ -170,66 +178,6 @@ export const View = (props: Props) => {
   const hasExposures = breachesDataArray.length > 0;
   const hasUnresolvedBreaches = tabSpecificExposures.length > 0;
 
-  const TabContentActionNeeded = () => {
-    const {
-      dataBreachUnresolvedNum,
-      dataBreachFixedDataPointsNum,
-      totalDataPointsNum,
-    } = dataSummary;
-
-    let exposuresAreaDescription;
-
-    if (hasUnresolvedBreaches) {
-      exposuresAreaDescription =
-        l10n.getString("dashboard-exposures-area-description-all-line1", {
-          exposures_unresolved_num:
-            totalDataPointsNum - dataBreachFixedDataPointsNum,
-        }) +
-        " " +
-        l10n.getString("dashboard-exposures-area-description-all-line2", {
-          data_breach_unresolved_num: dataBreachUnresolvedNum,
-        });
-    }
-
-    return (
-      <>
-        <h2 className={styles.exposuresAreaHeadline}>
-          {l10n.getString("dashboard-exposures-area-headline")}
-        </h2>
-        {exposuresAreaDescription && (
-          <p className={styles.exposuresAreaDescription}>
-            {exposuresAreaDescription}
-          </p>
-        )}
-      </>
-    );
-  };
-  const TabContentFixed = () => (
-    <>
-      <h2 className={styles.exposuresAreaHeadline}>
-        {l10n.getString("dashboard-fixed-area-headline-all")}
-      </h2>
-    </>
-  );
-  const getZeroStateIndicator = () => {
-    if (!hasUnresolvedBreaches && hasExposures) {
-      return (
-        <>
-          <Image src={AllFixedIllustration} alt="" />
-          <strong>
-            {l10n.getString("dashboard-exposures-all-fixed-label")}
-          </strong>
-        </>
-      );
-    }
-    return (
-      <>
-        <Image src={NoExposuresIllustration} alt="" />
-        <strong>{l10n.getString("dashboard-no-exposures-label")}</strong>
-      </>
-    );
-  };
-
   return (
     <div className={styles.wrapper}>
       <Toolbar
@@ -277,7 +225,10 @@ export const View = (props: Props) => {
         />
         <section className={styles.exposuresArea}>
           {activeTab === "action-needed" ? (
-            <TabContentActionNeeded />
+            <TabContentActionNeeded
+              dataSummary={dataSummary}
+              hasUnresolvedBreaches={hasUnresolvedBreaches}
+            />
           ) : (
             <TabContentFixed />
           )}
@@ -292,12 +243,88 @@ export const View = (props: Props) => {
         </div>
         {noUnresolvedExposures ? (
           <div className={styles.zeroStateIndicator}>
-            {getZeroStateIndicator()}
+            <ZeroStateIndicator
+              hasUnresolvedBreaches={hasUnresolvedBreaches}
+              hasExposures={hasExposures}
+            />
           </div>
         ) : (
           <ul className={styles.exposureList}>{exposureCardElems}</ul>
         )}
       </div>
     </div>
+  );
+};
+
+const TabContentActionNeeded = (props: {
+  dataSummary: DashboardSummary;
+  hasUnresolvedBreaches: boolean;
+}) => {
+  const l10n = useL10n();
+
+  const {
+    dataBreachUnresolvedNum,
+    dataBreachFixedDataPointsNum,
+    totalDataPointsNum,
+  } = props.dataSummary;
+
+  let exposuresAreaDescription;
+
+  if (props.hasUnresolvedBreaches) {
+    exposuresAreaDescription =
+      l10n.getString("dashboard-exposures-area-description-all-line1", {
+        exposures_unresolved_num:
+          totalDataPointsNum - dataBreachFixedDataPointsNum,
+      }) +
+      " " +
+      l10n.getString("dashboard-exposures-area-description-all-line2", {
+        data_breach_unresolved_num: dataBreachUnresolvedNum,
+      });
+  }
+
+  return (
+    <>
+      <h2 className={styles.exposuresAreaHeadline}>
+        {l10n.getString("dashboard-exposures-area-headline")}
+      </h2>
+      {exposuresAreaDescription && (
+        <p className={styles.exposuresAreaDescription}>
+          {exposuresAreaDescription}
+        </p>
+      )}
+    </>
+  );
+};
+
+const TabContentFixed = () => {
+  const l10n = useL10n();
+
+  return (
+    <>
+      <h2 className={styles.exposuresAreaHeadline}>
+        {l10n.getString("dashboard-fixed-area-headline-all")}
+      </h2>
+    </>
+  );
+};
+
+const ZeroStateIndicator = (props: {
+  hasUnresolvedBreaches: boolean;
+  hasExposures: boolean;
+}) => {
+  const l10n = useL10n();
+  if (!props.hasUnresolvedBreaches && props.hasExposures) {
+    return (
+      <>
+        <Image src={AllFixedIllustration} alt="" />
+        <strong>{l10n.getString("dashboard-exposures-all-fixed-label")}</strong>
+      </>
+    );
+  }
+  return (
+    <>
+      <Image src={NoExposuresIllustration} alt="" />
+      <strong>{l10n.getString("dashboard-no-exposures-label")}</strong>
+    </>
   );
 };

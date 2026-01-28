@@ -44,6 +44,18 @@ export const FixNavigation = (props: Props) => {
   );
 };
 
+const StepLabel = ({
+  label,
+  count,
+}: {
+  label: string;
+  count: number;
+}): ReactNode => (
+  <div className={styles.stepLabel}>
+    {label} {count > 0 && `(${count})`}
+  </div>
+);
+
 export const Steps = (props: {
   currentSection: Props["currentSection"];
   subscriberEmails: string[];
@@ -67,18 +79,6 @@ export const Steps = (props: {
   ).filter((value) => {
     return value.length > 0;
   }).length;
-
-  const StepLabel = ({
-    label,
-    count,
-  }: {
-    label: string;
-    count: number;
-  }): ReactNode => (
-    <div className={styles.stepLabel}>
-      {label} {count > 0 && `(${count})`}
-    </div>
-  );
 
   return (
     <ul className={styles.steps}>

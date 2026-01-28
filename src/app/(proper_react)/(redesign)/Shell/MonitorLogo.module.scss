@@ -1,0 +1,28 @@
+@use "../../../tokens";
+
+.homeLink {
+  display: none;
+
+  @media screen and (min-width: tokens.$screen-md) {
+    align-items: center;
+    display: flex;
+    height: tokens.$tab-bar-height;
+    padding: 0 tokens.$spacing-lg;
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    &:focus {
+      outline-offset: calc(-1 * tokens.$border-focus-width);
+      outline: tokens.$border-focus-width solid tokens.$color-purple-10;
+    }
+
+    &.isOnDashboard {
+      background: tokens.$color-white;
+      border-bottom: 1px solid tokens.$color-grey-20;
+      box-shadow: tokens.$box-shadow-xs;
+    }
+  }
+}

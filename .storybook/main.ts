@@ -35,17 +35,6 @@ const config: StorybookConfig = {
       type: "asset/source",
     });
 
-    // There is an issue with serving static assests in Storybook 8.4. The fix
-    // will be included in version 8.6.0:
-    // https://github.com/storybookjs/storybook/issues/29576
-    config.resolve = {
-      ...(config.resolve ?? {}),
-      alias: {
-        ...(config.resolve?.alias ?? {}),
-        "next/image": require.resolve("./NextImage.tsx"),
-      },
-    };
-
     return config;
   },
 

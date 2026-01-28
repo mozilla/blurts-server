@@ -171,7 +171,7 @@ export default defineConfig({
   projects: [
     {
       name: "global-setup",
-      testMatch: /global\-setup/,
+      testMatch: /global-setup/,
       teardown: "global-teardown",
     },
     ...projects.map(
@@ -183,7 +183,7 @@ export default defineConfig({
     ),
     {
       name: "global-teardown",
-      testMatch: /global\-teardown/,
+      testMatch: /global-teardown/,
     },
   ],
   /* Folder for test artifacts such as screenshots, videos, traces, etc. */

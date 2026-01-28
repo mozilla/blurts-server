@@ -16,8 +16,6 @@ type Story = StoryObj<typeof PublicShell>;
 
 export const PublicShellStory: Story = {
   args: {
-    countryCode: "us",
     l10n: getL10n("en"),
-    enabledFeatureFlags: [],
   },
 };

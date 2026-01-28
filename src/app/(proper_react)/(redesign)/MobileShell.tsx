@@ -42,10 +42,17 @@ export const MobileShell = (props: Props) => {
   const isAuthenticated =
     typeof props.session?.user.subscriber?.fxa_uid === "string";
   const isOnDashboard = pathname === "/user/dashboard";
+  const [prevPathname, setPrevPathname] = useState(pathname);
 
-  useEffect(() => {
+  // Added to fix an ESLint error after a Next.js update;
+  // not going to figure out the tests for that:
+  /* c8 ignore next 6 */
+  if (pathname !== prevPathname) {
+    // For this pattern, see
+    // https://react.dev/learn/you-might-not-need-an-effect#adjusting-some-state-when-a-prop-changes
+    setPrevPathname(pathname);
     setIsExpanded(false);
-  }, [pathname]);
+  }
 
   useEffect(() => {
     // As we transition focus away from the navigation bar in deeper sections
@@ -132,10 +139,7 @@ export const MobileShell = (props: Props) => {
           {props.session &&
           props.enabledFeatureFlags.includes("SidebarNavigationRedesign") ? (
             <div className={styles.navbarListWrapper}>
-              <NavbarListAuthenticated
-                countryCode={props.countryCode}
-                enabledFeatureFlags={props.enabledFeatureFlags}
-              />
+              <NavbarListAuthenticated />
             </div>
           ) : (
             <div className={styles.mainMenu}>

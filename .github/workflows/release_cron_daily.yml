@@ -17,7 +17,6 @@ jobs:
     env:
       GAR_IMAGE_BASE: ${{ vars.GAR_REPO }}/${{ github.event.repository.name }}
       GAR_REGISTRY: us-docker.pkg.dev
-      DOCKERHUB_IMAGE: mozilla/blurts-server # Define Docker Hub image name
 
     steps:
     - name: Checkout main branch
@@ -50,16 +49,6 @@ jobs:
             "generate_release_notes": true
           }'
 
-    # We cannot rely on the release_retag.yaml workflow because of the
-    # auth scope of the default github token. It's a good security practice
-    # to prevent a github action being triggered by another.
-    # So we will deliberately push to dockerhub below
-    - name: Log in to Docker Hub
-      uses: docker/login-action@v3
-      with:
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
-
     - name: Authenticate to Google Cloud
       id: gcp-auth
       uses: google-github-actions/auth@v3
@@ -80,21 +69,16 @@ jobs:
       id: meta
       uses: docker/metadata-action@v5
       with:
-        images: ${{ env.DOCKERHUB_IMAGE }}
-        tags: type=sha,format=short,prefix=
+        # Use the GAR image base
+        images: ${{ env.GAR_IMAGE_BASE }}
+        tags: |
+          # Only generate the tag based on short commit SHA
+          type=sha,format=short,prefix=
 
     - name: Pull Docker image from GAR with commit tag
       env:
         VERSION: ${{ steps.meta.outputs.version }}
       run: docker pull ${{ env.GAR_IMAGE_BASE }}:$VERSION
-
-    - name: Tag Docker image for Docker Hub with release tag
-      env:
-        VERSION: ${{ steps.meta.outputs.version }}
-      run: docker tag ${{ env.GAR_IMAGE_BASE }}:$VERSION ${{ env.DOCKERHUB_IMAGE }}:${{ env.CURRENT_DATE }}
-
-    - name: Push Docker image to Docker Hub with release tag
-      run: docker push ${{ env.DOCKERHUB_IMAGE }}:${{ env.CURRENT_DATE }}
 
     - name: Tag Docker image for GAR with release tag
       env:

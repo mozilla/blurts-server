@@ -49,6 +49,12 @@ export const GoogleAnalyticsWorkaround = (
   const { gaId, dataLayerName = "dataLayer", nonce, debugMode } = props;
 
   if (currDataLayerName === undefined) {
+    // "Reassigning this value during render is a form of
+    // side effect, which can cause unpredictable behavior
+    // depending on when the component happens to re-render."
+    // In our case, however, we only assign it once, so that
+    // should result in the same value every render.
+    // eslint-disable-next-line react-hooks/globals
     currDataLayerName = dataLayerName;
   }
 

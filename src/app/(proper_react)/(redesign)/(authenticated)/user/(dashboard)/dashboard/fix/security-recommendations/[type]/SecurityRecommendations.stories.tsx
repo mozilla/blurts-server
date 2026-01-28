@@ -93,12 +93,26 @@ export const PhoneStory: Story = {
   args: {
     type: "phone",
   },
+  parameters: {
+    nextjs: {
+      navigation: {
+        pathname: "/fix/security-recommendations/phone",
+      },
+    },
+  },
 };
 
 export const EmailStory: Story = {
   name: "3b. Email address",
   args: {
     type: "email",
+  },
+  parameters: {
+    nextjs: {
+      navigation: {
+        pathname: "/fix/security-recommendations/email",
+      },
+    },
   },
 };
 
@@ -107,11 +121,25 @@ export const IpStory: Story = {
   args: {
     type: "ip",
   },
+  parameters: {
+    nextjs: {
+      navigation: {
+        pathname: "/fix/security-recommendations/ip",
+      },
+    },
+  },
 };
 
 export const DoneStory: Story = {
   name: "Completed Step",
   args: {
     type: "done",
+  },
+  parameters: {
+    nextjs: {
+      navigation: {
+        pathname: "/fix/security-recommendations/done",
+      },
+    },
   },
 };
