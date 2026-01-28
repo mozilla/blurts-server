@@ -44,6 +44,11 @@ compromised-data = Compromised data:
 
 # Link title
 more-about-this-breach = More about this breach
+sensitive-sites = How does { -product-name } treat sensitive sites?
+sensitive-sites-copy = { -product-name } only reveals accounts associated with these
+  types of breaches after an email address has been verified. This means you’re the
+  only person who can see if your information was in this breach (unless someone
+  else has access to your email account).
 
 what-data = What data was compromised:
 
@@ -53,6 +58,9 @@ delayed-reporting-copy = It can sometimes take months or years for credentials e
   soon as they have been discovered and verified.
 
 ##
+
+what-is-a-website-breach = What is a website breach?
+website-breach-blurb = A website data breach happens when cyber criminals steal, copy, or expose personal information from online accounts. It’s usually a result of hackers finding a weak spot in the website’s security. Breaches can also happen when account information gets leaked by accident.
 
 # This is a section headline on the breach detail page that appears above
 # a short summary about the breach.
