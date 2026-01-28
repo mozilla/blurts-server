@@ -12,6 +12,13 @@ landing-all-hero-emailform-submit-sign-up-label = Đăng kí để được qué
 # This is a label underneath a big number "14" - it's an image that demos Monitor.
 landing-all-hero-image-chart-label = dữ liệu bị lộ
 
+## Top navbar
+
+landing-all-hero-navbar-link-how-it-works = Nó hoạt động như thế nào
+landing-all-hero-navbar-link-pricing = Bảng giá
+landing-all-hero-navbar-link-faqs = Câu hỏi thường gặp
+landing-all-hero-navbar-link-recent-breaches = Rò rỉ dữ liệu gần đây
+
 # Value Proposition
 
 landing-all-value-prop-fix-exposures = Chúng tôi sẽ giúp bạn giải quyết rò rỉ dữ liệu của bạn

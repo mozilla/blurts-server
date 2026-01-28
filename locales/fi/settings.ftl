@@ -18,32 +18,7 @@ settings-alert-preferences-option-two = Lähetä kaikki tietovuotoilmoitukset en
 
 ## Monitored email addresses
 
-# Variables:
-#   $email (string) - Email address
-settings-email-list-title = Valvottavat sähköpostiosoitteet
-# Variables:
-#   $limit (number) - Number of email addresses included in the plan
-settings-email-limit-info =
-    { $limit ->
-        [one] Tilisi sisältää enintään { $limit } sähköpostiosoitteen valvonnan.
-       *[other] Tilisi sisältää enintään { $limit } sähköpostiosoitteen valvonnan.
-    }
 settings-email-verification-callout = Sähköpostiosoitteen vahvistus vaaditaan
-settings-resend-email-verification-link = Lähetä uudelleen vahvistussähköposti
-settings-add-email-button = Lisää sähköpostiosoite
-settings-remove-email-button-label = Poista
-# Variables:
-#   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
-settings-remove-email-button-tooltip = Lopeta osoitteen { $emailAddress } tarkkailu
-# This string is shown beneath each of the user’s email addresses to indicate
-# how many known breaches that email address was found in.
-# Variables:
-#   $breachCount (number) - Number of breaches
-settings-email-number-of-breaches-info =
-    { $breachCount ->
-        [one] Esiintyy { $breachCount } tunnetussa tietovuodossa.
-       *[other] Esiintyy { $breachCount } tunnetussa tietovuodossa.
-    }
 
 ## Delete Monitor account
 
@@ -56,11 +31,6 @@ settings-delete-monitor-free-account-dialog-cta-label = Poista tili
 settings-delete-monitor-free-account-dialog-cancel-button-label = Unohdetaan tämä, palataan takaisin
 settings-delete-monitor-account-confirmation-toast-label-2 = { -brand-monitor } -tilisi on nyt poistettu.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Hylkää
-
-## Monthly Monitor Report
-
-settings-alert-preferences-allow-monthly-monitor-report-title = Kuukausittainen { -brand-monitor }-raportti
-settings-alert-preferences-allow-monthly-monitor-report-subtitle = Kuukausittainen päivitys uusista vuodoista, korjauksista ja mitä sinun tarvitsee huomioida.
 
 ## Settings page redesign
 

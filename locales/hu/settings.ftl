@@ -18,32 +18,27 @@ settings-alert-preferences-option-two = Az összes adatvédelmi incidens figyelm
 
 ## Monitored email addresses
 
-# Variables:
-#   $email (string) - Email address
-settings-email-list-title = Figyelt e-mail-címek
-# Variables:
-#   $limit (number) - Number of email addresses included in the plan
-settings-email-limit-info =
-    { $limit ->
-        [one] A fiókja legfeljebb { $limit } e-mail-cím figyelését tartalmazza.
-       *[other] A fiókja legfeljebb { $limit } e-mail-cím figyelését tartalmazza.
-    }
 settings-email-verification-callout = E-mail ellenőrzés szükséges
-settings-resend-email-verification-link = Ellenőrző e-mail újraküldése
-settings-add-email-button = E-mail-cím hozzáadása
-settings-remove-email-button-label = Eltávolítás
+settings-email-addresses-header = E-mail-címek
+settings-email-addresses-description = A { -brand-monitor } értesíteni fogja, ha ezek az e-mail-címek egy ismert adatvédelmi incidensben jelennek meg.
+settings-email-addresses-add-email-button = E-mail-cím hozzáadása
 # Variables:
-#   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
-settings-remove-email-button-tooltip = A(z) { $emailAddress } figyelésének leállítása
-# This string is shown beneath each of the user’s email addresses to indicate
-# how many known breaches that email address was found in.
+#   $limit (number) - Number of emails that can be added for monitoring.
+settings-email-addresses-add-email-indicator-limit = Akár { $limit } címet is hozzáadhat
+settings-email-addresses-add-email-resend-button-label = Ellenőrző hivatkozás újraküldése
+input-error-alt = Hiba
+
+## Email address dialog
+
+settings-email-addresses-initial-dialog-header = E-mail-cím hozzáadása
+settings-email-addresses-initial-dialog-description = Küldünk egy ellenőrző hivatkozást, hogy megerősítse, hogy a jövőben is szeretné-e használni a { -brand-monitor } vizsgálatát.
+settings-email-addresses-initial-dialog-add-email-input-label = Adja meg az e-mail-címet
+settings-email-addresses-initial-dialog-add-email-button-label = Ellenőrző hivatkozás küldése
 # Variables:
-#   $breachCount (number) - Number of breaches
-settings-email-number-of-breaches-info =
-    { $breachCount ->
-        [one] { $breachCount } ismert adatvédelmi incidensben szerepel.
-       *[other] { $breachCount } ismert adatvédelmi incidensben szerepel.
-    }
+#   $email (string) - Email address the confirmation has been sent to.
+settings-email-addresses-confirmation-dialog-header = Ellenőrző hivatkozás elküldve ide: <b>{ $email }</b>
+settings-email-addresses-confirmation-dialog-description = Nyissa meg a hivatkozást, hogy hozzáadja ezt a fiókhoz a jövőbeli { -brand-monitor } vizsgálatokhoz.
+settings-email-addresses-confirmation-dialog-close-button = Bezárás
 
 ## Delete Monitor account
 
@@ -57,13 +52,10 @@ settings-delete-monitor-free-account-dialog-cancel-button-label = Mégse, vissza
 settings-delete-monitor-account-confirmation-toast-label-2 = A { -brand-monitor }-fiókja törölve lett.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Eltüntetés
 
-## Monthly Monitor Report
-
-settings-alert-preferences-allow-monthly-monitor-report-title = Havi { -brand-monitor } jelentés
-settings-alert-preferences-allow-monthly-monitor-report-subtitle = Havi hírlevél az új megjelenésekről, arról, hogy mi lett kijavítva, és mire kell figyelnie.
-
 ## Settings page redesign
 
+# Label for a navigation bar link to settings for updating the users scan profile info – “update” is used as a verb.
+settings-tab-label-update-scan-info = Keresési információk frissítése
 settings-tab-label-edit-info = Szerkessze az adatait
 settings-tab-label-notifications = Értesítések beállítása
 settings-tab-label-manage-account = Fiók kezelése

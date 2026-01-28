@@ -46,7 +46,6 @@ modal-cta-ok = OK
 modal-cta-got-it = Το κατάλαβα
 open-modal-alt = Άνοιγμα διαλόγου
 close-modal-alt = Κλείσιμο διαλόγου
-open-tooltip-alt = Άνοιγμα επεξήγησης
 progress-card-heres-what-we-fixed-headline-all = Ορίστε τι διορθώσατε
 progress-card-manually-fixed-headline = Χειροκίνητες διορθώσεις
 dashboard-tab-label-action-needed = Απαιτείται ενέργεια
@@ -86,18 +85,8 @@ dashboard-exposures-filter-reset = Επαναφορά
 ## Top banner on the dashboard
 
 dashboard-top-banner-section-label = Σύνοψη πίνακα ελέγχου
-dashboard-top-banner-scan-in-progress-title = Η σάρωση είναι ακόμα σε εξέλιξη
 dashboard-top-banner-your-data-is-protected-title = Τα δεδομένα σας προστατεύονται
 dashboard-top-banner-your-data-is-protected-cta = Δείτε τι διορθώθηκε
-dashboard-top-banner-lets-keep-protecting-title = Ας συνεχίσουμε να προστατεύουμε τα δεδομένα σας
-# Variables:
-# $exposures_unresolved_num is the remaining number of exposures the user has to resolve.
-dashboard-top-banner-lets-keep-protecting-description =
-    { $exposures_unresolved_num ->
-        [one] Σας απομένει ακόμα { $exposures_unresolved_num } έκθεση προς διόρθωση. Συνεχίστε και προστατευτείτε. Θα σας καθοδηγήσουμε βήμα προς βήμα.
-       *[other] Σας απομένουν ακόμα { $exposures_unresolved_num } εκθέσεις προς διόρθωση. Συνεχίστε και προστατευτείτε. Θα σας καθοδηγήσουμε βήμα προς βήμα.
-    }
-dashboard-top-banner-lets-keep-protecting-cta = Ας συνεχίσουμε
 dashboard-top-banner-protect-your-data-title = Ας προστατέψουμε τα δεδομένα σας
 dashboard-top-banner-protect-your-data-cta = Ας το διορθώσουμε
 # Note: this line is followed by `dashboard-top-banner-non-us-protect-your-data-description-line1`.

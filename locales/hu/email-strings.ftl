@@ -5,7 +5,6 @@
 
 ## Email headers
 
-email-header-logo-alt = { -brand-mozilla-monitor }
 email-header-button-sign-in = Bejelentkezés
 
 ## Email footers
@@ -13,6 +12,16 @@ email-header-button-sign-in = Bejelentkezés
 email-footer-support-heading = Kérdése van a { -brand-mozilla-monitor }ral kapcsolatban?
 email-footer-support-content = Segítségért keresse fel a <support-link>Támogatói központunkat</support-link>
 email-footer-trigger-transactional = Ezt az e-mailt a { -brand-mozilla-monitor } feliratkozójaként kapja.
+email-footer-reason-subscriber = Ezt az automatikus levelet mint a { -brand-mozilla-monitor } feliratkozója kapja. Ha tévedésből kapta, nincs teendője. További információkért keresse fel a <support-link>{ -brand-mozilla } támogatást</support-link>.
+email-footer-reason-subscriber-one-time = Azért kapta ezt az egyszeri automatikus levelet, mert előfizetett a következőre: { -brand-monitor-plus }. Nem fog több ehhez hasonló e-mailt kapni. További információkért keresse fel a <support-link>{ -brand-mozilla } támogatást</support-link>.
+# Variables:
+#    $support_link (string) - The URL the user can visit for support, e.g. "https://support.mozilla.org"
+email-footer-support-content-plain =
+    Segítségért keresse fel Támogatási központunkat:
+    { $support_link }
+# Variables:
+#   $hibp_link (string) - URL to Have I Been Pwned, e.g. "https://haveibeenpwned.com".
+email-footer-source-hibp-plain = Az adatvédelmi incidensek adatait a { -brand-HIBP } szolgáltatta: { $hibp_link }
 email-footer-source-hibp = Az adatvédelmi incidensek adatait a <hibp-link>{ -brand-HIBP }</hibp-link> szolgáltatta
 email-footer-logo-mozilla-alt = { -brand-mozilla }
 email-footer-meta-privacy-notice = Adatvédelem
@@ -20,8 +29,6 @@ email-footer-meta-privacy-notice = Adatvédelem
 -product-name-relay = Firefox Relay
 # Mozilla VPN is a product name and should not be translated.
 -product-name-vpn = Mozilla VPN
-# A link to legal information about mozilla products.
-legal = Jogi információk
 # Button text
 verify-email-cta = E-mail-cím megerősítése
 # Headline of verification email
@@ -38,9 +45,6 @@ email-subject-verify = Erősítse meg a { -product-name }hoz használt e-mail-c�
 fxm-warns-you-no-breaches =
     A { -product-name } figyelmezteti az Ön személyes információit érintő adatvédelmi incidensekről.
     Eddig egyetlen adatvédelmi incidens sem található. Figyelmeztetést küldünk Önnek, ha az e-mail-címe új adatvédelmi incidensben jelenik meg.
-email-breach-alert-blurb =
-    A { -product-name } figyelmezteti az Ön személyes információit érintő adatvédelmi incidensekről.
-    Épp most kaptunk részleteket egy másik céget érintő adatvédelmi incidensről.
 
 ## 2022 email template. HTML tags should not be translated, e.g. `<a>`
 
@@ -52,7 +56,6 @@ email-2022-hibp-attribution = Az adatvédelmi incidensek adatait a <a { $hibp-li
 ## Verification email
 
 email-verify-heading = Védje meg az adatait, már most
-email-verify-subhead = Igazolja vissza az e-mail-címét, hogy megkezdhesse adatai védelmét az adatvédelmi incidens után.
 email-verify-simply-click = Egyszerűen kattintson az alábbi hivatkozásra a fiókja ellenőrzésének befejezéséhez.
 
 ## Breach report

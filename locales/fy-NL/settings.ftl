@@ -18,32 +18,27 @@ settings-alert-preferences-option-two = Alle warskôgingen oer datalekken nei it
 
 ## Monitored email addresses
 
-# Variables:
-#   $email (string) - Email address
-settings-email-list-title = Kontrolearre e-mailadressen
-# Variables:
-#   $limit (number) - Number of email addresses included in the plan
-settings-email-limit-info =
-    { $limit ->
-        [one] Jo account omfettet it monitoaren fan maksimaal { $limit } e-mailadres.
-       *[other] Jo account omfettet it monitoaren fan maksimaal { $limit } e-mailadressen.
-    }
 settings-email-verification-callout = E-mailferifikaasje fereaske
-settings-resend-email-verification-link = Ferifikaasje-e-mailberjocht opnij ferstjoere
-settings-add-email-button = E-mailadres tafoegje
-settings-remove-email-button-label = Fuortsmite
+settings-email-addresses-header = E-mailadressen
+settings-email-addresses-description = { -brand-monitor } warskôget jo as dizze e-mailadressen ferskine yn bekende datalekken.
+settings-email-addresses-add-email-button = E-mailadres tafoegje
 # Variables:
-#   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
-settings-remove-email-button-tooltip = Kontrolearjen fan { $emailAddress } stopje
-# This string is shown beneath each of the user’s email addresses to indicate
-# how many known breaches that email address was found in.
+#   $limit (number) - Number of emails that can be added for monitoring.
+settings-email-addresses-add-email-indicator-limit = Jo kinne der maksimaal { $limit } tafoegje
+settings-email-addresses-add-email-resend-button-label = Ferifikaasjekeppeling opnij ferstjoere
+input-error-alt = Flater
+
+## Email address dialog
+
+settings-email-addresses-initial-dialog-header = In e-mailadres tafoegje
+settings-email-addresses-initial-dialog-description = Wy stjoere in ferifikaasjekeppeling om te befêstigjen dat jo dizze yn in takomstige { -brand-monitor }-scan opnimme wolle.
+settings-email-addresses-initial-dialog-add-email-input-label = Fier in e-mailadres yn
+settings-email-addresses-initial-dialog-add-email-button-label = Ferifikaasjekeppeling ferstjoere
 # Variables:
-#   $breachCount (number) - Number of breaches
-settings-email-number-of-breaches-info =
-    { $breachCount ->
-        [one] Komt foar yn { $breachCount } bekend datalek.
-       *[other] Komt foar yn { $breachCount } bekende datalekken.
-    }
+#   $email (string) - Email address the confirmation has been sent to.
+settings-email-addresses-confirmation-dialog-header = Ferifikaasjekeppeling ferstjoerd nei <b>{ $email }</b>
+settings-email-addresses-confirmation-dialog-description = Iepenje de keppeling om dit oan dizze account ta te foegjen foar takomstige { -brand-monitor }-scans.
+settings-email-addresses-confirmation-dialog-close-button = Slute
 
 ## Delete Monitor account
 
@@ -57,13 +52,10 @@ settings-delete-monitor-free-account-dialog-cancel-button-label = Lit mar, bring
 settings-delete-monitor-account-confirmation-toast-label-2 = Jo { -brand-monitor }-account is no fuortsmiten
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Slute
 
-## Monthly Monitor Report
-
-settings-alert-preferences-allow-monthly-monitor-report-title = Moanliks { -brand-monitor }-rapport
-settings-alert-preferences-allow-monthly-monitor-report-subtitle = In moanlikse update fan nije lekken, wat is oplost en wat jo oandacht nedich hat.
-
 ## Settings page redesign
 
+# Label for a navigation bar link to settings for updating the users scan profile info – “update” is used as a verb.
+settings-tab-label-update-scan-info = Scanynfo bywurkje
 settings-tab-label-edit-info = Jo gegevens bewurkje
 settings-tab-label-notifications = Notifikaasjes ynstelle
 settings-tab-label-manage-account = Account beheare

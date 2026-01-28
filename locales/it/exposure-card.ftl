@@ -3,13 +3,11 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 chevron-alt = Dettagli esposizione
-exposure-card-exposure-type = Tipo di esposizione
 exposure-card-date-found = Data esposizione
 
 # Status Pill
 
 status-pill-action-needed = Richiede attenzione
-status-pill-progress = In corso
 status-pill-fixed = Risolta
 
 # Exposure Card
@@ -29,12 +27,10 @@ exposure-card-description-data-breach-action-needed = Le tue informazioni sono s
 exposure-card-description-data-breach-fixed = Hai adottato le misure necessarie per correggere <data_breach_link>questa violazione</data_breach_link>. Monitoriamo costantemente le violazioni di dati e ti avviseremo in caso di eventuali nuove esposizioni.
 exposure-card-your-exposed-info = Le tue informazioni esposte:
 exposure-card-found-the-following-data = { -brand-monitor } ha rilevato i seguenti dati esposti:
-exposure-card-exposure-type-data-broker = Informazioni in vendita
-exposure-card-exposure-type-data-breach = Violazione di dati
 exposure-card-resolve-exposures-cta = Risolvi le esposizioni
 exposure-card-label-company-logo = Logo aziendale
 exposure-card-label-company = Azienda
-# Status of the exposure card, could be In Progress, Fixed or Action Needed
+# Status of the exposure card, could be Fixed or Action Needed
 exposure-card-label-status = Stato
 # Variables:
 # $category_label is the data breach exposure type that was leaked. Eg. Email, IP Address.

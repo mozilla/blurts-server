@@ -18,32 +18,27 @@ settings-alert-preferences-option-two = Alle waarschuwingen over datalekken naar
 
 ## Monitored email addresses
 
-# Variables:
-#   $email (string) - Email address
-settings-email-list-title = Gemonitorde e-mailadressen
-# Variables:
-#   $limit (number) - Number of email addresses included in the plan
-settings-email-limit-info =
-    { $limit ->
-        [one] Uw account omvat het monitoren van maximaal { $limit } e-mailadres.
-       *[other] Uw account omvat het monitoren van maximaal { $limit } e-mailadressen.
-    }
 settings-email-verification-callout = E-mailverificatie vereist
-settings-resend-email-verification-link = Verificatie-e-mailbericht opnieuw versturen
-settings-add-email-button = E-mailadres toevoegen
-settings-remove-email-button-label = Verwijderen
+settings-email-addresses-header = E-mailadressen
+settings-email-addresses-description = { -brand-monitor } waarschuwt u als deze e-mailadressen in bekende datalekken voorkomen.
+settings-email-addresses-add-email-button = E-mailadres toevoegen
 # Variables:
-#   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
-settings-remove-email-button-tooltip = Monitoren van { $emailAddress } stoppen
-# This string is shown beneath each of the user’s email addresses to indicate
-# how many known breaches that email address was found in.
+#   $limit (number) - Number of emails that can be added for monitoring.
+settings-email-addresses-add-email-indicator-limit = U kunt er maximaal { $limit } toevoegen
+settings-email-addresses-add-email-resend-button-label = Verificatiekoppeling opnieuw verzenden
+input-error-alt = Fout
+
+## Email address dialog
+
+settings-email-addresses-initial-dialog-header = Een e-mailadres toevoegen
+settings-email-addresses-initial-dialog-description = We sturen een verificatiekoppeling om te bevestigen dat u deze in een toekomstige { -brand-monitor }-scan wilt opnemen.
+settings-email-addresses-initial-dialog-add-email-input-label = Voer e-mailadres in
+settings-email-addresses-initial-dialog-add-email-button-label = Verificatiekoppeling versturen
 # Variables:
-#   $breachCount (number) - Number of breaches
-settings-email-number-of-breaches-info =
-    { $breachCount ->
-        [one] Komt voor in { $breachCount } bekend datalek.
-       *[other] Komt voor in { $breachCount } bekende datalekken.
-    }
+#   $email (string) - Email address the confirmation has been sent to.
+settings-email-addresses-confirmation-dialog-header = Verificatiekoppeling verzonden naar <b>{ $email }</b>
+settings-email-addresses-confirmation-dialog-description = Open de koppeling om dit aan deze account toe te voegen voor toekomstige { -brand-monitor }-scans.
+settings-email-addresses-confirmation-dialog-close-button = Sluiten
 
 ## Delete Monitor account
 
@@ -57,13 +52,10 @@ settings-delete-monitor-free-account-dialog-cancel-button-label = Laat maar zitt
 settings-delete-monitor-account-confirmation-toast-label-2 = Uw { -brand-monitor }-account is nu verwijderd.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Sluiten
 
-## Monthly Monitor Report
-
-settings-alert-preferences-allow-monthly-monitor-report-title = Maandelijks { -brand-monitor }-rapport
-settings-alert-preferences-allow-monthly-monitor-report-subtitle = Een maandelijkse update van nieuwe lekken, wat is opgelost en wat uw aandacht nodig heeft.
-
 ## Settings page redesign
 
+# Label for a navigation bar link to settings for updating the users scan profile info – “update” is used as a verb.
+settings-tab-label-update-scan-info = Scaninformatie bijwerken
 settings-tab-label-edit-info = Uw gegevens bewerken
 settings-tab-label-notifications = Notificaties instellen
 settings-tab-label-manage-account = Account beheren

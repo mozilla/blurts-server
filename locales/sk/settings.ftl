@@ -18,36 +18,27 @@ settings-alert-preferences-option-two = Všetky upozornenia na únik údajov pos
 
 ## Monitored email addresses
 
-# Variables:
-#   $email (string) - Email address
-settings-email-list-title = Monitorované e‑mailové adresy
-# Variables:
-#   $limit (number) - Number of email addresses included in the plan
-settings-email-limit-info =
-    { $limit ->
-        [one] Váš účet umožňuje sledovanie { $limit } e‑mailovej adresy.
-        [few] Váš účet umožňuje sledovanie až { $limit } e‑mailových adries.
-        [many] Váš účet umožňuje sledovanie až { $limit } e‑mailových adries.
-       *[other] Váš účet umožňuje sledovanie až { $limit } e‑mailových adries.
-    }
 settings-email-verification-callout = Vyžaduje sa overenie e‑mailovej adresy
-settings-resend-email-verification-link = Znova poslať overovací e‑mail
-settings-add-email-button = Pridať e‑mailovú adresu
-settings-remove-email-button-label = Odstrániť
+settings-email-addresses-header = E‑mailové adresy
+settings-email-addresses-description = { -brand-monitor } vás upozorní, ak sa tieto e‑mailové adresy zobrazia v známych únikoch údajov.
+settings-email-addresses-add-email-button = Pridať e‑mailovú adresu
 # Variables:
-#   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
-settings-remove-email-button-tooltip = Zastaviť monitorovanie adresy { $emailAddress }
-# This string is shown beneath each of the user’s email addresses to indicate
-# how many known breaches that email address was found in.
+#   $limit (number) - Number of emails that can be added for monitoring.
+settings-email-addresses-add-email-indicator-limit = Pridať môžete maximálne { $limit }
+settings-email-addresses-add-email-resend-button-label = Znova odoslať overovací odkaz
+input-error-alt = Chyba
+
+## Email address dialog
+
+settings-email-addresses-initial-dialog-header = Pridať e‑mailovú adresu
+settings-email-addresses-initial-dialog-description = Pošleme vám overovací odkaz, aby ste potvrdili, že ho chcete zahrnúť do budúceho skenovania službou { -brand-monitor }.
+settings-email-addresses-initial-dialog-add-email-input-label = Zadajte e‑mailovú adresu
+settings-email-addresses-initial-dialog-add-email-button-label = Odoslať overovací odkaz
 # Variables:
-#   $breachCount (number) - Number of breaches
-settings-email-number-of-breaches-info =
-    { $breachCount ->
-        [one] Vyskytuje sa v { $breachCount } známom úniku.
-        [few] Vyskytuje sa v { $breachCount } známych únikoch.
-        [many] Vyskytuje sa v { $breachCount } známych únikoch.
-       *[other] Vyskytuje sa v { $breachCount } známych únikoch.
-    }
+#   $email (string) - Email address the confirmation has been sent to.
+settings-email-addresses-confirmation-dialog-header = Overovací odkaz odoslaný na adresu <b>{ $email }</b>
+settings-email-addresses-confirmation-dialog-description = Otvorte odkaz a pridajte ho do tohto účtu pre budúce skenovanie pomocou služby { -brand-monitor }.
+settings-email-addresses-confirmation-dialog-close-button = Zavrieť
 
 ## Delete Monitor account
 
@@ -61,13 +52,10 @@ settings-delete-monitor-free-account-dialog-cancel-button-label = Rozmyslel som 
 settings-delete-monitor-account-confirmation-toast-label-2 = Váš účet služby { -brand-monitor } je teraz odstránený.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Zavrieť
 
-## Monthly Monitor Report
-
-settings-alert-preferences-allow-monthly-monitor-report-title = Mesačný prehľad { -brand-monitor(case: "gen") }
-settings-alert-preferences-allow-monthly-monitor-report-subtitle = Mesačný prehľad nových únikov, toho, čo bolo opravené a čo si vyžaduje vašu pozornosť.
-
 ## Settings page redesign
 
+# Label for a navigation bar link to settings for updating the users scan profile info – “update” is used as a verb.
+settings-tab-label-update-scan-info = Aktualizovať informácie o skenovaní
 settings-tab-label-edit-info = Upravte svoje informácie
 settings-tab-label-notifications = Nastaviť upozornenia
 settings-tab-label-manage-account = Spravovať účet

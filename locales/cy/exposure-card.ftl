@@ -3,13 +3,11 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 chevron-alt = Manylion amlygiad
-exposure-card-exposure-type = Math o ddatgeliad
 exposure-card-date-found = Dyddiad y datgeliad
 
 # Status Pill
 
 status-pill-action-needed = Angen gweithredu
-status-pill-progress = Ar waith
 status-pill-fixed = Wedi Trwsio
 
 # Exposure Card
@@ -29,12 +27,10 @@ exposure-card-description-data-breach-action-needed = Cafodd eich manylion eu da
 exposure-card-description-data-breach-fixed = Rydych wedi cymryd y camau angenrheidiol i drwsio'r <data_breach_link>tor-data hwn</data_breach_link>. Byddwn yn monitro tor-data yn barhaus ac yn eich rhybuddio am unrhyw ddatgeliadau newydd.
 exposure-card-your-exposed-info = Eich manylion sydd wedu eu datgelu:
 exposure-card-found-the-following-data = Daeth { -brand-monitor } o hyd i'r data sydd yn yr amlwg canlynol:
-exposure-card-exposure-type-data-broker = Manylion ar werth
-exposure-card-exposure-type-data-breach = Tor-data
 exposure-card-resolve-exposures-cta = Datrys materion amlygu
 exposure-card-label-company-logo = Logo cwmni
 exposure-card-label-company = Cwmni
-# Status of the exposure card, could be In Progress, Fixed or Action Needed
+# Status of the exposure card, could be Fixed or Action Needed
 exposure-card-label-status = Statws
 # Variables:
 # $category_label is the data breach exposure type that was leaked. Eg. Email, IP Address.

@@ -87,12 +87,11 @@
        *[nom] Mozilla Monitor
     }
 -brand-monitor-plus = Monitor Plus
+-brand-solo-ai = Solo AI
 
 ##
 
 error-not-subscribed = Táto e‑mailová adresa nie je prihlásená na odber upozornení z { -product-name(case: "gen") }.
-error-hibp-throttled = Príliš mnoho pripojení k službe { -brand-HIBP }.
-error-hibp-connect = Chyba pri pripájaní k { -brand-HIBP }.
 user-add-invalid-email = Neplatná e‑mailová adresa
 user-add-too-many-emails = Monitorujete maximálny počet e‑mailových adries.
 user-add-duplicate-email = Táto e‑mailová adresa už bola do { -product-name(case: "gen") } pridaná.
@@ -102,75 +101,16 @@ user-delete-unknown-error = Pri odstraňovaní e‑mailovej adresy sa vyskytla c
 user-verify-token-error = Vyžaduje sa overovací token.
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Kompromitované údaje:
-# Breach data provided by Have I Been Pwned.
-# Variables:
-#   $hibp-link (String) - Link to Have I Been Pwned
-hibp-attribution = Údaje o únikoch poskytuje { $hibp-link }
-show-all = Zobraziť všetko
-sign-out = Odhlásiť sa
-# Link title
-preferences = Nastavenia
-# Link title
-home = Domov
-# Link title
-security-tips = Bezpečnostné tipy
 # Link title
 more-about-this-breach = Ďalšie informácie o tomto úniku
-monitor-several-emails = Monitorujte niekoľko e‑mailových adries
-website-breach = Únik z webových stránok
-sensitive-breach = Únik citlivých údajov z webových stránok
-data-aggregator-breach = Únik z agregátora údajov
 what-data = Aké údaje boli kompromitované:
-sensitive-sites = Ako sa { -product-name(case: "nom") } chová v prípade webov obsahujúcich citlivé údaje?
-sensitive-sites-copy =
-    { -product-name } zverejňuje tieto účty iba v prípade, že je e‑mailová adresa overená. 
-    Znamená to, že vy ste jediná osoba, ktorá môže zistiť, či boli vaše údaje súčasťou tohto úniku 
-    (ak teda nemá do vášho počítača prístup niekto iný).
 delayed-reporting-headline = Prečo nahlásenie tohto úniku trvalo tak dlho?
 delayed-reporting-copy =
     Niekedy môže trvať mesiace či roky, než sa prihlasovacie údaje vyzradené v úniku 
     objavia na dark webe. Úniky sú pridávané do našej databázy hneď, akonáhle sú odhalené a potvrdené.
-fxm-warns-you =
-    { -product-name } vás upozorní, keď bola vaša e‑mailová adresa vyzradená v nejakom úniku údajov 
-    Zistite, či boli vaše informácie súčasťou úniku údajov, zistite, ako lepšie ochrániť svoje účty a 
-    dostávajte upozornenia v prípade, že sa vaša e‑mailová adresa objaví v novom úniku.
-what-is-data-agg = Čo je agregátor údajov?
-what-is-data-agg-blurb =
-    Agregátory údajov či sprostredkovatelia údajov zbierajú údaje z verejných 
-    záznamov alebo ich kupujú od iných spoločností. Tieto údaje zhromažďujú za účelom ich 
-    predaja rôznym spoločnostiam na marketingové účely. U obetí týchto únikov síce existuje 
-    menšia pravdepodobnosť spáchania bankového podvodu, no hackeri by mohli tieto údaje použiť na ich profilovanie.
-avoid-personal-info = Nepoužívajte v heslách osobné údaje
-send-verification = Poslať overovací odkaz
-# This string is a header on the user preferences page and
-# appears above a check-box list of user options which allow
-# the user to choose whether or not they want to receive breach
-# alerts for all of their monitored email addresses to a single
-# email address.
-breach-summary = Súhrnné informácie
 
 ##
 
-# This string is displayed under a large numeral that indicates the total number
-# of data breaches that exposed a user’s password. Don’t add $passwords to
-# your localization, because it would result in the number showing twice.
-passwords-exposed =
-    { $passwords ->
-        [one] heslo uniklo súhrnne vo všetkých únikoch
-        [few] heslá unikli súhrnne vo všetkých únikoch
-       *[other] hesiel uniklo súhrnne vo všetkých únikoch
-    }
-# This string is displayed under a large numeral that indicates the total number
-# of data breaches that have exposed the user’s information. Don’t add $breaches to
-# your localization, because it would result in the number showing twice.
-known-data-breaches-exposed =
-    { $breaches ->
-        [one] známy únik údajov vyzradil vaše údaje
-        [few] známe úniky údajov vyzradili vaše údaje
-       *[other] známych únikov údajov vyzradilo vaše údaje
-    }
-what-is-a-website-breach = Čo je únik údajov z webovej stránky?
-website-breach-blurb = Únik údajov z webovej stránky sa odohrá, keď kybernetickí zločinci odcudzia, skopírujú alebo zverejnia osobné údaje z internetových účtov. Spravidla je to výsledkom činnosti hackerov, ktorí našli slabé miesto v zabezpečení webu. K úniku osobných údajov z účtov však môže dôjsť aj nedopatrením.
 # This is a section headline on the breach detail page that appears above
 # a short summary about the breach.
 breach-overview-title = Prehľad
@@ -178,13 +118,6 @@ breach-overview-title = Prehľad
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
 breach-overview-new = Dňa { $breachDate } došlo k úniku údajov { $breachTitle }. Ihneď po odhalení a potvrdení bol dňa { $addedDate } pridaný do našej databázy.
-# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
-menu = Ponuka
-# This is part of a confirmation message that appears after a user has submitted
-# the form to add an additional email to Firefox Monitor.
-# Variables:
-#   $userEmail (String) - User email address
-verify-the-link = Pre pridanie e‑mailovej adresy { $userEmail } do { -product-name(case: "gen") }, overte odkaz zaslaný na túto adresu.
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
@@ -198,11 +131,6 @@ rec-section-subhead = Pre ochranu vašich osobných údajov a vašej digitálnej
 # Section headline
 rec-section-headline-no-pw = Čo robiť pre ochranu vašich osobných údajov
 rec-section-subhead-no-pw = Napriek tomu, že súčasťou úniku neboli heslá, odporúčame urobiť nasledujúce kroky pre lepšiu ochranu vašich osobných údajov.
-
-##
-
-# A status indicator that appears in the top right corner of new breach cards
-new-breach = Nový
 
 ##
 
@@ -297,9 +225,6 @@ footer-external-link-faq-tooltip = Často kladené otázky
 error-page-error-404-title = { $errorCode } Stránka sa nenašla
 error-page-error-404-copy = Ľutujeme, stránka, ktorú hľadáte, už neexistuje.
 error-page-error-404-cta-button = Prejsť naspäť
-# Variables:
-#   $errorCode (number) - the status code of the error, e.g. 403
-error-page-error-other-title = { $errorCode } Niečo sa pokazilo
 
 ## Breach overview page
 
@@ -314,10 +239,4 @@ exposed-data = Odhalené údaje:
 find-out-if-2 = Zistite, či ste boli súčasťou tohto úniku
 find-out-if-description = Pomôžeme vám rýchlo zistiť, či bola pri tomto úniku odhalená vaša e‑mailová adresa, a takisto vám pomôžeme pochopiť, čo robiť ďalej.
 breach-detail-cta-signup = Skontrolovať úniky
-
-## Firefox Monitor -> Mozilla Monitor rebrand banner
-
-banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: nový názov, vzhľad a ešte viac spôsobov, ako <b>získať späť svoje súkromie</b>.
-banner-monitor-rebrand-dismiss-button-label = OK
-banner-monitor-rebrand-dismiss-button-tooltip = Zavrieť
 loading-accessibility = Načítava sa

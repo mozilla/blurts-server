@@ -23,12 +23,11 @@
 -brand-relay = Firefox Relay
 -brand-mozilla-monitor = Mozilla Monitor
 -brand-monitor-plus = Monitor Plus
+-brand-solo-ai = Solo AI
 
 ##
 
 error-not-subscribed = Ez az e-mail-cím nincs feliratkozva a { -product-name }ra.
-error-hibp-throttled = Túl sok kapcsolat a { -brand-HIBP } felé.
-error-hibp-connect = Hiba a { -brand-HIBP }hoz kapcsolódáskor.
 user-add-invalid-email = Érvénytelen e-mail-cím
 user-add-too-many-emails = A lehető legnagyobb számú e-mail-címet figyeli.
 user-add-duplicate-email = Ez az e-mail-cím már hozzáadásra került a { -product-name }hoz.
@@ -38,76 +37,17 @@ user-delete-unknown-error = Hiba történt egy e-mail-cím eltávolításakor. P
 user-verify-token-error = Az ellenőrzési token lejárt.
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Veszélyeztetett adatok:
-# Breach data provided by Have I Been Pwned.
-# Variables:
-#   $hibp-link (String) - Link to Have I Been Pwned
-hibp-attribution = Az adatvédelmi incidensek adatait a { $hibp-link } biztosítja
-show-all = Összes megjelenítése
-sign-out = Kijelentkezés
-# Link title
-preferences = Beállítások
-# Link title
-home = Kezdőlap
-# Link title
-security-tips = Biztonsági tippek
 # Link title
 more-about-this-breach = További tudnivalók erről az adatvédelmi incidensről
-monitor-several-emails = Több e-mail-cím figyelése
-website-breach = Weboldalon történt adatvédelmi incidensek
-sensitive-breach = Weboldalon történt érzékeny adatvédelmi incidens
-data-aggregator-breach = Adatgyűjtőben történt adatvédelmi incidens
 what-data = Milyen adatok kerültek veszélybe:
-sensitive-sites = Hogyan kezeli a { -product-name } az érzékeny webhelyeket?
-sensitive-sites-copy =
-    A { -product-name } csak akkor fedi fel az ezekkel az adatvédelmi incidensekkel
-    kapcsolatos fiókokat, ha az e-mail-cím megerősítésre került. Ez azt jelenti, hogy
-    csak Ön láthatja, hogy szerepelt-e ebben az adatvédelmi incidensben (hacsak valaki
-    más nem fér hozzá az e-mail-fiókjához).
 delayed-reporting-headline = Miért tartott ilyen sokáig az adatvédelmi incidens jelentése?
 delayed-reporting-copy =
     Néha hónapokra vagy évekre is szükség lehet, amíg az adatvédelmi incidensekben
     kikerült adatok megjelennek a sötét weben. Az adatvédelmi incidensek akkor kerülnek
     az adatbázisunkba, ha felfedezték és megerősítették őket.
-fxm-warns-you =
-    A { -product-name } figyelmezteti, ha az e-mail-címe kikerült egy online
-    adatvédelmi incidensnél. Lássa a kikerült adatait, és tudja meg, hogyan
-    védheti meg jobban az online fiókjait, és kapjon figyelmeztetést, ha az
-    e-mail-címe egy új adatvédelmi incidensben jelenik meg.
-what-is-data-agg = Mi egy adatgyűjtő?
-what-is-data-agg-blurb =
-    Az adatgyűjtők vagy adatbrókerek információkat gyűjtenek nyilvános rekordokból, és
-    megveszik őket más cégektől. Összeválogatják ezeket az adatokat, és más cégeknek adják el,
-    marketing célokra. Az ilyen adatvédelmi incidensek ritkán eredményeznek pénzügyi csalást,
-    de a hackerek profilozásra és megszemélyesítésre használhatják az adatokat.
-avoid-personal-info = Ne használjon személyes információkat a jelszavakban
-send-verification = Ellenőrző e-mail küldése
-# This string is a header on the user preferences page and
-# appears above a check-box list of user options which allow
-# the user to choose whether or not they want to receive breach
-# alerts for all of their monitored email addresses to a single
-# email address.
-breach-summary = Adatvédelmi incidens összefoglalója
 
 ##
 
-# This string is displayed under a large numeral that indicates the total number
-# of data breaches that exposed a user’s password. Don’t add $passwords to
-# your localization, because it would result in the number showing twice.
-passwords-exposed =
-    { $passwords ->
-        [one] Jelszó került ki adatvédelmi incidens miatt
-       *[other] Jelszó került ki adatvédelmi incidens miatt
-    }
-# This string is displayed under a large numeral that indicates the total number
-# of data breaches that have exposed the user’s information. Don’t add $breaches to
-# your localization, because it would result in the number showing twice.
-known-data-breaches-exposed =
-    { $breaches ->
-        [one] Ismert adatvédelmi incidensben kerültek ki az információi
-       *[other] Ismert adatvédelmi incidensben kerültek ki az információi
-    }
-what-is-a-website-breach = Mi az a weboldalon történt adatvédelmi incidens?
-website-breach-blurb = Weboldalon történő adatvédelmi incidens akkor történik, ha számítógépes bűnözők ellopják, lemásolják vagy nyilvánosságra hozzák az online fiókok személyes adatait. Ez általában annak a következménye, hogy a hackerek gyenge pontot találnak a weboldal biztonságában. Adatvédelmi incidensek akkor is előfordulhatnak, ha a fiókadatok véletlenül szivárognak ki.
 # This is a section headline on the breach detail page that appears above
 # a short summary about the breach.
 breach-overview-title = Áttekintés
@@ -115,13 +55,6 @@ breach-overview-title = Áttekintés
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
 breach-overview-new = A(z) { $breachTitle } adatvédelmi incidens áldozata lett ekkor: { $breachDate }. Amint az adatvédelmi incidens felfedezésre és megerősítésre került, hozzáadásra került az adatbázisunkhoz, ekkor: { $addedDate }.
-# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
-menu = Menü
-# This is part of a confirmation message that appears after a user has submitted
-# the form to add an additional email to Firefox Monitor.
-# Variables:
-#   $userEmail (String) - User email address
-verify-the-link = Erősítse meg a(z) { $userEmail } címre küldött hivatkozást, hogy hozzáadja a { -product-name }hoz.
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
@@ -135,11 +68,6 @@ rec-section-subhead = Javasoljuk, hogy tegye meg ezeket a lépéseket a személy
 # Section headline
 rec-section-headline-no-pw = Mit tegyen a személyes adatainak védelme érdekében?
 rec-section-subhead-no-pw = Bár a jelszavak nem kerültek ki ebben az adatvédelmi incidensben, még mindig tehet többet a személyes adatai védelme érdekében.
-
-##
-
-# A status indicator that appears in the top right corner of new breach cards
-new-breach = Új
 
 ##
 
@@ -202,9 +130,6 @@ footer-external-link-faq-tooltip = Gyakran ismételt kérdések
 error-page-error-404-title = { $errorCode } Az oldal nem található
 error-page-error-404-copy = Sajnáljuk, a keresett oldal már nem létezik.
 error-page-error-404-cta-button = Ugrás vissza
-# Variables:
-#   $errorCode (number) - the status code of the error, e.g. 403
-error-page-error-other-title = { $errorCode } Hiba történt
 
 ## Breach overview page
 
@@ -219,10 +144,4 @@ exposed-data = Kikerült adatok:
 find-out-if-2 = Tudja meg, hogy érintett-e ebben az adatvédelmi incidensben
 find-out-if-description = Segítünk gyorsan megnézni, hogy kikerült-e az e-mail-címe ebben az adatvédelmi incidensben, és hogy mi legyen a következő teendője.
 breach-detail-cta-signup = Adatvédelmi incidensek keresése
-
-## Firefox Monitor -> Mozilla Monitor rebrand banner
-
-banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: Új név, kinézet és még több módja annak, hogy <b>visszaszerezze a magánszféráját</b>.
-banner-monitor-rebrand-dismiss-button-label = OK
-banner-monitor-rebrand-dismiss-button-tooltip = Eltüntetés
 loading-accessibility = Betöltés

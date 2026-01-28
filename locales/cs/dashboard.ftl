@@ -48,7 +48,6 @@ modal-cta-ok = OK
 modal-cta-got-it = Rozumím
 open-modal-alt = Otevřít dialogové okno
 close-modal-alt = Zavřít dialogové okno
-open-tooltip-alt = Otevřít popisek
 progress-card-heres-what-we-fixed-headline-all = Tady je, co jste opravili
 progress-card-manually-fixed-headline = Ručně opraveno
 dashboard-tab-label-action-needed = Vyžadována akce
@@ -90,19 +89,8 @@ dashboard-exposures-filter-reset = Obnovit
 ## Top banner on the dashboard
 
 dashboard-top-banner-section-label = Shrnutí na nástěnce
-dashboard-top-banner-scan-in-progress-title = Skenování stále probíhá
 dashboard-top-banner-your-data-is-protected-title = Vaše data jsou chráněna
 dashboard-top-banner-your-data-is-protected-cta = Podívejte se, co je vyřešené
-dashboard-top-banner-lets-keep-protecting-title = Pojďme chránit vaše data
-# Variables:
-# $exposures_unresolved_num is the remaining number of exposures the user has to resolve.
-dashboard-top-banner-lets-keep-protecting-description =
-    { $exposures_unresolved_num ->
-        [one] Stále vám zbývá vyřešit { $exposures_unresolved_num } odhalení. Pokračujte a chraňte se. Provedeme vás krok za krokem.
-        [few] Stále vám zbývá vyřešit { $exposures_unresolved_num } odhalení. Pokračujte a chraňte se. Provedeme vás krok za krokem.
-       *[other] Stále vám zbývá vyřešit { $exposures_unresolved_num } odhalení. Pokračujte a chraňte se. Provedeme vás krok za krokem.
-    }
-dashboard-top-banner-lets-keep-protecting-cta = Pojďme chránit i nadále
 dashboard-top-banner-protect-your-data-title = Pojďme chránit vaše údaje
 dashboard-top-banner-protect-your-data-cta = Pojďme to napravit
 # Note: this line is followed by `dashboard-top-banner-non-us-protect-your-data-description-line1`.
