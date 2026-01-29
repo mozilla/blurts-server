@@ -31,9 +31,13 @@ export async function register() {
       // Disable Sentry's automatic OTEL instrumentation since we're managing it ourselves
       skipOpenTelemetrySetup: true,
     });
-    const { nodeSDKBuilder } = await import("./instrumentation.node");
+    const { nodeSDKBuilder, getOrInitMetrics } = await import(
+      "./instrumentation.node"
+    );
     console.log("[INSTRUMENTATION] Initializing OTEL...");
     await nodeSDKBuilder();
+    // Ensure metrics are initialized after OTEL
+    getOrInitMetrics();
   }
 }
 

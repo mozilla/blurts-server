@@ -10,8 +10,6 @@ import {
   ConsoleMetricExporter,
   PeriodicExportingMetricReader,
 } from "@opentelemetry/sdk-metrics";
-import { detectResources } from "@opentelemetry/resources";
-import { gcpDetector } from "@opentelemetry/resource-detector-gcp";
 import { resourceFromAttributes } from "@opentelemetry/resources";
 import { NodeSDK } from "@opentelemetry/sdk-node";
 import {
@@ -42,7 +40,7 @@ import {
 } from "@sentry/opentelemetry";
 import * as Sentry from "@sentry/nextjs";
 import { AsyncLocalStorageContextManager } from "@opentelemetry/context-async-hooks";
-import { config as appConfig, parseKVList } from "./config";
+import { config as appConfig } from "./config";
 
 // Note: console.log use is intentional because this step is done as early
 // as possible, before setting up winston logging
@@ -101,7 +99,7 @@ export async function nodeSDKBuilder() {
   const sdk = new NodeSDK({
     resource: resourceFromAttributes({
       [ATTR_SERVICE_NAME]: appConfig.otel.serviceName,
-      ...parseKVList(appConfig.otel.resourceAttributes),
+      ...appConfig.otel.resourceAttributes,
     }),
     metricReaders: [
       new PeriodicExportingMetricReader({
@@ -170,21 +168,18 @@ export async function nodeSDKBuilder() {
   console.log("[INSTRUMENTATION] Otel setup is valid");
 }
 
-// Prometheus setup
 type MetricsState = {
   hibpNotifyRequestsTotal: Counter<Attributes>;
   hibpNotifyRequestFailuresTotal: Counter<Attributes>;
 };
 
-declare global {
-  var __metrics: Readonly<MetricsState> | undefined;
-}
+let metricsState: MetricsState | undefined;
 
 // NOTE: OTEL must be initialized before calling any metrics
 // or else it will be a No-Op metric
-function getOrInitMetrics(): MetricsState {
+export function getOrInitMetrics(): MetricsState {
   // Return cached state
-  if (globalThis.__metrics !== undefined) return globalThis.__metrics;
+  if (metricsState !== undefined) return metricsState;
   // Get the pre-registered metrics provider
   // Will be a no-op if otel has not been initialized
   const meter = metrics.getMeter(appConfig.otel.serviceName);
@@ -204,14 +199,6 @@ function getOrInitMetrics(): MetricsState {
     hibpNotifyRequestFailuresTotal,
     hibpNotifyRequestsTotal,
   };
-
-  // Make it readonly
-  Object.defineProperty(globalThis, "__metrics", {
-    value: state,
-    writable: false,
-    configurable: false,
-    enumerable: false,
-  });
   return state;
 }
 
