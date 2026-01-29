@@ -18,7 +18,13 @@ export function proxy(request: NextRequest) {
   const acceptLang = requestHeaders.get("Accept-Language");
   if (
     !usableLocales.includes(localeParam) &&
-    !["/sitemap.xml", "/robots.txt"].includes(request.nextUrl.pathname)
+    ![
+      "/sitemap.xml",
+      "/robots.txt",
+      "/__version__",
+      "/__heartbeat__",
+      "/__lbheartbeat__",
+    ].includes(request.nextUrl.pathname)
   ) {
     const targetLocale =
       typeof acceptLang === "string"
