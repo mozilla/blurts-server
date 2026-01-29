@@ -2,7 +2,6 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { NextRequest } from "next/server";
 import {
   AuthOptions,
   Profile as FxaProfile,
@@ -346,27 +345,6 @@ function convertFxaProfile(profile: FxaProfile): User {
     subscriptions: profile.subscriptions ?? [],
   };
 }
-
-export function bearerToken(req: NextRequest) {
-  const requestHeaders = new Headers(req.headers);
-  requestHeaders.get("authorization");
-  const authHeader = requestHeaders.get("authorization");
-
-  // Require an auth header
-  if (!authHeader) {
-    throw new Error("No auth header found");
-  }
-
-  // Extract the first portion which should be 'Bearer'
-  const headerType = authHeader.substring(0, authHeader.indexOf(" "));
-  if (headerType !== "Bearer") {
-    throw new Error("Invalid auth type");
-  }
-
-  // The remaining portion, which should be the token
-  return authHeader.substring(authHeader.indexOf(" ") + 1);
-}
-
 export function isAdmin(email: string) {
   const admins = config.admins.split(",") ?? [];
   return admins.includes(email);

@@ -2,10 +2,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import * as jwt from "jsonwebtoken";
-import jwkToPem from "jwk-to-pem";
+import * as jose from "jose";
 import { NextRequest, NextResponse } from "next/server";
-import { captureException, captureMessage } from "@sentry/node";
 
 import { logger } from "../../../functions/server/logging";
 import {
@@ -13,11 +11,12 @@ import {
   updateFxAProfileData,
   updatePrimaryEmail,
 } from "../../../../db/tables/subscribers";
-import { bearerToken } from "../../utils/auth";
+import { bearerToken } from "../../utils/bearerToken";
 import { revokeOAuthTokens } from "../../../../utils/fxa";
 import { deleteAccount } from "../../../functions/server/deleteAccount";
 import { record } from "../../../functions/server/glean";
 import { config } from "../../../../config";
+import { jwksClient } from "../../../../utils/jwks";
 
 const FXA_PROFILE_CHANGE_EVENT =
   "https://schemas.accounts.firefox.com/event/profile-change";
@@ -25,61 +24,28 @@ const FXA_PASSWORD_CHANGE_EVENT =
   "https://schemas.accounts.firefox.com/event/password-change";
 const FXA_DELETE_USER_EVENT =
   "https://schemas.accounts.firefox.com/event/delete-user";
-
-/**
- * Fetch FxA JWT Public for verification
- *
- * @returns {Promise<Array<jwt.JwtPayload> | undefined>} keys an array of FxA JWT keys
- */
-const getJwtPubKey = async () => {
-  const jwtKeyUri = `${config.oauthAccountUri}/jwks`;
-  try {
-    const response = await fetch(jwtKeyUri, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const { keys } = (await response.json()) as { keys: jwkToPem.JWK[] };
-    logger.info("get_jwt_pub_key", {
-      message: `fetched jwt public keys from: ${jwtKeyUri} - ${keys.length}`,
-    });
-    return keys;
-  } catch (e: unknown) {
-    logger.error("get_jwt_pub_key", {
-      exception: `Could not get JWT public key: ${jwtKeyUri}`,
-    });
-    captureMessage(
-      `Could not get JWT public key: ${jwtKeyUri} - ${e as string}`,
-    );
-  }
-};
+const FXA_SUBSCRIPTION_STATE_CHANGE_EVENT =
+  "https://schemas.accounts.firefox.com/event/subscription-state-change";
 
 /**
  * Authenticate FxA JWT for FxA relay event requests
  *
- * @param {NextRequest} req
- * @returns {Promise<jwt.JwtPayload>} decoded JWT data, which should contain FxA events
+ * @param req NextRequest
+ * @returns decoded JWT data, which should contain FxA events
  */
 const authenticateFxaJWT = async (req: NextRequest) => {
-  // bearer token
+  // Validate bearer token exists and extract it
   const headerToken = bearerToken(req);
-
-  // Verify we have a key for this kid, this assumes that you have fetched
-  // the publicJwks from FxA and put both them in an Array.
-  const publicJwks = await getJwtPubKey();
-  const jwk = publicJwks?.[0];
-  if (!jwk) {
-    throw new Error("No public jwk found");
-  }
-
-  // Verify the token is valid
-  const jwkPem = jwkToPem(jwk);
-  const decoded = jwt.verify(headerToken, jwkPem, {
+  const JWKS = jwksClient();
+  // Verify the token against the remote keyset with specified issuer and audience
+  // jose handles matching against kid, algorithm, etc. and requires that
+  // there be only one matching key
+  const { payload } = await jose.jwtVerify<FxaJwtPayload>(headerToken, JWKS, {
+    issuer: config.fxaIssuer,
+    audience: config.oauthClientId,
     algorithms: ["RS256"],
   });
-
-  // This is the JWT data itself.
-  return decoded;
+  return payload;
 };
 
 interface PasswordChangeEvent {
@@ -96,57 +62,47 @@ interface SubscriptionStateChangeEvent {
   changeTime: number;
 }
 
-interface JwtPayload {
+interface FxaJwtPayload {
   sub: string;
   events: {
-    [key: string]:
-      | PasswordChangeEvent
-      | ProfileChangeEvent
-      | SubscriptionStateChangeEvent
-      | null;
+    [FXA_PROFILE_CHANGE_EVENT]: ProfileChangeEvent;
+    [FXA_PASSWORD_CHANGE_EVENT]: PasswordChangeEvent;
+    [FXA_SUBSCRIPTION_STATE_CHANGE_EVENT]: SubscriptionStateChangeEvent;
+    [FXA_DELETE_USER_EVENT]: null;
   };
 }
 
 export async function POST(request: NextRequest) {
-  let decodedJWT: JwtPayload;
+  let decodedJWT: FxaJwtPayload & jose.JWTPayload;
 
   try {
-    decodedJWT = (await authenticateFxaJWT(request)) as JwtPayload;
-  } catch (e) {
-    logger.error("fxa_rp_event", { exception: e as string });
-    captureException(e);
+    decodedJWT = await authenticateFxaJWT(request);
+  } catch (err) {
+    logger.error("fxa_rp_event: jwtVerify error", { exception: err });
     return NextResponse.json({ success: false }, { status: 401 });
   }
 
-  if (!decodedJWT?.events) {
+  if (!("events" in decodedJWT && Object.keys(decodedJWT.events).length > 0)) {
     // capture an exception in Sentry only. Throwing error will trigger FXA retry
-    logger.error("fxa_rp_event", { decodedJWT });
-    captureMessage(
-      `fxa_rp_event: decodedJWT is missing attribute "events", ${
-        decodedJWT as unknown as string
-      }`,
-    );
+    const message = 'fxa_rp_event: decodedJWT is missing attribute "events"';
+    logger.error(message);
     return NextResponse.json(
       {
         success: false,
-        message: 'fxa_rp_event: decodedJWT is missing attribute "events"',
+        message,
       },
       { status: 400 },
     );
   }
 
-  const fxaUserId = decodedJWT?.sub;
+  const fxaUserId = decodedJWT.sub;
   if (!fxaUserId) {
-    // capture an exception in Sentry only. Throwing error will trigger FXA retry
-    captureMessage(
-      `fxa_rp_event: decodedJWT is missing attribute "sub", ${
-        decodedJWT as unknown as string
-      }`,
-    );
+    const message = 'fxa_rp_event: decodedJWT is missing attribute "sub"';
+    logger.error(message);
     return NextResponse.json(
       {
         success: false,
-        message: 'fxa_rp_event: decodedJWT is missing attribute "sub"',
+        message,
       },
       { status: 400 },
     );
@@ -168,7 +124,7 @@ export async function POST(request: NextRequest) {
   }
 
   // reference example events: https://github.com/mozilla/fxa/blob/main/packages/fxa-event-broker/README.md
-  for (const event in decodedJWT?.events) {
+  for (const event in decodedJWT.events) {
     switch (event) {
       case FXA_DELETE_USER_EVENT: {
         await deleteAccount(subscriber);
