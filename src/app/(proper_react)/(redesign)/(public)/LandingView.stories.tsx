@@ -9,7 +9,7 @@ import { PublicShell } from "./PublicShell";
 import { defaultExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 
 const meta: Meta<typeof View> = {
-  title: "Pages/Public/Landing page/Default",
+  title: "Pages/Public/Landing page",
   component: (props: ViewProps) => {
     const experimentData =
       props.experimentData ?? defaultExperimentData["Features"];
@@ -35,21 +35,11 @@ const meta: Meta<typeof View> = {
 export default meta;
 type Story = StoryObj<typeof View>;
 
-export const LandingUs: Story = {
-  name: "US visitors",
-  args: {
-    countryCode: "us",
-  },
+export const Landing: Story = {
+  name: "Default",
 };
 
-export const LandingNonUs: Story = {
-  name: "Non-US visitors",
-  args: {
-    countryCode: "nz",
-  },
-};
-
-export const LandingNonUsDe: Story = {
+export const LandingDe: Story = {
   name: "German",
   args: {
     countryCode: "de",
@@ -57,7 +47,7 @@ export const LandingNonUsDe: Story = {
   },
 };
 
-export const LandingNonUsFr: Story = {
+export const LandingFr: Story = {
   name: "French",
   args: {
     countryCode: "fr",
