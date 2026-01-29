@@ -3,7 +3,13 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { describe, it, expect } from "@jest/globals";
-import { getEnvEnum, getEnvInt, getEnvString, parseKVList } from "./config";
+import {
+  getEnvEnum,
+  getEnvInt,
+  getEnvKVList,
+  getEnvString,
+  parseKVList,
+} from "./config";
 
 describe("getEnvString", () => {
   it("throws an error when attempting to access an undefined environment variable", () => {
@@ -113,6 +119,27 @@ describe("getEnvEnum", () => {
     ).toBe("Valid value 2");
 
     delete process.env.TEST_ENUM_VAR;
+  });
+});
+
+describe("getEnvKVList", () => {
+  it("returns the parsed record when defined", () => {
+    process.env.TEST_KEYV_VAR = "key=value";
+
+    expect(getEnvKVList("TEST_KEYV_VAR")).toStrictEqual({ key: "value" });
+
+    delete process.env.TEST_KEYV_VAR;
+  });
+  it("throws an error when attempting to access an undefined environment variable", () => {
+    expect(() => getEnvKVList("UNDEFINED_ENV_VAR")).toThrow(
+      "Variable $UNDEFINED_ENV_VAR is not defined in `.env`, `.env.test`, `.env.local` and `.env.test.local`, nor as an environment variable.",
+    );
+  });
+
+  it("returns the fallback value when attempting to access an undefined environment variable and one is given", () => {
+    expect(
+      getEnvKVList("UNDEFINED_ENV_VAR", { fallbackValue: { key: "value" } }),
+    ).toStrictEqual({ key: "value" });
   });
 });
 

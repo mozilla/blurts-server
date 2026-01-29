@@ -131,7 +131,9 @@ export const config = {
         fallbackValue: "http/protobuf",
       },
     ),
-    resourceAttributes: process.env.OTEL_RESOURCE_ATTRIBUTES,
+    resourceAttributes: getEnvKVList("OTEL_RESOURCE_ATTRIBUTES", {
+      fallbackValue: {},
+    }),
     serviceName: getEnvString("OTEL_SERVICE_NAME", {
       fallbackValue: "monitor",
     }),
@@ -228,9 +230,28 @@ export function getEnvString(
 
   return value;
 }
+/**
+ * Parse comma-separated key=value list from env var into dictionary.
+ * */
+export function getEnvKVList(
+  key: string,
+  options: Partial<{ fallbackValue: Record<string, string> }> = {},
+): Record<string, string> {
+  const value = process.env[key];
+  if (typeof value !== "string" || value === "") {
+    if ("fallbackValue" in options && options.fallbackValue !== undefined) {
+      return options.fallbackValue;
+    }
+    throw new Error(
+      `Variable $${key} is not defined in \`.env\`, \`.env.${process.env.NODE_ENV}\`, \`.env.local\` and \`.env.${process.env.NODE_ENV}.local\`, nor as an environment variable.`,
+    );
+  }
+  return parseKVList(value);
+}
 
 /**
  * Parse comma-separated key=value list into dictionary.
+ * Undefined or empty values will return an empty record.
  * Segments without '=' are ignored (a=1,b,c=2 -> {a: 1, c: 2}
  * (e.g. used by OTEL_RESOURCE_ATTRIBUTES env var:
  * 'k8s.container.name=monitor-api-endpoint,k8s.namespace.name=monitor-stage...')
