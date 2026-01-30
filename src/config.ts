@@ -119,6 +119,25 @@ export const config = {
       logoBucket: getEnvString("S3_BUCKET", { fallbackValue: "" }),
     },
   },
+  otel: {
+    // If empty will export to console instead
+    endpoint: process.env.OTEL_EXPORTER_OTLP_ENDPOINT,
+    // Must be aligned with endpoint, e.g. http/protobuf and port 4318
+    // For now just HTTP, can enable GRPC later if needed
+    exporterProtocol: getEnvEnum(
+      "OTEL_EXPORTER_OTLP_PROTOCOL",
+      ["http/protobuf"],
+      {
+        fallbackValue: "http/protobuf",
+      },
+    ),
+    resourceAttributes: getEnvKVList("OTEL_RESOURCE_ATTRIBUTES", {
+      fallbackValue: {},
+    }),
+    serviceName: getEnvString("OTEL_SERVICE_NAME", {
+      fallbackValue: "monitor",
+    }),
+  },
 } as const;
 /* c8 ignore end */
 
@@ -210,4 +229,49 @@ export function getEnvString(
   }
 
   return value;
+}
+/**
+ * Parse comma-separated key=value list from env var into dictionary.
+ * */
+export function getEnvKVList(
+  key: string,
+  options: Partial<{ fallbackValue: Record<string, string> }> = {},
+): Record<string, string> {
+  const value = process.env[key];
+  if (typeof value !== "string" || value === "") {
+    if ("fallbackValue" in options && options.fallbackValue !== undefined) {
+      return options.fallbackValue;
+    }
+    throw new Error(
+      `Variable $${key} is not defined in \`.env\`, \`.env.${process.env.NODE_ENV}\`, \`.env.local\` and \`.env.${process.env.NODE_ENV}.local\`, nor as an environment variable.`,
+    );
+  }
+  return parseKVList(value);
+}
+
+/**
+ * Parse comma-separated key=value list into dictionary.
+ * Undefined or empty values will return an empty record.
+ * Segments without '=' are ignored (a=1,b,c=2 -> {a: 1, c: 2}
+ * (e.g. used by OTEL_RESOURCE_ATTRIBUTES env var:
+ * 'k8s.container.name=monitor-api-endpoint,k8s.namespace.name=monitor-stage...')
+ * */
+export function parseKVList(str?: string): Record<string, string> {
+  if (str === undefined) return {};
+  return str
+    .split(",")
+    .map((entry) => entry.trim())
+    .filter(Boolean)
+    .reduce(
+      (keyvs, entry) => {
+        const sep = entry.indexOf("=");
+        // Ignore missing or empty keys and values
+        const value = entry.slice(sep + 1);
+        if (sep > 0 && value.length) {
+          keyvs[entry.slice(0, sep)] = value;
+        }
+        return keyvs;
+      },
+      {} as Record<string, string>,
+    );
 }

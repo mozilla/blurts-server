@@ -3,7 +3,13 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { describe, it, expect } from "@jest/globals";
-import { getEnvEnum, getEnvInt, getEnvString } from "./config";
+import {
+  getEnvEnum,
+  getEnvInt,
+  getEnvKVList,
+  getEnvString,
+  parseKVList,
+} from "./config";
 
 describe("getEnvString", () => {
   it("throws an error when attempting to access an undefined environment variable", () => {
@@ -113,5 +119,119 @@ describe("getEnvEnum", () => {
     ).toBe("Valid value 2");
 
     delete process.env.TEST_ENUM_VAR;
+  });
+});
+
+describe("getEnvKVList", () => {
+  it("returns the parsed record when defined", () => {
+    process.env.TEST_KEYV_VAR = "key=value";
+
+    expect(getEnvKVList("TEST_KEYV_VAR")).toStrictEqual({ key: "value" });
+
+    delete process.env.TEST_KEYV_VAR;
+  });
+  it("throws an error when attempting to access an undefined environment variable", () => {
+    expect(() => getEnvKVList("UNDEFINED_ENV_VAR")).toThrow(
+      "Variable $UNDEFINED_ENV_VAR is not defined in `.env`, `.env.test`, `.env.local` and `.env.test.local`, nor as an environment variable.",
+    );
+  });
+
+  it("returns the fallback value when attempting to access an undefined environment variable and one is given", () => {
+    expect(
+      getEnvKVList("UNDEFINED_ENV_VAR", { fallbackValue: { key: "value" } }),
+    ).toStrictEqual({ key: "value" });
+  });
+});
+
+describe("parseKVList", () => {
+  it("returns empty object for undefined", () => {
+    expect(parseKVList(undefined)).toEqual({});
+  });
+
+  it("returns empty object for empty string", () => {
+    expect(parseKVList("")).toEqual({});
+  });
+
+  it("returns empty object for whitespace-only string", () => {
+    expect(parseKVList("   \n\t  ")).toEqual({});
+  });
+
+  it("parses a single key=value pair", () => {
+    expect(parseKVList("service.name=monitor")).toEqual({
+      "service.name": "monitor",
+    });
+  });
+
+  it("parses multiple key=value pairs separated by commas", () => {
+    expect(
+      parseKVList(
+        "k8s.namespace.name=monitor-stage,k8s.pod.name=pod-123,service.version=123abcd",
+      ),
+    ).toEqual({
+      "k8s.namespace.name": "monitor-stage",
+      "k8s.pod.name": "pod-123",
+      "service.version": "123abcd",
+    });
+  });
+
+  it("trims whitespace around segments but preserves whitespace inside values", () => {
+    expect(parseKVList("  a=1  ,  b=hello world  ,   c=3 ")).toEqual({
+      a: "1",
+      b: "hello world",
+      c: "3",
+    });
+  });
+
+  it("ignores empty segments from consecutive commas", () => {
+    expect(parseKVList("a=1,,b=2,,,c=3,")).toEqual({
+      a: "1",
+      b: "2",
+      c: "3",
+    });
+  });
+
+  it("ignores segments without '='", () => {
+    expect(parseKVList("flag,service.name=monitor")).toEqual({
+      "service.name": "monitor",
+    });
+  });
+
+  it("ignores keys with empty values (key=)", () => {
+    expect(parseKVList("a=,b=2")).toEqual({
+      b: "2",
+    });
+  });
+
+  it("ignores empty keys (=value)", () => {
+    expect(parseKVList("=value,ok=yes")).toEqual({
+      ok: "yes",
+    });
+  });
+  it("properly preserves values with '='", () => {
+    expect(parseKVList("auth=Bearer abc=def==,x=1")).toEqual({
+      auth: "Bearer abc=def==",
+      x: "1",
+    });
+  });
+  it("allows keys containing dots/slashes and other characters", () => {
+    expect(
+      parseKVList(
+        "http.request.header.user_agent=curl/8.7.1,service.namespace=monitor-stage",
+      ),
+    ).toEqual({
+      "http.request.header.user_agent": "curl/8.7.1",
+      "service.namespace": "monitor-stage",
+    });
+  });
+  it("handles '=' string alone", () => {
+    expect(parseKVList("=")).toEqual({});
+  });
+
+  it("handles mixed malformed and well-formed segments", () => {
+    expect(parseKVList("a=1, ,flag,b=2,=nope,c=3")).toEqual({
+      a: "1",
+      b: "2",
+      c: "3",
+    });
   });
 });

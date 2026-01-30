@@ -318,6 +318,19 @@ To use the strings in code, you need to obtain a `ReactLocalization` instance, w
 
 We use GCP Cloudrun for dev review – official stage and production apps are built by the Dockerfile and Github Actions. Everything that is merged into `main` will deploy automatically to stage. The ADR for preview deployment can be found [here](https://github.com/mozilla/blurts-server/blob/main/docs/adr/0008-preview-deployment.md)
 
+## Observability
+
+We use opentelemetry for manual and auto-instrumentation of app code. We use Sentry for error tracking and some alerting; other alerts are configured on metrics through Grafana ([Yardstick](https://yardstick.mozilla.org/)). Error-level logs are automatically captured and sent to Sentry. Trace IDs are forwarded to Sentry. They can be searched in [Yardstick](https://yardstick.mozilla.org/) for more detailed trace data.
+
+The infrastructure for viewing traces and metrics locally is automatically set up when you follow #docker-compose-setup instructions. It starts 4 services:
+
+- Otel collector (collects metrics, traces, and logs using OTLP)
+- Tempo (scrapes traces for grafana; in GCP environment we use Cloud Trace)
+- Prometheus (scrapes metrics for grafana; in GCP environment we use Google-Managed Prometheus)
+- Grafana (visualization)
+
+To view metrics locally, visit [Grafana](http://localhost:3000/d/monitor-dashboard/monitor?orgId=1). Some default dashboard panels are seeded. To see traces, navigate to the [Explore] pane in Grafana and select the Tempo datasource. Note that the data won't propagate immediately, so wait a minute if you're not seeing expected activity show up.
+
 _**TODO:** add full deploy process similar to Relay_
 
 _**TODO:** consider whether we can re-enable Heroku Review Apps_
