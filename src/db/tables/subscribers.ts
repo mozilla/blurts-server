@@ -7,6 +7,7 @@ import type { EmailAddressRow, SubscriberRow } from "knex/types/tables";
 import createDbConnection from "../connect";
 import { SerializedSubscriber } from "../../next-auth.js";
 import { config } from "../../config";
+import { logger } from "../../app/functions/server/logging";
 
 const knex = createDbConnection();
 
@@ -92,7 +93,7 @@ async function updatePrimaryEmail(
   } catch (error) {
     await trx.rollback();
     // @ts-ignore Type annotations added later; type unknown:
-    console.error("updatePrimaryEmail", error);
+    logger.error("updatePrimaryEmail", error);
   }
   const updatedSubscriber = Array.isArray(subscriberTableUpdated)
     ? subscriberTableUpdated[0]
@@ -255,7 +256,7 @@ async function deleteUnverifiedSubscribers() {
     .where("primary_verified", false)
     .andWhere("created_at", "<", expiredTimeStamp)
     .del();
-  console.info("deleteUnverifiedSubscribers", {
+  logger.info("deleteUnverifiedSubscribers", {
     msg: `Deleted ${numDeleted} rows.`,
   });
 }
@@ -268,7 +269,7 @@ async function deleteUnverifiedSubscribers() {
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
 async function deleteSubscriber(sub: SubscriberRow | SerializedSubscriber) {
-  console.debug("deleteSubscriber", JSON.stringify(sub));
+  logger.debug("deleteSubscriber", { id: sub.id });
   try {
     await knex("subscribers")
       .returning("id")
@@ -276,7 +277,7 @@ async function deleteSubscriber(sub: SubscriberRow | SerializedSubscriber) {
       .del();
   } catch (error) {
     // @ts-ignore Type annotations added later; type unknown:
-    console.error("deleteSubscriber", error);
+    logger.error("deleteSubscriber", { error });
   }
 }
 /* c8 ignore stop */
@@ -293,10 +294,10 @@ async function deleteResolutionsWithEmail(id: number, email: string) {
   // if email exists in breach resolution, remove it
   if (breachResolution && breachResolution[email]) {
     delete breachResolution[email];
-    console.info(`Deleting resolution with email: ${email}`);
+    logger.info(`Deleting resolution with email: ${email}`);
     return await setBreachResolution(subscriber, breachResolution);
   }
-  console.info(`No resolution with ${email} found, skip`);
+  logger.info(`No resolution with ${email} found, skip`);
 }
 /* c8 ignore stop */
 
