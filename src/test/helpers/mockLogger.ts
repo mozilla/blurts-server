@@ -8,7 +8,7 @@ import { vi } from "vitest";
 // Extremely minimal logger mock, works for most needs
 // After [MNTOR-1880] probably unnecessary
 export function mockLogger() {
-  return {
+  const logger = {
     info: vi.fn(),
     error: vi.fn(),
     warn: vi.fn(),
@@ -18,4 +18,6 @@ export function mockLogger() {
     on: vi.fn().mockImplementation((_event: string, cb: () => void) => cb()),
     end: vi.fn(),
   } as unknown as Logger;
+  logger.child = vi.fn(() => mockLogger());
+  return logger;
 }
