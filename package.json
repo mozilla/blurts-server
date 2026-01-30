@@ -19,7 +19,8 @@
     "start": "next start",
     "lint": "stylelint '**/*.scss' && prettier --check './src' && eslint --max-warnings=0 . && next typegen && tsc -p tsconfig.json --noEmit && npm run validate-nimbus",
     "fix": "prettier --write './src' && eslint --fix . && stylelint --fix '**/*.scss'",
-    "test": "npm run build-nimbus && jest \"\\.(spec|test)\\.ts\"",
+    "test": "npm run build-nimbus && jest \"\\.(spec|test)\\.ts\" && npm run test:vitest",
+    "test:vitest": "vitest run",
     "test-integrations": "npm run build-nimbus && jest \"\\.integration\\.ts\" --coverage=false --runInBand",
     "functional-tests": "playwright test functional-tests/ --config=functional-tests/playwright.config.ts",
     "functional-tests:debug": "playwright test functional-tests/ --config=functional-tests/playwright.config.ts --ui",
@@ -79,6 +80,7 @@
     "@types/react-dom": "19.2.3",
     "canvas-confetti": "^1.9.4",
     "ioredis": "^5.9.2",
+    "jose": "^6.1.3",
     "jsdom": "^27.0.0",
     "jsonwebtoken": "^9.0.3",
     "jwk-to-pem": "^2.0.7",
@@ -127,6 +129,7 @@
     "@types/nodemailer": "^7.0.5",
     "@typescript-eslint/eslint-plugin": "^8.52.0",
     "@typescript-eslint/parser": "^8.32.1",
+    "@vitest/coverage-v8": "^4.0.18",
     "adm-zip": "^0.5.16",
     "esbuild": "0.27.0",
     "eslint": "^9.39.2",
@@ -158,6 +161,7 @@
     "stylelint-scss": "^7.0.0",
     "tsx": "^4.20.6",
     "typescript": "^5.9.3",
+    "vitest": "^4.0.18",
     "yaml": "^2.8.2"
   },
   "overrides": {
