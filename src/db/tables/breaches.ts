@@ -81,6 +81,14 @@ async function updateBreachFaviconUrl(name: string, faviconUrl: string | null) {
     favicon_url: faviconUrl,
   });
 }
+
+async function getBreachFaviconUrl(name: string) {
+  const res = await knex("breaches")
+    .where("name", name)
+    .select("favicon_url")
+    .first();
+  return res?.favicon_url;
+}
 /* c8 ignore stop */
 
 export {
@@ -88,5 +96,6 @@ export {
   getAllBreachesCount,
   upsertBreaches,
   updateBreachFaviconUrl,
+  getBreachFaviconUrl,
   knex,
 };

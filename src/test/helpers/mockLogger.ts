@@ -7,10 +7,12 @@ import { Logger } from "winston";
 // Extremely minimal logger mock, works for most needs
 // After [MNTOR-1880] probably unnecessary
 export function mockLogger() {
-  return {
+  const logger = {
     info: jest.fn(),
     error: jest.fn(),
     warn: jest.fn(),
     debug: jest.fn(),
   } as unknown as Logger;
+  logger.child = jest.fn(() => mockLogger());
+  return logger;
 }
