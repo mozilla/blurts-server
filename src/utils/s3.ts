@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { Upload } from "@aws-sdk/lib-storage";
-import { S3 } from "@aws-sdk/client-s3";
+import { S3, HeadObjectCommand, NotFound } from "@aws-sdk/client-s3";
 import { config } from "../config";
 import { logger } from "../app/functions/server/logging";
 
@@ -53,5 +53,33 @@ export async function uploadToS3(fileName: string, fileStream: Buffer) {
       fileName,
       bucket: Bucket,
     });
+  }
+}
+
+/**
+ * Check if an object exists in S3 and return its metadata if it does.
+ *
+ * @param fileName S3 object key to check
+ * @returns Object metadata if exists, null if not found
+ */
+export async function checkS3ObjectExists(fileName: string): Promise<boolean> {
+  try {
+    const command = new HeadObjectCommand({
+      Bucket,
+      Key: fileName,
+    });
+    await s3.send(command);
+    // If command does not throw, it exists
+    return true;
+  } catch (error) {
+    if (error instanceof NotFound) {
+      return false;
+    }
+    // For other errors, log and rethrow
+    logger.error("Error checking S3 object existence", {
+      fileName,
+      error,
+    });
+    throw error;
   }
 }
