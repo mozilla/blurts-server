@@ -108,7 +108,7 @@
     "server-only": "^0.0.1",
     "sharp": "^0.34.5",
     "uuid": "^11.1.0",
-    "winston": "^3.18.3",
+    "winston": "^3.19.0",
     "winston-transport": "^4.9.0"
   },
   "devDependencies": {
