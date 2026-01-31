@@ -5,7 +5,6 @@
 
 ## Email headers
 
-email-header-logo-alt = { -brand-mozilla-monitor }
 email-header-button-sign-in = 로그인
 
 ## Email footers
@@ -20,8 +19,6 @@ email-footer-meta-privacy-notice = 개인 정보
 -product-name-relay = Firefox Relay
 # Mozilla VPN is a product name and should not be translated.
 -product-name-vpn = Mozilla VPN
-# A link to legal information about mozilla products.
-legal = 법적 고지
 # Button text
 verify-email-cta = 이메일 인증
 # Headline of verification email
@@ -38,9 +35,6 @@ email-subject-verify = { -product-name }의 이메일 인증을 완료하세요
 fxm-warns-you-no-breaches =
     { -product-name }는 개인정보와 관련된 데이터 유출에 대해 알려드립니다.
     그러나, 아직 유출 사례가 없습니다. 새 유출 사례에서 일치하는 이메일 주소를 발견하게 된다면 알려드리겠습니다.
-email-breach-alert-blurb =
-    { -product-name }는 개인정보와 관련된 데이터 유출에 대해 알려드립니다. 
-    방금 다른 회사의 데이터 유출 사례에 대한 정보를 받았습니다.
 
 ## 2022 email template. HTML tags should not be translated, e.g. `<a>`
 
@@ -52,7 +46,6 @@ email-2022-hibp-attribution = <a { $hibp-link-attr }>{ -brand-HIBP }</a>에서 �
 ## Verification email
 
 email-verify-heading = 지금부터 데이터를 보호하세요
-email-verify-subhead = 유출 후 데이터 보호를 시작하려면 이메일을 인증하세요.
 email-verify-simply-click = 아래 링크를 클릭하시면 계정 인증이 완료됩니다.
 
 ## Breach report

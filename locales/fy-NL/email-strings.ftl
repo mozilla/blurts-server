@@ -5,7 +5,6 @@
 
 ## Email headers
 
-email-header-logo-alt = { -brand-mozilla-monitor }
 email-header-button-sign-in = Oanmelde
 
 ## Email footers
@@ -13,6 +12,16 @@ email-header-button-sign-in = Oanmelde
 email-footer-support-heading = Fragen oer { -brand-mozilla-monitor }?
 email-footer-support-content = Besykje ús <support-link>Stipesintrum</support-link> foar help
 email-footer-trigger-transactional = Jo ûntfange dit e-mailberjocht as abonnee fan { -brand-mozilla-monitor }.
+email-footer-reason-subscriber = Jo ûntfange dit automatyske e-mailberjocht as abonnee fan { -brand-mozilla-monitor }. As jo it per fersin ûntfongen hawwe, hoege jo gjin aksje te ûndernimmen. Besykje foar mear ynformaasje <support-link>{ -brand-mozilla } Support</support-link>.
+email-footer-reason-subscriber-one-time = Jo ûntfange dit ienmalige automatyske e-mailberjocht omdat jo abonnearre binne op { -brand-monitor-plus }. As jo it per fersin ûntfongen hawwe, hoege jo gjin aksje te ûndernimmen. Besykje foar mear ynformaasje <support-link>{ -brand-mozilla } Support</support-link>.
+# Variables:
+#    $support_link (string) - The URL the user can visit for support, e.g. "https://support.mozilla.org"
+email-footer-support-content-plain =
+    Besykje ús Stipesintrum foar help:
+    { $support_link }
+# Variables:
+#   $hibp_link (string) - URL to Have I Been Pwned, e.g. "https://haveibeenpwned.com".
+email-footer-source-hibp-plain = Datalek oanlevere troch { -brand-HIBP }: { $hibp_link }
 email-footer-source-hibp = Datalek oanlevere troch <hibp-link>{ -brand-HIBP }</hibp-link>
 email-footer-logo-mozilla-alt = { -brand-mozilla }
 email-footer-meta-privacy-notice = Privacy
@@ -20,8 +29,6 @@ email-footer-meta-privacy-notice = Privacy
 -product-name-relay = Firefox Relay
 # Mozilla VPN is a product name and should not be translated.
 -product-name-vpn = Mozilla VPN
-# A link to legal information about mozilla products.
-legal = Juridysk
 # Button text
 verify-email-cta = E-mailadres ferifiearje
 # Headline of verification email
@@ -38,9 +45,6 @@ email-subject-verify = Ferifiearje jo e-mailadres foar { -product-name }
 fxm-warns-you-no-breaches =
     { -product-name } warskôget jo foar datalekken mei betrekking ta jo persoanlike gegevens.
     Oant no ta binne der gjin datalekken fûn. Wy stjoere jo in melding as jo e-mailadres werjûn wurdt yn in nij datalek.
-email-breach-alert-blurb =
-    { -product-name } warskôget jo foar datalekken mei betrekking ta jo persoanlike gegevens.
-    Wy hawwe sakrekt ynformaasje ûntfongen oer in datalek fan in oar bedriuw.
 
 ## 2022 email template. HTML tags should not be translated, e.g. `<a>`
 
@@ -52,7 +56,6 @@ email-2022-hibp-attribution = Datalek oanlevere troch <a { $hibp-link-attr }>{ -
 ## Verification email
 
 email-verify-heading = Beskermje jo gegevens, daliks
-email-verify-subhead = Ferifiearje jo e-mailadres om jo gegevens te beskermjen nei in datalek.
 email-verify-simply-click = Klik op de ûndersteande keppeling om de ferifikaasje fan jo account te foltôgjen.
 
 ## Breach report

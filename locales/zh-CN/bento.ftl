@@ -7,6 +7,7 @@ toolbar-app-picker-product-vpn = { -brand-mozilla-vpn }
 toolbar-app-picker-product-relay = { -brand-relay }
 toolbar-app-picker-product-fx-desktop = { -brand-firefox } 桌面版
 toolbar-app-picker-product-fx-mobile = { -brand-firefox } 移动版
+toolbar-app-picker-product-solo = { -brand-solo-ai }
 toolbar-app-picker-by-mozilla = { -brand-mozilla } 出品
 # Bento headline
 fx-makes-tech = { -brand-name } 用技术为您的隐私而战。

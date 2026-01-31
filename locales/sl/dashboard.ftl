@@ -50,7 +50,6 @@ modal-cta-ok = V redu
 modal-cta-got-it = Razumem
 open-modal-alt = Odpri način
 close-modal-alt = Zapri modalno okno
-open-tooltip-alt = Odpri opis orodja
 progress-card-heres-what-we-fixed-headline-all = To ste popravili
 progress-card-manually-fixed-headline = Ročno popravljeno
 dashboard-tab-label-action-needed = Potrebno je ukrepanje
@@ -94,20 +93,8 @@ dashboard-exposures-filter-reset = Ponastavi
 ## Top banner on the dashboard
 
 dashboard-top-banner-section-label = Povzetek nadzorne plošče
-dashboard-top-banner-scan-in-progress-title = Pregledovanje še poteka
 dashboard-top-banner-your-data-is-protected-title = Vaši podatki so zaščiteni
 dashboard-top-banner-your-data-is-protected-cta = Oglejte si, kaj je popravljeno
-dashboard-top-banner-lets-keep-protecting-title = Varujmo vaše podatke še naprej
-# Variables:
-# $exposures_unresolved_num is the remaining number of exposures the user has to resolve.
-dashboard-top-banner-lets-keep-protecting-description =
-    { $exposures_unresolved_num ->
-        [one] Imate še { $exposures_unresolved_num } izpostavljenost, ki jo morate popraviti. Le tako naprej in se zaščitite. Vodili vas bomo korak za korakom.
-        [two] Imate še { $exposures_unresolved_num } izpostavljenosti, ki jih morate popraviti. Le tako naprej in se zaščitite. Vodili vas bomo korak za korakom.
-        [few] Imate še { $exposures_unresolved_num } izpostavljenosti, ki jih morate popraviti. Le tako naprej in se zaščitite. Vodili vas bomo korak za korakom.
-       *[other] Imate še { $exposures_unresolved_num } izpostavljenosti, ki jih morate popraviti. Le tako naprej in se zaščitite. Vodili vas bomo korak za korakom.
-    }
-dashboard-top-banner-lets-keep-protecting-cta = Gremo naprej
 dashboard-top-banner-protect-your-data-title = Zaščitimo vaše podatke
 dashboard-top-banner-protect-your-data-cta = Popravimo zadevo
 # Note: this line is followed by `dashboard-top-banner-non-us-protect-your-data-description-line1`.

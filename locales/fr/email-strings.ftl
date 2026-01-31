@@ -5,7 +5,6 @@
 
 ## Email headers
 
-email-header-logo-alt = { -brand-mozilla-monitor }
 email-header-button-sign-in = Connexion
 
 ## Email footers
@@ -13,6 +12,16 @@ email-header-button-sign-in = Connexion
 email-footer-support-heading = Des questions sur { -brand-mozilla-monitor } ?
 email-footer-support-content = Consultez notre <support-link>Centre d’assistance</support-link> pour obtenir de l’aide
 email-footer-trigger-transactional = Vous recevez ce message en tant qu’abonné·e à { -brand-mozilla-monitor }.
+email-footer-reason-subscriber = Vous recevez cet e-mail automatique en tant qu’abonné·e de { -brand-mozilla-monitor }. Si vous l’avez reçu par erreur, aucune action n’est requise. Pour davantage d’informations, veuillez consulter <support-link>l’assistance de { -brand-mozilla }</support-link>.
+email-footer-reason-subscriber-one-time = Vous avez reçu cet e-mail automatique unique, car vous êtes abonné·e à { -brand-monitor-plus }. Vous ne recevrez plus d’e-mails similaires. Pour davantage d’informations, veuillez consulter <support-link>l’assistance de { -brand-mozilla }</support-link>.
+# Variables:
+#    $support_link (string) - The URL the user can visit for support, e.g. "https://support.mozilla.org"
+email-footer-support-content-plain =
+    Consultez notre centre d’assistance pour obtenir de l’aide :
+    { $support_link }
+# Variables:
+#   $hibp_link (string) - URL to Have I Been Pwned, e.g. "https://haveibeenpwned.com".
+email-footer-source-hibp-plain = Les informations sur les fuites de données sont fournies par { -brand-HIBP } : { $hibp_link }
 email-footer-source-hibp = Les informations sur les fuites de données sont fournies par <hibp-link>{ -brand-HIBP }</hibp-link>
 email-footer-logo-mozilla-alt = { -brand-mozilla }
 email-footer-meta-privacy-notice = Vie privée
@@ -20,8 +29,6 @@ email-footer-meta-privacy-notice = Vie privée
 -product-name-relay = Firefox Relay
 # Mozilla VPN is a product name and should not be translated.
 -product-name-vpn = Mozilla VPN
-# A link to legal information about mozilla products.
-legal = Mentions légales
 # Button text
 verify-email-cta = Vérifier l’adresse e-mail
 # Headline of verification email
@@ -38,9 +45,6 @@ email-subject-verify = Vérifiez votre adresse e-mail pour { -product-name }
 fxm-warns-you-no-breaches =
     { -product-name } vous avertit des fuites de données impliquant vos informations personnelles.
     Jusqu’à présent, aucune fuite n’a été détectée. Nous vous enverrons une alerte si votre adresse e-mail apparaît dans une nouvelle fuite.
-email-breach-alert-blurb =
-    { -product-name } vous avertit des fuites de données impliquant vos informations personnelles.
-    Nous venons de recevoir des informations à propos d’une fuite de données concernant une autre entreprise.
 
 ## 2022 email template. HTML tags should not be translated, e.g. `<a>`
 
@@ -52,7 +56,6 @@ email-2022-hibp-attribution = Les informations sur les fuites de données sont f
 ## Verification email
 
 email-verify-heading = Protégez vos données dès maintenant
-email-verify-subhead = Vérifiez votre adresse e-mail pour commencer à protéger vos données après une fuite de données.
 email-verify-simply-click = Cliquez simplement sur le lien ci-dessous pour terminer la vérification de votre compte.
 
 ## Breach report

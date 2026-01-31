@@ -6,7 +6,6 @@
 # Status Pill
 
 status-pill-action-needed = നടപടി ആവിശ്യം
-status-pill-progress = നടപ്പിലാണു്
 status-pill-fixed = നന്നാക്കി
 
 # Exposure Card
@@ -20,5 +19,5 @@ exposure-card-ip-address = ഐ.പി വിലാസം
 exposure-card-other = മറ്റുള്ളവ
 exposure-card-label-company-logo = സ്ഥാപനയടയാളം
 exposure-card-label-company = സ്ഥാപനം
-# Status of the exposure card, could be In Progress, Fixed or Action Needed
+# Status of the exposure card, could be Fixed or Action Needed
 exposure-card-label-status = നില

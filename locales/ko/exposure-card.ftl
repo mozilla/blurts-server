@@ -3,13 +3,11 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 chevron-alt = 유출 세부 정보
-exposure-card-exposure-type = 유출 유형
 exposure-card-date-found = 유출 날짜
 
 # Status Pill
 
 status-pill-action-needed = 조치 필요
-status-pill-progress = 진행중
 status-pill-fixed = 해결됨
 
 # Exposure Card
@@ -29,12 +27,10 @@ exposure-card-description-data-breach-action-needed = 정보가 { $data_breach_d
 exposure-card-description-data-breach-fixed = <data_breach_link>이 유출</data_breach_link>을 해결하기 위한 조치를 취했습니다. 데이터 유출을 지속적으로 모니터링하고 새로운 유출이 일어날 경우 알려드리겠습니다.
 exposure-card-your-exposed-info = 노출된 정보:
 exposure-card-found-the-following-data = { -brand-monitor }에서 다음과 같은 노출된 데이터를 발견했습니다:
-exposure-card-exposure-type-data-broker = 판매 정보
-exposure-card-exposure-type-data-breach = 데이터 유출
 exposure-card-resolve-exposures-cta = 노출 문제 해결
 exposure-card-label-company-logo = 회사 로고
 exposure-card-label-company = 회사
-# Status of the exposure card, could be In Progress, Fixed or Action Needed
+# Status of the exposure card, could be Fixed or Action Needed
 exposure-card-label-status = 상태
 # Variables:
 # $category_label is the data breach exposure type that was leaked. Eg. Email, IP Address.

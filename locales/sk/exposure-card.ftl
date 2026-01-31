@@ -3,13 +3,11 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 chevron-alt = Podrobnosti o úniku
-exposure-card-exposure-type = Typ odhalenia
 exposure-card-date-found = Dátum odhalenia
 
 # Status Pill
 
 status-pill-action-needed = Vyžaduje sa akcia
-status-pill-progress = Prebieha
 status-pill-fixed = Vyriešené
 
 # Exposure Card
@@ -29,12 +27,10 @@ exposure-card-description-data-breach-action-needed = Vaše informácie boli odh
 exposure-card-description-data-breach-fixed = Vykonali ste kroky potrebné na vyriešenie <data_breach_link>tohto úniku</data_breach_link>. Neustále budeme monitorovať nové úniky údajov a upozorníme vás na akékoľvek nové odhalenia.
 exposure-card-your-exposed-info = Vaše odhalené informácie:
 exposure-card-found-the-following-data = { -brand-monitor } našiel nasledujúce uniknuté údaje:
-exposure-card-exposure-type-data-broker = Informácie na predaj
-exposure-card-exposure-type-data-breach = Únik údajov
 exposure-card-resolve-exposures-cta = Vyriešiť úniky
 exposure-card-label-company-logo = Logo spoločnosti
 exposure-card-label-company = Spoločnosť
-# Status of the exposure card, could be In Progress, Fixed or Action Needed
+# Status of the exposure card, could be Fixed or Action Needed
 exposure-card-label-status = Stav
 # Variables:
 # $category_label is the data breach exposure type that was leaked. Eg. Email, IP Address.

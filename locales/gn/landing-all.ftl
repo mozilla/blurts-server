@@ -12,6 +12,9 @@ landing-all-hero-emailform-submit-sign-up-label = Eñemboheraguapy rei emoha’�
 # This is a label underneath a big number "14" - it's an image that demos Monitor.
 landing-all-hero-image-chart-label = ejehechauka
 
+## Top navbar
+
+
 # Value Proposition
 
 landing-all-value-prop-fix-exposures = Roipytyvõta ne ñembyaikuaa myatyrõrã

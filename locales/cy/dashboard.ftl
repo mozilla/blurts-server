@@ -54,7 +54,6 @@ modal-cta-ok = Iawn
 modal-cta-got-it = Iawn
 open-modal-alt = Modal agored
 close-modal-alt = Cau'r moddol
-open-tooltip-alt = Agor cyngor
 progress-card-heres-what-we-fixed-headline-all = Dyma beth rydych wedi'u trwsio
 progress-card-manually-fixed-headline = Wedi'u trwsio â llaw
 dashboard-tab-label-action-needed = Angen gweithredu
@@ -102,22 +101,8 @@ dashboard-exposures-filter-reset = Ailosod
 ## Top banner on the dashboard
 
 dashboard-top-banner-section-label = Crynodeb bwrdd gwaith
-dashboard-top-banner-scan-in-progress-title = Mae eich sgan yn dal ar waith
 dashboard-top-banner-your-data-is-protected-title = Mae eich data wedi'i ddiogelu
 dashboard-top-banner-your-data-is-protected-cta = Gweld beth sydd wedi'i drwsio
-dashboard-top-banner-lets-keep-protecting-title = Gadewch i ni barhau i ddiogelu eich data
-# Variables:
-# $exposures_unresolved_num is the remaining number of exposures the user has to resolve.
-dashboard-top-banner-lets-keep-protecting-description =
-    { $exposures_unresolved_num ->
-        [zero] Does gennych chi { $exposures_unresolved_num } datgeliadau ar ôl i'w trwsio. Llongyfarchiadau! Daliwch ati i ddiogelu eich hun.
-        [one] Mae gennych { $exposures_unresolved_num } datgeliad ar ôl i'w drwsio. Daliwch ati i ddiogelu eich hun. Byddwn yn eich arwain gam wrth gam.
-        [two] Mae gennych { $exposures_unresolved_num } ddatgeliad ar ôl i'w trwsio. Daliwch ati i ddiogelu eich hun. Byddwn yn eich arwain gam wrth gam.
-        [few] Mae gennych { $exposures_unresolved_num } datgeliad ar ôl i'w trwsio. Daliwch ati i ddiogelu eich hun. Byddwn yn eich arwain gam wrth gam.
-        [many] Mae gennych { $exposures_unresolved_num } datgeliad ar ôl i'w trwsio o hyd. Daliwch ati i ddiogelu eich hun. Byddwn yn eich arwain gam wrth gam.
-       *[other] Mae gennych { $exposures_unresolved_num } datgeliad ar ôl i'w trwsio o hyd. Daliwch ati i ddiogelu eich hun. Byddwn yn eich arwain gam wrth gam.
-    }
-dashboard-top-banner-lets-keep-protecting-cta = Daliwch ati!
 dashboard-top-banner-protect-your-data-title = Gadewch i ni ddiogelu eich data
 dashboard-top-banner-protect-your-data-cta = Gadewch i ni ei drwsio
 # Note: this line is followed by `dashboard-top-banner-non-us-protect-your-data-description-line1`.

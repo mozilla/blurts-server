@@ -3,13 +3,11 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 chevron-alt = İhlal ayrıntıları
-exposure-card-exposure-type = İhlal türü
 exposure-card-date-found = İhlal tarihi
 
 # Status Pill
 
 status-pill-action-needed = İşlem gerekli
-status-pill-progress = Devam ediyor
 status-pill-fixed = Düzeltildi
 
 # Exposure Card
@@ -29,12 +27,10 @@ exposure-card-description-data-breach-action-needed = Bilgileriniz <data_breach_
 exposure-card-description-data-breach-fixed = <data_breach_link>Bu ihlali</data_breach_link> düzeltmek için gereken adımları attınız. Veri ihlallerini sürekli olarak izleyeceğiz ve yeni ihlaller konusunda sizi uyaracağız.
 exposure-card-your-exposed-info = Ele geçirilen bilgileriniz:
 exposure-card-found-the-following-data = { -brand-monitor } aşağıdaki ele geçirilmiş verileri buldu:
-exposure-card-exposure-type-data-broker = Satılık bilgiler
-exposure-card-exposure-type-data-breach = Veri ihlali
 exposure-card-resolve-exposures-cta = İhlalleri çözün
 exposure-card-label-company-logo = Şirket logosu
 exposure-card-label-company = Şirket
-# Status of the exposure card, could be In Progress, Fixed or Action Needed
+# Status of the exposure card, could be Fixed or Action Needed
 exposure-card-label-status = Durum
 # Variables:
 # $category_label is the data breach exposure type that was leaked. Eg. Email, IP Address.

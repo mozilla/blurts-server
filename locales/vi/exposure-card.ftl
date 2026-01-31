@@ -3,13 +3,11 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 chevron-alt = Chi tiết dữ liệu bị lộ
-exposure-card-exposure-type = Loại vụ rò rỉ
 exposure-card-date-found = Ngày vụ rò rỉ
 
 # Status Pill
 
 status-pill-action-needed = Cần hành động
-status-pill-progress = Trong tiến trình
 status-pill-fixed = Đã giải quyết
 
 # Exposure Card
@@ -29,12 +27,10 @@ exposure-card-description-data-breach-action-needed = Thông tin của bạn đ�
 exposure-card-description-data-breach-fixed = Bạn đã thực hiện các bước cần thiết để khắc phục <data_breach_link>rò rỉ này</data_breach_link>. Chúng tôi sẽ liên tục theo dõi các hành vi rò rỉ dữ liệu và cảnh báo cho bạn về bất kỳ hành vi rò rỉ dữ liệu mới nào.
 exposure-card-your-exposed-info = Thông tin bị lộ của bạn:
 exposure-card-found-the-following-data = { -brand-monitor } tìm thấy dữ liệu bị lộ sau đây:
-exposure-card-exposure-type-data-broker = Thông tin để bán
-exposure-card-exposure-type-data-breach = Vụ rò rỉ
 exposure-card-resolve-exposures-cta = Giải quyết dữ liệu bị lộ
 exposure-card-label-company-logo = Logo công ty
 exposure-card-label-company = Công ty
-# Status of the exposure card, could be In Progress, Fixed or Action Needed
+# Status of the exposure card, could be Fixed or Action Needed
 exposure-card-label-status = Trạng thái
 # Variables:
 # $category_label is the data breach exposure type that was leaked. Eg. Email, IP Address.

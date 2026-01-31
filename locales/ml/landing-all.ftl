@@ -5,6 +5,9 @@
 public-nav-name = { -brand-mozilla-monitor }
 landing-all-hero-emailform-input-placeholder = താങ്ങളുടെപേര്@example.com
 
+## Top navbar
+
+
 # Value Proposition
 
 

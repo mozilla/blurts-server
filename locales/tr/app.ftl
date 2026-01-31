@@ -23,12 +23,11 @@
 -brand-relay = Firefox Relay
 -brand-mozilla-monitor = Mozilla Monitor
 -brand-monitor-plus = Monitor Plus
+-brand-solo-ai = Solo AI
 
 ##
 
 error-not-subscribed = Bu e-posta adresi { -product-name }’e abone değil.
-error-hibp-throttled = Çok fazla { -brand-HIBP } bağlantısı.
-error-hibp-connect = { -brand-HIBP } bağlantısı kurulamadı.
 user-add-invalid-email = Geçersiz e-posta
 user-add-too-many-emails = Azami sayıda e-posta adresini gözlemliyorsunuz.
 user-add-duplicate-email = Bu e-posta zaten { -product-name }'e eklenmiş.
@@ -38,67 +37,16 @@ user-delete-unknown-error = Bir e-posta adresi kaldırılırken bir sorun oluşt
 user-verify-token-error = Doğrulama jetonu gerekli.
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Ele geçirilen veriler:
-# Breach data provided by Have I Been Pwned.
-# Variables:
-#   $hibp-link (String) - Link to Have I Been Pwned
-hibp-attribution = İhlal verileri { $hibp-link } tarafından sağlanmaktadır
-show-all = Tümünü göster
-sign-out = Çıkış
-# Link title
-preferences = Tercihler
-# Link title
-home = Ana sayfa
-# Link title
-security-tips = Güvenlik ipuçları
 # Link title
 more-about-this-breach = Bu ihlal hakkında daha fazla bilgi
-monitor-several-emails = Birden fazla e-postayı izleyin
-website-breach = Web sitesi ihlali
-sensitive-breach = Hassas web sitesi ihlali
-data-aggregator-breach = Veri toplayıcı ihlali
 what-data = Ele geçirilen veriler:
-sensitive-sites = { -product-name } hassas siteleri nasıl ele alıyor?
-sensitive-sites-copy = { -product-name } bu tür veri ihlallerine dahil olan hesapları yalnızca e-posta adresiniz onaylandıktan sonra gösterir. Yani bilgilerinizin bu veri ihlalinde ele geçirilip geçirilmediğini yalnızca siz görebilirsiniz (e-posta hesabınıza erişebilen başka birisi yoksa).
 delayed-reporting-headline = Bu ihlalin bildirilmesi neden bu kadar uzun sürdü?
 delayed-reporting-copy =
     Ele geçirilen bilgilerin dark web'de gün yüzüne çıkması bazen aylar veya yıllar sürebilir. 
     İhlaller keşfedildikten ve doğrulandıktan hemen sonra veritabanımıza eklenir.
-fxm-warns-you = E-posta adresiniz çevrimiçi bir veri ihlalinde yer alırsa { -product-name } sizi uyarır. Bilgilerinizin ele geçirilip geçirilmediğini görün, hesaplarınızı nasıl daha iyi koruyabileceğinizi öğrenin ve e-posta adresiniz yeni veri ihlallerine karışırsa bildirim alın.
-what-is-data-agg = Veri toplayıcı nedir?
-what-is-data-agg-blurb =
-    Veri toplayıcıları veya veri aracıları, halka açık kayıtlardan bilgi toplar 
-    ve diğer şirketlerden veri satın alır. Bu verileri pazarlama amacıyla başka şirketlere satmak için derlerler. 
-    Bu ihlallerin mağdurlarının finansal dolandırıcılık yaşama olasılığı daha düşüktür ama bilgisayar 
-    korsanları kimlik hırsızlığı veya profil çıkarma amacıyla bu verileri kullanabilirler.
-avoid-personal-info = Parolalarda kişisel bilgilerinizi kullanmaktan kaçının
-send-verification = Doğrulama bağlantısını gönder
-# This string is a header on the user preferences page and
-# appears above a check-box list of user options which allow
-# the user to choose whether or not they want to receive breach
-# alerts for all of their monitored email addresses to a single
-# email address.
-breach-summary = İhlal özeti
 
 ##
 
-# This string is displayed under a large numeral that indicates the total number
-# of data breaches that exposed a user’s password. Don’t add $passwords to
-# your localization, because it would result in the number showing twice.
-passwords-exposed =
-    { $passwords ->
-        [one] parolanız ihlallerde ele geçirilmiş
-       *[other] parolanız ihlallerde ele geçirilmiş
-    }
-# This string is displayed under a large numeral that indicates the total number
-# of data breaches that have exposed the user’s information. Don’t add $breaches to
-# your localization, because it would result in the number showing twice.
-known-data-breaches-exposed =
-    { $breaches ->
-        [one] veri ihlalinde bilgileriniz ele geçirildi
-       *[other] veri ihlalinde bilgileriniz ele geçirildi
-    }
-what-is-a-website-breach = Web sitesi ihlali nedir?
-website-breach-blurb = Siber suçlular çevrimiçi hesaplardan kişisel bilgileri çaldığında, kopyaladığında veya ifşa ettiğinde web sitesinde veri ihlali meydana gelir. Genellikle hacker'ların web sitesinin güvenliğinde zayıf bir nokta bulması sonucunda oluşur. Hesap bilgileri kazayla sızdırıldığında da ihlaller meydana gelebilir.
 # This is a section headline on the breach detail page that appears above
 # a short summary about the breach.
 breach-overview-title = Genel Bakış
@@ -106,13 +54,6 @@ breach-overview-title = Genel Bakış
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
 breach-overview-new = { $breachDate } tarihinde { $breachTitle } bir veri ihlaline uğradı. İhlal keşfedildikten ve doğrulandıktan sonra { $addedDate } tarihinde veritabanımıza eklendi.
-# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
-menu = Menü
-# This is part of a confirmation message that appears after a user has submitted
-# the form to add an additional email to Firefox Monitor.
-# Variables:
-#   $userEmail (String) - User email address
-verify-the-link = { $userEmail } adresine gönderilen bağlantıyı onaylarak adresinizi { -product-name }'e ekleyin.
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
@@ -126,11 +67,6 @@ rec-section-subhead = Kişisel bilgilerinizi güvende tutmak ve dijital kimliği
 # Section headline
 rec-section-headline-no-pw = Kişisel bilgilerinizi korumak için ne yapmalısınız?
 rec-section-subhead-no-pw = Bu ihlal kapsamında parolalar ele geçirilmemiş olsa da kişisel bilgilerinizi daha iyi korumak için atabileceğiniz adımlar var.
-
-##
-
-# A status indicator that appears in the top right corner of new breach cards
-new-breach = Yeni
 
 ##
 
@@ -193,9 +129,6 @@ footer-external-link-faq-tooltip = Sıkça sorulan sorular
 error-page-error-404-title = { $errorCode } Sayfa bulunamadı
 error-page-error-404-copy = Aradığınız sayfa artık mevcut değil.
 error-page-error-404-cta-button = Geri dön
-# Variables:
-#   $errorCode (number) - the status code of the error, e.g. 403
-error-page-error-other-title = { $errorCode } Bir hata oluştu
 
 ## Breach overview page
 
@@ -210,10 +143,4 @@ exposed-data = Ele geçirilen veriler:
 find-out-if-2 = Bu ihlale karışıp karışmadığınızı öğrenin
 find-out-if-description = Bu ihlalde e-posta adresinizin ele geçirilip geçirilmediğini hızlıca görmenize ve bundan sonra ne yapacağınızı anlamanıza yardımcı olacağız.
 breach-detail-cta-signup = İhlalleri kontrol et
-
-## Firefox Monitor -> Mozilla Monitor rebrand banner
-
-banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: Yeni isim, yeni görünüm ve <b>gizliliğinizi geri almanın</b> yeni yolları.
-banner-monitor-rebrand-dismiss-button-label = Tamam
-banner-monitor-rebrand-dismiss-button-tooltip = Kapat
 loading-accessibility = Yükleniyor

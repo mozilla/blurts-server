@@ -5,7 +5,6 @@
 
 ## Email headers
 
-email-header-logo-alt = { -brand-mozilla-monitor }
 email-header-button-sign-in = Mewngofnodi
 
 ## Email footers
@@ -13,6 +12,14 @@ email-header-button-sign-in = Mewngofnodi
 email-footer-support-heading = Cwestiynau am { -brand-mozilla-monitor }?
 email-footer-support-content = Ewch i'n <support-link>Canolfan Gymorth</support-link> am gymorth
 email-footer-trigger-transactional = Rydych chi'n derbyn yr e-bost hwn fel tanysgrifiwr { -brand-mozilla-monitor }.
+email-footer-reason-subscriber = Rydych chi'n derbyn yr e-bost awtomatig hwn fel tanysgrifiwr o { -brand-mozilla-monitor }. Os ydych wedi ei dderbyn ar gam, does dim angen gweithredu. Am ragor o wybodaeth, ewch i <support-link>{ -brand-mozilla } Cefnogaeth</support-link>.
+email-footer-reason-subscriber-one-time = Rydych chi wedi derbyn yr e-bost awtomataidd un-tro hwn oherwydd eich bod wedi tanysgrifio i { -brand-monitor-plus }. Byddwch chi ddim yn derbyn unrhyw e-byst pellach fel hyn. Am ragor o wybodaeth, ewch i <support-link>{ -brand-mozilla } Cefnogaeth</support-link>.
+# Variables:
+#    $support_link (string) - The URL the user can visit for support, e.g. "https://support.mozilla.org"
+email-footer-support-content-plain = Ewch i'n Canolfan Gymorth am help: { $support_link }
+# Variables:
+#   $hibp_link (string) - URL to Have I Been Pwned, e.g. "https://haveibeenpwned.com".
+email-footer-source-hibp-plain = Data tor-amod wedi'i ddarparu gan { -brand-HIBP }: { $hibp_link }
 email-footer-source-hibp = Darparwyd manylion tor-data gan <hibp-link>{ -brand-HIBP }</hibp-link>
 email-footer-logo-mozilla-alt = { -brand-mozilla }
 email-footer-meta-privacy-notice = Preifatrwydd
@@ -20,8 +27,6 @@ email-footer-meta-privacy-notice = Preifatrwydd
 -product-name-relay = Firefox Relay
 # Mozilla VPN is a product name and should not be translated.
 -product-name-vpn = Mozilla VPN
-# A link to legal information about mozilla products.
-legal = Cyfreithiol
 # Button text
 verify-email-cta = Dilysu E-bost
 # Headline of verification email
@@ -36,7 +41,6 @@ email-subject-no-breaches = Nid yw { -product-name } wedi canfod unrhyw dor-data
 # Subject line of email
 email-subject-verify = Gwirio eich e-bost ar gyfer { -product-name }
 fxm-warns-you-no-breaches = Mae { -product-name } yn eich rhybuddio am dor-data sy'n cynnwys eich manylion personol. Hyd yn hyn, nid ydym wedi darganfod unrhyw dor-data. Byddwn yn anfon rhybudd atoch os bydd eich cyfeiriad e-bost yn ymddangos mewn tor-data newydd.
-email-breach-alert-blurb = Mae { -product-name } yn eich rhybuddio am dor-data sy'n cynnwys eich manylion personol. Rydym newydd dderbyn fanylion am dor-data cwmni arall.
 
 ## 2022 email template. HTML tags should not be translated, e.g. `<a>`
 
@@ -48,7 +52,6 @@ email-2022-hibp-attribution = Data tor-data wedi'i ddarparu gan <a { $hibp-link-
 ## Verification email
 
 email-verify-heading = Diogelwch eich data, gan ddechrau nawr
-email-verify-subhead = Dilyswch eich e-bost i ddechrau diogelu eich data ar ôl tor-data.
 email-verify-simply-click = Cliciwch ar y ddolen isod i orffen dilysu'ch cyfrif.
 
 ## Breach report

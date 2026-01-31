@@ -5,7 +5,6 @@
 
 ## Email headers
 
-email-header-logo-alt = { -brand-mozilla-monitor }
 email-header-button-sign-in = Prijava
 
 ## Email footers
@@ -13,6 +12,14 @@ email-header-button-sign-in = Prijava
 email-footer-support-heading = Vprašanja o { -brand-mozilla-monitor(sklon: "mestnik") }?
 email-footer-support-content = Za pomoč obiščite naše <support-link>središče za podporo</support-link>
 email-footer-trigger-transactional = To e-poštno sporočilo ste prejeli kot naročnik na { -brand-mozilla-monitor(sklon: "tožilnik") }.
+email-footer-reason-subscriber = To samodejno e-poštno sporočilo ste prejeli, ker ste naročnik na { -brand-mozilla-monitor }. Če ste ga prejeli po pomoti, ni potrebno ukrepanje. Za več informacij obiščite <support-link>podporo za { -brand-mozilla }</support-link>.
+email-footer-reason-subscriber-one-time = To enkratno samodejno e-poštno sporočilo ste prejeli, ker ste naročeni na { -brand-monitor-plus }. Nobene tovrstne e-pošte ne boste prejemali več. Za več informacij obiščite <support-link>podporo za { -brand-mozilla }</support-link>.
+# Variables:
+#    $support_link (string) - The URL the user can visit for support, e.g. "https://support.mozilla.org"
+email-footer-support-content-plain = Za pomoč obiščite naš center za podporo: { $support_link }
+# Variables:
+#   $hibp_link (string) - URL to Have I Been Pwned, e.g. "https://haveibeenpwned.com".
+email-footer-source-hibp-plain = Podatke o krajah podatkov ponudnika { -brand-HIBP }: { $hibp_link }
 email-footer-source-hibp = Podatke o krajah podatkov posredoval <hibp-link>{ -brand-HIBP }</hibp-link>
 email-footer-logo-mozilla-alt = { -brand-mozilla }
 email-footer-meta-privacy-notice = Zasebnost
@@ -20,8 +27,6 @@ email-footer-meta-privacy-notice = Zasebnost
 -product-name-relay = Firefox Relay
 # Mozilla VPN is a product name and should not be translated.
 -product-name-vpn = Mozilla VPN
-# A link to legal information about mozilla products.
-legal = Pravno obvestilo
 # Button text
 verify-email-cta = Potrdi e-poštni naslov
 # Headline of verification email
@@ -38,9 +43,6 @@ email-subject-verify = Potrdite e-pošto za { -product-name }
 fxm-warns-you-no-breaches =
     { -product-name } vas opozori na kraje podatkov, ki vključujejo vaše osebne podatke.
     Do zdaj ni bilo ugotovljenih nobenih kraj. Če se bo vaš e-poštni naslov pojavil v novi kraji, vas bomo opozorili.
-email-breach-alert-blurb =
-    { -product-name } vas opozarja o krajah podatkov, ki vključujejo vaše osebne podatke.
-    Pravkar smo prejeli podrobnosti o novi kraji podatkov.
 
 ## 2022 email template. HTML tags should not be translated, e.g. `<a>`
 
@@ -52,7 +54,6 @@ email-2022-hibp-attribution = Podatke o krajah zagotavlja <a { $hibp-link-attr }
 ## Verification email
 
 email-verify-heading = Začnite varovati svoje podatke
-email-verify-subhead = Potrdite svoj e-poštni naslov in začnite varovati svoje podatke po kraji.
 email-verify-simply-click = Preprosto kliknite spodnjo povezavo, da dokončate preverjanje računa.
 
 ## Breach report

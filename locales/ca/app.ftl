@@ -22,47 +22,14 @@
 ##
 
 error-not-subscribed = Aquesta adreça electrònica no està subscrita al { -product-name }.
-error-hibp-throttled = Hi ha massa connexions a { -brand-HIBP }.
-error-hibp-connect = S'ha produït un error en connectar-se a { -brand-HIBP }.
 user-add-invalid-email = L'adreça electrònica no és vàlida
 user-add-too-many-emails = Esteu supervisant el nombre màxim d'adreces electròniques.
 user-add-duplicate-email = Aquesta adreça electrònica ja s'ha afegit al { -product-name }.
 user-verify-token-error = Cal el testimoni de verificació.
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Dades afectades:
-# Breach data provided by Have I Been Pwned.
-# Variables:
-#   $hibp-link (String) - Link to Have I Been Pwned
-hibp-attribution = Informació de les filtracions proporcionada per { $hibp-link }
-show-all = Mostra-ho tot
-sign-out = Tanca la sessió
-# Link title
-preferences = Preferències
-# Link title
-home = Inici
-# Link title
-security-tips = Consells de seguretat
 # Link title
 more-about-this-breach = Més informació sobre aquesta filtració
-website-breach = Filtració de lloc web
-what-is-data-agg = Què és un agregador de dades?
-what-is-data-agg-blurb = Els agregadors de dades, o intermediaris de dades, recopilen informació de registres públics i la compren a altres empreses. Recopilen aquestes dades per vendre-les a empreses amb finalitats de màrqueting. Les víctimes d'aquestes filtracions són menys propenses a sofrir frau financer, però els pirates informàtics podrien fer servir aquestes dades per suplantar-les o crear perfils seus.
-# This string is a header on the user preferences page and
-# appears above a check-box list of user options which allow
-# the user to choose whether or not they want to receive breach
-# alerts for all of their monitored email addresses to a single
-# email address.
-breach-summary = Resum de filtracions
-
-##
-
-# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
-menu = Menú
-
-##
-
-# A status indicator that appears in the top right corner of new breach cards
-new-breach = Nou
 
 ##
 

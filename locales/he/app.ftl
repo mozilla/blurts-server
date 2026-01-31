@@ -27,8 +27,6 @@
 ##
 
 error-not-subscribed = כתובת הדוא״ל הזו אינה רשומה ל־{ -product-name }.
-error-hibp-throttled = יותר מדי חיבורים אל { -brand-HIBP }.
-error-hibp-connect = שגיאה בהתחברות אל { -brand-HIBP }.
 user-add-invalid-email = דוא״ל שגוי
 user-add-too-many-emails = הינך במעקב אחר המספר המירבי של כתובות דוא״ל.
 user-add-duplicate-email = דוא״ל זה כבר נוסף אל { -product-name }.
@@ -38,56 +36,14 @@ user-delete-unknown-error = משהו השתבש בעת הסרת כתובת דו�
 user-verify-token-error = נדרש אסימון אימות.
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = מידע שנחשף:
-# Breach data provided by Have I Been Pwned.
-# Variables:
-#   $hibp-link (String) - Link to Have I Been Pwned
-hibp-attribution = נתוני הדליפה מסופקים על־ידי { $hibp-link }
-show-all = הצגת הכל
-sign-out = התנתקות
-# Link title
-preferences = העדפות
-# Link title
-home = בית
-# Link title
-security-tips = עצות אבטחה
 # Link title
 more-about-this-breach = עוד על הדליפה הזו
-monitor-several-emails = ניטור אחר מספר כתובות דוא״ל
-sensitive-sites = כיצד { -product-name } מתייחס לאתרים רגישים?
-avoid-personal-info = כדאי להימנע משימוש בפרטים אישיים בססמאות
-send-verification = שליחת קישור לאימות
-# This string is a header on the user preferences page and
-# appears above a check-box list of user options which allow
-# the user to choose whether or not they want to receive breach
-# alerts for all of their monitored email addresses to a single
-# email address.
-breach-summary = קיצור הדליפה
 
 ##
 
-# This string is displayed under a large numeral that indicates the total number
-# of data breaches that exposed a user’s password. Don’t add $passwords to
-# your localization, because it would result in the number showing twice.
-passwords-exposed =
-    { $passwords ->
-        [one] ססמה אחת נחשפה בכל הדליפות
-       *[other] ססמאות נחשפו בכל הדליפות
-    }
-# This string is displayed under a large numeral that indicates the total number
-# of data breaches that have exposed the user’s information. Don’t add $breaches to
-# your localization, because it would result in the number showing twice.
-known-data-breaches-exposed =
-    { $breaches ->
-        [one] דליפת נתונים מוכרת אחת חשפה מידע עליך
-       *[other] דליפות נתונים מוכרות חשפו מידע עליך
-    }
-# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
-menu = תפריט
-# This is part of a confirmation message that appears after a user has submitted
-# the form to add an additional email to Firefox Monitor.
-# Variables:
-#   $userEmail (String) - User email address
-verify-the-link = יש לאמת את הקישור שנשלח אל { $userEmail } כדי להוסיף אותו ל־{ -product-name }.
+# This is a section headline on the breach detail page that appears above
+# a short summary about the breach.
+breach-overview-title = סקירה כוללת
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
@@ -101,11 +57,6 @@ rec-section-subhead = אנו ממליצים לך לנקוט בצעדים הבא�
 # Section headline
 rec-section-headline-no-pw = מה לעשות כדי להגן על המידע האישי שלך
 rec-section-subhead-no-pw = למרות שססמאות לא נחשפו בדליפה זו, עדיין ישנם צעדים שניתן לנקוט בהן כדי להגן יותר טוב על המידע האישי שלך.
-
-##
-
-# A status indicator that appears in the top right corner of new breach cards
-new-breach = חדש
 
 ##
 
@@ -168,16 +119,11 @@ footer-external-link-faq-tooltip = תשובות לשאלות נפוצות
 error-page-error-404-title = { $errorCode } הדף לא נמצא
 error-page-error-404-copy = הדף שחיפשת כבר לא קיים, עמך הסליחה.
 error-page-error-404-cta-button = חזרה אחורה
-# Variables:
-#   $errorCode (number) - the status code of the error, e.g. 403
-error-page-error-other-title = { $errorCode } משהו השתבש
 
 ## Breach overview page
 
 search-breaches = חיפוש בדליפות
 
-## Firefox Monitor -> Mozilla Monitor rebrand banner
+## Public breach detail page
 
-banner-monitor-rebrand-dismiss-button-label = אישור
-banner-monitor-rebrand-dismiss-button-tooltip = סגירה
 loading-accessibility = בטעינה

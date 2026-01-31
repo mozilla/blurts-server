@@ -5,7 +5,6 @@
 
 ## Email headers
 
-email-header-logo-alt = { -brand-mozilla-monitor }
 email-header-button-sign-in = Giriş yap
 
 ## Email footers
@@ -13,6 +12,15 @@ email-header-button-sign-in = Giriş yap
 email-footer-support-heading = { -brand-mozilla-monitor } hakkında sorularınız mı var?
 email-footer-support-content = Yardım için <support-link>Destek Merkezimizi</support-link> ziyaret edin
 email-footer-trigger-transactional = Bu e-postayı { -brand-mozilla-monitor } abonesi olduğunuz için aldınız.
+email-footer-reason-subscriber = Bu otomatik e-postayı { -brand-mozilla-monitor } abonesi olduğunuz için aldınız. Hatalı olarak aldıysanız herhangi bir işlem yapmanız gerekmez. Daha fazla bilgi için <support-link>{ -brand-mozilla } Destek</support-link> sitesini ziyaret edebilirsiniz.
+# Variables:
+#    $support_link (string) - The URL the user can visit for support, e.g. "https://support.mozilla.org"
+email-footer-support-content-plain =
+    Yardım almak için destek merkezimizi ziyaret edebilirsiniz:
+    { $support_link }
+# Variables:
+#   $hibp_link (string) - URL to Have I Been Pwned, e.g. "https://haveibeenpwned.com".
+email-footer-source-hibp-plain = İhlal verileri { -brand-HIBP } tarafından sağlanmaktadır: { $hibp_link }
 email-footer-source-hibp = İhlal verileri <hibp-link>{ -brand-HIBP }</hibp-link> tarafından sağlanmaktadır
 email-footer-logo-mozilla-alt = { -brand-mozilla }
 email-footer-meta-privacy-notice = Gizlilik
@@ -20,8 +28,6 @@ email-footer-meta-privacy-notice = Gizlilik
 -product-name-relay = Firefox Relay
 # Mozilla VPN is a product name and should not be translated.
 -product-name-vpn = Mozilla VPN
-# A link to legal information about mozilla products.
-legal = Hukuki Bilgiler
 # Button text
 verify-email-cta = E-postayı doğrula
 # Headline of verification email
@@ -36,7 +42,6 @@ email-subject-no-breaches = { -product-name } bilinen veri ihlali bulamadı
 # Subject line of email
 email-subject-verify = { -product-name } e-postanızı doğrulayın
 fxm-warns-you-no-breaches = { -product-name } sizi kişisel bilgilerinizin dahil olduğu veri ihlalleri konusunda uyarır. Şimdilik herhangi bir veri ihlali bulunamadı. E-posta adresiniz yeni bir veri ihlalinde yer alırsa size bildirim göndereceğiz.
-email-breach-alert-blurb = { -product-name } sizi kişisel bilgilerinizin dahil olduğu veri ihlalleri konusunda uyarır. Bir şirketin yaşadığı veri ihlali konusunda bilgi aldık.
 
 ## 2022 email template. HTML tags should not be translated, e.g. `<a>`
 
@@ -48,7 +53,6 @@ email-2022-hibp-attribution = İhlal verileri <a { $hibp-link-attr }>{ -brand-HI
 ## Verification email
 
 email-verify-heading = Verilerinizi korumaya hemen şimdi başlayın
-email-verify-subhead = Veri ihlallerinin ardından verilerinizi korumaya başlamak için e-postanızı doğrulayın.
 email-verify-simply-click = Hesabınızı doğrulamak için aşağıdaki bağlantıya tıklamanız yeterli.
 
 ## Breach report

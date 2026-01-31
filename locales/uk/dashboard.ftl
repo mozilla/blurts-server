@@ -49,7 +49,6 @@ modal-cta-ok = OK
 modal-cta-got-it = Зрозуміло
 open-modal-alt = Відкрити вікно
 close-modal-alt = Закрити вікно
-open-tooltip-alt = Відкрити підказку
 progress-card-heres-what-we-fixed-headline-all = Усунуті розкриття
 progress-card-manually-fixed-headline = Виправлено вручну
 dashboard-tab-label-action-needed = Потрібна дія
@@ -91,19 +90,8 @@ dashboard-exposures-filter-reset = Скинути
 ## Top banner on the dashboard
 
 dashboard-top-banner-section-label = Панель підсумку
-dashboard-top-banner-scan-in-progress-title = Ваше сканування ще триває
 dashboard-top-banner-your-data-is-protected-title = Ваші дані захищені
 dashboard-top-banner-your-data-is-protected-cta = Перегляньте, що усунуто
-dashboard-top-banner-lets-keep-protecting-title = Продовжимо захищати ваші дані
-# Variables:
-# $exposures_unresolved_num is the remaining number of exposures the user has to resolve.
-dashboard-top-banner-lets-keep-protecting-description =
-    { $exposures_unresolved_num ->
-        [one] Лишилося ще { $exposures_unresolved_num } розкриття даних, яке потрібно усунути. Продовжте і захистіть себе. Ми допоможемо вам крок за кроком.
-        [few] Лишилося ще { $exposures_unresolved_num } розкриття даних, які потрібно усунути. Продовжте і захистіть себе. Ми допоможемо вам крок за кроком.
-       *[many] Лишилося ще { $exposures_unresolved_num } розкриттів даних, які потрібно усунути. Продовжте і захистіть себе. Ми допоможемо вам крок за кроком.
-    }
-dashboard-top-banner-lets-keep-protecting-cta = Продовжити
 dashboard-top-banner-protect-your-data-title = Захистімо ваші дані
 dashboard-top-banner-protect-your-data-cta = Усуньмо це
 # Note: this line is followed by `dashboard-top-banner-non-us-protect-your-data-description-line1`.

@@ -5,7 +5,6 @@
 
 ## Email headers
 
-email-header-logo-alt = { -brand-mozilla-monitor }
 email-header-button-sign-in = Logga in
 
 ## Email footers
@@ -13,6 +12,14 @@ email-header-button-sign-in = Logga in
 email-footer-support-heading = Frågor om { -brand-mozilla-monitor }?
 email-footer-support-content = Besök vårt <support-link>Supportcenter</support-link> för hjälp
 email-footer-trigger-transactional = Du får det här e-postmeddelandet som prenumerant på { -brand-mozilla-monitor }.
+email-footer-reason-subscriber = Du får detta automatiska e-postmeddelande som prenumerant på { -brand-mozilla-monitor }. Om du fick det av misstag krävs ingen åtgärd. För mer information, besök <support-link>{ -brand-mozilla } Support</support-link>.
+email-footer-reason-subscriber-one-time = Du har fått detta automatiska engångsmejl eftersom du prenumererar på { -brand-monitor-plus }. Du kommer inte att få några fler mejl som detta. För mer information, besök <support-link>{ -brand-mozilla } Support</support-link>.
+# Variables:
+#    $support_link (string) - The URL the user can visit for support, e.g. "https://support.mozilla.org"
+email-footer-support-content-plain = Besök vårt supportcenter för hjälp: { $support_link }
+# Variables:
+#   $hibp_link (string) - URL to Have I Been Pwned, e.g. "https://haveibeenpwned.com".
+email-footer-source-hibp-plain = Intrångsdata tillhandahålls av { -brand-HIBP }: { $hibp_link }
 email-footer-source-hibp = Intrångsdata tillhandahållen av <hibp-link>{ -brand-HIBP }</hibp-link>
 email-footer-logo-mozilla-alt = { -brand-mozilla }
 email-footer-meta-privacy-notice = Sekretess
@@ -20,8 +27,6 @@ email-footer-meta-privacy-notice = Sekretess
 -product-name-relay = Firefox Relay
 # Mozilla VPN is a product name and should not be translated.
 -product-name-vpn = Mozilla VPN
-# A link to legal information about mozilla products.
-legal = Juridisk information
 # Button text
 verify-email-cta = Verifiera e-postadress
 # Headline of verification email
@@ -38,9 +43,6 @@ email-subject-verify = Verifiera din e-postadress för { -product-name }
 fxm-warns-you-no-breaches =
     { -product-name } varnar dig om intrång av uppgifter som involverar din personliga information.
     Hittills har inga intrång hittats. Vi skickar en varning om din e-postadress visas i ett nytt intrång.
-email-breach-alert-blurb =
-    { -product-name } varnar dig om intrång av uppgifter som involverar din personliga information.
-    Vi har precis fått uppgifter om ett dataintrång från ett annat företag.
 
 ## 2022 email template. HTML tags should not be translated, e.g. `<a>`
 
@@ -52,7 +54,6 @@ email-2022-hibp-attribution = Intrångsdata tillhandahållen av <a { $hibp-link-
 ## Verification email
 
 email-verify-heading = Skydda dina data, från och med nu
-email-verify-subhead = Verifiera din e-post för att börja skydda din data efter ett intrång.
 email-verify-simply-click = Klicka på länken nedan för att slutföra verifieringen av ditt konto.
 
 ## Breach report

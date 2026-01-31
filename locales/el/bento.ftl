@@ -7,6 +7,7 @@ toolbar-app-picker-product-vpn = { -brand-mozilla-vpn }
 toolbar-app-picker-product-relay = { -brand-relay }
 toolbar-app-picker-product-fx-desktop = { -brand-firefox } για υπολογιστές
 toolbar-app-picker-product-fx-mobile = { -brand-firefox } για κινητές συσκευές
+toolbar-app-picker-product-solo = { -brand-solo-ai }
 toolbar-app-picker-by-mozilla = Από τη { -brand-mozilla }
 # Bento headline
 fx-makes-tech = Το { -brand-name } αγωνίζεται για το απόρρητό σας.

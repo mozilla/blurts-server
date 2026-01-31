@@ -41,7 +41,6 @@ modal-cta-ok = Oke
 modal-cta-got-it = Paham
 open-modal-alt = Buka modal
 close-modal-alt = Tutup modal
-open-tooltip-alt = Buka tooltip
 progress-card-heres-what-we-fixed-headline-all = Inilah yang Anda perbaiki
 progress-card-manually-fixed-headline = Diperbaiki secara manual
 dashboard-tab-label-action-needed = Diperlukan tindakan
@@ -79,17 +78,8 @@ dashboard-exposures-filter-reset = Setel Ulang
 ## Top banner on the dashboard
 
 dashboard-top-banner-section-label = Ringkasan dasbor
-dashboard-top-banner-scan-in-progress-title = Pemindaian Anda masih berlangsung
 dashboard-top-banner-your-data-is-protected-title = Data Anda terlindungi
 dashboard-top-banner-your-data-is-protected-cta = Lihat apa yang diperbaiki
-dashboard-top-banner-lets-keep-protecting-title = Mari terus melindungi data Anda
-# Variables:
-# $exposures_unresolved_num is the remaining number of exposures the user has to resolve.
-dashboard-top-banner-lets-keep-protecting-description =
-    { $exposures_unresolved_num ->
-       *[other] Anda masih memiliki { $exposures_unresolved_num } keterpaparan yang tersisa untuk diperbaiki. Lanjutkan dan lindungi diri Anda. Kami akan memandu Anda langkah demi langkah.
-    }
-dashboard-top-banner-lets-keep-protecting-cta = Ayo lanjutkan
 dashboard-top-banner-protect-your-data-title = Mari lindungi data Anda
 dashboard-top-banner-protect-your-data-cta = Mari kita perbaiki
 # Note: this line is followed by `dashboard-top-banner-non-us-protect-your-data-description-line1`.
