@@ -16,18 +16,12 @@ settings-alert-preferences-allow-breach-alerts-title = ഉടൻ ഇ-കയ്�
 ## Monitored email addresses
 
 settings-email-verification-callout = ഇതപാൽ തീൎച്ചപ്പെടുത്തൽ ആവിശ്യം
-settings-resend-email-verification-link = ഉറപ്പിക്കൽ ഇതപാൽ വീണ്ടും അയയ്ക്കുക
-settings-add-email-button = ഇതപാൽ വിലാസം ചേൎക്കുക
-settings-remove-email-button-label = മാറ്റുക
 
 ## Delete Monitor account
 
 settings-delete-monitor-free-account-cta-label = അക്കൗണ്ട് മായ്ക്കുക
 settings-delete-monitor-free-account-dialog-cta-label = അക്കൗണ്ടു് മായ്ക്കുക
 settings-delete-monitor-account-confirmation-toast-dismiss-label = കളയുക
-
-## Monthly Monitor Report
-
 
 ## Settings page redesign
 

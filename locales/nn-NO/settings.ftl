@@ -18,32 +18,28 @@ settings-alert-preferences-option-two = Send alle åtvaringar om datalekkasjar t
 
 ## Monitored email addresses
 
-# Variables:
-#   $email (string) - Email address
-settings-email-list-title = Overvaka e-postadresser
-# Variables:
-#   $limit (number) - Number of email addresses included in the plan
-settings-email-limit-info =
-    { $limit ->
-        [one] Kontoen din inkluderer overvaking av opptil { $limit } e-postadresse.
-       *[other] Kontoen din inkluderer overvaking av opptil { $limit } e-postadresser.
-    }
 settings-email-verification-callout = Stadfesting av e-post påkravd
-settings-resend-email-verification-link = Send stadfestings e-posten på nytt
-settings-add-email-button = Legg til e-postadresse
 settings-remove-email-button-label = Fjern
+settings-email-addresses-header = E-postadresser
+settings-email-addresses-description = { -brand-monitor } varslar deg dersom desse e-postadressene dukkar opp i kjende datalekkasjar.
+settings-email-addresses-add-email-button = Legg til e-postadresse
 # Variables:
-#   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
-settings-remove-email-button-tooltip = Slutt å overvake { $emailAddress }
-# This string is shown beneath each of the user’s email addresses to indicate
-# how many known breaches that email address was found in.
+#   $limit (number) - Number of emails that can be added for monitoring.
+settings-email-addresses-add-email-indicator-limit = Legg til opptil { $limit }
+settings-email-addresses-add-email-resend-button-label = Send stadfestingslenke på nytt
+input-error-alt = Feil
+
+## Email address dialog
+
+settings-email-addresses-initial-dialog-header = Legg til ei e-postadresse
+settings-email-addresses-initial-dialog-description = Vi sender deg ei stadfestingslenke slik at du kan stadfeste at du ønskjer å inkludere henne i ei framtidig { -brand-monitor }-skanning.
+settings-email-addresses-initial-dialog-add-email-input-label = Skriv inn e-postadresse
+settings-email-addresses-initial-dialog-add-email-button-label = Send stadfestingslenke
 # Variables:
-#   $breachCount (number) - Number of breaches
-settings-email-number-of-breaches-info =
-    { $breachCount ->
-        [one] Er i { $breachCount } kjend datalekkasje.
-       *[other] Er i { $breachCount } kjende datalekkasjar.
-    }
+#   $email (string) - Email address the confirmation has been sent to.
+settings-email-addresses-confirmation-dialog-header = Stadfestingslenke sendt til <b>{ $email }</b>
+settings-email-addresses-confirmation-dialog-description = Opne lenkja for å leggje den til på denne kontoen for framtidige { -brand-monitor }-skanningar.
+settings-email-addresses-confirmation-dialog-close-button = Lat att
 
 ## Delete Monitor account
 
@@ -57,13 +53,10 @@ settings-delete-monitor-free-account-dialog-cancel-button-label = Gløym det, ta
 settings-delete-monitor-account-confirmation-toast-label-2 = { -brand-monitor }-kontoen din er no sletta.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Ignorer
 
-## Monthly Monitor Report
-
-settings-alert-preferences-allow-monthly-monitor-report-title = Månadleg { -brand-monitor }-rapport
-settings-alert-preferences-allow-monthly-monitor-report-subtitle = Ei månadleg oppdatering av nye eksponeringar, kva som er fiksa og kva som krev di merksemd.
-
 ## Settings page redesign
 
+# Label for a navigation bar link to settings for updating the users scan profile info – “update” is used as a verb.
+settings-tab-label-update-scan-info = Oppdater skanneinformasjon
 settings-tab-label-edit-info = Rediger opplysningane dine
 settings-tab-label-notifications = Still inn varsel
 settings-tab-label-manage-account = Handsam kontoen

@@ -34,7 +34,6 @@ modal-cta-ok = ตกลง
 modal-cta-got-it = เข้าใจแล้ว
 open-modal-alt = เปิดโมดอล
 close-modal-alt = ปิดโมดอล
-open-tooltip-alt = เปิดคำอธิบายเครื่องมือ
 progress-card-heres-what-we-fixed-headline-all = คุณได้แก้ไขสิ่งต่อไปนี้
 progress-card-manually-fixed-headline = แก้ไขด้วยตนเอง
 dashboard-tab-label-action-needed = ต้องดำเนินการบางอย่าง
@@ -66,14 +65,8 @@ dashboard-exposures-filter-reset = ตั้งค่าใหม่
 ## Top banner on the dashboard
 
 dashboard-top-banner-section-label = สรุปแดชบอร์ด
-dashboard-top-banner-scan-in-progress-title = การสแกนของคุณยังอยู่ระหว่างดำเนินการ
 dashboard-top-banner-your-data-is-protected-title = ข้อมูลของคุณได้รับการปกป้องแล้ว
 dashboard-top-banner-your-data-is-protected-cta = ดูสิ่งที่ได้รับการแก้ไขแล้ว
-dashboard-top-banner-lets-keep-protecting-title = เรามาปกป้องข้อมูลของคุณกันต่อไป
-# Variables:
-# $exposures_unresolved_num is the remaining number of exposures the user has to resolve.
-dashboard-top-banner-lets-keep-protecting-description = คุณยังเหลือการเปิดเผยอีก { $exposures_unresolved_num } จุดที่ต้องได้รับการแก้ไข มาจัดการกันต่อและปกป้องตัวคุณเอง เราจะแนะนำคุณทีละขั้นตอน
-dashboard-top-banner-lets-keep-protecting-cta = มาจัดการกันต่อเลย
 dashboard-top-banner-protect-your-data-title = มาปกป้องข้อมูลของคุณกันเลย
 dashboard-top-banner-protect-your-data-cta = มาแก้ไขกันเลย
 # Note: this line is followed by `dashboard-top-banner-non-us-protect-your-data-description-line1`.

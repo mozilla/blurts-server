@@ -3,13 +3,11 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 chevron-alt = Hollësi ekspozimi
-exposure-card-exposure-type = Lloj ekspozimi
 exposure-card-date-found = Datë e ekspozimit
 
 # Status Pill
 
 status-pill-action-needed = Lyp veprim
-status-pill-progress = Në punë e sipër
 status-pill-fixed = Ndrequr
 
 # Exposure Card
@@ -29,12 +27,10 @@ exposure-card-description-data-breach-action-needed = Informacion rreth juaj qe 
 exposure-card-description-data-breach-fixed = Ndërmorët hapat e nevojshëm për ta ndrequr <data_breach_link>këtë cenim</data_breach_link>. Do të mbikëqyrim vazhdimisht për cenime të dhënash dhe do t’ju njoftojmë për çfarëdo ekspozimesh të reja.
 exposure-card-your-exposed-info = Informacion i juaji i ekspozuar:
 exposure-card-found-the-following-data = { -brand-monitor } gjeti ekspozim për të dhënat vijues:
-exposure-card-exposure-type-data-broker = Informacion për shitje
-exposure-card-exposure-type-data-breach = Cenim të dhënash
 exposure-card-resolve-exposures-cta = Zgjidhni ekspozimet
 exposure-card-label-company-logo = Stemë e shoqërisë
 exposure-card-label-company = Shoqëri
-# Status of the exposure card, could be In Progress, Fixed or Action Needed
+# Status of the exposure card, could be Fixed or Action Needed
 exposure-card-label-status = Gjendje
 # Variables:
 # $category_label is the data breach exposure type that was leaked. Eg. Email, IP Address.

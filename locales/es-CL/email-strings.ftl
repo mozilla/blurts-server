@@ -5,7 +5,6 @@
 
 ## Email headers
 
-email-header-logo-alt = { -brand-mozilla-monitor }
 email-header-button-sign-in = Conectarse
 
 ## Email footers
@@ -13,6 +12,16 @@ email-header-button-sign-in = Conectarse
 email-footer-support-heading = ¿Tienes preguntas acerca de { -brand-mozilla-monitor }?
 email-footer-support-content = Visita nuestro <support-link>Centro de soporte</support-link> para obtener ayuda
 email-footer-trigger-transactional = Estás recibiendo este correo electrónico como suscriptor de { -brand-mozilla-monitor }.
+email-footer-reason-subscriber = Recibes este correo electrónico automático como suscriptor de { -brand-mozilla-monitor }. Si lo recibiste por error, no es necesario que hagas nada. Para más información, visita el soporte de <support-link>{ -brand-mozilla }</support-link>.
+email-footer-reason-subscriber-one-time = Has recibido este correo electrónico automático único porque estás suscrito a { -brand-monitor-plus }. No recibirás más correos como este. Para más información, visita el soporte de <support-link>{ -brand-mozilla }</support-link>.
+# Variables:
+#    $support_link (string) - The URL the user can visit for support, e.g. "https://support.mozilla.org"
+email-footer-support-content-plain =
+    Visita nuestro Centro de soporte para obtener ayuda:
+    { $support_link }
+# Variables:
+#   $hibp_link (string) - URL to Have I Been Pwned, e.g. "https://haveibeenpwned.com".
+email-footer-source-hibp-plain = Datos de filtración proporcionados por { -brand-HIBP }: { $hibp_link }
 email-footer-source-hibp = Datos de filtración provistos por <hibp-link>{ -brand-HIBP }</hibp-link>
 email-footer-logo-mozilla-alt = { -brand-mozilla }
 email-footer-meta-privacy-notice = Privacidad
@@ -20,8 +29,6 @@ email-footer-meta-privacy-notice = Privacidad
 -product-name-relay = Firefox Relay
 # Mozilla VPN is a product name and should not be translated.
 -product-name-vpn = Mozilla VPN
-# A link to legal information about mozilla products.
-legal = Legal
 # Button text
 verify-email-cta = Verificar correo
 # Headline of verification email
@@ -38,9 +45,6 @@ email-subject-verify = Verifica tu correo para { -product-name }
 fxm-warns-you-no-breaches =
     { -product-name } te advierte sobre filtraciones de datos que involucren información personal tuya.
     Hasta el momento, no se han encontrado filtraciones. Te enviaremos una alerta si tu correo aparece en una nueva filtración.
-email-breach-alert-blurb =
-    { -product-name } te advierte sobre filtraciones de datos que involucren información personal tuya.
-    Acabamos de recibir detalles acerca de una filtración de datos de otra compañía.
 
 ## 2022 email template. HTML tags should not be translated, e.g. `<a>`
 
@@ -52,7 +56,6 @@ email-2022-hibp-attribution = Datos de filtración provistos por <a { $hibp-link
 ## Verification email
 
 email-verify-heading = Protege tus datos, empieza ya
-email-verify-subhead = Verifica tu correo electrónico para empezar a proteger tus datos después de una filtración.
 email-verify-simply-click = Simplemente haz clic en el enlace a continuación para terminar de verificar tu cuenta.
 
 ## Breach report

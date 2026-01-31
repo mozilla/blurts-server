@@ -5,7 +5,6 @@
 
 ## Email headers
 
-email-header-logo-alt = { -brand-mozilla-monitor }
 email-header-button-sign-in = Войти
 
 ## Email footers
@@ -13,6 +12,16 @@ email-header-button-sign-in = Войти
 email-footer-support-heading = Есть вопросы о { -brand-mozilla-monitor }?
 email-footer-support-content = Посетите наш <support-link>Центр поддержки</support-link> для получения помощи
 email-footer-trigger-transactional = Вы получаете эти письма как подписчик { -brand-mozilla-monitor }.
+email-footer-reason-subscriber = Вы получаете это автоматическое электронное письмо как подписчик { -brand-mozilla-monitor }. Если вы получили его по ошибке, не требуется никаких действий. Для получения дополнительной информации посетите <support-link>Поддержку { -brand-mozilla }</support-link>.
+email-footer-reason-subscriber-one-time = Вы получили это одноразовое автоматическое письмо, потому что вы подписаны на { -brand-monitor-plus }. Вы больше не будете получать подобные письма. Для получения дополнительной информации посетите <support-link>Поддержку { -brand-mozilla }</support-link>.
+# Variables:
+#    $support_link (string) - The URL the user can visit for support, e.g. "https://support.mozilla.org"
+email-footer-support-content-plain =
+    Посетите наш Центр поддержки для получения помощи:
+    { $support_link }
+# Variables:
+#   $hibp_link (string) - URL to Have I Been Pwned, e.g. "https://haveibeenpwned.com".
+email-footer-source-hibp-plain = Данные об утечке данных предоставлены { -brand-HIBP }: { $hibp_link }
 email-footer-source-hibp = Данные об утечке данных предоставлены <hibp-link>{ -brand-HIBP }</hibp-link>
 email-footer-logo-mozilla-alt = { -brand-mozilla }
 email-footer-meta-privacy-notice = Приватность
@@ -20,8 +29,6 @@ email-footer-meta-privacy-notice = Приватность
 -product-name-relay = Firefox Relay
 # Mozilla VPN is a product name and should not be translated.
 -product-name-vpn = Mozilla VPN
-# A link to legal information about mozilla products.
-legal = Юридическая информация
 # Button text
 verify-email-cta = Подтвердить адрес эл. почты
 # Headline of verification email
@@ -38,9 +45,6 @@ email-subject-verify = Подтвердите адрес электронной 
 fxm-warns-you-no-breaches =
     { -product-name } предупреждает вас об утечках данных, связанных с вашей личной информацией.
     Пока никаких утечек не обнаружено. Мы отправим вам уведомление, если ваш адрес электронной почты появится в новой утечке.
-email-breach-alert-blurb =
-    { -product-name } предупреждает вас об утечках данных, связанных с вашей личной информацией.
-    Мы только что получили информацию об утечке данных другой компании.
 
 ## 2022 email template. HTML tags should not be translated, e.g. `<a>`
 
@@ -52,7 +56,6 @@ email-2022-hibp-attribution = Данные об утечке данных пре
 ## Verification email
 
 email-verify-heading = Защитите свои данные, начните прямо сейчас
-email-verify-subhead = Подтвердите свою электронную почту, чтобы начать защищать свои данные после утечки.
 email-verify-simply-click = Просто нажмите на ссылку ниже, чтобы завершить проверку своей учётной записи.
 
 ## Breach report

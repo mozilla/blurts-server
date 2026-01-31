@@ -7,6 +7,7 @@ toolbar-app-picker-product-vpn = { -brand-mozilla-vpn }
 toolbar-app-picker-product-relay = { -brand-relay }
 toolbar-app-picker-product-fx-desktop = { -brand-firefox } für Desktop
 toolbar-app-picker-product-fx-mobile = { -brand-firefox } für Mobilgeräte
+toolbar-app-picker-product-solo = { -brand-solo-ai }
 toolbar-app-picker-by-mozilla = Entwickelt von { -brand-mozilla }
 # Bento headline
 fx-makes-tech = { -brand-name } ist eine Technologie, die für Ihre Privatsphäre im Internet kämpft.

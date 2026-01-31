@@ -12,6 +12,9 @@ landing-all-hero-emailform-submit-sign-up-label = Rekisteröidy saadaksesi ilmai
 # This is a label underneath a big number "14" - it's an image that demos Monitor.
 landing-all-hero-image-chart-label = vuotoa
 
+## Top navbar
+
+
 # Value Proposition
 
 landing-all-value-prop-fix-exposures = Autamme sinua korjaamaan vuodot

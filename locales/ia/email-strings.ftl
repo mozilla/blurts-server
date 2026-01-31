@@ -5,7 +5,6 @@
 
 ## Email headers
 
-email-header-logo-alt = { -brand-mozilla-monitor }
 email-header-button-sign-in = Aperir session
 
 ## Email footers
@@ -13,6 +12,16 @@ email-header-button-sign-in = Aperir session
 email-footer-support-heading = Questiones re { -brand-mozilla-monitor }?
 email-footer-support-content = Visita nostre <support-link>Centro de supporto</support-link> pro adjuta
 email-footer-trigger-transactional = Tu recipe iste email como abonato de { -brand-mozilla-monitor }.
+email-footer-reason-subscriber = Tu recipe iste email automatisate como abonato de { -brand-mozilla-monitor }. Si tu ha recipite illo per error, nulle action es necesse. Pro altere informationes, visita le <support-link>Supporto de { -brand-mozilla }</support-link>.
+email-footer-reason-subscriber-one-time = Tu ha recipite iste email automatisate de un-vice perque tu es abonate a { -brand-monitor-plus }. Tu non recipera alcun ulterior email assi. Pro altere informationes, visita le <support-link>Supporto de { -brand-mozilla }</support-link>.
+# Variables:
+#    $support_link (string) - The URL the user can visit for support, e.g. "https://support.mozilla.org"
+email-footer-support-content-plain =
+    Visita nostre centro de supporto pro adjuta:
+    { $support_link }
+# Variables:
+#   $hibp_link (string) - URL to Have I Been Pwned, e.g. "https://haveibeenpwned.com".
+email-footer-source-hibp-plain = Violation de datos fornite per { -brand-HIBP }: { $hibp_link }
 email-footer-source-hibp = Violation de datos fornite per <hibp-link>{ -brand-HIBP }</hibp-link>
 email-footer-logo-mozilla-alt = { -brand-mozilla }
 email-footer-meta-privacy-notice = Confidentialitate
@@ -20,8 +29,6 @@ email-footer-meta-privacy-notice = Confidentialitate
 -product-name-relay = Firefox Relay
 # Mozilla VPN is a product name and should not be translated.
 -product-name-vpn = Mozilla VPN
-# A link to legal information about mozilla products.
-legal = Legal
 # Button text
 verify-email-cta = Verificar le email
 # Headline of verification email
@@ -38,7 +45,6 @@ email-subject-verify = Verifica tu adresse de e-mail pro { -product-name }
 fxm-warns-you-no-breaches =
     { -product-name } te adverti sur violationes de datos que implica tu informationes personal. 
     Presentemente, nulle violationes ha essite trovate. Nos te inviara un aviso si tu adresse de e-mail appare in un nove violation.
-email-breach-alert-blurb = { -product-name } te adverti re violationes de datos que involve tu informationes personal. Nos ha justo recipite detalios re un altere violation de datos de un compania.
 
 ## 2022 email template. HTML tags should not be translated, e.g. `<a>`
 
@@ -50,7 +56,6 @@ email-2022-hibp-attribution = Violation de datos fornite per <a { $hibp-link-att
 ## Verification email
 
 email-verify-heading = Salveguarda tu datos, desde subito
-email-verify-subhead = Verifica tu email pro initiar a proteger tu datos post un violation.
 email-verify-simply-click = Simplemente clicca le ligamine infra pro finir de verificar tu conto.
 
 ## Breach report

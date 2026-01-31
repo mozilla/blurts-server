@@ -10,6 +10,9 @@ landing-all-hero-emailform-input-label = データ侵害の有無を確認した
 landing-all-hero-emailform-submit-label = 無料でスキャン
 landing-all-hero-emailform-submit-sign-up-label = アカウント登録して無料でスキャンする
 
+## Top navbar
+
+
 # Value Proposition
 
 landing-all-value-prop-fix-exposures = 漏えいを修復するお手伝いをします

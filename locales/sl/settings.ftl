@@ -18,36 +18,28 @@ settings-alert-preferences-option-two = Pošlji vsa opozorila o krajah podatkov 
 
 ## Monitored email addresses
 
-# Variables:
-#   $email (string) - Email address
-settings-email-list-title = Nadzorovani e-poštni naslovi
-# Variables:
-#   $limit (number) - Number of email addresses included in the plan
-settings-email-limit-info =
-    { $limit ->
-        [one] Vaš račun vključuje spremljanje do { $limit } e-poštnega naslova.
-        [two] Vaš račun vključuje spremljanje do { $limit } e-poštnih naslovov.
-        [few] Vaš račun vključuje spremljanje do { $limit } e-poštnih naslovov.
-       *[other] Vaš račun vključuje spremljanje do { $limit } e-poštnih naslovov.
-    }
 settings-email-verification-callout = Zahtevana je potrditev e-poštnega naslova
-settings-resend-email-verification-link = Ponovno pošlji potrditveno e-pošto
-settings-add-email-button = Dodaj e-poštni naslov
 settings-remove-email-button-label = Odstrani
+settings-email-addresses-header = E-poštni naslovi
+settings-email-addresses-description = { -brand-monitor } vas bo opozoril, če se bodo ta e-poštna sporočila pojavila v znanih krajah.
+settings-email-addresses-add-email-button = Dodaj e-poštni naslov
 # Variables:
-#   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
-settings-remove-email-button-tooltip = Nehaj spremljati { $emailAddress }
-# This string is shown beneath each of the user’s email addresses to indicate
-# how many known breaches that email address was found in.
+#   $limit (number) - Number of emails that can be added for monitoring.
+settings-email-addresses-add-email-indicator-limit = Dodajte do { $limit }
+settings-email-addresses-add-email-resend-button-label = Znova pošlji potrditveno povezavo
+input-error-alt = Napaka
+
+## Email address dialog
+
+settings-email-addresses-initial-dialog-header = Dodajte e-poštni naslov
+settings-email-addresses-initial-dialog-description = Poslali vam bomo potrditveno povezavo, da potrdite, da jo želite vključiti v prihodnje skeniranje { -brand-monitor }.
+settings-email-addresses-initial-dialog-add-email-input-label = Vnesite e-poštni naslov
+settings-email-addresses-initial-dialog-add-email-button-label = Pošlji potrditveno povezavo
 # Variables:
-#   $breachCount (number) - Number of breaches
-settings-email-number-of-breaches-info =
-    { $breachCount ->
-        [one] Pojavlja se v { $breachCount } znani kraji.
-        [two] Pojavil se je v { $breachCount } znanih krajah.
-        [few] Pojavil se je v { $breachCount } znanih krajah.
-       *[other] Pojavil se je v { $breachCount } znanih krajah.
-    }
+#   $email (string) - Email address the confirmation has been sent to.
+settings-email-addresses-confirmation-dialog-header = Potrditvena povezava poslana na <b>{ $email }</b>
+settings-email-addresses-confirmation-dialog-description = Odprite povezavo, da ga dodate v ta račun za prihodnje preglede { -brand-monitor }.
+settings-email-addresses-confirmation-dialog-close-button = Zapri
 
 ## Delete Monitor account
 
@@ -61,13 +53,10 @@ settings-delete-monitor-free-account-dialog-cancel-button-label = Premislil/-a s
 settings-delete-monitor-account-confirmation-toast-label-2 = Vaš račun za { -brand-monitor } je zdaj izbrisan.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Opusti
 
-## Monthly Monitor Report
-
-settings-alert-preferences-allow-monthly-monitor-report-title = Mesečno poročilo { -brand-monitor }a
-settings-alert-preferences-allow-monthly-monitor-report-subtitle = Mesečna posodobitev novih izpostavljenosti, kaj je bilo popravljeno in kaj zahteva vašo pozornost.
-
 ## Settings page redesign
 
+# Label for a navigation bar link to settings for updating the users scan profile info – “update” is used as a verb.
+settings-tab-label-update-scan-info = Posodobi podatke o pregledu
 settings-tab-label-edit-info = Uredite svoje podatke
 settings-tab-label-notifications = Nastavi obvestila
 settings-tab-label-manage-account = Upravljanje računa

@@ -12,6 +12,9 @@ landing-all-hero-emailform-submit-sign-up-label = ลงทะเบียนเ
 # This is a label underneath a big number "14" - it's an image that demos Monitor.
 landing-all-hero-image-chart-label = การเปิดเผย
 
+## Top navbar
+
+
 # Value Proposition
 
 landing-all-value-prop-fix-exposures = เราจะช่วยคุณแก้ไขเกี่ยวกับการเปิดเผยเหล่านี้

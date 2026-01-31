@@ -70,18 +70,8 @@ dashboard-exposures-filter-show-results = Näytä tulokset
 ## Top banner on the dashboard
 
 dashboard-top-banner-section-label = Hallintapaneelin yhteenveto
-dashboard-top-banner-scan-in-progress-title = Tarkistus on edelleen kesken
 dashboard-top-banner-your-data-is-protected-title = Tietosi on suojattu
 dashboard-top-banner-your-data-is-protected-cta = Näytä ratkaistut
-dashboard-top-banner-lets-keep-protecting-title = Jatketaan tietojesi suojaamista
-# Variables:
-# $exposures_unresolved_num is the remaining number of exposures the user has to resolve.
-dashboard-top-banner-lets-keep-protecting-description =
-    { $exposures_unresolved_num ->
-        [one] Sinulla on vielä { $exposures_unresolved_num } altistuminen korjaamatta. Jatka ja suojaa itseäsi. Opastamme sinua vaihe vaiheelta.
-       *[other] Sinulla on vielä { $exposures_unresolved_num } altistumista korjaamatta. Jatka ja suojaa itseäsi. Opastamme sinua vaihe vaiheelta.
-    }
-dashboard-top-banner-lets-keep-protecting-cta = Jatketaan
 dashboard-top-banner-protect-your-data-title = Suojataan tietosi
 dashboard-top-banner-protect-your-data-cta = Korjataan se
 # Note: this line is followed by `dashboard-top-banner-non-us-protect-your-data-description-line1`.

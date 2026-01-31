@@ -18,36 +18,28 @@ settings-alert-preferences-option-two = Отправлять все оповещ
 
 ## Monitored email addresses
 
-# Variables:
-#   $email (string) - Email address
-settings-email-list-title = Отслеживаемые адреса электронной почты
-# Variables:
-#   $limit (number) - Number of email addresses included in the plan
-settings-email-limit-info =
-    { $limit ->
-        [one] Ваш аккаунт включает мониторинг до { $limit } адреса электронной почты.
-        [few] Ваш аккаунт включает мониторинг до { $limit } адресов электронной почты.
-        [many] Ваш аккаунт включает мониторинг до { $limit } адресов электронной почты.
-       *[other] Ваш аккаунт включает мониторинг до { $limit } адресов электронной почты.
-    }
 settings-email-verification-callout = Требуется верификация электронной почты
-settings-resend-email-verification-link = Отправить письмо подтверждения заново
-settings-add-email-button = Добавить адрес электронной почты
 settings-remove-email-button-label = Удалить
+settings-email-addresses-header = Адреса электронной почты
+settings-email-addresses-description = { -brand-monitor } предупредит вас, если эти письма будут обнаружены в известных утечках.
+settings-email-addresses-add-email-button = Добавить адрес электронной почты
 # Variables:
-#   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
-settings-remove-email-button-tooltip = Перестать отслеживать { $emailAddress }
-# This string is shown beneath each of the user’s email addresses to indicate
-# how many known breaches that email address was found in.
+#   $limit (number) - Number of emails that can be added for monitoring.
+settings-email-addresses-add-email-indicator-limit = Добавить до { $limit }
+settings-email-addresses-add-email-resend-button-label = Отправить ссылку для подтверждения ещё раз
+input-error-alt = Ошибка
+
+## Email address dialog
+
+settings-email-addresses-initial-dialog-header = Добавить адрес электронной почты
+settings-email-addresses-initial-dialog-description = Мы отправим вам ссылку для подтверждения, чтобы подтвердить, что вы хотите включить её в будущее сканирование { -brand-monitor }.
+settings-email-addresses-initial-dialog-add-email-input-label = Введите адрес электронной почты
+settings-email-addresses-initial-dialog-add-email-button-label = Отправить ссылку для подтверждения
 # Variables:
-#   $breachCount (number) - Number of breaches
-settings-email-number-of-breaches-info =
-    { $breachCount ->
-        [one] Найден в { $breachCount } известной утечке.
-        [few] Найден в { $breachCount } известных утечках.
-        [many] Найден в { $breachCount } известных утечках.
-       *[other] Найден в { $breachCount } известных утечках.
-    }
+#   $email (string) - Email address the confirmation has been sent to.
+settings-email-addresses-confirmation-dialog-header = Ссылка для подтверждения отправлена на <b>{ $email }</b>
+settings-email-addresses-confirmation-dialog-description = Перейдите по ссылке, чтобы добавить её в этот аккаунт для будущих сканирований { -brand-monitor }.
+settings-email-addresses-confirmation-dialog-close-button = Закрыть
 
 ## Delete Monitor account
 
@@ -61,13 +53,10 @@ settings-delete-monitor-free-account-dialog-cancel-button-label = Не важн�
 settings-delete-monitor-account-confirmation-toast-label-2 = Ваш аккаунт { -brand-monitor } удалён.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Закрыть
 
-## Monthly Monitor Report
-
-settings-alert-preferences-allow-monthly-monitor-report-title = Ежемесячный отчёт { -brand-monitor }
-settings-alert-preferences-allow-monthly-monitor-report-subtitle = Ежемесячное обновление новых утечек, исправленных утечек, а также требующих вашего внимания.
-
 ## Settings page redesign
 
+# Label for a navigation bar link to settings for updating the users scan profile info – “update” is used as a verb.
+settings-tab-label-update-scan-info = Обновить информацию о сканировании
 settings-tab-label-edit-info = Изменить ваши данные
 settings-tab-label-notifications = Настроить уведомления
 settings-tab-label-manage-account = Управление аккаунтом

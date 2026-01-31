@@ -46,7 +46,6 @@ modal-cta-ok = OK
 modal-cta-got-it = Értem
 open-modal-alt = Felugró ablak megnyitása
 close-modal-alt = Felugró ablak bezárása
-open-tooltip-alt = Buboréksúgó megnyitása
 progress-card-heres-what-we-fixed-headline-all = Itt van amit kijavított
 progress-card-manually-fixed-headline = Kézzel javítva
 dashboard-tab-label-action-needed = Intézkedés szükséges
@@ -86,18 +85,8 @@ dashboard-exposures-filter-reset = Visszaállítás
 ## Top banner on the dashboard
 
 dashboard-top-banner-section-label = A vezérlőpult összefoglalója
-dashboard-top-banner-scan-in-progress-title = A vizsgálat még folyamatban van
 dashboard-top-banner-your-data-is-protected-title = Az adatai védve vannak
 dashboard-top-banner-your-data-is-protected-cta = Nézze meg, mi lett javítva
-dashboard-top-banner-lets-keep-protecting-title = Védjük meg továbbra is az adatait
-# Variables:
-# $exposures_unresolved_num is the remaining number of exposures the user has to resolve.
-dashboard-top-banner-lets-keep-protecting-description =
-    { $exposures_unresolved_num ->
-        [one] Még { $exposures_unresolved_num } javítanivalója van. Folytassa, és védje meg magát. Végigvezetjük lépésről lépésre.
-       *[other] Még { $exposures_unresolved_num } javítanivalója van. Folytassa, és védje meg magát. Végigvezetjük lépésről lépésre.
-    }
-dashboard-top-banner-lets-keep-protecting-cta = Folytassa
 dashboard-top-banner-protect-your-data-title = Védjük meg az adatait
 dashboard-top-banner-protect-your-data-cta = Javítsuk ki
 # Note: this line is followed by `dashboard-top-banner-non-us-protect-your-data-description-line1`.

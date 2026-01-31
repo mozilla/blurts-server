@@ -30,7 +30,6 @@ dashboard-exposures-filter-show-results = ഫലങ്ങള്‍ കാണി�
 
 ## Top banner on the dashboard
 
-dashboard-top-banner-lets-keep-protecting-cta = തുടരുകൊണ്ടിരിക്കാം
 dashboard-top-banner-protect-your-data-cta = നമ്മൾക്കു് അതു് നന്നാക്കാം
 
 # About Exposure Indicators Modal

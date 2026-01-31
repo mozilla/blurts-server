@@ -18,30 +18,28 @@ settings-alert-preferences-option-two = Kirim semua peringatan pembobolan ke ala
 
 ## Monitored email addresses
 
-# Variables:
-#   $email (string) - Email address
-settings-email-list-title = Alamat surel yang dipantau
-# Variables:
-#   $limit (number) - Number of email addresses included in the plan
-settings-email-limit-info =
-    { $limit ->
-       *[other] Akun Anda termasuk pemantauan hingga { $limit } surel.
-    }
 settings-email-verification-callout = Verifikasi surel diperlukan
-settings-resend-email-verification-link = Kirim ulang surel verifikasi
-settings-add-email-button = Tambahkan alamat surel
 settings-remove-email-button-label = Hapus
+settings-email-addresses-header = Alamat surel
+settings-email-addresses-description = { -brand-monitor } akan mengingatkan Anda jika surel ini muncul dalam pembobolan yang diketahui.
+settings-email-addresses-add-email-button = Tambahkan alamat surel
 # Variables:
-#   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
-settings-remove-email-button-tooltip = Hentikan pemantauan { $emailAddress }
-# This string is shown beneath each of the user’s email addresses to indicate
-# how many known breaches that email address was found in.
+#   $limit (number) - Number of emails that can be added for monitoring.
+settings-email-addresses-add-email-indicator-limit = Tambahkan hingga { $limit }
+settings-email-addresses-add-email-resend-button-label = Kirim ulang tautan verifikasi
+input-error-alt = Galat
+
+## Email address dialog
+
+settings-email-addresses-initial-dialog-header = Tambahkan alamat surel
+settings-email-addresses-initial-dialog-description = Kami akan mengirimkan tautan verifikasi untuk mengonfirmasi bahwa Anda ingin menyertakannya dalam pemindaian { -brand-monitor } mendatang.
+settings-email-addresses-initial-dialog-add-email-input-label = Masukkan alamat surel
+settings-email-addresses-initial-dialog-add-email-button-label = Kirim tautan verifikasi
 # Variables:
-#   $breachCount (number) - Number of breaches
-settings-email-number-of-breaches-info =
-    { $breachCount ->
-       *[other] Muncul dalam { $breachCount } pembobolan yang diketahui.
-    }
+#   $email (string) - Email address the confirmation has been sent to.
+settings-email-addresses-confirmation-dialog-header = Tautan verifikasi dikirim ke <b>{ $email }</b>
+settings-email-addresses-confirmation-dialog-description = Buka tautan untuk menambahkannya ke akun ini untuk pemindaian { -brand-monitor } di masa mendatang.
+settings-email-addresses-confirmation-dialog-close-button = Tutup
 
 ## Delete Monitor account
 
@@ -55,13 +53,10 @@ settings-delete-monitor-free-account-dialog-cancel-button-label = Lupakan saja, 
 settings-delete-monitor-account-confirmation-toast-label-2 = Akun { -brand-monitor } Anda sekarang telah dihapus.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Tutup
 
-## Monthly Monitor Report
-
-settings-alert-preferences-allow-monthly-monitor-report-title = Laporan bulanan { -brand-monitor }
-settings-alert-preferences-allow-monthly-monitor-report-subtitle = Pembaruan bulanan untuk eksposur baru, apa yang telah diperbaiki, dan apa yang perlu Anda perhatikan.
-
 ## Settings page redesign
 
+# Label for a navigation bar link to settings for updating the users scan profile info – “update” is used as a verb.
+settings-tab-label-update-scan-info = Perbarui info pemindaian
 settings-tab-label-edit-info = Edit info Anda
 settings-tab-label-notifications = Setel notifikasi
 settings-tab-label-manage-account = Kelola akun

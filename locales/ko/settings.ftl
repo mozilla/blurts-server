@@ -18,24 +18,18 @@ settings-alert-preferences-option-two = 모든 유출 알림을 기본 이메일
 
 ## Monitored email addresses
 
-# Variables:
-#   $email (string) - Email address
-settings-email-list-title = 모니터링되는 이메일 주소
-# Variables:
-#   $limit (number) - Number of email addresses included in the plan
-settings-email-limit-info = 계정에 최대 { $limit }개의 이메일에 대한 모니터링이 포함됩니다.
 settings-email-verification-callout = 이메일 인증 필요
-settings-resend-email-verification-link = 인증 이메일 재전송
-settings-add-email-button = 이메일 주소 추가
-settings-remove-email-button-label = 삭제
+settings-email-addresses-header = 이메일 주소
+settings-email-addresses-add-email-button = 이메일 주소 추가
 # Variables:
-#   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
-settings-remove-email-button-tooltip = { $emailAddress } 모니터링 중지
-# This string is shown beneath each of the user’s email addresses to indicate
-# how many known breaches that email address was found in.
-# Variables:
-#   $breachCount (number) - Number of breaches
-settings-email-number-of-breaches-info = { $breachCount }개의 유출 내역이 있습니다.
+#   $limit (number) - Number of emails that can be added for monitoring.
+settings-email-addresses-add-email-indicator-limit = { $limit }개 추가 가능
+settings-email-addresses-add-email-resend-button-label = 확인 링크 재전송
+input-error-alt = 오류
+
+## Email address dialog
+
+settings-email-addresses-initial-dialog-header = 이메일 주소 추가
 
 ## Delete Monitor account
 
@@ -48,11 +42,6 @@ settings-delete-monitor-free-account-dialog-cta-label = 계정 삭제
 settings-delete-monitor-free-account-dialog-cancel-button-label = 삭제 취소하고 뒤로 가기
 settings-delete-monitor-account-confirmation-toast-label-2 = { -brand-monitor } 계정이 이제 삭제되었습니다.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = 닫기
-
-## Monthly Monitor Report
-
-settings-alert-preferences-allow-monthly-monitor-report-title = 월간 { -brand-monitor } 보고서
-settings-alert-preferences-allow-monthly-monitor-report-subtitle = 새로운 유출, 고쳐진 사항, 주의가 필요한 사항에 대한 월별 업데이트입니다.
 
 ## Settings page redesign
 

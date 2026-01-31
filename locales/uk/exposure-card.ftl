@@ -3,13 +3,11 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 chevron-alt = Подробиці розкриття
-exposure-card-exposure-type = Тип розкриття
 exposure-card-date-found = Дата розкриття
 
 # Status Pill
 
 status-pill-action-needed = Потрібна дія
-status-pill-progress = Виконується
 status-pill-fixed = Усунуто
 
 # Exposure Card
@@ -29,12 +27,10 @@ exposure-card-description-data-breach-action-needed = { $data_breach_date } бу
 exposure-card-description-data-breach-fixed = Ви вжили заходів, необхідних для усунення <data_breach_link>цього витоку</data_breach_link>. Ми постійно відстежуватимемо витоки даних і сповіщатимемо вас про будь-які нові розкриття.
 exposure-card-your-exposed-info = Ваша розкрита інформація:
 exposure-card-found-the-following-data = { -brand-monitor } знайшов такі розкриті дані:
-exposure-card-exposure-type-data-broker = Продаж інформації
-exposure-card-exposure-type-data-breach = Витік даних
 exposure-card-resolve-exposures-cta = Усунути витоки даних
 exposure-card-label-company-logo = Логотип компанії
 exposure-card-label-company = Компанія
-# Status of the exposure card, could be In Progress, Fixed or Action Needed
+# Status of the exposure card, could be Fixed or Action Needed
 exposure-card-label-status = Стан
 # Variables:
 # $category_label is the data breach exposure type that was leaked. Eg. Email, IP Address.

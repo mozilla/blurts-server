@@ -48,7 +48,6 @@ modal-cta-ok = OK
 modal-cta-got-it = Am înțeles
 open-modal-alt = Deschide fereastra de dialog
 close-modal-alt = Închide fereastra de dialog
-open-tooltip-alt = Deschide sugestii
 progress-card-heres-what-we-fixed-headline-all = Iată ce ai remediat
 progress-card-manually-fixed-headline = Remediat manual
 dashboard-tab-label-action-needed = Necesită atenție
@@ -90,19 +89,8 @@ dashboard-exposures-filter-reset = Resetează
 ## Top banner on the dashboard
 
 dashboard-top-banner-section-label = Rezumatul tabloului de bord
-dashboard-top-banner-scan-in-progress-title = Scanarea este încă în curs
 dashboard-top-banner-your-data-is-protected-title = Datele tale sunt protejate
 dashboard-top-banner-your-data-is-protected-cta = Vezi ce s-a remediat
-dashboard-top-banner-lets-keep-protecting-title = Hai să îți protejăm în continuare datele
-# Variables:
-# $exposures_unresolved_num is the remaining number of exposures the user has to resolve.
-dashboard-top-banner-lets-keep-protecting-description =
-    { $exposures_unresolved_num ->
-        [one] Mai ai încă { $exposures_unresolved_num } expunere de remediat. Continuă și protejează-te. Te vom ghida pas cu pas.
-        [few] Mai ai încă { $exposures_unresolved_num } expuneri de remediat. Continuă și protejează-te. Te vom ghida pas cu pas.
-       *[other] Mai ai încă { $exposures_unresolved_num } de expuneri de remediat. Continuă și protejează-te. Te vom ghida pas cu pas.
-    }
-dashboard-top-banner-lets-keep-protecting-cta = Să continuăm
 dashboard-top-banner-protect-your-data-title = Să îți protejăm datele
 dashboard-top-banner-protect-your-data-cta = Să o remediem
 # Note: this line is followed by `dashboard-top-banner-non-us-protect-your-data-description-line1`.

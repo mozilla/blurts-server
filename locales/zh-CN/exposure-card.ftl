@@ -3,13 +3,11 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 chevron-alt = 暴露详情
-exposure-card-exposure-type = 暴露类型
 exposure-card-date-found = 暴露日期
 
 # Status Pill
 
 status-pill-action-needed = 需要处理
-status-pill-progress = 进行中
 status-pill-fixed = 已处理
 
 # Exposure Card
@@ -29,12 +27,10 @@ exposure-card-description-data-breach-action-needed = 您的信息在 <data_brea
 exposure-card-description-data-breach-fixed = 您已采取必要措施来处理<data_breach_link>此外泄事件</data_breach_link>。我们会持续监控数据外泄事件，并在发生新的暴露时向您发出警报。
 exposure-card-your-exposed-info = 您被暴露的信息：
 exposure-card-found-the-following-data = { -brand-monitor } 发现以下泄露的数据：
-exposure-card-exposure-type-data-broker = 信息出售
-exposure-card-exposure-type-data-breach = 数据外泄事件
 exposure-card-resolve-exposures-cta = 解决泄露问题
 exposure-card-label-company-logo = 公司徽标
 exposure-card-label-company = 公司
-# Status of the exposure card, could be In Progress, Fixed or Action Needed
+# Status of the exposure card, could be Fixed or Action Needed
 exposure-card-label-status = 状态
 # Variables:
 # $category_label is the data breach exposure type that was leaked. Eg. Email, IP Address.

@@ -5,7 +5,6 @@
 
 ## Email headers
 
-email-header-logo-alt = { -brand-mozilla-monitor }
 email-header-button-sign-in = Anmelden
 
 ## Email footers
@@ -13,6 +12,16 @@ email-header-button-sign-in = Anmelden
 email-footer-support-heading = Fragen zu { -brand-mozilla-monitor }?
 email-footer-support-content = Besuchen Sie unser <support-link>Hilfe-Zentrum</support-link>, um Unterstützung zu erhalten
 email-footer-trigger-transactional = Sie erhalten diese E-Mail als Abonnent von { -brand-mozilla-monitor }.
+email-footer-reason-subscriber = Sie erhalten diese automatische E-Mail als Abonnent von { -brand-mozilla-monitor }. Wenn Sie diese irrtümlich erhalten haben, müssen Sie nichts tun. Weitere Informationen erhalten Sie bei der <support-link>{ -brand-mozilla }-Hilfe</support-link>.
+email-footer-reason-subscriber-one-time = Sie haben diese einmalige automatische E-Mail erhalten, weil Sie { -brand-monitor-plus } abonniert haben. Sie erhalten keine weiteren solche E-Mails. Weitere Informationen erhalten Sie bei der <support-link>{ -brand-mozilla }-Hilfe</support-link>.
+# Variables:
+#    $support_link (string) - The URL the user can visit for support, e.g. "https://support.mozilla.org"
+email-footer-support-content-plain =
+    Besuchen Sie unser Hilfe-Center, um Hilfe zu erhalten:
+    { $support_link }
+# Variables:
+#   $hibp_link (string) - URL to Have I Been Pwned, e.g. "https://haveibeenpwned.com".
+email-footer-source-hibp-plain = Die Informationen zu Datenlecks wurden von { -brand-HIBP } bereitgestellt: { $hibp_link }
 email-footer-source-hibp = Die Informationen zu Datenlecks wurden bereitgestellt von <hibp-link>{ -brand-HIBP }</hibp-link>
 email-footer-logo-mozilla-alt = { -brand-mozilla }
 email-footer-meta-privacy-notice = Datenschutz
@@ -20,8 +29,6 @@ email-footer-meta-privacy-notice = Datenschutz
 -product-name-relay = Firefox Relay
 # Mozilla VPN is a product name and should not be translated.
 -product-name-vpn = Mozilla VPN
-# A link to legal information about mozilla products.
-legal = Rechtliches
 # Button text
 verify-email-cta = E-Mail-Adresse bestätigen
 # Headline of verification email
@@ -36,11 +43,8 @@ email-subject-no-breaches = { -product-name } hat keine bekannten Datenlecks gef
 # Subject line of email
 email-subject-verify = Bestätige deine E-Mail-Adresse für { -product-name }
 fxm-warns-you-no-breaches =
-     { -product-name } warnt dich vor Datenlecks, die deine persönlichen Daten betreffen.
+    { " " }{ -product-name } warnt dich vor Datenlecks, die deine persönlichen Daten betreffen.
     Bisher wurden keine Datenlecks festgestellt. Wir senden dir eine Benachrichtigung, wenn deine E-Mail-Adresse in einem neuen Datenleck auftaucht.
-email-breach-alert-blurb =
-    { -product-name } warnt dich vor Datenlecks, die deine persönlichen Daten betreffen.
-    Wir haben soeben Informationen über ein Datenleck bei einem anderen Unternehmen erhalten.
 
 ## 2022 email template. HTML tags should not be translated, e.g. `<a>`
 
@@ -52,7 +56,6 @@ email-2022-hibp-attribution = Die Informationen zu Datenlecks wurden bereitgeste
 ## Verification email
 
 email-verify-heading = Schützen Sie Ihre Daten ab sofort
-email-verify-subhead = Bestätigen Sie Ihre E-Mail-Adresse, um Ihre Daten nach einem Leck zu schützen.
 email-verify-simply-click = Klicken Sie einfach auf den folgenden Link, um die Verifizierung Ihres Kontos abzuschließen.
 
 ## Breach report

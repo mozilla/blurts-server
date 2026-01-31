@@ -38,7 +38,6 @@ modal-cta-ok = 确定
 modal-cta-got-it = 明白了
 open-modal-alt = 打开对话框
 close-modal-alt = 关闭对话框
-open-tooltip-alt = 打开悬浮提示
 progress-card-heres-what-we-fixed-headline-all = 已处理的项目
 progress-card-manually-fixed-headline = 已手动处理
 dashboard-tab-label-action-needed = 需要处理
@@ -70,14 +69,8 @@ dashboard-exposures-filter-reset = 重置
 ## Top banner on the dashboard
 
 dashboard-top-banner-section-label = 面板摘要
-dashboard-top-banner-scan-in-progress-title = 您的扫描还在进行
 dashboard-top-banner-your-data-is-protected-title = 您的数据已受保护
 dashboard-top-banner-your-data-is-protected-cta = 看看处理了哪些暴露
-dashboard-top-banner-lets-keep-protecting-title = 让我们继续保护您的数据
-# Variables:
-# $exposures_unresolved_num is the remaining number of exposures the user has to resolve.
-dashboard-top-banner-lets-keep-protecting-description = 您还有 { $exposures_unresolved_num } 次暴露未处理。继续处理，保护自己。我们会一步步指导您操作。
-dashboard-top-banner-lets-keep-protecting-cta = 继续处理
 dashboard-top-banner-protect-your-data-title = 一起保护您的数据
 dashboard-top-banner-protect-your-data-cta = 一起处理此暴露
 # Note: this line is followed by `dashboard-top-banner-non-us-protect-your-data-description-line1`.

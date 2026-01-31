@@ -18,40 +18,28 @@ settings-alert-preferences-option-two = Anfon yr holl rybuddion tor-data at fy m
 
 ## Monitored email addresses
 
-# Variables:
-#   $email (string) - Email address
-settings-email-list-title = Cyfeiriadau e-bost yn cael eu monitro
-# Variables:
-#   $limit (number) - Number of email addresses included in the plan
-settings-email-limit-info =
-    { $limit ->
-        [zero] Mae eich cyfrif yn cynnwys monitro hyd at { $limit } e-byst.
-        [one] Mae eich cyfrif yn cynnwys monitro hyd at { $limit } e-bost.
-        [two] Mae eich cyfrif yn cynnwys monitro hyd at { $limit } e-bost.
-        [few] Mae eich cyfrif yn cynnwys monitro hyd at { $limit } e-bost.
-        [many] Mae eich cyfrif yn cynnwys monitro hyd at { $limit } e-bost.
-       *[other] Mae eich cyfrif yn cynnwys monitro hyd at { $limit } e-bost.
-    }
 settings-email-verification-callout = Mae angen gwirio'r e-bost
-settings-resend-email-verification-link = Ail-anfon yr e-bost gwirio
-settings-add-email-button = Ychwanegu cyfeiriad e-bost
 settings-remove-email-button-label = Tynnu
+settings-email-addresses-header = Cyfeiriadau e-bost
+settings-email-addresses-description = Bydd { -brand-monitor } yn eich rhybuddio os bydd yr e-byst hyn yn ymddangos mewn dor-data hysbys.
+settings-email-addresses-add-email-button = Ychwanegu cyfeiriad e-bost
 # Variables:
-#   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
-settings-remove-email-button-tooltip = Rhoi'r gorau i fonitro { $emailAddress }
-# This string is shown beneath each of the user’s email addresses to indicate
-# how many known breaches that email address was found in.
+#   $limit (number) - Number of emails that can be added for monitoring.
+settings-email-addresses-add-email-indicator-limit = Ychwanegu hyd at { $limit }
+settings-email-addresses-add-email-resend-button-label = Ail-anfon y ddolen ddilysu
+input-error-alt = Gwall
+
+## Email address dialog
+
+settings-email-addresses-initial-dialog-header = Ychwanegu cyfeiriad e-bost
+settings-email-addresses-initial-dialog-description = Byddwn yn anfon dolen ddilysu i chi gadarnhau yr hoffech ei chynnwys mewn sgan { -brand-monitor } yn y dyfodol.
+settings-email-addresses-initial-dialog-add-email-input-label = Rhowch eich cyfeiriad e-bost
+settings-email-addresses-initial-dialog-add-email-button-label = Anfon dolen dilysu
 # Variables:
-#   $breachCount (number) - Number of breaches
-settings-email-number-of-breaches-info =
-    { $breachCount ->
-        [zero] Yn ymddangos mewn { $breachCount } tor-data.
-        [one] Yn ymddangos mewn { $breachCount } tor-data.
-        [two] Yn ymddangos mewn { $breachCount } dor-data.
-        [few] Yn ymddangos mewn { $breachCount } tor-data.
-        [many] Yn ymddangos mewn { $breachCount } thor-data.
-       *[other] Yn ymddangos mewn { $breachCount } tor-data.
-    }
+#   $email (string) - Email address the confirmation has been sent to.
+settings-email-addresses-confirmation-dialog-header = Dolen dilysu wedi'i hanfon at <b>{ $email }</b>
+settings-email-addresses-confirmation-dialog-description = Agorwch y ddolen i'w ychwanegu at y cyfrif hwn ar gyfer sganiau { -brand-monitor }  yn y dyfodol.
+settings-email-addresses-confirmation-dialog-close-button = Cau
 
 ## Delete Monitor account
 
@@ -65,13 +53,10 @@ settings-delete-monitor-free-account-dialog-cancel-button-label = Dim gwahaniaet
 settings-delete-monitor-account-confirmation-toast-label-2 = Mae eich cyfrif { -brand-monitor } bellach wedi'i ddileu'n barhaol.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Cau
 
-## Monthly Monitor Report
-
-settings-alert-preferences-allow-monthly-monitor-report-title = Adroddiad misol { -brand-monitor }
-settings-alert-preferences-allow-monthly-monitor-report-subtitle = Diweddariad misol o ddatguddiadau newydd, beth sydd wedi'i drwsio, a beth sydd angen eich sylw.
-
 ## Settings page redesign
 
+# Label for a navigation bar link to settings for updating the users scan profile info – “update” is used as a verb.
+settings-tab-label-update-scan-info = Diweddaru manylion sgan
 settings-tab-label-edit-info = Golygu eich manylion
 settings-tab-label-notifications = Gosod hysbysiadau
 settings-tab-label-manage-account = Rheoli cyfrif

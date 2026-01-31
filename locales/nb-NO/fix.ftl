@@ -8,7 +8,7 @@ fix-flow-nav-security-recommendations = Sikkerhetsanbefalinger
 guided-resolution-flow-exit = Gå tilbake til oversikten
 guided-resolution-flow-next-arrow = Gå til neste trinn
 guided-resolution-flow-next-arrow-sub-step = Gå til neste resultat
-guided-resolution-flow-step-navigation-label = Trin i veiledningen
+guided-resolution-flow-step-navigation-label = Trinn i veiledningen
 
 # Celebration screens
 

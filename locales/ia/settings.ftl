@@ -18,32 +18,28 @@ settings-alert-preferences-option-two = Inviar tote le avisos de violation al ad
 
 ## Monitored email addresses
 
-# Variables:
-#   $email (string) - Email address
-settings-email-list-title = Adresses email surveliate
-# Variables:
-#   $limit (number) - Number of email addresses included in the plan
-settings-email-limit-info =
-    { $limit ->
-        [one] Tu conto include surveliantia pro usque { $limit } email.
-       *[other] Tu conto include surveliantia pro usque { $limit } emails.
-    }
 settings-email-verification-callout = Verification del email requirite.
-settings-resend-email-verification-link = Reinviar email de verification
-settings-add-email-button = Adder adresse email
 settings-remove-email-button-label = Remover
+settings-email-addresses-header = Adresse email
+settings-email-addresses-description = { -brand-monitor } te alertara iste e-mails apparera in violationes note.
+settings-email-addresses-add-email-button = Adder adresse email
 # Variables:
-#   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
-settings-remove-email-button-tooltip = Cessar de surveliar { $emailAddress }
-# This string is shown beneath each of the user’s email addresses to indicate
-# how many known breaches that email address was found in.
+#   $limit (number) - Number of emails that can be added for monitoring.
+settings-email-addresses-add-email-indicator-limit = Adde usque a { $limit }
+settings-email-addresses-add-email-resend-button-label = Re-inviar ligamine de verification
+input-error-alt = Error
+
+## Email address dialog
+
+settings-email-addresses-initial-dialog-header = Adder un adresse email
+settings-email-addresses-initial-dialog-description = Nos te inviara un ligamine de verification pro confirmar que te place includer lo in un futur scansion de { -brand-monitor }.
+settings-email-addresses-initial-dialog-add-email-input-label = Insere tu adresse email
+settings-email-addresses-initial-dialog-add-email-button-label = Inviar ligamine de verification
 # Variables:
-#   $breachCount (number) - Number of breaches
-settings-email-number-of-breaches-info =
-    { $breachCount ->
-        [one] Appare in { $breachCount } violation note.
-       *[other] Appare in { $breachCount } violationes note.
-    }
+#   $email (string) - Email address the confirmation has been sent to.
+settings-email-addresses-confirmation-dialog-header = Ligamine de verification inviate a <b>{ $email }</b>
+settings-email-addresses-confirmation-dialog-description = Aperi le ligamine pro adder lo a iste conto pro scansiones futur de { -brand-monitor }.
+settings-email-addresses-confirmation-dialog-close-button = Clauder
 
 ## Delete Monitor account
 
@@ -57,13 +53,10 @@ settings-delete-monitor-free-account-dialog-cancel-button-label = Non importa, t
 settings-delete-monitor-account-confirmation-toast-label-2 = Tu conto { -brand-monitor } es delite.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Dimitter
 
-## Monthly Monitor Report
-
-settings-alert-preferences-allow-monthly-monitor-report-title = Reporto de { -brand-monitor } mensual
-settings-alert-preferences-allow-monthly-monitor-report-subtitle = Un actualisation mensual de nove expositiones, que ha essite remediate, e que besonia de tu attention.
-
 ## Settings page redesign
 
+# Label for a navigation bar link to settings for updating the users scan profile info – “update” is used as a verb.
+settings-tab-label-update-scan-info = Actualisar informationes de scansion
 settings-tab-label-edit-info = Rediger tu info
 settings-tab-label-notifications = Configurar le notificationes
 settings-tab-label-manage-account = Gerer le conto

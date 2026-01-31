@@ -12,6 +12,13 @@ landing-all-hero-emailform-submit-sign-up-label = Εγγραφείτε για δ
 # This is a label underneath a big number "14" - it's an image that demos Monitor.
 landing-all-hero-image-chart-label = εκθέσεις
 
+## Top navbar
+
+landing-all-hero-navbar-link-how-it-works = Πώς λειτουργεί
+landing-all-hero-navbar-link-pricing = Τιμολόγηση
+landing-all-hero-navbar-link-faqs = Συχνές ερωτήσεις
+landing-all-hero-navbar-link-recent-breaches = Πρόσφατες παραβιάσεις δεδομένων
+
 # Value Proposition
 
 landing-all-value-prop-fix-exposures = Θα σας βοηθήσουμε να διορθώσετε τις εκθέσεις σας

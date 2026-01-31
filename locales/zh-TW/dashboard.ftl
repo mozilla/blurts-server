@@ -41,7 +41,6 @@ modal-cta-ok = 確定
 modal-cta-got-it = 知道了！
 open-modal-alt = 開啟對話框
 close-modal-alt = 關閉對話框
-open-tooltip-alt = 開啟提示
 progress-card-heres-what-we-fixed-headline-all = 以下是您處理過的項目
 progress-card-manually-fixed-headline = 已手動處理
 dashboard-tab-label-action-needed = 需要採取行動
@@ -80,19 +79,10 @@ dashboard-exposures-filter-reset = 重設
 ## Top banner on the dashboard
 
 dashboard-top-banner-section-label = 儀錶板摘要
-dashboard-top-banner-scan-in-progress-title = 仍在掃描中
 dashboard-top-banner-your-data-is-protected-title = 您的資料受到保護
 dashboard-top-banner-your-data-is-protected-cta = 看看處理了哪些事件
-dashboard-top-banner-lets-keep-protecting-title = 讓我們持續保護您的資料
-# Variables:
-# $exposures_unresolved_num is the remaining number of exposures the user has to resolve.
-dashboard-top-banner-lets-keep-protecting-description =
-    { $exposures_unresolved_num ->
-       *[other] 您還有 { $exposures_unresolved_num } 筆曝光資料需要處理。請繼續採取行動，我們將逐步協助。
-    }
-dashboard-top-banner-lets-keep-protecting-cta = 讓我們前進下一步
 dashboard-top-banner-protect-your-data-title = 一起保護您的資料
-dashboard-top-banner-protect-your-data-cta = 讓我們一起修正它
+dashboard-top-banner-protect-your-data-cta = 一起來修正
 # Note: this line is followed by `dashboard-top-banner-non-us-protect-your-data-description-line1`.
 # Variables:
 #   $exposures_unresolved_num (number) - the total number of exposures the user has.

@@ -27,8 +27,6 @@
 ##
 
 error-not-subscribed = Ko ñanduti veve kundaharape noñemboheraguapýi { -product-name } ndive.
-error-hibp-throttled = Hetáma oikéva { -brand-HIBP } ndive.
-error-hibp-connect = Ojavy eikévo { -brand-HIBP } ndive.
 user-add-invalid-email = Ñanduti veve oiko’ỹva
 user-add-too-many-emails = Ehechahína hetavéva ñanduti veve ikatuháicha.
 user-add-duplicate-email = Ko ñanduti veve ojuajúma { -product-name } rehe.
@@ -38,69 +36,14 @@ user-delete-unknown-error = Oĩ osẽvaíva embojuajúvo ambue ñanduti veve kun
 user-verify-token-error = Oñekotevẽ token jehechajeyrã.
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Mba’ekuaarã ivaikuaáva:
-# Breach data provided by Have I Been Pwned.
-# Variables:
-#   $hibp-link (String) - Link to Have I Been Pwned
-hibp-attribution = Mba’ekuaarã ivaikuaáva ome’ẽ { $hibp-link }
-show-all = Ehechaukapa
-sign-out = Emboty tembiapo
-# Link title
-preferences = Jerohoryvéva
-# Link title
-home = Ñepyrũ
-# Link title
-security-tips = Ñe’ẽporã tekorosãrã
 # Link title
 more-about-this-breach = Eikuaave ñembyai rehegua
-monitor-several-emails = Ema’ẽke heta ñanduti vevére
-website-breach = Ñanduti renda ñembyai
-sensitive-breach = Ñanduti renda ñembyai vai
-data-aggregator-breach = Mba’ekuaarã mbyatyha ñembyai
 what-data = Mba’ete mba’ekuaarã ivaikuaa:
-sensitive-sites = ¿Mba’e ojapo { -product-name } umi tenda ikangývare?
-sensitive-sites-copy =
-    { -product-name } ohechauka umi mba’ete ojokupytýva ko’ã
-    ñembyai rehegua ojehechajey vove ñanduti veve kundaharape. Kóva he’ise nde ha’eha
-    neañomi ehechataha ne marandúpa oñembyaikuaápara’e (peteĩva noiméiramo
-    oikekuaa ne mba’ete ñanduti veve reheguápe).
 delayed-reporting-headline = Mba’ére eha’ãrõiterei ñembyai ñemomarandu
 delayed-reporting-copy = Ikatu oraha heta jasy térã ary umi credencial ojehechakuaáva rehegua mba’ekuaarã ñembyaíva osẽkuaáva ñanduti ypytũme. Umi ñembyai ojuajúta ñane mba’ekuaarã rendápe pya’ete ojejuhu térã ojehechajey rire.
-fxm-warns-you = { -product-name } ne ñatõi ne mba’ete ñandutigua oĩpara’e mba’ekuaarã ñemboguápe. Ehechajey ne marandúpa oñembyaikuaára’e, eikuaa mba’éichapa ikatu emo’ã porãvéta ne mba’ete ñandutípe ha og̃uahẽta ndéve ne ñanduti veve kundaharapépe ikatúpa oñembyai.
-what-is-data-agg = ¿Mba’e mba’ekuaarã mbojuapyhára?
-what-is-data-agg-blurb =
-    Umi mba’ekuaarã mbyatyha omono’õ marandu opavave mba’évagui 
-    ha avei ojogua ambue mba’apohaguasúgui. Ombojuaju marandu ovende hag̃ua ambue 
-    mba’apohaguasúpe jekuaaukarãve. Umi ohupytýva ko’ã ñembyai ndorekói 
-    araka’eve viru ñemonda, hákatu umi hekovaíva ñadutípe ikatu oiporu pe marandu omyendague hag̃ua chupe.
-avoid-personal-info = Ani eiporu marandu jehegua ñe’ẽñemíme
-send-verification = Emondo juajuha jehechajeyrã
-# This string is a header on the user preferences page and
-# appears above a check-box list of user options which allow
-# the user to choose whether or not they want to receive breach
-# alerts for all of their monitored email addresses to a single
-# email address.
-breach-summary = Ñembyai ñemomichĩ
 
 ##
 
-# This string is displayed under a large numeral that indicates the total number
-# of data breaches that exposed a user’s password. Don’t add $passwords to
-# your localization, because it would result in the number showing twice.
-passwords-exposed =
-    { $passwords ->
-        [one] Ñe’ẽñemi ojekuaareíva opaite ñembyai rupive
-       *[other] Ñe’ẽñemikuéra ojekuaareíva opaite ñembyai rupive
-    }
-# This string is displayed under a large numeral that indicates the total number
-# of data breaches that have exposed the user’s information. Don’t add $breaches to
-# your localization, because it would result in the number showing twice.
-known-data-breaches-exposed =
-    { $breaches ->
-        [one] Mba’ekuaarã ñembyai ojekuaáva omomarãkuaa ne marandu
-       *[other] Mba’ekuaarãkuéra ñembyai ojekuaáva omomarãkuaa ne marandu
-    }
-what-is-a-website-breach = ¿Mba’e ñembyai ñanduti rendápe?
-website-breach-blurb = Peteĩ ñanduti ñembogua oiko umi hekovaíva ñadutípe omonda, ombokuatia térã ohechaukáramo maranduete ñandutigua. Kóva oiko hekovaíva ñadutípe ojuhúramo nahekorosãiha heta kuatiarogue, ikatu avei oñembogua marandu mba’etégui eheka’ỹre.
 # This is a section headline on the breach detail page that appears above
 # a short summary about the breach.
 breach-overview-title = Jehechapa
@@ -108,13 +51,6 @@ breach-overview-title = Jehechapa
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
 breach-overview-new = Ko { $breachDate }, { $breachTitle } oñembyai. Ojejuhu rire ha ojehechajey ko ñembyai, oñembojuajúma ore mba’ekuaarã rendápe ko { $addedDate }.
-# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
-menu = Poravorã
-# This is part of a confirmation message that appears after a user has submitted
-# the form to add an additional email to Firefox Monitor.
-# Variables:
-#   $userEmail (String) - User email address
-verify-the-link = Ehechajey juajuha emondóva { $userEmail }-pe embojuaju hag̃ua { -product-name } rehe.
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
@@ -128,11 +64,6 @@ rec-section-subhead = Ro’e ndéve eguata hag̃ua ko tapére ha emohekorosã ne
 # Section headline
 rec-section-headline-no-pw = Mba’e ejapóta emo’ã hag̃ua ne maranduete
 rec-section-subhead-no-pw = Umi ñe’ẽñemi ndojehechakuaáiramo jeje ko ñembyaípe, oĩ gueteri heta mba’e ikatúva rejapo emo’ãve hag̃ua ne maranduete.
-
-##
-
-# A status indicator that appears in the top right corner of new breach cards
-new-breach = Pyahu
 
 ##
 
@@ -195,9 +126,6 @@ footer-external-link-faq-tooltip = Porandu py’ỹiguáva
 error-page-error-404-title = { $errorCode } Kuatiarogue ojejuhu’ỹva
 error-page-error-404-copy = Rombyasy, pe kuatiarogue rehekáva ndaiporivéima.
 error-page-error-404-cta-button = Guevijey
-# Variables:
-#   $errorCode (number) - the status code of the error, e.g. 403
-error-page-error-other-title = { $errorCode } Oĩ osẽvaíva
 
 ## Breach overview page
 
@@ -212,10 +140,4 @@ exposed-data = Mba’ekuaarã imarãkuaáva:
 find-out-if-2 = Ehechaporãke eimépara’e ko ñemboguápe
 find-out-if-description = Rohechaukáta pya’e ndéve ne ñanduti renda kundaharape oñembiaikuaaha eikuaa hag̃ua mba’épa ejapóta tenondeve.
 breach-detail-cta-signup = Ehechajey oĩpa ñembogua
-
-## Firefox Monitor -> Mozilla Monitor rebrand banner
-
-banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: Héra pyahu, ha’ãnga ha avei mba’éichapa <b>erujeýta nde rekoñemi</b>.
-banner-monitor-rebrand-dismiss-button-label = MONEĨ
-banner-monitor-rebrand-dismiss-button-tooltip = Mboyke
 loading-accessibility = Henyhẽhína

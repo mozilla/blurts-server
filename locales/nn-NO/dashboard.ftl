@@ -46,7 +46,6 @@ modal-cta-ok = OK
 modal-cta-got-it = Eg forstår
 open-modal-alt = Opne modal
 close-modal-alt = Lat att modal
-open-tooltip-alt = Opne verktøytips
 progress-card-heres-what-we-fixed-headline-all = Du har løyst følgjande
 progress-card-manually-fixed-headline = Manuelt løyst
 dashboard-tab-label-action-needed = Handling påkravd
@@ -86,18 +85,8 @@ dashboard-exposures-filter-reset = Tilbakestill
 ## Top banner on the dashboard
 
 dashboard-top-banner-section-label = Oversynsoppsummering
-dashboard-top-banner-scan-in-progress-title = Skanninga held framleis på
-dashboard-top-banner-your-data-is-protected-title = Dine data er verna
+dashboard-top-banner-your-data-is-protected-title = Dataa dine er verna
 dashboard-top-banner-your-data-is-protected-cta = Sjå kva som er løyst
-dashboard-top-banner-lets-keep-protecting-title = La oss halde fram med å verne dataa dine
-# Variables:
-# $exposures_unresolved_num is the remaining number of exposures the user has to resolve.
-dashboard-top-banner-lets-keep-protecting-description =
-    { $exposures_unresolved_num ->
-        [one] Du har framleis { $exposures_unresolved_num } eksponering att å løyse. Fortset med å verne deg sjølv. Vi gaidar deg steg-for-steg.
-       *[other] Du har framleis { $exposures_unresolved_num } eksponeringar att å løyse. Fortset med å verne deg sjølv. Vi gaidar deg steg-for-steg.
-    }
-dashboard-top-banner-lets-keep-protecting-cta = La oss halde fram
 dashboard-top-banner-protect-your-data-title = La oss verne dataa dine
 dashboard-top-banner-protect-your-data-cta = La oss løyse det
 # Note: this line is followed by `dashboard-top-banner-non-us-protect-your-data-description-line1`.

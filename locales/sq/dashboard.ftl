@@ -46,7 +46,6 @@ modal-cta-ok = OK
 modal-cta-got-it = E mora vesh
 open-modal-alt = Hap dritare modale
 close-modal-alt = Mbylle dritaren modale
-open-tooltip-alt = Hap ndihmëzën
 progress-card-heres-what-we-fixed-headline-all = Ja ç’keni ndrequr
 progress-card-manually-fixed-headline = Ndrequr dorazi
 dashboard-tab-label-action-needed = Lyp veprim
@@ -86,18 +85,8 @@ dashboard-exposures-filter-reset = Riktheje te parazgjedhjet
 ## Top banner on the dashboard
 
 dashboard-top-banner-section-label = Përmbledhje pulti
-dashboard-top-banner-scan-in-progress-title = Kontrolli juaj është ende duke u kryer
 dashboard-top-banner-your-data-is-protected-title = Të dhënat tuaja janë të mbrojtura
 dashboard-top-banner-your-data-is-protected-cta = Shihni ç’është ndrequr
-dashboard-top-banner-lets-keep-protecting-title = Le të vazhdojmë të mbrojmë të dhënat tuaja
-# Variables:
-# $exposures_unresolved_num is the remaining number of exposures the user has to resolve.
-dashboard-top-banner-lets-keep-protecting-description =
-    { $exposures_unresolved_num ->
-        [one] Keni ende { $exposures_unresolved_num } ekspozim lënë pa ndrequr. Vazhdoni dhe mbroni veten. Do t’ju udhëheqim hap pas hapi.
-       *[other] Keni ende { $exposures_unresolved_num } ekspozimë lënë pa ndrequr. Vazhdoni dhe mbroni veten. Do t’ju udhëheqim hap pas hapi.
-    }
-dashboard-top-banner-lets-keep-protecting-cta = Le të vazhdojmë
 dashboard-top-banner-protect-your-data-title = Le të mbrojmë të dhënat tuaja
 dashboard-top-banner-protect-your-data-cta = Le ta ndreqim
 # Note: this line is followed by `dashboard-top-banner-non-us-protect-your-data-description-line1`.

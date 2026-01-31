@@ -5,7 +5,6 @@
 
 ## Email headers
 
-email-header-logo-alt = { -brand-mozilla-monitor }
 email-header-button-sign-in = Đăng nhập
 
 ## Email footers
@@ -13,6 +12,16 @@ email-header-button-sign-in = Đăng nhập
 email-footer-support-heading = Có câu hỏi về { -brand-mozilla-monitor }?
 email-footer-support-content = Truy cập <support-link>trung tâm trợ giúp</support-link> của chúng tôi để được hỗ trợ
 email-footer-trigger-transactional = Bạn nhận được email này với tư cách là đăng ký của { -brand-mozilla-monitor }.
+email-footer-reason-subscriber = Bạn nhận được email tự động này với tư cách là người đăng ký của { -brand-mozilla-monitor }. Nếu bạn nhận được email này do nhầm lẫn, bạn không cần thực hiện bất kỳ hành động nào. Để biết thêm thông tin, vui lòng truy cập <support-link>{ -brand-mozilla } Support</support-link>.
+email-footer-reason-subscriber-one-time = Bạn nhận được email tự động một lần này vì bạn đã đăng ký { -brand-monitor-plus }. Bạn sẽ không nhận được thêm bất kỳ email nào tương tự như thế này nữa. Để biết thêm thông tin, vui lòng truy cập <support-link>{ -brand-mozilla } Support</support-link>.
+# Variables:
+#    $support_link (string) - The URL the user can visit for support, e.g. "https://support.mozilla.org"
+email-footer-support-content-plain =
+    Hãy truy cập Trung tâm hỗ trợ của chúng tôi để được trợ giúp:
+    { $support_link }
+# Variables:
+#   $hibp_link (string) - URL to Have I Been Pwned, e.g. "https://haveibeenpwned.com".
+email-footer-source-hibp-plain = Dữ liệu bị rò rỉ được cung cấp bởi { -brand-HIBP }: { $hibp_link }
 email-footer-source-hibp = Rò rỉ dữ liệu được cung cấp bởi <hibp-link>{ -brand-HIBP }</hibp-link>
 email-footer-logo-mozilla-alt = { -brand-mozilla }
 email-footer-meta-privacy-notice = Riêng tư
@@ -20,8 +29,6 @@ email-footer-meta-privacy-notice = Riêng tư
 -product-name-relay = Firefox Relay
 # Mozilla VPN is a product name and should not be translated.
 -product-name-vpn = Mozilla VPN
-# A link to legal information about mozilla products.
-legal = Thông tin pháp lý
 # Button text
 verify-email-cta = Xác minh email
 # Headline of verification email
@@ -38,9 +45,6 @@ email-subject-verify = Xác minh email của bạn cho { -product-name }
 fxm-warns-you-no-breaches =
     { -product-name } cảnh báo bạn về các rò rỉ dữ liệu liên quan đến thông tin cá nhân của bạn.
     Cho đến nay, không có rò rỉ được tìm thấy. Chúng tôi sẽ gửi cho bạn một cảnh báo nếu địa chỉ email của bạn xuất hiện trong rò rỉ dữ liệu mới.
-email-breach-alert-blurb =
-    { -product-name } cảnh báo bạn về các rò rỉ dữ liệu liên quan đến thông tin cá nhân của bạn.
-    Chúng tôi vừa nhận được thông tin chi tiết về một công ty khác rò rỉ dữ liệu.
 
 ## 2022 email template. HTML tags should not be translated, e.g. `<a>`
 
@@ -52,7 +56,6 @@ email-2022-hibp-attribution = Dữ liệu về những vụ rò rỉ dữ liệu
 ## Verification email
 
 email-verify-heading = Bảo vệ dữ liệu của bạn, bắt đầu ngay bây giờ
-email-verify-subhead = Xác minh email của bạn để bắt đầu bảo vệ dữ liệu của bạn sau vụ rò rỉ.
 email-verify-simply-click = Chỉ cần nhấp vào liên kết bên dưới để hoàn tất việc xác minh tài khoản của bạn.
 
 ## Breach report
