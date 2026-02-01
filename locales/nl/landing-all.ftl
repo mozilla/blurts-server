@@ -12,6 +12,13 @@ landing-all-hero-emailform-submit-sign-up-label = Registreer om een gratis scan 
 # This is a label underneath a big number "14" - it's an image that demos Monitor.
 landing-all-hero-image-chart-label = lekken
 
+## Top navbar
+
+landing-all-hero-navbar-link-how-it-works = Hoe het werkt
+landing-all-hero-navbar-link-pricing = Prijzen
+landing-all-hero-navbar-link-faqs = FAQ’s
+landing-all-hero-navbar-link-recent-breaches = Recente datalekken
+
 # Value Proposition
 
 landing-all-value-prop-fix-exposures = We helpen u uw lekken op te lossen

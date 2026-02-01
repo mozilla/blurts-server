@@ -53,7 +53,6 @@ dashboard-exposures-filter-reset = איפוס
 
 ## Top banner on the dashboard
 
-dashboard-top-banner-scan-in-progress-title = הסריקה שלך עדיין מתבצעת
 # Note: this line is followed by `dashboard-top-banner-non-us-protect-your-data-description-line1`.
 # Variables:
 #   $exposures_unresolved_num (number) - the total number of exposures the user has.

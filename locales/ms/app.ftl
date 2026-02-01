@@ -13,13 +13,7 @@
 ##
 
 error-not-subscribed = Alamat e-mel ini tidak dilanggan ke { -product-name }.
-error-hibp-throttled = Terlalu banyak sambungan ke { -brand-HIBP }.
-error-hibp-connect = Ralat menyambung ke { -brand-HIBP }.
 user-add-invalid-email = E-mail tidak sah
 user-verify-token-error = Token pengesahan diperlukan.
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Data dikompromi:
-# Breach data provided by Have I Been Pwned.
-# Variables:
-#   $hibp-link (String) - Link to Have I Been Pwned
-hibp-attribution = Data pelanggaran keselamatan disediakan oleh { $hibp-link }

@@ -38,7 +38,6 @@ modal-cta-ok = 확인
 modal-cta-got-it = 확인
 open-modal-alt = 모달 열기
 close-modal-alt = 모달 닫기
-open-tooltip-alt = 툴팁 열기
 progress-card-heres-what-we-fixed-headline-all = 해결한 내용은 다음과 같습니다.
 progress-card-manually-fixed-headline = 수동으로 해결
 dashboard-tab-label-action-needed = 조치 필요
@@ -70,14 +69,8 @@ dashboard-exposures-filter-reset = 재설정
 ## Top banner on the dashboard
 
 dashboard-top-banner-section-label = 대시보드 요약
-dashboard-top-banner-scan-in-progress-title = 스캔이 아직 진행 중입니다.
 dashboard-top-banner-your-data-is-protected-title = 데이터가 보호됩니다.
 dashboard-top-banner-your-data-is-protected-cta = 해결된 사항 보기
-dashboard-top-banner-lets-keep-protecting-title = 데이터를 계속 보호합시다.
-# Variables:
-# $exposures_unresolved_num is the remaining number of exposures the user has to resolve.
-dashboard-top-banner-lets-keep-protecting-description = 아직 해결해야 할 노출이 { $exposures_unresolved_num }개 남아 있습니다. 계속해서 보호하세요. 단계별로 안내해드리겠습니다.
-dashboard-top-banner-lets-keep-protecting-cta = 계속 해봅시다.
 dashboard-top-banner-protect-your-data-title = 데이터를 보호합시다.
 dashboard-top-banner-protect-your-data-cta = 문제를 해결합시다.
 # Note: this line is followed by `dashboard-top-banner-non-us-protect-your-data-description-line1`.

@@ -3,13 +3,11 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 chevron-alt = Ñemombe’ukuaa mba’emimi
-exposure-card-exposure-type = Mba’eichagua jehechauka
 exposure-card-date-found = Mba’e árapa oiko jehechauka
 
 # Status Pill
 
 status-pill-action-needed = Tekotevẽva ojejapo
-status-pill-progress = Oikovahína
 status-pill-fixed = Opytáva
 
 # Exposure Card
@@ -29,12 +27,10 @@ exposure-card-description-data-breach-action-needed = Ne marandu oñembyaikuaa <
 exposure-card-description-data-breach-fixed = Ejapóna ejapova’erã emoĩporã hag̃ua <data_breach_link>ko ñembogua</data_breach_link>. Rohecha meméta mba’ekuaarã ñembogua ha romomarandúta oĩramo mba’evairã pyahu.
 exposure-card-your-exposed-info = Ne marandu ivaikuaa:
 exposure-card-found-the-following-data = { -brand-monitor } ojuhu ko’ã mba’ekuaarã imarãkuaáva:
-exposure-card-exposure-type-data-broker = Marandu ñevendepy
-exposure-card-exposure-type-data-breach = Mba’ekuaarã ñembogua
 exposure-card-resolve-exposures-cta = Emoporã ñembyaipyre
 exposure-card-label-company-logo = Atyguasu ra’ãnga’i
 exposure-card-label-company = Atyguasu
-# Status of the exposure card, could be In Progress, Fixed or Action Needed
+# Status of the exposure card, could be Fixed or Action Needed
 exposure-card-label-status = Tekotee
 # Variables:
 # $category_label is the data breach exposure type that was leaked. Eg. Email, IP Address.
