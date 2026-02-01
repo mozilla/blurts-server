@@ -18,32 +18,7 @@ settings-alert-preferences-option-two = Dërgoji krejt sinjalizimet mbi cenime t
 
 ## Monitored email addresses
 
-# Variables:
-#   $email (string) - Email address
-settings-email-list-title = Adresë email e mbikëqyrur
-# Variables:
-#   $limit (number) - Number of email addresses included in the plan
-settings-email-limit-info =
-    { $limit ->
-        [one] Llogaria juaj përfshin mbikëqyrjen e deri { $limit } email-i.
-       *[other] Llogaria juaj përfshin mbikëqyrjen e deri { $limit } email-eve.
-    }
 settings-email-verification-callout = Lypset verifikim email-i
-settings-resend-email-verification-link = Ridërgo email verifikimi
-settings-add-email-button = Shtoni adresë email
-settings-remove-email-button-label = Hiqe
-# Variables:
-#   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
-settings-remove-email-button-tooltip = Ndale mbikëqyrjen për { $emailAddress }
-# This string is shown beneath each of the user’s email addresses to indicate
-# how many known breaches that email address was found in.
-# Variables:
-#   $breachCount (number) - Number of breaches
-settings-email-number-of-breaches-info =
-    { $breachCount ->
-        [one] Shfaqet në { $breachCount } cenim të ditur.
-       *[other] Shfaqet në { $breachCount } cenime të ditura.
-    }
 
 ## Delete Monitor account
 
@@ -56,11 +31,6 @@ settings-delete-monitor-free-account-dialog-cta-label = Fshije llogarinë
 settings-delete-monitor-free-account-dialog-cancel-button-label = S’prish punë, kthemëni
 settings-delete-monitor-account-confirmation-toast-label-2 = Llogaria juaj { -brand-monitor } tani është fshirë.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Hidhe tej
-
-## Monthly Monitor Report
-
-settings-alert-preferences-allow-monthly-monitor-report-title = Raport mujor { -brand-monitor }
-settings-alert-preferences-allow-monthly-monitor-report-subtitle = Një përditësim mujor rreth ekspozimesh të reja, ç’është ndrequr dhe ç’lyp vëmendjen tuaj.
 
 ## Settings page redesign
 

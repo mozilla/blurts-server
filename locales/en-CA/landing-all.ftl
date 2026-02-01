@@ -12,6 +12,13 @@ landing-all-hero-emailform-submit-sign-up-label = Sign up to get free scan
 # This is a label underneath a big number "14" - it's an image that demos Monitor.
 landing-all-hero-image-chart-label = exposures
 
+## Top navbar
+
+landing-all-hero-navbar-link-how-it-works = How it works
+landing-all-hero-navbar-link-pricing = Pricing
+landing-all-hero-navbar-link-faqs = FAQs
+landing-all-hero-navbar-link-recent-breaches = Recent data breaches
+
 # Value Proposition
 
 landing-all-value-prop-fix-exposures = We’ll help you fix your exposures

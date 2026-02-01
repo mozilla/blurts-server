@@ -5,7 +5,6 @@
 
 ## Email headers
 
-email-header-logo-alt = { -brand-mozilla-monitor }
 email-header-button-sign-in = Σύνδεση
 
 ## Email footers
@@ -13,6 +12,14 @@ email-header-button-sign-in = Σύνδεση
 email-footer-support-heading = Έχετε απορίες για το { -brand-mozilla-monitor };
 email-footer-support-content = Επισκεφτείτε το <support-link>Κέντρο υποστήριξης</support-link> για βοήθεια
 email-footer-trigger-transactional = Λαμβάνετε αυτό το email ως συνδρομητής του { -brand-mozilla-monitor }.
+email-footer-reason-subscriber = Λαμβάνετε αυτό το αυτοματοποιημένο email ως συνδρομητής των { -brand-mozilla-monitor }. Αν το λάβατε κατά λάθος, δεν απαιτείται καμία ενέργεια. Για περισσότερες πληροφορίες, παρακαλούμε επισκεφθείτε την <support-link>Υποστήριξη { -brand-mozilla }</support-link>.
+email-footer-reason-subscriber-one-time = Έχετε λάβει αυτό το αυτοματοποιημένο email, επειδή έχετε εγγραφεί στο { -brand-monitor-plus }. Δεν θα λαμβάνετε άλλα emails όπως αυτό. Για περισσότερες πληροφορίες, παρακαλούμε επισκεφθείτε την <support-link>Υποστήριξη { -brand-mozilla }</support-link>.
+# Variables:
+#    $support_link (string) - The URL the user can visit for support, e.g. "https://support.mozilla.org"
+email-footer-support-content-plain = Επισκεφτείτε το κέντρο υποστήριξης για βοήθεια: { $support_link }
+# Variables:
+#   $hibp_link (string) - URL to Have I Been Pwned, e.g. "https://haveibeenpwned.com".
+email-footer-source-hibp-plain = Δεδομένα παραβιάσεων παρέχονται από το { -brand-HIBP }: { $hibp_link }
 email-footer-source-hibp = Τα δεδομένα παραβιάσεων παρέχονται από το <hibp-link>{ -brand-HIBP }</hibp-link>
 email-footer-logo-mozilla-alt = { -brand-mozilla }
 email-footer-meta-privacy-notice = Απόρρητο
@@ -20,8 +27,6 @@ email-footer-meta-privacy-notice = Απόρρητο
 -product-name-relay = Firefox Relay
 # Mozilla VPN is a product name and should not be translated.
 -product-name-vpn = Mozilla VPN
-# A link to legal information about mozilla products.
-legal = Νομικά
 # Button text
 verify-email-cta = Επαλήθευση email
 # Headline of verification email
@@ -38,9 +43,6 @@ email-subject-verify = Επαλήθευση email για το { -product-name }
 fxm-warns-you-no-breaches =
     Το { -product-name } σας προειδοποιεί σχετικά με παραβιάσεις που αφορούν προσωπικά σας δεδομένα. 
     Μέχρι στιγμής, δεν έχουν βρεθεί διαρροές. Θα σας ειδοποιήσουμε αν εμφανιστεί η διεύθυνση email σας σε κάποια νέα παραβίαση.
-email-breach-alert-blurb =
-    Το { -product-name } σας προειδοποιεί σχετικά με παραβιάσεις που αφορούν προσωπικά σας δεδομένα. 
-    Μόλις λάβαμε στοιχεία σχετικά με παραβίαση δεδομένων άλλης εταιρείας.
 
 ## 2022 email template. HTML tags should not be translated, e.g. `<a>`
 
@@ -52,7 +54,6 @@ email-2022-hibp-attribution = Τα δεδομένα παραβιάσεων πα�
 ## Verification email
 
 email-verify-heading = Προστατέψτε τα δεδομένα σας, ξεκινώντας από τώρα
-email-verify-subhead = Επαληθεύστε το email σας για να αρχίσετε να προστατεύετε τα δεδομένα σας μετά από παραβίαση.
 email-verify-simply-click = Κάντε απλά κλικ στον παρακάτω σύνδεσμο για να ολοκληρώσετε την επαλήθευση του λογαριασμού σας.
 
 ## Breach report

@@ -46,7 +46,6 @@ modal-cta-ok = OK
 modal-cta-got-it = Verstanden
 open-modal-alt = Modal öffnen
 close-modal-alt = Modal schließen
-open-tooltip-alt = Tooltip öffnen
 progress-card-heres-what-we-fixed-headline-all = Sie haben Folgendes behoben
 progress-card-manually-fixed-headline = Manuell behoben
 dashboard-tab-label-action-needed = Handlungsbedarf
@@ -86,18 +85,8 @@ dashboard-exposures-filter-reset = Zurücksetzen
 ## Top banner on the dashboard
 
 dashboard-top-banner-section-label = Zusammenfassung der Übersicht
-dashboard-top-banner-scan-in-progress-title = Ihre Überprüfung wird noch durchgeführt
 dashboard-top-banner-your-data-is-protected-title = Ihre Daten sind geschützt
 dashboard-top-banner-your-data-is-protected-cta = Sehen Sie, was behoben wurde
-dashboard-top-banner-lets-keep-protecting-title = Schützen wir Ihre Daten weiterhin
-# Variables:
-# $exposures_unresolved_num is the remaining number of exposures the user has to resolve.
-dashboard-top-banner-lets-keep-protecting-description =
-    { $exposures_unresolved_num ->
-        [one] Sie haben noch { $exposures_unresolved_num } ein Leck, das Sie beheben müssen. Machen Sie weiter und schützen Sie sich. Wir führen Sie Schritt für Schritt.
-       *[other] Sie haben noch { $exposures_unresolved_num } Lecks, die Sie beheben müssen. Machen Sie weiter und schützen Sie sich. Wir führen Sie Schritt für Schritt.
-    }
-dashboard-top-banner-lets-keep-protecting-cta = Machen wir weiter
 dashboard-top-banner-protect-your-data-title = Schützen wir Ihre Daten
 dashboard-top-banner-protect-your-data-cta = Lösen wir das Problem
 # Note: this line is followed by `dashboard-top-banner-non-us-protect-your-data-description-line1`.

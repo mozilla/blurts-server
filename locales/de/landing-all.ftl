@@ -12,6 +12,13 @@ landing-all-hero-emailform-submit-sign-up-label = Registrieren Sie sich, um eine
 # This is a label underneath a big number "14" - it's an image that demos Monitor.
 landing-all-hero-image-chart-label = Datenlecks
 
+## Top navbar
+
+landing-all-hero-navbar-link-how-it-works = Wie es funktioniert
+landing-all-hero-navbar-link-pricing = Preis
+landing-all-hero-navbar-link-faqs = Häufig gestellte Fragen
+landing-all-hero-navbar-link-recent-breaches = Neueste Datenlecks
+
 # Value Proposition
 
 landing-all-value-prop-fix-exposures = Wir helfen Ihnen, Ihre Datenlecks zu beheben

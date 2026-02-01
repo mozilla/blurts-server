@@ -5,7 +5,6 @@
 
 ## Email headers
 
-email-header-logo-alt = { -brand-mozilla-monitor }
 email-header-button-sign-in = Eñemboheraguapy
 
 ## Email footers
@@ -20,8 +19,6 @@ email-footer-meta-privacy-notice = Ñemigua
 -product-name-relay = Firefox Relay
 # Mozilla VPN is a product name and should not be translated.
 -product-name-vpn = Mozilla VPN
-# A link to legal information about mozilla products.
-legal = Añetegua
 # Button text
 verify-email-cta = Ñanduti veve jehechajey
 # Headline of verification email
@@ -38,10 +35,6 @@ email-subject-verify = Ehechajey ne ñanduti veve { -product-name } peg̃uarã
 fxm-warns-you-no-breaches =
     { -product-name } nemongyhyje mba’ekuaarã ñembyai rehegua ombyaikuaáva ne maranduete. 
     Ko’ág̃a rupi ndojejuhúi mba’eve. Romondóta ndéve kyhyjerã ne ñandutiveve kundaharape oñembyaikuaáramo.
-email-breach-alert-blurb =
-    { -product-name } omombe’u ndéve mba’ekuaarã ñembyai ne mba’eteéva rehegua. 
-    
-    Og̃uahẽramo mba’emimi mba’ekuaarã ñembyai rehegua ambue mba’apohaguasu guive.
 
 ## 2022 email template. HTML tags should not be translated, e.g. `<a>`
 
@@ -53,7 +46,6 @@ email-2022-hibp-attribution = Mba’ekuaarã ñembogua ome’ẽva <a { $hibp-li
 ## Verification email
 
 email-verify-heading = Emo’ã ne mba’ekuaarã, eñepyrũ ko’ag̃aite
-email-verify-subhead = Ehechajey ne ñanduti veve emo’ãkuaa hag̃ua mba’ekuaarã ñembogua rire.
 email-verify-simply-click = Eikutu pe juajuha emohu’ã hag̃ua ne mbaéte jehechajey.
 
 ## Breach report

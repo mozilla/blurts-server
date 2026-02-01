@@ -12,6 +12,13 @@ landing-all-hero-emailform-submit-sign-up-label = Regístrate para obtener un es
 # This is a label underneath a big number "14" - it's an image that demos Monitor.
 landing-all-hero-image-chart-label = exposiciones
 
+## Top navbar
+
+landing-all-hero-navbar-link-how-it-works = Cómo funciona
+landing-all-hero-navbar-link-pricing = Precios
+landing-all-hero-navbar-link-faqs = Preguntas frecuentes
+landing-all-hero-navbar-link-recent-breaches = Filtraciones de datos recientes
+
 # Value Proposition
 
 landing-all-value-prop-fix-exposures = Te ayudaremos a solucionar tus exposiciones.

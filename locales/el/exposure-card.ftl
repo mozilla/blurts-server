@@ -3,13 +3,11 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 chevron-alt = Λεπτομέρειες έκθεσης
-exposure-card-exposure-type = Τύπος έκθεσης
 exposure-card-date-found = Ημερομηνία έκθεσης
 
 # Status Pill
 
 status-pill-action-needed = Απαιτείται ενέργεια
-status-pill-progress = Σε εξέλιξη
 status-pill-fixed = Διορθώθηκε
 
 # Exposure Card
@@ -29,12 +27,10 @@ exposure-card-description-data-breach-action-needed = Οι πληροφορίε�
 exposure-card-description-data-breach-fixed = Έχετε λάβει τα απαραίτητα μέτρα για τη διόρθωση <data_breach_link>αυτής της παραβίασης</data_breach_link>. Θα εποπτεύουμε συνεχώς για παραβιάσεις δεδομένων και θα σας ειδοποιούμε για τυχόν νέες εκθέσεις.
 exposure-card-your-exposed-info = Οι εκτεθειμένες πληροφορίες σας:
 exposure-card-found-the-following-data = Το { -brand-monitor } βρήκε τα εξής εκτεθειμένα δεδομένα:
-exposure-card-exposure-type-data-broker = Πληροφορίες προς πώληση
-exposure-card-exposure-type-data-breach = Παραβίαση δεδομένων
 exposure-card-resolve-exposures-cta = Επίλυση εκθέσεων
 exposure-card-label-company-logo = Λογότυπο εταιρείας
 exposure-card-label-company = Εταιρεία
-# Status of the exposure card, could be In Progress, Fixed or Action Needed
+# Status of the exposure card, could be Fixed or Action Needed
 exposure-card-label-status = Κατάσταση
 # Variables:
 # $category_label is the data breach exposure type that was leaked. Eg. Email, IP Address.

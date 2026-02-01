@@ -3,17 +3,12 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 
-## Email headers
-
-
 ## Email footers
 
 # Firefox Relay is a product name and should not be translated.
 -product-name-relay = Firefox Relay
 # Mozilla VPN is a product name and should not be translated.
 -product-name-vpn = Mozilla VPN
-# A link to legal information about mozilla products.
-legal = Taqanel rutzijol
 # Button text
 verify-email-cta = Tinik'öx Taqoya'l
 # Headline of verification email
@@ -30,19 +25,7 @@ email-subject-verify = Tanik'oj ri ataqoya'l richin { -product-name }
 fxm-warns-you-no-breaches =
     { -product-name } nuya' rutzijol kitz'ilanem taq tzij nikitz'ila' ri awetamab'al. 
     Wakami majun ilitajinäq. Xtiqatäq jun rutzijol k'ayewal we ri rochochib'al ataqoya'l xtiwachin pa jun k'ak'a' tz'ilanem.
-email-breach-alert-blurb =
-    { -product-name } nuya' rutzijol kitz'ilanem taq tzij nikitz'ila' ri awetamab'al. 
-    K'a b'a' tiqak'ül rutzijol chi rij rutz'ilanem rutzij jun moloj.
-
-## 2022 email template. HTML tags should not be translated, e.g. `<a>`
-
-
-## Verification email
-
 
 ## Breach report
 
 email-dashboard-cta = Tib'e pa ri Tz'ib'akajtz'ik
-
-## Breach alert email
-
