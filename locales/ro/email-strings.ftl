@@ -5,7 +5,6 @@
 
 ## Email headers
 
-email-header-logo-alt = { -brand-mozilla-monitor }
 email-header-button-sign-in = Intră în cont
 
 ## Email footers
@@ -13,6 +12,16 @@ email-header-button-sign-in = Intră în cont
 email-footer-support-heading = Întrebări despre { -brand-mozilla-monitor }?
 email-footer-support-content = Intră pe <support-link>Centrul nostru de asistență</support-link> pentru ajutor
 email-footer-trigger-transactional = Primești acest e-mail ca abonat la { -brand-mozilla-monitor }.
+email-footer-reason-subscriber = Primești acest mesaj automat pe e-mail pentru că ești abonat(ă) la { -brand-mozilla-monitor }. Dacă l-ai primit din eroare, nu trebuie să faci nimic. Pentru mai multe informații, încearcă să intri pe <support-link>{ -brand-mozilla } Asistență</support-link>.
+email-footer-reason-subscriber-one-time = Ai primit acest mesaj automat unic pe e-mail pentru că ești abonat(ă) la { -brand-monitor-plus }. Nu vei mai primi alte mesaje de acest gen pe e-mail. Pentru mai multe informații, te rugăm să intri pe <support-link>{ -brand-mozilla } Asistență</support-link>.
+# Variables:
+#    $support_link (string) - The URL the user can visit for support, e.g. "https://support.mozilla.org"
+email-footer-support-content-plain =
+    Vezi Centrul nostru de asistență pentru ajutor:
+    { $support_link }
+# Variables:
+#   $hibp_link (string) - URL to Have I Been Pwned, e.g. "https://haveibeenpwned.com".
+email-footer-source-hibp-plain = Date despre încălcarea securității oferite de { -brand-HIBP }: { $hibp_link }
 email-footer-source-hibp = Datele privind încălcarea securității furnizate de <hibp-link>{ -brand-HIBP }</hibp-link>
 email-footer-logo-mozilla-alt = { -brand-mozilla }
 email-footer-meta-privacy-notice = Confidențialitate
@@ -20,8 +29,6 @@ email-footer-meta-privacy-notice = Confidențialitate
 -product-name-relay = Firefox Relay
 # Mozilla VPN is a product name and should not be translated.
 -product-name-vpn = Mozilla VPN
-# A link to legal information about mozilla products.
-legal = Mențiuni legale
 # Button text
 verify-email-cta = Verifică e-mailul
 # Headline of verification email
@@ -38,9 +45,6 @@ email-subject-verify = Verifică-ți e-mailul pentru { -product-name }
 fxm-warns-you-no-breaches =
     { -product-name } te avertizează cu privire la încălcările securității datelor în care sunt implicate informațiile tale cu caracter personal.
     Până în prezent nu au fost găsite încălcări. Îți vom trimite o alertă dacă adresa ta de e-mail apare într-o nouă încălcare.
-email-breach-alert-blurb =
-    { -product-name } te avertizează cu privire la încălcările securității datelor în care sunt implicate informațiile tale cu caracter personal.
-    Tocmai am primit detalii despre o încălcare a securității datelor suferită de o altă companie.
 
 ## 2022 email template. HTML tags should not be translated, e.g. `<a>`
 
@@ -52,7 +56,6 @@ email-2022-hibp-attribution = Datele privind încălcările securității datelo
 ## Verification email
 
 email-verify-heading = Protejează-ți datele, începând chiar acum
-email-verify-subhead = Verifică-ți adresa de e-mail pentru a începe să-ți protejezi datele după o încălcare a securității datelor.
 email-verify-simply-click = Pur și simplu dă clic pe linkul de mai jos pentru a finaliza verificarea contului.
 
 ## Breach report

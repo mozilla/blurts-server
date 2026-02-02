@@ -7,6 +7,7 @@ toolbar-app-picker-product-vpn = { -brand-mozilla-vpn }
 toolbar-app-picker-product-relay = { -brand-relay }
 toolbar-app-picker-product-fx-desktop = { -brand-firefox } za namizja
 toolbar-app-picker-product-fx-mobile = { -brand-firefox } za mobilne naprave
+toolbar-app-picker-product-solo = { -brand-solo-ai }
 toolbar-app-picker-by-mozilla = Izpod rok { -brand-mozilla(sklon: "rodilnik") }
 # Bento headline
 fx-makes-tech = { -brand-name } je tehnologija, ki se bori za vašo spletno zasebnost.

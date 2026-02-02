@@ -3,13 +3,11 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 chevron-alt = รายละเอียดการเปิดเผย
-exposure-card-exposure-type = ชนิดการเปิดเผย
 exposure-card-date-found = วันที่เปิดเผย
 
 # Status Pill
 
 status-pill-action-needed = การกระทำที่จำเป็น
-status-pill-progress = ดำเนินการอยู่
 status-pill-fixed = แก้ไขแล้ว
 
 # Exposure Card
@@ -29,12 +27,10 @@ exposure-card-description-data-breach-action-needed = ข้อมูลขอ�
 exposure-card-description-data-breach-fixed = คุณได้ทำขั้นตอนที่จำเป็นเพื่อแก้ไข<data_breach_link>การละเมิดนี้</data_breach_link>แล้ว เราจะตรวจสอบการละเมิดข้อมูลอย่างต่อเนื่องและแจ้งให้คุณทราบถึงความเสี่ยงใหม่ๆ
 exposure-card-your-exposed-info = ข้อมูลของคุณที่ถูกเปิดเผย:
 exposure-card-found-the-following-data = { -brand-monitor } พบข้อมูลที่ถูกเปิดเผยต่อไปนี้:
-exposure-card-exposure-type-data-broker = ข้อมูลสำหรับการขาย
-exposure-card-exposure-type-data-breach = การละเมิดข้อมูล
 exposure-card-resolve-exposures-cta = แก้ไขปัญหาการเปิดเผย
 exposure-card-label-company-logo = โลโก้บริษัท
 exposure-card-label-company = บริษัท
-# Status of the exposure card, could be In Progress, Fixed or Action Needed
+# Status of the exposure card, could be Fixed or Action Needed
 exposure-card-label-status = สถานะ
 # Variables:
 # $category_label is the data breach exposure type that was leaked. Eg. Email, IP Address.

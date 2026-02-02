@@ -7,6 +7,7 @@ toolbar-app-picker-product-vpn = { -brand-mozilla-vpn }
 toolbar-app-picker-product-relay = { -brand-relay }
 toolbar-app-picker-product-fx-desktop = { -brand-firefox } для компьютера
 toolbar-app-picker-product-fx-mobile = { -brand-firefox } для мобильных устройств
+toolbar-app-picker-product-solo = { -brand-solo-ai }
 toolbar-app-picker-by-mozilla = Создано { -brand-mozilla }
 # Bento headline
 fx-makes-tech = { -brand-name } — технологии, которые борются за вашу приватность в Интернете.

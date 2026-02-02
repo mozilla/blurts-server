@@ -3,13 +3,11 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 chevron-alt = Detaljar om eksponering
-exposure-card-exposure-type = Eksponeringstype
 exposure-card-date-found = Dato for eksponering
 
 # Status Pill
 
 status-pill-action-needed = Handling påkravd
-status-pill-progress = I framdrift
 status-pill-fixed = Løyst
 
 # Exposure Card
@@ -29,12 +27,10 @@ exposure-card-description-data-breach-action-needed = Informasjonen din er ekspo
 exposure-card-description-data-breach-fixed = Du har teke stega som trengst for å fikse <data_breach_link>denne datalekkasjen</data_breach_link>. Vi vil kontinuerleg overvake datalekkasjar og varsle deg om eventuelle nye eksponeringar.
 exposure-card-your-exposed-info = DIn eksporterte informasjon:
 exposure-card-found-the-following-data = { -brand-monitor } fann følgjande eksponerte data:
-exposure-card-exposure-type-data-broker = Opplysningar til sals
-exposure-card-exposure-type-data-breach = Datalekkasje
 exposure-card-resolve-exposures-cta = Løys eksponeringar
 exposure-card-label-company-logo = Firmalogo
 exposure-card-label-company = Firma
-# Status of the exposure card, could be In Progress, Fixed or Action Needed
+# Status of the exposure card, could be Fixed or Action Needed
 exposure-card-label-status = Status
 # Variables:
 # $category_label is the data breach exposure type that was leaked. Eg. Email, IP Address.

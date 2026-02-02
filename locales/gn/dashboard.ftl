@@ -46,7 +46,6 @@ modal-cta-ok = MONEĨ
 modal-cta-got-it = Aikũmby
 open-modal-alt = Embojuruja modal
 close-modal-alt = Emboty modal
-open-tooltip-alt = Embojuruja marandu
 progress-card-heres-what-we-fixed-headline-all = Kóva pe emoĩporãva
 progress-card-manually-fixed-headline = Pópe ñembojáva
 dashboard-tab-label-action-needed = Tekotevẽva ojejapo
@@ -86,18 +85,8 @@ dashboard-exposures-filter-reset = Mbojevyjey
 ## Top banner on the dashboard
 
 dashboard-top-banner-section-label = Mba’erupa momichĩ
-dashboard-top-banner-scan-in-progress-title = Ne ñemoha’ãnga oiko gueteri
 dashboard-top-banner-your-data-is-protected-title = Ne mba’ekuaarã oñemo’ã
 dashboard-top-banner-your-data-is-protected-cta = Ehecha oĩporãmava
-dashboard-top-banner-lets-keep-protecting-title = Romo’ãta gueteri ne mba’ekuaarã
-# Variables:
-# $exposures_unresolved_num is the remaining number of exposures the user has to resolve.
-dashboard-top-banner-lets-keep-protecting-description =
-    { $exposures_unresolved_num ->
-        [one] Ereko gueteri { $exposures_unresolved_num } techaukarã emyatyrõtava. Eku’ejey ha eñemo’ã. Rombohapéta eku’évo.
-       *[other] Ereko gueteri { $exposures_unresolved_num } techaukarã emyatyrõtava. Eku’ejey ha eñemo’ã. Rombohapéta eku’évo.
-    }
-dashboard-top-banner-lets-keep-protecting-cta = Jaku’ejeýke
 dashboard-top-banner-protect-your-data-title = Romo’ãta ne mba’ekuaarã
 dashboard-top-banner-protect-your-data-cta = Romoĩ porãta
 # Note: this line is followed by `dashboard-top-banner-non-us-protect-your-data-description-line1`.

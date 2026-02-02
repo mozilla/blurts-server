@@ -18,32 +18,11 @@ settings-alert-preferences-option-two = Enviar todos os alertas de vazamento par
 
 ## Monitored email addresses
 
-# Variables:
-#   $email (string) - Email address
-settings-email-list-title = Endereços de email monitorados
-# Variables:
-#   $limit (number) - Number of email addresses included in the plan
-settings-email-limit-info =
-    { $limit ->
-        [one] Sua conta inclui monitoração de até { $limit } email.
-       *[other] Sua conta inclui monitoração de até { $limit } emails.
-    }
 settings-email-verification-callout = Verificação de email é necessária
-settings-resend-email-verification-link = Enviar email de verificação novamente
-settings-add-email-button = Adicionar endereço de email
-settings-remove-email-button-label = Remover
-# Variables:
-#   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
-settings-remove-email-button-tooltip = Parar de monitorar { $emailAddress }
-# This string is shown beneath each of the user’s email addresses to indicate
-# how many known breaches that email address was found in.
-# Variables:
-#   $breachCount (number) - Number of breaches
-settings-email-number-of-breaches-info =
-    { $breachCount ->
-        [one] Aparece em { $breachCount } vazamento conhecido.
-       *[other] Aparece em { $breachCount } vazamentos conhecidos.
-    }
+
+## Email address dialog
+
+settings-email-addresses-initial-dialog-add-email-button-label = Enviar link de verificação
 
 ## Delete Monitor account
 
@@ -56,11 +35,6 @@ settings-delete-monitor-free-account-dialog-cta-label = Excluir conta
 settings-delete-monitor-free-account-dialog-cancel-button-label = Mudei de ideia, voltar
 settings-delete-monitor-account-confirmation-toast-label-2 = Sua conta do { -brand-monitor } foi excluída.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Descartar
-
-## Monthly Monitor Report
-
-settings-alert-preferences-allow-monthly-monitor-report-title = Relatório mensal do { -brand-monitor }
-settings-alert-preferences-allow-monthly-monitor-report-subtitle = Uma atualização mensal de novas exposições, o que foi resolvido e o que precisa da sua atenção.
 
 ## Settings page redesign
 

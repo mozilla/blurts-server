@@ -3,17 +3,12 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 
-## Email headers
-
-
 ## Email footers
 
 # Firefox Relay is a product name and should not be translated.
 -product-name-relay = Firefox Relay
 # Mozilla VPN is a product name and should not be translated.
 -product-name-vpn = Mozilla VPN
-# A link to legal information about mozilla products.
-legal = 法的通知
 # Button text
 verify-email-cta = メールアドレスを確認
 # Headline of verification email
@@ -34,12 +29,3 @@ email-subject-verify = { -product-name } のメールを確認してください
 # Variables:
 #   $hibp-link-attr (String) - Link to Have I Been Pwned
 email-2022-hibp-attribution = 侵害データ提供元: <a { $hibp-link-attr }>{ -brand-HIBP }</a>
-
-## Verification email
-
-
-## Breach report
-
-
-## Breach alert email
-

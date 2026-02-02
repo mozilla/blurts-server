@@ -3,13 +3,11 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 chevron-alt = Datalekdetails
-exposure-card-exposure-type = Type lek
 exposure-card-date-found = Datum fan it lek
 
 # Status Pill
 
 status-pill-action-needed = Aksje nedich
-status-pill-progress = Wurdt útfierd
 status-pill-fixed = Oplost
 
 # Exposure Card
@@ -29,12 +27,10 @@ exposure-card-description-data-breach-action-needed = Jo gegevens binne lekt yn 
 exposure-card-description-data-breach-fixed = Jo hawwe de nedige stappen nommen om <data_breach_link>dit lek</data_breach_link> op te lossen. Wy kontrolearje trochgeand op datalekken en warskôgje jo by nije lekken.
 exposure-card-your-exposed-info = Jo lekte gegevens:
 exposure-card-found-the-following-data = { -brand-monitor } hat de folgjende lekte gegevens fûn:
-exposure-card-exposure-type-data-broker = Ynfo te keap
-exposure-card-exposure-type-data-breach = Datalek
 exposure-card-resolve-exposures-cta = Datalekken oplosse
 exposure-card-label-company-logo = Bedriuwslogo
 exposure-card-label-company = Bedriuw
-# Status of the exposure card, could be In Progress, Fixed or Action Needed
+# Status of the exposure card, could be Fixed or Action Needed
 exposure-card-label-status = Status
 # Variables:
 # $category_label is the data breach exposure type that was leaked. Eg. Email, IP Address.

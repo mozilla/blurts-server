@@ -41,11 +41,8 @@ dashboard-exposures-filter-reset = Wennez
 ## Top banner on the dashboard
 
 dashboard-top-banner-section-label = Agzul n tfelwit n usenqed
-dashboard-top-banner-scan-in-progress-title = Asekyed la iteddu
 dashboard-top-banner-your-data-is-protected-title = Isefka-k ttummestnen
 dashboard-top-banner-your-data-is-protected-cta = Wali acu i iṣeggmen
-dashboard-top-banner-lets-keep-protecting-title = Eǧǧ isefka-k⋅m mmestnen
-dashboard-top-banner-lets-keep-protecting-cta = Ad nkemmel
 dashboard-top-banner-protect-your-data-title = Aha ad nemmesten isefka-k
 dashboard-top-banner-protect-your-data-cta = Ṣeggem-it
 dashboard-top-banner-no-exposures-found-title = Ulac tirewliwin i yettwafen
