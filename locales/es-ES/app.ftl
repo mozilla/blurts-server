@@ -23,6 +23,7 @@
 -brand-relay = Firefox Relay
 -brand-mozilla-monitor = Mozilla Monitor
 -brand-monitor-plus = Monitor Plus
+-brand-solo-ai = Solo AI
 
 ##
 
@@ -38,6 +39,12 @@ user-verify-token-error = Se requiere un token de verificación.
 compromised-data = Datos comprometidos:
 # Link title
 more-about-this-breach = Más sobre esta filtración
+sensitive-sites = ¿Cómo trata { -product-name } los sitios sensibles?
+sensitive-sites-copy =
+    { -product-name } solo revela las cuentas asociadas con estos
+    tipos de filtraciones una vez que se ha verificado la dirección de correo electrónico. Esto significa que eres la
+    única persona que puede ver si tu información estuvo expuesta (a menos que alguien
+    más también tenga acceso a tu cuenta de correo electrónico).
 what-data = Qué información se filtró:
 delayed-reporting-headline = ¿Por qué se tardó tanto en informar de esta filtración?
 delayed-reporting-copy =
@@ -46,6 +53,8 @@ delayed-reporting-copy =
 
 ##
 
+what-is-a-website-breach = ¿Qué es una filtración web?
+website-breach-blurb = Una filtración web se da cuando los criminales informáticos roban, copian o exponen información personal de cuentas digitales. Suelen ser el resultado de piratas informáticos que encuentran puntos débiles en la seguridad de esas páginas, aunque también puede ser que se filtre información de la cuenta por accidente.
 # This is a section headline on the breach detail page that appears above
 # a short summary about the breach.
 breach-overview-title = Visión general
