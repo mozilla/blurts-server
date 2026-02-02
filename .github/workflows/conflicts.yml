@@ -5,6 +5,8 @@ permissions: {}
 on:
   pull_request:
     branches: [ main, localization ]
+  merge_group:
+    types: [checks_requested]
 
 jobs:
   detect-unresolved-conflicts:
