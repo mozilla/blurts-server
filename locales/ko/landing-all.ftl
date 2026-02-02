@@ -12,6 +12,9 @@ landing-all-hero-emailform-submit-sign-up-label = 무료 검사를 받으려면 
 # This is a label underneath a big number "14" - it's an image that demos Monitor.
 landing-all-hero-image-chart-label = 노출
 
+## Top navbar
+
+
 # Value Proposition
 
 landing-all-value-prop-fix-exposures = 노출을 수정하는 데 도움을 드리겠습니다.

@@ -12,6 +12,13 @@ landing-all-hero-emailform-submit-sign-up-label = Prijavite se za brezplačno sk
 # This is a label underneath a big number "14" - it's an image that demos Monitor.
 landing-all-hero-image-chart-label = izpostavljenosti
 
+## Top navbar
+
+landing-all-hero-navbar-link-how-it-works = Kako deluje
+landing-all-hero-navbar-link-pricing = Cenik
+landing-all-hero-navbar-link-faqs = Pogosta vprašanja
+landing-all-hero-navbar-link-recent-breaches = Nedavne kraje podatkov
+
 # Value Proposition
 
 landing-all-value-prop-fix-exposures = Pomagali vam bomo odpraviti izpostavljenost

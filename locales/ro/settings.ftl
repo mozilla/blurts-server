@@ -18,34 +18,27 @@ settings-alert-preferences-option-two = Trimite toate alertele pentru încălcă
 
 ## Monitored email addresses
 
-# Variables:
-#   $email (string) - Email address
-settings-email-list-title = Adrese de e-mail monitorizate
-# Variables:
-#   $limit (number) - Number of email addresses included in the plan
-settings-email-limit-info =
-    { $limit ->
-        [one] Contul tău include monitorizarea a până la { $limit } adresă de e-mail.
-        [few] Contul tău include monitorizarea a până la { $limit } adrese de e-mail.
-       *[other] Contul tău include monitorizarea a până la { $limit } de adrese de e-mail.
-    }
 settings-email-verification-callout = Necesită verificarea adresei de e-mail
-settings-resend-email-verification-link = Retrimite  mesajul de verificare pe e-mail
-settings-add-email-button = Adaugă adresa de e-mail
-settings-remove-email-button-label = Elimină
+settings-email-addresses-header = Adrese de e-mail
+settings-email-addresses-description = { -brand-monitor } te va alerta dacă aceste adrese de e-mail apar în încălcări cunoscute ale securității datelor.
+settings-email-addresses-add-email-button = Adaugă o adresă de e-mail
 # Variables:
-#   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
-settings-remove-email-button-tooltip = Oprește monitorizarea { $emailAddress }
-# This string is shown beneath each of the user’s email addresses to indicate
-# how many known breaches that email address was found in.
+#   $limit (number) - Number of emails that can be added for monitoring.
+settings-email-addresses-add-email-indicator-limit = Adaugă până la { $limit }
+settings-email-addresses-add-email-resend-button-label = Retrimite linkul de verificare
+input-error-alt = Eroare
+
+## Email address dialog
+
+settings-email-addresses-initial-dialog-header = Adaugă o adresă de e-mail
+settings-email-addresses-initial-dialog-description = Îți vom trimite un link de verificare pentru a confirma că vrei să îl incluzi într-o scanare viitoare cu { -brand-monitor }.
+settings-email-addresses-initial-dialog-add-email-input-label = Introdu adresa de e-mail
+settings-email-addresses-initial-dialog-add-email-button-label = Trimite linkul de verificare
 # Variables:
-#   $breachCount (number) - Number of breaches
-settings-email-number-of-breaches-info =
-    { $breachCount ->
-        [one] Apare în { $breachCount } încălcare cunoscută a securității datelor.
-        [few] Apare în { $breachCount } încălcări cunoscute ale securității datelor.
-       *[other] Apare în { $breachCount } de încălcări cunoscute ale securității datelor.
-    }
+#   $email (string) - Email address the confirmation has been sent to.
+settings-email-addresses-confirmation-dialog-header = Link de verificare trimis la <b>{ $email }</b>
+settings-email-addresses-confirmation-dialog-description = Deschide linkul pentru adăugare la acest cont pentru scanări { -brand-monitor } viitoare.
+settings-email-addresses-confirmation-dialog-close-button = Închide
 
 ## Delete Monitor account
 
@@ -59,13 +52,10 @@ settings-delete-monitor-free-account-dialog-cancel-button-label = Nu mai conteaz
 settings-delete-monitor-account-confirmation-toast-label-2 = Contul tău { -brand-monitor } este șters acum.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Respinge
 
-## Monthly Monitor Report
-
-settings-alert-preferences-allow-monthly-monitor-report-title = Raport lunar { -brand-monitor }
-settings-alert-preferences-allow-monthly-monitor-report-subtitle = O actualizare lunară cu expuneri noi, ce s-a rezolvat și ce necesită atenția ta.
-
 ## Settings page redesign
 
+# Label for a navigation bar link to settings for updating the users scan profile info – “update” is used as a verb.
+settings-tab-label-update-scan-info = Actualizează informațiile de scanare
 settings-tab-label-edit-info = Editează-ți informațiile
 settings-tab-label-notifications = Setează notificările
 settings-tab-label-manage-account = Gestionează contul

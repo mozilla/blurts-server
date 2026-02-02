@@ -18,24 +18,27 @@ settings-alert-preferences-option-two = 向主邮箱地址发送所有数据外�
 
 ## Monitored email addresses
 
-# Variables:
-#   $email (string) - Email address
-settings-email-list-title = 受监控的邮箱地址
-# Variables:
-#   $limit (number) - Number of email addresses included in the plan
-settings-email-limit-info = 您的账户最多可对 { $limit } 个邮箱进行监控。
 settings-email-verification-callout = 需要电子邮件验证
-settings-resend-email-verification-link = 重发验证邮件
-settings-add-email-button = 添加邮箱地址
-settings-remove-email-button-label = 移除
+settings-email-addresses-header = 邮箱地址
+settings-email-addresses-description = 若这些邮箱地址出现在已知的外泄事件中，{ -brand-monitor } 将向您发出警报。
+settings-email-addresses-add-email-button = 添加邮箱地址
 # Variables:
-#   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
-settings-remove-email-button-tooltip = 停止监控 { $emailAddress }
-# This string is shown beneath each of the user’s email addresses to indicate
-# how many known breaches that email address was found in.
+#   $limit (number) - Number of emails that can be added for monitoring.
+settings-email-addresses-add-email-indicator-limit = 最多可添加 { $limit } 个
+settings-email-addresses-add-email-resend-button-label = 重发验证链接
+input-error-alt = 错误
+
+## Email address dialog
+
+settings-email-addresses-initial-dialog-header = 添加邮箱地址
+settings-email-addresses-initial-dialog-description = 我们将向您发送验证链接，以确认您希望 { -brand-monitor } 以后扫描此邮箱地址。
+settings-email-addresses-initial-dialog-add-email-input-label = 请输入邮箱地址
+settings-email-addresses-initial-dialog-add-email-button-label = 发送验证链接
 # Variables:
-#   $breachCount (number) - Number of breaches
-settings-email-number-of-breaches-info = 出现在 { $breachCount } 次已知的外泄事件中。
+#   $email (string) - Email address the confirmation has been sent to.
+settings-email-addresses-confirmation-dialog-header = 验证链接已发送到 <b>{ $email }</b>
+settings-email-addresses-confirmation-dialog-description = 打开链接即可将该邮箱地址添加到此账户，将来让 { -brand-monitor } 对其进行扫描。
+settings-email-addresses-confirmation-dialog-close-button = 关闭
 
 ## Delete Monitor account
 
@@ -49,13 +52,10 @@ settings-delete-monitor-free-account-dialog-cancel-button-label = 我再想想
 settings-delete-monitor-account-confirmation-toast-label-2 = 您的 { -brand-monitor } 账户已被删除。
 settings-delete-monitor-account-confirmation-toast-dismiss-label = 知道了
 
-## Monthly Monitor Report
-
-settings-alert-preferences-allow-monthly-monitor-report-title = { -brand-monitor } 月报
-settings-alert-preferences-allow-monthly-monitor-report-subtitle = 每月情况汇总，包括新发生的暴露、已处理的问题、需关注的事项。
-
 ## Settings page redesign
 
+# Label for a navigation bar link to settings for updating the users scan profile info – “update” is used as a verb.
+settings-tab-label-update-scan-info = 更新扫描信息
 settings-tab-label-edit-info = 编辑您的信息
 settings-tab-label-notifications = 设置通知
 settings-tab-label-manage-account = 管理账户
