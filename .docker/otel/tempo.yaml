@@ -11,5 +11,7 @@ distributor:
 storage:
   trace:
     backend: local
+    wal:
+      path: ${TEMPO_WAL_PATH:-/tmp/tempo/wal}
     local:
-      path: /tmp/tempo/traces
+      path: ${TEMPO_TRACES_PATH:-/tmp/tempo/traces}

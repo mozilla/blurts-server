@@ -84,7 +84,7 @@ This will automatically provision the databases 'blurts' and 'test-blurts', and 
 2. Start docker containers (this will stand up all services defined, including pubsub)
 
    ```sh
-   docker compose --env-file .env.local up -d
+   docker compose --env-file .env.local up --detach
    ```
 
 3. To tear down (this will delete stored data):
