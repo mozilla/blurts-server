@@ -4,16 +4,16 @@
 Migrate from Jest to Vitest for better ES Module support and more active maintenance. Gradual migration maintaining test success throughout.
 
 ## Phase 1: Setup Vitest alongside Jest
-- [ ] Install Vitest dependencies
+- [x] Install Vitest dependencies
   ```bash
   npm install -D vitest @vitejs/plugin-react jsdom @testing-library/react @testing-library/dom vite-tsconfig-paths @vitest/ui @vitest/coverage-v8
   ```
-- [ ] Create minimal `vitest.config.ts` with basic Next.js-compatible setup
+- [x] Create minimal `vitest.config.ts` with basic Next.js-compatible setup
   - Start with essential configuration only (jsdom, coverage, test patterns)
   - Use `vite-tsconfig-paths` for path resolution
   - Add more advanced config as needed during migration
-- [ ] Add parallel scripts to package.json (`test:vitest`, `test-integrations:vitest`)
-- [ ] Keep existing Jest scripts functional
+- [x] Add parallel scripts to package.json (`test:vitest`, `test-integrations:vitest`)
+- [x] Keep existing Jest scripts functional
 
 ## Phase 2: Create test utilities
 - [ ] Create minimal `vitest.setup.ts` replacing essential Jest globals
