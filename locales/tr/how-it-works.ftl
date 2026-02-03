@@ -16,6 +16,7 @@ how-it-works-page-data-breaches-intro-cta-button = Ücretsiz taramayı başlat
 
 how-it-works-page-data-breaches-step-1-title = 1. Adım
 how-it-works-page-data-breaches-step-1-subtitle = İhlalleri tarıyoruz
+how-it-works-page-data-breaches-step-1-text = E-posta adresinizi kullanarak bilinen tüm veri ihlallerinde sizi arıyoruz. Tüm aboneler 5 e-posta adresini ücretsiz olarak takip edebilir.
 
 ## Step 2
 

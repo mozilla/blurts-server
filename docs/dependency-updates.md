@@ -244,7 +244,7 @@ Used to compile cronjob scripts. You can test this by running
 ### `tsx`
 
 Used to run cronjobs locally and compile them on the fly. You can verify this by
-running a cronjob like `npm run dev:cron:monthly-activity-plus`; if the cronjobs run
+running a cronjob like `npm run dev:cron:db-delete-unverified-subscribers`; if the cronjobs run
 like in `main`, it's still working.
 
 ### `yaml`

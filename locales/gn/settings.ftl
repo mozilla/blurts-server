@@ -19,6 +19,21 @@ settings-alert-preferences-option-two = Emondopaite kyhyjerã ñembogua ñanduti
 ## Monitored email addresses
 
 settings-email-verification-callout = Ñanduti veve jehechajey jerurepyre
+settings-remove-email-button-label = Mboguete
+settings-email-addresses-header = Ñanduti veve kundaharape
+settings-email-addresses-add-email-button = Embojuaju ñanduti veve kundaharape
+# Variables:
+#   $limit (number) - Number of emails that can be added for monitoring.
+settings-email-addresses-add-email-indicator-limit = Embojuaju { $limit } peve
+settings-email-addresses-add-email-resend-button-label = Emondo juajuha jehechajeyrã
+input-error-alt = Javy
+
+## Email address dialog
+
+settings-email-addresses-initial-dialog-header = Embojuaju ñanduti veve kundaharape
+settings-email-addresses-initial-dialog-add-email-input-label = Ehai ñandutiveve kundaharape
+settings-email-addresses-initial-dialog-add-email-button-label = Emondo juajuha jehechajeyrã
+settings-email-addresses-confirmation-dialog-close-button = Mboty
 
 ## Delete Monitor account
 
@@ -34,6 +49,8 @@ settings-delete-monitor-account-confirmation-toast-dismiss-label = Mboyke
 
 ## Settings page redesign
 
+# Label for a navigation bar link to settings for updating the users scan profile info – “update” is used as a verb.
+settings-tab-label-update-scan-info = Embohekopyahu ñemoha’ãnga marandu
 settings-tab-label-edit-info = Embosako’i ne marandu
 settings-tab-label-notifications = Emboheko momarandu
 settings-tab-label-manage-account = Eñangareko mba’etére
