@@ -19,7 +19,6 @@ import {
   ParentBasedSampler,
   SimpleSpanProcessor,
 } from "@opentelemetry/sdk-trace-node";
-import { KnexInstrumentation } from "@opentelemetry/instrumentation-knex";
 import { ATTR_SERVICE_NAME } from "@opentelemetry/semantic-conventions";
 import {
   Attributes,
@@ -158,8 +157,6 @@ export async function nodeSDKBuilder() {
           enabled: true,
         },
       }),
-      // Additional instrumentations
-      new KnexInstrumentation(),
     ],
   });
   sdk.start();
