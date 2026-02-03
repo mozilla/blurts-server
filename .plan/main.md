@@ -15,40 +15,29 @@ Migrate from Jest to Vitest for better ES Module support and more active mainten
 - [x] Add parallel scripts to package.json (`test:vitest`, `test-integrations:vitest`)
 - [x] Keep existing Jest scripts functional
 
-## Phase 2: Create test utilities
-- [ ] Create minimal `vitest.setup.ts` replacing essential Jest globals
-  - Start with basic @testing-library imports and global setup
-  - Add complex setups (canvas, intersection observer, etc.) only as tests require them
-- [ ] Add Storybook integration incrementally as component tests are migrated
-- [ ] Setup console failure utilities (replace jest-fail-on-console) when needed
-- [ ] Implement mocking utilities as migration progresses:
-  - [ ] Intersection Observer mocking for Next.js Links
-  - [ ] Canvas mocking with Vitest native mocking
-  - [ ] Accessibility testing setup (jest-axe equivalent)
-  - [ ] Module mocking helpers
-
-## Phase 3: Gradual file migration
+## Phase 2: Gradual file migration (with utilities added as needed)
 ### Strategy: `.test.ts` → `.vitest.ts` during migration
+Add utilities incrementally as tests require them (mocking, Storybook integration, console failure utilities, etc.)
 
-#### 3.1: Utility functions (low risk)
+#### 2.1: Utility functions (low risk)
 - [ ] `src/app/functions/universal/*.test.ts` → `.vitest.ts`
 - [ ] `src/config.test.ts` → `config.vitest.ts`
 
-#### 3.2: Pure components (medium risk)
+#### 2.2: Pure components (medium risk)
 - [ ] `src/app/components/client/Button.test.tsx` → `.vitest.tsx`
 - [ ] `src/app/components/client/InputField.test.tsx` → `.vitest.tsx`
 - [ ] `src/app/components/server/BreachLogo.test.tsx` → `.vitest.tsx`
 
-#### 3.3: Complex components (higher risk)
+#### 2.3: Complex components (higher risk)
 - [ ] Dashboard components
 - [ ] Authentication components
 - [ ] Email templates
 
-#### 3.4: Integration tests (highest risk)
+#### 2.4: Integration tests (highest risk)
 - [ ] `src/db/models/*.integration.ts` → `.vitest.ts`
 - [ ] `src/db/tables/*.integration.ts` → `.vitest.ts`
 
-## Phase 4: Cleanup
+## Phase 3: Cleanup
 - [ ] Verify all tests migrated and passing
 - [ ] Remove Jest dependencies (`jest`, `jest-*`, `@testing-library/jest-dom`, etc.)
 - [ ] Rename all `.vitest.*` → `.test.*`
@@ -58,25 +47,22 @@ Migrate from Jest to Vitest for better ES Module support and more active mainten
 - [ ] Remove `__mocks__` directory if no longer needed
 
 ## Configuration Strategy
-**Start minimal, grow incrementally:**
+**Start minimal, grow incrementally during migration:**
 
-### Initial vitest.config.ts
-- Basic test environment (jsdom)
-- Essential coverage settings
-- Test file patterns
-- TypeScript path resolution
-
-### Initial vitest.setup.ts
-- Core @testing-library imports
-- Basic globals (TextEncoder, etc.)
-- Environment variables
+### ✅ Current minimal setup
+- [x] Basic test environment (jsdom)
+- [x] Essential coverage settings
+- [x] Test file patterns for `.vitest.{ts,tsx}` files
+- [x] TypeScript path resolution
+- [x] Core @testing-library imports and globals
 
 ### Add as needed during migration
-- Complex mocking (canvas, IntersectionObserver)
-- Storybook integration
-- Console failure utilities
-- Advanced coverage exclusions
-- Module name mappings
+- Complex mocking (canvas, IntersectionObserver) when component tests require them
+- Storybook integration when migrating component tests
+- Console failure utilities (jest-fail-on-console replacement) when tests fail due to console logs
+- Advanced coverage exclusions as needed
+- Module name mappings (uuid, react-dom/server) when import errors occur
+- Accessibility testing setup (jest-axe equivalent) when a11y tests are migrated
 
 ## Timeline
 **Estimated**: 2-3 weeks
