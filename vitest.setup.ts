@@ -9,15 +9,3 @@ import { TextEncoder, TextDecoder } from 'util';
 
 // Extend Vitest's expect with jest-dom matchers
 expect.extend(matchers);
-
-// Global polyfills
-global.TextEncoder = TextEncoder as typeof global.TextEncoder;
-if (typeof global.TextDecoder === 'undefined') {
-  global.TextDecoder = TextDecoder as typeof global.TextDecoder;
-}
-
-// Add fetch global for compatibility
-global.fetch = global.fetch || fetch;
-
-// Environment variables for testing
-process.env.PUBSUB_EMULATOR_HOST = "localhost:8085";
