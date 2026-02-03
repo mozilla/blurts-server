@@ -10,7 +10,11 @@ import {
   ConsoleMetricExporter,
   PeriodicExportingMetricReader,
 } from "@opentelemetry/sdk-metrics";
-import { resourceFromAttributes } from "@opentelemetry/resources";
+import {
+  envDetector,
+  processDetector,
+  resourceFromAttributes,
+} from "@opentelemetry/resources";
 import { NodeSDK } from "@opentelemetry/sdk-node";
 import {
   AlwaysOnSampler,
@@ -61,6 +65,15 @@ export async function nodeSDKBuilder() {
       collectorUrl?.includes("127.0.0.1"));
 
   const sentryClient = Sentry.getClient();
+
+  // All required resources are injected through env vars
+  // in cloud deployment, but locally we can use detectors
+  // The host detector has a known issue with async attributes
+  // and isn't super important
+  // https://github.com/open-telemetry/opentelemetry-js/issues/4638
+  const resourceDetectors = isLocalCollector
+    ? [processDetector, envDetector]
+    : undefined;
 
   if (sentryClient) {
     // https://github.com/getsentry/sentry-javascript/tree/develop/packages/opentelemetry
@@ -118,6 +131,10 @@ export async function nodeSDKBuilder() {
     // Ensure the correct subset of traces is sent to Sentry
     // This also ensures trace propagation works as expected
     sampler,
+    // Kuberenetes infrastructure automatically injects
+    // required resources through environment variables
+    autoDetectResources: isLocalCollector ? true : false,
+    resourceDetectors,
     instrumentations: [
       getNodeAutoInstrumentations({
         "@opentelemetry/instrumentation-fs": {
