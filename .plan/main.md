@@ -23,6 +23,7 @@ Add utilities incrementally as tests require them (mocking, Storybook integratio
 - [x] `src/config.test.ts` → `config.vitest.ts`
 - [x] `src/scripts/cronjobs/emailBreachAlerts/emailBreachAlerts.test.ts` → `.vitest.ts`
 - [x] `src/app/functions/l10n/parseMarkup.test.ts` → `.vitest.ts`
+- [x] `src/scripts/cronjobs/emailBreachAlerts/subscriptionHandler.test.ts` → `.vitest.ts`
 - [ ] `src/app/functions/universal/*.test.ts` → `.vitest.ts`
 
 #### 2.2: Pure components (medium risk)
@@ -74,7 +75,8 @@ Add utilities incrementally as tests require them (mocking, Storybook integratio
 
 ## Notes
 - Maintain 100% test coverage throughout
-- Use Vitest native mocking system
+- Use Vitest native mocking system (`vi.fn()`, `vi.spyOn()`, etc.)
+- Use specific TypeScript types instead of `any` (e.g., `MockedFunction<T>` instead of `jest.SpyInstance<any, any>`)
 - Keep same test capabilities with potentially different approaches
 - All tests must pass during intermediate steps
 - Draw inspiration from Jest config but implement incrementally

@@ -2,6 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import { describe, it, expect, beforeEach, afterAll, vi, type MockedFunction } from 'vitest';
 import type { Logger } from "winston";
 import { MockProcess } from "../../../test/helpers/mockProcess";
 import { mockMessage, MockSubscription } from "../../../test/helpers/pubsub";
@@ -14,16 +15,16 @@ describe("SubscriptionHandler", () => {
   let logger: Logger;
   let sub: MockSubscription;
   let proc: MockProcess;
-  let subCloseSpy: jest.SpyInstance<void, []>;
+  let subCloseSpy: MockedFunction<() => void>;
 
   beforeEach(() => {
     logger = mockLogger();
-    subCloseSpy = jest.spyOn(MockSubscription.prototype, "close");
+    subCloseSpy = vi.spyOn(MockSubscription.prototype, "close");
     sub = new MockSubscription();
     proc = new MockProcess();
   });
 
-  afterAll(() => jest.restoreAllMocks());
+  afterAll(() => vi.restoreAllMocks());
 
   function startHandler(messageFn: (m: Message) => Promise<MessageSummary>) {
     return new SubscriptionHandler({
@@ -95,7 +96,7 @@ describe("SubscriptionHandler", () => {
   it.each(["SIGTERM" as const, "SIGINT" as const])(
     "%s: when draining, it nacks and does not call messageFn if a message event is received",
     async (signal) => {
-      const handlerSpy = jest.fn().mockResolvedValue({
+      const handlerSpy: MockedFunction<(m: Message) => Promise<MessageSummary>> = vi.fn().mockResolvedValue({
         success: true,
         errors: 0,
         notified: 0,
@@ -120,7 +121,7 @@ describe("SubscriptionHandler", () => {
   it.each(["SIGTERM" as const, "SIGINT" as const])(
     "%s: when draining, it closes the subscription",
     async (signal) => {
-      const handlerSpy = jest.fn().mockResolvedValue({
+      const handlerSpy: MockedFunction<(m: Message) => Promise<MessageSummary>> = vi.fn().mockResolvedValue({
         success: true,
         errors: 0,
         notified: 0,
