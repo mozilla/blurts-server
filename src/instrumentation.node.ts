@@ -24,14 +24,7 @@ import {
   SimpleSpanProcessor,
 } from "@opentelemetry/sdk-trace-node";
 import { ATTR_SERVICE_NAME } from "@opentelemetry/semantic-conventions";
-import {
-  Attributes,
-  Counter,
-  diag,
-  DiagConsoleLogger,
-  DiagLogLevel,
-  metrics,
-} from "@opentelemetry/api";
+import { diag, DiagConsoleLogger, DiagLogLevel } from "@opentelemetry/api";
 import { getNodeAutoInstrumentations } from "@opentelemetry/auto-instrumentations-node";
 import {
   SentryPropagator,
@@ -171,58 +164,4 @@ export async function nodeSDKBuilder() {
   console.log("[INSTRUMENTATION] Validating otel setup with sentry");
   Sentry.validateOpenTelemetrySetup();
   console.log("[INSTRUMENTATION] Otel setup is valid");
-}
-
-type MetricsState = {
-  hibpNotifyRequestsTotal: Counter<Attributes>;
-  hibpNotifyRequestFailuresTotal: Counter<Attributes>;
-};
-
-let metricsState: MetricsState | undefined;
-
-// NOTE: OTEL must be initialized before calling any metrics
-// or else it will be a No-Op metric
-export function getOrInitMetrics(): MetricsState {
-  // Return cached state
-  if (metricsState !== undefined) return metricsState;
-  // Get the pre-registered metrics provider
-  // Will be a no-op if otel has not been initialized
-  const meter = metrics.getMeter(appConfig.otel.serviceName);
-  const hibpNotifyRequestsTotal = meter.createCounter(
-    "hibp_notify_requests_total",
-    {
-      description: "Number of requests from HIBP notifying of breaches",
-    },
-  );
-
-  const hibpNotifyRequestFailuresTotal = meter.createCounter(
-    "hibp_notify_request_failures_total",
-    { description: "Number of failed requests on HIBP notify endpoint" },
-  );
-
-  const state: MetricsState = {
-    hibpNotifyRequestFailuresTotal,
-    hibpNotifyRequestsTotal,
-  };
-  return state;
-}
-
-export type HibpNotifyFailureError =
-  | "server-error"
-  | "pubsub-error"
-  | "bad-request"
-  | "rate-limited"
-  | "unauthorized"
-  | "invalid-config";
-
-/**
- * Increment HIBP notify failure metric
- */
-export function incHibpNotifyFailure(error: HibpNotifyFailureError, by = 1) {
-  getOrInitMetrics().hibpNotifyRequestFailuresTotal.add(by, { error });
-}
-
-/** Increment HIBP notify total count metric */
-export function incHibpNotifyRequest(by = 1) {
-  getOrInitMetrics().hibpNotifyRequestsTotal.add(by);
 }

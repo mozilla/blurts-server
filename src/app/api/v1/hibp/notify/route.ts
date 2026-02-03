@@ -19,7 +19,7 @@ import { config } from "../../../../../config";
 import {
   incHibpNotifyRequest,
   incHibpNotifyFailure,
-} from "../../../../../instrumentation.node";
+} from "../../../../../utils/metrics";
 
 export type PostHibpNotificationRequestBody = {
   breachName: string;
