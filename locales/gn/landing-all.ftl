@@ -14,6 +14,10 @@ landing-all-hero-image-chart-label = ejehechauka
 
 ## Top navbar
 
+landing-all-hero-navbar-link-how-it-works = Mba’éichapa omba’apo
+landing-all-hero-navbar-link-pricing = Tepy
+landing-all-hero-navbar-link-faqs = FAQs
+landing-all-hero-navbar-link-recent-breaches = Mba’ekuaarã ñembogua pyahu
 
 # Value Proposition
 

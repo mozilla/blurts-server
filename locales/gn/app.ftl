@@ -23,6 +23,7 @@
 -brand-relay = Firefox Relay
 -brand-mozilla-monitor = Mozilla Monitor
 -brand-monitor-plus = Monitor Plus
+-brand-solo-ai = AI añoite
 
 ##
 
@@ -38,12 +39,15 @@ user-verify-token-error = Oñekotevẽ token jehechajeyrã.
 compromised-data = Mba’ekuaarã ivaikuaáva:
 # Link title
 more-about-this-breach = Eikuaave ñembyai rehegua
+sensitive-sites = ¿Mba’e ojapo { -product-name } umi tenda ikangývare?
 what-data = Mba’ete mba’ekuaarã ivaikuaa:
 delayed-reporting-headline = Mba’ére eha’ãrõiterei ñembyai ñemomarandu
 delayed-reporting-copy = Ikatu oraha heta jasy térã ary umi credencial ojehechakuaáva rehegua mba’ekuaarã ñembyaíva osẽkuaáva ñanduti ypytũme. Umi ñembyai ojuajúta ñane mba’ekuaarã rendápe pya’ete ojejuhu térã ojehechajey rire.
 
 ##
 
+what-is-a-website-breach = ¿Mba’e ñanduti ñembogua?
+website-breach-blurb = Peteĩ ñanduti ñembogua oiko umi hekovaíva ñadutípe omondáramo, ombokuatia térã ohechaukáramo maranduete ñandutigua. Kóva oiko hekovaíva ñadutípe ojuhúramo nahekorosãiha heta kuatiarogue, ikatu avei oñembogua marandu mba’etégui eheka’ỹre.
 # This is a section headline on the breach detail page that appears above
 # a short summary about the breach.
 breach-overview-title = Jehechapa

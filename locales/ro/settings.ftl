@@ -19,6 +19,7 @@ settings-alert-preferences-option-two = Trimite toate alertele pentru încălcă
 ## Monitored email addresses
 
 settings-email-verification-callout = Necesită verificarea adresei de e-mail
+settings-remove-email-button-label = Elimină
 settings-email-addresses-header = Adrese de e-mail
 settings-email-addresses-description = { -brand-monitor } te va alerta dacă aceste adrese de e-mail apar în încălcări cunoscute ale securității datelor.
 settings-email-addresses-add-email-button = Adaugă o adresă de e-mail
