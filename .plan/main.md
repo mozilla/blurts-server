@@ -6,20 +6,26 @@ Migrate from Jest to Vitest for better ES Module support and more active mainten
 ## Phase 1: Setup Vitest alongside Jest
 - [ ] Install Vitest dependencies
   ```bash
-  npm install -D vitest @vitest/ui @vitest/coverage-v8 jsdom
+  npm install -D vitest @vitejs/plugin-react jsdom @testing-library/react @testing-library/dom vite-tsconfig-paths @vitest/ui @vitest/coverage-v8
   ```
-- [ ] Create `vitest.config.ts` with Next.js-compatible setup
+- [ ] Create minimal `vitest.config.ts` with basic Next.js-compatible setup
+  - Start with essential configuration only (jsdom, coverage, test patterns)
+  - Use `vite-tsconfig-paths` for path resolution
+  - Add more advanced config as needed during migration
 - [ ] Add parallel scripts to package.json (`test:vitest`, `test-integrations:vitest`)
 - [ ] Keep existing Jest scripts functional
 
 ## Phase 2: Create test utilities
-- [ ] Create `vitest.setup.ts` replacing Jest globals
-- [ ] Migrate Storybook integration to Vitest
-- [ ] Setup console failure utilities (replace jest-fail-on-console)
-- [ ] Implement Intersection Observer mocking for Next.js Links
-- [ ] Setup canvas mocking with Vitest native mocking
-- [ ] Create accessibility testing setup (jest-axe equivalent)
-- [ ] Setup module mocking helpers
+- [ ] Create minimal `vitest.setup.ts` replacing essential Jest globals
+  - Start with basic @testing-library imports and global setup
+  - Add complex setups (canvas, intersection observer, etc.) only as tests require them
+- [ ] Add Storybook integration incrementally as component tests are migrated
+- [ ] Setup console failure utilities (replace jest-fail-on-console) when needed
+- [ ] Implement mocking utilities as migration progresses:
+  - [ ] Intersection Observer mocking for Next.js Links
+  - [ ] Canvas mocking with Vitest native mocking
+  - [ ] Accessibility testing setup (jest-axe equivalent)
+  - [ ] Module mocking helpers
 
 ## Phase 3: Gradual file migration
 ### Strategy: `.test.ts` → `.vitest.ts` during migration
@@ -51,6 +57,27 @@ Migrate from Jest to Vitest for better ES Module support and more active mainten
 - [ ] Remove `jest.config.cjs` and `jest.setup.ts`
 - [ ] Remove `__mocks__` directory if no longer needed
 
+## Configuration Strategy
+**Start minimal, grow incrementally:**
+
+### Initial vitest.config.ts
+- Basic test environment (jsdom)
+- Essential coverage settings
+- Test file patterns
+- TypeScript path resolution
+
+### Initial vitest.setup.ts
+- Core @testing-library imports
+- Basic globals (TextEncoder, etc.)
+- Environment variables
+
+### Add as needed during migration
+- Complex mocking (canvas, IntersectionObserver)
+- Storybook integration
+- Console failure utilities
+- Advanced coverage exclusions
+- Module name mappings
+
 ## Timeline
 **Estimated**: 2-3 weeks
 
@@ -59,3 +86,5 @@ Migrate from Jest to Vitest for better ES Module support and more active mainten
 - Use Vitest native mocking system
 - Keep same test capabilities with potentially different approaches
 - All tests must pass during intermediate steps
+- Draw inspiration from Jest config but implement incrementally
+- Only add configuration complexity as tests require it
