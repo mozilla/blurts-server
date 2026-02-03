@@ -22,6 +22,7 @@ Add utilities incrementally as tests require them (mocking, Storybook integratio
 #### 2.1: Utility functions (low risk)
 - [x] `src/config.test.ts` → `config.vitest.ts`
 - [x] `src/scripts/cronjobs/emailBreachAlerts/emailBreachAlerts.test.ts` → `.vitest.ts`
+- [x] `src/app/functions/l10n/parseMarkup.test.ts` → `.vitest.ts`
 - [ ] `src/app/functions/universal/*.test.ts` → `.vitest.ts`
 
 #### 2.2: Pure components (medium risk)
