@@ -20,8 +20,9 @@ Migrate from Jest to Vitest for better ES Module support and more active mainten
 Add utilities incrementally as tests require them (mocking, Storybook integration, console failure utilities, etc.)
 
 #### 2.1: Utility functions (low risk)
+- [x] `src/config.test.ts` → `config.vitest.ts`
+- [x] `src/scripts/cronjobs/emailBreachAlerts/emailBreachAlerts.test.ts` → `.vitest.ts`
 - [ ] `src/app/functions/universal/*.test.ts` → `.vitest.ts`
-- [ ] `src/config.test.ts` → `config.vitest.ts`
 
 #### 2.2: Pure components (medium risk)
 - [ ] `src/app/components/client/Button.test.tsx` → `.vitest.tsx`
@@ -40,6 +41,7 @@ Add utilities incrementally as tests require them (mocking, Storybook integratio
 ## Phase 3: Cleanup
 - [ ] Verify all tests migrated and passing
 - [ ] Remove Jest dependencies (`jest`, `jest-*`, `@testing-library/jest-dom`, etc.)
+- [ ] Remove Jest/Vitest compatibility checks in test helpers (`mockLogger.ts`, `pubsub.ts`)
 - [ ] Rename all `.vitest.*` → `.test.*`
 - [ ] Update package.json scripts (`test:vitest` → `test`)
 - [ ] Update CI configuration
@@ -55,6 +57,8 @@ Add utilities incrementally as tests require them (mocking, Storybook integratio
 - [x] Test file patterns for `.vitest.{ts,tsx}` files
 - [x] TypeScript path resolution
 - [x] Core @testing-library imports and globals
+- [x] Automatic mock clearing/restoration (`clearMocks: true`, `restoreMocks: true`)
+- [x] Node.js environment override support for server-side tests
 
 ### Add as needed during migration
 - Complex mocking (canvas, IntersectionObserver) when component tests require them

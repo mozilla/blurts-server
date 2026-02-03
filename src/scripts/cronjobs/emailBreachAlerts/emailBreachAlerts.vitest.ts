@@ -2,7 +2,12 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+/**
+ * @vitest-environment node
+ */
+
 import type { Logger } from "winston";
+import { vi, describe, it, beforeEach, afterAll, expect } from "vitest";
 import * as Sentry from "@sentry/node";
 import { mockLogger } from "../../../test/helpers/mockLogger";
 import { mockMessage } from "../../../test/helpers/pubsub";
@@ -30,17 +35,23 @@ const validBreachDefaults: Partial<HibpLikeDbBreach> = {
   Domain: "http://example.com",
 };
 
+vi.mock("@sentry/node", async (importOriginal) => {
+  const actual: typeof Sentry = await importOriginal();
+  return {
+    ...actual,
+    addBreadcrumb: vi.fn(),
+    setTag: vi.fn(),
+  };
+});
+
 describe("breachMessageHandler", () => {
   let logger: Logger;
-  const breadcrumbSpy = jest.spyOn(Sentry, "addBreadcrumb").mockReturnValue();
-  const setTagSpy = jest.spyOn(Sentry, "setTag").mockReturnValue();
-  const breachSpy = jest.fn();
+  const breadcrumbSpy = vi.mocked(Sentry.addBreadcrumb);
+  const setTagSpy = vi.mocked(Sentry.setTag);
+  const breachSpy = vi.fn();
 
   beforeEach(() => {
     logger = mockLogger() as unknown as Logger;
-  });
-  afterAll(() => {
-    jest.restoreAllMocks();
   });
 
   it("succeeds and notifies only eligible recipients", async () => {
@@ -50,13 +61,13 @@ describe("breachMessageHandler", () => {
     );
     breachSpy.mockResolvedValueOnce(mockBreach(validBreachDefaults));
     // Set up mocked injected dependencies
-    const subs = { findByHashes: jest.fn().mockResolvedValue(recipients) };
+    const subs = { findByHashes: vi.fn().mockResolvedValue(recipients) };
     const notifications = {
-      isSubscriberNotifiedForBreach: jest.fn().mockResolvedValue(false),
-      addEmailNotification: jest.fn().mockResolvedValue(undefined),
-      markEmailAsNotified: jest.fn().mockResolvedValue(undefined),
+      isSubscriberNotifiedForBreach: vi.fn().mockResolvedValue(false),
+      addEmailNotification: vi.fn().mockResolvedValue(undefined),
+      markEmailAsNotified: vi.fn().mockResolvedValue(undefined),
     };
-    const sendEmail = jest.fn().mockResolvedValue(undefined);
+    const sendEmail = vi.fn().mockResolvedValue(undefined);
 
     const message = mockMessage(validMsgPayload);
 
@@ -83,14 +94,14 @@ describe("breachMessageHandler", () => {
     mockBreach({ Name: defaultBreachName, Domain: "" }),
   ])("skips if breach is not notifiable", async (breach) => {
     breachSpy.mockResolvedValueOnce(breach);
-    const subs = { findByHashes: jest.fn() };
+    const subs = { findByHashes: vi.fn() };
     // Doesn't really matter here as it shouldn't reach this far
     const notifications = {
-      isSubscriberNotifiedForBreach: jest.fn().mockResolvedValue(false),
-      addEmailNotification: jest.fn().mockResolvedValue(undefined),
-      markEmailAsNotified: jest.fn().mockResolvedValue(undefined),
+      isSubscriberNotifiedForBreach: vi.fn().mockResolvedValue(false),
+      addEmailNotification: vi.fn().mockResolvedValue(undefined),
+      markEmailAsNotified: vi.fn().mockResolvedValue(undefined),
     };
-    const sendEmail = jest.fn();
+    const sendEmail = vi.fn();
 
     const message = mockMessage(validMsgPayload);
 
@@ -116,17 +127,17 @@ describe("breachMessageHandler", () => {
   it("skips recipients already notified", async () => {
     breachSpy.mockResolvedValueOnce(mockBreach(validBreachDefaults));
     const subs = {
-      findByHashes: jest
+      findByHashes: vi
         .fn()
         .mockResolvedValue([mockSubscriber({ all_emails_to_primary: true })]),
     };
     const notifications = {
       // Already notified
-      isSubscriberNotifiedForBreach: jest.fn().mockResolvedValue(true),
-      addEmailNotification: jest.fn(),
-      markEmailAsNotified: jest.fn(),
+      isSubscriberNotifiedForBreach: vi.fn().mockResolvedValue(true),
+      addEmailNotification: vi.fn(),
+      markEmailAsNotified: vi.fn(),
     };
-    const sendEmail = jest.fn();
+    const sendEmail = vi.fn();
 
     const message = mockMessage(validMsgPayload);
 
@@ -146,17 +157,17 @@ describe("breachMessageHandler", () => {
   it("throws if breach is not in database", async () => {
     breachSpy.mockResolvedValueOnce(undefined);
     const subs = {
-      findByHashes: jest
+      findByHashes: vi
         .fn()
         .mockResolvedValue([mockSubscriber({ all_emails_to_primary: true })]),
     };
     const notifications = {
       // Already notified
-      isSubscriberNotifiedForBreach: jest.fn().mockResolvedValue(true),
-      addEmailNotification: jest.fn(),
-      markEmailAsNotified: jest.fn(),
+      isSubscriberNotifiedForBreach: vi.fn().mockResolvedValue(true),
+      addEmailNotification: vi.fn(),
+      markEmailAsNotified: vi.fn(),
     };
-    const sendEmail = jest.fn();
+    const sendEmail = vi.fn();
 
     const message = mockMessage(validMsgPayload);
 
@@ -177,16 +188,16 @@ describe("breachMessageHandler", () => {
   it("returns success:false when sending fails (and adds breadcrumb)", async () => {
     breachSpy.mockResolvedValueOnce(mockBreach(validBreachDefaults));
     const subs = {
-      findByHashes: jest
+      findByHashes: vi
         .fn()
         .mockResolvedValue([mockSubscriber({ all_emails_to_primary: true })]),
     };
     const notifications = {
-      isSubscriberNotifiedForBreach: jest.fn().mockResolvedValue(false),
-      addEmailNotification: jest.fn().mockResolvedValue(undefined),
-      markEmailAsNotified: jest.fn(),
+      isSubscriberNotifiedForBreach: vi.fn().mockResolvedValue(false),
+      addEmailNotification: vi.fn().mockResolvedValue(undefined),
+      markEmailAsNotified: vi.fn(),
     };
-    const sendEmail = jest.fn().mockRejectedValue(new Error("I'm sorry Dave"));
+    const sendEmail = vi.fn().mockRejectedValue(new Error("I'm sorry Dave"));
 
     const message = mockMessage(validMsgPayload);
 
@@ -221,26 +232,26 @@ describe("breachMessageHandler", () => {
         invalid,
         logger,
         { getBreach: breachSpy } as unknown as BreachDataService,
-        { findByHashes: jest.fn().mockResolvedValue([mockSubscriber()]) },
+        { findByHashes: vi.fn().mockResolvedValue([mockSubscriber()]) },
         {
-          isSubscriberNotifiedForBreach: jest.fn().mockResolvedValue(false),
-          addEmailNotification: jest.fn().mockResolvedValue(undefined),
-          markEmailAsNotified: jest.fn(),
+          isSubscriberNotifiedForBreach: vi.fn().mockResolvedValue(false),
+          addEmailNotification: vi.fn().mockResolvedValue(undefined),
+          markEmailAsNotified: vi.fn(),
         },
-        jest.fn().mockResolvedValue(undefined),
+        vi.fn().mockResolvedValue(undefined),
       ),
     ).rejects.toThrow("Invalid payload");
   });
 
   it("sets the Sentry tag with breachName", async () => {
     breachSpy.mockResolvedValueOnce(mockBreach(validBreachDefaults));
-    const subs = { findByHashes: jest.fn().mockResolvedValue([]) };
+    const subs = { findByHashes: vi.fn().mockResolvedValue([]) };
     const notifications = {
-      isSubscriberNotifiedForBreach: jest.fn(),
-      addEmailNotification: jest.fn(),
-      markEmailAsNotified: jest.fn(),
+      isSubscriberNotifiedForBreach: vi.fn(),
+      addEmailNotification: vi.fn(),
+      markEmailAsNotified: vi.fn(),
     };
-    const sendEmail = jest.fn();
+    const sendEmail = vi.fn();
     const msg = mockMessage(validMsgPayload);
 
     await breachMessageHandler(
