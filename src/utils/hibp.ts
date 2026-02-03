@@ -18,6 +18,7 @@ import {
   BREACHES_EXPIRY_SECONDS,
 } from "../db/redis/client.ts";
 import { config } from "../config.ts";
+import { incKanonFailure, incKanonRequest } from "./metrics.ts";
 
 // TODO: fix hardcode
 const HIBP_USER_AGENT = "monitor/1.0.0";
@@ -58,8 +59,15 @@ async function _throttledFetch(
   url: string,
   reqOptions?: RequestInit,
   tryCount = 1,
+  // Optional meters for tracking total requests
+  // and failed requests
+  meters?: {
+    failures?: (statusCode: number) => void;
+    requests?: () => void;
+  },
 ) {
   try {
+    meters?.requests?.();
     const response = await fetch(url, reqOptions);
     const responseJson = await response.json();
     if (response.ok) return responseJson as unknown;
@@ -70,11 +78,13 @@ async function _throttledFetch(
         logger.info("_throttledFetch", {
           exception: "Error 404, not going to retry. TryCount: " + tryCount,
         });
+        meters?.failures?.(response.status);
         return undefined;
       case 429:
         logger.info("_throttledFetch", {
           exception: "Error 429, tryCount: " + tryCount,
         });
+        meters?.failures?.(response.status);
         // @ts-ignore TODO: Explicitly parse into a number
         if (tryCount >= HIBP_THROTTLE_MAX_TRIES) {
           throw new Error("error_hibp_throttled");
@@ -86,6 +96,7 @@ async function _throttledFetch(
           return await _throttledFetch(url, reqOptions, tryCount);
         }
       default:
+        meters?.failures?.(response.status ?? 500);
         throw responseJson;
     }
   } catch (e) {
@@ -152,7 +163,10 @@ async function kAnonReq(path: string, options = {}) {
 
   const reqOptions = _addStandardOptions(options);
   try {
-    return await _throttledFetch(url, reqOptions);
+    return await _throttledFetch(url, reqOptions, 1, {
+      failures: incKanonFailure,
+      requests: incKanonRequest,
+    });
   } catch (ex) {
     logger.error("k_anon_req", { exception: ex });
   }
