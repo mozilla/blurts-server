@@ -5,8 +5,8 @@
 // Only process.env variables starting with `NEXT_PUBLIC_` will be shipped to the client:
 import "./app/functions/server/notInClientComponent";
 
-import { resolve } from "path";
-import { fileURLToPath } from "url";
+import { resolve } from "node:path";
+import { fileURLToPath } from "node:url";
 import env from "@next/env";
 
 // Initialize variables from env file if appropriate
@@ -14,11 +14,12 @@ import env from "@next/env";
 /* c8 ignore start */
 if (
   typeof process.env.NEXT_RUNTIME !== "string" &&
-  (process.env.NODE_ENV !== "test" || process.env.PLAYWRIGHT === "true")
+  (process.env.NODE_ENV !== "test" || process.env.PLAYWRIGHT === "true" || process.env.VITEST === "true")
 ) {
   // If we're in Next.js, our `.env` files are already set up to be loaded.
   // Outside of Next.js (e.g. in cron jobs), however, we need to explicitly load them.
-  // (In unit tests, `next/jest` takes care of this, so no need to run this there.)
+  // (In unit tests with Jest, `next/jest` takes care of this, so no need to run this there.
+  //  For Vitest, we do need to load the env files explicitly.)
   env.loadEnvConfig(resolve(fileURLToPath(import.meta.url), "../../"));
 }
 /* c8 ignore end */
