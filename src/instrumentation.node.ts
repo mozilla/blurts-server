@@ -98,7 +98,6 @@ export async function nodeSDKBuilder() {
   const sdk = new NodeSDK({
     resource: resourceFromAttributes({
       [ATTR_SERVICE_NAME]: appConfig.otel.serviceName,
-      ...appConfig.otel.resourceAttributes,
     }),
     metricReaders: [
       new PeriodicExportingMetricReader({
@@ -126,10 +125,6 @@ export async function nodeSDKBuilder() {
           enabled: false,
           requireParentSpan: true,
         },
-        "@opentelemetry/instrumentation-pg": {
-          // Disable because we're using @opentelemetry/instrumentation-knex
-          enabled: false,
-        },
         // Node native fetch instrumentation
         "@opentelemetry/instrumentation-undici": {
           // Ignore sending anonymous telemetry to next.js
@@ -151,10 +146,6 @@ export async function nodeSDKBuilder() {
             }
             return false;
           },
-        },
-        // Similar to prometheus default metrics
-        "@opentelemetry/instrumentation-runtime-node": {
-          enabled: true,
         },
       }),
     ],
