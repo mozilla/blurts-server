@@ -23,6 +23,7 @@
 -brand-relay = Firefox Relay
 -brand-mozilla-monitor = Mozilla Monitor
 -brand-monitor-plus = Monitor Plus
+-brand-solo-ai = Solo AI
 
 ##
 
@@ -38,12 +39,20 @@ user-verify-token-error = Este necesar un jeton de verificare.
 compromised-data = Date compromise:
 # Link title
 more-about-this-breach = Mai multe despre această încălcare
+sensitive-sites = Cum tratează { -product-name } site-urile sensibile?
+sensitive-sites-copy =
+    { -product-name } divulgă numai conturile asociate cu aceste
+    tipuri de încălcări ale securității datelor după verificarea unei adrese de e-mail. Înseamnă că ești
+    singura persoană care poate vedea dacă informațiile tale au fost implicate în această încălcare a securității datelor (cu excepția cazului în care
+    mai au și alte persoane acces la contul tău de e-mail).
 what-data = Ce date au fost compromise:
 delayed-reporting-headline = De ce a durat atât de mult să se raporteze această încălcare a securității datelor?
 delayed-reporting-copy = Uneori, poate dura luni sau ani ca datele de autentificare expuse într-o încălcare a securității datelor să apară pe dark web. Încălcările securității datelor sunt adăugate în baza noastră de date imediat ce sunt descoperite și verificate.
 
 ##
 
+what-is-a-website-breach = Ce este o încălcare a securității datelor în cazul unui site web?
+website-breach-blurb = O încălcare a securității datelor în cazul unui site web apare când infractorii cibernetici fură, copiază sau expun informații cu caracter personal din conturi online. Este de obicei rezultatul identificării de către hackeri a unui punct slab în securitatea site-ului web. Încălcările pot apărea și la divulgarea accidentală a datelor aferente conturilor.
 # This is a section headline on the breach detail page that appears above
 # a short summary about the breach.
 breach-overview-title = Prezentare generală
