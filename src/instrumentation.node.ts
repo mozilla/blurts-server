@@ -131,7 +131,7 @@ export async function nodeSDKBuilder() {
     // Ensure the correct subset of traces is sent to Sentry
     // This also ensures trace propagation works as expected
     sampler,
-    // Kuberenetes infrastructure automatically injects
+    // Kubernetes infrastructure automatically injects
     // required resources through environment variables
     autoDetectResources: isLocalCollector ? true : false,
     resourceDetectors,
