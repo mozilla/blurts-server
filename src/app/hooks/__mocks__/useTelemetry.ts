@@ -4,7 +4,14 @@
 
 import type { useTelemetry as ogUseTelemetry } from "../useTelemetry";
 
-const mockedRecordTelemetry = jest.fn();
+const mockedRecordTelemetry = (() => {
+  // Support both Jest and Vitest environments
+  if (typeof jest !== 'undefined') {
+    return jest.fn();
+  } else {
+    return vi.fn();
+  }
+})();
 
 export const useTelemetry: typeof ogUseTelemetry = () => {
   return mockedRecordTelemetry as ReturnType<typeof ogUseTelemetry>;

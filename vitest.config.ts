@@ -49,5 +49,10 @@ export default defineConfig({
     globals: true,
     clearMocks: true,
     restoreMocks: true,
+    alias: {
+      'next/font/local': '/src/__mocks__/next/font/local.ts',
+      'next/font/google': '/src/__mocks__/next/font/google.ts',
+      'next/image': '/src/__mocks__/next/image.tsx',
+    },
   },
 });

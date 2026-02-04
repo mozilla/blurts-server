@@ -32,6 +32,7 @@ Add utilities incrementally as tests require them (mocking, Storybook integratio
 - [ ] `src/app/components/server/BreachLogo.test.tsx` → `.vitest.tsx`
 
 #### 2.3: Complex components (higher risk)
+- [x] `src/app/[locale]/(redesign)/(authenticated)/user/(dashboard)/dashboard/fix/high-risk-data-breaches/[type]/HighRiskBreachLayout.test.tsx` → `.vitest.tsx`
 - [ ] Dashboard components
 - [ ] Authentication components
 - [ ] Email templates
@@ -44,6 +45,7 @@ Add utilities incrementally as tests require them (mocking, Storybook integratio
 - [ ] Verify all tests migrated and passing
 - [ ] Remove Jest dependencies (`jest`, `jest-*`, `@testing-library/jest-dom`, etc.)
 - [ ] Remove Jest/Vitest compatibility checks in test helpers (`mockLogger.ts`, `pubsub.ts`)
+- [ ] Default `useTelemetry` mock to use `vi.fn()` instead of Jest/Vitest compatibility check
 - [ ] Rename all `.vitest.*` → `.test.*`
 - [ ] Update package.json scripts (`test:vitest` → `test`)
 - [ ] Update CI configuration
