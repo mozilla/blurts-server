@@ -10,7 +10,11 @@ import {
   ConsoleMetricExporter,
   PeriodicExportingMetricReader,
 } from "@opentelemetry/sdk-metrics";
-import { resourceFromAttributes } from "@opentelemetry/resources";
+import {
+  envDetector,
+  processDetector,
+  resourceFromAttributes,
+} from "@opentelemetry/resources";
 import { NodeSDK } from "@opentelemetry/sdk-node";
 import {
   AlwaysOnSampler,
@@ -19,7 +23,6 @@ import {
   ParentBasedSampler,
   SimpleSpanProcessor,
 } from "@opentelemetry/sdk-trace-node";
-import { KnexInstrumentation } from "@opentelemetry/instrumentation-knex";
 import { ATTR_SERVICE_NAME } from "@opentelemetry/semantic-conventions";
 import { diag, DiagConsoleLogger, DiagLogLevel } from "@opentelemetry/api";
 import { getNodeAutoInstrumentations } from "@opentelemetry/auto-instrumentations-node";
@@ -55,6 +58,15 @@ export async function nodeSDKBuilder() {
       collectorUrl?.includes("127.0.0.1"));
 
   const sentryClient = Sentry.getClient();
+
+  // All required resources are injected through env vars
+  // in cloud deployment, but locally we can use detectors
+  // The host detector has a known issue with async attributes
+  // and isn't super important
+  // https://github.com/open-telemetry/opentelemetry-js/issues/4638
+  const resourceDetectors = isLocalCollector
+    ? [processDetector, envDetector]
+    : undefined;
 
   if (sentryClient) {
     // https://github.com/getsentry/sentry-javascript/tree/develop/packages/opentelemetry
@@ -92,7 +104,6 @@ export async function nodeSDKBuilder() {
   const sdk = new NodeSDK({
     resource: resourceFromAttributes({
       [ATTR_SERVICE_NAME]: appConfig.otel.serviceName,
-      ...appConfig.otel.resourceAttributes,
     }),
     metricReaders: [
       new PeriodicExportingMetricReader({
@@ -113,16 +124,16 @@ export async function nodeSDKBuilder() {
     // Ensure the correct subset of traces is sent to Sentry
     // This also ensures trace propagation works as expected
     sampler,
+    // Kuberenetes infrastructure automatically injects
+    // required resources through environment variables
+    autoDetectResources: isLocalCollector ? true : false,
+    resourceDetectors,
     instrumentations: [
       getNodeAutoInstrumentations({
         "@opentelemetry/instrumentation-fs": {
           // Disable unless required by parent span (noisy and memory-intensive)
           enabled: false,
           requireParentSpan: true,
-        },
-        "@opentelemetry/instrumentation-pg": {
-          // Disable because we're using @opentelemetry/instrumentation-knex
-          enabled: false,
         },
         // Node native fetch instrumentation
         "@opentelemetry/instrumentation-undici": {
@@ -146,13 +157,7 @@ export async function nodeSDKBuilder() {
             return false;
           },
         },
-        // Similar to prometheus default metrics
-        "@opentelemetry/instrumentation-runtime-node": {
-          enabled: true,
-        },
       }),
-      // Additional instrumentations
-      new KnexInstrumentation(),
     ],
   });
   sdk.start();
