@@ -3,10 +3,9 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { render, screen, within } from "@testing-library/react";
-import { it, expect } from "@jest/globals";
+import { it, expect, vi } from "vitest";
 import { composeStory } from "@storybook/react";
-import { axe } from "jest-axe";
-import { setupJestCanvasMock } from "jest-canvas-mock";
+import { axe } from "vitest-axe";
 import Meta, {
   PasswordsStory,
   SecurityQuestionsStory,
@@ -14,27 +13,25 @@ import Meta, {
 } from "./LeakedPasswords.stories";
 import { userEvent } from "@testing-library/user-event";
 import { useTelemetry as useTelemetryImported } from "../../../../../../../../../hooks/useTelemetry";
+import type { MockedFunction } from "vitest";
 
-jest.mock("../../../../../../../../../hooks/useTelemetry");
+vi.mock("../../../../../../../../../hooks/useTelemetry");
 // We need to override the types of `useTelemetry` here, because otherwise
-// Jest infers incorrect types in `toHaveBeenCalledWith`, and throws an error.
-// See https://github.com/jestjs/jest/issues/15703
-const useTelemetry = useTelemetryImported as () => (
-  module: string,
-  eventName: string,
-  data: Record<string, string>,
-) => void;
+// Vitest infers incorrect types in `toHaveBeenCalledWith`, and throws an error.
+const useTelemetry = useTelemetryImported as MockedFunction<
+  () => (
+    module: string,
+    eventName: string,
+    data: Record<string, string>,
+  ) => void
+>;
 
-jest.mock("next/navigation", () => ({
+vi.mock("next/navigation", () => ({
   useRouter: () => ({
-    push: jest.fn(),
+    push: vi.fn(),
   }),
-  usePathname: jest.fn(),
+  usePathname: vi.fn(),
 }));
-
-beforeEach(() => {
-  setupJestCanvasMock();
-});
 
 it("leaked passwords component passes the axe accessibility test suite", async () => {
   const ComposedComponent = composeStory(PasswordsStory, Meta);
@@ -170,7 +167,9 @@ it("records telemetry when resolving a password", async () => {
   // jsdom will complain about not being able to navigate to a different page
   // after clicking the link; suppress that error, as it's not relevant to the
   // test:
-  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+  const consoleErrorSpy: MockedFunction<typeof console.error> = vi
+    .spyOn(console, "error")
+    .mockImplementationOnce(() => undefined);
   await user.click(buttonLink);
 
   expect(mockedRecord).toHaveBeenCalledWith(
@@ -195,7 +194,9 @@ it("records telemetry when resolving a security question", async () => {
   // jsdom will complain about not being able to navigate to a different page
   // after clicking the link; suppress that error, as it's not relevant to the
   // test:
-  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+  const consoleErrorSpy: MockedFunction<typeof console.error> = vi
+    .spyOn(console, "error")
+    .mockImplementationOnce(() => undefined);
   await user.click(buttonLink);
 
   expect(mockedRecord).toHaveBeenCalledWith(
@@ -220,7 +221,9 @@ it("records telemetry when skipping the passwords step", async () => {
   // jsdom will complain about not being able to navigate to a different page
   // after clicking the link; suppress that error, as it's not relevant to the
   // test:
-  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+  const consoleErrorSpy: MockedFunction<typeof console.error> = vi
+    .spyOn(console, "error")
+    .mockImplementationOnce(() => undefined);
   await user.click(buttonLink);
 
   expect(mockedRecord).toHaveBeenCalledWith(
@@ -245,7 +248,9 @@ it("records telemetry when skipping the security questions step", async () => {
   // jsdom will complain about not being able to navigate to a different page
   // after clicking the link; suppress that error, as it's not relevant to the
   // test:
-  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+  const consoleErrorSpy: MockedFunction<typeof console.error> = vi
+    .spyOn(console, "error")
+    .mockImplementationOnce(() => undefined);
   await user.click(buttonLink);
 
   expect(mockedRecord).toHaveBeenCalledWith(
@@ -273,7 +278,9 @@ it("records telemetry when clicking the breach link on a leaked password resolut
   // jsdom will complain about not being able to navigate to a different page
   // after clicking the link; suppress that error, as it's not relevant to the
   // test:
-  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+  const consoleErrorSpy: MockedFunction<typeof console.error> = vi
+    .spyOn(console, "error")
+    .mockImplementationOnce(() => undefined);
   await user.click(buttonLink);
 
   expect(mockedRecord).toHaveBeenCalledWith(

@@ -33,6 +33,8 @@ Add utilities incrementally as tests require them (mocking, Storybook integratio
 
 #### 2.3: Complex components (higher risk)
 - [x] `src/app/[locale]/(redesign)/(authenticated)/user/(dashboard)/dashboard/fix/high-risk-data-breaches/[type]/HighRiskBreachLayout.test.tsx` → `.vitest.tsx`
+- [x] `src/app/[locale]/(redesign)/(authenticated)/user/(dashboard)/dashboard/fix/leaked-passwords/[type]/LeakedPasswordsLayout.test.tsx` → `.vitest.tsx`
+- [x] `src/app/[locale]/(redesign)/(authenticated)/user/(dashboard)/dashboard/fix/security-recommendations/[type]/SecurityRecommendations.test.tsx` → `.vitest.tsx`
 - [ ] Dashboard components
 - [ ] Authentication components
 - [ ] Email templates

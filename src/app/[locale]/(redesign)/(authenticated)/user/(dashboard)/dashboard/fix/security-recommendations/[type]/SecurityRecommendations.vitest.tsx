@@ -3,10 +3,9 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { render, screen } from "@testing-library/react";
-import { it, expect } from "@jest/globals";
+import { it, expect, vi } from "vitest";
 import { composeStory } from "@storybook/react";
-import { axe } from "jest-axe";
-import { setupJestCanvasMock } from "jest-canvas-mock";
+import { axe } from "vitest-axe";
 import Meta, {
   EmailStory,
   IpStory,
@@ -14,17 +13,13 @@ import Meta, {
   DoneStory,
 } from "./SecurityRecommendations.stories";
 
-jest.mock("../../../../../../../../../hooks/useTelemetry");
-jest.mock("next/navigation", () => ({
+vi.mock("../../../../../../../../../hooks/useTelemetry");
+vi.mock("next/navigation", () => ({
   useRouter: () => ({
-    push: jest.fn(),
+    push: vi.fn(),
   }),
-  usePathname: jest.fn(),
+  usePathname: vi.fn(),
 }));
-
-beforeEach(() => {
-  setupJestCanvasMock();
-});
 
 it("passes the axe accessibility test suite for phone security recommendations", async () => {
   const ComposedComponent = composeStory(PhoneStory, Meta);
