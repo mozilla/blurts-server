@@ -346,3 +346,16 @@ npm run create-location-data -- --skip-upload
 
 TODO: Describe how to verify that uploading auto-complete locations still works
 as expected.
+
+### `@opentelemetry/*`
+
+Opentelemetry is an open source observability framework. We use it for capturing traces and metrics.
+
+To test locally, follow instructions for local setup with docker-compose in the main [README](../README.md#observability). Check the console to ensure that you see the following logs:
+
+- "\[INSTRUMENTATION] OTLP Collector provided" - indicates that you have correctly set the variables for sending to collector rather than console
+- "\[INSTRUMENTATION] Otel setup is valid" - the setup has been validated with Sentry and is compatible
+
+Click around the site to generate traces, and make requests to endpoints with metrics enabled (e.g. /hibp/notify) to generate metrics data. These data are visible in the local grafana instance using the dashboard or explore pane. If traces and metrics appear (may take 30 seconds or so to propagate) then the system is working properly.
+
+To validate in the cloud environment, you can push the update to the `dev` branch to automatically deploy it. Use the dev environment similarly to generate traces and metrics, then look for data in [Yardstick](https://yardstick.mozilla.org/) to confirm.
