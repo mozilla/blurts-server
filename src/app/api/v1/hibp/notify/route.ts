@@ -21,6 +21,8 @@ import {
   incHibpNotifyFailure,
 } from "../../../../../utils/metrics";
 
+import * as Sentry from "@sentry/nextjs";
+
 export type PostHibpNotificationRequestBody = {
   breachName: string;
   hashPrefix: string;
@@ -62,6 +64,7 @@ export async function POST(req: NextRequest) {
     logger.error("error_processing_breach_alert_request:", {
       exception: ex as string,
     });
+    Sentry.captureException(ex);
     incHibpNotifyFailure("server-error");
     return NextResponse.json({ success: false }, { status: 500 });
   }
@@ -70,6 +73,7 @@ export async function POST(req: NextRequest) {
     pubsub = new PubSub({ projectId, enableOpenTelemetryTracing: true });
   } catch (ex) {
     logger.error("error_connecting_to_pubsub:", { exception: ex as string });
+    Sentry.captureException(ex);
     incHibpNotifyFailure("pubsub-error");
     return NextResponse.json({ success: false }, { status: 429 });
   }
@@ -82,6 +86,7 @@ export async function POST(req: NextRequest) {
         topic: topicName,
       });
       incHibpNotifyFailure("pubsub-error");
+      Sentry.captureException(new Error("Pubsub topic does not exist"));
       return NextResponse.json({ success: false }, { status: 500 });
     }
     await topic.publishMessage({ json });
@@ -90,9 +95,10 @@ export async function POST(req: NextRequest) {
       topic: topicName,
     });
     return NextResponse.json({ success: true }, { status: 200 });
-  } catch {
-    logger.error("error_queuing_hibp_breach:", { topicName });
+  } catch (ex) {
+    logger.error("error_queuing_hibp_breach:", { topicName, exception: ex });
     incHibpNotifyFailure("pubsub-error");
+    Sentry.captureException(ex);
     return NextResponse.json({ success: false }, { status: 429 });
   }
 }
