@@ -136,7 +136,7 @@ error-page-error-404-cta-button = Geri dön
 
 ## Breach overview page
 
-all-breaches-headline-3 = Veri İhlali Veri Tabanı
+all-breaches-headline-3 = Veri İhlali Veritabanı
 all-breaches-lead = Kişisel bilgilerinizin ele geçirilip geçirilmediğini öğrenmek için bilinen tüm veri ihlallerini izliyoruz. İşte 2007’den beri bildirilen tüm ihlallerin tam listesi.
 search-breaches = İhlallerde ara
 # the kind of user data exposed to hackers in data breach.

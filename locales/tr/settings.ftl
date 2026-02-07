@@ -23,6 +23,9 @@ settings-remove-email-button-label = Kaldır
 settings-email-addresses-header = E-posta adresleri
 settings-email-addresses-description = Bu e-postalar bilinen veri ihlallerinde yer alırsa { -brand-monitor } sizi uyaracaktır.
 settings-email-addresses-add-email-button = E-posta adresi ekle
+# Variables:
+#   $limit (number) - Number of emails that can be added for monitoring.
+settings-email-addresses-add-email-indicator-limit = En fazla { $limit } tane ekleyebilirsiniz
 settings-email-addresses-add-email-resend-button-label = Doğrulama bağlantısını yeniden gönder
 input-error-alt = Hata
 
@@ -54,7 +57,7 @@ settings-delete-monitor-account-confirmation-toast-dismiss-label = Kapat
 
 # Label for a navigation bar link to settings for updating the users scan profile info – “update” is used as a verb.
 settings-tab-label-update-scan-info = Tarama bilgilerini güncelle
-settings-tab-label-edit-info = Bilgilerinizi düzenleyin
+settings-tab-label-edit-info = Bilgilerimi düzenle
 settings-tab-label-notifications = Bildirimleri ayarla
 settings-tab-label-manage-account = Hesabı yönet
 settings-tab-subtitle-manage-account = { -product-name } hesabınızı yönetin.
