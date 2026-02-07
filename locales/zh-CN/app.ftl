@@ -39,12 +39,14 @@ user-verify-token-error = 必须持有验证令牌（Token）。
 compromised-data = 泄露的数据
 # Link title
 more-about-this-breach = 关于此数据外泄事件的更多信息
+sensitive-sites = { -product-name } 如何处理敏感网站？
 what-data = 泄露的数据：
 delayed-reporting-headline = 为什么要这么久才公开这些事件？
 delayed-reporting-copy = 有的时候，数据外泄后可能要几个月甚至几年，您的登录信息才会出现在暗网上。当我们发现外泄的数据并确认无误后，就会加入数据库。
 
 ##
 
+website-breach-blurb = 当网络犯罪分子从网络账户窃取、复制、暴露个人信息时，就会发生网站数据外泄事件。这通常是因为黑客发现了网站安全环节的薄弱点，但也可能是由于账户信息意外泄漏所致。
 # This is a section headline on the breach detail page that appears above
 # a short summary about the breach.
 breach-overview-title = 总览

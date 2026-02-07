@@ -135,7 +135,7 @@ delayed-reporting-copy = Občas to může trvat měsíce či roky, než se přih
 
 ##
 
-what-is-a-website-breach = Co je to únik dat z webových stránek?
+what-is-a-website-breach = Co je únik dat z webových stránek?
 website-breach-blurb = Únik dat z webových stránek se odehraje, když kyberzločinci odcizí, zkopírují nebo zveřejní osobní údaje z internetových účtů. Zpravidla je to výsledkem činnosti hackerů, kteří nalezli slabé místo v zabezpečení webu. K úniku osobních údajů z účtu však také může dojít nedopatřením.
 # This is a section headline on the breach detail page that appears above
 # a short summary about the breach.

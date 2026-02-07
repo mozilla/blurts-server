@@ -139,7 +139,7 @@ security-recommendation-phone-summary =
        *[other] Telefon numaranız { $num_breaches } veri ihlalinde ele geçirildi:
     }
 security-recommendation-phone-description = Maalesef bunu geri alamazsınız ama güvende kalmak için atabileceğiniz adımlar var.
-security-recommendation-phone-step-one = Daha fazla gereksiz aramayı önlemek için spam numaraları engelleyebilirsiniz
+security-recommendation-phone-step-one = Daha fazla gereksiz aramayı önlemek için spam numaraları engelleyin
 security-recommendation-phone-step-two = Tanımadığınız kişilerden gelen mesajlardaki bağlantılara tıklamayın, güvenilir bir kaynaktan geliyormuş gibi görünüyorsa karşı tarafı arayıp onayını alın
 
 # Email security recommendation
@@ -155,11 +155,11 @@ security-recommendation-email-description = Maalesef bunu düzeltemezsiniz. Anca
 security-recommendation-email-step-one = Tanımadığınız kişilerden gelen e-postalardaki bağlantılara tıklamayın, güvenilir bir kaynaktan geliyormuş gibi görünüyorsa karşı tarafı arayıp onayını alın
 security-recommendation-email-step-two = <link_to_info>Kimlik avı dolandırıcılığına</link_to_info> dikkat edin
 security-recommendation-email-step-three = Şüpheli e-postaları spam olarak işaretleyip göndereni engelleyin
-security-recommendation-email-step-four = E-postalarınızı korumak için <link_to_info>{ -brand-relay } e-posta maskelerini</link_to_info> kullanabilirsiniz
+security-recommendation-email-step-four = E-postalarınızı korumak için <link_to_info>{ -brand-relay } e-posta maskelerini</link_to_info> kullanın
 
 # IP security recommendation
 
-security-recommendation-ip-title = Daha fazla gizlilik için VPN kullanabilirsiniz
+security-recommendation-ip-title = Daha fazla gizlilik için VPN kullanın
 # $num_breaches is the number of breaches where the IP address was found.
 security-recommendation-ip-summary =
     { $num_breaches ->
@@ -167,7 +167,7 @@ security-recommendation-ip-summary =
        *[other] IP adresiniz { $num_breaches } veri ihlalinde ele geçirildi:
     }
 security-recommendation-ip-description = IP adresiniz konumunuzu ve internet servis sağlayıcınızı ifşa edebilir. Hacker’lar konumunuzu bulmak veya cihazlarınıza bağlanmak için bu bilgileri kullanabilir.
-security-recommendation-ip-step-one = Gerçek IP adresinizi gizlemek ve internette daha az iz bırakmak için VPN (örn. <link_to_info>{ -brand-mozilla-vpn }</link_to_info>) kullanabilirsiniz.
+security-recommendation-ip-step-one = Gerçek IP adresinizi gizlemek ve internette daha az iz bırakmak için VPN (örn. <link_to_info>{ -brand-mozilla-vpn }</link_to_info>) kullanın.
 
 # Leaked Passwords
 
