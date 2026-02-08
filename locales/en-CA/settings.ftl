@@ -19,6 +19,7 @@ settings-alert-preferences-option-two = Send all breach alerts to the primary em
 ## Monitored email addresses
 
 settings-email-verification-callout = Email verification required
+settings-remove-email-button-label = Remove
 settings-email-addresses-header = Email addresses
 settings-email-addresses-description = { -brand-monitor } will alert you if these emails show up in known breaches.
 settings-email-addresses-add-email-button = Add email address
