@@ -21,20 +21,20 @@ settings-alert-preferences-option-two = Všechna upozornění posílat na primá
 settings-email-verification-callout = Vyžadováno ověření e-mailové adresy
 settings-remove-email-button-label = Odebrat
 settings-email-addresses-header = E-mailové adresy
-settings-email-addresses-description = { -brand-monitor } vás upozorní, pokud se tato adresa objeví ve známém úniku dat.
+settings-email-addresses-description = { -brand-monitor } vás upozorní, jestliže se tyto e-mailové adresy objeví ve známém úniku dat.
 settings-email-addresses-add-email-button = Přidat e-mailovou adresu
 # Variables:
 #   $limit (number) - Number of emails that can be added for monitoring.
-settings-email-addresses-add-email-indicator-limit = Přidat můžete maximálně { $limit }
+settings-email-addresses-add-email-indicator-limit = Přidat můžete až { $limit }
 settings-email-addresses-add-email-resend-button-label = Znovu odeslat ověřovací odkaz
 input-error-alt = Chyba
 
 ## Email address dialog
 
-settings-email-addresses-initial-dialog-header = Přidat e-mailovou adresu
-settings-email-addresses-initial-dialog-description = Pošleme vám ověřovací odkaz jako potvrzení, že jej chcete zahrnout do budoucího skenu za { -brand-monitor }.
+settings-email-addresses-initial-dialog-header = Přidání e-mailové adresy
+settings-email-addresses-initial-dialog-description = Zašleme vám ověřovací odkaz, abyste potvrdili, že ji chcete do budoucna zahrnout do skenování službou ⁨{ -brand-monitor }.
 settings-email-addresses-initial-dialog-add-email-input-label = Zadejte e-mailovou adresu
-settings-email-addresses-initial-dialog-add-email-button-label = Zaslat ověřovací odkaz
+settings-email-addresses-initial-dialog-add-email-button-label = Odeslat ověřovací odkaz
 # Variables:
 #   $email (string) - Email address the confirmation has been sent to.
 settings-email-addresses-confirmation-dialog-header = Odkaz pro ověření byl odeslán na <b>{ $email }</b>
@@ -57,7 +57,7 @@ settings-delete-monitor-account-confirmation-toast-dismiss-label = Zavřít
 
 # Label for a navigation bar link to settings for updating the users scan profile info – “update” is used as a verb.
 settings-tab-label-update-scan-info = Aktualizovat informace o skenování
-settings-tab-label-edit-info = Upravte své údaje
+settings-tab-label-edit-info = Upravit své údaje
 settings-tab-label-notifications = Nastavení upozornění
 settings-tab-label-manage-account = Správa účtu
 settings-tab-subtitle-manage-account = Spravujte svůj účet služby { -product-name }.

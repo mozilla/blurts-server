@@ -19,6 +19,7 @@ settings-alert-preferences-option-two = 向主邮箱地址发送所有数据外�
 ## Monitored email addresses
 
 settings-email-verification-callout = 需要电子邮件验证
+settings-remove-email-button-label = 移除
 settings-email-addresses-header = 邮箱地址
 settings-email-addresses-description = 若这些邮箱地址出现在已知的外泄事件中，{ -brand-monitor } 将向您发出警报。
 settings-email-addresses-add-email-button = 添加邮箱地址
