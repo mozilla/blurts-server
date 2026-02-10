@@ -23,7 +23,7 @@ import {
   getDashboardSummary,
 } from "../../../../../../functions/server/dashboard";
 import { getExposureStatus } from "../../../../../../components/server/StatusPill";
-import { TabList } from "../../../../../../components/client/TabList";
+import { TabList, TabPanel } from "../../../../../../components/client/TabList";
 import { filterExposures } from "./filterExposures";
 import { SubscriberBreach } from "../../../../../../../utils/subscriberBreaches";
 import { getLocale } from "../../../../../../functions/universal/getLocale";
@@ -35,6 +35,7 @@ import { getNextGuidedStep } from "../../../../../../functions/server/getRelevan
 import { useTelemetry } from "../../../../../../hooks/useTelemetry";
 import { UserAnnouncementWithDetails } from "../../../../../../../db/tables/user_announcements";
 import { PlusShutdownBanner } from "../../../../../../components/client/PlusShutdownBanner";
+import { Item, useTabListState } from "react-stately";
 
 export type TabType = "action-needed" | "fixed";
 
@@ -89,16 +90,6 @@ export const View = (props: Props) => {
   const [activeExposureCardKey, setActiveExposureCardKey] = useState<
     string | null
   >(null);
-  const tabsData: TabData[] = [
-    {
-      name: l10n.getString("dashboard-tab-label-action-needed"),
-      key: "action-needed",
-    },
-    {
-      name: l10n.getString("dashboard-tab-label-fixed"),
-      key: "fixed",
-    },
-  ];
 
   const breachesDataArray = props.userBreaches.flat();
 
@@ -124,6 +115,33 @@ export const View = (props: Props) => {
     });
 
   const tabSpecificExposures = getTabSpecificExposures(activeTab);
+  const tabsData: TabData[] = [
+    {
+      name: l10n.getString("dashboard-tab-label-action-needed"),
+      key: "action-needed",
+    },
+    {
+      name: l10n.getString("dashboard-tab-label-fixed"),
+      key: "fixed",
+    },
+  ];
+
+  const tabListState = useTabListState({
+    selectedKey: activeTab,
+    onSelectionChange: (key) => {
+      setActiveTab(key as TabType);
+      recordTelemetry("dashboard", "view", {
+        dashboard_tab: key as TabType,
+        breach_count: breachesDataArray.length,
+      });
+    },
+    children: tabsData.map((t) => (
+      <Item key={t.key} title={t.name}>
+        <></>
+      </Item>
+    )),
+  });
+
   const filteredExposures = filterExposures(tabSpecificExposures, filters);
   const exposureCardElems = filteredExposures.map(
     (exposure: SubscriberBreach) => {
@@ -187,21 +205,15 @@ export const View = (props: Props) => {
         enabledFeatureFlags={props.enabledFeatureFlags}
         announcements={announcements}
       >
-        <TabList
-          tabs={tabsData}
-          onSelectionChange={(selectedKey) => {
-            setActiveTab(selectedKey as TabType);
-            recordTelemetry("dashboard", "view", {
-              dashboard_tab: selectedKey as TabType,
-              breach_count: breachesDataArray.length,
-            });
-          }}
-          selectedKey={activeTab}
-        />
+        <TabList tabs={tabsData} state={tabListState} />
       </Toolbar>
       <PlusShutdownBanner countryCode={props.countryCode} />
 
-      <div className={styles.dashboardContent}>
+      <TabPanel
+        className={styles.dashboardContent}
+        state={tabListState}
+        id={activeTab}
+      >
         <DashboardTopBanner
           tabType={activeTab}
           hasExposures={hasExposures}
@@ -252,7 +264,7 @@ export const View = (props: Props) => {
         ) : (
           <ul className={styles.exposureList}>{exposureCardElems}</ul>
         )}
-      </div>
+      </TabPanel>
     </div>
   );
 };
