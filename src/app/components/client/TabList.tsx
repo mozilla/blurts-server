@@ -3,12 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { Key, ReactNode, useRef } from "react";
-import {
-  AriaTabListOptions,
-  useTab,
-  useTabList,
-  useTabPanel,
-} from "react-aria";
+import { AriaTabListOptions, useTab, useTabList } from "react-aria";
 import { Item, useTabListState } from "react-stately";
 import styles from "./TabList.module.scss";
 import { TabListState, TabListStateOptions } from "@react-stately/tabs";
@@ -64,19 +59,6 @@ function Tabs(props: TabsProps) {
           <Tab key={item.key} item={item} state={state} />
         ))}
       </div>
-      <TabPanel key={selectedItem?.key} state={state} />
-    </div>
-  );
-}
-
-function TabPanel({ state, ...props }: { state: TabListState<object> }) {
-  const ref = useRef(null);
-  const { tabPanelProps } = useTabPanel(props, state, ref);
-  const { selectedItem } = state;
-
-  return (
-    <div {...tabPanelProps} ref={ref} className={styles.tabPanel}>
-      {selectedItem?.props.children}
     </div>
   );
 }
