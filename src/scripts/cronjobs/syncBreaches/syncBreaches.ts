@@ -60,6 +60,7 @@ export async function getBreachIcons(breaches: HibpGetBreachesResponse) {
           s3LogoUrl,
         });
         await updateBreachFaviconUrl(breachName, s3LogoUrl);
+        continue;
       }
       // Fetch logo from DuckDuckGo
       const iconUri = `https://icons.duckduckgo.com/ip3/${breachDomain}.ico`;
