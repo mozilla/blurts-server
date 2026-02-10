@@ -11,8 +11,10 @@ export type UserDashboardState =
   | "NonEligiblePremiumUserResolvedBreaches"
   | "InvalidUserState";
 
-interface ContentConditionProps
-  extends Omit<ContentProps, "relevantGuidedStep" | "onShowFixed"> {
+interface ContentConditionProps extends Omit<
+  ContentProps,
+  "relevantGuidedStep" | "onShowFixed"
+> {
   isRelevantGuidedStep: boolean;
 }
 

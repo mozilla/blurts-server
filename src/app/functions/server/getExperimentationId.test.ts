@@ -42,9 +42,8 @@ describe("getExperimentationId", () => {
     const configModule = jest.requireMock("../../../config") as any;
     configModule.config.nimbusUuidNamespace =
       "00000000-0000-0000-0000-000000000000";
-    const { getExperimentationIdFromSubscriber } = await import(
-      "./getExperimentationId"
-    );
+    const { getExperimentationIdFromSubscriber } =
+      await import("./getExperimentationId");
 
     const result = await getExperimentationIdFromSubscriber({
       id: 42,
@@ -67,9 +66,8 @@ describe("getExperimentationId", () => {
     const configModule = jest.requireMock("../../../config") as any;
     configModule.config.nimbusUuidNamespace =
       "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa";
-    const { getExperimentationIdFromUserSession } = await import(
-      "./getExperimentationId"
-    );
+    const { getExperimentationIdFromUserSession } =
+      await import("./getExperimentationId");
 
     const user = { subscriber: { id: 42 } };
     const result = await getExperimentationIdFromUserSession(
@@ -89,9 +87,8 @@ describe("getExperimentationId", () => {
       headers: async () => new Headers([["x-experimentation-id", "guest-123"]]),
     });
 
-    const { getExperimentationIdFromUserSession } = await import(
-      "./getExperimentationId"
-    );
+    const { getExperimentationIdFromUserSession } =
+      await import("./getExperimentationId");
 
     const result = await getExperimentationIdFromUserSession(null);
 
@@ -107,9 +104,8 @@ describe("getExperimentationId", () => {
       headers: async () => new Headers([["x-other-id", "value-123"]]),
     });
 
-    const { getExperimentationIdFromUserSession } = await import(
-      "./getExperimentationId"
-    );
+    const { getExperimentationIdFromUserSession } =
+      await import("./getExperimentationId");
 
     const result = await getExperimentationIdFromUserSession(null);
     expect(result).toBe(
@@ -121,9 +117,8 @@ describe("getExperimentationId", () => {
   it("logs info and returns undefined if loadNextHeaders returns null", async () => {
     loadNextHeadersMock.mockResolvedValue(null);
 
-    const { getExperimentationIdFromUserSession } = await import(
-      "./getExperimentationId"
-    );
+    const { getExperimentationIdFromUserSession } =
+      await import("./getExperimentationId");
 
     const result = await getExperimentationIdFromUserSession(null);
     expect(result).toBeUndefined();
@@ -138,9 +133,8 @@ describe("getExperimentationId", () => {
       throw new Error("import failed");
     });
 
-    const { getExperimentationIdFromUserSession } = await import(
-      "./getExperimentationId"
-    );
+    const { getExperimentationIdFromUserSession } =
+      await import("./getExperimentationId");
 
     const result = await getExperimentationIdFromUserSession(null);
     expect(result).toBeUndefined();
