@@ -56,10 +56,11 @@ export async function uploadToS3(
 }
 
 /**
- * Check if an object exists in S3 and return its metadata if it does.
+ * Check if an object exists in S3
  *
  * @param fileName S3 object key to check
- * @returns Object metadata if exists, null if not found
+ * @param bucket Bucket that should contain the S3 object
+ * @returns Whether an object exists
  */
 export async function checkS3ObjectExists(
   fileName: string,
