@@ -102,7 +102,7 @@
     "react": "19.2.3",
     "react-aria": "^3.45.0",
     "react-cookie": "^8.0.1",
-    "react-dom": "19.2.3",
+    "react-dom": "19.2.4",
     "react-intersection-observer": "^10.0.0",
     "react-stately": "^3.43.0",
     "server-only": "^0.0.1",
