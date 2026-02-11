@@ -21,6 +21,8 @@ export function proxy(request: NextRequest) {
     ![
       "/sitemap.xml",
       "/robots.txt",
+      // The Next-Auth logout handler:
+      "/auth/logout",
       "/__version__",
       "/__heartbeat__",
       "/__lbheartbeat__",
