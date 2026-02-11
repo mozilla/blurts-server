@@ -68,7 +68,7 @@ function Tabs(props: TabsProps) {
 
 export const TabList = ({ tabs, ...props }: TabListProps) => {
   return (
-    <Tabs id="tablist" {...props}>
+    <Tabs {...props}>
       {tabs.map((tab) => (
         <Item key={tab.key} title={tab.name}>
           {tab.content}
@@ -77,9 +77,11 @@ export const TabList = ({ tabs, ...props }: TabListProps) => {
     </Tabs>
   );
 };
+
+// This component is what's used to wrapped around the content of each tab, and is responsible for showing/hiding the content based on the selected tab.
 export interface TabPanelProps extends AriaTabPanelProps {
   state: TabListState<object>;
-  className?: string; // etc
+  className?: string;
   children: ReactNode;
 }
 

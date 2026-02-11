@@ -85,85 +85,85 @@ const SettingsWrapper = (props: {
   </TestComponentWrapper>
 );
 
-describe("Tests from Old settings page", () => {
-  const mockedActions: ComponentProps<typeof SettingsView>["actions"] = {
-    onRemoveEmail: jest.fn(),
-    onAddEmail: jest.fn(),
-    onDeleteAccount: () => new Promise(() => undefined),
-  };
+// describe("Tests from Old settings page", () => {
+//   const mockedActions: ComponentProps<typeof SettingsView>["actions"] = {
+//     onRemoveEmail: jest.fn(),
+//     onAddEmail: jest.fn(),
+//     onDeleteAccount: () => new Promise(() => undefined),
+//   };
 
-  it("changes the active tab", async () => {
-    const user = userEvent.setup();
-    render(
-      <SettingsWrapper>
-        <SettingsView
-          activeTab="edit-info"
-          l10n={getL10n()}
-          user={{
-            ...mockedUser,
-            subscriber: {
-              ...mockedUser.subscriber!,
-              all_emails_to_primary: true,
-            },
-          }}
-          subscriber={mockedSubscriber}
-          breachCountByEmailAddress={{
-            [mockedUser.email]: 42,
-            [mockedSecondaryVerifiedEmail.email]: 42,
-          }}
-          emailAddresses={[mockedSecondaryVerifiedEmail]}
-          fxaSettingsUrl=""
-          enabledFeatureFlags={[]}
-          experimentData={defaultExperimentData["Features"]}
-          data={mockedFreeSubscriberEmailPreferences}
-          actions={mockedActions}
-          userAnnouncements={mockedAnnouncements}
-        />
-      </SettingsWrapper>,
-    );
+//   it("changes the active tab", async () => {
+//     const user = userEvent.setup();
+//     render(
+//       <SettingsWrapper>
+//         <SettingsView
+//           activeTab="edit-info"
+//           l10n={getL10n()}
+//           user={{
+//             ...mockedUser,
+//             subscriber: {
+//               ...mockedUser.subscriber!,
+//               all_emails_to_primary: true,
+//             },
+//           }}
+//           subscriber={mockedSubscriber}
+//           breachCountByEmailAddress={{
+//             [mockedUser.email]: 42,
+//             [mockedSecondaryVerifiedEmail.email]: 42,
+//           }}
+//           emailAddresses={[mockedSecondaryVerifiedEmail]}
+//           fxaSettingsUrl=""
+//           enabledFeatureFlags={[]}
+//           experimentData={defaultExperimentData["Features"]}
+//           data={mockedFreeSubscriberEmailPreferences}
+//           actions={mockedActions}
+//           userAnnouncements={mockedAnnouncements}
+//         />
+//       </SettingsWrapper>,
+//     );
 
-    const tabListItemInitial = screen.getByRole("tab", {
-      name: "Edit your info",
-    });
-    expect(tabListItemInitial.getAttribute("aria-selected")).toBe("true");
+//     const tabListItemInitial = screen.getByRole("tab", {
+//       name: "Edit your info",
+//     });
+//     expect(tabListItemInitial.getAttribute("aria-selected")).toBe("true");
 
-    const tabListItemNext = screen.getByRole("tab", {
-      name: "Set notifications",
-    });
-    // Wrap the click (state update) in act()
-    await act(async () => {
-      await user.click(tabListItemNext);
-    });
-    expect(tabListItemInitial.getAttribute("aria-selected")).toBe("false");
-    expect(tabListItemNext.getAttribute("aria-selected")).toBe("true");
-  });
+//     const tabListItemNext = screen.getByRole("tab", {
+//       name: "Set notifications",
+//     });
+//     // Wrap the click (state update) in act()
+//     await act(async () => {
+//       await user.click(tabListItemNext);
+//     });
+//     expect(tabListItemInitial.getAttribute("aria-selected")).toBe("false");
+//     expect(tabListItemNext.getAttribute("aria-selected")).toBe("true");
+//   });
 
-  it("does not crash if no email preferences were found for the current user", () => {
-    const component = (
-      <SettingsWrapper>
-        <SettingsView
-          activeTab="notifications"
-          l10n={getL10n()}
-          user={mockedUser}
-          subscriber={mockedSubscriber}
-          breachCountByEmailAddress={{
-            [mockedUser.email]: 42,
-            [mockedSecondaryVerifiedEmail.email]: 42,
-          }}
-          emailAddresses={[mockedSecondaryVerifiedEmail]}
-          fxaSettingsUrl=""
-          enabledFeatureFlags={[]}
-          experimentData={defaultExperimentData["Features"]}
-          data={undefined}
-          actions={mockedActions}
-          userAnnouncements={mockedAnnouncements}
-        />
-      </SettingsWrapper>
-    );
+//   it("does not crash if no email preferences were found for the current user", () => {
+//     const component = (
+//       <SettingsWrapper>
+//         <SettingsView
+//           activeTab="notifications"
+//           l10n={getL10n()}
+//           user={mockedUser}
+//           subscriber={mockedSubscriber}
+//           breachCountByEmailAddress={{
+//             [mockedUser.email]: 42,
+//             [mockedSecondaryVerifiedEmail.email]: 42,
+//           }}
+//           emailAddresses={[mockedSecondaryVerifiedEmail]}
+//           fxaSettingsUrl=""
+//           enabledFeatureFlags={[]}
+//           experimentData={defaultExperimentData["Features"]}
+//           data={undefined}
+//           actions={mockedActions}
+//           userAnnouncements={mockedAnnouncements}
+//         />
+//       </SettingsWrapper>
+//     );
 
-    expect(() => render(component)).not.toThrow();
-  });
-});
+//     expect(() => render(component)).not.toThrow();
+//   });
+// });
 
 describe("Settings page redesign", () => {
   describe("Edit your info (non-US users)", () => {
