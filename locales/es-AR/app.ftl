@@ -40,7 +40,11 @@ compromised-data = Datos comprometidos:
 # Link title
 more-about-this-breach = Más acerca de esta filtración
 sensitive-sites = ¿Cómo trata { -product-name } a los sitios sensibles?
-sensitive-sites-copy = { -product-name } solo revela cuentas asociadas con este tipo de filtraciones después de que se haya verificado una dirección de correo electrónico. Esto significa que sos la única persona que puede ver si tu información estuvo en esta filtración (a menos que otra persona tenga acceso a tu cuenta de correo electrónico).
+sensitive-sites-copy =
+    { -product-name } solo revela cuentas asociadas con este
+    tipo de filtraciones después de que se haya verificado una dirección de correo electrónico. Esto significa que sos
+    la única persona que puede ver si tu información estuvo en esta filtración (a menos que otra persona
+    tenga acceso a tu cuenta de correo electrónico).
 what-data = Qué datos fueron comprometidos:
 delayed-reporting-headline = ¿Por qué se tardó tanto en informar esta filtración?
 delayed-reporting-copy =
