@@ -37,7 +37,10 @@ components:
           description: A unique identifier for the breach
           type: string
         domain:
-          description: The domain of the primary website the breach occurred on. This may be used for identifying other assets external systems may have for the site.
+          description: |
+            The domain of the primary website the breach occurred on. 
+            This may be used for identifying other assets external systems may have for the site.
+            This value comes from HIBP. See (their API docs)[https://haveibeenpwned.com/api/v3#BreachModel] for more information.
           type: string
         breachDate:
           description: The date (with no time) the breach originally occurred on in ISO 8601 format. This is not always accurate — frequently breaches are discovered and reported long after the original incident. Use this attribute as a guide only.
@@ -48,14 +51,17 @@ components:
           type: string
           format: date-time
         modifiedDate:
-          description: The date and time (precision to the minute) the breach was modified in ISO 8601 format. This will only differ from the AddedDate attribute if other attributes represented here are changed or data in the breach itself is changed (i.e. additional data is identified and loaded). It is always either equal to or greater then the AddedDate attribute, never less than.
+          description: >
+            The date and time (precision to the minute) the breach was modified in ISO 8601 format. 
+            This will only differ from the AddedDate attribute if other attributes represented here are changed 
+            or data in the breach itself is changed (i.e. additional data is identified and loaded). 
+            It is always either equal to or greater then the AddedDate attribute, never less than.
           type: string
           format: date-time
         dataClasses:
-          # Question: is this data only per-breach or do we have per-user impact?
-          # If per-breach only, BreachResolution makes sense
-          # If individual user, maybe need BreachImpact or something
-          description: This attribute describes the nature of the data compromised in the breach and contains an alphabetically ordered string array of impacted data classes. See https://haveibeenpwned.com/api/v3/dataclasses for list of dataclasses.
+          description: >
+            This attribute describes the nature of the data compromised in the breach and contains an alphabetically
+            ordered string array of impacted data classes. See https://haveibeenpwned.com/api/v3/dataclasses for list of dataclasses.
           type: array
           items:
             type: string
@@ -124,7 +130,6 @@ paths:
           required: false
           description: >
             Filter breaches to those whose breach.dataClasses includes any (but not necessarily all) of the specified values.
-            Matching is performed at the breach level (not per monitored email).
           schema:
             type: array
             items:
@@ -143,9 +148,11 @@ paths:
           required: false
           description: >
             Filter breaches to those where one or more of the specified dataclasses
-            are still unresolved for the authenticated user.
+            are still unresolved for the authenticated user, for at least one breached account.
             A breach matches if any of the specified dataclasses are unresolved 
-            for at least one monitored email.
+            for at least one monitored email. Note that the breached accounts in the response are
+            not filtered by this parameter; the client will receive the complete set of breached account states
+            for the given breach.
           schema:
             type: array
             items:
@@ -183,7 +190,7 @@ paths:
                   summary: Breaches found
                   value:
                     - breach:
-                        id: 123
+                        id: "Breach1"
                         domain: "example.com"
                         breachDate: "2023-04-10"
                         addedDate: "2023-05-01T12:34:00Z"
@@ -203,100 +210,6 @@ paths:
           description: Authentication required
         "403":
           description: Not authorized
-
-  /user/breaches/{breachId}/resolutions:
-    post:
-      description: |
-        Upsert resolution state for one breach across one or more monitored email addresses.
-
-        This operation is idempotent per `(email, dataClass)` within the breach. Repeating the same
-        request results in the same stored state and does not produce an error.
-
-        If `emails` is omitted, the update applies to all monitored email addresses affected by this
-        breach for the authenticated user.
-
-        **Authorization and privacy**
-        - All `emails` provided must be monitored by the authenticated user.
-        - For privacy reasons, if any provided email address is not associated with the authenticated
-          user, the server treats the request as if the resource does not exist and returns
-          `404 Not Found`.
-
-        **Atomicity**
-        - Requests are atomic: the update is applied to all targeted emails and dataclasses, or to none.
-
-      parameters:
-        - name: breachId
-          in: path
-          required: true
-          schema:
-            type: integer
-          examples:
-            example:
-              summary: Example breach id
-              value: 123
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              additionalProperties: false
-              required:
-                - dataClasses
-                - resolved
-              properties:
-                emails:
-                  type: array
-                  minItems: 1
-                  description: >
-                    Monitored email addresses to apply the update to. If omitted, applies to all
-                    monitored email addresses affected by this breach.
-                  items:
-                    type: string
-                    format: email
-                dataClasses:
-                  type: array
-                  minItems: 1
-                  description: Dataclasses to mark resolved/unresolved for the selected emails.
-                  items:
-                    type: string
-                resolved:
-                  type: boolean
-                  description: True to mark resolved; false to mark unresolved (undo).
-            examples:
-              resolvePasswordsOneEmail:
-                summary: Resolve Passwords for one email in this breach
-                value:
-                  emails: ["alice@example.com"]
-                  dataClasses: ["passwords"]
-                  resolved: true
-              resolvePasswordsAllEmailsInBreach:
-                summary: Resolve Passwords for all affected emails in this breach
-                value:
-                  dataClasses: ["passwords"]
-                  resolved: true
-              resolveMultipleDataClassesTwoEmails:
-                summary: Resolve multiple dataclasses for multiple emails
-                value:
-                  emails: ["alice@example.com", "bob@example.com"]
-                  dataClasses: ["passwords", "email-addresses"]
-                  resolved: true
-              undoPasswordsAllEmailsInBreach:
-                summary: Undo Passwords resolution for all affected emails in this breach
-                value:
-                  dataClasses: ["passwords"]
-                  resolved: false
-      responses:
-        "204":
-          description: Resolution state updated successfully.
-        "400":
-          description: Invalid request (e.g., empty dataClasses, invalid emails).
-        "401":
-          description: Authentication required
-        "403":
-          description: Not authorized
-        "404":
-          description: Breach or email not found (or not visible to this user)
 
   /user/breaches/resolutions:
     post:
@@ -330,45 +243,50 @@ paths:
           examples:
             example:
               summary: Example breach id
-              value: 123
+              value: "Breach1"
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              type: object
-              additionalProperties: false
-              required:
-                - dataClasses
-                - resolved
-                - breachId
-              properties:
-                emails:
-                  type: array
-                  minItems: 1
-                  description: >
-                    Monitored email addresses to apply the update to. If omitted, applies to all
-                    monitored email addresses affected by the referenced breach.
-                  items:
+              type: array
+              items:
+                type: object
+                additionalProperties: false
+                required:
+                  - dataClasses
+                  - resolved
+                  - breachId
+                properties:
+                  emails:
+                    type: array
+                    minItems: 1
+                    description: >
+                      Monitored email addresses to apply the update to. If omitted, applies to all
+                      monitored email addresses affected by the referenced breach.
+                    items:
+                      type: string
+                      format: email
+                  dataClasses:
+                    type: array
+                    minItems: 1
+                    description: Dataclasses to mark resolved/unresolved for the selected emails.
+                    items:
+                      type: string
+                  breachId:
+                    description: The unique breach identifier
                     type: string
-                    format: email
-                dataClasses:
-                  type: array
-                  minItems: 1
-                  description: Dataclasses to mark resolved/unresolved for the selected emails.
-                  items:
-                    type: string
-                resolved:
-                  type: boolean
-                  description: True to mark resolved; false to mark unresolved.
+                  resolved:
+                    type: boolean
+                    description: True to mark resolved; false to mark unresolved.
             examples:
               resolveMultipleBreaches:
                 summary: Resolve multiple breaches
                 value:
-                  - breachId: 123
+                  - breachId: "Breach1"
                     dataClasses: ["passwords"]
                     resolved: true
-                  - breachId: 456
+                  - breachId: "Breach2"
                     dataClasses: ["passwords"]
                     emails: ["alice@example.com"]
                     resolved: true
@@ -377,22 +295,22 @@ paths:
                 value:
                   - emails: ["alice@example.com"]
                     dataClasses: ["passwords"]
-                    breachId: 123
+                    breachId: "Breach1"
                     resolved: true
               undoPasswordsAllEmailsInBreach:
                 summary: Unresolve Passwords resolution for all affected emails in multiple breaches
                 value:
                   - dataClasses: ["passwords"]
                     resolved: false
-                    breachId: 123
+                    breachId: "Breach1"
                   - dataClasses: ["passwords"]
                     resolved: false
-                    breachId: 456
+                    breachId: "Breach2"
       responses:
         "204":
           description: Resolution state updated successfully.
         "400":
-          description: Invalid request (e.g., empty dataClasses, invalid emails, non-unique breach IDs).
+          description: Invalid request (e.g., empty dataClasses, invalid email string format, non-unique breach IDs).
         "401":
           description: Authentication required
         "403":
