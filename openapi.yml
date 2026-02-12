@@ -35,7 +35,7 @@ components:
       properties:
         id:
           description: A unique identifier for the breach
-          type: integer
+          type: string
         domain:
           description: The domain of the primary website the breach occurred on. This may be used for identifying other assets external systems may have for the site.
           type: string
@@ -123,7 +123,7 @@ paths:
           in: query
           required: false
           description: >
-            Filter breaches to those whose breach.dataClasses includes any of the specified values.
+            Filter breaches to those whose breach.dataClasses includes any (but not necessarily all) of the specified values.
             Matching is performed at the breach level (not per monitored email).
           schema:
             type: array
@@ -360,7 +360,7 @@ paths:
                     type: string
                 resolved:
                   type: boolean
-                  description: True to mark resolved; false to mark unresolved (undo).
+                  description: True to mark resolved; false to mark unresolved.
             examples:
               resolveMultipleBreaches:
                 summary: Resolve multiple breaches
@@ -380,7 +380,7 @@ paths:
                     breachId: 123
                     resolved: true
               undoPasswordsAllEmailsInBreach:
-                summary: Undo Passwords resolution for all affected emails in multiple breaches
+                summary: Unresolve Passwords resolution for all affected emails in multiple breaches
                 value:
                   - dataClasses: ["passwords"]
                     resolved: false
