@@ -13,7 +13,6 @@ import { NextRequest, NextResponse } from "next/server";
 import { bearerToken } from "../../../utils/auth";
 import { logger } from "../../../../functions/server/logging";
 
-import { PubSub } from "@google-cloud/pubsub";
 import { isValidBearer } from "../../../../../utils/hibp";
 import { config } from "../../../../../config";
 import {
@@ -22,6 +21,7 @@ import {
 } from "../../../../../utils/metrics";
 
 import * as Sentry from "@sentry/nextjs";
+import { getPubSub } from "../../../../gcp/clients";
 
 export type PostHibpNotificationRequestBody = {
   breachName: string;
@@ -38,10 +38,9 @@ export type PostHibpNotificationRequestBody = {
 export async function POST(req: NextRequest) {
   incHibpNotifyRequest();
 
-  let pubsub: PubSub;
+  const pubsub = getPubSub();
   let json: PostHibpNotificationRequestBody;
   const hibpNotifyToken = config.hibpNotifyToken;
-  const projectId = config.gcp.projectId;
   const topicName = config.gcp.pubsub.hibpTopic;
   try {
     const headerToken = bearerToken(req);
@@ -70,26 +69,7 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    pubsub = new PubSub({ projectId, enableOpenTelemetryTracing: true });
-  } catch (ex) {
-    logger.error("error_connecting_to_pubsub:", { exception: ex as string });
-    Sentry.captureException(ex);
-    incHibpNotifyFailure("pubsub-error");
-    return NextResponse.json({ success: false }, { status: 429 });
-  }
-
-  try {
-    const topic = pubsub.topic(topicName);
-    const [exists] = await topic.exists();
-    if (!exists) {
-      logger.error("error_connecting_to_pubsub: topic does not exist", {
-        topic: topicName,
-      });
-      incHibpNotifyFailure("pubsub-error");
-      Sentry.captureException(new Error("Pubsub topic does not exist"));
-      return NextResponse.json({ success: false }, { status: 500 });
-    }
-    await topic.publishMessage({ json });
+    await pubsub.topic(topicName).publishMessage({ json });
     logger.info("queued_breach_notification_success", {
       json,
       topic: topicName,
