@@ -16,7 +16,9 @@ email-footer-reason-subscriber = Tento automatický e-mail dostáváte jako odb�
 email-footer-reason-subscriber-one-time = Tento jednorázový automatický e-mail jste dostali, protože jste přihlášeni k odběru { -brand-monitor-plus }. Žádné další podobné e-maily vám již chodit nebudou. Pro více informací prosím navštivte <support-link>podporu aplikace { -brand-mozilla }</support-link>.
 # Variables:
 #    $support_link (string) - The URL the user can visit for support, e.g. "https://support.mozilla.org"
-email-footer-support-content-plain = Pro pomoc navštivte naše centrum podpory: { $support_link }
+email-footer-support-content-plain =
+    Pro pomoc navštivte naše centrum podpory: 
+    { $support_link }
 # Variables:
 #   $hibp_link (string) - URL to Have I Been Pwned, e.g. "https://haveibeenpwned.com".
 email-footer-source-hibp-plain = Údaje o únicích ze zdroje { -brand-HIBP }: { $hibp_link }

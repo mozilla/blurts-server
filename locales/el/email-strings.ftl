@@ -12,14 +12,16 @@ email-header-button-sign-in = Σύνδεση
 email-footer-support-heading = Έχετε απορίες για το { -brand-mozilla-monitor };
 email-footer-support-content = Επισκεφτείτε το <support-link>Κέντρο υποστήριξης</support-link> για βοήθεια
 email-footer-trigger-transactional = Λαμβάνετε αυτό το email ως συνδρομητής του { -brand-mozilla-monitor }.
-email-footer-reason-subscriber = Λαμβάνετε αυτό το αυτοματοποιημένο email ως συνδρομητής των { -brand-mozilla-monitor }. Αν το λάβατε κατά λάθος, δεν απαιτείται καμία ενέργεια. Για περισσότερες πληροφορίες, παρακαλούμε επισκεφθείτε την <support-link>Υποστήριξη { -brand-mozilla }</support-link>.
-email-footer-reason-subscriber-one-time = Έχετε λάβει αυτό το αυτοματοποιημένο email, επειδή έχετε εγγραφεί στο { -brand-monitor-plus }. Δεν θα λαμβάνετε άλλα emails όπως αυτό. Για περισσότερες πληροφορίες, παρακαλούμε επισκεφθείτε την <support-link>Υποστήριξη { -brand-mozilla }</support-link>.
+email-footer-reason-subscriber = Λαμβάνετε αυτό το αυτοματοποιημένο email ως συνδρομητής του { -brand-mozilla-monitor }. Εάν το λάβατε κατά λάθος, δεν απαιτείται καμία ενέργεια. Για περισσότερες πληροφορίες, επισκεφθείτε την <support-link>Υποστήριξη { -brand-mozilla }</support-link>.
+email-footer-reason-subscriber-one-time = Έχετε λάβει αυτό το αυτοματοποιημένο email επειδή έχετε εγγραφεί στο { -brand-monitor-plus }. Δεν θα λάβετε ξανά κάποιο email σαν κι αυτό. Για περισσότερες πληροφορίες, επισκεφθείτε την <support-link>Υποστήριξη { -brand-mozilla }</support-link>.
 # Variables:
 #    $support_link (string) - The URL the user can visit for support, e.g. "https://support.mozilla.org"
-email-footer-support-content-plain = Επισκεφτείτε το κέντρο υποστήριξης για βοήθεια: { $support_link }
+email-footer-support-content-plain =
+    Επισκεφθείτε το κέντρο υποστήριξης για βοήθεια:
+    { $support_link }
 # Variables:
 #   $hibp_link (string) - URL to Have I Been Pwned, e.g. "https://haveibeenpwned.com".
-email-footer-source-hibp-plain = Δεδομένα παραβιάσεων παρέχονται από το { -brand-HIBP }: { $hibp_link }
+email-footer-source-hibp-plain = Τα δεδομένα παραβιάσεων παρέχονται από το { -brand-HIBP }: { $hibp_link }
 email-footer-source-hibp = Τα δεδομένα παραβιάσεων παρέχονται από το <hibp-link>{ -brand-HIBP }</hibp-link>
 email-footer-logo-mozilla-alt = { -brand-mozilla }
 email-footer-meta-privacy-notice = Απόρρητο

@@ -21,24 +21,24 @@ settings-alert-preferences-option-two = Αποστολή όλων των ειδ�
 settings-email-verification-callout = Απαιτείται επαλήθευση email
 settings-remove-email-button-label = Αφαίρεση
 settings-email-addresses-header = Διευθύνσεις email
-settings-email-addresses-description = Το { -brand-monitor } θα σας ειδοποιήσει αν αυτά τα email εμφανιστούν σε γνωστές παραβιάσεις.
+settings-email-addresses-description = Το { -brand-monitor } θα σας ειδοποιήσει αν αυτές οι διευθύνσεις email εμφανιστούν σε γνωστές παραβιάσεις.
 settings-email-addresses-add-email-button = Προσθήκη διεύθυνσης email
 # Variables:
 #   $limit (number) - Number of emails that can be added for monitoring.
-settings-email-addresses-add-email-indicator-limit = Προσθήκη έως { $limit }
-settings-email-addresses-add-email-resend-button-label = Εκ νέου αποστολή συνδέσμου επαλήθευσης
+settings-email-addresses-add-email-indicator-limit = Προσθέστε έως και { $limit }
+settings-email-addresses-add-email-resend-button-label = Αποστολή νέου συνδέσμου επαλήθευσης
 input-error-alt = Σφάλμα
 
 ## Email address dialog
 
-settings-email-addresses-initial-dialog-header = Προσθέστε μια διεύθυνση email
-settings-email-addresses-initial-dialog-description = Θα σας στείλουμε έναν σύνδεσμο επαλήθευσης για να επιβεβαιώσουμε ότι θέλετε να τον συμπεριλάβετε σε μια μελλοντική σάρωση { -brand-monitor }.
+settings-email-addresses-initial-dialog-header = Προσθήκη διεύθυνσης email
+settings-email-addresses-initial-dialog-description = Θα σας στείλουμε έναν σύνδεσμο επαλήθευσης για να επιβεβαιώσουμε ότι θέλετε να τη συμπεριλάβετε σε μια μελλοντική σάρωση του { -brand-monitor }.
 settings-email-addresses-initial-dialog-add-email-input-label = Εισαγάγετε διεύθυνση email
 settings-email-addresses-initial-dialog-add-email-button-label = Αποστολή συνδέσμου επαλήθευσης
 # Variables:
 #   $email (string) - Email address the confirmation has been sent to.
-settings-email-addresses-confirmation-dialog-header = Απεστάλη σύνδεσμος επαλήθευσης στη διεύθυνση <b>{ $email }</b>
-settings-email-addresses-confirmation-dialog-description = Ανοίξτε το σύνδεσμο για να το προσθέσετε σε αυτόν τον λογαριασμό για μελλοντικές σαρώσεις { -brand-monitor }.
+settings-email-addresses-confirmation-dialog-header = Απεστάλη σύνδεσμος επαλήθευσης στο <b>{ $email }</b>
+settings-email-addresses-confirmation-dialog-description = Ανοίξτε τον σύνδεσμο για να την προσθέσετε σε αυτόν τον λογαριασμό για μελλοντικές σαρώσεις του { -brand-monitor }.
 settings-email-addresses-confirmation-dialog-close-button = Κλείσιμο
 
 ## Delete Monitor account
