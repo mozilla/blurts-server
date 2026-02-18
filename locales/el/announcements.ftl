@@ -22,8 +22,8 @@ announcement-big-img-alt = Εικόνα ανακοίνωσης
 # $emailAddressesCount (string) - number of email addresses allowed for data breach monitoring
 announcement-free-data-breach-monitoring-title =
     { $emailAddressesCount ->
-        [one] Λάβετε δωρεάν εποπτεία παραβίασης δεδομένων για έως και { $emailAddressesCount } διευθύνσεις email.
-       *[other] Λάβετε δωρεάν εποπτεία παραβίασης δεδομένων για έως και { $emailAddressesCount } διευθύνσεις email.
+        [one] Λάβετε δωρεάν εποπτεία για παραβιάσεις δεδομένων σε έως και { $emailAddressesCount } διεύθυνση email.
+       *[other] Λάβετε δωρεάν εποπτεία για παραβιάσεις δεδομένων σε έως και { $emailAddressesCount } διευθύνσεις email.
     }
-announcement-free-data-breach-monitoring-description = Προστατέψτε τις πληροφορίες σας με την εποπτεία παραβίασης δεδομένων. Το { -brand-monitor } θα σας ειδοποιήσει αν εμφανιστούν οι πληροφορίες σας σε μια παραβίαση δεδομένων.
+announcement-free-data-breach-monitoring-description = Προστατέψτε τις πληροφορίες σας με την εποπτεία για παραβιάσεις δεδομένων. Το { -brand-monitor } θα σας ειδοποιήσει αν εμφανιστούν οι πληροφορίες σας σε κάποια παραβίαση δεδομένων.
 announcement-free-data-breach-monitoring-cta-label = Μάθετε περισσότερα
