@@ -9,95 +9,101 @@
  * node src/scripts/syncBreaches.js
  */
 
-import * as Sentry from "@sentry/node";
-
-Sentry.init({
-  dsn: config.sentryDsn,
-  tracesSampleRate: 1.0,
-});
-
-import { readdir } from "node:fs/promises";
-import os from "node:os";
-import { fetchHibpBreaches, HibpGetBreachesResponse } from "../../utils/hibp";
+import {
+  fetchHibpBreaches,
+  HibpGetBreachesResponse,
+} from "../../../utils/hibp";
 import {
   getAllBreaches,
   upsertBreaches,
   updateBreachFaviconUrl,
-} from "../../db/tables/breaches";
+  getBreachFaviconUrl,
+} from "../../../db/tables/breaches";
 import {
   redisClient,
   REDIS_ALL_BREACHES_KEY,
   BREACHES_EXPIRY_SECONDS,
-} from "../../db/redis/client.js";
-import { uploadToS3 } from "../../utils/s3.js";
-import { config } from "../../config";
-import { logger as baseLogger } from "../../app/functions/server/logging";
-
-const SENTRY_SLUG = "cron-sync-breaches";
-
-const checkInId = Sentry.captureCheckIn({
-  monitorSlug: SENTRY_SLUG,
-  status: "in_progress",
-});
+} from "../../../db/redis/client";
+import { uploadToS3, checkS3ObjectExists } from "../../../utils/s3";
+import { config } from "../../../config";
+import { logger as baseLogger } from "../../../app/functions/server/logging";
 
 const logger = baseLogger.child({ module: "syncBreaches" });
 
 export async function getBreachIcons(breaches: HibpGetBreachesResponse) {
-  // make logofolder if it doesn't exist
-  // TODO: clean up unused folder and existing logo logic
-  // MNTOR-5166
-  const logoFolder = os.tmpdir();
-  logger.debug(`Logo folder: ${logoFolder}`);
-
-  // read existing logos
-  const existingLogos = await readdir(logoFolder);
-
   for (const breach of breaches) {
     const breachDomain = breach.Domain;
     const breachName = breach.Name;
 
+    // Skip breaches without domains
     if (!breachDomain || breachDomain.length === 0) {
       logger.info("Breach has empty domain", { breachName });
       await updateBreachFaviconUrl(breachName, null);
       continue;
     }
+
     const logoFilename = breachDomain.toLowerCase() + ".ico";
-    // TODO: Check S3 bucket, not file system, for existing logos
-    // MNTOR-5166
-    if (existingLogos.includes(logoFilename)) {
-      logger.info("skipping ", logoFilename);
-      await updateBreachFaviconUrl(
-        breachName,
-        `https://s3.amazonaws.com/${config.s3Bucket}/${logoFilename}`,
-      );
-      continue;
-    }
-    logger.info("Fetching logo", { logoFilename });
-    const res = await fetch(
-      `https://icons.duckduckgo.com/ip3/${breachDomain}.ico`,
-    );
-    if (res.status !== 200) {
-      // update logo path with null
-      logger.info("Logo does not exist", { breachName, breachDomain });
-      await updateBreachFaviconUrl(breachName, null);
-      continue;
-    }
+    const s3LogoUrl = `https://s3.amazonaws.com/${config.s3Bucket}/${logoFilename}`;
 
     try {
-      // TODO: Do not reupload to S3 if logo already exists
-      // MNTOR-5166
-      await uploadToS3(logoFilename, Buffer.from(await res.arrayBuffer()));
-      await updateBreachFaviconUrl(
+      // Check if logo exists in S3 and get its metadata
+      const exists = await checkS3ObjectExists(logoFilename, config.s3Bucket);
+      const dbFaviconUrl = await getBreachFaviconUrl(breachName);
+
+      if (exists && dbFaviconUrl === s3LogoUrl) {
+        logger.info("Logo already exists in S3. Skipping", { logoFilename });
+        continue;
+        // S3 record exists but db does not have the same URI
+      } else if (exists && dbFaviconUrl !== s3LogoUrl) {
+        logger.info("Logo exists in S3, but is not linked in DB. Updating", {
+          breachName,
+          s3LogoUrl,
+        });
+        await updateBreachFaviconUrl(breachName, s3LogoUrl);
+        continue;
+      }
+      // Fetch logo from DuckDuckGo
+      const iconUri = `https://icons.duckduckgo.com/ip3/${breachDomain}.ico`;
+      const res = await fetch(iconUri);
+
+      if (res.status !== 200) {
+        logger.warn("Logo does not exist or is inaccessible", {
+          breachName,
+          breachDomain,
+          iconUri,
+          status: res.status,
+        });
+        await updateBreachFaviconUrl(breachName, null);
+        continue;
+      }
+
+      // Upload logo to S3
+      const logoBuffer = Buffer.from(await res.arrayBuffer());
+      await uploadToS3(logoFilename, logoBuffer, config.s3Bucket);
+
+      // Update database with S3 URL
+      await updateBreachFaviconUrl(breachName, s3LogoUrl);
+
+      logger.info("Successfully uploaded logo", {
+        logoFilename,
         breachName,
-        `https://s3.amazonaws.com/${config.s3Bucket}/${logoFilename}`,
-      );
-    } catch (e) {
-      logger.error(e);
+      });
+    } catch (error) {
+      // Log error but continue processing other breaches
+      logger.error("Failed to process breach icon", {
+        error,
+        breachName,
+        breachDomain,
+        logoFilename,
+      });
       continue;
     }
   }
 }
-async function run() {
+
+// TODO: MNTOR-5188
+/* c8 ignore start */
+export async function run() {
   // Get breaches and upserts to DB
   const breachesResponse = await fetchHibpBreaches();
   const seen = new Set();
@@ -148,25 +154,10 @@ async function run() {
       logger.error("Update Redis failed for syncBreaches.ts", { error: e });
     }
   }
+  logger.info("Starting breach icon sync");
   await getBreachIcons(breachesResponse);
+  logger.info("Completed breach icon sync");
 }
-
-try {
-  await run();
-  Sentry.captureCheckIn({
-    checkInId,
-    monitorSlug: SENTRY_SLUG,
-    status: "ok",
-  });
-} catch (error) {
-  Sentry.captureCheckIn({
-    checkInId,
-    monitorSlug: SENTRY_SLUG,
-    status: "error",
-  });
-  throw error;
-}
-setTimeout(process.exit, 1000);
 
 /**
  * Null check for some required field
@@ -183,3 +174,4 @@ function isValidBreach(breach: HibpGetBreachesResponse[number]) {
     breach.DataClasses !== undefined
   );
 }
+/* c8 ignore end */

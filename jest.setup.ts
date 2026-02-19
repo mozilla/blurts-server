@@ -54,3 +54,7 @@ if (typeof global.TextDecoder === "undefined") {
 // TODO: Centralize and streamline configuration for environments
 // https://mozilla-hub.atlassian.net/browse/MNTOR-5089
 process.env.PUBSUB_EMULATOR_HOST = "localhost:8085";
+
+// node tests use fetch but jsom env doesn't include it in namespace
+// add as a mock since we don't want to do real fetches anyway
+global.fetch = jest.fn();
