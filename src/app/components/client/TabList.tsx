@@ -5,11 +5,12 @@
 import { Key, ReactNode, useRef } from "react";
 import {
   AriaTabListOptions,
+  AriaTabPanelProps,
   useTab,
   useTabList,
   useTabPanel,
 } from "react-aria";
-import { Item, useTabListState } from "react-stately";
+import { Item, Node } from "react-stately";
 import styles from "./TabList.module.scss";
 import { TabListState, TabListStateOptions } from "@react-stately/tabs";
 
@@ -18,6 +19,7 @@ export type TabsProps = (
   | AriaTabListOptions<object>
 ) & {
   variant?: "primary" | "secondary";
+  state: TabListState<object>;
 };
 
 export type TabListProps = TabsProps & {
@@ -29,30 +31,26 @@ export type TabListProps = TabsProps & {
 };
 
 export interface TabParams {
-  item: {
-    key: Parameters<typeof useTab>[0]["key"];
-    rendered: ReactNode;
-  };
+  item: Node<object>;
   state: TabListState<object>;
 }
 
 function Tab({ item, state }: TabParams) {
-  const { key, rendered } = item;
   const ref = useRef(null);
+  const { key } = item;
   const { tabProps } = useTab({ key }, state, ref);
 
   return (
     <div {...tabProps} ref={ref} className={styles.tab}>
-      {rendered}
+      {item.rendered}
     </div>
   );
 }
 
 function Tabs(props: TabsProps) {
-  const state = useTabListState(props);
   const ref = useRef(null);
-  const { tabListProps } = useTabList(props, state, ref);
-  const { collection, selectedItem } = state;
+  const { tabListProps } = useTabList(props, props.state, ref);
+  const { collection } = props.state;
 
   return (
     <div
@@ -61,22 +59,9 @@ function Tabs(props: TabsProps) {
     >
       <div {...tabListProps} ref={ref} className={styles.tabs}>
         {[...collection].map((item) => (
-          <Tab key={item.key} item={item} state={state} />
+          <Tab key={item.key} item={item} state={props.state} />
         ))}
       </div>
-      <TabPanel key={selectedItem?.key} state={state} />
-    </div>
-  );
-}
-
-function TabPanel({ state, ...props }: { state: TabListState<object> }) {
-  const ref = useRef(null);
-  const { tabPanelProps } = useTabPanel(props, state, ref);
-  const { selectedItem } = state;
-
-  return (
-    <div {...tabPanelProps} ref={ref} className={styles.tabPanel}>
-      {selectedItem?.props.children}
     </div>
   );
 }
@@ -92,3 +77,20 @@ export const TabList = ({ tabs, ...props }: TabListProps) => {
     </Tabs>
   );
 };
+
+// This component is what's used to wrapped around the content of each tab, and is responsible for showing/hiding the content based on the selected tab.
+export interface TabPanelProps extends AriaTabPanelProps {
+  state: TabListState<object>;
+  className?: string;
+  children: ReactNode;
+}
+
+export function TabPanel({ state, ...props }: TabPanelProps) {
+  const ref = useRef(null);
+  const { tabPanelProps } = useTabPanel(props, state, ref);
+  return (
+    <div {...tabPanelProps} ref={ref} className={props.className}>
+      {props.children}
+    </div>
+  );
+}

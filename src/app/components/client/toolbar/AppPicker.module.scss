@@ -116,17 +116,14 @@
       }
     }
 
-    &.isFocused {
+    //  &:focus-visible {
+    //   outline-offset: calc(-1 * tokens.$border-focus-width);
+    //   outline: tokens.$border-focus-width solid tokens.$color-purple-10;
+    // }
+
+    &:hover {
       outline: none;
-      cursor: pointer;
-
-      .menuLink {
-        color: tokens.$color-violet-90;
-
-        img {
-          background-color: tokens.$color-violet-10;
-        }
-      }
+      background-color: tokens.$color-purple-05;
     }
   }
 }

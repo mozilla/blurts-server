@@ -20,6 +20,7 @@ import {
   useMenuItem,
   AriaMenuProps,
   AriaMenuTriggerProps,
+  useFocusRing,
 } from "react-aria";
 import { useRef } from "react";
 import Image from "next/image";
@@ -222,9 +223,7 @@ type AppPickerMenuProps<T> = AriaMenuProps<T>;
 /* c8 ignore start */
 const AppPickerMenu = <T extends object>(props: AppPickerMenuProps<T>) => {
   const l10n = useL10n();
-
   const menuState = useTreeState({ ...props });
-
   const menuRef = useRef<HTMLDivElement>(null);
   const menuProps = useMenu(props, menuState, menuRef).menuProps;
 
@@ -234,7 +233,12 @@ const AppPickerMenu = <T extends object>(props: AppPickerMenuProps<T>) => {
         <Image src={FirefoxLogo} alt="" width={32} height={32} />
         <h2>{l10n.getString("fx-makes-tech")}</h2>
       </div>
-      <div {...menuProps} ref={menuRef} className={styles.menuWrapper}>
+      <div
+        {...menuProps}
+        ref={menuRef}
+        tabIndex={-1}
+        className={styles.menuWrapper}
+      >
         {Array.from(menuState.collection).map((item) => (
           <AppPickerItem key={item.key} item={item} state={menuState} />
         ))}
@@ -257,8 +261,9 @@ const AppPickerItem = <T extends object>(props: AppPickerItemProps<T>) => {
   const anchorRef = useRef<HTMLAnchorElement>(null);
   const divRef = useRef<HTMLDivElement>(null);
   const ref = isLink ? anchorRef : divRef;
+  const { focusProps } = useFocusRing();
 
-  const { menuItemProps, isFocused } = useMenuItem(
+  const { menuItemProps } = useMenuItem(
     {
       key: props.item.key,
     },
@@ -267,8 +272,8 @@ const AppPickerItem = <T extends object>(props: AppPickerItemProps<T>) => {
   );
 
   const commonProps = {
-    ...menuItemProps,
-    className: `${styles.menuItemWrapper} ${isFocused ? styles.isFocused : ""}`,
+    ...mergeProps(menuItemProps, focusProps),
+    className: styles.menuItemWrapper,
   };
 
   if (isLink) {
