@@ -20,10 +20,10 @@ describe("fetchWithDelay", () => {
 
   it("throws an error", async () => {
     global.fetch = vi.fn().mockRejectedValueOnce(new Error("fetch failed"));
-    await expect(async () => {
-      await fetchWithDelay(`${faker.internet.url()}/api/test`, {
+    await expect(
+      fetchWithDelay(`${faker.internet.url()}/api/test`, {
         delay: 750,
-      });
-    }).rejects.toThrow("fetch failed");
+      }),
+    ).rejects.toThrow("fetch failed");
   });
 });

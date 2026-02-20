@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { render, screen, within } from "@testing-library/react";
-import { it, expect, vi } from "vitest";
+import { it, expect, vi, beforeEach } from "vitest";
 import { composeStory } from "@storybook/react";
 import { axe } from "vitest-axe";
 import Meta, {
@@ -32,6 +32,13 @@ vi.mock("next/navigation", () => ({
   }),
   usePathname: vi.fn(),
 }));
+
+beforeEach(() =>
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+  vi.spyOn(console, "error").mockImplementationOnce(() => undefined),
+);
 
 it("leaked passwords component passes the axe accessibility test suite", async () => {
   const ComposedComponent = composeStory(PasswordsStory, Meta);
@@ -164,12 +171,7 @@ it("records telemetry when resolving a password", async () => {
   const buttonLink = screen.getByRole("button", {
     name: "Mark as fixed",
   });
-  // jsdom will complain about not being able to navigate to a different page
-  // after clicking the link; suppress that error, as it's not relevant to the
-  // test:
-  const consoleErrorSpy: MockedFunction<typeof console.error> = vi
-    .spyOn(console, "error")
-    .mockImplementationOnce(() => undefined);
+
   await user.click(buttonLink);
 
   expect(mockedRecord).toHaveBeenCalledWith(
@@ -191,12 +193,6 @@ it("records telemetry when resolving a security question", async () => {
   const buttonLink = screen.getByRole("button", {
     name: "Mark as fixed",
   });
-  // jsdom will complain about not being able to navigate to a different page
-  // after clicking the link; suppress that error, as it's not relevant to the
-  // test:
-  const consoleErrorSpy: MockedFunction<typeof console.error> = vi
-    .spyOn(console, "error")
-    .mockImplementationOnce(() => undefined);
   await user.click(buttonLink);
 
   expect(mockedRecord).toHaveBeenCalledWith(
@@ -218,12 +214,6 @@ it("records telemetry when skipping the passwords step", async () => {
   const buttonLink = screen.getByRole("link", {
     name: "Skip for now",
   });
-  // jsdom will complain about not being able to navigate to a different page
-  // after clicking the link; suppress that error, as it's not relevant to the
-  // test:
-  const consoleErrorSpy: MockedFunction<typeof console.error> = vi
-    .spyOn(console, "error")
-    .mockImplementationOnce(() => undefined);
   await user.click(buttonLink);
 
   expect(mockedRecord).toHaveBeenCalledWith(
@@ -245,12 +235,6 @@ it("records telemetry when skipping the security questions step", async () => {
   const buttonLink = screen.getByRole("link", {
     name: "Skip for now",
   });
-  // jsdom will complain about not being able to navigate to a different page
-  // after clicking the link; suppress that error, as it's not relevant to the
-  // test:
-  const consoleErrorSpy: MockedFunction<typeof console.error> = vi
-    .spyOn(console, "error")
-    .mockImplementationOnce(() => undefined);
   await user.click(buttonLink);
 
   expect(mockedRecord).toHaveBeenCalledWith(
@@ -274,13 +258,6 @@ it("records telemetry when clicking the breach link on a leaked password resolut
   });
   const buttonLink = within(changeInfoBullet).getByRole("link");
   expect(buttonLink).toBeInTheDocument();
-
-  // jsdom will complain about not being able to navigate to a different page
-  // after clicking the link; suppress that error, as it's not relevant to the
-  // test:
-  const consoleErrorSpy: MockedFunction<typeof console.error> = vi
-    .spyOn(console, "error")
-    .mockImplementationOnce(() => undefined);
   await user.click(buttonLink);
 
   expect(mockedRecord).toHaveBeenCalledWith(

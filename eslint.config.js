@@ -7,7 +7,7 @@ import globals from "globals";
 import checkFile from "eslint-plugin-check-file";
 import header from "eslint-plugin-header";
 import importPlugin from "eslint-plugin-import";
-import jestPlugin from "eslint-plugin-jest";
+import vitestPlugin from "@vitest/eslint-plugin";
 import js from "@eslint/js";
 import jsdoc from "eslint-plugin-jsdoc";
 import storybook from "eslint-plugin-storybook";
@@ -171,11 +171,15 @@ const estlintConfig = defineConfig([
     rules: { "header/header": "off" },
   },
 
-  // Jest configuration for test files
+  // Vitest configuration for test files
   {
-    files: ["**/*.{test,spec}.{ts,tsx,js}", "jest.setup.ts"],
-    plugins: { jest: jestPlugin },
-    rules: jestPlugin.configs.recommended.rules,
+    files: [
+      "**/*.{test,spec}.{ts,tsx}",
+      "**/*.integration.{ts,tsx}",
+      "vitest.setup.ts",
+    ],
+    plugins: { vitest: vitestPlugin },
+    rules: vitestPlugin.configs.recommended.rules,
   },
 
   // Next is not running ESLint on root files by default. The only way to

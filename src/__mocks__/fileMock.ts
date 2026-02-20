@@ -4,4 +4,5 @@
 
 // Generic mock for static assets (images, fonts, etc.) imported in tests.
 // Mimics Jest's moduleNameMapper with identity-obj-proxy/file-mock pattern.
-export default "test-file-stub";
+const fileStub = "test-file-stub";
+export default fileStub;

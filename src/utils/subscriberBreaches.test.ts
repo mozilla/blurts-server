@@ -219,7 +219,9 @@ describe("getSubBreaches", () => {
       // The only affected email is the user's primary email; they have no
       // additional email addresses in this test:
       .mockResolvedValueOnce([]);
-    vi.mocked(getBreachesForEmail).mockResolvedValueOnce(breachesWithNoneResolved);
+    vi.mocked(getBreachesForEmail).mockResolvedValueOnce(
+      breachesWithNoneResolved,
+    );
     const subBreaches = await getSubBreaches(subscriber, [], "us");
     expect(subBreaches.length).toEqual(1);
     expect(subBreaches[0].isResolved).toBe(false);
@@ -238,7 +240,9 @@ describe("getSubBreaches", () => {
       // The only affected email is the user's primary email; they have no
       // additional email addresses in this test:
       .mockResolvedValueOnce([]);
-    vi.mocked(getBreachesForEmail).mockResolvedValueOnce(breachesWithOneResolved);
+    vi.mocked(getBreachesForEmail).mockResolvedValueOnce(
+      breachesWithOneResolved,
+    );
 
     const subBreaches = await getSubBreaches(subscriber, [], "us");
     expect(subBreaches.length).toEqual(1);
@@ -250,7 +254,9 @@ describe("getSubBreaches", () => {
       // The only affected email is the user's primary email; they have no
       // additional email addresses in this test:
       .mockResolvedValueOnce([]);
-    vi.mocked(getBreachesForEmail).mockResolvedValueOnce(breachesWithOneResolved);
+    vi.mocked(getBreachesForEmail).mockResolvedValueOnce(
+      breachesWithOneResolved,
+    );
 
     const subBreaches = await getSubBreaches(subscriber, [], "nl");
     expect(subBreaches.length).toEqual(1);
@@ -262,7 +268,9 @@ describe("getSubBreaches", () => {
       // The only affected email is the user's primary email; they have no
       // additional email addresses in this test:
       .mockResolvedValueOnce([]);
-    vi.mocked(getBreachesForEmail).mockResolvedValueOnce(breachesWithOneResolvedSsn);
+    vi.mocked(getBreachesForEmail).mockResolvedValueOnce(
+      breachesWithOneResolvedSsn,
+    );
 
     const subBreaches = await getSubBreaches(subscriber, allBreaches, "us");
     expect(subBreaches.length).toEqual(1);
@@ -285,7 +293,9 @@ describe("getSubBreaches", () => {
       // The only affected email is the user's primary email; they have no
       // additional email addresses in this test:
       .mockResolvedValueOnce([]);
-    vi.mocked(getBreachesForEmail).mockResolvedValueOnce(breachesWithOneResolvedSsn);
+    vi.mocked(getBreachesForEmail).mockResolvedValueOnce(
+      breachesWithOneResolvedSsn,
+    );
 
     const subBreaches = await getSubBreaches(
       subscriberWithoutSsnResolved,
@@ -301,7 +311,9 @@ describe("getSubBreaches", () => {
       // The only affected email is the user's primary email; they have no
       // additional email addresses in this test:
       .mockResolvedValueOnce([]);
-    vi.mocked(getBreachesForEmail).mockResolvedValueOnce(breachesWithOneResolvedSsn);
+    vi.mocked(getBreachesForEmail).mockResolvedValueOnce(
+      breachesWithOneResolvedSsn,
+    );
 
     const subBreaches = await getSubBreaches(subscriber, allBreaches, "nl");
     expect(subBreaches.length).toEqual(1);
@@ -348,7 +360,9 @@ describe("getSubBreaches", () => {
       // The only affected email is the user's primary email; they have no
       // additional email addresses in this test:
       .mockResolvedValueOnce([]);
-    vi.mocked(getBreachesForEmail).mockResolvedValueOnce(breachesWithNoneResolved);
+    vi.mocked(getBreachesForEmail).mockResolvedValueOnce(
+      breachesWithNoneResolved,
+    );
     const subBreaches = await getSubBreaches(
       differentSubscriber,
       allBreaches,

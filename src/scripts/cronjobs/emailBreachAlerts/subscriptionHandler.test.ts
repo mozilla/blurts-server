@@ -2,7 +2,15 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { describe, it, expect, beforeEach, afterAll, vi, type MockedFunction } from 'vitest';
+import {
+  describe,
+  it,
+  expect,
+  beforeEach,
+  afterAll,
+  vi,
+  type MockedFunction,
+} from "vitest";
 import type { Logger } from "winston";
 import { MockProcess } from "../../../test/helpers/mockProcess";
 import { mockMessage, MockSubscription } from "../../../test/helpers/pubsub";
@@ -96,7 +104,9 @@ describe("SubscriptionHandler", () => {
   it.each(["SIGTERM" as const, "SIGINT" as const])(
     "%s: when draining, it nacks and does not call messageFn if a message event is received",
     async (signal) => {
-      const handlerSpy: MockedFunction<(m: Message) => Promise<MessageSummary>> = vi.fn().mockResolvedValue({
+      const handlerSpy: MockedFunction<
+        (m: Message) => Promise<MessageSummary>
+      > = vi.fn().mockResolvedValue({
         success: true,
         errors: 0,
         notified: 0,
@@ -121,7 +131,9 @@ describe("SubscriptionHandler", () => {
   it.each(["SIGTERM" as const, "SIGINT" as const])(
     "%s: when draining, it closes the subscription",
     async (signal) => {
-      const handlerSpy: MockedFunction<(m: Message) => Promise<MessageSummary>> = vi.fn().mockResolvedValue({
+      const handlerSpy: MockedFunction<
+        (m: Message) => Promise<MessageSummary>
+      > = vi.fn().mockResolvedValue({
         success: true,
         errors: 0,
         notified: 0,

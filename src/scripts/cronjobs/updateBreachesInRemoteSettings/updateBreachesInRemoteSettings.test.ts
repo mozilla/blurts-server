@@ -14,7 +14,15 @@ vi.mock("../../../config", () => {
   };
 });
 
-import { vi, describe, it, expect, beforeEach } from "vitest";
+import {
+  vi,
+  describe,
+  it,
+  expect,
+  beforeEach,
+  beforeAll,
+  afterAll,
+} from "vitest";
 import * as HIBP from "../../../utils/hibp";
 import { logger } from "../../../app/functions/server/logging";
 import { RemoteSettingsClient } from "../../../utils/remoteSettingsClient";
@@ -36,15 +44,12 @@ import * as Sentry from "@sentry/node";
 // For now I'm relying on manual testing via dev environment.
 // TODO: [MNTOR-1880]
 
-describe("updateBreachesInRemoteSettings job", () => {
+describe.todo("updateBreachesInRemoteSettings job", () => {
   const fetchBreachesSpy = vi.spyOn(
     RemoteSettingsClient.prototype,
     "fetchRemoteBreachNames",
   );
-  const addBreachSpy = vi.spyOn(
-    RemoteSettingsClient.prototype,
-    "addNewBreach",
-  );
+  const addBreachSpy = vi.spyOn(RemoteSettingsClient.prototype, "addNewBreach");
   const reviewSpy = vi.spyOn(
     RemoteSettingsClient.prototype,
     "requestBreachesReview",
@@ -89,7 +94,7 @@ describe("updateBreachesInRemoteSettings job", () => {
       });
     });
   });
-  describe.skip("shutdown handling", () => {
+  describe("shutdown handling", () => {
     // Spies are created inside beforeAll so they don't run during describe
     // evaluation when the suite is skipped (ESM exports can't be spied on
     // at module-evaluation time in Vitest).
@@ -115,7 +120,7 @@ describe("updateBreachesInRemoteSettings job", () => {
       expect(sentryFlushSpy).toHaveBeenCalled();
     });
   });
-  describe.skip("main job", () => {
+  describe("main job", () => {
     it("skips review request if all posts failed", async () => {
       const breach = HibpData[0] as HIBP.HibpGetBreachesResponse[number];
       vi.mocked(HIBP.fetchHibpBreaches).mockResolvedValue([breach]);

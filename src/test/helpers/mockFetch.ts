@@ -3,6 +3,10 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { vi, type MockedFunction } from "vitest";
+// It's not ideal, but using `any` here since these are
+// just mocks (and sometimes the mocked function has any)
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 // This is only necessary because of jsdom environment
 // Can be removed in favor of undici MockAgent when
@@ -10,7 +14,6 @@ import { vi, type MockedFunction } from "vitest";
 // [MNTOR-1880]
 export type FetchMock = MockedFunction<typeof fetch> & {
   mockJson: (
-    // eslint-disable-next-line
     body: any,
     init?: {
       status?: number;
@@ -18,7 +21,6 @@ export type FetchMock = MockedFunction<typeof fetch> & {
       headers?: Record<string, string>;
     },
   ) => void;
-  // eslint-disable-next-line
   mockReject: (err: any) => void;
 };
 
@@ -26,8 +28,14 @@ export function mockFetch(): FetchMock {
   const fn = vi.fn<typeof fetch>();
 
   return Object.assign(fn, {
-    // eslint-disable-next-line
-    mockJson(body: any, init: { status?: number; statusText?: string; headers?: Record<string, string> } = {}) {
+    mockJson(
+      body: any,
+      init: {
+        status?: number;
+        statusText?: string;
+        headers?: Record<string, string>;
+      } = {},
+    ) {
       fn.mockImplementationOnce(async () => {
         const status = init.status ?? 200;
         return {
@@ -40,7 +48,6 @@ export function mockFetch(): FetchMock {
         } as unknown as Response;
       });
     },
-    // eslint-disable-next-line
     mockReject(err: any) {
       fn.mockImplementationOnce(async () => {
         throw err;

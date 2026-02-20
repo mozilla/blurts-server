@@ -7,7 +7,7 @@
  */
 
 import type { Logger } from "winston";
-import { vi, describe, it, beforeEach, afterAll, expect } from "vitest";
+import { vi, describe, it, beforeEach, expect } from "vitest";
 import * as Sentry from "@sentry/node";
 import { mockLogger } from "../../../test/helpers/mockLogger";
 import { mockMessage } from "../../../test/helpers/pubsub";

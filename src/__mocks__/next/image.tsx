@@ -7,7 +7,9 @@ import type Image from "next/image";
 
 // Mock for next/image
 const NextImage = (props: ComponentProps<typeof Image>) => {
-  const dataProps = Object.fromEntries(Object.entries(props).filter(([prop]) => prop.startsWith("data-")));
+  const dataProps = Object.fromEntries(
+    Object.entries(props).filter(([prop]) => prop.startsWith("data-")),
+  );
 
   return (
     // eslint-disable-next-line @next/next/no-img-element

@@ -3,10 +3,11 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 // Mock for next/font/local
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function localFont(_config?: any) {
   return {
-    className: 'mock-local-font',
-    variable: '--mock-local-font',
-    style: {}
+    className: "mock-local-font",
+    variable: "--mock-local-font",
+    style: {},
   };
 }

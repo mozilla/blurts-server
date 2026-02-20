@@ -1,9 +1,16 @@
-// @vitest-environment node
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { vi, describe, it, expect, beforeEach, afterEach, afterAll } from "vitest";
+import {
+  vi,
+  describe,
+  it,
+  expect,
+  beforeEach,
+  afterEach,
+  afterAll,
+} from "vitest";
 import createDbConnection from "../connect";
 import { seeds } from "../../test/db";
 import { BreachRow } from "knex/types/tables";

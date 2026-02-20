@@ -3,19 +3,21 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 // Mock for next/font/google
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function Inter(_config?: any) {
   return {
-    className: 'mock-inter-font',
-    variable: '--mock-inter-font',
-    style: {}
+    className: "mock-inter-font",
+    variable: "--mock-inter-font",
+    style: {},
   };
 }
 
 // Default export for other Google fonts
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function googleFont(_config?: any) {
   return {
-    className: 'mock-google-font',
-    variable: '--mock-google-font',
-    style: {}
+    className: "mock-google-font",
+    variable: "--mock-google-font",
+    style: {},
   };
 }

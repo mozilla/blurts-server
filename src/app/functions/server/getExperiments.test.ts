@@ -2,7 +2,14 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { describe, it, expect, vi, beforeEach, type MockedFunction } from "vitest";
+import {
+  describe,
+  it,
+  expect,
+  vi,
+  beforeEach,
+  type MockedFunction,
+} from "vitest";
 import { captureException } from "@sentry/node";
 import { FeatureFlagName } from "../../../db/tables/featureFlags";
 
@@ -15,8 +22,7 @@ vi.mock("../../../config", () => {
   };
 });
 
-const captureExceptionMock: MockedFunction<typeof captureException> =
-  vi.fn();
+const captureExceptionMock: MockedFunction<typeof captureException> = vi.fn();
 vi.mock("@sentry/node", () => ({ captureException: captureExceptionMock }));
 
 const loggerMock = { info: vi.fn(), error: vi.fn() };
@@ -40,7 +46,7 @@ beforeEach(async () => {
   vi.resetModules();
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const configModule = await import("../../../config") as any;
+  const configModule = (await import("../../../config")) as any;
   configModule.config.appEnv = "production";
   delete configModule.config.nimbusSidecarUrl;
 
@@ -63,7 +69,7 @@ describe("getExperiments", () => {
 
   it("returns localExperimentData in local environments", async () => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const configModule = await import("../../../config") as any;
+    const configModule = (await import("../../../config")) as any;
     configModule.config.appEnv = "local";
     const { getExperiments } = await import("./getExperiments");
 
@@ -79,7 +85,7 @@ describe("getExperiments", () => {
 
   it("calls Cirrus V2 with preview param", async () => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const configModule = await import("../../../config") as any;
+    const configModule = (await import("../../../config")) as any;
     configModule.config.nimbusSidecarUrl = "https://cirrus.example";
     headersMock.mockResolvedValue(
       new Headers([["x-nimbus-preview-mode", "true"]]),
@@ -132,7 +138,7 @@ describe("getExperiments", () => {
 
   it("fallsback to defaultExperimentData when not experiment data is returned by Cirrus", async () => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const configModule = await import("../../../config") as any;
+    const configModule = (await import("../../../config")) as any;
     configModule.config.nimbusSidecarUrl = "https://cirrus.example";
     headersMock.mockResolvedValue(
       new Headers([["x-nimbus-preview-mode", "true"]]),
@@ -180,7 +186,7 @@ describe("getExperiments", () => {
 
   it("logs error, captures exception, and returns defaultExperimentData on error response", async () => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const configModule = await import("../../../config") as any;
+    const configModule = (await import("../../../config")) as any;
     configModule.config.nimbusSidecarUrl = "https://cirrus.example";
     headersMock.mockResolvedValue(new Headers([]));
 

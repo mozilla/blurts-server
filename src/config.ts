@@ -14,7 +14,9 @@ import env from "@next/env";
 /* c8 ignore start */
 if (
   typeof process.env.NEXT_RUNTIME !== "string" &&
-  (process.env.NODE_ENV !== "test" || process.env.PLAYWRIGHT === "true" || process.env.VITEST === "true")
+  (process.env.NODE_ENV !== "test" ||
+    process.env.PLAYWRIGHT === "true" ||
+    process.env.VITEST === "true")
 ) {
   // If we're in Next.js, our `.env` files are already set up to be loaded.
   // Outside of Next.js (e.g. in cron jobs), however, we need to explicitly load them.

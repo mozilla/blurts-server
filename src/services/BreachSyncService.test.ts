@@ -1,7 +1,7 @@
-// @vitest-environment node
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
 
 import {
   vi,
@@ -70,11 +70,15 @@ describe("BreachSyncService factory", () => {
     const lockKey = `${REDIS_ALL_BREACHES_KEY}:refresh:lock`;
     const lastSyncKey = `${REDIS_ALL_BREACHES_KEY}:last_synced`;
     // Mock redis doesn't implement brpop; re-apply after each restoreMocks
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    let brpopSpy = vi.spyOn(redis as any, "brpop").mockResolvedValue(["list", "ok"]);
-    beforeEach(() => {
+    let brpopSpy = vi
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      brpopSpy = vi.spyOn(redis as any, "brpop").mockResolvedValue(["list", "ok"]);
+      .spyOn(redis as any, "brpop")
+      .mockResolvedValue(["list", "ok"]);
+    beforeEach(() => {
+      brpopSpy = vi
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        .spyOn(redis as any, "brpop")
+        .mockResolvedValue(["list", "ok"]);
     });
     it("skips sync when data is still fresh (debounce)", async () => {
       const repo = {
