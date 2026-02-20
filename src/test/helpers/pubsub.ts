@@ -4,16 +4,13 @@
 
 import { EventEmitter } from "events";
 import type { Message } from "@google-cloud/pubsub";
+import { vi } from "vitest";
 
 export function mockMessage(payload: object) {
-  // Check if we're in Vitest environment
-  const ackFn = typeof vi !== 'undefined' ? vi.fn() : jest.fn();
-  const nackFn = typeof vi !== 'undefined' ? vi.fn() : jest.fn();
-  
   return {
     data: Buffer.from(JSON.stringify(payload)),
-    ack: ackFn,
-    nack: nackFn,
+    ack: vi.fn(),
+    nack: vi.fn(),
   } as unknown as Message;
 }
 

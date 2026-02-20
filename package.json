@@ -20,7 +20,7 @@
     "lint": "stylelint '**/*.scss' && prettier --check './src' && eslint --max-warnings=0 . && next typegen && tsc -p tsconfig.json --noEmit && npm run validate-nimbus",
     "fix": "prettier --write './src' && eslint --fix . && stylelint --fix '**/*.scss'",
     "test": "npm run build-nimbus && jest \"\\.(spec|test)\\.ts\"",
-    "test:vitest": "npm run build-nimbus && vitest run",
+    "test:vitest": "vitest run",
     "test-integrations": "npm run build-nimbus && jest \"\\.integration\\.ts\" --coverage=false --runInBand",
     "test-integrations:vitest": "npm run build-nimbus && vitest run --config vitest.integration.config.ts",
     "functional-tests": "playwright test functional-tests/ --config=functional-tests/playwright.config.ts",

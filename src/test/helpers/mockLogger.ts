@@ -8,13 +8,10 @@ import { vi } from "vitest";
 // Extremely minimal logger mock, works for most needs
 // After [MNTOR-1880] probably unnecessary
 export function mockLogger() {
-  // Check if we're in Vitest environment
-  const mockFn = typeof vi !== 'undefined' ? vi.fn as unknown as typeof jest.fn : jest.fn;
-
   return {
-    info: mockFn(),
-    error: mockFn(),
-    warn: mockFn(),
-    debug: mockFn(),
+    info: vi.fn(),
+    error: vi.fn(),
+    warn: vi.fn(),
+    debug: vi.fn(),
   } as unknown as Logger;
 }
