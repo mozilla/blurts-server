@@ -12,6 +12,17 @@ announcement-dialog-clear-all = Marcar tudo como lido
 announcement-dialog-empty-state-title = Nenhuma atualização
 announcement-dialog-empty-state-description = Verifique regularmente se há atualizações e informações sobre nossos recursos mais recentes.
 announcement-dialog-trigger-alt = Abrir comunicados
+announcement-dialog-alt = Lista de comunicados
+announcement-small-img-alt = Ícone de comunicado
+announcement-big-img-alt = Imagem de comunicado
 
 # between announcement- and -title or -description is the announcement_id.
 
+# Variables:
+# $emailAddressesCount (string) - number of email addresses allowed for data breach monitoring
+announcement-free-data-breach-monitoring-title =
+    { $emailAddressesCount ->
+       *[other] Tenha monitoramento gratuito de vazamentos de dados de até { $emailAddressesCount } endereços de email.
+    }
+announcement-free-data-breach-monitoring-description = Ajude a manter suas informações seguras com o monitoramento de vazamentos de dados. O { -brand-monitor } irá alertar você caso suas informações apareçam em um vazamento de dados.
+announcement-free-data-breach-monitoring-cta-label = Saiba mais
