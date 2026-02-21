@@ -9,7 +9,7 @@ import {
   createRandomUser,
 } from "../../../../../../../../../../apiMocks/mockData";
 import { Shell } from "../../../../../../../Shell/Shell";
-import { getL10n } from "../../../../../../../../../functions/l10n/storybookAndJest";
+import { getL10n } from "../../../../../../../../../functions/l10n/storybookAndTests";
 import { LeakedPasswordsLayout } from "../LeakedPasswordsLayout";
 import {
   LeakedPasswordsTypes,

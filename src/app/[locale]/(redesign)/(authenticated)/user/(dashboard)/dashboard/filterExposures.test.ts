@@ -2,11 +2,11 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { it, expect } from "@jest/globals";
+import { it, expect, vi } from "vitest";
 import { createRandomBreach } from "../../../../../../../apiMocks/mockData";
 import { filterExposures } from "./filterExposures";
 import { CONST_DAY_MILLISECONDS } from "../../../../../../../constants";
-jest.mock("../../../../../../hooks/useTelemetry");
+vi.mock("../../../../../../hooks/useTelemetry");
 
 const getDateDaysAgo = (daysAgo: number) =>
   new Date(Date.now() - daysAgo * CONST_DAY_MILLISECONDS);

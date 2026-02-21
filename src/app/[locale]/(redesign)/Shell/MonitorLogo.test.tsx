@@ -2,6 +2,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import { describe, beforeEach, vi, type Mock } from "vitest";
+import { it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { composeStory } from "@storybook/react";
 import Meta, {
@@ -10,11 +12,11 @@ import Meta, {
 } from "./MonitorLogo.stories";
 import * as navigation from "next/navigation";
 
-jest.mock("next/navigation", () => ({
-  usePathname: jest.fn(),
+vi.mock("next/navigation", () => ({
+  usePathname: vi.fn(),
 }));
 
-const mockedUsePathname = navigation.usePathname as unknown as jest.Mock;
+const mockedUsePathname = navigation.usePathname as unknown as Mock;
 
 describe("MonitorLogo", () => {
   beforeEach(() => mockedUsePathname.mockReset());

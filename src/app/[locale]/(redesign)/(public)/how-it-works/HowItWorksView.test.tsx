@@ -2,41 +2,35 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { it, expect } from "@jest/globals";
+import { it, expect, vi, beforeEach, describe } from "vitest";
+import type { MockedFunction } from "vitest";
 import { composeStory } from "@storybook/react";
 import { render, screen } from "@testing-library/react";
-import { axe } from "jest-axe";
+import { axe } from "vitest-axe";
 import Meta, { HowItWorks } from "./HowItWorksView.stories";
 import { userEvent } from "@testing-library/user-event";
 import { useSession } from "next-auth/react";
 import { deleteAllCookies } from "../../../../functions/client/deleteAllCookies";
-import { useTelemetry as useTelemetryImported } from "../../../../hooks/useTelemetry";
+import { useTelemetry } from "../../../../hooks/useTelemetry";
 
-jest.mock("next-auth/react", () => {
+vi.mock("next-auth/react", () => {
   return {
-    signIn: jest.fn(),
-    useSession: jest.fn(() => {
+    signIn: vi.fn(),
+    useSession: vi.fn(() => {
       return {};
     }),
   };
 });
 
-jest.mock("../../../../hooks/useTelemetry");
-// We need to override the types of `useTelemetry` here, because otherwise
-// Jest infers incorrect types in `toHaveBeenCalledWith`, and throws an error.
-// See https://github.com/jestjs/jest/issues/15703
-const useTelemetry = useTelemetryImported as () => (
-  module: string,
-  eventName: string,
-  data: Record<string, string>,
-) => void;
+vi.mock("../../../../hooks/useTelemetry");
 
 beforeEach(() => {
-  // For reasons that are unclear to me, the mock implementation defind in the
-  // call to `jest.mock` above forgets the implementation. I've spent way too
-  // long debugging that already, so I'm settling for this :(
-  const mockedUseSession = useSession as jest.Mock;
-  mockedUseSession.mockReturnValue({});
+  const mockedUseSession = useSession as MockedFunction<typeof useSession>;
+  mockedUseSession.mockReturnValue({
+    status: "unauthenticated",
+    data: null,
+    update: vi.fn(),
+  });
 
   // Make the rebrand announcement banner show up by default
   deleteAllCookies();
@@ -65,7 +59,7 @@ describe("How it works page", () => {
     // jsdom will complain about not being able to navigate to a different page
     // after clicking the link; suppress that error, as it's not relevant to the
     // test:
-    jest.spyOn(console, "error").mockImplementation(() => undefined);
+    vi.spyOn(console, "error").mockImplementation(() => undefined);
 
     await user.click(getFreeScanBtn1);
     expect(mockedRecord).toHaveBeenCalledWith(

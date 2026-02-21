@@ -2,6 +2,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import { vi, describe, it, expect } from "vitest";
+import { type Mock } from "vitest";
 import { act, renderHook } from "@testing-library/react";
 import {
   COOKIE_DISMISSAL_MAX_AGE_IN_SECONDS,
@@ -9,13 +11,13 @@ import {
 } from "./useLocalDismissal";
 import { useCookies } from "react-cookie";
 
-jest.mock("react-cookie", () => {
+vi.mock("react-cookie", () => {
   return {
-    useCookies: jest.fn(),
+    useCookies: vi.fn(),
   };
 });
 
-const mockedUseCookies = useCookies as jest.Mock;
+const mockedUseCookies = useCookies as Mock;
 
 describe("useLocalDismissal", () => {
   it("marks a dismissal as dismissed if the dismissal cookie is present", () => {
@@ -51,7 +53,7 @@ describe("useLocalDismissal", () => {
   });
 
   it("immediately marks a dismissal as dismissed by default", () => {
-    mockedUseCookies.mockReturnValue([{}, jest.fn()]);
+    mockedUseCookies.mockReturnValue([{}, vi.fn()]);
     const { result } = renderHook(() => useLocalDismissal("arbitrary_key"));
 
     act(() => {
@@ -63,7 +65,7 @@ describe("useLocalDismissal", () => {
   });
 
   it("sets a cookie with a default expiration time of 100 years", () => {
-    const mockedSetCookie = jest.fn();
+    const mockedSetCookie = vi.fn();
     mockedUseCookies.mockReturnValue([{}, mockedSetCookie]);
     const { result } = renderHook(() => useLocalDismissal("some_key"));
 
@@ -79,7 +81,7 @@ describe("useLocalDismissal", () => {
   });
 
   it("sets the cookie's expiration time to the given value", () => {
-    const mockedSetCookie = jest.fn();
+    const mockedSetCookie = vi.fn();
     mockedUseCookies.mockReturnValue([{}, mockedSetCookie]);
     const { result } = renderHook(() =>
       useLocalDismissal("some_key", { duration: 1337 }),
@@ -97,7 +99,7 @@ describe("useLocalDismissal", () => {
   });
 
   it("does not immediately mark a dismissal as dismissed if the `soft` option is passed", () => {
-    mockedUseCookies.mockReturnValue([{}, jest.fn()]);
+    mockedUseCookies.mockReturnValue([{}, vi.fn()]);
     const { result } = renderHook(() => useLocalDismissal("arbitrary_key"));
 
     act(() => {
@@ -109,7 +111,7 @@ describe("useLocalDismissal", () => {
   });
 
   it("sets a cookie with a default expiration time of 100 years, also for `soft` dismissals", () => {
-    const mockedSetCookie = jest.fn();
+    const mockedSetCookie = vi.fn();
     mockedUseCookies.mockReturnValue([{}, mockedSetCookie]);
     const { result } = renderHook(() => useLocalDismissal("some_key"));
 
@@ -125,7 +127,7 @@ describe("useLocalDismissal", () => {
   });
 
   it("sets the cookie's expiration time to the given value, also for `soft` dismissals", () => {
-    const mockedSetCookie = jest.fn();
+    const mockedSetCookie = vi.fn();
     mockedUseCookies.mockReturnValue([{}, mockedSetCookie]);
     const { result } = renderHook(() =>
       useLocalDismissal("some_key", { duration: 1337 }),

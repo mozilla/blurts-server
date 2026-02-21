@@ -2,47 +2,39 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { it, expect } from "@jest/globals";
+import { it, expect, vi, beforeEach, type MockedFunction } from "vitest";
 import { composeStory } from "@storybook/react";
 import { act, render, screen, within } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
-import { axe } from "jest-axe";
+import { axe } from "vitest-axe";
 import { signIn, useSession } from "next-auth/react";
-import { useTelemetry as useTelemetryImported } from "../../../hooks/useTelemetry";
+import { useTelemetry } from "../../../hooks/useTelemetry";
 import Meta, { Landing, LandingFr, LandingDe } from "./LandingView.stories";
 import { deleteAllCookies } from "../../../functions/client/deleteAllCookies";
 import { mockIsIntersecting } from "react-intersection-observer/test-utils";
 
-jest.mock("next-auth/react", () => {
+vi.mock("next-auth/react", () => {
   return {
-    signIn: jest.fn(),
-    useSession: jest.fn(() => {
+    signIn: vi.fn(),
+    useSession: vi.fn(() => {
       return {};
     }),
   };
 });
-jest.mock("next/navigation", () => ({
+vi.mock("next/navigation", () => ({
   useSearchParams: () => ({
-    toString: jest.fn(),
+    toString: vi.fn(),
   }),
 }));
 
-jest.mock("../../../hooks/useTelemetry");
-// We need to override the types of `useTelemetry` here, because otherwise
-// Jest infers incorrect types in `toHaveBeenCalledWith`, and throws an error.
-// See https://github.com/jestjs/jest/issues/15703
-const useTelemetry = useTelemetryImported as () => (
-  module: string,
-  eventName: string,
-  data: Record<string, string>,
-) => void;
-
+vi.mock("../../../hooks/useTelemetry");
 beforeEach(() => {
   // For reasons that are unclear to me, the mock implementation defind in the
-  // call to `jest.mock` above forgets the implementation. I've spent way too
+  // call to `vi.mock` above forgets the implementation. I've spent way too
   // long debugging that already, so I'm settling for this :(
-  const mockedUseSession = useSession as jest.Mock;
-  mockedUseSession.mockReturnValue({});
+  const mockedUseSession = useSession as MockedFunction<typeof useSession>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  mockedUseSession.mockReturnValue({} as any);
 
   // Make the rebrand announcement banner show up by default
   deleteAllCookies();
@@ -85,7 +77,7 @@ it("sends telemetry when a free scan CTA is shown in the viewport", async () => 
 
   // jsdom will complain about not being able to navigate to a different page
   // after clicking the link; suppress that error, as it's not relevant to the test:
-  jest.spyOn(console, "error").mockImplementation(() => undefined);
+  vi.spyOn(console, "error").mockImplementation(() => undefined);
 
   // The useViewTelemetry ref is attached to the form, not the button
   const submitButton = screen.getAllByRole("button", {
@@ -107,10 +99,7 @@ it("sends telemetry when a free scan CTA is shown in the viewport", async () => 
 });
 
 it("does not show a 'Sign In' button in the header if the user is signed in", () => {
-  const mockedUseSession = useSession as jest.Mock<
-    ReturnType<typeof useSession>,
-    Parameters<typeof useSession>
-  >;
+  const mockedUseSession = useSession as MockedFunction<typeof useSession>;
   mockedUseSession.mockReturnValue({
     data: {
       user: {
@@ -226,10 +215,10 @@ it("shows the french scanning for exposures illustration", () => {
 });
 
 it("does not show a confirmaton message if the user has just deleted their account", () => {
-  global.fetch = jest.fn().mockImplementation(() =>
+  global.fetch = vi.fn().mockImplementation(() =>
     Promise.resolve({
       success: true,
-      json: jest.fn(() => ({
+      json: vi.fn(() => ({
         flowData: null,
       })),
     }),
@@ -245,10 +234,10 @@ it("does not show a confirmaton message if the user has just deleted their accou
 });
 
 it("shows a confirmaton message if the user has just deleted their account", () => {
-  global.fetch = jest.fn().mockImplementation(() =>
+  global.fetch = vi.fn().mockImplementation(() =>
     Promise.resolve({
       success: true,
-      json: jest.fn(() => ({
+      json: vi.fn(() => ({
         flowData: null,
       })),
     }),
@@ -268,10 +257,10 @@ it("shows a confirmaton message if the user has just deleted their account", () 
 });
 
 it("hides the 'account deletion' confirmation message when the user dismisses it", async () => {
-  global.fetch = jest.fn().mockImplementation(() =>
+  global.fetch = vi.fn().mockImplementation(() =>
     Promise.resolve({
       success: true,
-      json: jest.fn(() => ({
+      json: vi.fn(() => ({
         flowData: null,
       })),
     }),
@@ -342,5 +331,5 @@ it("opens the see all FAQ link into a new page", async () => {
   // jsdom will complain about not being able to navigate to a different page
   // after clicking the link; suppress that error, as it's not relevant to the
   // test:
-  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+  vi.spyOn(console, "error").mockImplementationOnce(() => undefined);
 });

@@ -2,6 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import { describe, it, expect, afterEach, afterAll } from "vitest";
 import { isUsingMockHIBPEndpoint } from "./mock";
 
 describe("mock detectors", () => {

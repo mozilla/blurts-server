@@ -2,18 +2,18 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { it, expect } from "@jest/globals";
+import { it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
 import { composeStory } from "@storybook/react";
 import Meta, { AppPickerDefault } from "./AppPicker.stories";
-import { axe } from "jest-axe";
+import { axe } from "vitest-axe";
 import { gaEvent } from "../../../functions/client/gaEvent";
 
-jest.mock("../../../hooks/useTelemetry");
+vi.mock("../../../hooks/useTelemetry");
 
-jest.mock("../../../functions/client/gaEvent", () => ({
-  gaEvent: jest.fn(),
+vi.mock("../../../functions/client/gaEvent", () => ({
+  gaEvent: vi.fn(),
 }));
 
 it("passes the axe accessibility test suite", async () => {
@@ -97,9 +97,7 @@ it("activates a link with Enter or Space via keyboard navigation", async () => {
   });
   await user.click(trigger);
 
-  // Navigate to the VPN item using the keyboard
-  await user.keyboard("{ArrowDown}");
-
+  // Opening the menu via click auto-focuses the first item (VPN)
   const vpnLink = screen.getByRole("menuitem", { name: /vpn/i });
   expect(vpnLink).toHaveFocus();
 
@@ -113,10 +111,7 @@ it("activates a link with Enter or Space via keyboard navigation", async () => {
 
   await user.click(trigger);
 
-  // Navigate to VPN item again
-  await user.keyboard("{ArrowDown}");
-
-  // press Space
+  // VPN is auto-focused; press Space to activate it
   await user.keyboard(" ");
   expect(gaEvent).toHaveBeenCalledWith({
     category: "bento",

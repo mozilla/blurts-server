@@ -6,7 +6,7 @@ import { SerializedSubscriber } from "../../../../next-auth";
 
 import type { Meta, StoryObj } from "@storybook/nextjs";
 import { Shell } from "./Shell";
-import { getL10n } from "../../../functions/l10n/storybookAndJest";
+import { getL10n } from "../../../functions/l10n/storybookAndTests";
 
 const mockedSession = {
   expires: new Date().toISOString(),

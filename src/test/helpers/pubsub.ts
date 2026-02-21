@@ -4,12 +4,13 @@
 
 import { EventEmitter } from "events";
 import type { Message } from "@google-cloud/pubsub";
+import { vi } from "vitest";
 
 export function mockMessage(payload: object) {
   return {
     data: Buffer.from(JSON.stringify(payload)),
-    ack: jest.fn(),
-    nack: jest.fn(),
+    ack: vi.fn(),
+    nack: vi.fn(),
   } as unknown as Message;
 }
 

@@ -7,7 +7,7 @@ import { FC } from "react";
 import type { SubscriberRow } from "knex/types/tables";
 import { BreachAlertEmailProps, BreachAlertEmail } from "./BreachAlertEmail";
 import { StorybookEmailRenderer } from "../../StorybookEmailRenderer";
-import { getL10n } from "../../../app/functions/l10n/storybookAndJest";
+import { getL10n } from "../../../app/functions/l10n/storybookAndTests";
 import { createRandomHibpListing } from "../../../apiMocks/mockData";
 
 const meta: Meta<FC<BreachAlertEmailProps>> = {

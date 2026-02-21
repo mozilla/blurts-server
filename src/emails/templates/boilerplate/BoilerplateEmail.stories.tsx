@@ -7,7 +7,7 @@ import { FC } from "react";
 import { Props, BoilerplateEmail } from "./BoilerplateEmail";
 import { StorybookEmailRenderer } from "../../StorybookEmailRenderer";
 import { SanitizedSubscriberRow } from "../../../app/functions/server/sanitize";
-import { getL10n } from "../../../app/functions/l10n/storybookAndJest";
+import { getL10n } from "../../../app/functions/l10n/storybookAndTests";
 
 const meta: Meta<FC<Props>> = {
   title: "Emails/Email boilerplate",

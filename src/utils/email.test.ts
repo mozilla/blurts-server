@@ -2,25 +2,35 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { test, expect, jest } from "@jest/globals";
+import { test, expect, vi, beforeEach } from "vitest";
+import type { MockedFunction } from "vitest";
 import type { createTransport, Transporter } from "nodemailer";
 import { randomToken } from "./email";
 import type * as loggerModule from "../app/functions/server/logging";
 
-jest.mock("nodemailer", () => {
+vi.mock("nodemailer", () => {
   return {
-    createTransport: jest.fn(),
+    createTransport: vi.fn(),
   };
 });
 
-jest.mock("../app/functions/server/logging", () => {
+vi.mock("../app/functions/server/logging", () => {
   return {
     logger: {
-      info: jest.fn(),
-      warn: jest.fn(),
-      error: jest.fn(),
+      info: vi.fn(),
+      warn: vi.fn(),
+      error: vi.fn(),
     },
   };
+});
+
+import * as mockedNodemailerModule from "nodemailer";
+import * as mockedLoggerModuleImport from "../app/functions/server/logging";
+
+// Reset module registry before each test so the email module's module-level
+// `gTransporter` state starts fresh (equivalent to Jest's resetModules: true).
+beforeEach(() => {
+  vi.resetModules();
 });
 
 test("EmailUtils.sendEmail before .init() fails", async () => {
@@ -36,12 +46,12 @@ test("EmailUtils.sendEmail before .init() fails", async () => {
 });
 
 test("EmailUtils.init with empty host uses jsonTransport", async () => {
-  const mockedLoggerModule = jest.requireMock<typeof loggerModule>(
-    "../app/functions/server/logging",
-  );
+  const mockedLoggerModule = mockedLoggerModuleImport as typeof loggerModule;
   const mockedNodemailer: {
-    createTransport: jest.MockedFunction<typeof createTransport>;
-  } = jest.requireMock("nodemailer");
+    createTransport: MockedFunction<typeof createTransport>;
+  } = mockedNodemailerModule as unknown as {
+    createTransport: MockedFunction<typeof createTransport>;
+  };
   const { initEmail } = await import("./email");
 
   expect(await initEmail("")).toBe(true);
@@ -55,13 +65,15 @@ test("EmailUtils.init with empty host uses jsonTransport", async () => {
 
 test("EmailUtils.init with SMTP URL invokes nodemailer.createTransport", async () => {
   const mockedNodemailer: {
-    createTransport: jest.MockedFunction<typeof createTransport>;
-  } = jest.requireMock("nodemailer");
+    createTransport: MockedFunction<typeof createTransport>;
+  } = mockedNodemailerModule as unknown as {
+    createTransport: MockedFunction<typeof createTransport>;
+  };
   const { initEmail } = await import("./email");
 
   const testSmtpUrl = "smtps://test:test@test:1";
   const mockedTransporter = {
-    verify: jest.fn(() => Promise.resolve("verified")),
+    verify: vi.fn(() => Promise.resolve("verified")),
   } as unknown as Transporter;
   mockedNodemailer.createTransport.mockReturnValueOnce(mockedTransporter);
 
@@ -74,19 +86,19 @@ test("EmailUtils.init with SMTP URL invokes nodemailer.createTransport", async (
 
 test("EmailUtils.sendEmail with recipient, subject, template, context calls gTransporter.sendMail", async () => {
   const mockedNodemailer: {
-    createTransport: jest.MockedFunction<typeof createTransport>;
-  } = jest.requireMock("nodemailer");
-  const mockedLoggerModule = jest.requireMock<typeof loggerModule>(
-    "../app/functions/server/logging",
-  );
+    createTransport: MockedFunction<typeof createTransport>;
+  } = mockedNodemailerModule as unknown as {
+    createTransport: MockedFunction<typeof createTransport>;
+  };
+  const mockedLoggerModule = mockedLoggerModuleImport as typeof loggerModule;
   const { initEmail, sendEmail } = await import("./email");
 
   const testSmtpUrl = "smtps://test:test@test:1";
   const sendMailInfo = { messageId: "test id", response: "test response" };
 
   const mockedTransporter = {
-    verify: jest.fn(() => Promise.resolve("verified")),
-    sendMail: jest.fn((_options) => Promise.resolve(sendMailInfo)),
+    verify: vi.fn(() => Promise.resolve("verified")),
+    sendMail: vi.fn((_options) => Promise.resolve(sendMailInfo)),
     transporter: { name: "MockTransporter" },
   } as unknown as Transporter;
   mockedNodemailer.createTransport.mockReturnValueOnce(mockedTransporter);
@@ -104,17 +116,17 @@ test("EmailUtils.sendEmail with recipient, subject, template, context calls gTra
 });
 
 test("EmailUtils.sendEmail rejects with error", async () => {
-  const mockedLoggerModule = jest.requireMock<typeof loggerModule>(
-    "../app/functions/server/logging",
-  );
+  const mockedLoggerModule = mockedLoggerModuleImport as typeof loggerModule;
   const mockedNodemailer: {
-    createTransport: jest.MockedFunction<typeof createTransport>;
-  } = jest.requireMock("nodemailer");
+    createTransport: MockedFunction<typeof createTransport>;
+  } = mockedNodemailerModule as unknown as {
+    createTransport: MockedFunction<typeof createTransport>;
+  };
   const { initEmail, sendEmail } = await import("./email");
 
   const mockedTransporter = {
-    verify: jest.fn(() => Promise.resolve("verified")),
-    sendMail: jest.fn((_options) => Promise.reject(new Error("error"))),
+    verify: vi.fn(() => Promise.resolve("verified")),
+    sendMail: vi.fn((_options) => Promise.reject(new Error("error"))),
     transporter: { name: "MockTransporter" },
   } as unknown as Transporter;
   mockedNodemailer.createTransport.mockReturnValueOnce(mockedTransporter);
@@ -128,18 +140,18 @@ test("EmailUtils.sendEmail rejects with error", async () => {
 
 test("EmailUtils.init with empty host uses jsonTransport. logs messages", async () => {
   const mockedNodemailer: {
-    createTransport: jest.MockedFunction<typeof createTransport>;
-  } = jest.requireMock("nodemailer");
-  const mockedLoggerModule = jest.requireMock<typeof loggerModule>(
-    "../app/functions/server/logging",
-  );
+    createTransport: MockedFunction<typeof createTransport>;
+  } = mockedNodemailerModule as unknown as {
+    createTransport: MockedFunction<typeof createTransport>;
+  };
+  const mockedLoggerModule = mockedLoggerModuleImport as typeof loggerModule;
   const { initEmail, sendEmail } = await import("./email");
 
   const sendMailInfo = { messageId: "test id", response: "test response" };
 
   const mockedTransporter = {
-    verify: jest.fn(() => Promise.resolve("verified")),
-    sendMail: jest.fn((_options) => Promise.resolve(sendMailInfo)),
+    verify: vi.fn(() => Promise.resolve("verified")),
+    sendMail: vi.fn((_options) => Promise.resolve(sendMailInfo)),
     transporter: { name: "MockTransporter" },
   } as unknown as Transporter;
   mockedNodemailer.createTransport.mockReturnValueOnce(mockedTransporter);

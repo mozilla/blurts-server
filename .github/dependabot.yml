@@ -25,11 +25,13 @@ updates:
         exclude-patterns:
           - "eslint-config-next"
           - "eslint-plugin-storybook"
-      jest:
+      vitest:
         patterns:
-          - "babel-jest"
-          - "jest"
-          - "jest-environment-jsdom"
+          - "vitest"
+          - "@vitest/*"
+          - "vite"
+          - "@vitejs/*"
+          - "vite-tsconfig-paths"
       testing-library:
         patterns:
           - "@testing-library/dom"
@@ -89,11 +91,3 @@ updates:
         # See https://docs.github.com/en/code-security/dependabot/working-with-dependabot/dependabot-options-reference#versions-ignore
         # and https://guides.rubygems.org/patterns/#pessimistic-version-constraint
         versions: ["~> 23", "<= 24.10", "~> 25", "~> 27", "~> 29"]
-        # The newest major version of faker is ESM-only which is difficult
-        # to support with jest
-        # Since faker is a zero-dependency library, ignore major version
-        # upgrades (can consider the work to update if/when we need any
-        # functionality from the new version)
-        # See https://github.com/faker-js/faker/issues/3606#issuecomment-3233612736
-      - dependency-name: "@faker-js/faker"
-        update-types: ["version-update:semver-major"]

@@ -2,12 +2,12 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { it, expect } from "@jest/globals";
+import { it, expect, vi } from "vitest";
 import { act, render, screen } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
 import { composeStory } from "@storybook/react";
-import { axe } from "jest-axe";
-import { setupJestCanvasMock } from "jest-canvas-mock";
+import { axe } from "vitest-axe";
+import type { MockedFunction } from "vitest";
 
 import Meta, {
   BankAccountStory,
@@ -17,17 +17,13 @@ import Meta, {
   HighRiskBreachDoneStory,
 } from "./HighRiskDataBreach.stories";
 
-jest.mock("../../../../../../../../../hooks/useTelemetry");
-jest.mock("next/navigation", () => ({
+vi.mock("../../../../../../../../../hooks/useTelemetry");
+vi.mock("next/navigation", () => ({
   useRouter: () => ({
-    push: jest.fn(),
+    push: vi.fn(),
   }),
-  usePathname: jest.fn(),
+  usePathname: vi.fn(),
 }));
-
-beforeEach(() => {
-  setupJestCanvasMock();
-});
 
 it("passes the axe accessibility test suite for credit card breaches", async () => {
   const ComposedComponent = composeStory(CreditCardStory, Meta);
@@ -136,7 +132,9 @@ it("opens the fraud alert modal when Open modal button is clicked", async () => 
   const user = userEvent.setup();
   const ComposedComponent = composeStory(SsnStory, Meta);
   // Suppress navigation errors from jsdom
-  jest.spyOn(console, "error").mockImplementation(() => undefined);
+  const consoleErrorSpy: MockedFunction<typeof console.error> = vi
+    .spyOn(console, "error")
+    .mockImplementation(() => undefined);
   render(<ComposedComponent />);
 
   // The FraudAlertModal is only rendered for SSN breach type
@@ -150,13 +148,17 @@ it("opens the fraud alert modal when Open modal button is clicked", async () => 
   expect(dialog).toBeInTheDocument();
   // Verify the dialog contains a title element
   expect(dialog).toHaveAttribute("aria-labelledby");
+
+  consoleErrorSpy.mockRestore();
 });
 
 it("closes the fraud alert modal when close button is clicked", async () => {
   const user = userEvent.setup();
   const ComposedComponent = composeStory(SsnStory, Meta);
   // Suppress navigation errors from jsdom
-  jest.spyOn(console, "error").mockImplementation(() => undefined);
+  const consoleErrorSpy: MockedFunction<typeof console.error> = vi
+    .spyOn(console, "error")
+    .mockImplementation(() => undefined);
   render(<ComposedComponent />);
 
   // Open the modal first
@@ -176,4 +178,6 @@ it("closes the fraud alert modal when close button is clicked", async () => {
   });
 
   expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+
+  consoleErrorSpy.mockRestore();
 });

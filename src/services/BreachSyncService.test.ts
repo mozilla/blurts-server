@@ -2,6 +2,18 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+// @vitest-environment node
+
+import {
+  vi,
+  describe,
+  it,
+  expect,
+  beforeEach,
+  afterEach,
+  afterAll,
+} from "vitest";
+import type { Mock } from "vitest";
 import MockRedis from "ioredis-mock";
 import { type Redis } from "ioredis";
 import { createBreachSyncService } from "./BreachSyncService";
@@ -16,21 +28,21 @@ import { mockLogger } from "../test/helpers/mockLogger";
 
 describe("BreachSyncService factory", () => {
   const redis = new MockRedis() as unknown as Redis;
-  let fetchBreaches: jest.Mock<Promise<HibpGetBreachesResponse>, []>;
+  let fetchBreaches: Mock<() => Promise<HibpGetBreachesResponse>>;
   const logger = mockLogger();
 
   beforeEach(() => {
-    fetchBreaches = jest.fn().mockResolvedValue(breachData);
+    fetchBreaches = vi.fn().mockResolvedValue(breachData);
   });
   afterEach(async () => {
     await redis.flushall();
   });
-  afterAll(() => jest.restoreAllMocks());
+  afterAll(() => vi.restoreAllMocks());
   describe("validation", () => {
     it("throws if minFreshMs is longer than cache expiry", () => {
       const repo = {
-        upsertBreaches: jest.fn().mockResolvedValue(1),
-        getBreaches: jest.fn().mockResolvedValue([]),
+        upsertBreaches: vi.fn().mockResolvedValue(1),
+        getBreaches: vi.fn().mockResolvedValue([]),
       };
       expect(() =>
         createBreachSyncService({
@@ -47,8 +59,8 @@ describe("BreachSyncService factory", () => {
 
     it("constructs successfully with defaults when minFreshMs <= cache TTL", () => {
       const repo = {
-        upsertBreaches: jest.fn().mockResolvedValue(1),
-        getBreaches: jest.fn().mockResolvedValue([]),
+        upsertBreaches: vi.fn().mockResolvedValue(1),
+        getBreaches: vi.fn().mockResolvedValue([]),
       };
       expect(() =>
         createBreachSyncService({ redis, fetchBreaches, repo, logger }),
@@ -58,14 +70,21 @@ describe("BreachSyncService factory", () => {
   describe("syncBreaches", () => {
     const lockKey = `${REDIS_ALL_BREACHES_KEY}:refresh:lock`;
     const lastSyncKey = `${REDIS_ALL_BREACHES_KEY}:last_synced`;
-    // Mock redis doesn't implement brpop
-    const brpopSpy = jest
-      .spyOn(redis, "brpop")
+    // Mock redis doesn't implement brpop; re-apply after each restoreMocks
+    let brpopSpy = vi
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      .spyOn(redis as any, "brpop")
       .mockResolvedValue(["list", "ok"]);
+    beforeEach(() => {
+      brpopSpy = vi
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        .spyOn(redis as any, "brpop")
+        .mockResolvedValue(["list", "ok"]);
+    });
     it("skips sync when data is still fresh (debounce)", async () => {
       const repo = {
-        upsertBreaches: jest.fn().mockResolvedValue(1),
-        getBreaches: jest.fn().mockResolvedValue([]),
+        upsertBreaches: vi.fn().mockResolvedValue(1),
+        getBreaches: vi.fn().mockResolvedValue([]),
       };
       const sync = createBreachSyncService({
         redis,
@@ -84,8 +103,8 @@ describe("BreachSyncService factory", () => {
     it("syncs from remote if data is stale and no other sync in progress", async () => {
       const mockInsertedBreach = seeds.breaches();
       const repo = {
-        upsertBreaches: jest.fn().mockResolvedValue(1),
-        getBreaches: jest.fn().mockResolvedValue([mockInsertedBreach]),
+        upsertBreaches: vi.fn().mockResolvedValue(1),
+        getBreaches: vi.fn().mockResolvedValue([mockInsertedBreach]),
       };
       const sync = createBreachSyncService({
         redis,
@@ -118,8 +137,8 @@ describe("BreachSyncService factory", () => {
     });
     it("if lock is already held, waits on waitKey and does not run fetch", async () => {
       const repo = {
-        upsertBreaches: jest.fn().mockResolvedValue(1),
-        getBreaches: jest.fn().mockResolvedValue([]),
+        upsertBreaches: vi.fn().mockResolvedValue(1),
+        getBreaches: vi.fn().mockResolvedValue([]),
       };
       const sync = createBreachSyncService({
         redis,
@@ -147,8 +166,8 @@ describe("BreachSyncService factory", () => {
     });
     it("only one remote fetch occurs when multiple sync requests are invoked concurrently", async () => {
       const repo = {
-        upsertBreaches: jest.fn().mockResolvedValue(1),
-        getBreaches: jest.fn().mockResolvedValue([]),
+        upsertBreaches: vi.fn().mockResolvedValue(1),
+        getBreaches: vi.fn().mockResolvedValue([]),
       };
       const sync = createBreachSyncService({
         redis,
@@ -177,8 +196,8 @@ describe("BreachSyncService factory", () => {
         // Force the cast because we can't pass invalid data here otherwise
       ] as unknown as HibpGetBreachesResponse);
       const repo = {
-        upsertBreaches: jest.fn().mockResolvedValue(1),
-        getBreaches: jest.fn().mockResolvedValue([]),
+        upsertBreaches: vi.fn().mockResolvedValue(1),
+        getBreaches: vi.fn().mockResolvedValue([]),
       };
       const sync = createBreachSyncService({
         redis,

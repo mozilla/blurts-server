@@ -2,24 +2,24 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { it, expect } from "@jest/globals";
+import { it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
 import { composeStory } from "@storybook/react";
-import { axe } from "jest-axe";
+import { axe } from "vitest-axe";
 import Meta, { UserMenuDefault } from "./UserMenu.stories";
 import { signOut } from "next-auth/react";
 
-jest.mock("next/navigation", () => ({
-  useRouter: jest.fn(),
-  usePathname: jest.fn(),
+vi.mock("next/navigation", () => ({
+  useRouter: vi.fn(),
+  usePathname: vi.fn(),
 }));
 
-jest.mock("next-auth/react", () => ({
-  signOut: jest.fn().mockResolvedValue(undefined),
+vi.mock("next-auth/react", () => ({
+  signOut: vi.fn().mockResolvedValue(undefined),
 }));
 
-jest.mock("../../../hooks/useTelemetry");
+vi.mock("../../../hooks/useTelemetry");
 
 it("passes the axe accessibility test suite", async () => {
   const ComposedDashboard = composeStory(UserMenuDefault, Meta);
@@ -45,7 +45,7 @@ it("checks if the user menu items are interactive", async () => {
   // jsdom will complain about not being able to navigate to a different page
   // after clicking the link; suppress that error, as it's not relevant to the
   // test:
-  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+  vi.spyOn(console, "error").mockImplementationOnce(() => undefined);
 
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(UserMenuDefault, Meta);

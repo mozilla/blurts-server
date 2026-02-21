@@ -2,6 +2,9 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+// @vitest-environment node
+
+import { vi, describe, it, expect, beforeAll, afterEach } from "vitest";
 import MockRedis from "ioredis-mock";
 import { type Redis } from "ioredis";
 import { createBreachDataService } from "./BreachDataService";
@@ -23,9 +26,9 @@ describe("BreachDataService factory", () => {
   describe("getBreach", () => {
     it("caches negatively if breach is missing after sync", async () => {
       const mockSync: BreachSyncService = {
-        syncBreaches: jest.fn().mockResolvedValue(undefined),
+        syncBreaches: vi.fn().mockResolvedValue(undefined),
       };
-      const getBreachesFromDb = jest.fn().mockResolvedValue([]);
+      const getBreachesFromDb = vi.fn().mockResolvedValue([]);
       const service = createBreachDataService({
         redis,
         sync: mockSync,
@@ -38,9 +41,9 @@ describe("BreachDataService factory", () => {
     });
     it("short-circuits if negatively cached and does not fetch or sync", async () => {
       const mockSync: BreachSyncService = {
-        syncBreaches: jest.fn().mockResolvedValue(undefined),
+        syncBreaches: vi.fn().mockResolvedValue(undefined),
       };
-      const getBreachesFromDb = jest.fn().mockResolvedValue([]);
+      const getBreachesFromDb = vi.fn().mockResolvedValue([]);
       await redis.set("breach:neg:somebreach", "1", "EX", 60);
       const service = createBreachDataService({
         redis,
@@ -57,9 +60,9 @@ describe("BreachDataService factory", () => {
       const fakeBreach = seeds.breaches();
       await redis.set(REDIS_ALL_BREACHES_KEY, JSON.stringify([fakeBreach]));
       const mockSync: BreachSyncService = {
-        syncBreaches: jest.fn().mockResolvedValue(undefined),
+        syncBreaches: vi.fn().mockResolvedValue(undefined),
       };
-      const getBreachesFromDb = jest.fn().mockResolvedValue([]);
+      const getBreachesFromDb = vi.fn().mockResolvedValue([]);
       const service = createBreachDataService({
         redis,
         sync: mockSync,
@@ -76,9 +79,9 @@ describe("BreachDataService factory", () => {
     it("reads from db and updates cache if cache miss; no sync if key found", async () => {
       const fakeBreach = seeds.breaches();
       const mockSync: BreachSyncService = {
-        syncBreaches: jest.fn().mockResolvedValue(undefined),
+        syncBreaches: vi.fn().mockResolvedValue(undefined),
       };
-      const getBreachesFromDb = jest.fn().mockResolvedValue([fakeBreach]);
+      const getBreachesFromDb = vi.fn().mockResolvedValue([fakeBreach]);
       const service = createBreachDataService({
         redis,
         sync: mockSync,
@@ -99,7 +102,7 @@ describe("BreachDataService factory", () => {
       const newBreach = seeds.breaches();
       await redis.set(REDIS_ALL_BREACHES_KEY, JSON.stringify([existingBreach]));
       const mockSync: BreachSyncService = {
-        syncBreaches: jest
+        syncBreaches: vi
           .fn()
           .mockImplementationOnce(async () => {
             await redis.set(
@@ -109,7 +112,7 @@ describe("BreachDataService factory", () => {
           })
           .mockResolvedValue(undefined),
       };
-      const getBreachesFromDb = jest.fn().mockResolvedValue([]);
+      const getBreachesFromDb = vi.fn().mockResolvedValue([]);
       const service = createBreachDataService({
         redis,
         sync: mockSync,
@@ -126,9 +129,9 @@ describe("BreachDataService factory", () => {
     it("deletes key and rereads from db if cache has unparseable data", async () => {
       const fakeBreach = seeds.breaches();
       const mockSync: BreachSyncService = {
-        syncBreaches: jest.fn().mockResolvedValue(undefined),
+        syncBreaches: vi.fn().mockResolvedValue(undefined),
       };
-      const getBreachesFromDb = jest.fn().mockResolvedValue([fakeBreach]);
+      const getBreachesFromDb = vi.fn().mockResolvedValue([fakeBreach]);
       // Seed an invalid cache entry
       await redis.set(REDIS_ALL_BREACHES_KEY, "{");
       const service = createBreachDataService({

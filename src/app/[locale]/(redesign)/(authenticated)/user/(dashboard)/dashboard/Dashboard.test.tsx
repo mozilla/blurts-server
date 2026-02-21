@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { it, expect } from "@jest/globals";
+import { it, expect, vi, afterEach } from "vitest";
 import {
   getByLabelText,
   getByRole,
@@ -14,32 +14,24 @@ import {
 } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
 import { composeStory } from "@storybook/react";
-import { axe } from "jest-axe";
+import { axe } from "vitest-axe";
 import Meta, {
   DashboardNonUsNoBreaches,
   DashboardNonUsUnresolvedBreaches,
   DashboardNonUsResolvedBreaches,
   DashboardInvalidState,
 } from "./Dashboard.stories";
-import { useTelemetry as useTelemetryImported } from "../../../../../../hooks/useTelemetry";
+import { useTelemetry } from "../../../../../../hooks/useTelemetry";
 import { deleteAllCookies } from "../../../../../../functions/client/deleteAllCookies";
 
-jest.mock("next/navigation", () => ({
-  useRouter: jest.fn(),
-  usePathname: jest.fn(),
+vi.mock("next/navigation", () => ({
+  useRouter: vi.fn(),
+  usePathname: vi.fn(),
   useSearchParams: () => ({
-    get: jest.fn(),
+    get: vi.fn(),
   }),
 }));
-jest.mock("../../../../../../hooks/useTelemetry");
-// We need to override the types of `useTelemetry` here, because otherwise
-// Jest infers incorrect types in `toHaveBeenCalledWith`, and throws an error.
-// See https://github.com/jestjs/jest/issues/15703
-const useTelemetry = useTelemetryImported as () => (
-  module: string,
-  eventName: string,
-  data: Record<string, string>,
-) => void;
+vi.mock("../../../../../../hooks/useTelemetry");
 
 afterEach(() => {
   // Make the CSAT banner show up again.
@@ -165,7 +157,7 @@ it("shows chart tooltip on the fixed tab, non-US user", async () => {
   ).toBeInTheDocument();
 
   const dialogContentPart = screen.getByText(
-    "This chart includes the total number of data breaches that have been fixed for all email addresses you’re currently monitoring. Once exposures are marked as fixed, they’ll be added to the total here.",
+    "This chart includes the total number of data breaches that have been fixed for all email addresses you\u2019re currently monitoring. Once exposures are marked as fixed, they\u2019ll be added to the total here.",
   );
   expect(dialogContentPart).toBeInTheDocument();
 });
@@ -177,7 +169,7 @@ it("shows a user who has resolved all exposures a CTA to check out what was fixe
 
   // show banner CTA premium upgrade
   const bannerCta = screen.queryAllByRole("button", {
-    name: "See what’s fixed",
+    name: "See what\u2019s fixed",
   });
   expect(bannerCta.length).toBe(1);
 
@@ -210,7 +202,7 @@ it("shows the correct dashboard banner CTA and sends telemetry for non-US users,
   // jsdom will complain about not being able to navigate to a different page
   // after clicking the link; suppress that error, as it's not relevant to the
   // test:
-  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+  vi.spyOn(console, "error").mockImplementationOnce(() => undefined);
   render(<ComposedDashboard />);
 
   const dashboardTopBanner = screen.getByRole("region", {
@@ -243,7 +235,7 @@ it("shows the correct dashboard banner title for non-US users, unresolved breach
   });
   const dashboardTopBannerTitle = getByText(
     dashboardTopBanner,
-    "Let’s protect your data",
+    "Let\u2019s protect your data",
   );
   expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
@@ -258,14 +250,14 @@ it("shows the correct dashboard banner CTA and sends telemetry for non-US users,
   // jsdom will complain about not being able to navigate to a different page
   // after clicking the link; suppress that error, as it's not relevant to the
   // test:
-  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+  vi.spyOn(console, "error").mockImplementationOnce(() => undefined);
   render(<ComposedDashboard />);
 
   const dashboardTopBanner = screen.getByRole("region", {
     name: "Dashboard summary",
   });
   const dashboardTopBannerCta = getByRole(dashboardTopBanner, "link", {
-    name: "Let’s fix it",
+    name: "Let\u2019s fix it",
   });
   expect(dashboardTopBannerCta).toBeInTheDocument();
   await user.click(dashboardTopBannerCta);
@@ -311,14 +303,14 @@ it("shows the correct dashboard banner CTA and sends telemetry for non-US users,
   // jsdom will complain about not being able to navigate to a different page
   // after clicking the link; suppress that error, as it's not relevant to the
   // test:
-  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+  vi.spyOn(console, "error").mockImplementationOnce(() => undefined);
   render(<ComposedDashboard />);
 
   const dashboardTopBanner = screen.getByRole("region", {
     name: "Dashboard summary",
   });
   const dashboardTopBannerCta = getByRole(dashboardTopBanner, "button", {
-    name: "See what’s fixed",
+    name: "See what\u2019s fixed",
   });
   await user.click(dashboardTopBannerCta);
   expect(mockedRecord).toHaveBeenCalledWith(
@@ -477,7 +469,7 @@ it("send telemetry when users toggle between action needed and fixed tabs", asyn
   // jsdom will complain about not being able to navigate to a different page
   // after clicking the link; suppress that error, as it's not relevant to the
   // test:
-  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+  vi.spyOn(console, "error").mockImplementationOnce(() => undefined);
 
   // We show a CTA on desktop in the toolbar and in the mobile menu
   const fixedTab = screen.getByText("Fixed");
@@ -509,7 +501,7 @@ it("send telemetry when users click on dashboard nav menu items", async () => {
   // jsdom will complain about not being able to navigate to a different page
   // after clicking the link; suppress that error, as it's not relevant to the
   // test:
-  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+  vi.spyOn(console, "error").mockImplementationOnce(() => undefined);
 
   const dashboardMenuItem = screen.queryAllByRole("link", {
     name: "Dashboard",
@@ -533,7 +525,7 @@ it("send telemetry when users click on the monitor logo", async () => {
   // jsdom will complain about not being able to navigate to a different page
   // after clicking the link; suppress that error, as it's not relevant to the
   // test:
-  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+  vi.spyOn(console, "error").mockImplementationOnce(() => undefined);
 
   const monitorLogo = screen.queryAllByAltText("Home");
   await user.click(monitorLogo[0]);
@@ -555,7 +547,7 @@ it("send telemetry when users click on faq nav menu items", async () => {
   // jsdom will complain about not being able to navigate to a different page
   // after clicking the link; suppress that error, as it's not relevant to the
   // test:
-  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+  vi.spyOn(console, "error").mockImplementationOnce(() => undefined);
 
   const faqMenuItem = screen.queryAllByRole("link", { name: "FAQs" });
   await user.click(faqMenuItem[0]);
@@ -577,7 +569,7 @@ it("send telemetry when users open/close 'number of active exposure' info popup"
   // jsdom will complain about not being able to navigate to a different page
   // after clicking the link; suppress that error, as it's not relevant to the
   // test:
-  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+  vi.spyOn(console, "error").mockImplementationOnce(() => undefined);
 
   const numberOfExposuresInfoPopup = screen.queryAllByLabelText("Open modal");
   await user.click(numberOfExposuresInfoPopup[0]);
@@ -614,7 +606,7 @@ it("send telemetry when users click on data breach link", async () => {
   // jsdom will complain about not being able to navigate to a different page
   // after clicking the link; suppress that error, as it's not relevant to the
   // test:
-  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+  vi.spyOn(console, "error").mockImplementationOnce(() => undefined);
 
   // expands first row
   const expandButtons = screen.getAllByRole("button", {
@@ -644,8 +636,12 @@ it("send telemetry when users click on data breach link", async () => {
 it("logs a warning and error in the story for an invalid user state", () => {
   const ComposedDashboard = composeStory(DashboardInvalidState, Meta);
 
-  const errorLogSpy = jest.spyOn(global.console, "error").mockImplementation();
-  const warnLogSpy = jest.spyOn(global.console, "warn").mockImplementation();
+  const errorLogSpy = vi
+    .spyOn(global.console, "error")
+    .mockImplementation(() => undefined);
+  const warnLogSpy = vi
+    .spyOn(global.console, "warn")
+    .mockImplementation(() => undefined);
   render(<ComposedDashboard />);
 
   expect(errorLogSpy).toHaveBeenCalledWith(
