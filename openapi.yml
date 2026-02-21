@@ -1,0 +1,319 @@
+openapi: "3.1.1"
+info:
+  title: Monitor Breach Alerts API
+  description: Monitor's external API for Firefox clients
+  version: "1.0"
+servers:
+  - url: https://monitor.mozilla.org/api/v1
+    description: Production endpoint
+  - url: http://localhost:6060/api/v1
+    description: Local development server
+security:
+  - bearerAuth: []
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: >
+        Token granted by Firefox Accounts (FxA).
+        The server validates the token (signature, issuer, audience, expiry) and derives the
+        authenticated user from the token subject (`sub`). All `/user/*` endpoints are scoped
+        to the authenticated subject and never return or modify data for any other user.
+  schemas:
+    Breach:
+      type: object
+      required:
+        - id
+        - domain
+        - addedDate
+        - breachDate
+        - modifiedDate
+        - dataClasses
+        - isSensitive
+      properties:
+        id:
+          description: A unique identifier for the breach
+          type: string
+        domain:
+          description: |
+            The domain of the primary website the breach occurred on. 
+            This may be used for identifying other assets external systems may have for the site.
+            This value comes from HIBP. See (their API docs)[https://haveibeenpwned.com/api/v3#BreachModel] for more information.
+          type: string
+        breachDate:
+          description: The date (with no time) the breach originally occurred on in ISO 8601 format. This is not always accurate — frequently breaches are discovered and reported long after the original incident. Use this attribute as a guide only.
+          type: string
+          format: date
+        addedDate:
+          description: The date and time (precision to the minute) the breach was added to the system in ISO 8601 format.
+          type: string
+          format: date-time
+        modifiedDate:
+          description: >
+            The date and time (precision to the minute) the breach was modified in ISO 8601 format. 
+            This will only differ from the AddedDate attribute if other attributes represented here are changed 
+            or data in the breach itself is changed (i.e. additional data is identified and loaded). 
+            It is always either equal to or greater then the AddedDate attribute, never less than.
+          type: string
+          format: date-time
+        dataClasses:
+          description: >
+            This attribute describes the nature of the data compromised in the breach and contains an alphabetically
+            ordered string array of impacted data classes. See https://haveibeenpwned.com/api/v3/dataclasses for list of dataclasses.
+          type: array
+          items:
+            type: string
+        isSensitive:
+          description: Indicates if the breach is considered [sensitive](https://haveibeenpwned.com/FAQs#SensitiveBreach)
+          type: boolean
+    UserBreachState:
+      type: object
+      description: Object describing the current breach state and resolutions
+      required:
+        - email
+        - resolvedDataClasses
+      properties:
+        email:
+          description: The impacted email address
+          type: string
+          format: email
+        resolvedDataClasses:
+          description: Data classes that have been resolved by user action, e.g. changing their password. Key-value object where key is the dataclass and the value is the timestamp of the resolution action.
+          type: object
+          # Right now we're not tracking things like timestamp or source (monitor vs. fx)
+          # but having an object gives flexibility in the future
+          additionalProperties:
+            type: object
+            properties:
+              resolvedAt:
+                type: string
+                format: date-time
+
+    UserBreach:
+      type: object
+      description: A breach affecting 1 or more email addresses tracked by a Monitor User, and resolution actions taken
+      required:
+        - breach
+        - breachedAccounts
+      properties:
+        breach:
+          $ref: "#/components/schemas/Breach"
+        breachedAccounts:
+          type: array
+          items:
+            $ref: "#/components/schemas/UserBreachState"
+
+paths:
+  /user/breaches:
+    get:
+      description: >
+        Get breaches for an authenticated user. Returns a list of breaches; each item includes
+        per-email user state for monitored emails affected by that breach.
+
+      parameters:
+        - name: domain
+          in: query
+          required: false
+          description: >
+            Filter breaches by the breached site's primary domain (exact match), e.g. "example.com".
+          schema:
+            type: string
+            minLength: 1
+          examples:
+            example:
+              summary: Example domain
+              value: example.com
+        - name: dataClasses
+          in: query
+          required: false
+          description: >
+            Filter breaches to those whose breach.dataClasses includes any (but not necessarily all) of the specified values.
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+          examples:
+            passwords:
+              summary: Breaches that include passwords
+              value: ["passwords"]
+            pii:
+              summary: Breaches that include passwords or email addresses
+              value: ["passwords", "email-addresses"]
+        - name: unresolvedDataClasses
+          in: query
+          required: false
+          description: >
+            Filter breaches to those where one or more of the specified dataclasses
+            are still unresolved for the authenticated user, for at least one breached account.
+            A breach matches if any of the specified dataclasses are unresolved 
+            for at least one monitored email. Note that the breached accounts in the response are
+            not filtered by this parameter; the client will receive the complete set of breached account states
+            for the given breach.
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+          examples:
+            passwords:
+              summary: Breaches with unresolved passwords
+              value: ["passwords"]
+        - name: includeSensitive
+          in: query
+          required: false
+          description: >
+            When set to `true`, includes breaches marked as sensitive in the response.
+            By default, sensitive breaches are excluded.
+          schema:
+            type: boolean
+          examples:
+            include:
+              summary: Include sensitive breaches
+              value: true
+
+      responses:
+        "200":
+          description: List of breaches associated with emails the user is monitoring
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/UserBreach"
+              examples:
+                hasBreaches:
+                  summary: Breaches found
+                  value:
+                    - breach:
+                        id: "Breach1"
+                        domain: "example.com"
+                        breachDate: "2023-04-10"
+                        addedDate: "2023-05-01T12:34:00Z"
+                        modifiedDate: "2023-05-01T12:34:00Z"
+                        dataClasses:
+                          - "email-addresses"
+                          - "passwords"
+                        isSensitive: false
+                      breachedAccounts:
+                        - email: "alice@example.com"
+                          resolvedDataClasses:
+                            Passwords: {}
+                noResults:
+                  summary: No breaches found
+                  value: []
+        "401":
+          description: Authentication required
+        "403":
+          description: Not authorized
+
+  /user/breaches/resolutions:
+    post:
+      description: |
+        Bulk endpoint for breach resolutions.
+
+        Upsert resolution state for one or more breaches across one or more monitored email addresses.
+
+        This operation is idempotent per `(email, dataClass, breachId)`. Repeating the same
+        request results in the same stored state and does not produce an error.
+
+        If `emails` is omitted within an individual resolution item, 
+        the update applies to all monitored email addresses affected by the breach referenced by `breachId`
+        for the authenticated user.
+
+        **Authorization and privacy**
+        - All `emails` provided must be monitored by the authenticated user.
+        - For privacy reasons, if any provided email address is not associated with the authenticated
+          user, the server treats the request as if the resource does not exist and returns
+          `404 Not Found`.
+
+        **Atomicity**
+        - Requests are atomic: the update is applied to all targeted emails and dataclasses, or to none.
+
+      parameters:
+        - name: breachId
+          in: path
+          required: true
+          schema:
+            type: integer
+          examples:
+            example:
+              summary: Example breach id
+              value: "Breach1"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                additionalProperties: false
+                required:
+                  - dataClasses
+                  - resolved
+                  - breachId
+                properties:
+                  emails:
+                    type: array
+                    minItems: 1
+                    description: >
+                      Monitored email addresses to apply the update to. If omitted, applies to all
+                      monitored email addresses affected by the referenced breach.
+                    items:
+                      type: string
+                      format: email
+                  dataClasses:
+                    type: array
+                    minItems: 1
+                    description: Dataclasses to mark resolved/unresolved for the selected emails.
+                    items:
+                      type: string
+                  breachId:
+                    description: The unique breach identifier
+                    type: string
+                  resolved:
+                    type: boolean
+                    description: True to mark resolved; false to mark unresolved.
+            examples:
+              resolveMultipleBreaches:
+                summary: Resolve multiple breaches
+                value:
+                  - breachId: "Breach1"
+                    dataClasses: ["passwords"]
+                    resolved: true
+                  - breachId: "Breach2"
+                    dataClasses: ["passwords"]
+                    emails: ["alice@example.com"]
+                    resolved: true
+              resolvePasswordsOneEmail:
+                summary: Resolve Passwords for one email in one breach
+                value:
+                  - emails: ["alice@example.com"]
+                    dataClasses: ["passwords"]
+                    breachId: "Breach1"
+                    resolved: true
+              undoPasswordsAllEmailsInBreach:
+                summary: Unresolve Passwords resolution for all affected emails in multiple breaches
+                value:
+                  - dataClasses: ["passwords"]
+                    resolved: false
+                    breachId: "Breach1"
+                  - dataClasses: ["passwords"]
+                    resolved: false
+                    breachId: "Breach2"
+      responses:
+        "204":
+          description: Resolution state updated successfully.
+        "400":
+          description: Invalid request (e.g., empty dataClasses, invalid email string format, non-unique breach IDs).
+        "401":
+          description: Authentication required
+        "403":
+          description: Not authorized
+        "404":
+          description: Breach or email not found (or not visible to this user)

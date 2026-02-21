@@ -56,8 +56,8 @@
     "npm": "10.1.0"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.980.0",
-    "@aws-sdk/lib-storage": "^3.980.0",
+    "@aws-sdk/client-s3": "^3.985.0",
+    "@aws-sdk/lib-storage": "^3.985.0",
     "@fluent/bundle": "^0.19.1",
     "@fluent/langneg": "^0.7.0",
     "@fluent/react": "^0.15.2",
@@ -159,7 +159,7 @@
     "prettier": "3.8.1",
     "sass": "^1.97.3",
     "storybook": "^10.1.11",
-    "stylelint": "^17.1.0",
+    "stylelint": "^17.1.1",
     "stylelint-config-recommended-scss": "^17.0.0",
     "stylelint-scss": "^7.0.0",
     "tsx": "^4.21.0",

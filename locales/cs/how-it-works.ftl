@@ -9,7 +9,7 @@ how-it-works-banner-title = Jak to funguje
 
 ## Intro
 
-how-it-works-page-data-breaches-intro-title = Přinášíme postup, jak vyřešit <data_breaches>únik dat</data_breaches>
+how-it-works-page-data-breaches-intro-title = Přinášíme postup, jak vyřešit <data_breaches>úniky dat</data_breaches>
 how-it-works-page-data-breaches-intro-text-1 = Únik dat je porušení zabezpečení, při kterém jsou vaše osobní údaje buď náhodně vyzrazeny, nebo nelegálně ukradeny hackery - včetně hesel, kontaktních údajů, financí a mnoha dalších. Cílem může být jakýkoli účet nebo místo, kde jsou online uloženy vaše informace.
 how-it-works-page-data-breaches-intro-text-2 = Řešení úniků dat pomozte zabránit hackerům v přístupu k vašim účtům a způsobení finanční škody nebo krádeži vaší identity.
 how-it-works-page-data-breaches-intro-cta-button = Získat bezplatné skenování

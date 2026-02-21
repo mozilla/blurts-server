@@ -24,7 +24,7 @@ how-it-works-page-data-breaches-step-1-text = E-posta adresinizi kullanarak bili
 
 how-it-works-page-data-breaches-step-2-title = 2. Adım
 how-it-works-page-data-breaches-step-2-subtitle = İhlalleri çözmenize yardımcı oluyoruz
-how-it-works-page-data-breaches-step-2-text-1 = Veri ihlallerini çözmek için genellikle parolalarınızı değiştirmek veya kredi kartınızı kullanıma kapatmak gibi manuel adımlar atmanız gerektir. Bunları sizin için yapamayız ama sızdırılan bilgilerinizle ilgili sorunları çözmek için size rehberlik edebiliriz.
+how-it-works-page-data-breaches-step-2-text-1 = Veri ihlallerini çözmek için genellikle parolalarınızı değiştirmek veya kredi kartınızı kullanıma kapatmak gibi manuel adımlar atmanız gerekir. Bunları sizin için yapamayız ama sızdırılan bilgilerinizle ilgili sorunları çözmek için size rehberlik edebiliriz.
 how-it-works-page-data-breaches-step-2-text-2 = Ayrıca bilgileriniz yanlış ellere geçerse kendinizi şimdi ve gelecekte korumak için neler yapabileceğinize dair güvenlik önerileri de verebiliriz.
 
 ## Step 3
