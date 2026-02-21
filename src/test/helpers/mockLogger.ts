@@ -13,5 +13,9 @@ export function mockLogger() {
     error: vi.fn(),
     warn: vi.fn(),
     debug: vi.fn(),
+    child: vi.fn().mockImplementation(() => mockLogger()),
+    // Call the callback immediately so that Promise-based shutdown loops resolve.
+    on: vi.fn().mockImplementation((_event: string, cb: () => void) => cb()),
+    end: vi.fn(),
   } as unknown as Logger;
 }
