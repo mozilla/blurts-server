@@ -5,6 +5,8 @@
     ".next/types/**/*.ts",
     ".storybook/**.ts",
     ".storybook/**.tsx",
+    // axe type matchers
+    "./vitest-setup.ts",
     // JS files that are not yet migrated to TS.
     "src/app/global-error.js",
     "src/db/migrations/*.js",
@@ -42,7 +44,7 @@
     ],
     "paths": {
       "@/*": ["./src/*"]
-    }, /* Specify a set of entries that re-map imports to additional lookup locations. */
+    } /* Specify a set of entries that re-map imports to additional lookup locations. */,
     // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */
     // "typeRoots": [],                                  /* Specify multiple folders that act like './node_modules/@types'. */
     // "types": [],                                      /* Specify type package names to be included without being referenced in a source file. */
@@ -106,13 +108,7 @@
     /* Completeness */
     // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
     "skipLibCheck": true /* Skip type checking all .d.ts files. */,
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ]
+    "lib": ["dom", "dom.iterable", "esnext"]
   },
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }

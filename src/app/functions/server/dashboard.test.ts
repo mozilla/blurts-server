@@ -10,6 +10,7 @@ import {
   dataClassKeyMap,
 } from "./dashboard";
 import { SubscriberBreach } from "../../../utils/subscriberBreaches";
+import { describe, it, expect } from "vitest";
 
 const unresolvedBreaches: SubscriberBreach[] = [
   {
