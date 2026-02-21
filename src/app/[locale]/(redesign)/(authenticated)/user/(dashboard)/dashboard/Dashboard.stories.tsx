@@ -5,7 +5,7 @@
 import type { Meta, StoryObj } from "@storybook/nextjs";
 import { View as DashboardEl, TabType } from "./View";
 import { Shell } from "../../../../Shell/Shell";
-import { getL10n } from "../../../../../../functions/l10n/storybookAndJest";
+import { getL10n } from "../../../../../../functions/l10n/storybookAndTests";
 import {
   createRandomBreach,
   createRandomAnnouncement,

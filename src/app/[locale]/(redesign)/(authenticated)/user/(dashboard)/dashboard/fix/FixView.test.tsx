@@ -6,18 +6,10 @@ import { it, expect, describe, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
 import { composeStory } from "@storybook/react";
-import { useTelemetry as useTelemetryImported } from "../../../../../../../hooks/useTelemetry";
+import { useTelemetry } from "../../../../../../../hooks/useTelemetry";
 import Meta, { FixViewStory } from "./FixView.stories";
 
 vi.mock("../../../../../../../hooks/useTelemetry");
-// We need to override the types of `useTelemetry` here, because otherwise
-// Jest infers incorrect types in `toHaveBeenCalledWith`, and throws an error.
-// See https://github.com/jestjs/jest/issues/15703
-const useTelemetry = useTelemetryImported as () => (
-  module: string,
-  eventName: string,
-  data: Record<string, string>,
-) => void;
 
 describe("FixView telemetry", () => {
   it("records telemetry when user clicks the exit button", async () => {

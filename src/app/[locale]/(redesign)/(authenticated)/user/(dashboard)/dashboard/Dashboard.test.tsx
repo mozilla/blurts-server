@@ -21,7 +21,7 @@ import Meta, {
   DashboardNonUsResolvedBreaches,
   DashboardInvalidState,
 } from "./Dashboard.stories";
-import { useTelemetry as useTelemetryImported } from "../../../../../../hooks/useTelemetry";
+import { useTelemetry } from "../../../../../../hooks/useTelemetry";
 import { deleteAllCookies } from "../../../../../../functions/client/deleteAllCookies";
 
 vi.mock("next/navigation", () => ({
@@ -32,14 +32,6 @@ vi.mock("next/navigation", () => ({
   }),
 }));
 vi.mock("../../../../../../hooks/useTelemetry");
-// We need to override the types of `useTelemetry` here, because otherwise
-// Jest infers incorrect types in `toHaveBeenCalledWith`, and throws an error.
-// See https://github.com/jestjs/jest/issues/15703
-const useTelemetry = useTelemetryImported as () => (
-  module: string,
-  eventName: string,
-  data: Record<string, string>,
-) => void;
 
 afterEach(() => {
   // Make the CSAT banner show up again.

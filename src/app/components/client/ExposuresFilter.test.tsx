@@ -10,7 +10,7 @@ import { axe } from "vitest-axe";
 import Meta, {
   ExposuresFilterDefault,
 } from "./stories/ExposuresFilter.stories";
-import { useTelemetry as useTelemetryImported } from "../../hooks/useTelemetry";
+import { useTelemetry } from "../../hooks/useTelemetry";
 
 vi.mock("next/navigation", () => ({
   useRouter: vi.fn(),
@@ -18,14 +18,6 @@ vi.mock("next/navigation", () => ({
 }));
 
 vi.mock("../../hooks/useTelemetry");
-// We need to override the types of `useTelemetry` here, because otherwise
-// Jest infers incorrect types in `toHaveBeenCalledWith`, and throws an error.
-// See https://github.com/jestjs/jest/issues/15703
-const useTelemetry = useTelemetryImported as () => (
-  module: string,
-  eventName: string,
-  data: Record<string, string>,
-) => void;
 
 it("passes the axe accessibility test suite", async () => {
   const ExposuresFilter = composeStory(ExposuresFilterDefault, Meta);

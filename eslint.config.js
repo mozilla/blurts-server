@@ -211,7 +211,7 @@ const estlintConfig = defineConfig([
 
   // Files that run in a Node environment.
   {
-    files: ["lighthouserc.cjs", "jest.config.cjs"],
+    files: ["lighthouserc.cjs"],
     languageOptions: {
       globals: {
         ...globals.node,

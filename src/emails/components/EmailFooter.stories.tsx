@@ -6,7 +6,7 @@ import type { Meta, StoryObj } from "@storybook/nextjs";
 import { FC } from "react";
 import { StorybookEmailRenderer } from "../StorybookEmailRenderer";
 import { EmailFooter, Props } from "./EmailFooter";
-import { getL10n } from "../../app/functions/l10n/storybookAndJest";
+import { getL10n } from "../../app/functions/l10n/storybookAndTests";
 
 const meta: Meta<FC<Props>> = {
   title: "Emails/Components/Footer",

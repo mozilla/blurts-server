@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { it, expect, vi, beforeEach } from "vitest";
+import { it, expect, vi, beforeEach, describe } from "vitest";
 import type { MockedFunction } from "vitest";
 import { composeStory } from "@storybook/react";
 import { render, screen } from "@testing-library/react";
@@ -11,7 +11,7 @@ import Meta, { HowItWorks } from "./HowItWorksView.stories";
 import { userEvent } from "@testing-library/user-event";
 import { useSession } from "next-auth/react";
 import { deleteAllCookies } from "../../../../functions/client/deleteAllCookies";
-import { useTelemetry as useTelemetryImported } from "../../../../hooks/useTelemetry";
+import { useTelemetry } from "../../../../hooks/useTelemetry";
 
 vi.mock("next-auth/react", () => {
   return {
@@ -23,14 +23,6 @@ vi.mock("next-auth/react", () => {
 });
 
 vi.mock("../../../../hooks/useTelemetry");
-// We need to override the types of `useTelemetry` here, because otherwise
-// Jest infers incorrect types in `toHaveBeenCalledWith`, and throws an error.
-// See https://github.com/jestjs/jest/issues/15703
-const useTelemetry = useTelemetryImported as () => (
-  module: string,
-  eventName: string,
-  data: Record<string, string>,
-) => void;
 
 beforeEach(() => {
   const mockedUseSession = useSession as MockedFunction<typeof useSession>;

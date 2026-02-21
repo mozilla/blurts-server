@@ -4,7 +4,7 @@
 
 import type { Meta, StoryObj } from "@storybook/nextjs";
 import { View, Props as ViewProps } from "./LandingView";
-import { getL10n } from "../../../functions/l10n/storybookAndJest";
+import { getL10n } from "../../../functions/l10n/storybookAndTests";
 import { PublicShell } from "./PublicShell";
 import { defaultExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 

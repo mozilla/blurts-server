@@ -65,7 +65,7 @@ import { TestComponentWrapper } from "../../../../../../../TestComponentWrapper"
 import { Shell } from "../../../../Shell/Shell";
 import { ComponentProps, ReactNode } from "react";
 import { FeatureFlagName } from "../../../../../../../db/tables/featureFlags";
-import { getL10n } from "../../../../../../functions/l10n/storybookAndJest";
+import { getL10n } from "../../../../../../functions/l10n/storybookAndTests";
 import { defaultExperimentData } from "../../../../../../../telemetry/generated/nimbus/experiments";
 import { SettingsView } from "./View";
 

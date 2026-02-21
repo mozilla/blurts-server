@@ -5,7 +5,7 @@
 import {
   getL10nBundles as mockGetL10nBundles,
   getL10n as mockGetL10n,
-} from "../../l10n/storybookAndJest";
+} from "../../l10n/storybookAndTests";
 
 export const getL10nBundles = mockGetL10nBundles;
 
