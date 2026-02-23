@@ -103,7 +103,7 @@
     "react-aria": "^3.46.0",
     "react-cookie": "^8.0.1",
     "react-dom": "19.2.4",
-    "react-intersection-observer": "^10.0.0",
+    "react-intersection-observer": "^10.0.2",
     "react-stately": "^3.44.0",
     "server-only": "^0.0.1",
     "sharp": "^0.34.5",
