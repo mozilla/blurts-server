@@ -384,7 +384,7 @@ export const AnnouncementsAdmin = (props: Props) => {
                 <div className={styles.previewModal}>
                   <ImageWithFallback
                     src={bigImagePath}
-                    fallbackSrc={`/images/announcements/fallback/big.svg`}
+                    fallbackSrc="/images/announcements/fallback/big.svg"
                     alt="Big Image"
                     width={500}
                     height={300}
