@@ -22,7 +22,6 @@ import { GroupedFluentAnnouncements } from "./getFluentStrings";
 import { ImageWithFallback } from "./ImageWithFallback";
 import { FluentStringsView } from "./FluentStringsView";
 import { AnnouncementsDocsView } from "./DocsView";
-import { getLocale } from "@/app/functions/universal/getLocale";
 
 type Props = {
   announcements: AnnouncementRow[];
@@ -42,7 +41,6 @@ export const AnnouncementsAdmin = (props: Props) => {
   const endpointBase = `/api/v1/admin/announcements`;
   const [isSubmitting, setIsSubmitting] = useState(false);
   const l10n = useL10n();
-  const locale = getLocale(l10n);
 
   const handleAddAnnouncement = async (newAnnouncement: AnnouncementRow) => {
     try {
