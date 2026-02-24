@@ -40,7 +40,6 @@ export const AnnouncementsAdmin = (props: Props) => {
   );
   const endpointBase = `/api/v1/admin/announcements`;
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const l10n = useL10n();
 
   const handleAddAnnouncement = async (newAnnouncement: AnnouncementRow) => {
     try {
@@ -302,7 +301,7 @@ export const AnnouncementsAdmin = (props: Props) => {
                   <dd>
                     <ImageWithFallback
                       src={smallImagePath}
-                      fallbackSrc={`/images/announcements/fallback/small.svg`}
+                      fallbackSrc="/images/announcements/fallback/small.svg"
                       alt="Small Image"
                       width={500}
                       height={300}
@@ -315,7 +314,7 @@ export const AnnouncementsAdmin = (props: Props) => {
                   <dd>
                     <ImageWithFallback
                       src={bigImagePath}
-                      fallbackSrc={`/images/announcements/fallback/big.svg`}
+                      fallbackSrc="/images/announcements/fallback/big.svg"
                       alt="Big Image"
                       width={500}
                       height={300}
