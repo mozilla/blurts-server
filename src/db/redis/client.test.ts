@@ -14,7 +14,6 @@ vi.mock("@sentry/core", () => ({
   },
 }));
 vi.mock("./util", () => ({
-  __esModule: true,
   createRedisInstance: vi.fn(),
 }));
 
