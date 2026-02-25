@@ -3,10 +3,9 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import "@testing-library/jest-dom/vitest";
-import { expect, vi, beforeEach, afterEach } from "vitest";
+import { expect, vi, beforeEach, afterEach, beforeAll } from "vitest";
 import * as matchers from "@testing-library/jest-dom/matchers";
 import * as axeMatchers from "vitest-axe/matchers";
-import "vitest-axe/extend-expect";
 import { setProjectAnnotations } from "@storybook/react";
 import { TextEncoder, TextDecoder } from "util";
 import "vitest-canvas-mock";
@@ -40,6 +39,7 @@ if (typeof window !== "undefined") {
   // tests in act(). Thus, we tell it it's not in view.
   defaultFallbackInView(false);
   beforeEach(() => {
+    vi.resetModules();
     setupIntersectionMocking(vi.fn);
   });
   afterEach(() => {

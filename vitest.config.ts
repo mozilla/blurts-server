@@ -36,12 +36,6 @@ export default defineConfig({
 
   css: {
     modules: {
-      // Use local class names in tests to match Jest/identity-obj-proxy behaviour,
-      // where CSS module imports return the local name (e.g. "floatingLabel")
-      // rather than a hashed name (e.g. "_floatingLabel_e0a292").
-      // classNameStrategy is a Vitest-specific option (not standard Vite) that
-      // controls how CSS module class names are generated in tests.
-      // classNameStrategy: 'non-scoped',
       generateScopedName: "[local]",
     },
   },
@@ -49,6 +43,9 @@ export default defineConfig({
   test: {
     css: {
       modules: {
+        // Use local class names in tests to match Jest/identity-obj-proxy behaviour,
+        // where CSS module imports return the local name (e.g. "floatingLabel")
+        // rather than a hashed name (e.g. "_floatingLabel_e0a292").
         classNameStrategy: "non-scoped",
       },
     },

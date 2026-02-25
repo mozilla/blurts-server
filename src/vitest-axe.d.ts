@@ -5,6 +5,8 @@
 // vitest-axe@0.1.0 extends the old `Vi` namespace which Vitest 4 no longer
 // uses. This augments the `vitest` module directly so that `toHaveNoViolations`
 // is recognised on Vitest's `Assertion` type.
+// TODO: Should be fixed by https://github.com/chaance/vitest-axe/issues/17
+// See also https://github.com/chaance/vitest-axe/issues/12
 import "vitest";
 import type { AxeMatchers } from "vitest-axe/matchers";
 

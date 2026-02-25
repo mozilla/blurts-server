@@ -27,12 +27,6 @@ vi.mock("../app/functions/server/logging", () => {
 import * as mockedNodemailerModule from "nodemailer";
 import * as mockedLoggerModuleImport from "../app/functions/server/logging";
 
-// Reset module registry before each test so the email module's module-level
-// `gTransporter` state starts fresh (equivalent to Jest's resetModules: true).
-beforeEach(() => {
-  vi.resetModules();
-});
-
 test("EmailUtils.sendEmail before .init() fails", async () => {
   expect.assertions(1);
 
