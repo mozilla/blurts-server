@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import "@testing-library/jest-dom/vitest";
-import { expect, vi, beforeEach, afterEach, beforeAll } from "vitest";
+import { expect, vi, beforeEach, afterEach } from "vitest";
 import * as matchers from "@testing-library/jest-dom/matchers";
 import * as axeMatchers from "vitest-axe/matchers";
 import { setProjectAnnotations } from "@storybook/react";

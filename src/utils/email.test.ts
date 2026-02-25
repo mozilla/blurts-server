@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { test, expect, vi, beforeEach } from "vitest";
+import { test, expect, vi } from "vitest";
 import type { MockedFunction } from "vitest";
 import type { createTransport, Transporter } from "nodemailer";
 import { randomToken } from "./email";
