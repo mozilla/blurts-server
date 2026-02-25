@@ -3,6 +3,6 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 // Generic mock for static assets (images, fonts, etc.) imported in tests.
-// Mimics Jest's moduleNameMapper with identity-obj-proxy/file-mock pattern.
+// See vitest.config.ts for more information.
 const fileStub = "test-file-stub";
 export default fileStub;
