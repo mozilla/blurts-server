@@ -13,6 +13,7 @@ import {
 } from "react-aria";
 import { OverlayTriggerState } from "react-stately";
 import styles from "./Popover.module.scss";
+import { useEffect } from "react";
 
 export interface PopoverProps extends AriaPopoverProps {
   children: React.ReactNode;
@@ -26,6 +27,18 @@ function Popover({ children, offset, state, ...props }: PopoverProps) {
     { ...props, offset },
     state,
   );
+
+  // Close the popover on mobile orientation change (landscape ↔ portrait)
+  // to avoid layout/positioning inconsistencies after rotation.
+  useEffect(() => {
+    const handleChange = () => {
+      state.close();
+    };
+    screen.orientation.addEventListener("change", handleChange);
+    return () => {
+      screen.orientation.removeEventListener("change", handleChange);
+    };
+  }, [state]);
 
   // The <DismissButton> components allow screen reader users
   // to dismiss the popover easily.
