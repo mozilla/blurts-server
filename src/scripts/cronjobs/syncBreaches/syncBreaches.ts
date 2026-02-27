@@ -46,7 +46,6 @@ export async function getBreachIcons(breaches: HibpGetBreachesResponse) {
     const s3LogoUrl = `https://s3.amazonaws.com/${config.s3Bucket}/${logoFilename}`;
 
     try {
-      // Check if logo exists in S3 and get its metadata
       const exists = await checkS3ObjectExists(logoFilename, config.s3Bucket);
       const dbFaviconUrl = await getBreachFaviconUrl(breachName);
 
