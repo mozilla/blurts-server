@@ -55,8 +55,8 @@
     "npm": "10.8.3"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.985.0",
-    "@aws-sdk/lib-storage": "^3.985.0",
+    "@aws-sdk/client-s3": "^3.997.0",
+    "@aws-sdk/lib-storage": "^3.997.0",
     "@fluent/bundle": "^0.19.1",
     "@fluent/langneg": "^0.7.0",
     "@fluent/react": "^0.15.2",
@@ -93,7 +93,7 @@
     "mjml": "^4.18.0",
     "next": "16.1.6",
     "next-auth": "^4.24.13",
-    "nodemailer": "^7.0.12",
+    "nodemailer": "^8.0.1",
     "pg": "^8.18.0",
     "prom-client": "^15.1.3",
     "raw-loader": "^4.0.2",
@@ -112,8 +112,8 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.3",
     "@faker-js/faker": "^9.8.0",
-    "@playwright/test": "^1.56.1",
     "@testing-library/dom": "^10.4.1",
+    "@playwright/test": "^1.58.2",
     "@storybook/addon-a11y": "^10.2.8",
     "@storybook/addon-docs": "^10.2.8",
     "@storybook/addon-links": "^10.2.8",
@@ -130,7 +130,7 @@
     "@types/lodash.isequal": "^4.5.8",
     "@types/mjml": "^4.7.4",
     "@types/mjml-browser": "^4.15.0",
-    "@types/nodemailer": "^7.0.5",
+    "@types/nodemailer": "^7.0.11",
     "@typescript-eslint/eslint-plugin": "^8.54.0",
     "@typescript-eslint/parser": "^8.53.1",
     "@vitejs/plugin-react": "^5.1.3",
@@ -170,6 +170,9 @@
   },
   "overrides": {
     "@types/react": "19.2.7",
-    "@types/react-dom": "19.2.3"
+    "@types/react-dom": "19.2.3",
+    "next-auth": {
+      "nodemailer": "^8"
+    }
   }
 }

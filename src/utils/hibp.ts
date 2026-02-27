@@ -112,6 +112,7 @@ async function _throttledFetch(
 /* c8 ignore start */
 async function hibpApiFetch(path: string, options = {}) {
   const url = `${config.hibpApiRoot}${path}`;
+  console.log(url);
   const reqOptions = _addStandardOptions(options);
   try {
     return await _throttledFetch(url, reqOptions);
