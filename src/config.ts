@@ -30,6 +30,7 @@ if (
 const isLocalOrTest =
   process.env.NODE_ENV === "test" || process.env.APP_ENV === "local";
 
+const isProd = process.env.APP_ENV === "production";
 /**
  * Environment-specific values
  *
@@ -65,7 +66,10 @@ export const config = {
   oauthAccountUri: getEnvString("OAUTH_ACCOUNT_URI"),
   nextAuthSecret: getEnvString("NEXTAUTH_SECRET"),
   fxaSettingsUrl: getEnvString("FXA_SETTINGS_URL"),
-
+  // https://mozilla.github.io/ecosystem-platform/reference/tokens#claims-within-a-jwt-access-token
+  fxaIssuer: isProd
+    ? "https://accounts.firefox.com"
+    : "https://accounts.stage.mozaws.net",
   // If set to an empty string, emails will be logged instead of sent,
   // which is fine for local development:
   smtpUrl: getEnvString("SMTP_URL", { fallbackValue: "" }),
