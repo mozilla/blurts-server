@@ -2,20 +2,21 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import { vi, describe, it, expect } from "vitest";
 import { SubscriberRow } from "knex/types/tables";
 import { getBreachesForEmail, HibpLikeDbBreach } from "./hibp";
 import { getSubBreaches } from "./subscriberBreaches";
 import { getUserEmails } from "../db/tables/emailAddresses";
 
-jest.mock("../db/tables/emailAddresses", () => ({
-  getUserEmails: jest.fn(),
+vi.mock("../db/tables/emailAddresses", () => ({
+  getUserEmails: vi.fn(),
 }));
 
-jest.mock("./hibp", () => ({
-  getBreachesForEmail: jest.fn(),
+vi.mock("./hibp", () => ({
+  getBreachesForEmail: vi.fn(),
 }));
 
-jest.mock("../app/functions/server/logging", () => {
+vi.mock("../app/functions/server/logging", () => {
   class Logging {
     info(message: string, details: object) {
       console.info(message, details);
@@ -214,21 +215,13 @@ const breachesWithOneResolvedSsn = [
 
 describe("getSubBreaches", () => {
   it("summarises which dataClasses and emails are breached for the given user", async () => {
-    (
-      getUserEmails as jest.Mock<
-        ReturnType<typeof getUserEmails>,
-        Parameters<typeof getUserEmails>
-      >
-    )
+    vi.mocked(getUserEmails)
       // The only affected email is the user's primary email; they have no
       // additional email addresses in this test:
       .mockResolvedValueOnce([]);
-    (
-      getBreachesForEmail as jest.Mock<
-        ReturnType<typeof getBreachesForEmail>,
-        Parameters<typeof getBreachesForEmail>
-      >
-    ).mockResolvedValueOnce(breachesWithNoneResolved);
+    vi.mocked(getBreachesForEmail).mockResolvedValueOnce(
+      breachesWithNoneResolved,
+    );
     const subBreaches = await getSubBreaches(subscriber, [], "us");
     expect(subBreaches.length).toEqual(1);
     expect(subBreaches[0].isResolved).toBe(false);
@@ -243,21 +236,13 @@ describe("getSubBreaches", () => {
   });
 
   it("returns that a breach is resolved for US users", async () => {
-    (
-      getUserEmails as jest.Mock<
-        ReturnType<typeof getUserEmails>,
-        Parameters<typeof getUserEmails>
-      >
-    )
+    vi.mocked(getUserEmails)
       // The only affected email is the user's primary email; they have no
       // additional email addresses in this test:
       .mockResolvedValueOnce([]);
-    (
-      getBreachesForEmail as jest.Mock<
-        ReturnType<typeof getBreachesForEmail>,
-        Parameters<typeof getBreachesForEmail>
-      >
-    ).mockResolvedValueOnce(breachesWithOneResolved);
+    vi.mocked(getBreachesForEmail).mockResolvedValueOnce(
+      breachesWithOneResolved,
+    );
 
     const subBreaches = await getSubBreaches(subscriber, [], "us");
     expect(subBreaches.length).toEqual(1);
@@ -265,21 +250,13 @@ describe("getSubBreaches", () => {
   });
 
   it("returns that a breach is resolved for non-US users", async () => {
-    (
-      getUserEmails as jest.Mock<
-        ReturnType<typeof getUserEmails>,
-        Parameters<typeof getUserEmails>
-      >
-    )
+    vi.mocked(getUserEmails)
       // The only affected email is the user's primary email; they have no
       // additional email addresses in this test:
       .mockResolvedValueOnce([]);
-    (
-      getBreachesForEmail as jest.Mock<
-        ReturnType<typeof getBreachesForEmail>,
-        Parameters<typeof getBreachesForEmail>
-      >
-    ).mockResolvedValueOnce(breachesWithOneResolved);
+    vi.mocked(getBreachesForEmail).mockResolvedValueOnce(
+      breachesWithOneResolved,
+    );
 
     const subBreaches = await getSubBreaches(subscriber, [], "nl");
     expect(subBreaches.length).toEqual(1);
@@ -287,21 +264,13 @@ describe("getSubBreaches", () => {
   });
 
   it("returns that a breach containing a SSN is resolved for US users", async () => {
-    (
-      getUserEmails as jest.Mock<
-        ReturnType<typeof getUserEmails>,
-        Parameters<typeof getUserEmails>
-      >
-    )
+    vi.mocked(getUserEmails)
       // The only affected email is the user's primary email; they have no
       // additional email addresses in this test:
       .mockResolvedValueOnce([]);
-    (
-      getBreachesForEmail as jest.Mock<
-        ReturnType<typeof getBreachesForEmail>,
-        Parameters<typeof getBreachesForEmail>
-      >
-    ).mockResolvedValueOnce(breachesWithOneResolvedSsn);
+    vi.mocked(getBreachesForEmail).mockResolvedValueOnce(
+      breachesWithOneResolvedSsn,
+    );
 
     const subBreaches = await getSubBreaches(subscriber, allBreaches, "us");
     expect(subBreaches.length).toEqual(1);
@@ -320,21 +289,13 @@ describe("getSubBreaches", () => {
         },
       },
     };
-    (
-      getUserEmails as jest.Mock<
-        ReturnType<typeof getUserEmails>,
-        Parameters<typeof getUserEmails>
-      >
-    )
+    vi.mocked(getUserEmails)
       // The only affected email is the user's primary email; they have no
       // additional email addresses in this test:
       .mockResolvedValueOnce([]);
-    (
-      getBreachesForEmail as jest.Mock<
-        ReturnType<typeof getBreachesForEmail>,
-        Parameters<typeof getBreachesForEmail>
-      >
-    ).mockResolvedValueOnce(breachesWithOneResolvedSsn);
+    vi.mocked(getBreachesForEmail).mockResolvedValueOnce(
+      breachesWithOneResolvedSsn,
+    );
 
     const subBreaches = await getSubBreaches(
       subscriberWithoutSsnResolved,
@@ -346,21 +307,13 @@ describe("getSubBreaches", () => {
   });
 
   it("returns that a breach containing a SSN is resolved for non-US users", async () => {
-    (
-      getUserEmails as jest.Mock<
-        ReturnType<typeof getUserEmails>,
-        Parameters<typeof getUserEmails>
-      >
-    )
+    vi.mocked(getUserEmails)
       // The only affected email is the user's primary email; they have no
       // additional email addresses in this test:
       .mockResolvedValueOnce([]);
-    (
-      getBreachesForEmail as jest.Mock<
-        ReturnType<typeof getBreachesForEmail>,
-        Parameters<typeof getBreachesForEmail>
-      >
-    ).mockResolvedValueOnce(breachesWithOneResolvedSsn);
+    vi.mocked(getBreachesForEmail).mockResolvedValueOnce(
+      breachesWithOneResolvedSsn,
+    );
 
     const subBreaches = await getSubBreaches(subscriber, allBreaches, "nl");
     expect(subBreaches.length).toEqual(1);
@@ -368,12 +321,7 @@ describe("getSubBreaches", () => {
   });
 
   it("can summarise data for multiple emails", async () => {
-    (
-      getUserEmails as jest.Mock<
-        ReturnType<typeof getUserEmails>,
-        Parameters<typeof getUserEmails>
-      >
-    ).mockResolvedValueOnce([
+    vi.mocked(getUserEmails).mockResolvedValueOnce([
       {
         id: -1,
         subscriber_id: 2,
@@ -385,12 +333,7 @@ describe("getSubBreaches", () => {
         updated_at: new Date("2022-08-07 14:22:00.000-05"),
       },
     ]);
-    (
-      getBreachesForEmail as jest.Mock<
-        ReturnType<typeof getBreachesForEmail>,
-        Parameters<typeof getBreachesForEmail>
-      >
-    )
+    vi.mocked(getBreachesForEmail)
       .mockResolvedValueOnce(breachesWithNoneResolved)
       .mockResolvedValueOnce(breachesWithNoneResolved);
     const subBreaches = await getSubBreaches(subscriber, allBreaches, "us");
@@ -413,21 +356,13 @@ describe("getSubBreaches", () => {
       ...subscriber,
       primary_email: "different@test.com",
     };
-    (
-      getUserEmails as jest.Mock<
-        ReturnType<typeof getUserEmails>,
-        Parameters<typeof getUserEmails>
-      >
-    )
+    vi.mocked(getUserEmails)
       // The only affected email is the user's primary email; they have no
       // additional email addresses in this test:
       .mockResolvedValueOnce([]);
-    (
-      getBreachesForEmail as jest.Mock<
-        ReturnType<typeof getBreachesForEmail>,
-        Parameters<typeof getBreachesForEmail>
-      >
-    ).mockResolvedValueOnce(breachesWithNoneResolved);
+    vi.mocked(getBreachesForEmail).mockResolvedValueOnce(
+      breachesWithNoneResolved,
+    );
     const subBreaches = await getSubBreaches(
       differentSubscriber,
       allBreaches,
@@ -445,21 +380,11 @@ describe("getSubBreaches", () => {
   });
 
   it("normalises ISO 8601 date strings to Date objects", async () => {
-    (
-      getUserEmails as jest.Mock<
-        ReturnType<typeof getUserEmails>,
-        Parameters<typeof getUserEmails>
-      >
-    )
+    vi.mocked(getUserEmails)
       // The only affected email is the user's primary email; they have no
       // additional email addresses in this test:
       .mockResolvedValueOnce([]);
-    (
-      getBreachesForEmail as jest.Mock<
-        ReturnType<typeof getBreachesForEmail>,
-        Parameters<typeof getBreachesForEmail>
-      >
-    ).mockResolvedValueOnce(
+    vi.mocked(getBreachesForEmail).mockResolvedValueOnce(
       breachesWithNoneResolved.map((breach) => ({
         ...breach,
         // Make sure the found breaches have ISO 8601 date strings, rather than
@@ -548,12 +473,7 @@ describe("getSubBreaches", () => {
       churn_prevention_email_sent_at: null,
     };
 
-    (
-      getUserEmails as jest.Mock<
-        ReturnType<typeof getUserEmails>,
-        Parameters<typeof getUserEmails>
-      >
-    ).mockResolvedValueOnce([
+    vi.mocked(getUserEmails).mockResolvedValueOnce([
       {
         id: -1,
         subscriber_id: 2,
@@ -565,12 +485,7 @@ describe("getSubBreaches", () => {
         updated_at: new Date("2022-08-07 14:22:00.000-05"),
       },
     ]);
-    (
-      getBreachesForEmail as jest.Mock<
-        ReturnType<typeof getBreachesForEmail>,
-        Parameters<typeof getBreachesForEmail>
-      >
-    )
+    vi.mocked(getBreachesForEmail)
       .mockResolvedValueOnce(breachesWithOneResolvedSsn)
       .mockResolvedValueOnce(breachesWithOneResolved);
 
@@ -645,12 +560,7 @@ describe("getSubBreaches", () => {
       churn_prevention_email_sent_at: null,
     };
 
-    (
-      getUserEmails as jest.Mock<
-        ReturnType<typeof getUserEmails>,
-        Parameters<typeof getUserEmails>
-      >
-    ).mockResolvedValueOnce([
+    vi.mocked(getUserEmails).mockResolvedValueOnce([
       {
         id: -1,
         subscriber_id: 2,
@@ -662,12 +572,7 @@ describe("getSubBreaches", () => {
         updated_at: new Date("2022-08-07 14:22:00.000-05"),
       },
     ]);
-    (
-      getBreachesForEmail as jest.Mock<
-        ReturnType<typeof getBreachesForEmail>,
-        Parameters<typeof getBreachesForEmail>
-      >
-    )
+    vi.mocked(getBreachesForEmail)
       .mockResolvedValueOnce(breachesWithOneResolvedSsn)
       .mockResolvedValueOnce(breachesWithOneResolvedSsn);
 
@@ -750,12 +655,7 @@ describe("getSubBreaches", () => {
       churn_prevention_email_sent_at: null,
     };
 
-    (
-      getUserEmails as jest.Mock<
-        ReturnType<typeof getUserEmails>,
-        Parameters<typeof getUserEmails>
-      >
-    )
+    vi.mocked(getUserEmails)
       .mockResolvedValueOnce([
         {
           id: -1,
@@ -781,12 +681,7 @@ describe("getSubBreaches", () => {
         },
       ]);
 
-    (
-      getBreachesForEmail as jest.Mock<
-        ReturnType<typeof getBreachesForEmail>,
-        Parameters<typeof getBreachesForEmail>
-      >
-    )
+    vi.mocked(getBreachesForEmail)
       .mockResolvedValueOnce(breachesWithOneResolvedSsn)
       .mockResolvedValueOnce(breachesWithOneResolved);
 
@@ -795,7 +690,7 @@ describe("getSubBreaches", () => {
     expect(subBreaches[0].isResolved).toBe(true);
   });
 
-  it("same breach, two emails: mark as unresolved only if both emails don’t have all data classes resolved for US user", async () => {
+  it("same breach, two emails: mark as unresolved only if both emails don't have all data classes resolved for US user", async () => {
     const subscriber: SubscriberRow = {
       updated_at: new Date(),
       fx_newsletter: true,
@@ -865,12 +760,7 @@ describe("getSubBreaches", () => {
       churn_prevention_email_sent_at: null,
     };
 
-    (
-      getUserEmails as jest.Mock<
-        ReturnType<typeof getUserEmails>,
-        Parameters<typeof getUserEmails>
-      >
-    )
+    vi.mocked(getUserEmails)
       .mockResolvedValueOnce([
         {
           id: -1,
@@ -896,12 +786,7 @@ describe("getSubBreaches", () => {
         },
       ]);
 
-    (
-      getBreachesForEmail as jest.Mock<
-        ReturnType<typeof getBreachesForEmail>,
-        Parameters<typeof getBreachesForEmail>
-      >
-    )
+    vi.mocked(getBreachesForEmail)
       .mockResolvedValueOnce(breachesWithOneResolvedSsn)
       .mockResolvedValueOnce(breachesWithOneResolved);
 
@@ -980,12 +865,7 @@ describe("getSubBreaches", () => {
       churn_prevention_email_sent_at: null,
     };
 
-    (
-      getUserEmails as jest.Mock<
-        ReturnType<typeof getUserEmails>,
-        Parameters<typeof getUserEmails>
-      >
-    )
+    vi.mocked(getUserEmails)
       .mockResolvedValueOnce([
         {
           id: -1,
@@ -1011,12 +891,7 @@ describe("getSubBreaches", () => {
         },
       ]);
 
-    (
-      getBreachesForEmail as jest.Mock<
-        ReturnType<typeof getBreachesForEmail>,
-        Parameters<typeof getBreachesForEmail>
-      >
-    )
+    vi.mocked(getBreachesForEmail)
       .mockResolvedValueOnce(breachesWithOneResolved)
       .mockResolvedValueOnce(breachesWithOneResolvedSsn);
 
@@ -1025,7 +900,7 @@ describe("getSubBreaches", () => {
     expect(subBreaches[0].isResolved).toBe(true);
   });
 
-  it("same breach, two emails: mark as unresolved if both emails don’t have all data classes resolved for non-US user", async () => {
+  it("same breach, two emails: mark as unresolved if both emails don't have all data classes resolved for non-US user", async () => {
     const subscriber: SubscriberRow = {
       updated_at: new Date(),
       fx_newsletter: true,
@@ -1091,12 +966,7 @@ describe("getSubBreaches", () => {
       churn_prevention_email_sent_at: null,
     };
 
-    (
-      getUserEmails as jest.Mock<
-        ReturnType<typeof getUserEmails>,
-        Parameters<typeof getUserEmails>
-      >
-    )
+    vi.mocked(getUserEmails)
       .mockResolvedValueOnce([
         {
           id: -1,
@@ -1122,12 +992,7 @@ describe("getSubBreaches", () => {
         },
       ]);
 
-    (
-      getBreachesForEmail as jest.Mock<
-        ReturnType<typeof getBreachesForEmail>,
-        Parameters<typeof getBreachesForEmail>
-      >
-    )
+    vi.mocked(getBreachesForEmail)
       .mockResolvedValueOnce(breachesWithOneResolved)
       .mockResolvedValueOnce(breachesWithOneResolvedSsn);
 

@@ -3,6 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import type { Logger } from "winston";
+import { describe, it, expect } from "vitest";
 import { RemoteSettingsClient } from "./remoteSettingsClient";
 import { mockFetch } from "../test/helpers/mockFetch";
 import { mockLogger } from "../test/helpers/mockLogger";

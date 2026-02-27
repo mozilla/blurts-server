@@ -2,17 +2,17 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { it, expect, jest } from "@jest/globals";
+import { it, expect, vi, describe, beforeEach } from "vitest";
 
 describe("loadNextHeaders", () => {
   beforeEach(() => {
-    jest.resetModules();
-    jest.unmock("next/headers");
+    vi.resetModules();
+    vi.doUnmock("next/headers");
   });
 
   it("gets the correct header value", async () => {
-    const mockHeaders = jest.fn(() => new Headers([["x-test-header", "test"]]));
-    jest.mock("next/headers", () => ({ headers: mockHeaders }));
+    const mockHeaders = vi.fn(() => new Headers([["x-test-header", "test"]]));
+    vi.doMock("next/headers", () => ({ headers: mockHeaders }));
 
     const { loadNextHeaders } = await import("./loadNextHeaders");
 
@@ -37,7 +37,7 @@ describe("loadNextHeaders", () => {
 
   it("resolves to `null` if the import fails", async () => {
     // Fail by throwing during import
-    jest.mock("next/headers", () => {
+    vi.doMock("next/headers", () => {
       throw new Error("Loading next/headers failed");
     });
 

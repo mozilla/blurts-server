@@ -10,6 +10,7 @@ import {
   dataClassKeyMap,
 } from "./dashboard";
 import { SubscriberBreach } from "../../../utils/subscriberBreaches";
+import { describe, it, expect } from "vitest";
 
 const unresolvedBreaches: SubscriberBreach[] = [
   {
@@ -358,25 +359,25 @@ describe("getDashboardSummary", () => {
 
         // Verify counts match
         dataClassTypes.forEach((dataClass) => {
-          // eslint-disable-next-line jest/no-standalone-expect
+          // eslint-disable-next-line vitest/no-standalone-expect
           expect(actualSummary.unresolvedDataPoints[dataClass]).toBe(
             expectedCounts[dataClass],
           );
-          // eslint-disable-next-line jest/no-standalone-expect
+          // eslint-disable-next-line vitest/no-standalone-expect
           expect(actualSummary.fixedDataPoints[dataClass]).toBe(
             resolvedCounts[dataClass],
           );
         });
 
-        // eslint-disable-next-line jest/no-standalone-expect
+        // eslint-disable-next-line vitest/no-standalone-expect
         expect(actualSummary.dataBreachTotalNum).toBe(totalBreaches);
-        // eslint-disable-next-line jest/no-standalone-expect
+        // eslint-disable-next-line vitest/no-standalone-expect
         expect(actualSummary.dataBreachResolvedNum).toBe(resolvedBreaches);
-        // eslint-disable-next-line jest/no-standalone-expect
+        // eslint-disable-next-line vitest/no-standalone-expect
         expect(actualSummary.dataBreachTotalDataPointsNum).toBe(
           totalDataPoints,
         );
-        // eslint-disable-next-line jest/no-standalone-expect
+        // eslint-disable-next-line vitest/no-standalone-expect
         expect(actualSummary.dataBreachFixedDataPointsNum).toBe(
           fixedDataPoints,
         );
@@ -384,19 +385,19 @@ describe("getDashboardSummary", () => {
     );
 
     // The `expect` is called in `outputCountsMatchInputCounts`
-    // eslint-disable-next-line jest/expect-expect
+    // eslint-disable-next-line vitest/expect-expect
     it("returns the number of exposures that we put in", () => {
       fc.assert(outputCountsMatchInputCounts);
     });
 
     // The `expect` is called in `outputCountsMatchInputCounts`
-    // eslint-disable-next-line jest/expect-expect
+    // eslint-disable-next-line vitest/expect-expect
     it("also counts bank account number breaches", () => {
       fc.assert(outputCountsMatchInputCounts);
     });
 
     // The `expect` is called in `outputCountsMatchInputCounts`
-    // eslint-disable-next-line jest/expect-expect
+    // eslint-disable-next-line vitest/expect-expect
     it("also counts credit card breaches", () => {
       fc.assert(outputCountsMatchInputCounts);
     });

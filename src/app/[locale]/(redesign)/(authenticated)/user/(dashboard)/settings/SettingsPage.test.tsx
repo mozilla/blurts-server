@@ -2,11 +2,11 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { it, expect } from "@jest/globals";
+import { it, expect, vi, describe } from "vitest";
 import { act, render, screen } from "@testing-library/react";
 import { composeStory } from "@storybook/react";
 import { userEvent, within } from "storybook/test";
-import { axe } from "jest-axe";
+import { axe } from "vitest-axe";
 import SettingsMeta, {
   SettingsEditManageAccount,
   SettingsEditNotifications,
@@ -18,37 +18,39 @@ import SettingsEditYourInfoMeta, {
 } from "./stories/SettingsEditInfoNonUsUsers.stories";
 import { mockedActions } from "./stories/SettingsStoryWrapper";
 
-const mockedRouterPush = jest.fn();
-const mockedRecordTelemetry = jest.fn();
-const mockedRouterRefresh = jest.fn();
+const mockedRouterPush = vi.fn();
+const mockedRecordTelemetry = vi.fn();
+const mockedRouterRefresh = vi.fn();
 
-jest.mock("../../../../../../hooks/useTelemetry", () => {
+vi.mock("../../../../../../hooks/useTelemetry", () => {
   return {
     useTelemetry: () => mockedRecordTelemetry,
   };
 });
 
-const mockedSessionUpdate = jest.fn();
+const mockedSessionUpdate = vi.fn();
 
-jest.mock("next-auth/react", () => ({
-  ...jest.requireActual("next-auth/react"),
-  useSession: () => ({
-    data: { user: mockedUser },
-    update: mockedSessionUpdate,
-  }),
-}));
+vi.mock("next-auth/react", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("next-auth/react")>();
+  return {
+    ...actual,
+    useSession: () => ({
+      data: { user: mockedUser },
+      update: mockedSessionUpdate,
+    }),
+  };
+});
 
-jest.mock("next/navigation", () => ({
+vi.mock("next/navigation", () => ({
   useRouter: () => ({
     push: mockedRouterPush,
     refresh: mockedRouterRefresh,
   }),
   usePathname: () => "/en/user/settings",
   useSearchParams: () => ({
-    get: jest.fn(),
+    get: vi.fn(),
   }),
 }));
-jest.mock("../../../../../../hooks/useTelemetry");
 
 import {
   mockedAnnouncements,
@@ -63,7 +65,7 @@ import { TestComponentWrapper } from "../../../../../../../TestComponentWrapper"
 import { Shell } from "../../../../Shell/Shell";
 import { ComponentProps, ReactNode } from "react";
 import { FeatureFlagName } from "../../../../../../../db/tables/featureFlags";
-import { getL10n } from "../../../../../../functions/l10n/storybookAndJest";
+import { getL10n } from "../../../../../../functions/l10n/storybookAndTests";
 import { defaultExperimentData } from "../../../../../../../telemetry/generated/nimbus/experiments";
 import { SettingsView } from "./View";
 
@@ -87,8 +89,8 @@ const SettingsWrapper = (props: {
 
 describe("Tests from Old settings page", () => {
   const mockedActions: ComponentProps<typeof SettingsView>["actions"] = {
-    onRemoveEmail: jest.fn(),
-    onAddEmail: jest.fn(),
+    onRemoveEmail: vi.fn(),
+    onAddEmail: vi.fn(),
     onDeleteAccount: () => new Promise(() => undefined),
   };
 
@@ -269,7 +271,7 @@ describe("Settings page redesign", () => {
       expect(confirmationDialog).toBeInTheDocument();
     });
 
-    it("dismisses the “add email” dialog", async () => {
+    it('dismisses the "add email" dialog', async () => {
       const user = userEvent.setup();
       const ComposedStory = composeStory(
         SettingsEditYourInfo,
@@ -319,7 +321,7 @@ describe("Settings page redesign", () => {
       expect(mockedActions.onRemoveEmail).toHaveBeenCalled();
     });
 
-    it("shows the “verification required” indicator for unconfirmed email addresses", () => {
+    it('shows the "verification required" indicator for unconfirmed email addresses', () => {
       const ComposedStory = composeStory(
         SettingsEditYourInfoAdditionalMonitoredEmails,
         SettingsEditYourInfoMeta,
@@ -332,9 +334,9 @@ describe("Settings page redesign", () => {
       expect(verificationIndicator).toBeInTheDocument();
     });
 
-    it("shows the “resend verification” link for unconfirmed email addresses", async () => {
+    it('shows the "resend verification" link for unconfirmed email addresses', async () => {
       const user = userEvent.setup();
-      global.fetch = jest.fn().mockResolvedValue({ ok: true });
+      global.fetch = vi.fn().mockResolvedValue({ ok: true });
       const ComposedStory = composeStory(
         SettingsEditYourInfoAdditionalMonitoredEmails,
         SettingsEditYourInfoMeta,
@@ -428,7 +430,7 @@ describe("Settings page redesign", () => {
       const dialog = screen.getByRole("dialog");
       expect(
         within(dialog).getByText(
-          "All of your ⁨Monitor⁩ account information will be deleted and we’ll no longer monitor for new data breaches. This will not delete your ⁨Mozilla account⁩.",
+          "All of your ⁨Monitor⁩ account information will be deleted and we\u2019ll no longer monitor for new data breaches. This will not delete your ⁨Mozilla account⁩.",
         ),
       ).toBeInTheDocument();
 
@@ -471,8 +473,8 @@ describe("Settings page redesign", () => {
         SettingsEditManageAccount,
         SettingsMeta,
       );
-      jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
-      const mockDeleteAccount = jest.fn(() => Promise.resolve());
+      vi.spyOn(console, "error").mockImplementationOnce(() => undefined);
+      const mockDeleteAccount = vi.fn(() => Promise.resolve());
       render(
         <ComposedStory
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -531,7 +533,7 @@ describe("Settings page redesign", () => {
     });
 
     it("disables breach alert notification options if a user opts out of breach alerts", async () => {
-      global.fetch = jest.fn().mockResolvedValue({ ok: true });
+      global.fetch = vi.fn().mockResolvedValue({ ok: true });
       const user = userEvent.setup();
       const ComposedStory = composeStory(
         SettingsEditNotifications,
@@ -554,7 +556,7 @@ describe("Settings page redesign", () => {
         await user.click(activateBreachAlertsCheckbox);
       });
 
-      jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+      vi.spyOn(console, "error").mockImplementationOnce(() => undefined);
 
       expect(global.fetch).toHaveBeenCalledWith(
         "/api/v1/user/update-comm-option",
@@ -615,7 +617,7 @@ describe("Settings page redesign", () => {
     });
 
     it("unselects the breach alerts checkbox and sends a null value to the API", async () => {
-      global.fetch = jest.fn().mockResolvedValue({ ok: true });
+      global.fetch = vi.fn().mockResolvedValue({ ok: true });
 
       const user = userEvent.setup();
       const ComposedStory = composeStory(
@@ -638,7 +640,7 @@ describe("Settings page redesign", () => {
         await user.click(activateBreachAlertsCheckbox);
       });
 
-      jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+      vi.spyOn(console, "error").mockImplementationOnce(() => undefined);
 
       expect(global.fetch).toHaveBeenCalledWith(
         "/api/v1/user/update-comm-option",
@@ -652,7 +654,7 @@ describe("Settings page redesign", () => {
     });
 
     it("sends a call to the API to change the email alert preferences when changing the radio button values", async () => {
-      global.fetch = jest.fn().mockResolvedValue({ ok: true });
+      global.fetch = vi.fn().mockResolvedValue({ ok: true });
       const user = userEvent.setup();
       const ComposedStory = composeStory(
         SettingsEditNotifications,
@@ -695,7 +697,7 @@ describe("Settings page redesign", () => {
     });
 
     it("preselects primary email alert option", () => {
-      global.fetch = jest.fn().mockResolvedValue({ ok: true });
+      global.fetch = vi.fn().mockResolvedValue({ ok: true });
       const ComposedStory = composeStory(
         SettingsEditNotifications,
         SettingsMeta,
@@ -709,7 +711,7 @@ describe("Settings page redesign", () => {
     });
 
     it("preselects the affected email comms option after a user decides to enable breach alerts", async () => {
-      global.fetch = jest.fn().mockResolvedValue({ ok: true });
+      global.fetch = vi.fn().mockResolvedValue({ ok: true });
       const user = userEvent.setup();
       const ComposedStory = composeStory(
         SettingsEditNotifications,

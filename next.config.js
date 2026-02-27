@@ -188,22 +188,6 @@ const nextConfig = {
   serverExternalPackages: ["mjml", "commonjs", "knex", "ioredis-mock"],
 };
 
-if (process.env.NODE_ENV === "test") {
-  nextConfig.transpilePackages = [
-    ...(nextConfig.transpilePackages ?? []),
-    // transpilePackages is required for Jest (via next/jest) to correctly
-    // transform ESM-only dependencies in node_modules. Without this,
-    // tests importing Storybook logic or components will fail with:
-    // "SyntaxError: Cannot use import statement outside a module"
-    "@storybook/react",
-    "@storybook/nextjs",
-    "@storybook/addon-links",
-    "@storybook/addon-essentials",
-    "@storybook/addon-interactions",
-    "storybook",
-  ];
-}
-
 const sentryOptions = {
   // Additional config options for the Sentry Webpack plugin. Keep in mind that
   // the following options are set automatically, and overriding them is not

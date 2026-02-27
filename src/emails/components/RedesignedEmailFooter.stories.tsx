@@ -10,7 +10,7 @@ import {
   Props,
   getUnstyledRedesignedEmailFooter,
 } from "./EmailFooter";
-import { getL10n } from "../../app/functions/l10n/storybookAndJest";
+import { getL10n } from "../../app/functions/l10n/storybookAndTests";
 
 const meta: Meta<FC<Props>> = {
   title: "Emails/Components/Redesigned footer",

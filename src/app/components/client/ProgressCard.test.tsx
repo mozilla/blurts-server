@@ -2,20 +2,20 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { it, expect } from "@jest/globals";
+import { it, expect, vi } from "vitest";
 import { render } from "@testing-library/react";
 import { composeStory } from "@storybook/react";
-import { axe } from "jest-axe";
+import { axe } from "vitest-axe";
 import Meta, { ProgressCardItemNonUs } from "./stories/ProgressCard.stories";
 
-jest.mock("next/navigation", () => ({
-  useRouter: jest.fn(),
-  usePathname: jest.fn(),
+vi.mock("next/navigation", () => ({
+  useRouter: vi.fn(),
+  usePathname: vi.fn(),
 }));
 
-const mockedRecordTelemetry = jest.fn();
+const mockedRecordTelemetry = vi.fn();
 
-jest.mock("../../hooks/useTelemetry", () => {
+vi.mock("../../hooks/useTelemetry", () => {
   return {
     useTelemetry: () => mockedRecordTelemetry,
   };

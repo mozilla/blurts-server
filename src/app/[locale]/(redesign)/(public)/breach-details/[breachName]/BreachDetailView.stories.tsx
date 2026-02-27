@@ -4,7 +4,7 @@
 
 import type { Meta, StoryObj } from "@storybook/nextjs";
 import { BreachDetailsView, Props as ViewProps } from "./BreachDetailView";
-import { getL10n } from "../../../../../functions/l10n/storybookAndJest";
+import { getL10n } from "../../../../../functions/l10n/storybookAndTests";
 import { PublicShell } from "../../PublicShell";
 import { createRandomHibpListing } from "../../../../../../apiMocks/mockData";
 import { defaultExperimentData } from "../../../../../../telemetry/generated/nimbus/experiments";

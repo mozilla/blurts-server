@@ -2,11 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import {
-  getL10nBundles as mockGetL10nBundles,
-  getL10n as mockGetL10n,
-} from "../../l10n/storybookAndTests";
-
-export const getL10nBundles = mockGetL10nBundles;
-
-export const getL10n = mockGetL10n;
+// Generic mock for static assets (images, fonts, etc.) imported in tests.
+// See vitest.config.ts for more information.
+const fileStub = "test-file-stub";
+export default fileStub;

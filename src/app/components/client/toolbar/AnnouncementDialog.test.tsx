@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { it, expect } from "@jest/globals";
+import { it, expect, vi } from "vitest";
 import { render, screen, waitFor } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
 import { composeStory } from "@storybook/react";
@@ -11,9 +11,9 @@ import Meta, {
   AnnouncementDialogSeenOrCleared,
   AnnouncementsNoAnnouncements,
 } from "./AnnouncementDialog.stories";
-import { axe } from "jest-axe";
+import { axe } from "vitest-axe";
 
-jest.mock("../../../hooks/useTelemetry");
+vi.mock("../../../hooks/useTelemetry");
 
 it("passes the axe accessibility test suite", async () => {
   const ComposedAnnouncementDialog = composeStory(
@@ -26,7 +26,7 @@ it("passes the axe accessibility test suite", async () => {
 
 it("closes and opens the announcement button", async () => {
   // jsdom will complain about not being able to find the right fluent-id which we can ignore
-  jest.spyOn(console, "warn").mockImplementation(() => {});
+  vi.spyOn(console, "warn").mockImplementation(() => {});
 
   const user = userEvent.setup();
   const ComposedAnnouncementDialog = composeStory(
@@ -51,7 +51,7 @@ it("closes and opens the announcement button", async () => {
 
 it("switches between new and all tab", async () => {
   // suppress fluent-id warning
-  jest.spyOn(console, "warn").mockImplementation(() => {});
+  vi.spyOn(console, "warn").mockImplementation(() => {});
 
   const user = userEvent.setup();
   const ComposedAnnouncementDialog = composeStory(
@@ -82,7 +82,7 @@ it("switches between new and all tab", async () => {
 
 it("seen or cleared announcements should only be in the All tab", async () => {
   // suppress fluent-id warning
-  jest.spyOn(console, "warn").mockImplementation(() => {});
+  vi.spyOn(console, "warn").mockImplementation(() => {});
 
   const user = userEvent.setup();
   const ComposedAnnouncementDialog = composeStory(
@@ -109,12 +109,12 @@ it("seen or cleared announcements should only be in the All tab", async () => {
 
 it("mark a new announcement as seen", async () => {
   // suppress fluent-id warning
-  jest.spyOn(console, "warn").mockImplementation(() => {});
+  vi.spyOn(console, "warn").mockImplementation(() => {});
 
   // suppress error from trying to hit the /seen endpoint
-  jest.spyOn(console, "error").mockImplementation(() => {});
+  vi.spyOn(console, "error").mockImplementation(() => {});
 
-  global.fetch = jest.fn().mockImplementation(() =>
+  global.fetch = vi.fn().mockImplementation(() =>
     Promise.resolve({
       ok: true,
       json: () => Promise.resolve({ success: true }),
@@ -160,12 +160,12 @@ it("mark a new announcement as seen", async () => {
 
 it("mark all announcements as cleared", async () => {
   // suppress fluent-id warning
-  jest.spyOn(console, "warn").mockImplementation(() => {});
+  vi.spyOn(console, "warn").mockImplementation(() => {});
 
   // suppress error from trying to hit the /cleared endpoint
-  jest.spyOn(console, "error").mockImplementation(() => {});
+  vi.spyOn(console, "error").mockImplementation(() => {});
 
-  global.fetch = jest.fn().mockImplementation(() =>
+  global.fetch = vi.fn().mockImplementation(() =>
     Promise.resolve({
       ok: true,
       json: () => Promise.resolve({ success: true }),
@@ -232,12 +232,12 @@ it("mark all announcements as cleared", async () => {
 
 it("only moves new announcements to all if cleared", async () => {
   // suppress fluent-id warning
-  jest.spyOn(console, "warn").mockImplementation(() => {});
+  vi.spyOn(console, "warn").mockImplementation(() => {});
 
   // suppress error from trying to hit the /cleared endpoint
-  jest.spyOn(console, "error").mockImplementation(() => {});
+  vi.spyOn(console, "error").mockImplementation(() => {});
 
-  global.fetch = jest.fn().mockImplementation(() =>
+  global.fetch = vi.fn().mockImplementation(() =>
     Promise.resolve({
       ok: true,
       json: () => Promise.resolve({ success: true }),
@@ -285,7 +285,7 @@ it("only moves new announcements to all if cleared", async () => {
 
 it("dismisses the popup", async () => {
   // suppress fluent-id warning
-  jest.spyOn(console, "warn").mockImplementation(() => {});
+  vi.spyOn(console, "warn").mockImplementation(() => {});
 
   const user = userEvent.setup();
   const ComposedAnnouncementDialog = composeStory(
@@ -332,7 +332,7 @@ it("dismisses the popup", async () => {
 
 it("shows an empty state if announcements were not loaded", async () => {
   // suppress fluent-id warning
-  jest.spyOn(console, "warn").mockImplementation(() => {});
+  vi.spyOn(console, "warn").mockImplementation(() => {});
 
   const user = userEvent.setup();
 

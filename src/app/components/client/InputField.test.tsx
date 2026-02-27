@@ -2,10 +2,10 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { expect } from "@jest/globals";
+import { expect, test, it, describe } from "vitest";
 import { render } from "@testing-library/react";
 import { composeStory } from "@storybook/react";
-import { axe } from "jest-axe";
+import { axe } from "vitest-axe";
 import Meta, {
   TextInputFieldEmpty,
   TextInputFieldEmptyFloatingLabel,

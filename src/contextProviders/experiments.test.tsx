@@ -2,6 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import { describe, it, expect } from "vitest";
 import { render } from "@testing-library/react";
 import { ExperimentsProvider, useExperiments } from "./experiments";
 import { defaultExperimentData } from "../telemetry/generated/nimbus/experiments";

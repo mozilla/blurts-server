@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { it, expect, jest } from "@jest/globals";
+import { it, expect, vi, beforeEach, afterEach } from "vitest";
 import jwt from "jsonwebtoken";
 import {
   createTestClientRegionToken,
@@ -12,7 +12,7 @@ import {
 const originalEnv = process.env;
 
 beforeEach(() => {
-  jest.resetModules();
+  vi.resetModules();
   process.env = { ...originalEnv, E2E_TEST_SECRET: "test-secret" };
 });
 
@@ -45,14 +45,14 @@ it("returns undefined if secret is missing", () => {
 });
 
 it("returns undefined for an invalid token", () => {
-  const warnSpy = jest.spyOn(console, "warn").mockImplementationOnce(() => {});
+  const warnSpy = vi.spyOn(console, "warn").mockImplementationOnce(() => {});
   const result = getTestClientRegionFromToken("invalid.token.value");
   expect(result).toBeUndefined();
   expect(warnSpy).toHaveBeenCalledWith("Invalid or expired JWT token");
 });
 
 it("returns undefined if the token is expired", () => {
-  const warnSpy = jest.spyOn(console, "warn").mockImplementationOnce(() => {});
+  const warnSpy = vi.spyOn(console, "warn").mockImplementationOnce(() => {});
   const expiredToken = jwt.sign(
     { region: "us", iat: 1000, exp: 1001 },
     "test-secret",

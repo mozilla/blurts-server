@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { it, expect } from "@jest/globals";
+import { it, expect, vi } from "vitest";
 import { composeStory } from "@storybook/react";
 import { type ComponentProps } from "react";
 import { render, screen } from "@testing-library/react";
@@ -10,12 +10,12 @@ import Meta, { BreachDetailViewStory } from "./BreachDetailView.stories";
 import { createRandomHibpListing } from "../../../../../../apiMocks/mockData";
 import { type TelemetryLink } from "../../../../../components/client/TelemetryLink";
 
-jest.mock("../../../../../components/client/SignInButton", () => {
+vi.mock("../../../../../components/client/SignInButton", () => {
   return {
     SignInButton: () => <span>Sign In</span>,
   };
 });
-jest.mock("../../../../../components/client/TelemetryLink", () => {
+vi.mock("../../../../../components/client/TelemetryLink", () => {
   return {
     TelemetryLink: ({
       eventData: _eventData,

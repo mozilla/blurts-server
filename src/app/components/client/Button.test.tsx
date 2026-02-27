@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { it, expect } from "@jest/globals";
+import { it, expect, describe } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { composeStory } from "@storybook/react";
 import Meta, { Primary, PrimaryLink } from "./stories/Button.stories";

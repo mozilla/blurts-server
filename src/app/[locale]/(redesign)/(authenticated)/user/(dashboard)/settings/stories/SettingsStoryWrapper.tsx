@@ -19,7 +19,7 @@ import {
   mockedVerifiedEmailFifth,
 } from "./settingsMockData";
 import { SerializedSubscriber } from "../../../../../../../../next-auth";
-import { getL10n } from "../../../../../../../functions/l10n/storybookAndJest";
+import { getL10n } from "../../../../../../../functions/l10n/storybookAndTests";
 import { onDeleteAccount } from "../actions";
 
 export type SettingsWrapperProps = {

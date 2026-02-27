@@ -5,7 +5,7 @@
 import type { Meta, StoryObj } from "@storybook/nextjs";
 
 import { PublicShell } from "./PublicShell";
-import { getL10n } from "../../../functions/l10n/storybookAndJest";
+import { getL10n } from "../../../functions/l10n/storybookAndTests";
 
 const meta: Meta<typeof PublicShell> = {
   title: "Layout/Public Shell",

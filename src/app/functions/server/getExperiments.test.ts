@@ -2,45 +2,51 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { describe, it, expect, jest, beforeEach } from "@jest/globals";
+import {
+  describe,
+  it,
+  expect,
+  vi,
+  beforeEach,
+  type MockedFunction,
+} from "vitest";
 import { captureException } from "@sentry/node";
 import { FeatureFlagName } from "../../../db/tables/featureFlags";
 
-const headersMock: jest.Mock<() => Promise<Headers>> = jest.fn();
-jest.mock("next/headers", () => ({ headers: headersMock }));
+const headersMock: MockedFunction<() => Promise<Headers>> = vi.fn();
+vi.mock("next/headers", () => ({ headers: headersMock }));
 
-jest.mock("../../../config", () => {
+vi.mock("../../../config", () => {
   return {
     config: {},
   };
 });
 
-const captureExceptionMock: jest.MockedFunction<typeof captureException> =
-  jest.fn();
-jest.mock("@sentry/node", () => ({ captureException: captureExceptionMock }));
+const captureExceptionMock: MockedFunction<typeof captureException> = vi.fn();
+vi.mock("@sentry/node", () => ({ captureException: captureExceptionMock }));
 
-const loggerMock = { info: jest.fn(), error: jest.fn() };
-jest.mock("./logging", () => ({ logger: loggerMock }));
+const loggerMock = { info: vi.fn(), error: vi.fn() };
+vi.mock("./logging", () => ({ logger: loggerMock }));
 
-const getEnabledFeatureFlagsMock = jest.fn<() => FeatureFlagName[]>();
-jest.mock("../../../db/tables/featureFlags", () => ({
+const getEnabledFeatureFlagsMock = vi.fn<() => FeatureFlagName[]>();
+vi.mock("../../../db/tables/featureFlags", () => ({
   getEnabledFeatureFlags: getEnabledFeatureFlagsMock,
 }));
 
 const defaultExperimentDataMock = { Features: { defaulted: true } };
 const localExperimentDataMock = { Features: { local: true } };
-jest.mock("../../../telemetry/generated/nimbus/experiments", () => ({
+vi.mock("../../../telemetry/generated/nimbus/experiments", () => ({
   defaultExperimentData: defaultExperimentDataMock,
   localExperimentData: localExperimentDataMock,
 }));
 
-const fetchMock: jest.MockedFunction<typeof fetch> = jest.fn();
+const fetchMock: MockedFunction<typeof fetch> = vi.fn();
 
-beforeEach(() => {
-  jest.resetModules();
+beforeEach(async () => {
+  vi.resetModules();
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const configModule = jest.requireMock("../../../config") as any;
+  const configModule = (await import("../../../config")) as any;
   configModule.config.appEnv = "production";
   delete configModule.config.nimbusSidecarUrl;
 
@@ -63,7 +69,7 @@ describe("getExperiments", () => {
 
   it("returns localExperimentData in local environments", async () => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const configModule = jest.requireMock("../../../config") as any;
+    const configModule = (await import("../../../config")) as any;
     configModule.config.appEnv = "local";
     const { getExperiments } = await import("./getExperiments");
 
@@ -79,7 +85,7 @@ describe("getExperiments", () => {
 
   it("calls Cirrus V2 with preview param", async () => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const configModule = jest.requireMock("../../../config") as any;
+    const configModule = (await import("../../../config")) as any;
     configModule.config.nimbusSidecarUrl = "https://cirrus.example";
     headersMock.mockResolvedValue(
       new Headers([["x-nimbus-preview-mode", "true"]]),
@@ -132,7 +138,7 @@ describe("getExperiments", () => {
 
   it("fallsback to defaultExperimentData when not experiment data is returned by Cirrus", async () => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const configModule = jest.requireMock("../../../config") as any;
+    const configModule = (await import("../../../config")) as any;
     configModule.config.nimbusSidecarUrl = "https://cirrus.example";
     headersMock.mockResolvedValue(
       new Headers([["x-nimbus-preview-mode", "true"]]),
@@ -180,11 +186,11 @@ describe("getExperiments", () => {
 
   it("logs error, captures exception, and returns defaultExperimentData on error response", async () => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const configModule = jest.requireMock("../../../config") as any;
+    const configModule = (await import("../../../config")) as any;
     configModule.config.nimbusSidecarUrl = "https://cirrus.example";
     headersMock.mockResolvedValue(new Headers([]));
 
-    global.fetch = jest.fn<typeof global.fetch>().mockResolvedValue({
+    global.fetch = vi.fn<typeof global.fetch>().mockResolvedValue({
       ok: false,
       status: 502,
       json: () => Promise.reject({ error: "error" }),

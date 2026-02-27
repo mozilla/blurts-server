@@ -2,56 +2,56 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-jest.mock("../../../utils/hibp", () => {
+//@vitest-environment node
+
+vi.mock("../../../utils/hibp", () => {
   return {
-    fetchHibpBreaches: jest.fn(), // overwrite in tests
+    fetchHibpBreaches: vi.fn(), // overwrite in tests
   };
 });
 
-jest.mock("../../../config", () => {
+vi.mock("../../../config", () => {
   return {
     config: {},
   };
 });
 
+vi.mock("@sentry/node", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@sentry/node")>();
+  return {
+    ...actual,
+    isInitialized: vi.fn(),
+    flush: vi.fn(),
+  };
+});
+
+import { vi, describe, it, expect, beforeEach } from "vitest";
 import * as HIBP from "../../../utils/hibp";
-import { logger } from "../../../app/functions/server/logging";
 import { RemoteSettingsClient } from "../../../utils/remoteSettingsClient";
 import { validateConfig, main } from "./updateBreachesInRemoteSettings";
 import HibpData from "../../../test/seeds/hibpBreachResponse.json";
 import * as configModule from "../../../config";
 import * as Sentry from "@sentry/node";
+import { mockLogger } from "../../../test/helpers/mockLogger";
 
-// These can't be run because of jsdom environment and interaction
-// with logger. Skipping them results in coverage failure since the file
-// is loaded.
-// I tried to mock the logger, but I couldn't mock the event handler
-// because setImmediate isn't in jsdom
-// And I can't run this in jest node environment because then the
-// current jest setup fails.
-// I don't know 100% if these tests work, but when we refactor to run
-// node tests in the appropriate environment they can be revisited.
-// It just seemed wasteful not to include.
-// For now I'm relying on manual testing via dev environment.
-// TODO: [MNTOR-1880]
-
-/* eslint-disable jest/no-disabled-tests */
 describe("updateBreachesInRemoteSettings job", () => {
-  const fetchBreachesSpy = jest.spyOn(
-    RemoteSettingsClient.prototype,
-    "fetchRemoteBreachNames",
-  );
-  const addBreachSpy = jest.spyOn(
-    RemoteSettingsClient.prototype,
-    "addNewBreach",
-  );
-  const reviewSpy = jest.spyOn(
-    RemoteSettingsClient.prototype,
-    "requestBreachesReview",
-  );
+  let fetchBreachesSpy: ReturnType<typeof vi.spyOn>;
+  let addBreachSpy: ReturnType<typeof vi.spyOn>;
+  let reviewSpy: ReturnType<typeof vi.spyOn>;
+  let mockLog: ReturnType<typeof mockLogger>;
 
   beforeEach(async () => {
-    jest.resetAllMocks();
+    vi.resetAllMocks();
+    mockLog = mockLogger();
+    fetchBreachesSpy = vi.spyOn(
+      RemoteSettingsClient.prototype,
+      "fetchRemoteBreachNames",
+    );
+    addBreachSpy = vi.spyOn(RemoteSettingsClient.prototype, "addNewBreach");
+    reviewSpy = vi.spyOn(
+      RemoteSettingsClient.prototype,
+      "requestBreachesReview",
+    );
 
     // The `config` object is typed as readonly, because in normal code,
     // we don't want to write to it. We're fine overriding them in tests though,
@@ -89,80 +89,66 @@ describe("updateBreachesInRemoteSettings job", () => {
       });
     });
   });
-  describe.skip("shutdown handling", () => {
-    const endSpy = jest.spyOn(logger, "end");
-    const sentrySpy = jest.spyOn(Sentry, "isInitialized").mockReturnValue(true);
-    const sentryFlushSpy = jest.spyOn(Sentry, "flush").mockResolvedValue(true);
-    afterAll(() => {
-      endSpy.mockRestore();
-      sentrySpy.mockRestore();
-      sentryFlushSpy.mockRestore();
+  describe("shutdown handling", () => {
+    let sentrySpy: ReturnType<typeof vi.spyOn>;
+    let sentryFlushSpy: ReturnType<typeof vi.spyOn>;
+    beforeEach(() => {
+      sentrySpy = vi.spyOn(Sentry, "isInitialized").mockReturnValue(true);
+      sentryFlushSpy = vi.spyOn(Sentry, "flush").mockResolvedValue(true);
     });
     it("Ensures logs are sent and flushes Sentry prior to exiting", async () => {
-      const fetchMock = HIBP.fetchHibpBreaches as jest.MockedFunction<
-        typeof HIBP.fetchHibpBreaches
-      >;
-      fetchMock.mockResolvedValue([]);
+      vi.mocked(HIBP.fetchHibpBreaches).mockResolvedValue([]);
       fetchBreachesSpy.mockResolvedValueOnce(new Set([]));
-      await main(logger);
-      expect(endSpy).toHaveBeenCalled();
+      await main(mockLog);
+      // main() calls parentLogger.child() and then child.end() — verify that.
+      const childLog = vi.mocked(mockLog.child).mock.results[0]
+        .value as ReturnType<typeof mockLogger>;
+      expect(childLog.end).toHaveBeenCalled();
       expect(sentrySpy).toHaveBeenCalled();
       expect(sentryFlushSpy).toHaveBeenCalled();
     });
   });
-  describe.skip("main job", () => {
+  describe("main job", () => {
     it("skips review request if all posts failed", async () => {
       const breach = HibpData[0] as HIBP.HibpGetBreachesResponse[number];
-      const fetchMock = HIBP.fetchHibpBreaches as jest.MockedFunction<
-        typeof HIBP.fetchHibpBreaches
-      >;
-      fetchMock.mockResolvedValue([breach]);
+      vi.mocked(HIBP.fetchHibpBreaches).mockResolvedValue([breach]);
       fetchBreachesSpy.mockResolvedValueOnce(new Set([]));
       addBreachSpy.mockRejectedValueOnce(new Error("Nope"));
-      await main(logger);
+      await main(mockLog);
       expect(reviewSpy).not.toHaveBeenCalled();
     });
     it("skips review request if nothing new was posted", async () => {
       const breach = HibpData[0] as HIBP.HibpGetBreachesResponse[number];
-      const fetchMock = HIBP.fetchHibpBreaches as jest.MockedFunction<
-        typeof HIBP.fetchHibpBreaches
-      >;
-      fetchMock.mockResolvedValue([breach]);
+      vi.mocked(HIBP.fetchHibpBreaches).mockResolvedValue([breach]);
       fetchBreachesSpy.mockResolvedValueOnce(new Set([breach.Name]));
-      await main(logger);
+      await main(mockLog);
       expect(reviewSpy).not.toHaveBeenCalled();
     });
     it("happy path: logs counts, posts filtered breaches, requests review, and exits", async () => {
-      const breaches = HibpData.slice(2) as HIBP.HibpGetBreachesResponse;
-      const fetchMock = HIBP.fetchHibpBreaches as jest.MockedFunction<
-        typeof HIBP.fetchHibpBreaches
-      >;
-      fetchMock.mockResolvedValue(breaches);
+      const breaches = HibpData.slice(0, 3) as HIBP.HibpGetBreachesResponse;
+      vi.mocked(HIBP.fetchHibpBreaches).mockResolvedValue(breaches);
       fetchBreachesSpy.mockResolvedValueOnce(new Set([]));
       addBreachSpy.mockResolvedValue(undefined);
       reviewSpy.mockResolvedValue(undefined);
 
-      await main(logger);
-      expect(fetchMock).toHaveBeenCalledTimes(1);
+      await main(mockLog);
+      expect(vi.mocked(HIBP.fetchHibpBreaches)).toHaveBeenCalledTimes(1);
+      // First mock breach is ignored because of no passwords
       expect(addBreachSpy).toHaveBeenCalledTimes(2);
       expect(reviewSpy).toHaveBeenCalledTimes(1);
     });
     it("happy path: exits with code 1 if review fails", async () => {
-      const breaches = HibpData.slice(2) as HIBP.HibpGetBreachesResponse;
-      const fetchMock = HIBP.fetchHibpBreaches as jest.MockedFunction<
-        typeof HIBP.fetchHibpBreaches
-      >;
-      fetchMock.mockResolvedValue(breaches);
+      const breaches = HibpData.slice(0, 3) as HIBP.HibpGetBreachesResponse;
+      vi.mocked(HIBP.fetchHibpBreaches).mockResolvedValue(breaches);
       fetchBreachesSpy.mockResolvedValueOnce(new Set([]));
       addBreachSpy.mockResolvedValue(undefined);
       reviewSpy.mockRejectedValueOnce(new Error("Nope"));
 
-      // Probably undefined
       const prevExitCode = process.exitCode;
-      delete process.exitCode;
+      process.exitCode = undefined;
 
-      await main(logger);
-      expect(fetchMock).toHaveBeenCalledTimes(1);
+      await main(mockLog);
+      expect(vi.mocked(HIBP.fetchHibpBreaches)).toHaveBeenCalledTimes(1);
       expect(addBreachSpy).toHaveBeenCalledTimes(2);
       expect(reviewSpy).toHaveBeenCalledTimes(1);
       expect(process.exitCode).toEqual(1);

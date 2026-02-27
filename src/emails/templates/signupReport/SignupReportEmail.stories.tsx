@@ -6,7 +6,7 @@ import type { Meta, StoryObj } from "@storybook/nextjs";
 import { FC } from "react";
 import { Props, SignupReportEmail } from "./SignupReportEmail";
 import { StorybookEmailRenderer } from "../../StorybookEmailRenderer";
-import { getL10n } from "../../../app/functions/l10n/storybookAndJest";
+import { getL10n } from "../../../app/functions/l10n/storybookAndTests";
 import { createRandomHibpListing } from "../../../apiMocks/mockData";
 
 const meta: Meta<FC<Props>> = {

@@ -2,45 +2,45 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { it, expect, jest } from "@jest/globals";
+import { it, expect, vi, describe, beforeEach } from "vitest";
 import { SubscriberRow } from "knex/types/tables";
 import { Session } from "next-auth";
 
 const loggerMock = {
-  error: jest.fn(),
-  info: jest.fn(),
+  error: vi.fn(),
+  info: vi.fn(),
 };
-jest.mock("./logging", () => ({ logger: loggerMock }));
+vi.mock("./logging", () => ({ logger: loggerMock }));
 
-jest.mock("../../../config", () => {
+vi.mock("../../../config", () => {
   return {
     config: {},
   };
 });
 
 const loadNextHeadersMock =
-  jest.fn<() => Promise<{ headers: () => Promise<Headers> } | null>>();
-jest.mock("./loadNextHeaders", () => ({
+  vi.fn<() => Promise<{ headers: () => Promise<Headers> } | null>>();
+vi.mock("./loadNextHeaders", () => ({
   loadNextHeaders: loadNextHeadersMock,
 }));
 
-jest.mock("uuid", () => ({
-  v5: jest.fn(() => "11111111-2222-3333-4444-555555555555"),
+vi.mock("uuid", () => ({
+  v5: vi.fn(() => "11111111-2222-3333-4444-555555555555"),
 }));
+
+import { config as configModule } from "../../../config";
 
 describe("getExperimentationId", () => {
   beforeEach(() => {
-    jest.resetModules();
+    vi.resetModules();
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const configModule = jest.requireMock("../../../config") as any;
-    delete configModule.config.nimbusUuidNamespace;
+    delete (configModule as any).nimbusUuidNamespace;
   });
 
   it("returns a UUID derived from subscriberId when NIMBUS_UUID_NAMESPACE is set", async () => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const configModule = jest.requireMock("../../../config") as any;
-    configModule.config.nimbusUuidNamespace =
+    (configModule as any).nimbusUuidNamespace =
       "00000000-0000-0000-0000-000000000000";
     const { getExperimentationIdFromSubscriber } =
       await import("./getExperimentationId");
@@ -63,8 +63,7 @@ describe("getExperimentationId", () => {
 
   it("getExperimentationIdFromUserSession passes through the subscriber id", async () => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const configModule = jest.requireMock("../../../config") as any;
-    configModule.config.nimbusUuidNamespace =
+    (configModule as any).nimbusUuidNamespace =
       "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa";
     const { getExperimentationIdFromUserSession } =
       await import("./getExperimentationId");
@@ -129,7 +128,7 @@ describe("getExperimentationId", () => {
   });
 
   it("logs info and returns undefined if next/headers throws", async () => {
-    jest.mock("next/headers", () => {
+    vi.mock("next/headers", () => {
       throw new Error("import failed");
     });
 

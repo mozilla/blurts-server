@@ -2,6 +2,15 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import {
+  vi,
+  describe,
+  it,
+  expect,
+  beforeEach,
+  afterEach,
+  afterAll,
+} from "vitest";
 import createDbConnection from "../connect";
 import { seeds } from "../../test/db";
 import { BreachRow } from "knex/types/tables";
@@ -22,7 +31,6 @@ describe("email_notifications repository", () => {
   afterEach(async () => {
     await conn.raw(`TRUNCATE TABLE email_notifications CASCADE`);
     await conn.raw(`TRUNCATE TABLE subscribers CASCADE`);
-    jest.restoreAllMocks();
   });
   afterAll(async () => {
     await conn.destroy();
@@ -68,7 +76,7 @@ describe("email_notifications repository", () => {
   });
   describe("addEmailNotification", () => {
     it("creates notification with expected data", async () => {
-      jest.spyOn(console, "info").mockReturnValue();
+      vi.spyOn(console, "info").mockReturnValue(undefined);
       const subscriber = (
         await conn("subscribers").insert(seeds.subscribers()).returning("*")
       )[0];
@@ -89,7 +97,7 @@ describe("email_notifications repository", () => {
       });
     });
     it("does nothing and returns undefined if row already exists", async () => {
-      jest.spyOn(console, "info").mockReturnValue();
+      vi.spyOn(console, "info").mockReturnValue(undefined);
       const email = "test@example.com";
       const subscriber = (
         await conn("subscribers").insert(seeds.subscribers()).returning("*")
@@ -120,7 +128,7 @@ describe("email_notifications repository", () => {
   describe("markEmailAsNotified", () => {
     it("marks email as notified", async () => {
       const email = "test@example.com";
-      jest.spyOn(console, "info").mockReturnValue();
+      vi.spyOn(console, "info").mockReturnValue(undefined);
       const subscriber = (
         await conn("subscribers").insert(seeds.subscribers()).returning("*")
       )[0];
@@ -139,7 +147,7 @@ describe("email_notifications repository", () => {
       expect(roundTrip).toMatchObject({ notified: true });
     });
     it("returns 0 if the row does not exist", async () => {
-      jest.spyOn(console, "info").mockReturnValue();
+      vi.spyOn(console, "info").mockReturnValue(undefined);
       const res = await markEmailAsNotified(
         1212121212,
         3434234,

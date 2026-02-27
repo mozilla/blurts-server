@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { it, expect, jest } from "@jest/globals";
+import { it, expect, vi, afterEach } from "vitest";
 import { getCountryCode } from "./getCountryCode";
 import { ReadonlyHeaders } from "next/dist/server/web/spec-extension/adapters/headers";
 import { createTestClientRegionToken } from "./testCountryCodeToken";
@@ -14,8 +14,8 @@ afterEach(() => {
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 it("returns the GCP-detected country", () => {
-  const headers: Partial<jest.Mocked<ReadonlyHeaders>> = {
-    get: jest.fn((header: string) => {
+  const headers: Partial<ReturnType<typeof vi.fn> & ReadonlyHeaders> = {
+    get: vi.fn((header: string) => {
       if (header === "X-Client-Region") {
         return "NL";
       }
@@ -42,8 +42,8 @@ it("returns the forced country for functional tests", () => {
 });
 
 it("returns the single language from the Accept-Language if no GCP-detected country is available", () => {
-  const headers: Partial<jest.Mocked<ReadonlyHeaders>> = {
-    get: jest.fn((header: string) => {
+  const headers: Partial<ReturnType<typeof vi.fn> & ReadonlyHeaders> = {
+    get: vi.fn((header: string) => {
       if (header === "Accept-Language") {
         return "nl-NL";
       }
@@ -54,8 +54,8 @@ it("returns the single language from the Accept-Language if no GCP-detected coun
 });
 
 it("returns the first language from the Accept-Language if no GCP-detected country is available", () => {
-  const headers: Partial<jest.Mocked<ReadonlyHeaders>> = {
-    get: jest.fn((header: string) => {
+  const headers: Partial<ReturnType<typeof vi.fn> & ReadonlyHeaders> = {
+    get: vi.fn((header: string) => {
       if (header === "Accept-Language") {
         return "nl-NL, en-US";
       }
@@ -66,8 +66,8 @@ it("returns the first language from the Accept-Language if no GCP-detected count
 });
 
 it("returns the first language from the Accept-Language if no GCP-detected country is available, without weights being a problem", () => {
-  const headers: Partial<jest.Mocked<ReadonlyHeaders>> = {
-    get: jest.fn((header: string) => {
+  const headers: Partial<ReturnType<typeof vi.fn> & ReadonlyHeaders> = {
+    get: vi.fn((header: string) => {
       if (header === "Accept-Language") {
         return "nl-NL;q=0.8, en-US";
       }
@@ -78,8 +78,8 @@ it("returns the first language from the Accept-Language if no GCP-detected count
 });
 
 it("returns the first language from the Accept-Language if no GCP-detected country is available, ignoring locales without a country code", () => {
-  const headers: Partial<jest.Mocked<ReadonlyHeaders>> = {
-    get: jest.fn((header: string) => {
+  const headers: Partial<ReturnType<typeof vi.fn> & ReadonlyHeaders> = {
+    get: vi.fn((header: string) => {
       if (header === "Accept-Language") {
         return "nl;q=0.8, en-US";
       }
@@ -90,8 +90,8 @@ it("returns the first language from the Accept-Language if no GCP-detected count
 });
 
 it("defaults to US", () => {
-  const headers: Partial<jest.Mocked<ReadonlyHeaders>> = {
-    get: jest.fn((_header: string) => {
+  const headers: Partial<ReturnType<typeof vi.fn> & ReadonlyHeaders> = {
+    get: vi.fn((_header: string) => {
       return null;
     }),
   };

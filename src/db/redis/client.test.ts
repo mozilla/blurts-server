@@ -2,18 +2,19 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import { vi, describe, it, expect, beforeEach, afterAll } from "vitest";
 import { createRedisInstance } from "./util";
 import { redisClient } from "./client";
 import MockRedis from "ioredis-mock";
+import type { Redis } from "ioredis";
 
-jest.mock("@sentry/core", () => ({
+vi.mock("@sentry/core", () => ({
   logger: {
-    debug: jest.fn(),
+    debug: vi.fn(),
   },
 }));
-jest.mock("./util", () => ({
-  __esModule: true,
-  createRedisInstance: jest.fn(),
+vi.mock("./util", () => ({
+  createRedisInstance: vi.fn(),
 }));
 
 describe("redisClient", () => {
@@ -36,8 +37,8 @@ describe("redisClient", () => {
 
   it("uses createRedisInstance when REDIS_URL is not defined", () => {
     delete process.env.REDIS_URL;
-    const fakeClient = {};
-    (createRedisInstance as jest.Mock).mockReturnValue(fakeClient);
+    const fakeClient = {} as unknown as Redis;
+    vi.mocked(createRedisInstance).mockReturnValue(fakeClient);
 
     const client = redisClient();
 
@@ -47,8 +48,8 @@ describe("redisClient", () => {
 
   it('uses createRedisInstance when REDIS_URL does not include "redis.mock"', () => {
     process.env.REDIS_URL = "redis://localhost:6379";
-    const fakeClient = {};
-    (createRedisInstance as jest.Mock).mockReturnValue(fakeClient);
+    const fakeClient = {} as unknown as Redis;
+    vi.mocked(createRedisInstance).mockReturnValue(fakeClient);
 
     const client = redisClient();
 

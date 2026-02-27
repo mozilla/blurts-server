@@ -2,27 +2,16 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { it, expect } from "@jest/globals";
+import { it, expect, describe, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { composeStory } from "@storybook/react";
-import { axe } from "jest-axe";
+import { axe } from "vitest-axe";
 import Meta, {
   DataBreachActionNeeded,
   DataBreachFixed,
 } from "./ExposureCard.stories";
 
-jest.mock("../../../hooks/useTelemetry");
-
-jest.mock("./DataBrokerImage", () => {
-  return {
-    // Mock this with an empty React component. Otherwise, tests will complain:
-    // > Warning: A suspended resource finished loading inside a test, but the
-    // > event was not wrapped in act(...).
-    // > When testing, code that resolves suspended data should be wrapped into
-    // > act(...)
-    DataBrokerImage: () => null,
-  };
-});
+vi.mock("../../../hooks/useTelemetry");
 
 it("passes the axe accessibility test suite", async () => {
   const ComposedProgressCard = composeStory(DataBreachActionNeeded, Meta);
@@ -36,7 +25,7 @@ describe("DataBreachCard", () => {
     const ComposedProgressCard = composeStory(DataBreachFixed, Meta);
     render(<ComposedProgressCard />);
     const innerDescription = screen.getByText(
-      "You’ve taken the steps needed to fix",
+      "You\u2019ve taken the steps needed to fix",
       { exact: false },
     );
 

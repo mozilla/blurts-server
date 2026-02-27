@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { it, expect } from "@jest/globals";
+import { it, expect } from "vitest";
 import { composeStory } from "@storybook/react";
 import { render, screen } from "@testing-library/react";
 import Meta, {
@@ -15,7 +15,7 @@ it("lets you know when no breaches were found so far", () => {
   render(<ComposedEmail />);
 
   const introduction = screen.getByText(
-    "So far, no breaches were found. We’ll send you an alert if your email address appears in a new breach.",
+    "So far, no breaches were found. We\u2019ll send you an alert if your email address appears in a new breach.",
     { exact: false },
   );
   expect(introduction).toBeInTheDocument();

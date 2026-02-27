@@ -15,9 +15,9 @@ import type { GetL10nBundles } from "./index";
  * Storybook- and tests-specific l10n bundle loading
  *
  * When Storybook loads our FTL files, it does so using Webpack. Except for the
- * fact that our Storybook stories also get used in Jest tests, where Webpack
+ * fact that our Storybook stories also get used in Vitest tests, where Webpack
  * isn't available. Thus, this file configures FTL loading strategies that
- * are adjusted based on whether it's running in Storybook or in Jest, using
+ * are adjusted based on whether it's running in Storybook or in Vitest, using
  * either Webpack's `require.context` or Node's file system APIs, respectively.
  *
  * Note that the Storybook-specific code is pretty similar to the l10n-loading
@@ -73,7 +73,7 @@ if (process.env.STORYBOOK === "true") {
       (filepath: string) => filepath.split("/")[1],
     ),
   });
-  // Load L10n files in Jest (using Node.js APIs):
+  // Load L10n files in Vitest (using Node.js APIs):
 } else {
   const {
     readdirSync: nodeReaddirSync,

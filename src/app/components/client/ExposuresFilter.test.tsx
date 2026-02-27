@@ -2,30 +2,22 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { it, expect } from "@jest/globals";
+import { it, expect, vi } from "vitest";
 import { render, screen, within } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
 import { composeStory } from "@storybook/react";
-import { axe } from "jest-axe";
+import { axe } from "vitest-axe";
 import Meta, {
   ExposuresFilterDefault,
 } from "./stories/ExposuresFilter.stories";
-import { useTelemetry as useTelemetryImported } from "../../hooks/useTelemetry";
+import { useTelemetry } from "../../hooks/useTelemetry";
 
-jest.mock("next/navigation", () => ({
-  useRouter: jest.fn(),
-  usePathname: jest.fn(),
+vi.mock("next/navigation", () => ({
+  useRouter: vi.fn(),
+  usePathname: vi.fn(),
 }));
 
-jest.mock("../../hooks/useTelemetry");
-// We need to override the types of `useTelemetry` here, because otherwise
-// Jest infers incorrect types in `toHaveBeenCalledWith`, and throws an error.
-// See https://github.com/jestjs/jest/issues/15703
-const useTelemetry = useTelemetryImported as () => (
-  module: string,
-  eventName: string,
-  data: Record<string, string>,
-) => void;
+vi.mock("../../hooks/useTelemetry");
 
 it("passes the axe accessibility test suite", async () => {
   const ExposuresFilter = composeStory(ExposuresFilterDefault, Meta);
