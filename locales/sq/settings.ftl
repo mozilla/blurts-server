@@ -19,6 +19,24 @@ settings-alert-preferences-option-two = Dërgoji krejt sinjalizimet mbi cenime t
 ## Monitored email addresses
 
 settings-email-verification-callout = Lypset verifikim email-i
+settings-remove-email-button-label = Hiqe
+settings-email-addresses-header = Adresa email
+settings-email-addresses-add-email-button = Shtoni adresë email
+# Variables:
+#   $limit (number) - Number of emails that can be added for monitoring.
+settings-email-addresses-add-email-indicator-limit = Shtoni deri në { $limit }
+settings-email-addresses-add-email-resend-button-label = Ridërgo lidhje verifikimi
+input-error-alt = Gabim
+
+## Email address dialog
+
+settings-email-addresses-initial-dialog-header = Shtoni një adresë email
+settings-email-addresses-initial-dialog-add-email-input-label = Jepni adresë email
+settings-email-addresses-initial-dialog-add-email-button-label = Dërgo lidhje verifikimi
+# Variables:
+#   $email (string) - Email address the confirmation has been sent to.
+settings-email-addresses-confirmation-dialog-header = Lidhja e verifikimit u dërgua te <b>{ $email }</b>
+settings-email-addresses-confirmation-dialog-close-button = Mbylle
 
 ## Delete Monitor account
 
