@@ -86,11 +86,11 @@ export async function getBreachIcons(breaches: HibpGetBreachesResponse) {
     try {
       // TODO: Do not reupload to S3 if logo already exists
       // MNTOR-5166
-      // await uploadToS3(logoFilename, Buffer.from(await res.arrayBuffer()));
-      // await updateBreachFaviconUrl(
-      //   breachName,
-      //   `https://s3.amazonaws.com/${config.s3Bucket}/${logoFilename}`,
-      // );
+      await uploadToS3(logoFilename, Buffer.from(await res.arrayBuffer()));
+      await updateBreachFaviconUrl(
+        breachName,
+        `https://s3.amazonaws.com/${config.s3Bucket}/${logoFilename}`,
+      );
     } catch (e) {
       logger.error(e);
       continue;
@@ -117,37 +117,37 @@ async function run() {
     unique: seen.size,
   });
 
-  // // sanity check: no duplicate breaches with Name + BreachDate
-  // if (seen.size !== breachesResponse.length) {
-  //   const dupeMsg = "Breaches contain duplicates";
-  //   logger.error(dupeMsg, {
-  //     unique: seen.size,
-  //     total: breachesResponse.length,
-  //   });
-  //   throw new Error(`${dupeMsg}. Stopping script...`);
-  // } else {
-  //   await upsertBreaches(breachesResponse);
+  // sanity check: no duplicate breaches with Name + BreachDate
+  if (seen.size !== breachesResponse.length) {
+    const dupeMsg = "Breaches contain duplicates";
+    logger.error(dupeMsg, {
+      unique: seen.size,
+      total: breachesResponse.length,
+    });
+    throw new Error(`${dupeMsg}. Stopping script...`);
+  } else {
+    await upsertBreaches(breachesResponse);
 
-  //   // get
-  //   const result = await getAllBreaches();
-  //   logger.info(
-  //     "Number of breaches in the database after upsert:",
-  //     result.length,
-  //   );
+    // get
+    const result = await getAllBreaches();
+    logger.info(
+      "Number of breaches in the database after upsert:",
+      result.length,
+    );
 
-  //   // try to refresh Redis cache of all breaches
-  //   try {
-  //     const rClient = redisClient();
-  //     await rClient.set(
-  //       REDIS_ALL_BREACHES_KEY,
-  //       JSON.stringify(result),
-  //       "EX",
-  //       BREACHES_EXPIRY_SECONDS,
-  //     );
-  //   } catch (e) {
-  //     logger.error("Update Redis failed for syncBreaches.ts", { error: e });
-  //   }
-  // }
+    // try to refresh Redis cache of all breaches
+    try {
+      const rClient = redisClient();
+      await rClient.set(
+        REDIS_ALL_BREACHES_KEY,
+        JSON.stringify(result),
+        "EX",
+        BREACHES_EXPIRY_SECONDS,
+      );
+    } catch (e) {
+      logger.error("Update Redis failed for syncBreaches.ts", { error: e });
+    }
+  }
   await getBreachIcons(breachesResponse);
 }
 
