@@ -34,7 +34,6 @@ import { FeatureFlagName } from "../../../../../../../db/tables/featureFlags";
 import { getNextGuidedStep } from "../../../../../../functions/server/getRelevantGuidedSteps";
 import { useTelemetry } from "../../../../../../hooks/useTelemetry";
 import { UserAnnouncementWithDetails } from "../../../../../../../db/tables/user_announcements";
-import { PlusShutdownBanner } from "../../../../../../components/client/PlusShutdownBanner";
 
 export type TabType = "action-needed" | "fixed";
 
@@ -199,8 +198,6 @@ export const View = (props: Props) => {
           selectedKey={activeTab}
         />
       </Toolbar>
-      <PlusShutdownBanner countryCode={props.countryCode} />
-
       <div className={styles.dashboardContent}>
         <DashboardTopBanner
           tabType={activeTab}
