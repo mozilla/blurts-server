@@ -3,17 +3,12 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { Upload } from "@aws-sdk/lib-storage";
-import { S3 } from "@aws-sdk/client-s3";
+import { S3, HeadObjectCommand, NotFound } from "@aws-sdk/client-s3";
 import { config } from "../config";
 import { logger } from "../app/functions/server/logging";
+import * as Sentry from "@sentry/node";
 
-const { accessKeyId, secretAccessKey, region, s3: s3Config } = config.aws;
-const Bucket = s3Config.logoBucket;
-
-if (!accessKeyId || !secretAccessKey || !region || !Bucket) {
-  logger.error("Environment vars for s3 upload are not set correctly");
-  process.exit();
-}
+const { accessKeyId, secretAccessKey, region } = config.aws;
 
 const s3 = new S3({
   region,
@@ -31,10 +26,13 @@ const s3 = new S3({
  * @param fileName S3 file key
  * @param fileStream file buffer
  */
-export async function uploadToS3(fileName: string, fileStream: Buffer) {
-  logger.info("Attempt to upload to s3", { fileName, bucket: Bucket });
+export async function uploadToS3(
+  fileName: string,
+  fileStream: Buffer,
+  bucket: string,
+) {
   const uploadParams = {
-    Bucket,
+    Bucket: bucket,
     Key: fileName,
     Body: fileStream,
   };
@@ -44,14 +42,48 @@ export async function uploadToS3(fileName: string, fileStream: Buffer) {
       params: uploadParams,
     }).done();
     logger.info("Successfully uploaded data to s3", {
-      bucket: Bucket,
+      bucket,
       fileName,
     });
   } catch (err) {
+    Sentry.captureException(err);
     logger.error("Failure uploading to s3", {
       err,
       fileName,
-      bucket: Bucket,
+      bucket,
     });
+  }
+}
+
+/**
+ * Check if an object exists in S3
+ *
+ * @param fileName S3 object key to check
+ * @param bucket Bucket that should contain the S3 object
+ * @returns Whether an object exists
+ */
+export async function checkS3ObjectExists(
+  fileName: string,
+  bucket: string,
+): Promise<boolean> {
+  try {
+    const command = new HeadObjectCommand({
+      Bucket: bucket,
+      Key: fileName,
+    });
+    await s3.send(command);
+    // If command does not throw, it exists
+    return true;
+  } catch (error) {
+    if (error instanceof NotFound) {
+      return false;
+    }
+    // For other errors, log and rethrow
+    Sentry.captureException(error);
+    logger.error("Error checking S3 object existence", {
+      fileName,
+      error,
+    });
+    throw error;
   }
 }
