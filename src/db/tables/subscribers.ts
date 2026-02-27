@@ -8,6 +8,7 @@ import createDbConnection from "../connect";
 import { SerializedSubscriber } from "../../next-auth.js";
 import { config } from "../../config";
 import { logger } from "../../app/functions/server/logging";
+import { getSha1 } from "../../utils/fxa";
 
 const knex = createDbConnection();
 
@@ -69,6 +70,7 @@ async function updatePrimaryEmail(
       .where("id", "=", subscriber.id)
       .update({
         primary_email: updatedEmail,
+        primary_sha1: getSha1(updatedEmail.toLowerCase()),
         // @ts-ignore knex.fn.now() results in it being set to a date,
         // even if it's not typed as a JS date object:
         updated_at: knex.fn.now(),
@@ -83,6 +85,7 @@ async function updatePrimaryEmail(
       .where("email", "=", updatedEmail)
       .update({
         email: subscriber.primary_email,
+        sha1: getSha1(subscriber.primary_email.toLowerCase()),
         // @ts-ignore knex.fn.now() results in it being set to a date,
         // even if it's not typed as a JS date object:
         updated_at: knex.fn.now(),
