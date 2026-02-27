@@ -106,6 +106,21 @@ components:
             $ref: "#/components/schemas/UserBreachState"
 
 paths:
+  /user:
+    post:
+      description: >
+        Create a new Monitor user using FxA token; links the new Monitor user to the FxA account
+        specified in the token. Must only be used when terms have been accepted.
+      responses:
+        "201":
+          description: User created successfully.
+        "202":
+          description: Accepted; returned when user already exists
+        "401":
+          description: Authentication required
+        "403":
+          description: Not authorized, or FxA account no longer exists
+
   /user/breaches:
     get:
       description: >
@@ -234,16 +249,6 @@ paths:
         **Atomicity**
         - Requests are atomic: the update is applied to all targeted emails and dataclasses, or to none.
 
-      parameters:
-        - name: breachId
-          in: path
-          required: true
-          schema:
-            type: integer
-          examples:
-            example:
-              summary: Example breach id
-              value: "Breach1"
       requestBody:
         required: true
         content:
