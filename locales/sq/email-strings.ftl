@@ -12,6 +12,14 @@ email-header-button-sign-in = Hyni
 email-footer-support-heading = Pyetje rreth { -brand-mozilla-monitor }?
 email-footer-support-content = Për ndihmë, vizitoni <support-link>Qendrën tonë të Asistencës</support-link>
 email-footer-trigger-transactional = Këtë email po e merrni si pajtimtar i { -brand-mozilla-monitor }.
+# Variables:
+#    $support_link (string) - The URL the user can visit for support, e.g. "https://support.mozilla.org"
+email-footer-support-content-plain =
+    Për ndihmë, vizitoni Qendrën tonë të Asistencës:
+    { $support_link }
+# Variables:
+#   $hibp_link (string) - URL to Have I Been Pwned, e.g. "https://haveibeenpwned.com".
+email-footer-source-hibp-plain = Të dhëna cenimi të furnizura nga { -brand-HIBP }: { $hibp_link }
 email-footer-source-hibp = Të dhëna cenimesh furnizuar nga <hibp-link>{ -brand-HIBP }</hibp-link>
 email-footer-logo-mozilla-alt = { -brand-mozilla }
 email-footer-meta-privacy-notice = Privatësi

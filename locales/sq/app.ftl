@@ -39,12 +39,19 @@ user-verify-token-error = Token-i i verifikimit është i domosdoshëm.
 compromised-data = Të dhëna të komprometuara
 # Link title
 more-about-this-breach = Më tepër rreth këtij cenimi
+sensitive-sites-copy =
+    { -product-name } vë në dukje llogaritë me këto
+    lloje shkeljesh vetëm pasi të jetë verifikuar një adresë email. Kjo do thotë se jeni
+    i vetmi person që mund të shohë nëse të dhënat tuaja qenë pjesë e kësaj
+    shkeljeje (veç në pastë dikush tjetër hyrje te llogaria juaj email).
 what-data = Ç’të dhëna u komprometuan:
 delayed-reporting-headline = Pse u desh kaq shumë kohë për njoftimin e këtij cenimi?
 delayed-reporting-copy = Ndonjëherë mund të hajë muaj ose vite që kredenciale të ekspozuara në një shkelje të dhënash të shfaqen në web-in e errët. Shkeljet shtohen te baza jonë e të dhënave sapo të jenë zbuluar dhe verifikuar.
 
 ##
 
+what-is-a-website-breach = Ç’është një shkelje sajti?
+website-breach-blurb = Një shkelje të dhënash sajti ndodh kur keqbërës kibernetikë vjedhin, kopjojnë ose ekspozojnë të dhëna personale prej llogarish internetore. Zakonisht është rrjedhojë e gjetjes nga ana e hacker-ave të një pike të dobët në sigurinë e sajtit. Shkelje mund të ndodhin edhe kur të dhëna të një llogarie rrjedhin aksidentalisht.
 # This is a section headline on the breach detail page that appears above
 # a short summary about the breach.
 breach-overview-title = Përmbledhje
