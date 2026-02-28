@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { describe, it, expect, afterEach, afterAll } from "vitest";
+import { describe, it, expect, vi, afterEach, afterAll } from "vitest";
 import { faker } from "@faker-js/faker";
 import { seeds } from "../../test/db";
 import createDbConnection from "../connect";
@@ -20,6 +20,32 @@ afterAll(async () => {
 });
 
 describe("updatePrimaryEmail", () => {
+  it("returns null if the subscriber does not exist", async () => {
+    const [subscriber] = await conn("subscribers")
+      .insert(seeds.subscribers())
+      .returning("*");
+    // Drop the subscriber and assert state is correct before proceeding
+    await conn("subscribers").where({ id: subscriber.id }).delete();
+    const deleted = await conn("subscribers")
+      .where({
+        id: subscriber.id,
+      })
+      .first();
+    expect(deleted).toBeUndefined();
+
+    // Test behavior
+    const result = await updatePrimaryEmail(
+      subscriber,
+      "some-email@address.com",
+    );
+    expect(result).toBeNull();
+    const nonExistent = await conn("subscribers")
+      .where({
+        id: subscriber.id,
+      })
+      .first();
+    expect(nonExistent).toBeUndefined();
+  });
   it("updates the sha1 of the swapped secondary email address record", async () => {
     const oldPrimary = faker.internet.email().toLowerCase();
     const newPrimary = faker.internet.email().toLowerCase();
@@ -62,5 +88,32 @@ describe("updatePrimaryEmail", () => {
     // Both email and sha should be updated
     expect(updated.primary_email).toBe(newEmail);
     expect(updated.primary_sha1).toBe(getSha1(newEmail));
+  });
+
+  it("logs the error and returns null when the transaction throws", async () => {
+    const [subscriber] = await conn("subscribers")
+      .insert(seeds.subscribers())
+      .returning("*");
+
+    const forcedError = new Error("forced DB failure");
+    const mockLoggerError = vi.fn();
+
+    // Force transactions to throw via mocks
+    vi.resetModules();
+    vi.doMock("../connect", () => ({
+      default: () => ({ transaction: () => Promise.reject(forcedError) }),
+    }));
+    vi.doMock("../../app/functions/server/logging", () => ({
+      logger: { error: mockLoggerError },
+    }));
+
+    const { updatePrimaryEmail: fn } = await import("./subscribers");
+    const result = await fn(subscriber, faker.internet.email());
+
+    expect(result).toBeNull();
+    expect(mockLoggerError).toHaveBeenCalledWith(
+      "updatePrimaryEmail",
+      forcedError,
+    );
   });
 });
