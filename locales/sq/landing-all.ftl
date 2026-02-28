@@ -17,6 +17,7 @@ landing-all-hero-image-chart-label = ekspozime
 landing-all-hero-navbar-link-how-it-works = Si funksionon
 landing-all-hero-navbar-link-pricing = Çmime
 landing-all-hero-navbar-link-faqs = PBR
+landing-all-hero-navbar-link-recent-breaches = Cenime të dhënash së fundi
 
 # Value Proposition
 
