@@ -37,3 +37,11 @@ type Story = StoryObj<FC<Props>>;
 export const RepeatEmail: Story = {
   name: "Without unsubscribe link",
 };
+
+export const WithUnsubscribeLink: Story = {
+  name: "With unsubscribe link",
+  args: {
+    unsubscribeLink:
+      "https://example.com/unsubscribe-email/breach-alerts?token=abc123",
+  },
+};

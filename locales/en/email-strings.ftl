@@ -24,6 +24,11 @@ email-footer-source-hibp-plain = Breach data provided by { -brand-HIBP }: { $hib
 email-footer-source-hibp = Breach data provided by <hibp-link>{ -brand-HIBP }</hibp-link>
 email-footer-logo-mozilla-alt = { -brand-mozilla }
 email-footer-meta-privacy-notice = Privacy
+email-unsubscribe-link = <link_to_unsub>Unsubscribe from this email</link_to_unsub> anytime.
+# Variables:
+#   $unsub_link (string) - URL to the unsubscribe page, e.g. "https://monitor.mozilla.org/unsubscribe-email/...".
+email-unsubscribe-link-plain = Unsubscribe from this email anytime:
+    { $unsub_link }
 
 # Firefox Relay is a product name and should not be translated.
 -product-name-relay = Firefox Relay
