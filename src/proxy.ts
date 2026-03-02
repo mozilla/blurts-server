@@ -18,7 +18,6 @@ export function proxy(request: NextRequest) {
   const acceptLang = requestHeaders.get("Accept-Language");
   if (
     !usableLocales.includes(localeParam) &&
-    !request.nextUrl.pathname.startsWith("/unsubscribe-email/") &&
     ![
       "/sitemap.xml",
       "/robots.txt",

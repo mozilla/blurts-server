@@ -13,7 +13,7 @@ vi.mock("next-auth/react", () => ({
   signIn: vi.fn(),
 }));
 
-vi.mock("../../../../hooks/useTelemetry");
+vi.mock("../../../hooks/useTelemetry");
 
 vi.mock("react-toastify", async (importOriginal) => {
   const actual = await importOriginal<typeof import("react-toastify")>();
@@ -55,9 +55,7 @@ describe("UnsubscribeBreachAlertsView", () => {
     await user.click(screen.getByRole("button", { name: "Unsubscribe" }));
 
     await waitFor(() => {
-      expect(
-        screen.getByText("You're now unsubscribed"),
-      ).toBeInTheDocument();
+      expect(screen.getByText("You're now unsubscribed")).toBeInTheDocument();
     });
 
     expect(global.fetch).toHaveBeenCalledWith(
@@ -113,10 +111,10 @@ describe("UnsubscribeBreachAlertsView", () => {
       expect(screen.getByText("You're now unsubscribed")).toBeInTheDocument();
     });
 
-    await user.click(
-      screen.getByRole("button", { name: /Sign in to/i }),
-    );
+    await user.click(screen.getByRole("button", { name: /Sign in to/i }));
 
-    expect(signIn).toHaveBeenCalledWith("fxa", { callbackUrl: "/user/dashboard" });
+    expect(signIn).toHaveBeenCalledWith("fxa", {
+      callbackUrl: "/user/dashboard",
+    });
   });
 });

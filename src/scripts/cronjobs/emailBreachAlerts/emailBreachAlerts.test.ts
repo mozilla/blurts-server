@@ -44,6 +44,10 @@ vi.mock("@sentry/node", async (importOriginal) => {
   };
 });
 
+vi.mock("../../../app/functions/cronjobs/unsubscribeLinks", () => ({
+  getBreachAlertsUnsubscribeLink: vi.fn().mockResolvedValue(null),
+}));
+
 describe("breachMessageHandler", () => {
   let logger: Logger;
   const breadcrumbSpy = vi.mocked(Sentry.addBreadcrumb);

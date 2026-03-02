@@ -8,9 +8,9 @@ import { useState } from "react";
 import styles from "./UnsubscribeBreachAlerts.module.scss";
 import UnsubscriptionImage from "./images/confirm-unsubscribe.svg";
 import Image from "next/image";
-import { useL10n } from "../../../../../hooks/l10n";
+import { useL10n } from "../../../hooks/l10n";
 import { toast, ToastOptions } from "react-toastify";
-import { TelemetryButton } from "../../../../../components/client/TelemetryButton";
+import { TelemetryButton } from "../../../components/client/TelemetryButton";
 import { signIn } from "next-auth/react";
 
 export const UnsubscribeBreachAlertsView = ({ token }: { token: string }) => {
