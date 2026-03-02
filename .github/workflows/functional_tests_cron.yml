@@ -31,10 +31,10 @@ jobs:
           echo "Please select an environment for manual runs"
           exit 1
 
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
         with:
           persist-credentials: false
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@6044e13b5dc448c55e2357c09f80417699197238 # v6
         with:
           node-version: 20.20.x
 
@@ -49,7 +49,7 @@ jobs:
 
       - name: Cache Playwright Browsers for Playwright's Version
         id: cache-playwright-browsers
-        uses: actions/cache@v5
+        uses: actions/cache@cdf6c1fa76f9f475f3d7449005a359c84ca0f306 # v5
         with:
           path: ~/.cache/ms-playwright
           key: playwright-browsers-${{ env.PLAYWRIGHT_VERSION }}
@@ -67,13 +67,13 @@ jobs:
           E2E_TEST_SECRET: ${{ secrets.E2E_TEST_SECRET }}
           E2E_TEST_ACCOUNT_BASE_EMAIL: ${{ secrets.E2E_TEST_ACCOUNT_BASE_EMAIL }}
           E2E_TEST_ACCOUNT_BASE_PASSWORD: ${{ secrets.E2E_TEST_ACCOUNT_BASE_PASSWORD }}
-      - uses: actions/upload-artifact@v6
+      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
         if: always()
         with:
           name: playwright-report-${{ github.event_name == 'workflow_dispatch' && inputs.test_env || matrix.test_env }}
           path: playwright-report/
           retention-days: 30
-      - uses: actions/upload-artifact@v6
+      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
         if: always()
         with:
           name: test-results-${{ github.event_name == 'workflow_dispatch' && inputs.test_env || matrix.test_env }}
@@ -82,7 +82,7 @@ jobs:
 
       - name: Send GitHub Action trigger data to Slack workflow
         id: slack
-        uses: slackapi/slack-github-action@v2.1.1
+        uses: slackapi/slack-github-action@91efab103c0de0a537f72a35f6b8cda0ee76bf0a # v2.1.1
         if: failure() && github.ref == 'refs/heads/main'
         with:
           webhook: ${{ secrets.SLACK_GHA_FAILURES_WEBHOOK }}

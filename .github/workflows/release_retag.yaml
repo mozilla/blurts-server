@@ -20,13 +20,13 @@ jobs:
       GAR_IMAGE_BASE: ${{ vars.GAR_REPO }}/${{ github.event.repository.name }}
     steps:
     - name: Check out the repo
-      uses: actions/checkout@v6
+      uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
       with:
         persist-credentials: false # Not strictly needed for retagging, but good practice
 
     - name: Authenticate to Google Cloud
       id: gcp-auth
-      uses: google-github-actions/auth@v3
+      uses: google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093 # v3
       with:
         token_format: access_token
         workload_identity_provider: ${{ vars.GCPV2_GITHUB_WORKLOAD_IDENTITY_PROVIDER }}
@@ -34,7 +34,7 @@ jobs:
 
     - name: Login to Artifact Registry
       id: gar-login
-      uses: docker/login-action@v3
+      uses: docker/login-action@c94ce9fb468520275223c153574b00df6fe4bcc9 # v3
       with:
         registry: us-docker.pkg.dev
         username: oauth2accesstoken
@@ -42,7 +42,7 @@ jobs:
 
     - name: Extract metadata (tags, labels) for Docker
       id: meta
-      uses: docker/metadata-action@v5
+      uses: docker/metadata-action@c299e40c65443455700f0fdfc63efafe5b349051 # v5
       with:
         # Use the GAR image base
         images: ${{ env.GAR_IMAGE_BASE }}
@@ -52,7 +52,7 @@ jobs:
 
     - name: Determine Release-tagged image name
       id: release_tag_info
-      run: echo "name=${{ env.GAR_IMAGE_BASE }}:${{ github.ref_name }}" >> $GITHUB_OUTPUT
+      run: echo "name=${GAR_IMAGE_BASE}:${GITHUB_REF_NAME}" >> $GITHUB_OUTPUT
 
     - name: Pull Docker image with commit tag from GAR
       env:

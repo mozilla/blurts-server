@@ -14,11 +14,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
         with:
           persist-credentials: false
       - name: Use Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@6044e13b5dc448c55e2357c09f80417699197238 # v6
         with:
           node-version: '20.20.x'
       - run: npm ci
@@ -33,7 +33,7 @@ jobs:
       # (and set an arbitrary coverage threshold for that "true" coverage):
       - run: npm test -- --coverageThreshold='{"global":{"branches":80,"functions":80,"lines":80,"statements":80}}'
         if: github.event_name == 'schedule'
-      - uses: actions/upload-artifact@v6
+      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
         if: always()
         with:
           name: coverage-report
