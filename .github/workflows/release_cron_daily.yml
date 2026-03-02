@@ -20,7 +20,7 @@ jobs:
 
     steps:
     - name: Checkout main branch
-      uses: actions/checkout@v6
+      uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
       with:
         ref: main
         persist-credentials: false
@@ -40,10 +40,10 @@ jobs:
           -H "X-GitHub-Api-Version: 2022-11-28" \
             https://api.github.com/repos/${{ github.repository }}/releases \
           -d '{
-            "tag_name": "${{ env.CURRENT_DATE }}",
+            "tag_name": "${CURRENT_DATE}",
             "target_commitish": "main",
-            "name": "${{ env.CURRENT_DATE }}",
-            "body": "Daily pre-release for ${{ env.CURRENT_DATE }}.",
+            "name": "${CURRENT_DATE}",
+            "body": "Daily pre-release for ${CURRENT_DATE}.",
             "prerelease": true,
             "draft": false,
             "generate_release_notes": true
@@ -51,7 +51,7 @@ jobs:
 
     - name: Authenticate to Google Cloud
       id: gcp-auth
-      uses: google-github-actions/auth@v3
+      uses: google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093 # v3
       with:
         token_format: access_token
         workload_identity_provider: ${{ vars.GCPV2_GITHUB_WORKLOAD_IDENTITY_PROVIDER }}
@@ -59,7 +59,7 @@ jobs:
 
     - name: Login to Artifact Registry
       id: gar-login
-      uses: docker/login-action@v3
+      uses: docker/login-action@c94ce9fb468520275223c153574b00df6fe4bcc9 # v3
       with:
         registry: ${{ env.GAR_REGISTRY }}
         username: oauth2accesstoken
@@ -67,7 +67,7 @@ jobs:
 
     - name: Extract metadata (tags, labels) for Docker
       id: meta
-      uses: docker/metadata-action@v5
+      uses: docker/metadata-action@c299e40c65443455700f0fdfc63efafe5b349051 # v5
       with:
         # Use the GAR image base
         images: ${{ env.GAR_IMAGE_BASE }}
@@ -78,12 +78,12 @@ jobs:
     - name: Pull Docker image from GAR with commit tag
       env:
         VERSION: ${{ steps.meta.outputs.version }}
-      run: docker pull ${{ env.GAR_IMAGE_BASE }}:$VERSION
+      run: docker pull ${GAR_IMAGE_BASE}:$VERSION
 
     - name: Tag Docker image for GAR with release tag
       env:
         VERSION: ${{ steps.meta.outputs.version }}
-      run: docker tag ${{ env.GAR_IMAGE_BASE }}:$VERSION ${{ env.GAR_IMAGE_BASE }}:${{ env.CURRENT_DATE }}
+      run: docker tag ${GAR_IMAGE_BASE}:$VERSION ${GAR_IMAGE_BASE}:${CURRENT_DATE}
 
     - name: Push Docker image to GAR with release tag
-      run: docker push ${{ env.GAR_IMAGE_BASE }}:${{ env.CURRENT_DATE }}
+      run: docker push ${GAR_IMAGE_BASE}:${CURRENT_DATE}
