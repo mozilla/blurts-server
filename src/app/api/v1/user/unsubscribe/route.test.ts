@@ -25,15 +25,15 @@ afterEach(() => {
   vi.clearAllMocks();
 });
 
-describe("GET /api/v1/user/unsubscribe-email", () => {
+describe("POST /api/v1/user/unsubscribe", () => {
   it("returns 400 when no token is provided", async () => {
-    const { GET } = await import("./route");
+    const { POST } = await import("./route");
 
     const req = {
-      url: "https://example.com/api/v1/user/unsubscribe-email",
+      url: "https://example.com/api/v1/user/unsubscribe",
     } as unknown as NextRequest;
 
-    const res = await GET(req);
+    const res = await POST(req);
     expect(res.status).toBe(400);
     const body = await res.json();
     expect(body.success).toBe(false);
@@ -45,14 +45,14 @@ describe("GET /api/v1/user/unsubscribe-email", () => {
       undefined,
     );
 
-    const { GET } = await import("./route");
+    const { POST } = await import("./route");
 
     const token = "valid-token-abc";
     const req = {
-      url: `https://example.com/api/v1/user/unsubscribe-email?token=${token}`,
+      url: `https://example.com/api/v1/user/unsubscribe?token=${token}`,
     } as unknown as NextRequest;
 
-    const res = await GET(req);
+    const res = await POST(req);
     expect(res.status).toBe(200);
     const body = await res.json();
     expect(body.success).toBe(true);
@@ -66,13 +66,13 @@ describe("GET /api/v1/user/unsubscribe-email", () => {
       new Error("db failure"),
     );
 
-    const { GET } = await import("./route");
+    const { POST } = await import("./route");
 
     const req = {
-      url: "https://example.com/api/v1/user/unsubscribe-email?token=bad-token",
+      url: "https://example.com/api/v1/user/unsubscribe?token=bad-token",
     } as unknown as NextRequest;
 
-    const res = await GET(req);
+    const res = await POST(req);
     expect(res.status).toBe(500);
     const body = await res.json();
     expect(body.success).toBe(false);

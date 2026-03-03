@@ -20,7 +20,7 @@ export async function getBreachAlertsUnsubscribeLink(
     const getRes = await getEmailPreferenceForSubscriber(subscriber.id);
     if (getRes.unsubscribe_token) {
       // if record has been created and the token exists, return the token
-      return `${process.env.SERVER_URL}/unsubscribe-email/breach-alerts?token=${getRes.unsubscribe_token}`;
+      return `${process.env.SERVER_URL}/unsubscribe/breach-alerts?token=${getRes.unsubscribe_token}`;
     } else if (!getRes.unsubscribe_token) {
       // if record in the new table has not been created
       await addUnsubscribeTokenForSubscriber(subscriber.id, newUnsubToken);
@@ -31,7 +31,7 @@ export async function getBreachAlertsUnsubscribeLink(
       });
     }
 
-    return `${process.env.SERVER_URL}/unsubscribe-email/breach-alerts?token=${newUnsubToken}`;
+    return `${process.env.SERVER_URL}/unsubscribe/breach-alerts?token=${newUnsubToken}`;
   } catch (e) {
     logger.error("generate_unsubscribe_link", {
       exception: e,

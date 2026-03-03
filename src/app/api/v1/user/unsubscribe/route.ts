@@ -8,7 +8,7 @@ import { logger } from "../../../../functions/server/logging";
 import { unsubscribeBreachAlertsForUnsubscribeToken } from "../../../../../db/tables/subscriber_email_preferences";
 import * as Sentry from "@sentry/nextjs";
 
-export async function GET(req: NextRequest) {
+export async function POST(req: NextRequest) {
   try {
     const { searchParams } = new URL(req.url);
     const unsubToken = searchParams.get("token");

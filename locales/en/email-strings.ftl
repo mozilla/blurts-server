@@ -26,7 +26,7 @@ email-footer-logo-mozilla-alt = { -brand-mozilla }
 email-footer-meta-privacy-notice = Privacy
 email-unsubscribe-link = <link_to_unsub>Unsubscribe</link_to_unsub>
 # Variables:
-#   $unsub_link (string) - URL to the unsubscribe page, e.g. "https://monitor.mozilla.org/unsubscribe-email/...".
+#   $unsub_link (string) - URL to the unsubscribe page, e.g. "https://monitor.mozilla.org/unsubscribe/...".
 email-unsubscribe-link-plain = Unsubscribe: { $unsub_link }
 
 # Firefox Relay is a product name and should not be translated.

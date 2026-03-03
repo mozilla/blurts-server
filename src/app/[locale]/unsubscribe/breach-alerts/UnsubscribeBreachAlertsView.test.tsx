@@ -59,8 +59,8 @@ describe("UnsubscribeBreachAlertsView", () => {
     });
 
     expect(global.fetch).toHaveBeenCalledWith(
-      expect.stringContaining("/api/v1/user/unsubscribe-email?token="),
-      expect.objectContaining({ method: "GET" }),
+      expect.stringContaining("/api/v1/user/unsubscribe?token="),
+      expect.objectContaining({ method: "POST" }),
     );
   });
 

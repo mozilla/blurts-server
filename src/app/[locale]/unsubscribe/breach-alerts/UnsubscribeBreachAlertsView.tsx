@@ -37,14 +37,11 @@ export const UnsubscribeBreachAlertsView = ({ token }: { token: string }) => {
     ? copy.success
     : copy.confirmation;
 
-  const handleUnsubscription = async () => {
+  const handleUnsubscribe = async () => {
     try {
-      const response = await fetch(
-        `/api/v1/user/unsubscribe-email?token=${token}`,
-        {
-          method: "GET",
-        },
-      );
+      const response = await fetch(`/api/v1/user/unsubscribe?token=${token}`, {
+        method: "POST",
+      });
 
       if (!response.ok) {
         toast.error(l10n.getString("unsubscribe-failed"), toastOptions);
@@ -84,7 +81,7 @@ export const UnsubscribeBreachAlertsView = ({ token }: { token: string }) => {
         variant="primary"
         onPress={() => {
           if (!unsubscribeSuccess) {
-            void handleUnsubscription();
+            void handleUnsubscribe();
           } else {
             void signIn("fxa", { callbackUrl: "/user/dashboard" });
           }

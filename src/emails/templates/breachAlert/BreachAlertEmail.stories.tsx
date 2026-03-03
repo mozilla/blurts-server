@@ -52,6 +52,6 @@ export const BreachAlertEmailWithUnsubscribeLinkStory: Story = {
     breach: createRandomHibpListing(),
     breachedEmail: "example@example.com",
     unsubscribeLink:
-      "https://example.com/unsubscribe-email/breach-alerts?token=abc123",
+      "https://example.com/unsubscribe/breach-alerts?token=abc123",
   },
 };

@@ -42,6 +42,6 @@ export const WithUnsubscribeLink: Story = {
   name: "With unsubscribe link",
   args: {
     unsubscribeLink:
-      "https://example.com/unsubscribe-email/breach-alerts?token=abc123",
+      "https://example.com/unsubscribe/breach-alerts?token=abc123",
   },
 };
