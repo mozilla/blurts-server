@@ -204,7 +204,7 @@ export async function breachMessageHandler(
       const unsubscribeLink =
         (await getBreachAlertsUnsubscribeLink({
           id: recipient.subscriber_id,
-        })) ?? undefined;
+        }));
       await sendEmail(
         recipient.notification_email,
         subject,

@@ -17,5 +17,5 @@ export default meta;
 type Story = StoryObj<typeof UnsubscribeBreachAlertsView>;
 
 export const ConfirmationState: Story = {
-  name: "Confirmation state",
+  name: "Unsubscribe from breach alerts",
 };

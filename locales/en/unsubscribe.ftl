@@ -6,7 +6,7 @@
 
 unsubscribe-from-breach-alerts-header = Unsubscribe from breach alert emails?
 unsubscribe-from-breach-alerts-body = You’ll no longer receive instant breach alert emails from { -brand-mozilla-monitor }.
-unsubscribe-cta = Unsubscribe
+unsubscribe-link-cta = Unsubscribe
 
 # Success Unsubscription State
 
