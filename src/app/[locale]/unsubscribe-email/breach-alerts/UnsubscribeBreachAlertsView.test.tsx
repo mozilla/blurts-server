@@ -55,7 +55,7 @@ describe("UnsubscribeBreachAlertsView", () => {
     await user.click(screen.getByRole("button", { name: "Unsubscribe" }));
 
     await waitFor(() => {
-      expect(screen.getByText("You're now unsubscribed")).toBeInTheDocument();
+      expect(screen.getByText("You’re now unsubscribed")).toBeInTheDocument();
     });
 
     expect(global.fetch).toHaveBeenCalledWith(
@@ -108,7 +108,7 @@ describe("UnsubscribeBreachAlertsView", () => {
     await user.click(screen.getByRole("button", { name: "Unsubscribe" }));
 
     await waitFor(() => {
-      expect(screen.getByText("You're now unsubscribed")).toBeInTheDocument();
+      expect(screen.getByText("You’re now unsubscribed")).toBeInTheDocument();
     });
 
     await user.click(screen.getByRole("button", { name: /Sign in to/i }));

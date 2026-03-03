@@ -387,10 +387,9 @@ async function unsubscribeBreachAlertsForUnsubscribeToken(
         return;
       }
       await setAllEmailsToPrimary(subscriber, null);
-      logger.info(
-        "unsubscribe_breach_alerts_for_unsubscribe_token_success",
-        { subscriberId: sub.subscriber_id },
-      );
+      logger.info("unsubscribe_breach_alerts_for_unsubscribe_token_success", {
+        subscriberId: sub.subscriber_id,
+      });
     } else {
       logger.error(
         `cannot find subscriber with unsubscribe token: ${unsubscribeToken}`,

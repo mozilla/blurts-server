@@ -29,10 +29,7 @@ describe("addUnsubscribeTokenForSubscriber", () => {
       .returning("*");
 
     const token = "test-token-abc123";
-    const result = await addUnsubscribeTokenForSubscriber(
-      subscriber.id,
-      token,
-    );
+    const result = await addUnsubscribeTokenForSubscriber(subscriber.id, token);
 
     expect(result.subscriber_id).toBe(subscriber.id);
     expect(result.unsubscribe_token).toBe(token);
@@ -85,8 +82,7 @@ describe("getEmailPreferenceForUnsubscribeToken", () => {
   });
 
   it("returns undefined for an unknown token", async () => {
-    const result =
-      await getEmailPreferenceForUnsubscribeToken("no-such-token");
+    const result = await getEmailPreferenceForUnsubscribeToken("no-such-token");
     expect(result).toBeUndefined();
   });
 });

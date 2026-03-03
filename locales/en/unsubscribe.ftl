@@ -5,12 +5,12 @@
 # Confirm Unsubscription State
 
 unsubscribe-from-breach-alerts-header = Unsubscribe from breach alert emails?
-unsubscribe-from-breach-alerts-body = You'll no longer receive instant breach alert emails from { -brand-mozilla-monitor }.
+unsubscribe-from-breach-alerts-body = You’ll no longer receive instant breach alert emails from { -brand-mozilla-monitor }.
 unsubscribe-cta = Unsubscribe
 
 # Success Unsubscription State
 
-unsubscribe-success-from-breach-alerts-header = You're now unsubscribed
+unsubscribe-success-from-breach-alerts-header = You’re now unsubscribed
 unsubscribe-success-from-breach-alerts-body = You can resubscribe or update your email preferences anytime from your { -brand-monitor } settings.
 unsubscribe-success-cta = Sign in to { -brand-monitor }
 
