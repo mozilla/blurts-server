@@ -5,17 +5,18 @@
   flex-wrap: wrap;
   gap: tokens.$spacing-lg;
   flex-direction: column;
+  align-items: center;
 
   @media screen and (min-width: tokens.$screen-sm) {
     flex-direction: row;
-  }
 
-  // label positions
-  &.top {
-    align-items: flex-end;
-  }
-  &.bottom {
-    align-items: flex-start;
+    // label positions
+    &.top {
+      align-items: flex-end;
+    }
+    &.bottom {
+      align-items: flex-start;
+    }
   }
 
   div:first-child {
