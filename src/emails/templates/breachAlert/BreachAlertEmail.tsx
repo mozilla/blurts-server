@@ -18,7 +18,7 @@ export type BreachAlertEmailProps = {
   breachedEmail: string;
   utmCampaignId: string;
   subscriber: Pick<SubscriberRow, "fxa_profile_json" | "fxa_profile_json">;
-  unsubscribeLink?: string;
+  unsubscribeLink: string;
 };
 
 // These components are fully covered by the BreachAlertEmail test,

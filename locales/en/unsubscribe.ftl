@@ -12,9 +12,8 @@ unsubscribe-link-cta = Unsubscribe
 
 unsubscribe-success-from-breach-alerts-header = You’re now unsubscribed
 unsubscribe-success-from-breach-alerts-body = You can resubscribe or update your email preferences anytime from your { -brand-monitor } settings.
-unsubscribe-success-cta = Sign in to { -brand-monitor }
+unsubscribe-success-link-cta = Sign in to { -brand-monitor }
 
 # Error warning
 
-unsubscription-failed = Unsubscribe failed. <try_again_link>Try again.</try_again_link>
-unsubscription-failed-2 = Unsubscribe failed.
+unsubscribe-failed = Unsubscribe failed.

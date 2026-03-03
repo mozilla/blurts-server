@@ -24,12 +24,12 @@ export const UnsubscribeBreachAlertsView = ({ token }: { token: string }) => {
     confirmation: {
       header: l10n.getString("unsubscribe-from-breach-alerts-header"),
       body: l10n.getString("unsubscribe-from-breach-alerts-body"),
-      cta: l10n.getString("unsubscribe-cta"),
+      cta: l10n.getString("unsubscribe-link-cta"),
     },
     success: {
       header: l10n.getString("unsubscribe-success-from-breach-alerts-header"),
       body: l10n.getString("unsubscribe-success-from-breach-alerts-body"),
-      cta: l10n.getString("unsubscribe-success-cta"),
+      cta: l10n.getString("unsubscribe-success-link-cta"),
     },
   };
 
@@ -47,12 +47,12 @@ export const UnsubscribeBreachAlertsView = ({ token }: { token: string }) => {
       );
 
       if (!response.ok) {
-        toast.error(l10n.getString("unsubscription-failed-2"), toastOptions);
+        toast.error(l10n.getString("unsubscribe-failed"), toastOptions);
       } else {
         setUnsubscribeSuccess(true);
       }
     } catch (error) {
-      toast.error(l10n.getString("unsubscription-failed-2"), toastOptions);
+      toast.error(l10n.getString("unsubscribe-failed"), toastOptions);
       console.error("Error unsubscribing from breach alerts", error);
     }
   };
