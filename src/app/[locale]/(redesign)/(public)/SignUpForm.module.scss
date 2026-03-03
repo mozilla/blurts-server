@@ -10,7 +10,7 @@
   @media screen and (min-width: tokens.$screen-sm) {
     flex-direction: row;
 
-    // label positions
+    // label positions will dictate where the CTA is floating
     &.top {
       align-items: flex-end;
     }
