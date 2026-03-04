@@ -17,7 +17,6 @@ import { createRandomHibpListing as mockBreach } from "../../../apiMocks/mockDat
 import { HibpLikeDbBreach } from "../../../utils/hibp";
 import { type BreachDataService } from "../../../services/BreachDataService";
 import { getEmailSubscriptionByListId } from "../../../db/tables/email_subscriptions";
-import { EmailSubscriptionsRow } from "knex/types/tables";
 
 const mockSubscriber = seeds.breachNotificationSubscriber;
 
