@@ -9,7 +9,7 @@ import type { NextRequest } from "next/server";
 
 vi.mock("../../../../../db/tables/email_subscriptions", () => ({
   getEmailSubscriptionByToken: vi.fn(),
-  unsubscribeByToken: vi.fn(),
+  unsubscribeEmailSubscription: vi.fn(),
 }));
 
 vi.mock("../../../../functions/server/logging", () => ({

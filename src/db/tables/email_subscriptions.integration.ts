@@ -166,7 +166,7 @@ describe("getEmailSubscriptionByToken", () => {
   });
 });
 
-describe("unsubscribeByToken", () => {
+describe("unsubscribeEmailSubscription", () => {
   it("sets subscribed to false on the subscription row", async () => {
     const [subscriber] = await conn("subscribers")
       .insert(seeds.subscribers())
