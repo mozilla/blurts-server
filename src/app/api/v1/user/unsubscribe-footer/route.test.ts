@@ -22,7 +22,7 @@ vi.mock("@sentry/nextjs", () => ({
 
 import {
   getEmailSubscriptionByToken,
-  unsubscribeByToken,
+  unsubscribeEmailSubscription,
 } from "../../../../../db/tables/email_subscriptions";
 import { EmailSubscriptionsRow } from "knex/types/tables";
 import { BREACH_ALERT_LIST_ID } from "../../../../../constants";
@@ -72,7 +72,7 @@ describe("POST /api/v1/user/unsubscribe", () => {
 
   it("returns 200 and calls unsubscribeBreachAlertsForUnsubscribeToken on success", async () => {
     vi.mocked(getEmailSubscriptionByToken).mockResolvedValue(mockSubscription);
-    vi.mocked(unsubscribeByToken).mockResolvedValue(undefined);
+    vi.mocked(unsubscribeEmailSubscription).mockResolvedValue(undefined);
 
     const { POST } = await import("./route");
 
@@ -85,12 +85,17 @@ describe("POST /api/v1/user/unsubscribe", () => {
     expect(res.status).toBe(200);
     const body = await res.json();
     expect(body.success).toBe(true);
-    expect(unsubscribeByToken).toHaveBeenCalledWith(mockSubscription, "footer");
+    expect(unsubscribeEmailSubscription).toHaveBeenCalledWith(
+      mockSubscription,
+      "footer",
+    );
   });
 
   it("returns 500 when unsubscribeBreachAlertsForUnsubscribeToken throws", async () => {
     vi.mocked(getEmailSubscriptionByToken).mockResolvedValue(mockSubscription);
-    vi.mocked(unsubscribeByToken).mockRejectedValue(new Error("db failure"));
+    vi.mocked(unsubscribeEmailSubscription).mockRejectedValue(
+      new Error("db failure"),
+    );
 
     const { POST } = await import("./route");
 

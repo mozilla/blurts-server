@@ -10,7 +10,7 @@ import {
   getEmailSubscriptionByToken,
   getOrBackfillEmailSubscription,
   getOrCreateUnsubscribeToken,
-  unsubscribeByToken,
+  unsubscribeEmailSubscription,
 } from "./email_subscriptions";
 import { BREACH_ALERT_LIST_ID } from "../../constants";
 
@@ -178,7 +178,7 @@ describe("unsubscribeByToken", () => {
       true,
     );
 
-    await unsubscribeByToken(subscription, "footer");
+    await unsubscribeEmailSubscription(subscription, "footer");
 
     const updated = await conn("email_subscriptions")
       .where("id", subscription.id)
@@ -198,7 +198,7 @@ describe("unsubscribeByToken", () => {
       true,
     );
 
-    await unsubscribeByToken(subscription, "footer");
+    await unsubscribeEmailSubscription(subscription, "footer");
 
     const event = await conn("email_subscription_events")
       .where("email_subscriptions_id", subscription.id)
@@ -220,7 +220,7 @@ describe("unsubscribeByToken", () => {
       true,
     );
 
-    await unsubscribeByToken(subscription, "footer");
+    await unsubscribeEmailSubscription(subscription, "footer");
 
     const updated = await conn("subscribers")
       .where("id", subscriber.id)
@@ -240,7 +240,7 @@ describe("unsubscribeByToken", () => {
       false,
     );
 
-    await unsubscribeByToken(subscription, "footer");
+    await unsubscribeEmailSubscription(subscription, "footer");
 
     const updated = await conn("subscribers")
       .where("id", subscriber.id)

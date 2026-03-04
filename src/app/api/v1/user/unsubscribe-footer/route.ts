@@ -7,15 +7,12 @@ import type { NextRequest } from "next/server";
 import { logger } from "../../../../functions/server/logging";
 import {
   getEmailSubscriptionByToken,
-  unsubscribeByToken,
+  unsubscribeEmailSubscription,
 } from "../../../../../db/tables/email_subscriptions";
 import * as Sentry from "@sentry/nextjs";
 
 /**
- * Used for email footer unsubscribe
- *
- * @param req
- * @returns
+ * Used to process unsubscribes from email footer
  */
 export async function POST(req: NextRequest) {
   try {
@@ -37,7 +34,7 @@ export async function POST(req: NextRequest) {
       });
       return NextResponse.json({ success: true }, { status: 200 });
     }
-    await unsubscribeByToken(subscriptionRecord, "footer");
+    await unsubscribeEmailSubscription(subscriptionRecord, "footer");
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (e) {
     logger.error("unsubscribe_email", { error: e });

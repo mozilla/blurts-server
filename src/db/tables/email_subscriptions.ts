@@ -19,6 +19,10 @@ const conn = createDbConnection();
 export type EmailSubscriptionPreferencesOutput = SubscriberRow &
   Partial<EmailSubscriptionsRow>;
 
+/**
+ *  Fetch the subscription state for a specific
+ * subscriber and email list (e.g. breach alerts)
+ * */
 export async function getEmailSubscriptionByListId(
   subscriberId: number,
   listId: EmailSubscriptionListId,
@@ -30,6 +34,9 @@ export async function getEmailSubscriptionByListId(
     .first();
 }
 
+/**
+ * Fetch the subscription state by an unsubscribe token
+ */
 export async function getEmailSubscriptionByToken(token: string) {
   return await conn("email_subscriptions")
     .select("*")
@@ -37,6 +44,20 @@ export async function getEmailSubscriptionByToken(token: string) {
     .first();
 }
 
+/**
+ * Create a new email subscription state record and event log.
+ * If attempting to create a subscription that already exists,
+ * this method will return the existing subscription and not
+ * create an event.
+ *
+ * @param subscriberId subscribers.id
+ * @param listId the email list
+ * @param subscribed is the user subscribed to the list
+ * @param source source of the event, e.g. opt-in
+ * @param trx optional transaction context to run statements inside;
+ * will create a new one if not passed.
+ * @returns
+ */
 export async function createEmailSubscription(
   subscriberId: number,
   listId: EmailSubscriptionListId,
@@ -90,6 +111,12 @@ export async function createEmailSubscription(
   });
 }
 
+/**
+ * Get an email_subscription record. If it does not exist,
+ * create a new one with the desired state and source='backfill'.
+ * This enables us to roll out this table without having to
+ * backfill all existing subscribers first.
+ */
 export async function getOrBackfillEmailSubscription(
   subscriberId: number,
   listId: EmailSubscriptionListId,
@@ -137,6 +164,10 @@ export async function getOrCreateUnsubscribeToken(
   );
 }
 
+/**
+ * Update email_subscription record (e.g. to subscribe or unsubscribe)
+ * and record event in log.
+ */
 export async function updateSubscriptionWithEvent(
   trx: Knex.Transaction,
   emailSubscription: EmailSubscriptionsRow,
@@ -161,7 +192,10 @@ export async function updateSubscriptionWithEvent(
   });
 }
 
-export async function unsubscribeByToken(
+/**
+ * Unsubscribe an email_subscription
+ */
+export async function unsubscribeEmailSubscription(
   emailSubscription: EmailSubscriptionsRow,
   source: SubscriptionEventSource,
 ): Promise<void> {

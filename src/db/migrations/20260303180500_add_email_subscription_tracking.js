@@ -3,6 +3,12 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 /**
+ * Create tables for managing email subscriptions and tracking
+ * state, with audit event logs. This is deployed together
+ * with the existing breach alerts subscription tracking via
+ * subscribers.all_emails_to_primary field, and the data is
+ * synced.
+ *
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */

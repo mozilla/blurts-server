@@ -9,6 +9,10 @@ import { logger } from "../server/logging";
 import { BREACH_ALERT_LIST_ID } from "../../../constants";
 import { config } from "../../../config";
 
+/**
+ * Create an unsubscribe link for use in the breach alerts
+ * email footer
+ */
 export async function getBreachAlertsUnsubscribeLink(
   subscriber: Pick<SubscriberRow, "id">,
 ) {
