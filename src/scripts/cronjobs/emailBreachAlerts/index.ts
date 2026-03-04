@@ -33,7 +33,6 @@ import {
 } from "../../../db/tables/breaches";
 import { runJob } from "./emailBreachAlerts";
 import { getBreachNotificationSubscribersByHashes } from "../../../db/models/BreachNotificationSubscriber";
-import { getEmailSubscriptionByListId } from "../../../db/tables/email_subscriptions";
 
 start();
 
@@ -75,7 +74,6 @@ async function start() {
       }),
       { findByHashes: getBreachNotificationSubscribersByHashes },
       NotificationsRepo,
-      getEmailSubscriptionByListId,
       sendEmail,
       Sentry,
     ],

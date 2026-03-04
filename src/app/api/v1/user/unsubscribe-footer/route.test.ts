@@ -85,11 +85,7 @@ describe("POST /api/v1/user/unsubscribe", () => {
     expect(res.status).toBe(200);
     const body = await res.json();
     expect(body.success).toBe(true);
-    expect(unsubscribeByToken).toHaveBeenCalledWith(
-      mockSubscription,
-      "footer",
-      token,
-    );
+    expect(unsubscribeByToken).toHaveBeenCalledWith(mockSubscription, "footer");
   });
 
   it("returns 500 when unsubscribeBreachAlertsForUnsubscribeToken throws", async () => {

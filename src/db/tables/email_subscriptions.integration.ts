@@ -178,7 +178,7 @@ describe("unsubscribeByToken", () => {
       true,
     );
 
-    await unsubscribeByToken(subscription, "footer", subscription.token);
+    await unsubscribeByToken(subscription, "footer");
 
     const updated = await conn("email_subscriptions")
       .where("id", subscription.id)
@@ -198,10 +198,11 @@ describe("unsubscribeByToken", () => {
       true,
     );
 
-    await unsubscribeByToken(subscription, "footer", subscription.token);
+    await unsubscribeByToken(subscription, "footer");
 
     const event = await conn("email_subscription_events")
       .where("email_subscriptions_id", subscription.id)
+      .orderBy("id", "desc")
       .first();
     expect(event).toBeDefined();
     expect(event!.event_type).toBe("unsubscribe");
@@ -219,12 +220,39 @@ describe("unsubscribeByToken", () => {
       true,
     );
 
-    await unsubscribeByToken(subscription, "footer", subscription.token);
+    await unsubscribeByToken(subscription, "footer");
 
     const updated = await conn("subscribers")
       .where("id", subscriber.id)
       .first();
     expect(updated).toBeDefined();
     expect(updated!.all_emails_to_primary).toBeNull();
+  });
+
+  it("does not record an event if already unsubscribed", async () => {
+    const [subscriber] = await conn("subscribers")
+      .insert(seeds.subscribers({ all_emails_to_primary: null }))
+      .returning("*");
+
+    const subscription = await getOrBackfillEmailSubscription(
+      subscriber.id,
+      BREACH_ALERT_LIST_ID,
+      false,
+    );
+
+    await unsubscribeByToken(subscription, "footer");
+
+    const updated = await conn("subscribers")
+      .where("id", subscriber.id)
+      .first();
+    expect(updated).toBeDefined();
+    expect(updated!.all_emails_to_primary).toBeNull();
+
+    const events = await conn("email_subscription_events")
+      .where("email_subscriptions_id", subscription.id)
+      .orderBy("id", "desc");
+    expect(events.length).toEqual(1);
+    // Should only have the initial backfill event
+    expect(events[0].source).toBe("backfill");
   });
 });

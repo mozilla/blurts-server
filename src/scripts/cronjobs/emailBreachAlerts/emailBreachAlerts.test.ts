@@ -16,7 +16,6 @@ import { seeds } from "../../../test/db";
 import { createRandomHibpListing as mockBreach } from "../../../apiMocks/mockData";
 import { HibpLikeDbBreach } from "../../../utils/hibp";
 import { type BreachDataService } from "../../../services/BreachDataService";
-import { getEmailSubscriptionByListId } from "../../../db/tables/email_subscriptions";
 
 const mockSubscriber = seeds.breachNotificationSubscriber;
 
@@ -46,7 +45,9 @@ vi.mock("@sentry/node", async (importOriginal) => {
 });
 
 vi.mock("../../../app/functions/cronjobs/unsubscribeLinks", () => ({
-  getBreachAlertsUnsubscribeLink: vi.fn().mockResolvedValue(null),
+  getBreachAlertsUnsubscribeLink: vi
+    .fn()
+    .mockResolvedValue("http://example.com/unsubscribe?token=123"),
 }));
 
 vi.mock("../../../db/tables/email_subscriptions", () => ({
@@ -86,7 +87,6 @@ describe("breachMessageHandler", () => {
       { getBreach: breachSpy } as unknown as BreachDataService,
       subs,
       notifications,
-      getEmailSubscriptionByListId,
       sendEmail,
     );
 
@@ -121,7 +121,6 @@ describe("breachMessageHandler", () => {
       { getBreach: breachSpy } as unknown as BreachDataService,
       subs,
       notifications,
-      getEmailSubscriptionByListId,
       sendEmail,
     );
 
@@ -158,7 +157,6 @@ describe("breachMessageHandler", () => {
       { getBreach: breachSpy } as unknown as BreachDataService,
       subs,
       notifications,
-      getEmailSubscriptionByListId,
       sendEmail,
     );
 
@@ -190,7 +188,6 @@ describe("breachMessageHandler", () => {
         { getBreach: breachSpy } as unknown as BreachDataService,
         subs,
         notifications,
-        getEmailSubscriptionByListId,
         sendEmail,
       ),
     ).rejects.toThrow(
@@ -220,7 +217,6 @@ describe("breachMessageHandler", () => {
       { getBreach: breachSpy } as unknown as BreachDataService,
       subs,
       notifications,
-      getEmailSubscriptionByListId,
       sendEmail,
       Sentry,
     );
@@ -252,7 +248,6 @@ describe("breachMessageHandler", () => {
           addEmailNotification: vi.fn().mockResolvedValue(undefined),
           markEmailAsNotified: vi.fn(),
         },
-        getEmailSubscriptionByListId,
         vi.fn().mockResolvedValue(undefined),
       ),
     ).rejects.toThrow("Invalid payload");
@@ -275,7 +270,6 @@ describe("breachMessageHandler", () => {
       { getBreach: breachSpy } as unknown as BreachDataService,
       subs,
       notifications,
-      getEmailSubscriptionByListId,
       sendEmail,
       Sentry,
     );

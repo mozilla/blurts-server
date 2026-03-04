@@ -7,6 +7,7 @@ import { captureException } from "@sentry/node";
 import { getOrCreateUnsubscribeToken } from "../../../db/tables/email_subscriptions";
 import { logger } from "../server/logging";
 import { BREACH_ALERT_LIST_ID } from "../../../constants";
+import { config } from "../../../config";
 
 export async function getBreachAlertsUnsubscribeLink(
   subscriber: Pick<SubscriberRow, "id">,
@@ -16,7 +17,7 @@ export async function getBreachAlertsUnsubscribeLink(
       subscriber.id,
       BREACH_ALERT_LIST_ID,
     );
-    return `${process.env.SERVER_URL}/unsubscribe/breach-alerts?token=${token}`;
+    return `${config.serverUrl}/unsubscribe/breach-alerts?token=${token}`;
   } catch (e) {
     logger.error("generate_unsubscribe_link", {
       exception: e,

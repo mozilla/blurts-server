@@ -21,7 +21,6 @@ import { MessageSummary, SubscriptionHandler } from "./subscriptionHandler";
 import * as grpc from "@grpc/grpc-js";
 import { type BreachDataService } from "../../../services/BreachDataService";
 import { UTM_CAMPAIGN_ID_BREACH_ALERT } from "../../../constants";
-import { type getEmailSubscriptionByListId } from "../../../db/tables/email_subscriptions";
 
 type BreachNotifiableResponse = {
   shouldNotify: boolean;
@@ -116,7 +115,6 @@ export async function breachMessageHandler(
   breachService: BreachDataService,
   subs: typeof SubscribersRepo,
   notifications: typeof NotificationsRepo,
-  getEmailSub: typeof getEmailSubscriptionByListId,
   sendEmail: typeof sendEmailFn,
   sentry?: typeof Sentry,
 ): Promise<MessageSummary> {

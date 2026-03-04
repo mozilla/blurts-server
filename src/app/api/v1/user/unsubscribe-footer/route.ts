@@ -37,12 +37,10 @@ export async function POST(req: NextRequest) {
       });
       return NextResponse.json({ success: true }, { status: 200 });
     }
-    await unsubscribeByToken(subscriptionRecord, "footer", unsubToken);
+    await unsubscribeByToken(subscriptionRecord, "footer");
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (e) {
-    logger.error("unsubscribe_email", {
-      exception: e as string,
-    });
+    logger.error("unsubscribe_email", { error: e });
     Sentry.captureException(e);
     return NextResponse.json({ success: false }, { status: 500 });
   }

@@ -34,7 +34,7 @@ export async function up(knex) {
       .references("email_subscriptions.id")
       .notNullable()
       .onDelete("CASCADE");
-    table.datetime("created_at").notNullable();
+    table.timestamp("created_at").notNullable();
     // Not using enum or constraints here, but be mindful of adding new sources
     // (app code defines explicit values, e.g. one_click|footer|bounce|settings)
     table.string("source").notNullable();

@@ -164,11 +164,13 @@ export async function updateSubscriptionWithEvent(
 export async function unsubscribeByToken(
   emailSubscription: EmailSubscriptionsRow,
   source: SubscriptionEventSource,
-  token: string,
 ): Promise<void> {
   const timestamp = new Date();
   const subscribed = false;
   try {
+    // Don't record if already unsubscribed, to avoid
+    // spam from multiple clicks
+    if (emailSubscription.subscribed === false) return;
     await conn.transaction(async (trx) => {
       await updateSubscriptionWithEvent(trx, emailSubscription, {
         subscribed,
@@ -186,7 +188,6 @@ export async function unsubscribeByToken(
     logger.error("error_unsubscribe_from_list", {
       emailSubscriptionId: emailSubscription.id,
       source,
-      token,
     });
     captureException(error);
     throw error;
